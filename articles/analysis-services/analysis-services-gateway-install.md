@@ -4,21 +4,21 @@ description: Přečtěte si, jak nainstalovat a nakonfigurovat místní bránu d
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 01/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 019da1810851c730ea8bfe4cf5eea0cfa900bea0
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: f578840726543027a8c1b1db9bd88ea42f6e85fa
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029898"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264063"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Instalace a konfigurace místní brány dat
 
-Místní brána dat se vyžaduje v případě, že se nejmíň jeden Azure Analysis Services Server ve stejné oblasti připojí k místním zdrojům dat.  I když je brána, kterou instalujete, stejná jako pro jiné služby, jako je Power BI, Power Apps a Logic Apps, při instalaci pro Azure Analysis Services je potřeba provést několik dalších kroků. Tento článek instalace je určený pro **Azure Analysis Services**.
+Místní brána dat se vyžaduje v případě, že se nejmíň jeden Azure Analysis Services Server ve stejné oblasti připojí k místním zdrojům dat.  I když je brána, kterou instalujete, stejná jako pro jiné služby, jako je Power BI, Power Apps a Logic Apps, při instalaci pro Azure Analysis Services je potřeba provést několik dalších kroků. Tento článek instalace je určený pro **Azure Analysis Services**. 
 
-Další informace o bráně a o tom, jak ji používá Azure Analysis Services, najdete v tématu [připojení k místním zdrojům dat](analysis-services-gateway.md).
+Další informace o tom, jak Azure Analysis Services funguje s bránou, najdete v tématu [připojení k místním zdrojům dat](analysis-services-gateway.md). Další informace o rozšířených scénářích instalace a bráně obecně najdete v [dokumentaci k místní bráně dat](/data-integration/gateway/service-gateway-onprem).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -35,11 +35,11 @@ Další informace o bráně a o tom, jak ji používá Azure Analysis Services, 
 
 **Důležité informace:**
 
-* Během instalace se při registraci brány v Azure vybere výchozí oblast pro vaše předplatné. Můžete zvolit jinou oblast. Pokud máte servery ve více než jedné oblasti, musíte bránu nainstalovat pro každou oblast. 
+* Během instalace se při registraci brány v Azure vybere výchozí oblast pro vaše předplatné. Můžete zvolit jiné předplatné a oblast. Pokud máte servery ve více než jedné oblasti, musíte bránu nainstalovat pro každou oblast. 
 * Bránu nejde nainstalovat na řadič domény.
 * V jednom počítači může být nainstalovaná jenom jedna brána.
 * Bránu nainstalujte do počítače, který zůstane zapnutý a nepřejde do režimu spánku.
-* Bránu neinstalujte do počítače bezdrátového připojení k vaší síti. Výkon může být snížený.
+* Bránu neinstalujte na počítač, který má jenom bezdrátové připojení k vaší síti. Výkon může být snížený.
 * Když instalujete bránu, uživatelský účet, ke kterému jste se přihlásili, musí mít oprávnění přihlásit se jako služba. Po dokončení instalace použije služba místní brány dat účet NT SERVICE\PBIEgwService k přihlášení jako službu. Během instalace nebo po dokončení instalace je možné zadat jiný účet. Ujistěte se, že nastavení Zásady skupiny umožňují účtu, ke kterému jste se přihlásili při instalaci, a účet služby, který jste zvolili, oprávnění přihlásit se jako služba.
 * Přihlaste se k Azure pomocí účtu ve službě Azure AD pro stejného [tenanta](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) jako předplatné, ve kterém bránu zaregistrujete. Při instalaci a registraci brány se nepodporují účty Azure B2B (Guest).
 * Pokud jsou zdroje dat na Virtual Network Azure (VNet), musíte nakonfigurovat vlastnost serveru [AlwaysUseGateway](analysis-services-vnet-gateway.md) .
@@ -87,7 +87,7 @@ Aby bylo možné vytvořit prostředek brány v Azure, musíte zaregistrovat mí
 
 ## <a name="create-resource"></a>Vytvoření prostředku brány Azure
 
-Po instalaci a registraci brány musíte vytvořit prostředek brány ve svém předplatném Azure. Přihlaste se k Azure pomocí stejného účtu, který jste použili při registraci brány.
+Po instalaci a registraci brány musíte vytvořit prostředek brány v Azure. Přihlaste se k Azure pomocí stejného účtu, který jste použili při registraci brány.
 
 1. V Azure Portal klikněte na **vytvořit prostředek**, vyhledejte místní **bránu dat**a pak klikněte na **vytvořit**.
 

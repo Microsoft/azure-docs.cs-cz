@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 11/05/2019
 ms.author: erhopf
-ms.openlocfilehash: ee8b32634c92b873e82f540f04b53429de93d808
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: df0ce5efefe86ed3b7e2e8ccf5a2bd9011e168e6
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75611082"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261428"
 ---
 # <a name="what-is-the-speech-service"></a>Co je služba Speech?
 
@@ -29,11 +29,12 @@ Tyto funkce tvoří službu pro rozpoznávání řeči. Pomocí odkazů v této 
 | Služba | Funkce | Popis | SDK | REST |
 | ------- | ------- | ----------- | --- | ---- |
 | [Speech-to-Text](speech-to-text.md) | Převod řeči na text | Převod řeči na text transcribes zvukové streamy na text v reálném čase, které mohou aplikace, nástroje nebo zařízení spotřebovat nebo zobrazit. Použití převodu řeči na text s [Language Understanding (Luis)](https://docs.microsoft.com/azure/cognitive-services/luis/) k odvození záměrů uživatele z přepisu řeči a fungování hlasových příkazů. | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-|         | [Přepis Batch](batch-transcription.md) | Batch přepis umožňuje provádět přepis velkých objemů dat z převodu řeči na text. Jedná se o službu založenou na REST, která používá stejný koncový bod jako přizpůsobení a Správa modelů. | Ne | [Ano](https://westus.cris.ai/swagger/ui/index) |
-|         | [Přepis konverzace](conversation-transcription-service.md) | Umožňuje rozpoznávání řeči v reálném čase, identifikaci mluvčího a diarization. Je ideální pro zdlouhavého přepisování schůzky na osobu s možností odlišit reproduktory. | Ano | Ne |
-|         | [Vytváření modelů Custom Speech](#customize-your-speech-experience) | Pokud používáte převod řeči na text pro rozpoznávání a přepis v jedinečném prostředí, můžete vytvořit a vyškolit vlastní modely akustického, jazyka a výslovnosti pro řešení hluku nebo slovníku specifického pro konkrétní obor. | Ne | [Ano](https://westus.cris.ai/swagger/ui/index) |
-| [Text-to-Speech](text-to-speech.md) | Převod textu na řeč | Převod textu na řeč převede vstupní text na syntetizované rozpoznávání řeči pomocí [jazyka SSML (Speech syntézy)](text-to-speech.md#core-features). Vyberte si ze standardních hlasů a hlasy neuronové (viz [Podpora jazyků](language-support.md)). | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-|         | [Vytváření vlastních hlasů](#customize-your-speech-experience) | Vytvářejte vlastní hlasová písma, která jsou jedinečná pro vaši značku nebo produkt. | Ne | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| | [Přepis Batch](batch-transcription.md) | Batch přepis umožňuje provádět přepis velkých objemů dat z převodu řeči na text. Jedná se o službu založenou na REST, která používá stejný koncový bod jako přizpůsobení a Správa modelů. | Ne | [Ano](https://westus.cris.ai/swagger/ui/index) |
+| | [Konverzace s více zařízeními](multi-device-conversation.md) | Připojení více zařízení nebo klientů v rámci konverzace pro odesílání hlasových a textových zpráv s jednoduchou podporou pro přepis a překlady| Ano | Ne |
+| | [Přepis konverzace](conversation-transcription-service.md) | Umožňuje rozpoznávání řeči v reálném čase, identifikaci mluvčího a diarization. Je ideální pro zdlouhavého přepisování schůzky na osobu s možností odlišit reproduktory. | Ano | Ne |
+| | [Vytváření modelů Custom Speech](#customize-your-speech-experience) | Pokud používáte převod řeči na text pro rozpoznávání a přepis v jedinečném prostředí, můžete vytvořit a vyškolit vlastní modely akustického, jazyka a výslovnosti pro řešení hluku nebo slovníku specifického pro konkrétní obor. | Ne | [Ano](https://westus.cris.ai/swagger/ui/index) |
+| [Text-to-Speech](text-to-speech.md) | Převod textu na řeč | Převod textu na řeč převede vstupní text na syntetizované rozpoznávání řeči pomocí [jazyka SSML (Speech syntézy)](speech-synthesis-markup.md). Vyberte si ze standardních hlasů a hlasy neuronové (viz [Podpora jazyků](language-support.md)). | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| | [Vytváření vlastních hlasů](#customize-your-speech-experience) | Vytvářejte vlastní hlasová písma, která jsou jedinečná pro vaši značku nebo produkt. | Ne | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Překlad řeči](speech-translation.md) | Překlad řeči | Překlad řeči umožňuje překlady řeči v reálném čase pro aplikace, nástroje a zařízení v reálném čase. Použijte tuto službu pro překlad řeči a převod řeči na text. | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | Ne |
 | [Asistenti hlasu](voice-assistants.md) | Hlasoví asistenti | Hlasové asistenti, kteří používají službu pro rozpoznávání řeči, umožňují vývojářům vytvářet pro své aplikace a prostředí přirozené rozhraní pro konverzaci podobné člověku. Služba hlasového asistenta poskytuje rychlou a spolehlivou interakci mezi zařízením a implementací pomocníka, která používá kanál s přímým přístupem na platformě bot nebo integrované vlastní příkazy (Preview) pro dokončení úkolu. | [Ano](voice-assistants.md) | Ne |
 

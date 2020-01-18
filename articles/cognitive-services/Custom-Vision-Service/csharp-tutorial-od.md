@@ -10,18 +10,18 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: areddish
-ms.openlocfilehash: ed86a286051ba9240fe23951ef7cb72de1e96201
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c6aaf69ba3ed682a00a203079b024a47121334e3
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74960566"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170073"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-net-sdk"></a>Rychlý start: Vytvoření projektu detekce objektů pomocí sady Custom Vision .NET SDK
 
 V tomto článku se dozvíte, jak začít používat sadu Custom Vision SDK C# s nástrojem k sestavení modelu detekce objektu. Po jeho vytvoření můžete přidat označené oblasti, nahrát obrázky, vytrénovat projekt, získat adresu URL výchozího koncového bodu předpovědi projektu a použít tento koncový bod k programovému testování obrázku. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace v .NET. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Libovolná edice sady [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/)
 - [!INCLUDE [create-resources](includes/create-resources.md)]
@@ -63,6 +63,9 @@ Tato další část kódu vytvoří projekt detekce objektů. Vytvořený projek
 ### <a name="upload-and-tag-images"></a>Nahrání a označení obrázků
 
 Při označování obrázků v projektech detekce obrázků je potřeba zadat oblast každého označeného objektu pomocí normalizovaných souřadnic. Následující kód přidruží jednotlivé ukázkové obrázky k odpovídající označené oblasti.
+
+> [!NOTE]
+> Pokud nemáte k označení souřadnic oblastí k dispozici nástroj pro kliknutí a přetažení, můžete použít webové uživatelské rozhraní na adrese [Customvision.AI](https://www.customvision.ai/). V tomto příkladu jsou souřadnice již poskytovány.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_upload_regions)]
 

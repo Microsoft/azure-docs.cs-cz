@@ -1,7 +1,7 @@
 ---
-title: Migrace dat z obličeje mezi předplatnými – Face API
+title: Migrace dat na obličej napříč předplatnými – tvář
 titleSuffix: Azure Cognitive Services
-description: V této příručce se dozvíte, jak migrovat uložená data z jednoho Face API předplatného na jiný.
+description: V této příručce se dozvíte, jak migrovat uložená data z jednoho předplatného na jiný.
 services: cognitive-services
 author: lewlu
 manager: nitinme
@@ -10,30 +10,30 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: lewlu
-ms.openlocfilehash: 49b92037fed6436d28f777761b18cf5f66e03025
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: e5ca51da7322e4eab4ea364ec5da086a1068fa9a
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859158"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169816"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Migrace vašich obličejových dat na jiný obličejový odběr
 
-V této příručce se dozvíte, jak přesunout data obličeje, jako je uložený objekt Person s obličejem, do jiného předplatného služby Azure Cognitive Services Face API. Chcete-li přesunout data, použijte funkci Snapshot. Tímto způsobem se vyhnete opakovanému sestavování a učení objektu person nebo FaceList při přesouvání nebo rozšiřování vašich operací. Můžete třeba vytvořit objekt person pomocí bezplatné zkušební verze předplatného a teď ho chtít migrovat do placeného předplatného. Nebo může být nutné synchronizovat data z oblasti v rámci předplatných v různých oblastech pro velkou podnikovou operaci.
+V této příručce se dozvíte, jak přesunout data obličeje, jako je uložený objekt Person s obličejemi, do jiného předplatného Azure Cognitive Services Face. Chcete-li přesunout data, použijte funkci Snapshot. Tímto způsobem se vyhnete opakovanému sestavování a učení objektu person nebo FaceList při přesouvání nebo rozšiřování vašich operací. Můžete třeba vytvořit objekt person pomocí bezplatné zkušební verze předplatného a teď ho chtít migrovat do placeného předplatného. Nebo může být nutné synchronizovat data z oblasti v rámci předplatných v různých oblastech pro velkou podnikovou operaci.
 
-Tato strategie migrace se vztahuje také na objekty LargePersonGroup a LargeFaceList. Pokud nejste obeznámeni s koncepty v této příručce, přečtěte si téma jejich definice v příručce věnovaném [koncepcím rozpoznávání obličeje](../concepts/face-recognition.md) . Tato příručka používá klientské knihovny Face API .NET s C#.
+Tato strategie migrace se vztahuje také na objekty LargePersonGroup a LargeFaceList. Pokud nejste obeznámeni s koncepty v této příručce, přečtěte si téma jejich definice v příručce věnovaném [koncepcím rozpoznávání obličeje](../concepts/face-recognition.md) . Tato příručka používá klienta .NET Library s nástrojem C#.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Potřebujete následující položky:
 
-- Dva Face API klíče předplatného, jeden s existujícími daty a jeden pro migraci na. Pokud se chcete přihlásit k odběru služby Face API a získat svůj klíč, postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
-- Řetězec ID předplatného Face API, který odpovídá cílovému předplatnému. Pokud ho chcete najít, vyberte v Azure Portal **Přehled** . 
+- Dva klíče předplatného, jeden s existujícími daty a jeden pro migraci na. Pokud se chcete přihlásit k odběru služby obličeje a získat svůj klíč, postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
+- Řetězec ID předplatného obličeje, který odpovídá cílovému předplatnému. Pokud ho chcete najít, vyberte v Azure Portal **Přehled** . 
 - Libovolná edice sady [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-the-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
 
-Tato příručka používá jednoduchou konzolovou aplikaci ke spuštění migrace dat na tvář. Úplnou implementaci najdete v [ukázce Face API snímků](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample) na GitHubu.
+Tato příručka používá jednoduchou konzolovou aplikaci ke spuštění migrace dat na tvář. Úplnou implementaci najdete v [ukázce snímku obličeje](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample) na GitHubu.
 
 1. V aplikaci Visual Studio vytvořte novou konzolovou aplikaci .NET Framework projektu. Pojmenujte ho **FaceApiSnapshotSample**.
 1. Získejte požadované balíčky NuGet. V Průzkumník řešení klikněte pravým tlačítkem na svůj projekt a vyberte **Spravovat balíčky NuGet**. Vyberte kartu **Procházet** a vyberte **Zahrnout předprodejní verze**. Vyhledejte a nainstalujte následující balíček:
@@ -62,7 +62,7 @@ Zadejte hodnoty klíče předplatného a adresy URL koncového bodu pro vaše zd
 
 ## <a name="prepare-a-persongroup-for-migration"></a>Příprava osoby na migraci
 
-Abyste mohli migrovat do cílového předplatného, potřebujete ID oddělení person ve zdrojovém předplatném. Pomocí metody [PersonGroupOperationsExtensions. ListAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperationsextensions.listasync?view=azure-dotnet) načtěte seznam objektů objektu Person. Pak Získejte vlastnost [Person. PersonGroupId](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.persongroup.persongroupid?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_Models_PersonGroup_PersonGroupId) . Tento proces se liší v závislosti na tom, jaké objekty objektu person máte. V této příručce je zdrojové ID prodejce Uloženo v `personGroupId`.
+Abyste mohli migrovat do cílového předplatného, potřebujete ID oddělení person ve zdrojovém předplatném. Pomocí metody [PersonGroupOperationsExtensions. ListAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperationsextensions.listasync?view=azure-dotnet) načtěte seznam objektů objektu Person. Pak Získejte vlastnost [Person. PersonGroupId](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.persongroup.persongroupid?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_Models_PersonGroup_PersonGroupId) . Tento proces se liší v závislosti na tom, jaké objekty objektu person máte. V této příručce se zdrojové ID prodejce ukládá do `personGroupId`.
 
 > [!NOTE]
 > [Vzorový kód](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample) vytvoří a navlakuje novou samostatnou osobu k migraci. Ve většině případů byste už měli mít k dispozici osobu, kterou by používala.
@@ -85,20 +85,20 @@ var takeSnapshotResult = await FaceClientEastAsia.Snapshot.TakeAsync(
 
 ## <a name="retrieve-the-snapshot-id"></a>Načtení ID snímku
 
-Metoda použitá pro pořizování snímků je asynchronní, takže musíte počkat na její dokončení. Operace snímku nelze zrušit. V tomto kódu `WaitForOperation` metoda monitoruje asynchronní volání. Kontroluje stav každých 100 ms. Po dokončení operace načtěte ID operace, která analyzuje `OperationLocation` pole. 
+Metoda použitá pro pořizování snímků je asynchronní, takže musíte počkat na její dokončení. Operace snímku nelze zrušit. V tomto kódu metoda `WaitForOperation` monitoruje asynchronní volání. Kontroluje stav každých 100 ms. Po dokončení operace načtěte ID operace analýzou pole `OperationLocation`. 
 
 ```csharp
 var takeOperationId = Guid.Parse(takeSnapshotResult.OperationLocation.Split('/')[2]);
 var operationStatus = await WaitForOperation(FaceClientEastAsia, takeOperationId);
 ```
 
-Typická `OperationLocation` hodnota vypadá takto:
+Typická hodnota `OperationLocation` vypadá takto:
 
 ```csharp
 "/operations/a63a3bdd-a1db-4d05-87b8-dbad6850062a"
 ```
 
-`WaitForOperation` Pomocná metoda je tady:
+Pomocná metoda `WaitForOperation` je tady:
 
 ```csharp
 /// <summary>
@@ -127,13 +127,13 @@ private static async Task<OperationStatus> WaitForOperation(IFaceClient client, 
 }
 ```
 
-Po zobrazení `Succeeded`stavu operace Získejte ID snímku `ResourceLocation` analýzou pole vrácené instance stav operationstatus.
+Po zobrazení stavu operace `Succeeded`získat ID snímku analýzou pole `ResourceLocation` vrácené instance stav operationstatus.
 
 ```csharp
 var snapshotId = Guid.Parse(operationStatus.ResourceLocation.Split('/')[2]);
 ```
 
-Typická `resourceLocation` hodnota vypadá takto:
+Typická hodnota `resourceLocation` vypadá takto:
 
 ```csharp
 "/snapshots/e58b3f08-1e8b-4165-81df-aa9858f233dc"
@@ -152,13 +152,13 @@ var applySnapshotResult = await FaceClientWestUS.Snapshot.ApplyAsync(snapshotId,
 > [!NOTE]
 > Objekt snímku je platný pouze 48 hodin. Snímek si pořídit jenom v případě, že ho chcete použít k migraci dat hned po.
 
-Požadavek na použití snímku vrátí další ID operace. Chcete-li získat toto ID, `OperationLocation` Analyzujte pole vrácené instance applySnapshotResult. 
+Požadavek na použití snímku vrátí další ID operace. Chcete-li získat toto ID, analyzujte pole `OperationLocation` vrácené instance applySnapshotResult. 
 
 ```csharp
 var applyOperationId = Guid.Parse(applySnapshotResult.OperationLocation.Split('/')[2]);
 ```
 
-Proces aplikace snímku je také asynchronní, proto znovu použijte `WaitForOperation` k čekání na jeho dokončení.
+Proces aplikace snímku je také asynchronní, a proto znovu použijte `WaitForOperation` a počkejte na jeho dokončení.
 
 ```csharp
 operationStatus = await WaitForOperation(FaceClientWestUS, applyOperationId);
@@ -228,12 +228,12 @@ Po dokončení migrace dat obličeje ručně odstraňte objekt snímku.
 await FaceClientEastAsia.Snapshot.DeleteAsync(snapshotId);
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Dále si přečtěte relevantní referenční dokumentaci k rozhraní API, prozkoumejte ukázkovou aplikaci, která používá funkci snímků, nebo postupujte podle pokynů průvodce, abyste mohli začít používat jiné operace rozhraní API uvedené tady:
 
 - [Dokumentace k odkazům na snímky (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations?view=azure-dotnet)
-- [Ukázka snímku Face API](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)
+- [Ukázka snímku obličeje](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)
 - [Přidat plošky](how-to-add-faces.md)
 - [Detekce plošek v obrázku](HowtoDetectFacesinImage.md)
 - [Identifikace plošek v obrázku](HowtoIdentifyFacesinImage.md)

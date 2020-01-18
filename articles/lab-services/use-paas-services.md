@@ -1,5 +1,5 @@
 ---
-title: Použití služeb PaaS (Platform as a Service) v Azure DevTest Labs | Microsoft Docs
+title: Používejte služby PaaS (Platform as a Service) v Azure DevTest Labs
 description: Naučte se používat služby platformy jako služby (pass) v Azure DevTest Labs.
 services: devtest-lab,lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 088913959b5850e87dc3a6a39d2907d30b7e5ade
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 88bbf921fedae4bcdba2b6386ce6e08105206cd2
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75976251"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169191"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>Používejte služby PaaS (Platform as a Service) v Azure DevTest Labs
 PaaS se v DevTest Labs podporuje přes funkci prostředí. Prostředí v DevTest Labs jsou podporovaná předem nakonfigurovanými šablonami Azure Resource Manager v úložišti Git. Prostředí můžou obsahovat prostředky PaaS i IaaS. Umožňují vytvářet komplexní systémy, které mohou zahrnovat prostředky Azure, jako jsou virtuální počítače, databáze, virtuální sítě a webové aplikace, které jsou přizpůsobené pro práci dohromady. Tyto šablony umožňují konzistentní nasazení a vylepšenou správu prostředí pomocí správy zdrojového kódu. 
@@ -57,7 +57,7 @@ DevTest Labs podporuje použití [vnořených správce prostředků šablon](../
 
 ## <a name="user-experience"></a>Činnost koncového uživatele
 
-## <a name="developer"></a>Developer
+## <a name="developer"></a>Vývojář
 Vývojáři používají stejný pracovní postup k vytvoření virtuálního počítače pro vytvoření konkrétního prostředí. Vyberou prostředí vs. bitovou kopii počítače a zadají potřebné informace požadované šablonou. Každý vývojář, který má prostředí, umožňuje nasazení změn a vylepšené ladění vnitřních smyček. Prostředí lze kdykoli vytvořit pomocí nejnovější šablony.  Tato funkce umožňuje, aby se prostředí zničila a znovu vytvořila, aby se snížilo prostoje při ručním vytváření systému nebo obnovování při testování chyb.  
 
 ### <a name="testing"></a>Testování
@@ -71,7 +71,7 @@ Funkce sledování nákladů zahrnuje prostředky Azure v různých prostředíc
 ### <a name="security"></a>Zabezpečení
 Správně nakonfigurované předplatné Azure s DevTest Labs může [omezit přístup k prostředkům Azure jenom prostřednictvím testovacího prostředí](devtest-lab-add-devtest-user.md). V prostředích může vlastník testovacího prostředí povolit uživatelům přístup k prostředkům PaaS se schválenými konfiguracemi bez povolení přístupu k jiným prostředkům Azure. V situaci, kdy uživatelé testovacího prostředí přizpůsobují prostředí, může vlastník testovacího prostředí dovolit přístup přispěvatele. Přístup přispěvatele umožňuje uživateli testovacího prostředí přidat nebo odebrat prostředek Azure jenom v rámci spravované skupiny prostředků. Umožňuje snazší sledování a správu a umožňuje přístup k předplatnému přispěvateli uživatelů.
 
-### <a name="automation"></a>Automation
+### <a name="automation"></a>Automatizace
 Automatizace je klíčovou komponentou pro velký rozsah, efektivní ekosystém. Automatizace je nutná pro zpracování správy nebo sledování více prostředí napříč předplatnými a Labs.
 
 ### <a name="cicd-pipeline"></a>Kanál CI/CD

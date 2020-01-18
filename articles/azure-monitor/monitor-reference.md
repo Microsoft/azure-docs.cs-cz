@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/09/2020
-ms.openlocfilehash: 21ad0c38b8901c1e33e05ab162552cb074a392a4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/17/2020
+ms.openlocfilehash: ac9ded703ed18abd9543b6e32e59afe6ccf711a9
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969602"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263417"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Co je monitorované pomocí Azure Monitor?
 Tento článek popisuje různé aplikace a služby, které jsou monitorované pomocí Azure Monitor. 
@@ -69,7 +69,7 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |AppConfig | Ne | Ne | Ne |  |
 |Application Gateway | Ano | Ano | Ne |  |
 |Služba ověření identity | Ne | Ne | Ne |  |
-|Automation | Ano | Ano | Ne |  |
+|Automatizace | Ano | Ano | Ne |  |
 |Azure Service Manager (RDFE) | Ne | Ne | Ne |  |
 |Backup | Ne | Ano | Ne |  |
 |Bastion | Ne | Ne | Ne |  |
@@ -109,7 +109,7 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |ExpressRoute | Ano | Ano | Ne |  |
 |Brána firewall | Ano | Ano | Ne |  |
 |Front Door | Ano | Ano | Ne |  |
-|Funkce | Ano | Ano | Ne |  |
+|Functions | Ano | Ano | Ne |  |
 |HDInsight | Ne | Ano | Ne |  |
 |HPC Cache | Ne | Ne | Ne |  |
 |Ochrana informací | Ne | Ano | Ne |  |
@@ -121,7 +121,7 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Load Balancer | Ano | Ano | Ne |  |
 |Logic Apps | Ano | Ano | Ne |  |
 |Služba Machine Learning | Ne | Ne | Ne |  |
-|Managed Applications  | Ne | Ne | Ne |  |
+|Spravované aplikace  | Ne | Ne | Ne |  |
 |Mapy  | Ne | Ne | Ne |  |
 |Media Services | Ano | Ano | Ne |  |
 |Microsoft Flow | Ne | Ne | Ne |  |
@@ -130,7 +130,7 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Microsoft Social Engagement | Ne | Ne | Ne |  |
 |Microsoft Stream | Ano | Ano | Ne |  |
 |Migrace | Ne | Ne | Ne |  |
-|Multi-factor Authentication | Ne | Ano | Ne |  |
+|Multi-Factor Authentication | Ne | Ano | Ne |  |
 |Network Watcher | Ano | Ano | Ne |  |
 |Notification Hubs | Ano | Ne | Ne |  |
 |Open Datasets | Ne | Ne | Ne |  |
@@ -181,7 +181,7 @@ Služby a řešení v následující tabulce ukládají svá data do Log Analyti
 | [Azure Sentinel](/azure/sentinel/) | Připojí se k různým zdrojům, včetně Office 365 a Amazon Web Servicesho cloudového záznamu. Viz [propojení zdrojů dat](/azure/sentinel/connect-data-sources). |
 | [Analýza služby Key Vault](insights/azure-key-vault.md) | Analyzujte Azure Key Vault protokoly AuditEvent. |
 | [Microsoft Intune](https://docs.microsoft.com/intune/) | Vytvořte nastavení diagnostiky pro odesílání protokolů do Azure Monitor. Viz [odeslání dat protokolu do úložiště, centra událostí nebo Log Analytics v Intune (Preview)](https://docs.microsoft.com/intune/fundamentals/review-logs-using-azure-monitor).  |
-| Network (Síť)  | [DNS Analytics](insights/dns-analytics.md) – shromažďuje, analyzuje a koreluje protokoly Windows DNS pro analýzu a audit a další související data ze serverů DNS.<br>[Network Performance Monitor](insights/network-performance-monitor.md) – monitorovat síťové připojení a výkon do koncových bodů služby a aplikace.<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) – Analyzujte protokoly a metriky z Azure Application Gateway.<br>[Analýza provozu](/azure/network-watcher/traffic-analytics) – analyzuje protokoly toků Network Watcher skupiny zabezpečení sítě (NSG), které poskytují přehled o toku přenosů ve vašem cloudu Azure. |
+| Network (Síť)  | [Network Performance Monitor](insights/network-performance-monitor.md) – monitorovat síťové připojení a výkon do koncových bodů služby a aplikace.<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) – Analyzujte protokoly a metriky z Azure Application Gateway.<br>[Analýza provozu](/azure/network-watcher/traffic-analytics) – analyzuje protokoly toků Network Watcher skupiny zabezpečení sítě (NSG), které poskytují přehled o toku přenosů ve vašem cloudu Azure. |
 | [Office 365](insights/solution-office-365.md) | Monitorujte své prostředí Office 365. Aktualizovaná verze s vylepšenou dostupností prostřednictvím služby Azure Sentinel. |
 | [Analýza SQL](insights/azure-sql.md) | Monitorujte výkon databází SQL Azure, elastických fondů a spravovaných instancí ve velkém měřítku a napříč několika předplatnými. |
 | [Surface Hub](insights/surface-hubs.md) | Sledujte stav a využití Surface Hubch zařízení. |
@@ -200,6 +200,7 @@ Další řešení jsou k dispozici pro monitorování různých aplikací a slu�
 | [Posouzení služby Active Directory](insights/ad-assessment.md) | Posuzuje rizika a stav prostředí Active Directory. |
 | [Stav replikace služby Active Directory](insights/ad-replication-status.md) | Pravidelně monitoruje prostředí Active Directory pro případ selhání replikace. |
 | [Analýza protokolů aktivit](platform/activity-log-view.md#activity-logs-analytics-monitoring-solution) | Pomocí předdefinovaných dotazů a zobrazení protokolů Analyzujte položky protokolu aktivit. |
+| [DNS Analytics (Preview)](insights/dns-analytics.md) | Shromažďuje, analyzuje a koreluje protokoly Windows DNS pro analýzu a audit a další související data ze serverů DNS. |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | Umožňuje shromažďovat, zobrazovat a analyzovat vaše Cloud Foundry a metriky výkonu v různých nasazeních. |
 | [Containers](insights/containers.md) | Umožňuje zobrazit a spravovat hostitele kontejnerů Docker a Windows. |
 | [Posouzení na vyžádání](https://docs.microsoft.com/services-hub/health/getting_started_with_on_demand_assessments) | Vyhodnoťte a optimalizujte dostupnost, zabezpečení a výkon vašich místních, hybridních i cloudových prostředí Microsoftu. |

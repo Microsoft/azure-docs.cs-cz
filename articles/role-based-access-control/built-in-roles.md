@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 12/02/2019
+ms.date: 01/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 17a1f2c245e19afbf4d8c5092a0ddf0562a7cb0e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b2a49528ca3c2b55c02f3bda89b3722ee8fef535
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979326"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264250"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Předdefinované role pro prostředky Azure
 
@@ -48,6 +48,8 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | [Přispěvatel API Management služby](#api-management-service-contributor) | Může spravovat službu a rozhraní API. | 312a565d-c81f-4fd8-895a-4e21e48d571c |
 > | [Role operátora služby API Management](#api-management-service-operator-role) | Může spravovat službu, ale ne rozhraní API. | e022efe7-f5ba-4159-bbe4-b44f577e9b61 |
 > | [Role čtecího modulu služby API Management](#api-management-service-reader-role) | Přístup ke službě a rozhraním API jen pro čtení | 71522526-b88f-4d52-b57f-d31fc3546d0d |
+> | [Vlastník dat konfigurace aplikace](#app-configuration-data-owner) | Umožňuje úplný přístup k datům konfigurace aplikace. | 5ae67dd6-50cb-40e7-96ff-dc2bfa4b606b |
+> | [Čtečka dat konfigurace aplikace](#app-configuration-data-reader) | Povoluje přístup pro čtení k datům konfigurace aplikace. | 516239f1-63e1-4d78-a4de-a74fb236a071 |
 > | [Application Insights Component Contributor](#application-insights-component-contributor) | Může spravovat součásti Application Insights. | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Poskytuje uživateli oprávnění k zobrazení a stažení snímků ladění shromážděných pomocí Snapshot Debugger Application Insights. Všimněte si, že tato oprávnění nejsou zahrnutá v rolích [vlastník](#owner) nebo [Přispěvatel](#contributor) . | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
 > | [Operátor úlohy služby Automation](#automation-job-operator) | Vytvářejte a spravujte úlohy pomocí runbooků Automation. | 4fe576fe-1146-4730-92eb-48519fa6bf9f |
@@ -55,6 +57,8 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | [Operátor Runbooku služby Automation](#automation-runbook-operator) | Číst vlastnosti Runbooku – abyste mohli vytvářet úlohy Runbooku. | 5fb5aef8-1081-4b8e-bb16-9d5d0385bab5 |
 > | [Přispěvatel avere](#avere-contributor) | Může vytvořit a spravovat cluster avere vFXT. | 4f8fab4f-1852-4a58-a46a-8eaf358af14a |
 > | [Avere – operátor](#avere-operator) | Používá cluster avere vFXT ke správě clusteru. | c025889f-8102-4ebf-b32c-fc0c6f0c6bd9 |
+> | [Připojování počítačů k Azure](#azure-connected-machine-onboarding) | Může připojit počítače připojené k Azure. | b64e21ea-ac4e-4cdf-9dc9-5b892992bee7 |
+> | [Správce prostředků počítačů připojených k Azure](#azure-connected-machine-resource-administrator) | Může číst, zapisovat, odstraňovat a znovu připojit počítače připojené k Azure. | cd570a14-e51a-42ad-bac8-bafd67325302 |
 > | [Vlastník dat Event Hubs Azure](#azure-event-hubs-data-owner) | Umožňuje úplný přístup k prostředkům Azure Event Hubs. | f526a384-b230-433a-b45c-95f59c4a2dec |
 > | [Přijímač dat Event Hubs Azure](#azure-event-hubs-data-receiver) | Umožňuje získat přístup k prostředkům Azure Event Hubs. | a638d3c7-ab3a-418d-83e6-5f17a39d4fde |
 > | [Odesilatel dat Event Hubs Azure](#azure-event-hubs-data-sender) | Povoluje odesílání přístup k prostředkům Azure Event Hubs. | 2b629674-e913-4c01-ae53-ef4638d8f975 |
@@ -378,6 +382,38 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
+## <a name="app-configuration-data-owner"></a>Vlastník dat konfigurace aplikace
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Umožňuje úplný přístup k datům konfigurace aplikace. |
+> | **ID** | 5ae67dd6-50cb-40e7-96ff-dc2bfa4b606b |
+> | **Akce** |  |
+> | *nTato* |  |
+> | **NotActions** |  |
+> | *nTato* |  |
+> | **Akce dataactions** |  |
+> | Microsoft. AppConfiguration/configurationStores/*/Read |  |
+> | Microsoft. AppConfiguration/configurationStores/*/Write |  |
+> | Microsoft. AppConfiguration/configurationStores/*/DELETE |  |
+> | **NotDataActions** |  |
+> | *nTato* |  |
+
+## <a name="app-configuration-data-reader"></a>Čtečka dat konfigurace aplikace
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Povoluje přístup pro čtení k datům konfigurace aplikace. |
+> | **ID** | 516239f1-63e1-4d78-a4de-a74fb236a071 |
+> | **Akce** |  |
+> | *nTato* |  |
+> | **NotActions** |  |
+> | *nTato* |  |
+> | **Akce dataactions** |  |
+> | Microsoft. AppConfiguration/configurationStores/*/Read |  |
+> | **NotDataActions** |  |
+> | *nTato* |  |
+
 ## <a name="application-insights-component-contributor"></a>Přispěvatel komponent Application Insights
 > [!div class="mx-tableFixed"]
 > | | |
@@ -561,6 +597,42 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/DELETE | Vrátí výsledek odstranění objektu BLOB. |
 > | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/Read | Vrátí objekt BLOB nebo seznam objektů BLOB. |
 > | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/Write | Vrátí výsledek zápisu objektu BLOB. |
+> | **NotDataActions** |  |
+> | *nTato* |  |
+
+## <a name="azure-connected-machine-onboarding"></a>Připojování počítačů k Azure
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Může připojit počítače připojené k Azure. |
+> | **ID** | b64e21ea-ac4e-4cdf-9dc9-5b892992bee7 |
+> | **Akce** |  |
+> | Microsoft. HybridCompute/počítače/číst | Čtení jakýchkoli počítačů s obloukem Azure ARC |
+> | Microsoft. HybridCompute/počítače/Write | Zápis počítačů s obloukem Azure ARC |
+> | Microsoft. GuestConfiguration/guestConfigurationAssignments/Read | Získat přiřazení konfigurace hostů. |
+> | **NotActions** |  |
+> | *nTato* |  |
+> | **Akce dataactions** |  |
+> | *nTato* |  |
+> | **NotDataActions** |  |
+> | *nTato* |  |
+
+## <a name="azure-connected-machine-resource-administrator"></a>Správce prostředků počítačů připojených k Azure
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Může číst, zapisovat, odstraňovat a znovu připojit počítače připojené k Azure. |
+> | **ID** | cd570a14-e51a-42ad-bac8-bafd67325302 |
+> | **Akce** |  |
+> | Microsoft. HybridCompute/počítače/číst | Čtení jakýchkoli počítačů s obloukem Azure ARC |
+> | Microsoft. HybridCompute/počítače/Write | Zápis počítačů s obloukem Azure ARC |
+> | Microsoft. HybridCompute/počítače/odstranit | Odstranění počítačů s obloukem Azure ARC |
+> | Microsoft. HybridCompute/počítače/znovu připojit/akce | Opětovné připojení počítačů s obloukem Azure ARC |
+> | Microsoft. HybridCompute/*/Read |  |
+> | **NotActions** |  |
+> | *nTato* |  |
+> | **Akce dataactions** |  |
+> | *nTato* |  |
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
@@ -821,7 +893,6 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft. RecoveryServices/trezory/backupFabrics/refreshContainers/Action | Aktualizuje seznam kontejnerů. |
 > | Microsoft. RecoveryServices/trezory/backupJobs/* | Vytváření a správa úloh zálohování |
 > | Microsoft. RecoveryServices/trezory/backupJobsExport/Action | Exportovat úlohy |
-> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/* | Vytváření a Správa metadat souvisejících se správou zálohování |
 > | Microsoft. RecoveryServices/trezory/backupOperationResults/* | Vytváření a správa výsledků operací správy zálohování |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/* | Vytváření a Správa zásad zálohování |
 > | Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | Vytváření a Správa položek, které se dají zálohovat |
@@ -886,7 +957,6 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft. RecoveryServices/trezory/backupFabrics/refreshContainers/Action | Aktualizuje seznam kontejnerů. |
 > | Microsoft. RecoveryServices/trezory/backupJobs/* | Vytváření a správa úloh zálohování |
 > | Microsoft. RecoveryServices/trezory/backupJobsExport/Action | Exportovat úlohy |
-> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft. RecoveryServices/trezory/backupOperationResults/* | Vytváření a správa výsledků operací správy zálohování |
 > | Microsoft. RecoveryServices/trezory/backupPolicies/operationResults/Read | Načte výsledky operace zásad. |
 > | Microsoft. RecoveryServices/trezory/backupPolicies/Read | Vrátí všechny zásady ochrany. |
@@ -952,7 +1022,6 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft. RecoveryServices/trezory/backupJobs/operationResults/Read | Vrátí výsledek operace úlohy. |
 > | Microsoft. RecoveryServices/trezory/backupJobs/Read | Vrátí všechny objekty úlohy. |
 > | Microsoft. RecoveryServices/trezory/backupJobsExport/Action | Exportovat úlohy |
-> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft. RecoveryServices/trezory/backupOperationResults/Read | Vrátí výsledek operace zálohování pro Recovery Services trezor. |
 > | Microsoft. RecoveryServices/trezory/backupPolicies/operationResults/Read | Načte výsledky operace zásad. |
 > | Microsoft. RecoveryServices/trezory/backupPolicies/Read | Vrátí všechny zásady ochrany. |

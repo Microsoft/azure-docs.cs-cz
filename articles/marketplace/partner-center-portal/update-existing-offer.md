@@ -7,19 +7,19 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: f2cb1907557c2440a5a94c0f4799eac95a8cf507
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 01/16/2020
+ms.openlocfilehash: feeebc9446ccb1f651d8f3968feccdf9e577501e
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827863"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169000"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Aktualizace stávající nabídky na komerčním webu Marketplace
 
 Stávající nabídky si můžete prohlédnout na kartě **Přehled** na [portálu komerčního webu Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) v partnerském centru.
 
-Aktualizace stávající nabídky, která je aktuálně živá na webu Marketplace: 
+Aktualizace stávající nabídky, která je aktuálně živá na webu Marketplace:
 
 1. Vyberte název nabídky, kterou chcete aktualizovat. Stav nabídky může být uvedený jako **Live**, **publikování probíhá**, **koncept**, **nutná pozornost**nebo **neprodávaná na webu Marketplace** (Pokud jste předtím zvolili možnost ukončit prodej této nabídky). Po výběru se otevře stránka s **přehledem nabídky** pro tuto nabídku.
 2. Pro oblast, kterou chcete aktualizovat, vyberte na kartě Přehled možnost **aktualizovat** nebo položku nabídky z levé navigace. Můžete chtít aktualizovat **nastavení nabídek**, **vlastnosti**, **seznam nabídek**, **Náhled**, **technickou konfiguraci**, **Přehled plánu**nebo **testovací jednotku**. 
@@ -29,14 +29,14 @@ Aktualizace stávající nabídky, která je aktuálně živá na webu Marketpla
 
 Až budete připraveni publikovat aktualizovanou nabídku, vyberte **publikovat** z libovolné stránky. Otevře se stránka **Kontrola a publikování** . Na této stránce můžete:
 
-
 - Podívejte se na téma stav dokončení pro části nabídky, kterou jste aktualizovali: 
     - **Nepublikované změny**: oddíl se aktualizoval a je dokončený. Byla poskytnuta všechna požadovaná data a v aktualizacích nebyly zavedeny žádné chyby.
     - **Nedokončeno**: aktualizace provedené v oddílu zavedly chyby, které je třeba opravit, nebo vyžadují, aby byly k dispozici další informace.
 - Poskytněte týmu certifikace Další informace, aby se zajistilo plynulé testování.
 - Kliknutím na **Odeslat**aktualizujte aktualizovanou nabídku pro publikování.  Po zpřístupnění verze Preview aktualizované nabídky vám pošleme e-mail, abyste mohli zkontrolovat a odhlásit.
 
-**Důležité**: Pokud je vaše nabídka k dispozici, je nutné zkontrolovat, že je k dispozici, a vybrat možnost **Přejít do živého** publikování vaší aktualizované nabídky vaší zamýšlené cílové skupině (veřejné nebo soukromé).
+> [!IMPORTANT]
+> Abyste mohli publikovat aktualizovanou nabídku vaší zamýšlené cílové skupině (veřejné nebo soukromé), musíte si prohlédnout svou nabídku Preview a vybrat **Přejít do živého** .
 
 ## <a name="update-a-plan-within-an-existing-offer"></a>Aktualizace plánu v rámci stávající nabídky
 
@@ -45,7 +45,67 @@ Chcete-li provést změny v plánu v rámci stávající nabídky, kterou jste j
 - Po otevření stránky s **přehledem nabídky** pro existující nabídku vyberte plán, který chcete změnit. Pokud plán není dostupný ze seznamu **Přehled plánů** , vyberte **Zobrazit všechny plány**.
 - Můžete vybrat **název**plánu, **cenový model**nebo **dostupnost**. *V současné době jsou plány k dispozici pouze v angličtině (USA)* .
 - Po provedení všech nutných změn názvu plánu, popisu, ceny nebo dostupnosti cílové skupiny vyberte **Uložit** . 
-- Až budete připraveni publikovat aktualizace, vyberte **publikovat** . Otevře se stránka **[Kontrola a publikování](#review-and-publish-an-updated-offer)** a poskytne se stav dokončení vašich aktualizací. 
+- Až budete připraveni publikovat aktualizace, vyberte **publikovat** . Otevře se stránka **[Kontrola a publikování](#review-and-publish-an-updated-offer)** a poskytne se stav dokončení vašich aktualizací.
+
+## <a name="compare-changes-to-marketplace-offers"></a>Porovnat změny nabídek Marketplace
+
+Změny, které provedete v nabídce [Publikováno](#compare-changes-to-published-offer) nebo ve [verzi Preview](#compare-changes-to-a-preview-offer) , můžete auditovat ještě před tím, než je provedete pomocí **porovnání**.
+
+>[!NOTE]
+> Publikovaná nabídka je nabídka, která byla úspěšně publikována ve verzi Preview nebo v reálném čase.
+
+Obecné informace o auditování najdete níže:
+
+- V jakémkoli okamžiku můžete v procesu úprav použít **porovnávání** .
+- Vyberte pole na stránce **porovnání** a přejděte k hodnotě, kterou chcete upravit.
+- Pokud jste připraveni publikovat aktualizace, vyberte **zkontrolovat a publikovat**.
+- Chcete-li zobrazit hodnoty pro všechna pole, dokonce i pole, která nejsou aktualizována, vyberte filtr **všechna pole** . Filtry v těchto polích můžete upravit výběrem **změněných polí**a následným výběrem jednoho z následujících filtrů:
+    - Filtr **odebraných hodnot** zobrazuje pole, která jste publikovali, a teď jste zcela odebrali.
+    - Filtr **přidaných hodnot** zobrazuje pole, která jste původně nepublikovali a nyní přidáváte.
+    - Filtr **upravených hodnot** zobrazuje pole, která byla publikována, ale nyní jste aktualizovali obsah.
+
+      >[!NOTE]
+      > Pokud některý z těchto filtrů není k dispozici, znamená to, že jste neudělali aktualizaci tohoto typu.
+
+- Chcete-li zobrazit pouze hodnoty, které nebyly aktualizovány, vyberte filtr **nezměněná pole** . Hodnoty polí zobrazené pro publikovanou a koncept verze budou stejné.
+
+  ![Filtry pro porovnávání aktualizací vaší nabídky Publikováno nebo Preview](./media/compare-changes-marketplace.png)
+
+>[!NOTE]
+> Následující stránky v současné době nepodporují **porovnání**:
+>- Cílová skupina pro prodejce CSP
+>- Technická konfigurace testovacích jednotek
+>- Seznam tržišť testovacích jednotek
+>- Společný prodej
+>- Doplňkové soubory
+
+### <a name="compare-changes-to-published-offer"></a>Porovnat změny u publikované nabídky
+
+Pomocí následujících pokynů můžete porovnat změny z publikované nabídky:
+
+1. Na panelu příkazů stránky vyberte **Porovnat** . Stránka **porovnání** poskytuje souběžné verze uložených změn této nabídky a publikované nabídky na webu Marketplace.
+2. Když přistupujete ke **srovnání** z konkrétní stránky nabídky, ve výchozím nastavení se zobrazí pouze změny provedené na této stránce.
+    - Pokud chcete porovnat změny na všech stránkách, změňte stránku z **výběru stránky k porovnání**.  
+    - Pokud chcete porovnat změny nabídky u všech stránek, vyberte možnost **všechny stránky**.
+
+Ve výchozím nastavení **porovná** vaše nové změny nabídky na webu Live Marketplace.
+
+Po provedení aktualizací, aby se změny projevily, nezapomeňte nabídku znovu publikovat.
+
+### <a name="compare-changes-to-a-preview-offer"></a>Porovnat změny s nabídkou Preview
+
+Pokud máte změny ve verzi Preview, které nejsou živé, můžete porovnat nové změny s nabídkou Preview Marketplace.
+
+Podle následujících pokynů můžete porovnat nové změny s vaší nabídkou Preview na webu Marketplace:
+
+1. Na panelu příkazů stránky vyberte **Porovnat** .
+2. Vyberte rozevírací seznam **with** a změňte ho z **živé nabídky** na **nabídku Preview**.
+3. Stránka **porovnání** poskytuje souběžné verze, které zobrazují změny.
+
+>[!NOTE]
+>Pokud vaše nabídka ještě nebude živá, ale publikovali jste ji ve verzi Preview, nemáte možnost je porovnat s živou nabídkou.
+
+Po provedení aktualizací, aby se změny projevily, nezapomeňte nabídku znovu publikovat.
 
 ## <a name="delete-a-draft-offer"></a>Odstranit nabídku konceptu
 
@@ -63,22 +123,22 @@ Až ověříte, že chcete odstranit plán konceptu, plán už nebude viditelný
 
 Zrušení nabídky se stavem **publikování** probíhá:
 
-- Vyberte název nabídky a otevřete stránku **Přehled nabídky** . 
+- Vyberte název nabídky a otevřete stránku **Přehled nabídky** .
 - V pravém horním rohu stránky vyberte **Zrušit publikování** .
-- Potvrďte, že chcete zastavit nabídku publikováním. 
+- Potvrďte, že chcete zastavit nabídku publikováním.
 
 Pokud chcete nabídku publikovat později, budete muset spustit proces publikování.
 
 > [!NOTE]
-> Můžete zastavit publikování nabídky pouze v případě, že nabídka ještě neprobíhala na odhlášení vydavatele. Po výběru možnosti **Přejít na Live** nebudete mít možnost zrušit publikování.
+> Publikování nabídky můžete zastavit pouze v případě, že nabídka ještě neprobíhala na základě odhlášení vydavatele. Po výběru možnosti **Přejít na Live** nebudete mít možnost zrušit publikování.
 
 ## <a name="stop-selling-an-offer-or-plan"></a>Zastavení prodeje nabídky nebo plánu
 
 Chcete-li ukončit prodej nabídky po jejím publikování, vyberte možnost **ukončit prodej** na stránce s **přehledem nabídky** . Pokud chcete ukončit prodej plánu, vyberte **zastavit prodej** na stránce **Přehled plánu** . (Možnost ukončit prodej plánu je dostupná jenom v případě, že v nabídce máte více než jeden plán. Můžete zvolit, že chcete ukončit prodej jednoho plánu, aniž by to mělo vliv na jiné plány v rámci vaší nabídky.)
 
-Jakmile ověříte, že chcete ukončit prodej nabídky nebo plánu, během několika hodin už se na webu Marketplace nebude zobrazovat a žádní noví zákazníci si je nebudou moct stáhnout. 
+Jakmile ověříte, že chcete ukončit prodej nabídky nebo plánu, během několika hodin už se na webu Marketplace nebude zobrazovat a žádní noví zákazníci si je nebudou moct stáhnout.
 
-Všichni zákazníci, kteří si nabídku nebo plán dříve získali, ho můžou dál používat. Můžou je znovu stáhnout, ale neobdrží aktualizace, pokud tuto nabídku aktualizujete a znovu publikujete nebo naplánujete na pozdější dobu. 
+Všichni zákazníci, kteří si nabídku nebo plán dříve získali, ho můžou dál používat. Můžou je znovu stáhnout, ale neobdrží aktualizace, pokud nabídku aktualizujete a znovu publikujete nebo naplánujete později. 
 
 Po skončení žádosti o ukončení prodeje nabídky nebo plánu se na portálu pro partnery na komerčním webu na portálu pro partnery zobrazí i nadále. Chcete-li odstranit koncept, vyberte možnost **Odstranit koncept** ze stránky **Přehled nabídky** nebo **plán** . 
 

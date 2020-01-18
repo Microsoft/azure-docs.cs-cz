@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
+ms.date: 01/17/2020
 ms.author: aschhab
-ms.openlocfilehash: eebbef25f2cd4539a5092f271c3944c24503f287
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: a795aa536e6e72b487abd18e60cfa52d6ab633ee
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156807"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264878"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Průvodce odstraňováním potíží pro Azure Service Bus
 Tento článek poskytuje některé výjimky .NET vygenerované Service Bus rozhraní API .NET Framework a také další tipy pro řešení problémů. 
@@ -109,25 +109,25 @@ V případě front a témat je časový limit zadán buď ve vlastnosti [Messagi
 ## <a name="connectivity-certificate-or-timeout-issues"></a>Problémy s připojením, certifikátem nebo časovým limitem
 Následující postup vám může pomáhat s odstraňováním potíží s připojením/vypršením časového limitu pro všechny služby v rámci *. servicebus.windows.net. 
 
-- Vyhledejte `https://sbwagn2.servicebus.windows.net/`nebo [wget](https://www.gnu.org/software/wget/) . Pomáhá s kontrolou, jestli máte problémy s filtrováním IP adres nebo virtuální sítí nebo s řetězem certifikátů (nejběžnější při použití sady Java SDK).
-- Spusťte následující příkaz, který zkontroluje, jestli je v bráně firewall blokovaný port. V závislosti na knihovně, kterou používáte, se používají také jiné porty. Například: 443, 5672, 9354.
+- Vyhledejte `https://<yournamespace>.servicebus.windows.net/`nebo [wget](https://www.gnu.org/software/wget/) . Pomáhá s kontrolou, jestli máte problémy s filtrováním IP adres nebo virtuální sítí nebo s řetězem certifikátů (nejběžnější při použití sady Java SDK).
+- Spusťte následující příkaz, který zkontroluje, jestli je v bráně firewall blokovaný port. Použité porty jsou 443 (HTTPS), 5671 (AMQP) a 9354 (NET Messaging/SBMP). V závislosti na knihovně, kterou používáte, se používají také jiné porty. Tady je ukázkový příkaz, který zkontroluje, jestli je port 5671 blokovaný. 
 
     ```powershell
-    tnc sbwagn2.servicebus.windows.net -port 5671
+    tnc <yournamespacename>.servicebus.windows.net -port 5671
     ```
 
     V Linuxu:
 
     ```shell
-    telnet sbwagn2.servicebus.windows.net 5671
+    telnet <yournamespacename>.servicebus.windows.net 5671
     ```
-- Pokud dochází k problémům s přerušovaným připojením, spusťte následující příkaz, který zkontroluje, jestli nedošlo k vyřazeným paketům. Tento příkaz se pokusí o navázání 25 různých připojení TCP každé 1 sekundy ke službě, a pak můžete zjistit počet úspěšných a neúspěšných a také v případě latence připojení TCP. `psping` nástroj si můžete stáhnout [tady](/sysinternals/downloads/psping).
+- Pokud dochází k problémům s přerušovaným připojením, spusťte následující příkaz, který zkontroluje, jestli nedošlo k vyřazeným paketům. Tento příkaz se pokusí vytvořit 25 různých připojení TCP každé 1 sekundy ke službě. Pak můžete zjistit, kolik z nich bylo úspěšné/neúspěšné, a také zobrazit latenci připojení TCP. `psping` nástroj si můžete stáhnout [tady](/sysinternals/downloads/psping).
 
     ```shell
-    .\psping.exe -n 25 -i 1 -q yournamespace.servicebus.windows.net:5671 -nobanner     
+    .\psping.exe -n 25 -i 1 -q <yournamespace>.servicebus.windows.net:5671 -nobanner     
     ```
     Ekvivalentní příkazy můžete použít, pokud používáte jiné nástroje, například `tnc`, `ping`a tak dále. 
-- Získejte trasování sítě, pokud předchozí kroky neumožňují a neanalyzují nebo kontaktovaly [Podpora Microsoftu](https://support.microsoft.com/).
+- Získejte trasování sítě, pokud předchozí kroky neumožňují a neanalyzují ho pomocí nástrojů, jako je třeba [Wireshark](https://www.wireshark.org/). V případě potřeby kontaktujte [Podpora Microsoftu](https://support.microsoft.com/) . 
 
 
 ## <a name="next-steps"></a>Další kroky

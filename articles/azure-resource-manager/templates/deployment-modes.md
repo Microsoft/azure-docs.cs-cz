@@ -2,19 +2,21 @@
 title: Režimy nasazení
 description: Popisuje, jak určit, jestli se má použít kompletní nebo přírůstkový režim nasazení s Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 12/23/2019
-ms.openlocfilehash: dc5446c56c92b61016563995ebc4c884d48e2419
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 01/17/2020
+ms.openlocfilehash: e53b8c58bf0919e64079e62c687b76ada1db7ff0
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152387"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261020"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Režimy nasazení Azure Resource Manager
 
-Při nasazování prostředků určíte, že nasazení je přírůstková nebo kompletní aktualizace.  Rozdíl mezi těmito dvěma režimy spočívá v tom, že Správce prostředků zpracovává stávající prostředky ve skupině prostředků, která není v šabloně. Výchozí režim je přírůstkový.
+Při nasazování prostředků určíte, že nasazení je přírůstková nebo kompletní aktualizace. Rozdíl mezi těmito dvěma režimy spočívá v tom, že Správce prostředků zpracovává stávající prostředky ve skupině prostředků, která není v šabloně.
 
 V obou režimech se Správce prostředků pokusí vytvořit všechny prostředky, které jsou uvedené v šabloně. Pokud prostředek ve skupině prostředků už existuje a jeho nastavení se nezměnilo, pro tento prostředek se nebere žádná operace. Pokud změníte hodnoty vlastností prostředku, prostředek se aktualizuje o tyto nové hodnoty. Pokud se pokusíte aktualizovat umístění nebo typ existujícího prostředku, nasazení dojde k chybě. Místo toho nasaďte nový prostředek s umístěním nebo typem, který potřebujete.
+
+Výchozí režim je přírůstkový.
 
 ## <a name="complete-mode"></a>Režim dokončení
 
@@ -46,7 +48,8 @@ Pokud je skupina prostředků [zamčená](../management/lock-resources.md), rež
 
 V přírůstkovém režimu Správce prostředků **opustí nezměněné** prostředky, které existují ve skupině prostředků, ale nejsou zadané v šabloně. Prostředky v šabloně **se přidají** do skupiny prostředků.
 
-Je důležité si uvědomit, že přírůstkový režim se vztahuje na celý prostředek, nikoli na jednotlivé vlastnosti stávajícího prostředku. Při opětovném nasazení stávajícího prostředku v přírůstkovém režimu jsou znovu aplikovány všechny vlastnosti. **Vlastnosti se přírůstkově přidávají**. Běžným srozumitelným pochopením je, že si nezůstane beze změny vlastností, které nejsou zadané v šabloně. Pokud nezadáte určité vlastnosti, Správce prostředků interpretuje nasazení jako přepsání těchto hodnot. Vlastnosti, které nejsou zahrnuté v šabloně, se obnoví na výchozí hodnoty nastavené poskytovatelem prostředků. Zadejte všechny jiné než výchozí hodnoty pro prostředek, nikoli pouze ty, které aktualizujete. Definice prostředků v šabloně vždy obsahuje konečný stav prostředku. Nemůže představovat částečnou aktualizaci stávajícího prostředku.
+> [!NOTE]
+> Při opětovném nasazení stávajícího prostředku v přírůstkovém režimu jsou znovu aplikovány všechny vlastnosti. **Vlastnosti se přírůstkově přidávají**. Běžným srozumitelným pochopením je, že si nezůstane beze změny vlastností, které nejsou zadané v šabloně. Pokud nezadáte určité vlastnosti, Správce prostředků interpretuje nasazení jako přepsání těchto hodnot. Vlastnosti, které nejsou zahrnuty v šabloně, se obnoví na výchozí hodnoty. Zadejte všechny jiné než výchozí hodnoty pro prostředek, nikoli pouze ty, které aktualizujete. Definice prostředků v šabloně vždy obsahuje konečný stav prostředku. Nemůže představovat částečnou aktualizaci stávajícího prostředku.
 
 ## <a name="example-result"></a>Příklad výsledku
 

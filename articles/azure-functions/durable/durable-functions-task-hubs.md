@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 38c7da8a1de57ed5acf3248fc6a71431de0bd1e2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ffb3d590aebe80994de1e7e834a2eba5777df9a1
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232793"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262482"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Centra úloh v Durable Functions (Azure Functions)
 
@@ -96,9 +96,9 @@ Název centra úloh se nastaví na hodnotu nastavení aplikace `MyTaskHub`. Nás
 }
 ```
 
-Následující kód je předkompilovaný C# příklad, jak napsat funkci, která používá [vazbu klienta Orchestration](durable-functions-bindings.md#orchestration-client) pro práci s centrem úloh, které je nakonfigurováno jako nastavení aplikace:
+Následující kód ukazuje, jak napsat funkci, která používá [vazbu klienta Orchestration](durable-functions-bindings.md#orchestration-client) pro práci s centrem úloh, které je nakonfigurováno jako nastavení aplikace:
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("HttpStart")]
@@ -121,7 +121,7 @@ public static async Task<HttpResponseMessage> Run(
 > [!NOTE]
 > Předchozí C# příklad je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` namísto `IDurableOrchestrationContext`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Vlastnost centra úloh v souboru `function.json` se nastavuje prostřednictvím nastavení aplikace:
 
@@ -133,6 +133,8 @@ Vlastnost centra úloh v souboru `function.json` se nastavuje prostřednictvím 
     "direction": "in"
 }
 ```
+
+---
 
 Názvy centra úloh musí začínat písmenem a obsahovat jenom písmena a číslice. Pokud tento parametr nezadáte, použije se výchozí název centra úloh, jak je znázorněno v následující tabulce:
 

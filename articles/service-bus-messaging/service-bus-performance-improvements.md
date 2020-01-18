@@ -1,5 +1,5 @@
 ---
-title: Osvědčené postupy pro zlepšení výkonu pomocí Azure Service Bus | Microsoft Docs
+title: Osvědčené postupy pro zlepšení výkonu pomocí Azure Service Bus
 description: Popisuje, jak použít Service Bus k optimalizaci výkonu při výměně zprostředkovaných zpráv.
 services: service-bus-messaging
 documentationcenter: na
@@ -8,14 +8,14 @@ manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 09/14/2018
+ms.date: 01/16/2020
 ms.author: aschhab
-ms.openlocfilehash: 3d2d26e8cb8a3b1ee7720424aea701ca063ecc9f
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 683a28ca3cdabd5a7ffbf6e9ffdc3ed0c58d3247
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596462"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264691"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Osvědčené postupy pro zlepšení výkonu pomocí Service Bus zasílání zpráv
 
@@ -29,7 +29,7 @@ Tyto části představují několik konceptů, které Service Bus používá ke 
 
 Service Bus umožňuje klientům odesílat a přijímat zprávy prostřednictvím jednoho ze tří protokolů:
 
-1. Rozšířený protokol řízení front zpráv (AMQP) (AMQP)
+1. Rozšířený protokol řízení front zpráv (AMQP)
 2. Protokol SBMP (Service Bus Messaging Protocol)
 3. HTTP
 
@@ -41,7 +41,7 @@ Service Bus objekty klienta, například [QueueClient][QueueClient] nebo [Messag
 
 ## <a name="concurrent-operations"></a>Souběžné operace
 
-Provádění operace (odeslání, přijetí, odstranění atd.) nějakou dobu trvá. Tato doba zahrnuje zpracování operace službou Service Bus kromě latence žádosti a odpovědi. Chcete-li zvýšit počet operací v čase, operace musí být spuštěny souběžně. 
+Provádění operace (odeslání, přijetí, odstranění atd.) nějakou dobu trvá. Tento čas zahrnuje zpracování operace ve službě Service Bus kromě latenci požadavku a odpovědi. Pokud chcete zvýšit počet operací za čas, musí současně provést operace. 
 
 Klient plánuje souběžné operace provedením asynchronních operací. Další požadavek se spustí před dokončením předchozí žádosti. Následující fragment kódu je příkladem asynchronní operace odeslání:
   

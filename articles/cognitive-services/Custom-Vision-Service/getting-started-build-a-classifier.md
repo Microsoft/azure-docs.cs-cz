@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: anroth
-ms.openlocfilehash: e7aa4a557821ee49867a8ea82f92ef04dfbef689
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b664a586398e297a00ea9cd8fe68dc65e6ade5c8
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978675"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170010"
 ---
 # <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Rychlý Start: vytvoření klasifikátoru pomocí Custom Vision
 
@@ -23,7 +23,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit klasifikátor prostřednictv�
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Sada imagí, se kterými chcete své třídění proškolit. Tipy k výběru imagí najdete níže.
 
@@ -110,6 +110,8 @@ Po dokončení školení bude výkon modelu odhadnut a zobrazen. Custom Vision S
 ## <a name="manage-training-iterations"></a>Spravovat iterace cvičení
 
 Pokaždé, když roznaučíte klasifikátor, vytvoříte novou _iteraci_ s vlastní aktualizovanou metrikou výkonu. Všechny své iterace můžete zobrazit v levém podokně karty **výkon** . Také najdete tlačítko **Odstranit** , které můžete použít k odstranění iterace, pokud je zastaralá. Odstraněním iterace odstraníte všechny bitové kopie, které s ní jsou jednoznačně přidružené.
+
+Informace o tom, jak programově přistupovat k vašim vyškolených modelům, najdete v tématu [použití modelu s prediktivním rozhraním API](./use-prediction-api.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

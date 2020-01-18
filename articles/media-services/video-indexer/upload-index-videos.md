@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 01/14/2020
+ms.date: 01/13/2020
 ms.author: juliako
-ms.openlocfilehash: c4c39dc53e492fd295cf30a7b7d75c933ebc912f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e457fbe5b8dd23c93110fb8ccc7d8857128de82c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972630"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169363"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání videí na server a jejich indexování  
 
@@ -25,9 +25,12 @@ Při nahrávání videí pomocí rozhraní Video Indexer API máte následujíc�
 * Odeslat videosoubor jako pole bajtů v textu žádosti
 * Použijte existující Asset Azure Media Services tím, že zadáte [ID assetu](https://docs.microsoft.com/azure/media-services/latest/assets-concept) (podporované jenom u placených účtů).
 
-Tento článek ukazuje, jak používat API [Upload video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) (Nahrát video) k nahrání videí na server a jejich indexování na základě adresy URL. Vzorový kód v článku obsahuje okomentovaný kód, který ukazuje, jak nahrát pole bajtů. <br/>Článek se také zabývá některými parametry, které můžete v API nastavit, abyste proces a výstup API změnili.
+Po nahrání videa Video Indexer (volitelně) zakóduje video (popsané v článku). Při vytváření účtu Video Indexeru můžete zvolit účet bezplatné zkušební verze (ve kterém získáte určitý počet minut indexování zdarma) nebo placenou variantu (ve které nejste omezení kvótou). V bezplatné zkušební verzi Video Indexer poskytuje až 600 minut bezplatného indexování pro uživatele webu a až 2400 minut bezplatného indexování pro uživatele rozhraní API. Pomocí placené možnosti vytvoříte účet Video Indexer, který je [připojený k vašemu předplatnému Azure a účet Azure Media Services](connect-to-azure.md). Platíte za indexované minuty a také poplatky související s účtem Media. 
 
-Po nahrání videa Video Indexer případně zakódovat video (popsané v článku). Při vytváření účtu Video Indexeru můžete zvolit účet bezplatné zkušební verze (ve kterém získáte určitý počet minut indexování zdarma) nebo placenou variantu (ve které nejste omezení kvótou). V bezplatné zkušební verzi Video Indexer poskytuje až 600 minut bezplatného indexování pro uživatele webu a až 2400 minut bezplatného indexování pro uživatele rozhraní API. Pomocí placené možnosti vytvoříte účet Video Indexer, který je [připojený k vašemu předplatnému Azure a účet Azure Media Services](connect-to-azure.md). Platíte za indexované minuty a také poplatky související s účtem Media. 
+V tomto článku se dozvíte, jak nahrát a indexovat videa pomocí těchto možností:
+
+* [Web Video Indexer](#website) 
+* [Rozhraní API pro Video Indexer](#apis)
 
 ## <a name="uploading-considerations-and-limitations"></a>Odesílání důležitých informací a omezení
  
@@ -40,6 +43,10 @@ Po nahrání videa Video Indexer případně zakódovat video (popsané v člán
 - Adresa URL poskytnutá parametrem `videoURL` musí být zakódována.
 - Indexace Media Services prostředků má stejné omezení jako indexování z adresy URL.
 - Video Indexer má pro jeden soubor maximální dobu trvání 4 hodiny.
+- Adresa URL musí být přístupná (například veřejná adresa URL). 
+
+    Pokud se jedná o soukromou adresu URL, musí být v žádosti poskytnutý přístupový token.
+- Adresa URL musí odkazovat na platný mediální soubor, nikoli na webovou stránku, jako je například odkaz na stránku `www.youtube.com`.
 - Můžete nahrávat až 60 filmů za minutu.
 
 > [!Tip]
@@ -47,15 +54,39 @@ Po nahrání videa Video Indexer případně zakódovat video (popsané v člán
 >
 > Pokud potřebujete použít starší rozhraní .NET Framework, před voláním rozhraní REST API přidejte do kódu jeden řádek:  <br/> System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
-## <a name="configurations-and-params"></a>Konfigurace a parametry
+## <a name="supported-file-formats-for-video-indexer"></a>Podporované formáty souborů pro Video Indexer
+
+Seznam formátů souborů, které můžete použít s Video Indexer, najdete v článku o [formátech vstupního kontejneru/souboru](../latest/media-encoder-standard-formats.md#input-containerfile-formats) .
+
+## <a name="a-idwebsiteupload-and-index-a-video-using-the-video-indexer-website"></a><a id="website"/>nahrát a indexovat video pomocí webu Video Indexer
+
+> [!NOTE]
+> Název videa nesmí být delší než 80 znaků.
+
+1. Přihlaste se k webu [Video Indexer](https://www.videoindexer.ai/).
+2. Pokud chcete nahrát video na server, stiskněte tlačítko nebo odkaz **Upload** (Nahrát).
+
+    ![Nahrávání](./media/video-indexer-get-started/video-indexer-upload.png)
+
+    Když se vaše video nahraje na server, začne ho Video Indexer indexovat a analyzovat.
+
+    ![Nahráno](./media/video-indexer-get-started/video-indexer-uploaded.png) 
+
+    Když Video Indexer dokončí analýzu, zobrazí se oznámení s odkazem na vaše video a krátkým popisem, co se ve videu našlo. Například: lidé, témata, OCR.
+
+## <a name="a-idapisupload-and-index-with-api"></a><a id="apis"/>nahrát a indexovat pomocí rozhraní API
+
+Pomocí rozhraní API pro [nahrání videa](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) můžete nahrávat a indexovat videa na základě adresy URL. Následující ukázka kódu obsahuje komentovaný kód, který ukazuje, jak nahrát pole bajtů. 
+
+### <a name="configurations-and-params"></a>Konfigurace a parametry
 
 Tato část popisuje některé volitelné parametry a kdy je vhodné je nastavit.
 
-### <a name="externalid"></a>externalID 
+#### <a name="externalid"></a>externalID 
 
 Tento parametr umožňuje určit ID, které bude s videem spojené. ID můžete použít na integraci externího systému pro správu video obsahu. Videa, které se nacházejí na portálu Video Indexer, je možné pomocí zadaného externího ID vyhledávat.
 
-### <a name="callbackurl"></a>callbackUrl
+#### <a name="callbackurl"></a>callbackUrl
 
 Adresa URL, která se používá k upozornění na zákazníka (pomocí žádosti POST) o následujících událostech:
 
@@ -79,12 +110,12 @@ Adresa URL, která se používá k upozornění na zákazníka (pomocí žádost
         
     - Příklad: https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
 
-#### <a name="notes"></a>Poznámky
+##### <a name="notes"></a>Poznámky
 
 - Video Indexer vrátí všechny existující parametry zadané v původní adrese URL.
 - Zadaná adresa URL musí být kódovaná.
 
-### <a name="indexingpreset"></a>indexingPreset
+#### <a name="indexingpreset"></a>indexingPreset
 
 Tento parametr použijte, pokud nezpracované nebo externí záznamy obsahují šum na pozadí. Tento parametr se používá ke konfiguraci indexovacího procesu. Můžete určit tyto hodnoty:
 
@@ -95,13 +126,13 @@ Tento parametr použijte, pokud nezpracované nebo externí záznamy obsahují �
 
 Cena závisí na vybrané možnosti indexování.  
 
-### <a name="priority"></a>priorita
+#### <a name="priority"></a>priorita
 
 Videa se indexují Video Indexer podle jejich priority. Pro určení priority indexu použijte parametr **priority** . Platné jsou následující hodnoty: **Nízká**, **normální** (výchozí) a **Vysoká**.
 
 Parametr **priority** se podporuje jenom pro placené účty.
 
-### <a name="streamingpreset"></a>streamingPreset
+#### <a name="streamingpreset"></a>streamingPreset
 
 Po nahrání videa na server ho Video Indexer volitelně zakóduje. Pak bude pokračovat k indexování a analýze videa. Když Video Indexer dokončí analýzu, dostanete oznámení s ID videa.  
 
@@ -111,17 +142,17 @@ Pokud chcete spustit úlohy indexování a kódování, [účet Azure Media Serv
 
 Pokud chcete video jenom indexovat, ale ne kódovat, nastavte `streamingPreset` na `NoStreaming`.
 
-### <a name="videourl"></a>videoUrl
+#### <a name="videourl"></a>videoUrl
 
 Adresa URL video/zvukového souboru k indexování. Adresa URL musí odkazovat na soubor média (stránky HTML nejsou podporované). Soubor se dá chránit přístupovým tokenem poskytnutým jako součást identifikátoru URI a koncový bod poskytující soubor musí být zabezpečený pomocí protokolu TLS 1.2 nebo vyššího. Adresa URL musí být zakódovaná. 
 
 Pokud parametr `videoUrl` není zadaný, Video Indexer očekává, že soubor předáte jako obsah těla multipart/form.
 
-## <a name="code-sample"></a>Ukázka kódu
+### <a name="code-sample"></a>Ukázka kódu
 
 Následující fragment kódu v jazyce C# předvádí společné použití všech rozhraní API Video Indexeru.
 
-### <a name="instructions-for-running-this-code-sample"></a>Pokyny pro spuštění této ukázky kódu
+#### <a name="instructions-for-running-this-code-sample"></a>Pokyny pro spuštění této ukázky kódu
 
 Po zkopírování tohoto kódu na vývojovou platformu budete muset zadat dva parametry: API Management ověřovací klíč a adresu URL videa.
 
@@ -308,7 +339,8 @@ public class AccountContractSlim
     public string AccessToken { get; set; }
 }
 ```
-## <a name="common-errors"></a>Běžné chyby
+
+### <a name="common-errors"></a>Běžné chyby
 
 Operace Upload může vrátit kódy stavu uvedené v následující tabulce.
 

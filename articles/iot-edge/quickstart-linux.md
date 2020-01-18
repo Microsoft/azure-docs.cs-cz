@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 8d2e0b4683261a06c39b9a5f335d7f4f22a2fd05
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 4a076f9e6ae67b9a4dc27fcd058945716dfebe75
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912329"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264606"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Rychlý Start: nasazení prvního modulu IoT Edge do virtuálního zařízení se systémem Linux
 
@@ -29,7 +29,7 @@ V tomto rychlém startu se naučíte:
 
 ![Diagram – rychlý start architektury pro zařízení a cloud](./media/quickstart-linux/install-edge-full.png)
 
-Tento rychlý Start vás provede vytvořením virtuálního počítače se systémem Linux, který je nakonfigurován tak, aby IoT Edge zařízení. Potom můžete modul nasadit z webu Azure Portal do svého zařízení. Modul, který v tomto rychlém kurzu nasadíte, je simulovaný snímač, který generuje údaje o teplotě, vlhkosti a atmosferickém tlaku. Další kurzy o Azure IoT Edge vycházejí z tohoto kurzu. V něm nasadíte moduly, které analyzují simulovaná data kvůli získání obchodních informací.
+Tento rychlý Start vás provede vytvořením virtuálního počítače se systémem Linux, který je nakonfigurován tak, aby IoT Edge zařízení. Potom můžete modul nasadit z webu Azure Portal do svého zařízení. Modul, který v tomto rychlém startu nasadíte, je simulovaný snímač, který generuje údaje o teplotě, vlhkosti a atmosferickém tlaku. Další kurzy o Azure IoT Edge vycházejí z tohoto kurzu. V něm nasadíte moduly, které analyzují simulovaná data kvůli získání obchodních informací.
 
 Pokud nemáte aktivní předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 
@@ -58,7 +58,7 @@ Zařízení IoT Edge:
 * Virtuální počítač nebo zařízení s Linuxem, který bude fungovat jako zařízení IoT Edge. Na virtuálním počítači s Ubuntu byste měli použít [Azure IoT Edge](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu) poskytované společností Microsoft, která předinstaluje všechno, co potřebujete ke spuštění IoT Edge na zařízení. Přijměte podmínky použití a vytvořte tento virtuální počítač pomocí následujících příkazů:
 
    ```azurecli-interactive
-   az vm image accept-terms --urn microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest
+   az vm image terms accept --urn microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest
    az vm create --resource-group IoTEdgeResources --name EdgeVM --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys
    ```
 
@@ -169,7 +169,7 @@ Ověřte, že modul runtime byl úspěšně nainstalován a nakonfigurován na v
 
 Vaše zařízení IoT Edge je teď nakonfigurované. Je připravené na spouštění modulů nasazených v cloudu.
 
-## <a name="deploy-a-module"></a>Nasazení modulu
+## <a name="deploy-a-module"></a>Nasadit modul
 
 Pokud budete zařízení Azure IoT Edge spravovat v cloudu, můžete nasadit modul, který bude odesílat telemetrická data do služby IoT Hub.
 ![Diagram – nasazení modulu z cloudu do zařízení](./media/quickstart-linux/deploy-module.png)

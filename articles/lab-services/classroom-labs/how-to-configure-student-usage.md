@@ -1,5 +1,5 @@
 ---
-title: Konfigurace nastavení využití v učebně Labs Azure Lab Services | Microsoft Docs
+title: Konfigurace nastavení využití v učebně Labs Azure Lab Services
 description: Přečtěte si, jak nakonfigurovat počet uživatelů pro testovací prostředí, získat je zaregistrovaných v testovacím prostředí, určit počet hodin, po které může virtuální počítač používat, a další.
 services: lab-services
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 0ab8d8688c7856eeae7d75527620c2b77ae78029
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 80e8bc47f6e6293d70bbc9fae888abdf5527fe93
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584215"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169212"
 ---
 # <a name="add-and-manage-lab-users"></a>Přidání a správa uživatelů testovacího prostředí
 Tento článek popisuje, jak přidat uživatele do testovacího prostředí, získat je zaregistrované v testovacím prostředí a určit počet hodin, po které může virtuální počítač používat, a další. 
@@ -33,7 +33,7 @@ Tento článek popisuje, jak přidat uživatele do testovacího prostředí, zí
 1. Na stránce **Přidat uživatele** zadejte e-mailové adresy uživatelů na samostatných řádcích nebo na jeden řádek oddělený středníky. 
 
     ![Přidat e-mailové adresy uživatele](../media/how-to-configure-student-usage/add-users-email-addresses.png)
-4. Vyberte **Uložit**. V seznamu se zobrazí e-mailové adresy uživatelů a jejich stavů (registrovaných nebo ne). 
+4. Vyberte **Save** (Uložit). V seznamu se zobrazí e-mailové adresy uživatelů a jejich stavů (registrovaných nebo ne). 
 
     ![Seznam uživatelů](../media/how-to-configure-student-usage/users-list-new.png)
 
@@ -125,7 +125,7 @@ Kvóty na uživatele můžete nastavit pomocí následujících kroků:
 ## <a name="set-additional-quota-for-a-specific-user"></a>Nastavení dodatečné kvóty pro konkrétního uživatele
 Pro uživatele můžete zadat další kvótu. Tato kvóta je kromě společné sady kvót pro všechny uživatele v předchozí části. Například pokud jste vy (jako instruktor) nastavili kvótu pro všechny uživatele na 10 hodin a pro konkrétní uživatele nastavíte kvótu o velikosti 5 hodin, budou mít uživatelé 15 (10 + 5) hodin kvóty. Pokud později změníte běžnou kvótu, například 15, pak uživatel získá 20 (15 + 5) hodin kvóty. Pamatujte, že tato celková kvóta je mimo naplánovaný čas. Čas, který student stráví na testovacím virtuálním počítači během plánování, se na tuto kvótu nepočítá. 
 
-Uděláte to takto:
+Chcete-li to provést, postupujte takto:
 
 1. Vyberte uživatele (student) ze seznamu uživatelů na stránce **Uživatelé** .
 2. Pak na panelu nástrojů vyberte **Upravit kvótu** . 

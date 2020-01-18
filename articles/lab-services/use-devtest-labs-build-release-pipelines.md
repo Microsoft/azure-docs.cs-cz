@@ -1,5 +1,5 @@
 ---
-title: Použití DevTest Labs v Azure Pipelines kanálech sestavování a vydávání | Microsoft Docs
+title: Použití DevTest Labs v kanálech sestavování a vydávání verzí Azure Pipelines
 description: Naučte se používat Azure DevTest Labs v Azure Pipelines vytváření a vydávání kanálů.
 services: devtest-lab, lab-services
 documentationcenter: na
@@ -10,16 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/29/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 032f598fed765b281d4a6a124f8855abc201ee94
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: e16f3c5a0c0b2b86d6a893f541cefb275a8e7d07
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774518"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169226"
 ---
-# <a name="use-devtest-labs-in-azure-pipelines-build-and-release-pipelines"></a>Použití DevTest Labs v Azure Pipelines kanálech sestavení a vydání
+# <a name="use-devtest-labs-in-azure-pipelines-build-and-release-pipelines"></a>Použití DevTest Labs v kanálech sestavování a vydávání verzí Azure Pipelines
 Tento článek poskytuje informace o tom, jak se DevTest Labs dají použít v Azure Pipelines kanálech sestavení a vydání. 
 
 ## <a name="overall-flow"></a>Celkový tok
@@ -35,7 +35,7 @@ Po úspěšném dokončení sestavení bude **kanál verze** používat artefakt
 
 Jedním z nezbytných míst je, že všechny informace potřebné k opětovnému vytvoření testovaného ekosystému jsou k dispozici v rámci artefaktů sestavení, včetně konfigurace prostředků Azure. Jelikož se prostředky Azure účtují při použití, mají společnosti možnost řídit nebo sledovat používání těchto prostředků. V některých situacích se Azure Resource Manager šablon používaných k vytváření a konfiguraci prostředků dá spravovat přes jiné oddělení, jako je IT. A tyto šablony mohou být uloženy v jiném úložišti. Vede na zajímavou situaci, kdy se vytvoří a otestuje sestavení, a jak kód, tak konfigurace budou muset být uloženy v rámci artefaktů sestavení, aby bylo možné správně znovu vytvořit systém v produkčním prostředí. 
 
-Pomocí DevTest Labs během fáze sestavení/testování můžete přidat šablony Azure Resource Manager a podpůrné soubory do zdrojů sestavení tak, aby během fáze vydání byla přesná konfigurace, která se pro testování používala, nasadila v produkčním prostředí. Úloha **vytvoření Azure DevTest Labs prostředí** se správnou konfigurací uloží šablony Správce prostředků v rámci artefaktů sestavení. V tomto příkladu budete používat kód z [kurzu: Pokud chcete webovou aplikaci nasadit a otestovat v Azure,](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md)vytvořte v Azure App Service webovou aplikaci .NET Core a SQL Database.
+Pomocí DevTest Labs během fáze sestavení/testování můžete přidat šablony Azure Resource Manager a podpůrné soubory do zdrojů sestavení tak, aby během fáze vydání byla přesná konfigurace, která se pro testování používala, nasadila v produkčním prostředí. Úloha **vytvoření Azure DevTest Labs prostředí** se správnou konfigurací uloží šablony Správce prostředků v rámci artefaktů sestavení. V tomto příkladu budete používat kód z [kurzu: Vytvoření webové aplikace .NET Core a SQL Database v Azure App Service](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md)pro nasazení a testování webové aplikace v Azure.
 
 ![Celkový tok](./media/use-devtest-labs-build-release-pipelines/overall-flow.png)
 
@@ -49,7 +49,7 @@ Existuje několik položek, které je potřeba vytvořit předem:
 Kanál sestavení vytvoří prostředí DevTest Labs a nasadí kód pro testování.
 
 ## <a name="set-up-a-build-pipeline"></a>Nastavení kanálu sestavení
-V Azure Pipelines vytvořte kanál sestavení pomocí kódu z [kurzu: Sestavení webové aplikace .NET Core a SQL Database v Azure App Service](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md). Použijte šablonu **ASP.NET Core** , která naplní nezbytný úkol pro sestavení, testování a publikování kódu.
+V Azure Pipelines vytvořte kanál sestavení pomocí kódu z [kurzu: Vytvoření webové aplikace .NET Core a SQL Database v Azure App Service](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md). Použijte šablonu **ASP.NET Core** , která naplní nezbytný úkol pro sestavení, testování a publikování kódu.
 
 ![Vybrat šablonu ASP.NET](./media/use-devtest-labs-build-release-pipelines/select-asp-net.png)
 
@@ -61,7 +61,7 @@ Abyste mohli vytvořit prostředí v DevTest Labs a nasadit ho do prostředí, m
 V úloze vytvoření prostředí (**Azure DevTest Labs vytvoření úlohy prostředí** ) použijte rozevírací seznam a vyberte následující hodnoty:
 
 - Předplatné Azure
-- název testovacího prostředí
+- Název testovacího prostředí
 - název úložiště
 - název šablony (zobrazuje složku, ve které je prostředí uložené). 
 
@@ -86,7 +86,7 @@ Třetí úlohou je úloha **nasazení Azure App Service** . Typ aplikace je nast
 ![Úloha nasazení App Service](./media/use-devtest-labs-build-release-pipelines/app-service-deploy.png)
 
 ## <a name="set-up-release-pipeline"></a>Nastavení kanálu pro vydávání verzí
-Vytvoříte kanál pro vydávání verzí se dvěma úlohami: **Nasazení Azure: Vytvořte nebo aktualizujte skupinu** prostředků a **Azure App Service nasazení**. 
+Vytvoříte kanál verze se dvěma úlohami: **nasazení Azure: vytvořit nebo aktualizovat skupinu prostředků** a **nasadit Azure App Service**. 
 
 Pro první úlohu zadejte název a umístění skupiny prostředků. Umístění šablony je propojený artefakt. Pokud šablona Správce prostředků obsahuje propojené šablony, je nutné implementovat vlastní nasazení skupiny prostředků. Šablona je v publikovaném artefaktu zrušení. Přepsat parametry šablony pro šablonu Správce prostředků. Zbývající nastavení můžete nechat s výchozími hodnotami. 
 
@@ -95,7 +95,7 @@ Pro druhý **Azure App Service nasazení**úlohy zadejte předplatné Azure, jak
 ## <a name="test-run"></a>Testovací běh
 Teď, když jsou oba kanály nastavené, ručně zařadí sestavení do fronty a zjistí, že funguje. Dalším krokem je nastavení vhodné aktivační události pro sestavení a připojení sestavení k kanálu vydání.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Viz následující články:
 
 - [Integrace Azure DevTest Labs do Azure Pipelines nepřetržité integrace a kanálu doručování](devtest-lab-integrate-ci-cd-vsts.md)

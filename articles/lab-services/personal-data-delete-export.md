@@ -1,5 +1,5 @@
 ---
-title: Odstranění a export osobních údajů z Azure DevTest Labs | Microsoft Docs
+title: Odstranění a export osobních údajů z Azure DevTest Labs
 description: Naučte se, jak odstranit a exportovat osobní data ze služby Azure DevLast Labs, abyste mohli podporovat vaše závazky v rámci Obecné nařízení o ochraně osobních údajů (GDPR).
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 82ab8ef2e444b71f41fbbd87e4e9f8669e83e508
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: c87e2fb534480bbf9bbe625d67782e5a11eda18c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371165"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169688"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Export nebo odstranění osobních údajů z Azure DevTest Labs
 Tento článek popisuje kroky pro odstranění a export osobních údajů ze služby Azure DevTest Labs. 
@@ -42,8 +42,8 @@ DevTest Labs pomocí ID objektu uživatele zobrazuje trendy nákladů na měsíc
 **Trend odhadovaných nákladů pro aktuální kalendářní měsíc:** 
 ![trend odhadovaných nákladů pro aktuální kalendářní měsíc](./media/personal-data-delete-export/estimated-cost-trend-per-month.png)
 
-**Odhadované náklady na měsíc do dneška podle prostředků:** 
-![odhadované náklady na měsíc na data podle prostředků](./media/personal-data-delete-export/estimated-month-to-date-cost-by-resource.png)
+**Odhadované náklady na měsíc na data podle prostředku:** 
+![odhadované náklady na měsíc na data podle](./media/personal-data-delete-export/estimated-month-to-date-cost-by-resource.png) prostředků
 
 
 ## <a name="why-do-we-need-this-personal-data"></a>Proč potřebujeme tyto osobní údaje?
@@ -60,7 +60,7 @@ Data o využití osobních a testovacích prostředí můžete exportovat pomoc�
 - **disky. csv** – obsahuje informace o discích používaných různými virtuálními počítači.
 - **VirtualMachines. csv** – obsahuje informace o virtuálních počítačích v testovacím prostředí.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure
 Jako uživatel testovacího prostředí můžete požádat o export na osobní údaje, které ukládá služba DevTest Labs. Pokud chcete požádat o export, přejděte na možnost **osobní údaje** na stránce **Přehled** v testovacím prostředí. Kliknutím na tlačítko **Export žádosti** vyhájíte vytváření excelového souboru ke stažení v účtu úložiště pro správce laboratoře. Pak můžete požádat správce testovacího prostředí o zobrazení těchto dat.
 
 1. V nabídce vlevo vyberte **osobní údaje** . 
@@ -68,14 +68,14 @@ Jako uživatel testovacího prostředí můžete požádat o export na osobní �
     ![Stránka osobní údaje](./media/personal-data-delete-export/personal-data-page.png)
 2. Vyberte **skupinu prostředků** , která obsahuje testovací prostředí.
 
-    ![Vybrat skupinu prostředků](./media/personal-data-delete-export/select-resource-group.png)
+    ![Výběr skupiny prostředků](./media/personal-data-delete-export/select-resource-group.png)
 3. Ve skupině prostředků vyberte **účet úložiště** .
 4. Na stránce **účet úložiště** vyberte **objekty blob**.
 
     ![Dlaždice pro výběr objektů BLOB](./media/personal-data-delete-export/select-blobs-tile.png)
 5. V seznamu kontejnerů vyberte kontejner s názvem **labresourceusage** .
 
-    ![Vyberte kontejner objektů blob.](./media/personal-data-delete-export/select-blob-container.png)
+    ![Vybrat kontejner objektů blob](./media/personal-data-delete-export/select-blob-container.png)
 6. Vyberte **složku** s názvem po vašem testovacím prostředí. V této složce najdete soubory **CSV** pro **disky** a **virtuální počítače** v testovacím prostředí. Tyto soubory CSV si můžete stáhnout, filtrovat obsah pro uživatele testovacího prostředí, který požaduje přístup, a sdílet ho s nimi.
 
     ![Stáhnout soubor CSV](./media/personal-data-delete-export/download-csv-file.png)
@@ -167,9 +167,9 @@ Teď se podíváme na exportovaná data. Jak bylo zmíněno dříve, po úspěš
 | LabName | Název testovacího prostředí. |
 | LabResourceId | Plně kvalifikované ID prostředku testovacího prostředí. |
 | ResourceGroupName | Název skupiny prostředků, která obsahuje virtuální počítač | 
-| Prostředku | Plně kvalifikované ID prostředku pro virtuální počítač. |
+| ResourceId | Plně kvalifikované ID prostředku pro virtuální počítač. |
 | ResourceUId | Identifikátor GUID virtuálního počítače |
-| Name | Název virtuálního počítače |
+| Name (Název) | Název virtuálního počítače |
 | CreatedTime | Datum a čas, kdy byl virtuální počítač vytvořen. |
 | DeletedDate | Datum a čas odstranění virtuálního počítače. Pokud je prázdný, odstranění ještě neproběhlo. |
 | ResourceOwner | Vlastník virtuálního počítače Pokud je hodnota prázdná, je to buď vynucený virtuální počítač, nebo vytvořený instančním objektem. |
@@ -195,9 +195,9 @@ Sloupce dat obsažené v **discích. csv** jsou uvedené níže:
 | LabName | Název testovacího prostředí | 
 | LabResourceId | Plně kvalifikované ID prostředku pro testovací prostředí | 
 | ResourceGroupName | Název skupiny prostředků, která obsahuje testovací prostředí | 
-| Prostředku | Plně kvalifikované ID prostředku pro virtuální počítač. |
+| ResourceId | Plně kvalifikované ID prostředku pro virtuální počítač. |
 | ResourceUId | Identifikátor GUID virtuálního počítače |
- |Name | Název připojeného disku |
+ |Name (Název) | Název připojeného disku |
 | CreatedTime |Datum a čas vytvoření datového disku. |
 | DeletedDate | Datum a čas odstranění datového disku. |
 | ResourceStatus | Stav prostředku Aktivní, pokud prostředek existuje. Neaktivní, když je odstraněn. |
@@ -212,7 +212,7 @@ Sloupce dat obsažené v **discích. csv** jsou uvedené níže:
 
 Exportovaná data je možné manipulovat a vizuálně pomocí nástrojů, jako jsou SQL Server, Power BI atd. Tato funkce je užitečná hlavně v případě, že chcete k vašemu týmu pro správu ohlásit použití testovacího prostředí, které nepoužívá stejné předplatné Azure.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Viz následující články: 
 
 - [Nastavení zásad pro testovací prostředí](devtest-lab-get-started-with-lab-policies.md)

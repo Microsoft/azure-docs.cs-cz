@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a Ruby'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu budete rozpoznávat tváře z obrázku pomocí rozhraní API pro rozpoznávání tváře a Ruby.
+description: V tomto rychlém startu detekujete obličeje z obrázku pomocí REST API obličeje s Ruby.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: ce76136f166660bf34c81aab065ba761e4c2867a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 892e7e0fe362e25cf1ca69146bd27a77baf41f24
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977875"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169443"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a Ruby
 
 V tomto rychlém startu použijete REST API Azure Face s Ruby k detekci lidských plošek v obraze.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Klíč rozhraní API pro rozpoznávání tváře předplatného. Můžete získat bezplatné předplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k odběru služby API pro rozpoznávání tváře a získejte klíč.
+- Klíč předplatného pro vytvoření obličeje. Můžete získat bezplatné předplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru služby obličeje a Získejte svůj klíč.
 - Editor kódu, jako je například [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## <a name="write-the-script"></a>Napsat skript
@@ -257,7 +257,7 @@ Měl by se zobrazit řetězec JSON zjištěných dat obličeje v konzole. Násle
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste napsali skript Ruby, který volá Azure Face API k detekci ploch v obrázku a vrácení jejich atributů. Dále si Projděte referenční dokumentaci Face API, kde najdete další informace.
+V tomto rychlém startu jste napsali skript Ruby, který volá službu Azure Face k detekci ploch v obrázku a vrátí jejich atributy. Dále si Projděte referenční dokumentaci Face API, kde najdete další informace.
 
 > [!div class="nextstepaction"]
 > [Rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

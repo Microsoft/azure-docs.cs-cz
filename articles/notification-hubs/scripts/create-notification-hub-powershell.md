@@ -1,43 +1,43 @@
 ---
-title: 'Skript prostředí PowerShell: Vytvoření centra oznámení Azure | Dokumentace Microsoftu'
-description: Tento skript Powershellu vytvoří centra oznámení Azure.
-services: notification-hubs
+title: Vytvoření centra oznámení Azure pomocí PowerShellu | Microsoft Docs
+description: Naučte se používat PowerShellový skript k vytvoření centra oznámení Azure.
 author: dimazaid
-manager: kpiteira
-editor: spelluru
+manager: femila
+services: notification-hubs
+editor: sethmanheim
 ms.service: notification-hubs
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/14/2018
+ms.date: 01/14/2020
 ms.author: dimazaid
-ms.openlocfilehash: 93c5118962fed1bfda4d32afba942a6600664e5d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 01749e1ae5c29a7e77b2143939e25cf1ccd1aec2
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66172156"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263965"
 ---
-# <a name="use-powershell-to-create-an-azure-notification-hub"></a>Použití Powershellu k vytvoření centra oznámení Azure
+# <a name="use-powershell-to-create-an-azure-notification-hub"></a>Použití PowerShellu k vytvoření centra oznámení Azure
 
-Tento ukázkový skript Powershellu vytvoří centra oznámení Azure vzorku. 
+Tento ukázkový skript PowerShellu vytvoří ukázkové centrum oznámení Azure. 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="prerequisites"></a>Požadavky
+
 * **Předplatné Azure** – Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="sample-script"></a>Ukázkový skript
 
 [!code-powershell[main](../../../powershell_scripts/notification-hubs/create-notification-hub/create-notification-hub.ps1 "Create a notification hub")]
 
-
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Po spuštění ukázkového skriptu můžete k odebrání skupiny prostředků a všechny prostředky, které s ním spojená následující příkaz:
+Po spuštění ukázkového skriptu můžete pomocí následujícího příkazu odebrat skupinu prostředků a všechny k ní přidružené prostředky:
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
@@ -45,7 +45,7 @@ Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy: 
+Tento skript používá následující příkazy:
 
 | Příkaz | Poznámky |
 |---|---|
@@ -55,6 +55,6 @@ Tento skript používá následující příkazy:
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).

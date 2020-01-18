@@ -1,5 +1,5 @@
 ---
-title: Ukázka skriptu Azure CLI – vytvoření a ověření virtuálního počítače v laboratorním prostředí | Microsoft Docs
+title: Azure CLI – vytvoření a ověření virtuálního počítače v testovacím prostředí
 description: Tento skript Azure CLI vytvoří virtuální počítač v laboratorním prostředí a ověří, že je k dispozici.
 services: lab-services
 author: spelluru
@@ -11,15 +11,15 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/12/2018
+ms.date: 01/16/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 225e62cedfea79875d56a50b4b04bdf0ad4c7892
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 767d1f3a504e91783e37d8ff1c1b97f62816af3b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60427301"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169262"
 ---
 # <a name="use-azure-cli-to-create-and-verify-availability-of-a-virtual-machine-in-a-lab-in-azure-devtest-labs"></a>Použití Azure CLI k vytvoření a ověření dostupnosti virtuálního počítače v laboratorním prostředí v Azure DevTest Labs
 
@@ -48,10 +48,10 @@ Tento skript používá následující příkazy:
 | Příkaz | Poznámky |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [Vytvoření az lab vm](/cli/azure/lab/vm?view=azure-cli-latest#az-lab-vm-create) | Vytvoří virtuální počítač v laboratorním prostředí. |
+| [AZ Lab VM Create](/cli/azure/lab/vm?view=azure-cli-latest#az-lab-vm-create) | Vytvoří virtuální počítač v laboratorním prostředí. |
 | [az lab vm show](/cli/azure/lab/vm?view=azure-cli-latest#az-lab-vm-show) | Zobrazí stav virtuálního počítače v laboratorním prostředí. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

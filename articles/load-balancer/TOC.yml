@@ -4,8 +4,6 @@
   items:
     - name: Co je nástroj pro vyrovnávání zatížení?
       href: load-balancer-overview.md
-    - name: Co je Standard Load Balancer?
-      href: load-balancer-standard-overview.md
 - name: Rychlý start
   items:
     - name: Vytvoření Load Balanceru úrovně Standard

@@ -10,18 +10,18 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: areddish
-ms.openlocfilehash: 648a9d43f911ffb7f4d6bc97fd63c2ea97ec84e9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 944c3f8fcf440ce71cbb059aff21b7c8b63e74ab
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977433"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166910"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Rychlý Start: vytvoření projektu pro detekci objektů pomocí sady Custom Vision Node. js SDK
 
 V tomto článku se dozvíte, jak začít používat sadu Custom Vision SDK s Node. js k sestavení modelu detekce objektu. Po vytvoření můžete přidat tagované oblasti, nahrát obrázky, naučit projekt, získat adresu URL koncového bodu předpovědi projektu a použít koncový bod k programovému testování obrázku. Tento příklad použijte jako šablonu pro sestavení vlastní aplikace Node. js.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Je nainstalovaný [Node. js 8](https://www.nodejs.org/en/download/) nebo novější.
 - [npm](https://www.npmjs.com/) je nainstalovaný.
@@ -47,7 +47,7 @@ V upřednostňovaném adresáři projektu vytvořte nový soubor s názvem *Samp
 
 ### <a name="create-the-custom-vision-service-project"></a>Vytvoření projektu služby Custom Vision
 
-Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. Do příslušných definic vložte klíče předplatného a nastavte hodnotu cesty sampleDataRoot na cestu ke složce imagí. Ujistěte se, že hodnota koncového bodu odpovídá koncovým bodům školení a předpovědi, které jste vytvořili v [Customvision.AI](https://www.customvision.ai/). Všimněte si, že rozdíl mezi vytvářením projektu detekce objektů a klasifikace obrázků je doména, která se zadává při volání metody **create_project**.
+Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. Do příslušných definic vložte klíče předplatného a nastavte hodnotu cesty sampleDataRoot na cestu ke složce imagí. Ujistěte se, že hodnota koncového bodu odpovídá koncovým bodům školení a předpovědi, které jste vytvořili v [Customvision.AI](https://www.customvision.ai/). Všimněte si, že rozdíl mezi vytvořením projektu detekce objektu a klasifikace obrázků je doména zadaná ve volání **createProject** .
 
 ```javascript
 const fs = require('fs');
@@ -86,7 +86,10 @@ Chcete-li vytvořit klasifikační značky pro projekt, přidejte následující
 
 ### <a name="upload-and-tag-images"></a>Nahrání a označení obrázků
 
-Při označování obrázků v projektech detekce obrázků je potřeba zadat oblast každého označeného objektu pomocí normalizovaných souřadnic.
+Při označování obrázků v projektech detekce obrázků je potřeba zadat oblast každého označeného objektu pomocí normalizovaných souřadnic. 
+
+> [!NOTE]
+> Pokud nemáte k označení souřadnic oblastí k dispozici nástroj pro kliknutí a přetažení, můžete použít webové uživatelské rozhraní na adrese [Customvision.AI](https://www.customvision.ai/). V tomto příkladu jsou souřadnice již poskytovány.
 
 Obrázky, značky a oblasti do projektu přidáte tak, že po vytvoření značky vložíte následující kód. Všimněte si, že pro účely tohoto kurzu jsou oblasti pevně vloženy v kódu. Oblasti určují ohraničující rámeček s normalizovanými souřadnicemi, které jsou v tomto pořadí: vlevo, nahoře, šířka, výška. Do jedné dávky můžete nahrát až 64 imagí.
 
@@ -187,7 +190,7 @@ await Promise.all(fileUploadPromises);
 
 ### <a name="train-the-project-and-publish"></a>Výuka projektu a publikování
 
-Tento kód vytvoří první iteraci v projektu a pak tuto iteraci publikuje do koncového bodu předpovědi. Název zadaný pro publikovanou iteraci lze použít k odeslání požadavků předpovědi. Iterace není v koncovém bodu předpovědi k dispozici, dokud není publikována.
+Tento kód vytvoří první iteraci modelu předpovědi a pak tuto iteraci publikuje do koncového bodu předpovědi. Název zadaný pro publikovanou iteraci lze použít k odeslání požadavků předpovědi. Iterace není v koncovém bodu předpovědi k dispozici, dokud není publikována.
 
 ```javascript
 console.log("Training...");
@@ -197,6 +200,7 @@ let trainingIteration = await trainer.trainProject(sampleProject.id);
 console.log("Training started...");
 while (trainingIteration.status == "Training") {
     console.log("Training status: " + trainingIteration.status);
+    // wait for one second
     await setTimeoutPromise(1000, null);
     trainingIteration = await trainer.getIteration(sampleProject.id, trainingIteration.id)
 }

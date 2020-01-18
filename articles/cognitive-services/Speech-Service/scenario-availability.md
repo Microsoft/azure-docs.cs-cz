@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: cbasoglu
-ms.openlocfilehash: e8fc6e8c2f37dcd3edec24fb4d8ed81b32a84bd0
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 6f8f892e7ca81881b0cc00e1708e3f05052c573c
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816591"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264199"
 ---
 # <a name="scenario-availability"></a>Dostupnost scénáře
 
@@ -45,6 +45,9 @@ Sada Speech SDK nabízí mnoho scénářů napříč širokou škálou programov
   - C++/Windows & Linux
   - C#(Rozhraní Framework & .NET Core)/Windows & UWP & Linux
   - Java/Windows & Linux & Android (Speech Devices SDK)
+- **Konverzace s více zařízeními**
+  - C++/Windows
+  - C#(Rozhraní Framework & .NET Core)/Windows
 - **Přepis centra volání**
   - REST API a lze je použít v jakékoli situaci
 - **Komprimovaný zvukový vstup kodeku**

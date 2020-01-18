@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 54e1eb0be18de8e5ed420e96629d6f23473272fe
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: caa62483373a240991cfec96437cea7849d9b19c
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74545713"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261547"
 ---
 # <a name="durable-orchestrations"></a>Trvalé orchestrace
 
@@ -55,7 +55,9 @@ Když je funkce orchestrace předána více práce (například přijetí zpráv
 
 ## <a name="orchestration-history"></a>Historie orchestrace
 
-Chování při vytváření událostí pro trvalý rámec úloh je úzce spojeno s kódem funkce Orchestrator, který zapisujete. Předpokládejme, že máte funkci Orchestrator pro řetězení aktivit, jako je například C# následující funkce Orchestrator:
+Chování při vytváření událostí pro trvalý rámec úloh je úzce spojeno s kódem funkce Orchestrator, který zapisujete. Předpokládejme, že máte funkci Orchestrator pro řetězení aktivit, jako je například následující funkce Orchestrator:
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -73,7 +75,7 @@ public static async Task<List<string>> Run(
 }
 ```
 
-Pokud kódujete v JavaScriptu, vaše funkce Orchestrator pro řetězení aktivit může vypadat jako v následujícím příkladu kódu:
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -88,6 +90,8 @@ module.exports = df.orchestrator(function*(context) {
     return output;
 });
 ```
+
+---
 
 V každém příkazu `await`C#() nebo `yield` (JavaScript) netrvalá architektura pro úlohy kontrolní stav provádění funkce v některém odolném back-endu úložiště (obvykle Azure Table Storage). Tento stav je označován jako *Historie orchestrace*.
 
@@ -106,24 +110,24 @@ Po dokončení kontrolního bodu je možné odebrat funkci Orchestrator z pamět
 
 Po dokončení bude historie dříve zobrazených funkcí vypadat podobně jako v následující tabulce v Azure Table Storage (pro ilustraci se zkráceně):
 
-| PartitionKey (InstanceId)                     | Typ             | Časové razítko               | Vstup | Name (Název)             | Výsledek                                                    | Stav |
+| PartitionKey (InstanceId)                     | EventType             | Časové razítko               | Vstup | Name (Název)             | Výsledek                                                    | Stav |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
-| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852 Z | platnost  | E1_HelloSequence |                                                           |                     |
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362 Z |       |                  |                                                           |                     |
+| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | null  | E1_HelloSequence |                                                           |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     |
 | eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670 Z |       | E1_SayHello      |                                                           |                     |
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670 Z |       |                  |                                                           |                     |
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.201 Z |       |                  | "" "Hello Tokio!" "                                        |                     |
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.232 Z |       |                  |                                                           |                     |
-| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.435 Z |       | E1_SayHello      |                                                           |                     |
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.435 Z |       |                  |                                                           |                     |
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.763 Z |       |                  | "" "Hello Praha!" "                                      |                     |
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.857 Z |       |                  |                                                           |                     |
-| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.857 Z |       | E1_SayHello      |                                                           |                     |
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.857 Z |       |                  |                                                           |                     |
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919 Z |       |                  | "" "Hello Londýn!" "                                       |                     |
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032 Z |       |                  |                                                           |                     |
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:35.044 Z |       |                  |                                                           |                     |
-| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044 Z |       |                  | "[" "Hello Tokio!" "," "Hello Seattle!" "," "Hello Londýn!" "]" | Dokončeno           |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.201Z |       |                  | "" "Hello Tokio!" "                                        |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.232Z |       |                  |                                                           |                     |
+| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.435Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.435Z |       |                  |                                                           |                     |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.763Z |       |                  | "" "Hello Praha!" "                                      |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     |
+| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.857Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919Z |       |                  | "" "Hello Londýn!" "                                       |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032Z |       |                  |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:35.044Z |       |                  |                                                           |                     |
+| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[" "Hello Tokio!" "," "Hello Seattle!" "," "Hello Londýn!" "]" | Dokončeno           |
 
 Několik poznámek na hodnotách sloupců:
 
@@ -182,7 +186,7 @@ Funkce nástroje Orchestrator mohou také přidat zásady opakování do aktivit
 
 Další informace a příklady najdete v článku o [zpracování chyb](durable-functions-error-handling.md) .
 
-### <a name="critical-sections-durable-functions-2x"></a>Důležité oddíly (Durable Functions 2. x)
+### <a name="critical-sections-durable-functions-2x-currently-net-only"></a>Kritické oddíly (Durable Functions 2. x, aktuálně pouze .NET)
 
 Instance orchestrace jsou jednoduché vlákny, takže není nutné se starat o konflikty časování *v rámci* orchestrace. V případě, že orchestrace komunikují s externími systémy, je ale možné konflikty časování. Chcete-li zmírnit konflikty časování při komunikaci s externími systémy, mohou funkce nástroje Orchestrator definovat *kritické oddíly* pomocí `LockAsync` metody v rozhraní .NET.
 
@@ -212,7 +216,9 @@ Funkce kritická část je také užitečná pro koordinaci změn trvalých enti
 
 Funkce nástroje Orchestrator nejsou povoleny v/v, jak je popsáno v tématu [omezení kódu funkce nástroje Orchestrator](durable-functions-code-constraints.md). Typickým řešením pro toto omezení je zabalení jakéhokoli kódu, který potřebuje v/v funkce Activity. Orchestrace, která komunikuje s externími systémy, často používají funkce aktivity k provádění volání HTTP a vracejí výsledek do orchestrace.
 
-Pro zjednodušení tohoto obecného vzoru mohou funkce nástroje Orchestrator použít metodu `CallHttpAsync` v rozhraní .NET k přímému vyvolání rozhraní API HTTP. Kromě podpory základních vzorů požadavků a odpovědí `CallHttpAsync` podporuje automatické zpracování běžných asynchronních vzorů cyklického dotazování HTTP 202 a také podporuje ověřování pomocí externích služeb pomocí [spravovaných identit](../../active-directory/managed-identities-azure-resources/overview.md).
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Pro zjednodušení tohoto obecného vzoru mohou funkce nástroje Orchestrator použít metodu `CallHttpAsync` k přímému vyvolání rozhraní HTTP API.
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -232,6 +238,8 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -244,6 +252,10 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
+Kromě podpory základních vzorů požadavků a odpovědí podporuje metoda automatické zpracování běžných asynchronních vzorů cyklického dotazování HTTP 202 a zároveň podporuje ověřování pomocí externích služeb pomocí [spravovaných identit](../../active-directory/managed-identities-azure-resources/overview.md).
+
 Další informace a podrobné příklady najdete v článku věnovaném [funkcím protokolu HTTP](durable-functions-http-features.md) .
 
 > [!NOTE]
@@ -251,9 +263,11 @@ Další informace a podrobné příklady najdete v článku věnovaném [funkcí
 
 ### <a name="passing-multiple-parameters"></a>Předávání více parametrů
 
-Není možné předat více parametrů funkci Activity přímo. Doporučení je předat v poli objektů nebo použít objekty [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) v rozhraní .NET.
+Není možné předat více parametrů funkci Activity přímo. Doporučení je nutné předat v poli objektů nebo složených objektů.
 
-Následující ukázka používá nové funkce [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) přidané s [ C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples):
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+V rozhraní .NET můžete také použít objekty [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) . Následující ukázka používá nové funkce [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) přidané s [ C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples):
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]
@@ -289,6 +303,36 @@ public static async Task<object> Mapper([ActivityTrigger] IDurableActivityContex
     };
 }
 ```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+#### <a name="orchestrator"></a>Orchestrator
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    const location = {
+        city: "Seattle",
+        state: "WA"
+    };
+    const weather = yield context.df.callActivity("GetWeather", location);
+
+    // ...
+};
+```
+
+#### <a name="activity"></a>Aktivita
+
+```javascript
+module.exports = async function (context, location) {
+    const {city, state} = location; // destructure properties into variables
+
+    // ...
+};
+```
+
+---
 
 ## <a name="next-steps"></a>Další kroky
 

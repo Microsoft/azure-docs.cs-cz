@@ -33,7 +33,7 @@
         - name: Load Balancer
           items:
             - name: Co je nástroj pro vyrovnávání zatížení?
-              href: ../load-balancer/load-balancer-standard-overview.md
+              href: ../load-balancer/load-balancer-overview.md
             - name: Load Balancer úrovně Standard a zóny dostupnosti
               href: ../load-balancer/load-balancer-standard-availability-zones.md
             - name: Vytvoření zónově redundantního veřejného Load Balanceru úrovně Standard
@@ -57,7 +57,7 @@
                   href: ../load-balancer/load-balancer-standard-public-zone-redundant-cli.md
         - name: Veřejná IP adresa
           href: '../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address'
-        - name: SQL Database
+        - name: Databáze SQL
           items:
             - name: Zóny dostupnosti pro SQL Database
               href: '../sql-database/sql-database-high-availability.md#zone-redundant-configuration'

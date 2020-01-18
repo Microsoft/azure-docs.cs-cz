@@ -1,7 +1,7 @@
 ---
-title: 'Příklad: Přidání ploch do osoby-Face API'
+title: 'Příklad: Přidání obličeje k osobě person-Face'
 titleSuffix: Azure Cognitive Services
-description: Tato příručka ukazuje, jak přidat velký počet osob a ploch do objektu person pomocí Face API Azure Cognitive Services.
+description: Tato příručka ukazuje, jak přidat velký počet osob a ploch do objektu person ve službě Azure Cognitive Services Face.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 891614caddf729acb58bc363df977031ad62fb07
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 240905d538afc5c0f4b7f0e0bf400fac23c3183f
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156705"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169832"
 ---
 # <a name="add-faces-to-a-persongroup"></a>Přidání obličeje k osobě
 
-Tato příručka ukazuje, jak přidat velký počet osob a ploch do objektu Person. Stejná strategie platí i pro objekty LargePersonGroup, FaceList a LargeFaceList. Tato ukázka je napsaná C# pomocí klientské knihovny Azure Cognitive Services Face API .NET.
+Tato příručka ukazuje, jak přidat velký počet osob a ploch do objektu Person. Stejná strategie platí i pro objekty LargePersonGroup, FaceList a LargeFaceList. Tato ukázka je napsaná C# pomocí klientské knihovny Azure Cognitive Services Face .NET.
 
 ## <a name="step-1-initialization"></a>Krok 1: Inicializace
 

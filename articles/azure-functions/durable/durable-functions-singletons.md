@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8c12e0ab854bb2b5764dd326e3f1649202f6f16b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4eff7c4c91ed664fcf1f4fc7a8be2d43d24e5c6b
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232805"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262805"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Orchestrace singleton v Durable Functions (Azure Functions)
 
@@ -20,7 +20,7 @@ Pro úlohy na pozadí často potřebujete zajistit, aby v jednom okamžiku běž
 
 Následující příklad ukazuje funkci triggeru HTTP, která vytvoří orchestraci úlohy na pozadí s jedním prvkem. Kód zajišťuje, aby pro zadané ID instance existovala pouze jedna instance.
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("HttpStartSingle")]
@@ -54,9 +54,10 @@ public static async Task<HttpResponseMessage> RunSingle(
 > [!NOTE]
 > Předchozí C# kód je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít atribut `OrchestrationClient` namísto atributu `DurableClient` a musíte použít typ parametru `DurableOrchestrationClient` namísto `IDurableOrchestrationClient`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Tady je soubor function.json:
+**function.json**
+
 ```json
 {
   "bindings": [
@@ -82,7 +83,8 @@ Tady je soubor function.json:
 }
 ```
 
-Tady je kód jazyka JavaScript:
+**index.js**
+
 ```javascript
 const df = require("durable-functions");
 
@@ -109,6 +111,8 @@ module.exports = async function(context, req) {
     }
 };
 ```
+
+---
 
 Ve výchozím nastavení jsou identifikátory instancí náhodně generované identifikátory GUID. V předchozím příkladu se ale ID instance předává v datech směrování z adresy URL. Kód volá `GetStatusAsync`(C#) nebo `getStatus` (JavaScript), aby zkontroloval, jestli instance se zadaným ID už je spuštěná. Pokud taková instance není spuštěná, vytvoří se nová instance s tímto ID.
 

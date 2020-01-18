@@ -10,18 +10,18 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: anroth
-ms.openlocfilehash: db98464ecefaaf177161a1e417496ee7c994cff0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 158e4dcd07f6ba31ad0efdd88f030f8db99fcfdd
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978641"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170035"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-net-sdk"></a>Rychlý start: Vytvoření projektu klasifikace obrázků pomocí sady Custom Vision .NET SDK
 
 Tento článek obsahuje informace a vzorový kód, které vám pomůžou začít s vytvořením modelu klasifikace obrázků pomocí sady Custom Vision SDK a jazyka C#. Po jeho vytvoření můžete přidat značky, nahrát obrázky, vytrénovat projekt, získat adresu URL výchozího koncového bodu předpovědi projektu a použít tento koncový bod k programovému testování obrázku. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace v .NET. Pokud chcete projít procesem sestavování a používání klasifikačního modelu _bez_ kódu, prostudujte si místo toho [pokyny založené na prohlížeči](getting-started-build-a-classifier.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Libovolná edice sady [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/)
 - [!INCLUDE [create-resources](includes/create-resources.md)]
@@ -69,7 +69,7 @@ Součástí tohoto projektu jsou i obrázky. Odkazuje se na ně v metodě **Load
 
 ### <a name="train-the-classifier-and-publish"></a>Výuka třídění a publikování
 
-Tento kód vytvoří první iteraci v projektu a pak tuto iteraci publikuje do koncového bodu předpovědi. Můžete použít název iterace k odeslání požadavků předpovědi. Iterace není v koncovém bodu předpovědi k dispozici, dokud není publikována.
+Tento kód vytvoří první iteraci modelu předpovědi a pak tuto iteraci publikuje do koncového bodu předpovědi. Můžete použít název iterace k odeslání požadavků předpovědi. Iterace není v koncovém bodu předpovědi k dispozici, dokud není publikována.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_train)]
 

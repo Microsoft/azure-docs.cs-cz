@@ -851,8 +851,6 @@
         - name: Správa úrovní konzistence
           displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
           href: how-to-manage-consistency.md
-        - name: Implementace vlastní synchronizace
-          href: how-to-custom-synchronization.md
         - name: Konfigurace zásad řešení konfliktů
           href: how-to-manage-conflicts.md
     - name: Zřízená propustnost

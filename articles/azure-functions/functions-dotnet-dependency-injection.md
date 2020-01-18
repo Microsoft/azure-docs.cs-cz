@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 4c6ccf9dce0fc119bd666871489a42a3ef734f81
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: a17ff15e71251e781cd30c33a5616af85e4f4eb9
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769196"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260079"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Použití injektáže závislosti v rozhraní .NET Azure Functions
 
@@ -153,12 +153,22 @@ Hodnoty definované v [nastavení aplikace](./functions-how-to-use-azure-functio
 
 Hodnoty z instance `IConfiguration` můžete extrahovat do vlastního typu. Kopírování hodnot nastavení aplikace do vlastního typu usnadňuje testování služeb tím, že se tyto hodnoty vloží. Nastavení číst do instance konfigurace musí být jednoduché páry klíč-hodnota.
 
-Vezměte v úvahu následující třídu, která obsahuje vlastnost s názvem konzistentní s nastavením aplikace.
+Vezměte v úvahu následující třídu, která obsahuje vlastnost s názvem konzistentní s nastavením aplikace:
 
 ```csharp
 public class MyOptions
 {
     public string MyCustomSetting { get; set; }
+}
+```
+
+A `local.settings.json` soubor, který může strukturovat vlastní nastavení následujícím způsobem:
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "MyOptions:MyCustomSetting": "Foobar"
+  }
 }
 ```
 
@@ -168,7 +178,7 @@ V rámci metody `Startup.Configure` můžete extrahovat hodnoty z instance `ICon
 builder.Services.AddOptions<MyOptions>()
                 .Configure<IConfiguration>((settings, configuration) =>
                                            {
-                                                configuration.Bind(settings);
+                                                configuration.GetSection("MyOptions").Bind(settings);
                                            });
 ```
 

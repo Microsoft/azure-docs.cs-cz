@@ -1,5 +1,5 @@
 ---
-title: Vytvoření virtuálního počítače v DevTest Labs s Azure PowerShell | Microsoft Docs
+title: Vytvoření virtuálního počítače v DevTest Labs pomocí Azure PowerShell
 description: Naučte se používat Azure DevTest Labs k vytváření a správě virtuálních počítačů s Azure PowerShell.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 1a6938bd541e316dbe9f333c670c382faab6ad21
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 13014c39641203bddadf858c34cff67462b3a4b3
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854263"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167116"
 ---
 # <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>Vytvoření virtuálního počítače s DevTest Labs pomocí Azure PowerShell
 V tomto článku se dozvíte, jak vytvořit virtuální počítač v Azure DevTest Labs pomocí Azure PowerShell. PowerShellové skripty můžete použít k automatizaci vytváření virtuálních počítačů v testovacím prostředí v Azure DevTest Labs. 
@@ -30,7 +30,7 @@ Než začnete:
 - [Nainstalujte Azure PowerShell](/powershell/azure/install-az-ps?view=azps-1.7.0) nebo použijte Azure Cloud Shell integrovaný do Azure Portal. 
 
 ## <a name="powershell-script"></a>Skript PowerShellu
-Vzorový skript v této části používá rutinu [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) .  Tato rutina převezme ID prostředku testovacího prostředí, název akce k provedení (`createEnvironment`) a parametry potřebné k provedení této akce. Parametry jsou v zatřiďovací tabulce, která obsahuje všechny vlastnosti popisu virtuálního počítače. 
+Vzorový skript v této části používá rutinu [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) .  Tato rutina převezme ID prostředku testovacího prostředí, název akce, která se má provést (`createEnvironment`), a parametry potřebné k provedení této akce. Parametry jsou v zatřiďovací tabulce, která obsahuje všechny vlastnosti popisu virtuálního počítače. 
 
 ```powershell
 [CmdletBinding()]
@@ -117,7 +117,7 @@ finally {
 
 Vlastnosti virtuálního počítače ve výše uvedeném skriptu nám umožňují vytvořit virtuální počítač s Windows serverem 2016 DataCenter jako operačním systémem. U každého typu virtuálního počítače se tyto vlastnosti mírně liší. V části [definice virtuálního počítače](#define-virtual-machine) se dozvíte, jak určit vlastnosti, které se mají použít v tomto skriptu.
 
-Následující příkaz uvádí příklad spuštění skriptu uloženého v názvu souboru: Create-LabVirtualMachine.ps1. 
+Následující příkaz poskytuje příklad spuštění skriptu uloženého v názvu souboru: Create-LabVirtualMachine. ps1. 
 
 ```powershell
  PS> .\Create-LabVirtualMachine.ps1 -ResourceGroupName 'MyLabResourceGroup' -LabName 'MyLab' -userName 'AdminUser' -password 'Password1!' -VMName 'MyLabVM'
@@ -137,7 +137,7 @@ Při vytváření virtuálního počítače v Azure Portal můžete vygenerovat 
 6. Vyberte **základní image** pro virtuální počítač. 
 7. V dolní části stránky nad tlačítkem **Odeslat** vyberte **Možnosti automatizace** . 
 8. Zobrazí se **šablona Azure Resource Manager** pro vytvoření virtuálního počítače. 
-9. Segment JSON v části Resources ( **prostředky** ) obsahuje definici pro typ obrázku, který jste vybrali dříve. 
+9. Segment JSON v části **Resources (prostředky** ) obsahuje definici pro typ obrázku, který jste vybrali dříve. 
 
     ```json
     {
@@ -180,7 +180,7 @@ Při vytváření virtuálního počítače v Azure Portal můžete vygenerovat 
 V tomto příkladu vidíte, jak získat definici obrázku na místě na trhu Azure. Stejným způsobem můžete získat definici vlastní image, vzorce nebo prostředí. Přidejte všechny artefakty potřebné pro virtuální počítač a nastavte všechna požadovaná upřesňující nastavení. Po zadání hodnot požadovaných polí a všech volitelných polí před výběrem tlačítka **Možnosti automatizace** .
 
 ### <a name="use-azure-rest-api"></a>Použití Azure REST API
-Následující postup obsahuje kroky pro získání vlastností obrázku pomocí REST API: Tyto kroky fungují jenom pro existující virtuální počítač v testovacím prostředí. 
+Následující postup obsahuje kroky pro získání vlastností obrázku pomocí REST API: tyto kroky fungují pouze pro existující virtuální počítač v testovacím prostředí. 
 
 1. Přejděte na stránku [Virtual Machines – seznam](/rest/api/dtl/virtualmachines/list) , vyberte tlačítko **vyzkoušet** . 
 2. Vyberte své **předplatné Azure**.
@@ -224,5 +224,5 @@ Set-AzureRmResource -ResourceId $VmResourceId -Properties $VmProperties -Force
 ```
 
 
-## <a name="next-steps"></a>Další postup
-Podívejte se na následující obsah: [Dokumentace k Azure PowerShell pro Azure DevTest Labs](/powershell/module/az.devtestlabs/)
+## <a name="next-steps"></a>Další kroky
+Podívejte se na následující obsah: [Azure PowerShell dokumentaci pro Azure DevTest Labs](/powershell/module/az.devtestlabs/)

@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 11/02/2019
+ms.date: 01/18/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 4a4fd2f89bc662f394b59aa6295c3a909cb8552b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b0847cda78c2e6d1df87eeaedc35850103840151
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468464"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264725"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Kurz: nasazení a konfigurace Azure Firewall v hybridní síti pomocí Azure Portal
 
@@ -41,19 +41,21 @@ V tomto kurzu se naučíte:
 > * Vytvoření partnerského vztahu mezi virtuálními sítěmi hub a paprsek
 > * Vytvoření tras
 > * Vytvoření virtuálních počítačů
-> * Testovat bránu firewall
+> * Testování brány firewall
 
 Pokud chcete použít Azure PowerShell k provedení tohoto postupu, přečtěte si téma [nasazení a konfigurace Azure firewall v hybridní síti pomocí Azure PowerShell](tutorial-hybrid-ps.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Předpokladem správného fungování tohoto scénáře jsou tři klíčové požadavky:
+Hybridní síť používá model architektury hvězdicové a hvězdicové ke směrování provozu mezi Azure virtuální sítě a místními sítěmi. Architektura centra a paprsků má následující požadavky:
 
-- Trasa definovaná uživatelem (UDR) v podsíti paprsků, která odkazuje na IP adresu Azure Firewall jako výchozí bránu. U této směrovací tabulky musí být **Zakázáno** šíření tras protokolu BGP.
-- UDR v podsíti brány centra musí ukazovat na IP adresu brány firewall jako další směrování na sítě paprsků.
+- Nastavte **AllowGatewayTransit** při partnerském vztahu VNet-hub k virtuální síti VNet-paprsek. V architektuře sítě s rozbočovačem a paprsky umožňuje přenos brány virtuální sítě rozbočovače sdílení brány VPN v centru místo nasazení bran VPN v každé virtuální síti paprsků. 
 
-   V Azure Firewall podsíti se nevyžadují žádné UDR, protože se učí trasy od protokolu BGP.
-- Při vytváření partnerského vztahu virtuální sítě VNet-Hub s virtuální sítí VNet-Spoke nezapomeňte nastavit **AllowGatewayTransit** a při vytváření partnerského vztahu virtuální sítě VNet-Spoke s virtuální sítí VNet-Hub nezapomeňte nastavit **UseRemoteGateways**.
+   Trasy k virtuálním sítím připojeným bránou nebo místním sítím se navíc automaticky rozšíří do směrovacích tabulek pro partnerské virtuální sítě s použitím přenosu brány. Další informace najdete v tématu [Konfigurace přenosu brány VPN pro partnerský vztah virtuálních sítí](../vpn-gateway/vpn-gateway-peering-gateway-transit.md).
+
+- Nastavte **useremotegateways nastavený** při partnerské virtuální síti s rozbočovačem VNet-paprsek. Pokud je nastavená taky **useremotegateways nastavený** a **AllowGatewayTransit** ve vzdáleném partnerském vztahu, virtuální síť paprsků používá pro přenos brány vzdálenou virtuální síť.
+- Chcete-li směrovat přenos podsítě paprsků přes bránu firewall centra, potřebujete trasu definovanou uživatelem (UDR), která odkazuje na bránu firewall se sadou možností **Zakázat šíření tras protokolu BGP** . Možnost **Zakázat šíření tras protokolu BGP** zabraňuje distribuci tras do podsítí paprsků. Tím se zabrání tomu, aby se naučily trasy z konfliktu s vaším UDR.
+- Nakonfigurujte UDR v podsíti brány centra, která odkazuje na IP adresu brány firewall jako na další segment směrování sítí paprsků. V Azure Firewall podsíti se nevyžadují žádné UDR, protože se učí trasy od protokolu BGP.
 
 Postup vytvoření těchto tras najdete v části [Vytvoření pravidel](#create-the-routes) v tomto kurzu.
 
@@ -165,7 +167,7 @@ Teď nasaďte bránu firewall do virtuální sítě centra brány firewall.
 7. Po dokončení nasazení přejdete do skupiny prostředků **FW-Hybrid-test** a vyberete bránu **AzFW01** firewall.
 8. Poznamenejte si privátní IP adresu. Budete ji potřebovat později při vytváření výchozí trasy.
 
-### <a name="configure-network-rules"></a>Konfigurovat pravidla sítě
+### <a name="configure-network-rules"></a>Konfigurace pravidel sítě
 
 Nejdřív přidejte síťové pravidlo, které povolí webový provoz.
 
@@ -410,7 +412,7 @@ Toto je virtuální počítač, který používáte k připojení pomocí vzdál
 9. V případě **diagnostiky spouštění**vyberte **vypnuto**.
 10. Vyberte **zkontrolovat + vytvořit**, zkontrolujte nastavení na stránce Souhrn a pak vyberte **vytvořit**.
 
-## <a name="test-the-firewall"></a>Testovat bránu firewall
+## <a name="test-the-firewall"></a>Testování brány firewall
 
 1. Nejdřív si poznamenejte privátní IP adresu virtuálního počítače **VM-paprsek-01** .
 
@@ -418,7 +420,7 @@ Toto je virtuální počítač, který používáte k připojení pomocí vzdál
 <!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
 
    You should get a reply.--->
-3. Otevřete webový prohlížeč na **virtuálním počítači-OnPrem**a přejděte na http://privátní IP \> \<VM-paprsek-01.
+3. Otevřete webový prohlížeč na **virtuálním počítači VM-OnPrem**a přejděte na http://\<VM-paprsk-01 private IP\>.
 
    Měla by se zobrazit webová stránka **virtuální počítač-paprsek-01** : ![virtuální počítač-paprsk-01](media/tutorial-hybrid-portal/VM-Spoke-01-web.png)
 

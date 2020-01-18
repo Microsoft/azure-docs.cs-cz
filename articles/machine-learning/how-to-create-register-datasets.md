@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: d55dc2a1311d66eae01ae12a3dae798fbab20677
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: b9060823c997391d02eae61911f8aa748f191657
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045613"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260850"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Vytváření Azure Machine Learning datových sad
 
@@ -49,7 +49,7 @@ K vytváření a práci s datovými sadami potřebujete:
 
 Existují dva typy datových sad na základě toho, jak je uživatelé používají při školení:
 
-* [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) představuje data v tabulkovém formátu tak, že analyzuje zadaný soubor nebo seznam souborů. To vám umožní vyhodnotit data do datového rámce PANDAS nebo Sparku. Objekt `TabularDataset` můžete vytvořit ze souborů. csv,. TSV a Parquet a z výsledků dotazu SQL. Úplný seznam naleznete v tématu [Třída TabularDatasetFactory](https://aka.ms/tabulardataset-api-reference).
+* [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) představuje data v tabulkovém formátu tak, že analyzuje zadaný soubor nebo seznam souborů. To vám umožní vyhodnotit data do datového rámce PANDAS nebo Sparku. Objekt `TabularDataset` můžete vytvořit ze souborů. csv,. TSV,. Parquet,. JSON a z výsledků dotazu SQL. Úplný seznam naleznete v tématu [Třída TabularDatasetFactory](https://aka.ms/tabulardataset-api-reference).
 
 * Třída [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) odkazuje na jeden nebo více souborů v úložišti dat nebo veřejných adresách URL. Tato metoda umožňuje stáhnout nebo připojit soubory do služby COMPUTE jako objekt DataSet. Soubory mohou být v libovolném formátu, což umožňuje širší škálu scénářů strojového učení, včetně obsáhlého učení.
 
@@ -74,7 +74,7 @@ Vytvoření datových sad z [úložiště Azure DataStore](how-to-access-data.md
 
 #### <a name="create-a-tabulardataset"></a>Vytvoření TabularDataset
 
-TabularDatasets můžete vytvořit pomocí sady SDK nebo pomocí Azure Machine Learning Studio. Můžete zadat časové razítko ze sloupce v datech nebo ze vzoru cesty, ve kterém jsou data uložena, a povolit tak vlastnost časové řady. Tato specifikace umožňuje snadno a efektivně filtrovat podle času.
+TabularDatasets můžete vytvořit prostřednictvím sady SDK nebo pomocí nástroje Azure Machine Learning Studio. 
 
 Pomocí metody [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-) třídy `TabularDatasetFactory` můžete číst soubory ve formátu CSV nebo TSV a vytvořit neregistrované TabularDataset. Pokud načítáte z více souborů, výsledky budou shrnuty do jednoho tabulkového znázornění.
 
@@ -109,7 +109,7 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-| |PassengerId|Zachované|Pclass|Name (Název)|Sex|Věk|SibSp|Parch|Ticket|Vozov|Posádk|Nastoupilo
+| |PassengerId|Zachované|Pclass|Name (Název)|Sex|Věk|SibSp|Parch|Ticket (Lístek)|Vozov|Posádk|Nastoupilo
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1\. místo|Nepravda|3|Braund, Mr. Owen Harris|male (muž)|22,0|1\. místo|0|A/5 21171|7,2500||S
 1\. místo|2|Pravda|1\. místo|Cumings, paní Jan Bradley (Florencie Briggs th...|female (žena)|38,0|1\. místo|0|POČÍTAČ 17599|71,2833|C85|C
@@ -186,7 +186,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 ```
 
 > [!Note]
-> Datové sady vytvořené prostřednictvím Azure Machine Learning Studio jsou automaticky registrovány v pracovním prostoru.
+> Datové sady vytvořené prostřednictvím Azure Machine Learning studia se automaticky zaregistrují do pracovního prostoru.
 
 ## <a name="create-datasets-with-azure-open-datasets"></a>Vytváření datových sad pomocí otevřených datových sad Azure
 
@@ -223,7 +223,7 @@ Vyberte datovou sadu tím, že vyberete její dlaždici. (Máte možnost filtrov
 
 ![Zvolit datovou sadu](./media/how-to-create-register-datasets/open-datasets-2.png)
 
-Vyberte název, pod kterým chcete datovou sadu zaregistrovat, a volitelně data filtrujte pomocí dostupných filtrů. V tomto případě můžete pro datovou sadu veřejných svátků filtrovat časové období na jeden rok a směrové číslo země pouze na nás. Vyberte **Vytvořit**.
+Vyberte název, pod kterým chcete datovou sadu zaregistrovat, a volitelně data filtrujte pomocí dostupných filtrů. V tomto případě můžete pro datovou sadu veřejných svátků filtrovat časové období na jeden rok a směrové číslo země pouze na nás. Vyberte **Create** (Vytvořit).
 
 ![Nastavení parametrů datové sady a vytvoření datové sady](./media/how-to-create-register-datasets/open-datasets-3.png)
 
@@ -244,7 +244,6 @@ titanic_ds = titanic_ds.register(workspace = workspace,
                                  description = 'new titanic training data',
                                  create_new_version = True)
 ```
-
 
 ## <a name="access-datasets-in-your-script"></a>Přístup k datovým sadám ve skriptu
 

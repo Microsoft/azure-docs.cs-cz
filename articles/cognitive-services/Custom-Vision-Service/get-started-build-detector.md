@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: anroth
-ms.openlocfilehash: 0d9c175db1370fe07b3278a46d910c59d81df860
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8aef46f0b9c3dc526f1fbed3d9bc59f97771b509
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969917"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169993"
 ---
 # <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Rychlý Start: vytvoření objektu detektoru pomocí Custom Vision
 
@@ -23,7 +23,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit objektový detektor prostřed
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Sada imagí, se kterými se má model detektoru naučit. Můžete použít sadu [ukázkových imagí](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images) na GitHubu. Případně můžete pomocí níže uvedených tipů zvolit vlastní image.
 
@@ -107,6 +107,8 @@ Po dokončení školení se vypočítává a zobrazuje výkon modelu. Služba Cu
 ## <a name="manage-training-iterations"></a>Spravovat iterace cvičení
 
 Při každém výukovém detektoru vytvoříte novou _iteraci_ s vlastní aktualizovanou metrikou výkonu. Všechny své iterace můžete zobrazit v levém podokně karty **výkon** . V levém podokně se zobrazí také tlačítko **Odstranit** , které můžete použít k odstranění iterace, pokud je zastaralá. Odstraněním iterace odstraníte všechny bitové kopie, které s ní jsou jednoznačně přidružené.
+
+Informace o tom, jak programově přistupovat k vašim vyškolených modelům, najdete v tématu [použití modelu s prediktivním rozhraním API](./use-prediction-api.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

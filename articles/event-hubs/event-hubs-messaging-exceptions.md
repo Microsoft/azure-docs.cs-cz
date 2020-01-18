@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 01/16/2020
 ms.author: shvija
-ms.openlocfilehash: 26056e9b52ea319856505db837c67dc68b2f4aa6
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 96eaae81a25e361c0041fb02099b8e0cb9da8c28
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157283"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260445"
 ---
 # <a name="troubleshooting-guide-for-azure-event-hubs"></a>Průvodce odstraňováním potíží pro Azure Event Hubs
 Tento článek poskytuje některé výjimky .NET vygenerované Event Hubs rozhraní API .NET Framework a také další tipy pro řešení problémů. 
@@ -103,25 +103,42 @@ ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The r
 ## <a name="connectivity-certificate-or-timeout-issues"></a>Problémy s připojením, certifikátem nebo časovým limitem
 Následující postup vám může pomáhat s odstraňováním potíží s připojením/vypršením časového limitu pro všechny služby v rámci *. servicebus.windows.net. 
 
-- Vyhledejte `https://sbwagn2.servicebus.windows.net/`nebo [wget](https://www.gnu.org/software/wget/) . Pomáhá s kontrolou, jestli máte problémy s filtrováním IP adres nebo virtuální sítí nebo s řetězem certifikátů (nejběžnější při použití sady Java SDK).
-- Spusťte následující příkaz, který zkontroluje, jestli je v bráně firewall blokovaný port. V závislosti na knihovně, kterou používáte, se používají také jiné porty. Například: 443, 5672, 9354.
+- Vyhledejte `https://<yournamespacename>.servicebus.windows.net/`nebo [wget](https://www.gnu.org/software/wget/) . Pomáhá s kontrolou, jestli máte problémy s filtrováním IP adres nebo virtuální sítí nebo s řetězem certifikátů (nejběžnější při použití sady Java SDK).
+- Spusťte následující příkaz, který zkontroluje, jestli je v bráně firewall blokovaný port. Použité porty jsou 443 (HTTPS), 5671 (AMQP) a 9093 (Kafka). V závislosti na knihovně, kterou používáte, se používají také jiné porty. Tady je ukázkový příkaz, který zkontroluje, jestli je port 5671 blokovaný.
 
     ```powershell
-    tnc sbwagn2.servicebus.windows.net -port 5671
+    tnc <yournamespacename>.servicebus.windows.net -port 5671
     ```
 
     V Linuxu:
 
     ```shell
-    telnet sbwagn2.servicebus.windows.net 5671
+    telnet <yournamespacename>.servicebus.windows.net 5671
     ```
-- Pokud dochází k problémům s přerušovaným připojením, spusťte následující příkaz, který zkontroluje, jestli nedošlo k vyřazeným paketům. Tento příkaz se pokusí o navázání 25 různých připojení TCP každé 1 sekundy ke službě, a pak můžete zjistit počet úspěšných a neúspěšných a také v případě latence připojení TCP. `psping` nástroj si můžete stáhnout [tady](/sysinternals/downloads/psping).
+    
+    Příklad úspěšné zprávy:
+    
+    ```xml
+    <feed xmlns="http://www.w3.org/2005/Atom"><title type="text">Publicly Listed Services</title><subtitle type="text">This is the list of publicly-listed services currently available.</subtitle><id>uuid:27fcd1e2-3a99-44b1-8f1e-3e92b52f0171;id=30</id><updated>2019-12-27T13:11:47Z</updated><generator>Service Bus 1.1</generator></feed>
+    ```
+    
+    Příklad chybové zprávy o selhání:
+
+    ```json
+    <Error>
+        <Code>400</Code>
+        <Detail>
+            Bad Request. To know more visit https://aka.ms/sbResourceMgrExceptions. . TrackingId:b786d4d1-cbaf-47a8-a3d1-be689cda2a98_G22, SystemTracker:NoSystemTracker, Timestamp:2019-12-27T13:12:40
+        </Detail>
+    </Error>
+    ```
+- Pokud dochází k problémům s přerušovaným připojením, spusťte následující příkaz, který zkontroluje, jestli nedošlo k vyřazeným paketům. Tento příkaz se pokusí vytvořit 25 různých připojení TCP každé 1 sekundy ke službě. Pak můžete zjistit, kolik z nich bylo úspěšné/neúspěšné, a také zobrazit latenci připojení TCP. `psping` nástroj si můžete stáhnout [tady](/sysinternals/downloads/psping).
 
     ```shell
-    .\psping.exe -n 25 -i 1 -q yournamespace.servicebus.windows.net:5671 -nobanner     
+    .\psping.exe -n 25 -i 1 -q <yournamespacename>.servicebus.windows.net:5671 -nobanner     
     ```
     Ekvivalentní příkazy můžete použít, pokud používáte jiné nástroje, například `tnc`, `ping`a tak dále. 
-- Získejte trasování sítě, pokud předchozí kroky neumožňují a neanalyzují nebo kontaktovaly [Podpora Microsoftu](https://support.microsoft.com/). 
+- Získejte trasování sítě, pokud předchozí kroky neumožňují a neanalyzují ho pomocí nástrojů, jako je třeba [Wireshark](https://www.wireshark.org/). V případě potřeby kontaktujte [Podpora Microsoftu](https://support.microsoft.com/) . 
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -3,23 +3,23 @@ title: Hledat umístění pomocí Search Service Azure Maps | Mapy Microsoft Azu
 description: V tomto článku se naučíte, jak vyhledat umístění pomocí Search Service Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 04/05/2019
+ms.date: 01/15/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 59d58b9ecb42a7329df6c91e0a646c557d78a415
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 53856b4157afa5976947c451952fc26eefcdd0ea
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911455"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264182"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Najít adresu pomocí služby Azure Maps Search Service
 
-Vyhledávací služba Maps je sada rozhraní RESTful API navržená vývojářům, kteří hledají adresy, místa, body zájmu, obchodní výpisy a další geografické informace. Služba přiřadí zeměpisnou šířku ke konkrétní adrese, mezinárodní ulici, geografické funkci nebo zájmu v oblasti zájmu (POI). Hodnoty zeměpisné šířky a délky vrácené hledáním se dají použít jako parametry v jiných službách Maps, jako je směrování a přenosový tok.
+Vyhledávací služba Maps je sada rozhraní RESTful API navržených pro vývojáře. Služba může hledat adresy, místa, body zájmu, obchodní výpisy a další geografické informace. Každé z těchto hodnot je zeměpisná šířka a zeměpisná délka: konkrétní adresa, meziulici, zeměpisná funkce nebo POI (Point of Interest). Z dotazu můžete použít vrácené hodnoty zeměpisné šířky a délky jako parametry v jiných mapových službách. Například vrácené hodnoty se mohou stát parametry služby směrování nebo služby toku provozu. 
 
-V tomto článku se dozvíte, jak:
+Pojďme se naučit, jak:
 
 * Hledání adresy pomocí [rozhraní API pro přibližné vyhledávání](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)
 * Hledání adresy spolu s vlastnostmi a souřadnicemi
@@ -28,13 +28,13 @@ V tomto článku se dozvíte, jak:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete volat rozhraní API služby Maps, potřebujete účet a klíč mapy. Podle pokynů v části [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps) vytvořte předplatné Azure Maps účtu a podle kroků v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) Získejte primární klíč pro svůj účet. Další podrobnosti o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
+Abyste mohli volat rozhraní API služby Maps, potřebujete účet pro mapování a klíč. Pokud chcete vytvořit účet pro Azure Maps, postupujte podle pokynů v tématu [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps). Pokud potřebujete pomoc s získáním primárního klíče, postupujte podle kroků v tématu [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account). Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
 
 V tomto článku se k sestavení volání REST používá [aplikace pro publikování](https://www.getpostman.com/apps) . Můžete použít libovolné vývojové prostředí API, které dáváte přednost.
 
 ## <a name="using-fuzzy-search"></a>Použití vyhledávání s fuzzy logikou
 
-Výchozí rozhraní API pro vyhledávací službu je [přibližné vyhledávání](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) a je užitečné, Pokud nevíte, jaké jsou uživatelské vstupy pro vyhledávací dotaz. Rozhraní API kombinuje POI vyhledávání a geografické kódování do kanonického víceřádkového vyhledávání. Rozhraní API může například zpracovat vstupy libovolné kombinace adres nebo POI tokenu. Může být také vážená s kontextovou polohou (lat./lon. párové), plně omezená souřadnicí a poloměrem nebo bez jakýchkoli geografických posunutí bodu ukotvení.
+Výchozím rozhraním API pro vyhledávací službu je [hledání přibližné](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy). Tato služba je užitečná v případě, že ve vyhledávacím dotazu nevíte o formátování vstupu uživatele. Rozhraní API kombinuje POI vyhledávání a geografické kódování do kanonického víceřádkového vyhledávání. Rozhraní API může například zpracovat vstupy libovolné kombinace adres nebo POI tokenu. Také může být vážená s kontextovou polohou (lat./lon. párové), plně omezená souřadnicí a poloměrem nebo bez jakýchkoli geografických posunutí bodu ukotvení.
 
 Většina vyhledávacích dotazů ve výchozím nastavení `maxFuzzyLevel=1` pro získání výkonu a omezení neobvyklých výsledků. Tato výchozí hodnota se dá přepsat podle potřeby na žádost předáním parametru dotazu `maxFuzzyLevel=2` nebo `3`.
 
@@ -52,7 +52,7 @@ Většina vyhledávacích dotazů ve výchozím nastavení `maxFuzzyLevel=1` pro
     | Adresa URL požadavku | [https://atlas.microsoft.com/search/fuzzy/json?](https://atlas.microsoft.com/search/fuzzy/json?) |
     | Autorizace | No Auth |
 
-    Atribut **JSON** v cestě URL určuje formát odpovědi. V celém tomto článku používáte JSON, abyste usnadnili používání a čitelnost. Dostupné formáty odezvy najdete v definici **přibližné vyhledávání** v [referenci rozhraní API pro funkce Maps](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy).
+    Atribut **JSON** v cestě URL určuje formát odpovědi. V tomto článku se používá JSON pro snadné použití a čitelnost. Dostupné formáty odezvy najdete v definici **přibližné vyhledávání** v [referenci rozhraní API pro funkce Maps](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy).
 
 3. Klikněte na **parametry**a zadejte následující páry klíč/hodnota, které se použijí jako parametry dotazu nebo cesty v adrese URL požadavku:
 
@@ -66,9 +66,9 @@ Většina vyhledávacích dotazů ve výchozím nastavení `maxFuzzyLevel=1` pro
 
 4. Klikněte na **Odeslat** a zkontrolujte text odpovědi.
 
-    Nejednoznačný řetězec dotazu "pizza" vrátil 10 [bodů výsledku úroku](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi#searchpoiresponse) (POI) výsledky s kategoriemi, které jsou v oblasti "pizza" a "restaurace". Každý výsledek vrátí adresu ulice, hodnoty zeměpisné šířky a délky, zobrazit port a vstupní body pro dané umístění.
+    Nejednoznačný řetězec dotazu pro "pizza" vrátil 10 [bodů výsledku zájmu](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi#searchpoiresponse) (POI) v kategoriích "pizza" i "restaurace". Každý výsledek vrátí ulici, zeměpisnou šířku a délku hodnoty, zobrazit port a vstupní body pro dané umístění.
   
-    Výsledky jsou pro tento dotaz různé, nevázané na žádné konkrétní referenční místo. Pomocí parametru **countrySet** můžete zadat jenom země nebo oblasti, pro které vaše aplikace potřebuje pokrytí, protože výchozí chování je hledání celého světa, který může vracet zbytečné výsledky.
+    Výsledky jsou pro tento dotaz různé, nevázané na žádné konkrétní referenční místo. Pomocí parametru **countrySet** můžete zadat jenom země nebo oblasti, pro které vaše aplikace potřebuje pokrytí. Výchozím chováním je hledání celého světa, který může vracet zbytečné výsledky.
 
 5. Do oddílu **param** přidejte následující dvojici klíč/hodnota a klikněte na **Odeslat**:
 
@@ -91,7 +91,7 @@ Většina vyhledávacích dotazů ve výchozím nastavení `maxFuzzyLevel=1` pro
 
 ## <a name="search-for-address-properties-and-coordinates"></a>Hledání vlastností adresy a souřadnic
 
-Do rozhraní API pro hledání adresy můžete předat úplnou nebo částečnou ulici a získat odpověď, která obsahuje podrobné vlastnosti adresy, jako je například obec nebo pododdíl, a také poziční hodnoty v zeměpisné šířce a délce.
+Rozhraní API pro vyhledávání adres můžete předat úplnou nebo částečnou ulici. Pořád dostanete odpověď, která obsahuje podrobné vlastnosti adresy. Podrobné vlastnosti adresy jsou hodnoty, jako jsou poziční hodnoty v nadmořské výšce a délka, obec nebo dělení.
 
 1. V příspěvku klikněte na **nový požadavek** | **získat žádost** a pojmenovat **hledání na adrese**.
 2. Na kartě tvůrce vyberte metodu **Get** http, zadejte adresu URL žádosti pro koncový bod rozhraní API a vyberte autorizační protokol (pokud nějaký existuje).
@@ -165,7 +165,7 @@ Do rozhraní API pro hledání adresy můžete předat úplnou nebo částečnou
     |-----|------------|
     | číslo | true |
 
-    Pokud je parametr dotazu [Number](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) odeslán s požadavkem, může odpověď zahrnovat stranu ulice (vlevo/vpravo) a také pozici posunu pro toto číslo.
+    Pokud je parametr dotazu [Number](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) odeslán s požadavkem, může odpověď zahrnovat stranu ulice (vlevo nebo vpravo) a také pozici posunu pro toto číslo.
   
 6. Do oddílu **param** přidejte následující dvojici klíč/hodnota a klikněte na **Odeslat**:
 
@@ -173,7 +173,7 @@ Do rozhraní API pro hledání adresy můžete předat úplnou nebo částečnou
     |-----|------------|
     | returnSpeedLimit | true |
   
-    Pokud je nastaven parametr dotazu [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) , vrátí se odpověď na odeslaný limit.
+    Pokud je nastaven parametr dotazu [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) , odpověď vrátí vyslaný limit rychlosti.
 
 7. Do oddílu **param** přidejte následující dvojici klíč/hodnota a klikněte na **Odeslat**:
 

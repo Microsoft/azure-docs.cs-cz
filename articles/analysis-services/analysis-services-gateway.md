@@ -4,19 +4,21 @@ description: Místní brána je nutná v případě, že se Server Analysis Serv
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 01/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a896c98040773179f9a0911162bbfdc5689b1a2e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f1fc00ced0d933884ca0fe6dce91fed4602eb825
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768550"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263434"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Připojení k místním zdrojům dat s místní bránou dat
 
-Místní brána dat zajišťuje zabezpečený přenos dat mezi místními zdroji dat a servery Azure Analysis Services v cloudu. Kromě práce s více Azure Analysis Services servery ve stejné oblasti funguje nejnovější verze brány také s Azure Logic Apps, Power BI, Power Apps a Power Automate. K jedné bráně můžete přidružit více služeb ve stejném předplatném a stejné oblasti. Brána, kterou nainstalujete, je stejná pro všechny tyto služby, Azure Analysis Services a Logic Apps mít ještě nějaké další kroky.
+Místní brána dat zajišťuje zabezpečený přenos dat mezi místními zdroji dat a servery Azure Analysis Services v cloudu. Kromě práce s více Azure Analysis Services servery ve stejné oblasti funguje nejnovější verze brány také s Azure Logic Apps, Power BI, Power Apps a Power Automate. Brána, kterou nainstalujete, je stejná pro všechny tyto služby, Azure Analysis Services a Logic Apps mít ještě nějaké další kroky.
+
+Zde uvedené informace jsou specifické pro to, jak Azure Analysis Services fungují s místní bránou dat. Další informace o bráně obecně a o tom, jak funguje s dalšími službami, najdete v tématu [co je místní brána dat?](/data-integration/gateway/service-gateway-onprem).
 
 V případě Azure Analysis Services se při prvním procesu čtyř částí získá instalační program s bránou.
 
@@ -24,9 +26,11 @@ V případě Azure Analysis Services se při prvním procesu čtyř částí zí
 
 - **Registrace brány** – v tomto kroku zadáte název a obnovovací klíč pro bránu a vyberete oblast a zaregistrujete bránu do cloudové služby brány. Prostředek brány je možné zaregistrovat v libovolné oblasti, ale doporučujeme, aby byl ve stejné oblasti jako servery Analysis Services. 
 
-- **Vytvoření prostředku brány v Azure** – v tomto kroku vytvoříte prostředek brány ve svém předplatném Azure.
+- **Vytvoření prostředku brány v Azure** – v tomto kroku vytvoříte prostředek brány v Azure.
 
-- **Připojte své servery k prostředku brány** – Jakmile máte prostředek brány v předplatném, můžete k němu začít připojit své servery. Můžete propojit víc serverů a dalších prostředků, pokud jsou ve stejném předplatném a stejné oblasti.
+- **Připojte své servery k prostředku brány** – Jakmile máte prostředek brány, můžete k němu začít s připojením svých serverů. Můžete propojit víc serverů a dalších prostředků, pokud jsou ve stejné oblasti.
+
+
 
 ## <a name="how-it-works"> </a>Jak to funguje
 Bránu, kterou nainstalujete do počítače ve vaší organizaci, se spouští jako služba systému Windows, místní **Brána dat**. Tato místní služba je zaregistrovaná v cloudové službě brány přes Azure Service Bus. Pak vytvoříte prostředek místní brány dat pro vaše předplatné Azure. Vaše Azure Analysis Services servery se pak připojí k vašemu prostředku brány Azure. Když se modely na vašem serveru potřebují připojovat k místním zdrojům dat pro dotazy nebo zpracování, dotaz a tok dat procházejí prostředek brány, Azure Service Bus, místní služby místní brány dat a zdroji dat. 

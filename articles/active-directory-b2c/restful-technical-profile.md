@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7822045d4b3ce1feb1bfb43fbf1c2fc5a9a1c7fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 00d5ba6fd86ea722270dfbe73324323bd831a529
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425635"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263366"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu RESTful ve vlastní zásadě Azure Active Directory B2C
 
@@ -125,10 +125,10 @@ Technický profil také vrací deklarace identity, které nejsou vraceny zprost�
 | --------- | -------- | ----------- |
 | serviceUrl | Ano | Adresa URL koncového bodu REST API. |
 | AuthenticationType | Ano | Typ ověřování prováděného zprostředkovatelem deklarací RESTful. Možné hodnoty: `None`, `Basic`, `Bearer`nebo `ClientCertificate`. Hodnota `None` označuje, že REST API není anonymní. Hodnota `Basic` označuje, že REST API je zabezpečeno pomocí základního ověřování HTTP. K rozhraní API můžou přistupovat jenom ověření uživatelé, včetně Azure AD B2C. Hodnota `ClientCertificate` (doporučeno) znamená, že REST API omezuje přístup pomocí ověřování klientského certifikátu. K vašemu rozhraní API můžou mít přístup jenom služby, které mají příslušné certifikáty, například Azure AD B2C. Hodnota `Bearer` označuje, že REST API omezuje přístup pomocí OAuth2 nosného tokenu klienta. |
-| SendClaimsIn | Ne | Určuje, jakým způsobem se vstupní deklarace identity odesílají do zprostředkovatele deklarací RESTful. Možné hodnoty: `Body` (výchozí), `Form`, `Header`nebo `QueryString`. Hodnota `Body` je vstupní deklarace, která je odeslána v těle žádosti ve formátu JSON. Hodnota `Form` je vstupní deklarace, která se pošle v těle žádosti ve formátu hodnoty "& oddělovače klíče" typu ampersand. Hodnota `Header` je vstupní deklarace, která je odeslána v hlavičce požadavku. Hodnota `QueryString` je vstupní deklarace, která je odeslána v řetězci dotazu požadavku. |
+| SendClaimsIn | Ne | Určuje, jakým způsobem se vstupní deklarace identity odesílají do zprostředkovatele deklarací RESTful. Možné hodnoty: `Body` (výchozí), `Form`, `Header`nebo `QueryString`. Hodnota `Body` je vstupní deklarace, která je odeslána v těle žádosti ve formátu JSON. Hodnota `Form` je vstupní deklarace, která se pošle v těle žádosti ve formátu hodnoty "& oddělovače klíče" typu ampersand. Hodnota `Header` je vstupní deklarace, která je odeslána v hlavičce požadavku. Hodnota `QueryString` je vstupní deklarace, která je odeslána v řetězci dotazu požadavku. Příkazy HTTP, které jsou vyvolány pomocí obou, jsou následující:<br /><ul><li>`Body`: POST</li><li>`Form`: POST</li><li>`Header`: GET</li><li>`QueryString`: GET</li></ul> |
 | ClaimsFormat | Ne | Určuje formát pro výstupní deklarace identity. Možné hodnoty: `Body` (výchozí), `Form`, `Header`nebo `QueryString`. Hodnota `Body` je výstupní deklarace, která je odeslána v těle žádosti ve formátu JSON. Hodnota `Form` je výstupní deklarace, která se pošle v těle žádosti ve formátu hodnoty "& oddělovače klíče" typu ampersand. Hodnota `Header` je výstupní deklarace, která je odeslána v hlavičce požadavku. Hodnota `QueryString` je výstupní deklarace, která je odeslána v řetězci dotazu požadavku. |
 | ClaimUsedForRequestPayload| Ne | Název deklarace identity řetězce, která obsahuje datovou část, která se má odeslat do REST API. |
-| DebugMode | Ne | Spustí technický profil v režimu ladění. V režimu ladění může REST API vrátit více informací. Přečtěte si část vracení chybové zprávy. |
+| DebugMode | Ne | Spustí technický profil v režimu ladění. Možné hodnoty: `true`nebo `false` (výchozí). V režimu ladění může REST API vrátit více informací. Přečtěte si část [vracení chybové zprávy](#returning-error-message) . |
 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče
 
@@ -215,7 +215,7 @@ Pokud je typ ověřování nastaven na `Bearer`, element **CryptographicKeys** o
 
 ## <a name="returning-error-message"></a>Vracení chybové zprávy
 
-Vaše REST API může potřebovat vrátit chybovou zprávu, například ' uživatel nebyl nalezen v systému CRM '. V případě chyby by REST API měla vrátit chybovou zprávu HTTP 409 (kód stavu odpovědi na konflikt) s následujícími atributy:
+Vaše REST API může potřebovat vrátit chybovou zprávu, například ' uživatel nebyl nalezen v systému CRM '. Pokud dojde k chybě, REST API by měla vracet chybovou zprávu HTTP 409 (kód stavu odpovědi na konflikt) s následujícími atributy:
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |

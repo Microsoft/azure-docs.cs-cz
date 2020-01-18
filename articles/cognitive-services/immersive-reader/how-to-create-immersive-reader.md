@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: a806e6eeecc6976286566d05a0f19dac684b2c0b
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: a2a404a03c06dde59edc88436afdc9dba3d74797
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75946086"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170169"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Vytvoření prostředku pro moderní čtečku a konfigurace ověřování Azure Active Directory
 
@@ -153,7 +153,7 @@ Skript je navržený tak, aby byl flexibilní. Nejprve bude vyhledán existujíc
     | SubscriptionName |Název předplatného Azure, které se má použít pro prostředek pro moderní čtečku Aby bylo možné vytvořit prostředek, musíte mít předplatné. |
     | ResourceName |  Musí být alfanumerické a může obsahovat znak-, pokud znak-není prvním nebo posledním znakem. Délka nesmí překročit 63 znaků.|
     | ResourceSubdomain |Pro prostředek pro moderní čtečku je potřeba vlastní subdoména. Subdoména je používána sadou SDK při volání služby moderního čtecího zařízení za účelem spuštění čtecího modulu. Subdoména musí být globálně jedinečná. Subdoména musí být alfanumerická a může obsahovat znak-, pokud znak-není prvním nebo posledním znakem. Délka nesmí překročit 63 znaků. Tento parametr je nepovinný, pokud prostředek již existuje. |
-    | ResourceSKU |Možnosti: `S0` nebo `S1`. Další informace o jednotlivých dostupných SKU najdete na naší [stránce s cenami Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/) . Tento parametr je nepovinný, pokud prostředek již existuje. |
+    | ResourceSKU |Možnosti: `S0`. Další informace o jednotlivých dostupných SKU najdete na naší [stránce s cenami Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/) . Tento parametr je nepovinný, pokud prostředek již existuje. |
     | ResourceLocation |Možnosti: `eastus`, `eastus2`, `southcentralus`, `westus`, `westus2`, `australiaeast`, `southeastasia`, `centralindia`, `japaneast`, `northeurope`, `uksouth`, `westeurope`. Tento parametr je nepovinný, pokud prostředek již existuje. |
     | ResourceGroupName |Prostředky se vytvářejí ve skupinách prostředků v rámci předplatných. Zadejte název existující skupiny prostředků. Pokud skupina prostředků ještě neexistuje, vytvoří se nový s tímto názvem. |
     | ResourceGroupLocation |Pokud vaše skupina prostředků neexistuje, je nutné dodat umístění, ve kterém chcete skupinu vytvořit. Pokud chcete najít seznam umístění, spusťte `az account list-locations`. Použijte vlastnost *Name* (bez mezer) vráceného výsledku. Tento parametr je nepovinný, pokud vaše skupina prostředků již existuje. |

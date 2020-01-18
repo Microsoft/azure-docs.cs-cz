@@ -1,5 +1,5 @@
 ---
-title: 'Příklad: Používejte velkou škálu funkcí – Face API'
+title: 'Příklad: Používejte velkou škálu funkcí – Face'
 titleSuffix: Azure Cognitive Services
 description: Tato příručka je článek týkající se horizontálního navýšení kapacity z existujících objektů Person a FaceList na objekty LargePersonGroup a LargeFaceList.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
-ms.openlocfilehash: 976baaef11251715218ecea71986f08ec5f72996
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: dc0964e40e9214e414d865c06006f1d36e97eeb2
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73743730"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169772"
 ---
 # <a name="example-use-the-large-scale-feature"></a>Příklad: použití funkce rozsáhlého škálování
 
@@ -23,14 +23,14 @@ Tato příručka je pokročilý článek týkající se horizontálního navýš
 
 LargePersonGroup a LargeFaceList jsou souhrnně označovány jako operace ve velkém rozsahu. LargePersonGroup může obsahovat až 1 000 000 lidí, z nichž každý má maximálně 248 ploch. LargeFaceList může obsahovat až 1 000 000 ploch. Rozsáhlé operace jsou podobné konvenčním osobám a FaceList, ale mají několik rozdílů z důvodu nové architektury. 
 
-Ukázky se napíší C# pomocí klientské knihovny Azure Cognitive Services Face API.
+Ukázky se napíší C# pomocí klientské knihovny Azure Cognitive Services Face.
 
 > [!NOTE]
 > Pokud chcete povolit výkon při hledání na tvář pro identifikaci a FindSimilar ve velkém měřítku, zaveďte vlakovou operaci pro předzpracování LargeFaceList a LargePersonGroup. Doba školení se v závislosti na skutečné kapacitě mění v rozmezí sekund až o půl hodiny. Během období školení je možné provést identifikaci a FindSimilar, pokud se úspěšně provedlo úspěšné školení. Nevýhodou je, že nově přidané osoby a plošky se ve výsledku nebudou zobrazovat, dokud se nedokončí nová migrace po migraci do rozsáhlého školení.
 
 ## <a name="step-1-initialize-the-client-object"></a>Krok 1: inicializace objektu klienta
 
-Když použijete klientskou knihovnu Face API, klíč předplatného a koncový bod předplatného jsou předány prostřednictvím konstruktoru třídy FaceClient. Příklad:
+Při použití klientské knihovny pro tvář se klíč předplatného a koncový bod předplatného předávají prostřednictvím konstruktoru třídy FaceClient. Například:
 
 ```csharp
 string SubscriptionKey = "<Subscription Key>";
@@ -67,7 +67,7 @@ Přidejte všechny plošky a osoby ze strany Person do nové LargePersonGroup. D
 | Odstranit | Odstranit |
 | Získejte | Získejte |
 | List | List |
-| Aktualizace | Aktualizace |
+| Aktualizovat | Aktualizovat |
 | - | Trénování |
 | - | Get Training Status |
 

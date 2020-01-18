@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: alzam
-ms.openlocfilehash: 7f05b850a0d886ac0df5c542de647f91fe62eb05
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b22581d012b2c69081bc7b4eee093227c060b4c2
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382216"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169717"
 ---
 # <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>Povolit Azure Multi-Factor Authentication (MFA) pro uživatele sítě VPN
 
@@ -22,27 +22,7 @@ Pokud chcete, aby se uživatelé před udělením přístupu zobrazovali k druh�
 
 Předpokladem pro tuto konfiguraci je konfigurovaný tenant Azure AD pomocí kroků v části [Konfigurace tenanta](openvpn-azure-ad-tenant.md).
 
-## <a name="mfa"></a>Otevření stránky MFA
-
-1. Přihlaste se k portálu Azure.
-2. Přejděte na **Azure Active Directory-> všechny uživatele**.
-3. Výběrem **Multi-Factor Authentication** otevřete stránku Multi-Factor Authentication.
-
-   ![Přihlášení](./media/openvpn-azure-ad-mfa/mfa1.jpg)
-
-## <a name="users"></a>Vybrat uživatele
-
-1. Na stránce **Multi-Factor Authentication** vyberte uživatele, pro které chcete povolit MFA.
-2. Vyberte **Povolit**.
-
-   ![Vyberte](./media/openvpn-azure-ad-mfa/mfa2.jpg)
-
-## <a name="enableauth"></a>Povolit ověřování
-
-1. Přejděte na **Azure Active Directory > podnikové aplikace – > všechny aplikace**.
-2. Na stránce **podnikové aplikace – všechny aplikace** vyberte **Azure VPN**.
-
-   ![ID adresáře](./media/openvpn-azure-ad-mfa/user1.jpg)
+[!INCLUDE [MFA steps](../../includes/vpn-gateway-vwan-openvpn-azure-ad-mfa.md)]
 
 ## <a name="enablesign"></a>Konfigurovat nastavení přihlášení
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 987e8d9e667339d7526e8acbc3164e58abcd3e4d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f528135445824a17a8d8c95913adf6934cc87eb0
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895749"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260107"
 ---
 # <a name="configure-rules-preview-features"></a>Konfigurace pravidel (funkce verze Preview)
 
@@ -33,7 +33,7 @@ V části cílová zařízení vyberte, jaký typ zařízení bude toto pravidlo
 
 Podmínky určují, na čem se pravidla spouštějí. Když v současné době přidáte více podmínek do pravidla, jsou logicky a společně. Jinými slovy, pro pravidlo, které se má vyhodnotit jako true, musí být splněné všechny podmínky.  
 
-Na následujícím snímku obrazovky se podmínky kontrolují, když je teplota větší než 90 a vlhkost je menší než 10. Pokud jsou oba tyto příkazy pravdivé, pravidlo se vyhodnotí jako true a aktivuje akci.
+Na následujícím snímku obrazovky se podmínky kontrolují, když je teplota větší než 70&deg; F a vlhkost je menší než 10. Pokud jsou oba tyto příkazy pravdivé, pravidlo se vyhodnotí jako true a aktivuje akci.
 
 ![Podmínky](media/howto-configure-rules/conditions.png)
 

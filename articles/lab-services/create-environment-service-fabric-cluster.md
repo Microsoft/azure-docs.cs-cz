@@ -1,5 +1,5 @@
 ---
-title: Vytvoření prostředí s clusterem Service Fabric v Azure DevTest Labs | Microsoft Docs
+title: Vytvoření prostředí Service Fabric clusteru v Azure DevTest Labs
 description: Naučte se vytvářet prostředí pomocí samostatného Service Fabricho clusteru a spouštět a zastavovat cluster pomocí plánů.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 01/16/2020
 ms.author: enewman
-ms.openlocfilehash: 1e192a2b27c9d617e43a56766431a0f40e87a752
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 71793b81d8735c80881fc25a9b7ec31bc4fc6762
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325254"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170343"
 ---
 # <a name="create-an-environment-with-self-contained-service-fabric-cluster-in-azure-devtest-labs"></a>Vytvoření prostředí pomocí samostatného Service Fabricho clusteru v Azure DevTest Labs
 Tento článek obsahuje informace o tom, jak vytvořit prostředí s integrovaným Service Fabricm clusterem v Azure DevTest Labs. 
@@ -30,9 +30,9 @@ DevTest Labs můžou vytvářet samostatně obsažená testovací prostředí de
 ## <a name="create-a-service-fabric-cluster"></a>Vytvoření clusteru Service Fabric
 Clustery Service Fabric se vytvářejí pomocí prostředí v DevTest Labs. Každé prostředí je definováno šablonou Azure Resource Manager v úložišti Git. [Veřejné úložiště Git](https://github.com/Azure/azure-devtestlab/tree/master/Environments/) pro DevTest Labs obsahuje šablonu správce prostředků pro vytvoření clusteru Service Fabric ve složce [ServiceFabric-clustering](https://github.com/Azure/azure-devtestlab/tree/master/Environments/ServiceFabric-LabCluster) . 
 
-1. Nejprve vytvořte testovací prostředí v Azure DevTest Labs pomocí pokynů v následujícím článku: [Vytvořte testovací prostředí](devtest-lab-create-lab.md). Všimněte si, že možnost **veřejné prostředí** je ve výchozím nastavení **zapnutá** . 
+1. Nejprve vytvořte testovací prostředí v Azure DevTest Labs pomocí pokynů v následujícím článku: [Vytvoření testovacího prostředí](devtest-lab-create-lab.md). Všimněte si, že možnost **veřejné prostředí** je ve výchozím nastavení **zapnutá** . 
 2. Pomocí následujících kroků ověřte, že je poskytovatel Service Fabric zaregistrován pro vaše předplatné:
-    1. V  levém navigačním panelu vyberte předplatná a vyberte své **předplatné** .
+    1. V levém navigačním panelu vyberte **předplatná** a vyberte své **předplatné** .
     2. Na stránce **předplatné** vyberte **poskytovatele prostředků** v části **Nastavení** v nabídce vlevo. 
     3. Pokud není **Microsoft. ServiecFabric** zaregistrovaný, vyberte **zaregistrovat**. 
 3. Na stránce **testovací prostředí DevTest** pro testovací prostředí vyberte **+ Přidat** na panelu nástrojů. 
@@ -43,7 +43,7 @@ Clustery Service Fabric se vytvářejí pomocí prostředí v DevTest Labs. Kaž
     ![V seznamu vyberte Cluster Service Fabric Lab.](./media/create-environment-service-fabric-cluster/select-service-fabric-cluster.png)
 4. Na stránce **Konfigurovat nastavení** proveďte následující kroky: 
     1. Zadejte **název** pro **prostředí**clusteru. Toto je název skupiny prostředků v Azure, ve které se vytvoří cluster Service Fabric. 
-    2. Vyberte **operační systém (OS)** pro virtuální počítače clusteru. Výchozí hodnota je: **Systém Windows**.
+    2. Vyberte **operační systém (OS)** pro virtuální počítače clusteru. Výchozí hodnota je: **Windows**.
     3. Zadejte název **správce** clusteru. 
     4. Zadejte **heslo** pro správce. 
     5. Pro **certifikát**zadejte informace o certifikátu jako řetězec kódovaný v kódování Base64. Chcete-li vytvořit certifikát, proveďte následující kroky:
@@ -57,7 +57,7 @@ Clustery Service Fabric se vytvářejí pomocí prostředí v DevTest Labs. Kaž
         ![Konfigurace nastavení clusteru](./media/create-environment-service-fabric-cluster/configure-settings.png)
 5. Po vytvoření clusteru se zobrazí skupina prostředků s názvem prostředí, které jste zadali v předchozím kroku. Když rozbalíte, zobrazí se v něm Cluster Service Fabric. Pokud je stav skupiny prostředků zablokovaný při **vytváření**, vyberte **aktualizovat** na panelu nástrojů. Prostředí **Service Fabric clusteru** vytvoří cluster s jedním uzlem 1-NodeType v systému Linux nebo Windows.
 
-    V následujícím příkladu je **mysfabricclusterrg** název skupiny prostředků, která je vytvořená speciálně pro cluster Service Fabric. Je důležité si uvědomit, že testovací prostředí jsou samostatná v rámci skupiny prostředků, ve které se vytvářejí. To znamená, že šablona definující prostředí, která může přistupovat jenom k prostředkům v nově vytvořené skupině prostředků nebo [virtuálních sítích nakonfigurovaných pro použití](devtest-lab-configure-vnet.md)v testovacím prostředí. Tato ukázka výše vytvoří všechny požadované prostředky ve stejné skupině prostředků.
+    V následujícím příkladu je **mysfabricclusterrg** název skupiny prostředků, která je vytvořená speciálně pro cluster Service Fabric. Je důležité si uvědomit, že testovací prostředí jsou samostatná v rámci skupiny prostředků, ve které se vytvářejí. To znamená, že šablona definující prostředí, která může přistupovat jenom k prostředkům v nově vytvořené skupině prostředků nebo [virtuálních sítích nakonfigurovaných pro použití v testovacím](devtest-lab-configure-vnet.md)prostředí. Tato ukázka výše vytvoří všechny požadované prostředky ve stejné skupině prostředků.
 
     ![Cluster vytvořen](./media/create-environment-service-fabric-cluster/cluster-created.png)
 
@@ -109,7 +109,7 @@ Chcete-li změnit nastavení pro vypnutí, proveďte následující kroky:
     1. Zadejte **čas** pro vypnutí.
     2. Zadejte časové **pásmo** pro čas. 
     3. Určete, jestli chcete, aby DevTest Labs odesílala **oznámení** před automatickým vypnutím. 
-    4. Pokud jste pro možnost oznámení zvolili **Ano** , zadejte **adresu URL** Webhooku a/nebo **e-mailovou adresu** pro odesílání oznámení. 
+    4. Pokud jste pro možnost oznámení zvolili **Ano** , zadejte **adresu URL Webhooku** a/nebo **e-mailovou adresu** pro odesílání oznámení. 
     5. Na panelu nástrojů vyberte **Uložit**.
 
         ![Automaticky vypnout stránku](./media/create-environment-service-fabric-cluster/auto-shutdown-settings.png)
@@ -127,7 +127,7 @@ Stránka Service Fabric clusteru, kterou jste si poznamenali v předchozích kro
 
     ![Domovská stránka clusteru Service Fabric](./media/create-environment-service-fabric-cluster/service-fabric-cluster-page.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Podrobnosti o prostředích najdete v následujících článcích: 
 
 - [Vytvoření prostředí více virtuálních počítačů a prostředků PaaS pomocí šablony Azure Resource Manageru](devtest-lab-create-environment-from-arm.md)

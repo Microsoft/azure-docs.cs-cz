@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1c8f56810edb39db66cbb83750e5cff02e22662a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a7d8891c6f925cfac326685f01ba5f6149a1b233
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433290"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262856"
 ---
 # <a name="http-features"></a>Funkce protokolu HTTP
 
@@ -41,21 +41,21 @@ Podporují se následující integrovaná rozhraní API HTTP.
 
 [Vazba klienta Orchestration](durable-functions-bindings.md#orchestration-client) zpřístupňuje rozhraní API, která mohou generovat praktické datové části odpovědi HTTP. Například může vytvořit odpověď obsahující odkazy na rozhraní API pro správu pro určitou instanci orchestrace. Následující příklady ukazují funkci triggeru HTTP, která ukazuje, jak používat toto rozhraní API pro novou instanci orchestrace:
 
-#### <a name="precompiled-c"></a>PředkompilovanéC#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-#### <a name="c-script"></a>Skript jazyka C#
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/HttpStart/run.csx)]
-
-#### <a name="javascript-with-functions-20-or-later-only"></a>JavaScript jenom s funkcemi 2,0 nebo novějším
+**index.js**
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
 
-#### <a name="functionjson"></a>Function.json
+**function.json**
 
-[!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
+[!code-json[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
+
+---
 
 Spuštění funkce Orchestrator pomocí funkcí triggeru protokolu HTTP, které jsou uvedené výše, se dá provést pomocí libovolného klienta HTTP. Následující příkaz oblé spustí funkci Orchestrator s názvem `DoWork`:
 
@@ -112,10 +112,9 @@ Jak je popsáno v tématu [omezení kódu funkce Orchestrator](durable-functions
 
 Počínaje Durable Functions 2,0 mohou orchestrace nativně spotřebovávat rozhraní API HTTP pomocí [aktivační vazby pro orchestraci](durable-functions-bindings.md#orchestration-trigger).
 
-> [!NOTE]
-> Možnost volat koncové body HTTP přímo z funkcí nástroje Orchestrator není zatím k dispozici v jazyce JavaScript.
+Následující příklad kódu ukazuje funkci Orchestrator, která provádí odchozí požadavek HTTP:
 
-Následující příklad kódu ukazuje funkci Orchestrator C# , která vytváří odchozí požadavek HTTP pomocí rozhraní **CallHttpAsync** .NET API:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -134,6 +133,23 @@ public static async Task CheckSiteAvailable(
     }
 }
 ```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context){
+    const url = context.df.getInput();
+    const response = context.df.callHttp("GET", url)
+
+    if (response.statusCode >= 400) {
+        // handling of error codes goes here
+    }
+});
+```
+
+---
 
 Pomocí akce zavolat HTTP můžete v rámci svých funkcí Orchestrator provádět následující akce:
 
@@ -156,6 +172,8 @@ Durable Functions nativně podporuje volání rozhraní API, která přijímají
 
 Následující kód je příkladem funkce rozhraní .NET Orchestrator. Funkce provádí ověřená volání k restartování virtuálního počítače pomocí [REST API virtuálních počítačů](https://docs.microsoft.com/rest/api/compute/virtualmachines)s Azure Resource Manager.
 
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
 ```csharp
 [FunctionName("RestartVm")]
 public static async Task RunOrchestrator(
@@ -164,6 +182,7 @@ public static async Task RunOrchestrator(
     string subscriptionId = "mySubId";
     string resourceGroup = "myRG";
     string vmName = "myVM";
+    string apiVersion = "2019-03-01";
     
     // Automatically fetches an Azure AD token for resource = https://management.core.windows.net
     // and attaches it to the outgoing Azure Resource Manager API call.
@@ -178,6 +197,32 @@ public static async Task RunOrchestrator(
     }
 }
 ```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    const subscriptionId = "mySubId";
+    const resourceGroup = "myRG";
+    const vmName = "myVM";
+    const apiVersion = "2019-03-01";
+    const tokenSource = new df.ManagedIdentityTokenSource("https://management.core.windows.net");
+
+    // get a list of the Azure subscriptions that I have access to
+    const restartResponse = yield context.df.callHttp(
+        "POST",
+        `https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroup}/providers/Microsoft.Compute/virtualMachines/${vmName}/restart?api-version=${apiVersion}`,
+        undefined, // no request content
+        undefined, // no request headers (besides auth which is handled by the token source)
+        tokenSource);
+
+    return restartResponse;
+});
+```
+
+---
 
 V předchozím příkladu je parametr `tokenSource` nakonfigurovaný tak, aby získal tokeny Azure AD pro [Azure Resource Manager](../../azure-resource-manager/management/overview.md). Tokeny jsou identifikovány `https://management.core.windows.net`identifikátorů URI prostředku. Příklad předpokládá, že aktuální aplikace Function App běží buď místně, nebo byla nasazena jako aplikace Function App se spravovanou identitou. Předpokládá se, že místní identita nebo spravovaná identita má oprávnění ke správě virtuálních počítačů v zadané skupině prostředků `myRG`.
 

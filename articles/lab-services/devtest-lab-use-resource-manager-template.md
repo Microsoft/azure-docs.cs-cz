@@ -1,5 +1,5 @@
 ---
-title: Zobrazení a použití šablony Azure Resource Manager virtuálního počítače | Microsoft Docs
+title: Zobrazení a použití šablony Azure Resource Manager virtuálního počítače
 description: Naučte se používat Azure Resource Manager šablonu z virtuálního počítače k vytvoření dalších virtuálních počítačů.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: c14abf3acce0084507a03f3d34fdd59566d88c28
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 7064fdeec04f4dc5ae2c73c1a3896cf2d10dd01d
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854281"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169114"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Vytváření virtuálních počítačů pomocí šablony Azure Resource Manager 
 
@@ -68,7 +68,7 @@ Ve scénářích, jako jsou například školení, ukázky a zkušební verze, m
 
 
 
-### <a name="next-steps"></a>Další postup
+### <a name="next-steps"></a>Další kroky
 * Zjistěte, jak [vytvoření prostředí více virtuálních počítačů pomocí šablon Resource Manageru](devtest-lab-create-environment-from-arm.md).
 * [Nasazení šablony Správce prostředků k vytvoření virtuálního počítače](devtest-lab-create-environment-from-arm.md#automate-deployment-of-environments)
 * Prozkoumejte další šablony Resource Manageru rychlý start pro DevTest Labs automatizace z [veřejného úložiště DevTest Labs GitHub](https://github.com/Azure/azure-quickstart-templates).

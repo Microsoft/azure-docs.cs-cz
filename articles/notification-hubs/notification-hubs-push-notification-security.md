@@ -1,6 +1,6 @@
 ---
-title: Notification Hubs zabezpečení
-description: Toto téma vysvětluje zabezpečení pro Azure Notification Hubs.
+title: Model zabezpečení Notification Hubs
+description: Přečtěte si o modelu zabezpečení pro Azure Notification Hubs.
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 09/23/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/23/2019
-ms.openlocfilehash: a9598f6a01e5536351fb20b7c352a5eaf5746042
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: b871775bc7a6d795e86147ae9cffa27bdd2f3348
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273619"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263757"
 ---
 # <a name="notification-hubs-security"></a>Notification Hubs zabezpečení
 
@@ -46,13 +46,13 @@ Klíč s přístupem k **naslouchání** umožňuje klientské aplikaci zaregist
 
 ## <a name="security-claims"></a>Deklarace identity zabezpečení
 
-Podobně jako u jiných entit jsou operace centra oznámení povoleny pro tři deklarace zabezpečení: **Naslouchat**, **odesílat**a **Spravovat**.
+Podobně jako u jiných entit jsou operace centra oznámení povoleny pro tři deklarace zabezpečení: **naslouchat**, **odesílat**a **Spravovat**.
 
-| Deklarace identity   | Popis                                          | Povolené operace |
+| Deklarovat   | Popis                                          | Povolené operace |
 | ------- | ---------------------------------------------------- | ------------------ |
-| Naslouchání  | Vytváření, aktualizace, čtení a odstraňování jednotlivých registrací | Vytvořit nebo aktualizovat registraci<br><br>Čtení registrace<br><br>Čtení všech registrací pro popisovač<br><br>Odstranit registraci |
-| Poslat    | Odesílání zpráv do centra oznámení                | Odeslat zprávu |
-| Spravovat  | CRUD na Notification Hubs (včetně aktualizace přihlašovacích údajů PNS a bezpečnostních klíčů) a čtení registrací na základě značek |Vytváření, aktualizace, čtení a odstraňování Center<br><br>Čtení registrací podle značky |
+| Naslouchat  | Vytváření, aktualizace, čtení a odstraňování jednotlivých registrací | Vytvořit nebo aktualizovat registraci<br><br>Čtení registrace<br><br>Čtení všech registrací pro popisovač<br><br>Odstranit registraci |
+| Odeslat    | Odesílání zpráv do centra oznámení                | Odeslat zprávu |
+| Spravujte  | CRUD na Notification Hubs (včetně aktualizace přihlašovacích údajů PNS a bezpečnostních klíčů) a čtení registrací na základě značek |Vytváření, aktualizace, čtení a odstraňování Center<br><br>Čtení registrací podle značky |
 
 Notification Hubs akceptuje tokeny SAS vygenerované se sdílenými klíči nakonfigurovanými přímo na rozbočovači.
 

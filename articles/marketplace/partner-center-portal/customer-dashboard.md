@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: d1d94e07fc38ae5de62793666df5a73dbf8b79eb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f2eaaf2ec2f3dad1da345d0cfeadf1cae223a592
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480564"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264012"
 ---
 # <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel zákazníka v komerčních obchodech Marketplace
 
@@ -24,7 +24,7 @@ Pokud chcete získat přístup k **řídicímu panelu zákazníka**, otevřete �
 >[!NOTE]
 > Podrobné definice terminologie analýz najdete v tématu [Nejčastější dotazy a terminologie pro komerční analýzy na webu Marketplace](./faq-terminology.md).
 
-## <a name="customer-dashboard"></a>Řídicí panel zákazníka
+## <a name="customer-dashboard"></a>Řídicí panel zákazníků
 
 **Řídicí panel zákazníka** v nabídce **analyzovat** zobrazuje data pro zákazníky, kteří získali vaše nabídky. Můžete zobrazit grafické reprezentace následujících položek:
 
@@ -72,7 +72,7 @@ Graf **trendů zákazníků** zobrazuje počet všech zákazníků, včetně nov
 
 Tabulka **zákazníci podle objednávek/používání** obsahuje tři karty, "objednávky", normalizované využití a nezpracované využití. " **Horní percentil zákazníka** se zobrazuje podél osy x podle počtu objednávek. Osa y zobrazuje počet objednávek zákazníka. Sekundární osa y (spojnicový graf) zobrazuje kumulativní procento celkového počtu objednávek. Podrobnosti můžete zobrazit tak, že najedete myší na body podél spojnicového grafu.
 
-Příklad najdete v následujícím grafu pro normalizované využití: horní 30. percentil zákazníků přispívá k 87% normalizovaného využití na základě součtu. 30. percentil zákazníků přispívá jenom 1.57 M hodinami využití.
+Příklad najdete v následujícím grafu pro normalizované využití: horní 30. percentil zákazníků přispívá k 87% normalizovaného využití na základě součtu. 30. percentil zákazníků přispívá jenom 1 570 000 hodin využití.
 
 ### <a name="customers-by-skus"></a>Zákazníci podle SKU
 

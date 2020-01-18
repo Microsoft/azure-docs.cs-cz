@@ -4,16 +4,16 @@ description: Naučte se konfigurovat a používat vlastní stav orchestrace pro 
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 22242a40a29a1a014a7ab88ed705c7ca3e5ba288
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 2b8b78f58570186a0b17eb47f8445d2ba9aa47e8
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232953"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261649"
 ---
 # <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Stav vlastní orchestrace v Durable Functions (Azure Functions)
 
-Vlastní stav orchestrace umožňuje nastavit vlastní hodnotu stavu pro funkci Orchestrator. Tento stav je k dispozici prostřednictvím rozhraní API GetStatus protokolu HTTP getstav nebo rozhraní `DurableOrchestrationClient.GetStatusAsync` API.
+Vlastní stav orchestrace umožňuje nastavit vlastní hodnotu stavu pro funkci Orchestrator. Tento stav je k dispozici prostřednictvím [rozhraní API GetStatus API](durable-functions-http-api.md#get-instance-status) nebo rozhraní [`GetStatusAsync` API](durable-functions-instance-management.md#query-instances) v klientovi Orchestration.
 
 ## <a name="sample-use-cases"></a>Příklady případů použití
 
@@ -24,7 +24,7 @@ Vlastní stav orchestrace umožňuje nastavit vlastní hodnotu stavu pro funkci 
 
 Klienti mohou dotazovat koncový bod stavu a zobrazit uživatelské rozhraní průběhu, které vizualizuje aktuální fázi provádění. Následující příklad znázorňuje sdílení průběhu:
 
-#### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -51,7 +51,9 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+`E1_HelloSequence` funkce Orchestrator:
 
 ```javascript
 const df = require("durable-functions");
@@ -71,15 +73,19 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
+funkce aktivity `E1_SayHello`:
+
 ```javascript
 module.exports = async function(context, name) {
     return `Hello ${name}!`;
 };
 ```
 
+---
+
 A pak klient obdrží výstup orchestrace pouze tehdy, když je `CustomStatus` pole nastaveno na London:
 
-#### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("HttpStart")]
@@ -112,7 +118,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -144,11 +150,13 @@ module.exports = async function(context, req) {
 > [!NOTE]
 > V jazyce JavaScript se pole `customStatus` nastaví při plánování další `yield` nebo `return` akce.
 
+---
+
 ### <a name="output-customization"></a>Vlastní nastavení výstupu
 
 Dalším zajímavým scénářem je segmentování uživatelů tím, že vrací přizpůsobený výstup na základě jedinečných vlastností nebo interakcí. Pomocí vlastního stavu orchestrace zůstane kód na straně klienta obecný. Všechny hlavní úpravy se projeví na straně serveru, jak je znázorněno v následující ukázce:
 
-#### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CityRecommender")]
@@ -186,7 +194,7 @@ public static void Run(
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -219,11 +227,13 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 ### <a name="instruction-specification"></a>Specifikace instrukce
 
 Nástroj Orchestrator může poskytovat jedinečné pokyny pro klienty prostřednictvím vlastního stavu. Vlastní pokyny ke stavu budou mapovány na kroky v kódu orchestrace:
 
-#### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ReserveTicket")]
@@ -251,7 +261,7 @@ public static async Task<bool> Run(
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -278,11 +288,13 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 ## <a name="sample"></a>Ukázka
 
 V následující ukázce je nastaven vlastní stav jako první.
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrationContext context)
@@ -297,7 +309,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrat
 }
 ```
 
-### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -312,6 +324,8 @@ module.exports = df.orchestrator(function*(context) {
     // ...do more work...
 });
 ```
+
+---
 
 I když je orchestrace spuštěná, externí klienti mohou načíst tento vlastní stav:
 

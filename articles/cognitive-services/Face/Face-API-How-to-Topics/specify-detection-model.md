@@ -1,7 +1,7 @@
 ---
-title: Určení modelu detekce – Face API
+title: Určení modelu detekce – Face
 titleSuffix: Azure Cognitive Services
-description: V tomto článku se dozvíte, jak zvolit model detekce obličeje pro použití s vaší aplikací Azure Face API.
+description: V tomto článku se dozvíte, jak zvolit model detekce obličeje pro použití s aplikací Azure Face.
 services: cognitive-services
 author: yluiu
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: yluiu
-ms.openlocfilehash: 4306a918d56240bfe038100124b3c2b94964cebc
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: f5b524ca6156dab7c0d1e38ad320b721f40a49ef
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306688"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169756"
 ---
 # <a name="specify-a-face-detection-model"></a>Určení modelu detekce obličeje
 
-V této příručce se dozvíte, jak zadat model detekce obličeje pro Azure Face API.
+V této příručce se dozvíte, jak zadat model detekce obličeje pro službu Azure Face.
 
-Face API používá modely strojového učení k provádění operací na lidských plochách na obrázcích. I nadále vylepšujeme přesnost našich modelů na základě zpětné vazby od zákazníků a pokrok ve výzkumu a poskytujeme tato vylepšení jako aktualizace modelu. Vývojáři mají možnost určit, kterou verzi modelu detekce obličeje má použít; můžou zvolit model, který nejlépe odpovídá jejich případu použití.
+Služba obličeje používá modely strojového učení k provádění operací na lidských plochách na obrázcích. I nadále vylepšujeme přesnost našich modelů na základě zpětné vazby od zákazníků a pokrok ve výzkumu a poskytujeme tato vylepšení jako aktualizace modelu. Vývojáři mají možnost určit, kterou verzi modelu detekce obličeje má použít; můžou zvolit model, který nejlépe odpovídá jejich případu použití.
 
-Přečtěte si, kde se dozvíte, jak určit model detekce obličeje v určitých operacích obličeje. Face API používá detekci obličeje vždy, když převede obrázek plošky na nějakou jinou formu dat.
+Přečtěte si, kde se dozvíte, jak určit model detekce obličeje v určitých operacích obličeje. Služba obličeje používá detekci obličeje vždy, když převede obrázek plošky na nějakou jinou formu dat.
 
 Pokud si nejste jistí, jestli byste měli použít nejnovější model, přejděte k části [vyhodnotit různé modely](#evaluate-different-models) a vyhodnoťte nový model a porovnejte výsledky pomocí aktuální datové sady.
 
@@ -38,7 +38,7 @@ Měli byste být obeznámeni s konceptem rozpoznávání obličeje AI. Pokud ne,
 
 Detekce tváře vyhledá ohraničující umístění lidských plošek a identifikuje jejich vizuální orientační. Extrahuje funkce plochy a ukládá je pro pozdější použití při operacích [rozpoznávání](../concepts/face-recognition.md) .
 
-Když použijete rozhraní API [Rozpoznávání obličeje] , můžete přiřadit verzi modelu s `detectionModel` parametrem. Dostupné hodnoty jsou:
+Když použijete rozhraní API [Rozpoznávání obličeje] , můžete přiřadit verzi modelu s parametrem `detectionModel`. Dostupné hodnoty jsou:
 
 * `detection_01`
 * `detection_02`
@@ -47,7 +47,7 @@ Adresa URL požadavku pro REST API pro [Rozpoznávání obličeje] bude vypadat 
 
 `https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel][&detectionModel]&subscription-key=<Subscription key>`
 
-Používáte-li knihovnu klienta, lze hodnotu přiřadit pro `detectionModel` předáním vhodného řetězce. Pokud ho necháte nepřiřazený, rozhraní API použije výchozí verzi modelu (`detection_01`). Podívejte se na následující příklad kódu pro klientskou knihovnu rozhraní .NET.
+Pokud používáte knihovnu klienta, můžete přiřadit hodnotu pro `detectionModel` předáním vhodného řetězce. Pokud necháte nepřiřazený, rozhraní API použije výchozí verzi modelu (`detection_01`). Podívejte se na následující příklad kódu pro klientskou knihovnu rozhraní .NET.
 
 ```csharp
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
@@ -56,7 +56,7 @@ var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, rec
 
 ## <a name="add-face-to-person-with-specified-model"></a>Přidat obličej k osobě se zadaným modelem
 
-Face API může z obrázku extrahovat data z obrázku a přidružit ho k objektu **Person** prostřednictvím osoby [osoby – přidat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) rozhraní API pro rozpoznávání tváře. V tomto volání rozhraní API můžete určit model detekce stejným způsobem jako při [rozpoznávání obličeje].
+Služba obličeje může z obrázku extrahovat data z obrázku a přidružit ho k objektu **Person** přes uživatele osoby [– Přidat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) rozhraní API pro rozpoznávání tváře. V tomto volání rozhraní API můžete určit model detekce stejným způsobem jako při [rozpoznávání obličeje].
 
 Podívejte se na následující příklad kódu pro klientskou knihovnu rozhraní .NET.
 
@@ -71,7 +71,7 @@ string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 await client.PersonGroupPerson.AddFaceFromUrlAsync(personGroupId, personId, imageUrl, detectionModel: "detection_02");
 ```
 
-Tento kód vytvoří objekt **Person** s ID `mypersongroupid` a přidá do něj **osobu** . Pak přidá na tuto **osobu** tvář s použitím `detection_02` modelu. Pokud nezadáte parametr *detectionModel* , rozhraní API použije výchozí model, `detection_01`.
+Tento kód vytvoří objekt **Person** s ID `mypersongroupid` a přidá do něj **osobu** . Potom k této **osobě** přidá obličej pomocí `detection_02`ho modelu. Pokud nezadáte parametr *detectionModel* , rozhraní API použije výchozí model `detection_01`.
 
 > [!NOTE]
 > Nemusíte používat stejný model detekce pro všechny plošky v objektu **Person** a nemusíte používat stejný model detekce při zjišťování nových plošek pro porovnání s objektem **Person** (například v rozhraní API pro [Face – Identify] ).
@@ -87,7 +87,7 @@ string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: "detection_02");
 ```
 
-Tento kód vytvoří **FaceList** s názvem `My face collection` a přidá na něj obličej s `detection_02` modelem. Pokud nezadáte parametr *detectionModel* , rozhraní API použije výchozí model, `detection_01`.
+Tento kód vytvoří **FaceList** s názvem `My face collection` a přidá na něj obličej s modelem `detection_02`. Pokud nezadáte parametr *detectionModel* , rozhraní API použije výchozí model `detection_01`.
 
 > [!NOTE]
 > Nemusíte používat stejný model detekce pro všechny plošky v objektu **FaceList** a nemusíte používat stejný model detekce při zjišťování nových plošek pro porovnání s objektem **FaceList** .
@@ -103,9 +103,9 @@ Různé modely detekce tváře jsou optimalizované pro různé úlohy. Přehled
 |Vrátí atributy obličeje (pozice pozice, věk, emoce atd.), pokud jsou zadány ve volání metody Detect. |  Nevrací atributy obličeje.     |
 |Vrátí orientační vzhledy, pokud jsou zadány ve volání metody Detect.   | Nevrací orientační vzhledy.  |
 
-Nejlepším způsobem, jak porovnávat funkční způsobilost `detection_01` modelů a `detection_02` , je použít je pro ukázkovou datovou sadu. Doporučujeme volat rozhraní API pro [Rozpoznávání obličeje] na celou řadu imagí, zejména obrázky mnoha plošek nebo ploch, které se obtížně zobrazují, a to pomocí každého modelu detekce. Věnujte pozornost počtu ploch, které vrátí každý model.
+Nejlepším způsobem, jak porovnávat výkony `detection_01` a `detection_02`ch modelů, je použít je pro ukázkovou datovou sadu. Doporučujeme volat rozhraní API pro [Rozpoznávání obličeje] na celou řadu imagí, zejména obrázky mnoha plošek nebo ploch, které se obtížně zobrazují, a to pomocí každého modelu detekce. Věnujte pozornost počtu ploch, které vrátí každý model.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste zjistili, jak určit model detekce, který se má použít u různých rozhraní API pro rozpoznávání tváře. Potom postupujte podle pokynů k rychlému zprovoznění a začněte používat rozpoznávání tváře.
 

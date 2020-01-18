@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 4855451136edfe86baaace48e2582fc7080a9b12
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 18b158b7a4881619b93ab404de67f7bb25f92b6a
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770369"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166833"
 ---
 # <a name="analyze-videos-in-near-real-time"></a>Analýza videí téměř v reálném čase
 
@@ -148,7 +148,7 @@ Knihovna obsahuje třídu `FrameGrabber`, která implementuje dříve popisovan�
 
 Abychom se seznámili s některými možnostmi, poskytovali jsme dvě ukázkové aplikace, které knihovnu používají. 
 
-První ukázková aplikace je jednoduchá Konzolová aplikace, která přikládá snímky z výchozí webové kamery a pak je odesílá do Face API pro rozpoznávání tváře. Zjednodušená verze aplikace je reprodukována v následujícím kódu:
+První ukázková aplikace je jednoduchá Konzolová aplikace, která přikládá snímky z výchozí webové kamery a pak je odesílá do služby obličeje pro rozpoznávání tváře. Zjednodušená verze aplikace je reprodukována v následujícím kódu:
 
 ```csharp
 using System;
@@ -169,7 +169,7 @@ namespace BasicConsoleSample
             // Create grabber.
             FrameGrabber<DetectedFace[]> grabber = new FrameGrabber<DetectedFace[]>();
 
-            // Create Face API Client.
+            // Create Face Client.
             FaceClient faceClient = new FaceClient(new ApiKeyServiceClientCredentials(ApiKey))
             {
                 Endpoint = Endpoint
@@ -185,7 +185,7 @@ namespace BasicConsoleSample
             grabber.AnalysisFunction = async frame =>
             {
                 Console.WriteLine($"Submitting frame acquired at {frame.Metadata.Timestamp}");
-                // Encode image and submit to Face API.
+                // Encode image and submit to Face service.
                 return (await faceClient.Face.DetectWithStreamAsync(frame.Image.ToMemoryStream(".jpg"))).ToArray();
             };
 
@@ -230,13 +230,13 @@ Pomocí tohoto přístupu můžete vizualizovat zjištěnou plošku okamžitě. 
 
 Chcete-li začít s touto ukázkou, postupujte následovně:
 
-1. Získejte klíče rozhraní API pro zpracování obrazu v oblasti [Předplatná](https://azure.microsoft.com/try/cognitive-services/). U analýzy snímků videa jde o tato rozhraní API:
-    - [rozhraní API pro počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)
-    - [Face API](https://docs.microsoft.com/azure/cognitive-services/face/overview)
+1. Získejte klíče rozhraní API pro zpracování obrazu v oblasti [Předplatná](https://azure.microsoft.com/try/cognitive-services/). Pro analýzu snímků videa platí tyto služby:
+    - [Počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)
+    - [Rozpoznávání tváře](https://docs.microsoft.com/azure/cognitive-services/face/overview)
 2. Naklonujte úložiště GitHub [-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) GitHub.
 
 3. Otevřete ukázku v aplikaci Visual Studio 2015 nebo novější a poté Sestavte a spusťte ukázkové aplikace:
-    - Klíč rozhraní API pro rozpoznávání tváře v aplikaci BasicConsoleSample je pevně zakódovaný v souboru [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs).
+    - V případě BasicConsoleSample je klíč obličeje pevně zakódovaný přímo v [BasicConsoleSample/program. cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs).
     - V případě LiveCameraSample zadejte klíče v podokně **Nastavení** aplikace. Klíče se chovají napříč relacemi jako uživatelská data.
 
 Až budete připraveni na integraci ukázek, odkazujte na knihovnu VideoFrameAnalyzer ze svých vlastních projektů.
@@ -245,7 +245,7 @@ Funkce VideoFrameAnalyzer s využitím obrázků, hlasu, videa a porozumění te
 
 ## <a name="summary"></a>Souhrn
 
-V tomto článku jste zjistili, jak spustit analýzu téměř v reálném čase pro streamy videí pomocí Face API a rozhraní API pro počítačové zpracování obrazu. Zjistili jste také, jak můžete začít používat náš vzorový kód. Pokud chcete začít sestavovat aplikaci pomocí bezplatných klíčů rozhraní API, navštivte [stránku registrace Azure Cognitive Services](https://azure.microsoft.com/try/cognitive-services/).
+V tomto článku jste zjistili, jak spustit analýzu téměř v reálném čase u streamů videa s využitím obličeje a Počítačové zpracování obrazu služeb. Zjistili jste také, jak můžete začít používat náš vzorový kód. Pokud chcete začít sestavovat aplikaci pomocí bezplatných klíčů rozhraní API, navštivte [stránku registrace Azure Cognitive Services](https://azure.microsoft.com/try/cognitive-services/).
 
 V [úložišti GitHubu](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/)můžete poskytnout zpětnou vazbu a návrhy. Pokud chcete poskytnout širší názor na rozhraní API, přečtěte si náš [Web UserVoice](https://cognitive.uservoice.com/).
 

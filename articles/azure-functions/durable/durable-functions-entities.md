@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8aaa19a9d5bd5d7b2764320d5d91c8a6c010b3c8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d469d52a6db6c3640d07b46422ffe669a898dde8
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433322"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262992"
 ---
 # <a name="entity-functions"></a>Funkce entit
 
@@ -53,7 +53,9 @@ V současné době jsou dvě různá rozhraní API pro definování entit:
 
 **Syntaxe založená na funkcích**, kde jsou entity reprezentovány jako funkce a operace jsou explicitně odesílány aplikací. Tato syntaxe funguje dobře pro entity s jednoduchým stavem, malým počtem operací nebo dynamickou sadou operací, jako v aplikačních architekturách. Tato syntaxe může být zdlouhavá, protože nezachycuje chyby typu v době kompilace.
 
-**Syntaxe založená na třídě**, kde jsou entity a operace reprezentovány třídami a metodami. Tato syntaxe vytváří snadněji čitelný kód a umožňuje, aby operace byly vyvolány způsobem bezpečným pro typ. Syntaxe založená na třídě je tenká vrstva nad syntaxí založenou na funkci, takže obě varianty lze ve stejné aplikaci použít zaměnitelné.
+**Syntaxe založená na třídě (pouze .NET)** , kde entity a operace jsou reprezentovány třídami a metodami. Tato syntaxe vytváří snadněji čitelný kód a umožňuje, aby operace byly vyvolány způsobem bezpečným pro typ. Syntaxe založená na třídě je tenká vrstva nad syntaxí založenou na funkci, takže obě varianty lze ve stejné aplikaci použít zaměnitelné.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ### <a name="example-function-based-syntax---c"></a>Příklad: syntaxe založená na funkcích –C#
 
@@ -107,11 +109,13 @@ Stav této entity je objekt typu `Counter`, který obsahuje pole, které uklád�
 
 Další informace o syntaxi založené na třídě a způsobu jejich použití naleznete v tématu [definování tříd entit](durable-functions-dotnet-entities.md#defining-entity-classes).
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ### <a name="example-javascript-entity"></a>Příklad: entita JavaScript
 
 Trvalé entity jsou k dispozici v JavaScriptu počínaje verzí **1.3.0** balíčku `durable-functions` npm. Následující kód je `Counter` entita implementovaná jako trvalá funkce napsaná v JavaScriptu.
 
-**function.json**
+**Čítač/Function. JSON**
 ```json
 {
   "bindings": [
@@ -125,7 +129,7 @@ Trvalé entity jsou k dispozici v JavaScriptu počínaje verzí **1.3.0** balí�
 }
 ```
 
-**index.js**
+**Čítač/index. js**
 ```javascript
 const df = require("durable-functions");
 
@@ -146,6 +150,8 @@ module.exports = df.entity(function(context) {
 });
 ```
 
+---
+
 ## <a name="access-entities"></a>Přístup k entitám
 
 K entitám lze přistupovat pomocí jednosměrné nebo obousměrné komunikace. Následující terminologie rozlišuje tyto dvě formy komunikace: 
@@ -161,12 +167,14 @@ K entitám je možné přistupovat z funkcí klienta, z funkcí nástroje Orches
 
 Následující příklady znázorňují různé způsoby přístupu k entitám.
 
-> [!NOTE]
-> V následujících příkladech se pro přístup k entitám zobrazí následující příklady s volným typem. Obecně doporučujeme, abyste měli [přístup k entitám prostřednictvím rozhraní](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) , protože poskytuje další kontrolu typu.
-
 ### <a name="example-client-signals-an-entity"></a>Příklad: klient signalizuje entitu.
 
 Pro přístup k entitám z běžné funkce Azure, která je také známá jako funkce klienta, použijte [vazbu klienta entity](durable-functions-bindings.md#entity-client). Následující příklad ukazuje funkce aktivované frontou, která tuto vazbu používá.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+> [!NOTE]
+> V následujících příkladech se pro přístup k entitám zobrazí následující příklady s volným typem. Obecně doporučujeme, abyste měli [přístup k entitám prostřednictvím rozhraní](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) , protože poskytuje další kontrolu typu.
 
 ```csharp
 [FunctionName("AddFromQueue")]
@@ -181,6 +189,8 @@ public static Task Run(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -191,11 +201,15 @@ module.exports = async function (context) {
 };
 ```
 
+---
+
 Termínový *signál* znamená, že volání rozhraní API entity je jednosměrné a asynchronní. Pro funkci klienta není možné zjistit, kdy entita tuto operaci zpracovala. Funkce klienta navíc nemůže sledovat žádné hodnoty výsledků ani výjimky. 
 
 ### <a name="example-client-reads-an-entity-state"></a>Příklad: klient přečte stav entity.
 
 Funkce klienta se také mohou dotazovat na stav entity, jak je znázorněno v následujícím příkladu:
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("QueryCounter")]
@@ -209,6 +223,8 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -220,11 +236,15 @@ module.exports = async function (context) {
 };
 ```
 
+---
+
 Dotazy na stav entity se odesílají do trvalého úložiště sledování a vracejí poslední trvalý stav entity. Tento stav je vždy stav "potvrzený", to znamená, že během provádění operace se nepředpokládá dočasný přechodný stav. Je ale možné, že je tento stav zastaralý ve srovnání se stavem v paměti entity. Pouze orchestrace mohou číst stav v paměti entity, jak je popsáno v následující části.
 
 ### <a name="example-orchestration-signals-and-calls-an-entity"></a>Příklad: signály Orchestrace a volání entity
 
 Funkce Orchestrator mají přístup k entitám pomocí rozhraní API ve [vazbě triggeru orchestrace](durable-functions-bindings.md#orchestration-trigger). Následující příklad kódu ukazuje volání funkce Orchestrator a signalizaci `Counter` entitu.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CounterOrchestration")]
@@ -243,6 +263,8 @@ public static async Task Run(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -257,6 +279,8 @@ module.exports = df.orchestrator(function*(context){
 > [!NOTE]
 > JavaScript v současné době nepodporuje signalizaci entity z nástroje Orchestrator. Místo toho použijte `callEntity`.
 
+---
+
 Pouze orchestrace jsou schopny volat entity a získat odpověď, což může být buď návratová hodnota, nebo výjimka. Funkce klienta, které používají [vazbu klienta](durable-functions-bindings.md#entity-client) , mohou signalizovat pouze entity.
 
 > [!NOTE]
@@ -266,6 +290,8 @@ Pouze orchestrace jsou schopny volat entity a získat odpověď, což může bý
 
 Funkce entity může posílat signály jiným entitám nebo dokonce sám sebe, zatímco provádí operaci.
 Můžete například upravit předchozí příklad entity `Counter` tak, aby pošle signál "s milníkem" na určitou entitu monitorování, když čítač dosáhne hodnoty 100.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
    case "add":
@@ -280,6 +306,8 @@ Můžete například upravit předchozí příklad entity `Counter` tak, aby po�
         break;
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
     case "add":
         const amount = context.df.getInput();
@@ -291,7 +319,9 @@ Můžete například upravit předchozí příklad entity `Counter` tak, aby po�
         break;
 ```
 
-## <a name="entity-coordination"></a>Koordinace entit
+---
+
+## <a name="entity-coordination"></a>Koordinace entit (aktuálně jenom .NET)
 
 Může nastat situace, kdy potřebujete koordinovat operace mezi několika entitami. Například v bankovní aplikaci můžete mít entity, které reprezentují jednotlivé bankovní účty. Při přenosu finančních prostředků z jednoho účtu na jiný je nutné zajistit, aby měl zdrojový účet dostatečné prostředky. Také je nutné zajistit, aby se aktualizace zdrojového i cílového účtu prováděly v rámci reakčního konzistentního postupu.
 
@@ -376,7 +406,7 @@ Jakékoli porušení těchto pravidel způsobí chybu za běhu, jako je napřík
 
 ## <a name="comparison-with-virtual-actors"></a>Porovnání s virtuálními aktéry
 
-Mnohé z funkcí trvalé entity nechte inspirovat [model actor](https://en.wikipedia.org/wiki/Actor_model). Pokud jste již obeznámeni s objekty Actors, můžete rozpoznat mnoho konceptů popsaných v tomto článku. Trvalé entity jsou obzvláště podobné [virtuálním aktérům](https://research.microsoft.com/projects/orleans/)nebo zrnam, jak je oblíbená v rámci [projektu Orleans](http://dotnet.github.io/orleans/). Příklad:
+Mnohé z funkcí trvalé entity nechte inspirovat [model actor](https://en.wikipedia.org/wiki/Actor_model). Pokud jste již obeznámeni s objekty Actors, můžete rozpoznat mnoho konceptů popsaných v tomto článku. Trvalé entity jsou obzvláště podobné [virtuálním aktérům](https://research.microsoft.com/projects/orleans/)nebo zrnam, jak je oblíbená v rámci [projektu Orleans](http://dotnet.github.io/orleans/). Například:
 
 * Trvalé entity jsou adresovatelné prostřednictvím ID entity.
 * Trvalé operace s entitami se v jednom okamžiku spouštějí po jednom, aby se zabránilo konfliktům časování.

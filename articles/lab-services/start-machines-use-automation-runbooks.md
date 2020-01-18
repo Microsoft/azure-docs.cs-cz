@@ -1,6 +1,6 @@
 ---
-title: Spuštění počítače pomocí runbooků Automation ve službě Azure DevTest Labs | Dokumentace Microsoftu
-description: Zjistěte, jak spustit virtuální počítače v testovacím prostředí ve službě Azure DevTest Labs pomocí runbooků Azure Automation.
+title: Spouštění počítačů pomocí runbooků Automation v Azure DevTest Labs
+description: Naučte se spouštět virtuální počítače v testovacím prostředí v Azure DevTest Labs pomocí Azure Automation sad Runbook.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -10,29 +10,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 8d3885ba25e479316f97ecbb0681a1680650fc09
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9bb97a73b7ca570ca122323e8e9c5a70c9348b15
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61083614"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166310"
 ---
-# <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Spuštění virtuálních počítačů v testovacím prostředí v pořadí pomocí runbooků Azure Automation
-[Autostart](devtest-lab-set-lab-policy.md#set-autostart) funkce DevTest Labs umožňuje konfigurovat virtuální počítače na automatické spouštění v určenou dobu. Tato funkce nepodporuje počítače ke spuštění v určitém pořadí. Existuje několik scénářů, ve kterém tento typ automation může být užitečné.  Jeden scénář je, kde Jumpbox virtuálního počítače v testovacím prostředí musí být spuštěna nejprve, než ostatní virtuální počítače, jako Jumpbox slouží jako přístupový bod pro ostatní virtuální počítače.  V tomto článku se dozvíte, jak vytvořit účet Azure Automation s Powershellového runbooku, který se spustí skript. Skript používá značky na virtuálních počítačích v testovacím prostředí a umožňuje tak řídit pořadí spouštění bez nutnosti změny skriptu.
+# <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Spouštění virtuálních počítačů v testovacím prostředí pomocí Azure Automationch runbooků
+Funkce [autostart](devtest-lab-set-lab-policy.md#set-autostart) v DevTest Labs vám umožní nakonfigurovat, aby se virtuální počítače spouštěly automaticky v zadaném čase. Tato funkce ale nepodporuje, aby se počítače spouštěly v určitém pořadí. Existuje několik scénářů, kdy by tento typ automatizace mohl být užitečný.  Jedním z nich je, že virtuální počítač s JumpBox v testovacím prostředí je potřeba nejdřív spustit, ale před ostatními virtuálními počítači, protože JumpBox se používá jako přístupový bod k ostatním virtuálním počítačům.  V tomto článku se dozvíte, jak nastavit účet Azure Automation pomocí Runbooku PowerShellu, který spustí skript. Skript používá značky na virtuálních počítačích v testovacím prostředí, aby bylo možné řídit pořadí spouštění bez nutnosti změny skriptu.
 
-## <a name="setup"></a>Instalace
-V tomto příkladu se virtuální počítače v testovacím prostředí musí mít značka **StartupOrder** přidán s odpovídající hodnotou (0,1,2, atd.). Určete všechny počítače, které nemusí být spuštěna jako hodnotu -1.
+## <a name="setup"></a>Nastavení
+V tomto příkladu musí virtuální počítače v testovacím prostředí mít přidaný tag **StartupOrder** s odpovídající hodnotou (0, 1, 2 atd.). Určete všechny počítače, které nemusíte spouštět jako-1.
 
 ## <a name="create-an-azure-automation-account"></a>Vytvoření účtu Azure Automation
-Vytvoření účtu Azure Automation podle pokynů v [v tomto článku](../automation/automation-create-standalone-account.md). Zvolte **účty spustit jako** možnosti při vytváření účtu. Po vytvoření účtu automation, otevřete **moduly** stránku a vybrat **aktualizace modulů Azure** na řádku nabídek. Moduly, ve výchozím nastavení se že několik verzí starý a bez aktualizace skriptu nemusí fungovat.
+Vytvořte účet Azure Automation podle pokynů v [tomto článku](../automation/automation-create-standalone-account.md). Při vytváření účtu vyberte možnost **účty Spustit jako** . Po vytvoření účtu Automation otevřete stránku **moduly** a v řádku nabídek vyberte **aktualizovat moduly Azure** . Výchozí moduly jsou staré starší verze a bez aktualizace skript nemusí fungovat.
 
 ## <a name="add-a-runbook"></a>Přidat runbook
-Teď přidáte sady runbook do účtu automation vyberte **sady Runbook** v nabídce vlevo. Vyberte **přidat runbook** v nabídce a postupujte podle pokynů [vytvořte Powershellový runbook](../automation/automation-first-runbook-textual-powershell.md).
+Pokud teď chcete přidat Runbook do účtu Automation, v levé nabídce vyberte **Runbooky** . V nabídce vyberte **Přidat Runbook** a podle pokynů [vytvořte powershellový Runbook](../automation/automation-first-runbook-textual-powershell.md).
 
 ## <a name="powershell-script"></a>Skript PowerShellu
-Tento skript má název předplatného, název testovacího prostředí jako parametry. Tok souboru, který je k získání všech virtuálních počítačů v testovacím prostředí a pak pomocí parsování značek informací pro vytvoření seznamu názvy virtuálních počítačů a jejich pořadí spouštění. Skript provede virtuální počítače postupně a spustí virtuální počítače. Pokud existuje více virtuálních počítačů v určité pořadové číslo, jsou spuštěny asynchronně použití úloh Powershellu. U těchto počítačů, které nemají značku, sada spouštěcí hodnota byla poslední (10), spustí se poslední, ve výchozím nastavení.  Pokud testovací prostředí nechce být automaticky spustit virtuální počítač, nastavte hodnotu značky 11 a bude se ignorovat.
+Následující skript převezme název předplatného, název testovacího prostředí jako parametry. Tok skriptu je získat všechny virtuální počítače v testovacím prostředí a pak analyzovat informace o značce a vytvořit seznam názvů virtuálních počítačů a jejich pořadí spouštění. Skript projde virtuálními počítači v uvedeném pořadí a spustí virtuální počítače. Pokud je v konkrétním pořadovém čísle více virtuálních počítačů, spouští se asynchronně pomocí úloh prostředí PowerShell. Pro virtuální počítače, které nemají značku, nastavte počáteční hodnotu jako poslední (10), ve výchozím nastavení se spustí jako poslední.  Pokud testovací prostředí nechce, aby se virtuální počítač spouštěl správně, nastavte značku na hodnotu 11 a bude ignorována.
 
 ```powershell
 #Requires -Version 3.0
@@ -133,9 +133,9 @@ While ($current -le 10) {
 ```
 
 ## <a name="create-a-schedule"></a>Vytvoření plánu
-Aby tento skript spusťte každý den, [vytvořit plán](../automation/shared-resources/schedules.md#creating-a-schedule) v účtu automation. Po vytvoření plánu [odkaz na sadu runbook](../automation/shared-resources/schedules.md#linking-a-schedule-to-a-runbook). 
+Aby se tento skript spouštěl každý den, vytvořte v účtu Automation [plán](../automation/shared-resources/schedules.md#creating-a-schedule) . Po vytvoření plánu [ho připojte k sadě Runbook](../automation/shared-resources/schedules.md#linking-a-schedule-to-a-runbook). 
 
-V rozsáhlých situaci, kdy existuje více předplatných s více testovacích prostředí, ukládat informace o parametrech v souboru pro různé testovací prostředí a předat soubor skriptu, takže jednotlivé parametry. Tento skript by bylo potřeba změnit, ale provádění jádra by byla stejná. Přestože tato ukázka používá Azure Automation a spustit skript prostředí PowerShell, existují další možnosti, například úlohy v kanálu sestavení/vydané verze.
+V rozsáhlých situacích, kdy existuje více předplatných s více cvičeními, uložte informace o parametrech do souboru pro jinou laboratoř a předejte soubor do skriptu místo jednotlivých parametrů. Skript by musel být upraven, ale základní spuštění bude stejné. I když tato ukázka používá Azure Automation ke spuštění skriptu PowerShellu, existují další možnosti, jako je použití úlohy v kanálu sestavení nebo vydání.
 
-## <a name="next-steps"></a>Další postup
-Přečtěte si článek získat další informace o službě Azure Automation: [Úvod do služby Azure Automation](../automation/automation-intro.md).
+## <a name="next-steps"></a>Další kroky
+Další informace o Azure Automation najdete v následujícím článku: [Úvod do Azure Automation](../automation/automation-intro.md).

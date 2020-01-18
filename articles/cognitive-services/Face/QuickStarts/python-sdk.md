@@ -9,16 +9,16 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: badfec71ad44fd9eebc748f716301ad6731883cf
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 7ac1b85ee44627990931cfc7b3a65f6f7a661b3f
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770352"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165818"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Rychlý Start: Klientská knihovna pro Python
 
-Začínáme s klientskou knihovnou obličeje pro Python Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. Služba Face API poskytuje přístup k pokročilým algoritmům pro zjišťování a rozpoznávání lidských plošek na obrázcích.
+Začínáme s klientskou knihovnou obličeje pro Python Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. Služba Faceer poskytuje přístup k pokročilým algoritmům pro zjišťování a rozpoznávání lidských plošek na obrázcích.
 
 Pomocí klientské knihovny obličeje pro Python:
 
@@ -290,5 +290,5 @@ V tomto rychlém startu jste zjistili, jak používat knihovnu obličeje pro Pyt
 > [!div class="nextstepaction"]
 > [Odkaz na Face API (Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python)
 
-* [Co je Face API?](../overview.md)
+* [Co je služba obličeje?](../overview.md)
 * Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py)

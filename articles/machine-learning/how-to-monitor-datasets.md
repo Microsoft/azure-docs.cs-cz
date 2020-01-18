@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 524a831c63e2a034766b874cc45bb039e3185b50
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 4efdc47e65f0f29f74f1477b02efdc6b8767ffb2
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75536873"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264759"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Zjištění posunu dat (Preview) u datových sad
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -315,6 +315,7 @@ Omezení a známé problémy:
 * Omezení 200 funkcí, pokud není zadán seznam funkcí (všechny používané funkce).
 * Velikost výpočetní kapacity musí být pro zpracování dat dostatečně velká. 
 * Zajistěte, aby datová sada měla data v rámci počátečního a koncového data daného spuštění monitorování.
+* Monitory datové sady budou fungovat jenom u datových sad, které obsahují 50 nebo více řádků. 
 
 Sloupce nebo funkce v datové sadě jsou klasifikovány jako kategorií nebo číselné na základě podmínek v následující tabulce. Pokud tato funkce nesplňuje tyto podmínky – například sloupec typu řetězec s > 100 jedinečnými hodnotami – funkce je vyřazena z našeho algoritmu pro posun dat, ale je stále profilovaná. 
 

@@ -1,5 +1,5 @@
 ---
-title: Vytváření Azure Service Busch prostředků pomocí šablon Správce prostředků | Microsoft Docs
+title: Vytváření Azure Service Busch prostředků pomocí šablon
 description: Použití šablon Azure Resource Manager k automatizaci vytváření prostředků Service Bus
 services: service-bus-messaging
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 09/11/2018
 ms.author: spelluru
-ms.openlocfilehash: d473cf2a79fb86028797205ee7885b51169b10bf
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 9bc784ee57b9bde393408cbefa9a197aebc59b08
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978242"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264454"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Vytváření Service Busch prostředků pomocí šablon Azure Resource Manager
 
@@ -181,7 +181,7 @@ Set-AzContext -SubscriptionID <YourSubscriptionId>
 
 ### <a name="set-the-resource-group"></a>Nastavení skupiny prostředků
 
-Pokud nemáte existující skupinu prostředků, vytvořte novou skupinu prostředků pomocí příkazu **New-AzResourceGroup** . Zadejte název skupiny prostředků a umístění, které chcete použít. Příklad:
+Pokud nemáte existující skupinu prostředků, vytvořte novou skupinu prostředků pomocí příkazu **New-AzResourceGroup** . Zadejte název skupiny prostředků a umístění, které chcete použít. Například:
 
 ```powershell
 New-AzResourceGroup -Name MyDemoRG -Location "West US"

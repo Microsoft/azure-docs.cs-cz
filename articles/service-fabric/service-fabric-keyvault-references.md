@@ -3,12 +3,12 @@ title: Azure Service Fabric – použití Service Fabricch odkazů na Trezor kl�
 description: Tento článek vysvětluje, jak používat podporu KeyVaultReference Service-Fabric pro tajné klíče pro aplikace.
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: b0e882c2b39c06a3040d22fc6694599966ceeb39
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3f4c4979d0ce1329ac8ba49b236dae20a4e88b53
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463034"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167132"
 ---
 #  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Podpora KeyVaultReference pro aplikace Service Fabric (Preview)
 
@@ -61,6 +61,7 @@ Běžným problémem při sestavování cloudových aplikací je bezpečné ukl�
 
     > [!NOTE] 
     > Pro šablony stylů CSS doporučujeme použít samostatný šifrovací certifikát. Můžete ho přidat pod oddíl "CentralSecretService".
+    
 
     ```json
         {
@@ -68,7 +69,18 @@ Běžným problémem při sestavování cloudových aplikací je bezpečné ukl�
             "value": "<EncryptionCertificateThumbprint for CSS>"
         }
     ```
-
+Aby se změny projevily, budete také muset změnit zásadu upgradu, aby určovala vynucené restartování Service Fabric modulu runtime na každém uzlu, protože upgrade probíhají prostřednictvím clusteru. Tento restart zajistí, že se nově povolená systémová služba spustí a spustí na každém uzlu. V následujícím fragmentu kódu je forceRestart základním nastavením; pro zbývající část nastavení použijte existující hodnoty.
+```json
+"upgradeDescription": {
+    "forceRestart": true,
+    "healthCheckRetryTimeout": "00:45:00",
+    "healthCheckStableDuration": "00:05:00",
+    "healthCheckWaitDuration": "00:05:00",
+    "upgradeDomainTimeout": "02:00:00",
+    "upgradeReplicaSetCheckTimeout": "1.00:00:00",
+    "upgradeTimeout": "12:00:00"
+}
+```
 - Udělení oprávnění přístupu spravované identitě aplikace do trezoru klíčů
 
     Odkaz na tento [dokument](how-to-grant-access-other-resources.md) vám umožní zjistit, jak udělit spravované identitě přístup k trezoru klíčů. Všimněte si také, že pokud používáte spravovanou identitu přiřazenou systémem, je spravovaná identita vytvořena až po nasazení aplikace.

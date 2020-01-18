@@ -1,20 +1,20 @@
 ---
 title: Kurz – nasazení Custom Vision třídění do zařízení pomocí Azure IoT Edge
-description: V tomto kurzu se naučíte, jak pomocí Custom Vision a IoT Edge spustit model počítačové vize jako kontejner.
+description: V tomto kurzu se dozvíte, jak aby běžela jako kontejner pomocí vlastní vize a IoT Edge modelem počítačového zpracování obrazu.
 services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/15/2019
+ms.date: 01/15/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 41a2fac48980cf376c833b022b833cfcf1e99821
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 07350ffe4a57bfe4a79bfce5d821b51535867935
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701881"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167000"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Kurz: Provádění klasifikace obrázků na hraničních zařízeních s využitím služby Custom Vision
 
@@ -37,12 +37,12 @@ klasifikátoru nasazení </center>
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 >[!TIP]
 >Tento kurz je zjednodušenou verzí [Custom Vision a Azure IoT Edge v projektu s](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi) ukázkovým projektem malin. PI 3. Tento kurz byl navržený tak, aby se spouštěl v cloudovém virtuálním počítači a pomocí statických imagí dokázal naučit a testovat třídění imagí. to je užitečné pro někoho, co začne hodnotit Custom Vision IoT Edge. Ukázkový projekt používá fyzický hardware a nastavuje živý kanál kamery ke školení a testování klasifikátoru obrázků, který je užitečný pro někoho, kdo chce vyzkoušet podrobnější scénář pro reálný život.
 
-Před zahájením tohoto kurzu byste si měli projít předchozí kurz pro nastavení prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky: 
+Před zahájením tohoto kurzu byste si měli projít předchozí kurz pro nastavení prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky:
 
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Free nebo Standard v Azure.
 * [Zařízení se systémem Linux se spuštěným Azure IoT Edge](quickstart-linux.md)
@@ -50,23 +50,23 @@ Před zahájením tohoto kurzu byste si měli projít předchozí kurz pro nasta
 * [Visual Studio Code](https://code.visualstudio.com/) nakonfigurovaných pomocí [nástrojů Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * [Docker CE](https://docs.docker.com/install/) nakonfigurovaný pro spouštění kontejnerů Linux.
 
-Pokud chcete vytvořit modul IoT Edge se službou Custom Vision, nainstalujte na svém vývojovém počítači následující další požadavky: 
+Pokud chcete vytvořit modul IoT Edge se službou Custom Vision, nainstalujte na svém vývojovém počítači následující další požadavky:
 
 * [Python](https://www.python.org/downloads/)
 * [Git](https://git-scm.com/downloads)
-* [Rozšíření Pythonu pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python) 
+* [Rozšíření Pythonu pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 
 ## <a name="build-an-image-classifier-with-custom-vision"></a>Vytvoření klasifikátoru obrázků s využitím služby Custom Vision
 
 Pokud chcete vytvořit klasifikátor obrázků, je potřeba vytvořit projekt služby Custom Vision a poskytnout trénovací obrázky. Další informace o krocích, které provedete v této části, najdete v tématu [Postup vytvoření klasifikátoru s využitím služby Custom Vision](../cognitive-services/custom-vision-service/getting-started-build-a-classifier.md).
 
-Jakmile bude klasifikátor obrázků vytvořený a natrénovaný, můžete ho exportovat jako kontejner Dockeru a nasadit do zařízení IoT Edge. 
+Jakmile bude klasifikátor obrázků vytvořený a natrénovaný, můžete ho exportovat jako kontejner Dockeru a nasadit do zařízení IoT Edge.
 
 ### <a name="create-a-new-project"></a>Vytvoření nového projektu
 
 1. Ve webovém prohlížeči přejděte na [webovou stránku služby Custom Vision](https://customvision.ai/).
 
-2. Vyberte **Přihlásit se** a přihlaste se pomocí stejného účtu, který používáte pro přístup k prostředkům Azure. 
+2. Vyberte **Přihlásit se** a přihlaste se pomocí stejného účtu, který používáte pro přístup k prostředkům Azure.
 
 3. Vyberte **Nový projekt**.
 
@@ -86,41 +86,41 @@ Jakmile bude klasifikátor obrázků vytvořený a natrénovaný, můžete ho ex
 
 ### <a name="upload-images-and-train-your-classifier"></a>Nahrání obrázků a trénování klasifikátoru
 
-Při vytváření klasifikátoru obrázků je potřeba sada trénovacích obrázků a také testovací obrázky. 
+Při vytváření klasifikátoru obrázků je potřeba sada trénovacích obrázků a také testovací obrázky.
 
-1. Na svůj místní vývojový počítač si naklonujte nebo stáhněte ukázkové obrázky z úložiště [Cognitive-CustomVision-Windows](https://github.com/Microsoft/Cognitive-CustomVision-Windows). 
+1. Na svůj místní vývojový počítač si naklonujte nebo stáhněte ukázkové obrázky z úložiště [Cognitive-CustomVision-Windows](https://github.com/Microsoft/Cognitive-CustomVision-Windows).
 
    ```cmd/sh
    git clone https://github.com/Microsoft/Cognitive-CustomVision-Windows.git
    ```
 
-2. Vraťte se ke svému projektu služby Custom Vision a vyberte **Přidat obrázky**. 
+2. Vraťte se ke svému projektu služby Custom Vision a vyberte **Přidat obrázky**.
 
-3. Přejděte do místního úložiště Git, které jste naklonovali, a pak do první složky s obrázky **Cognitive-CustomVision-Windows / Samples / Images / Hemlock**. Vyberte všech 10 obrázků ve složce a pak vyberte **Otevřít**. 
+3. Přejděte do místního úložiště Git, které jste naklonovali, a pak do první složky s obrázky **Cognitive-CustomVision-Windows / Samples / Images / Hemlock**. Vyberte všech 10 obrázků ve složce a pak vyberte **Otevřít**.
 
-4. Přidejte k této skupině obrázků značku **hemlock** (Jedlovec) a stiskněte **Enter**, aby se značka použila. 
+4. Přidejte k této skupině obrázků značku **hemlock** (Jedlovec) a stiskněte **Enter**, aby se značka použila.
 
-5. Vyberte **Nahrát soubory (10)** . 
+5. Vyberte **Nahrát soubory (10)** .
 
-   ![Nahrání souborů s příznakem Hemlock do Custom Vision](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
+   ![Nahrát soubory označené hemlock Custom Vision](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
 
 6. Po úspěšném nahrání obrázků vyberte **Hotovo**.
 
 7. Znovu vyberte **Přidat obrázky**.
 
-8. Přejděte do druhé složky s obrázky **Cognitive-CustomVision-Windows / Samples / Images / Japanese Cherry**. Vyberte všech 10 obrázků ve složce a pak vyberte **Otevřít**. 
+8. Přejděte do druhé složky s obrázky **Cognitive-CustomVision-Windows / Samples / Images / Japanese Cherry**. Vyberte všech 10 obrázků ve složce a pak vyberte **Otevřít**.
 
-9. Přidejte k této skupině obrázků značku **japanese cherry** (Sakura) a stiskněte **Enter**, aby se značka použila. 
+9. Přidejte k této skupině obrázků značku **japanese cherry** (Sakura) a stiskněte **Enter**, aby se značka použila.
 
-10. Vyberte **Nahrát soubory (10)** . Po úspěšném nahrání obrázků vyberte **Hotovo**. 
+10. Vyberte **Nahrát soubory (10)** . Po úspěšném nahrání obrázků vyberte **Hotovo**.
 
-11. Jakmile budou obě sady obrázků označené a nahrané, vyberte **Trénovat** a natrénujte klasifikátor. 
+11. Jakmile budou obě sady obrázků označené a nahrané, vyberte **Trénovat** a natrénujte klasifikátor.
 
 ### <a name="export-your-classifier"></a>Export klasifikátoru
 
-1. Po natrénování klasifikátoru na stránce Výkon klasifikátoru vyberte **Exportovat**. 
+1. Po natrénování klasifikátoru na stránce Výkon klasifikátoru vyberte **Exportovat**.
 
-   ![Exportovat klasifikátor vyškolených imagí](./media/tutorial-deploy-custom-vision/export.png)
+   ![Export klasifikátoru trénovaného image](./media/tutorial-deploy-custom-vision/export.png)
 
 2. Jako platformu vyberte **DockerFile**. 
 
@@ -263,7 +263,8 @@ V této části do stejného řešení CustomVisionSolution přidáte nový modu
                 print("Response from classification service: (" + str(response.status_code) + ") " + json.dumps(response.json()) + "\n")
             except Exception as e:
                 print(e)
-                print("Response from classification service: (" + str(response.status_code))
+                print("No response from classification service")
+                return None
 
         return json.dumps(response.json())
 
@@ -282,7 +283,8 @@ V této části do stejného řešení CustomVisionSolution přidáte nový modu
 
             while True:
                 classification = sendFrameForProcessing(imagePath, imageProcessingEndpoint)
-                send_to_hub(classification)
+                if classification:
+                    send_to_hub(classification)
                 time.sleep(10)
 
         except KeyboardInterrupt:
@@ -326,15 +328,15 @@ Místo toho, abychom k poskytování kanálu obrázků pro tento scénář použ
 
 3. Přejděte do adresáře řešení IoT Edge a vložte testovací obrázek do složky **modules** / **cameraCapture**. Obrázek musí být ve stejné složce jako soubor main.py, který jste upravovali v předchozí části. 
 
-3. Ve Visual Studio Code otevřete soubor **Dockerfile.amd64** s modulem cameraCapture. 
+4. Ve Visual Studio Code otevřete soubor **Dockerfile.amd64** s modulem cameraCapture.
 
-4. Za řádek, který určuje pracovní adresář (`WORKDIR /app`) přidejte následující řádek kódu: 
+5. Za řádek, který určuje pracovní adresář (`WORKDIR /app`) přidejte následující řádek kódu:
 
    ```Dockerfile
    ADD ./test_image.jpg .
    ```
 
-5. Uložte soubor Dockerfile. 
+6. Uložte soubor Dockerfile.
 
 ### <a name="prepare-a-deployment-manifest"></a>Příprava manifestu nasazení
 
@@ -358,7 +360,7 @@ Rozšíření IoT Edge pro Visual Studio Code poskytuje v každém řešení IoT
 
     Pokud jste modul služby Custom Vision pojmenovali jinak než *classifier*, aktualizujte odpovídajícím způsobem hodnotu koncového bodu pro zpracování obrázků. 
 
-5. V dolní části souboru aktualizujte parametr **routes** pro modul $edgeHub. Výsledky předpovědí z modulu cameraCapture chcete směrovat do služby IoT Hub. 
+6. V dolní části souboru aktualizujte parametr **routes** pro modul $edgeHub. Výsledky předpovědí z modulu cameraCapture chcete směrovat do služby IoT Hub.
 
     ```json
         "routes": {
@@ -410,7 +412,6 @@ V Visual Studio Code klikněte pravým tlačítkem myši na název vašeho zař�
 
 Výsledky z modulu služby Custom Vision, které se odesílají jako zprávy z modulu cameraCapture, zahrnují pravděpodobnost, s jakou se jedná o obrázek jedlovce nebo sakury. Vzhledem k tomu, že se jedná o obrázek jedlovce, měla by se zobrazit pravděpodobnost 1.0. 
 
-
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud máte v plánu pokračovat k dalšímu doporučenému článku, můžete si vytvořené prostředky a konfigurace uschovat a znovu je použít. Také můžete dál používat stejné zařízení IoT Edge jako testovací zařízení. 
@@ -418,7 +419,6 @@ Pokud máte v plánu pokračovat k dalšímu doporučenému článku, můžete s
 V opačném případě můžete odstranit místní konfigurace a prostředky Azure, které jste použili v tomto článku, abyste se vyhnuli poplatkům. 
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
-
 
 ## <a name="next-steps"></a>Další kroky
 

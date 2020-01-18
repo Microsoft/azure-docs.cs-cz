@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Rozhraní API pro rozpoznávání tváře v jazyce C#'
+title: 'Kurz: připojená služba obličeje'
 titleSuffix: Azure Cognitive Services
-description: Vytvořte aplikaci pro Windows, která používá Face API Cognitive Services k detekci funkcí plošek v obrázku.
+description: Vytvořte aplikaci pro Windows, která používá službu Cognitive Services Faceer k detekci funkcí obličeje v obrázku.
 services: cognitive-services
 author: ghogen
 manager: nitinme
@@ -10,27 +10,27 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: ghogen
-ms.openlocfilehash: 4b204b9895a2afea4c78d1d92f2cca68f77ae708
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e0fe92fc7f19c3c899bcccfa9f9cc18029af049c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970291"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170241"
 ---
-# <a name="connecting-to-cognitive-services-face-api-by-using-connected-services-in-visual-studio"></a>Připojení k rozhraní API pro rozpoznávání tváře služeb Cognitive Services pomocí připojených služeb v sadě Visual Studio
+# <a name="connect-to-the-face-service-by-using-connected-services-in-visual-studio"></a>Připojení ke službě obličeje pomocí připojených služeb v aplikaci Visual Studio
 
-S využitím rozhraní API pro rozpoznávání tváře služeb Cognitive Services můžete detekovat, analyzovat, organizovat a označovat tváře na fotkách.
+Pomocí služby Azure Faceer můžete na fotografiích detekovat, analyzovat, organizovat a označovat plošky.
 
-Tento článek a jeho doprovodné články obsahují podrobnosti k použití funkce připojené služby sady Visual Studio s rozhraním API pro rozpoznávání tváře služeb Cognitive Services. Tato možnost je dostupná v sadě Visual Studio 2017 15.7 nebo novější s nainstalovaným rozšířením Cognitive Services.
+Tento článek a jeho doprovodné články obsahují podrobné informace o používání funkce připojené služby sady Visual Studio pro službu obličeje. Tato možnost je dostupná v sadě Visual Studio 2017 15.7 nebo novější s nainstalovaným rozšířením Cognitive Services.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud žádné nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/)
 - Visual Studio 2017 verze 15,7 nebo novější s nainstalovanou úlohou **Vývoj webu** . [Stáhnout](https://www.visualstudio.com/downloads/)
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
-## <a name="create-a-project-and-add-support-for-cognitive-services-face-api"></a>Vytvoření projektu a přidání podpory rozhraní API pro rozpoznávání tváře služeb Cognitive Services
+## <a name="create-a-project-and-add-support-for-face"></a>Vytvoření projektu a přidání podpory pro obličej
 
 1. Vytvořte nový webový projekt ASP.NET Core. Použijte prázdnou šablonu projektu. 
 
@@ -47,16 +47,16 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
 
    ![Vyberte své předplatné.](media/vs-face-connected-service/Cog-Face-Connected-Service-1.PNG)
 
-1. Vyberte předplatné, které chcete použít, a pak zvolte název rozhraní API pro rozpoznávání tváře, nebo volbou odkazu Upravit změňte automaticky vygenerovaný název, zvolte skupinu prostředků a cenovou úroveň.
+1. Vyberte předplatné, které chcete použít, a potom zvolte název pro službu obličeje, nebo zvolte odkaz upravit pro upravení automaticky vygenerovaného názvu, zvolte skupinu prostředků a cenovou úroveň.
 
    ![Úprava podrobnosti připojené služby](media/vs-face-connected-service/Cog-Face-Connected-Service-2.PNG)
 
    Pomocí odkazu můžete zobrazit podrobnosti o cenových úrovních.
 
 1. Volbou možnosti Přidat přidejte podporu této připojené služby.
-   Visual Studio upraví projekt tak, že přidá balíčky NuGet, položky konfiguračního souboru a další změny pro podporu připojení rozhraní API pro rozpoznávání tváře.
+   Visual Studio změní projekt tak, aby přidal balíčky NuGet, položky konfiguračního souboru a další změny pro podporu připojení ke službě obličeje.
 
-## <a name="use-the-face-api-to-detect-attributes-of-faces-in-an-image"></a>Použití rozhraní API pro rozpoznávání tváře k detekci atributů tváří na obrázku
+## <a name="use-the-face-service-to-detect-attributes-of-faces-in-an-image"></a>Použití služby obličeje k detekci atributů ploch v obrázku
 
 1. Přidejte do souboru Startup.cs následující příkazy using.
  
@@ -79,7 +79,7 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
       }
    ```
 
-1. Do složky wwwroot projektu přidejte složku images a do složky wwwroot přidejte soubor obrázku. Jako příklad můžete použít jeden z obrázků na této [stránce rozhraní API pro rozpoznávání tváře](https://azure.microsoft.com/services/cognitive-services/face/). Klikněte pravým tlačítkem na jeden z imagí, uložte ho na svůj místní pevný disk a pak v Průzkumník řešení klikněte pravým tlačítkem na složku images a zvolte **přidat** > **existující položku** a přidejte ji do svého projektu. V Průzkumníku řešení by měl projekt vypadat takto:
+1. Do složky wwwroot projektu přidejte složku images a do složky wwwroot přidejte soubor obrázku. Jako příklad můžete použít jeden z imagí na [stránce obličeje](https://azure.microsoft.com/services/cognitive-services/face/) Azure Portal. Klikněte pravým tlačítkem na jeden z imagí, uložte ho na svůj místní pevný disk a pak v Průzkumník řešení klikněte pravým tlačítkem na složku images a zvolte **přidat** > **existující položku** a přidejte ji do svého projektu. V Průzkumníku řešení by měl projekt vypadat takto:
  
    ![Složka images se souborem obrázku](media/vs-face-connected-service/Cog-Face-Connected-Service-6.PNG)
 
@@ -87,7 +87,7 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
 
    ![Kopírovat, pokud je novější](media/vs-face-connected-service/Cog-Face-Connected-Service-5.PNG)
  
-1. Nahraďte metodu Configure následujícím kódem pro přístup k rozhraní API pro rozpoznávání tváře a otestování obrázku. Změňte řetězec imagePath na správnou cestu a název souboru pro váš obrázek s tváří.
+1. Nahraďte metodu Configure následujícím kódem pro přístup ke službě obličeje a otestujte obrázek. Změňte řetězec imagePath na správnou cestu a název souboru pro váš obrázek s tváří.
 
    ```csharp
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -231,13 +231,13 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
         }
    ```
 
-1. Spusťte webovou aplikaci a podívejte se, co rozhraní API pro rozpoznávání tváře najde na vašem obrázku.
+1. Spusťte webovou aplikaci a podívejte se, jak se v imagi našla služba obličeje.
  
-   ![Obrázek rozhraní API pro rozpoznávání tváře image a formátované výsledky](media/vs-face-connected-service/Cog-Face-Connected-Service-4.PNG)
+   ![Obrázek služby Faced a formátované výsledky](media/vs-face-connected-service/Cog-Face-Connected-Service-4.PNG)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Odstraňte skupinu prostředků, pokud ji už nepotřebujete. Tím se odstraní kognitivní služba a související prostředky. Odstranění skupiny prostředků přes portál:
+Pokud už ji nepotřebujete, odstraňte skupinu prostředků. Tím se odstraní kognitivní služba a související prostředky. Odstranění skupiny prostředků přes portál:
 
 1. Do pole Hledat v horní části portálu zadejte název vaší skupiny prostředků. Jakmile se ve výsledcích hledání zobrazí skupina prostředků použitá v tomto rychlém startu, vyberte ji.
 1. Vyberte **Odstranit skupinu prostředků**.
@@ -245,4 +245,4 @@ Odstraňte skupinu prostředků, pokud ji už nepotřebujete. Tím se odstraní 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o rozhraní API pro rozpoznávání tváře najdete v [dokumentaci k rozhraní API pro rozpoznávání tváře](Overview.md).
+Další informace o službě obličeje najdete v dokumentaci ke [obličejům](Overview.md).

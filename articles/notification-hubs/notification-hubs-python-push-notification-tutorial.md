@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 5321802023d57bedc135e2d19b2289f1d66deb72
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: db5174ed6f008be0fed1fdf3c2c83d33277c3b4e
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213081"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263791"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>Použití Notification Hubs z Pythonu
 
@@ -47,7 +47,7 @@ Můžete postupovat podle [kurzu Začínáme](notification-hubs-windows-store-do
 
 Hlavní klientské rozhraní může poskytovat stejné metody, které jsou k dispozici v sadě [.net Notification HUBS SDK](https://msdn.microsoft.com/library/jj933431.aspx). Toto rozhraní vám umožní přímo přeložit všechny kurzy a ukázky, které jsou aktuálně k dispozici na tomto webu, a přispívá komunitou na internetu.
 
-Veškerý kód, který je k dispozici v Pythonu, najdete v [Ukázka obálky Python REST].
+Veškerý kód, který je k dispozici v [Ukázka obálky Python REST], najdete v ukázce obálky s REST.
 
 Například pro vytvoření klienta:
 
@@ -103,7 +103,7 @@ class NotificationHub:
 ### <a name="create-security-token"></a>Vytvořit token zabezpečení
 
 Podrobnosti o vytvoření tokenu zabezpečení jsou k dispozici [zde](https://msdn.microsoft.com/library/dn495627.aspx).
-Přidejte následující metody do `NotificationHub` třídy pro vytvoření tokenu na základě identifikátoru URI aktuální žádosti a přihlašovacích údajů extrahovaných z připojovacího řetězce.
+Přidejte následující metody do třídy `NotificationHub` k vytvoření tokenu na základě identifikátoru URI aktuální žádosti a přihlašovacích údajů extrahovaných z připojovacího řetězce.
 
 ```python
 @staticmethod
@@ -165,7 +165,7 @@ Tato třída je kontejner pro nativní tělo oznámení nebo sadu vlastností oz
 
 Všechny dostupné možnosti najdete v [dokumentaci k rozhraním REST API pro Notification Hubs](https://msdn.microsoft.com/library/dn495827.aspx) a ve formátech konkrétních platforem oznámení.
 
-Nyní s touto třídou zapište metody odeslání oznámení uvnitř `NotificationHub` třídy.
+Nyní s touto třídou zapište metody odeslání oznámení uvnitř třídy `NotificationHub`.
 
 ```python
 def make_http_request(self, url, payload, headers):
@@ -311,7 +311,7 @@ Inicializujte klienta Notification Hubs (nahraďte připojovací řetězec a ná
 hub = NotificationHub("myConnectionString", "myNotificationHubName")
 ```
 
-Pak přidejte kód pro odeslání v závislosti na cílové mobilní platformě. Tato ukázka také přidá metody vyšší úrovně, aby bylo možné odesílat oznámení na základě platformy, například send_windows_notification pro Windows. send_apple_notification (pro Apple) atd.
+Pak přidejte kód pro odeslání v závislosti na cílové mobilní platformě. Tato ukázka také přidá metody vyšší úrovně, aby bylo možné odesílat oznámení na základě platformy, například send_windows_notification pro systém Windows. send_apple_notification (pro Apple) atd.
 
 ### <a name="windows-store-and-windows-phone-81-non-silverlight"></a>Windows Store a Windows Phone 8,1 (ne Silverlight)
 
@@ -378,7 +378,7 @@ Spuštění kódu Pythonu by mělo mít na cílovém zařízení zobrazeno ozná
 
 ## <a name="examples"></a>Příklady
 
-### <a name="enabling-the-debug-property"></a>`debug` Povolení vlastnosti
+### <a name="enabling-the-debug-property"></a>Povolení vlastnosti `debug`
 
 Pokud povolíte příznak ladění při inicializaci NotificationHub, zobrazí se detailní požadavek HTTP a výpis odpovědí a také NotificationOutcome podobný následujícímu, kde můžete zjistit, jaké hlavičky protokolu HTTP se v požadavku předávají a jaká odpověď HTTP byla. přijato z centra oznámení:
 
@@ -447,9 +447,9 @@ hub.send_template_notification(template_payload)
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento článek ukazuje, jak vytvořit klienta Python REST pro Notification Hubs. Tady můžete:
+Tento článek ukazuje, jak vytvořit klienta Python REST pro Notification Hubs. Odsud můžete:
 
-- Stáhněte si kompletní [Ukázka obálky Python REST]v Pythonu, která obsahuje veškerý kód v tomto článku.
+- Stáhněte si kompletní [Ukázka obálky Python REST], která obsahuje veškerý kód v tomto článku.
 - Pokračovat v učení o funkci označování Notification Hubs v [Kurz pro průlomové novinky]
 - Pokračovat v učení o funkci šablon Notification Hubs v [Kurz lokalizace zpráv]
 

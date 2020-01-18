@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 012ff33bb31c78b26791e6337ae434acfe4bc865
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6bf391f22843991bf224539b82037c0e29251e7b
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351339"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260949"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Správa životního cyklu úložiště objektů blob v Azure
 
@@ -32,7 +32,7 @@ Vezměte v úvahu scénář, kdy data budou často přístupná v počátečníc
 
 ## <a name="storage-account-support"></a>Podpora účtu úložiště
 
-Zásady správy životního cyklu jsou dostupné s účty Pro obecné účely v2 (GPv2), účty BLOB Storage a účty úložiště blob bloku úrovně Premium. V Azure Portal můžete upgradovat existující účet Pro obecné účely (GPv1) na účet GPv2. Další informace o účtech úložiště najdete v [přehledu účtu Azure Storage](../common/storage-account-overview.md).  
+Zásady správy životního cyklu jsou dostupné s účty Pro obecné účely v2 (GPv2), účty BLOB Storage a účty úložiště blob bloku úrovně Premium. V Azure Portal můžete upgradovat existující účet Pro obecné účely (GPv1) na účet GPv2. Další informace o účtech úložiště najdete v [přehledu účtu úložiště Azure](../common/storage-account-overview.md).  
 
 ## <a name="pricing"></a>Ceny
 
@@ -67,7 +67,7 @@ Existují dva způsoby, jak přidat zásadu prostřednictvím Azure Portal.
 
 #### <a name="azure-portal-list-view"></a>Zobrazení seznamu Azure Portal
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
 
 2. V Azure Portal vyhledejte a vyberte svůj účet úložiště. 
 
@@ -88,7 +88,7 @@ Existují dva způsoby, jak přidat zásadu prostřednictvím Azure Portal.
 9. Pokud chcete přidat novou zásadu, vyberte **Přidat** .
 
 #### <a name="azure-portal-code-view"></a>Azure Portal zobrazení kódu
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
 
 2. V Azure Portal vyhledejte a vyberte svůj účet úložiště.
 
@@ -124,7 +124,7 @@ Existují dva způsoby, jak přidat zásadu prostřednictvím Azure Portal.
    }
    ```
 
-5. Vyberte **Uložit**.
+5. Vyberte **Save** (Uložit).
 
 6. Další informace o tomto příkladu JSON najdete v částech [zásady](#policy) a [pravidla](#rules) .
 
@@ -246,6 +246,9 @@ Každá definice pravidla obsahuje sadu filtrů a sadu akcí. [Sada filtr](#rule
 ### <a name="sample-rule"></a>Ukázkové pravidlo
 
 Následující ukázkové pravidlo filtruje účet, aby spouštěl akce na objektech, které existují uvnitř `container1` a začínají na `foo`.  
+
+>[!NOTE]
+>Správa životního cyklu podporuje jenom typ objektu blob bloku.  
 
 - Úroveň objektu BLOB na studenou vrstvu 30 dní od poslední změny
 - Úroveň objektu BLOB na archivní vrstvu 90 dní od poslední změny

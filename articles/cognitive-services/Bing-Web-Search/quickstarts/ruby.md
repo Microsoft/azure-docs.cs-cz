@@ -11,20 +11,20 @@ ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 4a902e869ed9fd2ae9274f0ad8eee11e43b8edc6
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5f3e05752967be8872c0e6fd9008bfae05d950fa
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974321"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169539"
 ---
 # <a name="quickstart-use-ruby-to-call-the-bing-web-search-api"></a>Rychlý start: Použití Ruby k volání rozhraní API Bingu pro vyhledávání na webu  
 
 Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání na webu a přijetí odpovědi JSON. Tato aplikace Ruby pošle do rozhraní API požadavek hledání a zobrazí odpověď. Aplikace je sice napsaná v Ruby, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebovat:
+Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého startu:
 
 * [Ruby 2.4 nebo novější](https://www.ruby-lang.org/en/downloads/)
 * Klíč předplatného
@@ -43,7 +43,7 @@ require 'json'
 
 ## <a name="define-variables"></a>Definování proměnných
 
-Abychom mohli pokračovat, musíme nastavit několik proměnných. `uri` může být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek. Ověřte, že hodnoty `uri` a `path` jsou platné a nahraďte hodnotu `accessKey` platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz přizpůsobíte tím, že místo `term` zadáte jinou hodnotu.
+Abychom mohli pokračovat, musíme nastavit několik proměnných. `uri` může být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek. Ověřte, že hodnoty `uri` a `path` jsou platné a nahraďte hodnotu `accessKey` platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz můžete přizpůsobit. Stačí místo `term` zadat jinou hodnotu.
 
 ```ruby
 accessKey = "YOUR_SUBSCRIPTION_KEY"
@@ -157,9 +157,9 @@ Odpovědi rozhraní API Bingu pro vyhledávání na webu se vrátí jako objekt 
         "snippet": "Knock down barriers between you and your ideas. Enable natural and contextual interaction with tools that augment users' experiences via the power of machine-based AI. Plug them in and bring your ideas to life.",
         "deepLinks": [
           {
-            "name": "Face API",
+            "name": "Face",
             "url": "https://azure.microsoft.com/services/cognitive-services/face/",
-            "snippet": "Add facial recognition to your applications to detect, identify, and verify faces using a Face API from Microsoft Azure. ... Cognitive Services; Face API;"
+            "snippet": "Add facial recognition to your applications to detect, identify, and verify faces using the Face service from Microsoft Azure. ... Cognitive Services; Face service;"
           },
           {
             "name": "Text Analytics",

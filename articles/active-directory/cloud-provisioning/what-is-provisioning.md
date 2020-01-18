@@ -1,5 +1,5 @@
 ---
-title: Co je zřizování identit pomocí Azure AD? | Microsoft Docs
+title: Co je zřizování identit pomocí Azure AD? | Dokumentace Microsoftu
 description: Popisuje přehled zřizování identit.
 services: active-directory
 author: billmath
@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 166fb9320672e63b8c53717133dc61aa93f57a62
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 305108e576ad4e60089c929c9b780e8cee559540
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868639"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167630"
 ---
 # <a name="what-is-identity-provisioning"></a>Co je zřizování identit?
 
@@ -50,9 +50,7 @@ Nejběžnějším scénářem je, že když se do vaší společnosti připojí 
 
 ![zřizování cloudu](media/what-is-provisioning/cloud3.png)
 
-Zřizování aplikací zahrnuje zřizování uživatelů a rolí v aplikacích, ke kterým uživatel potřebuje mít přístup.  
-
-Nejběžnějším scénářem je, že když se uživatel ve službě Azure AD zřídí do O365 nebo Salesforce.
+V Azure Active Directory (Azure AD) pojem **[zřizování aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)** označuje automatické vytváření identit uživatelů a rolí v cloudových aplikacích, ke kterým uživatelé potřebují přístup. Kromě vytváření identit uživatelů zahrnuje Automatické zřizování také údržbu a odebírání identit uživatelů při změně stavu nebo rolí. Mezi běžné scénáře patří zřizování uživatelů Azure AD v aplikacích, jako jsou [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)a další.
 
 ## <a name="directory-provisioning"></a>Zřizování adresáře
 

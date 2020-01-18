@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 09/16/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 236d29d2c50a792bc4dc11916964db47ca092807
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: d95a3334fe5a7767446c92f8f8668e4da09fca42
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659589"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169863"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>Rychlý Start: vytvoření úlohy Azure Stream Analytics v Visual Studio Code (Preview)
 
@@ -22,7 +22,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit a spustit úlohu Azure Stream
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 
-* Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+* Přihlaste se k [Portálu Azure](https://portal.azure.com/).
 
 * Nainstalujte [Visual Studio Code](https://code.visualstudio.com/).
 
@@ -52,7 +52,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit a spustit úlohu Azure Stream
 
 Před definováním Stream Analytics úlohy byste měli připravit data, která jsou později nakonfigurovaná jako vstup úlohy. Pokud chcete připravit vstupní data, která úloha potřebuje, proveďte následující kroky:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com/).
 
 2. Vyberte **Vytvořit prostředek** > **Internet věcí** > **IoT Hub**.
 
@@ -179,9 +179,11 @@ Postupujte podle pokynů v části [test dotazů místně s ukázkovými daty](v
    |IotHubNamespace|MyASAIoTHub|Vyberte nebo zadejte název centra IoT. Názvy centra IoT se zjišťují automaticky, pokud se vytvářejí ve stejném předplatném.|
    |SharedAccessPolicyName|iothubowner| |
 
-   Můžete použít funkci CodeLens, která vám umožní zadat řetězec, vybrat z rozevíracího seznamu nebo změnit text přímo v souboru. Následující snímek obrazovky ukazuje jako příklad **možnost vybrat z vašich předplatných** .
+   Můžete použít funkci CodeLens, která vám umožní zadat řetězec, vybrat z rozevíracího seznamu nebo změnit text přímo v souboru. Následující snímek obrazovky ukazuje jako příklad **možnost vybrat z vašich předplatných** . Přihlašovací údaje jsou automaticky uvedeny a uloženy v místním Správci přihlašovacích údajů.
 
    ![Konfigurace vstupu v Visual Studio Code](./media/quick-create-vs-code/configure-input.png)
+
+   ![Konfigurace vstupní hodnoty v Visual Studio Code](./media/quick-create-vs-code/configure-input-value.png)
 
 ## <a name="preview-input"></a>Náhled vstupu
 

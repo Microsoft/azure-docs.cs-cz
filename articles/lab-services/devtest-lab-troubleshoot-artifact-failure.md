@@ -1,5 +1,5 @@
 ---
-title: Diagnostika selhání artefaktů ve virtuálním počítači s Azure DevTest Labs | Microsoft Docs
+title: Diagnostika selhání artefaktů ve Azure DevTest Labsm virtuálním počítači
 description: Naučte se řešit potíže s artefakty v Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 8b7a72c03d41d54aa80505e781b6f6d32cd2a2c0
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 50cb3138b8d79c4d60c94513d931996d667d9c01
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991367"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170318"
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>Diagnostika selhání artefaktů v testovacím prostředí 
 Po vytvoření artefaktu můžete zjistit, zda bylo úspěšné nebo neúspěšné. Protokoly artefaktů v Azure DevTest Labs poskytují informace, které můžete použít k diagnostice selhání artefaktu. Máte několik možností, jak zobrazit informace protokolu artefaktu pro virtuální počítač s Windows:
 
-* V Azure Portal
+* Na webu Azure Portal
 * Ve virtuálním počítači
 
 > [!NOTE]
@@ -34,7 +34,7 @@ Po vytvoření artefaktu můžete zjistit, zda bylo úspěšné nebo neúspěšn
 
 1. V Azure Portal v seznamu prostředků vyberte testovací prostředí.
 2. Vyberte virtuální počítač s Windows, který obsahuje artefakt, který chcete prozkoumat.
-3. Na levém panelu v části **Obecné**vyberte artefakty. Zobrazí se seznam artefaktů přidružených k tomuto virtuálnímu počítači. Název artefaktu a stav artefaktu jsou označeny.
+3. Na levém panelu v části **Obecné**vyberte **artefakty**. Zobrazí se seznam artefaktů přidružených k tomuto virtuálnímu počítači. Název artefaktu a stav artefaktu jsou označeny.
 
    ![Stav artefaktu](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifacts-failure.png)
 
@@ -52,12 +52,12 @@ Po vytvoření artefaktu můžete zjistit, zda bylo úspěšné nebo neúspěšn
 
 3. Otevřete **stavový** soubor.
 
-Pokyny k hledání souborů protokolu na virtuálním počítači se **systémem Linux** najdete v následujícím článku: [Použití rozšíření vlastních skriptů Azure verze 2 s virtuálními počítači se systémem Linux](../virtual-machines/extensions/custom-script-linux.md#troubleshooting)
+Pokyny k hledání souborů protokolu na virtuálním počítači se **systémem Linux** najdete v následujícím článku: [použití rozšíření Custom Script pro Azure verze 2 s virtuálními počítači se systémem Linux](../virtual-machines/extensions/custom-script-linux.md#troubleshooting)
 
 
 ## <a name="related-blog-posts"></a>Související blogové příspěvky
 * [Připojení virtuálního počítače k existující doméně služby Active Directory pomocí Správce prostředků šablony v DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Naučte se, jak [Přidat úložiště Git do testovacího prostředí](devtest-lab-add-artifact-repo.md).
 

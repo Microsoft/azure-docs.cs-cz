@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: 26609bc95bf6fd49ded23d8f117911a02577405a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1b38b8508dbe17d42bf191149410f5db638cf834
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445900"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261615"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Výměna zpráv v cloudu pomocí Azure Logic Apps a Azure Service Bus
 
@@ -45,7 +45,7 @@ Můžete použít triggery, které získávají odpovědi z Service Bus a zpří
 
 Potvrďte, že vaše aplikace logiky má oprávnění pro přístup k vašemu oboru názvů Service Bus.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
 
 1. Přejít na *obor názvů*Service Bus. Na stránce obor názvů v části **Nastavení**vyberte **zásady sdíleného přístupu**. V části **deklarace identity**ověřte, že máte oprávnění ke **správě** tohoto oboru názvů.
 
@@ -154,7 +154,9 @@ Potvrďte, že vaše aplikace logiky má oprávnění pro přístup k vašemu ob
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Konektor Service Bus může současně ušetřit až 1 500 jedinečných relací ze sběrnice Service Bus do mezipaměti konektoru. Pokud počet relací překročí tento limit, staré relace budou odebrány z mezipaměti. Další technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI (dříve Swagger) konektoru, najdete na [referenční stránce](/connectors/servicebus/)konektoru.
+Konektor Service Bus může současně ušetřit až 1 500 jedinečných relací ze sběrnice Service Bus do mezipaměti konektoru. Pokud počet relací překročí tento limit, staré relace budou odebrány z mezipaměti. Další informace najdete v tématu [relace zpráv](../service-bus-messaging/message-sessions.md).
+
+Další technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI (dříve Swagger) konektoru, najdete na [referenční stránce](/connectors/servicebus/)konektoru. Další informace o Azure Service Bus zasílání zpráv najdete v tématu [co je Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)?
 
 ## <a name="next-steps"></a>Další kroky
 

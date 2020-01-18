@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 793bb46e14725b14c766569e8b0fc2aa0246858e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3889378f34d66f54ea408da4aa43b12f86e7c586
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979049"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262605"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application-preview-features"></a>Kurz: vytvoření pravidla a nastavení oznámení v aplikaci Azure IoT Central (funkce ve verzi Preview)
 
@@ -25,21 +25,22 @@ Pomocí služby Azure IoT Central můžete vzdáleně monitorovat připojená za
 
 Zařízení využívají telemetrii k posílání číselných dat ze zařízení. Pravidlo se aktivuje, když vybraná telemetrie zařízení přebírá určenou prahovou hodnotu.
 
-V tomto kurzu vytvoříte pravidlo k odeslání e-mailu v případě, že teplota na zařízení snímače prostředí překračuje 80&deg; F.
+V tomto kurzu vytvoříte pravidlo k odeslání e-mailu v případě, že teplota na zařízení snímače prostředí překračuje 70&deg; F.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
+>
 > * Vytvoření pravidla
 > * Přidat akci e-mailu
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, měli byste dokončit [Vytvoření aplikace IoT Central v Azure](./quick-deploy-iot-central.md) a [Přidat simulované zařízení do](./quick-create-pnp-device.md) rychlých startů pro aplikace IoT Central a vytvořit šablonu zařízení **snímače prostředí** , se kterou chcete pracovat.
 
 ## <a name="create-a-rule"></a>Vytvoření pravidla
 
-Aby bylo možné vytvořit pravidlo telemetrie, musí mít šablona zařízení alespoň jednu určenou měření telemetrie. V tomto kurzu se používá zařízení snímače prostředí, které posílá telemetrii teploty a vlhkosti. Tuto šablonu zařízení jste přidali a vytvořili simulované zařízení v části [Přidání simulovaného zařízení do rychlého startu aplikace IoT Central](./quick-create-pnp-device.md) . Pravidlo monitoruje teplotu oznámenou zařízením a pošle e-mail, když překračuje 80 stupňů.
+Aby bylo možné vytvořit pravidlo telemetrie, musí mít šablona zařízení alespoň jednu určenou měření telemetrie. V tomto kurzu se používá zařízení snímače prostředí, které posílá telemetrii teploty a vlhkosti. Tuto šablonu zařízení jste přidali a vytvořili simulované zařízení v části [Přidání simulovaného zařízení do rychlého startu aplikace IoT Central](./quick-create-pnp-device.md) . Pravidlo monitoruje teplotu oznámenou zařízením a pošle e-mail, když překračuje 70 stupňů.
 
 1. V levém podokně vyberte **pravidla**.
 
@@ -57,18 +58,18 @@ Aby bylo možné vytvořit pravidlo telemetrie, musí mít šablona zařízení 
 
 ### <a name="configure-the-rule-conditions"></a>Konfigurace podmínek pravidla
 
-Podmínky definují kritéria, která pravidla monitorují. V tomto kurzu nakonfigurujete pravidlo, které se aktivuje, když teplota překročí 80&deg; F.
+Podmínky definují kritéria, která pravidla monitorují. V tomto kurzu nakonfigurujete pravidlo, které se aktivuje, když teplota překročí 70&deg; F.
 
 1. V rozevíracím seznamu **telemetrie** vyberte možnost **teplota** .
 
-1. V dalším kroku vyberte **je větší než** jako **operátor** a jako **hodnotu**zadejte _80_ .
+1. V dalším kroku vyberte **je větší než** jako **operátor** a jako **hodnotu**zadejte _70_ .
 
     ![Podmínka](media/tutorial-create-telemetry-rules/condition-filled-out1.png)
 
 1. Volitelně můžete nastavit **časovou agregaci**. Když vyberete časovou agregaci, musíte také v rozevíracím seznamu agregace vybrat typ agregace, například Average nebo Sum.
 
-    * Bez agregace se pravidlo spustí pro každý datový bod telemetrie, který splňuje podmínku. Pokud je například pravidlo nakonfigurované tak, aby se aktivovalo, když je teplota vyšší než 80, pravidlo se spustí téměř okamžitě, když zařízení ohlásí teplotu > 80.
-    * Při agregaci se pravidlo aktivuje, pokud agregovaná hodnota datových bodů telemetrie v časovém intervalu splňuje podmínku. Pokud je například pravidlo nakonfigurované tak, aby se aktivovalo, když je teplota nad 80, časová agregace je nastavená na 10 minut a typ agregace je průměr, pak se pravidlo aktivuje, když zařízení ohlásí průměrnou teplotu > 80 a počítá se za 10 minut. doba.
+    * Bez agregace se pravidlo spustí pro každý datový bod telemetrie, který splňuje podmínku. Pokud je například pravidlo nakonfigurované tak, aby se aktivovalo, když je teplota vyšší než 70, pravidlo se spustí téměř okamžitě, když zařízení ohlásí teplotu > 70.
+    * Při agregaci se pravidlo aktivuje, pokud agregovaná hodnota datových bodů telemetrie v časovém intervalu splňuje podmínku. Pokud je například pravidlo nakonfigurované tak, aby se aktivovalo, když je teplota nad 70, časová agregace je nastavená na 10 minut a typ agregace je průměr, pak se pravidlo aktivuje, když zařízení ohlásí průměrnou teplotu > 70 a počítá se za 10 minut. doba.
 
      ![Agregační podmínka](media/tutorial-create-telemetry-rules/aggregate-condition-filled-out1.png)
 

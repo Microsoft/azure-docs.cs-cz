@@ -11,20 +11,20 @@ ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 6c847af4f6938923abdfced4d5e8b842ae84eca6
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: cf12b279cf7bcb20aa655646ce34fb9df2bda016
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978811"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167670"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>Rychlý Start: vyhledávání na webu pomocí Vyhledávání na webu Bingu REST API aC#
 
 Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání na webu a přijetí odpovědi JSON. Tato C# aplikace odešle požadavek na hledání do rozhraní API a zobrazí odpověď. Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebovat:
+Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého startu:
 
 * Windows: [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/)
 * Linux/macOS: [Mono](https://www.mono-project.com/)  
@@ -62,7 +62,7 @@ namespace BingSearchApisQuickstart
 
 ## <a name="define-variables"></a>Definování proměnných
 
-Abychom mohli pokračovat, musíme nastavit několik proměnných.  `uriBase` může být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek. Ověřte, že hodnota `uriBase` je platná a nahraďte hodnotu `accessKey` platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz přizpůsobíte tím, že místo `searchTerm` zadáte jinou hodnotu. Nezapomeňte přidat tento kód do třídy `Program`, jak je uvedeno výše.
+Abychom mohli pokračovat, musíme nastavit několik proměnných.  `uriBase` může být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek. Ověřte, že hodnota `uriBase` je platná a nahraďte hodnotu `accessKey` platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz můžete přizpůsobit. Stačí místo `searchTerm` zadat jinou hodnotu. Nezapomeňte přidat tento kód do třídy `Program`, jak je uvedeno výše.
 
 ```csharp
 // Enter a valid subscription key.
@@ -259,9 +259,9 @@ Odpovědi rozhraní API Bingu pro vyhledávání na webu se vrátí jako objekt 
         "snippet": "Knock down barriers between you and your ideas. Enable natural and contextual interaction with tools that augment users' experiences via the power of machine-based AI. Plug them in and bring your ideas to life.",
         "deepLinks": [
           {
-            "name": "Face API",
+            "name": "Face",
             "url": "https://azure.microsoft.com/services/cognitive-services/face/",
-            "snippet": "Add facial recognition to your applications to detect, identify, and verify faces using a Face API from Microsoft Azure. ... Cognitive Services; Face API;"
+            "snippet": "Add facial recognition to your applications to detect, identify, and verify faces using the Face service from Microsoft Azure. ... Cognitive Services; Face service;"
           },
           {
             "name": "Text Analytics",

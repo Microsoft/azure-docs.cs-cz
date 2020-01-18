@@ -8,18 +8,18 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/27/2019
+ms.date: 01/16/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1106692128f3272f59c80a8312d6ceea2500b3a7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a0aa868d5ed57e27a89f2791f617dcdda74e766b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917467"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167448"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Tokeny ID platformy Microsoft identity
 
@@ -82,7 +82,7 @@ V tomto seznamu jsou uvedeny deklarace identity, které jsou ve výchozím nasta
 |`rh` | Neprůhledný řetězec |Interní deklarace identity, kterou Azure používá k opětovnému ověření tokenů. By měla být ignorována. |
 |`sub` | Řetězec, identifikátor GUID | Objekt zabezpečení, o kterém token vyhodnotí informace, jako je například uživatel aplikace Tato hodnota je neměnná a nelze ji znovu přiřadit ani použít znovu. Subjekt je párový identifikátor, který je jedinečný pro konkrétní ID aplikace. Pokud se jeden uživatel přihlásí ke dvěma různým aplikacím pomocí dvou různých ID klientů, budou tyto aplikace pro deklaraci deklarace subjektu dostávat dvě odlišné hodnoty. To může nebo nemusí být žádoucí v závislosti na vaší architektuře a požadavcích na ochranu osobních údajů. |
 |`tid` | Řetězec, identifikátor GUID | Identifikátor GUID, který představuje tenanta Azure AD, ze kterého je uživatel. V případě pracovních a školních účtů je identifikátor GUID neměnné ID klienta organizace, do které uživatel patří. U osobních účtů je hodnota `9188040d-6c67-4c5b-b112-36a304b66dad`. Pro příjem této deklarace je vyžadován obor `profile`. |
-|`unique_name` | Řetězec | Poskytuje lidsky čitelnou hodnotu, která identifikuje subjekt tokenu. Tato hodnota není zaručena jako jedinečná v rámci tenanta a měla by být použita pouze pro účely zobrazení. Vystavuje se jenom v 1.0 `id_tokens`. |
+|`unique_name` | Řetězec | Poskytuje lidsky čitelnou hodnotu, která identifikuje subjekt tokenu. Tato hodnota je v jakémkoli daném bodu v čase jedinečná, ale když je možné znovu použít e-maily a jiné identifikátory, tato hodnota se může znovu zobrazit na jiných účtech a měla by se proto použít jenom pro účely zobrazení. Vystavuje se jenom v 1.0 `id_tokens`. |
 |`uti` | Neprůhledný řetězec | Interní deklarace identity, kterou Azure používá k opětovnému ověření tokenů. By měla být ignorována. |
 |`ver` | Řetězec, buď 1,0 nebo 2,0 | Určuje verzi id_token. |
 

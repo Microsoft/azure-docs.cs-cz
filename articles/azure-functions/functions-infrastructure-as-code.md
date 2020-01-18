@@ -4,12 +4,13 @@ description: Naučte se, jak vytvořit šablonu Azure Resource Manager, která n
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 650997cfddc71a8bfe347e29c8992b78d1828034
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.custom: fasttrack-edit
+ms.openlocfilehash: df0c90ba3784acb96bd9f76a436ff2746f7efe2c
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978790"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262431"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatizace nasazení prostředků pro aplikaci Function App v Azure Functions
 
@@ -139,7 +140,7 @@ Aplikace Function App musí zahrnovat tato nastavení aplikace:
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | Připojovací řetězec k účtu úložiště, který modul runtime Functions pro vnitřní zařazení do fronty | Zobrazit [účet úložiště](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | Verze modulu runtime Azure Functions                                                | `~2`                                  |
-| FUNCTIONS_WORKER_RUNTIME     | Jazyková sada, která se má použít pro funkce v této aplikaci                                   | `dotnet`, `node`, `java` nebo `python` |
+| FUNCTIONS_WORKER_RUNTIME     | Jazyková sada, která se má použít pro funkce v této aplikaci                                   | `dotnet`, `node`, `java`, `python`nebo `powershell` |
 | WEBSITE_NODE_DEFAULT_VERSION | Je potřeba jenom v případě, že používáte sadu `node`ho jazyka, určuje verzi, která se má použít.              | `10.14.1`                             |
 
 Tyto vlastnosti jsou uvedené v kolekci `appSettings` ve vlastnosti `siteConfig`:

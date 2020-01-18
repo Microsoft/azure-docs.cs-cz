@@ -1,5 +1,5 @@
 ---
-title: 'Ukázka: Prozkoumat aplikaci pro zpracování obrázků vC#'
+title: 'Ukázka: zkoumání aplikace pro zpracování obrázků vC#'
 titleSuffix: Azure Cognitive Services
 description: Prozkoumejte základní aplikaci pro Windows, která používá rozhraní API pro počítačové zpracování obrazu ve službě Azure Cognitive Services. Provádějte optické rozpoznávání znaků (OCR), vytvářejte miniatury a pracujte s vizuálními funkcemi obrázku.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 01e932caf5edc91d5556b60d33e4d100574f93f5
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: b492d8e3bdcf6d9a41df3eb79ef159985cc715cf
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170047"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168881"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>Ukázka: Prozkoumejte aplikaci pro zpracování obrázkůC#
 
@@ -37,7 +37,7 @@ Před zkoumáním ukázkové aplikace se ujistěte, že jste splnili následují
 
 ## <a name="get-the-sample-app"></a>Získání ukázkové aplikace
 
-Ukázková aplikace počítačové zpracování obrazu je k dispozici na GitHubu z `Microsoft/Cognitive-Vision-Windows` úložiště. Toto úložiště zahrnuje `Microsoft/Cognitive-Common-Windows` i úložiště jako dílčí modul Git. Toto úložiště, včetně `git clone --recurse-submodules` dílčího modulu, můžete rekurzivně klonovat, a to buď pomocí příkazu z příkazového řádku, nebo pomocí aplikace GitHub Desktop.
+Ukázková aplikace Počítačové zpracování obrazu je k dispozici na GitHubu z úložiště `Microsoft/Cognitive-Vision-Windows`. Toto úložiště zahrnuje také úložiště `Microsoft/Cognitive-Common-Windows` jako dílčí modul Git. Toto úložiště, včetně dílčího modulu, můžete rekurzivně klonovat, a to buď pomocí příkazu `git clone --recurse-submodules` z příkazového řádku, nebo pomocí aplikace GitHub Desktop.
 
 Chcete-li například rekurzivně klonovat úložiště pro ukázkovou aplikaci Počítačové zpracování obrazu z příkazového řádku, spusťte následující příkaz:
 
@@ -50,7 +50,7 @@ git clone --recurse-submodules https://github.com/Microsoft/Cognitive-Vision-Win
 
 ### <a name="get-optional-sample-images"></a>Získat volitelné ukázkové obrázky
 
-Volitelně můžete použít ukázkové image dodávané s ukázkovou aplikací pro [tvář](../../Face/Overview.md) , které jsou k dispozici na `Microsoft/Cognitive-Face-Windows` GitHubu z úložiště. Tato ukázková aplikace obsahuje složku, `/Data`která obsahuje více imagí lidí. Toto úložiště můžete rekurzivně klonovat i pomocí metod popsaných pro ukázkovou aplikaci Počítačové zpracování obrazu.
+Volitelně můžete použít ukázkové image dodávané s ukázkovou aplikací pro [tvář](../../Face/Overview.md) , které jsou k dispozici na GitHubu z `Microsoft/Cognitive-Face-Windows`ho úložiště. Tato ukázková aplikace zahrnuje složku, `/Data`, která obsahuje více imagí lidí. Toto úložiště můžete rekurzivně klonovat i pomocí metod popsaných pro ukázkovou aplikaci Počítačové zpracování obrazu.
 
 Chcete-li například rekurzivně klonovat úložiště pro ukázkovou aplikaci na ploše z příkazového řádku, spusťte následující příkaz:
 
@@ -68,7 +68,7 @@ Nejprve musíte vytvořit ukázkovou aplikaci, aby mohla aplikace Visual Studio 
    * SampleUserControlLibrary
    * VisionAPI-WPF – ukázky  
 
-   Pokud není projekt SampleUserControlLibrary k dispozici, potvrďte, že jste `Microsoft/Cognitive-Vision-Windows` úložiště naklonoval rekurzivně.
+   Pokud není projekt SampleUserControlLibrary k dispozici, potvrďte, že jste rekurzivní klonování úložiště `Microsoft/Cognitive-Vision-Windows`.
 1. V aplikaci Visual Studio stiskněte kombinaci kláves CTRL + SHIFT + B nebo zvolte **sestavit** z nabídky pásu karet a pak zvolte **Sestavit řešení** a sestavte řešení.
 
 ## <a name="run-and-interact-with-the-sample-app"></a>Spuštění a interakce s ukázkovou aplikací
@@ -77,15 +77,15 @@ Ukázkovou aplikaci můžete spustit, abyste viděli, jak komunikuje s vámi a s
 
 1. Po dokončení sestavení stiskněte klávesu **F5** nebo zvolte možnost **ladění** z nabídky pásu karet a pak zvolte možnost **Spustit ladění** a spusťte ukázkovou aplikaci.
 1. Když se zobrazí ukázková aplikace, v navigačním podokně vyberte **Správa klíčů předplatného** . zobrazí se stránka Správa klíčů předplatného.
-   ![Stránka správy klíčů předplatného](../Images/Vision_UI_Subscription.PNG)  
+   Stránka správy klíčů předplatného ![](../Images/Vision_UI_Subscription.PNG)  
 1. Do **klíče předplatného**zadejte svůj klíč předplatného.
 1. Do **koncového bodu**zadejte adresu URL koncového bodu.  
-   Pokud například používáte klíč předplatného z Počítačové zpracování obrazu bezplatné zkušební verze, zadejte následující adresu URL koncového bodu:`https://westcentralus.api.cognitive.microsoft.com`  
+   Pokud například používáte klíč předplatného z Počítačové zpracování obrazu bezplatné zkušební verze, zadejte následující adresu URL koncového bodu: `https://westcentralus.api.cognitive.microsoft.com`  
    [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 1. Pokud nechcete zadat klíč předplatného a adresu URL koncového bodu při příštím spuštění ukázkové aplikace, klikněte na **Uložit nastavení** a uložte klíč předplatného a adresu URL koncového bodu do vašeho počítače. Pokud chcete odstranit dřív uložený klíč předplatného a adresu URL koncového bodu, vyberte **Odstranit nastavení**.
 
    > [!NOTE]
-   > Ukázková aplikace používá izolované úložiště a `System.IO.IsolatedStorage`umožňuje uložit klíč předplatného a adresu URL koncového bodu.
+   > Ukázková aplikace používá izolované úložiště a `System.IO.IsolatedStorage`k uložení klíče předplatného a adresy URL koncového bodu.
 
 1. V části **Vybrat scénář** v navigačním podokně vyberte jeden z aktuálně zahrnutých scénářů v ukázkové aplikaci:  
 
@@ -100,7 +100,7 @@ Ukázkovou aplikaci můžete spustit, abyste viděli, jak komunikuje s vámi a s
    |Získat miniaturu | Vygeneruje miniaturu pro místní nebo vzdálenou bitovou kopii pomocí operace [získat miniaturu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) . |
 
    Následující snímek obrazovky znázorňuje stránku poskytnutou pro scénář analýzy obrázku po analýze ukázkové image.
-   ![Snímek obrazovky se stránkou analyzovat obrázek](../Images/Analyze_Image_Example.PNG)
+   ![snímku stránky analyzovat obrázek](../Images/Analyze_Image_Example.PNG)
 
 ## <a name="explore-the-sample-app"></a>Prozkoumejte ukázkovou aplikaci
 
@@ -139,9 +139,9 @@ Ukázkovou aplikaci můžete spustit, abyste viděli, jak komunikuje s vámi a s
 
 ### <a name="explore-the-sample-code"></a>Prozkoumat vzorový kód
 
-Klíčové části vzorového kódu jsou orámovány s bloky komentáře, které začínají `KEY SAMPLE CODE STARTS HERE` a `KEY SAMPLE CODE ENDS HERE`končí, aby bylo snazší prozkoumat ukázkovou aplikaci. Tyto klíčové části ukázkového kódu obsahují kód, který je nejrelevantnější pro učení, jak pomocí klientské knihovny rozhraní API pro počítačové zpracování obrazu provádět různé úlohy. Můžete hledat `KEY SAMPLE CODE STARTS HERE` v aplikaci Visual Studio, abyste se mohli pohybovat mezi nejrelevantnějšími oddíly kódu v ukázkové aplikaci počítačové zpracování obrazu. 
+Klíčové části vzorového kódu jsou orámovány s bloky komentáře, které začínají `KEY SAMPLE CODE STARTS HERE` a končí `KEY SAMPLE CODE ENDS HERE`, aby bylo snazší prozkoumat ukázkovou aplikaci. Tyto klíčové části ukázkového kódu obsahují kód, který je nejrelevantnější pro učení, jak pomocí klientské knihovny rozhraní API pro počítačové zpracování obrazu provádět různé úlohy. V aplikaci Visual Studio můžete hledat `KEY SAMPLE CODE STARTS HERE` pro přesun mezi nejrelevantnějšími oddíly kódu v ukázkové aplikaci Počítačové zpracování obrazu. 
 
-Například `UploadAndAnalyzeImageAsync` metoda, která je znázorněna níže a obsažena v souboru AnalyzePage. XAML, ukazuje, jak použít knihovnu klienta k analýze místní image `ComputerVisionClient.AnalyzeImageInStreamAsync` vyvoláním metody.
+Například metoda `UploadAndAnalyzeImageAsync`, uvedená níže a obsažena v souboru AnalyzePage. XAML, ukazuje, jak použít knihovnu klienta k analýze místní image vyvoláním metody `ComputerVisionClient.AnalyzeImageInStreamAsync`.
 
 ```csharp
 private async Task<ImageAnalysis> UploadAndAnalyzeImageAsync(string imageFilePath)
@@ -178,9 +178,9 @@ private async Task<ImageAnalysis> UploadAndAnalyzeImageAsync(string imageFilePat
 
 ### <a name="explore-the-client-library"></a>Prozkoumat klientskou knihovnu
 
-Tato ukázková aplikace používá klientskou knihovnu rozhraní API pro počítačové zpracování obrazu, tenkých C# klientských obálk pro rozhraní API pro počítačové zpracování obrazu ve službě Azure Cognitive Services. Knihovna klienta je dostupná ze sady NuGet v balíčku [Microsoft. Azure. cognitiveservices Account. Vision. ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) . Při sestavování aplikace sady Visual Studio jste načetli knihovnu klienta z odpovídajícího balíčku NuGet. Zdrojový kód klientské knihovny můžete zobrazit také ve `/ClientLibrary` složce `Microsoft/Cognitive-Vision-Windows` úložiště.
+Tato ukázková aplikace používá klientskou knihovnu rozhraní API pro počítačové zpracování obrazu, tenkých C# klientských obálk pro rozhraní API pro počítačové zpracování obrazu ve službě Azure Cognitive Services. Knihovna klienta je dostupná ze sady NuGet v balíčku [Microsoft. Azure. cognitiveservices Account. Vision. ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) . Při sestavování aplikace sady Visual Studio jste načetli knihovnu klienta z odpovídajícího balíčku NuGet. Zdrojový kód klientské knihovny můžete zobrazit také ve složce `/ClientLibrary` úložiště `Microsoft/Cognitive-Vision-Windows`.
 
-Funkce klientské knihovny na střed `ComputerVisionClient` kolem třídy `Microsoft.Azure.CognitiveServices.Vision.ComputerVision` v oboru názvů, zatímco modely používané `ComputerVisionClient` třídou při interakci s počítačové zpracování obrazu se nacházejí v `Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models` oboru názvů. V různých stránkách scénáře XAML, které jsou součástí ukázkové aplikace, najdete pro tyto obory `using` názvů následující direktivy:
+Funkce klientské knihovny vycentruje kolem `ComputerVisionClient` třídy v oboru názvů `Microsoft.Azure.CognitiveServices.Vision.ComputerVision`, zatímco při interakci s Počítačové zpracování obrazu jsou v oboru názvů `Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models` nalezeny modely používané třídou `ComputerVisionClient`. V různých stránkách scénáře XAML, které jsou součástí ukázkové aplikace, najdete následující direktivy `using` pro tyto obory názvů:
 
 ```csharp
 // -----------------------------------------------------------------------
@@ -194,115 +194,115 @@ using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
 // -----------------------------------------------------------------------
 ```
 
-Další informace o různých metodách, které jsou `ComputerVisionClient` součástí třídy, se dozvíte při zkoumání scénářů, které jsou součástí počítačové zpracování obrazu ukázkové aplikace.
+Další informace o různých metodách, které jsou součástí `ComputerVisionClient` třídy, se dozvíte při zkoumání scénářů, které jsou součástí ukázkové aplikace Počítačové zpracování obrazu.
 
 ## <a name="explore-the-analyze-image-scenario"></a>Prozkoumat scénář analýzy obrázku
 
 Tento scénář je spravován stránkou AnalyzePage. XAML. Můžete zvolit vizuální funkce a jazyk pro analýzu a zobrazit obraz i výsledky. Na stránce scénář se používá jedna z následujících metod v závislosti na zdroji obrázku:
 
 * UploadAndAnalyzeImageAsync  
-  Tato metoda se používá pro místní image, ve kterých musí být bitová kopie kódována `Stream` jako a odeslána do počítačové zpracování obrazu `ComputerVisionClient.AnalyzeImageInStreamAsync` zavoláním metody.
+  Tato metoda se používá pro místní image, ve kterých musí být bitová kopie kódována jako `Stream` a odeslána do Počítačové zpracování obrazu voláním metody `ComputerVisionClient.AnalyzeImageInStreamAsync`.
 * AnalyzeUrlAsync  
-  Tato metoda se používá pro vzdálené image, ve které se adresa URL obrázku pošle počítačové zpracování obrazu zavoláním `ComputerVisionClient.AnalyzeImageAsync` metody.
+  Tato metoda se používá pro vzdálené image, ve které se adresa URL obrázku pošle Počítačové zpracování obrazu zavoláním metody `ComputerVisionClient.AnalyzeImageAsync`.
 
-Metoda vytvoří novou `ComputerVisionClient` instanci pomocí zadaného klíče předplatného a adresy URL koncového bodu. `UploadAndAnalyzeImageAsync` Vzhledem k tomu, že ukázková aplikace analyzuje místní bitovou kopii, musí odeslat obsah této image do Počítačové zpracování obrazu. Otevře místní soubor určený v `imageFilePath` pro čtení `Stream`jako a pak získá vizuální funkce a jazyk vybraný na stránce scénář. Volá `ComputerVisionClient.AnalyzeImageInStreamAsync` metodu, `Stream` projde pro soubor, vizuální funkce a jazyk a `ImageAnalysis` vrátí výsledek jako instanci. Metody zděděné z `ImageScenarioPage` třídy prezentují vrácené výsledky na stránce scénáře.
+Metoda `UploadAndAnalyzeImageAsync` vytvoří novou instanci `ComputerVisionClient` pomocí zadaného klíče předplatného a adresy URL koncového bodu. Vzhledem k tomu, že ukázková aplikace analyzuje místní bitovou kopii, musí odeslat obsah této image do Počítačové zpracování obrazu. Otevře místní soubor zadaný v `imageFilePath` pro čtení jako `Stream`a pak získá vizuální funkce a jazyk vybraný na stránce scénář. Volá metodu `ComputerVisionClient.AnalyzeImageInStreamAsync`, předává `Stream` souboru, funkce vizuálu a jazyk a následně vrátí výsledek jako instanci `ImageAnalysis`. Metody zděděné z třídy `ImageScenarioPage` prezentují vrácené výsledky na stránce scénáře.
 
-Metoda vytvoří novou `ComputerVisionClient` instanci pomocí zadaného klíče předplatného a adresy URL koncového bodu. `AnalyzeUrlAsync` Získá vizuální funkce a jazyk vybraný na stránce scénář. Volá `ComputerVisionClient.AnalyzeImageInStreamAsync` metodu, projde adresu URL obrázku, vizuální funkce a jazyk a potom vrátí výsledek `ImageAnalysis` jako instanci. Metody zděděné z `ImageScenarioPage` třídy prezentují vrácené výsledky na stránce scénáře.
+Metoda `AnalyzeUrlAsync` vytvoří novou instanci `ComputerVisionClient` pomocí zadaného klíče předplatného a adresy URL koncového bodu. Získá vizuální funkce a jazyk vybraný na stránce scénář. Volá metodu `ComputerVisionClient.AnalyzeImageInStreamAsync`, předává adresu URL obrázku, vizuální funkce a jazyk a potom vrátí výsledek jako instanci `ImageAnalysis`. Metody zděděné z třídy `ImageScenarioPage` prezentují vrácené výsledky na stránce scénáře.
 
 ## <a name="explore-the-analyze-image-with-domain-model-scenario"></a>Prozkoumat scénář analyzovat Image pomocí doménového modelu
 
-Tento scénář je spravován stránkou AnalyzeInDomainPage. XAML. Můžete zvolit doménový model, `celebrities` jako je například nebo `landmarks`, a jazyk k provedení analýzy specifické pro doménu a zobrazit obraz i výsledky. Stránka scénář používá následující metody v závislosti na zdroji obrázku:
+Tento scénář je spravován stránkou AnalyzeInDomainPage. XAML. Můžete zvolit doménový model, například `celebrities` nebo `landmarks`, a jazyk, který provede analýzu konkrétní domény, a zobrazit obraz i výsledky. Stránka scénář používá následující metody v závislosti na zdroji obrázku:
 
 * GetAvailableDomainModelsAsync  
-  Tato metoda získá seznam dostupných doménových modelů z počítačové zpracování obrazu a naplní `_domainModelComboBox` ovládací prvek ComboBox na stránce `ComputerVisionClient.ListModelsAsync` pomocí metody.
+  Tato metoda získá seznam dostupných doménových modelů z Počítačové zpracování obrazu a naplní `_domainModelComboBox` ovládací prvek ComboBox na stránce pomocí metody `ComputerVisionClient.ListModelsAsync`.
 * UploadAndAnalyzeInDomainImageAsync  
-  Tato metoda se používá pro místní image, ve kterých musí být bitová kopie kódována `Stream` jako a odeslána do počítačové zpracování obrazu `ComputerVisionClient.AnalyzeImageByDomainInStreamAsync` zavoláním metody.
+  Tato metoda se používá pro místní image, ve kterých musí být bitová kopie kódována jako `Stream` a odeslána do Počítačové zpracování obrazu voláním metody `ComputerVisionClient.AnalyzeImageByDomainInStreamAsync`.
 * AnalyzeInDomainUrlAsync  
-  Tato metoda se používá pro vzdálené image, ve které se adresa URL obrázku pošle počítačové zpracování obrazu zavoláním `ComputerVisionClient.AnalyzeImageByDomainAsync` metody.
+  Tato metoda se používá pro vzdálené image, ve které se adresa URL obrázku pošle Počítačové zpracování obrazu zavoláním metody `ComputerVisionClient.AnalyzeImageByDomainAsync`.
 
-Metoda vytvoří novou `ComputerVisionClient` instanci pomocí zadaného klíče předplatného a adresy URL koncového bodu. `UploadAndAnalyzeInDomainImageAsync` Vzhledem k tomu, že ukázková aplikace analyzuje místní bitovou kopii, musí odeslat obsah této image do Počítačové zpracování obrazu. Otevře místní soubor určený v `imageFilePath` pro čtení `Stream`jako a pak získá jazyk vybraný na stránce scénář. Volá `ComputerVisionClient.AnalyzeImageByDomainInStreamAsync` metodu, `Stream` předá soubor, název doménového modelu a jazyk a potom `DomainModelResults` vrátí výsledek jako instanci. Metody zděděné z `ImageScenarioPage` třídy prezentují vrácené výsledky na stránce scénáře.
+Metoda `UploadAndAnalyzeInDomainImageAsync` vytvoří novou instanci `ComputerVisionClient` pomocí zadaného klíče předplatného a adresy URL koncového bodu. Vzhledem k tomu, že ukázková aplikace analyzuje místní bitovou kopii, musí odeslat obsah této image do Počítačové zpracování obrazu. Otevře místní soubor zadaný v `imageFilePath` pro čtení jako `Stream`a pak získá jazyk vybraný na stránce scénář. Volá metodu `ComputerVisionClient.AnalyzeImageByDomainInStreamAsync`, předává `Stream` souboru, název doménového modelu a jazyk a vrátí výsledek jako instanci `DomainModelResults`. Metody zděděné z třídy `ImageScenarioPage` prezentují vrácené výsledky na stránce scénáře.
 
-Metoda vytvoří novou `ComputerVisionClient` instanci pomocí zadaného klíče předplatného a adresy URL koncového bodu. `AnalyzeInDomainUrlAsync` Získá jazyk vybraný na stránce scénář. Volá `ComputerVisionClient.AnalyzeImageByDomainAsync` metodu, projde adresu URL obrázku, vizuální funkce a jazyk a potom vrátí výsledek `DomainModelResults` jako instanci. Metody zděděné z `ImageScenarioPage` třídy prezentují vrácené výsledky na stránce scénáře.
+Metoda `AnalyzeInDomainUrlAsync` vytvoří novou instanci `ComputerVisionClient` pomocí zadaného klíče předplatného a adresy URL koncového bodu. Získá jazyk vybraný na stránce scénář. Volá metodu `ComputerVisionClient.AnalyzeImageByDomainAsync`, předává adresu URL obrázku, vizuální funkce a jazyk a potom vrátí výsledek jako instanci `DomainModelResults`. Metody zděděné z třídy `ImageScenarioPage` prezentují vrácené výsledky na stránce scénáře.
 
 ## <a name="explore-the-describe-image-scenario"></a>Prozkoumejte scénář popisující obrázek
 
 Tento scénář je spravován stránkou DescribePage. XAML. Můžete zvolit jazyk pro vytvoření uživatelsky čitelného popisu obrázku a zobrazit obraz i výsledky. Stránka scénář používá následující metody v závislosti na zdroji obrázku:
 
 * UploadAndDescribeImageAsync  
-  Tato metoda se používá pro místní image, ve kterých musí být bitová kopie kódována `Stream` jako a odeslána do počítačové zpracování obrazu `ComputerVisionClient.DescribeImageInStreamAsync` zavoláním metody.
+  Tato metoda se používá pro místní image, ve kterých musí být bitová kopie kódována jako `Stream` a odeslána do Počítačové zpracování obrazu voláním metody `ComputerVisionClient.DescribeImageInStreamAsync`.
 * DescribeUrlAsync  
-  Tato metoda se používá pro vzdálené image, ve které se adresa URL obrázku pošle počítačové zpracování obrazu zavoláním `ComputerVisionClient.DescribeImageAsync` metody.
+  Tato metoda se používá pro vzdálené image, ve které se adresa URL obrázku pošle Počítačové zpracování obrazu zavoláním metody `ComputerVisionClient.DescribeImageAsync`.
 
-Metoda vytvoří novou `ComputerVisionClient` instanci pomocí zadaného klíče předplatného a adresy URL koncového bodu. `UploadAndDescribeImageAsync` Vzhledem k tomu, že ukázková aplikace analyzuje místní bitovou kopii, musí odeslat obsah této image do Počítačové zpracování obrazu. Otevře místní soubor určený v `imageFilePath` pro čtení `Stream`jako a pak získá jazyk vybraný na stránce scénář. Volá `ComputerVisionClient.DescribeImageInStreamAsync` metodu, `Stream` projde pro soubor, maximální počet kandidátů (v tomto případě 3) a jazyk a `ImageDescription` vrátí výsledek jako instanci. Metody zděděné z `ImageScenarioPage` třídy prezentují vrácené výsledky na stránce scénáře.
+Metoda `UploadAndDescribeImageAsync` vytvoří novou instanci `ComputerVisionClient` pomocí zadaného klíče předplatného a adresy URL koncového bodu. Vzhledem k tomu, že ukázková aplikace analyzuje místní bitovou kopii, musí odeslat obsah této image do Počítačové zpracování obrazu. Otevře místní soubor zadaný v `imageFilePath` pro čtení jako `Stream`a pak získá jazyk vybraný na stránce scénář. Volá metodu `ComputerVisionClient.DescribeImageInStreamAsync`, předává `Stream` souboru, maximální počet kandidátů (v tomto případě 3) a jazyk a vrátí výsledek jako instanci `ImageDescription`. Metody zděděné z třídy `ImageScenarioPage` prezentují vrácené výsledky na stránce scénáře.
 
-Metoda vytvoří novou `ComputerVisionClient` instanci pomocí zadaného klíče předplatného a adresy URL koncového bodu. `DescribeUrlAsync` Získá jazyk vybraný na stránce scénář. Volá `ComputerVisionClient.DescribeImageAsync` metodu, projde adresu URL obrázku, maximální počet kandidátů (v tomto případě 3) a jazyk a vrátí výsledek `ImageDescription` jako instanci. Metody zděděné z `ImageScenarioPage` třídy prezentují vrácené výsledky na stránce scénáře.
+Metoda `DescribeUrlAsync` vytvoří novou instanci `ComputerVisionClient` pomocí zadaného klíče předplatného a adresy URL koncového bodu. Získá jazyk vybraný na stránce scénář. Volá metodu `ComputerVisionClient.DescribeImageAsync`, předává adresu URL obrázku, maximální počet kandidátů (v tomto případě 3) a jazyk a vrátí výsledek jako instanci `ImageDescription`. Metody zděděné z třídy `ImageScenarioPage` prezentují vrácené výsledky na stránce scénáře.
 
 ## <a name="explore-the-generate-tags-scenario"></a>Prozkoumat scénář generovat značky
 
 Tento scénář je spravován stránkou TagsPage. XAML. Můžete zvolit jazyk k označení vizuálních funkcí obrázku a zobrazit obraz i výsledky. Stránka scénář používá následující metody v závislosti na zdroji obrázku:
 
 * UploadAndGetTagsForImageAsync  
-  Tato metoda se používá pro místní image, ve kterých musí být bitová kopie kódována `Stream` jako a odeslána do počítačové zpracování obrazu `ComputerVisionClient.TagImageInStreamAsync` zavoláním metody.
+  Tato metoda se používá pro místní image, ve kterých musí být bitová kopie kódována jako `Stream` a odeslána do Počítačové zpracování obrazu voláním metody `ComputerVisionClient.TagImageInStreamAsync`.
 * GenerateTagsForUrlAsync  
-  Tato metoda se používá pro vzdálené image, ve které se adresa URL obrázku pošle počítačové zpracování obrazu zavoláním `ComputerVisionClient.TagImageAsync` metody.
+  Tato metoda se používá pro vzdálené image, ve které se adresa URL obrázku pošle Počítačové zpracování obrazu zavoláním metody `ComputerVisionClient.TagImageAsync`.
 
-Metoda vytvoří novou `ComputerVisionClient` instanci pomocí zadaného klíče předplatného a adresy URL koncového bodu. `UploadAndGetTagsForImageAsync` Vzhledem k tomu, že ukázková aplikace analyzuje místní bitovou kopii, musí odeslat obsah této image do Počítačové zpracování obrazu. Otevře místní soubor určený v `imageFilePath` pro čtení `Stream`jako a pak získá jazyk vybraný na stránce scénář. Volá `ComputerVisionClient.TagImageInStreamAsync` metodu, `Stream` předá soubor a jazyk a potom `TagResult` vrátí výsledek jako instanci. Metody zděděné z `ImageScenarioPage` třídy prezentují vrácené výsledky na stránce scénáře.
+Metoda `UploadAndGetTagsForImageAsync` vytvoří novou instanci `ComputerVisionClient` pomocí zadaného klíče předplatného a adresy URL koncového bodu. Vzhledem k tomu, že ukázková aplikace analyzuje místní bitovou kopii, musí odeslat obsah této image do Počítačové zpracování obrazu. Otevře místní soubor zadaný v `imageFilePath` pro čtení jako `Stream`a pak získá jazyk vybraný na stránce scénář. Volá metodu `ComputerVisionClient.TagImageInStreamAsync`, předává `Stream` souboru a jazyku a potom vrátí výsledek jako instanci `TagResult`. Metody zděděné z třídy `ImageScenarioPage` prezentují vrácené výsledky na stránce scénáře.
 
-Metoda vytvoří novou `ComputerVisionClient` instanci pomocí zadaného klíče předplatného a adresy URL koncového bodu. `GenerateTagsForUrlAsync` Získá jazyk vybraný na stránce scénář. Volá `ComputerVisionClient.TagImageAsync` metodu, projde adresu URL obrázku a jazyk a vrátí výsledek `TagResult` jako instanci. Metody zděděné z `ImageScenarioPage` třídy prezentují vrácené výsledky na stránce scénáře.
+Metoda `GenerateTagsForUrlAsync` vytvoří novou instanci `ComputerVisionClient` pomocí zadaného klíče předplatného a adresy URL koncového bodu. Získá jazyk vybraný na stránce scénář. Volá metodu `ComputerVisionClient.TagImageAsync`, projde adresu URL obrázku a jazyk a vrátí výsledek jako instanci `TagResult`. Metody zděděné z třídy `ImageScenarioPage` prezentují vrácené výsledky na stránce scénáře.
 
 ## <a name="explore-the-recognize-text-ocr-scenario"></a>Prozkoumat scénář Rozpoznávání textu (OCR)
 
 Tento scénář je spravován stránkou OCRPage. XAML. Můžete zvolit jazyk pro rozpoznání a extrakci vytištěného textu z obrázku a zobrazení obrázku i výsledků. Stránka scénář používá následující metody v závislosti na zdroji obrázku:
 
 * UploadAndRecognizeImageAsync  
-  Tato metoda se používá pro místní image, ve kterých musí být bitová kopie kódována `Stream` jako a odeslána do počítačové zpracování obrazu `ComputerVisionClient.RecognizePrintedTextInStreamAsync` zavoláním metody.
+  Tato metoda se používá pro místní image, ve kterých musí být bitová kopie kódována jako `Stream` a odeslána do Počítačové zpracování obrazu voláním metody `ComputerVisionClient.RecognizePrintedTextInStreamAsync`.
 * RecognizeUrlAsync  
-  Tato metoda se používá pro vzdálené image, ve které se adresa URL obrázku pošle počítačové zpracování obrazu zavoláním `ComputerVisionClient.RecognizePrintedTextAsync` metody.
+  Tato metoda se používá pro vzdálené image, ve které se adresa URL obrázku pošle Počítačové zpracování obrazu zavoláním metody `ComputerVisionClient.RecognizePrintedTextAsync`.
 
-Metoda vytvoří novou `ComputerVisionClient` instanci pomocí zadaného klíče předplatného a adresy URL koncového bodu. `UploadAndRecognizeImageAsync` Vzhledem k tomu, že ukázková aplikace analyzuje místní bitovou kopii, musí odeslat obsah této image do Počítačové zpracování obrazu. Otevře místní soubor určený v `imageFilePath` pro čtení `Stream`jako a pak získá jazyk vybraný na stránce scénář. Volá `ComputerVisionClient.RecognizePrintedTextInStreamAsync` metodu, která značí, že orientace není zjištěna a `Stream` předává pro soubor a jazyk, pak `OcrResult` vrátí výsledek jako instanci. Metody zděděné z `ImageScenarioPage` třídy prezentují vrácené výsledky na stránce scénáře.
+Metoda `UploadAndRecognizeImageAsync` vytvoří novou instanci `ComputerVisionClient` pomocí zadaného klíče předplatného a adresy URL koncového bodu. Vzhledem k tomu, že ukázková aplikace analyzuje místní bitovou kopii, musí odeslat obsah této image do Počítačové zpracování obrazu. Otevře místní soubor zadaný v `imageFilePath` pro čtení jako `Stream`a pak získá jazyk vybraný na stránce scénář. Volá metodu `ComputerVisionClient.RecognizePrintedTextInStreamAsync`, což značí, že se nezjistila orientace a předává `Stream` souboru a jazyku, a pak výsledek vrátí jako instanci `OcrResult`. Metody zděděné z třídy `ImageScenarioPage` prezentují vrácené výsledky na stránce scénáře.
 
-Metoda vytvoří novou `ComputerVisionClient` instanci pomocí zadaného klíče předplatného a adresy URL koncového bodu. `RecognizeUrlAsync` Získá jazyk vybraný na stránce scénář. Volá `ComputerVisionClient.RecognizePrintedTextAsync` metodu, která značí, že orientace není zjištěna a předává adresu URL obrázku a jazyk, a vrátí výsledek `OcrResult` jako instanci. Metody zděděné z `ImageScenarioPage` třídy prezentují vrácené výsledky na stránce scénáře.
+Metoda `RecognizeUrlAsync` vytvoří novou instanci `ComputerVisionClient` pomocí zadaného klíče předplatného a adresy URL koncového bodu. Získá jazyk vybraný na stránce scénář. Volá metodu `ComputerVisionClient.RecognizePrintedTextAsync`, což značí, že se nezjistila orientace a předává se adresa URL obrázku a jazyk, a potom vrátí výsledek jako instanci `OcrResult`. Metody zděděné z třídy `ImageScenarioPage` prezentují vrácené výsledky na stránce scénáře.
 
 ## <a name="explore-the-recognize-text-v2-english-scenario"></a>Prozkoumat scénář Rozpoznávání textu v2 (anglicky)
 
 Tento scénář je spravován stránkou TextRecognitionPage. XAML. Můžete zvolit režim rozpoznávání a jazyk pro asynchronní rozpoznávání a extrakci vytištěného nebo rukopisného textu z obrázku a zobrazení obrázku i výsledků. Stránka scénář používá následující metody v závislosti na zdroji obrázku:
 
 * UploadAndRecognizeImageAsync  
-  Tato metoda se používá pro místní image, ve kterých musí být bitová kopie kódována `Stream` jako a odeslána do počítačové zpracování obrazu `RecognizeAsync` zavoláním metody a předáním `ComputerVisionClient.RecognizeTextInStreamAsync` parametrizovaného delegáta pro metodu.
+  Tato metoda se používá pro místní image, ve kterých musí být bitová kopie kódována jako `Stream` a odeslána do Počítačové zpracování obrazu voláním metody `RecognizeAsync` a předáním parametrizovaného delegáta pro metodu `ComputerVisionClient.RecognizeTextInStreamAsync`.
 * RecognizeUrlAsync  
-  Tato metoda se používá pro vzdálené image, ve které se adresa URL obrázku pošle počítačové zpracování obrazu zavoláním `RecognizeAsync` metody a předáním parametrizovaného delegáta `ComputerVisionClient.RecognizeTextAsync` pro metodu.
-* RecognizeAsync Tato metoda zpracovává asynchronní volání pro `UploadAndRecognizeImageAsync` metody a a `RecognizeUrlAsync` také cyklické dotazování `ComputerVisionClient.GetTextOperationResultAsync` na výsledky voláním metody.
+  Tato metoda se používá pro vzdálené image, ve kterých se adresa URL obrázku pošle Počítačové zpracování obrazu zavoláním metody `RecognizeAsync` a předáním parametrizovaného delegáta pro metodu `ComputerVisionClient.RecognizeTextAsync`.
+* RecognizeAsync Tato metoda zpracovává asynchronní volání metod `UploadAndRecognizeImageAsync` i `RecognizeUrlAsync` a také cyklické dotazování na výsledky voláním metody `ComputerVisionClient.GetTextOperationResultAsync`.
 
 Na rozdíl od ostatních scénářů, které jsou součástí ukázkové aplikace Počítačové zpracování obrazu, je tento scénář asynchronní, v takovém případě je volána jedna metoda pro spuštění procesu, ale je volána jiná metoda, která zkontroluje stav a vrátí výsledky tohoto procesu. Logický tok v tomto scénáři se trochu liší od v ostatních scénářích.
 
-Metoda otevře místní soubor určený v `imageFilePath` pro čtení jako `Stream`a pak zavolá `RecognizeAsync` metodu s předáním: `UploadAndRecognizeImageAsync`
+Metoda `UploadAndRecognizeImageAsync` otevře místní soubor určený v `imageFilePath` pro čtení jako `Stream`a pak zavolá metodu `RecognizeAsync` a projde:
 
-* Výraz lambda pro parametrizovaného asynchronního delegáta `ComputerVisionClient.RecognizeTextInStreamAsync` metody `Stream` se souborem pro soubor a režimem rozpoznávání jako parametry v `GetHeadersAsyncFunc`.
-* Výraz lambda pro delegáta pro získání `Operation-Location` hodnoty hlavičky odpovědi v. `GetOperationUrlFunc`
+* Lambda výraz pro parametrizovaný asynchronní delegát metody `ComputerVisionClient.RecognizeTextInStreamAsync`, s `Stream` pro soubor a režimem rozpoznávání jako parametry v `GetHeadersAsyncFunc`.
+* Výraz lambda pro delegáta, který získá hodnotu hlavičky `Operation-Location` Response, v `GetOperationUrlFunc`.
 
-`RecognizeUrlAsync` Metoda`RecognizeAsync` volá metodu a projde:
+Metoda `RecognizeUrlAsync` volá metodu `RecognizeAsync`, která předává:
 
-* Výraz lambda pro parametrizovaný asynchronní delegát `ComputerVisionClient.RecognizeTextAsync` metody s adresou URL vzdálené image a režimem rozpoznávání jako parametry v. `GetHeadersAsyncFunc`
-* Výraz lambda pro delegáta pro získání `Operation-Location` hodnoty hlavičky odpovědi v. `GetOperationUrlFunc`
+* Výraz lambda pro parametrizovaný asynchronní delegát metody `ComputerVisionClient.RecognizeTextAsync`, s adresou URL vzdálené image a režimem rozpoznávání jako parametry v `GetHeadersAsyncFunc`.
+* Výraz lambda pro delegáta, který získá hodnotu hlavičky `Operation-Location` Response, v `GetOperationUrlFunc`.
 
-Když je `UploadAndRecognizeImageAsync` `RecognizeUrlAsync` `TextOperationResult` metoda dokončená, metody a vrátí výsledek jako instanci. `RecognizeAsync` Metody zděděné z `ImageScenarioPage` třídy prezentují vrácené výsledky na stránce scénáře.
+Po dokončení metody `RecognizeAsync` vrátí výsledek jako instanci `TextOperationResult` metody `UploadAndRecognizeImageAsync` a `RecognizeUrlAsync`. Metody zděděné z třídy `ImageScenarioPage` prezentují vrácené výsledky na stránce scénáře.
 
-Metoda volá parametrizovaného delegáta pro `ComputerVisionClient.RecognizeTextInStreamAsync` metodu nebo předanou `ComputerVisionClient.RecognizeTextAsync` `GetHeadersAsyncFunc` metodou nebo čeká na odpověď. `RecognizeAsync` Metoda pak zavolá delegáta předaný `GetOperationUrlFunc` za účelem `Operation-Location` získání hodnoty hlavičky odpovědi z odpovědi. Tato hodnota je adresa URL, která slouží k načtení výsledků metody předané `GetHeadersAsyncFunc` z počítačové zpracování obrazu.
+Metoda `RecognizeAsync` volá parametrizovaný delegát pro metodu `ComputerVisionClient.RecognizeTextInStreamAsync` nebo `ComputerVisionClient.RecognizeTextAsync` předanou `GetHeadersAsyncFunc` a čeká na odpověď. Metoda pak zavolá delegáta předaného `GetOperationUrlFunc` pro získání hodnoty hlavičky `Operation-Location` odpovědi z odpovědi. Tato hodnota je adresa URL, která slouží k načtení výsledků metody předané `GetHeadersAsyncFunc` z Počítačové zpracování obrazu.
 
-Metoda pak `Operation-Location` zavolá metodu, která předá adresu URL načtenou z hlavičky odpovědi, aby získal `GetHeadersAsyncFunc`stav a výsledek předané metody. `ComputerVisionClient.GetTextOperationResultAsync` `RecognizeAsync` Pokud stav neindikuje, že metoda byla dokončena, úspěšně nebo neúspěšně, volání `RecognizeAsync` `ComputerVisionClient.GetTextOperationResultAsync` metody bude opakována třikrát a bude čekat 3 sekundy mezi voláními. `RecognizeAsync` Metoda vrátí výsledky do metody, která ji zavolala.
+Metoda `RecognizeAsync` pak zavolá metodu `ComputerVisionClient.GetTextOperationResultAsync`, která předá adresu URL načtenou z hlavičky odpovědi `Operation-Location`, aby získal stav a výsledek metody předané v `GetHeadersAsyncFunc`. Pokud stav neindikuje, že metoda byla dokončena, úspěšně nebo neúspěšně, `RecognizeAsync` metoda volá `ComputerVisionClient.GetTextOperationResultAsync` 3 vícekrát a čeká 3 sekundy mezi voláními. Metoda `RecognizeAsync` vrátí výsledky do metody, která ji volala.
 
 ## <a name="explore-the-get-thumbnail-scenario"></a>Prozkoumat scénář získat miniatury
 
 Tento scénář je spravován stránkou ThumbnailPage. XAML. Můžete určit, zda se má používat Inteligentní oříznutí, určit požadovanou výšku a šířku, vygenerovat miniaturu z obrázku a zobrazit obraz i výsledky. Stránka scénář používá následující metody v závislosti na zdroji obrázku:
 
 * UploadAndThumbnailImageAsync  
-  Tato metoda se používá pro místní image, ve kterých musí být bitová kopie kódována `Stream` jako a odeslána do počítačové zpracování obrazu `ComputerVisionClient.GenerateThumbnailInStreamAsync` zavoláním metody.
+  Tato metoda se používá pro místní image, ve kterých musí být bitová kopie kódována jako `Stream` a odeslána do Počítačové zpracování obrazu voláním metody `ComputerVisionClient.GenerateThumbnailInStreamAsync`.
 * ThumbnailUrlAsync  
-  Tato metoda se používá pro vzdálené image, ve které se adresa URL obrázku pošle počítačové zpracování obrazu zavoláním `ComputerVisionClient.GenerateThumbnailAsync` metody.
+  Tato metoda se používá pro vzdálené image, ve které se adresa URL obrázku pošle Počítačové zpracování obrazu zavoláním metody `ComputerVisionClient.GenerateThumbnailAsync`.
 
-Metoda vytvoří novou `ComputerVisionClient` instanci pomocí zadaného klíče předplatného a adresy URL koncového bodu. `UploadAndThumbnailImageAsync` Vzhledem k tomu, že ukázková aplikace analyzuje místní bitovou kopii, musí odeslat obsah této image do Počítačové zpracování obrazu. Otevře místní soubor určený v `imageFilePath` pro čtení `Stream`jako. Volá `ComputerVisionClient.GenerateThumbnailInStreamAsync` metodu, předává šířku, výšku `Stream` , soubor pro soubor a určuje, zda použít inteligentní oříznutí, a `Stream`vrátí výsledek jako. Metody zděděné z `ImageScenarioPage` třídy prezentují vrácené výsledky na stránce scénáře.
+Metoda `UploadAndThumbnailImageAsync` vytvoří novou instanci `ComputerVisionClient` pomocí zadaného klíče předplatného a adresy URL koncového bodu. Vzhledem k tomu, že ukázková aplikace analyzuje místní bitovou kopii, musí odeslat obsah této image do Počítačové zpracování obrazu. Otevře místní soubor zadaný v `imageFilePath` pro čtení jako `Stream`. Volá metodu `ComputerVisionClient.GenerateThumbnailInStreamAsync`, předává šířku, výšku, `Stream` souboru a určuje, jestli se má použít inteligentní ořezávání, a pak výsledek vrátí jako `Stream`. Metody zděděné z třídy `ImageScenarioPage` prezentují vrácené výsledky na stránce scénáře.
 
-Metoda vytvoří novou `ComputerVisionClient` instanci pomocí zadaného klíče předplatného a adresy URL koncového bodu. `RecognizeUrlAsync` Volá `ComputerVisionClient.GenerateThumbnailAsync` metodu, předává šířku, výšku, adresu URL obrázku a zda má používat Inteligentní oříznutí, a vrátí výsledek `Stream`jako. Metody zděděné z `ImageScenarioPage` třídy prezentují vrácené výsledky na stránce scénáře.
+Metoda `RecognizeUrlAsync` vytvoří novou instanci `ComputerVisionClient` pomocí zadaného klíče předplatného a adresy URL koncového bodu. Volá metodu `ComputerVisionClient.GenerateThumbnailAsync`, předává šířku, výšku, adresu URL obrázku a určuje, jestli se má použít inteligentní oříznutí, a výsledek vrátí jako `Stream`. Metody zděděné z třídy `ImageScenarioPage` prezentují vrácené výsledky na stránce scénáře.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -311,4 +311,4 @@ Pokud už je nepotřebujete, odstraňte složku, do které jste naklonováni `Mi
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Začínáme s Face API](../../Face/Tutorials/FaceAPIinCSharpTutorial.md)
+> [Začínáme se službou Face](../../Face/Tutorials/FaceAPIinCSharpTutorial.md)

@@ -4,12 +4,12 @@ description: Naučte se zpracovávat externí události v rozšíření Durable 
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 7d7fcc725d78b24a93b09cb9c76cf7dc0231cac2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0877161f8d668141c8efb7c06b10643bf209341f
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232884"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262958"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Zpracování externích událostí v Durable Functions (Azure Functions)
 
@@ -22,7 +22,7 @@ Funkce nástroje Orchestrator mají možnost čekat a naslouchat externím udál
 
 Metody `WaitForExternalEvent` (.NET) a `waitForExternalEvent` (JavaScript) [vazby triggeru Orchestration](durable-functions-bindings.md#orchestration-trigger) umožňují, aby funkce Orchestrator asynchronně čekala a naslouchala externí události. Naslouchající funkce Orchestrator deklaruje *název* události a *tvar dat* , která očekává k přijetí.
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("BudgetApproval")]
@@ -44,7 +44,7 @@ public static async Task Run(
 > [!NOTE]
 > Předchozí C# kód je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` namísto `IDurableOrchestrationContext`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -59,11 +59,13 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 Předchozí příklad naslouchá konkrétní jedné události a provede akci, jakmile bude přijata.
 
 Můžete naslouchat více událostem souběžně, jako v následujícím příkladu, který čeká na jedno ze tří možných oznámení o událostech.
 
-#### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Select")]
@@ -93,7 +95,7 @@ public static async Task Run(
 > [!NOTE]
 > Předchozí C# kód je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` namísto `IDurableOrchestrationContext`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -114,9 +116,11 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 Předchozí příklad naslouchá *libovolné* z několika událostí. Je také možné počkat na *všechny* události.
 
-#### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("NewBuildingPermit")]
@@ -139,7 +143,9 @@ public static async Task Run(
 > [!NOTE]
 > Předchozí kód je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` namísto `IDurableOrchestrationContext`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
+V rozhraní .NET, pokud nelze datovou část události převést na očekávaný typ `T`, je vyvolána výjimka.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -158,12 +164,12 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 `WaitForExternalEvent` pro nějaký vstup čeká na neomezenou dobu.  Aplikace Function App se dá bezpečně uvolnit při čekání. Pokud a když událost dorazí na tuto instanci orchestrace, je automaticky probuzeny a okamžitě zpracuje událost.
 
 > [!NOTE]
 > Pokud vaše aplikace Function App používá plán spotřeby, neúčtují se žádné poplatky za to, že funkce Orchestrator očekává úkol od `WaitForExternalEvent` (.NET) nebo `waitForExternalEvent` (JavaScript) bez ohledu na to, jak dlouho čekají.
-
-V rozhraní .NET, pokud nelze datovou část události převést na očekávaný typ `T`, je vyvolána výjimka.
 
 ## <a name="send-events"></a>Odesílání událostí
 
@@ -171,7 +177,7 @@ Metoda `RaiseEventAsync` (.NET) nebo `raiseEvent` (JavaScript) [vazby klienta Or
 
 Níže je uvedená příklad funkce aktivované frontou, která odesílá událost schválení do instance funkce Orchestrator. ID instance Orchestration pochází z těla zprávy fronty.
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ApprovalQueueProcessor")]
@@ -186,7 +192,7 @@ public static async Task Run(
 > [!NOTE]
 > Předchozí C# kód je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít atribut `OrchestrationClient` namísto atributu `DurableClient` a musíte použít typ parametru `DurableOrchestrationClient` namísto `IDurableOrchestrationClient`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -196,6 +202,8 @@ module.exports = async function(context, instanceId) {
     await client.raiseEvent(instanceId, "Approval", true);
 };
 ```
+
+---
 
 Interně, `RaiseEventAsync` (.NET) nebo `raiseEvent` (JavaScript) zařadí do fronty zprávu, která se vybrala čekající funkcí Orchestrator. Pokud instance nečeká na zadaný *název události,* zpráva události se přidá do fronty v paměti. Pokud instance orchestrace později začne naslouchat tomuto *názvu události,* zkontroluje ve frontě zprávy o událostech.
 

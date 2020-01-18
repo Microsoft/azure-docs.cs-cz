@@ -1,7 +1,7 @@
 ---
-title: Určení modelu rozpoznávání – Face API
+title: Určení modelu rozpoznávání – Face
 titleSuffix: Azure Cognitive Services
-description: V tomto článku se dozvíte, jak zvolit model rozpoznávání, který se má použít pro vaši aplikaci Azure Face API.
+description: V tomto článku se dozvíte, jak zvolit model rozpoznávání, který se má používat s aplikací Azure Face.
 services: cognitive-services
 author: longli0
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: longl
-ms.openlocfilehash: 5b84e078e3b674a539b61c07c4bb4370719e4799
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 44392b807659ff8f13511b48d0afd33db080e4f6
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74771015"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166462"
 ---
 # <a name="specify-a-face-recognition-model"></a>Určení modelu rozpoznávání obličeje
 
-V této příručce se dozvíte, jak zadat model rozpoznávání obličeje pro rozpoznávání tváře, identifikaci a hledání podobnosti pomocí Face API Azure.
+V této příručce se dozvíte, jak zadat model rozpoznávání obličeje pro rozpoznávání tváře, identifikaci a hledání podobnosti pomocí služby Azure Face.
 
-Face API používá modely strojového učení k provádění operací na lidských plochách na obrázcích. I nadále vylepšujeme přesnost našich modelů na základě zpětné vazby od zákazníků a pokrok ve výzkumu a poskytujeme tato vylepšení jako aktualizace modelu. Vývojáři mají možnost určit, kterou verzi modelu rozpoznávání obličeje má použít; můžou zvolit model, který nejlépe odpovídá jejich případu použití.
+Služba obličeje používá modely strojového učení k provádění operací na lidských plochách na obrázcích. I nadále vylepšujeme přesnost našich modelů na základě zpětné vazby od zákazníků a pokrok ve výzkumu a poskytujeme tato vylepšení jako aktualizace modelu. Vývojáři mají možnost určit, kterou verzi modelu rozpoznávání obličeje má použít; můžou zvolit model, který nejlépe odpovídá jejich případu použití.
 
 Pokud jste nový uživatel, doporučujeme použít nejnovější model. Přečtěte si, kde se dozvíte, jak ho zadat v různých tvářových operacích a vyhnout se konfliktům modelu. Pokud jste pokročilý uživatel a nejste si jistí, jestli byste měli přepnout na nejnovější model, přejděte k části [vyhodnotit různé modely](#evaluate-different-models) , abyste vyhodnotili nový model a porovnali výsledky pomocí aktuální datové sady.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Měli byste být obeznámeni s koncepty detekce a identifikace obličeje. Pokud nevidíte, podívejte se na tyto návody jako jako první:
 
@@ -57,7 +57,7 @@ var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recog
 
 ## <a name="identify-faces-with-specified-model"></a>Identifikujte plošky se zadaným modelem
 
-Face API může z obrázku extrahovat přední data a přidružit ho k objektu **Person** (například prostřednictvím volání rozhraní API pro [Přidání obličeje](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) ) a ukládat objekty více **osob** společně ve službě **Person**. Nový obličej se pak dá porovnávat se skupinou **osob** (s voláním [Face – Identify] ) a je možné identifikovat odpovídající osobu v této skupině.
+Služba obličeje může z obrázku extrahovat data z obrázku a přidružit ho k objektu **Person** (například prostřednictvím volání rozhraní API pro [Přidání obličeje](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) ) a ukládat objekty více **osob** společně ve službě **Person**. Nový obličej se pak dá porovnávat se skupinou **osob** (s voláním [Face – Identify] ) a je možné identifikovat odpovídající osobu v této skupině.
 
 Skupina **osob** by měla mít jeden jedinečný model rozpoznávání pro všechny **osoby**s a můžete ji zadat pomocí parametru `recognitionModel` při vytváření skupiny (skupiny[PersonGroup – Create] nebo [LargePersonGroup – Create]). Pokud tento parametr nezadáte, použije se původní `recognition_01` model. Skupina bude vždy používat model rozpoznávání, pomocí kterého byl vytvořen, a při jejich přidání do tohoto modelu budou přidruženy nové plošky. tuto hodnotu nelze změnit po vytvoření skupiny. Pokud chcete zjistit, ke kterému modelu je nakonfigurované **osoba** , použijte rozhraní [Person – Get] API s parametrem _returnRecognitionModel_ nastaveným na **hodnotu true**.
 

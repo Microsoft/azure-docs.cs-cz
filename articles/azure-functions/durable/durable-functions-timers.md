@@ -4,12 +4,12 @@ description: Přečtěte si, jak implementovat trvalé časovače v rozšířen�
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 463d5e6c253643c82935c82c7dee5996c8e44b5f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 0565cc149a36baf31d8516fffcf48b194c465760
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706102"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261479"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Časovače v Durable Functions (Azure Functions)
 
@@ -29,7 +29,7 @@ Když vytvoříte časovač, jehož platnost vyprší v 4:30. odp., zařadí zá
 
 Následující příklad ukazuje, jak použít trvalá časovače ke zpoždění provádění. Příklad vydává fakturační oznámení každý den po dobu 10 dnů.
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("BillingIssuer")]
@@ -48,7 +48,7 @@ public static async Task Run(
 > [!NOTE]
 > Předchozí C# příklad cílí Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` namísto `IDurableOrchestrationContext`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```js
 const df = require("durable-functions");
@@ -63,6 +63,8 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 > [!WARNING]
 > Vyhněte se nekonečným smyčkám ve funkcích nástroje Orchestrator. Informace o tom, jak bezpečně a efektivně implementovat scénáře nekonečné smyčky, najdete v tématu [orchestrace externí](durable-functions-eternal-orchestrations.md).
 
@@ -70,7 +72,7 @@ module.exports = df.orchestrator(function*(context) {
 
 Tento příklad ukazuje, jak použít trvalé časovače k implementaci časových limitů.
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("TryGetQuote")]
@@ -104,7 +106,7 @@ public static async Task<bool> Run(
 > [!NOTE]
 > Předchozí C# příklad cílí Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` namísto `IDurableOrchestrationContext`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```js
 const df = require("durable-functions");
@@ -130,8 +132,10 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 > [!WARNING]
-> Použijte `CancellationTokenSource` pro zrušení trvalého časovače (.NET) nebo volání `cancel()` na vrácené `TimerTask` (JavaScript), pokud kód nebude čekat na dokončení. Architektura trvalého úkolu nemění stav orchestrace na dokončeno, dokud nebudou dokončeny nebo zrušeny všechny zbývající úlohy.
+> Použijte `CancellationTokenSource` (.NET) nebo volejte `cancel()` na vráceném `TimerTask` (JavaScript), chcete-li zrušit trvalý časovač, pokud váš kód nebude čekat na jeho dokončení. Architektura trvalého úkolu nemění stav orchestrace na dokončeno, dokud nebudou dokončeny nebo zrušeny všechny zbývající úlohy.
 
 Tento mechanismus zrušení neukončí probíhající funkci aktivity nebo provádění dílčí orchestrace. Místo toho jednoduše umožňuje, aby funkce Orchestrator ignorovala výsledek a přesunula se na. Pokud vaše aplikace Function App používá plán spotřeby, pořád se vám bude účtovat veškerá doba a paměť spotřebovaná funkcí opuštěná aktivita. Ve výchozím nastavení mají funkce spuštěné v plánu spotřeby časový limit pět minut. V případě překročení tohoto limitu se Azure Functions hostitel recykluje, aby zastavil všechna spuštění a zabránila situaci v fakturaci. [Časový limit funkce lze nakonfigurovat](../functions-host-json.md#functiontimeout).
 

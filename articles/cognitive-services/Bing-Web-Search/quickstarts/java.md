@@ -11,20 +11,20 @@ ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 8bdc6acb17cde29b99bad20a45f41d6bfc174363
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1fdeffb5ee5b1e2d66fbf5586d307cd8d8b78858
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976345"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166731"
 ---
 # <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>Rychlý Start: použití jazyka Java k vyhledávání na webu pomocí Vyhledávání na webu Bingu REST API, Služba rozpoznávání Azure
 
 V tomto rychlém startu použijete aplikaci Java k tomu, aby se vaše první volání rozhraní API Bingu pro vyhledávání na webu a dostala odpověď JSON. Tato aplikace Java pošle do rozhraní API požadavek hledání a zobrazí odpověď. Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebovat:
+Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého startu:
 
 * [JDK 7 nebo 8](https://aka.ms/azure-jdks)
 * [Knihovna Gson](https://github.com/google/gson)
@@ -73,7 +73,7 @@ public class BingWebSearch {
 
 ## <a name="define-variables"></a>Definování proměnných
 
-Tento kód nastaví `subscriptionKey`, `host`, `path` a `searchTerm`. `host` může být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek. Hodnotu `subscriptionKey` nahraďte platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz přizpůsobíte tím, že místo `searchTerm` zadáte jinou hodnotu. Nezapomeňte přidat tento kód do třídy `BingWebSearch`, jak je uvedeno výše.
+Tento kód nastaví `subscriptionKey`, `host`, `path` a `searchTerm`. `host` může být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek. Hodnotu `subscriptionKey` nahraďte platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz můžete přizpůsobit. Stačí místo `searchTerm` zadat jinou hodnotu. Nezapomeňte přidat tento kód do třídy `BingWebSearch`, jak je uvedeno výše.
 
 ```java
 // Enter a valid subscription key.
@@ -213,9 +213,9 @@ Odpovědi rozhraní API Bingu pro vyhledávání na webu se vrátí jako objekt 
         "snippet": "Knock down barriers between you and your ideas. Enable natural and contextual interaction with tools that augment users' experiences via the power of machine-based AI. Plug them in and bring your ideas to life.",
         "deepLinks": [
           {
-            "name": "Face API",
+            "name": "Face",
             "url": "https://azure.microsoft.com/services/cognitive-services/face/",
-            "snippet": "Add facial recognition to your applications to detect, identify, and verify faces using a Face API from Microsoft Azure. ... Cognitive Services; Face API;"
+            "snippet": "Add facial recognition to your applications to detect, identify, and verify faces using a Face service from Microsoft Azure. ... Cognitive Services; Face service;"
           },
           {
             "name": "Text Analytics",

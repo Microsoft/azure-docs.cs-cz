@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1f5c837f1912df407960fca41387eb84986381e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 530f32a994f448247dd5f06a21336eb052193cbb
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423155"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167569"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Kurz: Konfigurace hybridního připojení k Azure Active Directory pro federované domény
 
@@ -154,6 +154,9 @@ Pokud jsou některá zařízení připojená k doméně zařízení se starší 
 
 - Konfigurace nastavení místního intranetu pro registraci zařízení
 - Nainstalovat Microsoft Workplace Join pro počítače se starší verzí Windows
+
+> [!NOTE]
+> Podpora Windows 7 skončila 14. ledna 2020. Další informace najdete v případě, [že podpora pro Windows 7 skončila](https://support.microsoft.com/en-us/help/4057281/windows-7-support-ended-on-january-14-2020).
 
 ### <a name="configure-the-local-intranet-settings-for-device-registration"></a>Konfigurace nastavení místního intranetu pro registraci zařízení
 

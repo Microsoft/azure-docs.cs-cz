@@ -1,35 +1,35 @@
 ---
-title: Povolit poznámkové bloky v účtu Azure Cosmos DB
+title: Povolit poznámkové bloky v účtu Azure Cosmos DB (Preview)
 description: Integrované poznámkové bloky Azure Cosmos DB umožňují analyzovat a vizualizovat data v rámci portálu. Tento článek popisuje, jak povolit tuto funkci pro účty Cosmos.
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2019
 ms.author: dech
-ms.openlocfilehash: 22bad3b31b8cbe54900b96bd4b327f18916e81a3
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 8c65b7d010e521ec78322de9807f741c856a2381
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677147"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264844"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts"></a>Povolit poznámkové bloky pro účty Azure Cosmos DB
 
 > [!IMPORTANT]
 > Integrované poznámkové bloky pro Azure Cosmos DB jsou momentálně dostupné v následujících oblastech Azure: Austrálie – východ, Východní USA, Východní USA 2, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Západní Evropa a Západní USA 2. Pokud chcete používat poznámkové bloky, [vytvořte nový účet s poznámkovým blokem](#enable-notebooks-in-a-new-cosmos-account) nebo [Povolte poznámkové bloky v existujícím účtu](#enable-notebooks-in-an-existing-cosmos-account) v některé z těchto oblastí.
 
-Integrované poznámkové bloky Jupyter v Azure Cosmos DB umožňují analyzovat a vizualizovat data z Azure Portal. Tento článek popisuje, jak povolit tuto funkci pro účet Azure Cosmos DB.
+Integrované poznámkové bloky Jupyter v Azure Cosmos DB umožňují analyzovat a vizualizovat data z Azure Portal. Tento článek popisuje, jak tuto funkci povolit pro váš účet služby Azure Cosmos DB.
 
 ## <a name="enable-notebooks-in-a-new-cosmos-account"></a>Povolit poznámkové bloky v novém účtu Cosmos
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
-1. Vyberte **vytvořit prostředek** > **databáze** > **Azure Cosmos DB**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Vyberte **Vytvořit prostředek** > **Databáze** > **Azure Cosmos DB**.
 1. Na stránce **vytvořit Azure Cosmos DB účet** vyberte **poznámkové bloky**. 
  
     ![Možnost výběru poznámkových bloků v Azure Cosmos DB vytvořit okno](media/enable-notebooks/create-new-account-with-notebooks.png)
-1. Vyberte **zkontrolovat + vytvořit**. Můžete přeskočit možnost **síť** a **značky** . 
+1. Vyberte **Zkontrolovat a vytvořit**. Můžete přeskočit možnost **síť** a **značky** . 
 1. Zkontrolujte nastavení účtu a pak vyberte **vytvořit**. Vytvoření účtu trvá několik minut. Počkejte, než se na stránce portálu zobrazí **dokončené vaše nasazení**. 
 
-    ![Podokno oznámení Azure Portal](media/enable-notebooks/create-new-account-with-notebooks-complete.png)
+    ![Podokno Oznámení portálu Azure Portal](media/enable-notebooks/create-new-account-with-notebooks-complete.png)
 1. Vyberte **Přejít k prostředku** a přejdete na stránku Azure Cosmos DB účet. 
 
     ![Stránka Azure Cosmos DB účtu](../../includes/media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created-3.png)

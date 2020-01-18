@@ -16,29 +16,29 @@ ms.topic: tutorial
 ms.date: 12/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9eb369047574ef76dd31996fd16399380ea027c8
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: f26af813fcd4032aabce2305ac8845307d1fca65
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74823302"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262108"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-uniflow-online"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s uniFLOW online
 
 V tomto kurzu se dozvíte, jak integrovat uniFLOW online s Azure Active Directory (Azure AD). Když integrujete uniFLOW online s Azure AD, můžete:
 
 * Řízení ve službě Azure AD, která má přístup k uniFLOW online
-* Umožněte uživatelům, aby se automaticky přihlásili k uniFLOW online pomocí svých účtů Azure AD.
+* Umožněte uživatelům, aby se přihlásili k uniFLOW online pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* předplatné uniFLOW online jednotného přihlašování (SSO) s povoleným jednotným přihlašováním.
+* uniFLOW online tenant.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -64,11 +64,10 @@ Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí uniFLOW o
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí uniFLOW online, dokončete následující stavební bloky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
-    * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
-    * **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+   1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+   1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
 1. **[Nakonfigurujte UNIFLOW jednotné](#configure-uniflow-online-sso)** přihlašování online – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-    * **[Vytvořte online testovacího uživatele uniFLOW](#create-uniflow-online-test-user)** , abyste měli protějšek B. Simon v uniFLOW online, která je propojená s reprezentací uživatele v Azure AD.
-1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
+    * **[Přihlaste se k UniFLOW online pomocí vytvořeného testovacího uživatele](#sign-in-to-uniflow-online-using-the-created-test-user)** – k otestování přihlášení uživatele na straně aplikace.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
@@ -86,24 +85,24 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     | | |
     |-|-|
-    | `https://<tenant_domain_name>.eu.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.us.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.sg.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.jp.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.au.uniFLOWonline.com`|
+    | `https://<tenant_domain_name>.eu.uniflowonline.com`|
+    | `https://<tenant_domain_name>.us.uniflowonline.com`|
+    | `https://<tenant_domain_name>.sg.uniflowonline.com`|
+    | `https://<tenant_domain_name>.jp.uniflowonline.com`|
+    | `https://<tenant_domain_name>.au.uniflowonline.com`|
 
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:
 
     | | |
     |-|-|
-    | `https://<tenant_domain_name>.eu.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.us.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.sg.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.jp.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.au.uniFLOWonline.com`|
+    | `https://<tenant_domain_name>.eu.uniflowonline.com`|
+    | `https://<tenant_domain_name>.us.uniflowonline.com`|
+    | `https://<tenant_domain_name>.sg.uniflowonline.com`|
+    | `https://<tenant_domain_name>.jp.uniflowonline.com`|
+    | `https://<tenant_domain_name>.au.uniflowonline.com`|
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, kontaktujte [tým podpory online klientů uniFLOW](mailto:support@nt-ware.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, kontaktujte [tým podpory online klientů uniFLOW](mailto:support@nt-ware.com) . Můžete se také podívat na vzory zobrazené v části **základní konfigurace SAML** v Azure Portal nebo se přečtěte na adresu URL odpovědi zobrazené v online tenantovi uniFLOW.
 
 1. aplikace uniFLOW online očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
@@ -115,6 +114,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     | -----------| --------------- |
     | displayName | user.displayname |
     | zdívek | User. onpremisessamaccountname |
+
+   > [!NOTE]
+   > Atribut `user.onpremisessamaccountname` bude obsahovat hodnotu pouze v případě, že jsou uživatelé služby Azure AD synchronizováni z místní služby Windows Active Directory.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
@@ -138,17 +140,20 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte možnost **UniFLOW online**.
-1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+1. Na stránce Přehled aplikace otevřete část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Odkaz Přidat uživatele](common/add-assign-user.png)
+   ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+
+> [!NOTE]
+> Pokud chcete všem uživatelům dovolit přístup k aplikaci bez ručního přiřazení, přejděte do části **Správa** a vyberte **vlastnosti**. Pak změňte parametr **vyžadováno přiřazení uživatele** na **ne**.
 
 ## <a name="configure-uniflow-online-sso"></a>Konfigurace online jednotného přihlašování uniFLOW
 
@@ -177,7 +182,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
     c. Pro **typ WS-** dobalení vyberte možnost **Azure Active Directory** z rozevíracího seznamu.
 
-    d. Klikněte na **Uložit**.
+    d. Klikněte na možnost **Uložit**.
 
 1. Na kartě **Obecné** proveďte následující kroky:
 
@@ -185,7 +190,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
     a. Zadejte zobrazovaný název ex: *AZUREAD SSO*.
 
-    b. Možnost vybrat **z adresy URL** pro **federační metadata ADGS**
+    b. Vyberte možnost **z adresy URL** **federačních metadat služby ADFS**.
 
     c. Do textového pole **Adresa URL federačních metadat** vložte hodnotu **adresy URL federačních metadat aplikace** , kterou jste zkopírovali z Azure Portal.
 
@@ -193,33 +198,15 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
     e. Vyberte možnost **Automatická registrace uživatele** jako **aktivovanou**.
 
-    f. Klikněte na **Uložit**.
+    f. Klikněte na možnost **Uložit**.
 
-### <a name="create-uniflow-online-test-user"></a>Vytvořit online testovacího uživatele uniFLOW
+### <a name="sign-in-to-uniflow-online-using-the-created-test-user"></a>Přihlaste se k uniFLOW online pomocí vytvořeného testovacího uživatele.
 
-1. V jiném okně webového prohlížeče se přihlaste k online webu uniFLOW jako správce.
+1. V jiném okně webového prohlížeče přejdete na adresu URL online uniFLOW pro vašeho tenanta.
 
-1. V levém navigačním panelu vyberte kartu **uživatel** .
+1. Vyberte dříve vytvořeného poskytovatele identity a přihlaste se pomocí vaší instance služby Azure AD.
 
-    ![Online konfigurace uniFLOW](./media/uniflow-online-tutorial/configure1.png)
-
-1. Klikněte na **Přidat uživatele**.
-
-    ![Online konfigurace uniFLOW](./media/uniflow-online-tutorial/user1.png)
-
-1. Klikněte na **vytvořit uživatele ručně**.
-
-    ![Online konfigurace uniFLOW](./media/uniflow-online-tutorial/user2.png)
-
-1. Na kartě **vytvořit uživatele ručně** zadejte požadované hodnoty podle požadavků vaší organizace.
-
-    ![Online konfigurace uniFLOW](./media/uniflow-online-tutorial/user3.png)
-
-## <a name="test-sso"></a>Test SSO
-
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
-
-Když na přístupovém panelu kliknete na dlaždici uniFLOW online, měli byste se automaticky přihlásit k uniFLOW online, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+1. Přihlaste se pomocí testovacího uživatele.
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 

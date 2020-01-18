@@ -9,19 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/29/2019
+ms.date: 01/16/2020
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4cb0f3d054f9afd0c606f80fd6fc5d553eff806
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 29418e0000f917f7184a230c04b93adeae44efef
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916311"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261190"
 ---
 # <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>Předání vlastního stavu v žádostech o ověření pomocí MSAL. js
+
 Parametr *stavu* definovaný protokolem OAuth 2,0 je součástí žádosti o ověření a je také vrácen v odpovědi tokenu, aby nedocházelo k útokům proti padělání požadavků mezi weby. Ve výchozím nastavení projde knihovna Microsoft Authentication Library pro JavaScript (MSAL. js) náhodně generovanou hodnotu parametru *stavu* v žádostech o ověření.
 
 Parametr State lze také použít ke kódování informací o stavu aplikace před přesměrování. Do tohoto parametru můžete předat stav uživatele v aplikaci, jako je například stránka nebo zobrazení, na kterých byly, jako vstup. Knihovna MSAL. js umožňuje předat vlastní stav jako parametr stavu v objektu `Request`:
@@ -40,8 +41,16 @@ export type AuthenticationParameters = {
     account?: Account;
     sid?: string;
     loginHint?: string;
+    forceRefresh?: boolean;
 };
 ```
+
+> [!Note]
+> Pokud chcete přeskočit token uložený v mezipaměti a přejít na server, předejte prosím logickou `forceRefresh` do objektu AuthenticationParameters, který jste použili k vytvoření žádosti o přihlášení nebo token.
+> `forceRefresh` by neměl být ve výchozím nastavení použit, protože má vliv na výkon vaší aplikace.
+> Spoléhání se na mezipaměť, aby vaši uživatelé měli lepší zkušenosti.
+> Přeskočení mezipaměti by mělo být použito pouze ve scénářích, kde víte, že data aktuálně uložených v mezipaměti nemají aktuální informace.
+> Například nástroj pro správu, který přidává role uživateli, který potřebuje získat nový token s aktualizovanými rolemi.
 
 Například:
 

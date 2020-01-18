@@ -1,5 +1,5 @@
 ---
-title: Integrace prostředí do Azure Pipelines v Azure DevTest Labs | Microsoft Docs
+title: Integrace prostředí do Azure Pipelines v Azure DevTest Labs
 description: Naučte se integrovat Azure DevTest Labs prostředí do kanálů Azure DevOps Continuous Integration (CI) a průběžného doručování (CD).
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: c665c65dcda2266a7acd7bc78726179d559f4d64
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 3d7e481879326ac30093bd116222bddc28640398
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163925"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169425"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>Integrace prostředí do kanálů Azure DevOps CI/CD
-Pomocí rozšíření Azure DevTest Labsch úloh, které je nainstalované v Azure DevOps Services (dřív označovaném jako Visual Studio Team Services), můžete snadno integrovat kanál pro vytváření sestav průběžné integrace (CI)/průběžné doručování (CD) a vydání do Azure. DevTest Labs. Tato rozšíření usnadňují rychlé nasazení [prostředí](devtest-lab-test-env.md) pro konkrétní testovací úlohu a jejich odstranění po dokončení testu. 
+Pomocí rozšíření Azure DevTest Labs úlohy, které je nainstalováno v Azure DevOps Services (dříve označované jako Visual Studio Team Services), můžete snadno integrovat kanál pro vytváření sestav průběžné integrace (CI)/průběžné doručování (CD-Release) pomocí Azure DevTest Labs. Tato rozšíření usnadňují rychlé nasazení [prostředí](devtest-lab-test-env.md) pro konkrétní testovací úlohu a jejich odstranění po dokončení testu. 
 
 Tento článek ukazuje, jak vytvořit a nasadit prostředí a pak odstranit prostředí, a to vše v jednom kompletním kanálu. Každý z těchto úloh byste obvykle prováděli jednotlivě ve vlastním vlastním kanálu sestavení-test-nasazení. K těmto [úlohám virtuálního počítače pro vytváření a odstraňování ODložených](devtest-lab-integrate-ci-cd-vsts.md)souborů se používají rozšíření použitá v tomto článku:
 
@@ -42,12 +42,12 @@ V této části se dozvíte, jak vytvořit a nakonfigurovat testovací prostřed
 Chcete-li vytvořit definici vydané verze, postupujte následovně:
 
 1.  Na kartě **vydání** centra vydaných **verzí Build &** vyberte tlačítko **znaménko plus (+)** .
-2.  V okně **vytvořit definici vydané verze** vyberte **prázdnou** šablonu a pak vyberte **Další**.
+2.  V **definice vydané verze vytvořit** okna, vyberte **prázdný** šablonu a pak vyberte **Další**.
 3.  Vyberte **zvolit později**a pak vyberte **vytvořit** a vytvořte novou definici vydané verze s jedním výchozím prostředím a bez propojených artefaktů.
 4.  Pokud chcete otevřít místní nabídku, v nové definici vydané verze vyberte **tři tečky (...)** vedle názvu prostředí a pak vyberte **Konfigurovat proměnné**.
 5.  V okně **Konfigurace prostředí** pro proměnné, které používáte v úlohách definice vydaných verzí, zadejte následující hodnoty:
 1.  Pro **administratorLogin**zadejte přihlašovací jméno správce SQL.
-2.  Pro **administratorLoginPassword**zadejte heslo, které chcete použít pro přihlášení správce SQL. Pro skrytí a zabezpečení hesla použijte ikonu "visacího zámku nezobrazuje".
+2.  Pro **administratorLoginPassword**zadejte heslo, které chcete použít pro přihlášení správce SQL. Pomocí ikony "visacího zámku nezobrazuje" Skrýt a zabezpečené heslo.
 3.  Pro **DatabaseName**zadejte název SQL Database.
 4.  Tyto proměnné jsou specifické pro ukázková prostředí, různá prostředí mohou mít různé proměnné.
 
@@ -55,8 +55,8 @@ Chcete-li vytvořit definici vydané verze, postupujte následovně:
 Další fází nasazení je vytvořit prostředí, které se bude používat pro účely vývoje nebo testování.
 
 1. V části definice verze vyberte **Přidat úlohy**.
-2. Na kartě **úlohy** přidejte Azure DevTest Labs úlohy vytvořit prostředí. Nakonfigurujte úlohu následujícím způsobem:
-    1. U **předplatného Azure RM**vyberte připojení v seznamu **dostupné připojení služby Azure** nebo vytvořte další omezené oprávnění k vašemu předplatnému Azure. Další informace najdete v tématu [Azure Resource Manager koncového bodu služby](/azure/devops/pipelines/library/service-endpoints).
+2. Na kartě **úlohy** přidejte Azure DevTest Labs úlohy vytvořit prostředí. Úkol nakonfigurujte následujícím způsobem:
+    1. Pro **předplatné Azure RM**, vyberte připojení **dostupných připojení služby Azure** seznamu, nebo vytvořte omezenější oprávnění připojení ke svému předplatnému Azure. Další informace najdete v tématu [koncový bod služby Azure Resource Manageru](/azure/devops/pipelines/library/service-endpoints).
 2. V poli **název testovacího prostředí**vyberte název instance, kterou jste vytvořili dříve *.
 3. V poli **název úložiště**vyberte úložiště, kde byla šablona Správce prostředků (201) vložená do *.
 4. Jako **název šablony**vyberte název prostředí, které jste uložili do úložiště zdrojového kódu *. 
@@ -68,10 +68,10 @@ Další fází nasazení je vytvořit prostředí, které se bude používat pro
 ## <a name="delete-the-environment"></a>Odstranění prostředí
 Poslední fází je odstranit prostředí, které jste nasadili v instanci Azure DevTest Labs. Prostředí byste obvykle odstranili po spuštění úloh vývoje nebo spuštění testů, které potřebujete na nasazených prostředcích.
 
-V části definice verze vyberte **Přidat úlohy**a potom na kartě **nasadit** přidejte úlohu **Azure DevTest Labs odstranit prostředí** . Nakonfigurujte ho následujícím způsobem:
+V části definice verze vyberte **Přidat úlohy**a potom na kartě **nasadit** přidejte úlohu **Azure DevTest Labs odstranit prostředí** . Nakonfigurujte následujícím způsobem:
 
 1. Pokud chcete virtuální počítač odstranit, přečtěte si téma [Azure DevTest Labs úlohy](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks):
-    1. U **předplatného Azure RM**vyberte připojení v seznamu **dostupné připojení služby Azure** nebo vytvořte další omezené oprávnění k vašemu předplatnému Azure. Další informace najdete v tématu [Azure Resource Manager koncového bodu služby](/azure/devops/pipelines/library/service-endpoints).
+    1. Pro **předplatné Azure RM**, vyberte připojení **dostupných připojení služby Azure** seznamu, nebo vytvořte omezenější oprávnění připojení ke svému předplatnému Azure. Další informace najdete v tématu [koncový bod služby Azure Resource Manageru](/azure/devops/pipelines/library/service-endpoints).
     2. V poli **název testovacího**prostředí vyberte testovací prostředí, ve kterém prostředí existuje.
     3. Do pole **Název prostředí**zadejte název prostředí, které se má odebrat.
 2. Zadejte název definice vydané verze a pak ji uložte.

@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: e4147fbb27c8538f801f6c49f8b535a283faf50f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c81aaa02af0895e6c3a851fe15273d85de9b55bc
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325918"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262740"
 ---
 Klientská aplikace musí znát, jestli utterance není smysluplná nebo vhodná pro aplikaci. Záměr **none** se do každé aplikace přidá jako součást procesu vytváření, aby se zjistilo, jestli klientská aplikace nemůže odpovědět na utterance.
 
@@ -30,7 +30,6 @@ Pokud necháte žádný záměr **none** prázdný, utterance, který by měl b�
     |`None` příklad projevy|
     |--|
     |`Barking dogs are annoying`|
-    |`Order a pizza for me`|
     |`Penguins in the ocean`|
 
     Tyto příklady nemůžou používat slova, která očekáváte v doméně předmětu, jako je `pizza`, `cheese`, `crust``pickup` `deliver`.

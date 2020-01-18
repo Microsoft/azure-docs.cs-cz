@@ -1,7 +1,7 @@
 ---
-title: Co je rozhraní API pro rozpoznávání tváře?
+title: Co je služba obličeje?
 titleSuffix: Azure Cognitive Services
-description: Azure Cognitive Services Face API poskytuje algoritmy, které se používají ke zjišťování, rozpoznávání a analýze lidských ploch na obrázcích.
+description: Služba Azure Cognitive Services Face poskytuje algoritmy, které se používají ke zjišťování, rozpoznávání a analýze lidských ploch na obrázcích.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,25 +9,25 @@ ms.subservice: face-api
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 75f2969562dd2de041ffaa146c394f1a18c7756b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c4e2253229f4461bcb6a2a9fe3e561f3cde29760
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961535"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170260"
 ---
-# <a name="what-is-the-azure-face-api"></a>Co je rozhraní API Azure pro rozpoznávání tváře?
+# <a name="what-is-the-azure-face-service"></a>Co je služba Azure Face?
 
-Azure Cognitive Services Face API poskytuje algoritmy, které se používají ke zjišťování, rozpoznávání a analýze lidských ploch na obrázcích. Možnost zpracovat informace o lidské ploše je důležitá v mnoha různých scénářích softwaru. Příklady scénářů jsou zabezpečení, přirozené uživatelské rozhraní, analýza obsahu obrazu a správa, mobilní aplikace a roboty.
+Služba Azure Cognitive Services Face poskytuje algoritmy, které se používají ke zjišťování, rozpoznávání a analýze lidských ploch na obrázcích. Možnost zpracovat informace o lidské ploše je důležitá v mnoha různých scénářích softwaru. Příklady scénářů jsou zabezpečení, přirozené uživatelské rozhraní, analýza obsahu obrazu a správa, mobilní aplikace a roboty.
 
-Face API poskytuje několik různých funkcí. Každá funkce je popsaný v následujících částech. Přečtěte si další informace o těchto informacích.
+Služba obličeje nabízí několik různých funkcí. Každá funkce je popsaný v následujících částech. Přečtěte si další informace o těchto informacích.
 
 ## <a name="face-detection"></a>Detekce tváře
 
-Face API detekuje lidské obličeje v obrázku a vrátí souřadnice obdélníku jejich umístění. V případě potřeby může rozpoznávání tváře extrahovat řadu atributů souvisejících s obličejem. Příklady jsou hlavní pozice, pohlaví, věk, emoce, vlasová čočka a brýle.
+Služba Face detekuje lidské obličeje v obrázku a vrátí souřadnice obdélníku jejich umístění. V případě potřeby může rozpoznávání tváře extrahovat řadu atributů souvisejících s obličejem. Příklady jsou hlavní pozice, pohlaví, věk, emoce, vlasová čočka a brýle.
 
 > [!NOTE]
-> Funkce detekce tváře je také k dispozici prostřednictvím [rozhraní API pro počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home). Chcete-li provést další operace s předními daty, použijte Face API, což je služba popsaná v tomto článku.
+> Funkce detekce tváře je také k dispozici prostřednictvím [rozhraní API pro počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home). Pokud chcete provádět další operace s předními daty, použijte službu obličeje, což je služba popsaná v tomto článku.
 
 ![Obrázek žena a člověku s obdélníky nakreslenými kolem plošek a stáří a zobrazených pohlaví](./Images/Face.detection.jpg)
 
@@ -73,9 +73,9 @@ Další informace o identifikaci osob najdete v příručce věnovaném koncepc�
 
 ## <a name="sample-apps"></a>Ukázkové aplikace
 
-Následující ukázkové aplikace ukazují několik způsobů použití Face API:
+Následující ukázkové aplikace ukazují několik způsobů použití služby Face:
 
-- [Microsoft Face API: knihovna a ukázka klienta Windows](https://github.com/Microsoft/Cognitive-Face-Windows) je aplikace WPF, která ukazuje několik scénářů detekce, analýzy a identifikace obličeje.
+- [Face API: Klientská knihovna a ukázka Windows](https://github.com/Microsoft/Cognitive-Face-Windows) je aplikace WPF, která předvádí několik scénářů detekce, analýzy a identifikace obličeje.
 - [FamilyNotes aplikace pro UWP](https://github.com/Microsoft/Windows-appsample-familynotes) je aplikace Univerzální platforma Windows (UWP), která používá identifikaci obličeje společně s rozpoznáváním řeči, Cortana, Ink a kamery ve scénáři sdílení poznámky.
 
 ## <a name="data-privacy-and-security"></a>Ochrana osobních údajů a zabezpečení dat

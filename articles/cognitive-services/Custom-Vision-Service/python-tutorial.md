@@ -10,18 +10,18 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: areddish
-ms.openlocfilehash: 2ea49eaf6fd48207996a92a997f15e5db3d3b199
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ffb12af93e249b0b9bb510d3507a30e67d6cd19f
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961076"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169132"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-python-sdk"></a>Rychlý start: Vytvoření projektu klasifikace obrázků pomocí sady Custom Vision Python SDK
 
 V tomto článku se dozvíte, jak začít používat sadu Custom Vision SDK s Pythonem k vytváření modelu klasifikace imagí. Po vytvoření můžete přidat značky, nahrát obrázky, naučit projekt, získat adresu URL koncového bodu předpovědi projektu a použít koncový bod k programovému testování obrázku. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace v Pythonu. Pokud chcete procesem vytvoření a používání modelu klasifikace projít _bez_ kódu, přečtěte si místo toho [pokyny s využitím prohlížeče](getting-started-build-a-classifier.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Python 2.7+ nebo 3.5+](https://www.python.org/downloads/)
 - Nástroj [pip](https://pip.pypa.io/en/stable/installing/)
@@ -84,10 +84,10 @@ cherry_tag = trainer.create_tag(project.id, "Japanese Cherry")
 Ukázkové obrázky do projektu přidáte tak, že po vytvoření značky vložíte následující kód. Tento kód nahraje jednotlivé obrázky s odpovídající značkou. Do jedné dávky můžete nahrát až 64 imagí.
 
 > [!NOTE]
-> Budete muset změnit cestu k obrázkům v závislosti na umístění, kam jste stáhli projekt Ukázky pro Cognitive Services v sadě Python SDK.
+> Budete muset změnit cestu k obrázkům na základě místa, kde jste dříve stáhli sadu Cognitive Services Python SDK Samples úložiště.
 
 ```Python
-base_image_url = "<path to project>"
+base_image_url = "<path to repo directory>/cognitive-services-python-sdk-samples/samples/vision/"
 
 print("Adding images...")
 
@@ -113,7 +113,7 @@ if not upload_result.is_batch_successful:
 
 ### <a name="train-the-classifier-and-publish"></a>Výuka třídění a publikování
 
-Tento kód vytvoří první iteraci v projektu a pak tuto iteraci publikuje do koncového bodu předpovědi. Název zadaný pro publikovanou iteraci lze použít k odeslání požadavků předpovědi. Iterace není v koncovém bodu předpovědi k dispozici, dokud není publikována.
+Tento kód vytvoří první iteraci modelu předpovědi a pak tuto iteraci publikuje do koncového bodu předpovědi. Název zadaný pro publikovanou iteraci lze použít k odeslání požadavků předpovědi. Iterace není v koncovém bodu předpovědi k dispozici, dokud není publikována.
 
 ```Python
 import time
@@ -171,7 +171,7 @@ Done!
         Japanese Cherry: 0.01%
 ```
 
-Pak můžete ověřit správné označení testovacího obrázku (ve složce v **<adresa_URL_základního_obrázku>/Images/Test/** ). Můžete se také vrátit na [web služby Custom Vision](https://customvision.ai) a zobrazit aktuální stav nově vytvořeného projektu.
+Pak můžete ověřit, zda je testovací obrázek (nalezen v **< base_image_url > image/test/** ) správně označen. Můžete se také vrátit na [web služby Custom Vision](https://customvision.ai) a zobrazit aktuální stav nově vytvořeného projektu.
 
 [!INCLUDE [clean-ic-project](includes/clean-ic-project.md)]
 

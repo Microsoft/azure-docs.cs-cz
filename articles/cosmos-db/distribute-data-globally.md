@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 4f17fc7df5aef449c3b0f6dd8d02ae58df959070
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 84cd201cd758293082a61a87528332c7d8c58811
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384893"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264301"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Globální distribuce dat pomocí Azure Cosmos DB – přehled
 
@@ -58,4 +58,4 @@ Přečtěte si další informace o globální distribuci v následujících čl�
 * [Vyberte úroveň konzistence správné pro vaši aplikaci](consistency-levels-choosing.md)
 * [Úrovně konzistence napříč API služby Azure Cosmos DB](consistency-levels-across-apis.md)
 * [Dostupnost a výkon kompromisy pro různé úrovně konzistence](consistency-levels-tradeoffs.md)
-* [Implementace vlastní synchronizace pro optimalizaci pro zajištění vyšší dostupnosti a výkonu](how-to-custom-synchronization.md)
+

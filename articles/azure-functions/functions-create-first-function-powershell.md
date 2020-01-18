@@ -6,12 +6,12 @@ ms.author: jaiello
 ms.reviewer: glenga
 ms.date: 04/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: 934f3f69d46362e4bef4e713bcee23e9a3e24eb6
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 8cc89805ce53c141ff2c012fccb3c01ff2e9db49
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769349"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167903"
 ---
 # <a name="create-your-first-powershell-function-in-azure"></a>Vytvoření první funkce PowerShellu v Azure
 
@@ -20,9 +20,6 @@ Tento článek rychlý Start vás provede procesem vytvoření první funkce pro
 ![Azure Functions kódu v projektu Visual Studio Code](./media/functions-create-first-function-powershell/powershell-project-first-function.png)
 
 Pomocí [rozšíření Azure Functions pro Visual Studio Code] vytvoříte místní funkci PowerShellu a potom ji nasadíte do nové aplikace Function App v Azure. Rozšíření je v současné době ve verzi Preview. Další informace najdete na stránce rozšíření [Rozšíření Azure Functions pro Visual Studio Code].
-
-> [!NOTE]  
-> Podpora prostředí PowerShell pro rozšíření [Azure Functions rozšíření][rozšíření azure functions pro visual studio code] je aktuálně ve výchozím nastavení zakázaná. Povolení podpory PowerShellu je jedním z kroků v tomto článku.
 
 V operačních systémech macOS, Windows a Linux jsou podporovány následující kroky.
 

@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: Rozpoznávání a orámování tváří na obrázku pomocí sady Android SDK'
 titleSuffix: Azure Cognitive Services
-description: V tomto kurzu vytvoříte jednoduchou aplikaci pro Android, která používá Face API k detekci a orámování ploch v imagi.
+description: V tomto kurzu vytvoříte jednoduchou aplikaci pro Android, která k detekci a orámování plošek v imagi používá službu obličeje.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: ce0b308077505d5af1d757f1684c50505b11831e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8d5bef141f83eedaa996bb63c1fb814aeb6af197
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977790"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165964"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Kurz: Vytvoření aplikace pro Android k rozpoznání a orámování tváří na obrázku
 
-V tomto kurzu vytvoříte aplikaci pro Android, která používá Face API Azure prostřednictvím sady Java SDK k detekci lidských plošek v obraze. Aplikace zobrazí vybrané bitové kopie a nakreslí rámeček kolek každou zjištěnou plochu.
+V tomto kurzu vytvoříte aplikaci pro Android, která využívá službu Azure Face prostřednictvím sady Java SDK k detekci lidských plošek v obraze. Aplikace zobrazí vybrané bitové kopie a nakreslí rámeček kolek každou zjištěnou plochu.
 
 V tomto kurzu získáte informace o následujících postupech:
 
 > [!div class="checklist"]
 > - Vytvoření aplikace pro Android
-> - Instalace klientské knihovny Face API
+> - Instalace klientské knihovny pro tvář
 > - Použití klientské knihovny k rozpoznání tváří v obrázku
 > - Zakreslení rámečku kolem každé rozpoznané tváře
 
@@ -35,9 +35,9 @@ Kompletní vzorový kód je k dispozici v úložišti [Cognitive Services oblič
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Klíč rozhraní API pro rozpoznávání tváře předplatného. Můžete získat bezplatné předplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k odběru služby API pro rozpoznávání tváře a získejte klíč. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s názvem `FACE_SUBSCRIPTION_KEY` a `FACE_ENDPOINT`v uvedeném pořadí.
+- Klíč předplatného pro vytvoření obličeje. Můžete získat bezplatné předplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru služby obličeje a Získejte svůj klíč. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s názvem `FACE_SUBSCRIPTION_KEY` a `FACE_ENDPOINT`v uvedeném pořadí.
 - Libovolná edice sady [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/).
 - [Android Studio](https://developer.android.com/studio/) s rozhraním API úrovně 22 nebo novějším (vyžaduje Klientská knihovna pro obličej).
 
@@ -115,7 +115,7 @@ Do třídy **MainActivity** vložte následující pomocnou metodu. Tato metoda 
 
 Nakonec Odkomentujte volání metody **detectAndFrame** v **onActivityResult**.
 
-## <a name="run-the-app"></a>Spusťte aplikaci
+## <a name="run-the-app"></a>Spuštění aplikace
 
 Spusťte aplikaci a vyhledejte obrázek, který obsahuje nějakou tvář. Počkejte několik sekund, než služba Rozpoznávání tváře zareaguje. Na všech plochách v obrázku byste měli vidět červený obdélník.
 
@@ -123,7 +123,7 @@ Spusťte aplikaci a vyhledejte obrázek, který obsahuje nějakou tvář. Počke
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili základní proces používání sady Face API Java SDK a vytvořili jste aplikaci pro detekci a orámování plošek v obrázku. V dalším kroku se dozvíte více o podrobnostech detekce obličeje.
+V tomto kurzu jste se naučili základní proces používání sady Face Java SDK a vytvořili jste aplikaci pro detekci a orámování plošek v obraze. V dalším kroku se dozvíte více o podrobnostech detekce obličeje.
 
 > [!div class="nextstepaction"]
 > [Postup při rozpoznávání tváří v obrázku](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)

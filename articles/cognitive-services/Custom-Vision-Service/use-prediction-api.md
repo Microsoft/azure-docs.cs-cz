@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: anroth
-ms.openlocfilehash: 50325b75280160a3fefa5b5487df29a25e53bddd
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: dcb12da680d70e1f0ce4cd763bee340bb3416c6b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70966944"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169955"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Použití modelu s prediktivním rozhraním API
 
@@ -109,9 +109,9 @@ V tomto průvodci použijete místní bitovou kopii, takže zkopírujte adresu U
     ```
 
 1. Změňte následující informace:
-   * `namespace` Nastavte pole na název vašeho projektu.
-   * Zástupný text `<Your prediction key>` nahraďte hodnotou klíče, kterou jste získali dříve.
-   * Nahraďte zástupný `<Your prediction URL>` symbol adresou URL, kterou jste získali dříve.
+   * Nastavte pole `namespace` na název vašeho projektu.
+   * Zástupný symbol `<Your prediction key>` nahraďte hodnotou klíče, kterou jste získali dříve.
+   * Zástupný symbol `<Your prediction URL>` nahraďte adresou URL, kterou jste získali dříve.
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
@@ -130,12 +130,12 @@ Při spuštění aplikace se zobrazí výzva k zadání cesty k souboru obrázku
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V této příručce jste zjistili, jak odeslat obrázky do klasifikátoru a detektoru vlastní image a jak programově získat odpověď pomocí C# sady SDK. Dále se naučíte, jak dokončit ucelené scénáře s nástrojem C#nebo začít používat jinou JAZYKOVOU sadu SDK.
 
 * [Rychlý Start: sada .NET SDK](csharp-tutorial.md)
-* [Rychlé zprovoznění: Python SDK](python-tutorial.md)
-* [Rychlé zprovoznění: Java SDK](java-tutorial.md)
-* [Rychlé zprovoznění: Sada SDK pro Node](node-tutorial.md)
-* [Rychlé zprovoznění: Přejít k sadě SDK](go-tutorial.md)
+* [Rychlý Start: Python SDK](python-tutorial.md)
+* [Rychlý Start: Java SDK](java-tutorial.md)
+* [Rychlý Start: node SDK](node-tutorial.md)
+* [Rychlý Start: Přejít na SDK](go-tutorial.md)

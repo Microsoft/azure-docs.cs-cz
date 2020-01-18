@@ -1,17 +1,17 @@
 ---
-title: Používejte integrované příkazy a funkce poznámkového bloku v Azure Cosmos DB
+title: Použití integrovaných příkazů a funkcí poznámkového bloku v Azure Cosmos DB (Preview)
 description: Naučte se používat integrované příkazy a funkce k provádění běžných operací pomocí integrovaných poznámkových bloků Azure Cosmos DB.
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2019
 ms.author: dech
-ms.openlocfilehash: f5ab1491c8561c90b06374a0a58f160cbcdd1cad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2066701a88e03feb29bd1689f36460765f1c638d
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444658"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264708"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db"></a>Používejte integrované příkazy a funkce poznámkového bloku v Azure Cosmos DB
 
@@ -42,7 +42,7 @@ Pomocí příkazu ``%%sql`` Magic můžete spustit [dotaz SQL](sql-query-getting
 - Nahraďte ``{database_id}`` a ``{container_id}`` názvem databáze a kontejneru v účtu Cosmos. Pokud nejsou zadány argumenty ``--database`` a ``--container``, dotaz bude proveden ve [výchozí databázi a kontejneru](#set-default-database-for-queries).
 - Můžete spustit libovolný dotaz SQL, který je platný v Azure Cosmos DB. Text dotazu musí být na novém řádku.
 
-Příklad: 
+Například: 
 ```bash
 %%sql --database RetailDemo --container WebsiteData
 SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c
@@ -61,7 +61,7 @@ Výsledky ``%%sql``ho dotazu můžete vyvýstupovat do [PANDAS dataframe](https:
 - Nahraďte ``{outputDataFrameVar}`` názvem proměnné dataframe, která bude obsahovat výsledky.
 - Můžete spustit libovolný dotaz SQL, který je platný v Azure Cosmos DB. Text dotazu musí být na novém řádku. 
 
-Příklad:
+Například:
 
 ```bash
 %%sql --database RetailDemo --container WebsiteData --output df_cosmos
@@ -92,7 +92,7 @@ K nahrání dat ze souboru JSON do zadaného kontejneru Azure Cosmos můžete po
 - Nahraďte ``{database_id}`` a ``{container_id}`` názvem databáze a kontejneru v účtu Azure Cosmos. Pokud nejsou zadány argumenty ``--database`` a ``--container``, dotaz bude proveden ve [výchozí databázi a kontejneru](#set-default-database-for-queries).
 - Nahraďte ``{url_location_of_file}`` umístěním souboru JSON. Tento soubor musí být pole platných objektů JSON a měl by být přístupný prostřednictvím veřejného Internetu.
 
-Příklad:
+Například:
 
 ```bash
 %%upload --database databaseName --container containerName --url 
@@ -139,7 +139,7 @@ V prostředí poznámkového bloku pro účet Azure Cosmos je nainstalovaná ver
 
 Pro spuštění jakékoli operace sady SDK použijte integrovanou instanci ``cosmos_client``. 
 
-Příklad:
+Například:
 
 ```python
 ## Import modules as needed

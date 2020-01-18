@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.author: pafarley
-ms.openlocfilehash: 465f24c3d9b7f53c0b494f387cc5d21aa6bd83b5
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: a23e6d46ee6e79fd7a5cabf4434c561f7d83b31b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754230"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169504"
 ---
 # <a name="content-moderator-review-tool"></a>Nástroj pro kontrolu Content Moderator
 
@@ -31,7 +31,7 @@ Azure Content Moderator poskytuje služby pro kombinování Moderování obsahu 
 - Automatizujte vytváření lidských [recenzí](../review-api.md#reviews) , když do nich přijde výsledky rozhraní API pro moderování.
 - Přiřaďte nebo přezkoumejte revize obsahu více kontrolám týmu, uspořádaných podle kategorie obsahu nebo úrovně zkušeností.
 - Použijte výchozí nebo vlastní logické filtry ([pracovní postupy](../review-api.md#workflows)) k řazení a sledování obsahu bez psaní kódu.
-- Pomocí [konektorů](./configure.md#connectors) můžete kromě rozhraní API Content moderator zpracovávat obsah pomocí rozhraní API pro Microsoft PhotoDNA, analýza textu a obličeje.
+- Pomocí [konektorů](./configure.md#connectors) můžete kromě rozhraní API Content moderator zpracovávat obsah pomocí služeb Microsoft PhotoDNA, analýza textu a obličeje.
 - Sestavte si vlastní konektor pro vytváření pracovních postupů pro jakékoli rozhraní API nebo obchodní proces.
 - Získejte klíčové metriky výkonu pro procesy Moderování obsahu.
 
@@ -43,7 +43,7 @@ Na kartě **řídicí panel** vidíte klíčové metriky pro revize obsahu prove
 
 ## <a name="review-tool-credentials"></a>Kontrola přihlašovacích údajů nástroje
 
-Při registraci pomocí [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com)budete vyzváni k výběru oblasti Azure pro účet. Důvodem je skutečnost, že [Nástroj pro kontrolu](https://contentmoderator.cognitive.microsoft.com) vygeneruje bezplatný zkušební klíč pro Azure Content moderator Services; Tento klíč budete potřebovat pro přístup ke všem službám ze volání REST nebo klientské sady SDK. Klíč a adresu URL koncového bodu rozhraní API si můžete zobrazit tak, že vyberete **nastavení**  > **přihlašovací údaje**.
+Při registraci pomocí [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com)budete vyzváni k výběru oblasti Azure pro účet. Důvodem je skutečnost, že [Nástroj pro kontrolu](https://contentmoderator.cognitive.microsoft.com) vygeneruje bezplatný zkušební klíč pro Azure Content moderator Services; Tento klíč budete potřebovat pro přístup ke všem službám ze volání REST nebo klientské sady SDK. Klíč a adresu URL koncového bodu rozhraní API si můžete zobrazit tak, že vyberete **nastavení** > **přihlašovací údaje**.
 
 ![Content Moderator přihlašovací údaje](images/settings-6-credentials.png)
 

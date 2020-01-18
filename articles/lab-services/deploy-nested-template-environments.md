@@ -1,5 +1,5 @@
 ---
-title: Nasazení vnořených Správce prostředků šablonových prostředí v Azure DevTest Labs | Microsoft Docs
+title: Nasazení vnořených prostředí šablon v Azure DevTest Labs
 description: Naučte se nasazovat vnořené Azure Resource Manager šablony, které poskytují prostředí s Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 675d2c670f5bc11c1d8b61bc96313e408f788dc3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e83bc4e77a44f20d55fa3b56bc81aefd1d25bb03
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75976554"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168827"
 ---
 # <a name="deploy-nested-azure-resource-manager-templates-for-testing-environments"></a>Nasazení vnořených Azure Resource Manager šablon pro testovací prostředí
 Vnořené nasazení umožňuje spouštět jiné šablony Azure Resource Manager v rámci hlavní Správce prostředků šablony. Umožňuje rozložit nasazení do sady cílových šablon a specifických pro účel. Poskytuje výhody v souvislosti s testováním, opětovným používáním a čitelností. Článek [použití propojených šablon při nasazení prostředků Azure](../azure-resource-manager/templates/linked-templates.md) poskytuje dobrý přehled tohoto řešení s několika ukázkami kódu. Tento článek poskytuje příklad, který je specifický pro Azure DevTest Labs. 

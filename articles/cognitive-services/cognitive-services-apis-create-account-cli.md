@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: aahi
-ms.openlocfilehash: d715252f16a34f2261c108ebd3ff5d1f6f3424d8
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 5d3aba2f6010ba16656be96433c521d2adae4c58
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887914"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169167"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Vytvoření prostředku Cognitive Services pomocí rozhraní příkazového řádku Azure (CLI)
 
@@ -76,7 +76,7 @@ Při vytváření nového prostředku budete muset znát "druh" služby, kterou 
 
 ### <a name="multi-service"></a>Více služeb
 
-| Služba                    | plnění                      |
+| Služba                    | Typ                      |
 |----------------------------|---------------------------|
 | Několik služeb. Další podrobnosti najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/cognitive-services/) .            | `CognitiveServices`     |
 
@@ -84,37 +84,37 @@ Při vytváření nového prostředku budete muset znát "druh" služby, kterou 
 > [!NOTE]
 > Mnohé z Cognitive Services níže mají bezplatnou úroveň, kterou můžete použít k vyzkoušení služby. Pokud chcete používat úroveň Free, použijte `F0` jako SKU pro váš prostředek.
 
-### <a name="vision"></a>Obraz
+### <a name="vision"></a>Vidění
 
-| Služba                    | plnění                      |
+| Služba                    | Typ                      |
 |----------------------------|---------------------------|
-| Počítačové zpracování obrazu            | `ComputerVision`          |
+| Computer Vision            | `ComputerVision`          |
 | Custom Vision – předpověď | `CustomVision.Prediction` |
 | Custom Vision – školení   | `CustomVision.Training`   |
-| Rozhraní API pro rozpoznávání tváře                   | `Face`                    |
+| Tvář                       | `Face`                    |
 | Rozpoznávání formulářů            | `FormRecognizer`          |
 | Rozpoznávání rukopisu             | `InkRecognizer`           |
 
-### <a name="search"></a>Hledání
+### <a name="search"></a>Hledat
 
-| Služba            | plnění                  |
+| Služba            | Typ                  |
 |--------------------|-----------------------|
 | Automatické návrhy Bingu   | `Bing.Autosuggest.v7` |
 | Vlastní vyhledávání Bingu | `Bing.CustomSearch`   |
 | Vyhledávání entit Bingu | `Bing.EntitySearch`   |
-| Vyhledávání pomocí služby Bing        | `Bing.Search.v7`      |
+| Vyhledávání Bingu        | `Bing.Search.v7`      |
 | Kontrola pravopisu Bingu   | `Bing.SpellCheck.v7`  |
 
 ### <a name="speech"></a>Řeč
 
-| Služba            | plnění                 |
+| Služba            | Typ                 |
 |--------------------|----------------------|
 | Hlasové služby    | `SpeechServices`     |
 | Rozpoznávání řeči | `SpeakerRecognition` |
 
 ### <a name="language"></a>Jazyk
 
-| Služba            | plnění                |
+| Služba            | Typ                |
 |--------------------|---------------------|
 | Porozumění formuláři | `FormUnderstanding` |
 | LUIS               | `LUIS`              |
@@ -124,7 +124,7 @@ Při vytváření nového prostředku budete muset znát "druh" služby, kterou 
 
 ### <a name="decision"></a>Rozhodnutí
 
-| Služba           | plnění               |
+| Služba           | Typ               |
 |-------------------|--------------------|
 | Detektor anomálií  | `AnomalyDetector`  |
 | Content Moderator | `ContentModerator` |
@@ -198,7 +198,7 @@ Pokud chcete odebrat skupinu prostředků a její přidružené prostředky, pou
 az group delete --name storage-resource-group
 ```
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Ověřování požadavků do Azure Cognitive Services](authentication.md)
 * [Co je Azure Cognitive Services?](Welcome.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: JYOTHIRMAISURI
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 094454123a945072bfb6d7fb81cf515816c4f6cb
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: efb4e4f68935898c083c1dbca6a6c64512544095
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73936211"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263468"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Připojení Azure k nástrojům ITSM pomocí konektoru pro správu služeb IT
 
@@ -58,7 +58,7 @@ Než budete moct vytvořit připojení, musíte přidat řešení konektoru ITSM
 3. V části **pracovní prostor OMS** vyberte pracovní prostor Azure Log Analytics, do kterého chcete řešení nainstalovat.
    >[!NOTE]
    > * V rámci průběžného přechodu z Microsoft Operations Management Suite (OMS) na Azure Monitor se teď pracovní prostory OMS označují jako Log Analytics pracovní prostory.
-   > * Konektor ITSM se dá nainstalovat jenom v Log Analytics pracovních prostorech v následujících oblastech: Východní USA, Západní Evropa, jihovýchodní Asie, jihovýchodní Austrálie, Středozápadní USA, Východní Japonsko, Jižní Británie, Střed Indie, střední Kanada.
+   > * Konektor ITSM se dá nainstalovat jenom do Log Analytics pracovních prostorů v následujících oblastech: Východní USA, Západní Evropa, jihovýchodní Asie, jihovýchodní Austrálie, Středozápadní USA, Východní Japonsko, Jižní Británie, Střed Indie, Central Kanada, západ USA 2, Střed USA – jih.
 
 4. V části **Nastavení pracovního prostoru OMS** vyberte zdrojovou položku, kde chcete vytvořit prostředek řešení.
 
@@ -66,7 +66,7 @@ Než budete moct vytvořit připojení, musíte přidat řešení konektoru ITSM
    >[!NOTE]
    >V rámci průběžného přechodu z Microsoft Operations Management Suite (OMS) na Azure Monitor se teď pracovní prostory OMS označují jako Log Analytics pracovní prostory.
 
-5. Klikněte na možnost **Vytvořit**.
+5. Klikněte na **Vytvořit**.
 
 Po nasazení prostředku řešení se zobrazí oznámení v pravém horním rohu okna.
 
@@ -131,7 +131,7 @@ Použijte následující postup:
 
 6. Z rozevírací nabídky vyberte typ **pracovní položky** .
    Vyberte možnost použít existující šablonu nebo vyplňte pole požadovaná produktem ITSM.
-7. Klikněte na tlačítko **OK**.
+7. Klikněte na **OK**.
 
 Při vytváření nebo úpravách pravidla upozornění Azure použijte skupinu akcí, která má akci ITSM. Když se aktivuje výstraha, v nástroji ITSM se vytvoří nebo aktualizuje pracovní položka.
 
@@ -152,7 +152,7 @@ Data incidentu a žádosti o změnu lze vizuálně vylepšovat pomocí řídicí
 
 Můžete také vizualizovat incidenty synchronizované s ovlivněnými počítači v rámci řešení Service Map.
 
-Service Map automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikaci mezi službami. Umožňuje vám zobrazit vaše servery podle toho, jak si je považujete – jako propojené systémy, které poskytují důležité služby. Service Map zobrazuje připojení mezi servery, procesy a porty v rámci libovolné architektury připojené k protokolu TCP bez nutnosti jiné konfigurace než instalace agenta. [Další informace](../../azure-monitor/insights/service-map.md)
+Service Map automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikaci mezi službami. Umožňuje zobrazit servery přirozeným způsobem – jako propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy a porty v jakékoli architektuře propojené pomocí protokolu TCP a nevyžaduje přitom žádnou konfiguraci kromě instalace agenta. [Další informace](../../azure-monitor/insights/service-map.md).
 
 Pokud používáte řešení Service Map, můžete zobrazit položky oddělení služeb vytvořené v řešeních ITSM, jak je znázorněno v následujícím příkladu:
 
@@ -184,13 +184,13 @@ ServiceDeskWorkItemType_s="Incident"
 - Dopad
 - Priorita
 - Eskalace
-- Vytvořil
+- Autor
 - Vyřešil
 - Uzavřel
 - Zdroj
-- Přiřazený pro
+- Přiřazeno
 - Kategorie
-- Název
+- Nadpis
 - Popis
 - Datum vytvoření
 - Datum uzavření
@@ -206,11 +206,11 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 **Pole**
 - ServiceDeskConnectionName
 - ID oddělení služeb
-- Vytvořil
+- Autor
 - Uzavřel
 - Zdroj
-- Přiřazený pro
-- Název
+- Přiřazeno
+- Nadpis
 - Typ
 - Kategorie
 - Stav
@@ -220,7 +220,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Priorita
 - Riziko
 - Dopad
-- Přiřazený pro
+- Přiřazeno
 - Datum vytvoření
 - Datum uzavření
 - Datum poslední změny
@@ -245,13 +245,13 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ResolvedBy_s | Vyřešil|
 | ClosedBy_s  | Uzavřel |
 | Source_s| Typ kontaktu |
-| AssignedTo_s | Přiřazeno  |
+| AssignedTo_s | Přiřazeno komu  |
 | Category_s | Kategorie |
 | Title_s|  Krátký popis |
-| Description_s|  Poznámky: |
+| Description_s|  Poznámky |
 | CreatedDate_t|  Otevřít |
 | ClosedDate_t| Uzavřeno|
-| ResolvedDate_t|Přeložit|
+| ResolvedDate_t|Vyřešeno|
 | Počítač  | Položka konfigurace |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>Výstupní data pro žádost o změnu ServiceNow
@@ -261,7 +261,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ServiceDeskId_s| Číslo |
 | CreatedBy_s | Požadoval (a) |
 | ClosedBy_s | Uzavřel |
-| AssignedTo_s | Přiřazeno  |
+| AssignedTo_s | Přiřazeno komu  |
 | Title_s|  Krátký popis |
 | Type_s|  Typ |
 | Category_s|  Kategorie |
@@ -274,8 +274,8 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ClosedDate_t | Datum uzavření |
 | PlannedStartDate_t  |     Plánované počáteční datum |
 | PlannedEndDate_t  |   Plánované koncové datum |
-| WorkStartDate_t  | Skutečné datum zahájení |
-| WorkEndDate_t | Skutečné datum ukončení|
+| WorkStartDate_t  | Skutečné počáteční datum |
+| WorkEndDate_t | Skutečné koncové datum|
 | Description_s | Popis |
 | Počítač  | Položka konfigurace |
 

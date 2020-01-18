@@ -1,6 +1,6 @@
 ---
-title: Šablony
-description: Toto téma vysvětluje šablony pro centra oznámení Azure.
+title: Šablony Azure Notification Hubs
+description: Přečtěte si o používání šablon pro Azure Notification Hubs.
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 54c53fee260062960d6bce9c1822971c935d88d1
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 7d88f57fe92b9da62cc9f90d64bdec4c27642fb0
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212985"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263740"
 ---
 # <a name="templates"></a>Šablony
 
@@ -133,19 +133,19 @@ Chcete-li provést registraci v šablonách pomocí modelu instalace (preferovan
 
 V následující tabulce je uveden jazyk povolený v šablonách:
 
-| Výraz       | Popis |
+| Expression       | Popis |
 | ---------------- | --- |
 | $ (Prop)          | Odkaz na vlastnost události se zadaným názvem. V názvech vlastností se nerozlišují velká a malá písmena. Tento výraz se přeloží na textovou hodnotu vlastnosti nebo do prázdného řetězce, pokud vlastnost není k dispozici. |
 | $ (Prop, n)       | Jak je uvedeno výše, ale text se explicitně ořízne n znaků, například $ (title, 20), ořízne obsah vlastnosti title o 20 znaků. |
 | . (Prop, n)       | Jak je uvedeno výše, ale text má příponu se třemi tečkami, jak je oříznutý. Celková velikost oříznutého řetězce a přípona nepřekračuje n znaků. . (title; 20) se vstupní vlastností "Toto je název řádku". Výsledkem je **název...** |
 | % (Prop)          | Podobně jako $ (název) s tím rozdílem, že výstup je kódovaný pomocí identifikátoru URI. |
-| # (Prop)          | Používá se v šablonách JSON (například pro šablony iOS a Android).<br><br>Tato funkce funguje úplně stejně jako $ (Prop) dřív, s výjimkou případů, kdy se používá v šablonách JSON (například šablony Apple). V takovém případě, pokud tato funkce není obklopena "{", "}" (například "myJsonProperty": "# (Name)") a vyhodnotí se jako číslo ve formátu JavaScriptu, například RegExp: (0&#124;(&#91;1-9&#93;&#91;0-9&#93;*)) (\.&#91;0-9&#93;+)? ((e&#124;e) (+&#124;-)? &#91;0-9&#93;+)?, výstupní JSON je číslo.<br><br>Například ' BADGE ': ' # (Name) ' se bude ' BADGE ': 40 (a ne "40"). |
+| # (Prop)          | Používá se v šablonách JSON (například pro šablony iOS a Android).<br><br>Tato funkce funguje úplně stejně jako $ (Prop) dřív, s výjimkou případů, kdy se používá v šablonách JSON (například šablony Apple). V takovém případě, pokud tato funkce není obklopena "{", "}" (například "myJsonProperty": "# (Name)") a vyhodnotí se jako číslo ve formátu&#124;JavaScriptu, například RegExp: (0 (&#91;1-9&#93;&#91;0-9&#93;*)) (\.&#91;0-9&#93;+)? ((e&#124;e) (+&#124;-)? &#91;0-9&#93;+)?, výstupní JSON je číslo.<br><br>Například ' BADGE ': ' # (Name) ' se bude ' BADGE ': 40 (a ne ' 40 '). |
 | ' text ' nebo "text" | Literál. Literály obsahují libovolný text uzavřený v jednoduchých nebo dvojitých uvozovkách. |
 | Výraz1 + Výraz2    | Operátor zřetězení spojuje dva výrazy do jednoho řetězce. |
 
 Výrazy mohou být libovolné z předchozích forem.
 
-Při použití zřetězení musí být celý výraz ohraničený pomocí `{}`. Například, `{$(prop) + ‘ - ’ + $(prop2)}`.
+Při použití zřetězení musí být celý výraz uzavřený s `{}`. Například, `{$(prop) + ‘ - ’ + $(prop2)}`.
 
 Například následující šablona není platnou šablonou XML:
 
@@ -159,7 +159,7 @@ Například následující šablona není platnou šablonou XML:
 </tile>
 ```
 
-Jak bylo vysvětleno dříve, při použití zřetězení musí být výrazy zabaleny do složených závorek. Příklad:
+Jak bylo vysvětleno dříve, při použití zřetězení musí být výrazy zabaleny do složených závorek. Například:
 
 ```xml
 <tile>
@@ -170,3 +170,7 @@ Jak bylo vysvětleno dříve, při použití zřetězení musí být výrazy zab
   </visual>
 </tile>
 ```
+
+## <a name="next-steps"></a>Další kroky
+
+[Přečtěte si o Azure Notification Hubs](notification-hubs-push-notification-overview.md)

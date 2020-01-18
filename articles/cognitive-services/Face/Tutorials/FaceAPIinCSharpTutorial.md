@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: detekce a zobrazení dat obličeje v imagi pomocí .NET SDK'
 titleSuffix: Azure Cognitive Services
-description: V tomto kurzu vytvoříte aplikaci pro Windows, která používá Face API k detekci a orámování ploch v imagi.
+description: V tomto kurzu vytvoříte aplikaci pro Windows, která používá službu obličeje k detekci a orámování plošek v imagi.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: a444294497b82f316e7407999f5203cd13878928
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ab0ed56b953cf2c0d96fd2d91d9a3b09fddace72
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977960"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165920"
 ---
 # <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>Kurz: Vytvoření aplikace WPF (Windows Presentation Framework) pro zobrazení obličejových dat v obrázku
 
-V tomto kurzu se naučíte, jak pomocí služby Face API Azure Client SDK detekovat plošky v imagi a pak tato data prezentovat v uživatelském rozhraní. Vytvoříte aplikaci WPF, která detekuje plošky, nakreslí rámeček kolem každé plošky a ve stavovém řádku zobrazí popis obličeje. 
+V tomto kurzu se naučíte, jak pomocí služby Azure Face Service přes .NET Client SDK detekovat plošky v imagi a potom prezentovat tato data v uživatelském rozhraní. Vytvoříte aplikaci WPF, která detekuje plošky, nakreslí rámeček kolem každé plošky a ve stavovém řádku zobrazí popis obličeje. 
 
 V tomto kurzu získáte informace o následujících postupech:
 
 > [!div class="checklist"]
 > - Vytvoření aplikace WPF
-> - Instalace klientské knihovny Face API
+> - Instalace klientské knihovny pro tvář
 > - Použití klientské knihovny k rozpoznání tváří v obrázku
 > - Zakreslení rámečku kolem každé rozpoznané tváře
 > - Zobrazit popis zvýrazněné plochy na stavovém řádku
@@ -37,9 +37,9 @@ Kompletní vzorový kód je k dispozici v [ukázkovém úložišti pro rozpozná
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Klíč rozhraní API pro rozpoznávání tváře předplatného. Můžete získat bezplatné předplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k odběru služby API pro rozpoznávání tváře a získejte klíč. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s názvem `FACE_SUBSCRIPTION_KEY` a `FACE_ENDPOINT`v uvedeném pořadí.
+- Klíč předplatného pro vytvoření obličeje. Můžete získat bezplatné předplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru služby obličeje a Získejte svůj klíč. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s názvem `FACE_SUBSCRIPTION_KEY` a `FACE_ENDPOINT`v uvedeném pořadí.
 - Libovolná edice sady [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-the-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
@@ -117,7 +117,7 @@ Do metody **FacePhoto_MouseMove** přidejte následující kód. Tato obslužná
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mousemove_mid)]
 
-## <a name="run-the-app"></a>Spusťte aplikaci
+## <a name="run-the-app"></a>Spuštění aplikace
 
 Spusťte aplikaci a vyhledejte obrázek, který obsahuje nějakou tvář. Počkejte několik sekund, než služba Rozpoznávání tváře zareaguje. Na všech plochách v obrázku byste měli vidět červený obdélník. Pokud přesunete ukazatel myši na rámeček obličeje, popis této plochy by se měl zobrazit ve stavovém řádku.
 

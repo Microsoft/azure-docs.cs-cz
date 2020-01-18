@@ -4,12 +4,12 @@ description: Naučte se zpracovávat chyby v rozšíření Durable Functions pro
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 0900e3f3b76f4a82e06fe3c0e6d9bbe63b545f56
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 905b71ab1e9a054eaeb6087489d14565933c8a46
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231409"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261632"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Zpracování chyb v Durable Functions (Azure Functions)
 
@@ -21,7 +21,7 @@ Veškerá výjimka, která je vyvolána ve funkci aktivity, je zařazena zpět d
 
 Zvažte například následující funkci Orchestrator, která přenáší prostředky z jednoho účtu na jiný:
 
-### <a name="precompiled-c"></a>PředkompilovanéC#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("TransferFunds")]
@@ -59,49 +59,10 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 }
 ```
 
-### <a name="c-script"></a>C#Pravidel
-
-```csharp
-#r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
-
-public static async Task Run(IDurableOrchestrationContext context)
-{
-    var transferDetails = ctx.GetInput<TransferOperation>();
-
-    await context.CallActivityAsync("DebitAccount",
-        new
-        {
-            Account = transferDetails.SourceAccount,
-            Amount = transferDetails.Amount
-        });
-
-    try
-    {
-        await context.CallActivityAsync("CreditAccount",
-            new
-            {
-                Account = transferDetails.DestinationAccount,
-                Amount = transferDetails.Amount
-            });
-    }
-    catch (Exception)
-    {
-        // Refund the source account.
-        // Another try/catch could be used here based on the needs of the application.
-        await context.CallActivityAsync("CreditAccount",
-            new
-            {
-                Account = transferDetails.SourceAccount,
-                Amount = transferDetails.Amount
-            });
-    }
-}
-```
-
 > [!NOTE]
 > Předchozí C# příklady jsou pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` namísto `IDurableOrchestrationContext`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -137,13 +98,15 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 Pokud se první volání funkce **CreditAccount** nepovede, funkce Orchestrator se kompenzuje tím, že se prostředky přepíší kreditem zpět na zdrojový účet.
 
 ## <a name="automatic-retry-on-failure"></a>Automaticky opakovat při selhání
 
 Při volání funkcí aktivity nebo funkcí dílčí orchestrace můžete zadat zásady automatického opakování. Následující příklad se pokusí zavolat funkci až třikrát a počkat 5 sekund mezi jednotlivými pokusy:
 
-### <a name="precompiled-c"></a>PředkompilovanéC#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("TimerOrchestratorWithRetry")]
@@ -159,31 +122,20 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 }
 ```
 
-### <a name="c-script"></a>C#Pravidel
-
-```csharp
-public static async Task Run(IDurableOrchestrationContext context)
-{
-    var retryOptions = new RetryOptions(
-        firstRetryInterval: TimeSpan.FromSeconds(5),
-        maxNumberOfAttempts: 3);
-
-    await ctx.CallActivityWithRetryAsync("FlakyFunction", retryOptions, null);
-
-    // ...
-}
-```
-
 > [!NOTE]
 > Předchozí C# příklady jsou pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` namísto `IDurableOrchestrationContext`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
 
 module.exports = df.orchestrator(function*(context) {
-    const retryOptions = new df.RetryOptions(5000, 3);
+    const firstRetryIntervalInMilliseconds = 5000;
+    const maxNumberOfAttempts = 3;
+
+    const retryOptions = 
+        new df.RetryOptions(firstRetryIntervalInMilliseconds, maxNumberOfAttempts);
 
     yield context.df.callActivityWithRetry("FlakyFunction", retryOptions);
 
@@ -191,9 +143,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Rozhraní API pro `CallActivityWithRetryAsync` (.NET) nebo `callActivityWithRetry` (JavaScript) přebírá parametr `RetryOptions`. Volání dílčí orchestrace pomocí rozhraní API `CallSubOrchestratorWithRetryAsync` (.NET) nebo `callSubOrchestratorWithRetry` (JavaScript) může použít stejné zásady opakování.
+---
 
-K dispozici je několik možností přizpůsobení zásady automatického opakování:
+Volání funkce Activity v předchozím příkladu přijímá parametr pro konfiguraci zásady automatického opakování. K dispozici je několik možností přizpůsobení zásady automatického opakování:
 
 * **Maximální počet pokusů**: maximální počet opakovaných pokusů.
 * **Interval prvního opakování**: doba, po kterou se má čekat před prvním pokusem.
@@ -206,7 +158,7 @@ K dispozici je několik možností přizpůsobení zásady automatického opakov
 
 Je možné, že budete chtít opustit volání funkce ve funkci Orchestrator, pokud dokončení trvá příliš dlouho. Vhodným způsobem, jak to provést dnes, je vytvoření [trvalého časovače](durable-functions-timers.md) pomocí `context.CreateTimer` (.NET) nebo `context.df.createTimer` (JavaScript) ve spojení s `Task.WhenAny` (.NET) nebo `context.df.Task.any` (JavaScript), jako v následujícím příkladu:
 
-### <a name="precompiled-c"></a>PředkompilovanéC#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("TimerOrchestrator")]
@@ -236,39 +188,10 @@ public static async Task<bool> Run([OrchestrationTrigger] IDurableOrchestrationC
 }
 ```
 
-### <a name="c-script"></a>C#Pravidel
-
-```csharp
-public static async Task<bool> Run(IDurableOrchestrationContext context)
-{
-    TimeSpan timeout = TimeSpan.FromSeconds(30);
-    DateTime deadline = context.CurrentUtcDateTime.Add(timeout);
-
-    using (var cts = new CancellationTokenSource())
-    {
-        Task activityTask = context.CallActivityAsync("FlakyFunction");
-        Task timeoutTask = context.CreateTimer(deadline, cts.Token);
-
-        Task winner = await Task.WhenAny(activityTask, timeoutTask);
-        if (winner == activityTask)
-        {
-            // success case
-            cts.Cancel();
-            return true;
-        }
-        else
-        {
-            // timeout case
-            return false;
-        }
-    }
-}
-```
-
 > [!NOTE]
 > Předchozí C# příklady jsou pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` namísto `IDurableOrchestrationContext`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -291,6 +214,8 @@ module.exports = df.orchestrator(function*(context) {
     }
 });
 ```
+
+---
 
 > [!NOTE]
 > Tento mechanismus ve skutečnosti neukončí probíhající zpracování funkce aktivity. Místo toho jednoduše umožňuje, aby funkce Orchestrator ignorovala výsledek a přesunula se na. Další informace najdete v dokumentaci k [časovačům](durable-functions-timers.md#usage-for-timeout) .

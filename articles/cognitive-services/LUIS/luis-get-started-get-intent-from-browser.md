@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 10/17/2019
 ms.author: diberry
-ms.openlocfilehash: a99dbc594b53d00ae02b2581d149fe7b4573ab7d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2ca0f9faf1623df9212072abbc960cba41a6414b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495224"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165746"
 ---
 # <a name="quickstart-get-intent-with-a-browser"></a>Rychlý Start: získání záměru pomocí prohlížeče
 
@@ -26,13 +26,13 @@ Abyste porozuměli výsledkům koncového bodu předpovědí služby LUIS, zobra
 
 K dotazování veřejné aplikace potřebujete:
 
-* Vlastní klíč Language Understanding (LUIS). Pokud ještě nemáte předplatné k vytvoření klíče, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/). LUIS Authoring Key nebude fungovat. 
+* Vlastní klíč pro vytváření nebo předpověď Language Understanding (LUIS), který se dá získat z [portálu Luis (Preview)](https://preview.luis.ai/). Pokud ještě nemáte předplatné k vytvoření klíče, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/). 
 * ID veřejné aplikace: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`. 
 
 ## <a name="use-the-browser-to-see-predictions"></a>Použití prohlížeče k zobrazení předpovědi
 
 1. Otevřete webový prohlížeč. 
-1. Použijte níže uvedené úplné adresy URL a nahraďte `YOUR-KEY` vlastním LUIS klíčem. Požadavky jsou požadavky GET a zahrnují autorizaci s klíčem LUIS jako parametr řetězce dotazu.
+1. Použijte níže uvedené úplné adresy URL, které nahradí `YOUR-KEY` vlastním klíčem pro vytváření obsahu LUIS nebo předpovědi. Požadavky jsou požadavky GET a zahrnují autorizaci s klíčovým slovem LUIS Authoring nebo předpovědi jako parametr řetězce dotazu.
 
     #### <a name="v3-prediction-requesttabv3-1-1"></a>[Požadavek na předpověď V3](#tab/V3-1-1)
     

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
-ms.openlocfilehash: 7185ac40cafce86c68efbf28c7e6a35fd4789bc3
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 24369ed547b811b212518193a2ae2f76ed197754
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027653"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264623"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Přehled agenta virtuálního počítače Azure
 Agent virtuálního počítače Microsoft Azure (agent virtuálního počítače) je zabezpečený a odlehčený proces, který spravuje interakci virtuálních počítačů s řadičem prostředků infrastruktury Azure. Agent virtuálního počítače má primární roli při povolování a provádění rozšíření virtuálních počítačů Azure. Rozšíření virtuálních počítačů umožňují konfiguraci po nasazení virtuálního počítače, jako je instalace a konfigurace softwaru. Rozšíření virtuálních počítačů také umožňují funkce pro obnovení, jako je resetování hesla pro správu virtuálního počítače. Bez agenta virtuálního počítače Azure nejde spustit rozšíření virtuálních počítačů.
@@ -61,7 +61,8 @@ Pokud nemáte nainstalované agenty, nemůžete použít některé služby Azure
 ### <a name="manual-installation"></a>Ruční instalace
 Agenta virtuálního počítače s Windows je možné ručně nainstalovat pomocí balíčku Instalační služby systému Windows. Ruční instalace může být nutná při vytváření vlastní image virtuálního počítače, která je nasazena do Azure. Chcete-li ručně nainstalovat agenta virtuálního počítače s Windows, [Stáhněte si instalační program agenta virtuálního počítače](https://go.microsoft.com/fwlink/?LinkID=394789). Agent virtuálního počítače je podporovaný v systému Windows Server 2008 R2 a novějším.
 
-> [Poznámka!] Možnost AllowExtensionOperations je důležité aktualizovat po ruční instalaci VMAgent na virtuální počítač, který byl nasazený z image bez povolení ProvisionVMAgent.
+> [!NOTE]
+> Možnost AllowExtensionOperations je důležité aktualizovat po ruční instalaci VMAgent na virtuální počítač, který byl nasazený z image bez povolení ProvisionVMAgent.
 
 ```powershell
 $vm.OSProfile.AllowExtensionOperations = $true

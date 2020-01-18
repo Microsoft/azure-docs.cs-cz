@@ -1,6 +1,6 @@
 ---
-title: 'Skript prostředí PowerShell: Vytvořit vlastní roli v testovacím prostředí ve službě Azure DevTest Labs | Dokumentace Microsoftu'
-description: Tento skript Powershellu přidá externího uživatele do testovacího prostředí ve službě Azure DevTest Labs.
+title: PowerShell – vytvoření vlastní role v testovacím prostředí v Azure DevTest Labs
+description: Tento skript PowerShellu přidá externího uživatele do testovacího prostředí v Azure DevTest Labs.
 services: lab-services
 author: spelluru
 manager: ''
@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 4d0c795dffb40ab7efec9005660439f9baef9f3f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bcad4e02105bff2dc78a4adc3ca614f997794d52
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160572"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166420"
 ---
-# <a name="use-powershell-to-create-a-custom-role-in-a-lab-in-azure-devtest-labs"></a>Použití Powershellu k vytvoření vlastní roli v testovacím prostředí ve službě Azure DevTest Labs
+# <a name="use-powershell-to-create-a-custom-role-in-a-lab-in-azure-devtest-labs"></a>Použití PowerShellu k vytvoření vlastní role v testovacím prostředí v Azure DevTest Labs
 
-Tento ukázkový skript Powershellu vytvoří vlastní role pro použití v testovacím prostředí ve službě Azure DevTest Labs. 
+Tento ukázkový skript PowerShellu vytvoří vlastní roli pro použití v testovacím prostředí v Azure DevTest Labs. 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky
-* **A lab**. Skript je potřeba mít existující testovací prostředí. 
+* **A lab**. Tento skript vyžaduje, abyste měli existující testovací prostředí. 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -40,12 +40,12 @@ Tento skript používá následující příkazy:
 
 | Příkaz | Poznámky |
 |---|---|
-| [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) | Získá operace pro poskytovatele prostředků Azure, které jsou zabezpečené pomocí Azure RBAC. |
-| [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) | Vypíše všechny role Azure RBAC, které jsou k dispozici pro přiřazení. |
+| [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) | Načte operace pro poskytovatele prostředků Azure, které jsou zabezpečené pomocí služby Azure RBAC. |
+| [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) | Zobrazí seznam všech rolí Azure RBAC, které jsou k dispozici pro přiřazení. |
 | [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) | Vytvoří vlastní roli. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 
-Další ukázkové skripty Azure Lab Services Powershellu najdete v [ukázky Azure Lab Services Powershellu](../samples-powershell.md).
+Další Azure Lab Services ukázkových skriptech PowerShellu najdete v [ukázkách Azure Lab Services PowerShellu](../samples-powershell.md).

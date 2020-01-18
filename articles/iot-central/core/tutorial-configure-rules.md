@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 9c2c8c1bacf4abfa775747a03d2a4a6121b67714
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 9140114e7d31f24770bdcce9aae849b01aae9996
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106593"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263607"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Kurz: Konfigurace pravidel a akcí pro vaše zařízení v Azure IoT Central
 
@@ -22,11 +22,12 @@ ms.locfileid: "74106593"
 
 [!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
 
-V tomto kurzu vytvoříte pravidlo, které pošle e-mail, když teplota zařízení připojené klimatizace překročí 90&deg; F.
+V tomto kurzu vytvoříte pravidlo, které pošle e-mail, když teplota v připojeném zařízení klimatizačního zařízení překročí 70&deg; F.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
+>
 > * Vytvoření pravidla založeného na telemetrii
 > * Přidání akce
 
@@ -48,14 +49,14 @@ Než začnete, musíte dokončit kurz [definování nového typu zařízení ve 
 
     ![Zobrazení pravidel](media/tutorial-configure-rules/newrule.png)
 
-5. Při definování pravidla použijte informace v následující tabulce:
+4. Při definování pravidla použijte informace v následující tabulce:
 
     | Nastavení                                      | Hodnota                             |
     | -------------------------------------------- | ------------------------------    |
-    | Název                                         | Upozornění klimatizace na teplotu |
+    | Name (Název)                                         | Upozornění klimatizace na teplotu |
     | Enable rule for all devices of this template (Povolit pravidlo pro všechna zařízení této šablony) | Zapnuto                                |
-    | Podmínka                                    | Teplota je větší než 90    |
-    | Agregace                                  | Žádný                              |
+    | Podmínka                                    | Teplota je větší než 70.    |
+    | Agregace                                  | Žádné                              |
 
     ![Podmínka pravidla teploty](media/tutorial-configure-rules/temperaturerule.png)
 
@@ -71,17 +72,18 @@ Když definujete pravidlo, také definujete akci, kterou chcete spustit, když j
 
 2. Při definování akce použijte informace v následující tabulce:
 
-    | Nastavení   | Hodnota                          |
-    | --------- | ------------------------------ |
-    | Akce        | Vaše e-mailová adresa             |
-    | Poznámky:     | Teplota klimatizace překročila prahovou hodnotu. |
+    | Nastavení      | Hodnota                                               |
+    | ------------ | --------------------------------------------------- |
+    | Zobrazované jméno | Upozornění na teplotu e-mailu                             |
+    | až           | Vaše e-mailová adresa                                  |
+    | Poznámky        | Teplota klimatizace překročila prahovou hodnotu. |
 
     > [!NOTE]
     > Pokud chcete dostávat e-mailové oznámení, e-mailová adresa musí být [ID uživatele v aplikaci](howto-administer.md) a tento uživatel se musel k aplikaci alespoň jednou přihlásit.
 
     ![Teplotní akce](media/tutorial-configure-rules/temperatureaction.png)
 
-3. Vyberte **Uložit**. Vaše pravidlo je uvedené na stránce **pravidla** .
+3. Vyberte **Save** (Uložit). Vaše pravidlo je uvedené na stránce **Rules** (Pravidla).
 
 ## <a name="test-the-rule"></a>Testování pravidla
 
@@ -96,12 +98,14 @@ V tomto kurzu jste se naučili:
 
 <!-- Repeat task list from intro -->
 > [!div class="nextstepaction"]
+>
 > * Vytvoření pravidla založeného na telemetrii
 > * Přidání akce
 
 Teď, když jste definovali pravidlo na základě prahové hodnoty, je navržený další krok [přizpůsobení zobrazení operátoru](tutorial-customize-operator.md).
 
 Další informace o různých typech pravidel v Azure IoT Central a postup parametrizace definice pravidla najdete v tématech:
+
 * [Vytvoření pravidla telemetrie a nastavení oznámení](howto-create-telemetry-rules.md)
 * [Vytvoření pravidla událostí a nastavení oznámení](howto-create-event-rules.md)
 

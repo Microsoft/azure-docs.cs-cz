@@ -1,24 +1,65 @@
 ---
 title: Poznámky k verzi – služba pro rozpoznávání řeči
 titleSuffix: Azure Cognitive Services
-description: Podívejte se na běžící protokol vydaných verzí, vylepšení, opravy chyb a známé problémy služby Speech.
+description: Běžící protokol vydaných verzí funkcí hlasové služby, vylepšení, oprav chyb a známé problémy.
 services: cognitive-services
-author: BrianMouncer
+author: oscholz
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/05/2019
-ms.author: brianem
+ms.date: 01/15/2020
+ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 73f1739b09111052abd985920efe3ef944a89ca9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1b421e7acd7f94654ea80e41340022c8ef7a130e
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75380350"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264216"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
+
+## <a name="speech-sdk-190-2020-january-release"></a>Sada Speech SDK 1.9.0:2020 – leden Release
+
+**Nové funkce**
+
+- Konverzace s více zařízeními: Propojte více zařízení v hlasové konverzaci nebo v textových konverzacích a volitelně Přeložte zprávy odesílané mezi nimi. Další informace najdete v [tomto článku](multi-device-conversation.md). 
+- Podpora rozpoznávání klíčových slov se přidala pro balíček Android. AAR a přidala se podpora pro typy x86 a x64. 
+- metody `SendMessage` a `SetMessageProperty` přidány do objektu `Connection` v cíli-C. Další informace [najdete v dokumentaci.](https://docs.microsoft.com/objectivec/cognitive-services/speech/)
+- Rozhraní C++ API pro TTS teď podporuje `std::wstring` jako Shrnutí textu a odstraňuje nutnost převést wstring na řetězec před předáním do sady SDK. [Tady](https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#speaktextasync)najdete podrobnosti. 
+- [ID jazyka](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-csharp) a [konfigurace zdrojového jazyka](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-specify-source-language?pivots=programming-language-csharp) jsou nyní k dispozici v C#.
+
+
+**Rozbíjející změny v**
+
+- `OpenSSL` byla aktualizována na verzi 1.1.1 b a staticky propojená se základní knihovnou sady Speech SDK pro Linux. To může způsobit přerušení, pokud `OpenSSL` doručených zpráv není nainstalován do `/usr/lib/ssl` adresáře v systému. Pokud chcete tento problém obejít, přečtěte si [naši dokumentaci](how-to-configure-openssl-linux.md) v části dokumentace k sadě Speech SDK.
+- Změnili jsme datový typ vrácený pro C# `WordLevelTimingResult.Offset` z `int` na `long`, aby bylo možné získat přístup k `WordLevelTimingResults`ům, když jsou data řeči delší než 2 minuty.
+
+
+**Opravy chyb**
+
+- V části nejnovější změny výše se podívejte na aktualizaci `OpenSSL`. V systému Linux a Java jsme opravili občasné chyby a problémy s výkonem (při vysokém zatížení zamknete spory). 
+- Vylepšení zavírání objektů Java ve scénářích s vysokou mírou souběžnosti.
+- Znovu se strukturuje náš balíček NuGet. Odebrali jsme tři kopie `Microsoft.CognitiveServices.Speech.core.dll` a `Microsoft.CognitiveServices.Speech.extension.kws.dll` ve složkách lib, čímž se balíček NuGet zmenší a rychleji stáhne a přidali jsme hlavičky potřebné k zkompilování některých C++ nativních aplikací.
+- Pevné ukázky pro rychlý Start [najdete tady](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp). Ty se ukončily bez zobrazení výjimky "mikrofon nebyl nalezen" na Linux, MacOS a Windows.
+- Opravili jsme chybu sady SDK s dlouhým výsledkem rozpoznávání řeči na určitých cestách kódu, jako je [Tato ukázka](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/csharp/uwp/speechtotext-uwp).
+- Opravená chyba nasazení sady SDK ve službě Azure Web App Environment pro vyřešení [tohoto problému se zákazníky](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/396).
+- Opravili jsme chybu TTS při použití `<voice>` značky nebo značky `<audio>` k vyřešení [tohoto problému zákazníka](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/433). 
+- Opravená chyba TTS 401 při obnovení sady SDK z pozastavené.
+
+
+**Ukázky**
+
+- [Sem](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/java/android/sdkdemo)přidejte ukázku rozpoznávání klíčových slov pro Android.
+- [Sem](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/csharp)přidejte ukázku TTS pro scénář serveru. 
+- Sem jste přidali rychlé starty konverzací na C++ více C# zařízení [](multi-device-conversation.md)v prostředích a .NET.
+
+
+**Další změny**
+
+- Optimalizovaná velikost knihovny SDK jádra v Androidu
+- Sada SDK v 1.9.0 a vyšší podporuje typy `int` a `string` v poli verze hlasového podpisu pro Transcriber konverzace.
 
 ## <a name="speech-sdk-180-2019-november-release"></a>Sada Speech SDK 1.8.0:2019 – listopadová verze
 

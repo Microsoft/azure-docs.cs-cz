@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: 2dc5bfb7459e28a4d118c5d1629133bae3a5637f
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 2cdf34bb7df121665548be98f9f2098cc5cfe99b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533697"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169085"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Podpora a možnosti pomoci pro Azure Cognitive Services
 
@@ -73,7 +73,7 @@ Pokud chcete požádat o nové funkce, publikujte je na UserVoice. Sdílejte sv�
 | Content Moderator             | https://cognitive.uservoice.com/forums/559960-content-moderator |
 | Custom Vision                 | https://cognitive.uservoice.com/forums/598141-custom-vision-service |
 | Tvář                          | https://cognitive.uservoice.com/forums/430315-face |
-| Tvar                          | https://cognitive.uservoice.com/forums/921556-form-recognizer |
+| Formulář                          | https://cognitive.uservoice.com/forums/921556-form-recognizer |
 | Atraktivní                     | https://feedback.azure.com/forums/34192--general-feedback |
 | Language Understanding (LUIS) | https://cognitive.uservoice.com/forums/551524-luis |
 | Personalizace                  | https://cognitive.uservoice.com/forums/921562-personalizer |
@@ -91,8 +91,8 @@ Pokud chcete požádat o nové funkce, publikujte je na UserVoice. Sdílejte sv�
 
 Poznámky k verzi jsou aktualizované, protože jsou k dispozici nové verze. Poznámky obsahují informace o nových funkcích, vylepšeních a opravách chyb.
 
- - [Custom Vision Service](custom-vision-service/release-notes.md)
- - [Rozhraní API pro rozpoznávání tváře](face/releasenotes.md)
+ - [Custom Vision](custom-vision-service/release-notes.md)
+ - [Rozpoznávání tváře](face/releasenotes.md)
  - [Language Understanding (LUIS)](luis/whats-new.md)
  - [Hlasové služby](speech-service/releasenotes.md)
  - [Sada Speech Services SDK](speech-service/devices-sdk-release-notes.md)

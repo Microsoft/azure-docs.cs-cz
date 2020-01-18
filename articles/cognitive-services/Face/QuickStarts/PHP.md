@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a PHP'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu budete rozpoznávat tváře na obrázku pomocí rozhraní API pro rozpoznávání tváře s PHP.
+description: V tomto rychlém startu detekujete obličeje z obrázku pomocí REST API obličeje s PHP.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: fb9539c8aa0477cbfbf11ce08635e4e9ccebb2ce
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0f76ec4ce1072b247be7f46610d37190cd282a22
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977926"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169746"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a PHP
 
 V tomto rychlém startu použijete REST API Azure Face s PHP k detekci lidských plošek v obraze.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Klíč rozhraní API pro rozpoznávání tváře předplatného. Můžete získat bezplatné předplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k odběru služby API pro rozpoznávání tváře a získejte klíč.
+- Klíč předplatného pro vytvoření obličeje. Můžete získat bezplatné předplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru služby obličeje a Získejte svůj klíč.
 - Editor kódu, jako je například [Visual Studio Code](https://code.visualstudio.com/download).
 - Balíček PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) .
 - Webový prohlížeč s podporou PHP. Pokud jste toto nastavení nestavili, můžete to udělat tak, že na svém počítači nainstalujete a nanastavíte [XAMPP](https://www.apachefriends.org/) .
@@ -288,7 +288,7 @@ Otevřete soubor ve webovém prohlížeči s podporou PHP. Měli byste získat �
 
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte rozhraní API pro rozpoznávání lidských tváří na obrázku, ohraničte obličeje obdélníky a vraťte atributy, jako je věk a pohlaví.
+Prozkoumejte Face API, která se používá k detekci lidských plošek v obrazci, vymezí plošky pomocí obdélníků a vrátí atributy, jako je například věk a pohlaví.
 
 > [!div class="nextstepaction"]
 > [Rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

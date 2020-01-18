@@ -4,12 +4,12 @@ description: Možnosti ověřování pro službu Azure Container Registry, včet
 ms.topic: article
 ms.date: 12/21/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 29e23f6a983ccc2197e609511aee2ce13726ed0f
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: fbe77dee4104e3c654aad58db82765733b2c3e1d
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455388"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264505"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Ověřování pomocí privátního registru kontejnerů Docker
 
@@ -27,7 +27,7 @@ az acr login --name <acrName>
 
 Když se přihlásíte pomocí `az acr login`, rozhraní příkazového řádku použije token vytvořený při provedení [AZ Login](/cli/azure/reference-index#az-login) k bezproblémovému ověření relace s registrem. Po přihlášení budete přihlašovací údaje ukládat do mezipaměti a následné `docker` příkazy ve vaší relaci nevyžadují uživatelské jméno ani heslo. 
 
-V případě přístupu k registru je token používaný nástrojem `az acr login` platný po dobu 1 hodiny, proto doporučujeme, abyste se před spuštěním příkazu `docker` vždy přihlásili k registru. V případě vypršení platnosti tokenu ho můžete znovu aktualizovat pomocí příkazu `az acr login` znovu ověřit. 
+V případě přístupu k registru je token používaný `az acr login` platný po dobu **3 hodin**, takže před spuštěním příkazu `docker` doporučujeme, abyste se k registru vždy přihlásili. V případě vypršení platnosti tokenu ho můžete znovu aktualizovat pomocí příkazu `az acr login` znovu ověřit. 
 
 Použití `az acr login` s identitami Azure zajišťuje [přístup založený na rolích](../role-based-access-control/role-assignments-portal.md). V některých scénářích se můžete chtít přihlásit k registru s vlastní individuální identitou v Azure AD. Pro scénáře mezi službami nebo pro zpracování potřeb pracovní skupiny, u kterých nechcete spravovat individuální přístup, se můžete také přihlásit pomocí [spravované identity pro prostředky Azure](container-registry-authentication-managed-identity.md).
 
@@ -55,7 +55,7 @@ Každý registr kontejnerů obsahuje účet uživatele správce, který je ve v�
 > Účet správce je navržený pro jednoho uživatele, který má přístup k registru, hlavně pro účely testování. Nedoporučujeme sdílení přihlašovacích údajů účtu správce mezi více uživateli. Všichni uživatelé, kteří se ověřují pomocí účtu správce, se zobrazí jako jednotliví uživatelé s přístupem push a pull do registru. Změna nebo zakázání tohoto účtu zakáže přístup k registru pro všechny uživatele, kteří používají své přihlašovací údaje. Pro uživatele a instanční objekty se doporučuje použít pro scénáře s doplňováním provozu individuální identitu.
 >
 
-Účet správce je k dispozici se dvěma hesly, z nichž lze znovu vygenerovat. Dvě hesla umožňují udržovat připojení k registru pomocí jednoho hesla při opětovném vygenerování. Pokud je povolen účet správce, můžete po zobrazení výzvy k zadání základního ověřování do registru předat uživatelské jméno a heslo k příkazu `docker login`. Příklad:
+Účet správce je k dispozici se dvěma hesly, z nichž lze znovu vygenerovat. Dvě hesla umožňují udržovat připojení k registru pomocí jednoho hesla při opětovném vygenerování. Pokud je povolen účet správce, můžete po zobrazení výzvy k zadání základního ověřování do registru předat uživatelské jméno a heslo k příkazu `docker login`. Například:
 
 ```
 docker login myregistry.azurecr.io 

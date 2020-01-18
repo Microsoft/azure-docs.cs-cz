@@ -3,14 +3,14 @@ title: Správa aktualizací pro několik virtuálních počítačů Azure
 description: Tento článek popisuje, jak spravovat aktualizace pro virtuální počítače Azure a mimo Azure.
 services: automation
 ms.subservice: update-management
-ms.date: 11/20/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: e9a5a4330a90bd376114f836250e290944f03860
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: de7171d3807540ae7d5f09c3a877031631248e49
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75417828"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168046"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Správa aktualizací pro několik počítačů
 
@@ -110,7 +110,7 @@ Kromě plánu vyhledávání se kontrola kompatibility aktualizací zahájila do
 
 U počítače se systémem Linux se kontrola dodržování předpisů provádí ve výchozím nastavení každou hodinu. Pokud se agent MMA restartuje, zahájí se kontrola kompatibility do 15 minut.
 
-Zobrazení aktuálních dat o spravovaných počítačích může trvat 30 minut nebo až 6 hodin.
+Zobrazení aktuálních dat o spravovaných počítačích může trvat 30 minut až 6 hodin.
 
 ## <a name="schedule-an-update-deployment"></a>Naplánování nasazení aktualizace
 
@@ -147,6 +147,13 @@ V podokně **nové nasazení aktualizací** zadejte následující informace:
   - Aktualizace
 
 - **Aktualizace, které se mají zahrnout nebo vyloučit** – Otevře stránku **Zahrnout nebo vyloučit**. Aktualizace, které se mají zahrnout nebo vyloučit jsou na samostatných kartách. Další informace o způsobu zpracování zařazení najdete v tématu [Naplánování nasazení aktualizací](automation-tutorial-update-management.md#schedule-an-update-deployment).
+
+> [!NOTE]
+> Je důležité, abyste věděli, že vyloučení přepisují. Například pokud definujete pravidlo vyloučení `*`, nebudou nainstalovány žádné opravy ani balíčky, protože všechny jsou vyloučené. Vyloučené opravy se pořád na počítači zobrazují jako chybějící. Pro počítače se systémem Linux, pokud je zahrnut balíček, ale obsahuje závislý balíček, který byl vyloučen, není balíček nainstalován.
+
+> [!NOTE]
+> Aktualizace, které byly nahrazeny pro zahrnutí do nasazení aktualizace, nelze zadat.
+>
 
 - **Nastavení plánu:** Můžete přijmout výchozí datum a čas, což je 30 minut od aktuálního času. Můžete také zadat jiný čas.
 

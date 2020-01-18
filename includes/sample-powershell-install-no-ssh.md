@@ -4,13 +4,13 @@ ms.topic: include
 ms.date: 01/30/2019
 ms.service: azure-powershell
 ms.author: sttramer
-ms.openlocfilehash: 5cfb93c51ae1f3aff9250601410e4808ed865a32
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 85a78200fa5c2b90908de6ac0de8723b20ffe56b
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059045"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263964"
 ---
-Tato ukázka vyžaduje prostředí Azure PowerShell Az 1.0 nebo novější. Spustit `Get-Module -ListAvailable Az` zobrazíte, jaké verze jsou nainstalovány. Pokud je potřeba nainstalovat, přečtěte si téma [instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). 
+Tato ukázka vyžaduje Azure PowerShell AZ 1,0 nebo novější. Spuštěním `Get-Module -ListAvailable Az` zjistíte, které verze se nainstalují. Pokud potřebujete instalaci, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). 
 
-Spustit [připojit AzAccount](/powershell/module/az.accounts/connect-azaccount) pro přihlášení k Azure.
+Spusťte [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) a přihlaste se k Azure.

@@ -1,5 +1,5 @@
 ---
-title: 'Příklad: Identifikace tváří na obrázku – rozhraní API pro rozpoznávání tváře'
+title: 'Příklad: identifikace plošeks na obrázcích – Face'
 titleSuffix: Azure Cognitive Services
 description: V této příručce se dozvíte, jak identifikovat neznámé plošky pomocí objektů Person, které jsou vytvořené od známých osob předem.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: ec209eb2c60efcb1363c177aad0fe5a72ad2a239
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0b1cf99fe6e2aa4d7fcb12c3fb96b10b42c7c0b7
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977178"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169917"
 ---
 # <a name="example-identify-faces-in-images"></a>Příklad: identifikace plošek na obrázcích
 
-V této příručce se dozvíte, jak identifikovat neznámé plošky pomocí objektů Person, které jsou vytvořené od známých osob předem. Ukázky se napíší C# pomocí klientské knihovny Azure Cognitive Services Face API.
+V této příručce se dozvíte, jak identifikovat neznámé plošky pomocí objektů Person, které jsou vytvořené od známých osob předem. Ukázky se napíší C# pomocí klientské knihovny Azure Cognitive Services Face.
 
 ## <a name="preparation"></a>Příprava
 
@@ -33,9 +33,9 @@ Chcete-li provést ukázku této ukázky, připravte:
 - Několik fotek s tváří určité osoby. [Stáhněte si ukázkové fotky](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data) pro Anna, Bill a Clare.
 - Série testovacích fotek. Fotografie mohou nebo nemusí obsahovat plošky Anna, Bill nebo Clare. Slouží k testování identifikace. Vyberte také některé ukázkové obrázky z předchozího odkazu.
 
-## <a name="step-1-authorize-the-api-call"></a>1\. krok: Autorizace volání rozhraní API
+## <a name="step-1-authorize-the-api-call"></a>Krok 1: Autorizace volání rozhraní API
 
-Ke každému volání rozhraní API pro rozpoznávání tváře potřebujete klíč předplatného (subscription key). Tento klíč lze buď předat parametrem řetězce dotazu, nebo zadat v hlavičce požadavku. Chcete-li předat klíč předplatného pomocí řetězce dotazu, přečtěte si adresu URL žádosti pro [obličej – rozpoznat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) jako příklad:
+Ke každému volání rozhraní API pro rozpoznávání tváře potřebujete klíč předplatného. Tento klíč lze buď předat parametrem řetězce dotazu, nebo zadat v hlavičce požadavku. Chcete-li předat klíč předplatného pomocí řetězce dotazu, přečtěte si adresu URL žádosti pro [obličej – rozpoznat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) jako příklad:
 ```
 https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes]
 &subscription-key=<Subscription key>
@@ -131,7 +131,7 @@ while(true)
 
 ## <a name="step-4-identify-a-face-against-a-defined-persongroup"></a>Krok 4: Identifikace tváře vůči definované skupině PersonGroup
 
-Když Face API provede identifikace, vypočítá podobnost zkušební plochy mezi všemi ploškami v rámci skupiny. Vrátí nejsrovnatelnou osobu pro testovací plochu. Tento proces se provádí prostřednictvím rozhraní API [pro identifikaci obličeje](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) nebo metody IdentifyAsync klientské knihovny.
+Když služba obličeje provede identifikace, vypočítá podobnost zkušební plochy mezi všemi ploškami v rámci skupiny. Vrátí nejsrovnatelnou osobu pro testovací plochu. Tento proces se provádí prostřednictvím rozhraní API [pro identifikaci obličeje](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) nebo metody IdentifyAsync klientské knihovny.
 
 Test FACET se musí detekovat pomocí předchozích kroků. Pak je ID obličeje předáno rozhraní API pro identifikaci jako druhý argument. V jednom okamžiku se dá identifikovat víc ID tváře. Výsledek obsahuje všechny zjištěné výsledky. Ve výchozím nastavení se v procesu identifikace vrátí pouze jedna osoba, která se shoduje s nejlepší testovou ploškou. Pokud dáváte přednost, zadejte nepovinný parametr maxNumOfCandidatesReturned, aby proces identifikace mohl vrátit další kandidáty.
 

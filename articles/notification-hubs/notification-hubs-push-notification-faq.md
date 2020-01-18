@@ -1,6 +1,6 @@
 ---
-title: 'Azure Notification Hubs: nejčastější dotazy (FAQ) | Microsoft Docs'
-description: Nejčastější dotazy týkající se návrhu a implementace řešení na Notification Hubs
+title: Nejčastější dotazy k Azure Notification Hubsu (FAQ) | Microsoft Docs
+description: Nejčastější dotazy týkající se návrhu a implementace řešení v Azure Notification Hubs.
 services: notification-hubs
 documentationcenter: mobile
 author: sethmanheim
@@ -17,12 +17,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: c84a4472789430524cbf5ff3f1ae24ea10d342b9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3212520f37d33a2d8fb1b071506f688b9f75f15c
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74066879"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263825"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Nabízená oznámení s Azure Notification Hubs: nejčastější dotazy
 
@@ -153,7 +153,7 @@ Všechna připojení, od odesilatele k Azure Notification Hubs do PNS, používa
 
 K posílání citlivých datových částí doporučujeme použít zabezpečený vzor nabízení. Odesílatel doručí oznámení s identifikátorem zprávy pomocí testu na zařízení bez citlivé datové části. Když aplikace v zařízení obdrží datovou část, aplikace volá zabezpečené rozhraní API přímo k načtení podrobností zprávy. Návod, jak tento model implementovat, najdete na stránce [Kurz zabezpečeného nabízení oznámení Notification Hubs] .
 
-## <a name="operations"></a>Operace
+## <a name="operations"></a>Operations
 
 ### <a name="what-support-is-provided-for-disaster-recovery"></a>Jaká podpora je k dispozici pro zotavení po havárii?
 
@@ -193,7 +193,7 @@ Azure Notification Hubs poskytuje několik funkcí pro řešení potíží, zejm
 
 Azure Notification Hubs umožňuje zobrazit data telemetrie v [Azure Portal]. Podrobnosti o metrikách jsou k dispozici na stránce [Notification Hubs metriky] .
 
-Můžete také programově přistupovat k metrikám. Další informace najdete v následujících článcích:
+Můžete také programově přistupovat k metrikám. Další informace najdete v těchto článcích:
 
 - [Načtěte metriky Azure monitor pomocí .NET](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/). V této ukázce se používá uživatelské jméno a heslo. Chcete-li použít certifikát, přetížením metody FromServicePrincipal poskytněte certifikát, jak je znázorněno v [tomto příkladu](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs). 
 - [Získání metrik a protokolů aktivit pro prostředek](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)

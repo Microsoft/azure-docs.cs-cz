@@ -11,20 +11,20 @@ ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: cf3cf1f69f7b45dd90070f4074e85fa21359837d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 58192845e0119ce96ea2577007d211f075d3e419
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961470"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169726"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>Rychlý start: Použití PHP k volání rozhraní API Bingu pro vyhledávání na webu  
 
 Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání na webu a přijetí odpovědi JSON. Tato aplikace Node. js odešle požadavek na hledání do rozhraní API a zobrazí odpověď. I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebovat:
+Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého startu:
 
 * [PHP 5.6.x](https://php.net/downloads.php) nebo novější
 * Klíč předplatného  
@@ -43,7 +43,7 @@ Než začneme, najděte soubor `php.ini` a zrušte komentář tohoto řádku:
 
 V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt PHP. Nezapomeňte přidat počáteční a koncové značky `<?php` a `?>`.
 
-Abychom mohli pokračovat, musíme nastavit několik proměnných. `$endpoint` může být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek. Ověřte správnost hodnoty `$endpoint` a nahraďte hodnotu `$accesskey` platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz přizpůsobíte tím, že místo `$term` zadáte jinou hodnotu.
+Abychom mohli pokračovat, musíme nastavit několik proměnných. `$endpoint` může být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek. Ověřte správnost hodnoty `$endpoint` a nahraďte hodnotu `$accesskey` platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz můžete přizpůsobit. Stačí místo `$term` zadat jinou hodnotu.
 
 ```php
 $accessKey = 'enter key here';
@@ -177,9 +177,9 @@ Odpovědi rozhraní API Bingu pro vyhledávání na webu se vrátí jako objekt 
         "snippet": "Knock down barriers between you and your ideas. Enable natural and contextual interaction with tools that augment users' experiences via the power of machine-based AI. Plug them in and bring your ideas to life.",
         "deepLinks": [
           {
-            "name": "Face API",
+            "name": "Face",
             "url": "https://azure.microsoft.com/services/cognitive-services/face/",
-            "snippet": "Add facial recognition to your applications to detect, identify, and verify faces using a Face API from Microsoft Azure. ... Cognitive Services; Face API;"
+            "snippet": "Add facial recognition to your applications to detect, identify, and verify faces using the Face service from Microsoft Azure. ... Cognitive Services; Face service;"
           },
           {
             "name": "Text Analytics",

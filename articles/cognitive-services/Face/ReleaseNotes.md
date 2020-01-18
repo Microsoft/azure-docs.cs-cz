@@ -1,7 +1,7 @@
 ---
-title: Zpráva k vydání verze – Service rozhraní API pro rozpoznávání tváře
+title: Poznámky k verzi – služba obličeje
 titleSuffix: Azure Cognitive Services
-description: Zpráva k vydání verze pro službu rozhraní API pro rozpoznávání tváře patří historii změn pro vydání verze pro různé verze.
+description: Zpráva k vydání verze pro službu obličeje obsahuje historii změn verzí pro různé verze.
 services: cognitive-services
 author: yluiu
 manager: nitinme
@@ -10,88 +10,88 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 06/06/2019
 ms.author: yluiu
-ms.openlocfilehash: a7667f94d3f4dea2901c4b4b0e2b2c893b9f535e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 767c9dec373a2bda806d75d602b194edde98c6b5
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074094"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165876"
 ---
-# <a name="face-api-release-notes"></a>Zpráva k vydání verze rozhraní API pro rozpoznávání tváře
+# <a name="face-release-notes"></a>Poznámky k verzi pro obličej
 
-V tomto článku se vztahují na službu rozhraní API pro rozpoznávání tváře verze 1.0.
+Tento článek se týká služby Face Service verze 1,0.
 
-### <a name="release-changes-in-june-2019"></a>Vydávejte změny 2019 dne
+### <a name="release-changes-in-june-2019"></a>Změny vydané verze v červnu 2019
 
-* Přidat nový model zjišťování pro rozpoznávání tváře s zpřesnění na malé, zobrazení na straně, occluded a rozmazaně tváří. Použití portálu [pro rozpoznávání tváře – zjišťovat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), [FaceList – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250), [LargeFaceList – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3), [jeden objekt PersonGroup uživatele – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) a [Osoba LargePersonGroup – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42) zadáním nového názvu modelu zjišťování pro rozpoznávání tváře `detection_02` v `detectionModel` parametru. Další informace naleznete v [určení modelu detekce](Face-API-How-to-Topics/specify-detection-model.md).
+* Přidali jsme nový model detekce plochy s vylepšenou přesností na malém, bočním, zastíněna a rozmazaných plochách. Použijte ji prostřednictvím [obličeje –](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) [FaceList – přidat obličej](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250), [LargeFaceList – přidat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)obličej, osoba [osoby –](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) přidat obličej a [LargePersonGroup osobu – přidat obličej](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42) zadáním názvu nového modelu detekce obličeje `detection_02` v `detectionModel` parametr. Další podrobnosti najdete v tématu [Určení modelu detekce](Face-API-How-to-Topics/specify-detection-model.md).
 
-### <a name="release-changes-in-april-2019"></a>Vydávejte změny 2019. dubna
+### <a name="release-changes-in-april-2019"></a>Změny vydané verze v dubnu 2019
 
-* Vylepšení celkové přesnosti `age` a `headPose` atributy. `headPose` Atribut je aktualizované taky s `pitch` hodnota nyní povoleno. Pomocí těchto atributů tak, že zadáte v `returnFaceAttributes` parametr [pro rozpoznávání tváře – zjišťovat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) `returnFaceAttributes` parametru. 
+* Zvýšila se celková přesnost atributů `age` a `headPose`. Atribut `headPose` je také aktualizován s hodnotou `pitch` Enabled Now. Použijte tyto atributy jejich zadáním v parametru `returnFaceAttributes` `returnFaceAttributes` parametr pro [rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) . 
 
-* Vylepšení rychlosti [pro rozpoznávání tváře – zjišťovat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), [FaceList – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250), [LargeFaceList – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3), [jeden objekt PersonGroup uživatele – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) a [ Přidat uživatele LargePersonGroup – Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42).
+* Vylepšená rychlost pro [rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), [FaceList – přidání obličeje](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250), [LargeFaceList – přidat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)obličej, osoba [osoby – přidat obličej](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) a [LargePersonGroup osobu – přidat obličej](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42).
 
-### <a name="release-changes-in-march-2019"></a>Vydávejte změny 2019. března
+### <a name="release-changes-in-march-2019"></a>Změny vydané verze v březnu 2019
 
-* Přidat nový model rozpoznávání tváře s zpřesnění. Použít prostřednictvím [pro rozpoznávání tváře – zjišťovat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), [FaceList – vytvořit](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b), [LargeFaceList – vytvořit](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc), [jeden objekt PersonGroup – vytvořit](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) a [ LargePersonGroup – vytvořit](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d) tak, že zadáte nový název model rozpoznávání tváře `recognition_02` v `recognitionModel` parametru. Další informace naleznete v [určení model rozpoznávání](Face-API-How-to-Topics/specify-recognition-model.md).
+* Přidali jsme nový model rozpoznávání tváře s vyšší přesností. Použijte ji prostřednictvím [obličeje – detekce](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) [FaceList-Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b), [LargeFaceList-Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc), [Person-Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) a [LargePersonGroup-Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d) zadáním názvu nového modelu rozpoznávání obličeje `recognition_02` v parametru `recognitionModel`. Další podrobnosti najdete v tématu [Určení modelu rozpoznávání](Face-API-How-to-Topics/specify-recognition-model.md).
 
-### <a name="release-changes-in-january-2019"></a>Vydávejte změny 2019. ledna
+### <a name="release-changes-in-january-2019"></a>Změny vydané verze v lednu 2019
 
-* Snímek funkce pro podporu migrace dat mezi předplatnými: [Snímek](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/snapshot-get). Další informace naleznete v [jak migrovat vaše data rozpoznávání tváře do jiného předplatného pro rozpoznávání tváře](Face-API-How-to-Topics/how-to-migrate-face-data.md).
+* Byla přidána funkce snímku pro podporu migrace dat mezi předplatnými: [snímek](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/snapshot-get). Další podrobnosti [o tom, jak migrovat data vaší plochy na jiný obličejový odběr](Face-API-How-to-Topics/how-to-migrate-face-data.md).
 
-### <a name="release-changes-in-october-2018"></a>Vydávejte změny. října 2018
+### <a name="release-changes-in-october-2018"></a>Změny vydané verze v říjnu 2018
 
-* Popis pro kontrast `status`, `createdDateTime`, `lastActionDateTime`, a `lastSuccessfulTrainingDateTime` v [jeden objekt PersonGroup – získání stavu školení](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395247), [LargePersonGroup – získání stavu školení](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ae32c6ac60f11b48b5aa5)a [ LargeFaceList - získá stav školení](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a1582f8d2de3616c086f2cf).
+* Popis upřesnění pro `status`, `createdDateTime`, `lastActionDateTime`a `lastSuccessfulTrainingDateTime` ve vaší [straně person – Získejte stav školení](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395247), [LargePersonGroup stav školení](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ae32c6ac60f11b48b5aa5)a [LargeFaceList – získat stav školení](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a1582f8d2de3616c086f2cf).
 
-### <a name="release-changes-in-may-2018"></a>Verze změny v květnu 2018
+### <a name="release-changes-in-may-2018"></a>Změny vydání v květnu 2018
 
-* Vylepšené `gender` atribut výrazně a také vylepšené `age`, `glasses`, `facialHair`, `hair`, `makeup` atributy. Používat je prostřednictvím [pro rozpoznávání tváře – zjišťovat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) `returnFaceAttributes` parametru. 
+* Vylepšený atribut `gender` významně a také vylepšili `age`, `glasses`, `facialHair``hair``makeup` atributů. Použijte je pomocí parametru `returnFaceAttributes` [rozpoznávání obličeje](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) . 
 
-* Limit pro velikost souboru zvýšenou vstupního obrázku z 4 MB na 6 MB [pro rozpoznávání tváře – zjišťovat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), [FaceList – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250), [LargeFaceList – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3), [jeden objekt PersonGroup uživatel – přidat Rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) a [osoba LargePersonGroup – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42).
+* Vyšší omezení velikosti souboru pro vstupní image ze 4 MB na 6 MB v [tváři – detekce](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), [FaceList – přidání](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250)obličeje, [LargeFaceList – přidat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)obličej, osoba [osoby – přidat obličej](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) a [LargePersonGroup osobu – přidat obličej](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42)
 
-### <a name="release-changes-in-march-2018"></a>Vydávejte změny. března 2018
+### <a name="release-changes-in-march-2018"></a>Změny vydané verze v březnu 2018
 
-* Přidání Miliónové škále kontejneru: [LargeFaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc) a [LargePersonGroup](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d). Další informace naleznete v [jak používat funkci ve velkém měřítku](Face-API-How-to-Topics/how-to-use-large-scale.md).
+* Přidal se milion-Scale kontejner: [LargeFaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc) a [LargePersonGroup](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d). Podrobnější informace najdete v tématu [Jak používat velkou škálu funkcí](Face-API-How-to-Topics/how-to-use-large-scale.md).
 
-* Zvýšit [pro rozpoznávání tváře – identifikace](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) `maxNumOfCandidatesReturned` parametr z [1, 5] na [1, 100] a výchozí až 10.
+* Zvýšená [plocha – identifikujte](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) `maxNumOfCandidatesReturned` parametr z [1, 5] na [1, 100] a výchozí hodnotu 10.
 
-### <a name="release-changes-in-may-2017"></a>Vydávejte změny. května 2017
+### <a name="release-changes-in-may-2017"></a>Změny vydání v květnu 2017
 
-* Přidání `hair`, `makeup`, `accessory`, `occlusion`, `blur`, `exposure`, a `noise` atributů [pro rozpoznávání tváře – zjišťovat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) `returnFaceAttributes` parametru.
+* Přidaných atributů `hair`, `makeup`, `accessory`, `occlusion`, `blur`, `exposure`a `noise` v parametru [Face-detected](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) `returnFaceAttributes`.
 
-* 10 tisíc osob v jeden objekt PersonGroup podporovány a [pro rozpoznávání tváře – identifikace](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
+* Podporuje se 10 000 osob ve vaší osobě a v [identifikaci obličeje](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
 
-* Nepodporuje stránkování v [jeden objekt PersonGroup uživatele – seznam](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395241) s volitelnými parametry: `start` a `top`.
+* Podporované stránkování na [straně osoby – seznam](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395241) s nepovinnými parametry: `start` a `top`.
 
-* Podporované souběžnosti v tváří proti různých FaceLists a jiné osoby v jeden objekt PersonGroup přidání nebo odstranění.
+* Podporovaná souběžnost při přidávání a odstraňování plošek s různými FaceLists a různými osobami ve službě person
 
-### <a name="release-changes-in-march-2017"></a>Verze změny v březnu 2017
-* Přidání `emotion` atribut [pro rozpoznávání tváře – zjišťovat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) `returnFaceAttributes` parametru.
+### <a name="release-changes-in-march-2017"></a>Změny vydané verze v březnu 2017
+* Přidání atributu `emotion` v parametru [Face-Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) `returnFaceAttributes`
 
-* Oprava, typ písma nelze znovu rozpoznáno s obdélníku, který vrací z [pro rozpoznávání tváře – zjišťovat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) jako `targetFace` v [FaceList – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250) a [jeden objekt PersonGroup uživatele – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b).
+* Opravili jsme, že se obličej nepodařilo znovu rozpoznat pomocí obdélníku vráceného funkcí [Face-Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) jako `targetFace` v [FaceList – přidejte](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250) plochu a osobu [osoby – přidejte obličej](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b).
 
-* Pevná velikost zjistitelné pro rozpoznávání tváře abyste měli jistotu, že jde o nezbytnou mezi 36 x 36 do 4096 × 4096 pixelů.
+* Opravili jsme zjistitelnou velikost obličeje, abyste se ujistili, že je striktně mezi 36x36 a 4096x4096 pixely.
 
-### <a name="release-changes-in-november-2016"></a>Změny verze v listopadu 2016
-* Přidání standardní úložiště pro rozpoznávání tváře předplatnému uložit další trvalé tváře při použití [jeden objekt PersonGroup uživatele – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) nebo [FaceList – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250) pro identifikaci nebo hledání podobnosti odpovídající. Za 1 000 uložených obrázků tváří se účtuje 0,5 USD. Tato sazba se každý den poměrně přepočítává. Předplatná na úrovni Free i nadále omezený na celkem 1 000 osob.
+### <a name="release-changes-in-november-2016"></a>Změny vydání v listopadu 2016
+* Přidání předplatného Úložiště tvářího standard pro ukládání dalších trvalých plošek při použití [osoby osoby – přidat obličej](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) nebo [FaceList – přidejte obličej](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250) pro identifikaci nebo porovnání podobnosti. Za 1 000 uložených obrázků tváří se účtuje 0,5 USD. Tato sazba se každý den poměrně přepočítává. Předplatná úrovně Free se nadále omezuje na 1 000 celkových osob.
 
-### <a name="release-changes-in-october-2016"></a>Změny vydání v říjnu 2016
-* Změnil se chybová zpráva z více než jeden tvář targetFace z "existuje více než jeden tváří na obrázku' do 'Je více než jeden tváří na obrázku' [FaceList – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250) a [jeden objekt PersonGroup uživatele – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b).
+### <a name="release-changes-in-october-2016"></a>Změny vydané verze v říjnu 2016
+* Změnila se chybová zpráva o více než jedné ploškě v targetFace z ' je více než jedna ploška v obrázku ' ' na ' ' je více než jedna ploška v obraze ' v [FaceList – přidejte](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250) plochu a osobu [– Přidat obličej](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b).
 
-### <a name="release-changes-in-july-2016"></a>Vydávejte změny. července 2016
-* Podporované pro rozpoznávání tváře ověřování objektu osoba v [pro rozpoznávání tváře – ověření](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a).
+### <a name="release-changes-in-july-2016"></a>Změny vydané verze v červenci 2016
+* Podporovaná plocha pro ověřování objektu osoby na [úrovni obličeje – ověření](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a).
 
-* Přidat volitelné `mode` parametr povoluje výběr ze dvou režimů používaných pracovní: `matchPerson` a `matchFace` v [rozpoznávání tváře – Najít podobné](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) a výchozí hodnota je `matchPerson`.
+* Přidání volitelného parametru `mode`, který umožňuje výběr dvou pracovních režimů: `matchPerson` a `matchFace` ve funkci [Face-Find podobná](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) a výchozí hodnota je `matchPerson`.
 
-* Přidat volitelné `confidenceThreshold` parametr pro uživatele nastavit mezní hodnota určuje, zda jeden pro rozpoznávání tváře patří do objektu osoba v [pro rozpoznávání tváře – identifikace](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
+* Byl přidán volitelný parametr `confidenceThreshold` pro uživatele, který nastaví prahovou hodnotu, zda jedna ploška patří objektu person v [rámci identifikace obličeje](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
 
-* Přidat volitelné `start` a `top` parametry v [jeden objekt PersonGroup – seznam](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395248) umožňující uživateli zadat počáteční bod a celkového počtu objektů Persongroup do seznamu.
+* Přidání volitelných parametrů `start` a `top` v [seznamu osob –](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395248) umožňuje uživateli zadat počáteční bod a celkové objektů persongroup číslo k seznamu.
 
-### <a name="v10-changes-from-v0"></a>Verze 1.0 se změní z V0
-* Aktualizovat koncový bod služby root z ```https://westus.api.cognitive.microsoft.com/face/v0/``` k ```https://westus.api.cognitive.microsoft.com/face/v1.0/```. Změny se použily: [Rozpoznávání tváře – zjišťovat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), [pro rozpoznávání tváře – identifikace](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239), [pro rozpoznávání tváře – vyhledání podobných](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) a [pro rozpoznávání tváře – seskupit](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238).
+### <a name="v10-changes-from-v0"></a>Změny v 1.0 od v0
+* Kořenový koncový bod služby se aktualizoval z ```https://westus.api.cognitive.microsoft.com/face/v0/``` na ```https://westus.api.cognitive.microsoft.com/face/v1.0/```. Změny, které se aplikují na: [plošky](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), [plošky](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239), obličeje a tváře – [najde podobné](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) a [plošky](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238).
 
-* Aktualizuje velikost minimální zjistitelné pro rozpoznávání tváře na 36 x 36 pixelů. Nerozpozná tváří menší než 36 x 36 pixelů.
+* Velikost minimální zjistitelné plochy se aktualizovala na 36x36 pixelů. Plošky menší než 36x36 pixelů nebudou zjišťovány.
 
-* Zastaralá data jeden objekt PersonGroup a osoby v V0 pro rozpoznávání tváře. Data nelze přistupovat pomocí služby pro rozpoznávání tváře V1.0.
+* Údaje o osobě a osobě se zastaraly v tváři v0. K těmto datům nelze přidružit službu FACET V 1.0.
 
-* Zastaralé V0 koncový bod rozhraní API pro rozpoznávání tváře na 30. června 2016.
+* Konec platnosti koncového bodu v0 Face API dne 30. června 2016.

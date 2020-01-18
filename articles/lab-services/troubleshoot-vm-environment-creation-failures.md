@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží se selháním při vytváření virtuálních počítačů a prostředí Azure DevTest Labs | Microsoft Docs
+title: Řešení potíží se selháním virtuálního počítače a prostředí Azure DevTest Labs
 description: Naučte se řešit potíže s vytvářením virtuálních počítačů a prostředí v Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 945afd4f0a5049985955bbc71bbf6b2250f68d2a
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 155a359608cf6d846578306545f5ce0b4003949c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129039"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166350"
 ---
 # <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>Řešení chyb při vytváření virtuálních počítačů a prostředí v Azure DevTest Labs
-DevTest Labs vám poskytne upozornění, pokud je název počítače neplatný nebo pokud se chystáte porušovat zásady testovacího prostředí. Někdy se zobrazí červená `X` vedle vašeho testovacího virtuálního počítače nebo stavu prostředí, která vás informuje, že došlo k nějaké chybě.  Tento článek poskytuje několik štychů, které můžete použít k vyhledání základního problému a snad, abyste se vyhnuli problému v budoucnu.
+DevTest Labs vám poskytne upozornění, pokud je název počítače neplatný nebo pokud se chystáte porušovat zásady testovacího prostředí. V některých případech se zobrazí červené `X` vedle vašeho testovacího virtuálního počítače nebo stavu prostředí, což vás informuje, že došlo k nějaké chybě.  Tento článek poskytuje několik štychů, které můžete použít k vyhledání základního problému a snad, abyste se vyhnuli problému v budoucnu.
 
 ## <a name="portal-notifications"></a>Oznámení na portálu
 Pokud používáte Azure Portal, první místo, kde se na něj můžete podívat, je **panel oznámení**.  Panel oznámení, který je k dispozici na hlavním panelu příkazů kliknutím na **ikonu zvonku**, vám sdělí, jestli byl virtuální počítač nebo vytvoření prostředí testovacího prostředí úspěšné nebo ne.  Pokud došlo k chybě, zobrazí se chybová zpráva přidružená k chybě při vytváření. Podrobnosti často poskytují další informace, které vám pomůžou problém vyřešit. V následujícím příkladu se virtuální počítač nepodařilo vytvořit z důvodu nedostatku jader. Podrobná zpráva vám ukáže, jak problém vyřešit a požádat o zvýšení kvóty jádra.
@@ -41,11 +41,11 @@ Pokud při pokusu o vytvoření virtuálního počítače nebo prostředí prozk
 
 1. Na domovské stránce testovacího prostředí vyberte virtuální počítač, na kterém se má spustit stránka **virtuálního počítače** .
 2. Na stránce **virtuální počítač** v části **monitorování** v levé nabídce vyberte **Protokol aktivit** , aby se zobrazily všechny protokoly přidružené k virtuálnímu počítači.
-3. V položkách protokolu aktivit vyberte operaci, která se nezdařila. Obvykle je volána `Write Virtualmachines`neúspěšná operace.
+3. V položkách protokolu aktivit vyberte operaci, která se nezdařila. Neúspěšná operace se obvykle označuje jako `Write Virtualmachines`.
 4. V pravém podokně přepněte na kartu JSON. V zobrazení protokolu JSON se zobrazí podrobnosti.
 
     ![Protokol aktivit pro virtuální počítač](./media/troubleshoot-vm-environment-creation-failures/vm-activity-log.png)
-5. Podívejte se do protokolu JSON, dokud nenajdete `statusMessage` vlastnost. Poskytuje hlavní chybovou zprávu a podrobněji podrobnější informace, pokud je to možné. Následující kód JSON je příkladem pro základní citované chyby, které jsme si poznamenali dříve v tomto článku.
+5. Vyhledejte protokol JSON, dokud nenajdete vlastnost `statusMessage`. Poskytuje hlavní chybovou zprávu a podrobněji podrobnější informace, pokud je to možné. Následující kód JSON je příkladem pro základní citované chyby, které jsme si poznamenali dříve v tomto článku.
 
     ```json
     "properties": {
@@ -66,7 +66,7 @@ Pokud chcete zobrazit protokol aktivit pro vytvoření prostředí, postupujte p
     ![Protokol aktivity prostředí](./media/troubleshoot-vm-environment-creation-failures/envirionment-activity-log.png)
 
 ## <a name="resource-manager-template-deployment-logs"></a>Protokoly nasazení Správce prostředků šablon
-Pokud se vaše prostředí nebo virtuální počítač vytvořil prostřednictvím automatizace, je k dispozici jedno místo, kde najdete informace o chybě. Toto je Azure Resource Manager protokol nasazení šablony. Při vytvoření prostředku testovacího prostředí prostřednictvím automatizace se často provádí pomocí nasazení Azure Resource Manager šablon. Příklady[https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates) šablon Azure Resource Manager, které vytvářejí prostředky DevTest Labs, najdete v tématu.
+Pokud se vaše prostředí nebo virtuální počítač vytvořil prostřednictvím automatizace, je k dispozici jedno místo, kde najdete informace o chybě. Toto je Azure Resource Manager protokol nasazení šablony. Při vytvoření prostředku testovacího prostředí prostřednictvím automatizace se často provádí pomocí nasazení Azure Resource Manager šablon. Ukázkové šablony Azure Resource Manager, které vytvářejí prostředky DevTest Labs, najdete v tématu[https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates) .
 
 Chcete-li zobrazit protokoly nasazení šablon testovacího prostředí, postupujte takto:
 

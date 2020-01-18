@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 8d099d0b8f8e31bf77f5ddfad320ac792c5c01e5
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: f3a1bf518b8ef122e2df64f2815c8885929b127d
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529605"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166790"
 ---
 # <a name="import-data-module"></a>Importovat data modul
 
@@ -27,7 +27,7 @@ Pomocí tohoto modulu můžete načíst data do kanálu strojového učení z ex
 > Po registraci můžete datovou sadu najít v **datových sadách** -> kategorie **Moje datové sady** v rozhraní návrháře. Tento modul je vyhrazený pro uživatele v rámci studia (Classic) pro známé prostředí. 
 >
 
-Nejdřív vyberte zdroj, ze kterého čtete, a dokončete další nastavení. Modul **Import dat** podporuje čtení dat z následujících zdrojů:
+Modul **Import dat** podporuje čtení dat z následujících zdrojů:
 
 - Adresa URL prostřednictvím protokolu HTTP
 - Cloudové úložiště Azure přes [**úložiště dat**](../how-to-access-data.md))

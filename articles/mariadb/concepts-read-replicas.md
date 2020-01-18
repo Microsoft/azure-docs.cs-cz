@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/03/2019
-ms.openlocfilehash: 7e63afee87d69a80a656ba7c5923b6f313268e2f
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/16/2020
+ms.openlocfilehash: 41b5d7519776ca84cf002d463048eb7a8dec2410
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790455"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169151"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Repliky pro čtení ve službě Azure Database for MariaDB
 
@@ -108,7 +108,7 @@ Pokud se rozhodnete zastavit replikaci do repliky, ztratíte všechny odkazy na 
 
 Přečtěte si, jak [zastavit replikaci do repliky](howto-read-replicas-portal.md).
 
-## <a name="considerations-and-limitations"></a>Doporučení a omezení
+## <a name="considerations-and-limitations"></a>Důležité informace a omezení
 
 ### <a name="pricing-tiers"></a>Cenové úrovně
 
@@ -137,7 +137,7 @@ Pokud zastavíte replikaci mezi hlavním serverem a replikou pro čtení, zastav
 
 ### <a name="deleted-master-and-standalone-servers"></a>Odstraněné hlavní a samostatné servery
 
-Při odstranění hlavního serveru se replikace zastaví na všechny repliky čtení. Tyto repliky se stanou samostatnými servery. Samotný hlavní server je odstraněný.
+Při odstranění hlavního serveru se replikace zastaví na všechny repliky čtení. Tyto repliky se automaticky změní na samostatné servery a můžou přijímat operace čtení i zápisu. Samotný hlavní server je odstraněný.
 
 ### <a name="user-accounts"></a>Uživatelské účty
 

@@ -1,6 +1,6 @@
 ---
-title: Distribuované spolupráce na vývoji zdrojů službě Azure DevTest Labs | Dokumentace Microsoftu
-description: Poskytuje osvědčené postupy pro nastavení prostředí pro vývoj distribuovaných a spolupráci vypracovává materiály DevTest Labs.
+title: Distribuované vývojové prostředí pro Azure DevTest Labs prostředky
+description: Poskytuje osvědčené postupy pro nastavení distribuovaného prostředí pro vývoj a spolupráci pro vývoj prostředků DevTest Labs.
 services: devtest-lab,lab-services
 documentationcenter: na
 author: spelluru
@@ -11,55 +11,55 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/10/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 8ffc8ed3f84284ff69e9515cba0982790b823a37
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 9469591b1945adaffca973828d619d5d06655262
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543771"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170109"
 ---
-# <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Osvědčené postupy pro vývoj distribuovaných a spolupráci zdrojů službě Azure DevTest Labs
-Distribuované spolupráce na vývoji umožňuje různé týmy nebo osoby pro vývoj a údržbu základní kód. K dosažení úspěchu procesu vývoje závisí na schopnost vytvářet, sdílet a integrovat informace. Tento princip vývoje klíče je možné v rámci Azure DevTest Labs. Existuje několik typů prostředků v rámci testovacího prostředí, které jsou obvykle rozdělena mezi různé testovací prostředí v rámci organizace. Různé typy prostředků se zaměřuje na dvě oblasti:
+# <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Osvědčené postupy pro distribuování a spolupráci s vývojem Azure DevTest Labsch prostředků
+Distribuovaný vývoj pro spolupráci umožňuje různým týmům nebo lidem vyvíjet a udržovat základ kódu. Aby byl proces vývoje úspěšný, závisí na možnosti vytváření, sdílení a integraci informací. Tento klíčový princip vývoje lze použít v rámci Azure DevTest Labs. V rámci testovacího prostředí je několik typů prostředků, které jsou často distribuované mezi různými cvičeními v rámci podniku. Různé typy prostředků jsou zaměřené na dvě oblasti:
 
-- Prostředky, které jsou uloženy interně v rámci testovacího prostředí (založený na prostředí)
-- Prostředky, které jsou uloženy v [externí úložiště, které jsou připojeny k testovacím prostředí](devtest-lab-add-artifact-repo.md) (kódu na základě úložiště). 
+- Prostředky, které jsou interně uloženy v rámci testovacího prostředí (založené na testovacím prostředí)
+- Prostředky, které jsou uloženy v [externích úložištích, které jsou připojeny k testovacímu prostředí](devtest-lab-add-artifact-repo.md) (založené na úložišti kódu). 
 
-Tento dokument popisuje některé osvědčené postupy, které umožňují spolupráci a distribuci napříč několika týmy přitom zajistit přizpůsobení a kvalitu na všech úrovních.
+Tento dokument popisuje některé osvědčené postupy, které umožňují spolupráci a distribuci napříč několika týmy a současně zajišťuje přizpůsobení a kvalitu na všech úrovních.
 
-## <a name="lab-based-resources"></a>Testovací prostředí podle prostředků
+## <a name="lab-based-resources"></a>Prostředky založené na testovacím prostředí
 
-### <a name="custom-virtual-machine-images"></a>Vlastní Image virtuálních počítačů
-Můžete mít společný zdroj vlastních imagí, které jsou nasazené do testovacích prostředí přes noc. Podrobné informace najdete v tématu [objekt pro vytváření bitové kopie](image-factory-create.md).    
+### <a name="custom-virtual-machine-images"></a>Vlastní image virtuálních počítačů
+Můžete mít společný zdroj vlastních imagí, které jsou nasazené na cvičení na noční bázi. Podrobné informace najdete v tématu [objekt pro vytváření imagí](image-factory-create.md).    
 
-### <a name="formulas"></a>Vzorce
-[Vzorce](devtest-lab-manage-formulas.md) jsou specifické pro testovací prostředí a nemáte mechanismus distribuce. Členové testovacího prostředí provádět všechny vývoj vzorce. 
+### <a name="formulas"></a>vzorce
+[Vzorce](devtest-lab-manage-formulas.md) jsou specifické pro testovací prostředí a nemají distribuční mechanismus. Členové testovacího prostředí mají všechny vývojové vzorce. 
 
-## <a name="code-repository-based-resources"></a>Prostředky založené na úložiště kódu
-Existují dva různé funkce, které jsou založeny na úložiště kódu, artefakty a prostředí. Tento článek prochází přes prvky a efektivní nastavení úložiště a pracovní postup umožňuje přizpůsobit prostředí na úrovni organizace nebo na úrovni týmu a k dispozici artefakty.  Tento pracovní postup je založen na standardní [zdrojového kódu řízení strategii větvení](/azure/devops/repos/tfvc/branching-strategies-with-tfvc?view=azure-devops). 
+## <a name="code-repository-based-resources"></a>Prostředky založené na úložišti kódu
+Existují dvě různé funkce, které jsou založeny na úložištích kódu, artefaktech a prostředích. Tento článek přechází na funkce a jak efektivně nastavit úložiště a pracovní postup, aby bylo možné přizpůsobit dostupné artefakty a prostředí na úrovni organizace nebo týmu.  Tento pracovní postup je založený na standardní [strategii pro větvení správy zdrojového kódu](/azure/devops/repos/tfvc/branching-strategies-with-tfvc?view=azure-devops). 
 
 ### <a name="key-concepts"></a>Klíčové koncepty
-Informace o zdroji artefaktů zahrnuje jejich metadata, skripty. Informace o zdroji pro prostředí obsahuje metadata a šablon Resource Manageru s všechny podpůrné soubory, jako jsou skripty prostředí PowerShell, DSC, skripty, soubory Zip a tak dále.  
+Zdrojové informace pro artefakty zahrnují metadata, skripty. Zdrojové informace pro prostředí zahrnují šablony metadat a Správce prostředků s libovolnými podpůrnými soubory, jako jsou skripty PowerShellu, skripty DSC, soubory zip atd.  
 
 ### <a name="repository-structure"></a>Struktura úložiště  
-Nejběžnější konfigurací pro správu zdrojového kódu (SCC) je nastavení úrovně struktury pro soubory kódu (šablony Resource Manageru, metadata a skripty), které se používají k ukládání v Tato praktická cvičení. Konkrétně vytvořte různých úložištích se budou uchovávat prostředky, které se spravují přes různé úrovně firmy:   
+Nejběžnější konfigurací pro řízení zdrojového kódu (SCC) je nastavení vícevrstvé struktury pro ukládání souborů kódu (Správce prostředků šablon, metadat a skriptů), které se používají v laboratořích. Konkrétně vytvořte různá úložiště pro ukládání prostředků, které jsou spravovány různými úrovněmi firmy:   
 
-- Prostředky pořádaného microsoftem.
-- Obchodní jednotky nebo divize celou prostředky
+- Prostředky pro nejrůznější společnosti.
+- Prostředky obchodní jednotky/oddělení – celá
 - Prostředky specifické pro tým.
 
-Každá z těchto úrovní odkaz na jiném úložišti, ve kterém je musí být produkční kvality v hlavní větvi. [Větví](/azure/devops/repos/git/git-branching-guidance?view=azure-devops) v každém úložišti, které budou platit pro vývoj tyto konkrétní prostředky (artefakty nebo šablony). Tato struktura správně zarovnaná s DevTest Labs, jak můžete snadno připojit více úložišť a několika větví ve stejnou dobu k testovacím prostředím pro organizaci. Název úložiště je součástí uživatelského rozhraní (UI), aby nedocházelo k záměně po stejný název, popis a vydavatele.
+Každá z těchto úrovní odkazuje na jiné úložiště, kde je hlavní větev nutná k produkční kvalitě. [Větve](/azure/devops/repos/git/git-branching-guidance?view=azure-devops) v každém úložišti by byly pro vývoj těchto specifických prostředků (artefakty nebo šablony). Tato struktura je dobře zarovnaná s DevTest Labs, protože můžete snadno propojit více úložišť a více větví současně s laboratořemi organizace. Název úložiště je obsažen v uživatelském rozhraní (UI), aby nedocházelo k záměně, pokud jsou k dispozici stejné názvy, popis a vydavatel.
      
-Následující diagram znázorňuje dvě úložišť: společnosti úložiště, který je spravován oddělení IT a dělení úložiště udržuje dělení výzkum a vývoj.
+Následující diagram ukazuje dvě úložiště: firemní úložiště, které je udržováno oddělením IT, a prostorové úložiště, které je udržováno v rámci oddílu R & D.
 
-![Ukázka distributivních a spolupráci vývojové prostředí](./media/best-practices-distributive-collaborative-dev-env/distributive-collaborative-dev-env.png)
+![Ukázkové a vývojové prostředí pro spolupráci](./media/best-practices-distributive-collaborative-dev-env/distributive-collaborative-dev-env.png)
    
-Tato struktura vrstvami umožňuje vývoj přitom vyšší úroveň kvality v hlavní větvi, zatímco s více úložišť připojené do testovacího prostředí umožňuje větší flexibilitu.
+Tato vrstvená struktura umožňuje vývoj a udržuje vyšší úroveň kvality v hlavní větvi, zatímco když máte víc úložišť připojených k testovacímu prostředí, umožníte větší flexibilitu.
 
-## <a name="next-steps"></a>Další postup    
+## <a name="next-steps"></a>Další kroky    
 Viz následující články:
 
-- Přidání úložiště do testovacího prostředí pomocí [webu Azure portal](devtest-lab-add-artifact-repo.md) nebo prostřednictvím [šablony Azure Resource Manageru](add-artifact-repository.md)
+- Přidání úložiště do testovacího prostředí pomocí [Azure Portal](devtest-lab-add-artifact-repo.md) nebo pomocí [šablony správy prostředků Azure](add-artifact-repository.md)
 - [Artefakty DevTest Labs](devtest-lab-artifact-author.md)
 - [Prostředí DevTest Labs](devtest-lab-create-environment-from-arm.md).

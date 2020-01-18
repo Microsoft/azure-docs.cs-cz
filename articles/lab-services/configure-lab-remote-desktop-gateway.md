@@ -1,5 +1,5 @@
 ---
-title: Konfigurace testovacího prostředí pro použití Brána vzdálené plochy v Azure DevTest Labs | Microsoft Docs
+title: Konfigurace testovacího prostředí pro použití Brána vzdálené plochy v Azure DevTest Labs
 description: Naučte se, jak nakonfigurovat testovací prostředí v Azure DevTest Labs pomocí brány vzdálené plochy, která zajišťuje zabezpečený přístup k testovacím virtuálním počítačům bez nutnosti vystavit port RDP.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 0f879a6389c7a77708e8041dd8b82dc3785679fa
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 88daecdf4490ffd4eef45e6cd664a16f86bad113
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162628"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170287"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Konfigurace testovacího prostředí v Azure DevTest Labs pro použití brány vzdálené plochy
 V Azure DevTest Labs můžete nakonfigurovat bránu vzdálené plochy pro testovací prostředí, aby se zajistil zabezpečený přístup k virtuálním počítačům testovacího prostředí, aniž by bylo nutné vystavit port protokolu RDP. Testovací prostředí poskytuje centrální místo pro uživatele testovacího prostředí pro zobrazení a připojení ke všem virtuálním počítačům, ke kterým mají přístup. Tlačítko **připojit** na stránce **virtuální počítač** vytvoří soubor RDP specifický pro počítač, který můžete otevřít pro připojení k počítači. Připojení RDP můžete dál upravovat a zabezpečovat tak, že testovací prostředí připojíte k bráně vzdálené plochy. 
@@ -39,7 +39,7 @@ Tento přístup je bezpečnější, protože se uživatel testovacího prostřed
 1. Soubor RDP otevřete pomocí upřednostňovaného programu pro připojení RDP. Pamatujte, že ne všechny programy připojení RDP podporují ověřování tokenu. Ověřovací token má datum vypršení platnosti nastavené aplikací Function App. Než vyprší platnost tokenu, vytvořte připojení k virtuálnímu počítači testovacího prostředí.
 1. Jakmile počítač brány vzdálené plochy ověří token v souboru RDP, připojení se přepošle do vašeho testovacího počítače.
 
-### <a name="solution-requirements"></a>Požadavky řešení
+### <a name="solution-requirements"></a>Požadavky na řešení
 Pro práci s funkcí ověřování tokenů DevTest Labs existuje několik požadavků na konfiguraci pro počítače brány, službu DNS (Domain Name Services) a funkce.
 
 ### <a name="requirements-for-remote-desktop-gateway-machines"></a>Požadavky na počítače brány vzdálené plochy
@@ -74,7 +74,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 
 Nakonfigurujte testovací prostředí tak, aby používalo ověřování tokenu pomocí těchto kroků:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
 1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 1. V seznamu cvičení vyberte **testovací prostředí**.
 1. Na stránce testovacího prostředí vyberte **Konfigurace a zásady**.

@@ -2,14 +2,14 @@
 title: Zabezpečení pro instance kontejnerů
 description: Doporučení pro zabezpečení imagí a tajných klíčů pro Azure Container Instances a obecné požadavky na zabezpečení pro jakoukoli platformu kontejneru
 ms.topic: article
-ms.date: 04/29/2019
+ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: b25cb4178ba211ff819ba512c9820165e0efbbf1
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: b5f2c4d9ca80318574e288110fd4ce7f490af00d
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481692"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260493"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Požadavky na zabezpečení pro Azure Container Instances
 
@@ -23,13 +23,17 @@ Tento článek představuje požadavky na zabezpečení při použití Azure Con
 
 ### <a name="use-a-private-registry"></a>Použití privátního registru
 
-Kontejnery se vytváří z imagí uložených v jednom nebo několika úložištích. Tato úložiště můžou patřit do veřejného registru, jako je [Docker Hub](https://hub.docker.com)nebo do privátního registru. Příkladem privátního registru je [Docker Trusted Registry](https://docs.docker.com/datacenter/dtr/2.0/), který je možné nainstalovat místně nebo ve virtuálním privátním cloudu. Můžete také použít cloudové služby privátních kontejnerů registru, včetně [Azure Container Registry](../container-registry/container-registry-intro.md). 
+Kontejnery se vytváří z imagí uložených v jednom nebo několika úložištích. Tato úložiště můžou patřit do veřejného registru, jako je [Docker Hub](https://hub.docker.com)nebo do privátního registru. Příkladem privátního registru je [Docker Trusted Registry](https://docs.docker.com/datacenter/dtr/), který je možné nainstalovat místně nebo ve virtuálním privátním cloudu. Můžete také použít cloudové služby privátních kontejnerů registru, včetně [Azure Container Registry](../container-registry/container-registry-intro.md). 
 
-Veřejně dostupná image kontejneru nezaručuje zabezpečení. Image kontejneru se skládají z více softwarových vrstev a každá vrstva softwaru může mít ohrožení zabezpečení. Aby se snížila hrozba útoků, měli byste ukládat a načítat image z privátního registru, jako je Azure Container Registry nebo Docker Trusted Registry. Kromě poskytování spravovaného privátního registru Azure Container Registry podporuje [ověřování založené na instančních objektech](../container-registry/container-registry-authentication.md) prostřednictvím Azure Active Directory pro toky základního ověřování. Toto ověřování zahrnuje přístup na základě rolí pro oprávnění ke čtení (vyžádání obsahu), zápis (push) a vlastníka.
+Veřejně dostupná image kontejneru nezaručuje zabezpečení. Image kontejneru se skládají z více softwarových vrstev a každá vrstva softwaru může mít ohrožení zabezpečení. Aby se snížila hrozba útoků, měli byste ukládat a načítat image z privátního registru, jako je Azure Container Registry nebo Docker Trusted Registry. Kromě poskytování spravovaného privátního registru Azure Container Registry podporuje [ověřování založené na instančních objektech](../container-registry/container-registry-authentication.md) prostřednictvím Azure Active Directory pro toky základního ověřování. Toto ověřování zahrnuje přístup na základě rolí pro čtení (přijetí), zápis (push) a další oprávnění.
 
 ### <a name="monitor-and-scan-container-images"></a>Monitorování a skenování imagí kontejneru
 
-Řešení pro monitorování a kontrolu zabezpečení, jako je [TwistLock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) a [azurová zabezpečení](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) , jsou dostupná prostřednictvím Azure Marketplace. Můžete je použít ke skenování imagí kontejneru v privátním registru a identifikaci potenciálních ohrožení zabezpečení. Je důležité porozumět hloubkám kontroly, které nabízí různá řešení. 
+Využijte výhod řešení ke skenování imagí kontejnerů v privátním registru a identifikaci potenciálních ohrožení zabezpečení. Je důležité pochopit hloubku detekce hrozeb, kterou poskytují různá řešení.
+
+Azure Container Registry například volitelně [integruje s Azure Security Center](../security-center/azure-container-registry-integration.md) , aby automaticky kontrolovala všechny image Linux vložené do registru. Integrovaný Qualys skener s Azure Security Center detekuje slabá místa v obrazech, klasifikuje je a poskytuje pokyny k nápravě.
+
+K dispozici jsou také řešení pro monitorování zabezpečení a kontrolu imagí, jako je [TwistLock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) a [azurová zabezpečení](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) , a to prostřednictvím Azure Marketplace.  
 
 ### <a name="protect-credentials"></a>Ochrana přihlašovacích údajů
 
@@ -90,17 +94,17 @@ Princip nejnižších oprávnění je základní osvědčený postup zabezpečen
 
 Potenciální plochu útoku můžete také minimalizovat odebráním nevyužitých nebo zbytečných procesů nebo oprávnění z modulu runtime kontejneru. Privilegované kontejnery jsou spouštěny jako kořenové. Pokud uživatel se zlými úmysly nebo úlohami řídí v privilegovaném kontejneru, bude kontejner v tomto systému spuštěn jako kořenový.
 
-### <a name="whitelist-files-and-executables-that-the-container-is-allowed-to-access-or-run"></a>Soubory seznamu povolených a spustitelné soubory, ke kterým má kontejner povolený přístup nebo spuštění 
+### <a name="preapprove-files-and-executables-that-the-container-is-allowed-to-access-or-run"></a>Předschvalovat soubory a spustitelné soubory, ke kterým má kontejner povolený přístup nebo spustit 
 
-Snížení počtu proměnných nebo neznámých vám pomůže udržet stabilní a spolehlivé prostředí. Omezením kontejnerů tak, aby mohly přistupovat k souborům, které mají přístup k předschváleným nebo povoleným souborům a spustitelným souborům, je prověřená metoda, která omezuje expozici rizik  
+Snížení počtu proměnných nebo neznámých vám pomůže udržet stabilní a spolehlivé prostředí. Omezením kontejnerů tak, aby mohly přistupovat k nebo spustit pouze soubory s předschváleným nebo safelisted soubory a spustitelné soubory, představují prověřenou metodu, která omezuje expozici riziku.  
 
-Je mnohem jednodušší spravovat seznam povolených procesů, když je implementován od začátku. Seznam povolených funkcí poskytuje míru řízení a správy, jak se dozvíte, jaké soubory a spustitelné soubory jsou nutné, aby aplikace správně fungovala. 
+Je mnohem jednodušší spravovat Safelist, když je implementována od začátku. Safelist poskytuje míru kontroly a správy, protože se dozvíte, jaké soubory a spustitelné soubory jsou nutné, aby aplikace správně fungovala. 
 
-Seznam povolených možností nejen omezuje plochu útoku, ale může také poskytovat základní údaje pro anomálie a zabránit použití scénářů "s vysokou úrovní" a užitečných kontejnerů. 
+Safelist nejen omezuje plochu pro útok, ale může také poskytovat základní údaje pro anomálie a zamezit tak použití scénářů "hlučného souseda" a užitečných kontejnerů. 
 
 ### <a name="enforce-network-segmentation-on-running-containers"></a>Vymáhat segmentaci sítě pro spuštěné kontejnery  
 
-Aby se chránily kontejnery v jedné podsíti před bezpečnostními riziky v jiné podsíti, udržujte segmentaci sítě (nebo nano-segmentace) nebo oddělení mezi běžícími kontejnery. Údržba segmentace sítě může být také nutná pro používání kontejnerů v oborech, které jsou nezbytné pro splnění požadavků dodržování předpisů.  
+Aby se chránily kontejnery v jedné podsíti před bezpečnostními riziky v jiné podsíti, udržujte segmentaci sítě (nebo nano-segmentace) nebo oddělení mezi běžícími kontejnery. Udržování segmentace sítě může být potřeba také k používání kontejnerů v oborech, které jsou nutné pro splnění požadavků dodržování předpisů.  
 
 Například partnerský nástroj [azurová](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) poskytuje automatizovaný přístup pro segmentaci nano. Azurová sleduje síťové aktivity kontejneru v modulu runtime. Identifikuje všechna příchozí a odchozí síťová připojení k jiným kontejnerům, službám, IP adresám a veřejnému Internetu. Nano – segmentace se automaticky vytvoří na základě monitorovaného provozu. 
 
@@ -108,13 +112,13 @@ Například partnerský nástroj [azurová](https://azuremarketplace.microsoft.c
 
 Stejně jako u jakéhokoli IT prostředí byste měli konzistentně sledovat činnost a uživatelský přístup k ekosystému kontejnerů, abyste mohli rychle identifikovat podezřelé nebo škodlivé aktivity. Azure poskytuje řešení pro monitorování kontejnerů, včetně:
 
-* [Azure monitor pro kontejnery](../azure-monitor/insights/container-insights-overview.md) pro monitorování výkonu úloh nasazených do prostředí Kubernetes hostovaných ve službě Azure Kubernetes Service (AKS). Azure Monitor pro kontejnery vám poskytne přehled o výkonu shromažďováním paměti a procesoru metriky z řadiče, uzly a kontejnerů, které jsou k dispozici v Kubernetes prostřednictvím rozhraní API metrik. 
+* [Azure monitor for Containers](../azure-monitor/insights/container-insights-overview.md) monitoruje výkon úloh nasazených do prostředí Kubernetes hostovaných ve službě Azure Kubernetes Service (AKS). Azure Monitor pro kontejnery vám poskytne přehled o výkonu shromažďováním paměti a procesoru metriky z řadiče, uzly a kontejnerů, které jsou k dispozici v Kubernetes prostřednictvím rozhraní API metrik. 
 
-* [Řešení Azure Container monitoring](../azure-monitor/insights/containers.md) vám pomůže zobrazit a spravovat další hostitele kontejnerů Docker a Windows v jednom umístění. Příklad:
+* [Řešení Azure Container monitoring](../azure-monitor/insights/containers.md) vám pomůže zobrazit a spravovat další hostitele kontejnerů Docker a Windows v jednom umístění. Například:
 
   * Zobrazí podrobné informace o auditu, které zobrazují příkazy používané s kontejnery. 
   * Řešení potíží s kontejnery zobrazením a prohledáváním centralizovaných protokolů bez nutnosti vzdáleného zobrazení hostitelů Docker nebo Windows.  
-  * Najděte kontejnery, které mohou být v hostiteli na vysokou úroveň a spotřebovávají nadměrné prostředky.
+  * Najděte kontejnery, které mohou být v hostiteli vysokou úrovní šumu a využívají nadměrné prostředky.
   * Zobrazit centralizované informace o využití procesoru, paměti, úložiště a sítě a informace o výkonu pro kontejnery.  
 
   Řešení podporuje orchestrace kontejnerů včetně Docker Swarm, DC/OS, nespravovaných Kubernetes, Service Fabric a Red Hat OpenShift. 
@@ -125,14 +129,18 @@ Monitorujte své aktivity prostředků, jako jsou soubory, sítě a další pros
 
 [Azure monitor](../azure-monitor/overview.md) umožňuje základní monitorování služeb Azure tím, že umožňuje shromažďování metrik, protokolů aktivit a diagnostických protokolů. Pomocí protokolu aktivit lze například zjistit, kdy se nové prostředky vytvořily nebo změnily. 
 
-Jsou dostupné metriky, které poskytují statistiky o výkonu různých prostředků a dokonce i operačního systému ve virtuálním počítači. Tato data můžete na webu Azure Portal zobrazit pomocí některého z průzkumníků a na základě těchto metrik můžete vytvářet upozornění. Azure Monitor poskytuje nejrychlejší kanál metrik (5 minut dolů na 1 minutu), takže byste ho měli používat pro časově kritické výstrahy a oznámení. 
+  Jsou dostupné metriky, které poskytují statistiky o výkonu různých prostředků a dokonce i operačního systému ve virtuálním počítači. Tato data můžete na webu Azure Portal zobrazit pomocí některého z průzkumníků a na základě těchto metrik můžete vytvářet upozornění. Azure Monitor nabízí nejrychlejší kanál metrik (zkrácení z 5 minut na 1 minutu), takže byste ho měli používat pro upozornění a oznámení, která jsou náročná na rychlou odezvu. 
 
 ### <a name="log-all-container-administrative-user-access-for-auditing"></a>Protokolovat všechny přístupy správce kontejneru k auditování 
 
-Udržujte přesnou auditový záznam o přístupu pro správu k ekosystému kontejnerů, registru kontejnerů a imagí kontejnerů. Tyto protokoly mohou být nezbytné pro účely auditování a budou užitečné jako forenzní legitimace po jakémkoli incidentu zabezpečení. K dosažení tohoto účelu můžete použít [Řešení Azure Container monitoring](../azure-monitor/insights/containers.md) . 
+Udržujte přesnou auditový záznam o přístupu pro správu k ekosystému kontejnerů, včetně clusteru Kubernetes, registru kontejnerů a imagí kontejnerů. Tyto protokoly mohou být nezbytné pro účely auditování a budou užitečné jako forenzní legitimace po jakémkoli incidentu zabezpečení. Mezi řešení Azure patří:
+
+* [Integrace služby Azure Kubernetes s Azure Security Center](../security-center/azure-kubernetes-service-integration.md) pro monitorování konfigurace zabezpečení prostředí clusteru a generování doporučení zabezpečení
+* [Řešení Azure Container monitoring](../azure-monitor/insights/containers.md)
+* Protokoly prostředků pro [Azure Container Instances](container-instances-log-analytics.md) a [Azure Container Registry](../container-registry/container-registry-diagnostics-audit-logs.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o správě chyb zabezpečení kontejnerů pomocí řešení z [TwistLock](https://www.twistlock.com/solutions/microsoft-azure-container-security/) a [azurová Security](https://www.aquasec.com/solutions/azure-container-security/).
+* Přečtěte si další informace o použití [Azure Security Center](../security-center/container-security.md) pro detekci hrozeb v reálném čase ve vašich kontejnerových prostředích.
 
-* Přečtěte si další informace o [zabezpečení kontejneru v Azure](https://azure.microsoft.com/resources/container-security-in-microsoft-azure/).
+* Přečtěte si další informace o správě chyb zabezpečení kontejnerů pomocí řešení z [TwistLock](https://www.twistlock.com/solutions/microsoft-azure-container-security/) a [azurová Security](https://www.aquasec.com/solutions/azure-container-security/).

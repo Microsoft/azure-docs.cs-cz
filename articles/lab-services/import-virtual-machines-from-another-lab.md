@@ -1,5 +1,5 @@
 ---
-title: Import virtuálních počítačů z jiného testovacího prostředí v Azure DevTest Labs | Microsoft Docs
+title: Import virtuálních počítačů z jiného testovacího prostředí v Azure DevTest Labs
 description: Naučte se importovat virtuální počítače z jiného testovacího prostředí do aktuálního testovacího prostředí.
 services: devtest-lab, lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 0778759958e70c564779f5493d7cf8b646f6ced0
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d399bede7851b3acc282312994464d06370746e3
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644643"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169477"
 ---
 # <a name="import-virtual-machines-from-another-lab-in-azure-devtest-labs"></a>Import virtuálních počítačů z jiného testovacího prostředí v Azure DevTest Labs
 Tento článek poskytuje informace o tom, jak importovat virtuální počítače z jiného testovacího prostředí do testovacího prostředí.
@@ -62,7 +62,7 @@ Spuštění tohoto skriptu PowerShellu vyžaduje určení zdrojového virtuáln�
 ```
 
 ### <a name="use-powershell-to-import-all-vms-in-the-source-lab"></a>Použití PowerShellu k importování všech virtuálních počítačů ve zdrojovém testovacím prostředí
-Pokud není zadaný zdrojový virtuální počítač, skript automaticky naimportuje všechny virtuální počítače v DevTest Labs.  Příklad:
+Pokud není zadaný zdrojový virtuální počítač, skript automaticky naimportuje všechny virtuální počítače v DevTest Labs.  Například:
 
 ```powershell
 ./ImportVirtualMachines.ps1 -SourceSubscriptionId "<ID of the subscription that contains the source lab>" `

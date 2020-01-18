@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: f0de484d58085f598988589d18495c9a6fe1b374
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1e97ce1655ae35f4986a915a382d456bb8d2ce4b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406142"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167831"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Optimalizujte prostředí Active Directory pomocí řešení kontroly stavu služby Active Directory v Azure Monitor
 
@@ -166,6 +166,17 @@ Po dalším naplánovaném spuštění kontroly stavu každých 7 dnů jsou uved
 2. Pokud se později rozhodnete, že chcete zobrazit ignorovaná doporučení, odeberte všechny soubory IgnoreRecommendations. txt nebo z nich můžete RecommendationIDs odebrat.
 
 ## <a name="ad-health-check-solutions-faq"></a>Nejčastější dotazy k řešení kontroly stavu služby AD
+
+*Jaké kontroly provádí řešení AD Assessment?*
+
+* Následující dotaz ukazuje popis všech aktuálně prováděných kontrol:
+
+```Kusto
+ADAssessmentRecommendation
+| distinct RecommendationId, FocusArea, ActionArea, Recommendation, Description
+| sort by FocusArea,ActionArea, Recommendation
+```
+Výsledky lze exportovat do Excelu pro další kontrolu.
 
 *Jak často se spouští kontroly stavu?*
 

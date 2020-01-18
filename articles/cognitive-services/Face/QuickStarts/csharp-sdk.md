@@ -9,16 +9,16 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 269f2c9a2cf8578438971e8ad75fec1379a21c19
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e305a5634aa0c065342e1873c413039eb734b972
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448186"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165890"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>Rychlý Start: Klientská knihovna pro tvář pro .NET
 
-Začínáme s klientskou knihovnou obličeje pro .NET Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. Služba Face API poskytuje přístup k pokročilým algoritmům pro zjišťování a rozpoznávání lidských plošek na obrázcích.
+Začínáme s klientskou knihovnou obličeje pro .NET Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. Služba Faceer poskytuje přístup k pokročilým algoritmům pro zjišťování a rozpoznávání lidských plošek na obrázcích.
 
 Pomocí klientské knihovny obličeje pro .NET:
 
@@ -317,5 +317,5 @@ V tomto rychlém startu jste zjistili, jak používat knihovnu obličeje pro .NE
 > [!div class="nextstepaction"]
 > [Odkaz na Face API (.NET)](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)
 
-* [Co je Face API?](../overview.md)
+* [Co je služba obličeje?](../overview.md)
 * Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/Face/Program.cs)

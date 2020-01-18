@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 2ba314c814bdc92f62a607e28aefa30372bf297f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757436"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169593"
 ---
 # <a name="configure-the-review-tool"></a>Konfigurace nástroje pro recenze
 
@@ -25,7 +25,7 @@ ms.locfileid: "72757436"
 
 ## <a name="manage-team-and-subteams"></a>Spravovat tým a subtýmy
 
-Na kartě **tým** můžete spravovat svůj tým a subtým &mdash;groups uživatelů, kteří mohou být upozorněni, když se spustí některé [lidské recenze](../review-api.md#reviews) . Můžete mít pouze jeden tým (který vytvoříte při registraci pomocí nástroje pro revizi), ale můžete vytvořit více subtýmů. Správce týmu může pozvat členy, nastavit jejich oprávnění a přiřadit je různým subtýmům.
+Karta **tým** umožňuje spravovat tým a subtým&mdash;skupiny uživatelů, kteří mohou být upozorněni při zahájení určitých [lidských](../review-api.md#reviews) kontrol. Můžete mít pouze jeden tým (který vytvoříte při registraci pomocí nástroje pro revizi), ale můžete vytvořit více subtýmů. Správce týmu může pozvat členy, nastavit jejich oprávnění a přiřadit je různým subtýmům.
 
 ![Kontrola nastavení týmu nástroje](images/settings-2-team.png)
 
@@ -66,7 +66,7 @@ Pokud jste členem více než jednoho subtýmu, můžete mezi těmito seskupení
 
 ## <a name="tags"></a>Značky
 
-Karta **značky** vám umožňuje definovat vlastní značky moderování kromě dvou výchozích značek moderování &mdash;**nezletilá** (**a**) a **isracy** (**r**). Když vytvoříte vlastní značku, bude k dispozici v recenzích vedle výchozích značek. To, které značky se zobrazí v recenzích, můžete změnit přepnutím jejich nastavení viditelnosti.
+**Značky** kartu umožňuje definovat vlastní moderování značky kromě značek moderování dvě výchozí&mdash;**isadult** (**a**) **isracy**  (**r**). Když vytvoříte vlastní značku, bude k dispozici v recenzích vedle výchozích značek. To, které značky se zobrazí v recenzích, můžete změnit přepnutím jejich nastavení viditelnosti.
 
 ![Zobrazení značek, včetně zaškrtávacích políček "je viditelné"](images/tags-4-disable.png)
 
@@ -90,14 +90,14 @@ Vlastní značky můžete odstranit tak, že v seznamu značek vyberete ikonu od
 
 Karta **konektory** vám umožní spravovat vaše konektory, které jsou moduly plug-in pro konkrétní služby, které mohou zpracovávat obsah různými způsoby jako součást [pracovních postupů](../review-api.md#workflows)obsahu.
 
-Výchozí konektor při vytváření pracovního postupu je konektor Content Moderator, který může označovat obsah jako **dospělý** nebo **pikantní**, Hledat vulgární výrazy atd. Můžete ale použít i jiné konektory, pokud máte přihlašovací údaje pro příslušné služby (pro použití konektoru Face API, například budete potřebovat získat [Face API](https://docs.microsoft.com/azure/cognitive-services/face/overview) klíč předplatného).
+Výchozí konektor při vytváření pracovního postupu je konektor Content Moderator, který může označovat obsah jako **dospělý** nebo **pikantní**, Hledat vulgární výrazy atd. Můžete ale použít i jiné konektory, které jsou tady uvedené, pokud máte přihlašovací údaje pro příslušné služby (například pro použití konektoru obličeje, budete potřebovat klíč předplatného pro [obličej](https://docs.microsoft.com/azure/cognitive-services/face/overview) ).
 
 [Nástroj pro kontrolu](./human-in-the-loop.md) zahrnuje následující konektory:
 
-- Rozhraní Emotion API
-- Rozhraní Face API
+- Emotion
+- Tvář
 - Cloudová služba PhotoDNA
-- Rozhraní Text Analytics API
+- Analýza textu
 
 ### <a name="add-a-connector"></a>Přidání konektoru
 

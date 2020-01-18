@@ -1,5 +1,5 @@
 ---
-title: Použití Notification Hubs s jazykem Java
+title: Jak používat Azure Notification Hubs s jazykem Java
 description: Naučte se používat Azure Notification Hubs z back-endu Java.
 services: notification-hubs
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 532ffc7a7393f016f27264b67b4ee5d3e6e5888f
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: d48973cc7c5ed1fc7ae3f96128d488f3f1df3a05
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213204"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263859"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>Použití Notification Hubs z Java
 
@@ -45,7 +45,7 @@ Sada SDK aktuálně podporuje:
 
 ## <a name="sdk-usage"></a>Využití sady SDK
 
-### <a name="compile-and-build"></a>Kompilovat a sestavit
+### <a name="compile-and-build"></a>Kompilace a sestavení
 
 Použití [Maven]
 
@@ -53,7 +53,7 @@ Sestavení:
 
     mvn package
 
-## <a name="code"></a>Kód
+## <a name="code"></a>kód
 
 ### <a name="notification-hub-cruds"></a>CRUD centra oznámení
 
@@ -188,7 +188,7 @@ Rozhraní API pro instalaci je alternativním mechanismem pro správu registrac�
 
 Instalace obsahuje všechno, co potřebujete: kanál push (token zařízení), značky, šablony, sekundární dlaždice (pro WNS a APNS). Službu nemusíte volat, abyste mohli získat ID. můžete tak vygenerovat GUID nebo jakýkoli jiný identifikátor, ponechat ho v zařízení a poslat do back-endu společně s kanálem push (token zařízení).
 
-V back-endu byste měli provést pouze jedno volání `CreateOrUpdateInstallation`. je plně idempotentní, takže v případě potřeby to zkuste znovu.
+V back-endu byste měli provést pouze jedno volání `CreateOrUpdateInstallation`; je plně idempotentní, takže v případě potřeby to zkuste znovu.
 
 Příklad pro službu Amazon Kindle Fire:
 
@@ -221,7 +221,7 @@ Odstranit instalaci:
     hub.deleteInstallation(installation.getInstallationId());
     ```
 
-`CreateOrUpdate`, `Patch` `Get`a `Delete` jsou nakonec konzistentní s. Vaše požadovaná operace při volání přejde do fronty systému a spustí se na pozadí. Operace Get není navržena pro hlavní scénář modulu runtime, ale pouze pro účely ladění a řešení potíží je tato služba pevně omezená.
+`CreateOrUpdate`, `Patch`a `Delete` jsou nakonec konzistentní s `Get`. Vaše požadovaná operace při volání přejde do fronty systému a spustí se na pozadí. Operace Get není navržena pro hlavní scénář modulu runtime, ale pouze pro účely ladění a řešení potíží je tato služba pevně omezená.
 
 Tok odeslání pro instalace je stejný jako u registrací. Chcete-li směrovat oznámení na konkrétní instalaci, stačí použít značku InstallationId: {požadovaného-ID}. V tomto případě kód je:
 
@@ -294,7 +294,7 @@ Je možné, že budete muset provést hromadnou operaci s registracemi. Obvykle 
 
 **Identifikátor URI s podpisem SAS:**
 
- Tato adresa URL je adresa URL souboru objektu BLOB nebo kontejneru objektů BLOB a sady parametrů, jako jsou oprávnění a doba vypršení platnosti, a navíc signatura všech těchto věcí pomocí klíče SAS účtu. Azure Storage Java SDK obsahuje bohatě funkční možnosti včetně vytváření těchto identifikátorů URI. Jako jednoduchá alternativa se podíváme `ImportExportE2E` na třídu testu (z umístění GitHubu), která má základní a kompaktní implementaci podpisového algoritmu.
+ Tato adresa URL je adresa URL souboru objektu BLOB nebo kontejneru objektů BLOB a sady parametrů, jako jsou oprávnění a doba vypršení platnosti, a navíc signatura všech těchto věcí pomocí klíče SAS účtu. Azure Storage Java SDK obsahuje bohatě funkční možnosti včetně vytváření těchto identifikátorů URI. Jako jednoduchá alternativa se podíváme na třídu `ImportExportE2E` test (z umístění GitHubu), která má základní a kompaktní implementaci podpisového algoritmu.
 
 ### <a name="send-notifications"></a>Odeslat oznámení
 
@@ -374,7 +374,7 @@ Spuštění kódu Java by teď mělo vytvořit oznámení na cílovém zařízen
 
 ## <a name="next-steps"></a>Další kroky
 
-Toto téma ukazuje, jak vytvořit jednoduchého klienta Java REST pro Notification Hubs. Tady můžete:
+Toto téma ukazuje, jak vytvořit jednoduchého klienta Java REST pro Notification Hubs. Odsud můžete:
 
 * Stáhněte si úplnou [Java SDK]obsahující celý kód sady SDK.
 * Začněte s ukázkami:

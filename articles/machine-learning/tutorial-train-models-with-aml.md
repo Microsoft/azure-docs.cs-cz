@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: ab407ffbc0e22a2f65436741ce5c7019ac7fc540
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 95e5754c440cc591444df8960fde34de6fc384f0
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533451"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261360"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Kurz: analýza modelů klasifikace imagí pomocí MNIST ručně zapsaných dat a scikit – Naučte se pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -105,7 +105,9 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="create-or-attach-an-existing-compute-target"></a>Vytvořit nebo připojit existující cíl služby COMPUTE
 
-Pomocí Azure Machine Learning výpočetní služby, spravované služby, mohou odborníci na data poučení modely strojového učení v clusterech virtuálních počítačů Azure. Mezi příklady patří virtuální počítače s podporou GPU. V tomto kurzu vytvoříte Azure Machine Learning COMPUTE jako školicí prostředí. Následující kód vytvoří výpočetní clustery za vás, pokud už ve vašem pracovním prostoru neexistují.
+Pomocí Azure Machine Learning výpočetní služby, spravované služby, mohou odborníci na data poučení modely strojového učení v clusterech virtuálních počítačů Azure. Mezi příklady patří virtuální počítače s podporou GPU. V tomto kurzu vytvoříte Azure Machine Learning COMPUTE jako školicí prostředí. Později v tomto kurzu odešlete kód Pythonu, který se bude spouštět na tomto virtuálním počítači. 
+
+Následující kód vytvoří výpočetní clustery za vás, pokud už ve vašem pracovním prostoru neexistují.
 
  **Vytvoření cíle výpočtů trvá asi pět minut.** Pokud je výpočetní prostředek již v pracovním prostoru, kód ho použije a přeskočí proces vytváření.
 
@@ -146,7 +148,7 @@ else:
     print(compute_target.get_status().serialize())
 ```
 
-Nyní máte k dispozici potřebné balíčky a výpočetní prostředky pro trénink modelu v cloudu.
+Nyní máte k dispozici potřebné balíčky a výpočetní prostředky pro trénink modelu v cloudu. 
 
 ## <a name="explore-data"></a>Prozkoumání dat
 
@@ -215,7 +217,7 @@ Nyní máte představu o tom, jak tyto obrázky vypadají, a o očekávaném vý
 
 ## <a name="train-on-a-remote-cluster"></a>Trénování na vzdáleném clusteru
 
-Odešlete úlohu do clusteru pro vzdálené trénování, který jste nastavili dříve.  K odeslání úlohy je potřeba provést:
+Pro tuto úlohu odešlete úlohu, která se má spustit v clusteru vzdáleného školení, který jste nastavili dříve.  K odeslání úlohy je potřeba provést:
 * Vytvoření adresáře
 * Vytvoření trénovacího skriptu
 * Vytvoření objektu odhad

@@ -1,5 +1,5 @@
 ---
-title: Rozpoznávání ploch v obrázku – Face API
+title: Rozpoznávání plošek na obrázku – tvář
 titleSuffix: Azure Cognitive Services
 description: Tato příručka ukazuje, jak použít detekci obličeje k extrakci atributů, jako je pohlaví, věk nebo pozice z daného obrázku.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
-ms.openlocfilehash: 9b66231d995ffb6980ce36852115c571cd102681
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 7070cb3bcd1b519828a750cf4ba6caf7ecb34bbb
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73744279"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169880"
 ---
 # <a name="get-face-detection-data"></a>Získat data o detekci obličeje
 
-Tato příručka ukazuje, jak použít detekci obličeje k extrakci atributů, jako je pohlaví, věk nebo pozice z daného obrázku. Fragmenty kódu v této příručce se napíší C# pomocí klientské knihovny Azure Cognitive Services Face API. Stejné funkce jsou k dispozici prostřednictvím [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+Tato příručka ukazuje, jak použít detekci obličeje k extrakci atributů, jako je pohlaví, věk nebo pozice z daného obrázku. Fragmenty kódu v této příručce se napíší C# pomocí klientské knihovny Azure Cognitive Services Face. Stejné funkce jsou k dispozici prostřednictvím [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
 V této příručce se dozvíte, jak:
 

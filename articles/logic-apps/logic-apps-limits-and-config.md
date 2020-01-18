@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 12/16/2019
-ms.openlocfilehash: 8d34a0905973a8080ee53eeac878432db0c51128
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 96e7cbd09873192d8b73b57cb2b46bf5b7679742
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979072"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263451"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a informace o konfiguraci Azure Logic Apps
 
@@ -153,8 +153,15 @@ Některé operace konektoru provádějí asynchronní volání nebo naslouchán�
 |------|--------------------|---------------------------------------|-------|
 | Velikost zprávy | 100 MB | 200 MB | Pokud chcete tento limit obejít, přečtěte si téma [zpracování velkých zpráv pomocí bloků dat](../logic-apps/logic-apps-handle-large-messages.md). Některé konektory a rozhraní API ale nemusí podporovat blokování nebo ani výchozí omezení. |
 | Velikost zprávy pomocí bloků dat | 1 GB | 5 GB | Toto omezení se vztahuje na akce, které nativně podporují dělení na bloky dat, nebo umožňují povolit v konfiguraci modulu runtime vytváření bloků dat. <p>Pro prostředí integrační služby podporuje modul Logic Apps tento limit, ale konektory mají vlastní meze omezení na modul, například v [referenčních informacích k rozhraní API konektoru Azure Blob Storage](https://docs.microsoft.com/connectors/azureblob/). Další informace najdete v tématu [zpracování velkých zpráv pomocí bloků dat](../logic-apps/logic-apps-handle-large-messages.md). |
-| Omezení pro vyhodnocení výrazu | 131 072 znaků | 131 072 znaků | `@concat()`, `@base64()`, `@string()` výrazy nemohou být delší než tento limit. |
-|||||
+|||||   
+
+#### <a name="character-limits"></a>Omezení znaků
+
+| Name (Název) | Poznámky |
+|------|-------|
+| Omezení pro vyhodnocení výrazu | 131 072 znaků | `@concat()`, `@base64()`, `@string()` výrazy nemohou být delší než tento limit. |
+| Omezení počtu znaků adresy URL žádosti | 32 znaků |
+|||
 
 #### <a name="retry-policy"></a>Zásady opakování
 
@@ -308,7 +315,7 @@ IP adresy, které Azure Logic Apps používá pro příchozí a odchozí volán�
 | Střední Indie | 52.172.157.194, 52.172.184.192, 52.172.191.194, 104.211.73.195 |
 | Střední USA | 13.67.236.76, 40.77.111.254, 40.77.31.87, 104.43.243.39 |
 | Východní Asie | 168.63.200.173, 13.75.89.159, 23.97.68.172, 40.83.98.194 |
-| Východní USA | 137.135.106.54, 40.117.99.79, 40.117.100.228, 137.116.126.165 |
+| USA – východ | 137.135.106.54, 40.117.99.79, 40.117.100.228, 137.116.126.165 |
 | Východ USA 2 | 40.84.25.234, 40.79.44.7, 40.84.59.136, 40.70.27.253 |
 | Francie – střed | 52.143.162.83, 20.188.33.169, 52.143.156.55, 52.143.158.203 |
 | Francie – jih | 52.136.131.145, 52.136.129.121, 52.136.130.89, 52.136.131.4 |
@@ -346,7 +353,7 @@ IP adresy, které Azure Logic Apps používá pro příchozí a odchozí volán�
 | Střední Indie | 52.172.154.168, 52.172.186.159, 52.172.185.79, 104.211.101.108, 104.211.102.62, 104.211.90.169, 104.211.90.162, 104.211.74.145 | 52.172.211.12, 104.211.81.192 - 104.211.81.207, 104.211.98.164, 52.172.212.129 |
 | Střední USA | 13.67.236.125, 104.208.25.27, 40.122.170.198, 40.113.218.230, 23.100.86.139, 23.100.87.24, 23.100.87.56, 23.100.82.16 | 13.89.171.80 - 13.89.171.95, 40.122.49.51, 52.173.245.164, 52.173.241.27 |
 | Východní Asie | 13.75.94.173, 40.83.127.19, 52.175.33.254, 40.83.73.39, 65.52.175.34, 40.83.77.208, 40.83.100.69, 40.83.75.165 | 13.75.36.64 - 13.75.36.79, 23.99.116.181, 52.175.23.169, 13.75.110.131 |
-| Východní USA | 13.92.98.111, 40.121.91.41, 40.114.82.191, 23.101.139.153, 23.100.29.190, 23.101.136.201, 104.45.153.81, 23.101.132.208 | 40.71.11.80 - 40.71.11.95, 40.71.249.205, 191.237.41.52, 40.114.40.132, 40.71.249.139 |
+| USA – východ | 13.92.98.111, 40.121.91.41, 40.114.82.191, 23.101.139.153, 23.100.29.190, 23.101.136.201, 104.45.153.81, 23.101.132.208 | 40.71.11.80 - 40.71.11.95, 40.71.249.205, 191.237.41.52, 40.114.40.132, 40.71.249.139 |
 | Východ USA 2 | 40.84.30.147, 104.208.155.200, 104.208.158.174, 104.208.140.40, 40.70.131.151, 40.70.29.214, 40.70.26.154, 40.70.27.236 | 40.70.146.208 - 40.70.146.223, 52.232.188.154, 104.208.233.100, 104.209.247.23, 52.225.129.144 |
 | Francie – střed | 52.143.164.80, 52.143.164.15, 40.89.186.30, 20.188.39.105, 40.89.191.161, 40.89.188.169, 40.89.186.28, 40.89.190.104 | 40.79.130.208 - 40.79.130.223, 40.89.135.2, 40.89.186.239 |
 | Francie – jih | 52.136.132.40, 52.136.129.89, 52.136.131.155, 52.136.133.62, 52.136.139.225, 52.136.130.144, 52.136.140.226, 52.136.129.51 | 40.79.178.240 - 40.79.178.255, 52.136.133.184, 52.136.142.154 |

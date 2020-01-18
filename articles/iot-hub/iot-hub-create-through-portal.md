@@ -1,123 +1,127 @@
 ---
-title: Vytvoření IoT Hubu pomocí webu Azure portal | Dokumentace Microsoftu
-description: Jak vytvářet, spravovat a odstraňovat Azure IoT hub na webu Azure portal. Obsahuje informace o cenových úrovních, škálování, zabezpečení a konfigurace pro zasílání zpráv.
+title: Vytvoření IoT Hub pomocí Azure Portal | Microsoft Docs
+description: Jak vytvářet, spravovat a odstraňovat centra IoT Azure pomocí Azure Portal. Obsahuje informace o cenových úrovních, škálování, zabezpečení a konfiguraci zpráv.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: robinsh
-ms.openlocfilehash: 6f070462dca6e835504a33014a7ed48e9949f874
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: c43c142b22709d42416b2dd14dfc78812970916a
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67432633"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169615"
 ---
-# <a name="create-an-iot-hub-using-the-azure-portal"></a>Vytvoření IoT hubu pomocí webu Azure portal
+# <a name="create-an-iot-hub-using-the-azure-portal"></a>Vytvoření centra IoT pomocí Azure Portal
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-Tento článek popisuje, jak vytvořit a spravovat pomocí centra IoT hub [webu Azure portal](https://portal.azure.com).
+Tento článek popisuje, jak vytvořit a spravovat centra IoT pomocí [Azure Portal](https://portal.azure.com).
 
-Pokud chcete použít kroky v tomto kurzu, potřebujete předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud chcete použít kroky v tomto kurzu, budete potřebovat předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="change-the-settings-of-the-iot-hub"></a>Změna nastavení služby IoT hub
+## <a name="change-the-settings-of-the-iot-hub"></a>Změna nastavení centra IoT Hub
 
-Nastavení stávající služby IoT hub můžete změnit poté, co je vytvořen z podokna služby IoT Hub.
+Nastavení stávajícího centra IoT Hub můžete změnit po jeho vytvoření z podokna IoT Hub.
 
-![Snímek obrazovky zobrazující nastavení pro službu IoT hub](./media/iot-hub-create-through-portal/iot-hub-settings-panel.png)
+![Snímek obrazovky s nastavením pro Centrum IoT](./media/iot-hub-create-through-portal/iot-hub-settings-panel.png)
 
-Tady jsou některé vlastnosti, které můžete nastavit pro službu IoT hub:
+Tady jsou některé z vlastností, které můžete nastavit pro Centrum IoT:
 
-**Ceny a škálování**: Tato vlastnost slouží k migraci na jinou úroveň nebo nastavit počet služby IoT Hub jednotek. 
+**Ceny a škálování**: tuto vlastnost můžete použít k migraci na jinou úroveň nebo nastavení počtu IoT Hubch jednotek. 
 
-**Monitorování operací**: Zapněte sledování různých kategorií nebo vypnout, jako je například protokolování událostí souvisejících s zpráv typu zařízení cloud nebo zprávy typu cloud zařízení.
+**Monitorování operací**: Zapněte nebo vypněte různé kategorie monitorování, například protokolování událostí souvisejících se zprávami typu zařízení-Cloud nebo zpráv typu cloud-zařízení.
 
-**Filtr IP**: Zadejte rozsah IP adres, které budou přijímat nebo odmítat službou IoT hub.
+**Filtr IP**: zadejte rozsah IP adres, které bude služba IoT Hub přijímat nebo odmítat.
 
-**Vlastnosti**: Poskytuje seznam vlastností, můžete zkopírovat a použít jinde, jako je například ID prostředku, skupiny prostředků, umístění a tak dále.
+**Vlastnosti**: poskytuje seznam vlastností, které můžete zkopírovat a použít jinde, například ID prostředku, skupinu prostředků, umístění atd.
 
 ### <a name="shared-access-policies"></a>Zásady sdíleného přístupu
 
-Můžete také zobrazit nebo upravit seznam zásady sdíleného přístupu kliknutím **zásady sdíleného přístupu** v **nastavení** oddílu. Tyto zásady definovat oprávnění pro zařízení a služby pro připojení ke službě IoT Hub. 
+Seznam zásad sdíleného přístupu můžete taky zobrazit nebo upravit kliknutím na **zásady sdíleného přístupu** v části **Nastavení** . Tyto zásady definují oprávnění pro zařízení a služby pro připojení k IoT Hub. 
 
-Klikněte na tlačítko **přidat** otevřít **přidat zásady sdíleného přístupu** okno.  Můžete zadat nový název zásady a oprávnění, které chcete přidružit k této zásadě, jak je znázorněno na následujícím obrázku:
+Kliknutím na **Přidat** otevřete okno **Přidat zásadu sdíleného přístupu** .  Můžete zadat nový název zásady a oprávnění, která chcete k této zásadě přidružit, jak je znázorněno na následujícím obrázku:
 
-![Snímek obrazovky Přidání zásady sdíleného přístupu](./media/iot-hub-create-through-portal/iot-hub-add-shared-access-policy.png)
+![Snímek obrazovky znázorňující přidání zásady sdíleného přístupu](./media/iot-hub-create-through-portal/iot-hub-add-shared-access-policy.png)
 
-* **Čtení registru** a **zápis do registru** zásady udělovat oprávnění ke čtení a zápis do registru identit. Tato oprávnění používají back endové cloudové služby pro správu identit zařízení. Pokud vyberete možnost zápisu automaticky zvolí možnost čtení.
+* Zásady **čtení** a **zápisu** registru udělují oprávnění ke čtení a zápisu do registru identit. Tato oprávnění využívají back-endové cloudové služby ke správě identit zařízení. Výběr možnosti pro zápis automaticky zvolí možnost čtení.
 
-* **Služba připojit** zásady udělí oprávnění k přístupu koncových bodů služby. Toto oprávnění je použít k odesílání a příjem zpráv ze zařízení a jde o aktualizaci a čtení dvojčat data zařízení dvojčete modulu a back endové cloudové služby.
+* Zásady **služby Connect** udělují oprávnění pro přístup k koncovým bodům služby. Toto oprávnění využívají back-endové cloudové služby k posílání a přijímání zpráv ze zařízení a také k aktualizaci a čtení dvojitě vysílaných dat zařízení a modulu.
 
-* **Zařízení připojit** zásady udělí oprávnění pro odesílání a příjem zpráv pomocí koncových bodů na straně zařízení služby IoT Hub. Toto oprávnění je zařízení použít k odesílání a příjem zpráv ze služby IoT hub, aktualizovat a číst data dvojčete modulu a dvojčete zařízení a provádět nahrávání souborů.
+* Zásady **připojení zařízení** udělují oprávnění k posílání a přijímání zpráv pomocí koncových bodů na straně zařízení IoT Hub. Tato oprávnění používají zařízení k posílání a přijímání zpráv ze služby IoT Hub, k aktualizaci a čtení dvojitě využívaných dat zařízení a k provádění nahrávání souborů.
 
-Klikněte na tlačítko **vytvořit** přidáte tuto nově vytvořenou zásadu do existujícího seznamu.
+Kliknutím na **vytvořit** přidejte tuto nově vytvořenou zásadu do existujícího seznamu.
 
-Podrobné informace o udělení přístupu podle konkrétní oprávnění, najdete v článku [oprávnění služby IoT Hub](./iot-hub-devguide-security.md#iot-hub-permissions).
+Podrobnější informace o přístupu uděleného konkrétními oprávněními najdete v tématu [IoT Hub oprávnění](./iot-hub-devguide-security.md#iot-hub-permissions).
 
-## <a name="message-routing-for-an-iot-hub"></a>Směrování zpráv pro službu IoT hub
+## <a name="register-a-new-device-in-the-iot-hub"></a>Registrace nového zařízení ve službě IoT Hub
 
-Klikněte na tlačítko **směrování zpráv** pod **zasílání zpráv** zobrazíte podokně směrování zpráv, ve kterém můžete definovat trasy a vlastní koncové body pro rozbočovač. [Směrování zpráv](iot-hub-devguide-messages-d2c.md) umožňuje spravovat jak odeslání dat ze zařízení do koncových bodů. Prvním krokem je přidání novou trasu. Potom můžete přidat existující koncový bod na trase, nebo vytvořte novou typy podporované, jako je například úložiště objektů blob. 
+[!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
+
+## <a name="message-routing-for-an-iot-hub"></a>Směrování zpráv pro službu IoT Hub
+
+Kliknutím na **směrování zpráv** v části **zasílání zpráv** zobrazíte podokno směrování zpráv, kde můžete definovat trasy a vlastní koncové body pro centrum. [Směrování zpráv](iot-hub-devguide-messages-d2c.md) umožňuje spravovat, jak se data z vašich zařízení odesílají do koncových bodů. Prvním krokem je přidání nové trasy. Pak můžete přidat existující koncový bod do trasy nebo vytvořit nový z podporovaných typů, jako je třeba úložiště objektů BLOB. 
 
 ![Podokno směrování zpráv](./media/iot-hub-create-through-portal/iot-hub-message-routing.png)
 
 ### <a name="routes"></a>Trasy
 
-Trasy je na první kartě v podokně směrování zpráv. Chcete-li přidat novou trasu, klikněte na tlačítko +**přidat**. Zobrazí se následující obrazovka. 
+Trasy jsou první kartou v podokně směrování zpráv. Pokud chcete přidat novou trasu, klikněte na +**Přidat**. Zobrazí se následující obrazovka. 
 
-![Snímek obrazovky ukazující, přidává se nová cesta.](./media/iot-hub-create-through-portal/iot-hub-add-route-storage-endpoint.png)
+![Snímek obrazovky znázorňující přidání nové trasy](./media/iot-hub-create-through-portal/iot-hub-add-route-storage-endpoint.png)
 
-Pojmenujte svoje centrum. Název musí být jedinečný v rámci seznamu trasy pro daný rozbočovač. 
+Pojmenujte svůj rozbočovač. Název musí být jedinečný v rámci seznamu tras pro toto centrum. 
 
-Pro **koncový bod**, můžete vybrat jednu z rozevíracího seznamu nebo přidat nový. V tomto příkladu účtu úložiště a kontejneru jsou už k dispozici. Chcete-li přidat jako koncový bod, klikněte na tlačítko +**přidat** vedle rozevíracího seznamu koncových bodů a vyberte **úložiště objektů Blob**. Následující obrazovka ukazuje, kde zadaný účet úložiště a kontejner.
+V případě **koncového bodu**můžete vybrat jeden z rozevíracího seznamu nebo přidat nový. V tomto příkladu je už dostupný účet úložiště a kontejner. Pokud je chcete přidat jako koncový bod, klikněte na +**Přidat** vedle rozevíracího seznamu koncových bodů a vyberte **BLOB Storage**. Na následující obrazovce vidíte, kde je zadaný účet úložiště a kontejner.
 
-![Snímek obrazovky přidání koncový bod úložiště pro pravidlo směrování](./media/iot-hub-create-through-portal/iot-hub-routing-add-storage-endpoint.png)
+![Snímek obrazovky znázorňující přidání koncového bodu úložiště pro pravidlo směrování](./media/iot-hub-create-through-portal/iot-hub-routing-add-storage-endpoint.png)
 
-Klikněte na tlačítko **vyberte kontejner** vybrat účet úložiště a kontejner. Pokud jste vybrali těchto polí, vrátí koncový bod. Použít výchozí hodnoty pro zbývající pole a **vytvořit** vytvořte koncový bod pro účet úložiště a přidat ho do pravidla směrování.
+Klikněte na **Vybrat kontejner** a vyberte účet úložiště a kontejner. Když jste tato pole vybrali, vrátí se do podokna koncového bodu. Použijte výchozí hodnoty pro zbytek polí a **vytvořte** pro vytvoření koncového bodu pro účet úložiště a přidejte ho do pravidel směrování.
 
-Pro **zdroj dat**, vyberte zařízení telemetrické zprávy. 
+V případě **zdroje dat**vyberte zprávy telemetrie zařízení. 
 
-V dalším kroku přidáte směrování dotazu. V tomto příkladu, zprávy, které mají aplikaci vlastnost s názvem `level` s hodnotou rovná `critical` jsou směrovány do účtu úložiště.
+Pak přidejte dotaz směrování. V tomto příkladu jsou do účtu úložiště směrovány zprávy, které mají vlastnost aplikace s názvem `level` s hodnotou rovnou `critical`.
 
-![Snímek obrazovky zobrazující uložení nové pravidlo směrování](./media/iot-hub-create-through-portal/iot-hub-add-route.png)
+![Snímek obrazovky, který ukazuje uložení nového pravidla směrování](./media/iot-hub-create-through-portal/iot-hub-add-route.png)
 
-Klikněte na tlačítko **Uložit** uložte pravidlo směrování. Vraťte do podokna směrování zpráv a zobrazí se nové pravidlo směrování.
+Kliknutím na **Uložit** uložte pravidlo směrování. Vrátíte se do podokna směrování zpráv a zobrazí se nové pravidlo směrování.
 
 ### <a name="custom-endpoints"></a>Vlastní koncové body
 
-Klikněte na tlačítko **vlastní koncové body** kartu. Zobrazí všechny vlastní koncové body už vytvořili. Odsud můžete přidat nové koncové body nebo odstranit stávající koncové body. 
+Klikněte na kartu **vlastní koncové body** . Zobrazí se již vytvořené vlastní koncové body. Odsud můžete přidat nové koncové body nebo odstranit existující koncové body. 
 
 > [!NOTE]
-> Pokud odstraníte trasu, neodstraní koncových bodů přiřazené pro danou trasu. Pokud chcete odstranit koncový bod, klikněte na vlastní kartu koncové body, vyberte koncový bod, který chcete odstranit a klikněte na příkaz odstranit.
+> Pokud odstraníte trasu, neodstraní se koncové body přiřazené k této trase. Pokud chcete odstranit koncový bod, klikněte na kartu vlastní koncové body, vyberte koncový bod, který chcete odstranit, a klikněte na Odstranit.
 >
 
-Další informace o vlastních koncových bodech v [Reference – koncové body IoT hubu](iot-hub-devguide-endpoints.md).
+Další informace o vlastních koncových bodech si můžete přečíst v tématu [referenční koncové body centra IoT Hub](iot-hub-devguide-endpoints.md).
 
-Můžete definovat až 10 vlastní koncové body pro službu IoT hub. 
+Pro Centrum IoT můžete definovat až 10 vlastních koncových bodů. 
 
-Úplný příklad, jak používat vlastní koncové body se směrováním najdete v tématu [zpráva směrovací službou IoT Hub](tutorial-routing.md).
+Úplný příklad použití vlastních koncových bodů se směrováním najdete v tématu [směrování zpráv pomocí IoT Hub](tutorial-routing.md).
 
-## <a name="find-a-specific-iot-hub"></a>Najít konkrétní IoT hubu
+## <a name="find-a-specific-iot-hub"></a>Vyhledání konkrétního centra IoT Hub
 
-Tady jsou dva způsoby, jak najít konkrétní služby IoT hub v rámci vašeho předplatného:
+Tady jsou dva způsoby, jak v předplatném najít konkrétní centrum IoT:
 
-1. Pokud je, že prostředek skupiny, ke které patří službě IoT hub, klikněte na tlačítko **skupiny prostředků**, pak vyberte skupinu prostředků ze seznamu. Na obrazovce skupiny prostředků se zobrazí všechny prostředky v této skupině, včetně centra IoT hub. Klikněte na centrum, pro který potřebujete.
+1. Pokud znáte skupinu prostředků, do které Centrum IoT patří, klikněte na **skupiny prostředků**a pak v seznamu vyberte skupinu prostředků. Na obrazovce skupina prostředků se zobrazí všechny prostředky v této skupině, včetně centra IoT. Klikněte na centrum, pro které hledáte.
 
-2. Klikněte na tlačítko **všechny prostředky**. Na **všechny prostředky** podokně je rozevírací seznam s výchozím `All types`. Klikněte na rozevírací seznam, zrušte zaškrtnutí políčka `Select all`. Najít `IoT Hub` a zkontrolujte ji. Klikněte na možnost v rozevíracím seznamu ho zavřete a položky se dá filtrovat, zobrazuje pouze vašeho centra IoT hub.
+2. Klikněte na **Všechny prostředky**. V podokně **všechny prostředky** je rozevírací seznam, který je ve výchozím nastavení `All types`. Klikněte na rozevírací seznam, zrušte `Select all`. Vyhledejte `IoT Hub` a ověřte ji. Kliknutím na rozevírací seznam ho zavřete a položky se vyfiltrují, aby se zobrazily jenom vaše centra IoT.
 
 ## <a name="delete-the-iot-hub"></a>Odstranit centrum IoT
 
-Pokud chcete odstranit centrum Iot, najít IoT hub, kterou chcete odstranit a pak klikněte na tlačítko **odstranit** pod název centra IoT.
+Pokud chcete odstranit centrum IoT, najděte centrum IoT, které chcete odstranit, a potom klikněte na tlačítko **Odstranit** pod názvem služby IoT Hub.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o správě služby Azure IoT Hub na následujících odkazech:
+Pokud chcete získat další informace o správě IoT Hub Azure, postupujte podle těchto odkazů:
 
-* [Směrování zpráv pomocí služby IoT Hub](tutorial-routing.md)
-* [Metriky služby IoT Hub](iot-hub-metrics.md)
+* [Směrování zpráv pomocí IoT Hub](tutorial-routing.md)
+* [IoT Hub metriky](iot-hub-metrics.md)
 * [Monitorování operací](iot-hub-operations-monitoring.md)

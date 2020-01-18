@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 01/14/2020
+ms.date: 01/16/2020
 ms.author: ramkris
-ms.openlocfilehash: b5d4f490f7710824b8382091a1e814f6847766fa
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 1a8040fc397b526b540ce9343baa985cab49e2b4
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945556"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169400"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>Knihovna hromadného prováděcího modulu .NET: informace o stažení 
 
@@ -72,6 +72,10 @@ ms.locfileid: "75945556"
 ### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0-Preview
 
 * Přidání .NET Standard 2,0 jako jedné z podporovaných cílových rozhraní umožňuje, aby knihovna hromadného prováděcího modulu fungovala s aplikacemi .NET Core.
+
+### <a name="a-name188188"></a><a name="1.8.8"/>1.8.8
+
+* Opravili jsme problém na MongoBulkExecutor, který neočekávaně zvýšil velikost dokumentu přidáním odsazení a v některých případech, při překročení limitu maximální velikosti dokumentu.
 
 ### <a name="a-name187187"></a><a name="1.8.7"/>1.8.7
 

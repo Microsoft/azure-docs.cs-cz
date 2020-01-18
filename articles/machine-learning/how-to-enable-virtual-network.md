@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: f1cedd9851e425de1e4b6392d42a11dbf9f92644
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: b647af11e47952656011a06268d4b0f384126ae9
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934390"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263706"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Zabezpečení experimentů s Azure ML a odvození úloh v rámci Azure Virtual Network
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -80,6 +80,22 @@ Pokud chcete použít účet úložiště Azure pro pracovní prostor ve virtuá
 > Výchozí účet úložiště se automaticky zřídí při vytváření pracovního prostoru.
 >
 > U účtů úložiště, které nejsou výchozí, vám parametr `storage_account` ve [funkci`Workspace.create()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) umožňuje zadat vlastní účet úložiště podle ID prostředku Azure.
+
+## <a name="use-azure-data-lake-storage-gen-2"></a>Použít Azure Data Lake Storage Gen 2
+
+Azure Data Lake Storage Gen 2 je sada funkcí pro analýzy velkých objemů dat, která je založená na službě Azure Blob Storage. Dá se použít k ukládání dat používaných ke vzdělávání modelů pomocí Azure Machine Learning. 
+
+Pokud chcete použít Data Lake Storage Gen 2 uvnitř virtuální sítě pracovního prostoru Azure Machine Learning, použijte následující postup:
+
+1. Vytvořte účet Azure Data Lake Storage Gen 2. Další informace najdete v tématu [Vytvoření účtu úložiště Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-quickstart-create-account.md).
+
+1. Pomocí kroků 2-4 v předchozí části použijte [účet úložiště pro váš pracovní prostor](#use-a-storage-account-for-your-workspace)a vložte účet do virtuální sítě.
+
+Pokud používáte Azure Machine Learning s Data Lake Storage Gen 2 v rámci virtuální sítě, postupujte podle následujících pokynů:
+
+* Použijete-li sadu __SDK k vytvoření datové sady__a systém, který spouští kód, není __ve virtuální síti__, použijte parametr `validate=False`. Tento parametr přeskočí ověřování, které se nezdařilo, pokud systém není ve stejné virtuální síti jako účet úložiště. Další informace naleznete v tématu metoda [from_files ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) .
+
+* Při použití Azure Machine Learning výpočetní instance nebo výpočetního clusteru ke školení modelu s datovou sadou se musí nacházet ve stejné virtuální síti jako účet úložiště.
 
 ## <a name="use-a-key-vault-instance-with-your-workspace"></a>Použití instance trezoru klíčů s vaším pracovním prostorem
 

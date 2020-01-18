@@ -1,5 +1,5 @@
 ---
-title: Vytváření a správa virtuálních počítačů v DevTest Labs pomocí Azure CLI | Microsoft Docs
+title: Vytváření a správa virtuálních počítačů v DevTest Labs pomocí Azure CLI
 description: Naučte se používat Azure DevTest Labs k vytváření a správě virtuálních počítačů pomocí Azure CLI.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 7a089eae935fe5ecbf3dd2836d86912d0c63ef84
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: d3cd104e36cb407e9b1b833335869cac2c69d0ec
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773104"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167052"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Vytváření a správa virtuálních počítačů pomocí DevTest Labs pomocí Azure CLI
 Tento rychlý Start vás provede vytvořením, spuštěním, připojením, aktualizací a vyčištěním vývojového počítače ve vašem testovacím prostředí. 
@@ -30,13 +30,13 @@ Než začnete:
 * [Nainstalujte rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). Pokud chcete začít, spusťte příkaz AZ Login za účelem vytvoření připojení k Azure. 
 
 ## <a name="create-and-verify-the-virtual-machine"></a>Vytvořit a ověřit virtuální počítač 
-Před spuštěním příkazů souvisejících s DevTest Labs nastavte příslušný kontext Azure pomocí `az account set` příkazu:
+Před spuštěním příkazů souvisejících s DevTest Labs nastavte příslušný kontext Azure pomocí příkazu `az account set`:
 
 ```azurecli
 az account set --subscription 11111111-1111-1111-1111-111111111111
 ```
 
-Příkaz k vytvoření virtuálního počítače je: `az lab vm create`. Vyžaduje se skupina prostředků pro testovací prostředí, název testovacího prostředí a název virtuálního počítače. Zbytek argumentů se mění v závislosti na typu virtuálního počítače.
+Příkaz k vytvoření virtuálního počítače je následující: `az lab vm create`. Vyžaduje se skupina prostředků pro testovací prostředí, název testovacího prostředí a název virtuálního počítače. Zbytek argumentů se mění v závislosti na typu virtuálního počítače.
 
 Následující příkaz vytvoří image založenou na Windows z místa na trhu Azure. Název bitové kopie je stejný jako při vytváření virtuálního počítače pomocí Azure Portal. 
 
@@ -61,7 +61,7 @@ az lab vm create --lab-name sampleLabName --resource-group sampleLabResourceGrou
 Můžete také vytvořit virtuální počítače založené na vzorcích nastavením parametru pro **typ obrázku** na **vzorec**. Pokud potřebujete pro svůj virtuální počítač zvolit konkrétní virtuální síť, použijte parametry **název virtuální** sítě a **podsítě** . Další informace najdete v tématu [AZ Lab VM Create](/cli/azure/lab/vm#az-lab-vm-create).
 
 ## <a name="verify-that-the-vm-is-available"></a>Ověřte, že je virtuální počítač dostupný.
-`az lab vm show` Pomocí příkazu ověřte, že je virtuální počítač k dispozici před tím, než začnete a připojíte se k němu. 
+Pomocí příkazu `az lab vm show` ověřte, že je virtuální počítač k dispozici před tím, než začnete a připojíte se k němu. 
 
 ```azurecli
 az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup --expand 'properties($expand=ComputeVm,NetworkInterface)' --query '{status: computeVm.statuses[0].displayStatus, fqdn: fqdn, ipAddress: networkInterface.publicIpAddress}'
@@ -81,7 +81,7 @@ Následující příklad příkazu spustí virtuální počítač:
 az lab vm start --lab-name sampleLabName --name sampleVMName --resource-group sampleLabResourceGroup
 ```
 
-Připojení k virtuálnímu počítači: [SSH](../virtual-machines/linux/mac-create-ssh-keys.md) nebo [Vzdálená plocha](../virtual-machines/windows/connect-logon.md).
+Připojte se k virtuálnímu počítači: [SSH](../virtual-machines/linux/mac-create-ssh-keys.md) nebo [Vzdálená plocha](../virtual-machines/windows/connect-logon.md).
 ```bash
 ssh userName@ipAddressOrfqdn 
 ```
@@ -127,13 +127,13 @@ az lab vm apply-artifacts --lab-name  sampleLabName --name sampleVMName  --resou
 
 Chcete-li zobrazit artefakty dostupné ve virtuálním počítači v testovacím prostředí, spusťte následující příkazy.
 
-**Cloud Shell-PowerShell**: Všimněte si použití ovládacího panelu (\`) před $ v $expand (tj. $expand):
+**Cloud Shell-PowerShell**: Všimněte si, že se před znakem $ in $expand (tj. ' $expand) používá znak pro vrácení se změnami (\`):
 
 ```azurecli-interactive
 az lab vm show --resource-group <resourcegroupname> --lab-name <labname> --name <vmname> --expand "properties(`$expand=artifacts)" --query "artifacts[].{artifactId: artifactId, status: status}"
 ```
 
-**Cloud Shell-bash**: Všimněte si použití znaku lomítka (\\) před $ v příkazu. 
+**Cloud Shell-bash**: Všimněte si použití znaku lomítka (\\) před znakem $ v příkazu. 
 
 ```azurecli-interactive
 az lab vm show --resource-group <resourcegroupname> --lab-name <labname> --name <vmname> --expand "properties(\$expand=artifacts)" --query "artifacts[].{artifactId: artifactId, status: status}"
@@ -163,4 +163,4 @@ az lab vm delete --lab-name sampleLabName --name sampleVMName --resource-group s
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Podívejte se na následující obsah: Dokumentace k rozhraní příkazového [řádku Azure pro Azure DevTest Labs](/cli/azure/lab?view=azure-cli-latest). 
+Podívejte se na následující obsah: dokumentace k rozhraní příkazového [řádku Azure pro Azure DevTest Labs](/cli/azure/lab?view=azure-cli-latest). 

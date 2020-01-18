@@ -1,5 +1,5 @@
 ---
-title: Nahlášení využití Azure DevTest Labs napříč několika cvičeními a předplatnými – Azure | Microsoft Docs
+title: Azure DevTest Labs využití napříč několika cvičeními a předplatnými
 description: Naučte se, jak ohlásit Azure DevTest Labs využití napříč několika cvičeními a předplatnými.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -11,18 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2018
+ms.date: 01/16/2020
 ms.author: takamath
-ms.openlocfilehash: 0d930263233056d8fa74ffe6ccb176ee39429121
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 912f510f6380c0ba1eb92b7c485091801123558e
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68829226"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169184"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>Nahlášení využití Azure DevTest Labs napříč několika cvičeními a předplatnými
 
-Většina velkých organizací chce pomocí těchto prostředků sledovat trendy a odlehlé využití prostředků, aby bylo možné s těmito prostředky lépe zefektivnit. Na základě využití prostředků můžou vlastníci testovacího prostředí nebo manažeři přizpůsobit cvičení, aby [vylepšili využití prostředků a náklady](https://docs.microsoft.com/azure/billing/billing-getting-started). V Azure DevTest Labs můžete stáhnout využití prostředků na testovací prostředí, které vám umožní hlubší historický vzhled vzorců používání. Tyto vzorce používání můžou usnadnit změnu v vylepšení efektivity. Většina podniků má individuální využití testovacího prostředí a celkové využití v rámci [více cvičení a](https://docs.microsoft.com/azure/architecture/cloud-adoption/decision-guides/subscriptions/)předplatných. 
+Většina velkých organizací chce pomocí těchto prostředků sledovat trendy a odlehlé využití prostředků, aby bylo možné s těmito prostředky lépe zefektivnit. Na základě využití prostředků můžou vlastníci testovacího prostředí nebo manažeři přizpůsobit cvičení, aby [vylepšili využití prostředků a náklady](https://docs.microsoft.com/azure/billing/billing-getting-started). V Azure DevTest Labs můžete stáhnout využití prostředků na testovací prostředí, které vám umožní hlubší historický vzhled vzorců používání. Tyto vzorce používání můžou usnadnit změnu v vylepšení efektivity. Většina podniků má individuální využití testovacího prostředí a celkové využití v rámci [více cvičení a předplatných](https://docs.microsoft.com/azure/architecture/cloud-adoption/decision-guides/subscriptions/). 
 
 Tento článek popisuje, jak zpracovávat informace o využití prostředků napříč několika cvičeními a předplatnými.
 
@@ -35,7 +35,7 @@ Tato část popisuje, jak exportovat využití prostředků v jednom testovacím
 Než budete moct exportovat využití prostředků DevTest Labs, musíte nastavit účet Azure Storage, aby bylo možné ukládat různé soubory, které obsahují data o využití. Existují dva běžné způsoby, jak spustit Export dat:
 
 * [REST API DevTest Labs](https://docs.microsoft.com/rest/api/dtl/labs/exportresourceusage) 
-* PowerShell AZ. Resource Module [Invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2) s akcí `exportResourceUsage`, ID prostředku testovacího prostředí a potřebné parametry. 
+* PowerShell AZ. Resource Module [Invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2) s akcí `exportResourceUsage`, ID prostředku testovacího prostředí a potřebnými parametry. 
 
     Článek o [exportu nebo odstranění osobních údajů](personal-data-delete-export.md) obsahuje ukázkový skript prostředí PowerShell s podrobnými informacemi o exportovaných datech. 
 
@@ -85,7 +85,7 @@ Pomocí [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)
 
 ## <a name="next-steps"></a>Další kroky
 
-Až se systém nastaví a data se přesunou do dlouhodobého úložiště, další krok se doplní otázkami, které data potřebují k zodpovězení. Příklad: 
+Až se systém nastaví a data se přesunou do dlouhodobého úložiště, další krok se doplní otázkami, které data potřebují k zodpovězení. Například: 
 
 -   Jaké je využití velikosti virtuálního počítače?
 

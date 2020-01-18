@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: d4fd443959604f1a50dffbcb646bbe66fa159f8d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0f2181a388a5329dbc16ce8968da79529b22ea85
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402600"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168179"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Použití řešení Service Map v Azure
 
@@ -27,7 +27,7 @@ Tento článek popisuje podrobnosti o připojování a používání Service Map
 * Agent závislostí nainstalovaný na počítači s Windows nebo na serveru se systémem Linux.
 
 >[!NOTE]
->Pokud jste už nasadili Service Map, můžete teď také zobrazit vaše mapy v Azure Monitor pro virtuální počítače, které obsahují další funkce pro monitorování stavu a výkonu virtuálních počítačů. Další informace najdete v tématu [přehled Azure monitor pro virtuální počítače](../../azure-monitor/insights/vminsights-overview.md). Další informace o rozdílech mezi funkcí Service Map řešení a mapa Azure Monitor pro virtuální počítače najdete v následujících [nejčastějších dotazech](vminsights-faq.md#how-is-azure-monitor-for-vms-map-feature-different-from-service-map).
+>Pokud jste už nasadili Service Map, můžete teď také zobrazit vaše mapy v Azure Monitor pro virtuální počítače, které obsahují další funkce pro monitorování stavu a výkonu virtuálních počítačů. Další informace najdete v tématu [přehled Azure monitor pro virtuální počítače](../../azure-monitor/insights/vminsights-overview.md). Další informace o rozdílech mezi funkcí Service Map řešení a mapa Azure Monitor pro virtuální počítače najdete v následujících [nejčastějších dotazech](../faq.md#azure-monitor-for-vms-preview).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -321,7 +321,7 @@ Vzhledem k tomu, že pro zadaný proces a počítač v zadaném časovém rozsah
 
 ### <a name="connections"></a>Připojení
 
-Metriky připojení se zapisují do nové tabulky v Log Analytics-VMConnection. Tato tabulka poskytuje informace o připojeních pro určitý počítač (příchozí a odchozí). Metriky připojení jsou také vystaveny rozhraním API, která poskytují prostředky pro získání konkrétní metriky během časového intervalu.  Připojení TCP vyplývající z "*přijetí*-změn na naslouchajícím soketu jsou příchozí, zatímco ta vytvořená *připojením*k dané IP adrese a portu jsou odchozí. Směr připojení je reprezentován vlastností Direction, která může být nastavena na hodnotu **příchozí** nebo **odchozí**. 
+Metriky připojení se zapisují do nové tabulky v Log Analytics-VMConnection. Tato tabulka poskytuje informace o připojeních pro určitý počítač (příchozí a odchozí). Metriky připojení jsou také vystaveny rozhraním API, která poskytují prostředky pro získání konkrétní metriky během časového intervalu.  Připojení TCP vyplývající z přijetí na naslouchajícím soketu jsou příchozí, zatímco ta vytvořená připojením k dané IP adrese a portu jsou odchozí. Směr připojení je reprezentován vlastností Direction, která může být nastavena na hodnotu **příchozí** nebo **odchozí**. 
 
 Záznamy v těchto tabulkách jsou generovány z dat hlášených agentem závislosti. Každý záznam představuje pozorování během jednoho minutového časového intervalu. Vlastnost TimeGenerated označuje začátek časového intervalu. Každý záznam obsahuje informace, které identifikují příslušnou entitu, připojení nebo port a také metriky přidružené k dané entitě. V současné době je hlášena pouze síťová aktivita, která se používá pomocí TCP přes IPv4.
 

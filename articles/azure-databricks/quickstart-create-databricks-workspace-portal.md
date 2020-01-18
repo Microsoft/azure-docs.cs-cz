@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: 452efd5c790244ff035f06673342a36522db9580
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: e212c95a827b01485d4bdfdc557e459a92162c88
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889034"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263199"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Rychlý start: Spuštění úlohy Spark job v Azure Databricks pomocí portálu Azure
 
@@ -27,7 +27,7 @@ V tomto rychlém startu použijete Azure Portal k vytvoření pracovního prosto
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com).
+Přihlaste se k [Portálu Azure](https://portal.azure.com).
 
 > [!Note]
 > Tento kurz se nedá provést pomocí **předplatného Azure free zkušební verze**.
@@ -54,11 +54,8 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
     |**Skupina prostředků**     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo použít existující. Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Další informace naleznete v tématu [Přehled skupin prostředků v Azure](../azure-resource-manager/management/overview.md). |
     |**Umístění**     | Vyberte **Západní USA 2**. Další dostupné oblasti najdete v tématu [Dostupné služby Azure podle oblastí](https://azure.microsoft.com/regions/services/).        |
     |**Cenová úroveň**     |  Vyberte si mezi **standardem**, **Premium**nebo **zkušební verzí**. Další informace o těchto úrovních najdete na [stránce s cenami za Databricks](https://azure.microsoft.com/pricing/details/databricks/).       |
-    |**Virtual Network**     |  Vyberte, pokud chcete nasadit Azure Databricks pracovní prostor ve vašem vlastním Virtual Network (VNet). Další informace najdete v tématu [nasazení Azure Databricks ve službě Azure Virtual Network (vkládání virtuální sítě)](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject).        |
 
-    Vyberte **Vytvořit**.
-
-4. Vytvoření pracovního prostoru trvá několik minut. Při vytváření pracovního prostoru můžete zobrazit stav nasazení v části **oznámení**.
+4. Vyberte **zkontrolovat + vytvořit**a pak **vytvořit**. Vytvoření pracovního prostoru trvá několik minut. Při vytváření pracovního prostoru můžete zobrazit stav nasazení v části **oznámení**.
 
     ![Dlaždice nasazení datacihly](./media/quickstart-create-databricks-workspace-portal/databricks-deployment-tile.png "Dlaždice nasazení datacihly")
 
@@ -99,7 +96,7 @@ Pomocí následujících kroků vytvořte v datacihlách Poznámkový blok, nako
 
     ![Vytvoření poznámkového bloku v datacihlech](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-details.png "Vytvoření poznámkového bloku v datacihlech")
 
-    Vyberte **Vytvořit**.
+    Vyberte **Create** (Vytvořit).
 
 3. V tomto kroku vytvoříte datový rámec Spark dataframe s daty o zabezpečení Boston z [Azure Open DataSets](https://azure.microsoft.com/services/open-datasets/catalog/boston-safety-data/#AzureDatabricks)a použijete SQL k dotazování dat.
 

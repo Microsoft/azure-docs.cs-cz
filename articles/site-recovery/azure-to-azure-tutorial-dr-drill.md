@@ -2,21 +2,17 @@
 title: Spuštění postupu zotavení po havárii virtuálního počítače Azure pomocí Azure Site Recovery
 description: Přečtěte si, jak spustit postup zotavení po havárii do sekundární oblasti pro virtuální počítače Azure pomocí služby Azure Site Recovery.
 services: site-recovery
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/14/2019
-ms.author: raynew
+ms.date: 01/16/2020
 ms.custom: mvc
-ms.openlocfilehash: 817a220e36ac250b1d5a5aa90d0bddbfb155cc26
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: b2ce157f0f192135ab0507e4aae4c0a282bda1ea
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091334"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166183"
 ---
-# <a name="run-a-disaster-recovery-drill-to-a-secondary-region-for-azure-vms"></a>Spuštění postupu zotavení po havárii do sekundární oblasti pro virtuální počítače Azure 
+# <a name="run-a-disaster-recovery-drill-to-a-secondary-region-for-azure-vms"></a>Spuštění postupu zotavení po havárii do sekundární oblasti pro virtuální počítače Azure
 
 Služba [Azure Site Recovery](site-recovery-overview.md) přispívá ke strategii provozní kontinuity a zotavení po havárii (BCDR) tím, že zajišťuje provoz a dostupnost obchodních aplikací během plánovaných i neplánovaných výpadků. Site Recovery spravuje a orchestruje zotavení po havárii místních počítačů a virtuálních počítačů Azure, včetně replikace, převzetí služeb při selhání a zotavení.
 
@@ -27,34 +23,34 @@ V tomto kurzu se dozvíte, jak pro virtuální počítač Azure spustit postup z
 > * Spuštění testovacího převzetí služeb při selhání pro jeden virtuální počítač
 
 > [!NOTE]
-> Tento kurz vám pomůže udělat postup zotavení po havárii s minimálními kroky. v případě, že se chcete dozvědět víc o různých aspektech spojených s prováděním postupu zotavení po havárii, včetně informací o sítích, automatizaci nebo řešení potíží, přečtěte si dokumenty v části How to for Azure pro virtuální počítače Azure.
+> Tento kurz vám pomůže udělat si podrobné pokyny pro zotavení po havárii s minimálními kroky. Další informace o různých funkcích týkajících se postupu při zotavení po havárii najdete v dokumentaci k [replikaci](azure-to-azure-how-to-enable-replication.md)virtuálních počítačů Azure, [síťové služby](azure-to-azure-about-networking.md), [automatizaci](azure-to-azure-powershell.md)nebo [řešení potíží](azure-to-azure-troubleshoot-errors.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Před spuštěním testovacího převzetí služeb při selhání doporučujeme ověřit vlastnosti virtuálního počítače, abyste se ujistili, že je vše tak, jak má být.  Přejděte k vlastnostem virtuálního počítače v části **Replikované položky**. V okně **Základy** se zobrazí informace o nastavení a stavu počítačů.
-- **Pro testovací převzetí služeb při selhání doporučujeme použít samostatnou síť virtuálních počítačů Azure**, a ne výchozí síť, kterou jste nastavili při povolování replikace.
-- V závislosti na vašich zdrojových síťových konfiguracích pro každou síťovou kartu můžete volitelně zadat **podsíť, IP adresu, veřejnou IP adresu, skupinu zabezpečení sítě nebo interní Load Balancer** pro připojení k jednotlivým síťovým kartám ve službě COMPUTE & před provedením zotavení po havárii.
+Než se pustíte do tohoto kurzu, podívejte se na následující položky:
 
+- Před spuštěním testovacího převzetí služeb při selhání doporučujeme zkontrolovat vlastnosti virtuálního počítače, abyste se ujistili, že je nakonfigurovaný pro zotavení po havárii. Pokud chcete zobrazit vlastnosti replikace a převzetí služeb při selhání, přejdete na **provozní operace** virtuálního počítače > **zotavení po havárii** > **vlastnosti** .
+- **Pro testovací převzetí služeb při selhání doporučujeme použít samostatnou síť virtuálních počítačů Azure**, a ne výchozí síť, kterou jste nastavili při povolování replikace.
+- V závislosti na vašich zdrojových síťových konfiguracích pro každou síťovou kartu můžete zadat **podsíť**, **soukromou IP adresu**, **veřejnou IP**adresu, **skupinu zabezpečení sítě**nebo **Nástroj pro vyrovnávání zatížení** , aby se k jednotlivým síťovým kartám připojily v rámci nastavení testovacího převzetí služeb při selhání v části **výpočty a síť** .
 
 ## <a name="run-a-test-failover"></a>Spuštění testovacího převzetí služeb při selhání
 
-1. V části **Nastavení** > **Replikované položky** klikněte na ikonu **+ Testovací převzetí služeb při selhání** virtuálního počítače.
+Tento příklad ukazuje, jak použít Recovery Services Trezor k provedení testovacího převzetí služeb při selhání virtuálního počítače.
 
-2. V části **Testovací převzetí služeb při selhání** vyberte bod obnovení, který se má pro převzetí služeb při selhání použít:
-
-    - **Nejnovější**: zpracovává všechna data v Site Recovery a poskytuje nejnižší RTO (cíl doby obnovení).
-    - **Nejnovější zpracovaný**: Vrátí virtuální počítač k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery. Zobrazí se časové razítko. S touto možností se neztrácí žádný čas zpracováním dat, takže poskytuje nízkou plánovanou dobu obnovení (RTO).
-   - **Nejnovější konzistentní vzhledem k aplikacím:** Tato možnost vrátí všechny virtuální počítače k nejnovějšímu bodu obnovení konzistentnímu vzhledem k aplikacím. Zobrazí se časové razítko.
+1. Vyberte trezor a v **položce chráněné položky** > **replikované položky** a vyberte virtuální počítač.
+1. V části **testovací převzetí služeb při selhání**vyberte bod obnovení, který chcete použít pro převzetí služeb při selhání:
+   - **Nejnovější**: zpracovává všechna data v Site Recovery a poskytuje nejnižší RTO (cíl doby obnovení).
+   - **Nejnovější zpracovaný**: Vrátí virtuální počítač k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery. Časové razítko je vidět. S touto možností se nestráví zpracováním dat žádný čas, takže poskytuje nízkou RTO.
+   - **Nejnovější konzistentní vzhledem k aplikacím**: Tato možnost vrátí všechny virtuální počítače k nejnovějšímu konzistentnímu bodu obnovení vzhledem k aplikacím. Časové razítko je vidět.
    - **Vlastní**: převzetí služeb při selhání konkrétním bodem obnovení. Vlastní je dostupná jenom v případě, že převezmete služby při selhání jednoho virtuálního počítače, a ne pro převzetí služeb při selhání s plánem obnovení
+1. Vyberte cílovou virtuální síť Azure, ke které se virtuální počítače Azure v sekundární oblasti připojí po převzetí služeb při selhání.
 
-3. Vyberte cílovou virtuální síť Azure, ke které se připojí virtuální počítače Azure v sekundární oblasti po převzetí služeb při selhání.
+   > [!NOTE]
+   > Pokud jsou nastavení testovacího převzetí služeb při selhání předem nakonfigurovaná pro replikovanou položku, rozevírací nabídka pro výběr virtuální sítě Azure není viditelná.
 
-    > [!NOTE]
-    > Rozevírací seznam pro výběr virtuální sítě Azure nebude viditelný, pokud jsou nastavení testovacího převzetí služeb při selhání předem nakonfigurovaná pro replikovanou položku.
-
-4. Převzetí služeb při selhání spustíte kliknutím na **OK**. Pokud chcete sledovat průběh, kliknutím na virtuální počítač otevřete jeho vlastnosti. Případně můžete kliknout na úlohu **Testovací převzetí služeb při selhání** v části název_trezoru > **Nastavení** > **Úlohy** > **Úlohy Site Recovery**.
-5. Po dokončení převzetí služeb při selhání se replika virtuálního počítače Azure zobrazí na webu Azure Portal v části **Virtuální počítače**. Ujistěte se, že je virtuální počítač spuštěný, má odpovídající velikost a je připojený k odpovídající síti.
-6. Virtuální počítače vytvořené během testovacího převzetí služeb při selhání odstraníte kliknutím na **Vyčistit testovací převzetí služeb při selhání** v replikované položce nebo v plánu obnovení. V části **Poznámky** si zaznamenejte a uložte jakékoli připomínky související s testovacím převzetím služeb při selhání.
+1. Pokud chcete spustit převzetí služeb při selhání, vyberte **OK**. Pokud chcete sledovat průběh z trezoru, klikněte na **sledování** > **Site Recovery úlohy** a vyberte úlohu **testovací převzetí služeb při selhání** .
+1. Po dokončení převzetí služeb při selhání se virtuální počítač Azure repliky zobrazí v **Virtual Machines**Azure Portal. Ujistěte se, že je virtuální počítač spuštěný, má odpovídající velikost a je připojený k odpovídající síti.
+1. Pokud chcete odstranit virtuální počítače vytvořené během testovacího převzetí služeb při selhání, vyberte **vyčistit testovací převzetí služeb při selhání** u replikované položky nebo plánu obnovení. V části **Poznámky** si zaznamenejte a uložte jakékoli připomínky související s testovacím převzetím služeb při selhání.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 7017c3065e41befab6b5d7cdea47e2e3e6720173
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d35c02386b7bcb18781dcbd8c209da43d590868c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928644"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169515"
 ---
 # <a name="support-and-help-options"></a>Podpora a možnosti pomoci
 
@@ -58,17 +58,6 @@ Zákazníci Azure můžou vytvářet a spravovat žádosti o podporu v Azure Por
 * [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Azure Portal pro vládu USA](https://portal.azure.us)
 
-## <a name="post-a-question-to-stack-overflow"></a>Vystavení otázky pro Stack Overflow
-
-Stack Overflow je preferovaným kanálem pro otázky související s vývojem. Je tam, kde jsou členové komunity a členové týmu Microsoftu přímo zapojeni na pomoc při řešení vašich problémů.
-
-Pokud nemůžete najít odpověď na váš problém prostřednictvím služby Search, odešlete novou otázku do Stack Overflow pomocí značek [\[rozpoznávání řeči od společnosti Microsoft pro\]\[speech\]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech).
-
-> [!TIP]
-> Následující příspěvky z Stack Overflow obsahují tipy, jak vytvořit otázky a přidat zdrojový kód. Podle těchto pokynů může pomáhat zvýšit riziko, že členové komunity vyhodnotili a rychle reagují na své otázky:  
-> * [Návody klást dobré otázky?](https://stackoverflow.com/help/how-to-ask)
-> * [Jak vytvořit minimální, úplný a ověřitelný příklad](https://stackoverflow.com/help/mcve)
-
 ## <a name="create-a-github-issue"></a>Vytvoření problému GitHubu
 
 Ukázky se často účtují jako open source. V případě otázek a problémů vytvořte *problém* v příslušném úložišti GitHub. Žádost o získání dat můžete také odeslat. Následující seznam obsahuje odkazy na úložiště ukázek:
@@ -108,6 +97,16 @@ Kterou verzi sady SDK používáte.
  - Pokud nahlásíte chybu pro konkrétní interakci služby, nahlaste identifikátor SessionId a čas (včetně časového pásma) nahlášených incidentů. Identifikátor SessionId je hlášen ve všech zpětných voláních a událostech, které obdržíte.
  - Jakékoli další informace
 
+## <a name="post-a-question-to-stack-overflow"></a>Vystavení otázky pro Stack Overflow
+
+Stack Overflow je preferovaným kanálem pro otázky související s vývojem. Je tam, kde jsou členové komunity a členové týmu Microsoftu přímo zapojeni na pomoc při řešení vašich problémů.
+
+Pokud nemůžete najít odpověď na váš problém prostřednictvím služby Search, odešlete novou otázku do Stack Overflow pomocí značek [\[rozpoznávání řeči od společnosti Microsoft pro\]\[speech\]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech).
+
+> [!TIP]
+> Následující příspěvky z Stack Overflow obsahují tipy, jak vytvořit otázky a přidat zdrojový kód. Podle těchto pokynů může pomáhat zvýšit riziko, že členové komunity vyhodnotili a rychle reagují na své otázky:  
+> * [Návody klást dobré otázky?](https://stackoverflow.com/help/how-to-ask)
+> * [Jak vytvořit minimální, úplný a ověřitelný příklad](https://stackoverflow.com/help/mcve)
 
 ## <a name="uservoice-forum"></a>Fórum UserVoice
 

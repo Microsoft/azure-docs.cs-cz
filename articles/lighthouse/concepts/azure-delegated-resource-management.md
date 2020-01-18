@@ -1,14 +1,14 @@
 ---
 title: Správa delegovaných prostředků Azure
 description: Spravované služby umožňují poskytovatelům služeb prodávat nabídky správy prostředků zákazníkům v Azure Marketplace.
-ms.date: 07/11/2019
+ms.date: 01/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2baa66acb4abc250ff69a1560f1bc6fe9a531ba8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1fc3d95b1becccc014afeb4621d17770a03e38a4
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453629"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263910"
 ---
 # <a name="azure-delegated-resource-management"></a>Správa delegovaných prostředků Azure
 
@@ -38,6 +38,9 @@ V takovém případě funguje Správa delegovaných prostředků v Azure na nejv
    - [Publikování nabídky spravované služby Azure Marketplace](../how-to/publish-managed-services-offers.md) (soukromé nebo veřejné), kterou bude zákazník akceptovat
    - [Nasazení šablony Azure Resource Manager do tenanta zákazníka](../how-to/onboard-customer.md) pro jedno nebo více konkrétních předplatných nebo skupin prostředků
 3. Po zprovoznění zákazníka se oprávnění uživatelé můžou přihlásit k tenantovi poskytovatele služeb a provádět úlohy správy v daném oboru zákazníka na základě přístupu, který jste definovali.
+
+> [!NOTE]
+> Delegování předplatného mezi dvěma klienty v různých cloudech se nepodporuje.
 
 ## <a name="support-for-azure-delegated-resource-management"></a>Podpora správy delegovaných prostředků Azure
 

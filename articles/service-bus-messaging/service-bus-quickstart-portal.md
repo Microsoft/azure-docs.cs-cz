@@ -1,21 +1,21 @@
 ---
-title: Rychlý Start – pomocí Azure Portal vytvořit frontu Service Bus | Microsoft Docs
+title: Vytvoření fronty Service Bus pomocí Azure Portal
 description: V tomto rychlém startu se dozvíte, jak vytvořit frontu Service Bus pomocí Azure Portal. Pak použijete ukázkovou klientskou aplikaci k posílání zpráv a přijímání zpráv z fronty.
 services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/03/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: dc9b8260a8ddde6633bc9215d9efff7aaaa71ad3
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 0c88db652efe54a497af094160fb426be7c43d16
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242383"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260833"
 ---
-# <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Rychlý start: Vytvoření fronty Service Bus pomocí Azure Portal
+# <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Rychlý Start: použití Azure Portal k vytvoření fronty Service Bus
 V tomto rychlém startu se dozvíte, jak odesílat a přijímat zprávy z Service Bus fronty, pomocí [Azure Portal][Azure portal] k vytvoření oboru názvů pro zasílání zpráv a fronty v rámci tohoto oboru názvů a získání přihlašovacích údajů pro autorizaci v tomto oboru názvů. Postup pak ukazuje, jak do této fronty odesílat zprávy a přijímat je z ní pomocí [knihovny .NET Standard](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
@@ -57,7 +57,7 @@ Kód spustíte následovně:
    ```
 3. Přejděte do složky s ukázkou `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveQuickStart\BasicSendReceiveQuickStart`.
 4. Zkopírujte připojovací řetězec a název fronty, který jste získali v části získání přihlašovacích údajů pro správu.
-5.  Na příkazovém řádku zadejte následující příkaz:
+5.  Do příkazového řádku zadejte následující příkaz:
 
     ```
     dotnet build
@@ -82,7 +82,7 @@ Tato část obsahuje další podrobnosti o chování ukázkového kódu.
 
 ### <a name="get-connection-string-and-queue"></a>Získání připojovacího řetězce a fronty
 
-Připojovací řetězec a název fronty jsou předány `Main()` metodě jako argumenty příkazového řádku. Metoda `Main()` deklaruje dvě proměnné řetězce, do kterých se tyto údaje načtou:
+Připojovací řetězec a název fronty jsou předány metodě `Main()` jako argumenty příkazového řádku. Metoda `Main()` deklaruje dvě proměnné řetězce, do kterých se tyto údaje načtou:
 
 ```csharp
 static void Main(string[] args)
@@ -119,7 +119,7 @@ Metoda `Main()` pak spustí asynchronní smyčku zpráv, `MainAsync()`.
 
 ### <a name="message-loop"></a>Smyčka zpráv
 
-Metoda MainAsync () vytvoří klienta fronty s argumenty příkazového řádku, zavolá obslužnou rutinu přijímající zprávy s názvem `RegisterOnMessageHandlerAndReceiveMessages()`a odešle sadu zpráv:
+Metoda MainAsync () vytvoří klienta fronty s argumenty příkazového řádku, zavolá obslužnou rutinu pro příjem zpráv nazvanou `RegisterOnMessageHandlerAndReceiveMessages()`a odešle sadu zpráv:
 
 ```csharp
 static async Task MainAsync(string ServiceBusConnectionString, string QueueName)
@@ -211,7 +211,7 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 > [!NOTE]
 > Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer umožňuje uživatelům připojit se k oboru názvů Service Bus a snadno spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, nebo možnost testovat témata, fronty, odběry, služby Relay, centra oznámení a centra událostí. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste vytvořil obor názvů služby Service Bus a další prostředky potřebné k odesílání a přijímání zpráv z fronty. Další informace o psaní kódu pro posílání a přijímání zpráv najdete v kurzech v části **posílání a přijímání zpráv** . 
 

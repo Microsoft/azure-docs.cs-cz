@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: nitinme
-ms.openlocfilehash: 544ca198b846ca5032bdf400b300ac076d729d88
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 332f33bb4046a9ca9d6abf9bec75f60bb4ca9e32
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834146"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169093"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Co je Azure Cognitive Services?
 
@@ -25,9 +25,9 @@ Azure Cognitive Services jsou dostupná rozhraní API, sady SDK a služby, kter�
 
 |Název služby|Popis služby|
 |:-----------|:------------------|
-|[Počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Počítačové zpracování obrazu")|Služba Počítačové zpracování obrazu poskytuje přístup k pokročilým algoritmům pro zpracování imagí a vracení informací.|
+|[Počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Computer Vision")|Služba Počítačové zpracování obrazu poskytuje přístup k pokročilým algoritmům pro zpracování imagí a vracení informací.|
 |[Custom Vision Service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "Custom Vision Service")|Custom Vision Service umožňuje vytvářet vlastní klasifikátory obrázků.|
-|[Rozhraní API pro rozpoznávání tváře](https://docs.microsoft.com/azure/cognitive-services/face/ "Rozhraní Face API")|Face API poskytuje přístup k pokročilým algoritmům obličeje a umožňuje detekci a rozpoznávání atributů obličeje.|
+|[Rozpoznávání tváře](https://docs.microsoft.com/azure/cognitive-services/face/ "Tvář")| Služba obličeje poskytuje přístup k pokročilým algoritmům obličeje a umožňuje detekci a rozpoznávání atributů obličeje.|
 |[Nástroj pro rozpoznávání formulářů](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/ "Rozpoznávání formulářů") (Preview)|Nástroj pro rozpoznávání formulářů identifikuje a extrahuje páry klíč-hodnota a tabulková data z dokumentů formulářů; pak výstup strukturovaných dat včetně relací v původním souboru.|
 |[Nástroj pro rozpoznávání rukopisu](https://docs.microsoft.com/azure/cognitive-services/ink-recognizer/ "Rozpoznávání rukopisu") (Preview)|Nástroj pro rozpoznávání rukopisu umožňuje rozpoznávat a analyzovat data tahů digitálního inkoustu, tvary a Rukopisný obsah a vytvářet výstupy struktury dokumentů se všemi rozpoznanými entitami.|
 |[Video Indexer](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview "Video Indexer")|Video Indexer vám umožní extrahovat z videa přehledy.|

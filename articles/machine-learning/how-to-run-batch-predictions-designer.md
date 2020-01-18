@@ -5,106 +5,142 @@ description: Naučte se naučit model a nastavit kanál předpovědi dávky pomo
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: tutorial
-ms.reviewer: trbye
-ms.author: trbye
-author: trevorbye
-ms.date: 11/19/2019
+ms.topic: how-to
+ms.author: peterlu
+author: peterclu
+ms.date: 01/13/2020
 ms.custom: Ignite2019
-ms.openlocfilehash: 1e346d2542193ec1880ad0a56bd6afa1b0a46890
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 7a4801e46477165232e7f03184152b6c277c05b6
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122623"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167277"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Spuštění dávkového předpovědi pomocí návrháře Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto postupu se naučíte, jak používat návrháře k učení modelu a nastavení kanálu předpovědi a webové služby Batch. Předpovědi dávek umožňuje průběžné a vyhodnocování vyškolených modelů ve velkých sadách dat, volitelně nakonfigurovaných jako webová služba, která se dá aktivovat z libovolné knihovny HTTP. 
+V tomto článku se naučíte, jak pomocí návrháře vytvořit kanál předpovědi pro dávku. Předpověď dávky umožňuje průběžné hodnocení velkých datových sad na vyžádání pomocí webové služby, kterou lze aktivovat z libovolné knihovny HTTP.
 
-Informace o nastavení služby Batch vyhodnocování pomocí sady SDK najdete v doprovodném [postupu](how-to-use-parallel-run-step.md).
-
-V tomto postupu se naučíte následující úlohy:
+V tomto postupu se naučíte, jak provádět následující úlohy:
 
 > [!div class="checklist"]
-> * Vytvoření experimentu na základním ML v kanálu
-> * Vytvoření parametrizovaného kanálu pro odvození dávky
-> * Ruční správa a spouštění kanálů nebo použití koncového bodu REST
+> * Vytvoření a publikování kanálu odvození dávky
+> * Využití koncového bodu kanálu
+> * Správa verzí koncových bodů
+
+Informace o tom, jak pomocí sady SDK nastavit služby vyhodnocování služby Batch, najdete v doprovodném [postupu](how-to-run-batch-predictions.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
-
-1. Vytvořte [pracovní prostor](tutorial-1st-experiment-sdk-setup.md).
-
-1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com/).
-
-Tento postup předpokládá základní znalosti o vytvoření jednoduchého kanálu v návrháři. Úvodní Úvod k Návrháři dokončíte pomocí tohoto [kurzu](tutorial-designer-automobile-price-train-score.md). 
-
-## <a name="create-a-pipeline"></a>Vytvoření kanálu
-
-Pokud chcete vytvořit kanál pro odvození dávky, budete nejdřív potřebovat experiment strojového učení. Pokud ho chcete vytvořit, přejděte na kartu **Návrhář** v pracovním prostoru a vytvořte nový kanál výběrem možnosti **snadno používané předem připravené moduly** .
-
-![Domovská stránka Návrháře](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-1.png)
-
-Následuje jednoduchý model strojového učení pro demonstrační účely. Tato data jsou registrovanou datovou sadou vytvořenou z dat diabetes otevřených pomocí Azure Open DataSet. V [části postupy](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets) pro registraci datových sad z otevřených datových sad Azure. Data jsou rozdělená na školicí a ověřovací sady a vyškolený rozhodovací strom se vystaví a vyhodnotí skóre. Aby bylo možné vytvořit kanál Inferencing, musí se kanál aspoň jednou spustit. Kliknutím na tlačítko **Spustit** kanál spustíte.
-
-![Vytvoření jednoduchého experimentu](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-2.png)
+Tento postup předpokládá, že už máte školicí kanál. Úvod do návrháře s průvodcem najdete v [části první kurz návrháře](tutorial-designer-automobile-price-train-score.md). 
 
 ## <a name="create-a-batch-inference-pipeline"></a>Vytvoření kanálu odvození dávky
 
-Teď, když je kanál spuštěný, je k dispozici nová možnost pro **spuštění** a **publikování** s názvem **vytvořit odvození kanálu**. Klikněte na rozevírací seznam a vyberte **kanál odvození dávky**.
+Aby bylo možné vytvořit kanál Inferencing, musí být váš školicí kanál aspoň jednou spuštěný.
 
-![Vytvořit kanál odvození dávky](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-5.png)
+1. V pracovním prostoru otevřete kartu **Návrháře** .
 
-Výsledkem je výchozí kanál odvození dávky. Patří sem uzel pro instalaci experimentu s vaším původním kanálem, uzel pro nezpracované data pro bodování a uzel, který bude vyhodnocovat nezpracovaná data oproti původnímu kanálu.
+1. Vyberte kanál školení, který bude modelovat podle modelu, který se má použít k vytvoření předpovědi.
 
-![Výchozí odvozený kanál dávky](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-6.png)
+1. **Spusťte** kanál.
 
-Chcete-li změnit chování procesu dávkového Inferencing, můžete přidat další uzly. V tomto příkladu přidáte uzel pro náhodné vzorkování ze vstupních dat před vyhodnocením. Vytvořte **oddíl a ukázkový** uzel a umístěte ho mezi nezpracovaná data a uzly bodování. Potom kliknutím na **oddíl oddíl a ukázkový** uzel získáte přístup k nastavení a parametrům.
+    ![Spuštění kanálu](./media/how-to-run-batch-predictions-designer/run-training-pipeline.png)
 
-![Nový uzel](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-7.png)
+Teď, když je kanál školení spuštěný, můžete vytvořit kanál odvození dávky.
 
-Parametr *frekvence vzorkování* určuje, v jakém procentu původní sady dat se vybral náhodný vzorek. Toto je parametr, který bude vhodný k častému úpravám, takže ho aktivujete jako parametr kanálu. Parametry kanálu lze změnit za běhu a lze je zadat v objektu datové části při spuštění kanálu z koncového bodu REST. 
+1. Vedle **Spustit**klikněte na Nový rozevírací seznam **vytvořit odvození kanálu**.
 
-Pokud chcete toto pole Povolit jako parametr kanálu, klikněte na tři tečky nad polem a pak klikněte na **Přidat do parametru kanálu**. 
+1. Vyberte **kanál odvození dávky**.
 
-![Ukázková nastavení](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-8.png)
+    ![Vytvořit kanál odvození dávky](./media/how-to-run-batch-predictions-designer/create-batch-inference.png)
+    
+Výsledkem je výchozí kanál odvození dávky. 
 
-Dále zadejte název a výchozí hodnotu parametru. Název bude použit k identifikaci parametru a jeho určení ve volání REST.
+### <a name="add-a-pipeline-parameter"></a>Přidat parametr kanálu
 
-![Parametr kanálu](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-9.png)
+Pokud chcete vytvořit předpovědi pro nová data, můžete buď ručně připojit jinou datovou sadu v tomto zobrazení konceptu kanálu, nebo vytvořit parametr pro datovou sadu. Parametry umožňují změnit chování procesu Batch Inferencing za běhu.
 
-## <a name="deploy-batch-inferencing-pipeline"></a>Nasazení kanálu Batch Inferencing
+V této části vytvoříte parametr DataSet, který určí jinou datovou sadu pro vytvoření předpovědi.
 
-Nyní jste připraveni k nasazení kanálu. Klikněte na tlačítko **nasadit** , které otevře rozhraní pro nastavení koncového bodu. Klikněte na rozevírací seznam a vyberte **Nový PipelineEndpoint**.
+1. Vyberte modul DataSet.
 
-![Nasazení kanálu](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-10.png)
+1. Zobrazí se podokno napravo od plátna. V dolní části podokna vyberte **nastavit jako parametr kanálu**.
+   
+    Zadejte název parametru nebo přijměte výchozí hodnotu.
 
-Zadejte název a volitelný popis koncového bodu. V dolní části uvidíte parametr `sample-rate`, u kterého jste nakonfigurovali výchozí hodnotu 0,8. Až budete připraveni, klikněte na **nasadit**.
+## <a name="publish-your-batch-inferencing-pipeline"></a>Publikování kanálu služby Batch Inferencing
 
-![Koncový bod instalace](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-11.png)
+Teď jste připraveni k nasazení kanálu Inferencing. Tím se kanál nasadí a zpřístupní se ostatním uživatelům, kteří ho budou používat.
 
-## <a name="manage-endpoints"></a>Správa koncových bodů 
+1. Vyberte tlačítko **Publikovat**.
 
-Po dokončení nasazení přejděte na kartu **koncové body** a klikněte na název koncového bodu, který jste právě vytvořili.
+1. V dialogovém okně, které se zobrazí, rozbalte rozevírací seznam pro **PipelineEndpoint**a vyberte **Nový PipelineEndpoint**.
 
-![Odkaz na koncový bod](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-12.png)
+1. Zadejte název koncového bodu a volitelný popis.
 
-Tato obrazovka zobrazuje všechny publikované kanály v rámci konkrétního koncového bodu. Klikněte na svůj kanál Inferencing.
+    V dolní části dialogového okna uvidíte parametr, který jste nakonfigurovali, výchozí hodnotu ID datové sady použité během školení.
 
-![Odvození kanálu](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-13.png)
+1. Vyberte **Publikovat**.
 
-Na stránce Podrobnosti o kanálu najdete detailní historii spuštění a informace o připojovacím řetězci pro váš kanál. Kliknutím na tlačítko **Spustit** vytvoříte ruční spuštění kanálu.
+![Publikování kanálu](./media/how-to-run-batch-predictions-designer/publish-inference-pipeline.png)
 
-![Podrobnosti kanálu](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-14.png)
 
-V instalačním programu můžete zadat popis běhu a změnit hodnotu parametrů kanálu. Tentokrát znovu spusťte kanál Inferencing s vzorkovací frekvencí 0,9. Kliknutím na **Spustit** kanál spustíte.
+## <a name="consume-an-endpoint"></a>Využití koncového bodu
 
-![Spuštění kanálu](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-15.png)
+Nyní máte publikovaný kanál s parametrem DataSet. Kanál bude používat školicí model vytvořený v kanálu školení k určení skóre datové sady, kterou poskytnete jako parametr.
 
-Karta **Spotřeba** obsahuje koncový bod REST pro spuštění vašeho kanálu. Chcete-li provést volání REST, budete potřebovat hlavičku ověřování typu Bearer (OAuth 2,0). Další informace o nastavení ověřování pro váš pracovní prostor a o tom, jak se provádí parametrizované volání REST, najdete v následující [části kurzu](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint) .
+### <a name="submit-a-pipeline-run"></a>Odeslání spuštění kanálu 
+
+V této části nastavíte ruční spuštění kanálu a upravíte parametr kanálu tak, aby vyhodnocena nová data. 
+
+1. Po dokončení nasazení přejdete do oddílu **Endpoints** .
+
+1. Vyberte **koncové body kanálu**.
+
+1. Vyberte název koncového bodu, který jste vytvořili.
+
+![Odkaz na koncový bod](./media/how-to-run-batch-predictions-designer/manage-endpoints.png)
+
+1. Vyberte **publikované kanály**.
+
+    Tato obrazovka zobrazuje všechny publikované kanály publikované v rámci tohoto koncového bodu.
+
+1. Vyberte kanál, který jste publikovali.
+
+    Stránka Podrobnosti o kanálu vám ukáže detailní historii spuštění a informace o připojovacím řetězci pro váš kanál. 
+    
+1. Pokud chcete vytvořit ruční spuštění kanálu, vyberte **Spustit** .
+
+    ![Podrobnosti kanálu](./media/how-to-run-batch-predictions-designer/submit-manual-run.png)
+    
+1. Změňte parametr tak, aby používal jinou datovou sadu.
+    
+1. Vyberte **Spustit** a kanál spusťte.
+
+### <a name="use-the-rest-endpoint"></a>Použití koncového bodu REST
+
+Informace o využívání koncových bodů kanálu a publikovaného kanálu najdete v části **koncové body** .
+
+Koncový bod REST koncového bodu kanálu můžete najít na panelu přehled spuštění. Voláním koncového bodu spotřebováváte jeho výchozí publikovaný kanál.
+
+Publikovaný kanál můžete také využít na stránce **publikované kanály** . Vyberte publikovaný kanál a vyhledejte koncový bod REST. 
+
+![Podrobnosti koncového bodu REST](./media/how-to-run-batch-predictions-designer/rest-endpoint-details.png)
+
+Chcete-li provést volání REST, budete potřebovat hlavičku ověřování typu Bearer (OAuth 2,0). Další informace o nastavení ověřování pro váš pracovní prostor a o tom, jak se provádí parametrizované volání REST, najdete v následující [části kurzu](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint) .
+
+## <a name="versioning-endpoints"></a>Koncové body správy verzí
+
+Návrhář přiřadí verzi každému dalšímu kanálu, který publikujete do koncového bodu. Můžete zadat verzi kanálu, kterou chcete ve volání REST spustit jako parametr. Pokud nezadáte číslo verze, bude Návrhář používat výchozí kanál.
+
+Při publikování kanálu se můžete rozhodnout, že se pro tento koncový bod vytvoří nový výchozí kanál.
+
+![Nastavení výchozího kanálu](./media/how-to-run-batch-predictions-designer/set-default-pipeline.png)
+
+Na kartě **publikované kanály** vašeho koncového bodu můžete také nastavit nový výchozí kanál.
+
+![Nastavení výchozího kanálu](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
 
 ## <a name="next-steps"></a>Další kroky
 

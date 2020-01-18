@@ -1,6 +1,6 @@
 ---
-title: Doručování obsahu zákazníkům | Dokumentace Microsoftu
-description: Toto téma obsahuje přehled, co je součástí doručování obsahu pomocí Azure Media Services.
+title: Doručování obsahu zákazníkům | Microsoft Docs
+description: Toto téma poskytuje přehled toho, co je součástí doručování obsahu pomocí Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,148 +14,148 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 5db2cb983c0c3cd0e2194f7686964d9ec3828d6f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22d98656f42f52f2fba0845fac6f1d210d2cf0bd
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61232265"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264674"
 ---
 # <a name="deliver-content-to-customers"></a>Doručování obsahu zákazníkům
-Při dodáváte streamování nebo vod (Video-on-demand) obsah pro zákazníky, je vaším cílem poskytování vysoce kvalitního videa pro různá zařízení v různých síťových podmínkách.
+Při doručování obsahu streamování nebo videa na vyžádání zákazníkům je vaším cílem doručovat vysoce kvalitní video do různých zařízení v různých síťových podmínkách.
 
-K dosažení tohoto cíle, můžete:
+K dosažení tohoto cíle můžete:
 
-* Kódujte datový proud na datový proud videa s více přenosovými rychlostmi (adaptivní přenosová rychlost). To se postará o kvalitu i síťové podmínky.
-* Pomocí Microsoft Azure Media Services [dynamické balení](media-services-dynamic-packaging-overview.md) a dynamicky znovu zabalte datový proud do různých protokolů. Postará se o streamování na různá zařízení. Služba Media Services podporuje doručování následujících adaptivní přenosové rychlosti streamování technologií: <br/>
-    * **HTTP Live Streaming** (HLS) - přidat "(formát = m3u8-aapl)" cesty "/ Manifest" část adresy URL říct streamování zdrojový server vrátit zpět obsahu HLS za spotřebu na **Apple iOS** nativní zařízení (Další informace, Zobrazit [lokátory](#locators) a [adresy URL](#URLs)),
-    * **MPEG-DASH** -přidat "(format = mpd-time-csf)" cesty "/ Manifest" část adresy URL říct streamování zdrojový server vrátit zpět MPEG-DASH (podrobnosti najdete v tématu [lokátory](#locators) a [adresy URL](#URLs)),
-    * **Technologie Smooth Streaming**.
+* Zakódovat datový proud na datový proud s více přenosovými rychlostmi (adaptivní přenosové rychlosti) Tím se postará o podmínky kvality a sítě.
+* Pomocí Microsoft Azure Media Services [dynamického balení](media-services-dynamic-packaging-overview.md) dynamicky znovu zabalit datový proud do různých protokolů. Tím se postará o streamování na různých zařízeních. Media Services podporuje doručování následujících technologií pro streamování s adaptivní přenosovou rychlostí: <br/>
+    * **Http Live Streaming** (HLS) – přidejte cestu "(Format = M3U8-AAPL)" do části adresy URL "/manifest" a sdělte tak serveru zdroje streamování, aby vracel zpět HLS obsah pro spotřebu na nativních zařízeních **Apple iOS** (podrobnosti najdete v tématu [Lokátory](#locators) a [adresy URL](#URLs)).
+    * **MPEG-spojovník** -přidat "(Format = MPD-Time-CSF)" cesta k části "/manifest" adresy URL, která upozorní server zdroje streamování, aby vrátil zpět hodnotu MPEG-pomlčka (podrobnosti najdete v tématu [Lokátory](#locators) a [adresy URL](#URLs)),
+    * **Smooth Streaming**.
 
 >[!NOTE]
 >Po vytvoření účtu AMS se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno**. Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování, ze kterého chcete streamovat obsah, být ve stavu **Spuštěno**. 
 
-Tento článek obsahuje přehled konceptů důležité doručování obsahu.
+Tento článek obsahuje přehled důležitých konceptů doručování obsahu.
 
-Známé problémy, najdete v části [známé problémy](media-services-deliver-content-overview.md#known-issues).
+Pokud chcete zjistit známé problémy, přečtěte si téma [známé problémy](media-services-deliver-content-overview.md#known-issues).
 
 ## <a name="dynamic-packaging"></a>Dynamické balení
-Při dynamickém balení této služby Media Services nabízí, že můžete doručovat obsah s adaptivní přenosovou rychlostí kódováním MP4 nebo technologie Smooth Streaming ve formátech streamování podporovaných službou Media Services (MPEG-DASH, HLS, technologie Smooth Streaming) aniž byste museli znovu zabalit do těchto formátů streamování. Doporučujeme, abyste doručování obsahu s dynamickým vytvářením paketů.
+Díky dynamickému balení, které Media Services poskytuje, můžete doručovat MP4 s adaptivní přenosovou rychlostí nebo Smooth Streaming kódovaný obsah ve formátech streamování, které podporuje Media Services (MPEG-SPOJOVNÍK, HLS, Smooth Streaming,), aniž byste je museli znovu zabalit do těchto formáty streamování. Doporučujeme doručovat obsah s dynamickým balením.
 
-Abyste mohli využívat výhody dynamického balení, musíte zakódovat váš soubor mezzanine (zdrojový) do sady souborů MP4 s adaptivní přenosovou rychlostí nebo soubory technologie Smooth Streaming s adaptivní přenosovou rychlostí.
+Pokud chcete využít výhod dynamického balení, musíte soubor Mezzanine (zdrojový soubor) zakódovat do sady souborů MP4 s adaptivní přenosovou rychlostí nebo s adaptivní přenosovou rychlostí Smooth Streaming soubory.
 
-S dynamickým vytvářením paketů, ukládáte a platíte za soubory v jednom úložném formátu. Služba Media Services bude sestavovat a dodávat odpovídající odpověď podle vašich požadavků.
+S dynamickým balením ukládáte a platíte soubory v jednom formátu úložiště. Media Services sestaví a zpracuje odpovídající reakci na základě vašich požadavků.
 
-Dynamické balení je k dispozici pro standard a koncové body streamování premium. 
+Dynamické balení je k dispozici pro koncové body streamování Standard a Premium. 
 
 Další informace najdete v tématu [dynamické balení](media-services-dynamic-packaging-overview.md).
 
-## <a name="filters-and-dynamic-manifests"></a>Filtrů a dynamických manifestů
-Můžete definovat filtry pro vaše prostředky pomocí služby Media Services. Tyto filtry se na straně serveru pravidla, které pomůže vašim zákazníkům třeba přehrát určité části videa nebo určete podmnožinu audio a video interpretace, které zařízení vašich zákazníků může zpracovat (ne všechny interpretací, které jsou spojeny s asset). Toto filtrování se dosahuje prostřednictvím *dynamických manifestů* , které vytvářejí, když váš zákazník požaduje pro streamování videa na základě jedné nebo víc zadaných filtrů.
+## <a name="filters-and-dynamic-manifests"></a>Filtry a dynamické manifesty
+Můžete definovat filtry pro prostředky pomocí Media Services. Tyto filtry jsou pravidla na straně serveru, která zákazníkům umožňují provádět akce, jako je například přehrávání konkrétní části videa nebo určení podmnožiny zvukových a video verzí, které zařízení zákazníka může zpracovat (místo všech verzí, které jsou k assetu přidružené). Toto filtrování se dosahuje *dynamickými manifesty* , které se vytvoří, když zákazník požaduje streamování videa na základě jednoho nebo více zadaných filtrů.
 
 Další informace najdete v tématu [filtrů a dynamických manifestů](media-services-dynamic-manifest-overview.md).
 
 ## <a name="a-idlocatorslocators"></a><a id="locators"/>Lokátory
-Chcete-li uživatelům poskytnout adresu URL, která slouží ke streamování nebo stažení vašeho obsahu, musíte nejprve publikujte asset tím, že vytvoříte Lokátor. Lokátor představuje vstupní bod pro přístup k souborům obsaženy v assetu. Služba Media Services podporuje dva typy lokátorů:
+Pokud chcete uživateli poskytnout adresu URL, která se dá použít ke streamování nebo stažení vašeho obsahu, musíte nejdřív publikovat Asset vytvořením lokátoru. Lokátor poskytuje vstupní bod pro přístup k souborům obsaženým v prostředku. Služba Media Services podporuje dva typy lokátorů:
 
-* Lokátory OnDemandOrigin. Ty se používají ke streamování médií (například MPEG-DASH, HLS nebo technologie Smooth Streaming) nebo progresivně stahovat soubory.
-* Lokátory URL sdíleného přístupového podpisu (SAS). Ty se používají ke stahování multimediálních souborů do místního počítače.
+* OnDemandOrigin lokátory. Používají se ke streamování médií (například MPEG-POMLČKy, HLS nebo Smooth Streaming) nebo postupně stahovaných souborů.
+* Lokátory adresy URL sdíleného přístupového podpisu (SAS). Slouží ke stažení mediálních souborů do místního počítače.
 
-*Zásada přístupu* se používá k definování oprávnění (jako jsou čtení, zápisu a seznamu) a doby trvání, pro které má klient přístup pro konkrétní prostředek. Všimněte si, že seznam oprávnění (AccessPermissions.List) by neměl být použité při vytváření Lokátor OnDemandOrigin.
+*Zásady přístupu* slouží k definování oprávnění (například čtení, zápisu a výpis) a doby trvání, ke kterým má klient přístup pro konkrétní prostředek. Všimněte si, že oprávnění list (AccessPermissions. list) by se nemělo používat při vytváření lokátoru OnDemandOrigin.
 
-Lokátory mají datum vypršení platnosti. Na webu Azure portal nastaví datum vypršení platnosti 100 let v budoucnosti pro lokátory.
+Lokátory mají datum vypršení platnosti. Azure Portal nastaví datum vypršení platnosti 100 let v budoucnosti pro lokátory.
 
 > [!NOTE]
-> Pokud jste použili na webu Azure portal k vytvoření lokátorů před březnem 2015, byly tyto lokátory nastavené vyprší za dva roky.
+> Pokud jste použili Azure Portal k vytvoření lokátorů před březen 2015, tyto Lokátory se nastaví tak, aby po dvou letech prošly platností.
 > 
 > 
 
 Pokud chcete aktualizovat datum vypršení platnosti lokátoru, použijte rozhraní [REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) API nebo [.NET](https://go.microsoft.com/fwlink/?LinkID=533259). Upozorňujeme, že při aktualizaci data vypršení platnosti lokátoru SAS se změní adresa URL.
 
-Lokátory nejsou určené ke správě řízení přístupu na uživatele. Pomocí řešení správy digitálních práv (DRM) můžete poskytnout různá přístupová práva pro jednotlivé uživatele. Další informace najdete v tématu [zabezpečení médií](https://msdn.microsoft.com/library/azure/dn282272.aspx).
+Lokátory nejsou určené ke správě řízení přístupu pro jednotlivé uživatele. Pomocí řešení Digital Rights Management (DRM) můžete jednotlivým uživatelům udělit různá přístupová práva. Další informace najdete v tématu [zabezpečení médií](https://msdn.microsoft.com/library/azure/dn282272.aspx).
 
-Když vytvoříte Lokátor, může dojít ke zpoždění 30sekundovém kvůli požadované úložiště a šíření procesy ve službě Azure Storage.
+Při vytváření lokátoru může dojít k prodlevě 30 sekund v důsledku požadovaného úložiště a procesu šíření v Azure Storage.
 
 ## <a name="adaptive-streaming"></a>Adaptivní streamování
-Technologie s adaptivní přenosovou rychlostí povolit aplikací pro přehrávání videa k určení stavu sítě a vybrat z několika přenosových rychlostí. Při komunikaci sítě s zhoršení, že klient může vybrat nižší přenosovou rychlostí, přehrávání může pokračovat v kvalita videa je nižší. Jak vylepšit síťové podmínky, klient může přepnout na vyšší s přenosovou rychlostí s lepší kvalitu videa. Azure Media Services podporuje následující technologie adaptivní přenosové rychlosti: HTTP Live Streaming (HLS), technologie Smooth Streaming a MPEG-DASH.
+Technologie adaptivní přenosové rychlosti umožňují aplikacím přehrávače videa určit podmínky sítě a vybírat z několika přenosových rychlostí. Když se síťová komunikace sníží, může klient vybrat nižší přenosovou rychlost, aby přehrávání mohlo pokračovat s nižší kvalitou videa. Když se zlepší stav sítě, klient může přejít na vyšší přenosovou rychlost s lepší kvalitou videa. Azure Media Services podporuje následující technologie adaptivní přenosové rychlosti: HTTP Live Streaming (HLS), Smooth Streaming a MPEG-POMLČKa.
 
-Uživatelům poskytnout adresy URL pro streamování, nejprve musíte vytvořit lokátor OnDemandOrigin. Vytváření Lokátor obsahuje základní cestu k prostředku, který obsahuje obsah, který chcete Streamovat. Ale abyste mohli Streamovat obsah, musíte upravte tuto cestu další. Pokud chcete vytvořit úplnou adresu URL k souboru manifestu datových proudů, musí zřetězit hodnotu lokátoru cesty a manifest (filename.ism) název souboru. Potom připojte **/Manifest** a příslušném formátu (v případě potřeby) do lokátoru cesty.
+Pokud chcete uživatelům poskytnout adresy URL streamování, musíte nejdřív vytvořit Lokátor OnDemandOrigin. Vytvoření lokátoru vám poskytne základní cestu k assetu, který obsahuje obsah, který chcete streamovat. Abyste ale mohli streamovat tento obsah, musíte tuto cestu dál upravit. Pokud chcete vytvořit úplnou adresu URL souboru manifestu streamování, musíte zřetězit hodnotu cesty lokátoru a název souboru manifestu (filename. ISM). Pak v cestě lokátoru přidejte **/manifest** a odpovídající formát (v případě potřeby).
 
 > [!NOTE]
-> Také můžete Streamovat obsah pomocí připojení SSL. Chcete-li to provést, zkontrolujte, zda že vaší adresy URL pro streamování začínat HTTPS. Všimněte si, že v současné době AMS nepodporuje SSL s použitím vlastních domén.  
+> Svůj obsah můžete streamovat i přes připojení SSL. Pokud to chcete provést, ujistěte se, že vaše adresy URL streamování začínají na HTTPS. Všimněte si, že v současné době AMS nepodporuje protokol SSL s vlastními doménami.  
 > 
 
-Můžete pouze Streamovat přes protokol SSL Pokud koncový bod streamování, ze kterého můžete doručovat obsah byl vytvořen po 10. září 2014. Pokud vaše adresy URL pro streamování jsou založené na koncových bodech streamování vytvořené po 10. září 2014, adresa URL obsahuje "streaming.mediaservices.windows.net." Adresy URL pro streamování, které obsahují "origin.mediaservices.windows.net" (starý formát) nepodporují SSL. Pokud vaše adresa URL používá starý formát a chcete Streamovat přes protokol SSL, vytvořte nový koncový bod streamování. Použití adres URL na základě nového koncového bodu streamování pro streamování vašeho obsahu přes protokol SSL.
+Streamování přes SSL můžete odeslat jenom v případě, že koncový bod streamování, ze kterého dodáváte obsah, byl vytvořen po 10. září 2014. Pokud jsou vaše adresy URL streamování založené na koncových bodech streamování vytvořených po 10. září 2014, adresa URL obsahuje "streaming.mediaservices.windows.net". Adresy URL streamování, které obsahují "origin.mediaservices.windows.net" (starý formát), nepodporují protokol SSL. Pokud je vaše adresa URL ve starém formátu a chcete být schopná streamovat přes SSL, vytvořte nový koncový bod streamování. Použijte adresy URL na základě nového koncového bodu streamování pro streamování obsahu přes SSL.
 
-## <a name="a-idurlsstreaming-url-formats"></a><a id="URLs"/>Streamování formátech adres URL
+## <a name="a-idurlsstreaming-url-formats"></a>formáty adresy URL pro streamování <a id="URLs"/>
 
-### <a name="mpeg-dash-format"></a>Formátu MPEG-DASH
-{streamování koncový bod služby media název účtu name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
+### <a name="mpeg-dash-format"></a>Formát pro MPEG-SPOJOVNÍK
+{streamování názvu koncového bodu – název účtu Media Services}. streamování. MediaServices. Windows. NET/{Locator ID}/{filename}.ism/Manifest (Format = MPD-Time-CSF)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (Format = MPD-Time-CSF)
 
-### <a name="apple-http-live-streaming-hls-v4-format"></a>Formátu Apple HTTP Live Streaming (HLS) V4.
-{streamování koncový bod služby media název účtu name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
+### <a name="apple-http-live-streaming-hls-v4-format"></a>Formát Apple HTTP Live Streaming (HLS) v4
+{streamování názvu koncového bodu – název účtu Media Services}. streamování. MediaServices. Windows. NET/{Locator ID}/{filename}.ism/Manifest (Format = M3U8-AAPL)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (Format = M3U8-AAPL)
 
-### <a name="apple-http-live-streaming-hls-v3-format"></a>Formátu Apple HTTP Live Streaming (HLS) V3
-{streamování koncový bod služby media název účtu name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl-v3)
+### <a name="apple-http-live-streaming-hls-v3-format"></a>Formát Apple HTTP Live Streaming (HLS) V3
+{streamování názvu koncového bodu – název účtu Media Services}. streamování. MediaServices. Windows. NET/{Locator ID}/{filename}.ism/Manifest (Format = M3U8-AAPL-V3)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (Format = M3U8-AAPL-V3)
 
-### <a name="apple-http-live-streaming-hls-format-with-audio-only-filter"></a>Formátu Apple HTTP Live Streaming (HLS) s filtrem pouze se zvukem
-Ve výchozím nastavení, jsou jen zvukové stopy součástí HLS manifestu. To je potřeba Apple Store certifikaci pro mobilní sítě. V takovém případě pokud klient nemá dostatečnou šířku pásma, nebo je připojený prostřednictvím linky 2G připojení, přehrávání se přepne do pouze se zvukem. To pomáhá udržet streamování obsahu bez ukládání do vyrovnávací paměti, ale neexistuje žádná videa. V některých případech může být player ukládání do vyrovnávací paměti upřednostňované nad pouze se zvukem. Pokud chcete odebrat pouze se zvukem sledovat, přidejte **pouze se zvukem = false** na adresu URL.
+### <a name="apple-http-live-streaming-hls-format-with-audio-only-filter"></a>Formát Apple HTTP Live Streaming (HLS) s filtrem pouze zvuku
+Ve výchozím nastavení jsou v manifestu HLS zahrnuty pouze zvukové stopy. To je vyžadováno pro certifikaci Apple Store pro mobilní sítě. V takovém případě, pokud klient nemá dostatečnou šířku pásma nebo je připojený přes připojení 2G, přehrávání přepíná jenom na zvuk. To pomáhá udržet streamování obsahu bez ukládání do vyrovnávací paměti, ale nejedná se o video. V některých scénářích se ukládání do vyrovnávací paměti přehrávače může upřednostnit jenom přes zvuk. Pokud chcete zvuk, který chcete sledovat, odebrat jenom **zvuk = false** , přidejte ho k adrese URL.
 
-http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,audio-only=false)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (Format = M3U8-AAPL-v3, pouze audio = false)
 
-Další informace najdete v tématu [výstupní další funkce podpory dynamické složení manifestu a HLS](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
+Další informace najdete v tématu [Podpora dynamického skládání manifestu a HLS výstup dalších funkcí](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
 
-### <a name="smooth-streaming-format"></a>Formát technologie Smooth Streaming
+### <a name="smooth-streaming-format"></a>Formát Smooth Streaming
 {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest
 
 Příklad:
 
 http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
 
-### <a id="fmp4_v20"></a>Technologie Smooth Streaming 2.0 manifestu (starší verze manifestu)
-Ve výchozím nastavení technologie Smooth Streaming formát manifestu obsahuje značku opakování (r-tag). Některé přehrávače však nepodporují r-tag. Klienti tyto přehrávačích můžete použít formát, který zakáže r-tag:
+### <a id="fmp4_v20"></a>Manifest Smooth Streaming 2,0 (starší manifest)
+Ve výchozím nastavení obsahuje Smooth Streaming formát manifestu značku opakování (značka r). Někteří hráči ale nepodporují značku r. Klienti s těmito hráči můžou používat formát, který zakazuje značku r:
 
-{streamování koncový bod služby media název účtu name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=fmp4-v20)
+{streamování názvu koncového bodu – název účtu Media Services}. streamování. MediaServices. Windows. NET/{Locator ID}/{filename}.ism/Manifest (Format = FMP4-V20)
 
-    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
+    http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
 
 ## <a name="progressive-download"></a>Progresivní stahování
-Progresivní stahování můžete spustit přehrávání médií předtím, než byly staženy celý soubor. Nelze stáhnout postupně .ism * (ismv isma, ismt soubory nebo ismc).
+Při progresivním stahování můžete začít přehrávat média před stažením celého souboru. Nemůžete postupně stahovat soubory. ISM * (ISMV, ISMA, ismt nebo ISMC).
 
-Pokud chcete obsah progresivně stahovat, použijte typu Lokátor OnDemandOrigin. Následující příklad ukazuje adresu URL, která je založená na typu Lokátor OnDemandOrigin:
+Chcete-li postupně stahovat obsah, použijte OnDemandOrigin typ lokátoru. Následující příklad ukazuje adresu URL, která je založena na OnDemandOrigin typu lokátoru:
 
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
 
-Musíte dešifrovat šifrované úložiště prostředky, které chcete Streamovat z původu služby pro progresivní stahování.
+Je nutné dešifrovat všechny prostředky šifrované v úložišti, které chcete streamovat ze služby Origin Service pro progresivní stahování.
 
-## <a name="download"></a>Ke stažení
-Pro stažení vašeho obsahu do klientského zařízení, musíte vytvořit lokátor SAS. Lokátor SAS poskytuje přístup ke kontejneru služby Azure Storage ve kterém se nachází váš soubor. Pokud chcete vytvořit adresu URL pro stažení, budete muset vložit název souboru mezi hostitelem a podpis SAS.
+## <a name="download"></a>Stáhnout
+Chcete-li stáhnout obsah do klientského zařízení, je nutné vytvořit Lokátor SAS. Lokátor SAS vám umožní přístup k kontejneru Azure Storage, ve kterém se soubor nachází. Chcete-li vytvořit adresu URL pro stahování, je nutné vložit název souboru mezi hostitele a podpis SAS.
 
 Následující příklad ukazuje adresu URL, která je založena na lokátoru SAS:
 
     https://test001.blob.core.windows.net/asset-ca7a4c3f-9eb5-4fd8-a898-459cb17761bd/BigBuckBunny.mp4?sv=2012-02-12&se=2014-05-03T01%3A23%3A50Z&sr=c&si=7c093e7c-7dab-45b4-beb4-2bfdff764bb5&sig=msEHP90c6JHXEOtTyIWqD7xio91GtVg0UIzjdpFscHk%3D
 
-Platí následující aspekty:
+Platí následující důležité informace:
 
-* Musíte dešifrovat šifrované úložiště prostředky, které chcete Streamovat z původu služby pro progresivní stahování.
-* Stahování, které se nedokončila během 12 hodin se nezdaří.
+* Je nutné dešifrovat všechny prostředky šifrované v úložišti, které chcete streamovat ze služby Origin Service pro progresivní stahování.
+* Stažení, které nebylo dokončeno během 12 hodin, se nezdaří.
 
 ## <a name="streaming-endpoints"></a>Koncové body streamování
 
-Koncový bod streamování reprezentuje službu streamování, která může doručovat obsah přímo do klientské aplikace přehrávače nebo do sítě pro doručování obsahu (CDN) k další distribuci. Výstupní datový proud z datových proudů koncový bod služby může být živý stream nebo vod (Video-on-demand) prostředků ve vašem účtu Media Services. Existují dva typy koncových bodů streamování **standardní** a **premium**. Další informace najdete v [přehledu koncových bodů streamování](media-services-streaming-endpoints-overview.md).
+Koncový bod streamování představuje službu streamování, která může doručovat obsah přímo do aplikace klienta z přehrávače nebo do sítě pro doručování obsahu (CDN) pro další distribuci. Odchozí datový proud ze služby streamování koncového bodu streamování může být v účtu Media Services živým datovým proudem nebo prostředkem videa na vyžádání. Existují dva typy koncových bodů streamování, **Standard** a **Premium**. Další informace najdete v [přehledu koncových bodů streamování](media-services-streaming-endpoints-overview.md).
 
 >[!NOTE]
 >Po vytvoření účtu AMS se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno**. Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování, ze kterého chcete streamovat obsah, být ve stavu **Spuštěno**. 
 
 ## <a name="known-issues"></a>Známé problémy
-### <a name="changes-to-smooth-streaming-manifest-version"></a>Verze manifestu změny technologie Smooth Streaming
-Před vydáním. července 2016 service – při prostředky pomocí kodéru Media Encoder Standard, pracovní postup kodéru Media Encoder Premium nebo starší kodér médií Azure byly zpracovány pomocí proudu pomocí dynamické balení – technologie Smooth Streaming manifestu vrátila by odpovídat verzi 2.0. Ve verzi 2.0 nepoužívejte dob trvání fragment značky takzvané opakování ("r"). Příklad:
+### <a name="changes-to-smooth-streaming-manifest-version"></a>Změny verze manifestu Smooth Streaming
+Před vydáním služby z července 2016 – když byly assety vytvořené pomocí Media Encoder Standard, Media Encoder Premium Workflow nebo dřívější Azure Media Encoder streamované pomocí dynamického balení – vrácený manifest Smooth Streaming by splňoval verzi. 2,0. Ve verzi 2,0 nejsou fragmenty trvání fragmentů použity jako značky opakování (' r '). Například:
 
 
     <?xml version="1.0" encoding="UTF-8"?>
@@ -169,7 +169,7 @@ Před vydáním. července 2016 service – při prostředky pomocí kodéru Med
         </StreamIndex>
     </SmoothStreamingMedia>
 
-Vydání služby. července 2016 odpovídá vygenerovaný manifest technologie Smooth Streaming na verzi 2.2, s dobami trvání fragment pomocí opakování značek. Příklad:
+Ve vydání z července 2016 se vygenerovaný manifest Smooth Streaming v souladu s verzí 2,2 s dobami fragmentace pomocí značek opakování. Například:
 
     <?xml version="1.0" encoding="UTF-8"?>
     <SmoothStreamingMedia MajorVersion="2" MinorVersion="2" Duration="8000" TimeScale="1000">
@@ -179,14 +179,14 @@ Vydání služby. července 2016 odpovídá vygenerovaný manifest technologie S
         </StreamIndex>
     </SmoothStreamingMedia>
 
-Některé starší verze klientů, technologie Smooth Streaming nemusí podporovat opakování značky a se nepodaří načíst manifest. Chcete-li tento problém zmírnit, můžete použít parametr starší verze manifestu formátu **(formát = fmp4 v20)** nebo aktualizaci klienta na nejnovější verzi, která podporuje opakování značky. Další informace najdete v tématu [funkce Smooth Streaming 2.0](media-services-deliver-content-overview.md#fmp4_v20).
+Někteří starší klienti Smooth Streaming nemusí podporovat opakované značky a načtení manifestu se nezdaří. Pro zmírnění tohoto problému můžete použít starý parametr formátu manifestu **(Format = FMP4-V20)** nebo aktualizovat klienta na nejnovější verzi, která podporuje značky opakování. Další informace najdete v tématu [Smooth Streaming 2,0](media-services-deliver-content-overview.md#fmp4_v20).
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>Související témata
-[Aktualizace lokátory Media Services po postupném zavedení klíče úložiště](media-services-roll-storage-access-keys.md)
+[Po navracení klíčů úložiště aktualizovat Lokátory Media Services](media-services-roll-storage-access-keys.md)
 

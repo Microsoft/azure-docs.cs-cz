@@ -5,13 +5,13 @@ ms.subservice: custom-vision
 ms.topic: include
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: 9f67c8028f5142117a5e245c90622fa0b4920d4d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d7cfcffda19931027367e266cf41f2a0ab37a87e
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175331"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166611"
 ---
 ## <a name="get-the-sample-images"></a>Získání ukázkových obrázků
 
-Tento příklad používá Image z **ukázky nebo pro zpracování obrazu nebo imagí** adresáři [Cognitive Services Python SDK ukázky](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images) úložišti na Githubu. Naklonujte nebo si stáhněte toto úložiště do svého vývojového prostředí.
+V tomto příkladu se používají image z úložiště [ukázek sady SDK Cognitive Services Python](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images) na GitHubu. Naklonujte nebo si stáhněte toto úložiště do svého vývojového prostředí. Zapamatujte si umístění složky pro pozdější krok.

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 12/04/2019
-ms.openlocfilehash: b7dd11c3a71c46bbc06b205c6b4300337683305a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 8d118170de01c7685ac9dba65c7e22cefb6d4829
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889012"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263123"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-in-your-own-virtual-network"></a>Rychlý Start: vytvoření pracovního prostoru Azure Databricks ve vlastním Virtual Network
 
@@ -25,7 +25,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+Přihlaste se k [Portálu Azure](https://portal.azure.com/).
 
 > [!Note]
 > Tento kurz se nedá provést pomocí **předplatného Azure free zkušební verze**.
@@ -33,7 +33,7 @@ Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-1. V nabídce Azure Portal vyberte **vytvořit prostředek**. Pak vyberte **sítě > virtuální síť**.
+1. V nabídce webu Azure Portal vyberte **Vytvořit prostředek**. Pak vyberte **sítě > virtuální síť**.
 
     ![Vytvoření virtuální sítě v Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network-portal.png)
 
@@ -41,23 +41,30 @@ Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
     |Nastavení|Navrhovaná hodnota|Popis|
     |-------|---------------|-----------|
-    |Name (Název)|datacihly – rychlý Start|Vyberte název vaší virtuální sítě.|
-    |Adresní prostor|10.1.0.0/16|Rozsah adres virtuální sítě v zápisu CIDR. Rozsah CIDR musí být mezi/16 a/24.|
     |Předplatné|\<Vaše předplatné\>|Vyberte předplatné Azure, které chcete použít.|
     |Skupina prostředků|datacihly – rychlý Start|Vyberte **vytvořit novou** a zadejte nový název skupiny prostředků pro váš účet.|
-    |Umístění|\<Vyberte oblast nejbližší vašim uživatelům.\>|Vyberte zeměpisnou polohu, kde můžete hostovat svou virtuální síť. Použijte umístění, které je nejblíže vašim uživatelům.|
+    |Name (Název)|datacihly – rychlý Start|Vyberte název vaší virtuální sítě.|
+    |Region (Oblast)|\<Vyberte oblast nejbližší vašim uživatelům.\>|Vyberte zeměpisnou polohu, kde můžete hostovat svou virtuální síť. Použijte umístění, které je nejblíže vašim uživatelům.|
+
+    ![Základy pro virtuální síť v Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network.png)
+
+3. Vyberte **Další: IP adresy >** a použijte následující nastavení. Pak vyberte **zkontrolovat + vytvořit**.
+    
+    |Nastavení|Navrhovaná hodnota|Popis|
+    |-------|---------------|-----------|
+    |Adresní prostor IPv4|10.2.0.0/16|Rozsah adres virtuální sítě v zápisu CIDR. Rozsah CIDR musí být mezi/16 a/24.|
     |Název podsítě|default|Vyberte název výchozí podsítě ve vaší virtuální síti.|
-    |Rozsah adres podsítě|10.1.0.0/24|Rozsah adres podsítě v zápisu CIDR. Musí být obsažený v adresním prostoru virtuální sítě. Rozsah adres podsítě, která se používá, se nedá upravit.|
+    |Rozsah adres podsítě|10.2.0.0/24|Rozsah adres podsítě v zápisu CIDR. Musí být obsažený v adresním prostoru virtuální sítě. Rozsah adres podsítě, která se používá, se nedá upravit.|
 
-    ![Vytvoření virtuální sítě v Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network.png)
+    ![Nastavení konfigurace protokolu IP pro virtuální síť v Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network-ip-config.png)
 
-3. Až se nasazení dokončí, přejděte do virtuální sítě a v části **Nastavení**vyberte **adresní prostor** . Do pole *Přidat další rozsah adres*zadejte `10.179.0.0/16` a vyberte **Uložit**.
+4. Na kartě **Revize + vytvořit** vyberte **vytvořit** a nasaďte virtuální síť. Až se nasazení dokončí, přejděte do virtuální sítě a v části **Nastavení**vyberte **adresní prostor** . Do pole *Přidat další rozsah adres*zadejte `10.179.0.0/16` a vyberte **Uložit**.
 
     ![Adresní prostor virtuální sítě Azure](./media/quickstart-create-databricks-workspace-vnet-injection/add-address-space.png)
 
 ## <a name="create-an-azure-databricks-workspace"></a>Vytvoření pracovního prostoru Azure Databricks
 
-1. V nabídce Azure Portal vyberte **vytvořit prostředek**. Pak vyberte **Analytics > datacihly**.
+1. V nabídce webu Azure Portal vyberte **Vytvořit prostředek**. Pak vyberte **Analytics > datacihly**.
 
     ![Vytvoření pracovního prostoru Azure Databricks v Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace-portal.png)
 
@@ -70,6 +77,13 @@ Přihlaste se na web [Azure Portal](https://portal.azure.com/).
     |Skupina prostředků|datacihly – rychlý Start|Vyberte stejnou skupinu prostředků, kterou jste použili pro virtuální síť.|
     |Umístění|\<Vyberte oblast nejbližší vašim uživatelům.\>|Vyberte stejné umístění jako vaše virtuální síť.|
     |Cenová úroveň|Vyberte si z úrovně Standard nebo Premium.|Další informace o cenových úrovních najdete na stránce s [cenami datacihly](https://azure.microsoft.com/pricing/details/databricks/).|
+
+    ![Vytvoření základů Azure Databricks pracovního prostoru](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace.png)
+
+3. Po dokončení zadávání nastavení na stránce **základy** vyberte **další: síťové >** a použijte následující nastavení:
+
+    |Nastavení|Navrhovaná hodnota|Popis|
+    |-------|---------------|-----------|
     |Nasazení pracovního prostoru Azure Databricks v Virtual Network (VNet)|Ano|Toto nastavení umožňuje nasadit Azure Databricks pracovní prostor ve vaší virtuální síti.|
     |Virtual Network|datacihly – rychlý Start|Vyberte virtuální síť, kterou jste vytvořili v předchozí části.|
     |Název veřejné podsítě|public-subnet|Použijte výchozí název veřejné podsítě.|
@@ -77,7 +91,7 @@ Přihlaste se na web [Azure Portal](https://portal.azure.com/).
     |Název privátní podsítě|private-subnet|Použijte výchozí název privátní podsítě.|
     |Rozsah CIDR privátní podsítě|10.179.0.0/18|Použijte rozsah CIDR až do a včetně/26.|
 
-    ![Vytvoření pracovního prostoru Azure Databricks v Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace.png)
+    ![Přidání informací o virtuální síti do pracovního prostoru Azure Databricks v Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace-vnet-config.png)
 
 3. Po dokončení nasazení přejděte k prostředku Azure Databricks. Všimněte si, že partnerský vztah virtuálních sítí je zakázaný. Všimněte si také skupiny prostředků a spravované skupiny prostředků na stránce Přehled. 
 

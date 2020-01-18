@@ -1,5 +1,5 @@
 ---
-title: Použití Notification Hubs s PHP
+title: Jak používat Azure Notification Hubs s PHP
 description: Naučte se používat Azure Notification Hubs z back-endu PHP.
 services: notification-hubs
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 4df48475af4b140e4446dde9069eafcc95d9d3b2
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 9a77a9d9c8b2d71197089f66d81e07d56c780e11
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213170"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263842"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>Použití Notification Hubs z PHP
 
@@ -36,7 +36,7 @@ V tomto tématu si ukážeme, jak:
 
 ## <a name="client-interface"></a>Rozhraní klienta
 
-Hlavní klientské rozhraní může poskytovat stejné metody, které jsou k dispozici v sadě [.net Notification HUBS SDK](https://msdn.microsoft.com/library/jj933431.aspx), což vám umožní přímo přeložit všechny kurzy a ukázky, které jsou aktuálně k dispozici na tomto webu, a přispívá komunitou na Internet.
+Hlavní klientské rozhraní může poskytovat stejné metody, které jsou k dispozici v sadě [.net Notification HUBS SDK](https://msdn.microsoft.com/library/jj933431.aspx), což vám umožní přímo přeložit všechny kurzy a ukázky, které jsou aktuálně k dispozici na tomto webu, a přispívá komunitou na internetu.
 
 Můžete najít veškerý kód dostupný v [Ukázka obálky PHP REST].
 
@@ -106,7 +106,7 @@ Zde je hlavní třída implementující klienta, jehož konstruktor analyzuje p�
 
 Informace o tom, jak [vytvořit token zabezpečení SAS](https://docs.microsoft.com/previous-versions/azure/reference/dn495627(v=azure.100)#create-sas-security-token), najdete v dokumentaci k Azure.
 
-Přidejte do `NotificationHub` třídy metoduprovytvořenítokenunazákladěidentifikátoruURIaktuálnížádostiapřihlašovacíchúdajůextrahovanýchzpřipojovacíhořetězce.`generateSasToken`
+Přidejte metodu `generateSasToken` do třídy `NotificationHub` k vytvoření tokenu na základě identifikátoru URI aktuální žádosti a přihlašovacích údajů extrahovaných z připojovacího řetězce.
 
     ```php
     private function generateSasToken($uri) {
@@ -155,7 +155,7 @@ Tato třída je kontejner pro nativní tělo oznámení nebo sadu vlastností pr
 
 Všechny dostupné možnosti najdete v [dokumentaci k rozhraním REST API pro Notification Hubs](https://msdn.microsoft.com/library/dn495827.aspx) a ve formátech konkrétních platforem oznámení.
 
-V ozbrojení této třídy teď můžeme zapsat metody odeslání oznámení uvnitř `NotificationHub` třídy:
+V ozbrojení této třídy teď můžeme zapsat metody odeslání oznámení do třídy `NotificationHub`:
 
     ```php
     public function sendNotification($notification, $tagsOrTagExpression="") {
@@ -216,7 +216,7 @@ V ozbrojení této třídy teď můžeme zapsat metody odeslání oznámení uvn
     } 
     ```
 
-Výše uvedené metody odesílají požadavek HTTP POST do `/messages` koncového bodu centra oznámení se správným textem a hlavičkou pro odeslání oznámení.
+Výše uvedené metody odesílají požadavek HTTP POST do `/messages`ho koncového bodu centra oznámení se správným textem a hlavičkou pro odeslání oznámení.
 
 ## <a name="complete-tutorial"></a>Dokončení kurzu
 
@@ -282,7 +282,7 @@ Spuštění kódu PHP by mělo nyní na cílovém zařízení zobrazovat oznáme
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto tématu jsme ukázali, jak vytvořit jednoduchého klienta Java REST pro Notification Hubs. Tady můžete:
+V tomto tématu jsme ukázali, jak vytvořit jednoduchého klienta Java REST pro Notification Hubs. Odsud můžete:
 
 * Stáhněte si úplnou [Ukázka obálky PHP REST], která obsahuje veškerý kód uvedený výše.
 * Pokračovat v učení o funkci označování Notification Hubs v [kurzu pro průlomové zprávy]

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 3b2fff84b70c5c5e37d14faa87143e5dacc82bce
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 0b24c064424b00fa9acb96b03c0a3c5ca69f67f2
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930181"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264342"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Vytvoření pravidla telemetrie a nastavení oznámení v aplikaci Azure IoT Central
 
@@ -27,13 +27,13 @@ Zařízení můžou používat měření telemetrie k posílání číselných d
 
 ## <a name="create-a-telemetry-rule"></a>Vytvoření pravidla telemetrie
 
-Aby bylo možné vytvořit pravidlo telemetrie, musí mít šablona zařízení alespoň jednu určenou měření telemetrie. V tomto příkladu se používá mrazírenské zařízení Automate na počítač, které posílá telemetrii teploty a vlhkosti. Pravidlo monitoruje teplotu oznámenou zařízením a pošle e-mail, když překračuje 80 stupňů.
+Aby bylo možné vytvořit pravidlo telemetrie, musí mít šablona zařízení alespoň jednu určenou měření telemetrie. V tomto příkladu se používá mrazírenské zařízení Automate na počítač, které posílá telemetrii teploty a vlhkosti. Pravidlo monitoruje teplotu oznámenou zařízením a pošle e-mail, když se překročí 70&deg; F.
 
 1. Pomocí stránky **šablony zařízení** přejděte na šablonu zařízení, pro kterou přidáváte pravidlo.
 
 1. Pokud jste ještě nevytvořili žádná pravidla, zobrazí se následující obrazovka:
 
-    ![Zatím žádná pravidla](media/howto-create-telemetry-rules/rules_landing_page1.png)
+    ![Dosud žádná pravidla](media/howto-create-telemetry-rules/rules_landing_page1.png)
 
 1. Na kartě **pravidla** vyberte **+ nové pravidlo** a zobrazte typy pravidel, která můžete vytvořit.
 
@@ -43,7 +43,7 @@ Aby bylo možné vytvořit pravidlo telemetrie, musí mít šablona zařízení 
 
 1. Zadejte název, který vám pomůže identifikovat pravidlo v této šabloně zařízení.
 
-1. Chcete-li ihned Povolit pravidlo pro všechna zařízení vytvořená pro tuto šablonu, přepněte **pravidlo Povolit pro všechna zařízení pro tuto šablonu**.
+1. Chcete-li ihned Povolit pravidlo pro všechna zařízení vytvořená pro tuto šablonu, přepněte **pravidlo Povolit pro všechna zařízení v této šabloně**.
 
    ![Podrobnosti pravidla](media/howto-create-telemetry-rules/rule_detail1.png)
 
@@ -58,8 +58,8 @@ Podmínka definuje kritéria, která jsou sledována pravidlem.
 1. Z rozevíracího seznamu **měření** vyberte telemetrii, kterou chcete monitorovat.
 
 1. V dalším kroku vyberte **agregace**, **operátor**a zadejte **prahovou** hodnotu.
-   - Agregace je volitelná. Bez agregace se pravidlo spustí pro každý datový bod telemetrie, který splňuje podmínku. Pokud je například pravidlo nakonfigurované tak, aby se aktivovalo, když je teplota vyšší než 80, pravidlo se spustí téměř okamžitě, když zařízení ohlásí teplotu > 80.
-   - Pokud je vybrána agregační funkce jako Average, min, Max, Count, musí uživatel poskytnout **agregované časové okno** , ve kterém je nutné vyhodnotit podmínku. Pokud jste například nastavili periodu na 5 minut a pravidlo vyhledá průměrnou teplotu nad 80, pravidlo se aktivuje, když je průměrná teplota nad 80 po dobu alespoň 5 minut. Frekvence vyhodnocení pravidla je stejná jako **agregované časové okno**, což znamená, že se v tomto příkladu pravidlo vyhodnocuje jednou za 5 minut.
+   - Agregace je volitelná. Bez agregace se pravidlo spustí pro každý datový bod telemetrie, který splňuje podmínku. Pokud je například pravidlo nakonfigurované tak, aby se aktivovalo, když je teplota vyšší než 70&deg; F, pravidlo se spustí téměř okamžitě, když zařízení ohlásí teplotu > 70.
+   - Pokud je vybrána agregační funkce jako Average, min, Max, Count, musí uživatel poskytnout **agregované časové okno** , ve kterém je nutné vyhodnotit podmínku. Pokud jste například nastavili periodu na 5 minut a pravidlo vyhledá průměrnou teplotu nad 70, pravidlo se aktivuje, když je průměrná teplota nad 70&deg; F po dobu alespoň 5 minut. Frekvence vyhodnocení pravidla je stejná jako **agregované časové okno**, což znamená, že se v tomto příkladu pravidlo vyhodnocuje jednou za 5 minut.
 
      ![Podmínka](media/howto-create-telemetry-rules/aggregate_condition_filled_out1.png)
 
@@ -90,7 +90,7 @@ Do pravidla můžete přidat další akce, jako jsou Microsoft Flow a Webhooky. 
 
 ## <a name="parameterize-the-rule"></a>Parametrizovat pravidlo
 
-Pravidla můžou z **vlastností zařízení** odvodit určité šířky jako parametry. Použití parametrů je užitečné v situacích, kdy se mezní hodnoty telemetrie liší pro různá zařízení. Když vytvoříte pravidlo, vyberte vlastnost zařízení, která určuje mezní hodnotu, jako je například **maximální ideální prahová**hodnota, namísto zadání absolutní hodnoty, například 80 stupňů. Když se pravidlo spustí, bude odpovídat telemetrie zařízení s hodnotou nastavenou ve vlastnosti zařízení.
+Pravidla můžou z **vlastností zařízení** odvodit určité šířky jako parametry. Použití parametrů je užitečné v situacích, kdy se mezní hodnoty telemetrie liší pro různá zařízení. Když vytvoříte pravidlo, vyberte vlastnost zařízení, která určuje mezní hodnotu, jako je například **maximální ideální prahová**hodnota, namísto zadání absolutní hodnoty, například 70&deg; F. Když se pravidlo spustí, bude odpovídat telemetrie zařízení s hodnotou nastavenou ve vlastnosti zařízení.
 
 Použití parametrů je efektivní způsob, jak snížit počet pravidel pro správu podle šablony zařízení.
 

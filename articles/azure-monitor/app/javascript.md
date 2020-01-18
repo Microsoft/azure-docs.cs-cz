@@ -4,15 +4,15 @@ description: Získejte zobrazení stránky a počty relací, data webového klie
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
+author: Dawgfan
+ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 38f9872fb73f2c680264c2c0b84445db858cf203
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 83b167baa29a54e53f7fe8bdb7b7e5c88bc3eddf
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045833"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264080"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 
@@ -29,7 +29,10 @@ Application Insights můžete použít s jakýmikoli webovými stránkami – st
     * [Fragment kódu JavaScriptu](#snippet-based-setup)
 
 > [!IMPORTANT]
-> K přidání Application Insights JavaScript SDK do aplikace stačí použít jednu z níže uvedených metod. Použijete-li instalaci založenou na NPM, nepoužívejte instalaci založenou na fragmentu. To samé platí pro reverzní scénář při použití přístupu založeného na fragmentech, nepoužívejte také instalaci založenou na npm. 
+> > K přidání sady JavaScript SDK do aplikace použijte pouze jednu metodu. Použijete-li instalační program NPM, tento fragment kódu nepoužívejte ani naopak.
+
+> [!NOTE]
+> Instalační program NPM nainstaluje sadu JavaScript SDK jako závislost k vašemu projektu a umožní technologii IntelliSense, zatímco fragment kódu načte sadu SDK za běhu. Obě podporují stejné funkce. Vývojáři, kteří chtějí další vlastní události a konfigurace, obecně můžou souhlasit s NPM nastavením, zatímco uživatelé hledají rychlé povolení okamžitého zapnutí webové analýzy pro fragment.
 
 ### <a name="npm-based-setup"></a>nastavení založené na npm
 
@@ -261,4 +264,3 @@ Sada Application Insights JavaScript SDK je open source, aby zobrazila zdrojový
 * [Sledování využití](usage-overview.md)
 * [Vlastní události a metriky](api-custom-events-metrics.md)
 * [Sestavení vyhodnocení poučení](usage-overview.md)
-
