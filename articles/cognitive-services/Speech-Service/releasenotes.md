@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 1b421e7acd7f94654ea80e41340022c8ef7a130e
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 1cf9ce6d57c1e106472caeef6c1f2a4b008a09bd
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264216"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277872"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
 
@@ -24,36 +24,43 @@ ms.locfileid: "76264216"
 
 **Nové funkce**
 
-- Konverzace s více zařízeními: Propojte více zařízení v hlasové konverzaci nebo v textových konverzacích a volitelně Přeložte zprávy odesílané mezi nimi. Další informace najdete v [tomto článku](multi-device-conversation.md). 
+- Konverzace s více zařízeními: umožňuje propojit více zařízení se stejnou hlasovou nebo textovou konverzací a volitelně překládat zprávy odesílané mezi nimi. Další informace najdete v [tomto článku](multi-device-conversation.md). 
 - Podpora rozpoznávání klíčových slov se přidala pro balíček Android. AAR a přidala se podpora pro typy x86 a x64. 
-- metody `SendMessage` a `SetMessageProperty` přidány do objektu `Connection` v cíli-C. Další informace [najdete v dokumentaci.](https://docs.microsoft.com/objectivec/cognitive-services/speech/)
+- Cíl-C: metody `SendMessage` a `SetMessageProperty` přidány do objektu `Connection`. Další informace [najdete v dokumentaci.](https://docs.microsoft.com/objectivec/cognitive-services/speech/)
 - Rozhraní C++ API pro TTS teď podporuje `std::wstring` jako Shrnutí textu a odstraňuje nutnost převést wstring na řetězec před předáním do sady SDK. [Tady](https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#speaktextasync)najdete podrobnosti. 
-- [ID jazyka](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-csharp) a [konfigurace zdrojového jazyka](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-specify-source-language?pivots=programming-language-csharp) jsou nyní k dispozici v C#.
+- C#: [ID jazyka](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-csharp) a [konfigurace zdrojového jazyka](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-specify-source-language?pivots=programming-language-csharp) jsou nyní k dispozici.
+- JavaScript: Přidání funkce pro `Connection` objektu pro předání vlastní zprávy ze služby Speech jako zpětného volání `receivedServiceMessage`.
+- JavaScript: Přidání podpory pro `FromHost API`, která usnadňuje použití s kontejnery Prem a svrchovanými cloudy. Další informace [najdete v dokumentaci.](speech-container-howto.md)
+- JavaScript: nyní `NODE_TLS_REJECT_UNAUTHORIZED`me, protože přispíváme k příspěvku z [orgads](https://github.com/orgads). [Tady](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75)najdete podrobnosti.
 
 
 **Rozbíjející změny v**
 
 - `OpenSSL` byla aktualizována na verzi 1.1.1 b a staticky propojená se základní knihovnou sady Speech SDK pro Linux. To může způsobit přerušení, pokud `OpenSSL` doručených zpráv není nainstalován do `/usr/lib/ssl` adresáře v systému. Pokud chcete tento problém obejít, přečtěte si [naši dokumentaci](how-to-configure-openssl-linux.md) v části dokumentace k sadě Speech SDK.
 - Změnili jsme datový typ vrácený pro C# `WordLevelTimingResult.Offset` z `int` na `long`, aby bylo možné získat přístup k `WordLevelTimingResults`ům, když jsou data řeči delší než 2 minuty.
+- `PushAudioInputStream` a `PullAudioInputStream` nyní odesílají informace o hlavičce WAV do služby pro rozpoznávání řeči na základě `AudioStreamFormat`volitelně zadané při jejich vytvoření. Zákazníci teď musí používat [podporovaný formát zvukového vstupu](how-to-use-audio-input-streams.md). Všechny ostatní formáty získají dílčí optimální výsledky rozpoznávání nebo můžou způsobit jiné problémy. 
 
 
 **Opravy chyb**
 
 - V části nejnovější změny výše se podívejte na aktualizaci `OpenSSL`. V systému Linux a Java jsme opravili občasné chyby a problémy s výkonem (při vysokém zatížení zamknete spory). 
-- Vylepšení zavírání objektů Java ve scénářích s vysokou mírou souběžnosti.
+- Java: vylepšení uzavření objektu ve scénářích s vysokou mírou souběžnosti.
 - Znovu se strukturuje náš balíček NuGet. Odebrali jsme tři kopie `Microsoft.CognitiveServices.Speech.core.dll` a `Microsoft.CognitiveServices.Speech.extension.kws.dll` ve složkách lib, čímž se balíček NuGet zmenší a rychleji stáhne a přidali jsme hlavičky potřebné k zkompilování některých C++ nativních aplikací.
 - Pevné ukázky pro rychlý Start [najdete tady](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp). Ty se ukončily bez zobrazení výjimky "mikrofon nebyl nalezen" na Linux, MacOS a Windows.
 - Opravili jsme chybu sady SDK s dlouhým výsledkem rozpoznávání řeči na určitých cestách kódu, jako je [Tato ukázka](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/csharp/uwp/speechtotext-uwp).
 - Opravená chyba nasazení sady SDK ve službě Azure Web App Environment pro vyřešení [tohoto problému se zákazníky](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/396).
 - Opravili jsme chybu TTS při použití `<voice>` značky nebo značky `<audio>` k vyřešení [tohoto problému zákazníka](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/433). 
 - Opravená chyba TTS 401 při obnovení sady SDK z pozastavené.
+- JavaScript: Děkujeme, že se vám jako příspěvek z [Euirim](https://github.com/euirim)opravil cyklický import zvukových dat. 
+- JavaScript: Přidání podpory pro nastavení vlastností služby, jak je přidáno v 1,7.
+- JavaScript: Opravili jsme problém, kdy by chyba připojení mohla způsobit průběžné pokusy o opětovné připojení k soketu WebSocket.
 
 
 **Ukázky**
 
 - [Sem](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/java/android/sdkdemo)přidejte ukázku rozpoznávání klíčových slov pro Android.
-- [Sem](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/csharp)přidejte ukázku TTS pro scénář serveru. 
-- Sem jste přidali rychlé starty konverzací na C++ více C# zařízení [](multi-device-conversation.md)v prostředích a .NET.
+- [Sem](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_synthesis_server_scenario_sample.cs)přidejte ukázku TTS pro scénář serveru.
+- Přidali jsme rychlé starty konverzace s více C# zařízeními C++ pro a [zde](quickstarts/multi-device-conversation.md).
 
 
 **Další změny**

@@ -1,20 +1,19 @@
 ---
 title: Šifrování disků pro Azure Scale Sets pomocí Azure CLI
 description: Naučte se používat Azure PowerShell k šifrování instancí virtuálních počítačů a připojených disků v sadě škálování virtuálního počítače s Windows.
-services: virtual-machine-scale-sets
 author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2577eef95cad3405eb42af22e4c57511a660c1a6
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 557d5c023acbc7987d58c9e78bfe11e25f314879
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530807"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279079"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>Šifrování operačních systémů a připojených datových disků v sadě škálování virtuálního počítače pomocí Azure CLI
 
@@ -125,7 +124,7 @@ az vmss encryption enable \
 
 > [!NOTE]
 >  Syntaxe pro hodnotu parametru Disk-Encryption-trezor je úplný řetězec identifikátoru:</br>
-/Subscriptions/[ID předplatného-GUID]/resourceGroups/[Resource-Group-name]/providers/Microsoft.KeyVault/vaults/[Trezor klíčů-name]</br></br>
+/subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]</br></br>
 > Syntaxe pro hodnotu parametru klíč-šifrování klíče je úplný identifikátor URI pro KEK jako v:</br>
 https://[Trezor klíčů-name]. trezor. Azure. NET/Keys/[kekname]/[KEK-Unique-ID]
 
@@ -176,4 +175,4 @@ az vmss encryption disable --resource-group myResourceGroup --name myScaleSet
 
 - V tomto článku jste použili Azure CLI k šifrování sady škálování virtuálních počítačů. Můžete také použít šablony [Azure PowerShell](disk-encryption-powershell.md) nebo [Azure Resource Manager](disk-encryption-azure-resource-manager.md).
 - Pokud chcete po zřízení jiného rozšíření použít Azure Disk Encryption, můžete použít [sekvencování rozšíření](virtual-machine-scale-sets-extension-sequencing.md). 
-- Příklad kompletního dávkového souboru pro šifrování datového disku pro systém Linux Scale set najdete [tady](https://gist.githubusercontent.com/ejarvi/7766dad1475d5f7078544ffbb449f29b/raw/03e5d990b798f62cf188706221ba6c0c7c2efb3f/enable-linux-vmss.bat). V tomto příkladu se vytvoří skupina prostředků, sada škálování systému Linux, připojí se datový disk o velikosti 5 GB a zašifruje sadu škálování virtuálního počítače.
+- Příklad kompletního dávkového souboru pro šifrování datového disku pro systém Linux Scale set najdete [tady](https://gist.githubusercontent.com/ejarvi/7766dad1475d5f7078544ffbb449f29b/raw/03e5d990b798f62cf188706221ba6c0c7c2efb3f/enable-linux-vmss.bat). Tento příklad vytvoří skupinu prostředků, škálovací sady pro Linux, připojí disk 5 GB dat a šifruje škálovací sadu virtuálních počítačů.

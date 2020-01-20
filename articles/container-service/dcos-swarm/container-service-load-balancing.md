@@ -1,31 +1,29 @@
 ---
-title: (NEPOUŽÍVANÉ) Vyrovnání zatížení kontejnerů v clusteru Azure DC/OS
+title: ZASTARALÉ Vyrovnávání zatížení kontejnerů v clusteru Azure DC/OS
 description: Článek popisuje, jak se vyrovnává zatížení více kontejnerů v clusteru Azure Container Service DC/OS.
-services: container-service
 author: rgardler
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 1e4c978a8767154fb6a1f9a822cb0dd8d1b8796e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d8dff1dc063cc3b940fbdf0698b8b328b90d60b6
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66148902"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277835"
 ---
-# <a name="deprecated-load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>(NEPOUŽÍVANÉ) Vyrovnání zatížení kontejnerů v clusteru služby Azure Container Service DC/OS
+# <a name="deprecated-load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>ZASTARALÉ Vyrovnávání zatížení kontejnerů v clusteru Azure Container Service DC/OS
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-V tomto článku se podíváme, jak se pomocí nástroje Marathon-LB vytváří vnitřní nástroj pro vyrovnávání zatížení v prostředí Azure Container Service spravovaném systémem DC/OS. Tato konfigurace vám umožní horizontálně škálovat aplikace. Také vám umožní využít veřejný i soukromý cluster v tom smyslu, že na veřejný umístíte nástroje pro vyrovnávání zatížení, zatímco na soukromý kontejnery aplikací. V tomto kurzu se naučíte:
+V tomto článku se podíváme, jak se pomocí nástroje Marathon-LB vytváří vnitřní nástroj pro vyrovnávání zatížení v prostředí Azure Container Service spravovaném systémem DC/OS. Tato konfigurace vám umožní horizontálně škálovat aplikace. Také vám umožní využít veřejný i soukromý cluster v tom smyslu, že na veřejný umístíte nástroje pro vyrovnávání zatížení, zatímco na soukromý kontejnery aplikací. V tomto kurzu jste:
 
 > [!div class="checklist"]
-> * Konfigurace nástroje Marathon Load Balancer
+> * Nakonfigurujete Marathon Load Balancer
 > * Nasazení aplikace pomocí nástroje pro vyrovnávání zatížení
-> * Konfigurace nástroje pro vyrovnávání zatížení Azure
+> * Nakonfigurujete nástroj pro vyrovnávání zatížení Azure
 
 K provedení kroků v tomto kurzu potřebujete cluster DC/OS ACS. V případě potřeby si ho můžete nechat vytvořit pomocí [tohoto ukázkového skriptu](./../kubernetes/scripts/container-service-cli-deploy-dcos.md).
 
@@ -97,7 +95,7 @@ Potom vytvořte soubor s názvem *hello-web.json* a zkopírujte do něj následu
 }
 ```
 
-Pomocí rozhraní příkazového řádku DC/OS spusťte aplikaci. Ve výchozím nastavení Marathon nasadí aplikaci na soukromý cluster. To znamená, že výše popsané nasazení je přístupné jenom přes nástroj pro vyrovnávání zatížení, což je obvykle žádoucí chování.
+Pomocí rozhraní příkazového řádku DC/OS spusťte aplikaci. Ve výchozím nastavení Marathon nasadí aplikaci do privátního clusteru. To znamená, že výše popsané nasazení je přístupné jenom přes nástroj pro vyrovnávání zatížení, což je obvykle žádoucí chování.
 
 ```azurecli-interactive
 dcos marathon app add hello-web.json
@@ -113,14 +111,14 @@ Služba Azure Load Balancer ve výchozím nastavení zpřístupňuje porty 80, 8
 
 Pokud používáte jiný port, bude potřeba přidat pravidlo kruhového dotazování a otestovat v nástroji pro vyrovnávání zatížení port, který jste použili. To lze udělat z [rozhraní příkazového řádku Azure](../../azure-resource-manager/xplat-cli-azure-resource-manager.md) pomocí příkazů `azure network lb rule create` a `azure network lb probe create`.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se dozvěděli o vyrovnávání zatížení ve službě ACS pomocí nástrojů na vyrovnávání zatížení Marathon a Azure, včetně následujících akcí:
 
 > [!div class="checklist"]
-> * Konfigurace nástroje Marathon Load Balancer
+> * Nakonfigurujete Marathon Load Balancer
 > * Nasazení aplikace pomocí nástroje pro vyrovnávání zatížení
-> * Konfigurace nástroje pro vyrovnávání zatížení Azure
+> * Nakonfigurujete nástroj pro vyrovnávání zatížení Azure
 
 V dalším kurzu se naučíte integrovat úložiště Azure s DC/OS v Azure.
 

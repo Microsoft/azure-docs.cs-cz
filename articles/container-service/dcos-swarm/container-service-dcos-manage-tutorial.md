@@ -1,22 +1,20 @@
 ---
-title: (NEPOUŽÍVANÉ) Kurz Azure Container Service – Správa DC/OS
+title: ZASTARALÉ Kurz Azure Container Service – Správa DC/OS
 description: Kurz Azure Container Service – Správa DC/OS
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: fe943ae5ac7894cdd8d8e104615cea670513b7eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1c9b3bfdbe7aff203efa6b36f0e40cb65aba1175
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61456648"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278340"
 ---
-# <a name="deprecated-azure-container-service-tutorial---manage-dcos"></a>(NEPOUŽÍVANÉ) Kurz Azure Container Service – Správa DC/OS
+# <a name="deprecated-azure-container-service-tutorial---manage-dcos"></a>ZASTARALÉ Kurz Azure Container Service – Správa DC/OS
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -262,7 +260,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, cluster
 az group delete --name myResourceGroup --no-wait
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se seznámili se základními úlohami správy DC/OS, včetně následujících. 
 

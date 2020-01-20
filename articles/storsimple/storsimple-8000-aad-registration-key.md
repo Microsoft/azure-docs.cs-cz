@@ -1,25 +1,17 @@
 ---
-title: Použití nového ověřování pro službu StorSimple 8000 Device Manager v Azure | Microsoft Docs
+title: Použití nového ověřování pro službu StorSimple 8000 Device Manager v Azure
 description: Vysvětluje, jak používat ověřování na základě AAD pro vaši službu, generovat nový registrační klíč a provádět ruční registraci zařízení.
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 88badf6de5e7181763dd72c7a51262d16697bffd
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 798b3bf054d5ade2a441bbef5875bb014f526aee
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963478"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276943"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>Použití nového ověřování pro StorSimple
 
@@ -49,7 +41,7 @@ Pokud používáte řady StorSimple 8000, zajistěte, aby byla v pravidlech brá
 
 | Vzor adresy URL                         | Cloud | Součást/funkce         |
 |------------------------------------|-------|----------------------------------|
-| `https://login.windows.net`        | Veřejné Azure |Služba ověřování AAD      |
+| `https://login.windows.net`        | Veřejný partnerský vztah Azure |Služba ověřování AAD      |
 | `https://login.microsoftonline.us` | US Government |Služba ověřování AAD      |
 
 Úplný seznam vzorů adres URL pro zařízení StorSimple 8000 series najdete v části [vzory adres URL pro pravidla brány firewall](storsimple-8000-system-requirements.md#url-patterns-for-firewall-rules).
@@ -62,9 +54,9 @@ Pokud používáte zařízení řady StorSimple 8000, pomocí následující tab
 
 | Pokud je vaše zařízení spuštěné| Proveďte následující akci                                    |
 |--------------------------|------------------------|
-| Aktualizace 5 nebo novější a zařízení je offline. <br> Zobrazí se upozornění, že adresa URL není na seznamu povolených.|1. Upravte pravidla brány firewall tak, aby zahrnovala adresu URL ověřování. Viz [adresy URL pro ověřování](#url-changes-for-aad-authentication).<br>2. [Získejte registrační klíč AAD ze služby](#aad-based-registration-keys).<br>3. [Připojte se k rozhraní Windows PowerShell zařízení řady StorSimple 8000](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).<br>4. Pomocí `Redo-DeviceRegistration` rutiny zaregistrujete zařízení v prostředí Windows PowerShell. Zadejte klíč, který jste získali v předchozím kroku.|
-| Aktualizujte 5 nebo novější a zařízení online.| Není vyžadována žádná akce.                                       |
-| Aktualizace 4 nebo starší a zařízení je offline. |1. Upravte pravidla brány firewall tak, aby zahrnovala adresu URL ověřování.<br>2. [Stáhněte aktualizaci 5 prostřednictvím serveru katalogu](storsimple-8000-install-update-5.md#download-updates-for-your-device).<br>3. [Použijte aktualizaci 5 prostřednictvím metody hotfix](storsimple-8000-install-update-5.md#install-update-5-as-a-hotfix).<br>4. [Získejte registrační klíč AAD ze služby](#aad-based-registration-keys).<br>5. [Připojte se k rozhraní Windows PowerShell zařízení řady StorSimple 8000](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). <br>6. Pomocí `Redo-DeviceRegistration` rutiny zaregistrujete zařízení v prostředí Windows PowerShell. Zadejte klíč, který jste získali v předchozím kroku.|
+| Aktualizace 5 nebo novější a zařízení je offline. <br> Zobrazí se upozornění, že adresa URL není na seznamu povolených.|1. Upravte pravidla brány firewall tak, aby zahrnovala adresu URL ověřování. Viz [adresy URL pro ověřování](#url-changes-for-aad-authentication).<br>2. [Získejte registrační klíč AAD ze služby](#aad-based-registration-keys).<br>3. [Připojte se k rozhraní Windows PowerShell zařízení řady StorSimple 8000](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).<br>4. pomocí rutiny `Redo-DeviceRegistration` zaregistrujete zařízení přes Windows PowerShell. Zadejte klíč, který jste získali v předchozím kroku.|
+| Aktualizujte 5 nebo novější a zařízení online.| Nevyžaduje se žádná akce.                                       |
+| Aktualizace 4 nebo starší a zařízení je offline. |1. Upravte pravidla brány firewall tak, aby zahrnovala adresu URL ověřování.<br>2. [Stáhněte si Update 5 přes katalogový server](storsimple-8000-install-update-5.md#download-updates-for-your-device).<br>3. [použijte aktualizaci Update 5 prostřednictvím metody hotfix](storsimple-8000-install-update-5.md#install-update-5-as-a-hotfix).<br>4. [Získejte registrační klíč AAD ze služby](#aad-based-registration-keys).<br>5. [Připojte se k rozhraní Windows PowerShell zařízení řady StorSimple 8000](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). <br>6. pomocí rutiny `Redo-DeviceRegistration` zaregistrujete zařízení přes Windows PowerShell. Zadejte klíč, který jste získali v předchozím kroku.|
 | Aktualizace 4 nebo starší a zařízení je online. |Upravte pravidla brány firewall tak, aby zahrnovala adresu URL ověřování.<br> Nainstalujte aktualizaci 5 prostřednictvím Azure Portal.              |
 | Obnovení továrního nastavení na verzi před aktualizací Update 5.      |Portál zobrazuje registrační klíč založený na AAD, zatímco na zařízení běží starší software. V případě, že je na zařízení spuštěná aktualizace 4 nebo starší, postupujte podle kroků v předchozím scénáři.              |
 
@@ -83,7 +75,7 @@ K vygenerování registračního klíče služby AAD proveďte následující kr
 
 #### <a name="to-generate-the-aad-service-registration-key"></a>Vygenerování registračního klíče služby AAD
 
-1. V **StorSimple Device Manager**přejít na **klíče** **pro &gt; správu** . K vyhledání _klíčů_můžete použít také panel hledání.
+1. V **StorSimple Device Manager**otevřete **&gt;** **klíče**pro správu. K vyhledání _klíčů_můžete použít také panel hledání.
     
 2. Klikněte na **vygenerovat klíč**.
 

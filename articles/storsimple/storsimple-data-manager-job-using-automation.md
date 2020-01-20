@@ -1,129 +1,121 @@
 ---
-title: Pomocí Azure Automation ke spuštění úlohy správce dat StorSimple | Dokumentace Microsoftu
-description: Další informace o použití Azure Automation. pro spuštění úlohy správce dat StorSimple
-services: storsimple
-documentationcenter: NA
+title: Spuštění úlohy v StorSimple Data Manager pomocí Azure Automation
+description: Naučte se používat Azure Automation pro aktivaci StorSimple Data Manager úloh.
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: b837aab871827c468295a365727a282f6c8a1a4b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 034b4996672f0961cf31d342aa6055482f099b9f
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60633516"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273996"
 ---
-# <a name="use-azure-automation-to-trigger-a-job"></a>Pomocí Azure Automation k aktivaci úlohy
+# <a name="use-azure-automation-to-trigger-a-job"></a>Aktivace úlohy pomocí Azure Automation
 
-Tento článek vysvětluje, jak můžete pomocí funkce transformace dat ve službě StorSimple Data Manageru k transformaci dat zařízení StorSimple. Můžete spustit úlohu transformace dat dvěma způsoby: 
+Tento článek vysvětluje, jak můžete pomocí funkce transformace dat v rámci služby StorSimple Data Manager transformovat data zařízení StorSimple. Úlohu transformace dat můžete spustit dvěma způsoby: 
 
  - Použití sady .NET SDK
- - Použití runbooku Azure Automation
+ - Použití Azure Automation Runbook
  
-Tento článek podrobně popisuje, jak vytvořit runbook Azure Automation a použít jej k zahájení úlohu transformace dat. Další informace o tom, jak inicializovat transformace dat pomocí sady .NET SDK, přejděte na [použití sady .NET SDK k aktivaci úloh transformace dat](storsimple-data-manager-dotnet-jobs.md).
+Tento článek podrobně popisuje, jak vytvořit sadu Azure Automation Runbook a pak ji použít k zahájení úlohy transformace dat. Další informace o tom, jak iniciovat transformaci dat pomocí sady .NET SDK, najdete v tématu [použití sady .NET SDK pro aktivaci úloh transformace dat](storsimple-data-manager-dotnet-jobs.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že máte:
+Než začnete, ujistěte se, že máte následující:
 
-*   Azure PowerShell v klientském počítači nainstalována. [Stáhněte si prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps).
-*   Definice správně nakonfigurovanou úlohy ve službě StorSimple Data Manageru v rámci skupiny prostředků.
-*   Stáhněte si [ `DataTransformationApp.zip` ](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/raw/master/Azure%20Automation%20For%20Data%20Manager/DataTransformationApp.zip) soubor z úložiště Githubu. 
-*   Stáhněte si [ `Trigger-DataTransformation-Job.ps1` ](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Trigger-DataTransformation-Job.ps1) skript z úložiště GitHub.
+*   Azure PowerShell nainstalované v klientském počítači. [Stáhněte si Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps).
+*   Správně nakonfigurovaná definice úlohy ve StorSimple Data Manager službě v rámci skupiny prostředků.
+*   Stáhněte soubor [`DataTransformationApp.zip`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/raw/master/Azure%20Automation%20For%20Data%20Manager/DataTransformationApp.zip) z úložiště GitHub. 
+*   Stáhněte si skript [`Trigger-DataTransformation-Job.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Trigger-DataTransformation-Job.ps1) z úložiště GitHub.
 
 ## <a name="step-by-step-procedure"></a>Podrobný postup
 
-### <a name="set-up-the-automation-account"></a>Při vytváření účtu Automation
+### <a name="set-up-the-automation-account"></a>Nastavení účtu Automation
 
-1. Vytvoření účtu automation spustit jako pro Azure na webu Azure Portal. Uděláte to tak, přejděte na **Azure marketplace > vše, co** a vyhledejte **automatizace**. Vyberte **účty Automation**.
+1. Vytvořte v Azure Portal účet služby Automation spustit jako pro Azure. Provedete to tak, že přejdete na **Azure marketplace > vše** a pak vyhledáte **Automation**. Vyberte **účty Automation**.
 
-    ![Vytvořit účet automation spustit jako](./media/storsimple-data-manager-job-using-automation/search-automation-account1.png)
+    ![Vytvořit účet Spustit jako Automation](./media/storsimple-data-manager-job-using-automation/search-automation-account1.png)
 
-2. Chcete-li přidat nový účet automation, klikněte na tlačítko **+ přidat**.
+2. Pokud chcete přidat nový účet Automation, klikněte na **+ Přidat**.
 
-    ![Vytvořit účet automation spustit jako](./media/storsimple-data-manager-job-using-automation/add-automation-account1.png)
+    ![Vytvořit účet Spustit jako Automation](./media/storsimple-data-manager-job-using-automation/add-automation-account1.png)
 
-3. V **přidání automatizace**:
+3. V okně **Přidat automatizaci**:
 
-   1. Zadat **název** vašeho účtu automation.
-   2. Vyberte **předplatné** propojenému s vaší službou StorSimple Data Manageru.
-   3. Vytvořit novou skupinu prostředků nebo vyberte existující skupinu prostředků.
+   1. Zadejte **název** svého účtu Automation.
+   2. Vyberte **předplatné** propojené s vaší službou StorSimple data Manager.
+   3. Vytvořte novou skupinu prostředků nebo vyberte některou z existujících skupin prostředků.
    4. Vyberte **Umístění**.
-   5. Ponechte výchozí nastavení **vytvořit účet Spustit jako** zaškrtnutou možnost.
-   6. Chcete-li získat odkaz na rychlý přístup na řídicím panelu, zkontrolujte **připnout na řídicí panel**. Klikněte na možnost **Vytvořit**.
+   5. Ponechte vybranou možnost výchozí **účet Spustit jako** .
+   6. Odkaz pro rychlý přístup na řídicím panelu získáte tak, že zkontrolujete **Připnout na řídicí panel**. Klikněte na **Vytvořit**.
 
-      ![Vytvořit účet automation spustit jako](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
+      ![Vytvořit účet Spustit jako Automation](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
     
-      Po úspěšném vytvoření účtu automation, budete upozorněni.
+      Po úspěšném vytvoření účtu Automation budete upozorněni.
     
-      ![Oznámení pro nasazení účtu automation](./media/storsimple-data-manager-job-using-automation/deployment-automation-account-notification1.png)
+      ![Oznámení pro nasazení účtu Automation](./media/storsimple-data-manager-job-using-automation/deployment-automation-account-notification1.png)
 
-      Další informace najdete v části [vytvořit účet Spustit jako](../automation/automation-create-runas-account.md).
+      Další informace získáte, když přejdete na [vytvořit účet Spustit jako](../automation/automation-create-runas-account.md).
 
-3. V nově vytvořeného účtu, přejděte na **sdílené prostředky > moduly** a klikněte na tlačítko **+ přidat modul**.
+3. V nově vytvořeném účtu přejděte na **sdílené prostředky > moduly** a klikněte na **+ Přidat modul**.
 
-    ![Import modulu 1](./media/storsimple-data-manager-job-using-automation/import-module-1.png)
+    ![Importovat modul 1](./media/storsimple-data-manager-job-using-automation/import-module-1.png)
 
-4. Přejděte do umístění `DataTransformationApp.zip` souboru ze svého místního počítače a vyberte a otevřete modul. Klikněte na tlačítko **OK** importujte modul.
+4. Přejděte do umístění `DataTransformationApp.zip` souboru z místního počítače a vyberte a otevřete modul. Kliknutím na tlačítko **OK** Importujte modul.
 
     ![Importovat modul 2](./media/storsimple-data-manager-job-using-automation/import-module-2.png)
 
-   Azure Automation importuje modul ke svému účtu, extrahuje metadata modulu. Tato operace může trvat několik minut.
+   Když Azure Automation importuje modul do svého účtu, extrahuje metadata o modulu. Tato operace může trvat několik minut.
 
    ![Importovat modul 4](./media/storsimple-data-manager-job-using-automation/import-module-4.png)
 
-5. Po dokončení tohoto procesu se zobrazí oznámení, že se nasazuje modulu a další oznámení.  Stav v **moduly** změny **dostupné**.
+5. Obdržíte oznámení o tom, že je modul nasazený, a další oznámení po dokončení procesu.  Stav v **modulech** se změní na **k dispozici**.
 
-    ![Import modulu 5](./media/storsimple-data-manager-job-using-automation/import-module-5.png)
+    ![Importovat modul 5](./media/storsimple-data-manager-job-using-automation/import-module-5.png)
 
-### <a name="import-publish-and-run-automation-runbook"></a>Import, publikování a spuštění runbooku Automation
+### <a name="import-publish-and-run-automation-runbook"></a>Import, publikování a spuštění Runbooku služby Automation
 
-Postupujte následovně chcete importovat, publikování a spuštění sady runbook k aktivaci definice úlohy.
+Proveďte následující kroky pro import, publikování a spuštění sady Runbook pro aktivaci definice úlohy.
 
-1. Na webu Azure Portal otevřete účet Automation. Přejděte na **automatizace procesů > sady Runbook** a klikněte na tlačítko **+ přidat runbook**.
+1. Na webu Azure Portal otevřete účet Automation. Přejděte na **proces automatizace automatizace > Runbooky** a klikněte na **+ Přidat Runbook**.
 
-    ![Přidat runbook 1](./media/storsimple-data-manager-job-using-automation/add-runbook-1.png)
+    ![Přidat Runbook 1](./media/storsimple-data-manager-job-using-automation/add-runbook-1.png)
 
-2. V **přidat runbook**, klikněte na tlačítko **importovat existující runbook**.
+2. V nabídce **Přidat Runbook**klikněte na **importovat existující Runbook**.
 
-3. Přejděte na soubor skriptu Azure Powershellu `Trigger-DataTransformation-Job.ps1` pro **soubor sady Runbook**. Typ runbooku se vybere automaticky. Zadejte název a volitelný popis pro sadu runbook. Klikněte na možnost **Vytvořit**.
+3. Najeďte na soubor skriptu Azure PowerShell `Trigger-DataTransformation-Job.ps1` souboru **sady Runbook**. Typ Runbooku se vybere automaticky. Zadejte název a nepovinný popis Runbooku. Klikněte na **Vytvořit**.
 
-    ![Přidat runbook 2](./media/storsimple-data-manager-job-using-automation/add-runbook-2.png)
+    ![Přidat Runbook 2](./media/storsimple-data-manager-job-using-automation/add-runbook-2.png)
 
-4. Nová sada runbook se zobrazí v seznamu sad runbook pro účet Automation. Vyberte a klikněte na tuto sadu runbook.
+4. Nová sada Runbook se zobrazí v seznamu sad Runbook pro účet Automation. Vyberte tuto sadu Runbook a klikněte na ni.
 
-    ![Přidat runbook 3](./media/storsimple-data-manager-job-using-automation/add-runbook-3.png)
+    ![Přidat Runbook 3](./media/storsimple-data-manager-job-using-automation/add-runbook-3.png)
 
-5. Upravit sadu runbook a klikněte na tlačítko **Test** podokně.
+5. Upravte Runbook a klikněte na **testovací** podokno.
 
-    ![Přidat runbook 4](./media/storsimple-data-manager-job-using-automation/add-runbook-4.png)
+    ![Přidat sadu Runbook 4](./media/storsimple-data-manager-job-using-automation/add-runbook-4.png)
 
-6. Zadejte parametry, jako je například název vaší služby StorSimple Data Manager, v přidružené skupině prostředků a název definice úlohy. **Spustit** testu. Po dokončení spuštění se generuje sestava. Další informace najdete v části Jak [otestování sady runbook](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook).
+6. Zadejte parametry, jako je název služby StorSimple Data Manager, přidružená skupina prostředků a název definice úlohy. **Spusťte** test. Sestava je generována po dokončení spuštění. Další informace najdete v tématu Postup [testování Runbooku](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook).
 
-    ![Přidat runbook 8](./media/storsimple-data-manager-job-using-automation/add-runbook-8.png)    
+    ![Přidat Runbook 8](./media/storsimple-data-manager-job-using-automation/add-runbook-8.png)    
 
-7. Zkontrolujte výstup z runbooku v testovací podokno. Při splnění zavřete podokno. Klikněte na tlačítko **publikovat** a po zobrazení výzvy k potvrzení, potvrzení a publikovat sadu runbook.
+7. Zkontrolujte výstup Runbooku v podokně test. V případě splnění zavřete podokno. Klikněte na **publikovat** a po zobrazení výzvy k potvrzení, potvrzení a publikování Runbooku.
 
-    ![Přidat runbook 6](./media/storsimple-data-manager-job-using-automation/add-runbook-6.png)
+    ![Přidat Runbook 6](./media/storsimple-data-manager-job-using-automation/add-runbook-6.png)
 
-8. Přejděte zpět na **sady Runbook** a vyberte nově vytvořenou sadu runbook.
+8. Vraťte se na **Runbooky** a vyberte nově vytvořenou sadu Runbook.
 
-    ![Přidat runbook 7](./media/storsimple-data-manager-job-using-automation/add-runbook-7.png)
+    ![Přidat Runbook 7](./media/storsimple-data-manager-job-using-automation/add-runbook-7.png)
 
-9. **Spustit** sady runbook. V **spustit sadu runbook**, zadejte všechny parametry. Klikněte na tlačítko **OK** odeslat a spustit úlohu transformace data.
+9. **Spusťte** Runbook. V části **Spustit Runbook**zadejte všechny parametry. Kliknutím na tlačítko **OK** odešlete a spusťte úlohu transformace dat.
 
-10. Pokud chcete monitorovat průběh úlohy na webu Azure portal, přejděte na **úlohy** ve službě StorSimple Data Manageru. Vyberte a klikněte na úlohu chcete-li zobrazit podrobnosti o úloze.
+10. Pokud chcete monitorovat průběh úloh v Azure Portal, Projděte si **úlohy** ve službě StorSimple data Manager. Pokud chcete zobrazit podrobnosti úlohy, vyberte úlohu a klikněte na ni.
 
-    ![Přidat runbook 10](./media/storsimple-data-manager-job-using-automation/add-runbook-10.png)
+    ![Přidat sadu Runbook 10](./media/storsimple-data-manager-job-using-automation/add-runbook-10.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Použití StorSimple Data Manager uživatelského rozhraní pro transformaci dat](storsimple-data-manager-ui.md).
+[K transformaci dat použijte StorSimple data Manager uživatelské rozhraní](storsimple-data-manager-ui.md).

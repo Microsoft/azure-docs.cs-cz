@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/11/2019
+ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 203bff23b2ae1a5e5e19b4abc323c3ffeb31f367
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c9d3a876b75e7d3ed8ff43217227db1a524206f2
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975917"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273482"
 ---
 # <a name="create-an-azure-storage-account"></a>Vytvoření účtu služby Azure Storage
 
@@ -43,7 +43,7 @@ Můžete se přihlásit k Azure a spustit příkazy rozhraní příkazového ř�
 - Příkazy rozhraní příkazového řádku můžete spustit z Azure Portal v Azure Cloud Shell.
 - Můžete nainstalovat rozhraní příkazového řádku a spustit příkazy rozhraní příkazového řádku místně.
 
-### <a name="use-azure-cloud-shell"></a>Použití služby Azure Cloud Shell
+### <a name="use-azure-cloud-shell"></a>Použití Azure Cloud Shellu
 
 Azure Cloud Shell je volně dostupné prostředí Bash, které můžete spustit přímo z webu Azure Portal. Rozhraní příkazového řádku Azure je předem nainstalované a nakonfigurované pro použití s vaším účtem. V nabídce v pravé horní části Azure Portal klikněte na tlačítko **Cloud Shell** :
 
@@ -67,7 +67,7 @@ Rozhraní příkazového řádku Azure můžete také nainstalovat a používat 
 
 # <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com).
+Přihlaste se k [Portálu Azure](https://portal.azure.com).
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -130,7 +130,7 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Name <account-name> `
   -Location $location `
   -SkuName Standard_RAGRS `
-  -Kind StorageV2 
+  -Kind StorageV2
 ```
 
 Pokud chcete vytvořit účet úložiště pro obecné účely v2 s jinou možností replikace, nahraďte požadovanou hodnotu v následující tabulce pro parametr **SkuName** .
@@ -222,7 +222,7 @@ Odstranění účtu úložiště odstraní celý účet včetně všech dat v ú
 # <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. V [Azure Portal](https://portal.azure.com)přejděte na účet úložiště.
-1. Klikněte na **Odstranit**.
+1. Klikněte na tlačítko **Odstranit**.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 

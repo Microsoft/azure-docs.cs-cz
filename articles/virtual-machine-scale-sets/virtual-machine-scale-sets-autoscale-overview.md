@@ -1,81 +1,75 @@
 ---
-title: Přehled automatického škálování se škálovacími sadami virtuálních počítačů Azure | Dokumentace Microsoftu
-description: Další informace o různých způsobech, jakými může automaticky škálovat škálovací sady založené na výkon nebo podle pevného plánu Azure virtuálních počítačů
-services: virtual-machine-scale-sets
-documentationcenter: ''
+title: Přehled automatického škálování pomocí služby Azure Virtual Machine Scale Sets
+description: Seznamte se s různými způsoby, jak můžete automaticky škálovat sadu škálování virtuálních počítačů Azure na základě výkonu nebo podle pevného plánu.
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 ms.assetid: d29a3385-179e-4331-a315-daa7ea5701df
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 610f3073594f73f04a68865593be6bfb4188d4f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eb96be187502afcccfd3fb2c88f709facfbc3b59
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60883666"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278141"
 ---
-# <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Nastaví přehled automatického škálování díky škálování virtuálních počítačů Azure
-Škálovací sady virtuálních počítačů Azure můžete automaticky zvýšit nebo snížit počet instancí virtuálních počítačů, na kterých běží vaše aplikace. Toto chování automatizované a elastické snižuje režie na správu pro monitorování a optimalizace výkonu vaší aplikace. Můžete vytvořit pravidla, která definují přijatelný výkon pro pozitivní zkušenosti. Pokud jsou splněny tyto definované prahové hodnoty, pravidla automatického škálování provést akci Upravit kapacitu škálovací sady. Můžete také naplánovat události pro automatické zvýšení nebo snížení kapacity škálovací sady na pevnou časy. Tento článek obsahuje základní informace o výkonu, které metriky jsou k dispozici a jaké akce automatického škálování můžete provádět.
+# <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Přehled automatického škálování pomocí služby Azure Virtual Machine Scale Sets
+Sada škálování virtuálních počítačů Azure může automaticky zvýšit nebo snížit počet instancí virtuálních počítačů, které spouštějí vaši aplikaci. Toto automatizované a elastické chování omezuje režijní náklady na správu, které sledují a optimalizují výkon vaší aplikace. Vytvoříte pravidla, která definují přijatelný výkon pro pozitivní prostředí zákazníka. Když jsou splněné tyto prahové hodnoty, pravidla automatického škálování přijímají akci pro úpravu kapacity sady škálování. Můžete také naplánovat události pro automatické zvýšení nebo snížení kapacity sady škálování v pevně dané době. Tento článek poskytuje přehled o dostupných metrikách výkonu a o tom, jaké akce lze provádět pomocí automatického škálování.
 
 
 ## <a name="benefits-of-autoscale"></a>Výhody automatického škálování
 Pokud se požadavky na vaši aplikaci zvýší, zvýší se i zatížení instancí virtuálních počítačů ve škálovací sadě. Pokud je toto zvýšené zatížení konzistentní, a nejedná se pouze o krátkou poptávku, můžete nakonfigurovat pravidla automatického škálování pro zvýšení počtu instancí virtuálních počítačů ve škálovací sadě.
 
-Po vytvoření těchto instancí virtuálních počítačů a nasazení aplikací do nich začne škálovací sada distribuovat provoz prostřednictvím nástroje pro vyrovnávání zatížení. Můžete řídit, které metriky pro monitorování, jako je například využití procesoru nebo paměti, jak dlouho musí zatížení aplikace dosahovat dané prahové hodnoty a nastavte počet instancí virtuálních počítačů, které chcete přidat do škálovací.
+Po vytvoření těchto instancí virtuálních počítačů a nasazení aplikací do nich začne škálovací sada distribuovat provoz prostřednictvím nástroje pro vyrovnávání zatížení. Můžete řídit, jaké metriky se mají monitorovat, jako je například procesor nebo paměť, jak dlouho musí zatížení aplikace splňovat danou prahovou hodnotu, a kolik instancí virtuálních počítačů se má přidat do sady škálování.
 
 Večer nebo o víkendu se požadavky na vaši aplikaci můžou snížit. Pokud je toto snížené zatížení po určitou dobu konzistentní, můžete nakonfigurovat pravidla automatického škálování pro snížení počtu instancí virtuálních počítačů ve škálovací sadě. Tato akce horizontálního snížení kapacity sníží náklady na provoz škálovací sady, protože budete spouštět pouze takový počet instancí, který je potřeba ke zpracování aktuálních požadavků.
 
 
-## <a name="use-host-based-metrics"></a>Použít metriky hostitele
-Dostupné metriky této integrované hostitele můžete vytvořit pravidla automatického škálování z vašich instancí virtuálních počítačů. Metriky hostitele vám poskytnou přehled o výkonu instancí virtuálních počítačů ve škálovací sadě, aniž byste museli nainstalovat nebo nakonfigurovat další agenty a data kolekce. Pravidla automatického škálování, které používají tyto metriky můžete horizontální navýšení kapacity nebo počtu instancí virtuálních počítačů v reakci na využití procesoru, požadavky na paměť nebo přístup k disku.
+## <a name="use-host-based-metrics"></a>Použít metriky založené na hostiteli
+Můžete vytvořit pravidla automatického škálování, která zabudovanou metriky hostitele zpřístupní z instancí virtuálních počítačů. Metriky hostitele poskytují přehled o výkonu instancí virtuálních počítačů ve skupině škálování bez nutnosti instalovat nebo konfigurovat další agenty a kolekce dat. Pravidla automatického škálování, která používají tyto metriky, můžou škálovat nebo v počtu instancí virtuálních počítačů v reakci na využití procesoru, nároky na paměť nebo přístup k disku.
 
 Pravidla automatického škálování využívající metriky hostitele je možné vytvořit pomocí některého z následujících nástrojů:
 
 - [Azure Portal](virtual-machine-scale-sets-autoscale-portal.md)
 - [Azure PowerShell](tutorial-autoscale-powershell.md)
 - [Azure CLI](tutorial-autoscale-cli.md)
-- [Šablony Azure](tutorial-autoscale-template.md)
+- [Šablona Azure](tutorial-autoscale-template.md)
 
-Chcete-li vytvořit pravidla automatického škálování použít podrobnější metriky výkonu, můžete [nainstalujte a nakonfigurujte rozšíření Azure diagnostics](#in-guest-vm-metrics-with-the-azure-diagnostics-extension) na instancích virtuálních počítačů nebo [konfigurace vaší aplikace pomocí App Insights](#application-level-metrics-with-app-insights).
+Pokud chcete vytvořit pravidla automatického škálování, která používají podrobnější metriky výkonu, můžete [nainstalovat a nakonfigurovat rozšíření diagnostiky Azure](#in-guest-vm-metrics-with-the-azure-diagnostics-extension) na INSTANCÍCH virtuálních počítačů nebo [nakonfigurovat svoji aplikaci pomocí App Insights](#application-level-metrics-with-app-insights).
 
-Pravidla automatického škálování využívající metriky hostitele, metrik na hostovi virtuálního počítače se diagnostické rozšíření Azure a App Insights můžete použít následující nastavení konfigurace.
+Pravidla automatického škálování, která používají metriky založené na hostiteli, metriky virtuálního počítače hosta s diagnostickým rozšířením Azure a App Insights můžou používat následující nastavení konfigurace.
 
-### <a name="metric-sources"></a>Metriky zdroje
-Pravidla automatického škálování můžete použít metriky z jednoho z následujících zdrojů:
+### <a name="metric-sources"></a>Zdroje metriky
+Pravidla automatického škálování můžou používat metriky z jednoho z následujících zdrojů:
 
 | Zdroj metriky        | Případ použití                                                                                                                     |
 |----------------------|------------------------------------------------------------------------------------------------------------------------------|
-| Aktuální škálovací sady    | Pro metriky hostitele, které nevyžadují žádné další agenty do nainstalovány nebo nakonfigurovány.                                  |
-| Účet úložiště      | Diagnostické rozšíření Azure zapíše do úložiště Azure, který je pak zpracován k aktivaci pravidla automatického škálování metriky výkonu. |
-| Fronty služby Service Bus    | Vaše aplikace ani jiné součásti může přenášet zprávy ve frontě služby Azure Service Bus na aktivační událost pravidla.                   |
-| Application Insights | Instrumentační balíček, nainstalované ve vaší aplikaci, která jsou streamována metriky přímo z aplikace.                         |
+| Aktuální sada škálování    | Pro metriky založené na hostiteli, které nevyžadují instalaci nebo konfiguraci dalších agentů.                                  |
+| Účet úložiště      | Diagnostické rozšíření Azure zapisuje metriky výkonu do úložiště Azure, které se pak spotřebují pro aktivaci pravidel automatického škálování. |
+| Fronta služby Service Bus    | Aplikace nebo jiné komponenty mohou přenášet zprávy ve frontě Azure Service Bus pro aktivaci pravidel.                   |
+| Application Insights | Balíček instrumentace nainstalovaný ve vaší aplikaci, který streamuje metriky přímo z aplikace.                         |
 
 
 ### <a name="autoscale-rule-criteria"></a>Kritéria pravidla automatického škálování
-Následující metriky hostitele jsou k dispozici pro použití při vytváření pravidel automatického škálování. Pokud používáte diagnostické rozšíření Azure nebo App Insights, můžete definovat, které metriky pro monitorování a pomocí pravidel automatického škálování.
+Následující metriky založené na hostiteli jsou k dispozici pro použití při vytváření pravidel automatického škálování. Pokud používáte diagnostické rozšíření Azure nebo App Insights, definujete, které metriky se mají monitorovat a používat s pravidly automatického škálování.
 
 | Název metriky               |
 |---------------------------|
 | Procento CPU            |
 | Síťové vstupy                |
 | Síťové výstupy               |
-| Bajty čtení disku           |
-| Bajty zápisu disku          |
-| Čtení z disku operace/s  |
-| Operace zápisu disku/s |
-| Zbývající kredity CPU     |
-| Spotřebované kredity CPU      |
+| Bajty čtení z disku           |
+| Bajty zápisu na disk          |
+| Operace čtení z disku/s  |
+| Operace zápisu na disk/s |
+| Zbývající kredity procesoru     |
+| Spotřebované kredity procesoru      |
 
-Při vytváření pravidel automatického škálování pro danou metriku monitorování, podívejte se na jednu z následujících akcí agregace metrik pravidla:
+Když vytváříte pravidla automatického škálování pro monitorování dané metriky, pravidla se budou pohlížet na jednu z následujících akcí agregace metrik:
 
 | Typ agregace |
 |------------------|
@@ -84,66 +78,66 @@ Při vytváření pravidel automatického škálování pro danou metriku monito
 | Maximum          |
 | Celkem            |
 | Poslední             |
-| Count            |
+| Počet            |
 
-Pravidla automatického škálování se pak zobrazí, když metriky se porovná s definovanou prahovou hodnotu s jedním z následujících operátorů:
+Pravidla automatického škálování se pak aktivují, když se metriky porovnají s definovanou prahovou hodnotou pomocí jednoho z následujících operátorů:
 
 | Operátor                 |
 |--------------------------|
-| Větší než             |
+| Více než             |
 | Je větší nebo rovno |
-| Je menší než                |
+| Méně než                |
 | Je menší nebo rovno    |
 | Je rovno                 |
 | Není rovno             |
 
 
-### <a name="actions-when-rules-trigger"></a>Akce při aktivaci pravidla
-Když automatické škálování pravidlo aktivuje, může automaticky škálovat škálovací sady v jednom z následujících způsobů:
+### <a name="actions-when-rules-trigger"></a>Akce při aktivaci pravidel
+Když se pravidlo automatického škálování aktivuje, vaše sada škálování se může automaticky škálovat jedním z následujících způsobů:
 
 | Operace škálování     | Případ použití                                                                                                                               |
 |---------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| Zvýšit počet o   | Pevný počet instancí virtuálních počítačů k vytvoření. Užitečné ve škálovacích sadách s menší počet virtuálních počítačů.                                           |
-| Zvýšit procento o | Založený na procentech zvýšení instancí virtuálních počítačů. Vhodné pro pracovat ve větším měřítku nastaví, pokud oprava zvýšení nemusí výkon výrazně. |
-| Zvýšit počet na   | Vytvořte velký počet instancí virtuálního počítače jsou potřeba k dosažení požadované maximální velikost.                                                            |
-| Snížit počet o   | Pevný počet instancí virtuálních počítačů odebrat. Užitečné ve škálovacích sadách s menší počet virtuálních počítačů.                                           |
-| Snížit procento o | Založený na procentech snížení instancí virtuálních počítačů. Vhodné pro pracovat ve větším měřítku nastaví, pokud oprava zvýšení nemusí výrazně snížit náklady a spotřeba prostředků. |
-| Snížit počet na   | Odeberte, protože velký počet instancí virtuálního počítače jsou potřeba k dosažení požadované minimální velikost.                                                            |
+| Zvýšit počet o   | Pevný počet instancí virtuálních počítačů, které se mají vytvořit Užitečné v sadě škálování s menším počtem virtuálních počítačů.                                           |
+| Zvýšit procento o | Nárůst počtu instancí virtuálních počítačů založených na procentech. Dobrá pro škálované sady škálování, kde pevně navýšení kapacity nemusí výrazně zlepšit výkon. |
+| Zvýšit počet na   | Vytvořte tolik instancí virtuálních počítačů potřebných k dosažení požadovaného maximálního množství.                                                            |
+| Snížit počet o   | Pevný počet instancí virtuálních počítačů, které se mají odebrat Užitečné v sadě škálování s menším počtem virtuálních počítačů.                                           |
+| Snížit procento o | Snížení počtu instancí virtuálních počítačů založených na procentech. Dobrá pro škálované sady škálování, kde pevně navýšení kapacity nemusí výrazně snížit spotřebu prostředků a náklady. |
+| Snížit počet na   | Odebrat tolik instancí virtuálních počítačů potřebných k dosažení požadované minimální velikosti.                                                            |
 
 
-## <a name="in-guest-vm-metrics-with-the-azure-diagnostics-extension"></a>Metriky na hostovi virtuálního počítače pomocí rozšíření Azure diagnostics
-Rozšíření Azure diagnostics je agenta, který běží v rámci instance virtuálního počítače. Agent sleduje a metriky výkonu uloží do úložiště Azure. Tyto metriky výkonu obsahují podrobnější informace o stavu virtuálního počítače, například *AverageReadTime* disků nebo *PercentIdleTime* pro procesor. Můžete vytvořit pravidla automatického škálování, které jsou založené na podrobnější povědomí o výkon virtuálního počítače, nikoli pouze procento vytížení procesoru využití nebo paměti.
+## <a name="in-guest-vm-metrics-with-the-azure-diagnostics-extension"></a>Metriky virtuálního počítače hosta s rozšířením Azure Diagnostics
+Rozšíření Azure Diagnostics je agent, který běží v instanci virtuálního počítače. Agent monitoruje a ukládá metriky výkonu do služby Azure Storage. Tyto metriky výkonu obsahují podrobnější informace o stavu virtuálního počítače, například *AverageReadTime* pro disky nebo *PercentIdleTime* pro procesor. Pravidla automatického škálování můžete vytvořit na základě podrobnějšího povědomí o výkonu virtuálních počítačů, a to nejen procento využití procesoru nebo spotřeby paměti.
 
-Použití rozšíření diagnostiky Azure, musíte vytvořit účty úložiště Azure pro vaše instance virtuálních počítačů, nainstalujte agenta diagnostiky Azure a konfigurace virtuálních počítačů do datového proudu konkrétních čítačích výkonu do účtu úložiště.
+Pokud chcete používat rozšíření Azure Diagnostics, musíte pro své instance virtuálních počítačů vytvořit účty úložiště Azure, nainstalovat agenta diagnostiky Azure a potom nakonfigurovat virtuální počítače tak, aby streamoval konkrétní čítače výkonu na účet úložiště.
 
 Další informace najdete v článcích popisujících povolení diagnostického rozšíření Azure na [virtuálním počítači s Linuxem](../virtual-machines/extensions/diagnostics-linux.md) nebo [virtuálním počítači s Windows](../virtual-machines/extensions/diagnostics-windows.md).
 
 
-## <a name="application-level-metrics-with-app-insights"></a>Metriky na úrovni aplikace pomocí App Insights
-Pokud chcete získat další viditelnosti v výkon vašich aplikací, můžete použít Application Insights. Nainstalujete malý Instrumentační balíček ve vaší aplikaci, která monitoruje aplikace a odesílá telemetrická data do Azure. Můžete monitorovat metriky, jako je doba odezvy aplikace, stav zatížení stránky a počítá relace. Tyto metriky aplikace lze použít k vytvoření pravidla automatického škálování na úrovni detailní a vložené při aktivaci pravidla založená na užitečné přehledy, které může mít vliv na prostředí pro zákazníky.
+## <a name="application-level-metrics-with-app-insights"></a>Metriky na úrovni aplikace s využitím App Insights
+Chcete-li získat větší přehled o výkonu aplikací, můžete použít Application Insights. Do své aplikace nainstalujete malý balíček instrumentace, který monitoruje aplikaci a pošle telemetrii do Azure. Můžete monitorovat metriky, jako jsou doby odezvy vaší aplikace, výkon načtení stránky a počet relací. Tyto metriky aplikací se dají použít k vytvoření pravidel automatického škálování na detailní a vložené úrovni, když jste aktivovali pravidla na základě užitečných přehledů, které by mohly mít dopad na činnost zákazníků.
 
 Další informace o službě App Insights najdete v tématu [Co je Application Insights](../azure-monitor/app/app-insights-overview.md).
 
 
-## <a name="scheduled-autoscale"></a>Plánovaným automatickým Škálováním
-Můžete také vytvořit pravidla automatického škálování podle plánů. Tato pravidla založené na plánu umožňují automaticky škálovat počet instancí virtuálních počítačů na pevnou časy. Pomocí pravidel založených na výkonu aplikace před trigger pravidla automatického škálování může být dopad na výkon a nové instance virtuálních počítačů jsou zřízené. Pokud takový požadavek lze předvídat, dalších instancí virtuálních počítačů jsou zřízené a je připravený k vyžádání používání dalších zákazníků.
+## <a name="scheduled-autoscale"></a>Naplánované automatické škálování
+Můžete také vytvořit pravidla automatického škálování na základě plánů. Tato pravidla založená na plánech umožňují automaticky škálovat počet instancí virtuálních počítačů v pevně uvedených časech. V případě pravidel založených na výkonu může být aplikace ovlivněna výkonem před triggerem pravidel automatického škálování a jsou zřízeny nové instance virtuálních počítačů. Pokud očekáváte takovou poptávku, budou dodatečné instance virtuálních počítačů zřízené a připravené na další zákaznická použití a požadavky na aplikaci.
 
-Následující příklady jsou scénáře, které můžou mít užitek použití pravidel automatického škálování na základě plánu:
+V následujících příkladech jsou scénáře, které můžou využívat pravidla automatického škálování na základě plánu:
 
-- Automaticky škálujte počet instancí virtuálních počítačů na začátku pracovního dne, kdy se zvyšuje poptávky zákazníků. Na konci pracovního dne automatické škálování počtu instancí virtuálních počítačů při nízkém využívání aplikací přes noc minimalizovat náklady na prostředky.
-- Pokud aplikace používá oddělení silně na určité části měsíc nebo fiskální cyklu, automatické škálování počtu instancí virtuálních počítačů tak, aby vyhovovaly jejich nárokům na další.
-- Když je marketing události, propagační akce nebo svátku prodej, může automaticky škálovat počet instancí virtuálních počítačů předem očekávané zákazníka. 
+- Automatické horizontální navýšení kapacity počtu instancí virtuálních počítačů na začátku pracovního dne, když se zvyšuje poptávka zákazníka Na konci pracovního dne automaticky škáluje počet instancí virtuálních počítačů, aby se minimalizovaly náklady na prostředky v případě nízkého využití aplikace.
+- Pokud oddělení používá aplikaci silně v určitých částech měsíce nebo fiskálního cyklu, automaticky škáluje počet instancí virtuálních počítačů tak, aby vyhovovaly jejich dalším požadavkům.
+- V případě, že existuje marketingová událost, povýšení nebo prázdninový prodej, můžete automaticky škálovat počet instancí virtuálních počítačů před předpokládanou zákaznickou poptávkou. 
 
 
-## <a name="next-steps"></a>Další postup
-Můžete vytvořit pravidla automatického škálování využívající metriky hostitele s jedním z následujících nástrojů:
+## <a name="next-steps"></a>Další kroky
+Můžete vytvořit pravidla automatického škálování, která používají metriky založené na hostiteli s jedním z následujících nástrojů:
 
 - [Azure PowerShell](tutorial-autoscale-powershell.md)
 - [Azure CLI](tutorial-autoscale-cli.md)
-- [Šablony Azure](tutorial-autoscale-template.md)
+- [Šablona Azure](tutorial-autoscale-template.md)
 
-Tento přehled podrobné pomocí pravidla automatického škálování horizontálně škálovat a zvýšit nebo snížit *číslo* instancí virtuálních počítačů ve škálovací nastavit. Můžete také škálovat vertikálně zvyšte nebo snižte instance virtuálního počítače *velikost*. Další informace najdete v tématu [vertikální automatické škálování s Virtual Machine Scale sets](virtual-machine-scale-sets-vertical-scale-reprovision.md).
+Tento přehled podrobně popisuje, jak používat pravidla automatického škálování pro horizontální škálování a zvýšení nebo snížení *počtu* instancí virtuálních počítačů ve vaší sadě škálování. *Velikost*instance virtuálního počítače můžete zvýšit nebo snížit také vertikálně. Další informace najdete v tématu [vertikální automatické škálování pomocí služby Virtual Machine Scale Sets](virtual-machine-scale-sets-vertical-scale-reprovision.md).
 
-Informace o tom, jak spravovat vaše instance virtuálních počítačů najdete v tématu [Správa škálovacích sad virtuálních počítačů pomocí Azure Powershellu](virtual-machine-scale-sets-windows-manage.md).
+Informace o tom, jak spravovat instance virtuálních počítačů, najdete v tématu [Správa služby Virtual Machine Scale Sets pomocí Azure PowerShell](virtual-machine-scale-sets-windows-manage.md).
 
-Zjistěte, jak generovat výstrahy, když vaše automatické škálování pravidla aktivační událost, najdete v článku [pomocí akcí automatického škálování můžete poslat e-mail a webhook oznámení výstrah ve službě Azure Monitor](../azure-monitor/platform/autoscale-webhook-email.md). Můžete také [pomocí protokolů auditu odesílat emailová a webhooková oznámení výstrah ve službě Azure Monitor](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md).
+Informace o tom, jak generovat výstrahy při aktivaci pravidel automatického škálování, najdete [v tématu použití akcí automatického škálování k odesílání oznámení o výstrahách e-mailu a Webhooku v Azure monitor](../azure-monitor/platform/autoscale-webhook-email.md). [Protokoly auditu můžete použít také k posílání oznámení o výstrahách e-mailu a Webhooku v Azure monitor](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md).

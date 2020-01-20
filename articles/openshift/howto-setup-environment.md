@@ -1,20 +1,18 @@
 ---
-title: Nastavení vývojového prostředí Azure Red Hat OpenShift | Microsoft Docs
+title: Nastavení vývojového prostředí Azure Red Hat OpenShift
 description: Tady jsou požadavky pro práci s Microsoft Azure Red Hat OpenShift.
-services: openshift
 keywords: nastavení nastavení Red Hat OpenShift
 author: jimzim
 ms.author: jzim
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: container-service
-manager: jeconnoc
-ms.openlocfilehash: fa09ed90258a62d37dafeea5f4760e1fabdc210b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 559c932c4826e82f36c09b85ee8da4186d90d34d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581602"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276091"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Nastavení vývojového prostředí Azure Red Hat OpenShift
 
@@ -100,7 +98,7 @@ Pokud chcete tyto poskytovatele a funkce zaregistrovat ručně, použijte násle
 
 Služba Azure Red Hat OpenShift vyžaduje přidruženého tenanta Azure Active Directory (Azure AD), který představuje vaši organizaci a její vztah k Microsoftu. Váš tenant služby Azure AD umožňuje registrovat, sestavovat a spravovat aplikace a také používat další služby Azure.
 
-Pokud Azure AD nemáte k použití jako tenanta pro cluster Azure Red Hat OpenShift nebo chcete vytvořit tenanta pro testování, postupujte podle pokynů v tématu [Vytvoření tenanta Azure AD pro cluster Azure Red Hat OpenShift](howto-create-tenant.md) , než budete pokračovat v tomto průvodci. .
+Pokud Azure AD nemáte k použití jako tenanta pro cluster Azure Red Hat OpenShift nebo chcete vytvořit tenanta pro testování, postupujte podle pokynů v tématu [Vytvoření tenanta Azure AD pro cluster Azure Red Hat OpenShift](howto-create-tenant.md) a teprve potom pokračujte v této příručce.
 
 ## <a name="create-an-azure-ad-user-security-group-and-application-object"></a>Vytvoření uživatele služby Azure AD, skupiny zabezpečení a objektu aplikace
 

@@ -1,30 +1,22 @@
 ---
-title: Kurz – Vytvoření a použití disků pro škálovací sady pomocí Azure CLI | Microsoft Docs
+title: Kurz – vytvoření a použití disků pro škálované sady pomocí Azure CLI
 description: Zjistěte, jak pomocí Azure CLI vytvořit a používat spravované disky se škálovací sadou virtuálních počítačů, včetně přidání, přípravy, výpisu a odpojení disků.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 58090e860b79d59021d467fcf73596271c91c7f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 01dbbcddf7df8e261e865fbb61c1fcfd5abbd5fc
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60329444"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278235"
 ---
-# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Kurz: Vytvoření a použití disků se škálovací sady virtuálních počítačů pomocí rozhraní příkazového řádku Azure
-Škálovací sady virtuálních počítačů využívají disky k ukládání operačních systémů, aplikací a dat instancí virtuálních počítačů. Při vytváření a správě škálovací sady je důležité, abyste zvolili vhodnou velikost disku a konfiguraci pro očekávané úlohy. Tento kurz se zabývá vytvořením a správou disků virtuálních počítačů. V tomto kurzu se naučíte:
+# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Kurz: Vytvoření a použití disků se škálovací sadou virtuálních počítačů pomocí Azure CLI
+Škálovací sady virtuálních počítačů využívají disky k ukládání operačních systémů, aplikací a dat instancí virtuálních počítačů. Při vytváření a správě škálovací sady je důležité, abyste zvolili vhodnou velikost disku a konfiguraci pro očekávané úlohy. Tento kurz se zabývá vytvořením a správou disků virtuálních počítačů. Co se v tomto kurzu naučíte:
 
 > [!div class="checklist"]
 > * Disky s operačním systémem a dočasné disky
@@ -37,7 +29,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.29 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.29 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
 
 ## <a name="default-azure-disks"></a>Výchozí disky v Azure
@@ -48,12 +40,12 @@ Při vytváření nebo škálování škálovací sady se ke každé instanci vi
 **Dočasný disk** – Dočasné disky používají disk SSD, který je umístěný na stejném hostiteli Azure jako instance virtuálního počítače. Tyto disky mají vysoký výkon a můžou se používat pro operace, jako je zpracování dočasných dat. Pokud však dojde k přesunu instance virtuálního počítače na nového hostitele, všechna data uložená na dočasném disku se odeberou. Velikost dočasného disku se určuje podle velikosti instance virtuálního počítače. Dočasné disky mají popisek */dev/sdb* a mají přípojný bod */mnt*.
 
 ### <a name="temporary-disk-sizes"></a>Velikosti dočasného disku
-| Type | Běžné velikosti | Maximální velikost dočasného disku (GiB) |
+| Typ | Běžné velikosti | Maximální velikost dočasného disku (GiB) |
 |----|----|----|
 | [Obecné účely](../virtual-machines/linux/sizes-general.md) | Řady A, B a D | 1600 |
-| [Optimalizované z hlediska výpočetních služeb](../virtual-machines/linux/sizes-compute.md) | Řada F | 576 |
+| [Optimalizované z hlediska výpočetních služeb](../virtual-machines/linux/sizes-compute.md) | F Series | 576 |
 | [Optimalizované z hlediska paměti](../virtual-machines/linux/sizes-memory.md) | Řady D, E, G a M | 6144 |
-| [Optimalizované z hlediska úložiště](../virtual-machines/linux/sizes-storage.md) | Řada L | 5630 |
+| [Optimalizované z hlediska úložiště](../virtual-machines/linux/sizes-storage.md) | L Series | 5630 |
 | [GPU](../virtual-machines/linux/sizes-gpu.md) | Řada N | 1440 |
 | [Vysoký výkon](../virtual-machines/linux/sizes-hpc.md) | Řady A a H | 2000 |
 
@@ -62,12 +54,12 @@ Při vytváření nebo škálování škálovací sady se ke každé instanci vi
 Pokud potřebujete instalovat aplikace a ukládat data, můžete přidat další datové disky. Datové disky by se měly používat v každé situaci, kdy se vyžaduje odolné a responzivní úložiště dat. Každý datový disk má maximální kapacitu 4 TB. Velikost instance virtuálního počítače určuje, kolik datových disků je možné připojit. Na každý virtuální procesor virtuálního počítače je možné připojit dva datové disky.
 
 ### <a name="max-data-disks-per-vm"></a>Maximum datových disků na virtuální počítač
-| Type | Běžné velikosti | Maximum datových disků na virtuální počítač |
+| Typ | Běžné velikosti | Maximum datových disků na virtuální počítač |
 |----|----|----|
 | [Obecné účely](../virtual-machines/linux/sizes-general.md) | Řady A, B a D | 64 |
-| [Optimalizované z hlediska výpočetních služeb](../virtual-machines/linux/sizes-compute.md) | Řada F | 64 |
+| [Optimalizované z hlediska výpočetních služeb](../virtual-machines/linux/sizes-compute.md) | F Series | 64 |
 | [Optimalizované z hlediska paměti](../virtual-machines/linux/sizes-memory.md) | Řady D, E, G a M | 64 |
-| [Optimalizované z hlediska úložiště](../virtual-machines/linux/sizes-storage.md) | Řada L | 64 |
+| [Optimalizované z hlediska úložiště](../virtual-machines/linux/sizes-storage.md) | L Series | 64 |
 | [GPU](../virtual-machines/linux/sizes-gpu.md) | Řada N | 64 |
 | [Vysoký výkon](../virtual-machines/linux/sizes-hpc.md) | Řady A a H | 64 |
 
@@ -84,7 +76,7 @@ Disky Premium jsou založené na vysoce výkonných discích SSD s nízkou laten
 ### <a name="premium-disk-performance"></a>Výkon disků Premium
 |Typ disku pro Premium Storage | P4 | P6 | P10 | P20 | P30 | P40 | P50 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Velikost disku (zaokrouhluje se nahoru) | 32 GB | 64 GB | 128 GB | 512 GB | 1 024 GB (1 TB) | 2 048 GB (2 TB) | 4 095 GB (4 TB) |
+| Velikost disku (zaokrouhluje se nahoru) | 32 GB | 64 GB | 128 GB | 512 GB | 1 024 GB (1 TB) | 2 048 GB (2 TB) | 4 095 GB (4 TB) |
 | Maximum vstupně-výstupních operací za sekundu (IOPS) na disk | 120 | 240 | 500 | 2 300 | 5 000 | 7 500 | 7 500 |
 Propustnost / disk | 25 MB/s | 50 MB/s | 100 MB/s | 150 MB/s | 200 MB/s | 250 MB/s | 250 MB/s |
 
@@ -297,7 +289,7 @@ az group delete --name myResourceGroup --no-wait --yes
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste zjistili, jak vytvořit a používat disky se škálovacími sadami pomocí Azure CLI:
 
 > [!div class="checklist"]

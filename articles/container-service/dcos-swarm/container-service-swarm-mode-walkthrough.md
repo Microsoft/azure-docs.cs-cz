@@ -1,22 +1,20 @@
 ---
-title: (NEPOUŽÍVANÉ) Rychlý start – cluster Azure Docker CE pro Linux
+title: ZASTARALÉ Rychlý Start – cluster Azure Docker CE pro Linux
 description: Rychle se naučíte, jak pomocí Azure CLI vytvořit cluster Docker CE pro kontejnery Linuxu ve službě Azure Container Service.
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
-ms.openlocfilehash: a7a7455ce9167a9c480d317d50fdce49e2ef06a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f492dd2bd270d3f067c05c1dc2235d54e481847
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60721776"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274880"
 ---
-# <a name="deprecated-deploy-docker-ce-cluster"></a>(NEPOUŽÍVANÉ) Nasazení clusteru Docker CE
+# <a name="deprecated-deploy-docker-ce-cluster"></a>ZASTARALÉ Nasazení clusteru Docker CE
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -32,7 +30,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku 
 
 Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure.
 
-Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v *westus2* umístění.
+Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *westus2* .
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus2
@@ -55,7 +53,7 @@ Výstup:
 
 ## <a name="create-docker-swarm-cluster"></a>Vytvoření clusteru Docker Swarm
 
-Vytvořte cluster Docker CE ve službě Azure Container Service pomocí příkazu [az acs create](/cli/azure/acs#az-acs-create). Informace v oblasti availaiblity Docker CE najdete v tématu [oblasti ACS pro Docker CE](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md)
+Vytvořte cluster Docker CE ve službě Azure Container Service pomocí příkazu [az acs create](/cli/azure/acs#az-acs-create). Informace o oblasti availaiblity Docker CE najdete v tématu [oblasti ACS pro Docker CE](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md) .
 
 Následující příklad vytvoří cluster *mySwarmCluster* s jedním hlavním linuxovým uzlem a třemi agentskými linuxovými uzly.
 
@@ -106,7 +104,6 @@ Vytvořte soubor `azure-vote.yaml` a zkopírujte do něj následující obsah.
 
 ```yaml
 version: '3'
-services:
   azure-vote-back:
     image: redis
     ports:
@@ -161,17 +158,17 @@ Pokud už cluster nepotřebujete, můžete k odebrání skupiny prostředků, s
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-## <a name="get-the-code"></a>Získání kódu
+## <a name="get-the-code"></a>Získat kód
 
 V tomto rychlém startu se k vytvoření služby Docker použily předem vytvořené image kontejneru. Související kód aplikace, soubor Dockerfile a soubor Compose jsou k dispozici na GitHubu.
 
 [https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis.git)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste nasadili cluster Docker Swarm a do něj jste nasadili vícekontejnerovou aplikaci.
 
-Další informace o integraci Dockeru swarm s Azure DevOps, i nadále CI/CD s využitím Dockeru Swarm a Azure DevOps.
+Další informace o integraci Docker Swarm s Azure DevOps najdete v části CI/CD s Docker Swarm a Azure DevOps.
 
 > [!div class="nextstepaction"]
-> [Průběžná integrace a Doručování s využitím Dockeru Swarm a Azure DevOps](./container-service-docker-swarm-setup-ci-cd.md)
+> [CI/CD s Docker Swarm a Azure DevOps](./container-service-docker-swarm-setup-ci-cd.md)

@@ -1,42 +1,40 @@
 ---
-title: (NEPOUŽÍVANÉ) Použití konceptu s Azure Container Service a Azure Container Registry
+title: ZASTARALÉ Použití konceptu s Azure Container Service a Azure Container Registry
 description: Vytvořte cluster ACS Kubernetes a službu Azure Container Registry, abyste mohli vytvořit první aplikaci v Azure pomocí nástroje Draft.
-services: container-service
 author: squillace
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: fb34be09ec08957621517c957b3570cdbcfc0468
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8d688d2918c9100019d033e93e9a3dca9e492de2
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60712666"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271133"
 ---
-# <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>(NEPOUŽÍVANÉ) Použití konceptu s Azure Container Service a Azure Container Registry k sestavení a nasazení aplikace do Kubernetes
+# <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>ZASTARALÉ Použití konceptu s Azure Container Service a Azure Container Registry k sestavení a nasazení aplikace do Kubernetes
 
 > [!TIP]
-> Pro aktualizovanou verzi, tento článek, který používá Azure Kubernetes Service, najdete v článku [použít koncept Azure Kubernetes Service (AKS)](../../aks/kubernetes-draft.md).
+> Aktualizovanou verzi tohoto článku, který používá službu Azure Kubernetes, najdete v tématu [použití konceptu ve službě Azure Kubernetes Service (AKS)](../../aks/kubernetes-draft.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 [Draft](https://aka.ms/draft) je nový opensourcový nástroj usnadňující vývoj kontejnerových aplikací a jejich nasazení do clusterů Kubernetes, který nevyžaduje téměř žádné znalosti Dockeru ani Kubernetes – dokonce je nemusíte ani instalovat. Používání nástrojů, jako je Draft, umožňuje vám a vašim týmům zaměřit se na vytváření aplikací pomocí Kubernetes, aniž byste se museli tolik zabývat infrastrukturou.
 
-Draft můžete používat s libovolným registrem imagí Dockeru a jakýmkoli clusterem Kubernetes, a to i místně. Tento kurz ukazuje, jak pomocí služby ACS s Kubernetes a ACR k vytvoření kanálu pro vývojáře za provozu, ale zabezpečené v Kubernetes pomocí nástroje Draft a jak používat Azure DNS k vystavení kanálu pro vývojáře pro ostatní uživatele v jiné doméně.
+Draft můžete používat s libovolným registrem imagí Dockeru a jakýmkoli clusterem Kubernetes, a to i místně. V tomto kurzu se dozvíte, jak pomocí služby ACS s Kubernetes a ACR vytvořit živý, ale zabezpečený kanál pro vývojáře v Kubernetes s využitím konceptu, a jak používat Azure DNS k vystavení tohoto kanálu pro vývojáře, aby mohli ostatní zobrazit v doméně.
 
 
 ## <a name="create-an-azure-container-registry"></a>Vytvoření služby Azure Container Registry
 Můžete snadno [vytvořit novou službu Azure Container Registry](../../container-registry/container-registry-get-started-azure-cli.md), ale postup je následující:
 
-1. Vytvořte skupinu prostředků Azure ke správě vašeho registru ACR a cluster Kubernetes ve službě ACS.
+1. Vytvořte skupinu prostředků Azure pro správu registru ACR a clusteru Kubernetes ve službě ACS.
       ```azurecli
       az group create --name draft --location eastus
       ```
 
-2. Vytvořte pomocí registru ACR image [az acr vytvořit](/cli/azure/acr#az-acr-create) a ujistěte se, že `--admin-enabled` je možnost nastavená na `true`.
+2. Pomocí příkazu [AZ ACR Create](/cli/azure/acr#az-acr-create) vytvořte registr image ACR a ujistěte se, že možnost `--admin-enabled` je nastavená na `true`.
       ```azurecli
       az acr create --resource-group draft --name draftacs --sku Basic
       ```
@@ -103,13 +101,13 @@ Když teď máte cluster, můžete importovat přihlašovací údaje pomocí př
 ## <a name="install-and-configure-draft"></a>Instalace a konfigurace nástroje Draft
 
 
-1. Stáhněte si nástroje draft pro vaše prostředí na https://github.com/Azure/draft/releases a instalovat do vaší cesty tak, aby tento příkaz můžete použít.
-2. Stáhněte si helm pro vaše prostředí na https://github.com/kubernetes/helm/releases a [tak, že příkaz je možné ji nainstalovat do vaší cesty](https://github.com/kubernetes/helm/blob/master/docs/install.md#installing-the-helm-client).
+1. Stáhněte si koncept svého prostředí na https://github.com/Azure/draft/releases a nainstalujte ho do své cesty, aby se příkaz mohl použít.
+2. Stáhněte si Helm pro vaše prostředí na https://github.com/kubernetes/helm/releases a [nainstalujte ho do své cesty, aby se příkaz mohl použít](https://github.com/kubernetes/helm/blob/master/docs/install.md#installing-the-helm-client).
 3. Nakonfigurujte Draft pro použití vašeho registru a vytvoření subdomény pro každý diagram Helmu, který vytvoří. Ke konfiguraci nástroje Draft potřebujete:
    - Název služby Azure Container Registry (v tomto příkladu `draftacsdemo`).
    - Klíč registru nebo heslo získané příkazem `az acr credential show -n <registry name> --output tsv --query "passwords[0].value"`.
 
-   Volání `draft init` a proces konfigurace vás vyzve k zadání výše uvedených hodnot, Všimněte si, že formát adresy URL pro adresu URL registru je název registru (v tomto příkladu `draftacsdemo`) plus `.azurecr.io`. Vaše uživatelské jméno je název registru sama o sobě. Proces při prvním spuštění vypadá asi takto:
+   Zavolejte `draft init` a proces konfigurace vás vyzve k zadání výše uvedených hodnot. Všimněte si, že formát adresy URL registru je název registru (v tomto příkladu `draftacsdemo`) plus `.azurecr.io`. Vaše uživatelské jméno má vlastní název registru. Proces při prvním spuštění vypadá asi takto:
    ```bash
     $ draft init
     Creating /home/ralph/.draft 
@@ -139,14 +137,14 @@ Nyní jste připraveni nasadit aplikaci.
 
 ## <a name="build-and-deploy-an-application"></a>Sestavení a nasazení aplikace
 
-V úložišti Draft najdete [šest jednoduchých ukázkových aplikací](https://github.com/Azure/draft/tree/master/examples). Naklonujte úložiště a použijte [příkladu Java](https://github.com/Azure/draft/tree/master/examples/example-java). Přejděte do adresáře příklady/java a typ `draft create` k sestavení aplikace. Mělo by to vypadat asi jako v následujícím příkladu.
+V úložišti Draft najdete [šest jednoduchých ukázkových aplikací](https://github.com/Azure/draft/tree/master/examples). Naklonujte úložiště a pojďme použít [příklad Java](https://github.com/Azure/draft/tree/master/examples/example-java). Přejděte do složky příklady/Java a zadejte `draft create` pro sestavení aplikace. Mělo by to vypadat asi jako v následujícím příkladu.
 ```bash
 $ draft create
 --> Draft detected the primary language as Java with 91.228814% certainty.
 --> Ready to sail
 ```
 
-Výstup zahrnujte soubor Dockerfile a digram Helmu. K sestavení a nasazení stačí zadat `draft up`. Výstup je rozsáhlý, ale musí být jako v následujícím příkladu.
+Výstup zahrnujte soubor Dockerfile a digram Helmu. K sestavení a nasazení stačí zadat `draft up`. Výstup je rozsáhlý, ale měl by být podobný jako v následujícím příkladu.
 ```bash
 $ draft up
 Draft Up Started: 'handy-labradoodle'
@@ -156,12 +154,12 @@ handy-labradoodle: Releasing Application: SUCCESS ⚓  (3.8903s)
 handy-labradoodle: Build ID: 01BT0ZJ87NWCD7BBPK4Y3BTTPB
 ```
 
-## <a name="securely-view-your-application"></a>Bezpečně zobrazení vaší aplikace
+## <a name="securely-view-your-application"></a>Bezpečné zobrazení vaší aplikace
 
-Kontejner je nyní spuštěna ve službě ACS. Chcete-li zobrazit, použijte `draft connect` příkaz, který vytvoří zabezpečené připojení k IP Adrese clusteru s konkrétní port pro vaši aplikaci tak, aby ji mohly místně zobrazit. V případě úspěchu, vyhledejte adresu URL pro připojení k vaší aplikace na první řádek po **úspěch** indikátoru.
+Váš kontejner je teď spuštěný ve službě ACS. Pokud ho chcete zobrazit, použijte příkaz `draft connect`, který vytvoří zabezpečené připojení k IP adrese clusteru s konkrétním portem pro vaši aplikaci, abyste ho mohli zobrazit lokálně. V případě úspěchu vyhledejte adresu URL pro připojení k vaší aplikaci na prvním řádku po indikátoru **úspěšnosti** .
 
 > [!NOTE]
-> Pokud se zobrazí zpráva oznamující, že nebyly žádné podů připravený, počkejte chvíli a zkuste to znovu nebo můžete sledovat podů se připraví s `kubectl get pods -w` a poté opakujte, kdy to dělají.
+> Pokud se zobrazí zpráva oznamující, že nebyly připraveny žádné lusky, chvíli počkejte a pak to zkuste znovu, nebo se můžete podívat, že se v části lusky připravují na `kubectl get pods -w` a potom to zkuste znovu.
 
 ```bash
 draft connect
@@ -174,16 +172,16 @@ SLF4J: See https://www.slf4j.org/codes.html#StaticLoggerBinder for further detai
 >> Listening on 0.0.0.0:4567
 ```
 
-V předchozím příkladu můžete zadat `curl -s http://localhost:46143` a obdržet odpověď, `Hello World, I'm Java!`. Pokud jste CTRL + nebo CMD + C (v závislosti na prostředí operačního systému), zabezpečené tunelové propojení iframeworkview zruší a můžete pokračovat v iterace.
+V předchozím příkladu můžete zadat `curl -s http://localhost:46143` pro příjem odpovědi `Hello World, I'm Java!`. Po stisknutí kombinace kláves CTRL + nebo CMD + C (v závislosti na prostředí operačního systému) se zabezpečené tunelové připojení odpojí a můžete pokračovat v iteraci.
 
-## <a name="sharing-your-application-by-configuring-a-deployment-domain-with-azure-dns"></a>Sdílení aplikace podle konfigurace nasazení domény s Azure DNS
+## <a name="sharing-your-application-by-configuring-a-deployment-domain-with-azure-dns"></a>Sdílení aplikace konfigurací domény nasazení pomocí Azure DNS
 
-Iterace smyčky pro vývojáře, který Draft vytvoří v předchozích krocích jste už provedli. Však můžete sdílet aplikaci přes internet:
-1. Instalace příchozí přenos dat ve vašem clusteru služby ACS (a poskytnout tak veřejnou IP adresu, na které bude aplikace)
-2. Delegování vaši vlastní doménu do Azure DNS a mapování vaší domény na IP adresu služby ACS přiřadí vaše kontroler příchozího přenosu dat
+V předchozích krocích jste už provedli smyčku pro vývojáře, kterou koncept vytvoří. Aplikaci však můžete sdílet přes Internet pomocí:
+1. Instalace příchozího přenosu do clusteru ACS (za účelem poskytnutí veřejné IP adresy, na které se má aplikace zobrazit)
+2. Delegování vlastní domény pro Azure DNS a mapování domény na IP adresu služba ACS přiřadí vašemu kontroleru příchozího přenosu dat.
 
-### <a name="use-helm-to-install-the-ingress-controller"></a>Pomocí helmu k instalaci kontroleru příchozího přenosu.
-Použití **helm** k vyhledání a instalace `stable/traefik`, řadič příchozího přenosu dat pro umožnění příchozích požadavků pro vaše buildy.
+### <a name="use-helm-to-install-the-ingress-controller"></a>Pomocí Helm nainstalujte kontroler příchozího přenosu dat.
+Pomocí **Helm** můžete vyhledat a nainstalovat `stable/traefik`, adaptér příchozího přenosu dat, a povolit tak příchozí požadavky na vaše sestavení.
 ```bash
 $ helm search traefik
 NAME            VERSION DESCRIPTION
@@ -191,7 +189,7 @@ stable/traefik  1.3.0   A Traefik based Kubernetes ingress controller w...
 
 $ helm install stable/traefik --name ingress
 ```
-Nyní nastavte na kontroleru `ingress` sledování, aby při nasazení zachytil hodnotu externí IP adresy. Tato IP adresa bude mapovat na vaši doménu nasazení v další části.
+Nyní nastavte na kontroleru `ingress` sledování, aby při nasazení zachytil hodnotu externí IP adresy. Tato IP adresa bude jako ta namapovaná na vaši doménu nasazení v další části.
 
 ```bash
 $ kubectl get svc -w
@@ -202,9 +200,9 @@ kubernetes                    10.0.0.1       <none>          443/TCP            
 
 V tomto případě je externí IP adresa pro doménu nasazení `13.64.108.240`. Nyní můžete namapovat doménu na tuto IP adresu.
 
-### <a name="map-the-ingress-ip-to-a-custom-subdomain"></a>Mapování IP adresu příchozího přenosu dat na vlastní subdomény
+### <a name="map-the-ingress-ip-to-a-custom-subdomain"></a>Mapování příchozí IP adresy na vlastní subdoménu
 
-Draft vytvoří vydanou verzi pro každý diagram Helmu, který vytvoří – pro každou aplikaci, na které pracujete. Každá z nich dostane vygenerovaný název, který používá **koncept** jako _subdoménu_ kořenové _doménu nasazení_ pod kontrolou. (V tomto příkladu používáme jako doménu nasazení `squillace.io`.) K povolení tohoto chování subdomén musíte v záznamech DNS pro vaši doménu nasazení vytvořit záznam A pro `'*.draft'`, aby se každá vygenerovaná subdoména přesměrovala do kontroleru příchozího přenosu clusteru Kubernetes. 
+Draft vytvoří vydanou verzi pro každý diagram Helmu, který vytvoří – pro každou aplikaci, na které pracujete. Každé z nich získá vygenerovaný název, který se používá v **konceptu** jako _subdoména_ nad _doménou_ kořenového nasazení, kterou ovládáte. (V tomto příkladu používáme `squillace.io` jako doménu nasazení.) Pokud chcete povolit toto chování subdomény, musíte vytvořit záznam A pro `'*.draft'` v záznamech DNS pro vaši doménu nasazení, aby se všechny generované subdomény směrovaly do kontroleru příchozího přenosu clusteru Kubernetes. 
 
 Váš poskytovatel domény má vlastní způsob přiřazování serverů DNS. Pokud chcete [delegovat názvové servery vaší domény do Azure DNS](../../dns/dns-delegate-domain-azure-dns.md), postupujte následovně:
 
@@ -245,8 +243,8 @@ Váš poskytovatel domény má vlastní způsob přiřazování serverů DNS. Po
       "type": "Microsoft.Network/dnszones"
     }
     ```
-3. Přidejte získané servery DNS k poskytovateli vaší domény nasazení – to vám umožní použít Azure DNS ke směrování vaší domény, jak budete chtít. Způsob, jak to provést, se liší podle domény zadat; [delegovat názvové servery vaší domény do Azure DNS](../../dns/dns-delegate-domain-azure-dns.md) obsahuje některé podrobnosti, které byste měli vědět. 
-4. Jakmile se vaše doména byla přenesena do Azure DNS, vytvoří položku record-set A pro mapování domény nasazení na `ingress` IP z kroku 2 v předchozí části.
+3. Přidejte získané servery DNS k poskytovateli vaší domény nasazení – to vám umožní použít Azure DNS ke směrování vaší domény, jak budete chtít. Postup se liší podle toho, co doména nabízí; [delegování názvové servery domény na Azure DNS](../../dns/dns-delegate-domain-azure-dns.md) obsahuje některé z podrobných údajů, které byste měli znát. 
+4. Po delegování vaší domény na Azure DNS vytvořte položku sady záznamů pro mapování domény nasazení na IP adresu `ingress` z kroku 2 v předchozí části.
    ```azurecli
    az network dns record-set a add-record --ipv4-address 13.64.108.240 --record-set-name '*.draft' -g squillace.io -z squillace.io
    ```
@@ -267,24 +265,24 @@ Váš poskytovatel domény má vlastní způsob přiřazování serverů DNS. Po
     "type": "Microsoft.Network/dnszones/A"
    }
    ```
-5. Znovu nainstalujte **koncept**
+5. Přeinstalovat **koncept**
 
-   1. Odebrat **draftd** z clusteru tak, že zadáte `helm delete --purge draft`. 
-   2. Přeinstalujte **koncept** pomocí stejného `draft-init` příkazu, ale s `--ingress-enabled` možnost:
+   1. Odstraňte **koncept** z clusteru zadáním `helm delete --purge draft`. 
+   2. Přeinstalujte **koncept** pomocí stejného `draft-init` příkazu, ale s možností `--ingress-enabled`:
       ```bash
       draft init --ingress-enabled
       ```
-      Reagujte na výzvy, jako jste to udělali při prvním výše. Však máte jeden další dotaz reagovat, pomocí cesty úplná doména, kterou jste nakonfigurovali s využitím Azure DNS.
+      Odpovězte na výzvy, které jste provedli poprvé, výše. Existuje však ještě jedna otázka, na kterou můžete reagovat, pomocí úplné cesty k doméně, kterou jste nakonfigurovali s Azure DNS.
 
-6. Zadejte doménu nejvyšší úrovně pro příchozí přenos dat (třeba draft.example.com): draft.squillace.io
-7. Při volání `draft up` této doby bude moci zobrazit vaše aplikace (nebo `curl` ji) na adrese URL ve formátu `<appname>.draft.<domain>.<top-level-domain>`. V tomto příkladu `http://handy-labradoodle.draft.squillace.io`. 
+6. Zadejte doménu nejvyšší úrovně pro příchozí přenosy (např. draft.example.com): draft.squillace.io
+7. Když zavoláte `draft up` tentokrát, budete moci zobrazit vaši aplikaci (nebo ji `curl`) na adrese URL `<appname>.draft.<domain>.<top-level-domain>`formuláře. V případě tohoto příkladu `http://handy-labradoodle.draft.squillace.io`. 
    ```bash
    curl -s http://handy-labradoodle.draft.squillace.io
    Hello World, I'm Java!
    ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Když teď máte cluster ACS Kubernetes, můžete prozkoumat používání služby [Azure Container Registry](../../container-registry/container-registry-intro.md), abyste mohli vytvářet další a jiná nasazení tohoto scénáře. Můžete například vytvořit sadu záznamů DNS domény draft._základní_doména.doména_nejvyšší_úrovně_, která bude pro specifická nasazení ACS řídit vše pro subdoménu na nižší úrovni.
 

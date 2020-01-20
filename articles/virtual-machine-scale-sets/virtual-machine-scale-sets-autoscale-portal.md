@@ -1,91 +1,84 @@
 ---
-title: Automatické škálování škálovací sady virtuálních počítačů na webu Azure Portal | Dokumentace Microsoftu
-description: Vytvoření pravidla automatického škálování pro škálovací virtuálních počítačů se nastaví na webu Azure Portal
-services: virtual-machine-scale-sets
-documentationcenter: ''
+title: Automatické škálování virtuálních počítačů ve službě Virtual Machine Scale Sets v Azure Portal
+description: Vytvoření pravidel automatického škálování pro sady škálování virtuálních počítačů v Azure Portal
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 ms.assetid: 88886cad-a2f0-46bc-8b58-32ac2189fc93
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 648bc0295cd5435e9c3e44f33b7ae80522fa8e0e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ecd80f49f0161c8bbc6ab7309f2af89e2ded1fe9
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60618798"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278185"
 ---
-# <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Automatické škálování virtuálního počítače škálovací sady na webu Azure Portal
+# <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Automatické škálování sady škálování virtuálních počítačů v Azure Portal
 Při vytváření škálovací sady definujete počet instancí virtuálních počítačů, které chcete spouštět. S měnícími se požadavky na aplikaci můžete počet instancí virtuálních počítačů automaticky zvyšovat nebo snižovat. Možnost automatického škálování umožňuje držet krok s požadavky zákazníků nebo reagovat na změny výkonu aplikace v průběhu jejího životního cyklu.
 
-Tento článek ukazuje, jak vytvořit pravidla automatického škálování na portálu Azure monitorovat výkon instancí virtuálních počítačů ve škálovací sadě. Tato pravidla automatického škálování zvýšit nebo snížit počet instancí virtuálních počítačů v reakci na tyto metriky výkonu. Můžete také dokončit tyto kroky [prostředí Azure PowerShell](tutorial-autoscale-powershell.md) nebo [rozhraní příkazového řádku Azure](tutorial-autoscale-cli.md).
+V tomto článku se dozvíte, jak vytvořit pravidla automatického škálování v Azure Portal, která sledují výkon instancí virtuálních počítačů ve vaší sadě škálování. Tato pravidla automatického škálování zvyšují nebo snižují počet instancí virtuálních počítačů v reakci na tyto metriky výkonu. Tento postup můžete provést také pomocí [Azure PowerShell](tutorial-autoscale-powershell.md) nebo rozhraní příkazového [řádku Azure CLI](tutorial-autoscale-cli.md).
 
 
 ## <a name="prerequisites"></a>Požadavky
-K vytvoření pravidla automatického škálování, budete potřebovat existujícího virtuálního počítače škálovací sady. Můžete vytvořit škálovací sadu s [webu Azure portal](quick-create-portal.md), [prostředí Azure PowerShell](quick-create-powershell.md), nebo [rozhraní příkazového řádku Azure](quick-create-cli.md).
+K vytvoření pravidel automatického škálování potřebujete existující sadu škálování virtuálního počítače. Sadu škálování můžete vytvořit pomocí [Azure Portal](quick-create-portal.md), [Azure PowerShell](quick-create-powershell.md)nebo rozhraní příkazového [řádku Azure](quick-create-cli.md).
 
 
 ## <a name="create-a-rule-to-automatically-scale-out"></a>Vytvoření pravidla pro automatické horizontální navýšení kapacity
 Pokud se požadavky na vaši aplikaci zvýší, zvýší se i zatížení instancí virtuálních počítačů ve škálovací sadě. Pokud je toto zvýšené zatížení konzistentní, a nejedná se pouze o krátkou poptávku, můžete nakonfigurovat pravidla automatického škálování pro zvýšení počtu instancí virtuálních počítačů ve škálovací sadě. Po vytvoření těchto instancí virtuálních počítačů a nasazení aplikací do nich začne škálovací sada distribuovat provoz prostřednictvím nástroje pro vyrovnávání zatížení. Můžete řídit, které metriky se mají monitorovat, například CPU nebo disk, jak dlouho musí zatížení aplikace dosahovat dané prahové hodnoty a kolik instancí virtuálních počítačů se má do škálovací sady přidat.
 
-1. Otevřete Azure portal a vyberte **skupiny prostředků** z nabídky na levé straně řídicího panelu.
-2. Vyberte skupinu prostředků, která obsahuje vaši škálovací sadu a pak zvolte ze seznamu prostředků škálovací sady.
-3. Zvolte **škálování** z nabídky na levé straně stupnice nastavujete časové období. Vyberte tlačítko **povolit automatické škálování**:
+1. Otevřete Azure Portal a v nabídce na levé straně řídicího panelu vyberte **skupiny prostředků** .
+2. Vyberte skupinu prostředků, která obsahuje vaši sadu škálování, a pak vyberte ze seznamu prostředků sadu škálování.
+3. V nabídce na levé straně okna škála nastavení vyberte možnost **škálování** . Výběrem tlačítka **povolíte automatické škálování**:
 
-    ![Povolit automatické škálování na portálu Azure portal](media/virtual-machine-scale-sets-autoscale-portal/enable-autoscale.png)
+    ![Povolit automatické škálování v Azure Portal](media/virtual-machine-scale-sets-autoscale-portal/enable-autoscale.png)
 
-4. Zadejte název pro nastavení, jako například *automatického škálování*, vyberte možnost **přidat pravidlo**.
+4. Zadejte název nastavení, například *Automatické škálování*, a pak vyberte možnost **Přidat pravidlo**.
 
-5. Teď vytvořte pravidlo, které zvýší počet instancí virtuálních počítačů ve škálovací sadě, pokud je průměrné zatížení CPU vyšší než 70 % po dobu 10 minut. Když se pravidlo aktivuje, počet instancí virtuálních počítačů se zvýší o 20 %. Škálovací sady s malý počet instancí virtuálních počítačů můžete nastavit **operace** k *zvýšit počet o* a pak zadejte *1* nebo *2* pro *počet instancí*. Ve škálovacích sadách s velký počet instancí virtuálních počítačů, zvýšení 10 % nebo 20 % instancí virtuálních počítačů může být vhodnější.
+5. Pojďme vytvořit pravidlo, které zvýší počet instancí virtuálních počítačů v sadě škálování, pokud je průměrné zatížení procesoru vyšší než 70% po dobu 10 minut. Po aktivaci pravidla se počet instancí virtuálních počítačů zvýší o 20%. V sadě škálování s malým počtem instancí virtuálních počítačů můžete nastavit **operaci** na *zvýšení počtu o* a pak pro *počet instancí*zadat *1* nebo *2* . V sadě škálování se velký počet instancí virtuálních počítačů může být vhodnější zvýšit počet instancí virtuálních počítačů o 10% nebo 20%.
 
-    Zadejte následující nastavení pro pravidlo:
+    Pro pravidlo zadejte následující nastavení:
     
     | Parametr              | Vysvětlení                                                                                                         | Hodnota          |
     |------------------------|---------------------------------------------------------------------------------------------------------------------|----------------|
     | *Časová agregace*     | Definuje způsob agregace shromážděných metrik pro účely analýzy.                                                | Průměr        |
     | *Název metriky*          | Metrika výkonu, která se má monitorovat a na kterou se mají použít akce škálovací sady.                                                   | Procento CPU |
-    | *Statistika agregačního intervalu* | Definuje způsob agregace shromážděných metrik v každé časový interval pro analýzu.                             | Průměr        |
-    | *– Operátor*             | Operátor sloužící k porovnání dat metriky s prahovou hodnotou.                                                     | Větší než   |
-    | *Prahová hodnota*            | Procentuální hodnotu, která způsobí aktivaci akce pravidlem automatického škálování.                                                 | 70             |
+    | *Statistika časových intervalů* | Definuje, jak by měly být shromážděné metriky v jednotlivých intervalech agregovány pro účely analýzy.                             | Průměr        |
+    | *– Operátor*             | Operátor sloužící k porovnání dat metriky s prahovou hodnotou.                                                     | Více než   |
+    | *Mezí*            | Procentuální hodnota, která způsobí, že pravidlo automatického škálování aktivuje akci.                                                 | 70             |
     | *Doba trvání*             | Doba, která se monitoruje před porovnáním metrik a prahových hodnot.                                   | 10 minut     |
-    | *Operace*            | Definuje, jestli se škálovací sada by se měly škálovat nahoru nebo dolů po použití pravidla kapacita a jaké přírůstku                        | Zvýšit procento o |
+    | *Operace*            | Definuje, jestli se má při použití pravidla a o tom, jaký přírůstek má změnit horizontální navýšení nebo snížení kapacity sady škálování.                        | Zvýšit procento o |
     | *Počet instancí*       | Procento instancí virtuálních počítačů, které se mají po aktivaci pravidla změnit.                                            | 20             |
-    | *Přestávka (minuty)*  | Doba, po kterou se má počkat před opětovným použitím pravidla, aby akce automatického škálování měly dostatek času se projevit. | 5 minut      |
+    | *Doba vychladnutí (minuty)*  | Doba, po kterou se má počkat před opětovným použitím pravidla, aby akce automatického škálování měly dostatek času se projevit. | 5 minut      |
 
-    Následující příklady ukazují pravidlo vytvořené na portálu Azure portal, který odpovídá tato nastavení:
+    Následující příklady ukazují pravidlo vytvořené v Azure Portal, které odpovídá těmto nastavením:
 
-    ![Vytvoření pravidla automatického škálování pro zvýšení počtu instancí virtuálních počítačů](media/virtual-machine-scale-sets-autoscale-portal/rule-increase.png)
+    ![Vytvořte pravidlo automatického škálování, které zvýší počet instancí virtuálních počítačů.](media/virtual-machine-scale-sets-autoscale-portal/rule-increase.png)
 
-6. Chcete-li vytvořit pravidla, vyberte **přidat**
+6. Pravidlo vytvoříte tak, že vyberete **Přidat** .
 
 
-## <a name="create-a-rule-to-automatically-scale-in"></a>Vytvoření pravidla automatického škálování v
+## <a name="create-a-rule-to-automatically-scale-in"></a>Vytvoření pravidla pro automatické horizontální navýšení kapacity
 Večer nebo o víkendu se požadavky na vaši aplikaci můžou snížit. Pokud je toto snížené zatížení po určitou dobu konzistentní, můžete nakonfigurovat pravidla automatického škálování pro snížení počtu instancí virtuálních počítačů ve škálovací sadě. Tato akce horizontálního snížení kapacity sníží náklady na provoz škálovací sady, protože budete spouštět pouze takový počet instancí, který je potřeba ke zpracování aktuálních požadavků.
 
-1. Zvolit **přidat pravidlo** znovu.
-2. Vytvořte pravidlo, které sníží počet instancí virtuálních počítačů ve škálovací sadě, pokud je průměrné zatížení CPU sníží pod 30 % po dobu 10 minut. Když se pravidlo aktivuje, počet instancí virtuálních počítačů se sníží o 20 %.
+1. Vyberte, **že chcete pravidlo přidat** znovu.
+2. Vytvořte pravidlo, které sníží počet instancí virtuálních počítačů v sadě škálování, když se průměrné zatížení procesoru sníží pod 30% po dobu 10 minut. Když se pravidlo aktivuje, počet instancí virtuálních počítačů se sníží o 20%.
 
-    Stejně jako u předchozí pravidlo použijte stejným způsobem. Upravte následující nastavení pro pravidlo:
+    Použijte stejný přístup jako u předchozího pravidla. Upravte následující nastavení pravidla:
     
     | Parametr              | Vysvětlení                                                                                                          | Hodnota          |
     |------------------------|----------------------------------------------------------------------------------------------------------------------|----------------|
-    | *– Operátor*             | Operátor sloužící k porovnání dat metriky s prahovou hodnotou.                                                      | Je menší než   |
-    | *Prahová hodnota*            | Procentuální hodnotu, která způsobí aktivaci akce pravidlem automatického škálování.                                                 | 30             |
-    | *Operace*            | Definuje, jestli se škálovací sada by se měly škálovat nahoru nebo dolů po použití pravidla kapacita a jaké přírůstku                         | Snížit procento o |
+    | *– Operátor*             | Operátor sloužící k porovnání dat metriky s prahovou hodnotou.                                                      | Méně než   |
+    | *Mezí*            | Procentuální hodnota, která způsobí, že pravidlo automatického škálování aktivuje akci.                                                 | 30             |
+    | *Operace*            | Definuje, jestli se má při použití pravidla a o tom, jaký přírůstek má změnit horizontální navýšení nebo snížení kapacity sady škálování.                         | Snížit procento o |
     | *Počet instancí*       | Procento instancí virtuálních počítačů, které se mají po aktivaci pravidla změnit.                                             | 20             |
 
-3. Chcete-li vytvořit pravidla, vyberte **přidat**
+3. Pravidlo vytvoříte tak, že vyberete **Přidat** .
 
 
-## <a name="define-autoscale-instance-limits"></a>Definování omezení pro automatické škálování instance
-Váš profil automatického škálování musí definovat minimální, maximální a výchozí počet instancí virtuálních počítačů. Při použití pravidla automatického škálování, ujistěte se, že vám horizontální rozšíření kapacity mimo maximální počet instancí nebo horizontálně nad rámec minimálně instance tyto limity instancí.
+## <a name="define-autoscale-instance-limits"></a>Definování omezení instancí automatického škálování
+Váš profil automatického škálování musí definovat minimální, maximální a výchozí počet instancí virtuálních počítačů. Při použití pravidel automatického škálování se tato omezení instance zajišťují, že nebudete škálovat nad rámec maximálního počtu instancí, nebo můžete škálovat mimo minimální počet instancí.
 
 1. Nastavte následující limity instancí:
 
@@ -93,42 +86,42 @@ Váš profil automatického škálování musí definovat minimální, maximáln
     |---------|---------|--------|
     | 2       | 10      | 2      |
 
-2. Chcete-li použít pravidla automatického škálování a limity instancí, vyberte **Uložit**.
+2. Pokud chcete použít pravidla automatického škálování a omezení instancí, vyberte **Uložit**.
 
 
-## <a name="monitor-number-of-instances-in-a-scale-set"></a>Monitorování počtu instancí ve škálovací sadě
-Pokud chcete zobrazit počet a stav instancí virtuálních počítačů, vyberte **instance** z nabídky na levé straně stupnice nastavujete časové období. Stav označuje, zda je instance virtuálního počítače *vytváření* škálovací sady automaticky horizontálně navýší kapacitu, nebo je *odstranění* jako měřítko se automaticky škáluje v.
+## <a name="monitor-number-of-instances-in-a-scale-set"></a>Monitorování počtu instancí v sadě škálování
+Pokud chcete zobrazit počet a stav instancí virtuálních počítačů, vyberte **instance** v nabídce na levé straně okna sady škálování. Stav označuje, jestli se instance virtuálního počítače *vytváří* , protože se sada škálování automaticky škáluje, nebo se *odstraňuje* , protože se měřítko automaticky škáluje.
 
-![Zobrazit seznam instancí škálovací sady virtuálních počítačů](media/virtual-machine-scale-sets-autoscale-portal/view-instances.png)
+![Zobrazit seznam instancí virtuálních počítačů sady škálování](media/virtual-machine-scale-sets-autoscale-portal/view-instances.png)
 
 
 ## <a name="autoscale-based-on-a-schedule"></a>Automatické škálování podle plánu
-V předchozích příkladech automaticky škálovat škálovací sadu snížení nebo navýšení kapacity s hostiteli základní metriky, jako je využití procesoru. Můžete také vytvořit pravidla automatického škálování podle plánů. Tato pravidla podle plánu umožňují automaticky škálovat počet instancí virtuálních počítačů před očekávané zvýšení poptávky aplikací, jako je základní pracovní hodiny a potom automatické škálování počtu instancí v čase, který očekáváte, že méně vyžádání, jako je například víkendu.
+Předchozí příklady automaticky škálují měřítko nastavené na základní metriky hostitele, jako je například využití procesoru. Můžete také vytvořit pravidla automatického škálování na základě plánů. Tato pravidla založená na plánech umožňují automatické horizontální navýšení kapacity počtu instancí virtuálních počítačů před předpokládaným zvýšením poptávky na úrovni aplikace, jako je například základní pracovní doba a automatické škálování počtu instancí v době, kdy předpokládáte méně poptávka, jako je například víkend.
 
-1. Zvolte **škálování** z nabídky na levé straně stupnice nastavujete časové období. Chcete-li odstranit existující pravidla automatického škálování, které jsou vytvořené v předchozích příkladech, zvolte ikonu koše.
+1. V nabídce na levé straně okna škála nastavení vyberte možnost **škálování** . Pokud chcete odstranit existující pravidla automatického škálování vytvořená v předchozích příkladech, vyberte ikonu odpadkového koše.
 
-    ![Odstranění existujícího pravidla automatického škálování](media/virtual-machine-scale-sets-autoscale-portal/delete-rules.png)
+    ![Odstranit existující pravidla automatického škálování](media/virtual-machine-scale-sets-autoscale-portal/delete-rules.png)
 
-2. Zvolit **přidat podmínku škálování**. Vyberte ikonu tužky vedle názvu pravidla a zadejte název, jako *horizontální navýšení kapacity za každý pracovní den*.
+2. Vyberte, chcete-li **Přidat podmínku škálování**. Vyberte ikonu tužky vedle pole název pravidla a zadejte název, například horizontální navýšení *kapacity během každého pracovního dne*.
 
-    ![Přejmenujte výchozí pravidlo automatického škálování](media/virtual-machine-scale-sets-autoscale-portal/rename-rule.png)
+    ![Přejmenovat výchozí pravidlo automatického škálování](media/virtual-machine-scale-sets-autoscale-portal/rename-rule.png)
 
-3. Vyberte přepínač **škálovat na konkrétní počet instancí**.
-4. Pokud chcete vertikálně navýšit kapacitu počtu instancí, zadejte *10* jako počet instancí.
-5. Zvolte **opakovat konkrétní dny** pro **plán** typu.
-6. Vyberte všechny pracovní dny, od pondělí do pátku.
-7. Zvolte odpovídající časové pásmo a potom zadejte **počáteční čas** z *09:00*.
-8. Zvolit **přidat podmínku škálování** znovu. Postupujte stejně jako můžete vytvořit plán s názvem *horizontálně během večer* , která se škáluje, aby *3* instance, se opakuje každý den v týdnu a začíná *18:00*.
-9. Chcete-li použít pravidla automatického škálování na základě plánu, vyberte **Uložit**.
+3. Vyberte přepínač, který se má **škálovat na konkrétní počet instancí**.
+4. Pro horizontální navýšení kapacity počtu instancí zadejte jako počet instancí hodnotu *10* .
+5. Pro typ **plánu** vyberte **Opakovat konkrétní dny** .
+6. Vyberte všechny pracovní dny, pondělí až pátek.
+7. Zvolte příslušné časové pásmo a pak zadejte **počáteční čas** *09:00*.
+8. Vyberte možnost **Přidat podmínku škálování** znovu. Opakujte postup pro vytvoření plánu s názvem *škálovat v průběhu večer* , který se škáluje na *3* instance, opakuje každý den v týdnu a začíná na *18:00*.
+9. Pokud chcete použít pravidla automatického škálování na základě plánu, vyberte **Uložit**.
 
-    ![Vytvoření pravidla automatického škálování, které se škálují podle plánu](media/virtual-machine-scale-sets-autoscale-portal/schedule-autoscale.PNG)
+    ![Vytváření pravidel automatického škálování, která se škálují podle plánu](media/virtual-machine-scale-sets-autoscale-portal/schedule-autoscale.PNG)
 
-Pokud chcete zobrazit, jak se používají pravidla automatického škálování, vyberte **historie spuštění** v horní části **škálování** okna. Graf a události seznam obsahuje při nastavení triggeru pravidla automatického škálování a počet instancí virtuálních počítačů ve škálovací zvýšení nebo snížení.
+Pokud chcete zjistit, jak se používají pravidla automatického škálování, vyberte v horní části okna **škálování** **historii spuštění** . Seznam grafů a událostí zobrazuje, když se aktivují pravidla automatického škálování a počet instancí virtuálních počítačů ve vaší sadě škálování se zvyšuje nebo snižuje.
 
 
-## <a name="next-steps"></a>Další postup
-V tomto článku jste zjistili, jak pomocí pravidla automatického škálování horizontálně škálovat a zvýšit nebo snížit *číslo* instancí virtuálních počítačů ve škálovací nastavit. Můžete také škálovat vertikálně zvyšte nebo snižte instance virtuálního počítače *velikost*. Další informace najdete v tématu [vertikální automatické škálování s Virtual Machine Scale sets](virtual-machine-scale-sets-vertical-scale-reprovision.md).
+## <a name="next-steps"></a>Další kroky
+V tomto článku jste zjistili, jak používat pravidla automatického škálování pro horizontální škálování a zvýšení nebo snížení *počtu* instancí virtuálních počítačů ve vaší sadě škálování. *Velikost*instance virtuálního počítače můžete zvýšit nebo snížit také vertikálně. Další informace najdete v tématu [vertikální automatické škálování pomocí služby Virtual Machine Scale Sets](virtual-machine-scale-sets-vertical-scale-reprovision.md).
 
-Informace o tom, jak spravovat vaše instance virtuálních počítačů najdete v tématu [Správa škálovacích sad virtuálních počítačů pomocí Azure Powershellu](virtual-machine-scale-sets-windows-manage.md).
+Informace o tom, jak spravovat instance virtuálních počítačů, najdete v tématu [Správa služby Virtual Machine Scale Sets pomocí Azure PowerShell](virtual-machine-scale-sets-windows-manage.md).
 
-Zjistěte, jak generovat výstrahy, když vaše automatické škálování pravidla aktivační událost, najdete v článku [pomocí akcí automatického škálování můžete poslat e-mail a webhook oznámení výstrah ve službě Azure Monitor](../azure-monitor/platform/autoscale-webhook-email.md). Můžete také [pomocí protokolů auditu odesílat emailová a webhooková oznámení výstrah ve službě Azure Monitor](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md).
+Informace o tom, jak generovat výstrahy při aktivaci pravidel automatického škálování, najdete [v tématu použití akcí automatického škálování k odesílání oznámení o výstrahách e-mailu a Webhooku v Azure monitor](../azure-monitor/platform/autoscale-webhook-email.md). [Protokoly auditu můžete použít také k posílání oznámení o výstrahách e-mailu a Webhooku v Azure monitor](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md).

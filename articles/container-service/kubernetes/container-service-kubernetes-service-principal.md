@@ -1,25 +1,23 @@
 ---
-title: (NEPOUŽÍVANÉ) Instanční objekt pro cluster Kubernetes v Azure
+title: ZASTARALÉ Instanční objekt pro cluster Azure Kubernetes
 description: Vytvoření a správa instančního objektu služby Azure Active Directory pro cluster Kubernetes v Azure Container Service
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 52ed101199126818abaddef47892e1f033eb3968
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3126339a1eb8ff9c0ef34a330333635d3d0f6433
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60609144"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274372"
 ---
-# <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>(NEPOUŽÍVANÉ) Nastavení instančního objektu služby Azure AD pro cluster Kubernetes ve službě Container Service
+# <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>ZASTARALÉ Nastavení instančního objektu služby Azure AD pro cluster Kubernetes ve službě Container Service
 
 > [!TIP]
-> Pro aktualizovanou verzi, tento článek, který používá Azure Kubernetes Service, najdete v článku [instanční Azure Kubernetes Service (AKS)](../../aks/kubernetes-service-principal.md).
+> Aktualizovanou verzi tohoto článku, který používá službu Azure Kubernetes, najdete v tématu [instanční objekty se službou Azure Kubernetes Service (AKS)](../../aks/kubernetes-service-principal.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -33,17 +31,17 @@ Tento článek ukazuje různé možnosti nastavení instančního objektu pro cl
 
 Můžete vytvořit existující instanční objekt služby Azure AD splňující následující požadavky nebo můžete vytvořit nový.
 
-* **Obor**: Skupina prostředků
+* **Obor:** Skupina prostředků
 
-* **Role**: Přispěvatel
+* **Role:** Přispěvatel
 
-* **Tajný kód klienta**: Musí to být heslo. V současné době nemůžete použít instanční objekt nastavený pro ověření certifikátu.
+* **Tajný klíč klienta:** Musí to být heslo. V současné době nemůžete použít instanční objekt nastavený pro ověření certifikátu.
 
 > [!IMPORTANT]
 > Abyste mohli vytvořit instanční objekt, musíte mít oprávnění k registraci aplikace v tenantu Azure AD a přiřazení aplikace k roli v předplatném. Pokud chcete zjistit, jestli máte požadovaná oprávnění, [podívejte se na portál](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
 >
 
-## <a name="option-1-create-a-service-principal-in-azure-ad"></a>Option 1: Vytvoření instančního objektu ve službě Azure AD
+## <a name="option-1-create-a-service-principal-in-azure-ad"></a>Možnost 1: Vytvoření instančního objektu v Azure AD
 
 Pokud chcete instanční objekt služby Azure AD vytvořit před nasazením clusteru Kubernetes, Azure k tomu nabízí několik metod.
 
@@ -80,7 +78,7 @@ Následující příklad ukazuje jeden ze způsobů předání parametrů pomoc�
 
 1. [Stáhněte si](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-acs-kubernetes/azuredeploy.parameters.json) soubor parametrů šablony `azuredeploy.parameters.json` z GitHubu.
 
-2. Instanční objekt specifikujte zadáním hodnot pro `servicePrincipalClientId` a `servicePrincipalClientSecret` v souboru. (Pro `dnsNamePrefix` a `sshRSAPublicKey` musíte zadat také vlastní hodnoty. V druhém případě se jedná o veřejný klíč SSH pro přístup ke clusteru.) Uložte soubor.
+2. Instanční objekt specifikujte zadáním hodnot pro `servicePrincipalClientId` a `servicePrincipalClientSecret` v souboru. (Pro `dnsNamePrefix` a `sshRSAPublicKey` musíte zadat také vlastní hodnoty. Druhá je veřejný klíč SSH pro přístup ke clusteru.) Uložte soubor.
 
     ![Předání parametrů instančního objektu](./media/container-service-kubernetes-service-principal/service-principal-params.png)
 
@@ -97,7 +95,7 @@ Následující příklad ukazuje jeden ze způsobů předání parametrů pomoc�
     ```
 
 
-## <a name="option-2-generate-a-service-principal-when-creating-the-cluster-with-az-acs-create"></a>Option 2: Vygenerování instančního objektu při vytváření clusteru pomocí `az acs create`
+## <a name="option-2-generate-a-service-principal-when-creating-the-cluster-with-az-acs-create"></a>Možnost 2: Vygenerování instančního objektu při vytváření clusteru pomocí příkazu `az acs create`
 
 Pokud vytváříte cluster Kubernetes spuštěním příkazu [`az acs create`](/cli/azure/acs#az-acs-create), máte možnost instanční objekt vygenerovat automaticky.
 
@@ -168,7 +166,7 @@ Výstup:
 
 Potom aktualizujte soubor `/etc/kubernetes/azure.json` novými přihlašovacími údaji na všech uzlech clusteru a uzly restartujte.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Začněte používat Kubernetes](container-service-kubernetes-walkthrough.md) v clusteru služby kontejneru.
 

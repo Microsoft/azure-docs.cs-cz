@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5000d79db0d9036fe8904322764e4c480111d6cc
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: b301bc6c1674cad26288556957ba6214df74f18d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863389"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278668"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Monitorování a zmírnění omezení pro snížení latence v Azure Time Series Insights
 
@@ -30,7 +30,7 @@ Máte pravděpodobně na latenci a omezení, když máte tyto možnosti:
 - Přidejte zdroj události, který obsahuje stará data, která by mohla překročit vaši přidělenou míru příchozího přenosu dat (Time Series Insights bude nutné zachytit).
 - Přidání dalších zdrojů událostí do prostředí a výsledkem je špička dalších událostí (což by mohlo překročit kapacitu vašeho prostředí).
 - Nahrajte velké objemy historických událostí do zdroje událostí, čímž dojde k prodlevě (Time Series Insights bude nutné zachytit).
-- Spojování referenčních dat s telemetrie a výsledkem je větší velikost události.  V perspektivě omezování se příchozí datový paket s velikostí paketu 32 KB považuje za události 32, každé velikosti 1 KB. Maximální povolená velikost události je 32 KB; datové pakety větší než 32 KB se zkrátí.
+- Spojování referenčních dat s telemetrie a výsledkem je větší velikost události. V perspektivě omezování se příchozí datový paket s velikostí paketu 32 KB považuje za události 32, každé velikosti 1 KB. Maximální povolená velikost události je 32 KB; datové pakety větší než 32 KB se zkrátí.
 
 ## <a name="video"></a>Video
 
@@ -40,13 +40,13 @@ Máte pravděpodobně na latenci a omezení, když máte tyto možnosti:
 
 ## <a name="monitor-latency-and-throttling-with-alerts"></a>Monitorování latence a omezování pomocí výstrah
 
-Výstrahy vám můžou pomáhat diagnostikovat a zmírnit problémy latence způsobené vaším prostředím.
+Výstrahy umožňují diagnostikovat a zmírnit problémy s latencí, ke kterým dochází ve vašem prostředí.
 
 1. V Azure Portal vyberte své prostředí Time Series Insights. Pak vyberte **výstrahy**.
 
    [![přidání výstrahy do prostředí Time Series Insights](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
 
-1. Zobrazí se panel **vytvořit pravidlo** . Vyberte **Přidat** pod **podmínkou**.
+1. Vyberte **+ Nové pravidlo upozornění**. Zobrazí se panel **vytvořit pravidlo** . Vyberte **Přidat** pod **podmínkou**.
 
    [![přidat podokno výstrah](media/environment-mitigate-latency/mitigate-latency-add-pane.png)](media/environment-mitigate-latency/mitigate-latency-add-pane.png#lightbox)
 

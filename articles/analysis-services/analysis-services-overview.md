@@ -4,15 +4,15 @@ description: Přečtěte si o Azure Analysis Services plně spravovaná platform
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 10/30/2019
+ms.date: 01/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ee107ffdc677a0feffbdaf1441d77a8ed05f2c94
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: f72da87ae53039e825f2102bebb12e59821706f8
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749682"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274792"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co je služba Azure Analysis Services?
 
@@ -34,7 +34,7 @@ Azure Analysis Services se integruje s mnoha službami Azure a umožňuje tak se
 
 ## <a name="the-right-tier-when-you-need-it"></a>Správná úroveň kdykoli potřebujete
 
-Služba Azure Analysis Services je dostupná v úrovních **Developer**, **Basic** a **Standard**. Ceny plánů na jednotlivých úrovních se liší podle výpočetního výkonu, jednotek QPU a velikosti paměti. Při vytváření serveru si vyberete plán na nějaké úrovni. Plány můžete měnit na vyšší nebo nižší v rámci stejné úrovně nebo upgradovat na vyšší úroveň, není však možné downgradovat z vyšší úrovně na nižší.
+Služba Azure Analysis Services je dostupná v úrovních **Developer**, **Basic** a **Standard**. V rámci každé úrovně se náklady naplánují v závislosti na výpočetním výkonu, jednotkách zpracování dotazů (jednotek qpu) a velikosti paměti. Při vytváření serveru si vyberete plán na nějaké úrovni. Plány můžete měnit na vyšší nebo nižší v rámci stejné úrovně nebo upgradovat na vyšší úroveň, není však možné downgradovat z vyšší úrovně na nižší.
 
 ### <a name="developer-tier"></a>Úroveň Developer
 
@@ -47,7 +47,7 @@ Tato úroveň se doporučuje pro scénáře testování, vývoje a vyhodnocení.
 
 ### <a name="basic-tier"></a>Úroveň Basic
 
-Tato úroveň se doporučuje pro produkční řešení s menšími tabulkovými modely, omezenou souběžností uživatelů a jednoduchými požadavky na obnovení dat. Škálování repliky dotazu na více instancí pro tuto úroveň *není k dispozici*. Perspektivy, větší počet oddílů a funkce tabulkového modelu DirectQuery se v této úrovni *nepodporují*.  
+Tato úroveň se doporučuje pro produkční řešení s menšími tabulkovými modely, omezenou souběžností uživatelů a jednoduchými požadavky na obnovení dat. Škálování na více instancí repliky dotazů není pro tuto vrstvu *k dispozici* . Perspektivy, větší počet oddílů a funkce tabulkového modelu DirectQuery se v této úrovni *nepodporují*.  
 
 |Plánujte  |Jednotky QPU  |Paměť (GB)  |
 |---------|---------|---------|
@@ -81,7 +81,7 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 |---------|---------|:---------:|
 |Brazílie – jih     |    B1, B2, S0, S1, S2, S4, D1     |     1\. místo    |
 |Střední Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1\. místo    |
-|Východní USA     |     B1, B2, S0, S1, S2, S4, D1    |    1\. místo     |
+|USA – východ     |     B1, B2, S0, S1, S2, S4, D1    |    1\. místo     |
 |Východ USA 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
 |Východ USA 2     |     S8, S9, S8v2, S9v2   |    1\. místo    |
 |Středoseverní USA     |     B1, B2, S0, S1, S2, S4, D1     |    1\. místo     |
@@ -232,7 +232,7 @@ Služba Azure Analysis Services také podporuje používání [zobrazení dynami
 
 Konkrétní dokumentace pro službu Azure Analysis Services je uvedená zde. K vyhledání článků použijte obsah na levé straně obrazovky prohlížeče. 
 
-Vzhledem k tomu, že Azure Analysis Services tabelární modely jsou v SQL Server Analysis Services stejné jako tabelární modely, existuje v [dokumentaci ke službě SQL Server Analysis Services](https://docs.microsoft.com/analysis-services/analysis-services-overview)rozsáhlá knihovna sdílených koncepčních, procedurálních, vývojářských a referenčních článků. Články v dokumentaci ke službě SQL Server Analysis Services zobrazují také informaci, jestli je možné je použít pro službu Azure Analysis Services. Tuto informaci najdete v banneru PLATÍ PRO pod názvem článku.
+Vzhledem k tomu, že Azure Analysis Services tabelární modely jsou v SQL Server Analysis Services stejné jako tabelární modely, existuje rozsáhlá knihovna pro sdílení dat, koncepčních, procedurálních, vývojářských a referenčních článků v [SQL Server Analysis Services dokumentaci](https://docs.microsoft.com/analysis-services/analysis-services-overview). Články v dokumentaci ke službě SQL Server Analysis Services zobrazují také informaci, jestli je možné je použít pro službu Azure Analysis Services. Tuto informaci najdete v banneru PLATÍ PRO pod názvem článku.
 
 ![Sdílená dokumentace](./media/analysis-services-overview/aas-overview-applies-to.png)
 

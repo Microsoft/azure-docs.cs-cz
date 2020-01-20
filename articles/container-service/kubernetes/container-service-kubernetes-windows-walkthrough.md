@@ -1,22 +1,20 @@
 ---
-title: (NEPOUŽÍVANÉ) Rychlý start – Azure Kubernetes cluster pro Windows
+title: ZASTARALÉ Rychlý Start – cluster Azure Kubernetes pro Windows
 description: Rychle se naučíte, jak pomocí rozhraní příkazového řádku Azure vytvářet cluster Kubernetes pro kontejnery Windows ve službě Azure Container Service.
-services: container-service
 author: dlepow
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: d7ce702bb726fb89780d251f31023c9490112c36
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2e36de9f2a6af3643b6f609339d413968f6a8d6e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66148786"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277651"
 ---
-# <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>(NEPOUŽÍVANÉ) Nasazení clusteru Kubernetes pro kontejnery Windows
+# <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>ZASTARALÉ Nasazení clusteru Kubernetes pro kontejnery Windows
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -162,7 +160,7 @@ Pokud chcete zpřístupnit pod celému světu prostřednictvím veřejné IP adr
 kubectl expose pods iis --port=80 --type=LoadBalancer
 ```
 
-Pomocí tohoto příkazu že Kubernetes vytvoří službu a pravidlo nástroje pro vyrovnávání zatížení Azure s veřejnou IP adresu pro službu. 
+Pomocí tohoto příkazu Kubernetes vytvoří službu a pravidlo nástroje pro vyrovnávání zatížení Azure s veřejnou IP adresou pro službu. 
 
 Spuštěním následujícího příkazu zobrazte stav služby.
 
@@ -191,7 +189,7 @@ az group delete --name myResourceGroup
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém úvodním kurzu jste nasadili cluster Kubernetes, připojili se přes `kubectl` a nasadili pod s kontejnerem ISS. Další informace o Azure Container Service získáte v kurzu o Kubernetes.
 

@@ -1,60 +1,58 @@
 ---
-title: (NEPOUŽÍVANÉ) Monitorování clusteru Kubernetes v Azure pomocí služby Datadog
-description: Monitorování clusteru Kubernetes ve službě Azure Container Service pomocí služby Datadog
-services: container-service
+title: ZASTARALÉ Monitorování clusteru Azure Kubernetes pomocí služby Datadog
+description: Monitorování clusteru Kubernetes v Azure Container Service pomocí služby Datadog
 author: bburns
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 6a682c199b40035bfd44fc5611a7d44b49f7b3ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8ed146a224ec4225a7a0e85c76227fb1dc71b0b
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60712334"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271051"
 ---
-# <a name="deprecated-monitor-an-azure-container-service-cluster-with-datadog"></a>(NEPOUŽÍVANÉ) Monitorování clusteru služby Azure Container Service pomocí služby DataDog
+# <a name="deprecated-monitor-an-azure-container-service-cluster-with-datadog"></a>ZASTARALÉ Monitorování clusteru Azure Container Service pomocí služby Datadog
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 ## <a name="prerequisites"></a>Požadavky
-Tento názorný průvodce předpokládá, že máte [vytvořit cluster Kubernetes pomocí služby Azure Container Service](container-service-kubernetes-walkthrough.md).
+Tento návod předpokládá, že jste [vytvořili cluster Kubernetes pomocí Azure Container Service](container-service-kubernetes-walkthrough.md).
 
-Dále předpokládá, že máte `az` rozhraní příkazového řádku Azure a `kubectl` nainstalované nástroje.
+Také předpokládá, že máte nainstalované `az` Azure CLI a `kubectl` Tools.
 
-Můžete otestovat, pokud máte `az` nástroj pro instalaci spuštěním:
+Můžete otestovat, jestli máte nainstalovaný nástroj `az`, a to spuštěním:
 
 ```console
 $ az --version
 ```
 
-Pokud nemáte k dispozici `az` nástroj nainstalovali, jsou k dispozici pokyny [tady](https://github.com/azure/azure-cli#installation).
+Pokud nemáte nainstalovaný nástroj `az`, [tady](https://github.com/azure/azure-cli#installation)najdete pokyny.
 
-Můžete otestovat, pokud máte `kubectl` nástroj pro instalaci spuštěním:
+Můžete otestovat, jestli máte nainstalovaný nástroj `kubectl`, a to spuštěním:
 
 ```console
 $ kubectl version
 ```
 
-Pokud nemáte `kubectl` nainstalované, můžete spustit:
+Pokud nemáte nainstalované `kubectl`, můžete spustit:
 
 ```console
 $ az acs kubernetes install-cli
 ```
 
 ## <a name="datadog"></a>DataDog
-Služby Datadog je monitorovací služba, která shromažďuje data monitorování z vašeho kontejnerů v clusteru Azure Container Service. Služby Datadog má řídicí panel integrace Dockeru ve kterém uvidíte konkrétní metriky v rámci kontejnerů. Metrik shromážděných z kontejnerů jsou uspořádané podle procesoru, paměti, síťové a vstupně-výstupních operací. Služby Datadog rozdělí metriky do kontejnerů a obrázky.
+Služby Datadog je monitorovací služba, která shromažďuje data monitorování z vašich kontejnerů v rámci vašeho clusteru Azure Container Service. Služby Datadog má řídicí panel integrace Docker, kde vidíte konkrétní metriky v rámci kontejnerů. Metriky shromážděné z vašich kontejnerů jsou uspořádané podle procesoru, paměti, sítě a vstupně-výstupních operací. Služby Datadog rozdělí metriky do kontejnerů a imagí.
 
-Je nutné nejprve [vytvořit účet](https://www.datadoghq.com/lpg/)
+Nejdřív je potřeba [vytvořit účet](https://www.datadoghq.com/lpg/) .
 
 ## <a name="installing-the-datadog-agent-with-a-daemonset"></a>Instalace agenta služby Datadog s DaemonSet
-DaemonSets používají ke spuštění jedné instance kontejneru na každého hostitele v clusteru Kubernetes.
-Jsou ideální pro provoz agentů monitorování.
+DaemonSets používají Kubernetes ke spuštění jedné instance kontejneru na každém hostiteli v clusteru.
+Jsou ideální pro spouštění agentů monitorování.
 
-Po přihlášení do služby Datadog, můžete postupovat podle [služby Datadog pokyny](https://app.datadoghq.com/account/settings#agent/kubernetes) nainstalovat agenty služby Datadog ve vašem clusteru pomocí DaemonSet.
+Jakmile se přihlásíte k služby Datadog, můžete postupovat podle [pokynů služby Datadog](https://app.datadoghq.com/account/settings#agent/kubernetes) pro instalaci agentů služby Datadog v clusteru pomocí DaemonSet.
 
 ## <a name="conclusion"></a>Závěr
-A to je vše! Po zprovoznění agenty byste měli vidět data v konzole za pár minut. Můžete navštívit integrované [řídicí panel kubernetes](https://app.datadoghq.com/screen/integration/kubernetes) zobrazíte přehled vašeho clusteru.
+A to je vše! Až budou agenti v provozu a běží, měli byste v konzole zobrazovat data za několik minut. Můžete navštívit integrovaný [řídicí panel Kubernetes](https://app.datadoghq.com/screen/integration/kubernetes) a zobrazit souhrn vašeho clusteru.

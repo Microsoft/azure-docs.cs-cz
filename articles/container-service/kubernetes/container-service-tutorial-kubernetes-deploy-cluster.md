@@ -1,25 +1,23 @@
 ---
-title: (NEPOUŽÍVANÉ) Kurz Azure Container Service – nasazení clusteru
+title: ZASTARALÉ Kurz Azure Container Service – nasazení clusteru
 description: Kurz Azure Container Service – Nasazení clusteru
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 58fef0357a903f2ab1d238bbab7b2d9dca673eb4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5cb21bff2834751843061910184499f37bde834e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60576165"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275437"
 ---
-# <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>(NEPOUŽÍVANÉ) Nasazení clusteru Kubernetes ve službě Azure Container Service
+# <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>ZASTARALÉ Nasazení clusteru Kubernetes v Azure Container Service
 
 > [!TIP]
-> Aktualizovaná verze tohoto kurzu, který používá Azure Kubernetes Service, najdete v článku [kurzu: Nasaďte cluster Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-deploy-cluster.md).
+> Aktualizovanou verzi v tomto kurzu, který používá službu Azure Kubernetes, najdete v tématu [kurz: nasazení clusteru Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-deploy-cluster.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -90,7 +88,7 @@ k8s-master-98dc3136-0   Ready,SchedulingDisabled   5m        v1.6.2
 
 Po dokončení tohoto kurzu máte cluster ACS Kubernetes připravený pro úlohy. V následujících kurzech se do tohoto clusteru nasadí vícekontejnerová aplikace, horizontálně se navýší její kapacita, aktualizuje se a sleduje.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu se nasadil cluster Kubernetes ve službě Azure Container Service. Dokončili jste následující kroky:
 

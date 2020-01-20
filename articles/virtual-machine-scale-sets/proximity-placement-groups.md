@@ -1,25 +1,21 @@
 ---
-title: Náhled skupin umístění pro Proximity pro Virtual Machine Scale Sets | Microsoft Docs
+title: Náhled skupin umístění pro Proximity pro Virtual Machine Scale Sets
 description: Seznamte se s vytvářením a používáním skupin umístění blízkosti pro Windows Virtual Machine Scale Sets v Azure.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
 ms.service: virtual-machine-scale-sets
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 6a4f145c6431e98bbe9575f128ace30a23a1b972
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 4fa2949e2a7e1b99ac26caa35f967e9dc9cf359a
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850350"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273625"
 ---
-# <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>Verze Preview: Vytváření a používání skupin umístění blízkosti pomocí PowerShellu
+# <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>Preview: vytváření a používání skupin umístění blízkosti pomocí PowerShellu
 
 Pokud chcete co nejblíže získat virtuální počítače a dosáhnout nejnižší možné latence, měli byste v rámci [skupiny umístění blízkosti](co-location.md#preview-proximity-placement-groups)nasadit svou sadu škálování.
 
@@ -29,7 +25,7 @@ Skupina umístění blízkosti je logické seskupení, které se používá k za
 > Skupiny umístění blízkosti jsou momentálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> Skupiny umístění blízkosti nejsou v těchto oblastech k dispozici v průběhu verze Preview: **Japonsko – východ**, **Austrálie – východ** a **Indie – střed**
+> Skupiny umístění blízkosti nejsou v těchto oblastech k dispozici ve verzi Preview: **Japonsko – východ**, **Austrálie – východ** a **Indie – střed**.
 
 
 ## <a name="create-a-proximity-placement-group"></a>Vytvoření skupiny umístění bezkontaktní komunikace
@@ -58,7 +54,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-scale-set"></a>Vytvoření škálovací sady
 
-Pomocí `-ProximityPlacementGroup $ppg.Id` [New-AzVMSS](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) pro vytvoření sady škálování vytvořte v skupině umístění blízkosti rozsah, ve kterém se bude vztahovat na ID skupiny umístění blízkosti.
+Pokud k vytvoření sady škálování použijete [příkaz New-AzVMSS](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) , můžete ve skupině umístění blízkosti vytvořit škálování pomocí `-ProximityPlacementGroup $ppg.Id`, abyste odkazovali na ID skupiny umístění blízkosti.
 
 ```azurepowershell-interactive
 $scalesetName = "myVM"

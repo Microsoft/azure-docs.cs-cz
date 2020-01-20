@@ -1,70 +1,68 @@
 ---
-title: (NEPOUŽÍVANÉ) Canary release s využitím Vampu v clusteru Azure DC/OS
-description: Jak použít využitím Vampu testovací verze služby a použít inteligentní provoz filtrování v clusteru Azure Container Service DC/OS
-services: container-service
+title: ZASTARALÉ Kanárské verze s využitím vampu v clusteru Azure DC/OS
+description: Jak používat využitím vampu pro Kanárské služby vydaných verzí a použít filtrování inteligentních přenosů na Azure Container Service clusteru DC/OS
 author: gggina
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: f1b3c08cce2cb33feab899ea082fc6fb40225182
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 60ff148e044df81e64b54fc48c1cb6f67aee14df
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61458028"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275663"
 ---
-# <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>(NEPOUŽÍVANÉ) Testovací verze mikroslužeb s využitím Vampu v clusteru Azure Container Service DC/OS
+# <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>ZASTARALÉ Využitím vampu v clusteru s Azure Container Service DC/OS vydaných verzí mikroslužeb
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-V tomto názorném postupu nastavíme využitím Vampu ve službě Azure Container Service s clusterem DC/OS. Jsme testovací vydání ukázka service využitím Vampu "Sávy" a potom vyřešte nekompatibility služby s prohlížečem Firefox použitím filtrování inteligentního přenosu. 
+V tomto návodu nastavíme využitím vampu na Azure Container Service s clusterem DC/OS. Vydáme si využitím vampu demo Service "Sava" a pak vyřešíte nekompatibilitu služby pomocí aplikace Firefox, a to použitím filtrování inteligentních přenosů. 
 
 > [!TIP] 
-> V tomto názorném postupu využitím Vampu běží na clusteru DC/OS, ale můžete použít také využitím Vampu s využitím Kubernetes jako orchestrátor.
+> V tomto návodu využitím vampu běží na clusteru DC/OS, ale můžete také použít využitím vampu s Kubernetes jako Orchestrator.
 >
 
-## <a name="about-canary-releases-and-vamp"></a>O testovací verze a využitím Vampu
+## <a name="about-canary-releases-and-vamp"></a>O Kanárských verzích a využitím vampu
 
 
-[Testovací uvolnění](https://martinfowler.com/bliki/CanaryRelease.html) je přijatý inovativní organizacím, jako jsou Netflix, Facebook a Spotify strategie inteligentní nasazení. Je přístup, který dává smysl, protože se omezuje problémy, představuje bezpečný přístup z více sítí a zvyšuje inovace. Tak proč nejsou všechny cloudy využívají společnosti ho? Rozšíření kanálu CI/CD pro zahrnují testovací strategie zvyšuje složitost a vyžaduje devops rozsáhlé znalosti a zkušenosti. To je dost informací k blokování menší firem a podniků nabídne před tím i začít. 
+Vydaná [kanárskéie](https://martinfowler.com/bliki/CanaryRelease.html) je strategie inteligentního nasazení přijatá inovativními organizacemi, jako je Netflix, Facebook nebo Spotify. Jedná se o přístup, který dává smysl, protože snižuje problémy, představuje bezpečnostní sítě a zvyšuje inovace. Proč to nepoužívají všechny společnosti? Rozšiřování kanálu CI/CD, aby zahrnovalo Kanárské strategie, přináší složitost a vyžaduje rozsáhlé DevOps znalosti a zkušenosti. To je dostatečné pro blokování menších firem a podniků ještě předtím, než začne. 
 
-[Vamp](https://vamp.io/) vydává systém open source navržené pro usnadnění tohoto přechodu a přiřaďte testovací funkce, které váš Plánovač upřednostňované kontejneru. Využitím vampu vaší testovací funkce jde nad rámec založený na procentech uvedení. Provoz můžete filtrovat a rozdělit na širokou škálu podmínky, třeba pro cílové konkrétní uživatele, rozsahy IP adres nebo zařízení. Využitím vampu sleduje a analyzuje metrik výkonu, povolení pro službu automation na základě dat v reálném světě. Můžete nastavit automatické vrácení zpět na chyby, nebo varianty jednotlivých služeb na základě vytížení nebo latence.
+[Využitím vampu](https://vamp.io/) je open source systém navržený tak, aby usnadnil tento přechod a přináší špičkové uvolňování funkcí vašemu preferovanému plánovači kontejnerů. Využitím vampu funkce pro Kanárské využití překračuje procentní hodnotu uvádění. Provoz je možné filtrovat a rozdělit v rámci široké škály podmínek, například pro cílení na konkrétní uživatele, rozsahy IP adres nebo zařízení. Využitím vampu sleduje a analyzuje metriky výkonu a umožňuje tak automatizaci na základě dat z reálného světa. Můžete nastavit automatické vrácení zpět s chybami nebo škálovat jednotlivé varianty služby na základě zatížení nebo latence.
 
-## <a name="set-up-azure-container-service-with-dcos"></a>Nastavení služby Azure Container Service s DC/OS
-
-
-
-1. [Nasazení clusteru DC/OS](container-service-deployment.md) s jedním hlavním uzlem a dvěma agenty výchozí velikost. 
-
-2. [Vytvoření tunelu SSH](../container-service-connect.md) pro připojení ke clusteru DC/OS. Tento článek předpokládá, které vám Vytvoří tunel ke clusteru na místní port 80.
+## <a name="set-up-azure-container-service-with-dcos"></a>Nastavení Azure Container Service s využitím DC/OS
 
 
-## <a name="set-up-vamp"></a>Nastavit využitím Vampu
 
-Teď, když máte spuštěného clusteru DC/OS, můžete nainstalovat využitím Vampu v uživatelském rozhraní DC/OS (http:\//localhost:80). 
+1. [Nasaďte cluster DC/OS](container-service-deployment.md) s jedním hlavním serverem a dvěma agenty výchozí velikosti. 
+
+2. [Vytvořte tunel SSH](../container-service-connect.md) pro připojení ke clusteru DC/OS. V tomto článku se předpokládá, že budete tunelovat na cluster na místním portu 80.
+
+
+## <a name="set-up-vamp"></a>Nastavení využitím vampu
+
+Teď, když máte spuštěný cluster DC/OS, můžete nainstalovat využitím vampu z uživatelského rozhraní DC/OS (http:\//localhost: 80). 
 
 ![Uživatelské rozhraní DC/OS](./media/container-service-dcos-vamp-canary-release/01_set_up_vamp.png)
 
-Instalace probíhá ve dvou fázích:
+Instalace se provádí ve dvou fázích:
 
-1. **Nasazení Elasticsearch**.
+1. **Nasaďte Elasticsearch**.
 
-2. Potom **nasazení využitím Vampu** nainstalováním balíček Vamp DC/OS universe.
+2. Pak **Nasaďte využitím vampu** instalací balíčku využitím vampu DC/OS Universe.
 
 ### <a name="deploy-elasticsearch"></a>Nasazení Elasticsearch
 
-Využitím vampu vyžaduje Elasticsearch pro shromažďování metrik a agregaci. Můžete použít [imagí Dockeru magneticio](https://hub.docker.com/r/magneticio/elastic/) nasazení kompatibilní Vamp Elasticsearch zásobníku.
+Využitím vampu vyžaduje pro shromažďování a agregaci metriky Elasticsearch. K nasazení kompatibilního zásobníku Elasticsearch využitím vampu můžete použít [Image Docker magneticio](https://hub.docker.com/r/magneticio/elastic/) .
 
-1. V uživatelském rozhraní DC/OS, přejděte na **služby** a klikněte na tlačítko **nasadit službu**.
+1. V uživatelském rozhraní DC/OS přejděte na **služby** a klikněte na **nasadit službu**.
 
-2. Vyberte **režim JSON** z **nasadit novou službu** automaticky.
+2. V automaticky otevíraném okně **nasadit novou službu** vyberte **režim JSON** .
 
-   ![Vyberte režim JSON](./media/container-service-dcos-vamp-canary-release/02_deploy_service_json_mode.png)
+   ![Vybrat režim JSON](./media/container-service-dcos-vamp-canary-release/02_deploy_service_json_mode.png)
 
-3. Vložte následující kód JSON. Tato konfigurace spuštění kontejneru s 1 GB paměti RAM a základní kontrolu na portu Elasticsearch.
+3. Vložte následující kód JSON. Tato konfigurace spustí kontejner s 1 GB paměti RAM a základní kontrolou stavu na portu Elasticsearch.
   
    ```JSON
    {
@@ -95,49 +93,49 @@ Využitím vampu vyžaduje Elasticsearch pro shromažďování metrik a agregaci
 
 3. Klikněte na tlačítko **nasazení**.
 
-   DC/OS nasadíte kontejner Elasticsearch. Průběh můžete sledovat na **služby** stránky.  
+   DC/OS nasadí kontejner Elasticsearch. Průběh můžete sledovat na stránce **služby** .  
 
-   ![nasadit e? Elasticsearch](./media/container-service-dcos-vamp-canary-release/03_deply_elasticsearch.png)
+   ![nasadíte e? Elasticsearch](./media/container-service-dcos-vamp-canary-release/03_deply_elasticsearch.png)
 
-### <a name="deploy-vamp"></a>Nasazení s využitím Vampu
+### <a name="deploy-vamp"></a>Nasazení využitím vampu
 
-Jakmile Elasticsearch sestavy jako **systémem**, můžete přidat balíček Vamp DC/OS Universe. 
+Jakmile Elasticsearch sestavy jako **spuštěné**, můžete přidat balíček využitím vampu DC/OS Universe. 
 
-1. Přejděte na **Universe** a vyhledejte **vamp**. 
-   ![Vamp na DC/OS universe](./media/container-service-dcos-vamp-canary-release/04_universe_deploy_vamp.png)
+1. Přejdete na **Universe** a vyhledejte **využitím vampu**. 
+   ![využitím vampu v universu DC/OS](./media/container-service-dcos-vamp-canary-release/04_universe_deploy_vamp.png)
 
-2. Klikněte na tlačítko **nainstalovat** vedle využitím vampu balení a zvolte **rozšířené instalace**.
+2. Klikněte na **instalovat** vedle balíčku využitím vampu a pak vyberte **Pokročilá instalace**.
 
-3. Posuňte se dolů a zadejte následující adresu url elasticsearch: `http://elasticsearch.marathon.mesos:9200`. 
+3. Posuňte se dolů a zadejte následující Elasticsearch-URL: `http://elasticsearch.marathon.mesos:9200`. 
 
    ![Zadejte adresu URL Elasticsearch](./media/container-service-dcos-vamp-canary-release/05_universe_elasticsearch_url.png)
 
-4. Klikněte na tlačítko **zkontrolovat a nainstalovat**, pak klikněte na tlačítko **nainstalovat** ke spuštění nasazení.  
+4. Klikněte na tlačítko **zkontrolovat a nainstalovat a**potom kliknutím na tlačítko **nainstalovat** spusťte nasazení.  
 
-   DC/OS se nasazuje všechny požadované komponenty využitím Vampu. Průběh můžete sledovat na **služby** stránky.
+   DC/OS nasadí všechny požadované součásti využitím vampu. Průběh můžete sledovat na stránce **služby** .
   
-   ![Nasazení jako balíčku universe využitím Vampu](./media/container-service-dcos-vamp-canary-release/06_deploy_vamp.png)
+   ![Nasazení využitím vampu jako balíčku Universe](./media/container-service-dcos-vamp-canary-release/06_deploy_vamp.png)
   
-5. Po dokončení nasazení se můžete dostat Vamp uživatelského rozhraní:
+5. Po dokončení nasazení můžete získat přístup k uživatelskému rozhraní využitím vampu:
 
-   ![Služba s využitím vampu na DC/OS](./media/container-service-dcos-vamp-canary-release/07_deploy_vamp_complete.png)
+   ![Služba využitím vampu na DC/OS](./media/container-service-dcos-vamp-canary-release/07_deploy_vamp_complete.png)
   
-   ![Vamp uživatelského rozhraní](./media/container-service-dcos-vamp-canary-release/08_vamp_ui.png)
+   ![Uživatelské rozhraní využitím vampu](./media/container-service-dcos-vamp-canary-release/08_vamp_ui.png)
 
 
 ## <a name="deploy-your-first-service"></a>Nasazení první služby
 
-Nyní tento využitím Vampu je vytvořená a spuštěná, nasazení služby z podrobný plán. 
+Teď, když je využitím vampu v provozu, nasaďte službu z podrobného plánu. 
 
-Ve své nejjednodušší podobě [podrobného plánu využitím Vampu](https://vamp.io/documentation/using-vamp/blueprints/) popisuje koncové body (brány), clusterů a služeb pro nasazení. Využitím vampu využívá clustery seskupit různé varianty stejné služby do logických skupin pro testovací uvolněním nebo A / B testování.  
+V nejjednodušším tvaru popisuje [využitím vampu podrobný plán](https://vamp.io/documentation/using-vamp/blueprints/) koncových bodů (bran), clusterů a služeb, které se mají nasadit. Využitím vampu využívá clustery k seskupení různých variant stejné služby do logických skupin pro účely zkušebního vydání nebo testování A/B.  
 
-Tento scénář používá ukázkovou monolitické aplikaci s názvem [ **Sávy**](https://github.com/magneticio/sava), což je ve verzi 1.0. V kontejneru Dockeru, který se nachází v Docker Hubu v rámci magneticio/sava:1.0.0 je zabalená monolitu. Aplikace obvykle běží na portu 8080, ale chcete v tomto případě vystavit na portu 9050. Nasazení aplikace prostřednictvím využitím Vampu pomocí jednoduchého podrobného plánu.
+Tento scénář používá ukázkovou aplikaci monolitické s názvem [**Sava**](https://github.com/magneticio/sava), která je ve verzi 1,0. Monolitu je zabalen v kontejneru Docker, který je v Docker Hub v magneticio/Sava: 1.0.0. Aplikace normálně běží na portu 8080, ale v tomto případě ji chcete zpřístupnit v rámci portu 9050. K nasazení aplikace prostřednictvím využitím vampu použijte jednoduchý podrobný plán.
 
-1. Přejděte na **nasazení**.
+1. Přejít na **nasazení**.
 
-2. Klikněte na tlačítko **Add** (Přidat).
+2. Klikněte na tlačítko **Přidat**.
 
-3. Vložte následující podrobný plán YAML. Tento podrobný plán obsahuje jeden cluster s pouze jedna služba varianty, které můžeme změnit v pozdějším kroku:
+3. Vložte následující YAML podrobného plánu. Tento podrobný plán obsahuje jeden cluster s pouze jednou variantou služby, který se změní v pozdějším kroku:
 
    ```YAML
    name: sava                        # deployment name
@@ -145,7 +143,6 @@ Tento scénář používá ukázkovou monolitické aplikaci s názvem [ **Sávy*
     9050: sava_cluster/webport      # stable endpoint
    clusters:
     sava_cluster:               # cluster to create
-     services:
         -
           breed:
             name: sava:1.0.0        # service variant name
@@ -154,59 +151,58 @@ Tento scénář používá ukázkovou monolitické aplikaci s názvem [ **Sávy*
               webport: 8080/http # cluster endpoint, used for canary releasing
    ```
 
-4. Klikněte na **Uložit**. Využitím vampu zahájí nasazení.
+4. Klikněte na možnost **Uložit**. Využitím vampu inicializuje nasazení.
 
-Nasazení je uveden na **nasazení** stránky. Klikněte na tlačítko nasazení do monitorování jejího stavu.
+Nasazení najdete na stránce **nasazení** . Kliknutím na nasazení monitorujte jeho stav.
 
-![Uživatelské rozhraní – nasazení Sávy vamp](./media/container-service-dcos-vamp-canary-release/09_sava100.png)
+![Uživatelské rozhraní využitím vampu – nasazení Sava](./media/container-service-dcos-vamp-canary-release/09_sava100.png)
 
-![Služba Sávy v Vamp uživatelského rozhraní](./media/container-service-dcos-vamp-canary-release/09a_sava100.png)
+![Služba Sava v uživatelském rozhraní využitím vampu](./media/container-service-dcos-vamp-canary-release/09a_sava100.png)
 
-Dvě brány se vytvářejí, které jsou uvedeny na **brány** stránky:
+Vytvoří se dvě brány, které jsou uvedené na stránce **brány** :
 
-* stabilní koncový bod pro přístup ke spuštěné službě (port 9050) 
-* využitím Vampu spravované interní bránu (Další informace o tuto bránu později). 
+* stabilní koncový bod pro přístup k běžící službě (port 9050) 
+* interní brána spravovaná využitím vampu (Další informace o této bráně později). 
 
-![Vamp uživatelské rozhraní – Sávy brány](./media/container-service-dcos-vamp-canary-release/10_vamp_sava_gateways.png)
+![Uživatelské rozhraní využitím vampu – brány Sava](./media/container-service-dcos-vamp-canary-release/10_vamp_sava_gateways.png)
 
-Sávy služba má nyní nasadit, ale protože neví, nástroje pro vyrovnávání zatížení Azure směrovat provoz do něj ještě ji nelze přístup externě. Přístup k této službě, aktualizujte konfiguraci sítě Azure.
+Služba Sava se teď nasadila, ale nemůžete k ní přistupovat externě, protože Azure Load Balancer ještě nevíte, že do ní ještě předává provoz. Pokud chcete získat přístup ke službě, aktualizujte konfiguraci sítě Azure.
 
 
 ## <a name="update-the-azure-network-configuration"></a>Aktualizace konfigurace sítě Azure
 
-Využitím vampu nasadit službu Sávy uzlů agentů DC/OS, vystavení stabilní koncový bod na port 9050. Přístup ke službě z mimo cluster DC/OS, proveďte následující změny v konfiguraci sítě Azure ve vašem nasazení clusteru: 
+Využitím vampu nasadil službu Sava na uzlech agenta DC/OS a zveřejňuje stabilní koncový bod na portu 9050. Pokud chcete získat přístup ke službě mimo cluster DC/OS, proveďte následující změny konfigurace sítě Azure v nasazení clusteru: 
 
-1. **Konfigurace nástroje pro vyrovnávání zatížení Azure** pro agenty (prostředek s názvem **DC/OS agent-lb-xxxx**) s sondu stavu a pravidlo, které směrují provoz na portu 9050 Sávy instance. 
+1. **Nakonfigurujte Azure Load Balancer** pro agenty (prostředek s názvem **DCOS-agent-kg-xxxx**) s sondou stavu a pravidlem pro přeposílání provozu na portu 9050 do instancí Sava. 
 
-2. **Aktualizovat skupinu zabezpečení sítě** pro veřejní agenti (prostředek s názvem **XXXX-agent-public-nsg-XXXX**) pro povolení provozu na portu 9050.
+2. **Aktualizujte skupinu zabezpečení sítě** pro veřejné agenty (prostředek s názvem **xxxx-agent-Public-NSG-xxxx**), abyste povolili provoz na portu 9050.
 
-Podrobné pokyny k provedení těchto úloh pomocí webu Azure portal najdete v tématu [povolení veřejného přístupu k aplikaci Azure Container Service](container-service-enable-public-access.md). Určete port 9050 všechna nastavení portu.
+Podrobné pokyny k provedení těchto úloh pomocí Azure Portal najdete v tématu [povolení veřejného přístupu k aplikaci Azure Container Service](container-service-enable-public-access.md). Zadejte port 9050 pro všechna nastavení portu.
 
 
-Když se všechno, co byl vytvořen, přejděte do **přehled** okno nástroje pro vyrovnávání zatížení agenta DC/OS (prostředek s názvem **DC/OS agent-lb-xxxx**). Najít **veřejnou IP adresu**a použijte adresu pro přístup k Sávy na portu 9050.
+Až se všechno vytvoří, v okně Přehled nástroje pro vyrovnávání zatížení agenta DC/OS (prostředek s názvem **DCOS-agent-kg-xxxx**) se zobrazí okno s **přehledem** . Vyhledejte **veřejnou IP adresu**a adresu použijte pro přístup k Sava na portu 9050.
 
-![Azure portal – získat veřejnou IP adresu](./media/container-service-dcos-vamp-canary-release/18_public_ip_address.png)
+![Azure Portal – získat veřejnou IP adresu](./media/container-service-dcos-vamp-canary-release/18_public_ip_address.png)
 
 ![sava](./media/container-service-dcos-vamp-canary-release/19_sava100.png)
 
 
-## <a name="run-a-canary-release"></a>Spustit testovací verze
+## <a name="run-a-canary-release"></a>Spuštění testovací verze
 
-Předpokládejme, že máte novou verzi této aplikace, které mají na testovací verzi do produkčního prostředí. Jeho kontejnerizovaných jako magneticio/sava:1.1.0 a jste připravení přejít. Využitím vampu umožňuje snadno přidávat nové služby na běžícím nasazení. Tyto služby "sloučené" se nasazují společně s existující služby v clusteru a přiřazována váha 0 %. Žádný provoz se směruje do nově sloučeného dokud upravit distribuce provozu. Váha posuvník v Uživatelském rozhraní Vamp vám plnou kontrolu nad distribuce, umožňující úpravy přírůstkové (testovací verze) nebo okamžité vrácení zpět.
+Předpokládejme, že máte novou verzi této aplikace, kterou chcete vydávat do produkčního prostředí. Máte je ve svém kontejneru jako magneticio/Sava: 1.1.0 a jsou připravené k přechodu. Využitím vampu umožňuje snadno přidávat nové služby do běžícího nasazení. Tyto "sloučené" služby se nasazují společně se stávajícími službami v clusteru a mají přiřazenou váhu 0%. Do nově sloučené služby se nesměruje žádný provoz, dokud neupravíte distribuci provozu. Posuvník váhy v uživatelském rozhraní využitím vampu vám dává plnou kontrolu nad distribucí, umožňuje přírůstkové úpravy (pro Kanárské vydání) nebo okamžité vrácení zpět.
 
-### <a name="merge-a-new-service-variant"></a>Sloučit novou variantu služby
+### <a name="merge-a-new-service-variant"></a>Sloučí novou variantu služby.
 
-Chcete-li sloučit novou službu Sávy 1.1 s běžícím nasazení:
+Sloučení nové služby Sava 1,1 s běžícím nasazením:
 
-1. V Uživatelském rozhraní Vamp klikněte na tlačítko **plány**.
+1. V uživatelském rozhraní využitím vampu klikněte na **plány**.
 
-2. Klikněte na tlačítko **přidat** a vložte následující podrobný plán YAML: Tento podrobný plán popisuje novou variantu service (Sávy: 1.1.0) k nasazení do existujícího clusteru (sava_cluster).
+2. Klikněte na **Přidat** a vložte do podrobného plánu YAML: Tento podrobný plán popisuje novou variantu služby (Sava: 1.1.0), která se má nasadit v existujícím clusteru (sava_cluster).
 
    ```YAML
    name: sava:1.1.0      # blueprint name
    clusters:
     sava_cluster:       # cluster to update
-      services:
         -
           breed:
             name: sava:1.1.0    # service variant name
@@ -215,85 +211,85 @@ Chcete-li sloučit novou službu Sávy 1.1 s běžícím nasazení:
               webport: 8080/http # cluster endpoint to update
    ```
   
-3. Klikněte na **Uložit**. Podrobný plán se ukládají a uvedená na **plány** stránky.
+3. Klikněte na možnost **Uložit**. Podrobný plán je uložen a uveden na stránce **plány** .
 
-4. Otevření nabídky akce na podrobný plán Sávy: 1.1 a klikněte na tlačítko **sloučit**.
+4. Otevřete nabídku Akce v podrobném plánu Sava: 1.1 a klikněte na možnost **Sloučit do**.
 
-   ![Vamp uživatelské rozhraní – podrobné plány.](./media/container-service-dcos-vamp-canary-release/20_sava110_mergeto.png)
+   ![Uživatelské rozhraní využitím vampu – modrotisky](./media/container-service-dcos-vamp-canary-release/20_sava110_mergeto.png)
 
-5. Vyberte **Sávy** nasazení a klikněte na tlačítko **sloučit**.
+5. Vyberte nasazení **Sava** a klikněte na **Sloučit**.
 
-   ![Vamp uživatelského rozhraní - merge podrobný plán nasazení](./media/container-service-dcos-vamp-canary-release/21_sava110_merge.png)
+   ![Uživatelské rozhraní využitím vampu – sloučení podrobného plánu do nasazení](./media/container-service-dcos-vamp-canary-release/21_sava110_merge.png)
 
-Využitím vampu nasadí novou variantu Sávy: 1.1.0 služby podle podrobného plánu společně s Sávy: 1.0.0 v **sava_cluster** spuštěné nasazení. 
+Využitím vampu nasadí novou variantu služby Sava: 1.1.0, která je popsána v podrobném plánu vedle Sava: 1.0.0 v **sava_cluster** běžícího nasazení. 
 
-![Vamp uživatelské rozhraní – aktualizace Sávy nasazení](./media/container-service-dcos-vamp-canary-release/22_sava_cluster.png)
+![Uživatelské rozhraní využitím vampu – aktualizované nasazení Sava](./media/container-service-dcos-vamp-canary-release/22_sava_cluster.png)
 
-**Sávy/sava_cluster/webport** brány (koncový bod clusteru) je aktualizované taky, přidání trasy do nově nasazené Sávy: 1.1.0. V tomto okamžiku žádný provoz se směruje tady ( **váha** je nastavena na 0 %).
+Také se aktualizuje **Sava/sava_cluster/WebPort** brána (koncový bod clusteru), přidání trasy k nově nasazenému Sava: 1.1.0. V tuto chvíli se sem nesměrují žádné přenosy ( **váha** je nastavená na 0%).
 
-![Vamp uživatelské rozhraní – clusteru brány](./media/container-service-dcos-vamp-canary-release/23_sava_cluster_webport.png)
+![Uživatelské rozhraní využitím vampu – brána clusteru](./media/container-service-dcos-vamp-canary-release/23_sava_cluster_webport.png)
 
-### <a name="canary-release"></a>Testovací verze
+### <a name="canary-release"></a>Kanárské verze
 
-V obou verzích Sávy nasazené ve stejném clusteru upravit distribuci provozu mezi nimi přechodem **váha** posuvníku.
+V obou verzích Sava nasazených ve stejném clusteru upravte přesunutím posuvníku **váhy** distribuci provozu mezi nimi.
 
-1. Klikněte na tlačítko ![Vamp uživatelské rozhraní – upravit](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) vedle **váha**.
+1. Klikněte na ![využitím vampu UI – upravit](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) vedle **váhy**.
 
-2. Nastavení distribuce váhy 50 % nebo 50 % a kliknutím na tlačítko **Uložit**.
+2. Nastavte rozdělení váhy na 50%/50% a klikněte na **Uložit**.
 
-   ![Vamp uživatelské rozhraní – brána váha posuvníku](./media/container-service-dcos-vamp-canary-release/24_sava_cluster_webport_weight.png)
+   ![Uživatelské rozhraní využitím vampu – posuvník váhy pro bránu](./media/container-service-dcos-vamp-canary-release/24_sava_cluster_webport_weight.png)
 
-3. Přejděte zpět do prohlížeče a aktualizujte stránku Sávy ještě několikrát. Nyní aplikaci Sávy Přepne mezi Sávy: 1.0 stránku a stránku Sávy: 1.1.
+3. Vraťte se do prohlížeče a několikrát aktualizujte stránku Sava. Aplikace Sava teď přepíná mezi stránkou Sava: 1.0 a stránkou Sava: 1.1.
 
-   ![Alternující sava1.0 a sava1.1 služby](./media/container-service-dcos-vamp-canary-release/25_sava_100_101.png)
+   ![střídavé služby Sava 1.0 a Sava 1.1](./media/container-service-dcos-vamp-canary-release/25_sava_100_101.png)
 
 
   > [!NOTE]
-  > Tato alternace stránce funguje nejlépe s prohlížečem "Incognito" nebo "Anonymní" režimu prohlížeče z důvodu ukládání do mezipaměti statické prostředky.
+  > Tento alternace stránky funguje nejlépe s režimem "anonymním" nebo "anonymní" v prohlížeči z důvodu ukládání statických prostředků do mezipaměti.
   >
 
-### <a name="filter-traffic"></a>Filtrování provozu
+### <a name="filter-traffic"></a>Filtrovat provoz
 
-Předpokládejme, že po nasazení, že zjišťuje k nekompatibilitě v Sávy: 1.1.0, způsobí, že se zobrazují v prohlížečích Firefox problémy. Můžete nastavit využitím Vampu a filtrovat příchozí provoz směrovat všechny uživatele aplikace Firefox zpátky na známé stabilní Sávy: 1.0.0. Tento filtr okamžitě řeší přerušení pro uživatele aplikace Firefox, zatímco ostatní uživatelé i nadále využívat výhod vylepšené Sávy: 1.1.0.
+Předpokládejme, že se po nasazení zjistila nekompatibilita v Sava: 1.1.0, která způsobuje problémy zobrazení v prohlížečích Firefox. Můžete nastavit využitím vampu pro filtrování příchozího provozu a směrování všech uživatelů Firefox zpět na známou stabilní Sava: 1.0.0. Tento filtr okamžitě vyřeší přerušení pro uživatele prohlížeče Firefox, zatímco všichni ostatní nadále využívají výhody vylepšené Sava: 1.1.0.
 
-Vamp používá **podmínky** k filtrování provozu mezi trasy do brány. Provoz je nejprve filtrovat a přesměruje podle podmínek použitý pro každý postup. Veškerý zbývající provoz je distribuován podle nastavení váhy brány.
+Využitím vampu používá **podmínky** k filtrování provozu mezi trasami v bráně. Provoz je nejprve filtrován a směrován podle podmínek použitých pro každou trasu. Veškerý zbývající provoz se distribuuje podle nastavení váhy brány.
 
-Můžete vytvořit podmínku filtrování všechny uživatele aplikace Firefox a přesměrování na staré Sávy: 1.0.0:
+Můžete vytvořit podmínku pro filtrování všech uživatelů aplikace Firefox a jejich nasměrování na starou Sava: 1.0.0:
 
-1. Na Sávy/sava_cluster/webport **brány** klikněte na ![Vamp uživatelské rozhraní – upravit](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) přidáte **PODMÍNKU** k sava/sava_cluster/sava:1.0.0/webport trasy. 
+1. Na stránce **brány** sava/sava_cluster/WebPort klikněte na ![využitím vampu uživatelského rozhraní – upravit](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) a přidejte **podmínku** do trasy Sava/sava_cluster/Sava: 1.0.0/WebPort. 
 
-2. Zadejte podmínku **uživatelský agent == Firefox** a klikněte na tlačítko ![Vamp uživatelské rozhraní – Uložit](./media/container-service-dcos-vamp-canary-release/vamp_ui_save.png).
+2. Zadejte podmínku **User-Agent = Firefox** a klikněte na ![využitím vampu UI – Uložit](./media/container-service-dcos-vamp-canary-release/vamp_ui_save.png).
 
-   Využitím vampu přidá podmínku s použitím výchozí sílu 0 %. Spustí se filtrování provozu, budete muset upravit podmínku síly.
+   Využitím vampu přidá podmínku s výchozí siloou 0%. Chcete-li zahájit filtrování provozu, je nutné upravit sílu podmínky.
 
-3. Klikněte na tlačítko ![Vamp uživatelské rozhraní – upravit](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) změnit **SÍLU** použitý pro podmínku.
+3. Kliknutím na ![využitím vampu UI – upravit](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) změňte **sílu** aplikovanou na podmínku.
  
-4. Nastavte **SÍLU** 100 % a kliknutím na tlačítko ![Vamp uživatelské rozhraní – Uložit](./media/container-service-dcos-vamp-canary-release/vamp_ui_save.png) uložte.
+4. Nastavte **sílu** na 100% a klikněte ![uživatelské rozhraní využitím vampu – uložení](./media/container-service-dcos-vamp-canary-release/vamp_ui_save.png) Uložit.
 
-   Využitím vampu nyní odesílá veškerý provoz odpovídajících podmínce (všechny uživatele aplikace Firefox) k Sávy: 1.0.0.
+   Využitím vampu nyní odesílá veškerý provoz splňující podmínku (všichni uživatelé prohlížeče Firefox) do Sava: 1.0.0.
 
-   ![Vamp uživatelského rozhraní – použít podmínku do brány](./media/container-service-dcos-vamp-canary-release/26_apply_condition.png)
+   ![Uživatelské rozhraní využitím vampu – použít podmínku pro bránu](./media/container-service-dcos-vamp-canary-release/26_apply_condition.png)
 
-5. Nakonec můžete upravte bránu váha odesílat veškerý přenos v zbývající (všechny uživatele bez Firefox) k nové Sávy: 1.1.0. Klikněte na tlačítko ![Vamp uživatelské rozhraní – upravit](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) vedle **váha** a nastavit je distribuce váhy, aby se 100 % směřuje na sava/sava_cluster/sava:1.1.0/webport trasy.
+5. Nakonec upravte váhu brány tak, aby odesílala všechna zbývající přenosová data (všichni uživatelé bez prohlížeče Firefox) do nové Sava: 1.1.0. Klikněte na ![využitím vampu UI – upravit](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) vedle **váhy** a nastavte rozdělení váhy tak, aby 100% bylo přesměrováno na port sava/sava_cluster/Sava: 1.1.0/Web.
 
-   Veškerý provoz není filtrovaná podle podmínka je nyní přesměrováni na novou Sávy: 1.1.0.
+   Veškerý provoz, který není filtrovaný podle podmínky, se teď přesměruje na nový Sava: 1.1.0.
 
-6. Filtr v akci najdete otevřete dvěma různými prohlížeči (jeden Firefox a jeden jiný prohlížeč) a přístup ke službě Sávy z obou. Všechny požadavky Firefox jsou odesílány Sávy: 1.0.0, zatímco všechny ostatní prohlížeče jsou směrované na Sávy: 1.1.0.
+6. Pokud chcete zobrazit filtr v akci, otevřete dva různé prohlížeče (jeden prohlížeč Firefox a jeden další prohlížeč) a přihlaste se ke službě Sava z obou. Všechny požadavky aplikace Firefox jsou odesílány do Sava: 1.0.0, zatímco všechny ostatní prohlížeče jsou směrovány na Sava: 1.1.0.
 
-   ![Vamp uživatelské rozhraní – filtrování provozu](./media/container-service-dcos-vamp-canary-release/27_filter_traffic.png)
+   ![Uživatelské rozhraní využitím vampu – filtrování provozu](./media/container-service-dcos-vamp-canary-release/27_filter_traffic.png)
 
-## <a name="summing-up"></a>Shrnutí
+## <a name="summing-up"></a>Sčítání
 
-Tento článek byl rychlý úvod k využitím Vampu na clusteru DC/OS. Začínáte jste získali využitím Vampu a spuštěná na vaše Azure Container Service DC/OS clusteru, nasazení služby s využitím Vampu podrobný plán a přístup v zveřejněné koncový bod (brány).
+Tento článek představuje rychlý Úvod k využitím vampu v clusteru DC/OS. V případě starts jste využitím vampui a běželi v clusteru Azure Container Service DC/OS, nasadili jste službu s využitím vampu podrobným plánem a získali k ní přístup v nevystaveném koncovém bodu (bráně).
 
-Můžeme také nakousli některé výkonné funkce využitím Vampu: sloučení novou variantu služby spuštěné nasazení a představení postupně a potom filtrování provozu do vyřešení známých nekompatibility.
+Provedli jsme také některé výkonné funkce využitím vampu: sloučení nové varianty služby do běžícího nasazení a jejich přírůstkové zavedení a následnému vyfiltrování provozu za účelem vyřešení známé nekompatibility.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Další informace o správě akcí s využitím Vampu prostřednictvím [Vamp rozhraní REST API](https://vamp.io/documentation/api/api-reference/).
+* Přečtěte si o správě akcí využitím vampu prostřednictvím [využitím vampu REST API](https://vamp.io/documentation/api/api-reference/).
 
-* Vytváření skriptů pro automatizaci využitím Vampu v Node.js a spouštět je jako [Vamp pracovních postupů](https://vamp.io/documentation/using-vamp/v1.0.0/workflows/#create-a-workflow).
+* Sestavujte skripty pro automatizaci využitím vampu v Node. js a spusťte je jako [pracovní postupy využitím vampu](https://vamp.io/documentation/using-vamp/v1.0.0/workflows/#create-a-workflow).
 
-* Zjistěte víc [využitím VAMPU kurzy](https://vamp.io/documentation/tutorials/).
+* Podívejte se na další [kurzy využitím vampu](https://vamp.io/documentation/tutorials/).
 

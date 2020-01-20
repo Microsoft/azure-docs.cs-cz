@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: d936f9f30f79b3be6035d668211a15533cb3fa85
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: cfb77548217cf173438ab0407320cbdff8db092e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157215"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276997"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Výstrahy zabezpečení – referenční příručka
 
@@ -128,7 +128,7 @@ Typy výstrah obsažených v této tabulce:
 |**Bylo zjištěno vkládání kódu**|Injektáž kódu představuje vložení spustitelných modulů do spuštěných procesů nebo vláken. Tento postup využije malware pro přístup k datům, přičemž se ale úspěšně skrývá, aby nedocházelo k jejich nalezení a odebrání.<br>Tato výstraha znamená, že ve výpisu je injektovaný modul. Aby bylo možné odlišit škodlivé a neškodlivé vložené moduly, Security Center kontroluje, zda vložený modul odpovídá profilu podezřelého chování.|-|
 |**Zjištěn podezřelý segment kódu**|Označuje, že segment kódu byl přidělen pomocí nestandardních metod, jako je reflektování vkládání a zpracování prázdných procesů. Výstraha poskytuje další charakteristiky segmentu kódu, který byl zpracován, aby poskytoval kontext pro schopnosti a chování oznámeného segmentu kódu.|-|
 |**Zjištěné skrytý spustitelný kód**|Skrytý spustitelný kód je datová část, která se spouští potom, co malware zneužije chybu zabezpečení softwaru.<br>Tato výstraha znamená, že při analýze výpisu stavu systému byl nalezen spustitelný kód, který vykazuje chování obvykle prováděné škodlivými datovými částmi. I když neškodlivý software může toto chování také provést, není typický pro běžné postupy při vývoji softwaru.|-|
-|**Zjištěna technika útoku s neoprávněnými soubory**|Paměť zadaného procesu obsahuje sadu nástrojů pro útok pomocí souborů: Meterpreter. Sady nástrojů pro útoky bez souborů většinou nemají přítomnost v systému souborů, což ztěžuje jejich detekci pomocí tradičního antivirového softwaru.|DefenseEvasion/spuštění|
+|**Zjištěna technika útoku s neoprávněnými soubory**|Paměť zadaného procesu obsahuje sadu nástrojů pro útok pomocí souborů: [název sady nástrojů]. Sady nástrojů pro útoky bez souborů většinou nemají přítomnost v systému souborů, což ztěžuje jejich detekci pomocí tradičního antivirového softwaru.|DefenseEvasion/spuštění|
 ||<a name="alerts-linux"></a><h3>Počítače se systémem Linux</h3> [Další podrobnosti a poznámky](security-center-alerts-iaas.md#linux-)||
 |**Proces, při kterém se zobrazil přístup k souboru klíčů autorizovaným SSH, neobvyklým způsobem**|V metodě, která se podobá známým postupům malwaru, je přístup k souboru klíčů autorizovaných pro SSH. Tento přístup může znamenat, že se útočník pokouší získat trvalý přístup k počítači.|-|
 |**Zjištěn pokus o trvalosti**|Analýza dat hostitele zjistila, že byl nainstalován spouštěcí skript pro režim jednoho uživatele.<br>Vzhledem k tomu, že je zřídka, že by se v tomto režimu musely spustit jakýkoli legitimní proces, může to znamenat, že útočník přidal škodlivý proces do každé úrovně spuštění, aby zajistil trvalost. |Trvalost|

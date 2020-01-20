@@ -1,25 +1,23 @@
 ---
-title: (NEPOUŽÍVANÉ) Kurz Azure Container Service – monitorování Kubernetes
+title: ZASTARALÉ Kurz Azure Container Service – monitorování Kubernetes
 description: Kurz Azure Container Service – Monitorování Kubernetes pomocí služby Log Analytics
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 04/05/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 6f95aa701228730682c0122dc1fd46d8a2537ce1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 35f7c2fb968ea5285af5f2d597c67b3b22065906
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61473229"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278228"
 ---
-# <a name="deprecated-monitor-a-kubernetes-cluster-with-log-analytics"></a>(NEPOUŽÍVANÉ) Monitorování clusteru Kubernetes pomocí Log Analytics
+# <a name="deprecated-monitor-a-kubernetes-cluster-with-log-analytics"></a>ZASTARALÉ Monitorování clusteru Kubernetes pomocí Log Analytics
 
 > [!TIP]
-> Aktualizovaná verze tohoto kurzu, který používá Azure Kubernetes Service, najdete v článku [monitorování Azure pro kontejnery (Preview) – přehled](../../azure-monitor/insights/container-insights-overview.md).
+> Aktualizovanou verzi v tomto kurzu, který používá službu Azure Kubernetes, najdete v tématu [Přehled služby Azure monitor for Containers (Preview)](../../azure-monitor/insights/container-insights-overview.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -158,7 +156,7 @@ Podobně na webu Azure Portal přejděte do části **Log Analytics** a vyberte 
 
 Podrobné pokyny k dotazování a analýze dat monitorování najdete v [dokumentaci k Azure Log Analytics](../../azure-monitor/log-query/log-query-overview.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste monitorovali svůj cluster Kubernetes pomocí služby Log Analytics. Mezi probírané úlohy patří:
 

@@ -1,23 +1,18 @@
 ---
-title: Hostitel reverzních zón zpětného vyhledávání DNS v Azure DNS | Microsoft Docs
+title: Hostitel reverzních zón zpětného vyhledávání DNS v Azure DNS
 description: Naučte se používat Azure DNS k hostování zón zpětného vyhledávání DNS pro rozsahy IP adres.
-services: dns
-documentationcenter: na
 author: asudbring
-manager: jeconnoc
 ms.service: dns
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: allensu
-ms.openlocfilehash: aeefb523b401effe4dedb21a8284f296948bbef9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6052934e15d6975265c9eded459eea4446c9eee1
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211247"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277957"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Hostitel reverzních zón zpětného vyhledávání DNS v Azure DNS
 
@@ -33,7 +28,7 @@ Tento článek vás provede kroky k vytvoření první zóny a záznamu DNS zpě
 
 ## <a name="create-a-reverse-lookup-dns-zone"></a>Vytvoření zóny DNS zpětného vyhledávání
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
 1. V nabídce **centra** vyberte **Nový** > **sítě**a pak vyberte **zóna DNS**.
 
    ![Výběr zóny DNS](./media/dns-reverse-dns-hosting/figure1.png)
@@ -245,7 +240,7 @@ Get-AzDnsRecordSet -ZoneName 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceG
     azure network dns record-set list -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
 ```
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 ### <a name="can-i-host-reverse-dns-lookup-zones-for-my-isp-assigned-ip-blocks-on-azure-dns"></a>Můžu na Azure DNS hostovat zóny zpětného vyhledávání DNS pro své bloky IP adres přiřazené poskytovateli internetových služeb?
 

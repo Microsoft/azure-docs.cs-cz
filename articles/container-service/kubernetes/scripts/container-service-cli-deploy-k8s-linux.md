@@ -1,29 +1,23 @@
 ---
-title: Ukázkový skript Azure CLI – Vytvoření clusteru ACS Kubernetes s Linuxem | Microsoft Docs
+title: Ukázkový skript Azure CLI – Vytvoření clusteru ACS Kubernetes s Linuxem
 description: Ukázkový skript Azure CLI – Vytvoření clusteru ACS Kubernetes s Linuxem
-services: container-service
-documentationcenter: ''
 author: iainfoulds
-manager: jeconnoc
-editor: ''
 tags: acs, azure-container-service
 keywords: Docker, Kontejnery, mikroslužby, Kubernetes, DC/OS, Azure
 ms.assetid: ''
 ms.service: container-service
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 05/30/2017
 ms.author: iainfou
-ms.openlocfilehash: 11549e730e38c72e09ed2e94a72113c6e7e5bbb9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7b5c6d5931b5d36069850b1bba90413731a48022
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60901825"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270698"
 ---
-# <a name="deprecated-create-an-azure-container-service-kubernetes-linux-cluster"></a>(NEPOUŽÍVANÉ) Vytvoření clusteru Azure Container Service Kubernetes s Linuxem
+# <a name="deprecated-create-an-azure-container-service-kubernetes-linux-cluster"></a>ZASTARALÉ Vytvoření clusteru Azure Container Service Kubernetes Linux
 
 [!INCLUDE [ACS deprecation](../../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -62,7 +56,7 @@ Tento skript pomocí následujících příkazů vytvoří nasazení. Každá po
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az acs create](https://docs.microsoft.com/cli/azure/acs#az-acs-create) | Vytvoří cluster ACS. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

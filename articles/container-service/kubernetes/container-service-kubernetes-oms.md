@@ -1,59 +1,57 @@
 ---
-title: (NEPOUŽÍVANÉ) Monitorování clusteru Kubernetes v Azure – řízení provozu
-description: Monitorování clusteru Kubernetes ve službě Azure Container Service pomocí Log Analytics
-services: container-service
+title: ZASTARALÉ Monitorování clusteru Azure Kubernetes – Operations Management
+description: Monitorování clusteru Kubernetes v Azure Container Service pomocí Log Analytics
 author: bburns
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: d7370fc14a5ede23744e04ac9d35140f2368e21f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3cb500d2f00d6657420d7f294a7318b339e1f81e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711764"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271071"
 ---
-# <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>(NEPOUŽÍVANÉ) Monitorování clusteru služby Azure Container Service pomocí služby Log Analytics
+# <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>ZASTARALÉ Monitorování clusteru Azure Container Service s využitím Log Analytics
 
 > [!TIP]
-> Pro aktualizovanou verzi, tento článek, který používá Azure Kubernetes Service, najdete v článku [monitorování Azure pro kontejnery](../../azure-monitor/insights/container-insights-overview.md).
+> Aktualizovanou verzi tohoto článku, který používá službu Azure Kubernetes, najdete v tématu [Azure monitor for Containers](../../azure-monitor/insights/container-insights-overview.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 ## <a name="prerequisites"></a>Požadavky
-Tento názorný průvodce předpokládá, že máte [vytvořit cluster Kubernetes pomocí služby Azure Container Service](container-service-kubernetes-walkthrough.md).
+Tento návod předpokládá, že jste [vytvořili cluster Kubernetes pomocí Azure Container Service](container-service-kubernetes-walkthrough.md).
 
-Dále předpokládá, že máte `az` rozhraní příkazového řádku Azure a `kubectl` nainstalované nástroje.
+Také předpokládá, že máte nainstalované `az` Azure CLI a `kubectl` Tools.
 
-Můžete otestovat, pokud máte `az` nástroj pro instalaci spuštěním:
+Můžete otestovat, jestli máte nainstalovaný nástroj `az`, a to spuštěním:
 
 ```console
 $ az --version
 ```
 
-Pokud nemáte k dispozici `az` nástroj nainstalovali, jsou k dispozici pokyny [tady](https://github.com/azure/azure-cli#installation).
-Alternativně můžete použít [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), který má `az` rozhraní příkazového řádku Azure a `kubectl` nástroje už nainstalovaný za vás.
+Pokud nemáte nainstalovaný nástroj `az`, [tady](https://github.com/azure/azure-cli#installation)najdete pokyny.
+Alternativně můžete použít [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), které mají `az` rozhraní příkazového řádku Azure a `kubectl` nástroje, které jsou pro vás již nainstalovány.
 
-Můžete otestovat, pokud máte `kubectl` nástroj pro instalaci spuštěním:
+Můžete otestovat, jestli máte nainstalovaný nástroj `kubectl`, a to spuštěním:
 
 ```console
 $ kubectl version
 ```
 
-Pokud nemáte `kubectl` nainstalované, můžete spustit:
+Pokud nemáte nainstalované `kubectl`, můžete spustit:
 ```console
 $ az acs kubernetes install-cli
 ```
 
-K otestování, pokud máte kubernetes klíče nainstalována v kubectl nástroji, které můžete spustit:
+Pokud chcete otestovat, jestli máte v nástroji kubectl nainstalované klíče Kubernetes, můžete spustit:
 ```console
 $ kubectl get nodes
 ```
 
-Pokud výše uvedené chyby příkazu si budete muset nainstalovat klíče clusteru kubernetes do vašeho nástroje pro kubectl. Můžete to udělat pomocí následujícího příkazu:
+Pokud výše uvedené příkazy vyprší, musíte do nástroje kubectl nainstalovat klíče clusteru Kubernetes. Můžete to udělat pomocí následujícího příkazu:
 ```console
 RESOURCE_GROUP=my-resource-group
 CLUSTER_NAME=my-acs-name
@@ -62,45 +60,45 @@ az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUST
 
 ## <a name="monitoring-containers-with-log-analytics"></a>Monitorování kontejnerů pomocí Log Analytics
 
-Log Analytics je od Microsoftu cloudové řešení pro správu IT, která pomáhá spravovat a chránit místní a cloudovou infrastrukturu. Řešení kontejnerů je řešení ve službě Log Analytics, který umožňuje zobrazit inventář kontejneru, výkonu a protokolů na jednom místě. Můžete auditovat, řešení potíží s kontejnery zobrazením protokolů v centrálním umístění a najít hlučného využívání nadbytečné kontejneru na hostiteli.
+Log Analytics je cloudové řešení pro správu IT od Microsoftu, které pomáhá spravovat a chránit místní i cloudovou infrastrukturu. Řešení kontejneru je řešení v Log Analytics, které vám pomůže zobrazit inventář kontejnerů, výkon a protokoly v jednom umístění. Můžete auditovat, řešit potíže s kontejnery zobrazením protokolů v centralizovaném umístění a zjistit vysokou úroveň nenáročného kontejneru na hostiteli.
 
 ![](media/container-service-monitoring-oms/image1.png)
 
-Další informace o řešení kontejnerů najdete [kontejneru řešení Log Analytics](../../azure-monitor/insights/containers.md).
+Další informace o řešení kontejnerů najdete v [Log Analytics řešení kontejneru](../../azure-monitor/insights/containers.md).
 
 ## <a name="installing-log-analytics-on-kubernetes"></a>Instalace Log Analytics v Kubernetes
 
-### <a name="obtain-your-workspace-id-and-key"></a>Získání ID pracovního prostoru a klíč
-Ke službě Log Analytics ke komunikaci služby je potřeba nakonfigurovat s ID pracovního prostoru a klíč pracovního prostoru. Chcete-li získat ID pracovního prostoru a klíč, budete muset vytvořit účet na webu <https://mms.microsoft.com>.
-Postupujte podle kroků k vytvoření účtu. Po dokončení vytváření účtu, můžete získat vaše ID a klíče po kliknutí na **Log Analytics** okno a potom název pracovního prostoru. Potom v části **Upřesnit nastavení**, **připojené zdroje**a potom **servery s Linuxem**, najdete informace, které potřebujete, jak je znázorněno níže.
+### <a name="obtain-your-workspace-id-and-key"></a>Získání ID a klíče pracovního prostoru
+Aby mohl agent Log Analytics komunikovat se službou, je nutné nakonfigurovat ID pracovního prostoru a klíč pracovního prostoru. Chcete-li získat ID a klíč pracovního prostoru, je nutné vytvořit účet na adrese <https://mms.microsoft.com>.
+Pokud chcete vytvořit účet, postupujte podle pokynů. Jakmile dokončíte vytváření účtu, můžete získat ID a klíč kliknutím na okno **Log Analytics** a pak na název pracovního prostoru. V části **Upřesnit nastavení**, **připojené zdroje**a pak **servery Linux**najdete informace, které potřebujete, jak vidíte níže.
 
  ![](media/container-service-monitoring-oms/image5.png)
 
 ### <a name="install-the-log-analytics-agent-using-a-daemonset"></a>Instalace agenta Log Analytics pomocí DaemonSet
-DaemonSets používají ke spuštění jedné instance kontejneru na každého hostitele v clusteru Kubernetes.
-Jsou ideální pro provoz agentů monitorování.
+DaemonSets používají Kubernetes ke spuštění jedné instance kontejneru na každém hostiteli v clusteru.
+Jsou ideální pro spouštění agentů monitorování.
 
-Tady je [soubor DaemonSet YAML](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes). Uložit do souboru s názvem `oms-daemonset.yaml` a nahraďte zástupný text hodnoty `WSID` a `KEY` s ID pracovního prostoru a klíč v souboru.
+Zde je [soubor DAEMONSET YAML](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes). Uložte ho do souboru s názvem `oms-daemonset.yaml` a nahraďte hodnoty držitele místa pro `WSID` a `KEY` ID a klíč pracovního prostoru v souboru.
 
-Po přidání ID pracovního prostoru a klíč v konfiguraci DaemonSet můžete nainstalovat agenta Log Analytics v clusteru s `kubectl` nástroj příkazového řádku:
+Po přidání ID a klíče pracovního prostoru do konfigurace DaemonSet můžete agenta Log Analytics do clusteru nainstalovat pomocí nástroje příkazového řádku `kubectl`:
 
 ```console
 $ kubectl create -f oms-daemonset.yaml
 ```
 
-### <a name="installing-the-log-analytics-agent-using-a-kubernetes-secret"></a>Instalace agenta Log Analytics, pomocí tajného klíče Kubernetes
-K ochraně ID pracovního prostoru Log Analytics a klíč slouží jako součást soubor DaemonSet YAML tajného kódu Kubernetes.
+### <a name="installing-the-log-analytics-agent-using-a-kubernetes-secret"></a>Instalace agenta Log Analytics pomocí tajného klíče Kubernetes
+Pokud chcete chránit své ID a klíč pracovního prostoru Log Analytics můžete použít tajný klíč Kubernetes jako součást souboru DaemonSet YAML.
 
-- Zkopírujte skript, soubor tajného kódu šablony a soubor DaemonSet YAML (z [úložiště](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)) a ujistěte se, že jsou ve stejném adresáři.
-  - Generování skriptu - secret gen.sh tajný klíč
+- Zkopírujte skript, soubor tajné šablony a soubor DaemonSet YAML (z [úložiště](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)) a ujistěte se, že jsou ve stejném adresáři.
+  - tajný kód generování skriptu – secret-gen.sh
   - Šablona tajné – template.yaml tajný klíč
-    - Soubor DaemonSet YAML - omsagent-ds-secrets.yaml
-- Spusťte skript. Skript vyzve pro ID pracovního prostoru Log Analytics a primární klíč. Vložit, a skript se vytvoří soubor yaml tajného kódu, můžete ji spustit.
+    - DaemonSet YAML File-omsagent-DS-tajná. yaml
+- Spusťte skript. Skript zobrazí výzvu k zadání ID a primárního klíče Log Analytics pracovního prostoru. Vložením skriptu a skriptu se vytvoří tajný soubor YAML, abyste ho mohli spustit.
   ```
   #> sudo bash ./secret-gen.sh
   ```
 
-  - Vytvořte pod tajných kódů spuštěním následujícího: ```kubectl create -f omsagentsecret.yaml```
+  - Tajné klíče vytvoříte spuštěním následujícího: ```kubectl create -f omsagentsecret.yaml```
 
   - Pokud chcete zkontrolovat, spusťte následující příkaz:
 
@@ -126,4 +124,4 @@ K ochraně ID pracovního prostoru Log Analytics a klíč slouží jako součás
   - Vytvoření vašeho omsagent démon sady spuštěním ```kubectl create -f omsagent-ds-secrets.yaml```
 
 ### <a name="conclusion"></a>Závěr
-A to je vše! Po několika minutách měli vidět dat odesílaných do řídicího panelu Log Analytics.
+A to je vše! Po několika minutách byste si měli být schopni zobrazit tok dat na řídicím panelu Log Analytics.

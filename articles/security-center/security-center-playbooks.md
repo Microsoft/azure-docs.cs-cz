@@ -13,15 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
-ms.openlocfilehash: faf297ef4b07b76f98bb7773c636cd8f6228bbc0
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b4a2617bec145cf735058bc13c01bf8ebdfe6550
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201737"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275500"
 ---
 # <a name="security-playbook-in-azure-security-center-preview"></a>Playbook zabezpečení v Azure Security Center (Preview)
 Tento dokument vám pomůže reagovat na problémy související se zabezpečením pomocí playbooků zabezpečení v Azure Security Center.
+
+> [!NOTE]
+> Funkce Security PlayBook byla přejmenována na automatizaci pracovního postupu. Informace o aktualizovaném obsahu najdete na stránce pro [automatizaci pracovního postupu (Preview)](https://docs.microsoft.com/azure/security-center/workflow-automation) . Jedná se o dočasný archivovaný obsah dostupný zákazníkům, kteří by si ho dříve viděli a bude se postupně odebírat. Všechny funkce ve verzi Preview jsou v souladu s [doplňkovými podmínkami použití pro Microsoft Azure Preview.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
 ## <a name="what-is-security-playbook-in-security-center"></a>Co je playbook zabezpečení ve službě Security Center?
 Playbook zabezpečení je kolekce procedur, které je možné spustit ze služby Security Center, jakmile se určitý playbook aktivuje z vybrané výstrahy. Playbook zabezpečení může pomoct automatizovat a orchestrovat reakci na konkrétní výstrahu zabezpečení, kterou zjistí služba Security Center. Playbooky zabezpečení ve službě Security Center jsou založené na [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps). To znamená, že můžete používat šablony Logic Apps z kategorie zabezpečení a upravovat je podle svých potřeb nebo můžete vytvářet nové playbooky pomocí [pracovního postupu Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-a-logic-app) a službu Security Center používat jako trigger.
@@ -35,7 +38,7 @@ Pokud chcete ve službě Security Center vytvořit nový playbook zabezpečení,
 1.  Otevřete řídicí panel **Security Center**.
 2.  V části **Automatizace a orchestrace** v levém podokně klikněte na **Playbooky (Preview)** .
 
-    ![Aplikace logiky](./media/security-center-playbooks/security-center-playbooks-fig17.png)
+    ![Logická aplikace](./media/security-center-playbooks/security-center-playbooks-fig17.png)
 
 3. Na stránce **Security Center – Playbooky (Preview)** klikněte na tlačítko **Přidat**.
 
@@ -64,7 +67,7 @@ Playbook zabezpečení ve službě Security Center můžete spustit, když chcet
 1.  Otevřete řídicí panel **Security Center**.
 2.  V levém podokně v části **Detekce hrozeb** klikněte na **Incidenty a výstrahy zabezpečení**.
 
-    ![Upozornění](./media/security-center-playbooks/security-center-playbooks-fig6.png)
+    ![Výstrahy](./media/security-center-playbooks/security-center-playbooks-fig6.png)
 
 3.  Klikněte na výstrahu, kterou chcete prozkoumat.
 4.  V horní části stránky upozornění klikněte na tlačítko **Spustit playbooky**.
@@ -95,7 +98,7 @@ Existující playbook ve službě Security Center můžete změnit, pokud chcete
 > Další informace o vytvoření vlastního playbooku pomocí aplikace logiky Azure najdete v tématu [Vytvořte svůj první pracovní postup aplikace logiky pro automatizaci procesů mezi cloudovými aplikacemi a cloudovými službami](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-a-logic-app).
 
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 V tomto dokumentu jste zjistili, jak používat playbooky ve službě Azure Security Center. Pokud se o službě Azure Security Center chcete dozvědět víc, pročtěte si tato témata:
 
 * [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Zjistěte, jak spravovat výstrahy a reagovat na incidenty zabezpečení ve službě Security Center.

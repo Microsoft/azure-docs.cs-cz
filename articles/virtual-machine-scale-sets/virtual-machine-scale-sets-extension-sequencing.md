@@ -1,66 +1,58 @@
 ---
-title: Použití nastavení posloupnosti rozšíření se škálovacími sadami virtuálních počítačů Azure | Dokumentace Microsoftu
-description: Zjistěte, jak pořadí rozšíření zřizování při nasazování několika rozšíření na škálovací sady virtuálních počítačů.
-services: virtual-machine-scale-sets
-documentationcenter: ''
+title: Použití pořadí rozšíření s Azure Virtual Machine Scale Sets
+description: Naučte se, jak sekvencovat zřizování rozšíření při nasazování více rozšíření na Virtual Machine Scale Sets.
 author: mayanknayar
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: manayar
-ms.openlocfilehash: 2e5dfda16c4828b3113fc50d4cffc79fe6ff19e8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cde3fb8b56d8509a45bde00dde55e3c69d015b8e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60620168"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278058"
 ---
-# <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Nastaví pořadí zřizování rozšíření virtuálního počítače škálovací
-Rozšíření virtuálního počítače Azure poskytují funkce, jako je například konfigurace po nasazení a správu, monitorování, zabezpečení a další. Nasazení v produkčním prostředí většinou pomocí kombinace více rozšíření, které jsou nakonfigurované pro instance virtuálních počítačů k dosažení požadovaných výsledků.
+# <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Zřizování rozšíření sekvence ve virtuálních počítačích Virtual Machine Scale Sets
+Rozšíření virtuálních počítačů Azure poskytují možnosti, jako je například konfigurace po nasazení a správa, monitorování, zabezpečení a další. Produkční nasazení obvykle používají kombinaci více rozšíření nakonfigurovaných pro instance virtuálních počítačů, aby dosáhla požadovaných výsledků.
 
-Pokud používám několik rozšíření na virtuálním počítači, je důležité zajistit, že rozšíření, které vyžadují stejné prostředky operačního systému se pokoušel se získat tyto prostředky ve stejnou dobu. Některá rozšíření závisí také na dalších rozšířeních poskytnout požadované konfigurace, jako je například nastavení prostředí a tajných kódů. Bez správné pořadí a řazení v místě může selhat závislé rozšíření nasazení.
+Při používání více rozšíření na virtuálním počítači je důležité zajistit, aby se rozšíření vyžadující stejné prostředky operačního systému nepokoušela získat tyto prostředky ve stejnou dobu. Některá rozšíření závisí také na dalších rozšířeních, která poskytují požadované konfigurace, jako je například nastavení prostředí a tajné kódy. Bez správného řazení a pořadí řazení můžou neúspěšná nasazení závislých rozšíření.
 
-Tento článek podrobně popisuje, jak můžete pořadí rozšíření nakonfigurovat pro instance virtuálních počítačů ve škálovací sady virtuálních počítačů.
+Tento článek podrobně popisuje, jak můžete sekvencování rozšíření nakonfigurovat pro instance virtuálních počítačů ve službě Virtual Machine Scale Sets.
 
 ## <a name="prerequisites"></a>Požadavky
-Tento článek předpokládá, že už znáte:
--   Virtuální počítač Azure [rozšíření](../virtual-machines/extensions/overview.md)
--   [Úprava](virtual-machine-scale-sets-upgrade-scale-set.md) škálovací sady virtuálních počítačů
+V tomto článku se předpokládá, že jste obeznámeni s:
+-   [Rozšíření](../virtual-machines/extensions/overview.md) virtuálních počítačů Azure
+-   [Úprava](virtual-machine-scale-sets-upgrade-scale-set.md) virtuálních počítačů Scale Sets
 
-## <a name="when-to-use-extension-sequencing"></a>Kdy použít nastavení posloupnosti rozšíření
-Pořadí rozšíření v not nastaví povinné pro škálování, a není uvedeno, je možné zřídit rozšíření na instanci škálovací sady v libovolném pořadí.
+## <a name="when-to-use-extension-sequencing"></a>Kdy použít sekvencování rozšíření
+Přípona sekvencování není pro sady škálování nutná, a pokud tuto možnost nezadáte, můžete rozšíření zřídit v instanci sady škálování v libovolném pořadí.
 
-Například pokud vaše modelu škálovací sady má dvě rozšíření – ExtensionA a ExtensionB – zadáno v modelu, pak jednu z následujících pořadí zřizování může dojít k:
--   ExtensionA -> ExtensionB
--   ExtensionB -> ExtensionA
+Například pokud model sady škálování má dvě rozšíření – rozšíření a ExtensionB – v modelu, může dojít k jedné z následujících sekvencí zřizování:
+-   Přípona-> ExtensionB
+-   ExtensionB-> – rozšíření
 
-Pokud vaše aplikace vyžaduje rozšíření A vždy mají zřídit před rozšíření B, měli byste použít nastavení posloupnosti rozšíření, jak je popsáno v tomto článku. Pomocí nastavení posloupnosti rozšíření dojde nyní pouze jedno pořadí:
--   ExtensionA - > ExtensionB
+Pokud vaše aplikace vyžaduje rozšíření A, aby bylo vždy zřízené před rozšířením B, měli byste použít sekvencování rozšíření, jak je popsáno v tomto článku. Při sekvencování rozšíření se teď provede jenom jedna sekvence:
+-   Přípona-> ExtensionB
 
-Žádná rozšíření není zadáno v určeném pořadí zřizování se dá zřídit v okamžiku, včetně před, po nebo během určeném pořadí. Nastavení posloupnosti rozšíření pouze určuje, že konkrétní rozšíření budou zřízené po jiné konkrétní rozšíření. To ale nijak neovlivní zřizování kteréhokoli jiného rozšíření, které jsou definované v modelu.
+Všechna rozšíření, která nejsou specifikována v definované sekvenci zřizování, lze zřídit kdykoli, včetně před, po nebo během definovaného pořadí. Sekvence rozšíření určuje pouze to, že konkrétní rozšíření bude zřízené po jiné konkrétní příponě. Nemá vliv na zřizování žádného jiného rozšíření definovaného v modelu.
 
-Například pokud vaše modelu škálovací sady obsahuje tři rozšíření – rozšíření A, B rozšíření a rozšíření C – zadáno v modelu, a rozšíření jazyka C je nastavená na zřízené po A rozšíření, pak jednu z následujících pořadí zřizování může dojít k:
--   ExtensionA -> ExtensionC -> ExtensionB
--   ExtensionB -> ExtensionA -> ExtensionC
--   ExtensionA -> ExtensionB -> ExtensionC
+Pokud má například model sady škálování tři rozšíření – rozšíření A, rozšíření B a rozšíření C – zadané v modelu a rozšíření C se nastaví jako zřízené po rozšíření A, může dojít k jedné z následujících sekvencí zřizování:
+-   Přípona-> ExtensionC-> ExtensionB
+-   ExtensionB-> přípona-> ExtensionC
+-   Přípona-> ExtensionB-> ExtensionC
 
-Pokud je potřeba zajistit, že nemá příponu zřizován při provádění pořadí definované rozšíření, doporučujeme sekvencování všechna rozšíření v modelu škálovací sady. V příkladu výše lze nastavit rozšíření B zřídit po rozšíření C tak, že může dojít pouze jedno pořadí:
--   ExtensionA -> ExtensionC -> ExtensionB
+Pokud potřebujete zajistit, aby se při provádění definované sekvence rozšíření nezřídilo žádné jiné rozšíření, doporučujeme sekvencování všech rozšíření v modelu sady škálování. Ve výše uvedeném příkladu lze rozšíření B nastavit tak, aby se po rozšíření C zřídilo, že může probíhat jenom jedna sekvence:
+-   Přípona-> ExtensionC-> ExtensionB
 
 
-## <a name="how-to-use-extension-sequencing"></a>Jak používat nastavení posloupnosti rozšíření
-Pořadí rozšíření zřízení, je nutné aktualizovat definici rozšíření v modelu škálovací sady vlastnost "provisionAfterExtensions", který přijímá pole názvů rozšíření zahrnout. Rozšíření uvedený v poli hodnota vlastnosti musí být plně definován v modelu škálovací sady.
+## <a name="how-to-use-extension-sequencing"></a>Jak používat sekvencování rozšíření
+Aby bylo zajišťování rozšíření pořadí, je nutné aktualizovat definici rozšíření v modelu sady škálování tak, aby zahrnovala vlastnost "provisionAfterExtensions", která přijímá pole názvů přípon. Rozšíření uvedená v hodnotě pole vlastností musí být plně definovaná v modelu sady škálování.
 
 ### <a name="template-deployment"></a>Nasazení šablony
-Následující příklad definuje šablony, pokud škálovací sada obsahovat tři rozšíření – ExtensionA ExtensionB a ExtensionC – tak, že rozšíření jsou zřízené v pořadí:
--   ExtensionA -> ExtensionB -> ExtensionC
+Následující příklad definuje šablonu, ve které má sada škálování tři rozšíření – rozšíření, ExtensionB a ExtensionC – taková rozšíření se zřídí v tomto pořadí:
+-   Přípona-> ExtensionB-> ExtensionC
 
 ```json
 "virtualMachineProfile": {
@@ -107,7 +99,7 @@ Následující příklad definuje šablony, pokud škálovací sada obsahovat t�
 }
 ```
 
-Vzhledem k tomu, že vlastnost "provisionAfterExtensions" přijímá pole názvů rozšíření, výše uvedeném příkladu je možné upravit tak, aby ExtensionC je zřízené po ExtensionA a ExtensionB, ale žádné řazení se musí být mezi ExtensionA a ExtensionB. Následující šablony lze použít k dosažení tohoto scénáře:
+Vzhledem k tomu, že vlastnost "provisionAfterExtensions" přijímá pole názvů přípon, výše uvedený příklad lze upravit tak, aby ExtensionC byl zřízen po rozšíření a ExtensionB, ale mezi příponou a ExtensionB není vyžadováno žádné řazení. K dosažení tohoto scénáře lze použít následující šablonu:
 
 ```json
 "virtualMachineProfile": {
@@ -151,8 +143,8 @@ Vzhledem k tomu, že vlastnost "provisionAfterExtensions" přijímá pole názv�
 }
 ```
 
-### <a name="rest-api"></a>REST API
-Následující příklad přidá nové rozšíření s názvem ExtensionC do modelu škálovací sady. ExtensionC má závislosti na ExtensionA a ExtensionB, které už je definován v modelu škálovací sady.
+### <a name="rest-api"></a>Rozhraní REST API
+Následující příklad přidá nové rozšíření s názvem ExtensionC do modelu sady škálování. ExtensionC má závislosti na příponách a ExtensionB, které už jsou definované v modelu sady škálování.
 
 ```
 PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/extensions/ExtensionC?api-version=2018-10-01`
@@ -174,7 +166,7 @@ PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/
 }
 ```
 
-Pokud ExtensionC byl definován v škálovací sady modelu a teď ho přidat její závislosti, můžete spustit `PATCH` k úpravě vlastností již nasazených rozšíření.
+Pokud byl dříve definován ExtensionC v modelu sady škálování a nyní chcete přidat jeho závislosti, můžete spustit `PATCH` pro úpravu vlastností již nasazeného rozšíření.
 
 ```
 PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/extensions/ExtensionC?api-version=2018-10-01`
@@ -189,12 +181,12 @@ PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/provider
   }                  
 }
 ```
-Změny v existujících instancích škálovací sady se použijí při dalším [upgradovat](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model).
+Změny stávajících instancí sady škálování se aplikují při dalším [upgradu](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model).
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Použití [přidat AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) definice modelu rutiny pro přidání rozšíření stav aplikací do škálovací sady. Nastavení posloupnosti rozšíření vyžaduje použití powershellu Az 1.2.0 nebo vyšší.
+Pomocí rutiny [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) přidejte rozšíření pro stav aplikace do definice modelu sady škálování. Sekvence rozšíření vyžaduje použití AZ PowerShell 1.2.0 nebo vyšší.
 
-Následující příklad přidá [stav aplikací – rozšíření](virtual-machine-scale-sets-health-extension.md) k `extensionProfile` ve škálovací nastavení modelu na základě Windows škálovací sady. Stav aplikací – rozšíření se zřídí po zřízení [rozšíření vlastních skriptů](../virtual-machines/extensions/custom-script-windows.md)již definovaná ve škálovací sadě.
+Následující příklad přidá [rozšíření stavu aplikace](virtual-machine-scale-sets-health-extension.md) do `extensionProfile` v modelu sady škálování založeném na systému Windows. Rozšíření pro stav aplikace se zřídí po zřízení [rozšíření vlastních skriptů](../virtual-machines/extensions/custom-script-windows.md), které už je definované v sadě škálování.
 
 ```azurepowershell-interactive
 # Define the scale set variables
@@ -229,9 +221,9 @@ Update-AzVmss -ResourceGroupName $vmScaleSetResourceGroup `
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Použití [az vmss extension set](/cli/azure/vmss/extension#az-vmss-extension-set) přidat rozšíření stav aplikací do škálovací sady definice modelu. Nastavení posloupnosti rozšíření vyžaduje použití Azure CLI 2.0.55 nebo vyšší.
+Pomocí [AZ VMSS Extension set](/cli/azure/vmss/extension#az-vmss-extension-set) přidejte rozšíření pro stav aplikace do definice modelu sady škálování. Sekvence rozšíření vyžaduje použití Azure CLI 2.0.55 nebo vyšší.
 
-Následující příklad přidá [stav aplikací – rozšíření](virtual-machine-scale-sets-health-extension.md) škálovací nastavení modelu na základě Windows škálovací sady. Stav aplikací – rozšíření se zřídí po zřízení [rozšíření vlastních skriptů](../virtual-machines/extensions/custom-script-windows.md)již definovaná ve škálovací sadě.
+Následující příklad přidá [rozšíření stavu aplikace](virtual-machine-scale-sets-health-extension.md) do modelu škálované sady pro sadu škálování založeného na systému Windows. Rozšíření pro stav aplikace se zřídí po zřízení [rozšíření vlastních skriptů](../virtual-machines/extensions/custom-script-windows.md), které už je definované v sadě škálování.
 
 ```azurecli-interactive
 az vmss extension set \
@@ -247,13 +239,13 @@ az vmss extension set \
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-### <a name="not-able-to-add-extension-with-dependencies"></a>Není možné přidat rozšíření se závislostmi?
-1. Ujistěte se, že rozšiřujících modulů uvedených v provisionAfterExtensions jsou definovány v modelu škálovací sady.
-2. Ujistěte se, neexistují žádné cyklické závislosti zabrání zavedení. Například následující text není povolený: ExtensionA -> ExtensionB -> ExtensionC ExtensionA ->
-3. Zajistěte, aby měly všechna rozšíření, které provedete závislosti, vlastnost "nastavení" v části "vlastnosti" rozšíření. Například pokud ExtentionB musí být zřízená po ExtensionA, pak by ExtensionA položka musí mít pole "nastavení" v části ExtensionA "properties". Pokud rozšíření nenutí všechna požadovaná nastavení, můžete zadat vlastnost prázdný "nastavení".
+### <a name="not-able-to-add-extension-with-dependencies"></a>Nemůžete přidat rozšíření se závislostmi?
+1. Zajistěte, aby byla rozšíření určená v provisionAfterExtensions definována v modelu sady škálování.
+2. Zajistěte, aby nebyly zavedeny žádné cyklické závislosti. Například následující sekvence není povolená: rozšíření-> ExtensionB-> ExtensionC-> Extension.
+3. Zajistěte, aby u všech rozšíření, u kterých procházíte závislosti, bylo vlastnost Settings v části rozšíření "Properties". Například pokud je potřeba zřídit ExtentionB po rozšíření, pak musí mít přípona pole "nastavení" v části přípona "vlastnosti". Pokud rozšíření nevyžaduje žádná požadovaná nastavení, můžete zadat prázdnou vlastnost Settings.
 
-### <a name="not-able-to-remove-extensions"></a>Není možné odebrat rozšíření?
-Ujistěte se, že rozšíření odebírá nejsou uvedené v části provisionAfterExtensions pro libovolná rozšíření.
+### <a name="not-able-to-remove-extensions"></a>Nemůžete odebrat rozšíření?
+Zajistěte, aby se odebraná rozšíření nezobrazovala v části provisionAfterExtensions pro žádná další rozšíření.
 
-## <a name="next-steps"></a>Další postup
-Zjistěte, jak [při nasazování aplikace](virtual-machine-scale-sets-deploy-app.md) nastaví na škálování virtuálního počítače.
+## <a name="next-steps"></a>Další kroky
+Naučte se, jak [nasadit vaši aplikaci do služby](virtual-machine-scale-sets-deploy-app.md) Virtual Machine Scale Sets.

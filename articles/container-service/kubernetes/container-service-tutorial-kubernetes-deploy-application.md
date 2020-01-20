@@ -1,25 +1,23 @@
 ---
-title: (NEPOUŽÍVANÉ) Kurz Azure Container Service – nasazení aplikace
+title: ZASTARALÉ Kurz Azure Container Service – nasazení aplikace
 description: Kurz Azure Container Service – Nasazení aplikace
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: dafbb8d1221d5e9c6194611ad338b3714a089cea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7e10fd982c19e45be8c5da4ffc7f7248276352c1
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60309193"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275495"
 ---
-# <a name="deprecated-run-applications-in-kubernetes"></a>(NEPOUŽÍVANÉ) Spuštění aplikace v Kubernetes
+# <a name="deprecated-run-applications-in-kubernetes"></a>ZASTARALÉ Spouštění aplikací v Kubernetes
 
 > [!TIP]
-> Aktualizovaná verze tohoto kurzu, který používá Azure Kubernetes Service, najdete v článku [kurzu: Spouštění aplikací ve službě Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-deploy-application.md).
+> Aktualizovanou verzi v tomto kurzu, který používá službu Azure Kubernetes, najdete v tématu [kurz: spouštění aplikací ve službě Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-deploy-application.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -107,7 +105,7 @@ Pokud se chcete na aplikaci podívat, přejděte na externí IP adresu.
 
 ![Obrázek clusteru Kubernetes v Azure](media/container-service-kubernetes-tutorials/azure-vote.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu se aplikace Azure Vote nasadila do clusteru Kubernetes se službou Azure Container Service. Mezi dokončené úlohy patří:  
 

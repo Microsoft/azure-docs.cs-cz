@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/20/2019
+ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 8f912635fc0fb14fc54426a108af5f67d26213f4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5034aaaee335bbd87e7ea42b448e4e8fbf6aacca
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975693"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274539"
 ---
 # <a name="storage-account-overview"></a>Přehled účtu úložiště
 
@@ -64,33 +64,39 @@ Ve většině případů byste měli používat účty pro obecné účely v2. �
 
 ### <a name="blockblobstorage-accounts"></a>Účty BlockBlobStorage
 
-Účet BlockBlobStorage je specializovaný účet úložiště, který slouží k ukládání nestrukturovaných dat objektu jako objektů blob bloku. Účet BlockBlobStorage můžete použít také k vytvoření objektů blob bloku úrovně Premium. Tento typ účtu úložiště podporuje objekty blob bloku a doplňovací objekty blob, ale ne objekty blob stránky, tabulky nebo fronty.
+Účet BlockBlobStorage je specializovaný účet úložiště v úrovni výkonu Premium pro ukládání nestrukturovaných dat objektu jako objekty blob bloku nebo doplňovací objekty blob. V porovnání s účty pro obecné účely v2 a BlobStorage účty BlockBlobStorage poskytují nízké a konzistentní sazby za latenci a vyšší transakce.
 
-V porovnání s účty pro obecné účely v2 a BlobStorage účty BlockBlobStorage poskytují nízkou a konzistentní latenci a vyšší sazby za transakce.
-
-Účty BlockBlobStorage v současné době nepodporují vrstvy přístupu na horkou, studenou nebo archivní úroveň.
+Účty BlockBlobStorage v současné době nepodporují vrstvy přístupu na horkou, studenou nebo archivní úroveň. Tento typ účtu úložiště nepodporuje objekty blob stránky, tabulky ani fronty.
 
 ### <a name="filestorage-accounts"></a>Účty úložiště
 
 Účet úložiště souborů je specializovaný účet úložiště, který slouží k ukládání a vytváření sdílených složek Premium. Tento druh účtu úložiště podporuje soubory, ale ne objekty blob bloku, doplňovací objekty blob, objekty blob stránky, tabulky nebo fronty.
 
-Účty úložiště obsahují jedinečné vyhrazené charakteristiky výkonu, jako je třeba shlukování IOPS. Další informace o těchto vlastnostech najdete v části [výkonnostní vrstvy sdílení souborů](../files/storage-files-planning.md#file-share-performance-tiers) v příručce pro plánování souborů.
+Účty úložiště obsahují jedinečné charakteristiky výkonu, například shlukování IOPS. Další informace o těchto vlastnostech najdete v části [výkonnostní vrstvy sdílení souborů](../files/storage-files-planning.md#file-share-performance-tiers) v příručce pro plánování souborů.
 
 ## <a name="naming-storage-accounts"></a>Pojmenování účtů úložiště
 
 Při pojmenování účtu úložiště mějte na paměti tato pravidla:
 
 - Názvy účtů úložiště musí mít od 3 do 24 znaků a můžou obsahovat jenom číslice a malá písmena.
-- Váš název účtu úložiště musí být jedinečný v rámci Azure. Žádné dva účty úložiště nemůžou mít stejný název.
+- Váš název účtu úložiště musí být jedinečný v rámci Azure. Žádné dva účty úložiště nemohou mít stejný název.
 
 ## <a name="performance-tiers"></a>Úrovně výkonu
+
+V závislosti na typu vytvářeného účtu úložiště si můžete vybrat mezi úrovní výkonu Standard a Premium.
+
+### <a name="general-purpose-storage-accounts"></a>Účty úložiště pro obecné účely
 
 Účty úložiště pro obecné účely můžou být nakonfigurované pro jednu z následujících úrovní výkonu:
 
 - Standardní úroveň výkonu pro ukládání objektů blob, souborů, tabulek, front a disků virtuálních počítačů Azure. Další informace o cílech škálovatelnosti pro účty úložiště úrovně Standard najdete v tématu [cíle škálovatelnosti pro účty úložiště úrovně Standard](scalability-targets-standard-account.md).
-- Úroveň výkonu Premium pro ukládání pouze nespravovaných disků virtuálního počítače. Microsoft doporučuje místo nespravovaných disků používat spravované disky s virtuálními počítači Azure. Další informace o cílech škálovatelnosti pro úroveň výkonu Premium najdete v tématu [cíle škálovatelnosti pro účty úložiště objektů blob stránky úrovně Premium](../blobs/scalability-targets-premium-page-blobs.md).
+- Úroveň výkonu Premium pro ukládání nespravovaných disků virtuálních počítačů. Microsoft doporučuje místo nespravovaných disků používat spravované disky s virtuálními počítači Azure. Další informace o cílech škálovatelnosti pro úroveň výkonu Premium najdete v tématu [cíle škálovatelnosti pro účty úložiště objektů blob stránky úrovně Premium](../blobs/scalability-targets-premium-page-blobs.md).
+
+### <a name="blockblobstorage-storage-accounts"></a>Účty úložiště BlockBlobStorage
 
 Účty úložiště BlockBlobStorage poskytují úroveň výkonu Premium pro ukládání objektů blob bloku a doplňovací objektů BLOB. Další informace najdete v tématu [cíle škálovatelnosti pro účty úložiště objektů blob bloku úrovně Premium](../blobs/scalability-targets-premium-block-blobs.md).
+
+### <a name="filestorage-storage-accounts"></a>Účty úložiště úložiště
 
 Účty úložiště úložiště obsahují úroveň výkonu Premium pro sdílené složky Azure. Další informace najdete v tématu [škálovatelnost a cíle výkonnosti souborů Azure](../files/storage-files-scale-targets.md).
 
@@ -102,7 +108,7 @@ Dostupné úrovně přístupu jsou:
 
 - Vrstva **Hot** Access. Tato úroveň je optimalizovaná pro častější přístup k objektům v účtu úložiště. Přístup k datům v Hot úrovně je největší nákladově efektivní, zatímco náklady na úložiště jsou vyšší. Ve výchozím nastavení se v aktivní úrovni vytvoří nové účty úložiště.
 - **Studená** úroveň přístupu. Tato úroveň je optimalizovaná pro ukládání velkých objemů dat, která se nepoužívají zřídka a ukládají se nejméně na 30 dní. Ukládání dat ve studené vrstvě je cenově výhodnější, ale přístup k nim může být dražší než přístup k datům v horké vrstvě.
-- **Archivní** úroveň. Tato úroveň je k dispozici pouze pro jednotlivé objekty blob bloku. Archivní úroveň je optimalizovaná pro data, která můžou tolerovat několik hodin latence načítání a které zůstanou v archivní úrovni aspoň 180 dní. Úroveň archivace je nejefektivnější možností pro ukládání dat. Přístup k těmto datům je ale dražší než přístup k datům na horké nebo studené úrovni.
+- **Archivní** úroveň. Tato úroveň je dostupná jenom pro jednotlivé objekty blob bloku a doplňovací objekty blob. Archivní úroveň je optimalizovaná pro data, která můžou tolerovat několik hodin latence načítání a které zůstanou v archivní úrovni aspoň 180 dní. Úroveň archivace je nejefektivnější možností pro ukládání dat. Přístup k těmto datům je ale dražší než přístup k datům na horké nebo studené úrovni.
 
 Pokud dojde ke změně ve vzoru používání vašich dat, můžete kdykoli přepínat mezi těmito úrovněmi přístupu. Další informace o úrovních přístupu najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň přístupu](../blobs/storage-blob-storage-tiers.md).
 
@@ -183,5 +189,5 @@ Další informace o REST API Azure Storage najdete v tématu informace o [REST A
 
 ## <a name="next-steps"></a>Další kroky
 
-- [vytvořit účet úložiště](storage-account-create.md)
+- [Vytvoření účtu úložiště](storage-account-create.md)
 - [Vytvoření účtu úložiště objektů blob bloku](../blobs/storage-blob-create-account-block-blob.md)

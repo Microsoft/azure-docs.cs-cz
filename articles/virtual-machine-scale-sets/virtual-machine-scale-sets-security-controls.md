@@ -1,20 +1,17 @@
 ---
 title: Řízení zabezpečení pro Azure Virtual Machine Scale Sets
 description: Kontrolní seznam ovládacích prvků zabezpečení pro vyhodnocení Virtual Machine Scale Sets Azure
-services: virtual-machine-scale-sets
 ms.service: virtual-machine-scale-sets
-documentationcenter: ''
 author: msmbaldwin
-manager: rkarlin
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6aee9edaf3c594a2e7083416726da8e57bbf5c6b
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 51ddd4f3775ae8e41c0d0bdd4ed8a3a2a59b7db4
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529140"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271780"
 ---
 # <a name="security-controls-for-azure-virtual-machine-scale-sets"></a>Řízení zabezpečení pro Azure Virtual Machine Scale Sets
 
@@ -22,7 +19,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Vir
 
 [!INCLUDE [Security controls header](../../includes/security-controls-header.md)]
 
-## <a name="network"></a>Síť
+## <a name="network"></a>Network (Síť)
 
 | Řízení zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|

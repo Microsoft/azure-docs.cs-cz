@@ -1,34 +1,32 @@
 ---
 title: Integrace se službami spravovanými Azure s využitím OSBA (Open Service Broker for Azure)
 description: Integrace se službami spravovanými Azure s využitím OSBA (Open Service Broker for Azure)
-services: container-service
 author: zr-msft
-manager: jeconnoc
 ms.service: container-service
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: zarhoads
-ms.openlocfilehash: 7a887905bcb4b09c1b4ae179116b3f08c75caabd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 131e767daa920f03db5ec9a3aac711fc850c7132
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60465559"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276794"
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Integrace se službami spravovanými Azure s využitím OSBA (Open Service Broker for Azure)
 
-Open Service Broker for Azure (OSBA) společně s modulem [Kubernetes Service Catalog][kubernetes-service-catalog] umožňuje využívat služby spravované Azure v Kubernetes. Tato příručka se soustředí na nasazení modulu Service Catalog, Open Service Broker for Azure (OSBA) a aplikací, které používají služby spravované Azure s využitím Kubernetes.
+Open Service Broker for Azure (OSBA) společně s modulem [Kubernetes Service Catalog][kubernetes-service-catalog], umožňuje využívat služby spravované Azure v Kubernetes. Tato příručka se soustředí na nasazení modulu Service Catalog, Open Service Broker for Azure (OSBA) a aplikací, které používají služby spravované Azure s využitím Kubernetes.
 
 ## <a name="prerequisites"></a>Požadavky
 * Předplatné Azure
 
-* Azure CLI: [Nainstalujte ho místně][azure-cli-install] nebo ho použijte ve službě [Azure Cloud Shell][azure-cloud-shell].
+* Azure CLI: [nainstalujte ho místně][azure-cli-install]nebo ho použijte v [Azure Cloud Shell][azure-cloud-shell].
 
-* Helm CLI 2.7+: [Nainstalujte ho místně][helm-cli-install] nebo ho použijte ve službě [Azure Cloud Shell][azure-cloud-shell].
+* Helm CLI 2.7 +: [nainstalujte ho místně][helm-cli-install]nebo ho použijte v [Azure Cloud Shell][azure-cloud-shell].
 
 * Oprávnění pro vytvoření instančního objektu s rolí přispěvatele v předplatném Azure
 
-* Existující cluster Azure Kubernetes Service (AKS). Pokud potřebujete cluster AKS, postupujte podle článku [Vytvoření clusteru AKS][create-aks-cluster].
+* Existující cluster Azure Kubernetes Service (AKS). Pokud potřebujete cluster AKS, postupujte podle [Vytvoření clusteru AKS][create-aks-cluster] (rychlý start).
 
 ## <a name="install-service-catalog"></a>Instalace modulu Service Catalog
 
@@ -77,7 +75,7 @@ v1beta1.storage.k8s.io               10
 
 Dalším krokem je instalace zprostředkovatele [Open Service Broker for Azure][open-service-broker-azure], která zahrnuje katalog pro služby spravované Azure. Příkladem dostupných služeb Azure jsou Azure Database for PostgreSQL, Azure Database for MySQL a Azure SQL Database.
 
-Začněte přidáním zprostředkovatele Open Service Broker pro Azure do úložiště helmu:
+Začněte přidáním otevřené Service Broker pro úložiště Azure Helm:
 
 ```azurecli-interactive
 helm repo add azure https://kubernetescharts.blob.core.windows.net/azure
@@ -187,7 +185,7 @@ Zobrazte seznam nainstalovaných tajných kódů:
 kubectl get secrets -n wordpress -o yaml
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Podle tohoto článku jste nasadili Service Catalog do clusteru Azure Kubernetes Service (AKS). Použili jste Open Service Broker for Azure k nasazení instalace WordPressu, která využívá služby spravované Azure, v tomto případě Azure Database for MySQL.
 

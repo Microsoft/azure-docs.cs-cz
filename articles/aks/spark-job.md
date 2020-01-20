@@ -1,20 +1,18 @@
 ---
 title: Spuštění úlohy Apache Spark se službou Azure Kubernetes Service (AKS)
 description: Použití služby Azure Kubernetes Service (AKS) ke spuštění úlohy Apache Spark
-services: container-service
 author: lenadroid
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 5ecfa1853479c1cdc705a1a465a1de6318917a72
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 72e87acf418d5085a76f18c595bf31d43b0d64ac
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929002"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274652"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Spouštění úloh Apache Spark v AKS
 
@@ -261,7 +259,7 @@ kubectl port-forward spark-pi-2232778d0f663768ab27edc35cb73040-driver 4040:4040
 
 Pokud chcete získat přístup k uživatelskému rozhraní Spark, otevřete adresu `127.0.0.1:4040` v prohlížeči.
 
-![ROZHRANÍ Spark](media/aks-spark-job/spark-ui.png)
+![Uživatelské rozhraní Sparku](media/aks-spark-job/spark-ui.png)
 
 ## <a name="get-job-results-and-logs"></a>Získání výsledků a protokolů úlohy
 

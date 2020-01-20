@@ -1,27 +1,19 @@
 ---
 title: Azure virtual machine scale sets s nejčastější dotazy
 description: Získejte odpovědi na nejčastější dotazy týkající se služby Virtual Machine Scale Sets v Azure.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: mayanknayar
-manager: drewm
-editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: manayar
-ms.custom: na
-ms.openlocfilehash: 47ea23f3018e9d28c0ccfd6640b3d365103ab9ca
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 222f26febb7b14c627307295a8cdd68a17694d03
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75356221"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275897"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure virtual machine scale sets s nejčastější dotazy
 

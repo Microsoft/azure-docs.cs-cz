@@ -3,21 +3,20 @@ title: Nasazení služby Azure Log Analytics trysek pro monitorování Cloud Fou
 description: Podrobné pokyny k nasazení Cloud Foundry trysku loggregator pro Azure Log Analytics. Pomocí trysky můžete monitorovat stav Cloud Foundry systému a metriky výkonu.
 services: virtual-machines-linux
 author: ningk
-manager: jeconnoc
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
 ms.service: azure-monitor
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: d71f1d6af0944a676e35dfe6347fafb8706f21b8
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: bf6691310ec964a1d6293f3a60c151e3d6f8e641
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286647"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277363"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Nasazení služby Azure Log Analytics trysek pro Cloud Foundry sledování systému
 
@@ -205,7 +204,7 @@ Můžete [vytvořit výstrahy](https://docs.microsoft.com/azure/log-analytics/lo
 | Type=CF_ValueMetric_CL Name_s=slowConsumerAlert                               | Počet výsledků > 0   | Když tryska obdrží pomalé upozornění zákazníků z loggregator, pošle ValueMetricu **slowConsumerAlert** do Azure monitor protokolů. |
 | Type=CF_CounterEvent_CL Job_s=nozzle Name_s=eventsLost Delta_d>0              | Počet výsledků > 0   | Pokud rozdílový počet ztracených událostí dosáhne prahové hodnoty, znamená to, že může dojít k potížím s trysek. |
 
-## <a name="scale"></a>Škálování
+## <a name="scale"></a>Limit
 
 Můžete škálovat trysku a loggregator.
 
@@ -220,7 +219,7 @@ K navýšení kapacity trysek použijte Správce aplikací nebo CF CLI, abyste z
 Loggregator pošle zprávu protokolu **LGR** , která indikuje problémy s procesem protokolování. Výstrahu můžete monitorovat, abyste zjistili, jestli je potřeba škálovat loggregator.
 Pro horizontální navýšení kapacity loggregator zvětšete velikost vyrovnávací paměti Doppler nebo přidejte další instance Doppler serveru v manifestu CF. Další informace najdete v [pokynech pro škálování loggregator](https://docs.cloudfoundry.org/running/managing-cf/logging-config.html#scaling).
 
-## <a name="update"></a>Aktualizace
+## <a name="update"></a>Aktualizovat
 
 Chcete-li aktualizovat trysek pomocí novější verze, Stáhněte si novou verzi nové trysky, postupujte podle kroků v předchozí části nasazení trysek a znovu aplikaci nahrajte.
 

@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: a64f680adbfca08e334f51697a305c93a408e1e4
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 4deae28d172bf717f527824be4be050975614c7d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922376"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277397"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus vazby pro službu Azure Functions
 
@@ -154,6 +154,28 @@ Následující funkce jazyka Java používá `@ServiceBusQueueTrigger` anotace z
  }
 ```
 
+Následující funkce jazyka Java zobrazuje načtení metadat definovaných ve _vlastnostech uživatele_ Service Bus zprávy: 
+```java
+public class ServiceBusQueueTriggerJava {
+    @FunctionName("ServiceBusQueueTriggerJava")
+    public void run(
+            @ServiceBusQueueTrigger(name = "message", queueName = "myqueue", connection = "AzureWebJobsStorage") String message,
+            @BindingName("UserProperties") UserProperties userProperties,
+            final ExecutionContext context
+    ) {
+        context.getLogger().info("Java Service Bus Queue trigger function executed.");
+        context.getLogger().info(message);
+        context.getLogger().info(userProperties.key1);
+        context.getLogger().info(userProperties.key2);
+    }
+}
+
+public class UserProperties {
+    public String key1;
+    public String key2;
+}
+```
+
 Funkce Java se můžou aktivovat i při přidání zprávy do tématu Service Bus. Následující příklad používá anotaci `@ServiceBusTopicTrigger` k popisu konfigurace triggeru.
 
 ```java
@@ -206,9 +228,9 @@ module.exports = function(context, myQueueItem) {
 
 ### <a name="trigger---python-example"></a>Trigger – příklad Pythonu
 
-Následující příklad ukazuje, jak číst zprávu fronty ServiceBus prostřednictvím triggeru.
+Následující příklad ukazuje, jak číst zprávu Service Bus Queue prostřednictvím triggeru.
 
-Vazba ServiceBus je definovaná v *Function. JSON* , kde *Type* je nastavená na `serviceBusTrigger`.
+Vazba Service Bus je definována v *Function. JSON* , kde *typ* je nastaven na `serviceBusTrigger`.
 
 ```json
 {
@@ -274,7 +296,7 @@ V [knihoven tříd C#](functions-dotnet-class-library.md), můžete nakonfigurov
   }
   ```
 
-  Můžete nastavit `Connection` vlastnosti a určit účet služby Service Bus, který chcete použít, jak je znázorněno v následujícím příkladu:
+  Vlastnost `Connection` můžete nastavit tak, aby určovala název nastavení aplikace, které obsahuje připojovací řetězec Service Bus, který se má použít, jak je znázorněno v následujícím příkladu:
 
   ```csharp
   [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -322,12 +344,13 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |---------|---------|----------------------|
 |**type** | – | Musí být nastavena na "serviceBusTrigger". Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal.|
 |**direction** | – | Musí být nastavena na "in". Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal. |
-|**name** | – | Název proměnné, která představuje zprávu fronty nebo tématu v kódu funkce. Nastavte na "$return" tak, aby odkazovaly návratovou hodnotu funkce. |
+|**name** | – | Název proměnné, která představuje zprávu fronty nebo tématu v kódu funkce. |
 |**queueName**|**queueName**|Název fronty k monitorování.  Nastaví jenom v případě, že monitorování frontu, ne pro téma.
 |**topicName**|**topicName**|Název tématu, které chcete monitorovat. Nastaví jenom v případě, že monitorování tématu, ne pro frontu.|
 |**subscriptionName**|**subscriptionName**|Název odběru, který chcete monitorovat. Nastaví jenom v případě, že monitorování tématu, ne pro frontu.|
 |**připojení**|**připojení**|Název nastavení aplikace, které obsahuje připojovací řetězec služby Service Bus má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zadat jenom zbývající část názvu. Například pokud nastavíte `connection` na "MyServiceBus", modul runtime služby Functions vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyServiceBus." Necháte-li `connection` prázdný, připojovací řetězec služby Service Bus výchozí modul runtime služby Functions používá v nastavení aplikace, který je pojmenován "AzureWebJobsServiceBus".<br><br>Pokud chcete získat připojovací řetězec, postupujte podle kroků uvedených v části [získání přihlašovacích údajů pro správu](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string). Připojovací řetězec musí být pro obor názvů služby Service Bus, do konkrétní fronty nebo tématu není omezený. |
-|**accessRights**|**Přístup**|Přístupová práva připojovacího řetězce. Dostupné jsou hodnoty `manage` a `listen`. Výchozí hodnota je `manage`, což znamená, že `connection` má **spravovat** oprávnění. Pokud používáte připojovací řetězec, který nemá **spravovat** sadu oprávnění, `accessRights` poslouchat "". V opačném případě funkce modulu runtime může selhat pokouší o provedení operace, které vyžadují spravovat práva. V Azure Functions verze 2. x a vyšší tato vlastnost není k dispozici, protože nejnovější verze sady SDK úložiště nepodporuje operace správy.|
+|**accessRights**|**Přístup**|Přístupová práva připojovacího řetězce. Dostupné jsou hodnoty `manage` a `listen`. Výchozí hodnota je `manage`, což znamená, že `connection` má **spravovat** oprávnění. Pokud používáte připojovací řetězec, který nemá **spravovat** sadu oprávnění, `accessRights` poslouchat "". V opačném případě funkce modulu runtime může selhat pokouší o provedení operace, které vyžadují spravovat práva. V Azure Functions verze 2. x nebo vyšší není tato vlastnost k dispozici, protože nejnovější verze Service Bus SDK nepodporuje operace správy.|
+|**isSessionsEnabled**|**IsSessionsEnabled**|`true`, pokud se připojujete ke frontě nebo předplatnému [využívajícím relaci](../service-bus-messaging/message-sessions.md) . `false` jinak, což je výchozí hodnota.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -340,7 +363,7 @@ V C# a skript jazyka C# můžete použít následující typy parametrů pro zpr
 * Vlastní typ – Pokud zpráva obsahuje JSON, Azure Functions se pokusí rekonstruovat JSON data.
 * `BrokeredMessage` – poskytuje deserializovanou zprávu s metodou [BrokeredMessage. GetBody\<t > ()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) .
 
-Tyto parametry jsou pro Azure Functions verze 1. x; u 2. x a vyšších použijte místo `BrokeredMessage`[`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) .
+Tyto typy parametrů jsou pro Azure Functions verze 1. x; u 2. x a vyšších použijte místo `BrokeredMessage`[`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) .
 
 V jazyce JavaScript, přístup ke zprávě fronty nebo tématu pomocí `context.bindings.<name from function.json>`. Zprávy služby Service Bus je předán do funkce jako řetězec nebo objekt JSON.
 
@@ -369,11 +392,11 @@ Aktivační události služby Service Bus nabízí několik [vlastnosti metadat]
 |`ReplyTo`|`string`|Odpověď na adresa fronty.|
 |`SequenceNumber`|`Int64`|Jedinečné číslo přiřazené zprávy ve službě Service Bus.|
 |`To`|`string`|Odeslání na adresu.|
-|`Label`|`string`|Popisek konkrétní aplikace.|
+|`Label`|`string`|Popisek specifický pro aplikaci.|
 |`CorrelationId`|`string`|ID korelace.|
 
 > [!NOTE]
-> V současné době je Trigger Service Bus, který funguje s frontami a odběry s povolenou relací, ve verzi Preview. Sledujte prosím [tuto položku](https://github.com/Azure/azure-webjobs-sdk/issues/529#issuecomment-491113458) pro všechny další aktualizace, které se týkají tohoto. 
+> V současné době je Service Bus aktivační událost, která funguje s frontami s povolenou relací a odběry ve verzi Preview. Sledujte prosím [tuto položku](https://github.com/Azure/azure-webjobs-sdk/issues/529#issuecomment-491113458) pro všechny další aktualizace, které se týkají tohoto. 
 
 Zobrazit [příklady kódu](#trigger---example) , které používají tyto vlastnosti dříve v tomto článku.
 
@@ -510,7 +533,7 @@ public String pushToQueue(
  }
 ```
 
- V [Java funkce knihovny prostředí runtime](/java/api/overview/azure/functions/runtime), použijte `@QueueOutput` Poznámka k parametrům funkcí, jehož hodnota by byla zapsána do fronty služby Service Bus.  Typ parametru by měl být `OutputBinding<T>`, kde T je libovolný Java nativní objekt POJO.
+ V [Java funkce knihovny prostředí runtime](/java/api/overview/azure/functions/runtime), použijte `@ServiceBusQueueOutput` Poznámka k parametrům funkcí, jehož hodnota by byla zapsána do fronty služby Service Bus.  Typ parametru by měl být `OutputBinding<T>`, kde T je libovolný Java nativní objekt POJO.
 
 Funkce jazyka Java mohou také zapisovat do Service Busho tématu. Následující příklad používá anotaci `@ServiceBusTopicOutput` k popisu konfigurace výstupní vazby. 
 
@@ -583,9 +606,9 @@ module.exports = function (context, myTimer) {
 
 ### <a name="output---python-example"></a>Výstup – příklad Pythonu
 
-Následující příklad ukazuje, jak zapisovat do fronty ServiceBus v Pythonu.
+Následující příklad ukazuje, jak zapisovat do fronty Service Bus v Pythonu.
 
-Definice vazby ServiceBue je definována v *Function. JSON* , kde *typ* je nastaven na `serviceBus`.
+Definice vazby Service Bus je definována v *Function. JSON* , kde *typ* je nastaven na `serviceBus`.
 
 ```json
 {
@@ -646,7 +669,7 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-Můžete nastavit `Connection` vlastnosti a určit účet služby Service Bus, který chcete použít, jak je znázorněno v následujícím příkladu:
+Vlastnost `Connection` můžete nastavit tak, aby určovala název nastavení aplikace, které obsahuje připojovací řetězec Service Bus, který se má použít, jak je znázorněno v následujícím příkladu:
 
 ```csharp
 [FunctionName("ServiceBusOutput")]
@@ -659,7 +682,7 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 
 Kompletní příklad naleznete v tématu [výstup – příklad v jazyce C#](#output---c-example).
 
-Můžete použít `ServiceBusAccount` atribut zadat účet služby Service Bus na úrovni třídy, metody nebo parametr.  Další informace najdete v tématu [aktivační události – atributy](#trigger---attributes).
+Pomocí atributu `ServiceBusAccount` můžete určit účet Service Bus, který se má použít na úrovni třídy, metody nebo parametru.  Další informace najdete v tématu [aktivační události – atributy](#trigger---attributes).
 
 ## <a name="output---configuration"></a>Výstup – konfigurace
 
@@ -669,11 +692,11 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |---------|---------|----------------------|
 |**type** | – | Musí být nastavena na "služby"Service Bus. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal.|
 |**direction** | – | Musí být nastavena na "out". Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal. |
-|**name** | – | Název proměnné, která představuje fronty nebo tématu v kódu funkce. Nastavte na "$return" tak, aby odkazovaly návratovou hodnotu funkce. |
+|**name** | – | Název proměnné, která představuje zprávu fronty nebo tématu v kódu funkce. Nastavte na "$return" tak, aby odkazovaly návratovou hodnotu funkce. |
 |**queueName**|**queueName**|Název fronty.  Nastaví jenom v případě, že odesílá zprávy do fronty, ne pro téma.
-|**topicName**|**topicName**|Název tématu, které chcete monitorovat. Nastaví jenom v případě, že odesílání zpráv tématu, ne pro frontu.|
+|**topicName**|**topicName**|Název tématu. Nastaví jenom v případě, že odesílání zpráv tématu, ne pro frontu.|
 |**připojení**|**připojení**|Název nastavení aplikace, které obsahuje připojovací řetězec služby Service Bus má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zadat jenom zbývající část názvu. Například pokud nastavíte `connection` na "MyServiceBus", modul runtime služby Functions vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyServiceBus." Necháte-li `connection` prázdný, připojovací řetězec služby Service Bus výchozí modul runtime služby Functions používá v nastavení aplikace, který je pojmenován "AzureWebJobsServiceBus".<br><br>Pokud chcete získat připojovací řetězec, postupujte podle kroků uvedených v části [získání přihlašovacích údajů pro správu](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string). Připojovací řetězec musí být pro obor názvů služby Service Bus, do konkrétní fronty nebo tématu není omezený.|
-|**accessRights**|**Přístup**|Přístupová práva připojovacího řetězce. Dostupné jsou hodnoty `manage` a `listen`. Výchozí hodnota je `manage`, což znamená, že `connection` má **spravovat** oprávnění. Pokud používáte připojovací řetězec, který nemá **spravovat** sadu oprávnění, `accessRights` poslouchat "". V opačném případě funkce modulu runtime může selhat pokouší o provedení operace, které vyžadují spravovat práva. V Azure Functions verze 2. x a vyšší tato vlastnost není k dispozici, protože nejnovější verze sady SDK úložiště nepodporuje operace správy.|
+|**accessRights**|**Přístup**|Přístupová práva připojovacího řetězce. Dostupné jsou hodnoty `manage` a `listen`. Výchozí hodnota je `manage`, což znamená, že `connection` má **spravovat** oprávnění. Pokud používáte připojovací řetězec, který nemá **spravovat** sadu oprávnění, `accessRights` poslouchat "". V opačném případě funkce modulu runtime může selhat pokouší o provedení operace, které vyžadují spravovat práva. V Azure Functions verze 2. x nebo vyšší není tato vlastnost k dispozici, protože nejnovější verze Service Bus SDK nepodporuje operace správy.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -726,6 +749,12 @@ Tato část popisuje globální nastavení konfigurace, která jsou k dispozici 
                 "autoComplete": false,
                 "maxConcurrentCalls": 32,
                 "maxAutoRenewDuration": "00:55:00"
+            },
+            "sessionHandlerOptions": {
+                "autoComplete": false,
+                "messageWaitTimeout": "00:00:30",
+                "maxAutoRenewDuration": "00:55:00",
+                "maxConcurrentSessions": 16
             }
         }
     }
@@ -735,10 +764,8 @@ Tato část popisuje globální nastavení konfigurace, která jsou k dispozici 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------|
 |maxAutoRenewDuration|00:05:00|Maximální doba, ve kterém se automatické obnovení zámku zprávy.|
-|Automatické dokončování|true|Určuje, zda by měl aktivační událost okamžitě označit jako kompletní (automatické dokončování) nebo počkejte, zpracování volání dokončení.|
+|Automatické dokončování|true|Určuje, zda má aktivační událost zprávu hned označit jako dokončenou (automatické dokončování), nebo počkat na úspěšné ukončení funkce, aby bylo volání dokončeno.|
 |maxConcurrentCalls|16|Maximální počet souběžných volání zpětného volání, které by mělo zahájit pumpu zpráv. Ve výchozím nastavení modul runtime služby Functions zpracovávat více zpráv souběžně. Chcete-li řídit modul runtime najednou zpracovat pouze jedné frontě nebo tématu zprávy, nastavte `maxConcurrentCalls` na hodnotu 1. |
-|prefetchCount|–|Výchozí PrefetchCount, který se použije základní MessageReceiver.|
-
 
 ## <a name="next-steps"></a>Další kroky
 

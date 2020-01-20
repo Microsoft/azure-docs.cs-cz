@@ -1,22 +1,20 @@
 ---
-title: (NEPOUŽÍVANÉ) Hostování kontejnerů docker v cloudu Azure
+title: ZASTARALÉ Hostování kontejnerů Docker v cloudu Azure
 description: Služba Azure Container Service umožňuje zjednodušení vytváření, konfigurace a správy clusteru virtuálních počítačů, které jsou předem nakonfigurovány pro spouštění kontejnerizovaných aplikací.
-services: container-service
 author: rgardler
-manager: jeconnoc
 ms.service: container-service
 ms.topic: overview
 ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 957725d40c66ffe9d8d7ce1362279c2bb4d4fded
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f13e3b8c861d963c2e9e0b827ba00ee6fa70d31e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65788741"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277824"
 ---
-# <a name="deprecated-introduction-to-docker-container-hosting-solutions-with-azure-container-service"></a>(NEPOUŽÍVANÉ) Úvod do řešení pomocí služby Azure Container Service pro hostování kontejnerů Docker 
+# <a name="deprecated-introduction-to-docker-container-hosting-solutions-with-azure-container-service"></a>ZASTARALÉ Úvod k řešením hostování kontejnerů Docker pomocí Azure Container Service 
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -29,7 +27,7 @@ Služba Azure Container Service využívá k zajištění plné přenositelnosti
 Díky používání služby Azure Container Service můžete využívat výhody funkcí Azure na podnikové úrovni, a přitom zachovávat přenositelnost aplikací – včetně přenositelnosti v orchestračních vrstvách.
 
 ## <a name="using-azure-container-service"></a>Používání služby Azure Container Service
-Naším cílem u služby Azure Container Service je poskytnout hostitelské prostředí pro kontejnery díky používání nástrojů a technologií open source, které jsou dnes mezi našimi zákazníky oblíbené. Za tímto účelem zveřejňujeme standardní koncové body rozhraní API pro zvolený orchestrátor (systém DC/OS, Docker Swarm nebo Kubernetes). S použitím těchto koncových bodů můžete využívat veškerý software, který s nimi dokáže komunikovat. V případě koncového bodu Docker Swarm můžete například zvolit použití rozhraní příkazového řádku (CLI) Dockeru. V případě systému DC/OS můžete zvolit rozhraní příkazového řádku systému DC/OS. V případě systému Kubernetes můžete zvolit použití `kubectl`.
+Naším cílem s Azure Container Service je poskytnout hostitelské prostředí kontejneru s využitím open-source nástrojů a technologií, které jsou v současnosti populární mezi uživateli. Za tímto účelem zveřejňujeme standardní koncové body rozhraní API pro zvolený orchestrátor (systém DC/OS, Docker Swarm nebo Kubernetes). S použitím těchto koncových bodů můžete využívat veškerý software, který s nimi dokáže komunikovat. V případě koncového bodu Docker Swarm můžete například zvolit použití rozhraní příkazového řádku (CLI) Dockeru. V případě systému DC/OS můžete zvolit rozhraní příkazového řádku systému DC/OS. V případě systému Kubernetes můžete zvolit použití `kubectl`.
 
 ## <a name="creating-a-docker-cluster-by-using-azure-container-service"></a>Vytvoření clusteru Dockeru s použitím služby Azure Container Service
 Pokud chcete začít používat službu Azure Container Service, nasaďte cluster Azure Container Service prostřednictvím portálu (vyhledejte na Marketplace řetězec **Azure Container Service**) s použitím šablony Azure Resource Manageru ([Docker Swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm), [DC/OS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos) nebo [Kubernetes](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)) nebo [Azure CLI](container-service-create-acs-cluster-cli.md). Poskytované šablony pro rychlý začátek lze upravit tak, aby obsahovaly další nebo rozšířenou konfiguraci Azure. Další informace najdete v části [Nasazení clusteru Azure Container Service](container-service-deployment.md).
@@ -45,7 +43,7 @@ DC/OS je distribuovaný operační systém založený na jádru distribuovaných
 Systém DC/OS a Apache Mesos zahrnují rozsáhlou nabídku funkcí:
 
 * Ověřená škálovatelnost
-* Odolné proti chybám replikované primární a sekundární databáze pomocí Apache ZooKeeper
+* Replikovaná primární a sekundární replika odolná proti chybám pomocí Apache ZooKeeper
 * Podpora kontejnerů ve formátu Dockeru
 * Nativní izolace mezi úkoly s kontejnery Linuxu
 * Plánování s více prostředky (paměť, procesor, disk a porty)
@@ -58,11 +56,11 @@ Ve výchozím nastavení systém DC/OS spuštěný ve službě Azure Container S
 
 #### <a name="using-marathon"></a>S použitím systému Marathon
 Marathon je celoclusterový inicializační a řídicí systém pro služby ve skupinách cgroup – nebo (v případě služby Azure Container Service) v kontejnerech s formátem Dockeru. Systém Marathon poskytuje webové uživatelské rozhraní, ze kterého můžete nasazovat své aplikace. K dispozici je přístup prostřednictvím adresy URL, která vypadá přibližně takto: `http://DNS_PREFIX.REGION.cloudapp.azure.com`.
-Proměnné DNS\_PREFIX a REGION se definují v době nasazení. Samozřejmě můžete také zadat vlastní název DNS. Další informace o spouštění kontejneru prostřednictvím webového uživatelského rozhraní systému Marathon najdete v části [Správa kontejnerů systému DC/OS prostřednictvím webového uživatelského rozhraní systému Marathon](container-service-mesos-marathon-ui.md).
+Proměnné DNS\_PREFIX a REGION se definují v době nasazení. Můžete také zadat vlastní název DNS. Další informace o spouštění kontejneru prostřednictvím webového uživatelského rozhraní systému Marathon najdete v části [Správa kontejnerů systému DC/OS prostřednictvím webového uživatelského rozhraní systému Marathon](container-service-mesos-marathon-ui.md).
 
 ![Seznam aplikací systému Marathon](media/dcos/marathon-applications-list.png)
 
-Pro komunikaci se systémem Marathon můžete používat i rozhraní API REST. Existuje mnoho klientských knihoven, které jsou k dispozici pro jednotlivé nástroje. Pokrývají široké spektrum jazyků – a v každém jazyku můžete samozřejmě používat protokol HTTP. Podporu pro systém Marathon navíc poskytuje mnoho oblíbených nástrojů DevOps. Díky tomu má váš provozní tým při práci s clusterem Azure Container Service k dispozici maximální flexibilitu. Další informace o spouštění kontejneru prostřednictvím rozhraní API REST systému Marathon najdete v části [Správa kontejnerů systému DC/OS prostřednictvím rozhraní API REST systému Marathon](container-service-mesos-marathon-rest.md).
+Pro komunikaci se systémem Marathon můžete používat i rozhraní API REST. Existuje mnoho klientských knihoven, které jsou k dispozici pro jednotlivé nástroje. Pokrývají různé jazyky – a můžete použít protokol HTTP v jakémkoli jazyce. Podporu pro systém Marathon navíc poskytuje mnoho oblíbených nástrojů DevOps. Díky tomu má váš provozní tým při práci s clusterem Azure Container Service k dispozici maximální flexibilitu. Další informace o spouštění kontejneru prostřednictvím rozhraní API REST systému Marathon najdete v části [Správa kontejnerů systému DC/OS prostřednictvím rozhraní API REST systému Marathon](container-service-mesos-marathon-rest.md).
 
 ### <a name="using-docker-swarm"></a>S použitím Docker Swarmu
 Docker Swarm poskytuje nativní clustering pro Docker. Protože Docker Swarm obsluhuje standardní rozhraní API Dockeru, může kterýkoli nástroj, který už s démonem Dockeru komunikuje, používat Swarm pro transparentní škálování na více hostitelů ve službě Azure Container Service.
@@ -103,6 +101,6 @@ Sestavování aplikací s použitím služby Azure Container Service (sestavení
 >
 >
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Nasaďte cluster služby Container Service pomocí [portálu](container-service-deployment.md) nebo [Azure CLI](container-service-create-acs-cluster-cli.md).

@@ -1,22 +1,20 @@
 ---
-title: (NEPOUŽÍVANÉ) Aplikace nebo služby Marathon specifické pro uživatele
+title: ZASTARALÉ Služba Marathon specifická pro aplikaci nebo pro uživatele
 description: Vytvoření služby Marathon specifické pro aplikaci nebo uživatele
-services: container-service
 author: rgardler
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/12/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 1ba5ca54c0aa604289eab9c4475297b12580b69a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 423dc7f62806f774a5ec4855faa8be9001292773
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60557519"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277721"
 ---
-# <a name="deprecated-create-an-application-or-user-specific-marathon-service"></a>(NEPOUŽÍVANÉ) Vytvoření aplikace nebo služby Marathon specifické pro uživatele
+# <a name="deprecated-create-an-application-or-user-specific-marathon-service"></a>ZASTARALÉ Vytvoření služby Marathon specifické pro aplikaci nebo uživatele
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 

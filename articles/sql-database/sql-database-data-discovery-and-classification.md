@@ -12,12 +12,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: bb6961d87fd08af78db495b700acf34fbf4944a1
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 7161c5554fe2d4993f3bd30ad82d675a71927f23
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552545"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279201"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Klasifikace & Azure SQL Database a SQL Data Warehouse Discovery Data
 
@@ -88,7 +88,7 @@ Po definování zásad pro všechny klienty můžete pokračovat v klasifikaci j
 
 4. Chcete-li stáhnout sestavu ve formátu aplikace Excel, klikněte v horní nabídce okna na možnost **exportovat** .
 
-   ![Export do Excelu](./media/sql-data-discovery-and-classification/3_data_classification_export_report.png)
+   ![Exportovat do Excelu](./media/sql-data-discovery-and-classification/3_data_classification_export_report.png)
 
 5. <a id="step-5"></a>Chcete-li začít klasifikovat vaše data, klikněte na **kartu klasifikace** v horní části okna.
 
@@ -184,6 +184,7 @@ Pomocí prostředí PowerShell můžete spravovat klasifikace a doporučení pro
 
 - Přečtěte si další informace o [pokročilém zabezpečení dat](sql-database-advanced-data-security.md).
 - Zvažte konfiguraci [Azure SQL Database auditování](sql-database-auditing.md) pro monitorování a auditování přístupu k utajovaným citlivým datům.
+- Pro prezentaci na YouTube, která zahrnuje klasifikaci & Discovery dat, najdete informace v tématu zjišťování [, klasifikace, označování & ochrana dat SQL | Zpřístupnění dat](https://www.youtube.com/watch?v=itVi9bkJUNc).
 
 <!--Anchors-->
 [What is data discovery & classification]: #subheading-1

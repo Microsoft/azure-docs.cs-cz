@@ -1,16 +1,16 @@
 ---
 title: Ukládání a používání Service Fabricch tajných klíčů aplikací pro síť Azure
 description: Service Fabricová síť podporuje tajné klíče jako prostředky Azure. Zde je postup ukládání a správy tajných kódů s aplikacemi Service Fabric sítě.
-author: v-steg
-ms.author: jeconnoc
+author: erikadoyle
+ms.author: edoyle
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: d45b9e98c1f325e5dbd656c85655a4ac72e4c3e3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: da4eaa34840f14714616b85e24fd62cf65602b84
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459125"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277626"
 ---
 # <a name="service-fabric-mesh-application-secrets"></a>Service Fabricová tajná aplikace sítě
 Service Fabricová síť podporuje tajné klíče jako prostředky Azure. Service Fabric se může jednat o informace o citlivých textech, jako jsou například připojovací řetězce úložiště, hesla nebo jiné hodnoty, které by se měly bezpečně ukládat a přenášet.

@@ -1,25 +1,18 @@
 ---
-title: Požadavky na systém Microsoft Azure StorSimple Virtual Array | Microsoft Docs
+title: Požadavky na systém Microsoft Azure StorSimple Virtual Array
 description: Seznamte se s požadavky na software a sítě pro virtuální pole StorSimple.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: ea1d3bca-e71b-453d-aa82-440d2638f5e3
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 65d2a21a9f40470cee1dd9d713f9f9cb5431a245
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 38f9c432191ac613c1c0f8c02458e8bc4bf8232a
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516688"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273775"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>Požadavky systému virtuálních polí StorSimple
 
@@ -57,8 +50,8 @@ Požadavky na software zahrnují informace o podporovaných webových prohlíže
 | Minimální počet virtuálních procesorů (jader) |4 |
 | Minimální paměť (RAM) |8 GB <br> U souborového serveru 8 GB pro méně než 2 000 000 souborů a 16 GB pro 2-4 milionů souborů|
 | Místo na disku<sup>1</sup> |Disk s operačním systémem – 80 GB <br></br>Datový disk – 500 GB až 8 TB |
-| Minimální počet síťových rozhraní: |1 |
-| Šířka pásma internetu<sup>2</sup> |Minimální požadovaná šířka pásma: 5 MB/s <br> Doporučená šířka pásma: 100 Mb/s <br> Rychlost přenosu dat se škáluje s využitím šířky pásma internetu. Například 100 GB dat trvá 2 dny na přenos v 5 MB/s, což by mohlo vést k selhání zálohování, protože denní zálohování nebylo dokončeno za den. Díky šířce pásma 100 MB/s se dá 100 GB dat přenést za 2,5 hodin.   |
+| Minimální počet síťových rozhraní: |1\. místo |
+| Šířka pásma internetu<sup>2</sup> |Minimální požadovaná šířka pásma: 5 MB/s <br> Doporučená šířka pásma: 100 MB/s <br> Rychlost přenosu dat se škáluje s využitím šířky pásma internetu. Například 100 GB dat trvá 2 dny na přenos v 5 MB/s, což by mohlo vést k selhání zálohování, protože denní zálohování nebylo dokončeno za den. Díky šířce pásma 100 MB/s se dá 100 GB dat přenést za 2,5 hodin.   |
 
 <sup>1</sup> – dynamicky zřízené
 
@@ -94,14 +87,14 @@ Následující požadavky na software jsou pro klienty SMB, kteří přistupují
 Podporuje se jenom úložiště objektů blob bloku Azure. Objekty blob stránky nejsou podporovány. Další informace [o objektech blob bloku a objektech blob stránky](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
 
 ## <a name="networking-requirements"></a>Požadavky na síť
-Následující tabulka uvádí porty, které je třeba v bráně firewall otevřít, aby umožňovaly přenosy z iSCSI, SMB, cloudu nebo správy. V této tabulce se *v* nebo *příchozí* odkazuje na směr, ze kterého příchozí klient žádá o přístup k vašemu zařízení. Výstupní nebo *odchozí* odkazuje na směr, ve kterém vaše zařízení StorSimple odesílá data externě, mimo nasazení: například odchozí na Internet.
+Následující tabulka uvádí porty, které je třeba v bráně firewall otevřít, aby umožňovaly přenosy z iSCSI, SMB, cloudu nebo správy. V této tabulce se *v* nebo *příchozí* odkazuje na směr, ze kterého příchozí klient žádá o přístup k vašemu zařízení. *Výstupní* nebo *odchozí* odkazuje na směr, ve kterém vaše zařízení StorSimple odesílá data externě, mimo nasazení: například odchozí na Internet.
 
-| **Číslo portu.<sup>1</sup>** | **V nebo ven** | **Rozsah portů** | **Požadováno** | **Poznámky** |
+| **Číslo portu.<sup>1</sup>** | **V nebo ven** | **Rozsah portů** | **Vyžaduje** | **Poznámky** |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP) |Výstup |Síť WAN |Ne |Odchozí port se používá pro přístup k Internetu k načtení aktualizací. <br></br>Odchozí webový proxy server je uživatelsky konfigurovatelné. |
-| TCP 443 (HTTPS) |Výstup |Síť WAN |Ano |Odchozí port se používá pro přístup k datům v cloudu. <br></br>Odchozí webový proxy server je uživatelsky konfigurovatelné. |
-| UDP 53 (DNS) |Výstup |Síť WAN |V některých případech; viz poznámky. |Tento port je vyžadován pouze v případě, že používáte internetový server DNS. <br></br> Upozorňujeme, že pokud nasazujete souborový server, doporučujeme použít místní server DNS. |
-| UDP 123 (NTP) |Výstup |Síť WAN |V některých případech; viz poznámky. |Tento port je vyžadován pouze v případě, že používáte internetový server NTP.<br></br> Počítejte s tím, že pokud nasazujete souborový server, doporučujeme synchronizovat čas s řadiči domény služby Active Directory. |
+| TCP 80 (HTTP) |Odchozí |Síť WAN |Ne |Odchozí port se používá pro přístup k Internetu k načtení aktualizací. <br></br>Odchozí webový proxy server je uživatelsky konfigurovatelné. |
+| TCP 443 (HTTPS) |Odchozí |Síť WAN |Ano |Odchozí port se používá pro přístup k datům v cloudu. <br></br>Odchozí webový proxy server je uživatelsky konfigurovatelné. |
+| UDP 53 (DNS) |Odchozí |Síť WAN |V některých případech; viz poznámky. |Tento port je vyžadován pouze v případě, že používáte internetový server DNS. <br></br> Upozorňujeme, že pokud nasazujete souborový server, doporučujeme použít místní server DNS. |
+| UDP 123 (NTP) |Odchozí |Síť WAN |V některých případech; viz poznámky. |Tento port je vyžadován pouze v případě, že používáte internetový server NTP.<br></br> Počítejte s tím, že pokud nasazujete souborový server, doporučujeme synchronizovat čas s řadiči domény služby Active Directory. |
 | TCP 80 (HTTP) |V |LAN |Ano |Toto je příchozí port pro místní uživatelské rozhraní na zařízení StorSimple pro místní správu. <br></br> Všimněte si, že přístup k místnímu uživatelskému rozhraní přes HTTP se automaticky přesměruje na HTTPS. |
 | TCP 443 (HTTPS) |V |LAN |Ano |Toto je příchozí port pro místní uživatelské rozhraní na zařízení StorSimple pro místní správu. |
 | TCP 3260 (iSCSI) |V |LAN |Ne |Tento port se používá pro přístup k datům přes iSCSI. |
@@ -136,5 +129,5 @@ Doporučujeme, abyste nastavili pravidla brány firewall pro odchozí přenosy n
 | `https://*.partners.extranet.microsoft.com/*` |Balíček pro podporu |
 | `https://*.data.microsoft.com` |Služba telemetrie ve Windows, přečtěte si část [aktualizace prostředí pro zákazníky a diagnostické telemetrie](https://support.microsoft.com/en-us/kb/3068708) |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Příprava portálu na nasazení virtuálního pole StorSimple](storsimple-virtual-array-deploy1-portal-prep.md)

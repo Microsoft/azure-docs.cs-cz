@@ -1,22 +1,20 @@
 ---
-title: Použití vlastních zásad škálování v rámci Azure Virtual Machine Scale Sets | Microsoft Docs
+title: Použití vlastních zásad škálování v rámci Azure Virtual Machine Scale Sets
 description: Naučte se používat vlastní zásady škálování s využitím Azure Virtual Machine Scale Sets, které ke správě počtu instancí používají konfiguraci automatického škálování.
-services: virtual-machine-scale-sets
 author: avverma
-manager: vashan
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: avverma
-ms.openlocfilehash: c1618c398c0f7c4f0f54647e5232fdacc17de186
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 8e51ebab36d75d1c9512446ee0370f7359a72551
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72453157"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271768"
 ---
 # <a name="preview-use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>Verze Preview: použití vlastních zásad škálování v rámci Azure Virtual Machine Scale Sets
 
@@ -133,7 +131,7 @@ Virtual Machine Scale Sets nabízí dva typy [ochrany instancí](./virtual-machi
 1. Ochrana před škálováním
 2. Ochrana před akcemi nastavenými na úrovni škálování
 
-Chráněný virtuální počítač se neodstraní prostřednictvím akce škálování na více počítačů bez ohledu na to, jakou zásadu škálování na úrovni se používá. Pokud je například VM_0 (nejstarší virtuální počítač v sadě škálování) chráněný před škálováním a v sadě škálování je povolená zásada pro škálování OldestVM, VM_0 se nepovažuje za škálované v, i když se jedná o nejstarší virtuální počítač v sadě škálování. 
+Chráněný virtuální počítač se neodstraní prostřednictvím akce škálování na více počítačů bez ohledu na to, jakou zásadu škálování na úrovni se používá. Pokud je třeba VM_0 (nejstarší virtuální počítač v sadě škálování) chráněný před škálováním a v sadě škálování je povolená zásada škálování OldestVM, VM_0 se nepovažují za škálované v, a to i v případě, že se jedná o nejstarší virtuální počítač v sadě škálování. 
 
 Chráněný virtuální počítač může uživatel kdykoli odstranit, a to bez ohledu na zásadu škálování, která je v sadě škálování povolená. 
 
@@ -145,7 +143,7 @@ Níže uvedené příklady ukazují, jak bude sada škálování virtuálních p
 
 | Událost                 | ID instancí v zóna 1  | ID instancí v zóna 2  | ID instancí v zóna 3  | Výběr se škálováním na více míst                                                                                                               |
 |-----------------------|------------------------|------------------------|------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| Pořizovací               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
+| Počáteční               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
 | Horizontální navýšení kapacity              | 3, 4, 5, 10            | ***2***, 6, 9, 11      | 1, 7, 8                | Vyberte si mezi Zóna 1 a 2, a to i v případě, že Zóna 3 má nejstarší virtuální počítač. Odstraňte VM2 z Zóna 2, protože se jedná o nejstarší virtuální počítač v této zóně.   |
 | Horizontální navýšení kapacity              | ***3***, 4, 5, 10      | 6, 9, 11               | 1, 7, 8                | Vyberte Zóna 1, i když má Zóna 3 nejstarší virtuální počítač. Odstraňte VM3 z Zóna 1, protože se jedná o nejstarší virtuální počítač v této zóně.                  |
 | Horizontální navýšení kapacity              | 4, 5, 10               | 6, 9, 11               | ***1***, 7, 8          | Zóny jsou vyvážené. Odstraní VM1 v Zóna 3, protože se jedná o nejstarší virtuální počítač v sadě škálování.                                               |
@@ -159,7 +157,7 @@ U virtuálních počítačů, které nejsou v rozsahu, vybere zásada nejstarš�
 
 | Událost                 | ID instancí v zóna 1  | ID instancí v zóna 2  | ID instancí v zóna 3  | Výběr se škálováním na více míst                                                                                                               |
 |-----------------------|------------------------|------------------------|------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| Pořizovací               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
+| Počáteční               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
 | Horizontální navýšení kapacity              | 3, 4, 5, 10            | 2, 6, 9, ***11***      | 1, 7, 8                | Vyberte si mezi Zóna 1 a 2. Odstraňte VM11 z Zóna 2, protože se jedná o nejnovější virtuální počítač v obou zónách.                                |
 | Horizontální navýšení kapacity              | 3, 4, 5, ***10***      | 2, 6, 9                | 1, 7, 8                | Vyberte Zóna 1, protože mají více virtuálních počítačů než ostatní dvě zóny. Odstraní VM10 z Zóna 1, protože to je nejnovější virtuální počítač v této zóně.          |
 | Horizontální navýšení kapacity              | 3, 4, 5                | 2, 6, ***9***          | 1, 7, 8                | Zóny jsou vyvážené. Odstraní VM9 v Zóna 2, protože to je nejnovější virtuální počítač v sadě škálování.                                                |

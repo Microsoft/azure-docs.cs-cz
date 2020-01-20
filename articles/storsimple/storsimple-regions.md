@@ -1,25 +1,17 @@
 ---
-title: Dostupnost oblasti StorSimple | Microsoft Docs
+title: Dostupnost oblasti StorSimple
 description: Vysvětluje oblasti Azure, ve kterých jsou k dispozici různé modely zařízení StorSimple.
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 11/16/2017
 ms.author: alkohli
-ms.openlocfilehash: 5b41f738c2419f806aef60374a545ff004a6f19e
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a2f04d6faa7770eef7768437ae0e624b76713f98
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965127"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275112"
 ---
 # <a name="available-regions-for-your-storsimple"></a>Dostupné oblasti pro váš StorSimple
 
@@ -69,11 +61,11 @@ V závislosti na modelu mohou být zařízení StorSimple k dispozici v různýc
 
 Pokud používáte fyzické zařízení s StorSimple 8100 nebo 8600, je zařízení dostupné v následujících zemích nebo oblastech.
 
-| #  | Země nebo oblast        | #  | Země nebo oblast     | #  | Země nebo oblast      | #  | Země nebo oblast             |
+| #  | Země/oblast        | #  | Země/oblast     | #  | Země/oblast      | #  | Země/oblast             |
 |----|-----------------------|----|--------------------|----|---------------------|----|----------------------------|
-| 1  | Austrálie             | 16 | Hongkong – zvláštní správní oblast      | 31 | Nový Zéland         | 46 | Jižní Afrika               |
+| 1\. místo  | Austrálie             | 16 | Hongkong – zvláštní správní oblast      | 31 | Nový Zéland         | 46 | Jihoafrická republika               |
 | 2  | Rakousko               | 17 | Maďarsko            | 32 | Nigérie             | 47 | Jižní Korea                |
-| 3  | Bahrain               | 18 | Island            | 33 | Norsko              | 48 | Španělsko                      |
+| 3  | Bahrajn               | 18 | Island            | 33 | Norsko              | 48 | Španělsko                      |
 | 4  | Belgie               | 19 | Indie              | 34 | Peru                | 49 | Srí Lanka                  |
 | 5  | Brazílie                | 20 | Indonésie          | 35 | Filipíny         | 50 | Švédsko                     |
 | 6  | Kanada                | 21 | Irsko            | 36 | Polsko              | 51 | Švýcarsko                |
@@ -98,7 +90,7 @@ Společnost Microsoft může dodávat fyzický hardware a dodávat náhradní so
 
 Pokud používáte StorSimple Cloud Appliance 8010 nebo 8020, bude zařízení podporované a dostupné ve všech oblastech, kde je podporovaný příslušný virtuální počítač. 8010 používá virtuální počítač _Standard_A3_ , který je podporovaný ve všech oblastech Azure.
 
-8020 využívá úložiště Premium a virtuální počítač _Standard_DS3_ k vytvoření cloudového zařízení. 8020 se podporuje v oblastech Azure, které podporují Premium Storage a _Standard_DS3_ virtuální počítače Azure. Použijte [tento seznam](https://azure.microsoft.com/regions/services/), abyste zjistili, jestli jsou ve vaší oblasti dostupné obě možnosti **Virtuální počítače > DS-series** a **Úložiště > Diskové úložiště**.
+8020 používá úložiště Premium a _Standard_DS3_ virtuální počítač k vytvoření cloudového zařízení. 8020 se podporuje v oblastech Azure, které podporují Premium Storage a _Standard_DS3_ virtuálních počítačů Azure. Použijte [tento seznam](https://azure.microsoft.com/regions/services/), abyste zjistili, jestli jsou ve vaší oblasti dostupné obě možnosti **Virtuální počítače > DS-series** a **Úložiště > Diskové úložiště**.
 
 ### <a name="storsimple-virtual-array-model-1200"></a>Virtuální pole StorSimple (model 1200)
 

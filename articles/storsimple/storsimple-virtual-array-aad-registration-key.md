@@ -1,25 +1,17 @@
 ---
-title: Nové ověřování pro virtuální pole StorSimple | Microsoft Docs
+title: Nové ověřování pro virtuální pole StorSimple
 description: Vysvětluje, jak používat ověřování na základě AAD pro vaši službu, generovat nový registrační klíč a provádět ruční registraci zařízení.
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 723d5e969ba2f635724ffa50d562a7abaf936dcf
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 89f367e866c1a794f4359c76b8b8a8a9cfefd50d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517138"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273805"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>Použití nového ověřování pro StorSimple
 
@@ -48,7 +40,7 @@ Pokud používáte virtuální pole StorSimple, ujistěte se, že jsou v pravidl
 
 | Vzor adresy URL                         | Cloud | Součást/funkce         |
 |------------------------------------|-------|---------------------------------|
-| `https://login.windows.net`        | Veřejné Azure |Služba ověřování AAD      |
+| `https://login.windows.net`        | Veřejný partnerský vztah Azure |Služba ověřování AAD      |
 | `https://login.microsoftonline.us` | US Government |Služba ověřování AAD      |
 
 Úplný seznam vzorů adres URL pro virtuální pole StorSimple naleznete v části [vzory adres URL pro pravidla brány firewall](storsimple-ova-system-requirements.md#url-patterns-for-firewall-rules).
@@ -61,9 +53,9 @@ Pokud používáte virtuální pole StorSimple, pomocí následující tabulky u
 
 | Pokud je vaše zařízení spuštěné  | Proveďte následující akci                                    |
 |----------------------------|--------------------------------------------------------------|
-| Aktualizace 1,0 nebo novější a je offline. <br> Zobrazí se upozornění, že adresa URL není povolená.| 1. Upravte pravidla brány firewall tak, aby zahrnovala adresu URL ověřování. Viz [adresy URL pro ověřování](#url-changes-for-aad-authentication). <br> 2. [Získejte registrační klíč AAD ze služby](#aad-based-registration-keys). <br> 3. Proveďte kroky 1-5 pro [připojení k rozhraní Windows PowerShell virtuálního pole](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor).<br> 4. Pomocí `Invoke-HcsReRegister` rutiny zaregistrujete zařízení v prostředí Windows PowerShell. Zadejte klíč, který jste získali v předchozím kroku.|
-| Aktualizace 1,0 nebo novější a zařízení je online.| Není vyžadována žádná akce.                                       |
-| Aktualizace 0,6 nebo starší verze a zařízení je offline. | 1. [Stáhněte aktualizaci 1,0 prostřednictvím katalogu serveru](storsimple-virtual-array-install-update-1.md#download-the-update-or-the-hotfix).<br>2. [Použijte aktualizaci 1,0 prostřednictvím místního webového uživatelského rozhraní](storsimple-virtual-array-install-update-1.md#install-the-update-or-the-hotfix).<br>3. [Získejte registrační klíč AAD ze služby](#aad-based-registration-keys). <br>4. Proveďte kroky 1-5 pro [připojení k rozhraní Windows PowerShell virtuálního pole](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor).<br>5. Pomocí `Invoke-HcsReRegister` rutiny zaregistrujete zařízení v prostředí Windows PowerShell. Zadejte klíč, který jste získali v předchozím kroku.|
+| Aktualizace 1,0 nebo novější a je offline. <br> Zobrazí se upozornění, že adresa URL není povolená.| 1. Upravte pravidla brány firewall tak, aby zahrnovala adresu URL ověřování. Viz [adresy URL pro ověřování](#url-changes-for-aad-authentication). <br> 2. [Získejte registrační klíč AAD ze služby](#aad-based-registration-keys). <br> 3. proveďte kroky 1-5 pro [připojení k rozhraní Windows PowerShell virtuálního pole](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor).<br> 4. pomocí rutiny `Invoke-HcsReRegister` zaregistrujete zařízení přes Windows PowerShell. Zadejte klíč, který jste získali v předchozím kroku.|
+| Aktualizace 1,0 nebo novější a zařízení je online.| Nevyžaduje se žádná akce.                                       |
+| Aktualizace 0,6 nebo starší verze a zařízení je offline. | 1. [Stáhněte aktualizaci 1,0 prostřednictvím katalogu serveru](storsimple-virtual-array-install-update-1.md#download-the-update-or-the-hotfix).<br>2. [použijte aktualizaci 1,0 prostřednictvím místního webového uživatelského rozhraní](storsimple-virtual-array-install-update-1.md#install-the-update-or-the-hotfix).<br>3. [Získejte registrační klíč AAD ze služby](#aad-based-registration-keys). <br>4. proveďte kroky 1-5 pro [připojení k rozhraní Windows PowerShell virtuálního pole](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor).<br>5. pomocí rutiny `Invoke-HcsReRegister` zaregistrujete zařízení v prostředí Windows PowerShell. Zadejte klíč, který jste získali v předchozím kroku.|
 | Aktualizace 0,6 nebo starší verze a zařízení je online | Upravte pravidla brány firewall tak, aby zahrnovala adresu URL ověřování.<br> Nainstalujte aktualizaci 1,0 prostřednictvím Azure Portal. |
 
 ## <a name="aad-based-registration-keys"></a>Registrační klíče založené na AAD
@@ -80,7 +72,7 @@ K vygenerování registračního klíče služby AAD proveďte následující kr
 
 #### <a name="to-generate-the-aad-service-registration-key"></a>Vygenerování registračního klíče služby AAD
 
-1. V **StorSimple Device Manager**přejít na **klíče** **pro &gt; správu** .
+1. V **StorSimple Device Manager**otevřete **&gt;** **klíče**pro správu.
     
     ![Přejít k klíčům](./media/storsimple-virtual-array-aad-registration-key/aad-registration-key1.png)
 
@@ -92,6 +84,6 @@ K vygenerování registračního klíče služby AAD proveďte následující kr
 
     ![Potvrdit opětovné vygenerování](./media/storsimple-virtual-array-aad-registration-key/aad-registration-key2.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o tom, jak nasadit [virtuální pole StorSimple](storsimple-virtual-array-deploy1-portal-prep.md)

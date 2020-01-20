@@ -1,26 +1,20 @@
 ---
-title: Vytvoření sady škálování Azure, která používá Zóny dostupnosti | Microsoft Docs
+title: Vytvoření sady škálování Azure, která používá Zóny dostupnosti
 description: Naučte se vytvářet služby Azure Virtual Machine Scale Sets, které využívají Zóny dostupnosti ke zvýšení redundance před výpadky.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 0a31ed174c7a5986594f7c07b7ce00b1649413c8
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 11695eb889a10dc689b00399a37382a3b9772eae
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907985"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274411"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Vytvoření sady škálování virtuálních počítačů, která používá Zóny dostupnosti
 
@@ -45,7 +39,7 @@ Když nasadíte sadu škálování, máte také možnost nasazení s jedinou [sk
 
 ### <a name="zone-balancing"></a>Vyrovnávání zóny
 
-Pro škálované sady nasazené napříč několika zónami máte také možnost zvolit "nejlepší bilance zóny" nebo "striktní bilance zóny". Sada škálování se považuje za vyváženou, pokud každá zóna má stejný počet virtuálních počítačů nebo\\virtuálních počítačů +-1 ve všech ostatních zónách pro sadu škálování. Příklad:
+Pro škálované sady nasazené napříč několika zónami máte také možnost zvolit "nejlepší bilance zóny" nebo "striktní bilance zóny". Sada škálování se považuje za vyváženou, pokud každá zóna má stejný počet virtuálních počítačů nebo +\\-1 virtuální počítač ve všech ostatních zónách pro sadu škálování. Například:
 
 - Sada škálování se dvěma virtuálními počítači v zóně 1, 3 virtuálními počítači v zóně 2 a 3 virtuálními počítači v zóně 3 je považována za vyváženou. Existuje pouze jedna zóna s jiným počtem virtuálních počítačů a je pouze 1 méně než ostatní zóny. 
 - Sada škálování s 1 virtuálním počítačem v zóně 1, 3 virtuálními počítači v zóně 2 a 3 virtuálními počítači v zóně 3 se považují za nevyvážené. Zóna 1 má 2 méně virtuálních počítačů než zóny 2 a 3.
@@ -69,7 +63,7 @@ Pokud chcete použít Zóny dostupnosti, musí být vaše sada škálování vyt
 - [Azure PowerShell](#use-azure-powershell)
 - [Šablony Azure Resource Manager](#use-azure-resource-manager-templates)
 
-## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
+## <a name="use-the-azure-portal"></a>Použití portálu Azure
 
 Proces vytvoření sady škálování, která používá zónu dostupnosti, je stejný, jak je popsáno v [článku Začínáme](quick-create-portal.md). Když vyberete podporovanou oblast Azure, můžete vytvořit sadu škálování v jedné nebo několika dostupných zónách, jak je znázorněno v následujícím příkladu:
 
@@ -81,7 +75,7 @@ Sada škálování a podpůrné prostředky, jako je Azure Load Balancer a veře
 
 Proces vytvoření sady škálování, která používá zónu dostupnosti, je stejný, jak je popsáno v [článku Začínáme](quick-create-cli.md). Pokud chcete použít Zóny dostupnosti, musíte vytvořit sadu škálování v podporované oblasti Azure.
 
-[](/cli/azure/vmss) Přidejte parametr do příkazu AZ VMSS Create a určete, která zóna se má použít (například zóna 1, 2 nebo 3). `--zones` V následujícím příkladu se vytvoří sada škálování s jednou zónou s názvem *myScaleSet* v zóně *1*:
+Do příkazu [AZ VMSS Create](/cli/azure/vmss) přidejte parametr `--zones` a určete, která zóna se má použít (například zóna *1*, *2*nebo *3*). V následujícím příkladu se vytvoří sada škálování s jednou zónou s názvem *myScaleSet* v zóně *1*:
 
 ```azurecli
 az vmss create \
@@ -100,7 +94,7 @@ az vmss create \
 
 Chcete-li vytvořit zónu s redundantní sadou škálování, použijte veřejnou IP adresu *standardní* SKU a nástroj pro vyrovnávání zatížení. Pro zajištění rozšířené redundance vytvoří *standardní* SKU síťové prostředky redundantní v zóně. Další informace najdete v tématu [přehled Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md) a [Standard Load Balancer a zóny dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md).
 
-Chcete-li vytvořit zónu s redundantní sadou škálování, určete více zón s `--zones` parametrem. Následující příklad vytvoří zónu redundantní sady škálování s názvem *myScaleSet* napříč zónami *1, 2, 3*:
+Chcete-li vytvořit zónu s redundantní sadou škálování, zadejte více zón s parametrem `--zones`. Následující příklad vytvoří zónu redundantní sady škálování s názvem *myScaleSet* napříč zónami *1, 2, 3*:
 
 ```azurecli
 az vmss create \
@@ -115,9 +109,9 @@ az vmss create \
 
 Vytvoření a konfigurace všech prostředků sady škálování a virtuálních počítačů v zónách, které zadáte, trvá několik minut. Úplný příklad redundantní sady škálování a síťových prostředků v zóně najdete v [tomto ukázkovém skriptu CLI](https://github.com/Azure/azure-docs-cli-python-samples/blob/master/virtual-machine-scale-sets/create-zone-redundant-scale-set/create-zone-redundant-scale-set.sh) .
 
-## <a name="use-azure-powershell"></a>Použití Azure Powershell
+## <a name="use-azure-powershell"></a>Použití Azure PowerShellu
 
-Pokud chcete použít Zóny dostupnosti, musíte vytvořit sadu škálování v podporované oblasti Azure. [](/powershell/module/az.compute/new-azvmssconfig) Přidejte parametr do příkazu New-AzVmssConfig a určete, která zóna se má použít (například zóna 1, 2 nebo 3). `-Zone`
+Pokud chcete použít Zóny dostupnosti, musíte vytvořit sadu škálování v podporované oblasti Azure. Přidejte parametr `-Zone` do příkazu [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) a určete, která zóna se má použít (například zóna *1*, *2*nebo *3*).
 
 Následující příklad vytvoří sadu škálování s jednou zónou s názvem *myScaleSet* v *východní USA 2* zóně *1*. Automaticky se vytvoří síťové prostředky Azure pro virtuální síť, veřejná IP adresa a nástroj pro vyrovnávání zatížení. Po zobrazení výzvy zadejte požadované přihlašovací údaje pro správu instancí virtuálních počítačů ve škálovací sadě:
 
@@ -136,7 +130,7 @@ New-AzVmss `
 
 ### <a name="zone-redundant-scale-set"></a>Sada škálování s redundantní zónou
 
-Chcete-li vytvořit zónu s redundantní sadou škálování, určete více zón s `-Zone` parametrem. Následující příklad vytvoří v zóně redundantní sadu škálování s názvem *myScaleSet* napříč *východní USA 2* zónami *1, 2, 3*. Automaticky se vytvoří zóna redundantní síťové prostředky Azure pro virtuální síť, veřejnou IP adresu a nástroj pro vyrovnávání zatížení. Po zobrazení výzvy zadejte požadované přihlašovací údaje pro správu instancí virtuálních počítačů ve škálovací sadě:
+Chcete-li vytvořit zónu s redundantní sadou škálování, zadejte více zón s parametrem `-Zone`. Následující příklad vytvoří v zóně redundantní sadu škálování s názvem *myScaleSet* napříč *východní USA 2* zónami *1, 2, 3*. Automaticky se vytvoří zóna redundantní síťové prostředky Azure pro virtuální síť, veřejnou IP adresu a nástroj pro vyrovnávání zatížení. Po zobrazení výzvy zadejte požadované přihlašovací údaje pro správu instancí virtuálních počítačů ve škálovací sadě:
 
 ```powershell
 New-AzVmss `
@@ -153,7 +147,7 @@ New-AzVmss `
 
 ## <a name="use-azure-resource-manager-templates"></a>Použití šablon Azure Resource Manageru
 
-Proces vytvoření sady škálování, která používá zónu dostupnosti, je stejný, jak je popsáno v článku Začínáme pro [Linux](quick-create-template-linux.md) nebo [Windows](quick-create-template-windows.md). Pokud chcete použít Zóny dostupnosti, musíte vytvořit sadu škálování v podporované oblasti Azure. Přidejte vlastnost do typu prostředku Microsoft. COMPUTE/virtualMachineScaleSets ve vaší šabloně a určete, která zóna se má použít (například zóna 1, 2 nebo 3). `zones`
+Proces vytvoření sady škálování, která používá zónu dostupnosti, je stejný, jak je popsáno v článku Začínáme pro [Linux](quick-create-template-linux.md) nebo [Windows](quick-create-template-windows.md). Pokud chcete použít Zóny dostupnosti, musíte vytvořit sadu škálování v podporované oblasti Azure. Přidejte vlastnost `zones` do typu prostředku *Microsoft. COMPUTE/virtualMachineScaleSets* ve vaší šabloně a určete, která zóna se má použít (například zóna *1*, *2*nebo *3*).
 
 Následující příklad vytvoří sadu škálování s jednou zónou s názvem *myScaleSet* v *východní USA 2* zóně *1*:
 
@@ -199,7 +193,7 @@ Následující příklad vytvoří sadu škálování s jednou zónou s názvem 
 
 ### <a name="zone-redundant-scale-set"></a>Sada škálování s redundantní zónou
 
-Chcete-li vytvořit zónu s redundantní sadou škálování, zadejte ve `zones` vlastnosti pro typ prostředku *Microsoft. COMPUTE/virtualMachineScaleSets* více hodnot. Následující příklad vytvoří zónu redundantní sady škálování s názvem *myScaleSet* napříč *východní USA 2* zónami *1, 2, 3*:
+Chcete-li vytvořit zónu s redundantní sadou škálování, zadejte pro typ prostředku *Microsoft. COMPUTE/virtualMachineScaleSets* více hodnot ve vlastnosti `zones`. Následující příklad vytvoří zónu redundantní sady škálování s názvem *myScaleSet* napříč *východní USA 2* zónami *1, 2, 3*:
 
 ```json
 {
@@ -215,10 +209,10 @@ Chcete-li vytvořit zónu s redundantní sadou škálování, zadejte ve `zones`
 }
 ```
 
-Pokud vytvoříte veřejnou IP adresu nebo nástroj pro vyrovnávání zatížení, zadejte *"SKU": {"Name":*  Vlastnost "Standard"} pro vytváření síťových prostředků redundantních zónou. Také je nutné vytvořit skupinu zabezpečení sítě a pravidla pro povolení jakéhokoli provozu. Další informace najdete v tématu [přehled Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md) a [Standard Load Balancer a zóny dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md).
+Pokud vytvoříte veřejnou IP adresu nebo nástroj pro vyrovnávání zatížení, zadejte vlastnost *"SKU": {"Name": "Standard"}* pro vytváření redundantních síťových prostředků zóny. Také je nutné vytvořit skupinu zabezpečení sítě a pravidla pro povolení jakéhokoli provozu. Další informace najdete v tématu [přehled Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md) a [Standard Load Balancer a zóny dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md).
 
 Úplný příklad redundantní sady škálování a síťových prostředků v zóně najdete v [této ukázkové správce prostředků šabloně](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json) .
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste vytvořili sadu škálování v zóně dostupnosti, se můžete dozvědět, jak nasazovat [aplikace do služby Virtual Machine Scale Sets](tutorial-install-apps-cli.md) , nebo jak [používat automatické škálování se službou Virtual Machine Scale Sets](tutorial-autoscale-cli.md).
+Teď, když jste vytvořili sadu škálování v zóně dostupnosti, se můžete dozvědět, jak [nasazovat aplikace do služby Virtual Machine Scale Sets](tutorial-install-apps-cli.md) , nebo jak [používat automatické škálování se službou Virtual Machine Scale Sets](tutorial-autoscale-cli.md).

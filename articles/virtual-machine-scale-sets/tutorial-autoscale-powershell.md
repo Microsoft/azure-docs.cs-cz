@@ -1,33 +1,25 @@
 ---
-title: Kurz – Automatické škálování škálovací sady pomocí Azure PowerShellu | Microsoft Docs
+title: Kurz – automatické škálování sady škálování pomocí Azure PowerShell
 description: Zjistěte, jak pomocí Azure PowerShellu automaticky škálovat škálovací sadu virtuálních počítačů s ohledem na zvyšující a snižující se požadavky na CPU.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2d743b53f5ca74299c865d381f0832729fc956f4
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 50fb0c1c13ceba88b1894fa0f3165dd40b8e23cf
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677597"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278414"
 ---
-# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Kurz: Automatické škálování sady škálování virtuálních počítačů pomocí Azure PowerShell
+# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Kurz: Automatické škálování škálovací sady virtuálních počítačů pomocí Azure PowerShellu
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-Při vytváření škálovací sady definujete počet instancí virtuálních počítačů, které chcete spouštět. S měnícími se požadavky na aplikaci můžete počet instancí virtuálních počítačů automaticky zvyšovat nebo snižovat. Možnost automatického škálování umožňuje držet krok s požadavky zákazníků nebo reagovat na změny výkonu aplikace v průběhu jejího životního cyklu. V tomto kurzu se naučíte:
+Při vytváření škálovací sady definujete počet instancí virtuálních počítačů, které chcete spouštět. S měnícími se požadavky na aplikaci můžete počet instancí virtuálních počítačů automaticky zvyšovat nebo snižovat. Možnost automatického škálování umožňuje držet krok s požadavky zákazníků nebo reagovat na změny výkonu aplikace v průběhu jejího životního cyklu. Co se v tomto kurzu naučíte:
 
 > [!div class="checklist"]
 > * Použití automatického škálování u škálovací sady
@@ -72,16 +64,16 @@ Teď pomocí rutiny [New-AzureRmAutoscaleRule](/powershell/module/AzureRM.Insigh
 
 Pro toto pravidlo se používají následující parametry:
 
-| Parametr               | Vysvětlení                                                                                                         | Value          |
+| Parametr               | Vysvětlení                                                                                                         | Hodnota          |
 |-------------------------|---------------------------------------------------------------------------------------------------------------------|----------------|
 | *-MetricName*           | Metrika výkonu, která se má monitorovat a na kterou se mají použít akce škálovací sady.                                                   | Procento CPU |
-| *-TimeGrain*            | Četnost shromažďování metrik pro účely analýzy.                                                                   | 1 minutu       |
+| *-TimeGrain*            | Četnost shromažďování metrik pro účely analýzy.                                                                   | 1 minuta       |
 | *-MetricStatistic*      | Definuje způsob agregace shromážděných metrik pro účely analýzy.                                                | Průměr        |
 | *-TimeWindow*           | Doba, která se monitoruje před porovnáním metrik a prahových hodnot.                                   | 5 minut      |
 | *-Operator*             | Operátor sloužící k porovnání dat metriky s prahovou hodnotou.                                                     | Větší než   |
-| *-Threshold*            | Hodnota, která způsobí aktivaci akce pravidlem automatického škálování.                                                      | 70 %            |
+| *-Threshold*            | Hodnota, která způsobí aktivaci akce pravidlem automatického škálování.                                                      | 70 %            |
 | *-ScaleActionDirection* | Definuje, jestli se má po použití pravidla kapacita škálovací sady vertikálně snížit nebo zvýšit.                                             | Zvýšit       |
-| *–ScaleActionScaleType* | Určuje, že se má počet instancí virtuálních počítačů změnit o určitou hodnotu.                                    | Počet změn   |
+| *-ScaleActionScaleType* | Určuje, že se má počet instancí virtuálních počítačů změnit o určitou hodnotu.                                    | Počet změn   |
 | *-ScaleActionValue*     | Procento instancí virtuálních počítačů, které se mají po aktivaci pravidla změnit.                                            | 3              |
 | *-ScaleActionCooldown*  | Doba, po kterou se má počkat před opětovným použitím pravidla, aby akce automatického škálování měly dostatek času se projevit. | 5 minut      |
 
@@ -97,7 +89,7 @@ $myRuleScaleOut = New-AzureRmAutoscaleRule `
   -Operator "GreaterThan" `
   -Threshold 70 `
   -ScaleActionDirection "Increase" `
-  –ScaleActionScaleType "ChangeCount" `
+  -ScaleActionScaleType "ChangeCount" `
   -ScaleActionValue 3 `
   -ScaleActionCooldown 00:05:00
 ```
@@ -119,7 +111,7 @@ $myRuleScaleIn = New-AzureRmAutoscaleRule `
   -TimeWindow 00:05:00 `
   -ScaleActionCooldown 00:05:00 `
   -ScaleActionDirection "Decrease" `
-  –ScaleActionScaleType "ChangeCount" `
+  -ScaleActionScaleType "ChangeCount" `
   -ScaleActionValue 1
 ```
 
@@ -188,7 +180,7 @@ IpAddress
 52.168.121.216
 ```
 
-Vytvořte vzdálené připojení k první instanci virtuálního počítače. Zadejte vlastní veřejnou IP adresu a číslo portu požadované instance virtuálního počítače uvedené ve výstupech předchozích příkazů. Po zobrazení výzvy zadejte přihlašovací údaje, které jste použili při vytváření sady škálování (ve výchozím nastavení v vzorových příkazech jsou *azureuser* a *\@P ssw0rd!* ). Pokud používáte Azure Cloud Shell, proveďte tento krok z příkazového řádku místního PowerShellu nebo klienta Vzdálené plochy. Následující příklad se připojí k instanci virtuálního počítače *0*:
+Vytvořte vzdálené připojení k první instanci virtuálního počítače. Zadejte vlastní veřejnou IP adresu a číslo portu požadované instance virtuálního počítače uvedené ve výstupech předchozích příkazů. Po zobrazení výzvy zadejte přihlašovací údaje, které jste použili při vytváření sady škálování (ve výchozím nastavení v ukázkových příkazech jsou *azureuser* a *P\@ssw0rd!* ). Pokud používáte Azure Cloud Shell, proveďte tento krok z příkazového řádku místního PowerShellu nebo klienta Vzdálené plochy. Následující příklad se připojí k instanci virtuálního počítače *0*:
 
 ```powershell
 mstsc /v 52.168.121.216:50001
@@ -254,7 +246,7 @@ Remove-AzureRmResourceGroup -Name "myResourceGroup" -Force -AsJob
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste zjistili, jak automaticky horizontálně snižovat nebo zvyšovat kapacitu škálovací sady pomocí Azure PowerShellu:
 
 > [!div class="checklist"]

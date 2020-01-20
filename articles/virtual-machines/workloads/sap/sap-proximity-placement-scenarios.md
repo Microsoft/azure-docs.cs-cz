@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/01/2019
+ms.date: 01/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cef5058936a45badd700a573611c82398ca4d546
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 01ce1599f86082aef3ff53d298cc53896074af66
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805701"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277593"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>Skupiny umístění v blízkosti Azure pro optimální latenci sítě s aplikacemi SAP
 Aplikace SAP založené na architektuře SAP NetWeaver nebo SAP S/4HANA jsou citlivé na latenci sítě mezi aplikační vrstvou SAP a databázovou vrstvou SAP. Tato citlivost je výsledkem většiny obchodních logiky spuštěných v aplikační vrstvě. Vzhledem k tomu, že aplikační vrstva SAP spouští obchodní logiku, vydává dotazy do databázové vrstvy s vysokou frekvencí v poměru tisíc nebo desítky tisíců za sekundu. Ve většině případů je povaha těchto dotazů jednoduchá. Je často možné je spouštět na úrovni databáze za 500 mikrosekund nebo méně.
@@ -156,7 +156,7 @@ Výsledek tohoto nasazení:
 > Vzhledem k tomu, že nasadíte jeden virtuální počítač s DBMS do jedné zóny a druhý virtuální počítač DBMS do jiné zóny, abyste vytvořili konfiguraci s vysokou dostupností, budete pro každou zónu potřebovat jinou skupinu umístění blízkosti. Totéž platí pro všechny skupiny dostupnosti, které používáte.
 
 ## <a name="move-an-existing-system-into-proximity-placement-groups"></a>Přesunout existující systém do skupin umístění pro Proximity
-Pokud již máte nasazené systémy SAP, možná budete chtít optimalizovat latenci sítě některých důležitých systémů a umístit vrstvu aplikace a vrstvu DBMS do stejného datacentra. Během veřejné verze Preview skupin umístění Proximity je potřeba virtuální počítače odstranit a vytvořit nové a přesunout systém do skupin umístění pro Proximity. V tuto chvíli nemůžete jenom vypnout virtuální počítače a přiřadit je ke skupinám umístění blízkosti.
+Pokud již máte nasazené systémy SAP, možná budete chtít optimalizovat latenci sítě některých důležitých systémů a umístit vrstvu aplikace a vrstvu DBMS do stejného datacentra. Pokud chcete přesunout virtuální počítače s kompletní skupinou dostupnosti Azure do existující skupiny umístění blízkosti, která už je vymezená, musíte vypnout všechny virtuální počítače skupiny dostupnosti a přiřadit skupinu dostupnosti k existující skupině umístění blízkosti prostřednictvím Azure Portal. PowerShell nebo rozhraní příkazového řádku. Pokud chcete přesunout virtuální počítač, který není součástí skupiny dostupnosti, do existující skupiny umístění pro Proximity, stačí virtuální počítač vypnout a přiřadit k existující skupině umístění blízkosti. 
 
 
 ## <a name="next-steps"></a>Další kroky

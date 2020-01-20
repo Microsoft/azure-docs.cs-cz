@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 83b167baa29a54e53f7fe8bdb7b7e5c88bc3eddf
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: c98feda62b7e5de5551b02d6189a1142ca8c5f88
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264080"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276782"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 
@@ -29,7 +29,7 @@ Application Insights můžete použít s jakýmikoli webovými stránkami – st
     * [Fragment kódu JavaScriptu](#snippet-based-setup)
 
 > [!IMPORTANT]
-> > K přidání sady JavaScript SDK do aplikace použijte pouze jednu metodu. Použijete-li instalační program NPM, tento fragment kódu nepoužívejte ani naopak.
+> K přidání sady JavaScript SDK do aplikace použijte pouze jednu metodu. Použijete-li instalační program NPM, tento fragment kódu nepoužívejte ani naopak.
 
 > [!NOTE]
 > Instalační program NPM nainstaluje sadu JavaScript SDK jako závislost k vašemu projektu a umožní technologii IntelliSense, zatímco fragment kódu načte sadu SDK za běhu. Obě podporují stejné funkce. Vývojáři, kteří chtějí další vlastní události a konfigurace, obecně můžou souhlasit s NPM nastavením, zatímco uživatelé hledají rychlé povolení okamžitého zapnutí webové analýzy pro fragment.

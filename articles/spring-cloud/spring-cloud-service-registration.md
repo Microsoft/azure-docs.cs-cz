@@ -1,17 +1,17 @@
 ---
 title: Automatizace registru služby a zjišťování
 description: Naučte se automatizovat zjišťování a registraci služeb pomocí registru jarní cloudové služby.
-author: jpconnock
+author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/05/2019
-ms.author: jeconnoc
-ms.openlocfilehash: 1a45e744db36be651e770f7b5c7cc6df530f887d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.author: brendm
+ms.openlocfilehash: 6c217096f0ba4200f49bd1fd8056768a6f6f6dbd
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772053"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278863"
 ---
 # <a name="discover-and-register-your-spring-cloud-services"></a>Objevte a zaregistrujte své jarní cloudové služby
 

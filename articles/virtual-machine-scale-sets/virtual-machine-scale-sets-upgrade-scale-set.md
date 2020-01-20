@@ -1,57 +1,50 @@
 ---
-title: Úprava škálovací sady virtuálních počítačů Azure | Dokumentace Microsoftu
-description: Zjistěte, jak upravit a aktualizovat virtuálních počítačů Azure škálovací sady pomocí rozhraní REST API, prostředí Azure PowerShell a rozhraní příkazového řádku Azure
-services: virtual-machine-scale-sets
-documentationcenter: ''
+title: Úprava sady škálování virtuálních počítačů Azure
+description: Naučte se, jak upravit a aktualizovat sadu škálování virtuálního počítače Azure pomocí rozhraní REST API, Azure PowerShell a Azure CLI.
 author: mayanknayar
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: manayar
-ms.openlocfilehash: 71899a9d6782c4700c287458c85ec83bd1516a4b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 49327ff0c3aeab25de02fc67c049f24597215d45
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60803137"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274454"
 ---
-# <a name="modify-a-virtual-machine-scale-set"></a>Úprava škálovací sady virtuálních počítačů
+# <a name="modify-a-virtual-machine-scale-set"></a>Úprava sady škálování virtuálních počítačů
 
-V průběhu životního cyklu aplikací můžete změnit nebo aktualizovat škálovací sadu virtuálních počítačů. Tyto aktualizace může zahrnovat jak aktualizovat konfiguraci škálovací sady nebo změnit konfiguraci aplikace. Tento článek popisuje, jak změnit existující škálovací sady pomocí rozhraní REST API, prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure.
+V průběhu životního cyklu vašich aplikací možná budete muset změnit nebo aktualizovat sadu škálování virtuálního počítače. Tyto aktualizace mohou zahrnovat způsob aktualizace konfigurace sady škálování nebo změnu konfigurace aplikace. Tento článek popisuje, jak upravit existující sadu škálování pomocí rozhraní REST API, Azure PowerShell nebo Azure CLI.
 
 ## <a name="fundamental-concepts"></a>Základní koncepce
 
-### <a name="the-scale-set-model"></a>Modelu škálovací sady
-Škálovací sada měla "modelu škálovací sady", který zachycuje *požadované* stav stupnice nastaven jako celek. K dotazování modelů pro škálovací sadu, můžete použít 
+### <a name="the-scale-set-model"></a>Model sady škálování
+Sada škálování má model "Scale set", který zachycuje *požadovaný* stav sady škálování jako celku. Pro dotazování modelu pro sadu škálování můžete použít 
 
-- Rozhraní REST API s [výpočetní/virtualmachinescalesets/get](/rest/api/compute/virtualmachinescalesets/get) následujícím způsobem:
+- REST API pomocí [COMPUTE/virtualmachinescalesets/Get](/rest/api/compute/virtualmachinescalesets/get) následujícím způsobem:
 
     ```rest
     GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet?api-version={apiVersion}
     ```
 
-- Prostředí Azure PowerShell s [Get-AzVmss](/powershell/module/az.compute/get-azvmss):
+- Azure PowerShell s [Get-AzVmss](/powershell/module/az.compute/get-azvmss):
 
     ```powershell
     Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
     ```
 
-- Azure CLI s [az vmss show](/cli/azure/vmss):
+- Azure CLI pomocí [AZ VMSS show](/cli/azure/vmss):
 
     ```azurecli
     az vmss show --resource-group myResourceGroup --name myScaleSet
     ```
 
-- Můžete také použít [resources.azure.com](https://resources.azure.com) nebo konkrétní jazyk [sady Azure SDK](https://azure.microsoft.com/downloads/).
+- Můžete také použít [Resources.Azure.com](https://resources.azure.com) nebo sady [Azure SDK](https://azure.microsoft.com/downloads/)pro konkrétní jazyk.
 
-Přesné prezentace výstup závisí na možnostech, které poskytnete k příkazu. Následující příklad ukazuje zhuštěnému ukázkový výstup z příkazového řádku Azure:
+Přesnější prezentace výstupu závisí na možnostech, které zadáte do příkazu. Následující příklad ukazuje zhuštěný ukázkový výstup z Azure CLI:
 
 ```azurecli
 az vmss show --resource-group myResourceGroup --name myScaleSet
@@ -69,33 +62,33 @@ az vmss show --resource-group myResourceGroup --name myScaleSet
 }
 ```
 
-Tyto vlastnosti se vztahují do škálovací sady jako celek.
+Tyto vlastnosti se vztahují na sadu škálování jako celek.
 
 
-### <a name="the-scale-set-instance-view"></a>Zobrazení instance škálovací sady
-Škálovací sady také má "škálovací sada instanci zobrazení", který explicitně zaznamenává aktuální *runtime* stav stupnice nastaven jako celek. K zobrazení instance škálovací sady pro dotazování, můžete použít:
+### <a name="the-scale-set-instance-view"></a>Zobrazení instance sady škálování
+Sada škálování má také "zobrazení instance sady škálování", které zachycuje aktuální *běhový* stav sady škálování jako celku. Pro dotazování zobrazení instance pro sadu škálování můžete použít:
 
-- Rozhraní REST API s [výpočetní/virtualmachinescalesets/getinstanceview](/rest/api/compute/virtualmachinescalesets/getinstanceview) následujícím způsobem:
+- REST API pomocí [COMPUTE/virtualmachinescalesets/getinstanceview](/rest/api/compute/virtualmachinescalesets/getinstanceview) následujícím způsobem:
 
     ```rest
     GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/instanceView?api-version={apiVersion}
     ```
 
-- Prostředí Azure PowerShell s [Get-AzVmss](/powershell/module/az.compute/get-azvmss):
+- Azure PowerShell s [Get-AzVmss](/powershell/module/az.compute/get-azvmss):
 
     ```powershell
     Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceView
     ```
 
-- Azure CLI s [az vmss get-instance-view](/cli/azure/vmss):
+- Azure CLI pomocí [AZ VMSS Get-instance-View](/cli/azure/vmss):
 
     ```azurecli
     az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet
     ```
 
-- Můžete také použít [resources.azure.com](https://resources.azure.com) nebo konkrétní jazyk [sady Azure SDK](https://azure.microsoft.com/downloads/)
+- Můžete také použít [Resources.Azure.com](https://resources.azure.com) nebo sady [Azure SDK](https://azure.microsoft.com/downloads/) pro konkrétní jazyk.
 
-Přesné prezentace výstup závisí na možnostech, které poskytnete k příkazu. Následující příklad ukazuje zhuštěnému ukázkový výstup z příkazového řádku Azure:
+Přesnější prezentace výstupu závisí na možnostech, které zadáte do příkazu. Následující příklad ukazuje zhuštěný ukázkový výstup z Azure CLI:
 
 ```azurecli
 $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet
@@ -123,33 +116,33 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet
 }
 ```
 
-Tyto vlastnosti nabízí souhrnné informace o aktuální stav modulu runtime virtuálních počítačů ve škálovací sadě, jako je stav rozšíření u škálovací sady.
+Tyto vlastnosti poskytují souhrn aktuálního běhového stavu virtuálních počítačů v sadě škálování, například stav rozšíření použitých pro sadu škálování.
 
 
-### <a name="the-scale-set-vm-model-view"></a>Škálovací sady virtuálních počítačů modelu zobrazení
-Podobně jako u jak škálovací sada obsahovat zobrazení modelu, všechny instance virtuálních počítačů ve škálovací sadě má vlastní zobrazení modelu. Dotaz ze zobrazení modelu pro konkrétní instanci virtuálního počítače ve škálovací sadě, můžete použít:
+### <a name="the-scale-set-vm-model-view"></a>Zobrazení modelu virtuálního počítače sady škálování
+Podobně jako sada škálování má zobrazení modelu, každá instance virtuálního počítače v sadě škálování má vlastní zobrazení modelu. K dotazování zobrazení modelu pro konkrétní instanci virtuálního počítače v sadě škálování můžete použít:
 
-- Rozhraní REST API s [výpočetní/virtualmachinescalesetvms/get](/rest/api/compute/virtualmachinescalesetvms/get) následujícím způsobem:
+- REST API pomocí [COMPUTE/virtualmachinescalesetvms/Get](/rest/api/compute/virtualmachinescalesetvms/get) následujícím způsobem:
 
     ```rest
     GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/virtualmachines/instanceId?api-version={apiVersion}
     ```
 
-- Prostředí Azure PowerShell s [Get-AzVmssVm](/powershell/module/az.compute/get-azvmssvm):
+- Azure PowerShell s [Get-AzVmssVm](/powershell/module/az.compute/get-azvmssvm):
 
     ```powershell
     Get-AzVmssVm -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId
     ```
 
-- Azure CLI s [az vmss show](/cli/azure/vmss):
+- Azure CLI pomocí [AZ VMSS show](/cli/azure/vmss):
 
     ```azurecli
     az vmss show --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
     ```
 
-- Můžete také použít [resources.azure.com](https://resources.azure.com) nebo [sady Azure SDK](https://azure.microsoft.com/downloads/).
+- Můžete také použít [Resources.Azure.com](https://resources.azure.com) nebo sady [SDK Azure](https://azure.microsoft.com/downloads/).
 
-Přesné prezentace výstup závisí na možnostech, které poskytnete k příkazu. Následující příklad ukazuje zhuštěnému ukázkový výstup z příkazového řádku Azure:
+Přesnější prezentace výstupu závisí na možnostech, které zadáte do příkazu. Následující příklad ukazuje zhuštěný ukázkový výstup z Azure CLI:
 
 ```azurecli
 $ az vmss show --resource-group myResourceGroup --name myScaleSet
@@ -163,33 +156,33 @@ $ az vmss show --resource-group myResourceGroup --name myScaleSet
 }
 ```
 
-Tyto vlastnosti popis konfigurace instance virtuálního počítače ve škálovací sadě, není konfigurace škálovací sady jako celek. Například modelu škálovací sady má `overprovision` jako vlastnost, ale nikoli model pro instance virtuálních počítačů ve škálovací sadě. Tento rozdíl je, protože předimenzování je vlastnost škálovací sady jako celá, ne u jednotlivých instancí virtuálních počítačů ve škálovací sadě (Další informace o předimenzování najdete v tématu [aspekty návrhu pro škálovací sady](virtual-machine-scale-sets-design-overview.md#overprovisioning)).
+Tyto vlastnosti popisují konfiguraci instance virtuálního počítače v rámci sady škálování, nikoli konfiguraci sady škálování jako celku. Například model sady škálování má `overprovision` jako vlastnost, zatímco model instance virtuálního počítače v rámci sady škálování ne. Důvodem je, že přestavování je vlastnost pro sadu škálování jako celek, ne jednotlivé instance virtuálních počítačů v sadě škálování (Další informace o přezřizování najdete v tématu [požadavky na návrh pro sady škálování](virtual-machine-scale-sets-design-overview.md#overprovisioning)).
 
 
-### <a name="the-scale-set-vm-instance-view"></a>Zobrazení instance virtuálního počítače škálovací sady
-Podobně jako u jak škálovací sady má zobrazení instance, všechny instance virtuálních počítačů ve škálovací sadě má svůj vlastní zobrazení instance. Dotaz na zobrazení instance pro konkrétní instanci virtuálního počítače ve škálovací sadě, můžete použít:
+### <a name="the-scale-set-vm-instance-view"></a>Zobrazení instance virtuálního počítače sady škálování
+Podobně jako u sady škálování má zobrazení instance, každá instance virtuálního počítače v sadě škálování má své vlastní zobrazení instance. K dotazování zobrazení instance pro konkrétní instanci virtuálního počítače v rámci sady škálování můžete použít:
 
-- Rozhraní REST API s [výpočetní/virtualmachinescalesetvms/getinstanceview](/rest/api/compute/virtualmachinescalesetvms/getinstanceview) následujícím způsobem:
+- REST API pomocí [COMPUTE/virtualmachinescalesetvms/getinstanceview](/rest/api/compute/virtualmachinescalesetvms/getinstanceview) následujícím způsobem:
 
     ```rest
     GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/virtualmachines/instanceId/instanceView?api-version={apiVersion}
     ```
 
-- Prostředí Azure PowerShell s [Get-AzVmssVm](/powershell/module/az.compute/get-azvmssvm):
+- Azure PowerShell s [Get-AzVmssVm](/powershell/module/az.compute/get-azvmssvm):
 
     ```powershell
     Get-AzVmssVm -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -InstanceView
     ```
 
-- Azure CLI s [az vmss get-instance-view](/cli/azure/vmss)
+- [Rozhraní příkazového řádku Azure pomocí AZ VMSS Get-instance-View](/cli/azure/vmss)
 
     ```azurecli
     az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
     ```
 
-- Můžete také použít [resources.azure.com](https://resources.azure.com) nebo [sady Azure SDK](https://azure.microsoft.com/downloads/)
+- Můžete také použít [Resources.Azure.com](https://resources.azure.com) nebo sady [SDK Azure](https://azure.microsoft.com/downloads/) .
 
-Přesné prezentace výstup závisí na možnostech, které poskytnete k příkazu. Následující příklad ukazuje zhuštěnému ukázkový výstup z příkazového řádku Azure:
+Přesnější prezentace výstupu závisí na možnostech, které zadáte do příkazu. Následující příklad ukazuje zhuštěný ukázkový výstup z Azure CLI:
 
 ```azurecli
 $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
@@ -240,168 +233,168 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 }
 ```
 
-Tyto vlastnosti popisují aktuální stav běhu instance virtuálního počítače ve škálovací sadě, která zahrnuje všechna rozšíření u škálovací sady.
+Tyto vlastnosti popisují aktuální běhový stav instance virtuálního počítače v rámci sady škálování, která zahrnuje všechna rozšíření aplikovaná na sadu škálování.
 
 
-## <a name="how-to-update-global-scale-set-properties"></a>Jak aktualizovat globální škálování nastavit vlastnosti
-Pokud chcete aktualizovat vlastnosti globálních škálovací sady, je nutné aktualizovat vlastnost v modelu škálovací sady. Tato aktualizace prostřednictvím můžete provést:
+## <a name="how-to-update-global-scale-set-properties"></a>Postup aktualizace vlastností globální sady škálování
+Chcete-li aktualizovat vlastnost globální sady škálování, je nutné aktualizovat vlastnost v modelu sady škálování. Tuto aktualizaci můžete provést prostřednictvím:
 
-- Rozhraní REST API s [výpočetní/virtualmachinescalesets/createorupdate](/rest/api/compute/virtualmachinescalesets/createorupdate) následujícím způsobem:
+- REST API pomocí [COMPUTE/virtualmachinescalesets/createorupdate](/rest/api/compute/virtualmachinescalesets/createorupdate) následujícím způsobem:
 
     ```rest
     PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet?api-version={apiVersion}
     ```
 
-- Můžete nasadit šablonu Resource Manageru s vlastnostmi z rozhraní REST API k aktualizaci vlastností globální škálovací sady.
+- Šablonu Správce prostředků můžete nasadit pomocí vlastností z REST API aktualizace vlastností globální sady škálování.
 
-- Prostředí Azure PowerShell s [aktualizace AzVmss](/powershell/module/az.compute/update-azvmss):
+- Azure PowerShell s [Update-AzVmss](/powershell/module/az.compute/update-azvmss):
 
     ```powershell
     Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -VirtualMachineScaleSet {scaleSetConfigPowershellObject}
     ```
 
-- Azure CLI s [az vmss update](/cli/azure/vmss):
-    - Chcete-li změnit vlastnosti:
+- Rozhraní příkazového řádku Azure pomocí [AZ VMSS Update](/cli/azure/vmss):
+    - Úprava vlastnosti:
 
         ```azurecli
         az vmss update --set {propertyPath}={value}
         ```
 
-    - Přidání objektu do seznamu vlastností ve škálovací sadě: 
+    - Přidání objektu do vlastnosti seznamu v sadě škálování: 
 
         ```azurecli
         az vmss update --add {propertyPath} {JSONObjectToAdd}
         ```
 
-    - Chcete-li odebrat objekt ze seznamu vlastností ve škálovací sadě: 
+    - Odebrání objektu z vlastnosti seznamu v sadě škálování: 
 
         ```azurecli
         az vmss update --remove {propertyPath} {indexToRemove}
         ```
 
-    - Pokud jste předtím nasadili škálovací sady `az vmss create` příkazu, můžete spustit `az vmss create` příkaz znovu a aktualizujte škálovací sady. Ujistěte se, že všechny vlastnosti v `az vmss create` příkaz shodují stejně jako předtím, s výjimkou vlastnosti, které chcete upravit.
+    - Pokud jste již dříve nasadili sadu škálování pomocí příkazu `az vmss create`, můžete znovu spustit příkaz `az vmss create` a aktualizovat sadu škálování. Zajistěte, aby všechny vlastnosti v příkazu `az vmss create` byly stejné jako předtím, s výjimkou vlastností, které chcete upravit.
 
-- Můžete také použít [resources.azure.com](https://resources.azure.com) nebo [sady Azure SDK](https://azure.microsoft.com/downloads/).
+- Můžete také použít [Resources.Azure.com](https://resources.azure.com) nebo sady [SDK Azure](https://azure.microsoft.com/downloads/).
 
-Jakmile dojde k aktualizaci modelu škálovací sady, nová konfigurace platí pro všechny nové virtuální počítače vytvořené ve škálovací sadě. Ale modely pro stávající virtuální počítače ve škálovací sadě musí stále vnášet naskočíte nejnovější celkové modelu škálovací sady. V modelu pro každý virtuální počítač je logická vlastnost s názvem `latestModelApplied` , která označuje, zda je aktualizován nejnovější celkové modelu škálovací sady virtuálního počítače (`true` znamená, že virtuální počítač je aktualizován na nejnovější model).
+Po aktualizaci modelu sady škálování se nová konfigurace použije pro všechny nové virtuální počítače vytvořené v sadě škálování. Modely pro existující virtuální počítače v sadě škálování ale musí být pořád aktuální s nejnovějším modelem celkových sad škálování. V modelu každého virtuálního počítače je logická vlastnost s názvem `latestModelApplied`, která indikuje, jestli je virtuální počítač aktuální s nejnovějším celkovým modelem sady škálování (`true` znamená, že je virtuální počítač aktuální s nejnovějším modelem).
 
 
-## <a name="how-to-bring-vms-up-to-date-with-the-latest-scale-set-model"></a>Zajištění naskočíte na nejnovější model škálovací sady virtuálních počítačů
-Škálovací sady obsahovat "upgrade zásady", které definují, jak nabíhají naskočíte na nejnovější model škálovací sady virtuálních počítačů. Tři režimy pro zásady upgradu jsou:
+## <a name="how-to-bring-vms-up-to-date-with-the-latest-scale-set-model"></a>Jak zajistit aktuálnost virtuálních počítačů pomocí nejnovějšího modelu sady škálování
+Sady škálování mají "zásady upgradu", které určují, jak jsou virtuální počítače aktualizované pomocí nejnovějšího modelu sady škálování. Existují tři režimy pro zásady upgradu:
 
-- **Automatické** – v tomto režimu se škálovací sada neposkytuje žádnou záruku o pořadí se načtou virtuálních počítačů. Škálovací sada může trvat dolů všechny virtuální počítače ve stejnou dobu. 
-- **Se zajištěním provozu** – v tomto režimu se škálovací sada zavádí postupně v dávkách, volitelné pozastavení doba mezi listy.
-- **Ruční** – v tomto režimu se při aktualizaci modelu škálovací sady, nic se nestane na existující virtuální počítače.
+- **Automaticky** – v tomto režimu neposkytuje sada škálování žádné záruky týkající se pořadí vypínání virtuálních počítačů. Sada škálování může současně zabrat všechny virtuální počítače. 
+- V tomto režimu se sada škálování zaznamená aktualizace v dávkách s volitelnou dobou pozastavení mezi dávkami.
+- **Ruční** – v tomto režimu se při aktualizaci modelu sady škálování nic nestane se stávajícími virtuálními počítači.
  
-Pokud chcete aktualizovat stávající virtuální počítače, musíte udělat "ruční upgrade" každý existujícího virtuálního počítače. Je-li provést tento ruční upgrade s:
+Pokud chcete aktualizovat stávající virtuální počítače, musíte provést ruční upgrade každého existujícího virtuálního počítače. Tento ruční upgrade můžete provést pomocí:
 
-- Rozhraní REST API s [výpočetní/virtualmachinescalesets/updateinstances](/rest/api/compute/virtualmachinescalesets/updateinstances) následujícím způsobem:
+- REST API pomocí [COMPUTE/virtualmachinescalesets/updateinstances](/rest/api/compute/virtualmachinescalesets/updateinstances) následujícím způsobem:
 
     ```rest
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/manualupgrade?api-version={apiVersion}
     ```
 
-- Prostředí Azure PowerShell s [aktualizace AzVmssInstance](/powershell/module/az.compute/update-azvmssinstance):
+- Azure PowerShell s [Update-AzVmssInstance](/powershell/module/az.compute/update-azvmssinstance):
     
     ```powershell
     Update-AzVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId
     ```
 
-- Azure CLI s [az vmss update-instances](/cli/azure/vmss)
+- Rozhraní příkazového řádku Azure pomocí [AZ VMSS Update-Instances](/cli/azure/vmss)
 
     ```azurecli
     az vmss update-instances --resource-group myResourceGroup --name myScaleSet --instance-ids {instanceIds}
     ```
 
-- Můžete také použít konkrétní jazyk [sady Azure SDK](https://azure.microsoft.com/downloads/).
+- Můžete také použít sady [Azure SDK](https://azure.microsoft.com/downloads/)pro konkrétní jazyk.
 
 >[!NOTE]
-> Clustery Service Fabric můžete použít jenom *automatické* režim, ale aktualizace je zpracována jiným způsobem. Další informace najdete v tématu [upgrady aplikací Service Fabric](../service-fabric/service-fabric-application-upgrade.md).
+> Clustery Service Fabric můžou používat jenom *Automatický* režim, ale aktualizace se zpracovává jinak. Další informace najdete v tématu [Service Fabric upgrady aplikací](../service-fabric/service-fabric-application-upgrade.md).
 
-Existuje jeden typ změny nastavení vlastností globální škálování, které nedodržuje zásady upgradu. Změny na škálovací sadu, profil operačního systému (například uživatelské jméno admin a heslo) lze změnit pouze ve verzi rozhraní API *2017-12-01* nebo novější. Tyto změny platí jenom pro virtuální počítače vytvořené po změnu v hodnotě stupnice nastavení modelu. Pokud chcete přenést aktuální stávající virtuální počítače, musíte udělat "obnovit" každý existujícího virtuálního počítače. Můžete provést toto obnovení z Image prostřednictvím:
+Existuje jeden typ úprav vlastností globální sady škálování, který nedodržuje zásady upgradu. Změny profilu operačního systému sady škálování (například uživatelské jméno a heslo správce) se dají změnit jenom v rozhraní API verze *2017-12-01* nebo novějším. Tyto změny platí jenom pro virtuální počítače vytvořené po změně v modelu sady škálování. Chcete-li stávající virtuální počítače přenést do aktuálního stavu, je nutné provést novou bitovou kopii každého existujícího virtuálního počítače. Tuto rebitovou kopii můžete provést prostřednictvím:
 
-- Rozhraní REST API s [výpočetní/virtualmachinescalesets/obnovit](/rest/api/compute/virtualmachinescalesets/reimage) následujícím způsobem:
+- REST API pomocí [COMPUTE/virtualmachinescalesets/ReImage](/rest/api/compute/virtualmachinescalesets/reimage) následujícím způsobem:
 
     ```rest
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/reimage?api-version={apiVersion}
     ```
 
-- Prostředí Azure PowerShell s [Set-AzVmssVm](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm):
+- Azure PowerShell s [set-AzVmssVm](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm):
 
     ```powershell
     Set-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -Reimage
     ```
 
-- Azure CLI s [az vmss reimage](https://docs.microsoft.com/cli/azure/vmss):
+- Azure CLI pomocí [AZ VMSS ReImage](https://docs.microsoft.com/cli/azure/vmss):
 
     ```azurecli
     az vmss reimage --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
     ```
 
-- Můžete také použít konkrétní jazyk [sady Azure SDK](https://azure.microsoft.com/downloads/).
+- Můžete také použít sady [Azure SDK](https://azure.microsoft.com/downloads/)pro konkrétní jazyk.
 
 
-## <a name="properties-with-restrictions-on-modification"></a>Vlastnosti s omezením na úpravy
+## <a name="properties-with-restrictions-on-modification"></a>Vlastnosti s omezeními pro úpravy
 
-### <a name="create-time-properties"></a>Čas vytvoření vlastnosti
-Některé vlastnosti lze nastavit pouze při vytváření škálovací sady. Tyto vlastnosti patří:
+### <a name="create-time-properties"></a>Vlastnosti doby vytvoření
+Některé vlastnosti lze nastavit pouze při vytváření sady škálování. Tyto vlastnosti patří:
 
 - Zóny dostupnosti
-- Referenční dokumentace vydavatel Image
-- Nabídka referenční bitové kopie
-- Spravované typ účtu úložiště pro disk operačního systému
+- Vydavatel odkazu na obrázek
+- Nabídka odkaz na obrázek
+- Typ účtu spravovaného disku operačního systému
 
-### <a name="properties-that-can-only-be-changed-based-on-the-current-value"></a>Vlastnosti, které lze změnit pouze na základě aktuální hodnoty
-Některé vlastnosti mohou být změněny, s výjimkami v závislosti na aktuální hodnotu. Tyto vlastnosti patří:
+### <a name="properties-that-can-only-be-changed-based-on-the-current-value"></a>Vlastnosti, které se dají změnit jenom na základě aktuální hodnoty
+Některé vlastnosti mohou být změněny, s výjimkami v závislosti na aktuální hodnotě. Tyto vlastnosti patří:
 
-- **singlePlacementGroup** – Pokud singlePlacementGroup má hodnotu true, může být změněna na hodnotu false. Nicméně, pokud má hodnotu false, singlePlacementGroup ho **nemusí** změnit na hodnotu true.
-- **podsíť** – podsítě škálovací sada může být změněno tak dlouho, dokud původní podsítě a nové podsítě jsou ve stejné virtuální síti.
+- **singlePlacementGroup** – Pokud má singlePlacementGroup hodnotu true, může být změněno na false. Pokud je však singlePlacementGroup false, **nemusí** být upraveno na hodnotu true.
+- **podsíť** – podsíť sady škálování může být upravena tak dlouho, dokud je původní podsíť a Nová podsíť ve stejné virtuální síti.
 
-### <a name="properties-that-require-deallocation-to-change"></a>Vlastnosti, které vyžadují zrušení přidělení, chcete-li změnit
-Některé vlastnosti může změnit na konkrétní hodnoty pouze v případě virtuálních počítačů ve škálovací sadě se uvolní. Tyto vlastnosti patří:
+### <a name="properties-that-require-deallocation-to-change"></a>Vlastnosti, které vyžadují změnu navracení
+Některé vlastnosti lze změnit pouze na určité hodnoty, pokud jsou virtuální počítače v sadě škálování navráceny. Tyto vlastnosti patří:
 
-- **Název skladové položky**– Pokud novou skladovou Položku virtuálního počítače není podporovaná na hardwaru škálovací sada je nyní, budete muset uvolnit virtuálních počítačů ve škálovací sadě předtím, než změníte název skladové položky. Další informace najdete v tématu [postupu při změně velikosti virtuálního počítače Azure](../virtual-machines/windows/resize-vm.md).
+- **Název SKU**– Pokud se nová SKU virtuálního počítače nepodporuje na hardwaru, na kterém je sada škálování aktuálně zapnutá, musíte zrušit přidělení virtuálních počítačů v sadě škálování, než UPRAVÍTE název SKU. Další informace najdete v tématu [Změna velikosti virtuálního počítače Azure](../virtual-machines/windows/resize-vm.md).
 
 
-## <a name="vm-specific-updates"></a>Aktualizace specifických pro virtuální počítače
-Některé změny se můžou vztahovat na konkrétní virtuální počítače namísto nastavení vlastností globální škálování. V současné době pouze k připojení a odpojení datových disků do a z virtuálních počítačů ve škálovací sadě je specifické pro virtuální počítače aktualizace, která je podporována. Tato funkce je ve verzi Preview. Další informace najdete v tématu [ve verzi preview dokumentaci](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk).
+## <a name="vm-specific-updates"></a>Aktualizace specifické pro virtuální počítače
+Některé úpravy se můžou použít na konkrétní virtuální počítače místo vlastností globální sady škálování. V současné době je jedinou aktualizací specifickou pro konkrétní virtuální počítač připojení nebo odpojení datových disků k virtuálním počítačům v sadě škálování nebo k jejich odpojení. Tato funkce je ve verzi Preview. Další informace najdete v dokumentaci k [verzi Preview](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk).
 
 
 ## <a name="scenarios"></a>Scénáře
 
 ### <a name="application-updates"></a>Aktualizace aplikace
-Pokud je aplikace nasazená do škálovací sady pomocí rozšíření, aktualizaci konfigurace rozšíření způsobí, že aplikace aktualizace v souladu s zásad upgradu. Například pokud máte novou verzi skript ke spuštění v rozšíření vlastních skriptů, může aktualizujete *fileUris* vlastnost tak, aby odkazovala na nový skript. V některých případech můžete chtít vynutit aktualizaci, i když je beze změny konfigurace rozšíření (například jste aktualizovali skript beze změn na identifikátor URI skriptu). V těchto případech můžete upravit *forceUpdateTag* chcete vynutit aktualizaci. Platforma Azure neinterpretuje tuto vlastnost. Pokud změníte hodnotu, neexistuje žádný vliv na vykonávání rozšíření. Změna jednoduše vynutí rozšíření spustit znovu. Další informace o *forceUpdateTag*, najdete v článku [dokumentace k rozhraní REST API pro rozšíření](/rest/api/compute/virtualmachineextensions/createorupdate). Všimněte si, *forceUpdateTag* jde použít s všechna rozšíření, nejen pomocí rozšíření vlastních skriptů.
+Pokud se aplikace nasadí do sady škálování prostřednictvím rozšíření, aktualizace konfigurace rozšíření způsobí, že se aplikace aktualizuje v souladu se zásadami upgradu. Například pokud máte novou verzi skriptu, která se má spustit ve vlastním rozšíření skriptu, můžete vlastnost *identifikátorů URI* aktualizovat tak, aby odkazovala na nový skript. V některých případech můžete chtít vynutit aktualizaci i v případě, že konfigurace rozšíření zůstane beze změny (například jste aktualizovali skript bez změny identifikátoru URI skriptu). V těchto případech můžete upravit *forceUpdateTag* pro vynucení aktualizace. Platforma Azure tuto vlastnost neinterpretuje. Změníte-li hodnotu, nebude to mít žádný vliv na to, jak se rozšíření spouští. Změna jednoduše vynutí opětovné spuštění rozšíření. Další informace o *forceUpdateTag*najdete v [dokumentaci k REST API pro rozšíření](/rest/api/compute/virtualmachineextensions/createorupdate). Všimněte si, že *forceUpdateTag* lze použít se všemi příponami, nikoli pouze s rozšířením vlastních skriptů.
 
-Také je běžné, že aplikace má být nasazen do vlastní image. Tento scénář je popsané v následující části.
+Je taky běžné, že se aplikace nasazují pomocí vlastní image. Tento scénář je popsaný v následující části.
 
 ### <a name="os-updates"></a>Aktualizace operačního systému
-Pokud používáte Image platformy Azure, můžete aktualizovat image tak, že upravíte *imageReference* (Další informace najdete v článku [dokumentace k rozhraní REST API](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)).
+Pokud používáte image platformy Azure, můžete bitovou kopii aktualizovat úpravou *element imagereference* (Další informace najdete v [dokumentaci k REST API](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)).
 
 >[!NOTE]
-> Pomocí Image platformy je běžné nastavit "nejnovější" pro odkaz na verzi image. Při vytváření, škálování a obnovení z Image, virtuální počítače se vytvoří s nejnovější dostupnou verzi. Ale to **nemá** znamená, že image operačního systému se automaticky aktualizuje časem jak se vydávají nové verze image. Samostatné funkce je momentálně ve verzi preview, která poskytuje automatické upgrady operačního systému. Další informace najdete v tématu [automatické upgrady operačního systému dokumentaci](virtual-machine-scale-sets-automatic-upgrade.md).
+> U imagí platformy je běžné zadání "poslední" pro verzi odkazu image. Při vytváření, škálování a obnovení bitové kopie virtuálních počítačů se vytvoří virtuální počítače s nejnovější dostupnou verzí. **Neznamená to ale** , že bitová kopie operačního systému se v průběhu času automaticky aktualizuje, protože se uvolní nové verze imagí. Samostatná funkce je aktuálně ve verzi Preview, která poskytuje automatické upgrady operačního systému. Další informace najdete v dokumentaci k [automatickým upgradem operačního systému](virtual-machine-scale-sets-automatic-upgrade.md).
 
-Pokud používáte vlastní Image, můžete aktualizovat image aktualizací *imageReference* ID (Další informace najdete v článku [dokumentace k rozhraní REST API](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)).
+Pokud používáte vlastní image, můžete bitovou kopii aktualizovat aktualizací ID *element imagereference* (Další informace najdete v [dokumentaci k REST API](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)).
 
 ## <a name="examples"></a>Příklady
 
-### <a name="update-the-os-image-for-your-scale-set"></a>Aktualizace image operačního systému pro škálovací sady
-Může mít škálovací sady, na kterém běží stará verze Ubuntu LTS 16.04. Chcete ji aktualizovat na novější verze Ubuntu LTS 16.04, jako je například verze *16.04.201801090*. Vlastnosti verze image odkaz není součástí seznamu, proto mohou přímo upravit tyto vlastnosti s jednou z následujících příkazů:
+### <a name="update-the-os-image-for-your-scale-set"></a>Aktualizace image operačního systému pro sadu škálování
+Můžete mít sadu škálování, která spouští starou verzi Ubuntu LTS 16,04. Chcete aktualizovat na novější verzi Ubuntu LTS 16,04, jako je například verze *16.04.201801090*. Vlastnost verze odkazu na obrázek není součástí seznamu, takže můžete tyto vlastnosti přímo upravit pomocí jednoho z následujících příkazů:
 
-- Prostředí Azure PowerShell s [aktualizace AzVmss](/powershell/module/az.compute/update-azvmss) následujícím způsobem:
+- Azure PowerShell s [Update-AzVmss](/powershell/module/az.compute/update-azvmss) následujícím způsobem:
 
     ```powershell
     Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -ImageReferenceVersion 16.04.201801090
     ```
 
-- Azure CLI s [az vmss update](/cli/azure/vmss):
+- Rozhraní příkazového řádku Azure pomocí [AZ VMSS Update](/cli/azure/vmss):
 
     ```azurecli
     az vmss update --resource-group myResourceGroup --name myScaleSet --set virtualMachineProfile.storageProfile.imageReference.version=16.04.201801090
     ```
 
-Alternativně můžete změnit obrázek, vaše škálovací sada používá. Například můžete aktualizovat nebo změnit vlastní bitovou kopii používanou škálovací sadou. Obrázek, vaše škálovací sada používá aktualizací vlastnost ID bitové kopie referenčního můžete změnit. Vlastnost ID obrázku odkaz není součástí seznamu, proto mohou přímo upravit tuto vlastnost s jedním z následujících příkazů:
+Alternativně můžete chtít změnit obrázek, který sada škálování používá. Můžete například chtít aktualizovat nebo změnit vlastní image, kterou používá vaše sada škálování. Obrázek, který sada škálování používá, můžete změnit aktualizací vlastnosti ID odkazu na obrázek. Vlastnost ID odkazu na obrázek není součástí seznamu, takže tuto vlastnost můžete přímo upravit jedním z následujících příkazů:
 
-- Prostředí Azure PowerShell s [aktualizace AzVmss](/powershell/module/az.compute/update-azvmss) následujícím způsobem:
+- Azure PowerShell s [Update-AzVmss](/powershell/module/az.compute/update-azvmss) následujícím způsobem:
 
     ```powershell
     Update-AzVmss `
@@ -410,7 +403,7 @@ Alternativně můžete změnit obrázek, vaše škálovací sada používá. Nap
         -ImageReferenceId /subscriptions/{subscriptionID}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myNewImage
     ```
 
-- Azure CLI s [az vmss update](/cli/azure/vmss):
+- Rozhraní příkazového řádku Azure pomocí [AZ VMSS Update](/cli/azure/vmss):
 
     ```azurecli
     az vmss update \
@@ -420,10 +413,10 @@ Alternativně můžete změnit obrázek, vaše škálovací sada používá. Nap
     ```
 
 
-### <a name="update-the-load-balancer-for-your-scale-set"></a>Aktualizujte nástroj pro vyrovnávání zatížení pro škálovací sady
-Řekněme, že máte škálovací sady s pomocí služby Azure Load Balancer a mají být nahrazeny nástroje pro vyrovnávání zatížení Azure s využitím služby Azure Application Gateway. Vlastnosti nástroje pro vyrovnávání zatížení a služba Application Gateway pro škálovací sady jsou součástí seznamu, proto můžete pomocí příkazů odeberte nebo přidejte prvky seznamu namísto přímo úpravou vlastností:
+### <a name="update-the-load-balancer-for-your-scale-set"></a>Aktualizace nástroje pro vyrovnávání zatížení pro sadu škálování
+Řekněme, že máte sadu škálování s Azure Load Balancer a chcete nahradit Azure Load Balancer pomocí Application Gateway Azure. Vlastnosti nástroje pro vyrovnávání zatížení a Application Gateway pro sadu škálování jsou součástí seznamu, takže můžete použít příkazy k odebrání nebo přidání prvků seznamu místo úprav vlastností přímo:
 
-- Azure Powershell:
+- Azure PowerShell:
 
     ```powershell
     # Get the current model of the scale set and store it in a local PowerShell object named $vmss
@@ -453,8 +446,8 @@ Alternativně můžete změnit obrázek, vaše škálovací sada používá. Nap
     ```
 
 >[!NOTE]
-> Těchto příkazů se předpokládá, že existuje pouze jeden IP konfigurace a zatížení nástroj pro vyrovnávání ve škálovací sadě. Pokud je více, budete muset použít jiné než index seznamu *0*.
+> U těchto příkazů se předpokládá, že je v sadě škálování jenom jedna konfigurace protokolu IP a nástroj pro vyrovnávání zatížení. Pokud existuje více, možná budete muset použít index seznamu jiný než *0*.
 
 
-## <a name="next-steps"></a>Další postup
-Můžete také provádět běžné úlohy správy do škálovací sady s [rozhraní příkazového řádku Azure](virtual-machine-scale-sets-manage-cli.md) nebo [prostředí Azure PowerShell](virtual-machine-scale-sets-manage-powershell.md).
+## <a name="next-steps"></a>Další kroky
+Můžete také provádět běžné úlohy správy pro sady škálování pomocí [Azure CLI](virtual-machine-scale-sets-manage-cli.md) nebo [Azure PowerShell](virtual-machine-scale-sets-manage-powershell.md).

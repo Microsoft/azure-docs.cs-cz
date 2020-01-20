@@ -1,25 +1,17 @@
 ---
-title: Uživatelské rozhraní Data Manager Microsoft Azure StorSimple | Microsoft Docs
+title: Uživatelské rozhraní Microsoft Azure StorSimple Data Manager
 description: Popisuje, jak používat rozhraní StorSimple Data Manager služby.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 3a87b4c07d2e961d9876fb44c6584f37ad9246df
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: d485a2655b569b3def6162934857b02dbe4f75ea
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796643"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273969"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Správa služby StorSimple Data Manager v Azure Portal
 
@@ -112,7 +104,7 @@ K vytvoření definice úlohy proveďte následující kroky.
 
    4. Služba transformace dat pracuje s daty, která se do Azure vloží přes snímky. Když tuto úlohu spustíte, můžete si zvolit, jestli se má při každém spuštění této úlohy provést zálohování (pro práci s nejnovějšími daty), nebo použít poslední existující zálohu v cloudu (Pokud pracujete na některých archivovaných datech).
 
-   5. Klikněte na tlačítko **OK**.
+   5. Klikněte na **OK**.
 
       ![Konfigurace zdrojového datového úložiště 2](./media/storsimple-data-manager-ui/create-job-definition-8.png)
 
@@ -129,7 +121,7 @@ K vytvoření definice úlohy proveďte následující kroky.
     
     1. V rozevíracím seznamu v **názvu cílového účtu**vyberte úložiště, které jste vytvořili jako cíl.
 
-    2. Jako objekty blob nebo soubory vyberte typ úložiště. Zadejte název kontejneru úložiště, ve kterém se transformovaná data nacházejí. Klikněte na tlačítko **OK**.
+    2. Jako objekty blob nebo soubory vyberte typ úložiště. Zadejte název kontejneru úložiště, ve kterém se transformovaná data nacházejí. Klikněte na **OK**.
 
         ![Konfigurace účtu úložiště cílového datového úložiště](./media/storsimple-data-manager-ui/create-job-definition-16.png)
 
@@ -141,7 +133,7 @@ K vytvoření definice úlohy proveďte následující kroky.
 
 ### <a name="run-the-job-definition"></a>Spuštění definice úlohy
 
-Kdykoli potřebujete přesunout data z StorSimple do účtu úložiště, který jste zadali v definici úlohy, je nutné ji spustit. V době běhu lze některé parametry zadat odlišně. Postup je následující:
+Kdykoli potřebujete přesunout data z StorSimple do účtu úložiště, který jste zadali v definici úlohy, je nutné ji spustit. V době běhu lze některé parametry zadat odlišně. Kroky jsou následující:
 
 1. Vyberte službu StorSimple Data Manager a pokračujte na **Definice úloh > správy**. Vyberte definici úlohy, kterou chcete spustit, a klikněte na ni.
      

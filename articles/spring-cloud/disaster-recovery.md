@@ -1,17 +1,17 @@
 ---
 title: Azure jaře Cloud – geografická zotavení po havárii | Microsoft Docs
 description: Informace o tom, jak chránit svoji jarní cloudovou aplikaci před místními výpadky
-author: jpconnock
+author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/24/2019
-ms.author: jeconnoc
-ms.openlocfilehash: 54289e808461e6374dee57763ef7ba0d0429c54c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.author: brendm
+ms.openlocfilehash: 4961e5a63e5bc1933cf19b1f291b521d89cbda0e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607845"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279141"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Zotavení po havárii v cloudu Azure jaře
 
@@ -19,7 +19,7 @@ Tento článek vysvětluje některé strategie, které můžete použít k ochra
 
 ## <a name="plan-your-application-deployment"></a>Plánování nasazení aplikace
 
-Aplikace pro jarní Cloud v Azure běží v konkrétní oblasti.  Azure pracuje v různých geografických oblastech po celém světě. Zeměpisná oblast Azure je definovaná oblast světa, která obsahuje alespoň jednu oblast Azure. Oblast Azure je oblast v rámci geografické oblasti, která obsahuje jedno nebo více datových center.  Každá oblast Azure je spárovaná s jinou oblastí v rámci stejné geografické oblasti a tvoří tak místní dvojici. Azure serializovat aktualizace platforem (plánovaná údržba) napříč místními páry, aby bylo zajištěno, že se v každém páru aktualizuje jenom jedna oblast. V případě výpadku, který má vliv na více oblastí, bude mít nejméně jedna oblast v každém páru určenou prioritu pro obnovení.
+Aplikace pro jarní Cloud v Azure běží v konkrétní oblasti.  Azure funguje v několika zeměpisných oblastech po celém světě. Zeměpisná oblast Azure je definovaná oblast světa, která obsahuje alespoň jednu oblast Azure. Oblast Azure je oblast v rámci geografické oblasti, která obsahuje jedno nebo více datových center.  Každá oblast Azure je spárovaná s jinou oblastí v rámci stejné geografické oblasti a tvoří tak místní dvojici. Azure serializovat aktualizace platforem (plánovaná údržba) napříč místními páry, aby bylo zajištěno, že se v každém páru aktualizuje jenom jedna oblast. V případě výpadku, který má vliv na více oblastí, bude mít nejméně jedna oblast v každém páru určenou prioritu pro obnovení.
 
 Zajištění vysoké dostupnosti a ochrany před haváriemi vyžaduje, abyste nasadili své jarní cloudové aplikace do více oblastí.  Azure poskytuje seznam [spárovaných oblastí](../best-practices-availability-paired-regions.md) , abyste mohli plánovat nasazování vašich jarních cloudů do regionálních párů.  Při navrhování architektury mikroslužeb doporučujeme vzít v úvahu tři klíčové faktory: dostupnost oblastí, spárované oblasti Azure a dostupnost služeb.
 

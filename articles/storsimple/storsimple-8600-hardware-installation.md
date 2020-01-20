@@ -1,25 +1,18 @@
 ---
-title: Nainstalovat zařízení Microsoft Azure StorSimple 8600 | Microsoft Docs
+title: Nainstalovat zařízení Microsoft Azure StorSimple 8600
 description: Popisuje, jak před nasazením a konfigurací softwaru rozbalit, montovat do racku a zapojte zařízení s StorSimple 8600.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 3d82ba5f-3e34-40dc-9c33-50f952bc6be8
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 571c8b729408d7b9e805b875baccfd9ac8d6b9be
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965269"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277118"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>Rozbalení, připojení k racku a zapojení zařízení StorSimple 8600
 
@@ -34,7 +27,7 @@ Následující kroky poskytují jasné a podrobné pokyny k rozbalení úložné
 ### <a name="prepare-to-unpack-your-device"></a>Příprava na rozbalení zařízení
 Před rozbalením zařízení si přečtěte následující informace.
 
-![Ikona](./media/storsimple-safety/IC740879.png)![upozornění velké váhy ikona](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **Upozornění!**
+Ikona upozornění ![](./media/storsimple-safety/IC740879.png)![ikonu velké váhy](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **Upozornění!**
 
 1. Ujistěte se, že máte k dispozici dvě osoby, abyste mohli spravovat váhu zařízení, pokud ho zpracováváte ručně. Plně nakonfigurovaná skříň může vážit až 32 kg (70 kg).
 2. Umístěte krabici na rovný povrch.
@@ -51,7 +44,7 @@ Dále proveďte následující kroky a rozbalte své zařízení.
    
    | Štítek | Popis |
    | --- | --- |
-   |   1 |Expediční box |
+   |   1\. místo |Expediční box |
    |   2 |Kabely SAS (v zásobníku příslušenství a kabely) |
    |   3 |Spodní pěna |
    |   4 |Zařízení |
@@ -92,7 +85,7 @@ Skříně musí být nainstalované na standardu 19 palců, který obsahuje obě
 2. Ověřte, že lokalita, kde máte v úmyslu nastavit, má standardní sílu napájení z nezávislého zdroje nebo jednotky PDU napájení (AC) s nepřerušitelným zdrojem napájení (UPS).
 3. Ujistěte se, že je jeden slot 4U (2 X 2U) dostupný na stojanu, ve kterém máte v úmyslu připojit skříně.
 
-![Ikona](./media/storsimple-safety/IC740879.png)![upozornění velké váhy ikona](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **Upozornění!**
+Ikona upozornění ![](./media/storsimple-safety/IC740879.png)![ikonu velké váhy](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **Upozornění!**
 
  Ujistěte se, že máte ke správě váhy k dispozici dvě osoby, pokud spouštíte ruční nastavení zařízení. Plně nakonfigurovaná skříň může vážit až 32 kg (70 kg).
 
@@ -115,7 +108,7 @@ K dispozici je sada montážní kolejnice, která se bude používat pro skří�
    
    | Štítek | Popis |
    | --- | --- |
-   |  1 |M 3x4 tlačítka – šrouby hlav |
+   |  1\. místo |M 3x4 tlačítka – šrouby hlav |
    |  2 |Snímky skříní |
 2. Připojte levou kolejnici a pravou železniční sestavení k vertikálním členům racku Cabinet. Závorky jsou označené jako **LH**, **RH**a **Tato strana až** po správné orientaci.
 3. Vyhledejte čepy v přední a zadní části montážní lišty. Rozšíříte kolejnici tak, aby vyhovovala mezi příspěvky v racku, a vkládat PIN kódy do front a zadních stojanů po svislých členských otvorech. Ujistěte se, že je na úrovni železničního sestavení úroveň.
@@ -128,7 +121,7 @@ K dispozici je sada montážní kolejnice, která se bude používat pro skří�
    
    | Štítek | Popis |
    | --- | --- |
-   |   1 |Montážní šroub |
+   |   1\. místo |Montážní šroub |
    |   2 |Šroubový prstenec na druhou stranu |
    |   3 |Kódy PIN pro polohu v levé horní části |
    |   4 |Montážní šroub |
@@ -154,7 +147,7 @@ Pomocí následujících kroků připojte skříň EBOD do racku a použijte rac
    
    | Štítek | Popis |
    | --- | --- |
-   |   1 |Šroub uzávěrky skříně |
+   |   1\. místo |Šroub uzávěrky skříně |
 
 ### <a name="mounting-the-primary-enclosure-in-the-rack"></a>Připojení primární skříně do stojanu
 Po dokončení připojení k skříni EBOD budete muset primární skříň připojit podle stejného postupu.
@@ -223,8 +216,8 @@ Pro podporu tohoto redundantního převzetí služeb při selhání je potřeba 
 | C |PCM 0 |
 | D |Kontroler 1 |
 | E |PCM 1 |
-| pá |EBOD Controller 0 |
-| U |EBOD řadič 1 |
+| F |EBOD Controller 0 |
+| G |EBOD řadič 1 |
 | H,I |Hostitelé (například souborové servery) |
 | 0-5 |Síťová rozhraní |
 | 6 |Primární skříň |
@@ -241,7 +234,7 @@ Pamatujte na vysokou dostupnost a výkon:
 * Pokud je to možné, připojte síťová rozhraní z každého kontroleru k dvěma různým přepínačům, abyste zajistili dostupnost v případě výpadku přepínače. Obrázek znázorňuje síťová rozhraní 2 10 GbE, DATA 2 a DATA 3 z každého kontroleru připojeného ke dvěma různým přepínačům. Další informace najdete v tématu **Síťová rozhraní** podle [požadavků vysoké dostupnosti pro vaše zařízení StorSimple](storsimple-8000-system-requirements.md#high-availability-requirements-for-storsimple).
 
 > [!NOTE]
-> Pokud používáte síťové rozhraní SFP a přijímače s 10 GbE, použijte poskytnuté adaptéry QSFP-SFP +. Další informace najdete na podporovaném [hardwaru pro síťová rozhraní 10 GbE na zařízení StorSimple](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
+> Pokud používáte síťové rozhraní SFP a přijímače s 10 GbE, použijte poskytnuté adaptéry QSFP-SFP +. Další informace najdete na [podporovaném hardwaru pro síťová rozhraní 10 GbE na zařízení StorSimple](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
 > 
 > 
 
@@ -269,6 +262,6 @@ K zapojení sériového portu proveďte následující kroky.
 
 Dokončili jste propojení zařízení s napájením, přístupem k síti a sériovým připojením. Dalším krokem je konfigurace softwaru na vašem zařízení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Teď jste připraveni [nasadit a nakonfigurovat místní zařízení StorSimple](storsimple-8000-deployment-walkthrough-u2.md).
 

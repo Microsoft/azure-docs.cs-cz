@@ -3,15 +3,15 @@ title: 'Kurz: škálování aplikace v Azure jaře cloudu | Microsoft Docs'
 description: V tomto kurzu se naučíte škálovat aplikaci pomocí jarního cloudu Azure v Azure Portal
 ms.service: spring-cloud
 ms.topic: tutorial
-ms.author: jeconnoc
-author: jpconnock
+ms.author: brendm
+author: bmitchell287
 ms.date: 10/06/2019
-ms.openlocfilehash: eaf7e7ec39555e5b933020835f3bb96429e3aa81
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f08a3b5d0a03b0e898457bbb783dd5031c4b0f27
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461429"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277479"
 ---
 # <a name="scale-an-application-in-azure-spring-cloud"></a>Škálování aplikace ve jarním cloudu Azure
 
@@ -31,7 +31,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 ## <a name="navigate-to-the-scale-page-in-the-azure-portal"></a>Přejít na stránku škálování v Azure Portal
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
 
 1. Přejít na stránku s **přehledem** jarního cloudu Azure.
 

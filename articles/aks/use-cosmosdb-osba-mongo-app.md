@@ -1,54 +1,52 @@
 ---
-title: Integrovat stávající aplikaci MongoDB API služby Azure Cosmos DB pro MongoDB a zprostředkovatele Open Service Broker for Azure (OSBA)
-description: V tomto článku se dozvíte, jak integrovat existující aplikace Java využívající databázi MongoDB API služby Azure Cosmos DB pro MongoDB pomocí zprostředkovatele Open Service Broker for Azure (OSBA).
-services: azure-dev-spaces
+title: Integrace existující aplikace v MongoDB s rozhraním API služby Azure Cosmos DB pro MongoDB a otevření Service Broker pro Azure (OSBA)
+description: V tomto článku se dozvíte, jak integrovat existující aplikaci Java a MongoDB s rozhraním API Azure Cosmos DB pro MongoDB pomocí Open Service Broker for Azure (OSBA).
 author: zr-msft
-manager: jeconnoc
 ms.service: azure-dev-spaces
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: zarhoads
 ms.custom: mvc
-keywords: Cosmos DB, otevřete Service Broker, Open Service Broker for Azure
-ms.openlocfilehash: 46fa5564e5dd3429f812b263295044d867a8511c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+keywords: Cosmos DB, otevřete Service Broker a otevřete Service Broker pro Azure.
+ms.openlocfilehash: 3d0ab0b27d77e45d779227d30c5a8e4f824ba62a
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61028412"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277706"
 ---
-# <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>Integrovat stávající aplikaci MongoDB API služby Azure Cosmos DB pro MongoDB a zprostředkovatele Open Service Broker for Azure (OSBA)
+# <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>Integrace existující aplikace v MongoDB s rozhraním API služby Azure Cosmos DB pro MongoDB a otevření Service Broker pro Azure (OSBA)
 
-Azure Cosmos DB je globálně distribuovaná databázová služba pro více modelů. Také poskytuje kompatibilitu s protokolem při přenosu s několika rozhraní API NoSQL včetně pro MongoDB. Rozhraní API Cosmos DB pro MongoDB můžete pomocí služby Cosmos DB s vaší stávající aplikace MongoDB bez nutnosti změny ovladače databáze vaší aplikace nebo implementace. Můžete také vytvářet služby Cosmos DB pomocí zprostředkovatele Open Service Broker for Azure.
+Azure Cosmos DB je globálně distribuovaná databázová služba pro více modelů. Poskytuje taky kompatibilitu s přenosovou protokolem s několika NoSQL rozhraními API, včetně MongoDB. Rozhraní Cosmos DB API pro MongoDB umožňuje používat Cosmos DB s vaší stávající aplikací MongoDB, aniž by bylo nutné měnit ovladače a implementace databáze vaší aplikace. Službu Cosmos DB můžete také zřídit pomocí programu Open Service Broker for Azure.
 
-V tomto článku využijte existující aplikace v Javě, která používá databázi MongoDB a aktualizujte ji, aby používat databázi Cosmos DB pomocí zprostředkovatele Open Service Broker for Azure.
+V tomto článku převezmete existující aplikaci Java, která používá databázi MongoDB, a aktualizujete ji tak, aby používala databázi Cosmos DB s využitím Open Service Broker pro Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli pokračovat, musíte mít:
+Než budete moct pokračovat, musíte:
     
-* Máte [cluster Azure Kubernetes Service](kubernetes-walkthrough.md) vytvořili.
-* Mít [Open Service Broker for Azure nainstalovaná a nakonfigurovaná ve vašem clusteru AKS](integrate-azure.md). 
-* Máte [Service Catalog CLI](https://svc-cat.io/docs/install/) nainstalovaná a nakonfigurovaná pro spuštění `svcat` příkazy.
-* Máte existující [MongoDB](https://www.mongodb.com/) databáze. Můžete mít například MongoDB na vaše [vývojovém počítači](https://docs.mongodb.com/manual/administration/install-community/) nebo [virtuálního počítače Azure](../virtual-machines/linux/install-mongodb.md).
-* Způsob připojení a dotazování databáze MongoDB, jako [prostředí mongo shell](https://docs.mongodb.com/manual/mongo/).
+* Máte vytvořený [cluster služby Azure Kubernetes](kubernetes-walkthrough.md) .
+* Máte [nainstalované a nakonfigurované otevřené Service Broker pro Azure v clusteru AKS](integrate-azure.md). 
+* Musí být nainstalovaný a nakonfigurovaný [Service Catalog CLI](https://svc-cat.io/docs/install/) , aby běžely `svcat` příkazy.
+* Máte existující databázi [MongoDB](https://www.mongodb.com/) . Například můžete mít MongoDB spuštěný na vašem [vývojovém počítači](https://docs.mongodb.com/manual/administration/install-community/) nebo na [virtuálním počítači Azure](../virtual-machines/linux/install-mongodb.md).
+* Máte možnost připojit se k databázi MongoDB, jako je například [prostředí Mongo](https://docs.mongodb.com/manual/mongo/), a dotazovat se na ni.
 
 ## <a name="get-application-code"></a>Získání kódu aplikace
     
-V tomto článku budete používat [Hudba ukázkovou aplikaci spring z Cloud Foundry](https://github.com/cloudfoundry-samples/spring-music) k předvedení aplikaci, která používá databázi MongoDB.
+V tomto článku použijete [ukázkovou aplikaci pro jarní hudbu z Cloud Foundry](https://github.com/cloudfoundry-samples/spring-music) k demonstraci aplikace, která používá databázi MongoDB.
     
-Klonování aplikace z Githubu a přejděte do jeho adresář:
+Naklonujte aplikaci z GitHubu a přejděte do jejího adresáře:
     
 ```cmd
 git clone https://github.com/cloudfoundry-samples/spring-music
 cd spring-music
 ```
 
-## <a name="prepare-the-application-to-use-your-mongodb-database"></a>Příprava aplikace pro používání databáze MongoDB
+## <a name="prepare-the-application-to-use-your-mongodb-database"></a>Příprava aplikace pro použití databáze MongoDB
 
-Ukázkovou aplikaci spring Hudba poskytuje řadu možností pro zdroje dat. V tomto článku můžete nakonfigurovat k použít stávající databázi MongoDB. 
+Ukázková aplikace pro jarní hudbu poskytuje mnoho možností pro zdroje dat. V tomto článku ji nakonfigurujete tak, aby používala stávající databázi MongoDB. 
 
-Přidejte následující YAML na konec *src/main/resources/application.yml*. Toto přidání vytvoří profil s názvem *mongodb* a nakonfiguruje název identifikátoru URI a databáze. Identifikátor URI nahraďte informace o připojení k existující databázi MongoDB. Přidání identifikátoru URI, který obsahuje uživatelské jméno a heslo, přímo do tohoto souboru je pro **vývoji používat pouze** a **by nikdy přidat do správy verzí**.
+Přidejte YAML za konec *Src/Main/Resources/Application. yml*. Tento doplněk vytvoří profil s názvem *MongoDB* a NAKONFIGURUJE identifikátor URI a název databáze. Nahraďte identifikátor URI informacemi o připojení ke stávající databázi MongoDB. Přidáním identifikátoru URI, který obsahuje uživatelské jméno a heslo, přímo k tomuto souboru slouží **pouze k použití pro vývoj** a **nikdy by neměl být přidán do správy verzí**.
 
 ```yaml
 ---
@@ -62,9 +60,9 @@ spring:
 
 
 
-Při spuštění aplikace a že se ho na použití *mongodb* profilu, připojení k databázi MongoDB a ho použít k ukládání dat vaší aplikace.
+Když aplikaci spustíte a sdělíte jí, aby používala profil *MongoDB* , připojí se k databázi MongoDB a použije se k uložení dat aplikace.
 
-K sestavení aplikace:
+Sestavení aplikace:
 
 ```cmd
 ./gradlew clean assemble
@@ -75,7 +73,7 @@ BUILD SUCCESSFUL in 10s
 4 actionable tasks: 4 executed
 ```
 
-Spusťte aplikaci a že se ho na použití *mongodb* profilu:
+Spusťte aplikaci a požádejte ji, aby používala profil *MongoDB* :
 
 ```cmd
 java -jar -Dspring.profiles.active=mongodb build/libs/spring-music-1.0.jar
@@ -83,11 +81,11 @@ java -jar -Dspring.profiles.active=mongodb build/libs/spring-music-1.0.jar
 
 Přejděte na `http://localhost:8080` v prohlížeči.
 
-![Aplikace Music Spring s výchozími daty](media/music-app.png)
+![Aplikace pružinové hudby s výchozími daty](media/music-app.png)
 
-Všimněte si, že aplikace je vyplněný některé [výchozí data](https://github.com/cloudfoundry-samples/spring-music/blob/master/src/main/resources/albums.json). S ní pracovat tak, že odstraníte pár existující alba a vytvořením několika nových.
+Všimněte si, že aplikace byla naplněna s některými [výchozími daty](https://github.com/cloudfoundry-samples/spring-music/blob/master/src/main/resources/albums.json). S ním budete pracovat odstraněním několika stávajících alb a vytvořením několika nových.
 
-Můžete ověřit vaše aplikace používá vaše databáze MongoDB k němu připojení a dotazování *musicdb* databáze:
+Můžete ověřit, že vaše aplikace používá vaši databázi MongoDB a připojuje se k ní a dotazuje se na databázi *musicdb* :
 
 ```cmd
 mongo serverAddress:port/musicdb -u user -p password
@@ -100,12 +98,12 @@ db.album.find()
 ...
 ```
 
-V předchozím příkladu [prostředí mongo shell](https://docs.mongodb.com/manual/mongo/) k připojení k databázi MongoDB a bude ji dotazovat. Můžete si taky ověřit, že změny jsou trvalé zastavením vaší aplikace, ho restartovat a přejdete do ji v prohlížeči. Všimněte si, že změny, které jste provedli, jsou stále existuje.
+Předchozí příklad používá [prostředí Mongo](https://docs.mongodb.com/manual/mongo/) pro připojení k databázi MongoDB a dotazování na ni. Můžete také ověřit, že vaše změny jsou trvalé, zastavením aplikace, restartováním a přechodem zpět do IT v prohlížeči. Všimněte si, že změny, které jste provedli, jsou pořád tam.
 
 
-## <a name="create-a-cosmos-db-database"></a>Vytvořit databázi Cosmos DB
+## <a name="create-a-cosmos-db-database"></a>Vytvoření databáze Cosmos DB
 
-Chcete-li vytvořit databázi Cosmos DB v Azure pomocí zprostředkovatele Open Service Broker, použijte `svcat provision` příkaz:
+Pokud chcete vytvořit databázi Cosmos DB v Azure pomocí příkazu Open Service Broker, použijte příkaz `svcat provision`:
 
 ```cmd
 svcat provision musicdb --class azure-cosmosdb-mongo-account --plan account  --params-json '{
@@ -117,9 +115,9 @@ svcat provision musicdb --class azure-cosmosdb-mongo-account --plan account  --p
 }'
 ```
 
-Ve výstupu předchozího příkazu zřizuje databázi Cosmos DB v Azure ve skupině prostředků *MyResourceGroup* v *eastus* oblasti. Další informace o *resourceGroup*, *umístění*, a je k dispozici v dalších parametrů JSON týkající se Azure [Cosmos DB modulu referenční dokumentaci](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/cosmosdb.md#provision-3).
+Předchozí příkaz zřídí databázi Cosmos DB v Azure ve skupině prostředků *MyResourceGroup* v oblasti *eastus* . Další informace o *zdroji*, *umístění*a dalších parametrech JSON specifických pro Azure jsou k dispozici v [referenční dokumentaci modulu Cosmos DB](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/cosmosdb.md#provision-3).
 
-K ověření vaší databáze byla dokončena, zřizování, použijte `svcat get instance` příkaz:
+Chcete-li ověřit, zda byla databáze dokončena, použijte příkaz `svcat get instance`:
 
 ```cmd
 $ svcat get instance musicdb
@@ -129,9 +127,9 @@ $ svcat get instance musicdb
   musicdb   default     azure-cosmosdb-mongo-account   account   Ready
 ```
 
-Vaše databáze je připravený až zobrazí *připravené* pod *stav*.
+Vaše databáze je připravena, když se zobrazí *stav* *připraveno* .
 
-Po dokončení zřizování databáze potřebujete k vytvoření vazby na jeho metadata [tajného kódu Kubernetes](https://kubernetes.io/docs/concepts/configuration/secret/). Jiné aplikace pak můžou tato data poté, co bylo svázáno se tajný klíč. K vytvoření vazby metadata databáze tajného klíče, použijte `svcat bind` příkaz:
+Jakmile se databáze dokončí, budete muset vytvořit vazby svých metadat k [Kubernetes tajnému](https://kubernetes.io/docs/concepts/configuration/secret/)kódu. Ostatní aplikace pak budou mít přístup k těmto datům poté, co jsou svázány s tajným klíčem. Pokud chcete navazovat metadata vaší databáze na tajný klíč, použijte příkaz `svcat bind`:
 
 ```cmd
 $ svcat bind musicdb
@@ -147,9 +145,9 @@ Parameters:
 ```
 
 
-## <a name="use-the-cosmos-db-database-with-your-application"></a>Pomocí databáze Cosmos DB s vaší aplikací
+## <a name="use-the-cosmos-db-database-with-your-application"></a>Použití databáze Cosmos DB s vaší aplikací
 
-Chcete-li používat databázi Cosmos DB ve vaší aplikaci, je potřeba vědět identifikátor URI pro připojení k němu. Chcete-li získat tyto informace, použijte `kubectl get secret` příkaz:
+Pokud chcete použít databázi Cosmos DB s vaší aplikací, musíte znát identifikátor URI, abyste se k němu mohli připojit. Chcete-li získat tyto informace, použijte příkaz `kubectl get secret`:
 
 ```cmd
 $ kubectl get secret musicdb -o=jsonpath='{.data.uri}' | base64 --decode
@@ -157,9 +155,9 @@ $ kubectl get secret musicdb -o=jsonpath='{.data.uri}' | base64 --decode
 mongodb://12345678-90ab-cdef-1234-567890abcdef:aaaabbbbccccddddeeeeffffgggghhhhiiiijjjjkkkkllllmmmmnnnnooooppppqqqqrrrrssssttttuuuuvvvv@098765432-aaaa-bbbb-cccc-1234567890ab.documents.azure.com:10255/?ssl=true&replicaSet=globaldb
 ```
 
-V předchozím příkazu je získán *musicdb* tajný klíč a zobrazí pouze identifikátor URI. Tajné kódy jsou uložené ve formátu base64, takže ve výstupu předchozího příkazu také dekóduje.
+Předchozí příkaz načte tajný klíč *musicdb* a zobrazí jenom identifikátor URI. Tajné kódy jsou uložené ve formátu base64, takže ho předchozí příkaz také dekóduje.
 
-Použitím tohoto identifikátoru URI databáze Cosmos DB, aktualizujte *src/main/resources/application.yml* jeho použití:
+Pomocí identifikátoru URI databáze Cosmos DB aktualizujte *Src/Main/Resources/Application. yml* , abyste ji mohli použít:
 
 ```yaml
 ...
@@ -172,7 +170,7 @@ spring:
       database: musicdb
 ```
 
-Aktualizace identifikátoru URI, který obsahuje uživatelské jméno a heslo, přímo do tohoto souboru je pro **vývoji používat pouze** a **by nikdy přidat do správy verzí**.
+Aktualizace identifikátoru URI, který obsahuje uživatelské jméno a heslo, je přímo k tomuto souboru určena **pouze pro vývojové použití** a **nikdy by neměla být přidána do řízení verze**.
 
 Znovu sestavte a spusťte aplikaci, abyste mohli začít používat databázi Cosmos DB:
 
@@ -182,31 +180,31 @@ Znovu sestavte a spusťte aplikaci, abyste mohli začít používat databázi Co
 java -jar -Dspring.profiles.active=mongodb build/libs/spring-music-1.0.jar
 ```
 
-Všimněte si, že vaše aplikace stále používá *mongodb* profilu a identifikátor URI, který začíná *mongodb: / /* pro připojení k databázi Cosmos DB. [Rozhraní API služby Azure Cosmos DB pro MongoDB](../cosmos-db/mongodb-introduction.md) poskytuje tato kompatibilita. To umožňuje vaší aplikaci i nadále fungovat jako by se používat databázi MongoDB, ale ve skutečnosti používá Cosmos DB.
+Všimněte si, že vaše aplikace pořád používá profil *MongoDB* a identifikátor URI, který začíná *MongoDB://* pro připojení k databázi Cosmos DB. Tato kompatibilita zajišťuje [rozhraní Azure Cosmos DB API pro MongoDB](../cosmos-db/mongodb-introduction.md) . Umožňuje vaší aplikaci pokračovat v práci, jako kdyby používala databázi MongoDB, ale ve skutečnosti používá Cosmos DB.
 
-Přejděte na `http://localhost:8080` v prohlížeči. Všimněte si, že výchozí data byla obnovena. S ní pracovat tak, že odstraníte pár existující alba a vytvořením několika nových. Můžete ověřit, že změny jsou trvalé zastavením vaší aplikace, ho restartovat a přejdete do ji v prohlížeči. Všimněte si, že změny, které jste provedli, jsou stále existuje. Změny se ukládají do Cosmos DB, který jste vytvořili pomocí zprostředkovatele Open Service Broker for Azure.
+Přejděte na `http://localhost:8080` v prohlížeči. Všimněte si, že se obnovila výchozí data. S ním budete pracovat odstraněním několika stávajících alb a vytvořením několika nových. Můžete ověřit, že vaše změny jsou trvalé, zastavením aplikace, restartováním a přechodem zpět do IT v prohlížeči. Všimněte si, že změny, které jste provedli, jsou pořád tam. Změny se uloží do Cosmos DB, který jste vytvořili pomocí programu Open Service Broker for Azure.
 
 
-## <a name="run-your-application-on-your-aks-cluster"></a>Spuštění aplikace ve vašem clusteru AKS
+## <a name="run-your-application-on-your-aks-cluster"></a>Spuštění aplikace v clusteru AKS
 
-Můžete použít [Azure Dev prostory](../dev-spaces/azure-dev-spaces.md) k nasazení aplikace do clusteru AKS. Azure Dev prostorech můžete generovat artefaktům, jako jsou soubory Dockerfile a Helm grafy, nasazení a spuštění aplikace ve službě AKS.
+K nasazení aplikace do clusteru AKS můžete použít [Azure dev Spaces](../dev-spaces/azure-dev-spaces.md) . Azure Dev Spaces vám pomůže generovat artefakty, jako jsou grafy fázemi a Helm, a nasadit a spustit aplikaci v AKS.
 
-Pokud chcete povolit prostory vývoj Azure ve vašem clusteru AKS:
+Povolení Azure Dev Spaces v clusteru AKS:
 
 ```cmd
 az aks enable-addons --addons http_application_routing -g MyResourceGroup -n MyAKS
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS
 ```
 
-Použití nástrojů Azure Dev prostory připravit aplikace na spouštění ve službě AKS:
+Pomocí nástrojů Azure Dev Spaces Připravte aplikaci tak, aby běžela v AKS:
 
 ```cmd
 azds prep --public
 ```
 
-Tento příkaz vygeneruje několika artefakty, včetně *grafy /* složce, která je helmu, v kořenovém adresáři projektu. Tento příkaz nelze generovat *soubor Dockerfile* pro tento konkrétní projekt, abyste měli k jeho vytvoření.
+Tento příkaz vygeneruje několik artefaktů, včetně *grafů nebo* složky, které jsou v Helm grafu, v kořenu projektu. Tento příkaz nemůže vygenerovat *souboru Dockerfile* pro tento konkrétní projekt, takže ho budete muset vytvořit.
 
-Vytvořte soubor v kořenové složce projektu s názvem *soubor Dockerfile* tohoto obsahu:
+Vytvořte soubor v kořenu projektu s názvem *souboru Dockerfile* s tímto obsahem:
 
 ```Dockerfile
 FROM openjdk:8-jdk-alpine
@@ -216,7 +214,7 @@ COPY build/libs/spring-music-1.0.jar .
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-Dspring.profiles.active=mongodb","-jar","/app/spring-music-1.0.jar"]
 ```
 
-Kromě toho je potřeba aktualizovat *configurations.develop.build* vlastnost *azds.yaml* k *false*:
+Kromě toho musíte aktualizovat vlastnost *configurations. vývoj. Build* v *azds. yaml* na *false*:
 ```yaml
 ...
 configurations:
@@ -225,7 +223,7 @@ configurations:
       useGitIgnore: false
 ```
 
-Také musíte aktualizovat *containerPort* atribut *8080* v *charts/spring-music/templates/deployment.yaml*:
+Také je potřeba aktualizovat atribut *containerPort* na *8080* v *Charts/Spring-Music/Templates/Deployment. yaml*:
 
 ```yaml
 ...
@@ -244,7 +242,7 @@ spec:
               protocol: TCP
 ```
 
-K nasazení aplikace pro AKS:
+Nasazení aplikace do AKS:
 
 ```cmd
 $ azds up
@@ -267,15 +265,15 @@ press Ctrl+C to detach
 ...
 ```
 
-Přejděte na adresu URL zobrazené v protokolech. V předchozím příkladu můžete využít *http://spring-music.1234567890abcdef1234.eastus.aksapp.io/* . 
+Přejděte na adresu URL zobrazenou v protokolech. V předchozím příkladu byste použili *http://spring-music.1234567890abcdef1234.eastus.aksapp.io/* . 
 
-Ověřte, že se zobrazí aplikace spolu se vaše změny.
+Ověřte, že se vám zobrazí aplikace spolu s vašimi změnami.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Tento článek popisuje jak aktualizovat stávající aplikace pomocí MongoDB pomocí rozhraní API Cosmos DB pro MongoDB. Tento článek také popisuje jak zřídit službu Cosmos DB pomocí zprostředkovatele Open Service Broker for Azure a nasazení aplikace s Azure Dev prostory AKS.
+Tento článek popisuje, jak aktualizovat existující aplikaci z použití MongoDB na používání rozhraní API pro MongoDB pro Cosmos DB. Tento článek také popisuje, jak zřídit službu Cosmos DB s využitím Open Service Broker for Azure a nasazením této aplikace do AKS s Azure Dev Spaces.
 
-Další informace o službě Cosmos DB, Open Service Broker for Azure a Azure Dev mezery, naleznete v tématu:
+Další informace o Cosmos DB, otevření Service Broker pro Azure a Azure Dev Spaces najdete v těchto tématech:
 * [Databáze Cosmos](https://docs.microsoft.com/azure/cosmos-db/)
-* [Technologie Open Service Broker for Azure](https://osba.sh)
-* [Vývoj s využitím vývoje prostorů](../dev-spaces/azure-dev-spaces.md)
+* [Otevřít Service Broker pro Azure](https://osba.sh)
+* [Vývoj s využitím vývojových prostorů](../dev-spaces/azure-dev-spaces.md)

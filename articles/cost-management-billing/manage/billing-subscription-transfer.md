@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 01/17/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6f43f7424cddae8659301be0ddc4842412a62952
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: d2bbfd7f4ddc5fc34c0bec3612783dfef5074d83
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75993541"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270856"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Převod vlastnictví fakturace předplatného Azure na jiný účet
 
@@ -86,7 +86,7 @@ Předplatná sady Visual Studio a programu Microsoft Partner Network mají přid
 
 ## <a name="transfer-billing-ownership-of-enterprise-agreement-ea-subscriptions"></a>Převod vlastnictví fakturace předplatných se smlouvou Enterprise (EA)
 
-Podnikový správce může převádět vlastnictví předplatných mezi účty v rámci registrace. Další informace najdete v tématu o [přenosu vlastnictví účtu](https://ea.azure.com/helpdocs/changeAccountOwnerForASubscription) na portálu EA.
+Podnikový správce může převádět vlastnictví předplatných mezi účty v rámci registrace. Další informace najdete v tématu [Změna vlastníka účtu](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#change-account-owner) na portálu EA.
 
 ## <a name="next-steps-after-accepting-billing-ownership"></a>Další postup po přijetí vlastnictví fakturace
 
@@ -117,7 +117,7 @@ Převod předplatného na webu Azure Portal je k dispozici pro níže uvedené t
 - [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/)
 - [Plán Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0017g/)\*\*
 
-\* [prostřednictvím portálu EA](#EA).
+\* [Prostřednictvím portálu EA](#EA).
 
 \*\* Podporuje se jen u účtů vytvořených během registrace na webu Azure.
 
@@ -190,7 +190,7 @@ I když během převodu dojde k odebrání přiřazení [řízení přístupu na
 
 Pokud příjemce potřebuje omezit přístup k prostředkům, měl by zvážit aktualizaci tajných kódů přidružených ke službě. Většinu prostředků můžete aktualizovat takto:
 
-  1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+  1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
   2. V nabídce centra vyberte **Všechny prostředky**.
   3. Vyberte prostředek.
   4. Na stránce prostředku klikněte na **Nastavení**. Tady můžete zobrazit a aktualizovat existující tajné kódy.

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5be8668f9a2761bf1aa9809749fa44f21d622dde
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: b3192e4bf25763e870cc618e5e45f16384607b7f
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045798"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277992"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace automatizovaných experimentů ML v Pythonu
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -415,7 +415,7 @@ Podporované vlastní nastavení zahrnuje:
 |Přizpůsobení|Definice|
 |--|--|
 |Aktualizace pro účely sloupce|Přepište typ funkce pro zadaný sloupec.|
-|Aktualizace parametrů transformátoru |Aktualizuje parametry pro zadaný transformátor. V současné době podporuje Imputac a HashOneHotEncoder.|
+|Aktualizace parametrů transformátoru |Aktualizuje parametry pro zadaný transformátor. V současné době podporuje Imputac (střední, nejčastější & medián) a HashOneHotEncoder.|
 |Odkládací sloupce |Sloupce, které se mají odpustit z natrénuje|
 |Blokovat transformátory| Blokuje transformátory, které se mají použít na featurization procesu.|
 

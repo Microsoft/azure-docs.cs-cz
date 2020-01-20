@@ -1,25 +1,23 @@
 ---
-title: (NEPOUŽÍVANÉ) Kurz Azure Container Service – aktualizace aplikace
+title: ZASTARALÉ Kurz Azure Container Service – aktualizace aplikace
 description: Kurz Azure Container Service – Aktualizace aplikace
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 3c0be935a4ffb51c03d2f63b14ab7c0c713dd2ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b4b893f185ba7e205ffebd7d939b8a2aa20a3e13
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60576683"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275565"
 ---
-# <a name="deprecated-update-an-application-in-kubernetes"></a>(NEPOUŽÍVANÉ) Aktualizace aplikace v Kubernetes
+# <a name="deprecated-update-an-application-in-kubernetes"></a>ZASTARALÉ Aktualizace aplikace v Kubernetes
 
 > [!TIP]
-> Aktualizovaná verze tohoto kurzu, který používá Azure Kubernetes Service, najdete v článku [kurzu: Aktualizace aplikace ve službě Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-app-update.md).
+> Aktualizovanou verzi v tomto kurzu, který používá službu Azure Kubernetes, najdete v tématu [kurz: aktualizace aplikace ve službě Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-app-update.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -160,7 +158,7 @@ Přejděte na tuto IP adresu a prohlédněte si aktualizovanou aplikaci.
 
 ![Obrázek clusteru Kubernetes v Azure](media/container-service-kubernetes-tutorials/vote-app-updated-external.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste aktualizovali aplikaci a zavedli tuto aktualizaci do clusteru Kubernetes. Dokončili jste následující úlohy:
 

@@ -2,26 +2,20 @@
 title: Faktory návrhu pro Azure Virtual Machine Scale Sets
 description: Přečtěte si o požadavcích na návrh pro Azure Virtual Machine Scale Sets. Porovnejte funkce sady škálování s funkcemi virtuálních počítačů.
 keywords: virtuální počítač Linux, sada škálování virtuálních počítačů
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: mayanknayar
-manager: jeconnoc
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: c27c6a59-a0ab-4117-a01b-42b049464ca1
 ms.service: virtual-machine-scale-sets
-ms.workload: na
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/01/2017
 ms.author: manayar
-ms.openlocfilehash: 4238e96465a1fd7ad3e73c62134437cd819fba8a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b427319fdba634ea3c61681baa30547450709dc1
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75359439"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278082"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Požadavky na návrh pro sady škálování
 Tento článek popisuje požadavky návrhu pro Virtual Machine Scale Sets. Informace o tom, co Virtual Machine Scale Sets, najdete v tématu [Virtual Machine Scale Sets Overview](virtual-machine-scale-sets-overview.md).

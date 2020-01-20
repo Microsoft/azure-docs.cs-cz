@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: b4e09bf84d78c88d3625b0f6b478746db09cc2d8
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 41d48bdd7cc7972536d0cf0e0cb78483f727d7f2
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030058"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277023"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>K připojení databází v Azure Průzkumník dat použít databázi sledování
 
@@ -127,7 +127,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 
 ### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>Připojení databáze pomocí šablony Azure Resource Manager
 
-V této části se dozvíte, jak vytvořit cluster následného a připojit k němu databázi pomocí [Azure Resource Manager šablony](../azure-resource-manager/management/overview.md). Pokud cluster již máte, odeberte prostředek `Microsoft.Kusto/clusters` ze seznamu prostředků níže.
+V této části se naučíte připojit databázi k existujícímu clusteru pomocí [šablony Azure Resource Manager](../azure-resource-manager/management/overview.md). 
 
 ```json
 {
@@ -138,7 +138,7 @@ V této části se dozvíte, jak vytvořit cluster následného a připojit k n�
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "Name of the follower cluster."
+                "description": "Name of the cluster to which the database will be attached."
             }
         },
         "attachedDatabaseConfigurationsName": {
@@ -180,17 +180,6 @@ V této části se dozvíte, jak vytvořit cluster následného a připojit k n�
     "variables": {},
     "resources": [
         {
-            "name": "[parameters('followerClusterName')]",
-            "type": "Microsoft.Kusto/clusters",
-            "sku": {
-                "name": "Standard_D13_v2",
-                "tier": "Standard",
-                "capacity": 2
-            },
-            "apiVersion": "2019-09-07",
-            "location": "[parameters('location')]"
-        },
-        {
             "name": "[concat(parameters('followerClusterName'), '/', parameters('attachedDatabaseConfigurationsName'))]",
             "type": "Microsoft.Kusto/clusters/attachedDatabaseConfigurations",
             "apiVersion": "2019-09-07",
@@ -217,7 +206,7 @@ V této části se dozvíte, jak vytvořit cluster následného a připojit k n�
 
 |**Nastavení**  |**Popis**  |
 |---------|---------|
-|Název clusteru sledování     |  Název clusteru následného. Pokud název clusteru existuje, odeberte prostředek `Microsoft.Kusto/clusters` ze seznamu prostředků v šabloně ARM. V opačném případě se vytvoří nový cluster.     |
+|Název clusteru sledování     |  Název clusteru následného.  |
 |Název připojených konfigurací databáze    |    Název objektu připojené konfigurace databáze. Název musí být na úrovni clusteru jedinečný.     |
 |Název databáze     |      Název databáze, která se má dodržovat Pokud chcete sledovat všechny databáze vedoucího vedoucího, použijte znak *.   |
 |ID prostředku clusteru vedoucího procesu    |   ID prostředku vedoucího clusteru      |

@@ -1,25 +1,23 @@
 ---
-title: (NEPOUŽÍVANÉ) Kurz Azure Container Service – Příprava služby ACR
+title: ZASTARALÉ Kurz Azure Container Service – Příprava ACR
 description: Kurz Azure Container Service – Příprava ACR
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: d0107e09bf8706ba7d4c813814103ca109262d8d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fbd718b62246e820bfa01353080815b62912bd00
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60641173"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274133"
 ---
-# <a name="deprecated-deploy-and-use-azure-container-registry"></a>(NEPOUŽÍVANÉ) Nasazení a použití služby Azure Container Registry
+# <a name="deprecated-deploy-and-use-azure-container-registry"></a>ZASTARALÉ Nasazení a použití Azure Container Registry
 
 > [!TIP]
-> Aktualizovaná verze tohoto kurzu, který používá Azure Kubernetes Service, najdete v článku [kurzu: Nasazení a použití služby Azure Container Registry](../../aks/tutorial-kubernetes-prepare-acr.md).
+> Aktualizovanou verzi v tomto kurzu, který používá službu Azure Kubernetes, najdete v tématu [kurz: nasazení a použití Azure Container Registry](../../aks/tutorial-kubernetes-prepare-acr.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -125,7 +123,7 @@ docker push <acrLoginServer>/azure-vote-front:v1
 
 Tato akce trvá několik minut.
 
-## <a name="list-images-in-registry"></a>Vypsání imagí v registru
+## <a name="list-images-in-registry"></a>Výpis imagí v registru
 
 Pokud chcete vrátit seznam imagí, které byly nahrány do vašeho registru kontejneru Azure, použijte příkaz [az acr repository list](/cli/azure/acr/repository#az-acr-repository-list). Aktualizujte příkaz s použitím názvu instance služby ACR.
 
@@ -157,7 +155,7 @@ v1
 
 Na konci kurzu byla image kontejneru uložena v privátní instanci služby Azure Container Registry. Tato image bude nasazena ze služby ACR do clusteru Kubernetes v následných kurzech.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu byla služba Azure Container Registry připravena pro použití v clusteru Kubernetes ACS. Dokončili jste následující kroky:
 

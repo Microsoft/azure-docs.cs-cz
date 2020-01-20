@@ -1,22 +1,20 @@
 ---
-title: (NEPOUŽÍVANÉ) Azure Container Service rychlý start – nasazení clusteru DC/OS
+title: ZASTARALÉ Rychlý Start Azure Container Service – nasazení clusteru DC/OS
 description: Rychlý start pro Azure Container Service – Nasazení clusteru DC/OS
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: efaf82c3f378f572c289b587dbe5df1923a58c62
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9efedd5b619a2a3bd592019fea3ca48b7244ca10
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61456924"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278502"
 ---
-# <a name="deprecated-deploy-a-dcos-cluster"></a>(NEPOUŽÍVANÉ) Nasazení clusteru DC/OS
+# <a name="deprecated-deploy-a-dcos-cluster"></a>ZASTARALÉ Nasazení clusteru DC/OS
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -26,7 +24,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete upgradovat, přečtěte si článek [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure 
+## <a name="log-in-to-azure"></a>Přihlaste se k Azure. 
 
 Přihlaste se k předplatnému Azure pomocí příkazu [az login](/cli/azure/reference-index#az-login) a postupujte podle pokynů na obrazovce.
 
@@ -165,7 +163,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, cluster
 az group delete --name myResourceGroup --no-wait
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste nasadili cluster DC/OS a spustili v něm jednoduchý kontejner Dockeru. Další informace o službě Azure Container Service najdete v kurzech služby ACS.
 

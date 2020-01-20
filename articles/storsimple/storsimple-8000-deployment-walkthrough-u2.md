@@ -1,25 +1,17 @@
 ---
-title: Nasazení zařízení StorSimple řady 8000 na webu Azure Portal | Dokumentace Microsoftu
+title: Nasazení zařízení řady StorSimple 8000 v Azure Portal
 description: Popis kroků a osvědčených postupů pro nasazení zařízení StorSimple řady 8000 s aktualizací Update 3 nebo novější a služby Správce zařízení StorSimple.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 1f44690de1f38e3d337072cc7c974887eb0e31cc
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a56610dd81d6e50da11bbd65bcf0682e399b1783
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965901"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273960"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>Nasazení místního zařízení StorSimple (Update 3 a novější)
 
@@ -51,12 +43,12 @@ Pomocí níže uvedených požadovaných kroků zařízení StorSimple nakonfigu
 | **PODROBNÝ POSTUP NASAZENÍ** |Tyto kroky jsou požadované k produkčnímu nasazení zařízení StorSimple. |
 | [Krok 1: Vytvoření nové služby](#step-1-create-a-new-service) |Nastavte správu cloudu a úložiště pro zařízení StorSimple. *Pokud máte existující službu pro jiná zařízení StorSimple, tento krok přeskočte*. |
 | [Krok 2: Získání registračního klíče služby](#step-2-get-the-service-registration-key) |Pomocí tohoto klíče zaregistrujte zařízení StorSimple ve službě správy a připojte je k ní. |
-| [Krok 3: Konfigurace a registrace zařízení prostřednictvím Windows PowerShell pro StorSimple](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |Pokud chcete instalaci dokončit pomocí služby pro správu, připojte zařízení k síti a zaregistrujte ho v Azure. |
-| [Krok 4: Dokončení instalace minimálního zařízení](#step-4-complete-minimum-device-setup)</br>[Osvědčené postupy: Aktualizace zařízení StorSimple](#scan-for-and-apply-updates) |Pomocí služby pro správu dokončete instalaci zařízení a aktivujte je k poskytování úložiště. |
+| [Krok 3: Konfigurace a registrace zařízení pomocí Windows PowerShellu pro StorSimple](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |Pokud chcete instalaci dokončit pomocí služby pro správu, připojte zařízení k síti a zaregistrujte ho v Azure. |
+| [Krok 4: Dokončení minimální instalace zařízení](#step-4-complete-minimum-device-setup)</br>[Osvědčený postup: Aktualizace zařízení StorSimple](#scan-for-and-apply-updates) |Pomocí služby pro správu dokončete instalaci zařízení a aktivujte je k poskytování úložiště. |
 | [Krok 5: Vytvoření kontejneru svazků](#step-5-create-a-volume-container) |Vytvořte kontejner ke zřízení svazků. Kontejner svazků obsahuje účet úložiště, šířku pásma a nastavení šifrování pro všechny svazky, které jsou v něm obsažené. |
 | [Krok 6: Vytvoření svazku](#step-6-create-a-volume) |V zařízení StorSimple zřiďte svazky úložiště pro vaše servery. |
-| [Krok 7: Připojení, inicializace a formátování svazku](#step-7-mount-initialize-and-format-a-volume)</br>[Volitelné Konfigurace funkce MPIO](storsimple-8000-configure-mpio-windows-server.md) |Připojte své servery k úložišti iSCSI poskytovanému zařízením. Volitelně konfigurujte funkci MPIO, abyste zajistili, že servery budou tolerovat chyby připojení, sítě a rozhraní. |
-| [Krok 8: Vytvořit zálohu](#step-8-take-a-backup) |Nastavte zásady zálohování pro ochranu dat. |
+| [Krok 7: Připojení, inicializace a formátování svazků](#step-7-mount-initialize-and-format-a-volume)</br>[Volitelné: Konfigurace funkce MPIO](storsimple-8000-configure-mpio-windows-server.md) |Připojte své servery k úložišti iSCSI poskytovanému zařízením. Volitelně konfigurujte funkci MPIO, abyste zajistili, že servery budou tolerovat chyby připojení, sítě a rozhraní. |
+| [Krok 8: Provedení zálohy](#step-8-take-a-backup) |Nastavte zásady zálohování pro ochranu dat. |
 |  | |
 | **DALŠÍ POSTUPY** |Tyto postupy můžete někdy potřebovat při nasazování svého řešení. |
 | [Konfigurace nového účtu úložiště pro službu](#configure-a-new-storage-account-for-the-service) | |
@@ -70,7 +62,7 @@ Před nasazením zařízení je potřeba shromáždit informace ke konfiguraci s
 
 * [Stáhnout kontrolní seznam konfigurace nasazení zařízení StorSimple](https://www.microsoft.com/download/details.aspx?id=49159)
 
-## <a name="deployment-prerequisites"></a>Požadavky nasazení
+## <a name="deployment-prerequisites"></a>Požadavky pro nasazení
 Následující části popisují požadavky konfigurace pro službu Správce zařízení StorSimple a zařízení StorSimple.
 
 ### <a name="for-the-storsimple-device-manager-service"></a>Služba Správce zařízení StorSimple
@@ -104,7 +96,7 @@ Služba Správce zařízení StorSimple může spravovat více zařízení StorS
 > Pokud jste nepovolili automatické vytvoření účtu úložiště při vytvoření služby, po úspěšném vytvoření služby bude nutné vytvořit alespoň jeden účet úložiště. Tento účet úložiště se používá při vytváření kontejneru svazku.
 >
 > * Pokud jste nevytvořili účet úložiště automaticky, najdete podrobné pokyny k vytvoření účtu v tématu [Konfigurace nového účtu úložiště pro službu](#configure-a-new-storage-account-for-the-service).
-> * Pokud jste povolili automatické vytváření účtu úložiště, pokračujte na [krok 2: Získejte registrační klíč](#step-2-get-the-service-registration-key)služby.
+> * Pokud jste automatické vytvoření účtu úložiště povolili, pokračujte na [krok 2: Získání registračního klíče služby](#step-2-get-the-service-registration-key).
 
 
 ## <a name="step-2-get-the-service-registration-key"></a>Krok 2: Získání registračního klíče služby
@@ -114,7 +106,7 @@ Na webu Azure Portal proveďte následující kroky.
 
 [!INCLUDE [storsimple-8000-get-service-registration-key](../../includes/storsimple-8000-get-service-registration-key.md)]
 
-## <a name="step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple"></a>Krok 3: Konfigurace a registrace zařízení prostřednictvím Windows PowerShell pro StorSimple
+## <a name="step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple"></a>Krok 3: Konfigurace a registrace zařízení pomocí Windows PowerShellu pro StorSimple
 Pomocí Windows PowerShellu pro StorSimple dokončete počáteční nastavení zařízení StorSimple, jak je popsáno v následujícím postupu. K dokončení tohoto kroku je potřeba použít software pro emulaci terminálu. Další informace naleznete v tématu [Použití klienta PuTTY k připojení ke konzole sériového portu zařízení](#use-putty-to-connect-to-the-device-serial-console).
 
 [!INCLUDE [storsimple-8000-configure-and-register-device-u2](../../includes/storsimple-8000-configure-and-register-device-u2.md)]
@@ -139,7 +131,7 @@ Provedením následujících kroků na webu Azure Portal vytvořte kontejner sva
 
 [!INCLUDE [storsimple-8000-create-volume-container](../../includes/storsimple-8000-create-volume-container.md)]
 
-## <a name="step-6-create-a-volume"></a>Krok 6: Vytvořit svazek
+## <a name="step-6-create-a-volume"></a>Krok 6: Vytvoření svazku
 Po vytvoření kontejneru svazků můžete v zařízení StorSimple zřídit svazek úložiště pro své servery. Provedením následujících kroků na webu Azure Portal vytvořte svazek.
 
 > [!IMPORTANT]
@@ -160,7 +152,7 @@ Pokud se rozhodnete, že funkci MPIO konfigurovat nebudete, připojte, inicializ
 
 [!INCLUDE [storsimple-8000-mount-initialize-format-volume](../../includes/storsimple-8000-mount-initialize-format-volume.md)]
 
-## <a name="step-8-take-a-backup"></a>Krok 8: Vytvořit zálohu
+## <a name="step-8-take-a-backup"></a>Krok 8: Provedení zálohy
 Zálohy vytvořené v určitých časových bodech poskytují ochranu a zvyšují možnost jejich obnovení při současném zkrácení doby potřebné k obnovení. Zařízení StorSimple lze zálohovat dvěma různými způsoby: pomocí místních snímků nebo pomocí cloudových snímků. Každý z těchto typů zálohování může být **naplánovaný** nebo **ruční**.
 
 Provedením následujících kroků na webu Azure Portal vytvořte naplánované zálohování.
@@ -212,7 +204,7 @@ Konektor DB9 se zdířkami je označený jako P1 a 3,5mm konektor jako P2.
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Konfigurace řešení StorSimple Cloud Appliance](storsimple-8000-cloud-appliance-u2.md)
 * [Použití služby Správce zařízení StorSimple ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md)
 

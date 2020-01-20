@@ -11,17 +11,17 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
-ms.date: 12/17/2019
-ms.openlocfilehash: 64d4998e287f9981c666dee54fc3b67886791bbf
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.date: 01/21/2019
+ms.openlocfilehash: 81039aa4aa37f9587db887beadcdb6d263ec6a74
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708287"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274807"
 ---
 # <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>Rychlý Start: vytvoření instance hybridního režimu pomocí Azure Portal & Azure Database Migration Service
 
-Azure Database Migration Service hybridní režim spravuje migrace databáze pomocí pracovního procesu migrace, který je hostovaný místně spolu s instancí Azure Database Migration Service spuštěným v cloudu. Hybridní režim je zvláště užitečný pro scénáře, ve kterých se nachází mezi místními sítěmi a Azure nedostatečná konektivita typu Site-to-site, nebo pokud existuje omezená šířka pásma připojení typu Site-to-site.
+Azure Database Migration Service hybridní režim spravuje migrace databáze pomocí pracovního procesu migrace, který je hostovaný místně, spolu s instancí Azure Database Migration Service spuštěným v cloudu. Hybridní režim je zvláště užitečný pro scénáře, ve kterých se nachází mezi místními sítěmi a Azure nedostatečná konektivita typu Site-to-site, nebo pokud existuje omezená šířka pásma připojení typu Site-to-site.
 
 >[!NOTE]
 >V současné době Azure Database Migration Service spuštěná v hybridním režimu podporuje migrace SQL Server na:
@@ -39,7 +39,7 @@ V tomto rychlém startu použijete Azure Portal k vytvoření instance Azure Dat
 > [!IMPORTANT]
 > Azure Database Migration Service Hybrid Installer vyžaduje rozhraní .NET 4.7.2 nebo novější. Nejnovější verze rozhraní .NET najdete na stránce [stažení .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) .
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -73,7 +73,7 @@ Před vytvořením první instance Azure Database Migration Service Zaregistrujt
     - Zvolte **Umístění**, které je nejblíže vašemu zdrojovému nebo cílovému serveru.
     - Jako **režim služby**vyberte **hybridní (Preview)** .
 
-           ![Create migration service - basics](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
+         ![Vytvoření základních informací o službě migrace](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
 
 4. Vyberte **Zkontrolovat a vytvořit**.
 
@@ -186,7 +186,7 @@ Tento skript je určený pro rychlé vytváření prototypů, pokud už uživate
 > [!IMPORTANT]
 > Tento skript předpokládá, že v hybridním režimu existuje existující instance Azure Database Migration Service a že účet Azure, který používá, má oprávnění k vytvoření AdApps v tenantovi a k úpravě RBAC v předplatném.
 
-Jednoduše vyplňte parametry v horní části skriptu a spusťte skript z instance prostředí PowerShell pro správce.
+Vyplňte parametry v horní části skriptu a spusťte skript z instance prostředí PowerShell pro správce.
 
 ## <a name="next-steps"></a>Další kroky
 

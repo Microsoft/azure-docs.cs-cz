@@ -1,25 +1,18 @@
 ---
-title: Přehled Microsoft Azure StorSimple Virtual Array | Microsoft Docs
+title: Přehled Microsoft Azure StorSimple virtuálního pole
 description: Popisuje virtuální pole StorSimple, integrované řešení úložiště, které spravuje úlohy úložiště mezi místním virtuálním polem a Microsoft Azureým cloudovým úložištěm.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 169c639b-1124-46a5-ae69-ba9695525b77
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: cbfc69c7d8d9354ae4e727b9eb0180583165abab
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 32781a83aec996b23f161f5fe695f39a0de38685
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516713"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273872"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>Seznámení s virtuálním polem StorSimple
 
@@ -41,7 +34,7 @@ Následující tabulka shrnuje důležité funkce virtuálního pole StorSimple.
 
 | Funkce | StorSimple Virtual Array |
 | --- | --- |
-| Požadavky na instalaci |Používá infrastrukturu virtualizace (Hyper-V nebo VMware). |
+| Instalační požadavky |Používá infrastrukturu virtualizace (Hyper-V nebo VMware). |
 | Dostupnost |Jeden uzel |
 | Celková kapacita (včetně cloudu) |Až 64 TB použitelné kapacity na virtuální pole |
 | Místní kapacita |390 GB až 6,4 TB použitelné kapacity na virtuální pole (je potřeba zřídit 500 GB až 8 TB místa na disku) |
@@ -54,7 +47,7 @@ Následující tabulka shrnuje důležité funkce virtuálního pole StorSimple.
 | Mobilita dat |Může obnovit stejné zařízení nebo provést obnovení na úrovni položek (souborový server). |
 | Vrstvy úložiště |Místní úložiště hypervisoru a Cloud |
 | Velikost sdílené složky |Vrstvený: až 20 TB; místně připnuté: až 2 TB |
-| Velikost svazku |Vrstvené 500 GB až 5 TB; místně připnuté: 50 GB až 200 GB <br> Maximální místní rezervace pro vrstvené svazky je 200 GB. |
+| Velikost svazku |Vrstvené: 500 GB až 5 TB; místně připnuté: 50 GB až 200 GB <br> Maximální místní rezervace pro vrstvené svazky je 200 GB. |
 | Snímky |Konzistentní se selháním |
 | Obnovení na úrovni položek |Odpoví Uživatelé můžou obnovit ze sdílených složek. |
 
@@ -89,7 +82,7 @@ Když více souběžných uživatelů přistupuje k virtuálnímu poli, všichni
 
 Virtuální pole StorSimple není vhodné pro úlohy, které vyžadují vysokou dostupnost. Virtuální pole je zařízení s jedním uzlem, při kterém dojde k výpadku při instalaci aktualizací softwaru. Správci by měli naplánovat časový interval pro správu a údržbu po dobu 30 minut 3-4 za rok.
 
-## <a name="workflows"></a>Workflows
+## <a name="workflows"></a>Pracovní postupy
 
 Virtuální pole StorSimple je zvlášť vhodné pro následující pracovní postupy:
 
@@ -217,6 +210,6 @@ StorSimple Device Manager pro virtuální řady shromažďuje osobní údaje ve 
 
 Další informace najdete v části [Zásady ochrany osobních údajů Microsoftu na webu Trust Center](https://www.microsoft.com/trustcenter).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si, jak [připravit portál virtuálních polí](storsimple-virtual-array-deploy1-portal-prep.md).

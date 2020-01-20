@@ -1,27 +1,21 @@
 ---
-title: Nasazení sady škálování virtuálních počítačů pomocí sady Visual Studio | Microsoft Docs
+title: Nasazení sady škálování virtuálních počítačů pomocí sady Visual Studio
 description: Nasazení Virtual Machine Scale Sets pomocí sady Visual Studio a šablony Správce prostředků
-services: virtual-machine-scale-sets
 ms.custom: H1Hack27Feb2017
-ms.workload: na
-documentationcenter: ''
+ms.workload: azure-vs
 author: mayanknayar
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 ms.assetid: ed0786b8-34b2-49a8-85b5-2a628128ead6
 ms.service: virtual-machine-scale-sets
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: manayar
-ms.openlocfilehash: d397f81ce29e0ec738156b755948985a4edfc70b
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 0d0dc3fbb7e48b1f7e6936cfb65473dba882b776
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802257"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274237"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Jak vytvořit sadu škálování virtuálního počítače pomocí sady Visual Studio
 
@@ -31,7 +25,7 @@ V tomto článku se dozvíte, jak nasadit sadu škálování virtuálních poč�
 
 Nasazení skupiny prostředků Azure je způsob, jak seskupit a publikovat sadu souvisejících prostředků Azure v rámci jediné operace nasazení. Další informace najdete v tématu [Vytvoření a nasazení skupin prostředků Azure pomocí sady Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít nasazovat Virtual Machine Scale Sets v aplikaci Visual Studio, potřebujete následující požadavky:
 
@@ -71,7 +65,7 @@ Nástroj pro vyrovnávání zatížení umožňuje připojit se k instancím vir
 
 Nasazením šablony Azure Resource Manager vytvořte prostředek sady škálování virtuálního počítače:
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem na projekt a vyberte **nasadit** > **nové**.
+1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte **nasadit** > **Nový**.
 
     ![Nasazení projektu](media/virtual-machine-scale-sets-vs-create/deploy-new-project.png)
 
@@ -91,7 +85,7 @@ Nasazením šablony Azure Resource Manager vytvořte prostředek sady škálová
 
 ## Prozkoumejte sadu škálování virtuálního počítače<a name="exploring-your-virtual-machine-scale-set"></a>
 
-Pokud chcete zobrazit novou sadu škálování virtuálního počítače, vyberte možnost **zobrazit** > **Cloud Explorer** . V případě potřeby použijte **Aktualizovat vše**.
+Vyberte **zobrazit** > **Průzkumník cloudu** , abyste si zobrazili novou sadu škálování virtuálního počítače. V případě potřeby použijte **Aktualizovat vše**.
 
 ![Průzkumník cloudu](media/virtual-machine-scale-sets-vs-create/cloud-explorer.png)
 

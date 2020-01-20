@@ -1,26 +1,19 @@
 ---
-title: Zřízení virtuálního pole StorSimple ve VMware | Microsoft Docs
+title: Zřízení virtuálního pole StorSimple ve VMware
 description: Tento druhý kurz v řadě nasazení virtuálních polí StorSimple zahrnuje zřizování virtuálního zařízení ve VMware.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 0425b2a9-d36f-433d-8131-ee0cacef95f8
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ab5ad8acc5d0769a19a4022c55e0461e7ce42762
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 5f5ded3faec3a080022eea70de2cca5d27529c4d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516831"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76272100"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>Nasazení virtuálního pole StorSimple – zřizování ve VMware
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
@@ -40,7 +33,7 @@ Níže jsou uvedené požadavky na zřízení virtuálního zařízení v hostit
 Než začnete, ujistěte se, že:
 
 * Dokončili jste všechny kroky v části [Příprava portálu pro virtuální pole StorSimple](storsimple-virtual-array-deploy1-portal-prep.md).
-* Stáhli jste image virtuálního zařízení pro VMware z Azure Portal. Další informace najdete v **kroku 3: Stáhněte si image** virtuálního zařízení a [Připravte portál pro StorSimple Virtual Array Guide](storsimple-virtual-array-deploy1-portal-prep.md).
+* Stáhli jste image virtuálního zařízení pro VMware z Azure Portal. Další informace najdete v části **Krok 3: stažení bitové kopie virtuálního zařízení** [Příprava portálu pro StorSimple Virtual Array Guide](storsimple-virtual-array-deploy1-portal-prep.md).
 
 ### <a name="for-the-storsimple-virtual-device"></a>Pro virtuální zařízení StorSimple
 Před nasazením virtuálního zařízení se ujistěte, že:
@@ -65,7 +58,7 @@ Chcete-li zřídit virtuální zařízení a připojit se k němu, je nutné pro
 2. Zřídit virtuální zařízení ve hypervisoru.
 3. Spusťte virtuální zařízení a získejte IP adresu.
 
-## <a name="step-1-ensure-host-system-meets-minimum-virtual-device-requirements"></a>Krok 1: Zajistěte, aby hostitelský systém splňoval minimální požadavky na virtuální zařízení.
+## <a name="step-1-ensure-host-system-meets-minimum-virtual-device-requirements"></a>Krok 1: Zajistěte, aby hostitelský systém splňoval minimální požadavky na virtuální zařízení
 K vytvoření virtuálního zařízení budete potřebovat:
 
 * Přístup k hostitelskému systému se systémem VMware ESXi Server 5,0, 5,5, 6,0 nebo 6,5.
@@ -76,7 +69,7 @@ K vytvoření virtuálního zařízení budete potřebovat:
   * Jedno síťové rozhraní připojené k síti, která podporuje směrování provozu do internetu. Minimální šířka pásma internetu by měla být 5 MB/s, aby bylo možné optimálně pracovat na zařízení.
   * Virtuální disk 500 GB pro data.
 
-## <a name="step-2-provision-a-virtual-device-in-hypervisor"></a>Krok 2: Zřízení virtuálního zařízení v hypervisoru
+## <a name="step-2-provision-a-virtual-device-in-hypervisor"></a>Krok 2: zřízení virtuálního zařízení v hypervisoru
 Pomocí následujících kroků ve svém hypervisoru zřiďte virtuální zařízení.
 
 1. Zkopírujte do svého systému image virtuálního zařízení. Tuto virtuální bitovou kopii jste stáhli pomocí Azure Portal.
@@ -102,13 +95,13 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte virtuální zaří
 7. Zobrazí se okno **Prohlížeč úložiště dat**.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image6.png)
-8. Na panelu nástrojů klikněte na ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image7.png) ikonu a vytvořte novou složku. Zadejte název složky a poznamenejte si ho. Název této složky použijete později při vytváření virtuálního počítače (doporučený osvědčený postup). Klikněte na **OK**.
+8. Na panelu nástrojů klikněte na ikonu ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image7.png) a vytvořte novou složku. Zadejte název složky a poznamenejte si ho. Název této složky použijete později při vytváření virtuálního počítače (doporučený osvědčený postup). Klikněte na **OK**.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image8.png)
 9. Nová složka se zobrazí v levém podokně okna **Prohlížeč úložiště dat**.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image9.png)
-10. Klikněte na ikonu ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image10.png) nahrát a vyberte **nahrát soubor**.
+10. Klikněte na ikonu nahrát ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image10.png) a vyberte **nahrát soubor**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image11.png)
 11. Přejděte k souborům VMDK, které jste si stáhli. Zobrazí se dva soubory. Vyberte soubor k nahrání.
@@ -146,7 +139,7 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte virtuální zaří
 22. Na stránce **síť** zadejte počet síťových rozhraní. Minimálním požadavkem je jedno síťové rozhraní.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image23.png)
-23. Na stránce **řadič SCSI** přijměte výchozí KONTROLer **SAS pro adaptér LSI Logic**.
+23. Na stránce **řadič SCSI** přijměte výchozí **kontroler SAS pro adaptér LSI Logic**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image24.png)
 24. Na stránce **vybrat disk** zvolte možnost **použít existující virtuální disk**. Klikněte na **Další**.
@@ -161,7 +154,7 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte virtuální zaří
 27. Na stránce **Připraveno k dokončení** zkontrolujte všechna nastavení přidružená k novému virtuálnímu počítači. **Před dokončením upravte nastavení virtuálního počítače**. Klikněte na **Pokračovat**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image28.png)
-28. Na stránce **vlastnosti Virtual Machines** na kartě **hardware** vyhledejte hardware zařízení. Vyberte **nový pevný disk**. Klikněte na **Přidat**.
+28. Na stránce **vlastnosti Virtual Machines** na kartě **hardware** vyhledejte hardware zařízení. Vyberte **nový pevný disk**. Klikněte na tlačítko **Přidat**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image29.png)
 29. Zobrazí se okno **Přidat hardware** . Na stránce **typ zařízení** v části **Zvolte typ zařízení, které chcete přidat**, vyberte možnost **pevný disk**a klikněte na tlačítko **Další**.
@@ -176,10 +169,10 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte virtuální zaří
 32. Na stránce **Upřesnit možnosti** přijměte výchozí nastavení.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image33.png)
-33. Na stránce **připraveno k dokončení** Zkontrolujte možnosti disku. Klikněte na tlačítko **Dokončit**.
+33. Na stránce **připraveno k dokončení** Zkontrolujte možnosti disku. Klikněte na **Dokončit**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image34.png)
-34. Vraťte se na stránku vlastností virtuálního počítače. Do virtuálního počítače se přidá nový pevný disk. Klikněte na tlačítko **Dokončit**.
+34. Vraťte se na stránku vlastností virtuálního počítače. Do virtuálního počítače se přidá nový pevný disk. Klikněte na **Dokončit**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image35.png)
 35. V pravém podokně vyberte virtuální počítač a přejděte na kartu **Souhrn** . Zkontrolujte nastavení virtuálního počítače.
@@ -191,14 +184,14 @@ Váš virtuální počítač je teď zřízený. Dalším krokem je počítač z
 > [!NOTE]
 > Doporučujeme, abyste nástroje VMware neinstalovali ve vašem virtuálním poli (jak jsme zřídili výše). Instalace nástrojů VMware bude mít za následek nepodporovanou konfiguraci.
 
-## <a name="step-3-start-the-virtual-device-and-get-the-ip"></a>Krok 3: Spuštění virtuálního zařízení a získání IP adresy
+## <a name="step-3-start-the-virtual-device-and-get-the-ip"></a>Krok 3: spuštění virtuálního zařízení a získání IP adresy
 Pomocí následujících kroků spusťte své virtuální zařízení a připojte se k němu.
 
 #### <a name="to-start-the-virtual-device"></a>Spuštění virtuálního zařízení
 1. Spusťte virtuální zařízení. V vSphere Configuration Manager v levém podokně vyberte zařízení a kliknutím pravým tlačítkem otevřete místní nabídku. Vyberte **Napájení** a pak vyberte **Zapnout**. Tím by se měl virtuální počítač zapnout. Stav můžete zobrazit v podokně **nedávné úlohy** v klientovi vSphere.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image37.png)
-2. Dokončení úloh instalace bude trvat několik minut. Jakmile je zařízení spuštěné, přejděte na kartu **Konzola** . Pokud se chcete přihlásit k zařízení, odešlete kombinaci kláves CTRL + ALT + DELETE. Alternativně můžete ukazatel myši nasměrovat na okno konzoly a stisknout kombinaci kláves CTRL + ALT + INSERT. Výchozí uživatel je *StorSimpleAdmin* a výchozí heslo je *Heslo1*.
+2. Dokončení úloh instalace bude trvat několik minut. Jakmile je zařízení spuštěné, přejděte na kartu **Konzola** . Pokud se chcete přihlásit k zařízení, klikněte na Odeslat CTRL + ALT + DELETE. Alternativně můžete ukazatel myši nasměrovat na okno konzoly a stisknout kombinaci kláves CTRL + ALT + INSERT. Výchozí uživatel je *StorSimpleAdmin* a výchozí heslo je *Heslo1*.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image38.png)
 3. Z bezpečnostních důvodů platnost hesla správce zařízení vyprší po prvním přihlášení. Zobrazí se výzva ke změně hesla.
@@ -215,7 +208,7 @@ Pomocí následujících kroků spusťte své virtuální zařízení a připojt
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image42m.png)
 
    Dále nakonfigurujte síť.
-7. `Get-HcsIpAddress` Pomocí příkazu uveďte síťová rozhraní povolená na virtuálním zařízení. Pokud má vaše zařízené povolené jediné síťové rozhraní, výchozí název přiřazený tomuto rozhraní je `Ethernet`.
+7. Pomocí příkazu `Get-HcsIpAddress` můžete vypsat síťová rozhraní povolená na virtuálním zařízení. Pokud má vaše zařízené povolené jediné síťové rozhraní, výchozí název přiřazený tomuto rozhraní je `Ethernet`.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image43m.png)
 8. Pomocí rutiny `Set-HcsIpAddress` nakonfigurujte síť. Příklad najdete níže:
@@ -238,7 +231,7 @@ Pomocí následujících kroků spusťte své virtuální zařízení a připojt
        >
        >
 
-Pokud vaše zařízení nesplňuje minimální požadavky na konfiguraci, zobrazí se v textu banneru chyba (viz níže). Budete muset upravit konfiguraci zařízení tak, aby mělo dostatečné prostředky ke splnění minimálních požadavků. Pak můžete zařízení restartovat a připojit se k němu. Projděte si minimální požadavky na konfiguraci [v kroku 1: Ujistěte se, že hostitelský systém splňuje minimální požadavky](#step-1-ensure-host-system-meets-minimum-virtual-device-requirements)na virtuální zařízení.
+Pokud vaše zařízení nesplňuje minimální požadavky na konfiguraci, zobrazí se v textu banneru chyba (viz níže). Budete muset upravit konfiguraci zařízení tak, aby mělo dostatečné prostředky ke splnění minimálních požadavků. Pak můžete zařízení restartovat a připojit se k němu. Projděte si minimální požadavky na konfiguraci v [kroku 1: Zajištění, aby hostitelský systém splňoval minimální požadavky na virtuální zařízení](#step-1-ensure-host-system-meets-minimum-virtual-device-requirements).
 
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image46.png)
 
@@ -247,6 +240,6 @@ Pokud se při počáteční konfiguraci s použitím místního webového uživa
 * Spusťte diagnostické testy pro [řešení potíží s instalací webového uživatelského rozhraní](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors).
 * [Generování souboru protokolu a zobrazení souborů protokolu](storsimple-ova-web-ui-admin.md#generate-a-log-package).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Nastavení virtuálního pole StorSimple jako souborového serveru](storsimple-virtual-array-deploy3-fs-setup.md)
 * [Nastavení StorSimple virtuálního pole jako serveru iSCSI](storsimple-virtual-array-deploy3-iscsi-setup.md)

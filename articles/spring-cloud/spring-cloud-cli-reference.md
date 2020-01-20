@@ -1,17 +1,17 @@
 ---
 title: AZ jarní Cloud
 description: Správa jarního cloudu Azure pomocí Azure CLI
-author: jpconnock
+author: bmitchell287
 ms.service: spring-cloud
 ms.topic: reference
 ms.date: 10/03/2019
-ms.author: jeconnoc
-ms.openlocfilehash: a1f82d4efa7756b44ca5ed9859aa872c1f55b565
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.author: brendm
+ms.openlocfilehash: 869a47469f8e0429d3726651c28f5a58acfcb856
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607827"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279044"
 ---
 # <a name="az-spring-cloud"></a>AZ jaře-Cloud
 
@@ -89,7 +89,7 @@ az spring-cloud create  --name -n
                         --no-wait
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
 | --Name-n | Název této instance Azure jaře cloudu |
 | --Resource-Group-g | Určuje skupinu prostředků pro tuto aplikaci.  Nakonfigurujte výchozí skupinu pomocí `az configure --defaults group=<name>` |
@@ -117,7 +117,7 @@ az spring cloud --name -n
                 --no-wait
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
 | --Name-n | Název instance jarního cloudu Azure, která se má odstranit |
 | --Resource-Group-g | Název skupiny prostředků, do které patří Azure jaře Cloud. |
@@ -126,7 +126,7 @@ az spring cloud --name -n
 | --- | ---: |
 | -No – čekání | Nečekejte na dokončení dlouho spuštěných operací. |
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Odstraní instanci cloudu Azure jaře s názvem "Mojesluzba" z "MyResourceGroup".
 
@@ -142,7 +142,7 @@ Vypíše všechny instance Azure jaře cloudu přidružené k dané skupině pro
 az spring-cloud list --resource-group -g
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
 | --Resource-Group-g | Název skupiny prostředků. |
 
@@ -155,7 +155,7 @@ az spring-cloud show --name -n
                      -- resource-group -g
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
 | --Name-n | Název instance jarního cloudu Azure |
 | --Resource-Group-g | Název skupiny prostředků, do které patří instance cloudu služby Azure jaře
@@ -175,9 +175,9 @@ az spring-cloud app create --name -n
                             --memory
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
-| --Name-n | Název aplikace |
+| --Name-n | Obsahuje název aplikace. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
 | --Service-s | Název služby jarního cloudu Azure.  Výchozí službu můžete nakonfigurovat pomocí `az configure --defaults spring-cloud=<name>`. |
 
@@ -213,9 +213,9 @@ az spring cloud app delete  --name -n
                             --service -s
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
-| --Name-n | Název aplikace |
+| --Name-n | Obsahuje název aplikace. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
 | --Service-s | Název služby jarního cloudu Azure.  Výchozí službu můžete nakonfigurovat pomocí `az configure --defaults spring-cloud=<name>`. |
 
@@ -240,9 +240,9 @@ az spring cloud app deploy  --name -n
                             --version
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
-| --Name-n | Název aplikace |
+| --Name-n | Obsahuje název aplikace. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
 | --Service-s | Název služby jarního cloudu Azure.  Výchozí službu můžete nakonfigurovat pomocí `az configure --defaults spring-cloud=<name>`. |
 
@@ -289,7 +289,7 @@ az spring-cloud app list --resource-group -g
                          --service -s
 ```
 
-|Požadované parametry | |
+|Povinné parametry | |
 | --- | ---: |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
 | --Service-s | Název služby jarního cloudu Azure.  Výchozí službu můžete nakonfigurovat pomocí `az configure --defaults spring-cloud=<name>`. |
@@ -306,9 +306,9 @@ az spring-cloud app restart --name -n
                             --no-wait
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
-| --Name-n | Název aplikace |
+| --Name-n | Obsahuje název aplikace. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
 | --Service-s | Název služby jarního cloudu Azure.  Výchozí službu můžete nakonfigurovat pomocí `az configure --defaults spring-cloud=<name>`. |
 
@@ -332,9 +332,9 @@ az spring-cloud app scale --name -n
                           --no-wait
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
-| --Name-n | Název aplikace |
+| --Name-n | Obsahuje název aplikace. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
 | --Service-s | Název služby jarního cloudu Azure.  Výchozí službu můžete nakonfigurovat pomocí `az configure --defaults spring-cloud=<name>`. |
 
@@ -372,10 +372,10 @@ az spring-cloud app set-deployment --deployment -d
                                    --no-wait
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
 | --Deployment-d | Název existujícího nasazení aplikace |
-| --Name-n | Název aplikace |
+| --Name-n | Obsahuje název aplikace. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
 | --Service-s | Název služby jarního cloudu Azure.  Výchozí službu můžete nakonfigurovat pomocí `az configure --defaults spring-cloud=<name>`. |
 
@@ -401,9 +401,9 @@ az spring-cloud app show --name -n
                          --service -s
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
-| --Name-n | Název aplikace |
+| --Name-n | Obsahuje název aplikace. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
 | --Service-s | Název služby jarního cloudu Azure.  Výchozí službu můžete nakonfigurovat pomocí `az configure --defaults spring-cloud=<name>`. |
 
@@ -418,9 +418,9 @@ az spring-cloud app show-deploy-log --name -n
                                     --deployment -d
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
-| --Name-n | Název aplikace |
+| --Name-n | Obsahuje název aplikace. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
 | --Service-s | Název služby jarního cloudu Azure.  Výchozí službu můžete nakonfigurovat pomocí `az configure --defaults spring-cloud=<name>`. |
 
@@ -440,9 +440,9 @@ az spring-cloud app start --name -n
                           --no-wait
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
-| --Name-n | Název aplikace |
+| --Name-n | Obsahuje název aplikace. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
 | --Service-s | Název služby jarního cloudu Azure.  Výchozí službu můžete nakonfigurovat pomocí `az configure --defaults spring-cloud=<name>`. |
 
@@ -463,9 +463,9 @@ az spring-cloud app stop --name -n
                          --no-wait
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
-| --Name-n | Název aplikace |
+| --Name-n | Obsahuje název aplikace. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
 | --Service-s | Název služby jarního cloudu Azure.  Výchozí službu můžete nakonfigurovat pomocí `az configure --defaults spring-cloud=<name>`. |
 
@@ -491,9 +491,9 @@ az spring-cloud app update --name -n
                            --runtime-version
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
-| --Name-n | Název aplikace |
+| --Name-n | Obsahuje název aplikace. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
 | --Service-s | Název služby jarního cloudu Azure.  Výchozí službu můžete nakonfigurovat pomocí `az configure --defaults spring-cloud=<name>`. |
 
@@ -507,7 +507,7 @@ az spring-cloud app update --name -n
 | --No-Wait | Nečekejte na dokončení dlouhotrvajících operací. |
 | --Běhová verze | Běhová verze jazyka používaného v aplikaci  Povolené hodnoty: `Java_11`, `Java_8`. |
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Přidejte proměnnou prostředí pro aplikaci.
 
@@ -525,9 +525,9 @@ az spring-cloud app binding list --app
                                  --service -s
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
-| --aplikace | Název aplikace |
+| --aplikace | Obsahuje název aplikace. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
 | --Service-s | Název služby jarního cloudu Azure.  Výchozí službu můžete nakonfigurovat pomocí `az configure --defaults spring-cloud=<name>`. |
 
@@ -542,9 +542,9 @@ az spring-cloud app binding list --app
                                  --service -s
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
-| --aplikace | Název aplikace |
+| --aplikace | Obsahuje název aplikace. |
 | --Name | Název vazby služby, která se má odebrat |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
 | --Service-s | Název služby jarního cloudu Azure.  Výchozí službu můžete nakonfigurovat pomocí `az configure --defaults spring-cloud=<name>`. |
@@ -560,9 +560,9 @@ az spring-cloud app binding show --app
                                  --service -s
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
-| --aplikace | Název aplikace |
+| --aplikace | Obsahuje název aplikace. |
 | --Name | Název vazby služby. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
 | --Service-s | Název služby jarního cloudu Azure.  Výchozí službu můžete nakonfigurovat pomocí `az configure --defaults spring-cloud=<name>`. |
@@ -590,10 +590,10 @@ az spring-cloud app binding list --app
                                  --service -s
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
 | --API-Type | Zadejte typ rozhraní API pomocí jedné z následujících hodnot: Cassandra, Gremlin, Mongo, SQL, Table. |
-| --aplikace | Název aplikace |
+| --aplikace | Obsahuje název aplikace. |
 | --Name | Název vazby služby. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
 | --Service-s | Název služby jarního cloudu Azure.  Výchozí službu můžete nakonfigurovat pomocí `az configure --defaults spring-cloud=<name>`. |
@@ -616,9 +616,9 @@ az spring-cloud app binding cosmos update --app
                                           --key-space
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
-| --aplikace | Název aplikace |
+| --aplikace | Obsahuje název aplikace. |
 | --Name | Název vazby služby. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
 | --Service-s | Název služby jarního cloudu Azure.  Výchozí službu můžete nakonfigurovat pomocí `az configure --defaults spring-cloud=<name>`. |
@@ -641,9 +641,9 @@ az spring-cloud app binding mysql add --app
                                       --username
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
-| --aplikace | Název aplikace |
+| --aplikace | Obsahuje název aplikace. |
 | --Database-Name | Název databáze. |
 | --klíč | Klíč rozhraní API služby. |
 | --Name | Název vazby služby. |
@@ -666,9 +666,9 @@ az spring-cloud app binding mysql update --add
                                          --username
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
-| --aplikace | Název aplikace |
+| --aplikace | Obsahuje název aplikace. |
 | --Name | Název vazby služby. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
 | --Service-s | Název služby jarního cloudu Azure.  Výchozí službu můžete nakonfigurovat pomocí `az configure --defaults spring-cloud=<name>`. |
@@ -692,9 +692,9 @@ az spring-cloud app binding redis add --app
                                       --disable-ssl
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
-| --aplikace | Název aplikace |
+| --aplikace | Obsahuje název aplikace. |
 | --Name | Název vazby služby. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
 | --Resource-ID | ID prostředku Azure služby, se kterou chcete vytvořit propojení. |
@@ -708,9 +708,9 @@ az spring-cloud app binding redis add --app
 
 Aktualizuje vazbu služby pro Azure cache pro Redis.
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
-| --aplikace | Název aplikace |
+| --aplikace | Obsahuje název aplikace. |
 | --Name | Název vazby služby. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
 | --Service-s | Název služby jarního cloudu Azure.  Výchozí službu můžete nakonfigurovat pomocí `az configure --defaults spring-cloud=<name>`. |
@@ -725,9 +725,9 @@ Vytvořte pracovní nasazení pro aplikaci.
 
 Pokud chcete nasadit kód nebo aktualizovat nastavení na existující nasazení, použijte `az spring-cloud app deploy --deployment <staging-deployment>` nebo AZ jaře-Cloud App Update--Deployment <staging deployment>.
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
-| --aplikace | Název aplikace |
+| --aplikace | Obsahuje název aplikace. |
 | --Name | Název vazby služby. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
 | --Service-s | Název služby jarního cloudu Azure.  Výchozí službu můžete nakonfigurovat pomocí `az configure --defaults spring-cloud=<name>`. |
@@ -771,9 +771,9 @@ az spring-cloud app deployment delete --app
                                       --service -s
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
-| --aplikace | Název aplikace |
+| --aplikace | Obsahuje název aplikace. |
 | --Name | Název nasazení. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
 | --Service-s | Název služby jarního cloudu Azure.  Výchozí službu můžete nakonfigurovat pomocí `az configure --defaults spring-cloud=<name>`. |
@@ -788,9 +788,9 @@ az spring-cloud app deployment list --app
                                     --service -s
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
-| --aplikace | Název aplikace |
+| --aplikace | Obsahuje název aplikace. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
 | --Service-s | Název služby jarního cloudu Azure.  Výchozí službu můžete nakonfigurovat pomocí `az configure --defaults spring-cloud=<name>`. |
 
@@ -805,9 +805,9 @@ az spring-cloud app deployment show --app
                                     --service -s
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
-| --aplikace | Název aplikace |
+| --aplikace | Obsahuje název aplikace. |
 | --Name | Název nasazení. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
 | --Service-s | Název služby jarního cloudu Azure.  Výchozí službu můžete nakonfigurovat pomocí `az configure --defaults spring-cloud=<name>`. |
@@ -821,7 +821,7 @@ az spring-cloud config-server clear --name
                                         --resource-group -g
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
 | --Name | Název služby jarního cloudu Azure. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
@@ -837,7 +837,7 @@ az spring-cloud config-server set --config-file
                                   --no-wait
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
 | --config-File | Cesta k souboru manifestu YAML pro konfiguraci konfiguračního serveru. |
 | --Name | Název služby jarního cloudu Azure. |
@@ -856,7 +856,7 @@ az spring-cloud config-server show --name -n
                                    --resource-group -g
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
 | --Name | Název služby jarního cloudu Azure. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
@@ -880,7 +880,7 @@ az spring-cloud config-server git set --name -n
                                       --username
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
 | --Name | Název služby jarního cloudu Azure. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
@@ -917,7 +917,7 @@ az spring-cloud config-server git repo add --name -n
                                            --username
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
 | --Name | Název služby jarního cloudu Azure. |
 | --úložiště – název | Identifikátor URI úložiště |
@@ -947,7 +947,7 @@ az spring-cloud config-server git repo list --name -n
                                        --defer
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
 | --Name | Název služby jarního cloudu Azure. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
@@ -967,7 +967,7 @@ az spring-cloud config-server git repo remove --name -n
                                          --defer
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
 | --Name | Název služby jarního cloudu Azure. |
 | --úložiště – název | Identifikátor URI úložiště |
@@ -986,7 +986,7 @@ az spring-cloud test-endpoint disable --name -n
                                       --resource-group -g
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
 | --Name | Název služby jarního cloudu Azure. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
@@ -1000,7 +1000,7 @@ az spring-cloud test-endpoint enable --name -n
                                      --resource-group -g
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
 | --Name | Název služby jarního cloudu Azure. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
@@ -1016,14 +1016,14 @@ az spring-cloud test-endpoint list --name -n
                                    --deployment -d
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
 | --Name | Název služby jarního cloudu Azure. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |
 
 | Volitelné parametry | |
 | --- | ---: |
-| --aplikace | Název aplikace |
+| --aplikace | Obsahuje název aplikace. |
 | --Deployment-d | Název existujícího nasazení aplikace  Pokud není zadaný, použije se výchozí hodnota produkce. |
 
 ## <a name="az-spring-cloud-test-endpoint-renew-key"></a>AZ jaře-Cloud test-Endpoint rerenew-Key
@@ -1036,7 +1036,7 @@ az spring-cloud test-endpoint renew-key --name -n
                                         --type
 ```
 
-| Požadované parametry | |
+| Povinné parametry | |
 | --- | ---: |
 | --Name | Název služby jarního cloudu Azure. |
 | --Resource-Group-g | Název skupiny prostředků.  Výchozí skupinu můžete nakonfigurovat pomocí `az configure --defaults group=<name>`. |

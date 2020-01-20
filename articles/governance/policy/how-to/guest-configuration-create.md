@@ -3,12 +3,12 @@ title: Postup vytvoření zásad konfigurace hostů
 description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro virtuální počítače s Windows nebo Linux s Azure PowerShell.
 ms.date: 12/16/2019
 ms.topic: how-to
-ms.openlocfilehash: dbdb4288812b8d1016c3ccc879582f76222d17cd
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 7a6c6bb68302d41cd750c59062432a40cf01e8bd
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867339"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278461"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Postup vytvoření zásad konfigurace hostů
 
@@ -176,42 +176,6 @@ Parametry `New-GuestConfigurationPackage` rutiny:
 
 Dokončený balíček musí být uložený v umístění, ke kterému mají přístup spravované virtuální počítače. Mezi příklady patří úložiště GitHub, úložiště Azure nebo Azure Storage. Pokud nechcete, aby balíček byl veřejný, můžete do adresy URL přidat [token SAS](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) .
 Můžete také implementovat [koncový bod služby](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) pro počítače v privátní síti, i když tato konfigurace platí pouze pro přístup k balíčku a nekomunikuje se službou.
-
-### <a name="working-with-secrets-in-guest-configuration-packages"></a>Práce s tajnými kódy v konfiguračních balíčcích hosta
-
-V konfiguraci Azure Policy hosta je optimální způsob, jak spravovat tajné klíče používané v době běhu, ukládat je do Azure Key Vault. Tento návrh se implementuje v rámci vlastních prostředků DSC.
-
-1. V Azure vytvořte spravovanou identitu přiřazenou uživatelem.
-
-   Tato identita je používána počítači pro přístup k tajným klíčům uloženým v Key Vault. Podrobný postup najdete v tématu [Vytvoření, vypsání nebo odstranění spravované identity přiřazené uživatelem pomocí Azure PowerShell](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
-
-1. Vytvořte instanci Key Vault.
-
-   Podrobné pokyny najdete v tématu [nastavení a načtení tajného kódu – PowerShell](../../../key-vault/quick-create-powershell.md).
-   Přiřazením oprávnění k instanci udělte přístup k identitám přiřazeným uživateli k tajným klíčům uloženým v Key Vault. Podrobné pokyny najdete v tématu [nastavení a načtení tajného kódu – .NET](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault).
-
-1. Přiřaďte počítači identitu přiřazenou uživatelem.
-
-   Podrobný postup najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí PowerShellu](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
-   Přiřaďte tuto identitu pomocí Azure Resource Manager přes Azure Policy škálování. Podrobný postup najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí šablony](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm).
-
-1. Pro přístup k Key Vault pomocí tokenu dostupného z počítače použijte ID klienta vygenerované výše v rámci vašeho vlastního prostředku.
-
-   `client_id` a adresu URL instance Key Vault lze předat prostředku jako [vlastnosti](/powershell/scripting/dsc/resources/authoringresourcemof#creating-the-mof-schema) , takže prostředek nebude nutné aktualizovat pro více prostředí nebo v případě, že je třeba změnit hodnoty.
-
-Následující příklad kódu lze použít ve vlastním prostředku k načtení tajných kódů z Key Vault pomocí uživatelsky přiřazené identity. Hodnota vrácená z požadavku na Key Vault je prostý text. Jako osvědčený postup si ho uložte v rámci objektu přihlašovacích údajů.
-
-```azurepowershell-interactive
-# the following values should be input as properties
-$client_id = 'e3a78c9b-4dd2-46e1-8bfa-88c0574697ce'
-$keyvault_url = 'https://keyvaultname.vault.azure.net/secrets/mysecret'
-
-$access_token = ((Invoke-WebRequest -Uri "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&client_id=$client_id&resource=https%3A%2F%2Fvault.azure.net" -Method GET -Headers @{Metadata='true'}).Content | ConvertFrom-Json).access_token
-
-$value = ((Invoke-WebRequest -Uri $($keyvault_url+'?api-version=2016-10-01') -Method GET -Headers @{Authorization="Bearer $access_token"}).content | convertfrom-json).value |  ConvertTo-SecureString -asplaintext -force
-
-$credential = New-Object System.Management.Automation.PSCredential('secret',$value)
-```
 
 ## <a name="test-a-guest-configuration-package"></a>Testování konfiguračního balíčku hosta
 

@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 01/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 41baacd4485e6702ec29057f5d539724b74e353b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: bd6095daca51ddca0cfb4b34ca86e763df9a3d02
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383249"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276811"
 ---
 # <a name="user-defined-functions-client-library-reference"></a>Uživatelsky definované funkce – reference klientské knihovny
 
@@ -32,9 +32,9 @@ Pomocí identifikátoru prostoru načte tato funkce prostor z grafu.
 
 | Parametr  | Typ                | Popis  |
 | ---------- | ------------------- | ------------ |
-| *účet*  | `guid` | Identifikátor prostoru |
+| *id*  | `guid` | Identifikátor prostoru |
 
-### <a name="getsensormetadataid--sensor"></a>getSensorMetadata (ID) ⇒ `sensor`
+### <a name="getsensormetadataid--sensor"></a>getSensorMetadata(id) ⇒ `sensor`
 
 Pomocí identifikátoru senzoru Tato funkce načte senzor z grafu.
 
@@ -42,7 +42,7 @@ Pomocí identifikátoru senzoru Tato funkce načte senzor z grafu.
 
 | Parametr  | Typ                | Popis  |
 | ---------- | ------------------- | ------------ |
-| *účet*  | `guid` | Identifikátor senzoru |
+| *id*  | `guid` | Identifikátor senzoru |
 
 ### <a name="getdevicemetadataid--device"></a>getDeviceMetadata (ID) ⇒ `device`
 
@@ -52,7 +52,7 @@ Pomocí identifikátoru zařízení Tato funkce načte zařízení z grafu.
 
 | Parametr  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| *účet* | `guid` | Identifikátor zařízení |
+| *id* | `guid` | Identifikátor zařízení |
 
 ### <a name="getsensorvaluesensorid-datatype--value"></a>getSensorValue (sensorId, datový typ) ⇒ `value`
 
@@ -63,7 +63,7 @@ Pomocí identifikátoru senzoru a jeho datového typu načte tato funkce aktuál
 | Parametr  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
 | *sensorId*  | `guid` | Identifikátor senzoru |
-| *Programátor*  | `string` | Datový typ senzoru |
+| *dataType*  | `string` | Datový typ senzoru |
 
 ### <a name="getspacevaluespaceid-valuename--value"></a>getSpaceValue (spaceId, Název_hodnoty) – ⇒ `value`
 
@@ -74,7 +74,7 @@ Při zadání identifikátoru mezery a názvu hodnoty Tato funkce načte aktuál
 | Parametr  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
 | *spaceId*  | `guid` | Identifikátor prostoru |
-| *Hodnoty* | `string` | Název vlastnosti prostoru |
+| *valueName* | `string` | Název vlastnosti prostoru |
 
 ### <a name="getsensorhistoryvaluessensorid-datatype--value"></a>getSensorHistoryValues (sensorId, datový typ) ⇒ `value[]`
 
@@ -85,7 +85,7 @@ Pomocí identifikátoru senzoru a jeho datového typu načte tato funkce histori
 | Parametr  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | Identifikátor senzoru |
-| *Programátor* | `string` | Datový typ senzoru |
+| *dataType* | `string` | Datový typ senzoru |
 
 ### <a name="getspacehistoryvaluesspaceid-datatype--value"></a>getSpaceHistoryValues (spaceId, datový typ) ⇒ `value[]`
 
@@ -96,7 +96,7 @@ Při zadání identifikátoru mezery a názvu hodnoty Tato funkce načte histori
 | Parametr  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Identifikátor prostoru |
-| *Hodnoty* | `string` | Název vlastnosti prostoru |
+| *valueName* | `string` | Název vlastnosti prostoru |
 
 ### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces (spaceId) ⇒ `space[]`
 
@@ -138,7 +138,7 @@ Pomocí identifikátoru zařízení načte tato funkce podřízené senzory pro 
 | ------ | ------------------- | ------------ |
 | *deviceId* | `guid` | Identifikátor zařízení |
 
-### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace (childSpaceId) ⇒ `space`
+### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace(childSpaceId) ⇒ `space`
 
 Pomocí identifikátoru prostoru načte tato funkce svůj nadřazený prostor.
 
@@ -148,7 +148,7 @@ Pomocí identifikátoru prostoru načte tato funkce svůj nadřazený prostor.
 | ------ | ------------------- | ------------ |
 | *childSpaceId* | `guid` | Identifikátor prostoru |
 
-### <a name="getsensorparentspacechildsensorid--space"></a>getSensorParentSpace (childSensorId) ⇒ `space`
+### <a name="getsensorparentspacechildsensorid--space"></a>getSensorParentSpace(childSensorId) ⇒ `space`
 
 Když tato funkce Získá identifikátor senzoru, načte jeho nadřazený prostor.
 
@@ -168,7 +168,7 @@ Když tato funkce Získá identifikátor zařízení, načte jeho nadřazený pr
 | ------ | ------------------- | ------------ |
 | *childDeviceId* | `guid` | Identifikátor zařízení |
 
-### <a name="getsensorparentdevicechildsensorid--space"></a>getSensorParentDevice (childSensorId) ⇒ `space`
+### <a name="getsensorparentdevicechildsensorid--space"></a>getSensorParentDevice(childSensorId) ⇒ `space`
 
 Pomocí identifikátoru senzoru Tato funkce načte své nadřazené zařízení.
 
@@ -220,7 +220,7 @@ Tato funkce nastaví hodnotu objektu senzoru s daným datovým typem.
 | Parametr  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | Identifikátor senzoru |
-| *Programátor*  | `string` | Datový typ senzoru |
+| *dataType*  | `string` | Datový typ senzoru |
 | *value*  | `string` | Hodnota |
 
 ### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue (spaceId, datový typ, hodnota)
@@ -232,7 +232,7 @@ Tato funkce nastaví hodnotu objektu Space s daným datovým typem.
 | Parametr  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Identifikátor prostoru |
-| *Programátor* | `string` | Typ dat |
+| *dataType* | `string` | Data type |
 | *value* | `string` | Hodnota |
 
 ### <a name="logmessage"></a>protokol (zpráva)
@@ -243,7 +243,7 @@ Tato funkce zaznamená následující zprávu v rámci uživatelsky definované 
 
 | Parametr  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| *Zpráva* | `string` | Zpráva, která má být zaznamenána |
+| *message* | `string` | Zpráva, která má být zaznamenána |
 
 ### <a name="sendnotificationtopologyobjectid-topologyobjecttype-payload"></a>sendNotification (topologyObjectId, topologyObjectType, datová část)
 
@@ -276,7 +276,7 @@ Modely odpovědí vrácené pomocí pomocných metod klientských referencí jso
 
 ### <a name="space-methods"></a>Metody prostoru
 
-#### <a name="parent--space"></a>Nadřazený objekt () `space` ⇒
+#### <a name="parent--space"></a>Parent() ⇒ `space`
 
 Tato funkce vrací nadřazený prostor aktuálního prostoru.
 
@@ -302,7 +302,7 @@ Tato funkce vrací hodnotu aktuálního prostoru.
 
 | Parametr  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| *Hodnoty* | `string` | Název hodnoty |
+| *valueName* | `string` | Název hodnoty |
 
 #### <a name="historyvaluename--value"></a>History (valueName) ⇒ `value[]`
 
@@ -310,7 +310,7 @@ Tato funkce vrací historické hodnoty aktuálního místa.
 
 | Parametr  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| *Hodnoty* | `string` | Název hodnoty |
+| *valueName* | `string` | Název hodnoty |
 
 #### <a name="notifypayload"></a>Oznamovat (datová část)
 
@@ -340,7 +340,7 @@ Tato funkce pošle oznámení se zadanou datovou částí.
 
 ### <a name="device-methods"></a>Metody zařízení
 
-#### <a name="parent--space"></a>Nadřazený objekt () `space` ⇒
+#### <a name="parent--space"></a>Parent() ⇒ `space`
 
 Tato funkce vrací nadřazený prostor aktuálního zařízení.
 
@@ -388,7 +388,7 @@ Tato funkce pošle oznámení se zadanou datovou částí.
 
 ### <a name="sensor-methods"></a>Metody snímače
 
-#### <a name="space--space"></a>Space () `space` ⇒
+#### <a name="space--space"></a>Space() ⇒ `space`
 
 Tato funkce vrací nadřazený prostor aktuálního senzoru.
 

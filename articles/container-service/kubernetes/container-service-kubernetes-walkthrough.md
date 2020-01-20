@@ -1,25 +1,23 @@
 ---
-title: (NEPOUŽÍVANÉ) Rychlý start – Azure Kubernetes cluster pro Linux
+title: ZASTARALÉ Rychlý Start – cluster Azure Kubernetes pro Linux
 description: Rychle se naučíte, jak pomocí rozhraní příkazového řádku Azure vytvářet cluster Kubernetes pro linuxové kontejnery ve službě Azure Container Service.
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 70c9fec818147b76feb306cc47ba2e72cd865fe8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5c182d6119f59daaf21e4b4e1304363eeb0c11e5
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60335015"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273503"
 ---
-# <a name="deprecated-deploy-kubernetes-cluster-for-linux-containers"></a>(NEPOUŽÍVANÉ) Nasazení clusteru Kubernetes pro kontejnery Linuxu
+# <a name="deprecated-deploy-kubernetes-cluster-for-linux-containers"></a>ZASTARALÉ Nasazení clusteru Kubernetes pro kontejnery platformy Linux
 
 > [!TIP]
-> Aktualizovaná verze v tomto rychlém startu, která používá Azure Kubernetes Service, najdete v článku [rychlý start: Nasaďte cluster Azure Kubernetes Service (AKS)](../../aks/kubernetes-walkthrough.md).
+> Aktualizovanou verzi v tomto rychlém startu, která používá službu Azure Kubernetes, najdete v tématu [rychlý Start: nasazení clusteru Azure Kubernetes Service (AKS)](../../aks/kubernetes-walkthrough.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -212,13 +210,13 @@ Pokud už cluster nepotřebujete, můžete k odebrání skupiny prostředků, s
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-## <a name="get-the-code"></a>Získání kódu
+## <a name="get-the-code"></a>Získat kód
 
 V tomto rychlém startu se k vytvoření nasazení Kubernetes použily předem vytvořené image kontejnerů. Související kód aplikace, soubor Dockerfile a soubor manifestu Kubernetes jsou k dispozici na GitHubu.
 
 [https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis.git)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste nasadili cluster Kubernetes a do něj jste nasadili vícekontejnerovou aplikaci. 
 

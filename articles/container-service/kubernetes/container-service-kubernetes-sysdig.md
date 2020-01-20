@@ -1,66 +1,64 @@
 ---
-title: (NEPOUŽÍVANÉ) Monitorování clusteru Kubernetes v Azure – služby Sysdig
-description: Monitorování clusteru Kubernetes ve službě Azure Container Service pomocí služby Sysdig
-services: container-service
+title: ZASTARALÉ Monitorování clusteru Azure Kubernetes – služby Sysdig
+description: Monitorování clusteru Kubernetes v Azure Container Service pomocí služby Sysdig
 author: bburns
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 4aef241e2c86e4016c3c468fcdcfdfc620fc7aa9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3cb9c628993201553b8da1d1bd37b4705e0f23dc
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60309256"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271643"
 ---
-# <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-using-sysdig"></a>(NEPOUŽÍVANÉ) Monitorování clusteru služby Azure Container Service Kubernetes pomocí služby Sysdig
+# <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-using-sysdig"></a>ZASTARALÉ Monitorování clusteru Azure Container Service Kubernetes pomocí služby Sysdig
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 ## <a name="prerequisites"></a>Požadavky
-Tento názorný průvodce předpokládá, že máte [vytvořit cluster Kubernetes pomocí služby Azure Container Service](container-service-kubernetes-walkthrough.md).
+Tento návod předpokládá, že jste [vytvořili cluster Kubernetes pomocí Azure Container Service](container-service-kubernetes-walkthrough.md).
 
-Dále předpokládá, že máte nainstalované azure nástroje pro rozhraní příkazového řádku a kubectl.
+Také předpokládá, že máte nainstalované nástroje Azure CLI a kubectl Tools.
 
-Můžete otestovat, pokud máte `az` nástroj pro instalaci spuštěním:
+Můžete otestovat, jestli máte nainstalovaný nástroj `az`, a to spuštěním:
 
 ```console
 $ az --version
 ```
 
-Pokud nemáte k dispozici `az` nástroj nainstalovali, jsou k dispozici pokyny [tady](https://github.com/azure/azure-cli#installation).
+Pokud nemáte nainstalovaný nástroj `az`, [tady](https://github.com/azure/azure-cli#installation)najdete pokyny.
 
-Můžete otestovat, pokud máte `kubectl` nástroj pro instalaci spuštěním:
+Můžete otestovat, jestli máte nainstalovaný nástroj `kubectl`, a to spuštěním:
 
 ```console
 $ kubectl version
 ```
 
-Pokud nemáte `kubectl` nainstalované, můžete spustit:
+Pokud nemáte nainstalované `kubectl`, můžete spustit:
 
 ```console
 $ az acs kubernetes install-cli
 ```
 
 ## <a name="sysdig"></a>Sysdig
-Sysdig je externí monitorování jako služba společnost, která může monitorovat kontejnery v clusteru Kubernetes v Azure. Pomocí služby Sysdig vyžaduje aktivní účet služby Sysdig.
-Můžete se přihlásit k účtu jejich [lokality](https://app.sysdigcloud.com).
+Služby Sysdig je externí monitorování jako společnost služby, která může monitorovat kontejnery v clusteru Kubernetes běžícím v Azure. Použití služby Sysdig vyžaduje aktivní účet služby Sysdig.
+Můžete si zaregistrovat účet na svém [webu](https://app.sysdigcloud.com).
 
 Po přihlášení na web cloudu Sysdig klikněte na uživatelské jméno. Zobrazí se stránka, na které byste měli najít svůj „přístupový klíč“. 
 
 ![Klíč rozhraní API služby Sysdig](./media/container-service-kubernetes-sysdig/sysdig2.png)
 
 ## <a name="installing-the-sysdig-agents-to-kubernetes"></a>Instalace agentů služby Sysdig do Kubernetes
-Pro monitorování kontejnerů služby Sysdig spustí proces na každém počítači s využitím Kubernetes `DaemonSet`.
-DaemonSets jsou objekty rozhraní Kubernetes API spustit jednu instanci kontejneru na počítač.
-Jsou ideální pro instalace nástrojů, jako je agenta monitorování služby Sysdig.
+Pro monitorování vašich kontejnerů služby Sysdig spustí proces na každém počítači, který používá Kubernetes `DaemonSet`.
+DaemonSets jsou objekty rozhraní API Kubernetes, které spouštějí jednu instanci kontejneru v jednom počítači.
+Jsou ideální pro instalaci nástrojů, jako je služby Sysdig Monitoring Agent.
 
-Chcete-li nainstalovat služby Sysdig daemonset, byste nejprve stáhnout [šablony](https://github.com/draios/sysdig-cloud-scripts/tree/master/agent_deploy/kubernetes) ze služby sysdig. Uložte tento soubor jako `sysdig-daemonset.yaml`.
+Pokud chcete nainstalovat služby Sysdig daemonset, měli byste nejdřív stáhnout [šablonu](https://github.com/draios/sysdig-cloud-scripts/tree/master/agent_deploy/kubernetes) z služby Sysdig. Uložte tento soubor jako `sysdig-daemonset.yaml`.
 
-V Linuxu a OS X můžete spustit:
+V systémech Linux a OS X můžete spustit:
 
 ```console
 $ curl -O https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml
@@ -72,7 +70,7 @@ V PowerShellu:
 $ Invoke-WebRequest -Uri https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml | Select-Object -ExpandProperty Content > sysdig-daemonset.yaml
 ```
 
-Potom upravte tento soubor k vložení svůj přístupový klíč, který jste získali z vašeho účtu služby Sysdig.
+Dalším úpravou tohoto souboru vložte přístupový klíč, který jste získali z účtu služby Sysdig.
 
 Nakonec vytvořte DaemonSet:
 
@@ -81,6 +79,6 @@ $ kubectl create -f sysdig-daemonset.yaml
 ```
 
 ## <a name="view-your-monitoring"></a>Zobrazení monitorování
-Jakmile nainstalovaná a spuštěná, by měl agenty pump data zpět do služby Sysdig.  Přejděte zpět [řídicího panelu služby sysdig](https://app.sysdigcloud.com) a zobrazí se informace o kontejnerech.
+Po nainstalování a spuštění by agenti měli data pumpa zpět do služby Sysdig.  Vraťte se na [řídicí panel služby Sysdig](https://app.sysdigcloud.com) a měli byste vidět informace o kontejnerech.
 
-Můžete také nainstalovat řídicí panely specifické pro Kubernetes prostřednictvím [Průvodce novým řídicím panelem](https://app.sysdigcloud.com/#/dashboards/new).
+Řídicí panely specifické pro Kubernetes můžete nainstalovat také pomocí [Průvodce novým řídicím panelem](https://app.sysdigcloud.com/#/dashboards/new).

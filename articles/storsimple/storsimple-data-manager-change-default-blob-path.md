@@ -1,83 +1,75 @@
 ---
-title: Změnit cestu k objektu blob z výchozího | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit funkci Azure přejmenovat cestu k souboru objektu blob
-services: storsimple
-documentationcenter: NA
+title: Změnit cestu objektu BLOB z výchozího nastavení
+description: Přečtěte si, jak nastavit funkci Azure pro přejmenování cesty k souboru objektu BLOB.
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: cdaf991c25c23dee4f87b44142c1482bf892bcf2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ba1709ae195631371e4ea72667ba9b2a4bf279e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723662"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270634"
 ---
-# <a name="change-a-blob-path-from-the-default-path"></a>Změňte cestu k objektu blob z výchozí cestu
+# <a name="change-a-blob-path-from-the-default-path"></a>Změna cesty objektu BLOB z výchozí cesty
 
-Když služba StorSimple Data Manager transformuje data, ve výchozím nastavení je umístí transformovaných objektech BLOB v kontejneru úložiště uvedený během vytváření cílového úložiště. Při doručování na tomto místě: objekty BLOB, můžete přesunout tyto objekty BLOB do alternativního umístění. Tento článek popisuje, jak vytvořit funkci Azure pro přejmenování výchozí cestu k souboru objektu blob a objekty BLOB proto přesunout do jiného umístění.
+Když Služba StorSimple Data Manager transformuje data, ve výchozím nastavení umístí transformované objekty blob do kontejneru úložiště, jak je zadané během vytváření cílového úložiště. Vzhledem k tomu, že objekty blob přicházejí do tohoto umístění, možná budete chtít přesunout tyto objekty blob do alternativního umístění. Tento článek popisuje, jak nastavit funkci Azure pro přejmenování výchozí cesty k souboru BLOB, a proto přesunout objekty blob na jiné místo.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ujistěte se, že máte definici úlohy správně nakonfigurovaná ve službě StorSimple Data Manageru.
+Ujistěte se, že máte ve službě StorSimple Data Manager správnou nakonfigurovanou definici úlohy.
 
 ## <a name="create-an-azure-function"></a>Vytvořit funkci Azure
 
-Chcete-li vytvořit funkci Azure, postupujte následovně:
+Pokud chcete vytvořit funkci Azure Functions, proveďte následující kroky:
 
-1. Přejděte na [Azure Portal](https://portal.azure.com/).
+1. Přejděte na [portál Azure](https://portal.azure.com/).
 
-2. Klikněte na tlačítko **+ vytvořit prostředek**. V **hledání** zadejte **aplikace Function App** a stiskněte klávesu **Enter**. Vyberte a klikněte na tlačítko **aplikace Function app** v seznamu zobrazené aplikace.
+2. Klikněte na **+ vytvořit prostředek**. Do **vyhledávacího** pole zadejte **Function App** a stiskněte klávesu **ENTER**. V zobrazeném seznamu aplikací vyberte a klikněte na **aplikace Function App** .
 
-    ![Do vyhledávacího pole zadejte "Aplikace Function App"](./media/storsimple-data-manager-change-default-blob-path/search-function-app.png)
+    ![Do vyhledávacího pole zadejte "Function App"](./media/storsimple-data-manager-change-default-blob-path/search-function-app.png)
 
-3. Klikněte na možnost **Vytvořit**.
+3. Klikněte na **Vytvořit**.
 
-    ![Tlačítko "Vytvořit" okno aplikace Function App](./media/storsimple-data-manager-change-default-blob-path/create-function-app.png)
+    ![Tlačítko pro Function App okno pro vytvoření](./media/storsimple-data-manager-change-default-blob-path/create-function-app.png)
 
-4. Na **aplikace Function App** okno konfigurace, proveďte následující kroky:
+4. V okně konfigurace **Function App** proveďte následující kroky:
 
-    1. Zadejte jedinečnou **název aplikace**.
-    2. Z rozevíracího seznamu, vyberte **předplatné**. Toto předplatné by měla být stejná jako ta související s vaší službou StorSimple Data Manageru.
-    3. Vyberte **vytvořit nový** skupinu prostředků.
-    4. Pro **plánu hostování** rozevíracího seznamu vyberte **plánu Consumption**.
-    5. Zadejte umístění, kde běží vaše funkce. Chcete, aby stejné oblasti, kde se nachází ve službě Správce dat StorSimple a účet úložiště přidružený k definici úlohy.
-    6. Vyberte stávající účet úložiště nebo vytvořte nový. Účet úložiště se používá interně pro funkci.
+    1. Zadejte jedinečný **název aplikace**.
+    2. V rozevíracím seznamu vyberte **předplatné**. Tento odběr by měl být stejný jako ten, který je přidružený ke službě StorSimple Data Manager.
+    3. Vyberte **vytvořit novou** skupinu prostředků.
+    4. V rozevíracím seznamu **plán hostování** vyberte **plán spotřeby**.
+    5. Zadejte umístění, ve kterém je funkce spuštěná. Chcete mít stejnou oblast, kde se nachází Služba StorSimple Data Manager a účet úložiště přidružené k definici úlohy.
+    6. Vyberte stávající účet úložiště nebo vytvořte nový. Účet úložiště se interně používá pro funkci.
 
-        ![Zadejte novou aplikaci Function App konfigurační data](./media/storsimple-data-manager-change-default-blob-path/function-app-parameters.png)
+        ![Zadejte nová konfigurační data Function App](./media/storsimple-data-manager-change-default-blob-path/function-app-parameters.png)
 
-    7. Klikněte na možnost **Vytvořit**. Aplikace function app se vytvoří.
+    7. Klikněte na **Vytvořit**. Aplikace Function App se vytvoří.
      
-        ![Vytvoření aplikace Function App](./media/storsimple-data-manager-change-default-blob-path/function-app-created.png)
+        ![Function App vytvořena](./media/storsimple-data-manager-change-default-blob-path/function-app-created.png)
 
-5. Vyberte **funkce**a klikněte na tlačítko **+ nová funkce**.
+5. Vyberte **funkce**a klikněte na **+ Nová funkce**.
 
-    ![Klikněte na + nová funkce](./media/storsimple-data-manager-change-default-blob-path/create-new-function.png)
+    ![Kliknout na + nová funkce](./media/storsimple-data-manager-change-default-blob-path/create-new-function.png)
 
-6. Vyberte **C#** pro jazyk. V poli šablony dlaždice, vyberte **C#** v **QueueTrigger-CSharp** dlaždici.
+6. Vyberte **C#** pro jazyk. V poli dlaždic šablon vyberte **C#** v dlaždici **QueueTrigger-CSharp** .
 
-7. V **aktivační událost fronty**:
+7. **Aktivační událost fronty**:
 
     1. Zadejte **název** funkce.
-    2. V **název fronty** zadejte název definice úlohy transformace vaše data.
-    3. V části **připojení k účtu úložiště**, klikněte na tlačítko **nové**. V seznamu účtů úložiště vyberte účet spojený s vaší definice úlohy. Poznamenejte si název připojení (zvýrazněno). Název je vyžadováno později v funkce Azure functions.
+    2. Do pole **název fronty** zadejte název definice úlohy transformace dat.
+    3. V části **připojení k účtu úložiště**klikněte na **Nový**. V seznamu účtů úložiště vyberte účet přidružený k definici úlohy. Poznamenejte si název připojení (zvýrazněný). Název je požadován později ve funkci Azure Function.
 
-        ![Vytvořte nový C# – funkce](./media/storsimple-data-manager-change-default-blob-path/new-function-parameters.png)
+        ![Vytvoření nové C# funkce](./media/storsimple-data-manager-change-default-blob-path/new-function-parameters.png)
 
-    4. Klikněte na možnost **Vytvořit**. **Funkce** se vytvoří.
+    4. Klikněte na **Vytvořit**. **Funkce** je vytvořena.
 
      
-10. V okně funkce Spustit _.csx_ souboru.
+10. V okně funkce spusťte soubor _. csx_ .
 
-    ![Vytvořte nový C# – funkce](./media/storsimple-data-manager-change-default-blob-path/new-function-run-csx.png)
+    ![Vytvoření nové C# funkce](./media/storsimple-data-manager-change-default-blob-path/new-function-run-csx.png)
     
     Proveďte následující kroky.
 
@@ -183,17 +175,17 @@ Chcete-li vytvořit funkci Azure, postupujte následovně:
 
         ```
 
-    2. Nahraďte **STORAGE_CONNECTIONNAME** na řádku 11 s připojením k účtu úložiště (viz část o krok 7 c).
+    2. Položku **STORAGE_CONNECTIONNAME** na řádku 11 nahraďte vaším připojením k účtu úložiště (viz krok 7c).
 
-        ![Zkopírujte název připojení úložiště](./media/storsimple-data-manager-change-default-blob-path/new-function-storage-connection-name.png)
+        ![Kopírovat název připojení úložiště](./media/storsimple-data-manager-change-default-blob-path/new-function-storage-connection-name.png)
 
-    3. **Uložit** funkce.
+    3. **Uložte** funkci.
 
-        ![Uložit – funkce](./media/storsimple-data-manager-change-default-blob-path/save-function.png)
+        ![Save – funkce](./media/storsimple-data-manager-change-default-blob-path/save-function.png)
 
-12. K dokončení funkci, přidejte jeden další soubor provedením následujících kroků:
+12. K dokončení této funkce přidejte další soubor pomocí následujících kroků:
 
-    1. Klikněte na tlačítko **zobrazit soubory**.
+    1. Klikněte na **Zobrazit soubory**.
 
        ![Odkaz "Zobrazit soubory"](./media/storsimple-data-manager-change-default-blob-path/view-files.png)
 
@@ -201,7 +193,7 @@ Chcete-li vytvořit funkci Azure, postupujte následovně:
         
         ![Odkaz "Zobrazit soubory"](./media/storsimple-data-manager-change-default-blob-path/new-function-add-file.png)
     
-    3. Typ **project.json**a potom stiskněte klávesu **Enter**. V **project.json** soubor, vložte následující kód:
+    3. Zadejte **Project. JSON**a potom stiskněte klávesu **ENTER**. Do souboru **Project. JSON** vložte následující kód:
 
         ```
         {
@@ -217,12 +209,12 @@ Chcete-li vytvořit funkci Azure, postupujte následovně:
         ```
 
     
-    4. Klikněte na **Uložit**.
+    4. Klikněte na možnost **Uložit**.
 
         ![Odkaz "Zobrazit soubory"](./media/storsimple-data-manager-change-default-blob-path/new-function-project-json.png)
 
-Vytvořili jste funkci Azure. Tato funkce se spustí pokaždé, když úloha transformace dat vygeneruje nový objekt blob.
+Vytvořili jste funkci Azure Function. Tato funkce se aktivuje pokaždé, když úloha transformace dat vygeneruje nový objekt BLOB.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Použití StorSimple Data Manager uživatelského rozhraní pro transformaci dat](storsimple-data-manager-ui.md)
+[Použití uživatelského rozhraní StorSimple Data Manager k transformaci dat](storsimple-data-manager-ui.md)

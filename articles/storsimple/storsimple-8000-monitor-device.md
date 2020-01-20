@@ -1,56 +1,48 @@
 ---
-title: Monitorování vašeho zařízení StorSimple 8000 series | Dokumentace Microsoftu
-description: Popisuje způsob použití služby Správce zařízení StorSimple ke sledování využití, výkonu vstupně-výstupní operace a využití kapacity.
-services: storsimple
-documentationcenter: NA
+title: Monitorování zařízení řady StorSimple 8000
+description: Popisuje, jak používat službu StorSimple Device Manager ke sledování využití, výkonu vstupu a výstupu a využití kapacity.
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 10/17/2017
 ms.author: alkohli
-ms.openlocfilehash: 602514df69977891167f341db0ab20913bcacc9f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b3b77024606c5cdb02ff7bdd357c2d14a2415efa
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60634467"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277060"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>Použití služby Správce zařízení StorSimple k monitorování zařízení StorSimple
+# <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>Monitorování zařízení StorSimple pomocí služby StorSimple Device Manager
 
 ## <a name="overview"></a>Přehled
-Služba Správce zařízení StorSimple můžete použít ke sledování konkrétních zařízení v rámci vašeho řešení StorSimple. Můžete vytvářet vlastní grafy na základě výkonu vstupně-výstupních operací, využití kapacity, propustnost sítě a zařízení metriky výkonu a připnout na řídicí panel. Další informace najdete v části [přizpůsobit řídicí panel portálu](../azure-portal/azure-portal-dashboards.md).
+Službu StorSimple Device Manager můžete použít k monitorování konkrétních zařízení v rámci řešení StorSimple. Můžete vytvářet vlastní grafy založené na výkonu vstupu a výstupu, využití kapacity, propustnost sítě a metriky výkonu zařízení a připnout je na řídicí panel. Další informace najdete na webu [přizpůsobení řídicího panelu portálu](../azure-portal/azure-portal-dashboards.md).
 
-Chcete-li zobrazit informacím o monitorování pro určité zařízení, na webu Azure Portal, vyberte ve službě Správce zařízení StorSimple. Ze seznamu zařízení vyberte zařízení a potom přejděte ke **monitorování**. Můžete se podívat **kapacity**, **využití**, a **výkonu** grafy pro vybrané zařízení.
+Chcete-li zobrazit informace o monitorování určitého zařízení, vyberte v Azure Portal službu Device Manager StorSimple. V seznamu zařízení vyberte zařízení a pak přejít na **monitor**. Pak můžete zobrazit diagramy **kapacity**, **využití**a **výkonu** pro vybrané zařízení.
 
 ## <a name="capacity"></a>Kapacita
-**Kapacita** sleduje zřízeného místa a místa zůstává v zařízení. Zbývající kapacita se následně zobrazí místně připnuté a vrstvené.
+**Kapacita** sleduje zřízené místo a zbývající místo na zařízení. Zbývající kapacita se pak zobrazí jako připnuté místně nebo na vrstvenou.
 
-Zřízená a zbývající kapacity se dále člení místně připnuté a vrstvené svazky. Pro každý svazek zřízená kapacita a zbývající kapacity v zařízení se zobrazí.
+Zajištěná a zbývající kapacita je dále rozdělená na vrstvené a místně připnuté svazky. Pro každý svazek se zobrazí zřízená kapacita a zbývající kapacita zařízení.
 
 ![Kapacita v/v](./media/storsimple-8000-monitor-device/device-capacity.png)
 
 
 
 ## <a name="usage"></a>Využití
-**Využití** sleduje metriky související s množství dat úložný prostor, který používá svazky, kontejnery svazků nebo zařízení. Můžete vytvořit sestavy na základě využití kapacity primární úložiště, cloudového úložiště nebo úložiště vašeho zařízení. Využití kapacity se měří na konkrétním svazku, kontejner určitý svazek nebo všechny kontejnery svazků.
-Ve výchozím nastavení se použije v hlášení využití za posledních 24 hodin. Můžete upravit graf a změňte, doba trvání nad tím, které se využití hlášené tak, že vyberete:
-* Za posledních 24 hodin
+**Využití** sleduje metriky související s objemem úložného prostoru dat, který používají svazky, kontejnery svazků nebo zařízení. Můžete vytvářet sestavy založené na využití kapacity vašeho primárního úložiště, cloudového úložiště nebo úložiště zařízení. Využití kapacity se dá měřit na konkrétním svazku, konkrétním kontejneru svazků nebo všech kontejnerech svazků.
+Ve výchozím nastavení je hlášeno použití za posledních 24 hodin. Úpravou grafu můžete změnit dobu trvání, po které se bude vykazovat využití, a to výběrem možnosti:
+* Posledních 24 hodin
 * Posledních 7 dní
 * Posledních 30 dní
 * Posledních 90 dní
 * Poslední rok
 
-Dva klíče metrices, růst a rozsah označené pro grafy využití. Rozsah odkazuje na hodnotu maximální a minimální hodnoty využití hlášené přes vybranou dobu trvání (fo instance, za posledních 7 dnů).
+Dvě klíčové metriky, růst a rozsah jsou hlášeny pro grafy využití. Rozsah odkazuje na maximální hodnotu a minimální hodnoty využití nahlášené přes vybranou dobu trvání (FO instance, posledních 7 dní).
 
-Růst odkazuje na zvýšení využití v od prvního dne na poslední den za vybrané období. 
+Nárůst znamená zvýšení využití od prvního dne k poslednímu dni ve vybrané době trvání. 
 
-Růst a rozsah můžou být vyjádřeny i rovnic následující:
+Růst a rozsah můžou být také reprezentované následujícími rovnicemi:
 
 ```
 Range = {Usage(minimum), Usage(maximum)}
@@ -60,93 +52,93 @@ Growth = Usage(Last day) - Usage(first day)
 Growth (%) = [{Usage(last day) - Usage(first day)} X 100]/Usage(first day)
 ```
 
-Primární, cloudové a místní úložiště lze popsat následujícím způsobem:
+Použití primárního, cloudového a místního úložiště lze popsat následujícím způsobem:
 
-### <a name="primary-storage-usage"></a>Primární úložiště využití
-Tyto grafy zobrazují množství dat zapsaných na svazky zařízení StorSimple, než se s odstraněním duplicitních dat a komprimovaná data. Můžete zobrazit primární úložiště používat všechny svazky v kontejneru svazků nebo jednoho svazku. Využité primární úložiště se dále člení podle použito primární vrstvené úložiště a primární místně připojené úložiště.
+### <a name="primary-storage-usage"></a>Využití primárního úložiště
+Tyto grafy zobrazují množství dat zapsaných na StorSimple svazky předtím, než se data odstraňují a komprimují. Můžete zobrazit primární úložiště používané všemi svazky v kontejneru svazků nebo pro jeden svazek. Použité primární úložiště je dále rozdělené podle použitého primárního vrstveného úložiště a použitého primárního místně připojeného úložiště.
 
-Následující grafy ukazují primární úložiště používat pro zařízení StorSimple před a po pořízení snímek v cloudu. Toto je pouze objem dat, by neměly měnit snímek v cloudu z primárního úložiště. Jak je vidět tento graf zobrazuje žádný rozdíl v primární vrstvené nebo místně připojené úložiště použít jako výsledek pořízení snímku cloud. Cloudový snímek začalo přibližně 23:50:00 na tomto zařízení.
+Následující grafy ukazují primární úložiště použité pro zařízení StorSimple před a po pořízení snímku cloudu. Vzhledem k tomu, že se jedná o data svazku, by snímek v cloudu neměl měnit primární úložiště. Jak vidíte, graf nezobrazuje žádný rozdíl v primárním vrstveném nebo místně připojeném úložišti, které se používá v důsledku pořízení snímku v cloudu. Snímek cloudu začal přibližně 11:50 pm na tomto zařízení.
 
-![Využití kapacity primární po snímek v cloudu](./media/storsimple-8000-monitor-device/device-primary-storage-after-cloudsnapshot.png)
+![Využití primární kapacity po snímku cloudu](./media/storsimple-8000-monitor-device/device-primary-storage-after-cloudsnapshot.png)
 
-Pokud nyní spustíte vstupně-výstupních operací na hostiteli připojen k zařízení StorSimple, uvidíte zvýšení primární vrstvené úložiště nebo primární místně připojené úložiště v závislosti na svazky, které (vrstvené nebo místně připnuté) zapíšete data do. Tady jsou grafy využití primárního úložiště pro zařízení StorSimple. Na tomto zařízení StorSimple hostiteli spuštěna obsluhující zápis na přibližně 2:30 odp. na vrstvený svazek v zařízení. Zobrazí se ve špičce v zápisu bajtů/s odpovídající vstupně-výstupních operací běží na hostiteli.
+Pokud teď spouštíte v/v hostitele připojeného k vašemu zařízení StorSimple, uvidíte zvýšení primárního vrstveného úložiště nebo primárního místně připojeného úložiště, které se používá v závislosti na tom, které svazky (vrstvené nebo místně připnuté) zapisujete data do. Tady jsou grafy využití primárního úložiště pro zařízení StorSimple. Na tomto zařízení Hostitel StorSimple zahájil obsluhu zápisů na vrstvených svazcích na zařízení v přibližně 2:30 PM. Můžete si prohlédnout špičku v bajtech zápisu za sekundu odpovídající vstupně-výstupní práci na hostiteli.
 
-![Výkon při vstupně-výstupních operací běží na vrstvené svazky](./media/storsimple-8000-monitor-device/device-io-from-initiator.png)
+![Výkon při spuštění v/v na vrstveném svazku](./media/storsimple-8000-monitor-device/device-io-from-initiator.png)
 
-Když se podíváte na použito primární vrstvené úložiště, který přešel zatímco primární místně připojené využití zůstane beze změny, protože neexistují žádné zápisy obsluhovat místně připojené svazky na zařízení.
+Pokud se podíváte na použité primární vrstvené úložiště, které se zobrazí, zatímco primární místní připnuté použití zůstane beze změny, protože na místně připnuté svazky na zařízení nezpracovávají žádné zápisy.
 
-![Využití kapacity primární vstupně-výstupní operace jsou spuštěny na vrstvené svazky](./media/storsimple-8000-monitor-device/device-primary-storage-io-from-initiator.png)
+![Využití primární kapacity při spuštění v/v vrstvených svazcích](./media/storsimple-8000-monitor-device/device-primary-storage-io-from-initiator.png)
 
-Pokud používáte s aktualizací 3 nebo vyšší, můžete přerušit snížit využití kapacity primární úložiště ve svazku, všechny svazky, všechny vrstvené svazky a všechny místně připojené svazky jak je znázorněno níže. Rozdělení všechny místně připojené svazky vám umožní rychle zjistit, jak velká část u místní vrstvy slouží.
+Pokud používáte aktualizaci 3 nebo vyšší, můžete snížit využití kapacity primárního úložiště jednotlivému svazku, všemi svazky, všemi vrstvenými svazky a všemi místně připnuté svazky, jak je znázorněno níže. Rozdělení na všechny místně připojené svazky vám umožní rychle zjistit, jak velká je místní vrstva.
 
 ![Využití primární kapacity pro všechny vrstvené svazky](./media/storsimple-8000-monitor-device/monitor-usage3.png)
 
-![Primární využití kapacity pro všechny místně připojené svazky](./media/storsimple-8000-monitor-device/monitor-usage4.png)
+![Využití primární kapacity pro všechny místně připojené svazky](./media/storsimple-8000-monitor-device/monitor-usage4.png)
 
-Dále můžete kliknutím na jednotlivé svazky v seznamu a zobrazit odpovídající využití.
+Můžete dále kliknout na jednotlivé svazky v seznamu a zobrazit odpovídající použití.
 
-![Primární využití kapacity pro všechny místně připojené svazky](./media/storsimple-8000-monitor-device/device-primary-storage-usage-by-volume.png)
+![Využití primární kapacity pro všechny místně připojené svazky](./media/storsimple-8000-monitor-device/device-primary-storage-usage-by-volume.png)
 
-### <a name="cloud-storage-usage"></a>Využití úložiště cloudu
-Tyto grafy zobrazují množství využité cloudové úložiště. Tato data se odstraňují duplicity a komprimovaná. Toto množství zahrnuje cloudové snímky, které mohou obsahovat data, která se neprojeví v libovolné primární svazek a uchovávají po dobu uchování starší verze nebo požadované účely. Můžete porovnat primární a cloudu obrázky spotřebu úložiště, kde získáte představu snížení frekvence data, i když číslo nesmí být přesné.
+### <a name="cloud-storage-usage"></a>Využití cloudového úložiště
+V těchto grafech se zobrazuje velikost využitého cloudového úložiště. Tato data jsou Odstraněná a komprimovaná. Tato velikost zahrnuje cloudové snímky, které by mohly obsahovat data, která se neprojevují v žádném primárním svazku a jsou zachovaná pro starší verze nebo pro požadované účely uchování. Můžete porovnat údaje o využití primárního a cloudového úložiště, abyste získali představu o míře omezení dat, i když číslo nebude přesné.
 
-Následující grafy ukazují využití úložiště cloudové zařízení StorSimple při pořízení snímek v cloudu.
+Následující grafy ukazují využití cloudového úložiště zařízení StorSimple při pořízení snímku v cloudu.
 
-* Cloudový snímek začalo asi 11:50 upgradujete na tomto zařízení a vy vidíte, že před cloudových snímků, byl využité cloudové úložiště. 
-* Jednou cloudový snímek dokončeno, využití cloudové úložiště snímku si rovný 0,89 GB. 
-* Když probíhala snímku v cloudu, je zde i odpovídající maximální vstupně-výstupních operací ze zařízení do cloudu.
+* Snímek cloudu začal v přibližně 11:50 na tomto zařízení a vidíte ho před snímkem cloudu. nepoužilo se žádné cloudové úložiště. 
+* Po dokončení snímku cloudu se využití cloudového úložiště vyhledá 0,89 GB. 
+* I když se snímkem v cloudu probíhal, v vstupně-výstupních operacích ze zařízení do cloudu je taky odpovídající špička.
 
-    ![Využití úložiště cloudu před snímek v cloudu](./media/storsimple-8000-monitor-device/device-cloud-storage-before-cloudsnapshot.png)
+    ![Využití cloudového úložiště před snímkem cloudu](./media/storsimple-8000-monitor-device/device-cloud-storage-before-cloudsnapshot.png)
 
-    ![Využití úložiště po cloudový snímek v cloudu](./media/storsimple-8000-monitor-device/device-cloud-storage-after-cloudsnapshot.png)
+    ![Využití cloudového úložiště po snímku cloudu](./media/storsimple-8000-monitor-device/device-cloud-storage-after-cloudsnapshot.png)
 
-    ![Vstupně-výstupní operace od zařízení ke cloudu během snímek v cloudu](./media/storsimple-8000-monitor-device/device-io-to-cloud-during-cloudsnapshot.png)
+    ![Vstupně-výstupní operace ze zařízení do cloudu během snímku v cloudu](./media/storsimple-8000-monitor-device/device-io-to-cloud-during-cloudsnapshot.png)
 
 
 ### <a name="local-storage-usage"></a>Využití místního úložiště
-Tyto grafy zobrazují celkové využití pro zařízení, která bude využití více než primární úložiště, protože obsahuje lineární vrstvy SSD. Tato úroveň obsahuje množství dat, která existuje také na zařízení uživatele jiných vrstev. Kapacitu ve vrstvě SSD lineární je uvedená, takže když nová data k dispozici ve, původní data se přesunou do vrstvy HDD (tentokrát ho se odstraňují duplicity a komprimované) a následně do cloudu.
+Tyto grafy zobrazují celkové využití pro zařízení, což bude víc než použití primárního úložiště, protože zahrnuje lineární vrstvu SSD. Tato úroveň obsahuje množství dat, která jsou také na dalších úrovních zařízení. Kapacita v lineární vrstvě SSD se cykluje, takže když se nová data objeví v, přesunou se stará data do vrstvy HDD (ve které je doba, která je Odstraněná a komprimovaná) a následně do cloudu.
 
-Za čas, primární úložiště používaných a místní úložiště pravděpodobně zvýší společně dokud nezačne data Vrstvená do cloudu. V tu chvíli se začíná stagnovat pravděpodobně začne využité místní úložiště, ale zvýší využité primární úložiště, jako další data se zapisují.
+V průběhu času se použité primární úložiště a použité místní úložiště nejvíce zvyšují dohromady, dokud se data nezačnou vrstvit do cloudu. V tomto okamžiku začne místní úložiště pravděpodobně stabilní úrovně, ale použité primární úložiště se zvýší, protože se zapisují další data.
 
-Následující grafy ukazují primární úložiště používat pro zařízení StorSimple při pořízení snímek v cloudu. Cloudový snímek začali v 11:50 a místní úložiště spuštěna, snižují v daném čase. Využité místní úložiště snížil z 1.445 GB 1,09 GB. To označuje, že pravděpodobně nekomprimovaných dat v lineární vrstvy SSD se s odstraněním duplicitních dat, komprimované a přesunout do vrstvy HDD. Všimněte si, že pokud je zařízení už velké množství dat na úrovni SSD a HDD, nemusí zobrazit toto snížení. V tomto příkladu má malé množství dat zařízení.
+Následující grafy ukazují primární úložiště použité pro zařízení StorSimple při pořízení snímku v cloudu. Snímek cloudu začal v 11:50 a místní úložiště se v tuto chvíli začala zmenšovat. Využité místní úložiště se snížilo z 1,445 GB na 1,09 GB. To znamená, že pravděpodobně nekomprimovaná data v lineární vrstvě SSD byla odstraněna, komprimována a přesunuta do vrstvy HDD. Všimněte si, že pokud už zařízení obsahuje velké množství dat v vrstvách SSD i HDD, toto zmenšení se nemusí sledovat. V tomto příkladu má zařízení malé množství dat.
 
-![Využití místního úložiště po snímek v cloudu](./media/storsimple-8000-monitor-device/device-local-storage-after-cloudsnapshot.png)
+![Využití místního úložiště po snímku cloudu](./media/storsimple-8000-monitor-device/device-local-storage-after-cloudsnapshot.png)
 
 ## <a name="performance"></a>Výkon
-**Výkon** sleduje metriky související s počet čtení a zápisu operace mezi buď rozhraní iniciátor iSCSI na hostitelském serveru a zařízení nebo zařízení a cloudu. Tato výkonu lze změřit pro určitý svazek, kontejner určitý svazek nebo všechny kontejnery svazků. Výkon také zahrnuje využití procesoru a propustnost sítě pro různé síťových rozhraní na zařízení.
+**Výkon** sleduje metriky související s počtem operací čtení a zápisu mezi rozhraními iniciátoru iSCSI na hostitelském serveru a zařízením nebo zařízením a cloudem. Tento výkon se dá změřit pro konkrétní svazek, konkrétní kontejner svazků nebo všechny kontejnery svazků. Výkon taky zahrnuje využití CPU a propustnost sítě pro různá síťová rozhraní v zařízení.
 
-### <a name="io-performance-for-initiator-to-device"></a>Vstupně-výstupní výkon směru od iniciátoru do zařízení
-Následující graf zobrazuje vstupy/výstupy směru od iniciátoru do zařízení pro všechny svazky, které jsou pro zařízení s produkčním prostředí. Metriky promítají jsou čtení a zápis bajtů za sekundu. Můžete také grafu pro čtení, zápisu a nezpracovaných vstupně-výstupní operace, nebo čtení a zápisu latenci.
+### <a name="io-performance-for-initiator-to-device"></a>Výkon vstupu a výstupu pro iniciátora na zařízení
+Následující graf zobrazuje vstupně-výstupní operace pro iniciátora zařízení pro všechny svazky v produkčním zařízení. Vykreslené metriky jsou přečtené a zapsané bajty za sekundu. Můžete také zobrazit, zapsat a nezpracované vstupně-výstupní operace a latenci čtení a zápisu.
 
-![VSTUPNĚ-výstupním výkonem směru od iniciátoru do zařízení](./media/storsimple-8000-monitor-device/device-io-from-initiator.png)
+![Výkon v/v pro iniciátora zařízení](./media/storsimple-8000-monitor-device/device-io-from-initiator.png)
 
-### <a name="io-performance-for-device-to-cloud"></a>Vstupně-výstupní výkon zařízení do cloudu
-Pro stejné zařízení se promítají vstupně-výstupních operací pro data ze zařízení do cloudu pro všechny kontejnery svazků. Na tomto zařízení data pouze v rámci lineární úrovně a má hodnotu nothing přesahovat do cloudu. Neexistují žádné operace čtení i zápis, ke kterým dochází ze zařízení do cloudu. Proto jsou vrcholů v grafu v intervalu 5 minut, který odpovídá frekvenci, s jakou se kontroluje prezenčního signálu mezi zařízením a službou.
+### <a name="io-performance-for-device-to-cloud"></a>Výkon v/v pro zařízení do cloudu
+U stejného zařízení se vstupně-výstupní operace vykreslí pro data ze zařízení do cloudu pro všechny kontejnery svazků. V tomto zařízení jsou data jenom v lineární vrstvě a nic se nepředalo do cloudu. Neexistují žádné operace čtení a zápisu, které se nacházejí ze zařízení do cloudu. Proto se špičky v grafu nacházejí v intervalu 5 minut, který odpovídá četnosti, s jakou se prezenční signál kontroluje mezi zařízením a službou.
 
-Pro stejné zařízení pořízení snímek v cloudu pro spuštění v 11:50 dat svazku. Výsledkem dat odesílaných ze zařízení do cloudu. Zápisy se zpracuje do cloudu v této hodnotě duration. Vstupně-výstupní operace graf zobrazuje ve špičce zápis bajtů/s odpovídající čas pořizování snímku.
+U stejného zařízení byl snímek v cloudu pořízený pro data o svazcích od 11:50. Výsledkem je tok dat ze zařízení do cloudu. V této době byly do cloudu obsluhovány zápisy. V/v grafu se zobrazuje špička v bajtech zápisu za sekundu odpovídající době pořízení snímku.
 
-![Vstupně-výstupní operace od zařízení ke cloudu během snímek v cloudu](./media/storsimple-8000-monitor-device/device-io-to-cloud-during-cloudsnapshot.png)
+![Vstupně-výstupní operace ze zařízení do cloudu během snímku v cloudu](./media/storsimple-8000-monitor-device/device-io-to-cloud-during-cloudsnapshot.png)
 
 ### <a name="network-throughput-for-device-network-interfaces"></a>Propustnost sítě pro síťová rozhraní zařízení
-**Propustnost sítě** sleduje metriky související s množství data přenesená z síťová rozhraní iniciátor iSCSI na hostitelském serveru a zařízení a mezi zařízením a cloudem. Tato metrika všech síťových rozhraní iSCSI můžete monitorovat na vašem zařízení.
+**Propustnost sítě** sleduje metriky související s objemem dat přenesených z síťových rozhraní iniciátoru iSCSI na hostitelském serveru a v zařízení a mezi zařízením a cloudem. Tuto metriku můžete monitorovat pro každé ze síťových rozhraní iSCSI na vašem zařízení.
 
-Následující grafy ukazují propustnost sítě pro Data 0, 1 1 GbE sítě na vašem zařízení, která byla obou povolenou podporu cloudu (výchozí) a podporu iSCSI. Na tomto zařízení na 14. června na přibližně 21: 00, byla data Vrstvená do cloudu (cloud nevytvořily žádné snímky v daném čase, která odkazuje na ovládání datových vrstev na právě mechanismus pro přesun dat do cloudu) což vedlo ke vstupně-výstupních operací, které jsou používané pro služby do cloudu. Neexistuje odpovídající špičce v grafu propustnost sítě pro stejnou dobu a většina síťového provozu je odchozí do cloudu.
+Následující grafy ukazují propustnost sítě pro síť data 0, 1 1 GbE v zařízení, která byla povolena pro Cloud (výchozí nastavení) i pro iSCSI. Na tomto zařízení 14. června ODP. června se data nacházela do cloudu (v tuto chvíli se v tomto okamžiku neprováděly žádné cloudové snímky, které odkazují na vrstvení, aby přesunuli data do cloudu), což vedlo k provozu do cloudu. V grafu propustnosti sítě je k dispozici odpovídající špička ve stejnou dobu a většina síťových přenosů je odchozí do cloudu.
 
-![Propustnost sítě pro Data 0](./media/storsimple-8000-monitor-device/device-network-throughput-data0.png)
+![Propustnost sítě pro data 0](./media/storsimple-8000-monitor-device/device-network-throughput-data0.png)
 
-Když se podíváme na graf propustnosti rozhraní Data 1, jiné 1gbe síťové rozhraní, která byla pouze povolené iSCSI a potom se prakticky žádná síťový provoz v této hodnotě duration.
+Pokud se podíváme na graf propustnosti rozhraní data 1, další síťové rozhraní, které bylo jenom standardu iSCSI, pak v tuto dobu existoval prakticky žádný síťový provoz.
 
-![Propustnost sítě pro Data 1](./media/storsimple-8000-monitor-device/device-network-throughput-data1.png)
-
-
-## <a name="cpu-utilization-for-device"></a>Využití výkonu procesoru zařízení
-**Využití procesoru** sleduje metriky související s procesoru využívá na vašem zařízení. Následující graf zobrazuje statistiku využití procesoru pro zařízení v produkčním prostředí.
-
-![Využití výkonu procesoru zařízení](./media/storsimple-8000-monitor-device/device-cpu-utilization.png)
+![Propustnost sítě pro data 1](./media/storsimple-8000-monitor-device/device-network-throughput-data1.png)
 
 
+## <a name="cpu-utilization-for-device"></a>Využití procesoru pro zařízení
+**Využití CPU** sleduje metriky související s využitím procesoru na vašem zařízení. Následující graf znázorňuje statistiku využití procesoru pro zařízení v produkčním prostředí.
 
-## <a name="next-steps"></a>Další postup
-* Zjistěte, jak [řídicí panel zařízení služby StorSimple Device Manager](storsimple-device-dashboard.md).
-* Zjistěte, jak [použití služby Správce zařízení StorSimple ke správě zařízení StorSimple](storsimple-manager-service-administration.md).
+![Využití procesoru pro zařízení](./media/storsimple-8000-monitor-device/device-cpu-utilization.png)
+
+
+
+## <a name="next-steps"></a>Další kroky
+* Naučte se [používat řídicí panel zařízení StorSimple Device Manager Service](storsimple-device-dashboard.md).
+* Naučte se [používat službu StorSimple Device Manager ke správě zařízení StorSimple](storsimple-manager-service-administration.md).
 

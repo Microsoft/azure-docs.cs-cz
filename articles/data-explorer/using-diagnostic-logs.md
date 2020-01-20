@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 13f86f0156299619d8bf8d92eb92bbcf8b4cb76c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 3e10979e26cacdc0c2071a6030c945adad21a51c
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173797"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277432"
 ---
 # <a name="monitor-azure-data-explorer-ingestion-operations-using-diagnostic-logs-preview"></a>Monitorování operací ingestování v Azure Průzkumník dat pomocí diagnostických protokolů (Preview)
 
@@ -25,7 +25,7 @@ Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro anal�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlásit se na [Azure Portal](https://portal.azure.com/).
+Přihlaste se k [Portálu Azure](https://portal.azure.com/).
 
 ## <a name="set-up-diagnostic-logs-for-an-azure-data-explorer-cluster"></a>Nastavení diagnostických protokolů pro cluster Azure Průzkumník dat
 
@@ -52,7 +52,7 @@ Diagnostické protokoly jsou ve výchozím nastavení zakázané. Chcete-li povo
     1. Pro nastavení diagnostiky vyberte **název** .
     1. Vyberte jeden nebo více cílů: účet úložiště, centrum událostí nebo Log Analytics.
     1. Vyberte protokoly, které se mají shromažďovat: `SucceededIngestion` nebo `FailedIngestion`.
-    1. Vyberte [metriky](using-metrics.md) , které se mají shromáždit (volitelné).   
+    1. Vyberte [metriky](using-metrics.md#supported-azure-data-explorer-metrics) , které se mají shromáždit (volitelné).  
     1. Výběrem možnosti **Uložit** uložte nové nastavení a metriky diagnostických protokolů.
     1. Vytvořte **novou žádost o podporu** v Azure Portal pro žádost o aktivaci diagnostických protokolů.
 
@@ -66,7 +66,7 @@ Všechny [diagnostické protokoly Azure monitor sdílejí společné schéma nej
 
 Řetězce JSON protokolu obsahují prvky uvedené v následující tabulce:
 
-|Název               |Popis
+|Name (Název)               |Popis
 |---                |---
 |time               |Čas sestavy
 |resourceId         |ID prostředku Azure Resource Manager
@@ -100,11 +100,11 @@ Všechny [diagnostické protokoly Azure monitor sdílejí společné schéma nej
 ```
 **Vlastnosti diagnostického protokolu úspěšné operace**
 
-|Název               |Popis
+|Name (Název)               |Popis
 |---                |---
 |succeededOn        |Čas dokončení přijímání příjmu
 |operationId        |ID operace ingestování Azure Průzkumník dat
-|database           |Název cílové databáze
+|databáze           |Název cílové databáze
 |table              |Název cílové tabulky
 |ingestionSourceId  |ID zdroje dat ingestování
 |ingestionSourcePath|Cesta zdroje dat ingestování nebo identifikátoru URI objektu BLOB
@@ -141,11 +141,11 @@ Všechny [diagnostické protokoly Azure monitor sdílejí společné schéma nej
 
 **Vlastnosti diagnostického protokolu nezdařené operace**
 
-|Název               |Popis
+|Name (Název)               |Popis
 |---                |---
 |failedOn           |Čas dokončení přijímání příjmu
 |operationId        |ID operace ingestování Azure Průzkumník dat
-|database           |Název cílové databáze
+|databáze           |Název cílové databáze
 |table              |Název cílové tabulky
 |ingestionSourceId  |ID zdroje dat ingestování
 |ingestionSourcePath|Cesta zdroje dat ingestování nebo identifikátoru URI objektu BLOB

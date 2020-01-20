@@ -4,7 +4,7 @@ description: Architektura a scénáře s vysokou dostupností pro SAP NetWeaver 
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: msjuergent
-manager: patfilot
+manager: bburns
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/15/2019
+ms.date: 01/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3f5186f456003c341af41fc6067f3b5c08acb2b4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 698c198f58ead88b01b1c4b8b2e1fd9da4198c93
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078887"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277466"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Konfigurace úloh SAP s využitím služby Zóny dostupnosti Azure
 [Zóny dostupnosti Azure](https://docs.microsoft.com/azure/availability-zones/az-overview) je jednou z funkcí s vysokou dostupností, které poskytuje Azure. Použití Zóny dostupnosti zlepšuje celkovou dostupnost úloh SAP v Azure. Tato funkce je už v některých [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/)dostupná. V budoucnu bude k dispozici ve více oblastech.
@@ -57,7 +57,7 @@ Když nasadíte virtuální počítače Azure napříč Zóny dostupnosti a vytv
 
 - Při nasazení do Zóny dostupnosti Azure je nutné použít [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/) . 
 - Mapování výčtů zóny na fyzické zóny je vyřešeno na základě předplatného Azure. Pokud k nasazení systémů SAP používáte různá předplatná, musíte pro každé předplatné definovat ideální zóny.
-- Skupiny dostupnosti Azure nemůžete nasadit v rámci zóny dostupnosti Azure, pokud nepoužíváte [skupinu umístění s použitím Azure Proximity](https://docs.microsoft.com/azure/virtual-machines/linux/co-location). Způsob nasazení vrstvy SAP DBMS a centrálních služeb v různých zónách a zároveň nasazení vrstvy aplikace SAP pomocí skupin dostupnosti a zajištění bezprostřední blízkosti virtuálních počítačů je popsána v článku [umístění blízkosti Azure Skupiny pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md). Pokud nepoužíváte skupiny umístění blízkosti Azure, musíte zvolit jednu nebo druhou jako architekturu nasazení pro virtuální počítače.
+- Skupiny dostupnosti Azure nemůžete nasadit v rámci zóny dostupnosti Azure, pokud nepoužíváte [skupinu umístění s použitím Azure Proximity](https://docs.microsoft.com/azure/virtual-machines/linux/co-location). Způsob nasazení vrstvy SAP DBMS a centrálních služeb v různých zónách a zároveň nasazení vrstvy aplikace SAP pomocí skupin dostupnosti a zajištění bezprostřední blízkosti virtuálních počítačů je popsána v článku [skupiny umístění blízkosti Azure pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md). Pokud nepoužíváte skupiny umístění blízkosti Azure, musíte zvolit jednu nebo druhou jako architekturu nasazení pro virtuální počítače.
 - K vytvoření řešení clusteru s podporou převzetí služeb při selhání založeného na clusteringu Windows Server s podporou převzetí služeb při selhání nebo Linux Pacemaker nejde použít [Azure Basic Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) . Místo toho je potřeba použít [SKU Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones).
 
 
@@ -75,6 +75,8 @@ K určení latence mezi různými zónami budete potřebovat:
 - Nasaďte položku virtuálního počítače, kterou chcete použít pro instanci systému DBMS ve všech třech zónách. Ujistěte se, že je při provádění tohoto měření povolené [urychlení sítě Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) .
 - Když najdete dvě zóny s minimální latencí sítě, nasaďte další tři virtuální počítače skladové položky virtuálního počítače, které chcete použít jako virtuální počítač aplikační vrstvy v rámci tří Zóny dostupnosti. Změřte latenci sítě proti dvěma virtuálním počítačům DBMS v obou zónách DBMS, které jste vybrali. 
 - Použijte **niping** jako měřicí nástroj. Tento nástroj ze SAP je popsaný v tématu poznámky k podpoře SAP [#500235](https://launchpad.support.sap.com/#/notes/500235) a [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Zaměřte se na příkazy dokumentované pro měření latence. Protože nástroj **příkazového testu** na cestách nefunguje přes službu Azure akcelerované síťové cesty, nedoporučujeme ho používat.
+
+Tyto testy není nutné provádět ručně. Můžete najít [test latence zóny dostupnosti](https://github.com/Azure/SAP-on-Azure-Scripts-and-Utilities/tree/master/AvZone-Latency-Test) procedury PowerShellu, který automatizuje popsané testy latence. 
 
 Na základě vašich měření a dostupnosti skladových položek virtuálních počítačů v Zóny dostupnosti musíte udělat některá rozhodnutí:
 
@@ -103,7 +105,7 @@ Zjednodušené schéma aktivního/aktivního nasazení ve dvou zónách může v
 Pro tuto konfiguraci platí následující požadavky:
 
 - Nepoužíváte [skupinu umístění blízkosti Azure](https://docs.microsoft.com/azure/virtual-machines/linux/co-location), považujete zóny dostupnosti Azure jako chybu a aktualizační domény pro všechny virtuální počítače, protože skupiny dostupnosti nejde nasadit v zóny dostupnosti Azure.
-- Pokud chcete kombinovat nasazení na více systémů pro vrstvu DBMS a centrální služby, ale chcete použít skupiny dostupnosti Azure pro aplikační vrstvu, je třeba použít skupiny s použitím Azure Proximity, jak je popsáno v článku [skupiny umístění blízkosti Azure pro optimální latence sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md).
+- Pokud chcete kombinovat nasazení prostředí pro vrstvu DBMS a centrální služby, ale chcete použít skupiny dostupnosti Azure pro aplikační vrstvu, je nutné použít skupiny Azure Proximity, jak je popsáno v článku [skupiny umístění blízkosti Azure pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md).
 - Pro nástroje pro vyrovnávání zatížení clusterů s podporou převzetí služeb při selhání v centrálních službách SAP a ve vrstvě DBMS musíte použít [standardní SKU Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones). Základní Load Balancer nebudou v různých zónách fungovat.
 - Virtuální síť Azure, kterou jste nasadili pro hostování systému SAP, spolu s jejími podsítěmi, je roztažena v různých zónách. Pro každou zónu nepotřebujete samostatné virtuální sítě.
 - U všech virtuálních počítačů, které nasazujete, je potřeba použít [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/). Nespravované disky nejsou podporované pro nasazení v prostředích.
@@ -174,7 +176,7 @@ Pro tuto konfiguraci platí následující požadavky:
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Tady je několik dalších kroků pro nasazení v rámci Zóny dostupnosti Azure:
 
 - [Vytvoření clusteru instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání s Windows pomocí sdíleného disku clusteru v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)

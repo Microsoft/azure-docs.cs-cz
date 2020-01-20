@@ -1,177 +1,170 @@
 ---
-title: Zapněte nebo vypněte zařízení řady StorSimple 8000 | Dokumentace Microsoftu
-description: Vysvětluje, jak zapnout nové zařízení StorSimple, zapnutí zařízení, které vypnul nebo došlo ke ztrátě napájení a vypněte běžící zařízení.
-services: storsimple
-documentationcenter: ''
+title: Zapnout nebo vypnout zařízení řady StorSimple 8000
+description: Vysvětluje, jak zapnout nové zařízení StorSimple, zapnout zařízení, které se ukončilo nebo ztratilo napájení, a vypnutí spuštěného zařízení.
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 8e9c6e6c-965c-4a81-81bd-e1c523a14c82
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 29a45c0d32e35b5d321670bf25334a2976b93e56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1319583569a8abc619ad902a87ee551b476f88eb
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64693683"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276883"
 ---
-# <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>Zapněte nebo vypněte zařízení řady StorSimple 8000
+# <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>Zapnutí nebo vypnutí zařízení řady StorSimple 8000
 
 ## <a name="overview"></a>Přehled
-Vypínání zařízení s Microsoft Azure StorSimple se nevyžaduje jako součást operace normální systému. Ale budete muset zapnout nové zařízení nebo zařízení, které musí být vypnut. Obecně platí je potřeba vypnout v případech, kdy musíte nahradit selhání hardwaru, fyzicky přesunout jednotka nebo trvat zařízení mimo provoz. Tento kurz popisuje požadovaný postup pro zapnutí a vypnutí zařízení StorSimple v různých scénářích.
+Vypínání Microsoft Azure StorSimple zařízení není vyžadováno jako součást běžné systémové operace. Může se ale stát, že budete muset zapnout nové zařízení nebo zařízení, které se musí vypnout. Obecně se vyžaduje vypnutí v případech, kdy je třeba vyměnit neúspěšný hardware, fyzicky přesunout jednotku nebo převzít zařízení ze služby. Tento kurz popisuje požadovaný postup pro zapnutí a vypnutí zařízení StorSimple v různých scénářích.
 
 ## <a name="turn-on-a-new-device"></a>Zapnout nové zařízení
-Postup pro zapnutí zařízení StorSimple poprvé lišit v závislosti na tom, jestli je zařízení 8100 nebo 8600 model. 8100 má jeden primární skříň, vzhledem k tomu je duální skříň zařízení s primární skříň a skříně EBOD 8600. Podrobné kroky pro oba modely jsou popsané v následujících částech.
+Postup při prvním zapnutí zařízení StorSimple se liší v závislosti na tom, jestli je zařízení model 8100 nebo 8600. 8100 má jedinou primární skříň, zatímco 8600 je zařízení se dvěma plášťy s primární skříní a EBOD skříňkou. Podrobný postup pro oba modely je popsaný v následujících částech.
 
-* [Nové zařízení s pouze primární skříň](#new-device-with-primary-enclosure-only)
-* [Nové zařízení s podporou rozpoznávání skříní EBOD](#new-device-with-ebod-enclosure)
+* [Nové zařízení jenom s primární skříňkou](#new-device-with-primary-enclosure-only)
+* [Nové zařízení s EBOD skříní](#new-device-with-ebod-enclosure)
 
-### <a name="new-device-with-primary-enclosure-only"></a>Nové zařízení s pouze primární skříň
-StorSimple 8100 model je jeden skříň zařízení. Zařízení obsahuje redundantní napájení a chlazení moduly (PCMs). Jak PCMs musí být nainstalované a připojený k různým zdrojům napájení k zajištění vysoké dostupnosti.
+### <a name="new-device-with-primary-enclosure-only"></a>Nové zařízení jenom s primární skříňkou
+Model StorSimple 8100 je zařízení s jednou skříní. Vaše zařízení obsahuje redundantní moduly napájení a chlazení (PCMs). Aby se zajistila vysoká dostupnost, musí být nainstalovaná a připojená PCMs k různým zdrojům napájení.
 
-Proveďte následující kroky a zapojení kabeláže zařízení za výkon.
+Pomocí následujících kroků Zapojte zařízení do elektrického napájení.
 
 [!INCLUDE [storsimple-cable-8100-for-power](../../includes/storsimple-cable-8100-for-power.md)]
 
 > [!NOTE]
-> Nastavení kompletní zařízení a kabeláž pokyny v části [instalaci zařízení StorSimple 8100](storsimple-8100-hardware-installation.md). Ujistěte se, že přesně postupujte podle pokynů.
+> Kompletní nastavení zařízení a pokyny k kabeláži získáte, když přejdete na [nainstalovat zařízení StorSimple 8100](storsimple-8100-hardware-installation.md). Ujistěte se, že přesně budete postupovat podle pokynů.
 > 
 > 
 
-### <a name="new-device-with-ebod-enclosure"></a>Nové zařízení s podporou rozpoznávání skříní EBOD
-StorSimple 8600 modelu má primární skříň a EBOD skříň. To vyžaduje jednotky být zapojené dohromady pro připojení k rozhraní SCSI SAS (Serial Attached) a napájení.
+### <a name="new-device-with-ebod-enclosure"></a>Nové zařízení s EBOD skříní
+Model StorSimple 8600 má primární skříň i skříň EBOD. To vyžaduje, aby jednotky byly zapojeny pro připojení a napájení přes SAS (Serial Attached SCSI).
 
-Při nastavování zařízení poprvé, postupujte podle kroků pro SAS kabelů nejprve a potom postupujte podle pokynů pro kabeláž napájení.
+Při prvním nastavování tohoto zařízení proveďte kroky pro kabely SAS a pak dokončete postup pro kabely napájení.
 
 [!INCLUDE [storsimple-sas-cable-8600](../../includes/storsimple-sas-cable-8600.md)]
 
 [!INCLUDE [storsimple-cable-8600-for-power](../../includes/storsimple-cable-8600-for-power.md)]
 
 > [!NOTE]
-> Nastavení kompletní zařízení a kabeláž pokyny v části [instalaci zařízení StorSimple 8600](storsimple-8600-hardware-installation.md). Ujistěte se, že přesně postupujte podle pokynů.
+> Kompletní nastavení zařízení a pokyny k kabeláži získáte, když přejdete na [nainstalovat zařízení StorSimple 8600](storsimple-8600-hardware-installation.md). Ujistěte se, že přesně budete postupovat podle pokynů.
 
-## <a name="turn-on-a-device-after-shutdown"></a>Zapněte zařízení po vypnutí
-Postup pro zapnutí zařízení StorSimple, poté, co byl vypnut se liší v závislosti na tom, jestli je zařízení 8100 nebo 8600 model. 8100 má jeden primární skříň, vzhledem k tomu je duální skříň zařízení s primární skříň a skříně EBOD 8600.
+## <a name="turn-on-a-device-after-shutdown"></a>Zapnutí zařízení po vypnutí
+Postup zapnutí zařízení StorSimple po jeho vypnutí se liší v závislosti na tom, jestli je zařízení model 8100 nebo 8600. 8100 má jedinou primární skříň, zatímco 8600 je zařízení se dvěma plášťy s primární skříní a EBOD skříňkou.
 
-* [Zařízení s pouze primární skříň](#device-with-primary-enclosure-only)
-* [Zařízení s podporou rozpoznávání skříní EBOD](#device-with-ebod-enclosure)
+* [Jenom zařízení s primární skříňkou](#device-with-primary-enclosure-only)
+* [Zařízení s EBOD skříní](#device-with-ebod-enclosure)
 
-### <a name="device-with-primary-enclosure-only"></a>Zařízení s pouze primární skříň
-Po vypnutí pomocí následujícího postupu zapnutí zařízení StorSimple s primární skříň a žádné EBOD skříň.
+### <a name="device-with-primary-enclosure-only"></a>Jenom zařízení s primární skříňkou
+Po vypnutí použijte následující postup, chcete-li zapnout zařízení StorSimple s primární skříní a bez EBOD skříně.
 
-#### <a name="to-turn-on-a-device-with-a-primary-enclosure-only"></a>Chcete-li na zařízení s pouze primární skříň
-1. Ujistěte se, že výkon přepínače na obou napájení a chlazení moduly (PCMs) jsou na jinou pozici. Není-li přepínače na pozici, vypnuto, překlopit na pozici vypnuto a počkejte, světla vypnutí.
-2. Zapněte zařízení podle překlopení napájení přepínače na obou PCMs do polohy zapnuto. Zařízení by měl zapnout.
-3. Zaškrtnutím následujícího ověřte, že zařízení je plně na:
+#### <a name="to-turn-on-a-device-with-a-primary-enclosure-only"></a>Zapnutí zařízení jenom s primární skříňkou
+1. Ujistěte se, že přepínače napájení v modulech napájení a chladicích modulech (PCMs) jsou v VYPNUTé pozici. Pokud přepínače nejsou mimo místo, překlopte je na VOLNou a počkejte, než se indikátory vrátí.
+2. Zapněte zařízení překlopením přepínačů napájení na PCMs na pozici. Zařízení by se mělo zapnout.
+3. Zkontrolujte následující postup a ověřte, zda je zařízení plně zapnuté:
    
-   1. OK LED na oba moduly PCM jsou zelená.
-   2. Stav LED na obou kontrolerech jsou plné zelená.
-   3. Modré Indikátor na jeden z řadičů je bliká vám kontrolka, což znamená, že je aktivní kontroler.
+   1. Diody OK u obou modulů PCM jsou zelené.
+   2. Stavová dioda v obou řadičích je plná zelená.
+   3. Modrý indikátor LED na jednom z řadičů je blikající, což indikuje, že je kontroler aktivní.
       
-      Pokud se nesplní žádné z těchto podmínek, pak vaše zařízení není v pořádku. Prosím [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md).
+      Pokud některá z těchto podmínek není splněná, zařízení není v pořádku. [Kontaktujte prosím podpora Microsoftu](storsimple-8000-contact-microsoft-support.md).
 
-### <a name="device-with-ebod-enclosure"></a>Zařízení s podporou rozpoznávání skříní EBOD
-Po vypnutí použijte následující postup zapnutí zařízení StorSimple s primární skříň a skříně EBOD. Každý krok proveďte přesně tak, jak je popsáno v pořadí. Selhání k tomu může dojít ke ztrátě.
+### <a name="device-with-ebod-enclosure"></a>Zařízení s EBOD skříní
+Po vypnutí použijte následující postup, kterým zapnete zařízení StorSimple s primární skříní a skříní EBOD. Proveďte všechny kroky v sekvenci přesně tak, jak je popsáno. V takovém případě by mohlo dojít ke ztrátě dat.
 
-#### <a name="to-turn-on-a-device-with-a-primary-and-an-ebod-enclosure"></a>Chcete-li na zařízení s primární a skříně EBOD
-1. Ujistěte se, že skříň EBOD je připojen k primární skříň. Další informace najdete v tématu [instalaci zařízení StorSimple 8600](storsimple-8600-hardware-installation.md).
-2. Ujistěte se, že napájení a chlazení moduly (PCMs) na EBOD i primární skříních jsou na jinou pozici. Není-li přepínače na pozici, vypnuto, překlopit na pozici vypnuto a počkejte, světla vypnutí.
-3. Zapněte skříň EBOD první překlopení napájení přepínače na obou PCMs do polohy zapnuto. LED PCM by měl být zelená. Zelená kontroleru EBOD LED na této jednotce znamená, že skříň EBOD na.
-4. Zapněte primární skříň překlopení napájení přepínače na obou PCMs do polohy zapnuto. Celý systém by měl nyní obsahovat.
-5. Ověřte, že LED SAS zelené, které zajišťuje, že je dobré připojení mezi EBOD skříň a primární zařízení.
+#### <a name="to-turn-on-a-device-with-a-primary-and-an-ebod-enclosure"></a>Zapnutí zařízení s primární a EBODou skříňkou
+1. Ujistěte se, že skříň EBOD je připojená k primární skříni. Další informace najdete v tématu [instalace zařízení StorSimple 8600](storsimple-8600-hardware-installation.md).
+2. Ujistěte se, že moduly napájení a chlazení (PCMs) v EBOD i v primárních skříních jsou v VYPNUTé pozici. Pokud přepínače nejsou mimo místo, překlopte je na VOLNou a počkejte, než se indikátory vrátí.
+3. Nejprve zapněte EBOD skříň tím, že překlopením přepínače napájení v obou PCMs na pozici na pozici. Indikátory LED pro PCM by měly být zelené. Zelený kontroler EBOD LED na této jednotce indikuje, že skříň EBOD je zapnutá.
+4. Zapněte primární skříň tím, že překlopete přepínače napájení na PCMs na pozici. Teď by měl být zapnutý celý systém.
+5. Ověřte, že jsou indikátory LED SAS zelené, což zajistí, že spojení mezi skříní EBOD a primární skříňkou je dobré.
 
-## <a name="turn-on-a-device-after-a-power-loss"></a>Zapněte zařízení po výpadku napájení
-Zařízení StorSimple můžete vypnout výpadku napájení nebo přerušení. Výpadku napájení může dojít na jednom zdroji napájení nebo oba napájení. Postup obnovení se liší v závislosti na tom, jestli je zařízení 8100 nebo 8600 modelu. 8100 má jeden primární skříň, vzhledem k tomu je duální skříň zařízení s primární skříň a skříně EBOD 8600. Tato část popisuje postup obnovení pro jednotlivé scénáře.
+## <a name="turn-on-a-device-after-a-power-loss"></a>Zapnutí zařízení po výpadku napájení
+Výpadek napájení nebo přerušení může vypnout zařízení StorSimple. Výpadek napájení se může vyskytnout na jednom ze zdrojů napájení nebo na zdroji napájení. Postup obnovení se liší v závislosti na tom, jestli je zařízení model 8100 nebo 8600. 8100 má jedinou primární skříň, zatímco 8600 je zařízení se dvěma plášťy s primární skříní a EBOD skříňkou. Tato část popisuje postup obnovení pro jednotlivé scénáře.
 
-* [Zařízení s pouze primární skříň](#8100)
-* [Zařízení s podporou rozpoznávání skříní EBOD](#8600)
+* [Jenom zařízení s primární skříňkou](#8100)
+* [Zařízení s EBOD skříní](#8600)
 
-### <a name="device-with-primary-enclosure-only-a-name8100"></a>Zařízení s pouze primární skříň <a name="8100">
-Systém můžete pokračovat v normálním provozu při výpadku napájení na jeden z jeho napájení. Ale k zajištění vysoké dostupnosti zařízení obnovíte power napájení. co nejdříve.
+### <a name="device-with-primary-enclosure-only-a-name8100"></a>Jenom zařízení s primární skříňkou <a name="8100">
+Systém může pokračovat v běžném provozu, pokud dojde ke snížení výkonu některého z jeho zdrojů napájení. Chcete-li však zajistit vysokou dostupnost zařízení, obnovte napájení podle potřeby co nejdříve.
 
-Pokud dojde k výpadku napájení nebo přerušení napájení na obou napájení, systém se vypne v řádné a systematicky. Po obnovení výkon systému bude automaticky zapnout.
+Pokud dojde k výpadku napájení nebo přerušení napájení u napájení, systém se vypne přesně podle pořadí. Po obnovení napájení se systém automaticky zapne.
 
-### <a name="device-with-ebod-enclosure-a-name8600"></a>Zařízení s podporou rozpoznávání skříní EBOD <a name="8600">
-#### <a name="power-loss-on-one-power-supply"></a>Zadejte jeden výkonu při výpadku napájení
-Systém můžete pokračovat v normálním provozu při výpadku napájení na jeden z jeho napájení na primární zařízení nebo EBOD skříň. Ale k zajištění vysoké dostupnosti zařízení, obnovte prosím power do napájení. co nejdříve.
+### <a name="device-with-ebod-enclosure-a-name8600"></a>Zařízení s <a name="8600"> skříně EBOD
+#### <a name="power-loss-on-one-power-supply"></a>Výpadek napájení u jednoho zdroje napájení
+Systém může pokračovat v běžném provozu, pokud dojde ke snížení výkonu některého z jeho napájení v primární skříni nebo skříni EBOD. Chcete-li však zajistit vysokou dostupnost zařízení, obnovte napájení podle potřeby co nejdříve.
 
-#### <a name="power-loss-on-both-power-supplies-on-primary-and-ebod-enclosures"></a>Při výpadku napájení na obou napájení na primárním serverem a skříně EBOD
-Pokud dojde k výpadku napájení nebo přerušení napájení na obou napájení, skříň EBOD ihned vypne a primární zařízení vypne v řádné a systematicky. Když se obnoví power zařízení se spustí automaticky.
+#### <a name="power-loss-on-both-power-supplies-on-primary-and-ebod-enclosures"></a>Výpadek napájení u napájení u primárních i EBOD skříní
+Pokud dojde k výpadku napájení nebo přerušení napájení u napájení, skříň EBOD se okamžitě vypne a primární skříň se vypne přesně podle pořadí. Po obnovení napájení se zařízení automaticky spustí.
 
-Pokud výkon je ručně vypnout, pak proveďte následující kroky k obnovení napájení systému.
+Pokud je napájení vypnuto ručně, proveďte následující kroky k obnovení napájení systému.
 
 1. Zapněte EBOD skříň.
-2. Po na skříň EBOD zapněte primární skříň.
+2. Jakmile je skříň EBOD zapnutá, zapněte primární skříň.
 
-### <a name="power-loss-on-both-power-supplies-on-ebod-enclosure"></a>Při výpadku napájení na obou napájení na skříň EBOD
-Když nastavíte kabely, musíte zajistit, že EBOD se ještě nikdy nepřipojili samostatně na samostatné jednotky PDU. Pokud EBOD a primární skříň selhat ve stejnou dobu, systém se obnoví.
+### <a name="power-loss-on-both-power-supplies-on-ebod-enclosure"></a>Výpadek napájení u napájení v EBOD skříni
+Při nastavování kabelů je nutné zajistit, aby se EBOD nikdy nepřipojovaly samostatně k samostatné jednotce PDU. Pokud EBOD a primární skříň selže ve stejnou dobu, systém se obnoví.
 
-Pokud pouze skříň EBOD selže v obou napájení, systém automaticky neobnoví. Proveďte následující kroky, chcete-li v systému a jeho obnovení stavu v pořádku:
+Pokud se v obou zdrojích napájení selže jenom skříň EBOD, systém se automaticky neobnoví. Proveďte následující kroky, abyste systém zapnuli a obnovili ho do stavu v pořádku:
 
-1. Pokud je zapnutá primární skříň, vypněte napájení a chlazení moduly (PCMs).
-2. Počkejte několik minut, než systém vypnout.
+1. Pokud je primární skříň zapnutá, vypínejte moduly napájení a chlazení (PCMs).
+2. Počkejte několik minut, než se systém vypíná.
 3. Zapněte EBOD skříň.
-4. Po na skříň EBOD zapněte primární skříň.
+4. Jakmile je skříň EBOD zapnutá, zapněte primární skříň.
 
-## <a name="turn-on-a-device-after-the-primary-and-ebod-enclosure-connection-is-lost"></a>Zapněte zařízení po primární a dojde ke ztrátě připojení skříň EBOD
-Pokud je mezi kontroler v pohotovostním režimu a odpovídající kontroleru EBOD ke ztrátě připojení, bude zařízení dál fungovat. Pokud dojde ke ztrátě připojení mezi aktivním řadiči systému a odpovídající kontroleru EBOD, by mělo dojít k převzetí služeb při selhání a zařízení by ml fungovat normálním způsobem.
+## <a name="turn-on-a-device-after-the-primary-and-ebod-enclosure-connection-is-lost"></a>Zapnout zařízení po ztrátě primárního a EBOD připojení
+Pokud dojde ke ztrátě spojení mezi pohotovostním a odpovídajícím řadičem EBOD, zařízení bude i nadále fungovat. Pokud dojde ke ztrátě připojení mezi systémovým aktivním řadičem a odpovídajícím řadičem EBOD, mělo by dojít k převzetí služeb při selhání a zařízení by mělo dál fungovat jako normálně.
 
-Když se odeberou i kabely Serial Attached (SCSI SAS) nebo porušeno připojení mezi EBOD skříň a primární zařízení, zařízení přestane fungovat. V tomto okamžiku proveďte následující kroky.
+Když dojde k odebrání kabelů SAS (Serial Attached SCSI) nebo připojení mezi skříní EBOD a primární skříní je závažné, přestane zařízení fungovat. V tomto okamžiku proveďte následující kroky.
 
-### <a name="to-turn-on-the-device-after-connection-is-lost"></a>Chcete-li na zařízení, jakmile dojde ke ztrátě připojení
-1. Přístup na zadní straně zařízení.
-2. Pokud připojení SAS kabel mezi EBOD skříň a primární zařízení bylo přerušeno, SAS lane LED na skříň EBOD bude vypnuto.
-3. Vypněte napájení a chlazení moduly (PCMs) na skříň EBOD a primární zařízení.
-4. Počkejte, dokud všechny indikátory na zadní straně obě skříních vypnout.
-5. Vložte SAS kabely a ujistěte se, že je dobré připojení mezi EBOD skříň a primární zařízení.
-6. Zapněte skříň EBOD první překlopení oba přepínače PCM do polohy zapnuto.
-7. Zkontrolujte, že skříň EBOD na tak, že zkontrolujete, že zelený Indikátor je ON.
+### <a name="to-turn-on-the-device-after-connection-is-lost"></a>Zapnutí zařízení po ztrátě připojení
+1. Přístup k zadní části zařízení.
+2. Pokud je připojení kabelem SAS mezi skříňkou EBOD a primární skříňkou přerušeno, všechny indikátory SAS na skříni EBOD budou vypnuty.
+3. Vypněte moduly napájení a chlazení (PCMs) na skříni EBOD a v primární skříni.
+4. Počkejte, než se všechna světla v zadní části obou skříní vypnou.
+5. Znovu vložte kabely SAS a zajistěte, aby existovalo dobré spojení mezi skříní EBOD a primární skříňkou.
+6. Nejprve zapněte EBOD skříň tím, že překlopete přepínače PCM na pozici.
+7. Ujistěte se, že je EBOD skříň zapnutá, a zkontrolujte, že je ZAPNUTý zelený indikátor LED.
 8. Zapněte primární skříň.
-9. Zajistěte, aby byl primární zařízení na tak, že zkontrolujete, že řadič zelené Indikátor je ON.
-10. Ověřte, že připojení skříň EBOD s primární podporou rozpoznávání skříní dobré tak, že zkontrolujete, že lane SAS LED (čtyři za kontroleru EBOD) jsou všechny ON.
+9. Ujistěte se, že je primární skříň zapnutá pomocí kontroly, jestli je ZAPNUTý kontroler zelený indikátor.
+10. Ověřte, jestli je připojení skříně EBOD k primární skříni dobré, a to tak, že zkontrolujete, jestli jsou všechny indikátory LED SAS Lane (čtyři na řadič EBOD).
 
 > [!IMPORTANT]
-> Pokud je SAS kabely vadných nebo připojení mezi EBOD skříň a primární zařízení nevhodní, když zapnete systému, přejde do režimu obnovení. Prosím [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) v této situaci.
+> Pokud jsou kabely SAS vadné nebo spojení mezi skříňkou EBOD a primární skříňkou není dobré, při zapnutí systému se přejdou do režimu obnovení. Pokud k tomu dojde, [kontaktujte prosím podpora Microsoftu](storsimple-8000-contact-microsoft-support.md) .
 
 
-## <a name="turn-off-a-running-device"></a>Vypnout spuštěné zařízení
-Spuštěné zařízení StorSimple může být potřeba vypnout, pokud se přesune, vyřazen ze služby, nebo je nefunkční komponentu, která potřebuje vyměnit. Postup se liší v závislosti na tom, jestli je zařízení StorSimple 8100 nebo 8600 model. 8100 má jeden primární skříň, vzhledem k tomu je duální skříň zařízení s primární skříň a skříně EBOD 8600. Tato část podrobně popisuje kroky pro vypnutí spuštěné zařízení.
+## <a name="turn-off-a-running-device"></a>Vypnutí běžícího zařízení
+Běžící zařízení StorSimple může být potřeba vypnout, pokud se právě přesouvá, přijímá služby nebo má nefunkční komponentu, kterou je potřeba vyměnit. Postup se liší v závislosti na tom, jestli je zařízení StorSimple model 8100 nebo 8600. 8100 má jedinou primární skříň, zatímco 8600 je zařízení se dvěma plášťy s primární skříní a EBOD skříňkou. Tato část podrobně popisuje postup vypnutí spuštěného zařízení.
 
-* [Zařízení s podporou rozpoznávání skříní primární](#8100a)
-* [Zařízení s podporou rozpoznávání skříní EBOD](#8600a)
+* [Zařízení s primární skříňkou](#8100a)
+* [Zařízení s EBOD skříní](#8600a)
 
-### <a name="device-with-primary-enclosure-a-name8100a"></a>Zařízení s podporou rozpoznávání skříní primární <a name="8100a">
-Vypnutí zařízení za řádné a systematicky, vám pomůžou ho na webu Azure portal nebo pomocí Windows Powershellu pro StorSimple. 
+### <a name="device-with-primary-enclosure-a-name8100a"></a>Zařízení s primární skříňkou <a name="8100a">
+Pokud chcete zařízení vypnout podle pořadí a řízeného způsobu, můžete to provést prostřednictvím Azure Portal nebo přes Windows PowerShell pro StorSimple. 
 
 > [!IMPORTANT]
-> Nevypínejte spuštěné zařízení pomocí tlačítka napájení na zadní straně zařízení.
+> Neukončí spuštěné zařízení pomocí tlačítka napájení na zadní straně zařízení.
 > 
-> Před ukončením zařízení, ujistěte se, že všechny komponenty zařízení jsou v pořádku. Na webu Azure Portal, přejděte na **zařízení** > **monitorování** > **stav hardwaru**a ověřte, zda je stav všech součástí zeleně. To platí pouze pro stavu systému. Pokud systém je vypínán dolů k nahrazení nefunkční komponenty, se zobrazí selhání (červená) nebo degradovaný stav (žlutý) pro příslušné součásti v **stav hardwaru**.
+> Před vypnutím zařízení se ujistěte, že jsou všechny součásti zařízení v pořádku. V Azure Portal přejděte na **zařízení** > **monitorování** > **stav hardwaru**a ověřte, že stav všech komponent je zelený. To platí jenom pro dobrý systém. Pokud se systém vypíná, aby nahradil nefunkční komponentu, zobrazí se u příslušné součásti ve **stavu hardwaru**stav neúspěšné (červené) nebo zhoršený (žlutý).
 > 
 > 
 
-Poté, co můžete získat přístup k prostředí Windows PowerShell pro StorSimple nebo na webu Azure portal, postupujte podle kroků v [vypněte zařízení StorSimple](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device). 
+Po přístupu k Windows PowerShell pro StorSimple nebo Azure Portal postupujte podle kroků v části [vypnutí zařízení StorSimple](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device). 
 
-### <a name="device-with-ebod-enclosure-a-name8600a"></a>Zařízení s podporou rozpoznávání skříní EBOD <a name="8600a">
+### <a name="device-with-ebod-enclosure-a-name8600a"></a>Zařízení s <a name="8600a"> skříně EBOD
 > [!IMPORTANT]
-> Před ukončením primární skříň a EBOD skříň, ujistěte se, že všechny komponenty zařízení jsou v pořádku. Na webu Azure Portal, přejděte na **zařízení** > **monitorování** > **stav hardwaru**a ověřte, že všechny komponenty jsou v pořádku.
+> Před vypnutím primární skříně a skříně EBOD zajistěte, aby byly všechny součásti zařízení v dobrém stavu. V Azure Portal přejděte na **zařízení** > **monitorování** > **stav hardwaru**a ověřte, zda jsou všechny součásti v pořádku.
 
 
-#### <a name="to-shut-down-a-running-device-with-ebod-enclosure"></a>Pro vypnutí spuštěné zařízení s podporou rozpoznávání skříní EBOD
-1. Postupujte podle všech kroků uvedených v [vypněte zařízení StorSimple](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device) pro primární skříň.
-2. Poté, co je vypnut primární skříň, vypněte EBOD kliknutím překlopení vypnout napájení a chlazení modulu (PCM) přepínače.
-3. Pokud chcete ověřit, že byl vypnut EBOD, zkontrolujte, zda jsou všechny indikátory na zadní straně skříň EBOD vypnout.
+#### <a name="to-shut-down-a-running-device-with-ebod-enclosure"></a>Vypnutí běžícího zařízení pomocí skříně EBOD
+1. Postupujte podle všech kroků uvedených v části [vypnutí zařízení StorSimple](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device) pro primární skříň.
+2. Po vypnutí primární skříně vypněte EBOD překlopením přepínačů PCM (Power and chladicí modul).
+3. Pokud chcete ověřit, že se EBOD vypnul, zkontrolujte, že jsou vypnutá všechna světla zadní části skříně EBOD.
 
 > [!NOTE]
-> SAS kabely, které se používají k připojení skříň EBOD na primární zařízení by se neměly odebírat až po systém je vypnutý.
+> Kabely SAS používané pro připojení skříně EBOD k primární skříni by se neměly odebírat až po vypnutí systému.
 
-## <a name="next-steps"></a>Další postup
-[Obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) Pokud narazíte na problémy při zapnutí nebo vypnutí zařízení StorSimple.
+## <a name="next-steps"></a>Další kroky
+Pokud při zapnutí nebo vypnutí zařízení StorSimple dojde k problémům, [kontaktujte podpora Microsoftu](storsimple-8000-contact-microsoft-support.md) .
 

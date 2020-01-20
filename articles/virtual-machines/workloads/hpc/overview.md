@@ -1,58 +1,54 @@
 ---
-title: Vysoce výkonného výpočetního prostředí na virtuálních počítačích řady H-series – Azure Virtual Machines | Dokumentace Microsoftu
-description: Další informace o funkcích a možnostech virtuálních počítačů řady H-series optimalizované pro prostředí HPC.
-services: virtual-machines
-documentationcenter: ''
+title: Vysoce výkonné výpočetní prostředí na virtuálních počítačích H-Series – Azure Virtual Machines
+description: Seznamte se s funkcemi a funkcemi pro virtuální počítače H-Series optimalizované pro HPC.
 author: vermagit
-manager: jeconnoc
-editor: ''
+ms.author: amverma
 tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 07/02/2019
-ms.author: amverma
-ms.openlocfilehash: d6e857a87e4c7df8ffb2be1eefb7a0290da5b10a
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: b3d5d003db89a11a013c3236a3afbe03ffe68557
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67800061"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271024"
 ---
-# <a name="high-performance-computing-on-h-series-vms"></a>Vysoce výkonného výpočetního prostředí na virtuálních počítačích řady H-series
+# <a name="high-performance-computing-on-h-series-vms"></a>Vysoce výkonné výpočetní prostředí na virtuálních počítačích řady H-Series
 
-Vysokovýkonné výpočetní prostředí (HPC) na virtuální počítače řady hybridní připojení a HB-series umožňují nejvíce optimalizaci výkonu HPC, virtuálních počítačů v Azure. Virtuální počítače optimalizované HPC se používají k vyřešit některé automatizování nejobtížnějších matematických problémů, jako například: dynamika tekutin, ropa a plyn simulace nebo modelování počasí.
+Vysoce výkonné výpočetní prostředí (HPC) na virtuálních počítačích s více procesory a řady HC-Series umožňují optimální výkon HPC u všech virtuálních počítačů v Azure. Optimalizované virtuální počítače HPC se používají k řešení některých z nejobtížnějších matematických problémů, jako jsou například kapalné dynamiky, simulace ropných a plynových simulací a modelování počasí.
 
-Tento článek popisuje některé klíčové funkce služby HB-series a virtuální počítače řady hybridní připojení, proč se tyto virtuální počítače provádět i v prostředí HPC scénáře a jak začít pracovat.
+Tento článek popisuje některé klíčové funkce virtuálních počítačů s více procesory a řady HC-Series, proč tyto virtuální počítače ve scénářích HPC fungují dobře a jak začít.
 
 ## <a name="features-and-capabilities"></a>Funkce a možnosti
 
-HB-series a virtuální počítače řady hybridní připojení jsou navržené tak, aby poskytovat nejlepší výkon HPC, message passing interface (MPI) škálovatelnost a cenově výhodné řešení pro úlohy v prostředí HPC.
+Virtuální počítače s MPI a HC-Series jsou navržené tak, aby poskytovaly nejlepší výkon HPC, škálovatelnost rozhraní pro předávání zpráv () a cenovou efektivitu pro úlohy prostředí HPC.
 
-### <a name="message-passing-interface"></a>Rozhraní předávání zpráv
+### <a name="message-passing-interface"></a>Rozhraní pro předávání zpráv
 
-Hybridní připojení řady a HB series podporují téměř všechny MPI typy a verze. Některé z nejvíc běžné podporované MPI typy jsou: OpenMPI, MVAPICH2, platforma MPI, Intel MPI a paměti všech vzdáleného přímého přístupu příkazy (počítače RDMA). Další informace najdete v tématu [nastavení rozhraní předávání zpráv pro prostředí HPC](setup-mpi.md).
+Řady s více než-Series a HC-series podporují skoro všechny MPI typy a verze. Některé z nejběžnějších podporovaných typů MPI jsou: OpenMPs, MVAPICH2, Platform MPI, Intel MPI a všechny operace vzdáleného přímého přístupu do paměti (RDMA). Další informace najdete v tématu [nastavení rozhraní pro předávání zpráv pro HPC](setup-mpi.md).
 
 ### <a name="rdma-and-infiniband"></a>RDMA a InfiniBand
 
-Rozhraní RDMA je standardní HB-series a virtuální počítače řady hybridní připojení. Instance s podporou RDMA komunikovat přes síť InfiniBand, provozní sazby Rozšířená data (EDR) pro virtuální počítače HB řady a series hybridní připojení. Podporující RDMA instance může zvýšit škálovatelnost a výkonnostní některých aplikací MPI.
+Rozhraní RDMA je standard na virtuálních počítačích s více procesory a řady HC-Series. Instance s podporou RDMA komunikují přes síť InfiniBand, která je založená na rozšířených datových tarifech (EDR) pro virtuální počítače s více instancemi a s řadou HC-Series. Instance podporující RDMA můžou zvýšit škálovatelnost a výkon některých aplikací MPI.
 
-Konfigurace sítí InfiniBand podpora HB-series a virtuální počítače řady hybridní připojení se neblokující fat stromové struktury s nízkou průměr návrhem konzistentní výkon RDMA.
+Konfigurace InfiniBand podporující virtuální počítače typu 7000-Series a HC-Series nejsou blokující stromy se systémem souborů FAT s návrhem s nízkým průměrem pro zajištění konzistentního výkonu RDMA.
 
-Zobrazit [povolit InfiniBand](enable-infiniband.md) Další informace o nastavení InfiniBand HB řady nebo virtuálních počítačích řady hybridní připojení.
+Další informace o nastavení InfiniBand na virtuálních počítačích s InfiniBand nebo HC-Series najdete v tématu [Povolení](enable-infiniband.md) .
 
-## <a name="get-started"></a>Začínáme
+## <a name="get-started"></a>Začít
 
-Nejdřív se rozhodněte, kterou řada H-series virtuálních počítačů se chystáte používat. Podrobnosti o HPC optimalizovaná virtuální počítače, naleznete v tématu [přehled HB řad](hb-series-overview.md) a [hybridní připojení řady přehled](hc-series-overview.md). Specifikace, naleznete v tématu [vysoce výkonné výpočetní velikosti virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc).
+Nejdřív se rozhodněte, který virtuální počítač řady H-Series budete používat. Podrobnosti o virtuálních počítačích optimalizovaných pro HPC najdete v tématu Přehled [pro velmi řadu](hb-series-overview.md) a [přehledy HC-Series](hc-series-overview.md). Specifikace najdete v tématu [vysoce výkonné výpočetní virtuální počítače s vysokým výkonem](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc).
 
-Jakmile jsme vybrali a vytvoření virtuálního počítače pro vaši aplikaci, budete muset nakonfigurovat tím, že InfiniBand. Zjistěte, jak povolit InfiniBand na virtuální počítače s Linuxem i Windows, najdete v článku [povolit InfiniBand](enable-infiniband.md).
+Po vybrání a vytvoření virtuálního počítače pro aplikaci ho budete muset nakonfigurovat tak, že povolíte InfiniBand. Informace o tom, jak povolit InfiniBand na virtuálních počítačích s Windows i Linux, najdete v tématu [Povolení InfiniBand](enable-infiniband.md).
 
-Je zásadní součástí sady úloh HPC MPI. Hybridní připojení řady a HB series podporují téměř všechny MPI typy a verze. Další informace najdete v tématu [nastavení rozhraní předávání zpráv pro prostředí HPC](setup-mpi.md).
+Kritická součást úloh HPC je MPI. Řady s více než-Series a HC-series podporují skoro všechny MPI typy a verze. Další informace najdete v tématu [nastavení rozhraní pro předávání zpráv pro HPC](setup-mpi.md).
 
-Jakmile zvolíte řady virtuálních počítačů, nastavení Infiniband a MPI, jste připraveni začít vytvářet úlohy HPC.
+Až si vyberete řadu virtuálních počítačů, nastavíte InfiniBand a MPI, jste připraveni začít sestavovat úlohy prostředí HPC.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Zkontrolujte [přehled HB řad](hb-series-overview.md) a [přehled hybridní připojení series](hc-series-overview.md) Další informace o klíčových rozdílů a specifikace.
+- Další informace o klíčových rozdílech a specifikacích najdete v článku Přehled a Přehled řady [HC](hc-series-overview.md) - [Series](hb-series-overview.md) .
 
-- Vyšší úroveň zobrazení architektury spuštěných úloh prostředí HPC, naleznete v tématu [vysoký výkon výpočetního prostředí (HPC) v Azure](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/).
+- Pro vyšší úroveň architektury spouštění úloh HPC si přečtěte téma věnované architektuře [HPC (High Performance Computing) v Azure](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/).

@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 01/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 954e61aec5b622d44435a8a5b196fdbfed33c564
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 3fdc007caaa4cb79f6083599a5bc176bc022fb03
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561213"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278640"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>Konfigurace uchovávání v Time Series Insights
 
@@ -34,13 +34,13 @@ Podrobné informace o tom, jak tato nastavení lépe pochopit, najdete [v Time S
 
 ## <a name="configure-data-retention"></a>Konfigurace uchovávání dat
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
 
-1. Vyhledejte existující Time Series Insights prostředí. Vyberte **všechny prostředky** v nabídce na levé straně Azure Portal. Vyberte vaše prostředí Time Series Insights.
+1. Vyhledejte existující prostředí Time Series Insights. Vyberte **všechny prostředky** v nabídce na levé straně Azure Portal. Vyberte vaše prostředí Time Series Insights.
 
 1. V záhlaví **Nastavení** vyberte **Konfigurace úložiště**.
 
-    [![vyberte nastavení a pak nakonfigurujte](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
+    [![v části nastavení vyberte konfigurace úložiště.](media/data-retention/configure-data-retention.png)](media/data-retention/configure-data-retention.png#lightbox)
 
 1. Vyberte **dobu uchovávání dat (ve dnech)** pro konfiguraci uchovávání pomocí posuvníku nebo zadejte číslo do textového pole.
 
@@ -48,7 +48,7 @@ Podrobné informace o tom, jak tato nastavení lépe pochopit, najdete [v Time S
 
 1. Přepínání nastavení **chování při překročení limitu úložiště** Vyberte **Vymazat stará data** nebo **pozastavit** chování příchozího přenosu dat.
 
-    [![uchovávání dat – přijměte a uložte.](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
+    [![pozastavit příchozí přenos dat, přijmout a uložit.](media/data-retention/pause-ingress-accept-and-save.png)](media/data-retention/pause-ingress-accept-and-save.png#lightbox)
 
 1. Přečtěte si dokumentaci, abyste pochopili potenciální rizika ztráty dat. Vyberte **Uložit** a proveďte konfiguraci změn.
 

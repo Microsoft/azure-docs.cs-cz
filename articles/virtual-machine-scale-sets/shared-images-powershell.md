@@ -1,28 +1,19 @@
 ---
-title: Použití sdílených imagí virtuálních počítačů k vytvoření sady škálování v Azure | Microsoft Docs
+title: Použití sdílených imagí virtuálních počítačů k vytvoření sady škálování v Azure
 description: Naučte se používat Azure PowerShell k vytváření sdílených imagí virtuálních počítačů, které se použijí pro nasazení služby Virtual Machine Scale Sets v Azure.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: axayjo
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.custom: ''
-ms.openlocfilehash: 13c870ec87fa914f74bcfc4297dbe2fcc0bea282
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: b60a00828cfed8ef5d47704de2b2d7ede309ed6d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875610"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276302"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-powershell"></a>Vytváření a používání sdílených imagí pro sady škálování virtuálních počítačů s Azure PowerShell
 
@@ -34,7 +25,7 @@ Galerie je prostředek nejvyšší úrovně, který poskytuje úplné řízení 
 
 Funkce Galerie sdílených imagí má více typů prostředků. V tomto článku budeme používat nebo sestavovat tyto:
 
-| Resource | Popis|
+| Prostředek | Popis|
 |----------|------------|
 | **Spravovaná image** | Toto je základní obrázek, který se dá použít samostatně nebo použít k vytvoření **verze image** v galerii imagí. Spravované image se vytvářejí z zobecněných virtuálních počítačů. Spravovaná bitová kopie je speciální typ VHD, který se dá použít k vytvoření více virtuálních počítačů a dá se teď použít k vytváření verzí sdílených imagí. |
 | **Galerie imagí** | Podobně jako u Azure Marketplace je **Galerie imagí** úložiště pro správu a sdílení imagí, ale Vy řídíte, kdo má přístup. |
@@ -45,11 +36,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Následující postup podrobně popisuje přeměnu existujícího virtuálního počítače na opětovně použitelnou vlastní image, pomocí které můžete vytvářet nové instance virtuálních počítačů.
 
-Chcete-li dokončit příklad v tomto článku, musíte mít existující spravovanou bitovou kopii. Můžete postupovat [podle kurzu: Vytvořte a použijte vlastní image pro Virtual Machine Scale Sets s Azure PowerShell](tutorial-use-custom-image-powershell.md) , aby se v případě potřeby vytvořila. Pokud spravovaná bitová kopie obsahuje datový disk, velikost datového disku nemůže být větší než 1 TB.
+Chcete-li dokončit příklad v tomto článku, musíte mít existující spravovanou bitovou kopii. Postup najdete v tomto [kurzu: vytvoření a použití vlastní image pro Virtual Machine Scale Sets s Azure PowerShell](tutorial-use-custom-image-powershell.md) pro vytvoření v případě potřeby. Pokud spravovaná bitová kopie obsahuje datový disk, velikost datového disku nemůže být větší než 1 TB.
 
 Při práci s článkem nahraďte skupinu prostředků a názvy virtuálních počítačů tam, kde je to potřeba.
 
@@ -58,7 +49,7 @@ Při práci s článkem nahraďte skupinu prostředků a názvy virtuálních po
 
 ## <a name="create-a-scale-set-from-the-shared-image-version"></a>Vytvoření sady škálování ze sdílené image verze
 
-Vytvořte sadu škálování virtuálního počítače pomocí [New-AzVmss](/powershell/module/az.compute/new-azvmss). Následující příklad vytvoří sadu škálování z nové verze image v Střed USA – jihovém datacentru  . Po zobrazení výzvy nastavte vlastní přihlašovací údaje pro instance virtuálních počítačů v sadě škálování:
+Vytvořte sadu škálování virtuálního počítače pomocí [New-AzVmss](/powershell/module/az.compute/new-azvmss). Následující příklad vytvoří sadu škálování z nové verze image v *střed USA – jihovém* datacentru. Po zobrazení výzvy nastavte vlastní přihlašovací údaje pro instance virtuálních počítačů v sadě škálování:
 
 
 ```azurepowershell-interactive
@@ -166,7 +157,7 @@ Vytvoření a konfigurace všech prostředků škálovací sady a virtuálních 
 [!INCLUDE [virtual-machines-common-shared-images-update-delete-ps](../../includes/virtual-machines-common-shared-images-update-delete-ps.md)]
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pomocí šablon můžete také vytvořit prostředek Galerie sdílených imagí. K dispozici je několik šablon rychlého startu Azure: 
 

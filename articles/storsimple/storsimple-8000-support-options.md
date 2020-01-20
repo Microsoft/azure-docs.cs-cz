@@ -1,25 +1,17 @@
 ---
-title: StorSimple – výrazy podpory | Microsoft Docs
+title: StorSimple podmínek podpory
 description: Popisuje možnosti podpory pro zákazníky s StorSimple 8000 series Enterprise Storage.
-services: storsimple
-documentationcenter: NA
 author: GabiSocoteanu
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: alkohli
-ms.openlocfilehash: 046558007f1a2f2c86f80af610be56b77fa63da1
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d9a75cde58062061149fa4304eace587b1480dd1
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990378"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277040"
 ---
 # <a name="storsimple-solution-support"></a>Podpora řešení StorSimple
 
@@ -36,16 +28,16 @@ Microsoft nabízí flexibilní možnosti podpory pro zákazníky StorSimple Ente
 
 ## <a name="storsimple-support-plans"></a>Plány podpory StorSimple
 
-|                                                                                                                                                     | **STANDARDNÍ** <sup>1                                                 |  ÚROVEŇ **PREMIUM** <sup>1                                                                         |
+|                                                                                                                                                     | **STANDARD** <sup>1                                                 |  <sup>úrovně **Premium** 1                                                                         |
 |---------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
 | Fakturace a správa předplatného                                                                     | ✓                                                                               | ✓                                                                              |
 | Odeslání lístku Azure Portal                                                                          | ✓                                                                               | ✓                                                                              |
 | Přístup k portálu Online Support                                                                            | ✓                                                                               | ✓                                                                              |
 | Zřizování a správa výstrah                                                                       | ✓                                                                               | ✓                                                                              |
-| Doba první odezvy na technickou podporu – nepřetržité odesílání lístků podpory <br> Doba první odezvy na základě závažnosti <sup>2 | Závažnost A: Do 2 hodin <br> Závažnost B: Do 4 hodin <br> Závažnost C: Do 8 hodin | Závažnost A: Do 60 minut <br> Závažnost B: Do 2 hodin <br> Závažnost C: Do 4 hodin |
+| Doba první odezvy na technickou podporu – nepřetržité odesílání lístků podpory <br> Doba první odezvy na základě závažnosti <sup>2 | Závažnost A: do 2 hodin <br> Závažnost B: do 4 hodin <br> Závažnost C: do 8 hodin | Závažnost A: do 60 minut <br> Závažnost B: do 2 hodin <br> Závažnost C: do 4 hodin |
 | Telefonická podpora (zpětné volání)                                                                               | ✓                                                                               | ✓                                                                              |
 | Nahrazení pokročilých součástí (jenom řada StorSimple 8000) <sup>3</sup>                                              | Další pracovní den <sup>4                                                              | Do 4 hodin                                                                 |
-| Technický pracovník služeb pro pole na pracovišti (jenom řada StorSimple 8000) <sup>3</sup>                                         | Není dostupné                                                                   | Do 4 hodin                                                                 |
+| Technický pracovník služeb pro pole na pracovišti (jenom řada StorSimple 8000) <sup>3</sup>                                         | Není k dispozici                                                                   | Do 4 hodin                                                                 |
 | Virtuální pole StorSimple <sup>5</sup>                                                                              | ✓                                                                               | ✓                                                                              |
 | Instance virtuálního pole StorSimple <sup>5</sup>                                                                 | Bez omezení                                                                        | Bez omezení                                                                       |
 
@@ -53,20 +45,20 @@ Microsoft nabízí flexibilní možnosti podpory pro zákazníky StorSimple Ente
 
 | ZÁRUKA NA HARDWARE A SOFTWARE                                        |
 |-----------------------------------------------------------------------|
-| Nahrazení hardwarových částí (pouze řada StorSimple 8000 <sup>) 6       |
+| Nahrazení hardwarových částí (pouze řada StorSimple 8000) <sup>6       |
 | Bezplatné aktualizace softwaru                                                 |
 
 <sup>1</sup> podpora poskytovaná zákazníkovi až do doby příštího výročí EA. Zákazníci musí prodloužit podporu na den smlouvy EA, aby měli nárok na podporu StorSimple. Kontaktujte Microsoft a požádejte ho o zeměpisné pokrytí. Pokrytí Premium se může lišit podle města. Před zakoupením podpory StorSimple Premium kontaktujte tým účet Microsoft/Sales pro geografické pokrytí.
 
 <sup>2</sup> . závažnost je definována takto: 
 
-* Závažnost A: Významná ztráta nebo snížení úrovně služeb
+* Závažnost A: významná ztráta nebo snížení úrovně služeb
 
 
-* Závažnost B: Střední ztráta nebo snížení úrovně, ale práce může pokračovat v neomezeném způsobu
+* Závažnost B: střední ztráta nebo snížení úrovně, ale práce může pokračovat v neomezeném způsobu.
 
 
-* Závažnost C: Podstatné fungování s menšími nebo nedůležitými překážkami funkcí systému
+* Závažnost C: podstatné fungování s menšími nebo nedůležitými překážkami funkcí systému
 
     Microsoft může snížit úroveň závažnosti případu, pokud zákazník nemůže poskytnout dostatečné prostředky nebo odpovědi, aby Microsoft mohl pokračovat v řešení problémů. Očekávaná doba odezvy na základě nepřetržité podpory v angličtině pro závažnost A, místní pracovní dobu pro závažnosti B a C. 
 
@@ -81,13 +73,13 @@ Microsoft nabízí flexibilní možnosti podpory pro zákazníky StorSimple Ente
 Pokud vaše smlouva o podpoře vypršela, mějte na paměti, že v závislosti na tom, jak dlouho vypršela platnost smlouvy o podpoře, může trvat až tři týdny po dokončení zpracování obnovení, než se část doručí, že místní skladové umístění vaší smlouvy nebude v případě, že se po zpracování vaší smlouvy skladují náhradní části pro vaše zařízení.
 
 ## <a name="local-language-support"></a>Podpora místních jazyků
-Kromě angličtiny je podpora místního jazyka k dispozici v následujících jazycích v pracovní době: Španělština, portugalština, japonština, korejština, Tchaj-tá a tradiční čínština.
+Kromě angličtiny je podpora místního jazyka k dispozici v následujících jazycích v pracovní době: Španělština, portugalština, japonština, korejština, Tchaj-in a tradiční čínština.
 
 ## <a name="support-scope"></a>Rozsah podpory 
 Podpora pro záležitosti související s fakturací a správou předplatných je dostupná na všech úrovních podpory. Aby bylo možné získat podporu StorSimple, musí být zákazník aktivně zaregistrovaný buď pro plány podpory StorSimple Standard nebo Premium. Tým podpory StorSimple bude zodpovědný za řešení všech problémů, které mají vliv na řešení StorSimple. Aby bylo možné získat podporu pro problémy související se službou Azure, které přímo nesouvisejí s StorSimple, musí být zákazník zaregistrovaný v příslušném plánu podpory Azure. Podrobnosti najdete [tady](https://azure.microsoft.com/support/plans/) . Tým podpory odkazuje na neStorSimpleé případy podpory týmu Azure, který vám umožní další postup na základě nároků zákazníků na podporu Azure. 
 
 
-| **ZÁVAŽNOST** |**SITUACE ZÁKAZNÍKA**                                                                                                                                | OČEKÁVANÁ ODPOVĚĎ <sup>MICROSOFTU 2                                                                                       | OČEKÁVANÁ ODPOVĚĎ ZÁKAZNÍKA                                                                                                                                                       |
+| **ZÁVAŽNOST** |**SITUACE ZÁKAZNÍKA**                                                                                                                                | Očekávaná odpověď od Microsoftu <sup>2                                                                                       | OČEKÁVANÁ ODPOVĚĎ ZÁKAZNÍKA                                                                                                                                                       |
 |----------|-----------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | A        | Závažný dopad na chod firmy: <ul> <br> <li> Zákazníci s podnikáním mají významnou ztrátu nebo snížení úrovně služeb. <sup>1</sup> <br> <li> Vyžaduje okamžitou pozornost.                          | Počáteční odpověď: <sup>1</sup> <ul><br> <li>1 hodina nebo méně pro prémii <br> <li> 2 hodiny a méně pro Standard <br> <li> Nepřetržité úsilí každý den. | <ul><li> Přidělení příslušných prostředků, aby mohla práce na řešení probíhat nepřetržitě. <br> <li> Přesné kontaktní informace pro vlastníka případu                                                |
 | B        | Středně závažný dopad na chod firmy: <ul><br> <li> Firma zákazníka má mírné ztráty nebo snížení úrovně služeb, ale práce může rozumně pokračovat v neomezeném způsobu. | Počáteční odpověď: <sup>1</sup><ul><br> <li> 2 hodiny nebo méně pro Premium <br> <li> 4 hodiny a méně pro Standard                                      | <ul><li> Přidělování vhodných prostředků pro udržení nepřetržité úsilí v pracovní době, pokud se zákazníci nežádají o výslovný souhlas. <br> <li> Přesné kontaktní informace pro vlastníka případu |
@@ -95,7 +87,7 @@ Podpora pro záležitosti související s fakturací a správou předplatných j
  
 <sup>1</sup> Microsoft může snížit úroveň závažnosti v případě závažnosti případu, pokud zákazník nemůže poskytnout dostatečné prostředky nebo odpovědi, aby Microsoft mohl pokračovat v řešení problémů.
 
-<sup>2</sup> očekávané doby odezvy jsou založené na nepřetržité podpoře v angličtině pro závažnost a a v místní pracovní době pro závažnosti B a C a podpora místní pracovní doby v zbývajících místních jazycích: Japonština, Tchaj-tá, tradiční čínština a korejština.
+<sup>2</sup> očekávané doby odezvy jsou založené na nepřetržité podpoře v angličtině pro závažnost a a v místní pracovní době pro závažnosti B a C a v místní pracovní době podporují ve zbývajících místních jazycích: japonština, Tchaj-in, tradiční čínština a korejština.
 
 ## <a name="cancellation-policy"></a>Zásady zrušení
 Aby bylo možné získat podporu StorSimple, zákazník musí zakoupit plán podpory Standard nebo Premium po dobu trvání období předplatného. Zrušení nemá za následek poměrnou refundaci. Plány podpory StorSimple jsou omezením, které se vztahuje na výročí EA. Společnost Microsoft ale nemůže poskytovat podporu zákazníkům StorSimple bez platné smlouvy o podpoře.
@@ -114,17 +106,17 @@ Podpora polí úložiště řady StorSimple 8000 je poskytována na základě to
 | **SKU podpory**                                                                                            | **Model předplatného**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |            **Model co nejdříve**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Standardní podpora** <br></br> [CWZ-00023] <br></br>*AzureStorSimple ShrdSvr ALNG SubsVL MVL StdSpprt*<br><br><br><br><br>                         |Zahrnuje.<br><br><br><br><br><br><br><br><br><br><br><br>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |<ul> <li>Poskytuje zákazníkům s počátečním nákupem v další smlouvě EA.<li> Zákazník musí zakoupit podporu v následujících letech, protože žádné náhradní součásti hardwaru nelze odeslat bez aktivní smlouvy StorSimple support.<br>   <br><br><br><br><br><br>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| * **Podpora** úrovně Premium <br></br> [CWZ-00024] <br></br> *AzureStorSimple ShrdSvr ALNG SubsVL MVL PremSpprt* <br><br><br><br><br><br>                         | Vzhledem k tomu, že Standard Support je automaticky zahrnutý v rámci předplatného, přečtěte si standard pro upgrade na verzi Premium      <br><br><br><br><br><br><br><br><br> <br><br><br>                                                                                                                                                                                                                                                                                                                                                                                                                    | <ul> <li>Zákazníci, na které se vztahují smlouvy Microsoft Premier Support, by se měli obrátit na upgrade Standard na prémii. <li>Zákazníci, kteří se nezabývá smlouvou Microsoft Premier a chtějí mít podporu Premium StorSimple, by měli tuto skladovou jednotku koupit v době obnovení.<br><br><br><br><br><br><br><br>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| **Upgrade Standard na verzi Premium** \* \* <br></br> [CWZ- 00025] <br></br> *AzureStorSimple ShrdSvr ALNG SubsVL MVL Spprt- StepuptoPrem* <br><br><br><br><br><br><br><br><br>| Zákazníci, na které se vztahuje smlouva Microsoft Premier Supporte v době nákupu StorSimple, se automaticky upgradují na prémiovou podporu StorSimple zdarma, a to po dobu, po kterou zůstanou pokrytá podporou Premier.  Pokud zákazníci získají Premier Support později, můžete získat bezplatný upgrade podpory StorSimple prostřednictvím žádosti SSSupOps@microsoft.com. <br></br>Zákazníci, kteří nejsou na úrovni Premier, si můžou během smlouvy smlouva Enterprise (EA) zakoupit Standard StorSimple na verzi Premium (CWZ-00025).<br><br><br><br><br><br><br><br> | <ul><li> Zákazníci, na které se vztahuje smlouva Microsoft Premier Supporte, si můžou koupit Standard Support SKLADOVOU položku [CWZ-00023] a smlouva StorSimple Standard Support se automaticky upgraduje, a to bez dalších poplatků, a to po dobu, po kterou zůstanou pokrytá. Podpora Premier. <li> Pokud zákazníci získají Premier Support později, můžete získat bezplatný upgrade podpory StorSimple prostřednictvím žádosti SSSupOps@microsoft.com. <li> Zákazníci, kteří nejsou na úrovni Premium, na které patří StorSimple Standard Support, můžou během smlouvy smlouva Enterprise (EA) zakoupit během smlouvy (EA) položku aktualizace SKU [CWZ-00025]. Příští rok: při obnovování smlouvy o podpoře by si zákazníci měli koupit přímo SKU podpory úrovně Premium [CWZ-00024], a ne jenom pomocí SKU pro upgrade [CWZ-00025].<br><br> |
+| **Podpora*** úrovně **Premium** <br></br> [CWZ-00024] <br></br> *AzureStorSimple ShrdSvr ALNG SubsVL MVL PremSpprt* <br><br><br><br><br><br>                         | Vzhledem k tomu, že Standard Support je automaticky zahrnutý v rámci předplatného, přečtěte si standard pro upgrade na verzi Premium      <br><br><br><br><br><br><br><br><br> <br><br><br>                                                                                                                                                                                                                                                                                                                                                                                                                    | <ul> <li>Zákazníci, na které se vztahují smlouvy Microsoft Premier Support, by se měli obrátit na upgrade Standard na prémii. <li>Zákazníci, kteří se nezabývá smlouvou Microsoft Premier a chtějí mít podporu Premium StorSimple, by měli tuto skladovou jednotku koupit v době obnovení.<br><br><br><br><br><br><br><br>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| Upgrade **Standard na Premium**\*\* <br></br> [CWZ- 00025] <br></br> *AzureStorSimple ShrdSvr ALNG SubsVL MVL Spprt- StepuptoPrem* <br><br><br><br><br><br><br><br><br>| Zákazníci, na které se vztahuje smlouva Microsoft Premier Supporte v době nákupu StorSimple, se automaticky upgradují na prémiovou podporu StorSimple zdarma, a to po dobu, po kterou zůstanou pokrytá podporou Premier.  Pokud zákazníci získají Premier Support později, můžete získat bezplatný upgrade podpory StorSimple, který si ho vyžádá prostřednictvím SSSupOps@microsoft.com. <br></br>Zákazníci, kteří nejsou na úrovni Premier, si můžou během smlouvy smlouva Enterprise (EA) zakoupit Standard StorSimple na verzi Premium (CWZ-00025).<br><br><br><br><br><br><br><br> | <ul><li> Zákazníci, na které se vztahuje smlouva Microsoft Premier Supporte, si můžou koupit Standard Support SKLADOVOU položku [CWZ-00023] a smlouva StorSimple Standard Support se automaticky upgraduje, a to bez dalších poplatků, a to po dobu, po kterou zůstanou pokrytá. Podpora Premier. <li> Pokud zákazníci získají Premier Support později, můžete získat bezplatný upgrade podpory StorSimple, který si ho vyžádá prostřednictvím SSSupOps@microsoft.com. <li> Zákazníci, kteří nejsou na úrovni Premium, na které patří StorSimple Standard Support, můžou během smlouvy smlouva Enterprise (EA) zakoupit během smlouvy (EA) položku aktualizace SKU [CWZ-00025]. Příští rok: při obnovování smlouvy o podpoře by si zákazníci měli koupit přímo SKU podpory úrovně Premium [CWZ-00024], a ne jenom pomocí SKU pro upgrade [CWZ-00025].<br><br> |
 
 
 
-*<text>* Pokrytí Premium není k dispozici ve všech umístěních. Před nákupem podpory\@StorSimple Premium kontaktujte Microsoftu na adrese SSSupOps Microsoft.com pro zeměpisné pokrytí.*
+*<text> * pokrytí Premium není k dispozici ve všech umístěních. Před nákupem podpory StorSimple Premium kontaktujte Microsoftu na adrese SSSupOps\@microsoft.com pro geografické pokrytí.*
 
-***Zařízení StorSimple se musí nasadit v oblasti, kde se na zákazníka vztahuje podpora Premier, aby bylo možné využívat bezplatný upgrade na podporu Premium StorSimple.*
+***zařízení StorSimple musí být nasazené v oblasti, kde se na zákazníka vztahuje podpora Premier, aby bylo možné využívat bezplatný upgrade na podporu Premium StorSimple.*
 
 
-A co se zákazníci můžou přepnout na model předplatného, ve kterém je zahrnutá standardní podpora. Použijte cenovou kalkulačku StorSimple pro ceny předplatného a kontaktujte SSSupOps@microsoft.com všechny otázky. Přepínání je jedním ze způsobů, jak z co nejdříve do předplatného.
+A co se zákazníci můžou přepnout na model předplatného, ve kterém je zahrnutá standardní podpora. Použijte cenovou kalkulačku StorSimple pro ceny předplatného a kontaktujte SSSupOps@microsoft.com pro všechny otázky. Přepínání je jedním ze způsobů, jak z co nejdříve do předplatného.
 
 
 

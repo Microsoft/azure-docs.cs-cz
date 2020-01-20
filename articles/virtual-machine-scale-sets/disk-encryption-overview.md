@@ -3,16 +3,16 @@ title: Povolit Azure Disk Encryption pro Virtual Machine Scale Sets
 description: Tento článek poskytuje pokyny k povolení Microsoft Azureho šifrování disku pro Virtual Machine Scale Sets
 author: msmbaldwin
 ms.service: virtual-machine-scale-sets
-ms.topic: article
+ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0097d0e1d5ea7de092da14683d4bab3d673b2219
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 36eb83d99af299260ebbbd74fe56d69921ba389b
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177774"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278975"
 ---
 # <a name="azure-disk-encryption-for-virtual-machine-scale-sets"></a>Azure Disk Encryption pro Virtual Machine Scale Sets
 
@@ -23,7 +23,7 @@ Azure Disk Encryption můžete použít taky pro virtuální počítače s Windo
 - OPERAČNÍ systémy a datové svazky ve Windows Scale Sets.
 - Datové svazky v systému Linux Scale Sets. Šifrování disku s operačním systémem se v současné době nepodporuje pro systémy Linux Scale Sets.
 
-Základní informace o Azure Disk Encryption pro Virtual Machine Scale Sets se dozvíte během několika minut pomocí [šifrování virtuálních počítačů s využitím rozhraní příkazového řádku Azure CLI](disk-encryption-cli.md) nebo [šifrování virtuálních počítačů s využitím služby Virtual Machine scale Sets pomocí Azure PowerShell](disk-encryption-powershell.md) výuka.
+Základní informace o Azure Disk Encryption pro Virtual Machine Scale Sets se dozvíte během několika minut pomocí [šifrování virtuálních počítačů s využitím Azure CLI](disk-encryption-cli.md) nebo [šifrování virtuálních počítačů pomocí Azure PowerShellch](disk-encryption-powershell.md) kurzů.
 
 ## <a name="next-steps"></a>Další kroky
 

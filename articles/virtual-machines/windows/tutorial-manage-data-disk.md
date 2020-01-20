@@ -16,12 +16,12 @@ ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: 05ad0b95b106b56d92cdbc5a7acd23cc34de7ae4
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: b288091172c71be82e70d90eb8817b2130f2cbef
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780262"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277314"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>Kurz: Správa disků v Azure pomocí Azure PowerShellu
 
@@ -38,13 +38,13 @@ Virtuální počítače Azure využívají disky k ukládání svých operační
 
 Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
 
-Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložit je do Cloud Shellu a potom je spusťte stisknutím klávesy Enter.
+Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
 ## <a name="default-azure-disks"></a>Výchozí disky v Azure
 
 Při vytvoření virtuálního počítače Azure se k němu automaticky připojí dva disky. 
 
-**Disk s operačním systémem:** Disky s operačním systémem můžou mít velikost až 4 terabajty a hostují operační systém virtuálního počítače.  Disku s operačním systémem je ve výchozím nastavení přiřazené písmeno jednotky *C*. Konfigurace ukládání do mezipaměti na disku je u disku s operačním systémem optimalizovaná s ohledem na výkon operačního systému. Disk s operačním systémem **by neměl** hostit aplikace nebo data. Pro aplikace a data použijte datový disk, který je podrobněji popsán dále v tomto článku.
+**Disk s operačním systémem:** Disky s operačním systémem můžou mít velikost až 4 terabajty a hostují operační systém virtuálního počítače. Pokud vytvoříte nový virtuální počítač z bitové kopie [Azure Marketplace](https://azure.microsoft.com/marketplace/) , obvykle 127 GB (ale některé image mají menší velikosti disků s operačním systémem). Disku s operačním systémem je ve výchozím nastavení přiřazené písmeno jednotky *C*. Konfigurace ukládání do mezipaměti na disku je u disku s operačním systémem optimalizovaná s ohledem na výkon operačního systému. Disk s operačním systémem **by neměl** hostit aplikace nebo data. Pro aplikace a data použijte datový disk, který je podrobněji popsán dále v tomto článku.
 
 **Dočasný disk:** Dočasné disky používají jednotku SSD, která je umístěná na stejném hostiteli Azure jako virtuální počítač. Dočasné disky mají vysoký výkon a můžou se používat pro operace, jako je zpracování dočasných dat. V případě přesunutí virtuálního počítače na nového hostitele se ale všechna data uložená na dočasném disku odeberou. Velikost dočasného disku se určuje podle [velikosti virtuálního počítače](sizes.md). Dočasným diskům se ve výchozím nastavení přiřazuje písmeno jednotky *D*.
 

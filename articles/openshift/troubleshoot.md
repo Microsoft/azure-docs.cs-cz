@@ -1,41 +1,39 @@
 ---
-title: Řešení potíží s Azure Red Hat OpenShift | Dokumentace Microsoftu
-description: Řešení potíží a řešit obvyklé problémy s Azure Red Hat OpenShift
-services: container-service
+title: Řešení potíží s Azure Red Hat OpenShift
+description: Řešení potíží a řešení běžných potíží s Azure Red Hat OpenShift
 author: jimzim
 ms.author: jzim
-manager: jeconnoc
 ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 05/08/2019
-ms.openlocfilehash: 7f2bdf643f12671bec3d0c087d8775844099fe9a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ee032cdf4a3f72b2cd2e7da0658effe75b6fb1fa
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306250"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274935"
 ---
 # <a name="troubleshooting-for-azure-red-hat-openshift"></a>Řešení potíží pro Azure Red Hat OpenShift
 
-Tento článek podrobně popisuje některé běžné problémy při vytváření a správě clusterů Microsoft Azure Red Hat OpenShift došlo.
+Tento článek podrobně popisuje některé běžné problémy, které se vyskytly při vytváření nebo správě Microsoft Azure clusterů Red Hat OpenShift.
 
-## <a name="retrying-the-creation-of-a-failed-cluster"></a>Opakování pokusu o vytvoření clusteru se nezdařilo
+## <a name="retrying-the-creation-of-a-failed-cluster"></a>Opakuje se pokus o vytvoření clusteru, který selhal.
 
-Pokud Azure Red Hat OpenShift vytváření clusteru s použitím `az` rozhraní příkazového řádku příkaz selže, to zkusíte znovu vytvořit budou i nadále nezdaří.
-Použití `az openshift delete` odstranění selhání clusteru, pak vytvořte zcela nový cluster.
+Pokud se nedaří vytvořit cluster Azure Red Hat OpenShift pomocí příkazu `az` CLI, zkuste operaci vytvoření pokračovat znovu.
+Pomocí `az openshift delete` odstraňte cluster, který selhal, a pak vytvořte zcela nový cluster.
 
-## <a name="hidden-azure-red-hat-openshift-cluster-resource-group"></a>Skryté skupinu prostředků clusteru Azure Red Hat OpenShift
+## <a name="hidden-azure-red-hat-openshift-cluster-resource-group"></a>Skrytá skupina prostředků clusteru Azure Red Hat OpenShift
 
-V současné době `Microsoft.ContainerService/openShiftManagedClusters` prostředek, který se automaticky vytvoří pomocí rozhraní příkazového řádku Azure (`az openshift create` příkaz) je skrytý na webu Azure Portal. V **skupiny prostředků** zobrazení, zkontrolujte **zobrazit skryté typy** zobrazíte skupinu prostředků.
+V současné době je `Microsoft.ContainerService/openShiftManagedClusters` prostředek, který je automaticky vytvořený pomocí rozhraní příkazového řádku Azure CLI (`az openshift create`), skrytý v Azure Portal. Pokud chcete zobrazit skupinu prostředků, v zobrazení **skupiny prostředků** zkontrolujte zobrazení **skryté typy** .
 
-![Snímek obrazovky skryté typu zaškrtávací políčko na portálu](./media/aro-portal-hidden-type.png)
+![Snímek obrazovky se zaškrtávacím políčkem skrytého typu na portálu](./media/aro-portal-hidden-type.png)
 
-## <a name="creating-a-cluster-results-in-error-that-no-registered-resource-provider-found"></a>Vytvoření clusteru výsledky v chybě, která se nenašel žádný zaregistrovaný poskytovatel prostředků
+## <a name="creating-a-cluster-results-in-error-that-no-registered-resource-provider-found"></a>Při vytváření clusteru dojde k chybě, že se nenašel žádný registrovaný poskytovatel prostředků.
 
-Při vytváření clusteru výsledky v chybě `No registered resource provider found for location '<location>' and API version '2019-04-30' for type 'openShiftManagedClusters'. The supported api-versions are '2018-09-30-preview`, pak byly součástí verze preview a teď potřebujete [nákupní virtuálních počítačů Azure rezervované instance](https://aka.ms/openshift/buy) používat produkt všeobecně dostupná. Rezervace snižuje vaše výdaje a prostřednictvím platíte předem za plně spravovaných služeb Azure. Odkazovat na [ *co jsou Azure rezervace* ](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations) Další informace o rezervacích a jak se ušetřit peníze.
+Pokud při vytváření clusteru dojde k chybě, která `No registered resource provider found for location '<location>' and API version '2019-04-30' for type 'openShiftManagedClusters'. The supported api-versions are '2018-09-30-preview`, pak jste byli součástí verze Preview a teď je potřeba [koupit rezervované instance virtuálního počítače Azure](https://aka.ms/openshift/buy) , aby používaly všeobecně dostupný produkt. Rezervace snižuje vaši útratu tím, že se předem platíte za plně spravované služby Azure. Další informace o rezervacích a způsobu, jakým vám ušetří peníze, najdete v tématu [*co je Azure reservations*](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Zkuste [centrum pro nápovědu Red Hat OpenShift](https://help.openshift.com/) další on OpenShift při řešení potíží.
+- Další informace o řešení potíží s OpenShift najdete v [centru pro nápovědu Red Hat OpenShift](https://help.openshift.com/) .
 
-- Najděte odpovědi na [nejčastější dotazy ohledně Azure Red Hat OpenShift](openshift-faq.md).
+- Přečtěte si odpovědi na [Nejčastější dotazy týkající se Azure Red Hat OpenShift](openshift-faq.md).

@@ -1,26 +1,19 @@
 ---
-title: Příprava portálu pro virtuální pole StorSimple | Microsoft Docs
+title: Příprava portálu pro virtuální pole StorSimple
 description: První kurz nasazení StorSimple Virtual Array zahrnuje přípravu Azure Portal
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 68a4cfd3-94c9-46cb-805c-46217290ce02
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0b938de0fec099b3f964eae60dc94d059e05a1c6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7f2c7a6f9c1146627f81dc20386c59a91724b245
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973494"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273834"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Nasazení StorSimple Virtual Array – Příprava Azure Portal
 
@@ -156,7 +149,7 @@ V [Azure Portal](https://ms.portal.azure.com/) na stránce služby Device Manage
 
 1. Přejděte ke službě Device Manager, vyberte ji a dvakrát na ni klikněte. Tím se otevře okno **Přehled** .
 2. V části **Konfigurace** vyberte **přihlašovací údaje účtu úložiště** .
-3. Klikněte na tlačítko **Add** (Přidat).
+3. Klikněte na tlačítko **Přidat**.
 4. V okně **Přidat účet úložiště** udělejte toto:
    
    1. V **předplatném**vyberte **aktuální**.
@@ -165,7 +158,7 @@ V [Azure Portal](https://ms.portal.azure.com/) na stránce služby Device Manage
    
    3. Pokud chcete vytvořit zabezpečený kanál pro síťovou komunikaci mezi zařízením StorSimple a cloudem, vyberte **Povolit** . Vyberte možnost **Zakázat** pouze v případě, že pracujete v rámci privátního cloudu.
    
-   4. Klikněte na tlačítko **Add** (Přidat). Po úspěšném vytvoření účtu úložiště se zobrazí oznámení.<br></br>
+   4. Klikněte na tlačítko **Přidat**. Po úspěšném vytvoření účtu úložiště se zobrazí oznámení.<br></br>
    
       ![Přidat existující přihlašovací údaje účtu úložiště](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 
