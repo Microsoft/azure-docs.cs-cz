@@ -4,14 +4,14 @@ description: Postup nasazení clusteru avere vFXT v Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 12/14/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: ad5b0ecd9e7e6326c5b91844b6f7b557972b4852
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d1058125d5bb3912b9561027bbe0a977637d3379
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415550"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153565"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Nasazení clusteru vFXT
 
@@ -22,7 +22,7 @@ Tento postup vás provede použitím Průvodce nasazením dostupným z Azure Mar
 * Vytvoří virtuální počítače uzlu clusteru a nakonfiguruje je jako cluster avere.
 * V případě vyžádání vytvoří nový kontejner objektů blob Azure a nakonfiguruje ho jako základní souborového clusteru.
 
-Po provedení kroků v tomto dokumentu budete mít virtuální síť, podsíť, řadič a cluster vFXT, jak je znázorněno v následujícím diagramu. Tento diagram znázorňuje volitelný souborového Azure Blob Core, který zahrnuje nový kontejner úložiště objektů BLOB (v novém účtu úložiště, není zobrazený) a koncový bod služby pro úložiště Microsoft v podsíti.
+Po provedení kroků v tomto dokumentu budete mít virtuální síť, podsíť, řadič clusteru a cluster vFXT, jak je znázorněno v následujícím diagramu. Tento diagram znázorňuje volitelný souborového Azure Blob Core, který zahrnuje nový kontejner úložiště objektů BLOB (v novém účtu úložiště, není zobrazený) a koncový bod služby pro úložiště Microsoft v podsíti.
 
 ![Diagram znázorňující tři soustředné obdélníky s komponentami clusteru avere. Vnější obdélník je označený jako skupina prostředků a obsahuje šestiúhelník s označením BLOB Storage (volitelné). Další obdélník v je označený jako "virtuální síť: 10.0.0.0/16" a neobsahuje žádné jedinečné součásti. Nejvnitřnější obdélník je označený jako podsíť: 10.0.0.0/24 a obsahuje virtuální počítač s názvem řadič clusteru, zásobník tří virtuálních počítačů s názvem vFXT Nodes (vFXT cluster) a šestiúhelník s popiskem "koncový bod služby". V rámci skupiny prostředků se nachází šipka připojující koncový bod služby (která se nachází uvnitř podsítě) a úložiště objektů BLOB (které se nachází mimo podsíť a virtuální síť). Šipka projde hranicemi podsítě a virtuální sítě.](media/avere-vfxt-deployment.png)
 
@@ -31,7 +31,7 @@ Než začnete používat šablonu pro vytváření, ujistěte se, že jste vyře
 1. [Nové předplatné](avere-vfxt-prereqs.md#create-a-new-subscription)
 1. [Oprávnění vlastníka předplatného](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
 1. [Kvóta pro cluster vFXT](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
-1. [Koncový bod služby úložiště (Pokud je potřeba)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) – vyžaduje se pro nasazení pomocí existující virtuální sítě a vytvoření úložiště objektů BLOB.
+1. [Koncový bod služby úložiště (Pokud je potřeba)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) – vyžaduje se pro nasazení, která používají existující virtuální síť a vytváření úložiště objektů BLOB.
 
 Další informace o krocích a plánováních nasazení clusteru najdete v tématu plánování [avere systému vFXT](avere-vfxt-deploy-plan.md) a [Přehled nasazení](avere-vfxt-deploy-overview.md).
 
@@ -41,7 +41,7 @@ V Azure Portal přejděte na šablonu pro vytvoření tak, že vyhledáte avere 
 
 ![V okně prohlížeče se zobrazí Azure Portal s názvem "New > Marketplace > vše". V poli vše na stránce vše má vyhledávací pole výraz "avere" a druhý výsledek, "avere vFXT pro šablonu Azure ARM" se zvýrazní červeně.](media/avere-vfxt-template-choose.png)
 
-Po přečtení podrobností na stránce šablony avere vFXT pro Azure ARM klikněte na **vytvořit** a začněte.
+Po přečtení podrobností na stránce šablony avere vFXT pro Azure ARM klikněte na tlačítko **vytvořit** a začněte.
 
 ![Azure Marketplace s první stránkou šablony nasazení](media/avere-vfxt-deploy-first.png)
 
@@ -149,11 +149,11 @@ Vyhledání informací:
 
 1. Na levé straně klikněte na **nasazení**a pak na **Microsoft-avere. vfxt-Template**.
 
-   ![Stránka portálu skupiny prostředků s nasazeními vybranými vlevo a Microsoft-avere. vfxt-Template, která se zobrazuje v tabulce pod názvem nasazení](media/avere-vfxt-outputs-deployments.png) <!-- update image for new portal GUI -->
+   ![Stránka portálu skupiny prostředků s nasazeními vybranými vlevo a Microsoft-avere. vfxt-Template, která se zobrazuje v tabulce pod názvem nasazení](media/avere-vfxt-outputs-deployments.png)
 
 1. Na levé straně klikněte na možnost **výstupy**. Zkopírujte hodnoty do každého pole.
 
-   ![Vytvoří výstup stránky, která zobrazuje SSHSTRING, RESOURCE_GROUP, umístění, NETWORK_RESOURCE_GROUP, síť, podsíť, SUBNET_ID, VSERVER_IPs a MGMT_IP hodnoty v polích napravo od popisků.](media/avere-vfxt-outputs-values.png)<!-- update image for new portal GUI -->
+   ![Vytvoří výstup stránky, která zobrazuje SSHSTRING, RESOURCE_GROUP, umístění, NETWORK_RESOURCE_GROUP, síť, podsíť, SUBNET_ID, VSERVER_IPs a MGMT_IP hodnoty v polích napravo od popisků.](media/avere-vfxt-outputs-values.png)
 
 ## <a name="next-steps"></a>Další kroky
 

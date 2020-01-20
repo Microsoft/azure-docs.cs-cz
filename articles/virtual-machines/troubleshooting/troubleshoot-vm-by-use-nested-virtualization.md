@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s virtuálním počítačem Azure pomocí vnořené virtualizace v Azure | Microsoft Docs
+title: Řešení potíží s chybným virtuálním počítačem Azure pomocí vnořené virtualizace v Azure | Microsoft Docs
 description: Řešení potíží s virtuálním počítačem Azure pomocí vnořené virtualizace v Azure
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: 4ef8bc029c63aaf297462a7b53f6daba1a7c850b
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: e1acfc3216ccfaeac035f1ff31e82c7b67c17daf
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028421"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119614"
 ---
-# <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Řešení potíží s virtuálním počítačem Azure pomocí vnořené virtualizace v Azure
+# <a name="troubleshoot-a-faulty-azure-vm-by-using-nested-virtualization-in-azure"></a>Řešení potíží s chybným virtuálním počítačem Azure pomocí vnořené virtualizace v Azure
 
-V tomto článku se dozvíte, jak vytvořit vnořené prostředí virtualizace v nástroji Microsoft Azure, abyste mohli připojit disk problémového virtuálního počítače na hostiteli Hyper-V (záchranný virtuální počítač) pro účely řešení potíží.
+V tomto článku se dozvíte, jak vytvořit vnořené prostředí virtualizace v systému Microsoft Azure, abyste mohli připojit disk vadného virtuálního počítače na hostiteli Hyper-V (záchranný virtuální počítač) pro účely řešení potíží.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K připojení tohoto virtuálního počítače musí záchranný virtuální počítač používat stejný typ účtu úložiště (Standard nebo Premium) jako virtuální počítač problému.
+Aby bylo možné připojit poškozený virtuální počítač, musí záchranný virtuální počítač používat stejný typ účtu úložiště (Standard nebo Premium) jako vadný virtuální počítač.
 
 ## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>Krok 1: vytvoření záchranného virtuálního počítače a instalace role Hyper-V
 
@@ -36,9 +36,9 @@ K připojení tohoto virtuálního počítače musí záchranný virtuální po�
 
     -  Velikost: všechny řady v3 s alespoň dvěma jádry, které podporují vnořenou virtualizaci. Další informace najdete v tématu [Představujeme nové velikosti virtuálních počítačů s Dv3 a Ev3](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/).
 
-    -  Stejné umístění, účet úložiště a skupina prostředků jako virtuální počítač problému.
+    -  Stejné umístění, účet úložiště a skupina prostředků jako vadný virtuální počítač.
 
-    -  Vyberte stejný typ úložiště jako virtuální počítač problému (Standard nebo Premium).
+    -  Vyberte stejný typ úložiště jako chybný virtuální počítač (Standard nebo Premium).
 
 2.  Po vytvoření záchranného virtuálního počítače se jedná o vzdálenou plochu na záchranný virtuální počítač.
 
@@ -64,13 +64,13 @@ K připojení tohoto virtuálního počítače musí záchranný virtuální po�
 
 13. Povolí serveru instalaci role Hyper-V. Tato akce trvá několik minut a server se automaticky restartuje.
 
-## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>Krok 2: Vytvoření virtuálního počítače s problémem na serveru Hyper-V záchranného virtuálního počítače
+## <a name="step-2-create-the-faulty-vm-on-the-rescue-vms-hyper-v-server"></a>Krok 2: vytvoření vadného virtuálního počítače na serveru Hyper-V záchranného virtuálního počítače
 
 1.  [Vytvořte snímek disku](troubleshoot-recovery-disks-portal-windows.md#take-a-snapshot-of-the-os-disk) pro disk s operačním systémem virtuálního počítače, který má problém, a pak připojte disk snímku k virtuálnímu počítači recuse.
 
 2.  Vzdálená plocha do záchranného virtuálního počítače.
 
-3.  Spusťte správu disků (diskmgmt. msc). Ujistěte se, že je disk virtuálního počítače problému nastavený na **offline**.
+3.  Spusťte správu disků (diskmgmt. msc). Ujistěte se, že je disk vadného virtuálního počítače nastavený na **offline**.
 
 4.  Otevřete Správce technologie Hyper-V: v **Správce serveru**vyberte **roli technologie Hyper-v**. Pravým tlačítkem myši klikněte na server a pak vyberte **Správce technologie Hyper-V**.
 
@@ -96,7 +96,7 @@ K připojení tohoto virtuálního počítače musí záchranný virtuální po�
 
     ![Obrázek týkající se přidání nového pevného disku](media/troubleshoot-vm-by-use-nested-virtualization/create-new-drive.png)    
 
-14. Na stránce **fyzický pevný disk**vyberte disk s PROBLEMATICKým virtuálním počítačem, který jste připojili k virtuálnímu počítači Azure. Pokud nevidíte žádné disky uvedené na seznamu, zkontrolujte, jestli je disk nastavený na offline pomocí správy disků.
+14. V části **fyzický pevný disk**vyberte disk vadného virtuálního počítače, který jste připojili k virtuálnímu počítači Azure. Pokud nevidíte žádné disky uvedené na seznamu, zkontrolujte, jestli je disk nastavený na offline pomocí správy disků.
 
     ![obrázek o připojení disku](media/troubleshoot-vm-by-use-nested-virtualization/mount-disk.png)  
 
@@ -107,7 +107,7 @@ K připojení tohoto virtuálního počítače musí záchranný virtuální po�
 
 17. Nyní můžete pracovat na VIRTUÁLNÍm počítači jako místní virtuální počítač. Můžete postupovat podle všech potřebných kroků pro řešení potíží.
 
-## <a name="step-3-replace-the-os-disk-used-by-the-problem-vm"></a>Krok 3: Výměna disku s operačním systémem, který používá virtuální počítač pro problémy
+## <a name="step-3-replace-the-os-disk-used-by-the-faulty-vm"></a>Krok 3: Výměna disku s operačním systémem, který je používán chybným virtuálním počítačem
 
 1.  Po opětovném obnovení virtuálního počítače do režimu online vypněte virtuální počítač ve Správci technologie Hyper-V.
 

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: cbc45036497547b78514b1d175d67c6ed437ee2d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: d5ded7200c438fc734e1af0a42ca6071196bd41c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769485"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120333"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Vazby služby SignalR pro Azure Functions
 
@@ -1011,9 +1011,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type**|| Musí být nastaveno na `signalRConnectionInfo`.|
-|**direction**|| Musí být nastaveno na `in`.|
-|**name**|| Název proměnné použitý v kódu funkce pro objekt s informacemi o připojení. |
+|**type**| – | Musí být nastaveno na `signalRConnectionInfo`.|
+|**direction**| – | Musí být nastaveno na `in`.|
+|**name**| – | Název proměnné použitý v kódu funkce pro objekt s informacemi o připojení. |
 |**hubName**|**HubName**| Tato hodnota musí být nastavena na název centra signalizace, pro které jsou vygenerovány informace o připojení.|
 |**userId**|**UserId**| Volitelné: hodnota deklarace identity identifikátoru uživatele, která se má nastavit v tokenu přístupového klíče. |
 |**connectionStringSetting**|**connectionStringSetting**| Název nastavení aplikace, které obsahuje připojovací řetězec služby signalizace (výchozí hodnota je "AzureSignalRConnectionString") |
@@ -1024,9 +1024,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type**|| Musí být nastaveno na `signalR`.|
-|**direction**|| Musí být nastaveno na `out`.|
-|**name**|| Název proměnné použitý v kódu funkce pro objekt s informacemi o připojení. |
+|**type**| – | Musí být nastaveno na `signalR`.|
+|**direction**| – | Musí být nastaveno na `out`.|
+|**name**| – | Název proměnné použitý v kódu funkce pro objekt s informacemi o připojení. |
 |**hubName**|**HubName**| Tato hodnota musí být nastavena na název centra signalizace, pro které jsou vygenerovány informace o připojení.|
 |**connectionStringSetting**|**connectionStringSetting**| Název nastavení aplikace, které obsahuje připojovací řetězec služby signalizace (výchozí hodnota je "AzureSignalRConnectionString") |
 

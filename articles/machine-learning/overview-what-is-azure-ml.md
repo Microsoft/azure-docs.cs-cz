@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: cd94001cfe795e7aa78a1332325052afce6b8ec6
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b8dbbb2810277bef20cb3b9b47a63deeea3e0ff9
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75762792"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155447"
 ---
 # <a name="what-is-azure-machine-learning"></a>Co je Azure Machine Learning?
 
@@ -46,7 +46,7 @@ Azure Machine Learning poskytuje vývojářům a odborníkům přes data, kteř�
 
 + Skripty nebo notebooky r, ve kterých používáte <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">sadu SDK pro R</a> k psaní vlastního kódu nebo použití modulů R v návrháři.
 
-+ [Rozšíření Visual Studio Code](how-to-vscode-tools.md)
++ [Rozšíření Visual Studio Code](tutorial-setup-vscode-extension.md)
 
 + [Rozhraní příkazového řádku pro Machine Learning](reference-azure-machine-learning-cli.md)
 
@@ -85,7 +85,7 @@ Pokud máte správný model, můžete ho snadno použít ve webové službě, v 
 
 Pak můžete nasadit nasazené modely pomocí [Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk), [Azure Machine Learning Studio](https://ml.azure.com)nebo rozhraní příkazového [řádku Machine Learning](reference-azure-machine-learning-cli.md).
 
-Tyto modely lze spotřebovat a vracet předpovědi v [reálném čase](how-to-consume-web-service.md) nebo [asynchronně](how-to-run-batch-predictions.md) u velkých objemů dat.
+Tyto modely lze spotřebovat a vracet předpovědi v [reálném čase](how-to-consume-web-service.md) nebo [asynchronně](how-to-use-parallel-run-step.md) u velkých objemů dat.
 
 A díky pokročilým [kanálům strojového učení](concept-ml-pipelines.md)můžete v rámci přípravy dat, školení a vyhodnocení modelu spolupracovat na všech krocích prostřednictvím nasazení. Kanály umožňují:
 

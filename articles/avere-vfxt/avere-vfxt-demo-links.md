@@ -4,14 +4,14 @@ description: odkazy na ukázky kódu pro avere vFXT
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: 406262be5f70ed891f657d184acff98331b6b7a3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b01bcb743e4ffc110f0182e50630baea288f16d2
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415401"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153696"
 ---
 # <a name="avere-vfxt-demo-projects"></a>Ukázkové projekty avere vFXT
 
@@ -19,13 +19,13 @@ Ukázkové kurzy jsou k dispozici na [GitHubu](https://github.com/Azure/Avere). 
 
 ## <a name="video-rendering"></a>Vykreslování videa
 
-* [Vykreslování pomocí Azure Batch a avere vFXT](https://github.com/Azure/Avere/blob/master/docs/maya_azure_batch_avere_vfxt_demo.md) – ukázky 60-minut, která demonstruje použití Autodesk Maya s Azure Batch a cluster avere vFXT k vygenerování animovaného filmu
+* [Vykreslování pomocí Azure Batch a avere vFXT](https://github.com/Azure/Avere/blob/master/docs/maya_azure_batch_avere_vfxt_demo.md) – projekt 60-minut, který ukazuje, jak používat Autodesk Maya s Azure Batch a clusterem avere vFXT pro generování animovaného filmu
 
-* [Proč používat avere vFXT pro vykreslování?](https://github.com/Azure/Avere/blob/master/docs/why_avere_for_rendering.md) – Ukázka, která porovnává dobu vykreslování od serveru NAS s clusterem avere vFXT a bez něj.
+* [Proč používat avere vFXT pro vykreslování?](https://github.com/Azure/Avere/blob/master/docs/why_avere_for_rendering.md) – Ukázka, která porovnává dobu vykreslování z úložiště připojeného k síti s clusterem avere vFXT a bez něj
 
 ## <a name="high-performance-computing"></a>Vysokovýkonné výpočetní prostředí
 
-* [Osvědčené postupy pro zlepšení času spuštění virtuálního počítače Azure](https://github.com/Azure/Avere/blob/master/docs/azure_vm_provision_best_practices.md) – reprodukovatelný test použití avere VFXT pro Azure ke zlepšení časů spouštění při rychlém spuštění tisíců výpočetních klientů
+* [Osvědčené postupy pro zlepšení času spuštění virtuálního počítače Azure](https://github.com/Azure/Avere/blob/master/docs/azure_vm_provision_best_practices.md) – reprodukovatelný test, který používá avere VFXT pro Azure ke zlepšení časů spouštění při rychlém spuštění tisíců výpočetních klientů
 
 ## <a name="vfxt-performance"></a>vFXT výkon
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 36b4b597ae70642fee8726555ea71b5164c13cca
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 771257df12ee29c2bc8d32672c8e8b7d039a96ba
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889383"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120805"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Chraňte rozhraní API pomocí OAuth 2,0 s Azure Active Directory a API Management
 
@@ -147,7 +147,7 @@ V tomto příkladu je konzole pro vývojáře klientská aplikace. Následujíc�
 
 1. Hned za tajný klíč klienta je **redirect_url** typu udělení autorizačního kódu. Tuto adresu URL si poznamenejte.
 
-1. Vyberte **Vytvořit**.
+1. Vyberte **Create** (Vytvořit).
 
 1. Vraťte se do svého klienta – aplikace a vyberte **ověřování**.
 
@@ -165,7 +165,7 @@ Dalším krokem je povolení autorizace uživatele OAuth 2,0 pro vaše rozhraní
 
 4. V části **zabezpečení**zvolte **OAuth 2,0**a vyberte server OAuth 2,0, který jste nakonfigurovali dříve. 
 
-5. Vyberte **Uložit**.
+5. Vyberte **Save** (Uložit).
 
 ## <a name="successfully-call-the-api-from-the-developer-portal"></a>Úspěšné volání rozhraní API z portálu pro vývojáře
 
@@ -207,6 +207,8 @@ Pomocí zásady [ověřit token JWT](api-management-access-restriction-policies.
     </required-claims>
 </validate-jwt>
 ```
+> [!NOTE]
+> Tato adresa URL `openid-config` odpovídá koncovému bodu v1. Pro koncový bod v2 `openid-config`použijte `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration`.
 
 ## <a name="build-an-application-to-call-the-api"></a>Sestavení aplikace pro volání rozhraní API
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77e24fa41c5f716460d82e1079659e6aee5e9a9b
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 0b70a475d841c3649ba9e2bcc63187fc4484a23d
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561146"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119971"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlášení k virtuálnímu počítači s Windows v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -48,6 +48,9 @@ Během verze Preview této funkce se aktuálně podporují následující distri
 
 - Windows Server 2019 Datacenter
 - Windows 10 1809 a novější
+
+> [!IMPORTANT]
+> Vzdálené připojení k virtuálním počítačům připojeným ke službě Azure AD je povolené jenom z počítačů s Windows 10, které jsou připojené ke službě Azure AD nebo které je služba Azure AD připojená ke **stejnému** adresáři jako virtuální počítač. 
 
 Ve verzi Preview této funkce se aktuálně podporují tyto oblasti Azure:
 

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: ef65904b19c5f42548c7b98cb37f6609124e0541
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 1923e26ba0ada7dcf5b8b333150b7cd5b775398b
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922428"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121195"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph vazby pro Azure Functions
 
@@ -207,9 +207,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**name**||Požadováno – název proměnné použitý v kódu funkce pro ověřovací token. Viz [použití vstupní vazby ověřovacího tokenu z kódu](#token-input-code).|
-|**type**||Požadováno – musí být nastavené na `token`.|
-|**direction**||Požadováno – musí být nastavené na `in`.|
+|**name**| – |Požadováno – název proměnné použitý v kódu funkce pro ověřovací token. Viz [použití vstupní vazby ověřovacího tokenu z kódu](#token-input-code).|
+|**type**| – |Požadováno – musí být nastavené na `token`.|
+|**direction**| – |Požadováno – musí být nastavené na `in`.|
 |**odcizen**|**Identita**|Požadováno – identita, která se použije k provedení této akce. Může to být jedna z následujících hodnot:<ul><li><code>userFromRequest</code> – platný pouze s [Aktivační událost HTTP]. Používá identitu volajícího uživatele.</li><li><code>userFromId</code> – používá identitu dříve přihlášeného uživatele se zadaným ID. Podívejte se na vlastnost <code>userId</code>.</li><li><code>userFromToken</code> – používá identitu představovanou zadaným tokenem. Podívejte se na vlastnost <code>userToken</code>.</li><li><code>clientCredentials</code> – používá identitu aplikace Function App.</li></ul>|
 |**userId**|**UserId**  |Nutné, pokud je _Identita_ nastavená na `userFromId`. ID instančního uživatele přidruženého k dříve přihlášenému uživateli|
 |**userToken**|**UserToken**|Nutné, pokud je _Identita_ nastavená na `userFromToken`. Token platný pro aplikaci Function App |
@@ -342,9 +342,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**name**||Required – název proměnné použitý v kódu funkce pro excelovou tabulku. Viz [použití vstupní vazby z tabulky v aplikaci Excel z kódu](#excel-input-code).|
-|**type**||Požadováno – musí být nastavené na `excel`.|
-|**direction**||Požadováno – musí být nastavené na `in`.|
+|**name**| – |Required – název proměnné použitý v kódu funkce pro excelovou tabulku. Viz [použití vstupní vazby z tabulky v aplikaci Excel z kódu](#excel-input-code).|
+|**type**| – |Požadováno – musí být nastavené na `excel`.|
+|**direction**| – |Požadováno – musí být nastavené na `in`.|
 |**odcizen**|**Identita**|Požadováno – identita, která se použije k provedení této akce. Může to být jedna z následujících hodnot:<ul><li><code>userFromRequest</code> – platný pouze s [Aktivační událost HTTP]. Používá identitu volajícího uživatele.</li><li><code>userFromId</code> – používá identitu dříve přihlášeného uživatele se zadaným ID. Podívejte se na vlastnost <code>userId</code>.</li><li><code>userFromToken</code> – používá identitu představovanou zadaným tokenem. Podívejte se na vlastnost <code>userToken</code>.</li><li><code>clientCredentials</code> – používá identitu aplikace Function App.</li></ul>|
 |**userId**|**UserId**  |Nutné, pokud je _Identita_ nastavená na `userFromId`. ID instančního uživatele přidruženého k dříve přihlášenému uživateli|
 |**userToken**|**UserToken**|Nutné, pokud je _Identita_ nastavená na `userFromToken`. Token platný pro aplikaci Function App |
@@ -504,9 +504,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**name**||Požadováno – název proměnné použitý v kódu funkce pro ověřovací token. Viz [použití výstupní vazby tabulky aplikace Excel z kódu](#excel-output-code).|
-|**type**||Požadováno – musí být nastavené na `excel`.|
-|**direction**||Požadováno – musí být nastavené na `out`.|
+|**name**| – |Požadováno – název proměnné použitý v kódu funkce pro ověřovací token. Viz [použití výstupní vazby tabulky aplikace Excel z kódu](#excel-output-code).|
+|**type**| – |Požadováno – musí být nastavené na `excel`.|
+|**direction**| – |Požadováno – musí být nastavené na `out`.|
 |**odcizen**|**Identita**|Požadováno – identita, která se použije k provedení této akce. Může to být jedna z následujících hodnot:<ul><li><code>userFromRequest</code> – platný pouze s [Aktivační událost HTTP]. Používá identitu volajícího uživatele.</li><li><code>userFromId</code> – používá identitu dříve přihlášeného uživatele se zadaným ID. Podívejte se na vlastnost <code>userId</code>.</li><li><code>userFromToken</code> – používá identitu představovanou zadaným tokenem. Podívejte se na vlastnost <code>userToken</code>.</li><li><code>clientCredentials</code> – používá identitu aplikace Function App.</li></ul>|
 |**UserId** |**userId** |Nutné, pokud je _Identita_ nastavená na `userFromId`. ID instančního uživatele přidruženého k dříve přihlášenému uživateli|
 |**userToken**|**UserToken**|Nutné, pokud je _Identita_ nastavená na `userFromToken`. Token platný pro aplikaci Function App |
@@ -650,9 +650,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**name**||Požadováno – název proměnné použitý v kódu funkce souboru. Viz [použití vazby vstupu souboru na OneDrivu z kódu](#onedrive-input-code).|
-|**type**||Požadováno – musí být nastavené na `onedrive`.|
-|**direction**||Požadováno – musí být nastavené na `in`.|
+|**name**| – |Požadováno – název proměnné použitý v kódu funkce souboru. Viz [použití vazby vstupu souboru na OneDrivu z kódu](#onedrive-input-code).|
+|**type**| – |Požadováno – musí být nastavené na `onedrive`.|
+|**direction**| – |Požadováno – musí být nastavené na `in`.|
 |**odcizen**|**Identita**|Požadováno – identita, která se použije k provedení této akce. Může to být jedna z následujících hodnot:<ul><li><code>userFromRequest</code> – platný pouze s [Aktivační událost HTTP]. Používá identitu volajícího uživatele.</li><li><code>userFromId</code> – používá identitu dříve přihlášeného uživatele se zadaným ID. Podívejte se na vlastnost <code>userId</code>.</li><li><code>userFromToken</code> – používá identitu představovanou zadaným tokenem. Podívejte se na vlastnost <code>userToken</code>.</li><li><code>clientCredentials</code> – používá identitu aplikace Function App.</li></ul>|
 |**userId**|**UserId**  |Nutné, pokud je _Identita_ nastavená na `userFromId`. ID instančního uživatele přidruženého k dříve přihlášenému uživateli|
 |**userToken**|**UserToken**|Nutné, pokud je _Identita_ nastavená na `userFromToken`. Token platný pro aplikaci Function App |
@@ -798,9 +798,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**name**||Požadováno – název proměnné použitý v kódu funkce pro soubor. Viz [použití vazby výstupu souboru na OneDrivu z kódu](#onedrive-output-code).|
-|**type**||Požadováno – musí být nastavené na `onedrive`.|
-|**direction**||Požadováno – musí být nastavené na `out`.|
+|**name**| – |Požadováno – název proměnné použitý v kódu funkce pro soubor. Viz [použití vazby výstupu souboru na OneDrivu z kódu](#onedrive-output-code).|
+|**type**| – |Požadováno – musí být nastavené na `onedrive`.|
+|**direction**| – |Požadováno – musí být nastavené na `out`.|
 |**odcizen**|**Identita**|Požadováno – identita, která se použije k provedení této akce. Může to být jedna z následujících hodnot:<ul><li><code>userFromRequest</code> – platný pouze s [Aktivační událost HTTP]. Používá identitu volajícího uživatele.</li><li><code>userFromId</code> – používá identitu dříve přihlášeného uživatele se zadaným ID. Podívejte se na vlastnost <code>userId</code>.</li><li><code>userFromToken</code> – používá identitu představovanou zadaným tokenem. Podívejte se na vlastnost <code>userToken</code>.</li><li><code>clientCredentials</code> – používá identitu aplikace Function App.</li></ul>|
 |**UserId** |**userId** |Nutné, pokud je _Identita_ nastavená na `userFromId`. ID instančního uživatele přidruženého k dříve přihlášenému uživateli|
 |**userToken**|**UserToken**|Nutné, pokud je _Identita_ nastavená na `userFromToken`. Token platný pro aplikaci Function App |
@@ -949,9 +949,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**name**||Požadováno – název proměnné použitý v kódu funkce pro e-mailovou zprávu. Viz [použití výstupní vazby zprávy Outlooku z kódu](#outlook-output-code).|
-|**type**||Požadováno – musí být nastavené na `outlook`.|
-|**direction**||Požadováno – musí být nastavené na `out`.|
+|**name**| – |Požadováno – název proměnné použitý v kódu funkce pro e-mailovou zprávu. Viz [použití výstupní vazby zprávy Outlooku z kódu](#outlook-output-code).|
+|**type**| – |Požadováno – musí být nastavené na `outlook`.|
+|**direction**| – |Požadováno – musí být nastavené na `out`.|
 |**odcizen**|**Identita**|Požadováno – identita, která se použije k provedení této akce. Může to být jedna z následujících hodnot:<ul><li><code>userFromRequest</code> – platný pouze s [Aktivační událost HTTP]. Používá identitu volajícího uživatele.</li><li><code>userFromId</code> – používá identitu dříve přihlášeného uživatele se zadaným ID. Podívejte se na vlastnost <code>userId</code>.</li><li><code>userFromToken</code> – používá identitu představovanou zadaným tokenem. Podívejte se na vlastnost <code>userToken</code>.</li><li><code>clientCredentials</code> – používá identitu aplikace Function App.</li></ul>|
 |**userId**|**UserId**  |Nutné, pokud je _Identita_ nastavená na `userFromId`. ID instančního uživatele přidruženého k dříve přihlášenému uživateli|
 |**userToken**|**UserToken**|Nutné, pokud je _Identita_ nastavená na `userFromToken`. Token platný pro aplikaci Function App |
@@ -1092,9 +1092,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**name**||Požadováno – název proměnné použitý v kódu funkce pro e-mailovou zprávu. Viz [použití výstupní vazby zprávy Outlooku z kódu](#outlook-output-code).|
-|**type**||Požadováno – musí být nastavené na `graphWebhook`.|
-|**direction**||Požadováno – musí být nastavené na `trigger`.|
+|**name**| – |Požadováno – název proměnné použitý v kódu funkce pro e-mailovou zprávu. Viz [použití výstupní vazby zprávy Outlooku z kódu](#outlook-output-code).|
+|**type**| – |Požadováno – musí být nastavené na `graphWebhook`.|
+|**direction**| – |Požadováno – musí být nastavené na `trigger`.|
 |**Typ prostředku**|**Typ prostředku**|Požadováno – prostředek grafu, pro který by měla tato funkce reagovat na Webhooky. Může to být jedna z následujících hodnot:<ul><li><code>#Microsoft.Graph.Message</code> – změny provedené ve zprávách Outlooku</li><li><code>#Microsoft.Graph.DriveItem</code> – změny provedené u kořenových položek OneDrivu</li><li><code>#Microsoft.Graph.Contact</code> – změny provedené u osobních kontaktů v aplikaci Outlook.</li><li><code>#Microsoft.Graph.Event</code> – změny provedené v položkách kalendáře Outlooku</li></ul>|
 
 > [!Note]
@@ -1244,9 +1244,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**name**||Požadováno – název proměnné použitý v kódu funkce pro e-mailovou zprávu. Viz [použití výstupní vazby zprávy Outlooku z kódu](#outlook-output-code).|
-|**type**||Požadováno – musí být nastavené na `graphWebhookSubscription`.|
-|**direction**||Požadováno – musí být nastavené na `in`.|
+|**name**| – |Požadováno – název proměnné použitý v kódu funkce pro e-mailovou zprávu. Viz [použití výstupní vazby zprávy Outlooku z kódu](#outlook-output-code).|
+|**type**| – |Požadováno – musí být nastavené na `graphWebhookSubscription`.|
+|**direction**| – |Požadováno – musí být nastavené na `in`.|
 |**filter (filtr)**|**Filtr**| Pokud je nastavená na `userFromRequest`, vazba obnoví jenom odběry vlastněné volajícím uživatelem (platné jenom s [Aktivační událost HTTP]).| 
 
 ### <a name="webhook-input---usage"></a>Vstup Webhooku – použití
@@ -1385,9 +1385,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**name**||Požadováno – název proměnné použitý v kódu funkce pro e-mailovou zprávu. Viz [použití výstupní vazby zprávy Outlooku z kódu](#outlook-output-code).|
-|**type**||Požadováno – musí být nastavené na `graphWebhookSubscription`.|
-|**direction**||Požadováno – musí být nastavené na `out`.|
+|**name**| – |Požadováno – název proměnné použitý v kódu funkce pro e-mailovou zprávu. Viz [použití výstupní vazby zprávy Outlooku z kódu](#outlook-output-code).|
+|**type**| – |Požadováno – musí být nastavené na `graphWebhookSubscription`.|
+|**direction**| – |Požadováno – musí být nastavené na `out`.|
 |**odcizen**|**Identita**|Požadováno – identita, která se použije k provedení této akce. Může to být jedna z následujících hodnot:<ul><li><code>userFromRequest</code> – platný pouze s [Aktivační událost HTTP]. Používá identitu volajícího uživatele.</li><li><code>userFromId</code> – používá identitu dříve přihlášeného uživatele se zadaným ID. Podívejte se na vlastnost <code>userId</code>.</li><li><code>userFromToken</code> – používá identitu představovanou zadaným tokenem. Podívejte se na vlastnost <code>userToken</code>.</li><li><code>clientCredentials</code> – používá identitu aplikace Function App.</li></ul>|
 |**userId**|**UserId**  |Nutné, pokud je _Identita_ nastavená na `userFromId`. ID instančního uživatele přidruženého k dříve přihlášenému uživateli|
 |**userToken**|**UserToken**|Nutné, pokud je _Identita_ nastavená na `userFromToken`. Token platný pro aplikaci Function App |

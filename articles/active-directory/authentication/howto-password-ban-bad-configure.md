@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c58371edffa4400c2c2b3efd37c3ce6d7c3cad95
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: eb47b9df51803c76662b5fb4ca1fe23740e7af9a
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847911"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155049"
 ---
 # <a name="configuring-the-custom-banned-password-list"></a>Konfigurace vlastního seznamu zakázaných hesel
 
@@ -26,7 +26,7 @@ Mnoho organizací hledá své uživatele pomocí běžných místních slov, jak
 
 Konfigurace vlastního seznamu zakázaných hesel vyžaduje Azure Active Directory Premium licenci P1 nebo P2. Podrobnější informace o Azure Active Directory licencování najdete na [stránce s cenami Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/).
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte do **Azure Active Directory**, **metod ověřování**a **ochrany heslem**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte do **Azure Active Directory** > **metody ověřování** **zabezpečení** >  > **ochrana heslem**.
 1. Nastavte možnost **vykonat vlastní seznam**na **Ano**.
 1. Přidání řetězců do **vlastního seznamu zakázaných hesel**, jednoho řetězce na řádek
    * Vlastní seznam zakázaných hesel může obsahovat až 1000 podmínek.

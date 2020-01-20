@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 08/05/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 710e43aec82c5d154b2e17a20abb2ce4dd481129
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f75cea566a09a1f4e147b999ad7d2c2d7ea80f29
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278986"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156110"
 ---
 # <a name="set-up-your-security-info-preview-from-a-sign-in-prompt"></a>Nastavení bezpečnostních údajů (Preview) z příkazového řádku pro přihlášení
 
@@ -26,6 +26,19 @@ Pokud se zobrazí výzva k nastavení bezpečnostních údajů hned po přihlá�
 Tato výzva se zobrazí jenom v případě, že jste nenastavili bezpečnostní údaje vyžadované vaší organizací. Pokud jste si dříve nastavili bezpečnostní údaje, ale chcete provést změny, můžete postupovat podle kroků v různých článcích o postupech založených na metodách. Další informace najdete v tématu věnovaném [Přidání nebo aktualizaci informací o zabezpečení](security-info-add-update-methods-overview.md).
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
+
+## <a name="security-verification-versus-password-reset-authentication"></a>Ověření zabezpečení oproti ověřování hesla pro resetování hesla
+
+Metody bezpečnostních údajů se používají pro ověřování dvou faktorů zabezpečení i pro resetování hesla. Nicméně ne všechny metody lze použít pro obojí.
+
+| Metoda | Použití |
+| ------ | -------- |
+| Ověřovací aplikace | Dvojúrovňové ověřování a ověřování nového hesla. |
+| Textové zprávy | Dvojúrovňové ověřování a ověřování nového hesla. |
+| Telefonní hovory | Dvojúrovňové ověřování a ověřování nového hesla. |
+| Bezpečnostní klíč | Dvojúrovňové ověřování a ověřování nového hesla. |
+| E-mailový účet | Jenom ověřování heslem. Budete muset zvolit jinou metodu pro dvojúrovňové ověřování. |
+| Bezpečnostní otázky | Jenom ověřování heslem. Budete muset zvolit jinou metodu pro dvojúrovňové ověřování. |
 
 ## <a name="sign-in-to-your-work-or-school-account"></a>Přihlaste se ke svému pracovnímu nebo školnímu účtu.
 

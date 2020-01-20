@@ -4,15 +4,17 @@ description: Přehled nasazení avere vFXT pro Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 46e6828710c5951cdd7ec3a029272a0e3d68c477
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 78140fea74272dff6056bebfbd44ed9d55b0e1db
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415408"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153679"
 ---
+<!-- filename is linked to in the marketplace template, make sure it gets a redirect if we rename it -->
+
 # <a name="avere-vfxt-for-azure---deployment-overview"></a>Avere vFXT pro Azure – přehled nasazení
 
 Tento článek obsahuje přehled kroků potřebných k zprovoznění služby avere vFXT pro cluster Azure.
@@ -25,7 +27,7 @@ Po [Naplánování systému](avere-vfxt-deploy-plan.md)můžete začít vytvář
 
 Azure Resource Manager šablona v Azure Marketplace shromažďuje potřebné informace a automaticky nasadí celý cluster.
 
-Po zprovoznění clusteru vFXT budete chtít zjistit, jak připojit klienty k tomuto a (volitelně) jak přesunout data do nového kontejneru úložiště objektů BLOB. Pokud používáte úložný systém NAS, budete ho muset přidat po vytvoření clusteru.
+Až bude cluster vFXT spuštěný, stále existují některé kroky konfigurace, které je nutné před jeho použitím provést. Pokud jste vytvořili nový kontejner úložiště objektů blob, budete na něj chtít přesunout data. Pokud používáte úložný systém NAS, budete ho muset přidat po vytvoření clusteru. Budete chtít připojit klienty ke clusteru.
 
 Tady je přehled všech kroků.
 
@@ -40,21 +42,23 @@ Tady je přehled všech kroků.
    Vytvoření clusteru zahrnuje tyto kroky, které jsou všechny dokončené šablonou Marketplace:
 
    * Vytvoření nové síťové infrastruktury a skupin prostředků (v případě potřeby)
-   * Vytvoření *řadiče clusteru*  
+   * Vytvoření řadiče clusteru
 
      Řadič clusteru je jednoduchý virtuální počítač, který se nachází ve stejné virtuální síti jako cluster avere vFXT, a má vlastní software potřebný k vytvoření a správě clusteru. Kontrolér vytvoří uzly vFXT a vytvoří cluster a také rozhraní příkazového řádku pro správu clusteru během své životnosti.
 
-     Pokud během nasazení vytvoříte novou virtuální síť nebo podsíť, bude mít řadič veřejnou IP adresu. To znamená, že řadič může sloužit jako skokový hostitel pro připojení ke clusteru mimo podsíť.
+     Pokud během nasazení vytvoříte novou virtuální síť nebo podsíť, bude mít řadič veřejnou IP adresu. To znamená, že řadič může sloužit jako skokový hostitel pro připojení ke clusteru mimo virtuální síť.
 
    * Vytvoření virtuálních počítačů uzlu clusteru
 
-   * Konfigurace virtuálních počítačů uzlů clusteru pro vytvoření clusteru
+   * Vytvoření clusteru z jednotlivých uzlů
 
    * Volitelně můžete vytvořit nový kontejner objektů BLOB a nakonfigurovat ho jako back-end úložiště pro cluster.
 
+   Vytváření clusteru je podrobně popsáno v tématu [nasazení clusteru vFXT](avere-vfxt-deploy.md).
+
 1. Konfigurace clusteru
 
-   K přizpůsobení nastavení clusteru se připojte k rozhraní avere vFXT Configuration Interface (avere Control Panel). Pokud používáte místní datové centrum, přihlaste se ke sledování podpory a přidejte svůj systém úložiště.
+   K přizpůsobení nastavení clusteru se připojte k rozhraní avere vFXT Configuration Interface (avere Control Panel). Pokud používáte hardwarové úložiště nebo další kontejnery objektů blob, přihlaste se ke sledování podpory a přidejte svůj systém úložiště.
 
    * [Přístup ke clusteru vFXT](avere-vfxt-cluster-gui.md)
    * [Povolit podporu](avere-vfxt-enable-support.md)
@@ -67,7 +71,7 @@ Tady je přehled všech kroků.
 1. Přidat data (v případě potřeby)
 
    Vzhledem k tomu, že avere vFXT je škálovatelná mezipaměť s více klienty, nejlepším způsobem, jak přesunout data do nového záložního kontejneru úložiště, je s více klienty, strategii kopírování souborů s více vlákny.
-   
+
    Pokud potřebujete přesunout pracovní sadu dat do nového kontejneru objektů BLOB nebo jiného záložního úložného systému, postupujte podle pokynů v tématu [přesun dat do clusteru vFXT](avere-vfxt-data-ingest.md).
 
 ## <a name="next-steps"></a>Další kroky

@@ -4,20 +4,25 @@ description: Vysvětluje plánování před nasazením avere vFXT pro Azure.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: d4fc2a6b7def4b7c55faa37fbed756fbb830ff73
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5ffa28a0f6080b94bd47519df578fd15309dbab5
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415439"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153631"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Plánování systému Avere vFXT
 
 Tento článek vysvětluje, jak naplánovat nový avere vFXT pro cluster Azure, který je umístěný a vhodný pro vaše potřeby.
 
-Než přejdete na Azure Marketplace nebo vytvoříte nějaké virtuální počítače, vezměte v úvahu, jak bude cluster spolupracovat s dalšími prvky v Azure. Naplánujte, kde se budou prostředky clusteru nacházet v privátní síti a v podsítích, a rozhodněte se, kde bude vaše back-endové úložiště. Ujistěte se, že uzly clusteru, které vytvoříte, jsou dostatečně výkonné, aby podporovaly váš pracovní postup.
+Než se pustíte do Azure Marketplace nebo vytvoříte nějaké virtuální počítače, vezměte v úvahu tyto podrobnosti:
+
+* Jak bude cluster spolupracovat s jinými prostředky Azure?
+* Kde se mají prvky clusteru nacházet v privátních sítích a podsítích?
+* Jaký typ back-endu úložiště použijete a jakým způsobem bude cluster přistupovat k němu?
+* Jak výkonný je potřeba, aby uzly clusteru podporovaly váš pracovní postup?
 
 Pokud se chcete dozvědět víc, čtěte dál.
 
@@ -41,12 +46,14 @@ Zvažte, kde budou prvky avere vFXT pro nasazení Azure. Následující diagram 
 
 ![Diagram znázorňující řadič clusteru a virtuální počítače clusteru v rámci jedné podsítě. Kolem hranice podsítě je hranice virtuální sítě. Uvnitř virtuální sítě je šestiúhelník, který představuje koncový bod služby úložiště. je spojen s čárkovanou šipkou na úložiště objektů BLOB mimo virtuální síť.](media/avere-vfxt-components-option.png)
 
-Při plánování síťové infrastruktury systému avere vFXT postupujte podle těchto pokynů:
+Při plánování síťové infrastruktury clusteru avere vFXT postupujte podle těchto pokynů:
 
-* Vytvořte nové předplatné pro každý avere vFXT pro nasazení Azure a spravujte všechny komponenty v tomto předplatném. Příklady výhod:
+* Vytvořte nové předplatné pro každý avere vFXT pro nasazení Azure. Umožňuje spravovat všechny komponenty v tomto předplatném.
+
+  Mezi výhody použití nového předplatného pro každé nasazení patří:
   * Jednodušší sledování nákladů – zobrazení a audit všech nákladů z prostředků, infrastruktury a výpočetních cyklů v jednom předplatném
   * Jednodušší vyčištění – po dokončení projektu můžete odebrat celé předplatné.
-  * Pohodlné vytváření oddílů kvót prostředků – Chraňte další kritické úlohy z možného omezování prostředků tím, že v jednom předplatném izolujete klienty a cluster avere vFXT. Tím se vyhnete konfliktu při zavedení velkého počtu klientů pro vysoce výkonný výpočetní pracovní postup.
+  * Pohodlné dělení kvót prostředků – izolujte klienty a clustery avere vFXT v jednom předplatném, abyste chránili jiné kritické úlohy od možného omezení prostředků. Toto oddělení brání konflikt při zavedení velkého počtu klientů pro vysoce výkonný výpočetní pracovní postup.
 
 * Najděte výpočetní systémy klientů blízko do clusteru vFXT. Úložiště back-endu může být víc vzdálené.  
 
@@ -54,9 +61,9 @@ Při plánování síťové infrastruktury systému avere vFXT postupujte podle 
 
   * Ve stejné virtuální síti
   * Ve stejné skupině prostředků
-  * Ve stejném účtu úložiště
+  * Použití stejného účtu úložiště
   
-  Šablona automatizovaného vytváření clusterů ji zpracovává ve většině případů.
+  Šablona pro vytvoření clusteru tuto konfiguraci zpracovává ve většině případů.
 
 * Cluster se musí nacházet ve vlastní podsíti, aby nedocházelo ke konfliktům IP adres s klienty nebo jinými výpočetními prostředky.
 
@@ -69,7 +76,7 @@ Při plánování síťové infrastruktury systému avere vFXT postupujte podle 
   | Skupina prostředků | Ano, je-li prázdné | Musí být prázdné|
   | Účet úložiště | **Ano** , pokud se po vytvoření clusteru připojí existující kontejner objektů BLOB <br/>  **Ne** při vytváření nového kontejneru objektů BLOB během vytváření clusteru | Existující kontejner objektů BLOB musí být prázdný. <br/> &nbsp; |
   | Virtuální síť | Ano | Musí zahrnovat koncový bod služby úložiště při vytváření nového kontejneru objektů blob Azure. |
-  | Podsíť | Ano |   |
+  | Podsíť | Ano | Nemůže obsahovat jiné prostředky. |
 
 ## <a name="ip-address-requirements"></a>Požadavky na IP adresu
 
@@ -79,7 +86,7 @@ Cluster avere vFXT používá následující IP adresy:
 
 * Jedna IP adresa pro správu clusteru. Tato adresa se dá v clusteru přesunout z uzlu podle potřeby tak, aby byla vždy dostupná. Tuto adresu použijte pro připojení k nástroji pro konfiguraci ovládacího panelu avere.
 * Pro každý uzel clusteru:
-  * Aspoň jedna IP adresa pro klientské klienta. (Všechny adresy směřující na klienta se spravují pomocí *VServer*clusteru, které je možné podle potřeby přesouvat mezi uzly.)
+  * Aspoň jedna IP adresa pro klientské klienta. (Všechny adresy směřující na klienta se spravují pomocí *VServer*clusteru, což může v případě potřeby přesunout IP adresy mezi uzly.)
   * Jedna IP adresa pro komunikaci clusteru
   * Jedna instance IP adresa (přiřazená k virtuálnímu počítači)
 
@@ -102,9 +109,7 @@ Každý uzel vFXT bude identický. To znamená, že pokud vytvoříte cluster se
 
 Disková mezipaměť na uzel je konfigurovatelná a může být Rage z 1000 GB do 8000 GB. pro uzly Standard_E32s_v3 doporučená velikost mezipaměti je 4 TB na uzel.
 
-Pokud chcete získat další informace o těchto virtuálních počítačích, přečtěte si dokumentaci k Microsoft Azure:
-
-* [Paměťově optimalizované velikosti virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)
+Pokud chcete získat další informace o těchto virtuálních počítačích, přečtěte si dokumentaci k Microsoft Azure: [paměťově optimalizované velikosti virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)
 
 ## <a name="account-quota"></a>Kvóta účtu
 
@@ -112,11 +117,11 @@ Ujistěte se, že vaše předplatné má kapacitu pro spuštění clusteru avere
 
 ## <a name="back-end-data-storage"></a>Úložiště dat back-endu
 
-Back-endové systémy úložiště poskytují soubory do mezipaměti clusteru a také přijímají změněná data z mezipaměti. Rozhodněte, jestli se vaše pracovní sada bude ukládat jako dlouhodobá v novém kontejneru objektů BLOB nebo v existujícím cloudovém nebo hardwarovém úložném systému. Tyto back-endové systémy úložiště se nazývají *základní filers*.
+Back-endové systémy úložiště poskytují soubory do mezipaměti clusteru a také přijímají změněná data z mezipaměti. Rozhodněte, jestli se vaše pracovní sada bude ukládat jako dlouhodobá v novém kontejneru objektů BLOB nebo v existujícím systému úložiště (Cloud nebo hardware). Tyto back-endové systémy úložiště se nazývají *základní filers*.
 
 ### <a name="hardware-core-filers"></a>Hardware Core filers
 
-Po vytvoření clusteru přidejte do clusteru vFXT hardwarové úložné systémy. Můžete použít jakýkoliv existující místní hardwarový systém, včetně místních systémů, pokud se systém úložiště dá získat z podsítě clusteru.
+Po vytvoření clusteru přidejte do clusteru vFXT hardwarové úložné systémy. Můžete použít celou řadu oblíbených hardwarových systémů, včetně místních systémů, pokud se systém úložiště dá získat z podsítě clusteru.
 
 Podrobné pokyny, jak přidat existující systém úložiště do clusteru avere vFXT, najdete v tématu [Konfigurace úložiště](avere-vfxt-add-storage.md) .
 
@@ -142,7 +147,7 @@ Mezi možnosti přístupu patří:
   > [!TIP]
   > Pokud jste v řadiči clusteru nastavili veřejnou IP adresu, můžete ji použít jako hostitele odkazů. Další informace najdete [v tématu řadič clusteru jako skokový hostitel](#cluster-controller-as-jump-host) .
 
-* Virtuální privátní síť (VPN) – konfigurace připojení typu Point-to-site nebo VPN typu Site-to-site k privátní síti.
+* Virtuální privátní síť (VPN) – konfigurace typu Point-to-site nebo VPN typu Site-to-site mezi vaší privátní sítí v Azure a podnikových sítích.
 
 * Azure ExpressRoute – konfigurace privátního připojení prostřednictvím partnera ExpressRoute.
 
@@ -156,20 +161,20 @@ Aby bylo možné zvýšit zabezpečení řadičem pomocí veřejné IP adresy, s
 
 Při vytváření clusteru můžete zvolit, jestli se má na řadiči clusteru vytvořit veřejná IP adresa.
 
-* Pokud vytvoříte **novou virtuální síť** nebo **novou podsíť**, k řadiči clusteru se přiřadí **Veřejná IP adresa**.
+* Pokud vytvoříte **novou virtuální síť** nebo **novou podsíť**, k řadiči clusteru se přiřadí **Veřejná** IP adresa.
 * Pokud vyberete existující virtuální síť a podsíť, bude mít řadič clusteru jenom **privátní** IP adresy.
 
 ## <a name="vm-access-roles"></a>Role přístupu virtuálních počítačů
 
 Azure používá [řízení přístupu na základě role](../role-based-access-control/index.yml) (RBAC) k autorizaci virtuálních počítačů clusteru k provádění určitých úloh. Například řadič clusteru potřebuje autorizaci k vytvoření a konfiguraci virtuálních počítačů uzlů clusteru. Uzly clusteru musí být schopné přiřadit nebo změnit přiřazení IP adres jiným uzlům clusteru.
 
-Pro avere vFXT pro virtuální počítače Azure se používají dvě předdefinované role Azure:
+Pro virtuální počítače s avere vFXT se používají dvě předdefinované role Azure:
 
 * Řadič clusteru používá integrovaný [Přispěvatel rolí avere](../role-based-access-control/built-in-roles.md#avere-contributor).
-* Uzly clusteru používají vestavěný [avere operátor](../role-based-access-control/built-in-roles.md#avere-operator) role.
+* Uzly clusteru používají integrovaný [avere operátor](../role-based-access-control/built-in-roles.md#avere-operator)role.
 
 Pokud potřebujete přizpůsobit role přístupu pro součásti avere vFXT, musíte definovat vlastní roli a pak ji přiřadit k virtuálním počítačům v okamžiku jejich vytvoření. Šablonu nasazení nelze použít v Azure Marketplace. Pomocí služby Microsoft Customer Service and Support můžete v Azure Portal otevřít lístek, jak je popsáno v [tématu o získání pomoci s vaším systémem](avere-vfxt-open-ticket.md).
 
 ## <a name="next-step-understand-the-deployment-process"></a>Další krok: pochopení procesu nasazení
 
-[Přehled nasazení poskytuje přehled](avere-vfxt-deploy-overview.md) o krocích potřebných k vytvoření avere vFXT pro systém Azure a jeho přípravě na poskytování dat.
+[Přehled nasazení poskytuje přehled](avere-vfxt-deploy-overview.md) kroků nezbytných k vytvoření avere vFXT pro systém Azure a jeho přípravě na poskytování dat.

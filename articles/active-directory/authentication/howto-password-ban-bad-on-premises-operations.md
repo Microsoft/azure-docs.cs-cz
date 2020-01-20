@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8602a9c5b69c47c2f663dab461394ef5e1a9bed
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 2440d373b726b4f97cd5d9ba162daaa0714f79e0
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75762854"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155040"
 ---
 # <a name="azure-ad-password-protection-operational-procedures"></a>Provozní procedury ochrany heslem Azure AD
 
@@ -28,7 +28,7 @@ Postupujte podle pokynů v článku [Konfigurace vlastního seznamu zakázaných
 
 ## <a name="enable-password-protection"></a>Povolení ochrany heslem
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte **do Azure Active Directory**, **zabezpečení**,**metod ověřování**a **ochrany heslem**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte do **Azure Active Directory** > **metody ověřování** **zabezpečení** >  > **ochrana heslem**.
 1. Nastavte **možnost Povolit ochranu heslem ve službě Windows Server Active Directory** na **hodnotu Ano** .
 1. Jak je uvedeno v [Průvodci nasazením](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy), doporučujeme nejprve nastavit **režim** na **audit** .
    * Až budete s funkcí spokojeni, můžete **režim** přepnout na **vynutilo** .

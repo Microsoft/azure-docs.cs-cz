@@ -4,20 +4,20 @@ description: Jak přidat data do nového svazku úložiště pro použití s ave
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: 183ed719eb5396fe0e442e6b774d962d1ba48386
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c2a38b20fff789faf370e3161a92a31ed5f04c57
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480597"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153714"
 ---
 # <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>Přesun dat do clusteru vFXT – paralelní data ingestování
 
-Po vytvoření nového clusteru vFXT může být prvním úkolem přesunutí dat do nového svazku úložiště. Pokud však vaše Obvyklá metoda přesunu dat vydává jednoduchý příkaz kopírování z jednoho klienta, pravděpodobně se zobrazí pomalý výkon při kopírování. Kopírování s jedním vláknem není vhodnou možností pro kopírování dat do back-endu clusteru avere vFXT.
+Po vytvoření nového clusteru vFXT může být prvním úkolem přesunutí dat do nového svazku úložiště v Azure. Pokud však vaše Obvyklá metoda přesunu dat vydává jednoduchý příkaz kopírování z jednoho klienta, pravděpodobně se zobrazí pomalý výkon při kopírování. Kopírování s jedním vláknem není vhodnou možností pro kopírování dat do back-endu clusteru avere vFXT.
 
-Vzhledem k tomu, že cluster avere vFXT je škálovatelná mezipaměť více klientských počítačů, nejrychlejší a nejúčinnější způsob, jak kopírovat data, je více klientů. Tato technika parallelizes přijímání souborů a objektů.
+Vzhledem k tomu, že avere vFXT pro cluster Azure je škálovatelná mezipaměť více klientských počítačů, nejrychlejší a nejúčinnější způsob, jak kopírovat data, je více klientů. Tato technika parallelizes přijímání souborů a objektů.
 
 ![Diagram znázorňující pohyb vícevláknových dat s více klienty: vlevo nahoře je ikona pro místní hardwarové úložiště s více šipkami. Šipky ukazují na čtyři klientské počítače. Z každého klientského počítače tři šipky směřuje k avere vFXT. Z vFXT avere se několik šipek odkazuje na úložiště objektů BLOB.](media/avere-vfxt-parallel-ingest.png)
 
@@ -44,7 +44,7 @@ Virtuální počítač pro ingestování dat je součástí kurzu, ve kterém no
 
 ## <a name="strategic-planning"></a>Strategické plánování
 
-Při sestavování strategie pro paralelní kopírování dat byste měli pochopit kompromisy v velikosti souborů, počtu souborů a hloubkě adresáře.
+Při navrhování strategie pro paralelní kopírování dat byste měli pochopit kompromisy v velikosti souborů, počtu souborů a hloubkě adresáře.
 
 * Když jsou soubory malé, je metrika zájmu soubory za sekundu.
 * Když jsou soubory velké (10MiBi nebo větší), je metrika zájmu v bajtech za sekundu.
@@ -278,7 +278,7 @@ Tato metoda představuje jednoduchou a časově efektivní metodu pro datové sa
 
 ## <a name="use-the-msrsync-utility"></a>Použití nástroje msrsync
 
-Nástroj ``msrsync`` lze také použít k přesunu dat do back-endu jádra souborového pro cluster avere. Tento nástroj je určený k optimalizaci využití šířky pásma spuštěním několika paralelních procesů ``rsync``. Je k dispozici z GitHubu na <https://github.com/jbd/msrsync>.
+Nástroj ``msrsync`` lze také použít k přesunu dat do back-endu Core souborového pro cluster avere. Tento nástroj je určený k optimalizaci využití šířky pásma spuštěním několika paralelních procesů ``rsync``. Je k dispozici z GitHubu na <https://github.com/jbd/msrsync>.
 
 ``msrsync`` rozdělí zdrojový adresář do samostatných "intervalů" a potom spustí jednotlivé procesy ``rsync`` v každém intervalu.
 
@@ -323,7 +323,7 @@ Pokud chcete použít ``msrsync`` k naplnění cloudového svazku Azure pomocí 
 
 ## <a name="use-the-parallel-copy-script"></a>Použití skriptu paralelního kopírování
 
-Skript ``parallelcp`` taky může být užitečný pro přesun dat do back-endu vašeho clusteru vFXT.
+Skript ``parallelcp`` taky může být užitečný pro přesun dat do back-endu clusteru vFXT.
 
 Níže uvedený skript přidá spustitelný `parallelcp`. (Tento skript je navržený pro Ubuntu; Pokud používáte jinou distribuci, musíte ``parallel`` nainstalovat samostatně.)
 

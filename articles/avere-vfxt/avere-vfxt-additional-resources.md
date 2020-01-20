@@ -4,14 +4,14 @@ description: Odkazy na Další informace o avere vFXT pro Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: fbd763827383c5ded2bb4ef0047ea3c5f650d78e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 78e0500057baf407f1d26afe29d9df1e525cbf3d
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75416333"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153764"
 ---
 # <a name="additional-documentation"></a>Další dokumentace
 
@@ -25,7 +25,7 @@ Další dokumentaci ke clusteru avere najdete na webu na adrese <https://azure.g
   * [Přizpůsobení nastavení podpory a monitorování](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_support.html#config-support>) vysvětluje, jak přizpůsobit nastavení nahrávání podpory a povolit vzdálené monitorování.
   * [Konfigurace VServers a globálního oboru názvů](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_vserver.html#config-vserver>) obsahuje informace o vytvoření oboru názvů pro klientské aplikace.
   * [Konfigurace DNS pro cluster avere](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_network.html#dns-overview>) vysvětluje, jak nakonfigurovat DNS s kruhovým dotazováním.
-  * [Přidání dokumentů back-end úložiště](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_core_filer.html#add-core-filer>) , jak přidat základní filers
+  * [Přidání záložních dokumentů úložiště](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_core_filer.html#add-core-filer>) , jak přidat základní filers
 
 * [Průvodce konfigurací clusteru](<https://azure.github.io/Avere/#operations>) je úplným odkazem na nastavení a možnosti pro cluster avere. Cluster vFXT používá podmnožinu těchto možností, ale platí většinu stejných konfiguračních stránek.
 
@@ -33,4 +33,4 @@ Další dokumentaci ke clusteru avere najdete na webu na adrese <https://azure.g
 
 ## <a name="vfxt-creation-and-management-documentation"></a>dokumentace k vytváření a správě vFXT
 
-K dispozici je kompletní příručka k používání vfxt.py, nástroje pro tvorbu a správu cloudového clusteru na GitHubu: [Správa cloudových clusterů pomocí vfxt.py](https://github.com/Azure/AvereSDK/blob/master/docs/README.md).
+V rámci služby vfxt.py je k dispozici kompletní příručka k vytváření a správě cloudového clusteru založeného na skriptech na GitHubu: [Správa cloudových clusterů pomocí vfxt.py](https://github.com/Azure/AvereSDK/blob/master/docs/README.md).

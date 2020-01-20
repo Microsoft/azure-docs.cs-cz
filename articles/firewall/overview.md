@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 01/13/2020
+ms.date: 01/15/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: c78ac615d2a93865721152442461d40925dc088d
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: def954395c0f4f83afe28443ba63c89c41e07eba
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922586"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156739"
 ---
 # <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
@@ -90,11 +90,10 @@ To umožňuje následující scénáře:
 
 Všechny události jsou integrované s Azure Monitor, což umožňuje archivaci protokolů do účtu úložiště, streamování událostí do centra událostí nebo jejich odeslání do protokolů Azure Monitor.
 
-## <a name="pci-soc-and-iso-compliant"></a>PCI, SOC a ISO – kompatibilní
+## <a name="compliance-certifications"></a>Certifikace dodržování předpisů
 
-Azure Firewall je obor platebních karet (PCI), ovládací prvky SOC (Service Organization Controls) a kompatibilní s ISO (ISO). V současné době podporuje SOC 1 typ 2, SOC 2 Type 2, SOC 3, PCI DSS a ISO 27001, 27018, 20000-1, 22301, 9001, 27017.
+Azure Firewall je obor platebních karet (PCI), ovládací prvky SOC (Service Organization Controls) a kompatibilní s ISO (ISO). Další informace najdete v tématu [Azure firewall certifikace dodržování předpisů](compliance-certifications.md).
 
-Další informace najdete v tématu [Průvodce dodržováním předpisů Microsoftu](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide).
 
 ## <a name="known-issues"></a>Známé problémy
 

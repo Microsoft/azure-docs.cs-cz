@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/21/2019
 ms.author: kumud
-ms.openlocfilehash: 907a6de2ff89ddd3c2cb5bdab67e1deb984141dc
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: d08ce1c382d173ac98a0e61e6117ed50b958ba44
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965242"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119818"
 ---
 # <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell-preview"></a>Upgrade aplikace IPv4 na IPv6 ve službě Azure Virtual Network – PowerShell (Preview)
 
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak přidat připojení IPv6 do existující aplik
 - Adresní prostor IPv6 pro virtuální síť a podsíť
 - Standard Load Balancer s konfiguracemi front-endu IPv4 i IPV6
 - Virtuální počítače se síťovými kartami, které mají konfiguraci IPv4 i IPv6
-- Služba IPv Public IP, aby nástroj pro vyrovnávání zatížení měl připojení IPv6 k Internetu
+- Veřejná IP adresa IPv6, aby nástroj pro vyrovnávání zatížení měl připojení IPv6 k Internetu
 
 > [!Important]
 > Podpora protokolu IPv6 pro Azure Virtual Network je momentálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -35,7 +35,7 @@ V tomto článku se dozvíte, jak přidat připojení IPv6 do existující aplik
 
 Pokud se rozhodnete nainstalovat a používat PowerShell místně, vyžaduje tento článek verzi modulu Azure PowerShell 6.9.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="register-the-service"></a>Registrace služby
 
@@ -108,7 +108,7 @@ $lb | Add-AzLoadBalancerBackendAddressPoolConfig -Name "LbBackEndPool_v6"
 $lb | Set-AzLoadBalancer
 ```
 
-## <a name="configure-load-balancer-rules"></a>Konfigurace pravidel nástroje pro vyrovnávání zatížení
+## <a name="configure-load-balancer-rules"></a>Nakonfigurovat pravidla nástroje pro vyrovnávání zatížení
 Načtěte existující konfiguraci front-endu a back-endu pro vyrovnávání zatížení a pak přidejte nová pravidla vyrovnávání zatížení pomocí [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/Add-AzLoadBalancerRuleConfig).
 
 ```azurepowershell

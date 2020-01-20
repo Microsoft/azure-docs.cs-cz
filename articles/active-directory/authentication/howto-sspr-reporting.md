@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3b05c45d218c0f85817b4b5023ac22401879f81
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 27d219f46f82f4a74cb5dee0a6b11b673a4a3509
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847214"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155003"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Možnosti vytváření sestav pro správu hesel služby Azure AD
 
@@ -53,7 +53,7 @@ V prostředí Azure Portal jsme vylepšili způsob, jakým můžete zobrazit akt
 
 ### <a name="converged-registration-preview"></a>Sblížená registrace (Preview)
 
-Pokud se účastníte ve verzi Public Preview sblížené registrace, budou se v rámci **metod ověřování**služby zobrazovat informace týkající se aktivity uživatele v protokolech auditu.
+Pokud se účastníte ve verzi Public Preview sblížené registrace, najdete informace týkající se aktivity uživatele v protokolech auditu v části **zabezpečení** > **metody ověřování**.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Popis sloupců sestavy v Azure Portal
 
@@ -176,7 +176,7 @@ Následující seznam vysvětluje tuto aktivitu podrobněji:
 * [Resetování nebo změna hesla](../user-help/active-directory-passwords-update-your-own-password.md)
 * [Registrace samoobslužného resetování hesla](../user-help/active-directory-passwords-reset-register.md)
 * [Máte dotaz k licencování?](concept-sspr-licensing.md)
-* [Jaká data používá SSPR a která data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
+* [Jaká data používá SSPR a jaká data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
 * [Které metody ověřování jsou dostupné pro uživatele?](concept-sspr-howitworks.md#authentication-methods)
 * [Jaké jsou možnosti zásad se SSPR?](concept-sspr-policy.md)
 * [Co je zpětný zápis hesla a proč byste se o něj měli starat?](howto-sspr-writeback.md)

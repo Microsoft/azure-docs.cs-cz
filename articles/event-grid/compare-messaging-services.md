@@ -1,6 +1,6 @@
 ---
 title: Porovnání služeb Azure pro zasílání zpráv
-description: Popisuje tři služby zasílání zpráv Azure – Azure Event Grid, Event Hubs a Service Bus. Doporučuje nejvhodnější služby pro různé situace.
+description: Popisuje tři zasílání zpráv služby Azure – Azure Event Grid, Event Hubs a služby Service Bus. Doporučuje nejvhodnější služby pro různé situace.
 services: event-grid
 author: spelluru
 manager: timlt
@@ -9,14 +9,14 @@ ms.topic: overview
 ms.date: 10/22/2019
 ms.author: spelluru
 ms.custom: seodec18
-ms.openlocfilehash: 77497d709d7106bf7c13d1fafcc4e64ee0ed1d39
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 6122f17637e76f42cc4fbcc87ac9f48da3cdca36
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790313"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122198"
 ---
-# <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Výběr mezi službami Azure Messaging Services – Event Grid, Event Hubs a Service Bus
+# <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Výběr mezi zasílání zpráv služby Azure - Event Grid, Event Hubs a služby Service Bus
 
 Azure nabízí tři služby, které v rámci určitého řešení pomáhají doručovat zprávy o událostech. Jsou to tyto služby:
 
@@ -56,7 +56,7 @@ Event Grid je propojovací rovina událostí, která umožňuje reaktivní progr
 
 Služba Event Grid je úzce propojená se službami Azure a umožňuje taky integraci se službami třetích stran. To zjednodušuje příjem událostí a snižuje náklady, protože není potřeba neustále provádět dotazování. Event Grid efektivně a spolehlivě směruje události z prostředků Azure i mimo Azure. Distribuuje události do registrovaných koncových bodů odběratelů. Zpráva události obsahuje informace, které potřebujete, abyste mohli reagovat na změny ve službách a aplikacích. Event Grid není datový kanál a nedoručuje samotný objekt, u kterého došlo k aktualizaci.
 
-Event Grid podporuje nedoručené zprávy pro události, které nejsou doručeny do koncového bodu.
+Podporuje Služba Event Grid dead-lettering pro události, které nejsou doručeny do koncového bodu.
 
 Má následující vlastnosti:
 
@@ -90,7 +90,7 @@ Má následující vlastnosti:
 
 ## <a name="use-the-services-together"></a>Použití služeb v kombinaci
 
-V některých případech používáte služby současně k plnění různých úkolů. Například web internetového obchodu může pomocí služby Service Bus zpracovat objednávku, služba Event Hubs zachytí telemetrická data webu a Event Grid bude reagovat na události, jako je odeslání položky.
+V některých případech používáte služby současně k plnění různých úkolů. Například web elektronického obchodování může použít Service Bus ke zpracování objednávky, Event Hubs k zachycení telemetrie webu a Event Grid reakci na události, jako byla položka odeslána.
 
 V jiných případech služby vzájemně propojíte do kanálu událostí a dat. Event Grid slouží k reagování na události v jiných službách. V článku [Streamování velkých objemů dat do datového skladu](event-grid-event-hubs-integration.md) najdete příklad použití Event Gridu v kombinaci se službou Event Hubs. Následující obrázek ukazuje pracovní postup pro streamování dat.
 

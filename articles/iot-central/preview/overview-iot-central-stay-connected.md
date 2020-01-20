@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: ''
-ms.openlocfilehash: 938d93b1df077914323c7b5f4ee1d42276aeff04
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c102e7ffde7faab5d864c1d9acaafe141664ebf
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434917"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119546"
 ---
 # <a name="stay-connected-with-azure-iot-central-preview-features"></a>Zůstaňte připojení k Azure IoT Central (funkce ve verzi Preview)
 
@@ -21,7 +21,7 @@ ms.locfileid: "75434917"
 
 Tento článek poskytuje přehled o tom, jak Azure IoT Central pomáhá udržet zařízení připojená a v pořádku.
 
-U všech řešení IoT navržených pro práci se škálováním je důležité dobře strukturovaný přístup ke správě zařízení. Není k dispozici dostatek místa k tomu, abyste mohli nastavovat zařízení jako připojené, potřebujete přístup k tomu, abyste zachovali zařízení připojená a v dobrém stavu, když se vaše řešení vyvíjí, roste a stáří. Azure IoT Central poskytuje potřebné možnosti, které zajistí, aby zařízení v řešení IoT byla v celém životním cyklu aplikace dobře staráte.
+U všech řešení IoT navržených pro práci se škálováním je důležité dobře strukturovaný přístup ke správě zařízení. Není k dispozici dostatek místa k tomu, aby se zařízení připojila ke cloudu. potřebujete přístup k tomu, aby se zařízení připojovala a v pořádku, když se vaše řešení vyvíjí, roste a nedostalo. Azure IoT Central poskytuje potřebné možnosti, které zajistí, aby zařízení v řešení IoT byla v celém životním cyklu aplikace dobře staráte.
 
 ## <a name="dashboards"></a>Řídicí panely 
 Vestavěné [řídicí panely](howto-manage-devices.md#import-devices) poskytují přizpůsobitelnou plochu pro monitorování stavu a telemetrie zařízení. Začněte s předem vytvořeným řídicím panelem z [šablony aplikace](howto-use-app-templates.md) nebo vytvořte vlastní řídicí panely přizpůsobené potřebám vaší aplikace. Řídicí panely mohou být sdíleny se všemi uživateli aplikace nebo jsou uchovávány soukromě.

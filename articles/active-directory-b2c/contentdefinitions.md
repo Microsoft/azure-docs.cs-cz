@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f8acf499d4d82c49096e4e5beff8209d0970b421
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1ce564767fe9664604687d8cbaced58507e6b8b3
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064339"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119648"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -37,13 +37,13 @@ Následující příklad ukazuje identifikátor definice obsahu a definici lokal
   <Metadata>
     <Item Key="DisplayName">Local account sign up page</Item>
   </Metadata>
-  <LoalizedResourcesReferences MergeBehavior="Prepend">
+  <LocalizedResourcesReferences MergeBehavior="Prepend">
     <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.localaccountsignup.en" />
     <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.localaccountsignup.es" />
     ...
 ```
 
-Metadata LocalAccountSignUpWithLogonEmailho technického profilu s vlastním uplatněním obsahují identifikátor definice obsahu **ContentDefinitionReferenceId** nastaven na`api.localaccountsignup`
+Metadata technického profilu **LocalAccountSignUpWithLogonEmail** s vlastním kontrolním výrazem obsahují identifikátor definice obsahu **ContentDefinitionReferenceId** nastaven na `api.localaccountsignup`
 
 ```XML
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -61,13 +61,13 @@ Metadata LocalAccountSignUpWithLogonEmailho technického profilu s vlastním upl
 
 Element **ContentDefinition** obsahuje následující atribut:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| Id | Ano | Identifikátor definice obsahu. Hodnota je jedna zadaná v oddílu **ID definice obsahu** dále na této stránce. |
+| ID | Ano | Identifikátor definice obsahu. Hodnota je jedna zadaná v oddílu **ID definice obsahu** dále na této stránce. |
 
 Element **ContentDefinition** obsahuje následující prvky:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | Řetězec, který obsahuje adresu URL stránky HTML5 pro definici obsahu. |
 | RecoveryUri | 0:1 | Řetězec, který obsahuje adresu URL stránky HTML pro zobrazení chyby související s definicí obsahu. |
@@ -79,7 +79,7 @@ Element **ContentDefinition** obsahuje následující prvky:
 
 Element **DataUri** slouží k určení identifikátoru stránky. Azure AD B2C používá identifikátor stránky k načtení a spuštění prvků uživatelského rozhraní a JavaScriptu na straně klienta. Formát hodnoty je `urn:com:microsoft:aad:b2c:elements:page-name:version`.  Následující tabulka obsahuje seznam identifikátorů stránek, které můžete použít.
 
-| Value |   Popis |
+| Hodnota |   Popis |
 | ----- | ----------- |
 | `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | Zobrazí chybovou stránku, pokud dojde k výjimce nebo chybě. |
 | `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | Zobrazuje seznam zprostředkovatelů identity, ze kterých si uživatelé můžou vybrat během přihlašování. |
@@ -93,13 +93,13 @@ Element **DataUri** slouží k určení identifikátoru stránky. Azure AD B2C p
 
 Element **LocalizedResourcesReferences** obsahuje následující prvky:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1: n | Seznam lokalizovaných odkazů na prostředky pro definici obsahu. |
 
 Element **LocalizedResourcesReferences** obsahuje následující atributy:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | Jazyk | Ano | Řetězec, který obsahuje podporovaný jazyk pro zásady na značku RFC 5646-Tags pro identifikaci jazyků. |
 | LocalizedResourcesReferenceId | Ano | Identifikátor elementu **LocalizedResources** |
@@ -135,13 +135,13 @@ Následující příklad ukazuje definici obsahu pro registraci nebo přihlašov
 </ContentDefinition>
 ```
 
-Další informace o tom, jak přidat podporu lokalizace do definic obsahu [](localization.md), naleznete v tématu lokalizace.
+Další informace o tom, jak přidat podporu lokalizace do definic obsahu, naleznete v tématu [lokalizace](localization.md).
 
 ## <a name="content-definition-ids"></a>ID definice obsahu
 
 Atribut ID elementu **ContentDefinition** určuje typ stránky, která se vztahuje k definici obsahu. Prvek definuje kontext, který bude použita vlastní šablona HTML5/CSS. V následující tabulce jsou popsány sady ID definic obsahu rozpoznávané architekturou prostředí identity a typy stránek, které se na ně vztahují. Můžete vytvořit vlastní definice obsahu s libovolným ID.
 
-| id | Výchozí šablona | Popis |
+| ID | Výchozí šablona | Popis |
 | -- | ---------------- | ----------- |
 | **api.error** | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Chybová stránka** – zobrazí chybovou stránku, když dojde k výjimce nebo chybě. |
 | **api.idpselections** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Stránka Výběr zprostředkovatele identity** – zobrazí seznam zprostředkovatelů identity, ze kterých si uživatelé můžou během přihlašování vybírat. Tyto možnosti jsou obvykle poskytovatelé podnikových identit, poskytovatelé sociálních identit, jako je Facebook, Google + nebo místní účty. |

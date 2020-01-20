@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 606c7d1fd012052a22afeef906bbe9df4c63a76b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3e1adc9220dd9b49c49ff3fe5e798dfcc9d5c928
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825285"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122674"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v21-for-python"></a>Rychlý Start: Klientská knihovna služby Azure Blob Storage v 2.1 pro Python
 
@@ -67,7 +67,7 @@ Vzorový program vytvoří testovací soubor ve složce *dokumenty* , nahraje so
 1. Nainstalujte závislosti:
 
     ```console
-    pip install azure-storage-blob
+    pip install azure-storage-blob==2.1.0
     ```
 
 1. Přejít na ukázkovou aplikaci:
@@ -137,7 +137,7 @@ Nejprve vytvoříte odkazy na objekty sloužící k přístupu k úložišti obj
 Jakmile budete mít CloudBlobContainer, vytvořte instanci objektu **CloudBlockBlob**, která odkazuje na konkrétní objekt blob, který vás zajímá. Tento objekt blob pak můžete podle potřeby nahrát, stáhnout nebo zkopírovat.
 
 > [!IMPORTANT]
-> Názvy kontejnerů musí obsahovat jen malá písmena. Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
+> Názvy kontejnerů musí být malými písmeny. Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
 ### <a name="upload-blobs-to-the-container"></a>Nahrání objektů blob do kontejneru
 
@@ -166,7 +166,7 @@ block_blob_service.create_blob_from_path(
     container_name, local_file_name, full_path_to_file)
 ```
 
-V případě úložiště objektů blob můžete k nahrání použít několik metod. Například pokud máte paměťový proud, můžete místo metody `create_blob_from_stream` použít metodu `create_blob_from_path`. 
+V případě úložiště objektů blob můžete k nahrání použít několik metod. Například pokud máte paměťový proud, můžete místo metody `create_blob_from_path` použít metodu `create_blob_from_stream`. 
 
 ### <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
 

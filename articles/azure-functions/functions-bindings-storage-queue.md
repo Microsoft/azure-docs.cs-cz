@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 3680de5d8e0e761047e1263c2679da87b1fa2d0b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 70254e42b5964c7c7a3bf15c396f4c118f68a5ed
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769451"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121229"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Vazby úložiště front Azure pro Azure Functions
 
@@ -249,7 +249,7 @@ V [ C# části knihovny tříd](functions-dotnet-class-library.md)použijte nás
   }
   ```
 
-  Vlastnost `Connection` můžete nastavit tak, aby určovala účet úložiště, který se má použít, jak je znázorněno v následujícím příkladu:
+  Vlastnost `Connection` můžete nastavit tak, aby určovala nastavení aplikace, které obsahuje připojovací řetězec účtu úložiště, který se má použít, jak je znázorněno v následujícím příkladu:
 
   ```csharp
   [FunctionName("QueueTrigger")]
@@ -312,7 +312,7 @@ Do C# skriptu C# a použijte k datům zprávy parametr metody, jako je napříkl
 
 Pokud se pokusíte vytvořit navázání na `CloudQueueMessage` a zobrazí se chybová zpráva, ujistěte se, že máte odkaz na [správnou verzi sady SDK služby úložiště](#azure-storage-sdk-version-in-functions-1x).
 
-V jazyce JavaScript použijte `context.bindings.<name>` pro přístup k datové části položky fronty. Pokud je datová část JSON, je deserializována do objektu.
+V jazyce JavaScript použijte `context.bindings.<name>` pro přístup k datové části položky fronty. Pokud je datová část JSON, je deserializována do objektu. Tato datová část je také předána jako druhý parametr funkce.
 
 ## <a name="trigger---message-metadata"></a>Aktivační události – zpráva metadat
 
@@ -320,7 +320,7 @@ Aktivační událost fronty poskytuje několik [vlastností metadat](./functions
 
 |Vlastnost|Typ|Popis|
 |--------|----|-----------|
-|`QueueTrigger`|`string`|Datová část fronty (Pokud platný řetězec). Pokud datová část zprávy fronty jako řetězec, `QueueTrigger` má stejnou hodnotu jako proměnná s názvem vlastností `name` v *Function. JSON*.|
+|`QueueTrigger`|`string`|Datová část fronty (Pokud platný řetězec). Pokud je datová část zprávy fronty řetězec, `QueueTrigger` má stejnou hodnotu jako proměnná pojmenovaná vlastností `name` v *Function. JSON*.|
 |`DequeueCount`|`int`|Počet, kolikrát byla tato zpráva odstraněna z fronty.|
 |`ExpirationTime`|`DateTimeOffset`|Čas vypršení platnosti zprávy|
 |`Id`|`string`|ID zprávy fronty|
@@ -411,7 +411,7 @@ Tady je *function.json* souboru:
     {
       "type": "http",
       "direction": "out",
-      "name": "return"
+      "name": "$return"
     },
     {
       "type": "queue",
@@ -472,7 +472,7 @@ Tady je *function.json* souboru:
     {
       "type": "http",
       "direction": "out",
-      "name": "return"
+      "name": "$return"
     },
     {
       "type": "queue",
@@ -506,7 +506,7 @@ module.exports = function(context) {
 
 ### <a name="output---java-example"></a>Výstup – příklad v jazyce Java
 
- Následující příklad ukazuje funkci jazyka Java, která vytvoří zprávu fronty pro, když se aktivuje požadavkem HTTP.
+ Následující příklad ukazuje funkci jazyka Java, která při aktivaci požadavku HTTP vytvoří zprávu fronty.
 
 ```java
 @FunctionName("httpToQueue")
@@ -514,7 +514,7 @@ module.exports = function(context) {
  public String pushToQueue(
      @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
      final String message,
-     @HttpOutput(name = "response") final OutputBinding&lt;String&gt; result) {
+     @HttpOutput(name = "response") final OutputBinding<String> result) {
        result.setValue(message + " has been added.");
        return message;
  }

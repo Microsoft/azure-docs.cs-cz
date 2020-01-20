@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: de3a3d9e5523341c2f549ff2a90c9c40a4e3cb50
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: df3ca877570b6b3e3a34dd20d617ce3896f1dd99
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889451"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120957"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -45,7 +45,7 @@ Další informace najdete v tématu [plánování adresování IP adres pro vá�
 V tomto režimu mohou být v případě, že se zablokuje, k dispozici různé důvody. Můžete se podívat na:
 
 * Sám pod sebou, pomocí `kubectl describe pod <pod-name>`.
-* Protokoly pomocí `kubectl log <pod-name>`.
+* Protokoly pomocí `kubectl logs <pod-name>`.
 
 Další informace o řešení problémů v nástroji najdete v tématu [ladění aplikací](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods).
 
@@ -173,14 +173,14 @@ Ověřte, že nastavení nejsou v konfliktu s žádným z požadovaných nebo vo
 
 V Kubernetes verze 1,10 může MountVolume. WaitForAttach selhat s opětovným připojením k disku Azure.
 
-V systému Linux se může zobrazit nesprávná chyba formátu DevicePath. Příklad:
+V systému Linux se může zobrazit nesprávná chyba formátu DevicePath. Například:
 
 ```console
 MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af9f967" : azureDisk - Wait for attach expect device path as a lun number, instead got: /dev/disk/azure/scsi1/lun1 (strconv.Atoi: parsing "/dev/disk/azure/scsi1/lun1": invalid syntax)
   Warning  FailedMount             1m (x10 over 21m)   kubelet, k8s-agentpool-66825246-0  Unable to mount volumes for pod
 ```
 
-Ve Windows se může zobrazit nesprávná chyba na číslo DevicePath (LUN). Příklad:
+Ve Windows se může zobrazit nesprávná chyba na číslo DevicePath (LUN). Například:
 
 ```console
 Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.WaitForAttach failed for volume "disk01" : azureDisk - WaitForAttach failed within timeout node (15282k8s9010) diskId:(andy-mghyb
@@ -226,7 +226,7 @@ spec:
   >[!NOTE]
   > Vzhledem k tomu, že GID a UID jsou ve výchozím nastavení připojeny jako kořen nebo 0. Pokud jsou GID nebo UID nastavené jako jiné než kořenové, například 1000, Kubernetes použije `chown` ke změně všech adresářů a souborů v tomto disku. Tato operace může být časově náročná a může způsobit velmi pomalé připojení disku.
 
-* K nastavení GID a UID použijte `chown` v initContainers. Příklad:
+* K nastavení GID a UID použijte `chown` v initContainers. Například:
 
 ```yaml
 initContainers:
@@ -240,7 +240,7 @@ initContainers:
 
 ### <a name="error-when-deleting-azure-disk-persistentvolumeclaim-in-use-by-a-pod"></a>Chyba při odstraňování služby Azure disk PersistentVolumeClaim, která se používá pod
 
-Pokud se pokusíte odstranit službu Azure disk PersistentVolumeClaim, kterou používá část pod, může se zobrazit chyba. Příklad:
+Pokud se pokusíte odstranit službu Azure disk PersistentVolumeClaim, kterou používá část pod, může se zobrazit chyba. Například:
 
 ```console
 $ kubectl describe pv pvc-d8eebc1d-74d3-11e8-902b-e22b71bb1c06
@@ -296,7 +296,7 @@ Pokud používáte verzi Kubernetes, která nemá opravu tohoto problému, můž
 
 ### <a name="azure-disk-waiting-to-detach-indefinitely"></a>Disk Azure, který čeká na odpojení po neomezenou dobu
 
-V některých případech platí, že pokud se při prvním pokusu operace odpojení disku Azure nepovede, nebude se opakovat operace odpojení a zůstane připojená k virtuálnímu počítači s původním uzlem. K této chybě může dojít při přesunu disku z jednoho uzlu do druhého. Příklad:
+V některých případech platí, že pokud se při prvním pokusu operace odpojení disku Azure nepovede, nebude se opakovat operace odpojení a zůstane připojená k virtuálnímu počítači s původním uzlem. K této chybě může dojít při přesunu disku z jednoho uzlu do druhého. Například:
 
 ```console
 [Warning] AttachVolume.Attach failed for volume “pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9” : Attach volume “kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9" to instance “/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-0” failed with compute.VirtualMachinesClient#CreateOrUpdate: Failure sending request: StatusCode=0 -- Original Error: autorest/azure: Service returned an error. Status= Code=“ConflictingUserInput” Message=“Disk ‘/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/disks/kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9’ cannot be attached as the disk is already owned by VM ‘/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-1’.”
@@ -469,13 +469,13 @@ Pokud se váš klíč účtu úložiště změnil, může se zobrazit chyba při
 
 Problém můžete zmírnit ruční aktualizací pole *azurestorageaccountkey* v tajných souborech Azure pomocí klíče účtu úložiště s kódováním base64.
 
-K zakódování klíče účtu úložiště ve formátu base64 můžete použít `base64`. Příklad:
+K zakódování klíče účtu úložiště ve formátu base64 můžete použít `base64`. Například:
 
 ```console
 echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64
 ```
 
-K aktualizaci tajného souboru Azure použijte `kubectl edit secret`. Příklad:
+K aktualizaci tajného souboru Azure použijte `kubectl edit secret`. Například:
 
 ```console
 kubectl edit secret azure-storage-account-{storage-account-name}-secret

@@ -4,12 +4,12 @@ description: Popisuje řešení běžných chyb při nasazení prostředků do A
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 10/04/2019
-ms.openlocfilehash: 37c2e8d64da633dc85c46a4f6bf6152785a170da
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 58519056bd59f449fe26aa2fee3620f3ed28cc31
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75478055"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154512"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Řešení běžných problémů s nasazením v Azure při použití Azure Resource Manageru
 
@@ -201,19 +201,19 @@ Chcete-li protokolovat informace o ladění pro vnořenou šablonu, použijte el
 
 ```json
 {
-    "apiVersion": "2016-09-01",
-    "name": "nestedTemplate",
-    "type": "Microsoft.Resources/deployments",
-    "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-            "uri": "{template-uri}",
-            "contentVersion": "1.0.0.0"
-        },
-        "debugSetting": {
-           "detailLevel": "requestContent, responseContent"
-        }
+  "type": "Microsoft.Resources/deployments",
+  "apiVersion": "2016-09-01",
+  "name": "nestedTemplate",
+  "properties": {
+    "mode": "Incremental",
+    "templateLink": {
+      "uri": "{template-uri}",
+      "contentVersion": "1.0.0.0"
+    },
+    "debugSetting": {
+       "detailLevel": "requestContent, responseContent"
     }
+  }
 }
 ```
 
@@ -226,26 +226,25 @@ V některých případech nejjednodušší způsob, jak řešit potíže s vaš�
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "storageName": {
-        "type": "string"
-    },
-    "storageResourceGroup": {
-        "type": "string"
-    }
+  "storageName": {
+    "type": "string"
+  },
+  "storageResourceGroup": {
+    "type": "string"
+  }
   },
   "variables": {},
   "resources": [],
   "outputs": {
-    "exampleOutput": {
-        "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageName')), '2016-05-01')]",
-        "type" : "object"
-    }
+  "exampleOutput": {
+    "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageName')), '2016-05-01')]",
+    "type" : "object"
+  }
   }
 }
 ```
 
 Nebo Předpokládejme, že máte k dispozici chyby nasazení, které se domníváte, že jsou v relaci nesprávně nastavené závislosti. Otestujte šablonu tím, že ji rozdělíte na zjednodušené šablony. Nejprve vytvořte šablonu, která nasadí pouze jeden prostředek (například SQL Server). Když jste si jisti, že tento prostředek máte správně definovaný, přidejte prostředek, který na něm závisí (například SQL Database). Po správném definování těchto dvou prostředků přidejte další závislé prostředky (například zásady auditování). V rámci každého testovacího nasazení odstraňte skupinu prostředků, abyste se ujistili, že jste správně otestovali závislosti.
-
 
 ## <a name="next-steps"></a>Další kroky
 

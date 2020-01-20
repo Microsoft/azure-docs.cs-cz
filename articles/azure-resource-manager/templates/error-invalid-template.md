@@ -3,12 +3,12 @@ title: Neplatné chyby šablony
 description: Popisuje způsob řešení neplatných chyb šablon při nasazení Azure Resource Manager šablon.
 ms.topic: troubleshooting
 ms.date: 03/08/2018
-ms.openlocfilehash: 9337812152dac7948afc7471760f3dc14443f549
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 65cd69d67933d117b51f37b587b276aec2bd635a
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484568"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154053"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Řešení chyb pro neplatnou šablonu
 
@@ -86,18 +86,18 @@ U podřízených prostředků má typ a název stejný počet segmentů. Tento p
 
 ```json
 "resources": [
-    {
-        "type": "Microsoft.KeyVault/vaults",
-        "name": "contosokeyvault",
+  {
+    "type": "Microsoft.KeyVault/vaults",
+    "name": "contosokeyvault",
+    ...
+    "resources": [
+      {
+        "type": "secrets",
+        "name": "appPassword",
         ...
-        "resources": [
-            {
-                "type": "secrets",
-                "name": "appPassword",
-                ...
-            }
-        ]
-    }
+      }
+    ]
+  }
 ]
 ```
 
@@ -105,9 +105,9 @@ Napravení segmentů může být obtížné s Správce prostředků typy, které
 
 ```json
 {
-    "type": "Microsoft.Web/sites/providers/locks",
-    "name": "[concat(variables('siteName'),'/Microsoft.Authorization/MySiteLock')]",
-    ...
+  "type": "Microsoft.Web/sites/providers/locks",
+  "name": "[concat(variables('siteName'),'/Microsoft.Authorization/MySiteLock')]",
+  ...
 }
 ```
 
@@ -140,13 +140,13 @@ Tato chyba se zobrazí, když na sebe navzájem závisí prostředky, které zab
 
 Postup při řešení kruhové závislosti:
 
-1. V šabloně vyhledejte prostředek identifikovaný v cyklické závislosti. 
-2. Pro tento prostředek Zkontrolujte vlastnost **dependsOn** a jakékoli použití **referenční** funkce k zobrazení prostředků, na kterých závisí. 
+1. V šabloně vyhledejte prostředek identifikovaný v cyklické závislosti.
+2. Pro tento prostředek Zkontrolujte vlastnost **dependsOn** a jakékoli použití **referenční** funkce k zobrazení prostředků, na kterých závisí.
 3. Prohlédněte si tyto prostředky, abyste viděli, na kterých prostředcích závisí. Sledujte závislosti, dokud si nevšimnete zdroje, který závisí na původním prostředku.
-5. U prostředků, které jsou součástí cyklické závislosti, pečlivě prověřte všechna použití vlastnosti **dependsOn** a Identifikujte závislosti, které nejsou potřeba. Odeberte tyto závislosti. Pokud si nejste jistí, že je potřeba závislost, zkuste ji odebrat. 
+5. U prostředků, které jsou součástí cyklické závislosti, pečlivě prověřte všechna použití vlastnosti **dependsOn** a Identifikujte závislosti, které nejsou potřeba. Odeberte tyto závislosti. Pokud si nejste jistí, že je potřeba závislost, zkuste ji odebrat.
 6. Znovu nasaďte šablonu.
 
-Odebrání hodnot z vlastnosti **dependsOn** může způsobit chyby při nasazení šablony. Pokud se zobrazí chyba, přidejte závislost zpátky do šablony. 
+Odebrání hodnot z vlastnosti **dependsOn** může způsobit chyby při nasazení šablony. Pokud se zobrazí chyba, přidejte závislost zpátky do šablony.
 
 Pokud tento přístup nevyřešil cyklickou závislost, zvažte přesunutí části logiky nasazení do podřízených prostředků (například rozšíření nebo nastavení konfigurace). Tyto podřízené prostředky nakonfigurujte tak, aby se nasadily po zapojení prostředků do cyklické závislosti. Předpokládejme například, že nasazujete dva virtuální počítače, ale musíte nastavit vlastnosti pro každý z nich, který odkazuje na druhý. Můžete je nasadit v tomto pořadí:
 

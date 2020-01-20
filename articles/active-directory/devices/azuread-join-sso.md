@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14e7a4389c192dde8d086a69a35114f3b8b33e96
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 15ccbc568a2986fbb2a547eb958b5e853c8c9f77
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562184"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154818"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Jak funguje jednotné přihlašování k místním prostředkům na zařízeních připojených k Azure AD
 
@@ -24,12 +24,17 @@ Pravděpodobně se nejedná o neočekávaně, že zařízení připojené k Azur
 
 Tento článek vysvětluje, jak to funguje.
 
+## <a name="prerequisites"></a>Požadavky
+
+ Pokud počítače připojené k Azure AD nejsou připojené k síti vaší organizace, vyžaduje se síť VPN nebo jiná síťová infrastruktura. Místní jednotné přihlašování vyžaduje komunikaci s místními služba AD DS řadiči domény od začátku pohledu.
+
 ## <a name="how-it-works"></a>Jak to funguje 
 
 Vzhledem k tomu, že potřebujete pamatovat jenom jedno uživatelské jméno a heslo, jednotné přihlašování zjednodušuje přístup k vašim prostředkům a zlepší zabezpečení vašeho prostředí. U zařízení připojeného k Azure AD už uživatelé mají v prostředí cloudové aplikace i možnost jednotného přihlašování. Pokud má vaše prostředí Azure AD a místní AD, pravděpodobně budete chtít rozšířit rozsah možností jednotného přihlašování na místní obchodní aplikace, sdílené složky a tiskárny.  
 
 Zařízení připojená k Azure AD nemají žádné znalosti o místním prostředí služby AD, protože k němu nejsou připojená. K těmto zařízením ale můžete pomocí Azure AD Connect zadat další informace o vaší místní službě AD.
-Také známé prostředí, které obsahuje službu Azure AD i místní službu AD, má hybridní prostředí. Pokud máte hybridní prostředí, je možné, že už máte Azure AD Connect nasazené, abyste mohli synchronizovat vaše místní informace o identitě do cloudu. V rámci procesu synchronizace Azure AD Connect synchronizuje informace o místních doménách do služby Azure AD. Když se uživatel přihlásí k zařízení připojenému k Azure AD v hybridním prostředí:
+
+Také známé prostředí, které obsahuje službu Azure AD i místní službu AD, má hybridní prostředí. Pokud máte hybridní prostředí, je možné, že už máte Azure AD Connect nasazené, abyste mohli synchronizovat vaše místní informace o identitě do cloudu. V rámci procesu synchronizace Azure AD Connect synchronizuje místní informace o uživatelích s Azure AD. Když se uživatel přihlásí k zařízení připojenému k Azure AD v hybridním prostředí:
 
 1. Azure AD pošle název místní domény, kterou uživatel je členem zpátky do zařízení. 
 1. Služba místního úřadu zabezpečení (LSA) umožňuje ověřování pomocí protokolu Kerberos na zařízení.
@@ -44,7 +49,7 @@ Všechny aplikace, které jsou nakonfigurované pro **ověřování integrované
 
 Windows Hello pro firmy vyžaduje další konfiguraci, aby bylo možné místní jednotné přihlašování povolit z zařízení připojeného k Azure AD. Další informace najdete v tématu [Konfigurace zařízení připojených k Azure AD pro místní jednotné přihlašování pomocí Windows Hello pro firmy](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base). 
 
-## <a name="what-you-get"></a>Co získáte
+## <a name="what-you-get"></a>Co získáváte
 
 Pomocí jednotného přihlašování na zařízení připojeném k Azure AD můžete: 
 
@@ -66,6 +71,6 @@ Aplikace a prostředky, které závisí na ověřování počítače služby Act
 
 Nemůžete sdílet soubory s ostatními uživateli na zařízení připojeném k Azure AD.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace najdete v tématu [co je Správa zařízení v Azure Active Directory?](overview.md) 

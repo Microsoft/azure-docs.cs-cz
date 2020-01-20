@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 10/22/2019
 author: rboucher
 ms.author: robb
-ms.openlocfilehash: e744cdde298054de3631adb96b56bbc808f36a38
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 044c453152d44420d5e78855751a2680698e89f3
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750951"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120141"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Podporované služby, schémata a kategorie pro protokoly prostředků Azure
 
@@ -86,6 +86,9 @@ Schéma pro protokoly diagnostiky prostředků se liší v závislosti na katego
 | Brány virtuálních sítí | Schéma není k dispozici. |
 
 ## <a name="supported-log-categories-per-resource-type"></a>Podporované kategorie protokolů na typ prostředku
+
+Některé kategorie lze podporovat pouze pro konkrétní typy prostředků. Toto je seznam všech dostupných v některém formuláři.  Například kategorie Microsoft. SQL/servery/databáze nejsou k dispozici pro všechny typy databází. Další informace najdete v tématu [informace o protokolování diagnostiky SQL Database](../../sql-database/sql-database-metrics-diag-logging.md). 
+
 |Typ prostředku|Kategorie|Zobrazovaný název kategorie|
 |---|---|---|
 |Microsoft. AAD/domainServices|SystemSecurity|SystemSecurity|

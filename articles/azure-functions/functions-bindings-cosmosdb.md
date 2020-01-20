@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: seodec18
-ms.openlocfilehash: bae027fc5a3b6ce7b4246c403841fa529b8884cb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e30b256d9fa43402c3b2c444aa1a0e0dc16cfdcf
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925945"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120571"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Vazby Azure Cosmos DB pro službu Azure Functions 1.x
 
@@ -180,9 +180,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type** || Musí být nastaveno na `cosmosDBTrigger`. |
-|**direction** || Musí být nastaveno na `in`. Tento parametr je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal. |
-|**name** || Název této proměnné v kódu funkce, která představuje seznam dokumentů se změnami. |
+|**type** | – | Musí být nastaveno na `cosmosDBTrigger`. |
+|**direction** | – | Musí být nastaveno na `in`. Tento parametr je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal. |
+|**name** | – | Název této proměnné v kódu funkce, která představuje seznam dokumentů se změnami. |
 |**connectionStringSetting**|**connectionStringSetting** | Název nastavení aplikace, které obsahuje připojovací řetězec použitý pro připojení k účtu Azure Cosmos DB, který je monitorován. |
 |**databaseName**|**DatabaseName**  | Název databáze Azure Cosmos DB s kolekcí monitorovány. |
 |**collectionName** |**collectionName** | Název kolekce monitorovány. |
@@ -1115,9 +1115,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type**     || Musí být nastaveno na `documentdb`.        |
-|**direction**     || Musí být nastaveno na `in`.         |
-|**name**     || Název parametru vazby, který představuje dokument ve funkci.  |
+|**type**     | – | Musí být nastaveno na `documentdb`.        |
+|**direction**     | – | Musí být nastaveno na `in`.         |
+|**name**     | – | Název parametru vazby, který představuje dokument ve funkci.  |
 |**databaseName** |**DatabaseName** |Databáze obsahující dokumentu.        |
 |**collectionName** |**collectionName** | Název, který bude obsahovat dokumentu. |
 |**id**    | **ID** | ID dokumentu má načíst. Tato vlastnost podporuje [výrazy vazeb](./functions-bindings-expressions-patterns.md). Obě nemají nastavený **id** a **sqlQuery** vlastnosti. Pokud nemají nastavený buď jeden, načte celou kolekci. |
@@ -1454,9 +1454,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type**     || Musí být nastaveno na `documentdb`.        |
-|**direction**     || Musí být nastaveno na `out`.         |
-|**name**     || Název parametru vazby, který představuje dokument ve funkci.  |
+|**type**     | – | Musí být nastaveno na `documentdb`.        |
+|**direction**     | – | Musí být nastaveno na `out`.         |
+|**name**     | – | Název parametru vazby, který představuje dokument ve funkci.  |
 |**databaseName** | **DatabaseName**|Databáze obsahující kolekci, do které se vytvoří dokument.     |
 |**collectionName** |**collectionName**  | Název kolekce, ve kterém se vytvoří dokument. |
 |**createIfNotExists**  |**createIfNotExists**    | Logická hodnota označující, zda kolekce je vytvořena při neexistuje. Výchozí hodnota je *false* protože nové kolekce se vytvoří s vyhrazenou propustností, která má vliv na náklady. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/documentdb/).  |

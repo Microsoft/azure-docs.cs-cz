@@ -16,12 +16,12 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: baf3d0e0e40cb9089ac91c51dd40c079232a973b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 766cfa38108faa0dbaa16a3d2596a4b34689553c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75989758"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121093"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Programové získání přehledu o využití Azure pomocí rozhraní API pro fakturaci Azure
 Rozhraní API pro fakturaci Azure můžete využít k předání dat o využití a prostředcích do vašeho upřednostňovaného nástroje pro datové analýzy. Rozhraní API využití a ceníku prostředků Azure vám pomohou přesně odhadnout a spravovat vaše náklady. Tato rozhraní API se implementují jako poskytovatel prostředků a jsou součástí řady rozhraní API, která zveřejňuje Azure Resource Manager.  
@@ -42,13 +42,13 @@ Pomocí [rozhraní API Využití prostředků Azure](/previous-versions/azure/re
 * **Hodinová nebo denní agregace** – volající můžou určit, jestli chtějí údaje o využití Azure zobrazit v hodinových, nebo denních intervalech. Výchozí nastavení je denní interval.
 * **Metadata instance (včetně značek prostředků)** – můžete získat podrobnosti na úrovni instance, třeba kvalifikovaný identifikátor URI prostředku (/subscriptions/{id-předplatného}/…), informace o skupině prostředků nebo značky prostředků. Tato metadata pomáhají deterministicky a programově přidělovat využití pomocí značek pro potřeby různých případů použití, jako je rozúčtování poplatků.
 * **Metadata prostředků** – podrobnosti o prostředcích, jako je název měřiče, kategorie měřiče, podkategorie měřiče, jednotka a oblast, poskytují volajícímu lepší přehled o spotřebovaných prostředcích. Pracujeme také na sjednocení terminologie metadat prostředků na webu Azure Portal, v souboru CSV s informacemi o využití Azure, v souboru CSV o fakturaci smluv EA a v dalších veřejných prostředích, abyste viděli souvislosti mezi daty z různých prostředí.
-* **Využití u různých typů nabídek** – informace o využití jsou dostupné pro různé typy nabídek, například nabídky s průběžnými platbami, MSDN, peněžní závazek, peněžní kredit a smlouvy EA, s výjimkou [CSP](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-invoice#retrieve-usage-data-for-a-specific-subscription).
+* **Využití u různých typů nabídek** – informace o využití jsou dostupné pro různé typy nabídek, například nabídky s průběžnými platbami, MSDN, peněžní závazek, peněžní kredit a smlouvy EA, s výjimkou [CSP](https://docs.microsoft.com/partner-center).
 
 ## <a name="azure-resource-ratecard-api-preview"></a>Azure Resource RateCard API (Preview)
 Pomocí [rozhraní API RateCard pro prostředky Azure](/previous-versions/azure/reference/mt219005(v=azure.100)) získáte seznam dostupných prostředků Azure a informace o odhadovaných cenách každého z nich. Rozhraní API nabízí tyto funkce:
 
 * **Řízení přístupu k Azure na základě rolí** – na webu [Azure Portal](https://portal.azure.com) nebo v [rutinách Azure PowerShell](/powershell/azure/overview) můžete určit, kteří uživatelé nebo aplikace můžou získat přístup k datům RateCard. Volající musí k ověření používat standardní tokeny Azure Active Directory. Pokud chcete, aby volající získal přístup k datům využití pro určité předplatné Azure, přidejte ho do role Čtenář, Vlastník nebo Přispěvatel.
-* **Podpora nabídek s průběžnými platbami, MSDN, s peněžním závazkem a s peněžním kreditem (nepodporují se programy EA a [CSP](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-pricelist#get-prices-by-using-the-azure-rate-card))** – toto rozhraní API poskytuje informace o sazbách na úrovni nabídky.  Volající tohoto rozhraní API musí k zobrazení podrobností o prostředcích a sazeb zadat informace o nabídce. V tuto chvíli nemůžeme poskytovat sazby pro smlouvy EA, protože nabídky smluv EA mají vlastní sazby.
+* **Podpora nabídek s průběžnými platbami, MSDN, s peněžním závazkem a s peněžním kreditem (nepodporují se programy EA a [CSP](https://docs.microsoft.com/partner-center))** – toto rozhraní API poskytuje informace o sazbách na úrovni nabídky.  Volající tohoto rozhraní API musí k zobrazení podrobností o prostředcích a sazeb zadat informace o nabídce. V tuto chvíli nemůžeme poskytovat sazby pro smlouvy EA, protože nabídky smluv EA mají vlastní sazby.
 
 ## <a name="scenarios"></a>Scénáře
 Tady je několik scénářů, ve kterých můžete využít kombinaci rozhraní API s informacemi o využití a RateCard:

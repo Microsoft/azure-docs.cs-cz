@@ -4,14 +4,14 @@ description: Postup přidání back-endového úložného systému do služby av
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 12/14/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 3f7d7b5091b6439f17455b5ea66a3a23ebf79811
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfffef90201ba4bbb5a912df6101e8338012df44
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75416491"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153985"
 ---
 # <a name="configure-storage"></a>Konfigurace úložiště
 
@@ -32,7 +32,7 @@ Tyto kroky používají ovládací panel avere. Pokud se chcete dozvědět, jak 
 
 ## <a name="create-a-core-filer"></a>Vytvoření základního souborového
 
-"Core souborového" je vFXT termín pro back-end systém úložiště. Úložiště může být hardwarové zařízení NAS, jako je NetApp nebo Isilon, nebo se může jednat o cloudové úložiště objektů. Další informace o Core filers najdete v [Průvodci nastavením clusteru avere](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#managing-core-filers).
+"Core souborového" je vFXT termín pro back-endové úložné systémy. Úložiště může být hardwarové zařízení NAS, jako je NetApp nebo Isilon, nebo se může jednat o cloudové úložiště objektů. Další informace o Core filers najdete v [Průvodci nastavením clusteru avere](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#managing-core-filers).
 
 Pokud chcete přidat základní souborového, vyberte jeden ze dvou hlavních typů základních filers:
 
@@ -69,7 +69,7 @@ Potom přejděte k [Vytvoření spojení](#create-a-junction).
 
 ### <a name="azure-blob-storage-cloud-core-filer"></a>Azure Blob Storage Cloud Core souborového
 
-Pokud chcete jako úložiště back-endu clusteru vFXT použít úložiště objektů BLOB v Azure, budete potřebovat prázdný kontejner, který se přidá jako základní souborového.
+Pokud chcete jako úložiště back-endu clusteru vFXT použít službu Azure Blob Storage, budete potřebovat prázdný kontejner, který se přidá jako základní souborového.
 
 Přidání úložiště objektů blob do clusteru vyžaduje tyto úlohy:
 
