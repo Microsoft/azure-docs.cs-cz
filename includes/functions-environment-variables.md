@@ -1,20 +1,18 @@
 ---
 title: zahrnout soubor
 description: zahrnout soubor
-services: functions
 author: ggailey777
-manager: jeconnoc
 ms.service: azure-functions
 ms.topic: include
 ms.date: 05/08/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: e7e613adc98f6cec2fe8f369f1a6413cba6179c1
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: b72de9fb15eafd48c3b72aae4f35fef3bb1f1bef
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170749"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279483"
 ---
 Hodnoty nastavení aplikace Function App lze ve vašem kódu přečíst také jako proměnné prostředí. Další informace naleznete v části proměnné prostředí v těchto referenčních tématech specifických pro konkrétní jazyk:
 
