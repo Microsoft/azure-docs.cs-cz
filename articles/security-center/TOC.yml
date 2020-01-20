@@ -173,8 +173,6 @@
           href: security-center-investigation.md
         - name: Správa uživatelských dat šetření
           href: security-center-investigation-user-data.md
-        - name: Playbooky Logic Apps
-          href: security-center-playbooks.md
         - name: Plánování a provoz
           href: security-center-planning-and-operations-guide.md
 - name: Referenční informace
