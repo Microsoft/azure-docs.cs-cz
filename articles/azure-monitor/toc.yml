@@ -6,6 +6,8 @@
       href: overview.md
     - name: Terminologické změny
       href: terminology.md
+    - name: Nejčastější dotazy
+      href: faq.md
 - name: Rychlé starty
   items:
     - name: Monitorování prostředků Azure
@@ -113,14 +115,6 @@
       href: visualizations.md
     - name: Integrace partnerů
       href: platform/partners.md
-    - name: Nejčastější dotazy
-      items:
-        - name: Log Analytics
-          displayName: FAQ
-          href: platform/log-faq.md
-        - name: Application Insights
-          displayName: FAQ
-          href: app/troubleshoot-faq.md
 - name: Návody
   items:
     - name: Správa Azure Monitoru
@@ -162,6 +156,8 @@
       items:
         - name: Přehled služby Application Insights
           href: app/app-insights-overview.md
+        - name: Nejčastější dotazy
+          href: app/troubleshoot-faq.md
         - name: Monitorování na základě kódu
           items:
             - name: Jádro ASP.NET
@@ -535,6 +531,8 @@
           items:
             - name: Přehled agentů
               href: platform/agents-overview.md
+            - name: Nejčastější dotazy
+              href: 'faq.md#agents'
             - name: Rozšíření Azure Diagnostics
               items:
                 - name: Přehled
@@ -633,7 +631,7 @@
             - name: Nejčastější dotazy k všeobecné dostupnosti
               href: insights/vminsights-ga-release-faq.md
             - name: Nejčastější dotazy
-              href: insights/vminsights-faq.md
+              href: 'faq.md#azure-monitor-for-vms-preview'
             - name: Povolení monitorování
               items:
                 - name: Povolení přehledu monitorování
@@ -679,7 +677,7 @@
             - name: Přehled
               href: insights/container-insights-overview.md
             - name: Nejčastější dotazy
-              href: insights/container-insights-faq.md
+              href: 'faq.md#azure-monitor-for-containers'
             - name: Povolení monitorování
               items:
                 - name: Povolení přehledu monitorování

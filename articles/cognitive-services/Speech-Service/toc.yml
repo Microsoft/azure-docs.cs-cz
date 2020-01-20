@@ -232,48 +232,68 @@
       items:
         - name: Nejčastější dotazy k překladu řeči
           href: 'https://www.microsoft.com/translator/faq.aspx'
-- name: Přepis konverzace
+- name: Scénáře konverzace
   expanded: false
   items:
-    - name: Přehled
+    - name: Přepis konverzace
       items:
-        - name: Co je přepis konverzace?
-          href: conversation-transcription.md
-    - name: Návody
-      items:
-        - name: Přepis konverzace v reálném čase
-          href: how-to-use-conversation-transcription.md
-        - name: Asynchronní přepis konverzace
-          href: how-to-async-conversation-transcription.md
-    - name: Referenční informace
-      items:
-        - name: Speech SDK
+        - name: Přehled
           items:
-            - name: C++
-              href: 'https://aka.ms/csspeech/cppref'
-              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
-            - name: 'C#'
-              href: 'https://aka.ms/csspeech/csharpref'
-              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
-            - name: Java
-              href: 'https://aka.ms/csspeech/javaref'
-              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
-            - name: JavaScript
-              href: 'https://aka.ms/csspeech/javascriptref'
-              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
-            - name: Objective-C
-              href: 'https://aka.ms/csspeech/objectivecref'
-              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
-            - name: Python
-              href: 'https://aka.ms/csspeech/pythonref'
-              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
-            - name: "Poznámky k\_verzi"
-              href: releasenotes.md
-              displayName: 'release notes,updates,what''s new,what is new,changes'
-        - name: Rozhraní REST API
+            - name: Co je přepis konverzace?
+              href: conversation-transcription.md
+        - name: Návody
           items:
-            - name: Rozhraní REST API pro přepis konverzace
-              href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
+            - name: Přepis konverzace v reálném čase
+              href: how-to-use-conversation-transcription.md
+            - name: Asynchronní přepis konverzace
+              href: how-to-async-conversation-transcription.md
+        - name: Referenční informace
+          items:
+            - name: Speech SDK
+              items:
+                - name: C++
+                  href: 'https://aka.ms/csspeech/cppref'
+                  displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+                - name: 'C#'
+                  href: 'https://aka.ms/csspeech/csharpref'
+                  displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+                - name: Java
+                  href: 'https://aka.ms/csspeech/javaref'
+                  displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+                - name: JavaScript
+                  href: 'https://aka.ms/csspeech/javascriptref'
+                  displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
+                - name: Objective-C
+                  href: 'https://aka.ms/csspeech/objectivecref'
+                  displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+                - name: Python
+                  href: 'https://aka.ms/csspeech/pythonref'
+                  displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+                - name: "Poznámky k\_verzi"
+                  href: releasenotes.md
+                  displayName: 'release notes,updates,what''s new,what is new,changes'
+            - name: Rozhraní REST API
+              items:
+                - name: Rozhraní REST API pro přepis konverzace
+                  href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
+    - name: Konverzace více zařízení
+      items:
+        - name: Přehled
+          items:
+            - name: Co je konverzace více zařízení?
+              href: multi-device-conversation.md
+        - name: Rychlé starty
+          items:
+            - name: Zahájení konverzace a připojení ke konverzaci
+              href: quickstarts/multi-device-conversation.md
+        - name: Referenční informace
+          items:
+            - name: Speech SDK
+              items:
+                - name: C++
+                  href: 'https://aka.ms/csspeech/cppref'
+                - name: 'C#'
+                  href: 'https://aka.ms/csspeech/csharpref'
 - name: Hlasoví asistenti
   expanded: false
   items:

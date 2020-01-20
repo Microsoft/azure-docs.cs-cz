@@ -1,9 +1,9 @@
-- name: Dokumentace k rozhraní API pro rozpoznávání tváře
+- name: Dokumentace k Rozpoznávání tváře
   href: index.yml
 - name: Přehled
   expanded: true
   items:
-    - name: Co je rozhraní API pro rozpoznávání tváře?
+    - name: Co je služba Rozpoznávání tváře?
       href: Overview.md
 - name: Rychlé starty
   items:
@@ -77,7 +77,7 @@
           href: face-resource-container-config.md
         - name: Použití instancí kontejneru
           href: Face-API-How-to-Topics/deploy-face-container-on-container-instances.md
-    - name: Použití připojené služby rozhraní API pro rozpoznávání tváře
+    - name: Použití připojené služby Rozpoznávání tváře
       href: vs-face-connected-service.md
 - name: Referenční informace
   items:
@@ -101,7 +101,7 @@
   items:
     - name: ukázky
       items:
-        - name: Ukázky rozhraní API pro rozpoznávání tváře
+        - name: Ukázky služby Rozpoznávání tváře
           href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=face'
     - name: Ceny a omezení
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'

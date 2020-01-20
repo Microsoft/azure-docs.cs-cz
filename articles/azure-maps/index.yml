@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Dokumentace ke službě Azure Maps
-summary: Služba Microsoft Azure Maps poskytuje vývojářům ze všech odvětví výkonné geoprostorové funkce společně s nejnovějšími dostupnými mapovými daty k zajištění geografického kontextu pro webové a mobilní aplikace. Azure Maps je sada rozhraní REST API kompatibilní s Azure One API pro mapy, hledání, směrování, provoz, mobilitu, počasí, časová pásma, geografické polohy, geofencing, data map a prostorové operace doplněná o sady SDK pro web and Android. Zajišťuje snadný, flexibilní a přenositelný vývoj napříč několika platformami.
+summary: Služba Microsoft Azure Maps poskytuje vývojářům ze všech odvětví výkonné geoprostorové funkce. Tyto geoprostorové funkce jsou doslova nabité čerstvými mapovými daty. Služba Azure Maps je k dispozici pro webové i mobilní aplikace. Jde o sadu rozhraní REST API, která jsou kompatibilní se standardem Azure One API. Mezi služby, které Azure Maps nabízí, patří mimo jiné mapy, vyhledávání, směrování, provoz, mobilita, počasí, časová pásma, geografická poloha, geofencing, mapová data a prostorové operace. Sady SDK pro web a Android zajišťují snadný, flexibilní a přenositelný vývoj napříč různými platformami.
 metadata:
   title: Dokumentace ke službě Azure Maps | Microsoft Docs
   description: Seznamte se se službou Azure Maps a jejím využitím k poskytování geoprostorových služeb pro vaše webové nebo mobilní aplikace.
@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: philmea
   ms.author: philmea
-  ms.date: 12/19/2019
-  ms.openlocfilehash: 66721caadce09816368d673c217c9bf97daf1b6c
-  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.date: 1/15/2020
+  ms.openlocfilehash: f4ae414179f77413e5d5daa4fda635e0bf24c2aa
+  ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 12/25/2019
-  ms.locfileid: "75408653"
+  ms.lasthandoff: 01/17/2020
+  ms.locfileid: "76264097"
 landingContent:
 - title: Informace o službě Azure Maps
   linkLists:
@@ -94,7 +94,7 @@ landingContent:
       url: how-to-add-tile-layer-android-map.md
     - text: Přidání tvarů do mapy
       url: how-to-add-shapes-to-android-map.md
-- title: Vývoj s využitím Location Based Services
+- title: Vývoj s využitím služeb založených na poloze
   linkLists:
   - linkListType: concept
     links:

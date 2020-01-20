@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
 ms.date: 09/17/2019
-ms.openlocfilehash: 6cc8282a5c56f8f45e8d9e5ee452089a74f0d4ed
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 427ba0e46f8f4090ce8c2080b1d6780b165e864c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045639"
+ms.locfileid: "76121076"
 ---
 # <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Privátní odkaz pro Azure SQL Database a datový sklad (Preview)
 
@@ -43,8 +43,6 @@ Pomocí privátního propojení teď můžou zákazníci nastavit řízení př�
 Když se zákazníci připojí k veřejnému koncovému bodu z místních počítačů, musí se jejich IP adresa přidat do brány firewall založené na protokolu IP pomocí [pravidla brány firewall na úrovni serveru](sql-database-server-level-firewall-rule.md). I když tento model funguje dobře a umožňuje přístup k jednotlivým počítačům pro vývoj nebo testování, je obtížné ho spravovat v produkčním prostředí.
 
 Pomocí privátního propojení můžou zákazníci povolit přístup mezi různými místy k privátnímu koncovému bodu pomocí tunelového propojení [ExpressRoute](../expressroute/expressroute-introduction.md), privátního partnerského vztahu nebo VPN. Zákazníci pak můžou zakázat veškerý přístup přes Veřejný koncový bod a nepoužívat bránu firewall založenou na protokolu IP k povolení jakýchkoli IP adres.
-
-Pomocí privátního propojení můžou zákazníci povolit přístup mezi různými místy k privátnímu koncovému bodu pomocí privátního partnerského vztahu nebo tunelu VPN Express Route (ER). Můžou následně zakázat veškerý přístup prostřednictvím veřejného koncového bodu a nepoužívat bránu firewall na základě IP adresy.
 
 ## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>Jak nastavit privátní odkaz pro Azure SQL Database 
 

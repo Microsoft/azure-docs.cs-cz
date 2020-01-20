@@ -4,7 +4,7 @@
   items:
     - name: Co je Video Indexer?
       href: video-indexer-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Začínáme
@@ -45,7 +45,7 @@
       href: connect-to-azure.md
     - name: Správa účtu připojeného k Azure
       href: manage-account-connected-to-azure.md
-    - name: Použití rozhraní API k nahrávání a indexování videí
+    - name: Nahrávání a indexování videí
       href: upload-index-videos.md
     - name: Prozkoumání výstupu služby Video Indexer
       href: video-indexer-output-json-v2.md

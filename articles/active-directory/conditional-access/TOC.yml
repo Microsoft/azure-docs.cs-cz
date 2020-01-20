@@ -4,7 +4,7 @@
   items:
     - name: Co je podmíněný přístup?
       href: overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: Vyžadování MFA pro specifické aplikace
       href: app-based-mfa.md
@@ -19,6 +19,8 @@
       href: concept-conditional-access-policy-common.md
     - name: Komponenty zásad podmíněného přístupu
       href: concept-conditional-access-policies.md
+    - name: Cloudové aplikace a akce
+      href: concept-conditional-access-cloud-apps.md
     - name: Podmínky
       href: conditions.md
     - name: Podmínky umístění

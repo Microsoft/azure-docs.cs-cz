@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a168f9bf58c4942fc0b76b9ffefc2b32b5bfbe5a
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: dd178f52665c77f03a48d87a9e73c9019390bb21
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549359"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154852"
 ---
 # <a name="quickstart-configure-azure-active-directory-self-service-password-reset"></a>Rychlý Start: Konfigurace samoobslužného resetování hesla Azure Active Directory
 
@@ -31,7 +31,7 @@ V tomto rychlém startu nakonfigurujete Samoobslužné resetování hesla Azure 
 
 * Funkční tenant Azure AD, který má přiřazenou alespoň zkušební licenci.
     * V případě potřeby [ho vytvořte zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Účet s oprávněními globálního správce
+* Účet s oprávněními globálního správce.
 * Testovací uživatel bez oprávnění správce s heslem, které znáte, jako je například *testuser*.
     * Pokud potřebujete vytvořit uživatele, přečtěte si téma [rychlý Start: přidání nových uživatelů do Azure Active Directory](../add-users-azure-active-directory.md).
 * Pilotní skupina, která se má testovat s tím, že uživatel bez oprávnění správce je členem, jako je například *SSPR-test-Group*.
@@ -71,7 +71,7 @@ Teď umožňuje testovat konfiguraci SSPR pomocí testovacího uživatele, kter�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete zakázat Samoobslužné resetování hesla, vyhledejte a vyberte **Azure Active Directory** v Azure Portal. Vyberte **vlastnosti** > **resetování hesla**a potom v části **Samoobslužné resetování hesla povoleno**vyberte **None (žádné** ). Až budete připraveni, vyberte **Uložit**.
+Pokud chcete zakázat Samoobslužné resetování hesla, vyhledejte a vyberte **Azure Active Directory** v Azure Portal. Vyberte **resetování hesla**a potom v části **Samoobslužné resetování hesla povoleno**vyberte **žádné** . Až budete připraveni, vyberte **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky
 

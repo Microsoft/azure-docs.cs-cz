@@ -21,16 +21,12 @@
           displayName: 'assign key, assign resource, add key, add resource, test, deploy, endpoint, query, publish'
     - name: Použití prohlížeče
       href: luis-get-started-get-intent-from-browser.md
-    - name: Použití sady .NET SDK
+    - name: Použití sady SDK
       items:
-        - name: Vytvoření a správa aplikace
-          href: sdk-csharp-quickstart-authoring-app.md
+        - name: Aplikace pro vytváření
+          href: sdk-authoring.md
         - name: Koncový bod předpovědi dotazů
-          href: sdk-csharp-quickstart-query-prediction-endpoint.md
-    - name: Použití sady Python SDK
-      items:
-        - name: Vytvoření a správa aplikace
-          href: sdk-python-quickstart-authoring-app.md
+          href: sdk-query-prediction-endpoint.md
     - name: Použití rozhraní REST API
       items:
         - name: Získání záměru

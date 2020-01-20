@@ -63,6 +63,8 @@
           href: container-instances-encrypt-data.md
         - name: Nasazování na vyhrazené hostitele
           href: container-instances-dedicated-hosts.md
+        - name: Použití konektoru Logic Apps
+          href: ../connectors/connectors-create-api-container-instances.md?toc=/azure/container-instances/toc.json&bc=/azure/container-instances/breadcrumb/toc.json
     - name: Scénáře kontejnerů
       items:
         - name: Nastavení zásad restartování pro jednorázové úlohy

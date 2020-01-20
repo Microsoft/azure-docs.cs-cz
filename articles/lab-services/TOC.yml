@@ -66,8 +66,6 @@
           href: enable-browser-connection-lab-virtual-machines.md
         - name: Konfigurace správy nákladů
           href: devtest-lab-configure-cost-management.md
-        - name: Odesílání oznámení automatického vypínání
-          href: devtest-lab-auto-shutdown.md
         - name: Nastavení automatického spouštění pro virtuální počítače testovacího prostředí
           href: devtest-lab-auto-startup-vm.md
         - name: Škálování testovacího prostředí
@@ -124,8 +122,8 @@
           href: devtest-lab-resize-vm.md
         - name: Znovunasazení virtuálního počítače
           href: devtest-lab-redeploy-vm.md
-        - name: Konfigurace automatického vypnutí virtuálního počítače
-          href: devtest-lab-auto-shutdown-vm.md
+        - name: Konfigurace automatického vypínání virtuálních počítačů pro výpočty a testovací prostředí
+          href: devtest-lab-auto-shutdown.md
         - name: Vytvoření a správa nárokovatelných virtuálních počítačů
           href: devtest-lab-add-claimable-vm.md
         - name: Konfigurace tajných kódů
