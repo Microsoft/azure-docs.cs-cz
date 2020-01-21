@@ -9,13 +9,15 @@
       href: text-analytics-user-scenarios.md
     - name: Co je nového
       href: whats-new.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Klientská knihovna
       items:
-        - name: Analýza textu s využitím klientské knihovny
+        - name: Analýza textu s využitím v3.0-preview
           href: quickstarts/text-analytics-sdk.md
+        - name: Analýza textu s využitím v2
+          href: quickstarts/text-analytics-sdk-v2.md
     - name: REST API
       items:
         - name: Pomocí Javy
