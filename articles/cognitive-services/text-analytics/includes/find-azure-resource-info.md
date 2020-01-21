@@ -1,5 +1,5 @@
 ---
-title: Najděte svůj koncový bod a klíč prostředku Analýza textu.
+title: Vyhledání koncového bodu prostředku Analýza textu a klientské knihovny Key-V3
 titleSuffix: Azure Cognitive Services
 description: Naučte se vytvořit prostředek Cognitive Services Analýza textu.
 services: cognitive-services
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/14/2019
 ms.author: aahi
-ms.openlocfilehash: b56bb8dfdce58de60f82693b511f7923b80fc37a
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: d432e2c9ccf0563e18d7f3958a030dd7ce32f4d0
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76158844"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281133"
 ---
 > [!IMPORTANT]
 > Najděte svůj klíč a koncový bod tak, že přejdete k prostředku, který jste vytvořili. Budou se nacházet na stránce **rychlý Start** prostředku v části **Správa prostředků**.

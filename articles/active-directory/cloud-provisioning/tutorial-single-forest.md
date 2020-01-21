@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 691c8e8d2f2c6c8e9472ba7a4ae83d8b76f2850c
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 7f7c348e29fa2234627a53095a99e913a6389a27
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868724"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280964"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>Kurz: integrace jedné doménové struktury s jedním tenant Azure AD
 
@@ -26,7 +26,7 @@ Tento kurz vás provede vytvořením hybridního prostředí identity pomocí sl
 
 Prostředí, které vytvoříte v tomto kurzu, můžete použít pro testování nebo pro více znalostí s zřizováním cloudu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 ### <a name="in-the-azure-active-directory-admin-center"></a>V centru pro správu Azure Active Directory
 
 1. Vytvořte v tenantovi Azure AD jenom cloudový účet globálního správce. Tímto způsobem můžete spravovat konfiguraci vašeho tenanta, pokud vaše místní služby selžou nebo nebudou k dispozici. Seznamte [se s přidáním účtu globálního správce jenom pro Cloud](../active-directory-users-create-azure-portal.md). Dokončení tohoto kroku je důležité, aby se zajistilo, že nebudete mít uzamčený přístup k vašemu tenantovi.
@@ -34,7 +34,7 @@ Prostředí, které vytvoříte v tomto kurzu, můžete použít pro testování
 
 ### <a name="in-your-on-premises-environment"></a>V místním prostředí
 
-1. Identita hostitelského serveru připojeného k doméně, na kterém běží Windows Server 2012 R2 nebo novější, minimálně 4 GB paměti RAM a .NET 4.7.1 + runtime 
+1. Identifikace hostitelského serveru připojeného k doméně, na kterém běží Windows Server 2012 R2 nebo vyšší, s minimálním počtem 4 GB paměti RAM a .NET 4.7.1 + runtime 
 
 2. Pokud je mezi vašimi servery a službou Azure AD brána firewall, nakonfigurujte následující položky:
    - Zajistěte, aby agenti mohli vytvářet *odchozí* požadavky do služby Azure AD prostřednictvím následujících portů:

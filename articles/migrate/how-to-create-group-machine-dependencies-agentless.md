@@ -6,16 +6,16 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: b13ad375adf20a606b48755a6d57851abf89e549
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4bc2e67d276deeea01989ed76be7352ce27abd71
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454660"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280811"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Nastavení Vizualizace závislostí bez agentů pro posouzení
 
-Tento článek popisuje, jak nastavit mapování závislostí bez agentů v Azure Migrate: posouzení serveru. Tato funkce je v současnosti k dispozici ve verzi Preview pro počítače VMware zjištěné pomocí zařízení Azure Migrate. 
+Tento článek popisuje, jak nastavit mapování závislostí bez agentů v Azure Migrate: posouzení serveru. 
 
 > [!IMPORTANT]
 > Vizualizace závislostí bez agentů je momentálně ve verzi Preview pro virtuální počítače Azure VMware zjištěné pomocí zařízení Azure Migrate.
@@ -54,17 +54,8 @@ Vizualizace závislostí bez agentů nevyžaduje, abyste nainstalovali žádné 
 - Analýza závislostí bez agentů je aktuálně dostupná jenom pro počítače VMware.
 - Pokud jste již vytvořili projekt, ujistěte se, že jste [přidali](how-to-assess.md) Azure Migrate: nástroj Server Assessment Tool.
 - Ujistěte se, že jste počítače VMware zjistili v Azure Migrate. to můžete provést nastavením zařízení Azure Migrate pro [VMware](how-to-set-up-appliance-vmware.md). Zařízení zjišťuje místní počítače a odesílá data o metadatech a výkonu Azure Migrate: posouzení serveru. [Další informace](migrate-appliance.md).
-- Zajistěte, aby byly virtuální počítače VMware podporované pro vizualizaci závislostí bez agentů, jak je shrnuto v následující tabulce.
+- [Přečtěte si požadavky](migrate-support-matrix-vmware.md#agentless-dependency-visualization) pro nastavení vizualizace závislosti bez agentů.
 
-
-### <a name="supported-operating-systems"></a>Podporované operační systémy
-
-Podporované operační systémy pro vizualizaci závislostí bez agentů jsou následující.
-
-**Typ** | **Podporované operační systémy**
---- | ---
-**Windows** | Microsoft Windows Server 2016 <br/> Microsoft Windows Server 2012 R2 <br/> Microsoft Windows Server 2012 <br/> Microsoft Windows Server 2008 R2 (64 bitů)
-**Linux** | Red Hat Enterprise Linux 7, 6, 5 <br/> Ubuntu Linux 14,04, 16,04 <br/> Debian 7, 8 <br/> Oracle Linux 6, 7 <br/> CentOS 5, 6, 7  
 
 
 ## <a name="create-a-user-account-for-discovery"></a>Vytvoření uživatelského účtu pro zjišťování

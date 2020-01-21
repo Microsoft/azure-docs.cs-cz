@@ -3,12 +3,12 @@ title: Objevte aplikace, role a funkce na místních serverech pomocí Azure Mig
 description: Naučte se zjišťovat aplikace, role a funkce na místních serverech pomocí vyhodnocení Azure Migrate serveru.
 ms.topic: article
 ms.date: 11/20/2019
-ms.openlocfilehash: adc22925d1152639babe2377a1eae440e0ce418e
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 454d70a53c3ea00a4dc592703c0bc04d5517b97f
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029078"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280760"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Objevte aplikace pro počítače, role a funkce
 
@@ -17,18 +17,18 @@ Tento článek popisuje, jak zjišťovat aplikace, role a funkce na místních s
 Zjišťování inventáře aplikací a rolí a funkcí spuštěných v místních počítačích vám pomůže identifikovat a naplánovat migraci do Azure, která je přizpůsobená pro vaše úlohy.
 
 > [!NOTE]
-> Zjišťování aplikací se momentálně podporuje jenom pro virtuální počítače VMware a je omezené jenom na zjišťování. Ještě nenabízíme vyhodnocení na základě aplikace.  Nyní posouzení serveru aktuálně vyhodnocuje místní virtuální počítače VMware, virtuální počítače Hyper-V a fyzické servery na úrovni počítače, a to pro migrace přenesených a Shift.
+> Zjišťování aplikací se momentálně podporuje jenom pro virtuální počítače VMware a je omezené jenom na zjišťování. Ještě nenabízíme vyhodnocení na základě aplikace. Vyhodnocení na základě počítače u místních virtuálních počítačů VMware, virtuálních počítačů Hyper-V a fyzických serverů.
 
 Zjišťování aplikací pomocí Azure Migrate: posouzení serveru není bez agenta. Na počítačích a virtuálních počítačích není potřeba nic instalovat. Posouzení serveru používá zařízení Azure Migrate k provádění zjišťování společně s přihlašovacími údaji hosta počítače. Zařízení vzdáleně přistupuje k počítačům VMware pomocí rozhraní API VMware.
 
 
 ## <a name="before-you-start"></a>Než začnete
 
-1. Zkontrolujte [omezení podpory](migrate-support-matrix-vmware.md#application-discovery) pro zjišťování na úrovni aplikace.
-2. Ujistěte se, že jste [vytvořili](how-to-add-tool-first-time.md) projekt Azure Migrate.
-3. Pokud jste již vytvořili projekt, ujistěte se, že jste [přidali](how-to-assess.md) Azure Migrate: nástroj Server Assessment Tool.
+1. Ujistěte se, že jste [vytvořili](how-to-add-tool-first-time.md) projekt Azure Migrate.
+2. Ujistěte se, že jste [přidali](how-to-assess.md) Azure Migrate: Nástroj pro vyhodnocení serveru do projektu.
 4. Podívejte se na [požadavky VMware](migrate-support-matrix-vmware.md#vmware-requirements) pro zjišťování a vyhodnocování virtuálních počítačů VMware pomocí zařízení Azure Migrate.
-4. Ověřte [požadavky](migrate-appliance.md) na nasazení zařízení Azure Migrate.
+5. Ověřte [požadavky](migrate-appliance.md) na nasazení zařízení Azure Migrate.
+6. [Ověřte podporu a požadavky](/migrate-support-matrix-vmware.md#application-discovery) pro zjišťování aplikací.
 
 ## <a name="prepare-for-app-discovery"></a>Příprava na zjišťování aplikací
 

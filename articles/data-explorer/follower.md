@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 41d48bdd7cc7972536d0cf0e0cb78483f727d7f2
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: eb0b5ea960aa7bc9158791d1fc9fa0986e7d99e6
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277023"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281338"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>K připojení databází v Azure Průzkumník dat použít databázi sledování
 
@@ -383,6 +383,7 @@ Správce databáze následného řízení může upravit [zásady ukládání do
 
 * Následný a vedoucí cluster musí být ve stejné oblasti.
 * Ingestování [streamování](/azure/data-explorer/ingest-data-streaming) se nedá použít na databázi, která se právě sleduje.
+* Šifrování dat pomocí [zákaznických klíčů](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault) se u vedoucího i následného clusteru nepodporuje. 
 * Než odpojíte databázi, která je připojená k jinému clusteru, nemůžete ji odstranit.
 * Nemůžete odstranit cluster, který má databázi připojenou k jinému clusteru, než ho odpojíte.
 * Nelze zastavit cluster, který má připojené následné nebo vedoucí databáze. 

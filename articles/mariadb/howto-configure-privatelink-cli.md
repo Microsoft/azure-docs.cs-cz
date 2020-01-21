@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 5891662a2176fe110c4fec844d2335a8f1c9d500
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2d39afcea056c76b6c9672e1963d7529fbfce549
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974208"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280930"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-cli"></a>Vytvoření a správa privátního odkazu pro Azure Database for MariaDB (ve verzi Preview) pomocí rozhraní příkazového řádku
 
@@ -101,9 +101,9 @@ az network private-endpoint create \
 Vytvořte zónu Privátní DNS pro doménu serveru MariDB a vytvořte odkaz na přidružení s Virtual Network. 
 ```azurecli-interactive
 az network private-dns zone create --resource-group myResourceGroup \ 
-   --name  "privatelink.database.azure.com" 
+   --name  "privatelink.mariadb.database.azure.com" 
 az network private-dns link vnet create --resource-group myResourceGroup \ 
-   --zone-name  "privatelink.database.azure.com"\ 
+   --zone-name  "privatelink.mariadb.database.azure.com"\ 
    --name MyDNSLink \ 
    --virtual-network myVirtualNetwork \ 
    --registration-enabled false 
@@ -117,8 +117,8 @@ az resource show --ids $networkInterfaceId --api-version 2019-04-01 -o json
  
  
 #Create DNS records 
-az network private-dns record-set a create --name mydemoserver --zone-name privatelink.database.azure.com --resource-group myResourceGroup  
-az network private-dns record-set a add-record --record-set-name mydemoserver --zone-name privatelink.database.windows.net --resource-group myResourceGroup -a <Private IP Address>
+az network private-dns record-set a create --name mydemoserver --zone-name privatelink.mariadb.database.azure.com --resource-group myResourceGroup  
+az network private-dns record-set a add-record --record-set-name mydemoserver --zone-name privatelink.mariadb.database.windows.net --resource-group myResourceGroup -a <Private IP Address>
 ```
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Připojení k virtuálnímu počítači z internetu
@@ -150,14 +150,14 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
 
 1. Ve vzdálené ploše *myVM*otevřete PowerShell.
 
-2. Zadejte  `nslookup mydemoserver.mariadb.privatelink.database.azure.com`. 
+2. Zadejte  `nslookup mydemoserver.privatelink.mariadb.database.azure.com`. 
 
     Zobrazí se zpráva podobná této:
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
     Non-authoritative answer:
-    Name:    mydemoserver.mariadb.privatelink.database.azure.com
+    Name:    mydemoserver.privatelink.mariadb.database.azure.com
     Address:  10.1.3.4
 
 3. Test the private link connection for the MariaDB server using any available client. In the example below I have used [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
@@ -167,7 +167,7 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
     | Setting | Value |
     | ------- | ----- |
     | Connection Name| Select the connection name of your choice.|
-    | Hostname | Select *mydemoserver.mariadb.privatelink.database.azure.com* |
+    | Hostname | Select *mydemoserver.privatelink.mariadb.database.azure.com* |
     | Username | Enter username as *username@servername* which is provided during the MariaDB server creation. |
     | Password | Enter a password provided during the MariaDB server creation. |
     ||

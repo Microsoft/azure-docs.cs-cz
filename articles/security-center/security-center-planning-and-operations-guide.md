@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 358895f84b43437a174214eaf75e77574b3f02e8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 239438133dc16630852626c49e8ffda08590976b
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462454"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280998"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Průvodce plánováním a provozem služby Azure Security Center
 Tato příručka je určena odborníkům v oblasti informačních technologií (IT), architektům v oblasti IT, analytikům zabezpečení informací a správcům cloudu plánuje používat Azure Security Center.
@@ -41,7 +41,7 @@ V závislosti na velikosti a struktuře vaší organizace můžou službu Securi
 
 ![Role](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig01-new.png)
 
-Security Center umožňuje těmto osobám tyto různé povinnosti plnit. Příklad:
+Security Center umožňuje těmto osobám tyto různé povinnosti plnit. Například:
 
 **Jeff (vlastník úloh)**
 
@@ -239,7 +239,7 @@ Tato stránka obsahuje podrobné informace o čase útoku, zdrojovém názvu hos
 
 Na této stránce také můžete zahájit [šetření](https://docs.microsoft.com/azure/security-center/security-center-investigation) pro lepší pochopení časové osy a způsobu provedení útoku, identifikaci potenciálně ohrožených systémů a použitých přihlašovacích údajů a zobrazení grafické reprezentace řetězení útoku.
 
-Jakmile identifikujete ohrožený systém, můžete spustit [playbooky](https://docs.microsoft.com/azure/security-center/security-center-playbooks) zabezpečení vytvořené dříve. Playbook zabezpečení je kolekce procedur, které je možné spustit ze služby Security Center, jakmile se určitý playbook aktivuje z vybrané výstrahy.
+Po identifikaci ohroženého systému můžete spustit [automatizaci pracovního postupu](workflow-automation.md) , která byla dříve vytvořena. Jedná se o kolekci procedur, které mohou být provedeny z Security Center po spuštění výstrahy.
 
 V části [jak využít Azure Security Center & Microsoft Operations Management Suite pro video s odpovědí na incidenty](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703) si můžete prohlédnout některé ukázky, které vám pomůžou pochopit, jak se Security Center dá v každé z těchto fází použít.
 

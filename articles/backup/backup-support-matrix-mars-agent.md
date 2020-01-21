@@ -3,12 +3,12 @@ title: Matice podpory pro agenta MARS
 description: Tento článek shrnuje Azure Backup podporu při zálohování počítačů, na kterých běží agent služby Microsoft Azure Recovery Services (MARS).
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 26f3dde0bb20443753e2b443ffc00ee23c9124c4
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 27ad81c42a079485d8eab95bb1250cba41e8fb5b
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893973"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281270"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Matice podpory pro zálohování s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -104,6 +104,8 @@ Další informace najdete v tématu [podporované MABS a operační systémy DPM
 
 ## <a name="backup-limits"></a>Omezení zálohování
 
+### <a name="size-limits"></a>Omezení velikosti
+
 Azure Backup omezuje velikost zdroje dat souboru nebo složky, které se dají zálohovat. Položky, které zálohujete z jednoho svazku, nemůžou překročit velikost shrnuté v této tabulce:
 
 **Operační systém** | **Omezení velikosti**
@@ -112,7 +114,11 @@ Windows Server 2012 nebo novější |54 400 GB
 Windows Server 2008 R2 SP1 |1 700 GB
 Windows Server 2008 SP2| 1 700 GB
 Windows 8 nebo novější| 54 400 GB
-Windows 7| 1 700 GB
+Windows 7| 1 700 GB
+
+### <a name="other-limitations"></a>Další omezení
+
+- MARS nepodporuje ochranu více počítačů se stejným názvem na jeden trezor.
 
 ## <a name="supported-file-types-for-backup"></a>Podporované typy souborů pro zálohování
 
@@ -122,12 +128,12 @@ Windows 7| 1 700 GB
 Komprimované | Podporuje se.
 Řídké | Podporuje se.
 Komprimované a zhuštěné |Podporuje se.
-Pevné odkazy| Nepodporuje se. Přeskočeno.
-Spojovací bod| Nepodporuje se. Přeskočeno.
-Šifrované a zhuštěné |Nepodporuje se. Přeskočeno.
-Komprimovaný datový proud| Nepodporuje se. Přeskočeno.
-Zhuštěný datový proud| Nepodporuje se. Přeskočeno.
-OneDrive (synchronizované soubory jsou zhuštěné streamy)| Nepodporuje se.
+Pevné odkazy| Není podporováno. Přeskočeno.
+Spojovací bod| Není podporováno. Přeskočeno.
+Šifrované a zhuštěné |Není podporováno. Přeskočeno.
+Komprimovaný datový proud| Není podporováno. Přeskočeno.
+Zhuštěný datový proud| Není podporováno. Přeskočeno.
+OneDrive (synchronizované soubory jsou zhuštěné streamy)| Není podporováno.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Podporované jednotky nebo svazky pro zálohování
 
