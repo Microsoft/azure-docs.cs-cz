@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Dokumentace ke službě Azure Media Services v3
+title: Další informace o cloudové platformě Azure Media Services v3
 summary: Naučíte se kódovat a balit obsah, streamovat videa na vyžádání, živě vysílat a analyzovat vaše videa pomocí Media Services v3. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak bezpečně doručovat živé video a video na vyžádání nebo zvukový stream, který se škáluje milionům uživatelů.
 metadata:
   title: Dokumentace ke službě Azure Media Services v3
@@ -12,12 +12,12 @@ metadata:
   author: Juliako
   ms.author: juliako
   ms.date: 10/07/2019
-  ms.openlocfilehash: b55677aba5f99d4960d51d3a717175d47db026e2
-  ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+  ms.openlocfilehash: 70eab66c3bd2d8536e415c9ac7c62161f3710c0c
+  ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/10/2019
-  ms.locfileid: "72244216"
+  ms.lasthandoff: 01/22/2020
+  ms.locfileid: "76314670"
 landingContent:
 - title: Informace o Media Services
   linkLists:

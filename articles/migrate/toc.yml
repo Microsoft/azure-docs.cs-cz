@@ -124,6 +124,8 @@
           href: scale-vmware-assessment.md
         - name: Přístup k velkému počtu virtuálních počítačů Hyper-V
           href: scale-hyper-v-assessment.md
+        - name: Vyhodnocení velkého počtu fyzických serverů
+          href: scale-physical-assessment.md
         - name: Automatizace migrace velkého počtu virtuálních počítačů
           href: how-to-migrate-at-scale.md
         - name: Příklady migrace (série Contoso)

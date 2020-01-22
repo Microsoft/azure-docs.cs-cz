@@ -148,10 +148,28 @@
           href: backup-mabs-sharepoint-azure-stack.md
         - name: Ochrana databáze SQL Serveru
           href: backup-mabs-sql-azure-stack.md
-    - name: Sdílená složky Azure
+    - name: Zálohování sdílených složek Azure
       items:
-        - name: Zálohování sdílených složek Azure
-          href: backup-azure-files.md
+        - name: Pomocí webu Azure Portal
+          items:
+            - name: Zálohování sdílených složek Azure
+              href: backup-afs.md
+            - name: Obnovení sdílených složek Azure
+              href: restore-afs.md
+            - name: Správa záloh sdílených složek Azure
+              href: manage-afs-backup.md
+        - name: S využitím rozhraní příkazového řádku Azure
+          items:
+            - name: Zálohování sdílených složek Azure s využitím CLI
+              href: backup-afs-cli.md
+            - name: Obnovení sdílených složek Azure s využitím CLI
+              href: restore-afs-cli.md
+            - name: Správa záloh sdílených složek Azure s využitím CLI
+              href: manage-afs-backup-cli.md
+        - name: S využitím PowerShellu
+          items:
+            - name: Zálohování sdílených složek Azure s využitím PowerShellu
+              href: backup-azure-afs-automation.md
     - name: Zálohování virtuálních počítačů Azure
       items:
         - name: Informace o zálohování virtuálních počítačů Azure
@@ -222,8 +240,6 @@
           href: backup-dpm-automation.md
         - name: Windows Server na webu Azure Portal
           href: backup-client-automation.md
-        - name: Sdílené složky Azure na webu Azure Portal
-          href: backup-azure-afs-automation.md
         - name: SQL v zálohách virtuálních počítačů Azure
           href: backup-azure-sql-automation.md
     - name: Použití rozhraní REST API Azure Backup

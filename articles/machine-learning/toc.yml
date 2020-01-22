@@ -93,6 +93,8 @@
       href: concept-designer.md
     - name: Tahák s algoritmy
       href: /azure/machine-learning/algorithm-cheat-sheet
+    - name: Postup při výběru algoritmů
+      href: /azure/machine-learning/how-to-select-algorithms
     - name: Automatizované strojové učení
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
