@@ -63,7 +63,7 @@
     - name: Porty s vysokou dostupností
       href: load-balancer-ha-ports-overview.md
     - name: Podpora protokolu IPv6
-      href: load-balancer-ipv6-overview.md
+      href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-overview'
     - name: Několik front-endů
       href: load-balancer-multivip-overview.md
     - name: Odchozí připojení
@@ -107,11 +107,11 @@
     - name: Vytvoření veřejného nástroje pro vyrovnávání zatížení s využitím IPv6
       items:
         - name: Azure CLI
-          href: load-balancer-ipv6-internet-cli.md
+          href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli'
         - name: Azure PowerShell
-          href: load-balancer-ipv6-internet-ps.md
+          href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell'
         - name: Šablona
-          href: load-balancer-ipv6-internet-template.md
+          href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-configure-standard-load-balancer-template-json'
     - name: Konfigurace interního nástroje pro vyrovnávání zatížení
       items:
         - name: Azure CLI
