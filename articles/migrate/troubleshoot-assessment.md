@@ -7,14 +7,14 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: 3098e85fd21b6185defc4bbcf0a71d412846ab25
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: fb1e32d9f67febb09eadfb5d31221db33504eb05
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75725738"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289471"
 ---
-# <a name="troubleshoot-assessmentdependency-visualization"></a>Řešení potíží s vizualizací a vizualizací závislostí
+# <a name="troubleshoot-assessmentdependency-visualization"></a>Řešení potíží s vyhodnocením a vizualizací závislostí
 
 Tento článek vám pomůže řešit problémy s vizualizací a vizualizací závislostí s [Azure Migrate: posouzení serveru](migrate-services-overview.md#azure-migrate-server-assessment-tool).
 
@@ -92,6 +92,7 @@ Sestavy posouzení serveru "PercentageOfCoresUtilizedMissing" nebo "PercentageOf
 - Tato situace může nastat, pokud jsou virtuální počítače vypnuté během doby hodnocení. Zařízení nemůže shromažďovat údaje o výkonu pro virtuální počítač, když je vypnutý.
 - Pokud nechybí pouze čítače paměti a snažíte se vyhodnotit virtuální počítače Hyper-V, ověřte, zda je na těchto virtuálních počítačích povolena dynamická paměť. K dispozici je známý problém jenom pro virtuální počítače Hyper-V, ve kterém Azure Migrate zařízení nemůže shromažďovat data o využití paměti pro virtuální počítače, které nemají povolenou dynamickou paměť.
 - Pokud některý z čítačů výkonu chybí, Azure Migrate posouzení serveru se vrátí k přiděleným jádrům a paměti a doporučí odpovídající velikost virtuálního počítače.
+- Pokud chybí všechny čítače výkonu, zajistěte, aby byly splněny požadavky na přístup k portu pro posouzení. Přečtěte si další informace o požadavcích na přístup k portu pro [VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#port-access), [Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#port-access) a posouzení [fyzického](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-physical#port-access) serveru.
 
 ## <a name="is-the-operating-system-license-included"></a>Je zahrnutá licence k operačnímu systému?
 
@@ -151,7 +152,7 @@ Po migraci počítačů s povolenou vizualizací závislostí do Azure se můžo
 
 Shromážděte protokoly síťového provozu následujícím způsobem:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
 2. Stisknutím klávesy F12 spusťte Vývojářské nástroje. V případě potřeby zrušte zaškrtnutí **políčka vymazat položky u nastavení navigace** .
 3. Vyberte kartu **síť** a zahajte zachytávání síťového provozu:
    - V části Chrome vyberte **zachovat protokol**. Záznam by se měl spustit automaticky. Červený kroužek indikuje, že se zaznamenává provoz. Pokud se červené kolečko nezobrazí, vyberte černý kroužek, který chcete spustit.

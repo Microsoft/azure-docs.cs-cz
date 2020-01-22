@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: df0c90ba3784acb96bd9f76a436ff2746f7efe2c
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 8a3d8c8769ff5026ec1dde98f3c4167aac302bf8
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76262431"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292939"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatizace nasazení prostředků pro aplikaci Function App v Azure Functions
 
@@ -129,6 +129,7 @@ Prostředek Function App je definován pomocí prostředku typu **Microsoft. Web
         "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
         "[resourceId('Microsoft.Insights/components', variables('appInsightsName'))]"
     ]
+}
 ```
 
 > [!IMPORTANT]
@@ -138,7 +139,7 @@ Aplikace Function App musí zahrnovat tato nastavení aplikace:
 
 | Název nastavení                 | Popis                                                                               | Příklady hodnot                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
-| AzureWebJobsStorage          | Připojovací řetězec k účtu úložiště, který modul runtime Functions pro vnitřní zařazení do fronty | Zobrazit [účet úložiště](#storage)       |
+| AzureWebJobsStorage          | Připojovací řetězec k účtu úložiště, který modul runtime služby Functions používá pro interní zařazení do fronty | Zobrazit [účet úložiště](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | Verze modulu runtime Azure Functions                                                | `~2`                                  |
 | FUNCTIONS_WORKER_RUNTIME     | Jazyková sada, která se má použít pro funkce v této aplikaci                                   | `dotnet`, `node`, `java`, `python`nebo `powershell` |
 | WEBSITE_NODE_DEFAULT_VERSION | Je potřeba jenom v případě, že používáte sadu `node`ho jazyka, určuje verzi, která se má použít.              | `10.14.1`                             |
@@ -174,7 +175,7 @@ Tyto vlastnosti jsou uvedené v kolekci `appSettings` ve vlastnosti `siteConfig`
 
 ## <a name="deploy-on-consumption-plan"></a>Nasazení na plán spotřeby
 
-Plán spotřeby automaticky přiděluje výpočetní výkon, když je váš kód spuštěný, škáluje se podle potřeby pro zpracování zatížení a pak se rozdělují dolů, když kód není spuštěný. Nemusíte platit za nečinné virtuální počítače a nemusíte rezervovat kapacitu předem. Další informace najdete v tématu [škálování Azure functions a hostování](functions-scale.md#consumption-plan).
+Plán spotřeby automaticky přiděluje výpočetní výkon, když je váš kód spuštěný, škáluje se podle potřeby pro zpracování zátěže a pak se škáluje, když kód neběží. Nemusíte platit za nečinné virtuální počítače a nemusíte rezervovat kapacitu předem. Další informace najdete v tématu [škálování Azure functions a hostování](functions-scale.md#consumption-plan).
 
 Ukázkové Azure Resource Managerovou šablonu najdete v tématu [Aplikace Function App v plánu spotřeby].
 

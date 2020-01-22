@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
-ms.openlocfilehash: 93fad58e971d761f626b79dc68f9576ccc2e1892
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a68393b2852f8ddc758e2a47b9e1b5d94befb7b4
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75993996"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290134"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Vysvětlení termínů v souboru s využitím a poplatky Azure
 
@@ -90,11 +90,11 @@ PublisherType | Všechno | Typ vydavatele (hodnoty: **Azure**, **AWS**, **Market
 Množství | Všechno | Počet zakoupených nebo spotřebovaných jednotek.
 ReservationId | EA, MCA | Jedinečný identifikátor zakoupené instance rezervace.
 ReservationName | EA, MCA | Název zakoupené instance rezervace.
-ResourceGroup | Všechno | Název [skupiny prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), ve které se prostředek nachází.
+ResourceGroup | Všechno | Název [skupiny prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), ve které se prostředek nachází. Nepřijdete o všechny poplatky z prostředků nasazených do skupin prostředků. Poplatky, které nemají skupinu prostředků, se zobrazí jako null/prázdné, **jiné**nebo **nepoužitelné**.
 ResourceId<sup>1</sup> | Všechno | Jedinečný identifikátor prostředku [Azure Resource Manageru](https://docs.microsoft.com/rest/api/resources/resources).
 ResourceLocation | Všechno | Umístění datacentra, ve kterém prostředek běží. Viz Location.
-ResourceName | EA, PAYG | Název prostředku.
-ResourceType | MCA | Typ instance prostředku.
+ResourceName | EA, PAYG | Název prostředku. Z nasazených prostředků nepřijdete o všechny poplatky. Poplatky, které nemají typ prostředku, se zobrazí jako null/prázdné, **jiné**nebo **nepoužitelné**.
+ResourceType | MCA | Typ instance prostředku. Z nasazených prostředků nepřijdete o všechny poplatky. Poplatky, které nemají typ prostředku, se zobrazí jako null/prázdné, **jiné**nebo **nepoužitelné**.
 ServiceFamily | MCA | Řada služeb, do které služba patří.
 ServiceInfo1 | Všechno | Metadata konkrétních služeb.
 ServiceInfo2 | Všechno | Starší pole s volitelnými metadaty konkrétní služby.

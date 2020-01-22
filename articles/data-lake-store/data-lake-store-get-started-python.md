@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: fad832ba7b16e8dbb37043d971368062fcbd842f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c71136ecb57fac460514b5f4815ba19cc22d86cb
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75966047"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290610"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>Operace správy účtů na Azure Data Lake Storage Gen1 s využitím Pythonu
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ Pokud chcete pracovat s Data Lake Storage Gen1 pomocí Pythonu, musíte nainstal
 
 * Modul `azure-mgmt-resource`, který zahrnuje moduly Azure pro Active Directory atd.
 * Modul `azure-mgmt-datalake-store`, který zahrnuje operace správy účtu Azure Data Lake Storage Gen1. Další informace o tomto modulu najdete v referenčních informacích k [modulu správy Azure Data Lake Storage Gen1](/python/api/azure-mgmt-datalake-store/).
-* Modul `azure-datalake-store`, který obsahuje operace Azure Data Lake Storage Gen1 systému souborů. Další informace o tomto modulu najdete v tématu [Reference k modulům systému souborů Azure-datalake-Store](https://azure-datalake-store.readthedocs.io/en/latest/).
+* Modul `azure-datalake-store`, který obsahuje operace Azure Data Lake Storage Gen1 systému souborů. Další informace o tomto modulu najdete v tématu [Reference k modulům systému souborů Azure-datalake-Store](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/).
 
 Pomocí následujících příkazů tyto moduly nainstalujte.
 
@@ -135,5 +135,5 @@ Následující fragment kódu nejprve vytvoří klienta Data Lake Storage Gen1 �
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-* [Reference k jazyku Python (systém souborů) pro Azure – datalake – Store](https://azure-datalake-store.readthedocs.io/en/latest)
+* [Reference k jazyku Python (systém souborů) pro Azure – datalake – Store](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core)
 * [Open Source aplikace pro velké objemy dat kompatibilní s Azure Data Lake Storage Gen1](data-lake-store-compatible-oss-other-applications.md)

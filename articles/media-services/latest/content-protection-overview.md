@@ -1,5 +1,5 @@
 ---
-title: Ochrana obsahu pomocí Media Services dynamického šifrování
+title: Chraňte svůj obsah pomocí dynamického šifrování Media Services V3
 titleSuffix: Azure Media Services
 description: Přečtěte si o ochraně obsahu s dynamickým šifrováním, protokoly streamování a typy šifrování v Azure Media Services.
 services: media-services
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 1ae8645f3e782305ed5e1b7847b019a978e48dde
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 18e80383bfcbebc6a442663c141100faa56fd061
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977773"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313801"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Ochrana obsahu pomocí Media Services dynamického šifrování
 

@@ -4,12 +4,12 @@ description: Naučte se používat Azure Application Insights s Azure Functions 
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 4a182ddffd4c1ee4d2e71e7d9e6385df23e4260e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: dda62e3041d04d5becc9179fff1c56d0c587ba1e
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978079"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292922"
 ---
 # <a name="monitor-azure-functions"></a>Monitorování Azure Functions
 
@@ -74,7 +74,7 @@ Vidíte, že obě stránky mají **Spustit v Application Insights** odkaz na dot
 
 ![Spustit v Application Insights](media/functions-monitoring/run-in-ai.png)
 
-Zobrazí se následující dotaz. Můžete vidět, že seznam volání je omezený na posledních 30 dní. V seznamu se zobrazí maximálně 20 řádků (`where timestamp > ago(30d) | take 20`). Seznam podrobností o vyvolání je za posledních 30 dnů bez omezení.
+Zobrazí se následující dotaz. Můžete vidět, že výsledky dotazu jsou omezené na posledních 30 dnů (`where timestamp > ago(30d)`). Kromě toho výsledky zobrazují maximálně 20 řádků (`take 20`). Naopak seznam podrobností o vyvolání pro vaši funkci je za posledních 30 dnů bez omezení.
 
 ![Seznam volání analýzy Application Insights](media/functions-monitoring/ai-analytics-invocation-list.png)
 
@@ -98,7 +98,7 @@ Následující oblasti Application Insights mohou být užitečné při vyhodnoc
 | **[Předepsané](../azure-monitor/app/performance-counters.md)** | Analyzujte problémy s výkonem. |
 | **Servery** | Zobrazení využití prostředků a propustnosti na server. Tato data můžou být užitečná pro scénáře ladění, kde funkce bogging své základní prostředky. Servery se označují jako **instance cloudových rolí**. |
 | **[Metriky](../azure-monitor/app/metrics-explorer.md)** | Vytváření grafů a výstrah založených na metrikách. Metriky zahrnují počet vyvolání funkcí, dobu provádění a míru úspěšnosti. |
-| **[Live Metrics Stream](../azure-monitor/app/live-stream.md)** | Zobrazit data metrik, jak jsou vytvořena v reálném čase. |
+| **[Live Metrics Stream](../azure-monitor/app/live-stream.md)** | Umožňuje zobrazit data metrik, která se vytvářejí téměř v reálném čase. |
 
 ## <a name="query-telemetry-data"></a>Dotazování dat telemetrie
 
@@ -119,7 +119,7 @@ requests
 
 Tabulky, které jsou k dispozici, jsou zobrazeny na kartě **schéma** na levé straně. Data generovaná pomocí volání funkcí najdete v následujících tabulkách:
 
-| Tabulka | Popis |
+| Table | Popis |
 | ----- | ----------- |
 | **trasování** | Protokoly vytvořené modulem runtime a kódem funkce. |
 | **požádal** | Jedna žádost pro každé vyvolání funkce. |
@@ -155,7 +155,7 @@ Pokud zapíšete protokoly do kódu funkce, kategorie je `Function` ve verzi 1. 
 
 Protokolovací nástroj Azure Functions zahrnuje i *úroveň protokolu* s každým protokolem. [LogLevel](/dotnet/api/microsoft.extensions.logging.loglevel) je výčet a celočíselný kód označuje relativní důležitost:
 
-|ÚroveňProtokolu    |Kód|
+|ÚroveňProtokolu    |kód|
 |------------|---|
 |Trasování       | 0 |
 |Ladění       | 1\. místo |
@@ -337,7 +337,7 @@ Protokoly můžete zapsat v kódu funkce, který se zobrazí jako trasování v 
 
 Místo parametru `TraceWriter` použijte ve svých funkcích parametr [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) . Protokoly vytvořené pomocí `TraceWriter` přejděte na Application Insights, ale `ILogger` umožňují [strukturované protokolování](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging).
 
-S objektem `ILogger` zavoláte `Log<level>` [metody rozšíření v ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) k vytváření protokolů. Následující kód zapisuje `Information` protokolů pomocí kategorie "Function".
+S objektem `ILogger` zavoláte `Log<level>` [metody rozšíření v ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) k vytváření protokolů. Následující kód zapisuje `Information` log s kategorií "Function. < YOUR_FUNCTION_NAME >. Uživatel. "
 
 ```cs
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger logger)
@@ -561,7 +561,7 @@ namespace functionapp0915
 
 Nevolejte `TrackRequest` ani `StartOperation<RequestTelemetry>`, protože se zobrazí duplicitní požadavky na vyvolání funkce.  Modul runtime Functions automaticky sleduje požadavky.
 
-Nenastavte `telemetryClient.Context.Operation.Id`. Toto globální nastavení způsobuje nesprávnou korelaci, pokud mnoho funkcí běží současně. Místo toho vytvořte novou instanci telemetrie (`DependencyTelemetry`, `EventTelemetry`) a upravte její vlastnost `Context`. Pak předejte instanci telemetrie do odpovídající `Track` metody v `TelemetryClient` (`TrackDependency()`, `TrackEvent()`). Tato metoda zajišťuje, že telemetrie má správné korelační údaje pro aktuální vyvolání funkce.
+Nenastavte `telemetryClient.Context.Operation.Id`. Toto globální nastavení způsobuje nesprávnou korelaci, pokud mnoho funkcí běží současně. Místo toho vytvořte novou instanci telemetrie (`DependencyTelemetry`, `EventTelemetry`) a upravte její vlastnost `Context`. Pak předejte instanci telemetrie odpovídající `Track` metodě `TelemetryClient` (`TrackDependency()`, `TrackEvent()``TrackMetric()`). Tato metoda zajišťuje, že telemetrie má správné korelační údaje pro aktuální vyvolání funkce.
 
 ## <a name="log-custom-telemetry-in-javascript-functions"></a>Protokolování vlastní telemetrie ve funkcích JavaScriptu
 
@@ -590,7 +590,7 @@ Parametr `tagOverrides` nastaví `operation_Id` na ID vyvolání funkce. Toto na
 
 ## <a name="dependencies"></a>Závislosti
 
-Funkce v2 automaticky shromažďuje závislosti pro požadavky HTTP, ServiceBus a SQL.
+Funkce v2 automaticky shromažďuje závislosti pro požadavky HTTP, ServiceBus, EventHub a SQL.
 
 Můžete napsat vlastní kód, který zobrazí závislosti. Příklady najdete v tématu vzorový kód v [ C# části vlastní telemetrie](#log-custom-telemetry-in-c-functions). Vzorový kód vede *mapu aplikace* v Application Insights, který vypadá jako na následujícím obrázku:
 
@@ -602,7 +602,7 @@ Pokud chcete ohlásit problém s Application Insights integrací v rámci funkc�
 
 ## <a name="streaming-logs"></a>Protokoly streamování
 
-Při vývoji aplikace často chcete zjistit, co se do protokolů zapsalo téměř v reálném čase při spuštění v Azure.
+Při vývoji aplikace často chcete zjistit, co se do protokolů zapisuje téměř v reálném čase, když běží v Azure.
 
 Existují dva způsoby, jak zobrazit datový proud souborů protokolu generovaných spuštěním vaší funkce.
 

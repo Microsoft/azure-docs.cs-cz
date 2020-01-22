@@ -1,139 +1,138 @@
 ---
-title: Přesunout výpočetní mainframových Azure Virtual Machines
-description: Porovnání prostředky příznivě ke kapacitě mainframových výpočtů Azure vám umožní migrovat a modernizujte aplikace z14 IBM.
+title: Přesunout výpočetní sálové prostředí do Azure Virtual Machines
+description: Výpočetní prostředky Azure porovnávají favorably s kapacitou sálového počítače, abyste mohli migrovat a modernizovat aplikace IBM Z14.
 author: njray
 ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 335a056a34412a7ed148613bfff59ecb30053e09
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97f354d0a313d58c671366dd0e5f485504823e13
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65190314"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76288927"
 ---
-# <a name="move-mainframe-compute-to-azure"></a>Přesunout výpočetní sálové počítače do Azure
+# <a name="move-mainframe-compute-to-azure"></a>Přesunout do Azure výpočetní sálové počítače
 
-Sálové počítače mají mají vynikající pověst vysokou spolehlivostí a dostupností a nadále důvěryhodné páteřní mnoho podniků. Už se často představit společnost využívat skoro neomezenou škálovatelnost a výpočetní výkon i. Některé podniky však mít outgrown funkce největší sálové počítače k dispozici. Pokud to podle názvu dalo čekat jako jste vy, Azure nabízí flexibilitu, dosahu a infrastruktury úspory.
+Sálové počítače mají reputaci s vysokou spolehlivostí a dostupností a nadále se jedná o důvěryhodnou páteřní síť mnoha podniků. Často se jedná o skoro neomezenou škálovatelnost a výpočetní výkon. Některé podniky však vypěstují možnost největších dostupných sálových počítačů. Pokud se vám takové zvuky líbí, Azure nabízí flexibilitu, dosahování a úspory infrastruktury.
 
-Spouštění úloh sálové v Microsoft Azure, je potřeba vědět, jak vaše mainframových výpočetní funkce porovnání do Azure. Podle mainframových z14 IBM (aktuální model v době psaní tohoto textu), tento článek vysvětluje, jak získat srovnatelné výsledků v Azure.
+Pokud chcete provozovat sálové úlohy na Microsoft Azure, musíte znát, jak se výpočetní funkce vašeho sálového počítače porovnají s Azure. V tomto článku se dozvíte, jak získat srovnatelné výsledky v Azure na základě sálového počítače IBM Z14 (nejaktuálnějšího modelu v tomto zápisu).
 
-Chcete-li začít, zvažte prostředí vedle sebe. Následující obrázek porovnává mainframových prostředí pro spouštění aplikací Azure hostitelského prostředí.
+Pokud chcete začít, zvažte prostředí vedle sebe. Následující obrázek porovnává sálové prostředí pro spouštění aplikací do hostitelského prostředí Azure.
 
-![Služby Azure a nabídky prostředí emulace srovnatelné podporu a zjednodušuje migraci](media/mainframe-compute-azure.png)
+![Prostředí služeb a emulace Azure nabízejí srovnatelnou podporu a zjednodušují migraci.](media/mainframe-compute-azure.png)
 
-Napájení sálové počítače se často používá pro online transakcí (OLTP) systémy, které zpracovávají miliony aktualizace pro tisíce uživatelů pro zpracování. Tyto aplikace často používat software pro zpracování transakcí, zpracování obrazovky a položka formuláře. Používají může zákazník informace ovládacího prvku systému (CICS), systém správy informací (IMS) nebo rozhraní balíčku TIP (Transaction).
+Výkon sálových počítačů se často používá pro systémy OLTP (online Transaction Processing), které zpracovávají miliony aktualizací pro tisíce uživatelů. Tyto aplikace často používají software pro zpracování transakcí, zpracování obrazovky a položku formuláře. Můžou používat systém CICS (Customer Information Control System), systém pro správu informací (IMS) nebo balíček rozhraní pro transakce (TIP).
 
-Jak ukazuje obrázek emulátoru TPM v Azure dokáže zpracovat CICS a IMS úlohy. Emulátor systému služby batch v Azure hraje roli úlohy ovládací prvek jazyka (JCL). Mainframových data jsou migrována do databáze Azure, jako je Azure SQL Database. Služby Azure nebo jiný software hostované ve službě Azure Virtual Machines je možné pro správu systému.
+Jak ukazuje obrázek, emulátor čipu TPM v Azure může zpracovávat úlohy CICS a IMS. Emulátor systému služby Batch v Azure provádí roli jazyka řízení úloh (JCL). Data z sálového počítače se migrují do databází Azure, například Azure SQL Database. Služby Azure nebo jiný software hostovaný ve službě Azure Virtual Machines lze použít pro správu systému.
 
-## <a name="mainframe-compute-at-a-glance"></a>Výpočetní mainframových na první pohled
+## <a name="mainframe-compute-at-a-glance"></a>Na první pohled výpočetní sálový
 
-V mainframových z14 procesory jsou uspořádány do až čtyři *zásobníky*. A *zásobník* je jednoduše cluster procesory a čipovými sadami. Každý zásobník může mít šest čipy aktivní Centrální procesor (CP) a každý CP má 10 čipy kontroler (SC) systému. V terminologii Intel x86 se šesti sockets na zásobník, 10 jader na soket a čtyři zásobníky. Tato architektura poskytuje hrubý ekvivalent 24 soketů a 240 jádra, maximum, z14.
+V rámci sálového počítače Z14 jsou procesory uspořádány až do čtyř *zásuvk*. *Zásuvkou* je jenom cluster procesorů a chipsetů. Každý zásuvka může obsahovat šest čipy aktivního ústředního procesoru (CP) a každá z nich má 10 čipy systému (SC). V terminologii Intel x86 je k dispozici šest soketů na zásuvku, 10 jader na soket a čtyři zásuvky. Tato architektura poskytuje hrubý ekvivalent 24 soketů a 240 jader, maximálně pro Z14.
 
-Rychlý z14 CP má rychlost 5.2 GHz hodinami. Obvykle se dodává z14 se prohlášení CPs v poli. Jsou aktivovány podle potřeby. Zákazník je běžně účtovat minimálně čtyři hodiny za měsíc bez ohledu na skutečné využití výpočetního času.
+Rychlá Z14 CP má rychlost 5,2 GHz. Z14 se obvykle dodává se všemi CPs v poli. Ty se aktivují podle potřeby. Zákazníkovi se obvykle účtuje alespoň čtyři hodiny výpočetního času za měsíc navzdory skutečnému využití.
 
-Procesor sálové počítače se dají konfigurovat jako jednu z následujících typů:
+Sálový procesor lze nakonfigurovat jako jeden z následujících typů:
 
-- Obecné účely (zásady skupiny) procesoru
-- Systém z integrované informace o procesoru (zIIP)
-- Integrované zařízení pro Linux (IFL) procesor
-- Procesor Assist systému (SAP)
-- Integrované procesoru párování zařízení (BRÁNU)
+- Procesor Pro obecné účely (GP)
+- Systém z integrovaného informačního procesoru (zIIP)
+- IFL (Integrated Facility) pro procesory Linux
+- Procesor (SAP) pro System Assist
+- Procesor brány firewall pro integrované zařízení
 
-## <a name="scaling-mainframe-compute-up-and-out"></a>Škálování výpočetního výkonu mainframových i horizontální navyšování kapacity
+## <a name="scaling-mainframe-compute-up-and-out"></a>Škálování a vyzkoušení sálového počítače
 
-Sálové počítače IBM nabízejí možnost škálovat až 240 jader (aktuální velikost z14 jednoho systému). Kromě toho sálové počítače IBM můžete horizontálně navýšit kapacitu prostřednictvím funkci s názvem zařízení párování (CR). CF umožňuje více sálových počítačích pro přístup ke stejným datům současně. Pomocí CF mainframových paralelní Sysplex technologie skupiny mainframových procesorů v clusterech. Při této příručce byla zapsána, paralelní Sysplex funkce podporována 32 seskupení 64 procesorů. Až 2 048 procesory mohou být seskupeny tímto způsobem pro horizontální navýšení kapacity výpočetní kapacitu.
+Sálové počítače IBM nabízejí možnost horizontálního navýšení kapacity až 240 jader (aktuální velikost Z14 pro jeden systém). Kromě toho je možné rozšířit sálové počítače IBM prostřednictvím funkce označované jako spojovací zařízení (CF). CF umožňuje více sálovým systémům současně přistupovat ke stejným datům. Pomocí CF, sálové sálové Sysplex technologie seskupují sálové procesory v clusterech. Po napsání této příručky funkce Parallel Sysplex podporovala 32 seskupení procesorů 64. Až 2 048 procesorů je možné seskupit tímto způsobem, abyste mohli škálovat výpočetní kapacitu.
 
-CF umožňuje sdílet data s přímým přístupem výpočetní clustery. Používá se pro uzamčení informace, informace o mezipaměti a seznam sdílených datových prostředků. Paralelní Sysplex pomocí jednoho nebo více CFs můžete představit jako "sdíleném vše" Škálováním výpočetního clusteru. Další informace o těchto funkcích najdete v tématu [paralelní Sysplex na IBM Z](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources) na webu IBM.
+CF umožňuje výpočetním clusterům sdílet data s přímým přístupem. Používá se pro uzamykání informací, informace o mezipaměti a seznam sdílených datových prostředků. Paralelní Sysplex s jedním nebo více CFs se dá představit jako sdílený cluster se škálováním na více instancí. Další informace o těchto funkcích naleznete v tématu [Parallel Sysplex on IBM Z](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources) na webu IBM.
 
-Aplikace můžete tyto funkce uvést horizontální navýšení výkonu a vysoké dostupnosti. Informace o tom, jak CICS paralelní Sysplex používat s CF, stáhněte si [IBM CICS a párování zařízení: Nad rámec Základy](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf) redbook.
+Aplikace můžou tyto funkce využívat k poskytování výkonu i vysoké dostupnosti. Informace o tom, jak může CICS použít paralelní Sysplex s CF, stáhnout [IBM CICS a zařízení pro spojení: mimo základy](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf) standardu RedBook.
 
-## <a name="azure-compute-at-a-glance"></a>Výpočetní prostředky Azure na první pohled
+## <a name="azure-compute-at-a-glance"></a>Na první pohled na Azure COMPUTE
 
-Někteří lidé omylem myslíte, že nejsou servery s technologií Intel výkonné jako funkce sálové počítače. Nové bohatém na jádro, na základě Intel systémy však mít jako mnohem výpočetní kapacitu jako sálové počítače. Tato část popisuje možnosti Azure infrastruktury jako služby (IaaS) pro počítačové výpočty a úložiště. Azure nabízí platforma jako služba (PaaS) a možnosti, ale tento článek se zaměřuje na IaaS volby, které poskytují srovnatelné mainframových kapacitu.
+Někteří lidé omylem pomysleli, že servery se systémem Intel nejsou tak výkonné jako sálové počítače. Nové základní-husté systémy založené na platformě Intel ale mají tolik výpočetní kapacity jako sálové počítače. Tato část popisuje možnosti infrastruktury Azure jako služby (IaaS) pro výpočetní prostředí a úložiště. Azure poskytuje i možnosti typu platforma jako služba (PaaS), ale tento článek se zaměřuje na možnosti IaaS, které poskytují srovnatelnou kapacitu sálového počítače.
 
-Virtuální počítače Azure poskytují výpočetní výkon v rozsahu velikostí a typů. V Azure virtuální procesory (vCPU) přibližně odpovídá core na sálového počítače.
+Azure Virtual Machines poskytuje výpočetní výkon v různých velikostech a typech. V Azure je virtuální procesor (vCPU) zhruba stejný jako jádro v rámci sálového počítače.
 
-V současné době velikostí rozsahu z virtuálního počítače Azure poskytuje od 1 do 128 virtuálních procesorů. Typy virtuálních počítačů (VM) jsou optimalizované pro konkrétní úlohy. Například následující seznam obsahuje typy virtuálních počítačů (aktuální v době psaní tohoto textu) a jejich doporučené použití:
+V současné době nabízí rozsah velikostí virtuálních počítačů Azure od 1 do 128 vCPU. Typy virtuálních počítačů jsou optimalizované pro konkrétní úlohy. Například v následujícím seznamu jsou uvedeny typy virtuálních počítačů (aktuální při psaní) a jejich Doporučené použití:
 
 | Velikost     | Typ a popis                                                                 |
 |----------|--------------------------------------------------------------------------------------|
-| D-Series | Obecné účely s 64 virtuálních procesorů a až frekvence 3,5 GHz procesoru                           |
-| E-Series | Paměťově optimalizovaná s až 64 virtuálních procesorů                                                 |
-| Řada F | COMPUTE optimalizované s až 64 virtuálních procesorů a rychlost 3..7 GHz                       |
-| H-Series | Optimalizováno pro aplikace vysokovýkonného výpočetního prostředí (HPC)                          |
-| L-Series | Storage optimalizované pro vysoce propustné aplikace se opírá o databáze, jako jsou NoSQL |
-| M Series | Největší výpočetní a paměťové prostředky optimalizace virtuálních počítačů s až 128 virtuálních procesorů                        |
+| D-Series | Obecné účely s 64 vCPU a taktem až 3,5 GHz                           |
+| E-Series | Paměť optimalizovaná s až 64 vCPU                                                 |
+| Řada F | COMPUTE optimalizované s až 64 vCPU a 3 GHz... 7 GHz                       |
+| H-Series | Optimalizováno pro vysoce výkonné výpočetní aplikace (HPC)                          |
+| L-Series | Úložiště optimalizované pro aplikace s vysokou propustností, které jsou založené na databázích, jako je NoSQL |
+| M Series | Největší výpočetní a paměťově optimalizované virtuální počítače s až 128 vCPU                        |
 
-Podrobnosti o dostupných virtuálních počítačů najdete v tématu [řady virtuálních počítačů](https://azure.microsoft.com/pricing/details/virtual-machines/series/).
+Podrobnosti o dostupných virtuálních počítačích najdete v tématu [řady virtuálních počítačů](https://azure.microsoft.com/pricing/details/virtual-machines/series/).
 
-Z14 mainframových může mít až 240 jader. Ale z14 sálové počítače téměř nikdy nepoužívejte všechna jádra pro jednu aplikaci nebo úlohy. Místo toho sálového počítače odděluje úlohy do logické oddíly (LPARs) a LPARs mají hodnocení – MIPS (miliony pokyny za sekundu) nebo MSU (milion jednotek služby). Při určování srovnatelné velikosti virtuálního počítače, které jsou potřebné ke spuštění úlohy sálové počítače v Azure, hodnocení faktorem MIPS (nebo MSU).
+Z14 sálové počítače může mít až 240 jader. Ale Z14 sálové počítače téměř nikdy nepoužívají všechny jádra pro jednu aplikaci nebo úlohu. Místo toho sálové počítače odděluje úlohy do logických oddílů (LPARs) a LPARs mají hodnocení – MIPS (miliony instrukcí za sekundu) nebo MSU (milion jednotek služby). Při určování srovnatelné velikosti virtuálních počítačů potřebných ke spuštění úlohy sálového počítače v Azure, faktoru v hodnocení MIPS (nebo MSU).
 
-Následují obecné odhady:
+Níže jsou uvedené obecné odhady:
 
--   150 MIPS na virtuální procesor
+-   150 MIPS na vCPU
 
 -   1 000 MIPS na procesor
 
-K určení správné velikosti virtuálního počítače pro konkrétní úlohu v LPAR, nejprve Optimalizujte pro pracovní vytížení virtuálního počítače. Pak zjistěte počet virtuálních procesorů, které jsou potřeba. Konzervativní odhad je 150 MIPS na virtuální procesor. Podle tohoto odhadu, třeba virtuální počítač řady F-series s 16 virtuálních procesorů může snadno podporu IBM Db2 zatížení přicházející z LPAR s 2 400 MIPS.
+K určení správné velikosti virtuálních počítačů pro danou úlohu ve LPAR je třeba nejprve optimalizovat virtuální počítač pro úlohu. Pak určete potřebný počet vCPU. Konzervativní odhad je 150 MIPS na vCPU. Na základě tohoto odhadu může například virtuální počítač řady F-Series s 16 vCPU snadno podporovat úlohy IBM Db2 přicházející z LPAR s 2 400 MIPS.
 
-## <a name="azure-compute-scale-up"></a>Vertikálně navýšit výpočetní prostředky Azure
+## <a name="azure-compute-scale-up"></a>Škálování Azure COMPUTE – nahoru
 
-Virtuální počítače řady M-series můžete škálovat až 128 virtuálních procesorů (v době, kdy byla zapsána v tomto článku). Pomocí konzervativní odhad 150 MIPS na virtuální procesor, virtuálních počítačů řady M-series odpovídá přibližně 19,000 MIPS. Obecným pravidlem pro odhad MIPS sálového počítače je 1 000 MIPS na procesor. Z14 mainframových můžete mít až 24 procesory a poskytují přibližně 24 000 MIPS systému jeden mainframových.
+Virtuální počítače řady M-Series lze škálovat až na 128 vCPU (v době, kdy byl tento článek napsán). Při použití konzervativního odhadu 150 MIPS na vCPU se virtuální počítač řady M-Series rovná asi 19 000 MIPS. Obecné pravidlo pro odhad MIPS pro sálový disk je 1 000 MIPS na procesor. Z14 sálový počítač může mít až 24 procesorů a poskytuje asi 24 000 MIPS pro jeden sálový systém.
 
-Největší mainframových jeden z14 má přibližně 5 000 MIPS větší než největší virtuálních počítačů dostupných v Azure. Ještě je potřeba porovnat, jak jsou služby nasazené. Pokud systém sálového počítače aplikace a relační databáze, jsou obvykle nasazeni na stejný fyzický mainframových – každé ve vlastní LPAR. Stejné řešení v Azure se často nasazuje pomocí jednoho virtuálního počítače pro aplikaci a samostatné vhodné velikosti virtuálního počítače pro databázi.
+Největší jeden Z14 sálový počítač má přibližně 5 000 MIPS více než největší virtuální počítač dostupný v Azure. Je ale důležité porovnat způsob nasazení úloh. Pokud má sálový systém jak aplikaci, tak relační databázi, obvykle se nasazují na stejný fyzický sálový počítač – každý vlastní LPAR. Stejné řešení v Azure se často nasazuje pomocí jednoho virtuálního počítače pro aplikaci a samostatného virtuálního počítače s vhodnou velikostí pro databázi.
 
-Například pokud M64 vCPU systém podporuje aplikace a virtuální procesor M96 se používá pro databázi, přibližně 150 virtuálních procesorů nejsou potřeba – nebo přibližně 24 000 MIPS jak ukazuje následující obrázek.
+Například pokud systém M64 vCPU podporuje aplikaci a pro databázi se používá M96 vCPU, je třeba zadat přibližně 150 vCPU – nebo přibližně 24 000 MIPS, jak ukazuje následující obrázek.
 
-![Porovnání úloh nasazení 24 000 MIPS](media/mainframe-compute-mips.png)
+![Porovnání nasazení úloh 24 000 MIPS](media/mainframe-compute-mips.png)
 
-Tento přístup je migrace LPARs k jednotlivým virtuálním počítačům. Pak Azure snadno škáluje na velikost potřebná pro většinu aplikací, které jsou nasazené v jedné mainframových systému.
+Přístup je k migraci LPARs na jednotlivé virtuální počítače. Azure se pak snadno škáluje až na velikost potřebnou pro většinu aplikací, které jsou nasazené v jednom sálovém systému.
 
-## <a name="azure-compute-scale-out"></a>Horizontální navýšení kapacity výpočetní prostředky Azure
+## <a name="azure-compute-scale-out"></a>Azure COMPUTE Scale-out
 
-Jednou z výhod řešení založené na Azure je možnost pro horizontální navýšení kapacity. Škálování provede společnost využívat skoro neomezenou výpočetní kapacitu, které jsou k dispozici pro aplikaci. Azure podporuje více metod pro horizontální navýšení kapacity výpočetní výkon:
+Jednou z výhod řešení založeného na Azure je schopnost horizontálního navýšení kapacity. Škálování zpřístupňuje téměř neomezenou dostupnou výpočetní kapacitu pro aplikaci. Azure podporuje více metod pro horizontální navýšení výpočetní výkon:
 
-- **Vyrovnávání zatížení napříč clusterem.** V tomto scénáři můžete použít aplikaci [nástroj pro vyrovnávání zatížení](/azure/load-balancer/load-balancer-overview) nebo resource Manageru pro šíření úloh mezi několik virtuálních počítačů v clusteru. Pokud další výpočetní kapacity je potřeba, další virtuální počítače se přidají do clusteru.
+- **Vyrovnávání zatížení napříč clusterem.** V tomto scénáři může aplikace pomocí nástroje [pro vyrovnávání zatížení](/azure/load-balancer/load-balancer-overview) nebo správce prostředků rozložit zatížení mezi několika virtuálními počítači v clusteru. Pokud potřebujete větší výpočetní kapacitu, přidají se do clusteru další virtuální počítače.
 
-- **Škálovací sady virtuálních počítačů.** V tento scénář zvládání výkonových špiček aplikaci je možné škálovat na další [výpočetní prostředky](/azure/virtual-machine-scale-sets/overview) na základě využití virtuálních počítačů. Když poptávka poklesne, počet virtuálních počítačů ve škálovací sadě můžete také přejít mimo provoz, zajištění efektivního využívání výpočetního výkonu.
+- **Sady škálování virtuálních počítačů.** V tomto scénáři shluku se aplikace může škálovat na další [výpočetní prostředky](/azure/virtual-machine-scale-sets/overview) na základě využití virtuálních počítačů. Pokud se poptávka napadne, může se také snížit počet virtuálních počítačů v sadě škálování, což zajistí efektivní využití výpočetního výkonu.
 
-- **PaaS škálování.** Azure PaaS nabídky škálování výpočetních prostředků. Například [Azure Service Fabric](/azure/service-fabric/service-fabric-overview) přiděluje výpočetní prostředky, které splňují zvýšení množství požadavků.
+- **PaaS škálování.** Nabídky Azure PaaS škálují výpočetní prostředky. Například [Azure Service Fabric](/azure/service-fabric/service-fabric-overview) přiděluje výpočetní prostředky pro splnění zvýšení objemu požadavků.
 
-- **Clustery Kubernetes.** Aplikace v Azure můžete použít [clustery Kubernetes](/azure/aks/concepts-clusters-workloads) u výpočetních služeb pro zadané prostředky. Azure Kubernetes Service (AKS) je spravovaná služba, která orchestruje uzly, fondy a clustery v Azure Kubernetes.
+- **Clustery Kubernetes.** Aplikace v Azure můžou používat [clustery Kubernetes](/azure/aks/concepts-clusters-workloads) pro výpočetní služby pro zadané prostředky. Služba Azure Kubernetes Service (AKS) je spravovaná služba, která orchestruje uzly Kubernetes, fondy a clustery v Azure.
 
-Chcete-li zvolit správnou metodu pro horizontální navýšení kapacity výpočetních prostředků, je důležité pochopit, jak Azure a sálové počítače liší. Klíč je jak – nebo – data se sdílí výpočetní prostředky. V Azure není dat (ve výchozím nastavení) obvykle sdílí několik virtuálních počítačů. Sdílení dat vyžaduje-li několik virtuálních počítačů v příslušné škálování na výpočetním clusteru, sdílených dat se musí nacházet v prostředku, který podporuje tuto funkci. V Azure sdílení dat zahrnuje úložiště, jak se popisuje v následující části.
+Pokud chcete zvolit správnou metodu pro škálování výpočetních prostředků, je důležité pochopit, jak se Azure a sálové počítače liší. Klíč je, jak nebo pokud – data se sdílejí pomocí výpočetních prostředků. V Azure nejsou data (ve výchozím nastavení) obvykle sdílená více virtuálními počítači. Pokud je sdílení dat vyžadováno více virtuálními počítači ve výpočetním clusteru se škálováním na více instancí, musí se sdílená data nacházet v prostředku, který tuto funkci podporuje. Sdílení dat v Azure zahrnuje úložiště, jak je popsáno v následující části.
 
-## <a name="azure-compute-optimization"></a>Optimalizace pro výpočetní prostředky Azure
+## <a name="azure-compute-optimization"></a>Optimalizace výpočtů Azure
 
-Každá úroveň zpracování ve službě Azure architektury můžete optimalizovat. Použijte nejvhodnější typ virtuálních počítačů a funkce pro každé prostředí. Následující obrázek znázorňuje jeden potenciální vzor pro nasazování virtuálních počítačů v Azure pro podporu CICS aplikaci, která používá Db2. V primární lokalitě, produkčním prostředí se nasazují předprodukční a testovací virtuální počítače s vysokou dostupností. Sekundární lokality je zálohování a zotavení po havárii.
+Jednotlivé úrovně zpracování můžete optimalizovat v architektuře Azure. Používejte nejvhodnější typ virtuálních počítačů a funkcí pro každé prostředí. Následující obrázek ukazuje jeden potenciální vzor pro nasazení virtuálních počítačů v Azure pro podporu aplikace CICS, která používá Db2. V primární lokalitě jsou nasazené produkční a testovací virtuální počítače s vysokou dostupností. Sekundární lokalita je určena pro zálohování a zotavení po havárii.
 
-Každá úroveň můžete zadat taky odpovídající po havárii služby recovery services. Například může vyžadovat produkčního prostředí a virtuální počítače databáze horké, teplé nebo obnovení, zatímco vývoj a testování virtuálních počítačů podporují úplné obnovení.
+Jednotlivé úrovně můžou také poskytovat vhodné služby pro zotavení po havárii. Například provozní a databázové virtuální počítače mohou vyžadovat rychlé obnovení nebo zahřívání, zatímco virtuální počítače pro vývoj a testování podporují studenou obnovu.
 
-![Vysoce dostupné nasazení, který podporuje zotavení po havárii](media/mainframe-compute-dr.png)
+![Vysoce dostupné nasazení, které podporuje zotavení po havárii](media/mainframe-compute-dr.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Migrace mainframů](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Změna mainframových hostování na Azure Virtual Machines](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
-- [Přesunout mainframových úložiště do Azure](mainframe-storage-Azure.md)
+- [Migrace sálového počítače](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
+- [Opětovné hostování sálového počítače v Azure Virtual Machines](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
+- [Přesunout sálové úložiště do Azure](mainframe-storage-Azure.md)
 
-### <a name="ibm-resources"></a>IBM prostředky
+### <a name="ibm-resources"></a>Prostředky IBM
 
-- [Paralelní Sysplex na IBM Z](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources)
-- [IBM CICS a párování zařízení: Nad rámec základní informace](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
-- [Vytváří se požadovaní uživatelé pro Db2 pureScale instalace funkce](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
-- [Db2icrt - vytvořit instanci příkaz](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
-- [Db2 pureScale skupinový databázové řešení](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
+- [Paralelní Sysplex v IBM Z](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources)
+- [IBM CICS a spojovací zařízení: rámec základních](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
+- [Vytváření požadovaných uživatelů pro instalaci funkce Db2 pureScale](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
+- [Db2icrt – vytvoření instance – příkaz](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
+- [Řešení clusterové databáze Db2 pureScale](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
 - [IBM Data Studio](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
 
 ### <a name="azure-government"></a>Azure Government
 
-- [Microsoft Azure Government cloud pro mainframových aplikací](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
+- [Microsoft Azure Government Cloud pro sálové aplikace](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
 - [Microsoft a FedRAMP](https://www.microsoft.com/TrustCenter/Compliance/FedRAMP)
 
 ### <a name="more-migration-resources"></a>Další zdroje migrace
 
-- [Modernizace Alliance platformy: IBM Db2 v Azure](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
-- [Azure virtuální datové centrum Lift and Shift Průvodce](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
+- [Průvodce zvednutím a posunutím virtuálního datového centra Azure](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
 - [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)

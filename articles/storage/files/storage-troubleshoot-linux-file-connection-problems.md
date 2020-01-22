@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: fa60cbeb3dc2dea928168529a7e7a58cf01657c4
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 8b7a743ebcdf74f6ad740e4e4193bbd98da1536d
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615019"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291120"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Řešení potíží se soubory Azure v systému Linux
 
@@ -130,25 +130,25 @@ Funkce šifrování pro protokol SMB 3.0 pro Linux se zavedla v jádru verze 4.1
 
 Pokud váš linuxový klient SMB nepodporuje šifrování, připojte službu Azure Files pomocí protokolu SMB 2.1 z virtuálního počítače Azure s Linuxem, který je ve stejném datacentru jako sdílená složka. Ověřte, že je pro účet úložiště zakázané nastavení [Vyžadovat zabezpečený přenos]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer). 
 
-<a id="authorizationfailureportal"></a>
-## <a name="error-authorization-failure-when-browsing-to-an-azure-file-share-in-the-portal"></a>Při procházení sdílené složky Azure na portálu došlo k chybě "Chyba autorizace"
+<a id="noaaccessfailureportal"></a>
+## <a name="error-no-access-when-browsing-to-an-azure-file-share-in-the-portal"></a>Při procházení sdílené složky Azure na portálu došlo k chybě bez přístupu.
 
 Když přejdete na sdílenou složku Azure na portálu, může se zobrazit následující chyba:
 
-Selhání autorizace  
-Nemáte přístup.
+Bez přístupu  
+Kód chyby: 403 
 
-### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>Příčina 1: váš uživatelský účet nemá přístup k účtu úložiště.
+### <a name="cause-1-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Příčina 1: v účtu úložiště jsou povolená pravidla virtuální sítě nebo brány firewall.
 
 ### <a name="solution-for-cause-1"></a>Řešení 1. příčiny
 
-Přejděte k účtu úložiště, kde se nachází sdílená složka Azure, klikněte na **řízení přístupu (IAM)** a ověřte, jestli má uživatelský účet přístup k účtu úložiště. Další informace najdete v tématu [zabezpečení účtu úložiště pomocí Access Control na základě rolí (RBAC)](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection).
+Ověřte, že jsou pro účet úložiště správně nakonfigurovaná pravidla brány firewall a virtuální sítě. Pokud chcete otestovat, jestli problém způsobují pravidla brány firewall nebo virtuální sítě, dočasně změňte nastavení pro účet úložiště na **Povolit přístup ze všech sítí**. Další informace najdete v tématu [Konfigurace virtuálních sítí a bran firewall Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
-### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Příčina 2: v účtu úložiště jsou povolená pravidla virtuální sítě nebo brány firewall.
+### <a name="cause-2-your-user-account-does-not-have-access-to-the-storage-account"></a>Příčina 2: váš uživatelský účet nemá přístup k účtu úložiště.
 
 ### <a name="solution-for-cause-2"></a>Řešení 2. příčiny
 
-Ověřte, že jsou pro účet úložiště správně nakonfigurovaná pravidla brány firewall a virtuální sítě. Pokud chcete otestovat, jestli problém způsobují pravidla brány firewall nebo virtuální sítě, dočasně změňte nastavení pro účet úložiště na **Povolit přístup ze všech sítí**. Další informace najdete v tématu [Konfigurace virtuálních sítí a bran firewall Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+Přejděte k účtu úložiště, kde se nachází sdílená složka Azure, klikněte na **řízení přístupu (IAM)** a ověřte, jestli má uživatelský účet přístup k účtu úložiště. Další informace najdete v tématu [zabezpečení účtu úložiště pomocí Access Control na základě rolí (RBAC)](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection).
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Nepovedlo se odstranit soubor nebo adresář ve sdílené složce Azure.

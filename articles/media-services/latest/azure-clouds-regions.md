@@ -1,6 +1,6 @@
 ---
-title: Cloudy a oblasti, které Azure Media Services v3 je k dispozici | Dokumentace Microsoftu
-description: Tento článek pojednává o cloudech Azure a oblastech, které Azure Media Services v3 je k dispozici.
+title: Cloudy a oblasti, ve kterých je Azure Media Services V3 k dispozici
+description: Tento článek pojednává o cloudech a oblastech Azure, ve kterých je k dispozici Azure Media Services V3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,45 +9,45 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 01/21/2020
 ms.author: juliako
-ms.openlocfilehash: 7b2691f543cf38a56eefb1e8521169aeccbf3221
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 58b5b749e81aab4d8563d09cbfd139629520531c
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65409286"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310559"
 ---
-# <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Cloudy a oblasti, ve které Azure Media Services v3 existuje
+# <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Cloudy a oblasti, ve kterých existuje Azure Media Services V3
 
-Azure Media Services v3 je k dispozici prostřednictvím Azure Resource Manageru manifestu v globální Azure, Azure Government, Azure Germany, Azure China 21Vianet. Ne všechny funkce Media Services jsou však k dispozici ve všech cloudech Azure. Tento dokument popisuje dostupnosti hlavní pomocí komponent Media Services v3.
+Azure Media Services V3 je k dispozici prostřednictvím Azure Resource Manager manifestu v globálním Azure, Azure Government, Azure Německo, Azure Čína 21Vianet. Ne všechny funkce Media Services ale jsou dostupné ve všech cloudech Azure. Tento dokument popisuje nákup hlavních komponent Media Services V3.
 
 ## <a name="feature-availability-in-azure-clouds"></a>Dostupnost funkcí v cloudech Azure
 
-| Funkce|Globálními oblastmi Azure | Azure Government|Azure Germany|Azure China 21Vianet|
+| Funkce|Globální oblasti Azure | Azure Government|Azure (Německo)|Azure China 21Vianet|
 | --- | --- | --- | --- | --- |
-| [Azure EventGrid](reacting-to-media-services-events.md) | K dispozici | Není k dispozici. | Není k dispozici. | Není k dispozici. |
-| [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  K dispozici | Není k dispozici. | Není k dispozici. | Není k dispozici. |
-| [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md) |  K dispozici | Není k dispozici. | Není k dispozici. | Není k dispozici. |
-| [StandardEncoderPreset](encoding-concept.md) | K dispozici | K dispozici | K dispozici | K dispozici |
-| [LiveEvents](live-streaming-overview.md) | K dispozici | K dispozici | K dispozici | K dispozici |
-| [Koncové body streamování](streaming-endpoint-concept.md) | K dispozici | K dispozici | K dispozici | K dispozici |
+| [Azure EventGrid](reacting-to-media-services-events.md) | Dostupné | Není k dispozici | Není k dispozici | Není k dispozici |
+| [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Dostupné | Není k dispozici | Není k dispozici | Není k dispozici |
+| [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Dostupné | Není k dispozici | Není k dispozici | Není k dispozici |
+| [StandardEncoderPreset](encoding-concept.md) | Dostupné | Dostupné | Dostupné | Dostupné |
+| [LiveEvents](live-streaming-overview.md) | Dostupné | Dostupné | Dostupné | Dostupné |
+| [Starají](streaming-endpoint-concept.md) | Dostupné | Dostupné | Dostupné | Dostupné |
 
-## <a name="regionsgeographieslocations"></a>Oblastí nebo geografické oblasti/umístění
+## <a name="regionsgeographieslocations"></a>Oblasti/geografické oblasti/umístění
 
-[Oblasti, ve které nasazení služby Azure Media Services](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
+[Oblasti, ve kterých je nasazená služba Azure Media Services](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
 
-### <a name="region-code-name"></a>Název oblasti kódu 
+### <a name="region-code-name"></a>Název kódu oblasti 
 
-Pokud je potřeba zadat **umístění** parametr, musíte zadat název oblasti kódu jako **umístění** hodnotu. Získat kód název oblasti, které váš účet a že vaše volání by měl směrovat na, můžete spustit následující řádek [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
+Pokud potřebujete zadat parametr **umístění** , musíte jako hodnotu **umístění** zadat název kódu oblasti. Pokud chcete získat název kódu pro oblast, ve které je váš účet, a na to, na který má být vaše volání směrováno, můžete spustit následující řádek v rozhraní příkazového řádku [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) .
 
 ```bash
 az account list-locations
 ```
 
-Po spuštění řádku vidíte výše, získání seznamu všech oblastech Azure. Přejděte do oblasti Azure, který má *displayName* hledáte a použít jeho *název* hodnota **umístění** parametru.
+Po spuštění výše uvedeného řádku získáte seznam všech oblastí Azure. Přejděte do oblasti Azure s názvem *DisplayName* , který hledáte, a použijte jeho *název* pro parametr **Location** .
 
-Například pro oblasti Azure USA – západ 2 (zobrazené níže), který použijete "westus2" **umístění** parametru.
+Například pro oblast Azure Západní USA 2 (zobrazenou níže) budete pro parametr **Location** používat "westus2".
 
 ```json
    {
@@ -62,39 +62,39 @@ Například pro oblasti Azure USA – západ 2 (zobrazené níže), který použ
 
 ## <a name="endpoints"></a>Koncové body  
 
-Následující koncové body jsou důležité vědět, při připojení k účtů Media Services z různých národních cloudů Azure.
+Následující koncové body jsou důležité pro informace o připojení k Media Services účtům z různých národních cloudů Azure.
 
-### <a name="global-azure"></a>Global Azure
+### <a name="global-azure"></a>Globální Azure
 
 |Koncové body ||
 | --- | --- | 
 | Azure Resource Manager |  `https://management.azure.com/` |
-| Authentication | `https://login.microsoftonline.com/` | 
-| Cílové skupiny tokenu | `https://management.core.windows.net/` |
+| Ověření | `https://login.microsoftonline.com/` | 
+| Cílová skupina tokenů | `https://management.core.windows.net/` |
 
 ### <a name="azure-government"></a>Azure Government
 
 |Koncové body||
 | --- | --- | 
 | Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
-| Authentication | `https://login.microsoftonline.us/` | 
-| Cílové skupiny tokenu | `https://management.core.usgovcloudapi.net/` |
+| Ověření | `https://login.microsoftonline.us/` | 
+| Cílová skupina tokenů | `https://management.core.usgovcloudapi.net/` |
 
-### <a name="azure-germany"></a>Azure Germany
+### <a name="azure-germany"></a>Azure (Německo)
 
 | Koncové body ||
 | --- | --- |  
 | Azure Resource Manager | `https://management.cloudapi.de/` |
-| Authentication | `https://login.microsoftonline.de/` |
-| Cílové skupiny tokenu | `https://management.core.cloudapi.de/`|
+| Ověření | `https://login.microsoftonline.de/` |
+| Cílová skupina tokenů | `https://management.core.cloudapi.de/`|
 
 ### <a name="azure-china-21vianet"></a>Azure China 21Vianet
 
 |Koncové body||
 | --- | --- | 
 | Azure Resource Manager | `https://management.chinacloudapi.cn/` |
-| Authentication | `https://login.chinacloudapi.cn/` |
-| Cílové skupiny tokenu |  `https://management.core.chinacloudapi.cn/` |
+| Ověření | `https://login.chinacloudapi.cn/` |
+| Cílová skupina tokenů |  `https://management.core.chinacloudapi.cn/` |
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
@@ -102,6 +102,6 @@ Následující koncové body jsou důležité vědět, při připojení k účt�
 * [Zeměpisné oblasti Azure](https://azure.microsoft.com/global-infrastructure/geographies/)
 * [Umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Přehled služby Media Services v3](media-services-overview.md)
+[Přehled Media Services V3](media-services-overview.md)

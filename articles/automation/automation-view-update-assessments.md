@@ -3,14 +3,14 @@ title: Zobrazit posouzení aktualizací pro Azure Update Management
 description: Tento článek popisuje, jak zobrazit posouzení aktualizací pro nasazení aktualizací.
 services: automation
 ms.subservice: update-management
-ms.date: 05/17/2019
+ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: b6f86c72bfc1a1d51ed509a70d786e67f11d8166
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 58d3cf6261456c09195ad6dafaeb781b55d9e5ee
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75419890"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310080"
 ---
 # <a name="view-azure-update-management-update-assessments"></a>Zobrazit posouzení aktualizací pro Azure Update Management
 
@@ -30,7 +30,7 @@ Vyberte **chybějící aktualizace** a zobrazte tak seznam aktualizací, které 
 
 ## <a name="update-classifications"></a>Klasifikace aktualizací
 
-V následujících tabulkách jsou uvedeny klasifikace aktualizací v Update Management s definicí pro každou klasifikaci.
+V následujících tabulkách jsou uvedeny podporované klasifikace aktualizací v Update Management s definicí pro každou klasifikaci.
 
 ### <a name="windows"></a>Windows
 
@@ -59,6 +59,8 @@ sudo yum -q --security check-update
 ```
 
 V současné době není podporována žádná podporovaná metoda pro povolení nativní klasifikace – dostupnost dat v CentOS. V tuto chvíli se zákazníkům, kteří tuto funkci povolili, poskytne jenom nejlepší podpora.
+
+Chcete-li klasifikovat aktualizace na Red Hat Enterprise verze 6, je nutné nainstalovat modul plug-in Yumu-Security. V Red Hat Enterprise Linux 7 je modul plug-in již součástí samotného Yumu, není nutné nic instalovat. Další informace najdete v následujícím [článku znalostní báze](https://access.redhat.com/solutions/10021)Red Hat.
 
 ## <a name="next-steps"></a>Další kroky
 

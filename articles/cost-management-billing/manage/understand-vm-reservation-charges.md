@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 807bb4b4dd07298635ff0cd3e18f095ccf862e91
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 9ebc418327d8c73198d43d3c40e14d48c73ad209
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75989797"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290236"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Jak se na virtuální počítače uplatňuje sleva za rezervaci Azure
 
@@ -47,7 +47,7 @@ Když vypnete určitý prostředek, sleva za rezervaci se automaticky uplatní n
 
 ![Snímek obrazovky znázorňující jednu uplatněnou rezervaci a dvě vyhovující instance virtuálních počítačů](./media/understand-vm-reservation-charges/billing-reserved-vm-instance-application.png)
 
-1. Každé využití nad limit rezervace se účtuje pomocí standardních sazeb pro průběžné platby. Za využití do limitu rezervace se vám neúčtují žádné poplatky, protože už jste toto využití zaplatili při zakoupení rezervace.
+1. Každé využití nad limit rezervace se účtuje pomocí standardních sazeb pro průběžné platby. Neúčtují se vám žádné použití pod řádkem rezervací, protože už je zaplacená jako součást nákupu rezervací.
 2. Za 1. hodinu běží instance 1 po dobu 0,75 hodiny a instance 2 po dobu 0,5 hodiny. Celkové využití za 1. hodinu je 1,25 hodiny. Za 0,25 hodiny nad limit se vám naúčtuje běžná sazba pro průběžné platby.
 3. Za 2. a 3. hodinu běží obě instance po dobu 1 hodiny. Jednu instanci pokryje rezervace a u druhé se vám naúčtuje sazba pro průběžné platby.
 4. Za 4. hodinu běží instance 1 po dobu 0,5 hodiny a instance 2 po dobu 1 hodiny. Instanci 1 plně pokryje rezervace a 0,5 hodiny chodu instance 2 také. Za 0,5 hodiny nad limit se vám naúčtuje běžná sazba pro průběžné platby.

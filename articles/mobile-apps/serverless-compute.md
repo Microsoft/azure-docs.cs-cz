@@ -8,12 +8,12 @@ ms.assetid: 444f0959-aa7f-472c-a6c7-9eecea3a34b9
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: d59cca4b5c956134516aa2c8066894aa14e5d33d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ec7091a32a1be8d875e16d8e0a9b20b5e80de387
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453106"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291953"
 ---
 # <a name="build-mobile-back-end-components-with-compute-services"></a>Vytváření mobilních back-endové komponent pomocí výpočetních služeb
 Každá mobilní aplikace potřebuje back-end, který je zodpovědný za úložiště dat, obchodní logiku a zabezpečení. Správa infrastruktury pro hostování a spouštění back-endu kódu vyžaduje, abyste mohli měnit, zřizovat a škálovat víc serverů. Také je nutné spravovat aktualizace operačního systému a související hardware a použít opravy zabezpečení. Pak potřebujete monitorovat všechny tyto součásti infrastruktury pro výkon, dostupnost a odolnost proti chybám. 
@@ -36,7 +36,7 @@ Pomocí následujících služeb můžete v mobilních aplikacích povolit výpo
 - Založené na událostech a škálovatelné, kde můžete použít triggery a vazby k definování, kdy je funkce vyvolána a k jakým datům se připojí.
 - Využijte vlastní závislosti, protože funkce podporují NuGet a NPM, takže můžete používat své oblíbené knihovny.
 - Integrované zabezpečení, abyste mohli chránit funkce aktivované protokolem HTTP poskytovateli OAuth, jako jsou Azure Active Directory, Facebook, Google, Twitter a účet Microsoft.
-- Zjednodušená integrace s různými [službami Azure](/azure/azure-functions/functions-overview#integrations) a SaaS (software jako služba).
+- Zjednodušená integrace s různými [službami Azure](/azure/azure-functions/functions-overview) a SaaS (software jako služba).
 - Flexibilní vývoj, abyste mohli nastavovat své funkce přímo v Azure Portal nebo nastavit průběžnou integraci a nasazovat kód prostřednictvím GitHubu, Azure DevOps Services a dalších podporovaných vývojových nástrojů.
 - Modul runtime Functions je open source a dostupný na [GitHubu](https://github.com/azure/azure-webjobs-sdk-script).
 - Vylepšené vývojové prostředí, ve kterém můžete místně Code, testovat a ladit pomocí preferovaného editoru nebo snadno použitelného webového rozhraní s monitorováním integrovaných nástrojů a integrovaných funkcí DevOps.

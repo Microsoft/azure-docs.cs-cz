@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb09228b561718819c0c48aac4fc66d8205fe384
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ff9af6a6f51ca89fa7e852609ceed1ee02c6e23f
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424619"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294350"
 ---
 # <a name="authentication-basics"></a>Základy ověřování
 
@@ -168,4 +168,4 @@ Ve výchozím nastavení používá nástroj MSAL prohlížeč systému s výjim
 - Seznamte se s běžnými podmínkami na [webu Microsoft Identity Platform Developer Glosář](developer-glossary.md) .
 - Další informace o dalších scénářích pro ověřování uživatelů, které podporuje platforma Microsoft identity, najdete v tématu [toky ověřování a scénáře aplikací](authentication-flows-app-scenarios.md) .
 - V tématu [knihovny MSAL](msal-overview.md) najdete informace o knihovnách Microsoftu, které vám pomůžou vyvíjet aplikace, které pracují s účty Microsoft, účty Azure AD a Azure AD B2C uživatelů v jednom, zjednodušeném programovacím modelu.
-- Informace o tom, jak nakonfigurovat ověřování pro App Service aplikaci, najdete v tématu věnovaném [integraci App Service s platformou identity Microsfot](/azure/app-service/configure-authentication-provider-aad) .
+- Informace o tom, jak nakonfigurovat ověřování pro App Service aplikaci, najdete v tématu věnovaném [integraci App Service s Microsoft Identity platformou](/azure/app-service/configure-authentication-provider-aad) .

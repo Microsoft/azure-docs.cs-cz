@@ -3,12 +3,12 @@ title: Nastavení zařízení Azure Migrate pro VMware
 description: Naučte se, jak nastavit zařízení Azure Migrate pro vyhodnocení a migraci virtuálních počítačů VMware.
 ms.topic: article
 ms.date: 11/18/2019
-ms.openlocfilehash: da451149d0420bc71a355fdf4f4fb122b196d5a0
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 139b694bafb9d67192e6f182ff879e86e2b73ce4
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029056"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291936"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>Nastavení zařízení pro virtuální počítače VMware
 
@@ -115,7 +115,7 @@ Aby bylo možné zjistit konfiguraci a údaje o výkonu virtuálních počítač
 3. Klikněte na **ověřit připojení** a ujistěte se, že se zařízení může připojit k vCenter Server.
 
 ### <a name="specify-vm-credentials"></a>Zadat přihlašovací údaje virtuálního počítače
-Pro zjišťování aplikací, rolí a funkcí a vizualizací závislostí virtuálních počítačů můžete zadat přihlašovací údaje k virtuálnímu počítači, které mají přístup k virtuálním počítačům VMware. Můžete přidat jednu přihlašovací údaje pro virtuální počítače s Windows a jedno přihlašovací údaje pro virtuální počítače se systémem Linux. [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-vcenter-server-permissions) o požadovaných oprávněních pro přístup.
+Pro zjišťování aplikací, rolí a funkcí a vizualizací závislostí virtuálních počítačů můžete zadat přihlašovací údaje k virtuálnímu počítači, které mají přístup k virtuálním počítačům VMware. Můžete přidat jednu přihlašovací údaje pro virtuální počítače s Windows a jedno přihlašovací údaje pro virtuální počítače se systémem Linux. [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) o požadovaných oprávněních pro přístup.
 
 > [!NOTE]
 > Tento vstup je nepovinný a je potřeba, aby se povolilo zjišťování aplikací a vizualizace závislostí bez agentů.
@@ -124,7 +124,7 @@ Pro zjišťování aplikací, rolí a funkcí a vizualizací závislostí virtu�
 2. Vyberte **operační systém**.
 3. Zadejte popisný název přihlašovacích údajů.
 4. V části **uživatelské jméno** a **heslo**zadejte účet, který má alespoň přístup k hostům na virtuálních počítačích.
-5. Klikněte na tlačítko **Add** (Přidat).
+5. Klikněte na tlačítko **Přidat**.
 
 Po zadání vCenter Server a přihlašovacích údajů k virtuálnímu počítači (volitelné) klikněte na **Uložit a spusťte zjišťování** a spusťte zjišťování místního prostředí.
 

@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/20/2019
 ms.author: zarhoads
-ms.openlocfilehash: a9b942c4726c770f1ea0d35c924395cdff40e1c7
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 07e267af307fedd9b896e08919b7026a3a1c2bac
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732014"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292958"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>Rychlý Start: vývoj ve službě Azure Kubernetes Service (AKS) s využitím konceptu
 
 Koncept je open source nástroj, který pomáhá balíčkům a spouštěním kontejnerů aplikací v clusteru Kubernetes. S konceptem můžete rychle znovu nasadit aplikaci na Kubernetes, když dojde ke změnám kódu, aniž byste museli potvrzovat změny ve správě verzí. Další informace o konceptu najdete v [dokumentaci konceptu na GitHubu][draft-documentation].
 
-V tomto článku se dozvíte, jak používat koncept balíčku a spustit aplikaci v AKS.
+V tomto článku se dozvíte, jak používat koncept k zabalení a spuštění aplikace v AKS.
 
 
 ## <a name="prerequisites"></a>Požadavky

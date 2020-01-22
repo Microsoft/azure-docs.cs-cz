@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: b3e2b6fbfb11c0ee89e56cd29fa3bf606c336235
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 10889f6d872510fb53e76ab3722343aa2ee6a5e8
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278545"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293908"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Začínáme s Azure Cost Management pro partnery
 
@@ -120,7 +120,7 @@ Bez ohledu na zásadu si partneři můžou náklady zobrazit i v případě, že
 
 Partneři pomocí následujících informací umožňují zásadám zobrazovat poplatky za využití Azure pro své zákazníky.
 
-V Azure Portal se přihlaste k partnerskému tenantovi a vyberte **cost management + fakturace**. Vyberte fakturační účet a pak vyberte **zákazníci**. Seznam zákazníků je přidružený k fakturačnímu účtu.
+V Azure Portal se přihlaste k partnerskému tenantovi a vyberte **cost management + fakturace**. Vyberte příslušný fakturační účet smlouvy Microsoft Partner a pak vyberte **zákazníci**. Seznam zákazníků je přidružený k fakturačnímu účtu.
 
 V seznamu zákazníků vyberte zákazníka, kterému chcete dovolit zobrazit náklady.
 
@@ -137,7 +137,7 @@ Když je zásada nákladů nastavená na **Ano**, uživatelé předplatného př
 
 Když je zásada viditelnost nákladů povolená, všechny služby, které mají využití předplatného, budou zobrazovat náklady podle tarifů průběžných plateb. Využití rezervace se zobrazí s nulovými poplatky za skutečné a účtované náklady. Nákupy a nároky nejsou přidružené ke konkrétnímu předplatnému. Nákupy se tak nezobrazí v oboru předplatného.
 
-Pokud chcete zobrazit náklady na tenanta zákazníka, otevřete Cost Management + fakturace a pak vyberte fakturační účty. V seznamu fakturačních účtů vyberte fakturační účet.
+Pokud chcete zobrazit náklady na tenanta zákazníka, otevřete **cost management + fakturace** a vyberte příslušný fakturační účet partnera společnosti Microsoft.
 
 ![Vybrat fakturační účet](./media/get-started-partners/select-billing-account.png)
 
@@ -263,7 +263,7 @@ Uživatelé s přístupem RBAC k předplatnému můžou také exportovat náklad
 
 ### <a name="create-an-export-in-a-partner-tenant-or-customer-tenant"></a>Vytvoření exportu v partnerském tenantovi nebo tenantovi zákazníka
 
-V Azure Portal se přihlaste k tenantovi partnera nebo zákazníkovi a vyberte **cost management + fakturace**. Vyberte příslušný obor, například fakturační účet, a pak vyberte **Analýza nákladů**. Po načtení stránky vyberte **exportovat**. Vyberte **Zobrazit všechny exporty** v části naplánovat export.
+V Azure Portal se přihlaste k tenantovi partnera nebo zákazníkovi a vyberte **cost management + fakturace**. Vyberte příslušný obor, například fakturační účet partnerské smlouvy společnosti Microsoft, a pak vyberte **Analýza nákladů**. Po načtení stránky vyberte **exportovat**. Vyberte **Zobrazit všechny exporty** v části naplánovat export.
 
 ![Vyberte exportovat a zobrazit všechny exporty.](./media/get-started-partners/export01.png)
 

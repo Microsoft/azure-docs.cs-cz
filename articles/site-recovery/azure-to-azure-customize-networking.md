@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: rajanaki
-ms.openlocfilehash: 191161c8185f45712052000285013a6e61c9fa6a
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 96ffa34166797945afc04c66b03fe151d26c65bc
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968916"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292854"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Přizpůsobení síťových konfigurací cílového virtuálního počítače Azure
 
@@ -27,11 +27,11 @@ Přečtěte si, jak Site Recovery poskytuje zotavení po havárii pro [Tento sc�
 
 Při replikaci virtuálních počítačů Azure můžete pro virtuální počítač s podporou převzetí služeb při selhání zadat následující hlavní konfigurace prostředků:
 
-- [Interní nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#what-is-standard-load-balancer)
+- [Interní nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
 - [Veřejná IP adresa](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)
 - [Skupina zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) pro podsíť i pro síťovou kartu
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Ujistěte se, že vaše konfigurace na straně obnovení naplánujete předem.
 - Vytvořte si síťové prostředky předem. Poskytněte ji jako vstup, aby služba Azure Site Recovery mohla přijmout tato nastavení a zajistit, aby se virtuální počítač s podporou převzetí služeb při selhání dodržoval s těmito nastaveními.

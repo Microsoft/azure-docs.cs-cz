@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: ae04bf5268bb9973098735183842f7393e9d679b
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 4de8b032bd284ce0a2d6d8fd168b9ea3dd4937d3
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121756"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289046"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Přístup k datům ve službě Azure Storage
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -52,7 +52,7 @@ Budete potřebovat:
 | Typ&nbsp;úložiště | Typ&nbsp;ověřování | [Azure&nbsp;Machine –&nbsp;Learning Studio](https://ml.azure.com/) | [Azure&nbsp;Machine&nbsp;Learning&nbsp; Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) |  [Rozhraní příkazového řádku Azure&nbsp;Machine&nbsp;Learning](reference-azure-machine-learning-cli.md) | [Rozhraní REST API pro Azure&nbsp;Machine&nbsp;Learning&nbsp;](https://docs.microsoft.com/rest/api/azureml/)
 ---|---|---|---|---|---
 [Úložiště Azure&nbsp;BLOB&nbsp;](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)| Klíč účtu <br> Token SAS | ✓ | ✓ | ✓ |✓
-[Soubor Azure&nbsp;&nbsp;sdílená složka]((https://docs.microsoft.com/azure/storage/files/storage-files-introduction))| Klíč účtu <br> Token SAS | ✓ | ✓ | ✓ |✓
+[Soubor Azure&nbsp;&nbsp;sdílená složka](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)| Klíč účtu <br> Token SAS | ✓ | ✓ | ✓ |✓
 [Azure&nbsp;Data Lake&nbsp;úložiště – obecné&nbsp;1](https://docs.microsoft.com/azure/data-lake-store/)| Instanční objekt| ✓ | ✓ | ✓ |✓
 [Azure&nbsp;Data Lake&nbsp;Storage gen&nbsp;2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)| Instanční objekt| ✓ | ✓ | ✓ |✓
 Databáze&nbsp;Azure&nbsp;SQL| Ověřování pomocí SQL <br>Instanční objekt| ✓ | ✓ | ✓ |✓
@@ -271,7 +271,7 @@ V situacích, kdy sada SDK neposkytuje přístup k úložiště dat, může být
 
 ## <a name="move-data-to-supported-azure-storage-solutions"></a>Přesun dat na podporovaná Azure Storage řešení
 
-Azure Machine Learning podporuje přístup k datům ze služby Azure Blob Storage, souborů Azure, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database a Azure Database for PostgreSQL. Pokud používáte nepodporované úložiště, doporučujeme přesunout vaše data na podporovaná Azure Storage řešení pomocí [Azure Data Factory a těchto kroků]((https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-copy-data-tool)). Přesunutí dat do podporovaného úložiště vám umožní ušetřit náklady na výstup dat během experimentů strojového učení. 
+Azure Machine Learning podporuje přístup k datům ze služby Azure Blob Storage, souborů Azure, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database a Azure Database for PostgreSQL. Pokud používáte nepodporované úložiště, doporučujeme přesunout vaše data na podporovaná Azure Storage řešení pomocí [Azure Data Factory a těchto kroků](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-copy-data-tool). Přesunutí dat do podporovaného úložiště vám umožní ušetřit náklady na výstup dat během experimentů strojového učení. 
 
 Azure Data Factory poskytuje efektivní a odolný přenos dat s více než 80 předem sestavenými konektory bez dalších nákladů. Mezi tyto konektory patří datové služby Azure, místní zdroje dat, Amazon S3 a RedShift a Google BigQuery.
 

@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/20/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2bf769169b579cb0a06a48b3a5998efb89eb8fb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 843dd403bc5434e2c79ee0bb85eb781b56bf3ec9
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443335"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291443"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) k Workday
 
@@ -42,7 +41,11 @@ Chcete-li začít, potřebujete následující položky:
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí. Workday podporuje jednotné přihlašování iniciované v **SP** .
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
+
+* Workday podporuje jednotné přihlašování iniciované v **SP** .
+
+* Jakmile nakonfigurujete pracovní den, můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-workday-from-the-gallery"></a>Přidání pracovního dne z Galerie
 
@@ -244,7 +247,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ### <a name="create-workday-test-user"></a>Vytvořit testovacího uživatele v Workday
 
-V této části vytvoříte v Workday uživatele s názvem B. Simon. Pokud chcete přidat uživatele do platformy Workday, pracujte s [týmem podpory klientů v pracovních klientech](https://www.workday.com/en-us/partners-services/services/support.html) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte v Workday uživatele s názvem B. Simon. Pokud chcete přidat uživatele do platformy Workday, pracujte s [týmem podpory klientů v pracovních klientech](https://www.workday.com/partners-services/services/support.html) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ## <a name="test-sso"></a>Test SSO
 
@@ -259,3 +262,7 @@ Když vyberete dlaždici Workday na přístupovém panelu, měli byste být auto
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Vyzkoušejte si Workday ve službě Azure AD](https://aad.portal.azure.com)
+
+- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/protect-workday)
+
+- [Jak chránit Workday pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

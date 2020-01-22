@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 854d98a4f2a1b2500bc301d2305c0dd1f27aaaa4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: d66e792b901742f903dccf7a0e7999db4d02e26a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980816"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289522"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Řešení potíží s Azure Migrate zařízením a zjišťováním
 
@@ -41,11 +41,11 @@ K tomu může dojít, pokud je počítač zařízení za proxy serverem.
 - Ujistěte se, že přihlašovací údaje pro autorizaci zadáte, pokud je proxy vyžaduje.
 - Pokud k řízení odchozího připojení používáte proxy server brány firewall založený na adrese URL, přidejte tyto adresy URL do seznamu povolených adres:
 
-    - [Adresy URL pro vyhodnocení VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-url-access-requirements)
-    - [Adresy URL pro posouzení technologie Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#assessment-appliance-url-access)
-    - [Adresy URL pro migraci bez agentů VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-url-access-requirements)
-    - [Adresy URL pro migraci založené na agentech VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#replication-appliance-url-access)
-    - [Adresy URL pro migraci technologie Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#migration-hyper-v-host-url-access)
+    - [Adresy URL pro vyhodnocení VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
+    - [Adresy URL pro posouzení technologie Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)
+    - [Adresy URL pro migraci bez agentů VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
+    - [Adresy URL pro migraci založené na agentech VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
+    - [Adresy URL pro migraci technologie Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)
 
 - Pokud pro připojení k Internetu používáte zachycení proxy serveru, importujte certifikát proxy serveru do virtuálního počítače zařízení pomocí [těchto kroků](https://docs.microsoft.com/azure/migrate/concepts-collector).
 

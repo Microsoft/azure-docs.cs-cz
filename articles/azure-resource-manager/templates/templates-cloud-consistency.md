@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 0c69c90410aab7fa37ab87e82314c53e4459ca25
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 0e4dd67e1686d3b63376138d1be2d1f7df4bb41a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155651"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290644"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Vývoj šablon Azure Resource Manageru pro zajištění konzistence cloudu
 
@@ -55,7 +55,7 @@ Možnosti služby Azure Resource Manageru vždy představíme na global Azure ne
 
 1. Jakmile máte místní klon úložiště, připojte se do cílového počítače Azure Resource Manageru pomocí Powershellu.
 
-1. Importujte modul psm1 a spusťte rutinu test-AzureRmureRmTemplateFunctions:
+1. Importujte modul psm1 a spusťte rutinu Test-AzureRmTemplateFunctions:
 
    ```powershell
    # Import the module

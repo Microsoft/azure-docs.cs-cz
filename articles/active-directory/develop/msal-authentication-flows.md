@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c818b7d7508555e1233d4ef954502728f65abfb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9e224218217b18ffc5c35ec45011097d93e5d797
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917195"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291580"
 ---
 # <a name="authentication-flows"></a>Toky ověřování
 
@@ -32,21 +32,21 @@ Tento článek popisuje různé toky ověřování, které poskytuje knihovna Mi
 | [Autorizační kód](#authorization-code) | Používá se v aplikacích, které jsou nainstalované na zařízení, aby získal přístup k chráněným prostředkům, například k webovým rozhraním API. Díky tomu můžete přidat přihlašování a přístup k rozhraní API pro mobilní a desktopové aplikace. | [Desktopové aplikace](scenario-desktop-overview.md), [mobilní aplikace](scenario-mobile-overview.md), [webové aplikace](scenario-web-app-call-api-overview.md) | 
 | [Jménem](#on-behalf-of) | Aplikace vyvolá službu nebo webové rozhraní API, které zase musí volat jinou službu nebo webové rozhraní API. Nápad je rozšířit identitu delegovaného uživatele a oprávnění prostřednictvím řetězce požadavků. | [Webová rozhraní API](scenario-web-api-call-api-overview.md) |
 | [Přihlašovací údaje klienta](#client-credentials) | Umožňuje přístup k prostředkům hostovaným na webu pomocí identity aplikace. Běžně se používá pro interakce mezi servery, které musí běžet na pozadí bez okamžité interakce s uživatelem. | [Aplikace démona](scenario-daemon-overview.md) |
-| [Kód zařízení](#device-code) | Umožňuje uživatelům přihlašovat se ke vstupnímu zařízení s omezením, jako jsou například inteligentní televizní vysílání, zařízení IoT nebo tiskárna. | [Desktopové/mobilní aplikace](scenario-desktop-acquire-token.md#command-line-tool-without-web-browser) |
+| [Kód zařízení](#device-code) | Umožňuje uživatelům přihlašovat se ke vstupnímu zařízení s omezením, jako jsou například inteligentní televizní vysílání, zařízení IoT nebo tiskárna. | [Desktopové/mobilní aplikace](scenario-desktop-acquire-token.md#command-line-tool-without-a-web-browser) |
 | [Integrované ověřování systému Windows](scenario-desktop-acquire-token.md#integrated-windows-authentication) | Umožňuje aplikacím připojeným k doméně nebo Azure Active Directory (Azure AD) získat token v tichém režimu (bez interakce uživatelského rozhraní od uživatele).| [Desktopové/mobilní aplikace](scenario-desktop-acquire-token.md#integrated-windows-authentication) |
-| [Uživatelské jméno a heslo](scenario-desktop-acquire-token.md#username--password) | Umožňuje aplikaci podepsat uživatele přímo pořízením hesla. Tento tok se nedoporučuje. | [Desktopové/mobilní aplikace](scenario-desktop-acquire-token.md#username--password) |
+| [Uživatelské jméno a heslo](scenario-desktop-acquire-token.md#username-and-password) | Umožňuje aplikaci podepsat uživatele přímo pořízením hesla. Tento tok se nedoporučuje. | [Desktopové/mobilní aplikace](scenario-desktop-acquire-token.md#username-and-password) |
 
 ## <a name="how-each-flow-emits-tokens-and-codes"></a>Jak každý tok generuje tokeny a kódy
  
 V závislosti na tom, jak je váš klient sestavený, může použít jeden (nebo několik) toků ověřování podporovaných platformou Microsoft identity.  Tyto toky můžou vytvářet různé tokeny (id_tokens, aktualizovat tokeny, přístupové tokeny) a také autorizační kódy a při práci vyžadovat jiné tokeny. Tento graf poskytuje přehled:
  
-|Tok | Vyžaduje | id_token | Přístupový token | aktualizovat token | autorizační kód | 
+|Tok | Vyžaduje | id_token | přístupový token | aktualizovat token | autorizační kód | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Tok autorizačního kódu](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
 |[Implicitní tok](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
 |[Hybridní tok OIDC](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
 |[Aktualizovat uplatnění tokenu](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | aktualizovat token | x | x | x| |
-|[Tok On-Behalf-Of](v2-oauth2-on-behalf-of-flow.md) | Přístupový token| x| x| x| |
+|[Tok On-Behalf-Of](v2-oauth2-on-behalf-of-flow.md) | přístupový token| x| x| x| |
 |[Tok kódu zařízení](v2-oauth2-device-code.md) | | x| x| x| |
 |[Přihlašovací údaje klienta](v2-oauth2-client-creds-grant-flow.md) | | | x (jenom aplikace)| | |
  

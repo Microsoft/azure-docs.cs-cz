@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: V tomto rychlém startu se dozvíte, jak používat Azure Dev Spaces a Visual Studio Code k ladění a rychlému iteraci aplikace Node. js ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: f96806828b2169e9022b1eaf2ec1819879c729ab
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 557e5a541b175f1641142779de23bb83ab212831
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867707"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290505"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-nodejs---azure-dev-spaces"></a>Rychlý Start: ladění a iterace v Kubernetes pomocí Visual Studio Code a Node. js – Azure Dev Spaces
 
@@ -21,7 +21,7 @@ V tomto průvodci se naučíte:
 - Iterativní vývoj kódu v kontejnerech pomocí Visual Studio Code.
 - Ladit kód ve vývojovém prostoru z Visual Studio Code.
 
-Azure Dev Spaces taky umožňuje ladění a iteraci pomocí:
+Azure Dev Spaces také umožňují ladit a iterovat pomocí:
 - [Java a Visual Studio Code](quickstart-java.md)
 - [.NET Core a Visual Studio Code](quickstart-netcore.md)
 - [.NET Core a Visual Studio](quickstart-netcore-visualstudio.md)
@@ -113,7 +113,7 @@ Klikněte na *ladit* a pak *Zastavit ladění* , aby se ladicí program zastavil
 
 ## <a name="update-code"></a>Aktualizace kódu
 
-Chcete-li nasadit aktualizovanou verzi služby, můžete aktualizovat libovolný soubor v projektu a znovu spustit *spouštěcí Server*. Příklad:
+Chcete-li nasadit aktualizovanou verzi služby, můžete aktualizovat libovolný soubor v projektu a znovu spustit *spouštěcí Server*. Například:
 
 1. Pokud je vaše aplikace stále spuštěná, klikněte na tlačítko *ladění* a zastavte tak *ladění* .
 1. Aktualizujte [řádek 13 v `server.js`](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) na:
@@ -151,7 +151,7 @@ Tento příkaz vytvoří a spustí vaši službu v Azure Dev Spaces. Také spust
 
 Po spuštění služby přejděte k ní pomocí prohlížeče a s ním můžete pracovat.
 
-Když je služba spuštěná, vraťte se do VS Code a aktualizujte řádek 13 v `server.js`. Příklad:
+Když je služba spuštěná, vraťte se do VS Code a aktualizujte řádek 13 v `server.js`. Například:
 ```javascript
     res.send('Hello from webfrontend in Azure while debugging!');
 ```

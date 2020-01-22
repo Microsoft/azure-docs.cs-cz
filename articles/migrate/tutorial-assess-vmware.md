@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: hamusa
-ms.openlocfilehash: 58e6e7b3cdf749909165d7ff071a2f3885d7e8b9
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 7f161afe13bad8c548806d4b4ceb9372dc511cc3
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028742"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289437"
 ---
 # <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>Posouzení virtuálních počítačů VMware pomocí posouzení serveru Azure Migrate
 
@@ -176,7 +176,7 @@ Aby bylo možné zjistit konfiguraci a údaje o výkonu virtuálních počítač
 1. Vyberte **ověřit připojení** a ujistěte se, že se zařízení může připojit k vCenter Server.
 
 ### <a name="specify-vm-credentials"></a>Zadat přihlašovací údaje virtuálního počítače
-Pro zjišťování aplikací, rolí a funkcí a pro vizualizaci závislostí virtuálních počítačů můžete zadat přihlašovací údaje pro virtuální počítače, které mají přístup k virtuálním počítačům VMware. Můžete přidat jednu přihlašovací údaje pro virtuální počítače s Windows a jedno přihlašovací údaje pro virtuální počítače se systémem Linux. [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-vcenter-server-permissions) o potřebných přístupových oprávněních.
+Pro zjišťování aplikací, rolí a funkcí a pro vizualizaci závislostí virtuálních počítačů můžete zadat přihlašovací údaje pro virtuální počítače, které mají přístup k virtuálním počítačům VMware. Můžete přidat jednu přihlašovací údaje pro virtuální počítače s Windows a jedno přihlašovací údaje pro virtuální počítače se systémem Linux. [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) o potřebných přístupových oprávněních.
 
 > [!NOTE]
 > Tento vstup je nepovinný, ale budete ho potřebovat, pokud chcete povolit zjišťování aplikací a vizualizaci závislostí bez agentů.
@@ -210,7 +210,7 @@ Tento postup je nutný pro migraci serveru bez agenta.
 1.  Z rozevírací nabídky vyberte svou instanci vCenter Server.
 1.  Vyberte **vytvořit roli**.
 1.  Zadejte název nové role (například <em>Azure_Migrate</em>).
-1.  Přiřaďte [oprávnění](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) k nově definované roli.
+1.  Přiřaďte [oprávnění](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) k nově definované roli.
 1.  Vyberte **OK**.
 
 #### <a name="3-assign-permissions-on-vcenter-objects"></a>3. přiřazení oprávnění pro objekty vCenter
@@ -219,7 +219,7 @@ Existují dva způsoby, jak přiřadit oprávnění pro objekty inventáře v vC
 
 Pro vyhodnocení serveru musíte použít roli jen **pro čtení** pro uživatelský účet vCenter pro všechny nadřazené objekty, ve kterých jsou hostované virtuální počítače, které mají být zjištěny. Budou zahrnuty všechny nadřazené objekty: hostitel, složka hostitelů, cluster a složka clusterů v hierarchii až do datacentra. Tato oprávnění budou rozšířena na podřízené objekty v hierarchii.
 
-Podobně jako u migrace serveru musíte použít uživatelsky definovanou roli s [oprávněními](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) k uživatelskému účtu vCenter pro všechny nadřazené objekty, u kterých jsou virtuální počítače, které se mají migrovat, hostované. Tato role může mít název <em>_Migrate Azure</em>.
+Podobně jako u migrace serveru musíte použít uživatelsky definovanou roli s [oprávněními](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) k uživatelskému účtu vCenter pro všechny nadřazené objekty, u kterých jsou virtuální počítače, které se mají migrovat, hostované. Tato role může mít název <em>_Migrate Azure</em>.
 
 ![Přiřazení oprávnění](./media/tutorial-assess-vmware/assign-perms.png)
 

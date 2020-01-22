@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: bf4f176eef502cdd1c68f19904a24bd2500e1302
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 939ac7caacac7cfb55bd29ed9a5d9c136a8e5c90
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428502"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314245"
 ---
 # <a name="one-vs-all-multiclass"></a>1-versus-all Multiclass
 
-Tento článek popisuje, jak používat modul 1-versus-all Multiclass v Návrháři Azure Machine Learning (Preview). Cílem je vytvořit klasifikační model, který může odhadnout více tříd pomocí přístupu typu *1:1* .
+Tento článek popisuje, jak používat modul 1-versus-all Multiclass v Návrháři Azure Machine Learning. Cílem je vytvořit klasifikační model, který může odhadnout více tříd pomocí přístupu typu *1:1* .
 
 Tento modul je vhodný pro vytváření modelů, které předpovídá tři nebo více možných výsledků, pokud výsledek závisí na kontinuálním nebo kategorií proměnných prediktivních proměnných. Tato metoda také umožňuje použít binární metody klasifikace pro problémy, které vyžadují více výstupních tříd.
 

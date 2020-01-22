@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 12/03/2019
-ms.openlocfilehash: 7341d86e68986a2e502f714a4dcf1f882200d384
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b3497df8acdb2e7d184dba54e93506146d842348
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441066"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314381"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Začínáme s Azure Cosmos DB rozhraní API pro tabulky a Azure Table Storage pomocí sady .NET SDK
 
@@ -49,7 +49,7 @@ V aplikaci Visual Studio vytvořte novou konzolovou aplikaci .NET. Následujíc�
 
 1. Do pole **název projektu** zadejte název vaší aplikace, například **CosmosTableSamples**. (V případě potřeby můžete zadat jiný název.)
 
-1. Vyberte **Vytvořit**.
+1. Vyberte **Create** (Vytvořit).
 
 Všechny příklady kódu v této ukázce lze přidat do metody Main () souboru **program.cs** vaší konzolové aplikace.
 
@@ -59,7 +59,7 @@ K získání balíčku NuGet použijte tento postup:
 
 1. Klikněte v **Průzkumníku řešení** pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**.
 
-1. Vyhledejte online `Microsoft.Azure.Cosmos.Table`, `Microsoft.Extensions.Configuration`, `Microsoft.Extensions.Configuration.Json``Microsoft.Extensions.Configuration.Binder` a vyberte **nainstalovat** a nainstalujte Microsoft Azure Cosmos DB knihovny tabulek.
+1. Vyhledejte online [`Microsoft.Azure.Cosmos.Table`](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table), [`Microsoft.Extensions.Configuration`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration), [`Microsoft.Extensions.Configuration.Json`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Json) [`Microsoft.Extensions.Configuration.Binder`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder) a vyberte **nainstalovat** a nainstalujte Microsoft Azure Cosmos DB knihovny tabulek.
 
 ## <a name="configure-your-storage-connection-string"></a>Konfigurace připojovacího řetězce úložiště
 

@@ -3,12 +3,12 @@ title: Zálohování virtuálních počítačů Azure v trezoru Recovery Service
 description: Popisuje, jak zálohovat virtuální počítače Azure v Recovery Services trezoru pomocí Azure Backup
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: f2954ad2693d7b4f56e3f1b33e804a6936cf8a65
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 95c185c09558f3d1a525c9bcf15f3957118c4311
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450151"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294027"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Zálohování virtuálních počítačů Azure v trezoru Recovery Services
 
@@ -42,7 +42,7 @@ Kromě toho je možné, že v některých případech budete muset udělat něko
 
  Trezor ukládá zálohy a body obnovení vytvořené v průběhu času a ukládá zásady zálohování přidružené k zálohovaným počítačům. Vytvořte Trezor následujícím způsobem:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com/).
 2. Do Hledat zadejte **Recovery Services**. V části **služby**klikněte na **Recovery Services trezory**.
 
      ![Hledat trezory Recovery Services](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>
@@ -295,6 +295,18 @@ Můžete nastavit Azure Firewall, který povolí odchozí přístup pro síťov�
 
 * [Přečtěte si o](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) nasazení Azure firewall.
 * [Přečtěte si o](https://docs.microsoft.com/azure/firewall/fqdn-tags) Plně kvalifikovaný název domény.
+
+>[!NOTE]
+> Azure Backup teď podporuje zálohování a obnovení selektivního disku pomocí řešení zálohování virtuálních počítačů Azure.
+>
+>V současné době Azure Backup podporuje zálohování všech disků (operačního systému a dat) na virtuálním počítači společně s využitím řešení zálohování virtuálních počítačů. Díky funkci vyloučení disku získáte možnost zálohovat jeden nebo několik datových disků ve virtuálním počítači. To poskytuje efektivní a nákladově efektivní řešení pro potřeby zálohování a obnovení. Každý bod obnovení obsahuje data disků zahrnutých v operaci zálohování, která dále umožňuje mít v průběhu operace obnovení podmnožinu disků obnovených z daného bodu obnovení. To platí pro obnovení ze snímku i z trezoru.
+>
+> Toto řešení je užitečné zejména v následujících scénářích:
+>  
+>1. Máte kritická data, která se mají zálohovat jenom na jednom disku, a nechcete zálohovat zbývající disky připojené k virtuálnímu počítači. Tím se minimalizují náklady na úložiště zálohování.  
+>2. Máte další řešení zálohování pro součást vašich dat virtuálních počítačů. Můžete například zálohovat databáze nebo data s jiným řešením zálohování úloh a chcete použít zálohování na úrovni virtuálního počítače Azure pro ostatní disky a data k vytvoření efektivního a robustního systému, který využívá nejlepší dostupné možnosti.
+>
+>Pokud si chcete zaregistrovat verzi Preview, napište nám na AskAzureBackupTeam@microsoft.com
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 192aae4da4d9b07804f473ec6e98615f46e2ee86
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b6a019fbea2ebfed67db4f7c2a9b0f8085438aa8
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214571"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311644"
 ---
 # <a name="evaluate-model-module"></a>Vyhodnotit modul modelu
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Tento modul použijte k měření přesnosti trained model. Poskytnete datovou sadu obsahující skóre vygenerované z modelu a modul **vyhodnocení modelu** vypočítá sadu standardních metrik vyhodnocení v oboru.
   
@@ -61,14 +61,11 @@ Tato funkce je užitečná, protože můžete snadno porovnat výsledky dvou rů
 
 1. Připojte výstup skóre výsledné **sady dat** [modelu skóre](score-model.md) k vstupu **modelu vyhodnocení**. 
 2. Připojte výstup modulu určení skóre modelu pro druhý model na pravého vstupu **modelu vyhodnocení**.
-3. Klikněte pravým tlačítkem na **vyhodnotit model**a vyberte **Spustit vybrané** a vygenerujte hodnocení vyhodnocení.
+3. Spuštění kanálu
 
 ## <a name="results"></a>Výsledky
 
-Po spuštění **modelu vyhodnocení**klikněte pravým tlačítkem myši na modul a výběrem **výsledků vyhodnocení** zobrazte výsledky. Můžete:
-
-+ Uložte výsledky jako datovou sadu pro snazší analýzu pomocí dalších nástrojů.
-+ Generování vizualizace v Návrháři
+Po spuštění **modelu vyhodnocení**klikněte pravým tlačítkem myši na modul a výběrem **vizualizace výsledky vyhodnocení** zobrazte výsledky.
 
 Pokud připojíte datové sady ke vstupům **modelu vyhodnocení**, budou výsledky obsahovat metriky pro sadu dat nebo oba modely.
 Model nebo data připojená k levému portu se zobrazí jako první v sestavě, za kterými následuje metrika pro datovou sadu nebo model připojený ke správnému portu.  

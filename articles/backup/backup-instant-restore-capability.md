@@ -4,12 +4,12 @@ description: Možnosti a nejčastější dotazy ke službě Azure Instant Restor
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 19ecd6843422f1843631278626ef8971b0791b1f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 21e5ae82fc8274874e97d5e91a140b811b36c05e
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75391304"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293823"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Zlepšení výkonu zálohování a obnovení pomocí funkce Azure Backup pro okamžité obnovení
 
@@ -111,3 +111,15 @@ Nový model nepovoluje odstranění bodu obnovení (2), pokud se neodstraní sn�
 ### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>Proč je můj snímek existující i po nastavení Doba uchování v zásadách zálohování?
 
 Pokud má bod obnovení snímek, který je nejnovějším dostupným RP, bude uchován až do doby, kdy bude k dispozici další úspěšná záloha. Toto je podle navržených zásad uvolňování paměti (GC) ještě dnes, že pro případ, že se na virtuálním počítači poběží všechny zálohy, musí mít vždycky k dispozici alespoň jeden nejnovější RP. V normálních scénářích se RPs vyčistí po dobu jejich vypršení platnosti po dobu 24 hodin.
+
+>[!NOTE]
+> Azure Backup teď podporuje zálohování a obnovení selektivního disku pomocí řešení zálohování virtuálních počítačů Azure.
+>
+>V současné době Azure Backup podporuje zálohování všech disků (operačního systému a dat) na virtuálním počítači společně s využitím řešení zálohování virtuálních počítačů. Díky funkci vyloučení disku získáte možnost zálohovat jeden nebo několik datových disků ve virtuálním počítači. To poskytuje efektivní a nákladově efektivní řešení pro potřeby zálohování a obnovení. Každý bod obnovení obsahuje data disků zahrnutých v operaci zálohování, která dále umožňuje mít v průběhu operace obnovení podmnožinu disků obnovených z daného bodu obnovení. To platí pro obnovení ze snímku i z trezoru.
+>
+> Toto řešení je užitečné zejména v následujících scénářích:
+>  
+>1. Máte kritická data, která se mají zálohovat jenom na jednom disku, a nechcete zálohovat zbývající disky připojené k virtuálnímu počítači. Tím se minimalizují náklady na úložiště zálohování.  
+>2. Máte další řešení zálohování pro součást vašich dat virtuálních počítačů. Můžete například zálohovat databáze nebo data s jiným řešením zálohování úloh a chcete použít zálohování na úrovni virtuálního počítače Azure pro ostatní disky a data k vytvoření efektivního a robustního systému, který využívá nejlepší dostupné možnosti.
+>
+>Pokud si chcete zaregistrovat verzi Preview, napište nám na AskAzureBackupTeam@microsoft.com

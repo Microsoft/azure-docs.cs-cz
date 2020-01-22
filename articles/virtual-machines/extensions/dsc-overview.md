@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 8f243527461a95d963854d8d018602dd81115482
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: b6b9d0f146fd98fd90aa8858e522449be571842c
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497274"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293160"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Úvod k obslužné rutině rozšíření konfigurace požadovaného stavu Azure
 
@@ -59,7 +59,7 @@ Při prvním volání rozšíření se nainstaluje verze WMF pomocí následují
 - Pokud je zadána vlastnost **wmfVersion** , je nainstalována verze WMF, pokud není tato verze kompatibilní s operačním systémem virtuálního počítače.
 - Pokud není zadána žádná vlastnost **wmfVersion** , je nainstalována nejnovější příslušná verze WMF.
 
-Instalace WMF vyžaduje restart. Po restartování bude rozšíření stahovat soubor zip, který je zadán ve vlastnosti **modulesUrl** , pokud je k dispozici. Pokud je toto umístění v úložišti objektů BLOB v Azure, můžete pro přístup k souboru zadat token SAS ve vlastnosti **sasToken** . Po stažení a rozbalení souboru. zip se funkce konfigurace definovaná v **configurationFunction** spustí a vygeneruje soubor. mof. Rozšíření potom spustí `Start-DscConfiguration -Force` pomocí generovaného souboru. mof. Rozšíření zachytí výstup a zapíše ho do kanálu stavu Azure.
+Instalace WMF vyžaduje restart. Po restartování bude rozšíření stahovat soubor zip, který je zadán ve vlastnosti **modulesUrl** , pokud je k dispozici. Pokud je toto umístění v úložišti objektů BLOB v Azure, můžete pro přístup k souboru zadat token SAS ve vlastnosti **sasToken** . Po stažení a rozbalení souboru. zip se funkce konfigurace definovaná v **configurationFunction** spustí a vygeneruje soubor. mof ([Formát MOF (Managed Object Format)](https://docs.microsoft.com/windows/win32/wmisdk/managed-object-format--mof-)). Rozšíření potom spustí `Start-DscConfiguration -Force` pomocí generovaného souboru. mof. Rozšíření zachytí výstup a zapíše ho do kanálu stavu Azure.
 
 ### <a name="default-configuration-script"></a>Výchozí konfigurační skript
 

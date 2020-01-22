@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: bdc9e8cbea77b504cfdc2c3b1c83c74ea4ab8ed1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: fe1b5b4171dc5e61c1c82abfd723d0b77a05a5b9
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935980"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294333"
 ---
 # <a name="define-and-use-moderation-jobs-net"></a>Definování a použití úloh moderování (.NET)
 
@@ -26,7 +26,7 @@ ms.locfileid: "72935980"
 - Sledování kontroly a získání jejího konečného stavu
 - Odeslat výsledky kontroly na adresu URL zpětného volání
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Přihlaste se nebo vytvořte účet na webu [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com/) Content moderator.
 
@@ -45,13 +45,13 @@ I když nástroj pro kontrolu obsahuje výchozí pracovní postup, pro tento ryc
 
 Použijete název pracovního postupu v kódu, který zahájí úlohu moderování.
 
-## <a name="create-your-visual-studio-project"></a>Vytvoření projektu Visual Studio
+## <a name="create-your-visual-studio-project"></a>Vytvoření projektu v sadě Visual Studio
 
 1. Přidejte do svého řešení nový projekt **Konzolová aplikace (.NET Framework)** .
 
    Ve vzorovém kódu pojmenujte tento projekt **CreateReviews**.
 
-1. Projekt vyberte jako jediný spouštěný projekt řešení.
+1. Projekt vyberte jako jeden spouštěný projekt řešení.
 
 ### <a name="install-required-packages"></a>Instalace požadovaných balíčků
 
@@ -124,7 +124,7 @@ public static class Clients
 Do třídy **Program** v souboru Program.cs přidejte následující konstanty a statická pole.
 
 > [!NOTE]
-> Konstantu TeamName nastavte na název, který jste použili při vytváření předplatného Content Moderatoru. TeamName najdete na [webu Content Moderatoru](https://westus.contentmoderator.cognitive.microsoft.com/).
+> Konstantu TeamName nastavte na název, který jste použili při vytváření předplatného Content Moderatoru. Na webu Content Moderator načtěte tým.
 > Až se přihlásíte, vyberte z nabídky **Nastavení** (ozubené kolo) možnost **Přihlašovací údaje**.
 >
 > Název týmu je hodnota pole **Id** v části **API**.
@@ -235,7 +235,7 @@ using (TextWriter writer = new StreamWriter(OutputFile, false))
 > [!NOTE]
 > Klíč služby Content Moderator má omezenou rychlost v jednotkách RPS (žádosti za sekundu). Když tento limit překročíte, sada SDK vyvolá výjimku s kódem chyby 429.
 >
-> Klíč úrovně Free má limit nastavený na jeden požadavek za vteřinu.
+> Klíč úrovně Free má limit nastavený na 1 RPS za sekundu.
 
 ## <a name="run-the-program-and-review-the-output"></a>Spuštění programu a kontrola výstupu
 
@@ -250,7 +250,7 @@ Přihlaste se k nástroji Content Moderatoru pro kontrolu, abyste si zobrazili �
 
 Tlačítkem **Next** (Další) revizi odešlete.
 
-![Revize obrázku lidskými moderátory](images/ocr-sample-image.PNG)
+![Kontrola obrázku lidskými moderátory](images/ocr-sample-image.PNG)
 
 ## <a name="see-the-sample-output-in-the-log-file"></a>Zobrazení ukázkového výstupu v souboru protokolu
 
@@ -316,4 +316,4 @@ Zobrazí se odpověď, která vypadá jako následující příklad:
 
 ## <a name="next-steps"></a>Další kroky
 
-Získejte pro tento rychlý start a jiné rychlé starty Content Moderatoru pro technologii .NET [sadu Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a [řešení Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) a začněte se svou integrací.
+Získejte pro tento rychlý start a jiné rychlé starty Content Moderatoru pro .NET [sadu Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a [řešení Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) a začněte se svou integrací.

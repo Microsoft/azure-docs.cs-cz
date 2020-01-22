@@ -4,15 +4,15 @@ description: Místní brána je nutná v případě, že se Server Analysis Serv
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/17/2020
+ms.date: 01/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f1fc00ced0d933884ca0fe6dce91fed4602eb825
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 648646b6f973762245c344cd2629a874a219b170
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263434"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310148"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Připojení k místním zdrojům dat s místní bránou dat
 
@@ -24,11 +24,11 @@ V případě Azure Analysis Services se při prvním procesu čtyř částí zí
 
 - **Stažení a spuštění instalačního programu** – tento krok nainstaluje službu brány do počítače ve vaší organizaci. Přihlásíte se také k Azure pomocí účtu v Azure AD vašeho [tenanta](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) . Účty Azure B2B (Guest) se nepodporují.
 
-- **Registrace brány** – v tomto kroku zadáte název a obnovovací klíč pro bránu a vyberete oblast a zaregistrujete bránu do cloudové služby brány. Prostředek brány je možné zaregistrovat v libovolné oblasti, ale doporučujeme, aby byl ve stejné oblasti jako servery Analysis Services. 
+- **Registrace brány** – v tomto kroku zadáte název a obnovovací klíč pro bránu a vyberete oblast a zaregistrujete bránu do cloudové služby brány. Prostředek brány je možné zaregistrovat v libovolné oblasti, ale doporučuje se ho ve stejné oblasti jako servery Analysis Services. 
 
 - **Vytvoření prostředku brány v Azure** – v tomto kroku vytvoříte prostředek brány v Azure.
 
-- **Připojte své servery k prostředku brány** – Jakmile máte prostředek brány, můžete k němu začít s připojením svých serverů. Můžete propojit víc serverů a dalších prostředků, pokud jsou ve stejné oblasti.
+- **Připojte své servery k prostředku brány** – Jakmile budete mít prostředek brány, můžete k němu začít propojovat servery. Můžete propojit víc serverů a dalších prostředků, pokud jsou ve stejné oblasti.
 
 
 
@@ -54,7 +54,7 @@ Při instalaci pro prostředí Azure Analysis Services je důležité postupovat
 
 Brána vytvoří odchozí připojení k Azure Service Bus. Komunikuje na odchozích portech: TCP 443 (výchozí), 5671, 5672, 9350 až 9354.  Příchozí porty brána nevyžaduje.
 
-Možná budete muset v bráně firewall zahrnout IP adresy pro vaši oblast dat. [Seznam IP adres datových center Microsoft Azure si můžete stáhnout.](https://www.microsoft.com/download/details.aspx?id=41653) Tento seznam se každý týden aktualizuje. IP adresy v seznamu IP adres datacentra Azure jsou uvedené v zápisu CIDR. Další informace najdete v tématu [směrování mezi doménami bez třídy](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
+Možná budete muset v bráně firewall zahrnout IP adresy pro vaši oblast dat. [Seznam IP adres datových center Microsoft Azure si můžete stáhnout.](https://www.microsoft.com/download/details.aspx?id=56519) Tento seznam se každý týden aktualizuje. IP adresy v seznamu IP adres datacentra Azure jsou uvedené v zápisu CIDR. Další informace najdete v tématu [směrování mezi doménami bez třídy](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
 Níže jsou uvedené plně kvalifikované názvy domény používané bránou.
 

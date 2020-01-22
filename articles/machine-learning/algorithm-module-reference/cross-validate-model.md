@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: b7c898c232dc39398b13f16beea814aa4e554845
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 680cf04e79a9cb6d5748723dad3cb37cf3c76468
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428565"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314211"
 ---
 # <a name="cross-validate-model"></a>Křížové ověření modelu
 
-Tento článek popisuje, jak používat modul pro různé ověřování modelu v Návrháři Azure Machine Learning (Preview). *Křížové ověřování* je technika často používaná ve službě Machine Learning k vyhodnocení proměnlivosti datové sady a spolehlivosti všech modelů vyškolených prostřednictvím těchto dat.  
+Tento článek popisuje, jak použít modul pro různé ověřování modelu v Návrháři Azure Machine Learning. *Křížové ověřování* je technika často používaná ve službě Machine Learning k vyhodnocení proměnlivosti datové sady a spolehlivosti všech modelů vyškolených prostřednictvím těchto dat.  
 
 Modul pro různé ověřování modelu přijímá jako vstupní datovou sadu s popisem, společně s nevlakovou klasifikací nebo regresní model. Rozdělí datovou sadu na určitý počet podmnožin (*skládání*), sestaví model na každé přeložení a potom vrátí sadu statistik přesnosti pro každé skládání. Porovnáním statistik přesnosti pro všechna skládání můžete interpretovat kvalitu sady dat. Pak můžete pochopit, jestli je model náchylný k proměnlivosti dat.  
 
@@ -76,7 +76,7 @@ V tomto scénáři provedete a otestujete model pomocí modelu vzájemného ově
 
 7. Popis sestav najdete v části s [výsledky](#results) .
 
-    Chcete-li získat kopii modelu pro pozdější použití, klikněte pravým tlačítkem myši na výstup modulu, který obsahuje algoritmus (například **počítač se dvěma třídami Bayes Point**). Pak vyberte **Uložit jako trained model**.
+    Chcete-li získat kopii modelu pro opakované použití později, přepněte na kartu **výstupy** v pravém panelu modulu, který obsahuje algoritmus (například **počítač se dvěma třídami Bayes Point**). Pak vyberte ikonu **zaregistrovat datovou sadu** a uložte kopii trained modelu do stromu modulu.
 
 ## <a name="results"></a>Výsledky
 
@@ -86,7 +86,7 @@ Po dokončení všech iterací model vzájemného ověřování vytvoří skóre
 
 První výstup modulu poskytuje zdrojová data pro každý řádek spolu s některými předpovězenými hodnotami a souvisejícími pravděpodobnostmi. 
 
-Chcete-li zobrazit tyto výsledky, klikněte pravým tlačítkem na modul modelu křížového ověřování v kanálu. Vyberte **výsledky skóre**a pak vyberte **vizualizovat**.
+Pokud chcete zobrazit výsledky, klikněte v kanálu pravým tlačítkem na modul modelu křížového ověřování. Vyberte **Vizualizace výsledků skóre**.
 
 | Nový název sloupce      | Popis                              |
 | -------------------- | ---------------------------------------- |
@@ -100,7 +100,7 @@ Druhá sestava je seskupena podle skládání. Mějte na paměti, že při prov�
 
 V této sestavě jsou skládání uvedena podle hodnoty indexu ve vzestupném pořadí.  Chcete-li seřadit v jakémkoli jiném sloupci, můžete výsledky Uložit jako datovou sadu.
 
-Chcete-li zobrazit tyto výsledky, klikněte pravým tlačítkem na modul modelu křížového ověřování v kanálu. Vyberte **výsledky vyhodnocení podle skládání**a pak vyberte **vizualizovat**.
+Pokud chcete zobrazit výsledky, klikněte v kanálu pravým tlačítkem na modul modelu křížového ověřování. Vyberte **vizualizovat výsledky vyhodnocení podle skládání**.
 
 
 |Název sloupce| Popis|

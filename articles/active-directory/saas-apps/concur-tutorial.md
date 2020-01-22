@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace jednotného přihlašování s Concur | Microsoft Docs'
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s Concur | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Concur.
 services: active-directory
 documentationCenter: na
@@ -11,19 +11,18 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/13/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de806e764b4a73414604fe6ea64b03aa96666f5f
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 0cfe569fde8f290c9272520630c2e903e770f223
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988401"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293704"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s Concur
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Concur
 
 V tomto kurzu se dozvíte, jak integrovat Concur s Azure Active Directory (Azure AD). Když integrujete Concur s Azure AD, můžete:
 
@@ -46,6 +45,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * Concur podporuje jednotné přihlašování iniciované v **SP**
 * Concur podporuje zřizování uživatelů **jenom v čase** .
+* Po nakonfigurování Concur můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-concur-from-the-gallery"></a>Přidání Concur z Galerie
 
@@ -83,9 +83,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://www.concursolutions.com/UI/SSO/<OrganizationId>`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://www.concursolutions.com/UI/SSO/<OrganizationId>`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://<customer-domain>.concursolutions.com`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<customer-domain>.concursolutions.com`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Concur](https://www.concur.co.in/contact) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -108,7 +108,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
     1. Do pole **Název** zadejte `B.Simon`.  
     1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
     1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-    1. Klikněte na možnost **Vytvořit**.
+    1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -145,7 +145,7 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 
 Když na přístupovém panelu kliknete na dlaždici Concur, měli byste se automaticky přihlásit k Concur, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -155,3 +155,6 @@ Když na přístupovém panelu kliknete na dlaždici Concur, měli byste se auto
 
 - [Vyzkoušejte si Concur s Azure AD](https://aad.portal.azure.com)
 
+- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Jak chránit Concur pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

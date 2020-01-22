@@ -10,20 +10,20 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: 54ca0df005dccceacc88044a51f31ad784b7071b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 1430db34f9c31cbd9d9df921650c628d265bccc5
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763398"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311083"
 ---
 # <a name="build-a-classifier--use-python-scripts-to-predict-credit-risk-using-azure-machine-learning-designer"></a>Vytvoření klasifikátoru & použití skriptů Pythonu k předpovídání úvěrového rizika pomocí návrháře Azure Machine Learning
 
-**Návrhář (Preview) – ukázka 4**
+**Návrhář – ukázka 4**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-V tomto článku se dozvíte, jak vytvořit komplexní kanál strojového učení pomocí návrháře (Preview). Naučíte se, jak implementovat vlastní logiku pomocí skriptů Pythonu a porovnat více modelů a vybrat nejlepší možnost.
+V tomto článku se dozvíte, jak vytvořit komplexní kanál strojového učení pomocí návrháře. Naučíte se, jak implementovat vlastní logiku pomocí skriptů Pythonu a porovnat více modelů a vybrat nejlepší možnost.
 
 Tato ukázka navlakuje klasifikátor k předpovídání úvěrového rizika pomocí informací o kreditních aplikacích, jako je například historie kreditů, stáří a počet platebních karet. Koncepty v tomto článku ale můžete použít k tomu, abyste se mohli vypořádat s vlastními problémy machine learningu.
 

@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: 798c368edb4a738124fce965f8990e6805fbdeba
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2ac66e46d449100fcdd004627820252473f6e2f3
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472608"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293653"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro pokročilé funkce plánovače ve službě Azure Kubernetes Service (AKS)
 
-Při správě clusterů ve službě Azure Kubernetes (AKS) je často potřeba izolovat týmy a úlohy. Plánovač Kubernetes poskytuje pokročilé funkce, které vám umožní řídit, které lusky se můžou naplánovaly na určitých uzlech, nebo jak můžou být aplikace pro víc pod clusterem správně distribuované napříč clusterem. 
+Při správě clusterů ve službě Azure Kubernetes (AKS) je často potřeba izolovat týmy a úlohy. Plánovač Kubernetes poskytuje pokročilé funkce, které vám umožní řídit, které lusky se můžou naplánovaly na určitých uzlech, nebo jak můžou být aplikace pro víc pod clusterem vhodně distribuované napříč clusterem. 
 
 Tento článek o osvědčených postupech se zaměřuje na pokročilé funkce plánování Kubernetes pro operátory clusterů. V tomto článku získáte informace o těchto tématech:
 
@@ -69,7 +69,7 @@ spec:
     effect: "NoSchedule"
 ```
 
-Při nasazení tohoto uzlu, jako je například použití `kubectl apply -f gpu-toleration.yaml`, Kubernetes může v uzlech s aplikovaným přím úspěšně naplánovat uzel pod. Tato logická izolace umožňuje řídit přístup k prostředkům v rámci clusteru.
+Když je nasazený tento uzel pod, jako je například použití `kubectl apply -f gpu-toleration.yaml`, může Kubernetes úspěšně naplánovat uzel pod použitým objektem pro použití. Tato logická izolace umožňuje řídit přístup k prostředkům v rámci clusteru.
 
 Když použijete chuti, pracujte s vývojáři vaší aplikace a vlastníky, abyste jim umožnili definovat požadovaná tolerovánost v jejich nasazeních.
 
@@ -176,8 +176,8 @@ Dobrým příkladem je webová aplikace, která používá také službu Azure c
 
 | **Uzel 1** | **Uzel 2** | **Uzel 3** |
 |------------|------------|------------|
-| WebApp-1   | WebApp – 2   | WebApp-3   |
-| mezipaměť – 1    | mezipaměť – 2    | mezipaměť – 3    |
+| webapp-1   | webapp-2   | webapp-3   |
+| cache-1    | cache-2    | cache-3    |
 
 Tento příklad je složitější nasazení než použití selektorů uzlů nebo spřažení uzlů. Nasazení vám umožní řídit, jak se Kubernetes plány v luskech uzlů a můžou logicky izolovat prostředky. Úplný příklad této webové aplikace s mezipamětí Azure cache pro Redis najdete v tématu [společné umístění jednotlivých uzlů na stejný uzel][k8s-pod-affinity].
 

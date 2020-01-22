@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 31a6c53ec269c512ad641fcdc10469ccf16a1fe9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 514f98d95090f978395dd3f7decdcc0743a1628a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979749"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289148"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Standardní vlastnosti v protokolech Azure Monitor
 Data v Azure Monitor protokoly se [ukládají jako sada záznamů v pracovním prostoru Log Analytics nebo v Application Insights aplikaci](../log-query/logs-structure.md), z nichž každý má konkrétní datový typ, který má jedinečnou sadu vlastností. Mnoho datových typů bude mít standardní vlastnosti, které jsou společné napříč různými typy. Tento článek popisuje tyto vlastnosti a poskytuje příklady, jak je můžete používat v dotazech.
 
 > [!NOTE]
-> Některé standardní provedená analýza se v zobrazení schématu nebo IntelliSense v Log Analytics nezobrazí a nebudou se zobrazovat ve výsledcích dotazu, pokud explicitně neurčíte vlastnost ve výstupu.
+> Některé ze standardních vlastností se v zobrazení schématu nebo IntelliSense v Log Analytics nezobrazí a nebudou se zobrazovat ve výsledcích dotazu, pokud explicitně neurčíte vlastnost ve výstupu.
 
 ## <a name="timegenerated-and-timestamp"></a>TimeGenerated a časové razítko
 Vlastnosti **TimeGenerated** (Log Analytics pracovní prostor) a **časové razítko** (Application Insights aplikace) obsahují datum a čas vytvoření záznamu zdrojem dat. Další podrobnosti najdete [v tématu čas příjmu dat protokolu v Azure monitor](data-ingestion-time.md) .

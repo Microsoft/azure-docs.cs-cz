@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 57cf5bab2afe58ed802ef5ec03c316f1ebec6673
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1f1a508e6188b68f932993eb60e13228b56f8e7e
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232578"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313939"
 ---
 # <a name="train-clustering-model"></a>Trénování modelu clusteringu
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Tento modul slouží ke školení modelu clusteringu.
 
@@ -49,10 +49,7 @@ Modul převezme provedený model clusteringu, který jste už nakonfigurovali po
 
 Po dokončení školení:
 
-
-+  Chcete-li zobrazit hodnoty v datové sadě, klikněte pravým tlačítkem na modul, vyberte **výslednou**datovou sadu a klikněte na **vizualizovat**.
-
-+ Pokud chcete vyškolený model Uložit pro pozdější použití, klikněte pravým tlačítkem na modul, vyberte **trained model**a klikněte na **Uložit jako trained model**.
++ Pokud chcete uložit snímek výukového modelu, vyberte kartu **výstupy** na pravém panelu modulu **výuka modelu** . Výběrem ikony **Registrovat datovou sadu** uložte model jako opakovaně použitelný modul.
 
 + K vygenerování skóre z modelu použijte [přiřazení dat do clusterů](assign-data-to-clusters.md).
 

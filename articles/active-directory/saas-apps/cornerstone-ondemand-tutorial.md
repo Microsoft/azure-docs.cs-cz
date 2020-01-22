@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/13/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 363b5b2dc2891166f779c98c6de1487bc45047a3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1254c3d241befdd0842dd68c8f34291f148c7ee6
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227637"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291460"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-ondemand"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) se základním kamenem OnDemand
 
@@ -46,6 +45,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * Základní kámen OnDemand podporuje jednotné přihlašování iniciované v **SP**
 * Základ OnDemand OnDemand podporuje [automatizované zřizování uživatelů](cornerstone-ondemand-provisioning-tutorial.md)
+* Jakmile nakonfigurujete OnDemand sinus, můžete vynutili řízení relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-cornerstone-ondemand-from-the-gallery"></a>Přidání nadzákladu OnDemand z Galerie
 
@@ -103,7 +103,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Vyberte **nového uživatele** v horní části obrazovky.
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
     1. Do pole **Název** zadejte `B.Simon`.  
     1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
@@ -149,7 +149,7 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 
 Když kliknete na dlaždici OnDemand OnDemand na přístupovém panelu, měli byste se automaticky přihlášeni k OnDemand OnDemand, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -158,3 +158,7 @@ Když kliknete na dlaždici OnDemand OnDemand na přístupovém panelu, měli by
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Vyzkoušejte si z Azure AD základ OnDemand.](https://aad.portal.azure.com)
+
+- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Jak chránit nadřízení OnDemand pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

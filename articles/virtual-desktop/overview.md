@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 12/17/2019
+ms.date: 01/21/2020
 ms.author: helohr
-ms.openlocfilehash: dd5167af5f45ebae0529e16f224065627085e9b0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 44430f5a150952ba7cfc32b3e54d004cb0d0b761
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348809"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312341"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop? 
 
@@ -86,17 +86,27 @@ Virtuální počítače Azure, které vytvoříte pro virtuální počítače s 
 >[!NOTE]
 >Pokud potřebujete předplatné Azure, můžete si [zaregistrovat měsíční bezplatnou zkušební verzi](https://azure.microsoft.com/free/). Pokud používáte bezplatnou zkušební verzi Azure, měli byste použít službu Azure AD Domain Services k udržování synchronizace služby Windows Server Active Directory s Azure Active Directory.
 
-Virtuální počítače Azure, které vytvoříte pro virtuální počítače s Windows, musí mít odchozí přístup TCP 443 k následujícím adresám URL:
+Virtuální počítače Azure, které vytvoříte pro virtuální počítače s Windows, musí mít přístup k následujícím adresám URL:
 
-* *. wvd.microsoft.com
-* *.blob.core.windows.net
-* *.core.windows.net
-* *.servicebus.windows.net
-* prod.warmpath.msftcloudes.com
-* catalogartifact.azureedge.net
+|Adresa|Odchozí port|Účel|
+|---|---|---|
+|*. wvd.microsoft.com|Port 443 protokolu TCP|Provoz služby|
+|*.blob.core.windows.net|Port 443 protokolu TCP|Agent, aktualizace zásobníku SXS a přenos agenta|
+|*.core.windows.net|Port 443 protokolu TCP|Přenosy agenta|
+|*.servicebus.windows.net|Port 443 protokolu TCP|Přenosy agenta|
+|prod.warmpath.msftcloudes.com|Port 443 protokolu TCP|Přenosy agenta|
+|catalogartifact.azureedge.net|Port 443 protokolu TCP|Azure Marketplace|
+|kms.core.windows.net|Port TCP 1688|Aktivace Windows 10|
+
+>[!IMPORTANT]
+>Otevírání těchto adres URL je nezbytné pro spolehlivé nasazení virtuálních počítačů s Windows. Blokování přístupu k těmto adresám URL není podporováno a bude mít vliv na funkčnost služby. Tyto adresy URL odpovídají pouze webům a prostředkům virtuálních ploch systému Windows a neobsahují adresy URL pro jiné služby, jako je Azure AD.
 
 >[!NOTE]
->Otevírání těchto adres URL je nezbytné pro spolehlivé nasazení virtuálních počítačů s Windows. Blokování přístupu k těmto adresám URL není podporováno a bude mít vliv na funkčnost služby. Tyto adresy URL odpovídají pouze webům a prostředkům virtuálních ploch systému Windows a neobsahují adresy URL pro jiné služby, jako je Azure AD.
+>Pro adresy URL, které se týkají provozu služby, je nutné použít zástupný znak (*). Pokud nechcete používat * pro přenosy související s agentem, vyhledáte adresy URL bez zástupných znaků:
+>
+>1. Zaregistrujte virtuální počítače do fondu hostitelů virtuálních počítačů s Windows.
+>2. Otevřete **Prohlížeč událostí** , přejděte na **Windows** > **protokoly aplikací** a vyhledejte událost s ID 3712.
+>3. Seznam povolených adres URL, které najdete v části ID události 3712. Adresy URL v rámci události s ID 3712 jsou specifické pro oblast. Pro každou oblast, ve které chcete virtuální počítače nasadit, budete muset tento postup opakovat s příslušnými adresami URL.
 
 Windows Virtual Desktop obsahuje stolní počítače a aplikace Windows, které dodáváte uživatelům a řešení pro správu, které je hostované jako služba v Azure od Microsoftu. Stolní počítače a aplikace můžou být nasazené na virtuálních počítačích v libovolné oblasti Azure a řešení pro správu a data pro tyto virtuální počítače se budou nacházet v USA. To může vést k přenosu dat do USA.
 

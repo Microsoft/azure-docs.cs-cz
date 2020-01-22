@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 43565a72ce795c4ee0142ec48c13842a8c43e604
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e4e09ca77de00b7f189db2cbbcaca2e090dd7e72
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428530"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311627"
 ---
 # <a name="filter-based-feature-selection"></a>Výběr funkcí na základě filtrů
 
-Tento článek popisuje, jak použít modul výběru funkce založený na filtrech v Návrháři Azure Machine Learning (Preview). Tento modul vám pomůže identifikovat sloupce ve vstupní datové sadě, které mají největší prediktivní výkon. 
+Tento článek popisuje, jak použít modul výběru funkce založený na filtrech v Návrháři Azure Machine Learning. Tento modul vám pomůže identifikovat sloupce ve vstupní datové sadě, které mají největší prediktivní výkon. 
 
 Obecně platí, že *Výběr funkcí* odkazuje na proces použití statistických testů na vstupy v zadaném výstupu. Cílem je určit, které sloupce mají více prediktivní výstup. Modul výběru funkcí založený na filtrech poskytuje několik algoritmů výběru funkcí, ze kterých si můžete vybrat. Modul zahrnuje metody korelace, jako je korelace Pearsonova a hodnoty chí-kvadrát. 
 
@@ -97,9 +97,9 @@ Zvolíte standardní statistickou metriku. Modul vypočítá korelaci mezi dvoji
 
 Po dokončení zpracování:
 
-+ Chcete-li zobrazit úplný seznam sloupců funkce, které byly analyzovány, a jejich skóre, klikněte pravým tlačítkem myši na modul. Vyberte **funkce**a pak vyberte **vizualizovat**.  
++ Pokud chcete zobrazit úplný seznam sloupců analyzovaných funkcí a jejich skóre, klikněte pravým tlačítkem na modul a vyberte **vizualizovat**.  
 
-+ Chcete-li zobrazit datovou sadu, která je generována na základě kritérií výběru vaší funkce, klikněte pravým tlačítkem na modul. Vyberte **datová sada**a pak vyberte **vizualizovat**. 
++ Pokud chcete zobrazit datovou sadu na základě kritérií výběru vaší funkce, klikněte pravým tlačítkem na modul a vyberte **vizualizovat**. 
 
 Pokud datová sada obsahuje méně sloupců, než jste očekávali, podívejte se do nastavení modulu. Také ověřte datové typy sloupců, které jsou zadány jako vstup. Například pokud nastavíte **počet požadovaných funkcí** na 1, výstupní datová sada obsahuje pouze dva sloupce: sloupec popisek a nejmnohem vysoce seřazený sloupec funkce.
 

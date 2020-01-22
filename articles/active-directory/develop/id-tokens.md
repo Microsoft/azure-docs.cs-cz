@@ -14,12 +14,12 @@ ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0aa868d5ed57e27a89f2791f617dcdda74e766b
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: f7e910faaf9875b6791135c8721090fa801a7e08
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167448"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294180"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Tokeny ID platformy Microsoft identity
 
@@ -85,6 +85,12 @@ V tomto seznamu jsou uvedeny deklarace identity, které jsou ve výchozím nasta
 |`unique_name` | Řetězec | Poskytuje lidsky čitelnou hodnotu, která identifikuje subjekt tokenu. Tato hodnota je v jakémkoli daném bodu v čase jedinečná, ale když je možné znovu použít e-maily a jiné identifikátory, tato hodnota se může znovu zobrazit na jiných účtech a měla by se proto použít jenom pro účely zobrazení. Vystavuje se jenom v 1.0 `id_tokens`. |
 |`uti` | Neprůhledný řetězec | Interní deklarace identity, kterou Azure používá k opětovnému ověření tokenů. By měla být ignorována. |
 |`ver` | Řetězec, buď 1,0 nebo 2,0 | Určuje verzi id_token. |
+
+
+> [!NOTE]
+> Id_token V1 a v2 mají rozdíly v množství informací, které budou prováděny podle výše uvedených příkladů. Verze v podstatě určuje koncový bod platformy Azure AD, ze kterého byl vydán. [Implementace Azure AD OAuth](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform) se vyvinula během let. V současné době máme dva různé koncové body oAuth pro aplikace AzureAD. Můžete použít libovolný z nových koncových bodů, které jsou zařazeny do kategorie v2 nebo jako staré, což se označuje jako v1. Koncové body OAuth obou z nich jsou odlišné. Koncový bod v2 je novější, kde se snažíme migrovat všechny funkce koncového bodu V1 a doporučit novým vývojářům použití koncového bodu v2. 
+> - V1: Azure Active Directory koncové body: `https://login.microsoftonline.com/common/oauth2/authorize`
+> - V2: koncové body platformy Microsoft identity: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
 
 ## <a name="validating-an-id_token"></a>Ověřování id_token
 

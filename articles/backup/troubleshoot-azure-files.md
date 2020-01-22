@@ -3,12 +3,12 @@ title: Řešení problémů se zálohováním sdílených složek Azure
 description: Tento článek obsahuje informace o řešení potíží, ke kterým dochází při ochraně sdílených složek Azure.
 ms.date: 08/20/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 8b88ae568b07b36d2dd80c0ef30fe86646335043
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 050df5b96c265e468346535ff011e1baf7d86ad5
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75664611"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293942"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Řešení problémů se zálohováním sdílených složek Azure
 
@@ -69,5 +69,5 @@ Následující tabulka se týká konfigurace zálohování:
 
 Další informace o zálohování sdílených složek Azure najdete v těchto tématech:
 
-- [Zálohování sdílených složek Azure](backup-azure-files.md)
+- [Zálohování sdílených složek Azure](backup-afs.md)
 - [Nejčastější dotazy k zálohování sdílených složek Azure](backup-azure-files-faq.md)

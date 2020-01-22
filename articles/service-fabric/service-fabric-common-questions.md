@@ -4,14 +4,14 @@ description: Nejčastější dotazy týkající se Service Fabric, včetně mož
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 7638a360821e73b7485014c8e6f006e91bbea551
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 17c1d05e119df8207c0599283f1d04b869e8297b
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614634"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293517"
 ---
-# <a name="commonly-asked-service-fabric-questions"></a>Nejčastější dotazy k Service Fabric
+# <a name="commonly-asked-service-fabric-questions"></a>Nejčastější dotazy ke službě Service Fabric
 
 Existuje mnoho nejčastějších otázek, které Service Fabric můžou dělat a jak se mají použít. Tento dokument obsahuje mnoho běžných otázek a jejich odpovědi.
 
@@ -183,4 +183,4 @@ Další podrobnosti najdete na [blogu Service Fabric](https://blogs.msdn.microso
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [základních Service Fabric konceptech](service-fabric-technical-overview.md) a [osvědčených postupech](service-fabric-best-practices-overview.md) – koncepty prostředků infrastruktury (Service-Fabric-Technical-Overview.MD) a [osvědčené postupy](service-fabric-best-practices-overview.md)
+Další informace o [základních Service Fabric konceptech](service-fabric-technical-overview.md) a [osvědčených postupech](service-fabric-best-practices-overview.md)

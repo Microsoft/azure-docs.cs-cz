@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: e9f7a10f19ed23e4f3b4fefa38fbb2d1912f2ac0
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 88b2da863b30157de7bb749ae0ca4d040484af52
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348787"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293636"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro izolaci clusteru ve službě Azure Kubernetes (AKS)
 
@@ -36,7 +36,7 @@ Kubernetes poskytuje funkce, které umožňují logicky izolovat týmy a zatíž
 
 ## <a name="logically-isolate-clusters"></a>Logicky izolujte clustery
 
-**Doprovodné** materiály k osvědčeným postupům – k oddělení týmů a projektů použijte logickou izolaci. Pokuste se minimalizovat počet fyzických clusterů AKS, které jste nasadili k izolaci týmů nebo aplikací.
+**Doprovodné materiály k osvědčeným postupům** – k oddělení týmů a projektů použijte logickou izolaci. Pokuste se minimalizovat počet fyzických clusterů AKS, které jste nasadili k izolaci týmů nebo aplikací.
 
 Při logické izolaci je možné použít jeden AKS cluster pro více úloh, týmů nebo prostředí. [Obory názvů][k8s-namespaces] Kubernetes tvoří logickou izolaci hranice pro úlohy a prostředky.
 
@@ -48,13 +48,13 @@ Prostředí Kubernetes, v AKS nebo jinde, nejsou zcela bezpečná pro nepřátel
 
 ## <a name="physically-isolate-clusters"></a>Fyzicky izolovat clustery
 
-**Doprovodné** materiály k osvědčeným postupům – minimalizace použití fyzické izolace pro každý samostatný tým nebo nasazení aplikace. Místo toho použijte *logickou* izolaci, jak je popsáno v předchozí části.
+**Doprovodné materiály k osvědčeným postupům** – minimalizace použití fyzické izolace pro každý samostatný tým nebo nasazení aplikace. Místo toho použijte *logickou* izolaci, jak je popsáno v předchozí části.
 
 Běžným přístupem k izolaci clusteru je použití fyzicky oddělených clusterů AKS. V tomto modelu izolace mají týmy nebo úlohy přiřazený svůj vlastní cluster AKS. Tento přístup často vypadá jako nejjednodušší způsob, jak izolovat úlohy nebo týmy, ale přidává další správu a finanční režii. Nyní musíte spravovat několik clusterů a přiřazovat k nim individuální přístup a oprávnění. Účtují se i všechny jednotlivé uzly.
 
 ![Fyzická izolace jednotlivých Kubernetes clusterů v AKS](media/operator-best-practices-cluster-isolation/physical-isolation.png)
 
-Fyzicky oddělené clustery obvykle mají nízkou hustotu pod. Jelikož má každý tým nebo pracovní postup svůj vlastní cluster AKS, cluster se často zřídí s výpočetními prostředky. Často se na těchto uzlech plánuje malý počet lusků. Nevyužitou kapacitu uzlů nelze použít pro aplikace nebo služby ve vývoji jinými týmy. Tyto nadbytečné prostředky přispívají k dodatečným nákladům v fyzicky oddělených clusterech.
+Fyzicky oddělené clustery obvykle mají nízkou hustotu pod. Jelikož má každý tým nebo pracovní postup svůj vlastní cluster AKS, cluster se často zřídí s výpočetními prostředky. Na těchto uzlech se často plánuje malý počet lusků. Nevyužitou kapacitu uzlů nelze použít pro aplikace nebo služby ve vývoji jinými týmy. Tyto nadbytečné prostředky přispívají k dodatečným nákladům v fyzicky oddělených clusterech.
 
 ## <a name="next-steps"></a>Další kroky
 

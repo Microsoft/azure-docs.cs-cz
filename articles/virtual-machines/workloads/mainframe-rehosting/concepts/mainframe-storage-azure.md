@@ -1,131 +1,130 @@
 ---
-title: Přesunout mainframových úložiště do služby Azure Storage
-description: Masivně škálovatelné úložiště Azure pomůžou organizacím mainframových migrace a modernizujte aplikace z14 IBM.
+title: Přesuňte sálové úložiště do Azure Storage
+description: Široce škálovatelné prostředky úložiště Azure umožňují organizacím založeným na sáloví migrovat a modernizovat aplikace IBM Z14.
 author: njray
 ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: dc78f87d9b47745119da91b8ed1f8f6c8572968c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 86419811cdf2c11204caae0ca5bf6f65fba063d2
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65190445"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76288910"
 ---
-# <a name="move-mainframe-storage-to-azure"></a>Přesunout mainframových úložiště do Azure
+# <a name="move-mainframe-storage-to-azure"></a>Přesunout sálové úložiště do Azure
 
-Spouštění úloh sálové v Microsoft Azure, je potřeba vědět, jak porovnat vaše možnosti do Azure. Prostředky masivně škálovatelné úložiště může pomoct organizacím začít modernizovat bez opuštění aplikace, které spoléhají na to.
+Pokud chcete provozovat sálové úlohy na Microsoft Azure, musíte znát, jak se možnosti vašeho sálového počítače porovnají s Azure. Vysoce škálovatelné prostředky úložiště mohou organizacím pomáhat začít modernizovat bez opuštění aplikací, které spoléhají.
 
-Azure nabízí mainframových jako funkce a kapacitu úložiště, který je srovnatelný s IBM z14 systémy (aktuální model v době psaní tohoto textu). Tento článek vysvětluje, jak získat srovnatelné výsledků v Azure.
+Azure poskytuje funkce podobné sálovým systémům a kapacitu úložiště, která je srovnatelná s Z14 systémy založenými na IBM (nejaktuálnější model v tomto psaní). V tomto článku se dozvíte, jak získat srovnatelné výsledky v Azure.
 
-## <a name="mainframe-storage-at-a-glance"></a>Mainframových úložiště na první pohled
+## <a name="mainframe-storage-at-a-glance"></a>První pohled na sálové úložiště
 
-Sálové počítače IBM charakterizuje úložiště dvěma způsoby. První je přímý přístup úložné zařízení (DASD). Druhým je sekvenční úložiště. Pro správu úložiště, poskytuje sálových Data zařízení úložiště správy Subsystem (DFSMS). Spravuje přístup k datům pro různá zařízení úložiště.
+Sálové úložiště IBM charakterizuje úložiště dvěma způsoby. První je úložné zařízení s přímým přístupem (DASD). Druhým je sekvenční úložiště. Pro správu úložiště poskytuje sálový podsystém pro správu úložiště datových zařízení (DFSMS). Spravuje přístup k datům do různých úložných zařízení.
 
-[DASD](https://en.wikipedia.org/wiki/Direct-access_storage_device) odkazuje na samostatném zařízení jako sekundární úložiště (ne v paměti), který umožňuje jedinečnou adresu má být použit pro přímého přístupu k datům. Původně byly doby DASD použít na otáčejících se discích, magnetické válce nebo datových buňkách. Nyní termín můžete také použít k zařízení úložiště SSD (Solid-State Drive), storage area network (SAN), síti připojené úložiště (NAS) a optické jednotky. Pro účely tohoto dokumentu se DASD odkazuje na otáčejících se discích, sítě SAN a jednotky SSD.
+[DASD](https://en.wikipedia.org/wiki/Direct-access_storage_device) odkazuje na samostatné zařízení pro sekundární úložiště (ne v paměti), které umožňuje používat pro přímý přístup k datům jedinečnou adresu. V původním případě se pojem DASD aplikuje na rotující disky, magnetické bubny nebo datové buňky. Nicméně termín se teď může vztahovat i na úložná zařízení Solid-State (SSD), sítě SAN (Storage Area Network), síťové připojené úložiště (NAS) a optické jednotky. Pro účely tohoto dokumentu DASD odkazuje na rotující disky, sítě SAN a SSD.
 
-Na rozdíl od úložiště DASD sekvenční úložiště na sálového počítače odkazuje na zařízení, jako jsou páskové jednotky, kde je k němu přistupovat z výchozí bod, pak číst nebo zapisovat na řádku data.
+Na rozdíl od úložiště DASD, sekvenční úložiště v sálovém počítači odkazuje na zařízení, jako jsou páskové jednotky, ve kterých se k datům dostanete z počátečního bodu, a pak si je můžete přečíst nebo zapsat na řádku.
 
-Zařízení úložiště jsou obvykle připojeny použití vlákének připojení (FICON) nebo ke kterým se přistupuje přímo na pomocí Service bus vstupně-výstupních operací sálových [HiperSockets](https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.znetwork/znetwork_85.htm), technologie IBM pro vysokorychlostní komunikaci mezi oddíly na server se službou hypervisor.
+Úložná zařízení jsou obvykle připojená pomocí připojení k vláknu (FICON) nebo se k nim dají získat přímým použitím [HiperSockets](https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.znetwork/znetwork_85.htm), technologie IBM pro vysokorychlostní komunikaci mezi oddíly na serveru s hypervisorem.
 
-Většina sálových počítačích odděleného úložiště do dvou typů:
+Většina sálových počítačů oddělené úložiště do dvou typů:
 
-- *Online úložiště* (také označované jako úložiště s vrstvami hot) je potřebná pro každodenní operace. DASD úložiště se obvykle používá pro tento účel. Sekvenční úložiště, jako je například denního typu zálohování (logická nebo fyzická), ale je také možné pro tento účel.
+- *Online úložiště* (také známé jako horké úložiště) je potřeba pro každodenní operace. K tomuto účelu se obvykle používá úložiště DASD. Pro tento účel se ale dá použít sekvenční úložiště, například denní zálohování na pásku (logický nebo fyzický).
 
-- *Úložiště archivu* (označované také jako studeného úložiště), není zaručeno připojit v daném okamžiku. Místo toho je připojit a získat přístup podle potřeby. Úložiště archivu je často implementované pomocí sekvenční páskové zálohování (logická nebo fyzická) pro úložiště.
+- *Úložiště archivu* (označované také jako studené úložiště) není zaručeno, že bude v daný okamžik připojen. Místo toho je připojen a je k němu přistupovat podle potřeby. Archivní úložiště se často implementuje pomocí sekvenčního zálohování na pásku (logických nebo fyzických) pro úložiště.
 
-## <a name="mainframe-versus-io-latency-and-iops"></a>Sálové počítače a vstupně-výstupní latence a vstupně-výstupních operací
+## <a name="mainframe-versus-io-latency-and-iops"></a>Sálový a vstupně-výstupní latence a IOPS
 
-Sálové počítače se často používají pro aplikace, které vyžadují vysoký výkon vstupně-výstupních operací a nízkou latenci vstupně-výstupních operací. Můžete to provést pomocí připojení FICON HiperSockets a vstupně-výstupních operací zařízení. V případě HiperSockets používají pro připojení přímo do kanálu vstupně-výstupních operací mainframových aplikací a zařízení, latenci mikrosekundy jde dosáhnout.
+Sálové počítače se často používají pro aplikace, které vyžadují vysoký výkon v/v a nízkou latenci v/v. Můžou to udělat pomocí FICON připojení k vstupně-výstupním zařízením a HiperSockets. Když se HiperSockets používá k připojení aplikací a zařízení přímo k vstupně-výstupnímu kanálu pro sálové počítače, může být dosaženo latence v mikrosekundách.
 
-## <a name="azure-storage-at-a-glance"></a>Azure storage na první pohled
+## <a name="azure-storage-at-a-glance"></a>První pohled na Azure Storage
 
-Azure infrastructure-as--service ([IaaS](https://azure.microsoft.com/overview/what-is-iaas/)) možnosti pro úložiště poskytují srovnatelné mainframových kapacity.
+Možnosti infrastruktury Azure jako služby ([IaaS](https://azure.microsoft.com/overview/what-is-iaas/)) pro úložiště poskytují srovnatelnou kapacitu sálového počítače.
 
-Společnost Microsoft nabízí za petabajtů úložiště pro aplikace hostované v Azure a máte několik možností úložiště. Tyto sahají od úložiště SSD pro vysoce výkonné úložiště objektů blob s nízkými náklady pro velkokapacitních paměťových zařízení a archivy. Kromě toho Azure poskytuje možnost datové redundance úložiště – objekt, který přijímá další úsilí k nastavení prostředí mainframových.
+Microsoft nabízí petabajty úložiště pro aplikace hostované v Azure a máte několik možností úložiště. Tento rozsah je od úložiště SSD vysokým výkonem pro úložiště objektů BLOB s nízkými náklady pro velkokapacitní úložiště a archivy. Azure navíc poskytuje možnost redundance dat pro úložiště – to je něco, co při vytváření v sálovém prostředí trvá více úsilí.
 
-Azure storage je dostupné jako [Azure Disks](/azure/virtual-machines/windows/managed-disks-overview), [Azure Files](/azure/storage/files/storage-files-introduction), a [Azure Blobs](/azure/storage/blobs/storage-blobs-overview) jako v následující tabulce najdete souhrn. Další informace o [při použití každé](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks).
+Služba Azure Storage je dostupná jako [disky Azure](/azure/virtual-machines/windows/managed-disks-overview), [soubory Azure](/azure/storage/files/storage-files-introduction)a [objekty blob Azure](/azure/storage/blobs/storage-blobs-overview) , které jsou shrnuté v následující tabulce. Přečtěte si další informace o tom, [kdy použít jednotlivé](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks).
 
 <!-- markdownlint-disable MD033 -->
 
 <table>
 <thead>
-    <tr><th>Type</th><th>Popis</th><th>Případy vhodného použití:</th></tr>
+    <tr><th>Typ</th><th>Popis</th><th>Případy vhodného použití:</th></tr>
 </thead>
 <tbody>
-<tr><td>Soubory Azure
+<tr><td>Azure Files
 </td>
 <td>
-Poskytuje rozhraní SMB, klientských knihoven a <a href="https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api">REST</a> rozhraní, které umožňuje přístup odkudkoli k uložených souborů.
+Poskytuje rozhraní protokolu SMB, klientské knihovny a rozhraní <a href="https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api">REST</a> , které umožňuje přístup odkudkoli do uložených souborů.
 </td>
 <td><ul>
-<li>Zvedněte a shift aplikace do cloudu, pokud aplikace používá rozhraní API systému nativní soubor pro sdílení dat mezi ním a dalších aplikací běžících v Azure.</li>
-<li>Store vývoje a ladicí nástroje, které je potřeba přistupovat z mnoha virtuálních počítačů.</li>
+<li>Nazvednutí a posunutí aplikace do cloudu, když aplikace používá nativní rozhraní API systému souborů ke sdílení dat mezi IT a dalšími aplikacemi běžícími v Azure.</li>
+<li>Ukládání nástrojů pro vývoj a ladění, které je potřeba mít k dispozici z mnoha virtuálních počítačů.</li>
 </ul>
 </td>
 </tr>
 <tr><td>Azure Blobs
 </td>
-<td>Nabízí klientské knihovny a <a href="https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api">REST</a> rozhraní, které umožňuje nestrukturovaných dat ukládají a získávají ve velkém měřítku v objektech BLOB bloku. Podporuje také <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage Gen2</a> pro řešení pro analýzu velkých objemů dat organizace.
+<td>Poskytuje klientské knihovny a rozhraní <a href="https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api">REST</a> , které umožňuje ukládání nestrukturovaných dat a jejich použití v obrovských škálováních objektů blob bloku. Také podporuje <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage Gen2</a> pro řešení pro analýzy velkých objemů dat v podniku.
 </td>
 <td><ul>
-<li>Scénáře datových proudů a náhodným přístupem podporovat v aplikaci.</li>
-<li>Máte přístup k datům aplikace odkudkoli.</li>
-<li>Vytvoření data lake enterprise v Azure a provádět analýzy velkých objemů dat.</li>
+<li>Podpora streamování a scénářů s náhodným přístupem v aplikaci.</li>
+<li>Mít přístup k datům aplikací odkudkoli.</li>
+<li>Sestavte Data Lake Datacenter v Azure a proveďte analýzu velkých objemů dat.</li>
 </ul></td>
 </tr>
 <tr><td>Disky Azure
 </td>
-<td>Nabízí klientské knihovny a <a href="https://docs.microsoft.com/rest/api/compute/disks">REST</a> rozhraní, které umožňuje dat trvale uložena a k němu přistupovat z připojeného virtuálního pevného disku.
+<td>Poskytuje klientské knihovny a rozhraní <a href="https://docs.microsoft.com/rest/api/compute/disks">REST</a> , které umožňuje trvalé uložení dat a získání jejich pøístupu z připojeného virtuálního pevného disku.
 </td>
 <td><ul>
-<li>Zvedněte a shift aplikace, které používají rozhraní API systému nativní soubor pro čtení a zápis dat do trvalé disky.</li>
-<li>Store data, která nevyžaduje přístup mimo virtuální počítač, ke kterému je připojený disk.</li>
+<li>Aplikace přenesené a posunutí, které používají rozhraní API nativního systému souborů ke čtení a zápisu dat na trvalé disky.</li>
+<li>Ukládat data, která se nevyžadují k získání pøístupu mimo virtuální počítač, ke kterému je disk připojený</li>
 </ul></td>
 </tr>
 </tbody>
 </table>
 <!-- markdownlint-enable MD033 -->
 
-## <a name="azure-hot-online-and-cold-archive-storage"></a>Azure (online) horké a studené (archiv) úložiště
+## <a name="azure-hot-online-and-cold-archive-storage"></a>Azure Hot (online) a studené (archivní) úložiště
 
-Typ úložiště pro daný systém závisí na požadavky na systém, včetně velikosti úložiště, propustnost a vstupně-výstupních operací. Pro službu storage DASD-type na sálového počítače aplikace v Azure obvykle používají disky Azure disk storage místo. Za úložiště archivu mainframových se používá úložiště objektů blob v Azure.
+Typ úložiště pro daný systém závisí na požadavcích systému, včetně velikosti úložiště, propustnosti a IOPS. V případě DASD typu úložiště v sálových počítačích obvykle aplikace v Azure používají místo toho úložiště diskových jednotek Azure. Pro úložiště archivu sálového počítače se v Azure používá úložiště objektů BLOB.
 
-Disky SSD poskytují nejvyšší výkon úložiště v Azure. (V době psaní tohoto dokumentu) k dispozici jsou následující možnosti:
+SSD poskytují nejvyšší výkon úložiště v Azure. K dispozici jsou následující možnosti (od zápisu tohoto dokumentu):
 
-| Type         | Velikost           | IOPS                  |
+| Typ         | Velikost           | IOPS                  |
 |--------------|----------------|-----------------------|
-| Ultra SSD    | 4 GB až 64 TB  | vstupně-výstupních operací 1 200 k 160,000 |
-| Premium SSD  | 32 GB až 32 TB | 12 na 15 000 vstupně-výstupních operací     |
-| SSD úrovně Standard | 32 GB až 32 TB | 12 až 2 000 vstupně-výstupních operací      |
+| Ultra SSD    | 4 GB až 64 TB  | 1 200 až 160 000 IOPS |
+| Premium SSD  | 32 GB až 32 TB | 12 až 15 000 IOPS     |
+| SSD úrovně Standard | 32 GB až 32 TB | 12 až 2 000 IOPS      |
 
-BLOB storage poskytuje největší objem úložiště v Azure. Kromě velikost úložiště Azure nabízí spravované i nespravované úložiště. Spravované úložiště Azure stará o správu základní účty úložiště. Uživatel provede pomocí nespravovaného úložiště, odpovědnost za nastavení účtů úložiště Azure vhodné velikosti podle požadavků na úložiště.
+BLOB Storage poskytuje největší objem úložiště v Azure. Kromě velikosti úložiště nabízí Azure spravované i nespravované úložiště. Se spravovaným úložištěm Azure se postará o správu základních účtů úložiště. V případě nespravovaného úložiště vezme uživatel zodpovědnost za nastavení účtů úložiště Azure odpovídající velikosti pro splnění požadavků na úložiště.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Migrace mainframů](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Změna mainframových hostování na Azure Virtual Machines](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
-- [Přesunout výpočetní sálové počítače do Azure](mainframe-compute-Azure.md)
-- [Rozhodování, jestli použít Azure Blobs, soubory Azure nebo Azure Disks](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)
-- [Standardní spravované disky SSD pro úlohy virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd)
+- [Migrace sálového počítače](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
+- [Opětovné hostování sálového počítače v Azure Virtual Machines](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
+- [Přesunout do Azure výpočetní sálové počítače](mainframe-compute-Azure.md)
+- [Rozhodnutí o použití objektů blob Azure, souborů Azure nebo disků Azure](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)
+- [Managed Disks SSD úrovně Standard pro úlohy virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd)
 
-### <a name="ibm-resources"></a>IBM prostředky
+### <a name="ibm-resources"></a>Prostředky IBM
 
-- [Paralelní Sysplex na IBM Z](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources)
-- [IBM CICS a párování zařízení: Nad rámec základní informace](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
-- [Vytváří se požadovaní uživatelé pro Db2 pureScale instalace funkce](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
-- [Db2icrt - vytvořit instanci příkaz](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
-- [Db2 pureScale skupinový databázové řešení](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
+- [Paralelní Sysplex v IBM Z](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources)
+- [IBM CICS a spojovací zařízení: rámec základních](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
+- [Vytváření požadovaných uživatelů pro instalaci funkce Db2 pureScale](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
+- [Db2icrt – vytvoření instance – příkaz](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
+- [Řešení clusterové databáze Db2 pureScale](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
 - [IBM Data Studio](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
 
 ### <a name="azure-government"></a>Azure Government
 
-- [Microsoft Azure Government cloud pro mainframových aplikací](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
+- [Microsoft Azure Government Cloud pro sálové aplikace](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
 - [Microsoft a FedRAMP](https://www.microsoft.com/TrustCenter/Compliance/FedRAMP)
 
 ### <a name="more-migration-resources"></a>Další zdroje migrace
 
-- [Modernizace Alliance platformy: IBM Db2 v Azure](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
-- [Azure virtuální datové centrum Lift and Shift Průvodce](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
+- [Průvodce zvednutím a posunutím virtuálního datového centra Azure](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
 - [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)

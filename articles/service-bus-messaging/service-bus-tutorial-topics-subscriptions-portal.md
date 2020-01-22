@@ -1,22 +1,22 @@
 ---
-title: Kurz – Aktualizace sortimentu zásob v maloobchodě s využitím kanálů pro publikování/odběr a filtrů témat na portálu Azure | Microsoft Docs
+title: Aktualizace inventáře pomocí Azure Portal a témat/předplatných
 description: V tomto kurzu se naučíte, jak odesílat a přijímat zprávy z tématu a odběru a jak přidávat a používat pravidla filtrů pomocí rozhraní .NET
 services: service-bus-messaging
 author: spelluru
 manager: timlt
 ms.author: spelluru
-ms.date: 09/22/2018
+ms.date: 01/21/2020
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 5424a07f8ecd7eab962a4f865fac91741810e4b1
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: b6a3f38e0b83dc927a225c630b8178be1dc539ce
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991923"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310114"
 ---
-# <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Kurz: Aktualizovat inventáře pomocí webu Azure portal a témata nebo předplatná
+# <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Kurz: Aktualizace zásob pomocí portálu Azure Portal a témat/odběrů
 
 Microsoft Azure Service Bus je víceklientská cloudová služba pro zasílání zpráv, která odesílá informace mezi aplikacemi a službami. Asynchronní operace umožňují flexibilní zprostředkované zasílání zpráv a také strukturované zasílání zpráv typu FIFO (first-in-first-out) a funkce pro publikování a přihlášení k odběru. Tento kurz ukazuje, jak můžete témata a odběry ve službě Service Bus využít ve scénáři aktualizace maloobchodních zásob. Pracuje se při tom s kanály publikování a přihlášení k odběru s využitím portálu Azure Portal a rozhraní .NET.
 
@@ -53,7 +53,7 @@ Každý [odběr tématu](service-bus-messaging-overview.md#topics) může přij�
 
 ## <a name="create-filter-rules-on-subscriptions"></a>Vytvoření pravidel filtrů u odběrů
 
-Pokud zřídíte obor názvů a téma s odběry a máte potřebná pověření, můžete u odběrů vytvořit pravidla filtrů a poté odesílat a přijímat zprávy. Kód můžete zkontrolovat v [této složce s ukázkami na GitHubu](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters).
+Pokud zřídíte obor názvů a téma s odběry a máte potřebná pověření, můžete u odběrů vytvořit pravidla filtrů a poté odesílat a přijímat zprávy. Kód si můžete zkontrolovat v [této složce s ukázkami na GitHubu](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters).
 
 ### <a name="send-and-receive-messages"></a>Odesílání a příjem zpráv
 
@@ -67,7 +67,7 @@ Kód spustíte následovně:
 
 2. Přejděte do složky s ukázkou `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveTutorialwithFilters`.
 
-3. Získání připojovacího řetězce, který jste zkopírovali do poznámkového bloku v získat části přihlašovací údaje pro správu v tomto kurzu. Budete potřebovat také název tématu, které jste vytvořili v předchozí části.
+3. Získejte připojovací řetězec, který jste zkopírovali do poznámkového bloku v tomto kurzu v části získání přihlašovacích údajů pro správu. Budete potřebovat také název tématu, které jste vytvořili v předchozí části.
 
 4. Do příkazového řádku zadejte následující příkaz:
 
@@ -395,9 +395,9 @@ private async Task ReceiveMessages(string subscription)
 ```
 
 > [!NOTE]
-> Můžete spravovat prostředky služby Service Bus s [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Exploreru umožňuje uživatelům připojit k oboru názvů služby Service Bus a správě entit pro zasílání zpráv snadno způsobem. Tento nástroj nabízí pokročilé funkce, například funkce importu/exportu nebo možnost otestovat tématu, fronty, předplatná, služby pro přenos přes, notification hubs a centra událostí. 
+> Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer umožňuje uživatelům připojit se k oboru názvů Service Bus a snadno spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, nebo možnost testovat témata, fronty, odběry, služby Relay, centra oznámení a centra událostí. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zřídili prostředky na portálu Azure Portal a poté odesílali a přijímali zprávy z tématu služby Service Bus a jeho odběrů. Naučili jste se tyto postupy:
 

@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c903e3378e06734a8785531c1a16c695d4b6c21
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 111581def3ed0c366898534ee6b6c5f5b6d9e756
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74814937"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293109"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementace synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect
 Tento článek obsahuje informace, které potřebujete k synchronizaci hesel uživatelů mezi místní instancí Active Directory a instanci cloudové služby Azure Active Directory (Azure AD).
@@ -98,9 +98,16 @@ Je-li *EnforceCloudPasswordPolicyForPasswordSyncedUsers* zakázán (což je výc
 `(Get-AzureADUser -objectID <User Object ID>).passwordpolicies`
 
 
-Pokud chcete povolit funkci EnforceCloudPasswordPolicyForPasswordSyncedUsers, spusťte následující příkaz pomocí modulu MSOnline PowerShellu:
-
-`Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers -Enable $true`
+Pokud chcete povolit funkci EnforceCloudPasswordPolicyForPasswordSyncedUsers, spusťte následující příkaz pomocí modulu MSOnline PowerShell, jak je znázorněno níže. Pro parametr enable musíte zadat Ano, jak je znázorněno níže:
+```
+`Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers`
+`cmdlet Set-MsolDirSyncFeature at command pipeline position 1`
+`Supply values for the following parameters:`
+`Enable: yes`
+`Confirm`
+`Continue with this operation?`
+`[Y] Yes [N] No [S] Suspend [?] Help (default is "Y"): y`
+```
 
 Po povolení Azure AD nepřejde ke každému synchronizovanému uživateli, aby z atributu PasswordPolicies odebral hodnotu `DisablePasswordExpiration`. Místo toho je hodnota nastavená na `None` při příští synchronizaci hesla pro každého uživatele při dalším změně hesla v místní službě AD.  
 

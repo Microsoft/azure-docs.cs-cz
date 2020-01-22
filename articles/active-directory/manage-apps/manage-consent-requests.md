@@ -12,12 +12,12 @@ ms.date: 12/27/2019
 ms.author: mimart
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c6a77fa8c6c48c9c3d4f2eba3ba56ac9114707a
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 528aff73b931776ef9a6542437db271bb214c7fb
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122987"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290695"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>Správa souhlasu s aplikacemi a vyhodnocení žádostí o souhlas
 
@@ -42,7 +42,7 @@ Po zákazu nebo omezení souhlasu koncového uživatele je k dispozici několik 
 
 3. Pokud má vaše organizace odpovídající licenci:
 
-    * Použijte další [funkce auditování aplikace OAuth v Microsoft Cloud App Security](https://docs.microsoft.com/azure/cloud-app-security/investigate-risky-oauth).
+    * Použijte další [funkce auditování aplikace OAuth v Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth).
     * Pomocí [Azure monitor sešity můžete monitorovat oprávnění a související aktivity související se souhlasem](../reports-monitoring/howto-use-azure-monitor-workbooks.md) . Sešit s *informacemi o souhlasu* nabízí zobrazení aplikací podle počtu neúspěšných žádostí o souhlas. To může být užitečné k určení priorit aplikací pro správce, kteří si můžou prohlédnout a rozhodnout, jestli mají udělit souhlas správce.
 
 ### <a name="additional-considerations-for-reducing-friction"></a>Další požadavky pro snížení tření

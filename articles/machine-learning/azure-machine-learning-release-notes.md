@@ -8,20 +8,35 @@ ms.subservice: core
 ms.topic: reference
 ms.author: jmartens
 author: j-martens
-ms.date: 11/04/2019
+ms.date: 01/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0e613dd1c47a9942d95bd668f1e9f85e42649b5c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 1cd9ca07aab1953d114caf748ca99170fae6b876
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122368"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293194"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
 V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referenční obsah sady SDK najdete na referenční stránce Azure Machine Learning [**hlavní sadě SDK pro Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) .
 
 Zobrazit [seznam známých problémů](resource-known-issues.md) Další informace o známých chyb a jejich řešení.
+
+## <a name="2020-01-21"></a>2020-01-21
+
+### <a name="azure-machine-learning-designer-generally-available-ga"></a>Všeobecně dostupná verze návrháře Azure Machine Learning (GA)
+
+Návrhář je teď všeobecně dostupný.
+
++ **Nové funkce**
+    + Přidání možnosti modulu `Regenerate Output` pro vynucení, že návrhář bude ignorovat výsledky uložené v mezipaměti.
+    + Do podrobností spuštění kanálu se přidala nová zobrazení:
+        + Zobrazení seznamu kanálů.
+        + Zobrazení protokolu v prohlížeči.
+    + Přidání popisků ke vstupnímu a výstupnímu portu modulu.
+    + Přidání možnosti kanálu `Set as Default` na [kartě koncové body](how-to-run-batch-predictions-designer.md#versioning-endpoints).
+    + Přidané klávesové zkratky a [funkce usnadnění](designer-accessibility.md)čtečky obrazovky.
 
 ## <a name="2020-01-06"></a>2020-01-06
 

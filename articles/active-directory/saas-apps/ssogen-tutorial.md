@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/03/2020
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 841c2b7067427b703d2aa7647e0c0c3ef2287c6e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 74b56e30eb8851913f91cbee377204a575311375
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75775674"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293670"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ssogen---azure-ad-sso-gateway-for-oracle-e-business-suite---ebs-peoplesoft-and-jde"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s SSOGEN – Azure AD SSO Gateway pro Oracle E-Business Suite – EBS, PeopleSoft spouštěných místně a JDE
 
@@ -44,6 +44,7 @@ Chcete-li začít, potřebujete následující položky:
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
 * SSOGEN – brána pro jednotné přihlašování Azure AD pro Oracle E-Business Suite – EBS, PeopleSoft spouštěných místně a JDE podporuje **SP a IDP** iniciované jednotné přihlašování.
+* Po konfiguraci brány SSOGEN-Azure AD SSO pro Oracle E-Business Suite – EBS, PeopleSoft spouštěných místně a JDE můžete vynutili řízení relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 > [!NOTE]
 > Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
@@ -161,3 +162,7 @@ Když kliknete na dlaždici SSOGEN-Azure AD SSO pro Oracle E-Business Suite-EBS,
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Vyzkoušejte SSOGEN – Azure AD SSO Gateway pro Oracle E-Business Suite – EBS, PeopleSoft spouštěných místně a JDE s Azure AD](https://aad.portal.azure.com/)
+
+- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Jak chránit SSOGEN bránu Azure AD SSO pro Oracle E-Business Suite – EBS, PeopleSoft spouštěných místně a JDE s pokročilými viditelnostmi a ovládacími prvky](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 28cc2e1f8782f1ffd37e3a20fcc68264b481e42e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b62e03184453c4daea8615ee2bea39c936de5c73
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490375"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313973"
 ---
-# <a name="train-model-module"></a>Modul vlakového modelu
+# <a name="train-model-module"></a>Modul trénování modelu
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Tento modul slouží ke školení modelu klasifikace nebo regrese. Školení proběhne po definování modelu a nastavení jeho parametrů a vyžaduje označení dat. Pomocí **výukového modelu** můžete také přeškolovat stávající model s novými daty. 
 
@@ -68,10 +68,9 @@ V Azure Machine Learning je vytváření a používání modelu strojového uče
 
 Po vyškolení modelu:
 
-+ Pokud chcete zobrazit parametry modelu a váhy funkcí, klikněte pravým tlačítkem na výstup a vyberte **vizualizovat**.
-+ Pokud chcete model použít v jiných kanálech, klikněte pravým tlačítkem na model a vyberte **Uložit model**. Zadejte název modelu. 
 
-    Tím se model uloží jako snímek, který není aktualizován opakovanými běhy kanálu.
++ Pokud chcete model použít v jiných kanálech, vyberte modul a na kartě **výstup** v pravém panelu vyberte ikonu **Registrovat datovou sadu** . K uloženým modelům získáte přístup v paletě modulu v části **datové sady**.
+
 + Pokud chcete model použít při předvídání nových hodnot, připojte ho k modulu [skóre modelu](./score-model.md) spolu s novými vstupními daty.
 
 

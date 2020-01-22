@@ -2,13 +2,13 @@
 title: Funkce šablon – prostředky
 description: Popisuje funkce pro použití v šabloně Azure Resource Manageru k načtení hodnoty o prostředcích.
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: 85e421d4d4e53d275613ff8848abd405fdf175c2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/20/2020
+ms.openlocfilehash: 56ace8c75ea27eb4d730b1630115b6fcbdc3f575
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979447"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310520"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Prostředek funkce pro šablony Azure Resource Manageru
 
@@ -530,9 +530,19 @@ Při sestavování plně kvalifikovaného odkazu na prostředek, pořadí pro ko
 
 **{Resource-Provider-Namespace}/{Parent-Resource-Type}/{Parent-Resource-Name} [/{Child-Resource-Type}/{Child-Resource-Name}]**
 
-Příklad:
+Například:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt` je správné `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` není správné.
+
+### <a name="get-managed-identity"></a>Získat spravovanou identitu
+
+[Spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md) jsou [typy prostředků rozšíření](extension-resource-types.md) , které se pro některé prostředky vytvoří implicitně. Vzhledem k tomu, že spravovaná identita není explicitně definována v šabloně, musíte odkazovat na prostředek, na který je identita použita. Pomocí `Full` můžete získat všechny vlastnosti, včetně implicitně vytvořené identity.
+
+Pokud například chcete získat ID tenanta pro spravovanou identitu, která se používá pro sadu škálování virtuálního počítače, použijte:
+
+```json
+"tenantId": "[reference(concat('Microsoft.Compute/virtualMachineScaleSets/',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
+```
 
 ### <a name="reference-example"></a>Příklad odkazu
 

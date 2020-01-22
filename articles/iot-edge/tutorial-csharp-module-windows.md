@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 8ed622ff928fa612e6d33ba0647ce258bf4c1c21
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: c9a5138146897fdfed4661b85198cbff6b74bf5a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665211"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293857"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Kurz: vývoj modulu C# IoT Edge pro zařízení s Windows
 
@@ -92,7 +92,7 @@ Manifest nasazení sdílí přihlašovací údaje pro váš registr kontejneru s
 
 1. V Průzkumníku řešení sady Visual Studio otevřete soubor **Deployment. template. JSON** . 
 
-2. V $edgeAgent požadovaných vlastnostech Najděte vlastnost **registryCredentials** . Měla by mít vaše adresa registru vytvořená z informací, které jste zadali při vytváření projektu, a pole s uživatelským jménem a heslem by měla obsahovat názvy proměnných. Příklad: 
+2. V $edgeAgent požadovaných vlastnostech Najděte vlastnost **registryCredentials** . Měla by mít vaše adresa registru vytvořená z informací, které jste zadali při vytváření projektu, a pole s uživatelským jménem a heslem by měla obsahovat názvy proměnných. Například: 
 
    ```json
    "registryCredentials": {
@@ -102,20 +102,21 @@ Manifest nasazení sdílí přihlašovací údaje pro váš registr kontejneru s
        "address": "<registry name>.azurecr.io"
      }
    }
+   ```
 
-3. Open the **.env** file in your module solution. (It's hidden by default in the Solution Explorer, so you might need to select the **Show All Files** button to display it.) The .env file should contain the same username and password variables that you saw in the deployment.template.json file. 
+3. Otevřete soubor **. env** v řešení modulu. (Ve výchozím nastavení je to ve Průzkumník řešení skryté, takže možná budete muset vybrat tlačítko **Zobrazit všechny soubory** a zobrazit ho.) Soubor. env by měl obsahovat stejné proměnné uživatelského jména a hesla, které jste viděli v souboru Deployment. template. JSON. 
 
-4. Add the **Username** and **Password** values from your Azure container registry. 
+4. Přidejte hodnoty **uživatelského jména** a **hesla** z Azure Container Registry. 
 
-5. Save your changes to the .env file.
+5. Uložte změny do souboru. env.
 
-### Update the module with custom code
+### <a name="update-the-module-with-custom-code"></a>Aktualizace modulu pomocí vlastního kódu
 
-The default module code receives messages on an input queue and passes them along through an output queue. Let's add some additional code so that the module processes the messages at the edge before forwarding them to IoT Hub. Update the module so that it analyzes the temperature data in each message, and only sends the message to IoT Hub if the temperature exceeds a certain threshold. 
+Výchozí kód modulu přijímá zprávy ve vstupní frontě a předává je spolu s výstupní frontou. Pojďme přidat nějaký další kód, aby modul zpracoval zprávy na hranici před jejich přesměrováním na IoT Hub. Aktualizujte modul tak, aby analyzoval data o teplotě v každé zprávě, a pošle zprávu jenom IoT Hub, pokud teplota překročí určitou prahovou hodnotu. 
 
-1. In Visual Studio, open **CSharpModule** > **Program.cs**.
+1. V aplikaci Visual Studio otevřete **CSharpModule** > **program.cs**.
 
-2. At the top of the **CSharpModule** namespace, add three **using** statements for types that are used later:
+2. Nahoře v oboru názvů **CSharpModule** přidejte tři příkazy **using** pro typy, které se použijí později:
 
     ```csharp
     using System.Collections.Generic;     // For KeyValuePair<>

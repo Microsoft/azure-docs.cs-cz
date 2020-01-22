@@ -5,15 +5,15 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 5/31/2019
+ms.date: 01/21/2020
 ms.author: mlearned
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 89bb7014ddb04b63a83dc8c5b520bcf500bdc707
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b0269a6c710fe16271e333a1e9414208b278a93d
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472688"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310199"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Rychlý Start: nasazení clusteru služby Azure Kubernetes (AKS) pomocí Azure Portal
 
@@ -33,7 +33,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 Pokud chcete vytvořit cluster AKS, proveďte následující kroky:
 
-1. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek**.
+1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Vytvořit prostředek**.
 
 2. Vyberte **kontejnery** >  **službu Kubernetes**.
 
@@ -95,7 +95,7 @@ Soubor manifestu Kubernetes definuje požadovaný stav clusteru, například jak
 > [!TIP]
 > V tomto rychlém startu ručně vytvoříte manifest aplikace a nasadíte ho do clusteru AKS. V dalších scénářích reálného světa můžete použít [Azure dev Spaces][azure-dev-spaces] k rychlému iterování a ladění kódu přímo v clusteru AKS. Dev Spaces můžete používat na různých platformách operačních systémů a v různých vývojových prostředích a spolupracovat s ostatními členy vašeho týmu.
 
-Ve službě cloud Shell pomocí `nano` nebo `vi` vytvořte soubor s názvem `azure-vote.yaml` a zkopírujte následující definici YAML:
+Ve službě cloud Shell pomocí příkazu `nano azure-vote.yaml` nebo `vi azure-vote.yaml` vytvořte soubor s názvem `azure-vote.yaml`. Pak zkopírujte následující definici YAML:
 
 ```yaml
 apiVersion: apps/v1
@@ -214,7 +214,7 @@ NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
-Pokud se *IP* adresa změní z *čeká* na skutečnou veřejnou ip adresu, použijte `CTRL-C` a zastavte tak proces kukátka `kubectl`. Následující příklad výstupu ukazuje platnou veřejnou IP adresu přiřazenou ke službě:
+Pokud se *IP* adresa změní z *čekání* na skutečnou veřejnou IP adresu, použijte k zastavení procesu sledování `kubectl` `CTRL-C`. Následující příklad výstupu ukazuje platnou veřejnou IP adresu přiřazenou ke službě:
 
 ```
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m

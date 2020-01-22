@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: d930a6d856c6608e7792ce8ef3204b39aba0028a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 828301724dae58437f7818668cd0be879ae2ac70
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497963"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314177"
 ---
 # <a name="decision-forest-regression-module"></a>Modul pro regresi rozhodovací doménové struktury
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Pomocí tohoto modulu můžete vytvořit regresní model založený na kompletu rozhodovacích stromů.
 
@@ -38,7 +38,7 @@ Stromy pro rozhodování mají tyto výhody:
 
 Tento regresní model se skládá ze kompletu rozhodovacích stromů. U každého stromu v doménové struktuře regrese se jako předpověď vytvoří Gaussovské distribuce. Agregace se provádí přes kompletování stromů, aby bylo možné najít Gaussovské rozdělení, které je nejblíže kombinované distribuci pro všechny stromy v modelu.
 
-Další informace o teoretickém rozhraní tohoto algoritmu a jeho implementaci najdete v tomto článku: [rozhodovací doménové struktury: jednotná architektura pro klasifikaci, regresi, odhad hustoty, učení kurzů a vzdělávání s částečně kontrolovaným učením. ](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
+Další informace o teoretickém rozhraní tohoto algoritmu a jeho implementaci najdete v tomto článku: [rozhodovací doménové struktury: jednotná architektura pro klasifikaci, regresi, odhad hustoty, učení kurzů a vzdělávání s částečně kontrolovaným učením](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#) .
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Jak nakonfigurovat regresní model doménové struktury
 
@@ -88,11 +88,7 @@ Další informace o teoretickém rozhraní tohoto algoritmu a jeho implementaci 
 
 Po dokončení školení:
 
-+ Chcete-li zobrazit strom, který byl vytvořen při každé iteraci, klikněte pravým tlačítkem myši na výstup školicího modulu a vyberte **vizualizovat**.
-
-+ Chcete-li zobrazit pravidla pro každý uzel, klikněte na jednotlivé stromové struktury a přejděte k podrobnostem o rozdělení.
-
-+ Pokud chcete uložit snímek školicího modelu, klikněte pravým tlačítkem na výstup školicího modulu a vyberte **Uložit jako trained model**. Tato kopie modelu není aktualizována při následných spuštěních kanálu. 
++ Pokud chcete uložit snímek školicího modelu, vyberte modul školení a pak přepněte na kartu **výstupy** na pravém panelu. Klikněte na ikonu **Register model**.  Uložený model můžete najít jako modul ve stromu modulu. 
 
 ## <a name="next-steps"></a>Další kroky
 

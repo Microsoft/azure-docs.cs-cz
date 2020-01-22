@@ -2,13 +2,13 @@
 title: Chyby nenalezených prostředků
 description: Popisuje, jak vyřešit chyby, pokud se prostředek nenajde při nasazení pomocí šablony Azure Resource Manager.
 ms.topic: troubleshooting
-ms.date: 06/06/2018
-ms.openlocfilehash: 81a2541be4f0a99aa28186eb6b7289bdb595e678
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 01/21/2020
+ms.openlocfilehash: c3e19af24fa7fb850eadf3deb346180476943241
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152421"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310658"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>Vyřešit chyby nenalezení pro prostředky Azure
 
@@ -87,4 +87,16 @@ Vyhledejte výraz, který obsahuje [odkazovou](template-functions-resource.md#re
 
 ```json
 "[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"
+```
+
+## <a name="solution-4---get-managed-identity-from-resource"></a>Řešení 4 – získání spravované identity z prostředku
+
+Pokud nasazujete prostředek, který implicitně vytvoří [spravovanou identitu](../../active-directory/managed-identities-azure-resources/overview.md), musíte před načtením hodnot na spravované identitě počkat, až se tento prostředek nasadí. Pokud předáte název spravované identity k [referenční](template-functions-resource.md#reference) funkci, správce prostředků se pokusí vyřešit odkaz před nasazením prostředku a identity. Místo toho předejte název prostředku, na který je identita použita. Tento přístup zajišťuje nasazení prostředků a spravované identity před tím, než Správce prostředků vyřeší odkazovou funkci.
+
+V referenční funkci použijte `Full` k získání všech vlastností včetně spravované identity.
+
+Pokud například chcete získat ID tenanta pro spravovanou identitu, která se používá pro sadu škálování virtuálního počítače, použijte:
+
+```json
+"tenantId": "[reference(concat('Microsoft.Compute/virtualMachineScaleSets/',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
 ```

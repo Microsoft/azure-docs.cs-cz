@@ -9,17 +9,17 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 12/12/2019
-ms.openlocfilehash: e0e4ea4689baeb8e85a765a33c3f8124d6bc4362
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 991f7ebf51be5f805a8b12fa0af0fefeff0ef582
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75764282"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76309553"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Ladění a řešení potíží s kanály strojového učení
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto článku se dozvíte, jak ladit a řešit potíže s [kanály strojového učení](concept-ml-pipelines.md) v sadě [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) a v [Návrháři Azure Machine Learning (Preview)](https://docs.microsoft.com/azure/machine-learning/concept-designer).
+V tomto článku se dozvíte, jak ladit a řešit potíže s [kanály strojového učení](concept-ml-pipelines.md) v sadě [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) a v [Návrháři Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/concept-designer).
 
 
 ## <a name="debug-and-troubleshoot-in-the-azure-machine-learning-sdk"></a>Ladění a řešení potíží v sadě Azure Machine Learning SDK
@@ -79,7 +79,7 @@ Následující tabulka obsahuje běžné problémy při vývoji kanálů s poten
 | Kanál nepoužívá znovu postup | Použití tohoto kroku je ve výchozím nastavení povolené, ale ujistěte se, že jste ho neaktivovali v kroku kanálu. Pokud je zakázané opětovné použití, parametr `allow_reuse` v kroku se nastaví na `False`. |
 | Nenutně funguje kanál. | Aby se zajistilo, že se kroky spustí znovu jenom v případě, že se změní jejich podkladová data nebo skripty, oddělte adresáře pro každý krok. Pokud používáte stejný zdrojový adresář pro více kroků, může docházet k zbytečnému opakovanému spuštění. Použijte parametr `source_directory` u objektu kroku kanálu, který odkazuje na izolovaný adresář pro daný krok, a ujistěte se, že nepoužíváte stejnou `source_directory` cestu pro více kroků. |
 
-## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer-preview"></a>Ladění a řešení potíží v Návrháři Azure Machine Learning (Preview)
+## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer"></a>Ladění a řešení potíží v Návrháři Azure Machine Learning
 
 Tato část poskytuje přehled o řešení potíží s kanály v návrháři.
 Pro kanály vytvořené v Návrháři můžete najít **soubory protokolu** na stránce vytváření obsahu nebo na stránce s podrobnostmi o spuštění kanálu.

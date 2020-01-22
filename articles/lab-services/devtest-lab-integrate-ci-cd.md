@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 54b4e6e6a283f46e03f7b94ce96ba79a03f75523
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 9604da5252254120ac7bd3fca3f0cc97324aef92
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170381"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293211"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-pipelines-cicd-pipeline"></a>Integrace Azure DevTest Labs do kanálu CI/CD Azure Pipelines
 
@@ -140,7 +140,7 @@ Dalším krokem je vytvoření virtuálního počítače zlaté image pro použi
    
    |Pole|Hodnota|
    |---|---|
-   |**Předplatné Azure RM**|V rozevíracím seznamu vyberte připojení služby nebo předplatné z **dostupných připojení služby Azure** nebo **dostupná předplatná Azure** a v případě potřeby vyberte **autorizovat** .<br /><br />**Poznámka:** Informace o vytvoření připojení s více omezenými oprávněními k předplatnému Azure najdete v tématu [Azure Resource Manager koncový bod služby](/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).|
+   |**Předplatné Azure RM**|V rozevíracím seznamu vyberte připojení služby nebo předplatné z **dostupných připojení služby Azure** nebo **dostupná předplatná Azure** a v případě potřeby vyberte **autorizovat** .<br /><br />**Poznámka:** Informace o vytvoření připojení s více omezenými oprávněními k předplatnému Azure najdete v tématu [Azure Resource Manager koncový bod služby](/azure/devops/pipelines/library/service-endpoints#sep-azure-resource-manager).|
    |**Název testovacího prostředí**|Vyberte název existujícího testovacího prostředí, ve kterém se vytvoří virtuální počítač testovacího prostředí.|
    |**Název šablony**|Zadejte úplnou cestu a název souboru šablony, který jste uložili do úložiště zdrojového kódu. Pomocí integrovaných vlastností můžete zjednodušit cestu, například:<br /><br />`$(System.DefaultWorkingDirectory)/Templates/CreateVMTemplate.json`|
    |**Parametry šablony**|Zadejte parametry pro proměnné, které jste definovali dříve:<br /><br />`-newVMName '$(vmName)' -userName '$(userName)' -password (ConvertTo-SecureString -String '$(password)' -AsPlainText -Force)`|

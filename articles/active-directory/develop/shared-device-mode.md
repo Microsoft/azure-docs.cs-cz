@@ -16,12 +16,12 @@ ms.author: twhitney
 ms.reviwer: hahamil
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: babbaf75b91dfb870ba5001d23f62c5461a28218
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 70f629af35978771d48d0a29f9ec625628c3b630
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030299"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291256"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Režim sdíleného zařízení pro zařízení s Androidem
 
@@ -39,7 +39,7 @@ Režim sdíleného zařízení taky poskytuje zpětnou správu v rámci identity
 Pokud chcete vytvořit sdílenou aplikaci v režimu zařízení, vývojáři a správci cloudových zařízení spolupracují:
 
 - Vývojáři napsané aplikace s jedním účtem (aplikace s více účty se v režimu sdíleného zařízení nepodporují), přidají `"shared_device_mode_supported": true` do konfigurace aplikace a napíší kód, který bude zpracovávat věci, jako je například odhlášení sdílených zařízení.
-- Správci zařízení připraví zařízení pro sdílení instalací ověřovací aplikace a nastavením zařízení do sdíleného režimu pomocí ověřovací aplikace. Pouze uživatelé, kteří jsou v roli [správce cloudového zařízení](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#cloud-device-administrator) , mohou do sdíleného režimu umístit zařízení pomocí [ověřovací aplikace](https://www.microsoft.com/account/authenticator). Pomocí **správce cloudového zařízení**můžete nakonfigurovat členství v rolích organizace v Azure Portal prostřednictvím: **Azure Active Directory** > **rolí a > správců** .
+- Správci zařízení připraví zařízení pro sdílení instalací ověřovací aplikace a nastavením zařízení do sdíleného režimu pomocí ověřovací aplikace. Pouze uživatelé, kteří jsou v roli [správce cloudového zařízení](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#cloud-device-administrator) , mohou do sdíleného režimu umístit zařízení pomocí [ověřovací aplikace](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-overview). Pomocí **správce cloudového zařízení**můžete nakonfigurovat členství v rolích organizace v Azure Portal prostřednictvím: **Azure Active Directory** > **rolí a > správců** .
 
  Tento článek se zaměřuje především na to, co by si vývojáři měli představit.
 

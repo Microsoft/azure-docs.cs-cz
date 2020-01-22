@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: f503377984a347d85af04d85728c53eaad0c4c74
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3f725d7e902b1e020c26e82007d4d257b2fd21c4
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451367"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293177"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integrace s partnery virtuálních počítačů s Windows
 
@@ -222,7 +222,7 @@ Tricerat nabízí vynikající řešení pro správu tisku pro virtuální poč�
 
 V Tricerat je tisk na virtuálním počítači s Windows a mimo něj bezproblémové. Tricerat software umožňuje správcům snadno připojovat místní tiskárny ke cloudu a rozšiřovat správu podnikových tiskáren z tradičních prostředí na nové moderní pracovní prostory.
 
-- [Přejít na web partnera](https://www.tricerat.com/solutions/wvd-microsoft/).
+- [Přejít na web partnera](https://www.tricerat.com/microsoft-printing).
 
 ## <a name="workspot"></a>Workspot
 

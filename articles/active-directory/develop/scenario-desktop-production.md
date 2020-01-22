@@ -17,34 +17,34 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe727afcfdec204c92c82c3e695961707af90e65
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a07a28837abf2fb6df3dd0583309ec1f3d278a58
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423808"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293483"
 ---
-# <a name="desktop-app-that-calls-web-apis---move-to-production"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API – přesun do produkčního prostředí
+# <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: přesunout do produkčního prostředí
 
-V tomto článku najdete podrobné informace o přesunu aplikace klasické pracovní plochy, která volá webová rozhraní API do produkčního prostředí.
+V tomto článku se dozvíte, jak přesunout desktopovou aplikaci, která volá webová rozhraní API do produkčního prostředí.
 
-## <a name="handling-errors-in-desktop-applications"></a>Zpracování chyb v aplikacích klasické pracovní plochy
+## <a name="handle-errors-in-desktop-applications"></a>Zpracování chyb v aplikacích klasické pracovní plochy
 
-V různých tocích jste se naučili, jak zpracovávat chyby pro tiché toky (jak je znázorněno v části fragmenty kódu). Také jste viděli, že existují případy, kdy je interakce nutná (přírůstkový souhlas a podmíněný přístup).
+V různých tocích jste se naučili, jak zpracovávat chyby pro tiché toky, jak je znázorněno ve fragmentech kódu. Také jste viděli, že existují případy, kdy je potřeba interakce, jako v rámci přírůstkového souhlasu a podmíněného přístupu.
 
-## <a name="how-to-have--the-user-consent-upfront-for-several-resources"></a>Jak dát uživateli souhlas před několika prostředky
+## <a name="have-the-user-consent-upfront-for-several-resources"></a>Mít souhlas uživatele před několika prostředky
 
 > [!NOTE]
-> Získání souhlasu pro několik prostředků funguje pro platformu Microsoft identity, ale ne pro Azure Active Directory (Azure AD) B2C. Azure AD B2C podporuje jenom souhlas správce, ne pro vyjádření souhlasu s uživatelem.
+> Získání souhlasu pro několik prostředků funguje pro Microsoft Identity Platform, ale ne pro Azure Active Directory (Azure AD) B2C. Azure AD B2C podporuje jenom souhlas správce, ne pro vyjádření souhlasu s uživatelem.
 
-Koncový bod Microsoft Identity Platform (v 2.0) neumožňuje získat token pro několik prostředků najednou. Proto parametr `scopes` může obsahovat pouze obory pro jeden prostředek. Pomocí parametru `extraScopesToConsent` můžete zajistit, aby se uživatel předem poslal několika prostředkům.
+Pomocí koncového bodu Microsoft Identity Platform (v 2.0) nemůžete získat token pro několik prostředků současně. Parametr `scopes` může obsahovat obory pouze pro jeden prostředek. Pomocí parametru `extraScopesToConsent` můžete zajistit, aby se uživatel předem poslal několika prostředkům.
 
-Například pokud máte dva prostředky, které mají dva obory:
+Například můžete mít dva prostředky, které mají dva obory:
 
-- `https://mytenant.onmicrosoft.com/customerapi` – 2 obory `customer.read` a `customer.write`
-- `https://mytenant.onmicrosoft.com/vendorapi` – 2 obory `vendor.read` a `vendor.write`
+- `https://mytenant.onmicrosoft.com/customerapi` s obory `customer.read` a `customer.write`
+- `https://mytenant.onmicrosoft.com/vendorapi` s obory `vendor.read` a `vendor.write`
 
-Měli byste použít modifikátor `.WithAdditionalPromptToConsent`, který má parametr `extraScopesToConsent`.
+V tomto příkladu použijte modifikátor `.WithAdditionalPromptToConsent`, který má parametr `extraScopesToConsent`.
 
 Příklad:
 
@@ -99,17 +99,17 @@ interactiveParameters.extraScopesToConsent = scopesForVendorApi
 application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in /* handle result */ })
 ```
 
-Toto volání vám poskytne přístupový token pro první webové rozhraní API.
+Toto volání vám získá přístupový token pro první webové rozhraní API.
 
-Pokud potřebujete zavolat druhé webové rozhraní API, můžete volat `AcquireTokenSilent` rozhraní API:
+Pokud potřebujete zavolat druhé webové rozhraní API, zavolejte rozhraní `AcquireTokenSilent` API.
 
 ```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();
 ```
 
-### <a name="microsoft-personal-account-requires-reconsenting-each-time-the-app-is-run"></a>Osobní účet Microsoft vyžaduje přesouhlasení při každém spuštění aplikace.
+### <a name="microsoft-personal-account-requires-reconsent-each-time-the-app-runs"></a>Osobní účet Microsoft vyžaduje při každém spuštění aplikace souhlas.
 
-Pro uživatele osobních účtů Microsoft se znovu zobrazí výzva k zadání souhlasu každého nativního klienta (Desktop/mobilní aplikace) volání metody autorizovat je zamýšlené chování. Identita nativního klienta je ze své podstaty nezabezpečená (v rozporu s důvěrnými klientskými aplikacemi, které vyměňují tajný klíč s platformou Microsoft identity k prokázání identity). Platforma Microsoft identity se rozhodla zmírnit toto zabezpečení pro zákazníky pomocí výzvy k zadání souhlasu uživatele, pokaždé, když je aplikace autorizována.
+Pro uživatele osobního účtu Microsoft se znovu zobrazí výzva k zadání souhlasu každého nativního klienta (Desktop nebo mobilní aplikace) volání metody autorizovat je zamýšlené chování. Nativní identita klienta je ze své podstaty nezabezpečená, což je v rozporu s identitou důvěrné klientské aplikace. Důvěrné klientské aplikace vyměňují tajný kód s platformou Microsoft identity, aby prokázali jejich identitu. Platforma Microsoft identity se rozhodla snížit toto zabezpečení pro zákazníky pomocí výzvy k souhlasu uživatele při každém autorizaci aplikace.
 
 ## <a name="next-steps"></a>Další kroky
 

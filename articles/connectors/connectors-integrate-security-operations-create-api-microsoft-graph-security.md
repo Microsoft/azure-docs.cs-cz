@@ -7,49 +7,52 @@ author: preetikr
 ms.author: preetikr
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 12/12/2019
 tags: connectors
-ms.openlocfilehash: 7e9cc2d8d38af7e5e6cf26ccc3659ee58ef17e59
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f9aa88934d67d98fce43763c6c8fac7c384d765d
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789048"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313786"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Zvyšte ochranu před hrozbami integrací operací zabezpečení pomocí Microsoft Graph zabezpečení & Azure Logic Apps
 
-Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a konektoru [zabezpečení Microsoft Graph](https://docs.microsoft.com/graph/security-concept-overview) můžete vylepšit způsob, jakým aplikace detekuje hrozby, chrání je a reaguje na ně tím, že vytvoří automatizované pracovní postupy pro integraci produktů, služeb a partnerů Microsoftu. Můžete například vytvořit [Azure Security Center playbooky](../security-center/security-center-playbooks.md) a monitorovat a spravovat Microsoft Graph entit zabezpečení, jako jsou výstrahy. Tady je několik scénářů podporovaných nástrojem Microsoft Graph Security Connector:
+Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a konektoru [zabezpečení Microsoft Graph](https://docs.microsoft.com/graph/security-concept-overview) můžete vylepšit způsob, jakým aplikace detekuje hrozby, chrání je a reaguje na ně tím, že vytvoří automatizované pracovní postupy pro integraci produktů, služeb a partnerů Microsoftu. Můžete například vytvořit [Azure Security Center playbooky](../security-center/security-center-playbooks.md) a monitorovat a spravovat Microsoft Graph entit zabezpečení, jako jsou výstrahy. Tady je několik scénářů, které podporuje Microsoft Graph Security Connector:
 
 * Získejte výstrahy na základě dotazů nebo ID výstrahy. Můžete například získat seznam, který obsahuje upozornění s vysokou závažností.
+
 * Aktualizujte výstrahy. Můžete například aktualizovat přiřazení výstrah, přidat komentáře k výstrahám nebo výstrahy značek.
+
 * Monitorování při vytváření nebo změně výstrah vytvořením [odběrů výstrah (Webhooky)](https://docs.microsoft.com/graph/api/resources/webhooks).
+
 * Spravujte své odběry výstrah. Můžete například získat aktivní odběry, zvětšit dobu vypršení platnosti předplatného nebo odstranit odběry.
 
 Pracovní postup vaší aplikace logiky může používat akce, které získávají odpovědi z konektoru zabezpečení Microsoft Graph a zpřístupňují výstup ostatním akcím v pracovním postupu. V pracovním postupu můžete mít také další akce, které používají výstup z akcí Microsoft Graph Security Connector. Pokud například obdržíte upozornění s vysokou závažností prostřednictvím konektoru zabezpečení Microsoft Graph, můžete tyto výstrahy odeslat v e-mailové zprávě pomocí konektoru aplikace Outlook. 
 
 Další informace o Microsoft Graph zabezpečení najdete v tématu [Přehled rozhraní API pro Microsoft Graph zabezpečení](https://aka.ms/graphsecuritydocs). Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md). Pokud hledáte Microsoft Flow nebo PowerApps, přečtěte si téma [co je Flow?](https://flow.microsoft.com/) nebo [co je PowerApps?](https://powerapps.microsoft.com/)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
-* Pokud chcete použít Microsoft Graph Security Connector, musíte *explicitně udělit* souhlas správce tenanta Azure Active Directory (AD), který je součástí [Microsoft Graph požadavků na ověření zabezpečení](https://aka.ms/graphsecurityauth). Tento souhlas vyžaduje ID a název aplikace konektoru zabezpečení Microsoft Graph, které můžete také najít v [Azure Portal](https://portal.azure.com):
+* Abyste mohli používat konektor pro Microsoft Graph Security, musí vám být *explicitně udělen* souhlas správce tenanta Azure Active Directory (AD). To je součástí [požadavků na ověřování v Microsoft Graph Security](https://aka.ms/graphsecurityauth). Tento souhlas vyžaduje ID a název aplikace konektoru zabezpečení Microsoft Graph, které můžete také najít v [Azure Portal](https://portal.azure.com):
 
-   | Vlastnost | Hodnota |
-   |----------|-------|
-   | **Název aplikace** | `MicrosoftGraphSecurityConnector` |
-   | **ID aplikace** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
-   |||
+  | Vlastnost | Hodnota |
+  |----------|-------|
+  | **Název aplikace** | `MicrosoftGraphSecurityConnector` |
+  | **ID aplikace** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
+  |||
 
-   Správce tenanta Azure AD může udělit souhlas konektoru, a to podle těchto kroků:
+  Správce tenanta Azure AD může udělit souhlas konektoru, a to podle těchto kroků:
 
-   * [Udělte souhlasu správce tenanta pro aplikace Azure AD](../active-directory/develop/v2-permissions-and-consent.md).
+  * [Udělení souhlasu správce tenanta pro aplikace Azure AD](../active-directory/develop/v2-permissions-and-consent.md).
 
-   * Během prvního spuštění vaší aplikace logiky může vaše aplikace požádat o souhlas správce tenanta Azure AD prostřednictvím [prostředí pro vyjádření souhlasu s aplikací](../active-directory/develop/application-consent-experience.md).
+  * Při prvním spuštění aplikace logiky může vaše aplikace požádat správce tenanta Azure AD o souhlas prostřednictvím [prostředí pro souhlas v aplikaci](../active-directory/develop/application-consent-experience.md).
    
 * Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Aplikace logiky, do které chcete přistupovat k entitám zabezpečení Microsoft Graph, jako jsou například výstrahy. V současné době tento konektor neobsahuje žádné triggery. Pokud tedy chcete použít akci zabezpečení Microsoft Graph, spusťte aplikaci logiky s triggerem, například triggerem **opakování** .
+* Aplikace logiky, do které chcete přistupovat k entitám zabezpečení Microsoft Graph, jako jsou například výstrahy. Pokud chcete použít Trigger zabezpečení Microsoft Graph, potřebujete prázdnou aplikaci logiky. Pokud chcete použít akci zabezpečení Microsoft Graph, potřebujete aplikaci logiky, která začíná vhodným triggerem pro váš scénář.
 
 ## <a name="connect-to-microsoft-graph-security"></a>Připojení k Microsoft Graph zabezpečení 
 
@@ -57,22 +60,48 @@ Další informace o Microsoft Graph zabezpečení najdete v tématu [Přehled ro
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/)a otevřete aplikaci logiky v návrháři aplikace logiky, pokud už není otevřený.
 
-1. Pro prázdné Logic Apps přidejte Trigger a všechny další akce, které chcete provést, než přidáte akci Microsoft Graph zabezpečení.
+1. Pro prázdné aplikace logiky přidejte Trigger a všechny další akce, které chcete provést před přidáním akce zabezpečení Microsoft Graph.
 
    -nebo-
 
-   Pro existující aplikace logiky v rámci posledního kroku, kde chcete přidat akci zabezpečení Microsoft Graph, vyberte možnost **Nový krok**.
+   Pro existující aplikace logiky v rámci posledního kroku, kde chcete přidat akci zabezpečení Microsoft Graph, vyberte **Nový krok**.
 
    -nebo-
 
-   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. 
-   Zvolte znaménko plus (+), které se zobrazí, a vyberte **přidat akci**.
+   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. Vyberte znaménko plus (+), které se zobrazí, a vyberte **přidat akci**.
 
 1. Do vyhledávacího pole zadejte jako filtr "Microsoft Graph Security". V seznamu akce vyberte akci, kterou chcete.
 
 1. Přihlaste se pomocí přihlašovacích údajů pro Microsoft Graph zabezpečení.
 
 1. Zadejte potřebné podrobnosti pro vybranou akci a pokračujte v vytváření pracovního postupu aplikace logiky.
+
+## <a name="add-triggers"></a>Přidat triggery
+
+V Azure Logic Apps musí každá aplikace logiky začínat [triggerem](../logic-apps/logic-apps-overview.md#logic-app-concepts), který se aktivuje, když dojde ke konkrétní události nebo když dojde ke splnění určité podmínky. Pokaždé, když se Trigger aktivuje, modul Logic Apps vytvoří instanci aplikace logiky a začne spouštět pracovní postup vaší aplikace.
+
+> [!NOTE] 
+> Když se aktivuje Trigger, zpracuje aktivační událost všechny nové výstrahy. Pokud neobdržíte žádné výstrahy, spuštění triggeru se přeskočí. Následující dotaz na Trigger probíhá na základě intervalu opakování, který zadáte ve vlastnostech triggeru.
+
+Tento příklad ukazuje, jak můžete spustit pracovní postup aplikace logiky, když se do vaší aplikace odesílají nové výstrahy.
+
+1.  V Azure Portal nebo Visual Studiu vytvořte prázdnou aplikaci logiky, která otevře návrháře aplikace logiky. V tomto příkladu se používá Azure Portal.
+
+1.  V návrháři do vyhledávacího pole zadejte jako filtr "Microsoft Graph Security". V seznamu triggery vyberte tuto aktivační událost: **u všech nových výstrah** .
+
+1.  V aktivační události zadejte informace o výstrahách, které chcete monitorovat. Pro další vlastnosti otevřete seznam **Přidat nový parametr** a vyberte parametr pro přidání této vlastnosti aktivační události.
+
+   | Vlastnost | Property (JSON) | Požaduje se | Typ | Popis |
+   |----------|-----------------|----------|------|-------------|
+   | **Interval** | `interval` | Ano | Integer | Kladné celé číslo, které popisuje, jak často se pracovní postup spouští na základě frekvence. Tady jsou minimální a maximální intervaly: <p><p>-Month: 1-16 měsíců <br>Denní: 1-500 dní <br>-Hodina: 1 – 12000 hodin <br>-Minute: 1 – 72000 minut <br>-Sekunda: 1 – 9999999 sekund <p>Pokud má například interval hodnotu 6 a frekvence je "Month" (měsíc), opakování je každých 6 měsíců. |
+   | **Frekvence** | `frequency` | Ano | Řetězec | Jednotka času pro opakování: **sekunda**, **minuta**, **hodina**, **den**, **týden**nebo **měsíc** |
+   | **Časové pásmo** | `timeZone` | Ne | Řetězec | Platí pouze v případě, že zadáte čas spuštění, protože tato aktivační událost nepřijímá [posun UTC](https://en.wikipedia.org/wiki/UTC_offset). Vyberte časové pásmo, které chcete použít. |
+   | **Čas spuštění** | `startTime` | Ne | Řetězec | Zadejte počáteční datum a čas v tomto formátu: <p><p>RRRR-MM-DDThh: mm: SS Pokud vyberete časové pásmo <p>-nebo- <p>RRRR-MM-DDThh: mm: ssZ, pokud nevyberete časové pásmo <p>Pokud například požadujete 18. září 2017 na 2:00 odp., zadejte "2017-09-18T14:00:00" a vyberte časové pásmo, například Tichomoří (běžný čas). Případně zadejte "2017-09-18T14:00:00Z" bez časového pásma. <p>**Poznámka:** Tento počáteční čas má v budoucnosti maximálně 49 let a musí následovat za [specifikací data a času ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) ve [formátu data](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)a času UTC, ale bez [posunu UTC](https://en.wikipedia.org/wiki/UTC_offset). Pokud nevyberete časové pásmo, je nutné na konci přidat písmeno "Z" bez mezer. Tento "Z" odkazuje na ekvivalentní [námořní čas](https://en.wikipedia.org/wiki/Nautical_time). <p>V případě jednoduchých plánů je počáteční čas prvním výskytem, ale u složitých plánů se Trigger neaktivuje dříve, než je čas spuštění. [*Jaké jsou způsoby, jak můžu použít počáteční datum a čas?* ](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
+   ||||||
+
+1.  Až budete hotovi, na panelu nástrojů návrháře vyberte **Uložit**.
+
+1.  Nyní pokračujte v přidávání jedné nebo více akcí do aplikace logiky pro úlohy, které chcete provést s výsledky triggeru.
 
 ## <a name="add-actions"></a>Přidat akce
 
@@ -90,13 +119,12 @@ Další informace o dotazech, které můžete použít s tímto konektorem, najd
 |--------|-------------|
 | **Získat výstrahy** | Získejte filtrované výstrahy na základě jedné nebo více [vlastností výstrahy](https://docs.microsoft.com/graph/api/resources/alert), například: <p>`Provider eq 'Azure Security Center' or 'Palo Alto Networks'` | 
 | **Získat upozornění podle ID** | Získat konkrétní výstrahu na základě ID výstrahy. | 
-| **Aktualizovat upozornění** | Aktualizace konkrétní výstrahy na základě ID výstrahy. <p>Chcete-li se ujistit, že jste v žádosti předávali požadované a upravitelné vlastnosti, přečtěte si téma [upravitelné vlastnosti výstrah](https://docs.microsoft.com/graph/api/alert-update). Chcete-li například přiřadit upozornění analytikovi zabezpečení, aby bylo možné je prozkoumat, můžete aktualizovat vlastnost **přiřazeno pro** výstrahu. |
+| **Aktualizace výstrahy** | Aktualizace konkrétní výstrahy na základě ID výstrahy. <p>Chcete-li se ujistit, že jste v žádosti předávali požadované a upravitelné vlastnosti, přečtěte si téma [upravitelné vlastnosti výstrah](https://docs.microsoft.com/graph/api/alert-update). Chcete-li například přiřadit upozornění analytikovi zabezpečení, aby bylo možné je prozkoumat, můžete aktualizovat vlastnost **přiřazeno pro** výstrahu. |
 |||
 
 ### <a name="manage-alert-subscriptions"></a>Správa odběrů výstrah
 
-Microsoft Graph podporuje [*odběry*](https://docs.microsoft.com/graph/api/resources/subscription)nebo [*Webhooky*](https://docs.microsoft.com/graph/api/resources/webhooks). Chcete-li získat, aktualizovat nebo odstranit odběry, zadejte [parametry dotazu OData podporované Microsoft Graph](https://docs.microsoft.com/graph/query-parameters) do konstruktoru entity Microsoft Graph a přidejte `security/alerts` následovaný dotazem OData. 
-*Nezahrnujte základní* adresu URL, například `https://graph.microsoft.com/v1.0`. Místo toho použijte formát v tomto příkladu:
+Microsoft Graph podporuje [*odběry*](https://docs.microsoft.com/graph/api/resources/subscription)nebo [*Webhooky*](https://docs.microsoft.com/graph/api/resources/webhooks). Chcete-li získat, aktualizovat nebo odstranit odběry, zadejte [parametry dotazu OData podporované Microsoft Graph](https://docs.microsoft.com/graph/query-parameters) do konstruktoru entity Microsoft Graph a přidejte `security/alerts` následovaný dotazem OData. *Nezahrnujte základní* adresu URL, například `https://graph.microsoft.com/v1.0`. Místo toho použijte formát v tomto příkladu:
 
 `security/alerts?$filter=status eq 'New'`
 
@@ -111,11 +139,6 @@ Microsoft Graph podporuje [*odběry*](https://docs.microsoft.com/graph/api/resou
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
 Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce](https://aka.ms/graphsecurityconnectorreference)konektoru.
-
-## <a name="get-support"></a>Získat podporu
-
-Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další kroky
 

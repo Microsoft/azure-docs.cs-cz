@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7a3280e11d40a361c5a3305d71e58661b37b8bd1
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: e4bf079d46271cadc0176fe5602adcdc3954dee5
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563424"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290712"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Nasadit moduly Azure IoT Edge z portálu Azure portal
 
@@ -53,7 +53,7 @@ Na webu Azure portal obsahuje průvodce, který vás provede vytvořením manife
 
 ### <a name="specify-routes"></a>Zadejte trasy
 
-Na kartě **trasy** definujete, jak jsou zprávy předávány mezi moduly a IoT Hub. Zprávy se vytvářejí pomocí párů název/hodnota. Ve výchozím nastavení se trasa nazývá **Route** a definuje se jako **z/Messages/* do $upstream * *, což znamená, že se do služby IoT Hub odešlou všechny zprávy, které všechny moduly odesílají.  
+Na kartě **trasy** definujete, jak jsou zprávy předávány mezi moduly a IoT Hub. Zprávy se vytvářejí pomocí párů název/hodnota. Ve výchozím nastavení se trasa nazývá **Route** a definuje se jako **z/messages/\* do $upstream**, což znamená, že do služby IoT Hub budou odesílány výstupy všech zpráv pomocí všech modulů.  
 
 Přidejte nebo aktualizujte trasy s informacemi z [deklarace trasy](module-composition.md#declare-routes)a potom vyberte **Další: zkontrolovat + vytvořit** a pokračujte dalším krokem průvodce.
 

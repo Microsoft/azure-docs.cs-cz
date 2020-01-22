@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 1ba10bf682d900a45f345f2ebe2707ba1275e94e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a28b77a25971128b9474f18d860f6204c3433c73
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497870"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312290"
 ---
 # <a name="execute-python-script-module"></a>Spustit modul Python Script
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Tento modul použijte ke spuštění kódu Pythonu. Další informace o architektuře a zásadách návrhu Pythonu najdete v [následujícím článku](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts).
 
@@ -35,29 +35,29 @@ Azure Machine Learning používá Anaconda distribuci Pythonu, která zahrnuje m
 
 Předem nainstalované balíčky jsou:
 -  asn1crypto = = 0.24.0
-- attrs = = 19.1.0
+- attrs==19.1.0
 - Azure – běžné = = 1.1.18
 - Azure-Storage-BLOB = = 1.5.0
-- Azure-Storage-Common = = 1.4.0
+- azure-storage-common==1.4.0
 - certifi = = 2019.3.9
 - cffi = = 1.12.2
 - chardet = = 3.0.4
 - kryptografie = = 2.6.1
-- distribuce = = 1.4.0
+- distro==1.4.0
 - IDNA = = 2.8
-- jsonschema = = 3.0.1
+- jsonschema==3.0.1
 - lightgbm = = 2.2.3
-- more – itertools = = 6.0.0
+- more-itertools==6.0.0
 - numpy = = 1.16.2
 - PANDAS = = 0.24.2
 - Pillow = = 6.0.0
-- PIP = = 19.0.3
+- pip==19.0.3
 - pyarrow = = 0.12.1
 - pycparser = = 2.19
-- pycryptodomex = = 3.7.3
+- pycryptodomex==3.7.3
 - pyrsistent = = 0.14.11
-- Python – dateutil = = 2.8.0
-- pytz = = 2018.9
+- python-dateutil==2.8.0
+- pytz==2018.9
 - požadavky = = 2.21.0
 - scikit-učení = = 0.20.3
 - scipy = = 1.2.1
@@ -101,7 +101,7 @@ Modul **spuštění skriptu Pythonu** obsahuje ukázkový kód Pythonu, který m
 
     + Skript musí obsahovat funkci s názvem `azureml_main` jako vstupní bod pro tento modul.
     + Funkce vstupního bodu může obsahovat až dva vstupní argumenty: `Param<dataframe1>` a `Param<dataframe2>`
-    + Soubory zip připojené k třetímu vstupnímu portu jsou komprimovány a uloženy v adresáři, `.\Script Bundle`, což je také přidáno do `sys.path` Pythonu. 
+    + Soubory zip připojené k třetímu vstupnímu portu jsou komprimovány a uloženy v adresáři, `.\Script Bundle`, což je také přidáno do `sys.path`Pythonu. 
 
     Proto pokud váš soubor zip obsahuje `mymodule.py`, importujte ho pomocí `import mymodule`.
 

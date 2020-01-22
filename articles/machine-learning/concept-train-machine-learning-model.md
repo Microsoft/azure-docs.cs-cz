@@ -9,12 +9,12 @@ ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: ac7ae0d7933e1d1b4d716eb157bf74152155a969
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 4902c679fa9b8b0140f7da8f32b3382983a635ed
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541670"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311321"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Trénování modelů Azure Machine Learning
 
@@ -29,7 +29,7 @@ Azure Machine Learning poskytuje několik způsobů, jak proškolit vaše modely
     | [Odhady](#estimators) | Třídy Estimator usnadňují **výukové modely založené na oblíbených architekturách strojového učení**. K dispozici jsou třídy Estimator pro **Scikit-učit**, **PyTorch**, **TensorFlow**a **chainer**. K dispozici je také obecná Estimator, která může být použita s architekturami, které ještě nemají vyhrazenou třídu Estimator. Při použití odhady se nemusíte starat o definování konfigurace spuštění. |
     | [Kanál strojového učení](#machine-learning-pipeline) | Kanály nejsou jinou výukovou metodou, ale **způsob definování pracovního postupu pomocí modulárních a opakovaně použitelných kroků**, které můžou zahrnovat školení jako součást pracovního postupu. Kanály strojového učení podporují pomocí automatizovaného strojového učení, odhady a konfigurace spouštění pro výukové modely. Vzhledem k tomu, že se kanály nezaměřují konkrétně na školení, jsou důvody pro použití kanálu různorodější než jiné metody školení. Obecně platí, že můžete použít kanál v těchto případech:<br>* Chcete **naplánovat bezobslužné procesy** , jako je například dlouho běžící školicí úlohy nebo Příprava dat.<br>* Použijte **více kroků** , které jsou koordinovány napříč heterogenními výpočetními prostředky a umístěními úložiště.<br>* Kanál použijte jako **opakovaně použitelnou šablonu** pro konkrétní scénáře, jako je například přeškolení nebo dávkové vyhodnocování.<br>* **sledování a verze zdrojů dat, vstupů a výstupů** pro váš pracovní postup.<br>* Pracovní postup je **implementován různými týmy, které pracují podle konkrétních kroků nezávisle**. Kroky je pak možné spojit společně v kanálu pro implementaci pracovního postupu. |
 
-+ **Návrhář**: Azure Machine Learning Designer (Preview) poskytuje snadný vstupní bod do strojového učení pro vytváření důkazů konceptů nebo pro uživatele s malým prostředím kódování. Umožňuje naučit modely pomocí webového uživatelského rozhraní přetažení. V rámci návrhu můžete použít kód Pythonu nebo modely výuky bez psaní kódu.
++ **Návrhář**: Azure Machine Learning Designer poskytuje snadnou vstupní bod do strojového učení pro vytváření důkazů konceptů nebo pro uživatele s malým prostředím kódování. Umožňuje naučit modely pomocí webového uživatelského rozhraní přetažení. V rámci návrhu můžete použít kód Pythonu nebo modely výuky bez psaní kódu.
 
 + **CLI**: rozhraní příkazového řádku Machine Learning poskytuje příkazy pro běžné úlohy s Azure Machine Learning a často se používá pro **skriptování a automatizaci úloh**. Když jste například vytvořili školicí skript nebo kanál, můžete použít rozhraní příkazového řádku ke spuštění školicího programu podle plánu nebo při aktualizaci datových souborů použitých pro školení. Pro školicí modely poskytuje příkazy, které odesílají školicí úlohy. Může odesílat úlohy pomocí konfigurací spuštění nebo kanálů.
 

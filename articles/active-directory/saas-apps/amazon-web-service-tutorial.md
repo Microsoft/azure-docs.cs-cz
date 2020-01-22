@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/25/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 758b14a53927e00a5546147f8d67e556b45acc3c
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: fcf72566a0aa2547de7b88cb838b2f6ff1828c6f
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689763"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293092"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Amazon Web Services (AWS)
 
@@ -35,7 +34,7 @@ Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je
 
 ![Diagram vztahu Azure AD a AWS](./media/amazon-web-service-tutorial/tutorial_amazonwebservices_image.png)
 
-Pro více instancí můžete nakonfigurovat více identifikátorů. Příklad:
+Pro více instancí můžete nakonfigurovat více identifikátorů. Například:
 
 * `https://signin.aws.amazon.com/saml#1`
 
@@ -66,6 +65,7 @@ Chcete-li začít, potřebujete následující položky:
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
 * Amazon Web Services (AWS) podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování.
+* Jakmile nakonfigurujete Amazon Web Services (AWS), můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 > [!NOTE]
 > Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
@@ -374,6 +374,10 @@ Po kliknutí na dlaždici Amazon Web Services (AWS) na přístupovém panelu bys
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Vyzkoušet Amazon Web Services (AWS) s Azure AD](https://aad.portal.azure.com/)
+
+- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/protect-aws)
+
+- [Postup ochrany Amazon Web Services (AWS) s pokročilou viditelností a ovládacími prvky](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 [11]: ./media/amazon-web-service-tutorial/ic795031.png
 [12]: ./media/amazon-web-service-tutorial/ic795032.png

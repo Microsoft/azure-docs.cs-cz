@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/05/2019
 ms.author: chmutali
-ms.openlocfilehash: 80812d1989e528a5a0f2333e92a068093d7b6b90
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: c2a699a9fafdba60fb2a938fd4691c291562fbc5
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75528211"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292514"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>Kurz: Konfigurace zřizování SAP SuccessFactors pro uživatele služby Active Directory (Preview)
 Cílem tohoto kurzu je Ukázat kroky, které potřebujete k tomu, abyste uživatelům zřídili SuccessFactors zaměstnanci v rámci služby Active Directory (AD) a Azure AD s volitelným zpětným zápisem e-mailové adresy na SuccessFactors. Tato integrace je ve verzi Public Preview a podporuje načítání více než [70 a uživatelských atributů](../manage-apps/sap-successfactors-attribute-reference.md) od SuccessFactors zaměstnanců od středníku.
@@ -342,7 +342,7 @@ Po dokončení konfigurace mapování atributů teď můžete [Povolit a spustit
 Po dokončení konfigurace aplikace SuccessFactors Provisioning můžete službu zřizování zapnout v Azure Portal.
 
 > [!TIP]
-> Ve výchozím nastavení se při zapnutí služby zřizování spustí operace zřizování pro všechny uživatele v oboru. Pokud dojde k chybám při mapování nebo při potížích s daty Workday, úloha zřizování může selhat a přejít do stavu karantény. Aby k tomu nedocházelo, doporučujeme nakonfigurovat filtr **oboru zdrojového objektu** a otestovat mapování atributů s několika testovacími uživateli před spuštěním úplné synchronizace pro všechny uživatele. Jakmile ověříte, že mapování funguje a poskytuje požadované výsledky, můžete buď odebrat filtr, nebo ho postupně rozšířit, aby zahrnoval více uživatelů.
+> Ve výchozím nastavení se při zapnutí služby zřizování spustí operace zřizování pro všechny uživatele v oboru. Pokud dojde k chybám při mapování nebo potížích s daty SuccessFactors, úloha zřizování může selhat a přejít do stavu karantény. Aby k tomu nedocházelo, doporučujeme nakonfigurovat filtr **oboru zdrojového objektu** a otestovat mapování atributů s několika testovacími uživateli před spuštěním úplné synchronizace pro všechny uživatele. Jakmile ověříte, že mapování funguje a poskytuje požadované výsledky, můžete buď odebrat filtr, nebo ho postupně rozšířit, aby zahrnoval více uživatelů.
 
 1. Na kartě **zřizování** nastavte **stav zřizování** na **zapnuto**.
 
@@ -350,7 +350,7 @@ Po dokončení konfigurace aplikace SuccessFactors Provisioning můžete službu
 
 3. Tato operace spustí počáteční synchronizaci, což může trvat proměnlivý počet hodin v závislosti na tom, kolik uživatelů je v tenantovi SuccessFactors. V indikátoru průběhu můžete sledovat průběh cyklu synchronizace. 
 
-4. Na kartě **protokoly auditu** v Azure Portal můžete kdykoli zjistit, jaké akce služba zřizování provedla. Protokoly auditu vypíše všechny jednotlivé události synchronizace prováděné službou zřizování, například které uživatele se čtou z pracovního dne a následně se přidají nebo aktualizují ve službě Active Directory. 
+4. Na kartě **protokoly auditu** v Azure Portal můžete kdykoli zjistit, jaké akce služba zřizování provedla. Protokoly auditu vypíše všechny jednotlivé události synchronizace prováděné službou zřizování, například které uživatele čtou z SuccessFactors a následně se přidají nebo aktualizují ve službě Active Directory. 
 
 5. Po dokončení počáteční synchronizace bude na kartě **zřizování** napsána Sestava souhrnu auditu, jak je znázorněno níže.
 

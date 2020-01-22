@@ -3,8 +3,7 @@ title: Rychlý Start pro přidání příznaků funkcí do konfigurace jarního 
 description: Rychlý Start pro přidání příznaků funkcí do aplikací pro jarní spouštění a jejich správu v konfiguraci aplikací Azure
 services: azure-app-configuration
 documentationcenter: ''
-author: mrm9084
-manager: zhenlwa
+author: lisaguthrie
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -12,20 +11,20 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.tgt_pltfrm: Spring Boot
 ms.workload: tbd
-ms.date: 09/26/2019
-ms.author: mametcal
-ms.openlocfilehash: cae1e7b205869fd41850c1adfaeae97658dd02f0
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.date: 1/9/2019
+ms.author: lcozzens
+ms.openlocfilehash: 3e82354116969b01743700485b5c2dd75b4887e4
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184947"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310046"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace na jaře Boot
 
 V tomto rychlém startu zařadíte konfiguraci aplikací Azure do webové aplikace na jaře Boot, která vytvoří ucelenou implementaci správy funkcí. Službu konfigurace aplikací můžete použít k centrálnímu ukládání všech příznaků funkcí a řízení jejich stavů.
 
-Knihovny pro správu funkcí pružiny rozšiřuje rámec s kompletní podporou příznaků funkcí. Tyto knihovny **nezávisí na** žádné službě Azure libries. Bez problémů se integruje s konfigurací aplikací prostřednictvím poskytovatele konfigurace spouštění pružiny.
+Knihovny pro správu funkcí pružiny rozšiřuje rámec s kompletní podporou příznaků funkcí. Tyto **knihovny nemají závislost** na žádné knihovně Azure. Bez problémů se integruje s konfigurací aplikací prostřednictvím poskytovatele konfigurace spouštění pružiny.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -54,7 +53,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvoříte nový proje
    - Vygenerujte projekt **Maven** pomocí **jazyka Java**.
    - Zadejte verzi pro **jarní spuštění** , která je rovna nebo větší než 2,0.
    - Zadejte název **skupiny** a **artefakty** pro vaši aplikaci.
-   - Přidejte **webovou** závislost.
+   - Přidejte **webovou závislost pružiny** .
 
 3. Po zadání předchozích možností vyberte **generovat projekt**. Po zobrazení výzvy Stáhněte projekt do cesty na místním počítači.
 
@@ -68,12 +67,12 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvoříte nový proje
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0.M4</version>
+        <version>1.1.0</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-        <version>1.1.0.M4</version>
+        <version>1.1.0</version>
     </dependency>
     <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -86,27 +85,46 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvoříte nový proje
 
 ## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
 
-1. Otevřete `bootstrap.properties`, který je v adresáři prostředků vaší aplikace, a do souboru přidejte následující řádky. Přidejte informace o konfiguraci aplikace.
+1. Otevřete _rutinu Bootstrap. Properties_ v adresáři _prostředky_ aplikace. Pokud _bootstrap. Properties_ neexistuje, vytvořte ji. Do souboru přidejte následující řádek.
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
-2. Na portálu pro konfiguraci aplikací pro úložiště konfigurace přejděte na přístup k klíčům. Vyberte kartu klíče jen pro čtení. Na této kartě Zkopírujte hodnotu jednoho z připojovacích řetězců a přidejte ji jako novou proměnnou prostředí s názvem proměnné `APP_CONFIGURATION_CONNECTION_STRING`.
+1. Na portálu pro konfiguraci aplikací pro úložiště konfigurace přejděte na přístup k klíčům. Vyberte kartu klíče jen pro čtení. Na této kartě Zkopírujte hodnotu jednoho z připojovacích řetězců a přidejte ji jako novou proměnnou prostředí s názvem proměnné `APP_CONFIGURATION_CONNECTION_STRING`.
 
-3. Otevřete soubor hlavní aplikace v jazyce Java a přidejte `@EnableConfigurationProperties` pro povolení této funkce.
+1. Otevřete soubor hlavní aplikace v jazyce Java a přidejte `@EnableConfigurationProperties` pro povolení této funkce.
 
     ```java
+    import org.springframework.boot.context.properties.EnableConfigurationProperties;
+
     @SpringBootApplication
     @EnableConfigurationProperties(MessageProperties.class)
-    public class AzureConfigApplication {
+    public class DemoApplication {
         public static void main(String[] args) {
-            SpringApplication.run(AzureConfigApplication.class, args);
+            SpringApplication.run(DemoApplication.class, args);
         }
     }
     ```
 
-4. V adresáři balíčku aplikace vytvořte nový soubor Java s názvem *HelloController. Java* . Přidejte následující řádky:
+1. V adresáři balíčku aplikace vytvořte nový soubor Java s názvem *MessageProperties. Java* . Přidejte následující řádky:
+
+    ```java
+    @ConfigurationProperties(prefix = "config")
+    public class MessageProperties {
+        private String message;
+
+        public String getMessage() {
+            return message;
+        }
+
+        public void setMessage(String message) {
+            this.message = message;
+        }
+    }
+    ```
+
+1. V adresáři balíčku aplikace vytvořte nový soubor Java s názvem *HelloController. Java* . Přidejte následující řádky:
 
     ```java
     @Controller
@@ -127,7 +145,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvoříte nový proje
     }
     ```
 
-5. V adresáři templates vaší aplikace vytvořte nový soubor HTML s názvem *Welcome. html* . Přidejte následující řádky:
+1. V adresáři templates vaší aplikace vytvořte nový soubor HTML s názvem *Welcome. html* . Přidejte následující řádky:
 
     ```html
     <!DOCTYPE html>
@@ -184,7 +202,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvoříte nový proje
 
     ```
 
-6. Vytvořte novou složku s názvem CSS v kategorii static a uvnitř ní nový soubor CSS s názvem *Main. CSS*. Přidejte následující řádky:
+1. Vytvořte novou složku s názvem CSS v kategorii static a uvnitř ní nový soubor CSS s názvem *Main. CSS*. Přidejte následující řádky:
 
     ```css
     html {

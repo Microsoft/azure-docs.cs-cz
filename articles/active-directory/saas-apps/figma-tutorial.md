@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb2da2214cd5fab378368a363e6f18e02626b9d8
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: dfa07b3df7071ed99a02b854ff41ad6a5137c8dc
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373101"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292837"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-figma"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Figma
 
@@ -92,7 +92,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://www.figma.com/saml/<TENANT ID>/start`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Z kroku č. 11 Figma se dostanete `TENANT ID` v článku [konfigurace Azure Active Directory procesu jednotného přihlašování SAML](https://help.figma.com/article/243-configure-azure-active-directory-saml-sso).
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Z kroku č. 11 Figma se dostanete `TENANT ID` v článku [konfigurace Azure Active Directory procesu jednotného přihlašování SAML](https://help.figma.com/hc/en-us/articles/360040532413-Configure-and-Provision-SAML-SSO-with-Azure-Active-Directory).
 
 1. Figma aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
@@ -100,7 +100,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace Figma několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název | Zdrojový atribut|
+    | Name (Název) | Zdrojový atribut|
     | ---------------| --------- |
     | `externalId` | `user.mailnickname` |
     | `displayName` | `user.displayname` |
@@ -124,7 +124,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -146,7 +146,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-figma-sso"></a>Konfigurace jednotného přihlašování Figma
 
-Pokud chcete nakonfigurovat jednotné přihlašování na straně Figma, musíte postupovat podle článku Figma [konfigurace Azure Active Directory procesu jednotného přihlašování SAML](https://help.figma.com/article/243-configure-azure-active-directory-saml-sso).
+Pokud chcete nakonfigurovat jednotné přihlašování na straně Figma, musíte postupovat podle článku Figma [konfigurace Azure Active Directory procesu jednotného přihlašování SAML](https://help.figma.com/hc/en-us/articles/360040532413-Configure-and-Provision-SAML-SSO-with-Azure-Active-Directory).
 
 ### <a name="create-figma-test-user"></a>Vytvořit testovacího uživatele Figma
 
@@ -158,7 +158,7 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 
 Když na přístupovém panelu kliknete na dlaždici Figma, měli byste se automaticky přihlásit k Figma, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

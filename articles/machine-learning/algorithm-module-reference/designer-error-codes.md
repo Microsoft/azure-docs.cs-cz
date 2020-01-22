@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 12/03/2019
-ms.openlocfilehash: d491a67a44a2cb01e4968c4d31d20dee4b75a60a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a6aeb4022ee7cbce465f88a246303f80acfb883b
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980280"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311661"
 ---
-# <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Výjimky a kódy chyb pro návrháře (Preview)
+# <a name="exceptions-and-error-codes-for-the-designer"></a>Výjimky a kódy chyb pro návrháře
 
-Tento článek popisuje chybové zprávy a kódy výjimek v Návrháři Azure Machine Learning (Preview), které vám pomůžou při odstraňování potíží s kanály strojového učení.
+Tento článek popisuje chybové zprávy a kódy výjimek v Návrháři Azure Machine Learning, které vám pomůžou při odstraňování potíží s kanály machine learningu.
 
 Existují dva způsoby, jak získat úplný text chybové zprávy v Návrháři:  
 

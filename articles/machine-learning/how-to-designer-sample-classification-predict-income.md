@@ -10,20 +10,20 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: 227bf490d1ac264bb54ff3d1ecf0ccc2b3ef2e0e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: bfae0d8eed80a88475c447a141097022fed9adff
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763540"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311103"
 ---
 # <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>Vytvoření klasifikátoru & použití výběru funkcí k předpovídání příjmů pomocí návrháře Azure Machine Learning
 
-**Návrhář (Preview) – ukázka 3**
+**Návrhář – Ukázka 3**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Naučte se vytvářet třídění strojového učení bez psaní jediného řádku kódu pomocí návrháře (Preview). Tato ukázka navýšení **rozhodovacího stromu se dvěma třídami** umožňuje odhadnout příjem v rámci sčítání v dospělém (> = 50 tis nebo < = 50 tis).
+Naučte se vytvářet třídění strojového učení bez psaní jediného řádku kódu pomocí návrháře. Tato ukázka navýšení **rozhodovacího stromu se dvěma třídami** umožňuje odhadnout příjem v rámci sčítání v dospělém (> = 50 tis nebo < = 50 tis).
 
 Vzhledem k tomu, že otázka odpovídá "který z nějakého"? označuje se jako problém klasifikace. Stejný základní postup se ale dá použít k tomu, aby se mohl vyřešit jakýkoli typ problému strojového učení – regrese, klasifikace, clusteringu atd.
 

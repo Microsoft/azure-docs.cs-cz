@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: dc627fc4bb7be449547a07cc34eb2cb3694964e9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ac93d1f4f0f148e1f0ce3d0f21ac9a694f2e896d
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445436"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310012"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Nejčastější dotazy k různým rozhraním API ve službě Azure Cosmos DB
 
@@ -76,8 +76,6 @@ Položit technický dotaz, příspěvek na jednu z těchto dvou otázku a odpov�
 Požádat o nové funkce, vytvořte novou žádost o [User voice](https://feedback.azure.com/forums/263030-azure-cosmos-db).
 
 Pokud řešíte problém s účtem, podejte prostřednictvím webu Azure Portal [žádost o podporu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
-
-Další otázky, můžete odeslat do týmu na [ askcosmosdb@microsoft.com ](mailto:askcosmosdb@microsoft.com), ale to není alias technické podpory.
 
 ## <a id="try-cosmos-db"></a>Vyzkoušejte Azure Cosmos DB předplatná
 
@@ -288,8 +286,6 @@ Pro sadu .NET SDK konkrétně, existují některé třídy a metody, které slu�
 | TableServiceEntity | " " |
 | TableServiceExtensions | " " |
 | TableServiceQuery | " " |
-
-Jestliže má některý z těchto rozdílů problém pro váš projekt, obraťte se na [ askcosmosdb@microsoft.com ](mailto:askcosmosdb@microsoft.com) a dejte nám vědět.
 
 ### <a name="how-do-i-provide-feedback-about-the-sdk-or-bugs"></a>Jak mám poskytnout zpětnou vazbu týkající se sady SDK nebo chyby?
 

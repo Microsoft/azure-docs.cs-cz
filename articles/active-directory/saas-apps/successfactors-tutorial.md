@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace jednotného přihlašování s SuccessFactors | Microsoft Docs'
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s SuccessFactors | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SuccessFactors.
 services: active-directory
 documentationCenter: na
@@ -11,19 +11,18 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/13/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38d40a2f72e73dde0f99ebbc9701e02c8d03738b
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d49915271580b5665981bf7e212f3d5712c86456
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989492"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292975"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s SuccessFactors
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s SuccessFactors
 
 V tomto kurzu se dozvíte, jak integrovat SuccessFactors s Azure Active Directory (Azure AD). Když integrujete SuccessFactors s Azure AD, můžete:
 
@@ -44,7 +43,8 @@ Chcete-li začít, potřebujete následující položky:
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* SuccessFactors podporuje jednotné přihlašování iniciované v **SP**
+* SuccessFactors podporuje jednotné přihlašování iniciované v **SP** .
+* Po nakonfigurování SuccessFactors můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-successfactors-from-the-gallery"></a>Přidání SuccessFactors z Galerie
 
@@ -142,7 +142,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
     1. Do pole **Název** zadejte `B.Simon`.  
     1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
     1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-    1. Klikněte na možnost **Vytvořit**.
+    1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -168,7 +168,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 2. Přejděte na **zabezpečení aplikace** a nativně do **funkce jednotného přihlašování**.
 
-3. Přiložte do tokenu **reset** libovolnou hodnotu a kliknutím na **Uložit token** povolte jednotné přihlašování SAML.
+3. Přiložte do **tokenu Reset** libovolnou hodnotu a kliknutím na **Uložit token** povolte jednotné přihlašování SAML.
 
     ![Konfigurace jednotného přihlašování na straně aplikace][11]
 
@@ -183,17 +183,17 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
   
     b. Nastavte **název strany pro vyhodnocení SAML**(například Vydavatel SAML + název společnosti).
 
-    c. Do textového pole **Adresa URL** vystavitele vložte hodnotu **identifikátoru Azure AD** , kterou jste zkopírovali z Azure Portal.
+    c. Do textového pole **Adresa URL vystavitele** vložte hodnotu **identifikátoru Azure AD** , kterou jste zkopírovali z Azure Portal.
 
     d. Vyberte **kontrolní výraz** jako **vyžadovat povinný podpis**.
 
-    e. Vyberte povolit **příznak SAML**.
+    e. Vyberte **Povolit** **příznak SAML**.
 
     f. Vyberte možnost **ne** jako **podpis žádosti o přihlášení (SF vygenerované/SP/RP)** .
 
     g. Jako **profil SAML**vyberte **browser nebo post profil** .
 
-    h. Vyberte **ne** , jako vynutilo **platné období certifikátu**.
+    h. Vyberte **ne** , jako **vynutilo platné období certifikátu**.
 
     i. Zkopírujte obsah staženého souboru certifikátu z Azure Portal a pak ho vložte do textového pole pro **ověření certifikátu SAML** .
 
@@ -204,13 +204,13 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Konfigurace jednotného přihlašování na straně aplikace][13]
 
-    a. V případě **podpory globálního**odhlašování iniciované SP vyberte **Ano** .
+    a. V případě **podpory globálního odhlašování iniciované SP**vyberte **Ano** .
 
-    b. Do textového pole **Adresa URL služby Websigning Service (LogoutRequest Destination)** vložte hodnotu **URL** pro odhlášení, kterou jste zkopírovali, do formuláře Azure Portal.
+    b. Do textového pole Adresa URL služby **Websigning** **Service (LogoutRequest Destination)** vložte hodnotu URL pro odhlášení, kterou jste zkopírovali, do formuláře Azure Portal.
 
     c. Vyberte **ne** , protože **vyžadovat SP musí zašifrovat všechny NameId elementy**.
 
-    d. Vyberte Neurčeno jako **Formát NameId**.
+    d. Vyberte **Neurčeno** jako **Formát NameId**.
 
     e. Vyberte **Ano** jako **Povolit přihlášení iniciované SP (AuthnRequest)** .
 
@@ -224,7 +224,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     b. Vyberte zaškrtávací políčko v blízkosti možnost **Povolit uživatelské jméno bez rozlišení velkých a malých písmen**.
 
-    c. Klikněte na **Uložit**.
+    c. Klikněte na možnost **Uložit**.
 
     > [!NOTE]
     > Pokud se pokusíte tuto možnost povolit, systém zkontroluje, jestli vytvoří duplicitní přihlašovací jméno SAML. Například pokud má zákazník uživatelská jména uživatel1 a uživatel1. Při zahození rozlišování malých a velkých písmen tyto duplicity provede. Systém vám poskytne chybovou zprávu a funkci nepovoluje. Zákazník musí změnit jedno ze svých uživatelských jmen, aby bylo možné je napsané jinak.
@@ -241,7 +241,7 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 
 Když na přístupovém panelu kliknete na dlaždici SuccessFactors, měli byste se automaticky přihlásit k SuccessFactors, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -250,6 +250,10 @@ Když na přístupovém panelu kliknete na dlaždici SuccessFactors, měli byste
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Vyzkoušejte si SuccessFactors s Azure AD](https://aad.portal.azure.com)
+
+- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Jak chránit SuccessFactors pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 <!--Image references-->
 

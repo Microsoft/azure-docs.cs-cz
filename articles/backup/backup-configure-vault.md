@@ -1,259 +1,294 @@
 ---
-title: Zálohování počítačů s Windows s agentem Azure Backup MARS
-description: Zálohování počítačů s Windows pomocí agenta Azure Backup Microsoft Recovery Services (MARS).
-services: backup
-author: rayne-wiselman
-manager: carmonm
-ms.service: backup
+title: Zálohování počítačů s Windows pomocí agenta MARS
+description: K zálohování počítačů s Windows použijte agenta Azure Backup Microsoft Recovery Services (MARS).
 ms.topic: conceptual
-ms.date: 03/13/2019
-ms.author: raynew
-ms.openlocfilehash: 7a1bd6da68b49481429709c7e4fd37dd5c07ae2c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/04/2019
+ms.openlocfilehash: c6e5ea1ed1ec9dd922793dfc6834238c431ddc38
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60810365"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "76290865"
 ---
-# <a name="back-up-windows-machines-with-the-azure-backup-mars-agent"></a>Zálohování počítačů s Windows s agentem Azure Backup MARS
+# <a name="back-up-windows-machines-with-the-azure-backup-mars-agent"></a>Zálohování počítačů s Windows s využitím agenta MARS služby Azure Backup
 
-Tento článek vysvětluje, jak k zálohování počítačů s Windows pomocí [Azure Backup](backup-overview.md) služby a agenta Microsoft Azure Recovery Services (MARS), také označovaný jako agent Azure Backup.
+Tento článek vysvětluje, jak zálohovat počítače s Windows pomocí služby [Azure Backup](backup-overview.md) a agenta služby Microsoft Azure Recovery Services (MARS), označovaného také jako agent Azure Backup.
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Ověřte požadavky a vytvořte trezor služby Recovery Services.
+>
+> * Ověřte požadavky a vytvořte Trezor Recovery Services.
 > * Stažení a nastavení agenta MARS
-> * Vytvoření zásady zálohování a plánu.
-> * Provedení zálohování ad hoc.
+> * Vytvořte zásady zálohování a plán.
+> * Proveďte zálohování na vyžádání.
 
-## <a name="about-the-mars-agent"></a>O agenta MARS
+## <a name="about-the-mars-agent"></a>O agentovi MARS
 
-Agenta MARS používá Azure Backup k zálohování souborů, složek a stavu systému z místních počítačů a virtuálních počítačů Azure do trezoru služby Recovery Services zálohování v Azure. Agenta můžete spustit následovně:
+Agent MARS používá Azure Backup k zálohování souborů, složek a stavu systému z místních počítačů a virtuálních počítačů Azure do trezoru služby Backup Recovery Services v Azure. Agenta můžete spustit následujícím způsobem:
 
-- Spuštění agenta přímo na místních počítačích Windows tak, aby můžete zálohovat přímo na zálohování trezoru služby Recovery Services v Azure.
-- Spuštění virtuálních počítačů Azure agenta pro zálohování konkrétní soubory a složky na virtuálním počítači s Windows (-souběžně s rozšířením zálohování virtuálního počítače Azure).
-- Spusťte agenta Microsoft Azure Backup Server (MABS) nebo System Center Data Protection - server Manager (DPM). V tomto scénáři počítače a úlohy zálohování pro MABS/DPM a pak MABS/aplikace DPM zálohovat do trezoru v Azure pomocí agenta MARS.
-Co můžete zálohovat, závisí na instalaci agenta.
+* Spusťte agenta přímo na místních počítačích s Windows, aby se mohly zálohovat přímo do trezoru služby Backup Recovery Services v Azure.
+* Spusťte agenta na virtuálních počítačích Azure s Windows (vedle sebe s rozšířením zálohování virtuálních počítačů Azure), abyste mohli zálohovat konkrétní soubory a složky na virtuálním počítači.
+* Spusťte agenta na serveru Microsoft Azure Backup (MABS) nebo na serveru System Center Data Protection Manager (DPM). V tomto scénáři se počítače a úlohy zálohují do MABS/DPM a pak se MABS/DPM zálohuje do trezoru v Azure pomocí agenta MARS.
+To, co se dá zálohovat, závisí na tom, kde je agent nainstalovaný.
 
 > [!NOTE]
-> Primární metodou pro zálohování virtuálních počítačů Azure je pomocí rozšíření Azure Backup na virtuálním počítači. Zálohuje celý virtuální počítač. Můžete chtít nainstalovat a používat agenta MARS společně s rozšířením, pokud chcete zálohovat konkrétní soubory a složky na virtuálním počítači. [Další informace](backup-architecture.md#architecture-direct-backup-of-azure-vms).
+> Primární metodou pro zálohování virtuálních počítačů Azure je použití rozšíření Azure Backup na virtuálním počítači. Tím se zálohuje celý virtuální počítač. Pokud chcete zálohovat konkrétní soubory a složky na virtuálním počítači, můžete chtít nainstalovat a používat agenta MARS společně s příponou. [Další informace](backup-architecture.md#architecture-built-in-azure-vm-backup).
 
 ![Kroky procesu zálohování](./media/backup-configure-vault/initial-backup-process.png)
 
 ## <a name="before-you-start"></a>Než začnete
 
-- [Zjistěte, jak](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders) Azure Backup zálohuje počítačů s Windows pomocí agenta MARS.
-- [Další informace o](backup-architecture.md#architecture-back-up-to-dpmmabs) zálohování architekturu běžící agenta MARS na sekundárním serveru MABS nebo aplikace DPM.
-- [Kontrola](backup-support-matrix-mars-agent.md) co je podporováno a co můžete zálohovat pomocí agenta MARS.
-- Ověřte přístup k Internetu na počítačích, které chcete zálohovat.
-- Zálohování klienta nebo serveru do Azure, potřebujete účet Azure. Pokud ho nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/free/) během několika minut.
+* [Informace o tom, jak](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders) Azure Backup Zálohuje počítače s Windows pomocí agenta MARS.
+* [Přečtěte si o](backup-architecture.md#architecture-back-up-to-dpmmabs) architektuře zálohování, na které běží agent Mars na sekundárním serveru MABS nebo DPM.
+* [Přečtěte si](backup-support-matrix-mars-agent.md) , co je podporováno a co je možné zálohovat pomocí agenta Mars.
+* Ověřte přístup k Internetu na počítačích, které chcete zálohovat.
+* K zálohování serveru nebo klienta do Azure potřebujete účet Azure. Pokud ho nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/free/) .
 
-### <a name="verify-internet-access"></a>Ověřte přístup k Internetu
+### <a name="verify-internet-access"></a>Ověřit přístup k Internetu
 
-Pokud váš počítač má omezený přístup k Internetu, ujistěte se, že nastavení brány firewall na počítači nebo proxy serveru povolit, tyto adresy URL a IP adresa:
+Pokud má počítač omezený přístup k Internetu, zajistěte, aby nastavení brány firewall na počítači nebo proxy umožňovalo tyto adresy URL a IP adresy:
 
-**Adresy URL**
+#### <a name="urls"></a>Adresy URL
 
-- www\.msftncsi.com
-- *.Microsoft.com
-- *.WindowsAzure.com
-- *.microsoftonline.com
-- *.windows.net
+* www\.msftncsi.com
+* *.Microsoft.com
+* *.WindowsAzure.com
+* *.microsoftonline.com
+* *.windows.net
 
-**IP adresa**
+#### <a name="ip-addresses"></a>IP adresy
 
-- 20.190.128.0/18
-- 40.126.0.0/18
+* 20.190.128.0/18
+* 40.126.0.0/18
 
+Přístup ke všem adresám URL a IP adresám uvedeným výše používá protokol HTTPS na portu 443.
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
-Trezor služby Recovery Services uchovává všechny zálohy a body obnovení, které vytvoříte v čase a obsahuje zásady zálohování u zálohovaného počítače. Vytvořte trezor následujícím způsobem:
+Trezor Recovery Services ukládá všechny zálohy a body obnovení, které vytvoříte v průběhu času, a obsahuje zásady zálohování použité pro zálohované počítače. Vytvořte Trezor následujícím způsobem:
 
-1. Přihlaste se k [webu Azure Portal](https://portal.azure.com/) pomocí svého předplatného Azure.
-2. Do pole hledání zadejte **služby Recovery Services** a klikněte na tlačítko **trezory služby Recovery Services**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí svého předplatného Azure.
 
-    ![Vytvoření trezoru Recovery Services – krok 1](./media/backup-try-azure-backup-in-10-mins/open-rs-vault-list.png)
+2. Vyhledejte a vyberte **trezory Recovery Services**.
 
-3. Na **trezory služby Recovery Services** nabídky, klikněte na tlačítko **+ přidat**.
+    ![Vytvoření trezoru Recovery Services – krok 1](./media/backup-configure-vault/open-recovery-services-vaults.png)
+
+3. V nabídce **Recovery Services trezory** klikněte na **+ Přidat**.
 
     ![Vytvoření trezoru Recovery Services – krok 2](./media/backup-try-azure-backup-in-10-mins/rs-vault-menu.png)
 
 4. Jako **Název** zadejte popisný název pro identifikaci trezoru.
 
-   - Název musí být jedinečný v rámci předplatného Azure.
-   - Může obsahovat 2 až 50 znaků.
-   - Musí začínat písmenem a může obsahovat jenom písmena, číslice a pomlčky.
+   * Název musí být jedinečný v rámci předplatného Azure.
+   * Může obsahovat 2 až 50 znaků.
+   * Musí začínat písmenem a může obsahovat jenom písmena, číslice a spojovníky.
 
-5. Vyberte předplatné Azure, skupinu prostředků a zeměpisné oblasti, ve kterém se vytvoří v trezoru. Zálohovaná data se odesílají do trezoru. Poté klikněte na **Vytvořit**.
+5. Vyberte předplatné Azure, skupinu prostředků a geografickou oblast, ve které se má Trezor vytvořit. Zálohovaná data se odesílají do trezoru. Poté klikněte na **Vytvořit**.
 
     ![Vytvoření trezoru Recovery Services – krok 3](./media/backup-try-azure-backup-in-10-mins/rs-vault-step-3.png)
 
-   - Může trvat nějakou dobu vytvoření trezoru.
-   - Sledujte oznámení o stavu v oblasti pravém horním rohu portálu. Pokud po několika minutách se trezor nezobrazí, klikněte na tlačítko **aktualizovat**.
+   * Vytvoření trezoru může chvíli trvat.
+   * Sledujte oznámení o stavu v pravé horní části portálu. Pokud trezor nevidíte po několika minutách, klikněte na **aktualizovat**.
 
      ![Kliknutí na tlačítko Obnovit](./media/backup-try-azure-backup-in-10-mins/refresh-button.png)
 
-### <a name="set-storage-redundancy"></a>Nastavení redundance úložiště
+### <a name="set-storage-redundancy"></a>Nastavit redundanci úložiště
 
-Azure Backup automaticky zpracovává úložiště pro trezor. Je třeba zadat způsob replikace úložiště.
+Azure Backup automaticky zpracovává úložiště pro trezor. Musíte určit způsob replikace tohoto úložiště.
 
-1. V okně **Trezory služby Recovery Services** klikněte na nový trezor. V části **nastavení** klikněte na tlačítko **vlastnosti**.
-2. V **vlastnosti**v části **konfigurace zálohování**, klikněte na tlačítko **aktualizace**.
+1. V okně **Trezory služby Recovery Services** klikněte na nový trezor. V části **Nastavení** klikněte na **vlastnosti**.
+2. V části **vlastnosti**v části **Konfigurace zálohování**klikněte na **aktualizovat**.
 
-3. Vyberte typ replikace úložiště a klikněte na tlačítko **Uložit**.
+3. Vyberte typ replikace úložiště a klikněte na **Uložit**.
 
       ![Nastavení konfigurace úložiště pro nový trezor](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
-- Doporučujeme vám, pokud používáte Azure jako primární úložiště záloh koncový bod, dál používat výchozí **geograficky redundantní** nastavení.
-- Pokud Azure nepoužíváte jako primární koncový bod úložiště záloh, vyberte **Místně redundantní** – snížíte tím náklady na úložiště Azure.
-- Další informace o [geograficky](../storage/common/storage-redundancy-grs.md) a [místní](../storage/common/storage-redundancy-lrs.md) redundance.
+* Pokud používáte Azure jako primární koncový bod úložiště záloh, doporučujeme, abyste používali výchozí **geograficky redundantní** nastavení.
+* Pokud Azure nepoužíváte jako primární koncový bod úložiště záloh, vyberte **Místně redundantní** – snížíte tím náklady na úložiště Azure.
+* Přečtěte si další informace o [geografické](../storage/common/storage-redundancy-grs.md) a [místní](../storage/common/storage-redundancy-lrs.md) redundanci.
 
 ## <a name="download-the-mars-agent"></a>Stáhnout agenta MARS
 
 Stáhněte agenta MARS pro instalaci na počítačích, které chcete zálohovat.
 
-- Pokud jste již nainstalovali agenta na všechny počítače, ujistěte se, že používáte nejnovější verzi.
-- Nejnovější verze je k dispozici na portálu, nebo můžete použít [přímé stažení](https://aka.ms/azurebackup_agent)
+* Pokud jste už agenta nainstalovali na všechny počítače, ujistěte se, že používáte nejnovější verzi.
+* Nejnovější verze je k dispozici na portálu nebo pomocí [přímého stažení](https://aka.ms/azurebackup_agent)
 
-1. V trezoru v části **Začínáme**, klikněte na tlačítko **zálohování**.
+1. V trezoru v části **Začínáme**klikněte na **zálohovat**.
 
     ![Otevřete okno cíle zálohování](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
 
-2. V **ve kterém je spuštěná vaše úloha?** vyberte **On-premises**. Tato možnost by měl vybrat i v případě, že chcete nainstalovat agenta MARS na Virtuálním počítači Azure.
-3. V **co chcete zálohovat?** vyberte **souborů a složek** a/nebo **stavu systému**. Nejsou k dispozici řadu dalších možností, ale ty jsou podporovány pouze pokud používáte sekundární záložní server. Klikněte na tlačítko **připravit infrastrukturu**.
+2. V nabídce **kde je spuštěná vaše úloha?** vyberte **místní**. Tuto možnost byste měli vybrat, i když chcete agenta MARS nainstalovat na virtuální počítač Azure.
+3. V **Možnosti co chcete zálohovat?** vyberte **soubory a složky** a **stav systému**. K dispozici je několik dalších možností, ale ty se podporují jenom v případě, že používáte sekundární záložní server. Klikněte na **Příprava infrastruktury**.
 
       ![Konfigurace souborů a složek](./media/backup-try-azure-backup-in-10-mins/set-file-folder.png)
 
-4. Na **připravit infrastrukturu**v části **instalace služby Recovery Services agent**, stáhněte si agenta MARS.
+4. V části **Příprava infrastruktury**v části **instalovat Recovery Services agenta**Stáhněte agenta Mars.
 
     ![Příprava infrastruktury](./media/backup-try-azure-backup-in-10-mins/choose-agent-for-server-client.png)
 
 5. V místní nabídce stahování klikněte na **Uložit**. Ve výchozím nastavení se soubor **MARSagentinstaller.exe** uloží do složky Stažené soubory.
 
-6. Teď zkontrolujte **nebo pomocí nejnovější Agent Recovery Services již stažení**a pak si stáhnout přihlašovací údaje trezoru.
+6. Teď zkontrolujte, jestli **už jste si stáhli nejnovější verzi agenta Recovery Services**, a pak stáhněte přihlašovací údaje trezoru.
 
     ![stažení přihlašovacích údajů trezoru](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-7. Klikněte na **Uložit**. Soubor se stáhne do své složky pro stahování. Nelze otevřít soubor s přihlašovacími údaji trezoru.
+7. Klikněte na možnost **Uložit**. Soubor se stáhne do složky pro stahování. Nejde otevřít soubor s přihlašovacími údaji trezoru.
 
 ## <a name="install-and-register-the-agent"></a>Instalace a registrace agenta
 
-1. Spustit **MARSagentinstaller.exe** souboru na počítačích, které chcete zálohovat.
-2. V Průvodci instalací agenta MARS > **nastavení instalace**, zadejte, kam chcete nainstalovat agenta a umístění, které chcete použít pro ukládání do mezipaměti. Pak klikněte na tlačítko **Další**.
-   - Azure Backup používá mezipaměť pro ukládání snímků dat před jejich odesláním do Azure.
-   - Umístění mezipaměti by měly mít volné místo odpovídající nejméně 5 % velikosti dat, která se bude zálohovat.
+1. Spusťte soubor **soubor marsagentinstaller. exe** na počítačích, které chcete zálohovat.
+2. V Průvodci instalací agenta MARS > **nastavení instalace**určete, kam chcete nainstalovat agenta, a umístění, které se má použít pro mezipaměť. Pak klikněte na tlačítko **Další**.
+   * Azure Backup používá mezipaměť k ukládání snímků dat před jejich odesláním do Azure.
+   * Umístění mezipaměti by mělo mít volné místo, které se rovná nejméně 5% velikosti dat, která budete zálohovat.
 
-     ![Nastavení instalace Průvodce MARS](./media/backup-configure-vault/mars1.png)
+    ![Nastavení instalace Průvodce MARS](./media/backup-configure-vault/mars1.png)
 
-2. V **konfiguraci proxy serveru**, určete, jak agenta spuštěného na počítači Windows připojí k Internetu. Pak klikněte na tlačítko **Další**.
+3. V části **konfigurace proxy**zadejte, jak se má agent běžící na počítači s Windows připojit k Internetu. Pak klikněte na tlačítko **Další**.
 
-   - Pokud používáte vlastní proxy server zadejte nastavení proxy serveru a přihlašovací údaje v případě potřeby.
-   - Mějte na paměti, že agent potřebuje přístup k [tyto adresy URL](#verify-internet-access).
+   * Pokud používáte vlastní proxy server, zadejte nastavení proxy serveru a v případě potřeby přihlašovací údaje.
+   * Mějte na paměti, že agent potřebuje přístup k [těmto adresám URL](#verify-internet-access).
 
-     ![Přístup k Internetu pro Průvodce MARS](./media/backup-configure-vault/mars2.png)
+     ![Průvodce MARS pro Internet přístup](./media/backup-configure-vault/mars2.png)
 
-3. V **instalace** zkontrolujte kontroly požadavků a klikněte na **nainstalovat**.
-4. Po nainstalování agenta klikněte na tlačítko **přejít k registraci**.
-5. V **Průvodce registrací serveru** > **trezor identifikace**, procházet a vyberte soubor přihlašovacích údajů, jste si stáhli. Pak klikněte na tlačítko **Další**.
+4. V části **instalace** zkontrolujte kontrolu požadovaných součástí a klikněte na **nainstalovat**.
+5. Po instalaci agenta klikněte na **pokračovat k registraci**.
+6. V **Průvodci registrací serveru** > **Identifikace trezoru**vyhledejte a vyberte soubor s přihlašovacími údaji, který jste stáhli. Pak klikněte na tlačítko **Další**.
 
-    ![Register – přihlašovací údaje trezoru](./media/backup-configure-vault/register1.png)
+    ![Registrace – přihlašovací údaje trezoru](./media/backup-configure-vault/register1.png)
 
-6. V **nastavení šifrování**, zadejte přístupové heslo, který se použije k šifrování a dešifrování záloh pro počítač.
+7. V **nastavení šifrování**zadejte heslo, které se použije k šifrování a dešifrování záloh pro daný počítač.
 
-    - Uložit šifrovací heslo na bezpečné místo.
-    - Pokud ztratíte nebo zapomenete heslo, Microsoft vám nemůže pomoci obnovit zálohovaná data. Uložte soubor na bezpečné místo. Můžete potřebovat k obnovení zálohy.
+    * Uložit šifrovací heslo na bezpečné místo.
+    * Pokud heslo ztratíte nebo zapomenete, Microsoft nemůže získat zálohu zálohovaných dat. Uložte soubor na bezpečné místo. Budete ho potřebovat k obnovení zálohy.
 
-7. Klikněte na tlačítko **Dokončit**. Agent je nyní nainstalovaný a váš počítač je registrovaný k trezoru. Jste připraveni nakonfigurovat a naplánovat zálohování.
+8. Klikněte na **Dokončit**. Agent je nyní nainstalovaný a váš počítač je registrovaný k trezoru. Jste připraveni nakonfigurovat a naplánovat zálohování.
 
 ## <a name="create-a-backup-policy"></a>Vytvoření zásady zálohování
 
-Zásady zálohování určují, kdy se mají vytvářet snímky dat k vytvoření bodů obnovení a jak dlouho se má zachovat body obnovení.
+Zásady zálohování určují, kdy pořizovat snímky dat pro vytvoření bodů obnovení a jak dlouho zachovat body obnovení.
 
-- Můžete nakonfigurovat zásady zálohování pomocí agenta MARS.
-- Azure Backup nepodporuje zohlednit automaticky letní čas (DST). Může dojít k některé nesrovnalosti mezi skutečný čas a čas plánované zálohování.
+* Zásady zálohování můžete nakonfigurovat pomocí agenta MARS.
+* Azure Backup automaticky nebere v úvahu čas letního času (DST). To může způsobit nesoulad mezi skutečným časem a plánovaným časem zálohování.
 
-Vytvoření zásady takto:
-
-1. Na každém počítači otevřete agenta MARS. Najdete ho vyhledáním **Microsoft Azure Backup** ve svém počítači.
-2. V **akce**, klikněte na tlačítko **naplánovat zálohování**.
+Vytvořte zásadu následujícím způsobem:
+1. Po stažení a registraci agenta MARS spusťte konzolu agenta. Najdete ho vyhledáním **Microsoft Azure Backup** ve svém počítači.  
+2. V nabídce **Akce**klikněte na **naplánovat zálohování**.
 
     ![Naplánování zálohování Windows Serveru](./media/backup-configure-vault/schedule-first-backup.png)
+3. V Průvodci plánováním zálohování > **Začínáme**klikněte na **Další**.
+4. V nabídce **Vyberte položky, které chcete zálohovat**klikněte na **Přidat položky**.
 
-3. V Průvodci plánování zálohování > **Začínáme**, klikněte na tlačítko **Další**.
-4. V **výběr položek k zálohování**, klikněte na tlačítko **přidat položky**.
-5. V **výběr položek**, vyberte, co chcete zálohovat. Pak klikněte na **OK**.
-6. V **výběr položek k zálohování** klikněte na **Další**.
-7. V **zadání plánu zálohování** stránky, zadejte, kdy budete chtít denní nebo týdenní zálohování. Pak klikněte na tlačítko **Další**.
+    ![Vyberte položky, které chcete zálohovat.](./media/backup-azure-manage-mars/select-item-to-backup.png)
 
-    - Vytvoření bodu obnovení se vytvoří při zálohování.
-    - Počet bodů obnovení vytvořené ve vašem prostředí je závislá na plán zálohování.
+5. V nabídce **Vybrat položky**vyberte, co chcete zálohovat, a klikněte na **OK**.
 
-1. Můžete naplánovat denní zálohy, až třikrát za den. Například snímek obrazovky ukazuje dva denní zálohy, jeden půlnoci a jeden na 18: 00.
+    ![Vybrané položky k zálohování](./media/backup-azure-manage-mars/selected-items-to-backup.png)
+
+6. Na stránce **Vyberte položky, které chcete zálohovat** klikněte na **Další**.
+7. Na stránce **zadat plán zálohování** zadejte, kdy chcete provést denní nebo týdenní zálohování. Pak klikněte na tlačítko **Další**.
+
+    - Bod obnovení se vytvoří při vytvoření zálohy.
+    - Počet bodů obnovení vytvořených ve vašem prostředí závisí na plánu zálohování.
+
+
+8. Můžete naplánovat každodenní zálohování, maximálně třikrát denně. Například snímek obrazovky ukazuje dva denní zálohy, jednu o půlnoc a jednu v 6:00./odp.
 
     ![Denní plán](./media/backup-configure-vault/day-schedule.png)
 
-9. Týdenní zálohy můžete spustit příliš. Na snímku obrazovky vidíte příklad zálohy pořízené každou neděli alternativní & středu v 9:30:00 a 1:00:00.
+
+9. Můžete spustit i týdenní zálohování. Snímek obrazovky například ukazuje, že se v každé alternativní neděli & středa v 9:30 AM a 1:00 AMy zálohy.
 
     ![Týdenní plán](./media/backup-configure-vault/week-schedule.png)
 
-8. Na **výběr zásady uchovávání informací** určete, jak ukládat historické kopie vašich dat,. Pak klikněte na tlačítko **Další**.
 
-   - Nastavení uchování určit, které body obnovení by měla být uložena, a jak dlouho by měla být uložena pro.
-   - Například pokud nastavíte denní nastavení uchování, určujete, že v době zadané pro denní uchovávání nejnovější bod obnovení se zachovají pro zadaný počet dnů. Nebo jako jiný příklad můžete zadat měsíční zásady uchovávání informací k označení, že bod obnovení vytvořený 30 každý měsíc by měla být uložena po dobu 12 měsíců.
-   - Uchování bodu obnovení denní nebo týdenní se obvykle shoduje se plán zálohování. To znamená, že při zálohování se spustí podle plánu, bodu obnovení vytvořeného záloha uložena po dobu trvání podle denní nebo týdenní zásady uchovávání informací.
-   - Jako příklad na následujícím snímku obrazovky:
-     - Denní zálohy o půlnoci a 18: 00 uchovávají po dobu sedmi dní.
-     - Zálohy pořízené v sobotu o půlnoci a 18: 00 uchovávají po dobu 4 týdnů.
-     - Zálohy pořízené v sobotu v poslední týden v měsíci o půlnoci a 18: 00 uchovávají po dobu 12 měsíců. -Zálohy pořízené v sobotu během posledního týdne března uchovávají po dobu 10 let.
+10. Na stránce **Vybrat zásady uchovávání informací** určete způsob ukládání historických kopií vašich dat. Pak klikněte na tlačítko **Další**.
 
-   ![Příklad uchování](./media/backup-configure-vault/retention-example.png)
+    - Nastavení uchovávání určují, které body obnovení by se měly ukládat a jak dlouho se mají ukládat.
+    - Když například nastavíte denní nastavení uchovávání, označíte si, že v době určené pro denní uchovávání se bude pro zadaný počet dnů uchovávat nejnovější bod obnovení. Nebo jako jiný příklad můžete zadat měsíční zásady uchovávání informací, které označují, že bod obnovení vytvořený na 30. den v měsíci by měl být uložený na 12 měsíců.
+    - Denní a týdenní uchování bodu obnovení se obvykle shoduje s plánem zálohování. To znamená, že když se zálohování spustí podle plánu, bude se bod obnovení vytvořený zálohováním ukládat po dobu určenou v zásadách denního nebo týdenního uchovávání.
+    - Například na následujícím snímku obrazovky:
 
-11. V **typu** určete, jak chcete počáteční zálohu vytvořit, přes síť nebo offline. Pak klikněte na tlačítko **Další**.
+        -   Denní zálohy s půlnocí a 6:00 PM se uchovávají po dobu sedmi dnů.
+        -   Zálohy provedené v sobotu s půlnocí a 6:00 PM se uchovávají po dobu čtyř týdnů.
+        -   Zálohy provedené v sobotu v posledním týdnu v měsíci s půlnocí a 6:00 PM se uchovávají po dobu 12 měsíců.
+        -   Zálohy provedené na sobotu v posledním týdnu v březnu jsou uchovány po dobu 10 let.
 
-10. V **potvrzení**, přečtěte si informace a pak klikněte na tlačítko **Dokončit**.
-11. Až průvodce dokončí vytváření plánu zálohování, klikněte na **Zavřít**.
+    ![Příklad uchování](./media/backup-configure-vault/retention-example.png)
 
-### <a name="perform-the-initial-backup-offline"></a>Proveďte počáteční zálohu do offline režimu
 
-Počáteční můžete automaticky spustit zálohování, přes síť nebo offline. Offline seeding pro prvotní záloha je užitečné, pokud máte velké množství dat, který bude vyžadovat velkou šířku pásma sítě pro přenos. Proveďte offline převod následujícím způsobem:
+11. V části **zvolit typ prvotní zálohy** rozhodněte, jestli chcete provést prvotní zálohování přes síť, nebo použít offline zálohování (Další informace o offline zálohování najdete v tomto [článku](backup-azure-backup-import-export.md)). Chcete-li provést prvotní zálohování sítě, vyberte možnost **automaticky přes síť** a klikněte na tlačítko **Další**.
 
-1. Zapisovat data záloh do pracovního umístění.
-2. Pomocí nástroje AzureOfflineBackupDiskPrep ke zkopírování dat z pracovního umístění na jeden nebo více disků SATA.
-3. Nástroj vytvoří úlohu služby Azure Import. [Další informace](https://docs.microsoft.com/azure/storage/common/storage-import-export-service) o Azure import a export.
-4. Odešlete disky SATA do datacentra Azure.
-5. V datovém centru diskových dat zkopírována do účtu služby Azure storage.
-6. Azure Backup kopíruje data z účtu úložiště do trezoru a přírůstkové zálohování.
+    ![Typ prvotní zálohy](./media/backup-azure-manage-mars/choose-initial-backup-type.png)
 
-[Další informace](backup-azure-backup-import-export.md) o offline předvyplnění.
 
-### <a name="enable-network-throttling"></a>Povolení omezení využití sítě
+12. V části **potvrzení**zkontrolujte informace a pak klikněte na **Dokončit**.
 
-Můžete řídit využití šířky pásma sítě pomocí agenta MARS povolením, omezení šířky pásma sítě. Omezení šířky pásma je užitečné, pokud potřebujete zálohovat data během pracovní doby, ale chcete mít pod kontrolou, jaký poměr šířky pásma se používá pro zálohování a obnovení aktivity.
+    ![Potvrdit typ zálohy](./media/backup-azure-manage-mars/confirm-backup-type.png)
 
-- Omezení použití Azure Backup sítě [Quality of Service (QoS)](https://docs.microsoft.com/windows-server/networking/technologies/qos/qos-policy-top) místního operačního systému.
-- Omezení pro zálohování sítě je k dispozici ve Windows serveru 2008 R2 a novější a Windows 7 a vyšší. Operační systémy by měly běžet nejnovější aktualizace service Pack.
+
+13. Až průvodce dokončí vytváření plánu zálohování, klikněte na **Zavřít**.
+
+    ![Potvrdit úpravu procesu zálohování](./media/backup-azure-manage-mars/confirm-modify-backup-process.png)
+
+Je nutné vytvořit zásadu na každém počítači, kde je nainstalován agent.
+
+### <a name="perform-the-initial-backup-offline"></a>Provedení prvotního zálohování offline
+
+Počáteční zálohu můžete spustit automaticky přes síť nebo offline. Počáteční osazení offline pro prvotní zálohování je užitečné, pokud máte velké objemy dat, která budou vyžadovat přenos velkou šířkou pásma sítě. Offline přenos provádíte následujícím způsobem:
+
+1. Zálohovaná data zapisujete do pracovního umístění.
+2. Pomocí nástroje AzureOfflineBackupDiskPrep můžete kopírovat data z pracovního umístění na jeden nebo více disků SATA.
+3. Nástroj vytvoří úlohu importu Azure. [Přečtěte si další informace](https://docs.microsoft.com/azure/storage/common/storage-import-export-service) o importu a exportu Azure.
+4. Disky SATA odešlete do datacentra Azure.
+5. V datacentru se data disku zkopírují do účtu služby Azure Storage.
+6. Azure Backup zkopíruje data z účtu úložiště do trezoru a naplánují se přírůstkové zálohy.
+
+[Přečtěte si další informace](backup-azure-backup-import-export.md) o dosazení offline.
+
+### <a name="enable-network-throttling"></a>Povolit omezení sítě
+
+Povolením omezení sítě můžete řídit, jak se používá šířka pásma sítě v agentovi MARS. Omezování je užitečné, pokud potřebujete zálohovat data během pracovní doby, ale chcete určit, kolik šířky pásma se má pro aktivitu zálohování a obnovení použít.
+
+* Azure Backup omezování sítě používá [technologii QoS (Quality of Service)](https://docs.microsoft.com/windows-server/networking/technologies/qos/qos-policy-top) v místním operačním systému.
+* Omezení sítě pro zálohování je dostupné v systému Windows Server 2012 a vyšším a Windows 8 a vyšším. Operační systémy by měly používat nejnovější aktualizace Service Pack.
 
 Povolte omezení sítě následujícím způsobem:
 
-1. V agenta MARS, klikněte na tlačítko **změnit vlastnosti**.
-2. Na **omezování** kartě **Povolit omezování šířky pásma Internetu u operací zálohování**.
+1. V části agent MARS klikněte na **změnit vlastnosti**.
+2. Na kartě **omezování** zaškrtněte **možnost Povolit omezení využití šířky pásma internetu pro operace zálohování**.
 
-    ![Omezení využití sítě](./media/backup-configure-vault/throttling-dialog.png)
-3. Určení povolených šířky pásma během práce a mimo pracovní dobu. Šířka pásma hodnoty pokračovali 512 kB/s a přejít až 1,023 MB/s. Pak klikněte na **OK**.
+    ![Omezení sítě](./media/backup-configure-vault/throttling-dialog.png)
+3. Určete povolenou šířku pásma během práce a mimo pracovní dobu. Hodnoty šířky pásma začínají v 512 kbps a jdou až 1 023 MB/s. Pak klikněte na **OK**.
 
-## <a name="run-an-ad-hoc-backup"></a>Spustit zálohování ad hoc
+## <a name="run-an-on-demand-backup"></a>Spuštění zálohování na vyžádání
 
-1. V agenta MARS, klikněte na tlačítko **zálohovat nyní**. To zahajuje počáteční replikaci přes síť.
+1. V části agent MARS klikněte na **Zálohovat nyní**.
 
     ![Zálohovat nyní ve Windows Serveru](./media/backup-configure-vault/backup-now.png)
 
-2. V **potvrzení**, zkontrolujte nastavení a klikněte na tlačítko **zálohování**.
-3. Průvodce zavřete kliknutím na **Zavřít**. Pokud to uděláte před dokončením zálohování, Průvodce zůstane spuštěný na pozadí.
+2. Pokud je verze agenta MARS 2.0.9169.0 nebo novější, je možné nastavit vlastní uchovávání. V části **uchování zálohy** vyberte datum z prezentovaného kalendáře:
 
-Po dokončení prvotní zálohy se v konzole Zálohování zobrazí stav **Úloha byla dokončena**.
+   ![Uchovat kalendář zálohy](./media/backup-configure-vault/mars-ondemand.png)
 
-## <a name="next-steps"></a>Další postup
+3. V části **potvrzení**zkontrolujte nastavení a klikněte na **zálohovat**.
+4. Průvodce zavřete kliknutím na **Zavřít**. Pokud to provedete ještě před dokončením zálohování, průvodce bude nadále běžet na pozadí.
+5. Po dokončení prvotní zálohy se v konzole Zálohování zobrazí stav **Úloha byla dokončena**.
 
-[Zjistěte, jak](backup-azure-restore-windows-server.md) obnovit soubory.
+## <a name="on-demand-backup-policy-retention-behavior"></a>Chování uchovávání zásad zálohování na vyžádání
+
+>[!NOTE]
+>Platí jenom pro verze agenta MARS starší než 2.0.9169.0.
+>
+
+* Další informace najdete v kroku 8 tématu [Vytvoření zásady zálohování](backup-configure-vault.md#create-a-backup-policy) .
+
+| Možnost plánu zálohování | Jak dlouho budou zálohovaná data zachovaná?
+| -- | --
+| Naplánovat zálohování každých: * den | **Výchozí doba uchování**: ekvivalent "uchování ve dnech pro denní zálohy" <br/><br/> **Výjimka**: Pokud se naplánovaná denní doba uchovávání dat pro dlouhodobé uchovávání (týdny, měsíce, roky) nezdařila, pak se pro dlouhodobé uchování považuje zálohování na vyžádání hned po tomto neúspěšném plánovaném zálohování. V opačném případě se další naplánované zálohování považuje za dlouhodobou dobu uchovávání.<br/><br/> **Příklad**: Pokud (řekněme) naplánované zálohování pořízené ve čtvrtek 8:00 se nezdařilo a stejné zálohování bylo považováno za týdenní/měsíční/roční uchování, pak první zálohování na vyžádání aktivované před dalším naplánovaným zálohováním (říká) pátek, 8:00 by se automaticky označilo k týdennímu uchovávání na týden/měsíc/roční uchování, a to ve 8:00 čtvrtek až do 12:00.
+| Naplánovat zálohování každých: * týdně | **Výchozí uchovávání**: 1 den <br/> Zálohy na vyžádání pro zdroj dat s týdenními zásadami zálohování se odstraní v následujícím dni, a to i v případě, že se jedná o nejaktuálnější zálohy pro zdroj dat. <br/><br/> **Výjimka**: Pokud je pro dlouhodobou dobu uchovávání nastavená týdenní Naplánovaná záloha (týdny, měsíce, roky), pak se pro dlouhodobé uchování považuje zálohování na vyžádání hned po tomto neúspěšném plánovaném zálohování. V opačném případě se další naplánované zálohování považuje za dlouhodobou dobu uchovávání. <br/><br/> **Příklad**: Pokud (řekněme) naplánované zálohování pořízené ve čtvrtek 8:00 se nepovede a že se stejné zálohování mělo považovat za měsíční a roční uchování, pak první zálohování na vyžádání aktivované před dalším naplánovaným zálohováním (říká), 8:00 8:00 dop.
+
+## <a name="next-steps"></a>Další kroky
+
+[Přečtěte si, jak obnovit soubory](backup-azure-restore-windows-server.md).

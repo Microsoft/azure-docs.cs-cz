@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 12/27/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8a8f3895f41ac987b934b86f8d646b281c37c93
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 79f5284f95f6157c70461179177179a9fbee4fe0
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561968"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293687"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s ServiceNow
 
@@ -46,9 +46,15 @@ Chcete-li začít, potřebujete následující položky:
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí. ServiceNow podporuje jednotné přihlašování spouštěné v **SP** a [automatizované zřizování uživatelů](servicenow-provisioning-tutorial.md).
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí. 
 
-Pro povolení jednotného přihlašování můžete nakonfigurovat aplikaci ServiceNow Classic (mobilní) se službou Azure AD. Podporuje uživatele se systémem Android i iOS. V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
+* ServiceNow podporuje jednotné přihlašování iniciované v **SP** .
+
+* ServiceNow podporuje [automatizované zřizování uživatelů](servicenow-provisioning-tutorial.md).
+
+* Po nakonfigurování ServiceNow můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+
+* Pro povolení jednotného přihlašování můžete nakonfigurovat aplikaci ServiceNow Classic (mobilní) se službou Azure AD. Podporuje uživatele se systémem Android i iOS. V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
 ## <a name="add-servicenow-from-the-gallery"></a>Přidání ServiceNow z Galerie
 
@@ -118,7 +124,7 @@ V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure 
    1. Jako **název**zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno**zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Vyberte možnost **Zobrazit heslo**a pak zapište hodnotu zobrazenou v poli **heslo** .
-   1. Vyberte **Vytvořit**.
+   1. Vyberte **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -211,7 +217,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     * Pro **pole v tabulce uživatel, které je...** zadejte **user_name**.
   
-    * Vyberte **Uložit**.
+    * Vyberte **Save** (Uložit).
 
 6. ServiceNow můžete nakonfigurovat automaticky nebo ručně. K automatické konfiguraci ServiceNow použijte následující postup:
 
@@ -262,7 +268,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
             ![Snímek obrazovky kolekce se zvýrazněnou ikonou pro ikonu certifikátu a pravé šipky](./media/servicenow-tutorial/tutorial_servicenow_11.png "Konfigurace jednotného přihlašování")
 
-          1. Vyberte **Uložit**.
+          1. Vyberte **Save** (Uložit).
 
           1. V pravém horním rohu stránky vyberte **Test připojení**.
 
@@ -419,7 +425,7 @@ Cílem této části je vytvořit uživatele s názvem B. Simon v ServiceNow. Se
     > [!NOTE]
     > Službu Azure AD můžete nakonfigurovat tak, aby vygenerovala buď ID uživatele Azure AD (hlavní název uživatele), nebo e-mailovou adresu jako jedinečný identifikátor v tokenu SAML. Provedete to tak, že zadáte **atributy** **ServiceNow** >  > **jednotné přihlašování** Azure Portal a namapujete požadované pole na atribut **NameIdentifier** . Hodnota uložená pro vybraný atribut ve službě Azure AD (například hlavní název uživatele) se musí shodovat s hodnotou uloženou v ServiceNow pro zadané pole (například user_name).
 
-    f. Vyberte **Uložit**.
+    f. Vyberte **Save** (Uložit).
 
 ## <a name="test-sso"></a>Test SSO
 
@@ -460,3 +466,7 @@ Když na přístupovém panelu vyberete dlaždici ServiceNow, měli byste se aut
 - [Konfigurace zřizování uživatelů](servicenow-provisioning-tutorial.md)
 
 - [Vyzkoušejte si ServiceNow s Azure AD](https://aad.portal.azure.com)
+
+- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/protect-servicenow)
+
+- [Jak chránit ServiceNow pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2019
 ms.author: spelluru
-ms.openlocfilehash: d7a0c757f7314e45d5b4d13273df984739912b27
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 43223f7cb9ed254340c99d235d494d1e93583c7f
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942409"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293534"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-using-python"></a>Zaznamenání dat Event Hubs v Azure Storage a jejich čtení pomocí Pythonu 
 Můžete použít konfiguraci centra událostí tak, aby data odesílaná do centra událostí byla zachycena v Azure Storage nebo Azure Data Lake Storage. V tomto článku se dozvíte, jak pomocí zápisu kódu Pythonu odesílat události do centra událostí a číst zachycená data z úložiště objektů BLOB v Azure. Další informace o této funkci najdete v tématu [Přehled funkcí Event Hubs Capture](event-hubs-capture-overview.md).
@@ -39,12 +39,12 @@ V tomto rychlém startu:
 ## <a name="prerequisites"></a>Požadavky
 
 - Python 2,7 a 3,5 nebo novější, s `pip` nainstalované a aktualizované.
-- Předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+- Předplatné Azure. Pokud ho nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 - [Vytvořte obor názvů Event Hubs a centrum událostí v oboru názvů](event-hubs-create.md). Poznamenejte si název oboru názvů Event Hubs, název centra událostí a primární přístupový klíč pro obor názvů. Přístupovou klávesu získáte pomocí pokynů uvedených v článku [získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Je výchozí název klíče: **RootManageSharedAccessKey**. Pro tento kurz nepotřebujete připojovací řetězec. Potřebujete jenom primární klíč. 
 - Pomocí těchto kroků vytvořte **účet Azure Storage** a **kontejner objektů BLOB**:
-    1. [Vytvořte účet Azure Storage](/storage/common/storage-quickstart-create-account.md?tabs=azure-portal).
-    2. [Vytvořte v úložišti kontejner objektů BLOB](/storage/blobs/storage-quickstart-blobs-portal.md#create-a-container). 
-    3. [Získání připojovacího řetězce k účtu úložiště](/storage/common/storage-configure-connection-string?#view-and-copy-a-connection-string)
+    1. [Vytvořte účet Azure Storage](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal).
+    2. [Vytvořte v úložišti kontejner objektů BLOB](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container). 
+    3. [Získejte připojovací řetězec k účtu úložiště](../storage/common/storage-configure-connection-string.md#view-and-copy-a-connection-string).
 
         Poznamenejte si **připojovací řetězec** a **název kontejneru**. Později je budete používat v kódu. 
 - Funkci **Capture** pro centrum událostí povolte pomocí následujících pokynů: [Povolení Event Hubsho zachycení pomocí Azure Portal](event-hubs-capture-enable-through-portal.md). Vyberte účet úložiště a kontejner objektů blob, který jste vytvořili v předchozím kroku. Tuto funkci můžete také povolit při vytváření centra událostí. 

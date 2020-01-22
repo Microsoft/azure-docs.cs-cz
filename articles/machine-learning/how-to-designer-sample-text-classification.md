@@ -10,20 +10,20 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 06a88ba1e477054aa6080baa9c9644d4da396442
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 73861456edbb7493038fbf2adbf12300d170cab2
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771423"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311032"
 ---
 # <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Sestavte klasifikátor pro předpověď kategorie společnost pomocí návrháře Azure Machine Learning.
 
-**Návrhář (Preview) – ukázka 7**
+**Návrhář – ukázka 7**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Tato ukázka předvádí, jak použít moduly Text Analytics k sestavení kanálu klasifikace textu v Návrháři Azure Machine Learning (Preview).
+Tato ukázka předvádí, jak použít moduly Text Analytics k sestavení kanálu klasifikace textu v Návrháři Azure Machine Learning.
 
 Cílem klasifikace textu je přiřazení části textu k jedné nebo více předdefinovaným třídám nebo kategoriím. Část textu může být dokument, novinka, vyhledávací dotaz, e-mail, seznam vstupenek, lístky podpory, názory zákazníků, Uživatelská recenze produktu atd. Mezi aplikace pro klasifikaci textu patří kategorizace článků o novinkách a obsahu novinek do témat, organizování webových stránek do hierarchických kategorií, filtrování nevyžádané pošty, analýzy mínění, předpověď záměru uživatele z vyhledávacích dotazů, směrování Podpora lístků a analýza zpětné vazby od zákazníků. 
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 11/19/2019
-ms.openlocfilehash: dce4fee57a6d712534ba265cc932e10e66fc9899
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0be7e1ac0f505f227c46e63a80a954a5dd176d66
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232639"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312273"
 ---
 # <a name="execute-r-script"></a>Spouštění skriptů R
 
-Tento článek popisuje, jak použít modul **skriptu Run r** ke spuštění kódu R v kanálu návrháře Azure Machine Learning (Preview).
+Tento článek popisuje, jak použít modul **skriptu Run r** ke spuštění kódu R v kanálu návrháře Azure Machine Learning.
 
 Pomocí jazyka R můžete provádět úlohy, které aktuálně nejsou podporovány existujícími moduly, například: 
 - Vytváření vlastních transformací dat
@@ -256,32 +256,32 @@ Aktuální seznam předem nainstalovaných balíčků R dostupných k použití:
 
 |              |            | 
 |--------------|------------| 
-| Balíček      | Version    | 
+| Balíček      | Verze    | 
 | askpass      | 1.1        | 
 | assertthat   | 0.2.1      | 
-| porty pro porty    | 1.1.4      | 
-| základ         | 3.5.1      | 
-| base64enc    | 0,1 – 3      | 
+| backports    | 1.1.4      | 
+| base         | 3.5.1      | 
+| base64enc    | 0.1-3      | 
 | BH           | 1.69.0-1   | 
-| pořadač        | 0.1.1      | 
+| bindr        | 0.1.1      | 
 | bindrcpp     | 0.2.2      | 
-| bitops       | 1,0 – 6      | 
+| bitops       | 1.0-6      | 
 | startování         | 1.3-22     | 
 | broom        | 0.5.2      | 
-| volající        | 3.2.0      | 
-| něj        | 6.0 – 84     | 
+| callr        | 3.2.0      | 
+| caret        | 6.0 – 84     | 
 | caTools      | 1.17.1.2   | 
 | cellranger   | 1.1.0      | 
-| Třída        | 7.3-15     | 
-| CLI          | 1.1.0      | 
+| třída        | 7.3-15     | 
+| cli          | 1.1.0      | 
 | Galerie        | 0.6.0      | 
-| služby      | 2.0.7-1    | 
+| cluster      | 2.0.7-1    | 
 | codetools    | 0,2 – 16     | 
 | colorspace   | 1.4-1      | 
-| Přepínač     | 3.5.1      | 
-| pastel       | 1.3.4      | 
-| Curl         | 3.3        | 
-| data. tabulka   | 1.12.2     | 
+| compiler     | 3.5.1      | 
+| crayon       | 1.3.4      | 
+| curl         | 3.3        | 
+| data.table   | 1.12.2     | 
 | datasets     | 3.5.1      | 
 | DBI          | 1.0.0      | 
 | dbplyr       | 1.4.1      | 
@@ -289,25 +289,25 @@ Aktuální seznam předem nainstalovaných balíčků R dostupných k použití:
 | dplyr        | 0.7.6      | 
 | e1071        | 1.7-2      | 
 | Vyhodnocení     | 0.14       | 
-| ventilátory        | 0.4.0      | 
+| fansi        | 0.4.0      | 
 | forcats      | 0.3.0      | 
 | foreach      | 1.4.4      | 
-| měnov      | 0,8 – 71     | 
+| cizí      | 0,8 – 71     | 
 | FS           | 1.3.1      | 
 | gdata        | 2.18.0     | 
-| Obecné typy     | 0.0.2      | 
+| obecné typy     | 0.0.2      | 
 | ggplot2      | 3.2.0      | 
 | glmnet       | 2.0 – 18     | 
-| spojovací         | 1.3.1      | 
+| glue         | 1.3.1      | 
 | gower        | 0.2.1      | 
 | gplots       | 3.0.1.1    | 
-| prvky     | 3.5.1      | 
+| Grafika     | 3.5.1      | 
 | grDevices    | 3.5.1      | 
-| mřížky         | 3.5.1      | 
+| mřížka         | 3.5.1      | 
 | gtable       | 0.3.0      | 
 | gtools       | 3.8.1      | 
-| Některé        | 2.1.0      | 
-| vysoká        | 0,8        | 
+| haven        | 2.1.0      | 
+| highr        | 0,8        | 
 | hms          | 0.4.2      | 
 | htmltools    | 0.3.6      | 
 | httr         | 1.4.0      | 
@@ -316,34 +316,34 @@ Aktuální seznam předem nainstalovaných balíčků R dostupných k použití:
 | jsonlite     | 1.6        | 
 | KernSmooth   | 2.23-15    | 
 | knitr        | 1,23       | 
-| označování     | 0,3        | 
-| mřížky      | 0,20 – 38    | 
+| labeling     | 0,3        | 
+| lattice      | 0,20 – 38    | 
 | lava         | 1.6.5      | 
 | lazyeval     | 0.2.2      | 
 | lubridate    | 1.7.4      | 
 | magrittr     | 1,5        | 
-| Markdownu     | 1          | 
-| HROMADNÉ         | 7.3-51.4   | 
-| Službu       | 1.2-17     | 
-| způsobů      | 3.5.1      | 
+| markdown     | 1\. místo          | 
+| MASS         | 7.3-51.4   | 
+| Matice       | 1.2-17     | 
+| Metody      | 3.5.1      | 
 | mgcv         | 1.8 – 28     | 
-| typů         | 0,7        | 
+| mime         | 0,7        | 
 | ModelMetrics | 1.2.2      | 
-| model       | 0.1.4      | 
+| modelr       | 0.1.4      | 
 | munsell      | 0.5.0      | 
 | nlme         | 3.1 – 140    | 
-| sušené         | 7.3-12     | 
+| nnet         | 7.3-12     | 
 | numDeriv     | 2016.8-1.1 | 
-| OpenSSL      | 1.4        | 
+| openssl      | 1.4        | 
 | parallel     | 3.5.1      | 
-| pilíř       | 1.4.1      | 
+| pillar       | 1.4.1      | 
 | pkgconfig    | 2.0.2      | 
 | plogr        | 0.2.0      | 
 | plyr         | 1.8.4      | 
 | prettyunits  | 1.0.2      | 
 | processx     | 3.3.1      | 
 | prodlim      | 2018.04.18 | 
-| Přejde     | 1.2.2      | 
+| průběh     | 1.2.2      | 
 | PS           | 1.3.0      | 
 | purrr        | 0.3.2      | 
 | quadprog     | 1.5-7      | 
@@ -353,37 +353,37 @@ Aktuální seznam předem nainstalovaných balíčků R dostupných k použití:
 | RColorBrewer | 1.1-2      | 
 | Rcpp         | 1.0.1      | 
 | RcppRoll     | 0.3.0      | 
-| čtení        | 1.3.1      | 
+| readr        | 1.3.1      | 
 | readxl       | 1.3.1      | 
 | recepty      | 0.1.5      | 
-| přerovnávat      | 1.0.1      | 
+| rematch      | 1.0.1      | 
 | reprex       | 0.3.0      | 
 | reshape2     | 1.4.3      | 
-| reticulate   | 1,12       | 
+| reticulate   | 1.12       | 
 | rlang        | 0.4.0      | 
-| rmarkdown    | 1,13       | 
-| ROCR         | 1,0 – 7      | 
+| rmarkdown    | 1.13       | 
+| ROCR         | 1.0-7      | 
 | rpart        | 4.1-15     | 
 | rstudioapi   | 0.1        | 
 | rvest        | 0.3.4      | 
-| Uprav       | 1.0.0      | 
-| výběr      | 0.4-1      | 
-| klepání      | 7.3-11     | 
-| křivky      | 3.5.1      | 
+| scales       | 1.0.0      | 
+| selectr      | 0.4-1      | 
+| spatial      | 7.3-11     | 
+| křivky vyhlazení      | 3.5.1      | 
 | SQUAREM      | 2017.10-1  | 
-| statistické        | 3.5.1      | 
+| stats        | 3.5.1      | 
 | stats4       | 3.5.1      | 
-| řetězce      | 1.4.3      | 
-| Stringer      | 1.3.1      | 
-| záchran     | 2.44-1.1   | 
-| tabulce          | 3,2        | 
+| stringi      | 1.4.3      | 
+| stringr      | 1.3.1      | 
+| survival     | 2.44-1.1   | 
+| sys          | 3,2        | 
 | tcltk        | 3.5.1      | 
 | tibble       | 2.1.3      | 
 | tidyr        | 0.8.3      | 
 | tidyselect   | 0.2.5      | 
 | tidyverse    | 1.2.1      | 
-| timeDate     | 3043,102   | 
-| tinytex      | 0,13       | 
+| timeDate     | 3043.102   | 
+| tinytex      | 0.13       | 
 | nástroje        | 3.5.1      | 
 | tseries      | 0.10 – 47    | 
 | TTR          | 0.23-4     | 
@@ -391,14 +391,14 @@ Aktuální seznam předem nainstalovaných balíčků R dostupných k použití:
 | utils        | 3.5.1      | 
 | vctrs        | 0.1.0      | 
 | viridisLite  | 0.3.0      | 
-| vous      | 0,3 – 2      | 
-| s ním        | 2.1.2      | 
+| whisker      | 0.3-2      | 
+| withr        | 2.1.2      | 
 | xfun         | 0,8        | 
 | xml2         | 1.2.0      | 
-| XTS          | 0,11 – 2     | 
-| YAML         | 2.2.0      | 
+| xts          | 0,11 – 2     | 
+| yaml         | 2.2.0      | 
 | zeallot      | 0.1.0      | 
-| zoo          | 1.8 – 6      | 
+| zoo          | 1.8-6      | 
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace jednotného přihlašování s DocuSign | Microsoft Docs'
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s DocuSign | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a DocuSign.
 services: active-directory
 documentationCenter: na
@@ -11,19 +11,18 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/02/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f02492dd7c9563c8c0002a63f0b105bd0be8b14
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 3022303f319ba7955f80ae0b52783fa9b5d411f2
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345564"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290066"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s DocuSign
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s DocuSign
 
 V tomto kurzu se dozvíte, jak integrovat DocuSign s Microsoft Azure Active Directory (Azure AD). Když integrujete DocuSign s Azure AD, můžete:
 
@@ -49,6 +48,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 * DocuSign podporuje zřizování uživatelů *za běhu* .
 
 * DocuSign podporuje [Automatické zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/saas-apps/docusign-provisioning-tutorial).
+* Po nakonfigurování DocuSign můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-docusign-from-the-gallery"></a>Přidání DocuSign z Galerie
 
@@ -72,7 +72,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
     1. [Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user) pro testování jednotného přihlašování Azure AD pomocí B. Simon.
     1. Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD, [přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user) .
 1. Nakonfigurujte jednotné přihlašování [DOCUSIGN SSO](#configure-docusign-sso) pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
-1. [Vytvořte Docusign testovacího uživatele](#create-docusign-test-user) , který vygeneruje protějšek B. Simon v Docusign, která je propojená se zastoupením uživatele v Azure AD.
+    1. [Vytvořte Docusign testovacího uživatele](#create-docusign-test-user) , který vygeneruje protějšek B. Simon v Docusign, která je propojená se zastoupením uživatele v Azure AD.
 1. [Otestujte jednotné přihlašování](#test-sso) a ověřte, jestli konfigurace funguje.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
@@ -87,7 +87,7 @@ Pokud chcete povolit jednotné přihlašování služby Azure AD v Azure Portal,
 
 1. V části **základní konfigurace SAML** postupujte následovně:
 
-    a. Do pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/sp/<IDPID>`.
+    a. Do pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/sp/<IDPID>`
 
     b. Do pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2`
 
@@ -112,7 +112,7 @@ V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure 
    1. Do pole **název** zadejte **B. Simon**.  
    1. Do pole **uživatelské jméno** zadejte `<username>@<companydomain>.<extension>`. Například: `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a potom si poznamenejte hodnotu zobrazenou v poli **heslo** .
-   1. Vyberte **Vytvořit**.
+   1. Vyberte **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -227,7 +227,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu vyberete dlaždici DocuSign, měli byste se automaticky přihlásit k instanci DocuSign, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 - [Kurzy týkající se integrace aplikací SaaS s Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -236,6 +236,10 @@ Když na přístupovém panelu vyberete dlaždici DocuSign, měli byste se autom
 - [Co je podmíněný přístup ve službě Azure AD?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Vyzkoušejte si DocuSign s Azure AD](https://aad.portal.azure.com/)
+
+- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Jak chránit DocuSign pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 <!--Image references-->
 

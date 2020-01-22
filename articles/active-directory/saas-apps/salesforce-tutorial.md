@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 12/23/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71521348c5510696add4399d3046833d3b42193c
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 8d0793c863f4f682c967c7a5ae61c5a0b78cdb4d
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561881"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292531"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>Kurz: Azure Active Directory integraci jednotného přihlašování se službou Salesforce
 
@@ -50,6 +50,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 * Salesforce podporuje zřizování uživatelů **jenom v čase** .
 
 * Mobilní aplikace Salesforce se teď dá nakonfigurovat s Azure AD pro povolení jednotného přihlašování. V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
+* Jakmile nakonfigurujete Salesforce, můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-salesforce-from-the-gallery"></a>Přidání Salesforce z Galerie
 
@@ -241,3 +242,7 @@ Když kliknete na dlaždici Salesforce na přístupovém panelu, měli byste bý
 - [Konfigurace zřizování uživatelů](salesforce-provisioning-tutorial.md)
 
 - [Vyzkoušejte si Salesforce s Azure AD](https://aad.portal.azure.com)
+
+- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/protect-salesforce)
+
+- [Jak chránit Salesforce pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

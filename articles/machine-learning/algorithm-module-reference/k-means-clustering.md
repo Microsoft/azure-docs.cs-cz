@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 135b425ca87a309bc171e252d8ff04b2027a3c50
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7451758e758d597bfe63d92fe4789c8fa81b3dff
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213916"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311474"
 ---
 # <a name="module-k-means-clustering"></a>Modul: K-znamená clustering
 
-Tento článek popisuje, jak použít modul pro *clustering* v Návrháři Azure Machine Learning (Preview) k vytvoření nevýukového modelu pro clustering k. 
+Tento článek popisuje, jak použít modul pro *clusteringu* v Návrháři Azure Machine Learning k vytvoření nevýukového modelu clusteringu. 
  
 K-znamená, že je jedním z nejjednodušších a osvědčených *bezdohledných* algoritmů učení. Můžete použít algoritmus pro nejrůznější úlohy strojového učení, například: 
 
@@ -115,9 +115,9 @@ Po dokončení konfigurace a školení modelu máte model, který můžete použ
 
 Pokud jste použili modul [výukového modelu clusteringu](train-clustering-model.md) :
 
-1. Klikněte pravým tlačítkem na modul **výuka clusteringu modelu** .
+1. Vyberte modul **výuka clusteringu modelů** a otevřete pravý panel.
 
-2. Vyberte **trained model**a pak vyberte **Uložit jako trained model**.
+2. Vyberte kartu **výstupy** . výběrem ikony **Registrovat datovou sadu** uložte kopii proučeného modelu.
 
 Uložený model představuje školicí data v době, kdy jste model uložili. Pokud později aktualizujete školicí data použitá v kanálu, neaktualizuje uložený model. 
 
@@ -127,7 +127,7 @@ Pokud jste použili modul [výukového modelu clusteringu](train-clustering-mode
 
 1. Klikněte pravým tlačítkem na modul **výuka clusteringu modelu** .
 
-2. Vyberte možnost **datová sada výsledků**a pak vyberte **vizualizovat**.
+2. Vyberte **vizualizovat**.
 
 ### <a name="tips-for-generating-the-best-clustering-model"></a>Tipy pro generování nejlepšího modelu clusteringu  
 

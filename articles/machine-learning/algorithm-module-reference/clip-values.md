@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 68f73afbf81914938f78baad2cacda7327e7789a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ca35af997834a897572555e752597026b5159712
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428589"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314449"
 ---
 # <a name="clip-values"></a>Oříznutí hodnot
 
-Tento článek popisuje modul návrháře Azure Machine Learning (Preview).
+Tento článek popisuje modul návrháře Azure Machine Learning.
 
 Pomocí modulu Clip Values identifikujte a případně nahraďte hodnoty dat, které jsou nad nebo pod zadanou prahovou hodnotou středníku, konstantou nebo jinou náhradou.  
 
@@ -86,7 +86,7 @@ Pokud potřebujete pro některé sloupce použít ořezové metody nebo jiná kr
   
 1.  Spuštění kanálu  
   
-    Klikněte pravým tlačítkem na výstup modulu **hodnoty klipu** a vyberte **vizualizovat** a zkontrolujte hodnoty a ujistěte se, že operace oříznutí splnila vaše očekávání.  
+    Klikněte pravým tlačítkem myši na modul **hodnoty klipu** a vyberte **vizualizovat** nebo vyberte modul a přepněte na kartu **výstupy** na pravém panelu, klikněte na ikonu histogramu ve **výstupech portů**, zkontrolujte hodnoty a ujistěte se, že operace oříznutí splnila vaše očekávání.  
  
 ### <a name="examples-for-clipping-using-percentiles"></a>Příklady pro oříznutí pomocí percentilů
 

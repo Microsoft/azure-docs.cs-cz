@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/10/2020
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad7065ba6378bcb383e67b4a58d7c195e88679ca
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a9be353e6a030708ea0b9939689d8669506d3b80
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75890667"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289029"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Kurz: Integrace jednotného přihlašování (SSO) Azure AD pomocí NetSuite
 
@@ -48,6 +48,7 @@ NetSuite podporuje:
 * Jednotné přihlašování iniciované IDP
 * Zřizování uživatele JIT (just-in-time).
 * [Automatizované zřizování uživatelů](NetSuite-provisioning-tutorial.md).
+* Po nakonfigurování NetSuite můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 > [!NOTE]
 > Vzhledem k tomu, že identifikátor této aplikace je pevná řetězcová hodnota, může být v jednom klientovi nakonfigurovaná jenom jedna instance.
@@ -134,7 +135,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    a. Do pole **název** zadejte **B. Simon**.  
    b. Do pole **uživatelské jméno** zadejte username@companydomain.extension (například B.Simon@contoso.com).  
    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .  
-   d. Vyberte **Vytvořit**.
+   d. Vyberte **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -221,7 +222,7 @@ V této části povolíte uživateli B. Simon používat jednotné přihlašová
 
     ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/ns-new-role.png)
 
-    e. Vyberte **Uložit**.
+    e. Vyberte **Save** (Uložit).
 
     f. V horním navigačním panelu vyberte **oprávnění**. Pak vyberte **Nastavení**.
 
@@ -229,7 +230,7 @@ V této části povolíte uživateli B. Simon používat jednotné přihlašová
 
     g. Vyberte **jednotné přihlašování SAML**a pak vyberte **Přidat**.
 
-    h. Vyberte **Uložit**.
+    h. Vyberte **Save** (Uložit).
 
     i. V horním navigačním panelu vyberte **Nastavení**a pak vyberte **Správce instalace**.
 
@@ -247,7 +248,7 @@ V této části povolíte uživateli B. Simon používat jednotné přihlašová
 
     ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/ns-add-role.png)
 
-    m. Vyberte **Uložit**.
+    m. Vyberte **Save** (Uložit).
 
 ### <a name="create-the-netsuite-test-user"></a>Vytvořit testovacího uživatele NetSuite
 
@@ -265,3 +266,6 @@ Když na přístupovém panelu vyberete dlaždici NetSuite, měli byste se autom
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 - [Vyzkoušejte si NetSuite s Azure AD](https://aad.portal.azure.com/)
+- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Jak chránit NetSuite pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

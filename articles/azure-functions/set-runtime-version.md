@@ -3,16 +3,16 @@ title: Jak cílit na verze modulu runtime Azure Functions
 description: Azure Functions podporuje více verzí modulu runtime. Naučte se, jak určit běhovou verzi aplikace Function App hostované v Azure.
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 0031fe08ee1e77c35a78b2128615f08846c1b612
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.openlocfilehash: 60953d10aeb92083b0aad3432921c7c55bc77e39
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74942269"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294163"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Jak cílit na verze modulu runtime Azure Functions
 
-Aplikace Function App běží na konkrétní verzi Azure Functions runtime. Existují dvě hlavní verze: [1. x a 2. x](functions-versions.md), ve verzi Preview verze 3. x. Ve výchozím nastavení aplikace Function App, které jsou vytvořeny ve verzi 2. x modulu runtime. Tento článek vysvětluje, jak nakonfigurovat aplikaci Function App v Azure tak, aby běžela na zvolené verzi. Informace o tom, jak nakonfigurovat místní vývojové prostředí pro konkrétní verzi, naleznete v tématu [Code and test Azure Functions lokálně](functions-run-local.md).
+Aplikace Function App běží na konkrétní verzi Azure Functions runtime. Existují tři hlavní verze: [1. x, 2. x a 3. x](functions-versions.md). Ve výchozím nastavení se aplikace Function App vytvoří ve verzi 2. x modulu runtime. Tento článek vysvětluje, jak nakonfigurovat aplikaci Function App v Azure tak, aby běžela na zvolené verzi. Informace o tom, jak nakonfigurovat místní vývojové prostředí pro konkrétní verzi, naleznete v tématu [Code and test Azure Functions lokálně](functions-run-local.md).
 
 ## <a name="automatic-and-manual-version-updates"></a>Automatické a ruční aktualizace verze
 

@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 01/14/2020
 ms.author: anzaman
-ms.openlocfilehash: 44f97e3d9af9daac8d62ae42be76bd73dedbd453
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 370e9e515359e2e2e598db90aa379f796b13c3fe
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838270"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292395"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-api"></a>Přizpůsobení modelu osoby pomocí rozhraní Video Indexer API
 
@@ -35,38 +35,7 @@ Každý účet má omezení 50 modelů osob. Pokud nepotřebujete podporu modelu
 
 ## <a name="create-a-new-person-model"></a>Vytvoření nového modelu osoby
 
-Vytvoří nový model osoby v zadaném účtu. 
-
-### <a name="request-url"></a>Adresa URL požadavku
-
-Toto je požadavek POST.
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?name={name}&accessToken={accessToken}
-```
-
-Níže je požadavek v kudrlinkou.
-
-```curl
-curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?name={name}&accessToken={accessToken}"
-```
-
-[Podívejte se na požadované parametry a otestujte je pomocí portálu pro vývojáře video indexer](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?).
-
-### <a name="request-parameters"></a>Parametry žádosti 
-
-|**Název**|**Typ**|**Požadovanou**|**Popis**|
-|---|---|---|---|
-|location|řetězec|Ano|Oblast Azure, do které má být hovor směrován. Další informace najdete v tématu [oblasti a video indexer Azure](regions.md).|
-|ID|řetězec|Ano|Globálně jedinečný identifikátor účtu|
-|jméno|řetězec|Ano|Název pro model osoby|
-|accessToken|řetězec|Ano|Přístupový token (musí být v oboru [přístupového tokenu účtu](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) pro ověřování proti volání. Přístupové tokeny vyprší do 1 hodiny.|
-
-### <a name="request-body"></a>Text požadavku
-
-Pro toto volání není vyžadováno žádné další tělo žádosti.
-
-### <a name="response"></a>Odpověď
+Pokud chcete v zadaném účtu vytvořit nový model osoby, použijte rozhraní API pro [Vytvoření modelu person](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?) .
 
 Odpověď poskytuje název a generovaný identifikátor ID modelu osoby, který jste právě vytvořili, podle formátu níže uvedeného příkladu.
 
@@ -81,73 +50,15 @@ Při [nahrávání videa k indexování](https://api-portal.videoindexer.ai/docs
 
 ## <a name="delete-a-person-model"></a>Odstranění modelu osoby
 
-Odstraní vlastní model osoby ze zadaného účtu. 
+Pokud chcete odstranit vlastní pracovní model ze zadaného účtu, použijte rozhraní API pro [odstranění modelu person](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Person-Model?) . 
 
 Po úspěšném odstranění modelu osoby se index vašich aktuálních videí, která používala odstraněný model, zůstane beze změny, dokud je znovu neindexujte. Po přeindexování se Video Indexer ve vašich současných videích, která byla indexována pomocí tohoto modelu, nerozpoznala. Tyto plošky se ale ještě budou detekovat. Vaše aktuální videa, která byla indexována pomocí odstraněného modelu, teď budou používat výchozí pracovní model vašeho účtu. Pokud se plošky z odstraněného modelu také pojmenují ve výchozím modelu vašeho účtu, budou tyto plošky i nadále rozpoznány ve videích.
-
-### <a name="request-url"></a>Adresa URL požadavku
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels/{id}?accessToken={accessToken}
-```
-
-Níže je požadavek v kudrlinkou.
-```curl
-curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels/{id}?accessToken={accessToken}"
-```
-
-[Podívejte se na požadované parametry a otestujte je pomocí portálu pro vývojáře video indexer](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Person-Model?).
-
-### <a name="request-parameters"></a>Parametry žádosti
-
-|**Název**|**Typ**|**Požadovanou**|**Popis**|
-|---|---|---|---|
-|location|řetězec|Ano|Oblast Azure, do které má být hovor směrován. Další informace najdete v tématu [oblasti a video indexer Azure](regions.md).|
-|ID|řetězec|Ano|Globálně jedinečný identifikátor účtu|
-|id|řetězec|Ano|ID modelu osoby (vygenerované při vytvoření modelu osoby)|
-|accessToken|řetězec|Ano|Přístupový token (musí být v oboru [přístupového tokenu účtu](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) pro ověřování proti volání. Přístupové tokeny vyprší do 1 hodiny.|
-
-### <a name="request-body"></a>Text požadavku
-
-Pro toto volání není vyžadováno žádné další tělo žádosti.
-
-### <a name="response"></a>Odpověď
 
 Po úspěšném odstranění modelu osoby se nevrátí žádný obsah.
 
 ## <a name="get-all-person-models"></a>Získat modely všech osob
 
-Získá všechny modely osob v zadaném účtu. 
-
-### <a name="request-call"></a>Žádost o volání
-
-Toto je požadavek GET.
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?accessToken={accessToken}
-```
-
-Níže je požadavek v kudrlinkou.
-
-```curl
-curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?accessToken={accessToken}"
-```
-
-[Podívejte se na požadované parametry a otestujte je pomocí portálu pro vývojáře video indexer](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Person-Models?).
-
-### <a name="request-parameters"></a>Parametry žádosti
-
-|**Název**|**Typ**|**Požadovanou**|**Popis**|
-|---|---|---|---|
-|location|řetězec|Ano|Oblast Azure, do které má být hovor směrován. Další informace najdete v tématu [oblasti a video indexer Azure](regions.md).|
-|ID|řetězec|Ano|Globálně jedinečný identifikátor účtu|
-|accessToken|řetězec|Ano|Přístupový token (musí být v oboru [přístupového tokenu účtu](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) pro ověřování proti volání. Přístupové tokeny vyprší do 1 hodiny.|
-
-### <a name="request-body"></a>Text požadavku
-
-Pro toto volání není vyžadováno žádné další tělo žádosti.
-
-### <a name="response"></a>Odpověď
+Pokud chcete získat všechny modely osob v zadaném účtu, použijte rozhraní API pro [získání modelu person](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Person-Models?) .
 
 Odpověď obsahuje seznam všech obchodních modelů v účtu (včetně výchozího modelu osoby v zadaném účtu) a každé z jejich názvů a ID podle formátu níže uvedeného příkladu.
 
@@ -174,42 +85,9 @@ Jakmile k tomu dojde, rozpozná výskyty stejné plošky ve vašich dalších so
 
 Můžete aktualizovat obličej, který Video Indexer rozpoznat jako celebrit s novým názvem. Nový název, který udělíte, bude mít přednost před integrovaným rozpoznáváním celebrit.
 
-### <a name="request-call"></a>Žádost o volání
-
-Toto je požadavek POST.
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Videos/{videoId}/Index/Faces/{faceId}?accessToken={accessToken}&newName={newName}
-```
-
-Níže je požadavek v kudrlinkou.
-
-```curl
-curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Videos/{videoId}/Index/Faces/{faceId}?accessToken={accessToken}&newName={newName}"
-```
-
-[Podívejte se na požadované parametry a otestujte je pomocí portálu pro vývojáře video indexer](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Video-Face?).
-
-### <a name="request-parameters"></a>Parametry žádosti
-
-|**Název**|**Typ**|**Požadovanou**|**Popis**|
-|---|---|---|---|
-|location|řetězec|Ano|Oblast Azure, do které má být hovor směrován. Další informace najdete v tématu [oblasti a video indexer Azure](regions.md).|
-|ID|řetězec|Ano|Globálně jedinečný identifikátor účtu|
-|videoId|řetězec|Ano|ID videa, ve kterém se zobrazí plocha, kterou chcete aktualizovat Tato se vytvoří, když se video nahraje a naindexuje.|
-|faceId|celé číslo|Ano|ID pro plochu, která se aktualizuje FaceId můžete získat z indexu videa.|
-|accessToken|řetězec|Ano|Přístupový token (musí být v oboru [přístupového tokenu účtu](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) pro ověřování proti volání. Přístupové tokeny vyprší do 1 hodiny.|
-|jméno|řetězec|Ano|Nový název, ve kterém se má obličej aktualizovat|
+K aktualizaci obličeje použijte rozhraní API pro [video vzhled](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Video-Face?) .
 
 Názvy jsou pro pracovní modely jedinečné, takže pokud poskytnete dvěma různým plochám stejného modelu stejný název, jako je stejná hodnota parametru **Name** , video indexer zobrazení obličeje jako stejnou osobu a po přeindexaci videa je konverguje. 
-
-### <a name="request-body"></a>Text požadavku
-
-Pro toto volání není vyžadováno žádné další tělo žádosti.
-
-### <a name="response"></a>Odpověď
-
-V případě, že se obličej úspěšně aktualizoval, nevrátí se žádný obsah.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: ebe9a0368f2111fa6787b7fa4f4432d7ad4106c3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3df66c80ab96bbcb9a58f91989cfd63b1e13a67f
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485952"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312392"
 ---
 # <a name="two-class-decision-forest-module"></a>Modul doménové struktury se dvěma třídami
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Pomocí tohoto modulu můžete vytvořit model strojového učení založený na algoritmu rozhodovacích doménových struktur.  
 
@@ -87,17 +87,12 @@ Další informace najdete v tématu o [rozhodovacích doménových strukturách]
 9. Připojte s popiskem datovou sadu a jeden z [školicích modulů](module-reference.md):  
   
     -   Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, použijte modul [vlakového modelu](./train-model.md) .  
-  
     
 ## <a name="results"></a>Výsledky
 
 Po dokončení školení:
 
-+ Chcete-li zobrazit strom, který byl vytvořen při každé iteraci, klikněte pravým tlačítkem na výstup modulu [vlakového modelu](./train-model.md) a vyberte **vizualizovat**.
-  
-    Kliknutím na jednotlivé stromové struktury přejdete k podrobnostem o rozdělení a uvidíte pravidla pro každý uzel.
-
-+ Snímek modelu uložíte tak, že kliknete pravým tlačítkem na výstup **trained model** a vyberete **Uložit model**. Uložený model není aktualizován při následných spuštěních kanálu.
++ Pokud chcete uložit snímek výukového modelu, vyberte kartu **výstupy** na pravém panelu modulu **výuka modelu** . Výběrem ikony **Registrovat datovou sadu** uložte model jako opakovaně použitelný modul.
 
 + Chcete-li použít model pro bodování, přidejte modul určení **skóre modelu** do kanálu.
 

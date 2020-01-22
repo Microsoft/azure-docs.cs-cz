@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 285456c87835344aba083c68a7876ecc78d9e45e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 09ae896d26d534d3f9d5651834e181d37581c8f3
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76270555"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76288948"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Integrace Azure Active Directory pro Azure Red Hat OpenShift
 
@@ -90,8 +90,8 @@ Podrobnosti o vytvoření nové aplikace Azure AD najdete v tématu [Registrace 
 ## <a name="add-api-permissions"></a>Přidat oprávnění rozhraní API
 
 1. V části **Spravovat** klikněte na **oprávnění rozhraní API**.
-2. Klikněte na **Přidat oprávnění** a vyberte **Azure Active Directory Graph** a pak **delegovaná oprávnění** .
-3. V níže uvedeném seznamu rozbalte položku **uživatel** a ujistěte se, že je povolena možnost **uživatel. čtení** .
+2. Klikněte na **Přidat oprávnění** a vyberte **Azure Active Directory Graph** a pak **delegovaná oprávnění**. 
+3. V níže uvedeném seznamu rozbalte položku **uživatel** a povolte oprávnění **uživatel. číst** . Pokud je ve výchozím nastavení povolená možnost **User. Read** , ujistěte se, že se jedná o uživatele s oprávněním **Azure Active Directory Graph** **. číst**, *ne* oprávnění **Microsoft Graph** **uživatel. čtení**.
 4. Přejděte nahoru a vyberte **oprávnění aplikace**.
 5. Rozbalte položku **adresář** v následujícím seznamu a povolte možnost **adresář. ReadAll**
 6. Kliknutím na tlačítko **Přidat oprávnění** přijměte změny.

@@ -4,16 +4,16 @@ description: Poskytuje přehled služby Azure Backup a jejich podíl na strategi
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: 8a902736a8df703b33afbcb108e9e970e200a4dd
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: cf48090b2c32f0c3a1c8170873cb8d6a771fe21f
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668011"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294299"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Co je služba Azure Backup?
 
-Služba Azure Backup poskytuje jednoduchá, bezpečná a nákladově efektivní řešení pro zálohování vašich dat a jejich obnovení z Microsoft Azure cloudu.
+Služba Azure Backup poskytuje jednoduchá, zabezpečená a cenově výhodná řešení pro zálohování vašich dat a jejich obnovení z cloudu Microsoft Azure.
 
 > [!VIDEO https://www.youtube.com/embed/elODShatt-c]
 
@@ -21,7 +21,7 @@ Služba Azure Backup poskytuje jednoduchá, bezpečná a nákladově efektivní 
 
 - **Místní** zálohování souborů, složek, stavu systému pomocí [agenta Microsoft Azure Recovery Services (MARS)](backup-support-matrix-mars-agent.md). Nebo použijte agenta DPM nebo Azure Backup Server (MABS) k ochraně místních virtuálních počítačů ([Hyper-V](back-up-hyper-v-virtual-machines-mabs.md) a [VMware](backup-azure-backup-server-vmware.md)) a dalších [místních úloh](backup-mabs-protection-matrix.md) .
 - **Virtuální počítače Azure** - [zálohovat celé virtuální počítače s Windows/Linux](backup-azure-vms-introduction.md) (pomocí rozšíření zálohování) nebo zálohovat soubory, složky a stav systému pomocí [agenta Mars](backup-azure-manage-mars.md).
-- **Soubory Azure sdílí** - [zálohování a obnovení sdílených složek Azure do účtu úložiště](backup-azure-files.md) .
+- **Sdílené** složky azure Files - [zálohují sdílené složky Azure do účtu úložiště](backup-afs.md) .
 - **SQL Server ve virtuálních počítačích azure** -  [zálohování SQL Server databází běžících na virtuálních počítačích Azure](backup-azure-sql-database.md)
 - **SAP HANA databáze ve virtuálních počítačích azure** - [zálohování SAP HANA databáze běžící na virtuálních počítačích Azure](backup-azure-sap-hana-database.md)
 

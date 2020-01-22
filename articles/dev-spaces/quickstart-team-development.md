@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: V tomto rychlém startu se dozvíte, jak provádět vývoj týmu Kubernetes pomocí kontejnerů a mikroslužeb pomocí Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 86d8d559a2d6408eb6846705887a82b440d50d7b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b84bb67556eda3a453ede5a6fb745d8ae472fb6c
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770828"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290406"
 ---
 # <a name="quickstart-team-development-on-kubernetes---azure-dev-spaces"></a>Rychlý Start: vývoj pro týmy v Kubernetes – Azure Dev Spaces
 
@@ -137,7 +137,7 @@ azds space select -n dev/azureuser1 -y
 azds space select -n dev/azureuser2 -y
 ```
 
-Výše uvedené příkazy vytvářejí dva podřízené prostory ve *vývojech* s názvem *azureuser1* a *azureuser2*. Tyto dva podřízené prostory reprezentují samostatné vývojové prostory pro vývojáře *azureuser1* a *azureuser2* , které se používají k provádění změn v ukázkové aplikaci.
+Výše uvedené příkazy vytvářejí dva podřízené prostory ve *vývojech* s názvem *azureuser1* a *azureuser2*. Tyto dva podřízené prostory reprezentují různé vývojové prostory pro vývojáře *azureuser1* a *azureuser2* , které se používají k provádění změn v ukázkové aplikaci.
 
 Pomocí příkazu `azds space list` vypište všechny vývojové prostory a potvrďte možnost *dev/azureuser2* .
 

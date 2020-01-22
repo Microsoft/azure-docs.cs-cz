@@ -1,5 +1,5 @@
 ---
-title: Použití funkcí usnadnění v Návrháři (Preview)
+title: Použití funkcí usnadnění v Návrháři
 titleSuffix: Azure Machine Learning
 description: Přečtěte si o funkcích, které jsou k dispozici v návrháři, klávesových zkratek a obrazovkách čtečky
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 ms.author: peterlu
 author: peterclu
 ms.date: 01/09/2020
-ms.openlocfilehash: 9c899ae16d16fc76f0ea8d24169451556cf24025
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 7d5c8047fea8e9081de08b582c537711714ea463
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76158010"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314228"
 ---
-# <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>Použití klávesnice k použití návrháře Azure Machine Learning (Preview)
+# <a name="use-a-keyboard-to-use-azure-machine-learning-designer"></a>Použití klávesnice k použití návrháře Azure Machine Learning
 
 Naučte se používat čtečku klávesnice a obrazovky k používání návrháře Azure Machine Learning. Seznam klávesových zkratek, které fungují všude v Azure Portal, najdete v tématu [klávesové zkratky v Azure Portal](../azure-portal/azure-portal-keyboard-shortcuts.md)
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 698c198f58ead88b01b1c4b8b2e1fd9da4198c93
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 0ee3d1d896d99d892d0a41799c4c1695633d29c4
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277466"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291494"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Konfigurace úloh SAP s využitím služby Zóny dostupnosti Azure
 [Zóny dostupnosti Azure](https://docs.microsoft.com/azure/availability-zones/az-overview) je jednou z funkcí s vysokou dostupností, které poskytuje Azure. Použití Zóny dostupnosti zlepšuje celkovou dostupnost úloh SAP v Azure. Tato funkce je už v některých [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/)dostupná. V budoucnu bude k dispozici ve více oblastech.
@@ -58,7 +58,7 @@ Když nasadíte virtuální počítače Azure napříč Zóny dostupnosti a vytv
 - Při nasazení do Zóny dostupnosti Azure je nutné použít [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/) . 
 - Mapování výčtů zóny na fyzické zóny je vyřešeno na základě předplatného Azure. Pokud k nasazení systémů SAP používáte různá předplatná, musíte pro každé předplatné definovat ideální zóny.
 - Skupiny dostupnosti Azure nemůžete nasadit v rámci zóny dostupnosti Azure, pokud nepoužíváte [skupinu umístění s použitím Azure Proximity](https://docs.microsoft.com/azure/virtual-machines/linux/co-location). Způsob nasazení vrstvy SAP DBMS a centrálních služeb v různých zónách a zároveň nasazení vrstvy aplikace SAP pomocí skupin dostupnosti a zajištění bezprostřední blízkosti virtuálních počítačů je popsána v článku [skupiny umístění blízkosti Azure pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md). Pokud nepoužíváte skupiny umístění blízkosti Azure, musíte zvolit jednu nebo druhou jako architekturu nasazení pro virtuální počítače.
-- K vytvoření řešení clusteru s podporou převzetí služeb při selhání založeného na clusteringu Windows Server s podporou převzetí služeb při selhání nebo Linux Pacemaker nejde použít [Azure Basic Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) . Místo toho je potřeba použít [SKU Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones).
+- K vytvoření řešení clusteru s podporou převzetí služeb při selhání založeného na clusteringu Windows Server s podporou převzetí služeb při selhání nebo Linux Pacemaker nejde použít [Azure Basic Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) . Místo toho je potřeba použít [SKU Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones).
 
 
 

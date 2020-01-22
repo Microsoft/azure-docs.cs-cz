@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: a0faba895c5717d061bacee2ce724c20464f8150
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 91434a5392f37a297e474fedf00fac6b1e4d8362
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497691"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314160"
 ---
 # <a name="remove-duplicate-rows-module"></a>Odebrat modul duplicitních řádků
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Pomocí tohoto modulu můžete z datové sady odebrat možné duplicity.
 
@@ -26,15 +26,15 @@ Předpokládejme například, že vaše data vypadají jako následující a př
 
 | PatientID | Iniciály| Pohlaví|Věk|Pustil|
 |----|----|----|----|----|
-|1\. místo|F.M.| mil.| 53| Svalbard|
-|2| F.A.M.| mil.| 53| Svalbard|
-|3| F.A.M.| mil.| 24| Svalbard|
-|3| F.M.| mil.| 24| Revize|
-|4| F.M.| mil.| 23| Revize|
+|1\. místo|F.M.| mil.| 53| led|
+|2| F.A.M.| mil.| 53| led|
+|3| F.A.M.| mil.| 24| led|
+|3| F.M.| mil.| 24| úno|
+|4| F.M.| mil.| 23| úno|
 | | F.M.| mil.| 23| |
 |5| F.A.M.| mil.| 53| |
-|6| F.A.M.| mil.| Pak| |
-|7| F.A.M.| mil.| Pak| |
+|6| F.A.M.| mil.| NaN| |
+|7| F.A.M.| mil.| NaN| |
 
 V tomto příkladu je jasně uvedeno více sloupců s potenciálně duplicitními daty. Bez ohledu na to, jestli jsou ve skutečnosti duplicity, záleží na vašich znalostech dat. 
 
@@ -71,7 +71,7 @@ Když spustíte modul, vytvoří se kandidátská datová sada a vrátí sadu ř
 
 5. Spuštění kanálu
 
-6. Chcete-li zkontrolovat výsledky, klikněte pravým tlačítkem na modul, vyberte možnost **datová sada výsledků**a klikněte na **vizualizovat**. 
+6. Chcete-li zkontrolovat výsledky, klikněte pravým tlačítkem na modul a vyberte **vizualizovat**. 
 
 > [!TIP]
 > Pokud jsou výsledky obtížné pochopit nebo pokud chcete vyloučit některé sloupce z úvah, můžete sloupce odebrat pomocí modulu [Výběr sloupců v datové sadě](./select-columns-in-dataset.md) .

@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/15/2020
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29cf5eebfb485837ee9656909323688384a4b890
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 9f6ab2d5811060b7dc36323a80fed6961b8cf5a9
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028593"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290678"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s Cisco Webex
 
@@ -42,7 +41,11 @@ Chcete-li začít, potřebujete následující položky:
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí. Cisco Webex podporuje jednotné přihlašování spouštěné v **SP** a podporuje **automatizované** zřizování uživatelů.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
+
+* Cisco Webex podporuje jednotné přihlašování iniciované v **SP** .
+* Cisco Webex podporuje **automatizované** zřizování uživatelů.
+* Po nakonfigurování Cisco Webex můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-cisco-webex-from-the-gallery"></a>Přidání Cisco Webex z Galerie
 
@@ -91,33 +94,15 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     Do textového pole **přihlašovací adresa URL** vložte hodnotu **adresy URL odpovědi**, která se automaticky vyplní nahráním souboru s metadaty SP.
 
-5. Aplikace Cisco Webex očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele.
+1. Aplikace Cisco Webex očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
-    ![image](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
-6. Kromě toho aplikace Cisco Webex očekává, že se v odpovědi SAML vrátí zpátky několik atributů. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce:
-    
+1. Kromě toho aplikace Cisco Webex očekává, že se v odpovědi SAML vrátí zpátky několik atributů, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
+  
     | Name (Název) |  Zdrojový atribut|
     | ---------------|--------- |
     | UID | user.userprincipalname |
-
-    a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
-
-    ![image](common/new-save-attribute.png)
-
-    ![image](common/new-attribute-details.png)
-
-    b. Do textového pole **název** zadejte název atributu zobrazeného pro tento řádek.
-
-    c. Ponechte **obor názvů** prázdný.
-
-    d. Jako **atribut**vyberte zdroj.
-
-    e. V seznamu **zdrojový atribut** zadejte hodnotu atributu zobrazenou pro tento řádek.
-
-    f. Klikněte na tlačítko **Ok**
-
-    g. Klikněte na možnost **Uložit**.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
@@ -221,3 +206,7 @@ Když na přístupovém panelu vyberete dlaždici Cisco Webex, měli byste se au
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Vyzkoušejte Cisco Webex s Azure AD](https://aad.portal.azure.com)
+
+- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/protect-webex)
+
+- [Jak chránit Cisco Webex pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: d3a12dec64d481c5c877039fecc71b46f224e91d
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 8208bbf4d196091a6fe4cd962ddc7373d303e125
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541826"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312426"
 ---
-# <a name="what-is-azure-machine-learning-designer-preview"></a>Co je Návrhář Azure Machine Learning (Preview)? 
+# <a name="what-is-azure-machine-learning-designer"></a>Co je Azure Machine Learning Designer? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 Azure Machine Learning Designer vám umožňuje vizuálně propojit [datové sady](#datasets) a [moduly](#module) na interaktivním plátně a vytvářet modely strojového učení. Informace o tom, jak začít s návrhářem, najdete v tématu [kurz: předpověď ceny automobilu pomocí návrháře.](tutorial-designer-automobile-price-train-score.md)
@@ -116,7 +116,7 @@ Návrhář vytvoří stejný objekt [PublishedPipeline](https://docs.microsoft.c
 
 ## <a name="moving-from-the-visual-interface-to-the-designer"></a>Přesun z vizuálního rozhraní do návrháře
 
-Rozhraní jazyka Visual (Preview) bylo aktualizováno a nyní je Azure Machine Learning Designer (Preview). Návrhář byl znovu navržen tak, aby používal back-end založený na kanálu, který je plně integrován s ostatními funkcemi Azure Machine Learning. 
+Vizuální rozhraní (Preview) bylo aktualizováno a je nyní Azure Machine Learning Designer. Návrhář byl znovu navržen tak, aby používal back-end založený na kanálu, který je plně integrován s ostatními funkcemi Azure Machine Learning. 
 
 V důsledku těchto aktualizací se některé koncepty a pojmy pro vizuální rozhraní změnily nebo přejmenovaly. Nejdůležitější koncepční změny najdete v následující tabulce. 
 

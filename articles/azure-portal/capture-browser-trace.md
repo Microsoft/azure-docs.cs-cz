@@ -3,18 +3,18 @@ title: Zaznamenat trasování prohlížeče pro řešení potíží | Microsoft 
 description: Zachyťte informace o síti z trasování v prohlížeči, abyste pomohli řešit problémy s Azure Portal.
 services: azure-portal
 keywords: ''
-author: mblythe
+author: mgblythe
 ms.author: mblythe
 ms.date: 01/09/2020
 ms.topic: troubleshooting
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 86a1f522810a29fa2f3188a2ef3a5e0a470187ba
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 2b506c9d15dafcd23b24207fe15ed0532939209f
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030364"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310692"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>Zaznamenat trasování prohlížeče pro řešení potíží
 
@@ -24,7 +24,7 @@ Pokud řešíte problém s Azure Portal a potřebujete kontaktovat podporu Micro
 
 Google Chrome a Microsoft Edge (chrom) jsou založené na [projektu chrom Open Source](https://www.chromium.org/Home). Následující kroky ukazují, jak používat vývojářské nástroje, které jsou ve dvou prohlížečích velmi podobné. Další informace najdete v tématu [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) a [Microsoft Edge (chrom) vývojářské nástroje](/microsoft-edge/devtools-guide-chromium).
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). _Před_ zahájením trasování je důležité se přihlásit, aby trasování neobsahovalo citlivé informace související s vaším přihlášením. 
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com). _Před_ zahájením trasování je důležité se přihlásit, aby trasování neobsahovalo citlivé informace související s vaším přihlášením. 
 
 1. Začněte nahrávat kroky, které provedete na portálu, pomocí [záznamu postupu](https://support.microsoft.com/help/22878/windows-10-record-steps).
 
@@ -70,7 +70,7 @@ Google Chrome a Microsoft Edge (chrom) jsou založené na [projektu chrom Open S
 
 Následující kroky ukazují, jak používat vývojářské nástroje v Microsoft Edge (EdgeHTML). Další informace najdete v tématu [Microsoft Edge (EdgeHTML) vývojářské nástroje](/microsoft-edge/devtools-guide).
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). _Před_ zahájením trasování je důležité se přihlásit, aby trasování neobsahovalo citlivé informace související s vaším přihlášením. 
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com). _Před_ zahájením trasování je důležité se přihlásit, aby trasování neobsahovalo citlivé informace související s vaším přihlášením. 
 
 1. Začněte nahrávat kroky, které provedete na portálu, pomocí [záznamu postupu](https://support.microsoft.com/help/22878/windows-10-record-steps).
 
@@ -126,7 +126,7 @@ Následující kroky ukazují, jak používat vývojářské nástroje v Apple S
 
         ![Snímek obrazovky s pokročilými preferencemi Safari](media/capture-browser-trace/safari-show-develop-menu.png)
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). _Před_ zahájením trasování je důležité se přihlásit, aby trasování neobsahovalo citlivé informace související s vaším přihlášením. 
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com). _Před_ zahájením trasování je důležité se přihlásit, aby trasování neobsahovalo citlivé informace související s vaším přihlášením. 
 
 1. Začněte nahrávat kroky, které provedete na portálu. Další informace najdete v tématu [Jak nahrávat obrazovku na Macu](https://support.apple.com/HT208721).
 

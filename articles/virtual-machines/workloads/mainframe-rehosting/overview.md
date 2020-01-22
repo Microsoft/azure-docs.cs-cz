@@ -10,18 +10,18 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 58755a0ac49b9549813ddb507dfbd986d83dfce5
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: ccdeefabeedfca4959239696361ccce0bc6c1c78
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305853"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289794"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Opětovné hostování sálového počítače na virtuálních počítačích Azure
 
-Migrace úloh z sálových prostředí do cloudu vám umožní modernizovat infrastrukturu a často si ušetřit náklady. Mnohé úlohy je možné přenést do Azure s pouze drobnými změnami kódu, jako je například aktualizace názvů databází.
+Migrace úloh z sálových prostředí do cloudu vám umožní modernizovat infrastrukturu a často si ušetřit náklady. Řadu úloh je možné přenést do Azure jenom s drobnými změnami kódu, jako je třeba aktualizace názvů databází.
 
-Obecně řečeno pojem sálový počítač znamená velký počítačový systém. Konkrétně Velká většina aktuálně používaného systému je systémy IBM System Z nebo IBM kompatibilní s modulem plug-in, které používají MVS, DOS, VSE, OS/390 nebo Z/OS.
+Obecně řečeno pojem *sálový* počítač znamená velký počítačový systém. Konkrétně Velká většina aktuálně používaného systému je systémy IBM System Z nebo IBM kompatibilní s modulem plug-in, které používají MVS, DOS, VSE, OS/390 nebo Z/OS.
 
 Virtuální počítač Azure slouží k izolaci a správě prostředků konkrétní aplikace v jediné instanci. Sálové počítače, jako je například IBM z/OS, používají pro tento účel logické oddíly (LPARS). Sálový disk může používat jeden LPAR pro oblast CICS s přidruženými COBOL programy a samostatnou LPAR pro databázi IBM Db2. Typická [n-vrstvá aplikace v Azure](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server) nasazuje virtuální počítače Azure do virtuální sítě, která se dá rozdělit do podsítí pro každou vrstvu.
 
@@ -76,7 +76,7 @@ Informace o tom, jak začít, najdete v článku [IBM DB2 pureScale v Azure](/az
 
 Když migrujete sálové úlohy do infrastruktury Azure jako služby (IaaS), můžete si vybrat z několika typů škálovatelných výpočetních prostředků na vyžádání, včetně virtuálních počítačů Azure. Azure nabízí řadu virtuálních počítačů se systémy [Linux](/azure/virtual-machines/linux/overview) a [Windows](/azure/virtual-machines/windows/overview) .
 
-### <a name="compute"></a>Compute
+### <a name="compute"></a>Služby Compute
 
 Azure COMPUTE vyrovnává favorably s kapacitou sálového počítače. Pokud uvažujete o přesunutí úlohy sálového počítače do Azure, porovnejte metriku sálových počítačů s 1 000 000 instrukcí za sekundu (MIPS) na virtuální procesory. 
 
@@ -100,7 +100,7 @@ Přečtěte si, jak [přesunout sálové úložiště do Azure](./concepts/mainf
 
 ### <a name="backup-and-recovery"></a>Backup a obnovení
 
-Udržování vlastního webového serveru pro zotavení po havárii může být nákladným umístěním. Azure má snadno implementované a nákladově efektivní možnosti pro [zálohování](/azure/backup/backup-introduction-to-azure-backup), [obnovu](/azure/site-recovery/site-recovery-overview)a redundanci v [](/azure/storage/common/storage-redundancy) místní nebo regionální úrovni nebo prostřednictvím geografické redundance.
+Udržování vlastního webového serveru pro zotavení po havárii může být nákladným umístěním. Azure má snadno implementované a nákladově efektivní možnosti pro [zálohování](/azure/backup/backup-introduction-to-azure-backup), [obnovu](/azure/site-recovery/site-recovery-overview)a [redundanci](/azure/storage/common/storage-redundancy) v místní nebo regionální úrovni nebo prostřednictvím geografické redundance.
 
 ## <a name="azure-government-for-mainframe-migrations"></a>Azure Government pro migrace sálového počítače
 
@@ -110,15 +110,15 @@ Azure Government získala dočasnou autoritu pro provoz (P-ATO) pro FedRAMP vyso
 
 Začněte stažením [Microsoft Azure Government cloudu pro aplikace pro sálové počítače](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/en-us/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Zeptejte se našich [partnerů](partner-workloads.md) , aby vám pomohly migrovat nebo znovu hostovat vaše sálové aplikace. Podrobné pokyny týkající se výběru partnerského řešení najdete na webu [moderning Alliance pro platformy](https://www.platformmodernization.org/pages/mainframe.aspx) .
+Zeptejte se našich [partnerů](partner-workloads.md) , aby vám pomohly migrovat nebo znovu hostovat vaše sálové aplikace. 
 
 Viz také:
 
 - [Dokumenty White paper o tématech z sálového počítače](mainframe-white-papers.md)
 - [Migrace sálového počítače](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Odstraňování potíží](/azure/virtual-machines/troubleshooting/)
+- [Řešení potíží](/azure/virtual-machines/troubleshooting/)
 - [Migrace Demystifying z sálového počítače do Azure](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

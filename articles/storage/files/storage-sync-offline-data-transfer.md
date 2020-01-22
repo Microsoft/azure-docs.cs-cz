@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b00948f8d0e1eb8538354a6c16febf81bd4d1f16
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b1c167c71907e5f8af1006dfabd8f81ce4425d09
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457378"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291154"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync"></a>Migrace hromadných dat na Azure File Sync
 Hromadná data můžete migrovat do Azure File Sync dvěma způsoby:
@@ -79,7 +79,7 @@ Protože server dokončí počáteční synchronizaci oboru názvů, Data Box hr
 Nyní můžete vyčistit pracovní sdílenou složku a ušetřit tak náklady:
 
 1. V okně **Vlastnosti koncového bodu serveru** , když je stav **dokončený**, vyberte **Zakázat offline přenos dat**.
-2. Zvažte odstranění pracovní sdílené složky za účelem úspory nákladů. Pracovní sdílená složka pravděpodobně neobsahuje seznamy řízení přístupu k souborům a složkám, takže není velmi užitečné. Pro účely zálohování v čase vytvořte skutečný [snímek synchronizace sdílené složky Azure](storage-snapshots-files.md). Můžete [nastavit Azure Backup pro pořizování snímků]( ../../backup/backup-azure-files.md) podle plánu.
+2. Zvažte odstranění pracovní sdílené složky za účelem úspory nákladů. Pracovní sdílená složka pravděpodobně neobsahuje seznamy řízení přístupu k souborům a složkám, takže není velmi užitečné. Pro účely zálohování v čase vytvořte skutečný [snímek synchronizace sdílené složky Azure](storage-snapshots-files.md). Můžete [nastavit Azure Backup pro pořizování snímků]( ../../backup/backup-afs.md) podle plánu.
 
 Režim offline přenosu dat zakažte pouze v případě, že je stav **dokončen** nebo pokud chcete operaci zrušit z důvodu neplatného nastavení. Pokud režim během nasazování zakážete, začnou se soubory nahrávat ze serveru i v případě, že je vaše pracovní sdílená složka stále k dispozici.
 

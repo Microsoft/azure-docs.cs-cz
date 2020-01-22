@@ -1,6 +1,6 @@
 ---
 title: Referenční informace k modulům a algoritmům
-description: Seznamte se s moduly dostupnými v Návrháři Azure Machine Learning (Preview).
+description: Další informace o modulech, které jsou k dispozici v Návrháři Azure Machine Learning
 titleSuffix: Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
@@ -9,16 +9,16 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 12/17/2019
-ms.openlocfilehash: 659c205bd12d7ca27bfc28e3ab6e62f58d9743ac
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c265c2386b31fd02a5aa635c343be5d3cb227722
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978658"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312171"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Reference k modulu & algoritmu pro návrháře Azure Machine Learning
 
-Tento referenční obsah poskytuje technické informace o každém algoritmu a modulech strojového učení, které jsou dostupné v Azure Machine Learning designeru (Preview).
+Tento referenční obsah poskytuje technické informace o každém algoritmu a modulech strojového učení, které jsou k dispozici v Návrháři Azure Machine Learning.
 
 Každý modul představuje sadu kódu, který může běžet nezávisle a provede úlohu strojového učení s ohledem na požadované vstupy. Modul může obsahovat konkrétní algoritmus nebo provést úkol, který je důležitý ve strojovém učení, jako je například chybějící hodnota, nebo statistická analýza.
 

@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 01/16/2020
 ms.author: shvija
-ms.openlocfilehash: 96eaae81a25e361c0041fb02099b8e0cb9da8c28
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: de5b95bd10bf72f60ba5d63c4b3a799556fcce33
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260445"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76309774"
 ---
 # <a name="troubleshooting-guide-for-azure-event-hubs"></a>Průvodce odstraňováním potíží pro Azure Event Hubs
 Tento článek poskytuje některé výjimky .NET vygenerované Event Hubs rozhraní API .NET Framework a také další tipy pro řešení problémů. 
@@ -104,18 +104,7 @@ ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The r
 Následující postup vám může pomáhat s odstraňováním potíží s připojením/vypršením časového limitu pro všechny služby v rámci *. servicebus.windows.net. 
 
 - Vyhledejte `https://<yournamespacename>.servicebus.windows.net/`nebo [wget](https://www.gnu.org/software/wget/) . Pomáhá s kontrolou, jestli máte problémy s filtrováním IP adres nebo virtuální sítí nebo s řetězem certifikátů (nejběžnější při použití sady Java SDK).
-- Spusťte následující příkaz, který zkontroluje, jestli je v bráně firewall blokovaný port. Použité porty jsou 443 (HTTPS), 5671 (AMQP) a 9093 (Kafka). V závislosti na knihovně, kterou používáte, se používají také jiné porty. Tady je ukázkový příkaz, který zkontroluje, jestli je port 5671 blokovaný.
 
-    ```powershell
-    tnc <yournamespacename>.servicebus.windows.net -port 5671
-    ```
-
-    V Linuxu:
-
-    ```shell
-    telnet <yournamespacename>.servicebus.windows.net 5671
-    ```
-    
     Příklad úspěšné zprávy:
     
     ```xml
@@ -131,6 +120,17 @@ Následující postup vám může pomáhat s odstraňováním potíží s připo
             Bad Request. To know more visit https://aka.ms/sbResourceMgrExceptions. . TrackingId:b786d4d1-cbaf-47a8-a3d1-be689cda2a98_G22, SystemTracker:NoSystemTracker, Timestamp:2019-12-27T13:12:40
         </Detail>
     </Error>
+    ```
+- Spusťte následující příkaz, který zkontroluje, jestli je v bráně firewall blokovaný port. Použité porty jsou 443 (HTTPS), 5671 (AMQP) a 9093 (Kafka). V závislosti na knihovně, kterou používáte, se používají také jiné porty. Tady je ukázkový příkaz, který zkontroluje, jestli je port 5671 blokovaný.
+
+    ```powershell
+    tnc <yournamespacename>.servicebus.windows.net -port 5671
+    ```
+
+    V Linuxu:
+
+    ```shell
+    telnet <yournamespacename>.servicebus.windows.net 5671
     ```
 - Pokud dochází k problémům s přerušovaným připojením, spusťte následující příkaz, který zkontroluje, jestli nedošlo k vyřazeným paketům. Tento příkaz se pokusí vytvořit 25 různých připojení TCP každé 1 sekundy ke službě. Pak můžete zjistit, kolik z nich bylo úspěšné/neúspěšné, a také zobrazit latenci připojení TCP. `psping` nástroj si můžete stáhnout [tady](/sysinternals/downloads/psping).
 

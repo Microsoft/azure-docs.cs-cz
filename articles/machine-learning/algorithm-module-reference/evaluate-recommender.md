@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 38144d5df04427a82989b78843466ecd55386196
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0890e13acbba8dae31de28d7c78a81bd9b516853
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428536"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312256"
 ---
 # <a name="evaluate-recommender"></a>Vyhodnocení doporučovacího systému
 
-Tento článek popisuje, jak použít modul vyhodnotit doporučení v Návrháři Azure Machine Learning (Preview). Cílem je změřit přesnost předpovědi, kterou vytvořil model doporučení. Pomocí tohoto modulu můžete vyhodnotit různé druhy doporučení:  
+Tento článek popisuje, jak v Návrháři Azure Machine Learning použít modul pro vyhodnocení doporučených postupů. Cílem je změřit přesnost předpovědi, kterou vytvořil model doporučení. Pomocí tohoto modulu můžete vyhodnotit různé druhy doporučení:  
   
 -   Odhad hodnocení pro uživatele a položku    
 -   Položky, které se doporučují pro uživatele  

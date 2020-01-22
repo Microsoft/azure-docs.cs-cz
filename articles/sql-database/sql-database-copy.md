@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 11/14/2019
-ms.openlocfilehash: b3bc99d0fbdb551af0fb3711d74db537d3f9b1a5
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e1df345fb9a89972ad1857a937c22d6e10ad1fba
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421341"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289403"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Kopírování reakční konzistentní kopie databáze SQL Azure
 
@@ -151,7 +151,7 @@ Monitorujte proces kopírování dotazem na zobrazení sys. databases a sys. dm_
 > Pokud se rozhodnete zrušit kopírování během procesu, spusťte příkaz [drop Database](https://msdn.microsoft.com/library/ms178613.aspx) v nové databázi. Také spuštění příkazu DROP DATABASE na zdrojové databázi také zruší proces kopírování.
 
 > [!IMPORTANT]
-> Pokud potřebujete vytvořit kopii s podstatně menším objektem typu SLO, než je zdroj, cílová databáze nemusí mít dostatek prostředků k dokončení procesu osazení a může způsobit selhání aplikace kopírování. V tomto scénáři použijte k vytvoření kopie na jiném serveru nebo jiné oblasti požadavek geografického obnovení. Další informace najdete v tématu [obnovení databáze SQL Azure pomocí záloh databáze](sql-database-recovery-using-backups.md#geo-restore) .
+> Pokud potřebujete vytvořit kopii s podstatně menším objektem SLO, než má zdroj, cílová databáze nemusí mít dostatek prostředků k dokončení procesu osazení a může způsobit selhání operace kopírování. V tomto scénáři použijte k vytvoření kopie na jiném serveru nebo jiné oblasti požadavek geografického obnovení. Další informace najdete v tématu [obnovení databáze SQL Azure pomocí záloh databáze](sql-database-recovery-using-backups.md#geo-restore) .
 
 ## <a name="resolve-logins"></a>Vyřešit přihlášení
 
@@ -165,7 +165,7 @@ Další informace o správě uživatelů a přihlášení po zkopírování data
 
 Při kopírování databáze v Azure SQL Database může dojít k následujícím chybám. Další informace najdete v tématu [Kopírování databáze služby Azure SQL Database](sql-database-copy.md).
 
-| Kód chyby | Severity | Popis |
+| Kód chyby | Závažnost | Popis |
 | ---:| ---:|:--- |
 | 40635 |16 |Klient s IP adresou '%.&#x2a;ls' je dočasně zakázána. |
 | 40637 |16 |Vytvoření kopie databáze je aktuálně zakázané. |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: fe6e581963753cac33092285fee0c8d16959bde8
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: c4db27b938934aafa350866991ff174cbdbed0ac
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530098"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291545"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Nasazení IBM DB2 pureScale v Azure
 
@@ -150,7 +150,5 @@ Další informace o těchto a dalších známých problémech najdete v souboru 
 -   [Řešení pro data o clusterech DB2 pureScale](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
 
 -   [IBM Data Studio](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
-
--   [Moderning Alliance pro platformy: IBM DB2 v Azure](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
 
 -   [Průvodce zvednutím a posunutím virtuálního datového centra Azure](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)

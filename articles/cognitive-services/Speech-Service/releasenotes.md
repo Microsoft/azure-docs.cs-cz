@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 1cf9ce6d57c1e106472caeef6c1f2a4b008a09bd
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 15a118dc72ae9ffc4b6c99b0e0b527a252d3ded8
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277872"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293585"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
 
@@ -26,7 +26,7 @@ ms.locfileid: "76277872"
 
 - Konverzace s více zařízeními: umožňuje propojit více zařízení se stejnou hlasovou nebo textovou konverzací a volitelně překládat zprávy odesílané mezi nimi. Další informace najdete v [tomto článku](multi-device-conversation.md). 
 - Podpora rozpoznávání klíčových slov se přidala pro balíček Android. AAR a přidala se podpora pro typy x86 a x64. 
-- Cíl-C: metody `SendMessage` a `SetMessageProperty` přidány do objektu `Connection`. Další informace [najdete v dokumentaci.](https://docs.microsoft.com/objectivec/cognitive-services/speech/)
+- Cíl-C: metody `SendMessage` a `SetMessageProperty` přidány do objektu `Connection`. Další informace [najdete v dokumentaci.](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxconnection)
 - Rozhraní C++ API pro TTS teď podporuje `std::wstring` jako Shrnutí textu a odstraňuje nutnost převést wstring na řetězec před předáním do sady SDK. [Tady](https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#speaktextasync)najdete podrobnosti. 
 - C#: [ID jazyka](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-csharp) a [konfigurace zdrojového jazyka](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-specify-source-language?pivots=programming-language-csharp) jsou nyní k dispozici.
 - JavaScript: Přidání funkce pro `Connection` objektu pro předání vlastní zprávy ze služby Speech jako zpětného volání `receivedServiceMessage`.

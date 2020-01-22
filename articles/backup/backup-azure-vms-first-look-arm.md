@@ -3,12 +3,12 @@ title: Zálohování virtuálního počítače Azure z nastavení virtuálního 
 description: V tomto článku se dozvíte, jak zálohovat jeden virtuální počítač Azure nebo několik virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 1895f27370e6f928ce2183798dd892a2ff7225c3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bd75bdfb3fe9939c576fe289f6be38ebe875e020
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75391439"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294061"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Zálohování virtuálního počítače Azure z nastavení virtuálního počítače
 
@@ -31,7 +31,7 @@ Aby bylo možné zálohovat virtuální počítače Azure, Azure Backup nainstal
 
 ## <a name="back-up-from-azure-vm-settings"></a>Zálohování z nastavení virtuálního počítače Azure
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com/).
 2. Klikněte na **všechny služby** a ve filtru zadejte **virtuální počítače**a potom klikněte na **virtuální počítače**.
 3. V seznamu virtuálních počítačů vyberte virtuální počítač, který chcete zálohovat.
 4. V nabídce VM (virtuální počítač) klikněte na **zálohovat**.
@@ -77,6 +77,18 @@ Aby bylo možné zálohovat virtuální počítače Azure, Azure Backup nainstal
 ## <a name="back-up-from-the-recovery-services-vault"></a>Zálohování z trezoru Recovery Services
 
 Postupujte podle pokynů v tomto článku a povolte zálohování virtuálních počítačů Azure nastavením Recovery Services trezoru Azure Backup a povolením zálohování v trezoru.
+
+>[!NOTE]
+> Azure Backup teď podporuje zálohování a obnovení selektivního disku pomocí řešení zálohování virtuálních počítačů Azure.
+>
+>V současné době Azure Backup podporuje zálohování všech disků (operačního systému a dat) na virtuálním počítači společně s využitím řešení zálohování virtuálních počítačů. Díky funkci vyloučení disku získáte možnost zálohovat jeden nebo několik datových disků ve virtuálním počítači. To poskytuje efektivní a nákladově efektivní řešení pro potřeby zálohování a obnovení. Každý bod obnovení obsahuje data disků zahrnutých v operaci zálohování, která dále umožňuje mít v průběhu operace obnovení podmnožinu disků obnovených z daného bodu obnovení. To platí pro obnovení ze snímku i z trezoru.
+>
+> Toto řešení je užitečné zejména v následujících scénářích:
+>  
+>1. Máte kritická data, která se mají zálohovat jenom na jednom disku, a nechcete zálohovat zbývající disky připojené k virtuálnímu počítači. Tím se minimalizují náklady na úložiště zálohování.  
+>2. Máte další řešení zálohování pro součást vašich dat virtuálních počítačů. Můžete například zálohovat databáze nebo data s jiným řešením zálohování úloh a chcete použít zálohování na úrovni virtuálního počítače Azure pro ostatní disky a data k vytvoření efektivního a robustního systému, který využívá nejlepší dostupné možnosti.
+>
+>Pokud si chcete zaregistrovat verzi Preview, napište nám na AskAzureBackupTeam@microsoft.com
 
 ## <a name="next-steps"></a>Další kroky
 

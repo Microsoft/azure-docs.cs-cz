@@ -9,15 +9,15 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 688bf923c07d9417b002b7cab6e3c0a0c8d20dae
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 00a92d60e494920f516d1a52593a54463c050615
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497751"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311440"
 ---
 # <a name="linear-regression-module"></a>Modul lineární regrese
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Tento modul slouží k vytvoření modelu lineární regrese pro použití v kanálu.  Lineární regrese se pokusí vytvořit lineární vztah mezi jednou nebo více nezávislými proměnnými a číselným výstupem nebo závislou proměnnou. 
 
@@ -90,7 +90,6 @@ Tento modul podporuje dvě metody pro přizpůsobení regresního modelu s různ
 
 Po dokončení školení:
 
-+ Chcete-li zobrazit parametry modelu, klikněte pravým tlačítkem na výstup Trainer a vyberte **vizualizovat**.
 
 + Chcete-li vytvořit předpovědi, připojte k modulu pro stanovení [skóre](./score-model.md) , proškolený model a datovou sadu nových hodnot. 
 

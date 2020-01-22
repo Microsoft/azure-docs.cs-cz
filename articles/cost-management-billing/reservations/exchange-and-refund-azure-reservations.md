@@ -8,18 +8,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/05/2019
+ms.date: 01/21/2020
 ms.author: banders
-ms.openlocfilehash: 122a66894bbe5ce1787282d69e4022da75d31696
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ea545919436201524a1c77b27e9b187f3b1c3b64
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75994074"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314041"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Samoobslužné výměny a vrácení peněz za rezervace Azure
 
-Rezervace Azure vám dávají flexibilitu pro zvládání stále se vyvíjejících potřeb. Rezervaci si můžete vyměnit za jinou rezervaci stejného typu. Za rezervaci si také můžete nechat vrátit peníze, pokud už ji nepotřebujete, a to až do 50 000 USD za rok.
+Rezervace Azure vám dávají flexibilitu pro zvládání stále se vyvíjejících potřeb. Rezervaci si můžete vyměnit za jinou rezervaci stejného typu. Za rezervaci si také můžete nechat vrátit peníze, pokud už ji nepotřebujete, a to až do 50 000 USD za rok. Maximální limit refundace se vztahuje na všechny rezervace v oboru vaší smlouvy s Microsoftem.
 
 Možnost samoobslužné výměny nebo zrušení není k dispozici pro zákazníky s předplatným US Government se smlouvou Enterprise. Podporují se i ostatní typy předplatného US Government, včetně předplatného s průběžnými platbami a předplatného CSP.
 

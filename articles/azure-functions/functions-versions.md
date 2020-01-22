@@ -3,12 +3,12 @@ title: Azure Functions – přehled verzí modulu runtime
 description: Azure Functions podporuje více verzí modulu runtime. Přečtěte si o rozdílech mezi nimi a o tom, jak zvolit tu, která je pro vás nejvhodnější.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 88c151149d1d960746ff449819d31e8b32d98120
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 0138af15c89a4792b9ccb73a8b761577fad36c5e
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921854"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290372"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions – přehled verzí modulu runtime
 
@@ -143,7 +143,7 @@ V aplikaci Visual Studio vyberete verzi modulu runtime při vytváření projekt
 ```
 
 > [!NOTE]
-> Azure Functions 3. x a .NET vyžaduje, aby bylo rozšíření `Microsoft.Sdk.NET.Functions` alespoň `3.0.0`.
+> Azure Functions 3. x a .NET vyžaduje, aby bylo rozšíření `Microsoft.NET.Sdk.Functions` alespoň `3.0.0`.
 
 ###### <a name="updating-2x-apps-to-3x-in-visual-studio"></a>Aktualizace 2. x aplikací na 3. x v aplikaci Visual Studio
 

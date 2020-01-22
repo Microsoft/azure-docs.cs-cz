@@ -1,33 +1,33 @@
 ---
-title: Azure Database for postgresql – partneři pro migraci
-description: Seznam partneři pro migraci třetích stran s řešeními, která podporují Azure Database for PostgreSQL.
+title: Azure Database for PostgreSQL partneři migrace
+description: Seznam partnerů pro migraci třetích stran s řešeními, která podporují Azure Database for PostgreSQL.
 author: HJToland3
 ms.author: jtoland
 manager: craigg
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2018
-ms.openlocfilehash: 75ff34910383b30c9fd967ff568d087c2492856f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f9b3cde8ff0f3a1b97d53a1de72cb6c5c48a800c
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66143225"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289777"
 ---
-# <a name="azure-database-for-postgresql-migration-partners"></a>Azure Database for postgresql – partneři pro migraci
-Pro podporu široce Azure Database for postgresql – řešení, můžete z širokou škálu špičkových partnerů a nástroje. Tento článek se soustředí na partnery Microsoftu pomocí řešení migrace, které podporují – Azure Database for PostgreSQL.
+# <a name="azure-database-for-postgresql-migration-partners"></a>Azure Database for PostgreSQL partneři migrace
+Pro rozsáhlou podporu Azure Database for PostgreSQL řešení si můžete vybrat z široké škály špičkových partnerů a nástrojů. V tomto článku se zvýrazňují partneři Microsoftu s řešeními pro migraci, která podporují Azure Database for PostgreSQL.
 
 ## <a name="migration-partners"></a>Partneři pro migraci
 | Partner | Popis | Odkazy | Videa |
 | --- | --- | --- | --- |
-| ![SNP technologie][1] |**SNP Technologies**<br>Technologie SNP je poskytovatel čistě cloudovou službu, vytvářet bezpečné a spolehlivé řešení pro podniky budoucnosti. Společnost se řídí zásadou při generování skutečné hodnoty pro vaši firmu. Z myšlenky na spuštění technologie SNP sdílí běžné účely s klienty, chcete-li své investice do výhodu.|[Web][snp_website]<br>[Twitter][snp_twitter]<br>[Kontakt][snp_contact] | |
-| ![DB Best Technologies, LLC][2] |**DB Best Technologies, LLC**<br>DB nejlepší pomáhá zákazníkům naplno využít Azure spravovanou databázovou službu. Společnost nabízí několik způsobů, jak můžete začít pracovat, včetně [budoucnost stav kontrol architektonického návrhu](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.dbbest.com%2Fservices%2Ffuture-state-architectural-design%2F&data=02%7C01%7Cjtoland%40microsoft.com%7C7311aa2024894a80eff208d5cfd45696%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636643433261194557&sdata=SCr3kseFvcU7mI1%2FZt7K2elXAqLY%2FyL6AO944QiWoLg%3D&reserved=0), [optimalizace správy dat pro datové platformy Microsoftu](https://www.dbbest.com/services/data-management-optimization-for-microsoft-data-platform/), [Microsoft Azure Deployment Planning Services](https://www.dbbest.com/services/microsoft-azure-deployment-planning-services), a [školení Azure Data Platform připravenosti](https://www.dbbest.com/services/azure-data-platform-readiness-training).|[Web][dbbest_website]<br>[Twitter][dbbest_twitter]<br>[YouTube][dbbest_youtube]<br>[Kontakt][dbbest_contact] | |
-| ![Pragmatický funguje][3] |**Pragmatický funguje**<br>Pragmatický funguje se školení a konzultační firmu s rozsáhlé znalosti týkající se správy dat a výkonu, Business Intelligence, velké objemy dat, Power BI a Azure. Zaměřují se na optimalizaci dat a zlepšují efektivitu správy SQL serveru a cloudu.|[Web][pragmatic-works_website]<br>[Twitter][pragmatic-works_twitter]<br>[YouTube][pragmatic-works_youtube]<br>[Kontakt][pragmatic-works_contact] | |
-| ![Infosys][4] |**Infosys**<br>Infosys je světová špička v nejnovější digitálních služeb a poradenství. S více než tři desítky let praxe s správu systémů globální podniky, které Infosys odborně voly klientů prostřednictvím jejich digitální cestou tím, že organizace s jádra založené na AI. Provádí se mohli pomáhá určit priority provádění změn. Infosys také poskytuje firmách agilní digitální ve velkém měřítku k zajištění mimořádného úrovně výkonu a naprostou spokojenost zákazníků.|[Web][infosys_website]<br>[Twitter][infosys_twitter]<br>[YouTube][infosys_youtube]<br>[Kontakt][infosys_contact] | |
-| ![credativ][5] |**credativ**<br>credativ je nezávislé konzultaci s a služby. Od roku 1999 nabídli komplexní služby a technickou podporu pro implementaci a provoz Opensourcový software v obchodních aplikacích. Jejich kompletní škálu služeb obsahuje strategický konzultační, zvukové technické poradenství, kvalifikovaný školení a podpora individuální až 24 hodin za den pro všechno, co tým IT potřebuje.|[Marketplace][credativ_marketplace]<br>[Web][credativ_website]<br>[Twitter][credative_twitter]<br>[YouTube][credativ_youtube]<br>[Kontakt][credativ_contact] | |
-| ![Pactera][6] |**Pactera**<br>Pactera je globální společnost, nabídka konzultačních, digitální, technologie a operace služby do přední podniky celém světě. Z jejich kořeny inženýrství na nejnovější verzi v digitální transformaci nabízejí zákazníkům náskoku před konkurencí. Své osvědčené metodologie a nástroje zajistěte, aby že vaše data jsou zabezpečené, platná a přesné.|[Web][pactera_website]<br>[Twitter][pactera_twitter]<br>[Kontakt][pactera_contact] | |
+| ![SNP technologie][1] |**Technologie SNP**<br>Technologie SNP je pouze cloudový poskytovatel služeb, který vytváří bezpečná a spolehlivá řešení pro firmy v budoucnosti. Společnost se domnívá při generování reálné hodnoty pro vaši firmu. Z myšlenky, technologie SNP sdílí společný účel s klienty, aby bylo možné svou investici do výhody zaměnit.|[Web][snp_website]<br>[Twitter][snp_twitter]<br>[Obraťte se na][snp_contact] | |
+| ![DB Best Technologies, LLC][2] |**DB Best Technologies, LLC**<br>DB nejlépe pomáhá zákazníkům získat z spravované služby Azure Database na maximum. Společnost nabízí několik způsobů, jak můžete začít, včetně [návrhu architektury budoucího stavu](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2F www.dbbest.com%2Fservices%2Ffuture-state-architectural-design%2F&data=02%7C01%7Cjtoland%40microsoft.com%7C7311aa2024894a80eff208d5cfd45696%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636643433261194557&sdata=SCr3kseFvcU7mI1%2FZt7K2elXAqLY%2FyL6AO944QiWoLg%3D&reserved=0), [Správa dat optimalizace pro datové platformy Microsoft](https://www.dbbest.com/services/data-management-optimization-for-microsoft-data-platform/), [služby plánování Microsoft Azure nasazení](https://www.dbbest.com/services/microsoft-azure-deployment-planning-services)a [školení připravenosti na datovou platformu Azure](https://www.dbbest.com/services/azure-data-platform-readiness-training).|[Web][dbbest_website]<br>[Twitter][dbbest_twitter]<br>[YouTube][dbbest_youtube]<br>[Obraťte se na][dbbest_contact] | |
+| ![V-Pragmatic funguje][3] |**V-Pragmatic funguje**<br>Práce s ní funguje v rámci školení a poradenské společnosti s obsáhlými odbornými znalostmi pro správu a výkon dat, Business Intelligence, velké objemy dat, Power BI a Azure. Zaměřuje se na optimalizaci dat a zlepšuje efektivitu SQL Server a cloudové správy.|[Web][pragmatic-works_website]<br>[Twitter][pragmatic-works_twitter]<br>[YouTube][pragmatic-works_youtube]<br>[Obraťte se na][pragmatic-works_contact] | |
+| ![Infosys][4] |**Infosys**<br>Infosys je globální vedoucí v nejnovějších digitálních službách a konzultaci. S více než třemi desetiletími zkušeností se správou systémů globálních podniků Infosys specialisté odborníky prostřednictvím jejich digitální cesty tím, že umožňují organizacím, které používají jádro AI. Díky tomu je možné určit prioritu provádění změn. Infosys také poskytuje firmám s agilním digitálním škálováním pro poskytování nepředchozích úrovní výkonu a snížení počtu zákazníků.|[Web][infosys_website]<br>[Twitter][infosys_twitter]<br>[YouTube][infosys_youtube]<br>[Obraťte se na][infosys_contact] | |
+| ![credativ][5] |**credativ**<br>credativ je nezávislá společnost a služba pro poradenské služby. Od 1999 byly k dispozici komplexní služby a technická podpora pro implementaci a provoz open source softwaru v obchodních aplikacích. Jejich komplexní škála služeb zahrnuje strategické poradenství, zvukové technické poradenství, kvalifikované školení a přizpůsobenou podporu až po dobu 24 hodin denně pro všechny vaše IT potřeby.|[Marketplace][credativ_marketplace]<br>[Web][credativ_website]<br>[Twitter][credative_twitter]<br>[YouTube][credativ_youtube]<br>[Obraťte se na][credativ_contact] | |
+| ![Pactera][6] |**Pactera**<br>Pactera je globální společnost, která nabízí poradenské a digitální, technologické a provozní služby pro špičkové podniky světa. Od svých kořenů v technické analýze až po nejnovější digitální transformaci poskytují zákazníkům konkurenční hraniční oddělení. Osvědčené metodologie a nástroje zajistí, aby vaše data byla zabezpečená, platná a přesná.|[Web][pactera_website]<br>[Twitter][pactera_twitter]<br>[Obraťte se na][pactera_contact] | |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o některých dalších partnerů Microsoftu, najdete v článku [webu Microsoft Partner](https://partner.microsoft.com/en-US/).
 
 <!--Image references-->
@@ -44,7 +44,7 @@ Další informace o některých dalších partnerů Microsoftu, najdete v člán
 [pragmatic-works_website]:https://pragmaticworks.com//
 [infosys_website]:https://www.infosys.com/
 [credativ_website]:https://www.credativ.com/postgresql-competence-center/microsoft-azure
-[pactera_website]:https://en.pactera.com/service/azure-data-platform-services/
+[pactera_website]:https://en.pactera.com/
 
 <!--Get Started Links-->
 <!--Datasheet Links-->

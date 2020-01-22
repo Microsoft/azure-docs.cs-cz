@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: a53128605e1f124cbd26fb679e799822b8abad29
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7626714812b44119099344b52fe7506989555a57
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454816"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314296"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-classic-web-service"></a>Jak využívat webovou službu Azure Machine Learning Studio (Classic)
 
@@ -204,7 +204,7 @@ Pro připojení ke službě Machine Learning Web, použijte **urllib2** knihovny
 
 **Tady je úplný požadavek bude vypadat.**
 ```python
-import urllib2 # urllib.request for Python 3.X
+import urllib2 # urllib.request and urllib.error for Python 3.X
 import json
 
 data = {
@@ -228,7 +228,7 @@ url = '<your-api-uri>'
 api_key = '<your-api-key>'
 headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
 
-# "urllib.request.Request(uri, body, headers)" for Python 3.X
+# "urllib.request.Request(url, body, headers)" for Python 3.X
 req = urllib2.Request(url, body, headers)
 
 try:

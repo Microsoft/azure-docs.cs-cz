@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 56a3d4f172cde70bdd1a875c76213c43184cbbc3
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: fd91701a20b8a760eadcafe6f93f9ba5857a1c9f
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167953"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310182"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Škálování služby Azure Analysis Services na více instancí
 
@@ -50,7 +50,7 @@ Při provádění následných operací škálování, například zvýšení po
 
 ### <a name="synchronization-mode"></a>Režim synchronizace
 
-Ve výchozím nastavení jsou repliky dotazů v plném rozsahu dehydratované, nikoli přírůstkově. K dehydrataci dochází ve fázích. Jsou odpojeny a připojeny dvakrát (za předpokladu, že jsou k dispozici alespoň tři repliky), aby bylo zajištěno, že nejméně jedna replika bude pro dotazy v daném okamžiku udržována online. V některých případech se může stát, že se klienti budou muset při provádění tohoto procesu znovu připojit k jedné z online replik. Když použijete nastavení **ReplicaSyncMode** , můžete teď zadat synchronizaci repliky dotazů paralelně. Paralelní synchronizace přináší následující výhody: 
+Ve výchozím nastavení jsou repliky dotazů v plném rozsahu dehydratované, nikoli přírůstkově. K dehydrataci dochází ve fázích. Jsou odpojeny a připojeny dvakrát (za předpokladu, že jsou k dispozici alespoň tři repliky), aby bylo zajištěno, že nejméně jedna replika bude pro dotazy v daném okamžiku udržována online. V některých případech se může stát, že se klienti budou muset při provádění tohoto procesu znovu připojit k jedné z online replik. Když použijete nastavení **ReplicaSyncMode** (v Preview), můžete teď zadat synchronizaci repliky dotazů paralelně. Paralelní synchronizace přináší následující výhody: 
 
 - Významné snížení doby synchronizace. 
 - Data napříč replikami jsou pravděpodobně během procesu synchronizace konzistentní. 

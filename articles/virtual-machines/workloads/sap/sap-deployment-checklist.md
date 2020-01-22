@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/08/2019
+ms.date: 01/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b3a424c142fbfcbfe5e4c1802f3ba61da655f77f
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 56b78f4296709206cefb762c87d4d1471bff2df7
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896029"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291511"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Úlohy SAP v Azure: kontrolní seznam pro plánování a nasazení
 
@@ -53,7 +53,7 @@ V průběhu této fáze naplánujete migraci úlohy SAP na platformu Azure. V pr
         - SAP HANA – podporované virtuální počítače Azure a [velké instance Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) jsou uvedené na [webu SAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure).
         - [Matice dostupnosti produktu SAP](https://support.sap.com/en/).
         - Poznámky SAP pro jiné produkty specifické pro SAP.     
-    - Pro produkční systémy SAP doporučujeme použít striktní tři návrhy. Nedoporučujeme kombinovat ASCS a aplikační servery na jednom virtuálním počítači. Použití konfigurace clusteru s více identifikátory SID pro služby SAP Central Services je podporované v hostovaných operačních systémech Windows v Azure. Tato konfigurace ale není podporovaná pro služby SAP Central v operačních systémech Linux v Azure. Dokumentaci k scénáři operačního systému Windows hosta najdete v těchto článcích:
+    - Pro produkční systémy SAP doporučujeme použít striktní tři návrhy. Na jednom virtuálním počítači nedoporučujeme kombinovat ASCS ani DBMS nebo aplikační servery. Použití konfigurace clusteru s více identifikátory SID pro služby SAP Central Services je podporované v hostovaných operačních systémech Windows v Azure. Tato konfigurace ale není podporovaná pro služby SAP Central v operačních systémech Linux v Azure. Dokumentaci k scénáři operačního systému Windows hosta najdete v těchto článcích:
         - [Vysoká dostupnost ASCS/SCS instance SAP pomocí clusteringu s podporou převzetí služeb při selhání Windows serveru a sdíleného disku v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-shared-disk)
         - [Vysoká dostupnost ASCS/SCS instance SAP s Clustering s podporou převzetí služeb při selhání Windows serveru a sdílenou složkou v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-file-share)
     - Architektura vysoké dostupnosti a zotavení po havárii.
@@ -135,7 +135,7 @@ Doporučujeme, abyste nastavili a ověřili úplné řešení HADR a návrh zabe
         - Pokud nepotřebujete vysokou dostupnost pro centrální služby SAP a DBMS, můžete tyto virtuální počítače nasadit do stejné skupiny dostupnosti jako aplikační vrstva SAP.
         - Pokud chráníte službu SAP Central Services a vrstvu DBMS pro zajištění vysoké dostupnosti pomocí pasivní replikace, umístěte tyto dva uzly pro centrální služby SAP v jedné samostatné skupině dostupnosti a dva uzly DBMS v jiné skupině dostupnosti.
         - Pokud nasadíte do Zóny dostupnosti Azure, nemůžete použít skupiny dostupnosti. Musíte ale mít jistotu, že nasadíte aktivní a pasivní uzly centrální služby do dvou různých Zóny dostupnosti. Použijte Zóny dostupnosti, které mají nejnižší latenci mezi nimi.
-          Pamatujte, že je potřeba použít [Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) pro případ použití pro vytváření clusterů s podporou převzetí služeb při selhání s Windows nebo Pacemaker pro vrstvu DBMS a službu SAP Central Services napříč zóny dostupnosti. [Základní Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) nemůžete použít pro nasazení napříč oblastmi.
+          Pamatujte, že je potřeba použít [Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) pro případ použití pro vytváření clusterů s podporou převzetí služeb při selhání s Windows nebo Pacemaker pro vrstvu DBMS a službu SAP Central Services napříč zóny dostupnosti. [Základní Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) nemůžete použít pro nasazení napříč oblastmi.
    5. Nastavení časového limitu.
         - Zkontrolujte trasování instancí SAP v SAP NetWeaver, abyste se ujistili, že mezi serverem front a pracovními procesy SAP nedochází k přerušení připojení. Těmto přerušením připojení se můžete vyhnout nastavením těchto dvou parametrů registru:
             - HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveTime = 120000. Další informace naleznete v tématu [KeepAliveTime](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10)).

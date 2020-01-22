@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: V tomto rychlém startu se dozvíte, jak pomocí Azure Dev Spaces a Visual Studio Code ladit a rychle iterovat aplikaci Java ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Java, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 9237137f86bf7b6b30eb908e0acbe3b8b0e624d9
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: a814516eb002eadb19100182d1917fd4aaa0cec6
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867475"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293568"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-java---azure-dev-spaces"></a>Rychlý Start: ladění a iterace v Kubernetes pomocí Visual Studio Code a Java-Azure Dev Spaces
 
@@ -21,7 +21,7 @@ V tomto průvodci se naučíte:
 - Iterativní vývoj kódu v kontejnerech pomocí Visual Studio Code.
 - Ladit kód ve vývojovém prostoru z Visual Studio Code.
 
-Azure Dev Spaces taky umožňuje ladění a iteraci pomocí:
+Azure Dev Spaces také umožňují ladit a iterovat pomocí:
 - [Node. js a Visual Studio Code](quickstart-nodejs.md)
 - [.NET Core a Visual Studio Code](quickstart-netcore.md)
 - [.NET Core a Visual Studio](quickstart-netcore-visualstudio.md)
@@ -118,7 +118,7 @@ Klikněte na *ladit* a pak *Zastavit ladění* , aby se ladicí program zastavil
 
 ## <a name="update-code"></a>Aktualizace kódu
 
-Chcete-li nasadit aktualizovanou verzi služby, můžete aktualizovat libovolný soubor v projektu a znovu spustit *program Java (AZDS)* . Příklad:
+Chcete-li nasadit aktualizovanou verzi služby, můžete aktualizovat libovolný soubor v projektu a znovu spustit *program Java (AZDS)* . Například:
 
 1. Pokud je vaše aplikace stále spuštěná, klikněte na tlačítko *ladění* a zastavte tak *ladění* .
 1. Aktualizujte [řádek 19 v `src/main/java/com/ms/sample/webfrontend/Application.java`](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19) na:
@@ -146,7 +146,7 @@ Odstraňte zarážku tak, že umístíte kurzor na řádek 19 v `src/main/java/c
 
 ## <a name="update-code-from-visual-studio-code"></a>Aktualizace kódu z Visual Studio Code
 
-Když je služba spuštěna v režimu ladění, aktualizujte řádek 19 v `src/main/java/com/ms/sample/webfrontend/Application.java`. Příklad:
+Když je služba spuštěna v režimu ladění, aktualizujte řádek 19 v `src/main/java/com/ms/sample/webfrontend/Application.java`. Například:
 ```java
 return "Hello from webfrontend in Azure while debugging!";
 ```

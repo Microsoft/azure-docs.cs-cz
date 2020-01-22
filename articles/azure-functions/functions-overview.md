@@ -6,18 +6,18 @@ ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
 ms.topic: overview
 ms.date: 01/16/2020
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 568e7c9772676fbe413642bd39bb53a1a1126ccf
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 1cd7b3db92de339b7614a4271f9e6793cdf8f2ad
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76262414"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292889"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Seznámení s Azure Functions
 
 Azure Functions umožňuje spustit malé části kódu (označované jako "funkce"), aniž byste se museli starat o infrastrukturu aplikace. Díky Azure Functions cloudová infrastruktura poskytuje všechny aktuální servery, které potřebujete k zajištění, aby vaše aplikace běžela ve velkém měřítku.
 
-Funkce je "spuštěna" podle konkrétního typu události. Mezi [podporované triggery](./functions-triggers-bindings.md) patří reakce na změny v datech, reakce na zprávy, spuštěné podle plánu nebo jako výsledek požadavku HTTP.
+Funkce je "aktivovaná" konkrétním typem události. Mezi [podporované triggery](./functions-triggers-bindings.md) patří reakce na změny v datech, reakce na zprávy, spuštěné podle plánu nebo jako výsledek požadavku HTTP.
 
 I když můžete vždy kód přímo na nesčetných služby, integrace s jinými službami je zjednodušená pomocí vazeb. Vazby poskytují [deklarativní přístup k široké škále služeb Azure a služeb třetích stran](./functions-triggers-bindings.md).
 

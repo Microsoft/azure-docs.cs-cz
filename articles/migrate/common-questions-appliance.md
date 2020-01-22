@@ -3,12 +3,12 @@ title: Běžné otázky týkající se zařízení Azure Migrate
 description: Získejte odpovědi na běžné otázky týkající se zařízení Azure Migrate.
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: c8bcebeee58401cb3d2b65ae82e51d31ab4dad0b
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: c9727287160f996059e9c1fb2d1fb5aec5900ab5
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029121"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292328"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Zařízení Azure Migrate: běžné otázky
 
@@ -83,9 +83,9 @@ Ano, pro obojí.
 
 Ne. Mezi zařízením a vCenter Server existuje mapování 1:1. Chcete-li zjistit virtuální počítače ve více instancích vCenter Server, je nutné nasadit více zařízení.
 
-### <a name="how-many-vms-can-i-discover-with-an-appliance"></a>Kolik virtuálních počítačů je možné zjistit pomocí zařízení?
+### <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>Kolik virtuálních počítačů nebo serverů můžu zjistit pomocí zařízení?
 
-Můžete zjistit až 10 000 virtuálních počítačů VMware a až 5 000 virtuálních počítačů Hyper-V s jedním zařízením. Pokud máte ve svém místním prostředí více počítačů, přečtěte si o škálování [technologie Hyper-V](scale-hyper-v-assessment.md) a vyhodnocení [VMware](scale-vmware-assessment.md) .
+Můžete zjistit až 10 000 virtuálních počítačů VMware, až 5 000 virtuálních počítačů Hyper-V a až 250 serverů s jedním zařízením. Pokud máte ve svém místním prostředí více počítačů, přečtěte si informace o škálování [technologie Hyper-V](scale-hyper-v-assessment.md), [VMware](scale-vmware-assessment.md) a [fyzické](scale-physical-assessment.md) posouzení.
 
 ## <a name="can-i-delete-an-appliance"></a>Můžu odstranit zařízení?
 

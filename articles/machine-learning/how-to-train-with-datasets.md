@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: b6ea5c9ef5e128116ef389675a09e6ab4b230b75
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 24a19487567f2753457d5886cbb9fa4bf438bad4
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982454"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311338"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Výuka s datovými sadami v Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -83,7 +83,7 @@ Tento kód vytvoří obecný objekt Estimator `est`, který určuje
 
 * Adresář skriptu pro skripty. Všechny soubory v tomto adresáři se nahrají do uzlů clusteru ke spuštění.
 * Školicí skript *train_titanic. py*.
-* Vstupní datová sada pro školení, `titanic`.
+* Vstupní datová sada pro školení, `titanic`. `as_named_input()` se vyžaduje, aby na vstupní datovou sadu bylo možné odkazovat pomocí přiřazeného názvu ve školicím skriptu. 
 * Cílová výpočetní operace experimentu.
 * Definice prostředí pro experiment.
 
@@ -126,7 +126,7 @@ mnist_ds = Dataset.File.from_files(path = web_paths)
 
 ### <a name="configure-the-estimator"></a>Konfigurace Estimator
 
-Místo předání datové sady prostřednictvím parametru `inputs` v Estimator můžete také předat datovou sadu prostřednictvím `script_params` a získat cestu k datům (bod připojení) ve školicím skriptu pomocí argumentů. Tímto způsobem můžete získat přístup k datům a použít existující školicí skript.
+Kromě předání datové sady prostřednictvím parametru `inputs` v Estimator můžete také předat datovou sadu prostřednictvím `script_params` a získat cestu k datům (bod připojení) ve školicím skriptu pomocí argumentů. Tímto způsobem můžete zachovávat školicí skript nezávisle na nástroji AzureML-SDK. Jinými slovy, budete moci použít stejný školicí skript pro místní ladění a vzdálené školení na jakékoli cloudové platformě.
 
 [Skriptu sklearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) objekt Estimator se používá k odeslání běhu pro scikit experimenty. Přečtěte si další informace o školeních s [skriptu sklearn Estimator](how-to-train-scikit-learn.md).
 

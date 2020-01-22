@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/07/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 68c50d3455c0ed240fa62532818a0b07b39ec772
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c4ed78dc9fd277fc61a923364519e338a9f720c2
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889526"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290389"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrace do služby Azure Kubernetes (AKS)
 
@@ -111,7 +111,7 @@ Služba [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager
 
 Nestavová migrace aplikace je nejjednodušším případem. Použijte definice prostředků (YAML nebo Helm) na nový cluster, ujistěte se, že vše funguje podle očekávání, a přesměrujte provoz na aktivaci nového clusteru.
 
-### <a name="considers-for-stateful-applications"></a>Vyvažovat za stavové aplikace
+### <a name="considerations-for-stateful-applications"></a>Požadavky na stavové aplikace
 
 Pečlivě naplánujte migraci stavových aplikací, abyste se vyhnuli ztrátě dat nebo neočekávanému výpadku.
 
@@ -161,7 +161,7 @@ Některé open source nástroje vám pomůžou vytvořit spravované disky a mig
 
 ### <a name="deployment-of-your-cluster-configuration"></a>Nasazení konfigurace clusteru
 
-Doporučujeme použít stávající kanál průběžné integrace (CI) a průběžné doručování (CD) k nasazení známé konfigurace do AKS. Pomocí Azure Pipelines můžete [vytvářet a nasazovat své aplikace, abyste AKS](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops) klonování stávajících úloh nasazení a zajistili, že `kubeconfig` odkazuje na nový cluster AKS.
+Doporučujeme použít stávající kanál průběžné integrace (CI) a průběžné doručování (CD) k nasazení známé konfigurace do AKS. K [sestavování a nasazování aplikací do AKS](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops)můžete použít Azure Pipelines. Naklonujte stávající úlohy nasazení a zajistěte, aby `kubeconfig` odkazovaly na nový cluster AKS.
 
 Pokud to není možné, exportujte definice prostředků ze stávajícího clusteru Kubernetes a pak je použijte na AKS. K exportu objektů můžete použít `kubectl`.
 

@@ -9,14 +9,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 01/21/2020
 ms.author: banders
-ms.openlocfilehash: ddb906aeb8d1c2b0d1f0c97fc12bd389da431646
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5dbf885848d9866a184caee1da6b9000a26f83a9
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75989940"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314117"
 ---
 # <a name="azure-spending-limit"></a>Limit útraty Azure
 
@@ -34,20 +34,21 @@ Při dosažení limitu útraty Azure posílá e-mailová oznámení. Pokud chcet
 
 Pokud jste si zaregistrovali bezplatný účet Azure a dosáhnete limitu útraty, můžete upgradovat na [průběžné](upgrade-azure-subscription.md) platby, aby se odebral limit útraty a předplatné se automaticky znovu aktivovalo.
 
-<a id="remove"></a>
-
 ## <a name="remove-the-spending-limit-in-azure-portal"></a>Odebrání limitu útraty na webu Azure Portal
+
+<a id="remove"></a>
 
 Limit útraty můžete odebrat kdykoli za předpokladu, že je k vašemu předplatnému Azure přidružen platný způsob platby. U typů předplatného s kreditem na několik měsíců, jako jsou předplatná sady Visual Studio Enterprise nebo Visual Studio Professional, můžete limit útraty povolit také na začátku dalšího fakturačního období.
 
 Pokud chcete odebrat limit útraty, postupujte takto:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-1. Vyberte předplatné. Pokud u předplatného dojde k dosažení limitu útraty, předplatné se deaktivuje.
-1. V horní části stránky vyberte **Odebrat limit útraty**.
-1. Vyberte vhodnou možnost.
-
-![Výběr možnosti pro odebrání limitu útraty](./media/spending-limit/remove-spending-limit01.png)
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+1. Přejděte k **předplatným**.
+1. Vyberte své předplatné. Například *Visual Studio Enterprise*.
+1. V horní části stránky vyberte **Spravovat**. Budete přesměrováni na https://account.azure.com/. Na pravé straně stránky vyberte **Odebrat limit útraty**.  
+  ![příklad ukazující limit útraty](./media/spending-limit/account-azure-com-spending-limit.png)
+1. Budete přesměrováni zpět na Azure Portal. Vyberte možnost, která je pro vás vhodná, a pak vyberte způsob platby. Vyberte **Finish** (Dokončit).  
+  ![vybrat možnost pro odebrání limitu útraty](./media/spending-limit/remove-spending-limit.png)
 
 | Možnost | Efekt |
 | --- | --- |
@@ -67,7 +68,7 @@ Limit útraty vám může bránit v nasazení nebo použití některých služeb
 Tato funkce je k dispozici pouze v případě trvalého odebrání limitu útraty pro typy předplatného, které zahrnují kredit na několik měsíců. Pomocí této funkce můžete automaticky zapnout limit útraty na začátku dalšího fakturačního období.
 
 1. Přihlaste se do [Centra účtů](https://account.windowsazure.com/Subscriptions).
-1. Možnost limitu útraty můžete změnit kliknutím na žlutou informační zprávu.
+1. Výběrem žluté banneru změňte možnost limit útraty.
 1. Zvolte možnost **Turn on spending limit in the next billing period \<datum zahájení fakturačního období\>** (Zapnout limit útraty v dalším fakturačním období).
 
 ## <a name="custom-spending-limit"></a>Vlastní limit útraty

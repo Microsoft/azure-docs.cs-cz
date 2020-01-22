@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: 4bc2e67d276deeea01989ed76be7352ce27abd71
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: ff267aabe2f9e4cec38c307fe4382a84ba6d62df
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280811"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76288947"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Nastavení Vizualizace závislostí bez agentů pro posouzení
 
@@ -87,10 +87,10 @@ Vyberte počítače, u kterých chcete povolit zjišťování závislostí.
 
 1. V **Azure Migrate: vyhodnocování serveru**klikněte na **zjištěné servery**.
 2. Klikněte na ikonu **Analýza závislostí** .
-3. Klikněte na **Spustit zjišťování závislostí**.
-3. Na stránce **zahájit zjišťování závislosti** vyberte zařízení, které zjišťuje příslušné počítače.
+3. Klikněte na **Přidat servery**.
+3. Na stránce **Přidat servery** vyberte zařízení, které zjišťuje příslušné počítače.
 4. V seznamu počítač vyberte počítače.
-5. Klikněte na **Spustit zjišťování závislostí**.
+5. Klikněte na **Přidat servery**.
 
     ![Spustit zjišťování závislosti](./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png)
 
@@ -123,10 +123,10 @@ Vyberte počítače, u kterých chcete zastavit zjišťování závislostí.
 
 1. V **Azure Migrate: vyhodnocování serveru**klikněte na **zjištěné servery**.
 2. Klikněte na ikonu **Analýza závislostí** .
-3. Klikněte na **zastavit zjišťování závislostí**.
-3. Na stránce **zastavení zjišťování závislostí** vyberte **zařízení** , které zjišťuje virtuální počítače, na kterých jste se vyhledali, aby se zjišťování závislostí zastavilo.
+3. Klikněte na **odebrat servery**.
+3. Na stránce **odebrat servery** vyberte **zařízení** , které zjišťuje virtuální počítače, na kterých jste se vyhledali zjišťování závislostí.
 4. V seznamu počítač vyberte počítače.
-5. Klikněte na **zastavit zjišťování závislostí** .
+5. Klikněte na **odebrat servery**.
 
 
 ## <a name="next-steps"></a>Další kroky

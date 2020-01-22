@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: yunjchoi
-ms.openlocfilehash: 69ae6766414dbe533500860b01852ee8d25c3a1e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2148c6c8c9d78355847b3240b54349f1e7789921
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513910"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291375"
 ---
 # <a name="azure-kubernetes-service-aks-diagnostics-overview"></a>Přehled diagnostiky Azure Kubernetes Service (AKS)
 
@@ -24,9 +24,9 @@ Přístup k diagnostice AKS:
 
 - V [Azure Portal](https://portal.azure.com)přejděte na svůj cluster Kubernetes.
 - Klikněte na **Diagnostika a řešení problémů** v levém navigačním panelu, který otevře diagnostiku AKS.
-- Vyberte kategorii, která nejlépe popisuje problém clusteru pomocí klíčových slov na dlaždici domovské stránky, nebo zadejte klíčové slovo, které nejlépe popisuje váš problém na panelu hledání, například _problémy s uzlem v clusteru_.
+- Vyberte kategorii, která nejlépe popisuje potíže s clusterem pomocí klíčových slov na dlaždici domovské stránky, nebo zadejte klíčové slovo, které nejlépe popisuje váš problém na panelu hledání, například _problémy s uzlem v clusteru_.
 
-![Domovské stránky](./media/concepts-diagnostics/aks-diagnostics-homepage.png)
+![Domovská stránka](./media/concepts-diagnostics/aks-diagnostics-homepage.png)
 
 ## <a name="view-a-diagnostic-report"></a>Zobrazit diagnostickou sestavu
 
@@ -76,7 +76,7 @@ Správa identit a zabezpečení detekuje chyby ověřování a autorizace, kter�
 
 - Selhání autorizace uzlů
 - chyby 401
-- chyby 403
+- Chyby 403
 
 ## <a name="next-steps"></a>Další kroky
 

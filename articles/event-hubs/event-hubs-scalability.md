@@ -1,6 +1,6 @@
 ---
-title: Škálovatelnost, Azure Event Hubs | Dokumentace Microsoftu
-description: Poskytuje informace o tom, jak škálovat služby Azure Event Hubs.
+title: Škálovatelnost – Azure Event Hubs | Microsoft Docs
+description: Tento článek poskytuje informace o tom, jak škálovat Event Hubs Azure pomocí oddílů a jednotek propustnosti.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -14,22 +14,22 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 06/18/2019
 ms.author: shvija
-ms.openlocfilehash: c46b333f2cc304cc12ddf78670b60940c7bc0db3
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: 2b36faef8c39a8e9b02a056576ae7f5a77b1f6bf
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827669"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76309519"
 ---
-# <a name="scaling-with-event-hubs"></a>Škálování pomocí služby Event Hubs
+# <a name="scaling-with-event-hubs"></a>Škálování pomocí Event Hubs
 
-Existují dva faktory, které ovlivňují škálování pomocí služby Event Hubs.
+Existují dva faktory, které ovlivňují škálování pomocí Event Hubs.
 *   Jednotky propustnosti
 *   Oddíly
 
 ## <a name="throughput-units"></a>Jednotky propustnosti
 
-Kapacita propustnosti je ve službě Event Hubs řízená prostřednictvím *jednotek propustnosti*. Jednotky propustnosti jsou předem zakoupené jednotky kapacity. Jeden propustnost vám umožní:
+Kapacita propustnosti je ve službě Event Hubs řízená prostřednictvím *jednotek propustnosti*. Jednotky propustnosti jsou předem zakoupené jednotky kapacity. Jedna propustnost vám umožní:
 
 * Příchozí data: Až 1 MB za sekundu nebo 1000 událostí za sekundu (podle toho, co nastane dřív).
 * Odchozí data: Až 2 MB za sekundu nebo 4096 událostí za sekundu.
@@ -45,7 +45,7 @@ Jednotky propustnosti se kupují předem a se účtuje po hodinách. Zakoupené 
 
 Služba Event Hubs se zvyšuje propustnost při zvýšení zátěže ze strany nad prahovou hodnotou minimální, bez jakékoli požadavky služeb při selhání s chybami ServerBusy. 
 
-Další informace o automatické rozšiřování funkcí, přečtěte si téma [automatické škálování jednotek propustnosti](event-hubs-auto-inflate.md).
+Další informace o funkci automatického rozplochení najdete v tématu [Automatické škálování jednotek propustnosti](event-hubs-auto-inflate.md).
 
 ## <a name="partitions"></a>Oddíly
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
@@ -57,7 +57,7 @@ Další informace o automatické rozšiřování funkcí, přečtěte si téma [
 Zdroj události zná jenom svůj klíč oddílu, a ne oddíl, do kterého se události publikují. Díky tomuto oddělení klíče a oddílu odesílatel toho nepotřebuje vědět o zpracování příjmu dat příliš mnoho. Vhodným klíčem oddílu je jedinečná identita uživatele nebo zařízení, ale k seskupení souvisejících událostí do jednoho oddílu je možné použít i další atributy, například geografickou polohu.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o službě Event Hubs najdete na následujících odkazech:
 
 - [Automatické škálování jednotek propustnosti](event-hubs-auto-inflate.md)

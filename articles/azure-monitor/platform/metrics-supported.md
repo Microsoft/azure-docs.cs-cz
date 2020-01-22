@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/18/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 67e2675dbf65daf929407a437447f5d977c7a6c3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 475e91957ab94538d07112ba808edd7c7d08f59e
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75750408"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310777"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky s Azure Monitor
 
@@ -1299,7 +1299,7 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 |Nasazení modelu spuštěn|Nasazení modelu spuštěn|Počet|Celkem|Počet nasazení modelů spuštěných v tomto pracovním prostoru|Scénář|
 |Nasazení modelu bylo úspěšné.|Nasazení modelu bylo úspěšné.|Počet|Celkem|Počet nasazení modelů, která byla v tomto pracovním prostoru úspěšná|Scénář|
 |Nasazení modelu se nezdařilo|Nasazení modelu se nezdařilo|Počet|Celkem|Počet nasazení modelů, která v tomto pracovním prostoru selhala|Scénář, StatusCode|
-|Celkem uzlů|Celkem uzlů|Počet|Průměr|Počet uzlů celkem Tento součet zahrnuje některé aktivní uzly, nečinné uzly, nepoužité uzly, uzly Premepted a opouští uzly.|Scénář, název_clusteru|
+|Celkem uzlů|Celkem uzlů|Počet|Průměr|Počet uzlů celkem Tento součet zahrnuje některé z aktivních uzlů, nečinných uzlů, nepoužitelných uzlů, přerušených uzlů a opouští uzly.|Scénář, název_clusteru|
 |Aktivní uzly|Aktivní uzly|Počet|Průměr|Počet uzlů Active Jedná se o uzly, které aktivně spouštějí úlohu.|Scénář, název_clusteru|
 |Nečinné uzly|Nečinné uzly|Počet|Průměr|Počet nečinných uzlů. Nečinné uzly jsou uzly, které nespouštějí žádné úlohy, ale mohou přijmout novou úlohu, je-li k dispozici.|Scénář, název_clusteru|
 |Nepoužité uzly|Nepoužité uzly|Počet|Průměr|Počet nepoužitelných uzlů. Nepoužité uzly nejsou funkční kvůli nějakému problému s nepřeložitelné. Azure bude tyto uzly recyklovat.|Scénář, název_clusteru|

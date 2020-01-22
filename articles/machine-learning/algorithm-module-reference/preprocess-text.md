@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: 9bf81b4e4c305c864592c32a8737d1a5eeb18651
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 59efa2510e196bbd423211ba2e81170440a26f08
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497680"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311916"
 ---
 # <a name="preprocess-text"></a>Předzpracování textu
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 K čištění a zjednodušení textu použijte modul **předzpracování textu** . Podporuje tyto běžné operace zpracování textu:
 
@@ -71,7 +71,7 @@ Modul pro **zpracování textu** v současné době podporuje pouze angličtinu.
     * **Odebrat duplicitní znaky**: tuto možnost vyberte, pokud chcete odebrat nadbytečné znaky v jakékoli sekvenci, která se opakuje více než dvakrát. Například sekvence jako "AAAAA" by se snížila na "AA".
     
     * **Odebrat e-mailové adresy**: tuto možnost vyberte, pokud chcete odebrat jakoukoli sekvenci formátu `<string>@<string>`.  
-    * **Odebrat adresy URL**: tuto možnost vyberte, pokud chcete odebrat všechny sekvence obsahující následující PŘEDPONY adresy URL: `http`, `https`, `ftp` `www`
+    * **Odebrat adresy URL**: tuto možnost vyberte, pokud chcete odebrat všechny sekvence obsahující následující PŘEDPONY adresy URL: `http`, `https`, `ftp``www`
     
 1. **Rozbalit kontrakty operací**: Tato možnost platí jenom pro jazyky, které používají kontrakty operací. v současné době pouze v angličtině. 
 
@@ -79,9 +79,9 @@ Modul pro **zpracování textu** v současné době podporuje pouze angličtinu.
 
 1. **Normalize zpětná lomítka na lomítka**: tuto možnost vyberte, pokud chcete všechny instance `\\` namapovat na `/`.
 
-1. **Rozdělit tokeny na speciální znaky**: tuto možnost vyberte, pokud chcete rozdělit slova na znaky, například `&`, `-` a tak dále. Tato možnost může také snížit speciální znaky, pokud se opakuje více než dvakrát. 
+1. **Rozdělit tokeny na speciální znaky**: tuto možnost vyberte, pokud chcete rozdělit slova na znaky, například `&`, `-`a tak dále. Tato možnost může také snížit speciální znaky, pokud se opakuje více než dvakrát. 
 
-    Například řetězec `MS---WORD` by byl rozdělen na tři tokeny, `MS`, `-` a `WORD`.
+    Například řetězec `MS---WORD` by byl rozdělen na tři tokeny, `MS`, `-`a `WORD`.
 
 1. Spuštění kanálu
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: fef8cb0c29eac4b26b93abee54faa4fe1078678d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 46034c8392dc1720fe5e03fc5e419dba6ed20e0b
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493812"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314466"
 ---
 # <a name="clean-missing-data-module"></a>Modul vyčištění chybějících dat
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Pomocí tohoto modulu můžete odebrat, nahradit nebo odvodit chybějící hodnoty. 
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: d0dfbec3abd379c7bf8add6445296dff74d92a76
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c8d58180b11c12afb256dc888406c7c0d58fb119
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428477"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314313"
 ---
 # <a name="select-columns-transform"></a>Transformace pro výběr sloupců
 
-Tento článek popisuje, jak použít modul pro výběr sloupců transformace v Návrháři Azure Machine Learning (Preview). Účelem modulu transformace sloupce Select je zajistit, aby se v operacích navazujícího strojového učení používala předvídatelná a konzistentní sada sloupců.
+Tento článek popisuje, jak použít modul pro výběr sloupců transformace v Návrháři Azure Machine Learning. Účelem modulu transformace sloupce Select je zajistit, aby se v operacích navazujícího strojového učení používala předvídatelná a konzistentní sada sloupců.
 
 Tento modul je užitečný pro úlohy, jako je například bodování, které vyžadují konkrétní sloupce. Změny v dostupných sloupcích můžou kanál přerušit nebo změnit výsledky.
 

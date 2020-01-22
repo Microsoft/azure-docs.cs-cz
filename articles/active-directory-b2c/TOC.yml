@@ -76,7 +76,7 @@
   items:
     - name: Integrace aplikací
       items:
-        - name: Registrace aplikace OIDC
+        - name: Registrace aplikace
           href: tutorial-register-applications.md
         - name: Registrace poskytovatele služeb SAML
           href: connect-with-saml-service-providers.md
@@ -282,6 +282,11 @@
                   items:
                     - name: ID řetězců lokalizací
                       href: localization-string-ids.md
+                - name: DisplayControls
+                  href: display-controls.md
+                  items:
+                    - name: Ověření
+                      href: display-control-verification.md
             - name: ClaimsProviders
               href: claimsproviders.md
               items:
@@ -318,13 +323,8 @@
                       href: self-asserted-technical-profile.md
                     - name: Relace SSO
                       href: active-directory-b2c-reference-sso-custom.md
-                    - name: Ověřování
+                    - name: Ověření
                       href: validation-technical-profile.md
-            - name: DisplayControls
-              href: display-controls.md
-              items:
-                - name: Ověření
-                  href: display-control-verification.md
             - name: UserJourneys
               href: userjourneys.md
             - name: RelyingParty

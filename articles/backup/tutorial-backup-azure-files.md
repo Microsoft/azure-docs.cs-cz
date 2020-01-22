@@ -3,12 +3,12 @@ title: Kurz – zálohování sdílených složek souborů Azure
 description: V tomto kurzu se naučíte, jak pomocí Azure Portal nakonfigurovat trezor Recovery Services a zálohovat sdílené složky Azure.
 ms.date: 06/10/2019
 ms.topic: tutorial
-ms.openlocfilehash: b002d1ea092d2d0507dc761f56ca7835f1521fb3
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: ec9074a39f2ece7878c0c3ef828dc21748d0ab89
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921643"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293925"
 ---
 # <a name="back-up-azure-file-shares-in-the-azure-portal"></a>Zálohování sdílených složek Azure v Azure Portal
 
@@ -43,29 +43,29 @@ Tento kurz předpokládá, že už máte vytvořenou sdílenou složku Azure. Z�
 
 1. Vytvořte trezor služby Recovery Services ve stejné oblasti, ve které je vaše sdílená složka. Pokud už trezor máte, otevřete stránku Přehled vašeho trezoru a klikněte na **Zálohování**.
 
-    ![Na stránce s přehledem vašeho trezoru klikněte na zálohovat.](./media/backup-file-shares/overview-backup-page.png)
+    ![Na stránce s přehledem vašeho trezoru klikněte na zálohovat.](./media/tutorial-backup-azure-files/overview-backup-page.png)
 
 2. V nabídce **cíl zálohování** z části **co chcete zálohovat?** vyberte sdílená složka Azure.
 
-    ![Volba sdílené složky Azure jako cíle zálohování](./media/backup-file-shares/choose-azure-fileshare-from-backup-goal.png)
+    ![Volba sdílené složky Azure jako cíle zálohování](./media/tutorial-backup-azure-files/choose-azure-fileshare-from-backup-goal.png)
 
 3. Kliknutím na **Zálohovat** nakonfigurujte zálohování sdílené složky Azure do vašeho trezoru služby Recovery Services.
 
-   ![přidružení sdílené složky Azure k trezoru kliknutím na Zálohovat](./media/backup-file-shares/set-backup-goal.png)
+   ![přidružení sdílené složky Azure k trezoru kliknutím na Zálohovat](./media/tutorial-backup-azure-files/set-backup-goal.png)
 
     Po přidružení trezoru ke sdílené složce Azure se otevře nabídka zálohování a zobrazí se výzva k výběru účtu úložiště. V nabídce se zobrazí všechny podporované účty úložiště v oblasti, ve které se nachází trezor, který už není přidružený k trezoru Recovery Services.
 
-   ![Vyberte svůj účet úložiště.](./media/backup-file-shares/list-of-storage-accounts.png)
+   ![Vyberte svůj účet úložiště.](./media/tutorial-backup-azure-files/list-of-storage-accounts.png)
 
 4. V seznamu účtů úložiště vyberte účet a klikněte na **OK**. Azure v účtu úložiště vyhledá sdílené složky, které je možné zálohovat. Pokud jste sdílené složky přidali nedávno a v seznamu je nevidíte, chvíli počkejte, než se sdílené složky zobrazí.
 
-   ![Hledají se sdílené složky.](./media/backup-file-shares/discover-file-shares.png)
+   ![Hledají se sdílené složky.](./media/tutorial-backup-azure-files/discover-file-shares.png)
 
 5. V seznamu **sdílené složky** vyberte jednu nebo více sdílených souborů, které chcete zálohovat, a klikněte na tlačítko **OK**.
 
 6. Po zvolení sdílených složek se nabídka Zálohování přepne na **Zásady zálohování**. V této nabídce buď vyberte existující zásadu zálohování, nebo vytvořte novou, a pak klikněte na **Povolit zálohování**.
 
-   ![Vyberte zásadu zálohování nebo vytvořte novou.](./media/backup-file-shares/apply-backup-policy.png)
+   ![Vyberte zásadu zálohování nebo vytvořte novou.](./media/tutorial-backup-azure-files/apply-backup-policy.png)
 
     Po vytvoření zásady zálohování se v naplánovaném čase pořídí snímek sdílených složek a po zvolenou dobu se bude uchovávat bod obnovení.
 
@@ -77,19 +77,19 @@ Po nakonfigurování zásad zálohování budete chtít vytvořit zálohu na vy�
 
 1. Otevřete trezor služby Recovery Services obsahující body obnovení sdílené složky a klikněte na **Zálohování položek**. Zobrazí se seznam typů zálohovaných položek.
 
-   ![Seznam zálohovaných položek](./media/backup-file-shares/list-of-backup-items.png)
+   ![Seznam zálohovaných položek](./media/tutorial-backup-azure-files/list-of-backup-items.png)
 
 2. V seznamu vyberte **Azure Storage (Soubory Azure)** . Zobrazí se seznam sdílených složek Azure.
 
-   ![Seznam sdílených složek Azure](./media/backup-file-shares/list-of-azure-files-backup-items.png)
+   ![Seznam sdílených složek Azure](./media/tutorial-backup-azure-files/list-of-azure-files-backup-items.png)
 
 3. V seznamu sdílených složek Azure vyberte požadovanou sdílenou složku. Otevře se nabídka Zálohovaná položka pro vybranou sdílenou složku.
 
-   ![Nabídka zálohovaná položka pro vybranou sdílenou složku](./media/backup-file-shares/backup-item-menu.png)
+   ![Nabídka zálohovaná položka pro vybranou sdílenou složku](./media/tutorial-backup-azure-files/backup-item-menu.png)
 
 4. V nabídce Zálohovaná položka klikněte na **Zálohovat nyní**. Protože se jedná o úlohu zálohování na vyžádání, není k bodu obnovení přidružená žádná zásada uchovávání. Otevře se dialogové okno **Zálohovat nyní**. Zadejte poslední den, ke kterému chcete uchovávat bod obnovení.
 
-   ![Zvolit datum pro uchování bodu obnovení](./media/backup-file-shares/backup-now-menu.png)
+   ![Zvolit datum pro uchování bodu obnovení](./media/tutorial-backup-azure-files/backup-now-menu.png)
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -103,4 +103,4 @@ V tomto kurzu jste pomocí webu Azure Portal provedli následující kroky:
 Přejděte k dalšímu článku, který se má obnovit ze zálohy sdílené složky Azure.
 
 > [!div class="nextstepaction"]
-> [Obnovení ze zálohy sdílených složek Azure](./backup-azure-files.md#restore-from-backup-of-azure-file-share)
+> [Obnovení ze zálohy sdílených složek Azure](restore-afs.md)

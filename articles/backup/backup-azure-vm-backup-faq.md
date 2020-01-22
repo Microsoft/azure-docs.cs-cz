@@ -4,12 +4,12 @@ description: V tomto článku najdete odpovědi na běžné dotazy týkající s
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: b8e259c6212e9a1e81b6b0c8825287f3025f9068
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: d70f4832daba59739d6798517902e921927194d6
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680524"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293976"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Nejčastější dotazy – zálohování virtuálních počítačů Azure
 
@@ -92,6 +92,19 @@ Naplánované zálohování se spustí do 2 hodin plánovaného času zálohová
 ### <a name="what-is-the-minimum-allowed-retention-range-for-daily-backup-point"></a>Jaký je minimální povolený rozsah uchování pro denní bod zálohy?
 
 Zásady zálohování virtuálních počítačů Azure podporují minimální dobu uchování na sedm dní až po 9999 dnů. Jakákoli změna existující zásady zálohování virtuálního počítače s méně než sedmi dny bude vyžadovat aktualizaci, aby splňovala minimální dobu uchování sedmi dnů.
+
+### <a name="can-i-backup-or-restore-selective-disks-attached-to-a-vm"></a>Můžu zálohovat nebo obnovit selektivní disky připojené k virtuálnímu počítači?
+
+Azure Backup teď podporuje zálohování a obnovení selektivního disku pomocí řešení zálohování virtuálních počítačů Azure.
+
+V současné době Azure Backup podporuje zálohování všech disků (operačního systému a dat) na virtuálním počítači společně s využitím řešení zálohování virtuálních počítačů. Díky funkci vyloučení disku získáte možnost zálohovat jeden nebo několik datových disků ve virtuálním počítači. To poskytuje efektivní a nákladově efektivní řešení pro potřeby zálohování a obnovení. Každý bod obnovení obsahuje data disků zahrnutých v operaci zálohování, která dále umožňuje mít v průběhu operace obnovení podmnožinu disků obnovených z daného bodu obnovení. To platí pro obnovení ze snímku i z trezoru.
+
+Toto řešení je užitečné zejména v následujících scénářích:
+  
+1. Máte kritická data, která se mají zálohovat jenom na jednom disku, a nechcete zálohovat zbývající disky připojené k virtuálnímu počítači. Tím se minimalizují náklady na úložiště zálohování.  
+2. Máte další řešení zálohování pro součást vašich dat virtuálních počítačů. Můžete například zálohovat databáze nebo data s jiným řešením zálohování úloh a chcete použít zálohování na úrovni virtuálního počítače Azure pro ostatní disky a data k vytvoření efektivního a robustního systému, který využívá nejlepší dostupné možnosti.
+
+Pokud si chcete zaregistrovat verzi Preview, napište nám na AskAzureBackupTeam@microsoft.com
 
 ## <a name="restore"></a>Obnovení
 

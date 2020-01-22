@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 3db20110571203588ac15f4f64a2ae0a6ab6ef27
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4dd2cd89e8edb4e636bf46d2a8125a0f1d00f2f3
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428410"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312239"
 ---
 # <a name="tune-model-hyperparameters"></a>Ladění hyperparametrů modelů
 
-Tento článek popisuje, jak v Návrháři Azure Machine Learning použít modul předparametrů ladit model (Preview). Cílem je určit optimální parametry pro model strojového učení. Modul vytváří a testuje více modelů pomocí různých kombinací nastavení. Porovnává metriky pro všechny modely a získá kombinace nastavení. 
+Tento článek popisuje, jak v Návrháři Azure Machine Learning použít modul předparametrů ladění modelu. Cílem je určit optimální parametry pro model strojového učení. Modul vytváří a testuje více modelů pomocí různých kombinací nastavení. Porovnává metriky pro všechny modely a získá kombinace nastavení. 
 
 *Parametr* terms a *parametr* může být matoucí. *Parametry* modelu jsou ty, které jste nastavili v podokně Vlastnosti. V podstatě tento modul provádí v rámci zadaného nastavení parametrů *parametr Sweep* . Učí optimální sadu _parametrů_, které se mohou lišit pro každý konkrétní rozhodovací strom, datovou sadu nebo regresi. Proces vyhledávání optimální konfigurace se někdy označuje jako *ladění*. 
 
@@ -81,11 +81,11 @@ Tato část popisuje, jak provést základní úklid parametrů, který navlakuj
 
 Po dokončení školení:
 
-+ Pokud chcete zobrazit sadu metrik přesnosti pro nejlepší model, klikněte pravým tlačítkem myši na modul, vyberte možnost **výsledky čištění**a pak vyberte **vizualizovat**.
++ Pokud chcete zobrazit sadu metrik přesnosti pro nejlepší model, klikněte pravým tlačítkem na modul a vyberte **vizualizovat**.
 
     Výstup obsahuje všechny metriky přesnosti, které platí pro typ modelu, ale metrika, kterou jste vybrali pro řazení, určuje, který model se považuje za "nejlepší".
 
-+ Pokud chcete model použít pro bodování v jiných kanálech, aniž byste museli opakovat proces ladění, klikněte pravým tlačítkem na výstup modelu a vyberte **Uložit jako trained model**. 
++ Pokud chcete uložit snímek výukového modelu, vyberte kartu **výstupy** na pravém panelu modulu **výuka modelu** . Výběrem ikony **Registrovat datovou sadu** uložte model jako opakovaně použitelný modul.
 
 
 ## <a name="technical-notes"></a>Technické poznámky

@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d584dc2eef27747627133511af3defe085068ab
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7570030f4b0cc2e7bc1a1d64ad9eea7a74429eee
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423828"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293466"
 ---
 # <a name="mobile-app-that-calls-web-apis---get-a-token"></a>Mobilní aplikace, která volá webová rozhraní API – získá token.
 
@@ -241,7 +241,7 @@ Třída definuje následující konstanty:
 
 ##### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 
-Tento modifikátor se používá v pokročilém scénáři, kdy chcete uživateli předběžně odsouhlasit několik zdrojů (a nechcete používat přírůstkový souhlas, který se obvykle používá s MSAL.NET nebo Microsoft Identity Platform v 2.0). Podrobnosti najdete v tématu [Postupy: použití souhlasu uživatele před několika prostředky](scenario-desktop-production.md#how-to-have--the-user-consent-upfront-for-several-resources).
+Tento modifikátor se používá v pokročilém scénáři, kdy chcete uživateli předběžně odsouhlasit několik zdrojů (a nechcete používat přírůstkový souhlas, který se obvykle používá s MSAL.NET nebo Microsoft Identity Platform v 2.0). Podrobnosti najdete v tématu [Postupy: použití souhlasu uživatele před několika prostředky](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources).
 
 ```csharp
 var result = await app.AcquireTokenInteractive(scopesForCustomerApi)

@@ -3,16 +3,16 @@ title: Nejčastější dotazy k zálohování Souborů Azure
 description: V tomto článku najdete odpovědi na běžné otázky týkající se ochrany sdílených složek Azure pomocí služby Azure Backup.
 ms.date: 07/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: bc4d7f9ad6512831687b974ae68870314775457d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 053fe38b07fff5d289c72024ef185fbf5d647f70
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892563"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293993"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Dotazy týkající se zálohování Souborů Azure
 
-V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování Souborů Azure. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
+V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování Souborů Azure. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Dotazy k Azure Backup také můžete pokládat v [diskuzním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
 
 K rychlému procházení částmi tohoto článku použijte odkazy vpravo v části **V tomto článku**.
 
@@ -36,7 +36,7 @@ Při pokusu o zálohování se výběrem účtu úložiště kvůli zjištění,
 
 ### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Můžu změnit trezor, do kterého zálohujte své sdílené složky?
 
-Ano. Budete však muset [zastavit ochranu](backup-azure-files.md#stop-protecting-an-azure-file-share) v připojeném trezoru, [zrušit registraci](troubleshoot-azure-files.md#configuring-backup) tohoto účtu úložiště a pak nastavit ochranu v jiném trezoru.
+Ano. Je ale potřeba [Zastavit ochranu sdílené složky](manage-afs-backup.md#stop-protection-on-a-file-share) z připojeného trezoru, zrušit [registraci](troubleshoot-azure-files.md#configuring-backup) tohoto účtu úložiště a pak ho chránit z jiného trezoru.
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares"></a>V němž zeměpisných oblastech můžu zálohovat sdílené složky Azure?
 

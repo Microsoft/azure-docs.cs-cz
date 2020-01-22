@@ -1,47 +1,47 @@
 ---
-title: Operátor osvědčené postupy – základní Plánovač funkcí ve službě Azure Kubernetes služby (AKS)
-description: Přečtěte si operátor clusteru doporučené postupy pro používání scheduleru základní funkce, jako jsou kvóty prostředků a pod rozpočty přerušení ve službě Azure Kubernetes Service (AKS)
+title: Doporučené postupy pro obsluhu – základní funkce plánovače ve službě Azure Kubernetes Services (AKS)
+description: Seznamte se s osvědčenými postupy pro použití základních funkcí plánovače, jako jsou kvóty prostředků a rozpočty přerušení v Azure Kubernetes Service (AKS).
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: 3ce59784b2c7c1d145d99786b10927c230146c8b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 3661f435b5c2dd88aa8e17ca396f9af43aea5224
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614624"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293602"
 ---
-# <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro Plánovač základní funkce ve službě Azure Kubernetes Service (AKS)
+# <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro základní funkce plánovače ve službě Azure Kubernetes Service (AKS)
 
-Jak budete spravovat clustery ve službě Azure Kubernetes Service (AKS), často potřebujete oddělit týmy a úlohy. Plánovač Kubernetes poskytuje funkce, které vám umožní řídit distribuci výpočetní prostředky, nebo omezení dopadu událostí údržby.
+Při správě clusterů ve službě Azure Kubernetes (AKS) je často potřeba izolovat týmy a úlohy. Plánovač Kubernetes poskytuje funkce, které umožňují řídit distribuci výpočetních prostředků, nebo omezují dopad událostí údržby.
 
-Tento článek o osvědčených postupech se zaměřuje na základní funkce plánování pro operátory clusteru Kubernetes. V tomto článku získáte informace o těchto tématech:
+Tento článek o osvědčených postupech se zaměřuje na základní funkce plánování Kubernetes pro operátory clusteru. V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Poskytuje pevné množství prostředků pro týmy nebo úlohy pomocí kvóty prostředků
-> * Omezit dopad těchto plánované údržby pomocí rozpočet pod přerušení
-> * Vyhledat chybějící pod prostředků požadavky a omezení použití `kube-advisor` nástroj
+> * Použití kvót prostředků k poskytnutí pevného množství prostředků týmům nebo úlohám
+> * Omezte dopad plánované údržby pomocí rozpočtů přerušení pod.
+> * Ověření chybějících požadavků a omezení prostředků pod a pomocí nástroje `kube-advisor`
 
-## <a name="enforce-resource-quotas"></a>Vynucovat kvóty prostředků
+## <a name="enforce-resource-quotas"></a>Vynutilit kvóty prostředků
 
-**Osvědčené postupy pro moduly** – plánování a kvóty prostředků na úrovni oboru názvů. Pokud podů nebudete definovat omezení a požadavky na zdroje, odmítnout nasazení. Monitorovat využití prostředků a kvót podle potřeby upravte.
+**Pokyny k osvědčeným postupům** – plánování a použití kvót prostředků na úrovni oboru názvů. Pokud lusky nedefinují požadavky a omezení prostředků, zamítnout nasazení. Monitorujte využití prostředků a podle potřeby upravte kvóty.
 
-Omezení a požadavky na zdroje jsou umístěny ve specifikaci pod. Tato omezení jsou používány Plánovač Kubernetes v době nasazení se najít dostupný uzel v clusteru. Tato omezení a požadavky fungují na úrovni jednotlivých pod. Další informace o tom, jak definovat tyto hodnoty, najdete v části [definovat pod prostředků požadavky a omezení][resource-limits]
+Požadavky na prostředky a omezení jsou umístěné ve specifikaci pod. Tato omezení používá Plánovač Kubernetes v době nasazování k nalezení dostupného uzlu v clusteru. Tato omezení a požadavky fungují na úrovni jednotlivých pod. Další informace o tom, jak definovat tyto hodnoty, najdete v tématu [definice pod a požadavky na prostředky a omezení][resource-limits] .
 
-Chcete-li poskytnout způsob, jak rezervovat a omezit prostředky napříč vývojový tým nebo projektu, měli byste použít *kvóty prostředků*. Tyto kvóty jsou definovány v oboru názvů a slouží k nastavení kvót na základě následující:
+Chcete-li zajistit způsob, jak rezervovat a omezit prostředky v rámci vývojového týmu nebo projektu, měli byste použít *kvóty prostředků*. Tyto kvóty jsou definované v oboru názvů a dají se použít k nastavení kvót na následujícím základě:
 
 * **Výpočetní prostředky**, jako je například procesor a paměť nebo GPU.
-* **Prostředky úložiště**, obsahuje celkový počet svazků nebo množství místa na disku pro třídu daného úložiště.
-* **Počet objektů**, jako je například maximální počet tajné kódy, je vytvořit služeb nebo úloh.
+* **Prostředky úložiště**zahrnují celkový počet svazků nebo velikost místa na disku pro danou třídu úložiště.
+* Je možné vytvořit **počet objektů**, jako je například maximální počet tajných klíčů, služeb nebo úloh.
 
-Kubernetes není přetížit prostředky. Jakmile kumulativní součet prostředků požadavky nebo omezení předá přidělenou kvótu, žádné další nasazení jsou úspěšné.
+Kubernetes neprovádí přepisování prostředků. Jakmile kumulativní součet požadavků na prostředky nebo omezení projde přiřazenou kvótou, neproběhne žádná další nasazení.
 
-Při definování kvóty prostředků, musíte zadat všechny podů vytvořené v oboru názvů omezení nebo požadavků v jejich pod specifikace. Pokud neobsahují tyto hodnoty, může odmítnout nasazení. Místo toho můžete [nakonfigurovat výchozí požadavky a omezení pro obor názvů][configure-default-quotas].
+Při definování kvót prostředků musí všechny lusky vytvořené v oboru názvů poskytovat omezení nebo požadavky ve svých specifikacích pod. Pokud tyto hodnoty nezadávají, můžete nasazení odmítnout. Místo toho můžete [nakonfigurovat výchozí požadavky a omezení pro obor názvů][configure-default-quotas].
 
-Následující příklad YAML manifestu s názvem *vývoj aplikace týmu quotas.yaml* nastaví vynucené omezení celkem *10* procesory, *20Gi* paměti, a *10*pody:
+Následující příklad manifestu YAML s názvem *dev-App-Team-kvóty. yaml* nastaví pevný limit celkového počtu *10* procesorů, *20Gi* paměti a *10* lusků:
 
 ```yaml
 apiVersion: v1
@@ -55,32 +55,32 @@ spec:
     pods: "10"
 ```
 
-Tato kvóta zdrojů lze použít zadáním obor názvů, jako například *vývoj aplikací*:
+Tuto kvótu prostředků můžete použít zadáním oboru názvů, jako je například *vývoj aplikací*:
 
 ```console
 kubectl apply -f dev-app-team-quotas.yaml --namespace dev-apps
 ```
 
-Práce s vývojáři a vlastníci pochopit jejich potřeby a kvóty odpovídající prostředek.
+Spolupracujte s vývojáři vaší aplikace a vlastníky, abyste porozuměli jejich potřebám a použili příslušné kvóty prostředků.
 
-Další informace o dostupných prostředků objekty, obory a priority, naleznete v tématu [kvóty prostředků v Kubernetes][k8s-resource-quotas].
+Další informace o dostupných objektech prostředků, oborech a prioritách najdete v tématu [kvóty prostředků v Kubernetes][k8s-resource-quotas].
 
-## <a name="plan-for-availability-using-pod-disruption-budgets"></a>Plánování dostupnosti s využitím rozpočet pod přerušení
+## <a name="plan-for-availability-using-pod-disruption-budgets"></a>Plánování dostupnosti pomocí rozpočtů přerušení pod
 
-**Osvědčené postupy pro moduly** – Chcete-li zachovat dostupnost aplikace, definujte Pod přerušení rozpočty (PDB) abyste měli jistotu, že minimální počet podů jsou k dispozici v clusteru.
+**Doprovodné materiály k osvědčeným postupům** – Chcete-li zachovat dostupnost aplikací, definujte podprocesy přerušení (soubory PDB), abyste se ujistili, že v clusteru je k dispozici minimální počet lusků.
 
-Existují dva rušivé události, které způsobují podů odebrat:
+Existují dvě rušivé události, které způsobují, že se odeberou lusky.
 
-* *Involuntary přerušení* jsou události mimo typické kontrolu operátor clusteru nebo vlastník aplikace.
-  * Selhání hardwaru na fyzický počítač, poplachu jádra nebo odstranění uzlu virtuálního počítače zahrnují tyto involuntary přerušení služeb
-* *Dobrovolná přerušení* jsou události požadoval operátor clusteru nebo vlastník aplikace.
-  * Tyto dobrovolné přerušení zahrnovat upgrady clusteru, šablonu nasazení aktualizace nebo nechtěného odstranění pod.
+* *Nedobrovolnými výpadky* jsou události nad rámec obvyklé kontroly nad operátorem clusteru nebo vlastníkem aplikace.
+  * Mezi tyto nedobrovolné výpadky patří selhání hardwaru fyzického počítače, nouzové jádro nebo odstranění virtuálního počítače uzlu.
+* *Dobrovolné přerušení* jsou události vyžádané operátorem clusteru nebo vlastníkem aplikace.
+  * Mezi tyto dobrovolné výpadky patří upgrady clusteru, aktualizovaná šablona nasazení nebo nechtěné odstranění.
 
-Involuntary přerušení lze zmírnit použitím víc replik vašich podů v nasazení. Spuštění více uzlů v clusteru AKS také pomáhá s těmito involuntary přerušení služeb. Dobrovolná přerušení služeb, Kubernetes poskytuje *pod přerušení rozpočty* , která umožní operátor clusteru definovat minimální není k dispozici prostředek k dispozici nebo maximální počet. Tyto pod přerušení rozpočty umožňují naplánovat způsob nasazení ani pro sady replik reagovat při výskytu události přerušení dobrovolná.
+Nedobrovolné výpadky je možné zmírnit použitím několika replik v rámci nasazení. Spuštění více uzlů v clusteru AKS také pomáhá s těmito nedobrovolnými výpadky. V případě dobrovolných výpadků Kubernetes poskytuje *rozpočet po přerušení* , který umožňuje operátorovi clusteru definovat minimální dostupný nebo maximální počet nedostupných zdrojů. Tyto rozpočty přerušení umožňují naplánovat způsob, jakým nasazení nebo sady replik reagují na případ, kdy dojde k dobrovolnému přerušení.
 
-Pokud cluster, je možné upgradovat nebo šablonu nasazení aktualizace, že Kubernetes scheduleru zkontrolujte další pody jsou naplánovány na jiných uzlech, před pokračováním v události dobrovolné přerušení. Plánovač čeká předtím, než se uzel restartuje, dokud definovaný počet podů se úspěšně naplánovala na jiných uzlech v clusteru.
+Pokud je třeba upgradovat cluster nebo aktualizovat šablonu nasazení, Plánovač Kubernetes zajistí, aby se další lusky naplánovaly na jiných uzlech, než můžou pokračovat události dobrovolného přerušení. Plánovač počká před restartováním uzlu, dokud se neúspěšně naplánuje definovaný počet lusků na jiných uzlech v clusteru.
 
-Pojďme se podívat na příklad repliky sadu s pěti podů, na kterých běží server NGINX. Podů v replice nastavte, jak přiřadit popisek `app: nginx-frontend`. Během události dobrovolné přerušení, jako je například upgradu clusteru budete chtít Ujistěte se, že aspoň tři podů dál běžet. Následující kód YAML manifestu pro *PodDisruptionBudget* objekt definuje tyto požadavky:
+Pojďme se podívat na příklad sady replik s pěti lusky, které používají NGINX. V luskech sady replik se přiřadí popisek `app: nginx-frontend`. Během dobrovolné události přerušení, jako je například upgrade clusteru, chcete zajistit, aby běžely alespoň tři lusky. Následující manifest YAML pro objekt *PodDisruptionBudget* definuje tyto požadavky:
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -94,9 +94,9 @@ spec:
       app: nginx-frontend
 ```
 
-Můžete také definovat procento, jako například *60 %* , která umožňuje automaticky jako kompenzaci za repliky nastavit škálování počtu podů.
+Můžete také definovat procento, například *60%* , které vám umožní automaticky kompenzovat sadu replik a škálovat tak počet lusků.
 
-Můžete definovat maximální počet instancí nedostupný replik. Znovu můžete také definovat procento pro maximální není k dispozici tyto pody. Následující pod narušení rozpočtu YAML manifest definuje, že více než dva podů v replice sadu nebudou k dispozici:
+V sadě replik můžete definovat maximální počet nedostupných instancí. Znovu je možné definovat i procento pro maximální nedostupné lusky. Následující manifest YAML s dopadem na narušení rozpočtu definuje, že není k dispozici více než dvě lusky v sadě repliky:
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -110,31 +110,31 @@ spec:
       app: nginx-frontend
 ```
 
-Po definování narušení rozpočtu pod jejím vytvoření v clusteru AKS stejně jako jakýkoli jiný objekt Kubernetes:
+Po definování rozpočtu přerušení v prostředí je vytvoříte v clusteru AKS jako s jakýmkoli jiným objektem Kubernetes:
 
 ```console
 kubectl apply -f nginx-pdb.yaml
 ```
 
-Pracovat s vývojáři aplikace a vlastníci pochopit jejich potřeby a aplikovat rozpočet pod příslušnou přerušení.
+Spolupracujte se s vývojáři vaší aplikace a vlastníky, abyste porozuměli jejich potřebám a použili příslušné rozpočty přerušení na základě.
 
-Další informace o používání pod přerušení rozpočty, naleznete v tématu [zadejte narušení rozpočtu pro vaši aplikaci][k8s-pdbs].
+Další informace o použití rozpočtů přerušení v systému najdete v tématu [určení rozpočtu přerušení pro vaši aplikaci][k8s-pdbs].
 
-## <a name="regularly-check-for-cluster-issues-with-kube-advisor"></a>Pravidelně zjišťovat problémy clusteru kube Advisor
+## <a name="regularly-check-for-cluster-issues-with-kube-advisor"></a>Pravidelně zjišťovat problémy s clustery pomocí Kube-Advisoru
 
-**Osvědčené postupy pro moduly** – pravidelně používat nejnovější verzi `kube-advisor` open source nástroj a detekujte problémy ve vašem clusteru. Pokud použijete kvóty prostředků v existujícím clusteru AKS, spusťte `kube-advisor` nejprve k vyhledání podů, které nemají definovaná omezení a požadavky prostředků.
+**Doprovodné materiály k osvědčeným postupům** – pravidelně spouštějte nejnovější verzi nástroje `kube-advisor` Open Source Tool zjistíte problémy v clusteru. Pokud použijete kvóty prostředků v existujícím clusteru AKS, spusťte nejprve `kube-advisor` a najděte lusky, které nemají požadavky na prostředky a definované limity.
 
-[Kube advisor][kube-advisor] nástroj je přidružené AKS opensourcový projekt, který prohledá Kubernetes cluster a zprávy o problémech, které nalezne. Jeden užitečné se identifikovat podů, které nemají omezení a požadavky na zdroje v místě.
+Nástroj [Kube-Advisor][kube-advisor] je přidružený AKS open source projekt, který vyhledává cluster Kubernetes a oznamuje nalezené problémy. Jednou z užitečných kontrol je identifikovat lusky, které nemají požadavky na prostředky a omezení.
 
-Nástroj kube advisor může podávat požadavkem na prostředky a omezení v aplikacích PodSpecs pro Windows, jakož i Linuxové aplikace chybí, ale vlastního nástroje kube advisor musí být naplánováno na Linuxu pod. Můžete naplánovat podu spustit na fond uzlů s konkrétním použití operačního systému [uzlu selektoru][k8s-node-selector] v konfiguraci pod.
+Nástroj Kube-Advisor může vykazovat požadavky na prostředky a omezení chybějící v PodSpecs pro aplikace Windows i pro aplikace pro Linux, ale samotný nástroj Kube-Advisor musí být naplánován na Linux pod. Můžete naplánovat spuštění pod v rámci fondu uzlů s konkrétním operačním systémem pomocí [voliče uzlů][k8s-node-selector] v konfiguraci pod.
 
-V clusteru AKS, který je hostitelem více vývojových týmů a aplikace může být obtížné sledovat podů bez těchto prostředků požadavky a omezení sady. Jako osvědčený postup, pravidelně spouštět `kube-advisor` v clusterech služby AKS, zejména v případě, že kvóty prostředků nepřiřazovat k obory názvů.
+V clusteru AKS, který je hostitelem několika vývojových týmů a aplikací, může být obtížné sledovat lusky, aniž by bylo nutné tyto požadavky na prostředky a omezení nastavit. Osvědčeným postupem je pravidelně spouštět `kube-advisor` v clusterech AKS, zejména pokud nepřiřazujete kvóty prostředků oborům názvů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Tento článek se zaměřuje na základní funkce plánovače Kubernetes. Další informace o operacích clusteru ve službě AKS najdete v následující osvědčené postupy:
+Tento článek se zaměřuje na základní funkce plánovače Kubernetes. Další informace o operacích clusteru v AKS najdete v následujících osvědčených postupech:
 
-* [Izolace více tenantů a clusteru][aks-best-practices-cluster-isolation]
+* [Víceklientská architektura a izolace clusteru][aks-best-practices-cluster-isolation]
 * [Pokročilé funkce plánovače Kubernetes][aks-best-practices-advanced-scheduler]
 * [Ověřování a autorizace][aks-best-practices-identity]
 

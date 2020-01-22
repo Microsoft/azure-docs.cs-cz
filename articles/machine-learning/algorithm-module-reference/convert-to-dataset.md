@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: a004fdf0ed01c97fe5c21cc9011c46f5e4c51648
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 00414bea82a7a78dd88ff4b1a592a6e35b5241c7
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428575"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314398"
 ---
 # <a name="convert-to-dataset"></a>Převod na datovou sadu
 
-Tento článek popisuje, jak použít modul převést na datovou sadu v Návrháři Azure Machine Learning (Preview) k převedení libovolných dat kanálu do interního formátu návrháře.
+Tento článek popisuje, jak použít modul převést na datovou sadu v Návrháři Azure Machine Learning k převedení libovolných dat kanálu do interního formátu návrháře.
   
 Ve většině případů není převod vyžadován. Azure Machine Learning implicitně převádí data na formát nativní datové sady, když se v datech provede nějaká operace. 
 
@@ -51,11 +51,11 @@ Než použijete převod na datovou sadu, doporučujeme použít modul [Upravit m
     Všimněte si, že operace **ReplaceValues** se vztahuje pouze na přesné shody. Například by tyto řetězce nebyly ovlivněny: `obs.`, `obsolete`.  
  
   
-5.  Spusťte kanál, nebo klikněte pravým tlačítkem na modul převést na datovou sadu a vyberte **Spustit vybrané**.  
+5.  Spuštění kanálu  
 
 ## <a name="results"></a>Výsledky
 
-+  Chcete-li uložit výslednou datovou sadu s novým názvem, klikněte pravým tlačítkem na výstup převést na datovou sadu a vyberte **Uložit jako datovou sadu**.  
++  Výslednou datovou sadu uložte s novým názvem tak, že na kartě **výstup** v pravém panelu modulu vyberete ikonu pro **datovou sadu registru** ikony.  
   
 ## <a name="technical-notes"></a>Technické poznámky  
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 577dc6d4344cd6d7a38c4d538218c9dd89e883aa
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 803c82c9926c3b75545b42a9a382fd5c327b7151
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643638"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289080"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: nejčastější dotazy (FAQ)
 
@@ -27,7 +27,7 @@ Existují dva běžné důvody, proč rozšíření Azure AD nefunguje za vás. 
 
 ### <a name="can-i-use-azure-ad-b2c-features-in-my-existing-employee-based-azure-ad-tenant"></a>Můžu ve svém existujícím tenantovi Azure AD s využitím zaměstnanců použít funkce Azure AD B2C?
 
-Azure AD a Azure AD B2C jsou samostatné nabídky produktů a nemůžou koexistovat ve stejném tenantovi. Tenant Azure AD představuje organizaci. Tenant Azure AD B2C představuje kolekci identit, které se mají používat s aplikacemi předávající strany. Díky vlastním zásadám se Azure AD B2C můžou federovat do Azure AD, což umožňuje ověřování zaměstnanců v organizaci.
+Azure AD a Azure AD B2C jsou samostatné nabídky produktů a nemůžou koexistovat ve stejném tenantovi. Tenant Azure AD představuje organizaci. Tenant Azure AD B2C představuje kolekci identit, které se mají používat s aplikacemi předávající strany. Přidáním **nového poskytovatele OpenID Connect** v rámci **Azure AD B2C > zprostředkovatelů identity** nebo s vlastními zásadami Azure AD B2C může federovat do Azure AD umožnit ověřování zaměstnanců v organizaci.
 
 ### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-office-365"></a>Můžu použít Azure AD B2C k poskytování sociálního přihlášení (Facebook a Google +) do sady Office 365?
 
@@ -54,8 +54,8 @@ Ne. Výchozí obory používané pro naši podporovanou sadu zprostředkovatelů
 * Facebook: e-mail
 * Google +: e-mail
 * Účet Microsoft: e-mailový profil OpenID
-* Amazon: Profil
-* LinkedIn: r_emailaddress, r_basicprofile
+* Amazon: profile
+* LinkedIn: r_emailaddress r_basicprofile
 
 ### <a name="does-my-application-have-to-be-run-on-azure-for-it-work-with-azure-ad-b2c"></a>Musí být moje aplikace spuštěná v Azure pro práci s Azure AD B2C?
 
@@ -77,8 +77,8 @@ K přizpůsobení obsahu ověřovacích e-mailů můžete použít [funkci Brand
 Podpis e-mailu obsahuje název tenanta Azure AD B2C, který jste zadali při prvním vytvoření klienta Azure AD B2C. Název můžete změnit pomocí těchto pokynů:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako globální správce.
-1. Otevřete okno **Azure Active Directory** .
-1. Klikněte na kartu **vlastnosti** .
+1. Otevřete okno **Azure Active Directory**.
+1. Klikněte na tlačítko **vlastnosti** kartu.
 1. Změňte pole **název** .
 1. Klikněte na **Uložit** v horní části stránky.
 
@@ -150,7 +150,7 @@ Můžete použít aktuální prostředí **aplikací** nebo naše nové sjednoce
 1. V části **Spravovat**vyberte **uživatelská nastavení**.
 1. Pokud je k dispozici, vyberte v části **připojení k účtu LinkedIn**možnost **ne**a pak vyberte **Uložit**.
 1. V části **Spravovat**vyberte **vlastnosti** .
-1. V části **Správa přístupu pro prostředky Azure**vyberte **Ano**a pak vyberte **Uložit**.
+1. V části **Správa přístupu pro prostředky Azure** vyberte **Ano** a pak vyberte **Uložit**.
 1. Odhlaste se ze Azure Portal a pak se znovu přihlaste, abyste mohli aktualizovat svůj přístup.
 1. V nabídce na levé straně vyberte **Azure Active Directory** .
 1. Na stránce **Přehled** vyberte **odstranit adresář**. Dokončete proces podle pokynů na obrazovce.
@@ -170,7 +170,7 @@ Můžete použít aktuální prostředí **aplikací** nebo naše nové sjednoce
 1. V části **Spravovat**vyberte **uživatelská nastavení**.
 1. Pokud je k dispozici, vyberte v části **připojení k účtu LinkedIn**možnost **ne**a pak vyberte **Uložit**.
 1. V části **Spravovat**vyberte **vlastnosti** .
-1. V části **Správa přístupu pro prostředky Azure**vyberte **Ano**a pak vyberte **Uložit**.
+1. V části **Správa přístupu pro prostředky Azure** vyberte **Ano** a pak vyberte **Uložit**.
 1. Odhlaste se ze Azure Portal a pak se znovu přihlaste, abyste mohli aktualizovat svůj přístup.
 1. V nabídce na levé straně vyberte **Azure Active Directory** .
 1. Na stránce **Přehled** vyberte **odstranit adresář**. Dokončete proces podle pokynů na obrazovce.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/28/2019
 ms.author: radeltch
-ms.openlocfilehash: ae2fb4c13633fa2ac22510a98e193bd9f01efb12
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 15abee96f81bca68575d61be1276d4394e9a6f55
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73045379"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293806"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Připojení k veřejnému koncovému bodu pro Virtual Machines používání Azure Standard Load Balancer ve scénářích SAP pro vysokou dostupnost
 
@@ -35,7 +35,7 @@ Při implementaci vysoké dostupnosti pro řešení SAP prostřednictvím cluste
 
 Služba Azure Load Balancer úrovně Standard nabízí oproti základnímu nástroji pro vyrovnávání zatížení některé výhody. Například funguje v rámci zón dostupnosti Azure, nabízí lepší možnosti monitorování a protokolování pro snazší řešení potíží a nižší latenci. Funkce "porty vysoké dostupnosti" pokrývá všechny porty, to znamená, že už není nutné zobrazit seznam všech jednotlivých portů.  
 
-Mezi základní a standardní SKU nástroje pro vyrovnávání zatížení Azure jsou důležité rozdíly. Jedním z nich je zpracování odchozího provozu do veřejného koncového bodu. Úplné porovnání nástroje pro vyrovnávání zatížení na úrovni Basic a Standard SKU najdete v tématu [Load Balancer porovnání skladové](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus)položky.  
+Mezi základní a standardní SKU nástroje pro vyrovnávání zatížení Azure jsou důležité rozdíly. Jedním z nich je zpracování odchozího provozu do veřejného koncového bodu. Úplné porovnání nástroje pro vyrovnávání zatížení na úrovni Basic a Standard SKU najdete v tématu [Load Balancer porovnání skladové](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)položky.  
  
 Pokud se virtuální počítače bez veřejných IP adres nacházejí v back-end fondu interní (bez veřejné IP adresy) standardního nástroje pro vyrovnávání zatížení Azure, neexistuje odchozí připojení k veřejným koncovým bodům, pokud se neprovede další konfigurace.  
 
@@ -89,7 +89,7 @@ Konfigurace by vypadala takto:
 
 ### <a name="deployment-steps"></a>Kroky nasazení
 
-1. Vytvořit Load Balancer  
+1. Vytvoření nástroje pro vyrovnávání zatížení  
    1. V [Azure Portal](https://portal.azure.com) klikněte na všechny prostředky, přidat a vyhledejte **Load Balancer**  
    1. Klikněte na **Vytvořit** 
    1. Název Load Balancer **MyPublicILB**  

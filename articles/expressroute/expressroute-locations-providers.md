@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: cherylmc
-ms.openlocfilehash: f5fcac938c965c0ff02f578ddd2605660b184f9f
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 57a066132cbc8812fac95862bd1b02a3fc59ff2f
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263689"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293891"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -183,6 +183,7 @@ Pokud poskytovatel připojení není v předchozích částech uvedený, můžet
   * [NextDC](https://www.nextdc.com/)
   * [Megaport](https://www.megaport.com/services/microsoft-expressroute/)
   * [PacketFabric](https://www.packetfabric.com/cloud-connectivity/microsoft-azure)
+  * [Teraco](https://www.teraco.co.za/platform-teraco/africa-cloud-exchange/)
   
 * Rozšířil váš poskytovatel připojení vaši síť ke zvolenému umístění partnerského vztahu?
   * Ujistěte se, že poskytovatel připojení rozšiřuje vaše připojení vysoce dostupným způsobem tak, aby neexistovaly žádné jediné body selhání.

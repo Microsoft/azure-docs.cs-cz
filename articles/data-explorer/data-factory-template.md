@@ -8,18 +8,18 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/08/2019
-ms.openlocfilehash: ca50a1ecd4d2a21593ddd11f83337ae7476cf916
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 884f4e956b37c2def6c25d0acdf20f15eddf7767
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300449"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293551"
 ---
 # <a name="copy-in-bulk-from-a-database-to-azure-data-explorer-by-using-the-azure-data-factory-template"></a>Hromadné kopírování z databáze do Azure Průzkumník dat pomocí šablony Azure Data Factory 
 
 Azure Průzkumník dat je rychlá, plně spravovaná služba pro analýzu dat. Nabízí analýzu v reálném čase u velkých objemů dat, která se streamují z mnoha zdrojů, jako jsou aplikace, weby a zařízení IoT. 
 
-Azure Data Factory je plně spravovaná cloudová služba pro integraci dat. Můžete ji použít k naplnění databáze služby Azure Průzkumník dat daty ze stávajícího systému. A díky tomu můžete ušetřit čas při vytváření řešení pro analýzu. 
+Pokud chcete kopírovat data z databáze v Oracle serveru, Netezza, Teradata nebo SQL Server do Azure Průzkumník dat, musíte načíst obrovský objem dat z více tabulek. Data musí být obvykle rozdělená do oddílů v každé tabulce, takže můžete načíst řádky s více vlákny paralelně z jedné tabulky. Tento článek popisuje šablonu, která se má použít v těchto scénářích.
 
 [Šablony Azure Data Factory](/azure/data-factory/solution-templates-introduction) jsou předdefinované Data Factory kanály. Tyto šablony vám pomohou rychle začít s Data Factory a zkrátit dobu vývoje v projektech Integration data. 
 
@@ -53,9 +53,9 @@ ADXTableName varchar(255)
 
 Prvky kódu jsou popsány v následující tabulce:
 
-|Vlastnost  |Popis  | Příklad
+|Vlastnost  |Popis  | Příklad:
 |---------|---------| ---------|
-|Oddílu   |  Pořadí kopírování | 1  |  
+|PartitionId   |  Pořadí kopírování | 1\. místo  |  
 |SourceQuery   |  Dotaz, který určuje, která data budou kopírována během běhu kanálu | <br>`select * from table where lastmodifiedtime  LastModifytime >= ''2015-01-01 00:00:00''>` </br>    
 |ADXTableName  |  Název cílové tabulky | MyAdxTable       |  
 
@@ -79,7 +79,7 @@ Pokud je vaše ControlTableDataset v jiném formátu, vytvořte si pro svůj for
 
     c. V rozevíracím seznamu **AzureDataExplorerTable** vyberte tabulku Azure Průzkumník dat. Pokud datová sada neexistuje, [vytvořte propojenou službu Azure Průzkumník dat](data-factory-load-data.md#create-the-azure-data-explorer-linked-service) a přidejte datovou sadu.
 
-    d. Vyberte **použít tuto šablonu**.
+    d. Vyberte **Použít tuto šablonu**.
 
     ![Podokno hromadné kopírování z databáze do Azure Průzkumník dat](media/data-factory-template/configure-bulk-copy-adx-template.png)
 

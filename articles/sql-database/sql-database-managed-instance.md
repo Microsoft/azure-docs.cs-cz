@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-ms.date: 11/27/2019
-ms.openlocfilehash: d5b3733947876958b4d72da4cb7bb0f10a3a9165
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.date: 01/21/2020
+ms.openlocfilehash: b8cf7992617b7263b86fd98e5def8be1d43ca68c
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614942"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293364"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Co je Azure SQL Database spravovaná instance?
 
@@ -325,7 +325,7 @@ V následující tabulce je uvedeno několik vlastností, které jsou přístupn
 
 |Vlastnost|Hodnota|Poznámka|
 |---|---|---|
-|`@@VERSION`|Microsoft SQL Azure (RTM) – 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|Tato hodnota je stejná jako v SQL Database.|
+|`@@VERSION`|Microsoft SQL Azure (RTM) – 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|Tato hodnota je stejná jako v SQL Database. To neznamená, **že** modul SQL verze 12 (SQL Server 2014). Spravovaná instance vždy spouští nejnovější stabilní verzi modulu SQL, která je stejná nebo vyšší než nejnovější dostupná verze RTM SQL Server.  |
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Tato hodnota je stejná jako v SQL Database.|
 |`SERVERPROPERTY('EngineEdition')`|8|Tato hodnota jednoznačně identifikuje spravovanou instanci.|
 |`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Název DNS úplná instance v následujícím formátu:`<instanceName>`.`<dnsPrefix>`.Database.Windows.NET, kde `<instanceName>` je poskytnutá výhradně zákazník, zatímco `<dnsPrefix>` je automaticky generované část názvu zaručující globální jedinečnost názvu DNS ("wcus17662feb9ce98", například)|Příklad: my-managed-instance.wcus17662feb9ce98.database.windows.net|

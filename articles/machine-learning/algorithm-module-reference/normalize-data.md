@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: bdf2fa700b96c6110143a4557985ac1a30ed9096
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8e4bc440d59f41988a52b8b7b808b74f95acdf46
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466056"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314262"
 ---
 # <a name="normalize-data-module"></a>Normalizovat datový modul
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Tento modul použijte k transformaci datové sady prostřednictvím *normalizace*.
 
@@ -76,7 +76,7 @@ Pomocí tohoto modulu můžete najednou použít jenom jednu metodu normalizace.
   
     - **Logistické**: hodnoty ve sloupci se transformují pomocí následujícího vzorce:
 
-      ![vzorec pro normalizaci pomocí logistické funkce](media/module/aml-normalization-logistic.png "AML_normalization – logistická")  
+      ![vzorec pro normalizaci pomocí logistické funkce](media/module/aml-normalization-logistic.png "AML_normalization – logistické")  
   
     - **Normální**: Tato možnost převede všechny hodnoty na logaritmicko-normální škálování.
   
@@ -98,11 +98,11 @@ Pomocí tohoto modulu můžete najednou použít jenom jednu metodu normalizace.
 
 Modul **Normalize data** generuje dva výstupy:
 
-- Chcete-li zobrazit transformované hodnoty, klikněte pravým tlačítkem myši na modul, vyberte **transformovaná datová sada**a klikněte na **vizualizovat**.
+- Chcete-li zobrazit transformované hodnoty, klikněte pravým tlačítkem na modul a vyberte **vizualizovat**.
 
     Ve výchozím nastavení se hodnoty transformují na místě. Chcete-li porovnat transformované hodnoty s původními hodnotami, použijte modul [Přidat sloupce](./add-columns.md) pro rekombinaci datových sad a zobrazení sloupců vedle sebe.
 
-- Chcete-li uložit transformaci, abyste mohli použít stejnou metodu normalizace na jinou podobnou datovou sadu, klikněte pravým tlačítkem myši na modul, vyberte možnost **transformační funkce**a klikněte na možnost **Uložit jako transformaci**.
+- Chcete-li transformaci uložit, abyste mohli použít stejnou metodu normalizace na jinou datovou sadu, vyberte modul a na kartě **výstup** v pravém panelu vyberte možnost **Registrovat datovou sadu** .
 
     Uloženou transformaci pak můžete načíst ze skupiny **transformes** v levém navigačním podokně a použít ji pro datovou sadu se stejným schématem pomocí [transformace./Apply](apply-transformation.md).  
 

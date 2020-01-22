@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 12/24/2019
-ms.openlocfilehash: c06a7551a5c0f14be94ed14072b81c189e359aa8
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 01/21/2020
+ms.openlocfilehash: 15334f0c58f602a2728e3daa6645b957dfcd7129
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541995"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290321"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>Připojení počítačů se systémem Linux k Azure Monitor
 
@@ -74,9 +74,10 @@ Před instalací agenta Log Analytics pro Linux potřebujete ID a klíč vašeho
 
 Agent Log Analytics pro Linux je k dispozici v balíčku skriptu pro samorozbalovací a instalovatelný prostředí. Tato sada obsahuje balíčky Debian a ot./min. pro každou součást agenta a je možné ji nainstalovat přímo nebo extrahovat a načíst jednotlivé balíčky. Jeden svazek je k dispozici pro x64 a jeden pro architektury x86. 
 
-Pro virtuální počítače Azure doporučujeme nainstalovat agenta na těchto počítačích pomocí [rozšíření virtuálního počítače azure Log Analytics](../../virtual-machines/extensions/oms-linux.md) pro Linux. 
+> [!NOTE]
+> Pro virtuální počítače Azure doporučujeme nainstalovat agenta na těchto počítačích pomocí [rozšíření virtuálního počítače azure Log Analytics](../../virtual-machines/extensions/oms-linux.md) pro Linux. 
 
-1. Přeneste příslušný balíček (x86 nebo x64) na virtuální počítač se systémem Linux nebo do fyzického počítače pomocí spojovacího bodu služby nebo SFTP.
+1. [Stáhněte](https://github.com/microsoft/OMS-Agent-for-Linux#azure-install-guide) a přeneste příslušnou sadu prostředků (x64 nebo x86) na svůj virtuální počítač nebo fyzický počítač se systémem Linux pomocí spojovacího bodu služby nebo SFTP.
 
 2. Nainstalujte sadu prostředků pomocí argumentu `--install`. Chcete-li se připojit k pracovnímu prostoru Log Analytics během instalace, zadejte parametry `-w <WorkspaceID>` a `-s <workspaceKey>`, které jste zkopírovali dříve.
 
@@ -93,7 +94,7 @@ Pro virtuální počítače Azure doporučujeme nainstalovat agenta na těchto p
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy address>:<proxy port> -w <workspace id> -s <shared key>
     ```
 
-    Pokud je vyžadováno ověření, je nutné zadat uživatelské jméno a heslo. Příklad: 
+    Pokud je vyžadováno ověření, je nutné zadat uživatelské jméno a heslo. Například: 
     
     ```
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy user>:<proxy password>@<proxy address>:<proxy port> -w <workspace id> -s <shared key>

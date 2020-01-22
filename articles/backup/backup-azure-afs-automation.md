@@ -3,12 +3,12 @@ title: Zálohování a obnovení souborů Azure pomocí PowerShellu
 description: V tomto článku se dozvíte, jak zálohovat a obnovovat soubory Azure pomocí služby Azure Backup a PowerShellu.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 78000bc669eb7a61f8698ad8c39ef49f65b245a2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f9665bbc3562faab760562e1e6729d8be0796acd
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224162"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294044"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>Zálohování a obnovení souborů Azure pomocí PowerShellu
 
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak:
 ## <a name="before-you-start"></a>Než začnete
 
 * [Přečtěte si další informace](backup-azure-recovery-services-vault-overview.md) o úložištích Recovery Services.
-* Přečtěte si o možnostech verze Preview pro [Zálohování sdílených složek Azure](backup-azure-files.md).
+* Přečtěte si o možnostech verze Preview pro [Zálohování sdílených složek Azure](backup-afs.md).
 * Zkontrolujte hierarchii objektů PowerShell pro Recovery Services.
 
 ## <a name="recovery-services-object-hierarchy"></a>Recovery Services hierarchie objektů
@@ -37,7 +37,7 @@ Hierarchie objektů je shrnuta v následujícím diagramu.
 
 ![Recovery Services hierarchie objektů](./media/backup-azure-vms-arm-automation/recovery-services-object-hierarchy.png)
 
-Přečtěte si referenční informace k [rutině](/powershell/module/az.recoveryservices) **AZ. RecoveryServices** v knihovně Azure.
+Přečtěte si referenční informace k rutině **AZ. RecoveryServices** [cmdlet reference](/powershell/module/az.recoveryservices) v knihovně Azure.
 
 ## <a name="set-up-and-install"></a>Nastavení a instalace
 
@@ -419,4 +419,4 @@ $job.ErrorDetails
 
 ## <a name="next-steps"></a>Další kroky
 
-[Přečtěte si o](backup-azure-files.md) zálohování souborů Azure v Azure Portal.
+[Přečtěte si o](backup-afs.md) zálohování souborů Azure v Azure Portal.

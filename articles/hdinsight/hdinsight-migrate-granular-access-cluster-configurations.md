@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: ea8e1565a5ebe4e5cb40049fbfcb329feb83bdda
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f1fdb9dffbe06430ea7e3eb9339e23f5239e4e36
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498208"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310828"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrace na granulární řízení přístupu na základě rolí pro konfigurace clusteru
 
@@ -24,7 +24,7 @@ Dříve mohli tajné klíče získat prostřednictvím rozhraní API HDInsight u
 
 Od 3. září 2019 budou přístup k těmto tajným klíčům vyžadovat oprávnění `Microsoft.HDInsight/clusters/configurations/action`, což znamená, že uživatelé s rolí čtenáře již nebudou mít přístup. Role, které mají toto oprávnění, jsou přispěvatel, vlastník a nová role operátora clusteru HDInsight (Další informace najdete níže).
 
-Zavádíme taky novou roli [operátora clusteru HDInsight](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) , která bude moct načíst tajné kódy bez udělení oprávnění pro správu přispěvatele nebo vlastníka. Sumarizace:
+Zavádíme taky novou roli [operátora clusteru HDInsight](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) , která bude moct načíst tajné kódy bez udělení oprávnění pro správu přispěvatele nebo vlastníka. Shrnutí:
 
 | Role                                  | Měsíci                                                                                       | Po přechodu dál       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
@@ -132,9 +132,7 @@ Aktualizujte na [verzi 1.0.0](https://pypi.org/project/azure-mgmt-hdinsight/1.0.
 Aktualizujte na [verzi 1.0.0](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/1.0.0/jar) nebo novější v sadě HDInsight SDK pro jazyk Java. Pokud používáte metodu ovlivněnou těmito změnami, může být nutné provést minimální změny kódu:
 
 - [`ConfigurationsInner.get`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.get) **už nebude vracet citlivé parametry** , jako jsou klíče úložiště (Core-site) nebo přihlašovací údaje http (brána).
-    - Pokud chcete načíst všechny konfigurace, včetně citlivých parametrů, použijte [`ConfigurationsInner.list`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.configurationsinner.list?view=azure-java-stable) až dál.  Všimněte si, že uživatelé s rolí čtenář nebudou moct tuto metodu použít. To umožňuje detailní kontrolu nad tím, kteří uživatelé budou mít přístup k citlivým informacím v clusteru. 
-    - Pokud chcete načíst jenom přihlašovací údaje brány HTTP, použijte [`ClustersInner.getGatewaySettings`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.clustersinner.getgatewaysettings?view=azure-java-stable).
-- [`ConfigurationsInner.update`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.update) je nyní zastaralé a bylo nahrazeno [`ClustersInner.updateGatewaySettings`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.clustersinner.updategatewaysettings?view=azure-java-stable).
+- [`ConfigurationsInner.update`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.update) je nyní zastaralé.
 
 ### <a name="sdk-for-go"></a>Sada SDK pro přejít
 

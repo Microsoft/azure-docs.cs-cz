@@ -2,17 +2,17 @@
 title: Rychlý Start pro konfiguraci aplikací Azure s Azure Functions | Microsoft Docs
 description: Rychlý Start pro použití konfigurace aplikace Azure s Azure Functions.
 services: azure-app-configuration
-author: yegu-ms
+author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.date: 12/17/2019
-ms.author: yegu
-ms.openlocfilehash: 3c8dc27b9d7781a8420fa76e5aeac9637b87c569
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 1/9/2019
+ms.author: lcozzens
+ms.openlocfilehash: 268e6c5a999244eb643990143d1102d129b7af68
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75413768"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310052"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace Azure Functions s využitím konfigurace aplikace Azure
 
@@ -45,7 +45,7 @@ V tomto rychlém startu zahrňte službu Azure App Configuration Service do apli
 1. Klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**. Na kartě **Procházet** vyhledejte a přidejte do svého projektu následující balíčky NuGet. Pokud je nemůžete najít, zaškrtněte políčko **zahrnout předběžné verze** .
 
     ```
-    Microsoft.Extensions.Configuration.AzureAppConfiguration 2.1.0-preview-010380001-1099 or later
+    Microsoft.Extensions.Configuration.AzureAppConfiguration 3.0.0-preview-010550001-251 or later
     ```
 
 2. Otevřete *function1.cs*a přidejte obory názvů konfigurace .NET Core a poskytovatele konfigurace aplikace.

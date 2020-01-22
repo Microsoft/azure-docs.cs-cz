@@ -3,14 +3,14 @@ title: Řešení Update Management v Azure
 description: Tento článek popisuje, jak pomocí řešení Azure Update Management spravovat aktualizace pro počítače se systémem Windows a Linux.
 services: automation
 ms.subservice: update-management
-ms.date: 01/14/2020
+ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0cf47538f7db1cef629c2b58a9fbde16640a50ae
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 4efe9fe8dd1f006cb21c60c4c0e086264af26561
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945126"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310097"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -71,8 +71,9 @@ Následující tabulka uvádí podporované operační systémy pro posouzení a
 
 |Operační systém  |Poznámky  |
 |---------|---------|
-|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2012<br><br>Windows Server 2008 R2 (RTM a SP1 Standard)||
-|CentOS 6 (x86/x64) a 7 (x64)      | Agenty Linux musí mít přístup k úložišti aktualizací. Oprava založená na klasifikaci vyžaduje, `yum`, aby vracela data zabezpečení, která CentOS ve svých verzích RTM. Další informace o opravách na základě klasifikace na CentOS najdete v tématu [klasifikace aktualizací v systému Linux](#linux-2).          |
+|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2012 || 
+|Windows Server 2008 R2 (RTM a SP1 Standard)| Update Management podporuje jenom vyhodnocení pro tento operační systém, takže se nepodporuje aktualizace, protože [Hybrid Runbook Worker](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) není pro Windows Server 2008 R2 podporovaná. |
+|CentOS 6 (x86/x64) a 7 (x64)      | Agenty Linux musí mít přístup k úložišti aktualizací. Oprava založená na klasifikaci vyžaduje, `yum`, aby vracela data zabezpečení, která CentOS ve svých verzích RTM. Další informace o opravách na základě klasifikace na CentOS najdete v tématu [klasifikace aktualizací v systému Linux](automation-view-update-assessments.md#linux-2).          |
 |Red Hat Enterprise 6 (x86/x64) a 7 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) a 12 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
 |Ubuntu 14,04 LTS, 16,04 LTS a 18,04 (x86/x64)      |Agenty Linux musí mít přístup k úložišti aktualizací.         |
@@ -190,56 +191,6 @@ Další informace o portech, které Hybrid Runbook Worker vyžaduje, najdete v t
 Doporučujeme používat adresy uvedené při definování výjimek. Pro IP adresy můžete stáhnout [Microsoft Azure rozsahy IP adres datového centra](https://www.microsoft.com/download/details.aspx?id=41653). Tento soubor se aktualizuje týdně a odráží aktuálně nasazené rozsahy a všechny nadcházející změny rozsahu IP adres.
 
 Při konfiguraci počítačů, které nemají přístup k Internetu, postupujte podle pokynů v tématu [připojení počítačů bez přístupu k Internetu](../azure-monitor/platform/gateway.md) .
-
-## <a name="view-update-assessments"></a>Zobrazení posouzení aktualizací
-
-V účtu Automation vyberte **Update Management** a zobrazte stav vašich počítačů.
-
-Toto zobrazení poskytuje informace o vašich počítačích, chybějících aktualizacích, nasazeních aktualizací a plánovaných nasazeních aktualizací. Ve sloupci **dodržování předpisů** si můžete prohlédnout čas, kdy byl počítač naposledy vyhodnocen. Ve sloupci **připravenosti agenta aktualizace** můžete kontrolovat stav agenta aktualizace. Pokud se vyskytne problém, vyberte odkaz pro řešení potíží, které vám pomůžou problém vyřešit.
-
-Pokud chcete spustit prohledávání protokolů, které vrátí informace o počítači, aktualizaci nebo nasazení, vyberte odpovídající položku v seznamu. Otevře se podokno **prohledávání protokolu** s dotazem na vybranou položku:
-
-![Update Management výchozí zobrazení](media/automation-update-management/update-management-view.png)
-
-## <a name="view-missing-updates"></a>Zobrazit chybějící aktualizace
-
-Vyberte **chybějící aktualizace** a zobrazte tak seznam aktualizací, které na vašich počítačích chybí. Každá aktualizace je uvedena a je možné ji vybrat. Zobrazí se informace o počtu počítačů, které vyžadují aktualizaci, o operačním systému a o odkazech. V podokně **prohledávání protokolu** se zobrazí další podrobnosti o aktualizacích.
-
-![Chybějící aktualizace](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
-
-## <a name="update-classifications"></a>Klasifikace aktualizací
-
-V následujících tabulkách jsou uvedeny klasifikace aktualizací v Update Management s definicí pro každou klasifikaci.
-
-### <a name="windows"></a>Windows
-
-|Classification  |Popis  |
-|---------|---------|
-|Důležité aktualizace     | Aktualizace pro určitý problém, která řeší kritickou chybu nesouvisející se zabezpečením.        |
-|Aktualizace zabezpečení     | Aktualizace pro problém související se zabezpečením určitého produktu.        |
-|Kumulativní aktualizace     | Kumulativní sada oprav hotfix, které jsou zabaleny dohromady pro snadné nasazení.        |
-|Balíčky funkcí     | Nové funkce produktu distribuované mimo vydání produktu.        |
-|Aktualizace Service Pack     | Kumulativní sada oprav hotfix, které se aplikují na aplikaci.        |
-|Aktualizace definic     | Aktualizace virů nebo jiných definičních souborů.        |
-|nástroje     | Nástroj nebo funkce, které pomáhají dokončit jednu nebo více úloh.        |
-|Aktualizace     | Aktualizace aplikace nebo souboru, který je aktuálně nainstalován.        |
-
-### <a name="linux-2"></a>Linux
-
-|Classification  |Popis  |
-|---------|---------|
-|Důležité aktualizace a aktualizace zabezpečení     | Aktualizace pro konkrétní problém nebo problém související se zabezpečením určitého produktu.         |
-|Další aktualizace     | Všechny ostatní aktualizace, které nejsou v podstatě důležité nebo které nejsou aktualizacemi zabezpečení.        |
-
-V případě systému Linux může Update Management rozlišovat mezi důležitými aktualizacemi a aktualizacemi zabezpečení v cloudu a současně zobrazuje data posouzení z důvodu obohacení dat v cloudu. Pro opravy Update Management spoléhá na data klasifikace, která jsou k dispozici v počítači. Na rozdíl od jiných distribucí nemá CentOS tyto informace dostupné ve verzi RTM. Pokud máte počítače CentOS nakonfigurované tak, aby vracely data zabezpečení pro následující příkaz, Update Management se může opravit na základě klasifikací.
-
-```bash
-sudo yum -q --security check-update
-```
-
-V současné době není podporována žádná podporovaná metoda pro povolení nativní klasifikace – dostupnost dat v CentOS. V tuto chvíli se zákazníkům, kteří si můžou tuto možnost sami povolit, poskytnou jenom podporu s lepší námahou. 
-
-Chcete-li klasifikovat aktualizace na Red Hat Enterprise verze 6, je nutné nainstalovat modul plug-in Yumu-Security. V Red Hat Enterprise Linux 7 je modul plug-in již součástí samotného Yumu, není nutné nic instalovat. Další informace najdete v následujícím [článku znalostní báze](https://access.redhat.com/solutions/10021)Red Hat.
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>Integrace se System Center Configuration Managerem
 

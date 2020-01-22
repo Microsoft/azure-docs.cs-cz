@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/30/2019
-ms.openlocfilehash: 1002a19506ad0a59cb24ae4edb1f7c9726d68cb2
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 38966d537398d2770fba185a59b51956cf2223c3
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170859"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290338"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor nejčastějších dotazech
 
@@ -94,7 +94,7 @@ Všechna data se načítají z Log Analyticsho pracovního prostoru pomocí dota
 Všechna data protokolu shromážděná pomocí Azure Monitor jsou uložena v pracovním prostoru Log Analytics. Pracovní prostor je v podstatě kontejner, ve kterém jsou data protokolu shromažďována z nejrůznějších zdrojů. Můžete mít jeden Log Analytics pracovní prostor pro všechna data monitorování nebo mohou mít požadavky na více pracovních prostorů. Přečtěte si téma [navrhování Azure Monitorch protokolů nasazení](platform/design-logs-deployment.md).
 
 ### <a name="can-you-move-an-existing-log-analytics-workspace-to-another-azure-subscription"></a>Můžete přesunout existující Log Analytics pracovní prostor do jiného předplatného Azure?
-Pracovní prostor můžete přesouvat mezi skupinami prostředků nebo předplatnými, ale ne do jiné oblasti. Přečtěte si téma [přesunutí log Analyticsho pracovního prostoru do jiného předplatného nebo skupiny prostředků](/platform/move-workspace.md).
+Pracovní prostor můžete přesouvat mezi skupinami prostředků nebo předplatnými, ale ne do jiné oblasti. Přečtěte si téma [přesunutí log Analyticsho pracovního prostoru do jiného předplatného nebo skupiny prostředků](platform/move-workspace.md).
 
 
 ## <a name="alerts"></a>Výstrahy
@@ -345,7 +345,7 @@ Pro všechny komponenty nebo role v jednom podnikovém systému použijte jeden 
 ### <a name="what-are-the-user-and-session-counts"></a>Jaké jsou počty uživatelů a relací?
 
 * Sada JavaScript SDK nastavuje na webovém klientovi soubor cookie pro uživatele, identifikaci vracení uživatelů a soubor cookie relace pro seskupení aktivit.
-* Pokud není k dispozici žádný skript na straně klienta, můžete [nastavit soubory cookie na serveru](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-app/).
+* Pokud není k dispozici žádný skript na straně klienta, můžete [nastavit soubory cookie na serveru](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/).
 * Pokud se vaše lokalita používá v různých prohlížečích nebo v rámci anonymním nebo v různých počítačích, bude se tato síť počítat více než jednou.
 * Chcete-li identifikovat přihlášeného uživatele v počítačích a prohlížečích, přidejte volání [setAuthenticatedUserContext ()](app/api-custom-events-metrics.md#authenticated-users).
 
@@ -455,7 +455,7 @@ Brána by měla směrovat provoz na základní adresu našeho koncového bodu. V
 #### <a name="proxy-passthrough"></a>Průchozí proxy
 
 Passthrough proxy můžete dosáhnout konfigurací úrovně počítače nebo proxy serveru na úrovni aplikace.
-Další informace najdete v článku dotnet na [defaultProxy](https://docs.microsoft.com/dotnet/framework/configure-app/file-schema/network/defaultproxy-element-network-settings).
+Další informace najdete v článku dotnet na [defaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings).
  
  Příklad souboru Web. config:
  ```xml

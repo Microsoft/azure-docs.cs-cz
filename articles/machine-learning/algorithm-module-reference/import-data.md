@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: f3a1bf518b8ef122e2df64f2815c8885929b127d
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: f9815dac9e61eec51230911094f35a33a64e541c
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76166790"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311508"
 ---
 # <a name="import-data-module"></a>Importovat data modul
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Pomocí tohoto modulu můžete načíst data do kanálu strojového učení z existujících cloudových datových služeb. 
 
@@ -78,7 +78,7 @@ Pokud se vaše zdrojová data změní, můžete datovou sadu aktualizovat a při
 
 Po dokončení importu klikněte na výstupní datovou sadu a vyberte **vizualizovat** , abyste viděli, jestli se data úspěšně importovala.
 
-Pokud chcete data uložit pro opakované použití, místo importu nové sady dat při každém spuštění kanálu klikněte pravým tlačítkem na výstup a vyberte **Uložit jako datovou sadu**. Vyberte název datové sady. Uložená datová sada uchovává data v době uložení a data se po opětovném spuštění kanálu neaktualizují, i když se datová sada v kanálu změní. To může být užitečné při pořizování snímků dat.
+Pokud chcete data uložit pro opakované použití, místo importu nové sady dat pokaždé, když je kanál spuštěný, vyberte ikonu **zaregistrovat datovou sadu** na kartě **výstupy** na pravém panelu modulu. Vyberte název datové sady. Uložená datová sada zachovává data v době uložení, datová sada se při opětovném spuštění kanálu neaktualizuje, i když se datová sada v kanálu změní. To může být užitečné při pořizování snímků dat.
 
 Po importu dat možná budete potřebovat další přípravy na modelování a analýzu:
 

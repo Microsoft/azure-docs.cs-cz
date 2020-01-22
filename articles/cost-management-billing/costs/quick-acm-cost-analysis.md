@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 0221930f0b9fff0c9d4e398559f8d12999a66e91
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f053b30d344e5372617a5bf98c087056c4fe2911
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75987562"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294146"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Rychlý Start: zkoumání a analýza nákladů pomocí analýzy nákladů
 
@@ -138,24 +138,29 @@ Celou datovou sadu můžete zobrazit pro jakékoli zobrazení. Podle toho, jaké
 
 V následující tabulce jsou uvedeny některé nejběžnější možnosti seskupování a filtrování a jejich použití.
 
-| Vlastnost | When to use |
-| --- | --- |
-| **Fakturační období** | Náklady na rozbalení podle faktury za měsíc. Tato možnost je důležitá pro předplatná s průběžnými platbami a vývoj/testování, která nejsou vázaná na kalendářní měsíce. Účty EA/MCA můžou použít kalendářní měsíce ve výběru data nebo v měsíčních členitosti k provedení stejného cíle. |
-| **Typ poplatků** | Rozdělení využití, nákup, refundace a nevyužité náklady na rezervaci Nákupy a refundace rezervací jsou k dispozici pouze v případě, že se používají náklady na akce a nikoli při použití nákladů na amortizaci. Nevyužité náklady na rezervaci jsou dostupné jenom při pohledu na probíhající se náklady na amortizaci. |
-| **Cloud** | Náklady na rozdělení AWS a Azure Náklady na AWS jsou k dispozici pouze ze skupin pro správu, externích fakturačních účtů a externích předplatných. |
-| Část / **faktury** **oddělení** | Náklady na rozdělení jsou rozdělené podle oddělení EA nebo podle faktury MCA. Tato možnost je dostupná jenom u fakturačních účtů EA/MCA a na fakturačních profilech MCA. |
-| **Registrační účet** | Snížit náklady podle vlastníka účtu EA. Tato možnost je dostupná jenom pro fakturační účty a oddělení EA. |
-| **Frekvence** | Rozdělte náklady založené na využití, jednorázové a opakované. |
-| **Měřiče** | Snížení nákladů podle měření využití Azure Tato možnost je dostupná jenom pro využití Azure. Všechny nákupy a využití Marketplace se zobrazí jako **Neurčeno** nebo **Nepřiřazeno**. |
-| **Typ vydavatele** | Rozdělte náklady na AWS, Azure a Marketplace. |
-| **Výhrad** | Náklady rozdělte dolů podle rezervací. Jakékoli použití, které nezahrnuje rezervaci, se ukáže jako **neurčené**. |
-| **Prostředek** | Rozdělte náklady podle prostředku. Všechny nákupy se zobrazí jako **neurčené**, protože se použijí na úrovni fakturačního účtu EA/PAYG nebo na úrovni fakturačního profilu MCA.  |
-| **Skupina prostředků** | Rozdělte náklady podle skupiny prostředků. Tato možnost je k dispozici pouze pro neklasické použití. Klasické využití prostředků se zobrazí jako **jiné**a nákupy se zobrazí jako **neurčené**. |
-| **Typ prostředku** | Rozdělte náklady podle typu prostředku. Tato možnost je k dispozici pouze pro neklasické použití. Klasické využití prostředků se zobrazí jako **jiné**a nákupy se zobrazí jako **neurčené**. |
-| **Název služby** nebo **kategorie měřiče** | Snížit náklady podle služby Azure. Tato možnost je dostupná jenom pro využití Azure. Všechny nákupy a využití Marketplace se zobrazí jako **Neurčeno** nebo **Nepřiřazeno**. |
-| **Úroveň služby** nebo **podkategorie měřiče** | Rozdělte náklady podle podklasifikace měřičů využití Azure. Tato možnost je dostupná jenom pro využití Azure. Všechny nákupy a využití Marketplace se zobrazí jako **Neurčeno** nebo **Nepřiřazeno**. |
-| **Předplatné** | Rozdělte náklady podle předplatného. Všechny nákupy ukazují, jak **nejsou zadány**. |
-| **Tag** | Snížit náklady podle hodnot značek pro určitý klíč značky. |
+| Vlastnost | When to use | Poznámky |
+| --- | --- | --- |
+| **Zóny dostupnosti** | Rozdělte AWS náklady podle zóny dostupnosti. | Platí pouze pro obory AWS a skupiny pro správu. Data Azure nezahrnují zónu dostupnosti a budou se **zobrazovat jako nedostupná.** |
+| **Fakturační období** | Rozdělte PAYG náklady za měsíc, které byly (nebo budou) fakturované. | K získání přesné reprezentace fakturovaných poplatků za PAYG použijte **fakturační období** . Pokud filtrování odchází k vlastnímu časovému období, uveďte 2 dny před a po fakturačním období. Omezení na přesné datum fakturačního období se neshoduje s fakturou. Zobrazí náklady ze všech faktur ve fakturačním období. Použijte **ID faktury** k filtrování dolů na konkrétní fakturu. Platí jenom pro předplatná PAYG, protože EA a MCA se účtují podle kalendářních měsíců. Účty EA/MCA můžou použít kalendářní měsíce ve výběru data nebo v měsíčních členitosti k provedení stejného cíle. |
+| **Typ poplatků** | Rozdělení využití, nákup, refundace a nevyužité náklady na rezervaci | Nákupy a refundace rezervací jsou k dispozici pouze v případě, že se používají skutečné náklady, a ne při použití nákladů na amortizaci. Nevyužité náklady na rezervaci jsou dostupné jenom při pohledu na probíhající se náklady na amortizaci. |
+| **Department** | Snížit náklady podle oddělení EA. | K dispozici pouze pro EA a skupiny pro správu. Předplatná PAYG neobsahují oddělení a zobrazí se jako **nepoužité** nebo **Nepřiřazené**. |
+| **Registrační účet** | Snížit náklady podle vlastníka účtu EA. | Dostupné jenom pro fakturační účty, oddělení a skupiny pro správu EA. Předplatná PAYG nemají účty pro registraci EA a budou se zobrazovat jako **nepoužité** nebo **Nepřiřazené**. |
+| **Frekvence** | Rozdělte náklady založené na využití, jednorázové a opakované. | |
+| **ID faktury** | Snížit náklady pomocí fakturované faktury. | Nefakturované poplatky ještě nemají ID faktury a náklady na EA nezahrnují podrobnosti o faktuře a budou se zobrazovat jako **nepoužitelné**.  |
+| **Měřiče** | Snížit náklady podle měřiče využití. | Nákupy a používání Marketplace se zobrazí jako **nepoužitelné**. Pokud chcete identifikovat poplatky na webu Marketplace, přečtěte si téma **typ poplatků za** účelem identifikace nákupu a **typu vydavatele** . |
+| **Operace** | Rozdělte AWS náklady podle operace. | Platí pouze pro obory AWS a skupiny pro správu. Data Azure nezahrnují operaci a budou se zobrazovat jako **nepoužitá** – **měřič** použijte místo toho. |
+| **Cenový model** | Snížení nákladů na vyžádání, rezervace nebo použití v místě | Nákupy se zobrazí jako **OnDemand**. Pokud se vám zobrazí možnost **Nepoužito**, seskupovat podle **rezervace** , abyste zjistili, jestli je využití rezervace nebo využití na vyžádání a **typ poplatků** k identifikaci nákupů.
+| **Poskytovatel** | Náklady na rozdělení AWS a Azure | K dispozici pouze pro skupiny pro správu. |
+| **Typ vydavatele** | Rozdělte náklady na AWS, Azure a Marketplace. |  |
+| **Výhrad** | Náklady rozdělte dolů podle rezervací. | Jakékoli použití nebo nákupy, které nejsou přidružené k rezervaci, se zobrazí jako **nedostupné**. Seskupit podle **typu vydavatele** a Identifikujte si jiné nákupy Azure, AWS nebo Marketplace. |
+| **Prostředek** | Rozdělte náklady podle prostředku. | Nákupy se ukážou jako **nepoužité**, protože se používají na úrovni fakturačního účtu EA/PAYG nebo na úrovni fakturačního profilu MCA a nejsou přidružené ke konkrétnímu prostředku. Seskupit podle **typu vydavatele** a Identifikujte si jiné nákupy Azure, AWS nebo Marketplace. |
+| **Skupina prostředků** | Rozdělte náklady podle skupiny prostředků. | Nákupy, prostředky tenanta nepřidružené k předplatným, prostředky předplatného nenasazené do skupiny prostředků a klasické prostředky nemají skupinu prostředků a budou se zobrazovat jako **ostatní**, **klasické služby**, **$System**nebo **nepoužitelné**. |
+| **Typ prostředku** | Rozdělte náklady podle typu prostředku. | Nákupy a klasické služby nemají Azure Resource Manager typ prostředku a budou se zobrazovat jako **ostatní**, **klasické služby**nebo **nepoužitelné**. |
+| **Umístění prostředku** | Náklady na rozdělení jsou podle umístění nebo oblasti. | Nákupy a používání Marketplace se můžou zobrazovat jako **Nepřiřazené**, **neznámé**, **nemapované**nebo **nepoužitelné**. |
+| **Název služby** nebo **kategorie měřiče** | Snížit náklady podle služby Azure. | Nákupy a používání Marketplace se zobrazí jako **nepoužitelné** nebo **Nepřiřazené**. |
+| **Úroveň služby** nebo **podkategorie měřiče** | Rozdělte náklady podle podklasifikace měřičů využití Azure. | Nákupy a používání Marketplace se zobrazí jako **nepoužitelné** nebo **Nepřiřazené**. |
+| **Předplatné** | Rozdělte náklady podle předplatného Azure a propojeného účtu AWS. | Nákupy a prostředky tenanta se můžou ukázat jako **nepoužitelné**. |
+| **Tag** | Snížit náklady podle hodnot značek pro určitý klíč značky. | Značky nejsou k dispozici pro nákupy, prostředky tenanta nepřidružené k předplatným, prostředky předplatného nenasazené do skupiny prostředků nebo klasické prostředky. Všimněte si, že některé služby neobsahují značky v datech o využití. Přečtěte si další informace o [podpoře značek pro jednotlivé typy prostředků](https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support). |
 
 Další informace o pojmech najdete v tématu [vysvětlení podmínek používaných v souboru využití Azure a poplatků](../understand/understand-usage.md).
 

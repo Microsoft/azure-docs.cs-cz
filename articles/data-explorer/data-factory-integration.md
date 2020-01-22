@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: tomersh26
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.openlocfilehash: 51683e529f832e06efbe8eb71466f3b27d95fcb1
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.date: 01/20/2020
+ms.openlocfilehash: bb08cf4db45a378b35a8245eadd56a2ab3e48bab
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74819140"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293619"
 ---
 # <a name="integrate-azure-data-explorer-with-azure-data-factory"></a>Integrace Azure Průzkumník dat s využitím Azure Data Factory
 
@@ -44,6 +44,14 @@ Podrobný návod k aktivitě příkazu najdete v tématu [použití aktivity př
 ### <a name="copy-in-bulk-from-a-database-template"></a>Hromadné kopírování ze šablony databáze
 
 [Hromadné kopírování z databáze do Azure Průzkumník dat pomocí šablony Azure Data Factory](data-factory-template.md) je předdefinovaný Azure Data Factory kanál. Šablona se používá k vytvoření mnoha kanálů pro každou databázi nebo pro každou tabulku pro rychlejší kopírování dat. 
+
+### <a name="mapping-data-flows"></a>Toky dat mapování 
+
+[Azure Data Factory mapování datových toků](/azure/data-factory/concepts-data-flow-overview) jsou vizuálně navržené transformace dat, které umožňují datovým technikům vyvíjet logiku transformace grafických dat bez psaní kódu. Pokud chcete vytvořit tok dat a ingestovat data do Azure Průzkumník dat, použijte tuto metodu:
+
+1. Vytvořte [tok dat mapování](/azure/data-factory/data-flow-create).
+1. [Exportujte data do objektu blob Azure](/azure/data-factory/data-flow-sink). 
+1. Definujte [Event Grid](/azure/data-explorer/ingest-data-event-grid) nebo [aktivitu kopírování ADF](/azure/data-explorer/data-factory-load-data) k ingestování dat do Azure Průzkumník dat.
 
 ## <a name="select-between-copy-and-azure-data-explorer-command-activities-when-copy-data"></a>Při kopírování dat vybrat mezi aktivitami kopírování a příkazu Azure Průzkumník dat 
 
@@ -99,7 +107,7 @@ Následující tabulka uvádí požadovaná oprávnění pro různé kroky v int
 |   | Importovat schéma | *prohlížeč databáze* <br>Instanční objekt musí mít oprávnění ke čtení metadat databáze. | Když je ADX zdrojem tabulkového a tabulkového kopírování, ADF automaticky importuje schéma, i když uživatel neimportuje schéma explicitně. |
 | **ADX jako jímka** | Vytvořit mapování sloupce podle názvu | *monitorování databáze* <br>Instanční objekt musí mít autorizaci k provádění příkazů `.show` úrovně databáze. | <ul><li>Všechny povinné operace budou fungovat s ingestování *tabulek*.</li><li> Některé volitelné operace mohou selhat.</li></ul> |
 |   | <ul><li>Vytvoření mapování sdíleného svazku clusteru v tabulce</li><li>Zrušení mapování</li></ul>| ingestování *tabulek* nebo *správce databáze* <br>Instanční objekt musí mít autorizaci k provádění změn v tabulce. | |
-|   | Příjem dat | ingestování *tabulek* nebo *správce databáze* <br>Instanční objekt musí mít autorizaci k provádění změn v tabulce. | | 
+|   | Ingestace dat | ingestování *tabulek* nebo *správce databáze* <br>Instanční objekt musí mít autorizaci k provádění změn v tabulce. | | 
 | **ADX as source** | Spustit dotaz | *prohlížeč databáze* <br>Instanční objekt musí mít oprávnění ke čtení metadat databáze. | |
 | **Kusto – příkaz** | | Podle úrovně oprávnění jednotlivých příkazů. |
 

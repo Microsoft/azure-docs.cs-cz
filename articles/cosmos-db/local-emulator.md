@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 1c352ad5d18f891cd82d90eef7d0a8c6c3d1cdb9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bcab5f76b95939b0a9a4232eab2bcf8b2a5fd40b
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441681"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76309978"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Použití emulátoru Azure Cosmos pro místní vývoj a testování
 
@@ -283,7 +283,6 @@ Ve výchozím nastavení můžete vytvořit až 25 kontejnerů s pevnou velikost
 Pokud se pokusíte vytvořit kontejner po překročení aktuálního počtu oddílů, emulátor vyvolá výjimku ServiceUnavailable s následující zprávou.
 
 Omlouváme se, ale v tuto chvíli máme vysokou poptávku a v tuto chvíli nemůže váš požadavek splnit. Průběžně pracujeme na zajištění více a větší kapacity online a pomůžeme vám to zkusit znovu.
-Neváhají e-mailové askcosmosdb@microsoft.com kdykoli ani z nějakého důvodu.
 ActivityId: 12345678-1234-1234-1234-123456789ABC "
 
 Pokud chcete změnit počet kontejnerů dostupných v emulátoru Azure Cosmos, spusťte následující postup:
@@ -496,7 +495,7 @@ Následující tipy vám pomůžou při řešení problémů, ke kterým docház
 
 - Pokud jste nainstalovali novou verzi emulátoru a dochází k chybám, proveďte obnovení dat. Data můžete obnovit kliknutím pravým tlačítkem na ikonu emulátoru Azure Cosmos na hlavním panelu systému a kliknutím na resetovat data.... Pokud to neopraví chyby, můžete emulátor a všechny starší verze emulátoru odinstalovat, odebrat adresář "C:\Program files\Azure Cosmos DB emulátor" a přeinstalovat emulátor. Pokyny najdete v části [Odinstalace místního emulátoru](#uninstall).
 
-- Pokud dojde k selhání emulátoru Azure Cosmos, shromážděte soubory s výpisem paměti ze složky '%LOCALAPPDATA%\CrashDumps ', Zkomprimujte je a připojte je k e-mailu [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com).
+- Pokud dojde k selhání emulátoru Azure Cosmos, shromážděte soubory s výpisem paměti ze složky '%LOCALAPPDATA%\CrashDumps ', Zkomprimujte je a otevřete lístek podpory z [Azure Portal](https://portal.azure.com).
 
 - Pokud dojde k chybě v `Microsoft.Azure.Cosmos.ComputeServiceStartupEntryPoint.exe`, může se jednat o příznak, ve kterém jsou čítače výkonu v poškozeném stavu. Obvykle se při spuštění následujícího příkazu z příkazového řádku správce vyřeší problém:
 
@@ -504,7 +503,7 @@ Následující tipy vám pomůžou při řešení problémů, ke kterým docház
   lodctr /R
    ```
 
-- Pokud dojde k potížím s připojením, [shromážděte trasovací soubory](#trace-files), zkomprimujte je a připojte je k e-mailu, který odešlete na adresu [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com).
+- Pokud narazíte na problém s připojením, [Shromážděte trasovací soubory](#trace-files), Zkomprimujte je a otevřete lístek podpory v [Azure Portal](https://portal.azure.com).
 
 - Pokud se zobrazí zpráva **Služba není dostupná**, pravděpodobně se emulátoru nedaří inicializovat sadu síťových protokolů. Zkontrolujte, zda máte nainstalovaného klienta Pulse Secure nebo klienta Juniper Networks, protože potíže mohou způsobovat jejich ovladače síťových filtrů. Odinstalace ovladačů síťových filtrů třetích stran obvykle potíže vyřeší. Případně můžete spustit emulátor pomocí/DisableRIO, který přepne síťovou komunikaci emulátoru na normální rozhraní Winsock. 
 
@@ -519,9 +518,9 @@ Pokud chcete shromažďovat trasovací soubory pro ladění, spusťte z příkaz
 3. `Microsoft.Azure.Cosmos.Emulator.exe /startwprtraces`
 4. `Microsoft.Azure.Cosmos.Emulator.exe`
 5. Reprodukujte problém. Pokud Průzkumník dat nefunguje, stačí několik sekund čekat na otevření prohlížeče a zachytit chybu.
-5. `Microsoft.Azure.Cosmos.Emulator.exe /stopwprtraces`
-6. Přejděte do složky `%ProgramFiles%\Azure Cosmos DB Emulator` a vyhledejte soubor docdbemulator_000001.etl.
-7. Odešlete soubor .etl spolu s kroky pro zopakování potíží k ladění na adresu [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com).
+6. `Microsoft.Azure.Cosmos.Emulator.exe /stopwprtraces`
+7. Přejděte do složky `%ProgramFiles%\Azure Cosmos DB Emulator` a vyhledejte soubor docdbemulator_000001.etl.
+8. Otevřete lístek podpory v [Azure Portal](https://portal.azure.com) a přidejte soubor. ETL spolu s postupem reprodukci.
 
 ### <a id="uninstall"></a>Odinstalace místního emulátoru
 

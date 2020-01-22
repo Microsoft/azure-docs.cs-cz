@@ -4,14 +4,14 @@ description: Tento článek poskytuje přehled o tom, jak pomocí Azure Automati
 services: automation
 ms.subservice: update-management
 ms.topic: tutorial
-ms.date: 12/03/2019
+ms.date: 01/21/2020
 ms.custom: mvc
-ms.openlocfilehash: 2cb9f7824f0dab583ffe5ca770e175c071930cb9
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 3922f8a2478f00c632b6daf294f23c7b5ad8c261
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76168058"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310131"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Správa aktualizací a oprav pro virtuální počítače Azure
 
@@ -141,7 +141,7 @@ V části **Nové nasazení aktualizací** zadejte následující informace:
 
 * **Počítače k aktualizaci:** Vyberte uložené hledání, importovanou skupinu nebo vyberte jednotlivé počítače z rozevírací nabídky. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů. Další informace o různých metodách vytváření skupin počítačů v protokolu Azure Monitor najdete v tématu [skupiny počítačů v protokolech Azure monitor](../azure-monitor/platform/computer-groups.md)
 
-* **Klasifikace aktualizací:** Vyberte typy softwaru, které se zahrnou do nasazení aktualizací. Pro účely tohoto kurzu nechte vybrané všechny typy.
+* **Klasifikace aktualizace**: vyberte podporované klasifikace aktualizací, které jsou k dispozici pro každý produkt, který může být zahrnut v nasazení aktualizace. Pro účely tohoto kurzu nechte vybrané všechny typy.
 
   Typy klasifikace jsou:
 

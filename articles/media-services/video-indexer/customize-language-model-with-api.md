@@ -1,75 +1,45 @@
 ---
-title: Použití rozhraní Video Indexer API k přizpůsobení jazykového modelu – Azure
+title: Použití rozhraní API pro Video Indexer k přizpůsobení jazykového modelu – Azure
 titlesuffix: Azure Media Services
-description: Tento článek ukazuje, jak upravit jazykový model s rozhraními API pro Video Indexer.
+description: V tomto článku se dozvíte, jak přizpůsobit jazykový model pomocí rozhraní Video Indexer API.
 services: media-services
 author: anikaz
 manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 01/14/2020
 ms.author: anzaman
-ms.openlocfilehash: 4ef5354a94ae707df8dd1f2767efe04dfbacd7ad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b7517c8a8745569635a9570c02c851854eebeb96
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799596"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289488"
 ---
-# <a name="customize-a-language-model-with-the-video-indexer-apis"></a>Upravit jazykový model s rozhraními API pro Video Indexer
+# <a name="customize-a-language-model-with-the-video-indexer-apis"></a>Přizpůsobení jazykového modelu pomocí Video Indexer rozhraní API
 
-Video Indexer umožňuje vytvářet vlastní jazykové modely přizpůsobit tak, že nahrajete přizpůsobení textu, a to textu z domény, jejichž slovní byste chtěli modul umožní reagovat na rozpoznávání řeči. Jakmile tréninku modelu, bude rozpoznán nová slova povolí, přizpůsobení textu. 
+Video Indexer vám umožní vytvářet vlastní jazykové modely pro přizpůsobení rozpoznávání řeči odesláním přizpůsobeného textu, konkrétně textu z domény, kde chcete, aby se modul přizpůsobil. Jakmile svůj model vytvoříte, budou se nová slova uvedená v textu přizpůsobení rozpoznat. 
 
-Podrobný přehled a osvědčené postupy pro vlastní jazykové modely, naleznete v tématu [upravit jazykový model s Video Indexer](customize-language-model-overview.md).
+Podrobný přehled a osvědčené postupy pro vlastní jazykové modely najdete v tématu [přizpůsobení jazykového modelu pomocí video indexer](customize-language-model-overview.md).
 
-Rozhraní Video Indexer API můžete vytvářet a upravovat vlastní jazykové modely ve vašem účtu, jak je popsáno v tomto tématu. Můžete také použít web, jak je popsáno v [přizpůsobení jazykového modelu na webu Video Indexer](customize-language-model-with-api.md).
+Rozhraní Video Indexer API můžete použít k vytvoření a úpravě vlastních jazykových modelů v účtu, jak je popsáno v tomto tématu. Web můžete také použít, jak je popsáno v tématu [přizpůsobení jazykového modelu pomocí webu video indexer](customize-language-model-with-api.md).
 
-## <a name="create-a-language-model"></a>Vytvořit jazykový model
+## <a name="create-a-language-model"></a>Vytvoření jazykového modelu
 
-Následující příkaz vytvoří novou vlastní jazykový model v příslušném účtu. Můžete nahrát soubory pro jazykový model v tomto volání. Alternativně můžete vytvořit jazykový model a nahrání souborů pro model později aktualizuje se jazykový model.
+Rozhraní API pro [Vytvoření jazykového modelu](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Language-Model?) vytvoří nový vlastní jazykový model v zadaném účtu. V tomto volání můžete odeslat soubory pro jazykový model. Alternativně můžete vytvořit jazykový model zde a později nahrávat soubory pro model aktualizací jazykového modelu.
 
 > [!NOTE]
-> S jeho povolené soubory pro model další obsah svých souborů musí stále trénování modelu. V další části jsou pokyny na školení jazyk.
+> I když model budete chtít zjistit obsah svých souborů, musíte si i nadále proškolit model s povolenými soubory. Pokyny pro školení jazyka najdete v další části.
 
-### <a name="request-url"></a>Adresa URL požadavku
+Chcete-li nahrát soubory, které mají být přidány do jazykového modelu, je nutné odeslat soubory do těla pomocí formuláře-data kromě poskytování hodnot požadovaných parametrů výše. Chcete-li to provést dvěma způsoby: 
 
-To je požadavek POST.
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?name={name}&accessToken={accessToken}
-```
-
-Níže je požadavek Curl.
-
-```curl
-curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language?accessToken={accessToken}&modelName={modelName}&language={language}"
-
---data-ascii "{body}" 
-```
-
-[Zobrazit požadované parametry a otestujte pomocí portálu pro vývojáře Video Indexer](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?).
-
-### <a name="request-parameters"></a>Parametry žádosti
-
-|**Název**|**Typ**|**Požadováno**|**Popis**|
-|---|---|---|---|
-|location|string|Ano|Oblasti Azure, ke které se mají směrovat volání. Další informace najdete v tématu [oblastí Azure a Video Indexer](regions.md).|
-|accountId|string|Ano|Globálně jedinečný identifikátor účtu|
-|accessToken|string|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
-|modelName|string|Ano|Název jazykový model|
-|language|string|Ano|Jazyk jazykový model. <br/>**Jazyk** parametru se musí předávat jazyka ve formátu BCP-47 "jazyk oblasti značky" (např.: "en US"). Podporované jazyky jsou angličtina (en US), němčina (de-DE), španělština (es-SP), arabština (ar – třeba), francouzština (fr-FR), hindština (hi-Dobrý den), italština (it-IT), japonština (ja-JP), portugalština (pt-BR), ruština (ru-RU) a čínština (zh-CN).  |
-
-### <a name="request-body"></a>Text požadavku
-
-Pokud chcete nahrát soubory mají být přidány do jazykový model, musíte nahrát soubory v textu pomocí dat formuláře kromě zadání hodnot požadovaných parametrů výše. Chcete-li to provést dvěma způsoby: 
-
-1. Klíč bude název souboru a souboru txt bude hodnota
-2. Klíč bude název souboru a hodnota bude adresa URL k souboru txt
+1. Klíč bude název souboru a hodnota bude soubor txt.
+2. Klíč bude název souboru a hodnota bude adresa URL souboru txt.
 
 ### <a name="response"></a>Odpověď
 
-Odpověď obsahuje metadata na nově vytvořený jazykový model spolu s metadata ve všech souborech modelu formátu příklad výstupu JSON.
+Odpověď poskytuje metadata nově vytvořeného jazykového modelu spolu s metadaty každého souboru modelu v následujícím formátu jako příklad výstupu JSON.
 
 ```json
 {
@@ -98,45 +68,16 @@ Odpověď obsahuje metadata na nově vytvořený jazykový model spolu s metadat
 
 ```
 
-## <a name="train-a-language-model"></a>Trénování jazykový model
+## <a name="train-a-language-model"></a>Výuka jazykového modelu
 
-Následující příkaz trénovat vlastní jazykový model v příslušném účtu s obsahem v souborech, které byly odeslány a povolených jazykový model. 
+Rozhraní API pro [jazykové modely](https://api-portal.videoindexer.ai/docs/services/operations/operations/Train-Language-Model?&pattern=train) vlaky nahraje vlastní jazykový model v zadaném účtu s obsahem souborů, které se nahrály do a povolily v jazykovém modelu. 
 
 > [!NOTE]
-> Nejprve musíte vytvořit jazykový model a nahrát jeho soubory. Soubory můžete nahrát, buď při vytváření jazykového modelu nebo aktualizuje se jazykový model. 
-
-### <a name="request-url"></a>Adresa URL požadavku
-
-To je požadavek PUT.
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Train?accessToken={accessToken}
-```
-
-Níže je požadavek Curl.
-
-```curl
-curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Train?accessToken={accessToken}"
-```
- 
-[Zobrazit požadované parametry a otestujte pomocí portálu pro vývojáře Video Indexer](https://api-portal.videoindexer.ai/docs/services/operations/operations/Train-Language-Model?&pattern=train).
-
-### <a name="request-parameters"></a>Parametry žádosti
-
-|**Název**|**Typ**|**Požadováno**|**Popis**|
-|---|---|---|---|
-|location|string|Ano|Oblasti Azure, ke které se mají směrovat volání. Další informace najdete v tématu [oblastí Azure a Video Indexer](regions.md).|
-|accountID|string|Ano|Globálně jedinečný identifikátor účtu|
-|modelId|string|Ano|Id jazyka modelu (vygeneruje, když se vytvoří jazykový model)|
-|accessToken|string|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
-
-### <a name="request-body"></a>Text požadavku
-
-Neexistuje žádné další tělo požadavku, vyžaduje se pro toto volání.
+> Nejprve musíte vytvořit jazykový model a nahrát jeho soubory. Soubory můžete nahrát buď při vytváření jazykového modelu, nebo aktualizací jazykového modelu. 
 
 ### <a name="response"></a>Odpověď
 
-Odpověď obsahuje metadata o nově trénovaného modelu jazyk spolu s metadata ve všech souborech modelu formátu příklad výstupu JSON.
+Odpověď poskytuje metadata nově vyučeného jazykového modelu spolu s metadaty v každém ze souborů modelu, které následují po formátu ukázkového výstupu JSON.
 
 ```json
 {
@@ -164,91 +105,33 @@ Odpověď obsahuje metadata o nově trénovaného modelu jazyk spolu s metadata 
 }
 ```
 
-Potom byste měli použít **id** hodnotu jazykový model pro **linguisticModelId** parametr při [nahrání videí do indexu](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) a  **languageModelId** parametr při [přeindexování video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?).
+Při [nahrávání videa do indexu](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) a parametru **languageModelId** při [Reindexování videa](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)byste měli použít hodnotu vráceného **ID** modelu jazyka pro parametr **linguisticModelId** .
 
-## <a name="delete-a-language-model"></a>Odstranit jazykový model
-
-Následující příkaz odstraní vlastního jazykového modelu ze zadaného účtu. Jakéhokoli videa, která se používala odstraněné jazykový model budete mít stejný index, dokud znovu Indexujte videa. Pokud znovu Indexujte videa, můžete přiřadit nového jazykového modelu na video. V opačném případě Video Indexer pomocí jeho výchozí model znovu Indexujte videa.
-
-### <a name="request-url"></a>Adresa URL požadavku
-
-To je požadavek DELETE.
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}
-```
-
-Níže je požadavek Curl.
-
-```curl
-curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}"
-```
  
-[Zobrazit požadované parametry a otestujte pomocí portálu pro vývojáře Video Indexer](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete).
+## <a name="delete-a-language-model"></a>Odstranění jazykového modelu
 
-### <a name="request-parameters"></a>Parametry žádosti 
-
-|**Název**|**Typ**|**Požadováno**|**Popis**|
-|---|---|---|---|
-|location|string|Ano|Oblasti Azure, ke které se mají směrovat volání. Další informace najdete v tématu [oblastí Azure a Video Indexer](regions.md).|
-|accountID|string|Ano|Globálně jedinečný identifikátor účtu|
-|modelId|string|Ano|Id jazyka modelu (vygeneruje, když se vytvoří jazykový model)|
-|accessToken|string|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
-
-### <a name="request-body"></a>Text požadavku
-
-Neexistuje žádné další tělo požadavku, vyžaduje se pro toto volání.
+Rozhraní API pro [odstranění jazykových modelů](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete) odstraní z určeného účtu vlastní jazykový model. Všechna videa, která používala odstraněný jazykový model, budou mít stejný index, dokud video znovu neindexujte. Pokud video znovu indexovat, můžete video přiřadit nový jazykový model. V opačném případě Video Indexer použije výchozí model k opakovanému indexování videa.
 
 ### <a name="response"></a>Odpověď
 
-Není žádný vrácený obsah, když jazykový model byl úspěšně odstraněn.
+Po úspěšném odstranění jazykových modelů se nevrátí žádný obsah.
 
-## <a name="update-a-language-model"></a>Aktualizovat jazykový model
+## <a name="update-a-language-model"></a>Aktualizace jazykového modelu
 
-Následující příkaz aktualizuje vlastní osoba jazykový model v příslušném účtu.
+Aktualizace rozhraní API [jazykových modelů](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model?&pattern=update) aktualizuje v zadaném účtu vlastní model osoby jazyka.
 
 > [!NOTE]
-> Musíte již jste vytvořili jazykový model. Toto volání můžete povolit nebo zakázat všechny soubory v rámci modelu, aktualizujte název jazykový model a nahrajte soubory mají být přidány do jazykového modelu.
+> Je nutné, abyste již vytvořili jazykový model. Pomocí tohoto volání můžete povolit nebo zakázat všechny soubory v modelu, aktualizovat název jazykového modelu a odeslat soubory, které mají být přidány do jazykového modelu.
 
-### <a name="request-url"></a>Adresa URL požadavku
+Chcete-li nahrát soubory, které mají být přidány do jazykového modelu, je nutné odeslat soubory do těla pomocí formuláře-data kromě poskytování hodnot požadovaných parametrů výše. Chcete-li to provést dvěma způsoby: 
 
-To je požadavek PUT.
+1. Klíč bude název souboru a hodnota bude soubor txt.
+2. Klíč bude název souboru a hodnota bude adresa URL souboru txt.
 
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}[&modelName][&enable]
-```
-
-Níže je požadavek Curl.
-
-```curl
-curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}?modelName={string}&enable={string}"
-
---data-ascii "{body}" 
-```
- 
-[Zobrazit požadované parametry a otestujte pomocí portálu pro vývojáře Video Indexer](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model?&pattern=update).
-
-### <a name="request-parameters"></a>Parametry žádosti 
-
-|**Název**|**Typ**|**Požadováno**|**Popis**|
-|---|---|---|---|
-|location|string|Ano|Oblasti Azure, ke které se mají směrovat volání. Další informace najdete v tématu [oblastí Azure a Video Indexer](regions.md).|
-|accountID|string|Ano|Globálně jedinečný identifikátor účtu|
-|modelId|string|Ano|Id jazyka modelu (vygeneruje, když se vytvoří jazykový model)|
-|accessToken|string|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
-|modelName|string|Ne|Nový název, který přiřadíte k modelu|
-|Povolit|Boolean|Ne|Zvolte, zda jsou všechny soubory v rámci tohoto modelu (pravda) zapnutá nebo vypnutá (NEPRAVDA).|
-
-### <a name="request-body"></a>Text požadavku
-
-Pokud chcete nahrát soubory mají být přidány do jazykový model, musíte nahrát soubory v textu pomocí dat formuláře kromě zadání hodnot požadovaných parametrů výše. Chcete-li to provést dvěma způsoby: 
-
-1. Klíč bude název souboru a souboru txt bude hodnota
-2. Klíč bude název souboru a hodnota bude adresa URL k souboru txt
 
 ### <a name="response"></a>Odpověď
 
-Odpověď obsahuje metadata o nově trénovaného modelu jazyk spolu s metadata ve všech souborech modelu formátu příklad výstupu JSON.
+Odpověď poskytuje metadata nově vyučeného jazykového modelu spolu s metadaty v každém ze souborů modelu, které následují po formátu ukázkového výstupu JSON.
 
 ```json
 {
@@ -275,47 +158,16 @@ Odpověď obsahuje metadata o nově trénovaného modelu jazyk spolu s metadata 
     ]
 }
 ```
-Můžete použít **id** soubory vrátit sem pro stažení obsahu souboru.
 
-## <a name="update-a-file-from-a-language-model"></a>Aktualizace souboru z jazykový model
+Pro stažení obsahu souboru použijte **ID** souborů vrácených v odpovědi.
 
-Následující příkaz umožňuje aktualizovat název a **povolit** stavu souboru ve vlastní jazykový model v příslušném účtu.
+## <a name="update-a-file-from-a-language-model"></a>Aktualizace souboru z jazykového modelu
 
-### <a name="request-url"></a>Adresa URL požadavku
-
-To je požadavek PUT.
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}[&fileName][&enable]
-```
-
-Níže je požadavek Curl.
-
-```curl
-curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}?fileName={string}&enable={string}"
-```
- 
-[Zobrazit požadované parametry a otestujte pomocí portálu pro vývojáře Video Indexer](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update).
-
-### <a name="request-parameters"></a>Parametry žádosti 
-
-|**Název**|**Typ**|**Požadováno**|**Popis**|
-|---|---|---|---|
-|location|string|Ano|Oblasti Azure, ke které se mají směrovat volání. Další informace najdete v tématu [oblastí Azure a Video Indexer](regions.md).|
-|accountId|string|Ano|Globálně jedinečný identifikátor účtu|
-|modelId|string|Ano|ID jazykový model, který obsahuje soubor (vygeneruje, když se vytvoří jazykový model)|
-|fileId|string|Ano|ID souboru, který se právě aktualizuje (vygeneruje, když je soubor nahraných při vytváření nebo aktualizaci z jazykový model)|
-|accessToken|string|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
-|fileName|string|Ne|Název aktualizace názvu souboru|
-|Povolit|Boolean|Ne|Aktualizace, jestli je tento soubor (true) zapnutá nebo vypnutá (NEPRAVDA) v jazykový model|
-
-### <a name="request-body"></a>Text požadavku
-
-Neexistuje žádné další tělo požadavku, vyžaduje se pro toto volání.
+[Aktualizace souboru](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update) umožňuje aktualizovat název a **Povolit** stav souboru v rámci vlastního jazykového modelu v zadaném účtu.
 
 ### <a name="response"></a>Odpověď
 
-Odpověď obsahuje metadata souboru, který jste aktualizovali následující formát výstupu JSON příkladu níže.
+Odpověď poskytuje metadata souboru, který jste aktualizovali podle formátu ukázkového výstupu JSON níže.
 
 ```json
 {
@@ -326,43 +178,15 @@ Odpověď obsahuje metadata souboru, který jste aktualizovali následující fo
   "creationTime": "2018-04-27T20:10:10.5233333"
 }
 ```
-Můžete použít **id** souboru vrátil tady ke stahování obsahu souboru.
+K stažení obsahu souboru použijte **ID** souboru vráceného v odpovědi.
 
-## <a name="get-a-specific-language-model"></a>Získání konkrétní jazykový model
+## <a name="get-a-specific-language-model"></a>Získat konkrétní jazykový model
 
-Následující příkaz vrátí informace o zadaný jazykový model v příslušném účtu, jako je například jazyk a soubory, které jsou v jazykový model. 
-
-### <a name="request-url"></a>Adresa URL požadavku
-
-To je požadavek GET.
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}
-```
-
-Níže je požadavek Curl.
-
-```curl
-curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}"
-```
- 
-[Zobrazit požadované parametry a otestujte pomocí portálu pro vývojáře Video Indexer](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get).
-
-### <a name="request-parameters-and-request-body"></a>Parametry žádosti a text žádosti
-
-|**Název**|**Typ**|**Požadováno**|**Popis**|
-|---|---|---|---|
-|location|string|Ano|Oblasti Azure, ke které se mají směrovat volání. Další informace najdete v tématu [oblastí Azure a Video Indexer](regions.md).|
-|accountID|string|Ano|Globálně jedinečný identifikátor účtu|
-|modelId|string|Ano|Id jazyka modelu (vygeneruje, když se vytvoří jazykový model)|
-|accessToken|string|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
-
-### <a name="request-body"></a>Text požadavku
-
-Neexistuje žádné další tělo požadavku, vyžaduje se pro toto volání.
+Rozhraní [Get](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get) API vrátí informace o zadaném jazykovém modelu v zadaném účtu, jako je například jazyk a soubory, které jsou v jazykovém modelu. 
 
 ### <a name="response"></a>Odpověď
 
-Odpověď obsahuje metadata zadané jazykový model spolu s metadat každého souboru modelu ve formátu JSON příklad následující výstup.
+Odpověď poskytuje metadata v zadaném jazykovém modelu spolu s metadaty každého souboru modelu podle formátu ukázkového výstupu JSON níže.
 
 ```json
 {
@@ -390,43 +214,15 @@ Odpověď obsahuje metadata zadané jazykový model spolu s metadat každého so
 }
 ```
 
-Můžete použít **id** souboru vrátil tady ke stahování obsahu souboru.
+K stažení obsahu souboru použijte **ID** souboru vráceného v odpovědi.
 
-## <a name="get-all-the-language-models"></a>Získání všech jazykových modelů
+## <a name="get-all-the-language-models"></a>Získat všechny jazykové modely
 
-Následující příkaz vrátí všechny vlastní jazykové modely v příslušném účtu v seznamu.
-
-### <a name="request-url"></a>Adresa URL požadavku
-
-To je požadavek na získání.
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language?accessToken={accessToken}
-```
-
-Níže je požadavek Curl.
-
-```curl
-curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language?accessToken={accessToken}"
-```
- 
-[Zobrazit požadované parametry a otestujte pomocí portálu pro vývojáře Video Indexer](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Models?&pattern=get).
-
-### <a name="request-parameters"></a>Parametry žádosti
-
-|**Název**|**Typ**|**Požadováno**|**Popis**|
-|---|---|---|---|
-|location|string|Ano|Oblasti Azure, ke které se mají směrovat volání. Další informace najdete v tématu [oblastí Azure a Video Indexer](regions.md).|
-|accountID|string|Ano|Globálně jedinečný identifikátor účtu|
-|accessToken|string|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
-
-### <a name="request-body"></a>Text požadavku
-
-Neexistuje žádné další tělo požadavku, vyžaduje se pro toto volání.
+Rozhraní [Get All](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Models?&pattern=get) API vrátí všechny vlastní jazykové modely v zadaném účtu v seznamu.
 
 ### <a name="response"></a>Odpověď
 
-Odpověď obsahuje seznam všech jazykových modelů ve vašem účtu a všechny jejich metadata a soubory ve formátu JSON příklad následující výstup.
+Odpověď poskytuje seznam všech jazykových modelů ve vašem účtu a každé z jejich metadat a souborů podle formátu ukázkového výstupu JSON.
 
 ```json
 [
@@ -464,79 +260,21 @@ Odpověď obsahuje seznam všech jazykových modelů ve vašem účtu a všechny
 ]
 ```
 
-## <a name="delete-a-file-from-a-language-model"></a>Odstranění souboru z jazykový model
+## <a name="delete-a-file-from-a-language-model"></a>Odstranění souboru z jazykového modelu
 
-Následující příkaz odstraní zadaný soubor ze zadaného jazykový model v příslušném účtu. 
-
-### <a name="request-url"></a>Adresa URL požadavku
-
-To je požadavek DELETE.
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}
-```
-
-Níže je požadavek Curl.
-
-```curl
-curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}"
-```
- 
-[Zobrazit požadované parametry a otestujte pomocí portálu pro vývojáře Video Indexer](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete).
-
-### <a name="request-parameters"></a>Parametry žádosti 
-
-|**Název**|**Typ**|**Požadováno**|**Popis**|
-|---|---|---|---|
-|location|string|Ano|Oblasti Azure, ke které se mají směrovat volání. Další informace najdete v tématu [oblastí Azure a Video Indexer](regions.md).|
-|accountID|string|Ano|Globálně jedinečný identifikátor účtu|
-|modelId|string|Ano|ID jazykový model, který obsahuje soubor (vygeneruje, když se vytvoří jazykový model)|
-|fileId|string|Ano|ID souboru, který se právě aktualizuje (vygeneruje, když je soubor nahraných při vytváření nebo aktualizaci z jazykový model)|
-|accessToken|string|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
-
-### <a name="request-body"></a>Text požadavku
-
-Neexistuje žádné další tělo požadavku, vyžaduje se pro toto volání.
+Rozhraní API pro [odstranění](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete) Odstraní zadaný soubor ze zadaného jazykového modelu v zadaném účtu. 
 
 ### <a name="response"></a>Odpověď
 
-Není žádný vrácený obsah, když soubor byl úspěšně odstraněn z jazykový model.
+Po úspěšném odstranění souboru z jazykového modelu se nevrátí žádný obsah.
 
-## <a name="get-metadata-on-a-file-from-a-language-model"></a>Získat metadata souboru z jazykový model
+## <a name="get-metadata-on-a-file-from-a-language-model"></a>Získání metadat pro soubor z jazykového modelu
 
-Vrátí obsah a metadata o zadaný soubor ze zvoleného jazyka modelu v váš účet.
-
-### <a name="request-url"></a>Adresa URL požadavku
-
-To je požadavek GET.
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?accessToken={accessToken}
-```
-
-Níže je požadavek Curl.
-```curl
-curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}"
-```
- 
-[Zobrazit požadované parametry a otestujte pomocí portálu pro vývojáře Video Indexer](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model-File-Data?&pattern=get%20language%20model).
-
-### <a name="request-parameters"></a>Parametry žádosti 
-
-|**Název**|**Typ**|**Požadováno**|**Popis**|
-|---|---|---|---|
-|location|string|Ano|Oblasti Azure, ke které se mají směrovat volání. Další informace najdete v tématu [oblastí Azure a Video Indexer](regions.md).|
-|accountID|string|Ano|Globálně jedinečný identifikátor účtu|
-|modelId|string|Ano|ID jazykový model, který obsahuje soubor (vygeneruje, když se vytvoří jazykový model)|
-|fileId|string|Ano|ID souboru, který se právě aktualizuje (vygeneruje, když je soubor nahraných při vytváření nebo aktualizaci z jazykový model)|
-|accessToken|string|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
-
-### <a name="request-body"></a>Text požadavku
-
-Neexistuje žádné další tělo požadavku, vyžaduje se pro toto volání.
+[Metadata Get souboru](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model-File-Data?&pattern=get%20language%20model) rozhraní API vrátí obsah a metadata ze zadaného souboru z vybraného jazykového modelu ve vašem účtu.
 
 ### <a name="response"></a>Odpověď
 
-Odpověď obsahuje obsah a metadata souboru ve formátu JSON, podobně jako tato:
+Odpověď poskytuje obsah a metadata souboru ve formátu JSON, podobně jako v tomto příkladu:
 
 ```json
 {
@@ -550,43 +288,16 @@ Odpověď obsahuje obsah a metadata souboru ve formátu JSON, podobně jako tato
 ```
 
 > [!NOTE]
-> Obsah tohoto souboru příklad se slova "hello" a world"v dva samostatné řádky.
+> Obsah tohoto ukázkového souboru jsou slova "Hello" a World "ve dvou samostatných řádcích.
 
-## <a name="download-a-file-from-a-language-model"></a>Stáhnout soubor ze jazykový model
+## <a name="download-a-file-from-a-language-model"></a>Stažení souboru z jazykového modelu
 
-Následující příkaz načte textový soubor s obsahem zadaného souboru ze zadaný jazykový model v příslušném účtu. Tento textový soubor by měl odpovídat obsah textového souboru, který byl původně nahrán.
-
-### <a name="request-url"></a>Adresa URL požadavku
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}/download?accessToken={accessToken}
-```
-
-Níže je požadavek Curl.
-
-```curl
-curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}/download?accessToken={accessToken}"
-```
- 
-[Zobrazit požadované parametry a otestujte pomocí portálu pro vývojáře Video Indexer](https://api-portal.videoindexer.ai/docs/services/operations/operations/Download-Language-Model-File-Content?).
-
-### <a name="request-parameters"></a>Parametry žádosti 
-
-|**Název**|**Typ**|**Požadováno**|**Popis**|
-|---|---|---|---|
-|location|string|Ano|Oblasti Azure, ke které se mají směrovat volání. Další informace najdete v tématu [oblastí Azure a Video Indexer](regions.md).|
-|accountID|string|Ano|Globálně jedinečný identifikátor účtu|
-|modelId|string|Ano|ID jazykový model, který obsahuje soubor (vygeneruje, když se vytvoří jazykový model)|
-|fileId|string|Ano|ID souboru, který se právě aktualizuje (vygeneruje, když je soubor nahraných při vytváření nebo aktualizaci z jazykový model)|
-|accessToken|string|Ano|Přístupový token (musí být z rozsahu [účet přístupový Token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) k ověřování na základě volání. Přístupové tokeny vyprší za 1 hodinu.|
-
-### <a name="request-body"></a>Text požadavku 
-
-Neexistuje žádné další tělo požadavku, vyžaduje se pro toto volání.
+[Stažení souborového](https://api-portal.videoindexer.ai/docs/services/operations/operations/Download-Language-Model-File-Content?) rozhraní API stáhne textový soubor obsahující obsah zadaného souboru ze zadaného jazykového modelu v zadaném účtu. Tento textový soubor by měl odpovídat obsahu textového souboru, který byl původně nahrán.
 
 ### <a name="response"></a>Odpověď
 
-Odpověď bude stažení textový soubor s obsahem souboru ve formátu JSON. 
+Odpověď bude stahovat textový soubor s obsahem souboru ve formátu JSON. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Přizpůsobení jazykového modelu pomocí webu](customize-language-model-with-website.md)

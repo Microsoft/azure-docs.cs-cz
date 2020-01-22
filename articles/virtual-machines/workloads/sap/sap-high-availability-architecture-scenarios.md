@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/21/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1a52977a46c1222a1626fa5a4dcb4de7dd84f8dd
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c04726bf3b4166255ada7c9f1252be0471dcc761
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638200"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291477"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Architektura a scénáře s vysokou dostupností pro SAP NetWeaver
 
@@ -249,7 +249,7 @@ Vysoká dostupnost SAP v Azure může být rozdělená na tři typy:
 
 * **Vysoká dostupnost aplikace SAP**: 
 
-    Pro zajištění vysoké dostupnosti systému SAP je nutné chránit všechny důležité součásti systému SAP. Příklad:
+    Pro zajištění vysoké dostupnosti systému SAP je nutné chránit všechny důležité součásti systému SAP. Například:
     * Redundantní aplikační servery SAP.
     * Jedinečné součásti. Příkladem může být komponenta s jedním bodem selhání (SPOF), jako je například instance SAP ASCS/SCS nebo systém správy databáze (DBMS).
 
@@ -267,7 +267,7 @@ Základem pro výpočet je 30 dní za měsíc nebo 43 200 minut. Například vý
 
 (Služba dostupnosti #1/100) * (služba dostupnosti #2/100) * (služba dostupnosti #3/100) \*...
 
-Příklad:
+Například:
 
 (99,95/100) * (99,9/100) * (99,9/100) = 0,9975 nebo Celková dostupnost 99,75%.
 
@@ -294,7 +294,7 @@ V rámci Azure probíhá zavádění konceptů [zóny dostupnosti Azure](https:/
 Při použití Zóny dostupnosti existuje několik věcí, které je potřeba vzít v úvahu. Seznam hledisek jako:
 
 - Skupiny dostupnosti Azure nemůžete nasadit v rámci zóny dostupnosti. Musíte vybrat buď zónu dostupnosti, nebo skupinu dostupnosti jako rámec nasazení pro virtuální počítač.
-- [Základní Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) nelze použít k vytvoření řešení clusteru s podporou převzetí služeb při selhání založeného na clusterových službách s podporou převzetí služeb při selhání nebo Linux Místo toho musíte použít [SKU Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) .
+- [Základní Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) nelze použít k vytvoření řešení clusteru s podporou převzetí služeb při selhání založeného na clusterových službách s podporou převzetí služeb při selhání nebo Linux Místo toho musíte použít [SKU Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) .
 - Zóny dostupnosti Azure neposkytují žádné záruky určité vzdálenosti mezi různými zónami v rámci jedné oblasti.
 - Latence sítě mezi různými Zóny dostupnosti Azure v různých oblastech Azure se může lišit od oblasti Azure do oblasti. V některých případech se může jednat o případ, kdy jako zákazník bude možné rozumně spustit aplikační vrstvu SAP nasazenou v různých zónách, protože latence sítě z jedné zóny na aktivní virtuální počítač DBMS je stále přijatelná od dopadu na obchodní proces. V případě zákaznických scénářů, kde latence mezi aktivním virtuálním počítačem DBMS v jedné zóně a instancí aplikace SAP na virtuálním počítači v jiné zóně může být příliš rušivá a nepřijatelná pro obchodní procesy SAP. V důsledku toho musí být architektura nasazení odlišná s architekturou aktivní/aktivní pro aplikaci nebo aktivní/pasivní architekturou, pokud je latence příliš vysoká.
 - Použití služby [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/) je povinné pro nasazení do zóny dostupnosti Azure 
@@ -334,7 +334,7 @@ Další informace o tomto přístupu najdete v tématu [využití restartování
 
 ## <a name="baed0eb3-c662-4405-b114-24c10a62954e"></a>Vysoká dostupnost aplikací SAP v Azure IaaS
 
-Pro zajištění vysoké dostupnosti systému SAP je nutné chránit všechny důležité součásti systému SAP. Příklad:
+Pro zajištění vysoké dostupnosti systému SAP je nutné chránit všechny důležité součásti systému SAP. Například:
   * Redundantní aplikační servery SAP.
   * Jedinečné součásti. Příkladem může být komponenta s jedním bodem selhání (SPOF), jako je například instance SAP ASCS/SCS nebo systém správy databáze (DBMS).
 

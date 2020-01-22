@@ -1,7 +1,7 @@
 ---
-title: Přeučení modelů pomocí návrháře Azure Machine Learning (Preview)
+title: Přeučení modelů pomocí návrháře Azure Machine Learning
 titleSuffix: Azure Machine Learning
-description: Naučte se přeškolovat modely pomocí publikovaných kanálů v Návrháři Azure Machine Learning (Preview).
+description: Naučte se přeškolovat modely pomocí publikovaných kanálů v Návrháři Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: peterlu
 author: peterclu
 ms.date: 12/15/2019
-ms.openlocfilehash: 734acd712eb954e66a9c0b037d10b7b1fd626c6a
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: d1382da739fd8ca56d4cc53c2c302331bdfbf1c3
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732157"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311865"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Přeučení modelů pomocí návrháře Azure Machine Learning (Preview)
+# <a name="retrain-models-with-azure-machine-learning-designer"></a>Přeučení modelů pomocí návrháře Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto postupu se naučíte, jak pomocí návrháře Azure Machine Learning znovu naučit model strojového učení. Zjistěte, jak používat publikované kanály k automatizaci pracovních postupů strojového učení pro rekurzi.

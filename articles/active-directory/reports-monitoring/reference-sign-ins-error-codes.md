@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa19425de41b182db8c0a8c3b1a7940dbdf5701f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f7a025835275169b260dfd1f91b65341b5ba02ff
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429491"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294095"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Kódy chyb sestav aktivit přihlašování 
 
@@ -96,6 +96,7 @@ Pomocí [rozhraní API pro vytváření sestav](concept-reporting-api.md)můžet
 |50072|Uživatel se musí zaregistrovat pro dvojúrovňové ověřování (interaktivní).|
 |50074|Uživatel neprošel ověřovacím testem MFA.|
 |50076|Uživatel nevyhověl Challenge MFA (neinteraktivní).|
+|50078|Předložení služby Multi-Factor Authentication vypršelo, je nutné aktualizovat službu Multi-Factor Authentication pro přístup.|
 |50079|Uživatel se musí zaregistrovat pro dvojúrovňové ověřování (neinteraktivní přihlášení).|
 |50085|Obnovovací token vyžaduje přihlášení prostřednictvím distribučního bodu vydávání (IDP) sociální sítě. Přihlaste se, aby se uživatel pokusil znovu přihlásit pomocí svého uživatelského jména a hesla.|
 |50089|Vypršela platnost tokenu toku – ověření se nezdařilo. Zkuste se znovu přihlásit pomocí uživatelského jména a hesla.|
@@ -184,7 +185,8 @@ Pomocí [rozhraní API pro vytváření sestav](concept-reporting-api.md)můžet
 |90014| Chybí povinné pole pro zprávu protokolu. Obraťte se na vlastníka aplikace. Pokud jste vlastníkem aplikace, ujistěte se, že máte všechny potřebné parametry pro žádost o přihlášení. |
 |90051| Neplatný token delegování Je zadané neplatné národní ID cloudu ({cloudId}).|
 |90072| Účet musí být nejprve v tenantovi přidán jako externí uživatel. Odhlaste se a znovu se přihlaste s jiným účtem služby Azure AD.|
-|90094| Udělení vyžaduje oprávnění správce. Požádejte správce tenanta o poskytnutí souhlasu této aplikace.|
+|90094| Aplikace požádala o oprávnění, která přihlášenému uživateli není oprávněná k souhlasu, a uživatel byl zablokován. |
+|90095| Aplikace požádala o oprávnění, která přihlášenému uživateli není oprávněná k souhlasu, a uživatel byl zobrazen ve formuláři [žádosti o souhlas správce](../manage-apps/configure-admin-consent-workflow.md) . |
 |500011| Objekt zabezpečení prostředku s názvem <site address> nebyl nalezen v tenantovi s názvem <tenant ID>. K tomu může dojít, pokud aplikace nebyla nainstalována správcem tenanta nebo odsouhlasena žádným uživatelem v tenantovi. Možná jste odeslali žádost o ověření do nesprávného tenanta.|
 |500021| Tenant je omezený proxy společností. Odepřete přístup k prostředkům.|
 |500121| Během žádosti o silný požadavek na ověření došlo k chybě ověřování.|
@@ -193,6 +195,8 @@ Pomocí [rozhraní API pro vytváření sestav](concept-reporting-api.md)můžet
 |530032|Blokováno zásadami zabezpečení.| 
 |700016|Aplikace s identifikátorem {appIdentifier} se nenašla v adresáři {tenant}. K tomu může dojít, pokud aplikace nebyla nainstalována správcem tenanta nebo odsouhlasena žádným uživatelem v tenantovi. Je možné, že jste odeslali žádost o ověření na špatného tenanta.|
 |900432|Důvěrného klienta není v žádosti mezi cloudy podporován.|
+|5000811|Nepovedlo se ověřit signaturu tokenu SAML. Identifikátor podpisového klíče neodpovídá žádným platným registrovaným klíčům.|
+|7000215|Byl zadán neplatný tajný klíč klienta.|
 |7000218|Tělo žádosti musí obsahovat následující parametr: client_assertion nebo client_secret.|
 
 
