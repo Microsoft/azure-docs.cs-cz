@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 379cddd9654cc897b49fd085d8df55fcd77a7ce8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b4180fced60c4a9f2402253c7c3b3d3ff97fe1e1
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490366"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314602"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>Průměrný Perceptron modul se dvěma třídami
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Pomocí tohoto modulu můžete vytvořit model strojového učení na základě průměrného Perceptron algoritmu.  
   
@@ -52,11 +52,7 @@ Jednodušší modely Perceptron jsou vhodné pro učení lineárních oddělitel
   
     -   Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, použijte modul [vlakového modelu](train-model.md) .
 
-## <a name="results"></a>Výsledky
 
-Po dokončení školení:
-
-+ Pokud chcete zobrazit souhrn parametrů modelu spolu s váhy funkcí zjištěnými ze školení, klikněte pravým tlačítkem myši na výstup [modelu výuky](./train-model.md).
 
 
 ## <a name="next-steps"></a>Další kroky

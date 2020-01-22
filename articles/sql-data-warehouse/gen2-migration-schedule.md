@@ -9,14 +9,14 @@ manager: craigg
 ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 01/21/2020
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 888f50d645c9b3babf95335e434db65423108ccb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3f793fd68c83f90b87182647eef47a07eb452f45
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693036"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314772"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Upgrade datového skladu na Gen2
 
@@ -33,41 +33,12 @@ Následující tabulka shrnuje podle oblasti v případě, že bude k dispozici 
 
 | **Oblast** | **Nižší Gen2 k dispozici** | **Začátek automatických upgradů** |
 |:--- |:--- |:--- |
-| Austrálie – východ |K dispozici. |Dokončit |
-| Austrálie – jihovýchod |K dispozici. |Dokončit |
-| Brazílie – jih |K dispozici. |Dokončit |
-| Střední Kanada |K dispozici. |Dokončit |
-| Kanada – východ |1\. června 2020 |Od 1. července 2020 |
-| Střední USA |K dispozici. |Dokončit |
+| Východní Kanada |1\. června 2020 |Od 1. července 2020 |
 | Čína – východ |\* |\* |
-| Čína – východ 2 |K dispozici. |Dokončit |
 | Čína – sever |\* |\* |
-| Čína – sever 2 |K dispozici. |Dokončit |
-| Východní Asie |K dispozici. |Dokončit |
-| Východ USA |K dispozici. |Dokončit |
-| Východ USA 2 |K dispozici. |Dokončit |
-| Francie – střed |K dispozici. |Probíhá zpracování |
 | Německo – střed |\* |\* |
-| Německo – středozápad |Od 1. září 2019|Od 1. října 2019 |
-| Indie – střed |K dispozici. |Dokončit |
-| Indie – jih |K dispozici. |Dokončit |
-| Indie – západ |Od 1. července 2019 |Probíhá zpracování |
-| Japonsko – východ |K dispozici. |Dokončit |
-| Japonsko – západ |K dispozici. |Dokončit |
-| Jižní Korea – střed |K dispozici. |Dokončit |
-| Jižní Korea – jih |K dispozici. |Dokončit |
-| Středoseverní USA |K dispozici. |Dokončit |
-| Severní Evropa |K dispozici. |Dokončit |
-| Jižní Afrika – sever |12. července 2019 |Dokončit |
-| Středojižní USA |K dispozici. |Dokončit |
-| Jihovýchodní Asie |K dispozici. |Dokončit |
-| Spojené arabské emiráty – sever |20. července 2019 |Dokončit |
-| Spojené království – jih |K dispozici. |Probíhá zpracování |
-| Spojené království – západ |K dispozici. |Probíhá zpracování |
-| Středozápadní USA |Od 1. listopadu 2019 |1\. prosince 2019|
-| Západní Evropa |K dispozici. |Dokončit |
-| Západní USA |K dispozici. |Dokončit |
-| Západní USA 2 |K dispozici. |Dokončit |
+| Německo – středozápad |Dostupné |1\. května 2020 |
+| Indie – západ |Dostupné |1\. května 2020  |
 
 ## <a name="automatic-upgrade-process"></a>Proces automatického upgradu
 
@@ -135,7 +106,7 @@ Další informace najdete v tématu [upgrade na Gen2](upgrade-to-latest-generati
 - Odpověď: Pokud používáte úroveň DW600 nebo DW1200 na Gen1, doporučujeme použít DW500c nebo DW1000c, protože Gen2 poskytuje více paměti, prostředků a vyšší výkon než Gen1.
 
 **Otázka: můžu zakázat geografickou zálohu?**
-- Odpověď: ne. Geografické zálohování je podniková funkce, která zachovává dostupnost datového skladu v případě, že oblast nebude k dispozici. Pokud máte další obavy, otevřete [žádost o podporu](sql-data-warehouse-get-started-create-support-ticket.md) .
+- Odpověď: Ne. Geografické zálohování je podniková funkce, která zachovává dostupnost datového skladu v případě, že oblast nebude k dispozici. Pokud máte další obavy, otevřete [žádost o podporu](sql-data-warehouse-get-started-create-support-ticket.md) .
 
 **Otázka: existuje rozdíl v syntaxi T-SQL mezi Gen1 a Gen2?**
 
@@ -147,7 +118,7 @@ Další informace najdete v tématu [upgrade na Gen2](upgrade-to-latest-generati
 
 **Otázka: bude možné vytvořit novou instanci Gen1 po upgradu mojí oblasti?**
 
-- Odpověď: ne. Po upgradu oblasti budou vytváření nových instancí Gen1 zakázané.
+- Odpověď: Ne. Po upgradu oblasti budou vytváření nových instancí Gen1 zakázané.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 80e2acf08960796ccb2f3ad87c16674e477c9c00
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a037c959b44a6216724c285f932250b1b05cb509
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428459"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313738"
 ---
 # <a name="summarize-data"></a>Sumarizace dat
 
-Tento článek popisuje modul návrháře Azure Machine Learning (Preview).
+Tento článek popisuje modul návrháře Azure Machine Learning.
 
 Modul shrnutí dat slouží k vytvoření sady standardních statistických měr, které popisují jednotlivé sloupce ve vstupní tabulce.
 
@@ -40,7 +40,7 @@ Modul vypočítá důležité skóre pro jednotlivé sloupce a vrátí řádek s
 
 1. Nejsou vyžadovány žádné další parametry. Ve výchozím nastavení modul analyzuje všechny sloupce, které jsou zadány jako vstup, a v závislosti na typu hodnot ve sloupcích vypíše relevantní sadu statistik, jak je popsáno v části [výsledky](#results) .
 
-1. Spusťte kanál nebo klikněte pravým tlačítkem na modul a vyberte **Spustit vybrané**.
+1. Spuštění kanálu
 
 ## <a name="results"></a>Výsledky
 

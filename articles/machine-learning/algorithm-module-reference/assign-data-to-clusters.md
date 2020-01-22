@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: dd8b23f92f5b24101a7d42ca65f5835a8d4e9ff2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1dd88eaa9c92a4f8ff5d491da950f7bb1cc48c20
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214559"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314500"
 ---
 # <a name="module-assign-data-to-clusters"></a>Modul: přiřazení dat clusterům
 
-Tento článek popisuje, jak používat modul *přiřazení dat ke clusterům* v Návrháři Azure Machine Learning (Preview). Modul generuje předpovědi pomocí modelu clusteringu, který byl vyškolený pomocí rozhraní *K – označuje algoritmus clusteringu* .
+Tento článek popisuje, jak v Návrháři Azure Machine Learning použít modul *přiřadit data ke clusterům* . Modul generuje předpovědi pomocí modelu clusteringu, který byl vyškolený pomocí rozhraní *K – označuje algoritmus clusteringu* .
 
 Modul přiřazení dat ke clusterům vrátí datovou sadu, která obsahuje pravděpodobné přiřazení pro každý nový datový bod. 
 
@@ -47,5 +47,5 @@ Modul přiřazení dat ke clusterům vrátí datovou sadu, která obsahuje pravd
   
 ### <a name="results"></a>Výsledky
 
-+  Chcete-li zobrazit hodnoty v datové sadě, klikněte pravým tlačítkem na modul, vyberte **výslednou**datovou sadu a pak vyberte **vizualizovat**.
++  Chcete-li zobrazit hodnoty v datové sadě, klikněte pravým tlačítkem na modul a vyberte **vizualizovat**. Nebo vyberte modul a přepněte na kartu **výstupy** na pravém panelu, klikněte na ikonu histogramu ve **výstupech portů** a vizualizujte tak výsledek.
 

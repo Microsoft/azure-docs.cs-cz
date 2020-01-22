@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 55981279cb1902424d1a0f77af097dc379d7222f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e5e1390cb45fc6f659883ddfc8624719e45f99ce
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493975"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314585"
 ---
 # <a name="add-columns-module"></a>Modul přidat sloupce
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Tento modul slouží ke zřetězení dvou datových sad. Všechny sloupce můžete kombinovat ze dvou datových sad, které zadáte jako vstupy, a vytvořit tak jedinou datovou sadu. Pokud potřebujete zřetězit více než dvě datové sady, použijte několik instancí **Přidat sloupce**.
 
@@ -38,11 +38,11 @@ Tento modul slouží ke zřetězení dvou datových sad. Všechny sloupce může
 ### <a name="results"></a>Výsledky
 Po spuštění kanálu:
 
-- Chcete-li zobrazit první řádky nové datové sady, klikněte pravým tlačítkem myši na výstup **Přidat sloupce** a vyberte vizualizovat.
+- Pokud chcete zobrazit první řádky nové datové sady, klikněte pravým tlačítkem na modul **Přidat sloupce** a vyberte vizualizovat. Nebo vyberte modul a přepněte na kartu **výstupy** na pravém panelu, klikněte na ikonu histogramu ve **výstupech portů** a vizualizujte tak výsledek.
 
 Počet sloupců v nové datové sadě se rovná součtu sloupců obou vstupních datových sad.
 
-Pokud ve vstupních datových sadách existují dva sloupce se stejným názvem, do názvu sloupce se přidá číselná přípona. Například pokud existují dvě instance sloupce s názvem TargetOutcome, levý sloupec by se přejmenoval na TargetOutcome_1 a pravý sloupec by byl přejmenován TargetOutcome_2.
+Pokud ve vstupních datových sadách existují dva sloupce se stejným názvem, do názvu sloupce se přidá číselná přípona. Například pokud jsou k dispozici dvě instance sloupce s názvem TargetOutcome, bude levý sloupec přejmenován TargetOutcome_1 a v pravém sloupci budou TargetOutcome_2 přejmenovány.
 
 ## <a name="next-steps"></a>Další kroky
 

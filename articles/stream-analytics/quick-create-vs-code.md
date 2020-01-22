@@ -4,15 +4,15 @@ description: V tomto rychlém startu se dozvíte, jak začít vytvořením Strea
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 09/16/2019
+ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: d95a3334fe5a7767446c92f8f8668e4da09fca42
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: e3e878b4f548da64ab04eb079d51b0846cf35c57
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169863"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313871"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>Rychlý Start: vytvoření úlohy Azure Stream Analytics v Visual Studio Code (Preview)
 

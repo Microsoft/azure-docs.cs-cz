@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 74d209adf745d1a3c319ef6567b2a7818a5fd514
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 9cf3bcc514118c7f8052981c39023d6cac361d22
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152252"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314721"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Řešení běžných chyb a upozornění v indexeru v Azure Kognitivní hledání
 
@@ -167,6 +167,11 @@ Dokument byl načten a zpracován, ale kvůli neshodě v konfiguraci polí index
 Ve všech těchto případech odkazujete na [podporované typy dat](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) a [mapování datových typů pro indexery](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search) , abyste se ujistili, že schéma indexů sestavíte správně a že jste nastavili odpovídající [mapování polí indexeru](search-indexer-field-mappings.md). Chybová zpráva bude obsahovat podrobnosti, které mohou přispět ke sledování zdroje neshody.
 
 <a name="could-not-process-document-within-indexer-max-run-time"/>
+
+## <a name="error-integrated-change-tracking-policy-cannot-be-used-because-table-has-a-composite-primary-key"></a>Chyba: zásady integrovaného sledování změn nelze použít, protože tabulka má složený primární klíč.
+
+To platí pro tabulky SQL a obvykle se stane, když je klíč buď definovaný jako složený klíč, nebo, když tabulka definuje jedinečný clusterovaný index (jako v indexu SQL, nikoli Azure Search index). Hlavním důvodem je, že klíč atributu je upraven jako složený primární klíč v případě [jedinečného clusterovaného indexu](https://docs.microsoft.com/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15). V takovém případě se ujistěte, že tabulka SQL neobsahuje jedinečný clusterovaný index nebo že pole klíče namapujete na pole, u kterého je zaručeno, že neobsahují duplicitní hodnoty.
+
 
 ## <a name="error-could-not-process-document-within-indexer-max-run-time"></a>Chyba: nepovedlo se zpracovat dokument v rámci maximální doby běhu indexeru.
 

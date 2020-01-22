@@ -9,12 +9,12 @@ ms.date: 12/20/2019
 ms.author: normesta
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7a0cf3c41929eb6a020a9d4761b08a2a4f2f6caa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 69983502fb7d099f474fb1c4c084f5d381a173e9
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460397"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314755"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Komplexní řešení potíží pomocí Azure Storage metrik a protokolování, AzCopy a analyzátoru zpráv
 
@@ -143,10 +143,10 @@ Další podrobnosti o přidávání a přizpůsobení grafů metrik najdete v t�
 
 Azure Storage zapisuje data protokolu serveru do objektů blob, zatímco metriky se zapisují do tabulek. Objekty blob protokolu jsou k dispozici ve známém `$logs` kontejneru pro váš účet úložiště. Objekty blob protokolů se pojmenují hierarchicky po rocích, měsíc, den a hodinu, takže můžete snadno najít rozsah času, který chcete prozkoumat. Například v účtu `storagesample` je kontejner pro objekty blob protokolu pro 01/02/2015 od 8-9 am `https://storagesample.blob.core.windows.net/$logs/blob/2015/01/08/0800`. Jednotlivé objekty BLOB v tomto kontejneru se pojmenují sekvenčně, počínaje `000000.log`.
 
-Pomocí nástroje příkazového řádku AzCopy můžete stáhnout tyto soubory protokolu na straně serveru do libovolného umístění v místním počítači. Pomocí následujícího příkazu můžete například stáhnout soubory protokolu pro operace objektů blob, které se konaly do 2. ledna 2015 do složky `C:\Temp\Logs\Server`; Nahraďte `<storageaccountname>` názvem svého účtu úložiště a `<storageaccountkey>` pomocí přístupového klíče účtu:
+Pomocí nástroje příkazového řádku AzCopy můžete stáhnout tyto soubory protokolu na straně serveru do libovolného umístění v místním počítači. Pomocí následujícího příkazu můžete například stáhnout soubory protokolu pro operace objektů blob, které se konaly do 2. ledna 2015 do složky `C:\Temp\Logs\Server`; Nahraďte `<storageaccountname>` názvem vašeho účtu úložiště:
 
 ```azcopy
-AzCopy.exe /Source:http://<storageaccountname>.blob.core.windows.net/$logs /Dest:C:\Temp\Logs\Server /Pattern:"blob/2015/01/02" /SourceKey:<storageaccountkey> /S /V
+azcopy copy 'http://<storageaccountname>.blob.core.windows.net/$logs/blob/2015/01/02' 'C:\Temp\Logs\Server'  --recursive
 ```
 
 AzCopy je k dispozici ke stažení na stránce [soubory ke stažení pro Azure](https://azure.microsoft.com/downloads/) . Podrobnosti o použití AzCopy najdete v tématu [přenos dat pomocí nástroje příkazového řádku AzCopy](storage-use-azcopy.md).

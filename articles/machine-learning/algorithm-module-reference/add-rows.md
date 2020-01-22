@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: a16dc0bfc3fae8852c46435f6407c56149e1b14e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 39bbf3b3a38926d696233c2d77bae83ccfc85206
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493951"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314551"
 ---
 # <a name="add-rows-module"></a>Modul pro přidání řádků
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Tento modul slouží ke zřetězení dvou datových sad. Ve zřetězení jsou řádky druhé datové sady přidány na konec první datové sady.  
   

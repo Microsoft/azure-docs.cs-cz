@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/07/2020
-ms.openlocfilehash: 60334666c0ace76bd29ded03712549ec44d68732
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.date: 01/21/2020
+ms.openlocfilehash: 012e6eca13c2b1afe00343da98dd58ca1f683dd5
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690975"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76315095"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-online-using-dms"></a>Kurz: migrace SQL Server do izolované databáze nebo ve fondu databáze v Azure SQL Database online pomocí DMS
 
@@ -242,7 +242,7 @@ Chcete-li migrovat schéma **AdventureWorks2012** do izolované databáze nebo A
 
     ![Konfigurace nastavení instance služby Azure Database Migration Service](media/tutorial-sql-server-to-azure-sql-online/dms-settings2.png)
 
-7. Vyberte **vytvořit** a vytvořte službu.
+7. Vyberte **Vytvořit** a vytvořte službu.
 
 ## <a name="create-a-migration-project"></a>Vytvoření projektu migrace
 
@@ -265,7 +265,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
     > [!NOTE]
     > Alternativně můžete zvolit **vytvořit projekt pouze** k vytvoření projektu migrace a provést migraci později.
 
-6. Vyberte **Uložit**.
+6. Vyberte **Save** (Uložit).
 
 7. Vyberte **Vytvořit a spustit aktivitu** a vytvořte projekt a spusťte aktivitu migrace.
 

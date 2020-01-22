@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: 72568be0cf87770e8878f95de4a9c82842b470df
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 01/17/2020
+ms.openlocfilehash: 388f43fec9242f6a4b448483d9486aa4413d2612
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646842"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314789"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream data jako vstup do Stream Analytics
 
@@ -55,6 +55,7 @@ Následující tabulka popisuje každou vlastnost **nový vstup** stránky na we
 | **Název centra událostí** | Název centra událostí, který se použije jako vstup. |
 | **Název zásady centra událostí** | Zásady sdíleného přístupu, která poskytuje přístup do centra událostí. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. Tato možnost se vyplní automaticky, pokud vyberete možnost určit nastavení centra událostí ručně.|
 | **Skupina uživatelů centra událostí** (doporučeno) | Důrazně doporučujeme používat skupiny konzumentů distinct pro každou úlohu Stream Analytics. Tento řetězec identifikuje skupinu příjemců určený k ingestování dat z centra událostí. Pokud není zadána žádná skupina uživatelů, úloha Stream Analytics používá skupina uživatelů $Default.  |
+| **Klíč oddílu** | Pokud je vstup rozdělený pomocí vlastnosti, můžete přidat název této vlastnosti. Klíče oddílů jsou volitelné a slouží ke zlepšení výkonu dotazu, pokud obsahuje klauzuli PARTITION BY nebo GROUP BY pro tuto vlastnost. |
 | **Formát serializace události** | Formát serializace (JSON, CSV, Avro nebo [jiný (Protobuf, XML, proprietární...)](custom-deserializer.md)) příchozího datového proudu.  Zkontrolujte formát JSON odpovídá specifikaci a nezahrnuje 0 na desetinná čísla. |
 | **Kódování** | UTF-8 je aktuálně jediný podporovaný formát kódování. |
 | **Typ komprese události** | Typ komprese, který se použije ke čtení příchozího datového streamu, jako je například None (výchozí), GZip nebo Deflate. |
@@ -104,6 +105,7 @@ Následující tabulka popisuje každou vlastnost **nový vstup** stránky na we
 | **Název zásad sdíleného přístupu** | Zásady sdíleného přístupu, která poskytuje přístup ke službě IoT Hub. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. |
 | **Klíč zásad sdíleného přístupu** | Sdílený přístupový klíč používaný k autorizaci přístupu ke službě IoT Hub.  Tato možnost se automaticky vyplní v, pokud vyberete možnost lze zadat nastavení služby Iot Hub ručně. |
 | **Skupina uživatelů** | Důrazně doporučujeme použít skupiny různých příjemců pro každou úlohu Stream Analytics. Skupina uživatelů slouží k ingestování dat ze služby IoT Hub. Pokud neurčíte jinak, Stream Analytics používá skupina uživatelů $Default.  |
+| **Klíč oddílu** | Pokud je vstup rozdělený pomocí vlastnosti, můžete přidat název této vlastnosti. Klíče oddílů jsou volitelné a slouží ke zlepšení výkonu dotazu, pokud obsahuje klauzuli PARTITION BY nebo GROUP BY pro tuto vlastnost. |
 | **Formát serializace události** | Formát serializace (JSON, CSV, Avro nebo [jiný (Protobuf, XML, proprietární...)](custom-deserializer.md)) příchozího datového proudu.  Zkontrolujte formát JSON odpovídá specifikaci a nezahrnuje 0 na desetinná čísla. |
 | **Kódování** | UTF-8 je aktuálně jediný podporovaný formát kódování. |
 | **Typ komprese události** | Typ komprese, který se použije ke čtení příchozího datového streamu, jako je například None (výchozí), GZip nebo Deflate. |
@@ -157,6 +159,7 @@ Následující tabulka popisuje každou vlastnost **nový vstup** stránky na we
 | **Vzor cesty** (volitelné) | Cesta k souboru používaná k nalezení objektů BLOB v zadaném kontejneru. Pokud chcete číst objekty BLOB z kořenového adresáře kontejneru, nenastavujte vzor cesty. V této cestě můžete zadat jednu nebo víc instancí následujících tří proměnných: `{date}`, `{time}`, nebo `{partition}`<br/><br/>Příklad 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>Příklad 2: `cluster1/logs/{date}`<br/><br/>`*` Znak není povolená hodnota pro Předpona cesty. Jediné platné <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">objektů blob v Azure znaků</a> jsou povoleny. Nezahrnujte názvy kontejnerů nebo názvy souborů. |
 | **Formát data** (volitelné) | Pokud použijete proměnnou datum v cestě, ve kterém se soubory jsou uspořádány formát data. Příklad: `YYYY/MM/DD` |
 | **Formát času** (volitelné) |  Pokud použijete proměnnou čas v cestě, formát času, ve kterém jsou uspořádány soubory. Momentálně je jediná podporovaná hodnota `HH` hodin. |
+| **Klíč oddílu** | Pokud je vstup rozdělený pomocí vlastnosti, můžete přidat název této vlastnosti. Klíče oddílů jsou volitelné a slouží ke zlepšení výkonu dotazu, pokud obsahuje klauzuli PARTITION BY nebo GROUP BY pro tuto vlastnost. |
 | **Formát serializace události** | Formát serializace (JSON, CSV, Avro nebo [jiný (Protobuf, XML, proprietární...)](custom-deserializer.md)) příchozího datového proudu.  Zkontrolujte formát JSON odpovídá specifikaci a nezahrnuje 0 na desetinná čísla. |
 | **Kódování** | CSV a JSON UTF-8 je aktuálně jediný podporovaný formát kódování. |
 | **Komprese** | Typ komprese, který se použije ke čtení příchozího datového streamu, jako je například None (výchozí), GZip nebo Deflate. |

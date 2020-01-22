@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0936de818303117797e1704f3cecb7f877a3935e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 723821a78ecae308443c93567402e3b232c036f0
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74206553"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314704"
 ---
 # <a name="use-cloudsimple-private-cloud-site-to-host-a-virtual-desktop-infrastructure-using-vmware-horizon"></a>Použití privátního cloudového webu CloudSimple k hostování infrastruktury virtuálních klientských počítačů pomocí horizontu VMware
 
@@ -47,7 +47,7 @@ Následující části popisují, jak nasadit řešení VDI pomocí horizontu v 
 ### <a name="estimate-the-size-of-your-desktop-environment"></a>Odhad velikosti desktopového prostředí
 
 * Ověřte, jestli je vaše identifikovaná konfigurace v rámci provozních omezení VMware.
-* Odhadované prostředky, které jsou potřeba na webu DR, abyste chránili vaše místní prostředí.
+* Odhadujte prostředky, které jsou potřeba pro všechny vaše desktopové a řídicí komponenty vašeho horizontu.
 
 ### <a name="create-a-private-cloud-for-your-environment"></a>Vytvoření privátního cloudu pro vaše prostředí
 

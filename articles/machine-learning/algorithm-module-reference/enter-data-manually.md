@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 7c4d62c19984e1316a01213f579c059b97f709c3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 509b82596ce4819152fcd8d0bc202df186a20095
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497937"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314840"
 ---
 # <a name="enter-data-manually-module"></a>Zadat data ručně modul
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Pomocí tohoto modulu můžete vytvořit malou datovou sadu zadáním hodnot. Datová sada může mít více sloupců.
   
@@ -38,7 +38,7 @@ Tento modul může být užitečný ve scénářích, jako jsou tyto:
   
     -   **Arff**. Formát souboru relace atributu, který používá weka.   
   
-    -   **Sdílený svazek clusteru**. Formát hodnot oddělených čárkami. Další informace najdete v tématu [převedení do sdíleného svazku clusteru](./convert-to-csv.md).  
+    -   **CSV**. Formát hodnot oddělených čárkami. Další informace najdete v tématu [převedení do sdíleného svazku clusteru](./convert-to-csv.md).  
   
     -   **SVMLight**. Formát používaný pro dostupné a dalšími architekturami strojového učení.  
   
@@ -84,7 +84,7 @@ Tento modul může být užitečný ve scénářích, jako jsou tyto:
   
         Když spustíte modul [zadat data ručně](./enter-data-manually.md) , tyto řádky se převedou na datovou sadu sloupců a hodnot indexu následujícím způsobem:  
   
-        |Sloupec1|Col2|Col3|Col4|Popisky|  
+        |Sloupec 1|Sloupec 2|Col3|Col4|Popisky|  
         |-|-|-|-|-|  
         |0,00016|0,004|0,999961|0,00784|1\. místo|  
         |0|0,004|0,999955|0,008615|1\. místo|  
@@ -97,9 +97,9 @@ Tento modul může být užitečný ve scénářích, jako jsou tyto:
   
      Pokud vytvoříte řádky s chybějícími hodnotami, můžete je kdykoli filtrovat později.  
   
-5.  Klikněte pravým tlačítkem na modul a vyberte **Spustit vybrané** a analyzujte data a načtěte je do pracovního prostoru jako datovou sadu.  
+5.  Připojte výstupní port k ostatním modulům a spusťte kanál.  
   
-     Chcete-li zobrazit datovou sadu, klikněte na výstupní port a vyberte **vizualizovat**.  
+     Chcete-li zobrazit datovou sadu, klikněte pravým tlačítkem na modul a vyberte **vizualizovat**.  
 ## <a name="next-steps"></a>Další kroky
 
 Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

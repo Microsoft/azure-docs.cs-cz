@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: d8e27d13de6b1ac6940972022f66811eb75c8986
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9c17cd36d91d113ad59db7b7155c092e4aa7fad1
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485887"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76315061"
 ---
 # <a name="two-class-neural-network-module"></a>Síťový modul neuronové se dvěma třídami
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Pomocí tohoto modulu můžete vytvořit model sítě neuronové, který se dá použít k předpovědi cíle, který má jenom dvě hodnoty.
 
@@ -82,9 +82,9 @@ Chcete-li vypočítat výstup sítě pro konkrétní vstup, hodnota je vypočít
 
 Po dokončení školení:
 
-+ Chcete-li zobrazit souhrn parametrů modelu spolu s váhy funkcí zjištěnými ze školení a dalšími parametry sítě neuronové, klikněte pravým tlačítkem na výstup [výukového modelu](./train-model.md)a vyberte **vizualizovat**.  
++ Pokud chcete uložit snímek výukového modelu, vyberte kartu **výstupy** na pravém panelu modulu **výuka modelu** . Výběrem ikony **Registrovat datovou sadu** uložte model jako opakovaně použitelný modul.
 
-+ Pokud chcete uložit snímek výukového modelu, klikněte pravým tlačítkem na výstup **trained model** a vyberte **Uložit jako trained model**. Tento model se neaktualizuje při následných spuštěních stejného kanálu.
++ Chcete-li použít model pro bodování, přidejte modul určení **skóre modelu** do kanálu.
 
 
 ## <a name="next-steps"></a>Další kroky

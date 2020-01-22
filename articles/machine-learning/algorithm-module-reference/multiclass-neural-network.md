@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: b49ff44e898a78d865278df087aca75e4f8e50ca
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b3d79438797f47dfcc178640af60f5207b4f7650
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466028"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314636"
 ---
 # <a name="multiclass-neural-network-module"></a>Neuronové síťový modul pro více tříd
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Tento modul použijte k vytvoření neuronové síťového modelu, který se dá použít k předpovědi cíle, který má více hodnot. 
 
@@ -56,7 +56,7 @@ Chcete-li vypočítat výstup sítě pro konkrétní vstup, hodnota je vypočít
         - Výstupní vrstva je plně připojená ke skryté vrstvě.
         - Skrytá vrstva je plně připojená ke vstupní vrstvě.
         - Počet uzlů ve vstupní vrstvě je určený počtem funkcí v školicích datech.
-        - Počet uzlů ve skryté vrstvě může nastavit uživatel. Výchozí hodnota je 100.
+        - Počet uzlů ve skryté vrstvě může nastavit uživatel. Výchozí délka je 100.
         - Počet uzlů ve výstupní vrstvě závisí na počtu tříd.
   
    
@@ -86,10 +86,7 @@ Chcete-li vypočítat výstup sítě pro konkrétní vstup, hodnota je vypočít
 
 Po dokončení školení:
 
-- Pokud chcete zobrazit souhrn parametrů modelu spolu s váhy funkcí zjištěnými ze školení a dalšími parametry sítě neuronové, klikněte pravým tlačítkem na výstup [výukového modelu](./train-model.md) a vyberte **vizualizovat**.  
-
-- Pokud chcete uložit snímek výukového modelu, klikněte pravým tlačítkem na výstup **trained model** a vyberte **Uložit jako trained model**. Tento model se neaktualizuje při následných spuštěních stejného kanálu.
-
+- Pokud chcete uložit snímek výukového modelu, vyberte kartu **výstupy** na pravém panelu modulu **výuka modelu** . Výběrem ikony **Registrovat datovou sadu** uložte model jako opakovaně použitelný modul.
 
 ## <a name="next-steps"></a>Další kroky
 

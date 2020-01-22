@@ -11,12 +11,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 10/17/2019
-ms.openlocfilehash: c0dcd8f8f5ecd2d333e610c96ea89a44f8f4c547
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: f3be29dc222e0e9b98ed51d8f921fb9926b018ca
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75528347"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314062"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>Co je Machine Learning Studio (Classic)?
 
@@ -38,13 +38,13 @@ Není nutné žádné programování, vizuálně propojit datové sady a moduly 
 <a name="compare"></a>
 ## <a name="how-does-machine-learning-studio-classic-differ-from-azure-machine-learning"></a>Jak se liší Machine Learning Studio (klasické) od Azure Machine Learning?
 
-[Azure Machine Learning](../overview-what-is-azure-ml.md) **poskytuje sady sdk i návrháře** Azure Machine Learning (Preview) pro rychlé přípravu dat, výuku a nasazení modelů strojového učení. Návrhář nabízí podobné prostředí pro přetahování do studia (Classic). Na rozdíl od proprietární výpočetní platformy studia (Classic) ale Návrhář používá vaše vlastní výpočetní prostředky a je plně integrovaný do Azure Machine Learning.
+[Azure Machine Learning](../overview-what-is-azure-ml.md) **poskytuje sady SDK i nástroj** pro Azure Machine Learning Designer pro rychlé přípravu dat, výuku a nasazení modelů strojového učení. Návrhář nabízí podobné prostředí pro přetahování do studia (Classic). Na rozdíl od proprietární výpočetní platformy studia (Classic) ale Návrhář používá vaše vlastní výpočetní prostředky a je plně integrovaný do Azure Machine Learning.
 
 Tady je rychlé porovnání:
 
 || Machine Learning Studio (Classic) | Azure Machine Learning |
 |---| --- | --- |
-| Rozhraní přetažení | Ano | Ano – [Azure Machine Learning Designer (Preview)](../concept-designer.md) |
+| Rozhraní přetažení | Ano | Ano – [návrhář Azure Machine Learning](../concept-designer.md) |
 | Experiment | Škálovatelné (limit pro školicí data z 10 GB) | Škálování s cílem výpočetního prostředí |
 | Moduly pro rozhraní přetažení | Počtu | Počáteční sada oblíbených [modulů](../algorithm-module-reference/module-reference.md)|
 |Školení výpočetních cílů| Proprietární výpočetní cíl, jenom podpora procesoru| Podporuje výpočetní virtuální počítače s Azure Machine Learning (GPU nebo CPU) a notebook.<br/>([Další výpočetní prostředky podporované v sadě SDK](../concept-compute-target.md#train))|

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 46c2cd49258b8eb6813caaf50e9895990ce67287
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 67cafbb7934381cd4c2936d6e6dfe7fb19d70735
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529556"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314687"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>Porty používané službou Apache Hadoop Services ve službě HDInsight
 
@@ -53,6 +53,7 @@ Pro konkrétní typy clusterů jsou k dispozici následující:
 | Livy |443 |HTTPS |Spark |Spark REST API. [Vzdálená aplikace pomocí Apache Livy najdete v tématu odesílání Apache Spark úloh](spark/apache-spark-livy-rest-interface.md) . |
 | Server Spark Thrift |443 |HTTPS |Spark |Server Spark Thrift používaný k odesílání dotazů na podregistr. Viz [použití Beeline s Apache Hive ve službě HDInsight](hadoop/apache-hadoop-use-hive-beeline.md) |
 | Storm |443 |HTTPS |Storm |Webové uživatelské rozhraní. Viz [nasazení a Správa topologií Apache Storm v HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md) . |
+| Kafka REST proxy |443 |HTTPS |Kafka |Kafka REST API. Viz [interakce s clustery Apache Kafka ve službě Azure HDInsight pomocí proxy REST](kafka/rest-proxy.md) |
 
 ### <a name="authentication"></a>Ověření
 
@@ -88,9 +89,9 @@ Příklady:
 | --- | --- | --- | --- | --- |
 | Webové uživatelské rozhraní NameNode |Hlavní uzly |30070 |HTTPS |Webové uživatelské rozhraní pro zobrazení stavu |
 | Služba metadat NameNode |hlavní uzly |8020 |IPC |Metadata systému souborů |
-| Datauzel |Všechny pracovní uzly |30075 |HTTPS |Webové uživatelské rozhraní pro zobrazení stavu, protokolů atd. |
-| Datauzel |Všechny pracovní uzly |30010 |&nbsp; |Přenos dat |
-| Datauzel |Všechny pracovní uzly |30020 |IPC |Operace s metadaty |
+| DataNode |Všechny pracovní uzly |30075 |HTTPS |Webové uživatelské rozhraní pro zobrazení stavu, protokolů atd. |
+| DataNode |Všechny pracovní uzly |30010 |&nbsp; |Přenos dat |
+| DataNode |Všechny pracovní uzly |30020 |IPC |Operace s metadaty |
 | Sekundární NameNode |Hlavní uzly |50090 |HTTP |Kontrolní bod pro metadata NameNode |
 
 ### <a name="yarn-ports"></a>Porty PŘÍZe
@@ -157,6 +158,7 @@ Příklady:
 | --- | --- | --- | --- | --- |
 | Nese |Pracovní uzly |9092 |[Kafka přenosový protokol](https://kafka.apache.org/protocol.html) |Používá se pro komunikaci klientů. |
 | &nbsp; |Uzly Zookeeper |2181 |&nbsp; |Port, který klienti používají pro připojení k Zookeeper |
+| Proxy REST | Uzly správy Kafka |9400 |HTTPS |[Specifikace REST Kafka](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy/) |
 
 ### <a name="spark-ports"></a>Porty Spark
 
@@ -164,7 +166,7 @@ Příklady:
 | --- | --- | --- | --- | --- | --- |
 | Servery Spark Thrift |Hlavní uzly |10002 |Thrift | &nbsp; | Služba pro připojení k Spark SQL (Thrift/JDBC) |
 | Server Livy | Hlavní uzly | 8998 | HTTP | &nbsp; | Služba pro spouštění příkazů, úloh a aplikací |
-| Poznámkový blok Jupyter | Hlavní uzly | 8001 | HTTP | &nbsp; | Web poznámkového bloku Jupyter |
+| Jupyter Notebook | Hlavní uzly | 8001 | HTTP | &nbsp; | Web poznámkového bloku Jupyter |
 
 Příklady:
 

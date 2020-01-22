@@ -1,0 +1,126 @@
+---
+title: Jak vybrat algoritmus strojového učení
+titleSuffix: Azure Machine Learning
+description: Jak vybrat Azure Machine Learning algoritmy pro dohled nad clustery, klasifikací nebo regresní experimenty v režimu pod dohledem.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: core
+ms.topic: conceptual
+author: FrancescaLazzeri
+ms.author: lazzeri
+ms.reviewer: cgronlun
+ms.date: 01/21/2020
+ms.openlocfilehash: 65f43bf87e704c85d83220f4ffbc50581aafb549
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76315464"
+---
+# <a name="how-to-select-algorithms-for-azure-machine-learning"></a>Jak vybrat algoritmy pro Azure Machine Learning
+
+Běžným dotazem je "který algoritmus strojového učení mám použít?" Vybraný algoritmus závisí hlavně na dvou různých aspektech vašeho scénáře pro datové vědy:
+
+ - **Co chcete s daty dělat?** Konkrétně je to, co je to obchodní otázka, kterou chcete zodpovědět, pomocí učení z minulých dat?
+
+ - **Jaké jsou požadavky vašeho scénáře pro datové vědy?** Konkrétně jaká je přesnost, čas školení, linearita, počet parametrů a počet funkcí, které vaše řešení podporuje?
+
+ ![Důležité informace týkající se výběru algoritmů: co chcete vědět? Jaké jsou požadavky na scénář?](./media/how-to-select-algorithms/how-to-select-algorithms.png)
+
+## <a name="business-scenarios-and-the-machine-learning-algorithm-cheat-sheet"></a>Obchodní scénáře a Tahákový list s algoritmem Machine Learning
+
+[List tahák Algorithm](https://docs.microsoft.com/azure/machine-learning/algorithm-cheat-sheet?WT.mc_id=docs-article-lazzeri) vám pomůže s prvními aspekty: **co chcete s daty dělat**? Azure Machine Learning Na listu Machine Learning tahák Algorithm vyhledejte úkol, který chcete provést, a pak vyhledejte algoritmus [Azure Machine Learning Designer](https://docs.microsoft.com/azure/machine-learning/concept-designer?WT.mc_id=docs-article-lazzeri) pro řešení prediktivní analýzy. 
+
+Machine Learning Designer poskytuje komplexní portfolio algoritmů, jako je například více [tříd rozhodovací doménové struktury](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-decision-forest?WT.mc_id=docs-article-lazzeri), [systémy doporučení](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/evaluate-recommender?WT.mc_id=docs-article-lazzeri), [regrese sítě neuronové](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/neural-network-regression?WT.mc_id=docs-article-lazzeri), [neuronové síť s více třídami](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-neural-network?WT.mc_id=docs-article-lazzeri)a [K – znamená clustering](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/k-means-clustering?WT.mc_id=docs-article-lazzeri). Každý algoritmus je navržený tak, aby vyřešil jiný typ problému strojového učení. Úplný seznam spolu s dokumentací o tom, jak každý algoritmus funguje a jak vyladit parametry pro optimalizaci algoritmu, najdete v části [algoritmus návrháře Machine Learning a příručka k modulům](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/module-reference?WT.mc_id=docs-article-lazzeri) .
+
+> [!NOTE]
+> Pokud si chcete stáhnout list tahák pro algoritmus strojového učení, jděte do [listu tahák pro algoritmus Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/algorithm-cheat-sheet?WT.mc_id=docs-article-lazzeri).
+> 
+> 
+
+Spolu s pokyny Azure Machine Learning v listu tahák Algorithm si pamatujte na jiné požadavky při výběru algoritmu strojového učení pro vaše řešení. Níže jsou uvedené další faktory, které je potřeba vzít v úvahu, jako je přesnost, doba školení, linearita, počet parametrů a počet funkcí.
+
+## <a name="additional-requirements-for-a-data-science-scenario"></a>Další požadavky na scénář pro datové vědy
+
+Jakmile víte, co chcete s daty udělat, musíte určit další požadavky pro vaše řešení. 
+
+Proveďte volby a případné kompromisy pro následující požadavky:
+
+- Přesnost
+- Doba trénování
+- Linearita
+- Počet parametrů
+- Počet funkcí
+
+## <a name="accuracy"></a>Přesnost
+
+Přesnost v rámci strojového učení měří efektivitu modelu jako poměr skutečných výsledků do celkového počtu případů. V Návrháři Machine Learning [modul vyhodnocení modelu](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/evaluate-model?WT.mc_id=docs-article-lazzeri) vypočítá sadu standardních metrik vyhodnocení v oboru. Tento modul můžete použít k měření přesnosti trained model.
+
+Získání nejpřesnější možné odpovědi není vždy nutné. V závislosti na tom, co chcete použít pro, je někdy sblížení vhodné. Pokud je to tento případ, může být možné zkrátit čas zpracování tím, že se dokončí více přibližnými metodami. Přibližné metody také přirozeně zabraňují přebudování.
+
+Existují tři způsoby použití modulu vyhodnocení modelu:
+
+- Vygenerujte skóre pro vaše školicí údaje za účelem vyhodnocení modelu.
+- Generování skóre modelu, ale porovnání těchto skóre s skóre na rezervované sadě testů
+- Porovnání skóre dvou různých, ale souvisejících modelů, pomocí stejné sady dat
+
+Úplný seznam metrik a přístupů, pomocí kterých můžete vyhodnotit přesnost modelů strojového učení, najdete v tématu [vyhodnocení modulu modelu](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/evaluate-model?WT.mc_id=docs-article-lazzeri).
+
+## <a name="training-time"></a>Doba trénování
+
+V dohledovém učení znamená školení pomocí historických dat vytvořit model strojového učení, který minimalizuje chyby. Počet minut nebo hodin nutných ke vzdělávání modelu se v různých algoritmech liší. Čas školení je často úzce vázaný na přesnost. Druhá se většinou doprovází. 
+
+Kromě toho jsou některé algoritmy citlivější na počet datových bodů než jiné. Můžete zvolit konkrétní algoritmus, protože máte časové omezení, zejména v případě, že je datová sada velká.
+
+V Návrháři Machine Learning je vytváření a používání modelu Machine Learning obvykle proces tří kroků:
+
+1.  Nakonfigurujte model výběrem konkrétního typu algoritmu a následným definováním jeho parametrů nebo parametrů. 
+
+2.  Poskytněte datovou sadu, která je označena a má data kompatibilní s algoritmem. Připojte data i model k [modulu výuka modelu](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/train-model?WT.mc_id=docs-article-lazzeri).
+
+3.  Po dokončení školení použijte školicí model s jedním z [modulů bodování](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/score-model?WT.mc_id=docs-article-lazzeri) a předpovědi se na nová data.
+
+## <a name="linearity"></a>Linearita
+
+Linearita v statistice a strojovém učení znamená, že mezi proměnnou a konstantou v datové sadě existuje lineární vztah. Například algoritmy lineární klasifikace předpokládají, že třídy mohou být odděleny rovnou čárou (nebo jeho vyšším rozlišením analogového).
+
+Spousta algoritmů strojového učení využívá linearitu. V Návrháři Azure Machine Learning jsou: 
+
+- [Mikrotřída logistické regrese](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-logistic-regression?WT.mc_id=docs-article-lazzeri)
+- [Logistická regrese dvou tříd](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-logistic-regression?WT.mc_id=docs-article-lazzeri)
+- [Podpora vektorových počítačů](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-support-vector-machine?WT.mc_id=docs-article-lazzeri)  
+
+Algoritmy lineární regrese předpokládají, že trendy dat následují rovnou čáru. Tento předpoklad není pro některé problémy správný, ale u ostatních omezuje přesnost. Bez ohledu na jejich nevýhody se jako první strategii populární lineární algoritmy. Mají za následek algorithmically jednoduché a rychlé ke školení.
+
+![Nelineární hranice třídy](./media/how-to-select-algorithms/nonlinear-class-boundary.png)
+
+***Nelineární hranice třídy***: *spoléhání se na algoritmus lineární klasifikace by způsobil nízkou přesnost.*
+
+![Data s nelineárním trendem](./media/how-to-select-algorithms/nonlinear-trend.png)
+
+***Data s nelineárním trendem***: *použití metody lineární regrese by vygenerovala mnohem větší chybu, než je potřeba.*
+
+## <a name="number-of-parameters"></a>Počet parametrů
+
+Parametry jsou ovladače, které vám pomohou při nastavování algoritmu zapnout datový vědecký pracovník. Jsou to čísla, která mají vliv na chování algoritmu, jako je odolnost proti chybám, počet iterací nebo možnosti mezi variantami, jak se algoritmus chová. Čas školení a přesnost algoritmu je někdy citlivý, aby bylo možné získat pouze ta správná nastavení. Algoritmy s velkým počtem parametrů obvykle vyžadují většinu zkušební verze a chybu, aby bylo možné najít dobrou kombinaci.
+
+Alternativně je v Návrháři Machine Learning [modul předparametrů modelu ladění](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/tune-model-hyperparameters?WT.mc_id=docs-article-lazzeri) : cílem tohoto modulu je určení optimálních parametrů pro model strojového učení. Modul vytváří a testuje více modelů pomocí různých kombinací nastavení. Porovnává metriky pro všechny modely a získá kombinace nastavení. 
+
+I když je to skvělý způsob, jak se ujistit, že jste přepnuli prostor parametrů, čas potřebný ke zvýšení modelu se zvyšuje exponenciálně s počtem parametrů. Je to, že má mnoho parametrů obvykle indikuje, že algoritmus má větší flexibilitu. Často dosahuje velmi dobré přesnosti, pokud můžete najít správnou kombinaci nastavení parametrů.
+
+## <a name="number-of-features"></a>Počet funkcí
+
+Ve službě Machine Learning je funkce kvantifikovaná proměnná pro jev, který se snažíte analyzovat. U určitých typů dat může být počet funkcí velmi velký v porovnání s počtem datových bodů. To je často případ s geneticky nebo textovými daty. 
+
+Velký počet funkcí může zpomalitovat některé algoritmy učení, takže školení se unfeasibly dlouhou dobu. [Podpora vektorových počítačů](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-support-vector-machine?WT.mc_id=docs-article-lazzeri) je zvláště vhodná pro scénáře s vysokým počtem funkcí. Z tohoto důvodu byly použity v mnoha aplikacích z načítání informací do klasifikace textu a obrázku. Podporu vektorových počítačů lze použít pro úlohy klasifikace i regrese.
+
+Výběr funkcí odkazuje na proces použití statistických testů na vstupy v zadaném výstupu. Cílem je určit, které sloupce mají více prediktivní výstup. [Modul výběru funkce založený na filtrech](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/filter-based-feature-selection?WT.mc_id=docs-article-lazzeri) v Návrháři Machine Learning poskytuje několik algoritmů výběru funkcí, ze kterých si můžete vybrat. Modul zahrnuje metody korelace, jako je korelace Pearsonova a hodnoty chí-kvadrát.
+
+Můžete také použít [modul důležitost funkcí permutace](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/permutation-feature-importance?WT.mc_id=docs-article-lazzeri) k výpočtu sady výsledků důležitosti funkce pro datovou sadu. Pak můžete využít tyto výsledky, abyste mohli určit nejlepší funkce pro použití v modelu.
+
+
+## <a name="next-steps"></a>Další kroky
+
+ - [Další informace o Azure Machine Learning designeru](https://docs.microsoft.com/azure/machine-learning/service/concept-designer?WT.mc_id=docs-article-lazzeri)
+ - Popisy všech algoritmů strojového učení, které jsou dostupné v Azure Machine Learning designeru, najdete v tématu [algoritmus Machine Learning designeru a Reference k modulům](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/module-reference?WT.mc_id=docs-article-lazzeri) .
+ - Informace o tom, jak prozkoumat vztah mezi hlubokou výukou, Machine Learningem a AI, najdete v článku o [podrobném učení vs. Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/concept-deep-learning-vs-machine-learning?WT.mc_id=docs-article-lazzeri)

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 01/22/2020
 ms.author: victorh
-ms.openlocfilehash: 1267b3295762f6eb6af92b1cec909bae768886c1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 89c6700d5df3bcef1332121c3cf7d8f720fe054c
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974506"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76315027"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Metriky a protokoly Azure Firewallu
 
@@ -103,17 +103,19 @@ Pro Azure Firewall jsou k dispozici následující metriky:
 
     Jednotka: bajtů
 
-- **Stav brány firewall** – určuje stav brány firewall.
+- **Stav brány firewall** – určuje stav brány firewall na základě dostupnosti portu SNAT.
 
     Jednotka: procenta
 
    Tato metrika má dvě dimenze:
-  - **Stav**: možné hodnoty jsou *v pořádku*, *snížené*, *není v pořádku.*
-  - **Důvod**: označuje důvod pro odpovídající stav brány firewall. Například může označovat *porty SNAT* , pokud je stav brány firewall degradován nebo není v pořádku.
+  - Stav: možné hodnoty jsou *v pořádku*, *snížené*, *není v pořádku.*
+  - Důvod: označuje důvod pro odpovídající stav brány firewall. 
 
+     Pokud se používají porty SNAT > 95%, považují se za vyčerpané a stav je 50% se stavem =**degradované** a důvod =**SNAT port**. Brána firewall zajišťuje zpracování provozu a stávající připojení nejsou ovlivněná. Nová připojení ale nemusí být navázána občas.
 
+     Pokud se používají porty SNAT < 95%, považuje se brána firewall za v pořádku a stav se zobrazí jako 100%.
 
-
+     Pokud se neoznamuje žádné použití portů SNAT, stav se zobrazí jako 0%. 
 
 - **Využití portů SNAT** – procento portů SNAT využívaných bránou firewall.
 

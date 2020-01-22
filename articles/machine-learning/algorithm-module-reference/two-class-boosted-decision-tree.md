@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 7590cab00670c92e8a5b90006778542ec44bf83f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1cbbc3f0c78954b92c1265795ba365be9dc0e38c
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490169"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76315078"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>Modul pro zvýšení rozhodovacího stromu se dvěma třídami
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Pomocí tohoto modulu můžete vytvořit model strojového učení, který je založený na algoritmu zesílených rozhodovacích stromů. 
 
@@ -63,15 +63,14 @@ Tento typ modelu můžete vyškolit pomocí [modelu výuky](././train-model.md).
 9. Proveďte výuku modelu.
   
     + Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, připojíte tagované datové sady a modul [vlakového modelu](./train-model.md) .  
-  
    
 ## <a name="results"></a>Výsledky
 
-Po dokončení školení modelů klikněte pravým tlačítkem na výstup [výukového modelu](./train-model.md) pro zobrazení výsledků:
+Po dokončení školení:
 
-+ Chcete-li zobrazit strom, který byl vytvořen při každé iteraci, vyberte **vizualizovat**. 
-+ Chcete-li přejít k podrobnostem o rozdělení a zobrazit pravidla pro každý uzel, klikněte na jednotlivé stromové struktury.
++ Pokud chcete uložit snímek výukového modelu, vyberte kartu **výstupy** na pravém panelu modulu **výuka modelu** . Výběrem ikony **Registrovat datovou sadu** uložte model jako opakovaně použitelný modul.
 
++ Chcete-li použít model pro bodování, přidejte modul určení **skóre modelu** do kanálu.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: b04a44a82f793f39b24ffd94083ca8fd5e66cfb8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4271a180a0f00ae921de9b8deb9a3e5123f9b519
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493879"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314483"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>Zesílený modul pro regresi rozhodovacího stromu
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Tento modul použijte k vytvoření kompletu regresních stromů pomocí zvyšování úrovně. *Zvyšování úrovně* znamená, že každý strom je závislý na předchozí stromové struktuře. Algoritmus se učí tím, že se dovedou zbytky stromů, které jí předcházejí. Proto zvýšení přesnosti v kompletu rozhodovacího stromu zamýšlí zlepšit přesnost s malým rizikem menšího rozsahu.  
   
@@ -29,8 +29,6 @@ Tato regresní metoda je metoda učení pod dohledem, a proto vyžaduje *datovou
 
 Po definování modelu ho pomocí [modelu vlaků](./train-model.md)provedete.
 
-> [!TIP]
-> Chcete získat další informace o tom, které stromy byly vytvořeny? Jakmile je model vyškolený, klikněte pravým tlačítkem myši na výstup modulu [vlak model](./train-model.md) a vyberte **vizualizovat** . zobrazí se strom, který byl vytvořen v každé iteraci. Můžete přejít k podrobnostem rozdělení pro jednotlivé stromové struktury a zobrazit pravidla pro každý uzel.  
   
 ## <a name="more-about-boosted-regression-trees"></a>Další informace o zesílených regresních stromech  
 
@@ -91,13 +89,9 @@ Metodu zvyšování barevného přechodu lze také použít pro problémy s klas
 
 Po dokončení školení:
 
-+ Chcete-li zobrazit strom, který byl vytvořen při každé iteraci, klikněte pravým tlačítkem na výstup modulu [vlakového modelu](train-model.md) a vyberte **vizualizovat**.
-  
-     Kliknutím na jednotlivé stromové struktury přejdete k podrobnostem o rozdělení a uvidíte pravidla pro každý uzel.  
-
 + Chcete-li použít model pro bodování, připojte ho k [modelu skóre](./score-model.md)a předpovídat hodnoty pro nové vstupní příklady.
 
-+ Pokud chcete uložit snímek školicího modelu, klikněte pravým tlačítkem na **vyškolený výstup modelu** školicího modulu a vyberte **Uložit jako**. Kopie vyškolených modelů, které uložíte, není aktualizována při následných spuštěních kanálu.
++ Snímek trained model uložíte tak, že vyberete kartu **výstupy** na pravém panelu **trained model** a kliknete na ikona **zaregistrovat datovou sadu** . Kopie vyškolené modelu bude uložena jako modul ve stromu modulu a nebude aktualizována při následných spuštěních kanálu.
 
 ## <a name="next-steps"></a>Další kroky
 
