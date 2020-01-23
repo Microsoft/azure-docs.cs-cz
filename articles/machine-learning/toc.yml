@@ -191,6 +191,9 @@
         - name: Označení obrázků
           displayName: 'data, dataset, labeling'
           href: how-to-label-images.md
+        - name: Vytváření datových sad s popisky
+          displayName: 'data, labels, torchvision'
+          href: how-to-use-labeled-dataset.md
     - name: Trénování modelů
       items:
         - name: Použití designeru

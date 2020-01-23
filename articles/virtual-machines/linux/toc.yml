@@ -43,9 +43,11 @@
       href: tutorial-azure-security.md
     - name: 14a. Sestavení s využitím Jenkinse
       href: tutorial-jenkins-github-docker-cicd.md
-    - name: 14b. Nasazení s využitím Azure Pipelines (Classic)
+    - name: 14b. Nasazení a integrace Jenkinse s Azure
       href: tutorial-build-deploy-jenkins.md
-    - name: 15. Průběžná integrace a doručování s využitím Azure Pipelines (YAML)
+    - name: 15a. DevOps pro IaaS a PaaS v Azure
+      href: tutorial-devops-azure-pipelines-classic.md
+    - name: 15b. Průběžná integrace a doručování s využitím Azure Pipelines (YAML)
       href: tutorial-build-deploy-azure-pipelines.md
     - name: 16a. Vytvoření zásobníku LAMP
       href: tutorial-lamp-stack.md

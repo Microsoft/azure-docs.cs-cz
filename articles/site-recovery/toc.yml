@@ -309,7 +309,7 @@
                   href: vmware-physical-mobility-service-overview.md
                 - name: Příprava na nabízenou instalaci služby Mobility
                   href: vmware-azure-install-mobility-service.md
-                - name: Nasazení služby Mobility s využitím System Center Configuration Manageru
+                - name: Nasazení služby Mobility s využitím Configuration Manageru
                   href: vmware-azure-mobility-install-configuration-mgr.md
         - name: Spuštění převzetí služeb při selhání a navrácení služeb po obnovení
           href: physical-to-azure-failover-failback.md

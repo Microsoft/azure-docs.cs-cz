@@ -4,7 +4,7 @@
   items:
     - name: Informace o Spatial Anchors
       href: overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření aplikace Unity
@@ -57,7 +57,7 @@
           href: how-tos/create-locate-anchors-cpp-ndk.md
         - name: V C++/WinRT
           href: how-tos/create-locate-anchors-cpp-winrt.md
-    - name: Použití senzorů na zařízeních ke zjišťování ukotvení v okolí
+    - name: Použití přibližné relokalizace ke zjištění ukotvení v okolí
       items:
         - name: 'V C#/Unity'
           href: how-tos/set-up-coarse-reloc-unity.md
@@ -71,7 +71,7 @@
           href: how-tos/set-up-coarse-reloc-cpp-ndk.md
         - name: V C++/WinRT
           href: how-tos/set-up-coarse-reloc-cpp-winrt.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky Azure Spatial Anchors (GitHub)
       href: 'https://github.com/Azure/azure-spatial-anchors-samples'

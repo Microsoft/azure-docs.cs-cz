@@ -16,6 +16,8 @@
       href: azure-resource-manager-security-controls.md
     - name: Poskytovatelé prostředků podle služeb
       href: azure-services-resource-providers.md
+    - name: Typy prostředků rozšíření
+      href: extension-resource-types.md
     - name: Omezení instancí prostředků
       href: resources-without-resource-group-limit.md
 - name: Postup
@@ -68,44 +70,44 @@
           href: tag-resources.md
         - name: Podpora značek
           href: tag-support.md
-    - name: Spravovat
+    - name: Správa skupin prostředků
       items:
-        - name: Správa skupin prostředků
-          items:
-            - name: Použití webu Azure Portal
-              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
-              href: manage-resource-groups-portal.md
-            - name: Použití Azure CLI
-              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
-              href: manage-resource-groups-cli.md
-            - name: Použití Azure Powershell
-              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
-              href: manage-resource-groups-powershell.md
-        - name: Správa prostředků
-          items:
-            - name: Použití webu Azure Portal
-              displayName: 'open,delete,deploy,move,lock,tag,monitor'
-              href: manage-resources-portal.md
-            - name: Použití Azure CLI
-              displayName: 'open,delete,deploy,move,lock,tag'
-              href: manage-resources-cli.md
-            - name: Použití Azure Powershell
-              displayName: 'open,delete,deploy,move,lock,tag'
-              href: manage-resources-powershell.md
-        - name: Odstranění skupin prostředků a prostředků
-          href: delete-resource-group.md
-        - name: Uzamčení prostředků
-          href: lock-resources.md
-        - name: Vytvoření předplatných EA
+        - name: portál Azure
+          displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+          href: manage-resource-groups-portal.md
+        - name: Azure CLI
+          displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+          href: manage-resource-groups-cli.md
+        - name: Azure PowerShell
+          displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+          href: manage-resource-groups-powershell.md
+    - name: Správa prostředků
+      items:
+        - name: portál Azure
+          displayName: 'open,delete,deploy,move,lock,tag,monitor'
+          href: manage-resources-portal.md
+        - name: Azure CLI
+          displayName: 'open,delete,deploy,move,lock,tag'
+          href: manage-resources-cli.md
+        - name: Azure PowerShell
+          displayName: 'open,delete,deploy,move,lock,tag'
+          href: manage-resources-powershell.md
+    - name: Předplatná EA
+      items:
+        - name: Vytvořit
           href: programmatically-create-subscription.md
-        - name: Udělení přístupu pro vytváření předplatných EA
+        - name: Udělení přístupu k vytváření
           href: grant-access-to-create-subscription.md
-        - name: Ověřování mezi tenanty
-          href: authenticate-multi-tenant.md
-    - name: Zobrazení protokolů aktivit
-      href: view-activity-logs.md
     - name: Poskytovatelé a typy prostředků
       href: resource-providers-and-types.md
+    - name: Odstranění skupin prostředků a prostředků
+      href: delete-resource-group.md
+    - name: Uzamčení prostředků
+      href: lock-resources.md
+    - name: Ověřování mezi tenanty
+      href: authenticate-multi-tenant.md
+    - name: Zobrazení protokolů aktivit
+      href: view-activity-logs.md
     - name: Omezování požadavků
       href: request-limits-and-throttling.md
     - name: Sledování asynchronních operací
