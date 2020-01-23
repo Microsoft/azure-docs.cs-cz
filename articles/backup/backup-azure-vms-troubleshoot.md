@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak řešit chyby zjištěné při z�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 1e71f6f711bcee78538c573a8869b8fdfa2a10b0
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 9828309b080f5831a073fb7c5149455dc649fa13
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75664627"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513792"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Řešení potíží se zálohováním virtuálních počítačů Azure
 
@@ -262,7 +262,6 @@ Ověření verze agenta virtuálního počítače ve virtuálních počítačíc
 
 Zálohování virtuálního počítače se spoléhá na vystavování příkazů snímků pro základní úložiště. Při spuštění úlohy snímku není nutné mít přístup k úložišti ani prodlevám. může dojít k selhání úlohy zálohování. Následující podmínky mohou způsobit selhání úlohy snímku:
 
-* **Přístup k síti do úložiště se zablokuje pomocí NSG**. Přečtěte si další informace o tom, jak pomocí povoleného seznamu IP adres nebo prostřednictvím proxy server [vytvořit síťový přístup](backup-azure-arm-vms-prepare.md#establish-network-connectivity) k úložišti.
 * **Virtuální počítače s nakonfigurovaným zálohováním SQL Server můžou způsobit zpoždění úlohy snímku**. Ve výchozím nastavení vytvoří služba Backup VM na virtuálních počítačích s Windows úplnou zálohu stínové kopie svazku (VSS). U virtuálních počítačů, které spouštějí SQL Server s nakonfigurovaným SQL Server zálohováním, může docházet ke zpoždění snímků. Pokud se zpoždění snímků způsobují selhání zálohování, nastavte následující klíč registru:
 
    ```text
@@ -276,29 +275,9 @@ Zálohování virtuálního počítače se spoléhá na vystavování příkazů
 
 ## <a name="networking"></a>Sítě
 
-Stejně jako všechna rozšíření potřebují rozšíření zálohování přístup k veřejnému Internetu, aby fungoval. Přístup k veřejnému Internetu se může projevit sám různými způsoby:
+Aby fungovala záloha virtuálního počítače IaaS, musí být v hostovi povolen protokol DHCP. Pokud potřebujete statickou privátní IP adresu, nakonfigurujte ji pomocí Azure Portal nebo PowerShellu. Ujistěte se, že je ve virtuálním počítači povolená možnost DHCP.
+Získejte další informace o tom, jak nastavit statickou IP adresu prostřednictvím PowerShellu:
 
-* Instalace rozšíření může selhat.
-* Operace zálohování, jako je snímek disku, můžou selhat.
-* Zobrazení stavu operace zálohování může selhat.
+* [Postup přidání statické interní IP adresy do existujícího virtuálního počítače](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)
+* [Změna metody alokace pro soukromou IP adresu přiřazenou síťovému rozhraní](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)
 
-Je potřeba vyřešit veřejné internetové adresy popsané v [tomto blogu podpory Azure](https://blogs.msdn.com/b/mast/archive/2014/06/18/azure-vm-provisioning-stuck-on-quot-installing-extensions-on-virtual-machine-quot.aspx). Zkontrolujte konfigurace DNS pro virtuální síť a ujistěte se, že identifikátory URI Azure je možné vyřešit.
-
-Po správném provedení překladu názvů je potřeba zadat i přístup k IP adresám Azure. Pokud chcete odblokovat přístup k infrastruktuře Azure, postupujte podle jednoho z následujících kroků:
-
-* Povoluje Seznam rozsahů IP adres datacentra Azure:
-   1. Získá seznam povolených [IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653) .
-   1. Odblokování IP adres pomocí rutiny [New-NetRoute](https://docs.microsoft.com/powershell/module/nettcpip/new-netroute) . Spusťte tuto rutinu v rámci virtuálního počítače Azure v okně PowerShellu se zvýšenými oprávněními. Spusťte jako správce.
-   1. Pokud máte k dispozici pravidla, která budou mít přístup k IP adresám, přidejte je do NSG, pokud ji máte na místě.
-* Vytvořte cestu pro přenos HTTP do toku:
-   1. Pokud máte nějaké omezení sítě, nasaďte proxy server HTTP pro směrování provozu. Příkladem je skupina zabezpečení sítě. Projděte si postup nasazení proxy server protokolu HTTP v tématu [navazování připojení k síti](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
-   1. Přidejte pravidla do NSG, pokud máte na místě, a umožněte tak přístup k Internetu z proxy HTTP.
-
-> [!NOTE]
-> Aby fungovala záloha virtuálního počítače IaaS, musí být v hostovi povolen protokol DHCP. Pokud potřebujete statickou privátní IP adresu, nakonfigurujte ji pomocí Azure Portal nebo PowerShellu. Ujistěte se, že je ve virtuálním počítači povolená možnost DHCP.
-> Získejte další informace o tom, jak nastavit statickou IP adresu prostřednictvím PowerShellu:
->
-> * [Postup přidání statické interní IP adresy do existujícího virtuálního počítače](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)
-> * [Změna metody alokace pro soukromou IP adresu přiřazenou síťovému rozhraní](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)
->
->

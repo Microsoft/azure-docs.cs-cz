@@ -1,5 +1,5 @@
 ---
-title: Porovnání přednastavení Video Indexer a Azure Media Services V3 | Microsoft Docs
+title: Porovnání přednastavených Video Indexer a Azure Media Services V3
 description: Tento článek porovnává Video Indexer možnosti a přednastavení Azure Media Services V3.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 055e210efbb01268654e7823a0fc1320e9c27646
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 2e2abd4ffe5a6d0a6336d811599db687da146f1e
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892817"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513180"
 ---
 # <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>Porovnat Azure Media Services V3 předvolby a Video Indexer 
 

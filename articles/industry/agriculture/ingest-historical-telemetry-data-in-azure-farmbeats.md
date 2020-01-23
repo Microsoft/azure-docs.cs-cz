@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b4a567bc0495595da77ef7d6cd240ee7fb30f0ed
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 11dcf5dc0f05e51f3f427b09745cb581cc0d3780
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170150"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513928"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Ingestování historických telemetrických dat
 
@@ -20,7 +20,7 @@ Běžným scénářem v FarmBeats je příjem historických dat z prostředků I
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Než budete pokračovat v tomto článku, ujistěte se, že jste nainstalovali FarmBeats a shromáždili historická data ze služby IoT.
+Než budete pokračovat v tomto článku, ujistěte se, že jste nainstalovali FarmBeats a shromáždili historická data ze svých zařízení IoT.
 Musíte taky povolit partnerský přístup, jak je uvedeno v následujících krocích.
 
 ## <a name="enable-partner-access"></a>Povolit přístup k partnerovi
@@ -38,31 +38,36 @@ Postupujte následovně.
 >[!NOTE]
 > Chcete-li provést následující postup, musíte být správcem.
 
-1. Stáhněte si tento [skript](https://aka.ms/farmbeatspartnerscript)a extrahujte ho na místním disku. V souboru ZIP jsou dva soubory.
-2. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) a otevřete Azure Cloud Shell. Tato možnost je k dispozici na panelu nástrojů v pravém horním rohu portálu.
+1. Stáhněte [soubor zip](https://aka.ms/farmbeatspartnerscriptv2)a extrahujte ho na místní disk. V souboru zip bude k dispozici jeden soubor.
+2. Přihlaste se k https://portal.azure.com/ a přejít na registrace aplikací Azure Active Directory >.
 
-    ![Panel nástrojů Azure Portal](./media/for-tutorials/navigation-bar-1.png)
+3. Klikněte na registrace aplikace, která se vytvořila jako součást nasazení FarmBeats. Bude mít stejný název jako FarmBeats DataHub.
 
-3. Ujistěte se, že je prostředí nastavené na **PowerShell**.
+4. Klikněte na "vystavení rozhraní API" – > klikněte na Přidat klientskou aplikaci a zadejte **04b07795-8ddb-461a-bbee-02f9e1bf7b46** a zaškrtněte možnost autorizovat rozsah. Tím se zajistí přístup k rozhraní příkazového řádku Azure CLI (Cloud Shell), aby se prováděly níže uvedené kroky.
 
-    ![Nastavení PowerShellu](./media/for-tutorials/power-shell-new-1.png)
+5. Otevřete Cloud Shell. Tato možnost je k dispozici na panelu nástrojů v pravém horním rohu Azure Portal.
 
-4. Nahrajte dva soubory, které jste stáhli z kroku 1 v instanci Cloud Shell.
+    ![Panel nástrojů Azure Portal](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-    ![Tlačítko nahrát na panelu nástrojů](./media/for-tutorials/power-shell-two-1.png)
+6. Ujistěte se, že je prostředí nastavené na **PowerShell**. Ve výchozím nastavení je nastavená na bash.
 
-5. Přejít do adresáře, kam se nahrály soubory.
+    ![Nastavení panelu nástrojů PowerShell](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-   >[!NOTE]
-   > Ve výchozím nastavení se soubory odešlou do domovského adresáře/domů nebo uživatelského jména.
-6. Spusťte skript pomocí tohoto příkazu:
+7. Nahrajte soubor z kroku 1 v instanci Cloud Shell.
 
-    ```azurepowershell-interactive
-    ./generateCredentials.ps1
+    ![Tlačítko nahrát na panelu nástrojů](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
+
+8. Přejít do adresáře, kam se soubor nahrál. Ve výchozím nastavení se soubory odešlou do domovského adresáře pod uživatelským jménem.
+
+9. Spusťte následující skript. Skript zobrazí výzvu k zadání ID tenanta, které se dá získat ze stránky s přehledem Azure Active Directory >.
+
+    ```azurepowershell-interactive 
+
+    ./generatePartnerCredentials.ps1   
+
     ```
 
-7. Postupujte podle pokynů na obrazovce a zaznamenejte hodnoty pro **koncový bod rozhraní API**, **ID tenanta**, **ID klienta**, **tajný klíč klienta**a **připojovací řetězec EventHub**. Připojovací řetězec EventHub je k dispozici jako součást odpovědi rozhraní API v Swagger.
-
+10. Postupujte podle pokynů na obrazovce a zaznamenejte hodnoty pro **koncový bod rozhraní API**, **ID tenanta**, **ID klienta**, **tajný klíč klienta**a **připojovací řetězec EventHub**.
 ## <a name="create-device-or-sensor-metadata"></a>Vytvořit zařízení nebo metadata senzorů
 
  Teď, když máte požadované přihlašovací údaje, můžete definovat zařízení a senzory. Chcete-li to provést, vytvořte metadata voláním rozhraní FarmBeats API. Všimněte si prosím, že budete muset volat rozhraní API jako klientskou aplikaci, kterou jste vytvořili v předchozí části.

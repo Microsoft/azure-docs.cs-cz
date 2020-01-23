@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 09/20/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 26ae70f9283ac7be847a59753130dd8ba8c11c18
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0bb02e6436bf9c9ebb9e54efa73aeed03ab44f3e
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979906"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512660"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>Známé problémy: běžné výstrahy a řešení v Azure Active Directory Domain Services
 
@@ -37,7 +37,7 @@ K této chybě obvykle dochází, když se předplatné Azure přesune do novéh
 Tato chyba je neopravitelná. Pokud chcete tuto výstrahu vyřešit, [odstraňte existující spravovanou doménu služba AD DS Azure](delete-aadds.md) a vytvořte ji znovu v novém adresáři. Pokud máte potíže s odstraněním spravované domény Azure služba AD DS, [otevřete žádost o podporu pro Azure][azure-support] , kde najdete další pomoc při řešení potíží.
 
 ## <a name="aadds101-azure-ad-b2c-is-running-in-this-directory"></a>AADDS101: Azure AD B2C je spuštěný v tomto adresáři.
- 
+
 ### <a name="alert-message"></a>Zpráva výstrahy
 
 *Azure AD Domain Services nelze povolit v Azure AD B2Cm adresáři.*
@@ -129,7 +129,7 @@ Azure služba AD DS vyžaduje aktivní předplatné a nedá se přesunout do jin
 
 ### <a name="resolution"></a>Rozlišení
 
-Azure služba AD DS vytváří správné fungování konkrétních prostředků, jako jsou veřejné IP adresy, síťové karty a nástroj pro vyrovnávání zatížení. Pokud se některý z těchto prostředků odstraní, spravovaná doména je v nepodporovaném stavu a zabraňuje správě domény. Další informace o těchto prostředcích najdete v tématu [síťové prostředky používané službou Azure služba AD DS](network-considerations.md#network-resources-used-by-azure-ad-ds).
+Azure služba AD DS vytváří další prostředky pro správné fungování, jako jsou veřejné IP adresy, virtuální síťová rozhraní a nástroj pro vyrovnávání zatížení. Pokud se některý z těchto prostředků odstraní, spravovaná doména je v nepodporovaném stavu a zabraňuje správě domény. Další informace o těchto prostředcích najdete v tématu [síťové prostředky používané službou Azure služba AD DS](network-considerations.md#network-resources-used-by-azure-ad-ds).
 
 Tato výstraha se vygeneruje, když se odstraní jeden z požadovaných prostředků. Pokud se prostředek odstranil před méně než 4 hodinami, existuje možnost, že platforma Azure může automaticky znovu vytvořit odstraněný prostředek. Následující kroky popisují, jak kontrolovat stav a časové razítko odstranění prostředku:
 
@@ -160,7 +160,7 @@ Tato chyba je neopravitelná. Pokud chcete tuto výstrahu vyřešit, [odstraňte
 
 ### <a name="resolution"></a>Rozlišení
 
-Některé automaticky generované objekty služby se používají ke správě a vytváření prostředků pro spravovanou doménu Azure služba AD DS. Pokud dojde ke změně oprávnění pro přístup k některému z těchto instančních objektů, není možné správně spravovat prostředky. Následující kroky ukazují, jak pochopit a pak udělit přístupová oprávnění k instančnímu objektu:
+Některé automaticky generované objekty služby se používají ke správě a vytváření prostředků pro spravovanou doménu Azure služba AD DS. Pokud dojde ke změně oprávnění pro přístup k některému z těchto instančních objektů, doména nemůže správně spravovat prostředky. Následující kroky ukazují, jak pochopit a pak udělit přístupová oprávnění k instančnímu objektu:
 
 1. Přečtěte si o [řízení přístupu na základě role a o tom, jak udělit přístup k aplikacím v Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 2. Zkontrolujte přístup, který instanční objekt s ID *abba844e-bc0e-44b0-947a-dc74e5d09022* má, a udělte přístup, který byl zamítnut v dřívější datum.
@@ -178,13 +178,13 @@ Podsíť virtuální sítě pro Azure služba AD DS potřebuje dostatek IP adres
 Pokud chcete tuto výstrahu vyřešit, odstraňte existující spravovanou doménu Azure služba AD DS a vytvořte ji znovu ve virtuální síti s velkým množstvím rozsahu IP adres. U tohoto procesu dochází k přerušení, protože Azure služba AD DS spravovaná doména není k dispozici a všechny vlastní prostředky, které jste vytvořili jako OU nebo účty služeb, se ztratí.
 
 1. Odstraňte ze svého adresáře [spravovanou doménu Azure služba AD DS](delete-aadds.md) .
-1. Chcete-li aktualizovat rozsah IP adres virtuální sítě, vyhledejte a vyberte možnost *virtuální síť* v Azure Portal. Vyberte virtuální síť pro Azure služba AD DS, že se jedná o malý rozsah IP adres.
+1. Chcete-li aktualizovat rozsah IP adres virtuální sítě, vyhledejte a vyberte možnost *virtuální síť* v Azure Portal. Vyberte virtuální síť pro Azure služba AD DS, která má malý rozsah IP adres.
 1. V části **Nastavení**vyberte *adresní prostor*.
 1. Aktualizujte rozsah adres tak, že vyberete stávající rozsah adres, upravíte ho nebo přidáte další rozsah adres. Zajistěte, aby byl nový rozsah IP adres dostatečně velký pro rozsah podsítě Azure služba AD DS. Až budete připraveni, změny **uložte** .
 1. V levém navigačním panelu vyberte **podsítě** .
 1. Vyberte podsíť, kterou chcete upravit, nebo vytvořte další podsíť.
 1. Aktualizujte nebo zadejte velký rozsah IP adres a potom změny **uložte** .
-1. [Vytvořte náhradu spravované domény Azure služba AD DS](tutorial-create-instance.md). Ujistěte se, že jste si vybrali aktualizovanou podsíť virtuální sítě s velkým rozsahem IP adres.
+1. [Vytvořte náhradu spravované domény Azure služba AD DS](tutorial-create-instance.md). Ujistěte se, že jste si vybrali aktualizovanou podsíť virtuální sítě s velkým množstvím rozsahu IP adres.
 
 Stav spravované domény Azure služba AD DS se automaticky aktualizuje během dvou hodin a výstraha se odstraní.
 
@@ -216,11 +216,11 @@ Tato chyba je neopravitelná. Pokud chcete tuto výstrahu vyřešit, [odstraňte
 
 ### <a name="resolution"></a>Rozlišení
 
-Zámky prostředků se dají použít u prostředků Azure a skupin prostředků, aby se zabránilo změně nebo odstranění. Protože Azure služba AD DS je spravovaná služba, platforma Azure potřebuje možnost provádět změny konfigurace. Pokud se pro některé součásti Azure služba AD DS používá zámek prostředků, platforma Azure nemůže provádět úlohy správy.
+K tomu, aby se zabránilo změně nebo odstranění, se můžou použít zámky prostředků na prostředky Azure. Protože Azure služba AD DS je spravovaná služba, platforma Azure potřebuje možnost provádět změny konfigurace. Pokud se pro některé součásti Azure služba AD DS používá zámek prostředků, platforma Azure nemůže provádět úlohy správy.
 
 Pokud chcete vyhledat zámky prostředků na součástech Azure služba AD DS a odebrat je, proveďte následující kroky:
 
-1. Pro každou součást sítě Azure služba AD DS ve vaší skupině prostředků, jako je třeba virtuální síť, síťová karta nebo veřejná IP adresa, Projděte si protokoly operací v Azure Portal. Tyto protokoly operací by měly ukazovat, proč selže operace a kde se používá zámek prostředku.
+1. Pro každou součást sítě Azure služba AD DS ve vaší skupině prostředků, jako je třeba virtuální síť, síťové rozhraní nebo veřejná IP adresa, se podívejte na protokoly operací v Azure Portal. Tyto protokoly operací by měly ukazovat, proč selže operace a kde se používá zámek prostředku.
 1. Vyberte prostředek, na kterém je zámek použit, a pak v části **zámky**vyberte a odeberte zámky.
 
 ## <a name="aadds116-resources-are-unusable"></a>AADDS116: prostředky jsou nepoužitelné.
@@ -231,7 +231,7 @@ Pokud chcete vyhledat zámky prostředků na součástech Azure služba AD DS a 
 
 ### <a name="resolution"></a>Rozlišení
 
-Zásady se použijí pro prostředky Azure a skupiny prostředků, které určují, jaké akce konfigurace jsou povolené. Protože Azure služba AD DS je spravovaná služba, platforma Azure potřebuje možnost provádět změny konfigurace. Pokud se na některých součástech Azure služba AD DS aplikuje zásada, platforma Azure nemusí být schopná provádět úlohy správy.
+Zásady se používají u prostředků Azure a skupin prostředků, které určují, jaké akce konfigurace jsou povolené. Protože Azure služba AD DS je spravovaná služba, platforma Azure potřebuje možnost provádět změny konfigurace. Pokud se na některých součástech Azure služba AD DS aplikuje zásada, platforma Azure nemusí být schopná provádět úlohy správy.
 
 Pokud chcete vyhledat použité zásady v součástech Azure služba AD DS a aktualizovat je, proveďte následující kroky:
 
@@ -246,7 +246,7 @@ Pokud chcete vyhledat použité zásady v součástech Azure služba AD DS a akt
 
 ### <a name="resolution"></a>Rozlišení
 
-[Podívejte se na stav služby Azure služba AD DS](check-health.md) pro všechny výstrahy, které indikují problémy v konfiguraci spravované domény. Problémy se síťovou konfigurací můžou synchronizaci z Azure AD zablokovat. Pokud můžete vyřešit všechny výstrahy, které indikují problém s konfigurací, počkejte dvě hodiny a vraťte se zpátky, abyste viděli, jestli se synchronizace dokončila.
+[Podívejte se na stav služby Azure služba AD DS](check-health.md) pro všechny výstrahy, které indikují problémy v konfiguraci spravované domény. Problémy se síťovou konfigurací můžou synchronizaci z Azure AD zablokovat. Pokud můžete vyřešit výstrahy indikující problém s konfigurací, počkejte dvě hodiny a vraťte se zpátky, abyste viděli, jestli se synchronizace úspěšně dokončila.
 
 Následující běžné důvody způsobují zastavení synchronizace ve spravovaných doménách Azure služba AD DS:
 
@@ -261,7 +261,7 @@ Následující běžné důvody způsobují zastavení synchronizace ve spravova
 
 ### <a name="resolution"></a>Rozlišení
 
-[Podívejte se na stav služby Azure služba AD DS](check-health.md) pro všechny výstrahy, které indikují problémy v konfiguraci spravované domény. Problémy se síťovou konfigurací můžou na platformě Azure zablokovat úspěšné pořízení záloh. Pokud můžete vyřešit všechny výstrahy, které indikují problém s konfigurací, počkejte dvě hodiny a vraťte se zpátky, abyste viděli, jestli se synchronizace dokončila.
+[Podívejte se na stav služby Azure služba AD DS](check-health.md) pro výstrahy, které indikují problémy v konfiguraci spravované domény. Problémy se síťovou konfigurací můžou na platformě Azure zablokovat úspěšné pořízení záloh. Pokud můžete vyřešit výstrahy indikující problém s konfigurací, počkejte dvě hodiny a vraťte se zpátky, abyste viděli, jestli se synchronizace úspěšně dokončila.
 
 ## <a name="aadds503-suspension-due-to-disabled-subscription"></a>AADDS503: pozastavení z důvodu zakázaného předplatného
 
@@ -292,7 +292,7 @@ Když je spravovaná doména znovu povolená, stav spravované domény Azure slu
 > [!WARNING]
 > Pokud se doména spravované službou Azure služba AD DS pozastaví po delší dobu, dojde k jejímu nebezpečnému odstranění. Vyřešte důvod pro pozastavení co nejrychleji. Další informace najdete v tématu [pochopení stavů pozastavených pro Azure služba AD DS](suspension.md).
 
-[Podívejte se na stav služby Azure služba AD DS](check-health.md) pro všechny výstrahy, které indikují problémy v konfiguraci spravované domény. Pokud můžete vyřešit všechny výstrahy, které indikují problém s konfigurací, počkejte dvě hodiny a vraťte se zpátky, abyste viděli, jestli se synchronizace dokončila. Až budete připraveni, [otevřete žádost o podporu Azure][azure-support] pro opětovné povolení spravované domény Azure služba AD DS.
+[Podívejte se na stav služby Azure služba AD DS](check-health.md) pro výstrahy, které indikují problémy v konfiguraci spravované domény. Pokud je možné vyřešit výstrahy indikující problém s konfigurací, počkejte dvě hodiny a vraťte se zpět, abyste viděli, jestli se synchronizace dokončila. Až budete připraveni, [otevřete žádost o podporu Azure][azure-support] pro opětovné povolení spravované domény Azure služba AD DS.
 
 ## <a name="next-steps"></a>Další kroky
 

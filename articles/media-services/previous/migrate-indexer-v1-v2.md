@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 791287d693903007d09c2e82025bfe195f9f15d1
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 2268c074480f99ca23117ca2ffd2c87c1dbb10a2
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464053"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513231"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Migrace z Media Indexer a Media Indexer 2 na Video Indexer
 
-Procesor [Azure Media Indexer](media-services-index-content.md) médií bude vyřazení od 1. října 2020. Od 1. ledna 2020 budou zpracovatelské procesory [Azure Media Indexer 2 ve verzi Preview](media-services-process-content-with-indexer2.md) vyřazené.  [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) nahrazuje tyto starší verze procesorů médií.
+Vyřadí se procesory [Azure Media Indexer](media-services-index-content.md) media a [Azure Media Indexer 2 ve verzi Preview](media-services-process-content-with-indexer2.md) . Informace o datech vyřazení najdete v tématu tyto [starší součásti](legacy-components.md) . [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) nahrazuje tyto starší verze procesorů médií.
 
 Azure Media Services Video Indexer je postavená na Azure Media Analytics, Azure Kognitivní hledání Cognitive Services (například Face API, Microsoft Translator, rozhraní API pro počítačové zpracování obrazu a Custom Speech Service). Umožňuje extrahovat přehledy z videí pomocí zvukových modelů a videomodelů Video Indexeru. Pokud chcete zjistit, jaké scénáře se Video Indexer můžou použít v, jaké funkce nabízí a jak začít, přečtěte si téma [video indexer video a zvukové modely](../video-indexer/video-indexer-overview.md). 
 
@@ -35,7 +35,7 @@ Tento článek popisuje kroky migrace z Azure Media Indexer a Azure Media Indexe
 
 ## <a name="migration-options"></a>Možnosti migrace 
 
-|Pokud vyžadujete  |Stisknutím |
+|Pokud vyžadujete  |potom na |
 |---|---|
 |řešení, které poskytuje přepis mluveného slova na text pro libovolný formát mediálního souboru ve formátech skrytých souborů titulků: VTT, SRT aplikace nebo TTML<br/>i další zvukové přehledy, jako jsou klíčová slova, témata Inferencing, akustické události, mluvčí diarization, extrakce a překlad entit.| Aktualizujte své aplikace tak, aby používaly funkce Video Indexer Azure přes Video Indexer v2 REST API nebo přednastavení zvukového analyzátoru Azure Media Services V3.|
 |možnosti převodu řeči na text| Použijte přímo rozhraní Cognitive Services Speech API.|  
@@ -50,7 +50,7 @@ Rozhraní Azure Media Services V3 API umožňuje z vašich videí a zvukových s
 
 **AudioAnalyzerPreset** umožňuje extrahovat z zvukového souboru nebo videosouboru více zvukových přehledů. Výstup obsahuje soubor VTT nebo TTML pro záznam zvuku a soubor JSON (se všemi dalšími dalšími informacemi o službě Audio Insights). Zvukové poznatky zahrnují klíčová slova, indexování mluvčích a analýzu mínění řeči. AudioAnalyzerPreset podporuje také rozpoznávání jazyka pro konkrétní jazyky. Podrobné informace najdete v tématu [transformace](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset).
 
-### <a name="get-started"></a>Začínáme
+### <a name="get-started"></a>Začít
 
 Pokud chcete začít, podívejte se na:
 
@@ -75,7 +75,7 @@ Mezi známé rozdíly patří:
 
 * Služba Cognitive Services Speech Services nepodporuje extrakci klíčových slov. Video Indexer a Media Services V3 však AudioAnalyzerPreset zároveň nabízí robustnější sadu klíčových slov ve formátu JSON. 
 
-## <a name="need-help"></a>Potřebujete pomoc?
+## <a name="need-help"></a>Potřebujete pomoct?
 
 Lístek podpory můžete otevřít tak, že přejdete na [novou žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) .
 

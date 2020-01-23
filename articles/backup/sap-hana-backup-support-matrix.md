@@ -3,12 +3,12 @@ title: Matice podpory pro zálohování SAP HANA
 description: V tomto článku se dozvíte o podporovaných scénářích a omezeních při zálohování SAP HANA databází na virtuálních počítačích Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 0d847d2131a9a9c21fde14cae40a184de4195223
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: a0a7c25ec718dcd6a903d2149a8b3930fb25941e
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74288227"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514285"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Matice podpory pro zálohování databází SAP HANA na virtuálních počítačích Azure
 
@@ -39,7 +39,7 @@ Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Micros
 | **Nasazení HANA**       | SAP HANA jenom na jednom virtuálním počítači Azure – jenom škálovat               | Škálování na víc systémů                                                    |
 | **Instance HANA**         | Jedna instance SAP HANA na jednom virtuálním počítači Azure – pouze horizontální navýšení kapacity | Několik instancí SAP HANA na jednom virtuálním počítači                  |
 | **Typy databází HANA**    | Kontejner Izolovaná databáze (SDC) na 1. x, kontejneru více databází (MDC) na 2. x | MDC v HANA 1. x                                              |
-| **Velikost databáze HANA**     | 2 – 1TB velikost úplné zálohy po kompresi (M Series 2 TB, 4 TB RAM) |                                                              |
+| **Velikost databáze HANA**     | 2 – TB úplné zálohy, jak oznamuje HANA) |                                                              |
 | **Typy zálohování**           | Úplné a rozdílové zálohy a zálohování protokolů                           | Přírůstkové, snímky                                       |
 | **Typy obnovení**          | Informace o podporovaných typech obnovení najdete v SAP HANA poznámky [1642148](https://launchpad.support.sap.com/#/notes/1642148) . |                                                              |
 | **Omezení zálohování**          | Až 2 TB velikosti úplné zálohy na instanci SAP HANA  |                                                              |

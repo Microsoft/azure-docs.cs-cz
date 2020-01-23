@@ -1,5 +1,5 @@
 ---
-title: Rozříznout video při kódování pomocí Azure Media Services REST API
+title: Rozříznout video při kódování pomocí Azure Media Services REST
 description: Toto téma popisuje, jak rozříznout video při kódování pomocí Azure Media Services pomocí REST.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/10/2019
 ms.author: juliako
-ms.openlocfilehash: 3557aef6213955ef77542bffafe0a2b0c374ed68
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: c39aded55fe36cb130459a4f6f119f872b1adbc4
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704451"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514319"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---rest"></a>Rozstřihnout video při kódování pomocí Media Services-REST
 
@@ -39,7 +39,7 @@ K dokončení kroků popsaných v tomto tématu, budete muset:
 
 ## <a name="create-a-subclipping-job"></a>Vytvoření úlohy dílčího výstřižku
 
-1. V stažené kolekci po výběru vyberte **Transformers a úlohy** -> **vytvořit úlohu s dílčím oříznutím**.
+1. V kolekci po tom, co jste stáhli, vyberte **Transformers a úlohy** -> **vytvořit úlohu s dílčím oříznutím**.
     
     Požadavek **Put** vypadá takto:
     

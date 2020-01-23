@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/01/2019
-ms.openlocfilehash: a97a03f7ef20ae56cec04341fe76b79ee657547b
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.custom: hdinsightactive
+ms.date: 01/21/2020
+ms.openlocfilehash: 102ae56bb9dce2898c14bdc710420759a527a9e9
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748475"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514693"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Konfigurace plánu oprav operačního systému pro clustery HDInsight se systémem Linux
 
@@ -28,13 +28,26 @@ HDInsight poskytuje podporu pro provádění běžných úloh v clusteru, jako j
 > [!NOTE]  
 > Akce skriptu nebudou automaticky používat aktualizace pro všechny budoucí aktualizační cykly. Spusťte skripty pokaždé, když se musí použít nové aktualizace, aby se nainstalovaly aktualizace, a pak se virtuální počítač restartuje.
 
+## <a name="preparation"></a>Příprava
+
+Oprava v reprezentativním neprodukčním prostředí před nasazením do produkčního prostředí. Vytvořte plán pro odpovídající testování vašeho systému před skutečným opravou.
+
+Od času po dobu od relace SSH s vaším clusterem se může zobrazit zpráva, že je k dispozici upgrade. Zpráva může vypadat nějak takto:
+
+```
+New release '18.04.3 LTS' available.
+Run 'do-release-upgrade' to upgrade it
+```
+
+Oprava je volitelná a podle vašeho uvážení.
+
 ## <a name="restart-nodes"></a>Restartovat uzly
   
 Plán skriptu [–](https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/schedule-reboots.sh)restartování, nastaví typ restartování, který bude proveden na počítačích v clusteru. Při odesílání akce skriptu nastavte, aby se nastavily na všech třech typech uzlů: hlavní uzel, pracovní uzel a Zookeeper. Pokud se skript nepoužije na typ uzlu, virtuální počítače pro tento typ uzlu se neaktualizují ani nerestartují.
 
 `schedule-reboots script` akceptuje jeden číselný parametr:
 
-| Parametr | Přijaté hodnoty | Definice |
+| Parametr | Přípustné hodnoty | Definice |
 | --- | --- | --- |
 | Typ restartování, který se má provést | 1 nebo 2 | Hodnota 1 povolí restart plánu (naplánováno během 12-24 hodin). Hodnota 2 umožňuje okamžité restartování (5 minut). Pokud není zadán žádný parametr, výchozí hodnota je 1. |  
 
@@ -44,7 +57,7 @@ Skript [install-Updates-Schedule-Reboots.sh](https://hdiconfigactions.blob.core.
 
 Skript `install-updates-schedule-reboots` přijímá dva číselné parametry, jak je popsáno v následující tabulce:
 
-| Parametr | Přijaté hodnoty | Definice |
+| Parametr | Přípustné hodnoty | Definice |
 | --- | --- | --- |
 | Typ aktualizací, které se mají nainstalovat | 0, 1 nebo 2 | Hodnota 0 nainstaluje pouze aktualizace jádra. Hodnota 1 nainstaluje všechny aktualizace a 2 nainstaluje pouze aktualizace jádra a zabezpečení. Pokud není zadán žádný parametr, výchozí hodnota je 0. |
 | Typ restartování, který se má provést | 0, 1 nebo 2 | Hodnota 0 zakáže restart. Hodnota 1 umožňuje naplánovat restart a 2 umožňuje okamžité restartování. Pokud není zadán žádný parametr, výchozí hodnota je 0. Uživatel musí změnit vstupní parametr 1 na vstupní parametr 2. |
@@ -56,5 +69,5 @@ Skript `install-updates-schedule-reboots` přijímá dva číselné parametry, j
 
 Konkrétní kroky týkající se použití akcí skriptů najdete v následujících částech v tématu [Přizpůsobení clusterů HDInsight se systémem Linux pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md):
 
-* [Použití akce skriptu během vytváření clusteru](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)
-* [Použití akce skriptu u běžícího clusteru](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)
+- [Použití akce skriptu během vytváření clusteru](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)
+- [Použití akce skriptu u běžícího clusteru](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)

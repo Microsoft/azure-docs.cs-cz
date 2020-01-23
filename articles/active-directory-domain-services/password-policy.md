@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 10/08/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: f462a3743eb33bd33e2d392eba1c5944f40ade4f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b08c3854ef330081b4c55331cb410c5925f00dec
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704530"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512755"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Zásady hesel a uzamčení účtů ve spravovaných doménách
 
@@ -65,7 +65,7 @@ S těmito výchozími nastaveními jsou uživatelské účty uzamčeny po dobu 3
 
 K uzamčení účtu dochází pouze v rámci spravované domény. Uživatelské účty se v Azure služba AD DS jenom odpojí a v důsledku neúspěšných pokusů o přihlášení proti spravované doméně. Uživatelské účty, které se synchronizovaly z Azure AD nebo místně, nejsou ve zdrojových adresářích uzamčené, jenom v Azure služba AD DS.
 
-Pokud máte zásady hesel Azure AD, které určují maximální stáří hesla delší než 90 dní, toto stáří hesla se použije na výchozí zásady v Azure služba AD DS. V Azure služba AD DS můžete nakonfigurovat vlastní zásady hesel, které definují jiné maximální stáří hesla. Pokud máte kratší stáří hesla, které je nakonfigurované v zásadách hesel služba AD DS Azure, než ve službě Azure AD nebo v místním prostředí služba AD DS, postarejte se pečlivě. V takovém případě může platnost hesla uživatele vypršet v Azure služba AD DS před tím, než se zobrazí výzva ke změně ve službě Azure AD v místním prostředí služba AD DS.
+Pokud máte zásady hesel Azure AD, které určují maximální stáří hesla delší než 90 dní, toto stáří hesla se použije na výchozí zásady v Azure služba AD DS. V Azure služba AD DS můžete nakonfigurovat vlastní zásady hesel, které definují jiné maximální stáří hesla. Pokud máte kratší stáří hesla, které je nakonfigurované v zásadách hesel služba AD DS Azure, než ve službě Azure AD nebo v místním prostředí služba AD DS, postarejte se pečlivě. V takovém případě může platnost hesla uživatele vypršet v Azure služba AD DS před tím, než se zobrazí výzva ke změně v Azure AD nebo v místním prostředí služba AD DS.
 
 Pro uživatelské účty vytvořené ručně ve spravované doméně Azure služba AD DS se z výchozích zásad uplatní taky následující další nastavení hesla. Tato nastavení se nevztahují na uživatelské účty synchronizované v rámci služby Azure AD, protože uživatel nemůže aktualizovat heslo přímo v Azure služba AD DS.
 
@@ -103,12 +103,12 @@ Pokud chcete vytvořit vlastní zásady pro hesla, použijte nástroje pro sprá
 1. Podle potřeby upravte další nastavení zásad hesel. Pamatujte na tyto klíčové body:
 
     * Nastavení jako složitost hesla, stáří nebo čas vypršení platnosti pouze uživatelům, kteří jsou ručně vytvořeni ve spravované doméně Azure služba AD DS.
-    * Nastavení uzamčení účtů platí pro všechny uživatele, ale projeví se pouze v rámci spravované domény.
+    * Nastavení uzamčení účtů platí pro všechny uživatele, ale projeví se pouze v rámci spravované domény, nikoli v samotné službě Azure AD.
 
     ![Vytvořit vlastní jemně odstupňované zásady pro hesla](./media/how-to/custom-fgpp.png)
 
 1. Zrušte kontrolu před **náhodným odstraněním**. Pokud je vybraná tato možnost, nemůžete uložit podrobné zásady.
-1. V části **přímo platí pro** vyberte tlačítko **Přidat** . V dialogovém okně **Vybrat uživatele nebo skupiny** klikněte na tlačítko **umístění** .
+1. V části **přímo platí pro** vyberte tlačítko **Přidat** . V dialogovém okně **Vybrat uživatele nebo skupiny** vyberte tlačítko **umístění** .
 
     ![Vyberte uživatele a skupiny, pro které chcete zásady hesel použít.](./media/how-to/fgpp-applies-to.png)
 

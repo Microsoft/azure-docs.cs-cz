@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c1c7dd0bd017852144139a841ff609dabf0f1a27
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 9a4f5094837b0c642c4de75180039064de4e40c2
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928056"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513979"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Vývoj zabezpečených aplikací v Azure
 V tomto článku jsou uvedeny bezpečnostní aktivity a ovládací prvky, které je potřeba vzít v úvahu při vývoji aplikací pro Cloud. Pojednává o bezpečnostních otázkách a konceptech, které je potřeba vzít v úvahu během fáze implementace a ověření v rámci služby [SDL (Microsoft Security Development Lifecycle)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) . Cílem je pomáhat vám definovat aktivity a služby Azure, které můžete použít k vývoji bezpečnější aplikace.
@@ -36,9 +36,9 @@ Předpokládejme, že se vaše aplikace bude používat způsobem, který jste n
 
 Před vrácením kódu se změnami proveďte [Revize kódu](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) a zvyšte tak celkovou kvalitu kódu a snižte riziko vytváření chyb. Můžete použít [Visual Studio](https://docs.microsoft.com/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) ke správě procesu revize kódu.
 
-### <a name="perform-static-code-analysis"></a>Provést analýzu statického kódu
+### <a name="perform-static-code-analysis"></a>Provedení analýzy statického kódu
 
-[Analýza statického kódu](https://www.owasp.org/index.php/Static_Code_Analysis) (označuje se také jako *analýza zdrojového kódu*) se obvykle provádí jako součást revize kódu. Analýza statického kódu obvykle odkazuje na spouštění nástrojů pro analýzu statického kódu pro nalezení potenciálních chyb zabezpečení v nespuštěném kódu pomocí technik, jako je [Kontrola chuti](https://en.wikipedia.org/wiki/Taint_checking) a [Analýza toku dat](https://en.wikipedia.org/wiki/Data-flow_analysis).
+[Statická analýza kódu](https://www.owasp.org/index.php/Static_Code_Analysis) (označovaná také jako *analýza zdrojového kódu*) se obvykle provádí jako součást revize kódu. Analýza statického kódu obvykle odkazuje na spouštění nástrojů pro analýzu statického kódu pro nalezení potenciálních chyb zabezpečení v nespuštěném kódu pomocí technik, jako je [Kontrola chuti](https://en.wikipedia.org/wiki/Taint_checking) a [Analýza toku dat](https://en.wikipedia.org/wiki/Data-flow_analysis).
 
 Azure Marketplace nabízí [vývojářské nástroje](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1&search=code%20review) , které provádějí analýzu statického kódu a pomáhají s revizemi kódu.
 
@@ -81,7 +81,7 @@ Podívejte se [na téma odebrání standardních hlaviček serveru na webech Azu
 
 ### <a name="segregate-your-production-data"></a>Oddělení provozních dat
 
-Vaše produkční data nebo "skutečná" data by se neměla používat pro vývoj, testování nebo jiné účely, než jaké jsou zamýšlené v podniku. Pro všechny účely vývoje[](https://en.wikipedia.org/wiki/Data_anonymization)a testování by se měla použít maskovaná datová sada (anonymitá).
+Vaše produkční data nebo "skutečná" data by se neměla používat pro vývoj, testování nebo jiné účely, než jaké jsou zamýšlené v podniku. Pro všechny účely vývoje a testování by se měla použít maskovaná datová sada ([anonymitá](https://en.wikipedia.org/wiki/Data_anonymization)).
 
 To znamená, že přístup k vašim skutečným datům má méně lidí, což snižuje plochu útoku. Znamená to také méně zaměstnanců, kteří uvidí osobní údaje, což eliminuje případné porušení důvěrnosti.
 
@@ -99,13 +99,13 @@ Pokud aplikace musí automaticky generovat hesla, ujistěte se, že vygenerovan�
 
 Pokud vaše aplikace umožňuje [nahrávání souborů](https://www.owasp.org/index.php/Unrestricted_File_Upload), zvažte opatření, která můžete pro tuto rizikové aktivity provést. Prvním krokem v mnoha útokech je získání škodlivého kódu do systému, který je napadený. K tomu může útočník využít nahrávání souboru. OWASP nabízí řešení pro ověřování souboru, aby se zajistilo, že soubor, který odesíláte, je bezpečný.
 
-Ochrana proti malwaru pomáhá identifikovat a odstraňovat viry, spyware a další škodlivý software. Můžete nainstalovat [Microsoft Antimalware](../fundamentals/antimalware.md) nebo řešení ochrany koncového bodu Microsoftu ([Trend Micro](https://www.trendmicro.com/azure/), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)a [System Center Endpoint Protection](https://docs.microsoft.com/sccm/protect/deploy-use/endpoint-protection)).
+Ochrana proti malwaru pomáhá identifikovat a odstraňovat viry, spyware a další škodlivý software. Můžete nainstalovat [Microsoft Antimalware](../fundamentals/antimalware.md) nebo řešení ochrany koncového bodu Microsoft Partner Microsoftu ([Trend Micro](https://www.trendmicro.com/azure/), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)a [Endpoint Protection](https://docs.microsoft.com/configmgr/protect/deploy-use/endpoint-protection)).
 
 [Microsoft Antimalware](../fundamentals/antimalware.md) obsahuje funkce, jako je ochrana v reálném čase, plánované prohledávání, náprava malwaru, aktualizace signatur, aktualizace modulu, vytváření sestav ukázek a shromažďování událostí vyloučení. Pomocí [Azure Security Center](../../security-center/security-center-partner-integration.md) můžete integrovat řešení Microsoftu proti malwaru a partnerům, aby se usnadnilo nasazení a vestavěné detekce (výstrahy a incidenty).
 
 ### <a name="dont-cache-sensitive-content"></a>Neukládat citlivý obsah do mezipaměti
 
-Nepoužívejte v prohlížeči ukládání citlivého obsahu do mezipaměti. Prohlížeče můžou ukládat informace pro ukládání do mezipaměti a historii. Soubory uložené v mezipaměti se ukládají do složky, jako je například složka dočasných souborů Internetu, v případě aplikace Internet Explorer. Když se tyto stránky označují znovu, prohlížeč zobrazí stránky ze své mezipaměti. Pokud se uživateli zobrazí citlivé informace (adresa, podrobnosti kreditní karty, číslo sociálního pojištění, uživatelské jméno), mohou být informace uloženy v mezipaměti prohlížeče a lze je získat prozkoumáním mezipaměti prohlížeče nebo pouhým kliknutím na prohlížeč **. Tlačítko zpět**
+Nepoužívejte v prohlížeči ukládání citlivého obsahu do mezipaměti. Prohlížeče můžou ukládat informace pro ukládání do mezipaměti a historii. Soubory uložené v mezipaměti se ukládají do složky, jako je například složka dočasných souborů Internetu, v případě aplikace Internet Explorer. Když se tyto stránky označují znovu, prohlížeč zobrazí stránky ze své mezipaměti. Pokud se uživateli zobrazí citlivé informace (adresa, podrobnosti kreditní karty, číslo sociálního pojištění, uživatelské jméno), mohou být informace uloženy v mezipaměti prohlížeče a lze je získat prozkoumáním mezipaměti prohlížeče nebo pouhým stisknutím tlačítka **zpět** v prohlížeči.
 
 ## <a name="verification"></a>Ověření
 Fáze ověření zahrnuje komplexní úsilí, které zajistí, že kód bude vyhovovat zabezpečení a ochraně osobních údajů principy, které byly vytvořeny v předchozích fázích.
@@ -134,13 +134,13 @@ Proveďte DAST, nejlépe s asistencí odborníka na zabezpečení ( [Tester pro 
 
 V případě neočekávaného [testování](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/)vystavíte selhání programu záměrně, když do aplikace zavedete poškozená nebo náhodná data. Selhání programu pomáhá odhalit potenciální problémy zabezpečení před vydáním aplikace.
 
-[Detekce rizik](https://docs.microsoft.com/security-risk-detection/) se zabezpečením je jedinečná služba pro nenáročné testování Microsoftu pro nalezení chyb kritických pro zabezpečení v softwaru.
+[Detekce rizik se zabezpečením](https://docs.microsoft.com/security-risk-detection/) je jedinečná služba pro nenáročné testování Microsoftu pro nalezení chyb kritických pro zabezpečení v softwaru.
 
 ### <a name="conduct-attack-surface-review"></a>Provést kontrolu na Surface útoků
 
 Kontrola prostoru pro útoky po dokončení kódu pomáhá zajistit, že byly zváženy všechny změny návrhu nebo implementace v aplikaci nebo systému. Pomáhá zajistit, že všechny nové vektory útoku, které byly vytvořeny v důsledku změn, včetně modelů hrozeb, byly zkontrolovány a omezeny.
 
-Pomocí prohledávání aplikace můžete vytvořit obrázek prostoru pro útoky. Microsoft nabízí analytický nástroj pro útoky, který se nazývá [analyzátor Surface útoků](https://www.microsoft.com/download/details.aspx?id=24487). Můžete si vybrat z mnoha komerčních nástrojů pro kontrolu a testování ohrožení zabezpečení, včetně [projektu proxy útoku OWASP zovaný](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project), [Arachni](http://arachni-scanner.com/), [Skipfish](https://code.google.com/p/skipfish/)a [w3af](http://w3af.sourceforge.net/). Tyto skenovací nástroje procházejí vaši aplikaci a mapují části aplikace, které jsou přístupné přes web. Můžete také Hledat v Azure Marketplace podobných vývojářských [nástrojů](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1).
+Pomocí prohledávání aplikace můžete vytvořit obrázek prostoru pro útoky. Microsoft nabízí analytický nástroj pro útoky, který se nazývá [analyzátor Surface útoků](https://www.microsoft.com/download/details.aspx?id=24487). Můžete si vybrat z mnoha komerčních nástrojů pro kontrolu a testování ohrožení zabezpečení, včetně [projektu proxy útoku OWASP zovaný](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project), [Arachni](http://arachni-scanner.com/), [Skipfish](https://code.google.com/p/skipfish/)a [w3af](http://w3af.sourceforge.net/). Tyto skenovací nástroje procházejí vaši aplikaci a mapují části aplikace, které jsou přístupné přes web. Můžete také Hledat v Azure Marketplace podobných [vývojářských nástrojů](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1).
 
 ### <a name="perform-security-penetration-testing"></a>Provádění testování průniku zabezpečení
 
@@ -148,9 +148,9 @@ Zajištění zabezpečení vaší aplikace je důležité jako testování jaké
 
 ### <a name="run-security-verification-tests"></a>Spustit ověřovací testy zabezpečení
 
-[Zabezpečená sada DevOps pro Azure](https://azsk.azurewebsites.net/index.html) (AzSK) obsahuje SVTs pro několik služeb platformy Azure. Tyto SVTs pravidelně spouštíte, abyste měli jistotu, že vaše předplatné Azure a různé prostředky, které tvoří vaši aplikaci, jsou v zabezpečeném stavu. Tyto testy můžete automatizovat také pomocí funkce rozšíření průběžná integrace/průběžné nasazování (CI/CD) v AzSK, která zpřístupňuje SVTs jako rozšíření sady Visual Studio.
+[Sada Secure DevOps Kit for Azure](https://azsk.azurewebsites.net/index.html) (AzSK) obsahuje SVTs pro několik služeb platformy Azure. Tyto SVTs pravidelně spouštíte, abyste měli jistotu, že vaše předplatné Azure a různé prostředky, které tvoří vaši aplikaci, jsou v zabezpečeném stavu. Tyto testy můžete automatizovat také pomocí funkce rozšíření průběžná integrace/průběžné nasazování (CI/CD) v AzSK, která zpřístupňuje SVTs jako rozšíření sady Visual Studio.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V následujících článcích doporučujeme kontrolu zabezpečení a aktivity, které vám pomůžou navrhovat a nasazovat zabezpečené aplikace.
 
 - [Návrh zabezpečených aplikací](secure-design.md)

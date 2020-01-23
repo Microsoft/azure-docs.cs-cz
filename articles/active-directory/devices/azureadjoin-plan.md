@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43e50f8787516b1877f7867419b6edfd819ad158
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 67c42de09c75b7dd6737b80071f1f6eba094b132
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746044"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512415"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Postupy: plánování implementace služby Azure AD JOIN
 
@@ -129,7 +129,7 @@ Zkontrolujte podporované a nepodporované zásady, abyste zjistili, jestli mů�
 
 Pokud vaše řešení pro správu mobilních zařízení není dostupné prostřednictvím Galerie aplikací Azure AD, můžete ho přidat za proces popsaný v [Azure Active Directory integraci s MDM](https://docs.microsoft.com/windows/client-management/mdm/azure-active-directory-integration-with-mdm). 
 
-Prostřednictvím spolusprávy můžete pomocí nástroje SCCM spravovat určité aspekty vašich zařízení, zatímco zásady se doručují prostřednictvím platformy MDM. Microsoft Intune umožňuje spolusprávu pomocí nástroje SCCM. Další informace najdete v tématu [společná správa zařízení s Windows 10](https://docs.microsoft.com/sccm/core/clients/manage/co-management-overview). Pokud používáte jiný produkt MDM než Intune, obraťte se prosím na svého poskytovatele MDM v příslušných scénářích spolusprávy.
+Prostřednictvím spolusprávy můžete pomocí nástroje SCCM spravovat určité aspekty vašich zařízení, zatímco zásady se doručují prostřednictvím platformy MDM. Microsoft Intune umožňuje spolusprávu pomocí nástroje SCCM. Další informace o společné správě zařízení s Windows 10 najdete v tématu [co je spoluspráva?](https://docs.microsoft.com/configmgr/core/clients/manage/co-management-overview). Pokud používáte jiný produkt MDM než Intune, obraťte se prosím na svého poskytovatele MDM v příslušných scénářích spolusprávy.
 
 **Doporučení:** Zvažte správu jenom MDM pro zařízení připojená k Azure AD.
 

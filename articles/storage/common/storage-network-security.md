@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 01/21/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 28e3f276da231ef0186dba8ecd9c064cdd10a5a8
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 2c3b329aa767fbe9795c90ca236008210576fe12
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281219"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514727"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace virtuálních sítí a bran firewall Azure Storage
 
@@ -380,7 +380,7 @@ Pokud povolíte nastavení **Povolit důvěryhodné služby společnosti Microso
 | Synchronizace souborů Azure          | Microsoft.StorageSync      | Umožňuje transformovat souborový server Prem na mezipaměť pro sdílené složky Azure. Povoluje se synchronizace více webů, rychlé zotavení po havárii a zálohování na straně cloudu. [Další informace](../files/storage-sync-files-planning.md) |
 | Azure HDInsight          | Microsoft.HDInsight        | Zřídí počáteční obsah výchozího systému souborů pro nový cluster HDInsight. [Další informace](/azure/hdinsight/hdinsight-hadoop-use-blob-storage). |
 | Export pro import do Azure      | Microsoft.ImportExport     | Umožňuje importovat data do Azure a exportovat data z Azure pomocí služby pro import a export. [Další informace](/azure/storage/common/storage-import-export-service).  |
-| Azure Monitor            | Microsoft.Insights         | Umožňuje zápis dat do účtu úložiště zabezpečené monitorování [Další](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security). |
+| Azure Monitor            | Microsoft.Insights         | Umožňuje zápis dat monitorování do zabezpečeného účtu úložiště, včetně protokolů diagnostiky prostředků, Azure Active Directory protokolů pro přihlášení a auditu a protokolů Microsoft Intune. [Další informace](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security). |
 | Sítě Azure         | Microsoft.Network          | Store a analyzovat protokoly přenosů sítě. [Další informace](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview). |
 | Azure Site Recovery      | Microsoft.SiteRecovery     | Povolení replikace pro zotavení po havárii virtuálních počítačů Azure s IaaS při použití mezipaměti, zdrojového nebo cílového účtu úložiště podporujícího bránu firewall  [Další informace](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication). |
 

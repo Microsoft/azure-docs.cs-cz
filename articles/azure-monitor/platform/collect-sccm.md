@@ -7,22 +7,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: 2262c951b52ef58006bacde4be76dc92468a20ba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5b5af034b116ec1cdcefc811630683c9f560c840
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364046"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513645"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Připojit Configuration Manager k Azure Monitor
-Prostředí System Center Configuration Manager můžete připojit, aby se Azure Monitor synchronizovaná data kolekce zařízení a odkazovalo na tyto kolekce v Azure Monitor a Azure Automation.  
+Prostředí Microsoft Endpoint Configuration Manager můžete připojit, aby se Azure Monitor synchronizovaná data kolekce zařízení a odkazovala na tyto kolekce v Azure Monitor a Azure Automation.  
 
 ## <a name="prerequisites"></a>Požadavky
 
-Azure Monitor podporuje System Center Configuration Manager aktuální větev verze 1606 a vyšší.
+Azure Monitor podporuje Configuration Manager aktuální větev verze 1606 a vyšší.
 
 >[!NOTE]
->Funkce pro připojení Configuration Manager k pracovnímu prostoru Log Analytics je volitelná a není ve výchozím nastavení povolená. Tuto funkci musíte před použitím povolit. Další informace naleznete v části [Enable optional features from updates](https://docs.microsoft.com/sccm/core/servers/manage/install-in-console-updates#bkmk_options).
+>Funkce pro připojení Configuration Manager k pracovnímu prostoru Log Analytics je volitelná a není ve výchozím nastavení povolená. Tuto funkci musíte před použitím povolit. Další informace naleznete v části [Enable optional features from updates](https://docs.microsoft.com/configmgr/core/servers/manage/install-in-console-updates#bkmk_options).
 
 ## <a name="configuration-overview"></a>Přehled konfigurace
 
@@ -67,7 +67,7 @@ Přečtěte si článek [připojení počítačů s Windows k Azure monitor v Az
 ## <a name="connect-configuration-manager-to-log-analytics-workspace"></a>Připojení Configuration Manager k pracovnímu prostoru Log Analytics
 
 >[!NOTE]
-> Aby bylo možné přidat Log Analytics připojení, musí mít Configuration Manager prostředí pro online režim nakonfigurovaný [spojovací bod služby](https://docs.microsoft.com/sccm/core/servers/deploy/configure/about-the-service-connection-point) .
+> Aby bylo možné přidat Log Analytics připojení, musí mít Configuration Manager prostředí pro online režim nakonfigurovaný [spojovací bod služby](https://docs.microsoft.com/configmgr/core/servers/deploy/configure/about-the-service-connection-point) .
 
 > [!NOTE]
 > Lokalitu nejvyšší úrovně ve vaší hierarchii musíte připojit k Azure Monitor. Pokud k Azure Monitor připojíte samostatnou primární lokalitu a potom do svého prostředí přidáte lokalitu centrální správy, je nutné odstranit a znovu vytvořit připojení v rámci nové hierarchie.

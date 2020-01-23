@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 01/21/2020
-ms.openlocfilehash: b8cf7992617b7263b86fd98e5def8be1d43ca68c
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: fb9b665f5631e6992966679b1dc0864539fde543
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293364"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514551"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Co je Azure SQL Database spravovaná instance?
 
@@ -72,7 +72,7 @@ Klíčové funkce spravovaných instancí jsou uvedené v následující tabulce
 
 ## <a name="vcore-based-purchasing-model"></a>Nákupní model založený na virtuálních jádrech
 
-[Nákupní model založený na Vcore](sql-database-service-tiers-vcore.md) pro spravované instance poskytuje flexibilitu, kontrolu, transparentnost a snadný způsob, jak převést požadavky na místní úlohy do cloudu. Tento model umožňuje změnit výpočetní prostředky, paměť a úložiště na základě potřeb vašich úloh. VCore model má taky nárok na úsporu až 30 procent s [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/).
+[Nákupní model založený na Vcore](sql-database-service-tiers-vcore.md) pro spravované instance poskytuje flexibilitu, kontrolu, transparentnost a snadný způsob, jak převést požadavky na místní úlohy do cloudu. Tento model umožňuje změnit výpočetní prostředky, paměť a úložiště na základě potřeb vašich úloh. VCore model má taky nárok na úspory až 55 procent a [Zvýhodněné hybridní využití Azure SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 V modelu vCore si můžete vybrat mezi generacemi hardwaru.
 

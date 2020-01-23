@@ -3,12 +3,12 @@ title: Funkce šablon – prostředky
 description: Popisuje funkce pro použití v šabloně Azure Resource Manageru k načtení hodnoty o prostředcích.
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: 56ace8c75ea27eb4d730b1630115b6fcbdc3f575
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 1b860876b0d8967a6a3f90c7bb68f20d6c442109
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310520"
+ms.locfileid: "76513860"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Prostředek funkce pro šablony Azure Resource Manageru
 
@@ -32,7 +32,7 @@ Chcete-li získat hodnoty z parametrů, proměnných nebo aktuální nasazení, 
 extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)
 ```
 
-Vrátí ID prostředku pro [prostředek rozšíření](extension-resource-types.md), což je typ prostředku, který se použije na jiný prostředek, aby se mohl přidat k jeho funkcím.
+Vrátí ID prostředku pro [prostředek rozšíření](../management/extension-resource-types.md), což je typ prostředku, který se použije na jiný prostředek, aby se mohl přidat k jeho funkcím.
 
 ### <a name="parameters"></a>Parametry
 
@@ -536,7 +536,7 @@ Například:
 
 ### <a name="get-managed-identity"></a>Získat spravovanou identitu
 
-[Spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md) jsou [typy prostředků rozšíření](extension-resource-types.md) , které se pro některé prostředky vytvoří implicitně. Vzhledem k tomu, že spravovaná identita není explicitně definována v šabloně, musíte odkazovat na prostředek, na který je identita použita. Pomocí `Full` můžete získat všechny vlastnosti, včetně implicitně vytvořené identity.
+[Spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md) jsou [typy prostředků rozšíření](../management/extension-resource-types.md) , které se pro některé prostředky vytvoří implicitně. Vzhledem k tomu, že spravovaná identita není explicitně definována v šabloně, musíte odkazovat na prostředek, na který je identita použita. Pomocí `Full` můžete získat všechny vlastnosti, včetně implicitně vytvořené identity.
 
 Pokud například chcete získat ID tenanta pro spravovanou identitu, která se používá pro sadu škálování virtuálního počítače, použijte:
 

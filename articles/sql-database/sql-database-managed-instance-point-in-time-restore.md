@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: b106b1da5d012309e8d92c8e9555ee3982602e12
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 9ed694ec524c4e3e033c3139735e8e079141ec4a
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707652"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76515118"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>Obnovení databáze SQL ve spravované instanci k předchozímu bodu v čase
 
@@ -58,7 +58,7 @@ Obnovte stávající databázi do stejné instance pomocí Azure Portal, PowerSh
 
 # <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com). 
 2. Přejít do spravované instance a vybrat databázi, kterou chcete obnovit.
 3. Na stránce databáze vyberte **obnovit** :
 
@@ -136,7 +136,7 @@ Podrobné vysvětlení dostupných parametrů naleznete v dokumentaci k rozhran�
 
 ## <a name="restore-a-deleted-database"></a>Obnovení odstraněné databáze
 
-Obnovení odstraněné databáze lze provést pouze pomocí prostředí PowerShell. Databázi lze obnovit do stejné instance nebo jiné instance.
+Obnovení odstraněné databáze se dá provést pomocí PowerShellu nebo webu Azure Portal. k tomu prosím použijte tento dokument na webu [Azure Portal](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#managed-instance-database-1). Databázi lze obnovit do stejné instance nebo jiné instance.
 
 Chcete-li obnovit odstraněnou databázi pomocí prostředí PowerShell, zadejte hodnoty parametrů do následujícího příkazu. Pak spusťte příkaz:
 

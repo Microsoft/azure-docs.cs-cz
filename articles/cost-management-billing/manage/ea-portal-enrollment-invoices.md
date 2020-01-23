@@ -4,16 +4,16 @@ description: V tomto článku je vysvětlená správa faktury za Azure Enterpris
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/02/2020
+ms.date: 01/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 95df54eb096588fe23da87f7334f9d693e54cf9d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7cb2966c94485d0a05febf3085ab367fcba97434
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75992319"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514353"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Faktury za registraci do Azure Enterprise
 
@@ -370,7 +370,7 @@ Při modelování pravidel zaokrouhlování a převodu používaných na portál
 | Zaokrouhlování cen (na 2 desetinná místa) | =MROUND({_zdroj_}, 0.02) |
 | Zaokrouhlování cen (na 0 desetinných míst) | =MROUND({_zdroj_}, 2) |
 
-**Tabulka**  **2**  **– Převod hodin cloudových služeb a virtuálních počítačů**
+**Tabulka** **2** **– Převod cloudových služeb a hodin virtuálních počítačů**
 
 ### <a name="conversion-between-download-usage-file-and-usage-summary-portal-view"></a>Převod mezi souborem s informacemi o využití ke stažení a zobrazením Souhrn využití na portálu
 
@@ -417,7 +417,7 @@ Následující tabulka ukazuje mapování geografických oblastí a oblastí pro
 | Zóna 2 | Asie a Tichomoří – východ <br> Asie a Tichomoří – jihovýchod <br> Japonsko – východ <br> Japonsko – západ <br> Austrálie – východ <br> Austrálie – jihovýchod | Asie a Tichomoří <br> Japonsko <br> Latinská Amerika <br> Střední východ / Afrika <br> Austrálie – východ <br> Austrálie – jihovýchod |
 | Zóna 3 | Brazílie – jih |   |
 
-**Tabulka**  **4**  **– přenos dat oblasti**
+**Tabulka** **4** **– Oblasti pro přenos dat**
 
 Za výchozí přenos dat mezi službami (např. mezi O365 a Azure) hostovanými ve stejném datacentru se neúčtují žádné poplatky.
 
@@ -557,7 +557,7 @@ Další podrobnosti najdete v těchto zdrojích dalších informací. Tyto soubo
 | [**Friendly Service Names**](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) (Popisné názvy služeb) | Obsahuje seznam všech aktivních služeb společně s kategorií služby, popisným názvem služby, názvem a číslem produktu závazku, názvem a číslem části spotřeby, měrnými jednotkami a převodním koeficientem mezi nahlášeným využitím a zobrazeným využitím na portálu Enterprise Portal. | Friendly\_Service\_Names.xlsx |
 | [**Service Download Fields**](https://azurepricing.blob.core.windows.net/supplemental/Service_Download_Fields.xlsx) (Pole ve stažených informacích o službách) | Tato tabulka obsahuje seznam všech možných kombinací polí souvisejících se službami v sestavě využití ke stažení. | Service\_Download\_Fields.xlsx |
 
-**Tabulka**  **5**  **– Další zdroje informací**
+**Tabulka** **5** **– Další zdroje informací**
 
 ## <a name="power-bi-reporting"></a>Generování sestav Power BI
 
@@ -585,7 +585,7 @@ Pokud si chcete zaregistrovat bezplatnou zkušební verzi, klikněte na ikonu oz
 1. Zadejte svůj přístupový klíč rozhraní API pro připojení. Klíč pro vaši registraci najdete na portálu [Enterprise Portal](https://ea.azure.com/?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26). Klikněte na **Přihlásit se**.
 1. Automaticky se spustí proces importu. Po dokončení se v navigačním podokně zobrazí nový řídicí panel, sestava a model. Kliknutím na řídicí panel zobrazíte importovaná data.
 
-Další informace o možnostech vygenerování klíče rozhraní API pro vaši registraci najdete v souboru nápovědy k sestavám rozhraní API na portálu [Enterprise Portal](https://ea.azure.com/?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26). Pokud chcete získat další informace o novém balíčku obsahu, stáhněte si dokument o [Microsoft Azure Consumption Insights](https://automaticbillingspec.blob.core.windows.net/spec/Microsoft%20Azure%20Consumption%20Insights.docx?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26).
+Další informace o možnostech vygenerování klíče rozhraní API pro vaši registraci najdete v souboru nápovědy k sestavám rozhraní API na portálu [Enterprise Portal](https://ea.azure.com/?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26). Další informace o novém balíčku obsahu najdete v tématu [Microsoft Azure Consumption Insights](/power-bi/desktop-connect-azure-cost-management).
 
 ### <a name="to-access-the-legacy-power-bi-ea-content-pack"></a>Získání přístupu ke starší verzi balíčku obsahu EA pro Power BI:
 

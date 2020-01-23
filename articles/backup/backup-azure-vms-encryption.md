@@ -3,12 +3,12 @@ title: Zálohování a obnovení šifrovaných virtuálních počítačů Azure
 description: Popisuje postup zálohování a obnovení šifrovaných virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 2ce0453c0b57ab682fa102f76c31afa567d80778
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 754a0899d25f2672c6a66eeafe5013f98b7a8f4d
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449970"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513775"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Zálohování a obnovení šifrovaného virtuálního počítače Azure
 
@@ -53,7 +53,6 @@ Než začnete, udělejte toto:
 Kromě toho je možné, že v některých případech budete muset udělat několik věcí:
 
 - **Instalace agenta virtuálního počítače na virtuální počítač**: Azure Backup zálohuje virtuální počítače Azure tím, že nainstaluje rozšíření na agenta virtuálního počítače Azure, který běží na počítači. Pokud byl váš virtuální počítač vytvořený z image Azure Marketplace, Agent se nainstaluje a spustí. Pokud vytvoříte vlastní virtuální počítač nebo migrujete místní počítač, možná budete muset [agenta nainstalovat ručně](backup-azure-arm-vms-prepare.md#install-the-vm-agent).
-- **Explicitně povolit odchozí přístup**: obecně není nutné explicitně povolit odchozí síťový přístup k virtuálnímu počítači Azure, aby mohl komunikovat s Azure Backup. U některých virtuálních počítačů ale může docházet k problémům s připojením a při pokusu o připojení se zobrazí chyba **ExtensionSnapshotFailedNoNetwork** . Pokud k tomu dojde, měli byste [výslovně umožnit odchozí přístup](backup-azure-arm-vms-prepare.md#explicitly-allow-outbound-access), takže rozšíření Azure Backup může komunikovat s veřejnými IP adresami Azure pro přenos dat zálohování.
 
 ## <a name="configure-a-backup-policy"></a>Konfigurace zásady zálohování
 

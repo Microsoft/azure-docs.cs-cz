@@ -1,5 +1,5 @@
 ---
-title: Azure Integration Runtime IP adresy
+title: ID adresy modulu Azure Integration Runtime
 description: Zjistěte, které IP adresy musíte povolit příchozí provoz z, aby bylo možné správně nakonfigurovat brány firewall pro zabezpečení síťového přístupu k úložištím dat.
 services: data-factory
 ms.author: abnarain
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
-ms.openlocfilehash: 1a2947eee31ccb193c8a81cff86cead577e6810c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: d64475ce524a3e859ed68a46552fedf30068f71d
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863855"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514778"
 ---
-# <a name="azure-integration-runtime-ip-addresses"></a>Azure Integration Runtime IP adresy
+# <a name="azure-integration-runtime-ip-addresses"></a>ID adresy modulu Azure Integration Runtime
 
 IP adresy, které Azure Integration Runtime používá, závisí na oblasti, ve které se nachází Azure Integration runtime. *Vše* Prostředí Azure Integration runtime, která jsou ve stejné oblasti, používají stejné rozsahy IP adres.
 
@@ -45,9 +45,10 @@ Povolte provoz z IP adres uvedených pro Azure Integration runtime v konkrétní
 | Indie          | Střední Indie       | 52.140.104.128/25,</br>52.140.105.0/26,</br>20.43.121.48/28  |
 | Japonsko          | Japonsko – východ          | 20.43.64.128/25,</br>20.43.65.0/26,</br>13.78.109.192/28     |
 | Korea          | Korea – střed       | 20.41.64.128/25,</br>20.41.65.0/26,</br>52.231.20.64/28      |
+| Jihoafrická republika   | Jižní Afrika – sever  | 102.133.124.104/29,</br>102.133.216.128/25,</br>102.133.217.0/26 |
 | Spojené království | Spojené království – jih            | 51.104.24.128/25,</br>51.104.25.0/26,</br>51.104.9.32/28     |
 | Spojené státy  | Střední USA          | 20.37.154.0/23,</br>20.37.156.0/26,</br>20.44.10.64/28       |
-|                | Východní USA             | 20.42.2.0/23,</br>20.42.4.0/26,</br>40.71.14.32/28           |
+|                | Východ USA             | 20.42.2.0/23,</br>20.42.4.0/26,</br>40.71.14.32/28           |
 |                | USA – východ 2            | 20.41.2.0/23,</br>20.41.4.0/26,</br>20.44.17.80/28           |
 |                | Východní USA 2 EUAP      | 20.39.8.128/26,</br>20.39.8.96/27,</br>40.75.35.144/28       |
 |                | Středoseverní USA    | 40.80.185.0/25,</br>40.80.185.128/26,</br>52.162.111.48/28   |

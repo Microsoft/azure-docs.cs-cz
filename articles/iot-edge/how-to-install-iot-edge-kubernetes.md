@@ -8,16 +8,16 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7f3627a79cad6833b5fb20f3c829c1e3bcbd9c3e
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: d11d23cf7d96482028a9d3738196fc5a787fec91
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457346"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510205"
 ---
 # <a name="how-to-install-iot-edge-on-kubernetes-preview"></a>Postup instalace IoT Edge v Kubernetes (Preview)
 
-IoT Edge můžete integrovat s Kubernetes a používat ji jako odolnou, vysoce dostupnou infrastrukturu infrastruktury. Registruje IoT Edge *vlastní definice prostředků* (CRD) pomocí serveru Kubernetes API. Navíc poskytuje *operátor* (IoT Edge Agent), který slučuje požadovaný stav cloudového řízení s místním stavem clusteru. 
+IoT Edge můžete integrovat s Kubernetes a používat ji jako odolnou, vysoce dostupnou infrastrukturu infrastruktury. Registruje IoT Edge *vlastní definice prostředků* (CRD) pomocí serveru Kubernetes API. Navíc poskytuje *operátor* (IoT Edge Agent), který slučuje požadovaný stav cloudového řízení s místním stavem clusteru.
 
 Doba života modulu je spravovaná plánovačem Kubernetes, který udržuje dostupnost modulu a volí jejich umístění. IoT Edge spravuje platformu hraniční aplikace spuštěnou nahoře a nepřetržitě slučuje požadovaný stav zadaný v IoT Hub se stavem na hraničním clusteru. Model hraniční aplikace je stále známý model založený na IoT Edgech modulech a trasách. Operátor agenta IoT Edge provádí *Automatické* překlady konstrukcí Kubernetes Native, jako jsou lusky, nasazení, služby atd.
 
@@ -34,13 +34,13 @@ Každá součást nasazení Edge je vymezená na obor názvů Kubernetes specifi
 
 ### <a name="prerequisites"></a>Požadavky
 
-* Kubernetes 1,10 nebo novější. Pokud nemáte existující instalaci clusteru, můžete použít [Minikube](https://kubernetes.io/docs/setup/minikube/) pro místní Clusterové prostředí. 
+* Kubernetes 1,10 nebo novější. Pokud nemáte existující instalaci clusteru, můžete použít [Minikube](https://kubernetes.io/docs/setup/minikube/) pro místní Clusterové prostředí.
 
 * [Helm](https://helm.sh/docs/using_helm/#quickstart-guide), správce balíčků Kubernetes.
 
 * [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) pro zobrazení a interakci s clusterem.
 
-### <a name="setup-steps"></a>Kroky pro instalaci
+### <a name="setup-steps"></a>Postup nastavení
 
 1. Spustit **Minikube**
 
@@ -71,6 +71,7 @@ Každá součást nasazení Edge je vymezená na obor názvů Kubernetes specifi
     --set "deviceConnectionString=replace-with-device-connection-string" \
     edgek8s/edge-kubernetes
     ```
+
 1. Otevření řídicího panelu Kubernetes v prohlížeči
 
     ```shell
@@ -93,6 +94,6 @@ helm delete --purge k8s-edge1
 
 ## <a name="next-steps"></a>Další kroky
 
-### <a name="deploy-as-a-highly-available-edge-gateway"></a>Nasazení jako hraniční brány s vysokou dostupností 
+### <a name="deploy-as-a-highly-available-edge-gateway"></a>Nasazení jako hraniční brány s vysokou dostupností
 
 Hraniční zařízení v clusteru Kubernetes se dá použít jako brána IoT pro podřízená zařízení. Dá se nakonfigurovat tak, aby byl odolný vůči selhání uzlu a poskytoval tak vysokou dostupnost nasazení Edge. V tomto scénáři se dozvíte v tomto [podrobném návodu](https://github.com/Azure-Samples/iotedge-gateway-on-kubernetes) k použití IoT Edge.

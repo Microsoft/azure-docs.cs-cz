@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0eb8398decd1a447d0676195d6369cdc7e791e40
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8323333f378f95f0a640313524f198bdd00dc340
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848489"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512568"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>Dokončení nasazení ověřování pomocí hesla
 
@@ -67,7 +67,7 @@ Metody ověřování s neheslem od Microsoftu umožňují různé scénáře. Po
 
 **Registrace zařízení** : Pokud chcete používat ověřovací aplikaci pro ověřování bez hesla, musí být zařízení zaregistrované v TENANTOVI Azure AD a nemůže být sdíleným zařízením. Zařízení se dá zaregistrovat jenom v jednom tenantovi. Tento limit znamená, že pro přihlášení telefonem pomocí ověřovací aplikace se podporuje jenom jeden pracovní nebo školní účet.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Organizace musí před zahájením nasazení s neplatným heslem splňovat následující požadavky.
 
@@ -108,7 +108,7 @@ Povolení přihlášení Windows 10 pomocí klíčů zabezpečení FIDO2 vyžadu
    - Doporučovaná možnost nasazení Intune.
 - [Povolení poskytovatele přihlašovacích údajů pomocí zřizovacího balíčku](howto-authentication-passwordless-security-key-windows.md#enable-with-a-provisioning-package)
    - Pokud není nasazení Intune možné, musí správci nasadit balíček do každého počítače, aby se povolily funkce poskytovatele přihlašovacích údajů. Instalaci balíčku lze provést pomocí jedné z následujících možností:
-      - Zásady skupiny nebo System Center Configuration Manager (SCCM)
+      - Zásady skupiny nebo Configuration Manager
       - Místní instalace na počítači s Windows 10
 
 ### <a name="register-security-keys"></a>Registrovat klíče zabezpečení

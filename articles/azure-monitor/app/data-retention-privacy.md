@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/29/2019
-ms.openlocfilehash: aacd41debfa8810facc41896051767eb4ab6e3b6
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: b4550f55d160a77c2fb149dd509ca1cfad784f79
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052492"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513452"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchovávání a ukládání dat v Application Insights
 
@@ -53,13 +53,13 @@ Existují tři zdroje dat:
 Hlavní kategorie jsou:
 
 * [Telemetrie webového serveru](../../azure-monitor/app/asp-net.md) – požadavky HTTP.  Identifikátor URI, čas potřebný ke zpracování žádosti, kód odpovědi, IP adresa klienta. `Session id`.
-* [Webové stránky](../../azure-monitor/app/javascript.md) – počty stránek, uživatelů a relací. Doba načítání stránky Výjimek. Volání AJAX.
+* [Webové stránky](../../azure-monitor/app/javascript.md) – počty stránek, uživatelů a relací. Doba načítání stránky Výjimky. Volání AJAX.
 * Čítače výkonu – paměť, procesor, vstup/výstup, obsazenost sítě.
 * Kontext klienta a serveru – operační systém, národní prostředí, typ zařízení, prohlížeč a rozlišení obrazovky.
 * [Výjimky](../../azure-monitor/app/asp-net-exceptions.md) a havárie – **výpisy zásobníku**, `build id`, typ procesoru. 
 * [Závislosti](../../azure-monitor/app/asp-net-dependencies.md) – volání externích služeb, jako jsou REST, SQL a AJAX. Identifikátor URI nebo připojovací řetězec, doba trvání, úspěch, příkaz
 * [Testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) – doba trvání testu a kroky, odpovědi.
-* [Protokoly trasování](../../azure-monitor/app/asp-net-trace-logs.md) a [vlastní telemetrie](../../azure-monitor/app/api-custom-events-metrics.md)  - **vše, co kódujete do protokolů nebo telemetrie**.
+* [Protokoly trasování](../../azure-monitor/app/asp-net-trace-logs.md) a [vlastní telemetrie](../../azure-monitor/app/api-custom-events-metrics.md) - **vše, co kódujete do protokolů nebo telemetrie**.
 
 [Další podrobnosti](#data-sent-by-application-insights).
 
@@ -84,7 +84,7 @@ Data uchovávaná déle než 90 dnů se účtují za přidání poplatků. Pře�
 
 Agregovaná data (tj. počty, průměry a další statistická data, která vidíte v Průzkumníkovi metrik) se uchovávají po dobu 1 minuty po 90 dnech.
 
-[Snímky ladění](../../azure-monitor/app/snapshot-debugger.md) se ukládají po dobu 15 dnů. Tyto zásady uchovávání informací se nastavují na základě jednotlivých aplikací. Pokud potřebujete tuto hodnotu zvýšit, můžete požádat o zvýšení otevřením případu podpory v Azure Portal.
+[Snímky ladění](../../azure-monitor/app/snapshot-debugger.md) se ukládají po dobu 15 dnů. Tyto zásady uchování je nastavena na základě jednotlivých aplikací. Pokud je potřeba tuto hodnotu zvýšit, můžete požádat o zvýšení tak, že otevřete případ podpory na webu Azure Portal.
 
 ## <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
 Data jsou viditelná pro vás a v případě, že máte účet organizace, členové týmu. 
@@ -118,7 +118,7 @@ Pokud sdílíte kód s jinými projekty, nezapomeňte odebrat klíč instrumenta
 Všechna data jsou šifrovaná v klidovém stavu a pohyb mezi datovými centry.
 
 #### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>Jsou data zašifrovaná při přenosu z mé aplikace do Application Insights servery?
-Ano, používáme protokol HTTPS k posílání dat na portál prakticky ze všech sad SDK, včetně webových serverů, zařízení a webových stránek HTTPS. Jedinou výjimkou jsou data odesílaná z jednoduchých webových stránek HTTP.
+Ano, používáme protokol HTTPS k posílání dat na portál prakticky ze všech sad SDK, včetně webových serverů, zařízení a webových stránek HTTPS. 
 
 ## <a name="does-the-sdk-create-temporary-local-storage"></a>Vytváří SDK dočasné místní úložiště?
 
@@ -179,7 +179,7 @@ Ve výchozím nastavení se `%TEMP%/appInsights-node{INSTRUMENTATION KEY}` použ
 
 ## <a name="how-do-i-send-data-to-application-insights-using-tls-12"></a>Návody posílat data Application Insights pomocí TLS 1,2?
 
-Aby se zajistilo zabezpečení dat při přenosu do koncových bodů Application Insights, důrazně doporučujeme zákazníkům nakonfigurovat, aby používali aspoň protokol TLS (Transport Layer Security) 1,2. Zjistili jsme, že starší verze TLS/SSL (Secure Sockets Layer) (SSL) jsou zranitelné a i když stále fungují k tomu, aby se zajistila zpětná kompatibilita, **nedoporučují**se a odvětví se rychle přesouvá na zrušení podpory těchto starších verzí. protokolů. 
+Aby se zajistilo zabezpečení dat při přenosu do koncových bodů Application Insights, důrazně doporučujeme zákazníkům nakonfigurovat, aby používali aspoň protokol TLS (Transport Layer Security) 1,2. Starší verze z protokolu TLS/Secure Sockets Layer (SSL) bylo zjištěno ohrožen a stále aktuálně fungují povolit zpětnou kompatibilitu, ale jsou **ale nedoporučený krok**, a oboru je rychle se měnící spustit metodu Abandon podpory pro tyto starší protokoly. 
 
 [Rada standardů zabezpečení PCI](https://www.pcisecuritystandards.org/) nastavila [konečný termín 30. června 2018](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) pro zakázání starších verzí TLS/SSL a upgradování na bezpečnější protokoly. Až Azure sníží podporu starší verze, pokud vaše aplikace nebo klienti nemůžou komunikovat přes aspoň protokol TLS 1,2, nebudete moct odesílat data Application Insights. Přístup, který jste probrali k otestování a ověření podpory protokolu TLS vaší aplikace, se liší v závislosti na operačním systému nebo platformě a na jazyku nebo architektuře, které vaše aplikace používá.
 
@@ -187,19 +187,19 @@ Nedoporučujeme explicitně nastavovat aplikaci tak, aby používala TLS 1,2, po
 
 ### <a name="platformlanguage-specific-guidance"></a>Doprovodné materiály pro konkrétní platformu nebo jazyk
 
-|Platforma/jazyk | Podpora | Další informace |
+|Platformu nebo jazyk | Podpora | Další informace |
 | --- | --- | --- |
 | Azure App Services  | Podporuje se může vyžadovat konfigurace. | Podpora byla oznámena v dubnu 2018. [Podrobnosti o konfiguraci](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)najdete v oznámení.  |
-| Aplikace Function Azure | Podporuje se může vyžadovat konfigurace. | Podpora byla oznámena v dubnu 2018. [Podrobnosti o konfiguraci](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)najdete v oznámení. |
+| Aplikace Azure Functions | Podporuje se může vyžadovat konfigurace. | Podpora byla oznámena v dubnu 2018. [Podrobnosti o konfiguraci](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)najdete v oznámení. |
 |.NET | Podporováno, konfigurace se liší podle verze. | Podrobné informace o konfiguraci pro .NET 4,7 a starší verze najdete v [těchto pokynech](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12).  |
-|Monitorování stavu | Podporováno, vyžaduje se konfigurace | Monitorování stavu spoléhá na [konfiguraci operačního systému](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)  + [konfiguraci rozhraní .NET](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) pro podporu TLS 1,2.
+|Monitorování stavu | Podporováno, vyžaduje se konfigurace | Monitorování stavu spoléhá na [konfiguraci operačního systému](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [konfiguraci rozhraní .NET](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) pro podporu TLS 1,2.
 |Node.js |  V 10.5.0 může být vyžadována konfigurace, která je podporována. | Pro jakoukoliv konfiguraci specifickou pro aplikaci použijte [oficiální dokumentaci k Node. js TLS/SSL](https://nodejs.org/api/tls.html) . |
 |Java | Podpora JDK pro TLS 1,2 byla přidána do [JDK 6 aktualizace 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) a [JDK 7](https://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html). | JDK 8 používá standardně [TLS 1,2](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default).  |
-|Linux | Distribuce systému Linux se obvykle spoléhají na [OpenSSL](https://www.openssl.org) pro podporu TLS 1,2.  | Zkontrolujte [OpenSSL protokolu změn](https://www.openssl.org/news/changelog.html) a potvrďte, že je podporovaná vaše verze OpenSSL.|
-| Windows 8,0 – 10 | Podporované a povolené ve výchozím nastavení. | Potvrďte, že stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).  |
-| Windows Server 2012 – 2016 | Podporované a povolené ve výchozím nastavení. | Potvrzení, že stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
-| Windows 7 SP1 a Windows Server 2008 R2 SP1 | Podporované, ale nejsou ve výchozím nastavení povolené. | Podrobnosti o tom, jak povolit, najdete na stránce [nastavení registru TLS (Transport Layer Security)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) .  |
-| Windows Server 2008 SP2 | Podpora TLS 1,2 vyžaduje aktualizaci. | Pokud [chcete přidat podporu pro TLS 1,2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) ve Windows serveru 2008 SP2, viz aktualizace. |
+|Linux | Linuxové distribuce mají tendenci přináší setrvávání u [OpenSSL](https://www.openssl.org) pro podporu protokolu TLS 1.2.  | Zkontrolujte [protokolu změn OpenSSL](https://www.openssl.org/news/changelog.html) pro potvrzení, vaše verze OpenSSL není podporovaná.|
+| Windows 8.0 10 | Podporované a ve výchozím nastavení povolená. | Potvrďte, že stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).  |
+| Windows Server 2012 – 2016 | Podporované a ve výchozím nastavení povolená. | Potvrďte, že stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
+| Windows 7 SP1 a Windows Server 2008 R2 SP1 | Podporované, ale není ve výchozím nastavení povolená. | Najdete v článku [zabezpečení TLS (Transport Layer), nastavení registru](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) stránku Podrobnosti o tom, jak povolit.  |
+| Windows Server 2008 SP2 | Podpora protokolu TLS 1.2 vyžaduje aktualizaci. | Zobrazit [aktualizace přidává funkce pro protokol TLS 1.2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) v systému Windows Server 2008 SP2. |
 |Windows Vista | Nepodporuje se. | Nevztahuje se
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Ověřte, jakou verzi OpenSSL je vaše distribuce systému Linux spuštěná.
@@ -237,7 +237,7 @@ Sady SDK se mezi platformami liší a je možné nainstalovat několik součást
 | [Přidání sady SDK Application Insights do webového projektu .NET][greenbrown] |ServerContext<br/>Odvodit<br/>Čítače výkonu<br/>Požadavky<br/>**Výjimky**<br/>Session<br/>uživatelů |
 | [Instalace Monitorování stavu ve službě IIS][redfield] |Závislosti<br/>ServerContext<br/>Odvodit<br/>Čítače výkonu |
 | [Přidání sady SDK Application Insights do webové aplikace v jazyce Java][java] |ServerContext<br/>Odvodit<br/>Žádost<br/>Session<br/>uživatelů |
-| [Přidat sadu JavaScript SDK na webovou stránku][client] |Instance třídy ClientContext <br/>Odvodit<br/>Stránka<br/>ClientPerf<br/>Jazyka |
+| [Přidat sadu JavaScript SDK na webovou stránku][client] |Instance třídy ClientContext <br/>Odvodit<br/>Stránka<br/>ClientPerf<br/>Ajax |
 | [Definovat výchozí vlastnosti][apiproperties] |**Vlastnosti** všech standardních a vlastních událostí |
 | [TrackMetric volání][api] |Číselné hodnoty<br/>**Vlastnosti** |
 | [Hovorová stopa *][api] |Název události<br/>**Vlastnosti** |
@@ -260,7 +260,7 @@ Pro [sady SDK pro jiné platformy][platforms]se podívejte na jejich dokumenty.
 | Akce |Název a hodnota události |
 | PageViews |Adresa URL a název stránky nebo název obrazovky |
 | Výkon klienta |Adresa URL/název stránky, čas načtení prohlížeče |
-| Jazyka |Volání HTTP z webové stránky na server |
+| Ajax |Volání HTTP z webové stránky na server |
 | Požadavky |Adresa URL, doba trvání, kód odpovědi |
 | Závislosti |Typ (SQL, HTTP,...), připojovací řetězec nebo identifikátor URI, Sync/Async, Duration, úspěch, příkaz SQL (s Monitorování stavu) |
 | **Výjimky** |Typ, **zpráva**, zásobníky volání, zdrojový soubor, číslo řádku, `thread id` |

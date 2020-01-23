@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 50517db6a5bb1fc458ab2f563e905fca34f70cf4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c0c1a28dc399d3f176f92e656621fec1bc92dbfc
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442070"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513488"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Použití Azure Cosmos DB změnit informační kanál k vizualizaci dat v reálném čase analýzy
 
@@ -93,7 +93,7 @@ Vytvoření prostředků Azure – Azure Cosmos DB, účet úložiště, Centrum
 
 Teď vytvoříte kolekci, podržte událostí webu elektronického obchodování. Když uživatel zobrazí položka, přidá položku do jejich košíku nebo nákupy položky, kolekce se zobrazí záznam, který se týká také akce ("Zobrazit", "Přidání" nebo "koupit"), název položky ověřovaného cena související položky a identifikační číslo uživatele košíku i nvolved.
 
-1. Přejděte na [webu Azure Portal](https://portal.azure.com/) a najít **účet služby Azure Cosmos DB** , který je vytvořil šablonu nasazení.  
+1. Přejít na [Azure Portal](https://portal.azure.com/) a najít **účet Azure Cosmos DB** , který byl vytvořen nasazením šablony.  
 
 2. Z **Průzkumník dat** vyberte **novou kolekci** , vyplňte formulář s následujícími podrobnostmi:  
 
@@ -117,7 +117,7 @@ Teď vytvoříte kolekci, podržte událostí webu elektronického obchodování
 
 ### <a name="get-the-azure-cosmos-db-connection-string"></a>Získání připojovacího řetězce služby Azure Cosmos DB
 
-1. Přejděte na [webu Azure Portal](https://portal.azure.com/) a najít **účet služby Azure Cosmos DB** , který je vytvořil šablonu nasazení.  
+1. Přejít na [Azure Portal](https://portal.azure.com/) a najít **účet Azure Cosmos DB** , který byl vytvořen nasazením šablony.  
 
 2. Přejděte **klíče** podokně zkopírujte primární PŘIPOJOVACÍ řetězec a zkopírovat ho do poznámkového bloku nebo jiného dokumentu, zda bude mít přístup k v rámci testovacího prostředí. Byste měli popsat **připojovací řetězec Cosmos DB**. Budete muset později zkopírujte řetězec do kódu, takže poznamenejte a mějte na paměti, kde jsou ukládání.
 
@@ -177,7 +177,7 @@ Chcete-li zobrazit zpracování kanálu změn nové akce na webu elektronického
  
 6. Počkejte spuštění programu. Hvězdiček znamená, že data se chystá v! Zachovat spuštěný program – je důležité, že velké množství dat shromažďovaných.  
 
-7. Když přejdete na [webu Azure Portal](https://portal.azure.com/) , Cosmos DB účtu v rámci vaší skupiny prostředků, klikněte na **Průzkumník dat**, uvidíte náhodná data naimportovat do vaší  **changefeedlabcollection** .
+7. Pokud přejdete na [Azure Portal](https://portal.azure.com/) , pak na účet Cosmos DB v rámci skupiny prostředků a potom na **Průzkumník dat**, zobrazí se náhodovaná data importovaná v **changefeedlabcollection** .
  
    ![Data generovaná v portálu](./media/changefeed-ecommerce-solution/data-generated-in-portal.png)
 
@@ -185,7 +185,7 @@ Chcete-li zobrazit zpracování kanálu změn nové akce na webu elektronického
 
 Azure Stream Analytics je plně spravovaná Cloudová služba pro zpracování streamovaných dat v reálném čase. V tomto testovacím prostředí použijete stream analytics zpracovávat nové události z centra událostí (například při zobrazit, přidat do košíku nebo položky zakoupili), začlenit tyto události do analýzy dat v reálném čase a odeslat je do Power BI pro vizualizace.
 
-1. Z [webu Azure Portal](https://portal.azure.com/), přejděte do vaší skupiny prostředků klikněte na **streamjob1** (úloha stream analytics, které jste vytvořili prelab).  
+1. Z [Azure Portal](https://portal.azure.com/)přejděte do skupiny prostředků a pak na **streamjob1** (úloha Stream Analytics, kterou jste vytvořili v prelab).  
 
 2. Vyberte **vstupy** jak je znázorněno níže.  
 
@@ -320,7 +320,7 @@ Power BI je sada nástrojů pro obchodní analýzy k analýze dat a sdílet pře
 
 Nyní zjistíte, jak můžete váš nový nástroj pro analýzu dat pro připojení k webu skutečné elektronického obchodování. Aby bylo možné sestavit web elektronického obchodování, použijte databázi Azure Cosmos k uložení seznamu kategorií produktů (ženy, muži, Unisex), katalogu produktů a seznamu nejoblíbenějších položek.
 
-1. Přejděte zpět na [webu Azure Portal](https://portal.azure.com/), pak na vaše **účtu služby Cosmos DB**, klikněte na **Průzkumník dat**.  
+1. Přejděte zpět do [Azure Portal](https://portal.azure.com/)a potom na **účet Cosmos DB**a pak na **Průzkumník dat**.  
 
    Přidat dvě kolekce pod **changefeedlabdatabase** - **produkty** a **kategorie** s kapacitu dlouhodobého úložiště.
 
@@ -390,9 +390,8 @@ Nyní zjistíte, jak můžete váš nový nástroj pro analýzu dat pro připoje
 
 ## <a name="delete-the-resources"></a>Odstranit prostředky
 
-Pokud chcete odstranit prostředky, které jste vytvořili v tomto prostředí, přejděte do skupiny prostředků na [webu Azure Portal](https://portal.azure.com/)a pak vyberte **odstranit skupinu prostředků** v nabídce v horní části stránky a postupujte podle pokynů k dispozici.
+Pokud chcete odstranit prostředky, které jste vytvořili během tohoto testovacího prostředí, přejděte do skupiny prostředků v [Azure Portal](https://portal.azure.com/), v nabídce v horní části stránky vyberte **Odstranit skupinu prostředků** a postupujte podle uvedených pokynů.
 
 ## <a name="next-steps"></a>Další kroky 
   
 * Další informace o kanálu změn najdete v tématu [podpora práce s Změna kanálu ve službě Azure Cosmos DB](change-feed.md) 
-* [Změna kanálu oznámení řešení](change-feed-hl7-fhir-logic-apps.md) zdravotnické organizace pomocí služby Azure Cosmos DB.

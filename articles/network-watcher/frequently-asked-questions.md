@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: 570b8057fc09e3f054152d09467519a167d938e9
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 856c249b72e9e0ff8667d10821ad14b3432b0775
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280777"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509185"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Nejčastější dotazy týkající se Azure Network Watcher
 Služba [azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) poskytuje sadu nástrojů pro monitorování, diagnostiku, zobrazení metrik a povolení nebo zakázání protokolů pro prostředky ve službě Azure Virtual Network. Tento článek obsahuje odpovědi na běžné dotazy týkající se služby.
@@ -75,11 +75,11 @@ Síťové prostředky Azure je možné kombinovat a spravovat prostřednictvím 
 
 Pokud chcete použít účet úložiště s bránou firewall, musíte poskytnout výjimku pro důvěryhodné služby Microsoftu pro přístup k vašemu účtu úložiště:
 
-* Na [stránce s přehledem protokolů toku NSG](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) vyhledejte příslušnou skupinu zabezpečení sítě a zjistěte název účtu úložiště.
-* Zadejte název účtu úložiště do globálního vyhledávání na portálu a přejděte do účtu úložiště.
+* Přejděte do účtu úložiště zadáním názvu účtu úložiště do globálního vyhledávání na portálu nebo na [stránce účty úložiště](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts) .
 * V části **NASTAVENÍ** vyberte **Brány firewall a virtuální sítě**.
 * V části "povolení přístupu z" vyberte **vybrané sítě**. Pak v části **výjimky**zaškrtněte políčko u možnosti **"pro přístup k tomuto účtu úložiště pro důvěryhodné služby Microsoftu"** . 
 * Pokud je tato možnost již vybraná, není potřeba provádět žádné změny.  
+* Na [stránce Přehled protokolů toků NSG](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) vyhledejte cílovou NSG a povolte protokoly toku NSG s vybraným účtem úložiště.
 
 Po několika minutách můžete zkontrolovat protokoly úložiště, ve kterých by se mělo zobrazit aktualizované časové razítko nebo nově vytvořený soubor JSON.
 

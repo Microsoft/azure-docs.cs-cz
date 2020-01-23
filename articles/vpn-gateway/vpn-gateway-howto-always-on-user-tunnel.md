@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: cherylmc
-ms.openlocfilehash: bff2ed48a78bfbae984dea5e5474971817023bc6
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: a22ba5d8b33dd41fcc76c65fcddaf60c1c0ed5e3
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75729317"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514744"
 ---
 # <a name="configure-an-always-on-vpn-user-tunnel"></a>Konfigurace tunelu uživatele VPN AlwaysOn
 
@@ -39,7 +39,7 @@ Bránu VPN nakonfigurujete tak, aby používala ověřování IKEv2 a založený
 
 1. Nainstalujte klientské certifikáty na klienta Windows 10, jak je znázorněno v tomto článku [klienta VPN typu Point-to-site](point-to-site-how-to-vpn-client-install-azure-cert.md) . Certifikát musí být v úložišti aktuálního uživatele.
 
-1. Nakonfigurujete klienta VPN Always On prostřednictvím PowerShellu, System Center Configuration Manager nebo Intune podle pokynů v tématu [Konfigurace připojení k síti VPN na straně klienta s Windows 10](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections).
+1. Nakonfigurujete klienta VPN Always On prostřednictvím PowerShellu, Configuration Manager nebo Intune podle pokynů v tématu [Konfigurace připojení k síti VPN na straně klienta s Windows 10](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections).
 
 ### <a name="example-configuration-for-the-user-tunnel"></a>Příklad konfigurace pro tunelové propojení uživatelů
 

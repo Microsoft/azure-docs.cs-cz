@@ -1,6 +1,6 @@
 ---
-title: Povolit CI/CD pomocí Jenkins – modul plug-in Azure IoT Edge | Dokumentace Microsoftu
-description: Rozšíření Azure IoT Edge pro Jenkinse umožňuje integrovat do stávajícího řešení pro DevOps úlohy devlopment a nasazení IoT Edge.
+title: Povolit CI/CD pomocí modulu plug-in Jenkinse-Azure IoT Edge | Microsoft Docs
+description: Rozšíření Azure IoT Edge pro Jenkinse umožňuje integrovat úlohy vývoje a nasazení IoT Edge do stávajícího řešení DevOps.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,19 +8,19 @@ ms.date: 01/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 173e6ff91acd2ad28d7203b2b5db65e0ee0ecc43
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 75ed5f5eda48f10776b854ce4de4d2f855a53634
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62126337"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510239"
 ---
-# <a name="integrate-azure-iot-edge-with-jenkins-pipelines"></a>Integrace Azure IoT Edge s kanálech Jenkinse
+# <a name="integrate-azure-iot-edge-with-jenkins-pipelines"></a>Integrace Azure IoT Edge s kanály Jenkinse
 
-Azure IoT Edge obsahuje integrovanou podporu pro Azure DevOps a Azure DevOps Projects, ale také poskytuje modul plug-in pro rozšíření funkcí DevOps s Jenkinsem. [Jenkins](https://jenkins.io/) je open source automatizační server, který používá moduly plug-in, které podporují mnoho typů projektů vývoje a nasazení, včetně IoT Edge. 
+Azure IoT Edge obsahuje integrovanou podporu pro Azure DevOps a Azure DevOps Projects, ale také poskytuje modul plug-in pro rozšíření funkce DevOps na Jenkinse. [Jenkinse](https://jenkins.io/) je open source automatizační server, který používá moduly plug-in k podpoře mnoha typů projektů vývoje a nasazení, včetně IoT Edge.
 
-Modul plug-in Azure IoT Edge pro Jenkinse se zaměřuje na průběžné integrace a průběžného nasazování. Můžete vytvořit sestavení a odeslání kanál, který vytvoří moduly a předá jejich imagí kontejneru do registru kontejneru. Vytvořte kanál pro vydávání verzí, který se nasazuje do zařízení IoT Edge moduly. 
+Modul plug-in Azure IoT Edge pro Jenkinse se zaměřuje na průběžnou integraci a průběžné nasazování. Můžete vytvořit sestavení a kanál nabízených oznámení, který sestaví moduly a vloží jejich image kontejneru do registru kontejneru. Pak vytvořte kanál pro vydávání verzí, který nasadí moduly do zařízení IoT Edge.
 
-Než začnete používat modul plug-in IoT Edge pro Jenkinse, budete potřebovat centra IoT v Azure a registr kontejnerů pro uložení imagí kontejnerů. Pomocí instančního objektu služby Azure můžete udělit oprávnění Přispěvatel Jenkins do služby IoT hub, tak, aby modul plug-in můžete vytvořit nasazení IoT Edge zařízení. 
+Než začnete používat modul plug-in IoT Edge pro Jenkinse, budete potřebovat IoT Hub v Azure a registr kontejnerů pro ukládání imagí kontejneru. Pomocí instančního objektu Azure udělte Jenkinse oprávnění přispěvatelům ke službě IoT Hub, aby modul plug-in mohl vytvářet nasazení pro zařízení IoT Edge.
 
-Pokud jste připravení začít, najít instalaci a podrobnosti o použití [modul plug-in Azure IoT Edge pro Jenkinse](https://plugins.jenkins.io/azure-iot-edge).
+Pokud jste připraveni začít, najděte instalaci a použijte podrobnosti pro [modul plug-in Azure IoT Edge pro Jenkinse](https://plugins.jenkins.io/azure-iot-edge).

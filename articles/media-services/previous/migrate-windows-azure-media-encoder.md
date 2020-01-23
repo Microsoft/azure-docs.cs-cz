@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: 068b8b0a6e248caa70a8f88ea55d07c30a9437f0
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: e75e3f3eecf6c34050aeaa7fe387fffb0de58a74
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997162"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513197"
 ---
 # <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>Migrace z Windows Azure Media Encoder na Media Encoder Standard
 
-Tento článek popisuje kroky pro migraci z staršího procesoru Windows Azure Media Encoder (WAME), který se z 31. března 2020 přenáší na procesor Media Encoder Standard Media.
+Tento článek popisuje postup migrace z staršího procesoru Windows Azure Media Encoder (WAME) Media (který se právě vyřazuje) do procesoru Media Encoder Standard Media. Informace o datech vyřazení najdete v tématu tyto [starší součásti](legacy-components.md) .
 
 Při kódování souborů pomocí WAME zákazníci obvykle použili pojmenovaný přednastavený řetězec, například `H264 Adaptive Bitrate MP4 Set 1080p`. Aby bylo možné provést migraci, váš kód musí být aktualizován, aby používal procesor **Media Encoder Standard** médií namísto WAME a jednu z ekvivalentních [předvoleb systému](media-services-mes-presets-overview.md) jako `H264 Multiple Bitrate 1080p`. 
 

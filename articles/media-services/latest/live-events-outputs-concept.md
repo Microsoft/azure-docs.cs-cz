@@ -1,7 +1,7 @@
 ---
-title: Živé události a živé výstupy v Media Services
+title: Koncepce živých událostí a živých výstupů v Azure Media Services V3
 titleSuffix: Azure Media Services
-description: Přehled živých událostí a živých výstupů v Azure Media Services V3.
+description: Toto téma poskytuje přehled živých událostí a živých výstupů v Azure Media Services V3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: juliako
-ms.openlocfilehash: d2f0689dd1f1b5fbe349478ad885b76eb79d91a0
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: cd1f55a4ca94aae73a56334c76f211afff6e9622
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569676"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514047"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Živé události a živé výstupy v Media Services
 
@@ -28,7 +28,7 @@ Azure Media Services vám umožní doručovat živé události zákazníkům v c
 > [!TIP]
 > Pro zákazníky, kteří migrují z Media Services V2 rozhraní API, nahradí entita **živá událost** **kanál** ve verzi v2 a **program**pro **živý výstup** nahradí.
 
-## <a name="live-events"></a>Živé události
+## <a name="live-events"></a>Živě přenášené události
 
 [Živé události](https://docs.microsoft.com/rest/api/media/liveevents) zodpovídají za ingestování a zpracování informačních kanálů živého videa. Když vytvoříte živou událost, vytvoří se primární a sekundární vstupní koncový bod, který můžete použít k odeslání živého signálu ze vzdáleného kodéru. Vzdálený živý kodér pošle do tohoto vstupního koncového bodu kanál příspěvků pomocí vstupního protokolu [RTMP](https://www.adobe.com/devnet/rtmp.html) nebo [Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) (fragmentovaný-MP4). Pro protokol ingestování RTMP se dá obsah odeslat jasným (`rtmp://`) nebo zabezpečeným šifrováním na lince (`rtmps://`). Pro protokol Smooth Streaming ingestování jsou podporovaná schémata URL `http://` nebo `https://`.  
 
@@ -119,15 +119,15 @@ Můžete použít buď nejednoduché adresy URL, nebo jednoduché adresy URL.
 
     |Jazyk|Povolit individuální adresu URL|Nastavení přístupového tokenu|
     |---|---|---|
-    |REST|[Properties. vanityUrl](https://docs.microsoft.com/rest/api/media/liveevents/create#liveevent)|[LiveEventInput. accessToken](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventinput)|
-    |Rozhraní příkazového řádku|[--individuální-URL](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--Access-token](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
+    |REST|[properties.vanityUrl](https://docs.microsoft.com/rest/api/media/liveevents/create#liveevent)|[LiveEventInput. accessToken](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventinput)|
+    |Rozhraní příkazového řádku|[--individuální-URL](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--access-token](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
     |.NET|[Livestream. VanityUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent.vanityurl?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput. AccessToken](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
     
 ### <a name="live-ingest-url-naming-rules"></a>Pravidla pro pojmenování adres URL pro živá přijímání
 
 * Řetězec *random* dále je 128bitové šestnáctkové číslo (skládající se z 32 znaků 0-9 a-f).
-* *váš přístupový token*: platný řetězec GUID, který jste nastavili při použití režimu individuální. například `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
-* *název streamu*: označuje název streamu pro konkrétní připojení. Hodnota názvu datového proudu je obvykle přidána živým kodérem, který používáte. Živý kodér můžete nakonfigurovat tak, aby pro popis připojení používal libovolný název, například: "video1_audio1", "video2_audio1", "Stream".
+* *váš přístupový token*: platný řetězec GUID, který jste nastavili při použití režimu individuální. Například, `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
+* *název streamu*: označuje název streamu pro konkrétní připojení. Hodnota názvu datového proudu je obvykle přidána živým kodérem, který používáte. Živý kodér můžete nakonfigurovat tak, aby k popisu připojení používal libovolný název, například: "video1_audio1", "video2_audio1", "Stream".
 
 #### <a name="non-vanity-url"></a>Jiná než individuální adresa URL
 

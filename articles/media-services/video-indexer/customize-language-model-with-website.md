@@ -1,5 +1,5 @@
 ---
-title: Použití Video Indexer webu k přizpůsobení jazykového modelu – Azure
+title: Přizpůsobení jazykových modelů pomocí Video Indexer webu – Azure
 titleSuffix: Azure Media Services
 description: Tento článek popisuje, jak přizpůsobit jazykový model pomocí Video Indexer webu.
 services: media-services
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 5d92cb02a0ac52b317cf9d4b6c8e0278f9291910
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 329da39914ef957d3a5376ba59e0c7103ad6a5dd
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838444"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513911"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-website"></a>Přizpůsobení jazykového modelu pomocí Video Indexer webu
 
@@ -61,10 +61,10 @@ Chcete-li použít svůj jazykový model na novém videu, proveďte jednu z nás
 
 * Klikněte na tlačítko **nahrát** v horní části stránky. 
 
-    ![Odeslat](./media/customize-language-model/upload.png)
+    ![Nahrávání](./media/customize-language-model/upload.png)
 * Zařaďte svůj zvukový nebo videosoubor do kruhu nebo ho vyhledejte.
 
-    ![Odeslat](./media/customize-language-model/upload2.png)
+    ![Nahrávání](./media/customize-language-model/upload2.png)
 
 Tím získáte možnost vybrat **zdrojový jazyk videa**. Klikněte na rozevírací seznam a vyberte jazykový model, který jste vytvořili ze seznamu. Měl by to být jazyk vašeho jazykového modelu a název, který jste mu přiřadili v závorkách.
 

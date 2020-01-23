@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e4bf079d46271cadc0176fe5602adcdc3954dee5
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 5c44561895bc1905328ec0eb357bee1c68a8eb55
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290712"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510528"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Nasadit moduly Azure IoT Edge z portálu Azure portal
 
@@ -43,9 +43,9 @@ Na webu Azure portal obsahuje průvodce, který vás provede vytvořením manife
 1. V části **IoT Edge moduly** na stránce vyberte **Přidat**.
 1. Podívejte se na typy modulů z rozevírací nabídky:
 
-   * **IoT Edge modul** – zadejte název modulu a identifikátor URI image kontejneru. Například identifikátor URI image pro vzorový modul SimulatedTemperatureSensor je `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`. Pokud je image modulu uložená v soukromém registru kontejnerů, přidejte přihlašovací údaje na této stránce pro přístup k imagi. 
+   * **IoT Edge modul** – zadejte název modulu a identifikátor URI image kontejneru. Například identifikátor URI image pro vzorový modul SimulatedTemperatureSensor je `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`. Pokud je image modulu uložená v soukromém registru kontejnerů, přidejte přihlašovací údaje na této stránce pro přístup k imagi.
    * **Modul Marketplace** – moduly hostované ve Azure Marketplace. Některé moduly Marketplace vyžadují další konfiguraci, proto si Projděte podrobnosti o modulu v seznamu [Azure Marketplace IoT Edge moduly](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) .
-   * **Azure Stream Analytics modul** – moduly generované z úlohy Azure Stream Analytics. 
+   * **Azure Stream Analytics modul** – moduly generované z úlohy Azure Stream Analytics.
 
 1. Po přidání modulu vyberte v seznamu název modulu a otevřete nastavení modulu. V případě potřeby zadejte volitelná pole. Pro další informace o kontejneru vytvořte možnosti, zásady restartování a zjistěte požadovaný stav [EdgeAgent požadované vlastnosti](module-edgeagent-edgehub.md#edgeagent-desired-properties). Další informace o dvojčeti modulu najdete v části [definovat nebo aktualizace požadované vlastnosti](module-composition.md#define-or-update-desired-properties).
 1. V případě potřeby opakujte kroky 5 až 8 pro přidání dalších modulů do nasazení.

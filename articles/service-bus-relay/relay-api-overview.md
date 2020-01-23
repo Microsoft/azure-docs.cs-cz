@@ -1,6 +1,6 @@
 ---
-title: Přehled služby Azure Relay API | Dokumentace Microsoftu
-description: Přehled dostupných rozhraní API Azure Relay
+title: Přehled rozhraní API pro Azure Relay | Microsoft Docs
+description: Tento článek poskytuje přehled dostupných Azure Relay rozhraní API (.NET Standard, .NET Framework, Node. js atd.).
 services: event-hubs
 documentationcenter: na
 author: spelluru
@@ -12,51 +12,51 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/02/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 05d7ac56d6c1c48125eb458d0eee852ba396b300
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 41d9e2026c19c959dc6fe2546b0ef699571ec7cd
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60593347"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513962"
 ---
-# <a name="available-relay-apis"></a>K dispozici předávání přes rozhraní API
+# <a name="available-relay-apis"></a>Dostupná předávací rozhraní API
 
-## <a name="runtime-apis"></a>Rozhraní API modulu runtime
+## <a name="runtime-apis"></a>Běhová rozhraní API
 
-Následující tabulka uvádí všechny aktuálně dostupné klienty modulu runtime Relay.
+V následující tabulce jsou uvedeny všechny aktuálně dostupné klienty modulu runtime přenosu.
 
-[Další informace o](#additional-information) oddíl obsahuje další informace o stavu jednotlivých knihoven modulu runtime.
+V části [Další informace](#additional-information) najdete další informace o stavu každé běhové knihovny.
 
-| Jazyk nebo platformu | K dispozici funkce | Balíček klienta | Úložiště |
+| Jazyk/platforma | Dostupná funkce | Klientský balíček | Úložiště |
 | --- | --- | --- | --- |
 | .NET Standard | Hybridní připojení | [Microsoft.Azure.Relay](https://www.nuget.org/packages/Microsoft.Azure.Relay/) | [GitHub](https://github.com/azure/azure-relay-dotnet) |
-| .NET Framework | WCF Relay | [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | neuvedeno |
-| Node | Hybridní připojení | [Protokoly Websocket: `hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[Protokoly Websocket: `hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[Požadavky HTTP: `hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHub](https://github.com/Azure/azure-relay-node) |
+| .NET Framework | WCF Relay | [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | Nevztahuje se |
+| Uzel | Hybridní připojení | [WebSockets: `hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[WebSockets: `hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[Požadavky HTTP: `hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHub](https://github.com/Azure/azure-relay-node) |
 
 ### <a name="additional-information"></a>Další informace
 
 #### <a name="net"></a>.NET
 
-Ekosystému .NET má více modulů runtime, proto jsou více knihovny .NET pro přenos. Knihovny .NET Standard lze spouštět s využitím .NET Core nebo .NET Framework, zatímco knihovně rozhraní .NET Framework lze spustit pouze v prostředí .NET Framework. Další informace o rozhraní .NET Framework najdete v tématu [verze rozhraní framework](/dotnet/articles/standard/frameworks).
+Ekosystém .NET má několik modulů runtime, proto existuje více knihoven .NET pro přenos. Knihovnu .NET Standard lze spustit buď pomocí .NET Core, nebo .NET Framework, zatímco knihovnu .NET Framework lze spustit pouze v .NET Framework prostředí. Další informace o rozhraní .NET Framework naleznete v tématu [verze rozhraní](/dotnet/articles/standard/frameworks).
 
-Knihovně rozhraní .NET Framework pouze podporuje programovacího modelu WCF a využívá proprietární binární protokol založený na WCF `net.tcp` přenosu. Tento protokol a knihovny je zachován z důvodu zpětné kompatibility se stávajícími aplikacemi.
+Knihovna .NET Framework podporuje pouze programovací model WCF a spoléhá na proprietární binární protokol založený na přenosu `net.tcp` WCF. Tento protokol a knihovna se uchovávají kvůli zpětné kompatibilitě se stávajícími aplikacemi.
 
-Knihovny .NET Standard vychází z definice otevřený protokol pro Relay hybridní připojení, která je založena na protokolu HTTP a Websocket. Knihovny podporuje datový proud abstrakce přes Websockets a gesto jednoduchého typu žádost odpověď rozhraní API pro volaný požadavky HTTP. [Webového rozhraní API](https://github.com/Azure/azure-relay-dotnet) příklad ukazuje, jak integrovat Hybrid Connections pro webové služby pomocí ASP.NET Core.
+Knihovna .NET Standard je založena na definici otevřeného protokolu pro Hybrid Connections Relay, která je založena na protokolech HTTP a WebSockets. Knihovna podporuje abstrakci streamování přes objekty WebSockets a jednoduché gesto rozhraní API požadavku a odpovědi pro zodpovězení požadavků HTTP. Ukázka [webového rozhraní API](https://github.com/Azure/azure-relay-dotnet) ukazuje, jak integrovat Hybrid Connections s ASP.NET Core pro webové služby.
 
 #### <a name="nodejs"></a>Node.js
 
-Hybridní připojení modulů uvedených v předchozí tabulce nahradit nebo změnit stávající modulů Node.js s alternativní implementace, které naslouchat na službě Azure Relay místo místního síťového zásobníku.
+Moduly Hybrid Connections uvedené v tabulce výše nahrazují nebo mění existující moduly node. js s alternativními implementacemi, které naslouchají na službě Azure Relay místo do zásobníku místní sítě.
 
-`hyco-https` Modulu mění a částečně přepíše modulů Node.js core `http` a `https`, poskytuje implementace naslouchací proces HTTPS, která je kompatibilní s mnoha stávající moduly Node.js a aplikace, které spoléhají na tyto základní moduly.
+Modul `hyco-https` mění a částečně Přepisuje základní moduly node. js `http` a `https`a poskytuje implementaci naslouchacího procesu HTTPS, která je kompatibilní s mnoha existujícími moduly a aplikacemi Node. js, které jsou závislé na těchto základních modulech.
 
-`hyco-ws` a `hyco-websocket` změnit oblíbené moduly `ws` a `websocket` moduly pro Node.js poskytuje alternativní naslouchací proces implementace, které umožňuje moduly i aplikací spoléhá na buď modulu práce za hybridního Připojení přenosu.
+Moduly `hyco-ws` a `hyco-websocket` mění oblíbené `ws` a `websocket` moduly pro Node. js, což poskytuje alternativní implementace naslouchacího procesu, které umožňují modulům a aplikacím, aby fungovaly na základě obou modulů pro práci za Hybrid Connections Relay.
 
-Podrobnosti o těchto modulů najdete v [uzel azure relay](https://github.com/Azure/azure-relay-node) úložiště GitHub.
+Podrobnosti o těchto modulech najdete v úložišti GitHub [Azure-Relay-Node](https://github.com/Azure/azure-relay-node) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure Relay, najdete pomocí těchto odkazů:
+Další informace o Azure Relay najdete na těchto odkazech:
 * [Co je Azure Relay?](relay-what-is-it.md)
 * [Přenos – nejčastější dotazy](relay-faq.md)

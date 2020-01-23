@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 255c18144fe0089a3f630d90f527a57d2b4ed68b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 47adda38bb39a95fe9abc0775a1822d677f19dab
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75391850"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513843"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup Chyba: problémy s agentem nebo rozšířením
 
@@ -89,7 +89,6 @@ Po registraci a naplánování virtuálního počítače pro službu Azure Backu
 
 **Příčina 1: nelze [načíst stav snímku nebo nelze](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken) pořídit snímek.**  
 **Příčina 2: [rozšíření zálohování se nepodařilo aktualizovat nebo načíst](#the-backup-extension-fails-to-update-or-load)**  
-**Příčina 3: [virtuální počítač nemá přístup k Internetu](#the-vm-has-no-internet-access)**
 
 ## <a name="ExtensionOperationFailed-vmsnapshot-extension-operation-failed"></a>Operace rozšíření ExtensionOperationFailedForManagedDisks-VMSnapshot se nezdařila.
 
@@ -113,7 +112,7 @@ Po registraci a naplánování virtuálního počítače pro službu Azure Backu
 **Příčina 3: [nejde načíst stav snímku nebo nejde udělat snímek](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken) .**  
 **Příčina 4: [rozšíření zálohování se nepodařilo aktualizovat nebo načíst](#the-backup-extension-fails-to-update-or-load) .**  
 **Příčina 5: Služba zálohování nemá oprávnění odstranit staré body obnovení z důvodu zámku skupiny prostředků.** <br>
-**Příčina 6: [virtuální počítač nemá přístup k Internetu](#the-vm-has-no-internet-access)**
+
 
 ## <a name="usererrorunsupporteddisksize---the-configured-disk-sizes-is-currently-not-supported-by-azure-backup"></a>UserErrorUnsupportedDiskSize – Azure Backup aktuálně není podporována nakonfigurovaná velikost disku.
 
@@ -141,16 +140,6 @@ Poslední úloha zálohování se nezdařila, protože probíhá existující ú
 Pokud naplánovaná operace zálohování trvá déle, v konfliktu s další konfigurací zálohování, Projděte si [osvědčené postupy](backup-azure-vms-introduction.md#best-practices), [výkon zálohování](backup-azure-vms-introduction.md#backup-performance)a [aspekty obnovení](backup-azure-vms-introduction.md#backup-and-restore-considerations).
 
 ## <a name="causes-and-solutions"></a>Příčiny a řešení
-
-### <a name="the-vm-has-no-internet-access"></a>Virtuální počítač nemá přístup k Internetu.
-
-Za požadavek nasazení nemá virtuální počítač přístup k Internetu. Nebo může mít omezení, která brání přístupu k infrastruktuře Azure.
-
-Pro správné fungování rozšíření Backup vyžaduje připojení k veřejným IP adresám Azure. Rozšíření odesílá příkazy koncovému bodu služby Azure Storage (adresa URL protokolu HTTPs) pro správu snímků virtuálního počítače. Pokud rozšíření nemá přístup k veřejnému Internetu, zálohování nakonec neproběhne úspěšně.
-
-#### <a name="solution"></a>Řešení
-
-Informace o vyřešení problému v síti najdete v tématu [vytvoření připojení k síti](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
 
 ### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Agent je nainstalovaný na virtuálním počítači, ale nereaguje (pro virtuální počítače s Windows).
 
@@ -239,7 +228,7 @@ Provedením těchto kroků dojde k přeinstalování rozšíření během pří�
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>Odebrat zámek ze skupiny prostředků bodu obnovení
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com/).
 2. Přejděte na **možnost všechny prostředky**, vyberte skupinu prostředků kolekce bodů obnovení v následujícím formátu AzureBackupRG_`<Geo>`_`<number>`.
 3. V části **Nastavení** vyberte **zámky** a zobrazte zámky.
 4. Pokud chcete zámek odebrat, vyberte tři tečky a klikněte na **Odstranit**.
@@ -268,7 +257,7 @@ Po odebrání zámku aktivujte zálohování na vyžádání. Tím se zajistí, 
 
 Chcete-li ručně vymazat kolekci bodů obnovení, která není smazána z důvodu zámku skupiny prostředků, zkuste provést následující kroky:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com/).
 2. V nabídce **centra** klikněte na **všechny prostředky**a vyberte skupinu prostředků s následujícím formátem AzureBackupRG_`<Geo>`_`<number>`, kde se virtuální počítač nachází.
 
     ![Odstranit zámek](./media/backup-azure-arm-vms-prepare/resource-group.png)

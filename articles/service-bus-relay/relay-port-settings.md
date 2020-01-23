@@ -1,6 +1,6 @@
 ---
-title: Nastavení portu služby Azure Relay | Dokumentace Microsoftu
-description: Podrobnosti o Azure Relay hodnoty portu.
+title: Nastavení portu Azure Relay | Microsoft Docs
+description: Tento článek obsahuje tabulku, která popisuje požadovanou konfiguraci pro hodnoty portů pro Azure Relay.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -12,45 +12,45 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/26/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 9d11179a8518ebf48f68f8607f94e0253d4edb80
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 55bb6b620c7ba9ee13068213cbc867b165acc185
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60789922"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514880"
 ---
-# <a name="azure-relay-port-settings"></a>Nastavení portu služby Azure Relay
+# <a name="azure-relay-port-settings"></a>Nastavení portu Azure Relay
 
-Následující tabulka popisuje požadované konfigurace pro hodnoty portů pro Azure Relay.
+Následující tabulka popisuje požadovanou konfiguraci pro hodnoty portů pro Azure Relay.
 
 ## <a name="hybrid-connections"></a>Hybridní připojení
 
-Hybridní připojení používá objekty Websocket na portu 443 s protokolem SSL jako podkladový přenosový mechanismus, který používá **HTTPS** pouze. 
+Hybrid Connections používá objekty WebSockets na portu 443 s protokolem SSL jako podkladový přenosový mechanismus, který používá pouze **protokol HTTPS** . 
 
 ## <a name="wcf-relays"></a>Přenosy WCF
   
 |Vazba|Zabezpečení přenosu|Port|  
 |-------------|------------------------|----------|  
-|[Třída BasicHttpRelayBinding](/dotnet/api/microsoft.servicebus.basichttprelaybinding) (klient)|Ano|HTTPS| 
-|" |Ne|HTTP|  
-|[Třída BasicHttpRelayBinding](/dotnet/api/microsoft.servicebus.basichttprelaybinding) (služba)|Buď|9351/HTTP|  
-|[Třída NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) (klient)|Ano|9351/HTTPS|  
-|" |Ne|9350/HTTP|  
-|[Třída NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) (služba)|Buď|9351/HTTP|  
-|[Třída NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) (klienta nebo služby)|Buď|9352 a 5671/HTTP (9352/9353 používáte hybridní)|  
-|[Třída NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) (klient)|Ano|9351/HTTPS|  
-|" |Ne|9350/HTTP|  
-|[Třída NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) (služba)|Buď|9351/HTTP|  
-|[Třída WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) (klient)|Ano|HTTPS|  
-|" |Ne|HTTP|  
-|[WebHttpRelayBinding Class](/dotnet/api/microsoft.servicebus.webhttprelaybinding) (service)|Buď|9351/HTTP|  
-|[Třída WS2007HttpRelayBinding](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding) (klient)|Ano|HTTPS|  
-|" |Ne|HTTP|  
-|[Třída WS2007HttpRelayBinding](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding) (služba)|Buď|9351/HTTP|
+|[BasicHttpRelayBinding – třída](/dotnet/api/microsoft.servicebus.basichttprelaybinding) (klient)|Ano|HTTPS| 
+|. |Ne|HTTP|  
+|[BasicHttpRelayBinding – třída](/dotnet/api/microsoft.servicebus.basichttprelaybinding) (služba)|Buď|9351/HTTP|  
+|[NetEventRelayBinding – třída](/dotnet/api/microsoft.servicebus.neteventrelaybinding) (klient)|Ano|9351/HTTPS|  
+|. |Ne|9350/HTTP|  
+|[NetEventRelayBinding – třída](/dotnet/api/microsoft.servicebus.neteventrelaybinding) (služba)|Buď|9351/HTTP|  
+|[NetTcpRelayBinding – třída](/dotnet/api/microsoft.servicebus.nettcprelaybinding) (klient/služba)|Buď|5671/9352/HTTP (9352/9353 při použití Hybrid)|  
+|[NetOnewayRelayBinding – třída](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) (klient)|Ano|9351/HTTPS|  
+|. |Ne|9350/HTTP|  
+|[NetOnewayRelayBinding – třída](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) (služba)|Buď|9351/HTTP|  
+|[WebHttpRelayBinding – třída](/dotnet/api/microsoft.servicebus.webhttprelaybinding) (klient)|Ano|HTTPS|  
+|. |Ne|HTTP|  
+|[WebHttpRelayBinding – třída](/dotnet/api/microsoft.servicebus.webhttprelaybinding) (služba)|Buď|9351/HTTP|  
+|[WS2007HttpRelayBinding – třída](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding) (klient)|Ano|HTTPS|  
+|. |Ne|HTTP|  
+|[WS2007HttpRelayBinding – třída](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding) (služba)|Buď|9351/HTTP|
 
-## <a name="next-steps"></a>Další postup
-Další informace o Azure Relay, najdete pomocí těchto odkazů:
+## <a name="next-steps"></a>Další kroky
+Další informace o Azure Relay najdete na těchto odkazech:
 * [Co je Azure Relay?](relay-what-is-it.md)
 * [Přenos – nejčastější dotazy](relay-faq.md)

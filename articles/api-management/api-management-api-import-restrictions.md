@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
-ms.openlocfilehash: a1c514368960d39834125bd497d05b3d9ebeae7c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 61d43addfdf9008cb7aa8a073dcf3bb702cb55f1
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75640699"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513367"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Omezení importu rozhraní API a známé problémy
 
@@ -52,7 +52,6 @@ Pokud obdržíte chyby při importu dokumentu OpenAPI, ujistěte se, že jste ho
 
 -   Pokud je zadáno mnoho `servers`, API Management se pokusí vybrat první adresu URL HTTPs. Pokud nejsou žádné adresy URL protokolu HTTPs, první adresa URL protokolu HTTP. Pokud neexistují žádné adresy URL protokolu HTTP, adresa URL serveru bude prázdná.
 -   `Examples` se nepodporuje, ale `example` je.
--   `Multipart/form-data` se nepodporuje.
 
 ## <a name="openapi-import-update-and-export-mechanisms"></a>OpenAPI mechanismy importu, aktualizací a exportu
 

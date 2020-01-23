@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 1a6fb12311fe4474f03c22c91d9b478220adf5d1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c65e1f871fdab2c925f7a5e6747ad23fe8952d9
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425536"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512772"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Požadavky na návrh virtuální sítě a možnosti konfigurace pro Azure AD Domain Services
 
-Jak Azure Active Directory Domain Services (služba AD DS) poskytuje službám pro ověřování a správu jiné aplikace a úlohy, síťové připojení je klíčová komponenta. Bez patřičně nakonfigurovaných prostředků virtuální sítě nemůžou aplikace a úlohy komunikovat s funkcemi poskytovanými službou Azure služba AD DS a používat je. Pokud svou virtuální síť naplánujete správně, ujistěte se, že Azure služba AD DS může podle potřeby obsluhovat vaše aplikace a úlohy.
+Jak Azure Active Directory Domain Services (služba AD DS) poskytuje službám pro ověřování a správu jiné aplikace a úlohy, síťové připojení je klíčová komponenta. Bez správně nakonfigurovaných prostředků virtuální sítě nemůžou aplikace a úlohy komunikovat s funkcemi, které poskytuje Azure služba AD DS, a používat je. Naplánujte požadavky na virtuální síť, abyste se ujistili, že Azure služba AD DS může vašim aplikacím a úlohám poskytovat podle potřeby.
 
-Tento článek popisuje požadavky na návrh a požadavky pro virtuální síť Azure, které podporují Azure služba AD DS.
+Tento článek popisuje požadavky na návrh a požadavky služby Azure Virtual Network na podporu služba AD DS Azure.
 
 ## <a name="azure-virtual-network-design"></a>Návrh virtuální sítě Azure
 
@@ -33,7 +33,7 @@ Při návrhu virtuální sítě pro Azure služba AD DS platí následující po
 * Azure služba AD DS musí být nasazené do stejné oblasti Azure jako vaše virtuální síť.
     * V tuto chvíli můžete nasadit jenom jednu spravovanou doménu Azure služba AD DS spravované domény na tenanta Azure AD. Spravovaná doména Azure služba AD DS je nasazená v jedné oblasti. Ujistěte se, že jste vytvořili nebo vybrali virtuální síť v [oblasti, která podporuje Azure služba AD DS](https://azure.microsoft.com/global-infrastructure/services/?products=active-directory-ds&regions=all).
 * Zvažte blízkost ostatních oblastí Azure a virtuálních sítí, které hostují úlohy vaší aplikace.
-    * Chcete-li minimalizovat latenci, udržujte základní aplikace blízko nebo ve stejné oblasti jako podsíť virtuální sítě pro spravovanou doménu Azure služba AD DS. Mezi virtuálními sítěmi Azure můžete použít připojení VPN s partnerským vztahem nebo virtuální privátní síť (VPN).
+    * Chcete-li minimalizovat latenci, udržujte základní aplikace blízko nebo ve stejné oblasti jako podsíť virtuální sítě pro spravovanou doménu Azure služba AD DS. Mezi virtuálními sítěmi Azure můžete použít připojení VPN s partnerským vztahem nebo virtuální privátní síť (VPN). Tyto možnosti připojení jsou popsány v následující části.
 * Virtuální síť nemůže spoléhat na služby DNS kromě těch, které poskytuje Azure služba AD DS.
     * Azure služba AD DS poskytuje vlastní službu DNS. Virtuální síť musí být nakonfigurovaná tak, aby používala tyto adresy služby DNS. Překlad názvů pro další obory názvů se dá provést pomocí podmíněného dopředných služeb.
     * Vlastní nastavení serveru DNS nemůžete použít k přímému nasměrování dotazů z jiných serverů DNS, včetně virtuálních počítačů. Prostředky ve virtuální síti musí používat službu DNS poskytovanou službou Azure služba AD DS.
@@ -62,7 +62,7 @@ Aplikační úlohy hostované v jiných virtuálních sítích Azure můžete p�
 * Partnerský vztah virtuální sítě
 * Virtuální privátní síť (VPN)
 
-### <a name="virtual-network-peering"></a>Virtual Network partnerský vztah
+### <a name="virtual-network-peering"></a>Partnerský vztah virtuální sítě
 
 Partnerský vztah virtuálních sítí je mechanismus, který propojuje dvě virtuální sítě ve stejné oblasti prostřednictvím páteřní sítě Azure. Globální partnerské vztahy virtuálních sítí se můžou připojit k virtuální síti napříč oblastmi Azure. Po navázání partnerského vztahu mezi dvěma virtuálními sítěmi umožníte komunikaci přímo pomocí privátních IP adres, jako jsou třeba virtuální počítače. Pomocí partnerského vztahu virtuálních sítí můžete nasadit Azure služba AD DS spravované domény pomocí úloh aplikací nasazených v jiných virtuálních sítích.
 
@@ -70,7 +70,7 @@ Partnerský vztah virtuálních sítí je mechanismus, který propojuje dvě vir
 
 Další informace najdete v tématu [Přehled partnerských vztahů virtuálních sítí Azure](../virtual-network/virtual-network-peering-overview.md).
 
-### <a name="virtual-private-networking"></a>Virtuální privátní sítě
+### <a name="virtual-private-networking-vpn"></a>Virtuální privátní síť (VPN)
 
 Virtuální síť můžete připojit k jiné virtuální síti (VNet-to-VNet) stejným způsobem, jakým můžete nakonfigurovat virtuální síť na místní umístění lokality. Obě připojení používají bránu VPN k vytvoření zabezpečeného tunelového propojení pomocí protokolu IPsec/IKE. Tento model připojení umožňuje nasadit Azure služba AD DS do virtuální sítě Azure a pak připojit místní umístění nebo jiné cloudy.
 
@@ -91,8 +91,8 @@ Spravovaná doména Azure služba AD DS během nasazení vytvoří několik sí�
 | Prostředek Azure                          | Popis |
 |:----------------------------------------|:---|
 | Síťová karta                  | Azure služba AD DS hostuje spravovanou doménu na dvou řadičích domény (DCs), které běží na Windows serveru jako virtuální počítače Azure. Každý virtuální počítač má virtuální síťové rozhraní, které se připojuje k podsíti virtuální sítě. |
-| Dynamická standardní veřejná IP adresa         | Azure služba AD DS komunikuje se službou synchronizace a správy pomocí veřejné IP adresy standardní SKU. Další informace o veřejných IP adresách najdete v tématu [typy IP adres a metody přidělování v Azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md). |
-| Azure Load Balancer úrovně Standard               | Azure služba AD DS používá nástroj pro vyrovnávání zatížení Standard SKU pro překlad síťových adres (NAT) a vyrovnávání zatížení (při použití se zabezpečeným protokolem LDAP). Další informace o nástrojích pro vyrovnávání zatížení Azure najdete v tématu [co je Azure Load Balancer?](../load-balancer/load-balancer-overview.md) |
+| Dynamická standardní veřejná IP adresa      | Azure služba AD DS komunikuje se službou synchronizace a správy pomocí veřejné IP adresy standardní SKU. Další informace o veřejných IP adresách najdete v tématu [typy IP adres a metody přidělování v Azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md). |
+| Azure Load Balancer úrovně Standard            | Azure služba AD DS používá nástroj pro vyrovnávání zatížení Standard SKU pro překlad síťových adres (NAT) a vyrovnávání zatížení (při použití se zabezpečeným protokolem LDAP). Další informace o nástrojích pro vyrovnávání zatížení Azure najdete v tématu [co je Azure Load Balancer?](../load-balancer/load-balancer-overview.md) |
 | Pravidla překladu síťových adres (NAT) | Azure služba AD DS vytvoří a použije tři pravidla překladu adres (NAT) pro nástroj pro vyrovnávání zatížení – jedno pravidlo pro zabezpečený provoz HTTP a dvě pravidla pro zabezpečenou vzdálenou komunikaci PowerShellu. |
 | Pravidla nástroje pro vyrovnávání zatížení                     | Když je na serveru TCP 636 spravovaná doména spravované službou Azure služba AD DS, vytvoří se při distribuci provozu tři pravidla a použijí se na nástroji pro vyrovnávání zatížení. |
 
@@ -160,7 +160,3 @@ Další informace o některých síťových prostředcích a možnostech připoj
 * [Partnerský vztah virtuálních sítí Azure](../virtual-network/virtual-network-peering-overview.md)
 * [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md)
 * [Skupiny zabezpečení sítě Azure](../virtual-network/security-overview.md)
-
-<!-- INTERNAL LINKS -->
-
-<!-- EXTERNAL LINKS -->

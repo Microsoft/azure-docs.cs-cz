@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 61c9d887f1b193258161cd96ccfa3618e8371890
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: a25337cad39674bc6016f67bdc46a804518d0b03
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74081008"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509015"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Nejčastější dotazy
 
@@ -41,10 +41,10 @@ Tato stránka obsahuje odpovědi na nejčastější dotazy týkající se Azure 
 Ne. Pro jeden adresář služby Azure AD můžete vytvořit jenom jednu spravovanou doménu Azure AD Domain Services.
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-a-classic-virtual-network"></a>Můžu povolit Azure AD Domain Services v klasické virtuální síti?
-Klasické virtuální sítě nejsou pro nová nasazení podporovaná. Existující spravované domény nasazené v klasických virtuálních sítích se pořád podporují.
+Klasické virtuální sítě nejsou pro nová nasazení podporovaná. Existující spravované domény nasazené v klasických virtuálních sítích se pořád podporují. Můžete také [migrovat Azure AD Domain Services z modelu klasických virtuálních sítí do Správce prostředků (Preview)](migrate-from-classic-vnet.md).
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-resource-manager-virtual-network"></a>Můžu Azure AD Domain Services ve virtuální síti Azure Resource Manager povolit?
-Ano. Azure AD Domain Services lze povolit ve virtuální síti Azure Resource Manager. Klasické virtuální sítě Azure už nejsou podporované, když vytváříte novou spravovanou doménu.
+Ano. Azure AD Domain Services lze povolit ve virtuální síti Azure Resource Manager. Při vytváření spravované domény už nejsou dostupné klasické virtuální sítě Azure.
 
 ### <a name="can-i-migrate-my-existing-managed-domain-from-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>Můžu migrovat existující spravovanou doménu z klasické virtuální sítě do Správce prostředků virtuální sítě?
 Ano, tato funkce je ve verzi Preview. Další informace najdete v tématu [migrace Azure AD Domain Services z modelu klasických virtuálních sítí do Správce prostředků (Preview)](migrate-from-classic-vnet.md).
@@ -62,7 +62,7 @@ Samotná služba přímo nepodporuje tento scénář. Vaše spravovaná doména 
 Ano. Další informace najdete v tématu [povolení Azure AD Domain Services pomocí prostředí PowerShell](powershell-create-instance.md).
 
 ### <a name="can-i-enable-azure-ad-domain-services-using-a-resource-manager-template"></a>Můžu Azure AD Domain Services povolit použití šablony Správce prostředků?
-Ano, Azure AD Domain Services spravovanou doménu můžete vytvořit pomocí Správce prostředků šablony. Před nasazením šablony musí být vytvořený instanční objekt a skupina služby Azure AD pro správu pomocí Azure Portal nebo Azure PowerShell. Při vytváření Azure AD Domain Services spravované domény v Azure Portal existuje možnost Exportovat šablonu pro použití s dalšími nasazeními. [V úložišti ukázek šablon GitHubu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-AAD-DomainServices)je k dispozici také příklad šablony.
+Ano, Azure AD Domain Services spravovanou doménu můžete vytvořit pomocí Správce prostředků šablony. Před nasazením šablony musí být vytvořený instanční objekt a skupina služby Azure AD pro správu pomocí Azure Portal nebo Azure PowerShell. Další informace najdete v tématu [Vytvoření spravované domény Azure služba AD DS pomocí šablony Azure Resource Manager](template-create-instance.md). Při vytváření Azure AD Domain Services spravované domény v Azure Portal existuje také možnost Exportovat šablonu pro použití s dalšími nasazeními.
 
 ### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>Můžu přidat řadiče domény do spravované domény Azure AD Domain Services?
 Ne. Doména, kterou poskytuje Azure AD Domain Services, je spravovaná doména. Pro tuto doménu nemusíte zřizovat, konfigurovat ani jinak spravovat řadiče domény. Tyto aktivity správy jsou poskytovány jako služba společnosti Microsoft. Proto pro spravovanou doménu nemůžete přidat další řadiče domény (pro čtení i zápis nebo jen pro čtení).
@@ -104,7 +104,7 @@ Změny provedené v adresáři Azure AD pomocí uživatelského rozhraní služb
 Ne. Schéma je spravováno společností Microsoft pro spravovanou doménu. Azure AD Domain Services nepodporuje rozšíření schématu.
 
 ### <a name="can-i-modify-or-add-dns-records-in-my-managed-domain"></a>Můžu v mé spravované doméně upravovat nebo přidávat záznamy DNS?
-Ano. Členům skupiny *AAD DC Administrators* jsou udělena oprávnění *Správce DNS* pro úpravu záznamů DNS ve spravované doméně. Uživatelé můžou pomocí konzoly Správce DNS na počítači se systémem Windows Server, který je připojený ke spravované doméně, spravovat DNS. Pokud chcete použít konzolu Správce DNS, nainstalujte *Nástroje serveru DNS*, které jsou součástí *Nástroje pro vzdálenou správu serveru* volitelné funkce na serveru. Další informace najdete v tématu [Správa DNS ve spravované doméně Azure AD Domain Services](manage-dns.md).
+Ano. Členům skupiny *AAD DC Administrators* jsou udělena oprávnění *Správce DNS* pro úpravu záznamů DNS ve spravované doméně. Uživatelé mohou pomocí konzoly Správce DNS na počítači se systémem Windows Server, který je připojen ke spravované doméně, spravovat službu DNS. Pokud chcete použít konzolu Správce DNS, nainstalujte *Nástroje serveru DNS*, které jsou součástí *Nástroje pro vzdálenou správu serveru* volitelné funkce na serveru. Další informace najdete v tématu [Správa DNS ve spravované doméně Azure AD Domain Services](manage-dns.md).
 
 ### <a name="what-is-the-password-lifetime-policy-on-a-managed-domain"></a>Jaké jsou zásady životního cyklu hesel ve spravované doméně?
 Výchozí doba života hesla ve spravované doméně Azure AD Domain Services je 90 dní. Doba života hesla není synchronizovaná s životností hesla nakonfigurovanou v Azure AD. Proto můžete mít situaci, kdy vyprší platnost hesel uživatelů ve vaší spravované doméně, ale ve službě Azure AD stále platí. V takových scénářích potřebují uživatelé změnit heslo v Azure AD a nové heslo se synchronizuje do vaší spravované domény. Kromě toho se k vaší spravované doméně nesynchronizují atributy *hesla – bez vypršení platnosti* a *uživatelské heslo-při příštím přihlášení* pro uživatelské účty.
@@ -131,7 +131,7 @@ Azure AD Domain Services je součástí bezplatné zkušební verze pro Azure. M
 Ne. Jakmile povolíte Azure AD Domain Services spravovanou doménu, služba bude dostupná v rámci vybrané virtuální sítě, dokud neodstraníte spravovanou doménu. Neexistuje žádný způsob, jak službu pozastavit. Fakturace bude pokračovat po hodinách, dokud neodstraníte spravovanou doménu.
 
 ### <a name="can-i-failover-azure-ad-domain-services-to-another-region-for-a-dr-event"></a>Je možné převzetí služeb při selhání Azure AD Domain Services do jiné oblasti pro událost zotavení po havárii?
-Ne. Azure AD Domain Services aktuálně neposkytuje geograficky redundantní model nasazení. It'is je omezená na jednu virtuální síť v oblasti Azure. Pokud chcete využívat více oblastí Azure, musíte spustit řadiče Doména služby Active Directory na virtuálních počítačích Azure s IaaS. Pokyny k architektuře najdete [tady](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain).
+Ne. Azure AD Domain Services aktuálně neposkytuje geograficky redundantní model nasazení. Je omezená na jednu virtuální síť v oblasti Azure. Pokud chcete využívat více oblastí Azure, musíte spustit řadiče Doména služby Active Directory na virtuálních počítačích Azure s IaaS. Pokyny k architektuře najdete v tématu věnovaném [rozšiřování místní domény služby Active Directory do Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain).
 
 ### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>Můžu Azure AD Domain Services jako součást sady Enterprise Mobility Suite (EMS)? Potřebuji Azure AD Premium používat Azure AD Domain Services?
 Ne. Azure AD Domain Services je služba Azure s průběžnými platbami, která není součástí EMS. Azure AD Domain Services lze použít se všemi edicemi služby Azure AD (Free a Premium). Fakturuje se po hodinách podle využití.

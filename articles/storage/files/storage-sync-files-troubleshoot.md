@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/8/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 1b24258efdd75977b5571506b3eabf952a4ae0a4
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 9318944004ae98eeb2a3300cabca07dfbe4e4fc7
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027781"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514625"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -41,8 +41,15 @@ Pokud se pokusíte nainstalovat agenta synchronizace v řadiči domény služby 
 
 Pokud ho chcete vyřešit, přeneste roli primárního řadiče domény na jiný řadič domény se systémem Windows Server 2012 R2 nebo novějším a pak nainstalujte synchronizaci.
 
-<a id="server-registration-prerequisites"></a>**Při registraci serveru se zobrazí následující zpráva: chybí předpoklady.**
+<a id="parameter-is-incorrect"></a>**Přístup ke svazku na Windows Serveru 2012 R2 se nezdařil s chybou: parametr je nesprávný.**  
+Po vytvoření koncového bodu serveru v systému Windows Server 2012 R2 dojde k následující chybě při přístupu ke svazku:
 
+Písmeno_jednotky: \ není k dispozici.  
+Parametr je nesprávný.
+
+Chcete-li řešení vyřešit, nainstalujte nejnovější aktualizace pro systém Windows Server 2012 R2 a restartujte server.
+
+<a id="server-registration-prerequisites"></a>**Při registraci serveru se zobrazí následující zpráva: chybí předpoklady.**  
 Tato zpráva se zobrazí, pokud v PowerShellu 5,1 není nainstalovaný modul AZ nebo AzureRM PowerShell. 
 
 > [!Note]  
@@ -957,7 +964,7 @@ if ($fileShare -eq $null) {
 
     Pokud se **Služba hybridní synchronizace souborů** v seznamu nezobrazí, proveďte následující kroky:
 
-    - Klikněte na tlačítko **Add** (Přidat).
+    - Klikněte na tlačítko **Přidat**.
     - V poli **role** vyberte **Čtenář a přístup k datům**.
     - Do pole **Vybrat** zadejte **Služba Hybrid synchronizace souborů Service**, vyberte roli a klikněte na **Uložit**.
 

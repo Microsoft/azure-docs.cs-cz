@@ -1,18 +1,18 @@
 ---
 title: Domény událostí v Azure Event Grid
-description: Popisuje způsob použití domén událostí ke správě témat v Azure Event Grid.
+description: Tento článek popisuje, jak pomocí domén událostí spravovat tok vlastních událostí v různých obchodních organizacích, zákaznících nebo aplikacích.
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
-ms.date: 01/08/2019
-ms.openlocfilehash: ef0a9213d095d0b7ae4343e2af145236a7e005a1
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.date: 01/21/2020
+ms.openlocfilehash: df560df21740d5396bc177e20de5d0eb4bf47713
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305412"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511378"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Porozumění doménám událostí pro správu Event Grid témata
 
@@ -65,7 +65,7 @@ Když vytvoříte doménu události, budete mít k disEvent Grid koncový bod pu
 
 Pokud chcete publikovat události do libovolného tématu v doméně události, nahrajte události do koncového bodu domény [stejným způsobem jako u vlastního tématu](./post-to-custom-topic.md). Jediným rozdílem je, že musíte zadat téma, do kterého chcete událost doručit.
 
-Publikování následujícího pole událostí by `"id": "1111"` například odesílalo událost s tématem `foo` v době, kdy se událost, `"id": "2222"` která byla odeslána do tématu `bar`:
+Publikování následujícího pole událostí by například poslalo událost s `"id": "1111"` k tématu `foo`, zatímco se událost with `"id": "2222"` pošle do tématu `bar`:
 
 ```json
 [{
@@ -105,13 +105,13 @@ Tady jsou limity a kvóty související s doménami událostí:
 - 50 rozsahů doménových předplatných 
 - frekvence příjmu událostí 5 000 za sekundu (do domény)
 
-Pokud vám tato omezení neodpovídají, můžete se obrátit na produktového týmu otevřením lístku podpory nebo odesláním e [askgrid@microsoft.com](mailto:askgrid@microsoft.com)-mailu na adresu. 
+Pokud vám tato omezení neodpovídají, můžete se obrátit na produktový tým otevřením lístku podpory nebo odesláním e-mailu [askgrid@microsoft.com](mailto:askgrid@microsoft.com). 
 
 ## <a name="pricing"></a>Ceny
 Domény událostí používají stejné [ceny operací](https://azure.microsoft.com/pricing/details/event-grid/) jako u všech ostatních funkcí v Event Grid použít.
 
 Operace fungují v doménách událostí stejně jako v uživatelských tématech. Každá příchozí událost události do domény události je operace a každý pokus o doručení události je operace.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o nastavení domén událostí, vytváření témat, vytváření odběrů událostí a publikování událostí najdete v tématu [Správa domén událostí](./how-to-event-domains.md).

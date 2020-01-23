@@ -8,12 +8,12 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 8022304af0f429024a796e02e64f6e23b938bd57
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 93e3a5ed442c975f75045d86d6b890ee4113c465
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912288"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514251"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Běžné potíže se službou Azure IoT Edge a jejich řešení
 
@@ -105,7 +105,7 @@ Ve Windows:
 ### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>Pokud není spuštěn Správce zabezpečení IoT Edge, ověřte váš konfigurační soubor yaml
 
 > [!WARNING]
-> Soubory YAML nemůžou jako odsazení obsahovat tabulátory. Místo toho použijte 2 mezery.
+> Soubory YAML nemůžou jako odsazení obsahovat tabulátory. Místo toho použijte 2 mezery. Elementy na nejvyšší úrovni by neměly mít žádné úvodní mezery.
 
 V Linuxu:
 
@@ -121,7 +121,7 @@ Ve Windows:
 
 ### <a name="check-container-logs-for-issues"></a>Zkontrolujte protokoly kontejneru pro problémy
 
-Po spuštění démona zabezpečení IoT Edge, prohlédněte si protokoly kontejnerů a detekujte problémy. Začněte s nasazenými kontejnery a pak se podívejte do kontejnerů, které tvoří modul runtime IoT Edge: edgeAgent a edgeHub. Protokoly agenta IoT Edge obvykle poskytují informace o životním cyklu každého kontejneru. Protokoly centra IoT Edge poskytují informace o zasílání zpráv a směrování. 
+Po spuštění démona zabezpečení IoT Edge, prohlédněte si protokoly kontejnerů a detekujte problémy. Začněte s nasazenými kontejnery a pak se podívejte do kontejnerů, které tvoří modul runtime IoT Edge: edgeAgent a edgeHub. Protokoly agenta IoT Edge obvykle poskytují informace o životním cyklu každého kontejneru. Protokoly centra IoT Edge poskytují informace o zasílání zpráv a směrování.
 
    ```cmd
    iotedge logs <container name>
@@ -163,7 +163,7 @@ Nahraďte `env: {}` pomocí:
    ```
 
    > [!WARNING]
-   > Soubory YAML nesmí obsahovat tabulátory jako identation. Místo toho použijte 2 mezery.
+   > Soubory YAML nesmí obsahovat tabulátory jako identation. Místo toho použijte 2 mezery. Položky nejvyšší úrovně nemohou mít počáteční prázdné znaky.
 
 Uložte soubor a restartujte správce zabezpečení IoT Edge.
 
@@ -391,7 +391,7 @@ Ve výchozím nastavení IoT Edge spouští moduly ve vlastní izolované síti 
 
 **Možnost 1: nastavení serveru DNS v nastavení modulu pro vytvoření kontejneru**
 
-Zadejte server DNS pro vaše prostředí v nastavení kontejnerového modulu, který bude platit pro všechny moduly kontejneru spouštěné modulem. Vytvořte soubor s názvem `daemon.json` určení serveru DNS, který chcete použít. Příklad:
+Zadejte server DNS pro vaše prostředí v nastavení kontejnerového modulu, který bude platit pro všechny moduly kontejneru spouštěné modulem. Vytvořte soubor s názvem `daemon.json` určení serveru DNS, který chcete použít. Například:
 
 ```json
 {
@@ -419,7 +419,7 @@ Pokud umístění již obsahuje `daemon.json` soubor, přidejte do něj klíč *
 
 **Možnost 2: nastavení serveru DNS v nasazení IoT Edge na modul**
 
-Můžete nastavit server DNS pro *createOptions* modulu v nasazení IoT Edge. Příklad:
+Můžete nastavit server DNS pro *createOptions* modulu v nasazení IoT Edge. Například:
 
 ```json
 "createOptions": {
@@ -435,6 +435,6 @@ Nezapomeňte tuto hodnotu nastavit i pro moduly *edgeAgent* a *edgeHub* .
 
 ## <a name="next-steps"></a>Další kroky
 
-Myslíte si, že jste v platformě IoT Edge našli chybu? [Odešlete problém](https://github.com/Azure/iotedge/issues) tak, aby Pokračujeme ke zlepšení. 
+Myslíte si, že jste v platformě IoT Edge našli chybu? [Odešlete problém](https://github.com/Azure/iotedge/issues) tak, aby Pokračujeme ke zlepšení.
 
 Pokud máte další dotazy, vytvořit [žádost o podporu](https://portal.azure.com/#create/Microsoft.Support) nápovědu.

@@ -5,12 +5,12 @@ author: Rajeswari-Mamilla
 ms.topic: how-to
 ms.date: 12/22/2019
 ms.author: ramamill
-ms.openlocfilehash: 318b73011901e9ab07643bc2ecec28e5016e8702
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 43e6a39a52eb81573b4a4ba8ad63d48d0e51dedd
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613903"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514801"
 ---
 # <a name="automate-mobility-service-installation"></a>Automatizace instalace služby mobility
 
@@ -19,8 +19,8 @@ Tento článek popisuje, jak automatizovat instalaci a aktualizace pro agenta sl
 Když nasadíte Site Recovery pro zotavení po havárii místních virtuálních počítačů VMware a fyzických serverů do Azure, nainstalujete agenta služby mobility na každý počítač, který chcete replikovat. Služba mobility zachycuje zápisy dat na počítači a předá je do Site Recovery procesového serveru pro replikaci. Službu mobility můžete nasadit několika způsoby:
 
 - **Nabízená instalace**: umožňuje Site Recovery nainstalovat agenta služby mobility, když povolíte replikaci pro počítač v Azure Portal.
-- **Ruční instalace**: Nainstalujte službu mobility ručně na každý počítač. [Přečtěte si další informace](vmware-physical-mobility-service-overview.md) o nabízených a ručních instalacích.
-- **Automatizované nasazení**: automatizujte instalaci pomocí nástrojů pro nasazení softwaru, jako je System Center Configuration Manager, nebo nástrojů třetích stran, jako je například Intigua JetPatch.
+- **Ruční instalace**: Nainstalujte službu mobility ručně na každý počítač. [Přečtěte si další informace](/vmware-physical-mobility-service-overview.md) o nabízených a ručních instalacích.
+- **Automatizované nasazení**: automatizujte instalaci pomocí nástrojů pro nasazení softwaru, jako je Microsoft Endpoint Configuration Manager nebo nástrojů třetích stran, jako je například Intigua JetPatch.
 
 Automatizovaná instalace a aktualizace poskytuje řešení v těchto případech:
 

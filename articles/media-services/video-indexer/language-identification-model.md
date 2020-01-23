@@ -1,5 +1,5 @@
 ---
-title: Automatické určení mluveného jazyka pomocí Video Indexer – Azure
+title: Použití Video Indexer k automatické identifikaci mluvených jazyků – Azure
 titleSuffix: Azure Media Services
 description: Tento článek popisuje, jak se Video Indexer model identifikace jazyka používá k automatické identifikaci mluveného jazyka ve videu.
 services: media-services
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: ellbe
-ms.openlocfilehash: ce3e488a6387f9a823d7c1b514b52af24944776b
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 7a2e03b8dacbf6c3ff20e02c804804b671e86d97
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838997"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513877"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Automaticky identifikovat mluvený jazyk pomocí modelu identifikace jazyka
 

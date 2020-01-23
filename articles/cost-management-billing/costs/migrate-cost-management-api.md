@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/25/2019
+ms.date: 01/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 0dfb7245135097780f027185e4037b6cafbae690
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b0c30cd35efd598767d21dbdafc5100d8896380c
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75989355"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514710"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migrace z smlouva Enterprise na rozhraní API zákaznické smlouvy Microsoftu
 
@@ -81,7 +81,7 @@ Pokud používáte jakákoli existující rozhraní API EA, musíte je aktualizo
 | Účel | Stará nabídka | Nová nabídka |
 | --- | --- | --- |
 | Cloudyn | [Cloudyn.com](https://www.cloudyn.com) | [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) |
-| Power BI | Balíček obsahu a konektor pro [Microsoft spotřeb Insights](/power-bi/desktop-connect-azure-consumption-insights) | [Microsoft Azure Consumption Insights Power BI aplikace](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview) a [konektor Azure Consumption Insights](/power-bi/desktop-connect-azure-consumption-insights) |
+| Power BI | Balíček obsahu a konektor pro [Microsoft spotřeb Insights](/power-bi/desktop-connect-azure-consumption-insights) |  [Konektor Azure Consumption Insights](/power-bi/desktop-connect-azure-consumption-insights) |
 
 ## <a name="apis-to-get-balance-and-credits"></a>Rozhraní API pro získání rovnováhy a kreditů
 
@@ -216,7 +216,7 @@ Název vlastnosti obsahující pole záznamů o využití se změnil z dat na _h
 | SubscriptionGuid | subscriptionId | &nbsp;  |
 | SubscriptionId | subscriptionId | &nbsp;  |
 | SubscriptionName | subscriptionName | &nbsp;  |
-| Značky | značek | Vlastnost tagss se vztahuje na kořenový objekt, nikoli na vlastnost vnořené vlastnosti. |
+| Značky | tags | Vlastnost tagss se vztahuje na kořenový objekt, nikoli na vlastnost vnořené vlastnosti. |
 | UnitOfMeasure | unitOfMeasure | Přesné řetězcové hodnoty se liší. |
 | usageEndDate | date | &nbsp;  |
 | Year | Žádné | Analyzuje rok od data. |

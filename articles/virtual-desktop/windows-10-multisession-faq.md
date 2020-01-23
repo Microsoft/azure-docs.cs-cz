@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: helohr
-ms.openlocfilehash: 10724407b8ba5568b38a844f2bf475060e2b7699
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6bdac3f06834ccb5454efa0d77bec5a5a6c5b5bf
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227666"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76515101"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Nejčastější dotazy k Windows 10 Enterprise pro více relací
 
@@ -44,7 +44,7 @@ Přizpůsobte si bitovou kopii podle svých potřeb instalací obchodních aplik
  
 ## <a name="how-do-i-manage-windows-10-enterprise-multi-session-after-deployment"></a>Návody spravovat více relací Windows 10 Enterprise po nasazení?
 
-Můžete použít libovolný podporovaný konfigurační nástroj, ale doporučujeme System Center Configuration Manager 1906, protože podporuje Windows 10 Enterprise multi-session. V současnosti pracujeme na podpoře Microsoft Intune.
+Můžete použít libovolný podporovaný konfigurační nástroj, ale doporučujeme Configuration Manager verzi 1906, protože podporuje víc relací Windows 10 Enterprise. V současnosti pracujeme na podpoře Microsoft Intune.
  
 ## <a name="can-windows-10-enterprise-multi-session-be-azure-active-directory-ad-joined"></a>Může se Azure Active Directory (AD) Windows 10 Enterprise víc relací připojit?
 
