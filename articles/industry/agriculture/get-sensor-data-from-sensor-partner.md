@@ -5,20 +5,20 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 7c40cfc8fbc6a9957281be842f6714fa9289a3c8
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 745e3f0b6c7bd4e6d984ce2df29b9965d4b8ca21
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122215"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513727"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Získat data ze senzorů od partnerů snímačů
 
 Azure FarmBeats pomáhá přenést streamovaná data ze zařízení IoT a senzorů do DataHub. V současné době jsou podporovány následující partneři zařízení snímačů.
 
-  ![Partneři FarmBeats](./media/get-sensor-data-from-sensor-partner/partner-information-1.png)
+  ![Partneři FarmBeats](./media/get-sensor-data-from-sensor-partner/partner-information-2.png)
 
-Integrace dat zařízení s Azure FarmBeats vám pomůže získat základní data ze senzorů IoT nasazených ve vaší farmě do DataHub. Data, jakmile jsou k dispozici, je možné vizuálně vymezit pomocí akcelerátoru FarmBeats. Data se dají použít pro vytváření modelů datových fúzí a machine learningu a umělé Intelligence (ML/AI) pomocí FarmBeats.
+Integrace dat zařízení s Azure FarmBeats vám pomůže získat základní data ze senzorů IoT nasazených ve vaší farmě do datového centra. Data, jakmile jsou k dispozici, je možné vizuálně vymezit pomocí akcelerátoru FarmBeats. Data se dají použít pro vytváření modelů datových fúzí a machine learningu a umělé Intelligence (ML/AI) pomocí FarmBeats.
 
 Pokud chcete spustit streamování dat senzorů, zajistěte následující:
 
@@ -44,7 +44,7 @@ Případně můžete přihlašovací údaje vygenerovat spuštěním tohoto skri
 1. Stáhněte [soubor zip](https://aka.ms/farmbeatspartnerscriptv2)a extrahujte ho na místní disk. V souboru zip bude k dispozici jeden soubor.
 2. Přihlaste se k https://portal.azure.com/ a přejít na registrace aplikací Azure Active Directory >.
 
-3. Klikněte na registrace aplikace, která se vytvořila jako součást nasazení FarmBeats. Bude mít stejný název jako FarmBeats DataHub.
+3. Klikněte na registrace aplikace, která se vytvořila jako součást nasazení FarmBeats. Bude mít stejný název jako FarmBeats data hub.
 
 4. Klikněte na "vystavení rozhraní API" – > klikněte na Přidat klientskou aplikaci a zadejte **04b07795-8ddb-461a-bbee-02f9e1bf7b46** a zaškrtněte možnost autorizovat rozsah. Tím se zajistí přístup k rozhraní příkazového řádku Azure CLI (Cloud Shell), aby se prováděly níže uvedené kroky.
 
