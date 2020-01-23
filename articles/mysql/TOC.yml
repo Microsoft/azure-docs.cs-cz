@@ -95,6 +95,10 @@
           href: concepts-data-access-security-private-link.md
         - name: Šifrování dat
           href: concepts-data-encryption-mysql.md
+        - name: Šifrování dat
+          href: concepts-data-encryption-mysql.md
+        - name: Ověřování Azure AD
+          href: concepts-azure-ad-authentication.md
     - name: Kontinuita podnikových procesů
       items:
         - name: Úvod do provozní kontinuity
@@ -238,6 +242,10 @@
       items:
         - name: portál Azure
           href: howto-data-encryption-portal.md
+    - name: Integrace Azure AD
+      items:
+        - name: Konfigurace integrace Azure AD
+          href: howto-configure-sign-in-azure-ad-authentication.md
     - name: Restartování serveru
       items:
         - name: portál Azure
