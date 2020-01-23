@@ -13,18 +13,18 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 10/24/2019
 ms.author: juliako
-ms.openlocfilehash: af3d4b51dadfaa99a166ca0ce475c5a110d8f6e8
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e4eee3b9f3f97bf7cd7a7b61425ec5c9a3a198ef
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933684"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543071"
 ---
 # <a name="live-event-states-and-billing"></a>Stavy a fakturace živých událostí
 
-V Azure Media Services zahájí živá událost účtování, jakmile se změní stav na **spuštěno**. Chcete-li zastavit živou událost z fakturace, je nutné zastavit živou událost.
+V Azure Media Services zahájí živá událost účtování, jakmile se změní stav na **spuštěno**. Bude se vám účtovat i v případě, že se ve službě neprovádí tok videa. Chcete-li zastavit živou událost z fakturace, je nutné zastavit živou událost. Živý přepis se účtuje stejným způsobem jako živá událost.
 
-Když je **LiveEventEncodingType** na [živé události](https://docs.microsoft.com/rest/api/media/liveevents) nastavené na Standard nebo Premium1080p, Media Services automaticky vypne veškerou živou událost, která je stále ve **spuštěném** stavu 12 hodin po ztrátě vstupního kanálu, a nebudete mít **živý výstup** . s běží. Stále se ale bude účtovat čas, kdy byla živá událost ve stavu **spuštěno** .
+Když je **LiveEventEncodingType** na [živé události](https://docs.microsoft.com/rest/api/media/liveevents) nastavené na Standard nebo Premium1080p, Media Services automaticky vypne veškerou živou událost, která je stále ve **spuštěném** stavu, 12 hodin po ztrátě vstupního kanálu a neběží **živý výstup**. Stále se ale bude účtovat čas, kdy byla živá událost ve stavu **spuštěno** .
 
 > [!NOTE]
 > Průchozí živé události se automaticky nevypnou a musí se explicitně zastavit přes rozhraní API, aby se předešlo nadměrnému vyúčtování. 
@@ -40,6 +40,8 @@ Když je **LiveEventEncodingType** na [živé události](https://docs.microsoft.
 |**Instalovanou**| Prostředky živé události byly přiděleny, byly vygenerovány adresy URL ingestování a verze Preview a jsou schopny přijímat živé streamy. V tomto okamžiku je fakturace aktivní. Chcete-li zastavit další fakturaci, je nutné explicitně volat stop u prostředku živé události.|
 |**Zastaví**| Dojde k zastavení živé události a probíhá rušení prostředků. V tomto přechodném stavu nedochází k žádnému účtování. V tomto stavu nejsou povoleny aktualizace nebo streamování.|
 |**Odstraňuje**| Živá událost se odstraňuje. V tomto přechodném stavu nedochází k žádnému účtování. V tomto stavu nejsou povoleny aktualizace nebo streamování.|
+
+Při vytváření živé události se můžete rozhodnout povolit živý přepis. Pokud to uděláte, budou se vám účtovat živý přepisy, kdykoli je živá událost ve stavu **spuštěno** . Všimněte si, že se vám bude účtovat i v případě, že nedojde k žádnému toku zvuku přes živou událost.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: f903a358ea493cd01238339ede10b4b16f98c7c5
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: e7cddf95a6537e5799acc523effb484c2249453d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514591"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548046"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>Použití schématu CloudEvents v 1.0 s Event Grid
 
@@ -139,11 +139,85 @@ New-AzureRmEventGridSubscription `
   -DeliverySchema CloudEventSchemaV1_0
 ```
 
- V současné době nemůžete použít Trigger Event Grid pro aplikaci Azure Functions, když se událost doručí ve schématu CloudEvents. Použijte Trigger HTTP. Příklady implementace triggeru HTTP, který přijímá události ve schématu CloudEvents, najdete v tématu [použití triggeru http jako triggeru Event Grid](../azure-functions/functions-bindings-event-grid.md#use-an-http-trigger-as-an-event-grid-trigger).
+ V současné době nemůžete použít Trigger Event Grid pro aplikaci Azure Functions, když se událost doručí ve schématu CloudEvents. Použijte Trigger HTTP. Příklady implementace triggeru HTTP, který přijímá události ve schématu CloudEvents, najdete v tématu [použití CloudEvents s Azure Functions](#azure-functions).
 
  ## <a name="endpoint-validation-with-cloudevents-v10"></a>Ověření koncového bodu pomocí CloudEvents v 1.0
 
 Pokud už jste obeznámeni s Event Grid, možná jste si všimli, že je Event Grid ověření koncového bodu handshake pro předcházení zneužití. CloudEvents v 1.0 implementuje svou vlastní [sémantiku ochrany proti zneužívání](security-authentication.md#webhook-event-delivery) pomocí metody HTTP. Další informace si můžete přečíst [tady](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection). Při použití schématu CloudEvents pro výstup Event Grid použití s ochranou zneužití CloudEvents v 1.0 místo mechanismu události ověřování Event Grid.
+
+<a name="azure-functions"></a>
+
+## <a name="use-with-azure-functions"></a>Použít s Azure Functions
+
+[Vazba Azure Functions Event Grid](../azure-functions/functions-bindings-event-grid.md) není nativně podporovaná CloudEvents, takže funkce aktivované protokolem HTTP se používají ke čtení zpráv CloudEvents. Při použití triggeru HTTP ke čtení CloudEvents je nutné napsat kód pro to, co aktivační událost Event Grid automaticky:
+
+* Odešle odpověď ověření k žádosti o [ověření předplatného](../event-grid/security-authentication.md#webhook-event-delivery).
+* Vyvolá funkci jednou pro každý prvek pole události obsaženého v textu požadavku.
+
+Informace o adrese URL, která se má použít k místnímu vyvolání funkce nebo při spuštění v Azure, najdete v tématu [Referenční dokumentace k aktivačním vazbám http](../azure-functions/functions-bindings-http-webhook.md) .
+
+Následující vzorový C# kód triggeru HTTP simuluje chování triggeru Event Grid.  Tento příklad slouží pro události doručené ve schématu CloudEvents.
+
+```csharp
+[FunctionName("HttpTrigger")]
+public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]HttpRequestMessage req, ILogger log)
+{
+    log.LogInformation("C# HTTP trigger function processed a request.");
+
+    var requestmessage = await req.Content.ReadAsStringAsync();
+    var message = JToken.Parse(requestmessage);
+
+    if (message.Type == JTokenType.Array)
+    {
+        // If the request is for subscription validation, send back the validation code.
+        if (string.Equals((string)message[0]["eventType"],
+        "Microsoft.EventGrid.SubscriptionValidationEvent",
+        System.StringComparison.OrdinalIgnoreCase))
+        {
+            log.LogInformation("Validate request received");
+            return req.CreateResponse<object>(new
+            {
+                validationResponse = message[0]["data"]["validationCode"]
+            });
+        }
+    }
+    else
+    {
+        // The request is not for subscription validation, so it's for an event.
+        // CloudEvents schema delivers one event at a time.
+        log.LogInformation($"Source: {message["source"]}");
+        log.LogInformation($"Time: {message["eventTime"]}");
+        log.LogInformation($"Event data: {message["data"].ToString()}");
+    }
+
+    return req.CreateResponse(HttpStatusCode.OK);
+}
+```
+
+Následující ukázkový kód JavaScriptu pro Trigger HTTP simuluje chování triggeru Event Grid. Tento příklad slouží pro události doručené ve schématu CloudEvents.
+
+```javascript
+module.exports = function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    var message = req.body;
+    // If the request is for subscription validation, send back the validation code.
+    if (message.length > 0 && message[0].eventType == "Microsoft.EventGrid.SubscriptionValidationEvent") {
+        context.log('Validate request received');
+        var code = message[0].data.validationCode;
+        context.res = { status: 200, body: { "ValidationResponse": code } };
+    }
+    else {
+        // The request is not for subscription validation, so it's for an event.
+        // CloudEvents schema delivers one event at a time.
+        var event = JSON.parse(message);
+        context.log('Source: ' + event.source);
+        context.log('Time: ' + event.eventTime);
+        context.log('Data: ' + JSON.stringify(event.data));
+    }
+    context.done();
+};
+```
 
 ## <a name="next-steps"></a>Další kroky
 

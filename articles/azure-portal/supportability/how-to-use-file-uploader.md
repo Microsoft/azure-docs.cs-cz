@@ -6,16 +6,17 @@ tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.service: azure-supportability
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 01/23/2020
 ms.author: genli
-ms.openlocfilehash: 8c22ce859aa58aeb8339b16265f6614bd7e723f8
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: ac8dffe3b1200f3925478f968170498ee744bb79
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896997"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548964"
 ---
 # <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Microsoft Azure nové pokyny pro odesílání souborů žádostí o podporu
+
 Když [vytvoříte žádost o podporu](https://portal.azure.com/#create/Microsoft.Support), možnost nahrávání souborů vám může pomoci snadno odeslat diagnostické soubory nebo jiné soubory, které považujete za relevantní pro incident.  
 
 > [!NOTE]
@@ -25,12 +26,13 @@ Když [vytvoříte žádost o podporu](https://portal.azure.com/#create/Microsof
 
 Při použití možnosti nahrávání souborů postupujte podle těchto pokynů:
 
-* Všechny soubory musí mít příponu názvu souboru, například. docx nebo. xlsx. Seznam povolených přípon názvů souborů najdete v tabulce.
+* Všechny soubory musí mít příponu názvu souboru, například *. docx* nebo *. xlsx*. Povolené přípony názvů souborů najdete v tabulce.
 * Název souboru nesmí být delší než 110 znaků.
 * Nemůžete nahrát víc než jeden soubor.
 * Soubory nemohou být větší než 4 MB.
 
 ## <a name="table-of-the-allowed-file-name-extensions"></a>Tabulka povolených přípon názvů souborů
+
 | 0-9, A-C    | D-G   | H-M         | N-P   | R-T      | U-W        | X-Z     |
 |-------------|-------|-------------|-------|----------|------------|---------|
 | .7z         | .dat  | .hwl        | .odx  | . rar     | .tdb       | .xlam   |

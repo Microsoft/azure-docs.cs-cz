@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 98c76b2be6a5cc801f9e7b31357cbeb158a966fe
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 2ce8b9e82907402538ca2d14b864c02bb8bc2d82
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771287"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547995"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Užitečné prostředky pro práci s Sentinel Azure
 
@@ -46,13 +46,13 @@ Můžete auditovat následující podporované operace.
 |Odstranit uložené výsledky hledání    |Microsoft. OperationalInsights/pracovní prostory/savedSearches|
 |Aktualizovat pravidla upozornění |Microsoft. SecurityInsights/alertRules|
 |Odstranit pravidla výstrah |Microsoft. SecurityInsights/alertRules|
-|Aktualizace akcí reakce na pravidlo upozornění |Microsoft. SecurityInsights/alertRules|
-|Odstranit akce reakce pravidla výstrahy |Microsoft. SecurityInsights/alertRules|
+|Aktualizace akcí reakce na pravidlo upozornění |Microsoft. SecurityInsights/alertRules/Actions|
+|Odstranit akce reakce pravidla výstrahy |Microsoft. SecurityInsights/alertRules/Actions|
 |Aktualizovat záložky   |Microsoft. SecurityInsights/záložky|
 |Odstranit záložky   |Microsoft. SecurityInsights/záložky|
 |Aktualizační případy   |Microsoft. SecurityInsights/případy|
-|Aktualizovat případové šetření  |Microsoft. SecurityInsights/případy|
-|Vytvořit komentáře k případu   |Microsoft. SecurityInsights/případy|
+|Aktualizovat případové šetření  |Microsoft. SecurityInsights/případy/vyšetřování|
+|Vytvořit komentáře k případu   |Microsoft. SecurityInsights/případy/komentáře|
 |Aktualizace datových konektorů |Microsoft. SecurityInsights/dataconnects|
 |Odstranit datové konektory |Microsoft. SecurityInsights/dataconnects|
 |Aktualizovat nastavení    |Microsoft. SecurityInsights/Settings|

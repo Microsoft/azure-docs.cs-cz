@@ -8,22 +8,22 @@ ms.date: 10/29/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9e4fd0203d68ef1f39d6efbb9d17d3e517969bff
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a222f72e705184c5a7ba6701cfda41073c7eba57
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457274"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548743"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Vysvětlení způsobu, jakým Azure IoT Edge používá certifikáty
 
-K ověření identity a legitimity modulu runtime [centra IoT Edge](iot-edge-runtime.md#iot-edge-hub) , ke kterému se připojují, se IoT Edge certifikáty používají pro moduly a podřízená zařízení IoT. Tyto ověřování povolit protokol TLS (zabezpečení transportní vrstvy) zabezpečené připojení mezi modul runtime, moduly a zařízení IoT. Jako služby IoT Hub, sama IoT Edge vyžaduje zabezpečené a šifrované připojení z IoT směru server-klient (listy) zařízení a moduly IoT Edge. Aby bylo možné vytvořit zabezpečené připojení TLS, modul IoT Edge hub prezentuje řetěz certifikátů serveru pro připojení klientů, aby ověřil jeho identitu.
+IoT Edge certifikáty používají moduly a zařízení IoT pro příjem dat k ověření identity a legitimity modulu runtime [centra IoT Edge](iot-edge-runtime.md#iot-edge-hub) . Tyto ověřování povolit protokol TLS (zabezpečení transportní vrstvy) zabezpečené připojení mezi modul runtime, moduly a zařízení IoT. Jako služby IoT Hub, sama IoT Edge vyžaduje zabezpečené a šifrované připojení z IoT směru server-klient (listy) zařízení a moduly IoT Edge. Aby bylo možné vytvořit zabezpečené připojení TLS, modul IoT Edge hub prezentuje řetěz certifikátů serveru pro připojení klientů, aby ověřil jeho identitu.
 
 Tento článek vysvětluje, jak IoT Edge certifikáty můžou fungovat v produkčních, vývojových a testovacích scénářích. Tyto skripty jsou různé (prostředí Powershell nebo bash), jsou pojmy stejné mezi systémy Linux a Windows.
 
 ## <a name="iot-edge-certificates"></a>Certifikáty IoT Edge
 
-Výrobci nejsou obvykle koncoví uživatelé zařízení IoT Edge. V některých případech je jediným vztahem mezi těmito dvěma pokaždé, když koncový uživatel, nebo operátor zakoupí obecné zařízení provedené výrobcem. Jindy, výrobce v rámci smlouvy pracuje na sestavení vlastního zařízení jménem operátora. Návrh certifikát IoT Edge se pokusí vezměte v úvahu oba scénáře.
+Výrobci nejsou obvykle koncoví uživatelé zařízení IoT Edge. V některých případech je jediným vztahem mezi těmito dvěma pokaždé, když koncový uživatel, nebo operátor zakoupí obecné zařízení provedené výrobcem. Jinak výrobce v rámci smlouvy pracuje na sestavení vlastního zařízení pro operátor. Návrh certifikát IoT Edge se pokusí vezměte v úvahu oba scénáře.
 
 Následující obrázek znázorňuje použití IoT Edge certifikátů. Mezi certifikátem kořenové certifikační autority a certifikátem certifikační autority zařízení může být nulový, jeden nebo mnoho zprostředkujících podpisových certifikátů v závislosti na počtu zúčastněných entit. Tady zobrazujeme jeden případ.
 
@@ -51,7 +51,7 @@ Výrobce v každém případě používá k podepisování certifikátu certifik
 
 ### <a name="device-ca-certificate"></a>Certifikát certifikační Autority zařízení
 
-Certifikát certifikační Autority zařízení je generují z a podepíše konečné certifikát zprostředkující certifikační Autority v procesu. Tento certifikát se instaluje do samotného IoT Edge zařízení, nejlépe v zabezpečeném úložišti, jako je modul hardwarového zabezpečení (HSM). Kromě toho certifikátu certifikační Autority zařízení jednoznačně identifikuje zařízení IoT Edge. Certifikát certifikační autority zařízení může podepsat jiné certifikáty. 
+Certifikát certifikační Autority zařízení je generují z a podepíše konečné certifikát zprostředkující certifikační Autority v procesu. Tento certifikát se instaluje do samotného IoT Edge zařízení, nejlépe v zabezpečeném úložišti, jako je modul hardwarového zabezpečení (HSM). Kromě toho certifikátu certifikační Autority zařízení jednoznačně identifikuje zařízení IoT Edge. Certifikát certifikační autority zařízení může podepsat jiné certifikáty.
 
 ### <a name="iot-edge-workload-ca"></a>Úlohy IoT Edge certifikační Autority
 
@@ -59,7 +59,7 @@ Certifikát certifikační Autority zařízení je generují z a podepíše kone
 
 ### <a name="iot-edge-hub-server-certificate"></a>Certifikát serveru IoT Edge hub
 
-Certifikát serveru IoT Edge hub je skutečný certifikát prezentovaný koncovým zařízením a modulům pro ověření identity během navazování připojení TLS, které vyžaduje IoT Edge. Tento certifikát představuje úplný řetěz podpisových certifikátů sloužící ke generování až kořenový certifikát certifikační Autority, která musí zařízení IoT typu list důvěřovat. Při vygenerování správcem zabezpečení IoT Edge se běžný název (CN) tohoto certifikátu IoT Edge hub nastaví na vlastnost hostname v souboru config. yaml po převodu na malý případ. To je běžné příčiny záměně s IoT Edge.
+Certifikát serveru IoT Edge hub je skutečný certifikát prezentovaný koncovým zařízením a modulům pro ověření identity během navazování připojení TLS, které vyžaduje IoT Edge. Tento certifikát představuje úplný řetěz podpisových certifikátů sloužící ke generování až kořenový certifikát certifikační Autority, která musí zařízení IoT typu list důvěřovat. Při vygenerování správcem zabezpečení IoT Edge se běžný název (CN) tohoto certifikátu IoT Edge hub nastaví na vlastnost hostname v souboru config. yaml po převodu na malý případ. Tato konfigurace je běžnou zdrojem nejasností s IoT Edge.
 
 ## <a name="production-implications"></a>Dopad na produkční
 
@@ -94,9 +94,9 @@ Zobrazí se hierarchie certifikátů hloubky reprezentované na snímku obrazovk
 | Certifikát kořenové certifikační Autority         | Azure IoT Hub CA certifikátu pouze Test                                                                           |
 |-----------------------------|-----------------------------------------------------------------------------------------------------------|
 | Certifikát zprostředkující certifikační Autority | Azure IoT Hub zprostředkující certifikát pouze Test                                                                 |
-| Certifikát certifikační Autority zařízení       | iotgateway.CA ("iotgateway" byla předána jako < brány název hostitele > pohodlí skripty)      |
+| Certifikát certifikační Autority zařízení       | iotgateway.CA ("iotgateway" byla předána jako < brány název hostitele > pohodlí skripty)   |
 | Certifikát pracovního vytížení certifikační Autority     | certifikační autorita iotedge pracovního vytížení                                                                                       |
-| Certifikát serveru IoT Edge hub | iotedgegw.Local (shoduje s názvem "hostitele" z config.yaml)                                                |
+| Certifikát serveru IoT Edge hub | iotedgegw.Local (shoduje s názvem "hostitele" z config.yaml)                                            |
 
 ## <a name="next-steps"></a>Další kroky
 

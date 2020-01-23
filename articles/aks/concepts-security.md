@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: 3ba4ac665df45ab6d53d2195ab59ec577f8bab05
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e461f9de8b20e4f6c8f027b1ae81ae21e54ece86
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422289"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547927"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Koncepce zabezpečení pro aplikace a clustery ve službě Azure Kubernetes (AKS)
 
@@ -30,7 +30,7 @@ V tomto článku se seznámíte se základními koncepty, které zabezpečují v
 
 V AKS jsou hlavní komponenty Kubernetes součástí spravované služby, kterou poskytuje Microsoft. Každý cluster AKS má vlastní jeden tenant vyhrazený Kubernetes hlavní server, který poskytuje Server API, Plánovač atd. Tento hlavní server spravuje a udržuje společnost Microsoft.
 
-Ve výchozím nastavení používá server Kubernetes API veřejnou IP adresu a s plně kvalifikovaným názvem domény (FQDN). Přístup k serveru rozhraní API můžete řídit pomocí Kubernetes řízení přístupu založeného na rolích a Azure Active Directory. Další informace najdete v tématu věnovaném [integraci Azure AD s AKS][aks-aad].
+Ve výchozím nastavení používá server Kubernetes API veřejnou IP adresu a plně kvalifikovaný název domény (FQDN). Přístup k serveru rozhraní API můžete řídit pomocí Kubernetes řízení přístupu založeného na rolích a Azure Active Directory. Další informace najdete v tématu věnovaném [integraci Azure AD s AKS][aks-aad].
 
 ## <a name="node-security"></a>Zabezpečení uzlů
 

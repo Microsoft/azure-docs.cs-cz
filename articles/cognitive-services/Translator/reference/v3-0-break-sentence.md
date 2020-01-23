@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 02/01/2019
+ms.date: 01/21/2020
 ms.author: swmachan
-ms.openlocfilehash: c8ef1d4dacf500c459ae1ab9a534ed118ca9e05a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4c314148b8e1495a8b5a12c42d4989d13cdd6a08
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446701"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548114"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>Translator Text API 3,0: BreakSentence
 
@@ -33,45 +33,20 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 Parametry žádosti předané řetězci dotazu jsou:
 
-<table width="100%">
-  <th width="20%">Parametr dotazu</th>
-  <th>Popis</th>
-  <tr>
-    <td>api-version</td>
-    <td>*Požadovaný parametr dotazu*.<br/>Verze rozhraní API, kterou klient požaduje. Hodnota musí být `3.0`.</td>
-  </tr>
-  <tr>
-    <td>language</td>
-    <td>*Volitelný parametr dotazu*.<br/>Značka jazyka identifikující jazyk vstupního textu. Pokud není zadán kód, použije se automatické rozpoznávání jazyka.</td>
-  </tr>
-  <tr>
-    <td>.</td>
-    <td>*Volitelný parametr dotazu*.<br/>Značka skriptu identifikující skript používaný vstupním textem Pokud není zadán skript, předpokládá se výchozí skript jazyka.</td>
-  </tr>
-</table> 
+| Parametr dotazu | Popis |
+| -------| ----------- |
+| api-version <img width=200/>   | **Požadovaný parametr dotazu**.<br/>Verze rozhraní API, kterou klient požaduje. Hodnota musí být `3.0`. |
+| language | **Volitelný parametr dotazu**.<br/>Značka jazyka identifikující jazyk vstupního textu. Pokud není zadán kód, použije se automatické rozpoznávání jazyka. |
+| .    | **Volitelný parametr dotazu**.<br/>Značka skriptu identifikující skript používaný vstupním textem Pokud není zadán skript, předpokládá se výchozí skript jazyka.  | 
 
 Hlavičky požadavku zahrnují:
 
-<table width="100%">
-  <th width="20%">Hlavičky</th>
-  <th>Popis</th>
-  <tr>
-    <td>Ověřovací hlavičky (y)</td>
-    <td><em>Požadovaná hlavička žádosti</em><br/>Podívejte se <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">na dostupné možnosti ověřování</a>.</td>
-  </tr>
-  <tr>
-    <td>Content-Type</td>
-    <td>*Požadovaná hlavička žádosti*<br/>Určuje typ obsahu datové části. Možné hodnoty jsou: `application/json`.</td>
-  </tr>
-  <tr>
-    <td>Délka obsahu</td>
-    <td>*Požadovaná hlavička žádosti*<br/>Délka textu žádosti</td>
-  </tr>
-  <tr>
-    <td>X-ClientTraceId</td>
-    <td>*Volitelné*.<br/>Identifikátor GUID generovaný klientem pro jednoznačnou identifikaci požadavku. Všimněte si, že tuto hlavičku můžete vynechat, pokud zahrnete ID trasování do řetězce dotazu pomocí parametru dotazu s názvem `ClientTraceId`.</td>
-  </tr>
-</table> 
+| Hlavičky | Popis |
+| ------- | ----------- |
+| Ověřovací hlavičky (y) <img width=200/>  | **Požadovaná hlavička žádosti**<br/>Podívejte se <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">na dostupné možnosti ověřování</a>. |
+| Content-Type | **Požadovaná hlavička žádosti**<br/>Určuje typ obsahu datové části. Možné hodnoty jsou: `application/json`. |
+| Délka obsahu    | **Požadovaná hlavička žádosti**<br/>Délka textu žádosti  | 
+| X-ClientTraceId   | **Volitelné**.<br/>Identifikátor GUID generovaný klientem pro jednoznačnou identifikaci požadavku. Všimněte si, že tuto hlavičku můžete vynechat, pokud zahrnete ID trasování do řetězce dotazu pomocí parametru dotazu s názvem `ClientTraceId`.  | 
 
 ## <a name="request-body"></a>Text požadavku
 

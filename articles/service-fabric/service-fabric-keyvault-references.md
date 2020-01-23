@@ -3,12 +3,12 @@ title: Azure Service Fabric – použití Service Fabricch odkazů na Trezor kl�
 description: Tento článek vysvětluje, jak používat podporu KeyVaultReference Service-Fabric pro tajné klíče pro aplikace.
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: 3f4c4979d0ce1329ac8ba49b236dae20a4e88b53
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: f7d8a083ea5ec4b66c29d392ee98927915465875
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167132"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545479"
 ---
 #  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Podpora KeyVaultReference pro aplikace Service Fabric (Preview)
 
@@ -22,7 +22,7 @@ Běžným problémem při sestavování cloudových aplikací je bezpečné ukl�
 
 - Úložiště centrálních tajných kódů (CSS).
 
-    Úložiště centrálních tajných kódů (CSS) je zašifrovaná místní mezipaměť tajných klíčů služby Service-Fabric, KeyVaultReference po načtení se v šablonách stylů CSS ukládá do mezipaměti.
+    Úložiště centrálních tajných kódů (CSS) je Service Fabric šifrované mezipaměti místních tajných klíčů. CSS je místní mezipaměť úložiště tajných klíčů, která uchovává citlivá data, například heslo, tokeny a klíče, zašifrované v paměti. KeyVaultReference, po načtení, jsou ukládány do mezipaměti v šablonách stylů CSS.
 
     Přidejte níže do konfigurace clusteru v části `fabricSettings`, abyste povolili všechny požadované funkce pro podporu KeyVaultReference.
 

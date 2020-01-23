@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/29/2018
+ms.date: 01/21/2020
 ms.author: swmachan
-ms.openlocfilehash: bd725d41f75bdfb1048b5bee7e8224679dbece4c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: bd27827441082698bb4e0b43e7dd22d5b7e66539
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837255"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548947"
 ---
 # <a name="translator-text-api-30-dictionary-lookup"></a>Translator Text API 3,0: vyhledávání ve slovníku
 
@@ -33,45 +33,21 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 
 Parametry žádosti předané řetězci dotazu jsou:
 
-<table width="100%">
-  <th width="20%">Parametr dotazu</th>
-  <th>Popis</th>
-  <tr>
-    <td>verze API-Version</td>
-    <td>*Povinný parametr*.<br/>Verze rozhraní API, kterou klient požaduje. Hodnota musí být `3.0`.</td>
-  </tr>
-  <tr>
-    <td>Výsledkem</td>
-    <td>*Povinný parametr*.<br/>Určuje jazyk vstupního textu. Zdrojový jazyk musí být jeden z [podporovaných jazyků](./v3-0-languages.md) , které jsou zahrnuté v oboru `dictionary`.</td>
-  </tr>
-  <tr>
-    <td>na</td>
-    <td>*Povinný parametr*.<br/>Určuje jazyk výstupního textu. Cílový jazyk musí být jeden z [podporovaných jazyků](./v3-0-languages.md) , které jsou zahrnuté v oboru `dictionary`.</td>
-  </tr>
-</table>
+| Parametr dotazu  | Popis |
+| ------ | ----------- |
+| api-version <img width=200/>   | **Povinný parametr**.<br/>Verze rozhraní API, kterou klient požaduje. Hodnota musí být `3.0` |
+| od | **Povinný parametr**.<br/>Určuje jazyk vstupního textu. Zdrojový jazyk musí být jeden z [podporovaných jazyků](./v3-0-languages.md) , které jsou zahrnuté v oboru `dictionary`. |
+| na   | **Povinný parametr**.<br/>Určuje jazyk výstupního textu. Cílový jazyk musí být jeden z [podporovaných jazyků](v3-0-languages.md) , které jsou zahrnuté v oboru `dictionary`. |
+
 
 Hlavičky požadavku zahrnují:
 
-<table width="100%">
-  <th width="20%">Hlavičky</th>
-  <th>Popis</th>
-  <tr>
-    <td>Ověřovací hlavičky (y)</td>
-    <td><em>Požadovaná hlavička žádosti</em><br/>Podívejte se <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">na dostupné možnosti ověřování</a>.</td>
-  </tr>
-  <tr>
-    <td>Typ obsahu</td>
-    <td>*Požadovaná hlavička žádosti*<br/>Určuje typ obsahu datové části. Možné hodnoty jsou: `application/json`.</td>
-  </tr>
-  <tr>
-    <td>Content-Length</td>
-    <td>*Požadovaná hlavička žádosti*<br/>Délka textu žádosti</td>
-  </tr>
-  <tr>
-    <td>X – ClientTraceId</td>
-    <td>*Volitelné*.<br/>Identifikátor GUID generovaný klientem pro jednoznačnou identifikaci požadavku. Tuto hlavičku můžete vynechat, pokud zahrnete ID trasování do řetězce dotazu pomocí parametru dotazu s názvem `ClientTraceId`.</td>
-  </tr>
-</table> 
+| Hlavičky  | Popis |
+| ------ | ----------- |
+| Ověřovací hlavičky (y) <img width=200/>  | **Požadovaná hlavička žádosti**<br/>Podívejte se <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">na dostupné možnosti ověřování</a>. |
+| Content-Type | **Požadovaná hlavička žádosti**<br/>Určuje typ obsahu datové části. Možné hodnoty jsou: `application/json`. |
+| Délka obsahu   | **Požadovaná hlavička žádosti**<br/>Délka textu žádosti |
+| X-ClientTraceId   | **Volitelné**.<br/>Identifikátor GUID generovaný klientem pro jednoznačnou identifikaci požadavku. Tuto hlavičku můžete vynechat, pokud zahrnete ID trasování do řetězce dotazu pomocí parametru dotazu s názvem `ClientTraceId`. |
 
 ## <a name="request-body"></a>Text požadavku
 
@@ -88,7 +64,7 @@ Platí následující omezení:
 * Pole může mít maximálně 10 prvků.
 * Textová hodnota prvku pole nesmí být delší než 100 znaků včetně mezer.
 
-## <a name="response-body"></a>Tělo odpovědi
+## <a name="response-body"></a>Text odpovědi
 
 Úspěšná odpověď je pole JSON s jedním výsledkem pro každý řetězec ve vstupním poli. Objekt výsledku obsahuje následující vlastnosti:
 
@@ -106,8 +82,8 @@ Platí následující omezení:
 
         | Název značky | Popis  |
         |----------|--------------|
-        | ROKU      | Přídavná jména   |
-        | ZÁLOH      | Příslovné      |
+        | ADJ      | Přídavná jména   |
+        | ADV      | Příslovné      |
         | CONJ     | Spojky |
         | DET      | Determiners  |
         | PŘEVODU    | Příkazy        |
@@ -115,7 +91,7 @@ Platí následující omezení:
         | PROSTŘEDÍ     | Předložkami |
         | CHYB     | Podstatná jména     |
         | OPERACE     | Příkazy        |
-        | JINÁ    | Jiné        |
+        | JINÉ    | Jiné        |
 
         Jako poznámku k implementaci byly tyto značky určeny funkcí označení částí v jazyce Speech a následně jsou pro každou dvojici zdrojového/cíle předány nejčastěji se značkami. Takže pokud lidé často převádějí španělské slovo na jinou značku v jazyce Speech v angličtině, může dojít k chybě značek (s ohledem na španělské slovo).
 

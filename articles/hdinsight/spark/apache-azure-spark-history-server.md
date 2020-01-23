@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/25/2019
-ms.openlocfilehash: 8e0fcdc97475053dcf285b562b28784deffff28c
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 5cf1986711479f7330b0cd477744d9f4e2ac6459
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552725"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548930"
 ---
 # <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>Použití rozšířených funkcí serveru historie Apache Spark k ladění a diagnostice aplikací Spark
 
@@ -163,7 +163,7 @@ Vyberte kartu **zkosení dat** . V závislosti na zadaných parametrech se zobra
 
 #### <a name="specify-parameters"></a>Zadat parametry
 
-V části **určení parametrů** se zobrazí parametry, které se používají ke zjištění zkosení dat. Výchozí pravidlo je: načtení dat úkolu je více než třikrát průměrně přečtených dat úkolu a přečtených dat úlohy je více než 10 MB. Pokud chcete definovat vlastní pravidlo pro zkreslené úkoly, můžete zvolit parametry. Oddíly **nakloněné fáze** a **zkosení znaků** se budou aktualizovat odpovídajícím způsobem.
+V části **určení parametrů** se zobrazí parametry, které se používají ke zjištění zkosení dat. Výchozí pravidlo je: načtení dat úkolu je více než třikrát průměrně přečtených dat úkolu a přečtených dat úlohy je více než 10 MB. Pokud chcete definovat vlastní pravidlo pro zkreslené úkoly, můžete zvolit parametry. Oddíly grafu **zkosených fází** a **zkosení** se budou aktualizovat odpovídajícím způsobem.
 
 #### <a name="skewed-stage"></a>Zkosená fáze
 

@@ -4,14 +4,14 @@ description: Vysvětluje plánování před nasazením avere vFXT pro Azure.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/13/2020
+ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 5ffa28a0f6080b94bd47519df578fd15309dbab5
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: cd0c74c8aa40b3e96716ef37aa27b08b5f6aece1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76153631"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547536"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Plánování systému Avere vFXT
 
@@ -175,6 +175,6 @@ Pro virtuální počítače s avere vFXT se používají dvě předdefinované r
 
 Pokud potřebujete přizpůsobit role přístupu pro součásti avere vFXT, musíte definovat vlastní roli a pak ji přiřadit k virtuálním počítačům v okamžiku jejich vytvoření. Šablonu nasazení nelze použít v Azure Marketplace. Pomocí služby Microsoft Customer Service and Support můžete v Azure Portal otevřít lístek, jak je popsáno v [tématu o získání pomoci s vaším systémem](avere-vfxt-open-ticket.md).
 
-## <a name="next-step-understand-the-deployment-process"></a>Další krok: pochopení procesu nasazení
+## <a name="next-steps"></a>Další kroky
 
 [Přehled nasazení poskytuje přehled](avere-vfxt-deploy-overview.md) kroků nezbytných k vytvoření avere vFXT pro systém Azure a jeho přípravě na poskytování dat.

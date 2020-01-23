@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/24/2017
+ms.date: 1/22/2020
 ms.author: kumud
-ms.openlocfilehash: df2eb0886b71a2d5daaa95f33ef29a2afc7e112a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 11e6285ef70ffde5344add951801997f8541eaad
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980718"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543099"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Vytvoření, změna nebo odstranění síťového rozhraní
 
@@ -90,7 +90,7 @@ Po vytvoření můžete zobrazit a změnit většinu nastavení síťového rozh
    - **Vlastnosti:** Zobrazí nastavení klíče síťového rozhraní, včetně jeho adresy MAC (prázdné, pokud síťové rozhraní není připojené k virtuálnímu počítači) a předplatné, ve kterém existuje.
    - **Platná pravidla zabezpečení:**  Pravidla zabezpečení jsou uvedena, pokud je síťové rozhraní připojené k běžícímu virtuálnímu počítači a NSG je přidružen k síťovému rozhraní, podsíti, ke které je přiřazen, nebo k oběma. Další informace o tom, co se zobrazuje, najdete v tématu [zobrazení efektivních pravidel zabezpečení](#view-effective-security-rules). Další informace o skupin zabezpečení sítě najdete v tématu [skupiny zabezpečení sítě](security-overview.md).
    - **Efektivní trasy:** Pokud je síťové rozhraní připojené k běžícímu virtuálnímu počítači, jsou uvedené trasy. Trasy jsou kombinací výchozích tras Azure, všech uživatelem definovaných tras a všech tras protokolu BGP, které mohou existovat pro podsíť, ke které je síťové rozhraní přiřazeno. Další informace o tom, co se zobrazuje, najdete v tématu [zobrazení efektivních tras](#view-effective-routes). Další informace o výchozích trasách Azure a uživatelem definovaných trasách najdete v tématu [Přehled směrování](virtual-networks-udr-overview.md).
-   - **Nastavení běžných Azure Resource Manager:**  Další informace o běžných nastaveních Azure Resource Manager najdete v tématu [Protokol aktivit](../azure-monitor/platform/platform-logs-overview.md), [řízení přístupu (IAM)](../role-based-access-control/overview.md), [značky](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [zámky](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)a [skript pro automatizaci](../azure-resource-manager/templates/export-template-portal.md).
+Nastavení běžných Azure Resource Manager: Další informace o běžných nastaveních Azure Resource Manager najdete v tématu [Protokol aktivit](../azure-monitor/platform/platform-logs-overview.md), [řízení přístupu (IAM)](../role-based-access-control/overview.md), [značky](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [zámky](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)a [skript Automation](../azure-resource-manager/templates/export-template-portal.md).
 
 <a name="view-settings-commands"></a>**Příkaz**
 
@@ -113,7 +113,7 @@ Server DNS je přiřazený serverem DHCP Azure pro síťové rozhraní v operač
    - **Vlastní**: můžete nakonfigurovat vlastní server DNS pro překlad názvů napříč několika virtuálními sítěmi. Zadejte IP adresu serveru, který chcete použít jako server DNS. Adresa serveru DNS, kterou zadáte, se přiřadí jenom tomuto síťovému rozhraní a přepíše všechna nastavení DNS pro virtuální síť, ke které je síťové rozhraní přiřazené.
      >[!Note]
      >Pokud virtuální počítač používá síťovou kartu, která je součástí skupiny dostupnosti, zdědí se všechny servery DNS, které jsou zadané pro každý z virtuálních počítačů ze všech síťových adaptérů, které jsou součástí skupiny dostupnosti.
-5. Vyberte **Uložit**.
+5. Vyberte **Save** (Uložit).
 
 **Příkazy**
 
@@ -134,7 +134,7 @@ Nastavení musí být povoleno pro každé síťové rozhraní, které je připo
 2. Vyberte síťové rozhraní, pro které chcete povolit nebo zakázat předávání IP pro.
 3. V části **Nastavení** vyberte **Konfigurace protokolu IP** .
 4. Chcete-li změnit nastavení, vyberte možnost **povoleno** nebo **zakázáno** (výchozí nastavení).
-5. Vyberte **Uložit**.
+5. Vyberte **Save** (Uložit).
 
 **Příkazy**
 
@@ -152,9 +152,9 @@ Můžete změnit podsíť, ale ne virtuální síť, ke které je přiřazeno s�
 3. V části **Nastavení**vyberte **Konfigurace protokolu IP** . Pokud jsou vedle nich k dispozici libovolné privátní IP adresy pro všechny konfigurace protokolu IP **(statické)** , je třeba změnit metodu přiřazení IP adresy na Dynamic, a to provedením následujících kroků. Aby bylo možné změnit přiřazení podsítě pro síťové rozhraní, musí se všem privátním IP adresám přiřadit metoda dynamického přiřazení. Pokud jsou adresy přiřazovány s dynamickou metodou, pokračujte krokem pět. Pokud se k metodě statického přiřazení přiřadí nějaké adresy IPv4, proveďte následující kroky a změňte metodu přiřazení na dynamickou:
    - V seznamu konfigurací protokolu IP vyberte konfiguraci protokolu IP, pro kterou chcete změnit metodu přiřazování adresy IPv4.
    - Jako metodu **přiřazování** privátní IP adresy vyberte **Dynamická** . Nemůžete přiřadit adresu IPv6 pomocí metody statického přiřazení.
-   - Vyberte **Uložit**.
+   - Vyberte **Save** (Uložit).
 4. Vyberte podsíť, do které chcete přesunout síťové rozhraní z rozevíracího seznamu **podsíť** .
-5. Vyberte **Uložit**. Nové dynamické adresy se přiřazují z rozsahu adres podsítě pro novou podsíť. Po přiřazení síťového rozhraní k nové podsíti můžete v případě, že zvolíte, přiřadit statickou IPv4 adresu z nového rozsahu adres podsítě. Další informace o přidání, změně a odebrání IP adres pro síťové rozhraní najdete v tématu [Správa IP adres](virtual-network-network-interface-addresses.md).
+5. Vyberte **Save** (Uložit). Nové dynamické adresy se přiřazují z rozsahu adres podsítě pro novou podsíť. Po přiřazení síťového rozhraní k nové podsíti můžete v případě, že zvolíte, přiřadit statickou IPv4 adresu z nového rozsahu adres podsítě. Další informace o přidání, změně a odebrání IP adres pro síťové rozhraní najdete v tématu [Správa IP adres](virtual-network-network-interface-addresses.md).
 
 **Příkazy**
 
@@ -168,7 +168,7 @@ Můžete změnit podsíť, ale ne virtuální síť, ke které je přiřazeno s�
 Síťové rozhraní můžete přidat do skupiny zabezpečení aplikace pomocí portálu, nebo odebrat jenom síťové rozhraní, pokud je síťové rozhraní připojené k virtuálnímu počítači. Pomocí PowerShellu nebo rozhraní příkazového řádku Azure můžete přidat síťové rozhraní do nebo odebrat síťové rozhraní ze skupiny zabezpečení aplikace, ať už je síťové rozhraní připojené k virtuálnímu počítači, nebo ne. Přečtěte si další informace o [skupinách zabezpečení aplikací](security-overview.md#application-security-groups) a o tom, jak [vytvořit skupinu zabezpečení aplikace](manage-network-security-group.md).
 
 1. V poli *Hledat prostředky, služby a dokumenty* v horní části portálu začněte zadávat název virtuálního počítače, který má síťové rozhraní, které chcete přidat, nebo odebrat ze skupiny zabezpečení aplikace. Jakmile se ve výsledcích hledání zobrazí název vašeho virtuálního počítače, vyberte ho.
-2. V části **NASTAVENÍ** vyberte **Sítě**.  Vyberte **Konfigurovat skupiny zabezpečení aplikací**, vyberte skupiny zabezpečení aplikace, do kterých chcete přidat síťové rozhraní, nebo zrušte výběr skupin zabezpečení aplikace, ze kterých chcete síťové rozhraní odebrat, a pak vyberte **Uložit**. Do stejné skupiny zabezpečení aplikace lze přidat pouze síťová rozhraní, která existují ve stejné virtuální síti. Skupina zabezpečení aplikace musí existovat ve stejném umístění jako síťové rozhraní.
+2. V části **NASTAVENÍ** vyberte **Sítě**.  Vyberte **skupiny zabezpečení** aplikace a pak nakonfigurujte skupiny zabezpečení **aplikací**, které zvolí skupiny zabezpečení aplikace, do kterých chcete přidat síťové rozhraní, nebo zrušte výběr skupin zabezpečení aplikace, ze kterých chcete síťové rozhraní odebrat, a pak vyberte **Uložit**. Do stejné skupiny zabezpečení aplikace lze přidat pouze síťová rozhraní, která existují ve stejné virtuální síti. Skupina zabezpečení aplikace musí existovat ve stejném umístění jako síťové rozhraní.
 
 **Příkazy**
 
@@ -184,7 +184,7 @@ Síťové rozhraní můžete přidat do skupiny zabezpečení aplikace pomocí p
 3. V části **Nastavení**vyberte **Skupina zabezpečení sítě** .
 4. Vyberte **Upravit**.
 5. Vyberte **Skupina zabezpečení sítě** a potom vyberte skupinu zabezpečení sítě, kterou chcete přidružit k síťovému rozhraní, nebo vyberte možnost **žádné**, chcete-li oddělit skupinu zabezpečení sítě.
-6. Vyberte **Uložit**.
+6. Vyberte **Save** (Uložit).
 
 **Příkazy**
 
@@ -196,8 +196,8 @@ Síťové rozhraní můžete přidat do skupiny zabezpečení aplikace pomocí p
 Síťové rozhraní můžete odstranit, pokud není připojené k virtuálnímu počítači. Pokud je síťové rozhraní připojené k virtuálnímu počítači, musíte nejdřív umístit virtuální počítač do zastaveného (uvolněného) stavu a potom odpojit síťové rozhraní od virtuálního počítače. Chcete-li odpojit síťové rozhraní od virtuálního počítače, proveďte kroky v části [odpojení síťového rozhraní od virtuálního počítače](virtual-network-network-interface-vm.md#remove-a-network-interface-from-a-vm). Síťové rozhraní nelze z virtuálního počítače odpojit, pokud je však jediným síťovým rozhraním připojeným k virtuálnímu počítači. K virtuálnímu počítači musí být vždycky připojené aspoň jedno síťové rozhraní. Odstraněním virtuálního počítače odpojíte všechna síťová rozhraní, která jsou k němu připojená, ale neodstraníte síťová rozhraní.
 
 1. Do pole, které obsahuje *prostředky vyhledávání* textu v horní části Azure Portal zadejte *Síťová rozhraní*. Pokud se ve výsledcích hledání zobrazí **Síťová rozhraní** , vyberte ji.
-2. V seznamu síťových rozhraní vyberte **...** na pravé straně síťového rozhraní, které chcete odstranit.
-3. Vyberte **Odstranit**.
+2. V seznamu vyberte síťové rozhraní, které chcete odstranit.
+3. V části **Přehled** vyberte **Odstranit**.
 4. Výběrem **Ano** potvrďte odstranění síťového rozhraní.
 
 Po odstranění síťového rozhraní se uvolní všechny adresy MAC nebo IP, které jsou mu přiřazeny.

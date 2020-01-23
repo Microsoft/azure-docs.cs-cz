@@ -4,14 +4,14 @@ description: Předpoklady pro avere vFXT pro Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/13/2020
+ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 7f89ea553bc7198c1faee5ba3549f88da5ec2b2c
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: a183989cc666f00da4be077c719c40d2524fd6e0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152982"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547502"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Příprava k vytvoření Avere vFXT
 
@@ -23,10 +23,10 @@ Začněte vytvořením nového předplatného Azure. Použijte samostatné před
 
 Pokud chcete vytvořit nové předplatné Azure v Azure Portal:
 
-* Přejít na [okno předplatná](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)
-* Klikněte na tlačítko **+ Přidat** v horní části.
-* Přihlásit se, pokud se zobrazí výzva
-* Vyberte nabídku a Projděte si postup vytvoření nového předplatného.
+1. Přejít na [okno předplatná](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)
+1. Klikněte na tlačítko **+ Přidat** v horní části.
+1. Přihlásit se, pokud se zobrazí výzva
+1. Vyberte nabídku a Projděte si postup vytvoření nového předplatného.
 
 ## <a name="configure-subscription-owner-permissions"></a>Konfigurace oprávnění vlastníka předplatného
 
@@ -104,6 +104,6 @@ Vytvořte koncový bod služby úložiště z Azure Portal.
 
    ![Postup vytvoření koncového bodu služby Azure Portal snímku obrazovky s poznámkami.](media/avere-vfxt-service-endpoint.png)
 
-## <a name="next-step-create-the-vfxt-cluster"></a>Další krok: Vytvoření clusteru vFXT
+## <a name="next-steps"></a>Další kroky
 
 Po dokončení těchto požadavků můžete cluster vytvořit. Pokyny najdete [v tématu Nasazení clusteru vFXT](avere-vfxt-deploy.md) .

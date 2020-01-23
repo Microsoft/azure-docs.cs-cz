@@ -12,12 +12,12 @@ ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: 82426c0093550864b421d7acc35780c4173895a8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: a794a9ed35cbbdd36c2cf136b8afc208c3ea0692
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824734"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549001"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Rychlý Start: sestavení aplikace v Pythonu pomocí Azure Cosmos DB účtu rozhraní SQL API
 
@@ -35,7 +35,7 @@ Databáze Azure Cosmos je databázová služba Microsoftu s více modely použit
 
 V tomto rychlém startu se používá verze 4 [sady Python SDK](https://pypi.org/project/azure-cosmos/#history).
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)][!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -47,9 +47,28 @@ V tomto rychlém startu se používá verze 4 [sady Python SDK](https://pypi.org
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="add-a-container"></a>Přidat kontejner
+## <a name="add-a-container"></a>Přidání kontejneru
 
-[!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
+Nyní můžete použít nástroj Průzkumník dat v Azure Portal k vytvoření databáze a kontejneru. 
+
+1. Vyberte **Průzkumník dat** > **Nový kontejner**. 
+    
+    Úplně vpravo se zobrazí oblast **Přidat kontejner** , možná se budete muset posunout doprava, aby se zobrazila.
+
+    ![Průzkumník dat na portálu Azure Portal – podokno Přidat kontejner](./media/create-sql-api-python/azure-cosmosdb-data-explorer.png)
+
+2. Na stránce **Přidat kontejner** zadejte nastavení pro nový kontejner.
+
+    |Nastavení|Navrhovaná hodnota|Popis
+    |---|---|---|
+    |**ID databáze**|Úlohy|Jako název nové databáze zadejte *ToDoList* . Názvy databází musí mít délku 1 až 255 znaků a nesmí obsahovat `/, \\, #, ?`, ani koncové mezery. Ověřte možnost **zřízení propustnosti databáze** , která umožňuje sdílení propustnosti zřízené do databáze napříč všemi kontejnery v rámci databáze. Tato možnost také pomáhá při úsporách nákladů. |
+    |**Propustnost**|400|Nechte propustnost na 400 jednotek žádostí za sekundu (RU/s). Pokud budete chtít snížit latenci, můžete propustnost později navýšit.| 
+    |**ID kontejneru**|Items|Jako název nového kontejneru zadejte *položky* . Pro ID kontejnerů platí stejné požadavky týkající se použitých znaků jako pro názvy databází.|
+    |**Klíč oddílu**| /kategorie| Ukázka popsaná v tomto článku používá jako klíč oddílu */Category* .|
+    
+    Kromě předchozích nastavení můžete volitelně přidat **jedinečné klíče** pro kontejner. V tomto příkladu ponecháme toto pole prázdné. Jedinečné klíče umožňují vývojářům přidat do databáze vrstvu integrity dat. Vytvořením jedinečné zásady klíčů při vytváření kontejneru zajistíte jedinečnost jedné nebo více hodnot na klíč oddílu. Další informace najdete v článku [Jedinečné klíče ve službě Azure Cosmos DB](unique-keys.md).
+    
+    Vyberte **OK**. Průzkumník dat zobrazí novou databázi a kontejner.
 
 ## <a name="add-sample-data"></a>Přidání ukázkových dat
 
@@ -135,7 +154,7 @@ Všechny následující fragmenty kódu pocházejí ze souboru `cosmos_get_start
 
     [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=query_items)]
    
-## <a name="run-the-app"></a>Spusťte aplikaci
+## <a name="run-the-app"></a>Spuštění aplikace
 
 1. V aplikaci Visual Studio Code vyberte **Zobrazení** > **Paleta příkazů**. 
 
@@ -197,7 +216,7 @@ Všechny následující fragmenty kódu pocházejí ze souboru `cosmos_get_start
 }
 ```
 
-## <a name="review-slas-in-the-azure-portal"></a>Ověření smluv SLA na webu Azure Portal
+## <a name="review-slas-in-the-azure-portal"></a>Ověření podmínek SLA na portálu Azure Portal
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 

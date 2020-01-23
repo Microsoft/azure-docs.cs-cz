@@ -9,15 +9,15 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 00a92d60e494920f516d1a52593a54463c050615
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 14fe7fff85c7aecd3f98843794f5057cf26fc88d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311440"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548437"
 ---
 # <a name="linear-regression-module"></a>Modul lineární regrese
-Tento článek popisuje modul v Návrháři Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Tento modul slouží k vytvoření modelu lineární regrese pro použití v kanálu.  Lineární regrese se pokusí vytvořit lineární vztah mezi jednou nebo více nezávislými proměnnými a číselným výstupem nebo závislou proměnnou. 
 

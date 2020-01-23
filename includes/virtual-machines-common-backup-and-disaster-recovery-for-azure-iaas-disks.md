@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 9332079cd77c4dcc972059071165ba0631135b5c
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: cd10bd2a04bfb2a3e3316d86e64a98c75c12e36d
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012538"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76530925"
 ---
 Tento článek vysvětluje, jak naplánovat zálohování a zotavení po havárii (DR) virtuálních počítačů s IaaS (VM) a disků v Azure. Tento dokument pokrývá spravované i nespravované disky.
 
 Nejdřív zabereme integrované funkce odolnosti proti chybám na platformě Azure, které pomáhají chránit před místními chybami. Potom se podíváme na scénáře havárie, které nejsou plně pokryté integrovanými funkcemi. Zobrazujeme také několik příkladů scénářů úloh, které mohou být použity v různých ohledech na zálohování a zotavení po havárii. Pak si projdeme možná řešení pro zotavení po havárii IaaS disků.
 
-## <a name="introduction"></a>Úvod
+## <a name="introduction"></a>Představení
 
 Platforma Azure využívá různé metody pro redundanci a odolnost proti chybám, které vám pomůžou ochránit zákazníky před lokalizovanými chybami hardwaru. K místním selháním můžou patřit problémy s Azure Storage serverového počítače, které ukládají část dat pro virtuální disk nebo chyby SSD nebo HDD na tomto serveru. K takovým izolovaným selháním hardwarových součástí může dojít během normálního provozu.
 
@@ -33,7 +33,7 @@ Než se podíváme na možnosti zálohování a zotavení po havárii, pojďme R
 
 ### <a name="azure-iaas-resiliency"></a>Odolnost Azure IaaS
 
-*Odolnost* proti chybám označuje toleranci pro běžné chyby, ke kterým dochází v hardwarových součástech. Odolnost proti chybám je schopnost zotavení po selháních a nadále fungovat. Nejedná se o předcházení chybám, ale reaguje na selhání způsobem, který brání výpadkům nebo ztrátě dat. Cílem odolnosti proti chybám je obnovení plně funkčního stavu aplikace co nejdříve po selhání. Virtuální počítače a disky Azure jsou navržené tak, aby byly odolné vůči běžným hardwarovým chybám. Pojďme se podívat, jak tato odolnost zajišťuje platforma Azure IaaS.
+*Odolnost* proti chybám označuje toleranci pro běžné chyby, ke kterým dochází v hardwarových součástech. Odolnost proti chybám je schopnost zotavení po selháních a nadále fungovat. Nejedná se o způsoby, jak zabránit selhání, ale o reakci na selhání způsobem, který zabraňuje výpadkům nebo ztrátě dat. Cílem odolnosti proti chybám je obnovení plně funkčního stavu aplikace co nejdříve po selhání. Virtuální počítače a disky Azure jsou navržené tak, aby byly odolné vůči běžným hardwarovým chybám. Pojďme se podívat, jak tato odolnost zajišťuje platforma Azure IaaS.
 
 Virtuální počítač se skládá hlavně ze dvou částí: výpočetní Server a trvalé disky. Obojí má vliv na odolnost virtuálního počítače.
 
@@ -109,7 +109,7 @@ U nespravovaných disků můžete pro disky IaaS použít místně redundantní 
 
 | Scénář | Automatická replikace | Řešení zotavení po havárii |
 | --- | --- | --- |
-| SSD úrovně Premium disky | Místní ([místně redundantní úložiště](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
+| Disky SSD úrovně Premium | Místní ([místně redundantní úložiště](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Spravované disky | Místní ([místně redundantní úložiště](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Nespravované místně redundantní disky úložiště | Místní ([místně redundantní úložiště](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Nespravované geografické redundantní disky úložiště | Mezi oblastmi ([geograficky redundantní úložiště](../articles/storage/common/storage-redundancy-grs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Konzistentní snímky](#alternative-solution-consistent-snapshots) |
@@ -119,12 +119,12 @@ Vysoká dostupnost se nejlépe splní pomocí spravovaných disků v sadě dostu
 
 Vaše volby pro vysokou dostupnost, zálohování a zotavení po havárii na úrovni aplikace nebo infrastruktury můžou být reprezentovány takto:
 
-| Level |   Vysoká dostupnost   | Zálohování nebo zotavení po havárii |
+| Úroveň |   Vysoká dostupnost   | Zálohování nebo zotavení po havárii |
 | --- | --- | --- |
 | Aplikace | SQL Server AlwaysOn | Azure Backup |
 | Infrastruktura    | Skupina dostupnosti  | Geograficky redundantní úložiště s konzistentními snímky |
 
-### <a name="using-azure-backup"></a>Použití Azure Backup 
+### <a name="using-azure-backup"></a>Použití služby Azure Backup 
 
 [Azure Backup](../articles/backup/backup-azure-vms-introduction.md) můžou zálohovat virtuální počítače se systémem Windows nebo Linux do trezoru služby Azure Recovery Services. Zálohování a obnova důležitých podnikových dat je složitá o skutečnost, že podniková data musí být zálohována, zatímco aplikace vytvářející data jsou spuštěny. 
 
@@ -151,8 +151,6 @@ Pomocí následujícího postupu můžete povolit zálohování virtuálních po
 1.  Nakonfigurujte zásady zálohování a vyberte virtuální počítač ze stejného uživatelského rozhraní.
 
 1.  Ujistěte se, že je na virtuálním počítači nainstalovaný Agent zálohování. Pokud je váš virtuální počítač vytvořený pomocí Image Galerie Azure, je už nainstalovaný Agent zálohování. Jinak (tj. Pokud používáte vlastní image) použijte pokyny k [instalaci agenta virtuálního počítače na virtuální počítač](../articles/backup/backup-azure-arm-vms-prepare.md#install-the-vm-agent).
-
-1.  Ujistěte se, že virtuální počítač umožňuje síťové připojení k fungování služby zálohování. Postupujte podle pokynů pro [připojení k síti](../articles/backup/backup-azure-arm-vms-prepare.md#establish-network-connectivity).
 
 1.  Po dokončení předchozích kroků se zálohování spustí v pravidelných intervalech, jak je uvedeno v zásadách zálohování. V případě potřeby můžete první zálohu aktivovat ručně z řídicího panelu trezoru na Azure Portal.
 

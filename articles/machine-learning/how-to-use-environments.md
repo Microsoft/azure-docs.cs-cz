@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 93a70bf0d9189368135b8007e95627fc64064c51
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: de1e01e56079753a1a9ee8debc2f2172e1dc8375
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932187"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548301"
 ---
 # <a name="reuse-environments-for-training--deployment-with-azure-machine-learning"></a>Použití prostředí pro školení & nasazení pomocí Azure Machine Learning.
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -248,6 +248,10 @@ Služba navíc automaticky používá jednu z [základních imagí](https://gith
 # Specify custom Docker base image and registry, if you don't want to use the defaults
 myenv.docker.base_image="your_base-image"
 myenv.docker.base_image_registry="your_registry_location"
+# Alternatively, you can specify the contents of dockerfile of your base image
+with open("docker_file_of_your_base_image", "r") as f:
+    dockerfile_contents_of_your_base_image=f.read()
+myenv.docker.base_dockerfile=dockerfile_contents_of_your_base_image 
 ```
 
 > [!NOTE]
@@ -344,6 +348,10 @@ service = Model.deploy(
 ## <a name="example-notebooks"></a>Příklad poznámkové bloky
 
 Tento [ukázkový Poznámkový blok](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/using-environments) se rozbalí na základě konceptů a metod popsaných v tomto článku.
+
+[Nasazení modelu pomocí vlastního základního obrázku Docker](how-to-deploy-custom-docker-image.md) ukazuje, jak nasadit model pomocí vlastní základní image Docker.
+
+Tento [ukázkový Poznámkový blok](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/spark) ukazuje, jak nasadit model Spark jako webovou službu.
 
 ## <a name="create-and-manage-environments-with-the-cli"></a>Vytváření a Správa prostředí pomocí rozhraní příkazového řádku
 

@@ -6,16 +6,16 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: d1058125d5bb3912b9561027bbe0a977637d3379
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: e70d1dfebcf25ee8f4e90a062cee6dd72a663e02
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76153565"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547519"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Nasazení clusteru vFXT
 
-Tento postup vás provede použitím Průvodce nasazením dostupným z Azure Marketplace. Průvodce automaticky nasadí cluster pomocí Azure Resource Manager šablony. Až zadáte parametry ve formuláři a kliknete na **vytvořit**, Azure automaticky dokončí tyto kroky:
+Tento postup vás provede použitím Průvodce nasazením dostupným z Azure Marketplace. Průvodce automaticky nasadí cluster pomocí Azure Resource Manager šablony. Až zadáte parametry ve formuláři a kliknete na **vytvořit**, Azure automaticky dokončí tyto úlohy:
 
 * Vytvoří řadič clusteru, což je základní virtuální počítač obsahující software potřebný k nasazení a správě clusteru.
 * Nastaví skupinu prostředků a infrastrukturu virtuální sítě, včetně vytváření nových elementů.
@@ -28,10 +28,10 @@ Po provedení kroků v tomto dokumentu budete mít virtuální síť, podsíť, 
 
 Než začnete používat šablonu pro vytváření, ujistěte se, že jste vyřešili tyto požadavky:  
 
-1. [Nové předplatné](avere-vfxt-prereqs.md#create-a-new-subscription)
-1. [Oprávnění vlastníka předplatného](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
-1. [Kvóta pro cluster vFXT](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
-1. [Koncový bod služby úložiště (Pokud je potřeba)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) – vyžaduje se pro nasazení, která používají existující virtuální síť a vytváření úložiště objektů BLOB.
+* [Nové předplatné](avere-vfxt-prereqs.md#create-a-new-subscription)
+* [Oprávnění vlastníka předplatného](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
+* [Kvóta pro cluster vFXT](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
+* [Koncový bod služby úložiště (Pokud je potřeba)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) – vyžaduje se pro nasazení, která používají existující virtuální síť a vytváření úložiště objektů BLOB.
 
 Další informace o krocích a plánováních nasazení clusteru najdete v tématu plánování [avere systému vFXT](avere-vfxt-deploy-plan.md) a [Přehled nasazení](avere-vfxt-deploy-overview.md).
 

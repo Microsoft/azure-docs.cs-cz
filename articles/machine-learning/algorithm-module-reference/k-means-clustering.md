@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 7451758e758d597bfe63d92fe4789c8fa81b3dff
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 000db771f27c7063aee120f06e13eec3575c8ef5
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311474"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546635"
 ---
 # <a name="module-k-means-clustering"></a>Modul: K-znamená clustering
 
-Tento článek popisuje, jak použít modul pro *clusteringu* v Návrháři Azure Machine Learning k vytvoření nevýukového modelu clusteringu. 
+Tento článek popisuje, jak použít modul pro *clustering* v Návrháři Azure Machine Learning (Preview) k vytvoření nevýukového modelu pro clustering k. 
  
 K-znamená, že je jedním z nejjednodušších a osvědčených *bezdohledných* algoritmů učení. Můžete použít algoritmus pro nejrůznější úlohy strojového učení, například: 
 

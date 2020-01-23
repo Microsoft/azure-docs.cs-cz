@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: juliako
-ms.openlocfilehash: cd1f55a4ca94aae73a56334c76f211afff6e9622
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c1b72f2a84f8cafa1767639cae64fb420b0a997c
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514047"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546040"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Živé události a živé výstupy v Media Services
 
@@ -36,7 +36,7 @@ Azure Media Services vám umožní doručovat živé události zákazníkům v c
 
 [Živá událost](https://docs.microsoft.com/rest/api/media/liveevents) může být jeden ze dvou typů: průchozí nebo živé kódování. Typy jsou nastaveny během vytváření pomocí [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype):
 
-* **LiveEventEncodingType. None**: místní kodér Live posílá datový proud s více přenosovými rychlostmi. Příjmový Stream projde přes živou událost bez dalšího zpracování. 
+* **LiveEventEncodingType. None**: místní kodér Live posílá datový proud s více přenosovými rychlostmi. Příjmový Stream projde přes živou událost bez dalšího zpracování. Také se nazývá předávací režim.
 * **LiveEventEncodingType. Standard**: místní živý kodér odesílá datový proud s jednou přenosovou rychlostí do živé události a Media Services vytvoří více datových proudů s přenosovou rychlostí. Pokud je informační kanál příspěvku z řešení 720p nebo vyšší, **Default720p** předvolba zakóduje sadu párů s 6 páry rozlišení/přenosů.
 * **LiveEventEncodingType. Premium1080p**: místní živý kodér odesílá datový proud s jednou přenosovou rychlostí do živé události a Media Services vytvoří více datových proudů s přenosovou rychlostí. Předvolba Default1080p určuje výstupní sadu párů rozlišení/přenosové rychlosti.
 
@@ -81,6 +81,8 @@ Při vytváření živé události můžete zadat následující možnosti:
 * Omezení IP adres u ingestování a náhledu. Můžete definovat IP adresy, které můžou ingestovat video do této živé události. Povolené IP adresy se dají zadat jako jedna IP adresa (třeba 10.0.0.1), rozsah IP adres pomocí IP adresy a masky podsítě CIDR (třeba 10.0.0.1/22) nebo rozsah IP adres a maska podsítě v desítkovém zápisu s tečkou (třeba 10.0.0.1(255.255.252.0)).<br/>Pokud nejsou zadané žádné IP adresy a není k dispozici žádná definice pravidla, nebude povolena žádná IP adresa. Pokud chcete povolit libovolnou IP adresy, vytvořte pravidlo a nastavte 0.0.0.0/0.<br/>IP adresy musí být v jednom z následujících formátů: IpV4 adresa se čtyřmi čísly nebo rozsahem adres CIDR.
 
     Pokud chcete povolit určité IP adresy pro vlastní brány firewall nebo chcete omezit vstupy na živé události na IP adresy Azure, Stáhněte si soubor JSON z [rozsahů IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653). Podrobnosti o tomto souboru zobrazíte výběrem části **Podrobnosti** na stránce.
+    
+* Při vytváření události se můžete rozhodnout zapnout funkci Live přepisů. <br/> Ve výchozím nastavení je živý přepis zakázán. Tuto vlastnost nelze změnit, je-li spuštěna živá událost nebo její přidružené živé výstupy. 
 
 ### <a name="naming-rules"></a>Pravidla pojmenování
 

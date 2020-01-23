@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: e4e09ca77de00b7f189db2cbbcaca2e090dd7e72
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: bd1a6d4009181056ff0f91fc115d59851539bbe8
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311627"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548471"
 ---
 # <a name="filter-based-feature-selection"></a>Výběr funkcí na základě filtrů
 
-Tento článek popisuje, jak použít modul výběru funkce založený na filtrech v Návrháři Azure Machine Learning. Tento modul vám pomůže identifikovat sloupce ve vstupní datové sadě, které mají největší prediktivní výkon. 
+Tento článek popisuje, jak použít modul výběru funkce založený na filtrech v Návrháři Azure Machine Learning (Preview). Tento modul vám pomůže identifikovat sloupce ve vstupní datové sadě, které mají největší prediktivní výkon. 
 
 Obecně platí, že *Výběr funkcí* odkazuje na proces použití statistických testů na vstupy v zadaném výstupu. Cílem je určit, které sloupce mají více prediktivní výstup. Modul výběru funkcí založený na filtrech poskytuje několik algoritmů výběru funkcí, ze kterých si můžete vybrat. Modul zahrnuje metody korelace, jako je korelace Pearsonova a hodnoty chí-kvadrát. 
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: ceb82bf729470f9996bc9ecc766329a0d1242ec4
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: ae9c678d9dfca895ec74ed92bcb1b541db6b134e
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930036"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545496"
 ---
 # <a name="security-control-logging-and-monitoring"></a>Řízení zabezpečení: protokolování a sledování
 
@@ -77,7 +77,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview
 |--|--|--|
 | 2.4 | 6,2, 6,3 | Zákazník |
 
-Pokud je výpočetní prostředek vlastněn společností Microsoft, zodpovídá za jeho monitorování společnost Microsoft. Pokud je výpočetní prostředek vlastněn vaší organizací, máte zodpovědnost za jeho monitorování. Pomocí Azure Security Center můžete monitorovat operační systém. Data shromažďovaná Security Center z operačního systému zahrnují typ a verzi operačního systému, operační systém (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy a přihlášený uživatel. Agent Log Analytics také shromažďuje soubory s výpisem stavu systému.
+Pokud je výpočetní prostředek vlastněn společností Microsoft, zodpovídá za jeho monitorování společnost Microsoft. Pokud je výpočetní prostředek vlastněn vaší organizací, máte zodpovědnost za jeho monitorování. Pomocí Azure Security Center můžete monitorovat operační systém. Data shromažďovaná Security Center z operačního systému zahrnují typ a verzi operačního systému, protokoly operačního systému (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy a přihlášený uživatel. Agent Log Analytics také shromažďuje soubory s výpisem stavu systému.
 
 Jak shromažďovat protokoly interního hostitele virtuálních počítačů Azure s Azure Monitor:
 
@@ -147,7 +147,7 @@ https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
 | ID Azure | ID služby CI | Odpovědnost |
 |--|--|--|
-| 2.8 | 8,6 | Zákazník |
+| 2.8 | 8.6 | Zákazník |
 
 Povolte shromažďování antimalwarových událostí pro Azure Virtual Machines a Cloud Services.
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 680cf04e79a9cb6d5748723dad3cb37cf3c76468
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 5ac1f3e4bf629a2e12eb0461b932a5865228c79c
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314211"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546703"
 ---
 # <a name="cross-validate-model"></a>Křížové ověření modelu
 
-Tento článek popisuje, jak použít modul pro různé ověřování modelu v Návrháři Azure Machine Learning. *Křížové ověřování* je technika často používaná ve službě Machine Learning k vyhodnocení proměnlivosti datové sady a spolehlivosti všech modelů vyškolených prostřednictvím těchto dat.  
+Tento článek popisuje, jak používat modul pro různé ověřování modelu v Návrháři Azure Machine Learning (Preview). *Křížové ověřování* je technika často používaná ve službě Machine Learning k vyhodnocení proměnlivosti datové sady a spolehlivosti všech modelů vyškolených prostřednictvím těchto dat.  
 
 Modul pro různé ověřování modelu přijímá jako vstupní datovou sadu s popisem, společně s nevlakovou klasifikací nebo regresní model. Rozdělí datovou sadu na určitý počet podmnožin (*skládání*), sestaví model na každé přeložení a potom vrátí sadu statistik přesnosti pro každé skládání. Porovnáním statistik přesnosti pro všechna skládání můžete interpretovat kvalitu sady dat. Pak můžete pochopit, jestli je model náchylný k proměnlivosti dat.  
 

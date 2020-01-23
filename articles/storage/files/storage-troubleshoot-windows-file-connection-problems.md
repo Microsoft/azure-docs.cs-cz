@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 97fdb0b243f71701491f2d2424c04dbd19208ef0
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 0321d253eb1db414dff2acbb704d3d36726010d9
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291189"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544952"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Řešení potíží se soubory Azure v systému Windows
 
@@ -140,9 +140,8 @@ Chcete-li zavřít otevřené popisovače pro sdílenou složku, adresář nebo 
 > Rutiny Get-AzStorageFileHandle a Close-AzStorageFileHandle jsou součástí AZ PowerShell Module verze 2,4 nebo novější. Pokud chcete nainstalovat nejnovější modul AZ PowerShellu, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 <a id="noaaccessfailureportal"></a>
-## <a name="error-no-access-when-browsing-to-an-azure-file-share-in-the-portal"></a>Při procházení sdílené složky Azure na portálu došlo k chybě bez přístupu.
-
-Když přejdete na sdílenou složku Azure na portálu, může se zobrazit následující chyba:
+## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>Chyba "bez přístupu" při pokusu o přístup k sdílené složce Azure nebo její odstranění  
+Když se pokusíte o přístup k sdílené složce Azure na portálu nebo ji odstranit, může se zobrazit následující chyba:
 
 Bez přístupu  
 Kód chyby: 403 

@@ -4,16 +4,16 @@ description: V tomto článku jsou vysvětlené nejčastější úkoly, které p
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/02/2020
+ms.date: 01/22/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 469bd66a6074db34d1efb6f82fda229400239058
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: effc7dfb8ca540d044b5698b90b3195da0f29b19
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75992306"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547570"
 ---
 # <a name="azure-ea-portal-administration"></a>Správa portálu Azure EA
 
@@ -117,82 +117,74 @@ Nabídka Vývoj/testování se v současné době nevztahuje na zákazníky Azur
 
 ## <a name="transfer-an-enterprise-account-to-a-new-enrollment"></a>Převod podnikového účtu do nové registrace
 
-Přenos účtu přesune vlastníka účtu z jednoho zápisu do jiného. Všechna související předplatná pod vlastníkem účtu se přesunou do cílového zápisu. K tomu dochází, když máte víc aktivních registrací a chcete přesunout jenom vybrané vlastníky účtů.
+Při převodu účtu se jeho vlastník přenese z jedné registrace do druhé. Do cílové registrace se přesunou všechna související předplatná pod tímto vlastníkem. Tato operace se provede, když máte víc aktivních registrací a chcete přesunout jenom vybrané vlastníky účtů.
 
 Při převodu podnikového účtu do nové registrace mějte na paměti následující body:
 
 - Převádějí se jenom účty, které jsou zadané v požadavku. Pokud zvolíte všechny účty, přenesou se všechny.
 - Zdrojová registrace zůstane v aktivním nebo prodlouženém stavu. Registraci můžete používat dál, dokud jí nevyprší platnost.
 
-### <a name="effective-transfer-date"></a>Platné datum převodu
-
-V případě, že je datum zahájení cílového zápisu nebo datum zahájení účtu, podle toho, co má pozdější datum zahájení registrace, můžete znovu navrátit data z účtu. Po převodu účtu zůstanou všechny informace o použití, které byly v účtu před platným datem převodu, v registraci, ze které provádíte převod. Informace o použití po datu přenosu budou přesunuty do cílového zápisu.
-
 ### <a name="prerequisites"></a>Požadavky
 
 K žádosti o převod účtu je potřeba sdělit následující informace:
 
-- Číslo cílové registrace, názvu účtu a e-mailu vlastníka účtu, který se má přenést
+- Číslo cílové registrace, název účtu a e-mail vlastníka účtu, který se má převést
 - U zdrojové registrace uveďte její číslo a převáděný účet.
-- U data účinnosti převodu účtu může být zpětně naproti datu počáteční datum registrace nebo datum zahájení účtu, podle toho, co má pozdější datum zahájení.
 
 Další body, na které je potřeba myslet před převodem účtu:
 
 - Cílovou a zdrojovou registraci musí schválit správce EA.
 - Pokud převod účtu vašim požadavkům nevyhovuje, můžete zvážit převod registrace.
 - Převod účtů přenese všechny služby a předplatná související s konkrétními účty.
-- Po dokončení přenosu se převedený účet zobrazí jako neaktivní v rámci registrace zdroje a v rámci cílového zápisu se zobrazí jako aktivní.
+- Po dokončení převodu se převedený účet v rámci zdrojové registrace zobrazí jako neaktivní a v cílové registraci naopak jako aktivní.
 - Účet zobrazuje koncové datum odpovídající efektivnímu datu převodu zdrojové registrace jako počáteční datum cílové registrace.
 - Jakékoliv použití účtu před efektivním datem převodu zůstane v rámci zdrojové registrace.
 
 
 ## <a name="transfer-enterprise-enrollment-to-a-new-one"></a>Převod podnikové registrace do nové registrace
 
-Přenos registrace se bere v úvahu v těchto případech:
+Převod registrace se bere v úvahu v těchto případech:
 
-- Doba závazku pro aktuální registraci se nachází na konci.
-- Zápis má stav vypršela nebo prodloužena a nová smlouva se vyjednává.
-- Pokud máte více registrací a chcete konsolidovat všechny účty a účtovat je v rámci jediné registrace.
+- Skončilo období závazku aktuální registrace.
+- Registrace je ve stavu vypršení platnosti nebo prodloužení a dojednává se nová smlouva.
+- Pokud máte více registrací a chcete konsolidovat všechny účty a fakturaci v rámci jediné registrace.
 
 Pokud požádáte o převod celé podnikové registrace do jiné registrace, provedou se následující akce:
 
-- Všechny služby Azure, předplatná, účty, oddělení a celá struktura registrace, včetně všech správců smlouvy EA, se přenesou do nové cílové registrace.
+- Na novou registraci se převedou všechny služby Azure, všechna předplatná, účty, oddělení a celá struktura registrace, včetně všech správců oddělení EA.
 - U registrace se nastaví stav _Přenesené_. Přenesená registrace bude k dispozici jenom pro sestavy, které se týkají historie použití.
 - Do přenesené registrace už nemůžete přidávat role ani předplatná. Přenesený stav brání dalšímu použití této registrace.
 - Zbývající zůstatek peněžního závazku ve smlouvě se ruší, včetně budoucích podmínek.
 -   Pokud registrace, ze které provádíte převod, obsahuje zakoupené rezervované instance, kupní cena rezervovaných instancí zůstane ve zdrojové registraci, ale všechny výhody rezervovaných instancí se převedou do nové registrace.
 -   Jednorázový poplatek za nákup na marketplace ani žádné měsíční paušální poplatky již vzniklé ve staré registraci se do nové registrace nepřevedou. Poplatky za marketplace na základě spotřeby se převedou.
--   Po antedatování převodu registrace všechny jednorázové poplatky související s nákupy zůstanou ve zdrojové registraci.
 
 ### <a name="effective-transfer-date"></a>Platné datum převodu
 
-Platný den přenosu může být v nebo po počátečním datu cílového zápisu.
+Platným datem převodu může být datum, které je stejné nebo následuje po počátečním datu cílové registrace.
 
 Využití zdrojové registrace se odečte z peněžního závazku nebo se účtuje jako nadlimitní využití. Využití, ke kterému dojde po platném datu převodu, se přenese do nové registrace, kde se odpovídajícím způsobem odúčtuje.
-
-Jako počáteční datum registrace se podporuje back-Date Transfer. Zadání vybraného data přenosu nemá vliv na využití faktury za nadlimitní využití, která již byla vydána.
 
 ### <a name="prerequisites"></a>Požadavky
 
 K žádosti o převod registrace je potřeba sdělit následující informace:
 
-- U zdrojového zápisu se jedná o registrační číslo.
+- U zdrojové registrace uveďte její číslo.
 - U cílové registrace uveďte číslo registrace, do které probíhá převod.
 - Platné datum převodu registrace může být stejné datum, jako je počáteční datum cílové registrace, nebo datum pozdější. Vybrané datum neovlivňuje použití u již vydaných faktur za nadlimitní využití.
 
 Další body, na které je potřeba myslet před převodem registrace:
 
-- Vyžaduje se schválení jak u cílového, tak i ze zdrojového zápisu správců EA.
+- Cílovou a zdrojovou registraci musí schválit správci EA.
 - Pokud převod registrace vašim požadavkům nevyhovuje, zvažte možnost převodu účtu.
-- Stav registrace zdroje se aktualizuje na přenesený a bude k dispozici jenom pro účely generování sestav historických využití.
+- Stav zdrojové registrace se změní na Převedeno nesený a bude k dispozici jenom pro účely generování sestav historie využití.
 
 ### <a name="monetary-commitment"></a>Peněžní závazek
 
 Peněžní závazek nejde mezi registracemi převést. Zůstatky peněžních závazků jsou smluvně vázány na registraci, kde byly objednány. V rámci převodu účtu nebo registrace se peněžní závazek nepřevádí.
 
-### <a name="no-services-affected-for-account-and-enrollment-transfers"></a>Pro přenosy účtů a registrace nejsou ovlivněné žádné služby.
+### <a name="no-services-affected-for-account-and-enrollment-transfers"></a>Převody účtů a registrací nemají vliv na služby
 
-Během přenosu účtu nebo registrace dojde k výpadku. Pokud jsou poskytnuté všechny požadované informace, může převod proběhnout tentýž den jako požadavek.
+Při převodu účtu nebo registrace nedochází k výpadkům. Pokud jsou poskytnuté všechny požadované informace, může převod proběhnout tentýž den jako požadavek.
 
 ## <a name="change-account-owner"></a>Změna vlastníka účtu
 
@@ -216,7 +208,7 @@ Pokud se předplatné převede do účtu jiného tenanta Azure AD, tak všichni 
 
 Pokud příjemce potřebuje omezit přístup k prostředkům Azure, měl by zvážit aktualizaci tajných kódů přidružených ke službě. Většinu prostředků můžete aktualizovat takto:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com/).
 2. V nabídce centra vyberte **Všechny prostředky**.
 3. Vyberte prostředek.
 4. Na stránce prostředku klikněte na **Nastavení**. Tady se můžete podívat na stávající tajné kódy nebo je můžete aktualizovat.

@@ -1,18 +1,18 @@
 ---
 title: Zotavení po havárii pro vlastní témata v Azure Event Grid
-description: Přečtěte si, jak zajistit, aby zůstaly Azure Event Grid připojené k místním výpadkům.
+description: Tento kurz vás provede postupem nastavení architektury událostí pro obnovení, pokud služba Event Grid v oblasti není v pořádku.
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.topic: tutorial
-ms.date: 10/22/2019
+ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 7020fb167539e8ad16cc6c386f58e38326dec43b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 87f8f79e2cf125fa5735653153d8fcaa781f5200
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790281"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511514"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Vytvoření vlastního zotavení po havárii pro vlastní témata v Event Grid
 Zotavení po havárii se zaměřuje na obnovení z vážné ztráty funkčnosti aplikace. V tomto kurzu se dozvíte, jak nastavit architekturu událostí pro obnovení, pokud služba Event Grid v konkrétní oblasti nebude v pořádku.
@@ -46,7 +46,7 @@ Nezapomeňte tuto adresu URL poznamenat, protože ji budete potřebovat později
 
 Nejprve vytvořte dvě Event Grid témata. Tato témata budou fungovat jako primární a sekundární. Ve výchozím nastavení budou vaše události procházet vaším primárním tématem. Pokud v primární oblasti dojde k výpadku služby, vaše sekundární převezme.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com). 
 
 1. V levém horním rohu hlavní nabídky Azure zvolte **všechny služby** > vyhledejte **Event Grid** > vyberte **Event Grid témata**.
 

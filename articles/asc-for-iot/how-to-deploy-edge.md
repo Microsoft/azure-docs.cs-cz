@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2019
 ms.author: mlottner
-ms.openlocfilehash: e85738c344189486726b4e7b7f5a76ab03c0ffa9
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 7dff2a88da2e12388bfb3a97cfdad236045170cf
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991429"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543881"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Nasazení modulu zabezpečení na zařízení IoT Edge
 
@@ -35,7 +35,7 @@ V tomto článku se dozvíte, jak nasadit modul zabezpečení na zařízení IoT
 
 Pomocí následujících kroků nasaďte Azure Security Center pro modul zabezpečení IoT pro IoT Edge.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 1. V IoT Hub se ujistěte, že je zařízení [registrované jako IoT Edge zařízení](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal).
 
@@ -48,7 +48,7 @@ Pomocí následujících kroků nasaďte Azure Security Center pro modul zabezpe
     - Ověřte, že je audit aktivní, spuštěním následujícího příkazu: 
    
     `sudo systemctl status auditd`<br>
-    - Očekávaná odpověď: `active (running)` 
+    - Očekávaná odpověď je: `active (running)` 
         
 
 ### <a name="deployment-using-azure-portal"></a>Nasazení pomocí Azure Portal
@@ -66,15 +66,15 @@ Pomocí následujících kroků nasaďte Azure Security Center pro modul zabezpe
     >[!Note] 
     >Pokud jste vybrali možnost **nasadit ve škálování**, před pokračováním na kartu **přidat moduly** v následujících pokynech přidejte název a podrobnosti o zařízení.     
 
-Existují tři kroky pro vytvoření nasazení IoT Edge pro Azure Security Center pro IoT. V následujících částech si projdete každé z nich. 
+Dokončete každý krok, abyste dokončili nasazení IoT Edge pro Azure Security Center pro IoT. 
 
-#### <a name="step-1-add-modules"></a>Krok 1: přidání modulů
+#### <a name="step-1-modules"></a>Krok 1: moduly
 
-1. Na kartě **přidat moduly** v oblasti **moduly nasazení** klikněte na možnost **Konfigurovat** pro **AzureSecurityCenterforIoT**. 
-   
-1. Změňte **název** na **azureiotsecurity**.
-1. Změňte **identifikátor URI image** na **MCR.Microsoft.com/ascforiot/azureiotsecurity:1.0.0**.
-1. Ověřte, že hodnota **možnosti vytvořit kontejner** je nastavená na:      
+1. Vyberte modul **AzureSecurityCenterforIoT** .
+1. Na kartě **nastavení modulu** změňte **název** na **azureiotsecurity**.
+1. Na kartě **proměnné vyhledáte** přidejte proměnnou v případě potřeby (například úroveň ladění).
+1. Na kartě **možnosti vytvoření kontejneru** přidejte následující konfiguraci:
+
     ``` json
     {
         "NetworkingConfig": {
@@ -92,24 +92,20 @@ Existují tři kroky pro vytvoření nasazení IoT Edge pro Azure Security Cente
         }
     }    
     ```
-1. Ověřte, zda je vybrána možnost **nastavit požadované vlastnosti vlákna** a změnit objekt konfigurace na:
+    
+1. Na kartě **nastavení s dvojitým modulem** přidejte následující konfiguraci:
       
     ``` json
-    { 
-       "properties.desired":{ 
-      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration":{ 
-
-          }
-       }
-    }
+      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration":{}
     ```
 
-1. Klikněte na **Uložit**.
-1. Posuňte se do dolní části karty a vyberte **konfigurovat pokročilá nastavení modulu runtime Edge**. 
-   
-1. Změňte **Obrázek** v oblasti **Edge hub** na **MCR.Microsoft.com/azureiotedge-hub:1.0.8.3**.
+1. Vyberte **Aktualizovat**.
 
-1. Ověřte, že **Možnosti vytváření** jsou nastavené na: 
+#### <a name="step-2-runtime-settings"></a>Krok 2: nastavení modulu runtime
+
+1. Vyberte **nastavení modulu runtime**.
+1. V části **hraniční centrum**změňte **Obrázek** na **MCR.Microsoft.com/azureiotedge-hub:1.0.8.3**.
+1. Ověřte, že **Možnosti vytváření** jsou nastavené na následující konfiguraci: 
          
     ``` json
     { 
@@ -134,25 +130,30 @@ Existují tři kroky pro vytvoření nasazení IoT Edge pro Azure Security Cente
        }
     }
     ```
-1. Klikněte na **Uložit**.
+    
+1. Vyberte **Save** (Uložit).
    
-1. Klikněte na **Další**.
+1. Vyberte **Next** (Další).
 
-#### <a name="step-2-specify-routes"></a>Krok 2: určení tras 
+#### <a name="step-3-specify-routes"></a>Krok 3: určení tras 
 
-1. Na kartě **zadat trasy** se ujistěte, že máte trasu (explicitní nebo implicitní), která bude předávat zprávy z modulu **azureiotsecurity** , aby se **$upstream** podle následujících příkladů, a to jenom potom klikněte na **Další**. 
+1. Na kartě **zadat trasy** se ujistěte, že máte trasu (explicitní nebo implicitní), která bude předávat zprávy z modulu **azureiotsecurity** , aby se **$upstream** podle následujících příkladů. Pouze v případě, že je trasa zavedena, vyberte možnost **Další**.
 
-~~~Default implicit route
-"route": "FROM /messages/* INTO $upstream" 
-~~~
+   Příklady tras:
 
-~~~Explicit route
-"ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
-~~~
+    ~~~Default implicit route
+    "route": "FROM /messages/* INTO $upstream" 
+    ~~~
 
-#### <a name="step-3-review-deployment"></a>Krok 3: Kontrola nasazení
+    ~~~Explicit route
+    "ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
+    ~~~
 
-- Na kartě **zkontrolovat nasazení** zkontrolujte informace o nasazení a pak vyberte **Odeslat** . tím se nasazení dokončí.
+1. Vyberte **Next** (Další).
+
+#### <a name="step-4-review-deployment"></a>Krok 4: Kontrola nasazení
+
+- Na kartě **zkontrolovat nasazení** zkontrolujte informace o vašem nasazení a pak výběrem **vytvořit** dokončete nasazení.
 
 ## <a name="diagnostic-steps"></a>Kroky diagnostiky
 
@@ -166,7 +167,7 @@ Pokud narazíte na problém, je nejlepším způsobem, jak se dozvědět o stavu
    
 1. Ověřte, zda jsou spuštěny následující kontejnery:
    
-   | Name (Název) | OBRAZU |
+   | Name (Název) | IMAGE |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.1 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |

@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 79c6658d2b3758eed94f273bf0b3685bbd146278
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 69d08af9fd34728860343db3578f7283802f1611
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073069"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544748"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Rozšíření a funkce virtuálních počítačů pro Windows
 
-Rozšíření virtuálních počítačů Azure jsou malé aplikace, které poskytují konfiguraci po nasazení a úlohy automatizace na virtuálních počítačích Azure. Pokud třeba virtuální počítač vyžaduje instalaci softwaru, antivirovou ochranu nebo spuštění skriptu uvnitř něj, můžete použít rozšíření virtuálního počítače. Rozšíření virtuálních počítačů Azure je možné spustit pomocí Azure CLI, PowerShellu, Azure Resource Manager šablon a Azure Portal. Rozšíření lze seskupit pomocí nového nasazení virtuálního počítače nebo spustit s jakýmkoli existujícím systémem.
+Rozšíření virtuálních počítačů Azure jsou malé aplikace, které na virtuálních počítačích Azure umožňují provádět úlohy konfigurace a automatizace po nasazení. Pokud virtuální počítač vyžaduje například instalaci softwaru, antivirovou ochranu nebo spuštění interního skriptu, je možné pro tento účel použít rozšíření virtuálního počítače. Rozšíření virtuálních počítačů Azure je možné spustit přes Azure CLI, PowerShell, šablony Azure Resource Manageru a Azure Portal. Rozšíření lze spojit s novým nasazením virtuálního počítače, případně spustit v jakémkoli existujícím systému.
 
 Tento článek poskytuje přehled rozšíření virtuálních počítačů, předpoklady pro používání rozšíření virtuálních počítačů Azure a pokyny k tomu, jak detekovat, spravovat a odebírat rozšíření virtuálních počítačů. Tento článek poskytuje generalizované informace, protože je k dispozici mnoho rozšíření virtuálních počítačů, z nichž každá má potenciálně jedinečnou konfiguraci. Podrobnosti o rozšíření se dají najít v každém dokumentu specifickém pro jednotlivé rozšíření.
 
@@ -65,7 +65,7 @@ Některá rozšíření nejsou v rámci všech operačních systémech podporova
 
 #### <a name="network-access"></a>Síťový přístup
 
-Balíčky rozšíření se stáhnou z úložiště rozšíření Azure Storage a nahrávání stavu rozšíření se publikují do Azure Storage. Pokud používáte [podporovanou](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) verzi agentů, nemusíte v oblasti virtuálního počítače povolit přístup k Azure Storage, protože agent může pomocí agenta přesměrovat komunikaci do kontroleru prostředků infrastruktury Azure pro komunikaci s agenty (funkce HostGAPlugin prostřednictvím privilegovaný kanál na privátní IP [168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)). Pokud jste v nepodporované verzi agenta, musíte z virtuálního počítače v této oblasti povolený odchozí přístup ke službě Azure Storage.
+Balíčky rozšíření se stáhnou z úložiště rozšíření Azure Storage a nahrávání stavu rozšíření se publikují do Azure Storage. Pokud používáte [podporovanou](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) verzi agentů, nemusíte v oblasti virtuálního počítače povolit přístup k Azure Storage, protože agent může pomocí agenta přesměrovat komunikaci do řadiče Azure Fabric pro komunikaci s agenty (funkce HostGAPlugin prostřednictvím privilegovaného kanálu na privátní IP [168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)). Pokud jste v nepodporované verzi agenta, musíte z virtuálního počítače v této oblasti povolený odchozí přístup ke službě Azure Storage.
 
 > [!IMPORTANT]
 > Pokud jste zablokovali přístup k *168.63.129.16* pomocí brány firewall hosta nebo proxy serveru, rozšíření selžou bez ohledu na výše uvedené. Vyžadují se porty 80, 443 a 32526.
@@ -140,7 +140,7 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
 Pomocí příkazu `Set-AzVMExtension` lze spustit libovolné rozšíření virtuálního počítače. Další informace najdete v referenčních informacích k [set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension).
 
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure
 
 Rozšíření virtuálních počítačů je možné použít pro existující virtuální počítač prostřednictvím Azure Portal. Vyberte virtuální počítač na portálu, klikněte na **rozšíření**a pak vyberte **Přidat**. V seznamu dostupných rozšíření vyberte požadované rozšíření a postupujte podle pokynů v průvodci.
 
@@ -251,6 +251,10 @@ Přesunutí **příkazu k provedení** vlastnosti do **chráněné** konfigurace
     }
 }
 ```
+
+Na virtuálním počítači Azure s IaaS, který používá rozšíření, se můžou v konzole certifikáty zobrazovat certifikáty, které mají předmět **_generátoru certifikátů Windows Azure CRP_** . Na klasickém virtuálním počítači RDFE mají tyto certifikáty **_pro rozšíření název subjektu Windows Azure Service Management_** .
+
+Tyto certifikáty zabezpečují komunikaci mezi virtuálním počítačem a jeho hostitelem během přenosu chráněných nastavení (hesla, jiných přihlašovacích údajů) používaných rozšířeními. Certifikáty jsou sestaveny řadičem infrastruktury Azure a předány agentovi virtuálního počítače. Pokud každý den zastavíte a spustíte virtuální počítač, může řadič prostředků infrastruktury vytvořit nový certifikát. Certifikát je uložen v úložišti osobních certifikátů počítače. Tyto certifikáty je možné odstranit. Agent virtuálního počítače znovu vytvoří certifikáty v případě potřeby.
 
 ### <a name="how-do-agents-and-extensions-get-updated"></a>Jak se aktualizují agenti a rozšíření?
 

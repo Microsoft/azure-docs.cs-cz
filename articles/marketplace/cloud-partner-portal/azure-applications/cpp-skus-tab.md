@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 29b69499b708726b10947bd3202d3a52893f5c90
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2430d7e6fa74438c148d3cb849510be06243faa0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826184"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543150"
 ---
 # <a name="azure-application-skus-tab"></a>Karta SKU aplikací Azure
 
@@ -82,17 +82,19 @@ Nakonfigurujte následující nastavení SKU. Pole připojená pomocí hvězdič
 
 ### <a name="package-details-for-solution-template"></a>Podrobnosti balíčku pro šablonu řešení
 
-   ![Podrobnosti balíčku pro šablonu řešení](./media/azureapp-sku-pkgdetails-solutiontemplate.png)
+![Podrobnosti balíčku pro šablonu řešení](./media/azureapp-sku-pkgdetails-solutiontemplate.png)
 
 Zadejte následující hodnoty **podrobností balíčku** .  Pole připojená pomocí hvězdičky jsou povinná.
 
 - **Verze\*** – verze balíčku, který budete nahrávat. Značky verze musí mít formát X. Y. Z, kde X, Y a Z jsou celá čísla.
 - **Soubor balíčku (. zip)\*** – tento balíček obsahuje následující soubory, které jsou uložené v souboru. zip.
-  - MainTemplate. JSON – soubor šablony nasazení, který se používá k nasazení řešení nebo aplikace a vytvoření prostředků definovaných pro řešení. Další informace najdete v tématu [vytváření souborů šablon nasazení](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template).
-  - createUIDefinition. JSON – tento soubor používá Azure Portal k vygenerování uživatelského rozhraní pro zřízení tohoto řešení nebo aplikace. Další informace najdete v tématu [vytvoření Azure Portal uživatelského rozhraní pro spravovanou aplikaci](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
+  - **mainTemplate. json\*** – soubor šablony nasazení, který se používá k nasazení řešení nebo aplikace a vytvoření prostředků definovaných pro řešení. Další informace najdete v tématu [vytváření souborů šablon nasazení](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template).
+  - **createUIDefinition. json\*** – tento soubor používá Azure Portal k vygenerování uživatelského rozhraní pro zřízení tohoto řešení/aplikace. Další informace najdete v tématu [vytvoření Azure Portal uživatelského rozhraní pro spravovanou aplikaci](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
+  - Skripty (v případě potřeby) – jakékoli další skripty, které mohou být vyžadovány při spuštění šablony, například `Microsoft.Compute/virtualMachines/extensions`.
+  - Vnořené šablony (Pokud je potřeba) – jakékoli další vnořené šablony.
 
-  >[!IMPORTANT] 
-  >Tento balíček by měl obsahovat všechny vnořené šablony nebo skripty, které jsou potřeba k zřízení této aplikace. Soubor MainTemplate. JSON a soubor createUIDefinition. JSON musí být v kořenové složce.
+  > [!IMPORTANT] 
+  > Tento balíček by měl obsahovat všechny vnořené šablony nebo skripty, které jsou potřeba k zřízení této aplikace. Soubor mainTemplate. JSON a soubor createUIDefinition. JSON musí být v kořenové složce. Další informace o artefaktech nasazení najdete v tématu [Azure Resource Manager šablon – Průvodce osvědčenými postupy](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md#deployment-artifacts-nested-templates-scripts).
 
 
 ### <a name="package-details-for-managed-application"></a>Podrobnosti balíčku pro spravovanou aplikaci

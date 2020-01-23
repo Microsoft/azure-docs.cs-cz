@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4de8b032bd284ce0a2d6d8fd168b9ea3dd4937d3
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 6867862c130bf6f0b7cc34098064f6ce6eec282b
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289046"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543491"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Přístup k datům ve službě Azure Storage
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -47,7 +47,7 @@ Budete potřebovat:
 
 ## <a name="supported-data-storage-service-types"></a>Podporované typy služby úložiště dat
 
-Úložiště dat v současné době podporují ukládání informací o připojení do služby úložiště uvedené v následující matici.
+Úložiště dat v současné době podporují ukládání informací o připojení do služby úložiště uvedené v následující matici. V tuto chvíli není Azure Data Warehouse podporovaný. 
 
 | Typ&nbsp;úložiště | Typ&nbsp;ověřování | [Azure&nbsp;Machine –&nbsp;Learning Studio](https://ml.azure.com/) | [Azure&nbsp;Machine&nbsp;Learning&nbsp; Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) |  [Rozhraní příkazového řádku Azure&nbsp;Machine&nbsp;Learning](reference-azure-machine-learning-cli.md) | [Rozhraní REST API pro Azure&nbsp;Machine&nbsp;Learning&nbsp;](https://docs.microsoft.com/rest/api/azureml/)
 ---|---|---|---|---|---

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: b4180fced60c4a9f2402253c7c3b3d3ff97fe1e1
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 62e2168c674693ded31bd94206e2e13c82c67b68
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314602"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546380"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>Průměrný Perceptron modul se dvěma třídami
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Pomocí tohoto modulu můžete vytvořit model strojového učení na základě průměrného Perceptron algoritmu.  
   

@@ -1,14 +1,14 @@
 ---
 title: Nasazení zákazníků do správy delegovaných prostředků Azure
 description: Naučte se, jak začlenit správu delegovaných prostředků do Azure, aby k nim bylo možné získat a spravovat jejich prostředky prostřednictvím vašeho vlastního tenanta.
-ms.date: 01/09/2020
+ms.date: 01/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: ca9e17a9ee4e83492eccf63e4c7d353891071f27
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: b3868987fa76d4ce0d4c34e81b46301ea106203d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314619"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543405"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Nasazení zákazníků do správy delegovaných prostředků Azure
 
@@ -236,7 +236,7 @@ az deployment create --name <deploymentName> \
                      --verbose
 
 # Deploy external Azure Resource Manager template, with local parameter file
-az deployment create --name <deploymentName \
+az deployment create --name <deploymentName> \
                      --location <AzureRegion> \
                      --template-uri <templateUri> \
                      --parameters <parameterFile> \
@@ -302,6 +302,12 @@ Níže uvedený příklad ukazuje přiřazení, které uděluje **přiřazení r
 ```
 
 Uživatel s tímto oprávněním může odebrat delegování jedním z následujících způsobů.
+
+### <a name="azure-portal"></a>Portál Azure
+
+1. Přejděte na [stránku Moji zákazníci](view-manage-customers.md).
+2. Vyberte **delegování**.
+3. Vyhledejte delegování, které chcete odebrat, a pak vyberte ikonu odpadkového koše, která se zobrazí na jeho řádku.
 
 ### <a name="powershell"></a>PowerShell
 

@@ -1,5 +1,5 @@
 ---
-title: Kódování vzdáleného souboru na základě adresy URL a datového proudu pomocí Azure Media Services-REST | Microsoft Docs
+title: Kódování vzdáleného souboru a datového proudu pomocí Azure Media Services V3
 description: Použijte postup v tomto kurzu ke kódování souboru na základě adresy URL a streamování vašeho obsahu pomocí Azure Media Services s využitím REST.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 11/05/2019
 ms.author: juliako
-ms.openlocfilehash: 128513c3af5ce6c0853b63d86959e4c3c35de93c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d4175f2508edab1cf54e415652e9e9cb37b879b1
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685106"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514336"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Kurz: kódování vzdáleného souboru na základě adresy URL a streamu pro video
 
@@ -25,7 +25,7 @@ Azure Media Services umožňuje kódování mediálních souborů ve formátech,
 
 V tomto kurzu se dozvíte, jak zakódovat soubor na základě adresy URL a streamu videa s Azure Media Services pomocí REST. 
 
-![Přehrávání videa](./media/stream-files-tutorial-with-api/final-video.png)
+![Přehrát video](./media/stream-files-tutorial-with-api/final-video.png)
 
 V tomto kurzu získáte informace o následujících postupech:    
 
@@ -42,7 +42,7 @@ V tomto kurzu získáte informace o následujících postupech:
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Vytvořte účet Media Services](create-account-cli-how-to.md).
+- [Vytvoření účtu Media Services](create-account-cli-how-to.md).
 
     Nezapomeňte si pamatovat hodnoty, které jste použili pro název skupiny prostředků a název účtu Media Services
 
@@ -248,7 +248,7 @@ V tomto příkladu je vstup úlohy založen na adrese URL HTTPS ("https:\//nimbu
         }
         ```
 
-Úloze chvíli trvá, než se dokončí, a když k tomu dojde, budete na to pravděpodobně chtít upozornit. K zobrazení průběhu úlohy doporučujeme použít službu Event Grid. Ta je navržená s ohledem na vysokou dostupnost, stabilní výkon a dynamické škálování. Díky službě Event Grid můžou vaše aplikace naslouchat událostem a reagovat na ně, ať už pocházejí z kterékoli služby Azure. Události můžou pocházet i z vlastních zdrojů. Jednoduché, reaktivní zpracování událostí založené na protokolu HTTP pomáhá sestavovat efektivní řešení prostřednictvím inteligentního filtrování a směrování událostí.  Další informace najdete v článku [Směrování událostí na vlastní webový koncový bod](job-state-events-cli-how-to.md).
+Úloze chvíli trvá, než se dokončí, a když k tomu dojde, budete na to pravděpodobně chtít upozornit. K zobrazení průběhu úlohy doporučujeme použít službu Event Grid. Ta je navržená s ohledem na vysokou dostupnost, stabilní výkon a dynamické škálování. Díky službě Event Grid můžou vaše aplikace naslouchat událostem a reagovat na ně, ať už pochází v podstatě z jakékoli služby Azure nebo vlastních zdrojů. Jednoduché, reaktivní zpracování událostí založené na protokolu HTTP pomáhá sestavovat efektivní řešení prostřednictvím inteligentního filtrování a směrování událostí.  Další informace najdete v článku [Směrování událostí na vlastní webový koncový bod](job-state-events-cli-how-to.md).
 
 **Úloha** obvykle prochází následujícími stavy: **Naplánováno**, **Ve frontě**, **Zpracovávání** a **Dokončeno** (konečný stav). Pokud během provádění úlohy dojde k chybě, přejde úloha do stavu **Chyba**. Když úlohu zrušíte, změní se její stav na **Rušení** a potom na **Zrušeno**.
 
@@ -262,7 +262,7 @@ Po dokončení úlohy kódování je dalším krokem vytvoření videa ve výstu
 
 Proces vytvoření lokátoru streamování se nazývá publikování. Ve výchozím nastavení je Lokátor streamování platný hned po volání rozhraní API a trvá až do odstranění, pokud nenastavíte volitelné počáteční a koncové časy. 
 
-Když vytváříte streamovací lokátor [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators), je potřeba zadat požadovaný název zásady streamování **StreamingPolicyName**. V tomto příkladu budete zasílat streamování (nebo nešifrovaných) obsahu, takže se použije předdefinovaná zásada pro zrušení streamování "Predefined_ClearStreamingOnly".
+Když vytváříte streamovací lokátor [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators), je potřeba zadat požadovaný název zásady streamování **StreamingPolicyName**. V tomto příkladu budete zasílat streamování (nebo nešifrovaných) obsahu, takže se použije předdefinovaná zásada pro zrušení streamování Predefined_ClearStreamingOnly.
 
 > [!IMPORTANT]
 > Pokud chcete definovat vlastní [zásady streamování](https://docs.microsoft.com/rest/api/media/streamingpolicies), doporučujeme navrhnout pro účet služby Media Service omezený počet takovýchto zásad a používat je opakovaně pro streamovací lokátory, kdykoli potřebujete stejné protokoly a možnosti šifrování. 

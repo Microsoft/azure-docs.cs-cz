@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42fa4dfb3e373eac4167ea1fecbd84ff3a7cca0d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 204026825a5132464e1adda611227db2ac7cf91f
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977997"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543983"
 ---
 # <a name="conditional-access-block-access-by-location"></a>Podmíněný přístup: blokovat přístup podle umístění
 
@@ -25,7 +25,7 @@ Pomocí podmínky umístění v podmíněném přístupu můžete řídit přís
 ## <a name="define-locations"></a>Definovat umístění
 
 1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
-1. Přejděte na **Azure Active Directory** > **zabezpečení** > **podmíněný přístup**.
+1. Vyhledejte **Azure Active Directory** > **zabezpečení** > **podmíněný přístup** > **pojmenované umístění**.
 1. Vyberte **nové umístění**.
 1. Zadejte název svého umístění.
 1. **Rozsahy IP** adres vyberte, pokud znáte konkrétní externě přístupné rozsahy IPv4 adres, které tvoří dané umístění nebo **země nebo oblasti**.

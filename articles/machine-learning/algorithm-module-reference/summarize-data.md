@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: a037c959b44a6216724c285f932250b1b05cb509
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: c8051126fc4a895c6e72e90942fac65d777afd8e
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313738"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546482"
 ---
 # <a name="summarize-data"></a>Sumarizace dat
 
-Tento článek popisuje modul návrháře Azure Machine Learning.
+Tento článek popisuje modul návrháře Azure Machine Learning (Preview).
 
 Modul shrnutí dat slouží k vytvoření sady standardních statistických měr, které popisují jednotlivé sloupce ve vstupní tabulce.
 

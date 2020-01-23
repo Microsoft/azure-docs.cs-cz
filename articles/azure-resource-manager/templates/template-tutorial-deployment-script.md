@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/09/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e52a859c86ff451293ac6ff795c7fe427a383b9d
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 459d75bec3d4b4d0cf9057e0c6de238e7f165bfb
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835297"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548981"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Kurz: použití skriptů pro nasazení k vytvoření certifikátu podepsaného svým držitelem (Preview)
 
@@ -267,7 +267,7 @@ Skript nasazení přidá certifikát do trezoru klíčů. Konfigurace zásad př
     * **scriptContent**: Zadejte obsah skriptu. Pokud chcete spustit externí skript, použijte místo toho **primaryScriptURI** . Další informace najdete v tématu [použití externího skriptu](./deployment-script-template.md#use-external-scripts).
         Deklarace **$DeploymentScriptOutputs** se vyžaduje jenom při testování skriptu na místním počítači. Deklarování proměnné umožňuje spuštění skriptu na místním počítači a v prostředku deploymentScript bez nutnosti provádět změny. Hodnota přiřazená k $DeploymentScriptOutputs je k dispozici jako výstupy v nasazeních. Další informace najdete v tématu [práce s výstupy ze skriptů nasazení](./deployment-script-template.md#work-with-outputs-from-deployment-scripts).
     * **cleanupPreference**: Zadejte prioritu při odstraňování prostředků skriptu nasazení.  Výchozí hodnota je **vždycky**, což znamená, že prostředky skriptu nasazení se odstraní navzdory stavu terminálu (úspěšné, neúspěšné, zrušené). V tomto kurzu se používá **úspěch** , abyste získali možnost Zobrazit výsledky spuštění skriptu.
-    * **retentionInterval**: zadejte interval, po který služba uchovává prostředky skriptu po dosažení stavu terminálu. Prostředky budou odstraněny po uplynutí této doby trvání. Doba trvání vychází ze vzoru ISO 8601. V tomto kurzu se používá P1D, což znamená jeden den.  Tato vlastnost se používá, pokud je **retentionInterval** nastaveno na hodnotu- **vypršení platnosti**. Tato vlastnost není aktuálně povolena.
+    * **retentionInterval**: zadejte interval, po který služba uchovává prostředky skriptu po dosažení stavu terminálu. Prostředky budou odstraněny po uplynutí této doby trvání. Doba trvání vychází ze vzoru ISO 8601. V tomto kurzu se používá P1D, což znamená jeden den.  Tato vlastnost se používá, pokud je **cleanupPreference** nastaveno na hodnotu- **vypršení platnosti**. Tato vlastnost není aktuálně povolena.
 
     Skript nasazení používá tři parametry: název trezoru klíčů, název certifikátu a název subjektu.  Vytvoří certifikát a pak certifikát přidá do trezoru klíčů.
 
@@ -319,7 +319,7 @@ Výsledek spuštění skriptu nasazení je uložen do prostředků skriptu nasaz
 
 ## <a name="debug-the-failed-script"></a>Ladění neúspěšného skriptu
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
 1. Otevřete skupinu prostředků. Je to název projektu s připojeným **RG** . Ve skupině prostředků se zobrazí dva další prostředky. Tyto prostředky se označují jako *prostředky skriptu nasazení*.
 
     ![Prostředky skriptu pro nasazení Správce prostředků šablon](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)

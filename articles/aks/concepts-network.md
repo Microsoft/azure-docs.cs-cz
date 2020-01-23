@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: 429205d1df91b5a63679d1189903e5340ab837f8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7c1a25c4d2df83c9bcfb33b658e3d3100d850b6e
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74913886"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547961"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Koncepty sítě pro aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -45,7 +45,7 @@ Pro zjednodušení konfigurace sítě pro úlohy aplikací Kubernetes používá
 
     ![Diagram znázorňující tok přenosů NodePort v clusteru AKS][aks-nodeport]
 
-- Nástroj pro vyrovnávání **zatížení – vytvoří** prostředek nástroje pro vyrovnávání zatížení Azure, nakonfiguruje externí IP adresu a připojí požadované lusky k back-endu služby Vyrovnávání zatížení. Pokud chcete zákazníkům dovolit, aby se do aplikace dostali, vytvoří se na požadovaných portech pravidla vyrovnávání zatížení. 
+- Nástroj pro vyrovnávání **zatížení – vytvoří** prostředek nástroje pro vyrovnávání zatížení Azure, nakonfiguruje externí IP adresu a připojí požadované lusky k back-endu služby Vyrovnávání zatížení. Aby bylo možné v provozu zákazníků dosáhnout aplikace, budou pravidla vyrovnávání zatížení vytvořena na požadovaných portech. 
 
     ![Diagram znázorňující Load Balancer tok provozu v clusteru AKS][aks-loadbalancer]
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9d2986acc47087c267193eee43136e030abcc422
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: eeced5205b836a15a43fbccfb8c6cb60b4bec29f
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990321"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76542861"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Nastavení zdrojů identity vCenter pro používání služby Active Directory
 
@@ -33,7 +33,7 @@ V této příručce se dozvíte, jak nastavit doménu a řadiče domény služby
 Před [přidáním zdroje identity](#add-an-identity-source-on-vcenter)dočasně předávejte [oprávnění vCenter](escalate-private-cloud-privileges.md).
 
 > [!CAUTION]
-> Noví uživatelé musí být přidáni pouze *ke skupině*Cloud-Owner-Group *-Global-cluster-admin-Group*, *Cloud-Global-Storage-admin-Group*, *Cloud-Global-Network-admin* -Group nebo, *Cloud-Global-VM-admin-Group*.  Uživatelé přidaní do skupiny *správců* se automaticky odeberou.  Do skupiny *Administrators* musí být přidáni pouze účty služeb.  
+> Noví uživatelé musí být přidáni pouze *ke skupině*Cloud-Owner-Group *-Global-cluster-admin-Group*, *Cloud-Global-Storage-admin-Group*, *Cloud-Global-Network-admin* -Group nebo, *Cloud-Global-VM-admin-Group*.  Uživatelé přidaní do skupiny *správců* se automaticky odeberou.  Pouze účty služeb musí být přidány do skupiny *Administrators* a účty služeb nesmí být použity pro přihlášení k WEBOVÉmu uživatelskému rozhraní vSphere.   
 
 
 ## <a name="identity-source-options"></a>Možnosti zdroje identity
@@ -124,10 +124,10 @@ Po navázání síťového připojení použijte postup v části [Přidání m�
 
 6. Vyberte **Active Directory jako server LDAP** a klikněte na **Další**.
 
-    ![Active Directory](media/OnPremAD04.png)
+    ![Adresář služby Active Directory](media/OnPremAD04.png)
 
 7. Zadejte zdrojové parametry identity pro vaše prostředí a klikněte na **Další**.
 
-    ![Active Directory](media/OnPremAD05.png)
+    ![Adresář služby Active Directory](media/OnPremAD05.png)
 
 8. Zkontrolujte nastavení a klikněte na **Dokončit**.

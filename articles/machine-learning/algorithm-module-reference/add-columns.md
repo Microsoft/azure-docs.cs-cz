@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: e5e1390cb45fc6f659883ddfc8624719e45f99ce
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 8b882e6fb697d272ddc06e8d263f4c2144ebd017
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314585"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546924"
 ---
 # <a name="add-columns-module"></a>Modul přidat sloupce
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Tento modul slouží ke zřetězení dvou datových sad. Všechny sloupce můžete kombinovat ze dvou datových sad, které zadáte jako vstupy, a vytvořit tak jedinou datovou sadu. Pokud potřebujete zřetězit více než dvě datové sady, použijte několik instancí **Přidat sloupce**.
 

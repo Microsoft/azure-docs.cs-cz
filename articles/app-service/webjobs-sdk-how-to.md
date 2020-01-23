@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 2d9de5e7294fdca7514989ba009e9dee8985a084
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 83884447e9856b5e3db26e4829ccbd3ab1baed13
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421966"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549083"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Jak používat sadu SDK Azure WebJobs pro zpracování na pozadí založené na událostech
 
@@ -681,8 +681,8 @@ Další informace najdete v tématu [vázání za běhu](../azure-functions/func
 Dokumentace k Azure Functions poskytuje referenční informace o jednotlivých typech vazeb. V každém referenčním článku o vazbách najdete následující informace. (Tento příklad je založen na frontě úložiště.)
 
 * [Balíčky](../azure-functions/functions-bindings-storage-queue.md#packages---functions-1x). Balíček, který je potřeba nainstalovat, aby zahrnoval podporu vazby v projektu sady WebJobs SDK.
-* [Příklady](../azure-functions/functions-bindings-storage-queue.md#trigger---example). Ukázky kódu. Příklad C# knihovny tříd se vztahuje na sadu WebJobs SDK. Vynechejte pouze atribut `FunctionName`.
-* [Atributy](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes). Atributy, které mají být použity pro typ vazby.
+* [Příklady](../azure-functions/functions-bindings-storage-queue.md#trigger). Ukázky kódu. Příklad C# knihovny tříd se vztahuje na sadu WebJobs SDK. Vynechejte pouze atribut `FunctionName`.
+* [Atributy](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes-and-annotations). Atributy, které mají být použity pro typ vazby.
 * [Konfigurace](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration). Vysvětlení vlastností atributů a parametrů konstruktoru.
 * [Využití](../azure-functions/functions-bindings-storage-queue.md#trigger---usage). Typy, které můžete svázat, a informace o tom, jak vazba funguje. Příklad: algoritmus cyklického dotazování, zpracování fronty poškození.
   

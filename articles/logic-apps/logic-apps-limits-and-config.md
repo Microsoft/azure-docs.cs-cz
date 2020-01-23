@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 12/16/2019
-ms.openlocfilehash: 3c921bda1b839ee18a91b28f875ba7c84c0dd944
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.date: 01/18/2020
+ms.openlocfilehash: 95960a0af628526eb11335ea5c2fcec51f3c66b5
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76515033"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548539"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a informace o konfiguraci Azure Logic Apps
 
@@ -47,8 +47,8 @@ Tady jsou omezení pro jeden běh aplikace logiky:
 
 | Name (Název) | Limit více tenantů | Omezení prostředí integrační služby | Poznámky |
 |------|--------------------|---------------------------------------|-------|
-| Doba trvání spuštění | 90 dní | 366 dní | Pokud chcete změnit výchozí limit, přečtěte si téma [Změna doby trvání běhu](#change-duration). |
-| Uchování úložiště | 90 dní od času spuštění | 366 dní | Pokud chcete změnit výchozí limit, přečtěte si téma [Změna uchovávání úložiště](#change-retention). |
+| Doba trvání spuštění | 90 dní | 366 dní | Doba trvání běhu se počítá pomocí počátečního času běhu a limitu, který je zadaný *v poli čas spuštění* podle nastavení pracovního postupu, [**uchování historie spuštění ve dnech**](#change-duration). <p><p>Chcete-li změnit výchozí limit, který je 90 dní, přečtěte si téma [Doba trvání spuštění](#change-duration). |
+| Spustit uchovávání v úložišti | 90 dní | 366 dní | Doba uchovávání se počítá pomocí počátečního času spuštění a omezení zadaného v *aktuálním čase* nastavením pracovního postupu, [**uchování historie spuštění ve dnech**](#change-retention). Bez ohledu na to, jestli je běh dokončený nebo časový limit, výpočet uchovávání vždycky používá počáteční čas spuštění. Pokud doba trvání běhu překročí *aktuální* limit uchovávání, odebere se z historie spuštění. <p><p>Pokud toto nastavení změníte, aktuální limit se vždy použije pro výpočet uchování bez ohledu na předchozí omezení. Pokud například omezíte dobu uchovávání dat z 90 dnů na 30 dní, je z historie spuštění odebráno staré 60 dní. Pokud zvýšíte dobu uchovávání dat na 30 dní až 60 dní, zůstane spuštění 20 dní v historii spuštění dalších 40 dnů. <p><p>Pokud chcete změnit výchozí omezení, které je 90 dnů, přečtěte si téma [Změna doby uchování v úložišti](#change-retention). |
 | Minimální interval opakování | 1 sekunda | 1 sekunda ||
 | Maximální interval opakování | 500 dnů | 500 dnů ||
 |||||
@@ -56,9 +56,13 @@ Tady jsou omezení pro jeden běh aplikace logiky:
 <a name="change-duration"></a>
 <a name="change-retention"></a>
 
-### <a name="change-run-duration-and-storage-retention"></a>Změna doby trvání běhu a uchování úložiště
+### <a name="change-run-duration-and-run-retention-in-storage"></a>Změna doby trvání běhu a uchování provozu v úložišti
 
-Pokud chcete změnit výchozí limit doby trvání běhu a uchování úložiště, postupujte podle těchto kroků. Chcete-li zvýšit maximální limit, [obraťte se na tým Logic Apps](mailto://logicappsemail@microsoft.com) , kde vám pomůžou vaše požadavky.
+Chcete-li změnit výchozí limit doby trvání běhu a dobu uchování v úložišti, postupujte podle těchto kroků. Chcete-li zvýšit maximální limit, [obraťte se na tým Logic Apps](mailto://logicappsemail@microsoft.com) , kde vám pomůžou vaše požadavky.
+
+> [!NOTE]
+> Pro Logic Apps ve více tenantů Azure je výchozí limit 90 dne stejný jako maximální limit. Tuto hodnotu lze snížit pouze.
+> U Logic Apps v prostředí integrační služby můžete snížit nebo zvýšit výchozí limit 90.
 
 1. Přejděte na [portál Azure](https://portal.azure.com). V poli hledání na portálu vyhledejte a vyberte **Aplikace logiky**.
 
@@ -68,11 +72,9 @@ Pokud chcete změnit výchozí limit doby trvání běhu a uchování úložišt
 
 1. V části **Možnosti modulu runtime**v seznamu **uchování historie spuštění ve dnech** vyberte možnost **vlastní**.
 
-1. Zadejte nebo přetáhněte posuvník po požadovaný počet dní.
+1. Přetažením posuvníku změníte počet dní, které chcete.
 
-   > [!NOTE]
-   > Pro Logic Apps ve více tenantů Azure je výchozí limit 90 dne stejný jako maximální limit. Tuto hodnotu lze snížit pouze.
-   > U Logic Apps v prostředí integrační služby můžete snížit nebo zvýšit výchozí limit 90.
+1. Až skončíte, na panelu nástrojů **Nastavení pracovního postupu** vyberte **Uložit**.
 
 <a name="looping-debatching-limits"></a>
 
@@ -82,11 +84,11 @@ Tady jsou omezení pro jeden běh aplikace logiky:
 
 | Name (Název) | škálování | Poznámky |
 | ---- | ----- | ----- |
-| Souběžnost triggeru | * Neomezeno, pokud je řízení souběžnosti vypnuto <p><p>* 25 je výchozím limitem při zapnutí řízení souběžnosti, které nelze vrátit zpět po zapnutí ovládacího prvku. Výchozí hodnotu můžete změnit na hodnotu v rozmezí 1 až 50 (včetně). | Toto omezení popisuje nejvyšší počet instancí aplikace logiky, které mohou běžet současně, nebo paralelně. <p><p>**Poznámka**: při zapnuté souběžnosti se limit SplitOn snižuje na 100 položek pro [oddávkování polí](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). <p><p>Pokud chcete změnit výchozí limit na hodnotu v rozmezí 1 až 50 (včetně), přečtěte si téma [Změna limitu souběžnosti triggeru](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) nebo [instancí triggerů postupně](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
-| Maximální počet čekajících spuštění | Když je řízení souběžnosti zapnuto, minimální počet čekajících spuštění je 10 plus počet souběžných spuštění (aktivační souběžnost). Maximální počet můžete změnit až na 100 včetně. | Toto omezení popisuje nejvyšší počet instancí aplikace logiky, které mohou čekat na spuštění, když aplikace logiky již používá maximální počet souběžných instancí. <p><p>Pokud chcete změnit výchozí limit, přečtěte si téma [Změna limitu čekání na spuštění](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). |
+| Souběžnost triggeru | -Unlimited, pokud je řízení souběžnosti vypnuté <p><p>-25 je výchozím limitem při zapnutí řízení souběžnosti, které nelze vrátit zpět po zapnutí ovládacího prvku. Výchozí hodnotu můžete změnit na hodnotu v rozmezí 1 až 50 (včetně). | Toto omezení popisuje nejvyšší počet instancí aplikace logiky, které mohou běžet současně, nebo paralelně. <p><p>**Poznámka**: při zapnuté souběžnosti se limit SplitOn snižuje na 100 položek pro [oddávkování polí](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). <p><p>Pokud chcete změnit výchozí limit na hodnotu v rozmezí 1 až 50 (včetně), přečtěte si téma [Změna limitu souběžnosti triggeru](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) nebo [instancí triggerů postupně](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
+| Maximální počet čekajících spuštění | – Bez souběžnosti je minimální počet čekajících spuštění 1, ale maximální počet je 50. <p><p>– S souběžnou souběžnou je minimální počet čekajících spuštění 10 a počet souběžných spuštění (aktivační souběžnost). Maximální počet můžete změnit až na 100 včetně. | Toto omezení popisuje nejvyšší počet instancí aplikace logiky, které mohou čekat na spuštění, když aplikace logiky již používá maximální počet souběžných instancí. <p><p>Pokud chcete změnit výchozí limit, přečtěte si téma [Změna limitu čekání na spuštění](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). |
 | Položky pole foreach | 100 000 | Toto omezení popisuje nejvyšší počet položek pole, které může smyčka for each zpracovat. <p><p>Chcete-li filtrovat větší pole, můžete použít [akci dotazu](logic-apps-perform-data-operations.md#filter-array-action). |
 | Souběžnost foreach | 20 je výchozím limitem při vypnutém řízení souběžnosti. Výchozí hodnotu můžete změnit na hodnotu v rozmezí 1 až 50 (včetně). | Toto omezení je nejvyšší počet iterací smyčky for each, které lze spustit současně nebo paralelně. <p><p>Chcete-li změnit výchozí limit na hodnotu mezi 1 a 50, přečtěte si téma [Změna "pro každé" omezení souběžnosti](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) nebo [spuštění každé smyčky "pro každou" cyklicky](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). |
-| Položky SplitOn | * 100 000 bez spouštěcí souběžnosti <p><p>* 100 s souběžnou aktivací | U triggerů, které vracejí pole, můžete zadat výraz, který používá vlastnost SplitOn, která [rozdělí nebo oddělí dávky polí pole do více instancí pracovního postupu](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) pro zpracování namísto použití smyčky "foreach". Tento výraz odkazuje na pole, které se má použít pro vytvoření a spuštění instance pracovního postupu pro každou položku pole. <p><p>**Poznámka**: když je souběžnost zapnutá, limit SplitOn se sníží na 100 položek. |
+| Položky SplitOn | -100 000 bez spouštěcího souběžnosti <p><p>-100 s souběžnou podporou triggeru | U triggerů, které vracejí pole, můžete zadat výraz, který používá vlastnost SplitOn, která [rozdělí nebo oddělí dávky polí pole do více instancí pracovního postupu](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) pro zpracování namísto použití smyčky "foreach". Tento výraz odkazuje na pole, které se má použít pro vytvoření a spuštění instance pracovního postupu pro každou položku pole. <p><p>**Poznámka**: když je souběžnost zapnutá, limit SplitOn se sníží na 100 položek. |
 | Do iterací | 5 000 | |
 ||||
 

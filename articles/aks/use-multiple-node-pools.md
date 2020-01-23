@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 08/9/2019
+ms.date: 01/22/2020
 ms.author: mlearned
-ms.openlocfilehash: 9c72c8431907c52dab338114ce09be139608ab0a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f9d00cff5d910d6bbbb4c436249283cca87b91e1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768584"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549100"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vytvoření a Správa fondů více uzlů pro cluster ve službě Azure Kubernetes (AKS)
 
@@ -36,14 +36,14 @@ Při vytváření a správě clusterů AKS, které podporují více fondů uzlů
 * Cluster AKS musí používat standardní nástroj pro vyrovnávání zatížení SKU pro použití více fondů uzlů, ale funkce nástroje pro vyrovnávání zatížení Basic SKU není podporována.
 * Cluster AKS musí pro uzly používat sadu škálování virtuálních počítačů.
 * Název fondu uzlů může obsahovat jenom malé alfanumerické znaky a musí začínat malým písmenem. U fondů uzlů se systémem Linux musí být délka v rozmezí od 1 do 12 znaků, v případě fondů uzlů systému Windows musí být délka mezi 1 a 6 znaky.
-* Cluster AKS může mít maximálně osm fondů uzlů.
-* Cluster AKS může mít maximálně 800 uzlů v těchto osmi fondech uzlů.
+* Cluster AKS může mít maximálně 10 fondů uzlů.
+* Cluster AKS může mít maximálně 1000 uzlů napříč těmito fondy 10 uzlů.
 * Všechny fondy uzlů se musí nacházet ve stejné virtuální síti a podsíti.
 * Při vytváření více fondů uzlů v době vytváření clusteru se musí všechny verze Kubernetes používané fondy uzlů shodovat s verzí nastavenou pro plochu ovládacího prvku. Dá se aktualizovat po zřízení clusteru pomocí operací pro fond uzlů.
 
 ## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
 
-Začněte tím, že vytvoříte cluster AKS s jedním fondem uzlů. Následující příklad používá příkaz [AZ Group Create][az-group-create] k vytvoření skupiny prostředků s názvem *myResourceGroup* v oblasti *eastus* . Pomocí příkazu [AZ AKS Create][az-aks-create] se pak vytvoří cluster AKS s názvem *myAKSCluster* . A *--Kubernetes-verze* *1.13.10* se používá k zobrazení způsobu aktualizace fondu uzlů v následujícím kroku. Můžete zadat libovolnou [podporovanou verzi Kubernetes][supported-versions].
+Začněte tím, že vytvoříte cluster AKS s jedním fondem uzlů. Následující příklad používá příkaz [AZ Group Create][az-group-create] k vytvoření skupiny prostředků s názvem *myResourceGroup* v oblasti *eastus* . Pomocí příkazu [AZ AKS Create][az-aks-create] se pak vytvoří cluster AKS s názvem *myAKSCluster* . A *--Kubernetes-verze* *1.15.7* se používá k zobrazení způsobu aktualizace fondu uzlů v následujícím kroku. Můžete zadat libovolnou [podporovanou verzi Kubernetes][supported-versions].
 
 > [!NOTE]
 > SKU nástroje Load Balancer úrovně *Basic* není při použití více fondů uzlů **podporována** . Ve výchozím nastavení se clustery AKS s použitím služby Load Balancer *úrovně Standard* (SKU) z Azure CLI a Azure Portal vytvoří.
@@ -59,7 +59,7 @@ az aks create \
     --vm-set-type VirtualMachineScaleSets \
     --node-count 2 \
     --generate-ssh-keys \
-    --kubernetes-version 1.13.10 \
+    --kubernetes-version 1.15.7 \
     --load-balancer-sku standard
 ```
 
@@ -84,7 +84,7 @@ az aks nodepool add \
     --cluster-name myAKSCluster \
     --name mynodepool \
     --node-count 3 \
-    --kubernetes-version 1.12.7
+    --kubernetes-version 1.15.5
 ```
 
 > [!NOTE]
@@ -107,7 +107,7 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
     "count": 3,
     ...
     "name": "mynodepool",
-    "orchestratorVersion": "1.12.7",
+    "orchestratorVersion": "1.15.5",
     ...
     "vmSize": "Standard_DS2_v2",
     ...
@@ -117,7 +117,7 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
     "count": 2,
     ...
     "name": "nodepool1",
-    "orchestratorVersion": "1.13.10",
+    "orchestratorVersion": "1.15.7",
     ...
     "vmSize": "Standard_DS2_v2",
     ...
@@ -126,32 +126,32 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 ```
 
 > [!TIP]
-> Pokud při přidávání fondu uzlů nejsou zadány žádné *OrchestratorVersion* ani *VmSize* , vytvoří se uzly na základě výchozích hodnot pro cluster AKS. V tomto příkladu bylo Kubernetes verze *1.13.10* a velikost uzlu *Standard_DS2_v2*.
+> Pokud při přidávání fondu uzlů není zadaný žádný *VmSize* , výchozí velikost se *Standard_DS2_v3* pro fondy uzlů Windows a *Standard_DS2_v2* pro fondy uzlů Linux. Pokud není zadán žádný *OrchestratorVersion* , použije se ve výchozím nastavení stejná verze jako plocha ovládacího prvku.
 
 ## <a name="upgrade-a-node-pool"></a>Upgrade fondu uzlů
- 
+
 > [!NOTE]
 > Operace upgradu a škálování na clusteru nebo ve fondu uzlů se nemůžou vyskytovat současně, pokud se k chybě vrátí. Místo toho musí být každý typ operace dokončen u cílového prostředku před dalším požadavkem na stejný prostředek. Další informace najdete v našem [Průvodci odstraňováním potíží](https://aka.ms/aks-pending-upgrade).
 
-Když se v prvním kroku vytvořil cluster AKS, zadala se `--kubernetes-version`a *1.13.10* . Tím se nastaví verze Kubernetes pro rovinu ovládacího prvku i pro výchozí fond uzlů. Příkazy v této části vysvětlují, jak upgradovat jeden konkrétní fond uzlů.
+Když se v prvním kroku vytvořil cluster AKS, zadala se `--kubernetes-version`a *1.15.7* . Tím se nastaví verze Kubernetes pro rovinu ovládacího prvku i pro výchozí fond uzlů. Příkazy v této části vysvětlují, jak upgradovat jeden konkrétní fond uzlů.
 
 Vztah mezi upgradem verze Kubernetes roviny ovládacího prvku a fondem uzlů je vysvětlen v [níže uvedené části](#upgrade-a-cluster-control-plane-with-multiple-node-pools).
 
 > [!NOTE]
 > Verze bitové kopie operačního systému fondu uzlů je svázána s verzí Kubernetes clusteru. Po upgradu clusteru budete dostávat jenom upgrady imagí operačního systému.
 
-Vzhledem k tomu, že v tomto příkladu existují dva fondy uzlů, je pro upgrade fondu uzlů nutné použít příkaz [AZ AKS nodepool upgrade][az-aks-nodepool-upgrade] . Pojďme upgradovat *mynodepool* na Kubernetes *1.13.10*. Pomocí příkazu [AZ AKS nodepool upgrade][az-aks-nodepool-upgrade] provedete upgrade fondu uzlů, jak je znázorněno v následujícím příkladu:
+Vzhledem k tomu, že v tomto příkladu existují dva fondy uzlů, je pro upgrade fondu uzlů nutné použít příkaz [AZ AKS nodepool upgrade][az-aks-nodepool-upgrade] . Pojďme upgradovat *mynodepool* na Kubernetes *1.15.7*. Pomocí příkazu [AZ AKS nodepool upgrade][az-aks-nodepool-upgrade] provedete upgrade fondu uzlů, jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 az aks nodepool upgrade \
     --resource-group myResourceGroup \
     --cluster-name myAKSCluster \
     --name mynodepool \
-    --kubernetes-version 1.13.10 \
+    --kubernetes-version 1.15.7 \
     --no-wait
 ```
 
-Seznam stavů fondů uzlů znovu vypište pomocí příkazu [AZ AKS Node Pool list][az-aks-nodepool-list] . Následující příklad ukazuje, že *mynodepool* je ve stavu *upgradu* na *1.13.10*:
+Seznam stavů fondů uzlů znovu vypište pomocí příkazu [AZ AKS Node Pool list][az-aks-nodepool-list] . Následující příklad ukazuje, že *mynodepool* je ve stavu *upgradu* na *1.15.7*:
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -162,7 +162,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
     "count": 3,
     ...
     "name": "mynodepool",
-    "orchestratorVersion": "1.13.10",
+    "orchestratorVersion": "1.15.7",
     ...
     "provisioningState": "Upgrading",
     ...
@@ -174,7 +174,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
     "count": 2,
     ...
     "name": "nodepool1",
-    "orchestratorVersion": "1.13.10",
+    "orchestratorVersion": "1.15.7",
     ...
     "provisioningState": "Succeeded",
     ...
@@ -240,7 +240,7 @@ az aks nodepool scale \
 Seznam stavů fondů uzlů znovu vypište pomocí příkazu [AZ AKS Node Pool list][az-aks-nodepool-list] . Následující příklad ukazuje, že *mynodepool* je ve stavu *škálování* s novým počtem *5* uzlů:
 
 ```console
-$ az aks nodepool list -g myResourceGroupPools --cluster-name myAKSCluster
+$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 [
   {
@@ -248,7 +248,7 @@ $ az aks nodepool list -g myResourceGroupPools --cluster-name myAKSCluster
     "count": 5,
     ...
     "name": "mynodepool",
-    "orchestratorVersion": "1.13.10",
+    "orchestratorVersion": "1.15.7",
     ...
     "provisioningState": "Scaling",
     ...
@@ -260,7 +260,7 @@ $ az aks nodepool list -g myResourceGroupPools --cluster-name myAKSCluster
     "count": 2,
     ...
     "name": "nodepool1",
-    "orchestratorVersion": "1.13.10",
+    "orchestratorVersion": "1.15.7",
     ...
     "provisioningState": "Succeeded",
     ...
@@ -298,7 +298,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
     "count": 5,
     ...
     "name": "mynodepool",
-    "orchestratorVersion": "1.13.10",
+    "orchestratorVersion": "1.15.7",
     ...
     "provisioningState": "Deleting",
     ...
@@ -310,7 +310,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
     "count": 2,
     ...
     "name": "nodepool1",
-    "orchestratorVersion": "1.13.10",
+    "orchestratorVersion": "1.15.7",
     ...
     "provisioningState": "Succeeded",
     ...
@@ -351,7 +351,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
     "count": 1,
     ...
     "name": "gpunodepool",
-    "orchestratorVersion": "1.13.10",
+    "orchestratorVersion": "1.15.7",
     ...
     "provisioningState": "Creating",
     ...
@@ -363,7 +363,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
     "count": 2,
     ...
     "name": "nodepool1",
-    "orchestratorVersion": "1.13.10",
+    "orchestratorVersion": "1.15.7",
     ...
     "provisioningState": "Succeeded",
     ...
@@ -383,8 +383,8 @@ Nyní máte v clusteru dva fondy uzlů – výchozí fond uzlů byl původně vy
 $ kubectl get nodes
 
 NAME                                 STATUS   ROLES   AGE     VERSION
-aks-gpunodepool-28993262-vmss000000  Ready    agent   4m22s   v1.13.10
-aks-nodepool1-28993262-vmss000000    Ready    agent   115m    v1.13.10
+aks-gpunodepool-28993262-vmss000000  Ready    agent   4m22s   v1.15.7
+aks-nodepool1-28993262-vmss000000    Ready    agent   115m    v1.15.7
 ```
 
 Plánovač Kubernetes může pomocí chuti a omezení omezit, jaké úlohy je možné spouštět na uzlech.
@@ -461,7 +461,7 @@ Když použijete šablonu Azure Resource Manager k vytváření a správě prost
 Vytvořte šablonu, například `aks-agentpools.json` a vložte následující vzorový manifest. Tato příklad šablony konfiguruje následující nastavení:
 
 * Aktualizuje fond uzlů pro *Linux* s názvem *myagentpool* , aby se spouštěly tři uzly.
-* Nastaví uzly ve fondu uzlů tak, aby běžely Kubernetes verze *1.13.10*.
+* Nastaví uzly ve fondu uzlů tak, aby běžely Kubernetes verze *1.15.7*.
 * Definuje velikost uzlu jako *Standard_DS2_v2*.
 
 Upravte tyto hodnoty podle potřeby, pokud potřebujete aktualizovat, přidat nebo odstranit fondy uzlů:
@@ -500,7 +500,7 @@ Upravte tyto hodnoty podle potřeby, pokud potřebujete aktualizovat, přidat ne
     },
     "variables": {
         "apiVersion": {
-            "aks": "2019-04-01"
+            "aks": "2020-01-01"
         },
         "agentPoolProfiles": {
             "maxPods": 30,
@@ -513,7 +513,7 @@ Upravte tyto hodnoty podle potřeby, pokud potřebujete aktualizovat, přidat ne
     },
     "resources": [
         {
-            "apiVersion": "2019-04-01",
+            "apiVersion": "2020-01-01",
             "type": "Microsoft.ContainerService/managedClusters/agentPools",
             "name": "[concat(parameters('clusterName'),'/', parameters('agentPoolName'))]",
             "location": "[parameters('location')]",
@@ -526,7 +526,7 @@ Upravte tyto hodnoty podle potřeby, pokud potřebujete aktualizovat, přidat ne
                 "storageProfile": "ManagedDisks",
                 "type": "VirtualMachineScaleSets",
                 "vnetSubnetID": "[variables('agentPoolProfiles').vnetSubnetId]",
-                "orchestratorVersion": "1.13.10"
+                "orchestratorVersion": "1.15.7"
             }
         }
     ]
@@ -540,6 +540,25 @@ az group deployment create \
     --resource-group myResourceGroup \
     --template-file aks-agentpools.json
 ```
+
+> [!TIP]
+> Do fondu uzlů můžete přidat značku přidáním vlastnosti *tag* do šablony, jak je znázorněno v následujícím příkladu.
+> 
+> ```json
+> ...
+> "resources": [
+> {
+>   ...
+>   "properties": {
+>     ...
+>     "tags": {
+>       "name1": "val1"
+>     },
+>     ...
+>   }
+> }
+> ...
+> ```
 
 Aktualizace clusteru AKS může trvat několik minut v závislosti na nastaveních fondu uzlů a operacích, které definujete v šabloně Správce prostředků.
 

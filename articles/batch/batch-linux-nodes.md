@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 06/01/2018
 ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 27273fecc9d117079cfda58d537cf7342d3c5dc4
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 080310d5884ca82a3ff02ff0474777ea3a71997e
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027075"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547604"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Zřizování výpočetních uzlů pro Linux ve fondech Batch
 
@@ -347,7 +347,7 @@ Pokud nasazujete aplikace do vašich dávkových uzlů pomocí [balíčků aplik
 [rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
 [py_account_ops]: http://azure-sdk-for-python.readthedocs.org/en/dev/ref/azure.batch.operations.html#azure.batch.operations.AccountOperations
 [py_azure_sdk]: https://pypi.python.org/pypi/azure
-[py_batch_docs]: https://azure-sdk-for-python.readthedocs.io/batch.html
+[py_batch_docs]: https://azure.github.io/azure-sdk-for-python/ref/Batch.html
 [py_batch_package]: https://pypi.python.org/pypi/azure-batch
 [py_computenodeuser]: /python/api/azure-batch/azure.batch.models.computenodeuser
 [py_imagereference]: /python/api/azure-mgmt-batch/azure.mgmt.batch.models.imagereference

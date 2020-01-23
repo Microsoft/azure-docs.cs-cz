@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: bb0af855a136c83eac7e28287b28046b50a7c124
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b9fb15fc9f3dc51a0df40a4ccb738a97d4558dff
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892732"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545887"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>Vložení Video Indexer widgetů do vašich aplikací
 
@@ -159,7 +159,8 @@ V této části se dozvíte, jak dosáhnout interakce mezi pomůckou pro rozpozn
             this.videobreakdown({
             videoId: "c4c1ad4c9a",
             syncTranscript: true,
-            syncLanguage: true
+            syncLanguage: true,
+            location: "trial" /* location option for paid accounts (default is trial) */
             });
 
             // Set the source dynamically.

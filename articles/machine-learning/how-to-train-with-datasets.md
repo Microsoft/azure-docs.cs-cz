@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: 24a19487567f2753457d5886cbb9fa4bf438bad4
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: f87dbedb1428b5884e20a9f7daabea792387fe88
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311338"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543303"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Výuka s datovými sadami v Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -105,8 +105,11 @@ experiment_run.wait_for_completion(show_output=True)
 Pokud chcete, aby byly datové soubory k dispozici na výpočetním cíli pro školení, použijte [datovou sadu](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) souborů pro připojení nebo stažení souborů, na které odkazuje.
 
 ### <a name="mount-vs-download"></a>Připojit v.s. Stáhnout
-Když připojíte datovou sadu, připojíte soubory, na které datová sada odkazuje, do adresáře (přípojný bod) a zpřístupníte ji na cílovém výpočetním cíli. Připojení se podporuje pro výpočetní služby založené na systému Linux, včetně Azure Machine Learning výpočetních, virtuálních počítačů a HDInsight. Pokud velikost dat překročí velikost výpočetního disku nebo načítáte jenom součást sady dat ve vašem skriptu, doporučuje se připojení. Vzhledem k tomu, že stahování datové sady, která je větší než velikost disku, selže, a připojení bude načíst pouze část dat používaných vaším skriptem v době zpracování. Když stáhnete datovou sadu, všechny soubory, na které datová sada odkazuje, se stáhnou do cílového výpočetního prostředí. Stahování je podporováno pro všechny typy výpočtů. Pokud váš skript zpracuje všechny soubory, na které datová sada odkazuje, a váš výpočetní disk se může vejít do celé datové sady, doporučuje se stažení, abyste se vyhnuli režii streamování dat ze služby úložiště.
+Když připojíte datovou sadu, připojíte soubory, na které datová sada odkazuje, do adresáře (přípojný bod) a zpřístupníte ji na cílovém výpočetním cíli. Připojení se podporuje pro výpočetní služby založené na systému Linux, včetně Azure Machine Learning výpočetních, virtuálních počítačů a HDInsight. Pokud velikost dat překročí velikost výpočetního disku nebo načítáte jenom součást sady dat ve vašem skriptu, doporučuje se připojení. Vzhledem k tomu, že stahování datové sady, která je větší než velikost disku, selže, a připojení bude načíst pouze část dat používaných vaším skriptem v době zpracování. 
 
+Když stáhnete datovou sadu, všechny soubory, na které datová sada odkazuje, se stáhnou do cílového výpočetního prostředí. Stahování je podporováno pro všechny typy výpočtů. Pokud váš skript zpracuje všechny soubory, na které datová sada odkazuje, a váš výpočetní disk se může vejít do celé datové sady, doporučuje se stažení, abyste se vyhnuli režii streamování dat ze služby úložiště.
+
+Pro datové sady vytvořené ze služby Azure Blob Storage, souborů Azure, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database a Azure Database for PostgreSQL se podporují připojení nebo stahování souborů libovolného formátu. 
 
 ### <a name="create-a-filedataset"></a>Vytvoření datové sady
 

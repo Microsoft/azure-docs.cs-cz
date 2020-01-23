@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 09ae896d26d534d3f9d5651834e181d37581c8f3
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 6e2437fadb743706d4f4215bbcbab8616817de5f
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76288948"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545615"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Integrace Azure Active Directory pro Azure Red Hat OpenShift
 
@@ -55,6 +55,9 @@ Aby bylo možné udělit přístup Správce clusteru, členství ve skupině zab
 
 9. Když se skupina vytvoří, zobrazí se v seznamu všech skupin. Klikněte na novou skupinu.
 10. Na stránce, která se zobrazí, zkopírujte **ID objektu**. Tato hodnota se na tuto hodnotu odkazuje jako na `GROUPID` v kurzu [Vytvoření clusteru Azure Red Hat OpenShift](tutorial-create-cluster.md) .
+
+> [!IMPORTANT]
+> Pokud chcete tuto skupinu synchronizovat se skupinou osa-Customer-Admins OpenShift, vytvořte cluster pomocí Azure CLI. Azure Portal aktuálně chybí pole pro nastavení této skupiny.
 
 ## <a name="create-an-azure-ad-app-registration"></a>Vytvoření registrace aplikace Azure AD
 

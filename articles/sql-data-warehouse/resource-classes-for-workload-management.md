@@ -11,12 +11,12 @@ ms.date: 12/04/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f5f63b0169a7ac8c7b33dda73dd2072376628d4a
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 30d3c67a815d05a256717fc4447ae3687adb8146
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867587"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548165"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Správa úloh pomocí tříd prostředků v Azure SQL Data Warehouse
 
@@ -594,16 +594,5 @@ GO
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o správě uživatelů a zabezpečení databáze najdete v tématu [zabezpečení databáze v SQL Data Warehouse][Secure a database in SQL Data Warehouse]. Další informace o tom, jak můžou větší třídy prostředků zlepšit kvalitu clusterovaných indexů columnstore, najdete v tématu [optimalizace paměti pro kompresi columnstore](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
+Další informace o správě uživatelů a zabezpečení databáze najdete v tématu [zabezpečení databáze v SQL Data Warehouse](./sql-data-warehouse-overview-manage-security.md). Další informace o tom, jak můžou větší třídy prostředků zlepšit kvalitu clusterovaných indexů columnstore, najdete v tématu [optimalizace paměti pro kompresi columnstore](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 
-<!--Image references-->
-
-<!--Article references-->
-[Secure a database in SQL Data Warehouse]: ./sql-data-warehouse-overview-manage-security.md
-[Rebuilding indexes to improve segment quality]: ./sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality
-[Secure a database in SQL Data Warehouse]: ./sql-data-warehouse-overview-manage-security.md
-
-<!--MSDN references-->
-[Managing Databases and Logins in Azure SQL Database]:https://msdn.microsoft.com/library/azure/ee336235.aspx
-
-<!--Other Web references-->

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 4271a180a0f00ae921de9b8deb9a3e5123f9b519
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: fb3ff990dcc207fd6dff6073c7464b6e410431af
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314483"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546873"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>Zesílený modul pro regresi rozhodovacího stromu
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Tento modul použijte k vytvoření kompletu regresních stromů pomocí zvyšování úrovně. *Zvyšování úrovně* znamená, že každý strom je závislý na předchozí stromové struktuře. Algoritmus se učí tím, že se dovedou zbytky stromů, které jí předcházejí. Proto zvýšení přesnosti v kompletu rozhodovacího stromu zamýšlí zlepšit přesnost s malým rizikem menšího rozsahu.  
   

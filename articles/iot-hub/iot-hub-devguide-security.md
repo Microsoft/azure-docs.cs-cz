@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: b84855057b43daa0aeff4878a69dac4ae765d2ef
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 47eae55493c5db281ee1be0f9d32f8f8190fc286
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429308"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546941"
 ---
 # <a name="control-access-to-iot-hub"></a>Řízení přístupu k IoT Hubu
 
@@ -59,7 +59,7 @@ Například v typickém řešení IoT:
 
 ## <a name="authentication"></a>Ověření
 
-Azure IoT Hub uděluje přístup k koncovým bodům tím, že ověřuje token proti zásadám sdíleného přístupu a bezpečnostním přihlašovacím údajům registru identity.
+Azure IoT Hub udělí přístup koncovým bodům, když ověří token podle zásad sdíleného přístupu a bezpečnostních přihlašovacích údajů v registru identit.
 
 Přihlašovací údaje zabezpečení, jako jsou například symetrické klíče, se nikdy neodesílají přes síťový kabel.
 
@@ -347,7 +347,7 @@ Výsledek, který by udělil přístup pro čtení všech identit zařízení, b
 
 ## <a name="supported-x509-certificates"></a>Podporované certifikáty X. 509
 
-K ověření zařízení s IoT Hub můžete použít libovolný certifikát X. 509 tak, že nahrajete kryptografický otisk certifikátu nebo certifikační autoritu (CA) do Azure IoT Hub. Ověřování pomocí kryptografických otisků certifikátů ověřuje pouze prezentovaný kryptografický otisk, který odpovídá nakonfigurovanému kryptografickému otisku. Ověřování pomocí certifikační autority ověří řetěz certifikátů. 
+K ověření zařízení s IoT Hub můžete použít libovolný certifikát X. 509 tak, že nahrajete kryptografický otisk certifikátu nebo certifikační autoritu (CA) do Azure IoT Hub. Ověřování pomocí kryptografických otisků certifikátů ověřuje, že zobrazený kryptografický otisk odpovídá nakonfigurovanému kryptografickému otisku. Ověřování pomocí certifikační autority ověří řetěz certifikátů. V obou případech musí TLS handshake vyžadovat, aby zařízení mělo platný certifikát a soukromý klíč. Podrobnosti najdete v tématu Specifikace TLS, například: [RFC 5246 – protokol TLS (Transport Layer Security) verze 1,2](https://tools.ietf.org/html/rfc5246/).
 
 Mezi podporované certifikáty patří:
 
@@ -461,6 +461,8 @@ Další referenční témata v IoT Hub příručce pro vývojáře zahrnují:
 * Dotazovací jazyk [IoT Hub](iot-hub-devguide-query-language.md) popisuje dotazovací jazyk, který můžete použít k načtení informací z IoT Hub o nečinnosti zařízení a úlohách.
 
 * [Podpora IoT Hub MQTT](iot-hub-mqtt-support.md) poskytuje další informace o podpoře IoT Hub pro protokol MQTT.
+
+* [RFC 5246 – protokol TLS (Transport Layer Security) verze 1,2](https://tools.ietf.org/html/rfc5246/) poskytuje další informace o ověřování TLS.
 
 ## <a name="next-steps"></a>Další kroky
 

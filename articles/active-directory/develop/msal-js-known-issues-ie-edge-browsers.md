@@ -14,12 +14,12 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3a4e847bc0d297f3aa41551fbf56242ae1a566f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0c75162cc66e9277d111def92842f5a67a132f59
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424331"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548148"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Známé problémy v prohlížečích Internet Explorer a Microsoft Edge (MSAL. js)
 
@@ -38,10 +38,6 @@ Příčina většiny těchto problémů je následující. Úložiště relací 
     `Error :login_required; Error description:AADSTS50058: A silent sign-in request was sent but no user is signed in. The cookies used to represent the user's session were not sent in the request to Azure AD. This can happen if the user is using Internet Explorer or Edge, and the web app sending the silent sign-in request is in different IE security zone than the Azure AD endpoint (login.microsoftonline.com)`
 
 - **Automaticky otevíraná okna se nezavřou nebo se zablokuje při ověřování pomocí přihlašovacích údajů prostřednictvím místní nabídky**. Při ověřování prostřednictvím překryvného okna v Microsoft Edge nebo IE (InPrivate) po zadání přihlašovacích údajů a přihlášení se v případě, že je do navigace zapojeno více domén napříč zónami zabezpečení, se místní okno nezavře, protože MSAL. js ztratí popisovač. automaticky otevírané okno.  
-
-    Tady jsou odkazy na tyto problémy v nástroji pro sledování problémů Microsoft Edge:  
-    - [Chyba 13861050](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/13861050/)
-    - [Chyba 13861663](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/13861663/)
 
 ### <a name="update-fix-available-in-msaljs-023"></a>Aktualizace: Oprava je k dispozici v MSAL. js 0.2.3
 Opravy potíží s smyčkou přesměrování ověřování byly vydány v [MSAL. js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases). Pokud chcete tuto opravu využít, povolte příznak `storeAuthStateInCookie` v konfiguraci MSAL. js. Ve výchozím nastavení je tento příznak nastaven na hodnotu false.

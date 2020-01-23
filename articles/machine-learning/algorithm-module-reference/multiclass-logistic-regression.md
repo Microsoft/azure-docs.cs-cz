@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 8d6140e97383fb07e65c87f74a555046f918ac41
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: aba33730d235cc50742cdc86007933e12f763053
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314857"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548454"
 ---
 # <a name="multiclass-logistic-regression-module"></a>Modul logistické regrese pro více tříd
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Pomocí tohoto modulu můžete vytvořit model logistické regrese, který se dá použít k předpovědi více hodnot.
 

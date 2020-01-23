@@ -12,6 +12,9 @@
       items:
         - name: portál Azure
           href: create-cosmosdb-resources-portal.md
+        - name: Šablona Azure Resource Manageru
+          displayName: ARM
+          href: quick-create-template.md
         - name: Aplikace v .NET – SDK V4
           href: create-sql-api-dotnet-v4.md
         - name: Aplikace v .NET – SDK V3

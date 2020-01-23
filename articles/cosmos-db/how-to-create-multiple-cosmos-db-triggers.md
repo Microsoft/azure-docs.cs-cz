@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: fbf1e11d7a283ca6c93356f055198c35350e0332
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: efb0a9229d6061d4df8d67ba8455801d9d2a2964
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445357"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548879"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Vytvoření více triggerů Azure Functions pro Cosmos DB
 
@@ -38,7 +38,7 @@ Cílem tohoto článku je provést druhou možnost.
 
 ## <a name="configuring-a-shared-leases-container"></a>Konfigurace kontejneru sdílených zapůjčení
 
-Chcete-li nakonfigurovat kontejner sdílených zapůjčených adres, je třeba přidat [atribut](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---c-attributes) `LeaseCollectionPrefix`, pokud používáte C# nebo `leaseCollectionPrefix` [atribut](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---javascript-example) , pokud používáte jazyk JavaScript. Hodnota atributu by měla být logickým popisovačem toho, co konkrétní Trigger spouští.
+Chcete-li nakonfigurovat kontejner sdílených zapůjčených adres, je třeba přidat [atribut](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---attributes-and-annotations) `LeaseCollectionPrefix`, pokud používáte C# nebo `leaseCollectionPrefix` [atribut](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger) , pokud používáte jazyk JavaScript. Hodnota atributu by měla být logickým popisovačem toho, co konkrétní Trigger spouští.
 
 Například pokud máte tři triggery: jednu, která odesílá e-maily, jednu, která má agregaci pro vytvoření materializované zobrazení, a jeden, který odesílá změny do jiného úložiště, pro pozdější analýzu můžete přiřadit `LeaseCollectionPrefix` "e-mailů" prvnímu "," materializované "na druhý a" Analytics "třetí straně.
 
@@ -109,5 +109,5 @@ A pro JavaScript můžete použít konfiguraci `function.json` souboru s atribut
 ## <a name="next-steps"></a>Další kroky
 
 * Zobrazit úplnou konfiguraci [aktivační události Azure Functions pro Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)
-* Podívejte se na rozšířený [seznam ukázek](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---example) pro všechny jazyky.
+* Podívejte se na rozšířený [seznam ukázek](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger) pro všechny jazyky.
 * Další ukázky najdete v části recepty bez serveru s Azure Cosmos DB a Azure Functions [úložiště GitHubu](https://github.com/ealsur/serverless-recipes/tree/master/cosmosdbtriggerscenarios) .

@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 16920a46e64306daa331957df24babba8ac4b731
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: a9f9c6ebd55752ea5a3400da8d42b6c6487277df
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612866"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514642"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Kurz: konfigurace zařízení IoT Edge
 
@@ -262,7 +262,7 @@ V dalším kroku aktualizujeme certifikáty a název hostitele přímým úpravo
       trusted_ca_certs: "/edgeMlCertificates/azure-iot-test-only.root.ca.cert.pem"
     ```
 
-    Ujistěte se, že "certifikáty:" nemají žádné předchozí prázdné znaky a že každý z nich předchází dva prostory.
+    Ujistěte se, že **certifikáty:** řádek neobsahuje žádné předchozí prázdné znaky a že každý z vnořených certifikátů je odsazen o dva mezery.
 
     Kliknutím pravým tlačítkem v nano dojde k vložení obsahu schránky do aktuální pozice kurzoru. Pokud chcete řetězec nahradit, pomocí šipek klávesnice přejděte k řetězci, který chcete nahradit, odstraňte řetězec a pak klikněte pravým tlačítkem na vložení z vyrovnávací paměti.
 

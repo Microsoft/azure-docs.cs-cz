@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 151e7b2ab091959c8b6c08d366318a49987aefd9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6ddd7160a56a4529ee31c111f0e202ca235c71af
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848523"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544017"
 ---
 # <a name="what-is-password-writeback"></a>Co je zpětný zápis hesla?
 
@@ -164,7 +164,7 @@ Hesla se *nezapisují zpátky* v následujících situacích:
    * Jakékoli resetování hesla koncových uživatelů iniciované správcem z [centra pro správu Microsoft 365](https://admin.microsoft.com)
 
 > [!WARNING]
-> Pomocí zaškrtávacího políčka Uživatel musí změnit heslo při příštím přihlášení v místních nástrojích pro správu služby Active Directory, jako jsou uživatelé a počítače služby Active Directory, nebo Centrum správy služby Active Directory se podporuje jako funkce verze Preview Azure AD Connect. Další informace najdete v článku o [implementaci synchronizace hodnot hash hesel pomocí Azure AD Connect synchronizace](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-on-next-logon).
+> Pomocí zaškrtávacího políčka Uživatel musí změnit heslo při příštím přihlášení v místních nástrojích pro správu služby Active Directory, jako jsou uživatelé a počítače služby Active Directory, nebo Centrum správy služby Active Directory se podporuje jako funkce verze Preview Azure AD Connect. Další informace najdete v článku o [implementaci synchronizace hodnot hash hesel pomocí Azure AD Connect synchronizace](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-reset-on-next-logon).
 
 ## <a name="next-steps"></a>Další kroky
 

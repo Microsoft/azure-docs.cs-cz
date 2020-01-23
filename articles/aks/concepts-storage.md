@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: 601f89c4510899dbb1f5d8a238961d9a4e5864e0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d6c14f78fd3cefa5ec41a686ca385639eb3fcb67
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74913719"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549270"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Možnosti úložiště pro aplikace ve službě Azure Kubernetes (AKS)
 
@@ -40,7 +40,7 @@ Tradiční svazky pro ukládání a načítání dat jsou vytvářeny jako Kuber
 
 V Kubernetes můžou svazky reprezentovat více než jenom tradiční disk, kde se můžou informace ukládat a načítat. Svazky Kubernetes lze také použít jako způsob, jak vložit data do podseznamu pro použití kontejnery. Mezi běžné další typy svazků v Kubernetes patří:
 
-- *emptyDir* – tento svazek se běžně používá jako dočasné místo pro objekt pod. Všechny kontejnery v rámci pod mohou přistupovat k datům na svazku. Data zapsaná do tohoto typu svazku přetrvávají jenom za životnosti pod a, svazek se odstraní. Tento svazek obvykle používá základní úložiště disku místního uzlu, i když ale může existovat pouze v paměti uzlu.
+- *emptyDir* – tento svazek se běžně používá jako dočasné místo pro objekt pod. Všechny kontejnery v rámci pod mohou přistupovat k datům na svazku. Data zapsaná do tohoto typu svazku přetrvávají jenom za životnosti pod a, svazek se odstraní. Tento svazek obvykle používá základní úložiště disku místního uzlu, i když může existovat i v paměti uzlu.
 - *tajný kód* – tento svazek se používá pro vkládání citlivých dat do lusků, jako jsou hesla. Nejdřív vytvoříte tajný klíč pomocí rozhraní Kubernetes API. Pokud definujete pod nebo nasazením, může se požadovat konkrétní tajný klíč. Tajné kódy se poskytují pouze uzlům, které mají naplánovanou hodnotu typu, která ji vyžaduje, a tajný klíč je uložený v *tmpfs*, který není zapsaný na disk. Když se poslední uzel pod uzlem, který vyžaduje tajný klíč, odstraní, tajný kód se odstraní z tmpfs uzlu. Tajné kódy jsou uloženy v daném oboru názvů a lze k nim přistupovat pouze v rámci stejného oboru názvů.
 - *configMap* – tento typ svazku slouží k vložení vlastností páru klíč-hodnota do lusků, jako jsou například informace o konfiguraci aplikace. Místo definování informací o konfiguraci aplikace v rámci image kontejneru ho můžete definovat jako prostředek Kubernetes, který se dá snadno aktualizovat a použít na nové instance lusků při jejich nasazení. Podobně jako při použití tajného kódu je třeba nejprve vytvořit ConfigMap pomocí rozhraní Kubernetes API. Tato ConfigMap se pak může vyžádat při definování pod nebo nasazováním. ConfigMaps jsou uloženy v daném oboru názvů a lze k nim přistupovat pouze v rámci stejného oboru názvů.
 

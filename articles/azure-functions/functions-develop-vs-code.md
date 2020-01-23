@@ -3,12 +3,12 @@ title: Vývoj Azure Functions pomocí Visual Studio Code
 description: Naučte se vyvíjet a testovat Azure Functions pomocí rozšíření Azure Functions pro Visual Studio Code.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 54bbc46c703646f4680f6dc22d5c4b6781614ae7
-ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
+ms.openlocfilehash: 4a5f60c2da8a77f385dba40dcd4d342583e989c1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75667545"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547417"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Vývoj Azure Functions pomocí Visual Studio Code
 
@@ -146,7 +146,7 @@ using Microsoft.Azure.WebJobs.Extensions.Storage;
 
 Parametr `msg` je `ICollector<T>` typ, který představuje kolekci zpráv zapsaných do výstupní vazby po dokončení funkce. Do kolekce přidáte jednu nebo více zpráv. Tyto zprávy se po dokončení funkce odesílají do fronty.
 
-Další informace najdete v dokumentaci [výstupní vazby úložiště ve frontě](functions-bindings-storage-queue.md#output---c-example) .
+Další informace najdete v dokumentaci [výstupní vazby úložiště ve frontě](functions-bindings-storage-queue.md#output) .
 
 # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
@@ -184,7 +184,7 @@ Ve vašem kódu funkce je `msg` k vazbě z `context`, jako v tomto příkladu:
 context.bindings.msg = "Name passed to the function: " req.query.name;
 ```
 
-Další informace najdete v referenčních odkazech na [výstupní vazbu úložiště fronty](functions-bindings-storage-queue.md#output---javascript-example) .
+Další informace najdete v referenčních odkazech na [výstupní vazbu úložiště fronty](functions-bindings-storage-queue.md#output) .
 
 ---
 

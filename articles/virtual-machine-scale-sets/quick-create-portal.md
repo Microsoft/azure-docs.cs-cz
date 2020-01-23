@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: H1Hack27Feb2017
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: cc5c7b9f26d74f32c9f6042e3a1deddc57171860
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 2acde4efa1dc118498f3c7da29c75e48c0478ac0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274239"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543133"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Rychlý start: Vytvoření škálovací sady virtuálních počítačů na webu Azure Portal
 
@@ -31,7 +31,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 [Nástroj pro vyrovnávání zatížení](../load-balancer/load-balancer-overview.md) Azure distribuuje příchozí provoz mezi instance virtuálních počítačů v pořádku. 
 
-Nejprve pomocí portálu Vytvořte veřejnou základní Load Balancer. Název a veřejnou IP adresu, kterou jste vytvořili, se automaticky nakonfiguruje jako front-endu nástroje pro vyrovnávání zatížení.
+Nejdřív vytvořte pomocí portálu veřejné Standard Load Balancer. Název a veřejnou IP adresu, kterou jste vytvořili, se automaticky nakonfiguruje jako front-endu nástroje pro vyrovnávání zatížení.
 
 1. Do vyhledávacího pole zadejte **Nástroj pro vyrovnávání zatížení**. V části **Marketplace** ve výsledcích hledání zvolte **Nástroj pro vyrovnávání zatížení**.
 1. Na kartě **základy** na stránce **vytvořit nástroj pro vyrovnávání zatížení** zadejte nebo vyberte následující informace:

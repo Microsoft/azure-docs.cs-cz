@@ -1,6 +1,6 @@
 ---
 title: Ukázky v Azure CLI – Event Grid | Microsoft Docs
-description: Ukázky v Azure CLI pro Event Grid
+description: Tento článek obsahuje tabulku, která obsahuje odkazy na ukázkové skripty rozhraní příkazového řádku Azure (CLI) pro Event Grid.
 services: event-grid
 author: spelluru
 manager: timlt
@@ -8,14 +8,14 @@ ms.service: event-grid
 ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
-ms.date: 08/06/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 253086cd655bba87b015fbe41282f6610ace4518
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0cef3f5ae7c647236d52e4c571e5fc382e1560f4
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60826216"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514608"
 ---
 # <a name="azure-cli-samples-for-event-grid"></a>Ukázky v Azure CLI pro Event Grid
 

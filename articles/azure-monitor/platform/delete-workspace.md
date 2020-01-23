@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/14/2020
-ms.openlocfilehash: 739f97e912a33402aa7482e59dd78f5aeb005772
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 03be29cde42478abf32492f55a296aeee0a4a478
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75944430"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547247"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Odstranění a obnovení pracovního prostoru služby Azure Log Analytics
 
@@ -57,6 +57,29 @@ Pracovní prostor můžete odstranit pomocí [PowerShellu](https://docs.microsof
 ```PowerShell
 PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
 ```
+
+## <a name="permanent-workspace-delete"></a>Odstranění trvalého pracovního prostoru
+Metoda obnovitelného odstranění se nemusí vejít do některých scénářů, jako je například vývoj a testování, kde je třeba opakovat nasazení se stejným nastavením a názvem pracovního prostoru. V takových případech můžete pracovní prostor trvale odstranit a "přepsat" období obnovitelného odstranění. Operace odstranění trvalého pracovního prostoru uvolní název pracoviště a můžete vytvořit nový pracovní prostor pomocí stejného názvu.
+
+
+> [!IMPORTANT]
+> Při trvalém odstranění pracovního prostoru buďte opatrní, protože operace je nevratná a váš pracovní prostor a jeho data nebudou obnovitelné.
+
+Trvalé odstranění pracovního prostoru lze nyní provést prostřednictvím REST API.
+
+> [!NOTE]
+> Jakýkoli požadavek rozhraní API musí v hlavičce požadavku zahrnovat autorizační token nosiče.
+>
+> Token můžete získat pomocí:
+> - [Registrace aplikací](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens)
+> - V prohlížeči přejděte na Azure Portal pomocí konzoly pro vývojáře (F12). Podívejte se do jedné z **dávek?** instance pro řetězec ověřování v části **záhlaví požadavků**. Tato akce se bude nacházet v rámci *autorizace vzoru: nosiče <token>* . Zkopírujte a přidejte to do volání rozhraní API, jak je znázorněno v příkladech.
+> - Přejděte na stránku dokumentace k Azure REST. stiskněte **vyzkoušet** na jakémkoli rozhraní API, zkopírujte token nosiče a přidejte ho do volání rozhraní API.
+Pokud chcete trvale odstranit pracovní prostor, použijte [pracovní prostory – odstranit]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete) volání rozhraní REST API pomocí značky Force:
+>
+> ```rst
+> DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview&force=true
+> Authorization: Bearer eyJ0eXAiOiJKV1Qi….
+> ```
 
 ## <a name="recover-workspace"></a>Obnovit pracovní prostor
 

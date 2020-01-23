@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/24/2017
+ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: dc5b1f2f8e8b529149184ce173bcdd315311bad4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a2a85d98bf29e78d58bf0c578ce79943bae21fc1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975327"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543065"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Přidání, změna nebo odebrání IP adres pro síťové rozhraní Azure
 
@@ -75,7 +75,7 @@ Možná budete muset změnit metodu přiřazení adresy IPv4, změnit statickou 
 3. V části **Nastavení**vyberte **Konfigurace protokolu IP**.
 4. V seznamu vyberte konfiguraci protokolu IP, kterou chcete upravit.
 5. Podle potřeby změňte nastavení pomocí informací o nastavení v kroku 5 [Přidání konfigurace protokolu IP](#add-ip-addresses).
-6. Vyberte **Uložit**.
+6. Vyberte **Save** (Uložit).
 
 >[!NOTE]
 >Pokud má primární síťové rozhraní více konfigurací protokolu IP a měníte privátní IP adresu primární konfigurace IP adresy, musíte primární a sekundární IP adresu ručně znovu přiřadit síťovému rozhraní v systému Windows (není vyžadováno pro Linux). . Postup ručního přiřazení IP adres k síťovému rozhraní v rámci operačního systému najdete v tématu [přiřazení více IP adres k virtuálním počítačům](virtual-network-multiple-ip-addresses-portal.md#os-config). Speciální informace před ručním přidáním IP adres do operačního systému virtuálního počítače najdete v tématu [privátní](#private) IP adresy. Do operačního systému virtuálního počítače nepřidávejte žádné veřejné IP adresy.

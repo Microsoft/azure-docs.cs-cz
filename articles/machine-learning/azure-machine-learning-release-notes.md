@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: reference
 ms.author: jmartens
 author: j-martens
-ms.date: 01/21/2019
+ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1cd9ca07aab1953d114caf748ca99170fae6b876
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 07ef3858cc6a514ed60a9d25046dc4ff9566fa31
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293194"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546346"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
@@ -25,18 +25,39 @@ Zobrazit [seznam známých problémů](resource-known-issues.md) Další informa
 
 ## <a name="2020-01-21"></a>2020-01-21
 
-### <a name="azure-machine-learning-designer-generally-available-ga"></a>Všeobecně dostupná verze návrháře Azure Machine Learning (GA)
-
-Návrhář je teď všeobecně dostupný.
+### <a name="azure-machine-learning-sdk-for-python-v1085"></a>Sada SDK Azure Machine Learning pro Python v 1.0.85
 
 + **Nové funkce**
-    + Přidání možnosti modulu `Regenerate Output` pro vynucení, že návrhář bude ignorovat výsledky uložené v mezipaměti.
-    + Do podrobností spuštění kanálu se přidala nová zobrazení:
-        + Zobrazení seznamu kanálů.
-        + Zobrazení protokolu v prohlížeči.
-    + Přidání popisků ke vstupnímu a výstupnímu portu modulu.
-    + Přidání možnosti kanálu `Set as Default` na [kartě koncové body](how-to-run-batch-predictions-designer.md#versioning-endpoints).
-    + Přidané klávesové zkratky a [funkce usnadnění](designer-accessibility.md)čtečky obrazovky.
+  + **azureml-core**
+    + Získejte aktuální základní využití a omezení kvóty pro prostředky AmlCompute v daném pracovním prostoru a předplatném.
+  
+  + **AzureML-contrib-kanál – kroky**
+    + Povolit uživateli předat tabelární datovou sadu jako mezilehlou výsledek z předchozího kroku do parallelrunstep
+
++ **Opravy chyb a vylepšení**
+  + **AzureML-automl-runtime**
+    + Do nasazené služby prognózování se odebral požadavek y_query sloupce v požadavku. 
+    + ' Y_query ' byl odebrán z oranžového oddílu žádosti o službu poznámkového bloku Dominick.
+    + Opravili jsme chybu, která znemožňuje prognózování na nasazených modelech a pracuje na datových sadách se sloupci data a času.
+    + Byl přidán korelační koeficient Matthews jako metrika klasifikace pro binární i mezitřídovou klasifikaci.
+  + **AzureML-contrib – interpretace**
+    + Odstraněné texty z modulu AzureML-contrib-interpretace textu byly přesunuty do úložiště interpretovat text, které bude brzy vydány.
+  + **azureml-core**
+    + Datová sada: použití pro datovou sadu již nezávisí na numpy a PANDAS k instalaci v Python env.
+    + Předtím, než se pokusíte o příkaz k otestování koncového bodu stavu, došlo ke změně LocalWebservice. wait_for_deployment (), aby se zkontroloval stav místního kontejneru Docker, což výrazně zkracuje dobu potřebnou k nahlášení selhání nasazení.
+    + Opravil inicializaci vnitřní vlastnosti použité v LocalWebservice. Load () při vytvoření objektu služby z existujícího nasazení pomocí konstruktoru LocalWebservice ().
+    + Upravená chybová zpráva pro objasnění
+    + Do AksWebservice se přidala nová metoda s názvem get_access_token (), která vrátí objekt AksServiceAccessToken, který obsahuje přístupový token, obnovování po časovém razítku, vypršení platnosti na časovém razítku a typ tokenu. 
+    + Zastaralá metoda existující get_token () v AksWebservice jako nová metoda vrátí všechny informace, které vrací tato metoda.
+    + Byl změněn výstup příkazu AZ ml Service Get-Access-token. Token se přejmenoval na accessToken a refreshBy na refreshAfter. Přidání vlastností expiryOn a typ TokenType
+    + Pevný get_active_runs
+  + **azureml-explain-model**
+    + Aktualizovali jsme Shap na 0.33.0 a interpretaci komunity na 0,4. *
+  + **AzureML-interpretace**
+    + Aktualizovali jsme Shap na 0.33.0 a interpretaci komunity na 0,4. *
+  + **AzureML-vlak-automl-runtime**
+    + Byl přidán korelační koeficient Matthews jako metrika klasifikace pro binární i mezitřídovou klasifikaci.
+    + Vyřadit příznak předběžného zpracování z kódu a nahradit featurization-featurization je ve výchozím nastavení zapnuté.
 
 ## <a name="2020-01-06"></a>2020-01-06
 
@@ -44,6 +65,7 @@ Návrhář je teď všeobecně dostupný.
 
 + **Nové funkce**
   + Datová sada: Přidejte dvě možnosti `on_error` a `out_of_range_datetime`, aby `to_pandas_dataframe` selžou, pokud data obsahují chybové hodnoty namísto jejich naplňování `None`.
+  + Pracovní prostor: Přidali jste příznak `hbi_workspace` pro pracovní prostory s citlivými daty, která umožňují další šifrování a zakáže pokročilou diagnostiku v pracovních prostorech. Přidali jsme také podporu pro začlenění vlastních klíčů pro přidruženou instanci Cosmos DB zadáním parametrů `cmk_keyvault` a `resource_cmk_uri` při vytváření pracovního prostoru, který vytvoří instanci Cosmos DB ve vašem předplatném při zřizování pracovního prostoru. [Další informace najdete tady.](https://docs.microsoft.com/azure/machine-learning/concept-enterprise-security#azure-cosmos-db)
 
 + **Opravy chyb a vylepšení**
   + **AzureML-automl-runtime**
@@ -64,7 +86,6 @@ Návrhář je teď všeobecně dostupný.
   + **AzureML-vlak-automl-Client**
     + Opravené zarovnání pro výstup konzoly pro automl běhy
     + Opravili jsme chybu, při které může být na vzdáleném amlcompute nainstalovaná nesprávná verze PANDAS.
-
 
 ## <a name="2019-12-23"></a>2019-12-23
 

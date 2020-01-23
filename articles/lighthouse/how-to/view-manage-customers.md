@@ -1,14 +1,14 @@
 ---
 title: Zobrazení a Správa zákazníků a delegovaných prostředků
 description: Jako poskytovatel služeb s využitím delegované správy prostředků Azure můžete zobrazit všechny svoje delegované prostředky a předplatná zákazníka tak, že na Azure Portal kliknete na moji zákazníci.
-ms.date: 12/18/2019
+ms.date: 01/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ac268d2899dcc3d940072bfbfd17770044dc3c66
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0d4b3187066754e8a549f029623762df539b30b1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456832"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543422"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Zobrazení a Správa zákazníků a delegovaných prostředků
 
@@ -40,13 +40,20 @@ Na této stránce můžete zobrazit následující informace:
 - Pokud chcete zobrazit další podrobnosti o nabídce a jejích delegováních, vyberte název nabídky.
 - Chcete-li zobrazit další podrobnosti o přiřazení rolí pro delegovaná předplatná nebo skupiny prostředků, vyberte položku ve sloupci **delegace** .
 
-## <a name="view-delegations"></a>Zobrazit delegování
+## <a name="view-and-manage-delegations"></a>Zobrazení a Správa delegování
 
 Delegování zobrazuje předplatné nebo skupinu prostředků, které byly delegovány, spolu s uživateli a oprávněními, které k nim mají přístup. Chcete-li zobrazit tyto informace, vyberte možnost **delegace** na levé straně stránky **moji zákazníci** .
 
 Filtry v horní části stránky umožňují řadit a seskupovat informace o přiřazení přístupu nebo filtrovat podle konkrétních zákazníků, nabídek nebo klíčových slov.
 
+### <a name="view-role-assignments"></a>Zobrazit přiřazení rolí
+
 Uživatelé a oprávnění přidružená ke každému delegování se zobrazí ve sloupci **přiřazení rolí** . Jednotlivé položky můžete vybrat a zobrazit tak úplný seznam uživatelů, skupin a instančních objektů, kterým byl udělen přístup k předplatnému nebo skupině prostředků. Odtud můžete vybrat konkrétního uživatele, skupinu nebo hlavní název služby a získat další podrobnosti.
+
+### <a name="remove-delegations"></a>Odebrat delegování
+
+Pokud jste při připojování zákazníka ke správě delegovaných prostředků Azure zahrnuli uživatele s [přiřazením při registraci spravovaných služeb](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) , můžou tyto uživatele odebrat delegování tak, že vybere ikonu odpadkového koše, která se zobrazí na řádku tohoto delegování. V takovém případě nebudou mít žádní uživatelé v tenantovi poskytovatele služeb přístup k prostředkům, které byly dříve delegovány.
+
 
 ## <a name="work-in-the-context-of-a-delegated-subscription"></a>Práce v kontextu delegovaného předplatného
 

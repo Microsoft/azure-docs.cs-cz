@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 8b7a743ebcdf74f6ad740e4e4193bbd98da1536d
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 9849e8ab918562267e93506771a4c32cf96533a4
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291120"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544935"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Řešení potíží se soubory Azure v systému Linux
 
@@ -131,9 +131,8 @@ Funkce šifrování pro protokol SMB 3.0 pro Linux se zavedla v jádru verze 4.1
 Pokud váš linuxový klient SMB nepodporuje šifrování, připojte službu Azure Files pomocí protokolu SMB 2.1 z virtuálního počítače Azure s Linuxem, který je ve stejném datacentru jako sdílená složka. Ověřte, že je pro účet úložiště zakázané nastavení [Vyžadovat zabezpečený přenos]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer). 
 
 <a id="noaaccessfailureportal"></a>
-## <a name="error-no-access-when-browsing-to-an-azure-file-share-in-the-portal"></a>Při procházení sdílené složky Azure na portálu došlo k chybě bez přístupu.
-
-Když přejdete na sdílenou složku Azure na portálu, může se zobrazit následující chyba:
+## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>Chyba "bez přístupu" při pokusu o přístup k sdílené složce Azure nebo její odstranění  
+Když se pokusíte o přístup k sdílené složce Azure na portálu nebo ji odstranit, může se zobrazit následující chyba:
 
 Bez přístupu  
 Kód chyby: 403 

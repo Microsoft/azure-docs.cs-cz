@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: e4c18f1148259d246445b94ac6117ebefa9470a4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ed9b893b11f96a813cee4c751743ceb182a9a0bf
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975378"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543031"
 ---
 # <a name="virtual-network-service-tags"></a>Značky služby virtuální sítě 
 <a name="network-service-tags"></a>
@@ -51,7 +51,7 @@ Ve výchozím nastavení značky služby odráží rozsahy celého cloudu. Někt
 | **AzureAdvancedThreatProtection** | Rozšířená ochrana před internetovými útoky Azure. | Odchozí | Ne | Ne |
 | **AzureBackup** |Azure Backup.<br/><br/>*Poznámka:* Tato značka má závislost na značkách **úložiště** a **azureactivedirectory selhala** . | Odchozí | Ne | Ano |
 | **AzureBotService** | Azure Bot Service. | Odchozí | Ne | Ne |
-| **AzureCloud** | Všechny [veřejné IP adresy Datacenter](https://www.microsoft.com/download/details.aspx?id=41653) | Odchozí | Ano | Ano |
+| **AzureCloud** | Všechny [veřejné IP adresy Datacenter](https://www.microsoft.com/download/details.aspx?id=56519) | Odchozí | Ano | Ano |
 | **AzureCognitiveSearch** | Azure Kognitivní hledání (Pokud používáte indexery s dovednosti). | Obojí | Ne | Ne |
 | **AzureConnectors** | Konektory Azure Logic Apps pro připojení sondy/back-end. | Příchozí | Ano | Ano |
 | **AzureContainerRegistry** | Azure Container Registry. | Odchozí | Ano | Ano |

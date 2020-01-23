@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a9719ec7db4dead94478225cc47130b289a539c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5e66632fab0306da7766f079733cd1d8cb3edc8d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442344"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544085"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Rychlý start: Směrování webového provozu pomocí služby Azure Application Gateway – Azure Portal
 
@@ -31,7 +31,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí svého ú�
 
 ## <a name="create-an-application-gateway"></a>Vytvoření Application Gateway
 
-1. V nabídce webu Azure Portal nebo na **domovské** stránce vyberte **Vytvořit prostředek**. Zobrazí se **nové** okno.
+1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Vytvořit prostředek**. Zobrazí se **nové** okno.
 
 2. Vyberte **sítě** a v seznamu **Doporučené** vyberte **Application Gateway** .
 
@@ -66,7 +66,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí svého ú�
 
 1. Na kartě **front-endu** ověřte, že **typ IP adresy front-end** je nastavený na **veřejné**. <br>Front-end IP adresu můžete nakonfigurovat tak, aby byla veřejná nebo soukromá jako na základě vašeho případu použití. V tomto příkladu zvolíte veřejnou front-end IP adresu.
    > [!NOTE]
-   > V případě SKU Application Gateway v2 můžete zvolit jenom **veřejnou** konfiguraci IP adresy front-endu. Pro tuto SKLADOVOU položku v2 není aktuálně povolená jenom konfigurace IP adresy privátního front-endu (jenom režim interního nástroje). Můžete mít konfiguraci veřejné i privátní IP adresy front-endu.
+   > Pro SKU Application Gateway v2 musí existovat **Veřejná** konfigurace IP adresy front-endu. Pořád můžete mít veřejnou i soukromou konfiguraci front-endu IP, ale jenom konfiguraci protokolu IP front-endu (jenom režim interního nástroje) pro SKU v2 není aktuálně povolená. 
 
 2. Zvolte **vytvořit nový** pro **veřejnou IP adresu** a jako název veřejné IP adresy zadejte *myAGPublicIPAddress* a pak vyberte **OK**. 
 
@@ -136,7 +136,7 @@ Uděláte to takto:
 
 ### <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
-1. V nabídce webu Azure Portal nebo na **domovské** stránce vyberte **Vytvořit prostředek**. Zobrazí se **nové** okno.
+1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Vytvořit prostředek**. Zobrazí se **nové** okno.
 2. Vyberte **COMPUTE** a potom v seznamu **oblíbených** vyberte **Windows Server 2016 Datacenter** . Zobrazí se stránka **vytvořit virtuální počítač** .<br>Application Gateway může směrovat provoz na libovolný typ virtuálního počítače, který se používá v jeho fondu back-endu. V tomto příkladu použijete Windows Server 2016 Datacenter.
 3. Zadejte tyto hodnoty na kartě **základy** pro následující nastavení virtuálního počítače:
 
@@ -189,7 +189,7 @@ V tomto příkladu nainstalujete službu IIS na virtuální počítače jenom k 
 
     ![Přidání back-endových serverů](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)
 
-6. Vyberte **Uložit**.
+6. Vyberte **Save** (Uložit).
 
 7. Než budete pokračovat k dalšímu kroku, počkejte na dokončení nasazení.
 

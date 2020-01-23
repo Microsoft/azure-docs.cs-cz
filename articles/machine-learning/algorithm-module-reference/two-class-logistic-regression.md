@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: ee52f3a0bec058f1b94820123ac5514e4e855c05
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 7c2618f7703ba1a9803952efabcfbd800149ada4
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311389"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548335"
 ---
 # <a name="two-class-logistic-regression-module"></a>Modul logistické regrese se dvěma třídami
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Pomocí tohoto modulu můžete vytvořit model logistické regrese, který se dá použít k předpovědi dvou (a jenom dvou) výsledků. 
 

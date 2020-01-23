@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: cccdb54b89dff7c6a1fc9dac55c63b19d661ab65
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 9980ad7af4a9e5db1d93ffb389ef7b04209b8c43
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951305"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544612"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Verze Preview: přihlášení k virtuálnímu počítači se systémem Linux v Azure pomocí ověřování Azure Active Directory
 
@@ -48,7 +48,7 @@ K přihlášení k virtuálním počítačům se systémem Linux v Azure využí
 
 Během verze Preview této funkce se aktuálně podporují následující distribuce systému Linux:
 
-| Distribuce | Version |
+| Distribuce | Verze |
 | --- | --- |
 | CentOS | CentOS 6, CentOS 7 |
 | Debian | Debian 9 |
@@ -72,11 +72,11 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 Pokud chcete povolit ověřování Azure AD pro virtuální počítače se systémem Linux v Azure, musíte zajistit, aby konfigurace sítě virtuálních počítačů povolovala odchozí přístup k následujícím koncovým bodům přes port TCP 443:
 
-* https://login.microsoftonline.com
-* https://device.login.microsoftonline.com
-* https://pas.windows.net
-* https://management.azure.com
-* https://packages.microsoft.com
+* https:\//login.microsoftonline.com
+* https:\//device.login.microsoftonline.com
+* https:\//pas.windows.net
+* https:\//management.azure.com
+* https:\//packages.microsoft.com
 
 > [!NOTE]
 > V současné době není možné nakonfigurovat skupiny zabezpečení sítě Azure pro virtuální počítače, které jsou povolené pomocí ověřování Azure AD.

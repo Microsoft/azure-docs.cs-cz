@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 01/09/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 79a8119f1cd43e36ad639cd292afef5c4a4ed740
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 6e2c1af03d5d6ccfbcb15a2dd33bc2e987be4d48
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513537"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543116"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Co je privátní propojení Azure? (Preview)
 Privátní odkaz Azure vám umožní přístup ke službám Azure PaaS (například Azure Storage, Azure Cosmos DB a SQL Database) a hostovaným zákazníkům a partnerským službám Azure prostřednictvím [privátního koncového bodu](private-endpoint-overview.md) ve vaší virtuální síti. Provoz mezi vaší virtuální sítí a službou prochází přes páteřní síť Microsoftu a eliminuje rizika vystavení na veřejném internetu. Ve své virtuální síti můžete také vytvořit vlastní [službu privátního propojení](private-link-service-overview.md) a poskytnout ji soukromým uživatelům. Prostředí pro nastavení a spotřebu pomocí privátního propojení Azure je konzistentní v rámci služeb Azure PaaS, Customer a Shared partnered.
@@ -50,6 +50,7 @@ Privátní propojení Azure přináší následující výhody:
 |  |  Azure Database for PostgreSQL – jeden server         | Všechny veřejné oblasti      |   Preview      |
 |  |  Azure Database for MySQL         | Všechny veřejné oblasti      |   Preview      |
 |  |  Azure Database for MariaDB         | Všechny veřejné oblasti      |   Preview      |
+
 Nejaktuálnější oznámení najdete na [stránce s aktualizacemi služby Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network).
 
 ## <a name="logging-and-monitoring"></a>Protokolování a monitorování

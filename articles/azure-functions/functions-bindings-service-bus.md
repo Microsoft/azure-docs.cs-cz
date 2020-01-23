@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 4deae28d172bf717f527824be4be050975614c7d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 424d797410c091dc53687284c2b32e2f1f0358e1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277397"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549066"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus vazby pro službu Azure Functions
 
@@ -40,16 +40,7 @@ Pomocí aktivační události služby Service Bus můžete reagovat na zprávy z
 
 ## <a name="trigger---example"></a>Aktivační události – příklad
 
-Podívejte se na příklad specifické pro jazyk:
-
-* [C#](#trigger---c-example)
-* [C# skript (.csx)](#trigger---c-script-example)
-* [F#](#trigger---f-example)
-* [Java](#trigger---java-example)
-* [JavaScript](#trigger---javascript-example)
-* [Python](#trigger---python-example)
-
-### <a name="trigger---c-example"></a>Aktivační události – příklad v jazyce C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Následující příklad ukazuje [funkce jazyka C#](functions-dotnet-class-library.md) , který čte [zpráva metadat](#trigger---message-metadata) a zaznamená zprávu fronty služby Service Bus:
 
@@ -70,7 +61,7 @@ public static void Run(
 }
 ```
 
-### <a name="trigger---c-script-example"></a>Aktivační události – příklad skriptu jazyka C#
+# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
 
 Následující příklad ukazuje vazby v aktivační události služby Service Bus *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) , který používá vazba. Funkce přečte [zpráva metadat](#trigger---message-metadata) a zaznamená zprávu fronty služby Service Bus.
 
@@ -110,90 +101,7 @@ public static void Run(string myQueueItem,
 }
 ```
 
-### <a name="trigger---f-example"></a>Aktivační události – F# příklad
-
-Následující příklad ukazuje vazby v aktivační události služby Service Bus *function.json* souboru a [ F# funkce](functions-reference-fsharp.md) , který používá vazba. Funkce zaznamená zprávu fronty služby Service Bus. 
-
-Zde je vazba dat v *function.json* souboru:
-
-```json
-{
-"bindings": [
-    {
-    "queueName": "testqueue",
-    "connection": "MyServiceBusConnection",
-    "name": "myQueueItem",
-    "type": "serviceBusTrigger",
-    "direction": "in"
-    }
-],
-"disabled": false
-}
-```
-
-Tady je F# kód skriptu:
-
-```fsharp
-let Run(myQueueItem: string, log: ILogger) =
-    log.LogInformation(sprintf "F# ServiceBus queue trigger function processed message: %s" myQueueItem)
-```
-
-### <a name="trigger---java-example"></a>Aktivační události – příklad v jazyce Java
-
-Následující funkce jazyka Java používá `@ServiceBusQueueTrigger` anotace z [knihovny běhového prostředí Java Functions](/java/api/overview/azure/functions/runtime) k popisu konfigurace pro aktivační událost Service Bus Queue. Funkce přiřadí zprávu umístěnou ve frontě a přidá ji do protokolů.
-
-```java
-@FunctionName("sbprocessor")
- public void serviceBusProcess(
-    @ServiceBusQueueTrigger(name = "msg",
-                             queueName = "myqueuename",
-                             connection = "myconnvarname") String message,
-   final ExecutionContext context
- ) {
-     context.getLogger().info(message);
- }
-```
-
-Následující funkce jazyka Java zobrazuje načtení metadat definovaných ve _vlastnostech uživatele_ Service Bus zprávy: 
-```java
-public class ServiceBusQueueTriggerJava {
-    @FunctionName("ServiceBusQueueTriggerJava")
-    public void run(
-            @ServiceBusQueueTrigger(name = "message", queueName = "myqueue", connection = "AzureWebJobsStorage") String message,
-            @BindingName("UserProperties") UserProperties userProperties,
-            final ExecutionContext context
-    ) {
-        context.getLogger().info("Java Service Bus Queue trigger function executed.");
-        context.getLogger().info(message);
-        context.getLogger().info(userProperties.key1);
-        context.getLogger().info(userProperties.key2);
-    }
-}
-
-public class UserProperties {
-    public String key1;
-    public String key2;
-}
-```
-
-Funkce Java se můžou aktivovat i při přidání zprávy do tématu Service Bus. Následující příklad používá anotaci `@ServiceBusTopicTrigger` k popisu konfigurace triggeru.
-
-```java
-@FunctionName("sbtopicprocessor")
-    public void run(
-        @ServiceBusTopicTrigger(
-            name = "message",
-            topicName = "mytopicname",
-            subscriptionName = "mysubscription",
-            connection = "ServiceBusConnection"
-        ) String message,
-        final ExecutionContext context
-    ) {
-        context.getLogger().info(message);
-    }
-```
-
-### <a name="trigger---javascript-example"></a>Aktivační události – příklad v jazyce JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Následující příklad ukazuje vazby v aktivační události služby Service Bus *function.json* souboru a [funkce jazyka JavaScript](functions-reference-node.md) , který používá vazba. Funkce přečte [zpráva metadat](#trigger---message-metadata) a zaznamená zprávu fronty služby Service Bus. 
 
@@ -226,7 +134,7 @@ module.exports = function(context, myQueueItem) {
 };
 ```
 
-### <a name="trigger---python-example"></a>Trigger – příklad Pythonu
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 Následující příklad ukazuje, jak číst zprávu Service Bus Queue prostřednictvím triggeru.
 
@@ -277,7 +185,44 @@ def main(msg: func.ServiceBusMessage):
     logging.info(result)
 ```
 
-## <a name="trigger---attributes"></a>Aktivační události – atributy
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Následující funkce jazyka Java používá `@ServiceBusQueueTrigger` anotace z [knihovny běhového prostředí Java Functions](/java/api/overview/azure/functions/runtime) k popisu konfigurace pro aktivační událost Service Bus Queue. Funkce přiřadí zprávu umístěnou ve frontě a přidá ji do protokolů.
+
+```java
+@FunctionName("sbprocessor")
+ public void serviceBusProcess(
+    @ServiceBusQueueTrigger(name = "msg",
+                             queueName = "myqueuename",
+                             connection = "myconnvarname") String message,
+   final ExecutionContext context
+ ) {
+     context.getLogger().info(message);
+ }
+```
+
+Funkce Java se můžou aktivovat i při přidání zprávy do tématu Service Bus. Následující příklad používá anotaci `@ServiceBusTopicTrigger` k popisu konfigurace triggeru.
+
+```java
+@FunctionName("sbtopicprocessor")
+    public void run(
+        @ServiceBusTopicTrigger(
+            name = "message",
+            topicName = "mytopicname",
+            subscriptionName = "mysubscription",
+            connection = "ServiceBusConnection"
+        ) String message,
+        final ExecutionContext context
+    ) {
+        context.getLogger().info(message);
+    }
+```
+
+---
+
+## <a name="trigger---attributes-and-annotations"></a>Aktivační události – atributy a poznámky
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 V [knihoven tříd C#](functions-dotnet-class-library.md), můžete nakonfigurovat aktivační událost služby Service Bus následující atributy:
 
@@ -308,7 +253,7 @@ V [knihoven tříd C#](functions-dotnet-class-library.md), můžete nakonfigurov
   }
   ```
 
-  Kompletní příklad naleznete v tématu [Trigger – C# příklad](#trigger---c-example).
+  Úplný příklad najdete v tématu [Trigger – příklad](#trigger---example).
 
 * [ServiceBusAccountAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAccountAttribute.cs)
 
@@ -336,6 +281,28 @@ V [knihoven tříd C#](functions-dotnet-class-library.md), můžete nakonfigurov
 * `ServiceBusAccount` Atribut aplikován třídu.
 * Nastavení aplikace "AzureWebJobsServiceBus".
 
+# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
+
+C# Skript nepodporuje atributy.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Atributy nejsou podporovány jazykem JavaScript.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Python nepodporuje atributy.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Anotace `ServiceBusQueueTrigger` umožňuje vytvořit funkci, která se spustí při vytvoření zprávy fronty Service Bus. K dispozici jsou možnosti konfigurace, včetně názvu fronty a názvu připojovacího řetězce.
+
+Anotace `ServiceBusTopicTrigger` umožňuje určit téma a předplatné k určení toho, jaká data aktivují funkci.
+
+Další podrobnosti najdete v [příkladu](#trigger---example) triggeru.
+
+---
+
 ## <a name="trigger---configuration"></a>Aktivační události – konfigurace
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru a `ServiceBusTrigger` atribut.
@@ -356,7 +323,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 ## <a name="trigger---usage"></a>Aktivační události – využití
 
-V C# a skript jazyka C# můžete použít následující typy parametrů pro zprávu fronty nebo tématu:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Pro zprávu o frontě nebo tématu jsou k dispozici následující typy parametrů:
 
 * `string` – Pokud má zpráva text.
 * `byte[]` -Vhodné pro binární data.
@@ -365,7 +334,32 @@ V C# a skript jazyka C# můžete použít následující typy parametrů pro zpr
 
 Tyto typy parametrů jsou pro Azure Functions verze 1. x; u 2. x a vyšších použijte místo `BrokeredMessage`[`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) .
 
-V jazyce JavaScript, přístup ke zprávě fronty nebo tématu pomocí `context.bindings.<name from function.json>`. Zprávy služby Service Bus je předán do funkce jako řetězec nebo objekt JSON.
+# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
+
+Pro zprávu o frontě nebo tématu jsou k dispozici následující typy parametrů:
+
+* `string` – Pokud má zpráva text.
+* `byte[]` -Vhodné pro binární data.
+* Vlastní typ – Pokud zpráva obsahuje JSON, Azure Functions se pokusí rekonstruovat JSON data.
+* `BrokeredMessage` – poskytuje deserializovanou zprávu s metodou [BrokeredMessage. GetBody\<t > ()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) .
+
+Tyto parametry jsou pro Azure Functions verze 1. x; u 2. x a vyšších použijte místo `BrokeredMessage`[`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) .
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Přístup ke zprávě fronty nebo tématu pomocí `context.bindings.<name from function.json>`. Zprávy služby Service Bus je předán do funkce jako řetězec nebo objekt JSON.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Zpráva fronty je k dispozici funkci prostřednictvím parametru zadaného jako `func.ServiceBusMessage`. Zprávy služby Service Bus je předán do funkce jako řetězec nebo objekt JSON.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Příchozí Service Bus zpráva je k dispozici prostřednictvím parametru `ServiceBusQueueMessage` nebo `ServiceBusTopicMessage`.
+
+[Podrobnosti najdete v příkladu](#trigger).
+
+---
 
 ## <a name="trigger---poison-messages"></a>Aktivační události – počet nezpracovatelných zpráv
 
@@ -404,18 +398,9 @@ Zobrazit [příklady kódu](#trigger---example) , které používají tyto vlast
 
 Použití Azure Service Bus výstupní vazby pro odesílání zpráv fronty nebo tématu.
 
-## <a name="output---example"></a>Výstup – příklad
+### <a name="output---example"></a>Výstup – příklad
 
-Podívejte se na příklad specifické pro jazyk:
-
-* [C#](#output---c-example)
-* [C# skript (.csx)](#output---c-script-example)
-* [F#](#output---f-example)
-* [Java](#output---java-example)
-* [JavaScript](#output---javascript-example)
-* [Python](#output---python-example)
-
-### <a name="output---c-example"></a>Výstup – příklad v jazyce C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Následující příklad ukazuje [funkce jazyka C#](functions-dotnet-class-library.md) , která odešle zprávu fronty služby Service Bus:
 
@@ -429,7 +414,7 @@ public static string ServiceBusOutput([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-### <a name="output---c-script-example"></a>Výstup – příklad skriptu jazyka C#
+# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
 
 Následující příklad ukazuje, Service Bus výstupní vazby ve *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) , který používá vazba. Funkce používá aktivaci časovačem odeslat zprávu fronty každých 15 sekund.
 
@@ -480,79 +465,7 @@ public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<str
 }
 ```
 
-### <a name="output---f-example"></a>Výstup – F# příklad
-
-Následující příklad ukazuje, Service Bus výstupní vazby ve *function.json* souboru a [ F# skriptu funkce](functions-reference-fsharp.md) , který používá vazba. Funkce používá aktivaci časovačem odeslat zprávu fronty každých 15 sekund.
-
-Zde je vazba dat v *function.json* souboru:
-
-```json
-{
-    "bindings": [
-        {
-            "schedule": "0/15 * * * * *",
-            "name": "myTimer",
-            "runsOnStartup": true,
-            "type": "timerTrigger",
-            "direction": "in"
-        },
-        {
-            "name": "outputSbQueue",
-            "type": "serviceBus",
-            "queueName": "testqueue",
-            "connection": "MyServiceBusConnection",
-            "direction": "out"
-        }
-    ],
-    "disabled": false
-}
-```
-
-Tady je F# kód, který vytvoří jedna zpráva skriptu:
-
-```fsharp
-let Run(myTimer: TimerInfo, log: ILogger, outputSbQueue: byref<string>) =
-    let message = sprintf "Service Bus queue message created at: %s" (DateTime.Now.ToString())
-    log.LogInformation(message)
-    outputSbQueue = message
-```
-
-### <a name="output---java-example"></a>Výstup – příklad v jazyce Java
-
-Následující příklad ukazuje funkci jazyka Java, která pošle zprávu do fronty Service Bus `myqueue` při aktivaci požadavkem HTTP.
-
-```java
-@FunctionName("httpToServiceBusQueue")
-@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
-public String pushToQueue(
-  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
-  final String message,
-  @HttpOutput(name = "response") final OutputBinding<T> result ) {
-      result.setValue(message + " has been sent.");
-      return message;
- }
-```
-
- V [Java funkce knihovny prostředí runtime](/java/api/overview/azure/functions/runtime), použijte `@ServiceBusQueueOutput` Poznámka k parametrům funkcí, jehož hodnota by byla zapsána do fronty služby Service Bus.  Typ parametru by měl být `OutputBinding<T>`, kde T je libovolný Java nativní objekt POJO.
-
-Funkce jazyka Java mohou také zapisovat do Service Busho tématu. Následující příklad používá anotaci `@ServiceBusTopicOutput` k popisu konfigurace výstupní vazby. 
-
-```java
-@FunctionName("sbtopicsend")
-    public HttpResponseMessage run(
-            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
-            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
-            final ExecutionContext context) {
-        
-        String name = request.getBody().orElse("Azure Functions");
-
-        message.setValue(name);
-        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
-        
-    }
-```
-
-### <a name="output---javascript-example"></a>Výstup – příklad v jazyce JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Následující příklad ukazuje, Service Bus výstupní vazby ve *function.json* souboru a [funkce jazyka JavaScript](functions-reference-node.md) , který používá vazba. Funkce používá aktivaci časovačem odeslat zprávu fronty každých 15 sekund.
 
@@ -604,7 +517,7 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-### <a name="output---python-example"></a>Výstup – příklad Pythonu
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 Následující příklad ukazuje, jak zapisovat do fronty Service Bus v Pythonu.
 
@@ -654,7 +567,46 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
     return 'OK'
 ```
 
-## <a name="output---attributes"></a>Výstup – atributy
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Následující příklad ukazuje funkci Java, která odešle zprávu do fronty služby Service Bus `myqueue` aktivovaného požadavku HTTP.
+
+```java
+@FunctionName("httpToServiceBusQueue")
+@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
+public String pushToQueue(
+  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
+  final String message,
+  @HttpOutput(name = "response") final OutputBinding<T> result ) {
+      result.setValue(message + " has been sent.");
+      return message;
+ }
+```
+
+ V [Java funkce knihovny prostředí runtime](/java/api/overview/azure/functions/runtime), použijte `@QueueOutput` Poznámka k parametrům funkcí, jehož hodnota by byla zapsána do fronty služby Service Bus.  Typ parametru by měl být `OutputBinding<T>`, kde T je libovolný Java nativní objekt POJO.
+
+Funkce jazyka Java mohou také zapisovat do Service Busho tématu. Následující příklad používá anotaci `@ServiceBusTopicOutput` k popisu konfigurace výstupní vazby. 
+
+```java
+@FunctionName("sbtopicsend")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
+            final ExecutionContext context) {
+        
+        String name = request.getBody().orElse("Azure Functions");
+
+        message.setValue(name);
+        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
+        
+    }
+```
+
+---
+
+## <a name="output---attributes-and-annotations"></a>Výstup – atributy a poznámky
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 V [knihoven tříd C#](functions-dotnet-class-library.md), použijte [ServiceBusAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAttribute.cs).
 
@@ -680,9 +632,27 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-Kompletní příklad naleznete v tématu [výstup – příklad v jazyce C#](#output---c-example).
+Úplný příklad naleznete v tématu [Output-example](#output---example).
 
-Pomocí atributu `ServiceBusAccount` můžete určit účet Service Bus, který se má použít na úrovni třídy, metody nebo parametru.  Další informace najdete v tématu [aktivační události – atributy](#trigger---attributes).
+Můžete použít `ServiceBusAccount` atribut zadat účet služby Service Bus na úrovni třídy, metody nebo parametr.  Další informace najdete v tématu [aktivační události – atributy](#trigger---attributes-and-annotations).
+
+# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
+
+C# Skript nepodporuje atributy.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Atributy nejsou podporovány jazykem JavaScript.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Python nepodporuje atributy.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Poznámky `ServiceBusQueueOutput` a `ServiceBusTopicOutput` jsou k dispozici pro zápis zprávy jako výstup funkce. Parametr upravený pomocí těchto poznámek musí být deklarován jako `OutputBinding<T>`, kde `T` je typ odpovídající typu zprávy.
+
+---
 
 ## <a name="output---configuration"></a>Výstup – konfigurace
 
@@ -704,7 +674,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 Ve službě Azure Functions 1.x, modul runtime vytvoří frontu Pokud neexistuje a nastavili jste `accessRights` k `manage`. V funkcích Functions verze 2. x a vyšší již musí fronta nebo téma existovat; Pokud zadáte frontu nebo téma, které neexistují, funkce se nezdaří. 
 
-V jazyce C# a skript jazyka C# můžete použít následující typy parametrů pro výstupní vazbu:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Pro výstupní vazbu použijte následující typy parametrů:
 
 * `out T paramName` - `T` může být libovolný typ serializovat na JSON. Pokud hodnota parametru má hodnotu null při ukončení funkce, funkce vytvoří zprávu s objekt s hodnotou null.
 * `out string` – Pokud hodnota parametru má hodnotu null při ukončení funkce, funkce nevytváří zprávu.
@@ -719,9 +691,36 @@ Při práci s C# funkcemi:
 
 * Chcete-li získat přístup k ID relace, vytvořte připojení k typu [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) a použijte vlastnost `sessionId`.
 
-V jazyce JavaScript, přístup k frontě nebo tématu pomocí `context.bindings.<name from function.json>`. Pro `context.binding.<name>`můžete přiřadit řetězec, bajtové pole nebo objekt JavaScriptu (deserializovat do formátu JSON).
+# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
 
-Pokud chcete poslat zprávu do fronty s povolenými relacemi v jinýchC# jazycích než, použijte [sadu SDK Azure Service Bus](https://docs.microsoft.com/azure/service-bus-messaging) , nikoli integrovanou výstupní vazbu.
+Pro výstupní vazbu použijte následující typy parametrů:
+
+* `out T paramName` - `T` může být libovolný typ serializovat na JSON. Pokud hodnota parametru má hodnotu null při ukončení funkce, funkce vytvoří zprávu s objekt s hodnotou null.
+* `out string` – Pokud hodnota parametru má hodnotu null při ukončení funkce, funkce nevytváří zprávu.
+* `out byte[]` – Pokud hodnota parametru má hodnotu null při ukončení funkce, funkce nevytváří zprávu.
+* `out BrokeredMessage` – Pokud má parametr hodnotu null, když se funkce ukončí, funkce nevytvoří zprávu (pro funkce 1. x).
+* `out Message` – Pokud má parametr hodnotu null, když se funkce ukončí, funkce nevytvoří zprávu (pro Functions 2. x a vyšší).
+* `ICollector<T>` nebo `IAsyncCollector<T>` – pro vytváření více zpráv. Zpráva se vytvoří při volání `Add` metody.
+
+Při práci s C# funkcemi:
+
+* Asynchronní funkce místo parametru `out` vyžadují návratovou hodnotu nebo `IAsyncCollector`.
+
+* Chcete-li získat přístup k ID relace, vytvořte připojení k typu [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) a použijte vlastnost `sessionId`.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Přístup ke frontě nebo tématu pomocí `context.bindings.<name from function.json>`. Pro `context.binding.<name>`můžete přiřadit řetězec, bajtové pole nebo objekt JavaScriptu (deserializovat do formátu JSON).
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Místo předdefinované výstupní vazby použijte [sadu Azure Service Bus SDK](https://docs.microsoft.com/azure/service-bus-messaging) .
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Místo předdefinované výstupní vazby použijte [sadu Azure Service Bus SDK](https://docs.microsoft.com/azure/service-bus-messaging) .
+
+---
 
 ## <a name="exceptions-and-return-codes"></a>Výjimky a návratové kódy
 

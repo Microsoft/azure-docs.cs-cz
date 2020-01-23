@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 01/17/2020
 ms.author: robinsh
-ms.openlocfilehash: 514f4b26a708a6fec30a1f54cfe6da6d1b58b79d
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 2abccf3c891a4e5c4db1e05f09d2e61a590b73b7
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555519"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548559"
 ---
 # <a name="get-started-with-device-management-python"></a>Začínáme se správou zařízení (Python)
 
@@ -35,9 +35,9 @@ Na konci tohoto kurzu máte dvě konzolové aplikace v Pythonu:
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
+[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
 ## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
 
@@ -150,15 +150,11 @@ V této části:
 
 V této části vytvoříte konzolovou aplikaci v Pythonu, která iniciuje vzdálené restartování zařízení pomocí přímé metody. Aplikace pomocí dvojitých dotazů na zařízení zjistí čas posledního restartování tohoto zařízení.
 
-1. Na příkazovém řádku spusťte následující příkaz k instalaci balíčku **Azure-IoT-Service-Client** :
+1. Na příkazovém řádku spusťte následující příkaz pro instalaci balíčku **Azure-IoT-Hub** :
 
     ```cmd/sh
-    pip install azure-iothub-service-client
+    pip install azure-iot-hub
     ```
-
-   > [!NOTE]
-   > Balíček PIP pro Azure-iothub-Service-Client je momentálně dostupný jenom pro operační systém Windows. Informace pro Linux a Mac OS najdete v oddílech týkajících se Linux a Mac OS na stránce [Příprava vývojového prostředí pro Python](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md) .
-   >
 
 2. Pomocí textového editoru vytvořte v pracovním adresáři soubor s názvem **dmpatterns_getstarted_service. py** .
 
@@ -166,9 +162,9 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která iniciuje vzdá
 
     ```python
     import sys, time
-    import iothub_service_client
 
-    from iothub_service_client import IoTHubDeviceMethod, IoTHubError, IoTHubDeviceTwin
+    from azure.iot.hub import IoTHubRegistryManager
+    from azure.iot.hub.models import CloudToDeviceMethod, CloudToDeviceMethodResult, Twin
     ```
 
 4. Přidejte následující deklarace proměnných. Nahraďte hodnotu zástupného symbolu `{IoTHubConnectionString}` připojovacím řetězcem IoT Hub, který jste zkopírovali dříve v [části získání připojovacího řetězce centra IoT](#get-the-iot-hub-connection-string). Nahraďte hodnotu zástupného symbolu `{deviceId}` IDENTIFIKÁTORem zařízení, které jste zaregistrovali v [části registrace nového zařízení ve službě IoT Hub](#register-a-new-device-in-the-iot-hub).
@@ -188,13 +184,15 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která iniciuje vzdá
     ```python
     def iothub_devicemethod_sample_run():
         try:
-            iothub_twin_method = IoTHubDeviceTwin(CONNECTION_STRING)
-            iothub_device_method = IoTHubDeviceMethod(CONNECTION_STRING)
+            # Create IoTHubRegistryManager
+            registry_manager = IoTHubRegistryManager(CONNECTION_STRING)
 
             print ( "" )
             print ( "Invoking device to reboot..." )
 
-            response = iothub_device_method.invoke(DEVICE_ID, METHOD_NAME, METHOD_PAYLOAD, TIMEOUT)
+            # Call the direct method.
+            deviceMethod = CloudToDeviceMethod(method_name=METHOD_NAME, payload=METHOD_PAYLOAD)
+            response = registry_manager.invoke_device_method(DEVICE_ID, deviceMethod)
 
             print ( "" )
             print ( "Successfully invoked the device to reboot." )
@@ -208,19 +206,19 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která iniciuje vzdá
 
                 status_counter = 0
                 while status_counter <= WAIT_COUNT:
-                    twin_info = iothub_twin_method.get_twin(DEVICE_ID)
+                    twin_info = registry_manager.get_twin(DEVICE_ID)
 
-                    if twin_info.find("rebootTime") != -1:
-                        print ( "Last reboot time: " + twin_info[twin_info.find("rebootTime")+11:twin_info.find("rebootTime")+37])
+                    if twin_info.properties.reported.get("rebootTime") != None :
+                        print ("Last reboot time: " + twin_info.properties.reported.get("rebootTime"))
                     else:
                         print ("Waiting for device to report last reboot time...")
 
                     time.sleep(5)
                     status_counter += 1
 
-        except IoTHubError as iothub_error:
+        except Exception as ex:
             print ( "" )
-            print ( "Unexpected error {0}".format(iothub_error) )
+            print ( "Unexpected error {0}".format(ex) )
             return
         except KeyboardInterrupt:
             print ( "" )

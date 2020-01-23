@@ -7,24 +7,26 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/04/2019
-ms.openlocfilehash: bcb0e9551f4415b2aac9eb2d641c91df9f692437
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/22/2020
+ms.openlocfilehash: a8176cc07296b7de7b6aba5356485280ef5ebde1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979126"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548811"
 ---
 # <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Vytvoření clusteru Apache Hadoop s účty úložiště zabezpečeného přenosu ve službě Azure HDInsight
 
 Funkce [Vyžadovat zabezpečený přenos](../storage/common/storage-require-secure-transfer.md) zvyšuje zabezpečení účtu služby Azure Storage tím, že vynucuje přenos všech požadavků na účet přes zabezpečené připojení. Tuto funkci a schéma wasbs podporují pouze clustery HDInsight verze 3.6 nebo novější.
+
+**Povolení přenosu zabezpečeného úložiště po vytvoření clusteru může způsobit chyby v účtu úložiště a nedoporučuje se ho použít. Je lepší vytvořit nový cluster s povolenou vlastností.**
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete tento článek, musíte mít:
 
 * Předplatné Azure: Pokud chcete vytvořit bezplatný zkušební účet na jeden měsíc, přejděte na [Azure.Microsoft.com/Free](https://azure.microsoft.com/free).
-* Účet Azure Storage se zapnutým zabezpečeným přenosem. Pokyny najdete v tématech popisujících [vytvoření účtu úložiště](../storage/common/storage-account-create.md) a funkci [Vyžadovat zabezpečený přenos](../storage/common/storage-require-secure-transfer.md). Povolení přenosu zabezpečeného úložiště po vytvoření clusteru vyžaduje další kroky, které nejsou popsané v tomto článku.
+* Účet Azure Storage se zapnutým zabezpečeným přenosem. Pokyny najdete v tématech popisujících [vytvoření účtu úložiště](../storage/common/storage-account-create.md) a funkci [Vyžadovat zabezpečený přenos](../storage/common/storage-require-secure-transfer.md). 
 * Kontejner objektů BLOB v účtu úložiště
 
 ## <a name="create-cluster"></a>Vytvoření clusteru

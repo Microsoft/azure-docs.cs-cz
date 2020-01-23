@@ -4,15 +4,15 @@ description: Řešení běžných potíží s Azure File Sync.
 author: jeffpatt24
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/8/2019
+ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 9318944004ae98eeb2a3300cabca07dfbe4e4fc7
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f211d1c1a8a315ed9d999d146ce4eaf28af43206
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514625"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545037"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -48,6 +48,19 @@ Písmeno_jednotky: \ není k dispozici.
 Parametr je nesprávný.
 
 Chcete-li řešení vyřešit, nainstalujte nejnovější aktualizace pro systém Windows Server 2012 R2 a restartujte server.
+
+<a id="server-registration-missing-subscriptions"></a>**Registrace serveru nezobrazuje seznam všech předplatných Azure.**  
+Po registraci serveru pomocí ServerRegistration. exe chybí předplatná, když kliknete na rozevírací seznam předplatné Azure.
+
+K tomuto problému dochází, protože ServerRegistration. exe v současné době nepodporuje prostředí s více klienty. Tento problém bude opraven v budoucí aktualizaci Azure File Sync agenta.
+
+Pokud chcete tento problém vyřešit, použijte k registraci serveru následující příkazy PowerShellu:
+
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
+Login-AzureRmStorageSync -SubscriptionID "<guid>" -TenantID "<guid>"
+Register-AzureRmStorageSyncServer -SubscriptionId "<guid>" -ResourceGroupName "<string>" -StorageSyncServiceName "<string>"
+```
 
 <a id="server-registration-prerequisites"></a>**Při registraci serveru se zobrazí následující zpráva: chybí předpoklady.**  
 Tato zpráva se zobrazí, pokud v PowerShellu 5,1 není nainstalovaný modul AZ nebo AzureRM PowerShell. 
@@ -311,6 +324,7 @@ Pokud se chcete podívat na tyto chyby, spusťte skript prostředí PowerShell *
 | 0x8000ffff | -2147418113 | E_UNEXPECTED | Soubor nelze synchronizovat z důvodu neočekávané chyby. | Pokud chyba trvá několik dní, otevřete prosím případ podpory. |
 | 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | Soubor nelze synchronizovat, protože se používá. Soubor se bude synchronizovat, jakmile se už nebude používat. | Nevyžaduje se žádná akce. |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Soubor se během synchronizace změnil, takže je potřeba ho synchronizovat znovu. | Nevyžaduje se žádná akce. |
+| 0x80070017 | -2147024873 | ERROR_CRC | Soubor nelze synchronizovat z důvodu chyby CRC. K této chybě může dojít, pokud se vrstvený soubor před odstraněním koncového bodu serveru nevrátil, nebo pokud je soubor poškozený. | Pokud chcete tento problém vyřešit, přečtěte si téma [soubory vrstvených souborů po odstranění koncového bodu serveru](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) a odebrání vrstvených souborů, které jsou osamocené. Pokud k chybě dochází i po odebrání oprhaned vrstvených souborů, spusťte na svazku [Nástroj Chkdsk](https://docs.microsoft.com/windows-server/administration/windows-commands/chkdsk) . |
 | 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | Soubor nelze synchronizovat, protože byl dosažen maximální počet souborů konfliktů. Azure File Sync podporuje soubory konfliktů 100 na jeden soubor. Další informace o konfliktech souborů najdete v tématu Azure File Sync [Nejčastější dotazy](https://docs.microsoft.com/azure/storage/files/storage-files-faq#afs-conflict-resolution). | Chcete-li tento problém vyřešit, snižte počet konfliktních souborů. Soubor se synchronizuje, jakmile bude počet konfliktních souborů menší než 100. |
 
 #### <a name="handling-unsupported-characters"></a>Zpracování nepodporovaných znaků
@@ -442,6 +456,17 @@ K této chybě dochází, protože agent Azure File Sync nemá oprávnění pro 
 
 1. [Ověřte, že účet úložiště existuje.](#troubleshoot-storage-account)
 2. [Ověřte, že jsou v účtu úložiště správně nakonfigurovaná nastavení brány firewall a virtuální sítě (pokud jsou povolená)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings).
+
+<a id="-2134364014"></a>**Synchronizace se nezdařila z důvodu zamčení účtu úložiště.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c83092 |
+| **HRESULT (desetinné číslo)** | -2134364014 |
+| **Řetězec chyby** | ECS_E_STORAGE_ACCOUNT_LOCKED |
+| **Požadována náprava** | Ano |
+
+K této chybě dochází, protože účet úložiště má [Zámek prostředků](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)jen pro čtení. Pokud chcete tento problém vyřešit, odeberte na účtu úložiště zámek prostředků jen pro čtení. 
 
 <a id="-1906441138"></a>**Synchronizace se nezdařila z důvodu problému s databází synchronizace.**  
 

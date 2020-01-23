@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 6d926ccaac5ca05fe6f137102cbfdd45b0e182bd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4bb3af4ddad7e40cbf7edd58cf5899ced2757512
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434634"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548794"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-nodejs"></a>Rychlý start: Registrace zařízení X.509 do služby Device Provisioning Service pomocí Node.js
 
@@ -147,7 +147,10 @@ Pokud plánujete prozkoumat ukázky služeb Node. js, neprovádějte čištění
 3. V Azure Portal ve vaší službě Device Provisioning vyberte **certifikáty**, vyberte certifikát, který jste nahráli pro tento rychlý Start, a stiskněte tlačítko **Odstranit** v horní části okna **Podrobnosti o certifikátu** .  
  
 ## <a name="next-steps"></a>Další kroky
+
 V tomto rychlém startu jste vytvořili registraci skupin pro certifikát X. 509 zprostředkující nebo kořenové certifikační autority pomocí IoT Hub Device Provisioning Service Azure. Pokud se chcete se zřizováním zařízení seznámit podrobněji, pokračujte ke kurzu nastavení služby Device Provisioning na webu Azure Portal. 
+
+Podívejte se také na [ukázku zřizování zařízení Node. js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/device/samples).
  
 > [!div class="nextstepaction"]
 > [Kurzy pro službu Azure IoT Hub Device Provisioning](./tutorial-set-up-cloud.md)

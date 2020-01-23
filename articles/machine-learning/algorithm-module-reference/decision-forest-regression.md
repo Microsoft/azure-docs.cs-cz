@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 828301724dae58437f7818668cd0be879ae2ac70
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 2c1b61d43fde00c435b83071015246bf990e873e
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314177"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546669"
 ---
 # <a name="decision-forest-regression-module"></a>Modul pro regresi rozhodovací doménové struktury
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Pomocí tohoto modulu můžete vytvořit regresní model založený na kompletu rozhodovacích stromů.
 

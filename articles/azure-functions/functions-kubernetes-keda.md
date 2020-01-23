@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
-ms.openlocfilehash: 9978bd567b1b07e8dd0e22e1f02834626281a5dd
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 83c57b27c1cd1d524805a92381a1ba9eb2e1fbd6
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75920663"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549032"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>Azure Functions v Kubernetes s KEDA
 
@@ -26,15 +26,9 @@ Funkce založené na Kubernetes poskytují modul runtime funkcí v [kontejneru D
 
 Pokud chcete spouštět funkce v clusteru Kubernetes, musíte nainstalovat komponentu KEDA. Tuto součást můžete nainstalovat pomocí [Azure Functions Core Tools](functions-run-local.md).
 
-### <a name="installing-with-the-azure-functions-core-tools"></a>Instalace pomocí Azure Functions Core Tools
+### <a name="installing-with-helm"></a>Instalace pomocí Helm
 
-Ve výchozím nastavení nástroje pro základní nástroje instalují součásti KEDA i Osiris, které podporují škálování na základě událostí a HTTP, v uvedeném pořadí.  Instalace používá `kubectl` běžící v aktuálním kontextu.
-
-Nainstalujte do clusteru KEDA spuštěním následujícího příkazu install:
-
-```cli
-func kubernetes install --namespace keda
-```
+Existují různé způsoby, jak nainstalovat KEDA do libovolného clusteru Kubernetes, včetně Helm.  Možnosti nasazení jsou zdokumentovány na [webu keda](https://keda.sh/deploy/).
 
 ## <a name="deploying-a-function-app-to-kubernetes"></a>Nasazení aplikace Function App do Kubernetes
 
@@ -73,11 +67,7 @@ kubectl delete secret <name-of-function-deployment>
 
 ## <a name="uninstalling-keda-from-kubernetes"></a>Odinstalace KEDA z Kubernetes
 
-K odebrání KEDA z clusteru Kubernetes můžete spustit následující základní příkazy nástrojů:
-
-```cli
-func kubernetes remove --namespace keda
-```
+Kroky k odinstalaci KEDA jsou zdokumentovány [na webu keda](https://keda.sh/deploy/).
 
 ## <a name="supported-triggers-in-keda"></a>Podporované triggery v KEDA
 
@@ -91,7 +81,7 @@ KEDA podporuje následující aktivační události Azure Functions:
 
 ### <a name="http-trigger-support"></a>Podpora triggeru HTTP
 
-Můžete použít Azure Functions, který zveřejňuje aktivační události HTTP, ale KEDA je přímo nespravuje.  Azure Functions Core Tools nainstaluje související projekt Osiris, který umožňuje škálování koncových bodů HTTP z 0 na 1.  Škálování od 1 do *n* se spoléhá na tradiční zásady škálování Kubernetes.
+Můžete použít Azure Functions, který zveřejňuje aktivační události HTTP, ale KEDA je přímo nespravuje.  Aktivační událost KEDA Prometheus můžete využít ke [škálování Azure FUNCTIONS http od 1 do *n* instancí](https://dev.to/anirudhgarg_99/scale-up-and-down-a-http-triggered-function-app-in-kubernetes-using-keda-4m42).
 
 ## <a name="next-steps"></a>Další kroky
 Další informace najdete v následujících materiálech:

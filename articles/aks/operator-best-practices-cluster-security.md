@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mlearned
-ms.openlocfilehash: 4629e4e9cfd5c8f9861b692b2aec89057f83587c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2377cc2e0824911217fbc2783fdf8e86fd7b9405
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442925"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549202"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zabezpečení clusteru a inovace ve službě Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,7 @@ Tento článek se zaměřuje na zabezpečení clusteru AKS. Získáte informace 
 > * Použití Azure Active Directory a řízení přístupu na základě rolí k zabezpečení přístupu k serveru rozhraní API
 > * Zabezpečení kontejneru přístup k prostředkům uzlu
 > * Upgrade clusteru AKS na nejnovější verzi Kubernetes
-> * Zachovat aktualizace uzlů na datum a automatické opravy zabezpečení
+> * Udržování uzlů v aktuálním stavu a automatické použití oprav zabezpečení
 
 Můžete si také přečíst osvědčené postupy pro [správu imagí kontejnerů][best-practices-container-image-management] a pro [zabezpečení pod][best-practices-pod-security].
 

@@ -1,6 +1,6 @@
 ---
 title: Hrubá reprostředí v SWIFT
-description: Podrobné vysvětlení způsobu vytváření a hledání kotev pomocí senzorů zařízení v SWIFT.
+description: Podrobné vysvětlení, jak vytvořit a najít kotvy s využitím hrubého opětovného rozmístění v SWIFT.
 author: bucurb
 manager: dacoghl
 services: azure-spatial-anchors
@@ -8,17 +8,17 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 1381f6340d1b85376ad5be9e00c596aa921d957f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7b568c43f8420b5a2f994b4cba145bf4d70b9010
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277181"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546159"
 ---
-# <a name="how-to-create-and-locate-anchors-using-on-device-sensors-in-swift"></a>Jak vytvořit a najít kotvy pomocí senzorů pro zařízení v SWIFT
+# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-swift"></a>Jak vytvořit a najít kotvy s využitím hrubého opětovného rozmístění v SWIFT
 
 > [!div  class="op_single_selector"]
-> * [Jednot](set-up-coarse-reloc-unity.md)
+> * [Unity](set-up-coarse-reloc-unity.md)
 > * [Objective-C](set-up-coarse-reloc-objc.md)
 > * [Swift](set-up-coarse-reloc-swift.md)
 > * [Android Java](set-up-coarse-reloc-java.md)

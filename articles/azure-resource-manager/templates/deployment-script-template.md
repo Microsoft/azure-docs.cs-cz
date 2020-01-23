@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 01/22/2020
 ms.author: jgao
-ms.openlocfilehash: 5475f49acfdcd74a792a9a0f2f16cf1ea3272232
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 125fefbb1d83db8b6114b2d09f5bd6da885159ba
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121892"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547638"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Použití skriptů nasazení v šablonách (Preview)
 
@@ -42,7 +42,7 @@ Výhody skriptu nasazení:
 
 ## <a name="prerequisites"></a>Požadavky
 
-- **Spravovaná identita přiřazená uživatelem s rolí přispěvatele na úrovni předplatného**. Tato identita se používá ke spouštění skriptů nasazení. Pokud ho chcete vytvořit, přečtěte si téma [spravovaná identita přiřazená uživatelem](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity). ID identity budete potřebovat při nasazení šablony. Formát identity je:
+- **Spravovaná identita přiřazená uživatelem s rolí přispěvatele na úrovni předplatného**. Tato identita se používá ke spouštění skriptů nasazení. Pokud ho chcete vytvořit, přečtěte si článek [Vytvoření spravované identity přiřazené uživatelem pomocí Azure Portal](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)nebo pomocí rozhraní příkazového [řádku Azure](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)nebo [pomocí Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md). ID identity budete potřebovat při nasazení šablony. Formát identity je:
 
   ```json
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>

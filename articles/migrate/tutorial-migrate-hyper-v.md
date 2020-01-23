@@ -4,12 +4,12 @@ description: Přečtěte si, jak migrovat místní virtuální počítače Hyper
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: MVC
-ms.openlocfilehash: b9c0de866a61ee2646d987c4fb98cb24a218417b
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: a321c3e731a6649f0831f7d515f1c464b311c9ac
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028970"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545904"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Migrace virtuálních počítačů s Hyper-V do Azure 
 
@@ -181,7 +181,7 @@ Pokud se jedná o první virtuální počítač, který budete replikovat v proj
 - **Service Bus**: Azure Migrate: Migrace serveru používá Service Bus k posílání zpráv orchestrace replikace do zařízení.
 - **Účet úložiště brány**: Azure Migrate: Migrace serveru používá účet úložiště brány k ukládání informací o stavu virtuálních počítačů, které se replikují.
 - **Účet úložiště protokolu**: zařízení Azure Migrate nahrává protokoly replikace pro virtuální počítače do účtu úložiště protokolu. Azure Migrate použije informace o replikaci na disky spravované replikou.
-- **Trezor klíčů**: zařízení Azure Migrate používá Trezor klíčů ke správě připojovacích řetězců pro Service Bus a přístup k klíčům pro účty úložiště používané v replikaci. Měli byste nastavit oprávnění, která Trezor klíčů potřebuje k přístupu k účtu úložiště, když jste připravili. [Připravte](tutorial-prepare-hyper-v.md#prepare-azure) se na Azure pro vyhodnocení a migraci virtuálních počítačů Hyper-V. 
+- **Trezor klíčů**: zařízení Azure Migrate používá Trezor klíčů ke správě připojovacích řetězců pro Service Bus a přístup k klíčům pro účty úložiště používané v replikaci. Měli byste nastavit oprávnění, která musí Trezor klíčů mít přístup k účtu úložiště, když jste [připravili Azure](tutorial-prepare-hyper-v.md#prepare-azure) pro vyhodnocení a migraci virtuálních počítačů Hyper-V. 
 
 
 ## <a name="track-and-monitor"></a>Sledování a sledování

@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: sethm
 ms.reviewer: jowargo
-ms.lastreviewed: 01/23/2019
-ms.openlocfilehash: 254517cc1d9cc042387b63147b2a3fd9bdeece5e
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.lastreviewed: 12/04/2019
+ms.openlocfilehash: b1162e6070deba7f645298b59ffeb1898eb030a8
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263774"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545768"
 ---
 # <a name="routing-and-tag-expressions"></a>Výrazy směrování a značek
 
@@ -31,7 +31,7 @@ Výrazy značek umožňují při posílání nabízených oznámení prostředni
 
 ## <a name="targeting-specific-registrations"></a>Cílení na konkrétní registrace
 
-Jediným způsobem, jak zaměřit na konkrétní registrace oznámení, je přidružit k nim značky a pak tyto značky cílit. Jak je popsáno v tématu [Správa registrace](notification-hubs-push-notification-registration-management.md), aby bylo možné přijímat nabízená oznámení, musí aplikace registrovat popisovač zařízení v centru oznámení. Po vytvoření registrace v centru oznámení může back-end aplikace do ní odesílat nabízená oznámení. Back-end aplikace může zvolit registrace pro cílení na konkrétní oznámení následujícími způsoby:
+Jediným způsobem, jak zaměřit na konkrétní registrace oznámení, je přidružit k nim značky a pak tyto značky cílit. Jak je popsáno v tématu [Správa registrace](notification-hubs-push-notification-registration-management.md), pokud chcete dostávat nabízená oznámení, musí aplikace registrovat popisovač zařízení v centru oznámení. Jakmile aplikace vytvoří registraci v centru oznámení, back-end aplikace může do ní odesílat nabízená oznámení. Back-end aplikace může zvolit registrace pro cílení na konkrétní oznámení následujícími způsoby:
 
 1. **Všesměrové vysílání**: všechny registrace v centru oznámení obdrží oznámení.
 2. **Tag**: všechny registrace, které obsahují určenou značku, obdrží oznámení.
@@ -39,11 +39,11 @@ Jediným způsobem, jak zaměřit na konkrétní registrace oznámení, je přid
 
 ## <a name="tags"></a>Značky
 
-Značkou může být libovolný řetězec, maximálně 120 znaků, obsahující alfanumerické znaky a následující jiné než alfanumerické znaky: _, @, #,,:,. Následující příklad ukazuje aplikaci, ze které můžete přijímat informační zprávy týkající se konkrétních hudebních skupin. V tomto scénáři je jediným způsobem, jak směrovat oznámení, je označovat registrace pomocí značek, které reprezentují různá pásma, jak je znázorněno na následujícím obrázku:
+Tag může být libovolný řetězec, maximálně 120 znaků, obsahující alfanumerické a následující nealfanumerické znaky: '`_`', '`@`', '`#`', '`.`', '`:`', '`-`'. Následující příklad ukazuje aplikaci, ze které můžete přijímat informační zprávy týkající se konkrétních hudebních skupin. V tomto scénáři je jediným způsobem, jak směrovat oznámení, je označovat registrace pomocí značek, které reprezentují různá pásma, jak je znázorněno na následujícím obrázku:
 
 ![Přehled značek](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags.png)
 
-V tomto obrázku bude označená zpráva **Beatles** dostane jenom tablet, který je zaregistrovaný pomocí značky **Beatles**.
+Na obrázku se zpráva označená pomocí **Beatles** dostane jenom tablet, který je zaregistrovaný pomocí značky **Beatles**.
 
 Další informace o vytváření registrací pro značky najdete v tématu [Správa registrace](notification-hubs-push-notification-registration-management.md).
 
@@ -63,13 +63,13 @@ toast = @"<toast><visual><binding template=""ToastGeneric""><text id=""1"">" +
 outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, "Wailers");
 ```
 
-Značky není nutné předem zřizovat a můžou odkazovat na více konceptů specifických pro aplikaci. Například uživatelé této ukázkové aplikace mohou komentovat pruhy a chtít dostávat informační zprávy, nejen komentáře k oblíbeným pásem, ale také pro všechny komentáře od jejich přátel bez ohledu na pásmo, na kterém jsou komentáře. Příklad tohoto scénáře vidíte na následujícím obrázku:
+Značky nesmí být předem zřízené a můžou odkazovat na několik konceptů specifických pro danou aplikaci. Například uživatelé této ukázkové aplikace mohou komentovat pruhy a chtít dostávat informační zprávy, nejen komentáře k oblíbeným pásem, ale také pro všechny komentáře od jejich přátel bez ohledu na pásmo, na kterém jsou komentáře. Následující obrázek zvýrazňuje příklad tohoto scénáře:
 
 ![Značky – přátelé](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags2.png)
 
-V tomto obrázku Alice zajímá aktualizace pro Beatles a Bob má zájem o aktualizace Wailers. Bob je také zajímat o komentáře Charlie a Charlie se zajímá o Wailers. Když se pošle oznámení na Charlie komentář k Beatles, Alice i Bob obdrží.
+V tomto příkladu Alice zajímá aktualizace pro Beatles a Bob má zájem o aktualizace Wailers. Bob je také zajímat o komentáře Charlie a Charlie se zajímá o Wailers. Když se pošle oznámení na Charlie komentář k Beatles, Notification Hubs ho pošle Alici i Bobovi.
 
-I když můžete zakódovat více otázek ve značkách (například "band_Beatles" nebo "follows_Charlie"), značky jsou jednoduché řetězce a nikoli vlastnosti s hodnotami. Registrace se shoduje jenom na přítomnosti nebo absenci konkrétní značky.
+I když můžete zakódovat více otázek ve značkách (například `band_Beatles` nebo `follows_Charlie`), značky jsou jednoduché řetězce a nikoli vlastnosti s hodnotami. Registrace odpovídá jenom na přítomnosti nebo absenci konkrétní značky.
 
 Úplný podrobný návod, jak používat značky pro posílání do zájmových skupin, najdete v tématu popisujícím [novinky](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md).
 
@@ -78,15 +78,15 @@ I když můžete zakódovat více otázek ve značkách (například "band_Beatl
 
 ## <a name="using-tags-to-target-users"></a>Použití značek pro cílení na uživatele
 
-Další možností použití značek je identifikovat všechna zařízení určitého uživatele. Registrace mohou být označeny značkou, která obsahuje ID uživatele, jak je znázorněno na následujícím obrázku:
+Další možností použití značek je identifikovat všechna zařízení přidružená ke konkrétnímu uživateli. Můžete označit registraci značkou, která obsahuje ID uživatele, jak je znázorněno na následujícím obrázku:
 
 ![Označit uživatele](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags3.png)
 
-V tomto obrázku se jedná o UID označené zprávy: Alice dosáhne všech registrací označených jako UID: Alice; proto všechna zařízení Alice.
+Na obrázku se zobrazí zpráva s označením `user_Alice` dosáhne všech zařízení označených příznakem `user_Alice`.
 
 ## <a name="tag-expressions"></a>Výrazy značek
 
-V některých případech je nutné, aby oznámení bylo cíleno na sadu registrací identifikovaných pomocí jedné značky, ale pomocí logického výrazu u značek.
+Existují případy, kdy musí oznámení cílit na sadu registrací identifikovaných pomocí jedné značky, ale pomocí logického výrazu pomocí značek.
 
 Uvažujte o sportovní aplikaci, která pošle připomenutí všem v Boston o hře mezi červeným Sox a mohutnými. Pokud klientská aplikace zaregistruje značky týkající se zájmu v týmech a umístění, je nutné oznámení směrovat všem uživatelům, kteří mají zájem o červenou Sox nebo mohutnosti. Tento stav lze vyjádřit pomocí následujícího logického výrazu:
 
@@ -96,9 +96,9 @@ Uvažujte o sportovní aplikaci, která pošle připomenutí všem v Boston o h�
 
 ![Výrazy značek](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags4.png)
 
-Výrazy značky mohou obsahovat všechny logické operátory, například a (& &), nebo (| |) a nikoli (!). Mohou obsahovat také závorky. Výrazy značek jsou omezeny na 20 značek, pokud obsahují pouze ORs; v opačném případě jsou omezeny na 6 značek.
+Výrazy značky podporují běžné logické operátory, jako je `AND` (`&&`), `OR` (`||`) a `NOT` (`!`); mohou obsahovat také závorky. Výrazy značek používající pouze operátory `OR` mohou odkazovat 20 značek; jinak jsou výrazy značek omezeny na 6 značek.
 
-Tady je příklad pro posílání oznámení pomocí výrazů značek pomocí sady SDK.
+Tady je příklad pro posílání oznámení pomocí výrazů značek pomocí sady SDK:
 
 ```csharp
 Microsoft.Azure.NotificationHubs.NotificationOutcome outcome = null;

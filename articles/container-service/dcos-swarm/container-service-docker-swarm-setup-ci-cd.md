@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 860c277e88918dc37eceb496d852691ced2af114
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 11a6debe735459b617f6f93c3f67a32350dd4623
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277907"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549049"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>ZASTARALÉ Úplný kanál CI/CD pro nasazení aplikace s více kontejnery na Azure Container Service s využitím Docker Swarm pomocí Azure DevOps Services
 
@@ -50,7 +50,7 @@ Než začnete tento kurz, musíte provést následující úlohy:
 
 [!INCLUDE [container-service-swarm-mode-note](../../../includes/container-service-swarm-mode-note.md)]
 
-Budete také potřebovat počítač s Ubuntu (14,04 nebo 16,04) s nainstalovaným Docker. Tento počítač používá Azure DevOps Services během Azure Pipelines procesů. Jedním ze způsobů, jak vytvořit tento počítač, je použití bitové kopie dostupné v [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/canonicalandmsopentech/dockeronubuntuserver1404lts/). 
+Budete také potřebovat počítač s Ubuntu (14,04 nebo 16,04) s nainstalovaným Docker. Tento počítač používá Azure DevOps Services během Azure Pipelines procesů. Jedním ze způsobů, jak vytvořit tento počítač, je použití bitové kopie dostupné v Azure Marketplace. 
 
 ## <a name="step-1-configure-your-azure-devops-services-organization"></a>Krok 1: konfigurace Azure DevOps Services organizace 
 
