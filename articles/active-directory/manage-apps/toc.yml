@@ -139,6 +139,8 @@
               href: configure-linked-sign-on.md
         - name: Přiřazení uživatelů a správa přístupu k aplikacím
           items:
+            - name: Konfigurace souhlasu uživatele
+              href: configure-user-consent.md
             - name: Správa a vyhodnocení žádostí o souhlas
               href: manage-consent-requests.md
             - name: Udělení souhlasu správce v rámci celého tenanta

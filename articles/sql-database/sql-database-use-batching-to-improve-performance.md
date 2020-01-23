@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 175ba6b4e65b4a6e276dbfb586e210027a6cd9b3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: cacc01151edaf31db938cf8abf3d46e75397758f
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822424"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545020"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Použití dávkového zpracování ke zlepšení výkonu aplikace SQL Database
 
@@ -91,27 +91,27 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Transakce jsou ve skutečnosti používány v obou těchto příkladech. V prvním příkladu je každé jednotlivá volání implicitní transakce. V druhém příkladu explicitní transakce balí všechna volání. Na dokumentaci pro [protokol transakcí zápisu na úrovni](https://msdn.microsoft.com/library/ms186259.aspx)služby jsou záznamy protokolu po potvrzení transakce vyprázdněny na disk. Takže v transakci může zápis do transakčního protokolu zpozdit až do potvrzení transakce. V důsledku toho povolíte dávkování pro zápisy do transakčního protokolu serveru.
+Transakce jsou ve skutečnosti používány v obou těchto příkladech. V prvním příkladu je každé jednotlivá volání implicitní transakce. V druhém příkladu explicitní transakce balí všechna volání. Na dokumentaci pro [protokol transakcí zápisu na úrovni](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)služby jsou záznamy protokolu po potvrzení transakce vyprázdněny na disk. Takže v transakci může zápis do transakčního protokolu zpozdit až do potvrzení transakce. V důsledku toho povolíte dávkování pro zápisy do transakčního protokolu serveru.
 
 Následující tabulka uvádí některé výsledky ad hoc testování. Testy prováděly stejné sekvenční vložení s transakcemi a bez nich. Pro další perspektivu se první sada testů vzdáleně spustila z přenosného počítače do databáze v Microsoft Azure. Druhá sada testů běžela z cloudové služby a databáze, která se nachází v rámci stejného Microsoft Azure datacentra (Západní USA). Následující tabulka ukazuje dobu v milisekundách sekvenčních vkládání s transakcemi a bez nich.
 
 **Z místního prostředí do Azure**:
 
-| Provoz | Bez transakce (MS) | Transakce (MS) |
+| Operations | Bez transakce (MS) | Transakce (MS) |
 | --- | --- | --- |
-| 1 |130 |402 |
+| 1\. místo |130 |402 |
 | 10 |1208 |1226 |
 | 100 |12662 |10395 |
-| 1000 |128852 |102917 |
+| 1 000 |128852 |102917 |
 
 Z **Azure do Azure (stejné datacentrum)** :
 
-| Provoz | Bez transakce (MS) | Transakce (MS) |
+| Operations | Bez transakce (MS) | Transakce (MS) |
 | --- | --- | --- |
-| 1 |21 |26 |
+| 1\. místo |21 |26 |
 | 10 |220 |56 |
 | 100 |2145 |341 |
-| 1000 |21479 |2756 |
+| 1 000 |21479 |2756 |
 
 > [!NOTE]
 > Výsledky nejsou srovnávacími testy. Podívejte se na [poznámku o výsledcích časování v tomto článku](#note-about-timing-results-in-this-article).
@@ -193,12 +193,12 @@ Ve většině případů mají parametry s hodnotou tabulky stejný nebo lepší
 
 V následující tabulce jsou uvedeny výsledky ad hoc testů pro použití parametrů s hodnotou tabulky v milisekundách.
 
-| Provoz | Z místního prostředí do Azure (MS) | Stejné datacentrum Azure (MS) |
+| Operations | Z místního prostředí do Azure (MS) | Stejné datacentrum Azure (MS) |
 | --- | --- | --- |
-| 1 |124 |32 |
+| 1\. místo |124 |32 |
 | 10 |131 |25 |
 | 100 |338 |51 |
-| 1000 |2615 |382 |
+| 1 000 |2615 |382 |
 | 10000 |23830 |3586 |
 
 > [!NOTE]
@@ -233,12 +233,12 @@ V některých případech je vhodnější hromadné kopírování přes parametr
 
 Následující výsledky ad hoc testu ukazují výkon dávkování s **SqlBulkCopy** v milisekundách.
 
-| Provoz | Z místního prostředí do Azure (MS) | Stejné datacentrum Azure (MS) |
+| Operations | Z místního prostředí do Azure (MS) | Stejné datacentrum Azure (MS) |
 | --- | --- | --- |
-| 1 |433 |57 |
+| 1\. místo |433 |57 |
 | 10 |441 |32 |
 | 100 |636 |53 |
-| 1000 |2535 |341 |
+| 1 000 |2535 |341 |
 | 10000 |21605 |2737 |
 
 > [!NOTE]
@@ -278,9 +278,9 @@ Tento příklad je určen k zobrazení konceptu Basic. Realističtější scén�
 
 Následující výsledky ad hoc testu ukazují výkon tohoto typu příkazu INSERT v milisekundách.
 
-| Provoz | Parametry s hodnotou tabulky (MS) | Vložení jednoho příkazu (MS) |
+| Operations | Parametry s hodnotou tabulky (MS) | Vložení jednoho příkazu (MS) |
 | --- | --- | --- |
-| 1 |32 |20 |
+| 1\. místo |32 |20 |
 | 10 |30 |25 |
 | 100 |33 |51 |
 
@@ -291,7 +291,7 @@ Následující výsledky ad hoc testu ukazují výkon tohoto typu příkazu INSE
 
 Tento přístup může být trochu rychlejší pro dávky, které jsou menší než 100 řádků. I když je vylepšení malé, tato technika je další možnost, která může dobře fungovat ve scénáři konkrétní aplikace.
 
-### <a name="dataadapter"></a>Modul
+### <a name="dataadapter"></a>DataAdapter
 
 Třída **DataAdapter** umožňuje upravit objekt **DataSet** a následně odeslat změny jako operace vložení, aktualizace a odstranění. Používáte-li objekt **DataAdapter** tímto způsobem, je důležité si uvědomit, že pro každou operaci DISTINCT jsou provedeny samostatné volání. Chcete-li zvýšit výkon, použijte vlastnost **UpdateBatchSize** na počet operací, které by měly být v dávce. Další informace najdete v tématu [provádění dávkových operací pomocí Dataadapterů](https://msdn.microsoft.com/library/aadf8fk2.aspx).
 
@@ -325,9 +325,9 @@ Z důvodu těchto kompromisů vyhodnoťte typ operací, které jste dávkují. D
 
 V našich testech neexistovala obvykle žádná výhoda pro rozdělení velkých dávek do menších bloků dat. Ve skutečnosti toto rozdělení často vedlo k nižšímu výkonu než odeslání jedné velké dávky. Představte si třeba situaci, kdy chcete vložit 1000 řádků. Následující tabulka ukazuje, jak dlouho trvá použití parametrů s hodnotou tabulky k vložení 1000 řádků při rozdělení do menších dávek.
 
-| Velikost dávky | Iterací | Parametry s hodnotou tabulky (MS) |
+| Velikost dávky | Iterations | Parametry s hodnotou tabulky (MS) |
 | --- | --- | --- |
-| 1000 |1 |347 |
+| 1 000 |1\. místo |347 |
 | 500 |2 |355 |
 | 100 |10 |465 |
 | 50 |20 |630 |

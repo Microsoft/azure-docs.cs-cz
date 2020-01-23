@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 8377c4339b07e0b917e10ed413ffc79baef91fac
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 2dd3b3ffae39d43a3b865804af2e743bad87f8ea
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888389"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543048"
 ---
 # <a name="live-event-types-comparison"></a>Porovnání typů živých událostí
 
@@ -28,7 +28,7 @@ V Azure Media Services může být [živá událost](https://docs.microsoft.com/
 
 Následující tabulka porovnává funkce typů živých událostí. Typy jsou nastaveny během vytváření pomocí [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype):
 
-* **LiveEventEncodingType. None** – místní kodér Live posílá datový proud s více přenosovými rychlostmi. Příjmové streamy procházejí prostřednictvím živé události bez dalšího zpracování. 
+* **LiveEventEncodingType. None** – místní kodér Live posílá datový proud s více přenosovými rychlostmi. Příjmové streamy procházejí prostřednictvím živé události bez dalšího zpracování. Také se označuje jako předávací živá událost.
 * **LiveEventEncodingType. Standard** – místní Live Encoder odesílá datový proud s jednou přenosovou rychlostí do živé události a Media Services vytvoří více datových proudů s přenosovou rychlostí. Pokud je informační kanál příspěvku v rámci řešení 720p nebo vyšší, **Default720p** předvolba zakóduje sadu 6 párů rozlišení/přenosové rychlosti (podrobnosti následují dále v článku).
 * **LiveEventEncodingType. Premium1080p** – místní Live Encoder odesílá datový proud s jednou přenosovou rychlostí do živé události a Media Services vytvoří více datových proudů s přenosovou rychlostí. Předvolba Default1080p určuje výstupní sadu párů rozlišení/přenosové rychlosti (podrobnosti následují dále v článku). 
 
@@ -52,6 +52,7 @@ Následující tabulka porovnává funkce typů živých událostí. Typy jsou n
 | Cena|Podívejte se na [stránku s cenami](https://azure.microsoft.com/pricing/details/media-services/) a klikněte na kartu živé video.|Podívejte se na [stránku s cenami](https://azure.microsoft.com/pricing/details/media-services/) a klikněte na kartu živé video.|
 | Maximální doba běhu| 24 hodin × 365 dní, živý lineární | 24 hodin × 365 dní, živý lineární (Preview)|
 | Možnost předávání dat titulků Embedded CEA 608/708|Ano|Ano|
+| Možnost zapnout živý přepis|Ano|Ano|
 | Podpora pro vložení SLAT|Ne|Ne|
 | Podpora pro signalizaci reklamy prostřednictvím rozhraní API| Ne|Ne|
 | Podpora pro signalizaci reklamy prostřednictvím zpráv SCTE-35 in-band|Ano|Ano|
