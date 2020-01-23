@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 10/28/2019
 ms.author: kgremban
 ms.custom: mvc
-ms.openlocfilehash: 1c14d1dd171f9bca6b6bdc61e35c0d541b29cb3c
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 1ba133acda414d9779e2fb10150bbdd57285e9a5
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026163"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511208"
 ---
 # <a name="what-is-azure-iot-edge"></a>Co je Azure IoT Edge
 
@@ -25,8 +25,8 @@ Analýzy zvyšují přidanou hodnotu řešení IoT, ale ne všechny analýzy mus
 
 Azure IoT Edge se skládá ze tří komponent:
 
-* **Moduly IoT Edge** jsou kontejnery, ve kterých běží služby Azure, služby třetích stran nebo váš vlastní kód. Moduly se nasazují do IoT Edge zařízení a lokálně se spouštějí na těchto zařízeních.
-* **IoT Edge runtime** běží na každém zařízení IoT Edge a spravuje moduly nasazené na každé zařízení. 
+* **Moduly IoT Edge** jsou kontejnery, ve kterých běží služby Azure, služby třetích stran nebo váš vlastní kód. Moduly se nasazují do zařízení IoT Edge a spouštějí se místně na těchto zařízeních.
+* **IoT Edge runtime** běží na každém zařízení IoT Edge a spravuje moduly nasazené na každé zařízení.
 * **Cloudové rozhraní** umožňuje vzdáleně monitorovat a spravovat IoT Edge zařízení.
 
 >[!NOTE]
@@ -62,7 +62,7 @@ Modul runtime Azure IoT Edge běží na velké sadě zařízení IoT, která umo
 
 ## <a name="iot-edge-cloud-interface"></a>Cloudové rozhraní IoT Edge
 
-Je obtížné spravovat životní cyklus softwaru pro miliony zařízení IoT, která jsou často odlišná pro modely a modely nebo geograficky rozptýlené. Úlohy se vytvoří a nakonfigurují pro konkrétní typ zařízení, nasadí se na všechna vaše zařízení a monitorují se, aby se zachytila zařízení, která se nechovají. Tyto aktivity není možné provádět pro každé zařízení zvlášť a musí se provádět ve velkém měřítku.
+Je obtížné spravovat životní cyklus softwaru pro miliony zařízení IoT, která jsou často odlišná pro modely a modely nebo geograficky rozptýlené. Musí se vytvořit a nakonfigurovat úlohy pro konkrétní typy zařízení a pak úlohy nasadit na všechna zařízení a monitorovat je, aby se zachytila zařízení, která se případně nechovají podle očekávání. Tyto aktivity není možné provádět pro každé zařízení zvlášť a musí se provádět ve velkém měřítku.
 
 Azure IoT Edge se bezproblémově integruje s akcelerátory řešení Azure IoT a poskytuje tak jedinou rovinu řízení pro všechny požadavky vašeho řešení. Cloudové služby umožňují:
 
@@ -70,7 +70,7 @@ Azure IoT Edge se bezproblémově integruje s akcelerátory řešení Azure IoT 
 * Odeslat úlohu do sady zařízení.
 * Monitorovat úlohy spuštěné na zařízeních v poli.
 
-![Telemetrii a akce zařízení se koordinují s cloudem](./media/about-iot-edge/cloud-interface.png)
+![Akce a telemetrii zařízení se koordinují s cloudem](./media/about-iot-edge/cloud-interface.png)
 
 ## <a name="next-steps"></a>Další kroky
 

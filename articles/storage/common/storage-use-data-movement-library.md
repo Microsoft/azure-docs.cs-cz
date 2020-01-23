@@ -10,16 +10,16 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5fe1e45f2ff80c1a212009291ab880a57f347fdf
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ce7f6320ffa4d3e8c258c9d05542f12079ee355d
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978392"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76508998"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>Přenos dat s využitím knihovny pro přesun dat
 
-Knihovna pro přesun dat Azure Storage je open source knihovna pro různé platformy, která je určená pro vysoce výkonné nahrávání, stahování a kopírování objektů BLOB a souborů. Tato knihovna je základní rámec přesunu dat, který je [AzCopy](../storage-use-azcopy.md). Knihovna pro přesun dat poskytuje pohodlný způsob, který není dostupný v klientské knihovně Azure Storage pro .NET. Tyto metody poskytují možnost nastavit počet paralelních operací, sledovat průběh přenosu, snadno obnovit zrušený přenos a mnohem víc.
+Knihovna pro přesun dat Azure Storage je open source knihovna pro různé platformy, která je určená pro vysoce výkonné nahrávání, stahování a kopírování objektů BLOB a souborů. Knihovna pro přesun dat poskytuje pohodlný způsob, který není dostupný v klientské knihovně Azure Storage pro .NET. Tyto metody poskytují možnost nastavit počet paralelních operací, sledovat průběh přenosu, snadno obnovit zrušený přenos a mnohem víc.
 
 Tato knihovna také využívá .NET Core, což znamená, že ji můžete použít při sestavování aplikací .NET pro Windows, Linux a macOS. Další informace o .NET Core najdete v [dokumentaci k .NET Core](https://dotnet.github.io/). Tato knihovna funguje také pro tradiční aplikace .NET Framework pro Windows.
 

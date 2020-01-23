@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f60ec802af0c88ee8cb3809bf27feef89e11570a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 5ee1a20d4a3c46cab484b03b5fcc212a79d19047
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769791"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513265"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Řešení potíží s Update Management
 
@@ -376,7 +376,7 @@ Pokud nemůžete vyřešit problém s opravou, vytvořte kopii následujícího 
 
 ### <a name="i-know-updates-are-available-but-they-dont-show-as-available-on-my-machines"></a>Ví, že aktualizace jsou k dispozici, ale nezobrazují se jako dostupné na mých počítačích
 
-* K tomu často dochází, když jsou počítače nakonfigurované tak, aby získaly aktualizace ze služby WSUS nebo System Center Configuration Manager (SCCM), ale služby WSUS a SCCM aktualizace neschválily.
+* K tomu často dochází, když jsou počítače nakonfigurované tak, aby získaly aktualizace ze služby WSUS nebo Microsoft Endpoint Configuration Manager, ale služby WSUS a Configuration Manager aktualizace neschválily.
 * [V části Konfigurace automatických aktualizací úpravou registru v tomto článku](https://support.microsoft.com/help/328010/how-to-configure-automatic-updates-by-using-group-policy-or-registry-s)můžete ověřit, jestli jsou počítače nakonfigurované pro WSUS a SCCM pomocí křížového odkazu na klíč registru UseWUServer na klíče registru.
 * Pokud se aktualizace ve službě WSUS neschvalují, nebudou nainstalovány. Neschválené aktualizace můžete vyhledat v Log Analytics spuštěním následujícího dotazu:
 

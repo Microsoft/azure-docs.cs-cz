@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: helohr
-ms.openlocfilehash: 44430f5a150952ba7cfc32b3e54d004cb0d0b761
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 318997e2ebd7a423d7793a75575617d06ab842ac
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312341"
+ms.locfileid: "76514268"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop? 
 
@@ -105,8 +105,8 @@ Virtuální počítače Azure, které vytvoříte pro virtuální počítače s 
 >Pro adresy URL, které se týkají provozu služby, je nutné použít zástupný znak (*). Pokud nechcete používat * pro přenosy související s agentem, vyhledáte adresy URL bez zástupných znaků:
 >
 >1. Zaregistrujte virtuální počítače do fondu hostitelů virtuálních počítačů s Windows.
->2. Otevřete **Prohlížeč událostí** , přejděte na **Windows** > **protokoly aplikací** a vyhledejte událost s ID 3712.
->3. Seznam povolených adres URL, které najdete v části ID události 3712. Adresy URL v rámci události s ID 3712 jsou specifické pro oblast. Pro každou oblast, ve které chcete virtuální počítače nasadit, budete muset tento postup opakovat s příslušnými adresami URL.
+>2. Otevřete **Prohlížeč událostí** , přejděte na **Windows** > **protokoly aplikací** a vyhledejte událost s ID 3702.
+>3. Seznam povolených adres URL, které najdete v části ID události 3702. Adresy URL v rámci události s ID 3702 jsou specifické pro oblast. Pro každou oblast, ve které chcete virtuální počítače nasadit, budete muset tento postup opakovat s příslušnými adresami URL.
 
 Windows Virtual Desktop obsahuje stolní počítače a aplikace Windows, které dodáváte uživatelům a řešení pro správu, které je hostované jako služba v Azure od Microsoftu. Stolní počítače a aplikace můžou být nasazené na virtuálních počítačích v libovolné oblasti Azure a řešení pro správu a data pro tyto virtuální počítače se budou nacházet v USA. To může vést k přenosu dat do USA.
 

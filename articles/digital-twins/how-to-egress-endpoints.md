@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/22/2019
-ms.openlocfilehash: 95dbed72aeca639041d259e9c92c2a3b73ef63fe
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/21/2020
+ms.openlocfilehash: 3803802a3d81655091d8be543ae9cb17221a98d8
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456928"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511565"
 ---
 # <a name="egress-and-endpoints-in-azure-digital-twins"></a>Odchozí a koncové body v digitálních prozdvojeních Azure
 
@@ -49,14 +49,14 @@ Události se odesílají pomocí objektů IoT (jako jsou zařízení a senzory) 
 
 | Atribut | Typ | Popis |
 | --- | --- | --- |
-| id | řetězec | Jedinečný identifikátor události |
-| subject | řetězec | Cesta definovaná vydavatelem k předmětu události |
-| data | objekt | Data události specifická pro poskytovatele prostředků. |
-| eventType | řetězec | Jeden z registrovaných typů událostí pro tento zdroj události. |
-| eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
-| dataVersion | řetězec | Verze schématu datového objektu. Vydavatel definuje verzi schématu. |
-| metadataVersion | řetězec | Verze schématu metadat události. Event Grid definuje schéma vlastností nejvyšší úrovně. Tuto hodnotu poskytuje Event Grid. |
-| topic | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nejde zapisovat. Tuto hodnotu poskytuje Event Grid. |
+| id | string | Jedinečný identifikátor události |
+| subject | string | Cesta k předmětu události, kterou definuje vydavatel. |
+| data | object | Data události specifická pro poskytovatele prostředků. |
+| eventType | string | Jeden z registrovaných typů události pro tento zdroj události. |
+| eventTime | string | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
+| dataVersion | string | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
+| metadataVersion | string | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
+| téma | string | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nejde zapisovat. Tuto hodnotu poskytuje Event Grid. |
 
 Další informace o schématu Event Grid události:
 
@@ -85,7 +85,7 @@ Formáty událostí pro každý typ události jsou dále popsány v následujíc
 - ExtendedPropertyKey
 - ExtendedType
 - KeyStore
-- Sestava
+- Zpráva
 - Rutiny roledefinition
 - Elektrické
 - SensorBlobMetadata
@@ -95,12 +95,12 @@ Formáty událostí pro každý typ události jsou dále popsány v následujíc
 - SpaceExtendedProperty
 - SpaceResource
 - SpaceRoleAssignment
-- Systémový
+- Systém
 - Uživatel
 - UserBlobMetadata
 - UserExtendedProperty
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 
 ```JSON
 {
@@ -133,7 +133,7 @@ Formáty událostí pro každý typ události jsou dále popsány v následujíc
 > [!IMPORTANT]  
 > Tato událost musí být explicitně odeslána ze samotného formátu UDF.
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 
 ```JSON
 {
@@ -161,7 +161,7 @@ Formáty událostí pro každý typ události jsou dále popsány v následujíc
 
 **SensorChange** je aktualizace stavu snímače na základě změn telemetrie.
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 
 ```JSON
 {
@@ -196,7 +196,7 @@ Formáty událostí pro každý typ události jsou dále popsány v následujíc
 
 **SpaceChange** je aktualizace stavu prostoru na základě změn telemetrie.
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 
 ```JSON
 {
@@ -248,7 +248,7 @@ Následující příklady ukazují, jak nakonfigurovat podporované koncové bod
 
 Ověřený požadavek HTTP POST s:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/endpoints
 ```
 

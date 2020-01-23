@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cd3a0341d9cf041155b09d41d8ff84d0b0cc3dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bb0764b9c2c43faf88db165a11ae963c4f170f01
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424822"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512585"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Postupy: vyžadování spravovaných zařízení pro přístup k cloudovým aplikacím pomocí podmíněného přístupu
 
@@ -69,7 +69,7 @@ Toto nastavení platí jenom pro zařízení s Windows 10 nebo nižší úrovně
 
 ![Podmínky založené na zařízení](./media/require-managed-devices/45.png)
 
-K čemu zařízení připojené k hybridní službě Azure AD využívá spravované zařízení?  U zařízení, která jsou připojená k místní službě AD, se předpokládá, že se ovládací prvek u těchto zařízení vynutil pomocí řešení pro správu, jako je například **System Center Configuration Manager (SCCM)** nebo **Zásady skupiny (GP)** , abyste je mohli spravovat. Vzhledem k tomu, že neexistuje žádná metoda pro Azure AD, která by mohla zjistit, jestli se některá z těchto metod v zařízení nepoužívala, je nutné, aby zařízení připojené k hybridní službě Azure AD mělo poměrně slabý mechanismus pro vyžadování spravovaného zařízení. Je to na vás jako správce, aby bylo možné posoudit, jestli jsou metody, které se vztahují na vaše místní zařízení připojená k doméně, dostatečně silné, aby představovaly spravované zařízení, pokud takové zařízení je také hybridní zařízení připojené k Azure AD.
+K čemu zařízení připojené k hybridní službě Azure AD využívá spravované zařízení?  U zařízení, která jsou připojená k místní službě AD, se předpokládá, že se ovládací prvek u těchto zařízení vynutil pomocí řešení pro správu, jako je **Configuration Manager** nebo **Zásady skupiny (GP)** , abyste je mohli spravovat. Vzhledem k tomu, že neexistuje žádná metoda pro Azure AD, která by mohla zjistit, jestli se některá z těchto metod v zařízení nepoužívala, je nutné, aby zařízení připojené k hybridní službě Azure AD mělo poměrně slabý mechanismus pro vyžadování spravovaného zařízení. Je to na vás jako správce, aby bylo možné posoudit, jestli jsou metody, které se vztahují na vaše místní zařízení připojená k doméně, dostatečně silné, aby představovaly spravované zařízení, pokud takové zařízení je také hybridní zařízení připojené k Azure AD.
 
 ## <a name="require-device-to-be-marked-as-compliant"></a>Vyžadovat, aby zařízení bylo označené jako vyhovující
 

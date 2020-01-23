@@ -1,18 +1,18 @@
 ---
 title: Obslužné rutiny událostí Azure Event Grid
-description: Popisuje podporované obslužné rutiny událostí pro Azure Event Grid
+description: Popisuje podporované obslužné rutiny událostí pro Azure Event Grid. Obslužná rutina provede několik dalších akcí zpracování události.
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: c88ef8c3996b1e7d998d3eff12c15077ec2482ff
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 3cef32cd204e8bd4b21353cf66575a721315b387
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900737"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511310"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Obslužné rutiny událostí v Azure Event Grid
 
@@ -24,7 +24,7 @@ Tento článek obsahuje odkazy na obsah pro jednotlivé obslužné rutiny událo
 
 Použijte Azure Automation ke zpracování událostí s automatizovanými Runbooky.
 
-|Název  |Popis  |
+|Nadpis  |Popis  |
 |---------|---------|
 |[Kurz: Azure Automation s využitím Event Grid a Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |Vytvořte virtuální počítač, který odešle událost. Událost aktivuje Runbook služby Automation, který zaznamená virtuální počítač, a aktivuje zprávu odeslanou kanálu Microsoft Teams. |
 
@@ -34,7 +34,7 @@ Používejte Azure Functions pro reakci bez serveru na události.
 
 Pokud jako obslužnou rutinu používáte Azure Functions, použijte místo generických aktivačních událostí HTTP aktivační událost Event Gridu. Event Grid automaticky ověřuje aktivační události funkcí Event Grid. U obecných aktivačních událostí HTTP je potřeba implementovat [odpověď ověření](security-authentication.md#webhook-event-delivery).
 
-|Název  |Popis  |
+|Nadpis  |Popis  |
 |---------|---------|
 | [Rychlý Start: zpracování událostí pomocí funkce](custom-event-to-function.md) | Odesílá vlastní událost do funkce pro zpracování. |
 | [Aktivační událost Event Grid pro Azure Functions](../azure-functions/functions-bindings-event-grid.md) | Přehled použití triggeru Event Grid v Functions. |
@@ -48,7 +48,7 @@ Použijte Event Hubs, pokud řešení získává události rychleji, než může
 
 Event Hubs může fungovat buď jako zdroj události, nebo jako obslužná rutina události. Následující článek ukazuje, jak použít Event Hubs jako obslužnou rutinu.
 
-|Název  |Popis  |
+|Nadpis  |Popis  |
 |---------|---------|
 | [Rychlý Start: směrování vlastních událostí do Azure Event Hubs pomocí Azure CLI a Event Grid](custom-event-to-eventhub.md) | Odesílá vlastní událost do centra událostí pro zpracování aplikací. |
 | [Správce prostředků Šablona: vlastní téma a koncový bod Event Hubs](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Správce prostředků šablonu, která vytvoří odběr pro vlastní téma. Odesílá události do Azure Event Hubs. |
@@ -59,7 +59,7 @@ Příklady Event Hubs jako zdroje najdete v tématu [Event Hubs source](event-so
 
 Pomocí Azure Relay Hybrid Connections můžete odesílat události aplikacím, které se nacházejí v podnikové síti, a nemají veřejně přístupný koncový bod.
 
-|Název  |Popis  |
+|Nadpis  |Popis  |
 |---------|---------|
 | [Kurz: odeslání událostí do hybridního připojení](custom-event-to-hybrid-connection.md) | Odesílá vlastní událost do stávajícího hybridního připojení pro zpracování pomocí aplikace naslouchacího procesu. |
 
@@ -67,7 +67,7 @@ Pomocí Azure Relay Hybrid Connections můžete odesílat události aplikacím, 
 
 Použijte Logic Apps k automatizaci obchodních procesů pro reagování na události.
 
-|Název  |Popis  |
+|Nadpis  |Popis  |
 |---------|---------|
 | [Kurz: monitorování změn virtuálních počítačů pomocí Azure Event Grid a Logic Apps](monitor-virtual-machine-changes-event-grid-logic-app.md) | Aplikace logiky monitoruje změny virtuálního počítače a odesílá e-maily o těchto změnách. |
 | [Kurz: odesílání e-mailových oznámení o událostech Azure IoT Hub pomocí Logic Apps](publish-iot-hub-events-to-logic-apps.md) | Aplikace logiky pošle e-mailové oznámení pokaždé, když se do služby IoT Hub přidá zařízení. |
@@ -123,7 +123,7 @@ az eventgrid event-subscription create \
 
 Pomocí Queue Storage můžete přijímat události, které je potřeba vyřadit. Úložiště Queue můžete použít, když máte dlouho běžící proces, který trvá příliš dlouho, než odpoví. Při odesílání událostí do služby Queue Storage může aplikace získat a zpracovat události podle vlastního plánu.
 
-|Název  |Popis  |
+|Nadpis  |Popis  |
 |---------|---------|
 | [Rychlý Start: směrování vlastních událostí do Azure Queue Storage pomocí rozhraní příkazového řádku Azure a Event Grid](custom-event-to-queue-storage.md) | Popisuje, jak odesílat vlastní události do úložiště fronty. |
 
@@ -131,7 +131,7 @@ Pomocí Queue Storage můžete přijímat události, které je potřeba vyřadit
 
 Webhooky použijte k přizpůsobitelným koncovým bodům, které reagují na události.
 
-|Název  |Popis  |
+|Nadpis  |Popis  |
 |---------|---------|
 | Rychlý Start: vytváření a směrování vlastních událostí pomocí [Azure CLI](custom-event-quickstart.md), [PowerShellu](custom-event-quickstart-powershell.md)a [portálu](custom-event-quickstart-portal.md). | Ukazuje, jak odesílat vlastní události Webhooku. |
 | Rychlý Start: směrování událostí služby Blob Storage do vlastního webového koncového bodu pomocí [Azure CLI](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json), [PowerShellu](../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json)a [portálu](blob-event-quickstart-portal.md). | Ukazuje, jak odesílat události služby Blob Storage do Webhooku. |
@@ -140,5 +140,5 @@ Webhooky použijte k přizpůsobitelným koncovým bodům, které reagují na ud
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úvod do Event Gridu najdete v článku o [Event Gridu](overview.md).
+* Úvod do Event Gridu najdete v článku [Informace o službě Event Grid](overview.md).
 * Pokud chcete rychle začít používat služby Event Grid, přečtěte si téma [vytvoření a směrování vlastních událostí pomocí služby Azure Event Grid](custom-event-quickstart.md).

@@ -7,19 +7,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2019
-ms.openlocfilehash: 0ab8019a8537d4080afdb457459f09cd156ff4ed
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bc8162a157cee10deeb8bf3f1e62a53fbdd30d0e
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365525"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513435"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Vytvoření pracovního prostoru Log Analytics na portálu Azure portal
 Pomocí nabídky **pracovní prostory Log Analytics** můžete vytvořit pracovní prostor Log Analytics pomocí Azure Portal. Log Analytics pracovní prostor je jedinečné prostředí pro Azure Monitor data protokolu. Každý pracovní prostor má své vlastní úložiště a konfiguraci dat a zdroje dat a řešení jsou nakonfigurovány tak, aby ukládaly data do konkrétního pracovního prostoru. Pokud máte v úmyslu shromažďovat data z následujících zdrojů, potřebujete Log Analytics pracovní prostor:
 
 * Prostředky ve vašem předplatném Azure
 * Místní služba System Center Operations Manager monitorovat počítače
-* Kolekce zařízení ze System Center Configuration Manager 
+* Kolekce zařízení z Configuration Manager 
 * Diagnostika nebo protokolování dat ze služby Azure storage
 
 U jiných zdrojů, jako jsou virtuální počítače Azure a Windows nebo virtuální počítače s Linuxem ve vašem prostředí naleznete v následujících tématech:

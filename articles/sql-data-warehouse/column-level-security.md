@@ -1,6 +1,6 @@
 ---
-title: Zabezpečení na úrovni sloupců
-description: Zabezpečení na úrovni sloupce (CLS) umožňuje zákazníkům řídit přístup k sloupcům tabulky databáze na základě kontextu spuštění uživatele nebo jejich členství ve skupinách. Specifikace CLS zjednodušuje návrh a kódování zabezpečení ve vaší aplikaci. Specifikace CLS umožňuje implementovat omezení přístupu k sloupci.
+title: Co je zabezpečení na úrovni sloupců pro SQL Data Warehouse?
+description: Zabezpečení na úrovni sloupců umožňuje zákazníkům řídit přístup k sloupcům tabulky databáze na základě kontextu spuštění uživatele nebo členství ve skupině, zjednodušit návrh a kódování zabezpečení ve vaší aplikaci a umožňuje implementovat omezení na sloupec. stoupit.
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -11,21 +11,24 @@ ms.date: 04/02/2019
 ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 85f705022a0ff5970d30c61206d4f2631254b7ce
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 344701989a753e17d8a026f6bb771a6030bdb71f
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077106"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513044"
 ---
 # <a name="column-level-security"></a>Zabezpečení na úrovni sloupců
-Zabezpečení na úrovni sloupce (CLS) umožňuje zákazníkům řídit přístup k sloupcům tabulky databáze na základě kontextu spuštění uživatele nebo jejich členství ve skupinách.
-Aktualizace na video dole – protože toto video bylo na [úrovni řádků zabezpečení](/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017) je dostupné i v SQL Data Warehouse. 
+
+Zabezpečení na úrovni sloupců umožňuje zákazníkům řídit přístup k sloupcům tabulky na základě kontextu spuštění nebo členství ve skupině uživatele.
+
+
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
+Vzhledem k tomu, že toto video bylo zaslané [zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017) , SQL Data Warehouse. 
 
-Specifikace CLS zjednodušuje návrh a kódování zabezpečení ve vaší aplikaci. Specifikace CLS umožňuje implementovat omezení přístupu k sloupci pro ochranu citlivých dat. Například zajistěte, aby konkrétní uživatelé měli přístup pouze k určitým sloupcům tabulky, které se vztahují k jejich oddělení. Logika omezení přístupu se nachází v databázové vrstvě, nikoli z dat v jiné aplikační vrstvě. Databáze použije omezení přístupu při každém pokusu o přístup k datům z libovolné úrovně. Toto omezení zajišťuje spolehlivější a robustní systém zabezpečení tím, že snižuje plochu celého systému zabezpečení. Kromě toho CLS také eliminuje nutnost zavedení zobrazení pro odfiltrování sloupců pro ukládání omezení přístupu pro uživatele.
+Zabezpečení na úrovni sloupců zjednodušuje návrh a kódování zabezpečení ve vaší aplikaci. umožňuje omezit přístup k sloupci na ochranu citlivých dat. Například zajistěte, aby konkrétní uživatelé měli přístup pouze k určitým sloupcům tabulky, které se vztahují k jejich oddělení. Logika omezení přístupu se nachází v databázové vrstvě, nikoli z dat v jiné aplikační vrstvě. Databáze použije omezení přístupu při každém pokusu o přístup k datům z jakékoli úrovně. Toto omezení zajišťuje spolehlivější a robustní zabezpečení tím, že redukuje plochu celkového systému zabezpečení. Kromě toho zabezpečení na úrovni sloupců také eliminuje nutnost zavedení zobrazení pro odfiltrování sloupců pro ukládání omezení přístupu uživatelům.
 
-Specifikaci CLS můžete implementovat pomocí příkazu [grant](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) T-SQL. Tento mechanismus podporuje ověřování SQL i Azure Active Directory (AAD).
+Můžete implementovat zabezpečení na úrovni sloupce pomocí příkazu [grant](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) T-SQL. Tento mechanismus podporuje ověřování SQL i Azure Active Directory (AAD).
 
 ![specifikace CLS](./media/column-level-security/cls.png)
 
@@ -47,10 +50,10 @@ GRANT <permission> [ ,...n ] ON
     | Database_user_mapped_to_Windows_Group
 ```
 
-## <a name="example"></a>Příklad
-Následující příklad ukazuje, jak omezit "TestUser" na přístup k sloupci ' SSN ' v tabulce členství:
+## <a name="example"></a>Příklad:
+Následující příklad ukazuje, jak omezit `TestUser` přístup k sloupci `SSN` tabulky `Membership`:
 
-Vytvořte tabulku Membership se sloupcem SSN, která se používá k uložení čísel sociálního pojištění:
+Vytvoří `Membership`ovou tabulku se sloupcem SSN, který se používá k uložení čísel sociálního pojištění:
 
 ```sql
 CREATE TABLE Membership
@@ -62,13 +65,13 @@ CREATE TABLE Membership
    Email varchar(100) NULL);
 ```
 
-Povolí možnost TestUser pro přístup ke všem sloupcům s výjimkou sloupce SSN, který obsahuje citlivá data:
+Povolí `TestUser` přístup ke všem sloupcům s výjimkou sloupce SSN, který má citlivá data:
 
 ```sql
 GRANT SELECT ON Membership(MemberID, FirstName, LastName, Phone, Email) TO TestUser;
 ```
 
-Dotazy spouštěné jako TestUser selžou, pokud budou zahrnovat sloupec SSN:
+Dotazy spouštěné jako `TestUser` selžou, pokud budou zahrnovat sloupec SSN:
 
 ```sql
 SELECT * FROM Membership;
@@ -78,6 +81,8 @@ The SELECT permission was denied on the column 'SSN' of the object 'Membership',
 ```
 
 ## <a name="use-cases"></a>Případy použití
-Některé příklady použití specifikace CLS v současnosti:
+
+Některé příklady použití zabezpečení na úrovni sloupců v současnosti:
+
 - Společnost DataServices zajišťuje přístup jenom správcům účtů, kteří mají přístup k číslům sociálního pojištění zákazníka (rodné číslo), telefonním číslům a dalším identifikovatelným osobním údajům (PII).
-- Poskytovatel péče o zdravotní péči umožňuje přístup k citlivým lékařským záznamům jenom lékaři a zdravotní sestry, zatímco neumožňuje členům fakturačního oddělení zobrazit tato data.
+- Poskytovatel péče o zdravotní péči umožňuje přístup k citlivým lékařským záznamům jenom lékaři a zdravotní sestry a zároveň brání členům fakturačního oddělení zobrazit tato data.

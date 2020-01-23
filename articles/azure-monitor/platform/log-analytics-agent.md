@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 58d6c8d18e03ab248cfbebcf910ae13c5fee439e
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 8e563ae095cf39cdce3e671d4099d2bf1592100a
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530965"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513622"
 ---
 # <a name="collect-log-data-with-the-log-analytics-agent"></a>Shromažďovat data protokolu pomocí agenta Log Analytics
 
@@ -142,9 +142,9 @@ Propojení počítačů v rámci předplatného Azure nebo hybridního prostřed
 
 |Zdroj | Metoda | Popis|
 |-------|-------------|-------------|
-|Virtuální počítač Azure| -Log Analytics virtuálního počítače rozšíření pro [Windows](../../virtual-machines/extensions/oms-windows.md) nebo [Linux](../../virtual-machines/extensions/oms-linux.md) pomocí rozhraní příkazového řádku Azure nebo pomocí šablony Azure Resource Manageru<br>- [ručně z Azure Portal](../../azure-monitor/learn/quick-collect-azurevm.md)<br>[Automatické zřizování - Azure Security Center](../../security-center/security-center-enable-data-collection.md)| – Rozšíření nainstaluje agenta Log Analytics na virtuální počítače Azure a zaregistruje je do existujícího pracovního prostoru Azure Monitor.<br>– Azure Security Center můžou zřídit agenta Log Analytics na všech podporovaných virtuálních počítačích Azure a všech nově vytvořených, pokud ji povolíte pro monitorování ohrožení zabezpečení a hrozeb. Pokud je tato možnost povolená, všechny nové nebo existující virtuální počítače bez nainstalovaného agenta budou zřízené.|
-| Hybridní počítač s Windows|- [Ruční instalace](agent-windows.md)<br>- [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [Šablony Resource Manageru pomocí služby Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |Nainstalujte Microsoft Monitoring agent z příkazového řádku nebo pomocí automatizovaného metody jako je Azure Automation DSC, [System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications), nebo pomocí šablony Azure Resource Manageru, pokud jste nasadili Microsoft Azure Stack ve vašem datovém centru.| 
-| Hybridní počítač s Linuxem| [Ruční instalace](agent-linux.md)|Nainstalujte agenta pro Linux volání skriptu obálky hostovaného na GitHubu nebo ručně stáhněte a nainstalujte agenta. | 
+|Virtuální počítač Azure| -Log Analytics virtuálního počítače rozšíření pro [Windows](../../virtual-machines/extensions/oms-windows.md) nebo [Linux](../../virtual-machines/extensions/oms-linux.md) pomocí rozhraní příkazového řádku Azure nebo pomocí šablony Azure Resource Manageru<br>- [ručně z Azure Portal](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json)<br>[Automatické zřizování - Azure Security Center](../../security-center/security-center-enable-data-collection.md)| – Rozšíření nainstaluje agenta Log Analytics na virtuální počítače Azure a zaregistruje je do existujícího pracovního prostoru Azure Monitor.<br>– Azure Security Center můžou zřídit agenta Log Analytics na všech podporovaných virtuálních počítačích Azure a všech nově vytvořených, pokud ji povolíte pro monitorování ohrožení zabezpečení a hrozeb. Pokud je tato možnost povolená, všechny nové nebo existující virtuální počítače bez nainstalovaného agenta budou zřízené.|
+| Hybridní počítač s Windows|- [Ruční instalace](agent-windows.md)<br>- [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [Šablony Resource Manageru pomocí služby Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |Nainstalujte agenta Microsoft Monitoring Agent z příkazového řádku nebo pomocí automatizované metody, jako je například Azure Automation DSC, [Configuration Manager](https://docs.microsoft.com/configmgr/apps/deploy-use/deploy-applications)nebo se šablonou Azure Resource Manager, pokud jste nasadili Microsoft Azure Stack ve svém datovém centru.| 
+| Hybridní počítač s Linuxem| [Ruční instalace](../../azure-monitor/learn/quick-collect-linux-computer.md)|Instalace agenta pro Linux volání skript obálky hostovaná na Githubu. | 
 | System Center Operations Manager|[Integrace Operations Manageru s Log Analytics](om-agents.md) | Umožňuje konfigurovat integraci mezi protokoly Operations Manager a Azure Monitor a předávat shromážděná data z počítačů s Windows, která se vytvářejí do skupiny pro správu.|  
 
 ## <a name="next-steps"></a>Další kroky

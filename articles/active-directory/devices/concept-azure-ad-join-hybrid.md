@@ -1,6 +1,6 @@
 ---
-title: Co je hybridní služby Azure AD připojené zařízení?
-description: Zjistěte, jak Správa identit zařízení vám mohou pomoci při správě zařízení, která mají přístup k prostředkům ve vašem prostředí.
+title: Co je zařízení připojené k hybridní službě Azure AD?
+description: Přečtěte si, jak vám Správa identit zařízení může pomáhat při správě zařízení, která přistupují k prostředkům ve vašem prostředí.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c57180ba10322cb790c05b3f8f48043ca08b545
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 15cdaba7d63d72aab25757e7ba6f5eadc48e026a
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462743"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512245"
 ---
 # <a name="hybrid-azure-ad-joined-devices"></a>Hybridní zařízení připojená k Azure AD
 
@@ -25,45 +25,45 @@ Už více než deset let využívá řada organizací připojení k doméně mí
 - Umožnit IT oddělením spravovat pracovní zařízení z centrálního umístění.
 - Umožnit uživatelům přihlašovat se ke svým zařízením pomocí svých pracovních nebo školních účtů Active Directory.
 
-Organizace využívající místní prostředí se při zřizování zařízení obvykle spoléhají na metody vytváření imagí a ke správě těchto zařízení často využívají **System Center Configuration Manager (SCCM)** nebo **zásady skupiny**.
+Organizace s místními nároky obvykle při zřizování zařízení spoléhají na metody vytváření imagí a často k jejich správě používají **Configuration Manager** nebo **Zásady skupiny (GP)** .
 
-Pokud se ve vašem prostředí využívá AD a také chcete využít možnosti, které poskytuje Azure Active Directory, můžete implementovat hybridní zařízení připojená k Azure AD. Tato zařízení jsou zařízení, která jsou připojená k vaší místní Active Directory a zaregistrované v Azure Active Directory.
+Pokud se ve vašem prostředí využívá AD a také chcete využít možnosti, které poskytuje Azure Active Directory, můžete implementovat hybridní zařízení připojená k Azure AD. Tato zařízení jsou zařízení, která jsou připojená k vaší místní službě Active Directory a zaregistrovaná ve vašem Azure Active Directory.
 
 |   | Připojení k hybridní službě Azure AD |
 | --- | --- |
-| **Definice** | Připojené k místní AD a Azure AD, které vyžadují účet organizace pro přihlášení k zařízení |
-| **Primární cílovou skupinu** | Vhodná pro hybridní organizace se stávající místní infrastrukturu AD |
-|   | Platí pro všechny uživatele v organizaci |
+| **Definice** | Připojeno k místní službě AD a službě Azure AD, která vyžaduje účet organizace pro přihlášení k zařízení |
+| **Primární cílová skupina** | Vhodné pro hybridní organizace se stávající místní infrastrukturou AD |
+|   | Platí pro všechny uživatele v organizaci. |
 | **Vlastnictví zařízení** | Organizace |
-| **Operační systémy** | Windows 10, 8.1 a 7 |
-|   | Windows Server 2008/R2, 2012/R2 2016 a 2019 |
+| **Operační systémy** | Windows 10, 8,1 a 7 |
+|   | Windows Server 2008/R2, 2012/R2, 2016 a 2019 |
 | **Zřizování** | Windows 10, Windows Server 2016/2019 |
-|   | Připojení k doméně pomocí IT a automatické spojení přes Azure AD Connect nebo služby AD FS config |
-|   | Připojení k doméně Windows Autopilotu a automatické spojení prostřednictvím konfigurace služby Azure AD Connect nebo služby AD FS |
-|   | Windows 8.1, Windows 7, Windows Server 2012 R2, Windows Server 2012 a Windows Server 2008 R2 - vyžadují MSI |
-| **Možnosti přihlášení zařízení** | Organizační účty pomocí: |
+|   | Připojení k doméně a automatické spojení prostřednictvím Azure AD Connect nebo konfigurace ADFS |
+|   | Připojení k doméně pomocí autopilotu Windows a automatické spojení prostřednictvím Azure AD Connect nebo konfigurace ADFS |
+|   | Windows 8.1, Windows 7, Windows Server 2012 R2, Windows Server 2012 a Windows Server 2008 R2 – vyžadovat MSI |
+| **Možnosti přihlášení zařízení** | Účty organizace pomocí: |
 |   | Heslo |
 |   | Windows Hello pro firmy pro Win10 |
 | **Správa zařízení** | Zásady skupiny |
-|   | Samostatný System Center Configuration Manager nebo spolusprávy v Microsoft Intune |
-| **Klíčové funkce** | Jednotné přihlašování do cloudových a místních prostředků |
-|   | Podmíněný přístup prostřednictvím připojení k doméně nebo přes Intune, pokud společně spravovat. |
-|   | Samoobslužné resetování hesla a Windows Hello PIN kód resetovat na zamykací obrazovce |
-|   | Enterprise State Roaming v zařízení |
+|   | Configuration Manager samostatnou nebo spolusprávou Microsoft Intune |
+| **Klíčové funkce** | Jednotné přihlašování pro cloudové i místní prostředky |
+|   | Podmíněný přístup prostřednictvím připojení k doméně nebo prostřednictvím Intune, pokud se spoluspravuje |
+|   | Samoobslužné resetování hesla a Resetování PIN kódu Windows Hello na zamykací obrazovce |
+|   | Enterprise State Roaming napříč zařízeními |
 
 ![Hybridní zařízení připojená k Azure AD](./media/concept-azure-ad-join-hybrid/azure-ad-hybrid-joined-device.png)
 
 ## <a name="scenarios"></a>Scénáře
 
-Použití služby Azure AD hybridní zařízení připojená k pokud:
+Použijte hybridní zařízení připojená k Azure AD, pokud:
 
 - Máte na těchto zařízeních nasazené aplikace Win32, které se spoléhají na strojové ověřování v Active Directory.
-- Chcete dál používat zásady skupiny pro správu konfigurace zařízení.
-- Chcete pokračovat v používání existujícího řešení pro zpracování obrázků k nasazení a konfigurace zařízení.
-- Musí podporovat 7 Windows nižší úrovně a zařízení s Windows 8.1 kromě Windows 10
+- Chcete pokračovat v používání Zásady skupiny ke správě konfigurace zařízení.
+- Chcete dál používat stávající řešení pro vytváření imagí k nasazení a konfiguraci zařízení.
+- Kromě Windows 10 musíte podporovat i zařízení s Windows 7 a 8,1 nižší úrovně.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Plánování implementace připojení k hybridní službě Azure AD](hybrid-azuread-join-plan.md)
-- [Správa identit zařízení pomocí webu Azure portal](device-management-azure-portal.md)
+- [Správa identit zařízení pomocí Azure Portal](device-management-azure-portal.md)
 - [Správa zastaralých zařízení ve službě Azure AD](manage-stale-devices.md)

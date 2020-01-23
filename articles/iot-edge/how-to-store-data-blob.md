@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 12c5bf66de966faf8dc31c7265fdfb0180a95323
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bea00f429f31f2be62ee6a9c00f88873c595d94c
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970830"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509814"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Ukládání dat na hraničních zařízeních pomocí Azure Blob Storage v IoT Edge
 
@@ -85,7 +85,6 @@ Název tohoto nastavení je `deviceToCloudUploadProperties`. Pokud používáte 
 | storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Umožňuje zadat názvy kontejnerů, které chcete nahrát do Azure. Tento modul umožňuje zadat název zdrojového i cílového kontejneru. Pokud nezadáte název cílového kontejneru, automaticky se mu přiřadí název kontejneru jako `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>`. Můžete vytvořit řetězce šablon pro název cílového kontejneru, podívejte se do sloupce možné hodnoty. <br>*% h-> IoT Hub název (3-50 znaků). <br>*% d – > IoT Edge ID zařízení (1 až 129 znaků). <br>*% m-> název modulu (1 až 64 znaků). <br>*% c-> název zdrojového kontejneru (3 až 63 znaků). <br><br>Maximální velikost názvu kontejneru je 63 znaků a při automatickém přiřazování názvu cílového kontejneru, pokud velikost kontejneru překročí 63 znaků, se všechny oddíly (IoTHubName, IotEdgeDeviceID, Module, SourceContainerName) oříznou na 15. písmena. <br><br> Proměnná prostředí: `deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target=<targetName>` |
 | deleteAfterUpload | Hodnota TRUE, false | Nastavit na `false` ve výchozím nastavení. Pokud je nastavená na `true`, budou data po dokončení nahrávání do cloudového úložiště automaticky odstraňovat. <br><br> **Upozornění**: Pokud používáte doplňovací objekty blob, bude toto nastavení po úspěšném nahrání odstranit doplňovací objekty BLOB z místního úložiště a jakékoli budoucí operace připojení bloku do těchto objektů BLOB selžou. Toto nastavení používejte opatrně, nepovolujte tuto možnost, pokud vaše aplikace provádí zřídka připojené operace nebo nepodporuje průběžné operace připojení.<br><br> Proměnná prostředí: `deviceToCloudUploadProperties__deleteAfterUpload={false,true}`. |
 
-
 ### <a name="deviceautodeleteproperties"></a>deviceAutoDeleteProperties
 
 Název tohoto nastavení je `deviceAutoDeleteProperties`. Pokud používáte simulátor IoT Edge, nastavte hodnoty na související proměnné prostředí pro tyto vlastnosti, které najdete v části vysvětlení.
@@ -97,6 +96,7 @@ Název tohoto nastavení je `deviceAutoDeleteProperties`. Pokud používáte sim
 | retainWhileUploading | Hodnota TRUE, false | Ve výchozím nastavení je nastavená na `true`a při vypršení platnosti deleteAfterMinutes zachová objekt BLOB během nahrávání do cloudového úložiště. Můžete ho nastavit na `false` a tato data budou odstraněna, jakmile vyprší platnost deleteAfterMinutes. Poznámka: aby tato vlastnost fungovala uploadOn, měla by být nastavená na true.  <br><br> **Upozornění**: Pokud používáte doplňovací objekty blob, toto nastavení odstraní doplňovací objekty BLOB z místního úložiště, jakmile vyprší platnost hodnoty, a jakékoli budoucí operace připojení bloku do těchto objektů BLOB se nezdaří. Možná budete chtít zajistit, aby byla hodnota vypršení platnosti dostatečně velká pro očekávanou frekvenci operací připojení provedených vaší aplikací.<br><br> Proměnná prostředí: `deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
 
 ## <a name="using-smb-share-as-your-local-storage"></a>Použití sdílené složky SMB jako místního úložiště
+
 Pokud nasadíte kontejner Windows tohoto modulu na hostitele Windows, můžete jako cestu k místnímu úložišti zadat sdílenou složku SMB.
 
 Ujistěte se, že sdílená složka SMB a zařízení IoT jsou ve vzájemně důvěryhodných doménách.
@@ -104,48 +104,58 @@ Ujistěte se, že sdílená složka SMB a zařízení IoT jsou ve vzájemně dů
 Můžete spustit příkaz `New-SmbGlobalMapping` PowerShellu pro místní mapování sdílené složky SMB na zařízení IoT s Windows.
 
 Níže jsou uvedené kroky konfigurace:
+
 ```PowerShell
 $creds = Get-Credential
 New-SmbGlobalMapping -RemotePath <remote SMB path> -Credential $creds -LocalPath <Any available drive letter>
 ```
-Příklad: <br>
-`$creds = Get-Credential` <br>
-`New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G:`
 
-Tento příkaz použije přihlašovací údaje k ověření u vzdáleného serveru SMB. Pak namapujte cestu vzdálené sdílené složky na G: písmeno jednotky (může to být jakékoli jiné dostupné písmeno jednotky). Zařízení IoT teď má datový svazek namapovaný na cestu na jednotce G:. 
+Například:
+
+```powershell
+$creds = Get-Credential
+New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G:
+```
+
+Tento příkaz použije přihlašovací údaje k ověření u vzdáleného serveru SMB. Pak namapujte cestu vzdálené sdílené složky na G: písmeno jednotky (může to být jakékoli jiné dostupné písmeno jednotky). Zařízení IoT teď má datový svazek namapovaný na cestu na jednotce G:.
 
 Zajistěte, aby uživatel v zařízení IoT mohl číst a zapisovat do vzdálené sdílené složky protokolu SMB.
 
-Pro nasazení může být hodnota `<storage mount>` **G:/ContainerData: C:/BlobRoot**. 
+Pro nasazení může být hodnota `<storage mount>` **G:/ContainerData: C:/BlobRoot**.
 
 ## <a name="granting-directory-access-to-container-user-on-linux"></a>Udělení přístupu k adresáři uživateli kontejneru v systému Linux
+
 Pokud jste v možnostech vytváření pro kontejnery pro Linux používali [připojení svazku](https://docs.docker.com/storage/volumes/) pro úložiště, nemusíte provádět žádné další kroky, ale pokud jste použili [připojení k vazbě](https://docs.docker.com/storage/bind-mounts/) , jsou tyto kroky nezbytné ke správnému spuštění služby.
 
-V rámci principu minimálního oprávnění pro omezení oprávnění k přístupu pro uživatele, aby nedošlo k minimálnímu množství oprávnění, které potřebují k provedení své práce, obsahuje tento modul uživatele (název: absie, ID: 11000) a skupinu uživatelů (název: absie, ID: 11000). Pokud je kontejner spuštěný jako **kořen** (výchozí uživatel je **kořenový**), bude naše služba spuštěná jako uživatel s nízkými oprávněními **absie** . 
+V rámci principu minimálního oprávnění pro omezení oprávnění k přístupu pro uživatele, aby nedošlo k minimálnímu množství oprávnění, které potřebují k provedení své práce, obsahuje tento modul uživatele (název: absie, ID: 11000) a skupinu uživatelů (název: absie, ID: 11000). Pokud je kontejner spuštěný jako **kořen** (výchozí uživatel je **kořenový**), bude naše služba spuštěná jako uživatel s nízkými oprávněními **absie** .
 
 Díky tomuto chování se konfigurace oprávnění v cestě hostitele váže pro správné fungování služby, jinak služba nebude fungovat s chybami odepření přístupu. Cesta, která se používá ve vazbě adresáře, musí být přístupná uživatelem kontejneru (například: absie 11000). Uživateli kontejneru můžete udělit přístup k adresáři spuštěním příkazů níže na hostiteli:
 
 ```terminal
-sudo chown -R 11000:11000 <blob-dir> 
-sudo chmod -R 700 <blob-dir> 
+sudo chown -R 11000:11000 <blob-dir>
+sudo chmod -R 700 <blob-dir>
 ```
 
-Příklad:<br>
-`sudo chown -R 11000:11000 /srv/containerdata` <br>
-`sudo chmod -R 700 /srv/containerdata`
+Například:
 
+```terminal
+sudo chown -R 11000:11000 /srv/containerdata
+sudo chmod -R 700 /srv/containerdata
+```
 
 Pokud potřebujete službu spustit jako jiný uživatel než **absie**, můžete v manifestu nasazení zadat vlastní ID uživatele v createOptions pod vlastností "User". V takovém případě je nutné použít výchozí ID nebo ID kořenové skupiny `0`.
 
 ```json
-"createOptions": { 
-  "User": "<custom user ID>:0" 
-} 
+"createOptions": {
+  "User": "<custom user ID>:0"
+}
 ```
+
 Nyní Udělte uživateli kontejneru přístup k adresáři.
+
 ```terminal
-sudo chown -R <user ID>:<group ID> <blob-dir> 
-sudo chmod -R 700 <blob-dir> 
+sudo chown -R <user ID>:<group ID> <blob-dir>
+sudo chmod -R 700 <blob-dir>
 ```
 
 ## <a name="configure-log-files"></a>Konfigurace souborů protokolu
@@ -158,11 +168,11 @@ Můžete použít název účtu a klíč účtu, že jste nakonfigurovali pro mo
 
 Zadejte zařízení IoT Edge jako koncový bod objektu blob pro jakékoli úložiště požadavků, které můžete provádět. Je možné [vytvoření připojovacího řetězce pro koncový bod explicitního úložiště](../storage/common/storage-configure-connection-string.md#create-a-connection-string-for-an-explicit-storage-endpoint) pomocí informací o zařízení IoT Edge a název účtu, který jste nakonfigurovali.
 
-- U modulů, které jsou nasazené na stejném zařízení, jako je spuštěná služba Azure Blob Storage v IoT Edge modulu, je koncový bod objektu BLOB: `http://<module name>:11002/<account name>`.
-- Pro moduly nebo aplikace běžící na jiném zařízení musíte zvolit správný koncový bod pro vaši síť. V závislosti na nastavení sítě vyberte formát koncového bodu tak, aby přenos dat z externího modulu nebo aplikace mohl kontaktovat zařízení, na kterém běží Azure Blob Storage v modulu IoT Edge. Koncový bod objektu BLOB pro tento scénář je jedním z těchto:
-  - `http://<device IP >:11002/<account name>`
-  - `http://<IoT Edge device hostname>:11002/<account name>`
-  - `http://<fully qualified domain name>:11002/<account name>`
+* U modulů, které jsou nasazené na stejném zařízení, jako je spuštěná služba Azure Blob Storage v IoT Edge modulu, je koncový bod objektu BLOB: `http://<module name>:11002/<account name>`.
+* Pro moduly nebo aplikace běžící na jiném zařízení musíte zvolit správný koncový bod pro vaši síť. V závislosti na nastavení sítě vyberte formát koncového bodu tak, aby přenos dat z externího modulu nebo aplikace mohl kontaktovat zařízení, na kterém běží Azure Blob Storage v modulu IoT Edge. Koncový bod objektu BLOB pro tento scénář je jedním z těchto:
+  * `http://<device IP >:11002/<account name>`
+  * `http://<IoT Edge device hostname>:11002/<account name>`
+  * `http://<fully qualified domain name>:11002/<account name>`
 
 ## <a name="azure-blob-storage-quickstart-samples"></a>Ukázky pro rychlý Start pro Azure Blob Storage
 
@@ -202,7 +212,7 @@ Pomocí [Průzkumník služby Azure Storage](https://azure.microsoft.com/feature
 
 ## <a name="supported-storage-operations"></a>Operace úložiště podporuje
 
-Moduly BLOB Storage v IoT Edge používají sady Azure Storage SDK a jsou konzistentní s verzí 2017-04-17 rozhraní API Azure Storage pro koncové body objektů blob bloku. 
+Moduly BLOB Storage v IoT Edge používají sady Azure Storage SDK a jsou konzistentní s verzí 2017-04-17 rozhraní API Azure Storage pro koncové body objektů blob bloku.
 
 Vzhledem k tomu, že služba Azure Blob Storage v IoT Edge nepodporuje všechny operace Azure Blob Storage, v této části je uveden seznam jejich stavů.
 
@@ -271,6 +281,7 @@ Nepodporovaný:
 * Připojit blok z adresy URL
 
 ## <a name="event-grid-on-iot-edge-integration"></a>Event Grid při integraci IoT Edge
+
 > [!CAUTION]
 > Integrace s Event Grid v IoT Edge je ve verzi Preview.
 

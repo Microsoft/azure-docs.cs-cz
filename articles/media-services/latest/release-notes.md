@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: juliako
-ms.openlocfilehash: ecc2a8236b51013895bfe831d6785ff3e6925906
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 03674d8fb42d56d6b4b40d8111c1a7bbce7c312b
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979685"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514482"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Zpráva k vydání verze Azure Media Services V3
 
@@ -61,6 +61,7 @@ Přidání podpory pro následující nové doporučené partnerské kodéry pro
 - [Restream.io](https://restream.io/)
 
 ### <a name="file-encoding-enhancements"></a>Vylepšení kódování souborů
+
 - Nyní je k dispozici nová předvolba kódování s podporou obsahu. Vytváří sadu rychlostmi zarovnaných na skupinu GOP pomocí kódování s ohledem na obsah. Vzhledem k jakémukoli vstupnímu obsahu služba provádí počáteční odlehčenou analýzu vstupního obsahu. Tyto výsledky používá k určení optimálního počtu vrstev, vhodné přenosové rychlosti a nastavení rozlišení pro doručování pomocí adaptivního streamování. Tato předvolba je zvláště platná pro videa s nízkou složitostí a středními složitostmi, kde výstupní soubory jsou nižší, ale kvalita, která uživatelům nabízí dobré prostředí. Výstup bude obsahovat soubory MP4 se zakládaným videem a zvukem. Další informace najdete v tématu o [otevřených specifikacích rozhraní API](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json).
 - Vylepšený výkon a multithreading pro opětovné Sizer v Media Encoder Standard. Za určitých podmínek by měl zákazník vidět zvýšení výkonu mezi 5-40% kódováním VOD. Obsah s nízkou složitostí kódovaný do více přenosových rychlostí uvidí nejvyšší zvýšení výkonu. 
 - Kódování standard teď při použití nastavení skupinu GOP založeného na čase udržuje regulární skupinu GOP tempo pro obsah VFR (Variable snímkové frekvence) během kódování VOD.  To znamená, že zákazník, který posílá smíšený obsah snímků, který se mezi 15-30 FPS může zobrazit například, by měl vidět normální skupinu GOP vzdálenosti vypočítané na výstupu pro streamování souborů MP4 s adaptivní přenosovou rychlostí. Tím se zvýší schopnost plynule přepínat mezi stopami při doručování přes HLS nebo POMLČKy. 
@@ -82,7 +83,7 @@ Media Services V3 oznamuje verzi Preview 24 hodin x 365 dní živého lineární
 
 #### <a name="deprecation-of-media-processors"></a>Vyřazení procesorů médií
 
-Oznamujeme vyřazení *Azure Media Indexer* a *Azure Media Indexer 2 ve verzi Preview*. Procesor [Azure Media Indexer](../previous/media-services-index-content.md) médií bude vyřazení od 1. října 2020. Od 1. ledna 2020 budou zpracovatelské procesory [Azure Media Indexer 2 ve verzi Preview](../previous/media-services-process-content-with-indexer2.md) vyřazené. [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) nahrazuje tyto starší verze procesorů médií.
+Oznamujeme vyřazení *Azure Media Indexer* a *Azure Media Indexer 2 ve verzi Preview*. Informace o datech vyřazení najdete v tématu tyto [starší součásti](../previous/legacy-components.md) . [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) nahrazuje tyto starší verze procesorů médií.
 
 Další informace najdete v tématu [migrace z Azure Media Indexer a Azure Media Indexer 2 na Azure Media Services video indexer](../previous/migrate-indexer-v1-v2.md).
 
@@ -100,7 +101,7 @@ Další informace najdete v tématu [cloudy a oblasti, ve kterých existuje Medi
 
 #### <a name="deprecation-of-media-processors"></a>Vyřazení procesorů médií
 
-Oznamujeme vyřazení mediálních procesorů *Windows Azure Media Encoder* (WAME) a *Azure Media Encoder* (ázev), které se v 31. březnu 2020 vyřadí.
+Oznamujeme, že vyřadíme nepoužívané procesory *Windows Azure Media Encoder* (WAME) a *Azure Media Encoder* (ázev), které jsou vyřazené. Informace o datech vyřazení najdete v tématu tyto [starší součásti](../previous/legacy-components.md) .
 
 Podrobnosti najdete v článku [migrace WAME do Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) a [migrace do Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335).
  

@@ -3,12 +3,12 @@ title: Běžné otázky – zjišťování, hodnocení a analýza závislostí v
 description: Získejte odpovědi na běžné dotazy týkající se zjišťování, hodnocení a analýzy závislostí v Azure Migrate.
 ms.topic: conceptual
 ms.date: 12/29/2019
-ms.openlocfilehash: 5afda40f4953b8eb51a757034661eb5a3349cd10
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 0132563072ed04a52e4937da7a8df69196f1a91f
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292361"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513282"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>Běžné dotazy týkající se zjišťování, hodnocení a analýzy závislostí
 
@@ -99,7 +99,7 @@ Ne, vizualizace závislosti se nedá exportovat. Azure Migrate však používá 
 
 Pomocí tohoto [skriptu nainstalujte agenta závislostí](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples). Postupujte podle těchto [pokynů a nainstalujte MMA](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) pomocí příkazového řádku nebo automatizace. Pro MMA použijte [Tento skript](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
 
-Kromě skriptů můžete k nasazení agentů použít taky nástroje pro nasazení, jako je System Center Configuration Manager a [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) .
+Kromě skriptů můžete k nasazení agentů použít taky nástroje pro nasazení, jako je Microsoft Endpoint Configuration Manager a [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) .
 
 
 ## <a name="what-operating-systems-does-mma-support"></a>Jaké operační systémy MMA podporuje?

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 12/16/2019
-ms.openlocfilehash: 96e7cbd09873192d8b73b57cb2b46bf5b7679742
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 3c921bda1b839ee18a91b28f875ba7c84c0dd944
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263451"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76515033"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a informace o konfiguraci Azure Logic Apps
 
@@ -160,7 +160,7 @@ Některé operace konektoru provádějí asynchronní volání nebo naslouchán�
 | Name (Název) | Poznámky |
 |------|-------|
 | Omezení pro vyhodnocení výrazu | 131 072 znaků | `@concat()`, `@base64()`, `@string()` výrazy nemohou být delší než tento limit. |
-| Omezení počtu znaků adresy URL žádosti | 32 znaků |
+| Omezení počtu znaků adresy URL žádosti | 16 384 znaků |
 |||
 
 #### <a name="retry-policy"></a>Zásady opakování

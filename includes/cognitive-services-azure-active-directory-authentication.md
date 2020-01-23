@@ -4,12 +4,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/23/2019
-ms.openlocfilehash: fb3795ff807a87e9bac4d95400f5e446c68d1e4d
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: b08ffa79e012344cad6cf72df98a0f1ba5240ce0
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73897479"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76508539"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Ověřování pomocí Azure Active Directory
 
@@ -25,10 +25,10 @@ V následujících částech budete pomocí prostředí Azure Cloud Shell nebo A
 
 Prvním krokem je vytvoření vlastní subdomény. Pokud chcete použít existující prostředek Cognitive Services, který nemá název vlastní subdomény, postupujte podle pokynů v [Cognitive Services vlastní subdomény](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains#how-does-this-impact-existing-resources) , abyste pro svůj prostředek povolili vlastní subdoménu.
 
-1. Začněte otevřením Azure Cloud Shell. pak [Vyberte předplatné](https://docs.microsoft.com/powershell/module/servicemanagement/azure/select-azuresubscription?view=azuresmps-4.0.0#description):
+1. Začněte otevřením Azure Cloud Shell. Pak [Vyberte předplatné](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext?view=azps-3.3.0):
 
    ```azurecli-interactive
-   Select-AzureSubscription -SubscriptionName <YOUR_SUBCRIPTION>
+   Set-AzContext -SubscriptionName <SubscriptionName>
    ```
 
 2. Dále [vytvořte prostředek Cognitive Services](https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0) s vlastní subdoménou. Název subdomény musí být globálně jedinečný a nesmí obsahovat speciální znaky, například: ".", "!", ",".

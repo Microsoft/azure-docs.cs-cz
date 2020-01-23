@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 85281088692d1c4b0245eb9d069519198f8f315d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 934fe8271796ed6196c9e50a0eddd5d7de3d8432
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919337"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511888"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Referenční příručka operací správy ověřování Azure Active Directory
 
@@ -127,8 +127,8 @@ Podobně jako uživatel ve vaší organizaci je zařízení základní identitou
 
 Tento cíl můžete provést tak, že navedete identity zařízení a spravujete je ve službě Azure AD pomocí jedné z následujících metod:
 
-- Organizace můžou pomocí [Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune) spravovat zařízení a vystavovat zásady dodržování předpisů, ověřit stav zařízení a nastavit zásady podmíněného přístupu na základě toho, jestli zařízení dodržuje předpisy. Microsoft Intune může spravovat zařízení se systémem iOS, stolní počítače Mac (prostřednictvím integrace JAMF), desktopy Windows (nativně pomocí správy mobilních zařízení pro Windows 10 a spolusprávu pomocí Microsoft Endpoint Manageru/System Center Configuration Manager) a mobilních zařízení s Androidem.
-- [Připojení k hybridní službě Azure AD](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-managed-domains) poskytuje správu pomocí zásad skupiny, System Center Configuration Manager nebo Microsoft Endpoint Manageru v prostředí s počítači připojenými k doméně služby Active Directory. Organizace můžou nasadit spravované prostředí prostřednictvím KOSMETICE nebo PTA s bezproblémové jednotné přihlašování. Uvedení zařízení do Azure AD maximalizuje produktivitu uživatelů prostřednictvím jednotného přihlašování napříč vaším cloudem a místními prostředky a zároveň vám umožní zabezpečit přístup k vašim cloudovým a místním prostředkům pomocí  [podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) současně.
+- Organizace můžou pomocí [Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune) spravovat zařízení a vystavovat zásady dodržování předpisů, ověřit stav zařízení a nastavit zásady podmíněného přístupu na základě toho, jestli zařízení dodržuje předpisy. Microsoft Intune může spravovat zařízení se systémem iOS, stolní počítače Mac (prostřednictvím integrace JAMF), desktopy Windows (nativně pomocí správy mobilních zařízení pro Windows 10 a spolusprávu pomocí služby Microsoft Endpoint Configuration Manager) a mobilních zařízení s Androidem.
+- [Připojení k hybridní službě Azure AD](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-managed-domains) poskytuje správu pomocí zásad skupiny nebo Microsoft Endpoint Configuration Manager v prostředí s počítači připojenými k doméně služby Active Directory. Organizace můžou nasadit spravované prostředí prostřednictvím KOSMETICE nebo PTA s bezproblémové jednotné přihlašování. Uvedení zařízení do Azure AD maximalizuje produktivitu uživatelů prostřednictvím jednotného přihlašování napříč vaším cloudem a místními prostředky a zároveň vám umožní zabezpečit přístup k vašim cloudovým a místním prostředkům pomocí  [podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) současně.
 
 Pokud máte zařízení s Windows připojená k doméně, která nejsou registrovaná v cloudu, nebo zařízení s Windows připojená k doméně, která jsou zaregistrovaná v cloudu, ale bez zásad podmíněného přístupu, měli byste zaregistrovat neregistrovaná zařízení a v obou případech [použít hybridní službu Azure AD JOIN jako ovládací prvek](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices) v zásadách podmíněného přístupu.
 

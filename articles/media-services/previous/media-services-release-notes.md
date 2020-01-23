@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: d4c8dd4b3a53d484d5240f3514d171231fc93ae0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5b1daab724d979206983ee758760790967abc06d
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74968506"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513384"
 ---
 # <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
 
@@ -50,15 +50,17 @@ Informace o historii verze REST API Media Services najdete v části [Odkaz na A
 
 ### <a name="deprecation-of-media-processors"></a>Vyřazení procesorů médií
 
-Oznamujeme vyřazení *Azure Media Indexer* a *Azure Media Indexer 2 ve verzi Preview*. Procesor [Azure Media Indexer](media-services-index-content.md) médií bude vyřazení od 1. října 2020. Od 1. ledna 2020 budou zpracovatelské procesory [Azure Media Indexer 2 ve verzi Preview](media-services-process-content-with-indexer2.md) vyřazené. [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) nahrazuje tyto starší verze procesorů médií.
+Oznamujeme vyřazení *Azure Media Indexer* a *Azure Media Indexer 2 ve verzi Preview*. [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) nahrazuje tyto starší verze procesorů médií.
 
-Další informace najdete v tématu [migrace z Azure Media Indexer a Azure Media Indexer 2 na Azure Media Services video indexer](migrate-indexer-v1-v2.md).
+Informace o datech vyřazení najdete v tématu tyto [starší součásti](legacy-components.md) .
+
+Přečtěte si také téma [migrace z Azure Media Indexer a Azure Media Indexer 2 na Azure Media Services video indexer](migrate-indexer-v1-v2.md).
 
 ## <a name="august-2019"></a>Srpen 2019
 
 ### <a name="deprecation-of-media-processors"></a>Vyřazení procesorů médií
 
-Oznamujeme vyřazení mediálních procesorů *Windows Azure Media Encoder* (WAME) a *Azure Media Encoder* (ázev), které se v 31. březnu 2020 vyřadí.
+Oznamujeme vyřazení mediálních procesorů *Windows Azure Media Encoder* (WAME) a *Azure Media Encoder* (ázev), které se na 1. březnu 2020 zařadí.
 
 Podrobnosti najdete v článku [migrace WAME do Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) a [migrace do Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335).
 

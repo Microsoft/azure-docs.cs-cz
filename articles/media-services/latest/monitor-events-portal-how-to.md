@@ -1,6 +1,6 @@
 ---
-title: Sledování událostí služby Azure Media Services pomocí služby Event Grid pomocí portálu | Dokumentace Microsoftu
-description: Tento článek ukazuje, jak se přihlásit k odběru Event gridu kvůli monitorování události služby Azure Media Services.
+title: Monitorování událostí Azure Media Services s využitím Event Grid na portálu
+description: Tento článek popisuje, jak se přihlásit k odběru Event Grid, aby bylo možné monitorovat události Azure Media Services.
 services: media-services
 documentationcenter: na
 author: Juliako
@@ -13,20 +13,20 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 10/15/2018
+ms.date: 01/21/2020
 ms.author: juliako
-ms.openlocfilehash: d4592c93cb7969c45a107d7365a1b9dabf11f412
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 18503e64dc6f38daab61599153cd0e0fb6fadb20
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60326506"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509219"
 ---
-# <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>Vytvořit a monitorovat události služby Media Services pomocí služby Event Grid pomocí webu Azure portal
+# <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>Vytváření a sledování událostí Media Services pomocí Event Grid pomocí Azure Portal
 
-Azure Event Grid je služba zpracování událostí pro cloud. Tato služba využívá [odběry událostí](../../event-grid/concepts.md#event-subscriptions) pro směrování zpráv událostí pro předplatitele. Media Services události obsahují všechny informace, které je potřeba reagovat na změny ve vašich datech. Události služby Media Services můžete identifikovat, protože vlastnost Typ události začíná řetězcem "Microsoft.Media.". Další informace najdete v tématu [schémata událostí služby Media Services](media-services-event-schemas.md).
+Azure Event Grid je služba zpracování událostí pro cloud. Tato služba používá [odběry událostí](../../event-grid/concepts.md#event-subscriptions) ke směrování zpráv událostí předplatitelům. Media Services události obsahují všechny informace, které potřebujete k reakci na změny ve vašich datech. Můžete identifikovat událost Media Services, protože vlastnost eventType začíná na "Microsoft. Media". Další informace najdete v tématu [Media Services schématech událostí](media-services-event-schemas.md).
 
-V tomto článku použijete pro přihlášení k odběru událostí účtu Azure Media Services na webu Azure portal. Pak spustí událostí, abyste viděli výsledek. Obvykle odesíláte události do koncového bodu, který data události zpracuje a provede akce. V článku budeme události odesílat do webové aplikace, která shromažďuje a zobrazuje zprávy.
+V tomto článku použijete Azure Portal k přihlášení k odběru událostí pro účet Azure Media Services. Potom můžete aktivovat události pro zobrazení výsledku. Obvykle odesíláte události do koncového bodu, který data události zpracuje a provede akce. V článku odesílajíme události do webové aplikace, která shromažďuje a zobrazuje zprávy.
 
 Až budete hotovi, uvidíte, že se data události odeslala do webové aplikace.
 
@@ -37,7 +37,7 @@ Až budete hotovi, uvidíte, že se data události odeslala do webové aplikace.
 
 ## <a name="create-a-message-endpoint"></a>Vytvoření koncového bodu zpráv
 
-Než se přihlásíte k odběru událostí účtu Media Services, vytvoříme koncový bod pro zprávy události. Koncový bod obvykle provede akce na základě dat události. V tomto článku nasadíte [předem vytvořené webové aplikace](https://github.com/Azure-Samples/azure-event-grid-viewer) , která zobrazuje zprávy o událostech. Nasazené řešení zahrnuje plán služby App Service, webovou aplikaci App Service a zdrojový kód z GitHubu.
+Před přihlášením k odběru událostí pro Media Services účet vytvoříme koncový bod pro zprávu události. Koncový bod obvykle provede akce na základě dat události. V tomto článku nasadíte [předem vytvořenou webovou aplikaci](https://github.com/Azure-Samples/azure-event-grid-viewer) , která zobrazí zprávy o událostech. Nasazené řešení zahrnuje plán služby App Service, webovou aplikaci App Service a zdrojový kód z GitHubu.
 
 1. Vyberte **Nasadit do Azure** a nasaďte řešení do svého předplatného. Na webu Azure Portal zadejte hodnoty pro parametry.
 
@@ -45,27 +45,27 @@ Než se přihlásíte k odběru událostí účtu Media Services, vytvoříme ko
 
 1. Dokončení nasazení může trvat několik minut. Po úspěšném nasazení si webovou aplikaci prohlédněte, abyste se ujistili, že funguje. Ve webovém prohlížeči přejděte na: `https://<your-site-name>.azurewebsites.net`
 
-Pokud přejdete na web "Prohlížeč Azure Event Grid", uvidíte, že ještě nemá žádné události.
+Pokud přepnete na web "Azure Event Grid Viewer", uvidíte, že zatím neobsahuje žádné události.
    
 [!INCLUDE [event-grid-register-provider-portal.md](../../../includes/event-grid-register-provider-portal.md)]
 
-## <a name="subscribe-to-media-services-events"></a>Přihlášení k odběru událostí služby Media Services
+## <a name="subscribe-to-media-services-events"></a>Přihlášení k odběru Media Servicesch událostí
 
 K odběru tématu se přihlašujete, aby služba Event Grid věděla, které události chcete sledovat a kam má tyto události odesílat.
 
-1. Na portálu vyberte svůj účet Media Services a vyberte **události**.
+1. Na portálu vyberte účet Media Services a vyberte **události**.
 1. Pokud chcete do aplikace prohlížeče odesílat události, použijte jako koncový bod webhook. 
 
    ![Výběr webhooku](./media/monitor-events-portal/select-web-hook.png)
 
-1. Odběr událostí je předem hodnotami pro váš účet Media Services. 
-1. Vyberte "Webhook" pro **typ koncového bodu**.
-1. V tomto tématu nezpracováváme a necháváme **odběru pro všechny typy událostí** zaškrtnuto. Však můžete zrušit zaškrtnutí a filtr pro určité typy událostí. 
-1. Klikněte na **vyberte koncový bod** odkaz.
+1. Předplatné události je předem vyplněno hodnotami pro váš účet Media Services. 
+1. Jako **Typ koncového bodu**vyberte Webhook.
+1. V tomto tématu ponecháme **přihlášení k odběru všech zkontrolovaných typů událostí** . Můžete ho ale zrušit a vyfiltrovat pro konkrétní typy událostí. 
+1. Klikněte na odkaz **Vybrat koncový bod** .
 
     Jako koncový bod webhooku zadejte adresu URL vaší webové aplikace a do adresy URL domovské stránky přidejte `api/updates`. 
 
-1. Stisknutím klávesy **potvrďte výběr**.
+1. Stiskněte **potvrdit výběr**.
 1. Stiskněte **Vytvořit**.
 1. Zadejte název vašeho předplatného.
 
@@ -73,19 +73,19 @@ K odběru tématu se přihlašujete, aby služba Event Grid věděla, které ud�
 
 1. Podívejte se na webovou aplikaci znovu a všimněte si, že do ní byla odeslána událost ověření odběru. 
 
-    Služba Event Grid odešle událost ověření, aby koncový bod mohl ověřit, že data události chce přijímat. Koncový bod má nastavení `validationResponse` k `validationCode`. Další informace najdete v tématu [ověřování a zabezpečení služby Event Grid](../../event-grid/security-authentication.md). Můžete zobrazit kód webové aplikace, které chcete zobrazit, jak ho ověří předplatné.
+    Služba Event Grid odešle událost ověření, aby koncový bod mohl ověřit, že data události chce přijímat. Koncový bod musí nastavit `validationResponse` na `validationCode`. Další informace najdete v tématu [ověřování a zabezpečení služby Event Grid](../../event-grid/security-authentication.md). Můžete zobrazit kód webové aplikace, abyste viděli, jak ověřuje předplatné.
 
-Nyní aktivujeme událostí naleznete v tématu jak Služba Event Grid distribuuje zprávu do vašeho koncového bodu.
+Teď spustíme události, které vám pomůžou zjistit, jak Event Grid distribuuje zprávu do koncového bodu.
 
 ## <a name="send-an-event-to-your-endpoint"></a>Odeslání události do koncového bodu
 
-Spuštěním úlohy kódování, mohou aktivovat události pro účet Media Services. Můžete postupovat podle [v tomto rychlém startu](stream-files-dotnet-quickstart.md) kódování souboru a zahájit odesílání událostí. Pokud odebíráte ke všem událostem, zobrazí se obrazovka podobná této:
+Události pro účet Media Services můžete aktivovat spuštěním úlohy kódování. Můžete postupovat podle [tohoto rychlého](stream-files-dotnet-quickstart.md) startu a zakódovat soubor a začít odesílat události. Pokud se přihlásíte k odběru všech událostí, zobrazí se obrazovka podobná této:
 
 > [!TIP]
-> Vyberte ikonu oka a rozbalte data události. Není vhodné aktualizujte stránku, pokud chcete zobrazit všechny události.
+> Vyberte ikonu oka a rozbalte data události. Neaktualizujte stránku, pokud chcete zobrazit všechny události.
 
 ![Zobrazení události odběru](./media/monitor-events-portal/view-subscription-event.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Nahrávání, kódování a streamování](stream-files-tutorial-with-api.md)

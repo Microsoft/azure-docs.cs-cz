@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services – signalizace časované metadata v živém streamování | Microsoft Docs
+title: Azure Media Services – signalizace časované metadata v živém streamování
 description: Tato specifikace popisuje metody pro signalizaci při ingestování a streamování do Azure Media Services, při přijímání a streamování. Zahrnuje podporu pro obecné časované signály metadat (ID3) a také signalizaci SCTE-35 pro vkládání a signalizaci podmínek pro vložení AD a podmínky spojení.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: fd8533ff310e307604e5ce25a4285cc90f3ea4ab
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: e686328464ac88abf28a0a8985d338838abca3d0
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933989"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514234"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Signalizace při živém streamování vyprší metadata 
 
@@ -46,7 +46,7 @@ Tato specifikace popisuje několik režimů, které jsou podporovány Media Serv
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Přerušení reklamy            | Místo nebo bod v čase, kdy je možné naplánovat doručení jedné nebo více reklam. stejné jako možnosti k dispozici a umístění.                                                                                                                     |
 | Služba pro rozhodování AD | externí služba, která určuje, které AD a doby trvání budou zobrazeny uživateli. Služby jsou obvykle poskytovány partnerem a nejsou v oboru pro tento dokument.                                                                    |
-| Informovat                 | Označení času a parametrů nadcházejícího přerušení služby AD. Všimněte si, že hromádky můžou indikovat nedokončený přepínač na přerušení reklamy, čeká na přepnutí na další službu AD v rámci přerušení reklamy a čeká na přepnutí z přerušení reklamy na hlavní obsah.           |
+| informovat                 | Označení času a parametrů nadcházejícího přerušení služby AD. Všimněte si, že hromádky můžou indikovat nedokončený přepínač na přerušení reklamy, čeká na přepnutí na další službu AD v rámci přerušení reklamy a čeká na přepnutí z přerušení reklamy na hlavní obsah.           |
 | Packager            | Azure Media Services "koncový bod streamování" poskytuje dynamické možnosti balení pro POMLČKy a HLS a označuje se jako "balíček" v odvětví multimédií.                                                                              |
 | Čas prezentace   | Čas, kdy se událost prezentuje prohlížeči. Čas představuje moment na časové ose média, který by mohl zobrazit událost v prohlížeči. Například čas prezentace příkazu SCTE-35 splice_info () je splice_time (). |
 | Čas doručení        | Čas, kdy zpráva události dorazí. Čas se obvykle liší od doby prezentace události, protože zprávy o událostech jsou odesílány před dobou prezentace události.                                                    |

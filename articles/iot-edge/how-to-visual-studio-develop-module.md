@@ -8,12 +8,12 @@ ms.author: xshi
 ms.date: 07/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: a94bc4825f70b9858260feaadaeded6c76ba46e2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8c174c5c201aecd83fb343a217c7944d503616c3
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457253"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509288"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Použití sady Visual Studio 2019 k vývoji a ladění modulů pro Azure IoT Edge
 
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak pomocí nástrojů pro Azure IoT Edge pro Visu
   
 ## <a name="prerequisites"></a>Požadavky
 
-Tento článek předpokládá, že používáte počítač nebo virtuální počítač se systémem Windows jako vývojovém počítači. V počítačích s Windows můžete vyvíjet moduly pro Windows nebo Linux. Pro vývoj modulů Windows použijte počítač s Windows, na kterém běží verze 1809/Build 17763 nebo novější. Pokud chcete vyvíjet moduly pro Linux, použijte počítač s Windows, který splňuje [požadavky pro Docker Desktop](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install). 
+Tento článek předpokládá, že používáte počítač nebo virtuální počítač se systémem Windows jako vývojovém počítači. V počítačích s Windows můžete vyvíjet moduly pro Windows nebo Linux. Pro vývoj modulů Windows použijte počítač s Windows, na kterém běží verze 1809/Build 17763 nebo novější. Pokud chcete vyvíjet moduly pro Linux, použijte počítač s Windows, který splňuje [požadavky pro Docker Desktop](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install).
 
 Vzhledem k tomu, že tento článek používá Visual Studio 2019 jako hlavní vývojový nástroj, nainstalujte Visual Studio. Při instalaci sady Visual Studio 2019 se ujistěte, že jste zahrnuli vývoj pro **vývoj** a **desktopy Azure s C++**  úlohami. Můžete [Upravit Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/modify-visual-studio?view=vs-2019) a přidat požadované úlohy.
 

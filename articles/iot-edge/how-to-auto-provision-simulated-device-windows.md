@@ -8,18 +8,18 @@ ms.date: 01/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ad92d4cf0d5b61c778b87114d4be6c23557f8e26
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: ee4f01c3ec57b0cf9e3ecf47254b57be95ea051a
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457140"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510936"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>Vytvoření a zřízení simulovaného IoT Edge zařízení s virtuálním čipem TPM ve Windows
 
-Zařízení Azure IoT Edge se dají automaticky zřídit pomocí [služby Device Provisioning](../iot-dps/index.yml) , stejně jako zařízení, která nejsou povolená přes hranice. Pokud nejste obeznámeni s procesem automatického zřizování, před pokračováním zkontrolujte [Koncepty automatického zřizování](../iot-dps/concepts-auto-provisioning.md) .
+Zařízení Azure IoT Edge může být automatické zřízení pomocí [služby Device Provisioning](../iot-dps/index.yml) stejně jako zařízení, která nejsou povolena edge. Pokud neznáte proces automatického zřizování, přečtěte si [konceptům automatického zřizování](../iot-dps/concepts-auto-provisioning.md) než budete pokračovat.
 
-DPS podporuje ověřování symetrického klíče pro IoT Edge zařízení v individuální registraci a registraci skupin. Pokud při registraci skupiny zjistíte, že možnost "je IoT Edge zařízení" v případě ověření symetrického klíče pravdivá, všechna zařízení, která jsou registrovaná v této skupině registrací, se označí jako IoT Edge zařízení. 
+DPS podporuje ověřování symetrického klíče pro IoT Edge zařízení v individuální registraci a registraci skupin. Pokud při registraci skupiny zjistíte, že možnost "je IoT Edge zařízení" v případě ověření symetrického klíče pravdivá, všechna zařízení, která jsou registrovaná v této skupině registrací, se označí jako IoT Edge zařízení.
 
 V tomto článku se dozvíte, jak otestovat Automatické zřizování na simulovaném IoT Edge zařízení pomocí následujících kroků:
 
@@ -27,9 +27,6 @@ V tomto článku se dozvíte, jak otestovat Automatické zřizování na simulov
 * Na svém počítači Windows pomocí Simulovaná Trusted Platform Module (TPM) pro zabezpečení hardware vytvořte simulované zařízení.
 * Vytvořte jednotlivou registraci pro zařízení.
 * Nainstalujte modul runtime IoT Edge a připojení zařízení k centru IoT.
-
-> [!NOTE]
-> ČIP TPM 2,0 se vyžaduje při použití ověření identity pomocí čipu TPM s DPS a dá se použít jenom k vytvoření individuálních, neskupinových a registrací certifikátů.
 
 > [!TIP]
 > Tento článek popisuje testování automatického zřizování pomocí ověření identity čipem TPM na virtuálních zařízeních, ale většina z nich se používá i při použití fyzického hardwaru TPM.
@@ -39,11 +36,14 @@ V tomto článku se dozvíte, jak otestovat Automatické zřizování na simulov
 * Vývojový počítač s Windows. Tento článek používá Windows 10.
 * Aktivním centrem IoT.
 
+> [!NOTE]
+> ČIP TPM 2,0 se vyžaduje při použití ověření identity pomocí čipu TPM s DPS a dá se použít jenom k vytvoření individuálních, neskupinových a registrací certifikátů.
+
 ## <a name="set-up-the-iot-hub-device-provisioning-service"></a>Nastavte si IoT Hub Device Provisioning Service
 
-Vytvořit novou instanci IoT Hub Device Provisioning Service v Azure a propojit jej do služby IoT hub. Můžete postupovat podle pokynů v tématu [nastavení IoT Hub DPS](../iot-dps/quick-setup-auto-provision.md).
+Vytvořit novou instanci IoT Hub Device Provisioning Service v Azure a propojit jej do služby IoT hub. Můžete podle pokynů v [nastavení IoT Hub DPS](../iot-dps/quick-setup-auto-provision.md).
 
-Po spuštění služby Device Provisioning zkopírujte na stránce Přehled hodnotu **Rozsah ID** . Tuto hodnotu použijete při konfiguraci modulu runtime IoT Edge.
+Jakmile budete mít spuštěné služby Device Provisioning Service, zkopírujte hodnotu **rozsah ID** na stránce Přehled. Tuto hodnotu použijete při konfiguraci modulu runtime IoT Edge.
 
 > [!TIP]
 > Pokud používáte fyzické zařízení TPM, je nutné určit **ověřovací klíč**, který je jedinečný pro každý čip TPM a získá se od výrobce čipu TPM, který je k němu přidružený. Jedinečné **ID registrace** pro vaše zařízení TPM můžete odvodit, například vytvořením hodnoty hash SHA-256 ověřovacího klíče.
@@ -54,7 +54,7 @@ Po spuštění služby Device Provisioning zkopírujte na stránce Přehled hodn
 
 Vytvoření simulovaného zařízení TPM na svém vývojovém počítači s Windows. Načtěte **ID registrace** a **ověřovací klíč** pro vaše zařízení a použijte je k vytvoření jednotlivé položky registrace v DPS.
 
-Když vytvoříte registraci v DPS, budete mít možnost deklarovat **počáteční stav**dopředných zařízení. Ve dvojčeti zařízení můžete nastavit značky k seskupení zařízení podle libovolné metriky, které potřebujete ve vašem řešení, jako je oblast, prostředí, umístění nebo zařízení typu. Tyto značky slouží k vytváření [automatických nasazení](how-to-deploy-monitor.md).
+Až vytvořit registraci ve službě Device Provisioning, budete mít příležitost k deklaraci **počáteční stav Dvojčete zařízení**. Ve dvojčeti zařízení můžete nastavit značky k seskupení zařízení podle libovolné metriky, které potřebujete ve vašem řešení, jako je oblast, prostředí, umístění nebo zařízení typu. Tyto značky se používají k vytváření [automatické nasazení](how-to-deploy-monitor.md).
 
 Vyberte jazyk sady SDK, kterou chcete použít k vytvoření simulovaného zařízení a postupujte podle pokynů až do vytvoření jednotlivé registrace.
 
@@ -68,7 +68,7 @@ Simulované zařízení a jednotlivá registrace příručky:
 * [Node.js](../iot-dps/quick-create-simulated-device-tpm-node.md)
 * [Python](../iot-dps/quick-create-simulated-device-tpm-python.md)
 
-Po vytvoření jednotlivé registrace uložte hodnotu **ID registrace**. Tuto hodnotu použijete při konfiguraci modulu runtime IoT Edge.
+Po vytvoření jednotlivé registrace, uložit hodnotu **ID registrace**. Tuto hodnotu použijete při konfiguraci modulu runtime IoT Edge.
 
 ## <a name="install-the-iot-edge-runtime"></a>Nainstalovat modul runtime IoT Edge
 
@@ -130,4 +130,4 @@ iotedge list
 
 ## <a name="next-steps"></a>Další kroky
 
-Proces registrace služby Device Provisioning umožňuje nastavit ID zařízení a značky dvojčat zařízení ve stejnou dobu, jak zřídit nové zařízení. Tyto hodnoty můžete cílit na jednotlivá zařízení nebo skupin pomocí automatické správy zařízení. Naučte se, jak [nasadit a monitorovat IoT Edge moduly ve velkém měřítku pomocí Azure Portal](how-to-deploy-monitor.md) nebo [pomocí Azure CLI](how-to-deploy-monitor-cli.md) .
+Proces registrace služby Device Provisioning umožňuje nastavit ID zařízení a značky dvojčat zařízení ve stejnou dobu, jak zřídit nové zařízení. Tyto hodnoty můžete cílit na jednotlivá zařízení nebo skupin pomocí automatické správy zařízení. Zjistěte, jak [nasazení a monitorování modulů při škálování na portálu Azure IoT Edge](how-to-deploy-monitor.md) nebo [pomocí Azure CLI](how-to-deploy-monitor-cli.md)

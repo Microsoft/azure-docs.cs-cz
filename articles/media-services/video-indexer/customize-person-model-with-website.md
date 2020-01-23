@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 060d94d6181e894c18d268845b48eb802c52730c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: e5ce43e7cdf70c1f552a8f5bbed28ce47f1826fc
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838275"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513214"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-website"></a>Přizpůsobení modelu osoby pomocí Video Indexer webu
 
@@ -91,7 +91,7 @@ Můžete odstranit jakýkoli model osoby, který jste ve svém účtu vytvořili
 
     ![Odstranit osobu](./media/customize-face-model/delete-person.png)
     
-    Automaticky otevírané okno se zobrazí a upozorní vás, že tato akce odstraní model osoby a všechny osoby a soubory, které obsahuje. Tuto akci nelze vrátit zpět. 
+    Automaticky otevírané okno se zobrazí a upozorní vás, že tato akce odstraní model osoby a všechny osoby a soubory, které obsahuje. Tuto akci nejde vrátit zpátky. 
 
     ![Odstranit osobu](./media/customize-face-model/delete-person2.png)
 1. Pokud jste si jisti, klikněte znovu na Odstranit.
@@ -134,14 +134,14 @@ Pokud chcete použít svůj pracovní model na novém videu, udělejte toto:
 
 1. Klikněte na tlačítko **nahrát** v horní části stránky.
 
-    ![Odeslat](./media/customize-face-model/upload.png)
+    ![Nahrávání](./media/customize-face-model/upload.png)
 1. Přetáhněte videosoubor do kruhu nebo ho vyhledejte.
 1. Klikněte na šipku Upřesnit možnosti.
 
-    ![Odeslat](./media/customize-face-model/upload2.png)
+    ![Nahrávání](./media/customize-face-model/upload2.png)
 1. Klikněte na rozevírací seznam a vyberte model osoby, který jste vytvořili.
 
-    ![Odeslat](./media/customize-face-model/upload3.png)
+    ![Nahrávání](./media/customize-face-model/upload3.png)
 1. V dolní části stránky klikněte na možnost nahrát a nové video bude indexováno pomocí modelu vaší osoby.
 
 Pokud během nahrávání nezadáte model osoby, Video Indexer bude video indexovat pomocí výchozího modelu osoby ve vašem účtu.

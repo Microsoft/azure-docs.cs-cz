@@ -10,16 +10,16 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 6b7414d67a5c5b068c675ef7b57391b8990a7a16
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: dec6faab0dfc7f073639186429767bbf653ceda1
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953079"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513605"
 ---
 # <a name="offline-evaluation"></a>Offline vyhodnocení
 
-Testování offline je metoda, která umožňuje testovat a vyhodnocovat efektivitu služby přizpůsobeného pomocí nástroje, aniž by došlo ke změně kódu nebo ovlivnění uživatelského prostředí. Offline testování používá minulá data odesílaná z vaší aplikace do rozhraní API pro řazení, aby bylo možné porovnat způsob, jakým bylo provedeno různé pořadí.
+Testování offline je metoda, která umožňuje testovat a vyhodnocovat efektivitu služby přizpůsobeného pomocí nástroje, aniž by došlo ke změně kódu nebo ovlivnění uživatelského prostředí. Offline testování používá minulá data odesílaná z vaší aplikace do rozhraní API pro řazení a odměnu, aby bylo možné porovnat, jak se provedlo různé pořadí.
 
 V období data se provádí zkušební verze offline. Rozsah může být dokončený s aktuálním časem jako pozdě. Začátek rozsahu nemůže být větší než počet dní zadaný pro [uchovávání dat](how-to-settings.md).
 
@@ -56,9 +56,9 @@ Při spuštění testování offline je velmi důležité analyzovat _meze spole
 
 ## <a name="how-offline-evaluations-are-done"></a>Jak se dokončí hodnocení offline
 
-Hodnocení offline se provádí pomocí metody s názvem **Counterfactual Evaluation**. 
+Hodnocení offline se provádí pomocí metody s názvem **Counterfactual Evaluation**.
 
-Přizpůsobená aplikace je postavená na předpokladu, že chování uživatelů (a tedy i jejich neprospěch) nebude možné předpovědět (přizpůsobení nemůže vědět, co se stalo, pokud byl uživatel zobrazen jinak, než to uvidí) a jenom se dozvědět měřené ceny 
+Přizpůsobená aplikace je postavená na předpokladu, že chování uživatelů (a tedy i jejich neprospěch) nebude možné předpovědět (přizpůsobení nemůže vědět, co se stalo, pokud byl uživatel zobrazen jinak, než to uvidí) a jenom se dozvědět měřené ceny
 
 Toto je koncepční proces, který se používá pro vyhodnocení:
 
@@ -70,11 +70,11 @@ Toto je koncepční proces, který se používá pro vyhodnocení:
     [For every chronological event in the logs]
     {
         - Perform a Rank call
-    
+
         - Compare the reward of the results against the logged user behavior.
             - If they match, train the model on the observed reward in the logs.
             - If they don't match, then what the user would have done is unknown, so the event is discarded and not used for training or measurement.
-        
+
     }
 
     Add up the rewards and statistics that were predicted, do some aggregation to aid visualizations, and save the results.

@@ -1,5 +1,5 @@
 ---
-title: Použití ochrany DRM s dynamickým šifrováním a služby doručování licencí
+title: Azure Media Services šifrování DRM a služba doručování licencí
 titleSuffix: Azure Media Services
 description: Naučte se používat dynamické šifrování DRM a službu doručování licencí k doručování streamů šifrovaných pomocí licencí Microsoft PlayReady, Google Widevine nebo Apple FairPlay.
 services: media-services
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/25/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 3d2dc7793c25fb20e267332beaa683f11ddcbfbb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: bd5c026da27c68e249532b70629ba01afea655fe
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974066"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513061"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Kurz: použití dynamického šifrování DRM a služby doručování licencí
 
@@ -46,7 +46,7 @@ V tomto kurzu získáte informace o následujících postupech:
 > * Vytvořte StreamingLocator se zadaným zásadou streamování.
 > * Vytvořte adresu URL používanou k přehrání souboru.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kurzu potřebujete následující položky:
 

@@ -1,6 +1,6 @@
 ---
-title: Co je Azure AD připojené zařízení?
-description: Zjistěte, jak Správa identit zařízení vám mohou pomoci při správě zařízení, která mají přístup k prostředkům ve vašem prostředí.
+title: Co je zařízení připojené k Azure AD?
+description: Přečtěte si, jak vám Správa identit zařízení může pomáhat při správě zařízení, která přistupují k prostředkům ve vašem prostředí.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,45 +11,45 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4af3aea7218ea8792bb66188e8df7baf9f460b0b
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 24ec4373bceb3cc3c9e5be2c7a0dab1f62197b3c
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462808"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512194"
 ---
 # <a name="azure-ad-joined-devices"></a>Zařízení připojená k Azure AD
 
-Připojení k Azure AD je určený pro organizace, které mají být cloud na prvním nebo jenom pro cloud. Všechny organizace může nasadit zařízení připojených k Azure AD bez ohledu na velikost nebo oboru. Připojení k Azure AD funguje i v hybridním prostředí, povolení přístupu ke cloudovým i místním aplikacím a prostředkům.
+Služba Azure AD JOIN je určena pro organizace, které chtějí být pouze cloudové nebo cloudové. Každá organizace může nasadit zařízení připojená k Azure AD bez ohledu na velikost nebo odvětví. Připojení k Azure AD funguje i v hybridním prostředí a umožňuje přístup ke cloudovým i místním aplikacím a prostředkům.
 
 |   | Připojení k Azure AD |
 | --- | --- |
-| **Definice** | Připojená pouze k Azure AD vyžaduje účet organizace pro přihlášení k zařízení |
-| **Primární cílovou skupinu** | Vhodné pro obě čistě cloudové a hybridní organizace. |
-|   | Platí pro všechny uživatele v organizaci |
+| **Definice** | Připojeno pouze k Azure AD vyžadování účtu organizace pro přihlášení k zařízení |
+| **Primární cílová skupina** | Vhodné pro cloudové i hybridní organizace. |
+|   | Platí pro všechny uživatele v organizaci. |
 | **Vlastnictví zařízení** | Organizace |
 | **Operační systémy** | Všechna zařízení s Windows 10 |
-| **Zřizování** | Samoobslužné funkce: Windows OOBE nebo nastavení |
-|   | Hromadná registrace |
+| **Zřizování** | Samoobslužná služba: Windows OOBE nebo nastavení |
+|   | Hromadný zápis |
 |   | Windows Autopilot |
-| **Možnosti přihlášení zařízení** | Organizační účty pomocí: |
+| **Možnosti přihlášení zařízení** | Účty organizace pomocí: |
 |   | Heslo |
 |   | Windows Hello pro firmy |
-|   | FIDO2.0 zabezpečení klíčů (preview) |
-| **Správa zařízení** | Správa mobilních zařízení (Příklad: Microsoft Intune) |
-|   | Společná správa s Microsoft Intune a System Center Configuration Manager |
-| **Klíčové funkce** | Jednotné přihlašování do cloudových a místních prostředků |
-|   | Podmíněný přístup prostřednictvím registrace MDM a vyhodnocování dodržování předpisů MDM |
-|   | Samoobslužné resetování hesla a Windows Hello PIN kód resetovat na zamykací obrazovce |
-|   | Enterprise State Roaming v zařízení |
+|   | Klíče zabezpečení FIDO 2.0 (Preview) |
+| **Správa zařízení** | Správa mobilních zařízení (příklad: Microsoft Intune) |
+|   | Spoluspráva pomocí Microsoft Intune a koncového bodu Microsoft Configuration Manager |
+| **Klíčové funkce** | Jednotné přihlašování pro cloudové i místní prostředky |
+|   | Podmíněný přístup prostřednictvím registrace MDM a vyhodnocení dodržování předpisů MDM |
+|   | Samoobslužné resetování hesla a Resetování PIN kódu Windows Hello na zamykací obrazovce |
+|   | Enterprise State Roaming napříč zařízeními |
 
-Podpora k zařízením Azure AD, které jsou připojené k přihlášení do organizace pomocí účtu Azure AD. Přístup k prostředkům v organizaci může být dále omezená založené na tomto účtu služby Azure AD a [zásady podmíněného přístupu](../conditional-access/overview.md) použitý pro identitu zařízení.
+Zařízení připojená k Azure AD jsou přihlášená k používání účtu Azure AD organizace. Přístup k prostředkům v organizaci je možné dál omezit na základě účtu Azure AD a [zásad podmíněného přístupu](../conditional-access/overview.md) , které se používají pro identitu zařízení.
 
-Správci se dají zabezpečit a další zařízení pomocí správy mobilních zařízení (MDM) nástroje, jako je Microsoft Intune nebo ve scénářích spolusprávy pomocí System Center Configuration Manager připojená k řízení služby Azure AD. Tyto nástroje umožňují vynucovat organizace vyžaduje konfigurace, jako je vyžadování šifrování úložiště, složitost hesla, instalace softwaru a aktualizací softwaru. Správce může zpřístupnit aplikacím organizace zařízení připojených k Azure AD pomocí [System Center Configuration Manager a Microsoft Store pro firmy](https://docs.microsoft.com/sccm/apps/deploy-use/manage-apps-from-the-windows-store-for-business).
+Správci můžou zabezpečit a dále řídit zařízení připojená k Azure AD pomocí nástrojů pro správu mobilních zařízení (MDM), jako je Microsoft Intune nebo ve scénářích spolusprávy pomocí služby Microsoft Endpoint Configuration Manager. Tyto nástroje poskytují způsob, jak vyhovět konfiguracím vyžadovaným v organizaci, jako je třeba šifrování úložiště, složitost hesla, instalace softwaru a aktualizace softwaru. Správci můžou k dispozici pro zařízení připojená k Azure AD pomocí Configuration Manager ke [správě aplikací ze Microsoft Store pro firmy a vzdělávání](https://docs.microsoft.com/configmgr/apps/deploy-use/manage-apps-from-the-windows-store-for-business).
 
-Připojení k Azure AD, můžete to provést pomocí samoobslužné služby možnosti jako z pole prostředí (OOBE), hromadnou registraci, nebo [Windows Autopilot](https://docs.microsoft.com/intune/enrollment-autopilot).
+Připojení k Azure AD se dá provést pomocí možností samoobslužné služby, jako je například spuštění z prvního počítače, hromadné registrace nebo automatický [pilot pro Windows](https://docs.microsoft.com/intune/enrollment-autopilot).
 
-Podpora k zařízením Azure AD, které jsou připojené k můžete stále Udržovat přístup jednotné přihlašování k místním prostředkům, když jsou v síti organizace. Zařízení, která jsou připojená k Azure AD můžete stále ověřovat na místní servery, jako je soubor, tisk a další aplikace.
+Zařízení připojená k Azure AD stále můžou udržovat přístup k místním prostředkům v rámci jednotného přihlašování, když se nacházejí v síti organizace. Zařízení, která jsou připojená k Azure AD, se můžou i nadále ověřovat u místních serverů, jako jsou soubory, tisk a další aplikace.
 
 ## <a name="scenarios"></a>Scénáře
 
@@ -58,7 +58,7 @@ Přestože je služba Azure AD Join primárně určená pro organizace, které n
 - Chcete přejít na cloudovou infrastrukturu s využitím Azure AD a MDM, jako je například Intune.
 - Nemůžete použít připojení k místní doméně například v případě, že potřebujete získat kontrolu nad mobilními zařízeními, jako jsou tablety a telefony.
 - Vaši uživatelé primárně potřebují přístup k Office 365 nebo dalším aplikacím SaaS integrovaným s Azure AD.
-- Chcete spravovat skupinu uživatelů v Azure AD, a ne v Active Directory. V tomto scénáři můžete použít například k sezónním zaměstnancům, smluvní pracovníci ani interní studentů.
+- Chcete spravovat skupinu uživatelů v Azure AD, a ne v Active Directory. Tento scénář může platit například pro sezónní pracovní procesy, dodavatele nebo studenty.
 - Chcete poskytnout možnosti připojení pracovníkům ve vzdálených pobočkách s omezenou místní infrastrukturou.
 
 Připojení zařízení k Azure AD můžete nakonfigurovat pro zařízení s Windows 10.
@@ -68,7 +68,7 @@ Cílem zařízení připojených k Azure AD je zjednodušit:
 - Nasazení Windows na pracovní zařízení
 - Přístup k aplikacím a prostředkům organizace z jakéhokoli zařízení s Windows
 - Cloudovou správu pracovních zařízení
-- Uživatelům umožní přihlásit se svými zařízeními s jejich Azure AD nebo synchronizace služby Active Directory pracovní nebo školní účty.
+- Uživatelé se můžou přihlašovat ke svým zařízením pomocí Azure AD nebo synchronizovat pracovní nebo školní účty služby Active Directory.
 
 ![Zařízení připojená k Azure AD](./media/concept-azure-ad-join/azure-ad-joined-device.png)
 
@@ -78,9 +78,9 @@ K nasazení služby Azure AD Join je možné použít jakoukoli z následující
 - [Hromadné nasazení](https://docs.microsoft.com/intune/windows-bulk-enroll)
 - [Samoobslužné prostředí](azuread-joined-devices-frx.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Naplánovat vaši implementaci služby Azure AD join](azureadjoin-plan.md)
-- [Zařízení připojená k tom, jak spravovat místní skupiny administrators na Azure AD](assign-local-admin.md)
-- [Správa identit zařízení pomocí webu Azure portal](device-management-azure-portal.md)
+- [Plánování implementace služby Azure AD JOIN](azureadjoin-plan.md)
+- [Jak spravovat místní skupinu Administrators na zařízeních připojených k Azure AD](assign-local-admin.md)
+- [Správa identit zařízení pomocí Azure Portal](device-management-azure-portal.md)
 - [Správa zastaralých zařízení ve službě Azure AD](manage-stale-devices.md)

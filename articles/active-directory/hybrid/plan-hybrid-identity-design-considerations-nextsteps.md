@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory hybridní identity návrhu aspekty – další kroky | Dokumentace Microsoftu
-description: Stručný a další kroky po přečtení Průvodce aspekty návrhu hybridní Identity
+title: Azure Active Directory hlediska návrhu hybridní identity – další kroky | Microsoft Docs
+description: Stručný přehled a další kroky po přečtení Průvodce důležitými informacemi pro návrh hybridní identity
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -16,39 +16,31 @@ ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41741249e9b1a142d75392025236a4d333b67666
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 378aa35ff4b43f5a268ac3dcd9530783ada6921e
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60295122"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512959"
 ---
-# <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Azure Active Directory hybridní identity návrhu důležité informace o další kroky
-Teď, když jste dokončili definování vašich požadavků a prozkoumání všech možností pro řešení správy mobilních zařízení, jste připraveni udělat další kroky k nasazení podpůrná infrastruktura, která je pro vás a vaši organizaci.
-
-## <a name="hybrid-identity-solutions"></a>Řešení hybridní identity
--Využití konkrétních scénářů řešení, které se podle vašich potřeb je skvělým způsobem, jak zkontrolovat a naplánovat si podrobnosti nasazení infrastruktury správy mobilních zařízení. Následující řešení popisují některé z nejběžnějších scénářů správy mobilních zařízení:
-
-* [Správa mobilních zařízení a počítačů v podnikových prostředích řešení](https://technet.microsoft.com/library/dn582037.aspx) vám usnadní správu mobilních zařízení tím, že rozšíří vaši místní infrastrukturu System Center 2012 Configuration Manager do cloudu s Microsoft Intune. Tato hybridní infrastruktura pomůže IT Profesionálové ve středně velkých a velkých prostředích zprovoznit model BYOD a vzdálený přístup současně zjednodušit správu.
-* [Správa mobilních zařízení pro Configuration Manager 2007 řešení](https://technet.microsoft.com/library/dn508400.aspx) vám usnadní správu mobilních zařízení, když vaše infrastruktura postavená na nástroji System Center Configuration Manager 2007. Toto řešení ukazuje, jak vytvořit jeden server se službou System Center 2012 Configuration Manager, takže budete moct zprovoznit službu Microsoft Intune a využít její možnosti správy mobilních zařízení.
-* [Správa mobilních zařízení v malých prostředích řešení](https://technet.microsoft.com/library/dn715906.aspx) je určené malým firmám, které potřebují podporu správy mobilních zařízení. Vysvětluje, jak pomocí Microsoft Intune k rozšíření stávající infrastruktury, které správu mobilních zařízení i model byod UMOŽNÍ. Kromě toho popisuje nejjednodušší scénář k využití služby Microsoft Intune v samostatné, čistě cloudové konfiguraci bez místních serverů.
+# <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Azure Active Directory hlediska návrhu hybridní identity – další kroky
+Po dokončení definování vašich požadavků a prozkoumání všech možností pro řešení správy mobilních zařízení jste připraveni provést další kroky k nasazení té pravé podpůrné infrastruktury pro vás a vaši organizaci.
 
 ## <a name="hybrid-identity-documentation"></a>Dokumentace k hybridní identitě
-Koncepční a procedurální plánování, nasazení a správa se hodí při implementaci řešení pro správu mobilních zařízení:
+Koncepční a procedurální plánování, nasazení a správa se hodí při implementaci řešení správy mobilních zařízení:
 
-* [Microsoft System Center](https://technet.microsoft.com/library/cc507089.aspx) řešení může vám pomoct zachytit a agregovat informace o infrastruktuře, zásady, procesy a osvědčené postupy tak, aby vaši pracovníci IT mohli sestavit spravovatelné systémy a automatizovat operace.
-* [Microsoft Intune](https://technet.microsoft.com/library/jj676587.aspx) je služba správy zařízení založené na cloudu, která pomáhá spravovat počítače a mobilní zařízení a zabezpečit informace vaší společnosti.
-* [MDM pro Office 365](https://technet.microsoft.com/library/ms.o365.cc.devicepolicy.aspx) vám umožní spravovat a chránit mobilní zařízení při připojení k vaší organizaci využívající Office 365. MDM pro Office 365 můžete použít k nastavení zabezpečení zařízení, zásad a pravidel přístupu a k mazání mobilních zařízení, pokud byla ztracena nebo odcizena.
+* Řešení [Microsoft System Center](https://technet.microsoft.com/library/cc507089.aspx) vám pomůžou zachytit a agregovat znalosti o vaší infrastruktuře, zásadách, procesech a osvědčených postupech, aby pracovníci IT mohli vytvářet spravovatelné systémy a automatizovat operace.
+* [Microsoft Intune](https://technet.microsoft.com/library/jj676587.aspx) je cloudová služba správy zařízení, která vám pomůže spravovat počítače a mobilní zařízení a zabezpečit informace vaší společnosti.
+* [MDM pro Office 365](https://technet.microsoft.com/library/ms.o365.cc.devicepolicy.aspx) vám umožňuje spravovat a chránit mobilní zařízení při připojení k vaší organizaci využívající Office 365. MDM pro Office 365 můžete použít k nastavení zásad zabezpečení zařízení a pravidel přístupu a k vymazání mobilních zařízení, pokud dojde ke ztrátě nebo odcizení.
 
-## <a name="hybrid-identity-resources"></a>Hybridní identita zdroje
-Často monitorování v následujících zdrojích informací poskytuje nejnovější informace a aktualizuje na řešení správy mobilních zařízení:
+## <a name="hybrid-identity-resources"></a>Hybridní prostředky identity
+Monitorování těchto prostředků často poskytuje nejnovější novinky a aktualizace řešení pro správu mobilních zařízení:
 
-* [Blog Microsoft Enterprise Mobility](https://cloudblogs.microsoft.com/ENTERPRISEMOBILITY/)
-* [Blog Microsoft In The Cloud](https://blogs.technet.com/b/in_the_cloud/)
+* [Blog Microsoft Enterprise mobility](https://cloudblogs.microsoft.com/ENTERPRISEMOBILITY/)
+* [Blog Microsoftu na cloudu](https://blogs.technet.com/b/in_the_cloud/)
 * [Blog Microsoft Intune](https://blogs.technet.com/b/microsoftintune/)
-* [Blog Microsoft System Center Configuration Manager](https://blogs.technet.com/b/configurationmgr/)
-* [Blog týmu nástroje Microsoft System Center Configuration Manager](https://blogs.technet.com/b/configmgrteam/)
+* [Blog Microsoft Endpoint Configuration Manager](https://techcommunity.microsoft.com/t5/Configuration-Manager-Blog/bg-p/ConfigurationManagerBlog)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-[Přehled aspektů návrhu](plan-hybrid-identity-design-considerations-overview.md)
+[Přehled otázek návrhu](plan-hybrid-identity-design-considerations-overview.md)
 

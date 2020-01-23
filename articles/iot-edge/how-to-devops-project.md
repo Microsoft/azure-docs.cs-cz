@@ -7,12 +7,12 @@ ms.date: 10/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ccf6ea567143180daa848566d1e7e1420c181c5f
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 66401678f03ee0043345208eb32560f589829226
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457374"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510307"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects"></a>Vytvoření kanálu CI/CD pro IoT Edge s využitím Azure DevOps Projects
 
@@ -28,11 +28,11 @@ Projekty DevOps vytvoří kanál CI/CD v Azure DevOps. Můžete vytvořit novou 
 
 1. V levém podokně vyberte **vytvořit prostředek**a pak vyhledejte **DevOps Projects**.  
 
-1.  Vyberte **Vytvořit**.
+1. Vyberte **Create** (Vytvořit).
 
-## <a name="create-a-new-application-pipeline"></a>Vytvořit nový kanál aplikace 
+## <a name="create-a-new-application-pipeline"></a>Vytvořit nový kanál aplikace
 
-1. Vaše moduly Azure IoT Edge můžou [C#](tutorial-csharp-module.md)být napsané v, [Node. js](tutorial-node-module.md), [Pythonu](tutorial-python-module.md), [C](tutorial-c-module.md) a [Java](tutorial-java-module.md). Vyberte preferovaný jazyk pro spuštění nové aplikace: **.NET**, **Node. js**, **Python**, **C**nebo **Java**. Pokračujte výběrem tlačítka **Next** (Další).
+1. Vaše modulů Azure IoT Edge je možné psát v [ C# ](tutorial-csharp-module.md), [Node.js](tutorial-node-module.md), [Python](tutorial-python-module.md), [C](tutorial-c-module.md) a [Java](tutorial-java-module.md). Vyberte preferovaný jazyk pro spuštění nové aplikace: **.NET**, **Node. js**, **Python**, **C**nebo **Java**. Pokračujte výběrem tlačítka **Next** (Další).
 
    ![Vyberte jazyk, který chcete vytvořit novou aplikaci](./media/how-to-devops-project/select-language.png)
 
@@ -46,26 +46,25 @@ Projekty DevOps vytvoří kanál CI/CD v Azure DevOps. Můžete vytvořit novou 
 
 4. Vytvořte novou organizaci bezplatné Azure DevOps nebo zvolte existující organizace.
 
-   1. Zadejte název projektu. 
+   1. Zadejte název projektu.
 
-   2. Vyberte svou organizaci Azure DevOps. Pokud nemáte existující organizaci, vyberte **Další nastavení** a vytvořte novou. 
+   2. Vyberte svou organizaci Azure DevOps. Pokud nemáte existující organizaci, vyberte **Další nastavení** a vytvořte novou.
 
    3. Vyberte své předplatné Azure.
 
    4. Použijte název IoT Hub generovaný vaším názvem projektu, nebo zadejte vlastní.
 
-   5. Přijměte výchozí umístění nebo vyberte jednu z nich. 
+   5. Přijměte výchozí umístění nebo vyberte jednu z nich.
 
-   5. Vyberte **Další nastavení** a nakonfigurujte prostředky Azure, které DevOps Projects vytvoří vaším jménem.
+   6. Vyberte **Další nastavení** a nakonfigurujte prostředky Azure, které DevOps Projects vytvoří vaším jménem.
 
-   6. Chcete-li dokončit vytváření projektu, vyberte **Hotovo** . 
+   7. Chcete-li dokončit vytváření projektu, vyberte **Hotovo** .
 
    ![Název a vytvořte aplikaci](media/how-to-devops-project/select-devops.png)
 
 Po několika minutách se zobrazí řídicí panel projekty DevOps na webu Azure Portal. Vyberte název projektu, abyste viděli průběh. Možná budete muset aktualizovat stránku. Ukázková aplikace IoT Edge je nastavena v úložišti ve vaší organizaci Azure DevOps, sestavení je spuštěno a vaše aplikace bude nasazena do zařízení IoT Edge. Tento řídicí panel poskytuje vhled do vašeho úložiště kódu, kanál CI/CD a vaši aplikaci v Azure.
 
    ![Zobrazit aplikaci v Azure Portal](./media/how-to-devops-project/devops-portal.png)
-
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>Potvrzení změn kódu a spuštění CI/CD
 
@@ -75,14 +74,13 @@ DevOps Projects vytvořit úložiště Git pro váš projekt v Azure Repos. V t�
 
    ![Zobrazit úložiště vygenerované v Azure Repos](./media/how-to-devops-project/view-repositories.png)
 
-2. Následující kroky vás provedou použitím webového prohlížeče k provedení změn kódu. Pokud chcete úložiště klonovat místně, vyberte v pravém horním rohu okna **klonovat** . K naklonování úložiště Git v Visual Studio Code nebo preferovaném vývojovém nástroji použijte poskytnutou adresu URL. 
+2. Následující kroky vás provedou použitím webového prohlížeče k provedení změn kódu. Pokud chcete úložiště klonovat místně, vyberte v pravém horním rohu okna **klonovat** . K naklonování úložiště Git v Visual Studio Code nebo preferovaném vývojovém nástroji použijte poskytnutou adresu URL.
 
 3. Úložiště již obsahuje kód pro modul s názvem **FilterModule** na základě jazyka aplikace, který jste zvolili v procesu vytváření. Otevřete soubor **modules/FilterModule/Module. JSON** .
 
    ![Otevřete soubor Module. JSON v Azure Repos](./media/how-to-devops-project/open-module-json.png)
 
-4. Všimněte si, že tento soubor používá v parametru **Version** [proměnné buildu Azure DevOps](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables) . Tato konfigurace zajišťuje, že se nová verze modulu vytvoří při každém spuštění nového buildu. 
-
+4. Všimněte si, že tento soubor používá v parametru **Version** [proměnné buildu Azure DevOps](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables) . Tato konfigurace zajišťuje, že se nová verze modulu vytvoří při každém spuštění nového buildu.
 
 ## <a name="examine-the-cicd-pipeline"></a>Prozkoumejte kanálu CI/CD
 
@@ -114,7 +112,7 @@ V předchozích částech Azure DevOps Projects pro IoT Edge aplikaci automatick
 
     ![Kanál pro vydávání verzí zobrazení](media/how-to-devops-project/release-pipeline.png)
 
-10. V části **Artefakty** vyberte **Zahodit**. Zdroj, který sleduje tento artefakt, je výstupem kanálu sestavení, který jste prozkoumali v předchozích krocích. 
+10. V části **Artefakty** vyberte **Zahodit**. Zdroj, který sleduje tento artefakt, je výstupem kanálu sestavení, který jste prozkoumali v předchozích krocích.
 
 11. Vedle ikony **odkládacího umístění** vyberte **Trigger průběžného nasazování** , který vypadá jako blesk. Tento kanál vydaných verzí povolil Trigger, který spouští nasazení pokaždé, když je k dispozici nový artefakt sestavení. Volitelně můžete zakázat aktivační událost tak, aby vaše nasazení vyžaduje ruční spuštění.  
 
@@ -122,16 +120,16 @@ V předchozích částech Azure DevOps Projects pro IoT Edge aplikaci automatick
 
     ![Zobrazit úlohy průběžné nasazování](media/how-to-devops-project/dev-release.png)
 
-13. Na pravé straně vyberte **Zobrazit vydané verze**. Toto zobrazení ukazuje historii vydaných verzí.
+13. Na pravé straně vyberte **zobrazit verze**. Toto zobrazení ukazuje historii vydaných verzí.
 
 14. Vyberte název verze, pro který chcete zobrazit další informace.
 
-
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Azure App Service a další související prostředky, které jste vytvořili, když už nepotřebujete, můžete odstranit. Použijte funkci **Odstranit** na řídicím panelu DevOps Projects.
+Azure App Service a další související prostředky, které jste vytvořili, když už nepotřebujete, můžete odstranit. Použití **odstranit** funkce na řídicím panelu projekty DevOps.
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si o úlohách Azure IoT Edge v Azure DevOps v části [průběžná integrace a průběžné nasazování do Azure IoT Edge](how-to-ci-cd.md)
-* Pochopení nasazení IoT Edge v části [Principy nasazení IoT Edge pro jednotlivá zařízení nebo ve velkém měřítku](module-deployment-monitoring.md)
-* Projděte si postup vytvoření, aktualizace nebo odstranění nasazení v části [nasazení a monitorování IoT Edgech modulů ve velkém měřítku](how-to-deploy-monitor.md).
+
+* Další informace o úlohách pro Azure IoT Edge na Azure DevOps v [průběžnou integraci a průběžné nasazování do Azure IoT Edge](how-to-ci-cd.md)
+* Vysvětlení nasazení IoT Edge v [vysvětlení nasazení IoT Edge pro jednotlivá zařízení nebo ve velkém měřítku](module-deployment-monitoring.md)
+* Provede kroky k vytvoření, aktualizace nebo odstranění nasazení v [nasadit a monitorovat moduly IoT Edge ve velkém měřítku](how-to-deploy-monitor.md).

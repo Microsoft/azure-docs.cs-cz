@@ -1,5 +1,5 @@
 ---
-title: Použití Video Indexer webu k přizpůsobení modelu značek – Azure
+title: Použití Video Indexer webu k přizpůsobení značek modelů – Azure
 titleSuffix: Azure Media Services
 description: Tento článek popisuje, jak přizpůsobit model značek pomocí webu Video Indexer.
 services: media-services
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: f4b2f7a8b43c1723beb0dd8da82814f74cd7b135
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 956ca7af055768398392045ecf9b383d2eb1060f
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838351"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513894"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-website"></a>Přizpůsobení modelu značek pomocí Video Indexer webu
 

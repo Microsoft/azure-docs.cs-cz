@@ -7,14 +7,14 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: d572e7f3fceaf2df8ad0ec684eaa421922389e71
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1e5af0b45b8d2e2eceac1b653a5219a236c25467
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74922154"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512908"
 ---
-# <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>Dotazování dat v Azure Data Lake pomocí Azure Průzkumník dat (Preview)
+# <a name="query-data-in-azure-data-lake-using-azure-data-explorer"></a>Dotazování dat v Azure Data Lake pomocí Azure Průzkumník dat
 
 Azure Data Lake Storage je vysoce škálovatelné a nákladově efektivní řešení Data Lake pro analýzu velkých objemů dat. Nabízí kombinaci vysoce výkonného systému souborů s velkým měřítkem a úsporami, takže urychluje dobu nutnou k získání potřebných informací. Řešení Data Lake Storage Gen2 rozšiřuje funkce Azure Blob Storage a je optimalizované pro analytické úlohy.
  

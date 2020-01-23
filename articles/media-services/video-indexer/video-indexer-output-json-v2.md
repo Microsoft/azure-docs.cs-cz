@@ -1,5 +1,5 @@
 ---
-title: Kontrola výstupu Azure Media Services Video Indexer vypracovaného rozhraním API v2
+title: Projděte si výstup Video Indexer vytvořený pomocí rozhraní v2 API – Azure
 titleSuffix: Azure Media Services
 description: Toto téma prověřuje Azure Media Services Video Indexer výstup vytvářený rozhraním API v2.
 services: media-services
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: juliako
-ms.openlocfilehash: ab48787edcdd8c28891ca49d0f8b64305ce0e747
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2fac5e07f9646c4fc0fac7b1be53b5a5ac1ea803
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454638"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514387"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>Kontrola výstupu Video Indexer vytvořeného rozhraním API
 
@@ -501,7 +501,7 @@ Názvy značek firmy a produktu zjištěné v řeči pro přepis textu a/nebo vi
 |referenceId | Přípona adresy URL Wikipedii značky Například "Target_Corporation" je přípona [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |referenceUrl | Adresa URL Wikipedii značky, pokud existuje. Příklad: [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |description|Popis značek|
-|značek|Seznam předdefinovaných značek, které byly přidruženy k této značce.|
+|tags|Seznam předdefinovaných značek, které byly přidruženy k této značce.|
 |spolehlivost|Hodnota spolehlivosti Video Indexerho detektoru značky (0-1).|
 |instance|Seznam časových rozsahů této značky. Každá instance má brandType, který označuje, zda se tato značka objevila v přepisu nebo v OCR.|
 

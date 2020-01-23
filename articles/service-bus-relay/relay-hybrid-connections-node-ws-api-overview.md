@@ -1,6 +1,6 @@
 ---
-title: Přehled rozhraní API uzlu pro Azure Relay | Dokumentace Microsoftu
-description: Přehled rozhraní API uzel propojení
+title: Přehled rozhraní API uzlů Azure Relay | Microsoft Docs
+description: Tento článek poskytuje přehled rozhraní Node. js API pro službu Azure Relay. Také ukazuje, jak použít balíček uzlu hyco-WS.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -12,32 +12,32 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 794e797e504d6064c13ffe0a4ed131e668d86e97
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2877284c419da4999e23490fc986e5da44e5d92e
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64699383"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514506"
 ---
-# <a name="relay-hybrid-connections-node-api-overview"></a>Přehled rozhraní API uzlu hybridní připojení přenosu
+# <a name="relay-hybrid-connections-node-api-overview"></a>Přehled rozhraní API pro přenos Hybrid Connections uzlů
 
 ## <a name="overview"></a>Přehled
 
-[ `hyco-ws` ](https://www.npmjs.com/package/hyco-ws) Je založená na uzel balíčku pro Azure Relay Hybrid Connections a rozšiřuje ['ws'](https://www.npmjs.com/package/ws) balíčku NPM. Tento balíček znovu vyexportuje všechny exporty základní balíčku a přidá nový export, které umožňují integraci s funkcí Hybrid Connections služby Azure Relay. 
+Balíček uzlů [`hyco-ws`](https://www.npmjs.com/package/hyco-ws) pro Azure Relay Hybrid Connections je postaven na npm a rozšiřuje balíček [WS](https://www.npmjs.com/package/ws) . Tento balíček znovu exportuje všechny exporty tohoto základního balíčku a přidává nové exporty, které umožňují integraci s funkcí služby Azure Relay Hybrid Connections. 
 
-Existující aplikace, která `require('ws')` můžete použít tento balíček s `require('hyco-ws')` místo toho, který také umožňuje hybridní scénáře, ve kterých může aplikace naslouchání pro připojení pomocí protokolu WebSocket místně od "uvnitř brány" a přes hybridní připojení, vše na stejnou dobu.
+Stávající aplikace, které `require('ws')` můžou použít tento balíček s `require('hyco-ws')`, což umožňuje také hybridní scénáře, ve kterých aplikace může naslouchat připojením pomocí protokolu WebSocket místně z brány firewall a prostřednictvím Hybrid Connections, ve stejnou dobu.
   
 ## <a name="documentation"></a>Dokumentace
 
-Rozhraní API jsou [zdokumentované v balíčku hlavní "ws'](https://github.com/websockets/ws/blob/master/doc/ws.md). Tento článek popisuje, jak tento balíček se liší od tohoto směrného plánu. 
+Rozhraní API jsou [zdokumentována v hlavním balíčku ' WS '](https://github.com/websockets/ws/blob/master/doc/ws.md). Tento článek popisuje, jak se tento balíček liší od tohoto směrného plánu. 
 
-Hlavní rozdíly mezi základní balíček a tento "hyco – ws' je, že přidá novou třídu server exportuje přes `require('hyco-ws').RelayedServer`a několik pomocných metod.
+Klíčové rozdíly mezi základním balíčkem a tímto ' hyco-WS ' tvoří novou třídu serveru, která je exportována prostřednictvím `require('hyco-ws').RelayedServer`a několik pomocných metod.
 
-### <a name="package-helper-methods"></a>Balíček pomocné metody
+### <a name="package-helper-methods"></a>Pomocné metody balíčku
 
-Na exportování balíčku, kterou můžete odkazovat následujícím způsobem jsou k dispozici několik pomocných metod:
+Při exportu balíčku je k dispozici několik pomocných metod, které můžete odkazovat následujícím způsobem:
 
 ```JavaScript
 const WebSocket = require('hyco-ws');
@@ -48,7 +48,7 @@ listenUri = WebSocket.appendRelayToken(listenUri, 'ruleName', '...key...')
 
 ```
 
-Pomocné metody pro použití s tímto balíčkem, ale lze také podle uzlu serveru pro povolení zařízení nebo webových klientů pro vytvoření naslouchacích procesů nebo odesílatelů. Server používá tyto metody předáním identifikátory URI, které krátkodobou tokeny pro vložení. Tyto identifikátory URI lze také se běžné zásobníky protokolu WebSocket, které nepodporují nastavení hlavičky protokolu HTTP pro metodu handshake protokolu WebSocket. Vložení do identifikátoru URI autorizačních tokenech je podporováno především pro tyto scénáře použití externí knihovny. 
+Pomocné metody jsou určeny pro použití s tímto balíčkem, ale lze je použít také serverem Node pro povolení webového nebo zařízení klientů pro vytváření posluchačů nebo odesílatelů. Server používá tyto metody předáním identifikátorů URI, které vkládají krátkodobé tokeny. Tyto identifikátory URI se dají použít i u běžných zásobníků WebSocket, které nepodporují nastavení hlaviček HTTP pro metodu handshake protokolu WebSocket. Vložení autorizačních tokenů do identifikátoru URI je podporováno primárně pro tyto scénáře použití knihovny. 
 
 #### <a name="createrelaylistenuri"></a>createRelayListenUri
 
@@ -56,14 +56,14 @@ Pomocné metody pro použití s tímto balíčkem, ale lze také podle uzlu serv
 var uri = createRelayListenUri([namespaceName], [path], [[token]], [[id]])
 ```
 
-Vytvoří platný hybridní připojení Azure Relay naslouchací proces identifikátor URI pro daný obor názvů a cestu. Tento identifikátor URI je možné potom verze přenosového WebSocketServer třídy.
+Vytvoří platný identifikátor URI naslouchacího procesu hybridního připojení Azure Relay pro daný obor názvů a cestu. Tento identifikátor URI je pak možné použít spolu s verzí Relay třídy WebSocketServer.
 
-- `namespaceName` (požadovaná): domény kvalifikovaný název oboru názvů Azure Relay k použití.
-- `path` (povinné) – název existující připojení hybridní Azure Relay v tomto oboru názvů.
-- `token` (volitelné) – u dřív vydaných Relay přístupový token, který je vložený v naslouchacím procesu identifikátoru URI (viz následující příklad).
-- `id` (volitelné) – sledování identifikátor, který umožňuje začátku do konce diagnostiky sledování požadavků.
+- `namespaceName` (povinné) – název kvalifikovaný pro doménu Azure Relay oboru názvů, který se má použít.
+- `path` (povinné) – název stávajícího Azure Relay Hybrid Connection v tomto oboru názvů.
+- `token` (volitelné) – dříve vydaný přístupový token přenosu, který je vložený v identifikátoru URI naslouchacího procesu (viz následující příklad).
+- `id` (volitelné) – identifikátor sledování, který umožňuje komplexní diagnostické sledování požadavků.
 
-`token` Hodnota je volitelná a by měla sloužit pouze pokud není možné k odeslání hlaviček protokolu HTTP spolu s metodou handshake protokolu WebSocket, jako je tomu u stack W3C protokolu WebSocket.                  
+Hodnota `token` je volitelná a měla by se používat jenom v případě, že není možné odesílat hlavičky HTTP společně s metodou handshake protokolu WebSocket, jak je to v případě zásobníku W3C WebSocket.                  
 
 
 #### <a name="createrelaysenduri"></a>createRelaySendUri
@@ -72,14 +72,14 @@ Vytvoří platný hybridní připojení Azure Relay naslouchací proces identifi
 var uri = createRelaySendUri([namespaceName], [path], [[token]], [[id]])
 ```
 
-Vytvoří platný odeslání hybridní připojení Azure Relay identifikátor URI pro daný obor názvů a cestu. Pomocí tohoto identifikátoru URI je možné pomocí libovolného objektu websocket na straně klienta.
+Vytvoří platný identifikátor URI pro odeslání Azure Relay hybridního připojení pro daný obor názvů a cestu. Tento identifikátor URI lze použít u libovolného klienta protokolu WebSocket.
 
-- `namespaceName` (požadovaná): domény kvalifikovaný název oboru názvů Azure Relay k použití.
-- `path` (povinné) – název existující připojení hybridní Azure Relay v tomto oboru názvů.
-- `token` (volitelné) – u dřív vydaných Relay přístupový token, který je součástí odeslat identifikátoru URI (viz následující příklad).
-- `id` (volitelné) – sledování identifikátor, který umožňuje začátku do konce diagnostiky sledování požadavků.
+- `namespaceName` (povinné) – název kvalifikovaný pro doménu Azure Relay oboru názvů, který se má použít.
+- `path` (povinné) – název stávajícího Azure Relay Hybrid Connection v tomto oboru názvů.
+- `token` (volitelné) – dříve vydaný přístupový token přenosu, který je vložený v identifikátoru URI pro odeslání (viz následující příklad).
+- `id` (volitelné) – identifikátor sledování, který umožňuje komplexní diagnostické sledování požadavků.
 
-`token` Hodnota je volitelná a by měla sloužit pouze pokud není možné k odeslání hlaviček protokolu HTTP spolu s metodou handshake protokolu WebSocket, jako je tomu u stack W3C protokolu WebSocket.                   
+Hodnota `token` je volitelná a měla by se používat jenom v případě, že není možné odesílat hlavičky HTTP společně s metodou handshake protokolu WebSocket, jak je to v případě zásobníku W3C WebSocket.                   
 
 
 #### <a name="createrelaytoken"></a>createRelayToken 
@@ -88,14 +88,14 @@ Vytvoří platný odeslání hybridní připojení Azure Relay identifikátor UR
 var token = createRelayToken([uri], [ruleName], [key], [[expirationSeconds]])
 ```
 
-Vytvoří token Azure Relay sdíleného přístupového podpisu (SAS) pro danou cílový identifikátor URI, pravidlo SAS a klíč SAS pro pravidlo, který je platný pro zadaný počet sekund nebo hodinu z aktuální instance Pokud vynecháte argument vypršení platnosti.
+Vytvoří token SAS (Azure Relay Shared Access Signature) pro daný cílový identifikátor URI, pravidlo SAS a klíč pravidla SAS, který je platný pro daný počet sekund nebo hodinu od aktuálního času, pokud je argument vypršení platnosti vynechán.
 
-- `uri` (požadovaná): identifikátor URI, pro který má být vydaný token. Identifikátor URI je normalizovány na použití schématu HTTP a odebrána informací řetězce dotazu.
-- `ruleName` (povinné) – název pro entitu reprezentována daný identifikátor URI nebo pro obor názvů reprezentována část hostitele identifikátoru URI SAS pravidla.
-- `key` (povinné) – platný klíč SAS pravidla. 
-- `expirationSeconds` (volitelné) – počet sekund, dokud vygenerovaný token má vypršet jeho platnost. Pokud není zadán, výchozí hodnota je 1 hodiny (3600).
+- `uri` (povinné) – identifikátor URI, pro který se má token vystavit. Identifikátor URI je normalizován na použití schématu HTTP a informace o řetězci dotazu jsou odstraněny.
+- `ruleName` (povinné) – název pravidla SAS buď pro entitu reprezentované daným identifikátorem URI, nebo pro obor názvů reprezentovaný částí hostitele identifikátoru URI.
+- `key` (povinné) – platný klíč pro pravidlo SAS. 
+- `expirationSeconds` (volitelné) – počet sekund do vypršení platnosti vygenerovaného tokenu. Pokud není zadaný, výchozí hodnota je 1 hodina (3600).
 
-Vydaný token uděluje práva spojená se zadaným pravidlem SAS pro danou dobu trvání.
+Vydaný token připůjčuje práva přidružená k zadanému pravidlu SAS pro danou dobu trvání.
 
 #### <a name="appendrelaytoken"></a>appendRelayToken
 
@@ -103,13 +103,13 @@ Vydaný token uděluje práva spojená se zadaným pravidlem SAS pro danou dobu 
 var uri = appendRelayToken([uri], [ruleName], [key], [[expirationSeconds]])
 ```
 
-Tato metoda je funkčně srovnatelný s `createRelayToken` metoda uvedeno dříve, ale vrátí token správně připojeny k vstup identifikátoru URI.
+Tato metoda je funkčně ekvivalentní metodě `createRelayToken` popsané dříve, ale vrátí token správně připojený ke vstupnímu identifikátoru URI.
 
-### <a name="class-wsrelayedserver"></a>Třída ws. RelayedServer
+### <a name="class-wsrelayedserver"></a>Třída WS. RelayedServer
 
-`hycows.RelayedServer` Třídy se o alternativu k `ws.Server` třídu, která nepřijímá požadavky na místní sítě, ale delegáty naslouchání ke službě Azure Relay.
+Třída `hycows.RelayedServer` je alternativou ke třídě `ws.Server`, která nenaslouchá v místní síti, ale deleguje naslouchá službě Azure Relay.
 
-Dvě třídy jsou většinou smlouvy kompatibilní, to znamená, že stávající aplikace s využitím `ws.Server` třídy lze snadno změnit na použití verze přes předávací službu. Hlavní rozdíly jsou v konstruktoru a dostupných možností.
+Tyto dvě třídy jsou většinou kompatibilní se smlouvou, což znamená, že existující aplikaci, která používá třídu `ws.Server`, lze snadno změnit na použití předané verze. Hlavní rozdíly jsou v konstruktoru a v dostupných možnostech.
 
 #### <a name="constructor"></a>Konstruktor  
 
@@ -124,24 +124,24 @@ var wss = new server(
     });
 ```
 
-`RelayedServer` Konstruktor podporuje jinou sadu argumentů, než `Server`, protože se nejedná o samostatnou naslouchací proces, nebo může být vložen do existující architekturu naslouchací proces protokolu HTTP. K dispozici také méně možností od do služby Relay je do značné míry delegování správy pomocí protokolu WebSocket.
+Konstruktor `RelayedServer` podporuje jinou sadu argumentů než `Server`, protože se nejedná o samostatný naslouchací proces, nebo může být vložen do existujícího rozhraní naslouchacího procesu HTTP. K dispozici je také méně dostupných možností, protože správa protokolu WebSocket je v podstatě delegována na předávací službu.
 
 Argumenty konstruktoru:
 
-- `server` (povinné) – úplný identifikátor URI pro hybridní připojení. název, na které se mají očekávat, obvykle zkonstruován pomocí WebSocket.createRelayListenUri() Pomocná metoda.
-- `token` Tento argument (povinné) – obsahuje řetězec dříve vystaveného tokenu nebo funkce zpětného volání, která může být volána k získání tokenu řetězce. Možnost zpětného volání je upřednostňované, protože umožňuje obnovit token.
+- `server` (povinné) – plně kvalifikovaný identifikátor URI pro název hybridního připojení, na kterém se má naslouchat, obvykle vytvořený pomocí pomocné metody WebSocket. createRelayListenUri ().
+- `token` (povinné) – Tento argument obsahuje buď dříve vydaný řetězec tokenu, nebo funkci zpětného volání, která může být volána pro získání takového řetězce tokenu. Možnost zpětného volání je upřednostňovaná, protože umožňuje obnovení tokenu.
 
-#### <a name="events"></a>Duration
+#### <a name="events"></a>Akce
 
-`RelayedServer` instance vysílat tři události, které vám umožní zpracování příchozích požadavků, připojení a zjišťování chybové stavy. Musí přihlásit k odběru `connect` událostí ke zpracování zpráv. 
+instance `RelayedServer` generují tři události, které umožňují zpracovávat příchozí požadavky, navázat připojení a detekovat chybové stavy. Abyste mohli zpracovávat zprávy, musíte se přihlásit k odběru události `connect`. 
 
-##### <a name="headers"></a>Záhlaví
+##### <a name="headers"></a>záhlaví
 
 ```JavaScript 
 function(headers)
 ```
 
-`headers` Událost se vyvolá, těsně před plánovaným přijmout příchozí připojení k povolení úprav hlavičky k odeslání do klienta. 
+Událost `headers` je vyvolána těsně před přijetím příchozího připojení, což umožňuje změnu hlaviček odesílaných klientovi. 
 
 ##### <a name="connection"></a>připojení
 
@@ -149,7 +149,7 @@ function(headers)
 function(socket)
 ```
 
-Emitovány při přijetí nového připojení pomocí protokolu WebSocket. Objekt je typu `ws.WebSocket`, stejně jako s základní balíčku.
+Vygenerováno při přijetí nového připojení pomocí protokolu WebSocket. Objekt je typu `ws.WebSocket`stejný jako u základního balíčku.
 
 
 ##### <a name="error"></a>error
@@ -158,11 +158,11 @@ Emitovány při přijetí nového připojení pomocí protokolu WebSocket. Objek
 function(error)
 ```
 
-Pokud podkladový server generuje chybu, je předán tady.  
+Pokud podkladový Server vygeneruje chybu, přepošle se sem.  
 
 #### <a name="helpers"></a>Pomocné rutiny
 
-Pro zjednodušení od serveru přes předávací službu a okamžitě se přihlásíte k odběru příchozí připojení, balíček zveřejňuje jednoduché pomocná funkce, který se použije také v příkladech, následujícím způsobem:
+Aby bylo možné zjednodušit spuštění předaného serveru a okamžitě se přihlásit k odběru příchozích připojení, balíček zpřístupňuje jednoduchou pomocnou funkci, která se používá také v příkladech:
 
 ##### <a name="createrelayedlistener"></a>createRelayedListener
 
@@ -191,11 +191,11 @@ var wss = WebSocket.createRelayedServer(
 var server = createRelayedServer([options], [connectCallback] )
 ```
 
-Tato metoda volá konstruktor k vytvoření nové instance RelayedServer a pak přihlášeno zpětné volání na událost "připojení".
+Tato metoda volá konstruktor pro vytvoření nové instance třídy RelayedServer a pak se přihlásí k odběru události ' Connection ' poskytnuté zpětné volání.
  
 ##### <a name="relayedconnect"></a>relayedConnect
 
-Jednoduše zrcadlení `createRelayedServer` pomocná funkce, `relayedConnect` vytvoří připojení klienta a odebírá "Otevřít" události na výsledný soketu.
+Pouhým zrcadlením funkce `createRelayedServer` Pomocník pro `relayedConnect` vytvoří připojení klienta a přihlásí se k odběru události Open výsledného soketu.
 
 ```JavaScript
 var uri = WebSocket.createRelaySendUri(ns, path);
@@ -208,7 +208,7 @@ WebSocket.relayedConnect(
 );
 ```
 
-## <a name="next-steps"></a>Další postup
-Další informace o Azure Relay, najdete pomocí těchto odkazů:
+## <a name="next-steps"></a>Další kroky
+Další informace o Azure Relay najdete na těchto odkazech:
 * [Co je Azure Relay?](relay-what-is-it.md)
-* [K dispozici předávání přes rozhraní API](relay-api-overview.md)
+* [Dostupná předávací rozhraní API](relay-api-overview.md)

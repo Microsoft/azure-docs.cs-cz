@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18da289f9d364fa79023809324d59b89b8ac898c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b2c1a088e4c200dcc4a2ff35db942e3eb8480674
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768108"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512087"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Řízené ověřování hybridního připojení k Azure AD
 
@@ -88,7 +88,7 @@ Pokud používáte AD FS, musíte nejprve nakonfigurovat spojovací bod služby 
 
 Aby bylo možné zaregistrovat zařízení Windows nižší úrovně, musí organizace nainstalovat [microsoft Workplace JOIN pro počítače s jiným systémem než Windows 10](https://www.microsoft.com/download/details.aspx?id=53554) , které jsou k dispozici na webu Microsoft Download Center.
 
-Balíček můžete nasadit pomocí systému distribuce softwaru, jako je [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager). Balíček podporuje standardní možnosti bezobslužné instalace s parametrem quiet. Aktuální větev Configuration Manager nabízí výhody oproti starším verzím, jako je schopnost sledovat dokončené registrace.
+Balíček můžete nasadit pomocí systému distribuce softwaru, jako je [Microsoft Endpoint Configuration Manager](https://docs.microsoft.com/configmgr/). Balíček podporuje standardní možnosti bezobslužné instalace s parametrem quiet. Aktuální větev Configuration Manager nabízí výhody oproti starším verzím, jako je schopnost sledovat dokončené registrace.
 
 Instalační program vytvoří v systému naplánovanou úlohu, která běží v uživatelském kontextu. Úkol se aktivuje, když se uživatel přihlásí k Windows. Úloha se tiše připojí k zařízení pomocí Azure AD s přihlašovacími údaji uživatele po ověření ve službě Azure AD.
 
