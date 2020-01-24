@@ -16,19 +16,18 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4babb7e869f4fc83bcdb530a580a29dda234293
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: e57e027848294cbff570cb64d0ad4bbf05693ffe
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373779"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76699797"
 ---
 # <a name="web-api"></a>Webové rozhraní API
 
 Webové aplikace API jsou webové aplikace, které potřebují získat prostředky z webového rozhraní API. V tomto scénáři existují dva typy identity, které může webová aplikace použít k ověření a volání webového rozhraní API:
 
-- **Identita aplikace** – tento scénář používá udělení přihlašovacích údajů klienta OAuth 2,0 k ověření jako aplikace a přístup k webovému rozhraní API. Při použití identity aplikace může webové rozhraní API zjistit, že webová aplikace ji volá, protože webové rozhraní API neobdrží žádné informace o uživateli. Pokud aplikace obdrží informace o uživateli, bude zaslána prostřednictvím aplikačního protokolu a není podepsána službou Azure AD. Webové rozhraní API důvěřuje, že webová aplikace ověřila daného uživatele. Z tohoto důvodu se tento model nazývá důvěryhodný podsystém.
+- **Identita aplikace** – tento scénář používá udělení přihlašovacích údajů klienta OAuth 2,0 k ověření jako aplikace a přístup k webovému rozhraní API. Při použití identity aplikace může webové rozhraní API zjistit, že webová aplikace ji volá, protože webové rozhraní API neobdrží žádné informace o uživateli. Pokud aplikace obdrží informace o uživateli, bude zaslána prostřednictvím aplikačního protokolu a není podepsána službou Azure AD. Webové rozhraní API důvěřuje, že webová aplikace ověřila daného uživatele. Z tohoto důvodu tento model se nazývá důvěryhodný subsystém.
 - **Identita delegovaného uživatele** – tento scénář je možné provést dvěma způsoby: OpenID Connect a autorizační kód OAuth 2,0 poskytuje důvěrnému klientovi. Webová aplikace získá přístupový token pro uživatele, který prokáže webovému rozhraní API, které uživatel úspěšně ověřil do webové aplikace a že webová aplikace byla schopna získat identitu delegovaného uživatele pro volání webového rozhraní API. Tento přístupový token se pošle v žádosti webovému rozhraní API, které uživatele autorizuje a vrátí požadovaný prostředek.
 
 V toku níže jsou popsány typy identity identity aplikace i delegovaný uživatel. Hlavním rozdílem mezi nimi je, že identita delegovaného uživatele musí nejdřív získat autorizační kód, než se uživatel může přihlásit a získat přístup k webovému rozhraní API.
@@ -42,7 +41,7 @@ V toku níže jsou popsány typy identity identity aplikace i delegovaný uživa
 ### <a name="application-identity-with-oauth-20-client-credentials-grant"></a>Identita aplikace s udělenými přihlašovacími údaji klienta OAuth 2,0
 
 1. Uživatel je přihlášený k Azure AD ve webové aplikaci (Další informace najdete v části **Web Apps** ).
-1. Webová aplikace musí získat přístupový token, aby se mohl ověřit ve webovém rozhraní API a načíst požadovaný prostředek. Vytvoří požadavek na koncový bod tokenu služby Azure AD, který poskytuje přihlašovací údaje, ID aplikace a identifikátor URI ID aplikace webového rozhraní API.
+1. Webová aplikace musí získat přístupový token, takže ho můžete ověřit do webového rozhraní API a získat požadovaný prostředek. Vytvoří požadavek na koncový bod tokenu služby Azure AD, který poskytuje přihlašovací údaje, ID aplikace a identifikátor URI ID aplikace webového rozhraní API.
 1. Azure AD ověří aplikaci a vrátí přístupový token JWT, který se používá k volání webového rozhraní API.
 1. Přes protokol HTTPS používá webová aplikace vrácený přístupový token JWT k přidání řetězce JWT s označením "nosiče" v autorizační hlavičce požadavku do webového rozhraní API. Webové rozhraní API potom ověří token JWT a pokud je ověření úspěšné, vrátí požadovaný prostředek.
 

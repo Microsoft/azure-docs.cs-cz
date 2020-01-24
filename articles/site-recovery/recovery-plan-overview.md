@@ -2,25 +2,27 @@
 title: O plánech obnovení v Azure Site Recovery
 description: Přečtěte si o plánech obnovení v Azure Site Recovery.
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.openlocfilehash: 1dd83be03c5b412708e89058ce7667a2ddfef530
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 01/23/2020
+ms.openlocfilehash: beb92bd62d011ef8aaf304dbb769e7694e6d7e60
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497890"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705849"
 ---
 # <a name="about-recovery-plans"></a>Plány obnovení
 
 Tento článek poskytuje přehled plánů obnovení v [Azure Site Recovery](site-recovery-overview.md).
 
-Plán obnovení shromažďuje počítače do skupin pro obnovení. Plán obnovení vám pomůže definovat proces systematického obnovení tím, že vytvoří malé nezávislé jednotky, u kterých můžete převzít služby při selhání. Jednotka obvykle představuje aplikaci ve vašem prostředí.
+Plán obnovení shromažďuje počítače do skupin obnovení pro účely převzetí služeb při selhání. Plán obnovení vám pomůže definovat proces systematického obnovení tím, že vytvoří malé nezávislé jednotky, u kterých můžete převzít služby při selhání. Jednotka obvykle představuje aplikaci ve vašem prostředí.
 
 - Plán obnovení definuje, jak počítače převezmou služby při selhání, a pořadí, ve kterém se spouštějí po převzetí služeb při selhání.
+- Plány obnovení se používají pro převzetí služeb při selhání do Azure, ale nedají se použít k navrácení služeb po obnovení z Azure.
 - Do jednoho plánu obnovení lze přidat až 100 chráněných instancí.
 - Plán můžete přizpůsobit tak, že do něj přidáte pořadí, pokyny a úkoly.
 - Po definování plánu můžete na něm spustit převzetí služeb při selhání.
 - Na počítače se dá odkazovat v několika plánech obnovení, ve kterých následné plány přeskočí nasazení nebo spuštění počítače, pokud se dřív nasadil pomocí jiného plánu obnovení.
+
 
 
 ### <a name="why-use-a-recovery-plan"></a>Proč použít plán obnovení?
@@ -60,11 +62,11 @@ V takovém případě se toto přizpůsobení stane při spuštění převzetí 
 
 Obnovování rozsáhlých aplikací může být složitý úkol. Ruční kroky činí proces náchylný k chybě a osoba, která přebírá převzetí služeb při selhání, nemusí vědět o všech složitými rozhraními App. Plán obnovení můžete použít k vytvoření objednávky a automatizaci akcí potřebných v každém kroku, a to pomocí Azure Automation Runbooky pro převzetí služeb při selhání do Azure nebo skriptů. Pro úlohy, které nemůžou být automatizované, můžete do plánů obnovení vložit pauzy pro ruční akce. Existuje několik typů úloh, které můžete nakonfigurovat:
 
-* **Úlohy na virtuálním počítači Azure po převzetí služeb při selhání**: když převezmete služby do Azure, obvykle je potřeba provést akce, abyste se mohli k virtuálnímu počítači připojit po převzetí služeb při selhání. Příklad: 
+* **Úlohy na virtuálním počítači Azure po převzetí služeb při selhání**: když převezmete služby do Azure, obvykle je potřeba provést akce, abyste se mohli k virtuálnímu počítači připojit po převzetí služeb při selhání. Například: 
     * Vytvořte veřejnou IP adresu na virtuálním počítači Azure.
     * Přiřaďte skupinu zabezpečení sítě k síťovému adaptéru virtuálního počítače Azure.
     * Přidejte Nástroj pro vyrovnávání zatížení do skupiny dostupnosti.
-* **Úkoly v rámci virtuálního počítače po převzetí služeb při selhání**: tyto úlohy obvykle překonfigurují aplikaci běžící na počítači, aby i nadále fungovala správně v novém prostředí. Příklad:
+* **Úkoly v rámci virtuálního počítače po převzetí služeb při selhání**: tyto úlohy obvykle překonfigurují aplikaci běžící na počítači, aby i nadále fungovala správně v novém prostředí. Například:
     * Upravte připojovací řetězec databáze v počítači.
     * Změňte konfiguraci nebo pravidla webového serveru.
 

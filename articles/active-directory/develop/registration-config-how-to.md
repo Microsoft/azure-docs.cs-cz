@@ -15,13 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6547266b92cbeee2754871d4cdca7a2de261fc8
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 5dbe9d6eed6c546af0ed2cb35a0a62e9943503a9
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325352"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76702789"
 ---
 # <a name="how-to-configure-endpoints"></a>Postup konfigurace koncových bodů
 
@@ -37,5 +36,5 @@ Koncové body ověřování pro vaši aplikaci najdete v [Azure Portal](https://
 
 -   Použijte koncový bod specifický pro protokol ověřování, který používáte, ve spojení s ID aplikace, abyste mohli vytvořit žádost o ověření specifickou pro vaši aplikaci.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Příručka pro vývojáře pro službu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)

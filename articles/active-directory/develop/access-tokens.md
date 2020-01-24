@@ -12,13 +12,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, fasttrack-edit
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61bcdac38b9b8765c7c3d575bb632c9291e46b90
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d6df9a35191cf9fe9c2803116d5905a74f21e964
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74845854"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76699474"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Tokeny přístupu Microsoft Identity Platform
 

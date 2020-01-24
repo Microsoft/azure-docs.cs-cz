@@ -15,13 +15,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4111945d11fd9b42ae8a7daba9ec993a875a5fd0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5673465c9ff1afe83c5d9d549a78e1547a59b72f
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423714"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701956"
 ---
 # <a name="protected-web-api---move-to-production"></a>Chráněné webové rozhraní API – přesun do produkčního prostředí
 

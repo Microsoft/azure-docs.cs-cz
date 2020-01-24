@@ -15,13 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e31d4fc47c31fb6c5c63f5855ab835f7fc6b6cc
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: ae5f0f0cd42c4b734e14a66bc7ba9cf5bbfe61a4
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325290"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701480"
 ---
 # <a name="how-to-configure-a-new-multi-tenant-application"></a>Jak nakonfigurovat novou aplikaci pro více tenantů
 
@@ -32,5 +31,5 @@ Tady je seznam doporučených témat, kde najdete další informace o víceklien
 - Podrobné informace o [tom, jak se používá rozhraní pro vyjádření souhlasu Azure AD k implementaci souhlasu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications), který je vyžadován pro víceklientské aplikace
 - Podrobnější informace najdete v tématu [Konfigurace a kódování aplikace pro více tenantů](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview), včetně postupu registrace, použití "běžného" koncového bodu, implementace souhlasu "User" a "admin", jak implementovat pokročilejší scénáře s více vrstvami.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

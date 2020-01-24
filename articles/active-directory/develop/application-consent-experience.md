@@ -14,13 +14,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f16278304b4d536b1ef2cf46291b481bf319b6c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 82d64895f4bf2ef6eb1fdb248f470f981d1cb426
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918147"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698165"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Prostředí vyjádření souhlasu s aplikací Azure AD
 
@@ -46,7 +45,7 @@ Následující diagram a tabulka obsahují informace o stavebních blocích výz
 | # | Součást | Účel |
 | ----- | ----- | ----- |
 | 1\. místo | Identifikátor uživatele | Tento identifikátor představuje uživatele, který klientská aplikace žádá o přístup k chráněným prostředkům jménem. |
-| 2 | Název | Název se změní na základě toho, jestli uživatelé procházejí v toku souhlasu uživatele nebo správce. V toku souhlasu uživatele bude mít název "požadovaná oprávnění", zatímco v toku souhlasu správce bude mít název další řádek "přijmout pro vaši organizaci". |
+| 2 | Nadpis | Název se změní na základě toho, jestli uživatelé procházejí v toku souhlasu uživatele nebo správce. V toku souhlasu uživatele bude mít název "požadovaná oprávnění", zatímco v toku souhlasu správce bude mít název další řádek "přijmout pro vaši organizaci". |
 | 3 | Logo aplikace | Tento obrázek by měl uživatelům pomáhat s vizuálním znázorněním, zda je tato aplikace aplikací, ke které má přístup. Tuto image poskytují vývojáři aplikací a vlastnictví této image se neověřuje. |
 | 4 | App name (Název aplikace) | Tato hodnota by měla informovat uživatele, které aplikace žádá o přístup ke svým datům. Poznámka: Tento název poskytují vývojáři a vlastnictví tohoto názvu aplikace se neověřuje. |
 | 5 | Doména vydavatele | Tato hodnota by měla uživatelům poskytnout doménu, kterou by mohli vyhodnotit důvěryhodnost. Tuto doménu poskytují vývojáři a je ověřeno vlastnictví této domény vydavatele. |

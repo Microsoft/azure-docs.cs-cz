@@ -10,13 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 08/12/2019
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f03e92c1bfd86d15bf582487e3e92a3713b63e2
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: c01a7a9c5adb050d98840938260c8486ecdeb199
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619352"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705186"
 ---
 # <a name="set-up-a-mobile-device-as-your-two-factor-verification-method"></a>Nastavení mobilního zařízení jako metody ověřování dvou faktorů
 
@@ -27,17 +26,17 @@ Mobilní zařízení můžete nastavit tak, aby fungovalo jako metoda dvou fakto
 
 ## <a name="set-up-your-mobile-device-to-use-a-text-message-as-your-verification-method"></a>Nastavte si mobilní zařízení, aby jako metodu ověřování používalo textovou zprávu.
 
-1. Na stránce **Další ověření zabezpečení** vyberte možnost **telefon pro ověření** v **kroku 1: Jak vás máme kontaktovat** vaši oblastí, vyberte v rozevíracím seznamu vaši zemi nebo oblast a pak zadejte telefonní číslo mobilního zařízení.
+1. Na stránce **Další ověření zabezpečení** vyberte možnost **telefon pro ověření** z **kroku 1: jak vás máme kontaktovat** oblast, v rozevíracím seznamu vyberte zemi nebo oblast a pak zadejte telefonní číslo mobilního zařízení.
 
 2. V oblasti **Metoda** vyberte **Odeslat zprávu kód podle textové zprávy** a pak vyberte **Další**.
 
     ![Stránka Další ověření zabezpečení s ověřováním telefon a textová zpráva](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message.png)
 
-3. Zadejte ověřovací kód z textové zprávy odeslané od Microsoftu do **kroku 2: Do vaší oblasti pro telefon** jsme poslali textovou zprávu a pak vyberete **ověřit**.
+3. Zadejte ověřovací kód z textové zprávy odeslané od Microsoftu do **kroku 2: poslali jsme vám textovou zprávu do vaší telefonní** oblasti a pak vyberete **ověřit**.
 
     ![Stránka Další ověření zabezpečení s ověřováním telefon a textová zpráva](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message-test.png)
 
-4. **V kroku 3: Používejte existující oblast aplikací** , zkopírujte zadané heslo aplikace a vložte ho někam do trezoru.
+4. V **kroku 3: pokračujte v oblasti používání stávajících aplikací** , zkopírujte zadané heslo aplikace a vložte ho někam do trezoru.
 
     ![Oblast hesel aplikací na stránce dodatečného ověření zabezpečení](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 
@@ -48,7 +47,7 @@ Mobilní zařízení můžete nastavit tak, aby fungovalo jako metoda dvou fakto
 
 ## <a name="set-up-your-mobile-device-to-receive-a-phone-call"></a>Nastavení mobilního zařízení pro příjem telefonního hovoru
 
-1. Na stránce **Další ověření zabezpečení** vyberte možnost **telefon pro ověření** v **kroku 1: Jak vás máme kontaktovat** vaši oblastí, vyberte v rozevíracím seznamu vaši zemi nebo oblast a pak zadejte telefonní číslo mobilního zařízení.
+1. Na stránce **Další ověření zabezpečení** vyberte možnost **telefon pro ověření** z **kroku 1: jak vás máme kontaktovat** oblast, v rozevíracím seznamu vyberte zemi nebo oblast a pak zadejte telefonní číslo mobilního zařízení.
 
 2. Vyberte možnost **zavolat mi** z oblasti **Metoda** a pak vyberte **Další**.
 
@@ -58,7 +57,7 @@ Mobilní zařízení můžete nastavit tak, aby fungovalo jako metoda dvou fakto
 
     ![Testování zadaného telefonního čísla](media/multi-factor-authentication-verification-methods/multi-factor-authentication-phone-call-test.png)
 
-4. **V kroku 3: Používejte existující oblast aplikací** , zkopírujte zadané heslo aplikace a vložte ho někam do trezoru.
+4. V **kroku 3: pokračujte v oblasti používání stávajících aplikací** , zkopírujte zadané heslo aplikace a vložte ho někam do trezoru.
 
     ![Oblast hesel aplikací na stránce dodatečného ověření zabezpečení](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 
@@ -67,7 +66,7 @@ Mobilní zařízení můžete nastavit tak, aby fungovalo jako metoda dvou fakto
 
 5. Vyberte **Done** (Hotovo).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Po nastavení dvojúrovňové metody ověřování můžete přidat další metody, spravovat nastavení a hesla aplikací, přihlašovat nebo získat pomoc s některými běžnými problémy souvisejícími s ověřováním dvou faktorů.
 

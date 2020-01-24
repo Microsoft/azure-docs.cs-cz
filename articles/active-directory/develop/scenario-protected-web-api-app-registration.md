@@ -16,13 +16,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86c36661dd8b5d43417ca1d845eef5cdb146f1e9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ffa5c0ff9aac636a584743f839d780d2df2db5ef
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74962521"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701990"
 ---
 # <a name="protected-web-api-app-registration"></a>Chráněné webové rozhraní API: registrace aplikace
 
@@ -135,7 +134,7 @@ Webové rozhraní API kontroluje aplikační roli. (To je vývojář způsob, ja
    >
    > Pokud si zachováte **přiřazení uživatelů?** nastavit na **ne**, *Azure AD nebude kontrolovat přiřazení role aplikace, když si klient vyžádá přístupový token pro vaše webové rozhraní API*. Jakýkoli Klient démona (to znamená, že každý klient používající tok přihlašovacích údajů klienta) bude moci získat přístupový token pro rozhraní API jenom tak, že určí cílovou skupinu. Každá aplikace bude mít přístup k rozhraní API bez nutnosti požádat o oprávnění. Ale vaše webové rozhraní API může vždy, jak je vysvětleno v předchozí části, ověřit, zda má aplikace správnou roli (která je autorizována správcem tenanta). Rozhraní API provede toto ověření tím, že ověří, že přístupový token má deklaraci identity rolí a že hodnota této deklarace je správná. (V našem případě je hodnota `access_as_application`.)
 
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky
 

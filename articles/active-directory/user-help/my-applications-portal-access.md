@@ -12,15 +12,14 @@ ms.date: 10/30/2019
 ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed450f67b152bef4eb68ac8252b586b62992aa0d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: dee6973a638a2cabc0ccc2138ed9db8b798f4d1c
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820398"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705118"
 ---
-# <a name="access-and-start-apps-from-the-my-apps-preview-portal"></a>Přístup a spouštění aplikací z portálu moje aplikace (Preview)
+# <a name="access-and-start-apps-from-the-my-apps-preview-portal"></a>Přístup k aplikacím a jejich spuštění z portálu Moje aplikace (Preview)
 
 Svůj pracovní nebo školní účet můžete použít na portálu web **Moje aplikace** (Preview) k zobrazení, uspořádání a spuštění mnoha cloudových aplikací vaší organizace. Pokud nemáte přístup k portálu **Moje aplikace** , požádejte o oprávnění pracovníky helpdesku vaší organizace.
 
@@ -53,7 +52,7 @@ Pokud máte oprávnění pro přístup k cloudovým aplikacím vaší organizace
 
 1. Přihlaste se ke svému pracovnímu nebo školnímu účtu na svém počítači.
 
-2. Otevřete podporovaný webový prohlížeč a přejdete na https://myapps.microsoft.comnebo použijte odkaz poskytovaný vaší organizací. Můžete být například přesměrováni na použití přizpůsobené stránky pro vaši organizaci, například `https://myapps.microsoft.com/contoso.com`.
+2. Otevřete podporovaný webový prohlížeč a přejdete na https://myapps.microsoft.com nebo použijte odkaz poskytovaný vaší organizací. Můžete být například přesměrováni na použití přizpůsobené stránky pro vaši organizaci, například `https://myapps.microsoft.com/contoso.com`.
 
     Zobrazí se stránka **aplikace** s informacemi o cloudových aplikacích vlastněných vaší organizací a k dispozici pro použití.
 
@@ -63,7 +62,7 @@ Umožňuje zobrazit a používat aplikace vaší organizace z aplikace Intune Ma
 
 1. Na mobilním zařízení Stáhněte a nainstalujte aplikaci Intune Managed Browser z [Apple App Storu](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) nebo [obchod Google Play](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser).
 
-2. Otevřete aplikaci Intune Managed Browser, navštivte https://myapps.microsoft.comnebo použijte odkaz poskytovaný vaší organizací. Můžete být například přesměrováni na přizpůsobenou stránku vaší organizace, například https://myapps.microsoft.com/contoso.com.
+2. Otevřete aplikaci Intune Managed Browser, navštivte https://myapps.microsoft.com nebo použijte odkaz poskytovaný vaší organizací. Můžete být například přesměrováni na přizpůsobenou stránku vaší organizace, například https://myapps.microsoft.com/contoso.com.
 
     Zobrazí se stránka **aplikace** s informacemi o cloudových aplikacích vlastněných vaší organizací a k dispozici pro použití.
 
@@ -73,7 +72,7 @@ Zobrazení a použití portálu **Moje aplikace** ze zařízení iPhone nebo iPa
 
 1. Na mobilním zařízení spusťte aplikaci webového prohlížeče, například Safari.
 
-2. Přejít na https://myapps.microsoft.comnebo použijte odkaz poskytovaný vaší organizací. Můžete být například přesměrováni na přizpůsobenou stránku vaší organizace, například https://myapps.microsoft.com/contoso.com.
+2. Přejít na https://myapps.microsoft.com nebo použijte odkaz poskytovaný vaší organizací. Můžete být například přesměrováni na přizpůsobenou stránku vaší organizace, například https://myapps.microsoft.com/contoso.com.
 
     Zobrazí se stránka **aplikace** s informacemi o cloudových aplikacích vlastněných vaší organizací a k dispozici pro použití.
 
@@ -83,7 +82,7 @@ Zobrazení a použití portálu **Moje aplikace** na zařízení s Androidem
 
 1. Na mobilním zařízení spusťte aplikaci webového prohlížeče, například Google Chrome.
 
-2. Přejít na https://myapps.microsoft.comnebo použijte odkaz poskytovaný vaší organizací. Můžete být například přesměrováni na přizpůsobenou stránku vaší organizace, například https://myapps.microsoft.com/contoso.com.
+2. Přejít na https://myapps.microsoft.com nebo použijte odkaz poskytovaný vaší organizací. Můžete být například přesměrováni na přizpůsobenou stránku vaší organizace, například https://myapps.microsoft.com/contoso.com.
 
     Zobrazí se stránka **aplikace** s informacemi o cloudových aplikacích vlastněných vaší organizací a k dispozici pro použití.
 

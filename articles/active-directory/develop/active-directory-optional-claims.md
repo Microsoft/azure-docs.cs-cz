@@ -12,13 +12,12 @@ ms.date: 12/08/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f221ed773677c28094d2e5eaecc10a191e84addb
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 1bc2c3a17aef232df184926dca5f70eac61b03ac
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638965"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698760"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Postupy: poskytnutí volitelných deklarací identity vaší aplikaci Azure AD
 
@@ -139,7 +138,7 @@ Volitelné deklarace identity pro aplikaci můžete nakonfigurovat prostřednict
 2. Vyberte **přidat volitelnou deklaraci identity**.
 3. Vyberte typ tokenu, který chcete konfigurovat.
 4. Vyberte volitelné deklarace, které se mají přidat.
-5. Klikněte na tlačítko **Add** (Přidat).
+5. Klikněte na tlačítko **Přidat**.
 
 **Konfigurace volitelných deklarací pomocí manifestu aplikace:**
 
@@ -257,7 +256,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
    - "Zabezpečení"
    - "DirectoryRole"
 
-   Příklad:
+   Například:
 
     ```json
         "groupMembershipClaims": "SecurityGroup"
@@ -382,7 +381,7 @@ K dispozici je několik možností aktualizace vlastností konfigurace identity 
     [![ukazuje, jak nakonfigurovat volitelné deklarace identity pomocí uživatelského rozhraní.](./media/active-directory-optional-claims/token-config-example.png)](./media/active-directory-optional-claims/token-config-example.png)
 
 **Konfigurace manifestu:**
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
 1. V nabídce na levé straně vyberte **Azure Active Directory** .
 1. V seznamu Najděte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity, a klikněte na ni.

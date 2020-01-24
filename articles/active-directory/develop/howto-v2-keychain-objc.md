@@ -13,13 +13,12 @@ ms.date: 08/28/2019
 ms.author: twhitney
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b4599549e15d6ebe4d0bd04f96c89df86b0c0cd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 52eb4eb5958357a90c1db773f45c9928e4652755
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917501"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696873"
 ---
 # <a name="configure-keychain"></a>Konfigurace klíčenky
 

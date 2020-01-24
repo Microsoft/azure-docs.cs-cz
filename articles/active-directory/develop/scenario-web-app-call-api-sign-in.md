@@ -14,13 +14,12 @@ ms.workload: identity
 ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5472b424f7d2b44b62e6e4495afaf7bdfbbc8439
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a77bb59afa753fa9d1655e787d4f7a18715ed2ca
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423514"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701582"
 ---
 # <a name="remove-accounts-from-the-cache-on-global-sign-out"></a>Odebrání účtů z mezipaměti při globálním odhlašování
 

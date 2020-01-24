@@ -13,13 +13,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ad2d6ec7a98a82917916bba2930149705ebfd87
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 57a66f73a2c0c37426c23c7274853148fd976ac8
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531067"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76699066"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postupy: přizpůsobení deklarací, které byly vygenerovány v tokenech pro konkrétní aplikaci v tenantovi (Preview)
 
@@ -328,7 +327,7 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 | Uživatel | facsimiletelephonenumber | Telefonní číslo faxu |
 | aplikace, prostředek, cílová skupina | displayName | Zobrazovaný název |
 | aplikace, prostředek, cílová skupina | s objekty | MVObjectID |
-| aplikace, prostředek, cílová skupina | značek | Značka objektu služby |
+| aplikace, prostředek, cílová skupina | tags | Značka objektu služby |
 | Společnost | tenantcountry | Země tenanta |
 
 **TransformationID:** Element TransformationID se musí poskytnout jenom v případě, že je zdrojový element nastavený na transformaci.

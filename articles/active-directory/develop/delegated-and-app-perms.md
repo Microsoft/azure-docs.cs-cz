@@ -11,13 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b349424b13addbbd5dcc384b9ae04aa7599f191f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5f7035472ae408987a14f06492a762b56fa657b8
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963694"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76697604"
 ---
 # <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>Rozpoznání rozdílů mezi delegovanými a aplikačními oprávněními
 

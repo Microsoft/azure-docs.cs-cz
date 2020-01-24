@@ -12,17 +12,16 @@ ms.date: 3/21/2019
 ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ecdffae61fbadfd5d975af942861e24589c6fbf
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 787a0b38cecd76c58017e6dff3da1607ac283d23
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233167"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704863"
 ---
 # <a name="update-your-profile-and-work-or-school-account-information-on-the-my-apps-portal"></a>Aktualizace informací o profilu a pracovním nebo školním účtu na portálu moje aplikace
 
-Svůj pracovní nebo školní účet můžete použít s portálem web **Moje aplikace** , abyste mohli zobrazit a spustit spoustu cloudových aplikací vaší organizace, abyste mohli aktualizovat některé z vašich informací o profilu a účtu, abyste viděli informace o **skupinách** a mohli provádět  **kontroly přístupu** pro vaše aplikace a skupiny. Pokud nemáte přístup k portálu **Moje aplikace** , musíte se obrátit na helpdesk, aby vám udělil oprávnění.
+Svůj pracovní nebo školní účet můžete použít s webem **Moje aplikace** na základě webu, abyste mohli zobrazit a spustit mnoho cloudových aplikací vaší organizace, abyste mohli aktualizovat některé z vašich informací o profilech a účtech, abyste viděli informace o **skupinách** a prováděli kontroly **přístupu** pro aplikace a skupiny. Pokud nemáte přístup k portálu **Moje aplikace** , musíte se obrátit na helpdesk, aby vám udělil oprávnění.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
@@ -77,7 +76,7 @@ Pokud chcete změnit heslo pro svůj pracovní nebo školní účet, můžete vy
 
     ![Stránka pro změnu hesla](media/my-apps-portal/my-apps-portal-change-password-page.png)
 
-3. Vyberte **Odeslat**.
+3. Vyberte **odeslat**.
 
     Vaše heslo se změnilo. Budete se muset přihlásit ke všem aplikacím, ke kterým jste se předtím přihlásili pomocí pracovního nebo školního účtu.
 
@@ -108,7 +107,7 @@ Dvojúrovňové ověřování vyžaduje, abyste předtím, než se dostanete k �
 
     - **Nastavte aplikaci Microsoft Authenticator.** Můžete zvolit nastavení aplikace Microsoft Authenticator, aby fungovala jako metoda ověřování. Další informace o aplikaci Microsoft Authenticator najdete v tématu [co je Microsoft Authenticator aplikace?](user-help-auth-app-overview.md)
 
-3. Kliknutím na **Uložit** uložte změny.
+3. Vyberte **Uložit** uložte provedené změny.
 
 ## <a name="review-your-organizations-terms-of-use-statement"></a>Kontrola podmínek použití v rámci vaší organizace
 

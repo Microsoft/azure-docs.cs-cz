@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f211d1c1a8a315ed9d999d146ce4eaf28af43206
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 009d9e864773fb3a2578504b043fb30302cedb22
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545037"
+ms.locfileid: "76704540"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -298,6 +298,15 @@ Všimněte si, že pokud jste provedli změny přímo ve sdílené složce Azure
 Pokud vaše PerItemErrorCount na serveru nebo soubory, které nejsou synchronizované na portálu, jsou pro danou relaci synchronizace větší než 0, znamená to, že některé položky selžou synchronizaci. Soubory a složky mohou mít vlastnosti, které brání jejich synchronizaci. Tyto vlastnosti mohou být trvalé a vyžadují explicitní akci pro pokračování synchronizace, například odebrání nepodporovaných znaků ze souboru nebo složky. Mohou být také přechodné, což znamená, že soubor nebo složka budou automaticky pokračovat v synchronizaci. například soubory s otevřenými popisovači budou po zavření souboru automaticky pokračovat v synchronizaci. Když modul Azure File Sync zjistí takový problém, vytvoří se protokol chyb, který se dá analyzovat tak, aby se vygenerovalo seznam položek, které se v tuto chvíli nesynchronizují správně.
 
 Pokud se chcete podívat na tyto chyby, spusťte skript prostředí PowerShell **FileSyncErrorsReport. ps1** (umístěný v instalačním adresáři agenta agenta Azure File Sync) a identifikujte soubory, které se nepodařilo synchronizovat kvůli otevřeným popisovačům, nepodporovaných znakům nebo jiným problémům. Pole položka Itempath oznamuje umístění souboru ve vztahu k adresáři kořenové synchronizace. Projděte si seznam běžných chyb synchronizace níže pro nápravné kroky.
+
+> [!Note]  
+> Pokud skript FileSyncErrorsReport. ps1 vrátí "nenašly se žádné chyby v souboru" nebo neobsahují chyby pro skupinu synchronizace, je příčina buď:
+>
+>- Příčina 1: poslední dokončená relace synchronizace neobsahovala chyby jednotlivých položek. Portál se brzy aktualizuje, aby se zobrazily 0 souborů, které se nesynchronizují. 
+>   - Zkontrolujte [ID události 9102](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) v protokolu událostí telemetrie a potvrďte, že PerItemErrorCount je 0. 
+>
+>- Příčina 2: protokol událostí ItemResults serveru byl zabalen z důvodu příliš velkého počtu chyb na jednu položku a protokol událostí již neobsahuje chyby pro tuto skupinu synchronizace.
+>   - Chcete-li tomuto problému zabránit, zvyšte velikost protokolu událostí ItemResults. Protokol událostí ItemResults najdete v části "Applications and Services Logs\Microsoft\FileSync\Agent" v tématu Prohlížeč událostí. 
 
 #### <a name="troubleshooting-per-filedirectory-sync-errors"></a>Řešení chyb při synchronizaci souborů nebo adresářů
 **ItemResults chyby synchronizace protokolu pro jednotlivé položky**  

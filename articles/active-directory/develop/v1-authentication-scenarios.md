@@ -17,13 +17,12 @@ ms.date: 10/14/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 783c840c4cfe2d8a1d2533e68d14f7b4a3993e64
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b6271805b9d14db9f2fdcd85d089962e9874f6ba
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423329"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701140"
 ---
 # <a name="what-is-authentication"></a>Co je ověřování?
 

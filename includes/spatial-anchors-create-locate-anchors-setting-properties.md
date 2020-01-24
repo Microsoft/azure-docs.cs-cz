@@ -1,11 +1,11 @@
 ---
-ms.openlocfilehash: db88a166cd59e96b459f8d4dcaa6a6d2b8c4ff99
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 5835e4c29fde280bcd00422ff71d28526a7f0f95
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174719"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76694640"
 ---
 ## <a name="set-properties"></a>Nastavení vlastností
 
-Můžete přidat některé vlastnosti při ukládání Cloudová ukotvení. Jako typ objektu, který je uložený nebo základní vlastnosti, například zda byste měli povolit pro interakce. To může být užitečné při zjišťování: okamžitě může vykreslit objekt pro uživatele, například obrázek rámce s prázdným obsahem. Pak různé stahování na pozadí načte podrobnosti další stav, například obrázek zobrazíte v rámci.
+Při ukládání prostorové kotvy do cloudu se můžete rozhodnout přidat některé vlastnosti. Podobně jako u typu ukládaného objektu nebo základních vlastností, jako je například, zda má být povolena interakce. To může být užitečné při zjišťování: objekt lze ihned vykreslit pro uživatele, například jako rámeček obrázku s prázdným obsahem. Pak jiný soubor ke stažení na pozadí získá další podrobnosti o stavu, například obrázek, který se má zobrazit v rámci rámečku.

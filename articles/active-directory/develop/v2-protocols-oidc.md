@@ -17,13 +17,12 @@ ms.date: 04/12/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 270fda72378b61e6011d5bbf4ce43496df045c25
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 97f05afadf38063a58e15e16cbf2e2c3d3e781ca
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423222"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700256"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity Platform a OpenID Connect Protocol
 
@@ -91,7 +90,7 @@ Pokud vaše webová aplikace potřebuje ověřit uživatele, může uživatele n
 > [!IMPORTANT]
 > Aby bylo možné úspěšně požádat o token ID z koncového bodu/Authorization, musí registrace aplikace na [portálu pro registraci](https://portal.azure.com) mít povolený implicitní udělení id_tokens na kartě ověřování (což nastaví příznak `oauth2AllowIdTokenImplicitFlow` v [manifestu aplikace](reference-app-manifest.md) na `true`). Pokud není povoleno, bude vrácena `unsupported_response`á Chyba: "Zadaná hodnota pro vstupní parametr" response_type "není pro tohoto klienta povolena. Očekávaná hodnota je Code (kód).
 
-Příklad:
+Například:
 
 ```
 // Line breaks are for legibility only.

@@ -12,13 +12,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: ryanwi
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c79d9226b3a8965ad6ce853350f2e4c46617b5b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 15206f394f63e9373a4a0016588bc1e2e2c65d44
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74843423"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76697706"
 ---
 # <a name="how-application-consent-works"></a>Jak funguje souhlas aplikace
 

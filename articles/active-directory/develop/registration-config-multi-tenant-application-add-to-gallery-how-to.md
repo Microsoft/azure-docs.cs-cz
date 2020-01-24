@@ -16,13 +16,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65572b53591e3b94c26df988c61f8a79d15439cf
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: be660ad42c1336d479f1793b20d2994682db1225
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74962997"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76702755"
 ---
 # <a name="add-a-multitenant-application-to-the-azure-ad-application-gallery"></a>Přidání víceklientské aplikace do Galerie aplikací Azure AD
 

@@ -12,13 +12,12 @@ ms.date: 03/21/2019
 ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11a7376720661e13a03be65df4ee180e0bca20c3
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 2987183900ad3232d46b2152bd52808ae96c802b
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383073"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704829"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>Řešení problémů s portálem moje aplikace
 
@@ -48,7 +47,7 @@ Pokud máte problémy s instalací zabezpečeného přihlašovacího rozhraní p
 
 Pokud máte potíže s přihlášením k portálu **Moje aplikace** , můžete vyzkoušet následující:
 
-- Ujistěte se, že používáte správnou adresu URL. Měla by to https://myapps.microsoft.com být nebo přizpůsobená stránka pro vaši organizaci, https://myapps.microsoft.com/contoso.com například.
+- Ujistěte se, že používáte správnou adresu URL. Měla by být https://myapps.microsoft.com nebo přizpůsobená stránka pro vaši organizaci, jako je například https://myapps.microsoft.com/contoso.com.
 
 - Ujistěte se, že heslo je správné a že nevypršela jeho platnost. Další informace najdete v tématu [resetování svého pracovního nebo školního hesla](active-directory-passwords-update-your-own-password.md).
 
@@ -82,7 +81,7 @@ Pokud se vám po spuštění aplikace z portálu **Moje aplikace** zobrazuje zpr
 
 Pokud po vyzkoušení těchto věcí stále nemáte přístup k aplikaci, je nutné, abyste se obrátili na technickou podporu vaší organizace.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Až se přihlásíte na portál **Moje aplikace** , můžete také aktualizovat informace o profilu a účtu, informace o skupině a informace o kontrole přístupu (Pokud máte oprávnění).
 

@@ -1,11 +1,11 @@
 ---
-ms.openlocfilehash: bcf03c7d342c6d9ad39fa6327f566f191133fd40
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9758cdf07d1ad56e6300e89eed2aa0b1da29e081
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174715"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76694549"
 ---
-## <a name="create-a-cloud-spatial-anchor"></a>Vytvoření prostorových ukotvení cloudu
+## <a name="create-a-cloud-spatial-anchor"></a>Vytvořit prostorovou kotvu cloudu
 
-Pokud chcete vytvořit Cloudová ukotvení, nejprve vytvořit ukotvení v systému AR vaší platformě a pak vytvořte protějšek cloudu. Můžete použít `CreateAnchorAsync()` metody.
+Chcete-li vytvořit cloudovou kotvu, vytvořte nejprve kotvu v systému AR vaší platformy a pak vytvořte protějšek cloudu. Použijete metodu `CreateAnchorAsync()`.

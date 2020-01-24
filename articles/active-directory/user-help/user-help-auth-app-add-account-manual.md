@@ -11,13 +11,12 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00f8a0e8d655f9412eceb7b0901ced829e490f78
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4dd38eee8ebc12ed01874611ec5e532a4d78ede2
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616098"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704795"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>Ruční přidání účtu do aplikace
 
@@ -34,7 +33,7 @@ Kódy poskytované pro vaše účty nerozlišují velká a malá písmena a při
 
     ![Obrazovka, která poskytuje kód QR](./media/user-help-auth-app-add-account-manual/auth-app-barcode.png)
 
-2. Otevřete aplikaci Microsoft Authenticator, v pravém horním rohu vyberte **Přidat účet** a potom vyberte **pracovní nebo školní účet**.
+2. Otevřete aplikaci Microsoft Authenticator, v pravém horním rohu vyberte **Přidat účet** **a potom** vyberte **pracovní nebo školní účet**.
 
 3. Vyberte **nebo zadejte kód ručně**.
 
@@ -84,7 +83,7 @@ Svůj účet Amazon můžete přidat tak, že zapnete dvojúrovňové ověřová
 
 1. V počítači vyberte možnost **Nekontrolovat čárový** kód z pole **zvolit způsob, jakým se zobrazí kódy** pro kód QR.
 
-    Zpráva s čárovým kódem se zobrazí s tajným kódem. Tuto zprávu nechte otevřenou, abyste mohli zobrazit tajný kód.
+    Zpráva s **čárovým** kódem se zobrazí s tajným kódem. Tuto zprávu nechte otevřenou, abyste mohli zobrazit tajný kód.
 
 2. Otevřete aplikaci Microsoft Authenticator, v pravém horním rohu vyberte **Přidat účet** **a** v pravém horním rohu vyberte **Další účet (Google, Facebook atd.)** a pak vyberte **nebo zadejte kód ručně**.
 
@@ -94,12 +93,12 @@ Svůj účet Amazon můžete přidat tak, že zapnete dvojúrovňové ověřová
 
 5. Na stránce **Přidat způsob ověření zálohy** zadejte na svém počítači čtyřmístný ověřovací kód, který vám poskytla metoda ověření zálohování pro váš účet Amazon, a pak vyberte **ověřit kód a pokračovat**.
 
-6. Na stránce skoro dokončeno rozhodněte, jestli počítač má mít důvěryhodné zařízení, a pak ho vyberte **. Zapněte dvoustupňové ověřování**.
+6. Na stránce skoro dokončeno rozhodněte, jestli počítač má mít důvěryhodné zařízení, a pak **ho vyberte. Zapněte dvoustupňové ověřování**.
 
     Zobrazí se stránka **Upřesnit nastavení zabezpečení** se zobrazenými aktualizovanými podrobnostmi o dvou faktorech ověřování.
 
     >[!NOTE]
-    >Další informace o dvojúrovňovém ověřování a účtu Amazon najdete v článku [o dvoustupňovém ověřování](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) a přihlašování [pomocí dvoustupňového ověřování](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440).    
+    >Další informace o dvojúrovňovém ověřování a účtu Amazon najdete v článku [o dvoustupňovém ověřování](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) a [přihlašování pomocí dvoustupňového ověřování](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440).    
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -14,13 +14,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 784de823e94aace6f91222c19c1ff8130c3f995f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: bcb4fa5eb5889698174b65eb576c9caf0c82f857
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74962929"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701667"
 ---
 # <a name="web-app-that-calls-web-apis---app-registration"></a>Webová aplikace, která volá webová rozhraní API – registrace aplikace
 

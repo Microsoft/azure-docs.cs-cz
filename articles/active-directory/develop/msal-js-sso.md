@@ -13,13 +13,12 @@ ms.date: 04/24/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 921c02e682c722a4e96f98fb0fc54d7fcbb82220
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 8080d4cf4c3f0091f7837b3fccead5474c42db55
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916260"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76695870"
 ---
 # <a name="single-sign-on-with-msaljs"></a>Jednotné přihlašování s využitím MSAL.js
 

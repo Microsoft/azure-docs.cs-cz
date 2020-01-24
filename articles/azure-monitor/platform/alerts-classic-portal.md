@@ -1,73 +1,73 @@
 ---
-title: Vytvořit, zobrazit a spravovat klasické metriky upozornění pomocí Azure monitoru
-description: Zjistěte, jak pomocí webu Azure portal, Powershellu nebo rozhraní příkazového řádku k vytvoření, zobrazení a Správa pravidel klasické metriky upozornění.
-author: snehithm
+title: Vytváření, zobrazování a Správa klasických výstrah metrik pomocí Azure Monitor
+description: Naučte se, jak pomocí Azure Portal, CLI nebo PowerShellu vytvářet, zobrazovat a spravovat pravidla upozornění na klasické metriky.
+author: yanivlavi
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.author: snmuvva
-ms.openlocfilehash: 4a225dbc8e84d65a6ea25f63627599e5bb7d2ced
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: yalavi
+ms.openlocfilehash: fd15d6bb9442d91c672fdd444313880001880e07
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66129786"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705594"
 ---
-# <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Vytvořit, zobrazit a spravovat klasické metriky upozornění pomocí Azure monitoru
+# <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Vytváření, zobrazování a Správa klasických výstrah metrik pomocí Azure Monitor
 
-Klasického upozornění metrik ve službě Azure Monitor poskytují způsob, jak chcete dostávat oznámení, když jeden metriky překročí prahovou hodnotu. Klasické metriky upozornění je starší funkce, které umožňuje upozorňování pouze na jiné jednodimenzionální metriky. Není existující novější funkce volána upozornění na metriku má vylepšené funkce prostřednictvím klasického upozornění metrik. Další informace o nových funkcích upozornění metrik v [přehled výstrah metrika](../../azure-monitor/platform/alerts-metric-overview.md). V tomto článku jsme popisuje, jak vytvořit, zobrazit a spravovat klasické pravidla upozornění na metriky prostřednictvím webu Azure portal, Powershell a rozhraní příkazového řádku Azure.
+Klasické výstrahy metrik v Azure Monitor poskytují způsob, jak dostávat oznámení, když jedna z vašich metrik překračuje prahovou hodnotu. Klasické výstrahy metriky jsou starší funkce, které umožňují upozorňování jenom na nedimenzionální metriky. Existují nové funkce s názvem výstrahy metriky, které mají vylepšené funkce pro klasické výstrahy metrik. Další informace o nových funkcích výstrah metrik najdete v článku [Přehled výstrah metrik](../../azure-monitor/platform/alerts-metric-overview.md). V tomto článku popíšeme, jak pomocí Azure Portal, Azure CLI a PowerShellu vytvářet, zobrazovat a spravovat pravidla metriky s klasickými výstrahami.
 
-## <a name="with-azure-portal"></a>Pomocí webu Azure portal
+## <a name="with-azure-portal"></a>S Azure Portal
 
-1. V [portál](https://portal.azure.com/), najděte prostředek, který chcete monitorovat a vyberte ji.
+1. Na [portálu](https://portal.azure.com/)vyhledejte prostředek, který chcete monitorovat, a pak ho vyberte.
 
-2. V **monitorování** vyberte **upozornění (klasická)** . Text a ikona se mohou mírně lišit pro různé prostředky. Pokud nenajdete **upozornění (klasická)** tady, je možné v **výstrahy** nebo **pravidla upozornění**.
+2. V části **monitorování** vyberte **výstrahy (klasické)** . Text a ikona se mohou mírně lišit pro různé prostředky. Pokud tady nenajdete **upozornění (Classic)** , můžete ho najít v okně **výstrahy** nebo **pravidla výstrah**.
 
-    ![Monitorování](media/alerts-classic-portal/AlertRulesButton.png)
+    ![Sledování](media/alerts-classic-portal/AlertRulesButton.png)
 
-3. Vyberte **přidat upozornění metriky (klasické)** příkaz a potom přejít k vyplnění polí.
+3. Vyberte příkaz **Přidat výstrahu metriky (Classic)** a potom vyplňte pole.
 
     ![Přidat výstrahu](media/alerts-classic-portal/AddAlertOnlyParamsPage.png)
 
-4. **Název** pravidlo výstrahy. Klikněte na tlačítko **popis**, která také se zobrazí v oznamovací e-maily.
+4. **Pojmenujte** pravidlo upozornění. Pak zvolte **Popis**, který se také zobrazí v oznamovacích e-mailech.
 
-5. Vyberte **metrika** , kterou chcete monitorovat. Klikněte na tlačítko **podmínku** a **prahová hodnota** hodnoty pro metriku. Se také rozhodnout **období** , kterou pravidlo metriky musí být splněny před výstrah aktivační události. Například pokud používáte období "za posledních 5 minut" a upozornění hledá CPU vyšší než 80 %, aktivuje výstrahu, když procesor byl trvale výše 80 % po dobu 5 minut. Po prvním nastane aktivační událost aktivuje akci, když procesor zůstává nižší než 80 % po dobu 5 minut. Metriky měření využití procesoru dochází každou minutu.
+5. Vyberte **metriku** , kterou chcete monitorovat. Pak zvolte **podmínku** a **prahovou** hodnotu pro metriku. Také vyberte časové **období** , po které musí být pravidlo metriky splněné před triggerem výstrahy. Pokud například použijete období "za posledních 5 minut" a vaše výstraha vyhledá procesor nad 80%, výstraha se aktivuje v případě, že byl procesor po dobu 5 minut konzistentně vyšší než 80%%. Po prvním triggeru se znovu spustí, když procesor zůstane pod 80% po dobu 5 minut. Měření metrik CPU probíhá každou minutu.
 
-6. Vyberte **e-mailu vlastníky...**  Pokud chcete, aby správci a spolusprávci e-mailová oznámení dostávat, když se aktivuje upozornění.
+6. Vyberte **vlastníky e-mailů...** Pokud chcete, aby správci a spolusprávci dostávali e-mailová oznámení, když se výstraha aktivuje.
 
-7. Pokud chcete odeslat oznámení na další e-mailové adresy, když se aktivuje upozornění, přidejte je **další email(s) správce** pole. Více e-mailů oddělte středníky v následujícím formátu: *e-mailu\@contoso.com;email2\@contoso.com*
+7. Pokud chcete odesílat oznámení na další e-mailové adresy, když se výstraha aktivuje, přidejte je do pole **Další e-maily správce** . Více e-mailů oddělujte středníkem v následujícím formátu: *e-mail\@contoso. com; email2\@contoso.com*
 
-8. Vložit platný identifikátor URI, **Webhooku** pole, pokud má být volána, když se aktivuje upozornění.
+8. Vložte do pole **Webhooku** platný identifikátor URI, pokud chcete, aby byl volán při aktivaci výstrahy.
 
-9. Pokud používáte Azure Automation, můžete vybrat sadu runbook spustit, když se aktivuje upozornění.
+9. Pokud používáte Azure Automation, můžete vybrat sadu Runbook, která se spustí, když se výstraha aktivuje.
 
-10. Vyberte **OK** k vytvoření upozornění.
+10. Vyberte **OK** a vytvořte výstrahu.
 
-Během několika minut upozornění je aktivní a aktivuje jak bylo popsáno dříve.
+Během několika minut je výstraha aktivní a triggery, jak je popsáno výše.
 
-Po vytvoření výstrahy, můžete ho vyberte a proveďte jednu z následujících úloh:
+Po vytvoření výstrahy ji můžete vybrat a provést jednu z následujících úloh:
 
-* Zobrazení grafu, který zobrazuje mezní hodnota metriky a skutečnými hodnotami z předchozího dne.
-* Upravit nebo odstranit.
-* **Zakázat** nebo **povolit** ji, pokud chcete dočasně zastavit nebo obnovit příjem oznámení pro toto upozornění.
+* Zobrazí graf, který zobrazuje prahovou hodnotu metriky a skutečné hodnoty z předchozího dne.
+* Upravte nebo odstraňte.
+* Tuto možnost **zakažte** nebo **Povolte** , pokud chcete dočasně zastavit nebo obnovit přijímání oznámení pro tuto výstrahu.
 
 ## <a name="with-azure-cli"></a>S využitím rozhraní příkazového řádku Azure
 
-V předchozích částech popsané, jak vytvořit, zobrazit a spravovat pravidla upozornění na metriky pomocí webu Azure portal. Tato část popisuje, jak provádět to stejné napříč platformami pomocí [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest). Nejrychlejší způsob, abyste mohli začít používat Azure CLI je prostřednictvím [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest).
+Předchozí části popisují, jak vytvářet, zobrazovat a spravovat pravidla upozornění metrik pomocí Azure Portal. V této části se dozvíte, jak to samé provést pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)pro různé platformy. Nejrychlejší způsob, jak začít používat Azure CLI, je prostřednictvím [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest).
 
-### <a name="get-all-classic-metric-alert-rules-in-a-resource-group"></a>Získat všechny klasické metriky upozornění pravidel ve skupině prostředků
+### <a name="get-all-classic-metric-alert-rules-in-a-resource-group"></a>Načíst všechna klasická pravidla upozornění na metriky ve skupině prostředků
 
 ```azurecli
 az monitor alert list --resource-group <group name>
 ```
 
-### <a name="see-details-of-a-particular-classic-metric-alert-rule"></a>Viz podrobnosti o konkrétní klasické metriky upozornění pravidla
+### <a name="see-details-of-a-particular-classic-metric-alert-rule"></a>Zobrazit podrobnosti konkrétního pravidla pro upozornění na klasické metriky
 
 ```azurecli
 az monitor alert show --resource-group <group name> --name <alert name>
 ```
 
-### <a name="create-a-classic-metric-alert-rule"></a>Vytvořit pravidlo klasické metriky upozornění
+### <a name="create-a-classic-metric-alert-rule"></a>Vytvoření pravidla pro upozornění na klasické metriky
 
 ```azurecli
 az monitor alert create --name <alert name> --resource-group <group name> \
@@ -77,7 +77,7 @@ az monitor alert create --name <alert name> --resource-group <group name> \
     --condition "<METRIC> {>,>=,<,<=} <THRESHOLD> {avg,min,max,total,last} ##h##m##s"
 ```
 
-### <a name="delete-a-classic-metric-alert-rule"></a>Odstranit pravidlo klasické metriky upozornění
+### <a name="delete-a-classic-metric-alert-rule"></a>Odstraní klasické pravidlo pro upozornění na metriku.
 
 ```azurecli
 az monitor alert delete --name <alert name> --resource-group <group name>
@@ -87,49 +87,49 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Tato část ukazuje, jak pomocí prostředí PowerShell příkazů vytvořit, zobrazit a spravovat klasické metriky upozornění. V příkladech v tomto článku ukazují, jak můžete použít rutiny Azure Monitor pro klasické metriky upozornění.
+V této části se dozvíte, jak pomocí příkazů PowerShellu vytvářet, zobrazovat a spravovat klasické výstrahy metriky. Příklady v článku ukazují, jak můžete použít rutiny Azure Monitor pro klasické výstrahy metrik.
 
-1. Pokud jste tak dosud neučinili, nastavení prostředí PowerShell pro spuštění ve vašem počítači. Další informace najdete v tématu [instalace a konfigurace Powershellu](/powershell/azure/overview). Můžete také zkontrolovat celý seznam rutin Powershellu pro monitorování Azure v [rutiny Azure Monitor (přehled)](https://docs.microsoft.com/powershell/module/az.applicationinsights).
+1. Pokud jste to ještě neudělali, nastavte PowerShell tak, aby se spouštěl v počítači. Další informace najdete v tématu [instalace a konfigurace PowerShellu](/powershell/azure/overview). Můžete si také projít celý seznam rutin Azure Monitor PowerShellu na [Azure monitor (Insights) rutiny](https://docs.microsoft.com/powershell/module/az.applicationinsights).
 
-2. Nejdřív přihlaste ke svému předplatnému Azure.
+2. Nejdřív se přihlaste ke svému předplatnému Azure.
 
     ```powershell
     Connect-AzAccount
     ```
 
-3. Zobrazí přihlašovací obrazovka. Jednou přihlásíte ve vašem účtu, TenantID, a jsou zobrazeny výchozí ID předplatného. Všechny rutiny služby Azure fungují v rámci výchozího předplatného. Chcete-li zobrazit seznam předplatných, ke kterým máte přístup, použijte následující příkaz:
+3. Zobrazí se přihlašovací obrazovka. Po přihlášení účtu se zobrazí TenantID a ID výchozího předplatného. Všechny rutiny Azure fungují v kontextu výchozího předplatného. Chcete-li zobrazit seznam předplatných, ke kterým máte přístup, použijte následující příkaz:
 
     ```powershell
     Get-AzSubscription
     ```
 
-4. Chcete-li změnit pracovního kontextu do jiného předplatného, použijte následující příkaz:
+4. Chcete-li změnit svůj pracovní kontext na jiné předplatné, použijte následující příkaz:
 
     ```powershell
     Set-AzContext -SubscriptionId <subscriptionid>
     ```
 
-5. Můžete načíst všechny klasické pravidla upozornění metrik pro skupinu prostředků:
+5. Pro skupinu prostředků můžete načíst všechna pravidla metriky pro Classic:
 
     ```powershell
     Get-AzAlertRule -ResourceGroup montest
     ```
 
-6. Můžete zobrazit podrobnosti o klasické metriky upozornění pravidla
+6. Můžete zobrazit podrobnosti pravidla upozornění na klasické metriky.
 
     ```powershell
     Get-AzAlertRule -Name simpletestCPU -ResourceGroup montest -DetailedOutput
     ```
 
-7. Můžete načíst všechna pravidla výstrah pro cílový prostředek. Všechna pravidla výstrah je třeba nastavit na virtuálním počítači.
+7. Můžete načíst všechna pravidla upozornění nastavená pro cílový prostředek. Například všechna pravidla upozornění nastavená na virtuálním počítači.
 
     ```powershell
     Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
     ```
 
-8. Klasické upozornění pravidla je možné vytvořit již prostřednictvím prostředí PowerShell. Chcete-li vytvořit pravidlo výstrahy je třeba použít nový ["Přidat AzMetricAlertRule"](/powershell/module/az.monitor/add-azmetricalertrule) příkazu.
+8. Klasická pravidla upozornění se už nedají vytvářet přes PowerShell. Chcete-li vytvořit pravidlo upozornění, musíte použít nový příkaz [Add-AzMetricAlertRule](/powershell/module/az.monitor/add-azmetricalertrule) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Vytvoření klasických upozornění na metriku pomocí šablony Resource Manageru](../../azure-monitor/platform/alerts-enable-template.md).
-- [Mít klasických upozornění na metriku oznámení do systému mimo Azure, pomocí webhooku](../../azure-monitor/platform/alerts-webhooks.md).
+- [Vytvořte klasické upozornění na metriku pomocí šablony Správce prostředků](../../azure-monitor/platform/alerts-enable-template.md).
+- [Máte klasické upozornění na metriku, které není systémem Azure pomocí Webhooku](../../azure-monitor/platform/alerts-webhooks.md).

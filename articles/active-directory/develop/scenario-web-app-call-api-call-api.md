@@ -14,13 +14,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68d62101c9b2c8055374f8fd0fcf694441081b4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a1857117d80c6725f801652606fc2d73067ea9da
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423562"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701616"
 ---
 # <a name="web-app-that-calls-web-apis---call-a-web-api"></a>Webová aplikace, která volá webová rozhraní API – volá webové rozhraní API.
 

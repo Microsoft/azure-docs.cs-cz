@@ -14,13 +14,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b08dd5602196bae0e250953c83320e69ddc6da83
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f2513b1fee022199f040ba0dcf83110c0b3b1365
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964816"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701565"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Webová aplikace, která přihlašuje uživatele: registrace aplikace
 
@@ -59,7 +58,7 @@ Pomocí těchto odkazů můžete spustit vytvoření webové aplikace:
    1. Pro **adresu URL odpovědi**přidejte **https://localhost:44321/signin-oidc** typu **Web**.
    1. V části **Upřesnit nastavení** nastavte **adresu URL pro odhlášení** na **https://localhost:44321/signout-oidc** .
    1. V části **Implicitní udělení** vyberte **Tokeny ID**.
-   1. Vyberte **Save** (Uložit).
+   1. Vyberte **Uložit**.
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -70,7 +69,7 @@ Pomocí těchto odkazů můžete spustit vytvoření webové aplikace:
 1. Výběrem možnosti **Registrovat** aplikaci vytvořte.
 1. Vyberte nabídku **ověřování** .
 1. V části **Upřesnit nastavení** | **implicitního přidělení** vyberte **tokeny ID**. Tato ukázka vyžaduje, aby byl [tok implicitního udělení](v2-oauth2-implicit-grant-flow.md) povolen pro přihlášení uživatele.
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 

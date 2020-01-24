@@ -1,6 +1,6 @@
 ---
-title: Sign in users & call Microsoft Graph API on Android (v1.0) | Azure
-description: Learn how to sign in users and call the Microsoft Graph API from my Android app.
+title: Přihlášení uživatelů & volání rozhraní API Microsoft Graph v Androidu (v 1.0) | Azure
+description: Přečtěte si, jak se přihlašovat uživatelé a volat rozhraní Microsoft Graph API z aplikace pro Android.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -15,15 +15,14 @@ ms.date: 10/25/2019
 ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur, saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87dd60f00278389c1fc03d6fd69652608ae0c998
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e1b8b38474b9dfd620ea8501151a754ab0a31f6d
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966057"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704030"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app-v10"></a>Quickstart: Sign in users and call the Microsoft Graph API from an Android app (v1.0)
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app-v10"></a>Rychlý Start: přihlášení uživatelů a volání rozhraní Microsoft Graph API z aplikace pro Android (v 1.0)
 
 [Platforma Microsoft Identity Platform](v2-overview.md) je vývoj platformy pro vývojáře Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získávají tokeny pro volání rozhraní API od Microsoftu, jako jsou Microsoft Graph nebo rozhraní API, která vytvořili vývojáři.
 

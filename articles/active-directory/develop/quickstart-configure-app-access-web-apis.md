@@ -12,13 +12,12 @@ ms.date: 08/07/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec5fe8e93c9032a07c1defe5b28753e0f520a320
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 32691892ccae31541855f47bd8274aa28b6dc185
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963329"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704285"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Rychlý Start: Konfigurace klientské aplikace pro přístup k webovým rozhraním API
 
@@ -40,7 +39,7 @@ V tomto rychlém startu si ukážeme, jak nakonfigurovat aplikaci následující
 * [Přidání přihlašovacích údajů do webové aplikace](#add-credentials-to-your-web-application)
 * [Přidání oprávnění pro přístup k webovým rozhraním API](#add-permissions-to-access-web-apis)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, musíte splnit následující požadavky:
 

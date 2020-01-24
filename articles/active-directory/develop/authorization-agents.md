@@ -12,13 +12,12 @@ ms.date: 09/05/2019
 ms.author: twhitney
 ms.reviewer: shoatman, brianmel, hahamil
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44a0e93c87c50fbc63cddad349ec9b5fbf45d91f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c2d0c8a877ba856aa7a93bfc960c44b63cbe8f9c
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74843899"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76697995"
 ---
 # <a name="authorization-agents-android"></a>Autorizační agenti (Android)
 
@@ -79,15 +78,15 @@ Následující prohlížeče byly testovány, aby se zjistilo, zda správně př
 
 | | Vestavěný prohlížeč | Chrome | Opera  | Microsoft Edge | Prohlížeč UC | Firefox |
 | -- |:-------------:| -----:|-----:|-----:|-----:|-----:|
-| Nexus 4 (rozhraní API 17) | Dána | Dána |nelze použít |nelze použít |nelze použít |nelze použít |
-| Samsung S7 (rozhraní API 25) | dána | Dána | Dána | Dána | fail |Dána |
-| Huawei (rozhraní API 26) |Pass * * | Dána | fail | Dána | Dána |Dána |
-| Vivo (API 26) |Dána|Dána|Dána|Dána|Dána|fail|
-| Pixel 2 (rozhraní API 26) |Dána | Dána | Dána | Dána | fail |Dána |
-| OPPO | Dána | nelze použít * * * |nelze použít  |nelze použít |nelze použít | nelze použít|
-| OnePlus (rozhraní API 25) |Dána | Dána | Dána | Dána | fail |Dána |
-| Nexus (rozhraní API 28) |Dána | Dána | Dána | Dána | fail |Dána |
-|MI | Dána | Dána | Dána | Dána | fail |Dána |
+| Nexus 4 (rozhraní API 17) | dána | dána |nelze použít |nelze použít |nelze použít |nelze použít |
+| Samsung S7 (rozhraní API 25) | dána | dána | dána | dána | fail |dána |
+| Huawei (rozhraní API 26) |Pass * * | dána | fail | dána | dána |dána |
+| Vivo (API 26) |dána|dána|dána|dána|dána|fail|
+| Pixel 2 (rozhraní API 26) |dána | dána | dána | dána | fail |dána |
+| OPPO | dána | nelze použít * * * |nelze použít  |nelze použít |nelze použít | nelze použít|
+| OnePlus (rozhraní API 25) |dána | dána | dána | dána | fail |dána |
+| Nexus (rozhraní API 28) |dána | dána | dána | dána | fail |dána |
+|MI | dána | dána | dána | dána | fail |dána |
 
 \* Integrovaný Prohlížeč Samsung je Samsung Internet.  
 \* * Vestavěný prohlížeč Huawei je Huawei prohlížeč.  

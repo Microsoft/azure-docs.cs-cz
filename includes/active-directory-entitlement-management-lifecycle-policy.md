@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 88e11adadcc06875964146ad2046828267258038
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e971af5d415ea788f97ab11b58541e629c7eb0ed
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389382"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76694497"
 ---
 ## <a name="lifecycle"></a>Životní cyklus
 
@@ -33,7 +33,7 @@ Na kartě **životní cyklus** zadáte, kdy vyprší platnost přiřazení uživ
 
 1. Chcete-li uživateli dovolit, aby rozšířili přiřazení, nastavte možnost **dovolit uživatelům, aby rozšířili přístup** k **Ano**.
 
-    Pokud jsou v zásadách povolené přípony, uživatel dostane e-mail 14 dní a také 1 den před tím, než je přiřazení balíčku přístupu nastavené na vypršení platnosti, aby se toto přiřazení rozšířilo.
+    Pokud jsou v zásadách povolené přípony, uživatel dostane e-mail 14 dní a také 1 den před tím, než je přiřazení balíčku přístupu nastavené na vypršení platnosti, aby se toto přiřazení rozšířilo. Pokud uživatel odešle požadavek na rozšíření přístupu, musí být datum rozšíření na nebo před vypršením platnosti přiřazení, jak je definováno v zásadách, které byly použity pro udělení přístupu k balíčku přístupu. Pokud například zásada indikuje, že je přiřazení nastavené na vypršení platnosti, 30. června, maximální rozšíření, které může uživatel požadovat, je 30. června.
 
     Pokud je uživatel rozšířený přístup, nebude moct po zadaném datu rozšíření požádat o přístup k balíčku (datum nastavené v časovém pásmu uživatele, který zásadu vytvořil).
 

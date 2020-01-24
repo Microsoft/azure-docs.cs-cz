@@ -1,5 +1,5 @@
 ---
-title: Příručka pro školení k registraci aplikací Azure Portal
+title: Nový průvodce školením registrace aplikací na webu Azure Portal
 description: Zavádí nové prostředí pro registraci Azure Portal aplikací.
 services: active-directory
 author: archieag
@@ -12,15 +12,14 @@ ms.date: 10/25/2019
 ms.author: aragra
 ms.reviewer: lenalepa, keyam
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3726ebbe0ebc3725a885c847f33760ebd7e2e8b0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b110929051098917d7c3f73161ca8694d4698070
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424666"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698216"
 ---
-# <a name="new-azure-portal-app-registration-training-guide"></a>Příručka pro školení k registraci aplikací Azure Portal
+# <a name="new-azure-portal-app-registration-training-guide"></a>Nový průvodce školením registrace aplikací na webu Azure Portal
 
 Mnoho vylepšení v novém prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) v Azure Portal najdete v části. Pokud jste obeznámeni s Registrace aplikacím (starším) prostředím Azure Portal, využijte tento průvodce školením, abyste mohli začít používat nové prostředí.
 

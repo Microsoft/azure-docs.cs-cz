@@ -17,13 +17,12 @@ ms.date: 04/06/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21f1da8738946078cb625c76e11ce1bfd62d97ac
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 8bfe668dc2eb4e0e00de34231f4c232f5240a82d
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927164"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700749"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Typy aplikací pro platformu Microsoft Identity Platform
 
@@ -59,7 +58,7 @@ V tomto toku aplikace obdrží tokeny přímo z koncového bodu autorizace platf
 
 Pokud se chcete podívat na tento scénář v akci, zkuste v části [Začínáme s Microsoft Identity platformou začít](v2-overview.md#getting-started) jeden z ukázkových kódu aplikace na jedné stránce.
 
-## <a name="web-apps"></a>Webové aplikace
+## <a name="web-apps"></a>Web Apps
 
 Pro webové aplikace (.NET, PHP, Java, Ruby, Python, Node), ke kterým uživatel přistupuje přes prohlížeč, můžete k přihlášení uživatele použít [OpenID Connect](active-directory-v2-protocols.md) . V OpenID Connect webová aplikace obdrží token ID. Token ID je token zabezpečení, který ověřuje identitu uživatele a poskytuje informace o uživateli v podobě deklarací identity:
 

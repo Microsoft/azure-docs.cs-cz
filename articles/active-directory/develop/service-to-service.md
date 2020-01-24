@@ -16,13 +16,12 @@ ms.date: 11/20/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49081ba72559b021d2e4846e7d9feffd61ae7b36
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: a94fcaffc190016a5377fe4b32484f84dc46ed25
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74284902"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701497"
 ---
 # <a name="service-to-service-apps"></a>Aplikace Service-to-Service
 
@@ -57,7 +56,7 @@ Tok popsaný níže předpokládá, že uživatel byl ověřen v jiné aplikaci 
 1. Azure AD ověří, že webové rozhraní API na první vrstvě má oprávnění pro přístup k webovému rozhraní API druhé úrovně a ověří požadavek a vrátí přístupový token JWT a obnovovací token JWT na první vrstvu webového rozhraní API.
 1. Webové rozhraní API první vrstvy pak prostřednictvím protokolu HTTPS volá webové rozhraní API druhé vrstvy připojením řetězce tokenu v autorizační hlavičce v žádosti. Webové rozhraní API první vrstvy může dál volat webové rozhraní API druhé úrovně, pokud je přístupový token a aktualizační tokeny platné.
 
-## <a name="code-samples"></a>Ukázky kódů
+## <a name="code-samples"></a>Ukázky kódu
 
 Podívejte se na ukázky kódu pro procesy démona nebo serverové aplikace do webového rozhraní API: [aplikace serveru nebo démona do webového rozhraní API](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
 

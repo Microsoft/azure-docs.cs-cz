@@ -16,13 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0684b8002dad8e0cb29bb1b7afb6ac5a2bd4d685
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 33510015f4f05661ad2ea041b1fd3da0e8bfb1ed
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423781"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76702075"
 ---
 # <a name="mobile-app-that-calls-web-apis---app-registration"></a>Mobilní aplikace, která volá webová rozhraní API – registrace aplikace
 

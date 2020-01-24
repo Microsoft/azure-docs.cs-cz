@@ -17,13 +17,12 @@ ms.date: 08/28/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dd50aa00368469a9c5b42c41826da28566268d4
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: b3d5aa74705d858349eaca543a7fd86e315a63e6
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125419"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76702993"
 ---
 # <a name="whats-new-for-authentication"></a>Co je nového pro ověřování? 
 
@@ -41,36 +40,36 @@ Systém ověřování mění a přidává funkce průběžně pro zlepšení dod
 
 ## <a name="upcoming-changes"></a>Nadcházející změny
 
-2019. září: Další vynucování sémantiky POST podle pravidel pro analýzu adresy URL – duplicitní parametry aktivují chybu a [Kusovník](https://www.w3.org/International/questions/qa-byte-order-mark) se ignoruje.
+Září 2019: další vynucování sémantiky POST podle pravidel pro analýzu adresy URL – duplicitní parametry aktivují chybu a [Kusovník](https://www.w3.org/International/questions/qa-byte-order-mark) se ignoruje.
 
 ## <a name="august-2019"></a>Srpen 2019
 
 ### <a name="post-form-semantics-will-be-enforced-more-strictly---spaces-and-quotes-will-be-ignored"></a>Sémantika POST Form bude vyvykonána více striktně a uvozovky budou ignorovány.
 
-**Datum platnosti**: 2. září 2019
+**Datum účinnosti**: 2. září 2019
 
-**Ovlivněné koncové body**: V 1.0 i v 2.0
+**Ovlivněné koncové body**: v 1.0 i v 2.0
 
-**Ovlivněný protokol**: Používá se libovolný příspěvek z libovolného místa ([přihlašovací údaje klienta](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow), [uplatnění autorizačního kódu](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow), [ROPC](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc), [OBO](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)a [aktualizace tokenu](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token)).
+**Ovlivněný protokol**: použití příspěvku odkudkoli ([přihlašovací údaje klienta](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow), [uplatnění autorizačního kódu](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow), [ROPC](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc), [OBO](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)a [uplatnění aktualizačního tokenu](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token))
 
 Od týdne 9/2 budou žádosti o ověření, které používají metodu POST, ověřeny pomocí přísnějších standardů protokolu HTTP.  Konkrétně mezery a dvojité uvozovky (") již nebudou odebrány z hodnot formuláře žádosti. Tyto změny se neočekávají pro přerušení stávajících klientů a zajistí, že požadavky odeslané do služby Azure AD budou spolehlivě zpracovávány pokaždé. V budoucnu (viz výše) plánujeme také odmítat duplicitní parametry a ignorovat v rámci požadavků. 
 
 Příklad:
 
-`?e=f&g=h` `e`Dnes se analyzuje stejně jako .`f`  ==  `?e=    "f"&g=h`  Tato změna by teď mohla být analyzována tak, `e`  ==  `    "f"` aby byla nepravděpodobná platná argument a požadavek by nyní byl neúspěšný. 
+V dnešní době je `?e=    "f"&g=h` analyzovat stejně jako `?e=f&g=h`, takže `e` == `f`.  Tato změna by teď mohla být analyzována tak, aby se `e` == `    "f"`. to je pravděpodobně platný argument a žádost by se nyní nezdařila. 
 
 
 ## <a name="july-2019"></a>Červenec 2019
 
 ### <a name="app-only-tokens-for-single-tenant-applications-are-only-issued-if-the-client-app-exists-in-the-resource-tenant"></a>Tokeny jenom pro aplikace pro jednotlivé klienty jsou vydané jenom v případě, že klientská aplikace existuje v tenantovi prostředků.
 
-**Datum platnosti**: 26. července 2019
+**Datum účinnosti**: 26. července 2019
 
-**Ovlivněné koncové body**: [V 1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow) i [v 2.0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)
+**Ovlivněné koncové body**: [v 1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow) i [v 2.0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)
 
-**Ovlivněný protokol**: [Přihlašovací údaje klienta (tokeny jenom pro aplikace)](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
+**Ovlivněný protokol**: [přihlašovací údaje klienta (tokeny jenom pro aplikace)](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
 
-Změna zabezpečení 26a v reálném čase, která mění způsob, jakým jsou vydávány tokeny jenom pro aplikace (prostřednictvím udělení přihlašovacích údajů klienta). Dříve byly aplikacím dovoleno získat tokeny pro volání jakékoli jiné aplikace bez ohledu na přítomnost v tenantovi nebo rolích, které jsou pro tuto aplikaci přijaté.  Toto chování bylo aktualizováno, aby pro prostředky (někdy nazývané webová rozhraní API) bylo nastaveno na jeden tenant (výchozí), klientská aplikace musí existovat v tenantovi prostředku.  Počítejte s tím, že stávající souhlas mezi klientem a rozhraním API ještě není nutný a aplikace by měly i nadále provádět vlastní kontroly autorizace, aby se `roles` zajistilo, že je přítomná deklarace identity a že obsahuje očekávanou hodnotu pro rozhraní API.
+Změna zabezpečení 26a v reálném čase, která mění způsob, jakým jsou vydávány tokeny jenom pro aplikace (prostřednictvím udělení přihlašovacích údajů klienta). Dříve byly aplikacím dovoleno získat tokeny pro volání jakékoli jiné aplikace bez ohledu na přítomnost v tenantovi nebo rolích, které jsou pro tuto aplikaci přijaté.  Toto chování bylo aktualizováno, aby pro prostředky (někdy nazývané webová rozhraní API) bylo nastaveno na jeden tenant (výchozí), klientská aplikace musí existovat v tenantovi prostředku.  Počítejte s tím, že stávající souhlas mezi klientem a rozhraním API ještě není nutný a aplikace by měly i nadále provádět vlastní kontroly autorizace, aby se zajistilo, že je přítomná deklarace `roles` a obsahuje očekávanou hodnotu pro rozhraní API.
 
 Chybová zpráva pro tento scénář nyní uvádí: 
 
@@ -80,21 +79,21 @@ Pokud chcete tento problém vyřešit, použijte prostředí pro vyjádření so
 
 #### <a name="example-request"></a>Příklad požadavku
 
-`https://login.microsoftonline.com/contoso.com/oauth2/authorize?resource=https://gateway.contoso.com/api&response_type=token&client_id=14c88eee-b3e2-4bb0-9233-f5e3053b3a28&...`V tomto příkladu je tenant prostředků (autorita) contoso.com, aplikace prostředků je klientská aplikace pro jednoho tenanta, která `gateway.contoso.com/api` je volána pro tenanta contoso, a klientská aplikace `14c88eee-b3e2-4bb0-9233-f5e3053b3a28`je.  Pokud má klientská aplikace v rámci služby Contoso.com instanční objekt, může tento požadavek pokračovat.  Pokud ale ne, požadavek se nezdaří s chybou uvedenou výše.  
+v tomto příkladu je contoso.com tenant prostředků (autorita), aplikace prostředků je klientská aplikace pro jednoho tenanta s názvem `gateway.contoso.com/api` pro tenanta contoso a klientská aplikace je `14c88eee-b3e2-4bb0-9233-f5e3053b3a28`. `https://login.microsoftonline.com/contoso.com/oauth2/authorize?resource=https://gateway.contoso.com/api&response_type=token&client_id=14c88eee-b3e2-4bb0-9233-f5e3053b3a28&...`  Pokud má klientská aplikace v rámci služby Contoso.com instanční objekt, může tento požadavek pokračovat.  Pokud ale ne, požadavek se nezdaří s chybou uvedenou výše.  
 
 Pokud se ale jednalo o aplikaci pro více tenantů, bude mít žádost i nadále bez ohledu na klientskou aplikaci, která má instanční objekt v rámci služby Contoso.com.  
 
 ### <a name="redirect-uris-can-now-contain-query-string-parameters"></a>Identifikátory URI pro přesměrování teď můžou obsahovat parametry řetězce dotazu.
 
-**Datum platnosti**: 22. července 2019
+**Datum účinnosti**: 22. července 2019
 
-**Ovlivněné koncové body**: V 1.0 i v 2.0
+**Ovlivněné koncové body**: v 1.0 i v 2.0
 
-**Ovlivněný protokol**: Všechny toky
+**Ovlivněný protokol**: všechny toky
 
-V per [RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2)můžou aplikace Azure AD nyní registrovat a používat přesměrované identifikátory URI (Reply) s parametry statického https://contoso.com/oauth2?idp=microsoft) dotazu (například pro žádosti OAuth 2,0.  Dynamické identifikátory URI pro přesměrování jsou stále zakázané, protože představují bezpečnostní riziko, a nelze je použít k uchování informací o stavu v rámci požadavku na ověření – pro to `state` použijte parametr.
+V rámci [RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2)můžou aplikace Azure AD nyní registrovat a používat přesměrované identifikátory URI (Reply) s parametry statického dotazu (například https://contoso.com/oauth2?idp=microsoft) pro žádosti OAuth 2,0.  Dynamické identifikátory URI pro přesměrování jsou stále zakázané, protože představují bezpečnostní riziko, a nelze je použít k uchování informací o stavu v rámci požadavku na ověření – pro tuto adresu použijte parametr `state`.
 
-Parametr statického dotazu podléhá párování řetězců pro identifikátory URI přesměrování, jako je jakákoli jiná část identifikátoru URI přesměrování – Pokud není zaregistrován žádný řetězec, který by odpovídal identifikátoru redirect_uri s dekódováním identifikátoru URI, pak bude požadavek odmítnut.  Pokud se identifikátor URI najde v registraci aplikace, použije se celý řetězec pro přesměrování uživatele, včetně parametru statického dotazu. 
+Parametr statického dotazu podléhá párování řetězců pro identifikátory URI přesměrování, jako jakákoli jiná část identifikátoru URI přesměrování – Pokud není zaregistrován žádný řetězec, který by odpovídal identifikátoru URI-Dekódovatelné redirect_uri, požadavek se odmítne.  Pokud se identifikátor URI najde v registraci aplikace, použije se celý řetězec pro přesměrování uživatele, včetně parametru statického dotazu. 
 
 Všimněte si, že v tuto chvíli (konec července 2019) se uživatelské rozhraní pro registraci aplikace v Azure Portal pořád zablokují parametry dotazu.  Manifest aplikace ale můžete upravit ručně a přidat parametry dotazu a otestovat ho v aplikaci.  
 
@@ -103,15 +102,15 @@ Všimněte si, že v tuto chvíli (konec července 2019) se uživatelské rozhra
 
 ### <a name="looping-clients-will-be-interrupted"></a>Přeruší se klienti cyklů.
 
-**Datum platnosti**: 25. března 2019
+**Datum účinnosti**: 25. března 2019
 
-**Ovlivněné koncové body**: V 1.0 i v 2.0
+**Ovlivněné koncové body**: v 1.0 i v 2.0
 
-**Ovlivněný protokol**: Všechny toky
+**Ovlivněný protokol**: všechny toky
 
 V některých případech se může stát, že se klientské aplikace v krátké době vydávají stovky stejné přihlašovací žádosti.  Tyto požadavky můžou nebo nemusí být úspěšné, ale všechny přispívat ke špatnému uživatelskému prostředí a zvýšenému zatížení pro IDP, což zvyšuje latenci pro všechny uživatele a snižuje dostupnost IDP.  Tyto aplikace pracují mimo hranice normálního využití a měly by se aktualizovat tak, aby se chovaly správně.  
 
-Klientům, kteří vydávají duplicitní žádosti víckrát, se pošle `invalid_grant` Chyba:. `AADSTS50196: The server terminated an operation because it encountered a loop while processing a request` 
+Klientům, kteří vydávají duplicitní žádosti víckrát, se pošle chyba `invalid_grant`: `AADSTS50196: The server terminated an operation because it encountered a loop while processing a request`. 
 
 Většina klientů nebude muset změnit chování, aby se předešlo této chybě.  Touto chybou ovlivní jenom nesprávně nakonfigurované klienty (bez mezipaměti tokenů nebo těch, které vykazují smyčky výzev).  Klienti jsou sledováni na základě jednotlivých instancí místně (prostřednictvím souboru cookie) na následujících faktorech:
 
@@ -121,28 +120,28 @@ Většina klientů nebude muset změnit chování, aby se předešlo této chyb�
 
 * ID klienta
 
-* Přesměrovat identifikátor URI
+* Identifikátor URI pro přesměrování
 
 * Typ a režim odpovědi
 
-Aplikace, které provádějí více požadavků (15 +) v krátkém časovém intervalu (5 minut), `invalid_grant` zobrazí chybu s vysvětlením, že se jedná o smyčky.  Vyžádané tokeny mají dostatečně dlouhou dobu životnosti (ve výchozím nastavení je to 10 minut minimálně, 60 minut), takže opakované žádosti v tomto časovém období nejsou potřebné.  
+Aplikace, které provádějí více požadavků (15 +) v krátkém časovém intervalu (5 minut), budou obdržet `invalid_grant`ou chybu s vysvětlením, že se jedná o smyčky.  Vyžádané tokeny mají dostatečně dlouhou dobu životnosti (ve výchozím nastavení je to 10 minut minimálně, 60 minut), takže opakované žádosti v tomto časovém období nejsou potřebné.  
 
-Všechny aplikace by se `invalid_grant` měly zpracovat zobrazením interaktivní výzvy místo tichého vyžadování tokenu.  Aby se zabránilo této chybě, klienti by měli zajistit správné ukládání tokenů, které obdrží, do mezipaměti.
+Všechny aplikace by měly zpracovávat `invalid_grant` zobrazením interaktivní výzvy, nikoli bez tichého vyžádání tokenu.  Aby se zabránilo této chybě, klienti by měli zajistit správné ukládání tokenů, které obdrží, do mezipaměti.
 
 
 ## <a name="october-2018"></a>Říjen 2018
 
 ### <a name="authorization-codes-can-no-longer-be-reused"></a>Autorizační kódy se už nedají znovu použít.
 
-**Datum platnosti**: 15. listopadu 2018
+**Datum účinnosti**: 15. listopadu 2018
 
-**Ovlivněné koncové body**: V 1.0 i v 2.0
+**Ovlivněné koncové body**: v 1.0 i v 2.0
 
-**Ovlivněný protokol**: [Tok kódu](v2-oauth2-auth-code-flow.md)
+**Ovlivněný protokol**: [tok kódu](v2-oauth2-auth-code-flow.md)
 
 Od 15. listopadu 2018, Azure AD, přestane přijímat předchozích ověřovací kódy pro aplikace. Tato změna zabezpečení pomáhá vám Azure AD podle specifikace OAuth a vynutí u koncových bodů v1 i v2.
 
-Pokud vaše aplikace opakovaně používá autorizační kódy k získání tokenů pro několik prostředků, doporučujeme použít kód pro získání tokenu obnovení a pak pomocí tohoto tokenu obnovení získat další tokeny pro jiné prostředky. Autorizační kódy lze použít pouze jednou, ale obnovovací tokeny lze použít více než jednou v několika prostředcích. Jakákoli nová aplikace, která se pokusí znovu použít ověřovací kód během toku kódu OAuth, bude mít invalid_grant chybu.
+Pokud vaše aplikace opakovaně používá autorizační kódy k získání tokenů pro několik prostředků, doporučujeme použít kód pro získání tokenu obnovení a pak pomocí tohoto tokenu obnovení získat další tokeny pro jiné prostředky. Autorizační kódy lze použít pouze jednou, ale obnovovací tokeny lze použít více než jednou v několika prostředcích. Jakákoli nová aplikace, která se pokusí znovu použít ověřovací kód během toku kódu OAuth, obdrží chybu invalid_grant.
 
 Další informace o aktualizačních tokenech najdete v tématu [aktualizace přístupových tokenů](v1-protocols-oauth-code.md#refreshing-the-access-tokens).  Pokud používáte ADAL nebo MSAL, je to zpracováno knihovnou – nahraďte druhou instanci ' AcquireTokenByAuthorizationCodeAsync ' ' AcquireTokenSilentAsync '. 
 
@@ -150,17 +149,17 @@ Další informace o aktualizačních tokenech najdete v tématu [aktualizace př
 
 ### <a name="id-tokens-cannot-be-used-for-the-obo-flow"></a>Tokeny ID se nedají použít pro OBO tok.
 
-**Datum**: 1. května 2018
+**Datum**: Květen 1, 2018
 
-**Ovlivněné koncové body**: V 1.0 i v 2.0
+**Ovlivněné koncové body**: v 1.0 i v 2.0
 
-**Ovlivněné protokoly**: Implicitní tok toku a [OBO](v1-oauth2-on-behalf-of-flow.md)
+**Ovlivněné protokoly**: implicitní tok toku a [OBO](v1-oauth2-on-behalf-of-flow.md)
 
-Od 1. května 2018 se id_tokens nedá použít jako kontrolní výraz v toku OBO pro nové aplikace. Místo toho by se měly používat přístupové tokeny k zabezpečení rozhraní API, a to i mezi klientem a střední vrstvou stejné aplikace. Aplikace zaregistrované před 1. května 2018 budou fungovat i nadále a můžou být schopné Exchange id_tokens pro přístupový token. Tento model se však nepovažuje za osvědčený postup.
+Od 1. května 2018 se id_tokens nedá použít jako kontrolní výraz v OBO toku pro nové aplikace. Místo toho by se měly používat přístupové tokeny k zabezpečení rozhraní API, a to i mezi klientem a střední vrstvou stejné aplikace. Aplikace zaregistrované před 1. května 2018 budou fungovat i nadále a budou moci Exchange id_tokens pro přístupový token. Tento model se však nepovažuje za osvědčený postup.
 
 Pokud chcete tuto změnu obejít, můžete postupovat takto:
 
 1. Vytvořte webové rozhraní API pro vaši aplikaci s jedním nebo více obory. Tento explicitní vstupní bod umožní jemnější kontrolu a zabezpečení.
-1. V manifestu vaší aplikace v [Azure Portal](https://portal.azure.com) nebo na [portálu pro registraci aplikací](https://apps.dev.microsoft.com)zajistěte, aby aplikace mohla vystavovat přístupové tokeny prostřednictvím implicitního toku. To se řídí `oauth2AllowImplicitFlow` klíčem.
-1. Když klientská aplikace požaduje id_token prostřednictvím `response_type=id_token`, vyžádá si také přístupový token (`response_type=token`) pro webové rozhraní API vytvořené výše. Proto při použití koncového bodu `scope` v 2.0 by měl parametr vypadat `api://GUID/SCOPE`podobně jako. U koncového bodu `resource` v 1.0 by parametr měl být identifikátorem URI aplikace webového rozhraní API.
-1. Předání tohoto přístupového tokenu do prostřední vrstvy místo id_token.  
+1. V manifestu vaší aplikace v [Azure Portal](https://portal.azure.com) nebo na [portálu pro registraci aplikací](https://apps.dev.microsoft.com)zajistěte, aby aplikace mohla vystavovat přístupové tokeny prostřednictvím implicitního toku. To se řídí pomocí `oauth2AllowImplicitFlow`ho klíče.
+1. Když klientská aplikace požaduje id_token přes `response_type=id_token`, vyžádá si také přístupový token (`response_type=token`) pro webové rozhraní API, které jste vytvořili výše. Proto při použití koncového bodu v 2.0 by parametr `scope` měl vypadat podobně jako `api://GUID/SCOPE`. Na koncovém bodu v 1.0 by parametr `resource` měl být identifikátorem URI aplikace webového rozhraní API.
+1. Předejte tento přístupový token do prostřední vrstvy místo id_token.  

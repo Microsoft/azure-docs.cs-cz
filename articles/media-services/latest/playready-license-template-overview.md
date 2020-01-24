@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services se šablona licencování PlayReady
-description: Toto téma obsahuje základní informace o šabloně licence PlayReady, který se používá ke konfiguraci licencí PlayReady.
+title: Šablona licence Microsoft PlayReady pro Azure Media Services V3
+description: Toto téma poskytuje přehled šablony licencí PlayReady, která se používá ke konfiguraci licencí PlayReady.
 author: juliako
 manager: femila
 editor: ''
@@ -13,37 +13,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: 0ce0d40bfd9d41838573f6355ceffc17761111c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6b12dcee2303632c4ec2ccc3602348a4e17fcd05
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61472647"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705883"
 ---
-# <a name="media-services-playready-license-template-overview"></a>Přehled šablon licencování Media Services PlayReady 
+# <a name="media-services-v3-with-playready-license-template"></a>Media Services V3 se šablonou licence PlayReady 
 
-Azure Media Services umožňuje šifrování obsahu pomocí **Microsoft PlayReady**. Služba Media Services také poskytuje službu k doručování licencí PlayReady. Rozhraní API služby Media Services můžete použít ke konfiguraci licencí PlayReady. Když hráč pokusí k přehrávání obsahu s ochranou PlayReady, žádost přijde na službu doručování licencí licenci. Pokud licenční služby schválí, problémy s licencí, které se odešle klientovi a slouží k dešifrování a přehrát zadaný obsah.
+Azure Media Services vám umožní šifrovat obsah pomocí **Microsoft PlayReady**. Media Services také poskytuje službu pro doručování licencí PlayReady. K nakonfigurování licencí PlayReady můžete použít rozhraní Media Services API. Když se hráč pokusí přehrát obsah chráněný pomocí PlayReady, pošle se mu požadavek na doručení licence. Pokud licenční služby schválí, problémy s licencí, které se odešle klientovi a slouží k dešifrování a přehrát zadaný obsah.
 
-Licence technologie PlayReady obsahovat práv a omezení, která chcete, aby modul runtime PlayReady DRM (DRM Správa) vynucovat, když se uživatel pokusí o přehrávání chráněného obsahu. Tady je několik příkladů PlayReady licenční omezení, které můžete zadat:
+Licence PlayReady obsahují práva a omezení, která má modul runtime PlayReady DRM (Správa digitálních práv) vyhovět, když se uživatel pokusí přehrát chráněný obsah. Tady jsou některé příklady licenčních omezení PlayReady, které můžete zadat:
 
-* Datum a čas, ze kterého je platná licence.
-* Hodnota data a času, když platnost licence vyprší. 
-* Licenci, která se má uložit do trvalého úložiště na straně klienta. Trvalé licence se obvykle používají k povolit offline přehrávání obsahu.
-* Minimální úroveň zabezpečení, kterou hráč musí mít k přehrávání obsahu. 
-* Úroveň ochrany výstup pro ovládací prvky výstup audio\video obsahu. 
-* Další informace najdete v části "Výstup ovládací prvky" (3.5) v [pravidla dodržování předpisů PlayReady](https://www.microsoft.com/playready/licensing/compliance/) dokumentu.
+* Datum a čas, od kterého je licence platná.
+* Hodnota DateTime po vypršení platnosti licence 
+* Pro uložení licence do trvalého úložiště na klientovi. Trvalé licence se obvykle používají k povolení přehrávání obsahu v režimu offline.
+* Minimální úroveň zabezpečení, kterou přehrávač musí mít, aby mohl přehrát váš obsah. 
+* Úroveň ochrany výstupu pro ovládací prvky výstupu pro audio\video obsah. 
+* Další informace najdete v oddílu "ovládací prvky výstupu" (3,5) v dokumentu [pravidla dodržování předpisů PlayReady](https://www.microsoft.com/playready/licensing/compliance/) .
 
 > [!NOTE]
-> V současné době můžete konfigurovat jenom ty PlayRight licencí PlayReady. Toto právo je nutné. PlayRight umožňuje klientovi k přehrávání obsahu. PlayRight také můžete použít ke konfiguraci omezení, které jsou specifické pro přehrávání. 
+> V současné době můžete nakonfigurovat jenom PlayRight licence PlayReady. Toto právo je povinné. PlayRight dává klientovi možnost přehrávání obsahu. Můžete také použít PlayRight ke konfiguraci omezení určených pro přehrávání. 
 > 
 
-Toto téma popisuje, jak nakonfigurovat licencí PlayReady pomocí služby Media Services.
+Toto téma popisuje, jak nakonfigurovat licence PlayReady pomocí Media Services.
 
-## <a name="basic-streaming-license-example"></a>Základní příklad streamování licence
+## <a name="basic-streaming-license-example"></a>Příklad licence na základní streamování
 
-Následující příklad ukazuje nejjednodušší (a nejběžnější) šablony, který konfiguruje licence basic datových proudů. S touto licencí vašim klientům můžete přehrávat váš obsah s ochranou PlayReady. 
+Následující příklad ukazuje nejjednodušší (nejběžnější) šablonu, která konfiguruje základní licenci pro streamování. V rámci této licence můžou klienti přehrávat obsah chráněný pomocí PlayReady. 
 
-Kódu XML odpovídá schématu XML šabloně licence PlayReady definované v [schématu XML šabloně licence PlayReady](#schema) oddílu.
+XML odpovídá schématu XML šablony licence PlayReady definované v oddílu [schéma XML šablony licence PlayReady](#schema) .
 
 
     <?xml version="1.0" encoding="utf-8"?>
@@ -58,16 +58,16 @@ Kódu XML odpovídá schématu XML šabloně licence PlayReady definované v [sc
     </PlayReadyLicenseResponseTemplate>
 
 
-## <a id="classes"></a>Pomocí rozhraní API služby Media Services můžete nakonfigurovat licenční šablony
+## <a id="classes"></a>Použití rozhraní API pro Media Services ke konfiguraci šablon licencí
 
-Služba Media Services poskytuje typy, které můžete použít ke konfiguraci šablona licencování PlayReady. 
+Media Services poskytuje typy, které můžete použít ke konfiguraci šablony licencí PlayReady. 
 
-Fragment kódu, který následuje využívá Media Services .NET třídy ke konfiguraci šablona licencování PlayReady. Třídy jsou definovány v [Microsoft.Azure.Management.Media.Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) oboru názvů. Fragment kódu nakonfiguruje PlayRight licencí PlayReady. PlayRight umožňuje uživateli k přehrávání obsahu v souladu s omezením, nakonfigurovaná v licenci a na samotný PlayRight (pro zásady specifické pro přehrávání). Velká část zásady PlayRight se týká výstup omezení, které řídí typy výstupy, které obsah můžete přehrát přes. Zahrnuje taky nějaká omezení, které musí být umístěno v místě, při použití daného výstupu. Například pokud je povolené DigitalVideoOnlyContentRestriction, modul runtime DRM povoluje jenom videa, který se má zobrazit nad digitální výstupy. (Analogové videa výstupy nemohou předat obsahu.)
+Následující fragment kódu používá Media Services třídy .NET ke konfiguraci šablony licence PlayReady. Třídy jsou definovány v oboru názvů [Microsoft. Azure. Management. Media. Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) . Fragment kódu konfiguruje PlayRight licence PlayReady. PlayRight uděluje uživateli možnost přehrávání obsahu v závislosti na všech omezeních nakonfigurovaných v licenci a na PlayRight samotného (pro zásady specifické pro přehrávání). Většina zásad na PlayRight se týká omezení výstupu, které řídí typy výstupů, přes které lze obsah přehrát. Zahrnuje také omezení, která musí být zavedena při použití daného výstupu. Pokud je například povoleno DigitalVideoOnlyContentRestriction, modul runtime DRM umožňuje zobrazit pouze video přes digitální výstupy. (Výstupy analogového videa neumožňují předání obsahu.)
 
 > [!IMPORTANT]
-> Licence PlayReady má omezení, která jsou velmi výkonné. Pokud se používá ochrana výstupu příliš omezující, může být obsah přehrát v některých klientech. Další informace najdete v tématu [pravidla dodržování předpisů PlayReady](https://www.microsoft.com/playready/licensing/compliance/).
+> Licence PlayReady má efektivní omezení. Pokud jsou ochrana výstupu příliš omezující, může být obsah pro některé klienty nezobrazitelný. Další informace najdete v článku [pravidla dodržování předpisů PlayReady](https://www.microsoft.com/playready/licensing/compliance/).
 
-### <a name="configure-playready-license-template-with-net"></a>Šablona licencování PlayReady konfigurace pomocí .NET
+### <a name="configure-playready-license-template-with-net"></a>Konfigurace šablony licencí PlayReady pomocí .NET
 
 ```csharp
 ContentKeyPolicyPlayReadyLicense objContentKeyPolicyPlayReadyLicense;
@@ -88,7 +88,7 @@ objContentKeyPolicyPlayReadyLicense = new ContentKeyPolicyPlayReadyLicense
 };
 ```
 
-## <a id="schema"></a>Schéma XML šablony licencí PlayReady
+## <a id="schema"></a>Schéma XML šablony licence PlayReady
     <?xml version="1.0" encoding="utf-8"?>
     <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:xs="https://www.w3.org/2001/XMLSchema">
       <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
@@ -311,6 +311,6 @@ objContentKeyPolicyPlayReadyLicense = new ContentKeyPolicyPlayReadyLicense
     </xs:schema>
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Podívejte se na tom, jak [chránit pomocí DRM](protect-with-drm.md)

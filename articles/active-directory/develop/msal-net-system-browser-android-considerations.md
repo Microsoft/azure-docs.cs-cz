@@ -13,13 +13,12 @@ ms.date: 10/30/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d3ea2554fac8654b052e3e38633af23e7c778b3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9346a4d5eaabb2af490afc13d5785a8f8233e53f
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74915469"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76695040"
 ---
 #  <a name="xamarin-android-system-browser-considerations-with-msalnet"></a>Doporučení pro prohlížeč systému Xamarin Android s MSAL.NET
 
@@ -54,16 +53,16 @@ V následující tabulce jsou uvedena zařízení a prohlížeče, které byly t
 
 | | &ast; prohlížeče     |  Výsledek  | 
 | ------------- |:-------------:|:-----:|
-| Huawei/jeden + | &ast; pro Chrome | Průchod|
-| Huawei/jeden + | Edge&ast; | Průchod|
-| Huawei/jeden + | Firefox&ast; | Průchod|
-| Huawei/jeden + | Brave&ast; | Průchod|
-| Jedna + | Ecosia&ast; | Průchod|
-| Jedna + | Kiwi&ast; | Průchod|
-| Huawei/jeden + | Opera | Průchod|
-| Huawei | OperaMini | Průchod|
-| Huawei/jeden + | Prohlížeč | Průchod|
-| Jedna + | Maxthon | Průchod|
+| Huawei/jeden + | &ast; pro Chrome | Úspěšný|
+| Huawei/jeden + | Edge&ast; | Úspěšný|
+| Huawei/jeden + | Firefox&ast; | Úspěšný|
+| Huawei/jeden + | Brave&ast; | Úspěšný|
+| Jedna + | Ecosia&ast; | Úspěšný|
+| Jedna + | Kiwi&ast; | Úspěšný|
+| Huawei/jeden + | Opera | Úspěšný|
+| Huawei | OperaMini | Úspěšný|
+| Huawei/jeden + | Prohlížeč | Úspěšný|
+| Jedna + | Maxthon | Úspěšný|
 | Huawei/jeden + | DuckDuckGo | Uživatel zrušil ověření.|
 | Huawei/jeden + | Prohlížeč UC | Uživatel zrušil ověření.|
 | Jedna + | Delfín | Uživatel zrušil ověření.|

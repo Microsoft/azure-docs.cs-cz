@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/29/2019
 ms.author: absha
-ms.openlocfilehash: 8d75dbe5d4ab819e5bbe64e20ad84eb1c26a87a3
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 12759deb3e1775b5170d40cc609fe8c6226bf0d6
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777814"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704574"
 ---
 # <a name="metrics-for-application-gateway"></a>Metriky pro Application Gateway
 
@@ -28,30 +28,30 @@ K dispozici jsou následující metriky související s časováním žádosti a
 >
 > Pokud je v Application Gateway více než jeden naslouchací proces, vždy filtrovat podle dimenze *naslouchacího procesu* při porovnávání různých metrik latence, aby bylo možné získat smysluplnější odvození.
 
+- **Čas připojení back-endu**
+
+  Čas strávený navázáním spojení s back-end aplikací To zahrnuje latenci sítě a dobu, kterou zabere zásobník protokolu TCP back-end serveru k navázání nových připojení. V případě protokolu SSL zahrnuje i čas strávený na handshaki. 
+
+- **Doba odezvy prvního bajtu back-endu**
+
+  Časový interval mezi začátky navázání připojení k back-endu serveru a příjem prvního bajtu hlavičky odpovědi To odpovídá součtu *času připojení back-end* a doby odezvy back-end aplikace (čas, kdy server trvalo generování obsahu, potenciálně načtení databázových dotazů a zahájení přenosu odpovědi zpět na Application Gateway).
+
+- **Doba odezvy posledního bajtu back-endu**
+
+  Časový interval mezi začátky navázání připojení k back-endu serveru a příjem posledního bajtu těla odpovědi To odpovídá součtu celkové *doby odezvy back-endu* a času přenosu dat (Toto číslo se může značně lišit v závislosti na velikosti požadovaných objektů a latenci serverové sítě).
+
+- **Celková doba aplikační brány**
+
+  Průměrná doba, kterou trvá zpracování požadavku, a jeho odpověď k odeslání. To se počítá jako průměr z intervalu od času, kdy Application Gateway přijme první bajt požadavku HTTP do doby, kdy se dokončí operace odeslání odpovědi, přibližně součet doby zpracování Application Gateway a *doby odezvy posledního bajtu back-endu* .
+
 - **Čas odezvy klienta**
 
   Průměrná doba odezvy mezi klienty a Application Gateway. Tato metrika indikuje, jak dlouho trvá navázání připojení a vrácení potvrzení. 
 
-- **Celková doba aplikační brány**
+Tyto metriky se dají použít k určení, jestli je způsobené zpomalení v důsledku Application Gateway, síťového a back-endu TCP zásobníku, výkonu aplikace back-endu nebo velikosti velkých souborů.
+Pokud je například špička v první bajtové odezvě back-endu, ale čas připojení back-endu je konstantní, pak je možné odvodit, že brána Application Gateway na latenci v back-endu i čas potřebný k navázání připojení je stabilní a že špička je způsobena tím, že je v důsledku n narůstá doba odezvy back-end aplikace. Podobně platí, že pokud je špička v back-endu první bajtová doba odezvy přidružená k odpovídající špičkě v době připojení back-endu, je možné ji odvodit, protože síť nebo zásobník protokolu TCP na serveru se nastavily na hodnotu sytost. Pokud si všimnete špičky v době, kdy uplynula doba odezvy back-endu, ale doba odezvy prvního bajtu je konstantní, pak je největší špička z důvodu vyžádání většího souboru. Podobně platí, že pokud je celková doba služby Application Gateway mnohem větší než doba odezvy back-endu v bajtech, může to být znaménko kritického bodu výkonu na Application Gateway.
 
-  Průměrná doba, kterou trvá zpracování požadavku, a jeho odpověď k odeslání. Počítá se jako průměr intervalu od času, kdy Application Gateway přijme první bajt požadavku HTTP do doby, kdy se dokončí operace odeslání odpovědi. Je důležité si uvědomit, že to obvykle zahrnuje dobu zpracování Application Gateway, čas, po který jsou pakety požadavků a odpovědí přenášeny přes síť, a čas, kdy server back-end trvala odpověď.
-  
-Pokud je čas čekání *klienta* mnohem větší, než je *Celková doba služby Application Gateway*, můžete po filtrování podle naslouchacího procesu odvodit, že latence zjištěná klientem je způsobená připojením sítě mezi klientem a Application Gateway. Jsou-li obě latence srovnatelné, může být vysoká latence způsobena některou z následujících možností: Application Gateway, síť mezi Application Gateway a back-end aplikací nebo výkonem back-endu.
 
-- **Doba odezvy prvního bajtu back-endu**
-
-  Časový interval mezi zahájením navázání připojení k back-endu serveru a přijetí prvního bajtu hlavičky odpovědi, odhad doby zpracování back-endu serveru
-
-- **Doba odezvy posledního bajtu back-endu**
-
-  Časový interval mezi zahájením navázání připojení k back-endu serveru a příjem posledního bajtu textu odpovědi
-  
-Pokud je *Celková doba služby Application Gateway* mnohem více než *Poslední doba odezvy back-endu* pro určitý naslouchací proces, je možné odvodit, že vysoká latence může být způsobena Application Gateway. Na druhou stranu platí, že pokud jsou dvě metriky srovnatelné, může být příčinou problému buď kvůli síti mezi Application Gateway a back-end aplikací, nebo výkonem back-endu.
-
-- **Čas připojení back-endu**
-
-  Čas strávený navázáním spojení s back-end aplikací V případě SSL obsahuje čas strávený na handshaki. Všimněte si, že tato metrika je odlišná od ostatních metrik latence, protože tato pouze měří čas připojení a proto by se neměla přímo porovnávat s ostatními latencemi. Porovnáním vzoru *doby připojení back-end* se vzorem ostatních latencí však může znamenat, zda může být zvýšena doba navýšení latence z důvodu variace sítě mezi gatway aplikace a aplikací back-end. 
-  
 
 ### <a name="application-gateway-metrics"></a>Application Gateway metriky
 

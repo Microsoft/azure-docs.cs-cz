@@ -1,22 +1,18 @@
 ---
 title: Vytvoření nebo přizpůsobení plánů obnovení v Azure Site Recovery
 description: Naučte se vytvářet a přizpůsobovat plány obnovení pro zotavení po havárii pomocí služby Azure Site Recovery.
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
-ms.topic: article
-ms.date: 11/14/2019
-ms.author: raynew
-ms.openlocfilehash: 9bb5a1a3aa0c2a4681ddecb5e20df41d481755ec
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.topic: how-to
+ms.date: 01/23/2020
+ms.openlocfilehash: 6540317324a9f0d9bccc046ecf95824d4128bd09
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084511"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705832"
 ---
 # <a name="create-and-customize-recovery-plans"></a>Vytváření a přizpůsobení plánů obnovení
 
-Tento článek popisuje, jak vytvořit a přizpůsobit plán obnovení v [Azure Site Recovery](site-recovery-overview.md). Než začnete, [Přečtěte si další informace](recovery-plan-overview.md) o plánech obnovení.
+Tento článek popisuje, jak vytvořit a přizpůsobit plán obnovení pro převzetí služeb při selhání v [Azure Site Recovery](site-recovery-overview.md). Než začnete, [Přečtěte si další informace](recovery-plan-overview.md) o plánech obnovení.
 
 ## <a name="create-a-recovery-plan"></a>Vytvoření plánu obnovení
 
@@ -24,22 +20,25 @@ Tento článek popisuje, jak vytvořit a přizpůsobit plán obnovení v [Azure 
 2. V části **vytvořit plán obnovení**zadejte název plánu.
 3. Zvolte zdroj a cíl na základě počítačů v plánu a vyberte **Správce prostředků** pro model nasazení. Zdrojové umístění musí mít počítače, u kterých je povolené převzetí služeb při selhání a obnovení. 
 
-   **Převzetí služeb při selhání** | **Zdroj** | **Cíl** 
+    **Převzetí služeb při selhání** | **Zdroj** | **Cíl** 
    --- | --- | ---
-   Azure do Azure | Oblast Azure |Oblast Azure
-   Z VMware do Azure | Konfigurační server | Azure
-   Fyzické počítače do Azure | Konfigurační server | Azure   
-   Hyper-V spravované nástrojem VMM do Azure  | Zobrazovaný název VMM | Azure
-   Hyper-V bez VMM do Azure | Název lokality Hyper-V | Azure
-   VMM do VMM |Popisný název VMM | Zobrazovaný název VMM 
+   Azure do Azure | Výběr oblasti Azure | Výběr oblasti Azure
+   Z VMware do Azure | Vyberte konfigurační server. | Vybrat Azure
+   Fyzické počítače do Azure | Vyberte konfigurační server. | Vybrat Azure   
+   Z Hyper-V do Azure | Vyberte název lokality Hyper-V. | Vybrat Azure
+   Technologie Hyper-V (spravovaná nástrojem VMM) do Azure  | Vybrat server VMM | Vybrat Azure
+  
+    Je třeba počítat s následujícím:
+    -  Pro převzetí služeb při selhání můžete použít jenom plán obnovení ze zdrojového umístění do Azure. Nemůžete použít plán obnovení pro navrácení služeb po obnovení z Azure.
+    - Zdrojové umístění musí mít počítače, u kterých je povolené převzetí služeb při selhání a obnovení. 
+    - Plán obnovení může obsahovat počítače se stejným zdrojem a cílem. 
+    - Ve stejném plánu můžete zahrnout virtuální počítače VMware a virtuální počítače Hyper-V spravované nástrojem VMM.
+    - Virtuální počítače VMware a fyzické servery můžou být ve stejném plánu.
 
-   > [!NOTE]
-   > Plán obnovení může obsahovat počítače se stejným zdrojem a cílem. Virtuální počítače VMware a Hyper-V spravované nástrojem VMM nemůžou být ve stejném plánu. Virtuální počítače VMware a fyzické servery můžou být ve stejném plánu, kde zdrojem je konfigurační server.
-
-2. V části **Vybrat položky virtuálních počítačů**vyberte počítače (nebo replikační skupinu), které chcete přidat do plánu. Pak klikněte na **OK**.
+4. V části **Vybrat položky virtuálních počítačů**vyberte počítače (nebo replikační skupinu), které chcete přidat do plánu. Pak klikněte na **OK**.
     - Počítače se přidají do plánu do výchozí skupiny (skupina 1). Po převzetí služeb při selhání se všechny počítače v této skupině spustí ve stejnou dobu.
     - V zadaných zdrojových a cílových umístěních můžete vybrat jenom počítače. 
-1. Kliknutím na tlačítko **OK** vytvořte plán.
+5. Kliknutím na tlačítko **OK** vytvořte plán.
 
 ## <a name="add-a-group-to-a-plan"></a>Přidání skupiny do plánu
 
@@ -52,9 +51,9 @@ Vytvoříte další skupiny a přidáte počítače do různých skupin, abyste 
 
 ## <a name="add-a-script-or-manual-action"></a>Přidání skriptu nebo ruční akce
 
-Plán obnovení můžete přizpůsobit přidáním skriptu nebo ruční akce. Všimněte si, že:
+Plán obnovení můžete přizpůsobit přidáním skriptu nebo ruční akce. Poznámky:
 
-- Pokud provádíte replikaci do Azure, můžete do plánu obnovení integrovat Runbooky Azure Automation. [Další informace](site-recovery-runbook-automation.md)
+- Pokud provádíte replikaci do Azure, můžete do plánu obnovení integrovat Runbooky Azure Automation. [Další informace](site-recovery-runbook-automation.md).
 - Pokud provádíte replikaci virtuálních počítačů Hyper-V, které spravuje System Center VMM, můžete vytvořit skript na místním serveru VMM a zahrnout ho do plánu obnovení.
 - Když přidáte skript, přidá novou sadu akcí pro skupinu. Například sada předběžných kroků pro skupinu 1 se vytvoří se *skupinou název 1: předběžné kroky*. Všechny předběžné kroky jsou uvedeny v této sadě. Skript můžete do primární lokality přidat jenom v případě, že máte nasazený server VMM.
 - Pokud přidáte ruční akci, při spuštění plánu obnovení se zastaví v okamžiku, kdy jste vložili ruční akci. Zobrazí se dialogové okno s výzvou, abyste určili, že ruční akce byla dokončena.
@@ -64,9 +63,9 @@ Plán obnovení můžete přizpůsobit přidáním skriptu nebo ruční akce. V�
     **Scénář** | **Převzetí služeb při selhání** | **Navrácení služeb po obnovení**
     --- | --- | --- 
     Azure do Azure  | Runbook | Runbook
-    Z VMware do Azure | Runbook | Není k dispozici 
+    Z VMware do Azure | Runbook | není k dispozici 
     Hyper-V s VMM do Azure | Runbook | Skript
-    Z lokality Hyper-V do Azure | Runbook | Není k dispozici
+    Z webu Hyper-V do Azure | Runbook | není k dispozici
     VMM do sekundárního VMM | Skript | Skript
 
 1. V plánu obnovení klikněte na krok, ke kterému má být akce přidána, a určete, kdy má být provedena akce:

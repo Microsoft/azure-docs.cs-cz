@@ -1,13 +1,18 @@
 ---
-ms.openlocfilehash: 52dfbfca5f79a7f92848ea39eddc00aa10f05ff1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: ac9fe1d367dba0ebdf4250b3213f191ced758dd3
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174723"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76694533"
 ---
-## <a name="locate-a-cloud-spatial-anchor"></a>Vyhledejte prostorových ukotvení cloudu
+## <a name="locate-a-cloud-spatial-anchor"></a>Vyhledání prostorového kotvícího kotvy
 
-Nebudou moct vyhledat prostorové ukotvení dříve odeslaný cloudu je jedním z hlavní důvody pro použití knihovně prostorových kotvy Azure. Vyhledat prostorové Cloudová ukotvení, budete potřebovat znát jejich identifikátorů. ID ukotvení mohou být uloženy ve službě back-end vaší aplikace a dostupné všem zařízením, která můžete do ní správné ověření. Příklad najdete v článku [kurzu: Sdílet prostorových kotvy napříč zařízeními](/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices/).
+Vyhledávání dříve uloženého cloudového kotvy je jedním z hlavních důvodů použití prostorových kotev Azure. Existuje několik různých způsobů, jak můžete najít cloudovou kotvu. V jednom okamžiku můžete použít jednu strategii sledovacího procesu.
+- Vyhledejte kotvy podle identifikátoru.
+- Vyhledá kotvy připojené k dříve umístěnému ukotvení. [Tady](/azure/spatial-anchors/concepts/anchor-relationships-way-finding.md)najdete informace o souvislostech kotvy.
+- Najděte kotvu s využitím [hrubého prostředí](/azure/spatial-anchors/concepts/coarse-reloc.md).
 
-Vytvoření instance `AnchorLocateCriteria` objektu, nastavit identifikátory hledáte a vyvolání `CreateWatcher` metoda relace tím, že poskytuje vaše `AnchorLocateCriteria`.
+Pokud vyhledáváte cloudové kotvy podle identifikátoru, budete chtít uložit identifikátor prostorové kotvy cloudu do back-endové služby vaší aplikace a zpřístupnit ho pro všechna zařízení, která se k němu můžou správně ověřit. Příklad najdete v tématu [kurz: sdílení prostorových ukotvení napříč zařízeními](/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices/).
+
+Vytvořte instanci objektu `AnchorLocateCriteria`, nastavte identifikátory, které hledáte, a volejte metodu `CreateWatcher` v relaci tím, že poskytnete `AnchorLocateCriteria`.
