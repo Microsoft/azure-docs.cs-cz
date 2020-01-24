@@ -10,13 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 08/12/2019
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1adbb913fc8ec6376f1c5f47708da4fd7df740ff
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 32d58a5536cda5a5a446eee15401dabc0c936304
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619373"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705220"
 ---
 # <a name="set-up-an-office-phone-as-your-two-factor-verification-method"></a>Nastavit telefon do kanceláře jako metodu ověřování dvou faktorů
 
@@ -27,7 +26,7 @@ Telefon do kanceláře můžete nastavit tak, aby fungoval jako metoda ověřov�
 
 ## <a name="set-up-your-office-phone-number-as-your-verification-method"></a>Nastavte své telefonní číslo do kanceláře jako metodu ověřování.
 
-1. Na stránce **Další ověření zabezpečení** vyberte v části Krok 1 možnost telefon **do **kanceláře** : Jak vás máme kontaktovat** vaši oblastí, v rozevíracím seznamu vyberte zemi nebo oblast, zadejte své telefonní číslo do kanceláře a pak zadejte svoje rozšíření, pokud ho máte.
+1. Na stránce **Další ověření zabezpečení** vyberte možnost **telefon do kanceláře** z **kroku 1: jak vás máme kontaktovat** oblast, v rozevíracím seznamu vyberte svou zemi nebo oblast, zadejte své telefonní číslo do kanceláře a potom zadejte své rozšíření, pokud ho máte.
 
     ![Stránka Další ověření zabezpečení s ověřováním telefon a telefonní hovor](media/multi-factor-authentication-verification-methods/multi-factor-authentication-office-phone.png)
 
@@ -35,7 +34,7 @@ Telefon do kanceláře můžete nastavit tak, aby fungoval jako metoda ověřov�
 
     ![Testování zadaného telefonního čísla](media/multi-factor-authentication-verification-methods/multi-factor-authentication-office-phone-test.png)
 
-3. **V kroku 3: Používejte existující oblast aplikací** , zkopírujte zadané heslo aplikace a vložte ho někam do trezoru.
+3. V **kroku 3: pokračujte v oblasti používání stávajících aplikací** , zkopírujte zadané heslo aplikace a vložte ho někam do trezoru.
 
     ![Oblast hesel aplikací na stránce dodatečného ověření zabezpečení](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 
@@ -44,7 +43,7 @@ Telefon do kanceláře můžete nastavit tak, aby fungoval jako metoda ověřov�
 
 4. Vyberte **Done** (Hotovo).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Po nastavení dvojúrovňové metody ověřování můžete přidat další metody, spravovat nastavení a hesla aplikací, přihlašovat nebo získat pomoc s některými běžnými problémy souvisejícími s ověřováním dvou faktorů.
 
