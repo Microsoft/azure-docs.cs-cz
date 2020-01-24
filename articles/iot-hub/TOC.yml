@@ -84,9 +84,9 @@
 - name: Koncepty
   items:
     - name: Podpora TLS
-      href: iot-hub-tls.md
+      href: iot-hub-tls-support.md
     - name: Vyřazení TLS 1.0 a 1.1
-      href: tls-1.2-everywhere.md
+      href: iot-hub-tls-deprecating-1-0-and-1-1.md
     - name: Přehled obohacení zpráv
       href: iot-hub-message-enrichments-overview.md
     - name: Přehled správy zařízení

@@ -5,12 +5,12 @@ metadata:
   title: Dokumentace k vědeckému zpracování týmových dat
   description: 'Zjistěte, jak využívat vědecké zpracování týmových dat. Tato agilní a iterativní metodologie pro datové vědy pomáhá efektivně dodávat prediktivní analytická řešení a inteligentní aplikace. Vědecké zpracování týmových dat pomáhá vylepšit spolupráci a učení v rámci týmů. Obsahuje výtah osvědčených postupů a struktur od Microsoftu a dalších společností v tomto oboru, které usnadňují úspěšnou implementaci iniciativ datových věd. Cílem je umožnit společnostem plně využít výhod jejich analytického programu.'
   services: machine-learning
-  author: cjgronlund
+  author: marktab
   ms.service: machine-learning
   ms.subservice: team-data-science-process
   ms.topic: landing-page
-  ms.date: 01/18/2018
-  ms.author: cgronlun
+  ms.date: 01/10/2020
+  ms.author: marktab
 abstract:
   description: 'Vědecké zpracování týmových dat je agilní a interaktivní metodologie pro datové vědy, která pomáhá efektivně dodávat prediktivní analytická řešení a inteligentní aplikace. Vědecké zpracování týmových dat pomáhá vylepšit spolupráci a učení v rámci týmů. Obsahuje výtah osvědčených postupů a struktur od Microsoftu a dalších společností v tomto oboru, které usnadňují úspěšnou implementaci iniciativ datových věd. Cílem je umožnit společnostem plně využít výhod jejich analytického programu.'
 sections:

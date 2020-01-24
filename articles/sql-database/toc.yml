@@ -86,12 +86,6 @@
               href: sql-database-ssms-mfa-authentication.md
             - name: Konfigurace vícefaktorového ověřování
               href: sql-database-ssms-mfa-authentication-configure.md
-            - name: Transparentní šifrování dat s využitím služby BYOK
-              href: transparent-data-encryption-byok-azure-sql-configure.md
-            - name: Obměna klíčů BYOK transparentního šifrování dat
-              href: transparent-data-encryption-byok-azure-sql-key-rotation.md
-            - name: Odebrání ochrany transparentního šifrování dat
-              href: transparent-data-encryption-byok-azure-sql-remove-tde-protector.md
         - name: Ochrana dat
           items:
             - name: Transparentní šifrování dat (TDE)
@@ -100,6 +94,12 @@
                   href: transparent-data-encryption-azure-sql.md
                 - name: Transparentní šifrování dat s využitím služby Bring Your Own Key
                   href: transparent-data-encryption-byok-azure-sql.md
+                - name: Transparentní šifrování dat s využitím služby BYOK
+                  href: transparent-data-encryption-byok-azure-sql-configure.md
+                - name: Obměna klíčů BYOK transparentního šifrování dat
+                  href: transparent-data-encryption-byok-azure-sql-key-rotation.md
+                - name: Odebrání ochrany transparentního šifrování dat
+                  href: transparent-data-encryption-byok-azure-sql-remove-tde-protector.md
             - name: Dynamické maskování dat
               href: sql-database-dynamic-data-masking-get-started.md
             - name: Funkce Always Encrypted

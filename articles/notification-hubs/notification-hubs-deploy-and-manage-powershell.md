@@ -1,5 +1,5 @@
 ---
-title: Nasazení a správa Notification Hubs pomocí PowerShellu
+title: Nasazení a Správa Notification Hubs pomocí prostředí PowerShell
 description: Vytvoření a Správa Notification Hubs pomocí prostředí PowerShell pro automatizaci
 services: notification-hubs
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 5af920249000cabbc63f0c9ab453738450875172
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 863fdb445cce41f0fe4cbee63a3d6198c0a79339
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213415"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264640"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>Nasazení a Správa centra oznámení pomocí PowerShellu
 
@@ -74,11 +74,11 @@ catch [System.Exception]
 }
 ```
 
-## <a name="create-the-namespacemanager-class"></a>`NamespaceManager` Vytvoření třídy
+## <a name="create-the-namespacemanager-class"></a>Vytvoření třídy `NamespaceManager`
 
 Chcete-li zřídit Notification Hubs, vytvořte instanci třídy [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager?view=azure-dotnet) ze sady SDK.
 
-Pomocí rutiny [Get-AzureSBAuthorizationRule] , která je součástí nástroje Azure PowerShell, můžete načíst autorizační pravidlo, které slouží k zadání připojovacího řetězce. Odkaz na `NamespaceManager` instanci je uložen `$NamespaceManager` v proměnné. `$NamespaceManager`slouží ke zřízení Centra oznámení.
+Pomocí rutiny [Get-AzureSBAuthorizationRule] , která je součástí nástroje Azure PowerShell, můžete načíst autorizační pravidlo, které slouží k zadání připojovacího řetězce. Odkaz na instanci `NamespaceManager` je uložen v proměnné `$NamespaceManager`. `$NamespaceManager` slouží ke zřízení Centra oznámení.
 
 ``` powershell
 $sbr = Get-AzureSBAuthorizationRule -Namespace $Namespace
@@ -94,15 +94,15 @@ K zřízení nového centra oznámení použijte rozhraní [Rozhraní .NET API p
 
 V této části skriptu nastavíte čtyři místní proměnné.
 
-1. `$Namespace`: Nastavte na název oboru názvů, ve kterém chcete vytvořit centrum oznámení.
-2. `$Path`: Nastavte tuto cestu na název nového centra oznámení.  Například "MyHub".
-3. `$WnsPackageSid`: Nastavte tuto hodnotu na SID balíčku aplikace pro Windows z [Windows Dev Center](https://developer.microsoft.com/en-us/windows).
-4. `$WnsSecretkey`: Nastavte si ho na tajný klíč aplikace pro Windows z [Windows Dev Center](https://developer.microsoft.com/en-us/windows).
+1. `$Namespace`: nastavte tuto hodnotu na název oboru názvů, ve kterém chcete vytvořit centrum oznámení.
+2. `$Path`: nastavte tuto cestu na název nového centra oznámení.  Například "MyHub".
+3. `$WnsPackageSid`: nastavte tuto hodnotu na SID balíčku aplikace pro Windows z [Windows Dev Center](https://developer.microsoft.com/en-us/windows).
+4. `$WnsSecretkey`: nastavte tuto hodnotu na tajný klíč vaší aplikace pro Windows z [Windows Dev Center](https://developer.microsoft.com/en-us/windows).
 
 Tyto proměnné se používají pro připojení k vašemu oboru názvů a vytvoření nového centra oznámení nakonfigurovaného pro zpracování oznámení služby Windows Notification Services (WNS) s přihlašovacími údaji WNS pro aplikaci pro Windows. Informace o získání identifikátoru SID balíčku a tajného klíče najdete v kurzu [Začínáme Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) .
 
-- Fragment skriptu používá `NamespaceManager` objekt ke kontrole, zda centrum oznámení `$Path` identifikované existuje.
-- Pokud neexistuje, skript vytvoří `NotificationHubDescription` s přihlašovacími údaji WNS a předá ho `NamespaceManager` metodě třídy `CreateNotificationHub` .
+- Fragment skriptu používá objekt `NamespaceManager` ke kontrole, zda centrum oznámení identifikované `$Path` existuje.
+- Pokud neexistuje, skript vytvoří `NotificationHubDescription` s přihlašovacími údaji WNS a předá ho do metody `CreateNotificationHub` `NamespaceManager` třídy.
 
 ``` powershell
 $Namespace = "<Enter your namespace>"
@@ -146,7 +146,7 @@ else
 }
 ```
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály
 
 - [Správa služby Service Bus pomocí PowerShellu](../service-bus-messaging/service-bus-powershell-how-to-provision.md)
 - [Postup vytvoření Service Bus front, témat a odběrů pomocí skriptu PowerShellu](https://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
