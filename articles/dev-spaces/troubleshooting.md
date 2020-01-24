@@ -2,15 +2,15 @@
 title: Řešení potíží
 services: azure-dev-spaces
 ms.date: 09/25/2019
-ms.topic: conceptual
+ms.topic: troubleshooting
 description: Naučte se řešit problémy a řešit běžné problémy při povolování a používání Azure Dev Spaces.
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
-ms.openlocfilehash: a52d27733168c55f9e34d15f6675dd7bce0f8aad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3a2eb98af2c73b5a920f3e3bcedb7ab18e9f0430
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438112"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548845"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Řešení potíží s Azure Dev Spaces
 
@@ -52,13 +52,13 @@ Opětovné vytvoření kontroleru můžete udělat v sadě Visual Studio nebo ro
 
 ### <a name="controller-create-failing-because-of-controller-name-length"></a>Řadič se nepodařilo vytvořit kvůli délce názvu kontroleru.
 
-Název kontroleru Azure Dev Spaces nemůže být delší než 31 znaků. Pokud je název řadiče v clusteru AKS nebo vytvoření kontroleru delší než 31 znaků, dojde k chybě. Příklad:
+Název kontroleru Azure Dev Spaces nemůže být delší než 31 znaků. Pokud je název řadiče v clusteru AKS nebo vytvoření kontroleru delší než 31 znaků, dojde k chybě. Například:
 
 ```console
 Failed to create a Dev Spaces controller for cluster 'a-controller-name-that-is-way-too-long-aks-east-us': Azure Dev Spaces Controller name 'a-controller-name-that-is-way-too-long-aks-east-us' is invalid. Constraint(s) violated: Azure Dev Spaces Controller names can only be at most 31 characters long*
 ```
 
-Chcete-li tento problém vyřešit, vytvořte kontrolér s alternativním názvem. Příklad:
+Chcete-li tento problém vyřešit, vytvořte kontrolér s alternativním názvem. Například:
 
 ```cmd
 azds controller create --name my-controller --target-name MyAKS --resource-group MyResourceGroup
@@ -159,7 +159,7 @@ Předpokládejme například, že použijete příkaz Helm ke spuštění celé 
 
 Azure Dev prostory můžete nakonfigurovat tak, aby odkazoval na konkrétní _soubor Dockerfile_ ve vašem projektu. Pokud se zobrazí Azure Dev Spaces nepoužívá _souboru Dockerfile_ , kterou očekáváte k sestavování kontejnerů, možná budete muset explicitně sdělit Azure dev Spaces které souboru Dockerfile se mají použít. 
 
-Chcete-li tento problém vyřešit, otevřete soubor _azds. yaml_ , který Azure dev Spaces vygeneroval v projektu. *Konfigurace aktualizací: vývoj: sestavení: souboru Dockerfile* odkazuje na souboru Dockerfile, který chcete použít. Příklad:
+Chcete-li tento problém vyřešit, otevřete soubor _azds. yaml_ , který Azure dev Spaces vygeneroval v projektu. *Konfigurace aktualizací: vývoj: sestavení: souboru Dockerfile* odkazuje na souboru Dockerfile, který chcete použít. Například:
 
 ```yaml
 ...
@@ -206,7 +206,7 @@ install:
 
 Tato chyba může zobrazit, když kódu služby se nepodaří spustit. Příčinou je často v uživatelském kódu. Pokud chcete získat další diagnostické informace, při spouštění služby povolte podrobnější protokolování.
 
-Z příkazového řádku použijte `--verbose` k povolení podrobnějšího protokolování. Výstupní formát můžete zadat také pomocí `--output`. Příklad:
+Z příkazového řádku použijte `--verbose` k povolení podrobnějšího protokolování. Výstupní formát můžete zadat také pomocí `--output`. Například:
 
 ```cmd
 azds up --verbose --output json
@@ -252,7 +252,7 @@ Failed to build container image.
 Service cannot be started.
 ```
 
-K této chybě dochází, protože uzly AKS používají starší verzi Docker, která nepodporuje buildy ve více fázích. Chcete-li se vyhnout sestavením s více fázemi, přepište své souboru Dockerfile.
+K této chybě dochází, protože Azure Dev Spaces v současné době nepodporuje sestavení ve více fázích. Chcete-li se vyhnout sestavením s více fázemi, přepište své souboru Dockerfile.
 
 ### <a name="network-traffic-is-not-forwarded-to-your-aks-cluster-when-connecting-your-development-machine"></a>Při připojování vývojového počítače se síťový provoz nepřepošle do vašeho clusteru AKS
 
@@ -335,7 +335,7 @@ Pokud chcete tento problém vyřešit:
 
 ### <a name="authorization-error-microsoftdevspacesregisteraction"></a>Chyba autorizace "Microsoft. DevSpaces/Register/Action"
 
-Ke správě Azure Dev Spaces potřebujete ve svém předplatném Azure přístup *vlastníka* nebo *přispěvatele* . Pokud se pokoušíte spravovat vývojové prostory a nemáte oprávnění *vlastníka* nebo *přispěvatele* k přidruženému předplatnému Azure, může se zobrazit chyba autorizace. Příklad:
+Ke správě Azure Dev Spaces potřebujete ve svém předplatném Azure přístup *vlastníka* nebo *přispěvatele* . Pokud se pokoušíte spravovat vývojové prostory a nemáte oprávnění *vlastníka* nebo *přispěvatele* k přidruženému předplatnému Azure, může se zobrazit chyba autorizace. Například:
 
 ```console
 The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.
@@ -475,3 +475,12 @@ Pokud chcete povolit Azure Dev Spaces v clusteru AKS, pro který je omezený pro
 | gcr.io | HTTP: 443 | Načtení imagí Helm/překladen|
 | storage.googleapis.com | HTTP: 443 | Načtení imagí Helm/překladen|
 | azds –<guid>.<location>. azds.io | HTTPS:443 | Pro komunikaci se službou Azure Dev Spaces back-end pro váš kontroler. Přesný plně kvalifikovaný název domény najdete v části "dataplaneFqdn" v% USERPROFILE%\.azds\settings.JSON|
+
+### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Chyba "v předplatném se nepovedlo najít cluster \<\> \<subscriptionId\>"
+
+Tato chyba se může zobrazit v případě, že váš soubor kubeconfig cílí na jiný cluster nebo předplatné, než se snažíte použít s Azure Dev Spaces nástrojů na straně klienta. Nástroje Azure Dev Spaces na straně klienta replikují chování *kubectl*, které používá [jeden nebo více souborů kubeconfig](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) k výběru a komunikaci s clusterem.
+
+Pokud chcete tento problém vyřešit:
+
+* K aktualizaci aktuálního kontextu použijte `az aks use-dev-spaces -g <resource group name> -n <cluster name>`. Tento příkaz také umožňuje Azure Dev Spaces v clusteru AKS, pokud ještě není povolený. Alternativně můžete použít `kubectl config use-context <cluster name>` k aktualizaci aktuálního kontextu.
+* Pomocí `az account show` můžete zobrazit aktuální předplatné Azure, které cílíte, a ověřit, jestli je to správné. Předplatné, které cílíte, můžete změnit pomocí `az account set`.

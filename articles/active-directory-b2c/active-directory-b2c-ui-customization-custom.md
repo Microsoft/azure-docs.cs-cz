@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1ac0f59ea709e25f3d71a78ece5ebf40690bd3be
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: db9b95f82a18072af538d4aa946431dcef8d9cff
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949622"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154637"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní aplikace pomocí vlastní zásady v Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ ms.locfileid: "74949622"
 
 Po dokončení tohoto článku budete mít vlastní zásadu registrace a přihlašování s vaší značkou a vzhledem. Pomocí Azure Active Directory B2C (Azure AD B2C) získáte téměř úplné řízení obsahu HTML a CSS, který je prezentován uživatelům. Když použijete vlastní zásadu, nakonfigurujete přizpůsobení uživatelského rozhraní v XML namísto použití ovládacích prvků v Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Proveďte kroky v části Začínáme [s vlastními zásadami](active-directory-b2c-get-started-custom.md). Měli byste mít pracovní vlastní zásady pro registraci a přihlašování pomocí místních účtů.
 
@@ -64,7 +64,7 @@ V nadpisu Vytvořte obsah HTML s názvem značky vašeho produktu.
 
 Chcete-li tento obsah HTML hostovat v úložišti objektů blob, proveďte následující kroky:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
 1. V nabídce **centra** vyberte **nový** > **úložiště** > **účet úložiště**.
 1. Vyberte **předplatné** pro účet úložiště.
 1. Vytvořte **skupinu prostředků** nebo vyberte existující.
@@ -106,7 +106,7 @@ Pomocí následujících kroků nakonfigurujte úložiště objektů BLOB pro sd
 1. U **povolených hlaviček**zadejte hvězdičku (*).
 1. U **zveřejněných hlaviček**zadejte hvězdičku (*).
 1. Do **maximálního stáří**zadejte 200.
-1. Klikněte na **Uložit**.
+1. Klikněte na možnost **Uložit**.
 
 ## <a name="test-cors"></a>Test CORS
 
@@ -120,7 +120,7 @@ Ověřte, že jste připraveni, provedením následujících kroků:
 
 Chcete-li nakonfigurovat přizpůsobení uživatelského rozhraní, zkopírujte **ContentDefinition** a jeho podřízené prvky ze základního souboru do souboru rozšíření.
 
-1. Otevřete základní soubor zásad. Například <em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em> . Jedná se o jeden ze souborů zásad, které jsou součástí úvodní sady Custom Policy Pack, které byste měli mít k dispozici v rámci svých požadavků. Začněte [s vlastními zásadami](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
+1. Otevřete základní soubor zásad. Například <em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em>. Jedná se o jeden ze souborů zásad, které jsou součástí úvodní sady Custom Policy Pack, které byste měli mít k dispozici v rámci svých požadavků. Začněte [s vlastními zásadami](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
 1. Vyhledejte a zkopírujte celý obsah elementu **ContentDefinitions** .
 1. Otevřete soubor rozšíření. Například *TrustFrameworkExtensions. XML*. Vyhledejte element **BuildingBlocks** . Pokud element neexistuje, přidejte jej.
 1. Vložte celý obsah elementu **ContentDefinitions** , který jste zkopírovali jako podřízený prvek **BuildingBlocks** elementu.
@@ -146,19 +146,19 @@ Chcete-li nakonfigurovat přizpůsobení uživatelského rozhraní, zkopírujte 
 
 1. Uložte soubor rozšíření.
 
-## <a name="upload-your-updated-custom-policy"></a>Nahrajte aktualizované vlastní zásady.
+## <a name="upload-and-test-your-updated-custom-policy"></a>Nahrávání a testování aktualizovaných vlastních zásad
+
+### <a name="upload-the-custom-policy"></a>Nahrajte vlastní zásadu.
 
 1. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
-1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
-1. Vyberte **architekturu prostředí identity**.
-1. Klikněte na **všechny zásady**.
-1. Klikněte na **nahrát zásadu**.
+1. Vyhledejte a vyberte **Azure AD B2C**.
+1. V části **zásady**vyberte **Architektura prostředí identity**.
+1. Vyberte **Odeslat vlastní zásadu**.
 1. Nahrajte soubor rozšíření, který jste předtím změnili.
 
-## <a name="test-the-custom-policy-by-using-run-now"></a>Otestujte vlastní zásady pomocí rutiny **spustit hned**
+### <a name="test-the-custom-policy-by-using-run-now"></a>Otestujte vlastní zásady pomocí rutiny **spustit hned**
 
-1. Na stránce **Azure AD B2C** přejít na **všechny zásady**.
-1. Vyberte vlastní zásady, které jste nahráli, a klikněte na tlačítko **Spustit** .
+1. Vyberte zásady, které jste nahráli, a pak vyberte **Spustit nyní**.
 1. Měli byste být schopni se zaregistrovat pomocí e-mailové adresy.
 
 ## <a name="reference"></a>Referenční informace

@@ -3,13 +3,13 @@ title: Sledování služby Azure blockchain (ABS)
 description: Monitorování služby Azure blockchain prostřednictvím Azure Monitor
 ms.date: 01/08/2020
 ms.topic: article
-ms.reviewer: coborn
-ms.openlocfilehash: 8c2dc6afeaa00e4c7455940cbdf5a7acd6e17394
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.reviewer: v-umha
+ms.openlocfilehash: 6f2a91a8ffce67d3c4008a7587f2787f6446c341
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780402"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293245"
 ---
 # <a name="monitor-azure-blockchain-service-through-azure-monitor"></a>Monitorování služby Azure blockchain prostřednictvím Azure Monitor  
 
@@ -38,7 +38,7 @@ Při vytváření nastavení diagnostiky určíte, které kategorie protokolů s
 
 **Blockchain Application logs** – vyberte kategorii pro získání protokolů aplikace blockchain hostované spravovanou službou. Například pro člena ABS-kvora by tyto protokoly byly protokoly ze samotného kvora.  
 
-**Požadavky na metriky**: vyberte možnost shromažďování dat metrik z Azure Cosmos DB do cílových umístění v nastavení diagnostiky, které se automaticky shromáždí v metrikách Azure. Shromažďovat data metriky pomocí protokolů zdrojů k analýze obou druhů dat a k odesílání dat metriky mimo Azure Monitor.
+**Požadavky na metriky**: Vyberte možnost shromažďování dat metrik z Azure Cosmos DB do cílových umístění v nastavení diagnostiky, které se automaticky shromáždí v metrikách Azure. Shromažďovat data metriky pomocí protokolů zdrojů k analýze obou druhů dat a k odesílání dat metriky mimo Azure Monitor.
 
 ## <a name="analyze-metric-data"></a>Analýza dat metriky  
 
@@ -90,7 +90,7 @@ V následující tabulce jsou uvedeny vlastnosti pro protokoly proxy serveru Azu
 | BlockchainNodeName  | Název uzlu členu služby Azure blockchain, na kterém je operace prováděna.   |
 | EthMethod  | Metoda, kterou volá podkladový protokol blockchain, může být v kvoru eth_sendTransactions, eth_getBlockByNumber atd.  |
 | Agent  | Uživatelský agent, který funguje jménem uživatele, například webové prohlížeče Mozilla, Edge atd. Příklady těchto hodnot: "Mozilla/5.0 (Linux x64) Node. js/8.16.0 V8/6.2.414.77"  |
-| kód   | Kódy chyb HTTP. 4XX a 5XX jsou obvykle chybové stavy.  |
+| Kód   | Kódy chyb HTTP. 4XX a 5XX jsou obvykle chybové stavy.  |
 | NodeHost  | Název DNS uzlu   |
 | RequestMethodName | Metoda HTTP s názvem, možné hodnoty jsou zde uvedeny pro možnost vytvořit člena, získat podrobnosti o existujícím členovi, odstranit člena odstranit, opravit člena.   |
 | BlockchainMemberName  | Název členu služby Azure blockchain zadaný uživatelem  |
@@ -133,10 +133,10 @@ Následující tabulka uvádí seznam blockchain metrik, které se shromažďuj�
 
 | Název metriky | Jednotka  |  Typ agregace| Popis   |
 |---|---|---|---|
-| Nedokončené transakce   | Počet  |  Průměr | Počet transakcí, které čekají na dolována za účely.   |
-| Zpracované bloky   | Počet  | Součet  |  Počet bloků zpracovaných v každém časovém intervalu. Velikost bloku je v současné době 5 sekund, proto za minutu každý uzel zpracuje 12 bloků a 60 bloků za 5 minut.   |
-|Zpracované transakce    | Počet  | Součet  | Počet transakcí zpracovaných v bloku.    |
-|Transakce ve frontě    |  Počet | Průměr  | Počet transakcí, které nemohou být okamžitě dolována za účelyy. Může to být proto, že se dostanou mimo pořadí a budoucí verze čeká na doručení předchozí transakce. Nebo může se jednat o dvě transakce, které mají stejné číslo jako jenom jednou (hodnota nonce) a stejnou hodnotu plynu, takže druhá z nich nemůže být dolována za účely.   |
+| Nedokončené transakce   | Count  |  Average | Počet transakcí, které čekají na dolována za účely.   |
+| Zpracované bloky   | Count  | Součet  |  Počet bloků zpracovaných v každém časovém intervalu. Velikost bloku je v současné době 5 sekund, proto za minutu každý uzel zpracuje 12 bloků a 60 bloků za 5 minut.   |
+|Zpracované transakce    | Count  | Součet  | Počet transakcí zpracovaných v bloku.    |
+|Transakce ve frontě    |  Count | Average  | Počet transakcí, které nemohou být okamžitě dolována za účelyy. Může to být proto, že se dostanou mimo pořadí a budoucí verze čeká na doručení předchozí transakce. Nebo může se jednat o dvě transakce, které mají stejné číslo jako jenom jednou (hodnota nonce) a stejnou hodnotu plynu, takže druhá z nich nemůže být dolována za účely.   |
 
 ### <a name="connection-metrics"></a>Metrik připojení  
 
@@ -145,10 +145,10 @@ V následující tabulce jsou uvedeny různé metriky připojení, které jsou s
 
 | Název metriky | Jednotka  |  Typ agregace| Popis |
 |---|---|---|---|
-| Přijatá připojení   | Počet  |  Součet | Celkový počet přijatých připojení klientů.   |
-| Aktivní připojení  | Počet  | Průměr  |  Aktuální počet aktivních připojení klientů, včetně čekání na připojení.    |
-|Zpracovaná připojení    | Počet  | Součet  | Celkový počet zpracovaných připojení. Obecně platí, že hodnota parametru je stejná jako přijatá připojení, pokud se nedosáhne omezení prostředků.     |
-|Zpracované žádosti     |  Počet | Součet  | Celkový počet požadavků klientů.  |
+| Přijatá připojení   | Count  |  Součet | Celkový počet přijatých připojení klientů.   |
+| Aktivní připojení  | Count  | Average  |  Aktuální počet aktivních připojení klientů, včetně čekání na připojení.    |
+|Zpracovaná připojení    | Count  | Součet  | Celkový počet zpracovaných připojení. Obecně platí, že hodnota parametru je stejná jako přijatá připojení, pokud se nedosáhne omezení prostředků.     |
+|Zpracované žádosti     |  Count | Součet  | Celkový počet požadavků klientů.  |
 
 
 ### <a name="performance-metrics"></a>Metriky výkonu
@@ -158,13 +158,13 @@ V následující tabulce jsou uvedeny metriky výkonu, které jsou shromažďov�
 
 | Název metriky | Jednotka  |  Typ agregace| Popis   |
 |---|---|---|---|
-| Procento využití procesoru   | Procento  |  Max. | Procento využití procesoru.     |
+| Procento využití procesoru   | Procento  |  Maximum | Procento využití procesoru.     |
 | Bajty čtení v/v   | Kilobajtů   | Součet  |  Součet čtených vstupně-výstupních bajtů ve všech uzlech členského prostředku blockchain      |
 |Bajty zápisu v/v     | Kilobajtů   | Součet  | Součet v/v zapisuje bajty ve všech uzlech členského prostředku blockchain.     |
-|Limit paměti       |  Paměti   | Průměr    | Maximální velikost paměti dostupné pro proces blockchain na uzel. |
-|Využití paměti     | Paměti  |  Průměr | Velikost využité paměti ve všech uzlech.  |
-| Procento využití paměti     | Procento   | Průměr  |  Procentuální podíl využité paměti ve všech uzlech       |
-|Využití úložiště      | Paměti   | Průměr  | Průměrná velikost využitého úložiště ve všech uzlech.       |
+|Limit paměti       |  Paměti   | Average    | Maximální velikost paměti dostupné pro proces blockchain na uzel. |
+|Využití paměti     | Paměti  |  Average | Velikost využité paměti ve všech uzlech.  |
+| Procento využití paměti     | Procento   | Average  |  Procentuální podíl využité paměti ve všech uzlech       |
+|Využití úložiště      | Paměti   | Average  | Průměrná velikost využitého úložiště ve všech uzlech.       |
 
 
 ## <a name="next-steps"></a>Další kroky
