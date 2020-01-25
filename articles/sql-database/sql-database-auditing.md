@@ -5,24 +5,24 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.topic: conceptual
-author: barmichal
-ms.author: mibar
+author: DavidTrigano
+ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 3d6f9f7d09664f9a5bd968ca5c0441b0846ceca3
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 8f82f0539432418f967d51f00e659ce92d1fa9b6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122691"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719802"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
 
-Auditování pro Azure [SQL Database](sql-database-technical-overview.md) a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) sleduje události databáze a zapisuje je do protokolu auditu ve vašem účtu služby Azure Storage, Log Analytics pracovní prostor nebo Event Hubs. Auditování také:
+Auditování pro Azure [SQL Database](sql-database-technical-overview.md) a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) sleduje události databáze a zapisuje je do protokolu auditu ve vašem účtu služby Azure Storage, Log Analytics pracovní prostor nebo Event Hubs. Auditování taky:
 
-- Pomáhá zajistit dodržování předpisů, porozumět databázové aktivitě a získat přehled o nesrovnalostech a anomáliích, které můžou značit problémy obchodního charakteru nebo vzbuzovat podezření na narušení zabezpečení.
+- Pomáhá udržet dodržování legislativních předpisů, pochopit databázovou činnost a získat přehled o nesrovnalostech a anomáliích, které by mohly označovat obchodní aspekty nebo podezření na narušení zabezpečení.
 
-- Umožňuje a usnadňuje dodržování předpisů, i když soulad s těmito standardy nezaručuje. Další informace o programech Azure, které podporují dodržování standardů, najdete v [Centrum zabezpečení Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , kde můžete najít nejaktuálnější seznam SQL Database certifikace dodržování předpisů.
+- Povoluje a usnadňuje dodržování standardů dodržování předpisů, i když nezaručuje dodržování předpisů. Další informace o programech Azure, které podporují dodržování standardů, najdete v [Centrum zabezpečení Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , kde můžete najít nejaktuálnější seznam SQL Database certifikace dodržování předpisů.
 
 
 > [!NOTE] 
@@ -33,11 +33,11 @@ Auditování pro Azure [SQL Database](sql-database-technical-overview.md) a [SQL
 
 ## <a id="subheading-1"></a>Přehled auditování Azure SQL Database
 
-Auditování SQL Database můžete použít k těmto účelům:
+Auditování SQL Database můžete použít k těmto akcím:
 
-- **Zachovejte** záznam auditu vybraných událostí. Můžete definovat akce databáze, které se mají auditovat.
-- **Sestava** aktivity databáze. Můžete využít nakonfigurované sestavy a řídicí panel, abyste mohli rychle začít s vytvářením sestav aktivit a událostí.
-- **Analýza** sestav. Můžete vyhledávat podezřelé události, neobvyklou aktivitu a trendy.
+- **Zachovejte** záznam auditu vybraných událostí. Můžete definovat kategorie databázových akcí, které mají být auditovány.
+- **Sestava** aktivity databáze. Pomocí předem nakonfigurovaných sestav a řídicího panelu můžete rychle začít pracovat s vytvářením sestav aktivit a událostí.
+- **Analýza** sestav. Můžete najít podezřelé události, neobvyklé aktivity a trendy.
 
 > [!IMPORTANT]
 > Protokoly auditu se píší pro **doplňovací objekty blob** v úložišti objektů BLOB v Azure ve vašem předplatném Azure.
@@ -125,7 +125,7 @@ V následující části je popsána konfigurace auditování pomocí Azure Port
 
 Pokud se rozhodnete zapisovat protokoly auditu do protokolů Azure Monitor:
 
-- Použijete [Azure Portal](https://portal.azure.com)  Otevřete příslušnou databázi. V horní části stránky **auditování** databáze klikněte na **Zobrazit protokoly auditu**.
+- Použijte [Azure Portal](https://portal.azure.com).  Otevřete příslušnou databázi. V horní části stránky **auditování** databáze klikněte na **Zobrazit protokoly auditu**.
 
     ![Zobrazit protokoly auditu](./media/sql-database-auditing-get-started/auditing-view-audit-logs.png)
 
@@ -159,7 +159,7 @@ Pokud jste se rozhodli zapsat protokoly auditu do účtu služby Azure Storage, 
 
 - Protokoly auditu se agreguje v účtu, který jste zvolili během instalace. Protokoly auditu můžete prozkoumat pomocí nástroje, jako je [Průzkumník služby Azure Storage](https://storageexplorer.com/). V Azure Storage se protokoly auditování ukládají jako kolekce souborů objektů BLOB v rámci kontejneru s názvem **sqldbauditlogs**. Další podrobnosti o hierarchii složek úložiště, konvencí pojmenování a formátu protokolu najdete v tématu [Formát protokolu auditu SQL Database](https://go.microsoft.com/fwlink/?linkid=829599).
 
-- Použijete [Azure Portal](https://portal.azure.com)  Otevřete příslušnou databázi. V horní části stránky **auditování** databáze klikněte na **Zobrazit protokoly auditu**.
+- Použijte [Azure Portal](https://portal.azure.com).  Otevřete příslušnou databázi. V horní části stránky **auditování** databáze klikněte na **Zobrazit protokoly auditu**.
 
     ![Navigační podokno][7]
 
@@ -251,7 +251,7 @@ V produkčním prostředí pravděpodobně pravidelně aktualizujete klíče úl
 
     > [!IMPORTANT]
     > V současné době je k dispozici nastavení povolení chráněných objektů BLOB zápisů v závislosti na čase a viditelné pouze v následujících oblastech:
-    > - USA – východ
+    > - Východ USA
     > - Středojižní USA
     > - Západní USA 2
 

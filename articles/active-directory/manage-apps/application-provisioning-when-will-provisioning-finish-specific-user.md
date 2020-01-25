@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8238d2b417dbe03ad0623e472f1a239940c1bc8
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: e7296c63a467b2f53550b3e609cf1146244cf933
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75681374"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712118"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>Ověřit stav zřizování uživatelů
 
@@ -35,7 +35,7 @@ Při první konfiguraci automatického zřizování se v části **aktuální st
 - Typ cyklu zřizování (počáteční nebo přírůstkové), který aktuálně běží nebo byl naposledy dokončen.
 - Indikátor **průběhu** znázorňující procento dokončeného cyklu zřizování. Procento odráží počet zřízených stránek. Všimněte si, že každá stránka může obsahovat více uživatelů nebo skupin, takže procento přímo nekoreluje s počtem uživatelů, skupin nebo zřízených rolí.
 - Tlačítko pro **obnovení** , které můžete použít k udržení aktualizovaného zobrazení.
-- Počet **uživatelů** a **skupin** v úložišti dat konektoru. Počet se zvyšuje, kdykoli se do oboru zřizování přidá objekt. Pokud je uživatel bez potíží nebo odstraněn z úložiště dat konektoru, počet se neukončí. Po [resetování](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) disků CD se počet znovu počítané na první synchronizaci. 
+- Počet **uživatelů** a **skupin** v úložišti dat konektoru. Počet se zvyšuje, kdykoli se do oboru zřizování přidá objekt. Pokud je uživatel bez potíží nebo odstraněn z úložiště dat konektoru, počet se neukončí. Po [resetování](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) disků CD se počet recaculated na první synchronizaci. 
 - Odkaz **Zobrazit protokoly auditu** , ve kterém se otevře protokol zřizování Azure AD, který obsahuje podrobnosti o všech operacích spuštěných službou zřizování uživatelů, včetně stavu zřizování pro jednotlivé uživatele (viz část [použití protokolů zřizování](#use-provisioning-logs-to-check-a-users-provisioning-status) níže).
 
 Po dokončení cyklu zřizování se v části **Statistika k datu** zobrazuje kumulativní počet uživatelů a skupin, které byly zřízeny do data, spolu s datem dokončení a dobou trvání posledního cyklu. **ID aktivity** jednoznačně identifikuje nejnovější cyklus zřizování. **ID úlohy** je jedinečný identifikátor pro úlohu zřizování a je specifický pro aplikaci ve vašem tenantovi.
@@ -60,7 +60,7 @@ Protokoly zřizování zaznamenávají všechny operace prováděné službou z�
 Další informace o tom, jak číst protokoly zřizování v Azure Portal, najdete v [příručce pro vytváření sestav](check-status-user-account-provisioning.md).
 
 ## <a name="how-long-will-it-take-to-provision-users"></a>Jak dlouho bude trvat zřizování uživatelů?
-Při použití automatického zřizování uživatelů s aplikací Azure AD automaticky zřídí a aktualizuje uživatelské účty v aplikaci na základě toho, co je třeba [přiřazení uživatelů a skupin](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) , v pravidelných plánovaných intervalech, obvykle každých 40 minut.
+Při použití automatického zřizování uživatelů s aplikací Azure AD automaticky zřídí a aktualizuje uživatelské účty v aplikaci na základě toho, co je třeba [přiřazení uživatelů a skupin](assign-user-or-group-access-portal.md) , v pravidelných plánovaných intervalech, obvykle každých 40 minut.
 
 Čas potřebný k zřízení daného uživatele závisí hlavně na tom, jestli vaše úloha zřizování spouští počáteční cyklus nebo přírůstkový cyklus.
 
@@ -102,7 +102,7 @@ Souhrn faktorů, které mají vliv na dobu potřebnou k dokončení **počáteč
 
 - Počet a velikost přiřazených skupin. Synchronizace přiřazených skupin trvá déle než synchronizace uživatelů. Počet i velikost přiřazených skupin mají vliv na výkon. Pokud má aplikace [povolená mapování pro synchronizaci objektů skupin](customize-application-attributes.md#editing-group-attribute-mappings), jsou kromě uživatelů synchronizovány i vlastnosti skupiny, jako jsou názvy skupin a členství. Tyto další synchronizace budou trvat déle než jenom synchronizace uživatelských objektů.
 
-- Pokud dojde k potížím s výkonem a pokoušíte se zřídit většinu uživatelů a skupin ve vašem tenantovi, použijte filtry oborů. Filtry oborů vám umožňují vyladit data, která služba zřizování z Azure AD extrahuje, filtrováním uživatelů na základě konkrétních hodnot atributů. Další informace o filtrech oborů najdete v tématu [zřizování aplikací na základě atributů s filtry oborů](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+- Pokud dojde k potížím s výkonem a pokoušíte se zřídit většinu uživatelů a skupin ve vašem tenantovi, použijte filtry oborů. Filtry oborů vám umožňují vyladit data, která služba zřizování z Azure AD extrahuje, filtrováním uživatelů na základě konkrétních hodnot atributů. Další informace o filtrech oborů najdete v tématu [zřizování aplikací na základě atributů s filtry oborů](define-conditional-rules-for-provisioning-user-accounts.md).
 
 ## <a name="next-steps"></a>Další kroky
-[Automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning)
+[Automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](user-provisioning.md)

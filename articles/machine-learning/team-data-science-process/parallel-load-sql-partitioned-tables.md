@@ -3,20 +3,20 @@ title: Paralelní hromadný import dat do tabulek oddílů SQL - vědecké zprac
 description: Dělené tabulky pro rychlé paralelní hromadný import dat do databáze SQL serveru sestavení.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 253f73cc58292778d88417b693c157fcbd7d92bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 673a801e218d055bf482dc97972e36584cddd402
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61428289"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721332"
 ---
 # <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>Vytváření a optimalizaci tabulky pro rychlé paralelní import dat do systému SQL Server na Virtuálním počítači Azure
 
@@ -57,7 +57,7 @@ Následující příklad vytvoří novou databázi pomocí tří skupin souborů
 ## <a name="create-a-partitioned-table"></a>Vytvořit tabulku oddílů
 Vytvořit dělené tabulky podle schématu dat, mapované na skupiny souborů databáze, které vytvořili v předchozím kroku, musíte nejprve vytvořit funkci oddílu a schéma. Když jsou data hromadného importu do dělené tabulky, záznamy jsou rozděleny do skupin podle schématu oddílu, jak je popsáno níže.
 
-### <a name="1-create-a-partition-function"></a>1. Vytvoření funkce oddílu
+### <a name="1-create-a-partition-function"></a>1. vytvoření funkce oddílu
 [Vytvořit funkci oddílu](https://msdn.microsoft.com/library/ms187802.aspx) této funkce definuje rozsah hodnot/hranic mají být zahrnuty v každé tabulce jednotlivých oddílů, například, chcete-li omezit oddílů podle kategorie month (některé\_data a času\_pole) v roce 2013:
   
         CREATE PARTITION FUNCTION <DatetimeFieldPFN>(<datetime_field>)  
@@ -66,7 +66,7 @@ Vytvořit dělené tabulky podle schématu dat, mapované na skupiny souborů da
             '20130501', '20130601', '20130701', '20130801',
             '20130901', '20131001', '20131101', '20131201' )
 
-### <a name="2-create-a-partition-scheme"></a>2. Vytvořte schéma oddílu
+### <a name="2-create-a-partition-scheme"></a>2. vytvoření schématu oddílu
 [Vytvořte schéma oddílu](https://msdn.microsoft.com/library/ms179854.aspx). Toto schéma mapuje každý rozsah oddílu ve funkci oddílu fyzického skupině souborů, například:
   
         CREATE PARTITION SCHEME <DatetimeFieldPScheme> AS  
@@ -85,7 +85,7 @@ Vytvořit dělené tabulky podle schématu dat, mapované na skupiny souborů da
         INNER JOIN sys.partition_range_values prng ON prng.function_id=pfun.function_id
         WHERE pfun.name = <DatetimeFieldPFN>
 
-### <a name="3-create-a-partition-table"></a>3. Vytvořit tabulku oddílů
+### <a name="3-create-a-partition-table"></a>3. vytvoření tabulky oddílů
 [Vytvoření dělenou tabulku](https://msdn.microsoft.com/library/ms174979.aspx)(s) podle schématu dat, a zadat oddíl schématu a omezení pole použitá při vytváření oddílů v tabulce, například:
   
         CREATE TABLE <table_name> ( [include schema definition here] )
@@ -99,7 +99,7 @@ Další informace najdete v tématu [vytvořit dělené tabulky a indexy](https:
 * [Mění databázi](https://msdn.microsoft.com/library/bb522682.aspx) Chcete-li změnit režim protokolování transakce BULK_LOGGED minimalizovat nároky na protokolování, například:
   
         ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
-* K urychlení načítání dat, spuštění operace hromadného importu paralelně. Tipy k urychlení hromadného importu velkých objemů dat do databáze SQL serveru, naleznete v tématu [načtení 1TB za méně než 1 hodina](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx).
+* K urychlení načítání dat, spuštění operace hromadného importu paralelně. Tipy k urychlení hromadného importu velkých objemů dat do SQL Server databází najdete [v tématu Load 1 TB za méně než 1 hodinu](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx).
 
 Následující příkaz powershellu je příkladem paralelních dat pomocí BCP načítají.
 

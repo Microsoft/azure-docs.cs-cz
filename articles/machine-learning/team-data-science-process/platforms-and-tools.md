@@ -2,34 +2,35 @@
 title: Platformy a nástroje pro projekty datových věd - vědecké zpracování týmových dat
 description: Najdete výčet a popisuje prostředky dat a analýz, které jsou dostupné pro podniky standardizují používáním vědecké zpracování týmových dat.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 97dafe292ff3ed0ef5fa46eb895136e3b32e62c5
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e3297319c67ad2b7c94371356cde49113c7ef737
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978505"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718884"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformy a nástroje pro projekty datových věd
 
-Společnost Microsoft poskytuje komplexní opensourcová data a analýzy služby a prostředky pro na místní i cloudové platformy. Je možné nasadit efektivního a škálovatelného provést spuštění vaše projekty datových věd. Pokyny pro týmy, které implementují projekty datových věd v organizovaným verzi řízen a je poskytována spolupráce [vědecké zpracování týmových dat](overview.md) (TDSP).  Přehled rolí pracovníky a jejich přidružených úloh, které jsou zpracovávány standardizací data science týmu o tomto procesu najdete v části [vědecké zpracování týmových dat role a úlohy](roles-tasks.md).
+Microsoft poskytuje kompletní spektrum analytických prostředků pro cloudové i místní platformy. Je možné nasadit efektivního a škálovatelného provést spuštění vaše projekty datových věd. Pokyny pro týmy, které implementují projekty datových věd v organizovaným verzi řízen a je poskytována spolupráce [vědecké zpracování týmových dat](overview.md) (TDSP).  Přehled rolí pracovníky a jejich přidružených úloh, které jsou zpracovávány standardizací data science týmu o tomto procesu najdete v části [vědecké zpracování týmových dat role a úlohy](roles-tasks.md).
 
-Data a analýzy služby k dispozici pro datové vědy týmy použití TDSP patří:
+K dispozici jsou analytické prostředky pro datové vědy týmu, které používají TDSP:
 
 - Virtuální počítače pro datové vědy (Windows i Linux CentOS)
 - Clustery HDInsight Spark
-- SQL Data Warehouse
+- Synapse Analytics
 - Azure Data Lake
 - Clustery HDInsight Hive
 - Azure File Storage
-- SQL Server 2016 R Services
+- Služby SQL Server 2019 R a Python
+- Azure Databricks
 
 V tomto dokumentu jsme stručně popisují prostředky a poskytují odkazy na kurzy a názorné postupy publikování TDSP týmy. Že vám můžou pomoct při tom, jak využít krok za krokem a začít používat k sestavování inteligentních aplikací. Další informace o těchto prostředků je k dispozici na stránkách produktu. 
 
@@ -44,13 +45,13 @@ Virtuální počítač pro datové vědy nabízíme na Windows i Linuxem microso
 - Power BI desktopu pro Windows
 - SQL Server 2016 Developer Edition na Windows / Postgres v Linuxu
 
-Zahrnuje taky **nástroje ml a AI** , jako je xgboost, Mxnet a pro dostupné.
+Zahrnuje také **nástroje ml a AI** , jako jsou xgboost, Mxnet a pro dostupné.
 
 Aktuálně je k dispozici v DSVM **Windows** a **Linux CentOS** operačních systémů. Vyberte velikost vašeho DSVM (počet jader procesoru) a velikost paměti na základě potřeb projekty datových věd, které máte v úmyslu spustit na ní. 
 
-Další informace o edici Windows DSVM najdete v tématu [virtuálního počítače Microsoft Data Science](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) na Azure marketplace. Edice systému Linux datové VĚDY, naleznete v tématu [virtuální počítač s Linuxem Data Science](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/).
+Další informace o edici Windows DSVM najdete v části [Microsoft Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) na Azure Marketplace. Edice systému Linux datové VĚDY, naleznete v tématu [virtuální počítač s Linuxem Data Science](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/).
 
-Zjistěte, jak efektivně některé z běžných úloh datových věd zpracování pro datové VĚDY, najdete v článku [deset věcí, které můžete provést na virtuální počítač pro datovou vědu](../data-science-virtual-machine/vm-do-ten-things.md)
+Další informace o tom, jak efektivně provádět některé běžné úkoly pro datové vědy na DSVM, najdete v tématu [10 věcí, které můžete dělat na virtuálním počítači pro datové vědy](../data-science-virtual-machine/vm-do-ten-things.md) .
 
 
 ## <a name="azure-hdinsight-spark-clusters"></a>Clustery Azure HDInsight Spark
@@ -71,7 +72,7 @@ Další informace o Azure SQL Data Warehouse, najdete v článku [SQL Data Wareh
 
 ## <a name="azure-data-lake"></a>Azure Data Lake
 
-Azure data lake je jako je úložiště na podnikové úrovni všechny typy dat soustředěné na jednom místě, před žádné formální požadavků nebo schématu se uložila. Díky této flexibilitě umožňuje všechny typy dat, které budou uloženy v data lake, bez ohledu na její velikost nebo strukturu nebo rychlost zpracování. Organizace pak může použít Hadoop nebo pokročilou analýzu k vyhledání vzory v těchto datech jezera. Datová jezera současně může sloužit jako úložiště pro přípravu dat s nižšími náklady než Správa dat a jeho přesunutím do datového skladu.
+Azure Data Lake je úložiště všech typů dat shromážděných v rámci jednoho podniku před všemi formálními požadavky nebo podle toho, jaké schéma se ukládá. Díky této flexibilitě umožňuje všechny typy dat, které budou uloženy v data lake, bez ohledu na její velikost nebo strukturu nebo rychlost zpracování. Organizace pak může použít Hadoop nebo pokročilou analýzu k vyhledání vzory v těchto datech jezera. Datová jezera současně může sloužit jako úložiště pro přípravu dat s nižšími náklady než Správa dat a jeho přesunutím do datového skladu.
 
 Další informace o Azure Data Lake najdete v tématu [Introducing Azure Data Lake](https://azure.microsoft.com/blog/introducing-azure-data-lake/). Zjistěte, jak sestavit řešení škálovatelné začátku do konce datové vědy s Azure Data Lake, najdete v článku [škálovatelné vědecké zkoumání dat ve službě Azure Data Lake: návod začátku do konce](data-lake-walkthrough.md)
 
@@ -94,11 +95,11 @@ Azure File Storage je služba, která nabízí sdílené složky v cloudu přes 
 Užitečné zejména pro projekty datových věd je schopnost vytvářet úložiště služby Azure file jako místem, kde můžete sdílet data projektu s členy svého týmu projektu. Každý z nich pak má přístup k stejnou kopii dat ve službě Azure file storage. Tento soubor úložiště lze také použít ke sdílení sady funkcí, které jsou generovány během spuštění projektu. Pokud je projekt engagement klienta, můžete vytvořit vaši klienti služby Azure file storage v rámci svého vlastního předplatného Azure sdílet data projektu a funkcí s vámi. Tímto způsobem klient má plnou kontrolu nad projektu datové assety. Další informace o Azure File Storage najdete v tématu [Začínáme s Azure File storage ve Windows](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files) a [postupy používání Azure File Storage s Linuxem](../../storage/files/storage-how-to-use-files-linux.md).
 
 
-## <a name="sql-server-2016-r-services"></a>SQL Server 2016 R Services
+## <a name="sql-server-2019-r-and-python-services"></a>Služby SQL Server 2019 R a Python
 
-Služby R (v databázi) poskytují model platforma pro vývoj a nasazování inteligentních aplikací, které můžete odhalit nové poznatky. Bohaté a výkonné jazyka R, včetně mnoha balíčků poskytovaných komunitou R, můžete vytvářet modely a generovat předpovědi ze svých dat serveru SQL Server. Protože služby R (v databázi) integrace jazyka R s SQL serverem, analytics zachovány blízko data, která se eliminují náklady a rizika zabezpečení, které jsou spojené s přesunem dat.
+Služba R (v databázi) poskytuje platformu pro vývoj a nasazování inteligentních aplikací, které můžou odhalit nové poznatky. Bohaté a výkonné jazyka R, včetně mnoha balíčků poskytovaných komunitou R, můžete vytvářet modely a generovat předpovědi ze svých dat serveru SQL Server. Vzhledem k tomu, že služba R (v databázi) integruje jazyk R s SQL Server, jsou analýzy udržovány blízko dat, což eliminuje náklady a rizika zabezpečení související s přesunem dat.
 
-Služby R (v databázi) podporují jazyk opensourcového jazyka R s komplexní sadu nástrojů SQL serveru a technologie. Nabízejí špičkový výkon, zabezpečení, spolehlivost a možnosti správy. Můžete nasadit řešení R s využitím praktické a známé nástroje. Vaše produkční aplikace můžete volat modulem runtime r. a načíst předpovědi a vizuály s použitím příkazů jazyka Transact-SQL. Pomocí knihoven ScaleR také zvýšit výkon svých řešení R a škálování. Další informace najdete v tématu [SQL Server R Services](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services).
+Služba r Services (v databázi) podporuje open source jazyk R s komplexní sadou SQL Serverch nástrojů a technologií. Nabízejí špičkový výkon, zabezpečení, spolehlivost a možnosti správy. Můžete nasadit řešení R s využitím praktické a známé nástroje. Vaše produkční aplikace můžete volat modulem runtime r. a načíst předpovědi a vizuály s použitím příkazů jazyka Transact-SQL. Pomocí knihoven ScaleR také zvýšit výkon svých řešení R a škálování. Další informace najdete v tématu [SQL Server R Services](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services).
 
 Tým TDSP od Microsoftu publikoval dvě začátku do konce návody, které ukazují, jak vytvářet řešení pro vědu dat ve službě SQL Server 2016 R Services: jeden pro programátorům v R a jeden pro vývojáře SQL. Pro **programátorům v R**, naleznete v tématu [návod začátku do konce pro datovou vědu](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough). Pro **vývojáři SQL**, naleznete v tématu [v databázi pokročilé analýzy pro vývojáře SQL (kurz)](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers).
 
@@ -135,7 +136,7 @@ Pokud používáte počítače s Linuxem (CentOS) ke spuštění příkazů git,
 
 1. Zkopírujte celý ssh včetně klíče *ssh-rsa*. 
 1. Přihlaste se k vašim službám Azure DevOps. 
-1. Klikněte na tlačítko **< jméno\>**  v pravém horním rohu stránky a klikněte na tlačítko **zabezpečení**. 
+1. V pravém horním rohu stránky klikněte na **< název\>** a klikněte na **zabezpečení**. 
     
    ![Klikněte na své jméno a potom klikněte na tlačítko zabezpečení](./media/platforms-and-tools/resources-2-user-setting.png)
 
@@ -143,7 +144,7 @@ Pokud používáte počítače s Linuxem (CentOS) ke spuštění příkazů git,
 
    ![Klikněte na veřejné klíče SSH a pak klikněte na + Přidat](./media/platforms-and-tools/resources-3-add-ssh.png)
 
-1. Vložit ssh klíč zkopírovali do textového pole a uložení.
+1. Vložte do textového pole zkopírovaný klíč SSH a uložte ho.
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -11,20 +11,20 @@ ms.date: 03/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 63803f3ac477e48d8d1c14a72e2ee9b9d4860047
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a655ada93cd9db9db95295d445c0b4f27d772148
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685720"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721196"
 ---
-# <a name="use-azure-stream-analytics-with-sql-data-warehouse"></a>Použití Azure Stream Analytics s SQL Data Warehouse
-Azure Stream Analytics je plně spravovaná služba, která poskytuje vysoce dostupná a škálovatelná komplexní zpracování událostí přes streamovaná data v cloudu s nízkou latencí. Základní informace najdete v tématu [Úvod do Azure Stream Analytics][Introduction to Azure Stream Analytics]. Pak můžete zjistit, jak vytvořit ucelené řešení pomocí Stream Analytics pomocí kurzu Začínáme s [Azure Stream Analytics][Get started using Azure Stream Analytics] .
+# <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>Použití Azure Stream Analytics se službou Azure synapse Analytics
+Azure Stream Analytics je plně spravovaná služba, která poskytuje vysoce dostupná a škálovatelná komplexní zpracování událostí přes streamovaná data v cloudu s nízkou latencí. Základní informace najdete v tématu [Úvod do Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md). Pak můžete zjistit, jak vytvořit ucelené řešení pomocí Stream Analytics pomocí kurzu Začínáme s [Azure Stream Analytics](../stream-analytics/stream-analytics-real-time-fraud-detection.md) .
 
-V tomto článku se naučíte, jak používat svou databázi Azure SQL Data Warehouse jako výstupní jímku pro úlohy Stream Analytics.
+V tomto článku se naučíte, jak používat svou databázi datového skladu jako výstupní jímku pro vaše Stream Analytics úlohy.
 
 ## <a name="prerequisites"></a>Požadavky
-Nejprve proveďte následující kroky v kurzu [Začínáme s Azure Stream Analytics][Get started using Azure Stream Analytics] .  
+Nejprve proveďte následující kroky v kurzu [Začínáme s Azure Stream Analytics](../stream-analytics/stream-analytics-real-time-fraud-detection.md) .  
 
 1. Vytvoření vstupu centra událostí
 2. Konfigurace a spuštění aplikace generátoru událostí
@@ -50,13 +50,13 @@ Na další stránce zadejte následující hodnoty:
 * *Databáze*: zadejte název cílové databáze.
 * *Název serveru*: zadejte název serveru pro databázi, kterou jste právě zadali. Tuto možnost můžete najít pomocí Azure Portal.
 
-![][server-name]
+![](./media/sql-data-warehouse-integrate-azure-stream-analytics/dw-server-name.png)
 
 * *Uživatelské jméno*: zadejte uživatelské jméno účtu, který má pro databázi oprávnění k zápisu.
 * *Heslo*: zadejte heslo pro zadaný uživatelský účet.
 * *Tabulka*: zadejte název cílové tabulky v databázi.
 
-![][add-database]
+![](./media/sql-data-warehouse-integrate-azure-stream-analytics/add-database.png)
 
 ### <a name="step-4"></a>Krok 4
 Kliknutím na tlačítko se změnami přidáte tento výstup úlohy a ověříte, že se Stream Analytics může úspěšně připojit k databázi.
@@ -64,25 +64,6 @@ Kliknutím na tlačítko se změnami přidáte tento výstup úlohy a ověříte
 Po úspěšném připojení k databázi se na portálu zobrazí oznámení. Kliknutím na test můžete otestovat připojení k databázi.
 
 ## <a name="next-steps"></a>Další kroky
-Přehled integrace najdete v tématu [Přehled integrace SQL Data Warehouse][SQL Data Warehouse integration overview].
+Přehled integrace najdete v tématu [integrace dalších služeb](sql-data-warehouse-overview-integrate.md).
+Další tipy pro vývoj najdete v tématu věnovaném [rozhodování o návrhu a technikům kódování pro datové sklady](sql-data-warehouse-overview-develop.md).
 
-Další tipy pro vývoj najdete v části [Přehled vývoje SQL Data Warehouse][SQL Data Warehouse development overview].
-
-<!--Image references-->
-
-[add-output]: ./media/sql-data-warehouse-integrate-azure-stream-analytics/add-output.png
-[server-name]: ./media/sql-data-warehouse-integrate-azure-stream-analytics/dw-server-name.png
-[add-database]: ./media/sql-data-warehouse-integrate-azure-stream-analytics/add-database.png
-[test-connection]: ./media/sql-data-warehouse-integrate-azure-stream-analytics/test-connection.png
-
-<!--Article references-->
-
-[Introduction to Azure Stream Analytics]: ../stream-analytics/stream-analytics-introduction.md
-[Get started using Azure Stream Analytics]: ../stream-analytics/stream-analytics-real-time-fraud-detection.md
-[SQL Data Warehouse development overview]:  ./sql-data-warehouse-overview-develop.md
-[SQL Data Warehouse integration overview]:  ./sql-data-warehouse-overview-integrate.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->
-[Azure Stream Analytics documentation]: https://azure.microsoft.com/documentation/services/stream-analytics/

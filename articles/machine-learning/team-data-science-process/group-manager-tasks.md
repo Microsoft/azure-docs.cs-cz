@@ -1,23 +1,23 @@
 ---
-title: Úlohy správce skupin procesů týmu pro data vědeckého zpracování
+title: Úlohy správce skupiny týmu vědecké zpracování dat
 description: Postupujte podle podrobného návodu k úlohám, které správce skupiny dokončí v týmovém projektu pro datové vědy.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/24/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a3d23950f5cbfaac00b03b25e3c19078c76ad0a5
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 4ec7f4242e5046e90fdf0eb8c6c0579f402e4f55
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053309"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721349"
 ---
-# <a name="team-data-science-process-group-manager-tasks"></a>Úlohy správce skupin procesů týmu pro data vědeckého zpracování
+# <a name="team-data-science-process-group-manager-tasks"></a>Úlohy správce skupiny týmu vědecké zpracování dat
 
 Tento článek popisuje úlohy, které *správce skupiny* dokončí pro organizaci pro datové vědy. Správce skupin spravuje celou jednotku datových věd v podniku. Jednotka pro datové vědy může mít několik týmů, z nichž každý pracuje na mnoha projektech pro datové vědy v různých obchodních svislých. Cílem správce skupin je vytvořit skupinové prostředí pro spolupráci, které se bude standardizovat v rámci [vědeckého zpracování týmových dat](overview.md) (TDSP). Přehled všech rolí personálu a přidružených úloh, které jsou zpracovávány týmem pro datové vědy na TDSP, najdete v tématu [role procesů a úlohy vědeckého zpracování dat týmu](roles-tasks.md).
 
@@ -166,7 +166,7 @@ Postup přizpůsobení obsahu úložiště:
 Pokud chcete provádět změny pomocí místního počítače nebo DSVM a vložit změny do úložišť skupiny, ujistěte se, že máte předpoklady pro práci s Git a DSVMs:
 
 - Předplatné Azure, pokud chcete vytvořit DSVM.
-- V počítači je nainstalovaný Git. Pokud používáte DSVM, Git se předem nainstaluje. V opačném případě si přečtěte článek věnované [platformám a nástrojům](platforms-and-tools.md#appendix).
+- V počítači je nainstalovaný Git. Pokud používáte DSVM, Git se předem nainstaluje. V opačném případě najdete v článku [platformami a nástroji příloha](platforms-and-tools.md#appendix).
 - Pokud chcete použít DSVM, Windows nebo Linux DSVM vytvořeného a nakonfigurovaného v Azure. Další informace a pokyny najdete v dokumentaci k [Data Science Virtual Machine](/azure/machine-learning/data-science-virtual-machine/).
 - Pro Windows DSVM se na vašem počítači nainstaluje [Správce přihlašovacích údajů Git (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . V souboru *Readme.MD* se posuňte dolů k části **Stažení a instalace** a vyberte **nejnovější instalační program**. Stáhněte instalační program *. exe* z instalační stránky a spusťte ho. 
 - Pro Linux DSVM se v DSVM nastavil veřejný klíč SSH a přidal se do Azure DevOps. Další informace a pokyny najdete v části **vytvoření veřejného klíče SSH** v [příloze platformy a nástroje](platforms-and-tools.md#appendix). 
@@ -258,6 +258,6 @@ Konfigurace oprávnění pro členy:
 
 Tady jsou odkazy na podrobné popisy dalších rolí a úloh v rámci vědeckého zpracování týmových dat:
 
-- [Úkoly vedoucí týmu pro tým pro datové vědy](team-lead-tasks.md)
-- [Úkoly vedoucího projektu pro tým pro datové vědy](project-lead-tasks.md)
+- [Úkoly vedoucí týmu pro datové vědy tým](team-lead-tasks.md)
+- [Vedoucí úkoly pro datové vědy tým projektu](project-lead-tasks.md)
 - [Jednotlivé úkoly přispěvatele projektu pro tým pro datové vědy](project-ic-tasks.md)

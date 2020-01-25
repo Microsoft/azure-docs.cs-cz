@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: 57bae42eb44c174657e59fa8b017da2931ae681b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8021b6fe40e006a95b3eeff1031606c38cc47b87
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814604"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721621"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>Karta tržiště modulu IoT Edge
 
@@ -34,7 +34,7 @@ Následující tabulka popisuje účel a obsah těchto polí. Požadovaná pole 
 | **Souhrn\***               | Krátké shrnutí nabídky Maximální délka 100 znaků. <!--ADD PICTURE IN ACTION-->|
 | **Dlouhý souhrn\***          | Delší souhrn nabídky (i když by to bylo stejné jako u **souhrnu**).  Maximální délka 256 znaků. <!--ADD PICTURE IN ACTION-->|
 | **Popis\***           | Popis nabídky  Maximální délka 3000 znaků podporuje jednoduché formátování HTML.<br/> V dolní části musí být uveden *minimální odstavec požadavků na hardware* . například: <br/> <p><u>Minimální požadavky na hardware:</u> Linux x64 a arm32 OS, 1 GB paměti RAM, 500 MB úložiště</p>
-| **\* identifikátoru marketingu**  | Jedinečná adresa URL, která se má přidružit k této nabídce, obvykle zahrnuje vaši organizaci a název řešení, maximální délka 50 znaků.  Příklad: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
+| **\* identifikátoru marketingu**  | Jedinečná adresa URL, která se má přidružit k této nabídce, obvykle zahrnuje vaši organizaci a název řešení, maximální délka 50 znaků.  Například: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
 | **Náhled ID předplatných** | Přidejte jednu až 100 identifikátorů předplatného pro náhledy. Po publikování těchto bílých předplatných budou mít přístup k této nabídce k dispozici, než budou živá. |
 | **Užitečné odkazy**          | Vícenásobné výběry obchodních a technických kategorií, které nabízejí možnost být nejlépe přidruženy k.  Maximální povolená hodnota je 10. Nezapomeňte přidat aspoň jeden odkaz na svou dokumentaci a jeden odkaz na kompatibilní IoT Edge zařízení z [katalogu zařízení Azure IoT](https://catalog.azureiotsolutions.com/). |
 | **Navrhované kategorie\*** | Vyberte až pět kategorií. Zobrazí se na stránce s informacemi o produktu. Na stránkách procházet jsou všechny IoT Edge moduly zobrazeny v kategorii *modulu IoT Edge Internet věcí \>* .|
@@ -129,7 +129,7 @@ Pro logo Hero použijte následující pokyny:
 *  Nepoužívejte většinu textu při navrhování loga. V případě, že je nabídka uvedena, jsou do loga vložena pole název vydavatele, název plánu, dlouhý souhrn nabídky a tlačítko vytvořit. 
 * Zahrňte nepoužívané obdélníkové místo na pravé straně loga Hero. Toto prázdné místo je 415x100 pixelů a posun od levého po 370 pixelů.  
 
-<!-- P2: woudl be nice to also have an picture int he context of iot edge of the hero image
+<!-- P2: would be nice to also have an picture int he context of iot edge of the hero image
 As an example, the following hero icon is for the Azure Container Service.
 
 ![Example hero icon for Azure Container Service](./media/publishvm_010.png)

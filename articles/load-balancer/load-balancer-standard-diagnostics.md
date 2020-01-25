@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: f5fa39e07eba6bdf24d96e72c9229e215ff6730b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9fd1e72568b4f0c8813a5d050ce7fa7214ca7cd9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772036"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722437"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnostika služby Standard Load Balancer s metrikami, upozorněními a stavem prostředků
 
@@ -27,7 +27,7 @@ Azure Standard Load Balancer zpřístupňuje následující diagnostické možno
 
 * **Resource Health**: stránka Load Balancer v Azure Portal a stránka Resource Health (pod položkou monitor) zpřístupňuje oddíl Resource Health pro standard Load Balancer. 
 
-Tento článek poskytuje rychlou prohlídku těchto funkcí a nabízí způsoby jejich použití pro Standard Load Balancer.
+Tento článek poskytuje rychlou prohlídku těchto funkcí a nabízí způsoby jejich použití pro Standard Load Balancer. 
 
 ## <a name = "MultiDimensionalMetrics"></a>Multidimenzionální metriky
 
@@ -41,7 +41,7 @@ Různé konfigurace Standard Load Balancer poskytují následující metriky:
 | Stav sondy stavu (dostupnost DIP) | Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer používá distribuovanou službu pro zjišťování stavu, která monitoruje stav koncového bodu vaší aplikace podle nastavení konfigurace. Tato metrika poskytuje agregované zobrazení každého koncového bodu instance ve fondu nástroje pro vyrovnávání zatížení, které je filtrované podle počtu koncových bodů. Můžete zjistit, jak Load Balancer zobrazení stavu aplikace, jak je uvedeno v konfiguraci sondy stavu. |  Průměr |
 | SYN (synchronizace) paketů | Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer neukončuje připojení TCP (Transmission Control Protocol) ani interakci s toky paketů TCP nebo UDP. Toky a jejich metody handshake jsou vždy mezi zdrojem a instancí virtuálního počítače. K lepšímu řešení potíží se scénáři protokolu TCP můžete použít čítače paketů SYN, abyste pochopili, kolik pokusů o připojení TCP je prováděno. Metrika hlásí počet přijatých paketů TCP SYN.| Průměr |
 | Připojení SNAT | Veřejný Nástroj pro vyrovnávání zatížení |Standard Load Balancer oznamuje počet odchozích toků, které jsou maskované na front-endu veřejné IP adresy. Porty zdrojového překladu adres (SNAT) jsou prostředek exhaustible. Tato metrika vám může poskytnout informace o tom, jak intenzivně se aplikace spoléhá na SNAT pro odchozí vzniklé toky. Čítače pro úspěšné a neúspěšné odchozí toky SNAT jsou hlášeny a lze je použít k řešení potíží a pochopení stavu odchozích toků.| Průměr |
-| Čítače bajtů |  Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer oznamuje data zpracovaná za front-end.| Průměr |
+| Čítače bajtů |  Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer oznamuje data zpracovaná za front-end. Můžete si všimnout, že bajty nejsou rovnoměrně distribuované napříč instancemi back-endu. Očekává se, že Load Balancer algoritmus Azure je založený na tocích | Průměr |
 | Čítače paketů |  Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer hlásí zpracované pakety za front-end.| Průměr |
 
 ### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>Zobrazit metriky nástroje pro vyrovnávání zatížení v Azure Portal
@@ -61,7 +61,7 @@ Chcete-li zobrazit metriky pro prostředky Standard Load Balancer:
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>Načtěte multidimenzionální metriky prostřednictvím rozhraní API.
 
-Pokyny k rozhraní API pro načítání multidimenzionálních definic a hodnot naleznete v tématu [návod k Azure Monitoring REST API](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough#retrieve-metric-definitions-multi-dimensional-api).
+Pokyny k rozhraní API pro načítání multidimenzionálních definic a hodnot naleznete v tématu [návod k Azure Monitoring REST API](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough#retrieve-metric-definitions-multi-dimensional-api). Tyto metriky se dají zapsat do účtu úložiště jenom pomocí možnosti všechny metriky. 
 
 ### <a name = "DiagnosticScenarios"></a>Běžné diagnostické scénáře a doporučená zobrazení
 

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: df8b65fcb4dd2b9622716052be2df59cbfa5424a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 29ad5ca6c9058b88a539c7a3bb8ace4d9a65083a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971819"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714524"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Import a export dat v Azure cache pro Redis
 Import/Export je mezipaměť Azure pro operaci správy dat Redis, která umožňuje importovat data do mezipaměti Azure pro Redis nebo exportovat data z mezipaměti Azure pro Redis tím, že importuje a exportuje snímek Azure cache for Redis Database (RDB) z mezipaměti Premium do objektu BLOB v účtu Azure Storage.
@@ -24,7 +24,7 @@ Import/export umožňuje migrovat mezi různými Azure cache pro instance Redis 
 Tento článek obsahuje průvodce pro import a export dat pomocí Azure cache pro Redis a poskytuje odpovědi na nejčastější dotazy.
 
 > [!IMPORTANT]
-> Import/Export je ve verzi Preview a je dostupný jenom pro mezipaměti [úrovně Premium](cache-premium-tier-intro.md) .
+> Import/Export je k dispozici jenom pro mezipaměti [úrovně Premium](cache-premium-tier-intro.md) .
 >
 >
 
@@ -41,7 +41,7 @@ Import se dá použít k převedení Redis kompatibilních souborů RDB z libovo
     ![Import dat](./media/cache-how-to-import-export-data/cache-import-data.png)
 2. Klikněte na **zvolit objekty blob** a vyberte účet úložiště, který obsahuje data, která chcete importovat.
 
-    ![Výběr účtu úložiště](./media/cache-how-to-import-export-data/cache-import-choose-storage-account.png)
+    ![Zvolit účet úložiště](./media/cache-how-to-import-export-data/cache-import-choose-storage-account.png)
 3. Klikněte na kontejner obsahující data, která chcete importovat.
 
     ![Zvolit kontejner](./media/cache-how-to-import-export-data/cache-import-choose-container.png)

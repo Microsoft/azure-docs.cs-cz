@@ -2,27 +2,27 @@
 title: Tým vědecké zpracování dat role a úlohy
 description: Osnova klíčových komponent, rolí personálu a přidružených úloh pro skupinu pro datové vědy.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/12/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bbc066f4b01a01a589849ad524b58a9b5d9dfae1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: c1ed731943abf0efdd99ea54d2318fa402835e08
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260656"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720006"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Tým vědecké zpracování dat role a úlohy
 
 Vědecké zpracování týmových dat (TDSP) je architektura vyvinutá Microsoftem, která poskytuje strukturovanou metodologii pro efektivní vytváření řešení prediktivní analýzy a inteligentních aplikací. Tento článek popisuje klíčové role personálu a související úlohy pro tým datových věd, který se v tomto procesu standardizace.
 
-Tento úvodní článek obsahuje odkazy na kurzy týkající se nastavení prostředí TDSP pro celou skupinu pro datové vědy, týmy pro datové vědy a projekty TDSP. Kurzy poskytují podrobné pokyny pro použití Azure DevOps Projects, Azure Repos úložišť a Azure Boards nástrojů pro agilní plánování pro řízení přístupu, hostování a sdílení kódu a správu týmových úloh.
+Tento úvodní článek obsahuje odkazy na kurzy týkající se nastavení prostředí TDSP. Kurzy poskytují podrobné pokyny k používání Azure DevOps Projects, Azure Repos úložišť a Azure Boards.  Cíl motivace se přesouvá z konceptu prostřednictvím modelování a nasazení.
 
 Kurzy využívají Azure DevOps, protože to je způsob implementace TDSP v Microsoftu. Azure DevOps usnadňuje spolupráci díky integraci zabezpečení založeného na rolích, správy a sledování pracovních položek a hostování kódu, sdílení a správy zdrojového kódu. Kurzy také používají [Data Science Virtual Machine](https://aka.ms/dsvm) Azure (DSVM) jako Desktop Analytics, který obsahuje několik oblíbených nástrojů pro datové vědy, které jsou předem nakonfigurované a integrované se softwarem Microsoftu a službami Azure. 
 
@@ -40,13 +40,13 @@ V takové struktuře jsou k dispozici skupiny vedoucí a vedoucí týmu. Projekt
 ## <a name="definition-and-tasks-for-the-four-tdsp-roles"></a>Definice a úkoly pro čtyři role TDSP
 S předpokladem, že se jednotka pro datové vědy skládá z týmů v rámci skupiny, existují čtyři samostatné role pro zaměstnance TDSP:
 
-1. **Správce skupin**: Spravuje celou datovou jednotku v podniku. Datové vědy jednotky může mít několik týmů, z nichž každý pracuje na více projekty datových věd jednotlivou obchodní vertikálně. Správce skupiny může delegovat úkoly na náhradu, ale neměňte úloh přidružených k roli.
+1. **Správce skupin**: spravuje celou jednotku datových věd v podniku. Datové vědy jednotky může mít několik týmů, z nichž každý pracuje na více projekty datových věd jednotlivou obchodní vertikálně. Správce skupiny může delegovat úkoly na náhradu, ale neměňte úloh přidružených k roli.
    
-2. **Vedoucí týmu**: Spravuje tým v jednotce datové vědy podniku. Tým se skládá z několika odborníci přes data. V případě malých jednotek pro datové vědy může být správce skupin a vedoucí týmu stejnou osobou.
+2. **Vedoucí týmu**: spravuje tým v jednotce datové vědy podniku. Tým se skládá z několika odborníci přes data. V případě malých jednotek pro datové vědy může být správce skupin a vedoucí týmu stejnou osobou.
    
-3. **Vedoucí projektu**: Spravuje každodenní činnosti jednotlivých vědeckých pracovníků dat v konkrétním projektu pro datové vědy.
+3. **Vedoucí projektu**: spravuje každodenní činnosti jednotlivých vědeckých pracovníků dat pro konkrétní projekt vědeckého zpracování dat.
    
-4. **Jednotliví přispěvatelé projektu**: Odborníci na data, obchodní analytiky, technici na data, architekti a další, kteří provádějí projekt pro datové vědy.
+4. **Jednotlivé přispěvatelé projektu**: odborníci na data, obchodní analytici, technici na data, architekti a další uživatelé, kteří provádějí projekt pro datové vědy.
 
 > [!NOTE]
 > V závislosti na struktuře a velikosti podniku může jedna osoba hrát více než jednu roli nebo může vyplnit roli více než jedna osoba.
@@ -116,7 +116,7 @@ Následující obrázek popisuje pracovní postup TDSP pro provedení projektu:
 Kroky pracovního postupu můžete seskupit do tří aktivit:
 
 - Vedoucí projektu provádějí plánování sprintů
-- Vědečtí data vyvíjejí artefakty `git` na větvích, které řeší pracovní položky.
+- Odborníci na data vyvíjejí artefakty v `git` větvích k řešení pracovních položek
 - Vedoucí projektu nebo jiní členové týmu dělají revize kódu a sloučí pracovní větve do hlavní větve.
 
 Podrobné pokyny k pracovnímu postupu provádění projektu naleznete v tématu [agilní vývoj projektů pro datové vědy](agile-development.md).

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 1/05/2020
-ms.openlocfilehash: 73314cb2d3ac77347e0de720a6a3ab0084181218
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 7b45ddce0435a903c63855dea8a01353a7ab36ec
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732412"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722539"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 
@@ -71,6 +71,13 @@ Aby bylo možné dosáhnout reálné provozní kontinuity, Přidání redundance
 - **Přidání databází do elastického fondu do skupiny převzetí služeb při selhání**
 
   Do jedné skupiny převzetí služeb při selhání můžete umístit všechny nebo několik databází v rámci elastického fondu. Pokud je primární databáze v elastickém fondu, sekundární se automaticky vytvoří v elastickém fondu se stejným názvem (sekundární fond). Je nutné zajistit, aby sekundární server obsahoval elastický fond se stejným přesným názvem a dostatek volné kapacity pro hostování sekundárních databází, které budou vytvořeny skupinou převzetí služeb při selhání. Pokud přidáte databázi do fondu, který již má sekundární databázi v sekundárním fondu, bude tento odkaz geografická replikace zděděn skupinou. Když přidáváte databázi, která už má sekundární databázi na serveru, který není součástí skupiny převzetí služeb při selhání, vytvoří se v sekundárním fondu nový sekundární objekt.
+  
+- **Počáteční osazení** 
+
+  Když přidáváte databáze, elastické fondy nebo spravované instance do skupiny převzetí služeb při selhání, před spuštěním replikace dat se vytvoří prvotní fáze osazení. Počáteční fáze osazení je nejdelší a nejnáročná operace. Po dokončení počátečního osazení se data synchronizují a pak se replikují jenom následné změny dat. Čas potřebný k dokončení počátečního dosazení závisí na velikosti dat, počtu replikovaných databází a rychlosti propojení mezi entitami ve skupině převzetí služeb při selhání. Za běžných okolností je typická rychlost osazení 50-500 GB pro izolovanou databázi nebo elastický fond a 18-35 GB za hodinu pro spravovanou instanci. Osazení se provádí pro všechny databáze paralelně. Můžete použít uvedenou rychlost osazení spolu s počtem databází a celkovou velikostí dat pro odhad, jak dlouho bude prvotní fáze osazení trvat před spuštěním replikace dat.
+
+  U spravovaných instancí je potřeba při odhadu doby prvotní fáze osazení také vzít v úvahu rychlost propojení Express Route mezi těmito dvěma instancemi. V případě, že rychlost propojení mezi dvěma instancemi je pomalejší, než je potřeba, je pravděpodobné, že čas na počáteční hodnotu bude mít vliv. Můžete použít uvedenou rychlost osazení, počet databází, celkovou velikost dat a rychlost připojení k odhadu, jak dlouho bude prvotní fáze osazení trvat před spuštěním replikace dat. Například pro jednu 100 GB databáze by počáteční fáze osazení ponechala v rozmezí 2,8-5,5 hodin, pokud je odkaz schopný zabírat 35 GB za hodinu. Pokud odkaz může přenášet jenom 10 GB za hodinu, pak bude dosazení 100 GB databáze trvat přibližně 10 hodin. Pokud existuje více databází k replikaci, je osazení provedeno paralelně a při kombinaci s pomalým připojením může prvotní fáze osazení trvat delší dobu, zejména v případě, že paralelní osazení dat ze všech databází překračuje dostupné množství. Šířka pásma propojení. Pokud je šířka pásma sítě mezi dvěma instancemi omezená a do skupiny převzetí služeb při selhání přidáváte víc spravovaných instancí, zvažte postupně přidání více spravovaných instancí do skupiny převzetí služeb při selhání, jednu po druhé.
+
   
 - **Zóna DNS**
 

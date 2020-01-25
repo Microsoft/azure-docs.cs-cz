@@ -3,12 +3,12 @@ title: Použití PowerShellu k zálohování Windows serveru do Azure
 description: V tomto článku se naučíte, jak pomocí PowerShellu nastavit Azure Backup pro Windows Server nebo klienta Windows a spravovat zálohování a obnovení.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 54cfbb4a550ff14705d8d02b0589ee023cf9c225
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: ef5571e6a059eedeba169765785bb0f840c8f256
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689198"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76710858"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery Windows / klienty Windows pomocí PowerShellu
 
@@ -113,12 +113,12 @@ K dispozici jsou tyto možnosti:
 
 | Možnost | Podrobnosti | Výchozí |
 | --- | --- | --- |
-| parametr |Tichá instalace |- |
+| /q |Tichá instalace |- |
 | /p: "umístění" |Cesta k instalační složce pro agenta Azure Backup. |C:\Program Files\Microsoft Azure Recovery Services Agent |
 | /s: umístění |Cesta ke složce mezipaměti pro agenta Azure Backup. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
-| řetězec |Výslovný souhlas s Microsoft Update |- |
+| /m |Výslovný souhlas s Microsoft Update |- |
 | /nu |Po dokončení instalace Nekontrolovat aktualizace |- |
-| parametr |Odinstaluje agenta Microsoft Azure Recovery Services. |- |
+| /d |Odinstaluje agenta Microsoft Azure Recovery Services. |- |
 | /pH |Adresa hostitele proxy serveru |- |
 | /po |Číslo portu hostitele proxy serveru |- |
 | /pu |Uživatelské jméno hostitele proxy serveru |- |

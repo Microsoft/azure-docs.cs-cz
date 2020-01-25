@@ -4,15 +4,15 @@ description: Přečtěte si informace o síťovém provozu s MECHANISMem zabezpe
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3b16d7cbba63be9f50b0d186b2162a5755b76802
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fb931c309b5f85902d8abc9cc6da45576bff4041
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75375011"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713194"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Síťové požadavky pro App Service Environment #
 
@@ -88,7 +88,7 @@ Služba pomocného mechanismu oznamuje přístup k Internetu adres na těchto po
 |-----|------|
 | DNS | 53 |
 | NTP | 123 |
-| 8CRL, aktualizace Windows, závislosti Linux, služby Azure | 80/443 |
+| CRL, aktualizace Windows, závislosti Linux, služby Azure | 80/443 |
 | Azure SQL | 1433 | 
 | Sledování | 12000 |
 
@@ -108,8 +108,8 @@ Pokud změníte nastavení DNS virtuální sítě, ve které je váš přihláš
 
 Kromě funkčních závislostí pomocného mechanismu je několik dalších položek, které se týkají prostředí portálu. Některé funkce v Azure Portal závisí na přímém přístupu k _webu SCM_. Pro každou aplikaci v Azure App Service jsou k dispozici dvě adresy URL. První adresa URL má přístup k vaší aplikaci. Druhá adresa URL má přístup k webu SCM, který se také nazývá _Konzola Kudu_. K funkcím, které používají web SCM, patří:
 
--   Web Jobs
--   Funkce
+-   Webové úlohy
+-   Functions
 -   Streamování protokolů
 -   Kudu
 -   Rozšíření
@@ -152,7 +152,7 @@ Skupin zabezpečení sítě se dá nakonfigurovat přes Azure Portal nebo přes 
 
 Požadované položky v NSG, aby mohl funkce pomocného mechanismu provozu fungovat:
 
-**Příchozí**
+**Příjem**
 * ze značky služby IP AppServiceManagement na portech 454 455
 * z nástroje pro vyrovnávání zatížení na portu 16001
 * z podsítě služby přihlašování do podsítě pomocného mechanismu na všech portech

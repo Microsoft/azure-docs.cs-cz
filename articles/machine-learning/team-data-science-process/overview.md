@@ -8,15 +8,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 1/04/2020
+ms.date: 1/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 124fe4f69396286dbe383f8823a36b4ba52d346c
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: e9d98f03b2c97245517e3fbb6d7dc7624cfb724d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665072"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721383"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Co je vědecké zpracování týmových dat?
 
@@ -36,11 +36,11 @@ TDSP se skládá z následujících klíčových komponent:
 
 ## <a name="data-science-lifecycle"></a>Životního cyklu datové vědy
 
-Zpracování vědy dat (TDSP) týmu poskytuje životní cyklus strukturovat vývoj vašich projektů datové vědy. Životní cyklus popisuje kroky, od začátku do konce, projekty obvykle postupujte při jejich spuštění.
+Zpracování vědy dat (TDSP) týmu poskytuje životní cyklus strukturovat vývoj vašich projektů datové vědy. Životní cyklus popisuje všechny kroky, které úspěšné projekty následují.
 
-Pokud použijete jiný životního cyklu datové vědy, například [OSTRÉ-DM](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), [KDD](https://wikipedia.org/wiki/Data_mining#Process) nebo vaše organizace vlastní proces, můžete stále použít TDSP založené na úlohách v rámci těchto životního cyklu vývoje. Na vysoké úrovni tyto jiné metody mají mnoho společnou. 
+Pokud používáte jiný životní cyklus pro datové vědy, jako je například [ostrý, DM](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), [konference KDD](https://wikipedia.org/wiki/Data_mining#Process) nebo vlastní vlastní proces vaší organizace, můžete i nadále používat TDSP založenou na úlohách v kontextu těchto životních cyklů vývoje. Na vysoké úrovni tyto jiné metody mají mnoho společnou. 
 
-Tento životní cyklus byly navržené pro projekty datových věd, které se dodávají jako součást inteligentní aplikace. Tyto aplikace nasadit modely strojového učení a umělé inteligence pro prediktivní analýzy. Projekty průzkumného testování datových věd nebo ad hoc analytics projekty mohou také těžit z pomocí tohoto procesu. Ale v takových případech některé z kroků popsaných nemusí být potřeba.    
+Tento životní cyklus byly navržené pro projekty datových věd, které se dodávají jako součást inteligentní aplikace. Tyto aplikace nasadit modely strojového učení a umělé inteligence pro prediktivní analýzy. Používání tohoto procesu může být výhodné i pro průzkumné projekty pro zpracování dat nebo projekty Improvised Analytics. Ale v takových případech některé z kroků popsaných nemusí být potřeba.    
 
 Životní cyklus popisuje hlavní fáze, které jsou projekty obvykle spouštěny, často opakované:
 
@@ -69,7 +69,7 @@ Následující diagram představuje zobrazení mřížky úloh (modře) a artefa
 
 Všechny projekty, sdílet adresářovou strukturu a používat šablony pro dokumenty projektu s usnadňuje členům týmu vyhledat informace o jejich projektech. Všechny kódu a dokumenty jsou uloženy v systému správy verzí (VC), jako je Git, TFS nebo Subversion, umožňuje spolupráci mezi týmy. Sledování úloh a funkcí v projektu aplikace agile sledování systému jako Jira technologie Rally a Azure DevOps umožňuje blíže sledování kódu pro jednotlivé funkce. Tyto sledování také umožňuje týmům získat lepší odhady nákladů. TDSP doporučuje vytvoření oddělené úložiště pro každý projekt na virtuální Clustery pro správu verzí, zabezpečení informací a spolupráci. Standardizované strukturu pro všechny projekty pomáhá institucionální znalosti budovat celé organizace.
 
-Poskytujeme šablony pro strukturu složek a požadované dokumenty ve standardním umístění. Tuto strukturu složek uspořádá soubory, které obsahují kód pro zkoumání dat a extrakci funkce a, který si poznamenejte modelu iterací. Tyto šablony usnadňují členové týmu pochopit práci ostatních nebo přidání nových členů do teams. Je snadné k zobrazování a aktualizace šablony dokumentů ve formátu markdown. Pomocí šablon můžete poskytnout klíčových otázek pro každý projekt – pomáhat zajistit, že problém je dobře definovaný a, že výsledky splňují kvality očekává kontrolní seznamy. Patří mezi ně například:
+Poskytujeme šablony pro strukturu složek a požadované dokumenty ve standardním umístění. Tuto strukturu složek uspořádá soubory, které obsahují kód pro zkoumání dat a extrakci funkce a, který si poznamenejte modelu iterací. Tyto šablony usnadňují členové týmu pochopit práci ostatních nebo přidání nových členů do teams. Je snadné k zobrazování a aktualizace šablony dokumentů ve formátu markdown. Pomocí šablon můžete poskytnout kontrolní seznamy s klíčovými otázkami pro každý projekt, abyste měli jistotu, že problém je dobře definovaný a že dodávky odpovídají očekávané kvalitě. Patří mezi ně například:
 
 - Projekt gossmanem dokumentovat obchodního problému a rozsah projektu
 - sestavy dat dokumentu strukturu a statistiky nezpracovaných dat
@@ -90,7 +90,7 @@ TDSP poskytuje doporučení pro správu sdílené analýzy a infrastruktury úlo
 - clustery velkých objemů dat (Hadoop nebo Spark) 
 - Služba Machine learning 
 
-Analýzy a úložné infrastruktuře může být v cloudu nebo místně. To je, kde jsou uloženy zpracovaných a nezpracovaných datové sady. Tato infrastruktura umožňuje reprodukovatelné analýzy. Také předejdete duplikace, což může vést k nekonzistencím a zbytečným nákladům na infrastrukturu. Nástroje jsou k dispozici zřízení sdílených prostředků, sledovat a povolit jednotlivým členům týmu se navázat zabezpečené připojení k těmto prostředkům. Je také vhodné mít členy projektu vytvořit konzistentní výpočetní prostředí. Různí členové týmu můžete replikovat a ověřit experimentů.
+Analýza a infrastruktura úložiště, kde jsou uložené a zpracovávané datové sady, můžou být v cloudu nebo místně. Tato infrastruktura umožňuje reprodukovatelné analýzy. Také předejdete duplikace, což může vést k nekonzistencím a zbytečným nákladům na infrastrukturu. Nástroje jsou k dispozici zřízení sdílených prostředků, sledovat a povolit jednotlivým členům týmu se navázat zabezpečené připojení k těmto prostředkům. Je také vhodné mít členy projektu vytvořit konzistentní výpočetní prostředí. Různí členové týmu můžete replikovat a ověřit experimentů.
 
 Tady je příklad sdílení různých komponent infrastruktury cloudové analýzy a práce v několika projektech týmu.
 

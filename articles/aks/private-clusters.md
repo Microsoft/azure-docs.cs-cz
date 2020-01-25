@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 12/10/2019
+ms.date: 1/24/2020
 ms.author: mlearned
-ms.openlocfilehash: 2344e2189d6b0f02e7fed1aab25d32551c1fedcf
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: a477c2011ff3c6cf1987ed80ef5c19c26abc40f0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154337"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713321"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Vytvoření privátního clusteru služby Azure Kubernetes (Preview)
 
@@ -128,14 +128,16 @@ Koncový bod serveru rozhraní API nemá žádnou veřejnou IP adresu. V důsled
 
 ## <a name="dependencies"></a>Závislosti  
 * Služba privátního propojení je podporována pouze u standardních Azure Load Balancer. Základní Azure Load Balancer nejsou podporované.  
+* Pokud chcete použít vlastní server DNS, nasaďte server služby Active Directory se službou DNS pro přeposílání na tento protokol IP 168.63.129.16
 
 ## <a name="limitations"></a>Omezení 
+* Zóny dostupnosti se aktuálně nepodporují.
 * [Omezení služby pro privátní propojení Azure][private-link-service] platí pro privátní clustery, privátní koncové body Azure a koncové body služby virtuální sítě, které se v tuto chvíli nepodporují ve stejné virtuální síti.
-* Neexistují žádné podpory virtuálních uzlů v privátním clusteru k otočení privátního Azure Container Instances (ACI) v privátní službě Azure Virtual Network.
-* Žádná podpora pro integraci Azure DevOps není integrovaná s privátními clustery.
+* Není podporovaná podpora virtuálních uzlů v privátním clusteru pro dálku privátního Azure Container Instances (ACI) v privátní virtuální síti Azure.
+* Žádná podpora pro integraci Azure DevOps není v krabici s privátními clustery
 * Pro zákazníky, kteří potřebují povolit Azure Container Registry pro práci s privátními AKS, musí mít Container Registry virtuální síť partnerský vztah s virtuální sítí clusteru agenta.
-* Žádná aktuální podpora pro Azure Dev Spaces.
-* Žádná podpora pro převod stávajících clusterů AKS na privátní clustery.  
+* Žádná aktuální podpora pro Azure Dev Spaces
+* Žádná podpora pro převod stávajících clusterů AKS na privátní clustery
 * Odstraněním nebo úpravou privátního koncového bodu v podsíti zákazníka dojde k zastavení fungování clusteru. 
 * Služba Azure Monitor for Containers Live data není v současné době podporovaná.
 * Využití *vlastního DNS* není momentálně podporované.

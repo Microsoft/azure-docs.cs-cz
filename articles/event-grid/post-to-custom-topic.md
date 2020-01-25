@@ -1,57 +1,57 @@
 ---
-title: Odeslání události do vlastního tématu Azure Event Grid
-description: Popisuje, jak publikovat události do vlastního tématu pro Azure Event Grid
+title: Odeslání události do vlastního Azure Event Grid tématu
+description: Tento článek popisuje, jak odeslat událost do vlastního tématu. Zobrazuje formát dat pro odeslání a událost.
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/17/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 14ae5f2a0b6a950889d8587cd4d03ff4fc9a171b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0afad249f71a36bf7552da499e985b68d48ee7a9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304212"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721550"
 ---
-# <a name="post-to-custom-topic-for-azure-event-grid"></a>Publikovat do vlastního tématu pro Azure Event Grid
+# <a name="post-to-custom-topic-for-azure-event-grid"></a>Příspěvek do vlastního tématu pro Azure Event Grid
 
-Tento článek popisuje, jak publikovat události do vlastního tématu. Zobrazuje formát dat post a události. [Smlouva o úrovni služeb (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/) platí jenom pro příspěvky, které odpovídají očekávanému formátu.
+Tento článek popisuje, jak odeslat událost do vlastního tématu. Zobrazuje formát dat pro odeslání a událost. [Smlouva SLA (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/) se vztahuje pouze na příspěvky, které odpovídají očekávanému formátu.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="endpoint"></a>Koncový bod
 
-Při odesílání požadavku HTTP POST do vlastního tématu, použijte formát identifikátoru URI: `https://<topic-endpoint>?api-version=2018-01-01`.
+Při odesílání příspěvku HTTP na vlastní téma použijte formát identifikátoru URI: `https://<topic-endpoint>?api-version=2018-01-01`.
 
-Například je platný identifikátor URI: `https://exampletopic.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01`.
+Například platný identifikátor URI je: `https://exampletopic.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01`.
 
-Koncový bod vlastního tématu pomocí Azure CLI, použijte:
+Pokud chcete získat koncový bod pro vlastní téma pomocí Azure CLI, použijte:
 
 ```azurecli-interactive
 az eventgrid topic show --name <topic-name> -g <topic-resource-group> --query "endpoint"
 ```
 
-Koncový bod vlastního tématu pomocí Azure Powershellu, použijte:
+Chcete-li získat koncový bod pro vlastní téma s Azure PowerShell, použijte:
 
 ```powershell
 (Get-AzEventGridTopic -ResourceGroupName <topic-resource-group> -Name <topic-name>).Endpoint
 ```
 
-## <a name="header"></a>Záhlaví
+## <a name="header"></a>Hlavička
 
-V požadavku, zahrnují hodnotu záhlaví s názvem `aeg-sas-key` , který obsahuje klíč pro ověřování.
+V žádosti zahrňte hodnotu záhlaví s názvem `aeg-sas-key`, která obsahuje klíč pro ověření.
 
-Je třeba hodnotu platnou hlavičku `aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==`.
+Například platná hodnota hlavičky je `aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==`.
 
-Chcete-li získat klíč vlastního tématu pomocí Azure CLI, použijte:
+Pokud chcete získat klíč pro vlastní téma pomocí Azure CLI, použijte:
 
 ```azurecli
 az eventgrid topic key list --name <topic-name> -g <topic-resource-group> --query "key1"
 ```
 
-Pokud chcete získat klíč vlastního tématu pomocí Powershellu, použijte:
+Pokud chcete získat klíč pro vlastní téma pomocí PowerShellu, použijte:
 
 ```powershell
 (Get-AzEventGridTopicKey -ResourceGroupName <topic-resource-group> -Name <topic-name>).Key1
@@ -59,7 +59,7 @@ Pokud chcete získat klíč vlastního tématu pomocí Powershellu, použijte:
 
 ## <a name="event-data"></a>Data událostí
 
-Pro vlastní témata nejvyšší úrovně data obsahují stejné pole jako standardní událostí definovaných prostředků. Jedna z těchto vlastností je vlastnost data, která obsahuje vlastnosti, které jsou jedinečné pro vlastního tématu. Jako zdroj události určit vlastnosti pro tento datový objekt. Používejte následující schéma:
+Pro vlastní témata data nejvyšší úrovně obsahují stejná pole jako standardní události definované prostředky. Jedna z těchto vlastností je vlastnost dat, která obsahuje vlastnosti, které jsou jedinečné pro vlastní téma. Jako vydavatel událostí určíte vlastnosti pro daný datový objekt. Použijte následující schéma:
 
 ```json
 [
@@ -76,12 +76,12 @@ Pro vlastní témata nejvyšší úrovně data obsahují stejné pole jako stand
 ]
 ```
 
-Popis těchto vlastností najdete v tématu [schéma událostí služby Azure Event Grid](event-schema.md). Při odesílání událostí do téma event gridu, může pole mít celková velikost až 1 MB. Každá událost v poli je omezena na 64 KB (obecná dostupnost) nebo 1 MB (preview).
+Popis těchto vlastností najdete v tématu [Azure Event Grid schéma událostí](event-schema.md). Při odesílání událostí do tématu Event gridu může mít pole celkovou velikost až 1 MB. Každá událost v poli je omezená na 64 KB (Obecná dostupnost) nebo 1 MB (Preview).
 
 > [!NOTE]
-> Událost o velikosti až 64 KB se věnujeme v obecné dostupnosti (GA) služeb úroveň smlouvy (SLA). Podpora pro událost o velikosti až 1 MB je aktuálně ve verzi preview. Události více než 64 KB se účtují v přírůstcích po 64 KB. 
+> K události velikosti až 64 KB se vztahuje Obecná dostupnost (GA) smlouva SLA (SLA). Podpora pro událost velikosti až 1 MB je v současnosti ve verzi Preview. Události větší než 64 KB se účtují v přírůstcích po 64 až KB. 
 
-Schéma dat platné události je například:
+Například platné schéma dat událostí je:
 
 ```json
 [{
@@ -99,17 +99,17 @@ Schéma dat platné události je například:
 
 ## <a name="response"></a>Odpověď
 
-Po odeslání do tématu koncového bodu, neobdrží odpověď. Odpověď je standardní kód odpovědi HTTP. Jsou některé běžné odpovědi:
+Po odeslání do koncového bodu tématu obdržíte odpověď. Odpověď je standardní kód odpovědi HTTP. Mezi běžné odezvy patří:
 
 |Výsledek  |Odpověď  |
 |---------|---------|
 |Úspěch  | 200 OK  |
-|Data události mají nesprávný formát | 400 – Chybný požadavek |
+|Data události mají nesprávný formát. | 400 Chybný požadavek |
 |Neplatný přístupový klíč | 401 Neautorizováno |
-|Nesprávný koncového bodu | 404 – Nenalezeno |
-|Pole nebo události překračuje omezení velikosti | Moc velký 413 datové části |
+|Nesprávný koncový bod | 404 – Nenalezeno |
+|Pole nebo událost překračuje omezení velikosti. | datová část 413 je moc velká. |
 
-Text zprávy pro chyby, má následující formát:
+V případě chyb má tělo zprávy následující formát:
 
 ```json
 {
@@ -124,8 +124,8 @@ Text zprávy pro chyby, má následující formát:
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Informace o monitorování doručení událostí najdete v tématu [doručování zpráv služby Event Grid monitorování](monitor-event-delivery.md).
-* Další informace o ověřovací klíč najdete v tématu [ověřování a zabezpečení služby Event Grid](security-authentication.md).
-* Další informace o vytváření předplatného služby Azure Event Grid najdete v tématu [schéma předplatného služby Event Grid](subscription-creation-schema.md).
+* Informace o sledování doručení událostí najdete v tématu [monitorování Event Grid doručování zpráv](monitor-event-delivery.md).
+* Další informace o ověřovacím klíči najdete v tématu [Event Grid Security and Authentication](security-authentication.md).
+* Další informace o vytváření předplatného Azure Event Grid najdete v tématu [schéma předplatného Event Grid](subscription-creation-schema.md).

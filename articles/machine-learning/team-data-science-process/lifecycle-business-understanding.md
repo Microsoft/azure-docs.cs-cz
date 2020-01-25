@@ -3,20 +3,20 @@ title: Principy podniku v vědecké zpracování týmových dat
 description: Cíle, úkoly a úkoly pro fázi obchodní vysvětlení vašich projektů datové vědy v vědecké zpracování týmových dat.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 35d03a52125bd2646f86b96bcffe123d9fab7f64
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a7aaed519f8f97a9be77a263568aeed5257c16d6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60303549"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76710329"
 ---
 # <a name="the-business-understanding-stage-of-the-team-data-science-process-lifecycle"></a>Obchodní vysvětlení fáze životní cyklus vědeckého zpracování týmových dat
 
@@ -40,8 +40,8 @@ Zde je vizuální znázornění životního cyklu TDSP:
 ## <a name="how-to-do-it"></a>Jak na to
 Existují dva hlavní úkoly zákazníky a vyřešené v této fázi: 
 
-   * **Definování cílů**: Práce se zákazníkem a další zainteresované uživatele, pochopit a identifikaci obchodních problémů. Mohli formulovat otázky, které definují cílených techniky data science obchodních cílů.
-   * **Určení zdrojů dat**: Najdete relevantní data, která lze zodpovědět otázky, které definují cíle projektu.
+   * **Definování cílů**: práce se zákazníkem a další zainteresované uživatele, pochopit a identifikaci obchodních problémů. Mohli formulovat otázky, které definují cílených techniky data science obchodních cílů.
+   * **Určení zdrojů dat**: najít relevantní data, která vám pomůže odpovědět na otázky, které definují cíle projektu.
 
 ### <a name="define-objectives"></a>Definování cílů
 1. Ústředním cílem tohoto kroku je identifikace klíčových obchodních proměnné, které analýzy, které potřebujete k předpovědi. Budeme odkazovat na tyto proměnné jako *model cíle*, a jak určit úspěch projektu používáme metriky související s nimi. Dva příklady takových cílů jsou prognózy prodeje nebo pravděpodobnost pořadí se podvodné.
@@ -74,14 +74,14 @@ Určení zdrojů dat obsahujících známých příkladů odpovědi na své otá
 
 Například můžete zjistit, že je potřeba stávajících systémů shromažďovat a protokolovat další druhy dat k vyřešení problému a dosáhnout cílů projektu. V takovém případě můžete chtít vyhledat externím zdrojům dat nebo aktualizaci vašich systémů shromažďovat nová data.
 
-## <a name="artifacts"></a>Artefakty
+## <a name="artifacts"></a>Artifacts
 Tady jsou výstupy v této fázi:
 
-   * [Další směrování dokumentu](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md): Standardní šablona je součástí definice struktury TDSP projektu. Další směrování dokumentu je živých dokument. Jak vytvořit nové zjišťování a jako obchodní požadavky se změní aktualizaci šablony v celém projektu. Klíč je pro iteraci na tento dokument, přidání více podrobností, během postupu v procesu zjišťování. Zachovat zákazníka a další zainteresované uživatele zahrnuta v provedení změn a jasně sdělit důvody pro změny k nim.  
-   * [Zdroje dat](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md#raw-data-sources): **Nezpracovaná data zdroje** část **definice dat** sestavu, která se nachází v projektu TDSP **sestavu dat** složka obsahuje zdroje dat. Tato část určuje původní a cílové umístění pro nezpracovaná data. V pozdějších fázích si vyplňte další podrobnosti, jako jsou skripty pro přesun dat do vašeho analytického prostředí.  
+   * [Další směrování dokumentu](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md): standardní šablony je součástí definice struktury TDSP projektu. Další směrování dokumentu je živých dokument. Jak vytvořit nové zjišťování a jako obchodní požadavky se změní aktualizaci šablony v celém projektu. Klíč je pro iteraci na tento dokument, přidání více podrobností, během postupu v procesu zjišťování. Zachovat zákazníka a další zainteresované uživatele zahrnuta v provedení změn a jasně sdělit důvody pro změny k nim.  
+   * [Zdroje dat](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md#raw-data-sources): **nezpracovaná data zdroje** část **definice dat** sestavu, která se nachází v projektu TDSP **sestavu dat** složka obsahuje data zdroje. Tato část určuje původní a cílové umístění pro nezpracovaná data. V pozdějších fázích si vyplňte další podrobnosti, jako jsou skripty pro přesun dat do vašeho analytického prostředí.  
    * [Data slovníky](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Data_Dictionaries): Tento dokument obsahuje popis dat, která pochází od klienta. Tyto popisy obsahují informace o schématu (datové typy a informace o ověřovacích pravidel, pokud existuje) a diagramy relace entity, pokud je k dispozici.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Tady jsou odkazy na každý krok v životním cyklu TDSP:
 
@@ -91,4 +91,4 @@ Tady jsou odkazy na každý krok v životním cyklu TDSP:
    4. [Nasazení](lifecycle-deployment.md)
    5. [Schválení zákazníkem](lifecycle-acceptance.md)
 
-Poskytujeme úplného začátku do konce návody, které ukazují všechny kroky v procesu pro konkrétní scénáře. [Příklad návody](walkthroughs.md) článek obsahuje seznam scénářů s odkazy a popisy miniatur. Názorné postupy ukazují, jak zkombinovat cloudové, místní nástroje a služby do pracovního postupu nebo kanálu pro vytváření inteligentních aplikací. 
+Poskytujeme kompletní návody, které ukazují všechny kroky v procesu pro konkrétní scénáře. [Příklad návody](walkthroughs.md) článek obsahuje seznam scénářů s odkazy a popisy miniatur. Názorné postupy ukazují, jak zkombinovat cloudové, místní nástroje a služby do pracovního postupu nebo kanálu pro vytváření inteligentních aplikací. 

@@ -1,21 +1,21 @@
 ---
 title: Recepty pro kontejnery Docker
 titleSuffix: Azure Cognitive Services
-description: Naučte se vytvářet, testovat a ukládat kontejnery s některými nebo všemi konfiguračními nastaveními pro nasazení a opakované použití.
+description: Naučte se sestavovat, testovat a ukládat kontejnery s některými nebo všemi konfiguračními nastaveními pro nasazení a opakované použití.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 01/23/2020
 ms.author: dapine
-ms.openlocfilehash: dbe2e288309b6682041bf3db9fe3d39455359806
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 97342f1dd4f6ce343626ba6c294f09dabe3db5c0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647285"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717202"
 ---
 # <a name="create-containers-for-reuse"></a>Vytváření kontejnerů pro opakované použití
 
@@ -27,9 +27,9 @@ Jakmile budete mít tuto novou vrstvu kontejneru (s nastaveními) a otestujete j
 
 Jakékoli příklady `docker run` v tomto dokumentu předpokládají konzolu Windows s znakem pro pokračování `^` řádku. Pro vlastní použití Vezměte v úvahu následující:
 
-* Neměňte pořadí argumentů, pokud neznáte kontejnery Docker.
+* Pořadí argumentů nezmění, pokud máte velmi zkušenosti s kontejnery dockeru.
 * Pokud používáte jiný operační systém než Windows nebo jinou konzolu než konzolu Windows, použijte správnou konzolu/terminál, syntaxi složky pro připojení a znak pro pokračování řádku pro konzolu a systém.  Vzhledem k tomu, že kontejner Cognitive Services je operačním systémem Linux, cílový připojení používá syntaxi složky ve stylu systému Linux.
-* `docker run` příklady používají adresář mimo `c:` jednotku, aby nedocházelo ke konfliktům oprávnění ve Windows. Pokud potřebujete použít konkrétní adresář jako vstupní adresář, bude pravděpodobně nutné udělit oprávnění služby Docker.
+* `docker run` příklady používají adresář mimo `c:` jednotku, aby nedocházelo ke konfliktům oprávnění ve Windows. Pokud je potřeba použít konkrétní adresář jako vstupní adresář, budete muset udělit dockeru služby oprávnění.
 
 ## <a name="store-no-configuration-settings-in-image"></a>Uložení nastavení konfigurace v imagi
 

@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: 87f79f0ed21ec1f6a550c47f9f60d18511883300
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 9d71dd854c9a5059c2d0a48f57ad3ba5bb1eddf9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74768210"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721315"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Protokoly v Azure Database for PostgreSQL – jeden server
 Azure Database for PostgreSQL umožňuje konfigurovat a přistupovat ke standardním protokolům Postgres. Protokoly je možné použít k identifikaci, odstraňování potíží a opravě chyb konfigurace a k zajištění optimálního výkonu. Protokolovací informace, které můžete konfigurovat, a přístup zahrnují chyby, informace o dotazech, autovaku záznamů, připojení a kontrolní body. (Přístup k protokolům transakcí není k dispozici).
@@ -29,7 +29,7 @@ Další informace o parametrech protokolu Postgres najdete v části dokumentace
 Informace o tom, jak nakonfigurovat parametry v Azure Database for PostgreSQL, najdete v [dokumentaci k portálu](howto-configure-server-parameters-using-portal.md) nebo v dokumentaci k rozhraní příkazového [řádku](howto-configure-server-parameters-using-cli.md). 
 
 > [!NOTE]
-> Konfigurace velkého objemu protokolů, například protokolování příkazů, může výrazně zvýšit režii výkonu. 
+> Konfigurace velkého objemu protokolů, například protokolování příkazů, může výrazně zvýšit nároky na výkon. 
 
 ## <a name="access-log-files"></a>Soubory Access. log
 Výchozí formát protokolu v Azure Database for PostgreSQL je. log. Vzorový řádek z tohoto protokolu vypadá takto:
@@ -99,10 +99,10 @@ V následující tabulce jsou popsána pole pro typ **PostgreSQLLogs** . V závi
 | TenantId | ID tenanta |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Časové razítko, kdy se protokol zaznamenal v UTC |
-| Typ | Typ protokolu Vždycky `AzureDiagnostics` |
+| Typ | Typ protokolu Vždy `AzureDiagnostics` |
 | SubscriptionId | Identifikátor GUID předplatného, ke kterému server patří |
 | ResourceGroup | Název skupiny prostředků, do které server patří |
-| ResourceProvider | Název poskytovatele prostředků Vždycky `MICROSOFT.DBFORPOSTGRESQL` |
+| ResourceProvider | Název poskytovatele prostředků Vždy `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
 | ResourceId | Identifikátor URI prostředku |
 | Prostředek | Název serveru |
@@ -111,10 +111,10 @@ V následující tabulce jsou popsána pole pro typ **PostgreSQLLogs** . V závi
 | errorLevel | Úroveň protokolování, příklad: protokol, chyba, upozornění |
 | Zpráva | Zpráva primárního protokolu | 
 | Domain (Doména) | Verze serveru, například: Postgres-10 |
-| detaily | Sekundární zpráva protokolu (Pokud je k dispozici) |
+| Podrobnosti | Sekundární zpráva protokolu (Pokud je k dispozici) |
 | ColumnName | Název sloupce (Pokud je k dispozici) |
 | SchemaName | Název schématu (Pokud je k dispozici) |
-| Typ DataType | Název datového typu (Pokud je k dispozici) |
+| DatatypeName | Název datového typu (Pokud je k dispozici) |
 | LogicalServerName | Název serveru | 
 | _ResourceId | Identifikátor URI prostředku |
 | Předvolba | Předpona řádku protokolu |

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 20a161ffc82cb8f74cfcac838856434f83c4e258
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dac3037f82c38980c9ac16685aa7fddac68a2e7b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354283"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720295"
 ---
 # <a name="troubleshoot-input-connections"></a>Řešení potíží se vstupními připojeními
 
@@ -24,11 +24,13 @@ Tato stránka popisuje běžné problémy s vstupní připojení a postupy jejic
 
 2.  Zkontrolujte vstupní data.
 
-    Chcete-li ověřit, že se výstupní data přenášejí do centra událostí, použijte [Service Bus Exploreru](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a) pro připojení k Azure Eventhub (Pokud je vstup Centrum událostí se používá).
+    1. Chcete-li ověřit, že se výstupní data přenášejí do centra událostí, použijte [Service Bus Exploreru](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a) pro připojení k Azure Eventhub (Pokud je vstup Centrum událostí se používá).
         
-    Použití [ **ukázková Data** ](stream-analytics-sample-data-input.md) pro každý vstupní tlačítko a stáhněte ukázková vstupní data.
+    1. Pro jednotlivé vstupy použijte tlačítko [**ukázková data**](stream-analytics-sample-data-input.md) . Stáhněte si vstupní ukázková data.
         
-    Zkontrolujte ukázková data a porozumět struktuře dat: schéma a [datové typy](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
+    1. Zkontrolujte ukázková data, abyste pochopili tvar dat – to znamená schéma a [datové typy](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
+
+3.  Ujistěte se, že jste ve vstupní verzi Preview vybrali časový rozsah. Zvolte **možnost vybrat časový rozsah**a pak před testováním dotazu zadejte dobu trvání vzorku.
 
 ## <a name="malformed-input-events-causes-deserialization-errors"></a>Poškozená vstupní událost způsobuje chyby deserializace 
 Deserializace potíže jsou způsobeny, když vstupní datový proud vaší úlohy Stream Analytics obsahuje špatně vytvořené zprávy. Například může být způsobeno poškozená zpráva. chybí pravá závorka. nebo závorka v objektu JSON nebo nesprávný časové razítko formátu v poli Doba. 

@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f018edfa7cbb244c57f12c3b83dba086e1590f2
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: a82efda4cf53931dbf81b993b12a2927f02dfa0b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778341"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711696"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Zřizování aplikací na základě atributů s filtry oborů
 Cílem tohoto článku je vysvětlit, jak používat filtry oborů k definování pravidel založených na atributech, která určují, kteří uživatelé se zřídí do aplikace.
@@ -52,7 +52,7 @@ Každý uživatel nebo skupina, které zpracovala služba zřizování služby A
 
 Zvažte například následující filtr oboru:
 
-![Filtr oboru](./media/define-conditional-rules-for-provisioning-user-accounts/scoping-filter.PNG) 
+![Filtr oboru](media/define-conditional-rules-for-provisioning-user-accounts/scoping-filter.PNG) 
 
 Podle tohoto filtru oboru musí uživatelé splnit následující kritéria, která se mají zřídit:
 
@@ -117,7 +117,7 @@ Filtry oborů se konfigurují jako součást mapování atributů pro jednotliv�
 |----|----|----|----|
 |userPrincipalName (Hlavní název uživatele)|POROVNÁVÁNÍ REGULÁRNÍCH HODNOT|.\*@domain.com |Všichni uživatelé, kteří mají userPrincipal @domain.com domény, budou v oboru pro zřizování.|
 |userPrincipalName (Hlavní název uživatele)|NESHODA S REGULÁRNÍM VÝRAZEM|.\*@domain.com|Pro všechny uživatele, kteří mají userPrincipal @domain.com domény, budou mimo rozsah zřizování.|
-|Oddělení|ROVNÁ|prodej|Všichni uživatelé z prodejního oddělení jsou v oboru pro zřizování.|
+|Oddělení|ROVNÁ|SalesTable|Všichni uživatelé z prodejního oddělení jsou v oboru pro zřizování.|
 |workerID|POROVNÁVÁNÍ REGULÁRNÍCH HODNOT|(1[0-9][0-9][0-9][0-9][0-9][0-9])| Všichni zaměstnanci s workerIDs mezi 1000000 a 2000000 jsou v oboru pro zřizování.|
 
 ## <a name="related-articles"></a>Související články

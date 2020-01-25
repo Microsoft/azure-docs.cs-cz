@@ -11,18 +11,18 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 305108e576ad4e60089c929c9b780e8cee559540
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 28513c57101af67695d10056b3dc8e6537dcddb2
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167630"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712550"
 ---
 # <a name="what-is-identity-provisioning"></a>Co je zřizování identit?
 
 V současné době se podniky a společnosti stávají více a více než v různých místních i cloudových aplikacích.  Uživatelé vyžadují přístup k aplikacím místně i v cloudu. V rámci těchto různých aplikací je potřeba mít jedinou identitu (místní i Cloud).
 
-Zřizování je proces vytváření objektu na základě určitých podmínek, zachování objektu až data a odstranění objektu, pokud podmínky již nejsou splněné. Když se například do vaší organizace připojí nový uživatel, tento uživatel se zadává do systému HR.  V tomto okamžiku zřizování může vytvořit odpovídající uživatelský účet v cloudu, ve službě Active Directory a v různých aplikacích, ke kterým uživatel potřebuje mít přístup.  Díky tomu může uživatel začít pracovat a mít přístup k aplikacím a systémům, které potřebují k jednomu dni. 
+Zřizování je proces vytváření objektu na základě určitých podmínek, udržování objektu v aktuálním stavu a odstranění objektu, pokud podmínky již nejsou splněny. Když se například do vaší organizace připojí nový uživatel, tento uživatel se zadává do systému HR.  V tomto okamžiku zřizování může vytvořit odpovídající uživatelský účet v cloudu, ve službě Active Directory a v různých aplikacích, ke kterým uživatel potřebuje mít přístup.  Díky tomu může uživatel začít pracovat a mít přístup k aplikacím a systémům, které potřebují k jednomu dni. 
 
 ![zřizování cloudu](media/what-is-provisioning/cloud1.png)
 

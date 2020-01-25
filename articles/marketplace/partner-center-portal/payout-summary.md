@@ -7,12 +7,12 @@ ms.author: evansma
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
-ms.openlocfilehash: 997014263f0d12e7cc16a761152870c2ee63d6ec
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 6ee6b6f325ba58ecaa3c3acb5d5ded173262bafb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979703"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715443"
 ---
 # <a name="payout-reporting"></a>Vytváření sestav o výběrech
 
@@ -32,7 +32,7 @@ Pokud prodáváte nabídky v Azure Marketplace, zobrazí se také informace o ú
 
 ## <a name="roles-and-permission-to-access-the-payout-report"></a>Role a oprávnění pro přístup k sestavě výběr
 
-| Sestavy/stránky    | Vlastník účtu    | Správce  | Developer | Obchodní Přispěvatel |  Přispěvatel pro finance | Obchodník |
+| Sestavy/stránky    | Vlastník účtu    | Správce  | Vývojář | Obchodní Přispěvatel |  Přispěvatel pro finance | Obchodník |
 |------------------|------------------|----------|-----------|----|----|-----|
 | Sestava pořízení (včetně dat téměř v reálném čase) | Může zobrazit | Může zobrazit | Bez přístupu | Bez přístupu | Může zobrazit | Bez přístupu |
 | Sestava nebo odpovědi zpětné vazby | Může zobrazit a odeslat názor. | Může zobrazit a odeslat názor. | Může zobrazit a odeslat názor. | Bez přístupu | Bez přístupu | Může zobrazit a odeslat názor. |
@@ -46,11 +46,11 @@ Pokud prodáváte nabídky v Azure Marketplace, zobrazí se také informace o ú
 
 | | Portál Cloud Partner | Partnerské centrum |
 |---------|---------|---------|
-| Odkazy | https://cloudpartner.azure.com/ | https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory a https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
+| Odkazy | [https://cloudpartner.azure.com/](https://cloudpartner.azure.com) | [https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory](https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory) a [https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments](https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments) |
 | Navigace | Vytváření sestav ve výběrech poskytovaných ve výběrech Insights | Sestavy výběrů poskytované v partnerském centru – ikona výběr |
 | Rozsah | <ul> <li>Transakce pro položku na řádku je viditelná, pro probíhající shromažďování, shromažďování a platby. </li> <li>Vytváření sestav – zobrazí všechny položky řádků po vytvoření objednávky nákupu, včetně probíhajícího shromažďování a fakturace probíhá, a stavu kolekce a položek řádků, které ještě nejsou způsobilé k placení. </li> </ul> | <ul> <li>Zobrazuje položky řádku, jakmile se považují za oprávněné tržby.</li> <li>Zákazníci se nejprve účtují do Microsoftu a potom prodejci uvidí, že sestava výběru začíná.</li> <li>Sestava výběru nebude zobrazovat probíhající shromažďování a probíhá fakturace.  </li> </ul>  |
 | Transakce není připravená na výběr. | Probíhá fakturace | Další odhadovaná platba: stav vyvýběru je v nezpracovaném stavu.  |
-| Stav výběr |  | Nezpracované <br> Zisk má nárok na platbu. Zůstane v tomto stavu pro období chlazení, jak je definováno v Průvodci programu pro program k Pobídkě. <br> <br> Nadcházející <br> Platební objednávka – vygenerované interní recenze, které čekají na vyřízení, než se zpracuje platba <br> <br> Odesláno: <br> Platba byla odeslána do vaší banky. |
+| Stav výběr |  | Nezpracované <br> Zisk má nárok na platbu. Zůstane v tomto stavu pro období chlazení, jak je definováno v Průvodci programu pro program k Pobídkě. <br> <br> Nadcházející <br> Platební objednávka – vygenerované interní recenze, které čekají na vyřízení, než se zpracuje platba <br> <br> Odeslané <br> Platba byla odeslána do vaší banky. |
 
 ## <a name="customer-types"></a>Typy zákazníků
 
@@ -68,23 +68,23 @@ Například pokud zákazník nakupuje pomocí platební karty.
 
 ## <a name="corelation-between-payout-and-usage"></a>Vztah mezi výběrem a využitím
 
-|Popis    |    Datum  | Objednávky/použití  | Výplata |
+|Popis    |    Datum  | Objednávky/použití  | Platební |
 |----------|----------|-----------|-------------|
-|Období objednávky   | 15. srpna 2019 – srpna 30, 2019 | **Pořadí atributů korelace** <br> <ul> <li>OrderId</li> <li>CustomerId</li> </ul> <br> **Použití** <br> <ul> <li>CustomerId </li> <li>Název zákazníka</li> <li>(UsageReference) PurchaseRecordId/LineItemId</li> <li> Odhadované rozšířené náklady <br> Odhadovaný výběr (PC) </li> </ul> |  |
+|Období objednávky   | 15. srpna 2019 – srpna 30, 2019 | **Pořadí atributů korelace** <br> <ul> <li>Seskup</li> <li>ID</li> </ul> <br> **Použití** <br> <ul> <li>ID </li> <li>Jméno zákazníka</li> <li>(UsageReference) PurchaseRecordId/LineItemId</li> <li> Odhadované rozšířené náklady <br> Odhadovaný výběr (PC) </li> </ul> |  |
 |Termín ukončení (měsíc)   | 30. srpna 2019 | | |
 |Datum fakturace | Září 1, 2019 | | |
 |Datum platby zákazníka | Září 1, 2019 | | |
-|V úschově období (jenom kreditní karty, 30 dní) | Září 1, 2019 – září 30, 2019 | | **Pořadí atributů korelace:** <br> <ul><li>AssetId</li> <li>ID zákazníka</li> <li> Název zákazníka</li> </ul> <br> **Použití** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Název zákazníka</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Stav výběr:** Nezpracované |
+|V úschově období (jenom kreditní karty, 30 dní) | Září 1, 2019 – září 30, 2019 | | **Pořadí atributů korelace:** <br> <ul><li>AssetId</li> <li>ID zákazníka</li> <li> Jméno zákazníka</li> </ul> <br> **Použití** <br> <ul> <li>AssetId</li> <li>ID</li> <li>Jméno zákazníka</li> <li>Seskup</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Stav výběr:** Nezpracované |
 |Začátek období shromažďování | Září 1, 2019 | | |
 |Konec období shromažďování (maximum, 30 dní) | Září 30, 2019 | | |
-|Výběr data výpočtu (měsíčně na 15.) | Říjen 1, 2019 | | **Korelační atributy** <br> <ul><li>AssetId</li> <li>ID zákazníka</li> <li>Název zákazníka</li> </ul> <br> **Použití** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Název zákazníka</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Stav výběr:** Nadcházející |
-|Datum vyvýběru | 15. října 2019 | | **Korelační atributy** <br> <ul><li>AssetId</li> <li>ID zákazníka</li> <li> Název zákazníka</li> </ul> <br> **Použití** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Název zákazníka</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Stav výběr:** Platba odeslána |
+|Výběr data výpočtu (měsíčně na 15.) | Říjen 1, 2019 | | **Korelační atributy** <br> <ul><li>AssetId</li> <li>ID zákazníka</li> <li>Jméno zákazníka</li> </ul> <br> **Použití** <br> <ul> <li>AssetId</li> <li>ID</li> <li>Jméno zákazníka</li> <li>Seskup</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Stav výběr:** Nadcházející |
+|Datum vyvýběru | 15. října 2019 | | **Korelační atributy** <br> <ul><li>AssetId</li> <li>ID zákazníka</li> <li> Jméno zákazníka</li> </ul> <br> **Použití** <br> <ul> <li>AssetId</li> <li>ID</li> <li>Jméno zákazníka</li> <li>Seskup</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Stav výběr:** Platba odeslána |
 
 ### <a name="enterprise-agreement-quarterlymonthly-customers"></a>Smlouva Enterprise (čtvrtletní/měsíční zákazníci)
 
-| Popis |    Datum  | Využití | Výplata |
+| Popis |    Datum  | Využití | Platební |
 |----------|----------|---------|-----------|
-|Období objednávky | 15. srpna 2019 – srpna 30, 2019 | **Pořadí atributů korelace** <br> <ul> <li>OrderId</li> <li>CustomerId</li> </ul> <br> **Sestava využití** <br> <ul> <li>CustomerId </li> <li>Název zákazníka</li> <li>(UsageReference) PurchaseRecordId/LineItemId</li> <li> Odhadované rozšířené náklady <br> Odhadovaný výběr (PC) </li> </ul> | |
+|Období objednávky | 15. srpna 2019 – srpna 30, 2019 | **Pořadí atributů korelace** <br> <ul> <li>Seskup</li> <li>ID</li> </ul> <br> **Sestava využití** <br> <ul> <li>ID </li> <li>Jméno zákazníka</li> <li>(UsageReference) PurchaseRecordId/LineItemId</li> <li> Odhadované rozšířené náklady <br> Odhadovaný výběr (PC) </li> </ul> | |
 |Termín ukončení (čtvrtletí) | Září 30, 2019 | | |
 |Datum fakturace | 15. října 2019 | | |
 |V úschově období (jenom kreditní karty, 30 dní) | – | | |
@@ -93,13 +93,13 @@ Například pokud zákazník nakupuje pomocí platební karty.
 |Konec období shromažďování (maximum, 90 dní) | 15. ledna 2020 | | |
 |Datum platby zákazníka | 30. prosince 2019 | | |
 |Výpočet výběr | 15. ledna 2020 | | |
-|Datum vyvýběru | 15. února 2020 | | **Pro zákazníky s čtvrtletním základem** <br> <br> **Sestava objednávek** <br> <ul><li>AssetId</li> <li>ID zákazníka</li> <li> Název zákazníka</li> </ul> <br> **Použití** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Název zákazníka</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Stav Vyvýběru:** odesláno |
+|Datum vyvýběru | 15. února 2020 | | **Pro zákazníky s čtvrtletním základem** <br> <br> **Sestava objednávek** <br> <ul><li>AssetId</li> <li>ID zákazníka</li> <li> Jméno zákazníka</li> </ul> <br> **Použití** <br> <ul> <li>AssetId</li> <li>ID</li> <li>Jméno zákazníka</li> <li>Seskup</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Stav Vyvýběru:** odesláno |
 
 ## <a name="transaction-history-download-export"></a>Export stažení Historie transakcí
 
 Tato možnost nabízí stažení každé položky řádku k přijetí, kterou vidíte na stránce Historie transakcí, typu, datu, přidruženém množství transakce, zákazníkovi, produktu a dalších transakčních detailech vztahujících se k programu pobídek.
 
-| Název sloupce     | Popis    |
+| název sloupce     | Popis    |
 |-------------|-------------------------------|
 | earningId                      | Jedinečný identifikátor pro každý z nich                                                                                                       |
 | participantId                  | Primární identita partnera v rámci programu                                                                            |
@@ -130,7 +130,7 @@ Tato možnost nabízí stažení každé položky řádku k přijetí, kterou vi
 | paymentId            | Jedinečný identifikátor pro platbu Toto číslo je viditelné ve výpisu bank.                                            |
 | paymentStatus            | Stav platby                                            |
 | paymentStatusDescription            | Popisný popis stavu platby                                            |
-| customerId                     | Bude vždy prázdné                                                                                                                     |
+| ID                     | Bude vždy prázdné                                                                                                                     |
 | customerName                   | Bude vždy prázdné                                                                                                                     |
 | partNumber                     | Bude vždy prázdné                                                                                                                     |
 | NázevVýrobku                    | Název produktu propojený s transakcí                                                                                                       |
@@ -165,7 +165,7 @@ Tato možnost nabízí stažení každé položky řádku k přijetí, kterou vi
 | EarningAmountInLastPaymentCurrency       | Peněžní částka v poslední platební měně (pole bude prázdné, pokud se nezaplatily žádné předchozí platby)                                                                                                                   |
 | lastPaymentCurrency       | Poslední platební měna (pole bude prázdné, pokud se nevyplatila žádná předchozí platba)                                                                                                                   |
 | AssetId       | Jedinečný identifikátor objednávek zákazníků pro vaši službu Marketplace  Představuje položky transakčního nákupu v řádku. Může existovat více prostředků.                                                                                                                   |
-| OrderId       | má vztah k faktuře zákazníka.                                                                                                                   |
+| Seskup       | má vztah k faktuře zákazníka.                                                                                                                   |
 | LineItemId       | jednotlivý řádek na faktuře zákazníka                                                                                                                   |
 | Země zákazníka       | Název země, kterou zadal zákazník.  To může být jiné než země v předplatném Azure zákazníka.                                                                                                                   |
 | Zákaznická EmailAddress       | E-mailová adresa poskytnutá koncovým zákazníkem  Může se lišit od e-mailové adresy v předplatném Azure zákazníka.                                                                                                                   |

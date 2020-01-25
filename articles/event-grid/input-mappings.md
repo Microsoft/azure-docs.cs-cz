@@ -1,21 +1,21 @@
 ---
 title: Mapování vlastních polí do schématu služby Azure Event Grid
-description: Popisuje, jak převést vaše vlastní schéma do schématu služby Azure Event Grid.
+description: Tento článek popisuje, jak převést vlastní schéma na Azure Event Grid schématu, když data události neodpovídají schématu Event Grid.
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: a0e054be3ab7d4818ac323eb5fb93968f57eca4f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e8077068a265d659cf6009eb7762188637c373d6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60565493"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721655"
 ---
-# <a name="map-custom-fields-to-event-grid-schema"></a>Mapování vlastních polí na schéma služby Event Grid
+# <a name="map-custom-fields-to-event-grid-schema"></a>Mapování vlastních polí na schéma Event Gridu
 
 Pokud vaše data události neodpovídá očekávané [schéma služby Event Grid](event-schema.md), stále můžete služby Event Grid směrování události odběratelům. Tento článek popisuje způsob mapování schématu do schématu služby Event Grid.
 
@@ -205,7 +205,7 @@ Druhého předplatného používá schéma vstupních událostí. Formát doruč
 
 Všimněte si, že byly dodány původního pole.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Informace o doručování událostí a opakovaných pokusů [doručování zpráv služby Event Grid a zkuste to znovu](delivery-and-retry.md).
 * Úvod do Event Gridu najdete v článku [Informace o službě Event Grid](overview.md).

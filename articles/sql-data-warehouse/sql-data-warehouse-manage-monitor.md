@@ -10,15 +10,15 @@ ms.subservice: manage
 ms.date: 08/23/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: b71d3b4824d8c1c73f40c8c6d87db315aabd423b
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 14c4bb843a93fe6d235354f24475b9974142db79
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555494"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721145"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitorování vaší úlohy pomocí DMV
-Tento článek popisuje, jak pomocí zobrazení dynamické správy (zobrazení dynamické správy) monitorovat vaše úlohy. To zahrnuje šetření provádění dotazů v Azure SQL Data Warehouse.
+Tento článek popisuje, jak pomocí zobrazení dynamické správy (zobrazení dynamické správy) monitorovat vaše úlohy. Součástí je zkoumání provádění dotazů v Azure SQL Data Warehouse.
 
 ## <a name="permissions"></a>Oprávnění
 K dotazování na zobrazení dynamické správy v tomto článku potřebujete buď oprávnění zobrazit stav databáze nebo řídit. Obvykle je přidělení stavu databáze zobrazení upřednostňovanější oprávnění, protože je mnohem více omezující.
@@ -28,7 +28,7 @@ GRANT VIEW DATABASE STATE TO myuser;
 ```
 
 ## <a name="monitor-connections"></a>Monitorování připojení
-Všechna přihlášení k SQL Data Warehouse jsou protokolována do [Sys. dm_pdw_exec_sessions][sys.dm_pdw_exec_sessions].  Tento DMV obsahuje poslední 10 000 přihlášení.  Session_id je primární klíč a pro každé nové přihlášení se přiřadí sekvenčně.
+Všechna přihlášení k SQL Data Warehouse jsou protokolována do [Sys. dm_pdw_exec_sessions](https://msdn.microsoft.com/library/mt203883.aspx).  Tento DMV obsahuje poslední 10 000 přihlášení.  Session_id je primární klíč a pro každé nové přihlášení se přiřadí sekvenčně.
 
 ```sql
 -- Other Active Connections
@@ -36,7 +36,7 @@ SELECT * FROM sys.dm_pdw_exec_sessions where status <> 'Closed' and session_id <
 ```
 
 ## <a name="monitor-query-execution"></a>Monitorovat provádění dotazů
-Všechny dotazy spouštěné v SQL Data Warehouse jsou protokolovány do [Sys. dm_pdw_exec_requests][sys.dm_pdw_exec_requests].  Tento DMV obsahuje poslední spuštěné dotazy 10 000.  Request_id jedinečně identifikuje každý dotaz a je primárním klíčem pro tento DMV.  Request_id se každému novému dotazu přiřadí sekvenčně a je předponou QID, která představuje ID dotazu.  Dotaz na tento DMV pro daný session_id zobrazuje všechny dotazy pro dané přihlášení.
+Všechny dotazy spouštěné v SQL Data Warehouse jsou protokolovány do [Sys. dm_pdw_exec_requests](https://msdn.microsoft.com/library/mt203887.aspx).  Tento DMV obsahuje poslední spuštěné dotazy 10 000.  Request_id jedinečně identifikuje každý dotaz a je primárním klíčem pro tento DMV.  Request_id se každému novému dotazu přiřadí sekvenčně a je předponou QID, která představuje ID dotazu.  Dotaz na tento DMV pro daný session_id zobrazuje všechny dotazy pro dané přihlášení.
 
 > [!NOTE]
 > Uložené procedury používají více ID žádostí.  ID žádostí se přiřazují v sekvenčním pořadí. 
@@ -63,9 +63,9 @@ ORDER BY total_elapsed_time DESC;
 
 Z předchozích výsledků dotazu **si poznamenejte ID žádosti** o dotaz, který chcete prozkoumat.
 
-Dotazy v **pozastaveném** stavu lze zařadit do fronty z důvodu velkého počtu aktivních spuštěných dotazů. Tyto dotazy se také zobrazí v [Sys. dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) čeká na dotaz s typem UserConcurrencyResourceType. Informace o omezeních souběžnosti najdete v tématu [omezení paměti a souběžnosti pro Azure SQL Data Warehouse](memory-concurrency-limits.md) nebo [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md). Dotazy mohou také čekat na jiné důvody, například na zámky objektů.  Pokud dotaz čeká na prostředek, prostudujte si další informace v tomto článku v tématu [zkoumání dotazů, které čekají na prostředky][Investigating queries waiting for resources] .
+Dotazy v **pozastaveném** stavu lze zařadit do fronty z důvodu velkého počtu aktivních spuštěných dotazů. Tyto dotazy se také zobrazí v [Sys. dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) čeká na dotaz s typem UserConcurrencyResourceType. Informace o omezeních souběžnosti najdete v tématu [omezení paměti a souběžnosti pro Azure SQL Data Warehouse](memory-concurrency-limits.md) nebo [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md). Dotazy mohou také čekat na jiné důvody, například na zámky objektů.  Pokud dotaz čeká na prostředek, prostudujte si další informace v tomto článku v tématu [zkoumání dotazů, které čekají na prostředky](#monitor-waiting-queries) .
 
-Chcete-li zjednodušit vyhledávání dotazů v tabulce [Sys. dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) , použijte [popisek][LABEL] k přiřazení komentáře k dotazu, který lze vyhledat v zobrazení sys. dm_pdw_exec_requests.
+Chcete-li zjednodušit vyhledávání dotazu v tabulce [Sys. dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) , použijte [popisek](https://msdn.microsoft.com/library/ms190322.aspx) k přiřazení komentáře k dotazu, který lze vyhledat v zobrazení sys. dm_pdw_exec_requests.
 
 ```sql
 -- Query with Label
@@ -82,7 +82,7 @@ WHERE   [label] = 'My Query';
 ```
 
 ### <a name="step-2-investigate-the-query-plan"></a>Krok 2: prozkoumání plánu dotazů
-Pomocí ID žádosti načtěte plán SQL (DSQL) pro dotaz z [Sys. dm_pdw_request_steps][sys.dm_pdw_request_steps].
+Pomocí ID žádosti načtěte plán SQL (DSQL) pro dotaz z [Sys. dm_pdw_request_steps](https://msdn.microsoft.com/library/mt203913.aspx).
 
 ```sql
 -- Find the distributed query plan steps for a specific query.
@@ -93,7 +93,7 @@ WHERE request_id = 'QID####'
 ORDER BY step_index;
 ```
 
-Pokud plán DSQL trvá déle, než se čekalo, může být příčinou složitý plán s mnoha kroky DSQL nebo pouze jedním krokem trvat dlouhou dobu.  Pokud má plán mnoho kroků s několika operacemi přesunutí, zvažte optimalizaci distribuce vašich tabulek, aby se snížil pohyb dat. Článek [distribuce tabulek][Table distribution] vysvětluje, proč je nutné přesunout data, aby bylo možné vyřešit dotaz, a vysvětluje některé strategie distribuce pro minimalizaci přesunu dat.
+Pokud plán DSQL trvá déle, než se čekalo, může být příčinou složitý plán s mnoha kroky DSQL nebo pouze jedním krokem trvat dlouhou dobu.  Pokud má plán mnoho kroků s několika operacemi přesunutí, zvažte optimalizaci distribuce vašich tabulek, aby se snížil pohyb dat. Článek [distribuce tabulek](sql-data-warehouse-tables-distribute.md) vysvětluje, proč je nutné přesunout data, aby bylo možné dotaz vyřešit. Článek také vysvětluje některé strategie distribuce pro minimalizaci přesunu dat.
 
 Chcete-li prozkoumat další podrobnosti o jednom kroku, sloupec *operation_type* dlouhého kroku dotazu a poznamenejte si **Krok index**:
 
@@ -101,7 +101,7 @@ Chcete-li prozkoumat další podrobnosti o jednom kroku, sloupec *operation_type
 * Pokračujte krokem 3B pro **operace přesunu dat**: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
 
 ### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>Krok 3a: Prozkoumejte SQL pro distribuované databáze
-K načtení podrobností z [Sys. dm_pdw_sql_requests][sys.dm_pdw_sql_requests], který obsahuje informace o spuštění kroku dotazu ve všech distribuovaných databázích, použijte ID žádosti a krokový index.
+K načtení podrobností z [Sys. dm_pdw_sql_requests](https://msdn.microsoft.com/library/mt203889.aspx), který obsahuje informace o spuštění kroku dotazu ve všech distribuovaných databázích, použijte ID žádosti a krokový index.
 
 ```sql
 -- Find the distribution run times for a SQL step.
@@ -111,7 +111,7 @@ SELECT * FROM sys.dm_pdw_sql_requests
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-Když je spuštěný krok dotazu, můžete použít [příkaz DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] k načtení SQL Server odhadovaného plánu z mezipaměti plánu SQL Server pro krok spuštěný v konkrétní distribuci.
+Když je spuštěný krok dotazu, můžete použít [příkaz DBCC PDW_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx) k načtení SQL Server odhadovaného plánu z mezipaměti plánu SQL Server pro krok spuštěný v konkrétní distribuci.
 
 ```sql
 -- Find the SQL Server execution plan for a query running on a specific SQL Data Warehouse Compute or Control node.
@@ -121,7 +121,7 @@ DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
 ### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>Krok 3B: prozkoumání přesunu dat v distribuovaných databázích
-K načtení informací o kroku přesunu dat běžícímu na každé distribuci z [Sys. dm_pdw_dms_workers][sys.dm_pdw_dms_workers]použijte ID žádosti a krokový index.
+K načtení informací o kroku přesunu dat běžícímu na každé distribuci z [Sys. dm_pdw_dms_workers](https://msdn.microsoft.com/library/mt203878.aspx)použijte ID žádosti a krokový index.
 
 ```sql
 -- Find the information about all the workers completing a Data Movement Step.
@@ -134,7 +134,7 @@ WHERE request_id = 'QID####' AND step_index = 2;
 * Zkontrolujte sloupec *total_elapsed_time* , abyste viděli, jestli konkrétní distribuce trvá podstatně déle než jiné pro pohyb dat.
 * V případě dlouhotrvající distribuce zkontrolujte sloupec *rows_processed* a zjistěte, zda je počet přesouvaných řádků z této distribuce významně větší než ostatní. Pokud ano, může toto hledání znamenat zkosení vašich podkladových dat.
 
-Pokud je dotaz spuštěn, lze použít [příkaz DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] k načtení SQL Server odhadovaného plánu z mezipaměti plánu SQL Server pro aktuálně běžící krok SQL v rámci určité distribuce.
+Pokud je dotaz spuštěný, můžete použít [příkaz DBCC PDW_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx) k načtení SQL Server odhadovaného plánu z mezipaměti plánu SQL Server pro aktuálně běžící krok SQL v rámci určité distribuce.
 
 ```sql
 -- Find the SQL Server estimated plan for a query running on a specific SQL Data Warehouse Compute or Control node.
@@ -265,7 +265,7 @@ GROUP BY t.pdw_node_id, nod.[type]
 ```
 
 ## <a name="monitor-polybase-load"></a>Monitorovat základní zatížení
-Následující dotaz poskytuje jen odhad průběhu zátěže. Dotaz zobrazuje pouze soubory, které jsou právě zpracovávány. 
+Následující dotaz poskytuje přibližný odhad průběhu zátěže. Dotaz zobrazuje pouze soubory, které jsou právě zpracovávány. 
 
 ```sql
 
@@ -290,23 +290,4 @@ ORDER BY
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o zobrazení dynamické správy najdete v tématu [Systémová zobrazení][System views].
-
-
-<!--Image references-->
-
-<!--Article references-->
-[SQL Data Warehouse best practices]: ./sql-data-warehouse-best-practices.md
-[System views]: ./sql-data-warehouse-reference-tsql-system-views.md
-[Table distribution]: ./sql-data-warehouse-tables-distribute.md
-[Investigating queries waiting for resources]: ./sql-data-warehouse-manage-monitor.md#waiting
-
-<!--MSDN references-->
-[sys.dm_pdw_dms_workers]: https://msdn.microsoft.com/library/mt203878.aspx
-[sys.dm_pdw_exec_requests]: https://msdn.microsoft.com/library/mt203887.aspx
-[sys.dm_pdw_exec_sessions]: https://msdn.microsoft.com/library/mt203883.aspx
-[sys.dm_pdw_request_steps]: https://msdn.microsoft.com/library/mt203913.aspx
-[sys.dm_pdw_sql_requests]: https://msdn.microsoft.com/library/mt203889.aspx
-[DBCC PDW_SHOWEXECUTIONPLAN]: https://msdn.microsoft.com/library/mt204017.aspx
-[DBCC PDW_SHOWSPACEUSED]: https://msdn.microsoft.com/library/mt204028.aspx
-[LABEL]: https://msdn.microsoft.com/library/ms190322.aspx
+Další informace o zobrazení dynamické správy najdete v tématu [Systémová zobrazení](./sql-data-warehouse-reference-tsql-system-views.md).

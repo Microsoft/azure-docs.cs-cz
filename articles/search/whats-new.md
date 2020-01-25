@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: e115316daf3673d9ad854e7ccd6d5256d729b5af
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: a9c64f4bafa770de9bbbd97ae9a0295b72d81f54
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921011"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719819"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co je nového v Azure Kognitivní hledání
 
@@ -21,11 +21,9 @@ Zjistěte, co je nového ve službě. Pomocí záložky můžete tuto stránku u
 
 <a name="new-service-name"></a>
 
-## <a name="new-service-name-for-azure-search"></a>Nový název služby pro Azure Search
+## <a name="new-service-name"></a>Nový název služby
 
-Azure Search se teď přejmenuje na **Azure kognitivní hledání** , aby odráželo rozšířené použití dovedností rozpoznávání a zpracování AI v základních operacích. I když vnímání dovedností přidávají nové funkce, je použití AI naprosto volitelné. Azure Kognitivní hledání bez AI můžete dál používat k vytváření bohatých fulltextových řešení pro vyhledávání v rámci privátního a heterogenního textového obsahu v indexu, který vytvoříte a spravujete v cloudu. 
-
-Verze API, balíčky NuGet, obory názvů a koncové body se nezměnily. Vaše stávající řešení hledání nejsou ovlivněna změnou názvu služby.
+Azure Search se teď přejmenuje na **Azure kognitivní hledání** , aby odráželo rozšířené (zatím volitelné) používání vnímání a zpracování AI v základních operacích. Verze API, balíčky NuGet, obory názvů a koncové body se nezměnily. Nová a stávající řešení hledání nejsou ovlivněna změnou názvu služby.
 
 ## <a name="feature-announcements"></a>Oznámení funkcí
 

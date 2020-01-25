@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.openlocfilehash: 6ff7500712f57d7cf2adad1fc73f68a29f3afc20
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 40cd3467c7a4377427bb8db437e1047382933b1c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75412832"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714876"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Jak nakonfigurovat Trvalost dat pro mezipaměť Azure Premium pro Redis
 Azure cache pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu pro výběr velikosti a funkcí mezipaměti, včetně funkcí úrovně Premium, jako je podpora clusteringu, trvalosti a virtuální sítě. Tento článek popisuje, jak nakonfigurovat trvalost v mezipaměti Azure úrovně Premium pro instanci Redis.
@@ -26,7 +26,13 @@ Azure cache pro Redis nabízí trvalost Redis pomocí následujících modelů:
 * **Trvalost RDB** – když je nakonfigurovaná trvalá databáze RDB (Redis Database), Azure cache pro Redis uchovává snímek mezipaměti Azure pro Redis v binárním formátu Redis na disk na základě konfigurovatelné četnosti zálohování. Pokud dojde k závažné události, která zakáže primární i mezipaměť repliky, mezipaměť se znovu vytvoří pomocí nejnovějšího snímku. Přečtěte si další informace o [výhodách](https://redis.io/topics/persistence#rdb-advantages) a [nevýhodách](https://redis.io/topics/persistence#rdb-disadvantages) trvalého chování RDB.
 * **AOF Persistence** – Pokud je nakonfigurovaná trvalá stálost AOF (jenom soubor), mezipaměť Azure pro Redis ukládá každou operaci zápisu do protokolu, který se alespoň jednou uložil za sekundu do účtu Azure Storage. Pokud dojde k závažné události, která zakáže primární i mezipaměť repliky, mezipaměť se rekonstruovat pomocí uložených operací zápisu. Přečtěte si další informace o [výhodách](https://redis.io/topics/persistence#aof-advantages) a [nevýhodách](https://redis.io/topics/persistence#aof-disadvantages) AOF Persistence.
 
-Trvalost se konfiguruje z **nového okna Azure cache pro Redis** během vytváření mezipaměti a v **nabídce prostředků** pro existující mezipaměti úrovně Premium.
+Trvalost zapisuje Redis data do účtu Azure Storage, který vlastníte a spravujete. Můžete nakonfigurovat z nového okna **Azure cache pro Redis** během vytváření mezipaměti a v **nabídce prostředků** pro existující mezipaměti úrovně Premium.
+
+> [!NOTE]
+> 
+> Azure Storage automaticky šifruje data, když jsou trvalá. Pro šifrování můžete použít vlastní klíče. Další informace najdete v tématu [klíče spravované zákazníkem s Azure Key Vault](/azure/storage/common/storage-service-encryption?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#customer-managed-keys-with-azure-key-vault).
+> 
+> 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
@@ -38,7 +44,7 @@ Kroky v další části popisují, jak nakonfigurovat trvalost Redis pro novou m
 
 ## <a name="enable-redis-persistence"></a>Povolit trvalost Redis
 
-Redis Persistence je povolená v okně **Trvalost dat Redis** , a to tak, že zvolíte buď **RDB** nebo **AOF** Persistence. Pro nové mezipaměti je toto okno k dispozici během procesu vytváření mezipaměti, jak je popsáno v předchozí části. V případě existujících mezipamětí se v **nabídce prostředků** pro vaši mezipaměť přistupuje okno **trvalá data Redis** .
+Redis Persistence je povolená v okně **Trvalost dat** , a to tak, že vyberete buď **RDB** , nebo **AOF** Persistence. Pro nové mezipaměti je toto okno k dispozici během procesu vytváření mezipaměti, jak je popsáno v předchozí části. V případě existujících mezipamětí se k oknu **trvalá data** dostanete z **nabídky prostředků** pro vaši mezipaměť.
 
 ![Nastavení Redis][redis-cache-settings]
 
@@ -125,7 +131,7 @@ Pro zachování RDB i AOF:
 * Pokud jste škálované na menší velikost a v menší velikosti není dost místa pro uchovávání všech dat od poslední zálohy, klíče se během procesu obnovení vyřadí, obvykle se použijí zásady vyřazení [AllKeys-LRU](https://redis.io/topics/lru-cache) .
 
 ### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>Můžu po vytvoření mezipaměti změnit četnost záloh RDB?
-Ano, četnost záloh pro trvalost RDB můžete změnit v okně **Redis data Persistence** . Pokyny najdete v tématu Konfigurace Persistence Redis.
+Ano, četnost záloh pro trvalost RDB můžete změnit v okně **trvalá data** . Pokyny najdete v tématu Konfigurace Persistence Redis.
 
 ### <a name="why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups"></a>Proč má frekvence zálohování RDB 60 minut více než 60 minut mezi zálohováním?
 Interval četnosti zálohování RDB se nespustí, dokud se předchozí proces zálohování úspěšně nedokončí. Pokud je frekvence zálohování 60 minut a trvá dokončení procesu zálohování 15 minut, příští zálohování nebude zahájeno až do 75 minut od počátečního času předchozí zálohy.

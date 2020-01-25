@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: fc0bac99aa70d7028412c68563a3024720fa49d9
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 9fdbf3888b4302946fe20259a333842caa122836
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745399"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717787"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Nejčastější dotazy týkající se použití Azure Database Migration Service
 
@@ -96,8 +96,8 @@ Během typické migrace databáze postupujte takto:
 1. Vytvořte cílové databáze (y).
 2. Vyhodnoťte vaše zdrojové databáze.
     * Pro homogenní migrace vyhodnoťte existující databáze pomocí [DMA](https://www.microsoft.com/download/details.aspx?id=53595).
-    * Pro migrace heterogenní (z konkurenčních zdrojů) posuďte existující databáze pomocí [SSMA](https://aka.ms/get-ssma). K převodu databázových objektů a migraci schématu na cílovou platformu použijete také SSMA.
-3. Vytvořte instanci služby Azure Database Migration Service.
+    * Pro heterogenní migrace (z konkurenčních zdrojů) vyhodnoťte existující databáze pomocí [SSMA](https://aka.ms/get-ssma). K převodu databázových objektů a migraci schématu na cílovou platformu použijete také SSMA.
+3. Vytvořte instanci Azure Database Migration Service.
 4. Vytvořte projekt migrace určující zdrojové databáze, cílové databáze (y) a tabulky, které chcete migrovat.
 5. Spusťte úplné načtení.
 6. Vyberte následné ověření.

@@ -9,16 +9,16 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1f60ce3a23882a48e6008b76c0eedcab99e013b2
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a0aa20a8d1ddecfe401a4e099a4f298971779501
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883452"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720108"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Nastavení Azure Key Vault s použitím rotace a auditování klíčů
 
-## <a name="introduction"></a>Úvod
+## <a name="introduction"></a>Představení
 
 Po použití trezoru klíčů ho můžete začít používat k ukládání klíčů a tajných kódů. Vaše aplikace už nepotřebují uchovávat vaše klíče nebo tajné kódy, ale podle potřeby je můžou vyžádat z trezoru. Trezor klíčů umožňuje aktualizovat klíče a tajné kódy, aniž by to mělo vliv na chování vaší aplikace. tím se otevře spousta možností pro správu klíčů a tajných kódů.
 
@@ -105,7 +105,7 @@ Dále vygenerujte klíč pro vaši aplikaci, aby mohl pracovat s Azure Active Di
 
 ![Azure Active Directory klíče aplikace](./media/keyvault-keyrotation/create-key.png)
 
-Před vytvořením volání z vaší aplikace do trezoru klíčů je nutné sdělit Trezor klíčů o vaší aplikaci a její oprávnění. Následující příkaz používá název trezoru a ID aplikace z vaší aplikace Azure Active Directory, aby aplikace získala přístup k vašemu trezoru klíčů.
+Před vytvořením volání z vaší aplikace do trezoru klíčů je nutné sdělit Trezor klíčů o vaší aplikaci a její oprávnění. Následující příkaz používá název trezoru a ID aplikace z vaší aplikace Azure Active Directory, aby aplikace **získala** přístup k vašemu trezoru klíčů.
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <clientIDfromAzureAD> -PermissionsToSecrets Get
@@ -119,7 +119,7 @@ Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 3.10.30
 Install-Package Microsoft.Azure.KeyVault
 ```
 
-V kódu aplikace vytvořte třídu, která bude uchovávat metodu pro ověřování Azure Active Directory. V tomto příkladu se tato třída nazývá **utils**. Přidejte následující `using` příkaz:
+V kódu aplikace vytvořte třídu, která bude uchovávat metodu pro ověřování Azure Active Directory. V tomto příkladu se tato třída nazývá **utils**. Přidejte následující příkaz `using`:
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -144,7 +144,7 @@ public async static Task<string> GetToken(string authority, string resource, str
 }
 ```
 
-Přidejte potřebný kód pro volání Key Vault a načíst tajnou hodnotu. Nejprve je třeba přidat následující `using` příkaz:
+Přidejte potřebný kód pro volání Key Vault a načíst tajnou hodnotu. Nejprve je třeba přidat následující příkaz `using`:
 
 ```csharp
 using Microsoft.Azure.KeyVault;
@@ -163,7 +163,7 @@ Po spuštění aplikace byste teď měli ověřit, že se má Azure Active Direc
 ## <a name="key-rotation-using-azure-automation"></a>Střídání klíčů pomocí Azure Automation
 
 > [!IMPORTANT]
-> Azure Automation Runbooky stále vyžadují použití `AzureRM` modulu.
+> Azure Automation Runbooky stále vyžadují použití modulu `AzureRM`.
 
 Nyní jste připraveni nastavit strategii otáčení pro hodnoty, které ukládáte jako Key Vault tajných klíčů. Tajné kódy lze otáčet několika způsoby:
 
@@ -272,7 +272,7 @@ Dále [vytvořte funkci Azure](../azure-functions/functions-create-first-azure-f
 
 Pokud chcete vytvořit aplikaci Azure Function App, vyberte **vytvořit prostředek**, vyhledejte **Function App**na Marketplace a pak vyberte **vytvořit**. Během vytváření můžete použít existující plán hostování nebo vytvořit nový. Můžete se také rozhodnout pro dynamické hostování. Další informace o možnostech hostování pro Azure Functions najdete v tématu [Jak škálovat Azure Functions](../azure-functions/functions-scale.md).
 
-Po vytvoření aplikace služby Azure Functions se na ni dostanete a vyberte scénář **časovače** a **C\#**  pro jazyk. Pak vyberte **vytvořit tuto funkci**.
+Až se vytvoří aplikace Azure Functions, přejdete na ni a vyberte scénář **časovače** a jazyk **C\#** pro daný jazyk. Pak vyberte **vytvořit tuto funkci**.
 
 ![Okno spuštění Azure Functions](./media/keyvault-keyrotation/Azure_Functions_Start.png)
 
@@ -314,7 +314,7 @@ public static void Run(TimerInfo myTimer, TextReader inputBlob, TextWriter outpu
         else
         {
             dtPrev = DateTime.UtcNow;
-            log.Verbose($"Sync point file didnt have a date. Setting to now.");
+            log.Verbose($"Sync point file didn't have a date. Setting to now.");
         }
     }
 
@@ -429,7 +429,7 @@ Funkce je nyní připravena. Ujistěte se, že jste přešli zpátky na kartu **
 
 Dále musíte vytvořit aplikaci logiky Azure, která vezme události, které funkce přenáší do fronty Service Bus, analyzuje obsah a pošle e-mail na základě vyhovující podmínky.
 
-[Vytvořte aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) tak, že vyberete **vytvořit prostředek** > **Integration** > **Logic App**.
+[Vytvořte aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) tak, že vyberete **vytvořit prostředek** > **integraci** > **Aplikace logiky**.
 
 Po vytvoření aplikace logiky se na ni dostanete a vyberte **Upravit**. V editoru aplikace logiky vyberte **Service Bus Queue** a zadejte svoje přihlašovací údaje Service Bus, abyste je připojili ke frontě.
 

@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/13/2020
+ms.date: 01/23/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 85987ca1ff7d2dd204d0a501367efffc8277f138
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 86390132be0440b197b680803e5b6032670a7d1c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939916"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721026"
 ---
 # <a name="sql-data-warehouse-workload-group-isolation-preview"></a>Izolace skupiny úloh SQL Data Warehouse (Preview)
 
@@ -32,7 +32,7 @@ V následujících částech se dozvíte, jak skupiny úloh poskytují možnost 
 
 Izolace úloh znamená, že prostředky jsou rezervované, výhradně pro skupinu úloh.  Izolaci úloh se dosahuje tak, že v syntaxi [vytvořit skupinu úloh](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) nakonfigurujete parametr MIN_PERCENTAGE_RESOURCE na hodnotu větší než nula.  Pro úlohy průběžného spouštění, které musí dodržovat těsné SLA, izolace zajišťuje, aby prostředky byly vždy dostupné pro skupinu úloh. 
 
-Konfigurace izolace úloh implicitně definuje zaručenou úroveň souběžnosti. Když je MIN_PERCENTAGE_RESOURCE nastavená na 30% a REQUEST_MIN_RESOURCE_GRANT_PERCENT nastavená na 2%, bude pro skupinu úloh zaručená úroveň pro 15-Concurrency.  Pro určení garantované souběžnosti zvažte následující metodu:
+Konfigurace izolace úloh implicitně definuje zaručenou úroveň souběžnosti. Například skupina úloh s `MIN_PERCENTAGE_RESOURCE` nastavenou na 30% a `REQUEST_MIN_RESOURCE_GRANT_PERCENT` nastavená na 2% se garantuje 15 souběžnosti.  Úroveň souběžnosti je zaručená, protože 15-2% slotů prostředků jsou v rámci skupiny úloh vždy rezervované (bez ohledu na to, jak je `REQUEST_*MAX*_RESOURCE_GRANT_PERCENT` nakonfigurovaná).  Pokud je `REQUEST_MAX_RESOURCE_GRANT_PERCENT` větší než `REQUEST_MIN_RESOURCE_GRANT_PERCENT` a `CAP_PERCENTAGE_RESOURCE` je větší než `MIN_PERCENTAGE_RESOURCE` další prostředky jsou přidány na požadavek.  Pokud jsou `REQUEST_MAX_RESOURCE_GRANT_PERCENT` a `REQUEST_MIN_RESOURCE_GRANT_PERCENT` stejné a `CAP_PERCENTAGE_RESOURCE` je větší než `MIN_PERCENTAGE_RESOURCE`, je možné další souběžnost.  Pro určení garantované souběžnosti zvažte následující metodu:
 
 [Garantovaná souběžnost] = [`MIN_PERCENTAGE_RESOURCE`]/[`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
 

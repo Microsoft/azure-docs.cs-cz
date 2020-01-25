@@ -5,20 +5,21 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 0e5780561df121d3d5af3a9b754d774cc7d6cf76
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e46574ae7f8faa67c2cc0c1afef1917270f69175
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969660"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715898"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Export protokolu aktivit Azure do úložiště nebo do Azure Event Hubs
 
-> [!WARNING]
-> Nyní můžete protokol aktivit shromažďovat do Log Analytics pracovního prostoru pomocí nastavení diagnostiky podobného způsobu, jakým shromažďujete protokoly prostředků. Přečtěte si téma [shromáždění a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics v Azure monitor](diagnostic-settings-legacy.md).
+> [!IMPORTANT]
+> Metoda pro odeslání protokolu aktivit Azure pro Azure Storage a Azure Event Hubs se změnila na [nastavení diagnostiky](diagnostic-settings.md). Tento článek popisuje starší metodu, která se v procesu již nepoužívá. Přečtěte si téma aktualizace [shromažďování a exportu protokolů aktivit Azure](diagnostic-settings-legacy.md) pro porovnání.
+
 
 [Protokol aktivit Azure](platform-logs-overview.md) poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo ve vašem předplatném Azure. Kromě zobrazení protokolu aktivit v Azure Portal nebo jeho zkopírování do pracovního prostoru Log Analytics, kde se dá analyzovat s ostatními daty shromažďovanými Azure Monitor můžete vytvořit profil protokolu pro archivaci protokolu aktivit do účtu služby Azure Storage nebo jeho streamování do  Centrum událostí.
 
@@ -72,9 +73,14 @@ Pokud jsou nastavené zásady uchovávání informací, ale ukládání protokol
 
 Vytvořte nebo upravte profil protokolu s možností **exportovat do centra událostí** v Azure Portal.
 
-1. V nabídce **monitorování** v Azure Portal vyberte **exportovat do centra událostí**.
+1. V nabídce **Azure monitor** v Azure Portal vyberte **Protokol aktivit**.
+3. Klikněte na **Nastavení diagnostiky**.
 
-    ![Tlačítko Exportovat na portálu](media/activity-log-export/portal-export.png)
+   ![Nastavení diagnostiky](media/diagnostic-settings-subscription/diagnostic-settings.png)
+
+4. Klikněte na fialový banner pro starší verze prostředí.
+
+    ![Starší verze prostředí](media/diagnostic-settings-subscription/legacy-experience.png)
 
 3. V okně, které se zobrazí, zadejte následující:
    * Oblasti s událostmi k exportu. Měli byste vybrat všechny oblasti, abyste se ujistili, že nedošlo ke klíčovým událostem, protože protokol aktivit je globální (neregionální) protokol, a takže většina událostí nemá přidruženou oblast.

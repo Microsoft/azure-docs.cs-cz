@@ -9,26 +9,26 @@ ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
 ROBOTS: NOINDEX
-ms.openlocfilehash: 99dd6db7003e0358ddde2438f6897cd767932227
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f56e9b4f6c3db6fb47452c7478f5a27445955e87
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73816569"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715384"
 ---
 # <a name="saas-fulfillment-apis-version-1-deprecated"></a>Rozhraní API pro splnění SaaS verze 1 (zastaralé)
 
 Tento článek vysvětluje, jak vytvořit SaaS nabídku s rozhraními API. Rozhraní API, skládající se z metod REST a koncových bodů, jsou nutná pro povolení předplatných vaší nabídky SaaS, pokud jste prodávali pomocí Azure Selected.  
 
 > [!WARNING]
-> Tato počáteční verze rozhraní API pro plnění SaaS je zastaralá. místo toho použijte [rozhraní API pro splnění SaaS verze V2](./pc-saas-fulfillment-api-v2.md).  Tato verze rozhraní API počáteční je v současné době zachovaná jenom pro stávající vydavatele. 
+> Tato počáteční verze rozhraní API pro plnění SaaS je zastaralá. místo toho použijte [rozhraní API pro splnění SaaS verze V2](./pc-saas-fulfillment-api-v2.md).  Tato počáteční verze rozhraní API se v současné době udržuje jenom pro poskytování stávajících vydavatelů. 
 
 K dispozici jsou následující rozhraní API, která vám pomohou integrovat službu SaaS s Azure:
 
 -   Vyřešit
 -   Přihlásit odběr
 -   Převést
--   Odhlásit odběr
+-   odhlášení odběru
 
 
 ## <a name="api-methods-and-endpoints"></a>Metody a koncové body rozhraní API
@@ -57,19 +57,19 @@ Když se uživatel přesměruje na web ISV, adresa URL obsahuje token v parametr
 
 |  **Název parametru** |     **Popis**                                      |
 |  ------------------ |     ---------------------------------------------------- |
-|  verze API-Version        |  Verze operace, která se má použít pro tento požadavek.   |
+|  api-version        |  Verze operace, která se má použít pro tento požadavek.   |
 |  |  |
 
 
 *Hlavičky*
 
-| **Klíč záhlaví**     | **Požadovanou** | **Popis**                                                                                                                                                                                                                  |
+| **Klíč záhlaví**     | **Vyžaduje** | **Popis**                                                                                                                                                                                                                  |
 |--------------------|--------------|-----------------------------------------------------------|
-| x-MS-RequestId     | Ne           | Jedinečná řetězcová hodnota pro sledování požadavku z klienta, nejlépe identifikátor GUID. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi.  |
-| x-MS-ID korelace | Ne           | Jedinečná řetězcová hodnota pro operaci na klientovi. Toto pole koreluje všechny události z klientské operace s událostmi na straně serveru. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi. |
-| typ obsahu       | Ano          | `application/json`                                        |
-| udělován      | Ano          | Token nosiče webového tokenu JSON (JWT).                    |
-| x-MS-Marketplace – token| Ano| Parametr dotazu tokenu v adrese URL, když se uživatel přesměruje na web SaaS ISV z Azure **Poznámka:** Tento token je platný jenom 1 hodina. Kromě toho adresa URL před použitím překóduje hodnotu tokenu z prohlížeče.|
+| x-ms-requestid     | Ne           | Jedinečná řetězcová hodnota pro sledování požadavku z klienta, nejlépe identifikátor GUID. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi.  |
+| x-ms-correlationid | Ne           | Jedinečná řetězcová hodnota pro operaci na klientovi. Toto pole koreluje všechny události z klientské operace s událostmi na straně serveru. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi. |
+| Typ obsahu       | Ano          | `application/json`                                        |
+| authorization      | Ano          | Token nosiče webového tokenu JSON (JWT).                    |
+| x-ms-marketplace-token| Ano| Parametr dotazu tokenu v adrese URL, když se uživatel přesměruje na web SaaS ISV z Azure **Poznámka:** Tento token je platný jenom 1 hodina. Kromě toho adresa URL před použitím překóduje hodnotu tokenu z prohlížeče.|
 |  |  |  |
   
 
@@ -107,11 +107,11 @@ Když se uživatel přesměruje na web ISV, adresa URL obsahuje token v parametr
 
 *Hlavičky odpovědi*
 
-| **Klíč záhlaví**     | **Požadovanou** | **Popis**                                                                                        |
+| **Klíč záhlaví**     | **Vyžaduje** | **Popis**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-MS-RequestId     | Ano          | ID žádosti přijaté od klienta                                                                   |
-| x-MS-ID korelace | Ano          | ID korelace, je-li klient předán, jinak je tato hodnota ID korelace serveru.                   |
-| x-MS-ActivityId    | Ano          | Jedinečná hodnota řetězce pro sledování požadavku ze služby. Toto ID se používá pro všechna odsouhlasení. |
+| x-ms-requestid     | Ano          | ID žádosti přijaté od klienta                                                                   |
+| x-ms-correlationid | Ano          | ID korelace, je-li klient předán, jinak je tato hodnota ID korelace serveru.                   |
+| x-ms-activityid    | Ano          | Jedinečná hodnota řetězce pro sledování požadavku ze služby. Toto ID se používá pro všechna odsouhlasení. |
 | Opakovat – za        | Ne           | Tato hodnota se nastavuje jenom pro odpověď 429.                                                                   |
 |  |  |  |
 
@@ -122,24 +122,24 @@ Koncový bod přihlášení k odběru umožňuje uživatelům spustit předplatn
 
 **PUT**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{SubscriptionId}* ? API-Version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **Název parametru**  | **Popis**                                       |
 |---------------------|-------------------------------------------------------|
 | subscriptionId      | Jedinečný identifikátor předplatného SaaS, který se získá po vyřešení tokenu prostřednictvím řešení API.                              |
-| verze API-Version         | Verze operace, která se má použít pro tento požadavek. |
+| api-version         | Verze operace, která se má použít pro tento požadavek. |
 |  |  |
 
 *Hlavičky*
 
-|  **Klíč záhlaví**        | **Požadovanou** |  **Popis**                                                  |
+|  **Klíč záhlaví**        | **Vyžaduje** |  **Popis**                                                  |
 | ------------------     | ------------ | --------------------------------------------------------------------------------------- |
-| x-MS-RequestId         |   Ne         | Jedinečná řetězcová hodnota pro sledování požadavku z klienta, nejlépe identifikátor GUID. Pokud není zadán, bude vygenerována a uvedena v hlavičkách odpovědi. |
-| x-MS-ID korelace     |   Ne         | Jedinečná řetězcová hodnota pro operaci na klientovi. Tato hodnota je určena pro korelaci všech událostí od klientské operace s událostmi na straně serveru. Pokud není zadán, bude vygenerována a uvedena v hlavičkách odpovědi. |
+| x-ms-requestid         |   Ne         | Jedinečná řetězcová hodnota pro sledování požadavku z klienta, nejlépe identifikátor GUID. Pokud není zadán, bude vygenerována a uvedena v hlavičkách odpovědi. |
+| x-ms-correlationid     |   Ne         | Jedinečná řetězcová hodnota pro operaci na klientovi. Tato hodnota je určena pro korelaci všech událostí od klientské operace s událostmi na straně serveru. Pokud není zadán, bude vygenerována a uvedena v hlavičkách odpovědi. |
 | If-Match/If-None-Match |   Ne         |   Silná ověřovací hodnota ETag.                                                          |
-| typ obsahu           |   Ano        |    `application/json`                                                                   |
-|  udělován         |   Ano        |    Token nosiče webového tokenu JSON (JWT).                                               |
-| x-MS-Marketplace – režim relace| Ne | Příznak, který povolí režim suchého běhu při přihlášení k odběru nabídky SaaS. Pokud je nastaveno, předplatné se nebude účtovat. To je užitečné pro scénáře testování ISV. Nastavte ho prosím na **' dryrun '.**|
+| Typ obsahu           |   Ano        |    `application/json`                                                                   |
+|  authorization         |   Ano        |    Token nosiče webového tokenu JSON (JWT).                                               |
+| x-ms-marketplace-session-mode| Ne | Příznak, který povolí režim suchého běhu při přihlášení k odběru nabídky SaaS. Pokud je nastaveno, předplatné se nebude účtovat. To je užitečné pro scénáře testování ISV. Nastavte ho prosím na **' dryrun '.**|
 |  |  |  |
 
 *Text*
@@ -172,11 +172,11 @@ V případě odpovědi 202 se řiďte stavem operace požadavku v hlavičce Oper
 
 *Hlavičky odpovědi*
 
-| **Klíč záhlaví**     | **Požadovanou** | **Popis**                                                                                        |
+| **Klíč záhlaví**     | **Vyžaduje** | **Popis**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-MS-RequestId     | Ano          | ID žádosti přijaté od klienta                                                                   |
-| x-MS-ID korelace | Ano          | ID korelace, je-li klient předán, jinak je tato hodnota ID korelace serveru.                   |
-| x-MS-ActivityId    | Ano          | Jedinečná hodnota řetězce pro sledování požadavku ze služby. Tato hodnota se používá pro všechna odsouhlasení. |
+| x-ms-requestid     | Ano          | ID žádosti přijaté od klienta                                                                   |
+| x-ms-correlationid | Ano          | ID korelace, je-li klient předán, jinak je tato hodnota ID korelace serveru.                   |
+| x-ms-activityid    | Ano          | Jedinečná hodnota řetězce pro sledování požadavku ze služby. Tato hodnota se používá pro všechna odsouhlasení. |
 | Opakovat – za        | Ano          | Interval, se kterým může klient kontrolovat stav.                                                       |
 | Operace – umístění | Ano          | Připojte se k prostředku, abyste získali stav operace.                                                        |
 |  |  |  |
@@ -187,23 +187,23 @@ Koncový bod změny umožňuje uživateli převést aktuálně přihlášený od
 
 **POUŽITA**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{SubscriptionId}* ? API-Version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **Název parametru**  | **Popis**                                       |
 |---------------------|-------------------------------------------------------|
 | subscriptionId      | ID předplatného SaaS                              |
-| verze API-Version         | Verze operace, která se má použít pro tento požadavek. |
+| api-version         | Verze operace, která se má použít pro tento požadavek. |
 |  |  |
 
 *Hlavičky*
 
-| **Klíč záhlaví**          | **Požadovanou** | **Popis**                                                                                                                                                                                                                  |
+| **Klíč záhlaví**          | **Vyžaduje** | **Popis**                                                                                                                                                                                                                  |
 |-------------------------|--------------|---------------------------------------------------------------------------------------------------------------------|
-| x-MS-RequestId          | Ne           | Jedinečná řetězcová hodnota pro sledování požadavku od klienta. Doporučujeme identifikátor GUID. Pokud není zadán, bude vygenerována a uvedena v hlavičkách odpovědi.   |
-| x-MS-ID korelace      | Ne           | Jedinečná řetězcová hodnota pro operaci na klientovi. Tato hodnota je určena pro korelaci všech událostí od klientské operace s událostmi na straně serveru. Pokud není zadán, bude vygenerována a uvedena v hlavičkách odpovědi. |
+| x-ms-requestid          | Ne           | Jedinečná řetězcová hodnota pro sledování požadavku od klienta. Doporučujeme identifikátor GUID. Pokud není zadán, bude vygenerována a uvedena v hlavičkách odpovědi.   |
+| x-ms-correlationid      | Ne           | Jedinečná řetězcová hodnota pro operaci na klientovi. Tato hodnota je určena pro korelaci všech událostí od klientské operace s událostmi na straně serveru. Pokud není zadán, bude vygenerována a uvedena v hlavičkách odpovědi. |
 | /If-None-Match If-Match | Ne           | Silná ověřovací hodnota ETag.                              |
-| typ obsahu            | Ano          | `application/json`                                        |
-| udělován           | Ano          | Token nosiče webového tokenu JSON (JWT).                    |
+| Typ obsahu            | Ano          | `application/json`                                        |
+| authorization           | Ano          | Token nosiče webového tokenu JSON (JWT).                    |
 |  |  |  |
 
 *Text*
@@ -234,16 +234,16 @@ Koncový bod změny umožňuje uživateli převést aktuálně přihlášený od
 
 *Hlavičky odpovědi*
 
-| **Klíč záhlaví**     | **Požadovanou** | **Popis**                                                                                        |
+| **Klíč záhlaví**     | **Vyžaduje** | **Popis**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-MS-RequestId     | Ano          | ID žádosti přijaté od klienta                                                                   |
-| x-MS-ID korelace | Ano          | ID korelace, je-li klient předán, jinak je tato hodnota ID korelace serveru.                   |
-| x-MS-ActivityId    | Ano          | Jedinečná hodnota řetězce pro sledování požadavku ze služby. Tato hodnota se používá pro všechna odsouhlasení. |
+| x-ms-requestid     | Ano          | ID žádosti přijaté od klienta                                                                   |
+| x-ms-correlationid | Ano          | ID korelace, je-li klient předán, jinak je tato hodnota ID korelace serveru.                   |
+| x-ms-activityid    | Ano          | Jedinečná hodnota řetězce pro sledování požadavku ze služby. Tato hodnota se používá pro všechna odsouhlasení. |
 | Opakovat – za        | Ano          | Interval, se kterým může klient kontrolovat stav.                                                       |
 | Operace – umístění | Ano          | Připojte se k prostředku, abyste získali stav operace.                                                        |
 |  |  |  |
 
-### <a name="delete-subscription"></a>Odstranit předplatné
+### <a name="delete-subscription"></a>Odstranění předplatného
 
 Akce Odstranit na koncovém bodu odběru umožňuje uživateli odstranit předplatné s daným ID.
 
@@ -251,21 +251,21 @@ Akce Odstranit na koncovém bodu odběru umožňuje uživateli odstranit předpl
 
 **DELETE**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{SubscriptionId}* ? API-Version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **Název parametru**  | **Popis**                                       |
 |---------------------|-------------------------------------------------------|
 | subscriptionId      | ID předplatného SaaS                              |
-| verze API-Version         | Verze operace, která se má použít pro tento požadavek. |
+| api-version         | Verze operace, která se má použít pro tento požadavek. |
 |  |  |
 
 *Hlavičky*
 
-| **Klíč záhlaví**     | **Požadovanou** | **Popis**                                                                                                                                                                                                                  |
+| **Klíč záhlaví**     | **Vyžaduje** | **Popis**                                                                                                                                                                                                                  |
 |--------------------|--------------| ----------------------------------------------------------|
-| x-MS-RequestId     | Ne           | Jedinečná řetězcová hodnota pro sledování požadavku od klienta. Doporučujeme identifikátor GUID. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi.                                                           |
-| x-MS-ID korelace | Ne           | Jedinečná řetězcová hodnota pro operaci na klientovi. Tato hodnota je určena pro korelaci všech událostí od klientské operace s událostmi na straně serveru. Pokud není zadán, bude vygenerována a uvedena v hlavičkách odpovědi. |
-| udělován      | Ano          | Token nosiče webového tokenu JSON (JWT).                    |
+| x-ms-requestid     | Ne           | Jedinečná řetězcová hodnota pro sledování požadavku od klienta. Doporučujeme identifikátor GUID. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi.                                                           |
+| x-ms-correlationid | Ne           | Jedinečná řetězcová hodnota pro operaci na klientovi. Tato hodnota je určena pro korelaci všech událostí od klientské operace s událostmi na straně serveru. Pokud není zadán, bude vygenerována a uvedena v hlavičkách odpovědi. |
+| authorization      | Ano          | Token nosiče webového tokenu JSON (JWT).                    |
 |  |  |  |
 
 *Kódy odpovědí*
@@ -284,16 +284,16 @@ V případě odpovědi 202 se řiďte stavem operace požadavku v hlavičce Oper
 
 *Hlavičky odpovědi*
 
-| **Klíč záhlaví**     | **Požadovanou** | **Popis**                                                                                        |
+| **Klíč záhlaví**     | **Vyžaduje** | **Popis**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-MS-RequestId     | Ano          | ID žádosti přijaté od klienta                                                                   |
-| x-MS-ID korelace | Ano          | ID korelace, pokud je klient předává, jinak se jedná o ID korelace serveru.                   |
-| x-MS-ActivityId    | Ano          | Jedinečná hodnota řetězce pro sledování požadavku ze služby. Používá se pro všechna odsouhlasení. |
+| x-ms-requestid     | Ano          | ID žádosti přijaté od klienta                                                                   |
+| x-ms-correlationid | Ano          | ID korelace, pokud je klient předává, jinak se jedná o ID korelace serveru.                   |
+| x-ms-activityid    | Ano          | Jedinečná hodnota řetězce pro sledování požadavku ze služby. Používá se pro všechna odsouhlasení. |
 | Opakovat – za        | Ano          | Interval, se kterým může klient kontrolovat stav.                                                       |
 | Operace – umístění | Ano          | Připojte se k prostředku, abyste získali stav operace.                                                        |
 |   |  |  |
 
-### <a name="get-operation-status"></a>Získat stav operace
+### <a name="get-operation-status"></a>Načíst stav operace
 
 Tento koncový bod umožňuje uživateli sledovat stav aktivované asynchronní operace (přihlášení k odběru/zrušení předplatných nebo změna plánu).
 
@@ -301,21 +301,21 @@ Tento koncový bod umožňuje uživateli sledovat stav aktivované asynchronní 
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/operations/ *{operationId}* ? API-Version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/operations/ *{IDoperace}* ?api-version=2017-04-15**
 
 | **Název parametru**  | **Popis**                                       |
 |---------------------|-------------------------------------------------------|
 | operationId         | Jedinečné ID pro aktivaci operace.                |
-| verze API-Version         | Verze operace, která se má použít pro tento požadavek. |
+| api-version         | Verze operace, která se má použít pro tento požadavek. |
 |  |  |
 
 *Hlavičky*
 
-| **Klíč záhlaví**     | **Požadovanou** | **Popis**                                                                                                                                                                                                                  |
+| **Klíč záhlaví**     | **Vyžaduje** | **Popis**                                                                                                                                                                                                                  |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------------------------|
-| x-MS-RequestId     | Ne           | Jedinečná řetězcová hodnota pro sledování požadavku od klienta. Doporučujeme identifikátor GUID. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi.   |
-| x-MS-ID korelace | Ne           | Jedinečná řetězcová hodnota pro operaci na klientovi. Tato hodnota je určena pro korelaci všech událostí od klientské operace s událostmi na straně serveru. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi.  |
-| udělován      | Ano          | Token nosiče webového tokenu JSON (JWT).                    |
+| x-ms-requestid     | Ne           | Jedinečná řetězcová hodnota pro sledování požadavku od klienta. Doporučujeme identifikátor GUID. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi.   |
+| x-ms-correlationid | Ne           | Jedinečná řetězcová hodnota pro operaci na klientovi. Tato hodnota je určena pro korelaci všech událostí od klientské operace s událostmi na straně serveru. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi.  |
+| authorization      | Ano          | Token nosiče webového tokenu JSON (JWT).                    |
 |  |  |  | 
 
 *Tělo odpovědi*
@@ -335,8 +335,8 @@ Tento koncový bod umožňuje uživateli sledovat stav aktivované asynchronní 
 | id                 | Řetězec        | ID operace                                                                      |
 | status             | Výčet          | Stav operace, jedna z následujících: `In Progress`, `Succeeded`nebo `Failed`.          |
 | resourceLocation   | Řetězec        | Připojte se k předplatnému, které jste vytvořili nebo upravili. Díky tomu může klient získat aktualizovanou operaci po stavu. Tato hodnota není nastavená pro operace `Unsubscribe`. |
-| vytvářejí            | DateTime      | Čas vytvoření operace v UTC                                                           |
-| lastModified       | DateTime      | Poslední aktualizace operace v UTC                                                      |
+| vytvářejí            | Datum a čas      | Čas vytvoření operace v UTC                                                           |
+| lastModified       | Datum a čas      | Poslední aktualizace operace v UTC                                                      |
 |  |  |  |
 
 *Kódy odpovědí*
@@ -353,11 +353,11 @@ Tento koncový bod umožňuje uživateli sledovat stav aktivované asynchronní 
 
 *Hlavičky odpovědi*
 
-| **Klíč záhlaví**     | **Požadovanou** | **Popis**                                                                                        |
+| **Klíč záhlaví**     | **Vyžaduje** | **Popis**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-MS-RequestId     | Ano          | ID žádosti přijaté od klienta                                                                   |
-| x-MS-ID korelace | Ano          | ID korelace, pokud je klient předává, jinak se jedná o ID korelace serveru.                   |
-| x-MS-ActivityId    | Ano          | Jedinečná hodnota řetězce pro sledování požadavku ze služby. Používá se pro všechna odsouhlasení. |
+| x-ms-requestid     | Ano          | ID žádosti přijaté od klienta                                                                   |
+| x-ms-correlationid | Ano          | ID korelace, pokud je klient předává, jinak se jedná o ID korelace serveru.                   |
+| x-ms-activityid    | Ano          | Jedinečná hodnota řetězce pro sledování požadavku ze služby. Používá se pro všechna odsouhlasení. |
 | Opakovat – za        | Ano          | Interval, se kterým může klient kontrolovat stav.                                                       |
 |  |  |  |
 
@@ -369,21 +369,21 @@ Akce získat při přihlášení k odběru koncového bodu umožňuje uživateli
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{SubscriptionId}* ? API-Version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **Název parametru**  | **Popis**                                       |
 |---------------------|-------------------------------------------------------|
 | subscriptionId      | ID předplatného SaaS                              |
-| verze API-Version         | Verze operace, která se má použít pro tento požadavek. |
+| api-version         | Verze operace, která se má použít pro tento požadavek. |
 |  |  |
 
 *Hlavičky*
 
-| **Klíč záhlaví**     | **Požadovanou** | **Popis**                                                                                           |
+| **Klíč záhlaví**     | **Vyžaduje** | **Popis**                                                                                           |
 |--------------------|--------------|-----------------------------------------------------------------------------------------------------------|
-| x-MS-RequestId     | Ne           | Jedinečná řetězcová hodnota pro sledování požadavku z klienta, nejlépe identifikátor GUID. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi.                                                           |
-| x-MS-ID korelace | Ne           | Jedinečná řetězcová hodnota pro operaci na klientovi. Tato hodnota je určena pro korelaci všech událostí od klientské operace s událostmi na straně serveru. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi. |
-| udělován      | Ano          | Token nosiče webového tokenu JSON (JWT).                                                                    |
+| x-ms-requestid     | Ne           | Jedinečná řetězcová hodnota pro sledování požadavku z klienta, nejlépe identifikátor GUID. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi.                                                           |
+| x-ms-correlationid | Ne           | Jedinečná řetězcová hodnota pro operaci na klientovi. Tato hodnota je určena pro korelaci všech událostí od klientské operace s událostmi na straně serveru. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi. |
+| authorization      | Ano          | Token nosiče webového tokenu JSON (JWT).                                                                    |
 |  |  |  |
 
 *Tělo odpovědi*
@@ -406,9 +406,9 @@ Akce získat při přihlášení k odběru koncového bodu umožňuje uživateli
 | Hodnotami OfferId                | Řetězec        | ID nabídky, na kterou se uživatel přihlásil         |
 | planId                 | Řetězec        | ID plánu, se kterým se uživatel přihlásil k odběru.          |
 | saasSubscriptionName   | Řetězec        | Název předplatného SaaS                |
-| saasSubscriptionStatus | Výčet          | Stav operace.  Jedna z následujících možností:  <br/> - `Subscribed`: předplatné je aktivní.  <br/> - `Pending`: uživatel vytvoří prostředek, ale neaktivuje ho ISV.   <br/> - `Unsubscribed`: uživatel zrušil odběr.   <br/> - `Suspended`: uživatel pozastavil předplatné.   <br/> - `Deactivated`: předplatné Azure je pozastavené.  |
-| vytvářejí                | DateTime      | Hodnota časového razítka vytváření předplatného ve standardu UTC |
-| lastModified           | DateTime      | Hodnota časového razítka změny předplatného ve standardu UTC |
+| saasSubscriptionStatus | Výčet          | Stav operace.  Jeden z následujících produktů:  <br/> - `Subscribed`: předplatné je aktivní.  <br/> - `Pending`: uživatel vytvoří prostředek, ale neaktivuje ho ISV.   <br/> - `Unsubscribed`: uživatel zrušil odběr.   <br/> - `Suspended`: uživatel pozastavil předplatné.   <br/> - `Deactivated`: předplatné Azure je pozastavené.  |
+| vytvářejí                | Datum a čas      | Hodnota časového razítka vytváření předplatného ve standardu UTC |
+| lastModified           | Datum a čas      | Hodnota časového razítka změny předplatného ve standardu UTC |
 |  |  |  |
 
 *Kódy odpovědí*
@@ -425,13 +425,13 @@ Akce získat při přihlášení k odběru koncového bodu umožňuje uživateli
 
 *Hlavičky odpovědi*
 
-| **Klíč záhlaví**     | **Požadovanou** | **Popis**                                                                                        |
+| **Klíč záhlaví**     | **Vyžaduje** | **Popis**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-MS-RequestId     | Ano          | ID žádosti přijaté od klienta                                                                   |
-| x-MS-ID korelace | Ano          | ID korelace, pokud je klient předává, jinak se jedná o ID korelace serveru.                   |
-| x-MS-ActivityId    | Ano          | Jedinečná hodnota řetězce pro sledování požadavku ze služby. Používá se pro všechna odsouhlasení. |
+| x-ms-requestid     | Ano          | ID žádosti přijaté od klienta                                                                   |
+| x-ms-correlationid | Ano          | ID korelace, pokud je klient předává, jinak se jedná o ID korelace serveru.                   |
+| x-ms-activityid    | Ano          | Jedinečná hodnota řetězce pro sledování požadavku ze služby. Používá se pro všechna odsouhlasení. |
 | Opakovat – za        | Ne           | Interval, se kterým může klient kontrolovat stav.                                                       |
-| značk               | Ano          | Připojte se k prostředku, abyste získali stav operace.                                                        |
+| eTag               | Ano          | Připojte se k prostředku, abyste získali stav operace.                                                        |
 |  |  |  |
 
 ### <a name="get-subscriptions"></a>Získání předplatných
@@ -446,16 +446,16 @@ Koncový bod přihlášení k předplatným umožňuje uživateli načíst všec
 
 | **Název parametru**  | **Popis**                                       |
 |---------------------|-------------------------------------------------------|
-| verze API-Version         | Verze operace, která se má použít pro tento požadavek. |
+| api-version         | Verze operace, která se má použít pro tento požadavek. |
 |  |  |
 
 *Hlavičky*
 
-| **Klíč záhlaví**     | **Požadovanou** | **Popis**                                           |
+| **Klíč záhlaví**     | **Vyžaduje** | **Popis**                                           |
 |--------------------|--------------|-----------------------------------------------------------|
-| x-MS-RequestId     | Ne           | Jedinečná řetězcová hodnota pro sledování požadavku od klienta. Doporučujeme identifikátor GUID. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi.             |
-| x-MS-ID korelace | Ne           | Jedinečná řetězcová hodnota pro operaci na klientovi. Tato hodnota je určena pro korelaci všech událostí od klientské operace s událostmi na straně serveru. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi. |
-| udělován      | Ano          | Token nosiče webového tokenu JSON (JWT).                    |
+| x-ms-requestid     | Ne           | Jedinečná řetězcová hodnota pro sledování požadavku od klienta. Doporučujeme identifikátor GUID. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi.             |
+| x-ms-correlationid | Ne           | Jedinečná řetězcová hodnota pro operaci na klientovi. Tato hodnota je určena pro korelaci všech událostí od klientské operace s událostmi na straně serveru. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi. |
+| authorization      | Ano          | Token nosiče webového tokenu JSON (JWT).                    |
 |  |  |  |
 
 *Tělo odpovědi*
@@ -478,9 +478,9 @@ Koncový bod přihlášení k předplatným umožňuje uživateli načíst všec
 | Hodnotami OfferId                | Řetězec        | ID nabídky, na kterou se uživatel přihlásil         |
 | planId                 | Řetězec        | ID plánu, kterému se uživatel přihlásil          |
 | saasSubscriptionName   | Řetězec        | Název předplatného SaaS                |
-| saasSubscriptionStatus | Výčet          | Stav operace.  Jedna z následujících možností:  <br/> - `Subscribed`: předplatné je aktivní.  <br/> - `Pending`: uživatel vytvoří prostředek, ale neaktivuje ho ISV.   <br/> - `Unsubscribed`: uživatel zrušil odběr.   <br/> - `Suspended`: uživatel pozastavil předplatné.   <br/> - `Deactivated`: předplatné Azure je pozastavené.  |
-| vytvářejí                | DateTime      | Hodnota časového razítka vytváření předplatného v UTC |
-| lastModified           | DateTime      | Hodnota časového razítka změny předplatného ve standardu UTC |
+| saasSubscriptionStatus | Výčet          | Stav operace.  Jeden z následujících produktů:  <br/> - `Subscribed`: předplatné je aktivní.  <br/> - `Pending`: uživatel vytvoří prostředek, ale neaktivuje ho ISV.   <br/> - `Unsubscribed`: uživatel zrušil odběr.   <br/> - `Suspended`: uživatel pozastavil předplatné.   <br/> - `Deactivated`: předplatné Azure je pozastavené.  |
+| vytvářejí                | Datum a čas      | Hodnota časového razítka vytváření předplatného v UTC |
+| lastModified           | Datum a čas      | Hodnota časového razítka změny předplatného ve standardu UTC |
 |  |  |  |
 
 *Kódy odpovědí*
@@ -497,11 +497,11 @@ Koncový bod přihlášení k předplatným umožňuje uživateli načíst všec
 
 *Hlavičky odpovědi*
 
-| **Klíč záhlaví**     | **Požadovanou** | **Popis**                                                                                        |
+| **Klíč záhlaví**     | **Vyžaduje** | **Popis**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-MS-RequestId     | Ano          | ID žádosti přijaté od klienta                                                                   |
-| x-MS-ID korelace | Ano          | ID korelace, pokud je klient předává, jinak se jedná o ID korelace serveru.                   |
-| x-MS-ActivityId    | Ano          | Jedinečná hodnota řetězce pro sledování požadavku ze služby. Používá se pro všechna odsouhlasení. |
+| x-ms-requestid     | Ano          | ID žádosti přijaté od klienta                                                                   |
+| x-ms-correlationid | Ano          | ID korelace, pokud je klient předává, jinak se jedná o ID korelace serveru.                   |
+| x-ms-activityid    | Ano          | Jedinečná hodnota řetězce pro sledování požadavku ze služby. Používá se pro všechna odsouhlasení. |
 | Opakovat – za        | Ne           | Interval, se kterým může klient kontrolovat stav.                                                       |
 |  |  |  |
 
@@ -525,7 +525,7 @@ Webhook SaaS slouží k proaktivnímu upozorňování změn na službu SaaS. Oč
 | **Název parametru**     | **Datový typ** | **Popis**                               |
 |------------------------|---------------|-----------------------------------------------|
 | id  | Řetězec       | Jedinečné ID pro aktivaci operace.                |
-| ActivityId   | Řetězec        | Jedinečná hodnota řetězce pro sledování požadavku ze služby. Používá se pro všechna odsouhlasení.               |
+| activityId   | Řetězec        | Jedinečná hodnota řetězce pro sledování požadavku ze služby. Používá se pro všechna odsouhlasení.               |
 | subscriptionId                     | Řetězec        | ID prostředku předplatného SaaS v Azure    |
 | Hodnotami OfferId                | Řetězec        | ID nabídky, na kterou se uživatel přihlásil Tato možnost je k dispozici pouze s akcí Update.        |
 | publisherId                | Řetězec        | ID vydavatele nabídky SaaS         |

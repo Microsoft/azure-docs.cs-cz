@@ -4,12 +4,12 @@ description: Naučte se vyvíjet funkce pomocí JavaScriptu.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
-ms.openlocfilehash: a34efe20e796570358771ec53fbfb797daa15b93
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: ee6b886c6ed18aad54092005d800b4087280190b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922000"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714796"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions příručka pro vývojáře JavaScriptu
 
@@ -232,7 +232,7 @@ Můžete zvolit, aby se data o výstupní vazbě definovala pomocí metody `cont
 context.bindingData
 ```
 
-Vrátí pojmenovaný objekt, který obsahuje metadata triggeru a data vyvolání funkce (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`). Příklad metadat triggeru najdete v tomto [příkladu centra událostí](functions-bindings-event-hubs.md#trigger---javascript-example).
+Vrátí pojmenovaný objekt, který obsahuje metadata triggeru a data vyvolání funkce (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`). Příklad metadat triggeru najdete v tomto [příkladu centra událostí](functions-bindings-event-hubs.md#trigger).
 
 ### <a name="contextdone-method"></a>Context. hotový – metoda
 
@@ -487,7 +487,7 @@ Při místním spuštění se nastavení aplikace čtou ze souboru [Local. Setti
 
 Vlastnosti `function.json` `scriptFile` a `entryPoint` lze použít ke konfiguraci umístění a názvu exportované funkce. Tyto vlastnosti mohou být důležité při překládání JavaScriptu.
 
-### <a name="using-scriptfile"></a>Použití metody `scriptFile`
+### <a name="using-scriptfile"></a>Použití `scriptFile`
 
 Ve výchozím nastavení je funkce JavaScriptu spouštěna z `index.js`, soubor, který sdílí stejný nadřazený adresář jako odpovídající `function.json`.
 
@@ -516,7 +516,7 @@ FunctionApp
 }
 ```
 
-### <a name="using-entrypoint"></a>Použití metody `entryPoint`
+### <a name="using-entrypoint"></a>Použití `entryPoint`
 
 V `scriptFile` (nebo `index.js`) se musí funkce exportovat pomocí `module.exports`, aby se daly vyhledat a spustit. Ve výchozím nastavení je funkce, která se spustí, když se aktivuje, jediný export z tohoto souboru, export s názvem `run`nebo export s názvem `index`.
 

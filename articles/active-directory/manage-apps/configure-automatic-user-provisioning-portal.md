@@ -15,12 +15,12 @@ ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8dc442720a6c2876990e5012732b363b43ec0cc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4e776ce8a455f2a5b453e23ebb996de9ddb5175a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430185"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711976"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Správa zřizování uživatelských účtů pro podnikové aplikace v Azure Portal
 
@@ -38,7 +38,7 @@ Pomocí portálu Azure Active Directory můžete zobrazit a spravovat všechny a
 1. Vyberte libovolnou aplikaci a načtěte její podokno prostředků, kde můžete zobrazit sestavy a spravovat nastavení aplikace.
 1. Vyberte **zřizování** pro správu nastavení zřizování uživatelských účtů pro vybranou aplikaci.
 
-   ![Zřizování obrazovky pro správu nastavení zřizování uživatelských účtů](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
+   ![Zřizování obrazovky pro správu nastavení zřizování uživatelských účtů](media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
 
 ## <a name="provisioning-modes"></a>Režimy zřizování
 
@@ -68,7 +68,7 @@ Rozbalením **mapování** můžete zobrazit a upravit atributy uživatele, kter
 
 Existuje předem nakonfigurovaná sada mapování mezi uživatelskými objekty Azure AD a všemi uživatelskými objekty aplikace v SaaS. Některé aplikace spravují jiné typy objektů, jako jsou například skupiny nebo kontakty. Vyberte mapování v tabulce, chcete-li otevřít Editor mapování vpravo, kde je můžete zobrazit a přizpůsobit.
 
-![Zobrazuje obrazovku mapování atributů.](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
+![Zobrazuje obrazovku mapování atributů.](media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
 
 Mezi podporovaná přizpůsobení patří:
 
@@ -88,4 +88,4 @@ Pokud je zřizování pro aplikaci poprvé zapnuté, zapněte službu změnou **
 
 Změňte **stav zřizování** na **vypnuto** , aby se služba zřizování zastavila. V tomto stavu Azure v aplikaci nevytvoří, neaktualizuje ani neodebere žádné objekty uživatelů ani skupin. Změňte stav zpět na **zapnuto** a služba se ponechá tam, kde skončila.
 
-**Vymazání aktuálního stavu a restartuje synchronizaci** aktivuje počáteční cyklus. Služba potom znovu vyhodnotí všechny uživatele ve zdrojovém systému a určí, jestli jsou v oboru pro zřizování. To může být užitečné, pokud je vaše aplikace momentálně v karanténě nebo potřebujete provést změnu mapování atributů. Všimněte si, že počáteční cyklus trvá déle než typický přírůstkový cyklus z důvodu počtu objektů, které je třeba vyhodnotit. Další informace o výkonu počátečních a přírůstkových cyklů najdete [tady](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user). 
+**Vymazání aktuálního stavu a restartuje synchronizaci** aktivuje počáteční cyklus. Služba potom znovu vyhodnotí všechny uživatele ve zdrojovém systému a určí, jestli jsou v oboru pro zřizování. To může být užitečné, pokud je vaše aplikace momentálně v karanténě nebo potřebujete provést změnu mapování atributů. Všimněte si, že počáteční cyklus trvá déle než typický přírůstkový cyklus z důvodu počtu objektů, které je třeba vyhodnotit. Další informace o výkonu počátečních a přírůstkových cyklů najdete [tady](application-provisioning-when-will-provisioning-finish-specific-user.md). 

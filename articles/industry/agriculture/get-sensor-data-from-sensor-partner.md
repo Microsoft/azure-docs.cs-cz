@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 9bf5608a44aa19650a507ada3a0a437d34c13277
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d56504c96c5e039f2563a1bfee577fe9b15e8563
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705662"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715577"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Získat data ze senzorů od partnerů snímačů
 
@@ -72,13 +72,16 @@ Výše uvedené informace můžete vygenerovat pomocí následujících kroků: 
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Integrace dat zařízení pomocí generovaných přihlašovacích údajů
 
-Pokud chcete propojit FarmBeats pomocí sady přihlašovacích údajů, které jste vygenerovali v předchozí části, navštivte Portál pro partnery zařízení:
-
+Nyní máte následující informace vygenerované z předchozí části.
  - Koncový bod rozhraní API
  - Připojovací řetězec EventHub
  - ID klienta
  - Tajný klíč klienta
  - ID tenanta
+ 
+Pro připojení FarmBeats ho budete muset poskytnout vašemu partnerovi zařízení. Pro stejný postup použijte portál pro partnery zařízení. Pokud třeba používáte zařízení z nástrojů Davis, přejděte prosím na následující stránku:
+
+[Davisové nástroje](https://weatherlink.github.io/azure-farmbeats/setup)
 
  Poskytovatel zařízení potvrdí úspěšnou integraci. Po potvrzení můžete zobrazit všechna zařízení a senzory v Azure FarmBeats.
 

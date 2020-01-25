@@ -1,5 +1,5 @@
 ---
-title: Použití Docker Compose k nasazení více kontejnerů
+title: Použití nástroje Docker Compose k nasazení několika kontejnerů
 titleSuffix: Azure Cognitive Services
 description: Přečtěte si, jak nasadit více kontejnerů Cognitive Services. V tomto článku se dozvíte, jak orchestrovat více imagí kontejnerů Docker pomocí Docker Compose.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 01/23/2020
 ms.author: dapine
-ms.openlocfilehash: 95ec80af88e0b89f61bebed08f4b96a09947f401
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 54a2aac3db47d60f02a45adae9aaa6077d675a43
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311558"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716894"
 ---
-# <a name="use-docker-compose-to-deploy-multiple-containers"></a>Použití Docker Compose k nasazení více kontejnerů
+# <a name="use-docker-compose-to-deploy-multiple-containers"></a>Použití nástroje Docker Compose k nasazení několika kontejnerů
 
 V tomto článku se dozvíte, jak nasadit více kontejnerů Azure Cognitive Services. Konkrétně se naučíte, jak používat Docker Compose k orchestraci více imagí kontejneru Docker.
 
@@ -46,7 +46,7 @@ Dokončete a odešlete [formulář žádosti o Cognitive Services kontejnerech �
 
 ## <a name="docker-compose-file"></a>Soubor Docker Compose
 
-Soubor YAML definuje všechny služby, které mají být nasazeny. Tyto služby spoléhají na buď `DockerFile` nebo existující image kontejneru. V tomto případě použijeme dvě image ve verzi Preview. Zkopírujte a vložte následující soubor YAML a uložte ho jako Docker *-tváře. yaml*. Zadejte v souboru příslušné hodnoty **apikey**, **fakturace**a **hodnot endpointuri** .
+Soubor YAML definuje všechny služby, které mají být nasazeny. Tyto služby spoléhají buď na `DockerFile`, nebo na stávající imagi kontejneru. V tomto případě použijeme dvě image ve verzi Preview. Zkopírujte a vložte následující soubor YAML a uložte ho jako *Docker-tváře. yaml*. Zadejte v souboru příslušné hodnoty **apikey**, **fakturace**a **hodnot endpointuri** .
 
 ```yaml
 version: '3.7'
@@ -95,7 +95,7 @@ V rozhraní příkazového řádku spusťte následující příkaz, který spus
 docker-compose up
 ```
 
-První Docker spustí příkaz Docker **-sestavit** pomocí této konfigurace, načte image nakonfigurované v uzlu **služby** a pak je stáhne a připojí:
+První Docker spustí příkaz **Docker-sestavit** pomocí této konfigurace, načte image nakonfigurované v uzlu **služby** a pak je stáhne a připojí:
 
 ```console
 Pulling forms (containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:)...
@@ -172,17 +172,17 @@ IMAGE ID            REPOSITORY                                                  
 
 ### <a name="test-the-recognize-text-container"></a>Testování kontejneru Rozpoznávání textu
 
-Otevřete na hostitelském počítači prohlížeč a v souboru Docker-YAML, který používá zadaný port, http://localhost:5021/swagger/index.html přejít na **localhost** . K otestování Rozpoznávání textuho koncového bodu můžete použít funkci vyzkoušet ho v rozhraní API.
+Otevřete **na** hostitelském počítači prohlížeč a v souboru Docker-YAML, jako je například http://localhost:5021/swagger/index.html, použijte zadaný port. K otestování Rozpoznávání textuho koncového bodu můžete použít funkci vyzkoušet ho v rozhraní API.
 
 ![Rozpoznávání textu kontejner](media/recognize-text-swagger-page.png)
 
 ### <a name="test-the-form-recognizer-container"></a>Testování kontejneru pro rozpoznávání formulářů
 
-Otevřete na hostitelském počítači prohlížeč a v souboru Docker-YAML, který používá zadaný port, http://localhost:5010/swagger/index.html přejít na **localhost** . Pomocí funkce try it v rozhraní API můžete testovat koncový bod pro rozpoznávání formuláře.
+Otevřete **na** hostitelském počítači prohlížeč a v souboru Docker-YAML, jako je například http://localhost:5010/swagger/index.html, použijte zadaný port. Pomocí funkce try it v rozhraní API můžete testovat koncový bod pro rozpoznávání formuláře.
 
 ![Kontejner pro rozpoznávání formulářů](media/form-recognizer-swagger-page.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Kontejnery Cognitive Services](../cognitive-services-container-support.md)

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: e8a982a100655934d4ae3ecd64564cf2da82dbbc
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 8be17f0b624c5c34709fb420adb434b77dbc0d91
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035589"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721077"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Připojení ke službě Azure Cosmos DB pomocí nástroje pro analýzu BI pomocí ovladače ODBC
 
@@ -90,7 +90,7 @@ Pusťme se do práce pomocí ovladače ODBC.
 
 ## <a id="#container-mapping"></a>Krok 3: vytvoření definice schématu pomocí metody mapování kontejnerů
 
-Existují dva typy metod vzorkování, které lze použít: **mapování kontejnerů** nebo **oddělovače tabulek**. Relace vzorkování může využívat jak metody vzorkování, ale každý kontejner může použít pouze konkrétní metodu vzorkování. Následující postup vytvoří schéma pro data v jednom nebo více kontejnerech pomocí metody mapování kontejnerů. Tato metoda vzorkování načítá data na stránce kontejneru pro určení struktury dat. Předává kontejner na straně rozhraní ODBC jako tabulku. Tato metoda vzorkování je efektivní a rychlá, když jsou data v kontejneru homogenní. Pokud kontejner obsahuje heterogenní typ dat, doporučujeme použít [metodu mapování oddělovače tabulky](#table-mapping) , protože poskytuje robustnější metodu vzorkování pro určení datových struktur v kontejneru. 
+Existují dva typy metod vzorkování, které lze použít: **mapování kontejnerů** nebo **oddělovače tabulek**. Relace vzorkování může využívat jak metody vzorkování, ale každý kontejner může použít pouze konkrétní metodu vzorkování. Následující postup vytvoří schéma pro data v jednom nebo více kontejnerech pomocí metody mapování kontejnerů. Tato metoda vzorkování načítá data na stránce kontejneru pro určení struktury dat. Předává kontejner na straně rozhraní ODBC jako tabulku. Tato metoda vzorkování je efektivní a rychlá, když jsou data v kontejneru homogenní. Pokud kontejner obsahuje heterogenní typ dat, doporučujeme použít [metodu mapování oddělovače tabulky](#table-mapping) , protože poskytuje pružnější způsob vzorkování pro určení datových struktur v kontejneru. 
 
 1. Po dokončení kroků 1-4 v tématu [připojení k databázi Azure Cosmos](#connect)klikněte na **editor schémat** v okně **Nastavení DSN ovladače Azure Cosmos DB ODBC** .
 
@@ -128,7 +128,7 @@ Následující postup vytvoří schéma pro data v jednom nebo více kontejnerec
 
     Například pokud zahrnete **atributy** hodnoty města a můžete chtít omezit vaše tabulku, aby obsahovala pouze řádky s hodnotou města New York a Dubaj, Město by zadejte atributy pole, New York a potom Dubaj v **Hodnoty** pole.
 
-1. Klikněte na tlačítko **OK**. 
+1. Klikněte na **OK**. 
 
 1. Po dokončení definic mapování pro kontejnery, které chcete vzorkovat, v okně **editor schémat** klikněte na položku **Ukázka**.
      Pro každý sloupec, můžete upravit název sloupce SQL, datový typ SQL, SQL délka (Pokud je k dispozici), škálování (Pokud je k dispozici), přesnosti (Pokud je k dispozici) a s možnou hodnotou Null.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 description: Využijte soukromé úložiště Helm v prostoru pro vývoj v Azure.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery, Helm
 manager: gwallace
-ms.openlocfilehash: dddec69dc019f286c714a09e6f1a7e47240d5572
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: b1579adc00540a429170027b66c5d3e508bcb5d4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867289"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718732"
 ---
 # <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>Použití privátního úložiště Helm v Azure Dev Spaces
 
@@ -81,7 +81,7 @@ Přečtěte si další informace o [Helm a o tom, jak funguje][helm].
 
 [helm]: https://docs.helm.sh
 [helm-chart]: https://helm.sh/docs/topics/charts/
-[helm-dependency-update]: https://v2.helm.sh/docs/helm/#helm-dependency-update
-[helm-repo-add]: https://v2.helm.sh/docs/helm/#helm-repo-add
-[helm-repo-update]: https://v2.helm.sh/docs/helm/#helm-repo-update
+[helm-dependency-update]: https://helm.sh/docs/topics/charts/#managing-dependencies-with-the-dependencies-field
+[helm-repo-add]: https://helm.sh/docs/intro/using_helm/#helm-repo-working-with-repositories
+[helm-repo-update]: https://helm.sh/docs/intro/using_helm/#helm-repo-working-with-repositories
 [helm-requirements]: https://helm.sh/docs/topics/charts/#chart-dependencies

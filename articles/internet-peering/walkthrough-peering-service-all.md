@@ -1,21 +1,21 @@
 ---
-title: Názorný Průvodce partnerem služby peering Service
+title: Podrobný průvodce programem Peering Service Partner
 titleSuffix: Azure
-description: Názorný Průvodce partnerem služby peering Service
+description: Podrobný průvodce programem Peering Service Partner
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 28aa9f921de64fcc838935cf65b64a63280ddf16
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: d626d98613bd5d988b599d0980c885d7f73bb958
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75774624"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720244"
 ---
-# <a name="peering-service-partner-walkthrough"></a>Názorný Průvodce partnerem služby peering Service
+# <a name="peering-service-partner-walkthrough"></a>Podrobný průvodce programem Peering Service Partner
 
 V této části najdete popis kroků, které poskytovatel potřebuje k povolení přímého partnerského vztahu pro službu partnerského vztahu.
 
@@ -25,7 +25,7 @@ Poskytovatelé služeb mohou rozšířit svůj geografický dosah vytvořením n
 1. Při [vytváření nebo úpravách přímého partnerského vztahu pomocí portálu](howto-direct-portal.md)postupujte podle pokynů. Ujistěte se, že splňuje požadavek na vysokou dostupnost.
 1. Pak postupujte podle kroků a [Povolte službu partnerského vztahu v přímém partnerském vztahu pomocí portálu](howto-peering-service-portal.md).
 
-## <a name="use-legacy-direct-peering-conection-for-peering-service"></a>Použít starší verze přímých partnerských vztahů připojení pro službu partnerského vztahu
+## <a name="use-legacy-direct-peering-connection-for-peering-service"></a>Použít starší verze přímého partnerského vztahu pro službu partnerského vztahu
 Pokud máte starší verzi přímého partnerského vztahu, kterou chcete použít k podpoře služby peering Service,
 1. Staňte se partnerem služby peering Service, pokud ještě není.
 1. Podle pokynů [převeďte starší verze přímého partnerského vztahu na prostředek Azure pomocí portálu](howto-legacy-direct-portal.md). V případě potřeby si pořídit další okruhy, aby splňovaly požadavky na vysokou dostupnost.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/14/2019
 ms.author: allensu
-ms.openlocfilehash: 31c247199bfbfc57ffef376649edefd487fd1962
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: f570e0cd7361b365a4034e318511cf8227c425a2
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263536"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722471"
 ---
 # <a name="load-balancer-components-and-limitations"></a>Load Balancer komponenty a omezení
 Azure Load Balancer obsahuje několik klíčových součástí pro jeho operaci.  Tyto komponenty můžete nakonfigurovat v předplatném prostřednictvím Azure Portal, Azure CLI nebo Azure PowerShell.  
@@ -58,7 +58,7 @@ Základní Load Balancer nepodporuje odchozí pravidla.
 
 Load Balancer poskytuje pro aplikace TCP a UDP následující základní funkce:
 
-* **Algoritmus vyrovnávání zatížení**: pomocí Azure Load Balancer můžete vytvořit pravidlo vyrovnávání zatížení pro distribuci provozu, který dorazí do instancí fondu back-endu. Load Balancer používá algoritmus hash pro distribuci příchozích toků a Přepisuje hlavičky toků do instancí fondu back-endu. Server je k dispozici pro příjem nových toků, když sonda stavu indikuje back-end koncový bod, který je v pořádku.
+* **Algoritmus vyrovnávání zatížení**: pomocí Azure Load Balancer můžete vytvořit pravidlo vyrovnávání zatížení pro distribuci provozu, který dorazí do instancí fondu back-endu. Load Balancer používá algoritmus hash pro distribuci příchozích toků (nikoli bajtů) a přepíše hlavičky toků do instancí fondu back-endu. Server je k dispozici pro příjem nových toků, když sonda stavu indikuje back-end koncový bod, který je v pořádku.
 Ve výchozím nastavení Load Balancer používá hodnotu hash s 5 řazenými kolekcemi členů. 
 
    Hodnota hash zahrnuje: 

@@ -6,16 +6,16 @@ ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
-ms.date: 12/20/2019
-ms.openlocfilehash: 55efdfe2bb1b37e566654b8041f2cf5ed411cc3f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/21/2020
+ms.openlocfilehash: dff4901f1488406ed1259d1411a6b05b949382cb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977572"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715841"
 ---
-# <a name="collect-azure-activity-log-with-legacy-settings"></a>Shromažďovat protokol aktivit Azure se staršími nastaveními
-[Protokol aktivit Azure](platform-logs-overview.md) je [protokol platformy](platform-logs-overview.md) , který poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo v Azure. Až do poslední doby jste vytvořili profil protokolu pro odesílání položek protokolu aktivit do [centra událostí nebo účtu úložiště](activity-log-export.md) a použili jste konektor pro jejich shromáždění do [Log Analytics pracovního prostoru](activity-log-collect.md). Tento článek popisuje rozdíl mezi metodami, jak pracovat se stávajícími verzemi nastavení a jak vymazat nastavení starší verze v článku Příprava pro nastavení diagnostiky.
+# <a name="update-to-azure-activity-log-collection-and-export"></a>Aktualizace shromažďování a exportu protokolů aktivit Azure
+[Protokol aktivit Azure](platform-logs-overview.md) je [protokol platformy](platform-logs-overview.md) , který poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo v Azure. Metoda odeslání položek protokolu aktivit do [centra událostí nebo účtu úložiště](activity-log-export.md) nebo do [pracovního prostoru Log Analytics](activity-log-collect.md) se změnila na použití [nastavení diagnostiky](diagnostic-settings.md). Tento článek popisuje rozdíl mezi metodami a vymazáním nastavení starší verze v přípravě na možnost změnit nastavení diagnostiky.
 
 
 ## <a name="differences-between-methods"></a>Rozdíly mezi metodami
@@ -39,14 +39,16 @@ Než tuto funkci povolíte, zvažte následující podrobnosti o shromažďován
 ### <a name="differences-in-data"></a>Rozdíly v datech
 Nastavení diagnostiky shromažďuje stejná data jako předchozí metody použité ke shromáždění protokolu aktivit s následujícími rozdíly:
 
-Byly odebrány následující vlastnosti:
+Následující sloupce byly odebrány. Náhrada pro tyto sloupce je v jiném formátu, takže možná budete muset upravit dotazy protokolů, které je používají. Ve schématu můžete stále vidět odebrané sloupce, ale nebudou naplněny daty.
 
-- ActivityStatus
-- ActivitySubstatus
-- OperationName
-- ResourceProvider
+| Odebraný sloupec | Sloupec pro nahrazení |
+|:---|:---|
+| ActivityStatus    | Položka ActivityStatusValue    |
+| ActivitySubstatus | ActivitySubstatusValue |
+| OperationName     | OperationNameValue     |
+| ResourceProvider  | ResourceProviderValue  |
 
-Byly přidány následující vlastnosti:
+Byl přidán následující sloupec:
 
 - Authorization_d
 - Claims_d

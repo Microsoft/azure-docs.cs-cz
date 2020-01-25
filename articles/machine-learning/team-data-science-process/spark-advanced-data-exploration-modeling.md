@@ -3,20 +3,20 @@ title: Pokročilé zkoumání a modelování se Sparkem - vědecké zpracování
 description: Pomocí HDInsight Spark ke zkoumání dat a trénování binární klasifikačních a regresních modelů pomocí křížového ověření a hyperparameter optimalizace.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 02/15/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5f6145e581393d874871d214515a660f987d1d7f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 15d9d186ef36ee9181a6ce0386aa9cc5de7838e3
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60253406"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718646"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Pokročilé zkoumání a modelování dat pomocí Spark
 
@@ -31,32 +31,34 @@ Kroky modelování také obsahovat kód ukazující způsob trénování, vyhodn
 
 **Optimalizace Hyperparameter** potížím, které vyberete sadu hyperparameters pro algoritmu učení, obvykle s cílem optimalizovat míru výkonu algoritmus v nezávislé datové sady. **Hyperparameters** jsou hodnoty, které musí být zadán mimo proces trénování modelu. Předpoklady o tyto hodnoty může ovlivnit, flexibilitu a přesnost modelu. Rozhodovací stromy mají hyperparameters, například, jako je například požadovaný hloubky a počet listů ve stromové struktuře. Support Vector počítače (SVMs) vyžaduje, aby byla termín chybnou penalizace. 
 
-Běžný způsob, jak provádět optimalizaci hyperparameter se tady použít je mřížka vyhledávání, nebo **Uklízení parametrů**. To se skládá z provádění dokončil důkladné prohledání prostřednictvím hodnoty podmnožinu místo hyperparameter zadaný pro algoritmus učení. Křížového ověření může poskytovat metrika výkonu optimální výsledky vytvořené metodou mřížky vyhledávacího algoritmu řazení. CV použít s hyperparameter úklidem pomůže omezit problémy, například overfitting modelu na trénovací data tak, aby model uchovává kapacity použít na obecné sadu dat, ze které byl extrahován trénovací data.
+Běžný způsob, jak provádět optimalizaci hyperparameter se tady použít je mřížka vyhledávání, nebo **Uklízení parametrů**. Toto hledání prochází podmnožinou prostoru s parametrem pro vzdělávací algoritmus. Křížového ověření může poskytovat metrika výkonu optimální výsledky vytvořené metodou mřížky vyhledávacího algoritmu řazení. CV použít s hyperparameter úklidem pomůže omezit problémy, například overfitting modelu na trénovací data tak, aby model uchovává kapacity použít na obecné sadu dat, ze které byl extrahován trénovací data.
 
 Modely, které používáme zahrnují logistické a lineární regrese, náhodných doménové struktury a přechodu Posílený stromové struktury:
 
 * [Lineární regrese s SGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) je model lineární regrese, který používá metodu pomocí Stochastického přechodu sestup (SGD) a pro optimalizaci a funkce škálování předpovídat špičky částky zaplacené. 
 * [Logistickou regresi s LBFGS](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) nebo regresní model, který se dá použít při závislé proměnné je zařazená do kategorií provedete klasifikace dat je "logit" regrese. LBFGS je dál Newton optimalizace algoritmus, který blíží algoritmu Broyden – Fletcher – Goldfarb – Shanno (BFGS) pomocí omezené množství paměti a, která se často používá ve službě machine learning.
 * [Náhodné doménových struktur](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) jsou umožňující rozhodovacích stromů.  Jejich kombinací mnoha rozhodovacích stromů, aby se snížilo riziko overfitting. Náhodné doménové struktury se používají pro regresní a klasifikace a dokáže zpracovat zařazené do kategorií funkcí a je možné rozšířit na nastavení klasifikace víc tříd. Se nevyžadují, aby funkce škálování a budou moct zachytit nelineárností a funkce interakce. Náhodné doménových struktur jsou jednou z nejvíce úspěšný strojového učení pro klasifikačních a regresních modelů.
-* [Přechod boosted stromů](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) jsou umožňující rozhodovacích stromů. GBTs trénování rozhodovacích stromů zavádět postupně, chcete-li minimalizovat ztrátu funkce. GBTs se používají pro regresní a klasifikace a dokáže zpracovat zařazené do kategorií funkce, nevyžadují, aby funkce škálování a budou moct zachytit nelineárností a funkce interakce. Můžete také používají v nastavení multiclass klasifikace.
+* Probíhající se rozGBTSelné [stromy](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) () jsou komplety rozhodovacích stromů. GBTS rozhodovací stromy pro vlaky iterativním způsobem, aby se minimalizovala funkce ztráty. GBTS se používá pro regresi a klasifikaci a může zpracovávat funkce kategorií, nevyžadují škálování funkcí a dokáže zachytit nelinearitu a interakce funkcí. Můžete také používají v nastavení multiclass klasifikace.
 
 Příklad použití CV a Hyperparameter modelování oblouku jsou platné pro binárního klasifikačního problému. Jednodušší příklady (bez parametrů přesune) jsou uvedeny v hlavní téma pro regresní úlohy. Ale v dodatku, jsou také uvedeny ověření pomocí elastických net pro lineární regrese a CV pomocí parametru parametrů pro regresní náhodné doménové struktury. **Elastic net** je vyřešeno regrese metody pro přizpůsobení modely lineární regrese, který lineárně kombinuje metriky L1 a L2 jako sankce [laso](https://en.wikipedia.org/wiki/Lasso%20%28statistics%29) a [ridge](https://en.wikipedia.org/wiki/Tikhonov_regularization)metody.   
 
+<!-- -->
+
 > [!NOTE]
 > Přestože knihovna Spark MLlib toolkit je navržen pro práci na velkých datových sad, relativně malým vzorkem (pomocí 170 tisíc řádků, přibližně u 0,1 % původní datové sady NYC ~ 30 Mb) se tady používá ke zvýšení pohodlí. Cvičení zde běží na clusteru služby HDInsight pomocí 2 pracovní uzly efektivně (během 10 minut). Stejný kód s malými změnami lze použít ke zpracování větší – sady dat se změny, které vyžaduje pro ukládání dat v paměti do mezipaměti a změna velikosti clusteru.
-> 
-> 
+
+<!-- -->
 
 ## <a name="setup-spark-clusters-and-notebooks"></a>Instalační program: Clustery Spark a poznámkové bloky
 Postup instalace a kódu jsou k dispozici v tomto názorném postupu pro používání HDInsight Spark 1.6. Ale poznámkové bloky Jupyter jsou k dispozici pro clustery HDInsight Spark 1.6 i Spark 2.0. Popis poznámkových bloků a odkazy na nich jsou součástí [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) pro úložiště GitHub, které je obsahují. Kromě toho kód tady v propojených poznámkových bloků je obecný a by mělo fungovat jakéhokoli jiného clusteru Spark. Pokud nepoužíváte HDInsight Spark, může být mírně lišit od co je znázorněna zde kroky instalace a správy clusteru. Pro usnadnění práce tady jsou odkazy na poznámkové bloky Jupyter pro Spark 1.6 a 2.0 musí být spuštěny v jádra pyspark aplikace Jupyter Notebook server:
 
 ### <a name="spark-16-notebooks"></a>Poznámkové bloky Spark 1.6
 
-[pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Obsahuje témata v poznámkovém bloku #1 a vývoje modelů pomocí hyperparametrů a křížového ověření.
+[pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): obsahuje témata v poznámkovém bloku #1 a vývoje modelů pomocí hyperparametrů a křížového ověření.
 
 ### <a name="spark-20-notebooks"></a>Poznámkové bloky Spark 2.0
 
-[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Tento soubor obsahuje informace o tom, jak provádět zkoumání dat, modelování a vyhodnocování v clusterech Spark 2.0.
+[Spark2.0-pySpark3-Machine-Learning-data-Science-Spark-Advanced-data-Exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Tento soubor obsahuje informace o tom, jak provádět zkoumání dat, modelování a vyhodnocování v clusterech Spark 2.0.
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -114,7 +116,7 @@ Jádra PySpark, které jsou k dispozici s poznámkovými bloky Jupyter nemají p
 Jádra PySpark poskytuje některé předdefinované "Magic", které jsou speciální příkazy, které lze volat s %%. Existují dva tyto příkazy, které se používají v těchto ukázek kódu.
 
 * **%% místní** Určuje, že kód v dalších řádcích, je spuštěn lokálně. Kód musí být platný kód Pythonu.
-* **%% sql -o \<název proměnné >** spustí dotaz Hive proti kontext sqlContext. Pokud je předán parametr -o výsledek dotazu se ukládají v %% místní kontext Python jako Pandas DataFrame.
+* **%% SQL-o \<název proměnné >** Spustí dotaz na podregistr pro kontext SqlContext. Pokud je předán parametr -o výsledek dotazu se ukládají v %% místní kontext Python jako Pandas DataFrame.
 
 Pro další informace o jádrech pro poznámkové bloky Jupyter a předdefinované "magics", která poskytují, naleznete v tématu [jádra dostupná pro poznámkové bloky Jupyter s HDInsight Spark Linux clusterů v HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 
@@ -209,10 +211,12 @@ Tento dotaz načte zkracuje dobu odezvy podle počtu osobní.
 
 Tento kód vytvoří místní datový rámec z výstupu dotazu a zobrazí data. `%%local` Magic vytvoří místní snímek dat, `sqlResults`, kterou lze použít pro vykreslení s matplotlib. 
 
+<!-- -->
+
 > [!NOTE]
 > Tato PySpark magic se používá více než jednou v tomto názorném postupu. Pokud je velké množství dat, by měl ukázkový vytvořte datový rámec, který se vejde do místní paměti.
-> 
-> 
+
+<!-- -->
 
     # RUN THE CODE LOCALLY ON THE JUPYTER SERVER
     %%local
@@ -304,7 +308,7 @@ Tato část popisuje a obsahuje kód pro procedury používané k přípravě da
 * Vytvořit novou funkci díky rozdělení hodin do přihrádek doba provozu
 * Indexování a na horkou kódování zařazené do kategorií funkce
 * Vytváření objektů označených bodu pro vstup do funkce ML
-* Vytvořit náhodný dílčí vzorkování dat a rozdělit na trénování a testování sad
+* Vytvoření náhodného dílčího vzorkování dat a jejich rozdělení do sad pro školení a testování
 * Funkce škálování
 * Mezipaměti objektů v paměti
 
@@ -386,7 +390,7 @@ Tady je kód pro index a kódování funkcí zařazené do kategorií:
 Čas potřebný k provedení nad buňkou: 3.14 sekund
 
 ### <a name="create-labeled-point-objects-for-input-into-ml-functions"></a>Vytváření objektů označených bodu pro vstup do funkce ML
-Tato část obsahuje kód, který ukazuje, jak k indexování zařazené do kategorií textová data jako datový typ s popiskem bodu a jeho kódování. To připraví ho k trénování a testování logistické regrese MLlib a jiných modelů klasifikace. S popiskem bodových objektů jsou odolné distribuovaných datových sad (RDD) ve formátu způsobem, který je potřeba jako vstupní data pro většinu algoritmů ML v MLlib. A [označené jako bod](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) je přidružený místní vektoru, dense nebo zhuštěný, popisek a odpovědí.
+Tato část obsahuje kód, který ukazuje, jak k indexování zařazené do kategorií textová data jako datový typ s popiskem bodu a jeho kódování. Tato transformace připraví textová data, která se mají použít ke školení a testování MLlib logistické regrese a dalších modelů klasifikace. S popiskem bodových objektů jsou odolné distribuovaných datových sad (RDD) ve formátu způsobem, který je potřeba jako vstupní data pro většinu algoritmů ML v MLlib. A [označené jako bod](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) je přidružený místní vektoru, dense nebo zhuštěný, popisek a odpovědí.
 
 Tady je kód pro indexování a kódování funkcí text pro binární klasifikaci.
 
@@ -434,8 +438,8 @@ Tady je kód, který má být zakódován a indexu zařazené do kategorií text
         return  labPt
 
 
-### <a name="create-a-random-sub-sampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>Vytvořit náhodný dílčí vzorkování dat a rozdělit na trénování a testování sad
-Tento kód vytvoří náhodný vzorkování dat (25 % používá zde). I když není nutné v tomto příkladu kvůli velikosti datové sady, vám ukážeme, jak můžete vzorkovat data zde. Potom můžete vědět, jak ho použít pro vlastní problém v případě potřeby. Když ukázky jsou velké, to ušetří spoustu času při trénování modelů. Dále jsme vzorku rozdělit na části školení (zde 75 %) a testování částí (zde 25 %) pro použití v zařazení a regresní modelování.
+### <a name="create-a-random-subsampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>Vytvoření náhodného dílčího vzorkování dat a jejich rozdělení do sad pro školení a testování
+Tento kód vytvoří náhodný vzorkování dat (25 % používá zde). I když není nutné v tomto příkladu kvůli velikosti datové sady, vám ukážeme, jak můžete vzorkovat data zde. Potom můžete vědět, jak ho použít pro vlastní problém v případě potřeby. Když jsou ukázky velké, vzorkování může při školicích modelech ušetřit značný čas. Dále jsme vzorku rozdělit na části školení (zde 75 %) a testování částí (zde 25 %) pro použití v zařazení a regresní modelování.
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -476,7 +480,7 @@ Tento kód vytvoří náhodný vzorkování dat (25 % používá zde). I když n
 
 **VÝSTUP**
 
-Čas potřebný k provedení nad buňkou: 0.31 sekund
+Doba potřebná k provedení výše uvedené buňky: 0,31 sekunda
 
 ### <a name="feature-scaling"></a>Funkce škálování
 Funkce škálování, označované také jako data normalizace, zajistí, že funkce se značně Celková uhrazená hodnotami jsou neudělil nadměrné naváží ve funkci cíle. Kód pro funkce používá škálování [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) funkce, které se odchylka jednotek škálování. Podle MLlib je určen pro použití v lineární regrese s pomocí Stochastického přechodu sestup (SGD). SGD je Oblíbené algoritmů pro trénování širokou řadu jiných modelů strojového učení, jako je například Vyřešeno regresí nebo počítače vektorové podpory (SVM).   
@@ -548,7 +552,7 @@ Ukládání do mezipaměti vstupní datový rámec objekty používané pro klas
 
 **VÝSTUP** 
 
-Čas potřebný k provedení nad buňkou: 0,13 sekund
+Doba potřebná k provedení výše uvedené buňky: 0,13 sekunda
 
 ## <a name="predict-whether-or-not-a-tip-is-paid-with-binary-classification-models"></a>Předpovědět, jestli je binární klasifikační modely placené tip
 Tato část ukazuje, jak použijte tři modely pro úlohy binární klasifikace: předpověď, jestli jde placenou tip pro cesty taxíkem. Modely uvedené jsou:
@@ -565,20 +569,22 @@ Každý model vytváření část kódu je rozdělený do kroků:
 
 Vám ukážeme, jak provést křížové ověření (CV) s parametrem cílit na konkrétní dvěma způsoby:
 
-1. Pomocí **obecný** nastaví vlastní kód, který je možné použít s libovolným algoritmem v MLlib a žádné parametry v algoritmu. 
-2. Použití **pySpark CrossValidator kanálu funkce**. Všimněte si, že CrossValidator má několik omezení pro Spark 1.5.0: 
+1. Použití **obecného** vlastního kódu, který lze použít na libovolný algoritmus v MLlib a na jakékoli sady parametrů v algoritmu. 
+2. Použití **pySpark CrossValidator kanálu funkce**. CrossValidator má několik omezení pro Spark 1.5.0: 
    
-   * Modely kanálu nelze uložit/zachovat pro budoucí použití.
+   * Modely kanálů nelze uložit ani uchovat pro budoucí spotřebu.
    * Nelze použít pro každý parametr v modelu.
    * Nelze použít pro každý MLlib algoritmus.
 
 ### <a name="generic-cross-validation-and-hyperparameter-sweeping-used-with-the-logistic-regression-algorithm-for-binary-classification"></a>Obecný křížové ověření a hyperparameter sweeping použitých v algoritmu logistické regrese pro binární klasifikaci
 Kód v této části ukazuje, jak pro trénování, vyhodnocení a uložit model logistické regrese s [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) , který předpovídá, jestli je tip placené cesty v NYC taxislužby cesty a tarif datové sady. Model se trénuje pomocí křížové ověření (CV) a hyperparameter sweeping implementovaná vlastním kódem, který lze použít k některé z algoritmů učení v MLlib.   
 
+<!-- -->
+
 > [!NOTE]
 > Spuštění vlastního kódu CV může trvat několik minut.
-> 
-> 
+
+<!-- -->
 
 **Trénování modelu logistické regrese pomocí CV a hyperparameter sweeping**
 
@@ -801,10 +807,12 @@ Kód v této části ukazuje, jak uložit model logistické regrese za využití
 ### <a name="use-mllibs-crossvalidator-pipeline-function-with-logistic-regression-elastic-regression-model"></a>Pomocí funkce kanálu CrossValidator MLlib na model logistické regrese (elastické regrese)
 Kód v této části ukazuje, jak pro trénování, vyhodnocení a uložit model logistické regrese s [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) , který předpovídá, jestli je tip placené cesty v NYC taxislužby cesty a tarif datové sady. Model se trénuje pomocí křížové ověření (CV) a hyperparameter sweeping implementuje pomocí funkce MLlib CrossValidator kanálu pro CV s Uklízení parametrů.   
 
+<!-- -->
+
 > [!NOTE]
 > Spuštění tohoto kódu MLlib CV může trvat několik minut.
-> 
-> 
+
+<!-- -->
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -998,11 +1006,19 @@ Tyto modely jsou popsány v úvodu. Každý model vytváření část kódu je r
 2. **Model hodnocení** na testovací datové sady s metrikami
 3. **Probíhá ukládání modelu** v objektu blob pro budoucí využití   
 
-> POZNÁMKA: AZURE: Křížové ověření není s tři regresních modelů v této části použít, protože to se zobrazilo podrobněji a logistické regresní modely. Příklad ukazuje, jak pomocí CV elastické Net pro lineární regrese je k dispozici v dodatku v tomto tématu.
-> 
-> POZNÁMKA: AZURE: Podle našich zkušeností může být problémy s konvergence LinearRegressionWithSGD modelů a parametry musí být změněno či optimalizovanou pečlivě pro získání platný model. Škálování proměnných výrazně pomáhá s konvergence. Elastické net regrese, uvedené v dodatku k tomuto tématu, je také použít místo LinearRegressionWithSGD.
-> 
-> 
+<!-- -->
+
+> [!NOTE] 
+> Křížové ověřování se v této části nepoužívá se třemi regresními modely, protože se ukázalo podrobněji pro modely logistické regrese. Příklad ukazuje, jak pomocí CV elastické Net pro lineární regrese je k dispozici v dodatku v tomto tématu.
+
+<!-- -->
+
+<!-- -->
+
+> [!NOTE] 
+> V našem prostředí mohou nastat problémy se sbližováním modelů LinearRegressionWithSGD a parametry je nutné pečlivě změnit/optimalizovat pro získání platného modelu. Škálování proměnných výrazně pomáhá s konvergence. Elastické net regrese, uvedené v dodatku k tomuto tématu, je také použít místo LinearRegressionWithSGD.
+
+<!-- -->
 
 ### <a name="linear-regression-with-sgd"></a>Lineární regrese s SGD
 Kód v této části ukazuje, jak používat škálován funkce k trénování lineární regrese, který se používá pro optimalizaci pomocí stochastického sestupu (SGD) a jak skóre, vyhodnocení a uložit model v Azure Blob Storage (WASB).
@@ -1054,7 +1070,7 @@ Kód v této části ukazuje, jak používat škálován funkce k trénování l
 
 Koeficienty: [0.0141707753435-0.0252930927087,-0.0231442517137, 0.247070902996, 0.312544147152, 0.360296120645, 0.0122079566092,-0.00456498588241,-0.0898228505177, 0.0714046248793, 0.102171263868, 0.100022455632,-0.00289545676449,- 0.00791124681938 0.54396316518,-0.536293513569, 0.0119076553369,-0.0173039244582, 0.0119632796147, 0.00146764882502]
 
-Zachycení: 0.854507624459
+Zachytit: 0.854507624459
 
 RMSE = 1.23485131376
 
@@ -1065,10 +1081,12 @@ R sqr = 0.597963951127
 ### <a name="random-forest-regression"></a>Regrese Random doménové struktury
 Kód v této části ukazuje, jak pro trénování, vyhodnocení a uložení náhodných doménovou strukturu modelu pro předpověď částka tip pro data o jízdách NYC taxislužby.   
 
+<!-- -->
+
 > [!NOTE]
 > Křížové ověření s parametrem cílit na konkrétní psát vlastní kód je k dispozici v dodatku.
-> 
-> 
+
+<!-- -->
 
     #PREDICT TIP AMOUNTS USING RANDOM FOREST
 
@@ -1410,7 +1428,7 @@ Použití `unpersist()` odstranit objekty uložené v mezipaměti v paměti.
 
 PythonRDD [122] na RDD na PythonRDD.scala: 43
 
-** Výtisk cestu k souborům model pro použití v poznámkovém bloku spotřeby. ** K využívání a stanovíte jeho skóre nezávislé datové sady, budete muset zkopírovat a vložit tyto názvy souborů v "Poznámkový blok spotřeby".
+\* * Výstupní cesta k souborům modelů, které se mají použít v poznámkovém bloku spotřeby ** K využívání a stanovíte jeho skóre nezávislé datové sady, budete muset zkopírovat a vložit tyto názvy souborů v "Poznámkový blok spotřeby".
 
     # PRINT MODEL FILE LOCATIONS FOR CONSUMPTION
     print "logisticRegFileLoc = modelDir + \"" + logisticregressionfilename + "\"";
@@ -1435,8 +1453,8 @@ BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassificatio
 
 BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-05-0316_52_18.827237"
 
-## <a name="whats-next"></a>Co dále?
+## <a name="whats-next"></a>A co dál?
 Teď, když jste vytvořili modely regrese a klasifikaci s knihovna Spark MlLib, jste připraveni se naučíte stanovení skóre a vyhodnocovat u nich tyto modely.
 
-**Využití modelu:** Informace o určení skóre a vyhodnocovat u nich klasifikačních a regresních modelů vytvořených v tomto tématu najdete v tématu [skóre a vyhodnocení modelů strojového učení předdefinovaných Spark](spark-model-consumption.md).
+**Model spotřeby:** informace o určení skóre a vyhodnocovat u nich klasifikačních a regresních modelů vytvořených v tomto tématu najdete v tématu [skóre a vyhodnocení modelů strojového učení předdefinovaných Spark](spark-model-consumption.md).
 

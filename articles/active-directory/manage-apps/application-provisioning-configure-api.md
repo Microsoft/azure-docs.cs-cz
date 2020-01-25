@@ -16,16 +16,16 @@ ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ca26c7277f69a817a48884acce116e3a66608ff
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 9a891f87c3d03cf95c8051ee684916bb55441cb0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275722"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712240"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>Konfigurace zřizování pomocí rozhraní API Microsoft Graph
 
-Azure Portal je pohodlný způsob, jak nakonfigurovat zřizování pro jednotlivé aplikace po jednom. Pokud ale vytváříte několik (nebo dokonce stovky) instancí aplikace, může být snazší automatizovat vytváření a konfiguraci aplikací pomocí Microsoft Graph rozhraní API. Tento článek popisuje, jak automatizovat konfiguraci zřizování prostřednictvím rozhraní API. Tato metoda se běžně používá pro aplikace, jako je [Amazon Web Services](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-sso).
+Azure Portal je pohodlný způsob, jak nakonfigurovat zřizování pro jednotlivé aplikace po jednom. Pokud ale vytváříte několik (nebo dokonce stovky) instancí aplikace, může být snazší automatizovat vytváření a konfiguraci aplikací pomocí Microsoft Graph rozhraní API. Tento článek popisuje, jak automatizovat konfiguraci zřizování prostřednictvím rozhraní API. Tato metoda se běžně používá pro aplikace, jako je [Amazon Web Services](../saas-apps/amazon-web-service-tutorial.md#configure-azure-ad-sso).
 
 **Přehled kroků pro automatizaci konfigurace zřizování pomocí rozhraní Microsoft Graph API**
 
@@ -48,7 +48,7 @@ Azure Portal je pohodlný způsob, jak nakonfigurovat zřizování pro jednotliv
 1. Spustit [průzkumníka Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer)
 1. Vyberte tlačítko Přihlásit se Microsoftem a přihlaste se pomocí globálního správce služby Azure AD nebo přihlašovacích údajů správce aplikací.
 
-    ![Přihlášení do grafu](./media/export-import-provisioning-mappings/wd_export_02.png)
+    ![Přihlášení do grafu](media/application-provisioning-configure-api/wd_export_02.png)
 
 1. Po úspěšném přihlášení se zobrazí podrobnosti o uživatelském účtu v levém podokně.
 

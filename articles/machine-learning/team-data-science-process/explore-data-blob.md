@@ -3,20 +3,20 @@ title: Zkoumání dat ve službě Azure blob storage pomocí knihovny pandas - v
 description: Popisuje, jak zkoumat data, která je uložená v kontejneru objektů blob v Azure pomocí Pythonu balíčku pandas.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 99e041b41c5c569a2329bb2fc6f33e8f5a05c385
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 29011760a94a05020150ceddeba4303b87c2f610
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981989"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722182"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Zkoumání dat ve službě Azure blob storage pomocí knihovny pandas
 
@@ -33,7 +33,7 @@ Tento článek předpokládá, že máte:
 ## <a name="load-the-data-into-a-pandas-dataframe"></a>Načtení dat do pandas DataFrame
 K prozkoumání a manipulaci s datovou sadu, ho musíte nejprve stáhnout na zdroj objektu blob do místního souboru, který lze načíst v pandas DataFrame. Tady jsou kroky pro tento postup:
 
-1. Stahování dat z Azure blob s následující vzorový kód Pythonu pomocí služby blob service. Nahraďte konkrétní hodnoty proměnné v následujícím kódu:
+1. Stáhněte si data z objektu blob Azure s následující ukázkou kódu Pythonu pomocí Blob service. Nahraďte konkrétní hodnoty proměnné v následujícím kódu:
 
 ```python
 from azure.storage.blob import BlockBlobService

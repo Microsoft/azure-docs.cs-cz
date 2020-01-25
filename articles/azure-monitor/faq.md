@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 12/30/2019
-ms.openlocfilehash: 38966d537398d2770fba185a59b51956cf2223c3
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.date: 01/23/2020
+ms.openlocfilehash: b0ec82807857be60f30aa777ff5871334383acf7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290338"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715932"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor nejčastějších dotazech
 
@@ -95,6 +95,18 @@ Všechna data protokolu shromážděná pomocí Azure Monitor jsou uložena v pr
 
 ### <a name="can-you-move-an-existing-log-analytics-workspace-to-another-azure-subscription"></a>Můžete přesunout existující Log Analytics pracovní prostor do jiného předplatného Azure?
 Pracovní prostor můžete přesouvat mezi skupinami prostředků nebo předplatnými, ale ne do jiné oblasti. Přečtěte si téma [přesunutí log Analyticsho pracovního prostoru do jiného předplatného nebo skupiny prostředků](platform/move-workspace.md).
+
+### <a name="why-cant-i-see-query-explorer-and-save-buttons-in-log-analytics"></a>Proč se mi nedá zobrazit Průzkumník dotazů a tlačítka Uložit v Log Analytics?
+
+Tlačítka **Průzkumník dotazů**, **Uložit** a **Nová pravidla výstrahy** nejsou k dispozici, pokud je [obor dotazu](log-query/scope.md) nastaven na konkrétní prostředek. Pokud chcete vytvářet výstrahy, ukládat nebo načítat dotaz, Log Analytics musí být vymezené na pracovní prostor. Pokud chcete otevřít Log Analytics v kontextu pracovního prostoru, v nabídce **Azure monitor** vyberte **protokoly** . Naposledy použité pracovní prostor je vybráno, ale můžete vybrat jiný pracovní prostor. Viz [Rozsah dotazů protokolu a rozsah času ve Azure Monitor Log Analytics](log-query/scope.md)
+
+### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>Proč se mi zobrazuje chyba: "zaregistrovat poskytovatele prostředků" Microsoft. Insights "pro toto předplatné povolíte tento dotaz" při otevírání Log Analytics z virtuálního počítače? 
+Mnoho poskytovatelů prostředků se registruje automaticky, ale možná budete muset některé poskytovatele prostředků zaregistrovat ručně. Obor pro registraci je vždy předplatné. Další informace najdete v tématu [Poskytovatelé a typy prostředků](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
+
+### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>Proč se při otevírání Log Analytics z virtuálního počítače zobrazuje chybová zpráva o přístupu? 
+Chcete-li zobrazit protokoly virtuálních počítačů, je třeba udělit oprávnění ke čtení pro pracovní prostory, ve kterých jsou uloženy protokoly virtuálních počítačů. V těchto případech se musí udělit správce oprávnění v Azure vám.
+
+
 
 
 ## <a name="alerts"></a>Výstrahy
@@ -180,6 +192,12 @@ Zadejte existující nebo novou [skupinu akcí](platform/action-groups.md) , aby
 ### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Jaké jsou požadavky brány firewall pro agenty Azure Monitor?
 Podrobnosti o požadavcích na bránu firewall najdete v tématu [požadavky na bránu firewall sítě](platform/log-analytics-agent.md#network-firewall-requirements).
 
+
+## <a name="visualizations"></a>Vizualizace
+
+### <a name="why-cant-i-cant-see-view-designer"></a>Proč nemůžu zobrazit návrháře zobrazení?
+
+Návrhář zobrazení je k dispozici pouze pro uživatele, kteří jsou přiřazeni k oprávněním přispěvatele nebo vyšší v pracovním prostoru Log Analytics.
 
 
 ## <a name="application-insights"></a>Application Insights
@@ -322,7 +340,7 @@ Po vyhledání atributů geografického umístění jsou **všechny** oktety kli
 * Dá se použít k zkosení dat nebo aktivaci výstrah.
 * Neslyšeli jsme, že u každého zákazníka byly takové problémy.
 
-Mohli byste:
+Můžete:
 
 * Pro data klienta a serveru použijte dva samostatné klíče instrumentace (samostatné Application Insights prostředky). nebo
 * Napíšete proxy server, který běží na serveru, a webový klient bude odesílat data prostřednictvím tohoto proxy serveru.

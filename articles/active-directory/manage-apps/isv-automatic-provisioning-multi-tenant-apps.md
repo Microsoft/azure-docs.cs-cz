@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: baselden
 ms.reviewer: zhchia
 ms.collection: active-directory
-ms.openlocfilehash: 74b991fce132c991ebd5fbd3789328e2a500da86
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e7f60335b3e75d93f408dec3386ca0bdcd6a0388
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232318"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711450"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Povolení automatického zřizování uživatelů pro aplikaci s více klienty
 
@@ -56,7 +56,7 @@ Aplikace, které vyžadují, aby se v aplikaci nachází záznam uživatele pře
 
 Azure AD poskytuje několik integračních cest, které umožňují Automatické zřizování uživatelů pro vaši aplikaci.
 
-* [Služba zřizování Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) spravuje zřizování a rušení zřizování uživatelů ze služby Azure AD do vaší aplikace (odchozí zřizování) a z vaší aplikace do Azure AD (příchozí zřizování). Služba se připojuje k systému pro koncové body rozhraní API pro správu uživatelů mezi doménami (SCIM), které poskytuje vaše aplikace.
+* [Služba zřizování Azure AD](user-provisioning.md) spravuje zřizování a rušení zřizování uživatelů ze služby Azure AD do vaší aplikace (odchozí zřizování) a z vaší aplikace do Azure AD (příchozí zřizování). Služba se připojuje k systému pro koncové body rozhraní API pro správu uživatelů mezi doménami (SCIM), které poskytuje vaše aplikace.
 
 * Při použití [Microsoft Graph](https://docs.microsoft.com/graph/)vaše aplikace spravuje příchozí a odchozí zřizování uživatelů a skupin ze služby Azure AD do vaší aplikace pomocí dotazování rozhraní API Microsoft Graph.
 
@@ -87,9 +87,9 @@ Další informace o tom, jak se uživatelé služby zřizování Azure AD SCIM, 
 
 * [Další informace o standardu SCIM](https://aka.ms/SCIMOverview)
 
-* [Automatické zřizování uživatelů a skupin z Azure Active Directory k aplikacím pomocí systému pro správu identit mezi doménami (SCIM)](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
+* [Automatické zřizování uživatelů a skupin z Azure Active Directory k aplikacím pomocí systému pro správu identit mezi doménami (SCIM)](use-scim-to-provision-users-and-groups.md)
 
-* [Porozumění implementaci Azure AD SCIM](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
+* [Porozumění implementaci Azure AD SCIM](use-scim-to-provision-users-and-groups.md)
 
 ## <a name="microsoft-graph-for-provisioning"></a>Microsoft Graph pro zřizování
 
@@ -115,7 +115,7 @@ Kompilátor SAML používá informace o deklaracích identity v tokenu SAML k vy
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Povolení jednotného přihlašování pro aplikaci](https://docs.microsoft.com/azure/active-directory/manage-apps/isv-sso-content)
+* [Povolení jednotného přihlašování pro aplikaci](isv-sso-content.md)
 
 * [Odesláním seznamu aplikací](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) a partnera s Microsoftem můžete vytvořit dokumentaci na webu Microsoftu.
 

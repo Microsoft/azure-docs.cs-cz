@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: b33366b65fed0042eb3024c2264bce1c4a1c4c1d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: ff058d7b51bd2e5efd80db69e5928d58fc5a7725
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75651628"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715671"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>Spravované aplikace Azure s oznámeními
 
@@ -67,12 +67,12 @@ Další informace najdete v tématu [Vytvoření nabídky aplikací Azure](../..
 ## <a name="event-triggers"></a>Aktivační události
 Následující tabulka popisuje všechny možné kombinace EventType a ProvisioningState a jejich aktivační události:
 
-EventType | ProvisioningState | Aktivační událost pro oznámení
+Typ | ProvisioningState | Aktivační událost pro oznámení
 ---|---|---
-PUT | Přijato | Spravovaná skupina prostředků se vytvořila a po vložení aplikace se úspěšně provedla. (před tím, než se nasazování do spravované skupiny prostředků dokončí).
+PUT | Přijata | Spravovaná skupina prostředků se vytvořila a po vložení aplikace se úspěšně provedla. (před tím, než se nasazování do spravované skupiny prostředků dokončí).
 PUT | Úspěch | Úplné zřízení spravované aplikace bylo po vložení úspěšné.
 PUT | Selhalo | Chyba při zřizování instance aplikace v jakémkoli bodě.
-PATCH | Úspěch | Po úspěšné opravě instance spravované aplikace aktualizujte značky, zásady přístupu JIT nebo spravovanou identitu.
+POUŽITA | Úspěch | Po úspěšné opravě instance spravované aplikace aktualizujte značky, zásady přístupu JIT nebo spravovanou identitu.
 DELETE | Odstraňování | Jakmile uživatel zahájí odstranění instance spravované aplikace.
 DELETE | Odstraněno | Po úplném a úspěšném odstranění spravované aplikace.
 DELETE | Selhalo | Po jakékoli chybě během procesu zrušení zřízení, který blokování odstraní.
@@ -181,15 +181,15 @@ Parametr | Popis
 eventType | Typ události, která aktivovala oznámení. (Například PUT, PATCH, DELETE.)
 applicationId | Plně kvalifikovaný identifikátor prostředku spravované aplikace, pro kterou bylo oznámení aktivované.
 eventTime | Časové razítko události, která aktivovala oznámení (Datum a čas ve formátu UTC ISO 8601)
-provisioningState | Stav zřizování instance spravované aplikace. (Například úspěch, selhalo, odstranění, odstraněno.)
+ProvisioningState | Stav zřizování instance spravované aplikace. (Například úspěch, selhalo, odstranění, odstraněno.)
 error | *Zadané jenom v případě, že se provisioningState nezdařil*. Obsahuje kód chyby, zprávu a podrobnosti problému, který způsobil chybu.
 applicationDefinitionId | *Určeno jenom pro aplikace spravované v katalogu služeb*. Představuje plně kvalifikovaný identifikátor prostředku definice aplikace, pro kterou se zřídila instance spravované aplikace.
-plánování | *Určeno pouze pro Azure Marketplace spravované aplikace*. Představuje vydavatele, nabídku, SKU a verzi instance spravované aplikace.
+rozhraní | *Určeno pouze pro Azure Marketplace spravované aplikace*. Představuje vydavatele, nabídku, SKU a verzi instance spravované aplikace.
 billingDetails | *Určeno pouze pro Azure Marketplace spravované aplikace.* Údaje o fakturaci instance spravované aplikace. Obsahuje resourceUsageId, který můžete použít k dotazování Azure Marketplace v podrobnostech o využití.
 
 ## <a name="endpoint-authentication"></a>Ověřování koncového bodu
 Zabezpečení koncového bodu Webhooku a ověření pravosti oznámení:
-1. Zadejte parametr dotazu nad identifikátor URI Webhooku, například: https://your-endpoint.com?sig=Guid. U každého oznámení ověřte, že parametr dotazu `sig` má `Guid`očekávanou hodnotu.
+1. Zadejte parametr dotazu nad identifikátor URI Webhooku, například: https\://Your-Endpoint.com? SIG = GUID. U každého oznámení ověřte, že parametr dotazu `sig` má `Guid`očekávanou hodnotu.
 2. Vystavte GET pro instanci spravované aplikace pomocí applicationId. Ověřte, že provisioningState odpovídá provisioningState oznámení, aby se zajistila konzistence.
 
 ## <a name="notification-retries"></a>Opakované pokusy o oznámení

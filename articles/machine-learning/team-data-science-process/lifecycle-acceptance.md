@@ -3,20 +3,20 @@ title: Fáze přijetí zákazníky životního cyklu vědecké zpracování tým
 description: Cíle, úkoly a úkoly pro zákazníka fáze přijetí vašich projektů datové vědy
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 91d645e6120040870c7c1696c7bfd8f68509cb35
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7224a7bb26ef491915df9fcb9b6b84ff171a9fc0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60303566"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720516"
 ---
 # <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Fáze přijetí zákazníky životního cyklu vědecké zpracování týmových dat
 
@@ -34,21 +34,21 @@ Zde je vizuální znázornění životního cyklu TDSP:
 
 
 ## <a name="goal"></a>Cíl
-**Dokončení výstupy projektu**: Potvrďte, že kanál, model a jejich nasazení v produkčním prostředí splňovat cíle zákazníka.
+**Finalizace dodávek projektu**: Ověřte, že kanál, model a jejich nasazení v produkčním prostředí odpovídají cílům zákazníka.
 
 ## <a name="how-to-do-it"></a>Jak na to
 Existují dva hlavní úkoly zákazníky a vyřešené v této fázi:
 
-   * **Ověření systému**: Potvrďte, že nasazený model a kanál vyhovět potřebám zákazníků.
-   * **Projekt odevzdání**: Projekt přebírají entity, která bude k provozování systému v produkčním prostředí.
+   * **Ověření systému**: potvrďte, že nasazený model a kanál vyhovět potřebám zákazníků.
+   * **Projekt odevzdání**: projekt přebírají entity, která bude k provozování systému v produkčním prostředí.
 
 Zákazník měli ověřit, že systém splňuje svých obchodních potřeb a odpovídá dotazy s přijatelnou přesnost k nasazení systému ve své klientské aplikace do produkčního prostředí pro použití. V dokumentaci se dokončí a zkontrolovat. Projekt je předat schválení v entitě za operace. Tato entita může být například IT nebo zákaznický tým pro datové vědy nebo agenta, který je zodpovědný za spouštění systému v produkčním prostředí zákazníka. 
 
-## <a name="artifacts"></a>Artefakty
+## <a name="artifacts"></a>Artifacts
 Hlavní artefakt vytvořen v této fázi konečné je **ukončit sestavu projektu pro zákazníka**. Tato technická sestava obsahuje všechny podrobnosti o projektu, které jsou užitečné pro získání informací o tom, jak pracovat v systému. Poskytuje TDSP [ukončit sestavy](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Exit%20Report.md) šablony. Šablonu je můžete použít nebo si můžete přizpůsobit potřebám konkrétního klienta. 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Tady jsou odkazy na každý krok v životním cyklu TDSP:
 
@@ -58,6 +58,6 @@ Tady jsou odkazy na každý krok v životním cyklu TDSP:
    4. [Nasazení](lifecycle-deployment.md)
    5. [Schválení zákazníkem](lifecycle-acceptance.md)
 
-Poskytujeme úplného začátku do konce návody, které ukazují všechny kroky v procesu pro konkrétní scénáře. [Příklad návody](walkthroughs.md) článek obsahuje seznam scénářů s odkazy a popisy miniatur. Názorné postupy ukazují, jak zkombinovat cloudové, místní nástroje a služby do pracovního postupu nebo kanálu pro vytváření inteligentních aplikací. 
+Poskytujeme kompletní návody, které ukazují všechny kroky v procesu pro konkrétní scénáře. [Příklad návody](walkthroughs.md) článek obsahuje seznam scénářů s odkazy a popisy miniatur. Názorné postupy ukazují, jak zkombinovat cloudové, místní nástroje a služby do pracovního postupu nebo kanálu pro vytváření inteligentních aplikací. 
 
 Příklady toho, jak provést kroky v TDSPs, které používají Azure Machine Learning Studio najdete v tématu [TDSP pomocí služby Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).

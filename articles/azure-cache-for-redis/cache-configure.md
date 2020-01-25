@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: c4d5716c8a31ceccbe23c1f77ad3b88030ff3065
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f10be8efcd2d8e838b4b5f62310eb405f6ed0158
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972131"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714634"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Jak nakonfigurovat Azure cache pro Redis
 Toto téma popisuje konfigurace dostupné pro instance Redis v mezipaměti Azure. Toto téma také popisuje výchozí konfiguraci serveru Redis pro Azure cache pro instance Redis.
@@ -40,8 +40,8 @@ Pomocí **nabídky prostředků**můžete zobrazit a nakonfigurovat následujíc
     * [Upřesňující nastavení](#advanced-settings)
     * [Mezipaměť Azure pro poradce Redis](#azure-cache-for-redis-advisor)
     * [Škálování](#scale)
-    * [Velikost clusteru Redis](#cluster-size)
-    * [Trvalost dat Redis](#redis-data-persistence)
+    * [Velikost clusteru](#cluster-size)
+    * [Trvalost dat](#redis-data-persistence)
     * [Plán aktualizací](#schedule-updates)
     * [Geografická replikace](#geo-replication)
     * [Virtual Network](#virtual-network)
@@ -92,8 +92,8 @@ Klikněte na **Diagnostika a řešení problémů** , které se budou poskytovat
 * [Upřesňující nastavení](#advanced-settings)
 * [Mezipaměť Azure pro poradce Redis](#azure-cache-for-redis-advisor)
 * [Škálování](#scale)
-* [Velikost clusteru Redis](#cluster-size)
-* [Trvalost dat Redis](#redis-data-persistence)
+* [Velikost clusteru](#cluster-size)
+* [Trvalost dat](#redis-data-persistence)
 * [Plán aktualizací](#schedule-updates)
 * [Geografická replikace](#geo-replication)
 * [Virtual Network](#virtual-network)
@@ -201,14 +201,9 @@ Kliknutím na tlačítko **škálovat** můžete zobrazit nebo změnit cenovou �
 <a name="cluster-size"></a>
 
 ### <a name="redis-cluster-size"></a>Velikost clusteru Redis
-Pokud chcete změnit velikost clusteru pro spuštěnou mezipaměť Premium s povoleným clusteringem, klikněte na **(Preview) velikost clusteru Redis** .
+Kliknutím na **Velikost clusteru** změníte velikost clusteru pro spuštěnou mezipaměť Premium s povoleným clusteringem.
 
-> [!NOTE]
-> Mějte na paměti, že zatímco Azure cache pro Redis úrovně Premium byl vydaný pro obecnou dostupnost, funkce velikosti clusterů Redis je v současnosti ve verzi Preview.
->
->
-
-![Velikost clusteru Redis](./media/cache-configure/redis-cache-redis-cluster-size.png)
+![Velikost clusteru](./media/cache-configure/redis-cache-redis-cluster-size.png)
 
 Chcete-li změnit velikost clusteru, použijte posuvník nebo zadejte číslo v rozmezí 1 až 10 v textovém poli **horizontálních oddílů Count** a kliknutím na tlačítko **OK** uložte.
 
@@ -219,7 +214,7 @@ Chcete-li změnit velikost clusteru, použijte posuvník nebo zadejte číslo v 
 
 
 ### <a name="redis-data-persistence"></a>Trvalost dat Redis
-Kliknutím na **Redis Persistence dat** povolíte, zakážete nebo nakonfigurujete Trvalost dat pro mezipaměť Premium. Azure cache for Redis nabízí trvalost Redisy buď v případě [trvalého uložení RDB](cache-how-to-premium-persistence.md#configure-rdb-persistence) , nebo [AOF](cache-how-to-premium-persistence.md#configure-aof-persistence).
+Kliknutím na **Trvalost dat** povolíte, zakážete nebo nakonfigurujete Trvalost dat pro mezipaměť Premium. Azure cache for Redis nabízí trvalost Redisy buď v případě [trvalého uložení RDB](cache-how-to-premium-persistence.md#configure-rdb-persistence) , nebo [AOF](cache-how-to-premium-persistence.md#configure-aof-persistence).
 
 Další informace najdete v tématu [Konfigurace trvalosti pro službu Azure cache Premium pro Redis](cache-how-to-premium-persistence.md).
 
@@ -286,7 +281,7 @@ Kliknutím na **vlastnosti** zobrazíte informace o mezipaměti, včetně koncov
 ### <a name="locks"></a>Zámky
 Část **zámky** umožňuje uzamknout předplatné, skupinu prostředků nebo prostředek a zabránit tak ostatním uživatelům ve vaší organizaci v neúmyslném odstranění nebo úpravě důležitých prostředků. Další informace najdete v tématu [Zamknutí prostředků pomocí Azure Resource Manageru](../azure-resource-manager/management/lock-resources.md).
 
-### <a name="automation-script"></a>Automatizační skript
+### <a name="automation-script"></a>Skript Automation
 
 Klikněte na **skript Automation** a sestavte a exportujte šablonu nasazených prostředků pro budoucí nasazení. Další informace o práci se šablonami najdete v tématu [nasazení prostředků pomocí šablon Azure Resource Manager](../azure-resource-manager/templates/deploy-powershell.md).
 
@@ -457,9 +452,9 @@ Další informace o databázích najdete v tématu [co jsou databáze Redis?](ca
 > * BGREWRITEAOF
 > * BGSAVE
 > * Konfigurace
-> * LADĚNÍ
+> * LADÍ
 > * PŘENES
-> * ULOŽIT
+> * ULOŽÍ
 > * VYPNUTÍ
 > * SLAVEOF
 > * Příkazy zápisu cluster-cluster jsou zakázané, ale jsou povolené příkazy clusteru jen pro čtení.

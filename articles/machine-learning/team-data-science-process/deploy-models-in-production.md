@@ -2,20 +2,20 @@
 title: Nasazení modelů v produkčním prostředí – vědecké zpracování týmových dat
 description: Jak nasadit modely do produkčního prostředí, což jim umožňuje přehrát aktivní roli při rozhodování o obchodní.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ed48ab9f85d28bec926120fea87a5ccf8bb6f9af
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: e3e2ef3340ca836f56176c21cf3d221f0bf172b9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75526766"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722233"
 ---
 # <a name="deploy-models-to-production-to-play-an-active-role-in-making-business-decisions"></a>Nasadit modely do produkčního prostředí aktivní roli při obchodním rozhodování
 
@@ -39,7 +39,7 @@ Existují různé přístupy a platformy pro převedení modely do produkčního
 
 ## <a name="ab-testing"></a>Testování A/B
 
-Jsou-li několik modelů v produkčním prostředí, může být užitečné provést [A / B testování](https://en.wikipedia.org/wiki/A/B_testing) porovnat výkon modelů. 
+Pokud je v produkčním prostředí více modelů, [testování a/B](https://en.wikipedia.org/wiki/A/B_testing) může být použito pro porovnání výkonu modelu. 
  
 ## <a name="next-steps"></a>Další kroky
 

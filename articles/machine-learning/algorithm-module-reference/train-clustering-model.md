@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: ea247af871b06bd21c2733272b3d938c536d16ec
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 6b154cdbf6490abd935156e6d081d2260cfbc578
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546448"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719360"
 ---
 # <a name="train-clustering-model"></a>Trénování modelu clusteringu
 
@@ -25,7 +25,7 @@ Tento modul slouží ke školení modelu clusteringu.
 Modul převezme provedený model clusteringu, který jste už nakonfigurovali pomocí technologie [K-označuje modul clusteringu](k-means-clustering.md) a navlakuje model pomocí označené nebo neoznačené sady dat. Modul vytvoří jak vyškolený model, který můžete použít pro předpověď, a sadu přiřazení clusteru pro každý případ v školicích datech.
 
 > [!NOTE]
-> Model clusteringu nejde být vyškolený pomocí modulu [výuka modelu](train-model.md) , který je obecným modulem pro školení modelů strojového učení. Důvodem je to, že [model výuky](train-model.md) funguje jenom se základními algoritmy učení. K-znamená a další algoritmy clusteringu umožňují bezdohledné učení, což znamená, že se algoritmus může naučit z neoznačených dat.  
+> Model clusteringu se nedá vyškolet pomocí modulu [vlakového modelu](train-model.md) , který je obecným modulem pro školení modelů strojového učení. Důvodem je to, že [model výuky](train-model.md) funguje jenom se základními algoritmy učení. K-znamená a další algoritmy clusteringu umožňují bezdohledné učení, což znamená, že se algoritmus může naučit z neoznačených dat.  
   
 ## <a name="how-to-use-train-clustering-model"></a>Použití modelu výukového clusteringu  
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: b3192e4bf25763e870cc618e5e45f16384607b7f
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: c1ebedcf93d66c01c80f7f40171a7aa27441488d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277992"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722148"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace automatizovaných experimentů ML v Pythonu
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -187,11 +187,11 @@ Primární metrika určuje metriku, která se má použít během školení mode
 
 Přečtěte si o konkrétních definicích těchto metrik v seznámení s [automatizovanými výsledky strojového učení](how-to-understand-automated-ml.md).
 
-### <a name="data-preprocessing--featurization"></a>Předzpracování dat & featurization
+### <a name="data-featurization"></a>Featurization dat
 
-U každého automatizovaného experimentu strojového učení se vaše data [automaticky škálují a normalizují](concept-automated-ml.md#preprocess) tak, aby pomohly *určité* algoritmy, které jsou citlivé na funkce, které jsou v různých měřítkech.  Můžete ale také povolit další předzpracování/featurization, například chybějící hodnoty imputac, Encoding a transformes. [Přečtěte si další informace o tom, co je zahrnuté featurization](how-to-create-portal-experiments.md#preprocess).
+U každého automatizovaného experimentu strojového učení se vaše data [automaticky škálují a normalizují](concept-automated-ml.md#preprocess) tak, aby pomohly *určité* algoritmy, které jsou citlivé na funkce, které jsou v různých měřítkech.  Můžete ale také povolit další featurization, například chybějící hodnoty imputac, Encoding a transformes. [Přečtěte si další informace o tom, co je zahrnuté featurization](how-to-create-portal-experiments.md#preprocess).
 
-Chcete-li povolit tuto featurization, zadejte `"preprocess": True` pro [třídu`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
+Chcete-li povolit tuto featurization, zadejte `"featurization": 'auto'` pro [třídu`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
 
 > [!NOTE]
 > Automatické kroky před zpracováním strojového učení (normalizace funkcí, zpracování chybějících dat, převod textu na číselnou atd.) se stanou součástí základního modelu. Při použití modelu pro předpovědi se na vstupní data automaticky aplikují stejné kroky před zpracováním během školení.
@@ -240,7 +240,7 @@ Modely kompletu jsou ve výchozím nastavení povolené a zobrazují se jako pos
 
 Existuje více výchozích argumentů, které lze zadat jako `kwargs` v objektu `AutoMLConfig` pro změnu výchozího chování kompletování zásobníku.
 
-* `stack_meta_learner_type`: meta-učí je model vyškolený na výstupu jednotlivých heterogenní modelů. Výchozí meta-učí se `LogisticRegression` pro úlohy klasifikace (nebo `LogisticRegressionCV`, pokud je povoleno křížové ověřování) a `ElasticNet` pro úlohy regrese/předpovědi (nebo `ElasticNetCV`, pokud je povoleno křížové ověřování). Tento parametr může být jeden z následujících řetězců: `LogisticRegression`, `LogisticRegressionCV`, `LightGBMClassifier`, `ElasticNet`, `ElasticNetCV`, `LightGBMRegressor`nebo `LinearRegression`.
+* `stack_meta_learner_type`: meta-učí je model vyškolený na výstupu jednotlivých heterogenních modelů. Výchozí meta-učí se `LogisticRegression` pro úlohy klasifikace (nebo `LogisticRegressionCV`, pokud je povoleno křížové ověřování) a `ElasticNet` pro úlohy regrese/předpovědi (nebo `ElasticNetCV`, pokud je povoleno křížové ověřování). Tento parametr může být jeden z následujících řetězců: `LogisticRegression`, `LogisticRegressionCV`, `LightGBMClassifier`, `ElasticNet`, `ElasticNetCV`, `LightGBMRegressor`nebo `LinearRegression`.
 * `stack_meta_learner_train_percentage`: určuje podíl sady školení (při výběru typu výuky a ověření školení), který se má rezervovat pro školení meta-učení. Výchozí hodnota je `0.2`.
 * `stack_meta_learner_kwargs`: volitelné parametry, které mají být předána inicializátoru meta-učení. Tyto parametry a typy parametrů zrcadlí parametry a typy parametrů z odpovídajícího konstruktoru modelu a jsou předávány do konstruktoru modelu.
 
@@ -324,7 +324,7 @@ Pokud se nacházíte v poznámkovém bloku, můžete zobrazit výsledky školen�
 ## <a name="understand-automated-ml-models"></a>Principy automatizovaných modelů ML
 
 Libovolný model vytvořený pomocí automatizovaného ML obsahuje následující kroky:
-+ Automatizovaná technologie funkcí (Pokud předzpracování = true)
++ Automatizovaná technologie funkcí (Pokud `"featurization": 'auto'`)
 + Škálování/normalizace a algoritmy s použitím hodnot parametrů
 
 Pro získání těchto informací z fitted_modelho výstupu z automatizovaného ML je transparentní.
@@ -337,7 +337,7 @@ best_run, fitted_model = automl_run.get_output()
 
 ### <a name="automated-feature-engineering"></a>Automatizovaná technologie funkcí
 
-Podívejte se na seznam předzpracovaných a [automatizovaných funkcí](concept-automated-ml.md#preprocess) , ke kterým dochází, když feauturization = auto.
+Podívejte se na seznam předzpracovaných a [automatizovaných funkcí](concept-automated-ml.md#preprocess) , ke kterým dojde, když `"featurization": 'auto'`.
 
 Vezměte v úvahu tento příklad:
 + Existují čtyři vstupní funkce: A (číselná), B (číselná), C (číselná), D (DateTime).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 2c3f733ad5af46c16a6880b8988754fd81ddabb0
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 292b53fac6c970fb961e8ad4ce7774c080e52422
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705552"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718867"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Zakázání brány firewall hostovaného operačního systému na virtuálním počítači Azure
 
@@ -58,7 +58,7 @@ Pokud máte funkčního agenta Azure, můžete použít [rozšíření vlastníc
 
 1.  Připojte se k virtuálnímu počítači, který se nachází ve stejné virtuální síti jako virtuální počítač, ke kterému se nemůžete připojit pomocí připojení RDP.
 
-2.  Otevřete okno konzoly PowerShellu.
+2.  Otevřete okno konzole Powershellu.
 
 3.  Spusťte následující příkazy:
 
@@ -118,9 +118,9 @@ Při použití [vzdáleného registru](https://support.microsoft.com/help/314837
 
 Pokud máte situaci, kdy se k virtuálnímu počítači nemůžete dostat pomocí žádné metody, rozšíření vlastních skriptů se nezdaří a bude nutné pracovat v OFFLINE režimu tak, že přímo na systémovém disku pracujete. Provedete to podle těchto kroků:
 
-1.  [Připojte systémový disk k virtuálnímu počítači pro obnovení](troubleshoot-recovery-disks-portal-windows.md).
+1.  [Připojení disku systému pro virtuální počítač pro obnovení](troubleshoot-recovery-disks-portal-windows.md).
 
-2.  Spusťte připojení ke vzdálené ploše virtuálního počítače pro obnovení.
+2.  Spusťte připojení ke vzdálené ploše pro virtuální počítač pro obnovení.
 
 3.  Ujistěte se, že je disk označen jako online v konzole pro správu disků. Poznamenejte si písmeno jednotky přiřazené k připojenému systémovému disku.
 
@@ -148,7 +148,7 @@ Pokud máte situaci, kdy se k virtuálnímu počítači nemůžete dostat pomoc�
     Set-ItemProperty -Path $key -name 'EnableFirewall' -Value 0 -Type Dword -force
     $key = 'BROKENSYSTEM\ControlSet00'+$ControlSet+'\services\SharedAccess\Parameters\FirewallPolicy\StandardProfile'
     Set-ItemProperty -Path $key -name 'EnableFirewall' -Value 0 -Type Dword -force
-    # To ensure the firewall is not set thru AD policy, check if the following registry entries exist and if they do, then check if the following entries exist:
+    # To ensure the firewall is not set through AD policy, check if the following registry entries exist and if they do, then check if the following entries exist:
     $key = 'HKLM:\BROKENSOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile'
     Set-ItemProperty -Path $key -name 'EnableFirewall' -Value 0 -Type Dword -force
     $key = 'HKLM:\BROKENSOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile'
@@ -160,6 +160,6 @@ Pokud máte situaci, kdy se k virtuálnímu počítači nemůžete dostat pomoc�
     reg unload HKLM\BROKENSOFTWARE
     ```
 
-10. [Odpojte systémový disk a vytvořte virtuální počítač znovu](troubleshoot-recovery-disks-portal-windows.md).
+10. [Odpojení disku a znovu vytvořte virtuální počítač](troubleshoot-recovery-disks-portal-windows.md).
 
-11. Ověřte, zda je problém vyřešen.
+11. Zkontrolujte, zda byl problém vyřešen.

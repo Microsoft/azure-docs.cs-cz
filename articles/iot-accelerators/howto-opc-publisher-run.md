@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 66e2cb30dcd58b7ad0c6cedbb547f75c8039bc58
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2f99f50ffcccb052526981a712ac5046836a44ae
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824139"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712897"
 ---
 # <a name="run-opc-publisher"></a>Spuštění vydavatele OPC
 
@@ -532,7 +532,7 @@ Výkon a výkon jsou závislé na konfiguraci, kolik uzlů nakonfigurujete pro p
 - Velikost zprávy IoT Hub (výchozí `1`): `--ms`
 - Kapacita fronty monitorovaných položek: `--mq`
 
-Parametr `--mq` určuje horní mez kapacity interní fronty, která ukládá do vyrovnávací paměti všechna oznámení o změně hodnot uzlu OPC. Pokud Vydavatel OPC nemůže odesílat zprávy, aby IoT Hub dostatečně rychle, tato fronta ukládá oznámení do vyrovnávací paměti. Parametr nastaví počet oznámení, která lze ukládat do vyrovnávací paměti. Pokud vidíte, že počet položek v této frontě roste v testovacích běhůch, pak je třeba zabránit tomu, aby se ztrátě zprávy:
+Parametr `--mq` určuje horní mez kapacity interní fronty, která ukládá do vyrovnávací paměti všechna oznámení o změně hodnot uzlu OPC. Pokud Vydavatel OPC nemůže odesílat zprávy, aby IoT Hub dostatečně rychle, tato fronta ukládá oznámení do vyrovnávací paměti. Parametr nastaví počet oznámení, která lze ukládat do vyrovnávací paměti. Pokud vidíte, že počet položek v této frontě roste v testovacích běhůch, pak se vyhnete ztrátě zpráv, které byste měli:
 
 - Omezení IoT Hubho intervalu odesílání
 - Zvětšit IoT Hub velikost zprávy
@@ -579,7 +579,7 @@ current working set in MB: 90
 ==========================================================================
 ```
 
-Výchozí konfigurace odesílá data IoT Hub každých 10 sekund, nebo pokud je IoT Hub k ingestování k dispozici 256 kB dat. Tato konfigurace přidává střední latenci přibližně 10 sekund, ale má nejnižší pravděpodobnost ztrátě dat z důvodu velké velikosti zprávy. Výstup diagnostiky zobrazuje žádné ztracené aktualizace uzlů OPC: `monitored item notifications enqueue failure: 0`.
+Výchozí konfigurace odesílá data IoT Hub každých 10 sekund, nebo pokud je IoT Hub k ingestování k dispozici 256 kB dat. Tato konfigurace přidává střední latenci zhruba po dobu 10 sekund, ale má nejnižší pravděpodobnost ztráty dat z důvodu velké velikosti zprávy. Výstup diagnostiky zobrazuje žádné ztracené aktualizace uzlů OPC: `monitored item notifications enqueue failure: 0`.
 
 #### <a name="constant-send-interval---si-1---ms-0"></a>Interval konstantního odesílání (--si 1--MS 0)
 
@@ -681,7 +681,7 @@ current working set in MB: 90
 ==========================================================================
 ```
 
-Tato konfigurace dávkuje tolik OPC hodnot, kolik jich je možné aktualizovat. Maximální velikost zprávy IoT Hub je 256 kB, která je konfigurována zde. Nepožaduje se žádný časový interval pro odesílání, což znamená, že množství dat IoT Hub k ingestování určuje latenci. Tato konfigurace má nejnižší pravděpodobnost ztrátě všech hodnot uzlu OPC a je vhodná pro publikování vysokého počtu uzlů. Při použití této konfigurace se ujistěte, že váš scénář nemá podmínky, kde je zavedena vysoká latence, pokud není dosažena velikost zprávy 256 kB.
+Tato konfigurace dávkuje tolik OPC hodnot, kolik jich je možné aktualizovat. Maximální velikost zprávy IoT Hub je 256 kB, která je konfigurována zde. Nepožaduje se žádný časový interval pro odesílání, což znamená, že množství dat IoT Hub k ingestování určuje latenci. Tato konfigurace má nejnižší pravděpodobnost ztráty všech hodnot uzlu OPC a je vhodná pro publikování vysokého počtu uzlů. Při použití této konfigurace se ujistěte, že váš scénář nemá podmínky, kde je zavedena vysoká latence, pokud není dosažena velikost zprávy 256 kB.
 
 ## <a name="debug-the-application"></a>Ladění aplikace
 

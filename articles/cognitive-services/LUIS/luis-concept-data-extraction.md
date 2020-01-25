@@ -1,30 +1,23 @@
 ---
 title: Extrakce dat – LUIS
-titleSuffix: Azure Cognitive Services
 description: Extrahovat data z utterance textu s záměry a entitami. Zjistěte, jaký druh dat je možné extrahovat z Language Understanding (LUIS).
-services: cognitive-services
 author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
-ms.author: diberry
-ms.openlocfilehash: ff0a9838d1fcc9db3b6cc25b47c840e01056e6cd
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.date: 01/23/2020
+ms.openlocfilehash: 1c1a744c06e5347625fb96518bd809481ee797e5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703139"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716290"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Extrakce dat z utterance textu s využitím záměrů a entit
-LUIS poskytuje možnost získávat informace z přirozeného jazyka projevy uživatele. Informace jsou extrahovány způsobem, který může být použit programem, aplikací nebo robotem chatu k provedení akce. V následujících částech se dozvíte, jaká data se vracejí z záměrů a entit s příklady JSON.
+Služba LUIS umožňuje získat informace z projevy přirozeného jazyka uživatele. Informace je extrahován tak, že jej lze použít program, aplikace nebo chatovací robot k akci. V následující částech se dozvíte, jaká data jsou vrácena z záměry a entity s příklady JSON.
 
 Nejzávažnější data k extrakci jsou data získaná počítačem, protože se neshoduje s přesným textem. Extrakce dat v počítačích, které [se naučila](luis-concept-entity-types.md) , musí být součástí [cyklu vytváření](luis-concept-app-iteration.md) , dokud nebudete mít jistotu, že obdržíte očekávaná data.
 
-## <a name="data-location-and-key-usage"></a>Umístění dat a použití klíče
-LUIS poskytuje data z publikovaného [koncového bodu](luis-glossary.md#endpoint). **Požadavek https** (post nebo Get) obsahuje utterance a také některé volitelné konfigurace, například pracovní nebo produkční prostředí.
+## <a name="data-location-and-key-usage"></a>Umístění a klíč využití dat
+Služba LUIS poskytuje data z publikovanému [koncový bod](luis-glossary.md#endpoint). **Požadavek HTTPS** (POST nebo GET), obsahuje utterance, jakož i některé volitelné konfigurace, jako je pracovní nebo produkční prostředí.
 
 #### <a name="v2-prediction-endpoint-requesttabv2"></a>[Hodnota koncového bodu předpovědi v2](#tab/V2)
 
@@ -36,14 +29,14 @@ LUIS poskytuje data z publikovaného [koncového bodu](luis-glossary.md#endpoint
 
 Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
 
-* * * 
+* * *
 
-@No__t-0 je k dispozici na stránce **Nastavení** aplikace Luis a také v rámci adresy URL (po `/apps/`) při úpravách této aplikace Luis. @No__t-0 je klíč koncového bodu, který slouží k dotazování aplikace. I když se naučíte LUIS, můžete použít bezplatný a počáteční klíč, ale je důležité změnit klíč koncového bodu na klíč, který podporuje [očekávané využití Luis](luis-boundaries.md#key-limits). Jednotka `timezoneOffset` má minuty.
+`appID` je k dispozici na stránce **Nastavení** aplikace Luis a také v rámci adresy URL (po `/apps/`) při úpravách této aplikace Luis. `subscription-key` Je koncový bod klíče použitého k dotazování vaší aplikace. I když se naučíte LUIS, můžete použít bezplatný a počáteční klíč, ale je důležité změnit klíč koncového bodu na klíč, který podporuje [očekávané využití Luis](luis-boundaries.md#key-limits). `timezoneOffset` Jednotka je minut.
 
-**Odpověď https** obsahuje všechny informace o záměru a entitě, které Luis může určit na základě aktuálního publikovaného modelu pracovního nebo produkčního koncového bodu. Adresa URL koncového bodu se nachází na webu [Luis](luis-reference-regions.md) v části **Správa** na stránce **klíče a koncové body** .
+**Odpovědi HTTP** obsahuje všechny informace o záměru a entity LUIS můžete zjistit na základě aktuální publikované modelu buď koncový bod přípravném nebo produkčním prostředí. Koncový bod adresy URL se nachází na [LUIS](luis-reference-regions.md) webu v **spravovat** části na **klíče a koncových bodů** stránky.
 
-## <a name="data-from-intents"></a>Data z záměrů
-Primární data jsou nejvyšším **názvem záměru**hodnocení. Odpověď koncového bodu:
+## <a name="data-from-intents"></a>Data, od záměrů
+Primární data jsou nahoře vyhodnocování **záměru název**. Koncový bod odpověď je:
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
@@ -78,18 +71,18 @@ Primární data jsou nejvyšším **názvem záměru**hodnocení. Odpověď konc
 
 Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
 
-* * * 
+* * *
 
-|Datový objekt|Datový typ|Umístění dat|Hodnota|
+|Datový objekt|Typ dat|Umístění dat|Hodnota|
 |--|--|--|--|
-|Úmysl|String|topScoringIntent. záměr|"GetStoreInfo"|
+|Záměr|Řetězec|topScoringIntent.intent|"GetStoreInfo"|
 
 Pokud vaše aplikace chatovací robot nebo LUIS volá rozhodnutí na základě více než jednoho skóre záměru, vrátí všechny skóre záměrů.
 
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
-Nastavte parametr QueryString `verbose=true`. Odpověď koncového bodu:
+Nastavte parametr QueryString `verbose=true`. Koncový bod odpověď je:
 
 ```JSON
 {
@@ -114,7 +107,7 @@ Nastavte parametr QueryString `verbose=true`. Odpověď koncového bodu:
 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
-Nastavte parametr QueryString `show-all-intents=true`. Odpověď koncového bodu:
+Nastavte parametr QueryString `show-all-intents=true`. Koncový bod odpověď je:
 
 ```JSON
 {
@@ -138,16 +131,16 @@ Nastavte parametr QueryString `show-all-intents=true`. Odpověď koncového bodu
 
 Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
 
-* * * 
+* * *
 
-Záměry jsou seřazené od nejvyšších po nejnižší skóre.
+Příkazů jsou seřazené od nejvyšší k nejnižší skóre.
 
-|Datový objekt|Datový typ|Umístění dat|Hodnota|Podtržítk|
+|Datový objekt|Typ dat|Umístění dat|Hodnota|Hodnocení|
 |--|--|--|--|:--|
-|Úmysl|String|záměry [0]. záměr|"GetStoreInfo"|0,984749258|
-|Úmysl|String|záměry [1]. záměr|NTato|0,0168218873|
+|Záměr|Řetězec|.intent záměry [0]|"GetStoreInfo"|0.984749258|
+|Záměr|Řetězec|.intent záměry [1]|"None"|0.0168218873|
 
-Pokud přidáte předem připravené domény, název záměru označuje doménu, například `Utilties` nebo `Communication`, a také záměr:
+Pokud chcete přidat předem připravených domén, záměru název označuje domény, jako například `Utilties` nebo `Communication` a také záměr:
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
@@ -201,21 +194,21 @@ Pokud přidáte předem připravené domény, název záměru označuje doménu,
 
 Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
 
-* * * 
+* * *
 
-|Domain|Datový objekt|Datový typ|Umístění dat|Hodnota|
+|Domain (Doména)|Datový objekt|Typ dat|Umístění dat|Hodnota|
 |--|--|--|--|--|
-|Nástroje|Úmysl|String|záměry [0]. záměr|"<b>Nástroje</b>. ShowNext"|
-|Telecommunication|Úmysl|String|záměry [1]. záměr|<b>Komunikace</b>. StartOver"|
-||Úmysl|String|záměry [2]. záměr|NTato|
+|Veřejné služby|Záměr|Řetězec|.intent záměry [0]|"<b>Nástroje</b>. ShowNext"|
+|Komunikace|Záměr|Řetězec|.intent záměry [1]|<b>Komunikace</b>. StartOver"|
+||Záměr|Řetězec|.intent záměry [2]|"None"|
 
 
-## <a name="data-from-entities"></a>Data z entit
-Většina chatovacích robotů o a aplikací vyžaduje více než název záměru. Tato další volitelná data pocházejí z entit zjištěných v utterance. Každý typ entity vrátí různé informace o shodě.
+## <a name="data-from-entities"></a>Data z entity
+Většina chatovacích a aplikace potřebovat vyšší než záměru názvu. Tato data dalších, volitelných pochází z entity objeví ve službě utterance. Každý typ entity, vrátí různé informace o zjištěné shodě.
 
-Jedno slovo nebo fráze v utterance se může shodovat s více než jednou entitou. V takovém případě se každá odpovídající entita vrátí se svým skóre.
+Jedno slovo nebo frázi v utterance může odpovídat více než jednu entitu. V takovém případě se vrátí každá odpovídající entita s jeho skóre.
 
-Všechny entity se vrátí v poli **entity** odpovědi z koncového bodu:
+Všechny entity jsou vráceny v **entity** pole odpovědi z koncového bodu:
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
@@ -250,27 +243,26 @@ Všechny entity se vrátí v poli **entity** odpovědi z koncového bodu:
 ```
 Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
 
-* * * 
+* * *
 
-## <a name="tokenized-entity-returned"></a>Byla vrácena entita s tokenem.
-Několik [kultur](luis-language-support.md#tokenization) vrací objekt entity s hodnotou `entity` s [tokenem](luis-glossary.md#token). Hodnota startIndex a hodnota endIndex vrácená nástrojem LUIS v objektu entity není mapována na novou hodnotu s tokeny, ale místo na původní dotaz, aby bylo možné nezpracované entity programově extrahovat. 
+## <a name="tokenized-entity-returned"></a>Vrátí tokenizovaná entity
 
-Například v němčině je slovo `das Bauernbrot` rozděleno do `das bauern brot`. Vyhodnocená hodnota `das bauern brot` se vrátí a původní hodnota se dá programově určit z hodnoty startIndex a hodnota endIndex původního dotazu. tím `das Bauernbrot`.
+Přečtěte si [podporu tokenů](luis-language-support.md#tokenization) v Luis.
 
-## <a name="simple-entity-data"></a>Jednoduchá data entity
+## <a name="simple-entity-data"></a>Jednoduchou entitu dat
 
-[Jednoduchá entita](reference-entity-simple.md) je hodnota zjištěná počítačem. Může se jednat o slovo nebo frázi.
+A [jednoduchou entitu](reference-entity-simple.md) je hodnota zjištěné počítače. Může být slova nebo fráze.
 
-## <a name="composite-entity-data"></a>Data složených entit
+## <a name="composite-entity-data"></a>Složený entitu dat
 
-[Složená entita](reference-entity-composite.md) je tvořena dalšími entitami, jako jsou předem připravené entity, jednoduché, regulární výrazy a seznam entit. Samostatné entity tvoří celou entitu. 
+[Složená entita](reference-entity-composite.md) je tvořena dalšími entitami, jako jsou předem připravené entity, jednoduché, regulární výrazy a seznam entit. Samostatné entity tvoří celé entity.
 
-## <a name="list-entity-data"></a>Vypsat data entity
+## <a name="list-entity-data"></a>Seznam dat entity
 
-[Seznam entit](reference-entity-list.md) představuje pevně uzavřenou sadu příbuzných slov spolu s jejich synonymy. LUIS nezjistí další hodnoty pro entity seznamu. Pomocí funkce **doporučit** můžete zobrazit návrhy nových slov na základě aktuálního seznamu. Pokud existuje více než jedna entita seznamu se stejnou hodnotou, Každá entita se vrátí v dotazu koncového bodu. 
+[Seznam entit](reference-entity-list.md) představuje pevně uzavřenou sadu příbuzných slov spolu s jejich synonymy. Služba LUIS nevyhledává další hodnoty pro seznam entit. Použití **doporučujeme** funkce návrhy pro nové slova na základě aktuálního seznamu. Pokud existuje více než jednu entitu seznamu se stejnou hodnotou, je každá entita vrácené dotazem koncový bod.
 
-## <a name="prebuilt-entity-data"></a>Předem vytvořená data entity
-[Předem připravené](luis-concept-entity-types.md) entity jsou zjištěny na základě regulárního výrazu, který se shoduje s použitím open source [rozpoznávacích výrazů – textový](https://github.com/Microsoft/Recognizers-Text) projekt. Předem připravené entity jsou vráceny v poli entity a používají název typu s předponou `builtin::`. Následující text je příklad utterance s vrácenými předem vytvořenými entitami:
+## <a name="prebuilt-entity-data"></a>Data předem připravených entit
+[Předem připravené](luis-concept-entity-types.md) entity jsou zjištěny shoda s regulárním výrazem pomocí open source [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text) projektu. Předem připravených entit se vrátí jako pole entity a použijte předponu názvu typu `builtin::`. Následující text je příkladu utterance s vrácené předem připravených entit:
 
 `Dec 5th send to +1 360-555-1212`
 
@@ -399,7 +391,7 @@ Bez parametru QueryString `verbose=true`:
 }
 ```
 
-S parametrem QueryString `verbose=true`:
+Pomocí parametru QueryString `verbose=true`:
 
 ```json
 
@@ -534,39 +526,39 @@ S parametrem QueryString `verbose=true`:
 
 Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
 
-* * * 
+* * *
 ## <a name="regular-expression-entity-data"></a>Data entity regulárního výrazu
 
 [Entita regulárního výrazu](reference-entity-regular-expression.md) extrahuje entitu na základě vzoru regulárního výrazu, který zadáte.
 
 ## <a name="extracting-names"></a>Extrahování názvů
-Získání názvů z utterance je obtížné, protože název může být skoro libovolná kombinace písmen a slov. V závislosti na tom, jaký typ názvu se chystáte extrahovat, máte několik možností. Následující návrhy nejsou pravidla, ale další pokyny.
+Získávání názvů z utterance je obtížné, protože název může být téměř libovolnou kombinací písmena a slova. V závislosti na tom, jaký typ názvu se chystáte extrahovat, máte několik možností. Následující návrhy nejsou pravidla, ale další pokyny.
 
 ### <a name="add-prebuilt-personname-and-geographyv2-entities"></a>Přidání předdefinovaných entit Person a GeographyV2
 
-Entity [Person](luis-reference-prebuilt-person.md) a [GeographyV2](luis-reference-prebuilt-geographyV2.md) jsou k dispozici v některých [jazykových kulturách](luis-reference-prebuilt-entities.md). 
+Entity [Person](luis-reference-prebuilt-person.md) a [GeographyV2](luis-reference-prebuilt-geographyV2.md) jsou k dispozici v některých [jazykových kulturách](luis-reference-prebuilt-entities.md).
 
-### <a name="names-of-people"></a>Jména lidí
+### <a name="names-of-people"></a>Jména osob
 
-Jméno osoby může mít v závislosti na jazyku a jazykové verzi trochu mírné formátování. Použijte buď předem sestavenou entitu **[Person](luis-reference-prebuilt-person.md)** , nebo **[jednoduchou entitu](luis-concept-entity-types.md#simple-entity)** s [rolemi](luis-concept-roles.md) jména a příjmení. 
+Název lidí může mít některé mírné formátu v závislosti na jazyk a jazykovou verzi. Použijte buď předem sestavenou entitu **[Person](luis-reference-prebuilt-person.md)** , nebo **[jednoduchou entitu](luis-concept-entity-types.md#simple-entity)** s [rolemi](luis-concept-roles.md) jména a příjmení.
 
-Pokud používáte jednoduchou entitu, nezapomeňte uvést příklady, které používají jméno a příjmení v různých částech utterance, v projevy různých délek a projevy napříč všemi záměry, včetně záměru None. Pravidelně [kontrolujte](luis-how-to-review-endoint-utt.md) koncový bod projevy, abyste mohli popsat všechny názvy, které nebyly předpovídat správně.
+Pokud používáte jednoduchou entitu, nezapomeňte uvést příklady, které používají jméno a příjmení v různých částech utterance, v projevy různých délek a projevy napříč všemi záměry, včetně záměru None. [Kontrola](luis-how-to-review-endoint-utt.md) projevy koncový bod v pravidelných intervalech, aby všechny názvy, které nebyly správně předpovědět popisků.
 
 ### <a name="names-of-places"></a>Názvy míst
 
 Názvy umístění se nastavují a označují jako města, okresy, stavy, provincie a země nebo oblasti. K extrakci informací o poloze použijte předem sestavenou entitu **[geographyV2](luis-reference-prebuilt-geographyv2.md)** .
 
-### <a name="new-and-emerging-names"></a>Nové a vycházející názvy
+### <a name="new-and-emerging-names"></a>Nové a chystané názvy
 
-Některé aplikace musí být schopné najít nové a nově vznikající názvy, jako jsou produkty nebo společnosti. Tyto typy názvů jsou nejobtížnějším typem extrakce dat. Začněte **[jednoduchou entitou](luis-concept-entity-types.md#simple-entity)** a přidejte [seznam frází](luis-concept-feature.md). Pravidelně [kontrolujte](luis-how-to-review-endoint-utt.md) koncový bod projevy, abyste mohli popsat všechny názvy, které nebyly předpovídat správně.
+Některé aplikace musí být schopna najít nové a chystané názvy, například produkty nebo společnosti. Tyto typy názvů jsou nejobtížnějším typem extrakce dat. Začněte **[jednoduchou entitou](luis-concept-entity-types.md#simple-entity)** a přidejte [seznam frází](luis-concept-feature.md). [Kontrola](luis-how-to-review-endoint-utt.md) projevy koncový bod v pravidelných intervalech, aby všechny názvy, které nebyly správně předpovědět popisků.
 
-## <a name="pattern-roles-data"></a>Data vzorových rolí
-Role jsou kontextové rozdíly mezi entitami.
+## <a name="pattern-roles-data"></a>Vzor role dat
+Role jsou kontextové rozdíly entit.
 
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
-Název entity je `Location` se dvěma rolemi `Origin` a `Destination`.
+Název entity je `Location`se dvěma rolemi, `Origin` a `Destination`.
 
 ```JSON
 "entities": [
@@ -599,9 +591,9 @@ Název entity je `Location` se dvěma rolemi `Origin` a `Destination`.
 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
-V v3 je **název role** primárním názvem objektu. 
+V v3 je **název role** primárním názvem objektu.
 
-Název entity je `Location` se dvěma rolemi `Origin` a `Destination`.
+Název entity je `Location`se dvěma rolemi, `Origin` a `Destination`.
 
 Bez parametru QueryString `verbose=true`:
 
@@ -619,7 +611,7 @@ Bez parametru QueryString `verbose=true`:
 }
 ```
 
-S parametrem QueryString `verbose=true`:
+Pomocí parametru QueryString `verbose=true`:
 
 ```json
 "entities": {
@@ -685,17 +677,17 @@ Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migrati
 
 * * *
 
-## <a name="patternany-entity-data"></a>Vzor. libovolná data entity
+## <a name="patternany-entity-data"></a>Pattern.Any entity data
 
-[Pattern. any](reference-entity-pattern-any.md) je zástupný symbol s proměnlivou délkou, který se používá jenom v šabloně vzoru utterance k označení, kde začíná a končí entita.  
+[Pattern. any](reference-entity-pattern-any.md) je zástupný symbol s proměnlivou délkou, který se používá jenom v šabloně vzoru utterance k označení, kde začíná a končí entita.
 
-## <a name="sentiment-analysis"></a>Analýza mínění
-Pokud je nakonfigurovaná analýza mínění, odpověď LUIS JSON zahrnuje analýzu mínění. Další informace o analýze mínění najdete v dokumentaci k [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) .
+## <a name="sentiment-analysis"></a>Analýza subjektivního hodnocení
+Pokud je nakonfigurovaná analýza mínění, LUIS odpověď json zahrnuje analýzu subjektivního hodnocení. Další informace o analýzu mínění v [rozhraní Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) dokumentaci.
 
-### <a name="sentiment-data"></a>Mínění data
-Mínění data jsou skóre mezi 1 a 0 značící kladné (blíže k 1) nebo záporné (navýšení na 0) mínění dat.
+### <a name="sentiment-data"></a>Data o mínění
+Je skóre mezi 1 a 0 označující pozitivní mínění data (blíže 1) ani na zápornou (blíže 0) mínění data.
 
-Pokud je jazyková verze `en-us`, odpověď je:
+Když je jazyková verze `en-us`, odpověď je:
 
 ```JSON
 "sentimentAnalysis": {
@@ -704,7 +696,7 @@ Pokud je jazyková verze `en-us`, odpověď je:
 }
 ```
 
-Pro všechny ostatní jazykové verze je odpověď:
+Pro všechny jiné jazykové verze odpověď je:
 
 ```JSON
 "sentimentAnalysis": {
@@ -714,7 +706,7 @@ Pro všechny ostatní jazykové verze je odpověď:
 
 
 ### <a name="key-phrase-extraction-entity-data"></a>Data entity extrakce klíčových frází
-Entita pro extrakci klíčových frází vrátí klíčové fráze v utterance, které poskytuje [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/).
+Entity extrakce klíčových frází vrací klíčové fráze v utterance, poskytuje [rozhraní Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/).
 
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
@@ -768,7 +760,7 @@ Bez parametru QueryString `verbose=true`:
 }
 ```
 
-S parametrem QueryString `verbose=true`:
+Pomocí parametru QueryString `verbose=true`:
 
 ```json
 "entities": {
@@ -822,9 +814,9 @@ Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migrati
 * * *
 
 
-## <a name="data-matching-multiple-entities"></a>Data, která odpovídají více entitám
+## <a name="data-matching-multiple-entities"></a>Data odpovídající více entit
 
-LUIS vrátí všechny entity zjištěné ve utterance. V důsledku toho může vaše chatovací robot vyžadovat rozhodnutí na základě výsledků. Utterance může mít mnoho entit v utterance:
+Služba LUIS vrátí všechny entity v utterance. V důsledku toho může váš robot třeba, aby rozhodování na základě výsledků. Utterance může mít mnoho entit v utterance:
 
 `book me 2 adult business tickets to paris tomorrow on air france`
 
@@ -958,7 +950,7 @@ Koncový bod LUIS může vyhledat stejná data v různých entitách.
 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
-Bez `verbose=true` jako parametru QueryString.
+Bez `verbose=true` jako parametr řetězce dotazu.
 
 ```json
 "entities": {
@@ -995,7 +987,7 @@ Bez `verbose=true` jako parametru QueryString.
 }
 ```
 
-With `verbose=true` jako parametr řetězce dotazu.
+S `verbose=true` jako parametr řetězce dotazu.
 
 
 ```json
@@ -1139,9 +1131,9 @@ Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migrati
 
 ## <a name="data-matching-multiple-list-entities"></a>Data, která odpovídají více entitám seznamu
 
-Pokud slovo nebo fráze odpovídá více entitám seznamu, dotaz koncového bodu vrátí každou entitu seznamu.
+Pokud slovo nebo frázi, odpovídá více než jednu entitu seznamu, koncový bod dotaz vrátí Každá entita seznamu.
 
-U dotazu `when is the best time to go to red rock?` a aplikace má slovo `red` ve více než jednom seznamu, LUIS rozpoznává všechny entity a vrátí pole entit jako součást odpovědi koncového bodu JSON: 
+Pro dotaz `when is the best time to go to red rock?`, a aplikace obsahuje slovo `red` ve více než jeden seznam, LUIS, rozpozná všechny entity a vrátí pole entit jako součást koncového bodu odpověď JSON:
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
@@ -1276,4 +1268,4 @@ Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migrati
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak přidat entity do aplikace LUIS, najdete v tématu věnovaném [Přidání entit](luis-how-to-add-entities.md) .
+Zobrazit [přidat entity](luis-how-to-add-entities.md) získat další informace o přidání entity do aplikace LUIS.

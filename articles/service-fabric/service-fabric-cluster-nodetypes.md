@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 4175dfe4ed5b7aa1064e8ba25c5b44243e4c79b0
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: e751b3dd9108d364c900bbd059dc89c1eb3770c4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028504"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722335"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Typy uzlů Service Fabric Azure a Virtual Machine Scale Sets
 
@@ -75,7 +75,7 @@ Níže jsou uvedeny popisy vlastností:
 | jméno | string | jedinečný název pro rozšíření |
 | type | "ServiceFabricLinuxNode" nebo "ServiceFabricWindowsNode" | Identifikuje Service Fabric operačního systému. |
 | autoUpgradeMinorVersion | true nebo false | Povolit automatický upgrade dílčích verzí SF modulu runtime |
-| publisher | Microsoft.Azure.ServiceFabric | název vydavatele rozsahu Service Fabric |
+| publisher | Microsoft.Azure.ServiceFabric | Název vydavatele rozšíření Service Fabric |
 | clusterEndpont | string | Identifikátor URI: PORT pro koncový bod správy |
 | nodeTypeRef | string | název nodeType |
 | durabilityLevel | bronzová, stříbrná, zlatá, Platinum | doba, po kterou je možné pozastavit neproměnlivou infrastrukturu Azure |

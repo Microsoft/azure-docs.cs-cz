@@ -3,20 +3,20 @@ title: Průvodce Azure AI pro řešení prediktivní údržby – vědecké zpra
 description: Úplný popis pro datové vědy, která je základem řešení prediktivní údržby v několika vertikální obory.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: d5201cd2e7c117e1229fcd04d77e8c429c1fc8ba
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5cd16280ba942404ffb23fd1c9d0e1a20af8c7c4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977127"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721808"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Průvodce Azure AI pro řešení prediktivní údržby
 
@@ -43,7 +43,7 @@ Obsah BDM neočekává čtečka, která má mít žádnou znalost předchozí da
 
 Aby se podnikům vrátily investiční náklady, potřebují, aby klíčové vybavení fungovalo s maximální efektivitou a využitím. Těmito prostředky může být cokoli od leteckých motorů, turbín, výtahů nebo průmyslových chladicích zařízení, která stojí miliony, až po všední zařízení, jako jsou kopírky, kávovary nebo chladiče vody.
 - Ve výchozím nastavení, Spolehněte se na většinu firem _opravné údržby_, kde nahrazuje částí a při jejich selhání. Nápravná údržba zajišťuje úplné využití součástek (a tedy brání jejich plýtvání), ale přináší podnikům náklady z hlediska výpadků, práce a požadavků na neplánovanou údržbu (mimo pracovní dobu nebo na nevhodných místech).
-- Na další úrovni, postupem firmám _preventivní údržby_, kde určit užitečné životnosti pro určitou část a udržovat nebo nahradit před selhání. Preventivní údržba brání neplánovaným a katastrofickým selháním. Ale vysokým nákladům spojeným s plánovaný výpadek, snížení využití součásti před úplnou dobu života použití a práci stále zůstanou.
+- Na další úrovni, postupem firmám _preventivní údržby_, kde určit užitečné životnosti pro určitou část a udržovat nebo nahradit před selhání. Preventivní údržba brání neplánovaným a katastrofickým selháním. Ale vysoké náklady na plánované výpadky, využití komponenty během své užitečné životnosti, a stále ještě zůstává práce.
 - Cílem _prediktivní údržby_ je k optimalizaci rovnováhu mezi opravné a preventivní údržby, povolením _právě včas_ nahrazení komponent. V rámci tohoto přístupu se nahrazují pouze komponenty, u kterých se blíží selhání. Prodloužením životnosti komponent (v porovnání s preventivní údržbou) a snížením nákladů na neplánovanou údržbu a práci (oproti nápravné údržbě) můžou podniky dosáhnout úspor nákladů a získat konkurenční výhodu.
 
 ## <a name="business-problems-in-pdm"></a>Obchodní problémy PdM
@@ -92,7 +92,7 @@ Tato část se zaměřuje na kolekci PdM případy použití v několika oborech
 |**Finance** |                         |
 |_Selhání ATM_ problém je běžný v rámci oboru bankovnictví. Problémem je pravděpodobnost, že transakci ATM hotovosti stažení dojde k přerušení kvůli chybě dokumentu zaseknutý nebo její část v hotovosti řadič sestavy. Podle predikcí selhání transakce, Network lze udržovat proaktivně zabránit výskytu chyby.| Místo umožňují počítači nezdaří polovině transakce, žádoucí alternativou je program počítače k odepření služby podle do predikce.|
 |**Energie** |                          |
-|_Chyby větrné turbíny_: větrné turbíny jsou hlavním zdrojem energie v rámci životně zodpovědných zemí nebo oblastí v životním prostředí a zahrnují velké náklady. Klíčovou součástí větrné turbíny je generátor motoru. nezdařeného vykreslí turbíny neefektivní. Je také velmi nákladné opravit.|Předpověď klíčové ukazatele výkonu, jako je například MTTF (průměrný čas potřebný k selhání) může pomoct energetickým společnostem turbíny selhání a zajistit minimálními prostoji. Pravděpodobnosti selhání bude informovat rozvržení služeb techniků pro monitorování turbíny, které můžou brzy dojde k selhání a naplánovat režimy založeného na čase údržby. Prediktivní modely poskytují přehled o různých faktorů, které přispívají k selhání, která pomáhá techniků lépe pochopili původní příčiny problémů.|
+|_Chyby větrné turbíny_: větrné turbíny jsou hlavním zdrojem energie v rámci životně zodpovědných zemí nebo oblastí v životním prostředí a zahrnují velké náklady. Klíčovou komponentou v větrných turbínách je generátor motoru, jehož selhání vykresluje turbínu neúčinným. Je také velmi nákladné opravit.|Předpověď klíčové ukazatele výkonu, jako je například MTTF (průměrný čas potřebný k selhání) může pomoct energetickým společnostem turbíny selhání a zajistit minimálními prostoji. Pravděpodobnosti selhání bude informovat rozvržení služeb techniků pro monitorování turbíny, které můžou brzy dojde k selhání a naplánovat režimy založeného na čase údržby. Prediktivní modely poskytují přehled o různých faktorů, které přispívají k selhání, která pomáhá techniků lépe pochopili původní příčiny problémů.|
 |_Jistič selhání_: distribuce elektřiny domovů a podniků vyžaduje power řádky za všech okolností zaručit doručování energie byla funkční. Jističe pomůžou omezit nebo vyloučit poškození power řádků při přetížení nebo negativní weather podmínky. Obchodní problémem je Předvídejte selhání jističe.| Řešení PdM pomoct snížit náklady na opravu a zvýšit životnost vybavení, jako jsou jističe. Pomáhají zlepšovat kvalitu výkon sítě snížením neočekávaných chyb a přerušení služeb.|
 |**Dopravy a logistiky** |    |
 |_Selhání dveře elevator_: hodnocení velkých společností poskytování služeb plnohodnotných miliony funkční výtahy po celém světě. Výtah bezpečnost, spolehlivost a dostupnost jsou hlavních cílů pro své zákazníky. Těmto společnostem sledovat tyto a různých dalších atributů prostřednictvím snímačů, abychom jim opravné i preventivní údržby. V hodnocení nejvýraznější potíže zákazníka nefunguje dveře hodnocení. V tomto případě je poskytnout prediktivní aplikace znalostní báze, který bude předpovídat, že způsobí, že riziko chyb dveře obchodního problému.| Výtahy jsou investiční pro potenciálně životnost 20 – 30 rok. Proto může být vysoce konkurenčním prostředí; každý potenciální prodej Proto mají vysoká očekávání pro servis a podporu. Prediktivní údržby může poskytnout tyto společnosti výhodu oproti konkurenci ve svých produktech a nabídek služeb.|
@@ -203,9 +203,9 @@ Obchodní požadavky definují, jak daleko modelu má k předvídání budoucí.
 #### <a name="rolling-aggregates"></a>Agregace se zajištěním provozu
 Pro každý záznam prostředku postupné okno velikosti "W" vybrána jako počet časových jednotek pro výpočet agregací. Funkce Lag jsou pak vypočítán s použitím období W _před datem_ daného záznamu. Na obrázku 1 modré čáry zobrazit hodnoty čidel zaznamenaných pro určitý prostředek pro každou jednotku času. Souhrnný průměr hodnot funkce, označení za období velikost W = 3. Je souhrnný průměr vypočítaný přes všechny záznamy s časovými razítky v rozsahu t<sub>1</sub> (zvýrazněných oranžovou barvou) na t<sub>2</sub> (zeleně). Hodnota W je obvykle v minut nebo hodin v závislosti na povaze data. Ale pro některé problémy, výběr velké W (třeba 12 měsíců) poskytují celou historii prostředek až do okamžiku záznamu.
 
-![Obrázek 1: Agregační funkce se zajištěním provozu](./media/cortana-analytics-playbook-predictive-maintenance/rolling-aggregate-features.png)
+![Obrázek 1. Agregační funkce se zajištěním provozu](./media/cortana-analytics-playbook-predictive-maintenance/rolling-aggregate-features.png)
 
-Obrázek 1: Agregační funkce se zajištěním provozu
+Obrázek 1. Agregační funkce se zajištěním provozu
 
 Příklady v časovém intervalu se zajištěním provozu agregace jsou počet, průměr, míry CUMESUM (kumulativní součet), minimální/maximální hodnoty. Kromě toho odchylky, směrodatná odchylka a počet odlehlé hodnoty nad rámec standardních odchylek N se často používají. Příklady agregace, které mohou být použity pro [případy použití](#sample-pdm-use-cases) v této příručce jsou uvedeny níže. 
 - _Zpoždění letu_: počet kódů chyb za poslední den/týden.
@@ -271,7 +271,7 @@ Je tady na otázku: "co je pravděpodobnost, že prostředek se nezdaří v př�
 Obrázek 3. Popisky pro binární klasifikaci
 
 Níže jsou uvedeny příklady vytváření popisků strategie pro některé případy použití.
-- _Zpoždění letu_: X může být zvolen jako 1 den, k předpovědi zpoždění v příštích 24 hodin. Potom všechny lety, které jsou během 24 hodin před selháním jsou označeny jako 1.
+- _Zpoždění letu_: X se dá zvolit jako jeden den, aby se předpovídá zpoždění v příštích 24 hodinách. Potom všechny lety, které jsou během 24 hodin před selháním jsou označeny jako 1.
 - _Platební ATM štítků selhání_: Cílem může být určit pravděpodobnost selhání transakce za další jednu hodinu. V takovém případě všechny transakce, ke kterým došlo během poslední hodiny selhání jsou označeny jako 1. Předvídá pravděpodobnost selhání za další měny N poznámky distribuován, všechny poznámky distribuován v rámci poslední N poznámky selhání jsou označeny jako 1.
 - _Jistič selhání_: Cílem může být k další chybě příkazu jistič předpovědi. V takovém případě X je vybrán jako budoucí jeden příkaz.
 - _Trénování dveře selhání_: X může být zvolen jako dva dny.
@@ -423,9 +423,9 @@ Naproti tomu PdM zahrnuje _dávkové bodování_. Tak, aby odpovídal na podpis,
 
 Poslední části této příručky obsahuje seznam šablon řešení PdM, kurzy a experimenty, které jsou implementované v Azure. Tyto aplikace PdM je možné nasadit do předplatného Azure během několika minut v některých případech. Se může sloužit jako testování konceptu ukázky, sandboxy můžete experimentovat s alternativami nebo akcelerátory pro skutečné produkční implementace. Tyto šablony jsou umístěny [galerii Azure AI](https://gallery.azure.ai) nebo [Azure na Githubu](https://github.com/Azure). Tyto různé ukázky budou vráceny do Tato šablona řešení v čase.
 
-| # | Název | Popis |
+| # | Nadpis | Popis |
 |--:|:------|-------------|
-| 2 | [Šablona řešení prediktivní údržby Azure](https://github.com/Azure/AI-PredictiveMaintenance) | Open Source šablona řešení, která ukazuje modelování Azure ML a kompletní infrastrukturu Azure s podporou scénářů prediktivní údržby v kontextu vzdáleného monitorování IoT. |
+| 2 | [Šablona řešení prediktivní údržby Azure](https://github.com/Azure/AI-PredictiveMaintenance) | Open Source šablona řešení, která předvádí modelování Azure ML a kompletní infrastrukturu Azure s podporou scénářů prediktivní údržby v kontextu vzdáleného monitorování IoT. |
 | 3 | [Hloubkové učení pro prediktivní údržbu](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | Azure Poznámkový blok s řešením ukázku použití sítí LSTM (Long krátkodobé paměti) (třída Rekurentní Neuronové sítě) pro prediktivní údržbu se [blogovém příspěvku s tímto příkladem](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance).|
 | 4 | [Průvodce modelováním prediktivní údržby v jazyce R](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) | Průvodce modelováním PdM pomocí skriptů v jazyce R.|
 | 5 | [Azure prediktivní Údržba pro letectví](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | Jeden z první šablony řešení PdM založené na Azure ML v1.0 kvůli údržbě letadla. Tento průvodce, vytvoří se z tohoto projektu. |

@@ -1,19 +1,18 @@
 ---
 title: Schéma předplatného služby Azure Event Grid
-description: Popisuje vlastnosti pro přihlášení k odběru události pomocí služby Azure Event Grid.
+description: Tento článek popisuje vlastnosti pro přihlášení k odběru události s Azure Event Grid. Schéma předplatného Event Grid.
 services: event-grid
 author: banisadr
-manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/02/2019
+ms.date: 01/23/2020
 ms.author: babanisa
-ms.openlocfilehash: 6129c7f498ce6c52fce4266f693c6a304642f8c3
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 4bb04d22b762f31a02515549b698030a5267e4cd
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845472"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720754"
 ---
 # <a name="event-grid-subscription-schema"></a>Schéma předplatného Event Grid
 
@@ -42,17 +41,17 @@ Název odběru události musí být dlouhý 3 až 64 znaků a může obsahovat p
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| endpointType | řetězec | Typ koncového bodu pro předplatné (webhook/HTTP, Centrum událostí nebo fronty). | 
-| endpointUrl | řetězec | Cílová adresa URL pro události v tento odběr události. | 
+| endpointType | string | Typ koncového bodu pro předplatné (webhook/HTTP, Centrum událostí nebo fronty). | 
+| endpointUrl | string | Cílová adresa URL pro události v tento odběr události. | 
 
 ### <a name="filter-object"></a>objekt filtru
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | includedEventTypes | pole | Shoda, když typ události ve zprávě události je přesnou shodu na jednu z těchto názvů typu event. Vyvolá chybu, pokud název události se neshoduje s názvy typů registrované události pro zdroje událostí. Výchozí odpovídá všechny typy událostí. |
-| subjectBeginsWith | řetězec | Shodu předpony filtr na pole Předmět v případě zprávy. Výchozí nebo prázdný řetězec odpovídá všem. | 
-| subjectEndsWith | řetězec | Přípona match filtr na pole Předmět v případě zprávy. Výchozí nebo prázdný řetězec odpovídá všem. |
-| isSubjectCaseSensitive | řetězec | Ovládací prvky malá a velká písmena odpovídající pro filtry. |
+| subjectBeginsWith | string | Shodu předpony filtr na pole Předmět v případě zprávy. Výchozí nebo prázdný řetězec odpovídá všem. | 
+| subjectEndsWith | string | Přípona match filtr na pole Předmět v případě zprávy. Výchozí nebo prázdný řetězec odpovídá všem. |
+| isSubjectCaseSensitive | string | Ovládací prvky malá a velká písmena odpovídající pro filtry. |
 
 
 ## <a name="example-subscription-schema"></a>Příklad schéma předplatného
@@ -76,6 +75,6 @@ Název odběru události musí být dlouhý 3 až 64 znaků a může obsahovat p
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Úvod do služby Event Grid najdete v tématu [novinky služby Event Grid?](overview.md)

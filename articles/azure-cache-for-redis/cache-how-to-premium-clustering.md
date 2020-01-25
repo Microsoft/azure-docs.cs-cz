@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
-ms.openlocfilehash: ddb44a064090a108f77d6a6f9a270fab8c55ec90
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 761c464730096eba36bc7c04227745cf362e5cc6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433436"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714464"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Postup konfigurace clusteringu Redis pro mezipaměť Azure úrovně Premium pro Redis
 Azure cache pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu v výběru velikosti a funkcí mezipaměti, včetně funkcí úrovně Premium, jako je podpora clusteringu, trvalosti a virtuální sítě. Tento článek popisuje, jak nakonfigurovat clustering v mezipaměti Azure Premium pro instanci Redis.
@@ -58,12 +58,7 @@ Vzorový kód při práci s Clustering s klientem StackExchange. Redis najdete v
 <a name="cluster-size"></a>
 
 ## <a name="change-the-cluster-size-on-a-running-premium-cache"></a>Změna velikosti clusteru v běžící mezipaměti Premium
-Pokud chcete změnit velikost clusteru běžící mezipaměti Premium s povoleným clusteringem, klikněte na **Velikost clusteru Redis** v **nabídce prostředky**.
-
-> [!NOTE]
-> I když je Azure cache pro Redis úrovně Premium vydaný pro obecnou dostupnost, funkce velikosti clusterů Redis je momentálně ve verzi Preview.
-> 
-> 
+Pokud chcete změnit velikost clusteru běžící mezipaměti Premium s povoleným clusteringem, klikněte na **Velikost clusteru** v **nabídce prostředek**.
 
 ![Velikost clusteru Redis][redis-cache-redis-cluster-size]
 

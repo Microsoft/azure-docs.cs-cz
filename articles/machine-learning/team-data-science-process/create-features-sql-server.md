@@ -3,20 +3,20 @@ title: Vytvoření funkcí v SQL serveru pomocí SQL a Python - vědecké zpraco
 description: Generovat funkcí pro data uložená v virtuálního počítače s SQL serverem v Azure pomocí jazyka SQL a Pythonu – část vědecké zpracování týmových dat.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/21/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5aa9a4f0ab536c197f08cb64a5cee8280c23039f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 58fa98005d7d89e84404d99cf4f55e456fd91f21
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982060"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721740"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Vytvoření funkcí pro data v SQL Serveru pomocí jazyka SQL a Pythonu
 Tento dokument ukazuje, jak generovat funkcí pro data uložená v virtuálního počítače s SQL serverem v Azure, který pomůže algoritmy, Učte se od data efektivněji. K provedení této úlohy můžete použít SQL nebo programovací jazyk, jako je Python. Oba přístupy jsou zde popsané.
@@ -37,9 +37,9 @@ Tento článek předpokládá, že máte:
 ## <a name="sql-featuregen"></a>Funkce generování pomocí jazyka SQL
 V této části popisujeme možnosti generování funkcí s použitím SQL:  
 
-1. [Počet na základě funkcí generace](#sql-countfeature)
-2. [Binning funkci generování](#sql-binningfeature)
-3. [Použití funkce z jednoho sloupce](#sql-featurerollout)
+* [Počet na základě funkcí generace](#sql-countfeature)
+* [Binning funkci generování](#sql-binningfeature)
+* [Použití funkce z jednoho sloupce](#sql-featurerollout)
 
 > [!NOTE]
 > Jakmile vygenerujete další funkce, můžete je přidat jako sloupce do existující tabulky nebo vytvořit novou tabulku s další funkce a primární klíč, který jde připojit k původní tabulky.
@@ -47,7 +47,7 @@ V této části popisujeme možnosti generování funkcí s použitím SQL:
 > 
 
 ### <a name="sql-countfeature"></a>Funkce generování podle počtu
-Tento dokument ukazuje dva způsoby generování počet funkcí. První metoda používá podmíněný součet a druhá metoda používá klauzuli 'where'. Ty potom jde připojit k původní tabulky (s použitím sloupce s primárním klíčem) mít počet funkcí společně s původními daty.
+Tento dokument ukazuje dva způsoby generování počet funkcí. První metoda používá podmíněný součet a druhá metoda používá klauzuli 'where'. Tyto nové funkce se pak dají spojit s původní tabulkou (pomocí primárního klíčového sloupce), aby byly k dispozici funkce Count spolu s původními daty.
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3>
 
@@ -55,7 +55,7 @@ Tento dokument ukazuje dva způsoby generování počet funkcí. První metoda p
     where <column_name3> = '<some_value>' group by <column_name1>,<column_name2>
 
 ### <a name="sql-binningfeature"></a>Binning funkci generování
-Následující příklad ukazuje, jak generovat rozdělený na intervaly funkce podle binning (přihrádkami 5) číselný sloupec, který lze použít jako funkci:
+Následující příklad ukazuje, jak generovat rozdělený na intervaly funkce podle binning (přihrádkami pět) číselný sloupec, který lze použít jako funkci:
 
     `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
 
@@ -74,9 +74,9 @@ Tady je stručný úvod do data o poloze zeměpisnou šířkou/délkou (zdroje z
 * Můžete identifikovat velké zemědělská pole nebo institucionální campus které stojí za to, až 110 m: je třetí desetinné čárky.
 * Může zjistit balení pozemního které stojí za to, až 11 m: je čtvrtý desetinné čárky. Je srovnatelná typické přesnost neopraveno GPS jednotky s bez rušení.
 * Pátý desetinné čárky je vhodné až 1.1 m: že stromů ho odlišuje od sebe navzájem. Přesnost na tuto úroveň díky obchodní jednotky GPS lze nastavit pouze pomocí rozdílové opravy.
-* Šestý desetinné místo stojí až 0,11 m:, že může být využit k rozložení struktury podrobně pro navrhování spolehnut, vytváření silnicích zakázána. Měla by být více než dostatečné pro sledování pohybu glaciers a řek. Toho lze dosáhnout pomocí painstaking míry pomocí GPS, jako je například differentially opravený GPS.
+* Šest desetinných míst je rovno 0,11 m: můžete použít tuto úroveň pro navrhování struktur podrobněji pro návrh krajiny a vytváření silnic. Měla by být více než dostatečné pro sledování pohybu glaciers a řek. Tento cíl je možné dosáhnout tím, že přijímáte painstaking míry pomocí GPS, jako je rozdílově korigovaný GPS.
 
-Informace o umístění může být natrénuje oddělením mimo oblast, umístění a Město informace. Všimněte si, že se jednou můžete také volat koncový bod REST, jako je například rozhraní API map Bing k dispozici na `https://msdn.microsoft.com/library/ff701710.aspx` zobrazíte informace o oblasti a oblasti.
+Informace o umístění může být natrénuje oddělením mimo oblast, umístění a Město informace. Jednou taky může zavolat koncový bod REST, jako je třeba rozhraní API služby Bing Maps (viz `https://msdn.microsoft.com/library/ff701710.aspx` a získat informace o oblasti nebo oblasti).
 
     select
         <location_columnname>
@@ -89,7 +89,7 @@ Informace o umístění může být natrénuje oddělením mimo oblast, umístě
         ,l7=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 6 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),6,1) else '0' end     
     from <tablename>
 
-Tyto funkce na základě umístění je možné dále generovat další počet funkcí, jak je popsáno výše.
+Tyto funkce založená na poloze dále slouží ke generování dalších počet funkcí, jak je popsáno výše.
 
 > [!TIP]
 > Programově můžete vložit záznamy pomocí vašich jazyk podle vlastní volby. Budete muset vložit data za účelem zlepšení efektivity zápisu. [Tady je příklad toho, jak to udělat pomocí pyodbc](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python).

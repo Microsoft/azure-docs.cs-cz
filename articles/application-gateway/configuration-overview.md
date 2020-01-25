@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: ce6f07a20044efed43cf24b3f0652691dff8b8aa
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 146dbdbf2f4e107e81515ce83188fa48c52aef36
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658334"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714851"
 ---
 # <a name="application-gateway-configuration-overview"></a>Přehled konfigurace Application Gateway
 
@@ -53,7 +53,7 @@ V Application Gateway jsou podporovány skupiny zabezpečení sítě (skupin zab
 - Odchozí připojení k Internetu nejde zablokovat. Výchozí odchozí pravidla v NSG umožňují připojení k Internetu. Doporučený postup:
 
   - Neodstraňujte Výchozí odchozí pravidla.
-  - Nevytvářejte jiná odchozí pravidla, která odmítají odchozí připojení k Internetu.
+  - Nevytvářejte jiná odchozí pravidla, která odmítají jakékoli odchozí připojení.
 
 - Musí být povolený provoz ze značky **AzureLoadBalancer** .
 
@@ -220,7 +220,7 @@ Vyberte typ požadovaného přesměrování: *trvalá (301)* , *dočasná (307)*
 
 Jako cíl přesměrování vyberte jiný naslouchací proces nebo externí Web.
 
-##### <a name="listener"></a>Naslouchací proces
+##### <a name="listener"></a>Služby
 
 Jako cíl přesměrování vyberte naslouchací proces pro přesměrování provozu z jednoho naslouchacího procesu do jiného v bráně. Toto nastavení se vyžaduje, když chcete povolit přesměrování od protokolu HTTP do HTTPS. Přesměruje provoz od naslouchacího procesu zdroje, který kontroluje příchozí požadavky HTTP na cílový naslouchací proces, který kontroluje příchozí požadavky HTTPS. Můžete také zvolit, že se má v požadavku, který předává cíli přesměrování, zahrnout řetězec dotazu a cestu z původního požadavku.
 

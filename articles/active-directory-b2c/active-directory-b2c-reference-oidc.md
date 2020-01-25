@@ -11,12 +11,12 @@ ms.date: 08/22/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 355bd75f865e821fa19fba0715cf5eca90a9a2d3
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: 69b58b402b49e2346621bf473a0e897809f1c008
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829557"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712838"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webové přihlašování pomocí OpenID Connect v Azure Active Directory B2C
 
@@ -267,7 +267,7 @@ Pokud chcete uživatele podepsat z aplikace, nestačí vymazat soubory cookie ap
 Pokud se chcete odhlásit uživatele, přesměrujte uživatele na koncový bod `end_session`, který je uvedený v dokumentu metadat OpenID Connect popsaného výše:
 
 ```HTTP
-GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
+GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Fjwt.ms%2F
 ```
 
 | Parametr | Požaduje se | Popis |
@@ -275,7 +275,7 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 | tenant | Ano | Název vašeho tenanta Azure AD B2C |
 | politických | Ano | Tok uživatele, který chcete použít k podepsání uživatele z vaší aplikace. |
 | id_token_hint| Ne | Dřív vydaný token ID, který se má předat koncovému bodu pro odhlášení, jako pomocný parametr pro aktuální ověřenou relaci koncového uživatele s klientem. `id_token_hint` zajistí, že `post_logout_redirect_uri` je registrovaná adresa URL odpovědi v nastavení aplikace Azure AD B2C. |
-| client_id | Ne* | ID aplikace, které [Azure Portal](https://portal.azure.com/) přiřazena k vaší aplikaci.<br><br>\**to se vyžaduje při použití `Application` izolaci konfigurace jednotného přihlašování a vyžádání _tokenu ID_ v žádosti o odhlášení je nastavené na `No`.* |
+| client_id | Žádné | ID aplikace, které [Azure Portal](https://portal.azure.com/) přiřazena k vaší aplikaci.<br><br>\**to se vyžaduje při použití `Application` izolaci konfigurace jednotného přihlašování a vyžádání _tokenu ID_ v žádosti o odhlášení je nastavené na `No`.* |
 | post_logout_redirect_uri | Ne | Adresa URL, na kterou má být uživatel přesměrován po úspěšném odhlášení. Pokud není zahrnutý, Azure AD B2C zobrazuje uživatele obecnou zprávu. Pokud neposkytnete `id_token_hint`, neměli byste tuto adresu URL v nastavení aplikace Azure AD B2C registrovat jako adresu URL odpovědi. |
 | state | Ne | Pokud je v požadavku zahrnut parametr `state`, v odpovědi by se měla objevit stejná hodnota. Aplikace by měla ověřit, že hodnoty `state` v žádosti a odpovědi jsou identické. |
 

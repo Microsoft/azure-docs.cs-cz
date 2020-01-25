@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 2591f1846574994b878814f3b08df1de2a6e9fc1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c102941920d2b8746a49be47ef4c5613fa0bc281
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973367"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719071"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Vytváření vysoce dostupných Azure Storage aplikací s geograficky redundantním úložištěm (GZRS) (Preview)
 
@@ -32,6 +32,7 @@ GZRS a RA-GZRS jsou aktuálně k dispozici pro verzi Preview v následujících 
 - Jihovýchodní Asie
 - Evropa – sever
 - Evropa – západ
+- Japonsko – východ
 - Spojené království – jih
 - USA – východ
 - USA – východ 2
@@ -129,6 +130,7 @@ Po dokončení migrace se nastavení replikace účtu úložiště aktualizuje n
 Při migraci za provozu Pamatujte na následující omezení:
 
 - Přestože Microsoft zpracuje vaši žádost o migraci za chodu téměř okamžitě, neposkytuje žádné záruky ohledně toho, kdy se migrace za chodu dokončí. Pokud potřebujete svá data migrovat do GZRS nebo RA-GZRS do určitého data, Microsoft doporučuje, abyste místo toho prováděli ruční migraci. Obecně platí, že čím více dat v účtu máte, dím déle trvá jejich migrace.
+- Migrace za provozu je podporovaná jenom pro účty úložiště, které používají replikaci GRS nebo RA-GRS. Pokud váš účet používá LRS, musíte nejdřív před pokračováním změnit typ replikace svého účtu na GRS nebo RA-GRS. Tento zprostředkující krok přidá sekundární koncový bod, který poskytuje GRS/RA-GRS.
 - Váš účet musí obsahovat data.
 - Data můžete migrovat jenom v rámci stejné oblasti.
 - Migrace za provozu podporují jenom standardní typy účtů úložiště. Účty úložiště úrovně Premium se musí migrovat ručně.
@@ -151,7 +153,7 @@ K vyžádání migrace za provozu použijte [Azure Portal](https://ms.portal.azu
     - **Podrobnosti**: v poli **podrobností** zadejte další podrobnosti, například "Chci migrovat na GZRS z [LRS, GRS] v \_ oblasti \_." nebo "Chci migrovat na RA-GZRS z [LRS, RA-GRS] v oblasti \_\_."
 5. Vyberte **Next** (Další).
 6. Ověřte, že kontaktní informace jsou správné v okně **kontaktní údaje** .
-7. Vyberte **Vytvořit**.
+7. Vyberte **Create** (Vytvořit).
 
 Zástupce podpory vás bude kontaktovat, abyste mohli poskytnout pomoc.
 

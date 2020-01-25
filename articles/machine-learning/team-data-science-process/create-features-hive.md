@@ -1,22 +1,22 @@
 ---
-title: Vytvoření funkcí pro data v clusteru Hadoop – vědecké zpracování týmových dat
+title: Vytváření funkcí pro data v Azure HDInsight Hadoop clusteru – vědecký proces týmových dat
 description: Příklady dotazů Hive, které generují funkce v data uložená v clusteru Azure HDInsight Hadoop.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/21/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 979652a467ea91c05884d2f7a24781f82035e505
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c926aac3ea4360793ff52b616a55dc6198357c8a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982045"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721774"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Vytvoření funkcí pro data v clusteru Hadoop pomocí dotazů Hive
 Tento dokument ukazuje, jak vytvoření funkcí pro data uložená v clusteru Azure HDInsight Hadoop pomocí dotazů Hive. Tyto dotazy Hive pomocí vložených Hive User-Defined funkcí (UDF), skriptů, pro které jsou k dispozici.
@@ -144,14 +144,14 @@ Výchozí nastavení parametrů clusteru Hive nemusí být vhodný pro dotazy Hi
         set mapreduce.map.java.opts=-Xmx4096m;
         set mapreduce.task.io.sort.mb=-Xmx1024m;
 
-    Tento parametr přiděluje 4GB paměti na místo v haldě Java a také umožňuje řazení zefektivnit přidělením paměti pro něj. Je vhodné pohrajte si s těmito přidělení Pokud jsou všechny úlohy chyby související s místo v haldě.
+    Tento parametr přiděluje 4 GB paměti na místo v haldě Java a také umožňuje řazení efektivněji tím, že pro něj přiděluje více paměti. Je vhodné pohrajte si s těmito přidělení Pokud jsou všechny úlohy chyby související s místo v haldě.
 
 1. **Velikost bloku DFS**: Tento parametr nastavuje nejmenší jednotka dat, které jsou uloženy v systému souborů. Například pokud velikost bloku systému souborů DFS je 128 MB, pak žádná data o velikosti menší a až 128 MB uložený v jeden blok. Data, která je větší než 128 MB je vymezena další bloky. 
 2. Volba velikosti malého bloku způsobí, že velká režie v systému Hadoop protože název uzlu musí zpracovat mnoho více požadavků k vyhledání příslušné bloku vztahující se k souboru. Doporučená nastavení, když se zabývají GB (nebo vyšší) data:
 
         set dfs.block.size=128m;
 
-2. **Optimalizace operace spojení v podregistru**: během operace spojení v rámci mapování/zmenšování obvykle můžou probíhat ve fázi snížit, v některých případech enormní nárůst se dá dosáhnout plánování spojení ve fázi mapy (také nazývané "mapjoins"). Chcete-li přímo Hive k tomu, kdykoli je to možné, nastavte:
+2. **Optimalizace operace spojení v podregistru**: během operace spojení v rámci mapování/zmenšování obvykle můžou probíhat ve fázi snížit, v některých případech enormní nárůst se dá dosáhnout plánování spojení ve fázi mapy (také nazývané "mapjoins"). Nastavte tuto možnost:
    
        set hive.auto.convert.join=true;
 
@@ -167,7 +167,7 @@ Výchozí nastavení parametrů clusteru Hive nemusí být vhodný pro dotazy Hi
 
      Jak vidíme, dané velikosti dat ladění tyto parametry "nastavení" je nám umožní optimalizovat počet mapovačů použít.
 
-4. Tady je několik dalších dalších **pokročilé možnosti** optimalizace výkonu Hive. Tyto umožňují nastavit je paměť přidělená pro mapovací a redukční úkoly a může být užitečné při úpravách výkonu. Mějte na paměti, *mapreduce.reduce.memory.mb* nemůže být větší než velikost fyzické paměti každý pracovní uzel v clusteru Hadoop.
+4. Tady je několik dalších dalších **pokročilé možnosti** optimalizace výkonu Hive. Tyto možnosti umožňují nastavit paměť přidělenou pro mapování a omezení úkolů a můžou být užitečné při vylepšit výkon. Mějte na paměti, *mapreduce.reduce.memory.mb* nemůže být větší než velikost fyzické paměti každý pracovní uzel v clusteru Hadoop.
    
         set mapreduce.map.memory.mb = 2048;
         set mapreduce.reduce.memory.mb=6144;

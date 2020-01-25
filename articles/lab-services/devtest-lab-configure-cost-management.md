@@ -1,6 +1,6 @@
 ---
 title: Podívejte se na měsíční trend odhadovaných nákladů testovacího prostředí v Azure DevTest Labs
-description: Přečtěte si o grafu trendu odhadovaných nákladů Azure DevTest Labs měsíčně.
+description: Tento článek poskytuje informace o tom, jak sledovat náklady na testovací prostředí (měsíční trend odhadovaných nákladů) v Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 15ddaa6c73cedb32d920ef943627831c1e9b378b
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 2e4fe55fac5edf73e16df05bd38cc2712a94377d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169627"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721723"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Sledovat náklady spojené s testovacím prostředím v Azure DevTest Labs
 Tento článek poskytuje informace o tom, jak sledovat náklady na testovací prostředí. Ukáže vám, jak zobrazit odhadované Trent nákladů pro aktuální kalendářní měsíc pro testovací prostředí. Článek také ukazuje, jak zobrazit měsíční náklady na prostředek v testovacím prostředí.

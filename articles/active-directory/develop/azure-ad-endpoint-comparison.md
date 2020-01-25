@@ -12,12 +12,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
-ms.openlocfilehash: ed48625e4654ac6b8bdaeed713b476ab23d29f97
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a05db11f48811f5ad6163447fae1dbb4ea31842c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697978"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712441"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Proč se má aktualizovat platforma Microsoft Identity Platform (v 2.0)?
 

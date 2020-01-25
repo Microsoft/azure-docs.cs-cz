@@ -2,20 +2,20 @@
 title: Úvodní úlohy pro projekt vědeckého zpracování týmových dat
 description: Podrobný návod pro úlohy vedoucí k projektu týmu vědeckého zpracování týmových dat
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/24/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8a94a2ae5298bbee8bb1c9c0fa044eb3189147be
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4a4d3a1480a852218e698862a509c4af45e49eb8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244376"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714413"
 ---
 # <a name="project-lead-tasks-in-the-team-data-science-process"></a>Úkoly vedoucího projektu v rámci vědeckého zpracování týmových dat
 
@@ -45,7 +45,7 @@ V tomto kurzu se předpokládá, že váš [správce skupin](group-manager-tasks
 - Šablony a **úložiště** nástrojů týmu
 - **Oprávnění** pro váš účet organizace k vytváření a úpravám úložišť pro váš projekt
 
-Pokud chcete klonovat úložiště a upravovat obsah na vašem místním počítači nebo Data Science Virtual Machine (DSVM) nebo nastavit službu Azure File Storage a připojit ji k DSVM, budete potřebovat taky následující:
+Pokud chcete klonovat úložiště a upravovat obsah na vašem místním počítači nebo Data Science Virtual Machine (DSVM) nebo nastavit službu Azure File Storage a připojit ji k DSVM, musíte zvážit tento kontrolní seznam:
 
 - Předplatné Azure.
 - V počítači je nainstalovaný Git. Pokud používáte DSVM, Git se předem nainstaluje. V opačném případě najdete v článku [platformami a nástroji příloha](platforms-and-tools.md#appendix).

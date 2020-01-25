@@ -9,16 +9,16 @@ ms.devlang: ''
 ms.topic: conceptual
 f1_keywords:
 - mi.azure.sqlaudit.general.f1
-author: barmichal
-ms.author: mibar
+author: DavidTrigano
+ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/08/2019
-ms.openlocfilehash: 41d632b145a7187dd0aeaab740cd8546a3955e7f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 9b96969027431f289e366b150fbfc6a62ee6a908
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818999"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719904"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Začínáme s Azure SQL Database auditování spravované instance
 
@@ -171,7 +171,7 @@ Protokoly auditu ze spravované instance je možné odesílat i do hub nebo Azur
 
 5. Vyberte cíl pro události auditu – centrum událostí, protokoly Azure Monitor, nebo obojí. Pro každý cíl nakonfigurujte požadované parametry (třeba pracovní prostor Log Analytics).
 
-6. Klikněte na **Uložit**.
+6. Klikněte na možnost **Uložit**.
 
     ![Konfigurace nastavení diagnostiky](./media/sql-managed-instance-auditing/9_mi_configure_diagnostics.png)
 

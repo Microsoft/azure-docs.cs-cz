@@ -1,19 +1,19 @@
 ---
 title: Sledování Azure Event Grid doručování zpráv
-description: Popisuje, jak monitorovat doručování Azure Event Gridch zpráv.
+description: Tento článek popisuje, jak použít Azure Portal k zobrazení stavu doručování Azure Event Grid zpráv.
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/22/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: b1035046cc3c3b6cd7bde895e2e779d1c966abe0
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 16587feaca65aa21836d9be1c44e00faa0f4f8d8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74170009"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722131"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Sledování Event Grid doručování zpráv 
 
@@ -76,7 +76,7 @@ Zobrazit metriky pro vlastní událost tématu.
 
 ![Zobrazit metriky událostí](./media/monitor-event-delivery/custom-topic-metrics.png)
 
-## <a name="set-alerts"></a>Nastavení upozornění
+## <a name="set-alerts"></a>Nastavení výstrah
 
 Můžete nastavit výstrahy týkající se metrik a úrovně domény pro vlastní témata a domény událostí. V okně Přehled pro vyberte možnost **výstrahy** z nabídky prostředků vlevo, aby bylo možné zobrazit, spravovat a vytvářet pravidla výstrah. [Další informace o výstrahách Azure Monitor](../azure-monitor/platform/alerts-overview.md)
 
@@ -85,5 +85,5 @@ Můžete nastavit výstrahy týkající se metrik a úrovně domény pro vlastn�
 ## <a name="next-steps"></a>Další kroky
 
 * Informace o doručování událostí a opakovaných pokusů [doručování zpráv služby Event Grid a zkuste to znovu](delivery-and-retry.md).
-* Úvod do Event Gridu najdete v článku o [Event Gridu](overview.md).
+* Úvod do Event Gridu najdete v článku [Informace o službě Event Grid](overview.md).
 * Pokud chcete rychle začít používat služby Event Grid, přečtěte si téma [vytvoření a směrování vlastních událostí pomocí služby Azure Event Grid](custom-event-quickstart.md).

@@ -7,20 +7,25 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 31af550d4f499b4b4440a27037dc210bfdf0cb6f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 01/24/2020
+ms.openlocfilehash: c32e58a43b5409fd9f8ede536167d185270c6a22
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793456"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721570"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Jak pracovat s výsledky hledání v Azure Kognitivní hledání
 Tento článek poskytuje informace o tom, jak implementovat standardní prvky stránky výsledků hledání, jako jsou celkové počty, načítání dokumentů, objednávky řazení a navigace. Možnosti související s stránkou, které přidávají data nebo informace do výsledků hledání, jsou zadány prostřednictvím požadavků [dokumentu vyhledávání](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) odesílaných do služby Azure kognitivní hledání. 
 
 V REST API požadavky zahrnují parametry GET příkazu, Path a Query, které informují o tom, co se požaduje, a jak formulovat odpověď. V sadě .NET SDK je ekvivalentní rozhraní API [třídou DocumentSearchResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1).
 
-Několik ukázek kódu zahrnuje rozhraní Web front-end, které najdete tady: [úlohy pro ukázkovou aplikaci v New Yorku](https://azjobsdemo.azurewebsites.net/) a [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
+Chcete-li rychle vygenerovat stránku vyhledávání pro klienta, Prozkoumejte tyto možnosti:
+
++ Pomocí [generátoru aplikací](search-create-app-portal.md) na portálu můžete vytvořit stránku HTML pomocí panelu hledání, omezující navigace a oblasti výsledků.
++ Při vytváření funkčního klienta postupujte podle pokynů [v části Vytvoření první aplikace v C# ](tutorial-csharp-create-first-app.md) kurzu.
+
+Několik ukázek kódu zahrnuje webové front-endové rozhraní, které můžete najít tady: aplikace pro ukázkovou [úlohu v New Yorku](https://azjobsdemo.azurewebsites.net/), [ukázkový kód JavaScriptu s živým ukázkovým webem](https://github.com/liamca/azure-search-javascript-samples)a [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
 
 > [!NOTE]
 > Platná žádost obsahuje počet prvků, jako je například adresa URL služby a cesta, příkaz HTTP, `api-version`atd. V případě zkrácení jsme tyto příklady vyhodili a zvýraznili jenom syntaxi, která je relevantní pro stránkování. Další informace o syntaxi žádosti najdete v tématu [rozhraní REST API pro Azure kognitivní hledání](https://docs.microsoft.com/rest/api/searchservice).
@@ -88,13 +93,29 @@ Vytvořili jste metodu, která přijme vybranou možnost řazení jako vstup a v
 > I když je výchozí hodnocení dostačující pro mnoho scénářů, doporučujeme místo toho použít pro vlastní profil vyhodnocování relevanci. Vlastní profil bodování vám dává možnost posílit položky, které jsou pro vaši firmu výhodnější. Další informace najdete v tématu [přidání profilů vyhodnocování](index-add-scoring-profiles.md) .
 >
 
+## <a name="hit-highlighting"></a>Zvýrazňování položek
+
+Ve výsledcích hledání můžete použít formátování na odpovídající podmínky, což usnadňuje umístění shody. Pokyny pro zvýraznění přístupů jsou k dispozici v [žádosti o dotaz](https://docs.microsoft.com/rest/api/searchservice/search-documents). 
+
+Formátování se aplikuje na všechny výrazy. Dotazy na částečné výrazy, například hledání přibližné nebo zástupné znaky, které vedou k rozbalování dotazů v modulu, nemůžou používat zvýrazňování přístupů.
+
+```http
+POST /indexes/hotels/docs/search?api-version=2019-05-06 
+    {  
+      "search": "something",  
+      "highlight": "Description"  
+    }
+```
+
+
+
 ## <a name="faceted-navigation"></a>Fasetová navigace
 
 Navigace vyhledávání je společná na stránce výsledků, která se často nachází na straně nebo v horní části stránky. V Azure Kognitivní hledání omezující navigace poskytuje samoobslužné vyhledávání na základě předdefinovaných filtrů. Podrobnosti najdete v tématu věnovaném navýšení [Navigace v Azure kognitivní hledání](search-faceted-navigation.md) .
 
 ## <a name="filters-at-the-page-level"></a>Filtry na úrovni stránky
 
-Pokud váš návrh řešení zahrnoval vyhrazené stránky hledání pro konkrétní typy obsahu (například online maloobchodní aplikace, která obsahuje oddělení uvedená v horní části stránky), můžete vložit [výraz filtru](search-filters.md) vedle události události **Click** do Otevře stránku v předem filtrovaném stavu.
+Pokud váš návrh řešení zahrnoval vyhrazené vyhledávací stránky pro konkrétní typy obsahu (například v online maloobchodní aplikaci, která obsahuje oddělení uvedená v horní části stránky), můžete vložit [výraz filtru](search-filters.md) vedle události události události **Click** pro otevření stránky v předem filtrovaném stavu.
 
 Můžete odeslat filtr pomocí vyhledávacího výrazu nebo bez něj. Například následující požadavek bude filtrovat podle názvu značky a vrátí pouze ty dokumenty, které odpovídají.
 

@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 00a316f69cfa77d705a789d40868105e9a098def
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 808d7ac7ded9b250e0835da51b6b547c05c622a9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894021"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720397"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Vytvářejte, Zkoumejte a nasaďte automatizované experimenty strojového učení pomocí Azure Machine Learning studia
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -97,7 +97,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
     Velikost virtuálního počítače| Vyberte velikost virtuálního počítače pro výpočetní výkon.
     Minimální/maximální počet uzlů (v rozšířených nastaveních)| Chcete-li profilovat data, je nutné zadat 1 nebo více uzlů. Zadejte maximální počet uzlů pro výpočetní výkon. Výchozí hodnota je 6 uzlů pro AML Compute.
     
-    Vyberte **Vytvořit**. Vytváření nových výpočetních prostředků může trvat několik minut.
+    Vyberte **Create** (Vytvořit). Vytváření nových výpočetních prostředků může trvat několik minut.
 
     >[!NOTE]
     > Váš název COMPUTE určí, jestli je *povolená možnost profilace*, kterou vybíráte nebo vytváříte. (Další podrobnosti najdete v části [profilace dat](#profile) .)
@@ -145,7 +145,7 @@ Počet| Celkový počet chybějících a nechybějících položek ve sloupci
 Počet nechybějících| Počet položek ve sloupci, které nebyly nalezeny. Prázdné řetězce a chyby jsou považovány za hodnoty, takže nebudou přispívat k "nechybějícímu počtu".
 Quantiles| Přibližné hodnoty na jednotlivých Quantile, které poskytují smysl distribuce dat.
 střední hodnotu| Aritmetický průměr nebo průměr sloupce
-Standardní odchylka| Měření množství rozptýlení nebo variace dat tohoto sloupce.
+Směrodatná odchylka| Měření množství rozptýlení nebo variace dat tohoto sloupce.
 Odchylka| Měření, jak daleko rozprostření dat tohoto sloupce z průměrné hodnoty. 
 Zešikmení| Měření, jak se liší data tohoto sloupce od normálního rozdělení.
 Míra fluktuace| Měření, jak často se data tohoto sloupce v porovnání s normální distribucí.
@@ -153,9 +153,15 @@ Míra fluktuace| Měření, jak často se data tohoto sloupce v porovnání s no
 
 <a name="preprocess"></a>
 
-## <a name="advanced-preprocessing-options"></a>Rozšířené možnosti předběžného zpracování
+## <a name="advanced-featurization-options"></a>Rozšířené možnosti featurization
 
-Při konfiguraci experimentů můžete povolit upřesňující nastavení `Preprocess`. To znamená, že jako součást předběžného zpracování následujících guardrails dat a featurization kroků se provádí automaticky.
+Při konfiguraci experimentů můžete povolit upřesňující nastavení `feauturization`. 
+
+|Konfigurace Featurization | Popis |
+| ------------- | ------------- |
+|"feauturization" = ' FeaturizationConfig '| Indikuje, že by se měl použít upravený krok featurization. [Přečtěte si, jak přizpůsobit featurization](how-to-configure-auto-train.md#customize-feature-engineering).|
+|"feauturization" = ' off '| Indikuje, že krok featurization by se neměl provádět automaticky.|
+|"feauturization" = ' auto '| Označuje, že jako součást předběžného zpracování následujících kroků guardrails dat a featurization se provádí automaticky.|
 
 |Předzpracování&nbsp;kroků| Popis |
 | ------------- | ------------- |
@@ -177,11 +183,11 @@ V následující tabulce jsou popsány aktuálně podporované datové guardrail
 
 Guardrail|Stav|Podmínka&nbsp;pro aktivační událost&nbsp;
 ---|---|---
-Chybějící hodnoty&nbsp;&nbsp;imputace |**Předaný** <br> <br> **Pevný**|    Žádná chybějící hodnota v žádném ze vstupních&nbsp;sloupců <br> <br> U některých sloupců chybí hodnoty.
+Chybějící hodnoty&nbsp;&nbsp;imputace |**Předaný** <br> <br> **Určí**|    Žádná chybějící hodnota v žádném ze vstupních&nbsp;sloupců <br> <br> U některých sloupců chybí hodnoty.
 Křížové ověření|**Hotovo**|Pokud není zadaná žádná explicitní ověřovací sada
 &nbsp;funkce&nbsp;detekce&nbsp;mohutnosti vysoké úrovně.|  **Předaný** <br> <br>**Hotovo**|   Nezjistily se žádné funkce vysoké mohutnosti. <br><br> Zjistily se vstupní sloupce vysoké mohutnosti.
 Detekce zůstatku třídy |**Předaný** <br><br><br>**Upozorněni** |Třídy jsou vyvážené do školicích dat; Datová sada je považována za vyváženou, pokud každá třída má v datové sadě dobrý reprezentace, měřená podle počtu a poměru vzorků. <br> <br> Třídy v školicích datech jsou nevyrovnané
-Konzistence dat časové řady|**Předaný** <br><br><br><br> **Pevný** |<br> Vybrané hodnoty {horizont, lag, kumulovaný interval} byly analyzovány a nebyly zjištěny žádné potenciální problémy způsobené nedostatkem paměti. <br> <br>Vybrané hodnoty {horizont, lag, kumulovaný interval} byly analyzovány a mohou způsobit nedostatek paměti experimentu. Zpoždění nebo posuvné okno bylo vypnuto.
+Konzistence dat časové řady|**Předaný** <br><br><br><br> **Určí** |<br> Vybrané hodnoty {horizont, lag, kumulovaný interval} byly analyzovány a nebyly zjištěny žádné potenciální problémy způsobené nedostatkem paměti. <br> <br>Vybrané hodnoty {horizont, lag, kumulovaný interval} byly analyzovány a mohou způsobit nedostatek paměti experimentu. Zpoždění nebo posuvné okno bylo vypnuto.
 
 ## <a name="run-experiment-and-view-results"></a>Spuštění experimentu a zobrazení výsledků
 

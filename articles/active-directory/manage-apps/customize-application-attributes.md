@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cbe5066974734093e440e64eb0b47542e569765
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: d21ebabb34b828624c196922f88380f02234dc05
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940911"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711861"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Přizpůsobení uživatelského zřizování atributů – mapování pro SaaS aplikace v Azure Active Directory
 
@@ -39,17 +39,17 @@ Pomocí těchto kroků můžete získat přístup k funkci **mapování** zřizo
 1. Vyberte **zřizování** pro správu nastavení zřizování uživatelských účtů pro vybranou aplikaci.
 1. Rozbalením **mapování** můžete zobrazit a upravit atributy uživatele, které budou tok mezi Azure AD a cílovou aplikací. Pokud cílová aplikace tuto aplikaci podporuje, Tato část vám umožní volitelně nakonfigurovat zřizování skupin a uživatelských účtů.
 
-   ![Použití mapování k zobrazení a úpravě atributů uživatele](./media/customize-application-attributes/21.png)
+   ![Použití mapování k zobrazení a úpravě atributů uživatele](media/customize-application-attributes/21.png)
 
 1. Vyberte konfiguraci **mapování** , aby se otevřela obrazovka **mapování souvisejících atributů** . Některá mapování atributů vyžaduje aplikace SaaS, aby fungovala správně. U vyžadovaných atributů není dostupná funkce **Odstranit** .
 
-   ![Použití mapování atributů ke konfiguraci mapování atributů pro aplikace](./media/customize-application-attributes/22.png)
+   ![Použití mapování atributů ke konfiguraci mapování atributů pro aplikace](media/customize-application-attributes/22.png)
 
    Na tomto snímku obrazovky vidíte, že atribut **username** spravovaného objektu v Salesforce se naplní hodnotou **userPrincipalName** odkazovaného objektu Azure Active Directory.
 
 1. Vyberte existující **mapování atributů** a otevřete tak obrazovku **Upravit atribut** . Tady můžete upravit atributy uživatele, které se budou přesměrovat mezi Azure AD a cílovou aplikací.
 
-   ![Pro úpravu atributů uživatele použijte úpravu atributu](./media/customize-application-attributes/23.png)
+   ![Pro úpravu atributů uživatele použijte úpravu atributu](media/customize-application-attributes/23.png)
 
 ### <a name="understanding-attribute-mapping-types"></a>Porozumění typům mapování atributů
 
@@ -71,7 +71,7 @@ Spolu s touto vlastností také mapování atributů podporuje následující at
 
 - **Zdrojový atribut** – atribut uživatele ze zdrojového systému (příklad: Azure Active Directory).
 - **Cílový atribut** – atribut uživatele v cílovém systému (příklad: ServiceNow).
-- **Výchozí hodnota, pokud je null (volitelné)** – hodnota, která se předává cílovému systému, pokud má zdrojový atribut hodnotu null. Tato hodnota se zřídí jenom při vytvoření uživatele. Při aktualizaci stávajícího uživatele nebude zajištěna výchozí hodnota, pokud je null. Pokud například chcete zřídit všechny existující uživatele v cílovém systému s určitou funkcí (Pokud má ve zdrojovém systému hodnotu null), můžete použít následující [výraz](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data): Switch (přítomen ([jobtitle]), "DefaultValue", "true", [jobtitle]). Nezapomeňte nahradit "výchozí hodnotu" s tím, co byste chtěli ve zdrojovém systému zřídit, když má hodnotu null. 
+- **Výchozí hodnota, pokud je null (volitelné)** – hodnota, která se předává cílovému systému, pokud má zdrojový atribut hodnotu null. Tato hodnota se zřídí jenom při vytvoření uživatele. Při aktualizaci stávajícího uživatele nebude zajištěna výchozí hodnota, pokud je null. Pokud například chcete zřídit všechny existující uživatele v cílovém systému s určitou funkcí (Pokud má ve zdrojovém systému hodnotu null), můžete použít následující [výraz](functions-for-customizing-application-data.md): Switch (přítomen ([jobtitle]), "DefaultValue", "true", [jobtitle]). Nezapomeňte nahradit "výchozí hodnotu" s tím, co byste chtěli ve zdrojovém systému zřídit, když má hodnotu null. 
 - **Porovnává objekty pomocí tohoto atributu** – určuje, jestli se má toto mapování použít k jednoznačné identifikaci uživatelů mezi zdrojovým a cílovým systémem. Obvykle se nastavuje u atributu userPrincipalName nebo mail v Azure AD, který je obvykle namapován na pole username v cílové aplikaci.
 - **Priorita porovnání** – lze nastavit více vyhovujících atributů. Pokud existuje více, vyhodnotí se v pořadí definovaném tímto polem. Jakmile se najde shoda, nevyhodnocují se žádné další odpovídající atributy.
 - **Použít toto mapování**
@@ -92,7 +92,7 @@ Služba zřizování Azure AD se dá nasadit ve scénářích "bezserverová" (k
 
 Vybraný počet aplikací, například ServiceNow, box a G Suite, podporuje možnost zřídit objekty skupiny a uživatelské objekty. Skupinové objekty můžou obsahovat vlastnosti skupiny, jako jsou zobrazovaná jména a e-mailové aliasy, spolu se členy skupiny.
 
-![Příklad ukazuje ServiceNow se zřízené objekty skupiny a uživatele.](./media/customize-application-attributes/24.png)
+![Příklad ukazuje ServiceNow se zřízené objekty skupiny a uživatele.](media/customize-application-attributes/24.png)
 
 Zřizování skupin se dá volitelně zapnout nebo vypnout tak, že v části **mapování**vyberete mapování skupiny a na obrazovce **mapování atributů** **povolíte** požadované možnosti.
 
@@ -193,13 +193,13 @@ Vlastní atributy nemůžou být referenční atributy ani atributy s více hodn
 ## <a name="provisioning-a-role-to-a-scim-app"></a>Zřízení role pro aplikaci SCIM
 Pomocí následujících kroků můžete zřídit role pro uživatele aplikace. Všimněte si, že popis níže je specifický pro vlastní SCIM aplikace. Pro aplikace Galerie, jako jsou Salesforce a ServiceNow, použijte předdefinované mapování rolí. Odrážky níže popisují, jak transformovat atribut AppRoleAssignments na formát, který aplikace očekává.
 
-- Mapování appRoleAssignment ve službě Azure AD na roli v aplikaci vyžaduje, abyste atribut transformoval pomocí [výrazu](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data). Atribut appRoleAssignment **by neměl být namapován přímo** na atribut role bez použití výrazu k analýze podrobností role. 
+- Mapování appRoleAssignment ve službě Azure AD na roli v aplikaci vyžaduje, abyste atribut transformoval pomocí [výrazu](functions-for-customizing-application-data.md). Atribut appRoleAssignment **by neměl být namapován přímo** na atribut role bez použití výrazu k analýze podrobností role. 
 
 - **SingleAppRoleAssignment** 
   - **Kdy použít:** Pomocí výrazu SingleAppRoleAssignment můžete zřídit jednu roli pro uživatele a určit primární roli. 
   - **Postup konfigurace:** Pomocí kroků popsaných výše přejděte na stránku mapování atributů a použijte výraz SingleAppRoleAssignment pro mapování na atribut role. Existují tři atributy role, ze kterých si můžete vybrat: (role [primární EQ "true"]. Display, role [primární EQ "true]. Type a role [Primary EQ" true "]. Value). Můžete se rozhodnout zahrnout do mapování všechny atributy role nebo všechny. Pokud chcete zahrnout více než jeden, stačí přidat nové mapování a zahrnout ho jako cílový atribut.  
   
-  ![Přidat SingleAppRoleAssignment](./media/customize-application-attributes/edit-attribute-singleapproleassignment.png)
+  ![Přidat SingleAppRoleAssignment](media/customize-application-attributes/edit-attribute-singleapproleassignment.png)
   - **Co je potřeba zvážit**
     - Ujistěte se, že uživateli není přiřazeno více rolí. Nemůžeme zaručit, která role se zřídí.
     
@@ -231,11 +231,11 @@ Pomocí následujících kroků můžete zřídit role pro uživatele aplikace. 
   - **Kdy použít:** Pomocí výrazu AppRoleAssignmentsComplex můžete zřídit více rolí pro uživatele. 
   - **Postup konfigurace:** Upravte seznam podporovaných atributů, jak je popsáno výše, aby zahrnovaly nový atribut pro role: 
   
-    ![Přidání rolí](./media/customize-application-attributes/add-roles.png)<br>
+    ![Přidat role](media/customize-application-attributes/add-roles.png)<br>
 
     Pak použijte výraz AppRoleAssignmentsComplex k namapování na atribut vlastní role, jak je znázorněno na následujícím obrázku:
 
-    ![Přidat AppRoleAssignmentsComplex](./media/customize-application-attributes/edit-attribute-approleassignmentscomplex.png)<br>
+    ![Přidat AppRoleAssignmentsComplex](media/customize-application-attributes/edit-attribute-approleassignmentscomplex.png)<br>
   - **Co je potřeba zvážit**
     - Všechny role se zřídí jako primární = false.
     - PŘÍSPĚVEK obsahuje typ role. Žádost o opravu neobsahuje typ. Pracujeme na posílání typu v žádosti POST i PATCH.

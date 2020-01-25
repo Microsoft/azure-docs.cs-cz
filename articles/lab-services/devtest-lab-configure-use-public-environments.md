@@ -1,6 +1,6 @@
 ---
-title: Konfigurace a používání veřejných prostředích ve službě Azure DevTest Labs | Dokumentace Microsoftu
-description: Zjistěte, jak nakonfigurovat a používat veřejných prostředích ve službě Azure DevTest Labs.
+title: Konfigurace a použití veřejných prostředí v Azure DevTest Labs | Microsoft Docs
+description: Tento článek popisuje, jak nakonfigurovat a používat veřejná prostředí (Azure Resource Manager šablony v úložišti Git) v Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,39 +12,39 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/13/2018
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 2cd6998c7ac11638ead67fde384bdf4599692781
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 127a6986e04cf90f69b2a8ec70b90b877e534708
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64706045"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721689"
 ---
-# <a name="configure-and-use-public-environments-in-azure-devtest-labs"></a>Konfigurace a používání veřejných prostředích ve službě Azure DevTest Labs
-Azure DevTest Labs má [veřejném úložišti šablon Azure Resource Manageru](https://github.com/Azure/azure-devtestlab/tree/master/Environments) , můžete použít k vytvoření prostředí bez nutnosti připojení k externímu zdroji Githubu sami. Toto úložiště obsahuje často používané šablony, jako je Azure Web Apps, Service Fabric Cluster a vývojové prostředí farmy služby SharePoint. Tato funkce je podobný veřejné úložiště artefaktů, který je součástí pro každý testovací prostředí, který vytvoříte. Úložiště prostředí umožňuje rychle začít s předem vytvořené prostředí šablony s minimální vstupní parametry, kde přinášejí smooth úvodní prostředí pro PaaS prostředky v rámci testovacích prostředí. 
+# <a name="configure-and-use-public-environments-in-azure-devtest-labs"></a>Konfigurace a použití veřejných prostředí v Azure DevTest Labs
+Azure DevTest Labs má [veřejné úložiště Azure Resource Managerch šablon](https://github.com/Azure/azure-devtestlab/tree/master/Environments) , které můžete použít k vytváření prostředí, aniž byste se museli připojovat k externímu zdroji GitHubu sami. Toto úložiště obsahuje často používané šablony, jako je Azure Web Apps, Service Fabric cluster a vývojové prostředí farmy služby SharePoint. Tato funkce je podobná veřejnému úložišti artefaktů, které jsou zahrnuty pro každé testovací prostředí, které vytvoříte. Úložiště prostředí vám umožní rychle začít s předdefinovanými šablonami prostředí s minimálními vstupními parametry, aby vám poskytovala hladké prostředí Začínáme s PaaS prostředky v rámci Labs. 
 
-## <a name="configuring-public-environments"></a>Konfigurace veřejných prostředích
-Jako vlastník testovacího prostředí můžete povolit veřejné prostředí úložiště pro vaše testovací prostředí při vytváření testovacího prostředí. Chcete-li povolit veřejné prostředí pro testovací prostředí, vyberte **na** pro **veřejných prostředích** pole při vytváření testovacího prostředí. 
+## <a name="configuring-public-environments"></a>Konfigurace veřejných prostředí
+Jako vlastník testovacího prostředí můžete povolit úložiště veřejného prostředí pro vaše testovací prostředí během vytváření testovacího prostředí. Pokud chcete pro testovací prostředí povolit veřejná prostředí, vyberte pro pole **veřejné prostředí** při vytváření testovacího prostředí možnost **zapnuto** . 
 
-![Povolení veřejného prostředí pro nové testovací prostředí](media/devtest-lab-configure-use-public-environments/enable-public-environment-new-lab.png)
+![Povolit veřejné prostředí pro nové testovací prostředí](media/devtest-lab-configure-use-public-environments/enable-public-environment-new-lab.png)
 
 
-Pro existující testovací prostředí není povolené prostředí veřejného úložiště. Ručně povolte ho na použití šablony v úložišti. Pro testovací prostředí vytvořené pomocí šablon Resource Manageru je také standardně zakázáno úložiště.
+Pro existující cvičení není úložiště veřejné prostředí povolené. Ručně ho povolte pro použití šablon v úložišti. Pro laboratoře vytvořené pomocí šablon Správce prostředků je úložiště ve výchozím nastavení zakázané.
 
-Můžete povolit nebo zakázat veřejných prostředích pro testovací prostředí a také zpřístupnit jenom pro konkrétní prostředí uživatelům testovacího prostředí pomocí následujících kroků: 
+Můžete povolit nebo zakázat veřejná prostředí pro testovací prostředí a také zpřístupnit uživatelům testovacího prostředí pouze konkrétní prostředí pomocí následujících kroků: 
 
-1. Vyberte **konfigurace a zásad** testovacího prostředí. 
-2. V **BÁZE pro virtuální počítače** vyberte **veřejných prostředích**.
-3. Chcete-li povolit veřejné prostředí pro testovací prostředí, vyberte **Ano**. V opačném případě vyberte **ne**. 
-4. Pokud jste povolili veřejných prostředích, ve výchozí hodnoty jsou povolené všechna prostředí v úložišti. Můžete zrušit výběr prostředí, aby byl není k dispozici uživatelům testovacího prostředí. 
+1. Vyberte **konfiguraci a zásady** pro testovací prostředí. 
+2. V části **základy virtuálního počítače** vyberte **Veřejná prostředí**.
+3. Pokud chcete pro testovací prostředí povolit veřejná prostředí, vyberte **Ano**. V opačném případě vyberte **ne**. 
+4. Pokud jste povolili veřejná prostředí, všechna prostředí v úložišti jsou ve výchozím nastavení povolená. Můžete zrušit výběr prostředí, aby ho uživatelé testovacího prostředí nemohli mít k dispozici. 
 
-![Stránka veřejných prostředích](media/devtest-lab-configure-use-public-environments/public-environments-page.png)
+![Stránka veřejné prostředí](media/devtest-lab-configure-use-public-environments/public-environments-page.png)
 
-## <a name="use-environment-templates-as-a-lab-user"></a>Použití šablon prostředí jako uživatele testovacího prostředí.
-Jako uživatel, který testovací prostředí, můžete vytvořit nové prostředí ze seznamu povolených šablony prostředí tak, že jednoduše vyberete **+ přidat** z panelu nástrojů na stránce testovacího prostředí. Seznam základních tříd obsahuje šablony veřejných prostředích, stará správce vašeho testovacího prostředí v horní části seznamu.
+## <a name="use-environment-templates-as-a-lab-user"></a>Použití šablon prostředí jako uživatele testovacího prostředí
+Jako uživatel testovacího prostředí můžete vytvořit nové prostředí ze seznamu povolených šablon prostředí pouhým výběrem možnosti **+ Přidat** na panelu nástrojů na stránce testovací prostředí. Seznam základů zahrnuje šablony pro veřejné prostředí, které vám povolil správce testovacího prostředí v horní části seznamu.
 
-![Šablony veřejná prostředí](media/devtest-lab-configure-use-public-environments/public-environment-templates.png)
+![Šablony pro veřejné prostředí](media/devtest-lab-configure-use-public-environments/public-environment-templates.png)
 
-## <a name="next-steps"></a>Další postup
-Toto úložiště je open source úložiště, které chcete přispět k přidání často používané a užitečné šablon Resource Manageru vlastní. Abyste mohli přispívat, jednoduše odešlete žádost o přijetí změn pro úložiště.  
+## <a name="next-steps"></a>Další kroky
+Toto úložiště je open source úložiště, které můžete přispívat k přidávání často používaných a užitečných Správce prostředků šablon. Aby bylo možné přispívat, stačí odeslat žádost o přijetí změn z úložiště.  

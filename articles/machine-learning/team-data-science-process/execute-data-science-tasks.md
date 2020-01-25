@@ -2,24 +2,24 @@
 title: Spuštění úloh datových věd - vědecké zpracování týmových dat
 description: Jak můžete spustit projekt vědeckého zpracování dat v organizovaným, odborník přes data správy verzí a spolupráce.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 16fb47879daae6bfbf0929e842a3a6227d1524a9
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 984b03288b8dae644fc04a2cd78fb03a2e027f62
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772274"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722199"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Spuštění úloh datových věd: zkoumání, modelování a nasazení
 
-Typické úloh vědeckého zpracování zahrnout zkoumání dat, modelování a nasazení. Tento článek popisuje, jak používat **interaktivní zkoumání dat, analýzu a vytváření sestav (IDEAR)** a **automatizované modelování a vytváření sestav (AMAR)** nástroje dokončit několik běžných úloh datové vědy například interaktivní zkoumání dat, analýzy dat, vykazování a vytvoření modelu. Popisuje také možnosti pro model nasazení do produkčního prostředí používají různé platformy, sady nástrojů a dat, jako je následující:
+Typické úloh vědeckého zpracování zahrnout zkoumání dat, modelování a nasazení. Tento článek popisuje, jak používat **interaktivní zkoumání dat, analýzu a vytváření sestav (IDEAR)** a **automatizované modelování a vytváření sestav (AMAR)** nástroje dokončit několik běžných úloh datové vědy například interaktivní zkoumání dat, analýzy dat, vykazování a vytvoření modelu. Možnosti nasazení modelu do produkčního prostředí můžou zahrnovat:
 
 - [Azure Machine Learning](../index.yml)
 - [SQL Server pomocí služby ML](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)

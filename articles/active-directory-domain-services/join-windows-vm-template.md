@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: iainfou
-ms.openlocfilehash: c9f5bcd9921b0324eb194eefd2066f6c0eaa4706
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7bf01eea71134d932305cce7665c68d4dcc655cb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975208"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712571"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Připojení virtuálního počítače s Windows serverem k Azure Active Directory Domain Services spravované doméně pomocí šablony Správce prostředků
 
@@ -40,7 +40,7 @@ K dokončení tohoto kurzu potřebujete následující prostředky a oprávněn�
 
 Správce prostředků šablony vám umožní definovat infrastrukturu Azure v kódu. Požadované prostředky, síťová připojení nebo konfigurace virtuálních počítačů je možné definovat v šabloně. Tyto šablony vytvářejí konzistentní a reprodukovatelná nasazení pokaždé a můžou být ve stejném znění jako při provádění změn. Další informace najdete v tématu [Přehled šablon Azure Resource Manager][template-overview].
 
-Každý prostředek je definován v šabloně pomocí formátu JSON. Následující příklad JSON používá typ prostředku *Microsoft. COMPUTE/virtualMachines/Extensions* k instalaci rozšíření připojení k doméně služby Active Directory. Používají se parametry, které zadáte v době nasazení. Po nasazení rozšíření se virtuální počítač připojí k zadané spravované doméně Azure služba AD DS.
+Každý prostředek je definován v šabloně pomocí JavaScript Object Notation (JSON). Následující příklad JSON používá typ prostředku *Microsoft. COMPUTE/virtualMachines/Extensions* k instalaci rozšíření připojení k doméně služby Active Directory. Používají se parametry, které zadáte v době nasazení. Po nasazení rozšíření se virtuální počítač připojí k zadané spravované doméně Azure služba AD DS.
 
 ```json
  {
@@ -94,7 +94,7 @@ Pokud chcete vytvořit virtuální počítač s Windows serverem, připojte ho k
     | Předpona popisku DNS          | Zadejte název DNS, který chcete pro virtuální počítač použít, například *myvm*. |
     | Velikost virtuálního počítače                   | Zadejte velikost virtuálního počítače, například *Standard_DS2_v2*. |
     | Doména pro připojení            | Název DNS spravované domény Azure služba AD DS, například *aadds.contoso.com*. |
-    | Uživatelské jméno domény           | Uživatelský účet ve spravované doméně Azure služba AD DS, který se má použít k připojení virtuálního počítače ke spravované doméně. Tento účet musí být členem skupiny *Azure AD DC Administrators* . |
+    | Uživatelské jméno domény           | Uživatelský účet ve spravované doméně Azure služba AD DS, který se má použít k připojení virtuálního počítače ke spravované doméně, jako je například `contosoadmin@aadds.contoso.com`. Tento účet musí být členem skupiny *Azure AD DC Administrators* . |
     | Heslo domény           | Heslo pro uživatelský účet zadané v předchozím nastavení |
     | Volitelná cesta organizační jednotky          | Vlastní organizační jednotka, do které se má virtuální počítač přidat Pokud nezadáte hodnotu pro tento parametr, virtuální počítač se přidá do výchozí organizační jednotky *řadiče domény AAD* . |
     | Uživatelské jméno správce virtuálního počítače         | Zadejte účet místního správce, který se má vytvořit na virtuálním počítači. |
@@ -123,7 +123,7 @@ Pokud se chcete připojit k existujícímu virtuálnímu počítači s Windows s
     | Skupina prostředků            | Vyberte skupinu prostředků s existujícím VIRTUÁLNÍm počítačem. |
     | Umístění                  | Vyberte umístění existujícího virtuálního počítače. |
     | Seznam virtuálních počítačů                   | Zadejte čárkami oddělený seznam existujících virtuálních počítačů, které se mají připojit ke spravované doméně Azure služba AD DS, jako je například *myVM1, myVM2*. |
-    | Uživatelské jméno pro připojení k doméně     | Uživatelský účet ve spravované doméně Azure služba AD DS, který se má použít k připojení virtuálního počítače ke spravované doméně. Tento účet musí být členem skupiny *Azure AD DC Administrators* . |
+    | Uživatelské jméno pro připojení k doméně     | Uživatelský účet ve spravované doméně Azure služba AD DS, který se má použít k připojení virtuálního počítače ke spravované doméně, jako je například `contosoadmin@aadds.contoso.com`. Tento účet musí být členem skupiny *Azure AD DC Administrators* . |
     | Uživatelské heslo pro připojení k doméně | Heslo pro uživatelský účet zadané v předchozím nastavení |
     | Volitelná cesta organizační jednotky          | Vlastní organizační jednotka, do které se má virtuální počítač přidat Pokud nezadáte hodnotu pro tento parametr, virtuální počítač se přidá do výchozí organizační jednotky *řadiče domény AAD* . |
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: mlearned
-ms.openlocfilehash: f9d00cff5d910d6bbbb4c436249283cca87b91e1
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 6ea1bce6c14d7266b5ce49b94e39d661bfc57717
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549100"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713309"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vytvoření a Správa fondů více uzlů pro cluster ve službě Azure Kubernetes (AKS)
 
@@ -394,10 +394,10 @@ Plánovač Kubernetes může pomocí chuti a omezení omezit, jaké úlohy je mo
 
 Další informace o použití pokročilých Kubernetes naplánovaných funkcí najdete v tématu [osvědčené postupy pro pokročilé funkce plánovače v AKS][taints-tolerations] .
 
-V tomto příkladu aplikujte na uzel založený na GPU pomocí příkazu [kubectl chuti uzel][kubectl-taint] . Zadejte název uzlu založeného na GPU z výstupu předchozího příkazu `kubectl get nodes`. Chuti se použije jako *klíč: hodnota* a pak možnost plánování. Následující příklad používá dvojici *SKU = GPU* a definuje lusky, jinak mají možnost *neplánovat* :
+V tomto příkladu aplikujte na uzel založený na GPU pomocí příkazu--Node-chutis hodnotu chuti. Zadejte název uzlu založeného na GPU z výstupu předchozího příkazu `kubectl get nodes`. Chuti se použije jako *klíč: hodnota* a pak možnost plánování. Následující příklad používá dvojici *SKU = GPU* a definuje lusky, jinak mají možnost *neplánovat* :
 
 ```console
-kubectl taint node aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
+az aks nodepool --node-taints aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
 ```
 
 Následující základní příklad YAML manifestu používá tolerovat, aby mohl Plánovač Kubernetes spustit NGINX pod uzlem založeným na GPU. Pro přesnější, ale časově náročný příklad spuštění úlohy Tensorflow s datovou sadou MNIST ručně zapsaných najdete informace v tématu [použití GPU pro úlohy náročné na výpočetní výkon v AKS][gpu-cluster].

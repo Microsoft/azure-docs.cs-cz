@@ -3,32 +3,32 @@ title: Ukázková data v Azure blob storage – vědecké zpracování týmovýc
 description: Vzorkování dat uložených ve službě Azure blob storage tak, že stahování prostřednictvím kódu programu a pak ho pomocí procedury napsané v Pythonu vzorkování.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 1c455106e5faa4aa20ec56f37788e0b8c324fee1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4832762a88073f4d819925659bf9078e18f60c2d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61042906"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720271"
 ---
 # <a name="heading"></a>Ukázková data v Azure blob storage
 
 Tento článek se týká vzorkování data uložená ve službě Azure blob storage pomocí stahování prostřednictvím kódu programu a pak ho pomocí procedury napsané v Pythonu vzorkování.
 
 **Proč ukázková data?**
-Pokud je velké datové sady, které chcete analyzovat, je obvykle vhodné na nižší dat ke snížení velikosti menší, ale reprezentativní a lépe zvládnutelné. To usnadňuje pochopení dat, prozkoumávání a vytváření funkcí. Jejich rolí v procesu sady Cortana Analytics je umožnit rychlé vytváření prototypů funkcí pro zpracování dat a modelů strojového učení.
+Pokud je velké datové sady, které chcete analyzovat, je obvykle vhodné na nižší dat ke snížení velikosti menší, ale reprezentativní a lépe zvládnutelné. Vzorkování usnadňuje porozumění datům, průzkumům a inženýrům funkcí. Jejich rolí v procesu sady Cortana Analytics je umožnit rychlé vytváření prototypů funkcí pro zpracování dat a modelů strojového učení.
 
 Tato úloha vzorkování je krok [vědecké zpracování týmových dat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 ## <a name="download-and-down-sample-data"></a>Stažení a seznamu ukázkových dat
-1. Stáhněte data z úložiště objektů blob v Azure pomocí služby blob service z následujícího vzorového kódu Pythonu: 
+1. Stáhněte si data z úložiště objektů BLOB v Azure pomocí Blob service v následujícím ukázkovém kódu Pythonu: 
    
         from azure.storage.blob import BlobService
         import tables
@@ -61,7 +61,7 @@ Tato úloha vzorkování je krok [vědecké zpracování týmových dat (TDSP)](
         sample_rows = np.random.choice(dataframe_blobdata.index.values, sample_size)
         dataframe_blobdata_sample = dataframe_blobdata.ix[sample_rows]
 
-Teď můžete pracovat s výše datový rámec s ukázkou procento 1 pro další zkoumání a funkce generování.
+Nyní můžete pracovat s výše uvedeným datovým rámcem s využitím jedné procentuální ukázky pro další zkoumání a generaci funkcí.
 
 ## <a name="heading"></a>Nahrání dat a načíst do Azure Machine Learning
 Vám pomůže následující ukázka kódu dolů – ukázková data a použít ho přímo ve službě Azure Machine Learning:

@@ -1,22 +1,22 @@
 ---
-title: Ukázková data do umístění jiného úložiště Azure - vědecké zpracování týmových dat
+title: Ukázková data v různých umístěních Azure Storage – vědecký proces týmového zpracování dat
 description: Ukázková data v Azure kontejnery, SQL Server, objektů blob a tabulky snížit na velikost menší, ale reprezentativní a lépe zvládnutelné Hive.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fc91aec80f74488125649cfe807757ba5ae49c9b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 22e91d50227fcb44c7b90478d76379c14161ae05
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60253104"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718599"
 ---
 # <a name="heading"></a>Ukázková data v kontejnerech objektů blob v Azure, SQL Server a v tabulkách Hivu
 
@@ -30,5 +30,5 @@ Tato úloha vzorkování je krok [vědecké zpracování týmových dat (TDSP)](
 
 **Proč ukázkových dat?**
 
-Pokud je velké datové sady, které chcete analyzovat, je obvykle vhodné na nižší dat ke snížení velikosti menší, ale reprezentativní a lépe zvládnutelné. To usnadňuje pochopení dat, prozkoumávání a vytváření funkcí. Jejich rolí v procesu sady Cortana Analytics je umožnit rychlé vytváření prototypů funkcí pro zpracování dat a modelů strojového učení.
+Pokud je velké datové sady, které chcete analyzovat, je obvykle vhodné na nižší dat ke snížení velikosti menší, ale reprezentativní a lépe zvládnutelné. Možnost může zjednodušit porozumění, průzkum a inženýry funkcí. Tato role vzorkování v procesu Cortana Analytics umožňuje rychlé vytváření prototypů funkcí pro zpracování dat a modelů strojového učení.
 

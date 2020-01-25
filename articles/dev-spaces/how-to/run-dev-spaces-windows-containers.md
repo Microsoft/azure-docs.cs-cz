@@ -5,12 +5,12 @@ ms.date: 01/16/2020
 ms.topic: conceptual
 description: Naučte se spouštět Azure Dev Spaces v existujícím clusteru s kontejnery Windows.
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, kontejnery Windows
-ms.openlocfilehash: 886f71dcaaca6a636b385ef6b101f0a893ff7035
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 882cdaa8a7b01578b2f04cf939aa14fe4aee7e2e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156994"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720363"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Interakce s kontejnery Windows pomocí Azure Dev Spaces
 
@@ -61,7 +61,7 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/existingWindowsBackend/mywebapi-windows
 ```
 
-Ukázková aplikace používá [Helm][helm-installed] ke spuštění služby systému Windows ve vašem clusteru. Přejděte do adresáře `charts` a pomocí Helm spusťte službu systému Windows:
+Ukázková aplikace používá [Helm 3][helm-installed] ke spuštění služby Windows v clusteru. Přejděte do adresáře `charts` a pomocí Helm spusťte službu systému Windows:
 
 ```console
 cd charts/

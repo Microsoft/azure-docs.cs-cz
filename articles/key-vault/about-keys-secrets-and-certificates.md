@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6a107936d290609fec73d46a93a277c3bdcce354
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: affa182145645b9a91801a9c6b38e682e6bd77ec
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832922"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720057"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>O klíčích, tajných klíčích a certifikátech
 
@@ -76,7 +76,7 @@ Kde:
 |`keyvault-name`|Název trezoru klíčů ve službě Microsoft Azure Key Vault.<br /><br /> Key Vault jména vybere uživatel a jsou globálně jedinečné.<br /><br /> Key Vault název musí být řetězec znaků 3-24, který obsahuje pouze 0-9, a-z, a-Z a-.|  
 |`object-type`|Typ objektu, buď klíče, nebo tajné klíče.|  
 |`object-name`|`object-name` je název zadaný uživatelem pro a musí být jedinečný v rámci Key Vault. Název musí být řetězec znaků 1-127, který obsahuje pouze 0-9, a-z, a-Z a-.|  
-|`object-version`|`object-version` je identifikátor řetězce znaků generovaný systémem 32, který se volitelně používá * o pro jedinečnou verzi objektu.|  
+|`object-version`|`object-version` je identifikátor řetězce znaků generovaný systémem 32, který se volitelně používá k adresování jedinečné verze objektu.|  
 
 ## <a name="key-vault-keys"></a>Key Vault klíče
 
@@ -166,7 +166,7 @@ Další informace o objektech JWK naleznete v tématu [JSON web Key (JWK)](https
 
 ###  <a name="key-attributes"></a>Klíčové atributy
 
-Vedle nastavení týkajících se klíčů samotných je možné ještě zadat následující atributy. V požadavku JSON jsou klíčové slovo atributů a složené závorky ({' '} ') vyžadovány i v případě, že nejsou zadány žádné atributy.  
+Kromě klíčového materiálu lze zadat následující atributy. V požadavku JSON jsou klíčové slovo atributů a složené závorky ({' '} ') vyžadovány i v případě, že nejsou zadány žádné atributy.  
 
 - *povoleno*: logická hodnota, volitelná, výchozí hodnota je **true**. Určuje, jestli je klíč povolený a použitelný pro kryptografické operace. Atribut *Enabled* se používá ve spojení s *NBF* a *exp*. Pokud dojde k operaci mezi *NBF* a *exp*, bude povoleno pouze v případě, že je vlastnost *Enabled* nastavena na **hodnotu true**. Operace mimo okno *nbf* / *exp* se automaticky nepovolují, s výjimkou určitých typů operací za určitých [podmínek](#date-time-controlled-operations).
 - *NBF*: IntDate, volitelné, výchozí nastavení je teď. Atribut *NBF* (nikoli před) určuje dobu, po jejímž uplynutí nesmí být klíč použit pro kryptografické operace, s výjimkou určitých typů operací za určitých [podmínek](#date-time-controlled-operations). Zpracování atributu *NBF* vyžaduje, aby aktuální datum a čas musel být pozdější nebo rovno datu a času, které je uvedené v atributu *NBF* . Key Vault může poskytovat některé malé Leeway, obvykle ne více než několik minut, aby se zohlednila časová zkosená část. Jeho hodnota musí být číslo obsahující hodnotu IntDate.  
@@ -230,7 +230,7 @@ Další informace o práci s klíči naleznete v tématu [klíčové operace v o
 
 Z pohledu vývojáře Key Vault rozhraní API akceptuje a vrací tajné hodnoty jako řetězce. Interně Key Vault ukládá a spravuje tajné klíče jako sekvence oktetů (8bitové bajty) a maximální velikost 25k bajtů. Služba Key Vault neposkytuje sémantiku tajných kódů. Přijímá pouze data, šifruje je, ukládá je a vrací tajný identifikátor (ID). Identifikátor lze použít k pozdějšímu načtení tajného klíče.  
 
-U vysoce citlivých dat by klienti měli zvážit další vrstvy ochrany dat. Příkladem může být šifrování dat pomocí samostatného ochranného klíče před uložením ve službě Key Vault.  
+Pro vysoce citlivá data by klienti měli zvážit další vrstvy ochrany dat. Šifrování dat pomocí samostatného klíče ochrany před úložištěm v Key Vault je jedním příkladem.  
 
 Key Vault také podporuje pole contentType pro tajné klíče. Klienti můžou určit typ obsahu tajného kódu, který pomůže při interpretaci tajných dat při jejich načítání. Maximální délka tohoto pole je 255 znaků. Neexistují žádné předem definované hodnoty. Navrhované použití je jako pomocný parametr pro interpretaci tajných dat. Implementace může například ukládat hesla i certifikáty jako tajné klíče a pak je odlišit pomocí tohoto pole. Nejsou k dispozici žádné předdefinované hodnoty.  
 

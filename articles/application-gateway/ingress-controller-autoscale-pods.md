@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 0e1ba6d86778b40f96940c417050e242fde33845
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: b98ab8d3c4d03115ea689b4dfd3d8dee753f019d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797579"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715079"
 ---
 # <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>Automatické škálování AKSch lusků pomocí Application Gatewaych metrik (beta verze)
 
@@ -94,7 +94,7 @@ kubectl get --raw "/apis/external.metrics.k8s.io/v1beta1/namespaces/default/appg
 
 Až bude možné vystavit `appgw-request-count-metric` prostřednictvím metrického serveru, je připraveno použít [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) ke škálování našeho cílového nasazení.
 
-V následujícím příkladu budeme cílit na ukázkové nasazení `aspnet`. Pokud `appgw-request-count-metric` > 200 na až, nasadíme až do maximální velikosti `10` lusky.
+V následujícím příkladu budeme cílit na ukázkové nasazení `aspnet`. Až do maximálního počtu `10` lusky nasadíme `appgw-request-count-metric` > 200.
 
 Nahraďte název cílového nasazení a použijte následující konfiguraci automatického škálování:
 ```yaml

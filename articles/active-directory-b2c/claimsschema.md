@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1a26d6228fd2d0383f22d4f286cc84e263facfe6
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 1e72e100bcb3d06403af1514dea13de59c623310
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999107"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713068"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -42,18 +42,18 @@ Element **ClaimsSchema** definuje typy deklarací identity, na které se dá odk
 
 Element **ClaimType** obsahuje následující atribut:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| Id | Ano | Identifikátor, který se používá pro typ deklarace. Ostatní elementy můžou tento identifikátor v zásadách použít. |
+| ID | Ano | Identifikátor, který se používá pro typ deklarace. Ostatní elementy můžou tento identifikátor v zásadách použít. |
 
 Element **ClaimType** obsahuje následující prvky:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | DisplayName | 0:1 | Název, který se zobrazí uživatelům na různých obrazovkách. Hodnota může být [lokalizována](localization.md). |
 | DataType | 0:1 | Typ deklarace identity. Lze použít datové typy Boolean, Date, dateTime, int, Long, String, StringCollection a alternativeSecurityIdCollection. |
 | DefaultPartnerClaimTypes | 0:1 | Výchozí typy deklarací partnerů, které se mají použít pro zadaný protokol. Hodnota může být přepsána v **PartnerClaimType** určeném v elementech **InputClaim** nebo **OutputClaim** . Tento prvek slouží k určení výchozího názvu protokolu.  |
-| Maska | 0:1 | Volitelné řetězce maskování znaků, které lze použít při zobrazení deklarace identity. Například telefonní číslo 324-232-4343 lze maskovat jako XXX-XXX-4343. |
+| Zrušit | 0:1 | Volitelné řetězce maskování znaků, které lze použít při zobrazení deklarace identity. Například telefonní číslo 324-232-4343 lze maskovat jako XXX-XXX-4343. |
 | UserHelpText | 0:1 | Popis typu deklarace, který může být užitečný pro uživatele, aby porozuměl jeho účelu. Hodnota může být [lokalizována](localization.md). |
 | UserInputType | 0:1 | Typ vstupního ovládacího prvku, který má být uživateli k dispozici, když ručně zadáte data deklarace pro daný typ deklarace identity. Podívejte se na typy vstupu uživatele definované dále na této stránce. |
 | Omezení | 0:1 | Omezení hodnoty pro tuto deklaraci identity, například regulární výraz (Regex) nebo seznam přijatelných hodnot. Hodnota může být [lokalizována](localization.md). |
@@ -63,18 +63,18 @@ PredicateValidationReference| 0:1 | Odkaz na element **PredicateValidationsInput
 
 **DefaultPartnerClaimTypes** může obsahovat následující element:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| Protocol | 0: n | Seznam protokolů s výchozím názvem typu deklarace identity partnera. |
+| Protocol (Protokol) | 0: n | Seznam protokolů s výchozím názvem typu deklarace identity partnera. |
 
 Element **Protocol** obsahuje následující atributy:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| Name | Ano | Název platného protokolu, který podporuje Azure AD B2C. Možné hodnoty jsou:  OAuth1, OAuth2, typu Saml2, OpenIdConnect. |
+| Name (Název) | Ano | Název platného protokolu, který podporuje Azure AD B2C. Možné hodnoty jsou: OAuth1, OAuth2, typu Saml2, OpenIdConnect. |
 | PartnerClaimType | Ano | Název typu deklarace, který se má použít |
 
-V následujícím příkladu, když architektura prostředí identity komunikuje s poskytovatelem identity typu Saml2 nebo s aplikací předávající strany, je přidaná deklarace identity namapovaná na `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`, s OpenIdConnect a OAuth2, deklarace je namapovaná na `family_name` .
+Když v následujícím příkladu architektura prostředí identit komunikuje s poskytovatelem identity typu Saml2 nebo s aplikací předávající strany, **je tato deklarace identity** namapovaná na `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`s OpenIdConnect a OAuth2 je tato deklarace namapovaná na `family_name`.
 
 ```XML
 <ClaimType Id="surname">
@@ -88,7 +88,7 @@ V následujícím příkladu, když architektura prostředí identity komunikuje
 </ClaimType>
 ```
 
-Výsledkem je, že token JWT vystavil Azure AD B2C a `family_name` místo něho vygeneruje jméno typu "názevdeklarace identity".
+Výsledkem je, že token JWT vystavil Azure AD B2C, vygeneruje `family_name` **namísto názvu deklarace**identity.
 
 ```JSON
 {
@@ -100,16 +100,16 @@ Výsledkem je, že token JWT vystavil Azure AD B2C a `family_name` místo něho 
 }
 ```
 
-### <a name="mask"></a>Maska
+### <a name="mask"></a>Zrušit
 
 Element **Maske** obsahuje následující atributy:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| `Type` | Ano | Typ masky deklarace identity. Možné hodnoty: `Simple` nebo `Regex`. `Simple` Hodnota označuje, že je použita jednoduchá textová maska pro úvodní část deklarace řetězce. `Regex` Hodnota označuje, že regulární výraz je použit na deklaraci řetězce jako celek.  Pokud je zadána hodnota, volitelný atribut musí být také definován s regulárním výrazem, který má být použit. `Regex` |
-| `Regex` | Ne | Pokud **`Type`** je nastaven na `Regex`, zadejte regulární výraz, který se má použít.
+| `Type` | Ano | Typ masky deklarace identity. Možné hodnoty: `Simple` nebo `Regex`. Hodnota `Simple` označuje, že se pro úvodní část deklarace řetězce používá jednoduchá textová maska. Hodnota `Regex` označuje, že regulární výraz se aplikuje na deklaraci řetězce jako celek.  Pokud je zadána hodnota `Regex`, musí být také definován volitelný atribut s regulárním výrazem, který má být použit. |
+| `Regex` | Ne | Pokud je **`Type`** nastavené na `Regex`, zadejte regulární výraz, který se má použít.
 
-Následující příklad konfiguruje deklaraci **PhoneNumber** s `Simple` maskou:
+Následující příklad konfiguruje deklaraci **PhoneNumber** s `Simple`ovou maskou:
 
 ```XML
 <ClaimType Id="PhoneNumber">
@@ -124,7 +124,7 @@ Architektura prostředí identity vykreslí telefonní číslo a skryje prvních
 
 ![Deklarace identity telefonního čísla zobrazená v prohlížeči s prvních šesti číslicemi maskovánými x](./media/claimsschema/mask.png)
 
-Následující příklad konfiguruje deklaraci identity **AlternateEmail** pomocí `Regex` masky:
+Následující příklad nakonfiguruje deklaraci **AlternateEmail** s maskou `Regex`:
 
 ```XML
 <ClaimType Id="AlternateEmail">
@@ -144,13 +144,13 @@ Architektura prostředí identity vykresluje jenom první písmeno e-mailové ad
 
 Element **omezení** může obsahovat následující atribut:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| MergeBehavior | Ne | Metoda použitá ke sloučení hodnot výčtu se třídou ClaimType v nadřazené zásadě se stejným identifikátorem. Tento atribut použijte, pokud přepíšete deklaraci identity zadanou v základní zásadě. Možné hodnoty: `Append`, `Prepend`, nebo `ReplaceAll`. `Append` Hodnota je kolekce dat, která by se měla připojit na konec kolekce zadané v nadřazené zásadě. `Prepend` Hodnota je kolekce dat, která by se měla přidat před kolekce zadané v nadřazené zásadě. `ReplaceAll` Hodnota je kolekce dat zadaných v nadřazené zásadě, která by se měla ignorovat. |
+| MergeBehavior | Ne | Metoda použitá ke sloučení hodnot výčtu se třídou ClaimType v nadřazené zásadě se stejným identifikátorem. Tento atribut použijte, pokud přepíšete deklaraci identity zadanou v základní zásadě. Možné hodnoty: `Append`, `Prepend`nebo `ReplaceAll`. Hodnota `Append` je kolekce dat, která by se měla připojit na konec kolekce zadané v nadřazené zásadě. Hodnota `Prepend` je kolekce dat, která by se měla přidat před kolekce zadané v nadřazené zásadě. Hodnota `ReplaceAll` je kolekce dat zadaných v nadřazené zásadě, která by se měla ignorovat. |
 
 Element **omezení** obsahuje následující prvky:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | Enumeration | 1: n | Dostupné možnosti v uživatelském rozhraní pro uživatele, kteří mají vybrat pro deklaraci identity, například hodnotu v rozevíracím seznamu. |
 | Vzor | 1:1 | Regulární výraz, který má být použit. |
@@ -159,13 +159,13 @@ Element **omezení** obsahuje následující prvky:
 
 Prvek **výčtu** obsahuje následující atributy:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | Text | Ano | Zobrazovaný řetězec, který je zobrazen uživateli v uživatelském rozhraní pro tuto možnost. |
-|Value | Ano | Hodnota deklarace identity, která je přidružená k výběru této možnosti. |
-| SelectByDefault | Ne | Určuje, zda má být tato možnost ve výchozím nastavení vybrána v uživatelském rozhraní. Možné hodnoty: True nebo False. |
+|Hodnota | Ano | Hodnota deklarace identity, která je přidružená k výběru této možnosti. |
+| SelectByDefault | Ne | Určuje, zda má být tato možnost ve výchozím nastavení vybrána v uživatelském rozhraní. Možné hodnoty: true nebo false. |
 
-Následující příklad konfiguruje deklaraci identity rozevíracího seznamu **měst** s výchozí hodnotou nastavenou `New York`na:
+Následující příklad konfiguruje deklaraci identity rozevíracího seznamu **měst** s výchozí hodnotou nastavenou na `New York`:
 
 ```XML
 <ClaimType Id="city">
@@ -188,7 +188,7 @@ Rozevírací seznam měst s výchozí hodnotou nastavenou na New York:
 
 Prvek **vzoru** může obsahovat následující atributy:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | RegularExpression | Ano | Regulární výraz, který deklarace identity tohoto typu musí splňovat, aby byl platný. |
 | HelpText | Ne | Vzor nebo regulární výraz pro tuto deklaraci. |
@@ -220,7 +220,7 @@ Azure AD B2C podporuje různé typy vstupu uživatele, jako je textové pole, he
 
 ### <a name="textbox"></a>TextBox
 
-Textové pole pro zadání uživatelského rozhraní slouží k zadání jednořádkového textového pole.
+Textové **pole pro zadání uživatelského rozhraní** slouží k zadání jednořádkového textového pole.
 
 ![Textové pole zobrazující vlastnosti zadané v typu deklarace](./media/claimsschema/textbox.png)
 
@@ -354,9 +354,9 @@ Typ vstupu uživatele **jen pro čtení** se používá k zadání pole jen pro 
 ```
 
 
-### <a name="paragraph"></a>Odstavec
+### <a name="paragraph"></a>Pododstavec
 
-**Odstavcový** typ vstupu uživatele slouží k poskytnutí pole, které zobrazuje text pouze v označení odstavce. Například &lt;p&gt;text/p&lt;.&gt;
+**Odstavcový** typ vstupu uživatele slouží k poskytnutí pole, které zobrazuje text pouze v označení odstavce. Například &lt;p&gt;text&lt;/p&gt;.
 
 ![Použití typu deklarace s odstavcem](./media/claimsschema/paragraph.png)
 
@@ -368,11 +368,11 @@ Typ vstupu uživatele **jen pro čtení** se používá k zadání pole jen pro 
   <UserHelpText>A claim responsible for holding response messages to send to the relying party</UserHelpText>
   <UserInputType>Paragraph</UserInputType>
   <Restriction>
-    <Enumeration Text="B2C_V1_90001" Value="You cant sign in because you are a minor" />
+    <Enumeration Text="B2C_V1_90001" Value="You cannot sign in because you are a minor" />
     <Enumeration Text="B2C_V1_90002" Value="This action can only be performed by gold members" />
     <Enumeration Text="B2C_V1_90003" Value="You have not been enabled for this operation" />
   </Restriction>
 </ClaimType>
 ```
 
-Chcete-li zobrazit jednu z hodnot **výčtu** v deklaraci **responseMsg** , `GetMappedValueFromLocalizedCollection` použijte `CreateStringClaim` transformaci nebo transformaci deklarací. Další informace najdete v tématu [transformace řetězcových deklarací](string-transformations.md) .
+Pokud chcete zobrazit jednu z hodnot **výčtu** v deklaraci **responseMsg** , použijte transformaci deklarací identity `GetMappedValueFromLocalizedCollection` nebo `CreateStringClaim`. Další informace najdete v tématu [transformace řetězcových deklarací](string-transformations.md) .

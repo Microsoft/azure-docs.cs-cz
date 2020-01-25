@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 9e585f7d13e1686f125055056fd1e2d88e2bf8ff
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 0d61ad33b97b97c3a45334704544d72809e56848
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903338"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715269"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Load Balancer úrovně Standard a zóny dostupnosti
 
@@ -37,7 +37,7 @@ V kontextu zón dostupnosti se chování a vlastnosti pravidla Load Balancer pop
 
 Veřejné i interní Load Balancer podporují scénáře redundantních a oblastí a oba můžou směrovat provoz napříč zónami podle potřeby (*Vyrovnávání zatížení mezi zónami*). 
 
-### <a name="frontend"></a>Front-end
+### <a name="frontend"></a>Endy
 
 Front-end Load Balancer je konfigurace IP adresy front-endu, která odkazuje buď na prostředek veřejné IP adresy, nebo na privátní IP adresu v rámci sítě virtuálního síťového prostředku.  Vytvoří koncový bod s vyrovnáváním zatížení, ve kterém je vaše služba vystavená.
 
@@ -143,7 +143,7 @@ Následující úryvek je ilustrace, jak definovat interní Standard Load Balanc
                 ],
 ```
 
-Předchozí výňatky nejsou kompletními šablonami, jejichž cílem je Ukázat, jak vyjádřit vlastnosti zón dostupnosti.  Tyto příkazy musíte zahrnout do svých šablon.
+Předchozí výňatky nejsou kompletními šablonami, které mají Ukázat, jak vyjádřit vlastnosti zón dostupnosti.  Tyto příkazy musíte zahrnout do svých šablon.
 
 ### <a name="cross-zone-load-balancing"></a>Vyrovnávání zatížení mezi zónami
 

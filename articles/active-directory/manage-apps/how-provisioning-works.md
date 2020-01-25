@@ -15,12 +15,12 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 910317201275ba1598ed3e4d89815542b88fb108
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 5238f8ca9258e4f7907d9d9755b7252e60f40de8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75719966"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711527"
 ---
 # <a name="how-provisioning-works"></a>Jak funguje zřizování
 
@@ -29,13 +29,13 @@ Automatické zřizování se týká vytváření identit uživatelů a rolí v c
 **Služba zřizování Azure AD** zřídí uživatele k SaaS aplikací a dalších systémů připojením k systému pro správu identit mezi doménami (SCIM) 2,0 koncovým bodem rozhraní API pro správu uživatelů poskytovaným dodavatelem aplikace. Tento koncový bod SCIM umožňuje službě Azure AD programově vytvářet, aktualizovat a odebírat uživatele. Pro vybrané aplikace může služba zřizování také vytvářet, aktualizovat a odebírat další objekty související s identitou, jako jsou například skupiny a role. Kanál použitý ke zřízení služby Azure AD a aplikace je zašifrovaný pomocí šifrování SSL protokolu HTTPS.
 
 
-![služby Azure AD Provisioning](./media/user-provisioning/provisioning0.PNG)
+![služby Azure AD Provisioning](media/how-provisioning-works/provisioning0.PNG)
 *Obrázek 1: služba zřizování Azure AD*
 
-![pracovní postup odchozího zřizování uživatelů](./media/user-provisioning/provisioning1.PNG)
+![pracovní postup odchozího zřizování uživatelů](media/how-provisioning-works/provisioning1.PNG)
 *Obrázek 2: "odchozí" pracovní postup zřizování uživatelů z Azure AD do oblíbených aplikací SaaS*
 
-pracovní postup ![příchozího zřizování uživatelů](./media/user-provisioning/provisioning2.PNG)
+pracovní postup ![příchozího zřizování uživatelů](media/how-provisioning-works/provisioning2.PNG)
 *Obrázek 3: "příchozí" pracovní postup zřizování uživatelů z oblíbených aplikací HCM pro správu lidského kapitálu do Azure Active Directory a Windows Server Active Directory*
 
 ## <a name="provisioning-using-scim-20"></a>Zřizování pomocí SCIM 2,0
@@ -73,11 +73,11 @@ Pro odchozí zřizování z Azure AD do aplikace SaaS, která se spoléhá na [p
 
   * Dynamické skupiny můžou ovlivnit výkon komplexního zřizování z Azure AD až po SaaS aplikace.
 
-  * Způsob zřízení a zrušení zřizování uživatele v dynamické skupině v aplikaci SaaS závisí na tom, jak rychlá dynamická skupina dokáže vyhodnotit změny členství ve skupinách. Informace o tom, jak kontrolovat stav zpracování dynamické skupiny, najdete v tématu [Zkontrolujte stav zpracování pravidla členství](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule).
+  * Způsob zřízení a zrušení zřizování uživatele v dynamické skupině v aplikaci SaaS závisí na tom, jak rychlá dynamická skupina dokáže vyhodnotit změny členství ve skupinách. Informace o tom, jak kontrolovat stav zpracování dynamické skupiny, najdete v tématu [Zkontrolujte stav zpracování pravidla členství](../users-groups-roles/groups-create-rule.md).
 
   * Když uživatel ztratí členství v dynamické skupině, považuje se za událost zrušení zřízení. Při vytváření pravidel pro dynamické skupiny Vezměte v úvahu tento scénář.
 
-* **Vnořené skupiny.** Služba zřizování uživatelů Azure AD nemůže číst ani zřizovat uživatele ve vnořených skupinách. Služba může číst a zřizovat pouze uživatele, kteří jsou bezprostředními členy explicitně přiřazené skupiny. Toto omezení "přiřazení na základě skupin na aplikace" ovlivňuje také jednotné přihlašování (viz téma [použití skupiny pro správu přístupu k aplikacím SaaS](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-saasapps)). Místo toho přímo přiřaďte nebo jinak [obor ve](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) skupinách, které obsahují uživatele, kteří se musí zřídit.
+* **Vnořené skupiny.** Služba zřizování uživatelů Azure AD nemůže číst ani zřizovat uživatele ve vnořených skupinách. Služba může číst a zřizovat pouze uživatele, kteří jsou bezprostředními členy explicitně přiřazené skupiny. Toto omezení "přiřazení na základě skupin na aplikace" ovlivňuje také jednotné přihlašování (viz téma [použití skupiny pro správu přístupu k aplikacím SaaS](../users-groups-roles/groups-saasapps.md)). Místo toho přímo přiřaďte nebo jinak [obor ve](define-conditional-rules-for-provisioning-user-accounts.md) skupinách, které obsahují uživatele, kteří se musí zřídit.
 
 ### <a name="attribute-based-scoping"></a>Rozsah založený na atributech 
 
@@ -85,7 +85,7 @@ Filtry oborů lze použít k definování pravidel založených na atributech, k
 
 ### <a name="b2b-guest-users"></a>Uživatelé B2B (host)
 
-Je možné použít službu Azure AD Provisioning Service ke zřízení uživatelů B2B (nebo hostů) ve službě Azure AD a SaaS aplikace. Aby se však uživatelé B2B přihlásili k aplikaci SaaS pomocí služby Azure AD, musí mít aplikace SaaS možnost jednotného přihlašování založené na SAML nakonfigurovanou určitým způsobem. Další informace o tom, jak nakonfigurovat aplikace SaaS tak, aby podporovaly přihlášení uživatelů B2B, najdete v tématu [Konfigurace aplikací SaaS pro spolupráci B2B]( https://docs.microsoft.com/azure/active-directory/b2b/configure-saas-apps).
+Je možné použít službu Azure AD Provisioning Service ke zřízení uživatelů B2B (nebo hostů) ve službě Azure AD a SaaS aplikace. Aby se však uživatelé B2B přihlásili k aplikaci SaaS pomocí služby Azure AD, musí mít aplikace SaaS možnost jednotného přihlašování založené na SAML nakonfigurovanou určitým způsobem. Další informace o tom, jak nakonfigurovat aplikace SaaS tak, aby podporovaly přihlášení uživatelů B2B, najdete v tématu [Konfigurace aplikací SaaS pro spolupráci B2B](../b2b/configure-saas-apps.md).
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>Cykly zřizování: počáteční a přírůstkové
 
@@ -154,13 +154,13 @@ Pokud chyba v cílovém systému brání přidání, aktualizaci nebo odstraněn
 
 Vyřešte tyto chyby úpravou hodnot atributu pro ovlivněného uživatele ve zdrojovém systému nebo úpravou mapování atributů tak, aby nezpůsobily konflikty.
 
-### <a name="quarantine"></a>Karanténa
+### <a name="quarantine"></a>Umístit
 
 Pokud se většina nebo všechna volání prováděná na cílovém systému konzistentně nezdařila kvůli chybě (například neplatné přihlašovací údaje správce), úloha zřizování přejde do stavu "karanténa". Tento stav je uveden v [sestavě souhrn zřizování](check-status-user-account-provisioning.md) a prostřednictvím e-mailu, pokud byly e-mailová oznámení konfigurována v Azure Portal.
 
 Když je v karanténě, frekvence přírůstkových cyklů se postupně zkracuje na jeden den.
 
-Úloha zřizování se ukončí do karantény po opravení všech problematických chyb a spuštění dalšího cyklu synchronizace. Pokud úloha zřizování zůstane v karanténě po dobu delší než čtyři týdny, úloha zřizování je zakázaná. Tady najdete další informace [o stavu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)karantény.
+Úloha zřizování se ukončí do karantény po opravení všech problematických chyb a spuštění dalšího cyklu synchronizace. Pokud úloha zřizování zůstane v karanténě po dobu delší než čtyři týdny, úloha zřizování je zakázaná. Tady najdete další informace [o stavu](application-provisioning-quarantine-status.md)karantény.
 
 ### <a name="how-long-provisioning-takes"></a>Jak dlouho trvá zřizování
 
@@ -184,7 +184,7 @@ Služba zřizování Azure AD odstraní uživatele v aplikaci, když aplikace su
 
 Pokud dojde k jedné z výše uvedených čtyř událostí a cílová aplikace nepodporuje obnovitelné odstranění, služba zřizování odešle požadavek na odstranění, který uživatele trvale odstraní z aplikace. 
 
-30 dní po odstranění uživatele ve službě Azure AD se trvale odstraní z tenanta. V tuto chvíli služba zřizování pošle žádost o odstranění, aby uživatele v aplikaci trvale odstranil. Kdykoli během 30denního okna můžete [trvale odstranit uživatele]( https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-restore), který odešle žádost o odstranění do aplikace.
+30 dní po odstranění uživatele ve službě Azure AD se trvale odstraní z tenanta. V tuto chvíli služba zřizování pošle žádost o odstranění, aby uživatele v aplikaci trvale odstranil. Kdykoli během 30denního okna můžete [trvale odstranit uživatele](../fundamentals/active-directory-users-restore.md), který odešle žádost o odstranění do aplikace.
 
 Pokud se ve svých mapováních atributů zobrazí atribut IsSoftDeleted, použije se k určení stavu uživatele a zda má být odeslán požadavek na aktualizaci s hodnotou aktivní = false pro obnovitelné odstranění uživatele. 
 

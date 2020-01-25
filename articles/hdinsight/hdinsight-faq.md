@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: d9daefaec33c435ae9f8eceec370c83de4535f8b
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: b05b83086cc9d8449d9517897f347b6e2685aa95
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830373"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720346"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight – Nejčastější dotazy
 
@@ -233,7 +233,7 @@ Další informace o tom, jak nastavit a spustit úlohu cron, najdete v tématu [
 ### <a name="why-is-llap-available-on-spark-esp-clusters"></a>Proč je LLAP k dispozici v clusterech Spark ESP?
 V clusterech ESP Spark je LLAP povolený z bezpečnostních důvodů (tj. Apache Ranger), nikoli výkonu. Měli byste použít virtuální počítače s větším uzlem pro přizpůsobení využití prostředků LLAP (např. minimální D13V2). 
 
-### <a name="how-can-i-add-addional-aad-groups-after-creating-an-esp-cluster"></a>Jak můžu přidat skupiny AAD další po vytvoření clusteru ESP?
+### <a name="how-can-i-add-additional-aad-groups-after-creating-an-esp-cluster"></a>Jak můžu přidat další skupiny AAD po vytvoření clusteru ESP?
 Toho lze dosáhnout dvěma způsoby: 1 – cluster můžete znovu vytvořit a přidat další skupinu v době vytváření clusteru. Pokud v AAD-DS používáte vymezenou synchronizaci, ujistěte se, že je skupina B zahrnutá v rámci synchronizace s vymezeným oborem.
 2 – přidejte skupinu jako vnořenou dílčí skupinu předchozí skupiny, která se použila k vytvoření clusteru ESP. Pokud jste například vytvořili cluster ESP se skupinami `A`, můžete později přidat skupinu `B` jako vnořenou podskupinu `A` a po přibližně jednu hodinu bude synchronizována a k dispozici v clusteru automaticky. 
 

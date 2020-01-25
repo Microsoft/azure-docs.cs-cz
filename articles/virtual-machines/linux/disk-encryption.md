@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 4508d4b36e17db801a3ac172c434cf2e2136e141
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 2df0135953a9f810bdc142b18386c9a186028767
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289352"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717602"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Šifrování na straně serveru Azure Managed disks
 
@@ -139,12 +139,12 @@ az vm create -g $rgName -n $vmName -l $location --image $image --size $vmSize --
 #### <a name="create-a-virtual-machine-scale-set-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>Vytvoření sady škálování virtuálních počítačů pomocí Image Marketplace, šifrování operačních systémů a datových disků pomocí klíčů spravovaných zákazníkem
 
 ```azurecli
-rgName=ssecmktesting
-vmssName=ssecmktestvmss5
+rgName=yourResourceGroupName
+vmssName=yourVMSSName
 location=WestCentralUS
 vmSize=Standard_DS3_V2
 image=UbuntuLTS 
-diskEncryptionSetName=diskencryptionset786
+diskEncryptionSetName=yourDiskencryptionSetName
 
 diskEncryptionSetId=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [id] -o tsv)
 az vmss create -g $rgName -n $vmssName --image UbuntuLTS --upgrade-policy automatic --admin-username azureuser --generate-ssh-keys --os-disk-encryption-set $diskEncryptionSetId --data-disk-sizes-gb 64 128 --data-disk-encryption-sets $diskEncryptionSetId $diskEncryptionSetId

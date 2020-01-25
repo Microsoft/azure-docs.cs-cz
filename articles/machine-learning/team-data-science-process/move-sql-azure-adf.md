@@ -3,24 +3,24 @@ title: Data SQL serveru do SQL Azure s Azure Data Factory - vědecké zpracován
 description: Nastavte kanál ADF, která vytvoří dvě aktivity migrace dat, které každý den společně přesun dat mezi databází v místním prostředí i v cloudu.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b64aa6c0e6e0e3bf449d44996df3223b12a69923
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8f696f1c6c414cd9db082e79e0f34c56156e1ee0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982416"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722488"
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Přesun dat z místních SQL serveru do SQL Azure s Azure Data Factory
 
-V tomto článku se dozvíte, jak přesunout data z místní databáze SQL Server do databáze SQL Azure prostřednictvím služby Azure Blob Storage pomocí Azure Data Factory (ADF): Tato metoda je podporovaným starším přístupem, který má výhody replikované pracovní kopie, ale navrhujeme si, jak na [stránce migrace dat podívat na nejnovější možnosti](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1).
+V tomto článku se dozvíte, jak přesunout data z místní databáze SQL Server do databáze SQL Azure prostřednictvím služby Azure Blob Storage pomocí Azure Data Factory (ADF): Tato metoda je podporovaným starším přístupem, který má výhody replikované pracovní kopie, ale [doporučujeme podívat se na stránku migrace dat](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1), kde najdete nejnovější možnosti.
 
 Tabulka, která shrnuje různé možnosti pro přesun dat do služby Azure SQL Database, najdete v části [přesun dat do služby Azure SQL Database pro Azure Machine Learning](move-sql-azure.md).
 
@@ -32,12 +32,12 @@ Data pomocí ADF se může skládat stávající služby zpracování dat do dat
 Zvažte použití ADF:
 
 * Když data musí být neustále migrovat v hybridní scénář, který přistupuje k i v místním a cloudovým prostředkům
-* Když data je zpracováván jako transakce nebo se musí změnit nebo mít obchodní logiky do ní přidat při migraci.
+* Když data potřebují transformace nebo když se k ní přidají obchodní logika při migraci.
 
 ADF umožňuje pro plánování a monitorování úloh pomocí jednoduchých skriptů JSON, které spravují pohybu dat v pravidelných intervalech. ADF má také další funkce, jako třeba podporu pro složité operace. Další informace o ADF, naleznete v dokumentaci na [Azure Data Factory (ADF)](https://azure.microsoft.com/services/data-factory/).
 
 ## <a name="scenario"></a>Tento scénář
-Nastavíme kanál ADF, který lze kombinovat dvěma aktivitami data migrace. Společně se přesun dat každý den mezi službou v místním SQL database a Azure SQL Database v cloudu. Jsou dvě aktivity:
+Nastavíme kanál ADF, který lze kombinovat dvěma aktivitami data migrace. Společně přesouvá data na denní bázi mezi místními SQL Database a Azure SQL Database v cloudu. Jsou dvě aktivity:
 
 * kopírování dat z místní databáze systému SQL Server do účtu služby Azure Blob Storage
 * kopírování dat z účtu služby Azure Blob Storage do služby Azure SQL Database.
@@ -69,7 +69,7 @@ Můžete přizpůsobit postup uvedený tady na sadu vlastních dat nebo postupuj
 Pokyny pro vytvoření nové datové továrny Azure a skupiny prostředků [webu Azure portal](https://portal.azure.com/) jsou k dispozici [vytvořte datovou továrnu Azure](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory). Pojmenujte novou instanci ADF *adfdsp* a název skupiny prostředků, vytvoří *adfdsprg*.
 
 ## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>Instalace a konfigurace modulu Runtime integrace pro Azure Data Factory
-Prostředí Integration Runtime je infrastruktura integrace spravovaných dat zákazníka službou Azure Data Factory používá k poskytování možnosti integrace dat napříč různými síťovými prostředími. Tento modul runtime byl dříve se označovaly jako "Brána správy dat".
+Integration Runtime je infrastruktura pro integraci dat spravovaná zákazníky, kterou používá Azure Data Factory k poskytování možností integrace dat napříč různými síťovými prostředími. Tento modul runtime byl dříve se označovaly jako "Brána správy dat".
 
 Pokud chcete nastavit, [postupujte podle pokynů pro vytvoření kanálu](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline) .
 
@@ -78,7 +78,7 @@ Propojená služba definuje informace potřebné pro připojení ke zdroji dat s
 
 1. Na místním SQL serveru
 2. Azure Blob Storage
-3. Databáze Azure SQL
+3. Databáze SQL Azure
 
 Podrobný postup pro vytvoření propojené služby je součástí [vytvoříte propojené služby,](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline).
 
@@ -136,7 +136,7 @@ Definice tabulky pro místní systém SQL Server je zadán v následujícím sou
 }
 ```
 
-Názvy sloupců sem nebyly zahrnuty. Můžete zvolit dílčí na názvy sloupců uvedete tady (podrobnosti najdete [dokumentace ke službě ADF](../../data-factory/copy-activity-overview.md) tématu.
+Názvy sloupců sem nebyly zahrnuty. Na názvy sloupců můžete vybrat jejich výběr tak, že je sem zahrnete (podrobnosti najdete v tématu [dokumentace k ADF](../../data-factory/copy-activity-overview.md) .
 
 Zkopírujte definici JSON tabulky do souboru volá *onpremtabledef.json* soubor a uložte do vhodného umístění (zde předpokládá se, že *C:\temp\onpremtabledef.json*). Vytvoření tabulky ve službě ADF pomocí následující rutiny Azure Powershellu:
 
@@ -302,4 +302,4 @@ Kanálu se teď dají spouštět pomocí následujícího příkazu:
 
 Jakmile se spustí kanál byste měli vidět data zobrazí v kontejneru vybrané pro tento objekt blob, souborů za den.
 
-Všimněte si, že jsme ještě využít funkce poskytované službou ADF kanálu dat přírůstkově. Další informace o tom, jak provést toto a další funkce poskytované ADF, najdete v článku [dokumentace ke službě ADF](https://azure.microsoft.com/services/data-factory/).
+Nevyužili jsme funkci, kterou poskytuje ADF pro přírůstková data. Další informace o tom, jak provést toto a další funkce poskytované ADF, najdete v článku [dokumentace ke službě ADF](https://azure.microsoft.com/services/data-factory/).

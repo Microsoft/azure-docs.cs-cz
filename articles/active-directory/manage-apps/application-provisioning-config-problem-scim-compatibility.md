@@ -16,12 +16,12 @@ ms.date: 12/03/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eee480d4a52f77e054bf8f0780707444b6db28b0
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c6da171db6535100342342571a5c1f6468abd0fc
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275802"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712347"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Známé problémy a řešení s dodržováním předpisů protokolu SCIM 2,0 ve službě Azure AD pro zřizování uživatelů
 
@@ -66,7 +66,7 @@ Ano. Pokud už tuto instanci aplikace používáte pro jednotné přihlašován�
  
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
 
-   ![Získat úlohy](./media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "Získat úlohy") 
+   ![Získat úlohy](media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "Získat úlohy") 
 
 
 6. Ve výsledcích zkopírujte úplný řetězec "ID", který začíná buď "customappsso", nebo "SCIM".
@@ -74,7 +74,7 @@ Ano. Pokud už tuto instanci aplikace používáte pro jednotné přihlašován�
  
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]/schema`
  
-   ![Získat schéma](./media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "Získat schéma") 
+   ![Získat schéma](media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "Získat schéma") 
 
 8. Zkopírujte výstup JSON z posledního kroku a uložte ho do textového souboru. Obsahuje všechny vlastní mapování atributů, které jste přidali do staré aplikace, a mělo by to být přibližně několik tisíc řádků formátu JSON.
 9. Chcete-li odstranit úlohu zřizování, spusťte následující příkaz:

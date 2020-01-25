@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 0db00f670dfcc526d3fc34d41ce731df4c6573ec
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1e6f50eea559662bb0ba60e10b41c3db50db2939
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824146"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720210"
 ---
 # <a name="configure-opc-publisher"></a>Konfigurace vydavatele OPC
 
@@ -223,7 +223,7 @@ Syntaxe konfiguračního souboru je následující:
 
             // Pattern is a regular expression, which is applied to the actual value of the
             // property (here 'EndpointUrl').
-            // If this key is ommited (which is the default), then no regex matching is done
+            // If this key is omitted (which is the default), then no regex matching is done
             // at all, which improves performance.
             // If the key is used you need to define groups in the regular expression.
             // Publisher applies the regular expression and then concatenates all groups

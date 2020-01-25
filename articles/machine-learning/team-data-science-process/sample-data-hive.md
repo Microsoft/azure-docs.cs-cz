@@ -3,23 +3,23 @@ title: Ukázková data v tabulkách Azure HDInsight Hive - vědecké zpracován�
 description: Nižší data uložená v tabulkách Azure HDInsight Hive pomocí dotazů Hive ke snížení data do více zvládnutelných pro analýzu velikosti.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c417950e07ae3c6922aa260a3ef40d862870aa1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df85edc3de00e2b0342bc3102fe9e85564a9835b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61042879"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719989"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Ukázková data v tabulkách Azure HDInsight Hive
-Tento článek popisuje, jak na nižší data uložená v tabulkách Azure HDInsight Hive pomocí dotazů Hive ke snížení velikosti lépe zvládnutelné pro analýzu. Ho pokrývají tři metody popularly používané vzorkování:
+Tento článek popisuje, jak na nižší data uložená v tabulkách Azure HDInsight Hive pomocí dotazů Hive ke snížení velikosti lépe zvládnutelné pro analýzu. Pokrývá tři oblíbené metody vzorkování:
 
 * Jednotné náhodných vzorkování
 * Náhodný podle skupin
@@ -31,7 +31,7 @@ Pokud je velké datové sady, které chcete analyzovat, je obvykle vhodné na ni
 Tato úloha vzorkování je krok [vědecké zpracování týmových dat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 ## <a name="how-to-submit-hive-queries"></a>Postup odesílání dotazů Hive
-Dotazy Hive můžete odeslat z konzoly příkazového řádku Hadoopu hlavního uzlu clusteru Hadoop. Chcete-li to provést, přihlaste se k hlavnímu uzlu clusteru Hadoop, otevřete konzolu příkazového řádku pro Hadoop a odesílání dotazů Hive z něj. Pokyny k odesílání dotazů Hive v konzole nástroje příkazového řádku Hadoopu, najdete v článku [způsob odesílání dotazů Hive](move-hive-tables.md#submit).
+Dotazy Hive můžete odeslat z konzoly příkazového řádku Hadoopu hlavního uzlu clusteru Hadoop.  Přihlaste se k hlavnímu uzlu clusteru Hadoop, otevřete konzolu příkazového řádku Hadoop a z ní odešlete dotazy na podregistr. Pokyny k odesílání dotazů Hive v konzole nástroje příkazového řádku Hadoopu, najdete v článku [způsob odesílání dotazů Hive](move-hive-tables.md#submit).
 
 ## <a name="uniform"></a> Jednotné náhodných vzorkování
 Jednotné výběrová znamená, že v datové sadě každý řádek obsahuje stejnou šanci vzorkují. Je možné implementovat přidáním rand() další pole na sadu dat ve vnitřní dotaz "Vyberte" a vnější dotaz "Vyberte" tuto podmínku na náhodných pole.
@@ -81,7 +81,7 @@ Tady je příklad dotazu této ukázky ve skupině:
     on b.catfield=c.catfield
 
 ## <a name="stratified"></a>Vrstveného vzorkování
-Náhodný vzorkování je si s ohledem na proměnnou zařazené do kategorií, pokud ukázky získat hodnoty zařazené do kategorií, které se nacházejí v poměr, jako byly v nadřazené naplnění. Použijeme stejný příklad, jak je uvedeno výše, Předpokládejme, že vaše data má následující pozorování podle stavu: NJ má 100 pozorování, NY má 60 připomínky a WA má 300 pozorování. Pokud chcete zadat počet vrstveného vzorkování bude 0,5, potom ukázka získali by měl mít přibližně 50, 30 a 150 pozorování NJ, USA a WA v uvedeném pořadí.
+Náhodný vzorkování je si s ohledem na proměnnou zařazené do kategorií, pokud ukázky získat hodnoty zařazené do kategorií, které se nacházejí v poměr, jako byly v nadřazené naplnění. Jak je uvedeno výše, pokud použijeme stejný příklad předpokládejme, že data obsahují následující pozorování státy: NJ má 100 pozorování, NY má 60 připomínky a WA má 300 pozorování. Pokud chcete zadat počet vrstveného vzorkování bude 0,5, potom ukázka získali by měl mít přibližně 50, 30 a 150 pozorování NJ, USA a WA v uvedeném pořadí.
 
 Zde je příklad dotazu:
 

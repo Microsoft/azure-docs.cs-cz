@@ -4,14 +4,14 @@ description: Seznamte se s možnostmi konfigurace klientů pro zlepšení výkon
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 01/15/2020
 ms.author: sngun
-ms.openlocfilehash: 27f39af480db8c0a044489a2efe6d2e4447b6db1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: eec5ab6cdf4afd63db2e77046bb19436e600ece6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "71261314"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720992"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy ke zvýšení výkonu pro Azure Cosmos DB a .NET
 
@@ -30,7 +30,7 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
 1. **Zásady připojení: použít přímý režim připojení**
 
-    Způsob připojení klienta k Azure Cosmos DB má důležité dopady na výkon, zejména v souvislosti s pozorovanou latencí na straně klienta. K dispozici jsou dvě nastavení konfigurace klíče pro konfiguraci zásad připojení klienta – *režim* připojení a *protokol*připojení.  K dispozici jsou dva režimy:
+    Způsob, jakým se klient připojuje ke službě Azure Cosmos DB, má významný vliv na výkon, a to zejména z hlediska pozorované latence na straně klienta. K dispozici jsou dvě nastavení konfigurace klíče pro konfiguraci zásad připojení klienta – *režim* připojení a *protokol*připojení.  K dispozici jsou dva režimy:
 
    * Režim brány
       
@@ -40,7 +40,7 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
    * Přímý režim
 
-     Přímý režim podporuje připojení prostřednictvím protokolů TCP a HTTPS a je výchozím režimem připojení, pokud používáte [Microsoft. Azure. Cosmos/.NET V3 SDK](sql-api-sdk-dotnet-standard.md).
+     Přímý režim podporuje připojení prostřednictvím protokolu TCP a je výchozím režimem připojení, pokud používáte [Microsoft. Azure. Cosmos/.NET V3 SDK](sql-api-sdk-dotnet-standard.md).
 
      Při použití režimu brány Cosmos DB používá rozhraní API Azure Cosmos DB pro MongoDB port 443 a porty 10250, 10255 a 10256. Port 10250 se mapuje na výchozí instanci MongoDB bez geografické replikace a 10255/10256 portů na instanci MongoDB s funkcí geografické replikace. Při použití TCP v přímém režimu kromě portů brány je potřeba zajistit, aby byl rozsah portů mezi 10000 a 20000 otevřený, protože Azure Cosmos DB používá dynamické porty TCP. Pokud nejsou tyto porty otevřené a pokusíte se použít protokol TCP, obdržíte nedostupnou chybu služby 503. Následující tabulka uvádí režimy připojení, které jsou dostupné pro různá rozhraní API a porty služby pro každé rozhraní API:
 
@@ -49,9 +49,9 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
      |brána  |   HTTPS    |  Všechny sady SDK    |   SQL (443), Mongo (10250, 10255, 10256), Table (443), Cassandra (10350), Graph (443)    |
      |Direct    |     TCP    |  .NET SDK    | Porty v rozsahu 10000 až 20000 |
 
-     Azure Cosmos DB nabízí jednoduchý a otevřený programovací model RESTful přes protokol HTTPS. Navíc nabízí efektivní protokol TCP, který se také RESTful ve svém komunikačním modelu a je dostupný prostřednictvím klientské sady SDK pro .NET. Přímý protokol TCP i HTTPS používají protokol SSL pro počáteční ověřování a šifrování provozu. Pro nejlepší výkon použijte protokol TCP, pokud je to možné.
+     Azure Cosmos DB nabízí jednoduchý a otevřený programovací model RESTful přes protokol HTTPS. Navíc nabízí efektivní protokol TCP, který se také RESTful ve svém komunikačním modelu a je dostupný prostřednictvím klientské sady SDK pro .NET. Protokol TCP používá protokol SSL pro počáteční ověřování a šifrování provozu. Pro nejlepší výkon použijte protokol TCP, pokud je to možné.
 
-     V případě sady SDK v3 je režim připojení nakonfigurován při vytváření instance CosmosClient jako součást CosmosClientOptions.
+     V případě sady SDK v3 je režim připojení nakonfigurován při vytváření instance CosmosClient jako součást CosmosClientOptions, pamatujte, že výchozím režimem je přímý režim.
 
      ```csharp
      var serviceEndpoint = new Uri("https://contoso.documents.net");
@@ -59,7 +59,7 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
      CosmosClient client = new CosmosClient(serviceEndpoint, authKey,
      new CosmosClientOptions
      {
-        ConnectionMode = ConnectionMode.Direct
+        ConnectionMode = ConnectionMode.Gateway // ConnectionMode.Direct is the default
      });
      ```
 
@@ -71,7 +71,7 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
      DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
      new ConnectionPolicy
      {
-        ConnectionMode = ConnectionMode.Direct,
+        ConnectionMode = ConnectionMode.Direct, //ConnectionMode.Gateway is the default
         ConnectionProtocol = Protocol.Tcp
      });
      ```
@@ -185,7 +185,7 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
     - Pro projekty testů založené na VSTest lze to provést tak, že v nabídce **test sady Visual Studio** vyberete možnost **test**->**nastavení testu**->**výchozí architekturu procesoru jako x64**.
 
-    - Pro lokálně nasazené webové aplikace v ASP.NET se to dá udělat tak, že zkontrolujete **použití 64 verze IIS Express pro weby a projekty**v části **nástroje**->**možnosti**->**projekty a řešení**-> **Webové projekty**.
+    - Pro lokálně nasazené webové aplikace v ASP.NET se to dá udělat tak, že zkontrolujete **použití 64 verze IIS Express pro weby a projekty**v části **nástroje**->**možnosti**->**projekty a řešení**->**webové projekty**.
 
     - Pro webové aplikace ASP.NET nasazené v Azure to můžete udělat tak, že v **nastavení aplikace** na Azure Portal vyberete možnost **platforma jako 64-bit** .
 
@@ -209,13 +209,13 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
 1. **Měření a optimalizace pro nižší jednotky žádostí za sekundu použití**
 
-    Azure Cosmos DB nabízí bohatou sadu databázových operací, včetně relačních a hierarchických dotazů s UDF, uloženými procedurami a triggery – to vše v dokumentech v rámci kolekce databáze. Náklady spojené s jednotlivými operacemi se liší na základě procesoru, vstupně-výstupních operací a paměti potřebných k dokončení operace. Místo toho, abyste si vymysleli a spravovali hardwarové prostředky, si můžete představit jednotku žádosti (RU) jako jednu míru prostředků potřebných k provádění různých databázových operací a zpracování požadavků aplikace.
+    Azure Cosmos DB nabízí bohatou sadu databázových operací, včetně relačních a hierarchických dotazů s UDF, uloženými procedurami a triggery – to vše v dokumentech v rámci kolekce databáze. Náklady spojené s jednotlivými operacemi se liší v závislosti na procesoru, V/V a paměti, které jsou potřeba k dokončení operace. Místo toho, abyste si vymysleli a spravovali hardwarové prostředky, si můžete představit jednotku žádosti (RU) jako jednu míru prostředků potřebných k provádění různých databázových operací a zpracování požadavků aplikace.
 
     Propustnost se zřizuje na základě počtu [jednotek žádostí](request-units.md) nastavených pro každý kontejner. Spotřeba jednotky požadavku se vyhodnotí jako sazba za sekundu. Aplikace, které překračují sazbu jednotky zřízené žádosti pro svůj kontejner, jsou omezené, dokud sazba neklesne pod zřízenou úroveň kontejneru. Pokud vaše aplikace vyžaduje vyšší úroveň propustnosti, můžete zvýšit svou propustnost tím, že zřizujete další jednotky žádostí. 
 
     Složitost dotazu ovlivňuje počet spotřebovaných jednotek požadavků pro určitou operaci. Počet predikátů, povaha predikátů, počet UDF a velikost zdrojové sady dat ovlivňují náklady na operace dotazů.
 
-    Pro měření režie jakékoli operace (vytvoření, aktualizace nebo odstranění) Zkontrolujte záhlaví [x-MS-Request-poplatek](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) (nebo ekvivalentní vlastnost RequestCharge v ResourceResponse\<t > nebo FeedResponse\<t > v sadě .NET SDK) pro měření počet jednotek žádostí spotřebovaných těmito operacemi.
+    Pokud chcete změřit režii jakékoli operace (vytvořit, aktualizovat nebo odstranit), zkontrolujte záhlaví [x-MS-Request-poplatek](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) (nebo ekvivalentní vlastnost RequestCharge v ResourceResponse\<t > nebo FeedResponse\<t > v sadě .NET SDK) a změřte tak počet jednotek žádostí spotřebovaných těmito operacemi.
 
     ```csharp
     // Measure the performance (request units) of writes

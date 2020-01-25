@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2a9e4828428a91c1d1b75fb9d1b9004e52988084
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 214797f187c1812932c00bdf2a39c5ed79e15d4b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425486"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712659"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>Kurz: registrace aplikace v Azure Active Directory B2C
 
@@ -40,7 +40,7 @@ K registraci aplikace ve vašem tenantovi Azure AD B2C můžete použít aktuál
 
 #### <a name="applicationstabapplications"></a>[Aplikace](#tab/applications/)
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **aplikace**a pak vyberte **Přidat**.
@@ -59,7 +59,7 @@ K registraci aplikace ve vašem tenantovi Azure AD B2C můžete použít aktuál
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací (Preview)** a pak vyberte **Nová registrace**.
@@ -88,7 +88,7 @@ Po dokončení registrace aplikace povolte tok implicitního udělení:
 
 ## <a name="create-a-client-secret"></a>Vytvoření tajného klíče klienta
 
-Pokud vaše aplikace vyměňuje kód pro token, je nutné vytvořit tajný klíč aplikace.
+Pokud vaše aplikace vyměňuje autorizační kód pro přístupový token, je nutné vytvořit tajný klíč aplikace.
 
 #### <a name="applicationstabapplications"></a>[Aplikace](#tab/applications/)
 

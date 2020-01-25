@@ -8,12 +8,12 @@ ms.date: 09/26/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: b6a437af33e3e85b8dc07de223b6e1fd7ce6cb03
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 79d578c910c7d08355901308e00db5912d1f3baf
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176248"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721485"
 ---
 # <a name="export-your-data-to-azure-blob-storage"></a>Exportujte data do Azure Blob Storage
 
@@ -27,7 +27,7 @@ Tento článek popisuje, jak pomocí funkce pro export nepřetržitých dat v Az
 > Když zapnete export průběžných dat, dostanete od tohoto okamžiku pouze data. V současné době nelze data po vypnutí průběžného exportu dat načíst. Pokud chcete zachovat více historických dat, zapněte průběžný export dat.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Musíte být správcem aplikace IoT Central.
 
@@ -83,7 +83,7 @@ Teď, když máte cíl úložiště pro export dat, postupujte podle těchto kro
 
 8. V části **data, která chcete exportovat**, určete každý typ dat k exportu nastavením typ na **zapnuto**.
 
-9. Pokud chcete zapnout funkci průběžného exportu dat, ujistěte se, že je **zapnutý přepínač pro** **Export dat** . Vyberte **Save** (Uložit).
+9. Pokud chcete zapnout funkci průběžného exportu dat, ujistěte se, že je **zapnutý přepínač pro** **Export dat** . Vyberte **Uložit**.
 
    ![Konfigurace nepřetržitého exportu dat](media/howto-export-data/export-list-blob2.png)
 
@@ -620,7 +620,7 @@ const avro = require('avsc');
 async function parse(filePath) {
     const records = await load(filePath);
     for (const record of records) {
-        // Fetch the template ID and version from the id and verison properties.
+        // Fetch the template ID and version from the id and version properties.
         const templateId = record.id;
         const templateVersion = record.version;
 

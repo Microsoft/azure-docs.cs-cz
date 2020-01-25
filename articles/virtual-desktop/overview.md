@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 01/21/2020
+ms.date: 01/23/2020
 ms.author: helohr
-ms.openlocfilehash: 318997e2ebd7a423d7793a75575617d06ab842ac
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 83744750a664a3a992d823f0b7e76768e249aaba
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514268"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721417"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop? 
 
@@ -99,13 +99,15 @@ Virtuální počítače Azure, které vytvoříte pro virtuální počítače s 
 |kms.core.windows.net|Port TCP 1688|Aktivace Windows 10|
 
 >[!IMPORTANT]
->Otevírání těchto adres URL je nezbytné pro spolehlivé nasazení virtuálních počítačů s Windows. Blokování přístupu k těmto adresám URL není podporováno a bude mít vliv na funkčnost služby. Tyto adresy URL odpovídají pouze webům a prostředkům virtuálních ploch systému Windows a neobsahují adresy URL pro jiné služby, jako je Azure AD.
+>Otevírání těchto adres URL je nezbytné pro spolehlivé nasazení virtuálních počítačů s Windows. Blokování přístupu k těmto adresám URL není podporováno a bude mít vliv na funkčnost služby. Tyto adresy URL odpovídají jenom virtuálním plochám a prostředkům virtuálních počítačů s Windows a nezahrnují adresy URL pro jiné služby, jako je Azure Active Directory.
 
 >[!NOTE]
+>Virtuální klient Windows aktuálně neobsahuje seznam rozsahů IP adres, které můžete povolit pro povolení síťového provozu. V tuto chvíli podporujeme jenom konkrétní adresy URL, které jsou na seznamu povolených.
+>
 >Pro adresy URL, které se týkají provozu služby, je nutné použít zástupný znak (*). Pokud nechcete používat * pro přenosy související s agentem, vyhledáte adresy URL bez zástupných znaků:
 >
 >1. Zaregistrujte virtuální počítače do fondu hostitelů virtuálních počítačů s Windows.
->2. Otevřete **Prohlížeč událostí** , přejděte na **Windows** > **protokoly aplikací** a vyhledejte událost s ID 3702.
+>2. Otevřete **Prohlížeč událostí** a přejděte na **protokoly Windows** > **Application** > **WVD-agent** a vyhledejte událost s ID 3702.
 >3. Seznam povolených adres URL, které najdete v části ID události 3702. Adresy URL v rámci události s ID 3702 jsou specifické pro oblast. Pro každou oblast, ve které chcete virtuální počítače nasadit, budete muset tento postup opakovat s příslušnými adresami URL.
 
 Windows Virtual Desktop obsahuje stolní počítače a aplikace Windows, které dodáváte uživatelům a řešení pro správu, které je hostované jako služba v Azure od Microsoftu. Stolní počítače a aplikace můžou být nasazené na virtuálních počítačích v libovolné oblasti Azure a řešení pro správu a data pro tyto virtuální počítače se budou nacházet v USA. To může vést k přenosu dat do USA.

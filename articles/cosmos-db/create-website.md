@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 93cdea453050df8899abf9233991715ae237bcd4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: feab221c24034fe29df420b4f9eb6d84e06a90b5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257240"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719332"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Nasazení služby Azure Cosmos DB a Azure App Service Web Apps pomocí šablony Azure Resource Manageru
 V tomto kurzu se dozvíte, jak pomocí šablony Azure Resource Manageru k nasazení a integrace [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/), [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) webové aplikace a ukázkovou webovou aplikaci.
@@ -33,7 +33,7 @@ Po dokončení tohoto kurzu, budete moci odpovědět na následující otázky:
 
 Než budete postupovat podle pokynů v tomto kurzu, ujistěte se, že máte předplatné Azure. Azure je platforma založená na předplatném.  Další informace o získání předplatného najdete v tématu [možnosti nákupu](https://azure.microsoft.com/pricing/purchase-options/), [nabídky pro členy](https://azure.microsoft.com/pricing/member-offers/), nebo [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a id="CreateDB"></a>Krok 1: Stáhnout soubory šablon
+## <a id="CreateDB"></a>Krok 1: Stáhněte si soubory šablon
 Začněme tím, že si stáhnete soubory šablony, které tento kurz vyžaduje.
 
 1. Stáhněte si [vytvoření účtu Azure Cosmos DB, webové aplikace a nasazení ukázkové aplikace ukázku](https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json) šablon do místní složky (například C:\Azure Cosmos DBTemplates). Tato šablona nasadí účet služby Azure Cosmos DB, webová aplikace služby App Service a webovou aplikaci.  Také automaticky nakonfiguruje webové aplikace pro připojení k účtu Azure Cosmos DB.
@@ -56,7 +56,7 @@ Teď nasadíme první šablony.
    ![Snímek obrazovky uživatelské rozhraní pro nasazení šablony](./media/create-website/TemplateDeployment3.png)
 4. Klikněte na tlačítko **upravit parametry**, zadejte hodnoty všech povinných parametrů a klikněte na tlačítko **OK**.  Parametry jsou následující:
    
-   1. NÁZEV WEBU: Určuje název webové aplikace služby App Service a slouží k vytvoření adresu URL, kterou používáte pro přístup k webové aplikaci (například když zadáte "mydemodocdbwebapp" a pak adresu URL, pomocí kterého přistupujete webové aplikace je mydemodocdbwebapp.azurewebsites.net).
+   1. NÁZEV_WEBU: Určuje název webové aplikace App Service a slouží k vytvoření adresy URL, kterou používáte pro přístup k webové aplikaci (například pokud zadáte "mydemodocdbwebapp", adresa URL, na kterou se přistupujete k webové aplikaci, `mydemodocdbwebapp.azurewebsites.net`).
    2. HOSTINGPLANNAME: Určuje název plánu hostování služby App Service vytvořit.
    3. UMÍSTĚNÍ: Určuje umístění Azure, ve kterém chcete vytvořit službu Azure Cosmos DB a webových prostředků aplikace.
    4. DATABASEACCOUNTNAME: Určuje název účtu služby Azure Cosmos DB k vytvoření.   
@@ -78,7 +78,7 @@ Teď nasadíme první šablony.
 
 <a id="Build"></a> 
 
-## <a name="step-3-deploy-the-document-account-and-web-app-sample"></a>Krok 3: Nasadit ukázkový dokument účtu a webové aplikace
+## <a name="step-3-deploy-the-document-account-and-web-app-sample"></a>Krok 3: Nasazení ukázky dokumentu účtu a webové aplikace
 Teď nasadíme Druhá šablona.  Tato šablona je vhodné zobrazit, jak můžete vložit informace o připojení služby Azure Cosmos DB jako je například koncový bod účtu a hlavní klíč do webové aplikace jako nastavení aplikace nebo vlastního připojovacího řetězce. Například možná máte vlastní webovou aplikaci, která byste chtěli nasadit pomocí účtu služby Azure Cosmos DB a mít informace o připojení, které jsou automaticky naplněny během nasazení.
 
 > [!TIP]
@@ -93,7 +93,7 @@ Teď nasadíme Druhá šablona.  Tato šablona je vhodné zobrazit, jak můžete
    ![Snímek obrazovky uživatelské rozhraní pro nasazení šablony](./media/create-website/TemplateDeployment3.png)
 4. Klikněte na tlačítko **upravit parametry**, zadejte hodnoty všech povinných parametrů a klikněte na tlačítko **OK**.  Parametry jsou následující:
    
-   1. NÁZEV WEBU: Určuje název webové aplikace služby App Service a slouží k vytvoření adresu URL, kterou budete používat pro přístup k webové aplikaci (například když zadáte "mydemodocdbwebapp" a pak adresu URL, pomocí kterého přistupujete webové aplikace je mydemodocdbwebapp.azurewebsites.net).
+   1. Název webu: Určuje název webové aplikace služby App Service a slouží k vytvoření adresu URL, kterou budete používat pro přístup k webové aplikaci (například když zadáte "mydemodocdbwebapp" a pak adresu URL, pomocí kterého přistupujete webové aplikace je mydemodocdbwebapp.azurewebsites.net).
    2. HOSTINGPLANNAME: Určuje název plánu hostování služby App Service vytvořit.
    3. UMÍSTĚNÍ: Určuje umístění Azure, ve kterém chcete vytvořit službu Azure Cosmos DB a webových prostředků aplikace.
    4. DATABASEACCOUNTNAME: Určuje název účtu služby Azure Cosmos DB k vytvoření.   
@@ -114,18 +114,18 @@ Teď nasadíme Druhá šablona.  Tato šablona je vhodné zobrazit, jak můžete
 
 <a name="NextSteps"></a>
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Blahopřejeme! Nasazení služby Azure Cosmos DB, webová aplikace App Service a ukázkovou webovou aplikaci pomocí šablon Azure Resource Manageru.
 
 * Další informace o službě Azure Cosmos DB, klikněte na tlačítko [tady](https://azure.microsoft.com/services/cosmos-db/).
 * Další informace o Azure App Service Web apps, klikněte na tlačítko [tady](https://go.microsoft.com/fwlink/?LinkId=325362).
 * Další informace o šablonách Azure Resource Manageru, klikněte na tlačítko [tady](https://msdn.microsoft.com/library/azure/dn790549.aspx).
 
-## <a name="whats-changed"></a>Co se změnilo
-* Průvodce změnou z webů na službu App Service naleznete v tématu: [Azure App Service a její vliv na stávající služby Azure](https://go.microsoft.com/fwlink/?LinkId=529714)
+## <a name="whats-changed"></a>Co se změnilo?
+* Průvodce změnou z webů na službu App Service naleznete v tématu: [Služba Azure App Service a její vliv na stávající služby Azure](https://go.microsoft.com/fwlink/?LinkId=529714)
 
 > [!NOTE]
-> Pokud chcete začít používat službu Azure App Service před registrací k účtu Azure, přejděte k možnosti [Vyzkoušet službu App Service](https://go.microsoft.com/fwlink/?LinkId=523751), kde můžete okamžitě vytvořit krátkodobou úvodní webovou aplikaci. Není vyžadována platební karta a nevzniká žádný závazek.
+> Pokud chcete začít používat Azure App Service před registrací účtu Azure, přejděte k [možnosti vyzkoušet si App Service](https://go.microsoft.com/fwlink/?LinkId=523751), kde si můžete hned vytvořit krátkodobou úvodní webovou aplikaci. Nepotřebujete kreditní kartu. Žádné závazky.
 > 
 > 
 

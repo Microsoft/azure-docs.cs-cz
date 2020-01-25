@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/08/2019
-ms.openlocfilehash: ad9437b135e48dcfaff9efa5f6daf345d78e79ef
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 094d9fe7425a6192ce2af94c3ea18cac20ff9ded
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895339"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720329"
 ---
 # <a name="archived-release-notes"></a>Archivované poznámky k verzi
 
@@ -52,10 +52,10 @@ Protokol TLS (Transport Layer Security) a SSL (Secure Sockets Layer) (SSL) jsou 
 
 Od další verze se budete moci přihlásit a nakonfigurovat nové clustery HDInsight, aby přijímaly jenom připojení TLS 1,2. 
 
-Později v roce začíná v 6/30/2020. Azure HDInsight vynutila TLS 1,2 nebo novější verze pro všechna připojení HTTPS. Doporučujeme, abyste zajistili, že všichni klienti jsou připraveni na zpracování TLS 1,2 nebo novějších verzí.
+Později v roce začíná v 6/30/2020. Azure HDInsight vynutila TLS 1,2 nebo novější verze pro všechna připojení HTTPS. Doporučujeme, abyste zajistili, že všichni vaši klienti jsou připravení zvládnout TLS 1.2 nebo novější verze.
 
 #### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Přechod na Azure Virtual Machine Scale Sets
-HDInsight teď pomocí virtuálních počítačů Azure zřídí cluster. Počínaje Feburary 2020 (pozdější datum bude sděleno později) HDInsight použije místo toho službu Azure Virtual Machine Scale Sets. Přečtěte si další informace o [službě Azure Virtual Machine Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview).
+HDInsight teď pomocí virtuálních počítačů Azure zřídí cluster. Od února 2020 (pozdější datum bude sděleno později) HDInsight použije místo toho službu Azure Virtual Machine Scale Sets. Přečtěte si další informace o [službě Azure Virtual Machine Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview).
 
 #### <a name="esp-spark-cluster-node-size-change"></a>Změna velikosti uzlu clusteru pro Spark Spark 
 V nadcházející verzi:
@@ -1673,7 +1673,7 @@ Opravené problémy představují vybrané problémy, které byly dříve protok
 
     -   <https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations>
 
-### <a name="upgrading"></a>Upgrade
+### <a name="upgrading"></a>Inovován
 
 Všechny tyto funkce jsou dostupné v HDInsight 3,6. Pokud chcete získat nejnovější verzi Sparku, Kafka a R Server (Machine Learning Services), zvolte prosím při [vytváření clusteru HDInsight 3,6](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)verzi služby Spark, Kafka, ml. Pokud chcete získat podporu pro ADLS, můžete jako možnost zvolit typ úložiště ADLS. Existující clustery se automaticky neupgradují na tyto verze.
 

@@ -15,17 +15,16 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ROBOTS: NOINDEX
-ms.openlocfilehash: 99c5e4d99f45e2a642a46f7dc070fb7512ff4d73
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e7894bfada4d363e89f526280e2925b4f4c6180a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422553"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711888"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-a-non-gallery-application"></a>Problém s konfigurací federovaného jednotného přihlašování pro aplikaci mimo galerii
 
-Pokud narazíte na problém při konfiguraci aplikace. Ověřte, že jste postupovali podle všech kroků v článku [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory.](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery)
+Pokud narazíte na problém při konfiguraci aplikace. Ověřte, že jste postupovali podle všech kroků v článku [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory.](configure-federated-single-sign-on-non-gallery-applications.md)
 
 ## <a name="cant-add-another-instance-of-the-application"></a>Nejde přidat další instanci aplikace.
 
@@ -41,7 +40,7 @@ Pokud aplikace nepodporuje žádný z předchozích verzí, nelze nakonfigurovat
 
 Nemůžete vybrat formát EntityID (uživatelský identifikátor), který Azure AD pošle do aplikace v reakci po ověření uživatele.
 
-Azure AD vybere formát pro atribut NameID (identifikátor uživatele) na základě vybrané hodnoty nebo formátu, který vyžádala aplikace v AuthRequest SAML. Další informace najdete v článku [protokol SAML jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) v části NameIDPolicy,
+Azure AD vybere formát pro atribut NameID (identifikátor uživatele) na základě vybrané hodnoty nebo formátu, který vyžádala aplikace v AuthRequest SAML. Další informace najdete v článku [protokol SAML jednotného přihlašování](../develop/single-sign-on-saml-protocol.md#authnrequest) v části NameIDPolicy,
 
 ## <a name="where-do-i-get-the-application-metadata-or-certificate-from-azure-ad"></a>Kde získám metadata aplikace nebo certifikát z Azure AD
 
@@ -69,7 +68,7 @@ Azure AD neposkytuje adresu URL pro získání metadat. Metadata lze načíst po
 
 ## <a name="dont-know-how-to-customize-saml-claims-sent-to-an-application"></a>Nevím, jak přizpůsobit deklarace SAML odeslané do aplikace.
 
-Další informace o tom, jak přizpůsobit deklarace identity atributů SAML odeslané do vaší aplikace, najdete v tématu [mapování deklarací v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) .
+Další informace o tom, jak přizpůsobit deklarace identity atributů SAML odeslané do vaší aplikace, najdete v tématu [mapování deklarací v Azure Active Directory](../develop/active-directory-claims-mapping.md) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Správa aplikací pomocí Azure Active Directory](what-is-application-management.md)

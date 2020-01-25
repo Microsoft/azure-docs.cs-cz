@@ -6,14 +6,14 @@ author: jpconnock
 ms.service: azure-app-configuration
 ms.devlang: csharp
 ms.topic: quickstart
-ms.date: 01/04/2020
+ms.date: 01/21/2020
 ms.author: jeconnoc
-ms.openlocfilehash: f625135f036ec8fc816bc3c3eb6c76c635c51fe9
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 782c18344732362dee96842bcc7c9a6c4ed14a68
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690205"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711237"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace ASP.NET Core s využitím konfigurace aplikace Azure
 
@@ -102,13 +102,15 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
 1. Přidejte odkaz na `Microsoft.Azure.AppConfiguration.AspNetCore` balíček NuGet spuštěním následujícího příkazu:
 
     ```dotnetcli
-    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 3.0.0-preview-010560002-1165
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 3.0.0-preview-011100002-1192
     ```
+
 1. Spusťte následující příkaz pro obnovení balíčků pro váš projekt:
 
     ```dotnetcli
     dotnet restore
     ```
+
 1. Přidejte tajný klíč s názvem *connectionStrings: appconfig* do správce tajných klíčů.
 
     Tento tajný klíč obsahuje připojovací řetězec pro přístup k úložišti konfigurace aplikace. Hodnotu v následujícím příkazu nahraďte připojovacím řetězcem pro úložiště konfigurace aplikace.
@@ -133,7 +135,7 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
     ```
 
 1. Aktualizujte metodu `CreateWebHostBuilder`, aby používala konfiguraci aplikace, voláním metody `config.AddAzureAppConfiguration()`.
-    
+
     > [!IMPORTANT]
     > `CreateHostBuilder` nahrazuje `CreateWebHostBuilder` v .NET Core 3,0.  Vyberte správnou syntaxi na základě vašeho prostředí.
 
@@ -151,7 +153,7 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
     ```
 
     #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
-    
+
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
@@ -163,6 +165,7 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
         })
         .UseStartup<Startup>());
     ```
+
     ---
 
 1. Přejděte na *<app root>/views/Home* a otevřete *index. cshtml*. Nahraďte jeho obsah následujícím kódem:

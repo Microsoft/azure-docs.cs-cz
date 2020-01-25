@@ -16,18 +16,18 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55b9b8dae6ff47099935f42f75286b1b4ddd3708
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 4da7c874cc5f883d63f8613242c7a7e8b1e83cbd
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275747"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712273"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Problém s konfigurací zřizování uživatelů pro aplikaci Galerie Azure AD
 
-Konfigurace [automatického zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning) pro aplikaci (tam, kde se podporuje) vyžaduje, aby se při přípravě aplikace na Automatické zřizování použily konkrétní pokyny. Potom můžete pomocí Azure Portal nakonfigurovat službu zřizování k synchronizaci uživatelských účtů s aplikací.
+Konfigurace [automatického zřizování uživatelů](user-provisioning.md) pro aplikaci (tam, kde se podporuje) vyžaduje, aby se při přípravě aplikace na Automatické zřizování použily konkrétní pokyny. Potom můžete pomocí Azure Portal nakonfigurovat službu zřizování k synchronizaci uživatelských účtů s aplikací.
 
-Vždy byste měli začít hledáním kurzu nastavení, který je specifický pro nastavení vaší aplikace. Pak postupujte podle těchto kroků a nakonfigurujte aplikaci i službu Azure AD, aby vytvořila zřizovací připojení. Seznam kurzů aplikací najdete v tématu o tom, [jak integrovat aplikace SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list).
+Vždy byste měli začít hledáním kurzu nastavení, který je specifický pro nastavení vaší aplikace. Pak postupujte podle těchto kroků a nakonfigurujte aplikaci i službu Azure AD, aby vytvořila zřizovací připojení. Seznam kurzů aplikací najdete v tématu o tom, [jak integrovat aplikace SaaS s Azure Active Directory](../saas-apps/tutorial-list.md).
 
 ## <a name="how-to-see-if-provisioning-is-working"></a>Jak zjistit, jestli zřizování funguje 
 
@@ -62,11 +62,11 @@ Aby zřizování fungovalo, vyžaduje Azure AD platné přihlašovací údaje, k
 
 Pokud se uživateli v protokolech zřizování zobrazí zpráva "přeskočeno", je velmi důležité si přečíst rozšířené podrobnosti v protokolu, abyste zjistili důvod. Níže jsou uvedeny běžné důvody a řešení:
 
-- Byl **nakonfigurován filtr oboru** **, který vyfiltruje uživatele na základě hodnoty atributu**. Další informace o filtrech rozsahu najdete v tématu <https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters>.
+- Byl **nakonfigurován filtr oboru** **, který vyfiltruje uživatele na základě hodnoty atributu**. Další informace najdete v tématu [zřizování aplikace na základě atributů s filtry oborů](define-conditional-rules-for-provisioning-user-accounts.md).
 
-- **Uživatel je "neefektivně oprávněný".** Pokud se zobrazí tato konkrétní chybová zpráva, je to proto, že došlo k potížím s záznamem přiřazení uživatele uloženým ve službě Azure AD. Pokud chcete tento problém vyřešit, zrušte přiřazení uživatele (nebo skupiny) z aplikace a znovu ho přiřaďte. Další informace o přiřazení najdete v tématu <https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal>.
+- **Uživatel je "neefektivně oprávněný".** Pokud se zobrazí tato konkrétní chybová zpráva, je to proto, že došlo k potížím s záznamem přiřazení uživatele uloženým ve službě Azure AD. Pokud chcete tento problém vyřešit, zrušte přiřazení uživatele (nebo skupiny) z aplikace a znovu ho přiřaďte. Další informace najdete v tématu [přiřazení uživatele nebo skupiny k podnikové aplikaci](assign-user-or-group-access-portal.md).
 
-- **Povinný atribut chybí nebo není vyplněný pro uživatele.** Důležitou věcí, kterou je potřeba zvážit při nastavování zřizování, je zkontrolovat a nakonfigurovat mapování atributů a pracovní postupy, které definují, který uživatel (nebo skupinu) z Azure AD do aplikace přesměruje. Zahrnuje nastavení "odpovídající vlastnost", která se používá k jednoznačné identifikaci uživatelů nebo skupin mezi oběma systémy a jejich porovnání. Další informace o tomto důležitém procesu najdete v tématu <https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings>.
+- **Povinný atribut chybí nebo není vyplněný pro uživatele.** Důležitou věcí, kterou je potřeba zvážit při nastavování zřizování, je zkontrolovat a nakonfigurovat mapování atributů a pracovní postupy, které definují, který uživatel (nebo skupinu) z Azure AD do aplikace přesměruje. Zahrnuje nastavení "odpovídající vlastnost", která se používá k jednoznačné identifikaci uživatelů nebo skupin mezi oběma systémy a jejich porovnání. Další informace o tomto důležitém procesu najdete v tématu [přizpůsobení atributů zřizování uživatelů – mapování](customize-application-attributes.md).
 
   * **Mapování atributů pro skupiny:** Zřizování názvu skupiny a podrobností skupiny, a to i u členů, pokud jsou podporovány pro některé aplikace. Tuto funkci můžete povolit nebo zakázat povolením nebo zakázáním **mapování** pro objekty skupiny zobrazené na kartě **zřizování** . Pokud jsou skupiny zřizování povoleny, nezapomeňte zkontrolovat mapování atributů, aby se zajistilo, že se pro "odpovídající ID" používá příslušné pole. Může to být zobrazované jméno nebo e-mailový alias), protože skupina a její členové se nezřídí, pokud je vlastnost Matching prázdná nebo není naplněná pro skupinu ve službě Azure AD.
 

@@ -5,16 +5,16 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.topic: conceptual
-author: barmichal
-ms.author: mibar
+author: DavidTrigano
+ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 01/03/2019
-ms.openlocfilehash: 5bd3a3ae5ab95076129e2565a578bdc6ac0e1e38
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 13746b86eed75055ceb5203afafb2d27a78ce1d8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928639"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722080"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database formát protokolu auditu
 
@@ -43,7 +43,7 @@ Události auditu se zapisují do Log Analytics pracovního prostoru definovanéh
 
 ## <a id="subheading-1"></a>Pole protokolu auditu
 
-| Název (objekt BLOB) | Název (Event Hubs/Log Analytics) | Popis | Typ objektu blob | Typ Event Hubs/Log Analytics |
+| Název (objekt BLOB) | Název (Event Hubs/Log Analytics) | Popis | Typ objektu BLOB | Typ Event Hubs/Log Analytics |
 |-------------|---------------------------------|-------------|-----------|-------------------------------|
 | action_id | action_id_s | ID akce | varchar (4) | string |
 | action_name | action_name_s | Název akce | Nevztahuje se | string |
@@ -78,8 +78,8 @@ Události auditu se zapisují do Log Analytics pracovního prostoru definovanéh
 | server_principal_sid | server_principal_sid_s | Identifikátor SID aktuálního přihlášení | Varbinary | string |
 | session_id | session_id_d | ID relace, ve které došlo k události | smallint | int |
 | session_server_principal_name | session_server_principal_name_s | Objekt zabezpečení serveru pro relaci | musí | string |
-| příkaz | statement_s | Příkaz jazyka T-SQL, který byl proveden (pokud existuje) | nvarchar (4000) | string |
-| Úspěšné | succeeded_s | Určuje, zda akce, která aktivovala událost, byla úspěšná. Pro jiné události než přihlašovací údaje a dávky Tato sestava oznamuje, zda byla ověření oprávnění úspěšná nebo neúspěšná, nikoli operace. 1 = úspěch, 0 = selhání | bit | string |
+| vydá | statement_s | Příkaz jazyka T-SQL, který byl proveden (pokud existuje) | nvarchar (4000) | string |
+| úspěchu | succeeded_s | Určuje, zda akce, která aktivovala událost, byla úspěšná. Pro jiné události než přihlašovací údaje a dávky Tato sestava oznamuje, zda byla ověření oprávnění úspěšná nebo neúspěšná, nikoli operace. 1 = úspěch, 0 = selhání | bit | string |
 | target_database_principal_id | target_database_principal_id_d | Objekt zabezpečení databáze: operace udělení/ZAMÍTNUTí/odvolání se provádí. 0, pokud není k dispozici | int | int |
 | target_database_principal_name | target_database_principal_name_s | Cílový uživatel akce NULL, pokud není k dispozici | string | string |
 | target_server_principal_id | target_server_principal_id_d | Objekt zabezpečení serveru, na kterém je prováděna operace GRANT/DENY/REVOKE. Vrátí 0, pokud není k dispozici. | int | int |

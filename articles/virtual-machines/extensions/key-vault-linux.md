@@ -8,16 +8,16 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d6b8cdf43fea63fa4709dd5fc5319bb92ddefc63
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: a31894719863b16cc92f7e5bf4d7c85944c8850e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806969"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721298"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Key Vault rozšíření virtuálního počítače pro Linux
 
-Rozšíření virtuálního počítače Key Vault poskytuje automatickou aktualizaci certifikátů uložených v trezoru klíčů Azure. Konkrétně rozšíření monitoruje seznam pozorovaných certifikátů uložených v trezorech klíčů.  Při zjištění změny rozsahu načte a nainstaluje odpovídající certifikáty. Rozšíření virtuálního počítače Key Vault zveřejňuje a podporuje společnost Microsoft, aktuálně na virtuálních počítačích se systémem Linux. Tento dokument podrobně popisuje podporované platformy, konfigurace a možnosti nasazení pro rozšíření Key Vault virtuálního počítače pro Linux. 
+Rozšíření virtuálního počítače Key Vault poskytuje automatickou aktualizaci certifikátů uložených v trezoru klíčů Azure. Konkrétně rozšíření monitoruje seznam pozorovaných certifikátů uložených v trezorech klíčů.  Při zjištění změny rozšíření načte a nainstaluje odpovídající certifikáty. Rozšíření virtuálního počítače Key Vault zveřejňuje a podporuje společnost Microsoft, aktuálně na virtuálních počítačích se systémem Linux. Tento dokument podrobně popisuje podporované platformy, konfigurace a možnosti nasazení pro rozšíření Key Vault virtuálního počítače pro Linux. 
 
 ### <a name="operating-system"></a>Operační systém
 
@@ -74,9 +74,9 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
 | type | KeyVaultForLinux | string |
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | string |
-| certificateStoreName | MY | string |
+| CertificateStoreName | MY | string |
 | linkOnRenewal | false | Boolean |
-| certificateStoreLocation  | LocalMachine | string |
+| CertificateStoreLocation  | LocalMachine | string |
 | requiredInitialSync | true | Boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | pole řetězců
 

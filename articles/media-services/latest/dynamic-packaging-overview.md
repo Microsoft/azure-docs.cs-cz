@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/17/2019
+ms.date: 01/23/2020
 ms.author: juliako
-ms.openlocfilehash: 05a515d5f74569ff8d0fa8aec68eb681dc79d2fc
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 3984f33cd97ada9b3d5301e45fe3506966880848
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779599"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719666"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamické balení v Media Services V3
 
@@ -29,18 +29,7 @@ V Media Services [koncový bod streamování](streaming-endpoint-concept.md) př
 
 ## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>příprava zdrojových souborů na doručení
 
-Pokud chcete využít výhod dynamického balení, musíte soubor Mezzanine (zdrojový soubor) [zakódovat](encoding-concept.md) do sady souborů MP4 s více přenosovými rychlostmi (ISO Base Media 14496-12). Potřebujete mít [Asset](assets-concept.md) s šifrovanými konfiguračními soubory MP4 a streaming, které vyžaduje Media Services dynamické balení. Z této sady souborů MP4 můžete použít dynamické balení k doručování videa prostřednictvím následujících protokolů multimediálního datového proudu:
-
-|Protocol (Protokol)|Příklad:|
-|---|---|
-|HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`|
-|HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`|
-|HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`|
-|MPEG-SPOJOVNÍK CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` |
-|MPEG-SPOJOVNÍK CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
-|Technologie Smooth Streaming| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`|
-
-Pokud plánujete ochranu obsahu pomocí Media Services dynamického šifrování, přečtěte si téma [protokoly streamování a typy šifrování](content-protection-overview.md#streaming-protocols-and-encryption-types).
+Pokud chcete využít výhod dynamického balení, musíte soubor Mezzanine (zdrojový soubor) [zakódovat](encoding-concept.md) do sady souborů MP4 s více přenosovými rychlostmi (ISO Base Media 14496-12). Potřebujete mít [Asset](assets-concept.md) s šifrovanými konfiguračními soubory MP4 a streaming, které vyžaduje Media Services dynamické balení. Z této sady souborů MP4 můžete použít dynamické balení k doručování videa prostřednictvím protokolů multimediálního datového proudu popsaných níže.
 
 > [!TIP]
 > Jedním ze způsobů, jak získat konfigurační soubory MP4 a streamování, je [kódování souboru Mezzanine pomocí Media Services](#encode-to-adaptive-bitrate-mp4s). 
@@ -48,6 +37,36 @@ Pokud plánujete ochranu obsahu pomocí Media Services dynamického šifrování
 Chcete-li zpřístupnit pro klienty přehrávání videa v kódovaném prostředku, je nutné vytvořit [Lokátor streamování](streaming-locators-concept.md) a vytvořit adresy URL streamování. Na základě zadaného formátu v manifestu klienta streamování (HLS, MPEG POMLČKa nebo Smooth Streaming) obdržíte datový proud v protokolu, který jste zvolili.
 
 Díky tomu pak stačí uložit (a platit) soubory pouze v jednom úložném formátu a služba Media Services bude sestavovat a dodávat vhodný formát streamování v reakci na požadavky klientů.
+
+Pokud plánujete ochranu obsahu pomocí Media Services dynamického šifrování, přečtěte si téma [protokoly streamování a typy šifrování](content-protection-overview.md#streaming-protocols-and-encryption-types).
+
+### <a name="hls-protocol"></a>Protokol HLS
+
+Váš klient streamování může určit následující formáty HLS:
+
+|Protocol (Protokol)|Příklad:|
+|---|---|
+|HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`||
+|HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`||
+|HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`||
+
+### <a name="mpeg-dash-protocol"></a>Protokol MPEG-SPOJOVNÍK
+
+Váš klient streamování může určit následující formáty MPEG-SPOJOVNÍK:
+
+|Protocol (Protokol)|Příklad:|
+|---|---|
+|MPEG-SPOJOVNÍK CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` ||
+|MPEG-SPOJOVNÍK CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` ||
+
+### <a name="smooth-streaming-protocol"></a>Protokol Smooth Streaming
+
+Váš klient streamování může určit následující formáty Smooth Streaming:
+
+|Protocol (Protokol)|Poznámky a příklady| 
+|---|---|
+|Technologie Smooth Streaming| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`||
+|Smooth Streaming 2,0 (starší manifest)|Ve výchozím nastavení obsahuje Smooth Streaming formát manifestu značku opakování (značka r). Někteří hráči ale nepodporují `r-tag`. Klienti s těmito hráči můžou používat formát, který zakazuje značku r:<br/><br/>`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=fmp4-v20)`|
 
 ## <a name="on-demand-streaming-workflow"></a>Pracovní postup streamování na vyžádání
 

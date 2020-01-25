@@ -2,15 +2,15 @@
 title: Azure Functions vazby SendGrid
 description: Odkaz na Azure Functions SendGridch vazeb
 author: craigshoemaker
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: d70b05842fc7f251af6aefd743f064c037f63b7b
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: e318e5f9b192b9f857a0b97d076ce4cc87cfb73d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922356"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76710977"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions vazby SendGrid
 
@@ -36,7 +36,7 @@ Vazby SendGrid jsou k dispozici v balíčku NuGet [Microsoft. Azure. WebJobs. Ex
 
 Následující příklad ukazuje [ C# funkci](functions-dotnet-class-library.md) , která používá aktivační událost Service Bus Queue a výstupní vazbu SendGrid.
 
-### <a name="synchronous"></a>Synchronní
+### <a name="synchronous"></a>Synchronizace
 
 ```cs
 [FunctionName("SendEmail")]
@@ -62,7 +62,7 @@ public class OutgoingEmail
 }
 ```
 
-### <a name="asynchronous"></a>Asynchronní
+### <a name="asynchronous"></a>Asynchronně
 
 ```cs
 [FunctionName("SendEmail")]
@@ -354,7 +354,7 @@ V následující tabulce jsou uvedeny vlastnosti konfigurace vazby, které jsou 
 | apiKey | ApiKey | Název nastavení aplikace, které obsahuje klíč rozhraní API. Pokud není nastavená, výchozí název nastavení aplikace je *AzureWebJobsSendGridApiKey*.| Ne |
 | na| až | E-mailová adresa příjemce | Ano |
 | od| Od | E-mailová adresa odesílatele |  Ano |
-| subject| Předmět | Předmět daného e-mailu. | Ano |
+| subject| Předmět | Předmět e-mailu. | Ano |
 | text| Text | Obsah e-mailu | Ano |
 
 Volitelné vlastnosti mohou mít ve vazbě definovány výchozí hodnoty a buď přidány nebo přepsány programově.

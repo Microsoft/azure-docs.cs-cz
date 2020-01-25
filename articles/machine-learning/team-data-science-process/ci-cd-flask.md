@@ -3,24 +3,24 @@ title: Vytvoření kanálu CI/CD pomocí procesu Azure Pipelines – tým pro da
 description: Vytvořte kanál průběžné integrace a průběžného doručování pro aplikace Umělal Intelligence (AI) pomocí Docker a Kubernetes.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/06/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
-ms.openlocfilehash: f07ce8e8834a2804b6a5b7668718c8e6bff00fa6
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 42433ec419ac9e02077cd0359e18b5114206f27d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260667"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721825"
 ---
 # <a name="create-cicd-pipelines-for-ai-apps-using-azure-pipelines-docker-and-kubernetes"></a>Vytváření kanálů CI/CD pro aplikace AI pomocí Azure Pipelines, Docker a Kubernetes
 
-Aplikace Umělal Intelligence (AI) je kód aplikace vložený s předvýukým modelem strojového učení (ML). Pro aplikaci AI jsou vždy dva proudy práce: Vědečtí data sestaví model ML a vývojáři aplikací sestaví aplikaci a zpřístupňují ji koncovým uživatelům, aby mohli využívat. Tento článek popisuje, jak implementovat kanál průběžné integrace a průběžného doručování (CI/CD) pro aplikaci AI, která vkládá model ML do zdrojového kódu aplikace. Vzorový kód a kurz použití jednoduché webové aplikace v Pythonu a načtení předvýukového modelu z privátního účtu úložiště Azure Blob. Můžete použít také účet úložiště AWS S3.
+Aplikace Umělal Intelligence (AI) je kód aplikace vložený s předvýukým modelem strojového učení (ML). Pro aplikaci AI jsou vždy dva proudy práce: odborníci na data sestavují model ML a vývojáři aplikací sestaví aplikaci a zpřístupňují ji koncovým uživatelům, aby mohli využívat. Tento článek popisuje, jak implementovat kanál průběžné integrace a průběžného doručování (CI/CD) pro aplikaci AI, která vkládá model ML do zdrojového kódu aplikace. Vzorový kód a kurz používají webovou aplikaci v baňce Python a načítají se předvlakované modely z privátního účtu úložiště Azure Blob. Můžete použít také účet úložiště AWS S3.
 
 > [!NOTE]
 > Následující postup je jedním z několika způsobů, jak provádět CI/CD. Existují alternativy těchto nástrojů a požadavků.
@@ -60,7 +60,7 @@ Následující diagram a kroky popisují architekturu kanálu CI/CD:
 10. Žádosti uživatelů o aplikaci procházejí serverem DNS.
 11. Server DNS předává požadavky do nástroje pro vyrovnávání zatížení a odesílá odpovědi zpět uživatelům.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Vědecké zpracování týmových dat (TDSP)](/azure/machine-learning/team-data-science-process/)
 - [Azure Machine Learning (AML)](/azure/machine-learning/)

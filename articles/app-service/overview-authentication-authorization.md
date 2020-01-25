@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: ff0eb102d37f285279c041ff91b7a89e157259eb
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: efef578f5c62bef4ae33b98b568fd6d5c1389c4a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672246"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715106"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Ověřování a autorizace v prostředí Azure App Service
 
@@ -24,9 +24,9 @@ Azure App Service poskytuje integrovanou podporu ověřování a autorizace, tak
 Zabezpečené ověřování a autorizace vyžadují důkladné porozumění zabezpečení, včetně federace, šifrování, správy [webových tokenů JSON (Jwt)](https://wikipedia.org/wiki/JSON_Web_Token) , [typů udělení](https://oauth.net/2/grant-types/)a tak dále. App Service poskytuje tyto nástroje, díky kterým můžete věnovat více času a energii na poskytování obchodních hodnot vašemu zákazníkovi.
 
 > [!IMPORTANT]
-> Nemusíte používat App Service pro AuthN/AuthO. Mnohé webové architektury jsou součástí sady funkcí zabezpečení a můžete je použít, pokud chcete. Pokud potřebujete větší flexibilitu, než App Service poskytuje, můžete také napsat vlastní nástroje.  
+> Nemusíte používat App Service pro AuthN/AuthO. Ve vaší webové architektuře můžete použít sady funkcí zabezpečení, nebo můžete napsat vlastní nástroje. Mějte ale na paměti, že [Chrome 80 provádí zásadní změny v implementaci SameSite for soubory cookie](https://www.chromestatus.com/feature/5088147346030592) (Datum vydání v březnu 2020) a vlastní vzdálené ověřování nebo jiné scénáře, které se spoléhají na odesílání souborů cookie mezi weby, se můžou při aktualizaci prohlížečů klienta Chrome poškodit. Alternativní řešení je složité, protože potřebuje podporovat různá chování SameSite pro různé prohlížeče. 
 >
-> Pokud však přecházíte na některou z možností bez App Service pro vzdálené ověřování, pamatujte, že [Chrome 80 provádí zásadní změny v implementaci SameSite for soubory cookie](https://www.chromestatus.com/feature/5088147346030592) (Datum vydání v březnu 2020) a ověřovací mechanismus vaší aplikace může při aktualizaci prohlížečů klienta poškodit. Dokumentace k ASP.NET Core obsahuje informace o tom, jak tento postup vyřešit v aplikaci, v [http: Browser SameSite změny dopadu ověřování](/dotnet/core/compatibility/3.0-3.1#http-browser-samesite-changes-impact-authentication). Obsahuje užitečné pokyny k tomu, jak otestovat tuto zásadní změnu v hlavních prohlížečích bez ohledu na to, jestli používáte ASP.NET Core nebo ne.
+> ASP.NET Core 2,1 a novější verze hostované pomocí App Service jsou již pro tuto zásadní změnu opraveny a odpovídajícím způsobem zpracovávat Chrome 80 a starší prohlížeče. Kromě toho se na App Service instance nasazuje stejná oprava pro ASP.NET Framework 4.7.2 v průběhu ledna 2020. Další informace, včetně informací o tom, jak zjistit, jestli vaše aplikace tuto opravu přijala, najdete v článku [aktualizace souborů cookie Azure App Service SameSite](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/).
 >
 
 Informace specifické pro nativní mobilní aplikace najdete v tématech [ověřování a autorizace uživatelů pro mobilní aplikace s Azure App Service](../app-service-mobile/app-service-mobile-auth.md).
@@ -85,7 +85,7 @@ App Service používá [federované identity](https://en.wikipedia.org/wiki/Fede
 
 Pokud povolíte ověřování a autorizaci jedním z těchto poskytovatelů, je k dispozici koncový bod přihlášení pro ověřování uživatelů a ověření tokenů ověřování od poskytovatele. Uživatelům můžete snadno poskytnout libovolný počet možností přihlašování. Můžete také integrovat jiného poskytovatele identity nebo vlastní [řešení identity][custom-auth].
 
-## <a name="authentication-flow"></a>Tok ověřování
+## <a name="authentication-flow"></a>tok ověřování
 
 Tok ověřování je stejný pro všechny poskytovatele, ale liší se v závislosti na tom, jestli se chcete přihlásit pomocí sady SDK pro poskytovatele:
 

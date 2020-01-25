@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4f9fd3a94cf2b6d6ca077b7363e01085e134babd
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: c97e10d2785b7dc1a438c95dca9be94fcef82f94
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658113"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714839"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Spuštění sady Runbook v Azure Automation
 
@@ -71,7 +71,7 @@ else
     }
 ```
 
-### <a name="time-dependant-scripts"></a>Čas závislých skriptů
+### <a name="time-dependent-scripts"></a>Skripty závislé na čase
 
 Při vytváření runbooků by se měla provést pečlivou pozornost. Jak bylo zmíněno dříve, Runbooky musí být vytvořeny způsobem, který je robustní a může zpracovávat přechodné chyby, které mohou způsobit restartování nebo selhání sady Runbook. Pokud se sada Runbook nepovede, zkusíme to znovu. Pokud se sada Runbook normálně spouští v rámci časového omezení, logika pro kontrolu doby provádění by měla být v Runbooku implementovaná, aby se zajistilo, že operace, jako je spuštění, vypnutí nebo horizontální navýšení kapacity, se spouští jenom v určitých časech.
 
@@ -173,7 +173,7 @@ catch
 }
 ```
 
-#### <a name="throw"></a>Throw
+#### <a name="throw"></a>Vyvolá
 
 Operaci [throw](/powershell/module/microsoft.powershell.core/about/about_throw) lze použít k vygenerování ukončující chyby. To může být užitečné při definování vlastní logiky v sadě Runbook. Pokud je splněno určité kritérium, které by měl skript zastavit, můžete skript zastavit pomocí `throw`. Následující příklad ukazuje počítač parametr funkce vyžadovaný pomocí `throw`.
 
@@ -210,7 +210,7 @@ Následující tabulka popisuje různé stavy, které můžou u úlohy nastat. P
 | Zastaveno |Úlohu uživatel zastavil před tím, než se dokončila. |
 | Zastavování |Systém zastavuje úlohu. |
 | Pozastaveno |Úlohu pozastavil uživatel, systém nebo příkaz v Runbooku. Pokud sada Runbook nemá kontrolní bod, začne od začátku Runbooku. Pokud má kontrolní bod, může se znovu spustit a obnovit z posledního kontrolního bodu. Sada Runbook je systémem pozastavena pouze v případě, že dojde k výjimce. Ve výchozím nastavení je ErrorActionPreference nastaveno na **pokračovat**, což znamená, že úloha pokračuje v běhu na chybu. Pokud je tato proměnná předvoleb nastavená na **zastavit**, úloha se při chybě pozastaví. Platí jenom pro [Runbooky grafických a powershellového pracovního postupu](automation-runbook-types.md) . |
-| Pozastavování |Systém se pokouší pozastavit úlohu na žádost uživatele. Runbook se může pozastavit až po dosažení následujícího kontrolního bodu. Pokud už prošl poslední kontrolní bod, pak ho dokončí před tím, než bude možné ho pozastavit. Platí jenom pro [Runbooky grafických a powershellového pracovního postupu](automation-runbook-types.md) . |
+| Pozastavování |Systém se pokouší pozastavit úlohu na žádost uživatele. Runbook se musí dostat do dalšího kontrolního bodu, než může být pozastavený. Pokud už prošl poslední kontrolní bod, pak ho dokončí před tím, než bude možné ho pozastavit. Platí jenom pro [Runbooky grafických a powershellového pracovního postupu](automation-runbook-types.md) . |
 
 ## <a name="viewing-job-status-from-the-azure-portal"></a>Zobrazení stavu úlohy z Azure Portal
 
@@ -238,7 +238,7 @@ Případně můžete zobrazit souhrn podrobností úlohy pro konkrétní Runbook
 
 ### <a name="job-summary"></a>Souhrn úlohy
 
-Můžete zobrazit seznam všech úloh, které byly vytvořeny pro konkrétní sadu Runbook a jejich nejnovější stav. Tento seznam můžete filtrovat podle stavu úlohy a rozsahu dat poslední změny úlohy. Chcete-li zobrazit podrobné informace a výstup, klikněte na název úlohy. V podrobném zobrazení úlohy najdete hodnoty parametrů Runbooku poskytnuté pro tuto úlohu.
+Můžete zobrazit seznam všech úloh, které byly vytvořeny pro konkrétní sadu Runbook a jejich nejnovější stav. Tento seznam můžete filtrovat podle stavu úlohy a rozsahu dat pro poslední změnu úlohy. Chcete-li zobrazit podrobné informace a výstup, klikněte na název úlohy. V podrobném zobrazení úlohy najdete hodnoty parametrů Runbooku poskytnuté pro tuto úlohu.
 
 Úlohy Runbooku můžete zobrazit takto.
 

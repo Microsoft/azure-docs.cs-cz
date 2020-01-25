@@ -1,6 +1,6 @@
 ---
-title: Použití testovacích prostředí v Učebnách pro školení – Azure Lab Services | Dokumentace Microsoftu
-description: Zjistěte, jak pomocí Azure DevTest Labs pro trénovací scénáře.
+title: Používání Učebn Labs pro školení – Azure Lab Services
+description: Tento článek popisuje, jak použít Azure DevTest Labs pro vytváření cvičení v Azure pro scénáře školení.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -11,48 +11,48 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 4d2ba11181977f1976b5ae933e8b93a92424fa96
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 155806222f9e11fec177487b7147d81054ac06ed
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60695279"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717982"
 ---
-# <a name="use-classroom-labs-for-trainings"></a>Použití testovacích prostředí v Učebnách pro školení
-Můžete nastavit testovací prostředí pro školení. Classroom Labs z Azure Lab Services k vytvoření testovacího prostředí pro trénování povolit, kde každý účastník výcviku používá identické a izolované prostředí pro školení. Můžete využít zásady pro zajištění, že školení prostředí jsou k dispozici pro každý účastník výcviku pouze v případě potřeby a obsahovat dostatek prostředků – například virtual machines – požadováno pro vzdělávání. 
+# <a name="use-classroom-labs-for-trainings"></a>Používání Učebn Labs pro školení
+Můžete nastavit testovací prostředí pro školení. Laboratoře z učebny Azure Lab Services vám umožní vytvořit testovací prostředí pro vaše školení, kde každý z praktikantů používá pro školení stejné a izolované prostředí. Můžete použít zásady, abyste zajistili, že jsou školicí prostředí k dispozici pro každého účastníka pouze v případě, že je potřebují a obsahují dostatek prostředků – například virtuální počítače – vyžadované pro školení. 
 
-![Prostředí v učebně](../media/classroom-labs-scenarios/classroom.png)
+![Testovací prostředí pro učebnu](../media/classroom-labs-scenarios/classroom.png)
 
-Testovací prostředí v učebnách splňuje následující požadavky, které jsou nutné k provádějte školení v jakémkoli virtuální prostředí: 
+Laboratoře v učebně splňují následující požadavky, které jsou nutné k provedení školení v jakémkoli virtuálním prostředí: 
 
-- Stážisté můžete rychle zřídit prostředími školení
-- Každý počítač školení by měly být shodné
-- Stážisté neuvidí virtuální počítače vytvořené pomocí jiných prováděli úkoly
-- Řízení nákladů díky zajištění, že stážisté nelze získat další virtuální počítače, než potřebují pro trénování a také vypnutí virtuálních počítačů, když nejsou na jejich používání
-- Snadné sdílení pomocí každý účastník výcviku testovacího prostředí pro školení
-- Znovu a znovu a znovu použít testovací prostředí pro školení
+- Stážisté můžou rychle zřídit svoje školicí prostředí.
+- Každý školicí počítač by měl být stejný.
+- Stážisté nemůžou zobrazit virtuální počítače vytvořené jinými praktikanty.
+- Řízení nákladů zajištěním, že stážisté nemůžou získat více virtuálních počítačů, než potřebují pro školení a také vypnout virtuální počítače, když je nepoužívají
+- Snadno sdílejte školicí prostředí s každým z praktikantů
+- Znovu znovu spustit školicí prostředí a znovu
 
-V tomto článku se dozvíte o různých funkcí Azure Lab Services, které lze použít ke splnění výš požadavkům a podrobné kroky, pomocí kterých můžete nastavit testovací prostředí pro školení.  
+V tomto článku se dozvíte o různých funkcích Azure Lab Services, které se dají použít ke splnění předchozích popsaných požadavků na školení a podrobných kroků, které můžete provést při nastavení testovacího prostředí pro školení.  
 
-## <a name="create-the-lab-account-as-a-lab-account-administrator"></a>Vytvořte účet testovacího prostředí jako správce účtu testovacího prostředí
-Prvním krokem při používání Azure Lab Services je na webu Azure Portal vytvořit účet testovacího prostředí. Poté, co správce účtu lab vytvoří účet testovacího prostředí, Správce přidá uživatele, kteří chtějí vytvářet testovací prostředí na **Autor testovacího prostředí** role. Školitelů vytvářet testovací prostředí s virtuálními počítači, aby studenti mohli dělat cvičení na kurz, který se vyučují. Podrobnosti najdete v tématu [vytvořit a spravovat účet testovacího prostředí](how-to-manage-lab-accounts.md).
+## <a name="create-the-lab-account-as-a-lab-account-administrator"></a>Vytvoření účtu testovacího prostředí jako správce účtu testovacího prostředí
+Prvním krokem při použití Azure Lab Services je vytvoření účtu testovacího prostředí v Azure Portal. Po vytvoření účtu testovacího prostředí správcem účtu testovacího prostředí přidá správce uživatele, kteří chtějí vytvořit cvičení, do role **testovacího prostředí** . Školitel vytvoří Labs s virtuálními počítači pro studenty, aby mohli provádět cvičení za kurz, který jsou výukou. Podrobnosti najdete v tématu [Vytvoření a Správa účtu testovacího prostředí](how-to-manage-lab-accounts.md).
 
 ## <a name="create-and-manage-classroom-labs"></a>Vytváření a správa testovacích prostředí v učebnách
-Trainer, který je členem role Tvůrce prostředí v účtu testovacího prostředí, můžete vytvořit jeden nebo více testovacích prostředí v rámci účtu testovacího prostředí. Vytvořte a nakonfigurujte šablonu virtuálního počítače s požadovaný software plnit praktická cvičení v kurzu. Vyberte si předem připravená image z dostupných imagí pro vytvoření testovacího prostředí v učebně a potom jej přizpůsobte nainstalováním software potřebný pro testovací prostředí. Podrobnosti najdete v tématu [vytvořit a spravovat testovací prostředí v učebnách](how-to-manage-classroom-labs.md).
+Trainer, který je členem role tvůrce testovacího prostředí v účtu testovacího prostředí, může vytvořit jednu nebo více cvičení v účtu testovacího prostředí. Vytvoříte a nakonfigurujete virtuální počítač šablony s veškerým požadovaným softwarem pro provádění cvičení ve vašem kurzu. Předem vytvořenou image můžete vybrat z dostupných imagí pro vytvoření testovacího prostředí pro učebnu a pak ho přizpůsobit instalací softwaru potřebného pro testovací prostředí. Podrobnosti najdete v tématu [vytváření a Správa učebných cvičení](how-to-manage-classroom-labs.md).
 
-## <a name="configure-usage-settings-and-policies"></a>Konfigurace nastavení použití a zásady
-Autor testovacího prostředí můžete přidat nebo odebrat uživatele do testovacího prostředí, získat registrační odkaz odesílat uživatelům testovacího prostředí, nastavení zásad, jako je nastavení jednotlivých kvót pro uživatele a aktualizovat počet virtuálních počítačů, které jsou k dispozici v testovacím prostředí a další. Podrobnosti najdete v tématu [konfiguraci zásad a nastavení využití](how-to-configure-student-usage.md).
+## <a name="configure-usage-settings-and-policies"></a>Konfigurace nastavení a zásad použití
+Tvůrce testovacího prostředí může přidat nebo odebrat uživatele do testovacího prostředí, získat odkaz na registraci pro odesílání na uživatele testovacího prostředí, nastavit zásady, jako je například nastavení jednotlivých kvót na uživatele, aktualizovat počet virtuálních počítačů dostupných v testovacím prostředí a další. Podrobnosti najdete v tématu [Konfigurace nastavení a zásad použití](how-to-configure-student-usage.md).
 
 ## <a name="create-and-manage-schedules"></a>Vytvoření a správa plánů
-Plány umožňují konfigurovat testovacího prostředí v učebně, tak, aby virtuální počítače v testovacím prostředí automaticky spuštění a vypnutí v určenou dobu. Můžete definovat jednorázového plánu nebo plánu opakování. Podrobnosti najdete v tématu [vytvořit a spravovat plány pro testovací prostředí v učebnách](how-to-create-schedules.md).
+Plány umožňují nakonfigurovat prostředí učebny tak, aby se virtuální počítače v testovacím prostředí automaticky spouštěly a vypnuly v určitou dobu. Můžete definovat Jednorázový plán nebo plán opakování. Podrobnosti najdete v tématu [vytváření a Správa plánů pro učebn Labs](how-to-create-schedules.md).
 
-## <a name="set-up-and-publish-a-template-vm"></a>Nastavení a publikování šablony virtuálního počítače
-Šablona v testovacím prostředí je základní image virtuálního počítače, ze které se vytváří všechny virtuální počítače uživatelů. Nastavení šablony virtuálního počítače tak, aby je nakonfigurován s přesně co byste chtěli poskytnout účastníkům školení. Můžete zadat název a popis šablony, které uvidí uživatelé testovacího prostředí. Potom můžete publikovat šablony, která má instance šablony virtuálního počítače zpřístupnit uživatelům testovacího prostředí. Jakmile publikujete šablonu, vytvoří služba Azure Lab Services pomocí této šablony virtuální počítače v testovacím prostředí. Počet virtuálních počítačů, které se v tomto procesu vytvoří, se rovná maximálnímu počtu uživatelů, kteří mohou k testovacímu prostředí přistupovat. Tento počet můžete nastavit v zásadách používání testovacího prostředí. Všechny virtuální počítače mají stejnou konfiguraci jako šablona. Podrobnosti najdete v tématu [nastavit nahoru a publikovat šablony virtuálních počítačů](how-to-create-manage-template.md). 
+## <a name="set-up-and-publish-a-template-vm"></a>Nastavení a publikování virtuálního počítače šablony
+Šablona v testovacím prostředí je základní image virtuálního počítače, ze které se vytváří všechny virtuální počítače uživatelů. Nastavte virtuální počítač šablony tak, aby byl nakonfigurovaný přesně s tím, co chcete poskytnout účastníkům školení. Můžete zadat název a popis šablony, které uvidí uživatelé testovacího prostředí. Pak publikujete šablonu, aby byly k dispozici instance virtuálního počítače šablony pro vaše uživatele testovacího prostředí. Jakmile publikujete šablonu, vytvoří služba Azure Lab Services pomocí této šablony virtuální počítače v testovacím prostředí. Počet virtuálních počítačů, které se v tomto procesu vytvoří, se rovná maximálnímu počtu uživatelů, kteří mohou k testovacímu prostředí přistupovat. Tento počet můžete nastavit v zásadách používání testovacího prostředí. Všechny virtuální počítače mají stejnou konfiguraci jako šablona. Podrobnosti najdete v tématu [nastavení a publikování virtuálních počítačů šablony](how-to-create-manage-template.md). 
 
-## <a name="use-vms-in-the-classroom-lab"></a>Použití virtuálních počítačů v prostředí v učebně
-Student nebo školení účastník zaregistruje do testovacího prostředí a připojí se k virtuálnímu počítači provést cvičení na kurz. Podrobnosti najdete v tématu [jak získat přístup k testovacímu prostředí v učebně](how-to-use-classroom-lab.md).
+## <a name="use-vms-in-the-classroom-lab"></a>Použití virtuálních počítačů v prostředí učebny
+Účastník nebo školení účastníka zaregistruje do testovacího prostředí a připojí se k virtuálnímu počítači a provede cvičení pro daný kurz. Podrobnosti najdete v tématu [Jak získat přístup k prostředí učebny](how-to-use-classroom-lab.md).
 
-## <a name="next-steps"></a>Další postup
-Začněte vytvořením účtu testovacího prostředí v testovacím prostředím v Učebnách podle pokynů v následujícím článku: [Kurz: Nastavení účtu testovacího prostředí pomocí Azure Lab Services](tutorial-setup-lab-account.md).
+## <a name="next-steps"></a>Další kroky
+Začněte vytvořením účtu testovacího prostředí v učebně Labs podle pokynů v článku [kurz: nastavení účtu testovacího prostředí pomocí Azure Lab Services](tutorial-setup-lab-account.md).

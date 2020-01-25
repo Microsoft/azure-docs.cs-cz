@@ -3,20 +3,20 @@ title: Zprovoznění modelů předdefinovaných ve Spark machine learning – v�
 description: Jak načíst a stanovíte jeho skóre modelů učení uložená v Azure Blob Storage (WASB) s využitím Pythonu.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 03/15/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: dd0467479960df30b1d44aeaef7ed0ed0d6c2a87
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3f02690d7c54581ed80b521e8222d1bd5964c878
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60253181"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718544"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Zprovoznění modelů strojového učení předdefinovaných Spark
 
@@ -35,7 +35,7 @@ Chcete-li upravit poznámkového bloku Jupyter pro Spark 1.6 používat s cluste
 ## <a name="prerequisites"></a>Požadavky
 
 1. Potřebujete účet Azure a Spark 1.6 (nebo Spark 2.0) clusteru HDInsight k dokončení tohoto návodu. Zobrazit [přehled datové vědy pomocí Sparku v Azure HDInsight](spark-overview.md) pokyny o tom, jak tyto požadavky splňují. Toto téma obsahuje také popis dat taxislužby NYC 2013 se tady použít a pokyny o tom, jak spustit kód z poznámkového bloku Jupyter v clusteru Spark. 
-2. Musíte také vytvořit modely strojového učení z práce prostřednictvím zohlednit tady [pro zkoumání a modelování se Sparkem](spark-data-exploration-modeling.md) téma určené pro cluster Spark 1.6 nebo poznámkových bloků Spark 2.0. 
+2. Vytvářejte modely strojového učení, které se tady mají vyhodnotit, pomocí tématu [zkoumání a modelování dat pomocí Sparku](spark-data-exploration-modeling.md) pro cluster Spark 1,6 nebo pro notebooky Spark 2,0. 
 3. Poznámkové bloky Spark 2.0 použít další datové sady pro úkol klasifikace, dobře známé letecká společnost na čas odeslání datové sady z 2011 a 2012. Popis poznámkových bloků a odkazy na nich jsou součástí [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) pro úložiště GitHub, které je obsahují. Kromě toho kód tady v propojených poznámkových bloků je obecný a by mělo fungovat jakéhokoli jiného clusteru Spark. Pokud nepoužíváte HDInsight Spark, může být mírně lišit od co je znázorněna zde kroky instalace a správy clusteru. 
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
@@ -104,7 +104,7 @@ Nastavit kontext spark a naimportujte potřebné knihovny s následujícím kód
 
 
 ### <a name="preset-spark-context-and-pyspark-magics"></a>Přednastavený kontext Spark a PySpark Magic
-Jádra PySpark, které jsou k dispozici s poznámkovými bloky Jupyter nemají přednastavený kontext. Proto není nutné nastavovat Spark nebo vyvíjíte Hive kontexty explicitně předtím, než začnete pracovat s aplikací. Toto jsou k dispozici ve výchozím nastavení. Kontexty jsou:
+Jádra PySpark, které jsou k dispozici s poznámkovými bloky Jupyter nemají přednastavený kontext. Proto nemusíte explicitně nastavovat kontexty Sparku nebo podregistru, než začnete pracovat s aplikací, kterou vyvíjíte. Tyto kontexty jsou ve výchozím nastavení k dispozici:
 
 * sc - pro Spark 
 * kontext sqlContext - pro Hive
@@ -112,7 +112,7 @@ Jádra PySpark, které jsou k dispozici s poznámkovými bloky Jupyter nemají p
 Jádra PySpark poskytuje některé předdefinované "Magic", které jsou speciální příkazy, které lze volat s %%. Existují dva tyto příkazy, které se používají v těchto ukázek kódu.
 
 * **%% místní** zadat, že kód v další řádek je spuštěn místně. Kód musí být platný kód Pythonu.
-* **%% sql -o \<proměnná >** 
+* **%% SQL-o \<název proměnné >** 
 * Spustí dotaz Hive proti kontext sqlContext. Pokud je předán parametr -o výsledek dotazu se ukládají v %% místní kontext Python jako Pandas dataframe.
 
 Pro další informace o jádrech pro poznámkové bloky Jupyter a předdefinované "magics", která poskytují, naleznete v tématu [jádra dostupná pro poznámkové bloky Jupyter s HDInsight Spark Linux clusterů v HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
@@ -120,7 +120,7 @@ Pro další informace o jádrech pro poznámkové bloky Jupyter a předdefinovan
 ## <a name="ingest-data-and-create-a-cleaned-data-frame"></a>Příjem dat a vytvořit objekt frame, vyčištěnou dat
 Tato část obsahuje kód pro řadu úloh potřebných k ingestování dat zohlednit. Číst v připojeném k ukázce 0,1 % taxislužby cesty a tarif souboru (uložený jako soubor TSV), formát data a pak vytvoří čisté datového rámce.
 
-Soubory odezvy a tarif taxislužby byly připojené na základě na postup uvedený v: [Vědecké zpracování týmových dat v akci: clusterů systému HDInsight Hadoop](hive-walkthrough.md) tématu.
+Soubory odezvy a tarif taxislužby byly připojené na základě na postup uvedený v: [vědecké zpracování týmových dat v akci: clusterů systému HDInsight Hadoop](hive-walkthrough.md) tématu.
 
     # INGEST DATA AND CREATE A CLEANED DATA FRAME
 
@@ -257,7 +257,7 @@ Tato část ukazuje, jak data zařazená do kategorií pomocí indexu `StringInd
 Čas potřebný k provedení nad buňkou: 5.37 sekund
 
 ### <a name="create-rdd-objects-with-feature-arrays-for-input-into-models"></a>Vytváření objektů RDD s poli funkce pro vstup do modelů
-Tato část obsahuje kód, který ukazuje, jak indexovat zařazené do kategorií textová data jako objekt RDD a horkou jeden kódovat, je možné pro trénování a testování založený na stromové architektuře modely a MLlib logistické regrese. Indexovaná data uložená v [odolné Distributed Dataset (RDD)](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) objekty. Jedná se o základní abstrakce ve Sparku. Objekt RDD představuje neměnné a dělené sadu prvků, které mohou být provozována paralelně se Sparkem.
+Tato část obsahuje kód, který ukazuje, jak indexovat zařazené do kategorií textová data jako objekt RDD a horkou jeden kódovat, je možné pro trénování a testování založený na stromové architektuře modely a MLlib logistické regrese. Indexovaná data uložená v [odolné Distributed Dataset (RDD)](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) objekty. RDD jsou základní abstrakcí ve Sparku. Objekt RDD představuje neměnné a dělené sadu prvků, které mohou být provozována paralelně se Sparkem.
 
 Také obsahuje kód, který ukazuje, jak škálovat data `StandardScalar` poskytované MLlib pro použití v lineární regrese s pomocí Stochastického přechodu sestup (SGD), Oblíbené algoritmů pro trénování širokou škálu modelů strojového učení. [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) se používá funkce, které se odchylka jednotek škálování. Funkce škálování, označované také jako data normalizace, zajistí, že funkce se značně Celková uhrazená hodnotami jsou neudělil nadměrné naváží ve funkci cíle. 
 
@@ -443,9 +443,9 @@ Kód v této části ukazuje, jak načíst uložené klasifikace a regresních m
 ## <a name="score-classification-and-regression-gradient-boosting-tree-models"></a>Skóre klasifikačních a regresních přechodu zvýšení úrovně stromu modelů
 Kód v této části ukazuje, jak načíst klasifikačních a regresních přechodu zvýšení úrovně stromu modelů ze služby Azure blob storage, hodnocení výkonu pomocí standardní třídění a regresní opatření a uložte výsledky zpět do úložiště objektů blob. 
 
-**Spark.mllib** podporuje GBTs pro binární klasifikaci a regrese, pomocí funkce nepřetržitý a kategorií. 
+**Spark. mllib** podporuje GBTS pro binární klasifikaci a regresi pomocí kontinuálních i kategorií funkcí. 
 
-[Přechodu zvýšení skóre stromů](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) jsou umožňující rozhodovacích stromů. GBTs trénování rozhodovacích stromů zavádět postupně, chcete-li minimalizovat ztrátu funkce. GBTs zvládne zařazené do kategorií funkcí, nevyžadují, aby funkce škálování a budou moct zachytit nelineárností a funkce interakce. Můžete také používají v nastavení multiclass klasifikace.
+GBTS (probíhající se [rozvětvení barev](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) ) jsou komplety rozhodovacích stromů. GBTS rozhodovací stromy pro vlaky iterativním způsobem, aby se minimalizovala funkce ztráty. GBTS může zpracovávat funkce kategorií, nevyžadují škálování funkcí a dokáže zachytit nelinearitu a interakce funkcí. Tento algoritmus lze použít také v nastavení více tříd klasifikace.
 
     # SCORE GRADIENT BOOSTING TREE MODELS FOR CLASSIFICATION AND REGRESSION
 
@@ -524,7 +524,7 @@ BoostedTreeClassificationFileLoc: GradientBoostingTreeClassification_2016-05-031
 BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05-0317_23_56.860740.txt
 
 ## <a name="consume-spark-models-through-a-web-interface"></a>Použití Sparku modelů prostřednictvím webového rozhraní
-Spark poskytuje mechanismus pro vzdáleně pomocí komponenty s názvem Livy odeslání dávkových úloh Hive nebo interaktivní dotazy pomocí rozhraní REST. Livy je povolené ve výchozím nastavení na svém clusteru HDInsight Spark. Další informace o Livy najdete v tématu: [Odesílání Sparkových úloh pomocí Livy vzdáleně](../../hdinsight/spark/apache-spark-livy-rest-interface.md). 
+Spark poskytuje mechanismus pro vzdáleně pomocí komponenty s názvem Livy odeslání dávkových úloh Hive nebo interaktivní dotazy pomocí rozhraní REST. Livy je povolené ve výchozím nastavení na svém clusteru HDInsight Spark. Další informace o Livy najdete v tématu: [odesílání Sparkových úloh pomocí Livy vzdáleně](../../hdinsight/spark/apache-spark-livy-rest-interface.md). 
 
 Vám pomůže Livy vzdáleně odešlete úlohu, jejíž batch skóre, které se soubor, který je uložený v objektu blob Azure a výsledky pak zapíše do jiného objektu blob. K tomuto účelu můžete nahrát skript Pythonu z  
 [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) do objektu blob z clusteru Spark. Můžete použít nástroje, jako je **Microsoft Azure Storage Explorer** nebo **AzCopy** zkopírujte skript do objektu blob clusteru. V našem případě jsme nahráli skript, který chcete ***wasb:///example/python/ConsumeGBNYCReg.py***.   
@@ -586,6 +586,6 @@ Pokud dáváte přednost prostředí bezplatného klienta kódu, použijte [Azur
 
 ![Návrhář pro Logic Apps](./media/spark-model-consumption/spark-logica-app-client.png)
 
-## <a name="whats-next"></a>Co dále?
-**Křížové ověření a hyperparameter sweeping**: Naleznete v tématu [rozšířené zkoumání a modelování se Sparkem](spark-advanced-data-exploration-modeling.md) na to, jak modely můžete pomocí křížového ověření a hyperparametrické sweeping školení.
+## <a name="whats-next"></a>A co dál?
+**Křížového ověření a hyperparameter sweeping**: naleznete v tématu [rozšířené zkoumání a modelování se Sparkem](spark-advanced-data-exploration-modeling.md) na to, jak modely můžete pomocí křížového ověření a hyperparametrické sweeping školení.
 

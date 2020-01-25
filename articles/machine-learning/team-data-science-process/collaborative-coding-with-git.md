@@ -2,20 +2,20 @@
 title: Kódování pomocí Git - vědecké zpracování týmových dat založené na spolupráci
 description: Postup vývoje spolupráci kódu pro projekty datových věd používat Git na agilní plánování.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 08/23/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3b57621fcec654f11c8e9a68e4568f332dbf9ac6
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 0708e395eff90ff5b889c05f0fd5e7a98205c5bc
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195437"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721893"
 ---
 # <a name="collaborative-coding-with-git"></a>Kódování založené na spolupráci s využitím Gitu
 
@@ -25,9 +25,9 @@ Tento článek popisuje, jak použít Git jako architekturu vývoje kódu pro sp
 
 Azure DevOps nabízí pohodlný způsob, jak připojit Azure Boards uživatelský scénář nebo pracovní položku úkolu pomocí Azure Repos větve úložiště Git. Svůj uživatelský scénář nebo úkol můžete propojit přímo s kódem, který je k němu přidružený. 
 
-Chcete-li připojit pracovní položku k nové větvi, vyberte tři tečky ( **...** ) vedle pracovní položky a v místní nabídce přejděte na a vyberte možnost **Nová větev**.  
+Chcete-li připojit pracovní položku k nové větvi, **vyberte tři** tečky ( **...** ) vedle pracovní položky a v místní nabídce přejděte na a vyberte možnost **Nová větev**.  
 
-![1](./media/collaborative-coding-with-git/1-sprint-board-view.png)
+![1\. místo](./media/collaborative-coding-with-git/1-sprint-board-view.png)
 
 V dialogovém okně **vytvořit větev** zadejte název nové větve a základní Azure Repos úložiště Git a větev. Základní úložiště musí být ve stejném projektu Azure DevOps jako pracovní položka. Základní větví může být hlavní větev nebo jiná existující větev. Vyberte **vytvořit větev**. 
 
@@ -39,7 +39,7 @@ Novou větev můžete vytvořit také pomocí následujícího příkazu git bas
 git checkout -b <new branch name> <base branch name>
 
 ```
-Pokud nezadáte \<název základní větve >, je nová větev založena na `master`. 
+Pokud nezadáte \<název základní větve >, je nová větev založená na `master`. 
 
 Chcete-li přepnout do své pracovní větve, spusťte následující příkaz: 
 
@@ -47,7 +47,7 @@ Chcete-li přepnout do své pracovní větve, spusťte následující příkaz:
 git checkout <working branch name>
 ```
 
-Po přepnutí do pracovní větve můžete začít vyvíjet artefakty kódu nebo dokumentace a dokončit tak pracovní položku. Přepínání `git checkout master` se spouští zpátky `master` do větve.
+Po přepnutí do pracovní větve můžete začít vyvíjet artefakty kódu nebo dokumentace a dokončit tak pracovní položku. Spuštění `git checkout master` přepne zpět do větve `master`.
 
 Je dobrým zvykem vytvořit větev Git pro každou pracovní položku uživatelského scénáře. Pak můžete pro každou pracovní položku úkolu vytvořit větev na základě větve uživatelského scénáře. Uspořádejte větve v hierarchii, které odpovídají vztahu uživatelský scénář – úkol, pokud máte více lidí pracujících v různých uživatelských scénářích pro stejný projekt nebo v různých úlohách pro stejný uživatelský scénář. Můžete minimalizovat konflikty tím, že každý člen týmu pracuje na jiné větvi nebo v jiném kódu nebo jiné artefakty při sdílení větve. 
 
@@ -61,7 +61,7 @@ Můžete také propojit pracovní položky do existující větev. Na stránce *
 
 ## <a name='WorkonaBranchandCommittheChanges-2'></a>Práce na větvi a potvrzení změn 
 
-Po provedení změny pracovní položky, jako je například přidání souboru skriptu R do `script` větve místního počítače, můžete pomocí následujících příkazů Git bash Potvrdit změnu z místní větve na opačnou pracovní větev:
+Po provedení změny pracovní položky, jako je například přidání souboru skriptu R do větve `script` v místním počítači, můžete pomocí následujících příkazů Git bash Potvrdit změnu z místní větve na opačnou pracovní větev:
 
 ```bash
 git status
@@ -76,11 +76,11 @@ git push origin script
 
 Po jednom nebo několika potvrzeních a nabízených oznámeních, až budete připraveni k sloučení aktuální pracovní větve do své základní větve, můžete vytvořit a odeslat *žádost o* přijetí změn v Azure Repos. 
 
-Na hlavní stránce projektu Azure DevOps ukažte > na úložiště**žádostí o získání dat** v levém navigačním panelu. Pak vyberte jednu z **nových tlačítek žádosti o** přijetí změn nebo vytvořte odkaz na **žádost** o přijetí změn.
+Na hlavní stránce projektu Azure DevOps **ukažte na úložiště** v levém navigačním panelu na úložiště > **žádosti o získání dat** . Pak vyberte jednu z **nových tlačítek žádosti o** přijetí změn nebo vytvořte odkaz na **žádost** o přijetí změn.
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 
-Na obrazovce **Nová žádost o** přijetí změn v případě potřeby přejděte do úložiště Git a větev, do které chcete sloučit změny. Přidejte nebo změňte jakékoli jiné požadované informace. V části **revidující**přidejte názvy, které potřebujete ke kontrole změn, a pak vyberte **vytvořit**. 
+Na obrazovce **Nová žádost o** přijetí změn v případě potřeby přejděte do úložiště Git a větev, do které chcete sloučit změny. Přidejte nebo změňte jakékoli jiné požadované informace. V části **revidující**přidejte jména revidujících a pak vyberte **vytvořit**. 
 
 ![7](./media/collaborative-coding-with-git/7-spring-send-pull-request.png)
 
@@ -102,7 +102,7 @@ Až se vrátíte do **úložišť** v levém navigačním panelu, uvidíte, že 
 
 ![12](./media/collaborative-coding-with-git/12-spring-branch-deleted.png)
 
-Pomocí následujících příkazů Git bash můžete sloučit `script` pracovní větev do své základní větve a po sloučení odstranit pracovní větev:
+Následující příkazy Git bash můžete použít také ke sloučení `script` pracovní větve do své základní větve a po sloučení odstranit pracovní větev:
 
 ```bash
 git checkout master
@@ -112,7 +112,7 @@ git branch -d script
 
 ![13](./media/collaborative-coding-with-git/13-spring-branch-deleted-commandline.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Úlohy pro datovou vědu](execute-data-science-tasks.md) ukazují, jak pomocí nástrojů provádět několik běžných úloh vědeckého zpracování dat, jako jsou interaktivní zkoumání dat, analýza dat, generování sestav a vytváření modelů.
 

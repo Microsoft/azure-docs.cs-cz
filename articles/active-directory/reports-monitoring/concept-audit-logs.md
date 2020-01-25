@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8883e3ade7e5d52f3a62346bf8be51ac36042f82
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 49b49949c1765c3cb1598d728e21479c65037930
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008544"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714492"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit auditu na portálu Azure Active Directory 
 
@@ -45,7 +45,7 @@ Tento článek vám poskytne přehled o sestavě auditu.
 
 ## <a name="audit-logs"></a>Protokoly auditu
 
-Protokoly auditu Azure AD poskytují záznamy systémových aktivit pro dodržování předpisů. Chcete-li získat přístup k sestavě auditu, vyberte v části **aktivita** v **Azure Active Directory**možnost **protokoly auditu** . Všimněte si, že protokoly auditu můžou až latenci, takže může trvat, než se data o auditu zobrazí na portálu po dokončení úkolu.
+Protokoly auditu Azure AD poskytují záznamy systémových aktivit pro dodržování předpisů. Chcete-li získat přístup k sestavě auditu, vyberte v části **aktivita** v **Azure Active Directory**možnost **protokoly auditu** . Všimněte si, že protokoly auditu můžou mít latenci až hodinu, takže může trvat dlouhou dobu, než se na portálu po dokončení úkolu zobrazí data o aktivitě auditu.
 
 
 
@@ -80,8 +80,8 @@ Data auditu můžete filtrovat v následujících polích:
 - Služba
 - Kategorie
 - Aktivita
-- Status
-- Cíl
+- Stav
+- Výběr cílového umístění
 - Spustil(a) (činitel)
 - Rozsah dat
 
@@ -89,7 +89,7 @@ Data auditu můžete filtrovat v následujících polích:
 
 Filtr **služby** umožňuje vybrat z rozevíracího seznamu následující služby:
 
-- Vše
+- Všechno
 - Kontroly přístupu
 - Zřizování účtů 
 - Jednotné přihlašování aplikace
@@ -98,7 +98,7 @@ Filtr **služby** umožňuje vybrat z rozevíracího seznamu následující slu�
 - Podmíněný přístup
 - Základní adresář
 - Správa nároků
-- Identity Protection
+- Ochrany identit
 - Pozvaní uživatelé
 - PIM
 - Samoobslužná správa skupin
@@ -107,10 +107,10 @@ Filtr **služby** umožňuje vybrat z rozevíracího seznamu následující slu�
 
 Filtr **kategorie** umožňuje vybrat jeden z následujících filtrů:
 
-- Vše
+- Všechno
 - AdministrativeUnit
 - ApplicationManagement
-- Ověřování
+- Ověření
 - Autorizace
 - Kontaktovat
 - Zařízení
@@ -118,8 +118,8 @@ Filtr **kategorie** umožňuje vybrat jeden z následujících filtrů:
 - DirectoryManagement
 - EntitlementManagement
 - GroupManagement
-- Ostatní
-- Zásada
+- Jiné
+- Zásady
 - ResourceManagement
 - RoleManagement
 - UserManagement
@@ -130,7 +130,7 @@ Seznam všech aktivit auditu můžete získat pomocí Graph API: `https://graph.
 
 Filtr **stavu** vám umožňuje filtrovat na základě stavu operace auditu. Stav může být jedna z následujících:
 
-- Vše
+- Všechno
 - Úspěch
 - Selhání
 

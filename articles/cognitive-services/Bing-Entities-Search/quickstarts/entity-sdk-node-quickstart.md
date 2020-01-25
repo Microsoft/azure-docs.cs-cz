@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 01/22/2020
 ms.author: aahi
-ms.openlocfilehash: 9fdb1e68a413adcbf5d27ec3a90cd79fdeb29f21
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6ece3d7979dc80a2c6c576b3ce279d4fb9bc9472
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75384378"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716390"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-nodejs"></a>Rychlý Start: odeslání žádosti o vyhledávání pomocí sady Vyhledávání entit Bingu SDK pro Node. js
 
@@ -25,23 +25,23 @@ V tomto rychlém startu můžete začít vyhledávat entity pomocí Vyhledáván
 
 * Nejnovější verze [Node.js](https://nodejs.org/en/download/)
 
-* [Sada SDK vyhledávání entit Bingu pro Node. js](https://www.npmjs.com/package/azure-cognitiveservices-entitysearch)
+* [Sada SDK vyhledávání entit Bingu pro Node. js](https://www.npmjs.com/package/@azure/cognitiveservices-entitysearch)
 
 Instalace sady Vyhledávání entit Bingu SDK:
 
 1. Spusťte `npm install ms-rest-azure` ve vývojovém prostředí.
-2. Spusťte `npm install azure-cognitiveservices-entitysearch` ve vývojovém prostředí.
+2. Spusťte `npm install @azure/cognitiveservices-entitysearch` ve vývojovém prostředí.
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. V oblíbených IDE nebo editoru vytvořte nový soubor JavaScriptu a přidejte následující požadavky. 
-    
+1. V oblíbených IDE nebo editoru vytvořte nový soubor JavaScriptu a přidejte následující požadavky.
+
     ```javascript
     const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
-    const EntitySearchAPIClient = require('azure-cognitiveservices-entitysearch');
+    const EntitySearchAPIClient = require('@azure/cognitiveservices-entitysearch');
     ```
 
 2. Pomocí klíče předplatného vytvořte instanci `CognitiveServicesCredentials`. Pak vytvořte instanci klienta vyhledávání s ním.
@@ -54,7 +54,7 @@ Instalace sady Vyhledávání entit Bingu SDK:
 ## <a name="send-a-request-and-receive-a-response"></a>Odeslat žádost a přijmout odpověď
 
 1. Odeslat žádost o vyhledávání entit pomocí `entitiesOperations.search()`. Po přijetí odpovědi vytiskněte `queryContext`, počet vrácených výsledků a popis prvního výsledku.
-      
+
     ```javascript
     entitySearchApiClient.entitiesOperations.search('seahawks').then((result) => {
         console.log(result.queryContext);

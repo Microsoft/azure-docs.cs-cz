@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 86ed494d3a6005ae74ee3f1aa4d5aa53ffc3098e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b538196467ba1d69e679a111ca313f922738b048
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931159"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716021"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>Protokoly ApplicationInsightsLoggerProvider pro .NET Core ILogger
 
@@ -29,7 +29,7 @@ ApplicationInsightsLoggerProvider je ve výchozím nastavení povolená v [sadě
 
 Protokol ILogger, který ApplicationInsightsLoggerProvider zachycuje, podléhá stejné konfiguraci jako jakákoli jiná shromažďovaná telemetrie. Mají stejnou sadu TelemetryInitializers a TelemetryProcessors, používají stejné TelemetryChannel a jsou korelace a vzorky stejným způsobem jako u jiné telemetrie. Pokud používáte verzi 2.7.1 nebo novější, není nutné provádět žádnou akci pro zachycení protokolů ILogger.
 
-Ve výchozím nastavení se Application Insights standardně odesílají jenom *výstrahy* nebo protokoly ILogger (ze všech kategorií). Můžete ale [použít filtry a toto chování upravit](#control-logging-level). Pro zachycení protokolů ILogger z **program.cs** nebo **Startup.cs**se vyžadují další kroky. (Viz [zachycení protokolů ILogger z Startup.cs a program.cs v aplikacích ASP.NET Core](#capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps).)
+Ve výchozím nastavení se Application Insights standardně odesílají jenom *výstrahy* nebo protokoly ILogger (ze všech [kategorií](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-3.1#log-category)). Můžete ale [použít filtry a toto chování upravit](#control-logging-level). Pro zachycení protokolů ILogger z **program.cs** nebo **Startup.cs**se vyžadují další kroky. (Viz [zachycení protokolů ILogger z Startup.cs a program.cs v aplikacích ASP.NET Core](#capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps).)
 
 Pokud používáte starší verzi sady Microsoft. ApplicationInsights. AspNet SDK nebo chcete použít pouze ApplicationInsightsLoggerProvider bez jakéhokoli dalšího monitorování Application Insights, použijte následující postup:
 
@@ -108,7 +108,7 @@ public class ValuesController : ControllerBase
 ### <a name="capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps"></a>Zachycení protokolů ILogger z Startup.cs a Program.cs v aplikacích ASP.NET Core
 
 > [!NOTE]
-> V ASP.NET Core 3,0 a novějším, již není možné vkládat `ILogger` v Startup.cs a Program.cs. Další podrobnosti najdete v souboru https://github.com/aspnet/Announcements/issues/353.
+> V ASP.NET Core 3,0 a novějším, již není možné vkládat `ILogger` v Startup.cs a Program.cs. Další podrobnosti najdete v tématu https://github.com/aspnet/Announcements/issues/353.
 
 Nový ApplicationInsightsLoggerProvider může zachytit protokoly od začátku v kanálu spuštění aplikace. I když je ApplicationInsightsLoggerProvider automaticky povolený v Application Insights (počínaje verzí 2.7.1), nemá nastavený klíč instrumentace až do pozdějšího kanálu. Proto budou zachyceny pouze protokoly z tříd/další **kontroleru**. Pro zachycení každého protokolu počínaje **program.cs** a **Startup.cs** je nutné explicitně povolit instrumentaci klíče pro ApplicationInsightsLoggerProvider. *TelemetryConfiguration* se také nenastavuje zcela při protokolování z **program.cs** nebo **Startup.cs** . Takže tyto protokoly budou mít minimální konfiguraci, která používá InMemoryChannel, žádné vzorkování a žádné standardní Inicializátory telemetrie nebo procesory.
 

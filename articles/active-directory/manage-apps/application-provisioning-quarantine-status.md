@@ -16,12 +16,12 @@ ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3ad689fb57c51d0deb698a723b93e6175bdbb5c
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 933217b2ad86535d45f6674165ee162f263a8cd7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73882881"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712173"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Stav zřizování aplikace v karanténě
 
@@ -63,7 +63,7 @@ Nejprve Vyřešte problém, který způsobil, že se aplikace umístila do karan
 
 - Zkontrolujte nastavení zřizování aplikace a ujistěte se, že jste [zadali platné přihlašovací údaje správce](configure-automatic-user-provisioning-portal.md#configuring-automatic-user-account-provisioning). Azure AD musí být schopný vytvořit vztah důvěryhodnosti s cílovou aplikací. Ujistěte se, že jste zadali platné přihlašovací údaje a že váš účet má potřebná oprávnění.
 
-- Zkontrolujte [protokoly zřizování](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) a prozkoumejte, jaké chyby způsobují karanténu a řeší chybu. Přístup k protokolům zřizování v Azure Portal získáte tak, že v části **aktivita** přejdeme na **Azure Active Directory** &gt; **podnikové aplikace** &gt; **protokoly zřizování (Preview)** .
+- Zkontrolujte [protokoly zřizování](../reports-monitoring/concept-provisioning-logs.md) a prozkoumejte, jaké chyby způsobují karanténu a řeší chybu. Přístup k protokolům zřizování v Azure Portal získáte tak, že v části **aktivita** přejdeme na **Azure Active Directory** &gt; **podnikové aplikace** &gt; **protokoly zřizování (Preview)** .
 
 Po vyřešení problému restartujte úlohu zřizování. Některé změny nastavení zřizování aplikace, jako jsou mapování atributů nebo filtry oborů, se automaticky restartují pro vás. Indikátor průběhu na stránce pro **zřizování** aplikace indikuje, kdy bylo zřizování naposledy spuštěno. Pokud potřebujete úlohu zřizování restartovat ručně, použijte jednu z následujících metod:  
 

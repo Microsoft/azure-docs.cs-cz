@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: cherylmc
-ms.openlocfilehash: 57a066132cbc8812fac95862bd1b02a3fc59ff2f
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: cbddd912831247e30f2913414c6dfa13131dde99
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293891"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719853"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -142,7 +142,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 
 ### <a name="national-cloud-environments"></a>Prostředí národních cloudů
 
-Národní cloudy Azure jsou oddělené od sebe navzájem a z globálního Commerical Azure. ExpressRoute pro jeden cloud Azure se nemůže připojit k oblastem Azure v ostatních.
+Národní cloudy Azure jsou oddělené od sebe navzájem i z celosvětově komerčních Azure. ExpressRoute pro jeden cloud Azure se nemůže připojit k oblastem Azure v ostatních.
 
 ### <a name="us-government-cloud"></a>Cloud vlády USA
 | **Umístění** | **Adresa** | **Místní oblasti Azure**| **ER Direct** | **Poskytovatelé služeb** |

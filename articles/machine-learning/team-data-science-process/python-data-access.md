@@ -3,20 +3,20 @@ title: Přístup k datovým sadám pomocí Pythonu klientské knihovny - vědeck
 description: Instalace a použití klientské knihovny pro Python k přístupu a bezpečně spravovat Azure Machine Learning data z místního prostředí Pythonu.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 241f804b0519fd744e8b980b2d311a72680aafad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 93ec5e740ac6acf9420a9d980092ed772ac1618e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427387"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720975"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Přístup k datovým sadám pomocí Pythonu a klientské knihovny služby Azure Machine Learning pro Python
 Klientská knihovna Python pro Microsoft Azure Machine Learning ve verzi preview můžete povolit zabezpečený přístup k vaší datové sady Azure Machine Learning z místního prostředí Pythonu a umožňuje vytváření a Správa datových sad v pracovním prostoru.
@@ -26,7 +26,7 @@ Toto téma obsahuje pokyny o tom, jak:
 * Nainstalujte klientské knihovny pro Python pro Machine Learning
 * přístup a nahrajte datové sady, včetně informací o tom, jak získat autorizaci pro přístup k datové sady Azure Machine Learning z vašeho místního prostředí Pythonu
 * přístup k zprostředkující datovým sadám z experimentů
-* Použití klientské knihovny pro Python vytvářet výčty sad dat, přístupu k metadatům, přečíst obsah datové sady, vytvořit nové datové sady a aktualizaci stávajících objektech datových sad
+* použití klientské knihovny Pythonu k zobrazení výčtu datových sad, přístupu k metadatům, čtení obsahu datové sady, vytváření nových datových sad a aktualizaci existujících datových sad
 
 ## <a name="prerequisites"></a>Požadavky
 Klientská knihovna Python pro prošel testováním v následujících prostředích:
@@ -43,7 +43,7 @@ Je závislý na následujících balíčků:
 Doporučujeme použít distribuci jazyka Python, jako [Anaconda](http://continuum.io/downloads#all) nebo [zápoje](https://store.enthought.com/downloads/), které pocházejí s využitím Pythonu, IPython a nainstalovat tři výše uvedených balíčků. I když IPython není bezpodmínečně nutné, je skvělé prostředí pro zpracování a interaktivní vizualizace dat.
 
 ### <a name="installation"></a>Postup instalace Klientská knihovna Python pro Azure Machine Learning
-Klientská knihovna Python pro Azure Machine Learning musí také nainstalovaná dokončit úlohy popsané v tomto tématu. Je k dispozici [indexu balíčků Pythonu](https://pypi.python.org/pypi/azureml). Ho Pokud chcete nainstalovat ve vašem prostředí Pythonu, spusťte následující příkaz z vašeho místního prostředí Pythonu:
+Nainstalujte klientskou knihovnu Azure Machine Learning Python pro dokončení úkolů popsaných v tomto tématu. Tato knihovna je k dispozici z [indexu balíčku Pythonu](https://pypi.python.org/pypi/azureml). Ho Pokud chcete nainstalovat ve vašem prostředí Pythonu, spusťte následující příkaz z vašeho místního prostředí Pythonu:
 
     pip install azureml
 
@@ -70,13 +70,13 @@ Z bezpečnostních důvodů funkce fragmentu kódu je k dispozici pouze pro uži
 
 Pokud vaše role není nastaven jako **vlastníka**, můžete buď vyžádat se pozvat jako vlastníka, nebo požádejte vlastníka pracovního prostoru, kde přinášejí fragmentu kódu.
 
-Získat autorizační token, proveďte jednu z následujících akcí:
+K získání autorizačního tokenu si můžete vybrat jednu z těchto možností:
 
 * Požádejte o token od vlastníka. Vlastníci mají přístup ke svým autorizačním tokenům ze stránky nastavení svého pracovního prostoru v Azure Machine Learning Studio (Classic). Vyberte **nastavení** v levém podokně a klepněte na **AUTORIZAČNÍCH TOKENECH** zobrazíte primární a sekundární tokeny. Přestože primární nebo sekundární autorizačních tokenech je možné ve fragmentu kódu, se doporučuje vlastníky sdílet jenom sekundární autorizačních tokenech.
 
    ![Autorizačních tokenech](./media/python-data-access/ml-python-access-settings-tokens.png)
 
-* Požádejte o povýšen na roli vlastníka. Aktuální vlastník pracovního prostoru musí k tomu, odeberte nejprve můžete z pracovního prostoru a poté znovu pozvat, abyste k němu jako vlastníka.
+* Požádat o zvýšení úrovně role vlastníka: aktuální vlastník pracovního prostoru musí nejdřív odebrat z pracovního prostoru a potom ho znovu pozvat jako vlastníka.
 
 Po získání ID pracovního prostoru a autorizačního tokenu můžou vývojáři získat přístup k pracovnímu prostoru pomocí fragmentu kódu bez ohledu na jejich roli.
 
@@ -100,7 +100,7 @@ Po spuštění experimentu v Machine Learning Studio (Classic) je možné získa
 
 Zprostředkující datové sady je možný za předpokladu, formát dat je kompatibilní s klientské knihovny pro Python.
 
-Podporují se následující formáty (konstanty pro ty jsou `azureml.DataTypeIds` třídy):
+Podporovány jsou následující formáty (konstanty pro tyto formáty jsou ve třídě `azureml.DataTypeIds`):
 
 * Ve formátu prostého textu
 * GenericCSV
@@ -124,7 +124,7 @@ Následující postup ukazuje příklad, který vytvoří experiment, spustí je
 2. Vložit **datovou sadu pro dospělé binární klasifikace příjmů sčítání** modulu.
 3. Vložte [rozdělený][split] modul a připojte jeho vstup k výstupu modulu DataSet.
 4. Vložte modul [převést do sdíleného svazku clusteru][convert-to-csv] a připojte jeho vstup k jednomu z výstupů [rozděleného][split] modulu.
-5. Uložte experiment, spusťte ji a počkejte na dokončení.
+5. Uložte experiment, spusťte ho a počkejte, než se úloha dokončí.
 6. Klikněte na uzel výstup v modulu [Převod do sdíleného svazku clusteru][convert-to-csv] .
 7. Jakmile se zobrazí v místní nabídce, vyberte **generovat kód přístupu k datům**.
    

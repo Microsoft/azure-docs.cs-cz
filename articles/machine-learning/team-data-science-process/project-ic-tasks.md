@@ -2,20 +2,20 @@
 title: Úlohy pro jednotlivý Přispěvatel v vědecké zpracování týmových dat
 description: Podrobný návod pro úlohy jednotlivých přispěvatelů v týmovém projektu pro datové vědy.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/24/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b64d9669c11f15de5e6bd616ff7a79f59b748363
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: d9942c31b63de77196b8b51b88376cb8ef74b990
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244277"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721247"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Úlohy pro jednotlivý Přispěvatel v vědecké zpracování týmových dat
 
@@ -42,7 +42,7 @@ V tomto kurzu se předpokládá, že jste [správcem skupiny](group-manager-task
 - Služba Azure **File Storage** nastavená pro sdílené prostředky pro váš tým nebo projekt (Pokud je k dispozici)
 - **Oprávnění** , abyste mohli klonovat a vracet se zpátky do úložiště projektu 
 
-K klonování úložišť a úpravám obsahu na vašem místním počítači nebo DSVM nebo připojení služby Azure File Storage ke svému DSVM budete potřebovat následující:
+Pokud chcete klonovat úložiště a upravovat obsah na vašem místním počítači nebo DSVM nebo k DSVM připojit službu Azure File Storage, je potřeba vzít v úvahu tento kontrolní seznam:
 
 - Předplatné Azure.
 - V počítači je nainstalovaný Git. Pokud používáte DSVM, Git se předem nainstaluje. V opačném případě najdete v článku [platformami a nástroji příloha](platforms-and-tools.md#appendix).

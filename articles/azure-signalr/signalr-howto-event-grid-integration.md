@@ -7,12 +7,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: chenyl
-ms.openlocfilehash: f89fcdd50d958269b5c79c41ebabd69331c905aa
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: a76c9aaabf984723e2b60a7cd42425c9b29c916a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158211"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76710828"
 ---
 # <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>Jak odesílat události ze služby signalizace Azure do Event Grid
 
@@ -154,7 +154,7 @@ cd NegotitationServer
 dotnet user-secrets set Azure:SignalR:ConnectionString "<Connection String>"
 dotnet run
 
-# Use a seperate command line
+# Use a separate command line
 # Start a client
 cd SignalRClient
 dotnet run

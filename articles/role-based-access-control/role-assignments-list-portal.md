@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2020
+ms.date: 01/23/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6117f22b24887e913ed2f8d3a43e80335121636d
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 099cf74dd27f39a4289397d5178511125d9ebf6f
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934482"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720698"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Seznam přiřazení rolí pomocí Azure RBAC a Azure Portal
 
@@ -125,6 +125,16 @@ Pokud chcete vypsat přístup pro uživatele, skupinu, instanční objekt nebo s
     ![Přiřazení rolí pro spravovanou identitu přiřazenou systémem](./media/role-assignments-list-portal/azure-resources-user-assigned.png)
 
 1. Chcete-li změnit předplatné, klikněte na seznam **předplatných** .
+
+## <a name="list-number-of-role-assignments"></a>Výpis počtu přiřazení rolí
+
+V každém předplatném můžete mít až **2000** přiřazení rolí. Aby vám pomohly sledovat tato omezení, karta **přiřazení rolí** obsahuje graf, který uvádí aktuální počet přiřazení rolí.
+
+![Řízení přístupu – počet grafů přiřazení rolí](./media/role-assignments-list-portal/access-control-role-assignments-chart.png)
+
+Pokud se blížíte k maximálnímu počtu a pokusíte se přidat další přiřazení role, zobrazí se upozornění v podokně **Přidat přiřazení role** . Počet přiřazení rolí můžete snížit odstraněním přiřazení rolí, které už nepotřebujete, nebo přiřazením rolí k skupinám místo jednotlivých uživatelů.
+
+![Řízení přístupu – upozornění přidání přiřazení role](./media/role-assignments-list-portal/add-role-assignment-warning.png)
 
 ## <a name="next-steps"></a>Další kroky
 

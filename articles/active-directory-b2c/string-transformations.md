@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cb3b10ca67ab283b999e4fff8e3bb79ae3b59745
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 72b3349e0ad4fd86b91a7a02f70b2bcf1efbc271
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950812"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712847"
 ---
 # <a name="string-claims-transformations"></a>Transformace deklarací řetězců
 
@@ -93,7 +93,7 @@ Změní velikost případu poskytnuté deklarace na nižší nebo velká písmen
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | string | Deklarace ClaimType, která se má změnit. |
 | InputParameter | toCase | string | Jedna z následujících hodnot: `LOWER` nebo `UPPER`. |
-| outputClaim | outputClaim | string | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací. |
+| OutputClaim | OutputClaim | string | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací. |
 
 Pomocí této transformace deklarace identity změňte libovolný řetězec ClaimType na nižší nebo velká písmena.
 
@@ -127,7 +127,7 @@ Vytvoří deklaraci řetězce ze zadaného vstupního parametru v zásadě.
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 |----- | ----------------------- | --------- | ----- |
 | InputParameter | hodnota | string | Řetězec, který má být nastaven |
-| outputClaim | createdClaim | string | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací, s hodnotou zadanou ve vstupním parametru. |
+| OutputClaim | createdClaim | string | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací, s hodnotou zadanou ve vstupním parametru. |
 
 Tuto transformaci deklarací identity použijte k nastavení hodnoty ClaimType typu String.
 
@@ -159,7 +159,7 @@ Určete, zda jedna deklarace identity řetězce je shodná s jinou. Výsledkem j
 | InputClaim | inputClaim2 | string | Druhý typ deklarace identity, který se má porovnat. |
 | InputParameter | operator | string | Možné hodnoty: `EQUAL` nebo `NOT EQUAL`. |
 | InputParameter | ignoreCase | Boolean | Určuje, zda toto porovnání má ignorovat případ porovnávaných řetězců. |
-| outputClaim | outputClaim | Boolean | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací. |
+| OutputClaim | OutputClaim | Boolean | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací. |
 
 Pomocí této transformace deklarací identity zjistíte, jestli je deklarace identity rovna jiné deklaraci identity. Například následující transformace deklarací identity kontroluje, jestli je hodnota deklarace **e-mailu** stejná jako **ověřená deklarace identity e-mailu** .
 
@@ -200,7 +200,7 @@ Určuje, zda je hodnota deklarace identity shodná se vstupní hodnotou parametr
 | InputParameter | operator | string | Možné hodnoty: `EQUAL` nebo `NOT EQUAL`. |
 | InputParameter | compareTo | string | porovnání řetězců, jedna z hodnot: Ordinal, OrdinalIgnoreCase. |
 | InputParameter | ignoreCase | Boolean | Určuje, zda toto porovnání má ignorovat případ porovnávaných řetězců. |
-| outputClaim | outputClaim | Boolean | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací. |
+| OutputClaim | OutputClaim | Boolean | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací. |
 
 Tuto transformaci deklarací identity můžete použít ke kontrole, jestli se deklarace identity rovná hodnotě, kterou jste zadali. Například následující transformace deklarací identity kontroluje, jestli je hodnota deklarace identity **termsOfUseConsentVersion** rovna `v1`.
 
@@ -238,10 +238,10 @@ Vytvoří náhodný řetězec pomocí generátoru náhodných čísel. Pokud je 
 | ---- | ----------------------- | --------- | ----- |
 | InputParameter | randomGeneratorType | string | Určuje náhodnou hodnotu, která se má vygenerovat, `GUID` (globální jedinečné ID) nebo `INTEGER` (číslo). |
 | InputParameter | StringFormat – | string | Volitelné Naformátujte náhodnou hodnotu. |
-| InputParameter | base64 | Boolean | Volitelné Převeďte náhodnou hodnotu na base64. Pokud je použit formát řetězce, hodnota po formátu řetězce je zakódována na base64. |
+| InputParameter | Base | Boolean | Volitelné Převeďte náhodnou hodnotu na base64. Pokud je použit formát řetězce, hodnota po formátu řetězce je zakódována na base64. |
 | InputParameter | maximumNumber | int | Volitelné Pouze pro `INTEGER` randomGeneratorType. Zadejte maximální číslo. |
 | InputParameter | sazení  | int | Volitelné Pouze pro `INTEGER` randomGeneratorType. Zadejte počáteční hodnotu pro náhodnou hodnotu. Poznámka: stejné osazení vrací stejnou sekvenci náhodných čísel. |
-| outputClaim | outputClaim | string | ClaimTypes, který bude vytvořen po vyvolání této transformace deklarací. Náhodná hodnota. |
+| OutputClaim | OutputClaim | string | ClaimTypes, který bude vytvořen po vyvolání této transformace deklarací. Náhodná hodnota. |
 
 Následující příklad generuje globální jedinečné ID. Tato transformace deklarací identity se používá k vytvoření náhodného názvu uživatele (UPN).
 
@@ -297,7 +297,7 @@ Naformátuje deklaraci identity podle poskytnutého formátovacího řetězce. T
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | InputClaim |string |Deklarace ClaimType, která funguje jako formát řetězce {0} parametr. |
 | InputParameter | StringFormat – | string | Formát řetězce včetně parametru {0}. |
-| outputClaim | outputClaim | string | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací. |
+| OutputClaim | OutputClaim | string | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací. |
 
 Tuto transformaci deklarací použijte k formátování libovolného řetězce s jedním parametrem {0}. V následujícím příkladu je vytvořena hodnota **userPrincipalName**. Všechny technické profily zprostředkovatele sociální identity, například `Facebook-OAUTH`, zavolají **CreateUserPrincipalName** pro generování **userPrincipalName**.
 
@@ -333,7 +333,7 @@ Formátujte dvě deklarace podle poskytnutého formátovacího řetězce. Tato t
 | InputClaim | InputClaim |string | Deklarace ClaimType, která funguje jako formát řetězce {0} parametr. |
 | InputClaim | InputClaim | string | Deklarace ClaimType, která funguje jako formát řetězce {1} parametr. |
 | InputParameter | StringFormat – | string | Formát řetězce včetně parametrů {0} a {1} |
-| outputClaim | outputClaim | string | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací. |
+| OutputClaim | OutputClaim | string | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací. |
 
 Tuto transformaci deklarací použijte k formátování řetězce se dvěma parametry, {0} a {1}. Následující příklad vytvoří **DisplayName** se zadaným formátem:
 
@@ -369,7 +369,7 @@ Vyhledává se položka z kolekce **omezení** deklarace identity.
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | mapFromClaim | string | Deklarace identity obsahující text, který má být vyhledán v deklaracích **restrictionValueClaim** s kolekcí **omezení** .  |
-| outputClaim | restrictionValueClaim | string | Deklarace identity, která obsahuje kolekci **omezení** . Po vyvolání transformace deklarací bude hodnota této deklarace identity obsahovat hodnotu vybrané položky. |
+| OutputClaim | restrictionValueClaim | string | Deklarace identity, která obsahuje kolekci **omezení** . Po vyvolání transformace deklarací bude hodnota této deklarace identity obsahovat hodnotu vybrané položky. |
 
 Následující příklad vyhledá popis chybové zprávy na základě chybového klíče. Deklarace identity **responseMsg** obsahuje kolekci chybových zpráv, které mají být k dispozici koncovému uživateli, nebo k odeslání do předávající strany.
 
@@ -379,7 +379,7 @@ Následující příklad vyhledá popis chybové zprávy na základě chybového
   <DataType>string</DataType>
   <UserInputType>Paragraph</UserInputType>
   <Restriction>
-    <Enumeration Text="B2C_V1_90001" Value="You cant sign in because you are a minor" />
+    <Enumeration Text="B2C_V1_90001" Value="You cannot sign in because you are a minor" />
     <Enumeration Text="B2C_V1_90002" Value="This action can only be performed by gold members" />
     <Enumeration Text="B2C_V1_90003" Value="You have not been enabled for this operation" />
   </Restriction>
@@ -414,7 +414,7 @@ Vyhledá hodnotu deklarace ze seznamu hodnot na základě hodnoty jiné deklarac
 | InputClaim | inputParameterId | string | Deklarace identity, která obsahuje hodnotu vyhledávání |
 | InputParameter | |string | Kolekce parametry. |
 | InputParameter | errorOnFailedLookup | Boolean | Řízení, zda je vrácena chyba, pokud není nalezeno žádné vyhledávání. |
-| outputClaim | inputParameterId | string | ClaimTypes, který bude vytvořen po vyvolání této transformace deklarací. Hodnota odpovídajícího ID. |
+| OutputClaim | inputParameterId | string | ClaimTypes, který bude vytvořen po vyvolání této transformace deklarací. Hodnota odpovídajícího ID. |
 
 Následující příklad vyhledá název domény v jedné z kolekcí vstupní parametry. Transformace deklarací vyhledá název domény v identifikátoru a vrátí jeho hodnotu (ID aplikace).
 
@@ -453,7 +453,7 @@ Vyčistěte hodnotu dané deklarace identity.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| outputClaim | claim_to_null | string | Deklarace identity má hodnotu NULL. |
+| OutputClaim | claim_to_null | string | Deklarace identity má hodnotu NULL. |
 
 Pomocí této transformace deklarace identity můžete z kontejneru vlastností deklarací identity odebrat nepotřebná data. Soubory cookie relace tak budou menší. Následující příklad odebere hodnotu `TermsOfService`ho typu deklarace identity.
 
@@ -477,7 +477,7 @@ Načte doménovou část e-mailové adresy.
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | emailAddress | string | Deklarace identity, která obsahuje e-mailovou adresu. |
-| outputClaim | domain | string | Deklarace ClaimType vytvořená po vyvolání této transformace deklarací – doména |
+| OutputClaim | Domain | string | Deklarace ClaimType vytvořená po vyvolání této transformace deklarací – doména |
 
 Pomocí této transformace deklarací identity můžete analyzovat název domény za symbolem @ uživatele. To může být užitečné v případě, že se z dat auditu odstraňují osobně identifikovatelné osobní údaje (PII). Následující transformace deklarací identity ukazuje, jak analyzovat název domény z deklarace **e-mailu** .
 
@@ -510,9 +510,9 @@ Kontroluje, zda je deklarace řetězce a vstupní parametr `matchTo` stejné, a 
 | InputParameter | stringComparison | string | Možné hodnoty: `Ordinal` nebo `OrdinalIgnoreCase`. |
 | InputParameter | stringMatchMsg | string | První hodnota, která má být nastavena, pokud jsou řetězce stejné. |
 | InputParameter | stringMatchMsgCode | string | Druhá hodnota, která má být nastavena, pokud jsou řetězce stejné. |
-| outputClaim | outputClaim1 | string | Pokud jsou řetězce stejné, obsahuje tato deklarace výstup hodnotu `stringMatchMsg` vstupním parametrem. |
-| outputClaim | outputClaim2 | string | Pokud jsou řetězce stejné, obsahuje tato deklarace výstup hodnotu `stringMatchMsgCode` vstupním parametrem. |
-| outputClaim | stringCompareResultClaim | Boolean | Typ deklarace výstup porovnání výsledků, který má být nastaven jako `true` nebo `false` na základě výsledku porovnání. |
+| OutputClaim | outputClaim1 | string | Pokud jsou řetězce stejné, obsahuje tato deklarace výstup hodnotu `stringMatchMsg` vstupním parametrem. |
+| OutputClaim | outputClaim2 | string | Pokud jsou řetězce stejné, obsahuje tato deklarace výstup hodnotu `stringMatchMsgCode` vstupním parametrem. |
+| OutputClaim | stringCompareResultClaim | Boolean | Typ deklarace výstup porovnání výsledků, který má být nastaven jako `true` nebo `false` na základě výsledku porovnání. |
 
 Tuto transformaci deklarací identity můžete použít ke kontrole, jestli se deklarace identity rovná hodnotě, kterou jste zadali. Například následující transformace deklarací identity kontroluje, jestli je hodnota deklarace identity **termsOfUseConsentVersion** rovna `v1`. Pokud ano, změňte hodnotu na `v2`.
 
@@ -558,8 +558,8 @@ Kontroluje, zda je hodnota deklarace řetězce a vstupní parametr `matchTo` sho
 | InputParameter | matchTo | string | Řetězec, který má být porovnán s inputClaim. |
 | InputParameter | stringComparison | string | Možné hodnoty: `Ordinal` nebo `OrdinalIgnoreCase`. |
 | InputParameter | outputClaimIfMatched | string | Hodnota, která má být nastavena, pokud jsou řetězce stejné. |
-| outputClaim | outputClaim | string | Pokud jsou řetězce stejné, obsahuje tato deklarace výstup hodnotu `outputClaimIfMatched` vstupním parametrem. Nebo hodnotu null, pokud se řetězce neshodují. |
-| outputClaim | stringCompareResultClaim | Boolean | Typ deklarace výstup porovnání výsledků, který má být nastaven jako `true` nebo `false` na základě výsledku porovnání. |
+| OutputClaim | OutputClaim | string | Pokud jsou řetězce stejné, obsahuje tato deklarace výstup hodnotu `outputClaimIfMatched` vstupním parametrem. Nebo hodnotu null, pokud se řetězce neshodují. |
+| OutputClaim | stringCompareResultClaim | Boolean | Typ deklarace výstup porovnání výsledků, který má být nastaven jako `true` nebo `false` na základě výsledku porovnání. |
 
 Například následující transformace deklarací identity kontroluje, zda je hodnota deklarace identity **ageGroup** rovna hodnotě `Minor`. Pokud ano, vraťte hodnotu pro `B2C_V1_90001`.
 

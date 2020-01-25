@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 11dcf5dc0f05e51f3f427b09745cb581cc0d3780
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 32eb8e71cfb978fac5b4d6d05af4da4fdc9f67b5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513928"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715519"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Ingestování historických telemetrických dat
 
@@ -72,7 +72,7 @@ Postupujte následovně.
 
  Teď, když máte požadované přihlašovací údaje, můžete definovat zařízení a senzory. Chcete-li to provést, vytvořte metadata voláním rozhraní FarmBeats API. Všimněte si prosím, že budete muset volat rozhraní API jako klientskou aplikaci, kterou jste vytvořili v předchozí části.
 
- FarmBeats DataHub má následující rozhraní API, které umožňuje vytvářet a spravovat metadata zařízení nebo senzorů.
+ FarmBeats DataHub má následující rozhraní API, které umožňuje vytvářet a spravovat metadata zařízení nebo senzorů. Uvědomte si, že jako partner máte přístup jenom pro čtení, vytváření a aktualizaci metadat; **Odstranění není povoleno partnerem.**
 
 - /**DeviceModel**: DeviceModel odpovídá metadatům zařízení, jako je například výrobce a typ zařízení, což je brána nebo uzel.
 - /**zařízení**: zařízení odpovídá fyzickému zařízení, které je ve farmě přítomné.
@@ -115,7 +115,7 @@ Postupujte následovně.
 |  SensorModelId     |    ID přidruženého modelu senzoru   |
 | Umístění          |  Zeměpisná šířka (-90 až + 90), zeměpisná délka (-180 až 180) a zvýšení úrovně (v metrech).|
 |   Název > portu        |  Název a typ portu, ke kterému je senzor připojen na zařízení. Tento název musí být stejný jako definovaný v modelu zařízení. |
-|    ID zařízení  |    ID zařízení, ke kterému je senzor připojen.     |
+|    DeviceID  |    ID zařízení, ke kterému je senzor připojen.     |
 | Name (Název)            |   Název, který identifikuje prostředek. Například název senzoru nebo název produktu a číslo modelu nebo kód produktu.|
 |    Popis      | Zadejte smysluplný popis. |
 |    Vlastnosti        |Další vlastnosti od výrobce. |
@@ -381,6 +381,41 @@ Tady je příklad zprávy telemetrie:
       ]
     }
   ]
+}
+```
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>Po ingestování historických/streamových dat ze senzorů nejde zobrazit data telemetrie.
+
+**Příznak**: zařízení nebo senzory se nasazují a vytvořili jste zařízení/senzory na FarmBeats a ingestovaná telemetrie na EventHub, ale data telemetrie nemůžete získat nebo zobrazit na FarmBeats.
+
+**Nápravná opatření**:
+
+1. Ujistěte se, že jste správně dokončili registraci partnera – můžete to zkontrolovat tak, že přejdete na DataHub Swagger, přejdete na rozhraní/partner API, načtěte a zkontrolujete, jestli je partner zaregistrovaný. Pokud ne, přidejte partnera pomocí následujících [kroků](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) .
+2. Ujistěte se, že jste vytvořili metadata (DeviceModel, Device, SensorModel, snímač) pomocí přihlašovacích údajů partnerského klienta.
+3. Ujistěte se, že jste používali správný formát zprávy telemetrie (jak je uvedeno níže):
+
+```json
+{
+"deviceid": "<id of the Device created>",
+"timestamp": "<timestamp in ISO 8601 format>",
+"version" : "1",
+"sensors": [
+    {
+      "id": "<id of the sensor created>",
+      "sensordata": [
+        {
+          "timestamp": "< timestamp in ISO 8601 format >",
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
+        },
+        {
+          "timestamp": "<timestamp in ISO 8601 format>",
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
+        }
+      ]
+    }
+ ]
 }
 ```
 

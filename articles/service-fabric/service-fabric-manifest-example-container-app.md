@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: pepogors
-ms.openlocfilehash: e4050dedeb48b19b6848a95fc904f7f37fb5b04a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5efdbd17db20e69ace33b379ddbb99b2c4a20e69
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75349392"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722556"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>Příklady manifestu služeb a vícekontejnerové aplikace
 Níže jsou uvedeny příklady manifestů aplikace a služby pro aplikaci Service Fabric více kontejnerů. Účelem těchto příkladů je Ukázat, jaká nastavení jsou k dispozici a jak je používat. Tyto manifesty aplikací a služeb jsou založené na [ukázkových manifestech kontejnerů pro Windows Server 2016](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) .
@@ -262,7 +262,7 @@ Deklarativně popisuje typ a verzi aplikace. Jeden nebo více manifestů služeb
 ### <a name="parameters-element"></a>Element Parameters
 Deklaruje parametry, které se používají v manifestu této aplikace. Hodnotu těchto parametrů lze zadat při vytváření instance aplikace a lze ji použít k přepsání nastavení konfigurace aplikace nebo služby. Další informace naleznete v tématu [element Parameters](service-fabric-service-model-schema-elements.md#ParametersElementanonymouscomplexTypeComplexTypeDefinedInApplicationManifestTypecomplexType) .
 
-### <a name="parameter-element"></a>Element Parameter
+### <a name="parameter-element"></a>Element parametru
 Parametr aplikace, který se má použít v tomto manifestu. Hodnotu parametru lze změnit během vytváření instance aplikace, nebo, pokud není zadána žádná hodnota, je použita výchozí hodnota. Další informace naleznete v tématu [element Parameter](service-fabric-service-model-schema-elements.md#ParameterElementanonymouscomplexTypeComplexTypeDefinedInParameterselement) .
 
 ### <a name="servicemanifestimport-element"></a>Element ServiceManifestImport
@@ -342,7 +342,7 @@ Spustitelný soubor určený parametrem EntryPoint je obvykle dlouhodobě běž�
  Další informace naleznete v tématu [ContainerHost element](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
 ### <a name="imagename-element"></a>ImageName Element
-Úložiště a obrázek v https://hub.docker.com nebo Azure Container Registry. Další informace naleznete v tématu [ImageName element](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+Úložiště a obrázek v [https://hub.docker.com](https://hub.docker.com) nebo Azure Container Registry. Další informace naleznete v tématu [ImageName element](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="environmentvariables-element"></a>Element EnvironmentVariables
 Předání proměnných prostředí kontejneru nebo exe.  Další informace naleznete v tématu [EnvironmentVariables element](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)
@@ -386,9 +386,9 @@ Spustitelný soubor určený parametrem EntryPoint je obvykle dlouhodobě běž�
 Další informace naleznete v tématu [ContainerHost element](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
 ### <a name="imagename-element"></a>ImageName Element
-Úložiště a obrázek v https://hub.docker.com nebo Azure Container Registry. Další informace naleznete v tématu [ImageName element](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+Úložiště a obrázek v [https://hub.docker.com](https://hub.docker.com) nebo Azure Container Registry. Další informace naleznete v tématu [ImageName element](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
-### <a name="commands-element"></a>Commands – element
+### <a name="commands-element"></a>Command – element
 Předat kontejneru čárkami oddělený seznam příkazů. Další informace naleznete v tématu [element Commands](service-fabric-service-model-schema-elements.md#CommandsElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="environmentvariables-element"></a>Element EnvironmentVariables

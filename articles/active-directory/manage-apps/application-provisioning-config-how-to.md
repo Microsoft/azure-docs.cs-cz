@@ -17,12 +17,12 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8aa8265733128ed3b2ad5ddf16dcebb122b0f054
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 87818066a656aa4bcd6f45f1835ca1512a674a9e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443425"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712304"
 ---
 # <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>Jak nakonfigurovat zřizování uživatelů pro aplikaci Galerie Azure AD
 
@@ -40,19 +40,19 @@ Pokud chcete požádat o podporu automatického zřizování pro danou aplikaci,
 
 ## <a name="configuring-an-application-for-automatic-provisioning"></a>Konfigurace aplikace pro Automatické zřizování
 
-*Automaticky* znamená, že se pro tuto aplikaci vyvinul konektor zřizování služby Azure AD. Další informace o službě zřizování Azure AD a o tom, jak funguje, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning).
+*Automaticky* znamená, že se pro tuto aplikaci vyvinul konektor zřizování služby Azure AD. Další informace o službě zřizování Azure AD a o tom, jak funguje, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](user-provisioning.md).
 
-Další informace o tom, jak zřídit konkrétní uživatele a skupiny pro aplikaci, najdete v tématu [Správa zřizování uživatelských účtů pro podnikové aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning).
+Další informace o tom, jak zřídit konkrétní uživatele a skupiny pro aplikaci, najdete v tématu [Správa zřizování uživatelských účtů pro podnikové aplikace](configure-automatic-user-provisioning-portal.md).
 
 Skutečný postup potřebný k povolení a konfiguraci automatického zřizování se liší v závislosti na aplikaci.
 
 > [!NOTE]
-> Měli byste začít tak, že si vyhledáte kurz pro instalaci, který je specifický pro nastavení vaší aplikace, a podle těchto kroků nakonfigurovat aplikaci a službu Azure AD tak, aby vytvořila zřizovací připojení. 
+> Měli byste začít tak, že si vyhledáte kurz pro instalaci, který je specifický pro nastavení vaší aplikace, a podle těchto kroků nakonfigurovat aplikaci a službu Azure AD tak, aby vytvořila zřizovací připojení.
 
-Kurzy aplikací najdete v tématu [Seznam kurzů, jak integrovat aplikace SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list).
+Kurzy aplikací najdete v tématu [Seznam kurzů, jak integrovat aplikace SaaS s Azure Active Directory](../saas-apps/tutorial-list.md).
 
 Při nastavování zřizování je důležité vzít v úvahu, že je potřeba zkontrolovat a nakonfigurovat mapování atributů a pracovní postupy, které definují, který uživatel (nebo skupinu) z Azure AD do aplikace přesměruje. To zahrnuje nastavení "odpovídajících vlastností", která se používá k jednoznačné identifikaci uživatelů nebo skupin mezi oběma systémy a jejich porovnání. Další informace o mapování atributů najdete v tomto odkazu v části *Další kroky* .
 
 ## <a name="next-steps"></a>Další kroky
-[Přizpůsobení mapování atributů zřizování uživatelů pro SaaS aplikace v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
+[Přizpůsobení mapování atributů zřizování uživatelů pro SaaS aplikace v Azure Active Directory](customize-application-attributes.md)
 

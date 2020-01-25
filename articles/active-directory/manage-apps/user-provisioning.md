@@ -15,16 +15,16 @@ ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d515731b8da186ef7e44a397d5abf87dfa65e83a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: eefdb42cebad2b7f532392254b652742527ed862
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433793"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711470"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-active-directory"></a>Automatizace zřizování uživatelů a jejich rušení s aplikacemi pomocí Azure Active Directory
 
-V Azure Active Directory (Azure AD) pojem **zřizování aplikací** označuje automatické vytváření identit uživatelů a rolí v cloudových aplikacích ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)), ke kterým uživatelé potřebují přístup. Kromě vytváření identit uživatelů zahrnuje Automatické zřizování také údržbu a odebírání identit uživatelů při změně stavu nebo rolí. Mezi běžné scénáře patří zřizování uživatelů Azure AD v aplikacích, jako jsou [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)a další.
+V Azure Active Directory (Azure AD) pojem **zřizování aplikací** označuje automatické vytváření identit uživatelů a rolí v cloudových aplikacích ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)), ke kterým uživatelé potřebují přístup. Kromě vytváření identit uživatelů zahrnuje Automatické zřizování také údržbu a odebírání identit uživatelů při změně stavu nebo rolí. Mezi běžné scénáře patří zřizování uživatelů Azure AD v aplikacích, jako jsou [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md), [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)a další.
 
 ![Diagram přehledu zřizování](media/user-provisioning/provisioning-overview.png)
 
@@ -63,7 +63,7 @@ Azure AD nabízí předem integrovanou podporu pro spoustu oblíbených aplikac�
 
    ![Logo Salesforce](media/user-provisioning/gallery-app-logos.png)
 
-   Pokud chcete požádat o novou aplikaci pro zřizování, můžete [požádat o integraci aplikace do naší galerie aplikací](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing). Pro požadavek na zřízení uživatele vyžaduje aplikace, aby měl koncový bod kompatibilní s SCIM. Požádejte prosím, aby dodavatel aplikace následoval za standardu SCIM, abychom mohli rychle připojit aplikaci k naší platformě.
+   Pokud chcete požádat o novou aplikaci pro zřizování, můžete [požádat o integraci aplikace do naší galerie aplikací](../develop/howto-app-gallery-listing.md). Pro požadavek na zřízení uživatele vyžaduje aplikace, aby měl koncový bod kompatibilní s SCIM. Požádejte prosím, aby dodavatel aplikace následoval za standardu SCIM, abychom mohli rychle připojit aplikaci k naší platformě.
 
 * **Aplikace, které podporují SCIM 2,0**. Informace o tom, jak obecně připojit aplikace, které implementují rozhraní API pro správu uživatelů na bázi SCIM 2,0, najdete v tématu [Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů](use-scim-to-provision-users-and-groups.md).
 
@@ -81,7 +81,7 @@ Aplikace v galerii Azure AD podporují jeden ze dvou režimů zřizování:
 
 * **Ruční** zřizování znamená, že zatím není pro aplikaci k dispozici žádný automatický konektor pro zřizování Azure AD. Uživatelské účty se musí vytvořit ručně, například přidáním uživatelů přímo do portálu pro správu aplikace nebo nahráním tabulky s podrobnostmi o uživatelském účtu. Projděte si dokumentaci poskytovanou aplikací nebo se obraťte na vývojáře aplikace a zjistěte, jaké mechanismy jsou k dispozici.
 
-* **Automaticky** znamená, že se pro tuto aplikaci vyvinul konektor zřizování služby Azure AD. Měli byste postupovat podle kurzu nastavení, který je specifický pro nastavení zřizování pro aplikaci. Kurzy aplikací najdete v tématu [Seznam kurzů, jak integrovat aplikace SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list).
+* **Automaticky** znamená, že se pro tuto aplikaci vyvinul konektor zřizování služby Azure AD. Měli byste postupovat podle kurzu nastavení, který je specifický pro nastavení zřizování pro aplikaci. Kurzy aplikací najdete v tématu [Seznam kurzů, jak integrovat aplikace SaaS s Azure Active Directory](../saas-apps/tutorial-list.md).
 
 V galerii Azure AD jsou aplikace, které podporují Automatické zřizování, označeny ikonou **zřizování** . Přepněte na nové prostředí verze Preview, abyste viděli tyto ikony (v horní části **stránky přidat aplikaci**vyberete odkaz, který zobrazíte **kliknutím sem, abyste si vyzkoušeli novou a vylepšenou galerii aplikací**).
 
@@ -91,7 +91,7 @@ Režim zřizování podporovaný aplikací je na kartě **zřizování** zobraze
 
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>Návody nastavit Automatické zřizování pro aplikaci?
 
-V případě předem integrovaných aplikací uvedených v galerii jsou podrobné pokyny k dispozici pro nastavení automatického zřizování. Podívejte se na [Seznam kurzů pro integrované aplikace Galerie](https://docs.microsoft.com/azure/active-directory/saas-apps/). Následující video ukazuje, jak nastavit Automatické zřizování uživatelů pro SalesForce.
+V případě předem integrovaných aplikací uvedených v galerii jsou podrobné pokyny k dispozici pro nastavení automatického zřizování. Podívejte se na [Seznam kurzů pro integrované aplikace Galerie](../saas-apps/tutorial-list.md). Následující video ukazuje, jak nastavit Automatické zřizování uživatelů pro SalesForce.
 
 > [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 

@@ -3,23 +3,23 @@ title: Příprava dat pro ML Studio (Classic) – vědecký proces týmového zp
 description: Předběžně zpracovat a vyčistit data, aby byl připravený k dá efektivně využít pro machine learning.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d17ca5d4bd709ec2529a771008e47ce6f1b68daf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: caedcf313ab809e9607907545f26ca1b62bbeca7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432141"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720040"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>Úlohy k přípravě dat pro rozšířené strojové učení
-Předběžné zpracování a čištění dat jsou důležité úkoly, které obvykle musí být provedeny před datové sady se dá efektivně využít pro machine learning. Nezpracovaná data se často aktivní nebo nespolehlivé a může být chybějící hodnoty. Pomocí těchto dat pro modelování můžete vytvářet zavádějící výsledky. Tyto úlohy jsou součástí nástroje zpracování týmových dat vědy (TDSP) a obvykle postupujte podle počáteční zkoumání použít ke zjištění a plánování předběžného zpracování požadované datové sady. Další podrobné pokyny týkající se procesu TDSP, najdete v článku podle kroků uvedených v [vědecké zpracování týmových dat](overview.md).
+Data před zpracováním a čištěním jsou důležité úkoly, které je nutné provést před tím, než bude možné použít datovou sadu pro školení modelů. Nezpracovaná data se často aktivní nebo nespolehlivé a může být chybějící hodnoty. Pomocí těchto dat pro modelování můžete vytvářet zavádějící výsledky. Tyto úlohy jsou součástí nástroje zpracování týmových dat vědy (TDSP) a obvykle postupujte podle počáteční zkoumání použít ke zjištění a plánování předběžného zpracování požadované datové sady. Další podrobné pokyny týkající se procesu TDSP, najdete v článku podle kroků uvedených v [vědecké zpracování týmových dat](overview.md).
 
 Úlohy předběžného zpracování a čištění, jako je třeba úloha zkoumání dat, se dají provádět v nejrůznějších prostředích, jako je SQL nebo podregistr nebo Azure Machine Learning Studio (Classic), a s různými nástroji a jazyky, jako je R nebo Python, v závislosti na tom, kde se data je uložený a jak je formátovaný. Protože je iterativní ze své podstaty TDSP, tyto úlohy může proběhnout na různé kroky v procesu pracovního postupu.
 
@@ -43,22 +43,22 @@ Obecné kvality dat můžete zkontrolovat tak, že zkontrolujete:
 * Počet **atributy** (nebo **funkce**).
 * Atribut **datové typy** (nominální, pořadí nebo průběžné).
 * Počet **chybějící hodnoty**.
-* **Správnosti** data.
+* Data **ve správném formátu** .
   * Pokud jsou data v TSV nebo sdíleného svazku clusteru, zkontrolujte, že oddělovače sloupců a oddělovače řádků vždy správně oddělení sloupců a řádků.
   * Pokud jsou data ve formátu HTML nebo XML, zkontrolujte, zda data je ve správném závislosti na jejich příslušné standardy.
   * Analýza kódu může být také nutné k extrakci strukturovaných informací z částečně strukturovaná nebo Nestrukturovaná data.
-* **Nekonzistentní záznamy**. Kontroly rozsahu hodnot jsou povoleny. Například pokud data obsahují GPA studentů, zkontrolujte, jestli je GPA v oblasti určené 0 vyslovit ~ 4.
+* **Nekonzistentní záznamy**. Kontroly rozsahu hodnot jsou povoleny. Pokud například data obsahují dohody o zakázkách studenta (průměr bodu úrovně), podívejte se, jestli je v určeném rozsahu údaj GPA, řekněme 0 ~ 4.
 
-Pokud narazíte na problémy s daty, **kroky zpracování** jsou nezbytné, což často zahrnuje vyčištění chybějících hodnot, data normalizace, diskretizace, zpracování textu můžete odebrat nebo nahradit vložené znaky, které může mít vliv na data v běžných zarovnání, různé datové typy, pole a další.
+Když najdete problémy s daty, jsou nezbytné **kroky zpracování** , což často zahrnuje čištění chybějících hodnot, normalizaci dat, nalezených diskretizační, zpracování textu pro odebrání nebo nahrazení vložených znaků, které mohou ovlivnit zarovnání dat, smíšené datové typy v běžných polích a další.
 
 **Využívá Azure Machine Learning ve správném formátu tabulková data**.  Pokud jsou data již v tabulkovém formátu, lze předběžné zpracování dat provést přímo s Azure Machine Learning Studio (Classic) v Machine Learning.  Pokud data nejsou ve formě tabulky, Řekněme, který je ve formátu XML, analýza kódu může být potřeba, abyste mohli data převést do formátu tabulky.  
 
 ## <a name="what-are-some-of-the-major-tasks-in-data-pre-processing"></a>Jaké jsou některé z hlavních úloh v předběžné zpracování dat?
-* **Čištění dat**: vyplnit nebo chybějící hodnoty, zjistit a odebrat hlučného dat a odlehlé hodnoty.
+* **Čištění dat**: Vyplňte chybějící hodnoty, vyhledáte a odeberte data o hlučnosti a odlehlé hodnoty.
 * **Transformace dat**: normalizovat data a snižuje tak dimenzí a šumu.
 * **Redukce dat**: ukázkový atributy pro snazší zpracování dat nebo datových záznamů.
 * **Data diskretizace**: pomocí některé metody machine learning převádět souvislé atributy zařazené do kategorií atributy pro snadné použití.
-* **Čištění text**: odebrat vložené znaky, které může způsobit, že chybné zarovnání dat, například vložený karty v oddělené tabulátorem datový soubor, vložit nové řádky, které mohou přestat fungovat záznamy atd.
+* **Čištění textu**: odstranit vložené znaky, které mohou způsobit chybné zarovnání dat, například vložené karty v datovém souboru odděleném tabulátory, vložené nové řádky, které mohou přerušit záznamy, například.
 
 Následující části podrobně popisují některé z těchto kroků zpracování dat.
 
@@ -72,7 +72,7 @@ Vypořádat s chybějícími hodnotami, doporučujeme nejdřív zjistit příči
 * **Nahrazení regrese**: chybějící hodnoty nahraďte nižším hodnoty použijte metodu regrese.  
 
 ## <a name="how-to-normalize-data"></a>Jak k normalizaci dat?
-Normalizace data znovu škáluje číselné hodnoty do zadaného rozsahu. Mezi oblíbenými datovými normalizace metody patří:
+Normalizace dat mění škálované číselné hodnoty na zadaný rozsah. Mezi oblíbenými datovými normalizace metody patří:
 
 * **Normalizace maximálních**: Lineárně transformace dat na rozsah, Řekněme, že mezi 0 a 1, pokud je minimální hodnota škálovaný na hodnotu 0 a maximální velikosti na 1.
 * **Normalizace skóre Z**: škálování dat na základě střední a směrodatná odchylka: dělení rozdíl mezi daty a střední směrodatnou odchylku.
@@ -92,9 +92,9 @@ Existují různé metody pro snížení velikosti dat pro snadnější práci s 
 * **Agregace**: data rozdělit do skupin a uložit čísla pro každou skupinu. Měsíční výnosy ke snížení množství dat může například agregovat denní počty výnosy řetězec restaurací v průběhu posledních 20 let.  
 
 ## <a name="how-to-clean-text-data"></a>Jak vyčistit textová data?
-**Textová pole v tabulkových dat** může obsahovat znaky, které ovlivňují sloupce hranicích zarovnání a/nebo záznam. Například synchronizace souboru oddělené tabulátorem příčina sloupec součástí karty a vložené znaky nového řádku přerušení řádky záznamů. Text nesprávné kódování zpracování při zápisu/čtení textu vede k ztráty informací, zvyšuje ochranu před nechtěnými Úvod nečitelné znaky, například Null a může také vliv text analýza kódu. Pozor, analýze a úpravy může být potřeba, abyste mohli vyčistit textová pole pro správné zarovnání a/nebo k extrahování strukturovaná data z textu nestrukturovaná nebo semistrukturovaná data.
+**Textová pole v tabulkových datech** můžou obsahovat znaky, které ovlivňují zarovnání sloupců nebo hranice záznamů. Například vložené tabulátory v souboru odděleném tabulátory způsobí chybné zarovnání sloupce a vložené znaky nového řádku zalomit řádky záznamu. Nesprávné zpracování kódování textu při psaní nebo čtení textu vede k úniku informací, nechtěnému zavedení nečitelných znaků (jako jsou hodnoty null) a může také ovlivnit analýzu textu. Pozor, analýze a úpravy může být potřeba, abyste mohli vyčistit textová pole pro správné zarovnání a/nebo k extrahování strukturovaná data z textu nestrukturovaná nebo semistrukturovaná data.
 
-**Zkoumání dat** nabízí předčasné pohled na data. Počet problémů dat může nepokrytý během tohoto kroku a odpovídající metody lze použít pro vyřešení těchto problémů.  Je důležitá klást otázky, jako jsou novinky příčinu problému a jak tento problém může vzniknout. To také vám pomůže při rozhodování o zpracování dat kroky, které je třeba provést k jejich řešení. Druh přehledy, které jeden si klade za cíl odvozovat z dat lze také určit prioritu zpracování dat úsilí.
+**Zkoumání dat** nabízí předčasné pohled na data. Počet problémů dat může nepokrytý během tohoto kroku a odpovídající metody lze použít pro vyřešení těchto problémů.  Je důležitá klást otázky, jako jsou novinky příčinu problému a jak tento problém může vzniknout. Tento proces také pomáhá při rozhodování o krocích zpracování dat, které je třeba provést, aby je bylo možné vyřešit. Určením konečných případů použití a osoby lze také použít k určení priorit při zpracování dat.
 
 ## <a name="references"></a>Odkazy
 > *Dolování dat: Koncepty a techniky*, třetí vydání, Nováková Kaufmann, 2011, Jiawei Han, Micheline Kamber a Jian Pei

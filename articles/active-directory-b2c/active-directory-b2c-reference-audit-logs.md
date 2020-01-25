@@ -12,12 +12,12 @@ ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: feefe7cf6d559360defd7c7f830a9e3f2e583cd6
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: e79b2342f481786caf46aeb9454e2961637da335
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74948228"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712929"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Přístup k protokolům auditu Azure AD B2C
 
@@ -54,9 +54,9 @@ Panel Podrobnosti o aktivitě obsahuje následující relevantní informace:
 |Sekce|Pole|Popis|
 |-------|-----|-----------|
 | Aktivita | Name (Název) | Která aktivita trvala. Například *vydejte id_token aplikaci*, která uzavře skutečné přihlášení uživatele. |
-| Iniciované uživatelem (actor) | ObjectId | **ID objektu** aplikace B2C, ke které se uživatel přihlašuje Tento identifikátor není viditelný v Azure Portal, ale je přístupný prostřednictvím rozhraní Microsoft Graph API. |
+| Iniciované uživatelem (actor) | Objektu | **ID objektu** aplikace B2C, ke které se uživatel přihlašuje Tento identifikátor není viditelný v Azure Portal, ale je přístupný prostřednictvím rozhraní Microsoft Graph API. |
 | Iniciované uživatelem (actor) | SPN | **ID aplikace** B2C, ke které se uživatel přihlašuje |
-| Cíle | ObjectId | **ID objektu** uživatele, který se přihlašuje. |
+| Cíl (y) | Objektu | **ID objektu** uživatele, který se přihlašuje. |
 | Další podrobnosti | TenantId | **ID tenanta** klienta Azure AD B2C. |
 | Další podrobnosti | `PolicyId` | **ID zásady** toku uživatele (zásady), která se používá k podepsání uživatele v. |
 | Další podrobnosti | ApplicationId | **ID aplikace** B2C, ke které se uživatel přihlašuje |
@@ -165,7 +165,7 @@ Write-Output "Searching for events starting $7daysago"
 $body       = @{grant_type="client_credentials";resource=$resource;client_id=$ClientID;client_secret=$ClientSecret}
 $oauth      = Invoke-RestMethod -Method Post -Uri $loginURL/$tenantdomain/oauth2/token?api-version=1.0 -Body $body
 
-# Parse audit report items, save output to file(s): auditX.json, where X = 0 thru n for number of nextLink pages
+# Parse audit report items, save output to file(s): auditX.json, where X = 0 through n for number of nextLink pages
 if ($oauth.access_token -ne $null) {
     $i=0
     $headerParams = @{'Authorization'="$($oauth.token_type) $($oauth.access_token)"}

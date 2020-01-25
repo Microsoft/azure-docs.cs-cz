@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 6c946667befdf34a2ae6769b2c1bb43871111c24
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 39b3a96ddd3a9007600d1fa956c4e2d48f6adae9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921025"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714802"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Technologie nasazení v Azure Functions
 
@@ -114,10 +114,10 @@ Pomocí nástroje zip Deploy nahrajte soubor. zip, který obsahuje vaši aplikac
 
 Můžete nasadit image kontejneru pro Linux, která obsahuje vaši aplikaci Function App.
 
->__Jak ji použít:__ Vytvořte aplikaci Functions pro Linux v plánu Premium nebo vyhrazené a určete, ze které image kontejneru se má spustit. To můžete provést dvěma způsoby:
+>__Jak ji použít:__ Vytvořte aplikaci Functions pro Linux v plánu Premium nebo vyhrazené a určete, ze které image kontejneru se má spustit. Můžete to provést dvěma způsoby:
 >
 >* Vytvořte aplikaci funkcí pro Linux v plánu Azure App Service Azure Portal. V části **publikovat**vyberte **Image Docker**a pak nakonfigurujte kontejner. Zadejte umístění, kde je bitová kopie hostovaná.
->* Pomocí Azure CLI vytvoříte aplikaci funkcí pro Linux v plánu App Service. Další informace o postupu najdete v tématu [Vytvoření funkce na platformě Linux pomocí vlastní image](functions-create-function-linux-custom-image.md#create-a-premium-plan).
+>* Pomocí Azure CLI vytvoříte aplikaci funkcí pro Linux v plánu App Service. Další informace o postupu najdete v tématu [Vytvoření funkce na platformě Linux pomocí vlastní image](functions-create-function-linux-custom-image.md#create-supporting-azure-resources-for-your-function).
 >
 >Pokud chcete nasadit do existující aplikace pomocí vlastního kontejneru, v [Azure Functions Core Tools](functions-run-local.md)použijte příkaz [`func deploy`](functions-run-local.md#publish) .
 

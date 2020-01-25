@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 60cd9a1454704fae17ccdcf39b9de2745ae4fd2c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 8c1d126f01580574a83850e63945aa7e513eaeda
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121008"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713146"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>Jak zabezpečit rozhraní API pomocí ověřování klientského certifikátu v API Management
 
@@ -34,7 +34,7 @@ Informace o zabezpečení přístupu k back-endové službě rozhraní API pomoc
 > [!IMPORTANT]
 > Pokud chcete přijímat a ověřovat klientské certifikáty ve vrstvě spotřeby, musíte zapnout nastavení "požadovat certifikát klienta" v okně vlastní domény, jak je znázorněno níže.
 
-![Požádat o klientský certifikát](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
+![Požádat o certifikát klienta](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
 
 ## <a name="checking-the-issuer-and-subject"></a>Kontroluje se Vydavatel a předmět.
 
@@ -93,7 +93,7 @@ Následující příklad ukazuje, jak kontrolovat kryptografický otisk certifik
 
 > [!TIP]
 > Problém zablokování klientského certifikátu, který je popsaný v tomto [článku](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) , se může projevit několika způsoby, třeba když jsou požadavky zablokované, `403 Forbidden` stavového kódu po vypršení časového limitu `context.Request.Certificate` je `null`. K tomuto problému obvykle dochází `POST` a `PUT` požadavků s délkou obsahu přibližně 60KB nebo větší.
-> Pokud se chcete tomuto problému vyhnout, zapněte v okně vlastní domény nastavení vyjednávat klientský certifikát pro požadované názvy hostitelů, jak je znázorněno níže. Tato funkce není k dispozici na úrovni spotřeby.
+> Aby nedošlo k tomuto problému, zapněte nastavení vyjednávat klientský certifikát pro požadované názvy hostitelů v okně vlastní domény, jak je znázorněno níže. Tato funkce není k dispozici na úrovni spotřeby.
 
 ![Vyjednat klientský certifikát](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
 

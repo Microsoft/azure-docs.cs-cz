@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/26/2019
+ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 40bda408731e90ab4c0c987b981a1c7f16b0de5d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2493e893f9afda0642bd838c94538dd0b984bce5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979338"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720652"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Správci předplatného Azure Classic
 
@@ -62,7 +62,7 @@ Další informace o tom, jak přidat uživatele typu Host do adresáře, najdete
 
 ### <a name="differences-for-guest-users"></a>Rozdíly pro uživatele typu Host
 
-Uživatelům typu Host, kterým byla přiřazena role spolusprávce, se může u role spolusprávce zobrazit několik rozdílů ve srovnání s členskými uživateli. Uvažte následující příklady:
+Uživatelům typu Host, kterým byla přiřazena role spolusprávce, se může u role spolusprávce zobrazit několik rozdílů ve srovnání s členskými uživateli. Představte si následující scénář:
 
 - Uživatel A s účtem Azure AD (pracovní nebo školní účet) je správce služby pro předplatné Azure.
 - Uživatel B účet Microsoft.
@@ -99,29 +99,11 @@ Informace, které porovnávají uživatele členů a uživatele typu Host, najde
 
 Správce služby pro předplatné může změnit jenom správce účtu. Ve výchozím nastavení platí, že když se přihlásíte k předplatnému Azure, Správce služby je stejný jako správce účtu. Uživatel s rolí správce účtu nemá přístup k Azure Portal. Uživatel s rolí správce služby má plný přístup k Azure Portal. Pokud je správce účtu a správce služby stejný uživatel a Vy změníte Správce služby na jiného uživatele, správce účtu ztratí přístup k Azure Portal. Správce účtu ale může vždy použít centrum účtů ke změně Správce služby zpátky na sebe.
 
-Správce služeb je možné změnit dvěma způsoby. Můžete změnit v centru **Azure Portal** nebo **account**.
-
-### <a name="azure-portal"></a>Portál Azure
-
-1. Ujistěte se, že je váš scénář podporovaný, kontrolou omezení pro změnu správců služeb.
-
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce účtu.
-
-1. Otevřete [Předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) a vyberte předplatné.
-
-1. Klikněte na **Vlastnosti**.
-
-    ![Snímek obrazovky zobrazující správce účtu](./media/classic-administrators/account-admin.png)
-
-1. V horní části klikněte na **Správce služeb** a otevřete podokno Správce služby.
-
-    Pokud je tlačítko Správce služby zakázané, nemáte oprávnění. Správce služby může změnit jenom uživatel, který je správcem účtu.
-
-1. Vyberte nového správce služby a pak klikněte na **Uložit**.
+Pomocí těchto kroků můžete změnit správce služby v **centru účtů**.
 
 ### <a name="account-center"></a>Centrum účtů
 
-1. Ujistěte se, že je váš scénář podporovaný, kontrolou omezení pro změnu správců služeb.
+1. Ujistěte se, že je váš scénář podporovaný, kontrolou [omezení pro změnu Správce služby](#limitations-for-changing-the-service-administrator).
 
 1. Přihlaste se do [centra účtů](https://account.windowsazure.com/subscriptions) jako správce účtu.
 
@@ -156,7 +138,7 @@ Správce účtu je uživatel, který původně zaregistroval předplatné Azure,
 
 Pomocí těchto kroků zobrazíte správce účtu.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
 
 1. Otevřete [Předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) a vyberte předplatné.
 

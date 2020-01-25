@@ -8,12 +8,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 12/23/2019
 ms.reviewer: ''
-ms.openlocfilehash: f93ab61fcba53ebf39adf8ad56137f4a1df7d5fd
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 82297850bf6d03215963a1f81dda166550f2b0d5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615032"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715176"
 ---
 # <a name="azure-sql-database-security-best-practices-playbook"></a>Azure SQL Database osvědčené postupy zabezpečení PlayBook
 
@@ -258,7 +258,7 @@ Následující osvědčené postupy jsou volitelné, ale výsledkem bude lepší
 - Vytvoření a použití vlastních rolí, pokud předdefinované role udělují příliš mnoho nebo nedostatečná oprávnění. Typické role používané v praxi: 
   - Nasazení zabezpečení 
   - Správce 
-  - Developer 
+  - Vývojář 
   - Pracovníci podpory 
   - Auditor 
   - Automatizované procesy 
@@ -339,7 +339,7 @@ Pro čtenáře, kteří chtějí podrobně hlouběji do SoD, doporučujeme násl
   - [Řízení a udělení přístupu k databázi SQL Database a SQL Data Warehouse](sql-database-manage-logins.md)
   - [Oddělení povinností pro vývojáře aplikací](https://docs.microsoft.com/previous-versions/sql/sql-server-2008/cc974525(v=sql.100)) 
   - [Oddělení povinností v SQL Server 2014](https://www.microsoft.com/download/details.aspx?id=39269)
-  - [Podepisování uložených procedur na SQL Serveru](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)
+  - [Podepisování uložených procedur v SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)
 
 - Pro správu prostředků Azure:
   - [Předdefinované role pro Azure](../role-based-access-control/built-in-roles.md) 
@@ -392,7 +392,7 @@ Ochrana dat je sada funkcí pro zabezpečení důležitých informací před ohr
 
 Chrání data při přesunu dat mezi klientem a serverem. Přečtěte si téma [zabezpečení sítě](#network-security).
 
-### <a name="encrypt-data-at-rest"></a>Šifrování neaktivních uložených dat
+### <a name="encrypt-data-at-rest"></a>Šifrování dat v klidovém umístění
 
 > [!NOTE]
 > V tomto postupu: #6 postupů pro OSA, rodina ovládacích prvků ISO: kryptografie
@@ -462,7 +462,7 @@ Při použití CLE:
 - Chraňte symetrické klíče pomocí asymetrických klíčů/certifikátů (nikoli hesel), abyste se vyhnuli používání algoritmu 3DES. 
 
 - Buďte opatrní při migraci databáze pomocí šifrování na úrovni buňky prostřednictvím exportu/importu (soubory BacPac). 
-  - Informace o tom, jak zabránit klíčům ztrátě při migraci dat, najdete v článku [doporučení pro použití šifrování na úrovni buněk v Azure SQL Database](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/) . Další pokyny k osvědčeným postupům.
+  - Informace o tom, jak zabránit ztrátě klíčů při migraci dat a další pokyny k osvědčeným postupům, najdete v článku [doporučení pro používání šifrování na úrovni buněk v Azure SQL Database](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/) .
 
 Při použití Always Encrypted Pamatujte na to, že Always Encrypted je primárně navržená tak, aby chránila citlivá data při použití od uživatelů s vysokou úrovní oprávnění Azure SQL Database (cloudové operátory, specializující) – viz [chránit citlivá data při použití z vysoce privilegovaných nebo neautorizovaných uživatelů](#protect-sensitive-data-in-use-from-high-privileged-unauthorized-users). Při použití Always Encrypted k ochraně dat před uživateli aplikace Pamatujte na následující problémy:
 

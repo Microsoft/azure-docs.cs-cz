@@ -3,12 +3,12 @@ title: Podporované typy prostředků prostřednictvím Azure Resource Health | 
 description: Podporované typy prostředků prostřednictvím služby Azure Resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: f25dc32774cb040a2b9873c6811ff184373c5104
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3a61c8b90f4dc5e52a875488afb5374e3d6b7ce4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465265"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717069"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy prostředků a kontroly stavu v Azure Resource Health
 Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím stavu prostředků podle typů prostředků.
@@ -139,7 +139,7 @@ Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím 
 |---|
 |<ul><li>Je tunel VPN připojený?</li><li>Existují konflikty konfigurace v připojení?</li><li>Jsou předsdílené klíče správně nakonfigurované?</li><li>Je místní zařízení VPN dostupné?</li><li>Existují v zásadách zabezpečení IPSec/IKE neshoda?</li><li>Je připojení VPN S2S správně zřízené nebo ve stavu selhání?</li><li>Je připojení typu VNET-to-VNET správně zřízené nebo ve stavu selhání?</li></ul>|
 
-## <a name="microsoftnetworkexpressreoutecircuits"></a>Microsoft. Network/expressreoutecircuits
+## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft. Network/expressroutecircuits
 |Provedené kontroly|
 |---|
 |<ul><li>Je okruh ExpressRoute v pořádku?</li></ul>|

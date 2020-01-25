@@ -1,21 +1,21 @@
 ---
 title: Kvóty služby Azure Cosmos DB
 description: Azure Cosmos DB kvóty služeb a výchozí omezení pro různé typy prostředků.
-author: arramac
-ms.author: arramac
+author: jasonwhowell
+ms.author: jasonh
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: d6b66c4a4924f8455b58b930621d6a7b93901a2a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: b954b56d3c4f9d3ae0ad3142b11a8660e341b74a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887610"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711300"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
 
-Tento článek poskytuje přehled výchozích kvót nabízených různým prostředkům v Azure Cosmos DB.
+Tento článek obsahuje přehled výchozích kvót nabízených pro různé prostředky ve službě Azure Cosmos DB.
 
 ## <a name="storage-and-throughput"></a>Úložiště a propustnost
 

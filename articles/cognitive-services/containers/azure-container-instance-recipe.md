@@ -1,51 +1,51 @@
 ---
-title: Azure Container Instance předpisu
+title: Recept na instanci kontejneru Azure
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak nasadit kontejnery Cognitive Services na instanci kontejneru Azure
+description: Naučte se nasazovat kontejnery Cognitive Services ve službě Azure Container instance.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 01/23/2020
 ms.author: dapine
-ms.openlocfilehash: 288894705e1108d6dd511b60cd2bc3bcee4c6d41
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 78f35042678aa7c30cebf73796df3e5d564b4502
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704353"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717000"
 ---
-# <a name="deploy-and-run-container-on-azure-container-instance"></a>Nasazení a spuštění kontejneru na instanci kontejneru Azure
+# <a name="deploy-and-run-container-on-azure-container-instance"></a>Nasazení a spuštění kontejneru v instanci kontejneru Azure
 
-Pomocí následujících kroků škálování aplikací Azure Cognitive Services v cloudu snadno pomocí Azure [instanci kontejneru](https://docs.microsoft.com/azure/container-instances/). Díky tomu se můžete soustředit na vytváření aplikací a nemusíte spravovat infrastrukturu.
+Pomocí následujících kroků můžete snadno škálovat aplikace Cognitive Services Azure v cloudu s využitím Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/). Containering vám pomůže soustředit se na vytváření aplikací namísto správy infrastruktury. Další informace o používání kontejnerů najdete v tématu [funkce a výhody](../cognitive-services-container-support.md#features-and-benefits).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Toto řešení funguje s kontejnerem všechny služby Cognitive Services. Na webu Azure Portal musíte před použitím této předpisu vytvořen prostředek služby Cognitive Services. Každé služby Cognitive Services, který podporuje kontejnery má dokument "Postup instalace" speciálně pro instalaci a konfiguraci služby kontejneru. Některé služby vyžadují soubor nebo sadu souborů jako vstup pro kontejner, a proto je důležité pochopit a použili kontejneru úspěšně před použitím tohoto řešení.
+Tento recept funguje s libovolným kontejnerem Cognitive Services. Před použitím tohoto receptu musí být prostředek služby vnímání vytvořen v Azure Portal. Každá služba pro rozpoznávání, která podporuje kontejnery, má dokument "Jak nainstalovat" speciálně pro instalaci a konfiguraci služby pro kontejner. Některé služby vyžadují jako vstup pro kontejner soubor nebo sadu souborů, je důležité, abyste před použitím tohoto řešení porozuměli a úspěšně použili kontejner.
 
-* Prostředek služby Cognitive Services vytvořili na webu Azure portal.
-* Služby cognitive Services **adresu URL koncového bodu** – zkontrolujte vaše specifické služby "postup instalace" pro kontejner, chcete-li zjistit, kde je adresa URL koncového bodu z v rámci webu Azure portal a co správný Příklad adresy URL vypadá jako. Přesném formátu, který můžete změnit ze služby.
-* Služby cognitive Services **klíč** -klíče jsou na **klíče** stránky pro prostředky Azure. Potřebujete jenom jeden ze dvou klíčů. Klíč je řetězec 32 alfanumerické znaky.
-* Jediný Cognitive Services kontejner na místního hostitele (počítače). Ujistěte se, že můžete:
-  * Stáhnout image `docker pull` příkazu.
-  * S všechna požadovaná nastavení konfigurace se úspěšně spustit místního kontejneru `docker run` příkazu.
-  * Volání koncového bodu kontejneru, návrat odpovědí 2xx a odpověď ve formátu JSON.
+* Prostředek služby pro rozpoznávání, vytvořený v Azure Portal.
+* **Adresa URL koncového bodu** služby vnímání – zkontrolujte konkrétní službu "Jak nainstalovat" pro kontejner, abyste zjistili, kde adresa URL koncového bodu je v rámci Azure Portal a jak vypadá správný příklad adresy URL. Přesný formát se může změnit ze služby na službu.
+* **Klíč** služby pro rozpoznávání – klíče jsou na stránce **klíče** pro prostředek Azure. Potřebujete jenom jeden ze dvou klíčů. Klíč je řetězec o 32 alfanumerických znaků.
+* Jeden Cognitive Services kontejner na místním hostiteli (Váš počítač). Ujistěte se, že máte tyto:
+  * Vystažení obrázku pomocí `docker pull` příkazu
+  * Spusťte místní kontejner úspěšně se všemi požadovanými nastaveními konfigurace pomocí příkazu `docker run`.
+  * Zavolejte koncový bod kontejneru a dostanete odpověď HTTP 2xx a odpověď JSON zpátky.
 
-Všechny proměnné v lomených závorkách `<>`, je třeba nahradit vlastními hodnotami. Toto nahrazení zahrnuje ostrých závorek.
+Všechny proměnné v lomených závorkách, `<>`, musí být nahrazeny vlastními hodnotami. Tato náhrada zahrnuje lomené závorky.
 
 [!INCLUDE [Create a Text Analytics Containers on Azure Container Instances](includes/create-container-instances-resource.md)]
 
-## <a name="use-the-container-instance"></a>Použijte instanci kontejneru
+## <a name="use-the-container-instance"></a>Použití instance kontejneru
 
-1. Vyberte **přehled** a zkopírujte IP adresu. Je číselný IP adresu, jako `55.55.55.55`.
-1. Otevře nová karta prohlížeče a použijte IP adresu, například `http://<IP-address>:5000 (http://55.55.55.55:5000`). Zobrazí se domovská stránka kontejneru, oznamující, že je kontejner spuštěný.
+1. Vyberte **Přehled** a zkopírujte IP adresu. Bude to číselná IP adresa, například `55.55.55.55`.
+1. Otevřete novou kartu prohlížeče a použijte IP adresu, například `http://<IP-address>:5000 (http://55.55.55.55:5000`). Zobrazí se Domovská stránka kontejneru, která vám umožní zjistit, že je kontejner spuštěný.
 
-1. Vyberte **popis rozhraní API služby** zobrazíte stránku swagger pro kontejner.
+1. Když vyberete **Popis rozhraní API služby** , zobrazí se stránka Swagger pro kontejner.
 
-1. Vyberte některou z **příspěvek** rozhraní API a vyberte **vyzkoušet**.  Parametry jsou zobrazeny, včetně vstupu. Vyplňte parametry.
+1. Vyberte libovolné rozhraní API pro **post** a vyberte **vyzkoušet**.  Zobrazí se parametry včetně vstupu. Zadejte parametry.
 
-1. Vyberte **Execute** odešlete žádost instanci kontejneru.
+1. Výběrem příkazu **Spustit** odešlete požadavek do vaší instance kontejneru.
 
-    Úspěšně jste vytvořili a použili služby Cognitive Services kontejnery v Azure Container Instance.
+    Úspěšně jste vytvořili a použili kontejnery Cognitive Services ve službě Azure Container instance.

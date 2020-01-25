@@ -12,12 +12,12 @@ ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: a794a9ed35cbbdd36c2cf136b8afc208c3ea0692
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 1e0016e8ce6bc9178befd1a5ca96aa2554929ac5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549001"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719530"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Rychlý Start: sestavení aplikace v Pythonu pomocí Azure Cosmos DB účtu rozhraní SQL API
 
@@ -41,13 +41,13 @@ V tomto rychlém startu se používá verze 4 [sady Python SDK](https://pypi.org
 
 * [Python 3.6 +](https://www.python.org/downloads/), ve vaší `PATH`je k dispozici spustitelný soubor `python`.
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Rozšíření Python pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)
+* [Rozšíření Pythonu pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)
 
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="add-a-container"></a>Přidání kontejneru
+## <a name="add-a-container"></a>Přidat kontejner
 
 Nyní můžete použít nástroj Průzkumník dat v Azure Portal k vytvoření databáze a kontejneru. 
 
@@ -55,7 +55,7 @@ Nyní můžete použít nástroj Průzkumník dat v Azure Portal k vytvoření d
     
     Úplně vpravo se zobrazí oblast **Přidat kontejner** , možná se budete muset posunout doprava, aby se zobrazila.
 
-    ![Průzkumník dat na portálu Azure Portal – podokno Přidat kontejner](./media/create-sql-api-python/azure-cosmosdb-data-explorer.png)
+    ![Azure Portal Průzkumník dat, přidat podokno kontejneru](./media/create-sql-api-python/azure-cosmosdb-data-explorer.png)
 
 2. Na stránce **Přidat kontejner** zadejte nastavení pro nový kontejner.
 
@@ -63,7 +63,7 @@ Nyní můžete použít nástroj Průzkumník dat v Azure Portal k vytvoření d
     |---|---|---|
     |**ID databáze**|Úlohy|Jako název nové databáze zadejte *ToDoList* . Názvy databází musí mít délku 1 až 255 znaků a nesmí obsahovat `/, \\, #, ?`, ani koncové mezery. Ověřte možnost **zřízení propustnosti databáze** , která umožňuje sdílení propustnosti zřízené do databáze napříč všemi kontejnery v rámci databáze. Tato možnost také pomáhá při úsporách nákladů. |
     |**Propustnost**|400|Nechte propustnost na 400 jednotek žádostí za sekundu (RU/s). Pokud budete chtít snížit latenci, můžete propustnost později navýšit.| 
-    |**ID kontejneru**|Items|Jako název nového kontejneru zadejte *položky* . Pro ID kontejnerů platí stejné požadavky týkající se použitých znaků jako pro názvy databází.|
+    |**ID kontejneru**|Items|Jako název nového kontejneru zadejte *položky* . ID kontejnerů mají stejné požadavky na znaky jako názvy databází.|
     |**Klíč oddílu**| /kategorie| Ukázka popsaná v tomto článku používá jako klíč oddílu */Category* .|
     
     Kromě předchozích nastavení můžete volitelně přidat **jedinečné klíče** pro kontejner. V tomto příkladu ponecháme toto pole prázdné. Jedinečné klíče umožňují vývojářům přidat do databáze vrstvu integrity dat. Vytvořením jedinečné zásady klíčů při vytváření kontejneru zajistíte jedinečnost jedné nebo více hodnot na klíč oddílu. Další informace najdete v článku [Jedinečné klíče ve službě Azure Cosmos DB](unique-keys.md).

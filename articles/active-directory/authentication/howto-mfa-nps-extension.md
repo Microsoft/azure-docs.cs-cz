@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 283bd56b9d9cbe412e9c28127dd9dab7decc2d7c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a4da2e3696dd1fad1dcce81831385f1e21891f97
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848302"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712535"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrace stávající infrastruktury serveru NPS do Azure Multi-Factor Authentication
 
@@ -43,11 +43,11 @@ V případě potřeby můžete vytvořit libovolný počet serverů NPS s povole
 
 Servery VPN směrují žádosti o ověření, takže potřebují vědět o nových serverech NPS s povolenou službou Azure MFA.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Rozšíření serveru NPS je určeno pro práci s vaší stávající infrastrukturou. Než začnete, ujistěte se, že máte následující předpoklady.
 
-### <a name="licenses"></a>Licence
+### <a name="licenses"></a>Vázaný
 
 Rozšíření serveru NPS pro Azure MFA je dostupné pro zákazníky, kteří mají [licence pro azure Multi-Factor Authentication](multi-factor-authentication.md) (jsou součástí Azure AD Premium, EMS nebo samostatné licence MFA). Licence založené na spotřebě pro Azure MFA, jako jsou licence vázané na uživatele nebo na ověřování, nejsou kompatibilní s rozšířením NPS. 
 
@@ -273,7 +273,7 @@ Platná – od a platné – dokud časová razítka, která jsou ve formě čit
 
 ---
 
-### <a name="why-cant-i-sign-in"></a>Proč se nemůžu přihlásit?
+### <a name="why-cannot-i-sign-in"></a>Proč se nemůžu přihlásit?
 
 Ověřte, že platnost vašeho hesla nevypršela. Rozšíření serveru NPS nepodporuje změnu hesla jako součást pracovního postupu přihlášení. Pokud potřebujete další pomoc, obraťte se na pracovníky IT vaší organizace.
 

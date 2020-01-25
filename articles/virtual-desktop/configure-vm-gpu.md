@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: a0965dc4011b449e617f6dbaeafb68bfa796b620
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 64e8fab3ac352c906cfb63cd39f89acda4109b18
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953954"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719751"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Konfigurace akcelerace GPU (Graphics Processing Unit) pro virtuální počítače s Windows
 
@@ -37,9 +37,9 @@ Musíte taky nakonfigurovat skupinu aplikací nebo použít výchozí skupinu de
 
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>Instalace podporovaných grafických ovladačů ve vašem virtuálním počítači
 
-Pokud chcete využívat možnosti GPU pro virtuální počítače řady Azure N-Series na virtuálním počítači s Windows, musíte nainstalovat ovladače grafiky NVIDIA. Podle pokynů v tématu [instalace ovladačů NVIDIA GPU pro virtuální počítače řady N-Series s Windows](/azure/virtual-machines/windows/n-series-driver-setup) nainstalujte ovladače, a to buď ručně, nebo pomocí [rozšíření ovladače NVIDIA GPU](/azure/virtual-machines/extensions/hpccompute-gpu-windows).
+Pokud chcete využít výhod schopností GPU virtuálních počítačů Azure N-Series na virtuálním počítači s Windows, musíte nainstalovat příslušné ovladače grafiky. Podle pokynů v části [podporované operační systémy a ovladače](/azure/virtual-machines/windows/sizes-gpu#supported-operating-systems-and-drivers) nainstalujte ovladače od příslušného dodavatele grafiky, a to buď ručně, nebo pomocí rozšíření virtuálního počítače Azure.
 
-Všimněte si, že pro virtuální desktop Windows se podporují jenom [ovladače pro mřížku NVIDIA](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers) distribuované systémem Azure.
+Pro virtuální počítače s Windows se podporují jenom ovladače distribuované pomocí Azure. Další pro virtuální počítače Azure s grafickými procesory NVIDIA podporují se jenom [ovladače NVIDIA gridu](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers) pro virtuální počítače s Windows.
 
 Po instalaci ovladače se vyžaduje restartování virtuálního počítače. Pomocí kroků pro ověření výše uvedených pokynů potvrďte, že ovladače grafiky byly úspěšně nainstalovány.
 
@@ -74,7 +74,7 @@ Vzdálená plocha zakóduje všechny grafiky vygenerované aplikacemi a plochami
 
 Pokud chcete ověřit, jestli aplikace používají GPU k vykreslování, zkuste použít některou z těchto možností:
 
-* Použijte nástroj `nvidia-smi`, jak je popsáno v části [ověření instalace ovladače](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation) pro kontrolu využití GPU při spouštění aplikací.
+* Pro virtuální počítače Azure s grafickým procesorem NVIDIA použijte nástroj `nvidia-smi`, jak je popsáno v tématu [ověření instalace ovladače](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation) a kontrola využití GPU při spuštění aplikací.
 * V podporovaných verzích operačních systémů můžete použít Správce úloh ke kontrole využití GPU. Vyberte GPU na kartě výkon, abyste viděli, jestli aplikace využívají GPU.
 
 ## <a name="verify-gpu-accelerated-frame-encoding"></a>Ověřit kódování rámce akcelerované GPU
@@ -90,5 +90,5 @@ Ověření, že Vzdálená plocha používá kódování GPU-akcelerované:
 
 Tyto pokyny by měly být v provozu s akcelerací GPU na virtuálním počítači hostitele s jednou relací. Některé další předpoklady pro povolení akcelerace GPU napříč větším fondem hostitelů:
 
-* Zvažte použití [rozšíření ovladače NVIDIA GPU](/azure/virtual-machines/extensions/hpccompute-gpu-windows) k zjednodušení instalace a aktualizací ovladačů v několika virtuálních počítačích.
+* Zvažte použití [rozšíření virtuálního počítače](/azure/virtual-machines/extensions/overview) pro zjednodušení instalace a aktualizace ovladačů v rámci několika virtuálních počítačů. Pro virtuální počítače s grafickými procesory NVIDIA použijte [rozšíření ovladače GPU NVIDIA](/azure/virtual-machines/extensions/hpccompute-gpu-windows) a použijte rozšíření ovladače AMD GPU (už brzy) pro virtuální počítače s grafickým procesorem AMD.
 * Zvažte použití služby Active Directory Zásady skupiny ke zjednodušení konfigurace zásad skupiny pro celou řadu virtuálních počítačů. Informace o nasazení Zásady skupiny v doméně služby Active Directory naleznete v tématu [Working with zásady skupiny Objects](https://go.microsoft.com/fwlink/p/?LinkId=620889).

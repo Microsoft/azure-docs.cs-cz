@@ -9,16 +9,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: 8cbc067326bf77648d242cadaf91b491f50c3848
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 68771ee3d2ae2d43245bd217bedcf59b987786f1
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294265"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716733"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Výrazy transformace dat v toku mapování dat 
 
-## <a name="expression-functions"></a>Funkce výrazů
+## <a name="expression-functions"></a>Funkce výrazu
 
 V Data Factory pomocí jazyka výrazů funkce mapování toku dat nakonfigurujte transformace dat.
 ___
@@ -484,7 +484,7 @@ Vrací hodnotu NULL. Použijte syntaxi funkce (null ()), pokud je sloupec s náz
 * ``isNull(10/0) -> true``
 ___
 ### <code>or</code><br/><br/>
-Logický operátor OR. Stejné jako | | * ``or(true, false) -> true``
+Logický operátor OR Stejné jako | | * ``or(true, false) -> true``
 * ``true || false -> true``
 ___
 ### <code>pMod</code>
