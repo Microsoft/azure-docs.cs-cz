@@ -1,23 +1,22 @@
 ---
 title: Ukázkový skript Azure PowerShellu – Vytvoření vlastního tématu | Microsoft Docs
-description: Ukázkový skript Azure PowerShellu – Vytvoření vlastního tématu
+description: Tento článek obsahuje ukázkový skript Azure PowerShell, který ukazuje, jak vytvořit vlastní téma Event Grid.
 services: event-grid
 documentationcenter: na
-author: tfitzmac
-manager: timlt
+author: spelluru
 ms.service: event-grid
 ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/10/2018
+ms.date: 01/23/2020
 ms.author: tomfitz
-ms.openlocfilehash: 20ad58c2e7209f8bed8014d5ce1dff094907590c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 900f31ff87e6a588fc1d1e3efd854437d2c8c1b9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66117150"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719938"
 ---
 # <a name="create-event-grid-custom-topic-with-powershell"></a>Vytvoření vlastního tématu Event Gridu pomocí PowerShellu
 
@@ -39,7 +38,7 @@ Tento skript k vytvoření vlastního tématu používá následující příkaz
 |---|---|
 | [New-AzEventGridTopic](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridtopic) | Vytvoří vlastní téma Event Gridu. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Úvod ke spravovaným aplikacím najdete v [přehledu spravovaných aplikací Azure](../overview.md).
 * Další informace o PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/azure/get-started-azureps).

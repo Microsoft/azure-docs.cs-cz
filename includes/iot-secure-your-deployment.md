@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: ea57f8cdf5e1b2460f396445c67cfcab28f07525
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 08cca67455df4b2d28bba0a7410fccc11446fcdc
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75840651"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748859"
 ---
 Tento článek poskytuje další úroveň podrobností pro zabezpečení infrastruktury Internet věcí založené na službě Azure IoT (IoT). Odkazuje na podrobnosti úrovně implementace pro konfiguraci a nasazení jednotlivých komponent. Nabízí také porovnání a volby mezi různými konkurenčními metodami.
 
@@ -77,11 +77,11 @@ Při vytváření zabezpečeného připojení TLS s IoT Hub se zařízení IoT o
 
 ## <a name="securing-the-connection"></a>Zabezpečení připojení
 
-Připojení k internetu mezi zařízením IoT a IoT Hub je zabezpečené pomocí standardu TLS (Transport Layer Security). Azure IoT podporuje [tls 1,2](https://tools.ietf.org/html/rfc5246), TLS 1,1 a TLS 1,0 v tomto pořadí. Podpora TLS 1,0 se poskytuje jenom pro zpětnou kompatibilitu. Pokud je to možné, [nakonfigurujte rozbočovač](../articles/iot-hub/iot-hub-tls.md) tak, aby používal TLS 1,2, protože poskytuje nejvyšší zabezpečení.
+Připojení k internetu mezi zařízením IoT a IoT Hub je zabezpečené pomocí standardu TLS (Transport Layer Security). Azure IoT podporuje [tls 1,2](https://tools.ietf.org/html/rfc5246), TLS 1,1 a TLS 1,0 v tomto pořadí. Podpora TLS 1,0 se poskytuje jenom pro zpětnou kompatibilitu. Podívejte se na [podporu TLS v IoT Hub](../articles/iot-hub/iot-hub-tls-support.md) a zjistěte, jak nakonfigurovat rozbočovač tak, aby používal TLS 1,2, protože poskytuje nejvyšší zabezpečení.
 
 ## <a name="securing-the-cloud"></a>Zabezpečení cloudu
 
-Azure IoT Hub umožňuje definici [zásad řízení přístupu](../articles/iot-hub/iot-hub-devguide-security.md) pro každý bezpečnostní klíč. K udělení přístupu ke všem koncovým bodům IoT Hub používá následující sadu oprávnění. Oprávnění omezují přístup k IoT Hubu podle funkcí.
+Azure IoT Hub umožňuje definici [zásad řízení přístupu](../articles/iot-hub/iot-hub-devguide-security.md) pro každý bezpečnostní klíč. K udělení přístupu ke všem koncovým bodům IoT Hub používá následující sadu oprávnění. Oprávnění omezují přístup k IoT Hub na základě funkčnosti.
 
 * **RegistryRead**. Udělí přístup pro čtení k registru identit. Další informace najdete v části [registr identit](../articles/iot-hub/iot-hub-devguide-identity-registry.md).
 

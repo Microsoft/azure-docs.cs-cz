@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 6324fd0e2957aea46fb5876aa8c91f0906205ccc
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: ec3a7b6420144278df66f693d9fd9933449b3d80
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76694364"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748889"
 ---
 ## <a name="trigger"></a>Trigger
 
@@ -394,7 +394,7 @@ Soubor [Host. JSON](../articles/azure-functions/functions-host-json.md#eventhub)
 
 ## <a name="output"></a>Výstup
 
-Použijte výstupní vazbu Event Hubs k zápisu událostí do datového proudu událostí. Musíte mít oprávnění k odesílání do centra událostí, abyste do něj události mohli zapisovat.
+Použijte výstupní vazbu Event Hubs k zápisu událostí do datového proudu událostí. K zápisu událostí do centra událostí musíte mít oprávnění Odeslat.
 
 Před pokusem o implementaci výstupní vazby se ujistěte, že jsou na místě požadované odkazy na balíčky.
 
@@ -699,6 +699,6 @@ Tato část popisuje globální nastavení konfigurace, která jsou k dispozici 
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------|
-|`maxBatchSize`|64|Maximální počet událostí přijatých pro jednu smyčku příjmu.|
-|`prefetchCount`|–|Výchozí počet předběžného načtení, který používá základní `EventProcessorHost`.|
+|`maxBatchSize`|10|Maximální počet událostí přijatých pro jednu smyčku příjmu.|
+|`prefetchCount`|300|Výchozí počet předběžného načtení, který používá základní `EventProcessorHost`.|
 |`batchCheckpointFrequency`|1\. místo|Počet dávek události, které mají být zpracovány před vytvořením kontrolního bodu centra EventHub.|

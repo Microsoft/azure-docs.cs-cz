@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
-ms.date: 01/14/2020
+ms.date: 01/22/2020
 ms.author: diberry
-ms.openlocfilehash: 65611dfb171008deab9d1d6cb15f0470fcbc2753
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 808fdfb04cbe3b2b9e5f2de0c653bb978196269c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170551"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748912"
 ---
 Pomocí klientské knihovny pro vytváření Language Understanding (LUIS) pro Node. js proveďte tyto kroky:
 
@@ -25,7 +25,7 @@ Pomocí klientské knihovny pro vytváření Language Understanding (LUIS) pro N
 * Výuka a publikování aplikace
 * Odstranit aplikaci
 
-[Referenční dokumentace](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest) | [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-authoring) | [vytváření obsahu (npm)](https://www.npmjs.com/package/azure-cognitiveservices-luis-authoring) | [ukázky](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/luis_authoring_quickstart.js)
+[Referenční dokumentace](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest) | [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-authoring) | [vytváření obsahu (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring), [balíček runtime (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime) | [ukázky](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/luis_authoring_quickstart.js)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -125,7 +125,7 @@ Vytvořte proměnné pro koncový bod a klíč Azure prostředku. Pokud jste po 
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
-Vytvořte objekt [CognitiveServicesCredentials]() s klíčem a použijte ho u svého koncového bodu k vytvoření objektu [LUISAuthoringClient]() .
+Vytvořte objekt [CognitiveServicesCredentials](https://docs.microsoft.com/javascript/api/@azure/ms-rest-js/apikeycredentials?view=azure-node-latest) s klíčem a použijte ho u svého koncového bodu k vytvoření objektu [LUISAuthoringClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/luisauthoringclient?view=azure-node-latest) .
 
 [!code-javascript[Create LUIS client object](~/cognitive-services-quickstart-code/javascript/LUIS/luis_authoring_quickstart.js?name=AuthoringCreateClient)]
 

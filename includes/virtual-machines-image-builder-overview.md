@@ -1,16 +1,16 @@
 ---
 author: cynthn
 ms.author: cynthn
-ms.date: 11/25/2019
+ms.date: 01/23/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 2a763bbd50f009ae469be889e6ebae0b0d90848b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: ec1b77118f94501363d950d72a65a67ece79ff77
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795814"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748803"
 ---
 Standardizované image virtuálních počítačů umožňují organizacím migrovat do cloudu a zajistit konzistenci nasazení. Obrázky obvykle zahrnují předdefinovaná nastavení zabezpečení a konfigurace a potřebný software. Nastavení vlastního kanálu pro vytváření imagí vyžaduje čas, infrastrukturu a instalaci, ale s nástrojem Azure VM Image Builder stačí jednoduše zadat jednoduchou konfiguraci popisující vaši image, odeslat ji do služby a image se sestaví a distribuuje.
  
@@ -35,7 +35,7 @@ Pro verzi Preview jsou tyto funkce podporované:
 
 ## <a name="regions"></a>Oblasti
 Služba Azure image Builder bude k dispozici pro verzi Preview v těchto oblastech. Obrázky lze distribuovat mimo tyto oblasti.
-- USA – východ
+- Východ USA
 - Východ USA 2
 - Středozápadní USA
 - Západní USA
@@ -45,14 +45,16 @@ Služba Azure image Builder bude k dispozici pro verzi Preview v těchto oblaste
 AIB bude podporovat image základního operačního systému Azure Marketplace:
 - Ubuntu 18.04
 - Ubuntu 16.04
-- RHEL 7,6
-- CentOS 7,6
+- RHEL 7,6, 7,7
+- CentOS 7,6, 7,7
+- SLES 12 SP4
+- SLES 15, SLES 15 SP1
 - Windows 10 RS5 Enterprise/Professional/Enterprise pro Virtual Desktop (EVD) 
 - Windows 2016
-- Systém Windows 2019
+- Windows 2019
 
 AIB bude podporovat RHEL ISO jako zdroj pro:
-- RHEL 7,3
+- RHEL 7.3
 - RHEL 7,4
 - RHEL 7.5
 
@@ -91,6 +93,13 @@ az role assignment create \
     --role Contributor \
     --scope /subscriptions/$subscriptionID/resourceGroups/<distributeResoureGroupName>
 ```
+
+Přístup můžete přiřadit pomocí prostředí PowerShell:
+
+```azurePowerShell-interactive
+New-AzRoleAssignment -ObjectId ef511139-6170-438e-a6e1-763dc31bdf74 -Scope /subscriptions/$subscriptionID/resourceGroups/<distributeResoureGroupName> -RoleDefinitionName Contributor
+```
+
 
 Pokud se účet služby nenajde, může to znamenat, že předplatné, do kterého přidáváte přiřazení role, ještě není zaregistrované pro poskytovatele prostředků.
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 1c08b42d8217bf16dfcd8af17fa3c4627b95ffc3
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 8032a9b206be4a5eb70a1f40fd33667a1dbdfaa7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028224"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714726"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Kurz: použití dynamické konfigurace v aplikaci ASP.NET Core
 
@@ -53,7 +53,7 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
 1. Přidejte odkaz na `Microsoft.Azure.AppConfiguration.AspNetCore` balíček NuGet spuštěním následujícího příkazu:
 
     ```CLI
-    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 3.0.0-preview-010560002-1165
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 3.0.0-preview-011100002-1192
     ```
 
 1. Otevřete *program.cs*a aktualizujte metodu `CreateWebHostBuilder` pro přidání metody `config.AddAzureAppConfiguration()`.
@@ -308,7 +308,7 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
 
     ![Spuštění aplikace pro rychlý Start – místní](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
-4. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+4. Přihlaste se k [Portálu Azure](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 5. Vyberte **Průzkumník konfigurace**a aktualizujte hodnoty následujících klíčů:
 

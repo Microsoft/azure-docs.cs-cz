@@ -1,6 +1,6 @@
 ---
 title: Nastavení účtu testovacího prostředí s Azure Lab Services | Microsoft Docs
-description: V tomto kurzu nastavíte účet testovacího prostředí s Azure Lab Services.
+description: Naučte se, jak nastavit účet testovacího prostředí pomocí Azure Lab Services, přidat autora testovacího prostředí a zadat image z Marketplace, které budou používat Labs v účtu testovacího prostředí.
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/24/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 8c252870a82a60a561f12fab9d728c028458212a
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 62ccda96563a53ebc77337bb2f89cfddd4410a26
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562098"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719037"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Kurz: Nastavení účtu testovacího prostředí s Azure Lab Services
 Účet testovacího prostředí v Azure Lab Services slouží jako centrální účet, ve kterém se spravují testovací prostředí vaší organizace. V účtu testovacího prostředí můžete udělit oprávnění vytvářet testovací prostředí dalším uživatelům a nastavit zásady, které budou platit pro všechna testovací prostředí pod účtem testovacího prostředí. V tomto kurzu zjistíte, jak vytvořit účet testovacího prostředí jako správce testovacího prostředí. 
@@ -36,7 +36,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="create-a-lab-account"></a>Vytvoření účtu testovacího prostředí
 Následující kroky ukazují postup vytvoření účtu testovacího prostředí se službou Azure Lab Services pomocí webu Azure Portal. 
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
 2. V nabídce vlevo vyberte **všechny služby** . V části **DEVOPS** vyberte **testovací služby** . Pokud vyberete hvězdičku (`*`) vedle položky **testovací služby**, přidá se do části **Oblíbené** v nabídce vlevo. Od dalšího okamžiku vyberte v části **Oblíbené položky** **testovací služby** .
 
     ![Všechny služby – > Laboratorní služby](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
@@ -52,7 +52,7 @@ Následující kroky ukazují postup vytvoření účtu testovacího prostředí
     6. Pro **partnerský virtuální síť**vyberte partnerský virtuální síť (VNET) pro síť laboratoře. Laboratoře vytvořené v tomto účtu jsou připojené k vybrané virtuální síti a mají přístup k prostředkům ve vybrané virtuální síti. 
     7. Zadejte **Rozsah adres** pro virtuální počítače v testovacím prostředí. Rozsah adres by měl být v notaci směrování mezi doménami (například: 10.20.0.0/23). Virtuální počítače v testovacím prostředí se vytvoří v tomto rozsahu adres. Další informace najdete v tématu [určení rozsahu adres pro virtuální počítače v testovacím prostředí](how-to-configure-lab-accounts.md#specify-an-address-range-for-vms-in-the-lab).
     8. V poli **umožnit autor testovacího prostředí vybrat umístění testovacího prostředí** určete, jestli chcete, aby tvůrci testovacího prostředí mohli vybrat umístění pro testovací prostředí. Ve výchozím nastavení je tato možnost zakázaná. Pokud je zakázaný, tvůrci testovacího prostředí nemůžou určit umístění pro testovací prostředí, které vytváří. Laboratoře se vytvoří v nejbližším zeměpisném umístění účtu testovacího prostředí. Když je tato možnost povolená, může tvůrce testovacího prostředí vybrat umístění v době vytváření testovacího prostředí. 
-    9. Vyberte **Vytvořit**. 
+    9. Vyberte **Create** (Vytvořit). 
 
         ![Okno Create a lab account (Vytvořit účet testovacího prostředí)](../media/tutorial-setup-lab-account/lab-account-settings.png)
 5. Vyberte **ikonu zvonku** na panelu nástrojů (**oznámení**), potvrďte, že nasazení proběhlo úspěšně, a pak vyberte **Přejít k prostředku**. 

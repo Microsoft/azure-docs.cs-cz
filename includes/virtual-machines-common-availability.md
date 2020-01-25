@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 06b54c3038e8b4f5879a93b696920534c2199008
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 4860dcac666f790fed199536338e50a967113c20
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74414565"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748925"
 ---
 Tento článek obsahuje přehled funkcí dostupnosti virtuálních počítačů Azure (VM).
 
@@ -62,7 +62,7 @@ Sada škálování virtuálních počítačů umožňuje zadat režim orchestrac
 
 **Domény selhání a aktualizační domény**
 
-Služba Virtual Machine Scale Sets zjednodušuje návrh vysoké dostupnosti tím, že zarovnává domény selhání a aktualizační domény. Pro sadu škálování budete muset definovat jenom počet domén selhání. Počet domén selhání dostupných pro sadu škálování se může v jednotlivých oblastech lišit. Podívejte se [na počet domén selhání na oblast](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability#number-of-fault-domains-per-region).
+Služba Virtual Machine Scale Sets zjednodušuje návrh vysoké dostupnosti tím, že zarovnává domény selhání a aktualizační domény. Pro sadu škálování budete muset definovat jenom počet domén selhání. Počet domén selhání dostupných pro sadu škálování se může v jednotlivých oblastech lišit. Viz [Správa dostupnosti virtuálních počítačů v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability).
 
 
 ## <a name="availability-sets"></a>Skupiny dostupnosti

@@ -1,6 +1,6 @@
 ---
 title: Nastavení testovacího prostředí v učebně v Azure Lab Services | Microsoft Docs
-description: V tomto kurzu nastavíte testovací prostředí pro použití v učebně.
+description: V tomto kurzu použijete Azure Lab Services k nastavení testovacího prostředí pro učebnu s virtuálními počítači, které používají studenti ve vaší třídě.
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/31/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: a5f8c8c00a9f63558043167c5cf8269f9e139d54
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2c28375ce7252e93340f395b97224d292940ce65
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584970"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719173"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Kurz: Nastavení testovacího prostředí v učebně 
 V tomto kurzu nastavíte testovací prostředí v učebně pomocí virtuálních počítačů, které používají studenti v učebně.  

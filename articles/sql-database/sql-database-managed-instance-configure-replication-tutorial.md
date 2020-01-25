@@ -9,12 +9,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 11/21/2019
-ms.openlocfilehash: e1ee616adadcabb2deb3fa08a5f3d4f768fddfd5
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: fa6e393500e9deeb91ee84aa5255320003817f08
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045650"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719887"
 ---
 # <a name="tutorial-configure-transactional-replication-between-two-managed-instances-and-sql-server"></a>Kurz: Konfigurace transakční replikace mezi dvěma spravovanými instancemi a SQL Server
 
@@ -385,7 +385,7 @@ Možná řešení:
 
 Pokud přidáváte nové předplatné pomocí průvodce **novým odběrem** , můžete na stránce **publikace** zjistit, že v seznamu dostupné možnosti nejsou žádné databáze a publikace, a může se zobrazit následující chybová zpráva:
 
-`There are no publications to which yuo can subscribe, either because this server has no publications or because you do not have sufficient privileges to access the publications.`
+`There are no publications to which you can subscribe, either because this server has no publications or because you do not have sufficient privileges to access the publications.`
  
 I když je možné, že tato chybová zpráva je přesná a na vydavateli, ke kterému jste se připojili, nejsou k dispozici publikace, nebo nemáte dostatečná oprávnění, může být tato chyba také způsobena starší verzí SQL Server Management Studio. Pokuste se upgradovat na SQL Server Management Studio 18,0 nebo vyšší, abyste toto pravidlo vyzkoušeli jako hlavní příčinu. 
 

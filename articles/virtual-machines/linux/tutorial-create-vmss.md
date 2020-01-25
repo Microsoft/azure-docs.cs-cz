@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: vytvoření sady škálování virtuálních počítačů s Windows'
+title: 'Kurz: vytvoření sady škálování virtuálních počítačů se systémem Linux'
 description: Naučte se používat rozhraní příkazového řádku Azure CLI k vytvoření a nasazení vysoce dostupné aplikace na virtuálních počítačích se systémem Linux pomocí sady škálování virtuálních počítačů.
 services: virtual-machine-scale-sets
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 94e7bac3cbf3842375278a23bc39245425cda4b6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7a256fc5268c10dd05a2cf58747107cb26c3ced9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458653"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716556"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli"></a>Kurz: Vytvoření škálovací sady virtuálních počítačů a nasazení vysoce dostupné aplikace v Linuxu pomocí Azure CLI
 
@@ -37,7 +37,7 @@ ms.locfileid: "75458653"
 
 V tomto kurzu se používá CLI v rámci [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), který se průběžně aktualizuje na nejnovější verzi. Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v horní části libovolného bloku kódu.
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte pro tento kurz mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="scale-set-overview"></a>Přehled škálovací sady
 Škálovací sada virtuálních počítačů umožňuje nasadit a spravovat sadu identických virtuálních počítačů s automatickým škálováním. Virtuální počítače ve škálovací sadě se distribuují napříč logickými doménami selhání a aktualizačními doménami v jedné nebo více *skupinách umístění*. To jsou skupiny podobně nakonfigurovaných virtuálních počítačů, podobně jako [skupiny dostupnosti](tutorial-availability-sets.md).

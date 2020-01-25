@@ -2,18 +2,18 @@
 author: aahill
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/28/2019
+ms.date: 01/22/2020
 ms.author: aahi
-ms.openlocfilehash: 7cb3dce31592771deb5c57b9d73670465f7424fe
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: d5197cfe749ae27b9f8807ba62825c8a73371c85
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281366"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748810"
 ---
 <a name="HOLTop"></a>
 
-[Referenční dokumentace](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics) |  | [ukázky](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/) | balíčku [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) [(npm)](https://www.npmjs.com/package/azure-cognitiveservices-textanalytics)
+[Referenční dokumentace](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics) |  | [ukázky](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/) | balíčku [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) [(npm)](https://www.npmjs.com/package/@azure/cognitiveservices-textanalytics)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -28,13 +28,13 @@ ms.locfileid: "76281366"
 
 ### <a name="create-a-new-nodejs-application"></a>Vytvoření nové aplikace Node.js
 
-V okně konzoly (například cmd, PowerShell nebo bash) vytvořte nový adresář pro vaši aplikaci a přejděte na něj. 
+V okně konzoly (například cmd, PowerShell nebo bash) vytvořte nový adresář pro vaši aplikaci a přejděte na něj.
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-Spusťte příkaz `npm init` pro vytvoření aplikace uzlu se souborem `package.json`. 
+Spusťte příkaz `npm init` pro vytvoření aplikace uzlu se souborem `package.json`.
 
 ```console
 npm init
@@ -67,9 +67,9 @@ Soubor `package.json` vaší aplikace bude aktualizován pomocí závislostí.
 
 Klient Analýza textu je objekt [TextAnalyticsClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient) , který se ověřuje v Azure pomocí vašeho klíče. Klient nabízí několik metod analýzy textu, jako jeden řetězec nebo dávku.
 
-Text se pošle do rozhraní API jako seznam `documents`, což jsou `dictionary` objekty obsahující kombinaci `id`, `text`a `language` atributů v závislosti na použité metodě. Atribut `text` ukládá text, který má být analyzován v `language`původu, a `id` může být libovolná hodnota. 
+Text se pošle do rozhraní API jako seznam `documents`, což jsou `dictionary` objekty obsahující kombinaci `id`, `text`a `language` atributů v závislosti na použité metodě. Atribut `text` ukládá text, který má být analyzován v `language`původu, a `id` může být libovolná hodnota.
 
-Objekt Response je seznam obsahující informace o analýze pro každý dokument. 
+Objekt Response je seznam obsahující informace o analýze pro každý dokument.
 
 ## <a name="code-examples"></a>Příklady kódu
 

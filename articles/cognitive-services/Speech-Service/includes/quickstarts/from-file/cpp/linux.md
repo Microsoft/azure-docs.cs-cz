@@ -2,19 +2,19 @@
 title: 'Rychlý Start: rozpoznávání řeči ze zvukového souboru C++ , (Linux) – služba Speech'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: wolfma61
+author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/14/2020
-ms.author: wolfma
-ms.openlocfilehash: 7cd4faaebd3a16b927fcbb1f7752f4fb404565d8
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: erhopf
+ms.openlocfilehash: 6655cf4ba57bda8f2bfdd1a0b2781e2385db2e6f
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76038140"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748946"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,47 +31,7 @@ Než začnete, nezapomeňte:
 
 1. Vytvořte zdrojový soubor jazyka C++ s názvem `helloworld.cpp` a vložte do něj následující kód.
 
-   ```cpp
-    // Creates an instance of a speech config with specified subscription key and service region.
-    // Replace with your own subscription key and service region (e.g., "westus").
-    auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
-
-    // Creates a speech recognizer using a WAV file. The default language is "en-us".
-    // Replace with your own audio file name.
-    auto audioInput = AudioConfig::FromWavFileInput("whatstheweatherlike.wav");
-    auto recognizer = SpeechRecognizer::FromConfig(config, audioInput);
-    cout << "Recognizing first result...\n";
-
-    // Starts speech recognition, and returns after a single utterance is recognized. The end of a
-    // single utterance is determined by listening for silence at the end or until a maximum of 15
-    // seconds of audio is processed.  The task returns the recognition text as result.
-    // Note: Since RecognizeOnceAsync() returns only a single utterance, it is suitable only for single
-    // shot recognition like command or query.
-    // For long-running multi-utterance recognition, use StartContinuousRecognitionAsync() instead.
-    auto result = recognizer->RecognizeOnceAsync().get();
-
-    // Checks result.
-    switch (result->Reason)
-    {
-        case ResultReason::RecognizedSpeech:
-            cout << "RECOGNIZED: Text=" << result->Text << std::endl;
-            break;
-        case ResultReason::NoMatch:
-            cout << "NOMATCH: Speech could not be recognized." << std::endl;
-            break;
-        case ResultReason::Canceled:
-            auto cancellation = CancellationDetails::FromResult(result);
-            cout << "CANCELED: Reason=" << (int)cancellation->Reason << std::endl;
-
-            if (cancellation->Reason == CancellationReason::Error)
-            {
-                cout << "CANCELED: ErrorCode=" << (int)cancellation->ErrorCode << std::endl;
-                cout << "CANCELED: ErrorDetails=" << cancellation->ErrorDetails << std::endl;
-                cout << "CANCELED: Did you update the subscription info?" << std::endl;
-            }
-            break;
-    }
-   ```
+   [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-file/helloworld/helloworld.cpp#code)]
 
 1. V tomto novém souboru nahraďte řetězec `YourSubscriptionKey` klíčem předplatného služby Speech.
 
@@ -105,7 +65,7 @@ Než začnete, nezapomeňte:
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/arm64" -l:libasound.so.2
   ```
 
-## <a name="run-the-app"></a>Spusťte aplikaci
+## <a name="run-the-app"></a>Spuštění aplikace
 
 1. Nakonfigurujte cestu ke knihovně zavaděče, aby odkazovala na knihovnu sady Speech SDK.
 

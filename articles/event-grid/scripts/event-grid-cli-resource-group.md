@@ -1,22 +1,22 @@
 ---
 title: Ukázkový skript Azure CLI – Přihlášení k odběru skupiny prostředků | Microsoft Docs
-description: Ukázkový skript Azure CLI – Přihlášení k odběru skupiny prostředků
+description: Tento článek obsahuje ukázkový skript Azure CLI, který ukazuje, jak se přihlásit k odběru Azure Event Gridch událostí pro skupinu prostředků.
 services: event-grid
 documentationcenter: na
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/02/2018
-ms.author: tomfitz
-ms.openlocfilehash: 7bc07ec294e341c7f96c60fd2c9916b0c6b9f215
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.date: 01/23/2020
+ms.author: spelluru
+ms.openlocfilehash: ff5f317bafd5c59ea4bba8bb6a23b60881cd218f
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62118955"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720789"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-with-azure-cli"></a>Přihlášení k odběru událostí skupiny prostředků pomocí Azure CLI
 
@@ -45,7 +45,7 @@ Tento skript k vytvoření odběru událostí používá následující příkaz
 | [az eventgrid event-subscription create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create) | Vytvoří odběr Event Gridu. |
 | [az eventgrid event-subscription create](/cli/azure/ext/eventgrid/eventgrid/event-subscription#ext-eventgrid-az-eventgrid-event-subscription-create) – verze rozšíření | Vytvoří odběr Event Gridu. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Informace o dotazování předplatných najdete v tématu [Dotazování odběrů Event Gridu](../query-event-subscriptions.md).
 * Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).

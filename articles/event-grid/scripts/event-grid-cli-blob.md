@@ -1,22 +1,22 @@
 ---
 title: Ukázkový skript Azure CLI – Přihlášení k odběru účtu úložiště objektů blob | Microsoft Docs
-description: Ukázkový skript Azure CLI – Přihlášení k odběru účtu úložiště objektů blob
+description: Tento článek obsahuje ukázkový skript Azure CLI, který ukazuje, jak se přihlásit k odběru událostí pro účet Azure Blob Storage.
 services: event-grid
 documentationcenter: na
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/02/2018
-ms.author: tomfitz
-ms.openlocfilehash: f352542f72226358cd700359eb5aac16e1aa8ad5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 01/23/2020
+ms.author: spelluru
+ms.openlocfilehash: b6cb60273b0fc3ac101eb03c55a3392bd9b942a4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60461599"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720856"
 ---
 # <a name="subscribe-to-events-for-a-blob-storage-account-with-azure-cli"></a>Přihlášení k odběru událostí účtu úložiště objektů blob pomocí Azure CLI
 
@@ -39,7 +39,7 @@ Tento skript k vytvoření odběru událostí používá následující příkaz
 | [az eventgrid event-subscription create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create) | Vytvoří odběr Event Gridu. |
 | [az eventgrid event-subscription create](/cli/azure/ext/eventgrid/eventgrid/event-subscription#ext-eventgrid-az-eventgrid-event-subscription-create) – verze rozšíření | Vytvoří odběr Event Gridu. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Informace o dotazování předplatných najdete v tématu [Dotazování odběrů Event Gridu](../query-event-subscriptions.md).
 * Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).

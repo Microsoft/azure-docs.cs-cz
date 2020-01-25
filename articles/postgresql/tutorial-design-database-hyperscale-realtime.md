@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: e38de89902c46c6a77060d0d1e2532ab5bb59bb7
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f4eeb646de8b68c2c8d30586d0c75cece5317e40
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978096"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716330"
 ---
 # <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Kurz: Návrh řídicího panelu analýzy v reálném čase pomocí Azure Database for PostgreSQL – škálovatelné (Citus)
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte, jak používat Azure Database for PostgreSQL-Citus (
 > * Dotazování na hrubá a agregovaná data
 > * Vypršení platnosti dat
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
@@ -196,7 +196,7 @@ Když je naše funkce na místě, spusťte ji a zaveďte data:
 SELECT rollup_http_request();
 ```
 
-A s našimi daty v předem agregované podobě se můžeme dotazovat na souhrnnou tabulku a získat tak stejnou sestavu jako dříve. Spusťte tento dotaz:
+A s našimi daty v předem agregované podobě se můžeme dotazovat na souhrnnou tabulku a získat tak stejnou sestavu jako dříve. Spusťte následující dotaz:
 
 ```sql
 SELECT site_id, ingest_time as minute, request_count,
@@ -222,7 +222,7 @@ V předchozích krocích jste vytvořili prostředky Azure ve skupině serverů.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak zřídit skupinu serverů (Citus). K němu jste se připojili pomocí psql, vytvořili schéma a distribuovaná data. Seznámili jste se s dotazem na data v nezpracovaném formuláři, pravidelně agreguje tato data, dotazování na agregované tabulky a vypršení platnosti starých dat.
+V tomto kurzu jste zjistili, jak zřídit skupinu serverů (Citus). K němu jste se připojili pomocí psql, vytvořili schéma a distribuovaná data. Seznámili jste se s dotazem na data v nezpracovaném formuláři, pravidelně agreguje tato data, dotazování na agregované tabulky a vyprší jejich stará data.
 
 V dalším kroku se dozvíte o konceptech škálování.
 > [!div class="nextstepaction"]

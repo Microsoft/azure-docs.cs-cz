@@ -3,15 +3,15 @@ title: Stažení a poznámky k verzi emulátoru Azure Cosmos
 description: Získejte poznámky k verzi emulátoru Azure Cosmos pro různé verze a informace ke stažení.
 ms.service: cosmos-db
 ms.topic: tutorial
-author: markjbrown
-ms.author: mjbrown
+author: milismsft
+ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: e14ee617aca20fc18226651acfadab6ab2bdd939
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3878f6d01a2adfff2adc6a22aad20a5f83992b8d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445292"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719683"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Emulátor Azure Cosmos – poznámky k verzi a informace ke stažení
 
@@ -25,6 +25,10 @@ Tento článek obsahuje poznámky k verzi emulátoru Azure Cosmos se seznamem ak
 |**Začínáme**|[Místní vývoj pomocí emulátoru Azure Cosmos](local-emulator.md)|
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="290"></a>2.9.0
+
+- Tato verze přidává možnost nastavit konzistenci na konzistentní předponu a zvýšit maximální limity pro uživatele a oprávnění.
 
 ### <a name="272"></a>2.7.2
 
