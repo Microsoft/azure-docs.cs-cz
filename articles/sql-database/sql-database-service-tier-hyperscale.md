@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 9cce221946a16103e706875e179c677190f32af1
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: aeda79ec4cb850ce73db18398c57d90aa4eb2acd
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940809"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759495"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperškálování úrovně služby
 
@@ -66,13 +66,13 @@ Další informace o velikostech výpočtů pro úroveň služby technologie šk�
 
 Úroveň služby Vcore je k dispozici pouze v [modelu](sql-database-service-tiers-vcore.md). Pro zarovnávání s novou architekturou se cenový model mírně liší od Pro obecné účely nebo Pro důležité obchodní informace úrovně služeb:
 
-- **Výpočty:**
+- **Výpočetní**prostředí:
 
   Cena za výpočetní jednotku ve vašem měřítku je na jednu repliku. [Zvýhodněné hybridní využití Azureová](https://azure.microsoft.com/pricing/hybrid-benefit/) cena se použije pro automatické čtení replik škálování. Ve výchozím nastavení vytvoříme primární repliku a jednu repliku jen pro čtení na databázi s více instancemi.  Uživatelé můžou upravit celkový počet replik, včetně primární z 1-5.
 
-- **Úložiště:**
+- **Úložiště**:
 
-  Při konfiguraci databáze v rámci škálování není nutné zadávat maximální velikost dat. Ve vrstvě s hyperškálováním se účtuje úložiště pro databázi podle skutečného využití. Úložiště se automaticky přiděluje mezi 10 GB a 100 TB, v přírůstcích, které se dynamicky upravují mezi 10 GB a 40 GB.  
+  Při konfiguraci databáze v rámci škálování není nutné zadávat maximální velikost dat. Na úrovni Hyperškálování se účtuje úložiště pro databázi podle skutečného přidělení. Úložiště se automaticky přiděluje mezi 40 GB a 100 TB, v přírůstcích, které se dynamicky upravují mezi 10 GB a 40 GB. Databáze s škálovatelným škálováním je vytvořená s počáteční velikostí 10 GB a začne růst o 10 GB každých 10 minut, dokud nedosáhne velikosti 40 GB.
 
 Další informace o cenách na úrovni služby najdete v tématu [Azure SQL Database ceny](https://azure.microsoft.com/pricing/details/sql-database/single/) .
 
@@ -174,7 +174,7 @@ Azure SQL Database úroveň škálování je aktuálně dostupná v následujíc
 - Čína – východ 2
 - Čína – sever 2
 - Východní Asie
-- Východní USA
+- Východ USA
 - Východní USA 2
 - Francie – střed
 - Japonsko – východ

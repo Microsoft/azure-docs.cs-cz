@@ -1,0 +1,215 @@
+---
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s VDRem Firmex | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Firmex VDR.
+services: active-directory
+documentationCenter: na
+author: jeevansd
+manager: mtillman
+ms.reviewer: barbkess
+ms.assetid: 670ff192-c23e-49e4-8fd1-516e02d8856c
+ms.service: active-directory
+ms.subservice: saas-app-tutorial
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.topic: tutorial
+ms.date: 01/21/2020
+ms.author: jeedes
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bdfb857d3a68081fda84aef33e6b5a4b4d1bce28
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761235"
+---
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-firmex-vdr"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s VDRem Firmex
+
+V tomto kurzu se dozvíte, jak integrovat Firmex VDR s Azure Active Directory (Azure AD). Když integrujete Firmex VDR s Azure AD, můžete:
+
+* Řízení ve službě Azure AD, která má přístup k Firmex VDR.
+* Umožněte uživatelům, aby se automaticky přihlásili k Firmex VDR s účty Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
+
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+
+## <a name="prerequisites"></a>Požadavky
+
+Chcete-li začít, potřebujete následující položky:
+
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Předplatné Firmex VDR s povoleným jednotným přihlašováním (SSO).
+
+## <a name="scenario-description"></a>Popis scénáře
+
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
+
+* Firmex VDR podporuje **SP a IDP** iniciované jednotné přihlašování.
+
+* Po nakonfigurování Firmex můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+## <a name="adding-firmex-vdr-from-the-gallery"></a>Přidání Firmex VDR z Galerie
+
+Pokud chcete nakonfigurovat integraci Firmex VDR do služby Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat Firmex VDR z galerie.
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Firmex VDR** .
+1. Z panelu výsledků vyberte **FIRMEX VDR** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
+
+
+## <a name="configure-and-test-azure-ad-single-sign-on-for-firmex-vdr"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Firmex VDR
+
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Firmex VDR s použitím testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Firmex VDR.
+
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s Firmex VDR, dokončete následující stavební bloky:
+
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    * **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Nakonfigurujte FIRMEX VDR SSO](#configure-firmex-vdr-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    * **[Vytvořit FIRMEX VDR Test User](#create-firmex-vdr-test-user)** -to znamená, že má protějšek B. Simon v Firmex VDR, která je propojená s reprezentací uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
+
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
+
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **VDR Firmex** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
+
+1. V **základní části Konfigurace SAML** nemusí uživatel provádět žádný krok, protože aplikace už je předem integrovaná s Azure.
+
+1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
+
+    Do textového pole **přihlašovací adresa URL** zadejte adresu url: `https://login.firmex.com`
+
+1. Klikněte na možnost **Uložit**.
+
+1. Aplikace Firmex VDR očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
+
+    ![image](common/default-attributes.png)
+
+1. Kromě toho aplikace Firmex VDR očekává, že se v odpovědi SAML vrátí zpátky několik atributů, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
+
+    | Name (Název) | Zdrojový atribut|
+    | ------------ | --------- |
+    | e-mail | user.mail |
+
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
+
+    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+
+1. V části **set-FIRMEX VDR** zkopírujte příslušné adresy URL na základě vašeho požadavku.
+
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
+
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
+
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. Vyberte **nového uživatele** v horní části obrazovky.
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
+
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+
+V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k Firmex VDR.
+
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte možnost **FIRMEX VDR**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+
+   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
+
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+
+## <a name="configure-firmex-vdr-sso"></a>Konfigurace jednotného přihlašování Firmex VDR
+
+### <a name="before-you-get-started"></a>Než začnete
+
+#### <a name="what-youll-need"></a>Co budete potřebovat
+
+-   Aktivní předplatné Firmex
+-   Azure AD jako služba jednotného přihlašování
+-   Správce IT, který konfiguruje jednotné přihlašování
+-   Po povolení jednotného přihlašování se všichni uživatelé vaší společnosti musí přihlašovat k Firmex pomocí jednotného přihlašování a nepoužívat přihlašovací jméno a heslo.
+
+#### <a name="how-long-will-this-take"></a>Jak dlouho to bude trvat?
+
+Implementace jednotného přihlašování trvá několik minut. Firmex podporuje jednotné přihlašování pro vaše weby a uživatele vaší společnosti, kteří ověřují pomocí jednotného přihlašování, neexistují prakticky žádné výpadky. Stačí postupovat podle následujících kroků.
+
+### <a name="step-1---identify-your-companys-domains"></a>Krok 1 – Identifikace domén vaší společnosti
+
+Identifikujte domény, ke kterým se přihlašuje uživatelé vaší společnosti.
+
+Například:
+
+- @firmex.com
+- @firmex.ca
+
+### <a name="step-2---contact-firmex-support-with-your-domains"></a>Krok 2 – kontaktujte podporu Firmex s vašimi doménami
+
+Poslat e-mail [týmu podpory Firmex](mailto:support@firmex.com) nebo zavolejte 1888 688 4042 x. 11, abyste mohli mluvit na Firmex podporu. Předejte informace o doméně. Podpora Firmex přidá domény do vaší VDR jako **deklarované domény**. Správce teď musí nakonfigurovat jednotné přihlašování.
+
+Upozornění: dokud správce lokality nekonfiguruje deklarované domény, nebudou se uživatelé vaší společnosti moci přihlásit k VDR. Uživatelé mimo společnost (tedy uživatelé typu Host) se stále můžou přihlásit pomocí e-mailu nebo hesla. Konfigurace by měla trvat několik minut.
+
+### <a name="step-3---configure-the-claimed-domains"></a>Krok 3 – konfigurace deklarovaných domén
+
+1. Přihlaste se k Firmex jako správce lokality.
+1. V levém horním rohu klikněte na logo vaší společnosti.
+1. Vyberte kartu **jednotného přihlašování** . Pak vyberte **Konfigurace jednotného přihlašování**. Klikněte na doménu, kterou chcete nakonfigurovat.
+
+    ![Deklarované domény](./media/firmex-vdr-tutorial/edit-sso.png)  
+
+1. Požádejte správce IT, aby vyplnil následující pole. Pole by se měla považovat od vašeho zprostředkovatele identity:  
+
+    ![Konfigurace jednotného přihlašování](./media/firmex-vdr-tutorial/SSO-config.png)
+
+    a. Do textového pole **ID entity** vložte hodnotu **identifikátoru Azure AD** , kterou jste zkopírovali z Azure Portal.
+
+    b. Do textového pole **Adresa URL poskytovatele identity** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
+
+    c. **Certifikát veřejného klíče** – pro účely ověřování může být zpráva SAML digitálně podepsaná vystavitelem. Chcete-li ověřit podpis zprávy, příjemce zprávy používá veřejný klíč známý jako patřící k vystaviteli. Podobně pro šifrování zprávy musí být pro vystavitele znám veřejný šifrovací klíč patřící k konečnému přijímači. V obou situacích – podepisování a šifrování – důvěryhodné veřejné klíče musí být sdíleny předem.  Toto je **certifikátu x509** z **FEDERAČNÍch metadat XML** .
+
+    d. Kliknutím na **Uložit** dokončete konfiguraci jednotného přihlašování. Změny se projeví okamžitě.
+
+1. V tuto chvíli je pro váš web povolený jednotné přihlašování (SSO).
+
+### <a name="create-firmex-vdr-test-user"></a>Vytvořit testovacího uživatele Firmex VDR
+
+V této části vytvoříte uživatele s názvem B. Simon v Firmex. Pokud chcete přidat uživatele na platformě Firmex, pracujte s [týmem podpory Firmex](mailto:support@firmex.com) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+
+## <a name="test-sso"></a>Test SSO
+
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+
+Když na přístupovém panelu kliknete na dlaždici Firmex VDR, měli byste být automaticky přihlášeni k Firmex VDR, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="additional-resources"></a>Další zdroje informací:
+
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Vyzkoušejte si Firmex VDR s Azure AD](https://aad.portal.azure.com/)
+
+- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Jak chránit Firmex pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: cb09b4808bd6d59d2f70e85d204ab8451d501cee
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e508eff3b322b49a6dc50d818c8bcccc3e924ff2
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692606"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759648"
 ---
 # <a name="restore-a-deleted-azure-sql-data-warehouse"></a>Obnovení odstraněné Azure SQL Data Warehouse
 
@@ -26,22 +26,22 @@ V tomto článku se naučíte, jak obnovit odstraněné SQL Data Warehouse pomoc
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-**Ověřte svoji kapacitu DTU.** Každý SQL Data Warehouse hostuje SQL Server (například myserver.database.windows.net), který má výchozí kvótu DTU.  Ověřte, zda má systém SQL Server dostatek zbývajících kvót DTU pro obnovenou databázi. Informace o tom, jak vypočítat potřebné DTU nebo požádat o více DTU, najdete v tématu [vyžádání změny kvóty DTU][Request a DTU quota change].
+**Ověřte svoji kapacitu DTU.** Každý SQL Data Warehouse hostuje SQL Server (například myserver.database.windows.net), který má výchozí kvótu DTU.  Ověřte, zda má systém SQL Server dostatek zbývajících kvót DTU pro obnovenou databázi. Informace o tom, jak vypočítat potřebné DTU nebo požádat o více DTU, najdete v tématu [vyžádání změny kvóty DTU](sql-data-warehouse-get-started-create-support-ticket.md).
 
 ## <a name="restore-a-deleted-data-warehouse-through-powershell"></a>Obnovení odstraněného datového skladu prostřednictvím PowerShellu
 
-K obnovení odstraněných SQL Data Warehouse použijte rutinu [Restore-AzSqlDatabase][Restore-AzSqlDatabase] . Pokud byl odstraněn i odpovídající logický Server, nemůžete tento datový sklad obnovit.
+K obnovení odstraněných SQL Data Warehouse použijte rutinu [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) . Pokud byl odstraněn i odpovídající logický Server, nemůžete tento datový sklad obnovit.
 
-1. Než začnete, nezapomeňte [nainstalovat Azure PowerShell][Install Azure PowerShell].
+1. Než začnete, nezapomeňte [nainstalovat Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
 2. Otevřete PowerShell.
 3. Připojte se k účtu Azure a seznamte se se všemi předplatnými přidruženými k vašemu účtu.
 4. Vyberte předplatné, které obsahuje odstraněný datový sklad, který se má obnovit.
 5. Získat konkrétní odstraněný datový sklad.
 6. Obnovit odstraněný datový sklad
     1. Chcete-li obnovit odstraněné SQL Data Warehouse na jiný logický Server, nezapomeňte zadat jiný název logického serveru.  Tento logický Server může být taky v jiné skupině prostředků a oblasti.
-    1. K obnovení do jiného předplatného použijte tlačítko [přesunout][Move] k přesunutí logického serveru do jiného předplatného.
+    1. K obnovení do jiného předplatného použijte tlačítko [přesunout](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources#use-the-portal) k přesunutí logického serveru do jiného předplatného.
 1. Ověřte, že je obnovený datový sklad online.
-1. Po dokončení obnovení můžete po obnovení nakonfigurovat obnovený datový sklad pomocí [Konfigurace databáze][Configure your database after recovery].
+1. Po dokončení obnovení můžete po obnovení nakonfigurovat obnovený datový sklad pomocí [Konfigurace databáze](../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery).
 
 ```Powershell
 $SubscriptionName="<YourSubscriptionName>"
@@ -71,7 +71,7 @@ $RestoredDatabase.status
 
 ## <a name="restore-a-deleted-database-using-the-azure-portal"></a>Obnovení odstraněné databáze pomocí Azure Portal
 
-1. Přihlaste se k webu [Azure Portal][Azure portal].
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com/).
 2. Přejděte na SQL Server, na kterém jste odstraněné datový sklad hostoval.
 3. V obsahu vyberte ikonu **odstraněné databáze** .
 
@@ -86,29 +86,5 @@ $RestoredDatabase.status
     ![Zadat název databáze](./media/sql-data-warehouse-restore-deleted-dw/restoring-deleted-21.png)
 
 ## <a name="next-steps"></a>Další kroky
-- [Obnovit existující datový sklad][Restore an existing data warehouse]
-- [Obnovení z geograficky záložního datového skladu][Restore from a geo-backup data warehouse]
-
-<!--Image references-->
-
-<!--Article references-->
-[Azure SQL Database business continuity overview]: ../sql-database/sql-database-business-continuity.md
-[Request a DTU quota change]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[Configure your database after recovery]: ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery
-[Install Azure PowerShell]: https://docs.microsoft.com/powershell/azure/overview
-[Overview]: ./sql-data-warehouse-restore-database-overview.md
-[Portal]: ./sql-data-warehouse-restore-database-portal.md
-[PowerShell]: ./sql-data-warehouse-restore-database-powershell.md
-[REST]: ./sql-data-warehouse-restore-database-rest-api.md
-[Configure your database after recovery]: ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery
-[support ticket]: https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket
-[Move]:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources#use-the-portal
-[Restore an existing data warehouse]:./sql-data-warehouse-restore-active-paused-dw.md
-[Restore a deleted data warehouse]:./sql-data-warehouse-restore-deleted-dw.md
-[Restore from a geo-backup data warehouse]:./sql-data-warehouse-restore-from-geo-backup.md
-
-<!--MSDN references-->
-[Restore-AzSqlDatabase]: https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase
-
-<!--Other Web references-->
-[Azure Portal]: https://portal.azure.com/
+- [Obnovit existující datový sklad](sql-data-warehouse-restore-active-paused-dw.md)
+- [Obnovení z geograficky záložního datového skladu](sql-data-warehouse-restore-from-geo-backup.md)

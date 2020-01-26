@@ -14,28 +14,28 @@ ms.workload: identity
 ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: a77bb59afa753fa9d1655e787d4f7a18715ed2ca
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: ea18538662dc63876a50f52e9e6a8b3fffb3b35a
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701582"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758866"
 ---
-# <a name="remove-accounts-from-the-cache-on-global-sign-out"></a>Odebrání účtů z mezipaměti při globálním odhlašování
+# <a name="a-web-app-that-calls-web-apis-remove-accounts-from-the-token-cache-on-global-sign-out"></a>Webová aplikace, která volá webová rozhraní API: Odebrání účtů z mezipaměti tokenů při globálním odhlašování
 
-Už víte, jak přidat přihlášení do vaší webové aplikace. Naučíte se, že ve [webové aplikaci, která přihlašuje uživatele, přidáte přihlášení](scenario-web-app-sign-user-sign-in.md).
+Zjistili jste, jak přidat přihlášení do webové aplikace ve [webové aplikaci, která se přihlásí uživatelům: přihlášení a](scenario-web-app-sign-user-sign-in.md)odhlášení.
 
-To se liší v tom, že když se uživatel odhlásí z této aplikace nebo z jakékoli aplikace, kterou chcete odebrat z mezipaměti tokenů, tokeny přidružené k uživateli.
+Odhlášení se liší u webové aplikace, která volá webová rozhraní API. Když se uživatel odhlásí z vaší aplikace nebo z jakékoli aplikace, musíte tokeny přidružené k tomuto uživateli odebrat z mezipaměti tokenů.
 
-## <a name="intercepting-the-callback-after-sign-out---single-sign-out"></a>Zachycení zpětného volání po odhlášení – jednotné odhlášení
+## <a name="intercept-the-callback-after-single-sign-out"></a>Zachytit zpětné volání po jednotném odhlašování
 
-Vaše aplikace může zachytit událost po `logout`, například, aby vymazala záznam mezipaměti tokenů přidružený k účtu, který se odhlásil. Webová aplikace bude ukládat tokeny přístupu pro uživatele v mezipaměti. Zachycení po `logout` zpětného volání umožňuje webové aplikaci odebrat uživatele z mezipaměti tokenů.
+Pokud chcete vymazat položku mezipaměti tokenů přidruženou k účtu, který se odhlásil, může vaše aplikace zachytit po `logout` události. Webové aplikace ukládají přístupové tokeny pro každého uživatele v mezipaměti tokenů. Po zachytávání po zpětném volání `logout` může webová aplikace odebrat uživatele z mezipaměti.
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Tento mechanismus je znázorněn v metodě `AddMsal()` [WebAppServiceCollectionExtensions. cs # L151-L157](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L157)
+Pro ASP.NET Core je mechanismus zachytávání znázorněn v metodě `AddMsal()` [WebAppServiceCollectionExtensions. cs # L151-L157](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L157).
 
-**Adresa URL pro odhlášení** , kterou jste zaregistrovali pro vaši aplikaci, vám umožní implementovat jednotné odhlašování. Microsoft Identity Platform `logout` Endpoint zavolá **adresu URL pro odhlášení** registrovanou ve vaší aplikaci. K tomuto volání dochází, pokud se odhlášení iniciovalo z vaší webové aplikace nebo z jiné webové aplikace nebo prohlížeče. Další informace najdete v tématu [jednotné odhlašování](v2-protocols-oidc.md#single-sign-out).
+Adresa URL pro odhlášení, kterou jste předtím zaregistrovali pro vaši aplikaci, vám umožní implementovat jednotné odhlašování. Microsoft Identity Platform `logout` Endpoint volá vaši adresu URL pro odhlášení. K tomuto volání dochází, pokud se odhlášení začalo z vaší webové aplikace nebo z jiné webové aplikace nebo prohlížeče. Další informace najdete v tématu [jednotné odhlašování](v2-protocols-oidc.md#single-sign-out).
 
 ```csharp
 public static class WebAppServiceCollectionExtensions
@@ -48,10 +48,10 @@ public static class WebAppServiceCollectionExtensions
   {
    // Code omitted here
 
-   // Handling the sign-out: removing the account from MSAL.NET cache
+   // Handling the sign-out: Remove the account from MSAL.NET cache.
    options.Events.OnRedirectToIdentityProviderForSignOut = async context =>
    {
-    // Remove the account from MSAL.NET token cache
+    // Remove the account from MSAL.NET token cache.
     var tokenAcquisition = context.HttpContext.RequestServices.GetRequiredService<ITokenAcquisition>();
     await tokenAcquisition.RemoveAccountAsync(context).ConfigureAwait(false);
    };
@@ -61,7 +61,7 @@ public static class WebAppServiceCollectionExtensions
 }
 ```
 
-Kód pro RemoveAccountAsync je k dispozici v [Microsoft. identity. Web/TokenAcquisition. cs # L264-L288](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/TokenAcquisition.cs#L264-L288).
+Kód pro `RemoveAccountAsync` je k dispozici v [Microsoft. identity. Web/TokenAcquisition. cs # L264-L288](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/TokenAcquisition.cs#L264-L288).
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 

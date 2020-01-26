@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: wolfma
-ms.openlocfilehash: 7bd4541d135020e297bef26f234ae35d953abfce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ea879cbfc3b9b1d1a627add52f26a473aca53cdf
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446821"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759871"
 ---
 # <a name="about-the-speech-sdk"></a>Informace o sadě Speech SDK
 
@@ -32,6 +32,9 @@ Obecný přehled možností a podporovaných platforem najdete na [stránce](htt
 ## <a name="get-the-sdk"></a>Získání sady SDK
 
 ### <a name="windows"></a>Windows
+
+> [!WARNING]
+> Sada Speech SDK podporuje Windows 10 nebo novější verze. Starší verze systému Windows nejsou **podporovány**.
 
 Pro Windows Podporujeme následující jazyky:
 

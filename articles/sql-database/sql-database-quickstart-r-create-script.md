@@ -13,32 +13,37 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: a47e7a81ba486056841bdc0fe65cfd10f1b2c412
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 4db4bf7c9d35d9715f24ac0480abfaad7eb7c9e6
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123194"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760075"
 ---
-# <a name="create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>Vytvoření a spuštění jednoduchých skriptů R v Azure SQL Database Machine Learning Services (Preview)
+# <a name="quickstart-create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>Rychlý Start: vytvoření a spuštění jednoduchých skriptů R v Azure SQL Database Machine Learning Services (Preview)
 
-V tomto rychlém startu vytvoříte a spustíte sadu jednoduchých skriptů R pomocí veřejné verze Preview [Machine Learning Services (s R) v Azure SQL Database](sql-database-machine-learning-services-overview.md). Naučíte se, jak zabalit dobře vytvořený skript R do uložené procedury [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) a spustit skript v databázi SQL.
+V tomto rychlém startu vytvoříte a spustíte sadu skriptů R pomocí Machine Learning Services (s R) v Azure SQL Database.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/) před tím, než začnete.
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- Chcete-li spustit vzorový kód v těchto cvičeních, musíte nejprve mít službu Azure SQL Database s povoleným Machine Learning Services (s R). V rámci verze Public Preview vám Microsoft zaregistruje a povolí Machine Learning pro vaši stávající nebo novou databázi. Postupujte podle kroků v [části registrace ve verzi Preview](sql-database-machine-learning-services-overview.md#signup).
+- [Azure SQL Database](sql-database-single-database-get-started.md) s [pravidlem brány firewall na úrovni serveru](sql-database-server-level-firewall-rule.md)
 
-- Ujistěte se, že jste nainstalovali nejnovější [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS). Můžete spouštět skripty R pomocí jiných nástrojů pro správu databáze nebo dotazů, ale v tomto rychlém startu použijete SSMS.
+- [Machine Learning Services](sql-database-machine-learning-services-overview.md) s povoleným R. [Zaregistrujte se do verze Preview](sql-database-machine-learning-services-overview.md#signup).
 
-- Tento rychlý Start vyžaduje, abyste nakonfigurovali pravidlo brány firewall na úrovni serveru. Informace o tom, jak to provést, najdete v tématu [Vytvoření pravidla brány firewall na úrovni serveru](sql-database-server-level-firewall-rule.md).
+- [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
+
+> [!NOTE]
+> V rámci verze Public Preview vám Microsoft zaregistruje a povolí Machine Learning pro vaši stávající nebo novou databázi.
+
+V tomto příkladu se používá uložená procedura [sp_execute_external_script](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) k zabalení dobře formátovaného skriptu jazyka R.
 
 ## <a name="run-a-simple-script"></a>Spuštění jednoduchého skriptu
 
-Pokud chcete spustit skript jazyka R, předáte ho jako argument do systémové uložené procedury [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql).
+Pokud chcete spustit skript jazyka R, předáte ho jako argument do systémové uložené procedury, [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql).
 
 V následujících krocích spustíte v SQL Database tento příklad skriptu jazyka R:
 
@@ -52,11 +57,11 @@ print(c(c, d))
 
 1. Otevřete aplikaci **SQL Server Management Studio** a připojte se ke své databázi SQL.
 
-   Pokud potřebujete pomáhat s připojením, přečtěte si [rychlý Start: Pomocí SQL Server Management Studio se můžete připojit k databázi](sql-database-connect-query-ssms.md)SQL Azure a dotazovat se na ně.
+   Pokud potřebujete pomáhat s připojením, přečtěte si téma [rychlý Start: použití SQL Server Management Studio k připojení a dotazování databáze SQL Azure](sql-database-connect-query-ssms.md).
 
 1. Předejte kompletní skript R do uložené procedury [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) .
 
-   Skript se předává přes `@script` argument. Vše uvnitř `@script` argumentu musí být platný kód R.
+   Skript se předává pomocí argumentu `@script`. Vše uvnitř argumentu `@script` musí být platný kód R.
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -73,9 +78,9 @@ print(c(c, d))
 
    > [!NOTE]
    > Pokud jste správce, můžete externí kód spustit automaticky. Oprávnění ostatním uživatelům můžete udělit pomocí příkazu:
-   <br>**udělit všem externím skriptům spuštění** *uživatelskéjméno\>. \<*
+   <br>Udělte *\<uživatelského jména\>* **spuštěním libovolného externího skriptu** .
 
-2. Je vypočítán správný výsledek a funkce R `print` vrátí výsledek do okna **zprávy** .
+2. Je vypočítán správný výsledek a funkce `print` R vrátí výsledek do okna **zprávy** .
 
    mělo by to vypadat nějak takto.
 
@@ -111,11 +116,11 @@ Příkaz vypíše následující text:
 
 | Hello World |
 |-------------|
-| 1 |
+| 1\. místo |
 
 ## <a name="use-inputs-and-outputs"></a>Použití vstupů a výstupů
 
-Ve výchozím nastavení [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) přijímá jedinou datovou sadu jako vstup, což obvykle poskytuje formu platného dotazu SQL. Pak vrátí jeden datový rámec R jako výstup.
+Ve výchozím nastavení [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) přijímá jako vstup jedinou datovou sadu, která obvykle zadáváte ve formě platného dotazu SQL. Pak vrátí jeden datový rámec R jako výstup.
 
 Prozatím použijeme výchozí vstupní a výstupní proměnné [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql): **InputDataSet** a **OutputDataSet**.
 
@@ -135,7 +140,7 @@ Prozatím použijeme výchozí vstupní a výstupní proměnné [sp_execute_exte
     GO
     ```
 
-1. `SELECT` Použijte příkaz pro dotazování tabulky.
+1. K dotazování tabulky použijte příkaz `SELECT`.
   
     ```sql
     SELECT *
@@ -146,7 +151,7 @@ Prozatím použijeme výchozí vstupní a výstupní proměnné [sp_execute_exte
 
     ![Obsah tabulky RTestData](./media/sql-database-quickstart-r-create-script/select-rtestdata.png)
 
-1. Spusťte následující skript jazyka R. Načte data z tabulky pomocí `SELECT` příkazu, předává je pomocí modulu runtime R a vrátí data jako datový rámec. Klauzule definuje schéma tabulky vrácených dat pro SQL Database přidáním názvu sloupce *NewColName.* `WITH RESULT SETS`
+1. Spusťte následující skript jazyka R. Načítá data z tabulky pomocí příkazu `SELECT`, projde je pomocí modulu runtime R a vrátí data jako datový rámec. Klauzule `WITH RESULT SETS` definuje schéma tabulky vrácených dat pro SQL Database přidáním názvu sloupce *NewColName*.
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -170,12 +175,12 @@ Prozatím použijeme výchozí vstupní a výstupní proměnné [sp_execute_exte
     WITH RESULT SETS(([NewColName] INT NOT NULL));
     ```
 
-    Všimněte si, že R rozlišuje velká a malá písmena. Vstupní a výstupní proměnné, které se používají ve skriptu jazyka R (**SQL_out**, **SQL_in**), musí odpovídat hodnotám `@input_data_1_name` definovaným s a `@output_data_1_name`, včetně případu.
+    Všimněte si, že R rozlišuje velká a malá písmena. Vstupní a výstupní proměnné použité ve skriptu R (**SQL_out**, **SQL_in**) musí odpovídat hodnotám definovaným s `@input_data_1_name` a `@output_data_1_name`, včetně Case.
 
    > [!TIP]
    > Jako parametr je možné předat pouze jednu vstupní datovou sadu. Zároveň je možné vrátit pouze jednu datovou sadu. V kódu R však můžete volat i jiné datové sady a kromě datové sady vracet také výstupy jiných typů. K jakémukoli parametrů také můžete přidat klíčové slovo OUTPUT, aby se vrátil s výsledky.
 
-1. Můžete také generovat hodnoty jenom pomocí skriptu R bez vstupních dat (`@input_data_1` je nastavené na prázdné).
+1. Můžete taky generovat hodnoty jenom pomocí skriptu R bez vstupních dat (`@input_data_1` je nastavené na prázdné).
 
    Následující skript vypíše text "Hello" a "World".
 
@@ -245,7 +250,7 @@ WITH result sets((
             ));
 ```
 
-Výstup je z `installed.packages()` R a vrátí se jako sada výsledků.
+Výstup je z `installed.packages()` v R a je vrácen jako sada výsledků.
 
 **Results**
 

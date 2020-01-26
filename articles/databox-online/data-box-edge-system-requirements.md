@@ -1,6 +1,6 @@
 ---
-title: Požadavky na systém Microsoft Azure Data Box Edge | Dokumentace Microsoftu
-description: Další informace o softwaru a síťové požadavky pro Azure Data Box hranici
+title: Microsoft Azure Data Box Edge požadavky na systém | Microsoft Docs
+description: Seznamte se s požadavky na software a sítě pro vaše Azure Data Box Edge
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,31 +8,31 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 90c60d586d505ca0c9bd787c37e137f7a38ee1f7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 458c062eef011363724cb894ce67ba75181ba8ba
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60756541"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76757862"
 ---
-# <a name="azure-data-box-edge-system-requirements"></a>Požadavky na systém Azure Data Box Edge
+# <a name="azure-data-box-edge-system-requirements"></a>Azure Data Box Edge požadavky na systém
 
-Tento článek popisuje důležité systémové požadavky pro vaše řešení Microsoft Azure Data Box Edge a klienti připojení k Azure Data Box Edge. Doporučujeme, abyste si informace o pečlivě před nasazením hranici pole Data. Můžete se vrátit zpět k těmto informacím podle potřeby během nasazení a následná operace.
+Tento článek popisuje důležité systémové požadavky pro vaše Microsoft Azure Data Box Edge řešení a klienty, kteří se připojují k Azure Data Box Edge. Před nasazením Data Box Edge doporučujeme pečlivě zkontrolovat informace. V případě potřeby můžete v průběhu nasazení a následné operace přejít zpět na tyto informace.
 
-Požadavky na systém pro okraji pole Data patří:
+Požadavky na systém pro Data Box Edge zahrnují:
 
-- **Požadavky na software pro hostitele** -popisuje podporované platformy, prohlížeče pro místní konfiguraci, uživatelského rozhraní, klienti SMB a veškeré další požadavky pro klienty, kteří přístup k zařízení.
-- **Požadavky na síť pro zařízení** – poskytuje informace o žádné požadavky na síť pro operaci fyzickém zařízení.
+- **Požadavky na software pro hostitele** – popisuje podporované platformy, prohlížeče pro místní uživatelské rozhraní konfigurace, klienty SMB a všechny další požadavky na klienty, kteří přistupují k zařízení.
+- **Požadavky na síť pro zařízení** – poskytuje informace o požadavcích na síť pro provoz fyzického zařízení.
 
 ## <a name="supported-os-for-clients-connected-to-device"></a>Podporovaný operační systém pro klienty připojené k zařízení
 
 [!INCLUDE [Supported OS for clients connected to device](../../includes/data-box-edge-gateway-supported-client-os.md)]
 
-## <a name="supported-protocols-for-clients-accessing-device"></a>Podporované protokoly klientům přístup k zařízení
+## <a name="supported-protocols-for-clients-accessing-device"></a>Podporované protokoly pro klienty, kteří přistupují k zařízení
 
 [!INCLUDE [Supported protocols for clients accessing device](../../includes/data-box-edge-gateway-supported-client-protocols.md)]
 
-## <a name="supported-storage-accounts"></a>Účty úložiště podporuje
+## <a name="supported-storage-accounts"></a>Podporované účty úložiště
 
 [!INCLUDE [Supported storage accounts](../../includes/data-box-edge-gateway-supported-storage-accounts.md)]
 
@@ -40,99 +40,99 @@ Požadavky na systém pro okraji pole Data patří:
 
 [!INCLUDE [Supported storage types](../../includes/data-box-edge-gateway-supported-storage-types.md)]
 
-## <a name="supported-browsers-for-local-web-ui"></a>Podporované prohlížeče pro místního webového uživatelského rozhraní
+## <a name="supported-browsers-for-local-web-ui"></a>Podporované prohlížeče pro místní webové uživatelské rozhraní
 
 [!INCLUDE [Supported browsers for local web UI](../../includes/data-box-edge-gateway-supported-browsers.md)]
 
-## <a name="networking-port-requirements"></a>Požadavky na síťové porty
+## <a name="networking-port-requirements"></a>Požadavky na porty sítě
 
-### <a name="port-requirements-for-data-box-edge"></a>Požadavky na porty pro Data Box Edge
+### <a name="port-requirements-for-data-box-edge"></a>Požadavky na port pro Data Box Edge
 
-Následující tabulka uvádí porty, které je potřeba otevřít v bráně firewall povolit pro protokol SMB, cloud nebo přenos pro správu. V této tabulce *v* nebo *příchozí* odkazuje na směru, které mají přístup příchozí požadavky klienta na vaše zařízení. *Navýšení kapacity* nebo *odchozí* odkazuje na směru, ve kterém zařízení Data Box Edge odesílá data externě, nad rámec nasazení, například odchozí k Internetu.
+Následující tabulka uvádí porty, které je třeba v bráně firewall otevřít, aby umožňovaly provoz SMB, cloudu nebo správy. V této tabulce se *v* nebo *příchozí* odkazuje na směr, ze kterého příchozí klient žádá o přístup k vašemu zařízení. *Výstupní* nebo *odchozí* odkazuje na směr, ve kterém vaše zařízení data box Edge odesílá data externě, mimo nasazení, například odchozí na Internet.
 
 [!INCLUDE [Port configuration for device](../../includes/data-box-edge-gateway-port-config.md)]
 
-### <a name="port-requirements-for-iot-edge"></a>Požadavky na porty pro IoT Edge
+### <a name="port-requirements-for-iot-edge"></a>Požadavky na port pro IoT Edge
 
-Azure IoT Edge umožňuje odchozí komunikaci z místní hraniční zařízení do cloudu Azure pomocí podporovaných protokolů služby IoT Hub. Příchozí komunikace je pouze požadovaná u konkrétních scénářů, kde je Azure IoT Hub potřeba doručit bez vyžádání zprávy na zařízení Azure IoT Edge (například v cloudu pro zasílání zpráv zařízení).
+Azure IoT Edge umožňuje odchozí komunikaci z místního hraničního zařízení do cloudu Azure pomocí podporovaných protokolů IoT Hub. Příchozí komunikace se vyžaduje jenom u konkrétních scénářů, ve kterých musí Azure IoT Hub předávat zprávy do Azure IoT Edge zařízení (třeba zasílání zpráv z cloudu do zařízení).
 
-Použijte následující tabulku pro konfigurace portů pro servery, které hostují modul runtime Azure IoT Edge:
+Použijte následující tabulku pro konfiguraci portů pro servery hostující Azure IoT Edge Runtime:
 
-| Port č. | Snížení nebo navýšení kapacity | Rozsah portů | Požaduje se | Doprovodné materiály |
+| Číslo portu | V nebo ven | Rozsah portů | Požaduje se | Pokyny |
 |----------|-----------|------------|----------|----------|
-| TCP 443 (HTTPS)| navýšení kapacity       | WAN        | Ano      | Odchozí otevřen pro IoT Edge zřizování. Tato konfigurace je nutná, pokud používáte ruční skripty nebo Azure IoT zařízení zřizování služby (DPS).|
+| TCP 443 (HTTPS)| Mimo       | WAN        | Ano      | Odchozí otevření pro IoT Edge zřizování. Tato konfigurace je nutná, pokud používáte ruční skripty nebo Azure IoT zařízení zřizování služby (DPS).|
 
-Podrobnější informace, přejděte na [brány Firewall a pravidla konfigurace portů pro nasazení IoT Edge](https://docs.microsoft.com/azure/iot-edge/troubleshoot).
+Pokud chcete získat úplné informace, přečtěte si [pravidla brány firewall a konfigurace portů pro nasazení IoT Edge](https://docs.microsoft.com/azure/iot-edge/troubleshoot).
 
 ## <a name="url-patterns-for-firewall-rules"></a>Vzory adres URL pro pravidla brány firewall
 
-Správci sítě můžou často konfigurace pravidla brány firewall na Upřesnit na základě vzory adres URL pro filtrování příchozího a odchozího provozu. Vaše zařízení Data Box Edge a služba závisí na jiné aplikace od Microsoftu, jako je Azure Service Bus, Azure Active Directory Access Control, účty úložiště a serverům Microsoft Update. Vzory adres URL, které jsou přidružené k těmto aplikacím je možné nakonfigurovat pravidla brány firewall. Je důležité pochopit, že můžete změnit vzory adres URL, které jsou přidružené k těmto aplikacím. Tyto změny vyžadují správce sítě, monitorovat a aktualizovat pravidla brány firewall na hranici jako pole Data a v případě potřeby.
+Správci sítě mohou často konfigurovat Rozšířená pravidla brány firewall na základě vzorů adres URL pro filtrování příchozího a odchozího provozu. Vaše zařízení Data Box Edge a služba závisí na dalších aplikacích společnosti Microsoft, například Azure Service Bus, Azure Active Directory Access Control, účtech úložiště a Microsoft Updatech serverech. Ke konfiguraci pravidel brány firewall lze použít vzory adres URL přidružené k těmto aplikacím. Je důležité pochopit, že se vzory adres URL přidružené k těmto aplikacím můžou změnit. Tyto změny vyžadují, aby správce sítě sledoval a aktualizoval pravidla brány firewall pro váš Data Box Edge jako a v případě potřeby.
 
-Doporučujeme nastavit pravidla brány firewall pro odchozí provoz, založené na okraji pole Data liberally pevné IP adresy, ve většině případů. Ale můžete použít následující informace pro nastavení pravidla brány firewall na pokročilé, které budete potřebovat pro vytvoření zabezpečeného prostředí.
+Doporučujeme, abyste nastavili pravidla brány firewall pro odchozí přenosy na základě Data Box Edge pevné IP adresy, a to ve většině případů. Pomocí níže uvedených informací ale můžete nastavit Rozšířená pravidla brány firewall, která jsou potřeba k vytváření zabezpečených prostředí.
 
 > [!NOTE]
-> - Zařízení (zdroj) IP adresy musí být vždy nastavená na všechna rozhraní sítě povolenou podporu cloudu.
-> - Cílové IP adresy musí být nastavená na [rozsahy IP adres datacentra Azure](https://www.microsoft.com/download/confirmation.aspx?id=41653).
+> - IP adresy zařízení (zdrojové) by se měly vždycky nastavit na všechna síťová rozhraní s podporou cloudu.
+> - Cílové IP adresy by měly být nastavené na [rozsahy IP adres datacentra Azure](https://www.microsoft.com/download/confirmation.aspx?id=41653).
 
-### <a name="url-patterns-for-gateway-feature"></a>Vzory adres URL pro funkce brány
+### <a name="url-patterns-for-gateway-feature"></a>Vzory adres URL pro funkci brány
 
 [!INCLUDE [URL patterns for firewall](../../includes/data-box-edge-gateway-url-patterns-firewall.md)]
 
-### <a name="url-patterns-for-compute-feature"></a>Vzory adres URL pro výpočetní funkce
+### <a name="url-patterns-for-compute-feature"></a>Vzory adres URL pro funkci COMPUTE
 
-| Vzor adresy URL                      | Komponenta nebo funkce                     |   
+| Vzor adresy URL                      | Součást nebo funkce                     |   
 |----------------------------------|---------------------------------------------|
-| https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Microsoft registru kontejneru (povinné)               |
-| https://\*.azurecr.io                     | Registry kontejnerů osobní a třetí strany (volitelné) | 
-| https://\*.azure-devices.net              | Přístup k službě IoT Hub (povinné)                             | 
+| https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Microsoft Container Registry (povinné)               |
+| https://\*.azurecr.io                     | Registry kontejnerů pro osobní a třetí strany (volitelné) | 
+| https://\*.azure-devices.net              | Přístup k IoT Hub (povinné)                             | 
 
 ### <a name="url-patterns-for-gateway-for-azure-government"></a>Vzory adres URL pro bránu pro Azure Government
 
 [!INCLUDE [Azure Government URL patterns for firewall](../../includes/data-box-edge-gateway-gov-url-patterns-firewall.md)]
 
-### <a name="url-patterns-for-compute-for-azure-government"></a>Vzory adres URL pro službu compute pro Azure Government
+### <a name="url-patterns-for-compute-for-azure-government"></a>Vzory adres URL pro výpočetní prostředky pro Azure Government
 
-| Vzor adresy URL                      | Komponenta nebo funkce                     |  
+| Vzor adresy URL                      | Součást nebo funkce                     |  
 |----------------------------------|---------------------------------------------|
-| https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.com | Microsoft registru kontejneru (povinné)               |
-| https://\*.azure-devices.us              | Přístup k službě IoT Hub (povinné)           |
-| https://\*.azurecr.us                    | Registry kontejnerů osobní a třetí strany (volitelné) | 
+| https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.com | Microsoft Container Registry (povinné)               |
+| https://\*.azure-devices.us              | Přístup k IoT Hub (povinné)           |
+| https://\*. azurecr.us                    | Registry kontejnerů pro osobní a třetí strany (volitelné) | 
 
-## <a name="internet-bandwidth"></a>Šířka pásma sítě Internet
+## <a name="internet-bandwidth"></a>Šířka pásma internetu
 
 [!INCLUDE [Internet bandwidth](../../includes/data-box-edge-gateway-internet-bandwidth.md)]
 
-## <a name="compute-sizing-considerations"></a>Výpočetní rozvahu dimenzování
+## <a name="compute-sizing-considerations"></a>Požadavky na výpočet velikosti
 
-Vaše zkušenosti při vývoji a testování vašeho řešení pomocí zajistit má dostatečnou kapacitu na vašem zařízení Data Box Edge a získali optimální výkon na vašem zařízení.
+Využijte své zkušenosti při vývoji a testování vašeho řešení, abyste měli jistotu, že máte na zařízení Data Box Edge dostatek kapacity a získáte optimální výkon vašeho zařízení.
 
-Mezi faktory, byste měli zvážit, patří:
+Mezi faktory, které byste měli vzít v úvahu, patří:
 
-- **Kontejner specifika** -uvažovat o následující.
+- **Specifické pro kontejner** – Zamyslete se nad následujícími.
 
-    - Kolik kontejnerů jsou vaše úlohy? Můžete mít velké množství prostých kontejnerů a několik z nich náročné.
-    - Co jsou prostředky přidělené tyto kontejnery a jaké jsou prostředky, které jsou využívání?
-    - Kolik vrstvy kontejnery sdílet?
-    - Existují nevyužité kontejnery? Kontejner zastavené stále zabírá místo na disku.
-    - V jakém jazyce se kontejnery zapisují?
-- **Objem dat zpracovaných** – kolik dat bude vaše kontejnery zpracování? Bude tato data využívat místo na disku nebo data se budou zpracovávat v paměti?
-- **Očekávaný výkon** – jaké jsou požadované výkonové charakteristiky vašeho řešení? 
+    - Kolik kontejnerů je ve vašem zatížení? Je možné, že máte spoustu lehkých kontejnerů oproti několika prostředkům náročným na prostředky.
+    - Jaké jsou prostředky přidělené těmto kontejnerům oproti prostředkům, které spotřebovávají?
+    - Kolik vrstev vaše kontejnery sdílí?
+    - Existují nepoužívané kontejnery? Zastavený kontejner stále zabírá místo na disku.
+    - V jakém jazyce jsou kontejnery zapsané?
+- **Velikost zpracovaných dat** – kolik dat budou vaše kontejnery zpracovávat? Budou tato data spotřebovávat místo na disku, jinak budou data zpracována v paměti?
+- **Očekávaný výkon** – Jaké jsou požadované charakteristiky výkonu vašeho řešení? 
 
-Chcete-li pochopit a vylepšit výkon vašeho řešení, můžete použít:
+Pro pochopení a vylepšení výkonu řešení můžete použít:
 
-- Metriky výpočetní prostředky k dispozici na webu Azure Portal. Přejděte na váš prostředek okraj pole Data a potom přejděte ke **monitorování > metriky**. Podívejte se na **Edge využití služby compute – paměť** a **Edge compute – využití CPU** pochopit dostupné prostředky a jak jsou prostředky získávání využívat.
-- Monitorování příkazů dostupných prostřednictvím rozhraní PowerShell zařízení, jako například:
+- Výpočetní metrika je k dispozici v Azure Portal. Přejít na prostředek Data Box Edge a pak přejít na **monitorování > metriky**. Seznamte se s dostupnými prostředky a s tím, jak se prostředky využívaly, najdete v procentech **využití hraničních výpočetních paměťových** a **hraničních procesorů** .
+- Příkazy monitorování dostupné prostřednictvím rozhraní PowerShell zařízení, například:
 
-    - `dkr` Statistika zobrazíte živý stream z kontejnerů statistiky o využití prostředků. Příkaz podporuje CPU, využití paměti, limit paměti a sítě metriky vstupně-výstupních operací.
-    - `dkr system df` Chcete-li získat informace týkající se množství využité místo na disku. 
-    - `dkr image [prune]` Odstraňte nepoužívané Image a uvolněte místo.
-    - `dkr ps --size` Chcete-li zobrazit přibližné velikosti spuštěný kontejner. 
+    - `dkrdbe stats` získat živý datový proud s údaji o využití prostředků kontejnerů. Příkaz podporuje procesor, využití paměti, limit paměti a metriky v/v sítě.
+    - `dkrdbe system df` získat informace týkající se množství využitého místa na disku. 
+    - `dkrdbe image prune` k vyčištění nepoužívaných imagí a uvolnění místa.
+    - `dkrdbe ps --size` zobrazit přibližnou velikost běžícího kontejneru. 
 
-    Další informace o dostupných příkazech najdete v části [monitorování a řešení potíží s výpočetní moduly](data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules).
+    Další informace o dostupných příkazech najdete v tématu [monitorování a odstraňování potíží s výpočetními moduly](data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules).
 
-A konečně Ujistěte se, že na vaší datové sadě ověřit vaše řešení a kvantifikovat výkonu na okraji pole Data před nasazením v produkčním prostředí.
+Nakonec se ujistěte, že vaše řešení ověřujete ve své datové sadě a vyhodnotit výkon na Data Box Edge před nasazením v produkčním prostředí.
 
 
 ## <a name="next-step"></a>Další krok
 
-- [Nasazení Azure Data Box hranici](data-box-edge-deploy-prep.md)
+- [Nasazení Azure Data Box Edge](data-box-edge-deploy-prep.md)

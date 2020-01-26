@@ -1,6 +1,6 @@
 ---
 title: Kvóty a limity škálování v testovacím prostředí v Azure DevTest Labs | Microsoft Docs
-description: Naučte se škálovat testovací prostředí v Azure DevTest Labs
+description: Tento článek popisuje, jak můžete škálovat testovací prostředí v Azure DevTest Labs. Zobrazení kvót a omezení využití a vyžádání zvýšení.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 231a227cbccaa4cbf74f3b13839c0ba42895cf24
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f3299c24bc751263ccd284a4fddb492fba5dd1e0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644847"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761181"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>Kvóty a omezení škálování v DevTest Labs
 Při práci v DevTest Labs si můžete všimnout, že existují určitá výchozí omezení pro některé prostředky Azure, což může ovlivnit službu DevTest Labs. Tato omezení se označují jako **kvóty**.
@@ -26,7 +26,7 @@ Při práci v DevTest Labs si můžete všimnout, že existují určitá výchoz
 > [!NOTE]
 > Služba DevTest Labs neukládá žádné kvóty. Všechny kvóty, se kterými se můžete setkat, jsou výchozími omezeními celkového předplatného Azure.
 
-Každý prostředek Azure můžete použít až do dosažení kvóty. Každé předplatné má samostatné kvóty a využití se sleduje za předplatné.
+Každý prostředek Azure můžete použít až do dosažení kvóty. Každé předplatné má samostatné kvóty a využití je sledováno na základě předplatného.
 
 Například každé předplatné má výchozí kvótu 20 jader. Pokud tedy vytváříte virtuální počítače v testovacím prostředí se čtyřmi jádry, můžete vytvořit pouze pět virtuálních počítačů.
 
@@ -35,7 +35,7 @@ Například každé předplatné má výchozí kvótu 20 jader. Pokud tedy vytv�
 ## <a name="view-your-usage-and-quotas"></a>Zobrazení využití a kvót
 Tyto kroky ukazují, jak zobrazit aktuální kvóty v předplatném pro konkrétní prostředky Azure a zjistit, jaké procento z každé používané kvóty jste použili.
 
-1. Přihlaste se na web [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k [Portálu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Vyberte **Další služby**a potom v seznamu vyberte **fakturace** .
 1. V okně fakturace vyberte předplatné.
 4. Vyberte **využití a kvóty**.

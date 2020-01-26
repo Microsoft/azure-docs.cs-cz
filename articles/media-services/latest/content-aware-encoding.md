@@ -1,5 +1,5 @@
 ---
-title: Experimentální přednastavení pro kódování s podporou obsahu – Azure | Microsoft Docs
+title: Přednastavení pro kódování s podporou obsahu Azure Media Services |
 description: Tento článek popisuje kódování zohledňující obsah v Microsoft Azure Media Services V3.
 services: media-services
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: c2846759a8daa04fc5c1d3b7f69e2c061bacb272
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 34b4386d536a9845c8a48e7e54612548367b52bc
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933486"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759342"
 ---
-# <a name="experimental-preset-for-content-aware-encoding"></a>Experimentální přednastavení pro kódování zohledňující obsah
+# <a name="a-preset-for-content-aware-encoding"></a>Přednastavení pro kódování zohledňující obsah
 
 Aby bylo možné připravit obsah pro doručování [datovým proudem s adaptivní přenosovou rychlostí](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), je nutné zakódovat video s více přenosovými rychlostmi (vysoká až nízká). Aby bylo zajištěno řádné snížení kvality, protože přenosová rychlost je snížena, je rozlišením videa. Výsledkem je, že se označuje jako kódovací žebřík – tabulka s rozlišením a přenosovými rychlostmi; Přečtěte si Media Services [předdefinované předvolby kódování](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset).
 

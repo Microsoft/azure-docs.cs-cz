@@ -3,20 +3,20 @@ title: Jazyková podpora – služba pro rozpoznávání řeči
 titleSuffix: Azure Cognitive Services
 description: Služba rozpoznávání řeči podporuje mnoho jazyků pro převod řeči na text a převod textu na řeč spolu s překladem řeči. Tento článek poskytuje úplný seznam funkcí jazykové podpory podle funkcí služby.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.author: erhopf
+ms.date: 01/23/2020
+ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: b5f227deb3385d64160f5a469d76b9763057b160
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 34d362a4b28ade5116c68e2243a2341bab9fca9d
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381048"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760619"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>Podpora jazyků a oblastí pro službu Speech
 
@@ -24,49 +24,58 @@ Jazyková podpora se liší podle funkcí služby Speech. Následující tabulka
 
 ## <a name="speech-to-text"></a>Převod řeči na text
 
-Sada Microsoft Speech SDK i REST API podporují následující jazyky (národní prostředí). Pro zvýšení přesnosti se přizpůsobení nabídne pro podmnožinu jazyků prostřednictvím nahrávání zvuku a přepisu s popiskem nebo souvisejícího textu: věty.  Přizpůsobení výslovnosti je aktuálně k dispozici pouze pro `en-US` a `de-DE`. Další informace o přizpůsobení [najdete tady](how-to-custom-speech.md).
+Sada Microsoft Speech SDK i REST API podporují následující jazyky (národní prostředí). Pro zvýšení přesnosti se přizpůsobení nabídne pro podmnožinu jazyků prostřednictvím nahrávání zvuku a přepisu s popiskem nebo souvisejícího textu: věty. Přizpůsobení výslovnosti je aktuálně k dispozici pouze pro `en-US` a `de-DE`. Další informace o přizpůsobení [najdete tady](how-to-custom-speech.md).
 
- Národní prostředí | Jazyk | Podporováno | Přizpůsobitelné
+<!--
+To get the AM and ML bits:
+https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20models%3A/GetSupportedLocalesForModels
+
+To get pronunciation bits:
+https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
+-->
+
+ Národní prostředí | Jazyk | Podporováno | Přizpůsobení
 ------|------------|-----------|-------------
-`ar-EG` | Arabština (Egypt), moderní standard | Ano | Ano
-`ar-SA` | Arabština (Saúdská Arábie) | Ano | Ano
-`ar-AE` | Arabština (Spojené arabské emiráty) | Ano | Ano
-`ar-KW` | Arabština (Kuvajt) | Ano | Ano
-`ar-QA` | Arabština (Katar) | Ano | Ano
-`ca-ES` | Katalánština | Ano | Ne
-`da-DK` | Dánština (Dánsko) | Ano | Ne
-`de-DE` | Němčina (Německo) | Ano | Ano
-`en-AU` | angličtina (Austrálie) | Ano | Ano
-`en-CA` | angličtina (Kanada) | Ano | Ano
-`en-GB` | Angličtina (Spojené království) | Ano | Ano
-`en-IN` | English (India) | Ano | Ano
-`en-NZ` | angličtina (Nový Zéland) | Ano | Ano
-`en-US` | Angličtina (Spojené státy) | Ano | Ano
-`es-ES` | Španělština (Španělsko) | Ano | Ano
-`es-MX` | Španělština (Mexiko) | Ano | Ano
-`fi-FI` | Finština (Finsko) | Ano | Ne
-`fr-CA` | Francouzština (Kanada) | Ano | Ano
-`fr-FR` | Francouzština (Francie) | Ano | Ano
-`gu-IN` | Gudžarátština (Indie) | Ano | Ano
-`hi-IN` | hindština (Indie) | Ano | Ano
-`it-IT` | Italština (Itálie) | Ano | Ano
-`ja-JP` | Japonština (Japonsko) | Ano | Ano
-`ko-KR` | Korejština (Jižní Korea) | Ano | Ano
-`mr-IN` | Maráthština (Indie) | Ano | Ano
-`nb-NO` | Norština (Bokmal) (Norsko) | Ano | Ne
-`nl-NL` | Nizozemština (Nizozemsko) | Ano | Ano
-`pl-PL` | Polština (Polsko) | Ano | Ne
-`pt-BR` | Portugalština (Brazílie) | Ano | Ano
-`pt-PT` | Portugalština (Portugalsko) | Ano | Ano
-`ru-RU` | Ruština (Rusko) | Ano | Ano
-`sv-SE` | Švédština (Švédsko) | Ano | Ne
-`ta-IN` | tamilština (Indie) | Ano | Ano
-`te-IN` | telugština (Indie) | Ano | Ano
-`zh-CN` | Čínština (Mandarínština, zjednodušená čínština) | Ano | Ano
-`zh-HK` | Čínština (kantonština, tradiční) | Ano | Ano
-`zh-TW` | Čínština (Tchaj-wanská Mandarínština) | Ano | Ano
+`ar-AE` | Arabština (Spojené arabské emiráty) | Ano | Ne
+`ar-BH` | Arabština (Bahrajn) | Ano | Jazykový model
+`ar-EG` | Arabština (Egypt), moderní standard | Ano | Jazykový model
+`ar-KW` | Arabština (Kuvajt) | Ano | Ne
+`ar-QA` | Arabština (Katar) | Ano | Ne
+`ar-SA` | Arabština (Saúdská Arábie) | Ano | Ne
+`ca-ES` | Katalánština | Ano | Jazykový model
+`da-DK` | Dánština (Dánsko) | Ano | Jazykový model
+`de-DE` | Němčina (Německo) | Ano | Akustický model<br>Jazykový model<br>Výslovnost
+`en-AU` | angličtina (Austrálie) | Ano | Akustický model<br>Jazykový model
+`en-CA` | angličtina (Kanada) | Ano | Akustický model<br>Jazykový model
+`en-GB` | Angličtina (Spojené království) | Ano | Akustický model<br>Jazykový model<br>Výslovnost
+`en-IN` | English (India) | Ano | Akustický model<br>Jazykový model
+`en-NZ` | angličtina (Nový Zéland) | Ano | Akustický model<br>Jazykový model
+`en-US` | Angličtina (Spojené státy) | Ano | Akustický model<br>Jazykový model<br>Výslovnost
+`es-ES` | Španělština (Španělsko) | Ano | Akustický model<br>Jazykový model
+`es-MX` | Španělština (Mexiko) | Ano | Akustický model<br>Jazykový model
+`fi-FI` | Finština (Finsko) | Ano | Jazykový model
+`fr-CA` | Francouzština (Kanada) | Ano | Akustický model<br>Jazykový model
+`fr-FR` | Francouzština (Francie) | Ano | Akustický model<br>Jazykový model<br>Výslovnost
+`gu-IN` | Gudžarátština (Indie) | Ano | Jazykový model
+`hi-IN` | hindština (Indie) | Ano | Akustický model<br>Jazykový model
+`it-IT` | Italština (Itálie) | Ano | Akustický model<br>Jazykový model<br>Výslovnost
+`ja-JP` | Japonština (Japonsko) | Ano | Jazykový model
+`ko-KR` | Korejština (Jižní Korea) | Ano | Jazykový model
+`mr-IN` | Maráthština (Indie) | Ano | Jazykový model
+`nb-NO` | Norština (Bokmal) (Norsko) | Ano | Jazykový model
+`nl-NL` | Nizozemština (Nizozemsko) | Ano | Jazykový model
+`pl-PL` | Polština (Polsko) | Ano | Jazykový model
+`pt-BR` | Portugalština (Brazílie) | Ano | Akustický model<br>Jazykový model<br>Výslovnost
+`pt-PT` | Portugalština (Portugalsko) | Ano | Jazykový model
+`ru-RU` | Ruština (Rusko) | Ano | Akustický model<br>Jazykový model
+`sv-SE` | Švédština (Švédsko) | Ano | Jazykový model
+`ta-IN` | tamilština (Indie) | Ano | Jazykový model
+`te-IN` | telugština (Indie) | Ano | Ne
 `th-TH` | thajština (Thajsko) | Ano | Ne
-`tr-TR` | Turecko | Ano | Ano
+`tr-TR` | Turecko | Ano | Ne
+`zh-CN` | Čínština (Mandarínština, zjednodušená čínština) | Ano | Akustický model<br>Jazykový model
+`zh-HK` | Čínština (kantonština, tradiční) | Ano | Jazykový model
+`zh-TW` | Čínština (Tchaj-wanská Mandarínština) | Ano | Jazykový model
 
 ## <a name="text-to-speech"></a>Převod textu na řeč
 
@@ -102,7 +111,7 @@ Více než 75 standardních hlasů je k dispozici ve více než 45 jazycích a n
 
 Národní prostředí | Jazyk | Pohlaví | Úplné mapování názvu služby | Krátký název
 -------|----------|---------|----------|----------
-<sup>&dagger;</sup>`ar-EG` | arabština (Egypt) | Žena | "Microsoft Server řeči Text na řeč hlas (ar např Hoda)" | ar-EG-Hoda
+<sup>**1**</sup>`ar-EG` | arabština (Egypt) | Žena | "Microsoft Server řeči Text na řeč hlas (ar např Hoda)" | ar-EG-Hoda
 `ar-SA` | Arabština (Saúdská Arábie) | Muž | "Microsoft serveru řeči Text na řeč hlas (ar-SA, Naayf)" | ar-SA-Naayf "
 `bg-BG` | Bulharština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (bg – BG, Ivan)" | BG-BG-Ivan
 `ca-ES` | katalánština (Španělsko) | Žena | "Microsoft Server řeči převod textu na řeč hlasové (ca-ES, HerenaRUS)" | "Ca-ES-HerenaRUS"
@@ -184,7 +193,7 @@ Národní prostředí | Jazyk | Pohlaví | Úplné mapování názvu služby | K
 | | | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-TW, HanHanRUS)" | "zh-TW-HanHanRUS"
 | | | Muž | "Microsoft serveru řeči Text na řeč hlas (zh-TW, Zhiwei, Apollo)" | "zh-TW-Zhiwei-Apollo"
 
-&dagger; *ar – třeba podporuje moderní standardní Arabština (MSA).*
+**1** *ar-eg podporuje moderní arabštinu Standard (MSA).*
 
 > [!NOTE]
 > V požadavcích na Shrnutí řeči můžete použít buď úplné mapování názvu služby, nebo krátký název hlasu.

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/08/2020
+ms.date: 1/23/2020
 ms.author: raynew
-ms.openlocfilehash: e5fdf0a14586a0a2ea97d222f4be481e8fe31e51
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 852059317c45dec4885b3f56de5617695d82e1e8
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754513"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759802"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii Azure do Azure
 
@@ -95,13 +95,13 @@ Site Recovery pořizuje snímky následujícím způsobem:
 
 Následující tabulka vysvětluje různé typy konzistence.
 
-### <a name="crash-consistent"></a>Crash-consistent
+### <a name="crash-consistent"></a>Konzistentní vzhledem k selháním
 
 **Popis** | **Podrobnosti** | **Doporučení**
 --- | --- | ---
 Snímek konzistentní se selháním zachycuje data, která byla na disku při pořízení snímku. Neobsahuje žádné množství paměti.<br/><br/> Obsahuje ekvivalent dat na disku, která by byla k dispozici v případě, že došlo k chybě virtuálního počítače nebo napájecí kabel byl získán ze serveru v okamžiku, kdy se snímek povedl.<br/><br/> Konzistentní se selháním nezaručuje konzistenci dat pro operační systém nebo pro aplikace na virtuálním počítači. | Ve výchozím nastavení vytvoří Site Recovery body obnovení konzistentní vzhledem k chybě každých pět minut. Toto nastavení nelze změnit.<br/><br/>  | V současné době se většina aplikací může obnovovat i z bodů konzistentních vzhledem k selháním.<br/><br/> Body obnovení konzistentní vzhledem k havárii jsou obvykle dostačující pro replikaci operačních systémů a aplikace, jako jsou servery DHCP a tiskové servery.
 
-### <a name="app-consistent"></a>App-consistent
+### <a name="app-consistent"></a>Konzistentní vzhledem k aplikacím
 
 **Popis** | **Podrobnosti** | **Doporučení**
 --- | --- | ---
@@ -146,7 +146,7 @@ Podrobnosti o požadavcích na připojení k síti najdete v [dokumentu White pa
 **Pravidlo** |  **Podrobnosti** | **Značka služby**
 --- | --- | --- 
 Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají účtům úložiště ve zdrojové oblasti. | Pamì.\<název oblasti >
-Povolení odchozího HTTPS: port 443 | Povolí rozsahy, které odpovídají Azure Active Directory (Azure AD).<br/><br/> Pokud se adresy Azure AD přidávají v budoucnu, potřebujete vytvořit nová pravidla skupiny zabezpečení sítě (NSG).  | AzureActiveDirectory
+Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají Azure Active Directory (Azure AD).  | AzureActiveDirectory
 Povolení odchozího HTTPS: port 443 | Povolí rozsahy, které odpovídají centru událostí v cílové oblasti. | EventsHub.\<název oblasti >
 Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají Azure Site Recovery  | AzureSiteRecovery
 
@@ -155,7 +155,7 @@ Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpov
 **Pravidlo** |  **Podrobnosti** | **Značka služby**
 --- | --- | --- 
 Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají účtům úložiště v cílové oblasti. | Pamì.\<název oblasti >
-Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají službě Azure AD.<br/><br/> Pokud se v budoucnu přidají adresy Azure AD, musíte vytvořit nová pravidla NSG.  | AzureActiveDirectory
+Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají službě Azure AD.  | AzureActiveDirectory
 Povolení odchozího HTTPS: port 443 | Povolí rozsahy, které odpovídají centru událostí ve zdrojové oblasti. | EventsHub.\<název oblasti >
 Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají Azure Site Recovery  | AzureSiteRecovery
 

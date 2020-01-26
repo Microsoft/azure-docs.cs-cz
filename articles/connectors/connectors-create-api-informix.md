@@ -9,12 +9,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/07/2020
 tags: connectors
-ms.openlocfilehash: ebedb68f8826642437f53e5c5fa8cd0843e7c20e
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: dccb715c974037b4e3080f3e51576feae34c03df
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75665824"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76757964"
 ---
 # <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>Správa prostředků databáze IBM Informix pomocí Azure Logic Apps
 
@@ -89,7 +89,7 @@ V tomto tématu se dozvíte, jak pomocí konektoru v aplikaci logiky zpracovat o
    | brána | `gateway` | Pouze místní | -<*Azure-subscription*> <br>-<*Azure-on-premises-data-Gateway-resource*> | Předplatné Azure a název prostředku Azure pro místní bránu dat, kterou jste vytvořili v Azure Portal. Vlastnost **brány** a dílčí vlastnosti se zobrazí jenom v případě, že vyberete **připojit přes místní bránu dat**. |
    ||||||
 
-   Příklad:
+   Například:
 
    * **Cloudová databáze**
 
@@ -117,7 +117,7 @@ V tomto tématu se dozvíte, jak pomocí konektoru v aplikaci logiky zpracovat o
 
 1. Chcete-li zobrazit vstupy, klikněte v části **vstupy na odkaz**odkaz na adresu URL. Chcete-li zobrazit výstupy, klikněte v části odkaz na **výstup** odkazy na odkaz adresa URL. Tady je několik ukázkových výstupů:
 
-   * **Získat tabulky** zobrazí seznam tabulek:
+   * **Get_tables** zobrazuje seznam tabulek:
 
      ![Výstupy z akce získat tabulky](./media/connectors-create-api-informix/InformixconnectorGetTablesLogicAppRunOutputs.png)
 

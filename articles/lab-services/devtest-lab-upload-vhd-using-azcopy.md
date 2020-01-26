@@ -1,6 +1,6 @@
 ---
-title: Nahrání souboru VHD pomocí AzCopy Azure DevTest Labs | Dokumentace Microsoftu
-description: Nahrání souboru VHD do testovacího prostředí účtu úložiště pomocí AzCopy
+title: Nahrání souboru VHD do Azure DevTest Labs pomocí AzCopy | Microsoft Docs
+description: Tento článek poskytuje návod k použití nástroje příkazového řádku AzCopy k nahrání souboru VHD do účtu úložiště testovacího prostředí v Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,74 +12,74 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 8cd778762bebf4a9dda3688292ac0a3674e446e1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 49dc70788bf2a44b6925c5f3f8226fdadab8768c
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60634976"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76757418"
 ---
-# <a name="upload-vhd-file-to-labs-storage-account-using-azcopy"></a>Nahrání souboru VHD do testovacího prostředí účtu úložiště pomocí AzCopy
+# <a name="upload-vhd-file-to-labs-storage-account-using-azcopy"></a>Nahrání souboru VHD do účtu úložiště testovacího prostředí pomocí AzCopy
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-Ve službě Azure DevTest Labs soubory virtuálního pevného disku slouží k vytváření vlastních imagí, které se používají ke zřízení virtuálních počítačů. Následující kroky vás provedou použitím nástroje příkazového řádku azcopy k nahrání souboru VHD do účtu úložiště testovacího prostředí. Po nahrání souboru VHD [další kroky části](#next-steps) uvádí některé články, které ukazují, jak vytvořit vlastní image z virtuálního pevného disku uloženého souboru. Další informace o discích a virtuálních pevných disků v Azure najdete v tématu [Úvod do managed disks](../virtual-machines/linux/managed-disks-overview.md)
+V Azure DevTest Labs se soubory VHD dají použít k vytvoření vlastních imagí, které se používají ke zřízení virtuálních počítačů. Následující kroky vás provedou použitím nástroje příkazového řádku AzCopy k nahrání souboru VHD do účtu úložiště testovacího prostředí. Po nahrání souboru VHD se v [části Další kroky](#next-steps) zobrazí některé články, které ukazují, jak vytvořit vlastní image z nahraného souboru VHD. Další informace o discích a virtuálních pevných discích v Azure najdete v tématu [Úvod do Managed disks](../virtual-machines/linux/managed-disks-overview.md) .
 
 > [!NOTE] 
 >  
-> AzCopy je nástroj příkazového řádku jen pro Windows.
+> AzCopy je nástroj příkazového řádku pouze pro Windows.
 
 ## <a name="step-by-step-instructions"></a>Podrobné pokyny
 
-Následující kroky vás provedou po nahrání souboru VHD pomocí Azure DevTest Labs [AzCopy](https://aka.ms/downloadazcopy). 
+Následující kroky vás provedou odesláním souboru VHD do Azure DevTest Labs pomocí [AzCopy](https://aka.ms/downloadazcopy). 
 
-1. Získejte název účtu úložiště testovacího prostředí pomocí webu Azure portal:
+1. Získejte název účtu úložiště testovacího prostředí pomocí Azure Portal:
 
-1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k [Portálu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Vyberte **všechny služby**a pak vyberte **DevTest Labs** ze seznamu.
+1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 
-1. V seznamu testovacích prostředí vyberte požadované prostředí.  
+1. V seznamu cvičení vyberte požadované testovací prostředí.  
 
-1. V okně testovacího prostředí, vyberte **konfigurace**. 
+1. V okně testovacího prostředí vyberte **Konfigurace**. 
 
-1. V testovacím prostředí **konfigurace** okně vyberte **vlastních imagí (VHD)** .
+1. V okně **Konfigurace** testovacího prostředí vyberte **vlastní image (VHD)** .
 
-1. Na **vlastních imagí** okno, vyberte **+ přidat**. 
+1. V okně **vlastní image** vyberte **+ Přidat**. 
 
-1. Na **vlastní image** okně vyberte **virtuálního pevného disku**.
+1. V okně **vlastní obrázek** vyberte **VHD**.
 
-1. Na **virtuálního pevného disku** okně vyberte **nahrát VHD pomocí Powershellu**.
+1. V okně **VHD** vyberte **nahrát VHD pomocí PowerShellu**.
 
-    ![Nahrát VHD pomocí Powershellu](./media/devtest-lab-upload-vhd-using-azcopy/upload-image-using-psh.png)
+    ![Nahrání VHD pomocí PowerShellu](./media/devtest-lab-upload-vhd-using-azcopy/upload-image-using-psh.png)
 
-1. **Nahrát image pomocí prostředí PowerShell** volání zobrazí okno **Add-AzureVhd** rutiny. První parametr (*cílové*) obsahuje identifikátor URI pro kontejner objektů blob (*nahraje*) v následujícím formátu:
+1. Okno **nahrát obrázek pomocí okna PowerShell** zobrazí volání rutiny **Add-AzureVhd** . První parametr (*cíl*) obsahuje identifikátor URI pro kontejner objektů BLOB (*nahrávání*) v následujícím formátu:
 
     ```
     https://<STORAGE-ACCOUNT-NAME>.blob.core.windows.net/uploads/...
     ``` 
 
-1. Poznamenejte si úplný identifikátor URI jako se používá v následujících krocích.
+1. Poznamenejte si úplný identifikátor URI, protože se používá v pozdějších krocích.
 
-1. Nahrání souboru VHD pomocí AzCopy:
+1. Nahrajte soubor VHD pomocí AzCopy:
  
-1. [Stáhněte a nainstalujte nejnovější verzi AzCopy](https://aka.ms/downloadazcopy).
+1. [Stáhněte a nainstalujte si nejnovější verzi AzCopy](https://aka.ms/downloadazcopy).
 
-1. Otevřete okno příkazového řádku a přejděte do instalačního adresáře nástroje AzCopy. Volitelně můžete přidat umístění instalace nástroje AzCopy do systémové cesty. Ve výchozím nastavení je nástroj AzCopy nainstalovaný na následující adresář:
+1. Otevřete příkazové okno a přejděte do instalačního adresáře AzCopy. Volitelně můžete přidat umístění instalace AzCopy do systémové cesty. Ve výchozím nastavení se AzCopy nainstaluje do následujícího adresáře:
 
     ```command-line
     %ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy
     ```
 
-1. Pomocí účtu klíč a objektů blob v kontejneru úložiště identifikátor URI, spusťte následující příkaz na příkazovém řádku. *VhdFileName* hodnota musí být v uvozovkách. Proces nahrávání souboru virtuálního pevného disku může být zdlouhavé v závislosti na velikosti souboru virtuálního pevného disku a rychlost připojení.   
+1. Pomocí klíče účtu úložiště a identifikátoru URI kontejneru objektů BLOB spusťte na příkazovém řádku následující příkaz. Hodnota *vhdFileName* musí být v uvozovkách. Proces odeslání souboru VHD může být zdlouhavý v závislosti na velikosti souboru VHD a rychlosti připojení.   
 
     ```command-line
     AzCopy /Source:<sourceDirectory> /Dest:<blobContainerUri> /DestKey:<storageAccountKey> /Pattern:"<vhdFileName>" /BlobType:page
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Vytvoření vlastní image ve službě Azure DevTest Labs ze souboru VHD pomocí webu Azure portal](devtest-lab-create-template.md)
-- [Vytvoření vlastní image ve službě Azure DevTest Labs ze souboru VHD pomocí Powershellu](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
+- [Vytvoření vlastní image v Azure DevTest Labs ze souboru VHD pomocí Azure Portal](devtest-lab-create-template.md)
+- [Vytvoření vlastní image v Azure DevTest Labs ze souboru VHD pomocí PowerShellu](devtest-lab-create-custom-image-from-vhd-using-powershell.md)

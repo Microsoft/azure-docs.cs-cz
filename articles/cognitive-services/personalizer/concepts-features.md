@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 9a7599cd71c087201b54c594954a6fff377b3e45
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5205b12a5f9f6acad8755b69d6da2216ffd4d83e
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490763"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760823"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Funkce jsou informace o akcích a kontextu.
 
@@ -26,7 +26,7 @@ Přizpůsobení používá **funkce**, které jsou informace o **aktuálním kon
 Můžete mít například **funkci** o:
 
 * _Uživatel_ , jako je například `Sports_Shopper`. Nemělo by to být individuální ID uživatele. 
-* _Obsah_ , jako je například video `Documentary`, `Movie` nebo `TV Series` nebo zda je maloobchodní položka v obchodě k dispozici.
+* _Obsah_ , jako je například video `Documentary`, `Movie`nebo `TV Series`nebo zda je maloobchodní položka v obchodě k dispozici.
 * _Aktuální_ časové období, jako je například den v týdnu.
 
 Přizpůsobené aplikace nepředepisuje, neomezuje ani neopravují funkce, které můžete odeslat pro akce a kontext:
@@ -69,10 +69,10 @@ Následují příklady oborů názvů funkcí používaných aplikacemi:
 Obory názvů funkcí můžete pojmenovat podle vlastních konvencí, pokud jsou platné klíče JSON. Obory názvů slouží k uspořádání funkcí do různých sad a k jednoznačnému využití funkcí s podobnými názvy. Obory názvů si můžete představit jako předponu, která je přidána do názvů funkcí. Obory názvů nemůžou být vnořené.
 
 
-V následujících JSON jsou `user`, `state` a `device` obory názvů funkcí. 
+V následujících JSON jsou `user`, `state`a `device` obory názvů funkcí. 
 
 > [!Note]
-> V současné době důrazně doporučujeme používat názvy pro obory názvů funkcí, které jsou založené na kódování UTF-8 a začínají s různými písmeny. Například `user`, `state` a `device` začínají `u`, `s` a `d`. V současné době by obory názvů se stejnými prvními znaky mohly způsobit kolizi v indexech použitých pro strojové učení.
+> V současné době důrazně doporučujeme používat názvy pro obory názvů funkcí, které jsou založené na kódování UTF-8 a začínají s různými písmeny. Například `user`, `state`a `device` začínají `u`, `s`a `d`. V současné době by obory názvů se stejnými prvními znaky mohly způsobit kolizi v indexech použitých pro strojové učení.
 
 Objekty JSON můžou zahrnovat vnořené objekty JSON a jednoduché vlastnosti nebo hodnoty. Pole lze zahrnout pouze v případě, že položky pole jsou čísla. 
 
@@ -107,6 +107,7 @@ Objekty JSON můžou zahrnovat vnořené objekty JSON a jednoduché vlastnosti n
 * Nemůže to být Unicode.
 * Můžete použít některé z tisknutelných symbolů s kódy < 256 pro názvy oborů názvů. 
 * Nemůžete použít symboly s kódy < 32 (netisknutelný), 32 (Space), 58 (dvojtečka), 124 (pipe) a 126 – 140.
+* Nesmí začínat podtržítkem (_), jinak se tato funkce bude ignorovat.
 
 ## <a name="how-to-make-feature-sets-more-effective-for-personalizer"></a>Jak nastavit efektivnější nastavení funkcí pro přizpůsobení
 

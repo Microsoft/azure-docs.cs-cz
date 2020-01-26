@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 9e64d184ef0fd120d1bc64ce274ee882b7938df0
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 1a4fbfa87756914f169bb20387702cac69d8736d
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708651"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759478"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Nejčastější dotazy k Azure synapse Analytics (dříve SQL DW)
 
@@ -27,7 +27,7 @@ A. Azure synapse je bezlimitní analytická služba, která přináší dohromad
 
 Otázka: Co se stalo se službou Azure SQL Data Warehouse?
 
-A. Azure synapse je vyvíjejí se Azure SQL Data Warehouse (SQL DW). Převzali jsme stejný špičkový datový sklad v oboru na celou novou úroveň výkonu a schopností. Můžete dál spouštět stávající úlohy datového skladu v provozu s Azure synapse a automaticky využívat výhod nových funkcí, které jsou ve verzi Preview. Další informace najdete v tématu [co je Azure synapse Analytics](sql-data-warehouse-overview-what-is.md).
+A. Azure synapse je vyvíjejí se Azure SQL Data Warehouse (SQL DW). Provedli jsme stejný oborový datový sklad na celou novou úroveň výkonu a schopností. Můžete dál spouštět stávající úlohy datového skladu v produkčním prostředí s využitím Azure synapse a automaticky využívat výhod nových funkcí, které jsou ve verzi Preview. Další informace najdete v tématu [co je Azure synapse Analytics](sql-data-warehouse-overview-what-is.md).
 
 Otázka: Co je SQL Analytics?
 
@@ -39,11 +39,11 @@ A. Můžete začít s [bezplatným účtem Azure](https://azure.microsoft.com/fr
 
 Otázka: Co Azure synapse nabízí pro zabezpečení dat?
 
-A. Azure synapse nabízí několik řešení pro ochranu dat, jako je TDE a auditování. Další informace najdete v tématu [zabezpečení].
+A. Azure synapse nabízí několik řešení pro ochranu dat, jako je TDE a auditování. Další informace najdete v tématu [zabezpečení](sql-data-warehouse-overview-manage-security.md).
 
 Otázka: Kde můžu zjistit, jaké právní nebo obchodní standardy Azure synapse dodržuje předpisy?
 
-A. Navštivte stránku [dodržování předpisů Microsoftu] , kde najdete různé nabídky dodržování předpisů podle produktů, jako je SOC a ISO. Nejdřív zvolte podle nadpisu dodržování předpisů a potom v části Azure v oboru cloudové služby Microsoftu na pravé straně stránky rozbalte Azure, abyste viděli, které služby jsou v Azure synapse kompatibilní.
+A. Navštivte stránku [dodržování předpisů Microsoftu](https://www.microsoft.com/trustcenter/compliance/complianceofferings) , kde najdete různé nabídky dodržování předpisů podle produktů, jako je SOC a ISO. Nejdřív vyberte podle názvu dodržování předpisů. Pak rozbalte Azure v části věnované cloudovým službám Microsoftu v oboru na pravé straně stránky a podívejte se, jaké služby jsou v Azure synapse kompatibilní.
 
 Otázka: Můžu se Power BI připojit?
 
@@ -51,48 +51,48 @@ A. Ano! I když Power BI podporuje přímý dotaz s Azure synapse, není určen�
 
 Otázka: Co jsou limity kapacity SQL Analytics?
 
-A. Podívejte se na naše aktuální [omezení kapacity] . 
+A. Podívejte se na naše aktuální [omezení kapacity](sql-data-warehouse-service-capacity-limits.md) . 
 
 Otázka: Proč je můj rozsah/pozastavení/pokračování trvá tak dlouho?
 
-A. Řada faktorů může ovlivnit čas operací správy služby Compute. Běžným případem dlouhotrvajících operací je vrácení transakční služby za provozu. Při zahájení operace škálování nebo pozastavení jsou všechny příchozí relace blokované a dotazy se vyprázdní. Aby bylo možné systém opustit v stabilním stavu, transakce musí být vráceny zpět před zahájením operace. Čím větší je počet a větší velikost protokolu transakcí, tím déle bude operace zablokované obnovení systému do stabilního stavu.
+A. Několik faktorů může ovlivnit čas operací správy výpočetních prostředků. Běžným případem dlouhotrvajících operací je vrácení transakční služby za provozu. Při zahájení operace škálování nebo pozastavení jsou všechny příchozí relace blokované a dotazy se vyprázdní. Aby bylo možné systém opustit v stabilním stavu, transakce musí být vráceny zpět před zahájením operace. Čím větší je počet a větší velikost protokolu transakcí, tím déle bude operace zablokované obnovení systému do stabilního stavu.
 
 ## <a name="user-support"></a>Podpora uživatelů
 
 Otázka: Mám žádost o funkci, kde ji mohu odeslat?
 
-A. Pokud máte žádost o funkci, odešlete ji na naši stránku [UserVoice] .
+A. Pokud máte žádost o funkci, odešlete ji na naši stránku [UserVoice](https://feedback.azure.com/forums/307516-sql-data-warehouse) .
 
 Otázka: Jak můžu provést x?
 
-A. Pro pomoc s vývojem pomocí Azure synapse můžete klást otázky na stránce [Stack Overflow] . 
+A. Pokud potřebujete pomoc s vývojem pomocí Azure synapse, můžete klást otázky na stránce [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw) . 
 
 Otázka: Návody odeslat lístek podpory?
 
-A. [Lístky podpory] mohou být archivovány prostřednictvím Azure Portal.
+A. [Lístky podpory](sql-data-warehouse-get-started-create-support-ticket.md) mohou být archivovány prostřednictvím Azure Portal.
 
 ## <a name="sql-languagefeature-support"></a>Podpora jazyka a funkcí SQL 
 
 Otázka: Jaké typy DataTypes jsou podporovány?
 
-A. Podívejte se na [datové typy].
+A. Podívejte se na [datové typy](sql-data-warehouse-tables-data-types.md).
 
 Otázka: Jaké funkce tabulky podporujete?
 
-A. Řada funkcí je podporována, ty, které nejsou podporovány a jsou zdokumentovány v [Nepodporované funkce tabulky].
+A. Je podporováno mnoho funkcí. Funkce, které nejsou podporované, najdete v [nepodporovaných funkcích tabulky](sql-data-warehouse-tables-data-types.md).
 
 ## <a name="tooling-and-administration"></a>Nástroje a Správa
 
 Otázka: Podporuje SQL Analytics rozhraní REST API?
 
-A. Ano. Většina funkcí REST, které je možné používat s SQL Database, je také k dispozici v rámci SQL Analytics. Informace o rozhraní API najdete na stránkách dokumentace k REST nebo na [MSDN].
+A. Ano. Většina funkcí REST, které je možné používat s SQL Database, je také k dispozici v rámci SQL Analytics. Informace o rozhraní API najdete na stránkách dokumentace k REST nebo na [MSDN](https://msdn.microsoft.com/library/azure/mt163685.aspx).
 
 
 ## <a name="loading"></a>Načítá se
 
 Otázka: Jaké ovladače klienta podporujete?
 
-A. Podporu ovladačů pro DW najdete na stránce [připojovací řetězce] .
+A. Podporu ovladačů pro SQL Analytics najdete na stránce [připojovací řetězce](sql-data-warehouse-connection-strings.md) .
 
 Otázka: Jaké formáty souborů podporuje základová databáze?
 
@@ -100,7 +100,7 @@ O: Orc, RC, Parquet a plochý text oddělený textem
 
 Otázka: Jaké zdroje dat se mohu připojit k používání základny? 
 
-O: [Azure Data Lake Store] a [objekty blob Azure Storage]
+O: [Azure Data Lake Storage](sql-data-warehouse-load-from-azure-data-lake-store.md) a [objekty blob Azure Storage](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
 
 Otázka: když se připojujete k Azure Storage objektům blob nebo ADLS, je možné výpočet směrem dolů? 
 
@@ -111,21 +111,4 @@ Otázka: je možné se připojit k HDI?
 Odpověď: HDI může jako vrstvu HDFS použít buď ADLS, nebo WASB. Pokud máte buď vrstvu HDFS, můžete tato data načíst do SQL DW. V instanci HDI ale nemůžete vygenerovat výpočet přenosů směrem dolů. 
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o Azure synapse jako celku najdete na naší stránce s [Přehled] .
-
-
-<!-- Article references -->
-[UserVoice]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[Připojovací řetězce]: ./sql-data-warehouse-connection-strings.md
-[Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw
-[Lístky podpory]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[Zabezpečení]: ./sql-data-warehouse-overview-manage-security.md
-[Dodržování předpisů Microsoftu]: https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings
-[omezení kapacity]: ./sql-data-warehouse-service-capacity-limits.md
-[datové typy]: ./sql-data-warehouse-tables-data-types.md
-[Nepodporované funkce tabulky]: ./sql-data-warehouse-tables-overview.md#unsupported-table-features
-[Azure Data Lake Store]: ./sql-data-warehouse-load-from-azure-data-lake-store.md
-[Objekty blob Azure Storage]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
-[Database projects feature request]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu
-[MSDN]: https://msdn.microsoft.com/library/azure/mt163685.aspx
-[Přehled]: ./sql-data-warehouse-overview-faq.md
+Další informace o Azure synapse jako celku najdete na naší stránce s [přehledem](sql-data-warehouse-overview-faq.md) .

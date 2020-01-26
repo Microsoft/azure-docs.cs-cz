@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: jak používat Service Bus témata s PHP'
-description: 'Rychlý Start: Naučte se používat Service Bus témata s PHP v Azure.'
+title: Jak používat Azure Service Bus témata s PHP
+description: V tomto kurzu se naučíte používat Azure Service Bus témata a odběry z aplikace PHP.
 services: service-bus-messaging
 documentationcenter: php
 author: axisc
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: b55d3c93f9926b7446dadf069b37a878caa81e15
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 92f25f4bdac4942478c93f717c81eadd2c2f5b4a
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721647"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760670"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Rychlý Start: jak používat Service Bus témata a odběry pomocí PHP
 
@@ -72,7 +72,7 @@ Tento článek popisuje, jak používat funkce služby, které lze volat v rámc
 ## <a name="configure-your-application-to-use-service-bus"></a>Konfigurace aplikace pro použití Service Bus
 Použití rozhraní Service Bus API:
 
-1. Odkazování na soubor automatického zavaděče pomocí příkazu [require_once][require-once]
+1. Odkazování na soubor automatického zavaděče pomocí příkazu [require_once][require-once] .
 2. Odkázat na libovolné třídy, které můžete použít.
 
 Následující příklad ukazuje, jak zahrnout soubor automatického zavaděče a odkazovat na třídu **ServiceBusService** .

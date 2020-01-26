@@ -1,6 +1,6 @@
 ---
-title: Přehled AMQP 1.0 ve službě Azure Service Bus | Dokumentace Microsoftu
-description: Další informace o použití pokročilé řízení front zpráv protokolu (AMQP) 1.0 v Azure.
+title: Přehled AMQP 1,0 v Azure Service Bus
+description: Přečtěte si, jak Azure Service Bus podporuje rozšířený protokol řízení front zpráv (AMQP) (AMQP), což je otevřený standardní protokol.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -14,87 +14,87 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 34829482e570354c1ab1e1fd6cec0c96b993cd83
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 50d21cfe8136b9c794eae5104bbb34e28f7c1661
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60403907"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759308"
 ---
-# <a name="amqp-10-support-in-service-bus"></a>Podpora AMQP 1.0 ve službě Service Bus
-Místních i cloudových služeb Azure Service Bus [sběrnice služby pro Windows Server (Service Bus 1.1)](https://msdn.microsoft.com/library/dn282144.aspx) podporu upřesnit jejich zařazování do fronty protokolu zpráv (AMQP) 1.0. AMQP umožňuje vytvářet různé platformy, hybridní aplikace pomocí otevřeného protokolu. Můžete sestavit aplikace pomocí komponenty, které jsou sestaveny na základě různých jazyků a architektur a, na kterých běží v různých operačních systémech. Všechny tyto součásti mohou připojit ke službě Service Bus a bez problémů výměnu strukturovaných obchodní zpráv efektivně a s plnou věrností.
+# <a name="amqp-10-support-in-service-bus"></a>Podpora AMQP 1,0 v Service Bus
+Azure Service Bus cloudová služba i místní [Service Bus pro Windows Server (Service Bus 1,1)](https://msdn.microsoft.com/library/dn282144.aspx) podporují protokol AMQP (Advanced Message Queueing Protocol) 1,0. AMQP umožňuje sestavovat hybridní aplikace pro různé platformy s využitím otevřeného standardního protokolu. Můžete sestavovat aplikace pomocí komponent sestavených pomocí různých jazyků a platforem, které běží v různých operačních systémech. Všechny tyto komponenty se mohou připojit k Service Bus a hladce si vyměňovat strukturované obchodní zprávy efektivně a s plnou věrností.
 
-## <a name="introduction-what-is-amqp-10-and-why-is-it-important"></a>Představení: Novinky protokolu AMQP 1.0 a proč je důležité?
-Tradičně zpráva middleware zaměřený na produkty používaly speciální protokoly pro komunikaci mezi klientskými aplikacemi a zprostředkovatelů. To znamená, že po dokončení výběru zprostředkovatel zasílání zpráv od dodavatele, musíte použít od dodavatele knihovny pro připojení klientských aplikací pro tohoto zprostředkovatele. V důsledku stupeň závislosti na dodavatele, protože přenesení aplikace do jiný produkt vyžaduje změny kódu v připojených aplikacích. 
+## <a name="introduction-what-is-amqp-10-and-why-is-it-important"></a>Úvod: co je AMQP 1,0 a proč je důležité?
+Aplikace middleware zaměřené na zprávy používají pro komunikaci mezi klientskými aplikacemi a zprostředkovateli speciální protokoly. To znamená, že po výběru zprostředkovatele zasílání zpráv určitého dodavatele je nutné použít knihovny tohoto dodavatele k připojení klientských aplikací k tomuto zprostředkovateli. Výsledkem je míra závislosti u tohoto dodavatele, protože portování aplikace pro jiný produkt vyžaduje změny kódu ve všech připojených aplikacích. 
 
-Kromě toho propojení zprostředkovatelé zasílání zpráv od různých dodavatelů je velmi obtížné. Obvykle vyžaduje úroveň aplikace přemostění přesunout zpráv v jednom systému a pro převod mezi formáty jejich vlastních zpráv. To je běžné požadavky; například při musí zadat nové sjednocené rozhraní do starší různorodých systémů, nebo integrovat systémy IT po spojení.
+Připojení zprostředkovatelů zasílání zpráv od různých dodavatelů je navíc obtížné. To obvykle vyžaduje přemostění na úrovni aplikace, aby bylo možné přesouvat zprávy z jednoho systému do druhého a překládat je mezi jejich proprietárními formáty zpráv. Toto je běžný požadavek. například když musíte zadat nové sjednocené rozhraní pro starší různorodé systémy nebo integrovat IT systémy po fúzi.
 
-Rychlé tempo obchodní; je softwarovém průmyslu Někdy nepřeberné tempem jsou zavedeny nové programovacích jazyků a architektur aplikací. Podobně požadavky systémy IT v průběhu času vyvíjejí a vývojáři chtějí využít výhod funkce nejnovější platformy. Ale někdy vybraného zasílání zpráv dodavatele nepodporuje tyto platformy. Protože zasílání zpráv protokoly jsou speciální, není možné pro ostatní poskytují knihovny pro tyto nové platformy. Proto musíte použít přístupy, například vytváření bran nebo přemostění, které vám umožní pokračovat v používání produktu zasílání zpráv.
+Softwarový oborový je rychlý přesun firmy. nové programovací jazyky a aplikační architektury se zavádějí na někdy bewildering tempo. Podobně se požadavky na systémy IT vyvíjí v průběhu času a vývojáři chtějí využít výhod nejnovějších funkcí platformy. Někdy ale vybraný dodavatel zasílání zpráv nepodporuje tyto platformy. Vzhledem k tomu, že jsou k dispozici protokoly zasílání zpráv, není možné ostatním uživatelům poskytnout knihovny pro tyto nové platformy. Proto je nutné použít přístupy, jako je například vytváření bran nebo mostů, které vám umožní nadále používat produkt pro zasílání zpráv.
 
-Vývojové nástroje pokročilé služby Řízení front protokolu zpráv (AMQP) 1.0 byl motivováno tyto problémy. Vytvoří se v podstatou JP Morgan, kdo jako většina finančních služeb firmami, jsou náročné uživatele zpráva middleware zaměřený na. Cílem bylo jednoduché: Chcete-li vytvořit protokol zasílání zpráv open standard, které přinesla možnost vytvářet aplikace založené na zprávách pomocí komponenty sestavené pomocí různých jazyků, architektur a operační systémy, všechny pomocí komponenty nejlepší druhu z rozsahu Dodavatelé.
+Vývoj rozšířený protokol řízení front zpráv (AMQP) (AMQP) 1,0 byl motivován těmito problémy. Pochází z JP Morgan podstatou, který jako většina firem finančních služeb je těžké uživatelé middlewaru orientovaný na zprávy. Tento cíl je jednoduchý: k vytvoření protokolu zasílání zpráv Open-Standard, který umožňuje vytvářet aplikace založené na zprávách pomocí komponent sestavených pomocí různých jazyků, platforem a operačních systémů, a to všechno s využitím špičkových komponent z řady dodavatelé.
 
-## <a name="amqp-10-technical-features"></a>Technické funkce protokolu AMQP 1.0
-AMQP 1.0 je efektivní, spolehlivý přenosový protokol zasílání zpráv, který můžete použít k vytvoření robustních a platformy, aplikace pro zasílání zpráv. Protokol má jednoduché cíle: definování mechanics zabezpečené, spolehlivé a efektivní přenos zpráv mezi dvěma stranami. Samotné zprávy jsou zakódovány pomocí přenosné datové reprezentaci, jež umožňuje heterogenní odesílateli a příjemci umožňuje výměnu zpráv strukturované obchodní s plnou věrností. Následuje souhrn nejdůležitější funkce:
+## <a name="amqp-10-technical-features"></a>Technické funkce AMQP 1,0
+AMQP 1,0 je efektivní a spolehlivý přenosový protokol zasílání zpráv, který můžete použít k vytváření robustních aplikací zasílání zpráv pro více platforem. Protokol má jednoduchý cíl: k definování mechanismu zabezpečeného, spolehlivého a efektivního přenosu zpráv mezi dvěma stranami. Samotné zprávy jsou kódované pomocí přenosné reprezentace dat, která umožňuje heterogenním odesílatelům a přijímačům vyměňovat strukturované obchodní zprávy s plnou věrností. Toto je souhrn nejdůležitějších funkcí:
 
-* **Efektivní**: Protokolu AMQP 1.0 je orientovaný na připojení protokol, který používá binární kódování pokyny protokolu a obchodní zpráv přenosu nad ním. To zahrnuje schémata sofistikované řízení toku pro maximalizaci využití sítě a připojené součásti. Ale nutné dodat, protokol je navržená hledají rovnováhu mezi efektivity, flexibility a vzájemná funkční spolupráce.
-* **Spolehlivé**: Protokol AMQP 1.0 umožňuje zprávy mají vyměnit s celou řadou záruky spolehlivost, fire a zapomenout na spolehlivé, přesně-jednou potvrzení doručování.
-* **Flexibilní**: AMQP 1.0 je flexibilní protokol, který lze použít pro podporu různých topologií. Stejný protokol lze použít pro komunikaci klienta pro klienta, klient zprostředkovatele a zprostředkovatele na zprostředkovatele.
-* **Nezávislé na zprostředkovatele modelu**: Specifikace protokolu AMQP 1.0 neprovede žádné požadavky na zasílání zpráv modelu používá zprostředkovatel. To znamená, že je možné snadno přidat do existující zprostředkovatelé zasílání zpráv podpory AMQP 1.0.
+* **Efektivní**: AMQP 1,0 je protokol orientovaný na připojení, který používá binární kódování pro pokyny protokolu a přenesené do něj odeslané obchodní zprávy. Zahrnuje sofistikované schémata řízení toku pro maximalizaci využití sítě a připojených součástí. Tento protokol byl navržen tak, aby provedl rovnováhu mezi efektivitou, flexibilitou a interoperabilitou.
+* **Spolehlivé**: protokol AMQP 1,0 umožňuje vyměňovat zprávy s řadou záruk spolehlivosti, od požáru a zapomenutého po spolehlivém doručení, který je právě jednou potvrzen.
+* **Flexibilní**: AMQP 1,0 je flexibilní protokol, který se dá použít k podpoře různých topologií. Stejný protokol se dá použít pro komunikaci mezi klientem a klientem a komunikace mezi klientem a zprostředkovatelem.
+* **Zprostředkovatel – nezávislé na modelu**: specifikace AMQP 1,0 neprovádí žádné požadavky na model zasílání zpráv, který používá zprostředkovatel. To znamená, že je možné snadno přidat podporu AMQP 1,0 do stávajících zprostředkovatelů zasílání zpráv.
 
-## <a name="amqp-10-is-a-standard-with-a-capital-s"></a>AMQP 1.0 je Standard (s na velké ")
-AMQP 1.0 je standard mezinárodních schváleny ISO a IEC jako ISO/IEC 19464:2014.
+## <a name="amqp-10-is-a-standard-with-a-capital-s"></a>AMQP 1,0 je Standard (se kapitálkou ').
+AMQP 1,0 je mezinárodní standard schválený normou ISO a IEC jako ISO/IEC 19464:2014.
 
-AMQP 1.0 je vyvíjen od verze 2008 skupinou core pro více než 20 společností, dodavatelů technologie a podniky koncového uživatele. Během této doby zaměstnavatelů uživatele přispět jejich reálných obchodních požadavků a dodavatelé technologií se vyvinula protokol, který se splňují tyto požadavky. Během tohoto procesu se účastnilo dodavatelů cvičení, ve kterých jsou spolupracovali ověření vzájemná funkční spolupráce mezi jejich implementace.
+AMQP 1,0 se v vývoji od 2008 podle základní skupiny o více než 20 společnostech, jak dodavatelé technologií, tak i podniky koncových uživatelů. Během této doby vyvinuli firemní firmy své reálné obchodní požadavky a výrobci technologií vyvinuli protokol, aby splnil tyto požadavky. V průběhu tohoto procesu se dodavatelé účastnili v pracovních konferencích, ve kterých spolupracovali, aby ověřili interoperabilitu mezi jejich implementacemi.
 
-V říjnu 2011 byla vydána vývojové práce postoupí technického výboru organizace pro rozvoj z strukturovaných informace standardy OASIS (Organization) a OASIS AMQP 1.0 Standard v října 2012. Následující podniky účastnili technického výboru během vývoje standard:
+V říjnu 2011 se vývojová práce převedla na technický výbor v rámci organizace pro účely vývoje OASIS (Structured Information Standards) a Standard OASIS AMQP 1,0 byl vydán v říjnu 2012. Následující firmy se účastnily technického výboru během vývoje standardu:
 
-* **Dodavatelé technologií**: Axway Software, Huawei technologie, IIT softwaru, INETCO systémy, Kaazing, Microsoft, Mitre Corporation, Primeton technologie, průběh softwaru, Red Hat, SITA, Software AG, Solace systémy, VMware, WSO2, Zenika.
-* **Zaměstnavatelů uživatele**: Bank of America, Credit Suisse, Deutsche Boerse, Goldman Sachs, JPMorgan Chase.
+* **Dodavatelé technologií**: Axway software, technologie Huawei, IIT software, INETCO Systems, Kaazing, Microsoft, Mitre Corporation, Primeton Technologies, software pro průběh, Red Hat, SITA, Software AG, Solace Systems, VMware, WSO2, Zenika.
+* **Firmy pro uživatele**: Bank of America, úvěrové Suisse, německý Boerse, Goldman Sachs, JPMorgan podstatou.
 
-Mezi výhody často zmiňovanou otevřených standardů, patří:
+Mezi běžně citované výhody otevřených standardů patří:
 
-* Menší riziko fixaci dodavatele
+* Menší pravděpodobnost uzamčení dodavatele
 * Vzájemná funkční spolupráce
-* Široký dostupnosti knihovny a nástroje
-* Ochrana proti zastarávání
-* Dostupnost pracovníků dobře informovaný
-* Nižší a spravovat rizika
+* Široká dostupnost knihoven a nástrojů
+* Ochrana proti obsolescence
+* Dostupnost znalostních zaměstnanců
+* Nižší a spravovatelné riziko
 
-## <a name="amqp-10-and-service-bus"></a>AMQP 1.0 a Service Bus
-Podpora AMQP 1.0 ve službě Azure Service Bus znamená, že teď můžete využít služby Řízení front služby Service Bus a publikování/přihlášení k odběru funkce zprostředkovaného zasílání zpráv z celou řadu platforem s využitím efektivní binární protokol. Kromě toho můžete vytvářet aplikace skládá z komponenty sestavené pomocí kombinace jazyků, architektur a operační systémy.
+## <a name="amqp-10-and-service-bus"></a>AMQP 1,0 a Service Bus
+Podpora AMQP 1,0 v Azure Service Bus znamená, že teď můžete využít Service Bus služby Řízení front zpráv a publikování/přihlášení k odběru funkcí v různých platformách pomocí efektivního binárního protokolu. Kromě toho můžete sestavovat aplikace tvořené komponentami sestavenými pomocí kombinace jazyků, platforem a operačních systémů.
 
-Následující obrázek znázorňuje ukázkové nasazení Java klienty běžící na Linuxu, napsané s využitím standardní Java Message Service JMS () rozhraní API a .NET klientů se systémem Windows, ve kterém vyměňují zprávy přes Service Bus pomocí protokolu AMQP 1.0.
+Následující obrázek znázorňuje ukázkové nasazení, ve kterém klienti Java běžící na systému Linux, napsané pomocí standardního rozhraní API služby JMS (Java Message Service) a klientů .NET běžících na Windows, zprávy Exchange prostřednictvím Service Bus pomocí AMQP 1,0.
 
 ![][0]
 
-**Obrázek 1: Příklad scénáře nasazení zobrazující zasílání zpráv služby Service Bus a protokolu AMQP 1.0 napříč platformami**
+**Obrázek 1: Příklad scénáře nasazení znázorňujícího zasílání zpráv pro různé platformy pomocí Service Bus a AMQP 1,0**
 
-V tuto chvíli jsou známé následujících klientských knihoven pro práci se Service Bus:
+V tuto chvíli jsou známy následující klientské knihovny pro práci s Service Bus:
 
 | Jazyk | Knihovna |
 | --- | --- |
-| Java |Klient Apache Qpid Java Message Service (JMS)<br/>Klientskou sadou SwiftMQ Java IIT softwaru |
+| Java |Klient JMS (Java Message Service) Apache Qpid<br/>Klient Java software SwiftMQ v IIT softwaru |
 | C |Apache Qpid Proton-C |
-| PHP |Apache Qpid kanálem – PHP |
-| Python |Apache Qpid kanálem – Python |
+| PHP |Apache Qpid Proton – PHP |
+| Python |Apache Qpid Proton – Python |
 | C# |AMQP .NET Lite |
 
-**Obrázek 2: Tabulka knihoven klienta protokolu AMQP 1.0**
+**Obrázek 2: tabulka klientských knihoven AMQP 1,0**
 
 ## <a name="summary"></a>Souhrn
-* AMQP 1.0 je otevřít a spolehlivé zasílání zpráv protokol, který vám umožní vytvářet víc platforem, hybridní aplikace. AMQP 1.0 je OASIS standard.
-* Podpora AMQP 1.0 je teď dostupná v Azure Service Bus, jakož i sběrnice služby pro Windows Server (Service Bus 1.1). Ceny jsou stejné jako u existující protokoly.
+* AMQP 1,0 je otevřený a spolehlivý protokol pro zasílání zpráv, který můžete použít k vytváření hybridních aplikací pro různé platformy. AMQP 1,0 je OASIS Standard.
+* Podpora AMQP 1,0 je teď k dispozici v Azure Service Bus a také Service Bus pro Windows Server (Service Bus 1,1). Ceny jsou stejné jako u existujících protokolů.
 
-## <a name="next-steps"></a>Další postup
-Jste připraveni na další informace? Naleznete pod těmito odkazy:
+## <a name="next-steps"></a>Další kroky
+Jste připraveni se dozvědět víc? Navštivte následující odkazy:
 
-* [Pomocí protokolu AMQP Service Bus z .NET]
-* [Pomocí protokolu AMQP Service Bus z Javy]
-* [Instalace Apache Qpid kanálem C na virtuálním počítači Azure s Linuxem]
-* [AMQP ve službě Service Bus pro systém Windows Server]
+* [Použití Service Bus z rozhraní .NET s AMQP]
+* [Použití Service Bus z Java s AMQP]
+* [Instalace Apache Qpid Proton-C na virtuální počítač Azure Linux]
+* [AMQP v Service Bus pro Windows Server]
 
 [0]: ./media/service-bus-amqp-overview/service-bus-amqp-1.png
-[Pomocí protokolu AMQP Service Bus z .NET]: service-bus-amqp-dotnet.md
-[Pomocí protokolu AMQP Service Bus z Javy]: service-bus-amqp-java.md
-[Instalace Apache Qpid kanálem C na virtuálním počítači Azure s Linuxem]: service-bus-amqp-apache.md
-[AMQP ve službě Service Bus pro systém Windows Server]: https://msdn.microsoft.com/library/dn574799.aspx
+[Použití Service Bus z rozhraní .NET s AMQP]: service-bus-amqp-dotnet.md
+[Použití Service Bus z Java s AMQP]: service-bus-amqp-java.md
+[Instalace Apache Qpid Proton-C na virtuální počítač Azure Linux]: service-bus-amqp-apache.md
+[AMQP v Service Bus pro Windows Server]: https://msdn.microsoft.com/library/dn574799.aspx

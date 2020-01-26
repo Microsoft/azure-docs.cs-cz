@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 8fab85b6f1d876cc65ceb44acd60b53c379e59e8
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: c6e74e7992326d2a4b8fe24510742422b005c2e2
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121943"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756156"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolace ve veřejném cloudu Azure
 Azure umožňuje spouštět aplikace a virtuální počítače na sdílené fyzické infrastruktuře. Jednou z primárních motivů pro spouštění aplikací v cloudovém prostředí je schopnost distribuovat náklady na sdílené prostředky mezi více zákazníků. Tento postup víceklientské architektury vylepšuje efektivitu díky multiplexování prostředků mezi různými zákazníky s nízkými náklady. Bohužel taky představuje riziko sdílení fyzických serverů a dalších prostředků infrastruktury ke spouštění citlivých aplikací a virtuálních počítačů, které můžou patřit k libovolnému a potenciálně škodlivému uživateli.
@@ -73,7 +73,7 @@ Azure RBAC má tři základní role, které se vztahují na všechny typy prost�
 
 - **Čtenář** si může zobrazit existující prostředky Azure.
 
-![Řízení přístupu na základě role v Azure](./media/isolation-choices/azure-isolation-fig3.png)
+![Access Control na základě rolí Azure](./media/isolation-choices/azure-isolation-fig3.png)
 
 Zbývající role RBAC v Azure umožňují správu konkrétních prostředků Azure. Například role Přispěvatel virtuálních počítačů umožňuje uživateli vytvářet a spravovat virtuální počítače. Neuděluje jim přístup k Virtual Network Azure ani k podsíti, ke které se virtuální počítač připojuje.
 
@@ -111,6 +111,9 @@ Microsoft Azure poskytuje různé cloudové výpočetní služby, které zahrnuj
 ### <a name="isolated-virtual-machine-sizes"></a>Izolované velikosti virtuálních počítačů
 
 [!INCLUDE [virtual-machines-common-isolation](../../../includes/virtual-machines-common-isolation.md)]
+
+### <a name="dedicated-hosts"></a>Vyhrazení hostitelé
+Kromě izolovaných hostitelů popsaných v předchozí části nabízí Azure také vyhrazené hostitele. Vyhrazení hostitelé v Azure je služba, která poskytuje fyzické servery, které můžou hostovat jeden nebo víc virtuálních počítačů a které jsou vyhrazené pro jedno předplatné Azure. Vyhrazení hostitelé poskytují izolaci hardwaru na úrovni fyzického serveru. Do hostitelů nebudou umístěny žádné další virtuální počítače. Vyhrazení hostitelé se nasazují ve stejných datových centrech a sdílejí stejnou síť a základní infrastrukturu úložiště jako ostatní, neizolované hostitele. Další informace najdete v podrobném přehledu [vyhrazených hostitelů Azure](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts).
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>Hyper-V & izolaci kořenového operačního systému mezi kořenovým virtuálním počítačem & virtuálních počítačů hosta
 Výpočetní platforma Azure je založená na virtualizaci počítačů – to znamená, že veškerý kód zákazníka se spouští ve virtuálním počítači Hyper-V. U každého uzlu Azure (nebo síťového koncového bodu) je k dispozici hypervisor, který běží přímo na hardwaru, a rozděluje uzel na proměnný počet hostů Virtual Machines (virtuálních počítačů).
@@ -196,7 +199,7 @@ Data úložiště IP je možné chránit před neautorizovanými uživateli pros
 
 ### <a name="encryption"></a>Šifrování
 Azure nabízí pro ochranu dat následující typy šifrování:
--   Šifrování během přenosu
+-   Šifrování při přenosu
 
 -   Šifrování v klidovém stavu
 

@@ -1,6 +1,6 @@
 ---
 title: Operace požadavku nebo odpovědi AMQP 1,0 v Azure Service Bus
-description: Seznam Microsoft Azure Service Bus operací na základě požadavků a odpovědí.
+description: Tento článek definuje seznam AMQP operací na základě požadavků a odpovědí v Microsoft Azure Service Bus.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/22/2019
+ms.date: 01/23/2020
 ms.author: aschhab
-ms.openlocfilehash: b549aee197f35df29a982a1a86644c46b9061c63
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 338b411eade35fa357f64131c64b8ef2034c92b0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72785280"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761079"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>AMQP 1,0 v Microsoft Azure Service Bus: operace založené na odezvě na základě požadavků
 
 Tento článek definuje seznam Microsoft Azure Service Bus operací na základě požadavků a odpovědí. Tyto informace vycházejí z pracovní konceptu AMQP Management verze 1,0.  
   
-Podrobný průvodce protokolem AMQP 1,0, který vysvětluje, jak Service Bus implementuje a sestavuje v technické specifikaci AMQP OASIS, najdete v tématu [AMQP 1,0 v Azure Service Bus a Event Hubs Průvodce protokolem][průvodce protokolem amqp 1.0].  
+Podrobné úroveň protokolu AMQP 1.0 protokol průvodce, která vysvětluje, jak Service Bus implementuje a je založený na technické specifikace OASIS AMQP, najdete v článku [protokolu AMQP 1.0 v příručce protokol Azure Service Bus a Event Hubs][průvodce protokolem amqp 1.0].  
   
 ## <a name="concepts"></a>Koncepty  
   
@@ -115,7 +115,7 @@ properties: {
 
 Service Bus entit musí být řešeny následujícím způsobem:  
   
-|typ entity|Adresa|Příklad:|  
+|Typ entity|Adresa|Příklad:|  
 |-----------------|-------------|-------------|  
 |fronta|`<queue_name>`|`“myQueue”`<br /><br /> `“site1/myQueue”`|  
 |téma|`<topic_name>`|`“myTopic”`<br /><br /> `“site2/page1/myQueue”`|  
@@ -133,7 +133,7 @@ Zpráva požadavku musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Obsah hodnoty|  
 |---------|----------------|--------------|--------------------|  
-|NázevOperace|string|Ano|`com.microsoft:renew-lock`|  
+|operation|string|Ano|`com.microsoft:renew-lock`|  
 |`com.microsoft:server-timeout`|uint|Ne|Časový limit provozního serveru v milisekundách|  
   
  Tělo zprávy požadavku se musí skládat z části AMQP-Value obsahující mapu s následujícími položkami:  
@@ -171,14 +171,14 @@ Zpráva požadavku musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Obsah hodnoty|  
 |---------|----------------|--------------|--------------------|  
-|NázevOperace|string|Ano|`com.microsoft:peek-message`|  
+|operation|string|Ano|`com.microsoft:peek-message`|  
 |`com.microsoft:server-timeout`|uint|Ne|Časový limit provozního serveru v milisekundách|  
   
 Tělo zprávy požadavku se musí skládat z části **AMQP-Value** obsahující **mapu** s následujícími položkami:  
   
 |Klíč|Typ hodnoty|Požaduje se|Obsah hodnoty|  
 |---------|----------------|--------------|--------------------|  
-|`from-sequence-number`|Dlouhou|Ano|Pořadové číslo, ze kterého se má začít prohlížet náhled|  
+|`from-sequence-number`|Long|Ano|Pořadové číslo, ze kterého se má začít prohlížet náhled|  
 |`message-count`|int|Ano|Maximální počet zpráv, které se mají prohlížet|  
   
 #### <a name="response"></a>Odpověď  
@@ -212,7 +212,7 @@ Zpráva požadavku musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Obsah hodnoty|  
 |---------|----------------|--------------|--------------------|  
-|NázevOperace|string|Ano|`com.microsoft:schedule-message`|  
+|operation|string|Ano|`com.microsoft:schedule-message`|  
 |`com.microsoft:server-timeout`|uint|Ne|Časový limit provozního serveru v milisekundách|  
   
 Tělo zprávy požadavku se musí skládat z části **AMQP-Value** obsahující **mapu** s následujícími položkami:  
@@ -225,7 +225,7 @@ Mapa, která představuje zprávu, musí obsahovat následující položky:
   
 |Klíč|Typ hodnoty|Požaduje se|Obsah hodnoty|  
 |---------|----------------|--------------|--------------------|  
-|ID zprávy|string|Ano|`amqpMessage.Properties.MessageId` jako řetězec|  
+|message-id|string|Ano|`amqpMessage.Properties.MessageId` jako řetězec|  
 |ID relace|string|Ne|`amqpMessage.Properties.GroupId as string`|  
 |Partition – klíč|string|Ne|`amqpMessage.MessageAnnotations.”x-opt-partition-key"`|
 |pomocí klíčového oddílu|string|Ne|`amqpMessage.MessageAnnotations."x-opt-via-partition-key"`|
@@ -256,7 +256,7 @@ Zpráva požadavku musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Obsah hodnoty|  
 |---------|----------------|--------------|--------------------|  
-|NázevOperace|string|Ano|`com.microsoft:cancel-scheduled-message`|  
+|operation|string|Ano|`com.microsoft:cancel-scheduled-message`|  
 |`com.microsoft:server-timeout`|uint|Ne|Časový limit provozního serveru v milisekundách|  
   
 Tělo zprávy požadavku se musí skládat z části **AMQP-Value** obsahující **mapu** s následujícími položkami:  
@@ -286,7 +286,7 @@ Zpráva požadavku musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Obsah hodnoty|  
 |---------|----------------|--------------|--------------------|  
-|NázevOperace|string|Ano|`com.microsoft:renew-session-lock`|  
+|operation|string|Ano|`com.microsoft:renew-session-lock`|  
 |`com.microsoft:server-timeout`|uint|Ne|Časový limit provozního serveru v milisekundách|  
   
 Tělo zprávy požadavku se musí skládat z části **AMQP-Value** obsahující **mapu** s následujícími položkami:  
@@ -320,14 +320,14 @@ Zpráva požadavku musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Obsah hodnoty|  
 |---------|----------------|--------------|--------------------|  
-|NázevOperace|string|Ano|`com.microsoft:peek-message`|  
+|operation|string|Ano|`com.microsoft:peek-message`|  
 |`com.microsoft:server-timeout`|uint|Ne|Časový limit provozního serveru v milisekundách|  
   
 Tělo zprávy požadavku se musí skládat z části **AMQP-Value** obsahující **mapu** s následujícími položkami:  
   
 |Klíč|Typ hodnoty|Požaduje se|Obsah hodnoty|  
 |---------|----------------|--------------|--------------------|  
-|z-Sequence-Number|Dlouhou|Ano|Pořadové číslo, ze kterého se má začít prohlížet náhled|  
+|z-Sequence-Number|Long|Ano|Pořadové číslo, ze kterého se má začít prohlížet náhled|  
 |počet zpráv|int|Ano|Maximální počet zpráv, které se mají prohlížet|  
 |ID relace|string|Ano|ID relace|  
   
@@ -362,7 +362,7 @@ Zpráva požadavku musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Obsah hodnoty|  
 |---------|----------------|--------------|--------------------|  
-|NázevOperace|string|Ano|`com.microsoft:set-session-state`|  
+|operation|string|Ano|`com.microsoft:set-session-state`|  
 |`com.microsoft:server-timeout`|uint|Ne|Časový limit provozního serveru v milisekundách|  
   
 Tělo zprávy požadavku se musí skládat z části **AMQP-Value** obsahující **mapu** s následujícími položkami:  
@@ -391,7 +391,7 @@ Zpráva požadavku musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Obsah hodnoty|  
 |---------|----------------|--------------|--------------------|  
-|NázevOperace|string|Ano|`com.microsoft:get-session-state`|  
+|operation|string|Ano|`com.microsoft:get-session-state`|  
 |`com.microsoft:server-timeout`|uint|Ne|Časový limit provozního serveru v milisekundách|  
   
 Tělo zprávy požadavku se musí skládat z části **AMQP-Value** obsahující **mapu** s následujícími položkami:  
@@ -425,14 +425,14 @@ Zpráva požadavku musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Obsah hodnoty|  
 |---------|----------------|--------------|--------------------|  
-|NázevOperace|string|Ano|`com.microsoft:get-message-sessions`|  
+|operation|string|Ano|`com.microsoft:get-message-sessions`|  
 |`com.microsoft:server-timeout`|uint|Ne|Časový limit provozního serveru v milisekundách|  
   
 Tělo zprávy požadavku se musí skládat z části **AMQP-Value** obsahující **mapu** s následujícími položkami:  
   
 |Klíč|Typ hodnoty|Požaduje se|Obsah hodnoty|  
 |---------|----------------|--------------|--------------------|  
-|Poslední aktualizace – čas|časové razítko|Ano|Filtr tak, aby zahrnoval pouze relace aktualizované po daném čase.|  
+|last-updated-time|časové razítko|Ano|Filtr tak, aby zahrnoval pouze relace aktualizované po daném čase.|  
 |přímo|int|Ano|Přeskočit několik relací.|  
 |vrchol|int|Ano|Maximální počet relací.|  
   
@@ -450,7 +450,7 @@ Tělo zprávy odpovědi se musí skládat z části **AMQP-Value** obsahující 
 |Klíč|Typ hodnoty|Požaduje se|Obsah hodnoty|  
 |---------|----------------|--------------|--------------------|  
 |přímo|int|Ano|Počet vynechaných relací, pokud je stavový kód 200.|  
-|relace – identifikátory|Pole řetězců|Ano|Pole ID relací, pokud je stavový kód 200.|  
+|relace – identifikátory|pole řetězců|Ano|Pole ID relací, pokud je stavový kód 200.|  
   
 ## <a name="rule-operations"></a>Operace pravidla  
   
@@ -462,7 +462,7 @@ Zpráva požadavku musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Obsah hodnoty|  
 |---------|----------------|--------------|--------------------|  
-|NázevOperace|string|Ano|`com.microsoft:add-rule`|  
+|operation|string|Ano|`com.microsoft:add-rule`|  
 |`com.microsoft:server-timeout`|uint|Ne|Časový limit provozního serveru v milisekundách|  
   
 Tělo zprávy požadavku se musí skládat z části **AMQP-Value** obsahující **mapu** s následujícími položkami:  
@@ -478,33 +478,33 @@ Mapa **popisu pravidla** musí zahrnovat následující položky, ve kterých se
 |---------|----------------|--------------|--------------------|  
 |filtr SQL|map|Ano|`sql-filter`, jak je uvedeno v následující části.|  
 |filtr korelace|map|Ano|`correlation-filter`, jak je uvedeno v následující části.|  
-|SQL – pravidlo – akce|map|Ano|`sql-rule-action`, jak je uvedeno v následující části.|  
+|sql-rule-action|map|Ano|`sql-rule-action`, jak je uvedeno v následující části.|  
   
 Mapa filtru SQL musí zahrnovat následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Obsah hodnoty|  
 |---------|----------------|--------------|--------------------|  
-|vyjádření|string|Ano|Výraz filtru SQL|  
+|expression|string|Ano|Výraz filtru SQL|  
   
 Mapa **filtru korelace** musí zahrnovat aspoň jednu z následujících položek:  
   
 |Klíč|Typ hodnoty|Požaduje se|Obsah hodnoty|  
 |---------|----------------|--------------|--------------------|  
 |ID korelace|string|Ne||  
-|ID zprávy|string|Ne||  
+|message-id|string|Ne||  
 |na|string|Ne||  
 |odpovědět na|string|Ne||  
 |label|string|Ne||  
 |ID relace|string|Ne||  
 |odpovědi na relaci – ID|string|Ne||  
-|typ obsahu|string|Ne||  
+|Typ obsahu|string|Ne||  
 |properties|map|Ne|Mapuje se Service Bus [BrokeredMessage. Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage).|  
   
 Mapa **akcí SQL-Rule** musí zahrnovat následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Obsah hodnoty|  
 |---------|----------------|--------------|--------------------|  
-|vyjádření|string|Ano|Výraz akce SQL|  
+|expression|string|Ano|Výraz akce SQL|  
   
 #### <a name="response"></a>Odpověď  
 
@@ -523,7 +523,7 @@ Zpráva požadavku musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Obsah hodnoty|  
 |---------|----------------|--------------|--------------------|  
-|NázevOperace|string|Ano|`com.microsoft:remove-rule`|  
+|operation|string|Ano|`com.microsoft:remove-rule`|  
 |`com.microsoft:server-timeout`|uint|Ne|Časový limit provozního serveru v milisekundách|  
   
 Tělo zprávy požadavku se musí skládat z části **AMQP-Value** obsahující **mapu** s následujícími položkami:  
@@ -549,7 +549,7 @@ Zpráva požadavku musí obsahovat následující vlastnosti aplikace:
 
 |Klíč|Typ hodnoty|Požaduje se|Obsah hodnoty|  
 |---------|----------------|--------------|--------------------|  
-|NázevOperace|string|Ano|`com.microsoft:enumerate-rules`|  
+|operation|string|Ano|`com.microsoft:enumerate-rules`|  
 |`com.microsoft:server-timeout`|uint|Ne|Časový limit provozního serveru v milisekundách|  
 
 Tělo zprávy požadavku se musí skládat z části **AMQP-Value** obsahující **mapu** s následujícími položkami:  
@@ -604,7 +604,7 @@ Každá položka mapování v poli obsahuje následující vlastnosti:
 | 0 | string | ID korelace |
 | 1\. místo | string | ID zprávy |
 | 2 | string | až |
-| 3 | string | Odpovědět na |
+| 3 | string | Odpovědět |
 | 4 | string | Štítek |
 | 5 | string | ID relace |
 | 6 | string | Odpověď na ID relace|
@@ -632,7 +632,7 @@ Zpráva požadavku musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Obsah hodnoty|  
 |---------|----------------|--------------|--------------------|  
-|NázevOperace|string|Ano|`com.microsoft:receive-by-sequence-number`|  
+|operation|string|Ano|`com.microsoft:receive-by-sequence-number`|  
 |`com.microsoft:server-timeout`|uint|Ne|Časový limit provozního serveru v milisekundách|  
   
 Tělo zprávy požadavku se musí skládat z části **AMQP-Value** obsahující **mapu** s následujícími položkami:  
@@ -640,7 +640,7 @@ Tělo zprávy požadavku se musí skládat z části **AMQP-Value** obsahující
 |Klíč|Typ hodnoty|Požaduje se|Obsah hodnoty|  
 |---------|----------------|--------------|--------------------|  
 |pořadová čísla|pole dlouhé|Ano|Pořadová čísla.|  
-|přijímač – vyrovnaný režim|ubyte|Ano|Režim **vyrovnání přijímače** zadaný v AMQP Core v 1.0|  
+|receiver-settle-mode|ubyte|Ano|Režim **vyrovnání přijímače** zadaný v AMQP Core v 1.0|  
   
 #### <a name="response"></a>Odpověď  
 
@@ -674,18 +674,18 @@ Zpráva požadavku musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Obsah hodnoty|  
 |---------|----------------|--------------|--------------------|  
-|NázevOperace|string|Ano|`com.microsoft:update-disposition`|  
+|operation|string|Ano|`com.microsoft:update-disposition`|  
 |`com.microsoft:server-timeout`|uint|Ne|Časový limit provozního serveru v milisekundách|  
   
 Tělo zprávy požadavku se musí skládat z části **AMQP-Value** obsahující **mapu** s následujícími položkami:  
   
 |Klíč|Typ hodnoty|Požaduje se|Obsah hodnoty|  
 |---------|----------------|--------------|--------------------|  
-|dispoziční stav|string|Ano|kompletní<br /><br /> zastaven<br /><br /> Rozpuštěn|  
+|dispoziční stav|string|Ano|kompletní<br /><br /> zastaven<br /><br /> rozpuštěn|  
 |tokeny Lock|pole UUID|Ano|Tokeny zámku zprávy pro aktualizaci stavu dispozice.|  
 |nedoručené zprávy – důvod|string|Ne|Dá se nastavit, pokud je stav dispozice nastavený na **pozastaveno**.|  
 |nedoručené zprávy – popis|string|Ne|Dá se nastavit, pokud je stav dispozice nastavený na **pozastaveno**.|  
-|vlastnosti-k úpravě|map|Ne|Seznam Service Bus vlastností zprostředkovaných zpráv, které se mají upravit|  
+|properties-to-modify|map|Ne|Seznam Service Bus vlastností zprostředkovaných zpráv, které se mají upravit|  
   
 #### <a name="response"></a>Odpověď  
 

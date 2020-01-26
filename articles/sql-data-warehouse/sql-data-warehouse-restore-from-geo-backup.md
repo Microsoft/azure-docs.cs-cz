@@ -11,12 +11,12 @@ ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 69eb1221686da61868df8b06ed80664ae76d1627
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 69ba3ed981a27dfff41ea9ea52e1da769a9366c4
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685498"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759614"
 ---
 # <a name="geo-restore-azure-sql-data-warehouse"></a>Geografické obnovení Azure SQL Data Warehouse
 
@@ -26,24 +26,24 @@ V tomto článku se naučíte obnovit datový sklad z geografické zálohy pomoc
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-**Ověřte svoji kapacitu DTU.** Každý SQL Data Warehouse hostuje SQL Server (například myserver.database.windows.net), který má výchozí kvótu DTU. Ověřte, zda má systém SQL Server dostatek zbývajících kvót DTU pro obnovenou databázi. Informace o tom, jak vypočítat potřebné DTU nebo požádat o více DTU, najdete v tématu [vyžádání změny kvóty DTU][Request a DTU quota change].
+**Ověřte svoji kapacitu DTU.** Každý SQL Data Warehouse hostuje SQL Server (například myserver.database.windows.net), který má výchozí kvótu DTU. Ověřte, zda má systém SQL Server dostatek zbývajících kvót DTU pro obnovenou databázi. Informace o tom, jak vypočítat potřebné DTU nebo požádat o více DTU, najdete v tématu [vyžádání změny kvóty DTU](sql-data-warehouse-get-started-create-support-ticket.md).
 
 ## <a name="restore-from-an-azure-geographical-region-through-powershell"></a>Obnovení z geografické oblasti Azure prostřednictvím PowerShellu
 
-K obnovení z geografické zálohy použijte rutinu [Get-AzSqlDatabaseGeoBackup][Get-AzSqlDatabaseGeoBackup] a [Restore-AzSqlDatabase][Restore-AzSqlDatabase] .
+K obnovení z geografické zálohy použijte rutinu [Get-AzSqlDatabaseGeoBackup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasegeobackup) a [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) .
 
 > [!NOTE]
 > K Gen2 můžete použít geografické obnovení. Provedete to tak, že jako volitelný parametr zadáte Gen2 ServiceObjectiveName (např. DW1000**c**).
 >
 
-1. Než začnete, nezapomeňte [nainstalovat Azure PowerShell][Install Azure PowerShell].
+1. Než začnete, nezapomeňte [nainstalovat Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
 2. Otevřete PowerShell.
 2. Připojte se k účtu Azure a seznamte se se všemi předplatnými přidruženými k vašemu účtu.
 3. Vyberte předplatné, které obsahuje datový sklad, který se má obnovit.
 4. Získejte datový sklad, který chcete obnovit.
 5. Vytvořte žádost o obnovení pro datový sklad.
 6. Ověřte stav geograficky obnoveného datového skladu.
-7. Pokud chcete po dokončení obnovení nakonfigurovat datový sklad, přečtěte si téma [Konfigurace databáze po obnovení][Configure your database after recovery].
+7. Pokud chcete po dokončení obnovení nakonfigurovat datový sklad, přečtěte si téma [Konfigurace databáze po obnovení]( ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery).
 
 ```Powershell
 $SubscriptionName="<YourSubscriptionName>"
@@ -76,7 +76,7 @@ Pokud je zdrojová databáze povolena TDE, obnovená databáze bude TDE povolena
 
 Postupujte podle kroků uvedených níže a obnovte Azure SQL Data Warehouse z geografické zálohy:
 
-1. Přihlaste se ke svému účtu [Azure Portal][Azure portal] .
+1. Přihlaste se ke svému účtu [Azure Portal](https://portal.azure.com/) .
 1. Klikněte na **+ vytvořit prostředek** a vyhledejte SQL Data Warehouse a klikněte na **vytvořit**.
 
     ![Nový datový sklad](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
@@ -85,34 +85,9 @@ Postupujte podle kroků uvedených níže a obnovte Azure SQL Data Warehouse z g
     ![Základy](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
 1. Pro možnost **použít existující datový** parametr vyberte **zálohovat** a v možnostech posouvání vyberte příslušnou zálohu. Klikněte na tlačítko **zkontrolovat + vytvořit**.
  
-   ![zálohování](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
+   ![backup](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
 2. Po obnovení datového skladu ověřte, zda je **stav** online.
 
 ## <a name="next-steps"></a>Další kroky
-- [Obnovit existující datový sklad][Restore an existing data warehouse]
-- [Obnovení odstraněného datového skladu][Restore a deleted data warehouse]
-
-<!--Image references-->
-
-<!--Article references-->
-[Install Azure PowerShell]: https://docs.microsoft.com/powershell/azure/overview
-[Azure SQL Database business continuity overview]: ../sql-database/sql-database-business-continuity.md
-[Request a DTU quota change]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[Configure your database after recovery]: ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery
-[How to install and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
-[Overview]: ./sql-data-warehouse-restore-database-overview.md
-[Portal]: ./sql-data-warehouse-restore-database-portal.md
-[PowerShell]: ./sql-data-warehouse-restore-database-powershell.md
-[REST]: ./sql-data-warehouse-restore-database-rest-api.md
-[Configure your database after recovery]: ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery
-[Restore an existing data warehouse]:./sql-data-warehouse-restore-active-paused-dw.md
-[Restore a deleted data warehouse]:./sql-data-warehouse-restore-deleted-dw.md
-[Restore from a geo-backup data warehouse]:./sql-data-warehouse-restore-from-geo-backup.md
-
-
-<!--MSDN references-->
-[Restore-AzSqlDatabase]: https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase
-[Get-AzSqlDatabaseGeoBackup]: https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasegeobackup
-
-<!--Other Web references-->
-[Azure Portal]: https://portal.azure.com/
+- [Obnovit existující datový sklad](sql-data-warehouse-restore-active-paused-dw.md)
+- [Obnovení odstraněného datového skladu](sql-data-warehouse-restore-deleted-dw.md)

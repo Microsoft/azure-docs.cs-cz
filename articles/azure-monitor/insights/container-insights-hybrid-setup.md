@@ -2,13 +2,13 @@
 title: Konfigurace Hybrid Kubernetes clusterů pomocí Azure Monitor pro kontejnery | Microsoft Docs
 description: Tento článek popisuje, jak můžete nakonfigurovat Azure Monitor pro kontejnery, abyste mohli monitorovat clustery Kubernetes hostované v Azure Stack nebo jiném prostředí.
 ms.topic: conceptual
-ms.date: 12/04/2019
-ms.openlocfilehash: d6218550f4b5a3a59b4addc69b19ff11e282d45a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/24/2020
+ms.openlocfilehash: 7796cc7300f34a7a412495754c083b112ba05041
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977741"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759888"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Konfigurace Hybrid Kubernetes clusterů pomocí Azure Monitor pro kontejnery
 
@@ -39,7 +39,7 @@ Než začnete, ujistěte se, že máte následující:
     |*.blob.core.windows.net |Port 443 |  
     |*. dc.services.visualstudio.com |Port 443 |
 
-* Kontejner s označením vyžaduje, `cAdvisor port: 10255` otevřít na všech uzlech v clusteru za účelem shromažďování metrik výkonu.
+* Kontejner s označením vyžaduje, aby se na všech uzlech v clusteru `cAdvisor secure port: 10250` Kubelet nebo `unsecure port :10255`, aby se shromáždily metriky výkonu. Doporučujeme, abyste nakonfigurovali `secure port: 10250` v cAdvisor pro Kubelet, pokud už není nakonfigurovaná.
 
 * Kontejner s podporou kontejneru vyžaduje, aby se v kontejneru zadaly následující proměnné prostředí, aby bylo možné komunikovat se službou Kubernetes API v rámci clusteru za účelem shromažďování dat inventáře – `KUBERNETES_SERVICE_HOST` a `KUBERNETES_PORT_443_TCP_PORT`.
 
@@ -290,12 +290,12 @@ Pokud dojde k chybě při pokusu o povolení monitorování pro cluster Hybrid K
 * Služba Health OmsAgent je spuštěná.
 * ID a klíč pracovního prostoru Log Analytics nakonfigurované na kontejnerovém agentovi se shodují s pracovním prostorem, pomocí kterého je tento přehled nakonfigurovaný.
 * Ověří, jestli mají všechny uzly pro Linux Worker `kubernetes.io/role=agent` popisek pro naplánování RS pod. Pokud neexistuje, přidejte ho.
-* Ověří `cAdvisor port: 10255` je otevřen na všech uzlech v clusteru.
+* Ověří `cAdvisor secure port:10250` nebo `unsecure port: 10255` je otevřen na všech uzlech v clusteru.
 
 Chcete-li provést příkaz s Azure PowerShell, použijte ve složce obsahující skript následující příkazy:
 
 ```powershell
-.\TroubleshootError_nonAzureK8s.ps1 - azureLogAnalyticsWorkspaceResourceId </subscriptions/<subscriptionId>/resourceGroups/<resourcegroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName> -kubeConfig <kubeConfigFile>
+.\TroubleshootError_nonAzureK8s.ps1 - azureLogAnalyticsWorkspaceResourceId </subscriptions/<subscriptionId>/resourceGroups/<resourcegroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName> -kubeConfig <kubeConfigFile> -clusterContextInKubeconfig <clusterContext>
 ```
 
 ## <a name="next-steps"></a>Další kroky

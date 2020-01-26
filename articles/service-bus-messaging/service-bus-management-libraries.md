@@ -1,6 +1,6 @@
 ---
 title: Knihovny pro správu Azure Service Bus | Microsoft Docs
-description: Správa oborů názvů Service Bus a entit zasílání zpráv z .NET
+description: Tento článek vysvětluje, jak pomocí Azure Service Bus knihovny pro správu dynamicky zřizovat Service Bus obory názvů a entity.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: faf0a5893b7de276b9a411745500daef4d39da6b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: d0e90d9278ede97de04ad8efeaa59d94a4567f66
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816077"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756262"
 ---
 # <a name="service-bus-management-libraries"></a>Knihovny pro správu služby Service Bus
 
@@ -52,7 +52,7 @@ Vzor pro manipulaci s jakýmkoli Service Busm prostředkem se řídí společný
 
    var result = await context.AcquireTokenAsync("https://management.azure.com/", new ClientCredential(clientId, clientSecret));
    ```
-2. `ServiceBusManagementClient` Vytvořte objekt:
+2. Vytvořte objekt `ServiceBusManagementClient`:
 
    ```csharp
    var creds = new TokenCredentials(token);
@@ -61,7 +61,7 @@ Vzor pro manipulaci s jakýmkoli Service Busm prostředkem se řídí společný
        SubscriptionId = SettingsCache["SubscriptionId"]
    };
    ```
-3. `CreateOrUpdate` Nastavte parametry na zadané hodnoty:
+3. Nastavte parametry `CreateOrUpdate` na zadané hodnoty:
 
    ```csharp
    var queueParams = new QueueCreateOrUpdateParameters()

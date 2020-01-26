@@ -8,12 +8,12 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 93e3a5ed442c975f75045d86d6b890ee4113c465
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 255ccb5c8e9529ab9b36186ec0eeb5b3f55ed64f
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514251"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759223"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Běžné potíže se službou Azure IoT Edge a jejich řešení
 
@@ -21,7 +21,7 @@ Pokud ve vašem prostředí dochází k potížím s provozem služby Azure IoT 
 
 ## <a name="run-the-iotedge-check-command"></a>Spusťte příkaz ' check ' iotedge
 
-Prvním krokem při řešení potíží IoT Edge by měl být použití příkazu `check`, který provádí shromažďování testů konfigurace a připojení pro běžné problémy. Příkaz `check` je k dispozici ve [verzi 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7) a novější.
+Prvním krokem při řešení potíží IoT Edge by měl být použití příkazu `check`, který spouští kolekci konfigurací a testů připojení pro běžné problémy. Příkaz `check` je k dispozici ve [verzi 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7) a novější.
 
 Příkaz `check` můžete spustit následujícím způsobem nebo můžete použít příznak `--help` a zobrazit úplný seznam možností:
 
@@ -265,7 +265,7 @@ Error parsing user input data: invalid hostname. Hostname cannot be empty or gre
 
 **Hlavní příčina**
 
-Modul runtime IoT Edge podporuje pouze názvy hostitelů, které jsou kratší než 64 znaků. Fyzické počítače obvykle nemusí dlouhé názvy hostitelů, ale tento problém je běžnější na virtuálním počítači. Automaticky generované názvy hostitelů pro virtuální počítače s Windows, které jsou hostované v Azure, zejména, jsou obvykle dlouhé. 
+Modul runtime IoT Edge podporuje pouze názvy hostitelů, které jsou kratší než 64 znaků. Fyzické počítače obvykle nemusí dlouhé názvy hostitelů, ale tento problém je běžnější na virtuálním počítači. Automaticky generované názvy hostitelů pro virtuální počítače s Windows, které jsou hostované v Azure, zejména, jsou obvykle dlouhé.
 
 **Řešení**
 
@@ -302,7 +302,7 @@ Rozbočovač IoT Edge, který je součástí modulu runtime IoT Edge, je ve výc
 
 **Řešení**
 
-Pro Centrum IoT Edge nastavte proměnnou prostředí **OptimizeForPerformance** na **false**. Chcete-li to provést dvěma způsoby:
+Pro Centrum IoT Edge nastavte proměnnou prostředí **OptimizeForPerformance** na **false**. Existují dva způsoby, jak nastavit proměnné prostředí:
 
 Na webu Azure Portal:
 
@@ -340,7 +340,7 @@ Pokud se zobrazí při použití EventLogException `Get-WinEvent` na Windows, zk
 
 Nastavte položku registru pro démona IoT Edge. Vytvoření **iotedge.reg** soubor s následujícím obsahem a importu v registru Windows na ni poklikáte nebo pomocí `reg import iotedge.reg` příkaz:
 
-```
+```reg
 Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog\Application\iotedged]
@@ -351,10 +351,10 @@ Windows Registry Editor Version 5.00
 
 ## <a name="iot-edge-module-fails-to-send-a-message-to-the-edgehub-with-404-error"></a>Modul IoT Edge se nepodařilo odeslat zprávu do edgeHub kvůli chybě 404
 
-Vlastní modul IoT Edge se nepodařilo odeslat zprávu do edgeHub s 404 `Module not found` chyby. Proces démon IoT Edge zobrazí následující zprávu do protokolů: 
+Vlastní modul IoT Edge se nepodařilo odeslat zprávu do edgeHub s 404 `Module not found` chyby. Proces démon IoT Edge zobrazí následující zprávu do protokolů:
 
 ```output
-Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 ) 
+Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 )
 ```
 
 **Hlavní příčina**
@@ -391,7 +391,7 @@ Ve výchozím nastavení IoT Edge spouští moduly ve vlastní izolované síti 
 
 **Možnost 1: nastavení serveru DNS v nastavení modulu pro vytvoření kontejneru**
 
-Zadejte server DNS pro vaše prostředí v nastavení kontejnerového modulu, který bude platit pro všechny moduly kontejneru spouštěné modulem. Vytvořte soubor s názvem `daemon.json` určení serveru DNS, který chcete použít. Například:
+Zadejte server DNS pro vaše prostředí v nastavení modulu container Engine, který bude platit pro všechny moduly kontejneru spouštěné modulem. Vytvořte soubor s názvem `daemon.json` určení serveru DNS, který chcete použít. Například:
 
 ```json
 {
@@ -401,7 +401,7 @@ Zadejte server DNS pro vaše prostředí v nastavení kontejnerového modulu, kt
 
 Výše uvedený příklad nastaví server DNS na veřejně dostupnou službu DNS. Pokud hraniční zařízení nemůže získat přístup k této IP adrese z jeho prostředí, nahraďte ho adresou serveru DNS, která je přístupná.
 
-Umístit `daemon.json` do správného umístění pro vaši platformu: 
+Umístit `daemon.json` do správného umístění pro vaši platformu:
 
 | Platforma | Umístění |
 | --------- | -------- |
@@ -410,7 +410,7 @@ Umístit `daemon.json` do správného umístění pro vaši platformu:
 
 Pokud umístění již obsahuje `daemon.json` soubor, přidejte do něj klíč **DNS** a soubor uložte.
 
-*Restartujte modul kontejnerů, aby se aktualizace projevily.*
+Restartujte modul kontejnerů, aby se aktualizace projevily.
 
 | Platforma | Příkaz |
 | --------- | -------- |
@@ -431,7 +431,7 @@ Můžete nastavit server DNS pro *createOptions* modulu v nasazení IoT Edge. Na
 }
 ```
 
-Nezapomeňte tuto hodnotu nastavit i pro moduly *edgeAgent* a *edgeHub* .
+Ujistěte se, že jste tuto konfiguraci nastavili také pro moduly *edgeAgent* a *edgeHub* .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,6 +1,6 @@
 ---
 title: Reference k syntaxi Azure Service Bus SQLFilter | Microsoft Docs
-description: Podrobnosti o gramatice SQLFilter
+description: Tento článek poskytuje podrobné informace o SQLFilter gramatiky. SqlFilter podporuje podmnožinu standardu SQL-92.
 services: service-bus-messaging
 documentationcenter: na
 author: spelluru
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: e490c7c24ed38e2988c1f097b09b508746f08178
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: d5a8e165fcee23c5feecd5935983dd77d3ec6c30
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60591790"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759659"
 ---
 # <a name="sqlfilter-syntax"></a>Syntaxe SQLFilter
 
@@ -60,13 +60,13 @@ Objekt *SqlFilter* je instancí [třídy SqlFilter](/dotnet/api/microsoft.servic
   
 ## <a name="arguments"></a>Argumenty  
   
--   `<scope>`je volitelný řetězec, který označuje rozsah `<property_name>`. Platné hodnoty jsou `sys` nebo `user`. Hodnota označuje rozsah systému, kde `<property_name>` je název veřejné vlastnosti [třídy BrokeredMessage.](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) `sys` `user`označuje obor uživatele, `<property_name>` kde je klíč slovníku [třídy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) . `user`Obor je výchozím rozsahem, `<scope>` Pokud není zadán.  
+-   `<scope>` je volitelný řetězec, který označuje rozsah `<property_name>`. Platné hodnoty jsou `sys` nebo `user`. Hodnota `sys` označuje obor systému, kde `<property_name>` je název veřejné vlastnosti [třídy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user` označuje obor uživatele, kde `<property_name>` je klíč slovníku [třídy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) . obor `user` je výchozím oborem, pokud není zadán `<scope>`.  
   
 ## <a name="remarks"></a>Poznámky
 
 Pokus o přístup k neexistující systémové vlastnosti je chyba, ale pokus o přístup k neexistující vlastnosti uživatele není chyba. Místo toho je vlastnost neexistujícího uživatele interně vyhodnocena jako neznámá hodnota. Neznámá hodnota je zpracována speciálně při vyhodnocování operátoru.  
   
-## <a name="propertyname"></a>property_name  
+## <a name="property_name"></a>property_name  
   
 ```  
 <property_name> ::=  
@@ -80,7 +80,7 @@ Pokus o přístup k neexistující systémové vlastnosti je chyba, ale pokus o 
   
 ### <a name="arguments"></a>Argumenty  
 
- `<regular_identifier>`je řetězec reprezentovaný následujícím regulárním výrazem:  
+ `<regular_identifier>` je řetězec reprezentovaný následujícím regulárním výrazem:  
   
 ```  
 [[:IsLetter:]][_[:IsLetter:][:IsDigit:]]*  
@@ -88,13 +88,13 @@ Pokus o přístup k neexistující systémové vlastnosti je chyba, ale pokus o 
   
 Tato gramatika znamená libovolný řetězec, který začíná písmenem a následuje za jedním nebo více podtržítkem, písmenem nebo číslicí.  
   
-`[:IsLetter:]`označuje libovolný znak Unicode, který je zařazený do kategorie jako písmeno Unicode. `System.Char.IsLetter(c)`Vrátí `true` , `c` Pokud je písmeno Unicode.  
+`[:IsLetter:]` znamená jakýkoli znak Unicode, který je zařazený do kategorie jako písmeno Unicode. `System.Char.IsLetter(c)` vrátí `true`, pokud `c` je písmeno Unicode.  
   
-`[:IsDigit:]`znamená, že každý znak Unicode, který je zařazen jako desítkovou číslici. `System.Char.IsDigit(c)`Vrátí `true` , `c` Pokud je číslice Unicode.  
+`[:IsDigit:]` znamená, že znak Unicode, který je zařazený jako desítková číslice. `System.Char.IsDigit(c)` vrátí `true`, pokud `c` je číslice Unicode.  
   
-Klíčové `<regular_identifier>` slovo nemůže být rezervované.  
+`<regular_identifier>` nemůže být rezervované klíčové slovo.  
   
-`<delimited_identifier>`je libovolný řetězec, který je uzavřený pomocí levé nebo pravé hranaté závorky ([]). Pravá hranatá závorka je vyjádřena jako dvě pravé hranaté závorky. Následují příklady `<delimited_identifier>`:  
+`<delimited_identifier>` je libovolný řetězec, který je uzavřený pomocí levé nebo pravé hranaté závorky ([]). Pravá hranatá závorka je vyjádřena jako dvě pravé hranaté závorky. Níže jsou uvedeny příklady `<delimited_identifier>`:  
   
 ```  
 [Property With Space]  
@@ -102,7 +102,7 @@ Klíčové `<regular_identifier>` slovo nemůže být rezervované.
   
 ```  
   
-`<quoted_identifier>`je libovolný řetězec, který je uzavřený pomocí dvojitých uvozovek. Dvojité uvozovky v identifikátoru jsou reprezentovány dvěma dvojitými uvozovkami. Nedoporučuje se používat identifikátory v uvozovkách, protože je lze snadno zaměňovat pomocí řetězcové konstanty. Pokud je to možné, použijte oddělený identifikátor. Zde je příklad `<quoted_identifier>`:  
+`<quoted_identifier>` je libovolný řetězec, který je uzavřený pomocí dvojitých uvozovek. Dvojité uvozovky v identifikátoru jsou reprezentovány dvěma dvojitými uvozovkami. Nedoporučuje se používat identifikátory v uvozovkách, protože je lze snadno zaměňovat pomocí řetězcové konstanty. Pokud je to možné, použijte oddělený identifikátor. Následuje příklad `<quoted_identifier>`:  
   
 ```  
 "Contoso & Northwind"  
@@ -117,13 +117,13 @@ Klíčové `<regular_identifier>` slovo nemůže být rezervované.
   
 ### <a name="remarks"></a>Poznámky
   
-`<pattern>`musí být výraz, který je vyhodnocen jako řetězec. Slouží jako vzor pro operátor LIKE.      Může obsahovat následující zástupné znaky:  
+`<pattern>` musí být výraz, který je vyhodnocen jako řetězec. Slouží jako vzor pro operátor LIKE.      Může obsahovat následující zástupné znaky:  
   
--   `%`:  Libovolný řetězec nula nebo více znaků.  
+-   `%`: libovolný řetězec nula nebo více znaků.  
   
--   `_`: Libovolný jeden znak.  
+-   `_`: jakýkoli jeden znak.  
   
-## <a name="escapechar"></a>escape_char  
+## <a name="escape_char"></a>escape_char  
   
 ```  
 <escape_char> ::=  
@@ -132,9 +132,9 @@ Klíčové `<regular_identifier>` slovo nemůže být rezervované.
   
 ### <a name="remarks"></a>Poznámky  
 
-`<escape_char>`musí se jednat o výraz, který se vyhodnotí jako řetězec o délce 1. Slouží jako řídicí znak pro operátor LIKE.  
+`<escape_char>` musí být výraz, který je vyhodnocen jako řetězec o délce 1. Slouží jako řídicí znak pro operátor LIKE.  
   
- Například `property LIKE 'ABC\%' ESCAPE '\'` `ABC`odpovídá `ABC%` místo řetězce, který začíná na.  
+ Například `property LIKE 'ABC\%' ESCAPE '\'` odpovídá `ABC%` namísto řetězce, který začíná `ABC`.  
   
 ## <a name="constant"></a>Konstanty  
   
@@ -145,7 +145,7 @@ Klíčové `<regular_identifier>` slovo nemůže být rezervované.
   
 ### <a name="arguments"></a>Argumenty  
   
--   `<integer_constant>`je řetězec čísel, který není uzavřen v uvozovkách a neobsahuje desetinná místa. Hodnoty se ukládají jako `System.Int64` interně a používají stejný rozsah.  
+-   `<integer_constant>` je řetězec čísel, který není uzavřen v uvozovkách a neobsahuje desetinná místa. Hodnoty se ukládají jako `System.Int64` interně a používají stejný rozsah.  
   
      Jedná se například o dlouhé konstanty:  
   
@@ -154,9 +154,9 @@ Klíčové `<regular_identifier>` slovo nemůže být rezervované.
     2  
     ```  
   
--   `<decimal_constant>`je řetězec čísel, který není uzavřen v uvozovkách a obsahuje desetinnou čárku. Hodnoty se ukládají jako `System.Double` interně a používají stejný rozsah nebo přesnost.  
+-   `<decimal_constant>` je řetězec čísel, který není uzavřen v uvozovkách a obsahuje desetinnou čárku. Hodnoty jsou uloženy jako `System.Double` interně a budou následovat po stejném rozsahu nebo přesnosti.  
   
-     V budoucí verzi může být toto číslo Uloženo v jiném datovém typu, aby podporovalo přesnou sémantiku čísel, takže byste neměli spoléhat na skutečnost, že základní datový typ je `System.Double`. `<decimal_constant>`  
+     V budoucí verzi může být toto číslo Uloženo v jiném datovém typu, aby podporovalo přesnou sémantiku čísel, takže byste neměli spoléhat na skutečnost, že podkladový datový typ je `System.Double` `<decimal_constant>`.  
   
      Následují příklady desítkových konstant:  
   
@@ -165,14 +165,14 @@ Klíčové `<regular_identifier>` slovo nemůže být rezervované.
     2.0  
     ```  
   
--   `<approximate_number_constant>`je číslo napsané v matematickém zápisu. Hodnoty se ukládají jako `System.Double` interně a používají stejný rozsah nebo přesnost. Následující příklady představují přibližné číselné konstanty:  
+-   `<approximate_number_constant>` je číslo napsané v matematickém zápisu. Hodnoty jsou uloženy jako `System.Double` interně a budou následovat po stejném rozsahu nebo přesnosti. Následující příklady představují přibližné číselné konstanty:  
   
     ```  
     101.5E5  
     0.5E-2  
     ```  
   
-## <a name="booleanconstant"></a>boolean_constant  
+## <a name="boolean_constant"></a>boolean_constant  
   
 ```  
 <boolean_constant> :=  
@@ -183,7 +183,7 @@ Klíčové `<regular_identifier>` slovo nemůže být rezervované.
 
 Logické konstanty jsou reprezentovány klíčovými slovy **true** nebo **false**. Hodnoty jsou uloženy jako `System.Boolean`.  
   
-## <a name="stringconstant"></a>string_constant  
+## <a name="string_constant"></a>string_constant  
   
 ```  
 <string_constant>  
@@ -193,7 +193,7 @@ Logické konstanty jsou reprezentovány klíčovými slovy **true** nebo **false
 
 Řetězcové konstanty jsou uzavřeny v jednoduchých uvozovkách a obsahují všechny platné znaky Unicode. Jednoduché uvozovky vložené v řetězcové konstantě jsou reprezentovány jako dvě jednoduché uvozovky.  
   
-## <a name="function"></a>Funkce  
+## <a name="function"></a>slouží  
   
 ```  
 <function> :=  
@@ -203,9 +203,9 @@ Logické konstanty jsou reprezentovány klíčovými slovy **true** nebo **false
   
 ### <a name="remarks"></a>Poznámky
   
-Funkce vrátí hodnotu **System. GUID** vygenerovanou `System.Guid.NewGuid()` metodou. `newid()`  
+Funkce `newid()` vrací hodnotu **System. GUID** vygenerovanou metodou `System.Guid.NewGuid()`.  
   
-Funkce vrátí hodnotu vlastnosti, na `name`kterou odkazuje. `property(name)` `name` Hodnotou může být libovolný platný výraz, který vrací řetězcovou hodnotu.  
+Funkce `property(name)` vrací hodnotu vlastnosti, na kterou odkazuje `name`. Hodnotou `name` může být libovolný platný výraz, který vrací řetězcovou hodnotu.  
   
 ## <a name="considerations"></a>Požadavky
   
@@ -217,9 +217,9 @@ Vezměte v úvahu následující sémantiku [SqlFilter](/dotnet/api/microsoft.se
   
 -   Vlastnosti systému jsou veřejné vlastnosti zveřejněné v [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) instancích.  
   
-    Vezměte v úvahu `IS [NOT] NULL` následující sémantiku:  
+    Vezměte v úvahu následující `IS [NOT] NULL` sémantika:  
   
-    -   `property IS NULL`je vyhodnocen `true` jako, pokud buď vlastnost neexistuje, nebo je `null`hodnota vlastnosti.  
+    -   `property IS NULL` se vyhodnotí jako `true`, pokud buď vlastnost neexistuje, nebo je hodnota vlastnosti `null`.  
   
 ### <a name="property-evaluation-semantics"></a>Sémantika vyhodnocení vlastností  
   
@@ -275,9 +275,9 @@ Vezměte v úvahu následující sémantiku [SqlFilter](/dotnet/api/microsoft.se
   
 ### <a name="operator-binding-semantics"></a>Sémantika vazby operátoru
   
--   Relační `>`operátory C# , jako například `>=`, `!=`,,, a `=` sledují stejnou sémantiku jako vazba operátoru v propagačních akcích datového typu a implicitních převodech. `<=` `<`  
+-   Operátory porovnání, jako `>`, `>=`, `<`, `<=`, `!=`a `=`, dodržují stejnou sémantiku jako vazba C# operátoru v propagačních akcích datového typu a implicitní převody.  
   
--   Aritmetické `+`operátory C# , jako `-`například, `/`, `%` , a, následují stejnou sémantiku jako vazba operátoru v propagačních akcích datových typů a implicitních převodech. `*`
+-   Aritmetické operátory, jako `+`, `-`, `*`, `/`a `%`, sledují stejnou sémantiku jako C# vazby operátoru v propagačních akcích datového typu a implicitní převody.
 
 ## <a name="next-steps"></a>Další kroky
 

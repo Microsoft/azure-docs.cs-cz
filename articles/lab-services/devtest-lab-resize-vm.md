@@ -1,6 +1,6 @@
 ---
-title: Změna velikosti virtuálního počítače v testovacím prostředí ve službě Azure DevTest Labs | Dokumentace Microsoftu
-description: Zjistěte, jak změnit velikost virtuálního počítače ve službě Azure DevTest Labs
+title: Změna velikosti virtuálního počítače v testovacím prostředí v Azure DevTest Labs
+description: Naučte se, jak změnit velikost virtuálního počítače v Azure DevTest Labs na základě vašich požadavků na výkon procesoru, sítě nebo disku.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,44 +12,44 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: a0bc618a9c0a02aae884d8be359df6bdbf4c0d2a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf7c425766a97aaa1d143133f04502a0aa3c36cb
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60868062"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756173"
 ---
-# <a name="resize-a-vm-in-a-lab-in-azure-devtest-labs"></a>Změna velikosti virtuálního počítače v testovacím prostředí ve službě Azure DevTest Labs
-Mezi důležité funkce virtuálních počítačů Azure je, že umožňuje změnit velikost virtuálního počítače (VM) na základě vašich potřeb pro procesor, síť nebo výkon disku. Azure DevTest Labs podporuje tuto funkci pro virtuální počítače v testovacím prostředí teď. Funkce změny velikosti dodržuje zásady testovacího prostředí pro povolené velikosti virtuálních počítačů v testovacím prostředí. To znamená můžete změnit velikost virtuálního počítače na pouze povolené velikosti v testovacím prostředí. 
+# <a name="resize-a-vm-in-a-lab-in-azure-devtest-labs"></a>Změna velikosti virtuálního počítače v testovacím prostředí v Azure DevTest Labs
+Jednou z důležitých funkcí virtuálních počítačů Azure je to, že umožňuje změnit velikost virtuálního počítače na základě vašich potřeb pro výkon procesoru, sítě nebo disku. Azure DevTest Labs podporuje tuto funkci pro virtuální počítače v testovacím prostředí. Funkce změny velikosti dodržuje zásady testovacího prostředí pro povolené velikosti virtuálních počítačů v testovacím prostředí. To znamená, že můžete změnit velikost virtuálního počítače jenom na povolené velikosti v testovacím prostředí. 
 
 
-## <a name="steps-to-resize-a-vm-in-a-lab"></a>Postup pro změnu velikosti virtuálního počítače v testovacím prostředí 
-Změna velikosti virtuálního počítače v testovacím prostředí ve službě Azure DevTest Labs, proveďte následující kroky: 
+## <a name="steps-to-resize-a-vm-in-a-lab"></a>Postup změny velikosti virtuálního počítače v testovacím prostředí 
+Pokud chcete změnit velikost virtuálního počítače v testovacím prostředí v Azure DevTest Labs, proveďte následující kroky: 
 
 > [!NOTE]
-> Pokud jste připojeni k virtuálnímu počítači prostřednictvím relace vzdálené plochy (RDP), uložte si práci a odpojte od virtuálního počítače před jejich velikosti.
+> Pokud jste připojeni k virtuálnímu počítači přes relaci vzdálené plochy (RDP), uložte svou práci a odpojte se od virtuálního počítače před změnou velikosti.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vyberte **všechny služby**a pak vyberte **DevTest Labs** ze seznamu.
-3. V seznamu testovacích prostředí vyberte testovací prostředí, která obsahuje virtuální počítač, kterého chcete změnit velikost.  
-4. Na levém panelu, vyberte **Moje Virtual Machines**. 
-5. Ze seznamu virtuálních počítačů vyberte virtuální počítač.
-6. Vyberte **Zastavit** na panelu nástrojů, pokud je virtuální počítač spuštěný. Kontrola stavu operace **oznámení** okna. Počkejte, dokud je virtuální počítač zastavený a ukončete **oznámení** okna. 
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
+2. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
+3. V seznamu Labs vyberte testovací prostředí, které obsahuje virtuální počítač, který chcete změnit.  
+4. Na levém panelu vyberte **moje Virtual Machines**. 
+5. V seznamu virtuálních počítačů vyberte virtuální počítač.
+6. Pokud je virtuální počítač spuštěný, vyberte **zastavit** na panelu nástrojů. Stav operace ověřte v okně **oznámení** . Počkejte, až se virtuální počítač zastaví, a pak okno **oznámení** zavřete. 
 
     ![Zastavení virtuálního počítače](media/devtest-lab-resize-vm/stop-vm.png)
-1. Na stránce virtuální počítač pro virtuální počítač vyberte **velikost** pod **nastavení** v levé nabídce.
+1. Na stránce virtuální počítač pro virtuální počítač vyberte **Velikost** v části **Nastavení** v nabídce vlevo.
 
-    ![Velikost nabídky](media/devtest-lab-resize-vm/size-menu.png)
-1. V **zvolte velikost** Procházet a vyberte velikost virtuálního počítače a klikněte na tlačítko **vyberte**.     
-1. Kontrola stavu operace změny velikosti v **oznámení** okna.
+    ![Nabídka velikost](media/devtest-lab-resize-vm/size-menu.png)
+1. V okně **Zvolte velikost** vyhledejte a vyberte velikost virtuálního počítače a klikněte na **Vybrat**.     
+1. Ověřte stav operace změny velikosti v okně **oznámení** .
 
     ![Změnit velikost stavu](media/devtest-lab-resize-vm/resize-status.png)
-10. Po změně velikosti operace skončí úspěšně, zavřete **oznámení** okna. 
-11. Vyberte **přehled** v levé nabídce a vyberte **restartovat** na panelu nástrojů a restartujte virtuální počítač. 
+10. Po úspěšném dokončení operace změny velikosti zavřete okno **oznámení** . 
+11. V nabídce vlevo vyberte **Přehled** a na panelu nástrojů vyberte **restartovat** a restartujte virtuální počítač. 
 
-## <a name="next-steps"></a>Další postup
-Podrobné informace o funkci změny velikosti podporovaných virtuálních počítačích Azure najdete v tématu [Změna velikosti virtuálních počítačů](https://azure.microsoft.com/blog/resize-virtual-machines/).
+## <a name="next-steps"></a>Další kroky
+Podrobné informace o funkci změny velikosti podporované virtuálními počítači Azure najdete v tématu [Změna velikosti virtuálních počítačů](https://azure.microsoft.com/blog/resize-virtual-machines/).
 
 

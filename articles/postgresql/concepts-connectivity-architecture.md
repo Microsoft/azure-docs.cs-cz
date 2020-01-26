@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: 6ef7736a50783388b5ec0b32c698a0e747a7fd42
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 956c734214f3ecff532d2a73f069ecaa37396109
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458445"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760534"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Architektura připojení v Azure Database for PostgreSQL
 Tento článek popisuje architekturu připojení Azure Database for PostgreSQL a také způsob, jakým se přesměruje přenos do vaší Azure Database for PostgreSQL instance databáze od klientů v rámci i mimo Azure.
@@ -41,8 +41,8 @@ V následující tabulce je uveden seznam primárních a sekundárních IP adres
 | Čína – sever | 139.219.15.17    |
 | Čína – sever 2 | 40.73.50.0     |
 | Východní Asie | 191.234.2.139, 52.175.33.150, 13.75.33.20, 13.75.33.21     |
-| Východní USA | 40.121.158.30, 191.238.6.43  |
-| Východ USA 2 |40.79.84.180, 191.239.224.107, 52.167.104.0     |
+| Východ USA | 40.121.158.30, 191.238.6.43  |
+| Východ USA 2 |40.79.84.180, 191.239.224.107, 52.177.185.181   |
 | Francie – střed | 40.79.137.0, 40.79.129.1  |
 | Německo – střed | 51.4.144.100     |
 | Německo – sever východ | 51.5.144.179  |

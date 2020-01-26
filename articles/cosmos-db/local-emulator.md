@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: bcab5f76b95939b0a9a4232eab2bcf8b2a5fd40b
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 3e51db98403b507c1c34ee455cfe218ea52c529b
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76309978"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760568"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Použití emulátoru Azure Cosmos pro místní vývoj a testování
 
@@ -47,7 +47,7 @@ Emulátor Azure Cosmos má následující požadavky na hardware a software:
 
 * Požadavky na software
   * Windows Server 2012 R2, Windows Server 2016 nebo Windows 10
-  * 64bitový operační systém
+  * 64 – bitový operační systém
 * Minimální požadavky na hardware
   * 2 GB RAM
   * 10 GB volného místa na disku
@@ -181,7 +181,7 @@ Spusťte emulátor z příkazového řádku správce s názvem "/EnableCassandra
 
 Spusťte emulátor z příkazového řádku správce s názvem "/EnableGremlinEndpoint". Případně můžete také nastavit proměnnou prostředí `AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true`
 
-* [Instalace Apache-tinkerpop-Gremlin-Console-3.3.4](https://tinkerpop.apache.org/downloads.html)
+* [Nainstalujte Apache-tinkerpop-Gremlin-Console-3.3.4](https://archive.apache.org/dist/tinkerpop/3.3.4).
 
 * V Průzkumník dat emulátoru vytvořte databázi "DB1" a kolekci "coll1"; pro klíč oddílu vyberte "/Name".
 

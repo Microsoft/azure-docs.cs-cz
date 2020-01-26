@@ -10,16 +10,16 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 07bf3070e42af8a03ce1fd7ea4445fc76557e8a3
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 40f779fa5545e0e9c8fd1aa2cc2689b29dffdb82
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73645515"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760755"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Co je Azure synapse Analytics (dřív SQL DW)?
 
-Azure synapse je bezlimitní analytická služba, která přináší dohromady podnikové datové sklady a analýzu velkých objemů dat. Poskytuje vám volnost v dotazování na data podle vašich podmínek pomocí neserverových nebo zřízených prostředků na vyžádání – ve velkém měřítku. Azure synapse přináší tyto dvě světů společně s jednotným prostředím pro ingestování, přípravu, správu a poskytování dat pro potřeby okamžitého BI a strojového učení.
+Azure Synapse je neomezená analytická služba, která spojuje podnikové skladování dat s analýzami velkých objemů dat. Dává vám možnost dotazovat se na data podle toho, jak vám to vyhovuje, s využitím bezserverové architektury na vyžádání nebo zřízených prostředků, a to ve velkém měřítku. Azure synapse přináší tyto dvě světů společně s jednotným prostředím pro ingestování, přípravu, správu a poskytování dat pro potřeby okamžitého BI a strojového učení.
 
 Azure synapse má čtyři součásti:
 - SQL Analytics: kompletní analýza založená na T-SQL – všeobecně dostupná
@@ -54,43 +54,14 @@ Výsledky analýz můžou jít do aplikací nebo databází pro generování ses
 
 ## <a name="next-steps"></a>Další kroky
 
-- Prozkoumejte [architekturu Azure synapse](/azure/sql-data-warehouse/massively-parallel-processing-mpp-architecture)
+- Prozkoumejte [architekturu Azure synapse](massively-parallel-processing-mpp-architecture.md)
 - Rychlé [Vytvoření fondu SQL](create-data-warehouse-portal.md)
-- [Načíst ukázková data][load sample data].
-- Prozkoumat [videa](/azure/sql-data-warehouse/sql-data-warehouse-videos)
+- [Načíst ukázková data](sql-data-warehouse-load-sample-databases.md).
+- Prozkoumat [videa](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 
 Nebo se podívejte na některé z těchto dalších prostředků Azure synapse.  
-* Hledat [Blogy]
-* Odeslání [Žádosti o funkce]
-* Hledání [Blogy zákaznického poradního týmu]
-* [Vytvoření lístku podpory]
-* Prohledat [Fórum MSDN]
-* Hledat [Fórum Stack Overflow]
-
-
-<!--Image references-->
-[1]: ./media/sql-data-warehouse-overview-what-is/dwarchitecture.png
-
-<!--Article references-->
-[Vytvoření lístku podpory]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[load sample data]: ./sql-data-warehouse-load-sample-databases.md
-[create a data warehouse]: ./sql-data-warehouse-get-started-provision.md
-[Migration documentation]: ./sql-data-warehouse-overview-migrate.md
-[Azure Synapse Analytics solution partners]: ./sql-data-warehouse-partner-business-intelligence.md
-[Integrated tools overview]: ./sql-data-warehouse-overview-integrate.md
-[Backup and restore overview]: ./sql-data-warehouse-restore-database-overview.md
-[Azure glossary]: ../azure-glossary-cloud-terminology.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->
-[Blogy]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
-[Blogy zákaznického poradního týmu]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
-[Žádosti o funkce]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[Fórum MSDN]: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureSQLDataWarehouse
-[Fórum Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw
-[Twitter]: https://twitter.com/hashtag/SQLDW
-[Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
-[SLA for Azure Synapse Analytics]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
-[Volume Licensing]: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
-[Service Level Agreements]: https://azure.microsoft.com/support/legal/sla/
+* Hledat [Blogy](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
+* Odeslání [žádostí o funkce](https://feedback.azure.com/forums/307516-sql-data-warehouse)
+* [Vytvoření lístku podpory](sql-data-warehouse-get-started-create-support-ticket.md)
+* Prohledat [Fórum MSDN](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse)
+* Hledat [Stack Overflow Fórum](https://stackoverflow.com/questions/tagged/azure-sqldw)

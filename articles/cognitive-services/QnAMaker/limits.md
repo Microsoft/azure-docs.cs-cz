@@ -1,22 +1,14 @@
 ---
 title: Omezení a hranice – QnA Maker
-titleSuffix: Azure Cognitive Services
 description: Nástroj QnA Maker má meta omezení pro části znalostní báze knowledge base a služby. Je důležité udržovat znalostní báze v rámci tyto limity, aby bylo možné testovat a publikovat.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/10/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: ddf2cb5730f123038c5dbde7ab07b4022f021ced
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/23/2020
+ms.openlocfilehash: 32e12d9e983795d2fb403a5b6bc304289ece92c2
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381116"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760228"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Omezení nástroje QnA Maker znalostní báze knowledge base a hranice
 
@@ -33,6 +25,15 @@ Maximální počet základů znalostní báze je založený na [omezeních vrstv
  Pokud má vaše úroveň například 15 povolených indexů, můžete publikovat 14 báze znalostí (1 index na publikovanou znalostní bázi). Patnáctý index `testkb`se používá pro všechny znalostní báze pro vytváření a testování.
 
 ## <a name="extraction-limits"></a>Extrakce omezení
+
+### <a name="file-naming-constraints"></a>Omezení pojmenovávání souborů
+
+Názvy souborů nesmí obsahovat tyto znaky:
+
+|Nepoužívat znak|
+|--|
+|`'` jednoduché uvozovky|
+|`"` dvojité uvozovky|
 
 ### <a name="maximum-file-size"></a>Maximální velikost souboru
 

@@ -12,12 +12,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b03833a3e1dd5ee9a3268e19166891243df1b98
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6ba7ba4be103beb494c31a844d1871c22c25b8c6
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422348"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756296"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydání verze
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -84,6 +84,8 @@ Tato verze opravuje chybu, při které některé servery, které byly automatick
 ### <a name="fixed-issues"></a>Oprava potíží
 
 Za určitých okolností servery, které byly automaticky upgradovány na verzi 1.4.18.0, po dokončení upgradu znovu nepovolily Samoobslužné resetování hesla a zpětný zápis hesla. Tato verze automatického upgradu opravuje tento problém a znovu umožňuje Samoobslužné resetování hesla a zpětný zápis hesla.
+
+Opravili jsme chybu v nástroji pro kompresi chyb synchronizace, který nezpracovává správně náhradní znaky.
 
 ## <a name="14180"></a>1.4.18.0
 
@@ -496,9 +498,9 @@ Pomocí následujících změn oprávnění v místní službě AD Zablokujte p�
 
 Typ     | Name (Název)                          | Přístup               | Platí pro
 ---------|-------------------------------|----------------------|--------------|
-Povolit    | SYSTÉM                        | Úplné řízení         | Tento objekt  |
+Povolit    | SOUBORŮ                        | Úplné řízení         | Tento objekt  |
 Povolit    | Enterprise Admins             | Úplné řízení         | Tento objekt  |
-Povolit    | Domain Admins                 | Úplné řízení         | Tento objekt  |
+Povolit    | Správci domény                 | Úplné řízení         | Tento objekt  |
 Povolit    | Správci                | Úplné řízení         | Tento objekt  |
 Povolit    | Podnikové řadiče domény | Vypsat obsah        | Tento objekt  |
 Povolit    | Podnikové řadiče domény | Číst všechny vlastnosti  | Tento objekt  |
@@ -834,7 +836,7 @@ CBool(
     |CertSubject|CertIssuer|CertKeyAlgorithm|
     |CertSubjectNameDN|CertIssuerOid|CertNameInfo|
     |CertSubjectNameOid|CertIssuerDN|IsCert|
-    |CertFriendlyName|CertThumbprint|CertExtensionOids|
+    |CertFriendlyName|certThumbprint|CertExtensionOids|
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
     |CertVersion|CertSignatureAlgorithmOid|Vyberte|

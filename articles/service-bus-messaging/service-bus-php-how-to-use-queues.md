@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: použití Service Bus front s PHP'
-description: 'Rychlý Start: Naučte se používat fronty Service Bus v Azure. Ukázky kódu napsané v PHP.'
+title: Použití front Azure Service Bus s PHP
+description: V tomto kurzu se naučíte vytvářet aplikace PHP pro posílání zpráv a příjem zpráv z Service Bus fronty.
 services: service-bus-messaging
 documentationcenter: php
 author: axisc
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: d576c269f4178c7543327c6b75f46f5487d7a205
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: fcb735d81cac587c75a133ad582f2a839551dcfa
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719183"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760687"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-php"></a>Rychlý Start: použití Service Bus front s PHP
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -51,7 +51,7 @@ V této příručce budete používat funkce služby, které lze volat v rámci 
 ## <a name="configure-your-application-to-use-service-bus"></a>Konfigurace aplikace pro použití Service Bus
 Pokud chcete použít rozhraní API fronty Service Bus, udělejte toto:
 
-1. Odkazování na soubor automatického zavaděče pomocí příkazu [require_once][require_once]
+1. Odkazování na soubor automatického zavaděče pomocí příkazu [require_once][require_once] .
 2. Odkázat na libovolné třídy, které můžete použít.
 
 Následující příklad ukazuje, jak zahrnout soubor automatického zavaděče a odkazovat na třídu `ServicesBuilder`.

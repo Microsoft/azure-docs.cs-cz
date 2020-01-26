@@ -1,6 +1,6 @@
 ---
-title: Procházení zpráv v Azure Service Bus | Dokumentace Microsoftu
-description: Procházet a prohlížení zpráv služby Service Bus
+title: Azure Service Bus – procházení zpráv
+description: Procházení a prohlížení zpráv Service Bus umožňuje klientovi Azure Service Bus zobrazit výčet všech zpráv, které jsou umístěny ve frontě nebo předplatném.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,40 +11,40 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 425cf262b80e83a4d06074a567a2921eee12f9c2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7ad10ad2d4393c1d25a835d0ff8cd0b98ed25879
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60402747"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756392"
 ---
 # <a name="message-browsing"></a>Procházení zpráv
 
-Procházení zpráv nebo prohlížení, umožňuje klientovi služby Service Bus se vytvořit výčet všech zpráv, které jsou umístěny do fronty nebo odběru, obvykle pro účely ladění a diagnostiky.
+Procházení nebo prohlížení zpráv umožňuje klientovi Service Bus vytvořit výčet všech zpráv umístěných ve frontě nebo předplatném, obvykle pro účely diagnostiky a ladění.
 
-Operace peek vrátí všechny zprávy, které existují ve frontě nebo odběru protokolu zpráv, nejen ty, k dispozici pro okamžité získání s `Receive()` nebo `OnMessage()` smyčky. `State` Vlastnosti každé zprávy zjistíte, jestli je aktivní zprávy (k dispozici pro další přijetí), [odložené](message-deferral.md), nebo [naplánované](message-sequencing.md).
+Náhledové operace vrátí všechny zprávy, které existují ve frontě nebo protokolu zpráv odběru, nejen ty, které jsou k dispozici pro okamžité získání pomocí `Receive()` nebo `OnMessage()` smyčce. Vlastnost `State` každé zprávy obsahuje informace o tom, zda je zpráva aktivní (k dispozici pro příjem), [odložena](message-deferral.md)nebo [naplánována](message-sequencing.md).
 
-Spotřebované a vypršela platnost zprávy vyčistily pomocí asynchronního "úklid" spustit a nemusí být přesně zprávy vypršení platnosti a proto `Peek` může ve skutečnosti vrátí zprávy, které již vypršela a že se odeberou nebo dead lettered při operace přijetí je vyvolána další ve frontě nebo odběru.
+Spotřebované a vydané zprávy s vypršenou platností jsou vyčištěny asynchronním "uvolňováním paměti" a nemusí nutně přesně po vypršení platnosti zpráv, a proto `Peek` mohou skutečně vracet zprávy, jejichž platnost již vypršela, a v případě, že dojde k dalšímu vyvolání operace Receive v rámci fronty nebo předplatného, se odstraní nebo odhlásí.
 
-To je obzvláště důležité vzít v úvahu při pokusu o obnovení odložené zprávy z fronty. Zpráva, pro kterou [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc#Microsoft_Azure_ServiceBus_Message_ExpiresAtUtc) uplynutí okamžiku už nejsou vhodné pro pravidelné načítání jiným způsobem, i v případě, že je vracených náhled. Vrací tyto zprávy je záměrné, protože náhled je diagnostický nástroj, který odráží aktuální stav do protokolu.
+To je obzvláště důležité při pokusu o obnovení odložených zpráv z fronty. Zpráva, pro kterou se předala [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc#Microsoft_Azure_ServiceBus_Message_ExpiresAtUtc) Instant, už nemá nárok na pravidelné načítání jakýmkoli jiným způsobem, a to ani v případě, že je vrátí náhled. Vrácení těchto zpráv je záměrné, protože náhled je nástroj pro diagnostiku, který odráží aktuální stav protokolu.
 
-Náhled vrátí zprávy, které byly uzamčeny a jsou právě zpracovávána pomocí dalších příjemců, ale ještě nebyly dokončeny. Ale protože Peek vrací odpojené snímku, stav zámku zprávy nebyly nalezeny u nahlédnout zpráv a [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.lockeduntilutc) a [token LockToken](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.locktoken#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_LockToken) throw vlastnosti [ InvalidOperationException](/dotnet/api/system.invalidoperationexception) když se aplikace pokusí přečíst.
+Prohlížení také vrátí zprávy, které byly uzamčeny a aktuálně jsou zpracovávány jinými příjemci, ale ještě nebyly dokončeny. Vzhledem k tomu, že funkce náhledu vrátí odpojený snímek, stav zámku zprávy nelze pozorovat při prohlížení zpráv a vlastnosti [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.lockeduntilutc) a [LockToken](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.locktoken#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_LockToken) vyvolávají chybu [InvalidOperationException](/dotnet/api/system.invalidoperationexception) , když se aplikace pokusí o jejich čtení.
 
 ## <a name="peek-apis"></a>Náhled rozhraní API
 
-[Náhled/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) a [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) metody existují v klientské knihovny pro všechny .NET a Javu a pro všechny objekty příjemce: **MessageReceiver**, **popsaným**, **QueueClient**, a **SubscriptionClient**. Operace Peek funguje pro všechny fronty a předplatná a jejich příslušné fronty nedoručených zpráv.
+Metody [prohlížet/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) a [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) existují ve všech klientských knihovnách .NET a Java a na všech objektech přijímače: **MessageReceiver**, **MessageSession**, **QueueClient**a **SubscriptionClient**. Náhled funguje ve všech frontách a předplatných a jejich příslušných frontách nedoručených zpráv.
 
-Při volání opakovaně, metody Peek zobrazí všechny zprávy, které existují v protokolu fronty nebo odběru v pořadí podle čísla pořadí, od nejnižší dostupné pořadové číslo k nejvyšší. To je v tom pořadí, ve kterém byly zpráv zařazených do fronty a není pořadí, ve kterém může být nakonec načten zprávy.
+Při opakovaném volání bude metoda náhled vyčíslit všechny zprávy, které existují v protokolu front nebo odběrů, v pořadí pořadového čísla od nejnižších pořadových čísel až po nejvyšší. Toto je pořadí, ve kterém byly zprávy zařazeny do fronty, a nikoli pořadí, ve kterém mohou být zprávy nakonec načteny.
 
-[PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_) načte více zpráv a vrátí je jako výčet. Pokud nejsou k dispozici žádné zprávy, výčet objekt je prázdný, není null.
+[PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_) načte více zpráv a vrátí je jako výčet. Pokud nejsou k dispozici žádné zprávy, je objekt výčtu prázdný, nikoli null.
 
-Dosazením přetížení metody [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) ve kterém se má spustit a pak volat přetížení bez parametrů metody pro výčet Další. **PeekBatch** ekvivalentně funkce, ale všechny najednou načte sadu zpráv.
+Můžete také naplnit přetížení metody pomocí [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) , na kterém se má spustit, a potom volat přetížení metody bez parametrů k dalšímu výčtu. Funkce **PeekBatch** jsou ekvivalentní, ale načítá sadu zpráv najednou.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o zasílání zpráv Service Bus, najdete v následujících tématech:
+Další informace o Service Bus zasílání zpráv najdete v následujících tématech:
 
 * [Fronty, témata a odběry služby Service Bus](service-bus-queues-topics-subscriptions.md)
 * [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)

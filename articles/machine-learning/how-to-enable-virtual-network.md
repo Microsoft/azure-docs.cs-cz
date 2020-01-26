@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: 8c3265210f6ba5bb291401ce4691581dac8a0325
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 53644066276aa8e9fb57b4802142bca3fe4b342f
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289608"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760843"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Zabezpečení experimentů s Azure ML a odvození úloh v rámci Azure Virtual Network
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -179,11 +179,14 @@ Pokud nechcete používat výchozí odchozí pravidla a chcete omezit odchozí p
 
 - Odmítne odchozí připojení k Internetu pomocí pravidel NSG.
 
-- Omezte odchozí provoz na následující položky:
-   - Azure Storage pomocí __označení služby__ __úložiště. Region_Name__ (například Storage. EastUS)
-   - Azure Container Registry pomocí __označení služby__ __AzureContainerRegistry. Region_Name__ (například AzureContainerRegistry. EastUS)
+- V případě __výpočetní instance__ nebo __výpočetního clusteru__omezte odchozí provoz na následující položky:
+   - Azure Storage pomocí __označení služby__ __úložiště__
+   - Azure Container Registry pomocí __označení služby__ __AzureContainerRegistry__
    - Azure Machine Learning pomocí __označení služby__ __AzureMachineLearning__
-   - V případě výpočetní instance Azure Cloud pomocí __označení služby__ __AzureResourceManager__
+   
+- Pro __výpočetní instanci__přidejte také následující položky:
+   - Azure Resource Manager pomocí __označení služby__ __AzureResourceManager__
+   - Azure Active Directory pomocí __označení služby__ __azureactivedirectory selhala__
 
 Konfigurace pravidla NSG se v Azure Portal zobrazuje na následujícím obrázku:
 
@@ -206,12 +209,12 @@ Konfigurace pravidla NSG se v Azure Portal zobrazuje na následujícím obrázku
 > run_config.environment.python.user_managed_dependencies = True
 > ```
 >
-> Estimator training__
+> __Školení Estimator__
 > ```python
-> est = Estimator(source_directory='.', 
->                 script_params=script_params, 
->                 compute_target='local', 
->                 entry_script='dummy_train.py', 
+> est = Estimator(source_directory='.',
+>                 script_params=script_params,
+>                 compute_target='local',
+>                 entry_script='dummy_train.py',
 >                 user_managed=True)
 > run = exp.submit(est)
 > ```

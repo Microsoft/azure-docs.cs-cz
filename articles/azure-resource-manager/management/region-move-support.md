@@ -4,14 +4,14 @@ description: Zobrazí seznam typů prostředků Azure, které se dají přesunou
 author: rayne-wiselman
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 11/21/2019
+ms.date: 01/20/2020
 ms.author: raynew
-ms.openlocfilehash: 60b8708458e081d66514e092edc9ef9af7c33494
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9bc7dc66ccf3049ac878f7871c816e5ade1afde5
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75485244"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760704"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>Podpora přesunu prostředků Azure napříč oblastmi
 
@@ -186,7 +186,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | služba | Ne |
+> | služba |  Ano | 
 
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 
@@ -489,7 +489,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | balíčky | Ne | 
+> | zásilk | Ne | 
 > | plánují | Ne | 
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
@@ -587,7 +587,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | kontrolery | Ne | 
+> | kontrolou | Ne | 
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
@@ -787,7 +787,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- |
 > | operationalizationclusters |  Ne | 
 
-## <a name="microsoftmachinelearningexperimentation"></a>Microsoft.MachineLearningExperimentation
+## <a name="microsoftmachinelearningexperimentation"></a>Microsoft. MachineLearningExperimentation
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
@@ -1001,7 +1001,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | vaults | Ano (pro trezory služby Backup, které si myslím? | 
+> | vaults | Ne. [Zakázat trezor a znovu vytvořit](https://docs.microsoft.com/azure/site-recovery/move-vaults-across-regions) pro Site Recovery  | 
 
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
@@ -1142,7 +1142,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | storageaccounts | Ano?? | 
+> | storageaccounts | Ano | 
 
 ## <a name="microsoftstoragecache"></a>Microsoft.StorageCache
 
@@ -1220,7 +1220,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | úložiště | Ne | 
+> | Store | Ne | 
 
 ## <a name="microsoftvirtualmachineimages"></a>Microsoft.VirtualMachineImages
 

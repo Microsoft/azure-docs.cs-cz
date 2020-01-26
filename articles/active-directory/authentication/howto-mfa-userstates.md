@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7fadd974fdc572dddb403c25e90246fd92b1989
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 61d7227c57422cfe2228002750ec29bffa385d44
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763228"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756758"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak pro uživatele vyžadovat dvoustupňové ověřování
 
@@ -62,9 +62,8 @@ Všichni uživatelé začínají *zakázáni*. Když zaregistrujete uživatele v
 Pro přístup ke stránce, kde můžete zobrazit a spravovat stavy uživatelů, použijte následující postup:
 
 1. Přihlaste se na webu [Azure Portal](https://portal.azure.com) jako správce.
-2. Vyhledejte a vyberte *Azure Active Directory*. Vyberte **Uživatelé** > **Všichni uživatelé**.
-3. Vyberte **Multi-Factor Authentication**.
-   ![vybrat Multi-Factor Authentication](./media/howto-mfa-userstates/selectmfa.png)
+2. Vyhledejte a vyberte *Azure Active Directory*. Vyberte **uživatelé** > **Všichni uživatelé**.
+3. Vyberte **Multi-Factor Authentication**. Pokud chcete zobrazit tuto možnost nabídky, možná se budete muset posunout doprava. Kliknutím na ukázkový snímek obrazovky zobrazíte celé Azure Portal okno a umístění nabídky:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Výběr Multi-Factor Authentication v okně uživatelé ve službě Azure AD")](media/howto-mfa-userstates/selectmfa.png#lightbox)
 4. Otevře se nová stránka, která zobrazuje stav uživatele.
    stav uživatele ![Multi-Factor Authentication – snímek obrazovky](./media/howto-mfa-userstates/userstate1.png)
 

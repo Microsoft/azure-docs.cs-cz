@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 803c82c9926c3b75545b42a9a382fd5c327b7151
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c14bebca775345ab478228f42d9b8416dd223032
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289080"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756190"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: nejčastější dotazy (FAQ)
 
@@ -39,7 +39,7 @@ V tenantovi Azure AD uživatelé patřící do přihlášení klienta pomocí e-
 
 V tenantovi Azure AD B2C se většina aplikací chce přihlašovat pomocí libovolné e-mailové adresy (například joe@comcast.net, bob@gmail.com, sarah@contoso.comnebo jim@live.com). Tento typ účtu je místní účet. Také podporujeme libovolná uživatelská jména jako místní účty (například Jana, Bob, Sarah nebo jim). Při konfiguraci zprostředkovatelů identity pro Azure AD B2C v Azure Portal můžete zvolit jeden z těchto dvou místních typů účtů. Ve vašem tenantovi Azure AD B2C vyberte **Zprostředkovatelé identity**, vyberte **místní účet**a pak vyberte **uživatelské jméno**.
 
-Uživatelské účty pro aplikace se musí vždy vytvořit prostřednictvím uživatelského toku registrace, registrace nebo přihlašování uživatelů nebo pomocí Graph API Azure AD. Uživatelské účty vytvořené v Azure Portal se používají jenom pro správu tenanta.
+Uživatelské účty pro aplikace se dají vytvořit pomocí uživatelského toku registrace, uživatelského toku registrace nebo přihlašování, rozhraní Microsoft Graph API nebo Azure Portal.
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Kteří zprostředkovatelé sociálních identit teď podporujete? Které z nich plánujete v budoucnu podporovat?
 
@@ -77,7 +77,7 @@ K přizpůsobení obsahu ověřovacích e-mailů můžete použít [funkci Brand
 Podpis e-mailu obsahuje název tenanta Azure AD B2C, který jste zadali při prvním vytvoření klienta Azure AD B2C. Název můžete změnit pomocí těchto pokynů:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako globální správce.
-1. Otevřete okno **Azure Active Directory**.
+1. Otevřete okno **Azure Active Directory** .
 1. Klikněte na tlačítko **vlastnosti** kartu.
 1. Změňte pole **název** .
 1. Klikněte na **Uložit** v horní části stránky.
@@ -150,7 +150,7 @@ Můžete použít aktuální prostředí **aplikací** nebo naše nové sjednoce
 1. V části **Spravovat**vyberte **uživatelská nastavení**.
 1. Pokud je k dispozici, vyberte v části **připojení k účtu LinkedIn**možnost **ne**a pak vyberte **Uložit**.
 1. V části **Spravovat**vyberte **vlastnosti** .
-1. V části **Správa přístupu pro prostředky Azure** vyberte **Ano** a pak vyberte **Uložit**.
+1. V části **Správa přístupu pro prostředky Azure**vyberte **Ano**a pak vyberte **Uložit**.
 1. Odhlaste se ze Azure Portal a pak se znovu přihlaste, abyste mohli aktualizovat svůj přístup.
 1. V nabídce na levé straně vyberte **Azure Active Directory** .
 1. Na stránce **Přehled** vyberte **odstranit adresář**. Dokončete proces podle pokynů na obrazovce.
@@ -170,7 +170,7 @@ Můžete použít aktuální prostředí **aplikací** nebo naše nové sjednoce
 1. V části **Spravovat**vyberte **uživatelská nastavení**.
 1. Pokud je k dispozici, vyberte v části **připojení k účtu LinkedIn**možnost **ne**a pak vyberte **Uložit**.
 1. V části **Spravovat**vyberte **vlastnosti** .
-1. V části **Správa přístupu pro prostředky Azure** vyberte **Ano** a pak vyberte **Uložit**.
+1. V části **Správa přístupu pro prostředky Azure**vyberte **Ano**a pak vyberte **Uložit**.
 1. Odhlaste se ze Azure Portal a pak se znovu přihlaste, abyste mohli aktualizovat svůj přístup.
 1. V nabídce na levé straně vyberte **Azure Active Directory** .
 1. Na stránce **Přehled** vyberte **odstranit adresář**. Dokončete proces podle pokynů na obrazovce.

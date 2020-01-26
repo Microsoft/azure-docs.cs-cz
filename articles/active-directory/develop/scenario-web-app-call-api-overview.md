@@ -14,50 +14,48 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 9e123195205bb0eb88f0edd4e2dff2e0da9d84ce
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d121d6c198cb0d92cd098a40096e2f2300f65537
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701650"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758985"
 ---
-# <a name="scenario-web-app-that-calls-web-apis"></a>Scénář: webová aplikace, která volá webová rozhraní API.
+# <a name="scenario-a-web-app-that-calls-web-apis"></a>Scénář: webová aplikace, která volá webová rozhraní API.
 
-Naučte se, jak vytvořit webovou aplikaci, která se přihlašuje uživatelům na platformě Microsoft identity, a pak zavolá webová rozhraní API jménem přihlášeného uživatele.
+Naučte se, jak vytvořit webovou aplikaci, která uživatele podepisuje na platformě Microsoft identity, a pak zavolá webová rozhraní API jménem přihlášeného uživatele.
 
 ## <a name="prerequisites"></a>Požadavky
 
-[!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
+[!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-Tento scénář předpokládá, že jste prošli tímto scénářem:
+V tomto scénáři se předpokládá, že jste už prošli v následujícím scénáři:
 
 > [!div class="nextstepaction"]
-> [Webová aplikace, která přihlásí uživatele](scenario-web-app-sign-user-overview.md)
+> [Webová aplikace, která přihlašuje uživatele](scenario-web-app-sign-user-overview.md)
 
 ## <a name="overview"></a>Přehled
 
-Přidáte do své webové aplikace ověřování, které se proto může přihlašovat uživatelům a volat webové rozhraní API jménem přihlášeného uživatele.
+Do své webové aplikace můžete přidat ověřování, aby mohli podepisovat uživatele a volat webové rozhraní API jménem přihlášeného uživatele.
 
 ![Webová aplikace, která volá webová rozhraní API](./media/scenario-webapp/web-app.svg)
 
-Web Apps, která volá webová rozhraní API:
-
-- jsou důvěrné klientské aplikace.
-- To je důvod, proč zaregistrovali tajný klíč (heslo aplikace nebo certifikát) ve službě Azure AD. Tento tajný klíč se předává během volání služby Azure AD, aby získal token.
+Webové aplikace, které volají webová rozhraní API, jsou důvěrné klientské aplikace.
+To je důvod, proč si zaregistrovali tajný klíč (heslo aplikace nebo certifikát) s Azure Active Directory (Azure AD). Tento tajný klíč se předává během volání služby Azure AD za účelem získání tokenu.
 
 ## <a name="specifics"></a>Specifika
 
 > [!NOTE]
-> Přidání přihlášení do webové aplikace nepoužívá knihovny MSAL, protože se jedná o ochranu webové aplikace. Ochrana knihoven se dosahuje knihovnami s názvem middleware. Toto bylo objekt pro uživatele, kteří se [přihlásili z předchozích scénářů, do webové aplikace](scenario-web-app-sign-user-overview.md) .
+> Přidáním přihlášení do webové aplikace se dozvíte o ochraně samotné webové aplikace. Tato ochrana se dosahuje pomocí knihoven *middlewaru* , nikoli knihovny Microsoft Authentication Library (MSAL). Předchozí scénář – [Webová aplikace, která se přihlásí uživatelům](scenario-web-app-sign-user-overview.md), na kterou se vztahuje.
 >
-> Při volání webových rozhraní API z webové aplikace budete muset získat přístupové tokeny pro tato webová rozhraní API. K získání těchto tokenů můžete použít knihovny MSAL.
+> Tento scénář popisuje, jak volat webová rozhraní API z webové aplikace. Pro tato webová rozhraní API musíte získat přístupové tokeny. K získání těchto tokenů použijete knihovny MSAL k získání těchto tokenů.
 
-Koncoví prostředí vývojářů v tomto scénáři má proto konkrétní aspekty:
+Vývoj pro tento scénář zahrnuje tyto konkrétní úkoly:
 
-- Při [registraci aplikace](scenario-web-app-call-api-app-registration.md)budete muset zadat jednu nebo několik (Pokud aplikaci nasadíte do několika umístění) odpovědi na identifikátory URI, tajné kódy nebo certifikáty je potřeba sdílet s Azure AD.
-- [Konfigurace aplikace](scenario-web-app-call-api-app-configuration.md) musí při registraci aplikace zadat přihlašovací údaje klienta jako sdílené se službou Azure AD.
+- Během [Registrace aplikace](scenario-web-app-call-api-app-registration.md)musíte zadat identifikátor URI, tajný klíč nebo certifikát odpovědi, které se mají sdílet se službou Azure AD. Pokud nasadíte aplikaci do několika míst, poskytnete tyto informace pro každé umístění.
+- [Konfigurace aplikace](scenario-web-app-call-api-app-configuration.md) musí poskytnout přihlašovací údaje klienta, které byly sdíleny se službou Azure AD během registrace aplikace.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Registrace aplikace](scenario-web-app-call-api-app-registration.md)
+> [Webová aplikace, která volá webová rozhraní API: registrace aplikace](scenario-web-app-call-api-app-registration.md)

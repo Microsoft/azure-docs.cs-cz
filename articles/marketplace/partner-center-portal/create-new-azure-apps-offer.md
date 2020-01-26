@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: eb8540ac1904b46ba428b3b1e703e59c8b18d9e8
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 69d7bc81f5adc4797be86f946fdb656b4b6cc682
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046044"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760882"
 ---
 # <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikací Azure
 
@@ -55,7 +55,7 @@ Všechny nové nabídky aplikací Azure musí zahrnovat [identifikátor GUID pos
 Přečtěte si následující dokumentaci k aplikaci Azure, která poskytuje rychlé starty, kurzy a ukázky.
 
 * [Principy šablon Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)
-* Šablony rychlý start:
+* Rychlá zprovoznění:
 
     * [Šablony pro rychlý Start Azure](https://azure.microsoft.com/documentation/templates/)
     * [Šablony Azure pro rychlý Start pro GitHub](https://github.com/azure/azure-quickstart-templates)
@@ -67,7 +67,7 @@ Přečtěte si následující dokumentaci k aplikaci Azure, která poskytuje ryc
     * [Vytváření definičních souborů](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
     * [Publikování aplikace Marketplace](https://docs.microsoft.com/azure/managed-applications/publish-marketplace-app)
 
-* Ukázky:
+* Vzory
 
     * [Azure CLI](https://docs.microsoft.com/azure/managed-applications/cli-samples)
     * [Azure PowerShell](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
@@ -156,19 +156,9 @@ Stránka **vlastností** vám umožní definovat kategorie a odvětví používa
 
 Vyberte minimálně jednu a maximálně tři kategorie, které se použijí k umístění vaší nabídky do příslušných oblastí hledání na webu Marketplace. Nezapomeňte si vyžádat, jak vaše nabídka podporuje tyto kategorie v popisu nabídky. 
 
-### <a name="standard-marketplace-terms-and-conditions"></a>Podmínky a ujednání na úrovni Marketplace
+### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Smlouva standard pro komerční tržiště Microsoftu
 
-Pro zjednodušení procesu nákupu pro zákazníky a omezení právní složitosti pro dodavatele softwaru nabízí společnost Microsoft standardní šablonu smlouvy, aby usnadnila transakci na webu Marketplace.
-
-Místo toho, abyste mohli vlastní podmínky a ujednání, si můžete vybrat, abyste software nabídli v rámci standardní smlouvy, které zákazníci stačí Vet a přijmout jenom jednou.
-
-Standardní kontrakt najdete tady: https://go.microsoft.com/fwlink/?linkid=2041178
-
-Pokud chcete použít standardní smlouvu, zaškrtněte políčko **použít standardní kontrakt?** .
-
-#### <a name="terms-of-use"></a>Podmínky použití
-
-Pokud políčko **použít standardní smlouvu?** nezaškrtněte, budete muset v poli **podmínky použití** zadat vlastní právní podmínku použití. Zadejte až 10 000 znaků textu nebo, pokud vaše podmínkami použití vyžadují delší popis, zadejte adresu URL, na které se můžou najít vaše další licenční smlouvy. Zákazníci budou muset tyto podmínky přijmout, aby mohli svoji aplikaci vyzkoušet.
+[!INCLUDE [Commercial marketplace Standard Contract](./includes/marketplace-contract-text.md)]
 
 ## <a name="offer-listing"></a>Seznam nabídek
 
@@ -461,7 +451,7 @@ U každého objektu zabezpečení vyberte v seznamu (vlastník nebo přispěvate
 
 Použijte [zásady Azure](https://docs.microsoft.com/azure/governance/policy/overview) na spravovanou aplikaci, abyste určili požadavky na dodržování předpisů pro nasazené řešení.  Definice zásad a formátování hodnot parametrů najdete v tématu [Ukázky Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/index).  Můžete nakonfigurovat maximálně pět zásad a jenom jednu instanci jednotlivých zásad.  Některé zásady vyžadují další parametry.  Pro zásady auditu se vyžaduje standardní SKU.  Název zásad je omezený na 50 znaků.
 
-## <a name="co-sell"></a>Spoluprodej
+## <a name="co-sell"></a>Společný prodej
 
 Poskytování informací na kartě spoluprodeje je zcela volitelné pro publikování vaší nabídky. Je nutné, abyste dosáhli svého stavu připraveného pro spoluprodejní a IP adresy pro vlastní prodej. Informace, které poskytnete, budou využívat prodejní týmy Microsoftu k získání dalších informací o řešení při vyhodnocování svých potřeb pro zákazníky. Není k dispozici přímo pro zákazníky.
 

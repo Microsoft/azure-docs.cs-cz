@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 04bc29fb8a89f6e863f7c009e5299d1c702bf976
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 218fb96f6960e194f0fc4a4a3a3e603388b961c8
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721400"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760806"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Vědecké zpracování týmových dat v akci – použití clusteru Azure HDInsight Hadoop s datovou sadou 1 TB
 
@@ -56,7 +56,8 @@ V tomto názorném postupu se tak vyřeší dva ukázkové předpovědi problém
 2. **Regrese**: předpovídá pravděpodobnost ad kliknutím uživatelské funkce.
 
 ## <a name="setup"></a>Nastavte si HDInsight Hadoop cluster pro datové vědy
-**Poznámka:** Tento krok je obvykle úkol **správce** .
+> [!NOTE]
+> Tento krok je obvykle úkol **správce** .
 
 Nastavení prostředí Azure pro datové vědy pro vytváření řešení prediktivní analýzy s využitím clusterů HDInsight ve třech krocích:
 
@@ -107,10 +108,8 @@ K vytvoření tabulky Hive pro datovou sadu Criteo, otevřete ***příkazového 
 > [!NOTE]
 > Ke spuštění libovolného dotazu Hive, jeden vždy použijte následující příkazy:
 >
->
-
-        cd %hive_home%\bin
-        hive
+>        cd %hive_home%\bin
+>        hive
 
 Jakmile se objeví Hive REPL s "hive >"podepsat, stačí vyjmout a vložit dotaz k jeho provedení.
 

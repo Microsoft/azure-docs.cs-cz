@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 1/24/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b3d5aa74705d858349eaca543a7fd86e315a63e6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 15293f6cf5ceafda2dd5727ad85804b432bae54a
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702993"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758746"
 ---
 # <a name="whats-new-for-authentication"></a>Co je nového pro ověřování? 
 
@@ -40,7 +40,20 @@ Systém ověřování mění a přidává funkce průběžně pro zlepšení dod
 
 ## <a name="upcoming-changes"></a>Nadcházející změny
 
-Září 2019: další vynucování sémantiky POST podle pravidel pro analýzu adresy URL – duplicitní parametry aktivují chybu a [Kusovník](https://www.w3.org/International/questions/qa-byte-order-mark) se ignoruje.
+V tuto chvíli není naplánováno žádné.  Níže najdete informace o změnách, které se nacházejí v produktu nebo přicházejí do produkčního prostředí. 
+
+## <a name="february-2020"></a>Únor 2020: 
+
+### <a name="empty-fragments-will-be-appended-to-every-http-redirect-from-the-login-endpoint"></a>Prázdné fragmenty budou připojeny ke každému přesměrování HTTP z koncového bodu přihlášení. 
+
+**Datum účinnosti**: 8. února 2020
+
+**Ovlivněné koncové body**: v 1.0 i v 2.0
+
+**Ovlivněný protokol**: toky OAuth a OIDC, které používají response_type = Query – zahrnuje [tok autorizačního kódu](v2-oauth2-auth-code-flow.md) v některých případech a [implicitní tok](v2-oauth2-implicit-grant-flow.md). 
+
+Když se pošle odpověď na ověření z login.microsoftonline.com do aplikace přes přesměrování protokolu HTTP, služba připojí k adrese URL s odpovědí prázdný fragment.  Tím se zabrání třída útoků přesměrování tím, že zajistí, že prohlížeč vymaže všechny existující fragmenty v žádosti o ověření.  Žádné aplikace by neměly mít závislost na tomto chování. 
+
 
 ## <a name="august-2019"></a>Srpen 2019
 

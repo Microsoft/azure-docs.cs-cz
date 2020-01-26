@@ -1,6 +1,6 @@
 ---
-title: Spuštění objektu pro vytváření imagí z Azure DevOps v Azure DevTest Labs | Microsoft Docs
-description: Naučte se, jak vytvořit vlastní objekt pro vytváření imagí v Azure DevTest Labs.
+title: Spuštění objektu pro vytváření imagí z Azure DevOps v Azure DevTest Labs
+description: Tento článek pojednává o všech přípravcích potřebných ke spuštění objektu pro vytváření imagí z Azure DevOps (dříve Visual Studio Team Services).
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 101ed792f091a5074b42e3d06eed27d606d3d2a7
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: bb67f765684c77ed5f8527226bef578e450579e0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638948"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758678"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>Spuštění objektu pro vytváření imagí z Azure DevOps
 Tento článek pojednává o všech přípravcích potřebných ke spuštění objektu pro vytváření imagí z Azure DevOps (dříve Visual Studio Team Services).
@@ -32,7 +32,7 @@ Prvním krokem při nastavení továrny imagí je vytvoření testovacího prost
 Dalším krokem při přijímání továrny imagí pro váš tým je pochopit, co je k dispozici. Skripty a šablony pro vytváření imagí jsou veřejně dostupné v [úložišti GitHubu pro DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory). Tady je osnova těchto částí:
 
 - Objekt pro vytváření imagí Jedná se o kořenovou složku.
-    - Configuration (Konfigurace): Vstupy do objektu pro vytváření imagí
+    - Rozšířeného. Vstupy do objektu pro vytváření imagí
         - GoldenImages. Tato složka obsahuje soubory JSON, které reprezentují definice vlastních imagí.
         - Labs.json. Soubor, ve kterém se týmy registrují pro příjem konkrétních vlastních imagí.
 - Znakové. Modul pro objekt pro vytváření imagí.
@@ -52,7 +52,7 @@ Všechny prostředí PowerShell, šablony a konfigurace pro objekt pro vytváře
 1. Přejděte na projekt Azure DevOps, který jste vytvořili v předchozím kroku (adresa URL vypadá jako **https:\//\<Account. visualstudio >. VisualStudio. com/MyFirstProject**).
 2. Vyberte **importovat úložiště**.
 3. Zadejte **adresu URL klonu** úložiště DevTest Labs: `https://github.com/Azure/azure-devtestlab`.
-4. Vyberte **Import** (Importovat).
+4. Vyberte **importovat**.
 
     ![Importovat úložiště Git](./media/set-up-devops-lab/import-git-repo.png)
 
@@ -106,7 +106,7 @@ Nejrychlejší způsob, jak nastavit instanční objekt, je umožnit službě Az
 2. Jako **Typ připojení Azure**vyberte **Azure Resource Manager**.
 3. Pro nastavení instančního objektu vyberte odkaz pro **správu** .
 
-Další informace najdete v tomto [příspěvku na blogu](https://devblogs.microsoft.com/devops/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/). Když vyberete odkaz pro **správu** , budete mít na správném místě v DevOps (druhý snímek obrazovky v příspěvku blogu) a nastavíte připojení k Azure. Nezapomeňte při nastavování zvolit **Azure Resource Manager koncový bod služby** .
+Další informace najdete v tomto [blogovém příspěvku](https://devblogs.microsoft.com/devops/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/). Když vyberete odkaz pro **správu** , budete mít na správném místě v DevOps (druhý snímek obrazovky v příspěvku blogu) a nastavíte připojení k Azure. Nezapomeňte při nastavování zvolit **Azure Resource Manager koncový bod služby** .
 
 ## <a name="complete-the-build-task"></a>Dokončení úlohy sestavení
 Pokud vyberete úlohu sestavení, zobrazí se všechny podrobnosti v pravém podokně, které by měly být vyplněny.

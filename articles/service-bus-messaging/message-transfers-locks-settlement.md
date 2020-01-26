@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus přenosů zpráv, zámků a vyrovnání | Microsoft Docs
-description: Přehled Service Busch přenosů zpráv a operací vyrovnání
+title: Azure Service Bus přenosů, zámků a vyrovnání zpráv
+description: Tento článek poskytuje přehled Azure Service Bus přenosů zpráv, zámků a operací vyrovnání.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 01/24/2019
 ms.author: aschhab
-ms.openlocfilehash: 9aaada1ede8912b8b70f37c628ec918eca9be9d2
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: a2c353d612280981a83b32463d34efdc70878495
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676267"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759274"
 ---
-# <a name="message-transfers-locks-and-settlement"></a>Přenos zpráv, zámky a vyrovnání
+# <a name="message-transfers-locks-and-settlement"></a>Přenosy zpráv, zámky a vyrovnání
 
 Ústřední schopností zprostředkovatele zpráv, jako je například Service Bus, je přijmout zprávy do fronty nebo tématu a umístit je k dispozici pro pozdější načtení. *Odeslání* je termín, který se běžně používá k přenosu zprávy do zprostředkovatele zpráv. *Přijetí* je termín, který se běžně používá k přenosu zprávy do načítání klienta.
 
@@ -34,7 +34,7 @@ Pomocí kteréhokoli z podporovaných klientů rozhraní Service Bus API se oper
 
 Pokud je zpráva odmítnuta Service Bus, odmítání obsahuje indikátor chyby a text s "sledovacím číslem" v něm. Odmítání taky obsahuje informace o tom, jestli se operace může opakovat s jakýmkoli očekáváním úspěchu. V klientovi jsou tyto informace přeměněny na výjimku a jsou vyvolány volajícímu operace Send. Pokud byla zpráva přijata, operace se tiše dokončí.
 
-Při použití protokolu AMQP, který je exkluzivní protokol pro klienta .NET Standard a klienta Java a [který je možností pro klienta .NET Framework](service-bus-amqp-dotnet.md), jsou přenosy a vyrovnání zpráv zřetězené a zcela asynchronní a jsou doporučuje se použít varianty rozhraní API asynchronního programování modelu.
+Při použití protokolu AMQP, který je exkluzivní protokol pro klienta .NET Standard a klienta Java a [který je možností pro klienta .NET Framework](service-bus-amqp-dotnet.md), jsou přenosy zpráv a jejich vyrovnání zřetězené a kompletně asynchronní a doporučuje se používat varianty rozhraní API asynchronního programování modelu.
 
 Odesilatel může do přenosu v rychlém přenosu umístit několik zpráv, aniž by musel čekat na potvrzení každé zprávy, jako by to jinak mohlo být případ s protokolem SBMP nebo s HTTP 1,1. Tyto asynchronní operace odeslání jsou dokončeny, protože příslušné zprávy jsou přijímány a uloženy, v dělených entitách nebo při překrytí operace odeslání do různých entit. Doplňování se taky může vyskytnout mimo původní objednávku odeslání.
 
@@ -116,13 +116,13 @@ Přijímající klient iniciuje vypořádání přijaté zprávy s pozitivním p
 
 Když přijímajícímu klientovi se nepovede zpracovat zprávu, ale chce, aby se zpráva znovu doručovat, může explicitně požádat, aby se zpráva uvolnila a odemkla okamžitě tím, že zavolá [opuštění](/dotnet/api/microsoft.servicebus.messaging.queueclient.abandon) nebo může dělat nic a nechat zámek.
 
-Pokud přijímajícímu klientovi se nepovede zpracovat zprávu a ví, že znovu doručí zprávu, a pokusí se to znovu, může zprávu odmítnout, která ji přesune do fronty nedoručených [zpráv voláním](/dotnet/api/microsoft.servicebus.messaging.queueclient.deadletter)nedoručených zpráv, která také umožňuje nastavit vlastní. vlastnost obsahující kód důvodu, který lze načíst pomocí zprávy z fronty nedoručených zpráv.
+Pokud přijímajícímu klientovi se nepovede zpracovat zprávu a ví, že znovu doručí zprávu a opakuje ji, může zprávu odmítnout, takže ji přesune do fronty nedoručených [zpráv voláním](/dotnet/api/microsoft.servicebus.messaging.queueclient.deadletter)nedoručených zpráv, což také umožňuje nastavit vlastní vlastnost včetně kódu důvodu, který lze načíst pomocí zprávy z fronty nedoručených zpráv.
 
 Zvláštní případ vyrovnání je časově rozlišená položka, která je popsána v samostatném článku.
 
 Operace **úplného** nebo **nedoručených zpráv** a operace **RenewLock** můžou selhat kvůli problémům se sítí, pokud vypršela platnost zámku nebo že dojde k jiným podmínkám na straně služby, které zabraňují vyrovnání. V jednom z těchto případů služba pošle negativní potvrzení, že povrchy v klientech rozhraní API jako výjimku. Pokud je důvodem poškozené síťové připojení, zámek se zahodil, protože Service Bus nepodporuje obnovení stávajících odkazů AMQP na jiném připojení.
 
-Pokud se operace **Complete** nezdařila, což nastane obvykle na konci zpracování zpráv a v některých případech po minutách zpracování práce, přijímající aplikace se může rozhodnout, zda zachovává stav práce a při doručení ignoruje stejnou zprávu. podruhé nebo zda Tosses výsledek práce a pokusí se o opakované pokusy, když se zpráva znovu doručí.
+Pokud se operace **Complete** nezdařila, což nastane obvykle na konci zpracování zpráv a v některých případech po minutách zpracování práce, přijímající aplikace může rozhodnout, zda zachovává stav práce, a při druhém doručení ignoruje stejnou zprávu, ať už Tosses výsledek práce, a pokusy o opakování při opětovném doručení zprávy.
 
 Typický mechanismus pro identifikaci duplicitních doručení zpráv je zjištěním ID zprávy, které může a by měl být nastaven odesílatelem na jedinečnou hodnotu, případně musí být zarovnán s identifikátorem z původního procesu. Plánovač úloh by nejspíš nastavil ID zprávy na identifikátor úlohy, kterou se snaží přiřadit k pracovnímu procesu, a pracovní proces bude ignorovat druhý výskyt přiřazení úlohy, pokud je tato úloha již dokončena.
 
@@ -138,6 +138,6 @@ Typický mechanismus pro identifikaci duplicitních doručení zpráv je zjišt�
 
 Další informace o Service Bus zasílání zpráv najdete v následujících tématech:
 
-* [Service Bus fronty, témata a předplatná](service-bus-queues-topics-subscriptions.md)
-* [Začínáme s frontami Service Bus](service-bus-dotnet-get-started-with-queues.md)
-* [Jak používat Service Bus témata a předplatná](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+* [Fronty, témata a odběry služby Service Bus](service-bus-queues-topics-subscriptions.md)
+* [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)
+* [Jak používat témata a odběry Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)

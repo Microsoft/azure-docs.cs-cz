@@ -1,6 +1,6 @@
 ---
-title: Nahrání souboru VHD pomocí Powershellu Azure DevTest Labs | Dokumentace Microsoftu
-description: Nahrání souboru VHD do účtu úložiště testovacího prostředí pomocí Powershellu
+title: Nahrání souboru VHD do Azure DevTest Labs pomocí PowerShellu | Microsoft Docs
+description: Tento článek obsahuje návod, který vám ukáže, jak nahrát soubor VHD do Azure DevTest Labs pomocí PowerShellu.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,54 +12,54 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 56a66c3eb1dad93fad3ad1572989dc0c0aa14632
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a9e5a69cd7840bbaff081a4d47cb60f62a76eda6
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622749"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759751"
 ---
-# <a name="upload-vhd-file-to-labs-storage-account-using-powershell"></a>Nahrání souboru VHD do účtu úložiště testovacího prostředí pomocí Powershellu
+# <a name="upload-vhd-file-to-labs-storage-account-using-powershell"></a>Nahrání souboru VHD do účtu úložiště testovacího prostředí pomocí PowerShellu
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-Ve službě Azure DevTest Labs soubory virtuálního pevného disku slouží k vytváření vlastních imagí, které se používají ke zřízení virtuálních počítačů. Následující kroky vás provedou použitím prostředí PowerShell k nahrání souboru VHD do účtu úložiště testovacího prostředí. Po nahrání souboru VHD [další kroky části](#next-steps) uvádí některé články, které ukazují, jak vytvořit vlastní image z virtuálního pevného disku uloženého souboru. Další informace o discích a virtuálních pevných disků v Azure najdete v tématu [Úvod do managed disks](../virtual-machines/linux/managed-disks-overview.md)
+V Azure DevTest Labs se soubory VHD dají použít k vytvoření vlastních imagí, které se používají ke zřízení virtuálních počítačů. Následující kroky vás provedou použitím prostředí PowerShell k nahrání souboru VHD do účtu úložiště testovacího prostředí. Po nahrání souboru VHD se v [části Další kroky](#next-steps) zobrazí některé články, které ukazují, jak vytvořit vlastní image z nahraného souboru VHD. Další informace o discích a virtuálních pevných discích v Azure najdete v tématu [Úvod do Managed disks](../virtual-machines/linux/managed-disks-overview.md) .
 
 ## <a name="step-by-step-instructions"></a>Podrobné pokyny
 
-Následující kroky vás provedou po nahrání souboru VHD do Azure DevTest Labs pomocí Powershellu. 
+Následující kroky vás provedou odesláním souboru VHD do Azure DevTest Labs pomocí prostředí PowerShell. 
 
-1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k [Portálu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Vyberte **všechny služby**a pak vyberte **DevTest Labs** ze seznamu.
+1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 
-1. V seznamu testovacích prostředí vyberte požadované prostředí.  
+1. V seznamu cvičení vyberte požadované testovací prostředí.  
 
-1. V okně testovacího prostředí, vyberte **konfigurace**. 
+1. V okně testovacího prostředí vyberte **Konfigurace**. 
 
-1. V testovacím prostředí **konfigurace** okně vyberte **vlastních imagí (VHD)** .
+1. V okně **Konfigurace** testovacího prostředí vyberte **vlastní image (VHD)** .
 
-1. Na **vlastních imagí** okno, vyberte **+ přidat**. 
+1. V okně **vlastní image** vyberte **+ Přidat**. 
 
-1. Na **vlastní image** okně vyberte **virtuálního pevného disku**.
+1. V okně **vlastní obrázek** vyberte **VHD**.
 
-1. Na **virtuálního pevného disku** okně vyberte **nahrát VHD pomocí Powershellu**.
+1. V okně **VHD** vyberte **nahrát VHD pomocí PowerShellu**.
 
-    ![Nahrát VHD pomocí Powershellu](./media/devtest-lab-upload-vhd-using-powershell/upload-image-using-psh.png)
+    ![Nahrání VHD pomocí PowerShellu](./media/devtest-lab-upload-vhd-using-powershell/upload-image-using-psh.png)
 
-1. Na **nahrát image pomocí prostředí PowerShell** okno, zkopírujte vygenerovaný skript prostředí PowerShell do textového editoru.
+1. V okně **nahrát obrázek pomocí prostředí PowerShell** Zkopírujte vygenerovaný skript prostředí PowerShell do textového editoru.
 
-1. Upravit **LocalFilePath** parametr **Add-AzureVhd** rutiny tak, aby odkazoval na umístění soubor virtuálního pevného disku, který chcete nahrát.
+1. Upravte parametr **LocalFilePath** rutiny **Add-AzureVhd** tak, aby ODKAZOVAL na umístění souboru VHD, který chcete nahrát.
 
-1. Na příkazový řádek Powershellu, spusťte **Add-AzureVhd** rutiny (s upravenou **LocalFilePath** parametr).
+1. Na příkazovém řádku PowerShellu spusťte rutinu **Add-AzureVhd** (s upraveným parametrem **LocalFilePath** ).
 
 > [!WARNING] 
 > 
-> Proces nahrávání souboru virtuálního pevného disku může být zdlouhavé v závislosti na velikosti souboru virtuálního pevného disku a rychlost připojení.
+> Proces odeslání souboru VHD může být zdlouhavý v závislosti na velikosti souboru VHD a rychlosti připojení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Vytvoření vlastní image ve službě Azure DevTest Labs ze souboru VHD pomocí webu Azure portal](devtest-lab-create-template.md)
-- [Vytvoření vlastní image ve službě Azure DevTest Labs ze souboru VHD pomocí Powershellu](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
+- [Vytvoření vlastní image v Azure DevTest Labs ze souboru VHD pomocí Azure Portal](devtest-lab-create-template.md)
+- [Vytvoření vlastní image v Azure DevTest Labs ze souboru VHD pomocí PowerShellu](devtest-lab-create-custom-image-from-vhd-using-powershell.md)

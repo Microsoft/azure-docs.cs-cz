@@ -2,14 +2,15 @@
 title: Nastavení zotavení po havárii virtuálního počítače Azure pomocí Azure Site Recovery
 description: Zjistěte, jak nastavit zotavení po havárii pro virtuální počítače Azure do jiné oblasti Azure pomocí služby Azure Site Recovery.
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 1/24/2020
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7d78064285057f6abd91c3ca95e01ec86f1a1a39
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 979b390f65363b43f33ce2f09d26844c3cc1a2e8
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169332"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759785"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Nastavení zotavení po havárii pro virtuální počítače Azure
 
@@ -38,7 +39,7 @@ Pro absolvování tohoto kurzu potřebujete:
 Vytvořte trezor v libovolné oblasti, s výjimkou zdrojové oblasti.
 
 1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
-1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Vytvořit prostředek**. Pak vyberte **& nástroje pro správu** > **zálohování a Site Recovery**.
+1. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek**. Pak vyberte **& nástroje pro správu** > **zálohování a Site Recovery**.
 1. Do pole **Název** zadejte popisný název pro identifikaci trezoru. Pokud máte více předplatných, vyberte příslušné předplatné.
 1. Vytvořte skupinu prostředků nebo vyberte existující. Zadejte oblast Azure. Informace o tom, které oblasti jsou podporované, najdete v části s geografickou dostupností v tématu s [podrobnostmi o cenách Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
 1. Pokud chcete získat přístup k trezoru z řídicího panelu, vyberte **Připnout na řídicí panel** a pak vyberte **vytvořit**.
@@ -75,17 +76,6 @@ Pokud k řízení odchozího připojení používáte proxy server brány firewa
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Odchozí připojení pro rozsahy IP adres
 
 Pokud používáte skupinu zabezpečení sítě (NSG), vytvořte pravidla NSG založená na značkách služby pro přístup k Azure Storage, Azure Active Directory, Site Recovery službě a sledování Site Recovery. [Další informace](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges).
-
-> [!NOTE]
-> Doporučuje se vždycky nakonfigurovat pravidla NSG pomocí značek služeb pro odchozí přístup.
-
-Pokud chcete řídit odchozí připojení pomocí IP adres, povolte tyto adresy pro brány firewall založené na protokolu IP, proxy nebo pravidla NSG:
-
-- [Rozsahy IP adres datacentra Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653)
-- [Rozsahy IP adres datacentra Windows Azure v Německu](https://www.microsoft.com/download/details.aspx?id=54770)
-- [Rozsahy IP adres datacentra Windows Azure v Číně](https://www.microsoft.com/download/details.aspx?id=42064)
-- [Adresy URL a rozsahy IP adres pro Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
-- [IP adresy koncových bodů služby Site Recovery](https://aka.ms/site-recovery-public-ips)
 
 ## <a name="verify-azure-vm-certificates"></a>Ověření certifikátů virtuálních počítačů Azure
 

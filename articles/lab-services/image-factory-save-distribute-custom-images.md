@@ -1,6 +1,6 @@
 ---
-title: Uložit a distribuce imagí ve službě Azure DevTest Labs | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit objekt pro vytváření vlastní image ve službě Azure DevTest Labs.
+title: Ukládání a distribuce imagí v Azure DevTest Labs | Microsoft Docs
+description: Tento článek popisuje kroky pro uložení vlastních imagí z již vytvořených virtuálních počítačů v Azure DevTest Labs.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -10,55 +10,55 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: feabd055833e5f0d850138af528cce1da82cae49
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e5bc8e5041bfe6d95e3ff1a93bb3338ccead5bb4
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622600"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759427"
 ---
 # <a name="save-custom-images-and-distribute-to-multiple-labs"></a>Uložení vlastních imagí a jejich distribuce do několika testovacích prostředí
-Tento článek popisuje poskytuje kroky pro uložení vlastních imagí z již vytvořené virtuální počítače (VM). Zabývá se taky, jak se bude distribuovat do dalších DevTest Labs v organizaci těchto vlastních imagí.
+Tento článek popisuje kroky pro uložení vlastních imagí z již vytvořených virtuálních počítačů (VM). Také se zabývá tím, jak distribuovat tyto vlastní image do dalších DevTest Labs v organizaci.
 
 ## <a name="prerequisites"></a>Požadavky
-Následující položky by už měla:
+Již by měly být zavedeny následující položky:
 
-- Testovací prostředí pro vytváření bitové kopie ve službě Azure DevTest Labs.
-- Projekt DevOps Azure, který se používá k automatizaci vytváření bitové kopie.
-- Umístění zdrojového kódu obsahující skripty a konfiguraci (v našem příkladu ve stejném projektu DevOps, které jsou uvedené v předchozím kroku).
-- K ladění úloh Azure Powershellu v definici sestavení.
+- Testovací prostředí pro objekt pro vytváření imagí v Azure DevTest Labs.
+- Projekt Azure DevOps, který slouží k automatizaci objektu pro vytváření imagí.
+- Umístění zdrojového kódu obsahující skripty a konfiguraci (v našem příkladu v rámci stejného projektu DevOps, jak je uvedeno v předchozím kroku).
+- Definice sestavení pro orchestraci úloh prostředí Azure PowerShell.
 
-V případě potřeby, postupujte podle kroků v [spustit objekt pro vytváření image z Azure DevOps](image-factory-set-up-devops-lab.md) vytvořit nebo nastavit tyto položky. 
+V případě potřeby postupujte podle kroků v části [spuštění objektu pro vytváření imagí z Azure DevOps](image-factory-set-up-devops-lab.md) a vytvořte nebo nastavte tyto položky. 
 
-## <a name="save-vms-as-generalized-vhds"></a>Uložit jako zobecněné virtuální pevné disky virtuálních počítačů
-Uložte stávající virtuální počítače jako zobecněné virtuální pevné disky.  Zde je ukázkový skript Powershellu pro uložení existujících virtuálních počítačů jako zobecněné virtuální pevné disky. Pro použití je třeba nejprve přidat další **prostředí Azure Powershell** úloh k definici sestavení, jak je znázorněno na následujícím obrázku:
+## <a name="save-vms-as-generalized-vhds"></a>Ukládání virtuálních počítačů jako zobecněných virtuálních pevných disků
+Uložte stávající virtuální počítače jako zobecněné virtuální pevné disky.  K dispozici je ukázkový skript PowerShellu pro uložení stávajících virtuálních počítačů jako generalizované virtuální pevné disky. Pokud ho chcete použít, přidejte do definice sestavení další úlohu **Azure PowerShellu** , jak je znázorněno na následujícím obrázku:
 
-![Přidejte krok prostředí Azure PowerShell](./media/save-distribute-custom-images/powershell-step.png)
+![Přidat Azure PowerShell krok](./media/save-distribute-custom-images/powershell-step.png)
 
-Až budete mít nový úkol v seznamu, vyberte položku, takže jsme můžete Vyplňte všechny podrobnosti, jak je znázorněno na následujícím obrázku: 
+Jakmile budete mít nový úkol v seznamu, vyberte položku, abychom mohli vyplnit všechny podrobnosti, jak je znázorněno na následujícím obrázku: 
 
-![Nastavení prostředí PowerShell](./media/save-distribute-custom-images/powershell-settings.png)
+![Nastavení PowerShellu](./media/save-distribute-custom-images/powershell-settings.png)
 
 
-## <a name="generalized-vs-specialized-custom-images"></a>Generalizované vs. vlastní specializované Image
-V [webu Azure portal](https://portal.azure.com), při vytváření vlastní image z virtuálního počítače, můžete zvolit, aby zobecněný nebo speciální vlastní image.
+## <a name="generalized-vs-specialized-custom-images"></a>Zobecněné a specializované vlastní image
+Při vytváření vlastní image z virtuálního počítače na [Azure Portal](https://portal.azure.com)se můžete rozhodnout, že budete mít zobecněnou nebo specializovanou vlastní image.
 
-- **Vlastní specializované image:** Nástroj Sysprep/zrušení zřízení se nespustí na počítači. To znamená, že na obrázku je přesnou kopii disku s operačním systémem na existující virtuální počítač (snímek).  Stejné soubory, aplikace, uživatelské účty, název počítače a tak dále, jsou všechny k dispozici, když vytvoříme nový počítač z vlastní image.
-- **Vlastní generalizované Image:** Na počítači byl spuštěn nástroj Sysprep/zrušení zřízení.  Při spuštění tohoto procesu odebere uživatelské účty, odebere název počítače, odstraní uživatele podregistrům registru, atd., s cílem generalizace bitovou kopii, takže je možné přizpůsobit při vytváření jiného virtuálního počítače.  Když zobecnit virtuální počítač (spuštěním nástroje sysprep), proces odstraní aktuální virtuální počítač – již nebude funkční.
+- **Speciální vlastní image:** Nástroj Sysprep/zrušení zřízení nebyl v počítači spuštěn. To znamená, že obrázek je přesnou kopii disku s operačním systémem na stávajícím virtuálním počítači (snímek).  Stejné soubory, aplikace, uživatelské účty, název počítače a tak dále jsou přítomny, když vytvoříme nový počítač z této vlastní image.
+- **Zobecněná vlastní bitová kopie:** V počítači se spustil nástroj Sysprep/zrušení zřízení.  Když se tento proces spustí, odebrání uživatelských účtů, odebrání názvu počítače, odstranění podregistrů registru uživatele atd., s cílem generalizace image, aby bylo možné je přizpůsobit při vytváření jiného virtuálního počítače.  Když nasadíte virtuální počítač (spuštěním nástroje Sysprep), proces odstraní aktuální virtuální počítač – již nebude funkční.
 
-Skript pro přichycení vlastních imagí v objektu pro vytváření bitové kopie se uloží virtuální pevné disky pro virtuální počítače vytvořené v předchozím kroku (identifikován na základě značky na prostředek v Azure).
+Skript pro přichycení vlastních imagí v objektu pro vytváření imagí uloží VHD pro všechny virtuální počítače vytvořené v předchozím kroku (identifikované na základě značky na prostředku v Azure).
 
-## <a name="update-configuration-for-distributing-images"></a>Aktualizovat konfiguraci pro distribuci bitové kopie
-Dalším krokem v procesu je nasdílejte vlastní Image z testovacího prostředí objekt pro vytváření bitové kopie si do jinými prostředími, které je třeba je. Je základní součástí tohoto procesu **labs.json** konfigurační soubor. Tento soubor můžete najít **konfigurace** složky obsažené v objektu pro vytváření bitové kopie.
+## <a name="update-configuration-for-distributing-images"></a>Aktualizace konfigurace pro distribuci imagí
+Dalším krokem v procesu je odeslání vlastních imagí z testovacího prostředí z image Factory do všech ostatních laboratoří, které je potřebují. Základní součástí tohoto procesu je konfigurační soubor **Labs. JSON** . Tento soubor najdete ve složce pro **konfiguraci** , která je součástí objektu pro vytváření imagí.
 
-Uvedená v konfiguračním souboru labs.json dvě klíčové věci:
+V konfiguračním souboru Labs. JSON jsou uvedené dvě klíčové věci:
 
-- Jednoznačná identifikace konkrétní cílové prostředí pomocí ID předplatného a název testovacího prostředí.
-- Konkrétní sadu imagí, které by měl být nahrány do testovacího prostředí jako relativní cesty ke kořenu konfigurace. Můžete zadat celou složku (Chcete-li získat všechny Image v této složce) příliš.
+- Jednoznačná identifikace konkrétního cílového testovacího prostředí s využitím ID předplatného a názvu testovacího prostředí.
+- Konkrétní sada imagí, která by měla být vložena do testovacího prostředí jako relativní cesty ke kořenu konfigurace. Můžete zadat celou složku (k získání všech imagí v této složce).
 
-Tady je příklad souboru labs.json pomocí dvou labs uvedené. V tomto případě jsou distribuci Image do dvou různých testovacích prostředí.
+Tady je ukázkový soubor Labs. JSON se dvěma cvičeními uvedenými níže. V tomto případě distribuujete image do dvou různých laboratoří.
 
 ```json
 {
@@ -83,16 +83,16 @@ Tady je příklad souboru labs.json pomocí dvou labs uvedené. V tomto případ
 ```
 
 ## <a name="create-a-build-task"></a>Vytvoření úlohy sestavení
-Pomocí stejného postupu jste viděli dříve v tomto článku, přidat další **prostředí Azure Powershell** úloha sestavení, definice sestavení. Vyplňte podrobnosti, jak je znázorněno na následujícím obrázku: 
+Pomocí stejných kroků, které jste si poznamenali dříve v tomto článku, přidejte do definice sestavení další úlohu **Azure PowerShell** buildu. Vyplňte podrobnosti, jak je znázorněno na následujícím obrázku: 
 
-![Úloha k distribuci bitové kopie sestavení](./media/save-distribute-custom-images/second-build-task-powershell.png)
+![Sestavit úlohu pro distribuci imagí](./media/save-distribute-custom-images/second-build-task-powershell.png)
 
 Parametry jsou: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(DevTestLabName) -maxConcurrentJobs 20`
 
-Tato úloha přijímá všech vlastních imagí, které jsou k dispozici v objektu pro vytváření bitové kopie a je nasadí na všechny testovací prostředí definované v souboru Labs.json.
+Tato úloha převezme všechny vlastní image v továrně imagí a nabídne je do všech laboratoří definovaných v souboru Labs. JSON.
 
-## <a name="queue-the-build"></a>Zařaďte sestavení do fronty
-Po dokončení úlohy sestavení distribuční fronty nové sestavení, abyste měli jistotu, že všechno funguje. Po úspěšném dokončení sestavení nové vlastní Image se zobrazí v cílovém testovacím prostředí, který jste zadali do konfiguračního souboru Labs.json.
+## <a name="queue-the-build"></a>Zařazení sestavení do fronty
+Po dokončení úlohy sestavení distribuce zaznamenejte nové sestavení, abyste se ujistili, že všechno funguje. Po úspěšném dokončení sestavení se nové vlastní image zobrazí v cílovém testovacím prostředí, které jste zadali do konfiguračního souboru Labs. JSON.
 
-## <a name="next-steps"></a>Další postup
-V další článek v sérii aktualizujte objekt pro vytváření bitové kopie s uchovávání informací zásady a vyčištění kroky: [Nastavit zásady uchovávání informací a spouštění skriptů čištění](image-factory-set-retention-policy-cleanup.md).
+## <a name="next-steps"></a>Další kroky
+V dalším článku v řadě aktualizujete objekt pro vytváření imagí pomocí zásad uchovávání a kroků čištění: [nastavte zásady uchovávání informací a spusťte skripty pro vyčištění](image-factory-set-retention-policy-cleanup.md).

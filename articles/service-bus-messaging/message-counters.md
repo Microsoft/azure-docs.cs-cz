@@ -1,6 +1,6 @@
 ---
-title: Počet zpráv Azure Service Bus | Dokumentace Microsoftu
-description: Načtěte počet zpráv Azure Service Bus.
+title: Azure Service Bus – počet zpráv
+description: Načtěte počet zpráv uchovávaných ve frontách a odběrech pomocí Azure Resource Manager a rozhraní API Azure Service Bus NamespaceManager.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,22 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: adfd8c5849cfee69805715378a3f56ec9f685b00
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3a4fca0b3b60fcb76bcdc4f5f2d53df816c5053b
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60403954"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756368"
 ---
 # <a name="message-counters"></a>Čítače zpráv
 
-Počet zpráv držených ve front a odběrů pomocí Azure Resource Manageru a služby Service Bus může načíst [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) rozhraní API v rozhraní .NET Framework SDK.
+Počet zpráv ve frontách a odběrech můžete načíst pomocí Azure Resource Manager a rozhraní API Service Bus [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) v sadě SDK .NET Framework.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Pomocí Powershellu můžete získat počet následujícím způsobem:
+Pomocí PowerShellu můžete tento počet získat následujícím způsobem:
 
 ```powershell
 (Get-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue).CountDetails
@@ -34,19 +34,19 @@ Pomocí Powershellu můžete získat počet následujícím způsobem:
 
 ## <a name="message-count-details"></a>Podrobnosti o počtu zpráv
 
-Znalost, počet aktivních zpráv jsou užitečné při určování, zda fronta vytvoří nevyřízenou položku, která vyžaduje více prostředků ke zpracování, než co aktuálně nasazené. Následující podrobnosti o čítači jsou k dispozici v [MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) třídy:
+Znalost počtu aktivních zpráv je užitečná při určování, zda fronta sestaví nevyřízené položky, které vyžadují více prostředků pro zpracování, než kolik je aktuálně nasazeno. Ve třídě [MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) jsou k dispozici následující podrobnosti čítače:
 
--   [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ActiveMessageCount): Zprávy ve frontě nebo odběru, které jsou v aktivním stavu a je připravený k doručení.
--   [DeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.deadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_DeadLetterMessageCount): Zprávy ve frontě nedoručených zpráv.
--   [ScheduledMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.scheduledmessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ScheduledMessageCount): Zprávy v naplánované stavu.
--   [TransferDeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transferdeadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferDeadLetterMessageCount): Zprávy, které se nepodařilo přenos do další fronty nebo tématu a byla přesunuta do fronty nedoručených zpráv, přenosu.
--   [TransferMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transfermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferMessageCount): Zprávy čekající na vyřízení přenos do další fronty nebo tématu.
+-   [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ActiveMessageCount): zprávy ve frontě nebo předplatném, které jsou v aktivním stavu a připravené k doručení.
+-   [DeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.deadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_DeadLetterMessageCount): zprávy ve frontě nedoručených zpráv.
+-   [ScheduledMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.scheduledmessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ScheduledMessageCount): zprávy v naplánovaném stavu.
+-   [TransferDeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transferdeadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferDeadLetterMessageCount): zprávy, které se nepodařilo přenést do jiné fronty nebo tématu, a byly přesunuty do fronty nedoručených zpráv přenosu.
+-   [TransferMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transfermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferMessageCount): zprávy čekající na přenos do jiné fronty nebo tématu.
 
-Pokud aplikace chce škálovat prostředky na základě délky fronty, je to měl dělat implementovaný s měřené tempu. Získání čítače zpráv je náročná operace uvnitř zprostředkovatele zpráv a provádění se často přímo a nepříznivě ovlivňuje výkon entity.
+Pokud aplikace chce škálovat prostředky na základě délky fronty, měla by to udělat se změřeným tempem. Získání čítačů zpráv je náročná operace uvnitř zprostředkovatele zpráv a jejich provádění je často přímo a nepříznivě ovlivňuje výkon entity.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o zasílání zpráv Service Bus, najdete v následujících tématech:
+Další informace o Service Bus zasílání zpráv najdete v následujících tématech:
 
 * [Fronty, témata a odběry služby Service Bus](service-bus-queues-topics-subscriptions.md)
 * [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)

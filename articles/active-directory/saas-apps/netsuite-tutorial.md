@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/22/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9be353e6a030708ea0b9939689d8669506d3b80
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 6a920e58f1ffd4c3e3e9769bf6346100a8677b90
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289029"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760044"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Kurz: Integrace jednotného přihlašování (SSO) Azure AD pomocí NetSuite
 
@@ -98,8 +98,12 @@ Pokud chcete povolit jednotné přihlašování služby Azure AD v Azure Portal,
     | `https://<Account ID>.na1.sandbox.NetSuite.com/saml2/acs`|
     | `https://<Account ID>.na2.sandbox.NetSuite.com/saml2/acs`|
 
-    > [!NOTE]
-    > Hodnoty v předchozích adresách URL nejsou reálné. Aktualizujte je skutečnou adresou URL odpovědi. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta NetSuite](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml). Můžete se také podívat na formáty zobrazené v části **základní konfigurace SAML** v Azure Portal.
+    * V části Konfigurace NetSuite se zobrazí hodnota **>`Account ID`** , která je vysvětlena dále v kurzu v kroku 8 v části Konfigurace Netsuite.< V tomto případě najdete konkrétní doménu (například system.na0.netsuite.com).
+
+        ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/domain-value.png)
+
+        > [!NOTE]
+        > Hodnoty v předchozích adresách URL nejsou reálné. Aktualizujte je skutečnou adresou URL odpovědi. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta NetSuite](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml). Můžete se také podívat na formáty zobrazené v části **základní konfigurace SAML** v Azure Portal.
 
 1. NetSuite aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
@@ -204,7 +208,7 @@ V této části povolíte uživateli B. Simon používat jednotné přihlašová
 
     b. V podokně **informace o společnosti** v pravém sloupci ZKOPÍRUJTE hodnotu **ID účtu** .
 
-    c. Vložte **ID účtu** , které jste zkopírovali z účtu NetSuite do pole **hodnota atributu** ve službě Azure AD. 
+    c. Vložte **ID účtu** , které jste zkopírovali z účtu NetSuite do pole **hodnota atributu** ve službě Azure AD.
 
 10. Předtím, než mohou uživatelé provádět jednotné přihlašování do NetSuite, musí být nejprve přiřazena příslušná oprávnění v NetSuite. Chcete-li přiřadit tato oprávnění, postupujte takto:
 
@@ -222,7 +226,7 @@ V této části povolíte uživateli B. Simon používat jednotné přihlašová
 
     ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/ns-new-role.png)
 
-    e. Vyberte **Save** (Uložit).
+    e. Vyberte **Uložit**.
 
     f. V horním navigačním panelu vyberte **oprávnění**. Pak vyberte **Nastavení**.
 
@@ -230,7 +234,7 @@ V této části povolíte uživateli B. Simon používat jednotné přihlašová
 
     g. Vyberte **jednotné přihlašování SAML**a pak vyberte **Přidat**.
 
-    h. Vyberte **Save** (Uložit).
+    h. Vyberte **Uložit**.
 
     i. V horním navigačním panelu vyberte **Nastavení**a pak vyberte **Správce instalace**.
 
@@ -248,7 +252,7 @@ V této části povolíte uživateli B. Simon používat jednotné přihlašová
 
     ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/ns-add-role.png)
 
-    m. Vyberte **Save** (Uložit).
+    m. Vyberte **Uložit**.
 
 ### <a name="create-the-netsuite-test-user"></a>Vytvořit testovacího uživatele NetSuite
 

@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: jak používat Azure Service Bus fronty s Ruby'
-description: 'Rychlý Start: Naučte se používat fronty Service Bus v Azure. Ukázky kódu napsané v Ruby.'
+title: Použití Azure Service Bus front s Ruby
+description: V tomto kurzu se naučíte vytvářet aplikace v Ruby pro posílání zpráv a příjem zpráv z Service Bus fronty.
 services: service-bus-messaging
 documentationcenter: ruby
 author: axisc
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 09fdc58254d260b6ffeff958b6bbda50332adfac
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a699543bb442e7c57d57e72acb2cdf6ac40159c1
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718773"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760585"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-ruby"></a>Rychlý Start: jak používat Service Bus fronty s Ruby
 
@@ -62,7 +62,7 @@ queue = azure_service_bus_service.create_queue(queue)
 ```
 
 ## <a name="how-to-send-messages-to-a-queue"></a>Postup odesílání zpráv do fronty
-Chcete-li odeslat zprávu do fronty Service Bus, aplikace zavolá metodu `send_queue_message()` v objektu **Azure:: ServiceBusService** . Zprávy odeslané do (a přijaté z) Service Bus fronty jsou objekty **Azure:: ServiceBus:: BrokeredMessage** a mají sadu standardních vlastností (například `label` a `time_to_live`), slovník, který se používá k uložení vlastních vlastností specifických pro aplikace. a tělo libovolných aplikačních dat. Aplikace může tělo zprávy nastavit tak, že jako zprávu předáte řetězcovou hodnotu a všechny požadované standardní vlastnosti se naplní výchozími hodnotami.
+Chcete-li odeslat zprávu do fronty Service Bus, aplikace zavolá metodu `send_queue_message()` v objektu **Azure:: ServiceBusService** . Zprávy odeslané do (a přijaté z) Service Bus fronty jsou objekty **Azure:: ServiceBus:: BrokeredMessage** a mají sadu standardních vlastností (například `label` a `time_to_live`), slovník, který slouží k uložení vlastních vlastností specifických pro aplikaci a tělo libovolných aplikačních dat. Aplikace může tělo zprávy nastavit tak, že jako zprávu předáte řetězcovou hodnotu a všechny požadované standardní vlastnosti se naplní výchozími hodnotami.
 
 Následující příklad ukazuje, jak odeslat zkušební zprávu do fronty s názvem `test-queue` pomocí `send_queue_message()`:
 

@@ -1,5 +1,5 @@
 ---
-title: Toky dat mapování Parametrizace
+title: Parametrizace mapování toků dat
 description: Naučte se parametrizovat tok dat mapování z kanálů Data Factory.
 author: kromerm
 ms.author: makromer
@@ -7,14 +7,14 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: c589cfeab7a812e09ce7f7620e93b72bd362859a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: c717d9ab44493d15589030073cd2ab260ef52e1c
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746125"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760211"
 ---
-# <a name="parameterizing-mapping-data-flows"></a>Toky dat mapování Parametrizace
+# <a name="parameterizing-mapping-data-flows"></a>Parametrizace mapování toků dat
 
 Mapování toků dat v Azure Data Factory podporuje použití parametrů. Parametry můžete definovat uvnitř definice toku dat, kterou pak můžete použít v celém výrazu. Hodnoty parametrů lze nastavit pomocí kanálu volání prostřednictvím aktivity spustit tok dat. Máte tři možnosti, jak nastavit hodnoty ve výrazech aktivity toku dat:
 
@@ -23,9 +23,6 @@ Mapování toků dat v Azure Data Factory podporuje použití parametrů. Parame
 * Pro nastavení hodnoty statického literálu použijte buď jazyk výrazů.
 
 Využijte tuto možnost k tomu, aby vaše datové toky byly pro obecné účely, flexibilní a opakovaně použitelné. Pomocí těchto parametrů můžete parametrizovat nastavení toku dat a výrazů.
-
-> [!NOTE]
-> Chcete-li používat výrazy toku řízení kanálu, musí být parametr toku dat typu String.
 
 ## <a name="create-parameters-in-a-mapping-data-flow"></a>Vytváření parametrů v toku dat mapování
 

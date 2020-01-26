@@ -1,18 +1,18 @@
 ---
 title: Vytvoření šablony Azure image Builder (Preview)
 description: Naučte se, jak vytvořit šablonu pro použití s nástrojem Azure image Builder.
-author: cynthn
-ms.author: cynthn
-ms.date: 07/31/2019
+author: danis
+ms.author: danis
+ms.date: 01/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 4a411603ca5c3c79da0d596396d8fde80b568af2
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9183805e2817459ac2c408648981b6989edf4e62
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763075"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760007"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Verze Preview: Vytvoření šablony Azure image Builder 
 
@@ -28,11 +28,15 @@ Toto je základní formát šablony:
     "tags": {
         "<name": "<value>",
         "<name>": "<value>"
-             },
+             }
     "identity":{},           
     "dependsOn": [], 
     "properties": { 
         "buildTimeoutInMinutes": <minutes>, 
+        "vmProfile": 
+            {
+            "vmSize": "<vmSize>"
+            },
         "build": {}, 
         "customize": {}, 
         "distribute": {} 
@@ -55,7 +59,7 @@ Toto je základní formát šablony:
 
 Umístění je oblast, kde se vytvoří vlastní image. Pro náhled tvůrce imagí se podporují tyto oblasti:
 
-- Východní USA
+- Východ USA
 - Východ USA 2
 - Středozápadní USA
 - Západní USA
@@ -64,6 +68,24 @@ Umístění je oblast, kde se vytvoří vlastní image. Pro náhled tvůrce imag
 
 ```json
     "location": "<region>",
+```
+## <a name="vmprofile"></a>vmProfile
+Ve výchozím nastavení bude nástroj pro tvorbu obrázků používat virtuální počítač pro sestavení "Standard_D1_v2", můžete ho například přepsat, pokud chcete přizpůsobit image pro virtuální počítač GPU, potřebujete velikost virtuálního počítače GPU. Tato položka je nepovinná.
+
+```json
+ {
+    "vmSize": "Standard_D1_v2"
+ },
+```
+
+## <a name="osdisksizegb"></a>osDiskSizeGB
+
+Ve výchozím nastavení nemění tvůrce imagí velikost obrázku, ale bude používat velikost ze zdrojové image. Můžete upravit velikost disku s operačním systémem (Win a Linux), poznamenat si, že nebudete příliš malá, než minimální požadované místo vyžadované operačním systémem. To je volitelné a hodnota 0 znamená, že zůstane stejná velikost jako zdrojová image. Tato položka je nepovinná.
+
+```json
+ {
+    "osDiskSizeGB": 100
+ },
 ```
 
 ## <a name="tags"></a>Značky
@@ -135,13 +157,7 @@ V seznamu **instalačních programů a imagí pro Red Hat Enterprise Linux Serve
 > Přístupové tokeny těchto propojení se aktualizují v častých intervalech, takže pokaždé, když chcete odeslat šablonu, musíte ověřit, jestli se změnila adresa odkazu RH.
  
 ### <a name="platformimage-source"></a>PlatformImage zdroj 
-Azure image Builder podporuje následující image Azure Marketplace:
-* Ubuntu 18.04
-* Ubuntu 16.04
-* RHEL 7,6
-* CentOS 7.6
-* Windows 2016
-* Windows 2019
+Azure image Builder podporuje image Windows serveru a klienta a Azure Marketplace pro Linux. úplný seznam najdete [tady](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#os-support) . 
 
 ```json
         "source": {
@@ -220,7 +236,8 @@ Při použití `customize`:
             {
                 "type": "Shell",
                 "name": "<name>",
-                "scriptUri": "<path to script>"
+                "scriptUri": "<path to script>",
+                "sha256Checksum": "<sha256 checksum>"
             },
             {
                 "type": "Shell",
@@ -246,7 +263,8 @@ Oddíl Customization je pole. Azure image Builder se spustí prostřednictvím �
         { 
             "type": "Shell", 
             "name": "<name>", 
-            "scriptUri": "<link to script>"        
+            "scriptUri": "<link to script>",
+            "sha256Checksum": "<sha256 checksum>"       
         }, 
     ], 
         "customize": [ 
@@ -266,7 +284,12 @@ Přizpůsobení vlastností:
 - **název** – název pro sledování přizpůsobení 
 - **scriptUri** -URI do umístění souboru 
 - **vložené** – pole příkazů prostředí oddělené čárkami.
- 
+- **sha256Checksum** -hodnota kontrolního součtu SHA256 souboru, vygenerujete ho místně a pak tvůrce imagí provede kontrolu kontrolního součtu a ověření.
+    * K vygenerování sha256Checksum pomocí terminálu pro Mac/Linux spusťte: `sha256sum <fileName>`
+
+
+Příkazy, které se mají spustit s oprávněními super uživatele, musí být s předponou `sudo`.
+
 > [!NOTE]
 > Když spustíte úpravce prostředí se zdrojem RHEL ISO, musíte zajistit, aby vaše první prostředí pro přizpůsobení způsobilo registraci na serveru s Red Hat nárokem, a to ještě před tím, než dojde k přizpůsobení. Po dokončení přizpůsobení by se měl skript na serveru nároků zrušit.
 
@@ -275,12 +298,15 @@ Přizpůsobení vlastností:
 
 ```json 
      "customize": [ 
-         {
-            "type": "WindowsRestart", 
-            "restartCommand": "shutdown /r /f /t 0 /c", 
-            "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > buildArtifacts/azureImageBuilderRestart.txt",
-            "restartTimeout": "5m"
-         }],
+
+            {
+                "type": "WindowsRestart",
+                "restartCommand": "shutdown /r /f /t 0 /c", 
+                "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > c:\\buildArtifacts\\azureImageBuilderRestart.txt",
+                "restartTimeout": "5m"
+            }
+  
+        ],
 ```
 
 Podpora OS: Windows
@@ -300,13 +326,16 @@ Přizpůsobení vlastností:
         { 
              "type": "PowerShell",
              "name":   "<name>",  
-             "scriptUri": "<path to script>" 
+             "scriptUri": "<path to script>",
+             "runElevated": "<true false>",
+             "sha256Checksum": "<sha256 checksum>" 
         },  
         { 
              "type": "PowerShell", 
              "name": "<name>", 
              "inline": "<PowerShell syntax to run>", 
-             "valid_exit_codes": "<exit code>" 
+             "valid_exit_codes": "<exit code>",
+             "runElevated": "<true or false>" 
          } 
     ], 
 ```
@@ -319,6 +348,10 @@ Přizpůsobení vlastností:
 - **scriptUri** -URI do umístění souboru skriptu PowerShellu. 
 - **vložené** – vložené příkazy, které mají být spuštěny, oddělené čárkami.
 - **valid_exit_codes** – volitelné, platné kódy, které lze vrátit z příkazu Script/inline, tím se vyhnete nahlášené chybě příkazu Script/inline.
+- **runElevated** – volitelná, logická hodnota, podpora spouštění příkazů a skriptů se zvýšenými oprávněními.
+- **sha256Checksum** -hodnota kontrolního součtu SHA256 souboru, vygenerujete ho místně a pak tvůrce imagí provede kontrolu kontrolního součtu a ověření.
+    * Vygenerování sha256Checksum pomocí prostředí PowerShell ve Windows [Get-hash](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6)
+
 
 ### <a name="file-customizer"></a>Úprav souborů
 
@@ -330,7 +363,8 @@ Přizpůsobení vlastností:
             "type": "File", 
              "name": "<name>", 
              "sourceUri": "<source location>",
-             "destination": "<destination>" 
+             "destination": "<destination>",
+             "sha256Checksum": "<sha256 checksum>"
          }
      ]
 ```
@@ -398,8 +432,39 @@ Azure image Builder podporuje tři cíle distribuce:
 
 Můžete distribuovat obrázek do obou cílových typů ve stejné konfiguraci, viz [Příklady](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80).
 
-Vzhledem k tomu, že můžete mít více než jeden cíl pro distribuci do nástroje, nástroj image Builder udržuje stav pro každý cíl distribuce, ke kterému se dá dostat dotazování `runOutputName`.  `runOutputName` je objekt, který můžete zadat dotazem na distribuci příspěvku, kde najdete informace o této distribuci. Můžete například zadat dotaz na umístění virtuálního pevného disku nebo oblasti, do kterých byla verze bitové kopie replikována. Toto je vlastnost všech cílů distribuce. `runOutputName` musí být pro každý cíl distribuce jedinečný.
- 
+Vzhledem k tomu, že můžete mít více než jeden cíl pro distribuci do nástroje, nástroj image Builder udržuje stav pro každý cíl distribuce, ke kterému se dá dostat dotazování `runOutputName`.  `runOutputName` je objekt, který můžete zadat dotazem na distribuci příspěvku, kde najdete informace o této distribuci. Můžete například zadat dotaz na umístění virtuálního pevného disku nebo oblasti, ve kterých byla verze bitové kopie replikována, nebo vytvořená verze image SIG. Toto je vlastnost všech cílů distribuce. `runOutputName` musí být pro každý cíl distribuce jedinečný. Tady je příklad, který se dotazuje na distribuci Galerie sdílených imagí:
+
+```bash
+subscriptionID=<subcriptionID>
+imageResourceGroup=<resourceGroup of image template>
+runOutputName=<runOutputName>
+
+az resource show \
+        --ids "/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.VirtualMachineImages/imageTemplates/ImageTemplateLinuxRHEL77/runOutputs/$runOutputName"  \
+        --api-version=2019-05-01-preview
+```
+
+Výstup:
+```json
+{
+  "id": "/subscriptions/xxxxxx/resourcegroups/rheltest/providers/Microsoft.VirtualMachineImages/imageTemplates/ImageTemplateLinuxRHEL77/runOutputs/rhel77",
+  "identity": null,
+  "kind": null,
+  "location": null,
+  "managedBy": null,
+  "name": "rhel77",
+  "plan": null,
+  "properties": {
+    "artifactId": "/subscriptions/xxxxxx/resourceGroups/aibDevOpsImg/providers/Microsoft.Compute/galleries/devOpsSIG/images/rhel/versions/0.24105.52755",
+    "provisioningState": "Succeeded"
+  },
+  "resourceGroup": "rheltest",
+  "sku": null,
+  "tags": null,
+  "type": "Microsoft.VirtualMachineImages/imageTemplates/runOutputs"
+}
+```
+
 ### <a name="distribute-managedimage"></a>Distribuovat: managedImage
 
 Výstupem obrázku bude prostředek spravované image.
@@ -503,13 +568,4 @@ az resource show \
 ## <a name="next-steps"></a>Další kroky
 
 V [GitHubu pro Azure image Builder](https://github.com/danielsollondon/azvmimagebuilder)jsou k dispozici ukázkové soubory. JSON pro různé scénáře.
- 
- 
- 
- 
- 
- 
- 
- 
- 
  

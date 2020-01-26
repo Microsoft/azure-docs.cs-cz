@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus s .NET a AMQP 1.0 | Dokumentace Microsoftu
-description: Pomocí služby Azure Service Bus z .NET pomocí AMQP
+title: Azure Service Bus s .NET a AMQP 1,0 | Microsoft Docs
+description: Tento článek popisuje, jak použít Azure Service Bus z aplikace .NET pomocí AMQP (rozšířený protokol řízení front zpráv).
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,28 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 82301a17bb461b6d8733d5f046fe791ffbcf3ecb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 536c315077cb74a1dfa8db457f0f0b3725edf7a1
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60749253"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759243"
 ---
-# <a name="use-service-bus-from-net-with-amqp-10"></a>Použití služby Service Bus z .NET pomocí protokolu AMQP 1.0
+# <a name="use-service-bus-from-net-with-amqp-10"></a>Použití Service Bus z rozhraní .NET s AMQP 1,0
 
-Podpora AMQP 1.0 je k dispozici v balíčku verze služby Service Bus 2.1 nebo vyšší. Zajistíte si nejnovější verzi stahování bits služby Service Bus z [NuGet][NuGet].
+Podpora AMQP 1,0 je k dispozici v balíčku Service Bus verze 2,1 nebo novější. Nejnovější verzi si můžete ověřit stažením Service Bus bitů z [nugetu][NuGet].
 
-## <a name="configure-net-applications-to-use-amqp-10"></a>Konfigurace aplikace .NET pomocí protokolu AMQP 1.0
+## <a name="configure-net-applications-to-use-amqp-10"></a>Konfigurace aplikací .NET pro použití AMQP 1,0
 
-Ve výchozím nastavení klientské knihovny .NET služby Service Bus komunikuje se službou Service Bus pomocí vyhrazené protokol založený na protokolu SOAP. Použití AMQP 1.0 místo výchozího protokol vyžaduje explicitní konfiguraci připojovací řetězec sběrnice služeb, jak je popsáno v další části. Než tuto změnu zůstane beze změny kódu aplikace, při použití protokolu AMQP 1.0.
+Ve výchozím nastavení komunikuje Klientská knihovna Service Bus .NET ke službě Service Bus pomocí vyhrazeného protokolu založeného na protokolu SOAP. Aby bylo možné používat AMQP 1,0, místo výchozího protokolu vyžaduje explicitní konfiguraci Service Bus připojovacího řetězce, jak je popsáno v následující části. Kromě této změny kód aplikace zůstane při použití AMQP 1,0 beze změny.
 
-V aktuální verzi existuje několik funkcí rozhraní API, které nejsou podporována při použití protokolu AMQP. Tyto nepodporované funkce jsou uvedené v části [rozdílného](#behavioral-differences). Některá nastavení pokročilou konfiguraci také mají různý význam při použití protokolu AMQP.
+V aktuální verzi je k dispozici několik funkcí rozhraní API, které se při použití AMQP nepodporují. Tyto nepodporované funkce jsou uvedené v části [rozdíly v chování](#behavioral-differences). Některá z pokročilých nastavení konfigurace mají také při použití AMQP jiný význam.
 
-### <a name="configuration-using-appconfig"></a>Konfigurace pomocí souboru App.config
+### <a name="configuration-using-appconfig"></a>Konfigurace pomocí App. config
 
-Je vhodné pro aplikace pro použití k ukládání nastavení konfiguračního souboru App.config. Pro aplikace Service Bus můžete v souboru App.config uložit připojovací řetězec služby Service Bus. Příklad souboru App.config vypadá takto:
+Je vhodné, aby aplikace používaly konfigurační soubor App. config k uložení nastavení. Pro Service Bus aplikace můžete použít soubor App. config k uložení připojovacího řetězce Service Bus. Ukázkový soubor App. config je následující:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -45,23 +45,23 @@ Je vhodné pro aplikace pro použití k ukládání nastavení konfiguračního 
 </configuration>
 ```
 
-Hodnota `Microsoft.ServiceBus.ConnectionString` nastavení je připojovací řetězec služby Service Bus, který se používá ke konfiguraci připojení k Service Bus. Formát je následujícím způsobem:
+Hodnota nastavení `Microsoft.ServiceBus.ConnectionString` je připojovací řetězec Service Bus, který se používá ke konfiguraci připojení k Service Bus. Formát je následující:
 
 `Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=Amqp`
 
-Kde `namespace` a `SAS key` jsou získávány z [webu Azure portal] [ Azure portal] při vytváření oboru názvů služby Service Bus. Další informace najdete v tématu [vytvoření oboru názvů služby Service Bus pomocí webu Azure portal][Create a Service Bus namespace using the Azure portal].
+Kde `namespace` a `SAS key` jsou získány z [Azure Portal][Azure portal] při vytváření oboru názvů Service Bus. Další informace najdete v tématu [Vytvoření oboru názvů Service Bus pomocí Azure Portal][Create a Service Bus namespace using the Azure portal].
 
-Při použití AMQP, připojte řetězec připojení s `;TransportType=Amqp`. Tento typ notation instruuje klientské knihovny, aby jeho připojení k Service Bus pomocí protokolu AMQP 1.0.
+Při použití AMQP připojit připojovací řetězec k `;TransportType=Amqp`. Tento zápis dá pokyn klientské knihovně k tomu, aby připojení k Service Bus pomocí AMQP 1,0.
 
 ## <a name="message-serialization"></a>Serializace zprávy
 
-Při použití výchozího protokolu, je použít výchozí chování serializace Klientská knihovna pro .NET [DataContractSerializer] [ DataContractSerializer] typ k serializaci [BrokeredMessage] [ BrokeredMessage] instance pro přenos mezi knihovnou klienta a služby Service Bus. Když používáte režim přenosu protokolu AMQP, knihovna klienta používá systém typů AMQP za účelem serializace [zprostředkované zprávy] [ BrokeredMessage] do zprávy protokolu AMQP. Serializace umožňuje zprávy přijímají a interpretovat přijímající aplikace, na kterém běží potenciálně na různé platformy, například aplikace v Javě, která používá rozhraní API pro JMS pro přístup k Service Bus.
+Při použití výchozího protokolu je výchozím chováním serializace klientské knihovny .NET použití typu [DataContractSerializer][DataContractSerializer] k serializaci instance [BrokeredMessage][BrokeredMessage] pro přenos mezi klientskou knihovnou a službou Service Bus. Při použití režimu přenosu AMQP používá Klientská knihovna systém typů AMQP pro serializaci zprostředkované [zprávy][BrokeredMessage] do zprávy AMQP. Tato serializace umožňuje příjem a interpretaci zprávy přijímající aplikací, která je potenciálně spuštěna na jiné platformě, například aplikace Java, která používá rozhraní API JMS pro přístup k Service Bus.
 
-Při sestavování [BrokeredMessage] [ BrokeredMessage] instance, můžete zadat objekt .NET jako parametr do konstruktoru, který bude sloužit jako text zprávy. Pro objekty, které je možné mapovat na primitivní typy AMQP je serializován text do AMQP datové typy. Pokud objekt nelze mapovat přímo do AMQP primitivní typ; To znamená, vlastní typ definován aplikací a pak je objekt serializován pomocí [DataContractSerializer][DataContractSerializer], a odesílání bajtů serializovaná data zprávy protokolu AMQP.
+Při vytváření instance [BrokeredMessage][BrokeredMessage] můžete poskytnout objekt .NET jako parametr konstruktoru, který bude sloužit jako tělo zprávy. Pro objekty, které lze namapovat na primitivní typy AMQP, je text serializován do datových typů AMQP. Pokud objekt nelze přímo namapovat na primitivní typ AMQP; To znamená, že vlastní typ definovaný aplikací, je objekt serializován pomocí třídy [DataContractSerializer][DataContractSerializer]a serializované bajty jsou odesílány do AMQP dat.
 
-Pro usnadnění vzájemná funkční spolupráce s klienty než .NET, používají jenom typy .NET, které lze serializovat přímo do AMQP typů pro text zprávy. Následující tabulka obsahuje podrobnosti o těchto typů a odpovídající mapování do systému typů AMQP.
+Pro usnadnění interoperability s klienty non-.NET používejte pouze typy .NET, které lze serializovat přímo do typů AMQP pro tělo zprávy. Následující tabulka popisuje tyto typy a odpovídající mapování na systém typů AMQP.
 
-| Typ objektu text .NET | Typ mapované AMQP | Typ oddílu textu AMQP |
+| Typ objektu textu .NET | Mapovaný typ AMQP | Typ oddílu textu AMQP |
 | --- | --- | --- |
 | bool |Boolean |Hodnota AMQP |
 | byte |ubyte |Hodnota AMQP |
@@ -69,54 +69,54 @@ Pro usnadnění vzájemná funkční spolupráce s klienty než .NET, používaj
 | uint |uint |Hodnota AMQP |
 | ulong |ulong |Hodnota AMQP |
 | SByte |byte |Hodnota AMQP |
-| krátké |krátké |Hodnota AMQP |
+| dostatečná |dostatečná |Hodnota AMQP |
 | int |int |Hodnota AMQP |
-| long |long |Hodnota AMQP |
+| Long |Long |Hodnota AMQP |
 | float |float |Hodnota AMQP |
 | double |double |Hodnota AMQP |
-| decimal |decimal128 |Hodnota AMQP |
+| decimal |Decimal128 |Hodnota AMQP |
 | char |char |Hodnota AMQP |
-| DateTime |timestamp |Hodnota AMQP |
+| Datum a čas |časové razítko |Hodnota AMQP |
 | Guid |Uuid |Hodnota AMQP |
 | Byte |binary |Hodnota AMQP |
 | string |string |Hodnota AMQP |
-| System.Collections.IList |list |Hodnota AMQP: položky obsažené v kolekci lze pouze ty, které jsou definovány v této tabulce. |
-| System.Array |pole |Hodnota AMQP: položky obsažené v kolekci lze pouze ty, které jsou definovány v této tabulce. |
-| System.Collections.IDictionary |map |Hodnota AMQP: položky obsažené v kolekci lze pouze ty, které jsou definovány v této tabulce. Poznámka: jsou podporovány pouze řetězec klíče. |
-| Uri |Popisuje řetězec (viz následující tabulka) |Hodnota AMQP |
-| Datetimeoffset |Popisuje dlouho (viz následující tabulka) |Hodnota AMQP |
-| TimeSpan |Popisuje dlouho (viz následující) |Hodnota AMQP |
-| Stream |binary |Data protokolu AMQP (může být více). Části Data obsahují nezpracované bajty přečtené z objektu Stream. |
-| Druhý objekt |binary |Data protokolu AMQP (může být více). Obsahuje serializovaná binární soubor objektu, který používá objektu DataContractSerializer nebo serializátor poskytnuté aplikací. |
+| System. Collections. IList |list |AMQP hodnota: položky obsažené v kolekci mohou být pouze ty, které jsou definovány v této tabulce. |
+| System. Array |pole |AMQP hodnota: položky obsažené v kolekci mohou být pouze ty, které jsou definovány v této tabulce. |
+| System.Collections.IDictionary |map |AMQP hodnota: položky obsažené v kolekci mohou být pouze ty, které jsou definovány v této tabulce. Poznámka: podporovány jsou pouze řetězcové klíče. |
+| Uri |Popis řetězce (viz následující tabulka) |Hodnota AMQP |
+| DateTimeOffset |Popsaná dlouho (viz následující tabulka) |Hodnota AMQP |
+| TimeSpan |Popsaná doba (viz následující) |Hodnota AMQP |
+| Datový proud |binary |Data AMQP (můžou být vícenásobná). Oddíly dat obsahují nezpracované bajty přečtené z objektu Stream. |
+| Jiný objekt |binary |Data AMQP (můžou být vícenásobná). Obsahuje serializovaný binární soubor objektu, který používá DataContractSerializer nebo serializátor poskytnutý aplikací. |
 
-| Typ formátu .NET | Mapovaná AMQP popsané typu | Poznámky |
+| Typ .NET | Typ AMQP mapovaného typu | Poznámky |
 | --- | --- | --- |
 | Uri |`<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type>` |Uri.AbsoluteUri |
-| Datetimeoffset |`<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>` |DateTimeOffset.UtcTicks |
-| TimeSpan |`<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type>` |TimeSpan.Ticks |
+| DateTimeOffset |`<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>` |DateTimeOffset. UtcTicks |
+| TimeSpan |`<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type>` |TimeSpan. osové značky |
 
-## <a name="behavioral-differences"></a>Behaviorální rozdíly
+## <a name="behavioral-differences"></a>Rozdíly v chování
 
-Při použití AMQP v porovnání s výchozím protokolem existují určité malé rozdíly v chování rozhraní .NET API služby Service Bus:
+V porovnání s výchozím protokolem je v chování rozhraní Service Bus .NET API k dispozici několik malých rozdílů:
 
-* [OperationTimeout] [ OperationTimeout] vlastnost se ignoruje.
-* `MessageReceiver.Receive(TimeSpan.Zero)` je implementován jako `MessageReceiver.Receive(TimeSpan.FromSeconds(10))`.
-* Dokončení zprávy pomocí tokenů uzamčení lze provést pouze spuštěné přijímače zpracovaly zprávy, které původně přijaté zprávy.
+* Vlastnost [OperationTimeout][OperationTimeout] je ignorována.
+* `MessageReceiver.Receive(TimeSpan.Zero)` se implementuje jako `MessageReceiver.Receive(TimeSpan.FromSeconds(10))`.
+* Vytváření zpráv pomocí zámků tokenů může být provedeno pouze příjemci zprávy, kteří zprávy původně obdrželi.
 
-## <a name="control-amqp-protocol-settings"></a>Nastavení protokolu AMQP ovládacího prvku
+## <a name="control-amqp-protocol-settings"></a>Control – nastavení protokolu AMQP
 
-[Rozhraní .NET API](/dotnet/api/) vystavit několik nastavení, které řídí chování protokolu AMQP:
+Rozhraní [API .NET](/dotnet/api/) zveřejňují několik nastavení pro řízení chování protokolu AMQP:
 
-* **[MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)** : Určuje počáteční kredit použitý pro odkaz. Výchozí hodnota je 0.
-* **[MessagingFactorySettings.AmqpTransportSettings.MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)** : Ovládací prvky maximální velikost rámce AMQP nabízelo pro vyjednávání při připojení otevřete čas. Výchozí hodnota je 65 536 bajty.
-* **[MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)** : Pokud přenosy batchable, tato hodnota určuje maximální zpoždění pro odesílání potížemi. Ve výchozím nastavení dědí odesílatele a příjemce. Jednotlivé odesílatele a příjemce může přepsat výchozí, což je 20 MS.
-* **[MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)** : Určuje, zda připojení AMQP jsou navázat připojení přes protokol SSL. Výchozí hodnota je **true**.
+* **[MessageReceiver. PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)** : řídí počáteční kredit aplikovaný na odkaz. Výchozí hodnota je 0.
+* **[MessagingFactorySettings. AmqpTransportSettings. MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)** : Určuje maximální velikost rámce AMQP nabízená během vyjednávání v době otevření připojení. Výchozí hodnota je 65 536 bajtů.
+* **[MessagingFactorySettings. AmqpTransportSettings. BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)** : Pokud jsou přenosy s dávkou, tato hodnota určuje maximální zpoždění pro odeslání přemístění. Zděděni odesílateli a přijímači ve výchozím nastavení. Každý odesílatel/příjemce může přepsat výchozí hodnotu, což je 20 milisekund.
+* **[MessagingFactorySettings. AmqpTransportSettings. UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)** : Určuje, zda jsou připojení AMQP navázána přes připojení SSL. Výchozí hodnota je **true**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Jste připraveni na další informace? Naleznete pod těmito odkazy:
+Jste připraveni se dozvědět víc? Navštivte následující odkazy:
 
-* [Přehled protokolu AMQP Service Bus]
+* [Přehled Service Bus AMQP]
 * [Průvodce protokolem AMQP 1.0]
 
 [Create a Service Bus namespace using the Azure portal]: service-bus-create-namespace-portal.md
@@ -126,6 +126,6 @@ Jste připraveni na další informace? Naleznete pod těmito odkazy:
 [OperationTimeout]: /dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessagingFactorySettings_OperationTimeout
 [NuGet]: https://nuget.org/packages/WindowsAzure.ServiceBus/
 [Azure portal]: https://portal.azure.com
-[Přehled protokolu AMQP Service Bus]: service-bus-amqp-overview.md
+[Přehled Service Bus AMQP]: service-bus-amqp-overview.md
 [Průvodce protokolem AMQP 1.0]: service-bus-amqp-protocol-guide.md
 

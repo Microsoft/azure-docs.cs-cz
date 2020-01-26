@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 5c407edfedd6eb1156a0fec5719cc9435858bd4a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a472c500ee6b968b1459e65e49a352b81e5ea6ec
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456928"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759410"
 ---
 # <a name="set-up-retention-policy-in-azure-devtest-labs"></a>Nastavení zásad uchovávání informací v Azure DevTest Labs
 Tento článek popisuje, jak nastavit zásady uchovávání informací, vyčistit továrnu a vyřazení starých imagí ze všech ostatních DevTest Labs v organizaci. 

@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: použití témat Azure Service Bus a předplatných v jazyce Java'
-description: 'Rychlý Start: použijte Service Bus témata a předplatná v Azure.'
+title: Použití Azure Service Bus témata a předplatných v jazyce Java
+description: V tomto rychlém startu napíšete kód Java, který odešle zprávy do Azure Service Busho tématu, a pak dostanou zprávy z odběrů do tohoto tématu.
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 8a721d929ff89fd644c78296ae54cee757bf9610
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9b75b5cd5e674020f41897309a3c69b9371cc768
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720002"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759291"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>Rychlý Start: použití témat Service Bus a předplatných v jazyce Java
 
@@ -45,9 +45,9 @@ Před vytvořením této ukázky se ujistěte, že máte nainstalovanou [sadu Az
 
 Také je nutné přidat následující jar do cesty sestavení Java:
 
-- gson-2.6.2. jar
-- Commons-CLI-1.4. jar
-- Proton-j-0.21.0. jar
+- gson-2.6.2.jar
+- commons-cli-1.4.jar
+- proton-j-0.21.0.jar
 
 Přidejte třídu s metodou **Main** a přidejte následující příkazy `import` v horní části souboru Java:
 

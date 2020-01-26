@@ -1,6 +1,6 @@
 ---
 title: Spravované identity pro prostředky Azure s Service Bus
-description: Použití spravovaných identit pro prostředky Azure s Azure Service Bus
+description: Tento článek popisuje, jak používat spravované identity pro přístup k Azure Service Bus entit (fronty, témata a předplatná).
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/22/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 57c52640262854037420c1679804f611394230ef
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 89de6bf80d14ec77fe6b1f98b6e1d15c6e573fbe
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793157"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756279"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Ověření spravované identity pomocí Azure Active Directory pro přístup k prostředkům Azure Service Bus
-[Spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) je funkce mezi Azure, která umožňuje vytvořit zabezpečenou identitu přidruženou k nasazení, ve kterém se spouští kód aplikace. Tuto identitu pak můžete přidružit k rolím řízení přístupu, které udělují vlastní oprávnění pro přístup ke konkrétním prostředkům Azure, které vaše aplikace potřebuje.
+[Spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) je funkce, mezi Azure, která umožňuje vytvořit zabezpečené identitu přidruženou k nasazení, pod kterým běží kód vaší aplikace. Potom můžete tuto identitu přidružit role řízení přístupu, které vlastní oprávnění pro přístup ke konkrétním prostředkům Azure, které vaše aplikace potřebuje.
 
-Se spravovanými identitami spravuje platforma Azure tuto identitu modulu runtime. Nemusíte ukládat a chránit přístupové klíče v kódu nebo konfiguraci aplikace, a to buď pro samotnou identitu, nebo pro prostředky, ke kterým potřebujete přístup. Klientská aplikace Service Bus spuštěná v aplikaci Azure App Service nebo ve virtuálním počítači s povolenými spravovanými entitami pro podporu prostředků Azure nemusí zpracovávat pravidla a klíče SAS ani žádné jiné přístupové tokeny. Klientská aplikace potřebuje jenom adresu koncového bodu oboru názvů pro zasílání zpráv Service Bus. Když se aplikace připojí, Service Bus sváže kontext spravované entity s klientem v operaci, která je uvedená v příkladu dále v tomto článku. Po přidružení ke spravované identitě může klient Service Bus provádět všechny autorizované operace. Autorizace se uděluje přidružením spravované entity k rolím Service Bus. 
+Pomocí spravované identity spravuje Platforma Azure tuto identitu modulu runtime. Není potřeba ukládat a chránit přístupových klíčů v kódu aplikace nebo konfigurace pro identitu, samotné nebo pro prostředky, které potřebujete získat přístup. Klientská aplikace Service Bus spuštěná v aplikaci Azure App Service nebo ve virtuálním počítači s povolenými spravovanými entitami pro podporu prostředků Azure nemusí zpracovávat pravidla a klíče SAS ani žádné jiné přístupové tokeny. Klientská aplikace potřebuje jenom adresu koncového bodu oboru názvů pro zasílání zpráv Service Bus. Když se aplikace připojí, Service Bus sváže kontext spravované entity s klientem v operaci, která je uvedená v příkladu dále v tomto článku. Po přidružení ke spravované identitě může klient Service Bus provádět všechny autorizované operace. Autorizace se uděluje přidružením spravované entity k rolím Service Bus. 
 
 ## <a name="overview"></a>Přehled
 Když se objekt zabezpečení (uživatel, skupina nebo aplikace) pokusí o přístup k Service Bus entitě, musí být žádost autorizována. S Azure AD je přístup k prostředku v procesu se dvěma kroky. 
@@ -118,21 +118,21 @@ Chcete-li přiřadit roli k oboru názvů Service Bus, přejděte na obor názv�
 4.  Na stránce **Přidat přiřazení role** vyberte role Azure Service Bus, které chcete přiřadit. Pak vyhledejte identitu služby, kterou jste zaregistrovali pro přiřazení role.
     
     ![Přidat stránku přiřazení role](./media/service-bus-managed-service-identity/add-role-assignment-page.png)
-5.  Vyberte **Save** (Uložit). Identita, ke které jste přiřadili roli, se zobrazí v seznamu v rámci této role. Například následující obrázek ukazuje, že identita služby má Azure Service Bus vlastníka dat.
+5.  Vyberte **Uložit**. Identita, ke které jste přiřadili roli, se zobrazí v seznamu v rámci této role. Například následující obrázek ukazuje, že identita služby má Azure Service Bus vlastníka dat.
     
     ![Identita přiřazená k roli](./media/service-bus-managed-service-identity/role-assigned.png)
 
 Po přiřazení role bude webová aplikace mít přístup k entitám Service Bus v rámci definovaného oboru. 
 
-### <a name="run-the-app"></a>Spusťte aplikaci
+### <a name="run-the-app"></a>Spuštění aplikace
 
 Nyní upravte výchozí stránku aplikace ASP.NET, kterou jste vytvořili. Můžete použít kód webové aplikace z [tohoto úložiště GitHub](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet).  
 
 Stránka default. aspx je cílovou stránkou. Kód najdete v souboru Default.aspx.cs. Výsledkem je minimální webová aplikace s několika vstupními poli a tlačítky **Odeslat** a **přijmout** , která se připojují k Service Bus k odeslání nebo přijetí zpráv.
 
-Všimněte si, jak se inicializuje objekt [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) . Namísto použití poskytovatele tokenu sdíleného přístupového tokenu (SAS) vytvoří kód pro spravovanou identitu poskytovatele tokenu s voláním `var msiTokenProvider = TokenProvider.CreateManagedIdentityTokenProvider();`. V takovém případě nejsou k dispozici žádné tajné kódy k uchování a používání. Tok spravované identity, který se má Service Bus, a ověřovací metodou handshake automaticky zpracovává Poskytovatel tokenů. Je to jednodušší model než použití SAS.
+Poznámka: Jak [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) objekt je inicializován. Namísto použití zprostředkovatele tokenu sdíleného přístupového tokenu (SAS), kód vytvoří poskytovatel tokenů pro spravovanou identitu s `var msiTokenProvider = TokenProvider.CreateManagedIdentityTokenProvider();` volání. V takovém případě nejsou k dispozici žádné tajné kódy k uchování a používání. Tok spravované identity, který se má Service Bus, a ověřovací metodou handshake automaticky zpracovává Poskytovatel tokenů. Je to jednodušší model než použití SAS.
 
-Po provedení těchto změn publikování a spuštění aplikace. Správná data publikování můžete snadno získat tak, že si stáhnete a pak importujete profil publikování v aplikaci Visual Studio:
+Po provedení těchto změn, publikování a spuštění aplikace. Správná data publikování můžete snadno získat tak, že si stáhnete a pak importujete profil publikování v aplikaci Visual Studio:
 
 ![Získat profil publikování](./media/service-bus-managed-service-identity/msi3.png)
  

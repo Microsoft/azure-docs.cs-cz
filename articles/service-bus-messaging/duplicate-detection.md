@@ -1,6 +1,6 @@
 ---
 title: Zjišťování duplicitních zpráv Azure Service Bus | Microsoft Docs
-description: Zjišťování duplicitních zpráv Service Bus
+description: Tento článek vysvětluje, jak můžete zjišťovat duplicity v Azure Service Busch zprávách. Duplicitní zprávu lze ignorovat a vyřadit.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 4cd5fc50c35f4c4adb63c9d91af05dcf8b2dda40
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c109b9fd310a09e5eb4c6d18cc3536e4d8069c0b
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924643"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760364"
 ---
 # <a name="duplicate-detection"></a>Vyhledávání duplicit
 
@@ -39,7 +39,7 @@ Parametr *MessageID* může mít vždy nějaký identifikátor GUID, ale ukotven
 > [!NOTE]
 > Pokud je povolená detekce duplicit a ID relace nebo klíč oddílu nejsou nastavené, použije se jako klíč oddílu ID zprávy. Pokud není ID zprávy také nastaveno, knihovny .NET a AMQP automaticky vygenerují ID zprávy pro zprávu. Další informace najdete v tématu [použití klíčů oddílů](service-bus-partitioning.md#use-of-partition-keys).
 
-## <a name="enable-duplicate-detection"></a>Povolit vyhledávání duplicit
+## <a name="enable-duplicate-detection"></a>Povolit detekci duplicit
 
 Tato funkce je v portálu při vytváření entit zapnutá pomocí zaškrtávacího políčka **Povolit detekci duplicit** , která je ve výchozím nastavení vypnutá. Nastavení pro vytváření nových témat je ekvivalentní.
 

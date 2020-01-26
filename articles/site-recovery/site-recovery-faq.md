@@ -2,14 +2,14 @@
 title: Obecné otázky ke službě Azure Site Recovery
 description: Tento článek popisuje oblíbené obecné otázky týkající se Azure Site Recovery.
 ms.topic: conceptual
-ms.date: 1/10/2020
+ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: 44abe9eafa9aef9e027778470d3f0483f99b0d32
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: a9d0ae4a6e60a72bbb1148aca1a75c44506b2e9e
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863559"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760347"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Obecné otázky týkající se Azure Site Recovery
 
@@ -147,7 +147,7 @@ Azure Site Recovery replikuje data na účet služby Azure Storage nebo spravova
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Proč nejde replikovat přes síť VPN?
 
-Při replikaci do Azure dosáhne provoz replikace veřejné koncové body Azure Storage. To znamená, že se dá replikovat jenom přes veřejný Internet s ExpressRoute (partnerský vztah Microsoftu nebo stávající veřejný partnerský vztah) a VPN nefunguje.
+Při replikaci do Azure dosáhne provoz replikace veřejné koncové body Azure Storage. To znamená, že se dá replikovat jenom přes veřejný Internet nebo přes ExpressRoute (partnerský vztah Microsoftu nebo stávající veřejný partnerský vztah).
 
 ### <a name="can-i-use-riverbed-steelheads-for-replication"></a>Můžu pro replikaci použít Riverbed SteelHeads?
 
@@ -219,7 +219,7 @@ Ano, můžete použít obnovení do alternativního umístění pro navrácení 
 * [Pro virtuální počítače VMware](concepts-types-of-failback.md#alternate-location-recovery-alr)
 * [Pro virtuální počítače s technologií Hyper-V](hyper-v-azure-failback.md#fail-back-to-an-alternate-location)
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>Automatizace
 
 ### <a name="can-i-automate-site-recovery-scenarios-with-an-sdk"></a>Můžu Site Recovery scénáře automatizovat pomocí sady SDK?
 Ano. Postupy workflow Site Recovery je možné automatizovat pomocí rozhraní REST API, PowerShellu a sady Azure SDK. Aktuálně podporované scénáře nasazení Site Recovery pomocí prostředí PowerShell:

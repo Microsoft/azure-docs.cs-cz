@@ -1,6 +1,6 @@
 ---
-title: Asynchronní zasílání zpráv Service Bus | Dokumentace Microsoftu
-description: Popis asynchronní zasílání zpráv Azure Service Bus.
+title: Service Bus asynchronní zasílání zpráv | Microsoft Docs
+description: Přečtěte si, jak Azure Service Bus podporuje asynchronism prostřednictvím úložiště a předávacího mechanismu s frontami, tématy a předplatnými.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,60 +12,60 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 50778ae742c1ec66857a6c2fa6250dc3d67e5601
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 554260f403104d815b9b63c576c7ba0a2f3cf1e1
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60531121"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761028"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>Asynchronní schémata zasílání zpráv a vysoká dostupnost
 
-Asynchronní zasílání zpráv je možné implementovat mnoha různými způsoby. Azure Service Bus pomocí front, témat a odběrů, podporuje asynchronism prostřednictvím úložiště a dopředné mechanismus. V běžném provozu (synchronní) odesílání zpráv do front a témat a příjem zpráv z front a odběrů. Aplikace, který napíšete závislé na tyto entity vždy nebudou dostupné. Při změně stavu entity z důvodu různých okolností, potřebujete poskytovat omezenou schopnost entity, která vyhovuje většině potřeb.
+Asynchronní zasílání zpráv je možné implementovat různými způsoby. S frontami, tématy a odběry Azure Service Bus podporuje asynchronism prostřednictvím úložiště a mechanismu dopředné. Při normální (synchronní) operaci můžete odesílat zprávy do front a témat a přijímat zprávy z front a odběrů. Aplikace, které zapisujete, závisí vždy na dostupných entitách. Pokud se stav entity změní z různých důvodů, budete potřebovat způsob, jak poskytnout entitu se sníženou schopností, která může splnit většinu potřeb.
 
-Aplikace obvykle používají asynchronní schémata zasílání zpráv povolit řadu scénářů komunikace. Můžete vytvářet aplikace, ve kterých klientech odesílat zprávy do služby, i v případě, že služba není spuštěná. Zkušenosti, které může pomoci nárůstům komunikace, frontu pro aplikace vyrovnání zátěže působící tím, že poskytuje místo, kde vyrovnávací paměť komunikace. Nakonec můžete získat nástroj pro vyrovnávání zatížení jednoduchý, ale efektivní k distribuci zpráv do více počítačů.
+Aplikace obvykle využívají vzorce asynchronního zasílání zpráv k zajištění řady komunikačních scénářů. Můžete vytvářet aplikace, ve kterých mohou klienti odesílat zprávy službám, a to i v případě, že služba není spuštěná. Pro aplikace, které zajišťují shluky komunikace, může fronta zvýšit úroveň zátěže tím, že poskytuje místo pro komunikaci ve vyrovnávací paměti. Nakonec můžete získat jednoduchý, ale účinný nástroj pro vyrovnávání zatížení k distribuci zpráv napříč více počítači.
 
-Aby bylo možné zachovat jeho dostupnost některý z těchto entit, vezměte v úvahu celou řadou různých způsobů, ve kterém můžete objeví tyto entity není k dispozici pro odolný systém zasílání zpráv. Obecně řečeno vidíme entity, přestanou být dostupné pro aplikace, kterou napíšeme následující různými způsoby:
+Aby se zachovala dostupnost kterékoli z těchto entit, vezměte v úvahu řadu různých způsobů, jak se tyto entity můžou zobrazovat jako nedostupné pro trvalý systém zasílání zpráv. Obecně řečeno, uvidíme, že entita se stane nedostupnou pro aplikace, které zapisujeme následujícími různými způsoby:
 
-* Nelze odesílat zprávy.
-* Nelze přijímat zprávy.
-* Není možné ji spravovat entity (vytvoření, načtení, aktualizovat nebo odstranit entity).
+* Nelze odeslat zprávy.
+* Nelze přijmout zprávy.
+* Nelze spravovat entity (vytvořit, načíst, aktualizovat nebo odstranit entity).
 * Nepovedlo se kontaktovat službu.
 
-Pro každou z těchto chyb existují různé selhání, které umožňují aplikaci i nadále provádět práci na určité úrovni omezenou schopností. Například systém, který může odesílat zprávy, ale není přijímat objednávky může stále přijímat od zákazníků, ale nemůže zpracovat tyto objednávky. Toto téma popisuje možné problémy, které se mohou vyskytnout, a jak se tyto problémy zmírnit. Service Bus má zavedly několika způsoby zmírnění rizik, které musí přihlašují, které toto téma také popisuje pravidla, kterými se řídí užívání těchto zmírnění rizik vyjádřit výslovný souhlas.
+U každého z těchto selhání existují různé režimy selhání, které umožňují aplikaci pokračovat v práci na určité úrovni snížené možnosti. Například systém, který může odesílat zprávy, ale nepřijímá je, může stále přijímat objednávky od zákazníků, ale nemůže tyto objednávky zpracovat. Toto téma popisuje možné problémy, ke kterým může dojít, a o tom, jak jsou tyto problémy zmírňované. Service Bus zavedla řadu rizik, která musíte vyjádřit, a toto téma také popisuje pravidla pro používání těchto rizik.
 
-## <a name="reliability-in-service-bus"></a>Spolehlivost ve službě Service Bus
-Existuje několik způsobů, jak zpracovat zprávu a entity problémy a jsou pokyny pro příslušnou užívání těchto způsoby zmírnění rizik. Informace o tom pokyny, musíte nejprve porozumět, co může selhat ve službě Service Bus. Z důvodu návrhu systémy pro Azure všechny tyto problémy jsou obvykle krátkodobou. Na vysoké úrovni různé příčiny nedostupnosti vypadat následovně:
+## <a name="reliability-in-service-bus"></a>Spolehlivost v Service Bus
+Existuje několik způsobů, jak zpracovat zprávy a problémy s entitami a že existují pokyny pro příslušné používání těchto rizik. Abyste porozuměli pokynům, musíte nejdřív porozumět tomu, co může v Service Bus selhat. Vzhledem k návrhům systémů Azure jsou všechny tyto problémy v úmyslu krátkodobě dlouhodobé. V nejvyšší úrovni se v různých příčinách nedostupnosti zobrazují tyto příčiny:
 
-* Omezení šířky pásma z externího systému, na kterém závisí služby Service Bus. Omezení šířky pásma dochází z interakce s prostředky úložiště a výpočetního výkonu.
-* Problém pro systém, na kterém závisí služby Service Bus. Například určitá část úložiště, můžou mít potíže.
-* Chyba služby Service Bus na jednoho subsystému. V takovém případě výpočetním uzlu můžete získat do nekonzistentního stavu a musí restartovat, způsobí všechny entity, které slouží k jiným uzlům Vyrovnávání zatížení. To zase může způsobit na krátkou dobu zpracování pomalé zprávy.
-* Selhání služby Service Bus v rámci datového centra Azure. Toto je "závažného selhání" naruší systému nedostupný pro mnoho minut nebo několik hodin.
+* Omezování z externího systému, na kterém Service Bus závisí. Omezování probíhá v interakcích s úložištěm a výpočetními prostředky.
+* Problém pro systém, na kterém Service Bus závisí. Například daná část úložiště může narazit na problémy.
+* Selhání Service Bus v jednom subsystému. V této situaci se může výpočetní uzel dostat do nekonzistentního stavu a musí se sám restartovat, což způsobí, že všechny entity slouží k vyrovnávání zatížení s ostatními uzly. To zase může způsobit krátkou dobu zpracování zpráv.
+* Selhání Service Bus v datovém centru Azure. Toto je "závažná chyba", během které je systém nedosažitelný po dobu několika minut nebo několik hodin.
 
 > [!NOTE]
-> Termín **úložiště** může znamenat služby Azure Storage a SQL Azure.
+> Termín **úložiště** může znamenat Azure Storage i SQL Azure.
 > 
 > 
 
-Service Bus obsahuje řadu zmírnění těchto problémů. Následující části popisují jednotlivých problémů a jejich odpovídajících způsoby zmírnění rizik.
+Service Bus obsahuje několik rizik pro tyto problémy. V následujících částech najdete jednotlivé problémy a jejich příslušná zmírnění.
 
 ### <a name="throttling"></a>Throttling
-Pomocí služby Service Bus omezování umožňuje správu míra kooperativní zprávy. Jednotlivých uzlů služby Service Bus jsou uloženy mnoho entit. Každé z těchto entit vytváří požadavky na systém z hlediska procesoru, paměti, úložiště a další charakteristiky. Když některý z těchto omezujících vlastností zjistí využití, která překročí definované prahové hodnoty, Service Bus můžete odepřít daného požadavku. Volající obdrží [ServerBusyException] [ ServerBusyException] a opakované pokusy po 10 sekundách.
+U Service Bus omezování povoluje správu přenosů zpráv mezi družstvy. Každý jednotlivý Service Bus uzel domy mnoho entit. Každá z těchto entit zajišťuje požadavky na systém z pohledu PROCESORů, paměti, úložiště a dalších omezujících vlastností. Pokud některá z těchto omezujících vlastností detekuje použití, které překračuje definované prahové hodnoty, Service Bus může odepřít daný požadavek. Volající obdrží [výjimka serverbusyexception][ServerBusyException] a zopakuje pokus po 10 sekundách.
 
-Jako omezení rizik musí kód čtení chybu a zastavit všechny opakované pokusy zprávy alespoň 10 sekund. Protože k chybě může dojít napříč částí aplikace pro zákazníky, očekává se, že jednotlivé komponenty se spustí nezávisle na sobě logika opakovaných pokusů. Kód můžete snížit pravděpodobnost omezené tím, že dělení ve frontě nebo tématu.
+V takovém případě musí kód přečíst chybu a zastavit všechny opakované pokusy zprávy alespoň na 10 sekund. Vzhledem k tomu, že k chybě může dojít v rámci zákaznických aplikací, je očekáváno, že všechny části nezávisle spustí logiku opakování. Kód může snížit pravděpodobnost omezení tím, že povolí vytváření oddílů ve frontě nebo tématu.
 
-### <a name="issue-for-an-azure-dependency"></a>Problém pro Azure závislost
-Ostatní součásti v rámci Azure čas od času může mít problémy se službou. Například když probíhá upgrade systému, který používá Service Bus, systému může dočasně docházet k nižší možnosti. Pro tyto druhy problémů vyřešit, Service Bus pravidelně prověří a implementuje způsoby zmírnění rizik. Zobrazit vedlejší účinky tyto způsoby zmírnění rizik. Service Bus implementuje zpracování přechodné problémy s úložištěm, systému, který umožňuje operace odesílání zpráv do pracují konzistentně. Vzhledem k povaze omezení rizik odeslané zprávy může trvat až 15 minut se zobrazí v ovlivněných fronty nebo odběru a jsou připravená pro operace obdržení. Obecně řečeno většiny entit nesmí k tomuto problému dojde. Ale zadaný počet entit ve službě Service Bus v rámci Azure, toto omezení je někdy potřeba pro malou podmnožinu zákazníků služby Service Bus.
+### <a name="issue-for-an-azure-dependency"></a>Problém pro závislost Azure
+Jiné komponenty v Azure můžou mít někdy problémy se službou. Například při upgradu systému, který používá Service Bus, může tento systém dočasně mít omezené možnosti. K řešení těchto typů problémů Service Bus pravidelně zkoumá a implementuje zmírnění rizik. Zobrazí se vedlejší účinky těchto rizik. Například pro zpracování přechodných problémů s úložištěm Service Bus implementuje systém, který umožňuje, aby operace odesílání zpráv byly konzistentně fungovat. Vzhledem k povaze zmírňování může odeslaná zpráva trvat až 15 minut, než se zobrazí v ovlivněné frontě nebo předplatném a bude připravená na operaci přijetí. Obecně řečeno, většina entit tyto potíže neprojeví. Nicméně s ohledem na počet entit v Service Bus v rámci Azure se toto zmírnění někdy vyžaduje pro malou podmnožinu zákazníků Service Bus.
 
-### <a name="service-bus-failure-on-a-single-subsystem"></a>Service Bus selhání jednoho subsystému
-S libovolnou aplikací okolností způsobit vnitřní komponenta služby Service Bus nekonzistenci. Když to zjistí služby Service Bus, shromažďuje data z aplikace, které vám pomůže při diagnostice, co se stalo. Jakmile jsou data shromážděna, se aplikace restartuje se vrátit do konzistentního stavu. Tento proces probíhá poměrně rychle a výsledky v entitě uvedené nebudou k dispozici pro až za několik minut, ale typické dolů časy jsou mnohem kratší.
+### <a name="service-bus-failure-on-a-single-subsystem"></a>Service Bus selhání v jednom subsystému
+U jakékoli aplikace můžou okolnosti způsobit, že se interní Komponenta Service Bus stane nekonzistentní. Když to Service Bus detekuje, shromažďuje data z aplikace, aby se mohla snadněji diagnostikovat, co se stalo. Po shromáždění dat se aplikace restartuje při pokusu o její vrácení do konzistentního stavu. K tomuto procesu dochází poměrně rychle a výsledkem je, že se entita zobrazuje jako nedostupná po dobu několika minut, ale typické časy jsou mnohem kratší.
 
-V těchto případech klientské aplikace generuje [System.TimeoutException] [ System.TimeoutException] nebo [MessagingException] [ MessagingException] výjimky. Service Bus obsahuje ke zmírnění tohoto problému v podobě automatické klienta logika opakovaných pokusů. Po vyčerpání doba opakování a zpráva se doručí, můžete prozkoumat pomocí dalších uvedených v článku na [zvládání výpadků a havárií][handling outages and disasters].
+V těchto případech klientská aplikace generuje výjimku [System. TimeoutException][System.TimeoutException] nebo [MessagingException][MessagingException] . Service Bus obsahuje zmírnění tohoto problému ve formě automatizované logiky opakování klienta. Po vyčerpání doby opakovaného pokusu a odeslání zprávy se vám podíváme na použití jiných uvedených v článku o [manipulaci s výpadky a haváriemi][handling outages and disasters].
 
-## <a name="next-steps"></a>Další postup
-Teď, když jste se naučili základy asynchronního zasílání zpráv ve službě Service Bus, přečtěte si další podrobnosti o [zvládání výpadků a havárií][handling outages and disasters].
+## <a name="next-steps"></a>Další kroky
+Teď, když jste se seznámili se základy asynchronního zasílání zpráv v Service Bus, přečtěte si další podrobnosti o [manipulaci s výpadky a haváriemi][handling outages and disasters].
 
 [ServerBusyException]: /dotnet/api/microsoft.servicebus.messaging.serverbusyexception
 [System.TimeoutException]: https://msdn.microsoft.com/library/system.timeoutexception.aspx

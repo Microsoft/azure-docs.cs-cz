@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 340e6d3feaf0265597a70229fd2658f009c01f64
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 0637e160454897af774c3bac48fc02866cb71835
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790897"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760789"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Dovednosti koncepty a kompozice v Azure Kognitivní hledání
 
@@ -37,15 +37,15 @@ Dovednosti jsou vytvořeny ve formátu JSON. Pomocí [jazyka Expression](https:/
 ### <a name="enrichment-tree"></a>Strom obohacení
 
 Abychom představte, jak dovednosti postupně rozšiřuje váš dokument, pojďme začít s tím, jak dokument vypadá před jakýmkoli obohacením. Výstup pro trhliny dokumentů závisí na zdroji dat a na zvoleném režimu analýzy. To je také stav dokumentu, z něhož [mapování polí](search-indexer-field-mappings.md) umožňuje zdrojový obsah při přidávání dat do indexu vyhledávání.
-![Znalostní úložiště v diagramu kanálu](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "KNOWLEDGE Store v diagramu kanálu ")
+![Znalostní úložiště v diagramu kanálu](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "Znalostní úložiště v diagramu kanálu")
 
 Jakmile je dokument v kanálu obohacení, je reprezentován jako strom obsahu a přidružených rozšíření. Tento strom se vytvoří jako výstup odhalujícího dokumentu. Stromová struktura obohacení umožňuje kanálu obohacení připojit metadata k ještě primitivním datovým typům, nejedná se o platný objekt JSON, ale lze jej převést do platného formátu JSON. Následující tabulka ukazuje stav dokumentu, který se zadává do kanálu rozšíření:
 
 |Režim Source\Parsing dat|Výchozí|JSON, řádky JSON & CSV|
 |---|---|---|
-|Blob Storage|/document/content<br>/Document/normalized_images/*<br>...|/document/{key1}<br>/document/{key2}<br>...|
-|SQL|/document/{column1}<br>/document/{column2}<br>...|Nevztahuje se |
-|Cosmos DB|/document/{key1}<br>/document/{key2}<br>...|Nevztahuje se|
+|Blob Storage|/document/content<br>/Document/normalized_images/*<br>…|/document/{key1}<br>/document/{key2}<br>…|
+|SQL|/document/{column1}<br>/document/{column2}<br>…|Nevztahuje se |
+|Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|Nevztahuje se|
 
  Při provádění dovedností přidávají nové uzly do stromu obohacení. Tyto nové uzly pak mohou být použity jako vstupy pro dovednosti s využitím pro příjem dat, projekci do obchodu Knowledge Store nebo mapování na pole indexu. Rozšíření nejsou proměnlivá: po vytvoření se uzly nedají upravovat. Vzhledem k tomu, že vaše dovednostiy jsou složitější, takže se strom pro rozšíření, ale ne všechny uzly ve stromu pro rozšíření, nemusí dělat na index nebo na obchod znalostní báze. Můžete selektivně zachovat jenom podmnožinu obohacení na index nebo úložiště znalostní báze.
 
@@ -56,7 +56,7 @@ Ve zbývající části tohoto dokumentu budeme předpokládat, že pracujeme s 
 Každá dovednost vyžaduje kontext. Kontext určuje:
 +   Počet, kolikrát se dovednost spustí na základě vybraných uzlů. Pro kontextové hodnoty kolekce typu je přidání ```/*``` na konci výsledkem, že se dovednosti vyvolají jednou pro každou instanci v kolekci. 
 +   Ve stromu obohacení se přidávají výstupy dovedností. Výstupy jsou vždy přidány do stromu jako podřízené objekty uzlu kontextu. 
-+   Tvar vstupů. V případě kolekcí s více úrovněmi bude nastavení kontextu nadřazené kolekce ovlivňovat tvar vstupu dovednosti. Například pokud máte strom obohacení se seznamem zemí, každý obohacený seznamem stavů, které obsahují seznam PSČ.
++   Tvar vstupů. U kolekcí s více úrovněmi ovlivní nastavení kontextu pro nadřazenou kolekci tvar vstupu pro dovednost. Například pokud máte strom obohacení se seznamem zemí, každý obohacený seznamem stavů, které obsahují seznam PSČ.
 
 |Kontext|Vstup|Tvar vstupu|Vyvolání dovedností|
 |---|---|---|---|
@@ -65,7 +65,7 @@ Každá dovednost vyžaduje kontext. Kontext určuje:
 
 ### <a name="sourcecontext"></a>SourceContext
 
-`sourceContext` se používá jenom v dovednostech a [proprojektech](knowledge-store-projection-overview.md). Slouží k vytváření víceúrovňových vnořených objektů. Je možné, že budete muset vytvořit novou Oject, aby se předávala jako vstup do odbornosti nebo projektu do znalostní báze. V případě, že uzly obohacení nemusí být platný objekt JSON ve stromu obohacení a refrencing uzel ve stromové struktuře vrátí pouze tento stav uzlu při jeho vytvoření, použití rozšíření jako vstupů dovedností nebo projekce vyžaduje vytvoření objektu JSON ve správném formátu. `sourceContext` umožňuje vytvořit hierarchický, anonymní typ objektu, který by vyžadoval více dovedností v případě, že jste používali pouze kontext. V další části se zobrazuje použití `sourceContext`. Podívejte se na výstup dovedností, který vygeneroval rozšíření, aby bylo možné zjistit, zda se jedná o platný objekt JSON a nikoli primitivní typ.
+`sourceContext` se používá jenom v dovednostech a [proprojektech](knowledge-store-projection-overview.md). Slouží k vytváření víceúrovňových vnořených objektů. Je možné, že budete muset vytvořit nový objekt, který ho buď předáte jako vstup do odbornosti nebo projektu, do znalostní báze Knowledge Store. Uzly obohacení nemusí být platný objekt JSON ve stromu obohacení a odkazující na uzel ve stromové struktuře vrátí tento stav uzlu, když byl vytvořen, pomocí rozšíření, jako jsou vstupy nebo projekce, vyžaduje vytvoření objektu JSON ve správném formátu. `sourceContext` umožňuje vytvořit hierarchický, anonymní typ objektu, který by vyžadoval více dovedností v případě, že jste používali pouze kontext. V další části se zobrazuje použití `sourceContext`. Podívejte se na výstup dovedností, který vygeneroval rozšíření, aby bylo možné zjistit, zda se jedná o platný objekt JSON a nikoli primitivní typ.
 
 ### <a name="projections"></a>Projekce
 
@@ -100,7 +100,7 @@ Kořenový uzel pro všechna rozšíření je `"/document"`. Když pracujete s i
 
 ### <a name="skill-2-language-detection"></a>Zjišťování jazyka pro dovednost #2
  I když je dovednost detekce jazyka třetí (dovednostní #3) definovaná v dovednosti, jedná se o další dovednost, kterou je potřeba provést. Vzhledem k tomu, že není zablokované vyžadováním jakýchkoli vstupů, spustí se paralelně s předchozí dovedností. Stejně jako rozdělení dovedností, které předcházejí, je pro každý dokument také vyvolána dovednost detekce jazyka. Strom rozrozšíření teď má nový uzel pro jazyk.
- ![strom obohacení po #2 dovednosti](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "Enbohatá stromová struktura po provedení #2 dovednosti ")
+ ![strom obohacení po #2 dovednosti](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "Strom obohacení po provedení #2 dovednosti")
  
  ### <a name="skill-3-key-phrases-skill"></a>Dovednost #3: dovednost klíčových frází 
 
@@ -114,7 +114,7 @@ Barvy konektorů ve stromu výše označují, že rozšíření byly vytvořeny 
 
 ## <a name="save-enrichments-in-a-knowledge-store"></a>Uložení obohacení ve znalostní bázi Knowledge Store 
 
-Dovednosti také definují znalostní bázi, ve kterém se vaše obohacené dokumenty dají promítnout jako tabulky nebo objekty. K uložení obohacených dat ve znalostní bázi můžete definovat sadu projekce obohaceného dokumentu. Další informace o službě Knowledge Store najdete v [článku Přehled znalostní báze](knowledge-store-concept-intro.md) .
+Dovednosti také definují znalostní bázi, ve kterém se vaše obohacené dokumenty dají promítnout jako tabulky nebo objekty. Pro uložení obohacených dat ve znalostní bázi můžete definovat sadu projekce pro obohacený dokument. Další informace o službě Knowledge Store najdete v [článku Přehled znalostní báze](knowledge-store-concept-intro.md) .
 
 ### <a name="slicing-projections"></a>Projekce na průřezy
 

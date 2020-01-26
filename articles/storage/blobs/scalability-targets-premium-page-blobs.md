@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 39153b05b16395cf2dfc0511efa601d1cc4da550
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: e134c69f5d602cb4369e9410e3e2b9d3478b11a0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749703"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756245"
 ---
 # <a name="scalability-and-performance-targets-for-premium-page-blob-storage-accounts"></a>Škálovatelnost a výkonnostní cíle pro účty úložiště objektů blob stránky úrovně Premium
 
@@ -31,7 +31,7 @@ ms.locfileid: "75749703"
 
 | Celková kapacita účtu                            | Celková šířka pásma pro místně redundantní účet úložiště                     |
 | ------------------------------------------------- | --------------------------------------------------------------------------- |
-| Kapacita disku: 35 TB <br>Kapacita snímku: 10 TB | Až 50 gigabitů za sekundu pro příchozí<sup>1</sup> + odchozí<sup>2</sup> |
+| Kapacita disku: 4 TB (jednotlivý disk)/35 TB (kumulativní součet všech disků) <br>Kapacita snímku: 10 TB | Až 50 gigabitů za sekundu pro příchozí<sup>1</sup> + odchozí<sup>2</sup> |
 
 <sup>1</sup> všechna data (požadavky), která se odesílají do účtu úložiště
 

@@ -1,5 +1,5 @@
 ---
-title: Použití R s Machine Learning Services k dotazování
+title: Použití R s Machine Learning Services k dotazování databáze (Preview)
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
 description: V tomto článku se dozvíte, jak použít skript R s Azure SQL Database Machine Learning Services pro připojení k databázi SQL Azure a dotazování s použitím příkazů jazyka Transact-SQL.
 services: sql-database
@@ -13,64 +13,42 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: a54b538247f81ea3bb0ea70a2af374158bd9e2ff
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0288d8c4710d12d8e67658caab93157c534b75ee
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826976"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758355"
 ---
 # <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>Rychlý Start: použití R s Machine Learning Services k dotazování databáze SQL Azure (Preview)
 
-V tomto rychlém startu se dozvíte, jak použít [R](https://www.r-project.org/) se Machine Learning Services pro připojení k databázi SQL Azure a použití příkazů jazyka Transact-SQL k dotazování dat. Machine Learning Services je funkce Azure SQL Database, která se používá ke spouštění skriptů R v databázi. Další informace najdete v tématu [Azure SQL Database Machine Learning Services s R (Preview)](sql-database-machine-learning-services-overview.md).
+V tomto rychlém startu použijete R se Machine Learning Services pro připojení k databázi SQL Azure a použití příkazů T-SQL k dotazování dat.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- Databázi Azure SQL. K vytvoření a konfiguraci databáze v Azure SQL Database můžete použít jeden z těchto rychlých startů:
+- [Databáze SQL Azure](sql-database-single-database-get-started.md)
+  
+- [Machine Learning Services](sql-database-machine-learning-services-overview.md) s povoleným R. [Zaregistrujte se do verze Preview](sql-database-machine-learning-services-overview.md#signup).
 
-<!-- Managed instance is not supported during the preview
-  || Single database | Managed instance |
-  |:--- |:--- |:---|
-  | Create| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
-  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Configure | [Server-level IP firewall rule](sql-database-server-level-firewall-rule.md) | [Connectivity from a VM](sql-database-managed-instance-configure-vm.md) |
-  ||| [Connectivity from on-site](sql-database-managed-instance-configure-p2s.md) |
-  | Load data | Adventure Works loaded per quickstart | [Restore Wide World Importers](sql-database-managed-instance-get-started-restore.md) |
-  ||| Restore or import Adventure Works from [BACPAC](sql-database-import.md) file from [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) |
-  |||
--->
+- [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
-  || Izolovaná databáze |
-  |:--- |:--- |
-  | Vytvoření| [Azure Portal](sql-database-single-database-get-started.md) |
-  || [Rozhraní příkazového řádku](scripts/sql-database-create-and-configure-database-cli.md) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) |
-  | Konfigurace | [Pravidlo brány firewall protokolu IP na úrovni serveru](sql-database-server-level-firewall-rule.md) |
-  | Načtení dat | Načtený Adventure Works pro každý rychlý Start |
-  |||
+> [!IMPORTANT]
+> Skripty v tomto článku jsou určeny k používání databáze **Adventure Works** .
 
-  > [!NOTE]
-  > V rámci verze Preview Azure SQL Database Machine Learning Services s R není možnost nasazení Managed instance podporována.
+> [!NOTE]
+> V rámci verze Public Preview vám Microsoft zaregistruje a povolí Machine Learning pro stávající nebo novou databázi, ale možnost nasazení Managed instance se momentálně nepodporuje.
 
-<!-- Managed instance is not supported during the preview
-  > [!IMPORTANT]
-  > The scripts in this article are written to use the Adventure Works database. With a managed instance, you must either import the Adventure Works database into an instance database or modify the scripts in this article to use the Wide World Importers database.
--->
-
-- Machine Learning Services (s povoleným R). V rámci verze Public Preview vám Microsoft zaregistruje a povolí Machine Learning pro vaši stávající nebo novou databázi. Postupujte podle kroků v [části registrace ve verzi Preview](sql-database-machine-learning-services-overview.md#signup).
-
-- Nejnovější [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS). Můžete spouštět skripty R pomocí jiných nástrojů pro správu databáze nebo dotazů, ale v tomto rychlém startu použijete SSMS.
+Machine Learning Services s R je funkce služby Azure SQL Database, která se používá ke spouštění skriptů jazyka R v databázi. Další informace naleznete v projektu jazyka [R](https://www.r-project.org/).
 
 ## <a name="get-sql-server-connection-information"></a>Získat informace o připojení k SQL serveru
 
 Získejte informace o připojení, které potřebujete pro připojení ke službě Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com/).
 
 2. Přejděte na stránku **databáze SQL** nebo **spravované instance SQL** .
 
