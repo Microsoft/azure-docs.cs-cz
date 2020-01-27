@@ -109,7 +109,7 @@ Nasazení clusteru Azure Průzkumník dat do vaší podsítě vám umožní nast
 | BrazilSouth | 191.233.25.183 |
 | Kanada – střed | 40.82.188.208 |
 | Kanada – východ | 40.80.255.12 |
-| Střední Indie | 40.81.249.251 |
+| Střed Indie | 40.81.249.251 |
 | Střední USA | 40.67.188.68 |
 | Střed USA EUAP | 40.89.56.69 |
 | Východní Asie | 20.189.74.103 |
@@ -148,7 +148,7 @@ Nasazení clusteru Azure Průzkumník dat do vaší podsítě vám umožní nast
 | Brazílie – jih | 23.98.145.105 |
 | Kanada – střed | 168.61.212.201 |
 | Kanada – východ | 168.61.212.201 |
-| Střední Indie | 23.99.5.162 |
+| Střed Indie | 23.99.5.162 |
 | Střední USA | 168.61.212.201 |
 | Střed USA EUAP | 168.61.212.201 |
 | Východní Asie | 168.63.212.33 |

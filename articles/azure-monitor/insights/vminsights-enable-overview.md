@@ -50,7 +50,7 @@ Azure Monitor pro virtuální počítače podporuje pracovní prostor Log Analyt
 - Západní Evropa
 - Východní Asie
 - Jihovýchodní Asie
-- Střední Indie
+- Střed Indie
 - Japonsko – východ
 - Austrálie – východ
 - Austrálie – jihovýchod

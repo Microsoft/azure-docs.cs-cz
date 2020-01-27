@@ -17,5 +17,5 @@ ms.locfileid: "75445817"
 | -------- | ---- | :-----------: |
 | Východní USA, Západní Evropa Západní USA 2 | Linux | K80, P100, V100 |
 | Jihovýchodní Asie | Linux | P100, V100|
-| Střední Indie | Linux | V100 |
+| Střed Indie | Linux | V100 |
 | Severní Evropa | Linux | K80 |

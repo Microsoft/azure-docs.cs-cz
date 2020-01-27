@@ -160,7 +160,7 @@ Ano, mezipaměť Azure pro Redis je dostupná v cloudu Azure Government, Azure �
 | Cloud   | Přípona DNS pro Redis            |
 |---------|---------------------------------|
 | Veřejné  | *.redis.cache.windows.net       |
-| Vláda USA  | *.redis.cache.usgovcloudapi.net |
+| US Gov  | *.redis.cache.usgovcloudapi.net |
 | Německo | *.redis.cache.cloudapi.de       |
 | Čína   | *.redis.cache.chinacloudapi.cn  |
 

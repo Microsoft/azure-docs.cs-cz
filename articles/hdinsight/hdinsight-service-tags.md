@@ -68,7 +68,7 @@ Pokud upřednostňujete možnost označení služby dvě a váš cluster se nach
 | Brazílie | Brazílie – jih | HDInsight. BrazilSouth |
 | Korea | Korea – střed | HDInsight. KoreaCentral |
 | &nbsp; | Korea – jih | HDInsight. KoreaSouth |
-| Indie | Střední Indie | HDInsight. CentralIndia |
+| Indie | Střed Indie | HDInsight. CentralIndia |
 | &nbsp; | Jižní Indie | HDInsight. SouthIndia |
 | Japonsko | Japonsko – západ | HDInsight. JapanWest |
 | Francie | Francie – střed| HDInsight. FranceCentral |

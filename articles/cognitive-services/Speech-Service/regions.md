@@ -41,7 +41,7 @@ Sada Speech SDK je k dispozici v těchto oblastech pro **rozpoznávání řeči*
 | Střední USA       | `centralus`          | https://centralus.cris.ai      |
 | Středoseverní USA | `northcentralus`     | https://northcentralus.cris.ai |
 | Středojižní USA | `southcentralus`     | https://southcentralus.cris.ai |
-| Střední Indie    | `centralindia`       | https://centralindia.cris.ai   |
+| Střed Indie    | `centralindia`       | https://centralindia.cris.ai   |
 | Východní Asie        | `eastasia`           | https://eastasia.cris.ai       |
 | Jihovýchodní Asie   | `southeastasia`      | https://southeastasia.cris.ai  |
 | Japonsko – východ       | `japaneast`          | https://japaneast.cris.ai      |

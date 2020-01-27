@@ -56,7 +56,7 @@ NPM může monitorovat propojení mezi sítěmi a aplikacemi v jakékoli části
 * Jižní Velká Británie
 * Východní Asie
 * Korea – střed
-* Střední Indie
+* Střed Indie
 * ) – Virginia vlády USA
 * Čína – východ 2
 

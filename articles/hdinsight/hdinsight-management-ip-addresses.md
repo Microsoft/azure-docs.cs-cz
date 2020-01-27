@@ -64,7 +64,7 @@ Povolte provoz z IP adres uvedených pro služby stavu a správy Azure HDInsight
 | Francie | Francie – střed| 20.188.39.64</br>40.89.157.135 | \*:443 | Příchozí |
 | Německo | Německo – střed | 51.4.146.68</br>51.4.146.80 | \*:443 | Příchozí |
 | &nbsp; | Německo – severovýchod | 51.5.150.132</br>51.5.144.101 | \*:443 | Příchozí |
-| Indie | Střední Indie | 52.172.153.209</br>52.172.152.49 | \*:443 | Příchozí |
+| Indie | Střed Indie | 52.172.153.209</br>52.172.152.49 | \*:443 | Příchozí |
 | &nbsp; | Jižní Indie | 104.211.223.67<br/>104.211.216.210 | \*:443 | Příchozí |
 | Japonsko | Japonsko – východ | 13.78.125.90</br>13.78.89.60 | \*:443 | Příchozí |
 | &nbsp; | Japonsko – západ | 40.74.125.69</br>138.91.29.150 | \*:443 | Příchozí |

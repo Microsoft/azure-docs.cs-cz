@@ -50,9 +50,9 @@ Obrázek 1 – regionální páry Azure
 | Spojené království |Spojené království – západ |Spojené království – jih |
 | Spojené arabské emiráty | Spojené arabské emiráty – sever | Spojené arabské emiráty – střed
 | Ministerstvo obrany USA |US DoD – východ |US DoD – střed |
-| US Government |USA (Gov) – Arizona |USA (Gov) – Texas |
+| US Government |US Gov – Arizona |US Gov – Texas |
 | US Government |US Gov – Iowa |USA (Gov) – Virginia |
-| US Government |USA (Gov) – Virginia |USA (Gov) – Texas |
+| US Government |USA (Gov) – Virginia |US Gov – Texas |
 
 Tabulka 1 – mapování místních párů Azure
 

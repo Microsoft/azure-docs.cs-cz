@@ -78,7 +78,7 @@ Pokud portál indikuje omezení dokumentu, služba byla buď vytvořena před 20
 
 + Austrálie – východ
 + Východní Asie
-+ Střední Indie
++ Střed Indie
 + Japonsko – západ
 + Středozápadní USA
 

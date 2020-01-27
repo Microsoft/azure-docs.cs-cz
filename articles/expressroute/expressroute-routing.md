@@ -235,10 +235,10 @@ Kromě výše uvedeného bude Microsoft také označovat předpony podle služby
 | **Oblast Azure národních cloudů**| **Hodnota komunity protokolu BGP** |
 | --- | --- |
 | **US Government** |  |
-| USA (Gov) – Arizona | 12076:51106 |
+| US Gov – Arizona | 12076:51106 |
 | US Gov – Iowa | 12076:51109 |
 | USA (Gov) – Virginia | 12076:51105 |
-| USA (Gov) – Texas | 12076:51108 |
+| US Gov – Texas | 12076:51108 |
 | US DoD – střed | 12076:51209 |
 | US DoD – východ | 12076:51205 |
 

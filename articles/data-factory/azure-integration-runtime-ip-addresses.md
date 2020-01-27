@@ -42,7 +42,7 @@ Povolte provoz z IP adres uvedených pro Azure Integration runtime v konkrétní
 | Evropa         | Severní Evropa        | 20.38.82.0/23,</br>20.38.80.192/26,</br>13.69.230.96/28      |
 | &nbsp;         | Západní Evropa         | 40.74.26.0/23,</br>40.74.24.192/26,</br>13.69.67.192/28      |
 | Francie         | Francie – střed      | 20.43.40.128/25,</br>20.43.41.0/26,</br>40.79.132.112/28     |
-| Indie          | Střední Indie       | 52.140.104.128/25,</br>52.140.105.0/26,</br>20.43.121.48/28  |
+| Indie          | Střed Indie       | 52.140.104.128/25,</br>52.140.105.0/26,</br>20.43.121.48/28  |
 | Japonsko          | Japonsko – východ          | 20.43.64.128/25,</br>20.43.65.0/26,</br>13.78.109.192/28     |
 | Korea          | Korea – střed       | 20.41.64.128/25,</br>20.41.65.0/26,</br>52.231.20.64/28      |
 | Jihoafrická republika   | Jižní Afrika – sever  | 102.133.124.104/29,</br>102.133.216.128/25,</br>102.133.217.0/26 |

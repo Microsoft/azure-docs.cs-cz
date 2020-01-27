@@ -37,7 +37,7 @@ Během období Preview jsou k dispozici následující předem nakonfigurované 
 
 * **Oblasti Azure**
     * Brazílie – jih
-    * Střední Indie
+    * Střed Indie
     * Střední USA
     * Východní Asie
     * USA – východ

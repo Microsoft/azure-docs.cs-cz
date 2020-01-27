@@ -113,9 +113,9 @@ Pokud jsou zdrojová i jímka úložiště dat v cloudu, Data Factory používá
 | &nbsp; | Východní Asie | Jihovýchodní Asie |
 | Austrálie | Austrálie – východ | Austrálie – východ |
 | &nbsp; | Austrálie – jihovýchod | Austrálie – jihovýchod |
-| Indie | Střední Indie | Střední Indie |
-| &nbsp; | Západní Indie | Střední Indie |
-| &nbsp; | Jižní Indie | Střední Indie |
+| Indie | Střed Indie | Střed Indie |
+| &nbsp; | Západní Indie | Střed Indie |
+| &nbsp; | Jižní Indie | Střed Indie |
 | Japonsko | Japonsko – východ | Japonsko – východ |
 | &nbsp; | Japonsko – západ | Japonsko – východ |
 | Korea | Korea – střed | Korea – střed |

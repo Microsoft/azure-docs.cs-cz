@@ -256,7 +256,7 @@ Azure File Sync je k dispozici pouze v následujících oblastech:
 | Brazílie – jih | Sao Paulo – stát |
 | Střední Kanada | Toronto |
 | Východní Kanada | Québec |
-| Střední Indie | Puné |
+| Střed Indie | Puné |
 | Střední USA | Iowa |
 | Východní Asie | Hongkong – zvláštní správní oblast |
 | Východní USA | Virginie |
@@ -278,7 +278,7 @@ Azure File Sync je k dispozici pouze v následujících oblastech:
 | Velká Británie – západ | Cardiff |
 | US Gov – Arizona | Arizona |
 | US Gov – Texas | Texas |
-| USA – Virginie | Virginie |
+| US Gov – Virginie | Virginie |
 | Spojené arabské emiráty – sever | Dubaj |
 | Spojené arabské emiráty střed * | Abú Zabí |
 | Západní Evropa | Nizozemsko |
@@ -305,7 +305,7 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 | Brazílie – jih        | Středojižní USA   |
 | Střední Kanada      | Východní Kanada        |
 | Východní Kanada         | Střední Kanada     |
-| Střední Indie       | Jižní Indie        |
+| Střed Indie       | Jižní Indie        |
 | Střední USA          | Východ USA 2          |
 | Východní Asie           | Jihovýchodní Asie     |
 | Východní USA             | Západní USA            |
@@ -321,13 +321,13 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 | Jižní Afrika – sever  | Jižní Afrika – západ  |
 | Jižní Afrika – západ   | Jižní Afrika – sever |
 | Středojižní USA    | Středoseverní USA   |
-| Jižní Indie         | Střední Indie      |
+| Jižní Indie         | Střed Indie      |
 | Jihovýchodní Asie      | Východní Asie          |
 | Spojené království – jih            | Velká Británie – západ            |
 | Velká Británie – západ             | Spojené království – jih           |
 | US Gov – Arizona      | US Gov – Texas       |
-| USA – Iowa         | USA – Virginie    |
-| USA – Virginie      | US Gov – Texas       |
+| USA – Iowa         | US Gov – Virginie    |
+| US Gov – Virginie      | US Gov – Texas       |
 | Západní Evropa         | Severní Evropa       |
 | Středozápadní USA     | Západní USA 2          |
 | Západní USA             | Východní USA            |

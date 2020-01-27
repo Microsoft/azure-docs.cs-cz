@@ -52,7 +52,7 @@ Než začnete, přečtěte si následující požadavky.
     - Jihovýchodní Asie
     - Japonsko – východ
     - Spojené království – jih
-    - Střední Indie
+    - Střed Indie
     - Střední Kanada
     - Západní USA 2
 

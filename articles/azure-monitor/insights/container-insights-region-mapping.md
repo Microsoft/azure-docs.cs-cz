@@ -60,7 +60,7 @@ Prostředky clusteru AKS nebo pracovní prostor Log Analytics můžou být v jin
 |WestUS |WestUS |
 |WestUS2 |WestUS2 |
 |WestCentralUS<sup>1</sup>|EastUS<sup>1</sup>|
-|USA – Virginie |USA – Virginie |
+|US Gov – Virginie |US Gov – Virginie |
 
 <sup>1</sup> kvůli omezením kapacity není oblast při vytváření nových prostředků dostupná. To zahrnuje Log Analytics pracovní prostor. Stávající propojené prostředky v oblasti ale budou fungovat i nadále.
 

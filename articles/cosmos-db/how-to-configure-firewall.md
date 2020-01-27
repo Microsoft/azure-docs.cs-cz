@@ -40,7 +40,7 @@ Pokud zásadu řízení přístupu k IP adrese povolíte programově, je nutné 
 |------|----------|
 |Německo|51.4.229.218|
 |Čína|139.217.8.252|
-|Vláda USA|52.244.48.71|
+|US Gov|52.244.48.71|
 |Všechny ostatní oblasti|104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26|
 
 Přístup k Azure Portal můžete povolit tak, že vyberete možnost **Povolit přístup z Azure Portal** , jak je znázorněno na následujícím snímku obrazovky:

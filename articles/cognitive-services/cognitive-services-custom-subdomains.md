@@ -92,7 +92,7 @@ Ano. Toto je seznam regionálních koncových bodů, které můžete použít s 
 | | Západní Evropa | `https://westeurope.api.cognitive.microsoft.com` |
 | | Západní USA | `https://westus.api.cognitive.microsoft.com` |
 | | Západní USA 2 | `https://westus2.api.cognitive.microsoft.com` |
-| Vláda USA | USA (Gov) – Virginia | `https://virginia.api.cognitive.microsoft.us` |
+| US Gov | USA (Gov) – Virginia | `https://virginia.api.cognitive.microsoft.us` |
 | Čína | Čína – východ 2 | `https://chinaeast2.api.cognitive.azure.cn` |
 | | Čína – sever | `https://chinanorth.api.cognitive.azure.cn` |
 

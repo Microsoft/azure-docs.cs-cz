@@ -77,7 +77,7 @@ Azure Migrate projekt můžete vytvořit v řadě geografických oblastí. I kdy
 
 **Zeměpisné oblasti** | **Umístění úložiště metadat**
 --- | ---
-Azure Government | USA – Virginie
+Azure Government | US Gov – Virginie
 Asie a Tichomoří | Východní Asie nebo jihovýchodní Asie
 Austrálie | Austrálie – východ nebo Austrálie – jihovýchod
 Brazílie | Brazílie – jih
