@@ -501,6 +501,8 @@
               href: ./hadoop/apache-ambari-troubleshoot-fivezerotwo-error.md
             - name: Apache Ambari zobrazuje vypnuté hostitele a služby
               href: ./hadoop/apache-ambari-troubleshoot-down-hosts-services.md
+            - name: Výstrahy zastarání Apache Ambari
+              href: ./hadoop/apache-ambari-troubleshoot-stale-alerts.md
             - name: Řešení potíží s pomalým clusterem HDInsight nebo jeho selháním
               href: ./hdinsight-troubleshoot-failed-cluster.md
             - name: Řešení potíží s Apache Hadoop HDFS
@@ -509,6 +511,8 @@
               href: ./hdinsight-troubleshoot-yarn.md
             - name: Řešení potíží se soubory Data Lake Store
               href: ./hadoop/hdinsight-troubleshoot-data-lake-files.md
+            - name: Výstrahy adresářů Apache Ambari
+              href: ./hadoop/apache-ambari-troubleshoot-directory-alerts.md
 - name: Apache Kafka
   items:
     - name: Přehled

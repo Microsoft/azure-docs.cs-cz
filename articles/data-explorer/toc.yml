@@ -27,9 +27,11 @@
       href: visualize-power-bi.md
 - name: Koncepty
   items:
-    - name: Přehled ingestování dat
-      displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
-      href: ingest-data-overview.md
+    - name: Přijímání dat
+      items:
+        - name: Přehled ingestování dat
+          displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
+          href: ingest-data-overview.md
     - name: Přehled vizualizace dat
       href: viz-overview.md
     - name: Přehled zabezpečení
@@ -84,18 +86,20 @@
           href: ingest-data-one-click.md
         - name: Ingestování streamování
           href: ingest-data-streaming.md
+        - name: S využitím sad SDK
+          items:
+            - name: Python
+              href: python-ingest-data.md
+            - name: Node SDK
+              href: node-ingest-data.md
+            - name: .NET Standard SDK
+              href: net-standard-ingest-data.md
         - name: Kafka
           href: ingest-data-kafka.md
-        - name: Python
-          href: python-ingest-data.md
-        - name: Node SDK
-          href: node-ingest-data.md
-        - name: .NET Standard SDK
-          href: net-standard-ingest-data.md
         - name: Logstash
           href: ingest-data-logstash.md
-        - name: Kopírování dat s využitím Azure Data Factory
-          href: data-factory-load-data.md
+        - name: data ve formátu json
+          href: ingest-json-formats.md
     - name: Dotazování dat
       items:
         - name: Zápis dotazů
@@ -204,6 +208,8 @@
           items:
             - name: Integrace s Data Factory
               href: data-factory-integration.md
+            - name: Kopírování dat s využitím Azure Data Factory
+              href: data-factory-load-data.md
             - name: Hromadné kopírování dat s využitím šablony Azure Data Factory
               href: data-factory-template.md
             - name: Spouštění řídicích příkazů s využitím Azure Data Factory

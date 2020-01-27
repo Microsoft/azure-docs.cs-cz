@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: Dokumentace ke službě Azure Search
+title: Dokumentace ke kognitivnímu hledání Azure
 summary: Vyhledávání soukromého heterogenního obsahu v cloudu s možnostmi pro obohacení AI, pokud je váš obsah nestrukturovaný nebo neprohledávatelný v nezpracované podobě.
 metadata:
-  title: Dokumentace ke službě Azure Search
+  title: Dokumentace ke kognitivnímu hledání Azure
   description: Vyhledávání soukromého heterogenního obsahu v cloudu s možnostmi pro obohacení AI, pokud je váš obsah nestrukturovaný nebo neprohledávatelný v nezpracované podobě.
   services: search
   ms.service: service
@@ -11,26 +11,26 @@ metadata:
   author: HeidiSteen
   ms.author: heidist
   ms.date: 09/20/2019
-  ms.openlocfilehash: 5521f784704fe4d97ed30de0ec5367b9b4bb4f5f
-  ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+  ms.openlocfilehash: 3d011bdf1f0da04efec86adc121326a877532b6f
+  ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/29/2019
-  ms.locfileid: "72790063"
+  ms.lasthandoff: 01/24/2020
+  ms.locfileid: "76721060"
 landingContent:
-- title: Informace o službě Azure Search
+- title: Informace o kognitivním hledání
   linkLists:
   - linkListType: overview
     links:
-    - text: Co je Azure Search?
+    - text: Co je kognitivní hledání Azure?
       url: search-what-is-azure-search.md
   - linkListType: architecture
     links:
-    - text: Jak funguje fulltextové vyhledávání v Azure Search
+    - text: Jak funguje fulltextové vyhledávání v kognitivním hledání
       url: search-lucene-query-architecture.md
   - linkListType: video
     links:
-    - text: Co je Azure Search (1 minuta a 27 sekund)
+    - text: Co je kognitivní hledání (1 min 27 s)
       url: https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player
 - title: Začínáme
   linkLists:
@@ -42,9 +42,13 @@ landingContent:
       url: search-get-started-portal.md
     - text: Vytvoření kanálu pro rozšiřování
       url: cognitive-search-quickstart-blob.md
+  - linkListType: tutorial
+    links:
+    - text: Vytvoření aplikace
+      url: tutorial-csharp-create-first-app.md
   - linkListType: learn
     links:
-    - text: Úvod do Azure Search
+    - text: Úvod do kognitivního hledání Azure
       url: https://docs.microsoft.com/learn/modules/intro-to-azure-search/
 - title: Použití se službou Blob Storage
   linkLists:
@@ -72,10 +76,6 @@ landingContent:
       url: search-indexer-overview.md
   - linkListType: how-to-guide
     links:
-    - text: Index z Blob Storage
-      url: search-howto-indexing-azure-blob-storage.md
-    - text: Indexování objektů blob JSON
-      url: search-howto-index-json-blobs.md
     - text: Index z Azure SQL Database
       url: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
     - text: Index z dat Cosmos DB
@@ -90,7 +90,7 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: Co je kognitivní hledání?
+    - text: Kanál pro rozšiřování AI
       url: cognitive-search-concept-intro.md
     - text: Sady dovedností
       url: cognitive-search-defining-skillset.md
@@ -108,7 +108,7 @@ landingContent:
       url: knowledge-store-create-portal.md
   - linkListType: reference
     links:
-    - text: Předdefinované dovednosti
+    - text: Integrované dovednosti
       url: cognitive-search-predefined-skills.md
 - title: Dotazování dat
   linkLists:

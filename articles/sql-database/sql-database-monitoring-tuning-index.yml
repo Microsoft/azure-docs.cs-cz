@@ -1,56 +1,116 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Sledování a ladění
+### YamlMime:Landing
+title: Azure SQL Database – monitorování a ladění výkonu
+summary: Azure SQL Database poskytuje nástroje, které pomáhají shromažďovat metriky a diagnostické informace pro monitorování vaší databáze a zlepšení jejího výkonu.
 metadata:
-  title: Azure SQL Database – monitorování a ladění
-  meta.description: Learn how to monitor and tune your Azure SQL database.
-  services: sql-database
-  ms.subservice: performance
-  author: jovanpop-msft
-  manager: craigg
+  title: Dokumentace k monitorování a optimalizaci služby Azure SQL Database
+  description: Azure SQL Database poskytuje nástroje, které pomáhají shromažďovat metriky a diagnostické informace pro monitorování vaší databáze a zlepšení jejího výkonu.
   ms.service: sql-database
-  ms.tgt_pltfrm: na
-  ms.devlang: null
-  ms.topic: overview
-  ms.date: 02/08/2019
-  ms.author: jovanpop
-sections:
-  - items:
-      - type: paragraph
-        text: Azure SQL Database umožňuje snadné monitorování a ladění databázové úlohy.
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - title: Query Performance Insights
-            href: /azure/sql-database/sql-database-query-performance
-            html: <p>Využijte možnost snadno monitorovat využití prostředků v databázi Azure SQL (jednoúčelové databázi nebo databázi ve fondu) s využitím integrovaných možností monitorování na webu Azure Portal.</p>
-          - title: Azure SQL Analytics
-            href: 'https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql?toc=/azure/sql-database/toc.json'
-            html: '<p>Monitorování služby Azure SQL Analytics umožňuje snadno monitorovat velké skupiny databází, elastických fondů a instancí v jediném zobrazení.</p>'
-          - title: Automatické ladění
-            href: /azure/sql-database/sql-database-automatic-tuning
-            html: <p>Automatické ladění automaticky poskytuje doporučení a opravuje problémy s plány dotazů a vytváří a odstraňuje indexy za účelem zlepšení výkonu.</p>
-          - title: Intelligent Insights pro výkon
-            href: /azure/sql-database/sql-database-intelligent-insights
-            html: '<p>Integrované inteligentní funkce v Azure SQL Database detekují rušivé události, které způsobují špatný výkon vašich databází, a poskytují doporučení pro zmírnění rizik, pokud je to možné.</p>'
-          - title: Doporučení k výkonu
-            href: /azure/sql-database/sql-database-advisor
-            html: '<p>Azure SQL Database poskytuje doporučení, která pomáhají optimalizovat databáze na webu Azure Portal.</p>'
-          - title: Metriky a protokolování
-            href: /azure/sql-database/sql-database-metrics-diag-logging
-            html: '<p>Využijte možnost streamovat telemetrická data diagnostiky databáze do Azure SQL Analytics, Azure Event Hubs nebo Azure Blob Storage pro vlastní integrace.</p>'
-  - title: Další zdroje informací
-    items:
-      - type: paragraph
-        text: 'Seznamte se s dalšími funkcemi, které vám pomohou optimalizovat výkon databáze.'
-      - type: list
-        style: unordered
-        items:
-          - html: "Přečtěte si další informace o <a href=\"sql-database-monitor-tune-overview.md\">monitorování a\_ladění </a> ve službě Azure Database."
-          - html: 'Zjistěte, jak <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json">inteligentní zpracování dotazů</a> pomáhá zlepšovat výkon databází.'
-          - html: 'Nastavte a provozujte <a href="sql-database-operate-query-store.md">Query Store</a>, základní technologii SQL Serveru, která umožňuje získat přehledy o výkonu dotazů v reálném čase.'
-          - html: Naučte se používat <a href="sql-database-operate-query-store.md">zobrazení dynamické správy</a> k analýze výkonu vašich úloh.
-          - html: Naučte se monitorovat databázové aktivity s využitím <a href="sql-database-xevent-db-diff-from-svr.md">XEvents</a>.
-          - html: 'Zjistěte si, jak <a href="sql-database-performance-guidance.md">ručně vyladit vaši databázi</a>.'
+  ms.subservice: performance
+  ms.topic: landing-page
+  ms.collection: performance
+  author: CarlRabeler
+  ms.author: carlrab
+  ms.date: 01/24/2020
+  ms.openlocfilehash: 237e9dccb84948b9d60ba6d54367d538b90e1d55
+  ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 01/24/2020
+  ms.locfileid: "76715215"
+landingContent:
+- title: Informace o monitorování a optimalizaci výkonu
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Sledování a ladění výkonu
+      url: sql-database-monitor-tune-overview.md
+  - linkListType: learn
+    links:
+    - text: Monitorovací playbook Microsoft Azure Database
+      url: https://app.pluralsight.com/library/courses/microsoft-azure-database-playbook-monitoring
+- title: Shromažďování metrik a protokolů
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Metriky a diagnostické protokolování
+      url: sql-database-metrics-diag-logging.md
+    - text: Vysvětlení diagnostického protokolu výkonu
+      url: sql-database-intelligent-insights-use-diagnostics-log.md
+- title: Omezení prostředků
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Limity prostředků virtuálních jader izolované databáze
+      url: sql-database-vcore-resource-limits-single-databases.md
+    - text: Limity prostředků DTU izolované databáze
+      url: sql-database-dtu-resource-limits-single-databases.md
+    - text: Limity prostředků virtuálních jader elastického fondu
+      url: sql-database-vcore-resource-limits-elastic-pools.md
+    - text: Limity prostředků DTU elastického fondu
+      url: sql-database-dtu-resource-limits-elastic-pools.md
+    - text: Limity prostředků spravované instance
+      url: sql-database-managed-instance-resource-limits.md
+    - text: Limity prostředků fondů spravované instance
+      url: sql-database-instance-pools.md#instance-pools-resource-limitations
+- title: Začínáme – Azure Portal
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Použití umělé inteligence na webu Azure Portal k optimalizaci výkonu
+      url: sql-database-performance.md
+  - linkListType: concept
+    links:
+    - text: Doporučení optimalizace pro SQL Database Advisor
+      url: sql-database-advisor.md
+    - text: Query Performance Insight
+      url: sql-database-query-performance.md
+    - text: Azure SQL Analytics
+      url: ../azure-monitor/insights/azure-sql.md
+    - text: Užitečné přehledy
+      url: sql-database-intelligent-insights.md
+    - text: Rozpoznatelné vzory výkonu
+      url: sql-database-intelligent-insights-troubleshoot-performance.md
+    - text: Automatické ladění
+      url: sql-database-automatic-tuning.md
+  - linkListType: video
+    links:
+    - text: Užitečné přehledy
+      url: https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player
+    - text: Automatické ladění
+      url: https://channel9.msdn.com/Shows/Azure-Friday/Improve-Azure-SQL-Database-Performance-with-Automatic-Tuning/player
+- title: Ruční optimalizace výkonu
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Pokyny k ruční optimalizaci výkonu
+      url: sql-database-performance-guidance.md
+  - linkListType: concept
+    links:
+    - text: S využitím úložiště dotazů
+      url: https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store
+    - text: S využitím zobrazení dynamické správy
+      url: sql-database-monitoring-with-dmvs.md
+    - text: S využitím rozšířených událostí
+      url: sql-database-xevent-db-diff-from-svr.md
+    - text: Diagnostika výkonu hyperškálování
+      url: sql-database-hyperscale-performance-diagnostics.md
+- title: Škálování prostředků
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Dynamické škálování prostředků
+      url: sql-database-scale-resources.md
+  - linkListType: concept
+    links:
+    - text: Škálování prostředků izolované databáze
+      url: sql-database-single-database-scale.md
+    - text: Škálování prostředků elastického fondu
+      url: sql-database-elastic-pool-scale.md
+    - text: Škálování prostředků spravované instance
+      url: sql-database-managed-instance.md#managed-instance-management-operations
+    - text: Škálování čtení
+      url: sql-database-read-scale-out.md
+  - linkListType: video
+    links:
+    - text: Dynamická škálovatelnost
+      url: https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player

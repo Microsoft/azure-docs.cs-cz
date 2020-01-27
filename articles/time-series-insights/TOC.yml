@@ -4,7 +4,7 @@
   items:
     - name: Informace o službě Time Series Insights
       href: time-series-insights-update-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Azure Time Series Insights verze GA
@@ -91,7 +91,7 @@
           href: time-series-insights-send-events.md
         - name: Škálování prostředí
           href: time-series-insights-how-to-scale-your-environment.md
-        - name: Úpravy JSON pro dotazy
+        - name: Formování JSON pro příchozí přenos dat a dotazy
           href: how-to-shape-query-json.md
         - name: Zmírnění omezování
           href: time-series-insights-environment-mitigate-latency.md
@@ -107,7 +107,7 @@
           href: time-series-insights-update-how-to-troubleshoot.md
         - name: Modelování dat
           href: time-series-insights-update-how-to-tsm.md
-        - name: Úpravy JSON pro dotazy
+        - name: Formování JSON pro příchozí přenos dat a dotazy
           href: time-series-insights-update-how-to-shape-events.md
         - name: Připojení k Power BI
           href: how-to-connect-power-bi.md
