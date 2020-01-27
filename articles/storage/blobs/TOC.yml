@@ -619,18 +619,6 @@
       items:
         - name: Analýza dat s využitím Databricks
           href: ../blobs/data-lake-storage-quickstart-create-databricks-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Správa objektů blob bez kódu
-          items:
-            - name: PowerShell
-              href: storage-quickstart-blobs-powershell.md
-            - name: Rozhraní příkazového řádku
-              href: storage-quickstart-blobs-cli.md
-        - name: Vývoj s využitím objektů blob
-          items:
-            - name: .NET
-              href: storage-quickstart-blobs-dotnet.md
-            - name: Python
-              href: storage-quickstart-blobs-python.md
     - name: Kurzy
       items:
         - name: 'Extrakce, transformace a načítání dat pomocí Azure Databricks'
@@ -657,36 +645,12 @@
           href: ../blobs/data-lake-storage-namespace.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Osvědčené postupy
           href: data-lake-storage-best-practices.md
-        - name: Úrovně přístupu
-          items:
-            - name: Úrovně přístupu
-              href: storage-blob-storage-tiers.md
-            - name: Správa životního cyklu Azure Blob Storage
-              href: storage-lifecycle-management-concepts.md
-        - name: Zabezpečení
-          items:
-            - name: Přehled zabezpečení úložiště
-              href: ../blobs/security-recommendations.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Řízení přístupu
-              href: data-lake-storage-access-control.md
-        - name: Protokolování
-          items:
-            - name: Analýzy úložiště
-              href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Protokoly analýzy úložiště
-              href: ../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Zpracování událostí
-          href: storage-blob-event-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Řízení přístupu (adresáře a soubory)
+          href: data-lake-storage-access-control.md
     - name: Postup
       items:
-        - name: Vytvoření a správa účtů úložiště
-          items:
-            - name: Vytvoření účtu úložiště pro datové jezero
-              href: ../blobs/data-lake-storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Správa dat pomocí Průzkumníka služby Storage
-              href: ../blobs/data-lake-storage-explorer.md
-            - name: Upgrade účtu úložiště
-              href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Vytvoření účtu úložiště pro datové jezero
+          href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 'Správa adresářů, souborů a seznamů ACL'
           items:
             - name: .NET
@@ -700,43 +664,7 @@
             - name: Rozhraní příkazového řádku
               href: data-lake-storage-directory-file-acl-cli.md
             - name: Storage Explorer
-              href: data-lake-storage-how-to-set-permissions-storage-explorer.md
-        - name: Přenos dat
-          items:
-            - name: AzCopy
-              items:
-                - name: Začínáme
-                  href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Použití s Data Lake Storage Gen2
-                  href: ../common/storage-use-azcopy-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 'Konfigurace, optimalizace, řešení potíží'
-                  href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Použití Distcp
-              href: ../blobs/data-lake-storage-use-distcp.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Použití Azure Data Factory
-              href: ../../data-factory/load-azure-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Zabezpečení dat
-          items:
-            - name: Konfigurace bran firewall a virtuálních sítí
-              href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Konfigurace klíčů spravovaných zákazníkem pro šifrování služby
-              items:
-                - name: Portál
-                  href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: PowerShell
-                  href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Azure CLI
-                  href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Správa přístupových práv pomocí RBAC
-              items:
-                - name: Portál
-                  href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: PowerShell
-                  href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Azure CLI
-                  href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Nastavení oprávnění na úrovni souborů a adresářů
-              href: ../blobs/data-lake-storage-how-to-set-permissions-storage-explorer.md
+              href: data-lake-storage-explorer.md
         - name: Optimalizace výkonu
           items:
             - name: Přehled
@@ -761,43 +689,16 @@
           href: ../blobs/data-lake-storage-use-power-bi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Referenční informace
       items:
-        - name: PowerShell
-          href: /powershell/module/azure.storage
-        - name: Azure CLI
-          href: /cli/azure/storage
         - name: .NET
-          items:
-            - name: Objekty blob (verze 12.x)
-              href: /dotnet/api/azure.storage.blobs
-            - name: Přesun dat
-              href: /dotnet/api/microsoft.azure.storage.datamovement
-            - name: Poskytovatel prostředků úložiště
-              href: /dotnet/api/overview/azure/storage/management
+          href: /dotnet/api/azure.storage.files.datalake
         - name: Java
-          items:
-            - name: Objekty blob (verze 12.x)
-              href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html'
-            - name: Objekty blob (verze 8.x)
-              href: /java/api/com.microsoft.azure.storage.blob
-            - name: Poskytovatel prostředků úložiště
-              href: /java/api/overview/azure/storage/management
-        - name: JavaScript (verze 12.x)
-          href: /javascript/api/@azure/storage-blob/
-        - name: Python (verze 12.x)
-          href: /python/api/azure-storage-blob/
+          href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html'
+        - name: Python
+          href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html'
+        - name: JavaScript
+          href: 'https://www.npmjs.com/package/@azure/storage-file-datalake/v/12.0.0-preview.6'
         - name: REST
-          items:
-            - name: 'Objekty blob, tabulky, fronty a soubory'
-              href: /rest/api/storageservices
-            - name: Data Lake Storage Gen2
-              href: /rest/api/storageservices/data-lake-storage-gen2
-            - name: Poskytovatel prostředků
-              href: /rest/api/storagerp
-            - name: Import/export
-              href: /rest/api/storageimportexport
-        - name: Šablona Resource Manageru
-          displayName: ARM
-          href: /azure/templates/microsoft.storage/allversions
+          href: /rest/api/storageservices/data-lake-storage-gen2
     - name: Zdroje a prostředky
       items:
         - name: Známé problémy
