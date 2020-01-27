@@ -10,12 +10,12 @@ ms.date: 01/02/2020
 ms.topic: include
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: acd122668a5aa70becbf284bd064535e859ad01b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: e2cb4f81e3de5e22bae3029e42ec2f67dae55424
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772945"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761437"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -42,15 +42,15 @@ Pojďme přidat kód, který funguje jako kostra pro náš projekt. Nezapomeňte
 
 ## <a name="create-a-speech-configuration"></a>Vytvoření konfigurace řeči
 
-Předtím, než budete moci inicializovat objekt `IntentRecognizer`, je nutné vytvořit konfiguraci, která používá klíč a umístění prostředku předpovědi LUIS. 
+Předtím, než budete moci inicializovat objekt `IntentRecognizer`, je nutné vytvořit konfiguraci, která používá klíč a umístění prostředku předpovědi LUIS.
 
 > [!IMPORTANT]
-> Spouštěcí klíč a klíč pro vytváření obsahu nebudou fungovat. Je nutné použít klíč předpovědi a umístění, které jste vytvořili dříve. Další informace najdete v tématu [Vytvoření aplikace Luis pro rozpoznávání záměrů](#create-a-luis-app-for-intent-recognition). 
+> Spouštěcí klíč a klíč pro vytváření obsahu nebudou fungovat. Je nutné použít klíč předpovědi a umístění, které jste vytvořili dříve. Další informace najdete v tématu [Vytvoření aplikace Luis pro rozpoznávání záměrů](#create-a-luis-app-for-intent-recognition).
 
-Vložte tento kód do metody `RecognizeIntentAsync()`. Ujistěte se, že tyto hodnoty aktualizujete: 
+Vložte tento kód do metody `RecognizeIntentAsync()`. Ujistěte se, že tyto hodnoty aktualizujete:
 
-* Nahraďte `"YourLanguageUnderstandingSubscriptionKey"` klíčem předpovědi LUIS. 
-* Nahraďte `"YourLanguageUnderstandingServiceRegion"` umístěním LUIS. 
+* Nahraďte `"YourLanguageUnderstandingSubscriptionKey"` klíčem předpovědi LUIS.
+* Nahraďte `"YourLanguageUnderstandingServiceRegion"` umístěním LUIS.
 
 >[!TIP]
 > Pokud potřebujete nápovědu k nalezení těchto hodnot, přečtěte si téma [Vytvoření aplikace v Luis pro rozpoznávání záměrů](#create-a-luis-app-for-intent-recognition).
@@ -65,16 +65,16 @@ Sada Speech SDK bude standardně rozpoznána pomocí en-US pro daný jazyk. info
 
 Nyní vytvoříme `IntentRecognizer`. Tento objekt je vytvořen v rámci příkazu Using, aby bylo zajištěno správné vydání nespravovaných prostředků. Vložte tento kód do metody `RecognizeIntentAsync()` hned pod konfigurací řeči.
 
-[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=28-30,76)]
+[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=29-30,76)]
 
 ## <a name="add-a-languageunderstandingmodel-and-intents"></a>Přidat LanguageUnderstandingModel a záměry
 
-Je potřeba přidružit `LanguageUnderstandingModel` k nástroji pro rozpoznávání záměrů a přidat záměry, které chcete rozpoznat. Budeme používat záměry z předem připravené domény pro automatizaci domů. Vložte tento kód do příkazu Using z předchozí části. Ujistěte se, že `"YourLanguageUnderstandingAppId"` nahradíte ID aplikace LUIS. 
+Je potřeba přidružit `LanguageUnderstandingModel` k nástroji pro rozpoznávání záměrů a přidat záměry, které chcete rozpoznat. Budeme používat záměry z předem připravené domény pro automatizaci domů. Vložte tento kód do příkazu Using z předchozí části. Ujistěte se, že `"YourLanguageUnderstandingAppId"` nahradíte ID aplikace LUIS.
 
 >[!TIP]
 > Pokud potřebujete nápovědu najít tuto hodnotu, přečtěte si téma [Vytvoření aplikace v Luis pro rozpoznávání záměrů](#create-a-luis-app-for-intent-recognition).
 
-[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=31-35)]
+[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=33-35)]
 
 ## <a name="recognize-an-intent"></a>Rozpoznávání záměru
 
@@ -88,7 +88,7 @@ Když Služba rozpoznávání řeči vrátí výsledek rozpoznávání, budete s
 
 V příkazu Using níže `RecognizeOnceAsync()`přidejte tento kód:
 
-[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=48-75)]
+[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=49-75)]
 
 ## <a name="check-your-code"></a>Kontrolovat kód
 
@@ -97,7 +97,7 @@ V tomto okamžiku váš kód by měl vypadat takto:
 > [!NOTE]
 > Do této verze jsme přidali nějaké komentáře.
 
-[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=5-86)]
+[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=7-86)]
 
 ## <a name="build-and-run-your-app"></a>Sestavení a spuštění aplikace
 

@@ -10,12 +10,12 @@ ms.date: 01/02/2020
 ms.topic: include
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: d421de69f856790b89c866a6c8b7221e9214aef4
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b141fcdb2aacc8654999d023c4174c7eb9bc177f
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772971"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761423"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -39,19 +39,19 @@ Pak otevřete projekt v aplikaci Visual Studio.
 
 Pojďme přidat kód, který funguje jako kostra pro náš projekt. Nezapomeňte, že jste vytvořili asynchronní metodu nazvanou `recognizeIntent()`.
 
-[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=6-16,73-81)]
+[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=6-16,72-80)]
 
 ## <a name="create-a-speech-configuration"></a>Vytvoření konfigurace řeči
 
-Předtím, než budete moci inicializovat objekt `IntentRecognizer`, je nutné vytvořit konfiguraci, která používá klíč a umístění prostředku předpovědi LUIS. 
+Předtím, než budete moci inicializovat objekt `IntentRecognizer`, je nutné vytvořit konfiguraci, která používá klíč a umístění prostředku předpovědi LUIS.
 
 > [!IMPORTANT]
-> Spouštěcí klíč a klíč pro vytváření obsahu nebudou fungovat. Je nutné použít klíč předpovědi a umístění, které jste vytvořili dříve. Další informace najdete v tématu [Vytvoření aplikace Luis pro rozpoznávání záměrů](#create-a-luis-app-for-intent-recognition). 
+> Spouštěcí klíč a klíč pro vytváření obsahu nebudou fungovat. Je nutné použít klíč předpovědi a umístění, které jste vytvořili dříve. Další informace najdete v tématu [Vytvoření aplikace Luis pro rozpoznávání záměrů](#create-a-luis-app-for-intent-recognition).
 
 Vložte tento kód do metody `recognizeIntent()`. Ujistěte se, že tyto hodnoty aktualizujete:
 
-* Nahraďte `"YourLanguageUnderstandingSubscriptionKey"` klíčem předpovědi LUIS. 
-* Nahraďte `"YourLanguageUnderstandingServiceRegion"` umístěním LUIS. 
+* Nahraďte `"YourLanguageUnderstandingSubscriptionKey"` klíčem předpovědi LUIS.
+* Nahraďte `"YourLanguageUnderstandingServiceRegion"` umístěním LUIS.
 
 >[!TIP]
 > Pokud potřebujete nápovědu k nalezení těchto hodnot, přečtěte si téma [Vytvoření aplikace v Luis pro rozpoznávání záměrů](#create-a-luis-app-for-intent-recognition).
@@ -70,14 +70,14 @@ Nyní vytvoříme `IntentRecognizer`. Vložte tento kód do metody `recognizeInt
 
 ## <a name="add-a-languageunderstandingmodel-and-intents"></a>Přidat LanguageUnderstandingModel a záměry
 
-Je potřeba přidružit `LanguageUnderstandingModel` k nástroji pro rozpoznávání záměrů a přidat záměry, které chcete rozpoznat. Budeme používat záměry z předem připravené domény pro automatizaci domů. 
+Je potřeba přidružit `LanguageUnderstandingModel` k nástroji pro rozpoznávání záměrů a přidat záměry, které chcete rozpoznat. Budeme používat záměry z předem připravené domény pro automatizaci domů.
 
-Vložte tento kód pod `IntentRecognizer`. Ujistěte se, že `"YourLanguageUnderstandingAppId"` nahradíte ID aplikace LUIS. 
+Vložte tento kód pod `IntentRecognizer`. Ujistěte se, že `"YourLanguageUnderstandingAppId"` nahradíte ID aplikace LUIS.
 
 >[!TIP]
 > Pokud potřebujete nápovědu najít tuto hodnotu, přečtěte si téma [Vytvoření aplikace v Luis pro rozpoznávání záměrů](#create-a-luis-app-for-intent-recognition).
 
-[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=31-34)]
+[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=31-33)]
 
 ## <a name="recognize-an-intent"></a>Rozpoznávání záměru
 
@@ -85,7 +85,7 @@ Z objektu `IntentRecognizer` zavoláte metodu `RecognizeOnceAsync()`. Tato metod
 
 Vložte tento kód pod model:
 
-[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=44)]
+[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=43)]
 
 ## <a name="display-the-recognition-results-or-errors"></a>Zobrazit výsledky rozpoznávání (nebo chyby)
 
@@ -93,7 +93,7 @@ Když Služba rozpoznávání řeči vrátí výsledek rozpoznávání, budete s
 
 Následující kód vložte `auto result = recognizer->RecognizeOnceAsync().get();`:
 
-[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=47-72)]
+[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=46-71)]
 
 ## <a name="check-your-code"></a>Kontrolovat kód
 
@@ -102,7 +102,7 @@ V tomto okamžiku váš kód by měl vypadat takto:
 > [!NOTE]
 > Do této verze jsme přidali nějaké komentáře.
 
-[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=6-81)]
+[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=6-79)]
 
 ## <a name="build-and-run-your-app"></a>Sestavení a spuštění aplikace
 
