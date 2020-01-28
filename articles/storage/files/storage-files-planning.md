@@ -212,7 +212,7 @@ Standardní sdílené složky jsou k dispozici ve všech oblastech až do 5 TiB.
 |Brazílie – jih    |LRS     |
 |Střední Kanada  |LRS     |
 |Východní Kanada     |LRS     |
-|Střední Indie  |LRS     |
+|Střed Indie  |LRS     |
 |Střed USA *   |LRS, ZRS    |
 |Východní Asie      |LRS     |
 |Východní USA *        |LRS, ZRS|
@@ -232,7 +232,7 @@ Standardní sdílené složky jsou k dispozici ve všech oblastech až do 5 TiB.
 |Švýcarsko – západ    |LRS     |
 |Spojené arabské emiráty – střed    |LRS     |
 |Spojené arabské emiráty – sever    |LRS     |
-|Spojené království – sever   |LRS, ZRS    |
+|Velká Británie – sever   |LRS, ZRS    |
 |Spojené království – jih    |LRS     |
 |Velká Británie – západ    |LRS     |
 |Středozápadní USA|LRS     |

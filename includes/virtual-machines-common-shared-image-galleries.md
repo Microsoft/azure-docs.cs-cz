@@ -100,7 +100,7 @@ Zdrojové oblasti jsou uvedené v následující tabulce. Všechny veřejné obl
 | Brazílie – jih          | Východní Asie         | Korea – střed      | Ministerstvo obrany USA – východ        |
 | Střední Kanada        | Východní USA           | Korea – jih        | US Gov – Arizona     |
 | Východní Kanada           | Východ USA 2         | Středoseverní USA   | US Gov – Texas       |
-| Střední Indie         | Východní USA 2 EUAP    | Severní Evropa       | USA – Virginie    |
+| Střed Indie         | Východní USA 2 EUAP    | Severní Evropa       | US Gov – Virginie    |
 | Střední USA            | Francie – střed    | Středojižní USA   | Západní Indie         |
 | Střed USA EUAP       | Francie – jih      | Středozápadní USA    | Západní USA            |
 |                       |                   |                    | Západní USA 2          |

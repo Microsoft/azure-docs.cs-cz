@@ -112,7 +112,7 @@ V zájmu zajištění provozní kontinuity a zotavení po havárii (BCDR) jste p
 | Veřejné | Brazílie – jih | https:\//brazilsouth01.afs.azure.net | Středojižní USA | https:\//tm-brazilsouth01.afs.azure.net |
 | Veřejné | Střední Kanada | https:\//kailani-cac.one.microsoft.com | Východní Kanada | https:\//tm-kailani-cac.one.microsoft.com |
 | Veřejné | Východní Kanada | https:\//kailani-cae.one.microsoft.com | Střední Kanada | https:\//tm-kailani.cae.one.microsoft.com |
-| Veřejné | Střední Indie | https:\//kailani-cin.one.microsoft.com | Jižní Indie | https:\//tm-kailani-cin.one.microsoft.com |
+| Veřejné | Střed Indie | https:\//kailani-cin.one.microsoft.com | Jižní Indie | https:\//tm-kailani-cin.one.microsoft.com |
 | Veřejné | Střední USA | https:\//kailani-cus.one.microsoft.com | Východ USA 2 | https:\//tm-kailani-cus.one.microsoft.com |
 | Veřejné | Východní Asie | https:\//kailani11.one.microsoft.com | Jihovýchodní Asie | https:\//tm-kailani11.one.microsoft.com |
 | Veřejné | Východní USA | https:\//kailani1.one.microsoft.com | Západní USA | https:\//tm-kailani1.one.microsoft.com |
@@ -124,7 +124,7 @@ V zájmu zajištění provozní kontinuity a zotavení po havárii (BCDR) jste p
 | Veřejné | Středoseverní USA | https:\//northcentralus01.afs.azure.net | Středojižní USA | https:\//tm-northcentralus01.afs.azure.net |
 | Veřejné | Severní Evropa | https:\//kailani7.one.microsoft.com | Západní Evropa | https:\//tm-kailani7.one.microsoft.com |
 | Veřejné | Středojižní USA | https:\//southcentralus01.afs.azure.net | Středoseverní USA | https:\//tm-southcentralus01.afs.azure.net |
-| Veřejné | Jižní Indie | https:\//kailani-sin.one.microsoft.com | Střední Indie | https:\//tm-kailani-sin.one.microsoft.com |
+| Veřejné | Jižní Indie | https:\//kailani-sin.one.microsoft.com | Střed Indie | https:\//tm-kailani-sin.one.microsoft.com |
 | Veřejné | Jihovýchodní Asie | https:\//kailani10.one.microsoft.com | Východní Asie | https:\//tm-kailani10.one.microsoft.com |
 | Veřejné | Spojené království – jih | https:\//kailani-uks.one.microsoft.com | Velká Británie – západ | https:\//tm-kailani-uks.one.microsoft.com |
 | Veřejné | Velká Británie – západ | https:\//kailani-ukw.one.microsoft.com | Spojené království – jih | https:\//tm-kailani-ukw.one.microsoft.com |

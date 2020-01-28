@@ -203,7 +203,7 @@ Tok dat tahání se v tuto chvíli podporuje v datových továrnách vytvořený
 
 * Austrálie – východ
 * Střední Kanada
-* Střední Indie
+* Střed Indie
 * Střední USA
 * Východní USA
 * Východ USA 2

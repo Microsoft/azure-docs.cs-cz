@@ -11,7 +11,7 @@ ms.author: banders
 ms.reviewer: sngun
 ms.openlocfilehash: cb20c88577bba614c70fdf5a266d482d06aeca57
 ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/15/2020
 ms.locfileid: "75995556"
@@ -47,7 +47,7 @@ Sleva za rezervaci se uplatňuje na poplatky za propustnost služby Azure Cosmos
 |Azure Cosmos DB – 100 RU/s/hodina – Korea – střed|   Korea – střed    |       1\. místo  |
 |Azure Cosmos DB – 100 RU/s/hodina – Velká Británie – jih|   Spojené království – jih      |     1\. místo    |
 |Azure Cosmos DB – 100 RU/s/hodina – Velká Británie – západ|   Velká Británie – západ      |    1\. místo     |
-|Azure Cosmos DB – 100 RU/s/hodina – Velká Británie – sever |   Spojené království – sever    |     1\. místo    |
+|Azure Cosmos DB – 100 RU/s/hodina – Velká Británie – sever |   Velká Británie – sever    |     1\. místo    |
 |Azure Cosmos DB – 100 RU/s/hodina – Velká Británie – jih 2|   Spojené království – jih 2      |     1\. místo    |
 |Azure Cosmos DB – 100 RU/s/hodina – USA – východ 2|  USA – východ 2     |     1\. místo    |
 |Azure Cosmos DB – 100 RU/s/hodina – USA (střed) – sever|   USA (střed) – sever      |     1\. místo    |
