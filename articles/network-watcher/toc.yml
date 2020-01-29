@@ -4,7 +4,7 @@
   items:
     - name: Informace o službě Network Watcher
       href: network-watcher-monitoring-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Diagnostika potíží s filtrováním provozu virtuálních počítačů – portál
@@ -101,6 +101,8 @@
               href: network-watcher-nsg-flow-logging-cli.md
             - name: REST
               href: network-watcher-nsg-flow-logging-rest.md
+            - name: Azure Resource Manager
+              href: network-watcher-nsg-flow-logging-azure-resource-manager.md
         - name: Odstranění objektů blob úložiště protokolu toků NSG
           href: network-watcher-delete-nsg-flow-log-blobs.md
         - name: Analýza protokolů toku NSG

@@ -2,10 +2,14 @@
   items:
     - name: Linuxové virtuální počítače s SQL Serverem
       href: sql-server-linux-virtual-machines-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: Vytvoření virtuálního počítače SQL – portál
       href: provision-sql-server-linux-virtual-machine.md
+- name: Kurzy
+  items:
+    - name: Nastavení skupiny dostupnosti Azure RHEL VM s využitím STONITH
+      href: sql-server-linux-rhel-ha-stonith-tutorial.md
 - name: Referenční informace
   items:
     - name: Azure CLI

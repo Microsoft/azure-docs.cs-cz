@@ -4,7 +4,7 @@
   items:
     - name: Informace o službě Azure Digital Twins
       href: about-digital-twins.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Zjištění dostupných místností
@@ -73,6 +73,8 @@
       href: reference-user-defined-functions-client-library.md
 - name: Zdroje a prostředky
   items:
+    - name: Možnosti pomoci a podpory
+      href: /azure/iot-fundamentals/iot-support-help
     - name: 'Ukázky Azure Digital Twins pro C# (.NET)'
       href: 'https://github.com/Azure-Samples/digital-twins-samples-csharp'
     - name: Rozhraní REST API služby Azure Digital Twins
@@ -93,3 +95,31 @@
       href: 'https://azure.microsoft.com/roadmap/?category=iot'
     - name: Videa
       href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22&lang-en=true'
+- name: Související
+  items:
+    - name: Řešení
+      items:
+        - name: Akcelerátory řešení IoT
+          href: /azure/iot-suite
+        - name: IoT Central
+          href: /azure/iot-central/iot-support-help
+    - name: Služby platformy
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Plug and Play
+          href: /azure/iot-pnp
+        - name: Služba IoT Hub Device Provisioning
+          href: /azure/iot-dps
+        - name: Maps
+          href: /azure/azure-maps
+        - name: Sady SDK pro služby
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Řešení Edge
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: Sady SDK pro zařízení IoT
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

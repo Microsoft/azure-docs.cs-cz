@@ -23,7 +23,7 @@
       href: iot-accelerators-device-simulation-overview.md
     - name: Prediktivní údržba
       href: iot-accelerators-predictive-walkthrough.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vyzkoušení řešení pro vzdálené monitorování
@@ -221,6 +221,8 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: Zdroje a prostředky
   items:
+    - name: Možnosti pomoci a podpory
+      href: /azure/iot-fundamentals/iot-support-help
     - name: Vzdálené monitorování
       items:
         - name: Referenční příručka pro vývojáře (.NET)
@@ -252,7 +254,7 @@
     - name: Referenční architektura
       href: iot-accelerators-architecture-overview.md
       items:
-        - name: Ke stažení
+        - name: Stáhnout
           href: 'https://aka.ms/iotrefarchitecture'
         - name: Implementace partnerů
           items:

@@ -75,6 +75,8 @@
           href: pay-by-invoice.md
         - name: Vytvoření dalších předplatných
           href: create-subscription.md
+        - name: Převod předplatných CSP
+          href: transfer-subscriptions-subscribers-csp.md
         - name: Export informací o předplatném
           href: export-subscriptions.md
     - name: Správa předplatných smlouvy Enterprise

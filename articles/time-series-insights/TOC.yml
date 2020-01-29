@@ -137,6 +137,8 @@
           href: 'https://github.com/microsoft/tsiclient/blob/master/docs/API.md'
 - name: Zdroje a prostředky
   items:
+    - name: Možnosti pomoci a podpory
+      href: /azure/iot-fundamentals/iot-support-help
     - name: Požadavky na zákaznická data
       href: time-series-insights-customer-data-requests.md
     - name: Plány Azure do budoucna

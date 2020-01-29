@@ -342,6 +342,9 @@
           href: how-to-schedule-pipelines.md
         - name: Ladění a řešení potíží s kanály
           href: how-to-debug-pipelines.md
+        - name: Ladění kanálů ve službě Application Insights
+          displayname: 'pipelines, log, monitor'
+          href: how-to-debug-pipelines-application-insights.md
         - name: Azure Pipelines pro CI/CD
           displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
