@@ -4,18 +4,18 @@
   items:
     - name: Informace o Azure AD B2C
       expanded: true
-      href: active-directory-b2c-overview.md
+      href: overview.md
     - name: Technický přehled a přehled funkcí
       href: technical-overview.md
 - name: Rychlé starty
   expanded: true
   items:
     - name: Nastavení přihlašování – ASP.NET
-      href: active-directory-b2c-quickstarts-web-app.md
+      href: quickstart-web-app-dotnet.md
     - name: Nastavení přihlašování – Plocha
-      href: active-directory-b2c-quickstarts-desktop-app.md
+      href: quickstart-native-app-desktop.md
     - name: Nastavení přihlašování – Samostatná stránka
-      href: active-directory-b2c-quickstarts-spa.md
+      href: quickstart-single-page-app.md
 - name: Kurzy
   items:
     - name: 1 – Vytvoření tenanta B2C
@@ -31,45 +31,45 @@
     - name: Ověřování uživatelů
       items:
         - name: ASP.NET
-          href: active-directory-b2c-tutorials-web-app.md
+          href: tutorial-web-app-dotnet.md
         - name: Plocha
-          href: active-directory-b2c-tutorials-desktop-app.md
+          href: tutorial-desktop-app.md
         - name: Samostatná stránka
-          href: active-directory-b2c-tutorials-spa.md
+          href: tutorial-single-page-app.md
     - name: Udělení přístupu k rozhraní API
       items:
         - name: ASP.NET
-          href: active-directory-b2c-tutorials-web-api.md
+          href: tutorial-web-api-dotnet.md
         - name: Plocha
-          href: active-directory-b2c-tutorials-desktop-app-webapi.md
+          href: tutorial-desktop-app-webapi.md
         - name: Samostatná stránka
-          href: active-directory-b2c-tutorials-spa-webapi.md
+          href: tutorial-single-page-app-webapi.md
 - name: ukázky
   href: code-samples.md
 - name: Koncepty
   items:
     - name: Typy aplikací
-      href: active-directory-b2c-apps.md
+      href: application-types.md
     - name: Protokoly pro ověřování
       items:
         - name: Protokol OAuth2
-          href: active-directory-b2c-reference-protocols.md
+          href: protocols-overview.md
         - name: Protokol OpenID Connect
-          href: active-directory-b2c-reference-oidc.md
+          href: openid-connect.md
         - name: Tok poskytování autorizačních kódů
-          href: active-directory-b2c-reference-oauth-code.md
+          href: authorization-code-flow.md
         - name: Implicitní tok
-          href: active-directory-b2c-reference-spa.md
+          href: implicit-flow-single-page-application.md
         - name: Tokeny
-          href: active-directory-b2c-reference-tokens.md
+          href: tokens-overview.md
         - name: Vyžádání přístupového tokenu
-          href: active-directory-b2c-access-tokens.md
+          href: access-tokens.md
     - name: Zásady a toky uživatele
       items:
         - name: Toky uživatele
-          href: active-directory-b2c-reference-policies.md
+          href: user-flow-overview.md
         - name: Vlastní zásady
-          href: active-directory-b2c-overview-custom.md
+          href: custom-policy-overview.md
     - name: Uživatelské účty
       href: user-overview.md
 - name: Návody
@@ -86,9 +86,9 @@
         - name: Přidání nativní klientské aplikace
           href: add-native-application.md
         - name: iOS ObjC s využitím ověřování aplikace
-          href: active-directory-b2c-devquickstarts-ios.md
+          href: signin-appauth-ios.md
         - name: Android s využitím ověřování aplikace
-          href: active-directory-b2c-devquickstarts-android.md
+          href: signin-appauth-android.md
     - name: Tok uživatele
       items:
         - name: Vytvořit tok
@@ -98,7 +98,7 @@
             - name: Přihlašovací údaje vlastníka prostředku s heslem
               href: configure-ropc.md
             - name: Nastavení samoobslužného resetování hesla
-              href: active-directory-b2c-reference-sspr.md
+              href: user-flow-self-service-password-reset.md
         - name: Přizpůsobení uživatelského prostředí
           items:
             - name: Přizpůsobení uživatelského rozhraní
@@ -106,39 +106,40 @@
             - name: JavaScript a rozložení stránek
               href: user-flow-javascript-overview.md
             - name: Přizpůsobení jazyka
-              href: active-directory-b2c-reference-language-customization.md
+              href: user-flow-language-customization.md
             - name: Složitost hesla
-              href: active-directory-b2c-reference-password-complexity.md
+              href: user-flow-password-complexity.md
             - name: Zakázání ověření e-mailu
-              href: active-directory-b2c-reference-disable-ev.md
+              href: user-flow-disable-email-verification.md
             - name: Povolení MFA
-              href: active-directory-b2c-reference-mfa.md
+              href: custom-policy-multi-factor-authentication.md
+              displayName: multi-factor auth
         - name: Zprostředkovatelé externích identit
           items:
             - name: Amazon
-              href: active-directory-b2c-setup-amzn-app.md
+              href: identity-provider-amazon.md
             - name: Azure AD (jeden tenant)
-              href: active-directory-b2c-setup-oidc-azure-active-directory.md
+              href: identity-provider-azure-ad-single-tenant.md
             - name: Účet Microsoft
-              href: active-directory-b2c-setup-msa-app.md
+              href: identity-provider-microsoft-account.md
             - name: Facebook
-              href: active-directory-b2c-setup-fb-app.md
+              href: identity-provider-facebook.md
             - name: GitHubu
-              href: active-directory-b2c-setup-github-app.md
+              href: identity-provider-github.md
             - name: Google
-              href: active-directory-b2c-setup-goog-app.md
+              href: identity-provider-google.md
             - name: LinkedIn
-              href: active-directory-b2c-setup-li-app.md
+              href: identity-provider-linkedin.md
             - name: QQ
-              href: active-directory-b2c-setup-qq-app.md
+              href: identity-provider-qq.md
             - name: Twitter
-              href: active-directory-b2c-setup-twitter-app.md
+              href: identity-provider-twitter.md
             - name: WeChat
-              href: active-directory-b2c-setup-wechat-app.md
+              href: identity-provider-wechat.md
             - name: Weibo
-              href: active-directory-b2c-setup-weibo-app.md
+              href: identity-provider-weibo.md
             - name: Zprostředkovatelé obecných identit
-              href: active-directory-b2c-setup-oidc-idp.md
+              href: identity-provider-generic-openid-connect.md
         - name: Tokeny a správa relací
           items:
             - name: Konfigurace tokenů
@@ -148,7 +149,7 @@
         - name: Konfigurace ověřování věku
           href: basic-age-gating.md
         - name: Definování vlastních atributů
-          href: active-directory-b2c-reference-custom-attr.md
+          href: user-flow-custom-attributes.md
         - name: Předávací externí token IdP
           href: idp-pass-through-user-flow.md
     - name: Vlastní zásady
@@ -156,24 +157,28 @@
         - name: Vytvoření zásad
           items:
             - name: Začínáme s vlastními zásadami
-              href: active-directory-b2c-get-started-custom.md
+              href: custom-policy-get-started.md
             - name: Přihlašovací údaje vlastníka prostředku s heslem
               href: ropc-custom.md
+              displayName: ropc
             - name: Povolení možnosti zůstat přihlášeni
-              href: active-directory-b2c-reference-kmsi-custom.md
+              href: custom-policy-keep-me-signed-in.md
+              displayName: kmsi
             - name: Změna hesla
-              href: active-directory-b2c-reference-password-change-custom.md
+              href: custom-policy-password-change.md
             - name: Registrace a přihlašování telefonem
               href: phone-authentication.md
               displayName: 'otp, passwordless, phone number'
         - name: Přizpůsobení uživatelského prostředí
           items:
             - name: Konfigurace uživatelského vstupu
-              href: active-directory-b2c-configure-signup-self-asserted-custom.md
+              href: custom-policy-configure-user-input.md
+              displayName: 'ui, ux'
             - name: Přizpůsobení uživatelského rozhraní
-              href: active-directory-b2c-ui-customization-custom.md
+              href: custom-policy-ui-customization.md
+              displayName: 'ux, input, cors, html, css'
             - name: Dynamické přizpůsobení uživatelského rozhraní
-              href: active-directory-b2c-ui-customization-custom-dynamic.md
+              href: custom-policy-ui-customization-dynamic.md
             - name: Vlastní e-mail
               href: custom-email.md
               displayName: verification
@@ -182,37 +187,37 @@
             - name: Povolení JavaScriptu
               href: javascript-samples.md
             - name: Složitost hesla
-              href: active-directory-b2c-reference-password-complexity-custom.md
+              href: custom-policy-password-complexity.md
         - name: Zprostředkovatelé externích identit
           items:
             - name: Poskytovatelé OIDC/OAuth
               items:
                 - name: Amazon
-                  href: setup-amazon-custom.md
+                  href: identity-provider-amazon-custom.md
                 - name: Azure AD (jeden tenant)
-                  href: active-directory-b2c-setup-aad-custom.md
+                  href: identity-provider-azure-ad-single-tenant-custom.md
                 - name: Azure AD (více tenantů)
-                  href: active-directory-b2c-setup-commonaad-custom.md
+                  href: identity-provider-azure-ad-multi-tenant-custom.md
                 - name: Google
-                  href: active-directory-b2c-custom-setup-goog-idp.md
+                  href: identity-provider-google-custom.md
                 - name: LinkedIn
-                  href: active-directory-b2c-custom-setup-li-idp.md
+                  href: identity-provider-linkedin-custom.md
                 - name: Účet Microsoft
-                  href: active-directory-b2c-custom-setup-msa-idp.md
+                  href: identity-provider-microsoft-account-custom.md
                 - name: Twitter
-                  href: active-directory-b2c-custom-setup-twitter-idp.md
+                  href: identity-provider-twitter-custom.md
             - name: Poskytovatelé SAML
               items:
                 - name: ADFS
-                  href: active-directory-b2c-custom-setup-adfs2016-idp.md
+                  href: identity-provider-adfs2016-custom.md
                   displayName: SAML
                 - name: Salesforce
-                  href: active-directory-b2c-setup-sf-app-custom.md
+                  href: identity-provider-salesforce-custom.md
                   displayName: SAML
         - name: Tokeny a správa relací
           items:
             - name: Přizpůsobení tokenů
-              href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
+              href: custom-policy-manage-sso-and-token-config.md
         - name: Předávací externí token IdP
           href: idp-pass-through-custom.md
         - name: Adaptivní prostředí
@@ -222,29 +227,33 @@
         - name: Přidání vlastní obchodní logiky
           items:
             - name: Ověření vstupu uživatele
-              href: active-directory-b2c-rest-api-validation-custom.md
+              href: custom-policy-rest-api-claims-validation.md
+              displayName: 'rest claims validation, validate'
             - name: Získání dalších deklarací identity
-              href: active-directory-b2c-rest-api-step-custom.md
+              href: custom-policy-rest-api-claims-exchange.md
+              displayName: rest claims exchange
             - name: Přidání vlastního rozhraní RESTful API
-              href: active-directory-b2c-custom-rest-api-netfw.md
+              href: rest-api-claims-exchange-dotnet.md
             - name: Zabezpečení rozhraní RESTful API pomocí základního ověřování
-              href: active-directory-b2c-custom-rest-api-netfw-secure-basic.md
+              href: secure-rest-api-dotnet-basic-auth.md
             - name: Zabezpečení rozhraní RESTful API pomocí ověřování certifikátů
-              href: active-directory-b2c-custom-rest-api-netfw-secure-cert.md
+              href: secure-rest-api-dotnet-certificate-auth.md
         - name: Definování vlastních atributů
-          href: active-directory-b2c-create-custom-attributes-profile-edit-custom.md
+          href: custom-policy-custom-attributes.md
         - name: Řešení potíží
           items:
             - name: Shromažďování protokolů pomocí Application Insights
-              href: active-directory-b2c-troubleshoot-custom.md
+              href: troubleshoot-with-application-insights.md
+              displayName: troubleshooting
             - name: Ověřování zásad
-              href: active-directory-b2c-guide-troubleshooting-custom.md
+              href: troubleshoot-custom-policies.md
+              displayName: troubleshooting
         - name: Analýza využití
-          href: active-directory-b2c-custom-guide-eventlogger-appins.md
+          href: analytics-with-application-insights.md
         - name: Referenční informace
           items:
             - name: Definice architektury důvěryhodnosti
-              href: active-directory-b2c-reference-trustframeworks-defined-ief-custom.md
+              href: custom-policy-trust-frameworks.md
             - name: TrustFrameworkPolicy
               href: trustframeworkpolicy.md
             - name: BuildingBlocks
@@ -322,7 +331,8 @@
                     - name: Samopopisné
                       href: self-asserted-technical-profile.md
                     - name: Relace SSO
-                      href: active-directory-b2c-reference-sso-custom.md
+                      href: custom-policy-reference-sso.md
+                      displayName: single sign-on
                     - name: Ověření
                       href: validation-technical-profile.md
             - name: UserJourneys
@@ -339,11 +349,11 @@
     - name: Automation
       items:
         - name: Export sestavy využití
-          href: active-directory-b2c-reference-usage-reporting-api.md
+          href: view-usage-reports.md
         - name: Správa účtů
-          href: active-directory-b2c-devquickstarts-graph-dotnet.md
+          href: manage-user-accounts-graph-api.md
     - name: Protokoly auditu
-      href: active-directory-b2c-reference-audit-logs.md
+      href: view-audit-logs.md
     - name: Správa uživatelů – Azure Portal
       href: manage-users-portal.md
       displayName: 'create users, add users, delete users'
@@ -361,13 +371,13 @@
     - name: Migrace
       items:
         - name: Migrace uživatelů
-          href: active-directory-b2c-user-migration.md
+          href: user-migration.md
         - name: Migrace uživatelů s externími identitami
-          href: active-directory-b2c-social-migration.md
+          href: migrate-social-identities.md
 - name: Referenční informace
   items:
     - name: Poznámky k verzi Identity Experience Framework
-      href: active-directory-b2c-developer-notes-custom.md
+      href: custom-policy-developer-notes.md
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory-b2c'
     - name: Definice souborů cookie
@@ -375,13 +385,14 @@
     - name: Kódy chyb
       href: error-codes.md
     - name: Rezidence dat a dostupnost oblastí
-      href: active-directory-b2c-reference-tenant-type.md
+      href: data-residency.md
     - name: Povolení fakturace
-      href: active-directory-b2c-how-to-enable-billing.md
+      href: billing.md
     - name: Řízení rizik
-      href: active-directory-b2c-reference-threat-management.md
+      href: threat-management.md
+      displayName: security
     - name: Aplikace rozšíření
-      href: active-directory-b2c-reference-extensions-app.md
+      href: extensions-app.md
     - name: Verze toku uživatele
       href: user-flow-versions.md
 - name: Zdroje a prostředky
@@ -389,7 +400,7 @@
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: Nejčastější dotazy
-      href: active-directory-b2c-faqs.md
+      href: faq.md
     - name: Získání nápovědy
       href: /azure/active-directory/develop/developer-support-help-options
     - name: Ceny
@@ -403,6 +414,7 @@
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-ad-b2c+identity-experience-framework'
     - name: Podpora
-      href: active-directory-b2c-support.md
+      href: support-options.md
+      displayName: technical
     - name: Videa
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c'

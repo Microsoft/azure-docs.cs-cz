@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: ae5e3481d51a27b05afdb334e6e04c785a68c01a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 664d6006ab78f91a8ed0e199cf78fae9512efd73
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447680"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843035"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Rychlý Start: Přidání otázek a odpovědí pomocí portálu QnA Maker
 
@@ -86,7 +86,7 @@ V tomto postupu přidejte další otázky.
 
 ## <a name="add-metadata-to-filter-the-answers"></a>Přidat metadata pro filtrování odpovědí
 
-Přidání metadat do otázky a sady odpovědí umožňuje klientské aplikaci požádat o filtrované odpovědi. Tento filtr se použije dřív, než se použije [první a druhý rozsah](../concepts/knowledge-base.md#ranker-process) .
+Přidání metadat do otázky a sady odpovědí umožňuje klientské aplikaci požádat o filtrované odpovědi. Tento filtr se použije dřív, než se použije [první a druhý rozsah](../concepts/query-knowledge-base.md#ranker-process) .
 
 1. Přidejte druhou otázku a sadu odpovědí, bez metadat, z [první tabulky v tomto rychlém](#qna-table)startu, a pak pokračujte následujícími kroky.
 

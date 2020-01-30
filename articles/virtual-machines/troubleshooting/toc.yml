@@ -159,8 +159,6 @@
       href: troubleshoot-deploy-vm-linux.md
     - name: Windows
       href: troubleshoot-deploy-vm-windows.md
-    - name: 'Restartování, vypnutí nebo zastavení služeb'
-      href: boot-error-troubleshoot-windows.md
 - name: Změna názvů zařízení
   href: troubleshoot-device-names-problems.md
 - name: Přístup k obnovení virtuálního počítače
@@ -199,6 +197,8 @@
       href: troubleshoot-critical-service-failed-boot-error.md
     - name: Smyčka restartování
       href: troubleshoot-reboot-loop.md
+    - name: 'Restartování, vypnutí nebo zastavení služeb'
+      href: boot-error-troubleshoot-windows.md
     - name: Zablokování v aktualizaci Windows
       href: troubleshoot-stuck-updating-boot-error.md
 - name: Chyby způsobené omezením provozu

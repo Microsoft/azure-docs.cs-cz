@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: Dokumentace ke QnA Makeru
   description: QnA Maker je cloudová služba API, která nad vašimi daty vytváří konverzační vrstvu otázek a odpovědí. QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty s nejčastějšími dotazy, adresy URL a příručky k produktům. Služba QnA Maker odpovídá na otázky uživatelů v přirozeném jazyce tak, že je porovnává s nejlepší možnou odpovědí v otázkách a odpovědích ve vaší znalostní bázi.
-  ms.openlocfilehash: 03518a1d7156d57424b28980d05bb03bfef56503
-  ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+  ms.openlocfilehash: e566fdb18bdabe80447de9b2882cf7d57209d15e
+  ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 01/14/2020
-  ms.locfileid: "75945605"
+  ms.lasthandoff: 01/29/2020
+  ms.locfileid: "76844105"
 landingContent:
 - title: Informace o službě QnA Maker
   linkLists:
@@ -35,7 +35,7 @@ landingContent:
     - text: Životní cyklus vývoje
       url: concepts/development-lifecycle-knowledge-base.md
     - text: Zdroje dat
-      url: concepts/data-sources-supported.md
+      url: concepts/knowledge-base.md
   - linkListType: video
     links:
     - text: Sestavení robota během několika minut

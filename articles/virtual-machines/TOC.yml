@@ -9,15 +9,15 @@
 - name: Úlohy
   items:
     - name: Red Hat
-      href: /redhat/redhat-overview.md
+      href: ./workloads/redhat/redhat-overview.md
     - name: Vysokovýkonné výpočetní prostředí (HPC)
-      href: /hpc/overview.md
+      href: ./workloads/hpc/overview.md
     - name: SAP
-      href: /sap/get-started.md
+      href: ./workloads/sap/get-started.md
     - name: Oracle
-      href: /oracle/oracle-considerations.md
+      href: ./workloads/oracle/oracle-considerations.md
     - name: Změna hostování mainframů
-      href: /mainframe-rehosting/overview.md
+      href: ./workloads/mainframe-rehosting/overview.md
 - name: Nasazení Classic
   items:
     - name: Virtuální počítače s Linuxem používající nasazení Classic

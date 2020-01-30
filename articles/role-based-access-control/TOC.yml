@@ -40,8 +40,6 @@
           href: role-definitions.md
         - name: Zobrazení seznamu definic rolí
           href: role-definitions-list.md
-        - name: Vestavěné role
-          href: built-in-roles.md
     - name: Zobrazení seznamu přiřazení rolí
       items:
         - name: Portál
@@ -96,6 +94,8 @@
       href: troubleshooting.md
 - name: Referenční informace
   items:
+    - name: Vestavěné role
+      href: built-in-roles.md
     - name: Operace poskytovatele prostředků
       href: resource-provider-operations.md
     - name: Omezení RBAC
