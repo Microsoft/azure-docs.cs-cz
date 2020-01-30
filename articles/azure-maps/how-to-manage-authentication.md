@@ -3,25 +3,25 @@ title: Spravovat ověřování | Mapy Microsoft Azure
 description: Pomocí Azure Portal můžete spravovat ověřování v Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/24/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 1a38c970f3c9fa5b90032f5816f8e541b305531c
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 1f7f128898089292a8ccd92686af5d68fe328f3c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911551"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766079"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Správa ověřování v Azure Maps
 
-Po vytvoření účtu Azure Maps se vytvoří ID klienta a klíče pro podporu Azure Active Directory (Azure AD) nebo ověřování pomocí sdíleného klíče.
+Po vytvoření účtu Azure Maps se vytvoří ID klienta a klíče pro podporu Azure Active Directory (Azure AD) a ověřování pomocí sdíleného klíče.
 
 ## <a name="view-authentication-details"></a>Zobrazit podrobnosti o ověřování
 
-Po vytvoření účtu Azure Maps se vygenerují primární a sekundární klíče. Při volání Azure Maps s použitím [ověřování pomocí sdíleného klíče](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication#shared-key-authentication)se doporučuje použít primární klíč jako klíč předplatného. Sekundární klíč lze použít ve scénářích, jako je například vracení klíčových změn. Další informace najdete v tématu [ověřování pomocí Azure Maps](https://aka.ms/amauth).
+Po vytvoření účtu Azure Maps se vygenerují primární a sekundární klíče. Použijte primární klíč jako klíč předplatného, někdy se tyto názvy používají zaměnitelné. Sekundární klíč lze použít ve scénářích, jako je například vracení klíčových změn. V obou případech je potřebný klíč pro volání Azure Maps. Tento proces se nazývá [ověřování Shared Key](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication#shared-key-authentication). Další informace o sdílených klíčích a ověřování Azure AD najdete v tématu [ověřování pomocí Azure Maps](https://aka.ms/amauth) .
 
 Podrobnosti o ověřování můžete zobrazit na Azure Portal. Přejděte na svůj účet a v nabídce **Nastavení** vyberte **ověřování** .
 
@@ -32,46 +32,46 @@ Podrobnosti o ověřování můžete zobrazit na Azure Portal. Přejděte na sv�
 
 Po vytvoření účtu Azure Maps musíte vytvořit propojení mezi vaším klientem služby Azure AD a prostředkem Azure Maps.
 
-1. Otevřete okno Azure AD a vytvořte registraci aplikace. Zadejte název pro registraci. V poli **Adresa URL pro přihlášení** zadejte domovskou stránku webové aplikace nebo rozhraní API (například https:\//localhost/). Pokud už máte registrovanou aplikaci, pokračujte na krok 2.
+1. V nabídce portálu vyberte **Azure Active Directory** . Zadejte název pro registraci. Klikněte na **Registrace aplikací** potom klikněte na **Nová registrace**. Do pole **identifikátor URI pro přesměrování** zadejte domovskou stránku webové aplikace. Například, https://localhost/. Pokud už máte registrovanou aplikaci, pokračujte na krok 2.
 
     ![Registrace aplikací](./media/how-to-manage-authentication/app-registration.png)
 
     ![Podrobnosti registrace aplikace](./media/how-to-manage-authentication/app-create.png)
 
-2. Pokud chcete přiřadit Azure Maps oprávnění k delegovanému rozhraní API, v části **Registrace aplikací**klikněte na aplikace a pak vyberte **Nastavení**.  Vyberte **požadovaná oprávnění**a pak vyberte **Přidat**. Vyhledejte a vyberte **Azure Maps** v části **Vyberte rozhraní API**a pak vyberte tlačítko **Vybrat** .
+2. Pokud chcete přiřadit Azure Maps oprávnění k delegovanému rozhraní API, v části **Registrace aplikací**klikněte na aplikace a vyberte **oprávnění rozhraní API**. Vyberte **Přidat oprávnění**. Vyhledejte a vyberte **Azure Maps** v části **Vybrat rozhraní API**.
 
     ![Oprávnění rozhraní API pro aplikace](./media/how-to-manage-authentication/app-permissions.png)
 
-3. V části **vybrat oprávnění**vyberte možnost **přístup Azure Maps**a pak vyberte tlačítko **Vybrat** .
+3. V části **vybrat oprávnění**zaškrtněte políčko pro **zosobnění uživatele**a pak klikněte na tlačítko **Vybrat** v dolní části.
 
     ![Výběr oprávnění rozhraní API pro aplikace](./media/how-to-manage-authentication/select-app-permissions.png)
 
 4. V závislosti na metodě ověřování proveďte krok a nebo b.
 
-    1. Pokud vaše aplikace používá ověřování pomocí tokenu uživatele s Azure Maps Web SDK, povolte `oauthEnableImplicitFlow` nastavením na hodnotu true v části manifest na stránce s podrobnostmi o registraci aplikace.
+    1. Pokud vaše aplikace používá ověřování pomocí tokenu uživatele s Azure Maps Web SDK, povolte `oauth2AllowImplicitFlow` nastavením na hodnotu true v části manifest registrace vaší aplikace.
     
        ![Manifest aplikace](./media/how-to-manage-authentication/app-manifest.png)
 
-    2. Pokud vaše aplikace používá ověřování serveru nebo aplikace, v části registrace aplikace vyberte okno **klíče** a buď vytvořte heslo, nebo nahrajte certifikát veřejného klíče do registrace aplikace. Pokud vytvoříte heslo, po výběru **Uložit**zkopírujte heslo pro pozdější uložení a bezpečně ho uložte. Toto heslo použijete k získání tokenů z Azure AD.
+    2. Pokud vaše aplikace používá ověřování serveru nebo aplikace, v registraci aplikace v okně **certifikáty & tajné klíče** a buď vytvořte heslo, nebo nahrajte certifikát veřejného klíče do registrace aplikace. Pokud vytvoříte heslo, uložte ho bezpečně pro pozdější použití. Toto heslo použijete k získání tokenů z Azure AD.
 
        ![Klíče aplikace](./media/how-to-manage-authentication/app-keys.png)
 
 
-## <a name="grant-rbac-to-azure-maps"></a>Udělení RBAC pro Azure Maps
+## <a name="grant-role-based-access-control-rbac-to-azure-maps"></a>Udělení řízení přístupu na základě role (RBAC) pro Azure Maps
 
-Po přidružení účtu Azure Maps k vašemu tenantovi služby Azure AD můžete udělit řízení přístupu přiřazením uživatele, skupiny nebo aplikace k jedné nebo více rolím řízení přístupu Azure Maps.
+Po přidružení účtu Azure Maps k vašemu tenantovi služby Azure AD můžete udělit řízení přístupu. Řízení přístupu udělujete přiřazením uživatele, skupiny nebo aplikace k jedné nebo více rolím řízení přístupu Azure Maps.
 
-1. Přejděte na **řízení přístupu (IAM)** , vyberte **přiřazení rolí**a pak vyberte **Přidat přiřazení role**.
+1. Přejít na **účet Azure Maps**. Vyberte **řízení přístupu (IAM)** a pak vyberte **přiřazení role**.
 
     ![Udělit RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. V okně **Přidat přiřazení role** v části **role**vyberte položku **Azure Maps data Reader (Preview)** . V části **přiřadit přístup k**vyberte možnost **uživatel, skupina nebo instanční objekt služby Azure AD**. V části **Vybrat**vyberte uživatele nebo aplikaci. Vyberte **Uložit**.
+2. V okně **přiřazení role** vyberte v části **role**položku **Azure Maps data Reader (Preview)** . V části **přiřadit přístup** vyberte možnost **uživatel, skupina nebo Princip služby Azure AD**. Vyberte uživatele nebo aplikaci. Vyberte **Uložit**.
 
     ![Přidat přiřazení role](./media/how-to-manage-authentication/add-role-assignment.png)
 
 ## <a name="view-available-azure-maps-rbac-roles"></a>Zobrazit dostupné Azure Maps rolí RBAC
 
-Chcete-li zobrazit role řízení přístupu na základě role (RBAC), které jsou k dispozici pro Azure Maps, přejděte na **řízení přístupu (IAM)** , vyberte **role**a potom vyhledejte role začínající **Azure Maps**. Jedná se o role, kterým můžete udělit přístup.
+Chcete-li zobrazit role řízení přístupu na základě role (RBAC), které jsou k dispozici pro Azure Maps, přejděte na **řízení přístupu (IAM)** , vyberte **role**a potom vyhledejte role začínající **Azure Maps**. Tyto role jsou role, kterým můžete udělit přístup.
 
 ![Zobrazit dostupné role](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
@@ -95,10 +95,10 @@ Po registraci aplikace a jejím přidružení k Azure Maps můžete požádat o 
 
 | Prostředí Azure   | Koncový bod tokenu Azure AD | ID prostředku Azure |
 | --------------------|-------------------------|-------------------|
-| Veřejný partnerský vztah Azure        | https://login.microsoftonline.com | https://atlas.microsoft.com/ |
+| Veřejné Azure        | https://login.microsoftonline.com | https://atlas.microsoft.com/ |
 | Azure Government    | https://login.microsoftonline.us  | https://atlas.microsoft.com/ | 
 
-Další informace o tom, jak získat přístupové tokeny ze služby Azure AD pro uživatele a instanční objekty, najdete v tématu [scénáře ověřování pro Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
+Další informace o tom, jak získat přístupové tokeny ze služby Azure AD, pro uživatele a instanční objekty, najdete v tématu [scénáře ověřování pro Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
 
 
 ## <a name="next-steps"></a>Další kroky

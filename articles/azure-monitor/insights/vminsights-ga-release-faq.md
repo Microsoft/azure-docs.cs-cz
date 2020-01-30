@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 12/05/2019
-ms.openlocfilehash: 4833b8a1835bd5da3327c73058f170fb0a5738a8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/24/2020
+ms.openlocfilehash: 3877632565c1ca2c9a16681e03f8931a94af0599
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450689"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765751"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Azure Monitor pro virtuální počítače všeobecně dostupné (GA) nejčastější dotazy
 
@@ -20,19 +20,28 @@ Tato obecná dostupnost – Nejčastější dotazy zahrnují změny, ke kterým 
 
 ## <a name="updates-for-azure-monitor-for-vms"></a>Aktualizace pro Azure Monitor pro virtuální počítače
 
-Plánujeme vydání nové verze Azure Monitor pro virtuální počítače v lednu 2020. Zákazníci, kteří zajišťují monitorování Azure pro virtuální počítače, i když tato verze automaticky obdrží novou verzi, ale stávající zákazníci, kteří už používají Azure Monitor pro virtuální počítače, budou vyzváni k upgradu. Tyto nejčastější dotazy a naše dokumentace nabízí pokyny k provedení upgradu se škálováním v případě, že máte rozsáhlá nasazení napříč několika pracovními prostory.
+Vydali jsme novou verzi Azure Monitor pro virtuální počítače. Zákazníci, kteří můžou povolit monitorování Azure pro virtuální počítače, teď obdrží novou verzi, ale stávající zákazníci, kteří už používají Azure Monitor pro virtuální počítače, budou vyzváni k upgradu. Tyto nejčastější dotazy a naše dokumentace nabízí pokyny k provedení upgradu se škálováním v případě, že máte rozsáhlá nasazení napříč několika pracovními prostory.
 
-S tímto upgradem Azure Monitor pro virtuální počítače údaje o výkonu jsou uloženy ve stejné `InsightsMetrics` tabulce jako [Azure monitor pro kontejnery](container-insights-overview.md)a usnadňují dotazování obou datových sad. Můžete také uložit více různých datových sad, které jsme nedokázali uložit v tabulce, která se dřív použila. Zobrazení výkonu se také aktualizují, aby používala tuto novou tabulku.
+S tímto upgradem Azure Monitor pro virtuální počítače údaje o výkonu jsou uloženy ve stejné tabulce *InsightsMetrics* jako [Azure monitor pro kontejnery](container-insights-overview.md), což usnadňuje dotazování obou datových sad. Můžete také uložit více různých datových sad, které jsme nedokázali uložit v tabulce, která se dřív použila. 
 
-Přesouváme nové datové typy pro naše datové sady pro připojení. Tato změna bude provedená v prosinci 2019 a bude oznámena na blogu služby Azure Update. Data, která jsou uložená v `ServiceMapComputer_CL` a `ServiceMapProcess_CL`, která jsou vlastními tabulkami protokolů, se přesunou na vyhrazené datové typy s názvem `VMComputer` a `VMProcess`. Přesunutím na vyhrazené datové typy získají prioritu pro příjem dat a schéma tabulky bude standardizované napříč všemi zákazníky.
+V příští týden nebo dvou se naše zobrazení výkonu aktualizuje také na používání této nové tabulky.
 
 Uvědomujeme si, že požádáme o upgrade stávajících zákazníků na jejich pracovní postup, což je důvod, proč jsme se k tomu rozhodli teď v Public Preview, ale ne později po GA.
 
+
 ## <a name="what-is-changing"></a>Co se mění?
 
-V současné době po dokončení procesu připojování pro Azure Monitor pro virtuální počítače povolíte Service Map řešení v pracovním prostoru, který jste vybrali k uložení dat monitorování, a pak nakonfigurujete čítače výkonu pro data, která shromažďujeme z vašich virtuálních počítačů. Budeme vydáváme nové řešení s názvem **VMInsights**, které obsahuje další možnosti shromažďování dat a nové umístění pro ukládání těchto dat do pracovního prostoru Log Analytics.
+Vydali jsme nové řešení s názvem VMInsights, které obsahuje další možnosti shromažďování dat a nové umístění pro ukládání těchto dat do pracovního prostoru Log Analytics. 
 
-Náš aktuální proces použití čítačů výkonu v pracovním prostoru Log Analytics odesílá data do tabulky `Perf`. Toto nové řešení odesílá data do tabulky s názvem `InsightsMetrics`, která je také používána Azure Monitor pro kontejnery. Toto schéma tabulky nám umožňuje ukládat další metriky a sady dat služby, které nejsou kompatibilní s formátem tabulky perf.
+V minulosti jsme povolili řešení ServiceMap v pracovním prostoru a nastavili čítače výkonu v pracovním prostoru Log Analytics k odeslání dat do tabulky *perf* . Toto nové řešení odesílá data do tabulky s názvem *InsightsMetrics* , která je také používána Azure monitor pro kontejnery. Toto schéma tabulky nám umožňuje ukládat další metriky a sady dat služby, které nejsou kompatibilní s formátem tabulky *perf* .
+
+
+## <a name="how-do-i-upgrade"></a>Návody upgradovat?
+Každý virtuální počítač, který vyžaduje upgrade, se identifikuje na **kartě Začínáme v** Azure monitor pro virtuální počítače Azure Portal. Můžete upgradovat jeden virtuální počítač nebo vybrat více pro upgrade společně. K upgradu pomocí prostředí PowerShell použijte následující příkaz:
+
+```PowerShell
+Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-group-name> -WorkspaceName <workspace-name> -IntelligencePackName "VMInsights" -Enabled $True
+```
 
 ## <a name="what-should-i-do-about-the-performance-counters-in-my-workspace-if-i-install-the-vminsights-solution"></a>Co mám dělat s čítači výkonu v pracovním prostoru při instalaci řešení VMInsights?
 

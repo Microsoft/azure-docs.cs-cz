@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
-ms.openlocfilehash: 073a766662b2ead4b816276fa7fda6dc5e6caca7
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 6c7981d15acf2b2b71dfb4234f85b738efe62ce0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954653"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767951"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Vizualizace dat snímačů v reálném čase z Azure IoT Hub ve webové aplikaci
 
@@ -165,10 +165,10 @@ V této části zřídíte webovou aplikaci v App Service a do ní nasadíte kó
    az appservice plan create --name <app service plan name> --resource-group <your resource group name> --sku FREE
    ```
 
-2. Teď v plánu App Service zřídit webovou aplikaci. Parametr `--deployment-local-git` umožňuje nahrát a nasadit kód webové aplikace z úložiště Git na místním počítači. Název vaší webové aplikace musí být globálně jedinečný a může obsahovat velká a malá písmena, číslice a spojovníky.
+2. Teď v plánu App Service zřídit webovou aplikaci. Parametr `--deployment-local-git` umožňuje nahrát a nasadit kód webové aplikace z úložiště Git na místním počítači. Název vaší webové aplikace musí být globálně jedinečný a může obsahovat velká a malá písmena, číslice a spojovníky. Nezapomeňte zadat uzel verze 10,6 nebo novější pro parametr `--runtime`, v závislosti na verzi modulu runtime Node. js, který používáte. Pomocí příkazu `az webapp list-runtimes` můžete získat seznam podporovaných modulů runtime.
 
    ```azurecli-interactive
-   az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --deployment-local-git
+   az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --runtime "node|10.6" --deployment-local-git
    ```
 
 3. Teď přidejte nastavení aplikace pro proměnné prostředí, které určují připojovací řetězec služby IoT Hub a skupinu uživatelů centra událostí. Jednotlivá nastavení jsou oddělená mezerami v parametru `-settings`. Použijte připojovací řetězec služby pro Centrum IoT a skupinu uživatelů, kterou jste vytvořili dříve v tomto kurzu. Hodnoty nemusíte citovat.

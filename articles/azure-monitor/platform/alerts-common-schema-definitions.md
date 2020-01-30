@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: anantr
 ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: d1d822a5e7dadffd6be841e51ac407995adba2ea
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: fb8c2c7e25f94c66c8cc8f7768071d508da8d3b5
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552554"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765676"
 ---
 # <a name="common-alert-schema-definitions"></a>Definice běžných schémat upozornění
 
@@ -151,7 +151,7 @@ Jakákoli instance výstrahy popisuje prostředek, který byl ovlivněn, a pří
 ### <a name="log-alerts"></a>Výstrahy protokolu
 
 > [!NOTE]
-> Pro výstrahy protokolu, které mají vlastní datovou část JSON, se povolením společného schématu vrátí schéma datové části na ten, který je popsaný níže. Výstrahy s povoleným společným schématem mají omezení horní velikosti 256 KB na jednu výstrahu. Výsledky hledání nejsou vložené v datové části výstrah protokolu, pokud velikost výstrahy způsobí překročení této prahové hodnoty. To můžete zjistit zaškrtnutím `IncludedSearchResults` příznak. Pokud výsledky hledání nejsou zahrnuté, měli byste použít vyhledávací dotaz ve spojení s [rozhraním Log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/query/get). 
+> Pro výstrahy protokolu, které mají definované vlastní předmět e-mailu nebo datovou část JSON, umožňují společné schéma vrátit předmět e-mailu nebo schéma datové části na ten, který je popsaný takto. Výstrahy s povoleným společným schématem mají omezení horní velikosti 256 KB na jednu výstrahu. Výsledky hledání nejsou vložené v datové části výstrah protokolu, pokud velikost výstrahy způsobí překročení této prahové hodnoty. To můžete zjistit zaškrtnutím `IncludedSearchResults`příznak. Pokud výsledky hledání nejsou zahrnuté, měli byste použít vyhledávací dotaz ve spojení s [rozhraním Log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/query/get). 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 

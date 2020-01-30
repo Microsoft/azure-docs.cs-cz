@@ -9,18 +9,20 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.date: 11/04/2019
-ms.openlocfilehash: b43f2f351345f05c3eb56a84fb1a0eadb4826707
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 82d4131170002a3d9ffd78933c9dc566c3b1d921
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771508"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767633"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Tahákový list algoritmu Machine Learning pro návrháře Azure Machine Learning
 
 **Tahákový list s algoritmem Azure Machine Learning** vám pomůže vybrat správný algoritmus pro model prediktivní analýzy.
 
-Azure Machine Learning má rozsáhlou knihovnu algoritmů od ***klasifikace***, ***doporučí systémy***, ***clusteringu***, ***detekci anomálií***, ***regrese*** a řady ***textových analýz*** . Každá z nich je navržena tak, aby se vyřešil jiný typ problému strojového učení.
+Azure Machine Learning má rozsáhlou knihovnu algoritmů od ***klasifikace***, ***doporučí systémy***, ***clusteringu***, ***detekce anomálií***, ***regrese***a řady ***Text Analytics*** . Každá z nich je navržena tak, aby se vyřešil jiný typ problému strojového učení.
+
+Další pokyny najdete v tématu [postup výběru algoritmů](how-to-select-algorithms.md) .
 
 ## <a name="download-machine-learning-algorithm-cheat-sheet"></a>Stažení: Tahákický list s algoritmem Machine Learning
 
@@ -32,7 +34,7 @@ Stáhněte a vytiskněte Tahákový list s algoritmem Machine Learning v Tabloid
 
 ## <a name="how-to-use-the-machine-learning-algorithm-cheat-sheet"></a>Jak používat Tahákový list s algoritmem Machine Learning
 
-Návrhy nabízené v tomto tahák listu algoritmu jsou přibližné. Některé mohou být ohnuty a některé mohou být flagrantly porušeny. To je určeno pro návrh počátečního bodu. Nemusíte být Nebojte, aby se spouštěla soutěž vedoucí na hlavu mezi několika algoritmy na vašich datech. Neexistuje žádná náhrada za porozumění principům každého algoritmu a systému, který vygeneroval vaše data.
+Návrhy nabízené v tomto tahák listu algoritmu jsou přibližné. Některé mohou být ohnuty a některé mohou být flagrantly porušeny. Tento tahák list je určen pro návrh počátečního bodu. Nemusíte být Nebojte, aby se spouštěla soutěž vedoucí na hlavu mezi několika algoritmy na vašich datech. Neexistuje žádná náhrada za porozumění principům každého algoritmu a systému, který vygeneroval vaše data.
 
 Každý algoritmus strojového učení má svůj vlastní styl nebo inductiveový posun. V případě konkrétního problému může být vhodné několik algoritmů a jeden algoritmus může být lepší, než ostatní. Není ale vždy možné znát, který z nich nejlépe vyhovuje. V podobných případech je v listu tahák uvedeno několik algoritmů. Vhodnou strategií by bylo vyzkoušet jeden algoritmus a pokud výsledky ještě nejsou uspokojivé, zkuste jiné. 
 
@@ -48,17 +50,17 @@ V dohledovém učení je každý datový bod označený nebo přidružený ke ka
 
 ### <a name="unsupervised-learning"></a>Učení bez dohledu
 
-V bezdohledovém učení se k datovým bodům nevztahují žádné popisky. Místo toho je cílem nesledovaného výukového algoritmu způsob, jak uspořádat data nějakým způsobem nebo popsat její strukturu. To může znamenat, že se seskupuje do clusterů, stejně jako to znamená, nebo najít různé způsoby prohlížení složitých dat tak, aby se zjednodušilo.
+V bezdohledovém učení se k datovým bodům nevztahují žádné popisky. Místo toho je cílem nesledovaného výukového algoritmu způsob, jak uspořádat data nějakým způsobem nebo popsat její strukturu. Data studijních skupin, která nejsou v režimu pod dohledem, jsou v clusterech, stejně jako to znamená, nebo naleznou různé způsoby prohlížení složitých dat tak, aby se zjednodušilo.
 
 ### <a name="reinforcement-learning"></a>Zpětnovazební učení
 
-V procesu posílení učení se algoritmus při reakci na každý datový bod vybere jako akce. Jedná se o běžný přístup v robotech, kde je sada čtení snímačů v určitém bodě v čase datovým bodem a algoritmus musí zvolit další akci robota. Je to také přirozené přizpůsobení Internet věcí aplikacím. Výukový algoritmus také obdrží krátkou dobu a později indikuje, jak dobrá bylo rozhodnutí. Na základě tohoto algoritmu upraví jeho strategii, aby se dosáhlo nejvyšší odměny. 
+V procesu posílení učení se algoritmus při reakci na každý datový bod vybere jako akce. Jedná se o běžný přístup v robotech, kde je sada čtení snímačů v určitém bodě v čase datovým bodem a algoritmus musí zvolit další akci robota. Je to také přirozené přizpůsobení Internet věcí aplikacím. Výukový algoritmus také obdrží krátkou dobu a později indikuje, jak dobrá bylo rozhodnutí. Na základě tohoto signálu algoritmus mění svoji strategii, aby dosáhl nejvyšší odměny. 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si o studiu v Azure Machine Learning a Azure Portal](overview-what-is-azure-ml.md).
+* Podívejte se na další pokyny k [výběru algoritmů](how-to-select-algorithms.md)
 
-* Podívejte se na seznam algoritmů a modulů v [odkazech na algoritmus a modul](algorithm-module-reference/module-reference.md).
+* [Přečtěte si o studiu v Azure Machine Learning a Azure Portal](overview-what-is-azure-ml.md).
 
 * [Kurz: sestavení modelu předpovědi v návrháři Azure Machine Learning](tutorial-designer-automobile-price-train-score.md).
 

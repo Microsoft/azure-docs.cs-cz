@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/22/2019
-ms.openlocfilehash: 52314f0802acd6a296177d53ee9babb133172761
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5f54605dd5b43236a75fe73aa3b47a4e619530a1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407513"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765815"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights pro ASP.NET Core aplikace
 
@@ -416,7 +416,7 @@ Ne. [Monitorování stavu](https://docs.microsoft.com/azure/azure-monitor/app/mo
 
 Ano. Podpora funkcí pro sadu SDK je stejná na všech platformách, s následujícími výjimkami:
 
-* Čítače výkonu jsou podporovány pouze v systému Windows.
+* Sada SDK shromažďuje [čítače událostí](https://docs.microsoft.com/azure/azure-monitor/app/eventcounters) v systému Linux, protože [čítače výkonu](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters) jsou podporovány pouze ve Windows. Většina metrik je stejná.
 * I když je ve výchozím nastavení povolená možnost `ServerTelemetryChannel`, kanál při spuštění v systému Linux nebo MacOS automaticky nevytvoří místní složku úložiště, aby se telemetrie dočasně zachovala v případě, že dojde k problémům se sítí. Z důvodu tohoto omezení dojde ke ztrátě telemetrie, pokud dojde k dočasným problémům se sítí nebo serverem. Pokud chcete tento problém obejít, nakonfigurujte pro tento kanál místní složku:
 
 ```csharp

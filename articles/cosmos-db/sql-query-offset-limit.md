@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: a8df220be211c3c8d8cdeab8a8aebfd35e77ebf8
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 3d23676885323e370cee1e9cc9e98c7128faf2e0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732582"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771572"
 ---
 # <a name="offset-limit-clause-in-azure-cosmos-db"></a>Klauzule LIMIT POSUNu v Azure Cosmos DB
 
@@ -37,7 +37,11 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 
 ## <a name="remarks"></a>Poznámky
   
-  V klauzuli LIMIT POSUNu je vyžadován jak počet POSUNUTí, tak počet omezení. Pokud je použita volitelná klauzule `ORDER BY`, sada výsledků se vytvoří tak, že přeskočí seřazené hodnoty. V opačném případě bude dotaz vracet pevné pořadí hodnot. Tato klauzule se teď podporuje pro dotazy v rámci jednoho oddílu a také pro Mezioddílové dotazy.
+  V klauzuli `OFFSET LIMIT` je vyžadován jak počet `OFFSET`, tak počet `LIMIT`. Pokud je použita volitelná klauzule `ORDER BY`, sada výsledků se vytvoří tak, že přeskočí seřazené hodnoty. V opačném případě bude dotaz vracet pevné pořadí hodnot.
+
+  Poplatek za odpověď na dotaz s `OFFSET LIMIT` se zvýší, protože se zvýší počet podmínek posunu. U dotazů, které mají více stránek výsledků, typicky doporučujeme používat tokeny pro pokračování. Tokeny pokračování jsou "záložkou" pro místo, kde může dotaz později pokračovat. Pokud používáte `OFFSET LIMIT`, není k dispozici žádná "Záložka". Pokud jste chtěli vrátit další stránku dotazu, bude nutné začít od začátku.
+  
+  V případě, že chcete přeskočit dokumenty zcela a uložit prostředky klienta, byste měli použít `OFFSET LIMIT`. Například byste měli použít `OFFSET LIMIT`, pokud chcete přeskočit na výsledek dotazu 1000th a není nutné zobrazit výsledky 1 až 999. V back-endu `OFFSET LIMIT` stále načítá každý dokument, včetně těch, které se přeskočily. Výhoda výkonu je úspora v klientských zdrojích, protože se vyhnete zpracování nepotřebných dokumentů.
 
 ## <a name="examples"></a>Příklady
 
@@ -50,7 +54,7 @@ Zde je například dotaz, který přeskočí první hodnotu a vrátí druhou hod
     OFFSET 1 LIMIT 1
 ```
 
-Výsledky jsou následující:
+Výsledky jsou:
 
 ```json
     [
@@ -69,7 +73,7 @@ Zde je dotaz, který přeskočí první hodnotu a vrátí druhou hodnotu (bez ř
     OFFSET 1 LIMIT 1
 ```
 
-Výsledky jsou následující:
+Výsledky jsou:
 
 ```json
     [

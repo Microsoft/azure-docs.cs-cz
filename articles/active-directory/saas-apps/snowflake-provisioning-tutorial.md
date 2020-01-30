@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 04d9ec8cad2404466d2df649df4d5c461768b76f
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 2aaf1d2b377abc0b10b0b14de03d01c7f6fae5b7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693609"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767766"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>Kurz: Konfigurace Snowflake pro Automatické zřizování uživatelů
 
@@ -56,10 +56,7 @@ Před konfigurací a povolením automatického zřizování uživatelů byste se
 
 Před konfigurací Snowflake pro Automatické zřizování uživatelů pomocí Azure AD budete muset povolit SCIM zřizování na Snowflake.
 
-> [!NOTE]
-> Tato integrace je ve verzi Private Preview v Snowflake ještě dnes. Pokud chcete tuto funkci povolit v účtu Snowflake, obraťte se na svého prodejního zástupce Snowflake.
-
-1. Přihlaste se ke konzole pro správu Snowflake. Zadejte níže uvedený dotaz v pracovním prostoru a klikněte na tlačítko **Spustit**.
+1. Přihlaste se ke konzole pro správu Snowflake. Zadejte níže uvedený dotaz na listu a klikněte na tlačítko **Spustit**.
 
     ![Konzola pro správu Snowflake](media/Snowflake-provisioning-tutorial/image00.png)
 
@@ -67,7 +64,7 @@ Před konfigurací Snowflake pro Automatické zřizování uživatelů pomocí A
 
     ![Snowflake přidat SCIM](media/Snowflake-provisioning-tutorial/image01.png)
 
-3. Zkopírujte hodnotu vygenerovaného tokenua klikněte na Hotovo. Tato hodnota se zadá do pole **token tajného** kódu na kartě zřizování vaší aplikace Snowflake ve Azure Portal.
+3. Zkopírujte hodnotu vygenerovaného tokenu a klikněte na **Hotovo**. Tato hodnota se zadá do pole **token tajného** kódu na kartě zřizování vaší aplikace Snowflake ve Azure Portal.
 
     ![Snowflake přidat SCIM](media/Snowflake-provisioning-tutorial/image02.png)
 
@@ -102,7 +99,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-snowflake-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Snowflake ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -118,17 +115,17 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Karta zřizování](common/provisioning-automatic.png)
 
-5. V části přihlašovací údaje správce zadejte `https://<Snowflake Account URL>/scim/v2` adresu URL tenanta. Příklad adresy URL klienta:`https://acme.snowflakecomputing.com/scim/v2`
+5. V části přihlašovací údaje správce zadejte `https://<Snowflake Account URL>/scim/v2` na adrese URL tenanta. Příklad adresy URL klienta: `https://acme.snowflakecomputing.com/scim/v2`
 
-6. Zadejte hodnotu **SCIM tokenu ověřování** získanou dřívev tajném tokenu. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k Snowflake. Pokud se připojení nepovede, ujistěte se, že má váš účet Snowflake oprávnění správce, a zkuste to znovu.
+6. Zadejte hodnotu **SCIM tokenu ověřování** získanou dříve v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k Snowflake. Pokud se připojení nepovede, ujistěte se, že má váš účet Snowflake oprávnění správce, a zkuste to znovu.
 
     ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
 
-7. V poli **e-mail** s oznámením zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
+7. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
 
-    ![Oznamovací e-mail](common/provisioning-notification-email.png)
+    ![E-mail s oznámením](common/provisioning-notification-email.png)
 
-8. Klikněte na **Uložit**.
+8. Klikněte na možnost **Uložit**.
 
 9. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé Snowflake**.
 
@@ -152,7 +149,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Zapnutý stav zřizování](common/provisioning-toggle-on.png)
 
-15. Definujte uživatele nebo skupiny, které chcete zřídit pro Snowflake, výběrem požadovaných hodnot v **oboru** v části **Nastavení** .
+15. Definujte uživatele nebo skupiny, které chcete zřídit pro Snowflake, výběrem požadovaných hodnot v **oboru** v části **Nastavení** . Pokud tato možnost není k dispozici, nakonfigurujte prosím požadovaná pole v části přihlašovací údaje správce, klikněte na **Uložit** a aktualizujte stránku. 
 
     ![Rozsah zřizování](common/provisioning-scope.png)
 
@@ -168,10 +165,10 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 * Snowflake vygenerované tokeny SCIM vyprší za 6 měsíců. Uvědomte si, že je potřeba aktualizovat je, než vyprší platnost, aby zřizování synchronizace pokračovala v práci. 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md).
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Přečtěte si, [Jak zkontrolovat protokoly a získat sestavy o aktivitě zřizování](../manage-apps/check-status-user-account-provisioning.md).

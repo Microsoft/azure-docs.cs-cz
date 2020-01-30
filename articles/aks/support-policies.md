@@ -5,14 +5,14 @@ services: container-service
 author: jnoller
 ms.service: container-service
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: c018e511bbeed41bc9caf721562349a37ad0e748
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 9a68a0d0a288a27d67a9615385391c06be2b662d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707226"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767369"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Zásady podpory pro službu Azure Kubernetes
 
@@ -42,6 +42,8 @@ Služby jsou *spravované* v tom smyslu, že se tým Microsoftu a AKS nasazuje, 
 
 > [!NOTE]
 > Pracovní uzly AKS se zobrazují v Azure Portal jako běžné prostředky Azure IaaS. Tyto virtuální počítače se ale nasadí do vlastní skupiny prostředků Azure (s předponou MC\\*). Je možné změnit AKS pracovní uzly. Například můžete pomocí Secure Shell (SSH) změnit AKS pracovní uzly tak, že změníte normální virtuální počítače (nemůžete ale změnit základní image operačního systému a změny se nemůžou zachovat prostřednictvím aktualizace nebo restartování) a můžete k AKS připojit další prostředky Azure. pracovní uzly. Ale když provedete změny *vzdálené správy a přizpůsobení,* cluster AKS může být nepodporováný. Vyhněte se měnícím se uzlům pracovních procesů, pokud podpora Microsoftu vás neprovede změny.
+
+Vydávají se nepodporované operace, jak je definováno výše, jako je například vzdálené zrušení přidělení všech uzlů agentů, vykreslí cluster nepodporovaný. AKS si vyhrazuje právo na archivaci řídicích rovin, které byly nakonfigurovány podle pokynů k podpoře pro rozšířené tečky, které se rovnají nebo přesahují 30 dnů. AKS udržuje zálohy metadat clusterových etcd a můžou snadno znovu přidělit cluster. Toto přerozdělení můžete iniciovat jakoukoli operací PUT, která cluster přenese zpátky do podpory, jako je například upgrade nebo škálování na aktivní uzly agentů.
 
 ## <a name="shared-responsibility"></a>Sdílená odpovědnost
 
@@ -89,7 +91,7 @@ Microsoft a zákazníci mají odpovědnost za pracovní uzly Kubernetes, kde:
 * Základní image operačního systému obsahuje požadované dodatky (například monitorování a síťové agenty).
 * Pracovní uzly automaticky dostanou opravy operačního systému.
 * Problémy s komponentou roviny ovládacího prvku Kubernetes, které běží na pracovních uzlech, jsou automaticky opraveny. Součástí jsou tyto součásti:
-  * Kube – proxy
+  * Kube-proxy
   * Síťové tunely, které poskytují komunikační cesty k hlavním komponentám Kubernetes
   * Kubelet
   * Docker nebo Moby démon

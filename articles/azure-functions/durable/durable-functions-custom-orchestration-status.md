@@ -4,12 +4,12 @@ description: Naučte se konfigurovat a používat vlastní stav orchestrace pro 
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 2b8b78f58570186a0b17eb47f8445d2ba9aa47e8
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 31b7d51293878c9d0e8567b6b4bd58c48d75ec63
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261649"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766274"
 ---
 # <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Stav vlastní orchestrace v Durable Functions (Azure Functions)
 
@@ -133,7 +133,7 @@ module.exports = async function(context, req) {
     context.log(`Started orchestration with ID = '${instanceId}'.`);
 
     let durableOrchestrationStatus = await client.getStatus(instanceId);
-    while (status.customStatus.toString() !== "London") {
+    while (durableOrchestrationStatus.customStatus.toString() !== "London") {
         await new Promise((resolve) => setTimeout(resolve, 200));
         durableOrchestrationStatus = await client.getStatus(instanceId);
     }

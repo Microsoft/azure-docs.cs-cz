@@ -5,20 +5,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.openlocfilehash: 5e031354d4695a1d7eb6f199e23e74b796273230
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 01/24/2020
+ms.openlocfilehash: dd79618b8d9f016c92166edb9ecdb0bfb113947e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770216"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768949"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Vytváření a Správa replik pro čtení v serveru Azure Database for PostgreSQL-Single z Azure Portal
 
 V tomto článku se dozvíte, jak vytvořit a spravovat repliky pro čtení v Azure Database for PostgreSQL z Azure Portal. Další informace o replikách pro čtení najdete v tématu [Přehled](concepts-read-replicas.md).
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 [Server Azure Database for PostgreSQL](quickstart-create-server-database-portal.md) , který bude hlavním serverem.
 
 ## <a name="prepare-the-master-server"></a>Příprava hlavního serveru
@@ -27,6 +27,9 @@ Tyto kroky je nutné použít k přípravě hlavního serveru v Pro obecné úč
 1. V Azure Portal vyberte existující server Azure Database for PostgreSQL, který chcete použít jako hlavní server.
 
 2. Na bočním panelu serveru v části **Nastavení**vyberte **replikace**.
+
+> [!NOTE] 
+> Pokud vidíte možnost **zakázat podporu replikace** šedě, nastavení replikace jsou již ve výchozím nastavení nastavena na vašem serveru. Můžete přeskočit následující kroky a přejít k části Vytvoření repliky pro čtení. 
 
 3. Vyberte **Povolit podporu replikace**. 
 
@@ -106,7 +109,7 @@ Pokud chcete zastavit replikaci mezi hlavním serverem a replikou pro čtení z 
    ![Potvrzení zastavení replikace](./media/howto-read-replicas-portal/confirm-stop-replication.png)
  
 
-## <a name="delete-a-master-server"></a>Odstranění hlavního serveru
+## <a name="delete-a-master-server"></a>Odstranit hlavního serveru
 Pokud chcete odstranit hlavní server, použijte stejný postup jako při odstraňování samostatného serveru Azure Database for PostgreSQL. 
 
 > [!IMPORTANT]

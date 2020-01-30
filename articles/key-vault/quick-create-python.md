@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: a514dbce91a98bd51e51b1724d631bc224b2f33a
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: b76441c8b11032d3713d7679acfc7f350533b76b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75527922"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769200"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>Rychlý Start: Azure Key Vault klientskou knihovnu pro Python
 
@@ -22,7 +22,7 @@ Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče použ
 - Zvyšte zabezpečení a kontrolu nad klíči a hesly.
 - Vytvářejte a importujte šifrovací klíče během několika minut.
 - Snižte latenci díky škálování cloudu a globální redundanci.
-- Zjednodušte a automatizujte úlohy pro certifikáty SSL/TLS.
+- Zjednodušte a automatizujte úlohy pro certifikáty TLS/SSL.
 - Použijte ověřený HSM úrovně 2 FIPS 140-2.
 
 [Referenční dokumentace k rozhraní API](/python/api/overview/azure/key-vault?view=azure-python) | balíček [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault) | [(index balíčku Python)](https://pypi.org/project/azure-keyvault/)

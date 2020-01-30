@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 12/03/2019
-ms.openlocfilehash: 35d568afa0c45529b33b7918fd453213f432ba06
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/23/2020
+ms.openlocfilehash: fd6d3e24adfc22d2f6ea17f09b8dea4638a054b6
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792302"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769047"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Čtení replik v Azure Database for PostgreSQL – jeden server
 
@@ -59,8 +59,6 @@ Je potřeba vzít v úvahu omezení:
 
 
 ## <a name="create-a-replica"></a>Vytvoření repliky
-Hlavní server musí mít parametr `azure.replication_support` nastavený na **repliku**. Pokud se tento parametr změní, je nutné restartovat server, aby se změna projevila. (Parametr `azure.replication_support` se vztahuje pouze na vrstvy optimalizované pro Pro obecné účely a paměť).
-
 Když spustíte pracovní postup vytvoření repliky, vytvoří se prázdný Azure Database for PostgreSQL Server. Nový server je vyplněn daty, která byla na hlavním serveru. Čas vytvoření závisí na množství dat v hlavní databázi a na čase od posledního týdenního úplného zálohování. Čas může být v rozsahu od několika minut až po několik hodin.
 
 U každé repliky je povoleno [Automatické zvětšování](concepts-pricing-tiers.md#storage-auto-grow)úložiště. Funkce automatického zvětšení umožňuje replice udržovat data, která jsou do ní replikována, a zabránit přerušení replikace způsobené chybou úložiště.
@@ -148,7 +146,7 @@ Po úspěšném zpracování čtení a zápisu vaší aplikace jste dokončili p
 
 V této části najdete přehled informací o funkci Replika čtení.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 Před vytvořením repliky pro čtení musí být parametr `azure.replication_support` na hlavním serveru nastaven na **replika** . Pokud se tento parametr změní, je nutné restartovat server, aby se změna projevila. Parametr `azure.replication_support` se vztahuje pouze na vrstvy optimalizované pro Pro obecné účely a paměť.
 
 ### <a name="new-replicas"></a>Nové repliky

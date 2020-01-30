@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: ac9ded703ed18abd9543b6e32e59afe6ccf711a9
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: d605b852d37af3b1e2ef0868084f3c0b99c24784
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263417"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765724"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Co je monitorované pomocí Azure Monitor?
 Tento článek popisuje různé aplikace a služby, které jsou monitorované pomocí Azure Monitor. 
@@ -42,7 +42,7 @@ Přehledy poskytují přizpůsobené možnosti monitorování pro konkrétní ap
 |:---|:---|
 | [Stav agenta](insights/solution-agenthealth.md) | Analyzujte stav a konfiguraci Log Analyticsch agentů. |
 | [Správa výstrah](platform/alert-management-solution.md) | Analyzujte výstrahy shromážděné z System Center Operations Manager, Nagios nebo Zabbix. |
-| [Mapa služeb](insights/service-map.md) | Automaticky zjišťuje součásti aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Stejné funkce jsou k dispozici v   |
+| [Mapa služeb](insights/service-map.md) | Automaticky zjišťuje součásti aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. |
 
 
 
@@ -63,13 +63,13 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Advisor | Ne | Ne | Ne |  |
 |AI Builder | Ne | Ne | Ne |  |
 |Analysis Services | Ano | Ano | Ne |  |
-|API pro FHIR | Ne | Ne | Ne |  |
+|Rozhraní API pro FHIR | Ne | Ne | Ne |  |
 |API Management | Ano | Ano | Ne |  |
 |Aplikační služba | Ano | Ano | Ne |  |
 |AppConfig | Ne | Ne | Ne |  |
 |Application Gateway | Ano | Ano | Ne |  |
 |Služba ověření identity | Ne | Ne | Ne |  |
-|Automatizace | Ano | Ano | Ne |  |
+|Automation | Ano | Ano | Ne |  |
 |Azure Service Manager (RDFE) | Ne | Ne | Ne |  |
 |Backup | Ne | Ano | Ne |  |
 |Bastion | Ne | Ne | Ne |  |
@@ -91,10 +91,10 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Průzkumník dat | Ano | Ano | Ne |  |
 |Data Factory | Ano | Ano | Ne |  |
 |Data Factory v2 | Ne | Ano | Ne |  |
-|Data Share | Ne | Ne | Ne |  |
-|Database for MariaDB | Ano | Ano | Ne |  |
-|Database for MySQL | Ano | Ano | Ne |  |
-|Database for PostgreSQL | Ano | Ano | Ne |  |
+|Sdílená data | Ne | Ne | Ne |  |
+|Databáze pro MariaDB | Ano | Ano | Ne |  |
+|Databáze pro MySQL | Ano | Ano | Ne |  |
+|Databáze pro PostgreSQL | Ano | Ano | Ne |  |
 |Database Migration Service | Ne | Ne | Ne |  |
 |Databricks | Ne | Ano | Ne |  |
 |DDoS Protection | Ano | Ano | Ne |  |
@@ -109,9 +109,9 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |ExpressRoute | Ano | Ano | Ne |  |
 |Brána firewall | Ano | Ano | Ne |  |
 |Front Door | Ano | Ano | Ne |  |
-|Functions | Ano | Ano | Ne |  |
+|Funkce | Ano | Ano | Ne |  |
 |HDInsight | Ne | Ano | Ne |  |
-|HPC Cache | Ne | Ne | Ne |  |
+|Mezipaměť HPC | Ne | Ne | Ne |  |
 |Ochrana informací | Ne | Ano | Ne |  |
 |Intune | Ne | Ano | Ne |  |
 |IoT Central | Ne | Ne | Ne |  |
@@ -121,16 +121,16 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Load Balancer | Ano | Ano | Ne |  |
 |Logic Apps | Ano | Ano | Ne |  |
 |Služba Machine Learning | Ne | Ne | Ne |  |
-|Spravované aplikace  | Ne | Ne | Ne |  |
+|Managed Applications  | Ne | Ne | Ne |  |
 |Mapy  | Ne | Ne | Ne |  |
 |Media Services | Ano | Ano | Ne |  |
 |Microsoft Flow | Ne | Ne | Ne |  |
-|Microsoft Managed Desktop | Ne | Ne | Ne |  |
+|Spravovaná plocha společnosti Microsoft | Ne | Ne | Ne |  |
 |Microsoft PowerApps | Ne | Ne | Ne |  |
 |Microsoft Social Engagement | Ne | Ne | Ne |  |
 |Microsoft Stream | Ano | Ano | Ne |  |
 |Migrace | Ne | Ne | Ne |  |
-|Multi-Factor Authentication | Ne | Ano | Ne |  |
+|Multi-factor Authentication | Ne | Ano | Ne |  |
 |Network Watcher | Ano | Ano | Ne |  |
 |Notification Hubs | Ano | Ne | Ne |  |
 |Open Datasets | Ne | Ne | Ne |  |

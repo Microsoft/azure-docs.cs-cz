@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/27/2019
-ms.openlocfilehash: 247e41faa39520089dc5c95a34b4fb4b6b618761
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: ee5acc97e4b05a0e93f4ceee8c04b400da211b49
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552130"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769498"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Seznámení se Data Factory cenami prostřednictvím příkladů
 
@@ -156,7 +156,7 @@ Chcete-li dosáhnout tohoto scénáře, je nutné vytvořit kanál s následují
 | Předpoklady toku dat: doba provádění = 10 min + 10 min. TTL | 10 \* s 16 jádry obecného COMPUTE s TTL z 10 |
 | Předpoklad monitorování kanálu: došlo k pouze 1 spuštění. | 2 pokus o sledování záznamů o spuštění (1 pro spuštění kanálu, 1 pro spuštění aktivity) |
 
-**Ceny za celkový scénář: $0,3011**
+**Ceny za celkový scénář: $1,4631**
 
 - Operace Data Factory = **$0,0001**
   - Čtení/zápis = 10\*00001 = $0,0001 [1 R/W = $0,50/50000 = 0,00001]

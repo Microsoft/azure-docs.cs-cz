@@ -1,6 +1,6 @@
 ---
 title: Referenční informace k modulům a algoritmům
-description: Další informace o modulech, které jsou k dispozici v Návrháři Azure Machine Learning
+description: Seznamte se s moduly dostupnými v Návrháři Azure Machine Learning (Preview).
 titleSuffix: Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
@@ -9,38 +9,48 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 12/17/2019
-ms.openlocfilehash: c265c2386b31fd02a5aa635c343be5d3cb227722
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 7f2d282541e8a5a3752a0784a3f00a48ad2fb303
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312171"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769160"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Reference k modulu & algoritmu pro návrháře Azure Machine Learning
 
-Tento referenční obsah poskytuje technické informace o každém algoritmu a modulech strojového učení, které jsou k dispozici v Návrháři Azure Machine Learning.
+Tento referenční obsah poskytuje technické informace o každém algoritmu a modulech strojového učení, které jsou dostupné v Azure Machine Learning designeru (Preview).
 
 Každý modul představuje sadu kódu, který může běžet nezávisle a provede úlohu strojového učení s ohledem na požadované vstupy. Modul může obsahovat konkrétní algoritmus nebo provést úkol, který je důležitý ve strojovém učení, jako je například chybějící hodnota, nebo statistická analýza.
+
+Nápovědu k výběru algoritmů najdete v tématu. 
+* [Jak vybrat algoritmy](../how-to-select-algorithms.md)
+* [Tahákový list s algoritmem Azure Machine Learning](../algorithm-cheat-sheet.md)
 
 > [!TIP]
 > V jakémkoli kanálu v Návrháři můžete získat informace o konkrétním modulu. Vyberte modul a potom v podokně **rychlá ochrana** vyberte odkaz **Další** .
 
-## <a name="modules"></a>Moduly
+## <a name="data-preparation-modules"></a>Moduly pro přípravu dat
 
-Moduly jsou uspořádány podle funkcí:
 
 | Funkce | Popis | Modul |
 | --- |--- | --- |
-|  | **Příprava dat**: | |
 | Vstup a výstup dat | Přesuňte data z cloudových zdrojů do vašeho kanálu. Zápis výsledků nebo mezilehlých dat do Azure Storage, databáze SQL nebo podregistru, při spuštění kanálu nebo použití cloudového úložiště k výměně dat mezi kanály.  | [Zadat data ručně](enter-data-manually.md) <br/> [Exportovat data](export-data.md) <br/> [Importovat data](import-data.md) |
-| Transformace dat | Operace s daty, která jsou jedinečná pro strojové učení, jako je normalizace nebo binningu dat, snižování dimenzionálního omezení a převod dat mezi různými formáty souborů.| [Přidat sloupce](add-columns.md) <br/> [Přidání řádků](add-rows.md) <br/> [Použít matematickou operaci](apply-math-operation.md) <br/> [Použít transformaci SQL](apply-sql-transformation.md) <br/> [Vyčistit chybějící data](clean-missing-data.md) <br/> [Oříznout hodnoty](clip-values.md) <br/> [Převést na sdílený svazek clusteru](convert-to-csv.md) <br/> [Převést na datovou sadu](convert-to-dataset.md) <br/> [Upravit metadata](edit-metadata.md) <br/> [Spojit data](join-data.md) <br/> [Normalizovat data](normalize-data.md) <br/> [Oddíl a ukázka](partition-and-sample.md)  <br/> [Odebrat duplicitní řádky](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [Transformovat sloupce pro výběr](select-columns-transform.md) <br/> [Výběr sloupců v datové sadě](select-columns-in-dataset.md) <br/> [Rozdělit data](split-data.md) |
-| Výběr součástí | Vyberte podmnožinu relevantních užitečných funkcí, které se použijí při sestavování analytického modelu. | [Výběr funkcí založených na filtrech](filter-based-feature-selection.md) <br/> [Funkce permutace – důležitost](permutation-feature-importance.md) |
+| Transformace dat | Operace s daty, která jsou jedinečná pro strojové učení, jako je normalizace nebo binningu dat, snižování dimenzionálního omezení a převod dat mezi různými formáty souborů.| [Přidat sloupce](add-columns.md) <br/> [Přidat řádky](add-rows.md) <br/> [Použít matematickou operaci](apply-math-operation.md) <br/> [Použít transformaci SQL](apply-sql-transformation.md) <br/> [Vyčistit chybějící data](clean-missing-data.md) <br/> [Oříznout hodnoty](clip-values.md) <br/> [Převést na sdílený svazek clusteru](convert-to-csv.md) <br/> [Převést na datovou sadu](convert-to-dataset.md) <br/> [Upravit metadata](edit-metadata.md) <br/> [Spojit data](join-data.md) <br/> [Normalizovat data](normalize-data.md) <br/> [Oddíl a ukázka](partition-and-sample.md)  <br/> [Odebrat duplicitní řádky](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [Transformovat sloupce pro výběr](select-columns-transform.md) <br/> [Výběr sloupců v datové sadě](select-columns-in-dataset.md) <br/> [Rozdělit data](split-data.md) |
+| Výběr funkcí | Vyberte podmnožinu relevantních užitečných funkcí, které se použijí při sestavování analytického modelu. | [Výběr funkcí založených na filtrech](filter-based-feature-selection.md) <br/> [Funkce permutace – důležitost](permutation-feature-importance.md) |
 | Statistické funkce | Poskytněte širokou škálu statistických metod, které se týkají datové vědy. | [Shrnout data](summarize-data.md)|
-|  | **Algoritmy strojového učení**: | |
+
+## <a name="machine-learning-algorithms"></a>Algoritmy strojového učení
+
+| Funkce | Popis | Modul |
+| --- |--- | --- |
 | Regrese | Předpověď hodnoty. | [Zvýšila se regrese rozhodovacího stromu.](boosted-decision-tree-regression.md) <br/> [Regrese rozhodovací doménové struktury](decision-forest-regression.md) <br/> [Lineární regrese](linear-regression.md)  <br/> [Regrese sítě neuronové](neural-network-regression.md)  <br/> |
 | Clustering | Seskupte data dohromady.| [K-znamená clustering](k-means-clustering.md)
 | Classification | Předpověď třídy.  Vyberte si binární (dvě třídy) nebo algoritmy s více třídami.| [Více tříd pro rozhodovací strom s více třídami](multiclass-boosted-decision-tree.md) <br/> [Více tříd – rozhodovací doménová struktura](multiclass-decision-forest.md) <br/> [Mikrotřída logistické regrese](multiclass-logistic-regression.md)  <br/> [Neuronové síť pro více tříd](multiclass-neural-network.md) <br/> [Jedna oproti všem více třídám](one-vs-all-multiclass.md) <br/> [Průměrná hodnota Perceptron se dvěma třídami](two-class-averaged-perceptron.md) <br/>  [Zvýšení rozhodovacího stromu se dvěma třídami](two-class-boosted-decision-tree.md)  <br/> [Rozhodovací doménová struktura se dvěma třídami](two-class-decision-forest.md) <br/>  [Logistická regrese dvou tříd](two-class-logistic-regression.md) <br/> [Neuronové síť se dvěma třídami](two-class-neural-network.md) <br/> [Podpora dvou tříd – vektorový počítač](two-class-support-vector-machine.md) | 
-|  | **Sestavování a vyhodnocování modelů**: | |
+
+## <a name="modules-for-building-and-evaluating-models"></a>Moduly pro vytváření a vyhodnocování modelů
+
+| Funkce | Popis | Modul |
+| --- |--- | --- |
 | Trénování modelu | Spusťte data pomocí algoritmu. |  [Analýza modelu clusteringu](train-clustering-model.md) <br/> [Model výuky](train-model.md)  <br/> [Ladit parametry modelu](tune-model-hyperparameters.md) |
 | Bodování a vyhodnocení modelu | Změřte přesnost vyučeného modelu. | [Použít transformaci](apply-transformation.md) <br/> [Přiřazení dat clusterům](assign-data-to-clusters.md) <br/> [Model vzájemného ověřování](cross-validate-model.md) <br/> [Vyhodnotit model](evaluate-model.md) <br/> [Model skóre](score-model.md) |
 | Jazyk Python | Napište kód a vložte ho do modulu pro integraci Pythonu s vaším kanálem. | [Vytvoření modelu Pythonu](create-python-model.md) <br/> [Spustit skript jazyka Python](execute-python-script.md) |
@@ -51,3 +61,7 @@ Moduly jsou uspořádány podle funkcí:
 ## <a name="error-messages"></a>Chybové zprávy
 
 Seznamte se s [chybovými zprávami a kódy výjimek](designer-error-codes.md) , se kterými se můžete setkat pomocí modulů v Návrháři Azure Machine Learning.
+
+## <a name="next-steps"></a>Další kroky
+
+* [Kurz: sestavení modelu v Návrháři pro předpověď automatických cen](../tutorial-designer-automobile-price-train-score.md)

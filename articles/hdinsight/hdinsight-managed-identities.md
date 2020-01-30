@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/20/2019
-ms.openlocfilehash: e7be8fbf5f6c2c59e93d48729785dd34bae5955e
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 934c99c25ca37526ac31fd9bbaf58623fdbdf166
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327372"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76764404"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Spravované identity ve službě Azure HDInsight
 
 Spravovaná identita je identita registrovaná v Azure Active Directory (Azure AD), jejíž přihlašovací údaje jsou spravované v Azure. U spravovaných identit nemusíte registrovat instanční objekty ve službě Azure AD ani uchovávat přihlašovací údaje, jako jsou certifikáty.
 
-Spravované identity se dají použít ve službě Azure HDInsight, aby mohly vaše clustery přistupovat ke službám Azure AD Domain Services, přistupovat k Azure Key Vault nebo přistupovat k souborům v Azure Data Lake Storage Gen2.
+Spravované identity se ve službě Azure HDInsight používají pro přístup ke službám Azure AD Domain Services nebo k souborům v Azure Data Lake Storage Gen2 v případě potřeby.
 
 Existují dva typy spravovaných identit: přiřazeno uživatelem a systémem. Azure HDInsight používá spravované identity přiřazené uživatelem. Spravovaná identita přiřazená uživatelem se vytvoří jako samostatný prostředek Azure, který pak můžete přiřadit k jedné nebo více instancím služby Azure. Naproti tomu spravovaná identita přiřazená systémem se vytvoří ve službě Azure AD a pak se automaticky povolí přímo na konkrétní instanci služby Azure. Životnost této spravované identity přiřazené systémem je pak svázána s životností instance služby, na které je povolena.
 

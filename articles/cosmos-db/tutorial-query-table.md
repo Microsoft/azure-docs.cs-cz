@@ -1,19 +1,19 @@
 ---
 title: Jak provádět dotazy na tabulková data ve službě Azure Cosmos DB?
 description: Naučte se, jak zadávat dotazy na data uložená v Azure Cosmos DB rozhraní API pro tabulky účtu pomocí filtrů OData a dotazů LINQ.
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 05/21/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 9502829dcf7b49675b67e05cb923e28f378859d1
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 8f31ace0045dad2f038a1eded52a41ffb1932f99
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760160"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76770488"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Kurz: Dotazování služby Azure Cosmos DB pomocí rozhraní Table API
 

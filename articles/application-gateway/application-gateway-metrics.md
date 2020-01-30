@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/29/2019
 ms.author: absha
-ms.openlocfilehash: 12759deb3e1775b5170d40cc609fe8c6226bf0d6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a8882a810d18d06b33d6382bd8bd86ffe75b39d8
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704574"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766819"
 ---
 # <a name="metrics-for-application-gateway"></a>Metriky pro Application Gateway
 
@@ -22,7 +22,9 @@ Application Gateway zveřejňuje datové body označované jako metriky, aby se 
 
 ### <a name="timing-metrics"></a>Metriky časování
 
-K dispozici jsou následující metriky související s časováním žádosti a odpovědi. Analýzou těchto metrik pro konkrétní naslouchací proces můžete určit, zda zpomalení aplikace v důsledku sítě WAN, Application Gateway, síti mezi Application Gateway a back-end aplikací nebo výkonem back-endu.
+Application Gateway poskytuje několik vestavěných metrik časování vztahujících se k žádosti a odpovědi, které se měří v milisekundách. 
+
+![](./media/application-gateway-metrics/application-gateway-metrics.png)
 
 > [!NOTE]
 >
@@ -30,28 +32,41 @@ K dispozici jsou následující metriky související s časováním žádosti a
 
 - **Čas připojení back-endu**
 
-  Čas strávený navázáním spojení s back-end aplikací To zahrnuje latenci sítě a dobu, kterou zabere zásobník protokolu TCP back-end serveru k navázání nových připojení. V případě protokolu SSL zahrnuje i čas strávený na handshaki. 
+  Čas strávený navázáním spojení s back-end aplikací. 
+
+  To zahrnuje latenci sítě a dobu, kterou zabere zásobník protokolu TCP back-end serveru k navázání nových připojení. V případě protokolu SSL zahrnuje i čas strávený na handshaki. 
 
 - **Doba odezvy prvního bajtu back-endu**
 
-  Časový interval mezi začátky navázání připojení k back-endu serveru a příjem prvního bajtu hlavičky odpovědi To odpovídá součtu *času připojení back-end* a doby odezvy back-end aplikace (čas, kdy server trvalo generování obsahu, potenciálně načtení databázových dotazů a zahájení přenosu odpovědi zpět na Application Gateway).
+  Časový interval mezi začátky navázání připojení k back-endu serveru a příjem prvního bajtu hlavičky odpovědi 
+
+  To bude odpovídat součtu *času připojení back-endu*, času, který požadavek přijal pro přístup k back-endu z Application Gateway, což je čas, který aplikace back-end zavedla k tomu, aby reagovala na Application Gateway z back-endu.
 
 - **Doba odezvy posledního bajtu back-endu**
 
-  Časový interval mezi začátky navázání připojení k back-endu serveru a příjem posledního bajtu těla odpovědi To odpovídá součtu celkové *doby odezvy back-endu* a času přenosu dat (Toto číslo se může značně lišit v závislosti na velikosti požadovaných objektů a latenci serverové sítě).
+  Časový interval mezi začátky navázání připojení k back-endu serveru a příjem posledního bajtu těla odpovědi 
+
+  Tím se blíží součet *doby odezvy back-endu prvního bajtu* a doby přenosu dat (Toto číslo se může značně lišit v závislosti na velikosti požadovaných objektů a latenci serverové sítě).
 
 - **Celková doba aplikační brány**
 
-  Průměrná doba, kterou trvá zpracování požadavku, a jeho odpověď k odeslání. To se počítá jako průměr z intervalu od času, kdy Application Gateway přijme první bajt požadavku HTTP do doby, kdy se dokončí operace odeslání odpovědi, přibližně součet doby zpracování Application Gateway a *doby odezvy posledního bajtu back-endu* .
+  Průměrná doba, kterou trvá, než se požadavek přijme, zpracuje a pošle odpověď. 
+
+  Toto je interval od času, kdy Application Gateway obdrží první bajt požadavku HTTP na čas, kdy byl klientovi odeslán poslední bajt odpovědi. To zahrnuje dobu zpracování trvání Application Gateway, *čas odezvy back-endu posledního bajtu*, čas potřebný Application Gateway k odeslání všech odpovědí a času *odezvy klienta*.
 
 - **Čas odezvy klienta**
 
-  Průměrná doba odezvy mezi klienty a Application Gateway. Tato metrika indikuje, jak dlouho trvá navázání připojení a vrácení potvrzení. 
-
-Tyto metriky se dají použít k určení, jestli je způsobené zpomalení v důsledku Application Gateway, síťového a back-endu TCP zásobníku, výkonu aplikace back-endu nebo velikosti velkých souborů.
-Pokud je například špička v první bajtové odezvě back-endu, ale čas připojení back-endu je konstantní, pak je možné odvodit, že brána Application Gateway na latenci v back-endu i čas potřebný k navázání připojení je stabilní a že špička je způsobena tím, že je v důsledku n narůstá doba odezvy back-end aplikace. Podobně platí, že pokud je špička v back-endu první bajtová doba odezvy přidružená k odpovídající špičkě v době připojení back-endu, je možné ji odvodit, protože síť nebo zásobník protokolu TCP na serveru se nastavily na hodnotu sytost. Pokud si všimnete špičky v době, kdy uplynula doba odezvy back-endu, ale doba odezvy prvního bajtu je konstantní, pak je největší špička z důvodu vyžádání většího souboru. Podobně platí, že pokud je celková doba služby Application Gateway mnohem větší než doba odezvy back-endu v bajtech, může to být znaménko kritického bodu výkonu na Application Gateway.
+  Průměrná doba odezvy mezi klienty a Application Gateway.
 
 
+
+Tyto metriky se dají použít k určení, jestli je pozorovaná zpomalení z důvodu klientské sítě, Application Gateway výkonu, back-end sítě a back-endu TCP zásobníku, výkonu aplikace back-endu nebo velikosti velkých souborů.
+
+Například pokud dojde k špičkám ve trendu *prvního bajtu doby odezvy back-endu* , ale trend *času připojení back-* endu je stabilní, pak je možné odvodit, že brána Application Gateway na latenci back-endu a čas potřebný k navázání připojení je stabilní, a špička je způsobena nárůstem doby odezvy back-end aplikace. Na druhé straně platí, že pokud je špička v *back-endu doba odezvy prvního bajtu* přidružená k odpovídajícímu špičku v *době připojení back-endu*, je možné odvodit, že síť mezi Application Gateway a back-end serverem nebo zásobníkem protokolu TCP back-end serveru byla sytost. 
+
+Pokud si všimnete špičky v *době, kdy uplynula doba odezvy back-endu* , ale *Doba odezvy prvního bajtu* je stabilní, je možné ji odvodit, protože se požaduje větší požadovaný soubor.
+
+Podobně platí, že pokud má služba *Application Gateway celkový čas* špičky, ale *čas posledního bajtu back-endu* je stabilní, může to být buď znaménko kritického bodu výkonu na Application Gateway nebo kritické místo v síti mezi klientem a Application Gateway. Navíc platí, že pokud *klient RTT* má také odpovídající špičku, znamená to, že je degradace z důvodu sítě mezi klientem a Application Gateway.
 
 ### <a name="application-gateway-metrics"></a>Application Gateway metriky
 
@@ -112,11 +127,11 @@ Pro Application Gateway jsou k dispozici následující metriky:
 
 - **Počet hostitelů v pořádku**
 
-  Počet back-endy, které jsou v pořádku zjištěny sondou stavu. Můžete filtrovat podle fondu back-endu a zobrazit v něm v pořádku/poškozené hostitele v konkrétním back-end fondu.
+  Počet back-endy, které jsou v pořádku zjištěny sondou stavu. Můžete filtrovat podle fondu back-endu a zobrazit tak počet nefunkčních hostitelů v konkrétním back-end fondu.
 
 - **Počet hostitelů není v pořádku**
 
-  Počet back-endy, které jsou zjištěny v nesprávném stavu sondou stavu. Můžete filtrovat podle fondu back-endu a zobrazit tak v konkrétním back-endu hostitele, kteří nejsou v pořádku.
+  Počet back-endy, které jsou zjištěny v nesprávném stavu sondou stavu. Můžete filtrovat podle fondu back-endu a zobrazit tak počet nezdravých hostitelů v konkrétním back-end fondu.
 
 ## <a name="metrics-supported-by-application-gateway-v1-sku"></a>Metriky podporované Application Gateway v1 SKU
 
@@ -158,11 +173,11 @@ Pro Application Gateway jsou k dispozici následující metriky:
 
 - **Počet hostitelů v pořádku**
 
-  Počet back-endy, které jsou v pořádku zjištěny sondou stavu. Můžete filtrovat podle fondu back-endu a zobrazit v něm v pořádku/poškozené hostitele v konkrétním back-end fondu.
+  Počet back-endy, které jsou v pořádku zjištěny sondou stavu. Můžete filtrovat podle fondu back-endu a zobrazit tak počet nefunkčních hostitelů v konkrétním back-end fondu.
 
 - **Počet hostitelů není v pořádku**
 
-  Počet back-endy, které jsou zjištěny v nesprávném stavu sondou stavu. Můžete filtrovat podle fondu back-endu a zobrazit tak v konkrétním back-endu hostitele, kteří nejsou v pořádku.
+  Počet back-endy, které jsou zjištěny v nesprávném stavu sondou stavu. Můžete filtrovat podle fondu back-endu a zobrazit tak počet nezdravých hostitelů v konkrétním back-end fondu.
 
 ## <a name="metrics-visualization"></a>Vizualizace metrik
 

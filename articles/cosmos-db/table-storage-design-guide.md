@@ -5,21 +5,21 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: conceptual
 ms.date: 05/21/2019
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.custom: seodec18
-ms.openlocfilehash: 74bd22de81e385a4fbd9129a70616e24b594b0b4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 166076d366cbbf7bef24648772beaba9b3a88253
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441322"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771522"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Průvodce návrhem tabulky Azure Table Storage: škálovatelné a výkonné tabulky
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
-Chcete-li navrhovat škálovatelné a výkonné tabulky, je třeba vzít v úvahu různé faktory, včetně nákladů. Pokud jste dříve navrhli schémata pro relační databáze, bude vám tato doporučení znát. I když existují některé podobnosti mezi službou Azure Table Storage a relačními modely, existuje také mnoho důležitých rozdílů. Tyto rozdíly obvykle vedou k různým návrhům, které by mohly být pro uživatele obeznámené s relačními databázemi intuitivní nebo špatné, ale mají smysl, pokud navrhujete pro NoSQL úložiště klíčů/hodnot, jako je například Table Storage.
+Při návrhu škálovatelných a výkonných tabulek je potřeba zvážit řadu faktorů, včetně nákladů. Pokud jste už někdy navrhovali schémata pro relační databáze, tyto aspekty vám budou povědomé. Přestože však mezi službou Azure Table Storage a relačními modely existují určité podobnosti, je mezi nimi i řada důležitých rozdílů. Tyto rozdíly obvykle vedou k různým návrhům, které pro někoho se zkušenostmi s relačními databázemi můžou působit nelogicky nebo špatně, ale které dávají smysl v případě návrhu pro úložiště NoSQL párů klíč-hodnota, jako je služba Table Storage.
 
 Table Storage je navržený tak, aby podporoval aplikace v cloudovém měřítku, které mohou obsahovat miliardy entit ("řádky" v terminologii relačních databází) dat nebo datové sady, které musí podporovat vysoké objemy transakcí. Proto je potřeba se rozmyslet, jak se data ukládají, a pochopit, jak funguje úložiště tabulek. Dobře navržené úložiště dat NoSQL může umožňovat, aby vaše řešení bylo mnohem dalšího škálovatelné (a za nižší náklady) než řešení, které používá relační databázi. Tento průvodce vám pomůže s těmito tématy.  
 
@@ -193,7 +193,7 @@ Dobrým výchozím bodem, který vám umožní efektivně číst data, je požá
 ### <a name="how-your-choice-of-partitionkey-and-rowkey-affects-query-performance"></a>Způsob, jakým volba `PartitionKey` a `RowKey` ovlivní výkon dotazů
 Následující příklady předpokládají, že Table Storage ukládá entity zaměstnanců s následující strukturou (většina příkladů vynechává vlastnost `Timestamp` pro přehlednost):  
 
-| Název sloupce | Data type |
+| název sloupce | Data type |
 | --- | --- |
 | `PartitionKey` (název oddělení) |Řetězec |
 | `RowKey` (ID zaměstnance) |Řetězec |

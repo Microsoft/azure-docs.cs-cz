@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: 3b98975df194af4625087e1beb556efb2a347f43
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 58e8767de786ed2ae92d19c01287aa05c8b63fbb
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872056"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767978"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Správa zásad indexování v Azure Cosmos DB
 
-V Azure Cosmos DB jsou data indexována po [indexování zásad](index-policy.md) , které jsou definovány pro každý kontejner. Výchozí zásada indexování pro nově vytvořené kontejnery vynutila indexy rozsahu pro libovolný řetězec nebo číslo. Tyto zásady se dají přepsat vlastními zásadami indexování.
+V Azure Cosmos DB jsou data indexována po [indexování zásad](index-policy.md) , které jsou definovány pro každý kontejner. Výchozí zásady indexování pro nově vytvořené kontejnery u všech řetězců a čísel vynucují indexy rozsahu. Tyto zásady je možné přepsat vlastními zásadami indexování.
 
 ## <a name="indexing-policy-examples"></a>Příklady zásad indexování
 
@@ -332,7 +332,7 @@ Tato zásada vypne indexování. Pokud je `indexingMode` nastavené na `none`, n
 
 V Azure Cosmos DB můžete zásady indexování aktualizovat pomocí kterékoli z následujících metod:
 
-- Z Azure Portal
+- z Azure Portal
 - použití rozhraní příkazového řádku Azure
 - použití PowerShellu
 - použití jedné ze sad SDK
@@ -356,7 +356,7 @@ Kontejnery Azure Cosmos ukládají své zásady indexování jako dokument JSON,
 
 1. Úprava dokumentu JSON zásad indexování (viz příklady [níže](#indexing-policy-examples))
 
-1. Po dokončení klikněte na **Uložit**.
+1. Po dokončení klikněte na **Uložit** .
 
 ![Správa indexování pomocí Azure Portal](./media/how-to-manage-indexing-policy/indexing-policy-portal.png)
 
@@ -607,9 +607,9 @@ const containerResponse = await client.database('database').container('container
 const indexTransformationProgress = replaceResponse.headers['x-ms-documentdb-collection-index-transformation-progress'];
 ```
 
-## <a name="use-the-python-sdk"></a>Použití sady Python SDK
+## <a name="use-the-python-sdk-v3"></a>Použití sady Python SDK V3
 
-Při použití [sady Python SDK](https://pypi.org/project/azure-cosmos/) (v [tomto rychlém](create-sql-api-python.md) startu najdete informace o jeho použití) je konfigurace kontejneru spravovaná jako slovník. Z tohoto slovníku je možné získat přístup k zásadám indexování a všem jeho atributům.
+Při použití sady [Python SDK V3](https://pypi.org/project/azure-cosmos/) (v [tomto rychlém](create-sql-api-python.md) startu najdete informace o jeho použití) je konfigurace kontejneru spravovaná jako slovník. Z tohoto slovníku je možné získat přístup k zásadám indexování a všem jeho atributům.
 
 Načtení podrobností kontejneru
 
@@ -669,6 +669,72 @@ Aktualizace kontejneru změnami
 
 ```python
 response = client.ReplaceContainer(containerPath, container)
+```
+
+## <a name="use-the-python-sdk-v4"></a>Použití sady Python SDK v4
+
+Při použití sady [Python SDK v4](https://pypi.org/project/azure-cosmos/)je konfigurace kontejneru spravovaná jako slovník. Z tohoto slovníku je možné získat přístup k zásadám indexování a všem jeho atributům.
+
+Načtení podrobností kontejneru
+
+```python
+database_client = cosmos_client.get_database_client('database')
+container_client = database_client.get_container_client('container')
+container = container_client.read()
+```
+
+Nastavit režim indexování jako konzistentní
+
+```python
+indexingPolicy = {
+    'indexingMode': 'consistent'
+}
+```
+
+Definování zásad indexování pomocí zahrnuté cesty a prostorového indexu
+
+```python
+indexingPolicy = {
+    "indexingMode":"consistent",
+    "spatialIndexes":[
+        {"path":"/location/*","types":["Point"]}
+    ],
+    "includedPaths":[{"path":"/age/*","indexes":[]}],
+    "excludedPaths":[{"path":"/*"}]
+}
+```
+
+Definování zásad indexování s vyloučenou cestou
+
+```python
+indexingPolicy = {
+    "indexingMode":"consistent",
+    "includedPaths":[{"path":"/*","indexes":[]}],
+    "excludedPaths":[{"path":"/name/*"}]
+}
+```
+
+Přidat složený index
+
+```python
+indexingPolicy['compositeIndexes'] = [
+    [
+        {
+            "path": "/name",
+            "order": "ascending"
+        },
+        {
+            "path": "/age",
+            "order": "descending"
+        }
+    ]
+]
+```
+
+Aktualizace kontejneru změnami
+
+```python
+response = database_client.replace_container(container_client, container['partitionKey'], indexingPolicy)
 ```
 
 ## <a name="next-steps"></a>Další kroky

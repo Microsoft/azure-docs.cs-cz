@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 1/05/2020
-ms.openlocfilehash: 7b45ddce0435a903c63855dea8a01353a7ab36ec
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 9b838edea4b5f47fe57305c593944ef5fa93a63c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722539"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768666"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 
@@ -326,8 +326,8 @@ Pokud používáte [Virtual Network koncových bodů a pravidel služby](sql-dat
 Pokud váš plán provozní kontinuity vyžaduje převzetí služeb při selhání pomocí skupin s automatickým převzetím služeb při selhání, můžete omezit přístup k databázi SQL pomocí tradičních pravidel brány firewall. K podpoře automatického převzetí služeb při selhání použijte následující postup:
 
 1. [Vytvoření veřejné IP adresy](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
-2. [Vytvořte veřejný Nástroj pro vyrovnávání zatížení](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-a-basic-load-balancer) a přiřaďte k němu veřejnou IP adresu.
-3. [Vytvoření virtuální sítě a virtuálních počítačů](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-back-end-servers) pro součásti front-endu
+2. [Vytvořte veřejný Nástroj pro vyrovnávání zatížení](../load-balancer/quickstart-load-balancer-standard-public-portal.md) a přiřaďte k němu veřejnou IP adresu.
+3. [Vytvoření virtuální sítě a virtuálních počítačů](../load-balancer/quickstart-load-balancer-standard-public-portal.md) pro součásti front-endu
 4. [Vytvořte skupinu zabezpečení sítě](../virtual-network/security-overview.md) a nakonfigurujte příchozí připojení.
 5. Zajistěte, aby se odchozí připojení otevírala ve službě Azure SQL Database pomocí [značky služby](../virtual-network/security-overview.md#service-tags)SQL.
 6. Vytvořte [pravidlo brány firewall služby SQL Database](sql-database-firewall-configure.md) , které povolí příchozí provoz z veřejné IP adresy, kterou jste vytvořili v kroku 1.

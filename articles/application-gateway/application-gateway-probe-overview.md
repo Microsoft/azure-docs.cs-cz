@@ -5,18 +5,24 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/16/2019
+ms.date: 01/28/2020
 ms.author: victorh
-ms.openlocfilehash: 2938665aa0c0a3df66b6ddcfd1c8c5fbc4598319
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 5c25f591d1011d2efd66851cafd67ceef8b56637
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74130683"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766831"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Přehled monitorování stavu Application Gateway
 
-Služba Azure Application Gateway ve výchozím nastavení monitoruje stav všech prostředků v rámci fondu back-endu a automaticky odebere z fondu prostředky považované za chybné. Application Gateway nadále monitorovat poškozené instance a přidává je zpátky do správného fondu back-end, jakmile budou k dispozici a reagují na sondy stavu. Application Gateway odesílá sondy stavu se stejným portem, který je definovaný v nastavení back-endu HTTP. Tato konfigurace zajišťuje, že sonda testuje stejný port, který zákazníci používají pro připojení k back-endu.
+Služba Azure Application Gateway ve výchozím nastavení monitoruje stav všech prostředků v rámci fondu back-endu a automaticky odebere z fondu prostředky považované za chybné. Application Gateway nadále monitorovat poškozené instance a přidává je zpátky do správného fondu back-end, jakmile budou k dispozici a reagují na sondy stavu. Application Gateway odesílá sondy stavu se stejným portem, který je definovaný v nastavení back-endu HTTP. Tato konfigurace zajišťuje, že sonda testuje stejný port, který zákazníci používají pro připojení k back-endu. 
+
+Zdrojová IP adresa Application Gateway použití pro sondy stavu závisí na back-end fondu:
+ 
+- Pokud je back-end fondem veřejným koncovým bodem, pak je zdrojovou adresou veřejná IP adresa front-endu služby Application Gateway.
+- Pokud je back-end fondem soukromým koncovým bodem, pak zdrojová IP adresa pochází z privátního adresního prostoru IP adres podsítě aplikační brány.
+
 
 ![Příklad testu služby Application Gateway][1]
 
@@ -34,12 +40,12 @@ Pokud se u serveru A nezdařila výchozí kontrola sondy, brána Application Gat
 
 ### <a name="probe-matching"></a>Porovnání sondy
 
-Ve výchozím nastavení je odpověď HTTP (S) se stavovým kódem mezi 200 a 399 považována za v pořádku. Vlastní sondy stavu navíc podporují dvě kritéria pro porovnání. Kritéria porovnání lze použít k volitelné změně výchozího výkladu toho, co představuje reakci v pořádku.
+Ve výchozím nastavení je odpověď HTTP (S) se stavovým kódem mezi 200 a 399 považována za v pořádku. Vlastní sondy stavu navíc podporují dvě kritéria pro porovnání. Kritéria porovnání lze použít k volitelné změně výchozího vyhodnocení toho, co způsobuje reakci v dobrém stavu.
 
 Následující kritéria odpovídají kritériím: 
 
 - **Shoda se stavovým kódem odpovědi HTTP** – kritérium porovnávání sondy pro přijetí kódu odpovědi HTTP nebo rozsahů kódu odpovědi na uživatele. Jsou podporovány jednotlivé stavové kódy odpovědi oddělené čárkami nebo rozsah stavového kódu.
-- **Shoda těla zprávy odpovědi HTTP** – kritérium porovnávání sondy, které hledá text odpovědi HTTP a odpovídá řetězci zadaného uživatelem. Shoda vyhledá pouze přítomnost zadaného řetězce uživatelem v těle odpovědi a není úplným shodným regulárním výrazem.
+- **Shoda těla zprávy odpovědi HTTP** – kritérium porovnávání sondy, které hledá text odpovědi HTTP a odpovídá řetězci zadaného uživatelem. Shoda hledá pouze přítomnost zadaného řetězce uživatelem v těle odpovědi a není úplný regulární výraz shodný.
 
 Kritéria shody lze zadat pomocí rutiny `New-AzApplicationGatewayProbeHealthResponseMatch`.
 
@@ -81,7 +87,7 @@ Následující tabulka poskytuje definice vlastností pro vlastní sondu stavu.
 
 | Vlastnost sondy | Popis |
 | --- | --- |
-| Název |Název sondy. Tento název se používá k odkazování na test v nastavení back-endu protokolu HTTP. |
+| Name (Název) |Název sondy. Tento název se používá k odkazování na test v nastavení back-endu protokolu HTTP. |
 | Protocol (Protokol) |Protokol použitý k odeslání testu. Sonda používá protokol definovaný v nastavení back-endu HTTP. |
 | Hostitel |Název hostitele, který má odeslat test. Dá se použít jenom v případě, že je na Application Gateway nakonfigurovaný vícenásobný web, jinak použijte 127.0.0.1. Tato hodnota se liší od názvu hostitele virtuálního počítače. |
 | Cesta |Relativní cesta sondy. Platná cesta začíná znakem/. |

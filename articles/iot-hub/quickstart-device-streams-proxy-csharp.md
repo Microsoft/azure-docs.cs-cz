@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: b48c43f90be3f43b05dcb4028c774836ffd196b7
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: a1b6adc37d78e3fa73d7ae70237d678af6b9dc99
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045975"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769472"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Rychlý Start: povolení SSH a RDP přes datový proud IoT Hub zařízení pomocí C# proxy aplikace (Preview)
 
@@ -72,7 +72,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
    az extension add --name azure-cli-iot-ext
    ```
 
-* [Stáhněte si ukázkový C# projekt](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)a Extrahujte archiv zip.
+* [Stáhněte si ukázky Azure C# IoT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)a Extrahujte archiv zip.
 
 * Platný uživatelský účet a přihlašovací údaje v zařízení (Windows nebo Linux) používané k ověření uživatele.
 

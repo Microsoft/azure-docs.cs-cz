@@ -3,18 +3,18 @@ title: Vykreslovat vlastní data na rastrové mapě | Mapy Microsoft Azure
 description: V tomto článku se naučíte, jak vykreslovat vlastní data na rastrové mapě pomocí služby mapy statických imagí ve službě Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 07/29/2019
+ms.date: 01/23/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: c052ae1f7bab902dcd22b3cc081907468874b35c
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: f036847a9d46231d65d150cd4e0a76471d1ad612
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911479"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766033"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Vykreslovat vlastní data na rastrové mapě
 
@@ -29,7 +29,7 @@ Chcete-li vykreslit vlastní špendlíky, popisky a překryvy geometrie, můžet
 
 ### <a name="create-an-azure-maps-account"></a>Vytvoření účtu Azure Maps
 
-Pokud chcete dokončit postupy v tomto článku, musíte nejdřív vytvořit účet Azure Maps a získat účet pro mapování klíčů. Podle pokynů v části [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps) vytvořte předplatné Azure Maps účtu a podle kroků v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) Získejte primární klíč pro svůj účet. Další podrobnosti o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
+Pokud chcete dokončit postupy v tomto článku, musíte nejdřív vytvořit účet Azure Maps a získat klíč účtu Maps. Podle pokynů v části [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps) vytvořte předplatné Azure Maps účtu a podle kroků v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) Získejte primární klíč pro svůj účet. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
 
 
 ## <a name="render-pushpins-with-labels-and-a-custom-image"></a>Vykreslení připínáček s popisky a vlastní imagí
@@ -43,7 +43,7 @@ Chcete-li vykreslit špendlíky s popisky a vlastní image, proveďte tyto kroky
 
 1. Vytvořte kolekci, do které se mají ukládat požadavky. V aplikaci pro odesílání vyberte **Nový**. V okně **vytvořit nové** vyberte **kolekce**. Pojmenujte kolekci a vyberte tlačítko **vytvořit** . 
 
-2. Pokud chcete vytvořit žádost, vyberte **Nový** znovu. V okně **vytvořit nové** vyberte **požadavek**. Zadejte **název žádosti** pro špendlíky, vyberte kolekci, kterou jste vytvořili v předchozím kroku, jako umístění, kam chcete žádost uložit, a pak vyberte **Uložit**.
+2. Pokud chcete vytvořit žádost, vyberte **Nový** znovu. V okně **vytvořit nové** vyberte **požadavek**. Zadejte **název žádosti** pro špendlíky. Vyberte kolekci, kterou jste vytvořili v předchozím kroku, jako umístění, kam chcete žádost uložit, a pak vyberte **Uložit**.
     
     ![Vytvoření žádosti v post](./media/how-to-render-custom-data/postman-new.png)
 
@@ -142,13 +142,13 @@ Můžete také získat cestu a informace o umístění PIN pomocí [rozhraní AP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-5. Zkopírujte identifikátor URI stavu a přidejte do něj parametr klíč předplatného, jehož hodnota je klíč předplatného Azure Maps účtu, který jste použili k nahrání dat. Formát identifikátoru URI stavu by měl vypadat takto:
+5. Zkopírujte identifikátor URI stavu a přidejte do něj parametr klíč předplatného s hodnotou svého klíče předplatného Azure Maps účtu. Použijte stejný klíč předplatného účtu, který jste použili k nahrání dat. Formát identifikátoru URI stavu by měl vypadat takto:
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
    ```
 
-6. Pokud chcete, udId otevřete novou kartu v aplikaci po vyřízení a na kartě tvůrce vyberte získat metodu HTTP a vytvořte požadavek GET na identifikátor URI stavu. Pokud se vaše data úspěšně nahrála, obdržíte udId v těle odpovědi. Zkopírujte udId.
+6. Chcete-li získat udId, otevřete novou kartu v aplikaci post a na kartě tvůrce vyberte získat metodu HTTP a vytvořte požadavek GET na identifikátor URI stavu. Pokud se vaše data úspěšně nahrála, obdržíte udId v těle odpovědi. Zkopírujte udId.
 
    ```JSON
    {
@@ -156,7 +156,7 @@ Můžete také získat cestu a informace o umístění PIN pomocí [rozhraní AP
    }
    ```
 
-7. K vykreslování funkcí na mapě použijte hodnotu `udId` přijatou z rozhraní API pro nahrání dat. Provedete to tak, že otevřete novou kartu v kolekci, kterou jste vytvořili v předchozí části. Na kartě tvůrce vyberte metodu GET HTTP a zadáním této adresy URL vytvořte žádost o získání:
+7. K vykreslování funkcí na mapě použijte hodnotu `udId` přijatou z rozhraní API pro nahrání dat. Provedete to tak, že otevřete novou kartu v kolekci, kterou jste vytvořili v předchozí části. Na kartě tvůrce vyberte metodu GET HTTP, nahraďte klíč {Subscription-Key} a {udId} hodnotami a zadejte tuto adresu URL, abyste mohli vytvořit požadavek GET:
 
     ```HTTP
     https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.96682739257812%2C40.78119135317995&pins=default|la-35+50|ls12|lc003C62|co9B2F15||'Times Square'-73.98516297340393 40.758781646381024|'Central Park'-73.96682739257812 40.78119135317995&path=lc0000FF|fc0000FF|lw3|la0.80|fa0.30||udid-{udId}
@@ -192,7 +192,7 @@ Vzhled mnohoúhelníku lze upravit pomocí modifikátorů stylu s [parametrem ce
 > Postup v této části vyžaduje účet Azure Maps v cenové úrovni S1.
 
 
-Odšpendlíky a jejich popisky můžete zvětšit nebo zmenšit pomocí modifikátoru `sc` měřítko. Tento modifikátor přebírá hodnotu, která je větší než nula. Hodnota 1 je standardní stupnice. Hodnoty větší než 1 zajistí větší velikost PIN kódů a hodnoty menší než 1 budou menší. Další informace o modifikátorech stylu najdete v tématu [parametry cesty ke službě statických imagí](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters).
+Můžete upravit vzhled PIN kódů přidáním modifikátorů stylu. Chcete-li například vytvořit špendlíky a jejich popisky větší nebo menší, použijte modifikátor "měřítko stylu" `sc`. Tento modifikátor přebírá hodnotu, která je větší než nula. Hodnota 1 je standardní stupnice. Hodnoty větší než 1 zajistí větší velikost PIN kódů a hodnoty menší než 1 budou menší. Další informace o modifikátorech stylu najdete v tématu [parametry cesty ke službě statických imagí](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters).
 
 
 Pomocí těchto kroků můžete vykreslit kružnici a špendlíky s vlastními popisky:
@@ -206,6 +206,18 @@ Pomocí těchto kroků můžete vykreslit kružnici a špendlíky s vlastními p
     Tady je obrázek odpovědi:
 
     ![Vykreslení kruhu s vlastními špendlíky](./media/how-to-render-custom-data/circle-custom-pins.png)
+
+2. Chcete-li změnit barvu špendlíků z posledního kroku, změňte modifikátor stylu "co". Podívejte se na `pins=default|la15+50|al0.66|lc003C62|co002D62|`, aktuální barva bude zadána jako #002D62 v šablonách stylů CSS. Řekněme, že ji chcete změnit na #41d42a. Zapište novou hodnotu barvy za specifikátorem "co", například: `pins=default|la15+50|al0.66|lc003C62|co41D42A|`. Vytvořit novou žádost o získání:
+
+    ```HTTP
+    https://atlas.microsoft.com/map/static/png?api-version=1.0&style=main&layer=basic&zoom=14&height=700&Width=700&center=-122.13230609893799,47.64599069048016&path=lcFF0000|lw2|la0.60|ra1000||-122.13230609893799 47.64599069048016&pins=default|la15+50|al0.66|lc003C62|co41D42A||'Microsoft Corporate Headquarters'-122.14131832122801  47.64690503939462|'Microsoft Visitor Center'-122.136828 47.642224|'Microsoft Conference Center'-122.12552547454833 47.642940335653996|'Microsoft The Commons'-122.13687658309935  47.64452336193245&subscription-key={subscription-key}
+    ```
+
+    Tady je obrázek odpovědi po změně barev kódů PIN:
+
+    ![Vykreslení kruhu s aktualizovanými špendlíky](./media/how-to-render-custom-data/circle-updated-pins.png)
+
+Podobně můžete změnit, přidat a odebrat ostatní modifikátory stylu.
 
 ## <a name="next-steps"></a>Další kroky
 

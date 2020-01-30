@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 924c369465bf53ea5f58de906bd0894ce822cac3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8686b15501e267ab23efe654d28a3e67369a8d03
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472958"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765589"
 ---
 # <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>Kurz: Přidání prostředku do šablony Správce prostředků
 
@@ -28,7 +28,7 @@ Pokud chcete přidat definici účtu úložiště do existující šablony, pod�
 
 Nahraďte **{poskytnout-Unique-Name}** jedinečným názvem účtu úložiště. Název účtu úložiště musí být jedinečný v rámci Azure. Název musí obsahovat jenom malá písmena nebo číslice. Nemůže být delší než 24 znaků. Můžete vyzkoušet způsob pojmenování, jako je například použití **store1** jako předpona a přidání vašich počátečních a dnešních dat. Název, který použijete, může například vypadat jako **store1abc09092019**.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json?range=1-19&highlight=5-17)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json" range="1-19" highlight="5-17":::
 
 Odhadování jedinečného názvu účtu úložiště není jednoduché a nefunguje dobře pro automatizaci rozsáhlých nasazení. Později v této sérii kurzů budete používat funkce šablon, které usnadňují vytváření jedinečných názvů.
 

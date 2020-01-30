@@ -3,24 +3,24 @@ title: Úrovně přiblížení a mřížka dlaždic | Mapy Microsoft Azure
 description: V tomto článku se dozvíte o úrovních přiblížení a mřížce dlaždic v mapách Microsoft Azure.
 author: jingjing-z
 ms.author: jinzh
-ms.date: 05/07/2018
+ms.date: 01/22/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 09d6e357b87b59e8010e38693806da5f26f5b679
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 6ee697ac9b7849a0231d9916c6fa8bc73ef7f9b7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910775"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765845"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Úrovně přiblížení a mřížka dlaždic
 
-Azure Maps použít souřadnicový systém kulové Mercator (EPSG: 3857). Projekcí je matematický model, který slouží k transformaci kulového zeměkoule na plochou mapu. Mercatorá projekce roztáhne mapu na POLES, aby vytvořila čtvercovou mapu. Tím se významně deformuje měřítko a oblast mapy, ale má dvě důležité vlastnosti, které tuto deformaci převáží:
+Azure Maps použít souřadnicový systém kulové Mercator (EPSG: 3857). Projekcí je matematický model, který slouží k transformaci kulového zeměkoule na plochou mapu. Kulový Mercator projekce roztáhne mapu na POLES a vytvoří čtvercovou mapu. Tato projekce významně deformuje škálu a oblast mapy, ale má dvě důležité vlastnosti, které tuto zkreslení převáží:
 
-- Jedná se o vyhovující projekci, což znamená, že zachovává tvar relativně malých objektů. To je obzvláště důležité při zobrazování leteckých snímků, protože chceme se vyhnout zkreslení tvaru budov. Čtvercové budovy by měly být čtvercové, nikoli pravoúhlé.
-- Je to válcová projekce, což znamená, že sever a jih jsou vždycky rovné a napravované a západní a východní je vždycky rovno doleva a doprava. 
+- Jedná se o vyhovující projekci, což znamená, že zachovává tvar relativně malých objektů. Zachování tvaru malých objektů je obzvláště důležité při zobrazování leteckých snímků. Chceme například vyhnout se zkreslení tvaru budov. Čtvercové budovy by měly být čtvercové, nikoli pravoúhlé.
+- Je to válcová projekce. Sever a jih jsou vždycky nahoru a dolů a západ a východ jsou vždycky vlevo a vpravo. 
 
 Pro optimalizaci výkonu načítání a zobrazování map je mapa rozdělena na čtvercové dlaždice. Sada Azure Maps SDK používá dlaždice s velikostí 512 x 512 pixelů pro mapy cest a menší 256 × 256 pixelů pro satelitní obrazové bloky. Azure Maps poskytuje rastrové a vektorové dlaždice pro 23 úrovní přiblížení, očíslované od 0 do 22. Na úrovni přiblížení 0 se celý svět vejde na jednu dlaždici:
 
@@ -36,7 +36,7 @@ dlaždice ![World Map](./media/zoom-levels-and-tile-grid/world0.png)</center>
 
 Každá další úroveň přiblížení rozděluje dlaždice předchozí ikony a vytvoří mřížku 2<sup>přiblížení x 2</sup> <sup>přiblížení</sup>. Úroveň přiblížení 22 je mřížka 2<sup>22</sup> x 2<sup>22</sup>nebo 4 194 304 x 4 194 304 (17 592 186 044 416 dlaždic celkem).
 
-Azure Maps interaktivní ovládací prvky mapování pro web a Android podporují úroveň přiblížení 25 úrovní přiblížení, očíslované 0 až 24. I když jsou data na cestách dostupná jenom na úrovních přiblížení, když jsou dlaždice dostupné.
+Azure Maps interaktivní ovládací prvky mapování pro web a Android podporují 25 úrovní přiblížení s čísly 0 až 24. I když jsou data na cestách dostupná jenom na úrovních přiblížení, když jsou dlaždice dostupné.
 
 V následující tabulce je uveden úplný seznam hodnot pro úroveň přiblížení, kde velikost dlaždice je 512 pixelů (čtvereček):
 
@@ -70,7 +70,7 @@ V následující tabulce je uveden úplný seznam hodnot pro úroveň přiblíž
 
 ## <a name="pixel-coordinates"></a>Souřadnice pixelů
 
-Po zvolení projekce a škálování pro použití na každé úrovni přiblížení můžeme geografické souřadnice převést na souřadnice pixelu. Šířka a výška rastrového obrázku na celém světě pro určitou úroveň přiblížení lze vypočítat jako:
+Po zvolení projekce a škálování pro použití na každé úrovni přiblížení můžeme geografické souřadnice převést na souřadnice pixelu. Šířka a výška obrázku mapy na celém světě pro určitou úroveň přiblížení se vypočítá takto:
 
 ```javascript
 var mapWidth = tileSize * Math.pow(2, zoom);
@@ -82,9 +82,11 @@ Vzhledem k tomu, že se šířka a výška mapy liší v každé úrovni přibl�
 
 <center>
 
-![mapa znázorňující rozměry v pixelech](media/zoom-levels-and-tile-grid/map-width-height.png)</center>
+![Mapa znázorňující rozměry v pixelech](media/zoom-levels-and-tile-grid/map-width-height.png)
 
-Poskytnutá Zeměpisná šířka a délka ve stupních a úroveň podrobností: souřadnice XY v pixelech se dají vypočítat takto:
+</center>
+
+Poskytnutá Zeměpisná šířka a délka ve stupních a úroveň podrobností je souřadnice XY v pixelech vypočtené takto:
 
 ```javascript
 var sinLatitude = Math.sin(latitude * Math.PI/180);
@@ -94,11 +96,11 @@ var pixelX = ((longitude + 180) / 360) * tileSize * Math.pow(2, zoom);
 var pixelY = (0.5 – Math.log((1 + sinLatitude) / (1 – sinLatitude)) / (4 * Math.PI)) * tileSize * Math.pow(2, zoom);
 ```
 
-Hodnota zeměpisné šířky a délky se považuje za WGS 84 datum. I když Azure Maps používá kulové projekci, je důležité převést všechny geografické souřadnice na běžné datum a WGS 84 byl zvolen jako toto datum. Hodnota Zeměpisná délka se předpokládá v rozsahu od-180 do + 180 stupňů a hodnota Zeměpisná šířka musí být oříznutá na rozsah od-85,05112878 do 85,05112878. Tím se zabrání jednotnému navýšení na POLES a to způsobí, že je předpokládané mapování čtvercové.
+Hodnota zeměpisné šířky a délky se považuje za WGS 84 datum. I když Azure Maps používá kulové projekci, je důležité převést všechny geografické souřadnice na běžné datum. WGS 84 je vybrané datum. Hodnota zeměpisné délky se předpokládá od-180 stupňů do + 180 stupňů a hodnota Zeměpisná šířka musí být oříznutá na rozsah od-85,05112878 do 85,05112878. Dodržování těchto hodnot zabrání jednotnému navýšení na POLES a zajistí, že je projektový map na čtvercovém tvaru.
 
 ## <a name="tile-coordinates"></a>Souřadnice dlaždice
 
-Pro optimalizaci výkonu načítání a zobrazování map se vykreslená mapa ořízne na dlaždice. Vzhledem k tomu, že počet pixelů se v každé úrovni přiblížení liší, tak počet dlaždic:
+Pro optimalizaci výkonu načítání a zobrazování map se vykreslená mapa ořízne na dlaždice. Počet pixelů a počet dlaždic se v každé úrovni přiblížení liší:
 
 ```javascript
 var numberOfTilesWide = Math.pow(2, zoom);
@@ -120,9 +122,9 @@ var tileX = Math.floor(pixelX / tileSize);
 var tileY = Math.floor(pixelY / tileSize);
 ```
 
-Dlaždice jsou volány pomocí úrovně přiblížení a souřadnice x a y odpovídající pozici dlaždice v mřížce pro tuto úroveň zvětšení.
+Dlaždice jsou volány pomocí úrovně přiblížení. Souřadnice x a y odpovídají pozici dlaždice v mřížce pro tuto úroveň zvětšení.
 
-Když určíte, která úroveň zvětšení se má použít, zapamatujte si, že každé umístění je na jeho dlaždici na pevné pozici. To znamená, že počet dlaždic potřebných k zobrazení daného expanse oblasti závisí na konkrétním umístění mřížky lupy na světě. Například pokud existují dva body 900 metrů, může trvat pouze tři dlaždice, aby bylo *možné* Zobrazit trasu mezi nimi na úrovni přiblížení 17. Pokud je však západní bod na pravé straně dlaždice a na levé straně dlaždice, může to mít čtyři dlaždice:
+Když určíte, která úroveň zvětšení se má použít, zapamatujte si, že každé umístění je na jeho dlaždici na pevné pozici. V důsledku toho počet dlaždic potřebných k zobrazení daného expanse oblasti závisí na konkrétním umístění mřížky lupy na světové mapě. Například pokud existují dva body 900 metrů, může trvat pouze tři dlaždice, aby bylo *možné* Zobrazit trasu mezi nimi na úrovni přiblížení 17. Pokud je však západní bod na pravé straně dlaždice a na levé straně dlaždice, může to mít čtyři dlaždice:
 
 <center>
 

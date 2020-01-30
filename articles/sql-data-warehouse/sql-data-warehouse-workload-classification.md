@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 05/01/2019
+ms.date: 01/27/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 15ca4b9fe3c40b7bf49d86464858747642e3cb5a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ab7c8ba64057b4f27e00a2928a65de8eadc78c4b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685380"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768837"
 ---
 # <a name="azure-sql-data-warehouse-workload-classification"></a>Klasifikace úloh Azure SQL Data Warehouse
 
@@ -36,14 +36,24 @@ Ne všechny příkazy jsou klasifikovány, protože nevyžadují prostředky neb
 
 ## <a name="classification-process"></a>Proces klasifikace
 
-Klasifikace v SQL Data Warehouse je dosaženo ještě dnes přiřazením uživatelů k roli, která má přiřazenou odpovídající třídu prostředků pomocí [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql). Možnost charakterizovat požadavky nad rámec přihlášení k třídě prostředků je omezená touto funkcí. K dispozici je širší metoda klasifikace, která je teď dostupná pomocí syntaxe pro [Vytvoření třídění úloh](/sql/t-sql/statements/create-workload-classifier-transact-sql) .  Pomocí této syntaxe mohou SQL Data Warehouse uživatelé přidělovat požadavky důležitosti a třídy prostředků.  
+Klasifikace v SQL Data Warehouse je dosaženo ještě dnes přiřazením uživatelů k roli, která má přiřazenou odpovídající třídu prostředků pomocí [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql). Možnost charakterizovat požadavky nad rámec přihlášení k třídě prostředků je omezená touto funkcí. K dispozici je širší metoda klasifikace, která je teď dostupná pomocí syntaxe pro [Vytvoření třídění úloh](/sql/t-sql/statements/create-workload-classifier-transact-sql) .  S touto syntaxí můžou uživatelé SQL Data Warehouse přiřazovat důležitost a množství systémových prostředků, které jsou k žádosti přiřazené prostřednictvím parametru `workload_group`. 
 
 > [!NOTE]
 > Klasifikace se vyhodnocuje na základě jednotlivých požadavků. Více požadavků v jedné relaci lze klasifikovat odlišně.
 
-## <a name="classification-precedence"></a>Priorita klasifikace
+## <a name="classification-weighting"></a>Váha klasifikace
 
-V rámci procesu klasifikace je nastavená priorita pro určení třídy prostředků, která je přiřazena. Klasifikace na základě databázového uživatele má přednost před členstvím v rolích. Pokud vytvoříte klasifikátor, který mapuje uživatele databáze UserA na třídu prostředků mediumrc. Pak namapujte databázovou roli role (z nichž je UserA členem) na třídu prostředků largerc. Klasifikátor, který mapuje uživatele databáze na třídu prostředků mediumrc, bude mít přednost před klasifikátoru, který mapuje roli databáze role na třídu prostředků largerc.
+V rámci procesu klasifikace je pro určení, která skupina úloh přiřazena, k dismístění vážení.  Vážení probíhá takto:
+
+|Parametr klasifikátoru |Hmotnost   |
+|---------------------|---------|
+|MEMBER: UŽIVATEL      |64       |
+|MEMBER: ROLE      |32       |
+|WLM_LABEL            |16       |
+|WLM_CONTEXT          |8        |
+|START_TIME/END_TIME  |4        |
+
+Parametr `membername` je povinný.  Pokud je však zadaný member uživatel databáze, nikoli databázová role, je váha pro uživatele vyšší, a proto je zvolen klasifikátor.
 
 Pokud je uživatel členem více rolí s přiřazenými nebo odpovídajícími různými třídami prostředků v několika klasifikátorech, uživateli se udělí nejvyšší přiřazení třídy prostředku.  Toto chování je konzistentní s existujícím chováním přiřazení tříd prostředků.
 
@@ -59,14 +69,14 @@ SELECT * FROM sys.workload_management_workload_classifiers where classifier_id <
 
 Systémová třídění vytvořená vaším jménem poskytují jednoduchou cestu k migraci na klasifikaci úloh. Použití mapování rolí tříd prostředků s prioritou klasifikace může vést k netřídění, když začnete vytvářet nové klasifikátory s důležitostí.
 
-Vezměte v úvahu následující scénář:
+Představte si následující scénář:
 
-- Existující datový sklad má DBAUser uživatele databáze přiřazený k roli třídy prostředků largerc. Přiřazení třídy prostředků bylo provedeno pomocí sp_addrolemember.
+- Existující datový sklad má DBAUser uživatele databáze přiřazený k roli třídy prostředků largerc. Bylo provedeno přiřazení třídy prostředků s sp_addrolemember.
 - Datový sklad je nyní aktualizován se správou úloh.
 - Chcete-li otestovat novou syntaxi klasifikace, je role databáze DBARole (která DBAUser je členem), má klasifikátor vytvořený pro jejich mapování na mediumrc a vysokou důležitost.
 - Když se DBAUser přihlásí a spustí dotaz, dotaz se přiřadí k largerc. Vzhledem k tomu, že má uživatel přednost před členstvím v rolích.
 
-Při řešení potíží s chybnou klasifikací doporučujeme, abyste při vytváření klasifikátorů úloh odebrali mapování rolí tříd prostředků.  Následující kód vrátí existující členství v roli třídy prostředku.  Spusťte [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql) pro každý název člena vrácený z odpovídající třídy prostředků.
+Při řešení potíží s chybnou klasifikací doporučujeme, abyste při vytváření klasifikátorů úloh odebrali mapování rolí tříd prostředků.  Následující kód vrátí existující členství v roli třídy prostředku.  Spusťte [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql) pro každý název člena vrácený z odpovídající třídy prostředku.
 
 ```sql
 SELECT  r.name AS [Resource Class]
@@ -85,4 +95,4 @@ sp_droprolemember ‘[Resource Class]’, membername
 - Další informace o vytvoření klasifikátoru najdete v tématu [Vytvoření klasifikátoru úloh (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  
 - Projděte si rychlý Start, jak vytvořit klasifikátor úloh [vytvořit klasifikátor úloh](quickstart-create-a-workload-classifier-tsql.md).
 - V článcích s postupy můžete [nakonfigurovat důležitost úloh](sql-data-warehouse-how-to-configure-workload-importance.md) a [Spravovat a monitorovat správu úloh](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
-- V tématu [Sys. DM _pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) můžete zobrazit dotazy a přiřazené důležitost.
+- V tématu [Sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) můžete zobrazit dotazy a přiřazené důležitost.

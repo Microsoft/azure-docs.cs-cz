@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/10/2020
-ms.openlocfilehash: 3d0220f23c8098222b93473dc6c7aa7a4f2dd791
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 42b697babe2bc004663c80e6e2f71f90ba1e5e5b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933448"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765402"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Jak nakonfigurovat metodu post pro digitální vlákna Azure
 
@@ -79,7 +79,6 @@ Nakonfigurujte aplikaci Azure Active Directory tak, aby používala tok implicit
 
 Nastavte a nakonfigurujte metodu post pro získání tokenu Azure Active Directory. Následně můžete pomocí získaného tokenu vytvořit ověřený požadavek HTTP na digitální vlákna Azure:
 
-1. Pokud si chcete aplikaci stáhnout, navštivte [www.getpostman.com](https://www.getpostman.com/) .
 1. Ověřte, jestli je vaše **autorizační adresa URL** správná. Měla by mít formát:
 
     ```plaintext
@@ -88,25 +87,29 @@ Nastavte a nakonfigurujte metodu post pro získání tokenu Azure Active Directo
 
     | Name (Název)  | Nahradit hodnotou | Příklad: |
     |---------|---------|---------|
-    | YOUR_AZURE_TENANT | Název vašeho tenanta nebo organizace | `microsoft` |
+    | YOUR_AZURE_TENANT | Název vašeho tenanta nebo organizace. Místo alfanumerického **ID tenanta** vaší Azure Active Directory registrace aplikace použijte popisný název. | `microsoft` |
 
-1. Vyberte kartu **autorizace** , vyberte **OAuth 2,0**a potom vyberte **získat nový přístupový token**.
+1. Pokud si chcete aplikaci stáhnout, navštivte [www.getpostman.com](https://www.getpostman.com/) .
+
+1. Otevřete aplikaci pro vystavování a klikněte na nový | Vytvořte nový a vyberte požadavek. Zadejte název žádosti. Vyberte kolekci nebo složku, do které chcete uložit, a klikněte na Uložit. 
+
+1. Chceme vytvořit žádost o získání. Vyberte kartu **autorizace** , vyberte OAuth 2,0 a potom vyberte **získat nový přístupový token**.
 
     | Pole  | Hodnota |
     |---------|---------|
     | Typ udělení | `Implicit` |
     | Adresa URL zpětného volání | `https://www.getpostman.com/oauth2/callback` |
-    | Ověřovací adresa URL | Použijte **autorizační adresu URL** z **kroku 2** . |
+    | Adresa URL ověření | Použijte **autorizační adresu URL** z **kroku 2** . |
     | ID klienta | Použijte **ID aplikace** pro aplikaci Azure Active Directory, která se vytvořila nebo znovu použila z předchozí části. |
     | Rozsah | Ponechte prázdné |
     | Stav | Ponechte prázdné |
-    | Ověření klienta | `Send as Basic Auth header` |
+    | Ověřování klienta | `Send as Basic Auth header` |
 
 1. Klient by teď měl vypadat takto:
 
     [Příklad tokenu klienta ![post](media/how-to-configure-postman/configure-postman-oauth-token.png)](media/how-to-configure-postman/configure-postman-oauth-token.png#lightbox)
 
-1. Vyberte **Request Token** (Vyžádat token).
+1. Vyberte **token žádosti**.
   
 1. Posuňte se dolů a vyberte **použít token**.
 

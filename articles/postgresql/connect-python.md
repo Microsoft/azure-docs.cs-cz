@@ -8,22 +8,26 @@ ms.custom: mvc, devcenter
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: f01ac67b25cbcc098973a3beb0a2b7b311827a37
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 3694c0b74393068538a0c8f496444a1541d88fee
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766391"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769062"
 ---
-# <a name="use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Použití Pythonu k připojení a dotazování dat v Azure Database for PostgreSQL-Single server
-Tento rychlý Start ukazuje, jak pracovat s Azure Database for PostgreSQL pomocí Pythonu na macOS, Ubuntu Linux nebo Windows. V tomto rychlém startu se dozvíte, jak se připojit k databázi a použít příkazy SQL k dotazování, vkládání, aktualizaci a odstraňování dat. Článek předpokládá, že jste obeznámeni s Pythonem, ale novinkou pro práci s Azure Database for PostgreSQL.
+# <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití Pythonu k připojení a dotazování dat v Azure Database for PostgreSQL-Single server
 
-## <a name="prerequisites"></a>Předpoklady
-- Azure Database for PostgreSQL – jeden server vytvořený pomocí kroků v [části rychlý Start: vytvoření serveru Azure Database for PostgreSQL v Azure Portal](quickstart-create-server-database-portal.md) nebo [rychlém startu: vytvoření Azure Database for POSTGRESQL pomocí Azure CLI](quickstart-create-server-database-azure-cli.md). 
+V tomto rychlém startu pracujete s Azure Database for PostgreSQL s využitím Pythonu na macOS, Ubuntu Linux nebo Windows. V tomto rychlém startu se dozvíte, jak se připojit k databázi a použít příkazy SQL k dotazování, vkládání, aktualizaci a odstraňování dat. Článek předpokládá, že jste obeznámeni s Pythonem, ale novinkou pro práci s Azure Database for PostgreSQL.
+
+## <a name="prerequisites"></a>Požadavky
+
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+
+- Dokončení [rychlého startu: vytvoření serveru Azure Database for PostgreSQL v Azure Portal](quickstart-create-server-database-portal.md) nebo [rychlém startu: vytvoření Azure Database for POSTGRESQL pomocí Azure CLI](quickstart-create-server-database-azure-cli.md).
   
 - [Python](https://www.python.org/downloads/) 2.7.9 + nebo 3.4 +.
   
-- Nejnovější aktualizace instalačního balíčku balíčku [PIP](https://pip.pypa.io/en/stable/installing/) nainstalovaného pomocí `pip install -U pip`. 
+- Poslední instalační program balíčku [PIP](https://pip.pypa.io/en/stable/installing/)
 
 ## <a name="install-the-python-libraries-for-postgresql"></a>Instalace knihoven Pythonu pro PostgreSQL
 Modul [psycopg2](https://pypi.python.org/pypi/psycopg2/) umožňuje připojení k databázi PostgreSQL a dotazování na ni a je k dispozici jako balíček pro Linux, MacOS nebo Windows [kolo](https://pythonwheels.com/) . Nainstalujte binární verzi modulu včetně všech závislostí. Další informace o instalaci a požadavcích `psycopg2` najdete v tématu [instalace](http://initd.org/psycopg/docs/install.html). 

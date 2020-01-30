@@ -3,24 +3,17 @@ title: Ukázkový skript Azure CLI – vytvoření úložiště konfigurace apli
 titleSuffix: Azure App Configuration
 description: Ukázkový skript Azure CLI – vytvoření úložiště konfigurace aplikace Azure
 services: azure-app-configuration
-documentationcenter: ''
-author: yegu-ms
-manager: balans
-editor: ''
+author: jpconnock
 ms.service: azure-app-configuration
-ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: azure-app-configuration
-ms.date: 02/24/2019
-ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: d57de8219cb73864ed722c6906a1bd75fec51a50
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/24/2020
+ms.author: jeconnoc
+ms.openlocfilehash: 44c381da8648fea74059c9110438cfeb4c366116
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433587"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766469"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikace Azure
 
@@ -57,13 +50,14 @@ appConfigHostname=$(az appconfig create \
   --query hostName \
   -o tsv)
 
-# Get the AppConfig primary key 
-appConfigPrimaryKey=$(az appconfig key list --name $myAppConfigStoreName \
-  --resource-group $myResourceGroupName --query primaryKey -o tsv)
+# Get the AppConfig connection string 
+appConfigConnectionString=$(az appconfig credential list \
+--resource-group $myResourceGroupName \
+--name $myAppConfigStoreName \
+--query "[?name=='Secondary Read Only'] .connectionString" -o tsv)
 
-# Form the connection string for use in your application
-connstring="Endpoint=https://$appConfigHostname;AccessKey=$appConfigPrimaryKey;"
-echo "$connstring"
+# Echo the connection string for use in your application
+echo "$appConfigConnectionString"
 ```
 
 Poznamenejte si vygenerovaný název pro novou skupinu prostředků. Tento název skupiny prostředků použijete, když budete chtít odstranit všechny prostředky skupiny.
@@ -78,7 +72,7 @@ Tento skript používá následující příkazy k vytvoření nové skupiny pro
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [AZ appconfig Create](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-create) | Vytvoří prostředek úložiště konfigurace aplikace. |
-| [AZ appconfig KV list](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-list) | Vypíše klíče uložené v úložišti konfigurace aplikace. |
+| [AZ appconfig Credential list](/cli/azure/ext/appconfig/appconfig/credential?view=azure-cli-latest) | Vypíše přístupové klíče pro úložiště konfigurace aplikace. |
 
 ## <a name="next-steps"></a>Další kroky
 

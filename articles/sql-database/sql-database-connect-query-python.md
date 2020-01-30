@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 9929c483c2e27983254033e2e26b3b753699260b
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: e82f8feae0096202e48a58296dd2e9d21bb61885
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76758304"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768577"
 ---
 # <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>Rychlý start: Použití Pythonu k dotazování databáze Azure SQL
 
@@ -25,9 +25,7 @@ V tomto rychlém startu pomocí Pythonu se připojíte k databázi SQL Azure a p
 ## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-
 - [Databáze SQL Azure](sql-database-single-database-get-started.md)
-  
 - [Python](https://python.org/downloads) 3 a související software
 
   # <a name="macostabmacos"></a>[macOS](#tab/macos)

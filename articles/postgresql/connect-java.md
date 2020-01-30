@@ -8,33 +8,34 @@ ms.custom: seo-java-august2019
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/06/2019
-ms.openlocfilehash: 269eb1fe744a31f1f4501c5790e06c1a5e06bab6
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 566bf606b275b8e2c1f456600b46b1d7304d2ce7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767887"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769026"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití jazyka Java pro připojení k datům a jejich dotazování v Azure Database for PostgreSQL – jeden server
-Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for PostgreSQL pomocí aplikace jazyka Java. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Kroky v tomto článku předpokládají, že máte zkušenosti s vývojem pomocí Javy a teprve začínáte pracovat se službou Azure Database for PostgreSQL.
 
-## <a name="prerequisites"></a>Předpoklady
-Tento rychlý start využívá jako výchozí bod prostředky vytvořené v některém z těchto průvodců:
-- [Vytvoření databáze – portál](quickstart-create-server-database-portal.md)
-- [Vytvoření databáze – rozhraní příkazového řádku Azure](quickstart-create-server-database-azure-cli.md)
+V tomto rychlém startu se připojíte k Azure Database for PostgreSQL pomocí aplikace Java. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Kroky v tomto článku předpokládají, že máte zkušenosti s vývojem pomocí Javy a teprve začínáte pracovat se službou Azure Database for PostgreSQL.
 
-Budete také muset:
-- Stáhnout [ovladač JDBC pro PostgreSQL](https://jdbc.postgresql.org/download.html) odpovídající verzi jazyka Java a sadě Java Development Kit
-- Zahrnout soubor .jar JDBC pro PostgreSQL (například postgresql-42.1.1.jar) do cesty pro třídu aplikace Další informace najdete v [podrobnostech cesty pro třídu](https://jdbc.postgresql.org/documentation/head/classpath.html).
+## <a name="prerequisites"></a>Požadavky
+
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+
+- Dokončení [rychlého startu: vytvoření serveru Azure Database for PostgreSQL v Azure Portal](quickstart-create-server-database-portal.md) nebo [rychlém startu: vytvoření Azure Database for POSTGRESQL pomocí Azure CLI](quickstart-create-server-database-azure-cli.md).
+
+- [POSTGRESQL JDBC Driver](https://jdbc.postgresql.org/download.html) – odpovídá vaší verzi Java a sady Java Development Kit.
+- [Podrobnosti o cestě třídy](https://jdbc.postgresql.org/documentation/head/classpath.html) – zahrňte do třídy classpath vaší aplikace soubor JAR PostgreSQL JDBC (například PostgreSQL-42.1.1. jar).
 
 ## <a name="get-connection-information"></a>Získání informací o připojení
 Získejte informace o připojení potřebné pro připojení ke službě Azure Database for PostgreSQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. V nabídce vlevo v Azure Portal vyberte **všechny prostředky**a potom vyhledejte server, který jste vytvořili (například **mydemoserver**).
-3. Vyberte název serveru.
-4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
- ![Název serveru Azure Database for PostgreSQL](./media/connect-java/azure-database-postgresql-server-name.png)
+1. V [Azure Portal](https://portal.azure.com/)vyhledejte a vyberte server, který jste vytvořili (například **mydemoserver**).
+
+1. Na panelu **Přehled** serveru si poznamenejte **název serveru** a **uživatelské jméno správce**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
+
+    ![Připojovací řetězec Azure Database for PostgreSQL](./media/connect-java/server-details-azure-database-postgresql.png)
 
 ## <a name="connect-create-table-and-insert-data"></a>Připojení, vytvoření tabulky a vložení dat
 Pomocí následujícího kódu se připojte a načtěte do databáze data s využitím funkce s příkazem **INSERT** jazyka SQL. Metody [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) a [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) slouží k připojení k databázi, odstranění tabulky a vytvoření tabulky. Objekt [prepareStatement](https://jdbc.postgresql.org/documentation/head/query.html) slouží k sestavení příkazů INSERT a metody setString() a setInt() k vázání hodnot parametrů. Metoda [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) spouští příkaz pro každou sadu parametrů. 

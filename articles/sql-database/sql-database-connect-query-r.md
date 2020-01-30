@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: 0288d8c4710d12d8e67658caab93157c534b75ee
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 7103afc29e4021d950d9a3634b190f4439ecfe8d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76758355"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768517"
 ---
 # <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>Rychlý Start: použití R s Machine Learning Services k dotazování databáze SQL Azure (Preview)
 
@@ -29,11 +29,8 @@ V tomto rychlém startu použijete R se Machine Learning Services pro připojen�
 ## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-
 - [Databáze SQL Azure](sql-database-single-database-get-started.md)
-  
 - [Machine Learning Services](sql-database-machine-learning-services-overview.md) s povoleným R. [Zaregistrujte se do verze Preview](sql-database-machine-learning-services-overview.md#signup).
-
 - [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
 > [!IMPORTANT]

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 88ad32a289d499cd385f8f3095113a4b329b80f4
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 6c486e59f32afd09a9934ae2298172ccb4ee2414
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701531"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768106"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>Webová aplikace, která přihlašuje uživatele: Přesun do produkčního prostředí
 
@@ -29,6 +29,13 @@ Když teď víte, jak získat token pro volání webových rozhraní API, přeč
 
 ## <a name="next-steps"></a>Další kroky
 
+### <a name="same-site"></a>Stejná lokalita
+
+Ujistěte se, že rozumíte možným problémům s novými verzemi prohlížeče Chrome.
+
+> [!div class="nextstepaction"]
+> [Postup zpracování změn souborů cookie SameSite v prohlížeči Chrome](howto-handle-samesite-cookie-changes-chrome-browser.md)
+
 ### <a name="scenario-for-calling-web-apis"></a>Scénář pro volání webových rozhraní API
 
 Jakmile se webová aplikace přihlásí uživatelům, může volat webová rozhraní API jménem přihlášených uživatelů. Volání webových rozhraní API z webové aplikace je objektem následujícího scénáře:
@@ -36,7 +43,7 @@ Jakmile se webová aplikace přihlásí uživatelům, může volat webová rozhr
 > [!div class="nextstepaction"]
 > [Webová aplikace, která volá webová rozhraní API](scenario-web-app-call-api-overview.md)
 
-### <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Hluboká podrobně: kurz ASP.NET Core webové aplikace
+## <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Hluboká podrobně: kurz ASP.NET Core webové aplikace
 
 Přečtěte si o dalších způsobech, jak se přihlašovat uživatelům pomocí tohoto ASP.NET Core kurzu: 
 
@@ -51,7 +58,7 @@ Tento postupný kurz obsahuje kód připravený pro produkční prostředí pro 
 - [Azure AD B2C](https://aka.ms/aadb2c)
 - Národní cloudy
 
-### <a name="sample-code-java-web-app"></a>Vzorový kód: webová aplikace Java
+## <a name="sample-code-java-web-app"></a>Vzorový kód: webová aplikace Java
 
 Přečtěte si další informace o webové aplikaci Java z této ukázky na GitHubu: 
 

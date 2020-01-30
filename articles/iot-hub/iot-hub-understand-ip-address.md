@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: f05be2725ef766bb1e5fd7f2624e754a2e21698a
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: c5040721705b90a981f1f8a45a3a2eb70eefde05
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563169"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772153"
 ---
 # <a name="iot-hub-ip-addresses"></a>IoT Hub IP adresy
 
@@ -30,9 +30,11 @@ Předpony IP adres IoT Hub veřejných koncových bodů se pravidelně publikuj�
 
 * Při přidávání pravidel povolení v konfiguraci brány firewall zařízení je nejlepší poskytnout konkrétní [porty používané použitelnými protokoly](./iot-hub-devguide-protocols.md#port-numbers).
 
-* Předpony IP adres centra IoT Hub se mohou měnit. Tyto změny jsou pravidelně publikovány prostřednictvím značek služeb, než začne platit. Je proto důležité, abyste vytvořili procesy pro pravidelné načítání a používání nejnovějších značek služeb. Tento proces může být automatizovaný prostřednictvím [rozhraní API pro zjišťování značek služeb](../virtual-network/service-tags-overview.md#service-tags-on-premises).
+* Předpony IP adres centra IoT Hub se mohou měnit. Tyto změny jsou pravidelně publikovány prostřednictvím značek služeb, než začne platit. Je proto důležité, abyste vytvořili procesy pro pravidelné načítání a používání nejnovějších značek služeb. Tento proces může být automatizovaný prostřednictvím [rozhraní API pro zjišťování značek služeb](../virtual-network/service-tags-overview.md#service-tags-on-premises). Všimněte si, že rozhraní API pro zjišťování značek služeb je stále ve verzi Preview, ale v některých případech nemusí mít úplný seznam značek a IP adres. Až bude rozhraní API pro zjišťování všeobecně dostupné, zvažte použití [značek služby ve formátu JSON ke stažení](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files). 
 
 * Použijte *AzureIoTHub. [ název oblasti]* : Značka pro identifikaci předpon IP adres používaných koncovými body centra IoT Hub v konkrétní oblasti. Aby se mohlo přihlédnout k zotavení po havárii datacentra, nebo k [místnímu převzetí služeb při selhání](iot-hub-ha-dr.md) , je povolené taky připojení k PŘEDPONám IP v oblasti geografického páru IoT Hub.
+
+* Nastavení pravidel firewallu v IoT Hub může blokovat připojení potřebné ke spouštění příkazů Azure CLI a PowerShellu na základě vašeho IoT Hub. Pokud se tomu chcete vyhnout, můžete přidat pravidla povolení pro předpony IP adres klientů pro opětovné povolení komunikace klientů CLI nebo PowerShell ke komunikaci s vaším IoT Hub.  
 
 
 ## <a name="limitations-and-workarounds"></a>Omezení a alternativní řešení
@@ -43,6 +45,6 @@ Předpony IP adres IoT Hub veřejných koncových bodů se pravidelně publikuj�
 
 * Při směrování na účet úložiště je možné povolit provoz z prefixů IP adres IoT Hub jenom v případě, že je účet úložiště v jiné oblasti jako váš IoT Hub.
 
-## <a name="support-for-ipv6"></a>Podpora adres IPv6 
+## <a name="support-for-ipv6"></a>Podpora protokolu IPv6 
 
 Protokol IPv6 se v této IoT Hub v tuto chvíli nepodporuje.

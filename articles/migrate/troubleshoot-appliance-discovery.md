@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: d66e792b901742f903dccf7a0e7999db4d02e26a
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 3f3604205d4aedffdda128ec4a6b895786245e56
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289522"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772037"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Řešení potíží s Azure Migrate zařízením a zjišťováním
 
@@ -85,7 +85,7 @@ Pokud se zobrazí tato chyba připojení, možná se nebudete moci připojit k v
 Pokud se zobrazí chyba 60030 nebo 60031, "operace správy Azure Key Vault nebyla úspěšná", udělejte toto:
 - Ujistěte se, že uživatelský účet Azure použitý k registraci zařízení má alespoň oprávnění přispěvatele k tomuto předplatnému.
 - Ujistěte se, že má účet přístup k trezoru klíčů, který je zadaný v chybové zprávě, a pak zkuste operaci zopakovat.
-- Pokud potíže trvají, obraťte se na podporu Microsoftu.
+- Pokud se problém nevyřeší, obraťte se na podporu Microsoftu.
 - [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) o požadovaných rolích a oprávněních Azure.
 
 ## <a name="error-60028-discovery-couldnt-be-initiated"></a>Chyba 60028: zjišťování se nepovedlo inicializovat.
@@ -131,7 +131,7 @@ Pokud to nefunguje a chystáte se zjišťovat servery VMware:
 
 ## <a name="vm-data-not-in-portal"></a>Data virtuálních počítačů nejsou na portálu
 
-Pokud se zjištěné virtuální počítače nezobrazí na portálu, počkejte pár minut. Zobrazení zjištěných dat na portálu trvá až 30 minut. Pokud po 30 minutách neexistují žádná data, zkuste aktualizaci provést následujícím způsobem:
+Pokud se zjištěné virtuální počítače nezobrazí na portálu nebo pokud jsou data virtuálního počítače zastaralá, počkejte několik minut. Na portálu trvá až 30 minut, než se změny zjištěných konfiguračních dat virtuálního počítače zobrazí na portálu. Může trvat několik hodin, než se změny dat aplikace zobrazí. Pokud po této době žádná data neexistují, zkuste aktualizovat následujícím způsobem.
 
 1. V > servery **Azure Migrate posouzení serveru**vyberte **Přehled**.
 2. V části **Spravovat**vyberte **Agent Health**.
@@ -166,7 +166,8 @@ Typické chyby zjišťování aplikací jsou shrnuté v tabulce.
 9009: nelze načíst aplikace nainstalované serverem. | Může dojít v případě, že nastavení řízení uživatelských účtů (UAC) systému Windows na serveru jsou omezující a znemožňuje zjišťování nainstalovaných aplikací. | Vyhledejte nastavení řízení uživatelských účtů na serveru a nakonfigurujte nastavení nástroje řízení uživatelských účtů na serveru na jednu z nižších dvou úrovní.
 9010: nelze načíst aplikace nainstalované serverem. | Může se jednat o vnitřní chybu.  | TF problém se nedokáže vyřešit během 24 hodin, obraťte se na podporu.
 8084: nelze zjistit aplikace z důvodu chyby VMware: <Exception from VMware> | Zařízení Azure Migrate používá rozhraní API VMware ke zjišťování aplikací. K tomuto problému může dojít, pokud se při pokusu o zjištění aplikací vyvolá výjimka vCenter Server. Zpráva o chybě z VMware se zobrazí v chybové zprávě zobrazené na portálu. | Vyhledejte zprávu v [dokumentaci k VMware](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html)a proveďte opravu pomocí těchto kroků. Pokud nemůžete opravit, obraťte se na podporu Microsoftu.
-
+9012: nepovedlo se zjistit aplikace nainstalované na serveru. | K tomuto problému může dojít z důvodu vnitřní chyby.  | Pokud se problém nepodaří vyřešit během 24 hodin, obraťte se na podporu.
+9013: nepovedlo se zjistit aplikace nainstalované na serveru. | Při každém přihlášení k virtuálnímu počítači se vytvoří nový dočasný profil.  | Ujistěte se, že pro poskytnutého uživatele typu Host není vytvořen dočasný profil.
 
 
 

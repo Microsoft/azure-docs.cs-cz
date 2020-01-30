@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 8d4713cba94971971558a72c680e3c8f80331662
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: e520c9a1e9d40c318b8e2b69801bf5cc600e16bb
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760330"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772046"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Architektura připojení v Azure Database for MySQL
 Tento článek popisuje architekturu připojení Azure Database for MySQL a způsob, jakým jsou přenosy směrovány na vaši instanci Azure Database for MySQL od klientů v rámci i mimo Azure.
@@ -41,7 +41,7 @@ V následující tabulce je uveden seznam primárních a sekundárních IP adres
 | Čína – sever | 139.219.15.17    |
 | Čína – sever 2 | 40.73.50.0     |
 | Východní Asie | 191.234.2.139, 52.175.33.150, 13.75.33.20, 13.75.33.21     |
-| Východ USA | 40.121.158.30, 191.238.6.43  |
+| Východní USA | 40.121.158.30, 191.238.6.43  |
 | Východ USA 2 |40.79.84.180, 191.239.224.107, 52.177.185.181   |
 | Francie – střed | 40.79.137.0, 40.79.129.1  |
 | Německo – střed | 51.4.144.100     |
@@ -50,14 +50,14 @@ V následující tabulce je uveden seznam primárních a sekundárních IP adres
 | Indie – jih | 104.211.224.146  |
 | Indie – západ | 104.211.160.80    |
 | Japonsko – východ | 13.78.61.196, 191.237.240.43  |
-| Japonsko – západ | 104.214.148.156, 191.238.68.11    |
+| Japonsko – západ | 104.214.148.156, 191.238.68.11, 40.74.96.7, 40.74.96.6 |
 | Korea – střed | 52.231.32.42   |
 | Korea – jih | 52.231.200.86    |
 | Středoseverní USA | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    |
 | Severní Evropa | 40.113.93.91, 191.235.193.75    |
 | Jižní Afrika – sever  | 102.133.152.0    |
 | Jižní Afrika – západ | 102.133.24.0   |
-| Středojižní USA |13.66.62.124, 23.98.162.75   |
+| Středojižní USA |13.66.62.124, 23.98.162.75, 104.214.16.39, 20.45.120.0   |
 | Jihovýchodní Asie | 104.43.15.0, 23.100.117.95, 40.78.233.2, 23.98.80.12     |
 | Spojené arabské emiráty – střed | 20.37.72.64  |
 | Spojené arabské emiráty – sever | 65.52.248.0    |

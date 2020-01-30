@@ -5,20 +5,20 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: a9c45321d12b659febfeb4913d66ea3732813918
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9b9e39776e519a91a4464532e11e85da711087b3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769519"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766255"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions vzorů výrazů vazeb
 
 Jednou z nejúčinnějších funkcí [triggerů a vazeb](./functions-triggers-bindings.md) jsou *výrazy vazby*. V souboru *Function. JSON* a v parametrech funkcí a kódu můžete použít výrazy, které se předají na hodnoty z různých zdrojů.
 
-Většina výrazů je označena a tím, že je zabalena ve složených závorkách. Například ve funkci triggeru fronty se `{queueTrigger}` přeloží na text zprávy fronty. Je-li vlastnost `path` pro výstupní vazbu objektu BLOB `container/{queueTrigger}` a funkce je aktivována `HelloWorld`zprávy ve frontě, je vytvořen objekt BLOB s názvem `HelloWorld`.
+Většina výrazů je identifikována jejich zabalením do složených závorek. Například ve funkci triggeru fronty se `{queueTrigger}` přeloží na text zprávy fronty. Je-li vlastnost `path` pro výstupní vazbu objektu BLOB `container/{queueTrigger}` a funkce je aktivována `HelloWorld`zprávy ve frontě, je vytvořen objekt BLOB s názvem `HelloWorld`.
 
-Typy vazbových výrazů
+Typy výrazů vazby
 
 * [Nastavení aplikace](#binding-expressions---app-settings)
 * [Název souboru triggeru](#trigger-file-name)
@@ -67,7 +67,7 @@ public static void Run(
 }
 ```
 
-## <a name="trigger-file-name"></a>Název souboru aktivační události
+## <a name="trigger-file-name"></a>Název souboru triggeru
 
 `path` pro Trigger objektu BLOB může být vzor, který umožňuje odkazování na název triggerového objektu BLOB v jiných vazbách a kódu funkce. Vzor může také zahrnovat kritéria filtrování, která určují, které objekty blob mohou aktivovat vyvolání funkce.
 
@@ -131,9 +131,21 @@ public static void Run(
 
 ```
 
-Můžete také vytvořit výrazy pro části názvu souboru, jako je například přípona. Další informace o tom, jak používat výrazy a vzory v řetězci cesty objektu blob, najdete v [referenčních informacích k vazbě objektů BLOB úložiště](functions-bindings-storage-blob.md).
+Můžete také vytvořit výrazy pro části názvu souboru. V následujícím příkladu je funkce aktivována pouze pro názvy souborů, které odpovídají vzoru: `anyname-anyfile.csv`
 
-## <a name="trigger-metadata"></a>Metadata aktivační události
+```json
+{
+    "name": "myBlob",
+    "type": "blobTrigger",
+    "direction": "in",
+    "path": "testContainerName/{date}-{filetype}.csv",
+    "connection": "OrderStorageConnection"
+}
+```
+
+Další informace o tom, jak používat výrazy a vzory v řetězci cesty objektu blob, najdete v [referenčních informacích k vazbě objektů BLOB úložiště](functions-bindings-storage-blob.md).
+
+## <a name="trigger-metadata"></a>Aktivační metadata
 
 Kromě datové části, kterou poskytuje Trigger (například obsah zprávy fronty, která aktivovala funkci), mnoho triggerů poskytuje další hodnoty metadat. Tyto hodnoty lze použít jako vstupní parametry v C# a F# nebo ve vlastnostech objektu `context.bindings` v JavaScriptu. 
 
@@ -141,7 +153,7 @@ Například aktivační událost Azure Queue Storage podporuje následující vl
 
 * QueueTrigger – aktivace obsahu zprávy, pokud je platný řetězec
 * DequeueCount
-* ExpirationTime
+* expirationTime
 * ID
 * InsertionTime
 * NextVisibleTime

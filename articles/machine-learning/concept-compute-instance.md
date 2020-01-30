@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 6bba4414390efa6e07be6c253fe55f1638d414dc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7f7e0c3eef96970c1820783225a4ff59be8113b3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974094"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769104"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Co je instance služby COMPUTE Azure Machine Learning?
 
@@ -83,7 +83,7 @@ Balíčky Pythonu jsou nainstalované v prostředí **python 3,6-AzureML** .
 
 Výpočetní instance se obvykle používají jako vývojová prostředí.  Můžou se také používat jako výpočetní cíl pro školení a Inferencing pro vývoj a testování.  Pro velké úlohy je [Azure Machine Learning výpočetní cluster](how-to-set-up-training-targets.md#amlcompute) s možnostmi škálování s více uzly lepší volbou cíle pro výpočty.
 
-### <a name="installing-packages"></a>Instalace balíčků
+### <a name="installing-packages"></a>Instalují se balíčky.
 
 Balíčky můžete nainstalovat přímo do poznámkového bloku Jupyter nebo RStudio:
 
@@ -117,7 +117,7 @@ V pracovním prostoru v Azure Machine Learning Studiu vyberte **COMPUTE**a pak v
 
 Můžete provést následující akce:
 
-* Vytvořte výpočetní instanci. Zadejte název, typ virtuálního počítače Azure, včetně GPU, povolte nebo zakažte přístup SSH a nakonfigurujte nastavení virtuální sítě volitelně. Můžete také vytvořit instanci přímo z integrovaných poznámkových bloků, Azure Portal, Správce prostředků šablony nebo Azure Machine Learning SDK. Kvóta vyhrazených jader na oblast, která se vztahuje k vytváření výpočetních instancí, je jednotná a sdílená s Azure Machine Learning kvótou výpočetního clusteru.
+* Vytvořte výpočetní instanci. Zadejte název, typ virtuálního počítače Azure, včetně GPU (po vytvoření se nedá změnit typ virtuálního počítače), povolit nebo zakázat přístup přes SSH a nakonfigurovat nastavení virtuální sítě volitelně. Můžete také vytvořit instanci přímo z integrovaných poznámkových bloků, Azure Portal, Správce prostředků šablony nebo Azure Machine Learning SDK. Kvóta vyhrazených jader na oblast, která se vztahuje k vytváření výpočetních instancí, je jednotná a sdílená s Azure Machine Learning kvótou výpočetního clusteru.
 * Aktualizovat kartu výpočetních instancí
 * Spuštění, zastavení a restartování výpočetní instance
 * Odstranění instance COMPUTE
@@ -138,7 +138,7 @@ Můžete také vytvořit instanci.
 
 Vyhrazená kvóta jader na oblast, která platí pro vytváření výpočetních instancí, je jednotná a sdílená s Azure Machine Learningmi kvótami školicích clusterů. 
 
-## <a name="compute-target"></a>Cílový výpočetní objekt
+## <a name="compute-target"></a>Cíl výpočtů
 
 Výpočetní instance se dají použít jako [školicí cíl](concept-compute-target.md#train) Azure Machine Learning pro výpočetní prostředky, podobně jako clustery výpočetního školení. Zřízení virtuálního počítače s více grafickými procesory pro spouštění úloh distribuovaného školení pomocí TensorFlow/PyTorch odhady. Můžete také vytvořit konfiguraci spuštění a použít ji ke spuštění experimentu na výpočetní instanci. Výpočetní instanci můžete použít jako cíl nasazení místní Inferencing pro scénáře testování a ladění.
 

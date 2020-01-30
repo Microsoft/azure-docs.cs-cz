@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 908f02807d5a3f7c2c1391c3c59a54fc88bbd831
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 26309bb9a7b9785dbac7f42b0c20de99bca10a17
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884156"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769247"
 ---
 # <a name="certificate-creation-methods"></a>Metody vytvoření certifikátu
 
@@ -41,10 +41,10 @@ Následující popisy odpovídají zeleným písmenovým krokům v předchozím 
 Následující popisy odpovídají zeleným písmenovým krokům v předchozím diagramu.
 
 1. V diagramu výše vaše aplikace vytváří certifikát, který interně začíná vytvořením klíče v trezoru klíčů.
-2. Key Vault posílá certifikační autoritě žádost o certifikát SSL.
+2. Key Vault odešle certifikační autoritě žádost o certifikát TLS/SSL.
 3. Vaše aplikace se dotazuje v procesu smyčky a čekání, a to pro vaši Key Vault pro dokončení certifikátu. Vytvoření certifikátu je dokončeno, když Key Vault obdrží odpověď certifikační autority s certifikátem x509.
-4. Certifikační autorita odpoví na žádost o certifikát SSL Key Vault s certifikátem x509 SSL.
-5. Vytvoření nového certifikátu se dokončí s fúzí certifikátu x509 pro certifikační autoritu.
+4. Certifikační autorita reaguje na žádosti o certifikát TLS/SSL Key Vault certifikátem TLS/SSL X. 509.
+5. Vytvoření nového certifikátu se dokončí s fúzí certifikátu TLS/SSL X. 509 pro certifikační autoritu.
 
 ## <a name="asynchronous-process"></a>Asynchronní proces
 KV – vytvoření certifikátu je asynchronní proces. Tato operace vytvoří žádost o certifikát KV a vrátí stavový kód HTTP 202 (přijato). Stav požadavku lze sledovat pomocí cyklického dotazování na objekt, který byl vytvořen touto operací. V hlavičce umístění se vrátí úplný identifikátor URI objektu, který čeká na vyřízení.  
@@ -53,7 +53,7 @@ Když se dokončí žádost o vytvoření certifikátu KV, stav objektu, který 
 
 ## <a name="first-creation"></a>První vytvoření
  Při prvním vytvoření certifikátu KV se vytvoří také adresovatelný klíč a tajný kód se stejným názvem jako certifikát. Pokud se název už používá, operace se nezdaří se stavovým kódem HTTP 409 (konflikt).
-Adresovatelný klíč a tajný klíč získají své atributy z atributů certifikátu KV. Adresovatelný klíč a tajný kód vytvořené tímto způsobem jsou označené jako spravované klíče a tajné klíče, jejichž životnost je spravovaná pomocí Key Vault. Spravované klíče a tajné kódy jsou jen pro čtení. Poznámka: Pokud platnost certifikátu KV vyprší nebo je zakázaná, bude odpovídající klíč a tajný klíč nefunkční.  
+Adresovatelný klíč a tajný klíč získají své atributy z atributů certifikátu KV. Adresovatelný klíč a tajný kód vytvořené tímto způsobem jsou označené jako spravované klíče a tajné klíče, jejichž životnost je spravovaná pomocí Key Vault. Spravované klíče a tajné kódy jsou jen pro čtení. Poznámka: Pokud platnost certifikátu KV vyprší nebo je zakázaná, bude se stát, že bude fungovat odpovídající klíč a tajný klíč.  
 
  Pokud se jedná o první operaci vytvoření certifikátu KV, vyžaduje se zásada.  Zásady je také možné dodávat s operacemi po úspěšném vytvoření, které nahradí prostředek zásad. Pokud není dodána zásada, použije se pro vytvoření další verze certifikátu KV prostředek zásady ve službě. Všimněte si, že zatímco probíhá žádost o vytvoření další verze, aktuální certifikát KV a odpovídající adresovatelný klíč a tajný kód zůstávají beze změny.  
 
@@ -88,7 +88,7 @@ Vytvoření certifikátu lze provést ručně nebo pomocí vystavitele "samotný
 
 Všimněte si, že když je objednávka umístěná u poskytovatele vystavitele, může přijmout nebo přepsat rozšíření certifikátu x509 a období platnosti certifikátu na základě typu certifikátu.  
 
- udělován Vyžaduje oprávnění certifikáty/vytvořit.
+ Autorizace: vyžaduje oprávnění certifikáty/vytvořit.
 
 ## <a name="see-also"></a>Viz také
  - [Informace o klíčích, tajných klíčích a certifikátech](about-keys-secrets-and-certificates.md)

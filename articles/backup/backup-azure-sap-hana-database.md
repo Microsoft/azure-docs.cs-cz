@@ -3,12 +3,12 @@ title: Zálohování databáze SAP HANA do Azure s využitím Azure Backup
 description: V tomto článku se dozvíte, jak zálohovat databázi SAP HANA do virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: c5df198d009f0d4a9f37a68d6b21386f06842722
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: dd4c6fc0e018f3fc8f2a2029ef8a90cdc305e2c2
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75753967"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765517"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Zálohování databází SAP HANA na virtuálních počítačích Azure
 
@@ -23,6 +23,10 @@ V tomto článku se dozvíte, jak:
 > * Vyhledat databáze
 > * Konfigurace zálohování
 > * Spuštění úlohy zálohování na vyžádání
+
+>[!NOTE]
+>**Obnovitelné odstranění pro SQL Server na virtuálním počítači Azure a obnovitelné odstranění pro SAP HANA v úlohách virtuálních počítačů Azure** je teď dostupné ve verzi Preview.<br>
+>Pokud si chcete zaregistrovat verzi Preview, napište nám na AskAzureBackupTeam@microsoft.com
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -132,7 +136,7 @@ Nyní povolte zálohování.
     ![Vyberte položky, které chcete zálohovat.](./media/backup-azure-sap-hana-database/select-items.png)
 3. V části **zásady zálohování** > **vyberte zásady zálohování**, vytvořte nové zásady zálohování pro databáze v souladu s pokyny uvedenými níže.
 
-    ![Vybrat zásady zálohování](./media/backup-azure-sap-hana-database/backup-policy.png)
+    ![Zvolit zásady zálohování](./media/backup-azure-sap-hana-database/backup-policy.png)
 4. Po vytvoření zásady klikněte v nabídce **zálohování** na **Povolit zálohování**.
 
     ![Povolit zálohování](./media/backup-azure-sap-hana-database/enable-backup.png)

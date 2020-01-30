@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: e06c8d5373f8740e8091daae242a4f7af6c0ea4a
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 0cde8b48e7bd1d1daa8f14dcded87001fb898fa7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995860"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769219"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-java"></a>Rychlý Start: Azure Key Vault Klientská knihovna pro Java
 
@@ -22,12 +22,12 @@ Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče použ
 - Zvyšte zabezpečení a kontrolu nad klíči a hesly.
 - Vytvářejte a importujte šifrovací klíče během několika minut.
 - Snižte latenci díky škálování cloudu a globální redundanci.
-- Zjednodušte a automatizujte úlohy pro certifikáty SSL/TLS.
+- Zjednodušte a automatizujte úlohy pro certifikáty TLS/SSL.
 - Použijte ověřený HSM úrovně 2 FIPS 140-2.
 
 [Referenční dokumentace k rozhraní API](https://azure.github.io/azure-sdk-for-java) [zdrojového kódu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault) |  | [dokumentaci k produktu](index.yml) | [ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets/src/samples/java/com/azure/security/keyvault/secrets)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) verze 8 nebo vyšší
@@ -36,7 +36,7 @@ Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče použ
 
 V tomto rychlém startu se předpokládá, že používáte [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) a [Apache Maven](https://maven.apache.org) v okně terminálu pro Linux.
 
-## <a name="setting-up"></a>Probíhá nastavení
+## <a name="setting-up"></a>Nastavení
 
 ### <a name="create-new-java-console-app"></a>Vytvořit novou konzolovou aplikaci v jazyce Java
 

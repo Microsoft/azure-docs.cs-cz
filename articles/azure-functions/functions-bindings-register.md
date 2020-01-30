@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 599becae0225bea623c383ead49cd9abcea6fff2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 35df4c6c20345053bcc39a267a90a7bb1b227241
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231113"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766236"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Registrovat rozšíření vazby Azure Functions
 
@@ -26,10 +26,10 @@ Následující tabulka uvádí, kdy a jak registrovat vazby.
 
 | Vývojové prostředí |Registrace<br/> ve funkcích 1. x  |Registrace<br/> ve funkcích 2. x  |
 |-------------------------|------------------------------------|------------------------------------|
-|portál Azure|Automaticky|Automaticky|
+|Portál Azure|Automaticky|Automaticky|
 |Non-.NET jazyky nebo místní vývoj nástrojů Azure Core|Automaticky|[Použití Azure Functions Core Tools a rozšíření sad](#extension-bundles)|
 |C#Knihovna tříd pomocí sady Visual Studio|[Použití nástrojů NuGet](#vs)|[Použití nástrojů NuGet](#vs)|
-|C#Knihovna tříd pomocí Visual Studio Code|neuvedeno|[Použít .NET Core CLI](#vs-code)|
+|C#Knihovna tříd pomocí Visual Studio Code|Nevztahuje se|[Použít .NET Core CLI](#vs-code)|
 
 ## <a name="extension-bundles"></a>Sady rozšíření pro místní vývoj
 
@@ -62,9 +62,6 @@ V příkladu nahraďte `<TARGET_VERSION>` konkrétní verzí balíčku, napřík
 Pokud použijete `Install-Package` k odkazování na vazbu, nemusíte používat [sady rozšíření](#extension-bundles). Tento přístup je specifický pro knihovny tříd sestavené v aplikaci Visual Studio.
 
 ## <a name="vs-code"></a>C# knihovna tříd s Visual Studio Code
-
-> [!NOTE]
-> K automatické instalaci kompatibilní sady balíčků rozšíření pro vytváření vazeb doporučujeme použití [rozšiřujících sad](#extension-bundles) . 
 
 V **Visual Studio Code**nainstalujte balíčky pro projekt knihovny C# tříd z příkazového řádku pomocí příkazu [dotnet Add Package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) v .NET Core CLI. Následující příklad ukazuje, jak přidat vazbu:
 

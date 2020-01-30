@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/16/2019
+ms.date: 1/27/2020
 ms.author: mlottner
-ms.openlocfilehash: aaf3111270687e3921d542d87981a25868842f93
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: ac0152d0164c3577ade3d862e9512b920c451518
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554924"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766510"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>Azure Security Center pro výstrahy zabezpečení IoT
 
@@ -30,7 +30,7 @@ Výstraha funguje jako ukazatel potenciálního ohrožení a měla by být prov�
 
 V tomto článku najdete seznam integrovaných výstrah, které se můžou aktivovat na vašich IoT Hub nebo zařízeních IoT.
 Kromě integrovaných výstrah vám Azure Security Center pro IoT umožňuje definovat vlastní výstrahy na základě očekávaného IoT Hub nebo chování zařízení.
-Další podrobnosti najdete v tématu [Vytvoření vlastních výstrah](quickstart-create-custom-alerts.md).
+Další podrobnosti najdete v tématu [přizpůsobitelná upozornění](concept-customizable-security-alerts.md).
 
 ## <a name="built-in-alerts-for-iot-devices"></a>Integrované výstrahy pro zařízení IoT
 
@@ -88,13 +88,13 @@ Další podrobnosti najdete v tématu [Vytvoření vlastních výstrah](quicksta
 | Závažnost | Name (Název)                                                                         | Popis | Navrhovaná náprava|
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
 |**Střední** závažnost|  |  |  |
-|  Nový certifikát se přidal do IoT Hub.  | Střední                                     |Do IoT Hub \'% {DescIoTHubName \'} se přidal certifikát s názvem \'% {DescCertificateName} \'. Pokud tato akce byla provedena neoprávněnou stranou, může to znamenat škodlivou aktivitu.| 1. Ujistěte se, že certifikát přidala oprávněná strana. <br> 2. Pokud ho nepřidala autorizovaný účastník, odeberte ho a upozorněte ho do organizačního týmu zabezpečení.  |
-|  Certifikát se odstranil z IoT Hub.  | Střední                             | Certifikát s názvem \'% {DescCertificateName} \' byl odstraněn z IoT Hub \'% {DescIoTHubName} \'. Pokud tato akce byla provedena neoprávněnou stranou, může to znamenat škodlivou aktivitu.| 1. Ujistěte se, že certifikát odebrala oprávněná strana. <br> 2. Pokud se certifikát neodebral autorizovaným účastníkem, přidejte certifikát zpátky a upozorněte ho do organizačního týmu zabezpečení. |
-| Zjistil se neúspěšný pokus o přidání certifikátu do IoT Hub.   | Střední    | Došlo k neúspěšnému pokusu o přidání certifikátu \'% {DescCertificateName} \' na IoT Hub \'% {DescIoTHubName} \'. Pokud tato akce byla provedena neoprávněnou stranou, může to znamenat škodlivou aktivitu.|   Ujistěte se, že oprávnění ke změně certifikátů jsou udělována pouze oprávněným stranám.  |
-|  Zjistil se neúspěšný pokus o odstranění certifikátu z IoT Hub. | Střední  | Došlo k neúspěšnému pokusu o odstranění \' certifikátu% {DescCertificateName} \' z IoT Hub \'% {DescIoTHubName} \'. Pokud tato akce byla provedena neoprávněnou stranou, může to znamenat škodlivou aktivitu. |Ujistěte se, že oprávnění ke změně certifikátů jsou udělována pouze oprávněným stranám.
+|  Nový certifikát se přidal do IoT Hub.  | Střední                                     |Do IoT Hub \'% {DescIoTHubName\'} se přidal certifikát s názvem \'% {DescCertificateName}\'. Pokud tato akce byla provedena neoprávněnou stranou, může to znamenat škodlivou aktivitu.| 1. Ujistěte se, že certifikát přidala oprávněná strana. <br> 2. Pokud ho nepřidala autorizovaný účastník, odeberte ho a upozorněte ho do organizačního týmu zabezpečení.  |
+|  Certifikát se odstranil z IoT Hub.  | Střední                             | Certifikát s názvem \'% {DescCertificateName}\' byl odstraněn z IoT Hub \'% {DescIoTHubName}\'. Pokud tato akce byla provedena neoprávněnou stranou, může to znamenat škodlivou aktivitu.| 1. Ujistěte se, že certifikát odebrala oprávněná strana. <br> 2. Pokud se certifikát neodebral autorizovaným účastníkem, přidejte certifikát zpátky a upozorněte ho do organizačního týmu zabezpečení. |
+| Zjistil se neúspěšný pokus o přidání certifikátu do IoT Hub.   | Střední    | Došlo k neúspěšnému pokusu o přidání certifikátu \'% {DescCertificateName}\' na IoT Hub \'% {DescIoTHubName}\'. Pokud tato akce byla provedena neoprávněnou stranou, může to znamenat škodlivou aktivitu.|   Ujistěte se, že oprávnění ke změně certifikátů jsou udělována pouze oprávněným stranám.  |
+|  Zjistil se neúspěšný pokus o odstranění certifikátu z IoT Hub. | Střední  | Došlo k neúspěšnému pokusu o odstranění \'certifikátu% {DescCertificateName}\' z IoT Hub \'% {DescIoTHubName}\'. Pokud tato akce byla provedena neoprávněnou stranou, může to znamenat škodlivou aktivitu. |Ujistěte se, že oprávnění ke změně certifikátů jsou udělována pouze oprávněným stranám.
 |**Nízká** závažnost|  |  |  |
 |   Pokus o přidání nebo úpravu nastavení diagnostiky zjištěného IoT Hub   | Nízký     | Byl zjištěn pokus o přidání nebo úpravu nastavení diagnostiky IoT Hub. Nastavení diagnostiky umožňují znovu vytvořit stopy aktivity pro účely šetření, pokud dojde k bezpečnostnímu incidentu nebo dojde k ohrožení zabezpečení vaší sítě. Pokud tuto akci neudělala autorizovaný účastník, může to znamenat škodlivou aktivitu.  |1. Ujistěte se, že certifikát odebrala oprávněná strana.<br> 2. Pokud se certifikát neodebral autorizovaným účastníkem, přidejte certifikát zpátky a upozorněte ho do svého týmu zabezpečení informací.
-|   Došlo k pokusu o odstranění nastavení diagnostiky ze zjištěného IoT Hub.        | Nízký      | Došlo k% {DescAttemptStatusMessage} \' pokusu o přidání nebo úpravu nastavení diagnostiky \'% {DescDiagnosticSettingName} \' IoT Hub \'% {DescIoTHubName} \'. Nastavení diagnostiky umožňuje znovu vytvořit stopy aktivity pro účely šetření, pokud dojde k bezpečnostnímu incidentu nebo dojde k ohrožení zabezpečení vaší sítě. Pokud tuto akci neudělala autorizovaný účastník, může to znamenat škodlivou aktivitu. |Ujistěte se, že oprávnění ke změně nastavení diagnostiky jsou udělována pouze oprávněným stranám.
+|   Došlo k pokusu o odstranění nastavení diagnostiky ze zjištěného IoT Hub.        | Nízký      | Došlo k% {DescAttemptStatusMessage}\' pokusu o přidání nebo úpravu nastavení diagnostiky \'% {DescDiagnosticSettingName}\' IoT Hub \'% {DescIoTHubName}\'. Nastavení diagnostiky umožňuje znovu vytvořit stopy aktivity pro účely šetření, pokud dojde k bezpečnostnímu incidentu nebo dojde k ohrožení zabezpečení vaší sítě. Pokud tuto akci neudělala autorizovaný účastník, může to znamenat škodlivou aktivitu. |Ujistěte se, že oprávnění ke změně nastavení diagnostiky jsou udělována pouze oprávněným stranám.
 |
 
 ## <a name="next-steps"></a>Další kroky

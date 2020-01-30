@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f393ab23df49751efbbcb3d70314b2ac404a8b77
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 3f9a1cfa92ffa454758849f52cc1977cef6df63a
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981818"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768397"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>Optimalizace nákladů na úložiště objektů BLOB s využitím rezervované kapacity
 
@@ -54,7 +54,7 @@ Zakoupení rezervované kapacity:
 
 - Musíte být v roli **vlastníka** alespoň u jednoho podnikového nebo individuálního předplatného s tarify průběžných plateb.
 - U podnikových předplatných se musí na portálu EA povolit možnost **Přidat rezervované instance** . Nebo, pokud je toto nastavení zakázané, musíte být správce EA v předplatném.
-- Pro program poskytovatele Cloud Solution Provider (CSP) můžou koupit Azure Cosmos DB rezervovanou kapacitu jenom agenti správce nebo prodejní agenti.
+- V případě programu Cloud Solution Provider (CSP) si můžou koupit Azure Blob Storage rezervovanou kapacitu jenom agenti správce nebo prodejní agenti.
 
 ## <a name="determine-required-capacity-before-purchase"></a>Určení požadované kapacity před nákupem
 
@@ -85,7 +85,7 @@ K zakoupení rezervované kapacity použijte následující postup:
    | **Redundance** | Možnost redundance pro rezervaci. Mezi možnosti patří *LRS*, *ZRS*, *GRS*a *RA-GZRS*. Další informace o možnostech redundance najdete v tématu [Azure Storage redundance](../common/storage-redundancy.md). |
    | **Četnost fakturace** | Určuje, jak často se účtuje účet pro rezervaci. Mezi možnosti patří *měsíční* nebo *předem*. |
    | **Velikost** | Oblast, ve které je rezervace platná. |
-   |**Termín**  | Jeden rok nebo tři roky.   |
+   |**Doby**  | Jeden rok nebo tři roky.   |
 
 1. Po výběru parametrů pro rezervaci Azure Portal zobrazí náklady. Na portálu se také zobrazuje procento slevy při fakturaci s průběžnými platbami.
 

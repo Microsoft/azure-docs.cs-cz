@@ -1,20 +1,20 @@
 ---
-title: Přehled služby Azure Table storage
+title: Přehled služby Azure Table Storage
 description: Ukládejte si strukturovaná data v cloudu pomocí Azure Table Storage, úložiště dat typu NoSQL.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: overview
 ms.date: 05/20/2019
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: 37249d904343a4eddb0d1e82f451c3b9e95a479d
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 20c799f89394dd8978f120097b054a9adf9f1280
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953502"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76770740"
 ---
 # <a name="azure-table-storage-overview"></a>Přehled služby Azure Table Storage
 
@@ -26,11 +26,11 @@ Table Storage můžete používat k ukládání flexibilních datových sad, nap
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.
 
-* [Začínáme s Azure Cosmos DB Table API a Azure Table storage pomocí .NET SDK](table-storage-how-to-use-dotnet.md)
+* [Začínáme s Azure Cosmos DB rozhraní API pro tabulky a Azure Table Storage pomocí sady .NET SDK](table-storage-how-to-use-dotnet.md)
 
 * Projděte si referenční dokumentaci ke službě Table service, kde najdete úplné podrobnosti o dostupných rozhraních API:
 
