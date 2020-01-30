@@ -3,12 +3,12 @@ title: Kurz – vytvoření kontroleru Application Gateway příchozího přenos
 description: Kurz ilustrující postup vytvoření clusteru Kubernetes pomocí služby Azure Kubernetes Service pomocí Application Gateway jako řadiče pro příchozí přenosy
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: 898a2052f31965ee45ab2cc5df6956af4831b0d2
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: da9768c8b2ad854b116ef1b9eab801661f547bfa
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867404"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772856"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Kurz: vytvoření kontroleru Application Gateway příchozího přenosu ve službě Azure Kubernetes
 
@@ -51,7 +51,7 @@ Prvním krokem je vytvoření adresáře s konfiguračními soubory Terraformu p
     cd clouddrive
     ```
 
-1. Vytvořte adresář s názvem `terraform-aks-k8s`.
+1. Vytvořte adresář s názvem `terraform-aks-appgw-ingress`.
 
     ```bash
     mkdir terraform-aks-appgw-ingress
@@ -731,8 +731,8 @@ Kód v této části používá správce balíčků [Helm](/azure/aks/kubernetes
     - `armAuth.secretJSON`: je potřeba jenom v případě, že je zvolený tajný typ objektu služby (Pokud `armAuth.type` nastavená na `servicePrincipal`).
 
     Klíčové poznámky:
-    - Hodnota `identityResourceID` je vytvořena ve skriptu terraformu a lze ji najít spuštěním: `echo "$(terraform output identity_client_id)"`.
-    - Hodnota `identityClientID` je vytvořena ve skriptu terraformu a lze ji najít spuštěním: `echo "$(terraform output identity_resource_id)"`.
+    - Hodnota `identityResourceID` je vytvořena ve skriptu terraformu a lze ji najít spuštěním: `echo "$(terraform output identity_resource_id)"`.
+    - Hodnota `identityClientID` je vytvořena ve skriptu terraformu a lze ji najít spuštěním: `echo "$(terraform output identity_client_id)"`.
     - Hodnota `<resource-group>` je skupina prostředků vaší aplikační brány.
     - Hodnota `<identity-name>` je název vytvořené identity.
     - Všechny identity pro dané předplatné můžou být uvedené pomocí: `az identity list`.

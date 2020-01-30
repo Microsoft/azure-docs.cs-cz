@@ -3,12 +3,12 @@ title: Horizontální navýšení nebo navýšení Service Fabric clusteru
 description: Škálujte Service Fabric clusteru v nebo v souladu s požadavky nastavením pravidel automatického škálování pro každý typ uzlu nebo sadu škálování virtuálního počítače. Přidávání a odebírání uzlů do clusteru Service Fabric
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: ef7d4c3d3d48bed790851834d848f05060243636
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 42193ee06eda3f1d8c56b4db3251763b9dc52076
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451945"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774469"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>Horizontální snížení nebo navýšení kapacity clusteru
 
@@ -101,7 +101,7 @@ Postup ručního odebrání stavu uzlu se vztahuje pouze na typy uzlů s *bronzo
 V zájmu toho, aby byly uzly clusteru rovnoměrně rozdělené v doménách upgradu a doménách selhání a aby se tedy i rovnoměrně využívaly, je potřeba jako první odebrat naposledy vytvořený uzel. Jinak řečeno, uzly by se měly odebírat v opačném pořadí, než v jakém došlo k jejich vytvoření. Naposledy vytvořený uzel je uzel s nejvyšší hodnotou vlastnosti `virtual machine scale set InstanceId`. Následující příklady kódu vracejí naposledy vytvořený uzel.
 
 ```powershell
-Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending | Select-Object -First 1
+Get-ServiceFabricNode | Sort-Object NodeInstanceId -Descending | Select-Object -First 1
 ```
 
 ```azurecli

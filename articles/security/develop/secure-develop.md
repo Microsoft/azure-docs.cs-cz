@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 9a4f5094837b0c642c4de75180039064de4e40c2
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 76219ec454fd105ed4bbf1a2fa0e922475d8dd1f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513979"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834973"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Vývoj zabezpečených aplikací v Azure
 V tomto článku jsou uvedeny bezpečnostní aktivity a ovládací prvky, které je potřeba vzít v úvahu při vývoji aplikací pro Cloud. Pojednává o bezpečnostních otázkách a konceptech, které je potřeba vzít v úvahu během fáze implementace a ověření v rámci služby [SDL (Microsoft Security Development Lifecycle)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) . Cílem je pomáhat vám definovat aktivity a služby Azure, které můžete použít k vývoji bezpečnější aplikace.
@@ -36,7 +36,7 @@ Předpokládejme, že se vaše aplikace bude používat způsobem, který jste n
 
 Před vrácením kódu se změnami proveďte [Revize kódu](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) a zvyšte tak celkovou kvalitu kódu a snižte riziko vytváření chyb. Můžete použít [Visual Studio](https://docs.microsoft.com/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) ke správě procesu revize kódu.
 
-### <a name="perform-static-code-analysis"></a>Provedení analýzy statického kódu
+### <a name="perform-static-code-analysis"></a>Provést analýzu statického kódu
 
 [Statická analýza kódu](https://www.owasp.org/index.php/Static_Code_Analysis) (označovaná také jako *analýza zdrojového kódu*) se obvykle provádí jako součást revize kódu. Analýza statického kódu obvykle odkazuje na spouštění nástrojů pro analýzu statického kódu pro nalezení potenciálních chyb zabezpečení v nespuštěném kódu pomocí technik, jako je [Kontrola chuti](https://en.wikipedia.org/wiki/Taint_checking) a [Analýza toku dat](https://en.wikipedia.org/wiki/Data-flow_analysis).
 
@@ -89,7 +89,7 @@ To znamená, že přístup k vašim skutečným datům má méně lidí, což sn
 
 Aby bylo možné chránit před hrubou silou a odhadem na základě slovníku, je nutné implementovat zásady silného hesla, aby uživatelé mohli vytvářet složitá hesla (například 12 znaků minimální délky a vyžadovat alfanumerické a speciální znaky).
 
-Rozhraní identity můžete použít k vytvoření a prosazování zásad hesel. Azure AD B2C vám pomůže se správou hesel tím, že poskytuje [předdefinované zásady](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow), [Samoobslužné resetování hesla](../../active-directory-b2c/active-directory-b2c-reference-sspr.md)a další služby.
+Rozhraní identity můžete použít k vytvoření a prosazování zásad hesel. Azure AD B2C vám pomůže se správou hesel tím, že poskytuje [předdefinované zásady](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow), [Samoobslužné resetování hesla](../../active-directory-b2c/user-flow-self-service-password-reset.md)a další služby.
 
 Aby se zabránilo útokům na výchozí účty, ověřte, že jsou všechny klíče a hesla nahraditelný a že jsou vygenerované nebo nahrazené po instalaci prostředků.
 

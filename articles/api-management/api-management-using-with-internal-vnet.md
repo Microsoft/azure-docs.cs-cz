@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
-ms.openlocfilehash: c4607a2dce995e554f0426f1beb810fe213015de
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6054c595bca26dc2a0432c53369a60a61e3efde0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430598"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841859"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Použití služby Azure API Management s interní virtuální sítí
 S Azure Virtual Networks může Azure API Management spravovat rozhraní API, která nejsou přístupná na internetu. K vytvoření připojení je k dispozici řada technologií sítě VPN. API Management lze nasadit ve dvou hlavních režimech v rámci virtuální sítě:
@@ -126,7 +126,7 @@ Pokud ve virtuální síti používáte vlastní server DNS, můžete také vytv
 
 * *Privátní* virtuální IP adresa s vyrovnáváním zatížení z rozsahu podsítě bude vyhrazená a bude se používat pro přístup k koncovým bodům služby API Management v rámci virtuální sítě. Tuto *privátní* IP adresu najdete v okně Přehled pro službu v Azure Portal. Tato adresa musí být zaregistrovaná u serverů DNS, které používá virtuální síť.
 * *Veřejná* IP adresa (VIP) s vyrovnáváním zatížení bude také vyhrazena pro poskytování přístupu ke koncovému bodu služby správy přes port 3443. Tuto *veřejnou* IP adresu najdete v okně Přehled pro službu v Azure Portal. *Veřejná* IP adresa se používá jenom pro provoz řídicích rovin do koncového bodu `management` přes port 3443 a dá se Zamknout dolů k servicetagu [ApiManagement][ServiceTags] .
-* IP adresy z rozsahu IP adres podsítě (DIP) se přiřadí ke každému virtuálnímu počítači ve službě a použijí se pro přístup k prostředkům v rámci virtuální sítě. Veřejná IP adresa (VIP) se použije pro přístup k prostředkům mimo virtuální síť. Pokud se seznamy omezení IP adres používají k zabezpečení prostředků v rámci virtuální sítě, musí být zadaný rozsah pro podsíť, ve které je nasazená API Management služba, aby bylo možné udělit nebo omezit přístup ke službě.
+* IP adresy z rozsahu IP adres podsítě (DIP) se přiřadí ke každému virtuálnímu počítači ve službě a budou se používat pro přístup k prostředkům v rámci virtuální sítě. Veřejná IP adresa (VIP) se použije pro přístup k prostředkům mimo virtuální síť. Pokud se seznamy omezení IP adres používají k zabezpečení prostředků v rámci virtuální sítě, musí být zadaný celý rozsah pro podsíť, ve které je nainstalovaná služba API Management, aby bylo možné udělit nebo omezit přístup ke službě.
 * Veřejné a privátní IP adresy vyrovnávání zatížení najdete v okně Přehled v Azure Portal.
 * IP adresy přiřazené veřejnému a privátnímu přístupu se mohou změnit, pokud je služba odebrána z a následně přidána zpátky do virtuální sítě. Pokud k tomu dojde, může být nutné aktualizovat registrace DNS, pravidla směrování a seznamy omezení IP adres v rámci virtuální sítě.
 

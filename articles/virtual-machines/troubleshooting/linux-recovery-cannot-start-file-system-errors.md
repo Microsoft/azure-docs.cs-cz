@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: a47dc1032115f8bcae0c7bdc37c84ab3b68ec4a8
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 455cb1e0067217be6edcf665e8c07e8fcd684ab5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72432306"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842397"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>Řešení potíží se spouštěním virtuálních počítačů se systémem Linux kvůli chybám systému souborů
 
@@ -55,7 +55,7 @@ EXT4-fs warning (device sda1): ext4_clear_journal_err:4532: Making fs in need of
 An error occurred while mounting /.
 ```
 
-### <a name="example-4"></a>Příklad 4 
+### <a name="example-4"></a>Příklad 4: 
 
 Tento příklad je způsoben čistým fsck. V tomto případě jsou k virtuálnímu počítači připojené taky další datové disky (/dev/sdc1 a/dev/SDE1).
 
@@ -110,20 +110,20 @@ Chcete-li tento problém vyřešit, spusťte virtuální počítač do nouzovéh
 
    ```
    mkdir /temp
-   mount /dev/sda2 /temp
+   mount /dev/sda1 /temp
    ```
 
-8. Pokud se disk nepovede připojit, spusťte příkaz xfs_repair s parametrem-L (vynucení nulového protokolu):
+8. Pokud se disk nepovede připojit, spusťte příkaz xfs_repair s možností-L (vynucení nulového protokolu):
 
    ```
-   xfs_repair /dev/sda2 -L
+   xfs_repair /dev/sda1 -L
    ```
 
 9. Potom se pokuste připojit systém souborů. Pokud je disk úspěšně připojen, zobrazí se následující výstup:
  
    ```
-   XFS (sda2): Mounting V1 Filesystem
-   XFS (sda2): Ending clean mount
+   XFS (sda1): Mounting V1 Filesystem
+   XFS (sda1): Ending clean mount
    ```
 
 10. Restartujte virtuální počítač a potom zkontrolujte, jestli je problém vyřešený.
@@ -132,7 +132,7 @@ Chcete-li tento problém vyřešit, spusťte virtuální počítač do nouzovéh
     Reboot -f
     ```
 
-## <a name="repair-the-vm-offline"></a>Oprava virtuálního počítače v režimu offline
+## <a name="repair-the-vm-offline"></a>Opravte virtuální počítač v režimu offline
 
 1. Připojte systémový disk virtuálního počítače jako datový disk k virtuálnímu počítači pro obnovení (libovolný pracovní virtuální počítač se systémem Linux). K tomu můžete použít [příkazy rozhraní příkazového řádku](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux) nebo můžete automatizovat nastavení virtuálního počítače pro obnovení pomocí příkazů pro [opravu virtuálního počítače](repair-linux-vm-using-azure-virtual-machine-repair-commands.md).
 
@@ -158,7 +158,7 @@ Chcete-li tento problém vyřešit, spusťte virtuální počítač do nouzovéh
    mount /dev/sdc1 /temp
    ```
 
-   Pokud se disk nepovede připojit, spusťte příkaz xfs_repair s parametrem-L (vynucení nulového protokolu):
+   Pokud se disk nepovede připojit, spusťte příkaz xfs_repair s možností-L (vynucení nulového protokolu):
 
    ```
    xfs_repair /dev/sdc1 -L

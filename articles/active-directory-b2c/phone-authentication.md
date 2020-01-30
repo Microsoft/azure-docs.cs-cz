@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 96bf088e6db29817d1ae4276c254a84723e5d03d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8cb0340d9e04db2bfbf088bce9505351d7588cd9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480187"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840328"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Nastavte si registraci a přihlašování telefonem pomocí vlastních zásad v Azure AD B2C
 
@@ -30,7 +30,7 @@ Postupujte podle kroků v tomto článku a použijte vlastní zásady, které z�
 
 * [Tenant Azure AD B2C](tutorial-create-tenant.md)
 * [Webová aplikace zaregistrovaná](tutorial-register-applications.md) ve vašem tenantovi
-* [Vlastní zásady](active-directory-b2c-get-started-custom.md) odeslané do vašeho tenanta
+* [Vlastní zásady](custom-policy-get-started.md) odeslané do vašeho tenanta
 
 ## <a name="get-the-phone-sign-up--sign-in-starter-pack"></a>Získání registračního a registračního balíčku & přihlášení k telefonu
 
@@ -44,7 +44,7 @@ V následujících krocích se předpokládá, že jste splnili [požadavky](#pr
 
 1. V každém souboru nahraďte řetězec `yourtenant` názvem vašeho tenanta Azure AD B2C. Například pokud je název vašeho tenanta B2C *contosob2c*, budou `contosob2c.onmicrosoft.com`všechny instance `yourtenant.onmicrosoft.com`.
 
-1. Dokončete kroky v části [Přidání ID aplikací do vlastní zásady](active-directory-b2c-get-started-custom.md#add-application-ids-to-the-custom-policy) [v tématu Začínáme s vlastními zásadami v Azure Active Directory B2C](active-directory-b2c-get-started-custom.md). V takovém případě aktualizujte `/phone-number-passwordless/` **`Phone_Email_Base.xml`** s **ID aplikace (klienta)** dvou aplikací, které jste zaregistrovali při dokončování požadavků, *IdentityExperienceFramework* a *ProxyIdentityExperienceFramework*.
+1. Dokončete kroky v části [Přidání ID aplikací do vlastní zásady](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) [v tématu Začínáme s vlastními zásadami v Azure Active Directory B2C](custom-policy-get-started.md). V takovém případě aktualizujte `/phone-number-passwordless/` **`Phone_Email_Base.xml`** s **ID aplikace (klienta)** dvou aplikací, které jste zaregistrovali při dokončování požadavků, *IdentityExperienceFramework* a *ProxyIdentityExperienceFramework*.
 
 ## <a name="upload-the-policy-files"></a>Nahrání souborů zásad
 

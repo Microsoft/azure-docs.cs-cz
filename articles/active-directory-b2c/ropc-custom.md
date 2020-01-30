@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 990493b6b2c3757849168d8fb82a4b38f55364e2
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 95601735064451a91530907e5e6b59f579ff0e28
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951060"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840260"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Konfigurace toku přihlašovacích údajů pro heslo vlastníka prostředku v Azure Active Directory B2C pomocí vlastní zásady
 
@@ -36,9 +36,9 @@ Následující toky nejsou podporovány:
 - **Jednoduchá stránka** – aplikace front-end, která je primárně napsaná v JavaScriptu. Aplikace je často zapisována pomocí architektury jako AngularJS, života. js nebo Durandal.
 - **Důvěrný tok klienta** – ID klienta aplikace je ověřeno, ale tajný klíč aplikace není.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Proveďte kroky v části Začínáme [s vlastními zásadami v Azure Active Directory B2C](active-directory-b2c-get-started-custom.md).
+Proveďte kroky v části Začínáme [s vlastními zásadami v Azure Active Directory B2C](custom-policy-get-started.md).
 
 ## <a name="register-an-application"></a>Registrace aplikace
 
@@ -342,4 +342,4 @@ Azure AD B2C splňuje předpisy OAuth 2,0 pro přihlašovací údaje k heslu ve�
 ## <a name="next-steps"></a>Další kroky
 
 - Úplný příklad tohoto scénáře najdete v [úvodní sadě Azure Active Directory B2C vlastní zásady](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/source/aadb2c-ief-ropc).
-- Přečtěte si další informace o tokenech, které používá Azure Active Directory B2C v [odkazu na token](active-directory-b2c-reference-tokens.md).
+- Přečtěte si další informace o tokenech, které používá Azure Active Directory B2C v [odkazu na token](tokens-overview.md).

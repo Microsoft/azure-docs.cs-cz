@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6c22a8e2b479ed7d3a225bc649d89f5302d0f536
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0680309b13bf4499f0d153f44e575c1762b54d79
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472573"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773178"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Kurz: použití exportované šablony z Azure Portal
 
@@ -26,7 +26,7 @@ Musíte mít Visual Studio Code s rozšířením Správce prostředků Tools a b
 
 Na konci předchozího kurzu má vaše šablona následující JSON:
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json":::
 
 Tato šablona funguje dobře pro nasazení účtů úložiště, ale můžete chtít přidat další prostředky. Můžete exportovat šablonu z existujícího prostředku, abyste mohli rychle získat kód JSON pro daný prostředek.
 
@@ -36,7 +36,7 @@ Tato šablona funguje dobře pro nasazení účtů úložiště, ale můžete ch
 1. Vyberte **vytvořit prostředek**.
 1. V **části Hledat na Marketplace**zadejte **App Service plán**a potom vyberte **App Service plán**.  Nevybírat **plán App Service (klasický)**
 1. Vyberte **Vytvořit**.
-1. Zadejte:
+1. Napište
 
     - **Předplatné:** Vyberte své předplatné Azure.
     - **Skupina prostředků**: vyberte **vytvořit novou** a zadejte název. Zadejte jiný název skupiny prostředků než ten, který jste používali v této sérii kurzů.
@@ -76,7 +76,7 @@ Následující příklad zvýrazní přidání do šablony. Obsahuje exportovan�
 
 Zkopírujte celý soubor a nahraďte šablonu jeho obsahem.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json?range=1-77&highlight=28-31,50-69)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json" range="1-77" highlight="28-31,50-69":::
 
 ## <a name="deploy-template"></a>Nasazení šablony
 

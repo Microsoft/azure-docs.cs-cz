@@ -9,16 +9,16 @@ ms.date: 10/05/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 336b6157128468169264d6ffa9564da4d9338aae
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 0aedeea2a6ad08e1627c2d1a6ebde6c91a4d02d9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992441"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841761"
 ---
 # <a name="configure-identity-for-the-event-grid-module"></a>Konfigurace identity pro modul Event Grid
 
-Tento článek obsahuje příklady možných konfigurací identity pro modul Event Grid. Ve výchozím nastavení bude modul Event Grid prezentovat svůj certifikát identity, jak je nakonfigurovaný démon zabezpečení IoT. Certifikát identity je prezentován modulem Event Grid na odchozích voláních, která jsou při doručování událostí. Odběratel události Event Grid se pak může rozhodnout ověřit, že se jedná o modul Event Grid, který před přijetím události odeslal událost.
+Tento článek obsahuje informace o tom, jak nakonfigurovat identitu pro mřížku na hraničních zařízeních. Ve výchozím nastavení modul Event Grid prezentuje svůj certifikát identity, jak je nakonfigurovaný démon zabezpečení IoT. Event Grid na Edge prezentuje svůj certifikát identity s odchozími voláními při doručování událostí. Předplatitel pak může ověřit, že se jedná o modul Event Grid, který odeslal událost před přijetím.
 
 V tématu Průvodce [zabezpečením a ověřováním](security-authentication.md) najdete všechny možné konfigurace.
 
@@ -28,8 +28,8 @@ Tady je příklad konfigurace, která vždy prezentuje certifikát identity při
 ```json
  {
   "Env": [
-    "outbound:clientAuth:clientCert:enabled=true",
-    "outbound:clientAuth:clientCert:source=IoTEdge"
+    "outbound__clientAuth__clientCert__enabled=true",
+    "outbound__clientAuth__clientCert__source=IoTEdge"
   ]
 }
  ```
@@ -40,7 +40,7 @@ Tady je příklad konfigurace, která neprezentuje certifikát identity při odc
 ```json
  {
   "Env": [
-    "outbound:clientAuth:clientCert:enabled=false"
+    "outbound__clientAuth__clientCert__enabled=false"
   ]
 }
  ```

@@ -3,23 +3,21 @@ title: Analýza provozu Azure | Microsoft Docs
 description: Naučte se analyzovat protokoly toku skupin zabezpečení sítě Azure pomocí analýzy provozu.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
-ms.author: kumud
+ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 91fb4551f4651f44a1f7358951c5d4cc0ff70644
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: 6cec7c813b0723ac770da6ebd04f4d2cf26a1409
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907153"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840583"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -41,12 +39,12 @@ Je důležité monitorovat, spravovat a znát vaši vlastní síť, aby nedošlo
 
 Cloudové sítě se liší od místních podnikových sítí, kde máte NetFlow nebo ekvivalentní směrovače a přepínače podporující protokol, které poskytují schopnost shromažďovat síťový provoz protokolu IP při vstupu nebo ukončení síťového rozhraní. Analýzou dat toku provozu můžete vytvořit analýzu toku a objemu síťových přenosů.
 
-Virtuální sítě Azure mají protokoly toku NSG, které poskytují informace o příchozím a odchozím provozu IP přes skupinu zabezpečení sítě přidruženou k jednotlivým síťovým rozhraním, virtuálním počítačům nebo podsítím. Díky analýze nezpracovaných protokolů toku NSG a vkládání informací o zabezpečení, topologii a zeměpisné oblasti vám Analýza provozu může poskytovat přehledy o toku provozu ve vašem prostředí. Analýza provozu poskytuje informace, jako jsou například většina komunikujících hostitelů, většina komunikujících aplikačních protokolů, Většina párů hostitelů konverzující, povolených/blokovaných přenosů, příchozí/odchozí provoz, otevřené internetové porty, většina pravidel blokování, přenos distribuce podle datacentra Azure, virtuální sítě, podsítí nebo neautorizovaných sítí.
+Virtuální sítě Azure mají protokoly toku NSG, které poskytují informace o příchozím a odchozím provozu IP přes skupinu zabezpečení sítě přidruženou k jednotlivým síťovým rozhraním, virtuálním počítačům nebo podsítím. Díky analýze nezpracovaných protokolů toku NSG a vkládání informací o zabezpečení, topologii a zeměpisné oblasti vám Analýza provozu může poskytovat přehledy o toku provozu ve vašem prostředí. Analýza provozu poskytuje informace, jako jsou například většina komunikujících hostitelů, většina komunikujících aplikačních protokolů, Většina párů hostitelů konverzující, povolených/blokovaných přenosů, příchozí/odchozí provoz, otevřené internetové porty, většina pravidel blokování, distribuce provozu na datové centrum Azure, virtuální síť, podsítě nebo neoprávněné sítě.
 
 ## <a name="key-components"></a>Klíčové komponenty
 
 - **Skupina zabezpečení sítě (NSG)** : obsahuje seznam pravidel zabezpečení, která povolují nebo zakazují síťový provoz pro prostředky připojené k Azure Virtual Network. Skupiny zabezpečení sítě můžou být přidružené k podsítím, jednotlivým virtuálním počítačům (klasický model) nebo jednotlivým síťovým rozhraním (síťovým kartám) připojeným k virtuálním počítačům (Resource Manager). Další informace najdete v tématu [Přehled skupin zabezpečení sítě](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Protokoly toku pro skupinu zabezpečení sítě (NSG)** : umožňuje zobrazit informace o příchozím a odchozím provozu IP přes skupinu zabezpečení sítě. Protokoly toku NSG jsou napsané ve formátu JSON a zobrazují odchozí a příchozí toky na základě jednotlivých pravidel. síťové rozhraní, ke kterému se tok vztahuje, obsahuje pět informací o toku (zdrojová nebo cílová IP adresa, zdrojový nebo cílový port a protokol) a pokud byl povolený provoz. nebo odepřeno. Další informace o protokolech toku NSG najdete v tématu [protokoly toků NSG](network-watcher-nsg-flow-logging-overview.md).
+- **Protokoly toku pro skupinu zabezpečení sítě (NSG)** : umožňuje zobrazit informace o příchozím a odchozím provozu IP přes skupinu zabezpečení sítě. Protokoly toku NSG jsou zapsané ve formátu JSON a zobrazují odchozí a příchozí toky na základě jednotlivých pravidel. síťové rozhraní, ke kterému se tok vztahuje, obsahuje pět informací o toku (zdrojová nebo cílová IP adresa, zdrojový nebo cílový port a protokol) a pokud byl provoz povolený nebo zakázaný. Další informace o protokolech toku NSG najdete v tématu [protokoly toků NSG](network-watcher-nsg-flow-logging-overview.md).
 - **Log Analytics**: Služba Azure, která shromažďuje data monitorování a ukládá je do centrálního úložiště. Tato data můžou zahrnovat události, data o výkonu nebo vlastní data poskytovaná prostřednictvím rozhraní API Azure. Po získání jsou data dostupná pro výstrahy, analýzu a export. Monitorování aplikací, jako je například sledování výkonu sítě a analýza provozu, je sestaveno pomocí protokolu Azure Monitor jako základní. Další informace najdete v tématu [protokoly Azure monitor](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Log Analytics pracovní prostor**: instance Azure monitor protokolů, kde se ukládají data týkající se účtu Azure. Další informace o Log Analytics pracovních prostorech najdete v tématu [Vytvoření pracovního prostoru Log Analytics](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Network Watcher**: místní služba, která umožňuje monitorovat a diagnostikovat podmínky na úrovni síťového scénáře v Azure. Protokoly NSG Flow můžete zapnout a vypnout pomocí Network Watcher. Další informace najdete v tématu [Network Watcher](network-watcher-monitoring-overview.md).
@@ -64,7 +62,7 @@ Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli 
 * Střední Kanada
 * Středozápadní USA
 * Východní USA
-* Východní USA 2
+* Východ USA 2
 * Středoseverní USA
 * Středojižní USA
 * Střední USA
@@ -74,18 +72,18 @@ Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli 
 * Západní Evropa
 * Severní Evropa
 * Brazílie – jih
-* Spojené království – západ
+* Velká Británie – západ
 * Spojené království – jih
 * Austrálie – východ
 * Austrálie – jihovýchod
 * Východní Asie
 * Jihovýchodní Asie
-* Jižní Korea – střed
-* Střed Indie
-* Indie – jih
+* Korea – střed
+* Střední Indie
+* Jižní Indie
 * Japonsko – východ 
 * Japonsko – západ
-* USA (Gov) – Virginia
+* US Gov – Virginie
 * Čína – východ 2
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>Podporované oblasti: Log Analytics pracovní prostory
@@ -94,7 +92,7 @@ Pracovní prostor Log Analytics musí existovat v následujících oblastech:
 * Střední Kanada
 * Středozápadní USA
 * Východní USA
-* Východní USA 2
+* Východ USA 2
 * Středoseverní USA
 * Středojižní USA
 * Střední USA
@@ -105,16 +103,16 @@ Pracovní prostor Log Analytics musí existovat v následujících oblastech:
 * Západní Evropa
 * Severní Evropa
 * Brazílie – jih
-* Spojené království – západ
+* Velká Británie – západ
 * Spojené království – jih
 * Austrálie – východ
 * Austrálie – jihovýchod
 * Východní Asie
 * Jihovýchodní Asie
-* Jižní Korea – střed
-* Střed Indie
+* Korea – střed
+* Střední Indie
 * Japonsko – východ
-* USA (Gov) – Virginia
+* US Gov – Virginie
 * Čína – východ 2
 
 ## <a name="prerequisites"></a>Požadavky
@@ -137,7 +135,7 @@ Pokud váš účet není přiřazený k jedné z předdefinovaných rolí, musí
 - "Microsoft. Network/loadBalancers/Read"
 - "Microsoft. Network/localNetworkGateways/Read"
 - "Microsoft. Network/networkInterfaces/Read"
-- "Microsoft. Network/networkSecurityGroups/Read"
+- "Microsoft.Network/networkSecurityGroups/read"
 - "Microsoft. Network/publicIPAddresses/Read"
 - "Microsoft. Network/routeTables/Read"
 - "Microsoft. Network/virtualNetworkGateways/Read"
@@ -294,7 +292,7 @@ Některé přehledy, které můžete chtít získat po úplné konfiguraci Anal�
 
     ![Distribuce provozu předvádí na řídicím panelu](./media/traffic-analytics/dashboard-showcasing-traffic-distribution.png)
 
-- Geografické mapování zobrazuje horní pás karet pro výběr parametrů, jako jsou datová centra (nasazené/bez nasazení/aktivní/neaktivní/Analýza provozu povoleno Analýza provozu/Nepovoleno) a země/oblasti přispívající k aktivnímu neškodné/škodlivé komunikaci. prostředí
+- Geografické mapování zobrazuje horní pás karet pro výběr parametrů, jako jsou datová centra (nasazené/bez nasazení/aktivní/neaktivní/Analýza provozu povoleno Analýza provozu/Nepovoleno), a země nebo oblasti přispívající k aktivnímu nasazení neškodný/škodlivý provoz:
 
     ![Zobrazení geografického mapování předvádí aktivní nasazení](./media/traffic-analytics/geo-map-view-showcasing-active-deployment.png)
 
@@ -343,7 +341,7 @@ Distribuce provozu na aplikační bránu & Load Balancer, topologii, hlavních z
  - Poznáte, která podsíť je konverzující, na kterou Aplikační bránu nebo Load Balancer. Pokud si nejste všimnout neočekávaných konverzací, můžete konfiguraci opravit.
  - Pokud se podvodné sítě konverzující s aplikační bránou nebo Load Balancer, můžete je opravit tak, že nakonfigurujete pravidla NSG pro blokování neautorizovaných sítí. 
 
-    ![podsíť-topologie-předvádí-přenosová síť – brána – s ohledem na toky](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
+    ![subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
 
 ### <a name="view-ports-and-virtual-machines-receiving-traffic-from-the-internet"></a>Zobrazit porty a virtuální počítače, které přijímají provoz z Internetu
 

@@ -4,12 +4,12 @@ description: Naučte se používat Ansible ke konfiguraci RBAC v clusteru Azure 
 keywords: Ansible, Azure, DevOps, bash, cloudshellu, PlayBook, AKS, Container, AKS, Kubernetes, Azure Active Directory, RBAC
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: 1be123eb06bd2679169478daf27a7148d2a8b055
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 5fac42383ee56318cc4b8f39323c02d05853dbb6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156867"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836962"
 ---
 # <a name="tutorial-configure-role-based-access-control-rbac-roles-in-azure-kubernetes-service-aks-using-ansible"></a>Kurz: Konfigurace rolí řízení přístupu na základě role (RBAC) ve službě Azure Kubernetes Service (AKS) pomocí Ansible
 
@@ -119,7 +119,7 @@ Uložte následující ukázkový playbook jako `aks-create.yml`:
 
 Pokud chcete vytvořit vazbu RBAC, musíte nejdřív získat ID objektu Azure AD. 
 
-1. Přihlásit se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se na web [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Do vyhledávacího pole v horní části stránky zadejte `Azure Active Directory`. 
 
@@ -156,7 +156,7 @@ subjects:
   name: <your-aad-account>
 ```
 
-Zástupný text `&lt;your-aad-account>` nahraďte svým [ID objektu](#get-the-azure-ad-object-id)TENANTA Azure AD.
+Zástupný text `<your-aad-account>` nahraďte svým [ID objektu](#get-the-azure-ad-object-id)TENANTA Azure AD.
 
 Uložte následující PlayBook – nasazení nové role do AKS – jako `aks-kube-deploy.yml`:
 

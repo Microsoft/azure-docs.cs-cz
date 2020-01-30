@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a82efda4cf53931dbf81b993b12a2927f02dfa0b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 3401ed08a9332d4bb2735e536df33c201b28ca0e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76711696"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841944"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Zřizování aplikací na základě atributů s filtry oborů
 Cílem tohoto článku je vysvětlit, jak používat filtry oborů k definování pravidel založených na atributech, která určují, kteří uživatelé se zřídí do aplikace.
@@ -94,7 +94,12 @@ Filtry oborů se konfigurují jako součást mapování atributů pro jednotliv�
    g. **porovnávání regulárních**znaků. Klauzule vrátí "true", pokud vyhodnocený atribut odpovídá vzoru regulárního výrazu. Například: ([1-9] [0-9]) odpovídá libovolnému číslu mezi 10 a 99.
 
    h. **NEshoda s regulárním výrazem** Klauzule vrátí "true", pokud se vyhodnocený atribut neshoduje se vzorem regulárního výrazu.
- 
+   
+   i. **Greater_Than.** Klauzule vrátí "true", pokud je vyhodnocený atribut větší než hodnota. Hodnota zadaná ve filtru oboru musí být celé číslo a atribut na tomto uživateli musí být celé číslo [0, 1, 2,...]. 
+   
+   j. **Greater_Than_OR_EQUALS.** Klauzule vrátí "true", pokud je vyhodnocený atribut větší nebo roven hodnotě. Hodnota zadaná ve filtru oboru musí být celé číslo a atribut na tomto uživateli musí být celé číslo [0, 1, 2,...]. 
+
+
 >[!IMPORTANT] 
 > Filtry include a MemberOf nejsou podporovány. Budou brzy odebrány z uživatelského rozhraní.
 

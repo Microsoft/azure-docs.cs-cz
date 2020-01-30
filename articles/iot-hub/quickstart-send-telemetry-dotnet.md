@@ -10,18 +10,18 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: 9f9e84570c7e7a4a2049c9f357d001c3316a4106
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 33d0e5c40e4c7d404558fe8fa7a5fb8f5967924e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166346"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773804"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-net"></a>Rychlý Start: odeslání telemetrie ze zařízení do služby IoT Hub a jejich čtení pomocí back-endové aplikace (.NET)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
-IoT Hub je služba Azure, která umožňuje ingestovat velké objemy telemetrických dat ze zařízení IoT do cloudu pro účely uložení nebo zpracování. V tomto rychlém startu odešlete telemetrická data z aplikace simulovaného zařízení prostřednictvím centra IoT do back-endové aplikace za účelem zpracování.
+IoT Hub je služba Azure, která umožňuje ingestovat velké objemy telemetrických dat ze zařízení IoT do cloudu pro účely uložení nebo zpracování. V tomto rychlém startu odešlete telemetrická data z aplikace simulovaného zařízení prostřednictvím služby IoT Hub do back-endové aplikace za účelem zpracování.
 
 V tomto rychlém startu se používají dvě předem napsané aplikace C#, jedna k odesílání telemetrických dat a jedna ke čtení telemetrických dat z centra. Před spuštěním těchto dvou aplikací vytvoříte centrum IoT a zaregistrujete v tomto centru zařízení.
 
@@ -29,7 +29,7 @@ V tomto rychlém startu se používají dvě předem napsané aplikace C#, jedna
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Dvě ukázkové aplikace, které spustíte v tomto rychlém startu, jsou napsány pomocí C#. Na počítači používaném pro vývoj musíte mít .NET Core SDK 2.1.0 nebo vyšší.
 
@@ -47,7 +47,7 @@ Spuštěním následujícího příkazu přidejte do instance služby Cloud Shel
 az extension add --name azure-cli-iot-ext
 ```
 
-Stáhněte si ukázkový projekt C# z https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip a extrahujte archiv ZIP.
+Stáhněte si ukázky Azure C# IoT z https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip a Extrahujte archiv zip.
 
 ## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
 
@@ -97,13 +97,13 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 ## <a name="send-simulated-telemetry"></a>Odesílání simulovaných telemetrických dat
 
-Aplikace simulovaného zařízení se připojí ke koncovému bodu vašeho centra IoT pro konkrétní zařízení a odesílá simulovaná telemetrická data o teplotě a vlhkosti vzduchu.
+Aplikace simulovaného zařízení se připojuje ke koncovému bodu vašeho centra IoT pro konkrétní zařízení a odesílá simulovaná telemetrická data o teplotě a vlhkosti vzduchu.
 
 1. V okně místního terminálu přejděte do kořenové složky ukázkového projektu jazyka C#. Pak přejděte do složky **iot-hub\Quickstarts\simulated-device**.
 
 2. V libovolném textovém editoru otevřete soubor **SimulatedDevice.cs**.
 
-    Nahraďte hodnotu proměnné `s_connectionString` připojovacím řetězcem zařízení, který jste si poznamenali dříve. Pak změny uložte do **SimulatedDevice.cs**.
+    Nahraďte hodnotu `s_connectionString` proměnné pomocí připojovacího řetězce zařízení, který jste si poznamenali dříve. Pak změny uložte do **SimulatedDevice.cs**.
 
 3. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované balíčky pro aplikaci simulovaného zařízení:
 

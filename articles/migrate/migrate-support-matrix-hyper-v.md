@@ -3,12 +3,12 @@ title: Podpora pro vyhodnocení technologie Hyper-V v Azure Migrate
 description: Přečtěte si o podpoře pro vyhodnocování technologie Hyper-V pomocí Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 1a036e2f22bb1fd9dac65a3cc643224ecbea3c69
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 9c1228992d71e56b9118e88967478e619c14959a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154801"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834463"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Matice podpory pro posouzení technologie Hyper-V
 
@@ -51,7 +51,7 @@ K vyhodnocení místních počítačů pro migraci do Azure pomocí tohoto člá
 | **Integrační služby**       | Aby bylo možné zachytit informace o operačním systému, musí být na virtuálních počítačích, které jste vyhodnotili, spuštěny [integrační služby technologie Hyper-v](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services) . |
 
 
-## <a name="azure-migrate-appliance-requirements"></a>Požadavky na zařízení Azure Migrate
+## <a name="azure-migrate-appliance-requirements"></a>Požadavky zařízení Azure Migrate
 
 Azure Migrate používá [zařízení Azure Migrate](migrate-appliance.md) ke zjišťování a hodnocení. Zařízení pro technologii Hyper-V běží na virtuálním počítači s technologií Hyper-V a je nasazeno pomocí komprimovaného virtuálního pevného disku Hyper-V, který stáhnete z Azure Portal. 
 
@@ -64,7 +64,7 @@ Následující tabulka shrnuje požadavky na porty pro posouzení.
 
 **zařízení** | **připojení**
 --- | ---
-**Náplně** | Příchozí připojení na portu TCP 3389 umožňující připojení ke vzdálené ploše zařízení.<br/> Příchozí připojení na portu 44368 pro vzdálený přístup k aplikaci pro správu zařízení pomocí adresy URL: ``` https://<appliance-ip-or-name>:44368 ```<br/> Odchozí připojení na portech 443, 5671 a 5672 pro posílání metadat zjišťování a výkonu Azure Migrate.
+**Náplně** | Příchozí připojení na portu TCP 3389 umožňující připojení ke vzdálené ploše zařízení.<br/> Příchozí připojení na portu 44368 pro vzdálený přístup k aplikaci pro správu zařízení pomocí adresy URL: ``` https://<appliance-ip-or-name>:44368 ```<br/> Odchozí připojení na portech 443 (HTTPS), 5671 a 5672 (AMQP), která odesílají metadata zjišťování a výkonu Azure Migrate.
 **Hostitel nebo cluster Hyper-V** | Příchozí připojení na portech WinRM 5985 (HTTP) a 5986 (HTTPS) k vyžádání metadat konfigurace a výkonu virtuálních počítačů Hyper-V pomocí relace model CIM (Common Information Model) (CIM).
 
 ## <a name="agent-based-dependency-visualization"></a>Vizualizace závislostí založená na agentech
@@ -77,7 +77,7 @@ Následující tabulka shrnuje požadavky na porty pro posouzení.
 **Nasazení** | Než nasadíte vizualizaci závislostí, měli byste mít Azure Migrate projekt, a to pomocí Azure Migrate: Nástroj pro vyhodnocení serveru přidaný do projektu. Vizualizace závislostí nasadíte po nastavení zařízení Azure Migrate pro zjišťování vašich místních počítačů.<br/><br/> Vizualizace závislostí není v Azure Government k dispozici.
 **Mapa služeb** | Vizualizace závislostí založená na agentech používá řešení [Service map](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) v [protokolech Azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview).<br/><br/> K nasazení aplikace přidružíte nový nebo existující Log Analytics pracovní prostor k projektu Azure Migrate.
 **Pracovní prostor služby Log Analytics** | Pracovní prostor musí být ve stejném předplatném jako projekt Azure Migrate.<br/><br/> Azure Migrate podporuje pracovní prostory, které jsou umístěné v oblastech Východní USA, jihovýchodní Asie a Západní Evropa.<br/><br/>  Pracovní prostor musí být v oblasti, ve které [je podporovaná Service map](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#prerequisites).<br/><br/> Pracovní prostor pro Azure Migrate projekt nelze po přidání změnit.
-**Charges** (Poplatky) | V řešení Service Map se neúčtují žádné poplatky za prvních 180 dní (od data, kdy jste přidružení pracovního prostoru Log Analytics k projektu Azure Migrate).<br/><br/> Po 180 dnech budou platit standardní poplatky za Log Analytics.<br/><br/> Použití jakéhokoli řešení, které je jiné než Service Map v přidruženém pracovním prostoru Log Analytics, bude mít za následek standardní Log Analytics poplatky.<br/><br/> Pokud odstraníte Azure Migrate projekt, pracovní prostor se s ním neodstraní. Po odstranění projektu Service Map není zadarmo a každý uzel se bude účtovat podle placené úrovně Log Analytics pracovního prostoru.
+**Poplatky za** | V řešení Service Map se neúčtují žádné poplatky za prvních 180 dní (od data, kdy jste přidružení pracovního prostoru Log Analytics k projektu Azure Migrate).<br/><br/> Po 180 dnech budou platit standardní poplatky za Log Analytics.<br/><br/> Použití jakéhokoli řešení, které je jiné než Service Map v přidruženém pracovním prostoru Log Analytics, bude mít za následek standardní Log Analytics poplatky.<br/><br/> Pokud odstraníte Azure Migrate projekt, pracovní prostor se s ním neodstraní. Po odstranění projektu Service Map není zadarmo a každý uzel se bude účtovat podle placené úrovně Log Analytics pracovního prostoru.
 **Technici** | Vizualizace závislostí na základě agentů vyžaduje instalaci dvou agentů do každého počítače, který chcete analyzovat.<br/><br/> - [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)<br/><br/> [Agent závislostí](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent)- . 
 **Připojení k Internetu** | Pokud nejsou počítače připojené k Internetu, musíte na ně nainstalovat bránu Log Analytics.
 

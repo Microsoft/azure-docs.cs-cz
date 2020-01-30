@@ -3,23 +3,20 @@ title: Seznámení se zobrazením skupiny zabezpečení v Azure Network Watcher 
 description: Tato stránka poskytuje přehled možností zobrazení zabezpečení Network Watcher.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: ad27ab85-9d84-4759-b2b9-e861ef8ea8d8
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
-ms.author: kumud
-ms.openlocfilehash: 856135c6cf903b1530f0ae922edddd09e5a1b0d3
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.author: damendo
+ms.openlocfilehash: 18619cc0f7a21a39d0802575c484c68c5fa1a624
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539216"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840753"
 ---
 # <a name="introduction-to-effective-security-rules-view-in-azure-network-watcher"></a>Úvod do zobrazení efektivních pravidel zabezpečení v Azure Network Watcher
 

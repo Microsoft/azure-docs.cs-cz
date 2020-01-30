@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: 66c69552157df957e572a3af092131a3b7e560d5
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: fc6766943747c066581fe3820481cfe4a35d5296
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871695"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774964"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Použití ověřování Azure AD pro přístup k rozhraní Media Services API pomocí REST
 
@@ -41,7 +41,7 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Získat informace o ověřování z Azure Portal
 > * Získání přístupového tokenu pomocí metody post
-> * Testování rozhraní  API assetů pomocí přístupového tokenu
+> * Testování rozhraní API **assetů** pomocí přístupového tokenu
 
 
 > [!IMPORTANT]
@@ -54,7 +54,7 @@ V tomto kurzu se naučíte:
 - Přečtěte si článek [Přehled přístupu k rozhraní Azure Media Services API pomocí služby Azure AD Authentication](media-services-use-aad-auth-to-access-ams-api.md) .
 - Nainstalujte klienta [post](https://www.getpostman.com/) REST, který SPUSTÍ rozhraní REST API uvedená v tomto článku. 
 
-    V tomto kurzu používáme **metodu post** , ale jakýkoli nástroj REST by byl vhodný. Další možnosti jsou: **Visual Studio Code** pomocí modulu plug-in REST nebo **Telerik Fiddler**. 
+    V tomto kurzu používáme **metodu post** , ale jakýkoli nástroj REST by byl vhodný. Další možnosti jsou: **Visual Studio Code** s pluginem REST nebo **Telerik Fiddler**. 
 
 ## <a name="get-the-authentication-information-from-the-azure-portal"></a>Získat informace o ověřování z Azure Portal
 
@@ -62,9 +62,9 @@ V tomto kurzu se naučíte:
 
 Chcete-li získat přístup k rozhraní Media Services API, je nutné shromáždit následující datové body.
 
-|Nastavení|Příklad|Popis|
+|Nastavení|Příklad:|Popis|
 |---|-------|-----|
-|Azure Active Directory doménu tenanta|microsoft.onmicrosoft.com|Služba Azure AD jako koncový bod služby tokenů zabezpečení (STS) je vytvořena v následujícím formátu <https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token>:. Služba Azure AD vydá token JWT, aby mohl získat přístup k prostředkům (přístupovému tokenu).|
+|Azure Active Directory doménu tenanta|microsoft.onmicrosoft.com|Služba Azure AD jako koncový bod služby tokenů zabezpečení (STS) je vytvořena v následujícím formátu: <https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token>. Služba Azure AD vydá token JWT, aby mohl získat přístup k prostředkům (přístupovému tokenu).|
 |REST API koncový bod|<https://amshelloworld.restv2.westus.media.azure.net/api/>|Toto je koncový bod, proti kterému jsou vytvářena všechna Media Services REST API volání ve vaší aplikaci.|
 |ID klienta (ID aplikace)|f7fbbb29-a02d-4d91-bbc6-59a2579259d2|ID aplikace (klienta) služby Azure AD. Pro získání přístupového tokenu se vyžaduje ID klienta. |
 |Tajný kód klienta|+mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq+Dbim0=|Klíče aplikace služby Azure AD (tajný klíč klienta). K získání přístupového tokenu se vyžaduje tajný klíč klienta.|
@@ -73,7 +73,7 @@ Chcete-li získat přístup k rozhraní Media Services API, je nutné shromážd
 
 Chcete-li získat informace, postupujte podle následujících kroků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
 2. Přejděte do své instance AMS.
 3. Vyberte **přístup přes rozhraní API**.
 4. Klikněte na **připojit k Azure Media Services rozhraní API s instančním objektem**.
@@ -83,7 +83,7 @@ Chcete-li získat informace, postupujte podle následujících kroků:
 5. Vyberte existující **aplikaci Azure AD** nebo vytvořte novou (viz níže).
 
     > [!NOTE]
-    > Aby požadavek na médium Azure byl úspěšný, volající uživatel musí mít roli **Přispěvatel** nebo **vlastník** pro účet Media Services, ke kterému se pokouší získat přístup. Pokud se zobrazí výjimka oznamující, že vzdálený server vrátil chybu: (401) Neautorizováno, "Zobrazit [řízení přístupu](media-services-use-aad-auth-to-access-ams-api.md#access-control).
+    > Aby požadavek na médium Azure byl úspěšný, volající uživatel musí mít roli **Přispěvatel** nebo **vlastník** pro účet Media Services, ke kterému se pokouší získat přístup. Pokud se zobrazí výjimka oznamující, že vzdálený server vrátil chybu: (401) Neautorizováno, "viz [řízení přístupu](media-services-use-aad-auth-to-access-ams-api.md#access-control).
 
     Pokud potřebujete vytvořit novou aplikaci AD, postupujte podle těchto kroků:
     
@@ -106,7 +106,7 @@ Chcete-li získat informace, postupujte podle následujících kroků:
 7. Získá **klíč** aplikace (tajný klíč klienta). 
 
    1. Klikněte na tlačítko **Spravovat aplikaci** (Všimněte si, že informace o ID klienta se nachází pod položkou **ID aplikace**). 
-   2. Stiskněte klávesy.
+   2. Stiskněte **klávesy**.
     
        ![Přístup přes rozhraní API](./media/connect-with-rest/manage-app.png)
    3. Vygenerujte klíč aplikace (tajný klíč klienta) vyplněním **popisu** a **vypršení platnosti** a stisknutím tlačítka **Uložit**.
@@ -122,7 +122,7 @@ Do souboru Web. config nebo App. config můžete přidat hodnoty pro parametry p
 
 ## <a name="get-the-access-token-using-postman"></a>Získání přístupového tokenu pomocí metody post
 
-V této části se dozvíte, jak použít **metodu post** ke spuštění REST API, který vrací token nosiče JWT (přístupový token). Chcete-li volat jakékoli Media Services REST API, je nutné přidat do volání hlavičku "autorizace" a přidat hodnotu "nosiče *your_access_token*" do každého volání (jak je znázorněno v další části tohoto kurzu). 
+V této části se dozvíte, jak použít **metodu post** ke spuštění REST API, který vrací token nosiče JWT (přístupový token). Chcete-li volat jakékoli Media Services REST API, je nutné přidat do volání hlavičku "autorizace" a přidat hodnotu "nosiče *your_access_token*" do každého volání (jak je uvedeno v další části tohoto kurzu). 
 
 1. Otevřete **post**.
 2. Vyberte **POST**.
@@ -131,7 +131,7 @@ V této části se dozvíte, jak použít **metodu post** ke spuštění REST AP
     https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token
 
 4. Vyberte kartu **hlavičky** .
-5. Zadejte informace  o hlavičkách pomocí datové mřížky "klíč/hodnota". 
+5. Zadejte informace o **hlavičkách** pomocí datové mřížky "klíč/hodnota". 
 
     ![Datová mřížka](./media/connect-with-rest/headers-data-grid.png)
 
@@ -158,9 +158,9 @@ V této části se dozvíte, jak použít **metodu post** ke spuštění REST AP
 
 Vrácená odpověď obsahuje **přístupový token** , který potřebujete použít pro přístup k rozhraním API AMS.
 
-## <a name="test-the-assets-api-using-the-access-token"></a>Testování rozhraní  API assetů pomocí přístupového tokenu
+## <a name="test-the-assets-api-using-the-access-token"></a>Testování rozhraní API **assetů** pomocí přístupového tokenu
 
-V této části se dozvíte,  jak získat přístup k rozhraní API assetů pomocí **metody post**.
+V této části se dozvíte, jak získat přístup k rozhraní API **assetů** pomocí **metody post**.
 
 1. Otevřete **post**.
 2. Vyberte **GET**.
@@ -180,7 +180,7 @@ V této části se dozvíte,  jak získat přístup k rozhraní API assetů pomo
 5. V pravé části okna po kliknutí klikněte na odkaz **hromadné úpravy** .
 6. Vložte následující hlavičky:
 
-        x-ms-version:2.15
+        x-ms-version:2.19
         Accept:application/json
         Content-Type:application/json
         DataServiceVersion:3.0
@@ -190,7 +190,7 @@ V této části se dozvíte,  jak získat přístup k rozhraní API assetů pomo
 
 Vrácená odpověď obsahuje prostředky, které jsou ve vašem účtu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Vyzkoušejte si tento vzorový kód [v ověřování Azure AD pro přístup k Azure Media Services: Jak přes REST API](https://github.com/willzhan/WAMSRESTSoln)
+* Vyzkoušejte si tento vzorový kód v [ověřování Azure AD pro přístup k Azure Media Services: přes REST API](https://github.com/willzhan/WAMSRESTSoln)
 * [Nahrávání souborů s využitím .NET](media-services-dotnet-upload-files.md)

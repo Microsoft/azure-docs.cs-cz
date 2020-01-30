@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: abafa00febe0431acf5c678cc179c6c114fa9179
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6a12d92c0cfb9d86ebf4c335c351944997f79b4e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472370"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773150"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>Kurz: použití souborů parametrů k nasazení šablony Správce prostředků
 
@@ -26,7 +26,7 @@ Musíte mít Visual Studio Code s rozšířením Správce prostředků Tools a b
 
 Vaše šablona má mnoho parametrů, které můžete během nasazení zadat. Na konci předchozího kurzu vaše šablona vypadala takto:
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json":::
 
 Tato šablona funguje dobře, ale nyní chcete snadno spravovat parametry, které předáváte pro šablonu.
 
@@ -36,13 +36,13 @@ Soubory parametrů jsou soubory JSON se strukturou, která je podobná vaší š
 
 V VS Code vytvořte nový soubor s následujícím obsahem. Uložte soubor s názvem **azuredeploy. Parameters. dev. JSON**.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json":::
 
 Tento soubor je vaším souborem parametrů pro vývojové prostředí. Všimněte si, že pro účet úložiště používá Standard_LRS, pojmenuje prostředky s předponou pro **vývoj** a nastaví značku **prostředí** na **dev**.
 
 Znovu vytvořte nový soubor s následujícím obsahem. Uložte soubor s názvem **azuredeploy. Parameters. prod. JSON**.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json":::
 
 Tento soubor je vaším souborem parametrů pro produkční prostředí. Všimněte si, že používá Standard_GRS pro účet úložiště, názvy prostředků s předponou **Contoso** a nastaví značku **prostředí** na **produkční**. V reálném produkčním prostředí byste také chtěli použít službu App Service s jinou skladovou jednotkou než bezplatnou, ale pro tento kurz bude tato SKU nadále používat.
 

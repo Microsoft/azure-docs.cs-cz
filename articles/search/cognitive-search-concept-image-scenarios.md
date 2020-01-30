@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f81bcd84dfb07958f3205f779937b8beac74166f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 98054060210f55803d6e2811e1f494fd3ff00e48
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113855"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76838254"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>Postup zpracování a extrakce informací z imagí ve scénářích obohacení AI
 
@@ -213,9 +213,9 @@ Pokud potřebujete transformovat normalizované souřadnice na původní souřad
         }
 ```
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 + [Vytvořit indexer (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
-+ [Analyzovat dovednost obrazu](cognitive-search-skill-image-analysis.md)
++ [Dovednost analýzy obrázků](cognitive-search-skill-image-analysis.md)
 + [Dovednost OCR](cognitive-search-skill-ocr.md)
 + [Dovednost sloučení textu](cognitive-search-skill-textmerger.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)

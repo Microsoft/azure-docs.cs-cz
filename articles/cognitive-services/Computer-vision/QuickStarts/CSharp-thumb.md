@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 10/05/2019
+ms.date: 01/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4b57ac945e43abfebc21b1749a7d1737768ff0e8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f79d4f2b31ffc83f2f137c1001780f0659c2c25b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770760"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774333"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-c"></a>Rychlý Start: vygenerujte miniaturu pomocí Počítačové zpracování obrazu REST API aC#
 

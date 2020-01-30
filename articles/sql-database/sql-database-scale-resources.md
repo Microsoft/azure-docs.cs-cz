@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: d367d9eedc06dbfe0e5096372a4f09c66ea35013
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c4366b2718271b1e27325e6946c5016e9230cea4
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462610"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835908"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Dynamické škálování prostředků databáze s minimálními výpadky
 
@@ -55,7 +55,8 @@ Všechny tři typy Azure SQL Database nabízejí určitou schopnost dynamicky š
 - [Spravovaná instance](sql-database-managed-instance.md) používá režim [virtuální jádra](sql-database-managed-instance.md#vcore-based-purchasing-model) a umožňuje definovat maximální počet jader procesoru a maximum úložiště přidělené vaší instanci. Všechny databáze v rámci instance budou sdílet prostředky přidělené instanci.
 - [Elastické fondy](sql-database-elastic-pool-scale.md) umožňují definovat maximální limit prostředků na skupinu databází ve fondu.
 
-Při inicializaci akce horizontálního navýšení nebo snížení kapacity v některém z těchto možností se restartuje proces databázového stroje a v případě potřeby ho přesune na jiný virtuální počítač. Přesunutí procesu databázového stroje do nového virtuálního počítače je **online proces** , kde můžete dál používat existující službu Azure SQL Database, zatímco probíhá proces. Jakmile je cílový databázový stroj plně inicializovaný a připravený ke zpracování dotazů, budou připojení [přepnuta ze zdrojového do cílového databázového stroje](sql-database-single-database-scale.md#impact-of-changing-service-tier-or-rescaling-compute-size).
+Při inicializaci akce horizontálního navýšení nebo snížení kapacity v některém z těchto možností se restartuje proces databázového stroje a v případě potřeby ho přesune na jiný virtuální počítač. Přesunutí procesu databázového stroje do nového virtuálního počítače je **online proces** , kde můžete dál používat existující službu Azure SQL Database, zatímco probíhá proces. Jakmile je cílový databázový stroj plně inicializovaný a připravený ke zpracování dotazů, budou připojení [přepnuta ze zdrojového do cílového databázového stroje](sql-database-single-database-scale.md#impact). 
+
 
 > [!NOTE]
 > Po dokončení procesu horizontálního navýšení nebo snížení kapacity je možné očekávat krátké přerušení připojení. Pokud jste implementovali [logiku opakování pro standardní přechodné chyby](sql-database-connectivity-issues.md#retry-logic-for-transient-errors), nebudete si poznamenat převzetí služeb při selhání.

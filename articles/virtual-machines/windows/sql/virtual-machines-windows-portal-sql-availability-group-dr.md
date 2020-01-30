@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 96b7c3cf59f947d1476ad840ae81695356d869b6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cd27e581aaca241fc15886f9f72546f92391b744
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037538"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772681"
 ---
 # <a name="configure-an-availability-group-on-azure-sql-server-virtual-machines-in-different-regions"></a>Konfigurace skupiny dostupnosti na virtuálních počítačích Azure SQL Server v různých oblastech
 
@@ -93,9 +93,26 @@ Pokud chcete vytvořit repliku ve vzdáleném datovém centru, proveďte násled
 
 1. [Přidejte novou SQL Server do clusteru s podporou převzetí služeb při selhání se systémem Windows Server](virtual-machines-windows-portal-sql-availability-group-tutorial.md#addNode).
 
-1. Vytvořte prostředek IP adresy v clusteru.
+1. Přidejte prostředek IP adresy do clusteru.
 
-   Prostředek IP adresy můžete vytvořit v Správce clusteru s podporou převzetí služeb při selhání. Klikněte pravým tlačítkem na roli skupiny dostupnosti, klikněte na **Přidat prostředek**, **Další prostředky**a klikněte na **IP adresa**.
+   Prostředek IP adresy můžete vytvořit v Správce clusteru s podporou převzetí služeb při selhání. Vyberte název clusteru, klikněte pravým tlačítkem na název clusteru v části **základní prostředky clusteru** a vyberte **vlastnosti**: 
+
+   ![Vlastnosti clusteru](./media/virtual-machines-windows-portal-sql-availability-group-dr/cluster-name-properties.png)
+
+   V dialogovém okně **vlastnosti** vyberte v části **IP adresa**možnost **Přidat** a potom přidejte IP adresu názvu clusteru z oblasti vzdálené sítě. V dialogovém okně **IP adresa** vyberte **OK** a potom v dialogovém okně **Vlastnosti clusteru** vyberte znovu **OK** . tím uložíte novou IP adresu. 
+
+   ![Přidat IP adresu clusteru](./media/virtual-machines-windows-portal-sql-availability-group-dr/add-cluster-ip-address.png)
+
+
+1. Přidejte IP adresu jako závislost pro základní název clusteru.
+
+   Otevřete vlastnosti clusteru ještě jednou a vyberte kartu **závislosti** . pro tyto dvě IP adresy NAKONFIGURUJTE závislost nebo: 
+
+   ![Vlastnosti clusteru](./media/virtual-machines-windows-portal-sql-availability-group-dr/cluster-ip-dependencies.png)
+
+1. Přidejte prostředek IP adresy do role skupiny dostupnosti v clusteru. 
+
+   Klikněte pravým tlačítkem na roli skupiny dostupnosti v Správce clusteru s podporou převzetí služeb při selhání, vyberte **Přidat prostředek**, **Další prostředky**a vyberte **IP adresa**.
 
    ![Vytvořit IP adresu](./media/virtual-machines-windows-portal-sql-availability-group-dr/20-add-ip-resource.png)
 
@@ -103,16 +120,6 @@ Pokud chcete vytvořit repliku ve vzdáleném datovém centru, proveďte násled
 
    - Použijte síť ze vzdáleného datového centra.
    - Přiřaďte IP adresu z nového nástroje pro vyrovnávání zatížení Azure. 
-
-1. Na novém SQL Server v SQL Server Configuration Manager [Povolit skupiny dostupnosti Always On](https://msdn.microsoft.com/library/ff878259.aspx).
-
-1. [Otevřete porty brány firewall na novém SQL Server](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall).
-
-   Čísla portů, která je třeba otevřít, závisí na vašem prostředí. Otevřete porty pro koncový bod zrcadlení a test stavu služby Azure Load Balancer.
-
-1. [Přidejte repliku do skupiny dostupnosti na novém SQL Server](https://msdn.microsoft.com/library/hh213239.aspx).
-
-   Pro repliku ve vzdálené oblasti Azure ji nastavte pro asynchronní replikaci s ručním převzetím služeb při selhání.  
 
 1. Přidejte prostředek IP adresy jako závislost pro cluster naslouchacího bodu přístupu klienta (síťový název).
 
@@ -137,6 +144,17 @@ Spusťte skript prostředí PowerShell s názvem sítě clusteru, IP adresou a p
 
    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
    ```
+
+1. Na novém SQL Server v SQL Server Configuration Manager [Povolit skupiny dostupnosti Always On](/sql/database-engine/availability-groups/windows/enable-and-disable-always-on-availability-groups-sql-server).
+
+1. [Otevřete porty brány firewall na novém SQL Server](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall).
+
+   Čísla portů, která je třeba otevřít, závisí na vašem prostředí. Otevřete porty pro koncový bod zrcadlení a test stavu služby Azure Load Balancer.
+
+
+1. [Přidejte repliku do skupiny dostupnosti na novém SQL Server](/sql/database-engine/availability-groups/windows/use-the-add-replica-to-availability-group-wizard-sql-server-management-studio).
+
+   Pro repliku ve vzdálené oblasti Azure ji nastavte pro asynchronní replikaci s ručním převzetím služeb při selhání.  
 
 ## <a name="set-connection-for-multiple-subnets"></a>Nastavení připojení pro více podsítí
 
@@ -166,9 +184,9 @@ Po otestování připojení přesuňte primární repliku zpátky do svého prim
 
 | Umístění | Instance serveru | Role | Režim dostupnosti | Režim převzetí služeb při selhání
 | ----- | ----- | ----- | ----- | -----
-| Primární datové centrum | SQL-1 | Primární | Synchronizace | Automatické
-| Primární datové centrum | SQL-2 | Sekundární | Synchronizace | Automatické
-| Sekundární nebo vzdálené datové centrum | SQL-3 | Sekundární | Asynchronně | Ručně
+| Primární datové centrum | SQL-1 | Primární | Synchronizace | Automaticky
+| Primární datové centrum | SQL-2 | Sekundární | Synchronizace | Automaticky
+| Sekundární nebo vzdálené datové centrum | SQL-3 | Sekundární | Asynchronně | Manual
 
 
 ### <a name="more-information-about-planned-and-forced-manual-failover"></a>Další informace o plánovaném a vynuceném ručním převzetí služeb při selhání

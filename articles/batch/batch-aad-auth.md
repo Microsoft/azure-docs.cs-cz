@@ -12,14 +12,14 @@ ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 08/15/2019
+ms.date: 01/28/2020
 ms.author: jushiman
-ms.openlocfilehash: 56fcd5a8a02e292fdf43f9d22f3987813bce0743
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: ce3582539d6130e13ef205806d780164ba70c4fe
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029827"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842533"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Ověřování řešení služby Batch ve službě Active Directory
 
@@ -119,7 +119,7 @@ Pokud chcete ověřit aplikaci, která běží bez obsluhy, použijte instančn�
 
 Když se vaše aplikace ověřuje pomocí instančního objektu, pošle ID aplikace i tajný kód do Azure AD. Budete muset vytvořit a zkopírovat tajný klíč, který chcete použít z kódu.
 
-Na webu Azure Portal postupujte podle těchto pokynů:
+Postupujte podle následujících kroků v Azure Portal:
 
 1. V levém navigačním podokně Azure Portal vyberte **všechny služby**. Vyberte **Registrace aplikací**.
 1. Vyberte svou aplikaci ze seznamu registrací aplikací.
@@ -143,6 +143,67 @@ K ověřování pomocí instančního objektu je potřeba přiřadit k aplikaci 
 Vaše aplikace by se teď měla zobrazit v nastavení řízení přístupu s přiřazenou rolí RBAC.
 
 ![Přiřazení role RBAC vaší aplikaci](./media/batch-aad-auth/app-rbac-role.png)
+
+### <a name="assign-a-custom-role"></a>Přiřazení vlastní role
+
+Vlastní role uděluje podrobné oprávnění uživateli k odesílání úloh, úloh a dalších funkcí. Díky tomu je možné zabránit uživatelům v provádění operací, které mají vliv na náklady, jako je vytváření fondů nebo změna uzlů.
+
+Vlastní roli můžete použít k udělení oprávnění uživateli, skupině nebo instančnímu objektu služby Azure AD pro následující operace RBAC:
+
+- Microsoft. Batch/batchAccounts/Pools/Write
+- Microsoft. Batch/batchAccounts/Pools/DELETE
+- Microsoft. Batch/batchAccounts/Pools/Read
+- Microsoft. Batch/batchAccounts/jobSchedules/Write
+- Microsoft. Batch/batchAccounts/jobSchedules/DELETE
+- Microsoft. Batch/batchAccounts/jobSchedules/Read
+- Microsoft. Batch/batchAccounts/Jobs/Write
+- Microsoft. Batch/batchAccounts/Jobs/DELETE
+- Microsoft. Batch/batchAccounts/Jobs/Read
+- Microsoft. Batch/batchAccounts/Certificates/Write
+- Microsoft. Batch/batchAccounts/Certificates/DELETE
+- Microsoft. Batch/batchAccounts/Certificates/Read
+- Microsoft. Batch/batchAccounts/Read (pro jakoukoliv operaci čtení)
+- Microsoft. Batch/batchAccounts/klíče listkey/Action (pro všechny operace)
+
+Vlastní role jsou pro uživatele ověřené službou Azure AD, nikoli přihlašovací údaje k účtu Batch (sdílený klíč). Všimněte si, že přihlašovací údaje účtu Batch poskytují úplný přístup k účtu Batch. Všimněte si také, že úlohy využívající autopool vyžadují oprávnění na úrovni fondu.
+
+Tady je příklad definice vlastní role:
+
+```json
+{
+ "properties":{
+    "roleName":"Azure Batch Custom Job Submitter",
+    "type":"CustomRole",
+    "description":"Allows a user to submit jobs to Azure Batch but not manage pools",
+    "assignableScopes":[
+      "/subscriptions/88888888-8888-8888-8888-888888888888"
+    ],
+    "permissions":[
+      {
+        "actions":[
+          "Microsoft.Batch/*/read",
+          "Microsoft.Authorization/*/read",
+          "Microsoft.Resources/subscriptions/resourceGroups/read",
+          "Microsoft.Support/*",
+          "Microsoft.Insights/alertRules/*"
+        ],
+        "notActions":[
+
+        ],
+        "dataActions":[
+          "Microsoft.Batch/batchAccounts/jobs/*",
+          "Microsoft.Batch/batchAccounts/jobSchedules/*"
+        ],
+        "notDataActions":[
+
+        ]
+      }
+    ]
+  }
+}
+```
+
+Obecnější informace o vytvoření vlastní role najdete v tématu [vlastní role pro prostředky Azure](../role-based-access-control/custom-roles.md).
 
 ### <a name="get-the-tenant-id-for-your-azure-active-directory"></a>Získání ID tenanta pro Azure Active Directory
 

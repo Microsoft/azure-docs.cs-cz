@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 2453b29c5efd768930f534df89d4c62320ed4770
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 3bd13a63c3f4fa275f7e4789c184802445519388
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965344"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772608"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Konfigurace SQL Server instance clusteru s podporou převzetí služeb při selhání se službou Premium na virtuálních počítačích Azure
 
@@ -77,13 +77,15 @@ Před dokončením kroků v tomto článku byste už měli mít:
 
 - Microsoft Azure předplatné.
 - Doména Windows na virtuálních počítačích Azure.
-- Účet, který má oprávnění k vytváření objektů na virtuálních počítačích Azure i ve službě Active Directory.
+- Účet uživatele domény, který má oprávnění k vytváření objektů na virtuálních počítačích Azure i ve službě Active Directory.
+- Doménový uživatelský účet pro spuštění služby SQL Server a přihlášení k virtuálnímu počítači pomocí při připojování sdílené složky.  
 - Virtuální síť Azure a podsíť s dostatkem adresního prostoru IP adres pro tyto součásti:
    - Dva virtuální počítače.
    - IP adresa clusteru s podporou převzetí služeb při selhání.
    - IP adresa pro každý FCI.
 - Služba DNS konfigurovaná na síti Azure odkazuje na řadiče domény.
-- [Prémiová sdílená složka](../../../storage/files/storage-how-to-create-premium-fileshare.md) na základě kvóty úložiště vaší databáze pro vaše datové soubory.
+- [Prémiová sdílená složka](../../../storage/files/storage-how-to-create-premium-fileshare.md) , která se má použít jako clusterovaná jednotka, na základě kvóty úložiště vaší databáze pro datové soubory.
+- Pokud jste na Windows Serveru 2012 R2 a starší verzi, budete potřebovat jinou sdílenou složku, která se použije jako určující sdílená složka, protože pro systémy Windows 2016 a novější jsou podporované sdílené složky cloudových souborů. Můžete použít jinou sdílenou složku Azure, nebo můžete použít sdílenou složku na samostatném virtuálním počítači. Pokud se chystáte použít jinou sdílenou složku Azure, můžete ji připojit ke stejnému procesu jako pro sdílenou složku Premium použitou pro clusterovou jednotku. 
 
 V rámci těchto požadavků můžete začít vytvářet cluster s podporou převzetí služeb při selhání. Prvním krokem je vytvoření virtuálních počítačů.
 
@@ -143,7 +145,7 @@ V rámci těchto požadavků můžete začít vytvářet cluster s podporou pře
    1. Vyberte výchozí instanci.
    1. Odeberte všechny funkce ve **službě databázového stroje**. Neodstraňujte **sdílené funkce**. Uvidíte něco podobného jako na následujícím snímku obrazovky:
 
-        ![Vybrat funkce](./media/virtual-machines-windows-portal-sql-create-failover-cluster/03-remove-features.png)
+        ![Výběr funkcí](./media/virtual-machines-windows-portal-sql-create-failover-cluster/03-remove-features.png)
 
    1. Vyberte **Další**a pak vyberte **Odebrat**.
 
@@ -180,7 +182,8 @@ Po vytvoření a konfiguraci virtuálních počítačů můžete nakonfigurovat 
 1. Tento postup opakujte na každém virtuálním počítači s SQL Server, který se bude podílet na clusteru.
 
   > [!IMPORTANT]
-  > Zvažte použití samostatné sdílené složky pro záložní soubory k uložení IOPS a kapacity prostoru této sdílené složky pro data a soubory protokolů. Pro záložní soubory můžete použít buď prémiovou, nebo standardní souborovou sdílenou složku.
+  > - Zvažte použití samostatné sdílené složky pro záložní soubory k uložení IOPS a kapacity prostoru této sdílené složky pro data a soubory protokolů. Pro záložní soubory můžete použít buď prémiovou, nebo standardní souborovou sdílenou složku.
+  > - Pokud používáte systém Windows 2012 R2 a starší, připojte ke sdílené složce, kterou budete používat jako určující sdílenou složku, pomocí těchto stejných kroků. 
 
 ## <a name="step-3-configure-the-failover-cluster-with-the-file-share"></a>Krok 3: konfigurace clusteru s podporou převzetí služeb při selhání se sdílenou složkou
 
@@ -189,7 +192,7 @@ Dalším krokem je konfigurace clusteru s podporou převzetí služeb při selh�
 1. Přidejte funkci Clustering s podporou převzetí služeb při selhání Windows serveru.
 1. Ověřte cluster.
 1. Vytvořte cluster s podporou převzetí služeb při selhání.
-1. Vytvořte disk s kopií cloudu.
+1. Vytvořte soubor s kopií cloudu (pro Windows Server 2016 a novější) nebo určující sdílenou složku (pro Windows Server 2012 R2 a starší).
 
 
 ### <a name="add-windows-server-failover-clustering"></a>Přidat Clustering s podporou převzetí služeb při selhání Windows serveru
@@ -263,9 +266,9 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 ```
 
 
-### <a name="create-a-cloud-witness"></a>Vytvoření určujícího cloudu
+### <a name="create-a-cloud-witness-win-2016-"></a>Vytvoření určujícího cloudu (Win 2016 +)
 
-Disk s kopií cloudu je nový typ určujícího disku kvora clusteru, který je uložený v objektu BLOB služby Azure Storage. Tím se eliminuje nutnost samostatného virtuálního počítače, který je hostitelem sdílené složky s kopií clusteru.
+Pokud používáte Windows Server 2016 a novější, budete muset vytvořit cloudový disk s kopií clusteru. Disk s kopií cloudu je nový typ určujícího disku kvora clusteru, který je uložený v objektu BLOB služby Azure Storage. Tím se odstraní nutnost samostatného virtuálního počítače, který hostuje sdílenou složku s kopií clusteru, nebo použijete samostatnou sdílenou složku.
 
 1. [Vytvořte určující Cloud pro cluster s podporou převzetí služeb při selhání](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness).
 
@@ -273,7 +276,11 @@ Disk s kopií cloudu je nový typ určujícího disku kvora clusteru, který je 
 
 1. Uložte přístupové klíče a adresu URL kontejneru.
 
-1. Nakonfigurujte určující disk kvora clusteru s podporou převzetí služeb při selhání Viz [Konfigurace určujícího disku kvora v uživatelském rozhraní](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness).
+### <a name="configure-quorum"></a>Konfigurace kvora 
+
+V případě systému Windows Server 2016 a vyšší Nakonfigurujte cluster tak, aby používal diskovou kopii, kterou jste právě vytvořili. Postupujte podle všech kroků a [nakonfigurujte určující disk kvora v uživatelském rozhraní](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness).
+
+Pro Windows Server 2012 R2 a starší použijte stejný postup v části [Konfigurace určujícího disku kvora v uživatelském rozhraní](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness) , ale na stránce **Vybrat určující disk kvora** vyberte možnost **Konfigurovat sdílenou složku pro sdílení souborů** . Zadejte sdílenou složku, kterou jste přidělili jako určující sdílenou složku, ať už se jedná o jednu nakonfigurovanou na samostatném virtuálním počítači nebo připojenou z Azure. 
 
 
 ## <a name="step-4-test-cluster-failover"></a>Krok 4: testování převzetí služeb při selhání clusteru
@@ -296,7 +303,7 @@ Po dokončení konfigurace clusteru s podporou převzetí služeb při selhání
 
 1. Vyberte **nový SQL Server instalace clusteru s podporou převzetí služeb při selhání**. Podle pokynů v průvodci nainstalujte SQL Server FCI.
 
-   Datové adresáře FCI musí být ve sdílené souborové složce Premium. Zadejte úplnou cestu ke sdílené složce v tomto formátu: `\\storageaccountname.file.core.windows.net\filesharename\foldername`. Zobrazí se upozornění s oznámením, že jste jako datový adresář zadali souborový server. Toto upozornění je očekávané. Ujistěte se, že účet, pomocí kterého sdílená složka trvala, je stejný účet, který služba SQL Server používá, aby se předešlo možným chybám.
+   Datové adresáře FCI musí být ve sdílené souborové složce Premium. Zadejte úplnou cestu ke sdílené složce v tomto formátu: `\\storageaccountname.file.core.windows.net\filesharename\foldername`. Zobrazí se upozornění s oznámením, že jste jako datový adresář zadali souborový server. Toto upozornění je očekávané. Ujistěte se, že uživatelský účet, který jste k virtuálnímu počítači RDP, v případě, že jste zachovali sdílenou složku, je stejný účet, který služba SQL Server používá, aby nedocházelo k případným chybám.
 
    :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share/use-file-share-as-data-directories.png" alt-text="Použít sdílení souborů jako datové adresáře SQL":::
 
@@ -356,7 +363,7 @@ Vytvoření nástroje pro vyrovnávání zatížení:
 
 1. Výběrem **OK** vytvořte fond back-end.
 
-### <a name="configure-a-load-balancer-health-probe"></a>Nakonfigurovat sondu stavu nástroje pro vyrovnávání zatížení
+### <a name="configure-a-load-balancer-health-probe"></a>Konfigurace sondy stavu nástroje pro vyrovnávání zatížení
 
 1. V okně nástroje pro vyrovnávání zatížení vyberte **sondy stavu**.
 
@@ -430,7 +437,7 @@ Po nastavení sondy clusteru můžete zobrazit všechny parametry clusteru v pro
 
 ## <a name="step-8-test-fci-failover"></a>Krok 8: testování převzetí služeb při selhání FCI
 
-Testovací převzetí služeb při selhání pro FCI k ověření funkčnosti clusteru. Postupujte následovně:
+Testovací převzetí služeb při selhání pro FCI k ověření funkčnosti clusteru. Proveďte následující kroky:
 
 1. Připojte se k jednomu z SQL Server uzlů clusteru FCI pomocí protokolu RDP.
 

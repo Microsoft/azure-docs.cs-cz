@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1a839c86a717122778f736f01fea4bdd08da8945
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: e27288f95f07c481ab98a112ed9f02a34046600a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949554"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835789"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování Azure Active Directory technického profilu ve vlastních zásadách Azure Active Directory B2C
 
@@ -260,8 +260,8 @@ Následující technický profil odstraní účet uživatele sociální sítě p
 | UserMessageIfClaimsPrincipalDoesNotExist | Ne | Pokud se má vykazovat chyba (viz popis atributu RaiseErrorIfClaimsPrincipalDoesNotExist), zadejte zprávu, která se zobrazí uživateli, pokud objekt uživatele neexistuje. Hodnota může být [lokalizována](localization.md).|
 | RaiseErrorIfClaimsPrincipalAlreadyExists | Ne | Vyvolá chybu, pokud objekt uživatele již existuje. Možné hodnoty: `true` nebo `false`.|
 | UserMessageIfClaimsPrincipalAlreadyExists | Ne | Pokud má být vyvolána chyba (viz popis atributu RaiseErrorIfClaimsPrincipalAlreadyExists), zadejte zprávu, která se zobrazí uživateli, pokud již objekt uživatele existuje. Hodnota může být [lokalizována](localization.md).|
-| ApplicationObjectId | Ne | Identifikátor objektu aplikace pro atributy rozšíření. Hodnota: ObjectId objektu aplikace. Další informace najdete v tématu [použití vlastních atributů v zásadách úprav vlastního profilu](active-directory-b2c-create-custom-attributes-profile-edit-custom.md). |
-| ClientId | Ne | Identifikátor klienta pro přístup k tenantovi jako třetí strana. Další informace najdete v tématu [použití vlastních atributů v zásadách úprav vlastního profilu](active-directory-b2c-create-custom-attributes-profile-edit-custom.md) . |
+| ApplicationObjectId | Ne | Identifikátor objektu aplikace pro atributy rozšíření. Hodnota: ObjectId objektu aplikace. Další informace najdete v tématu [použití vlastních atributů v zásadách úprav vlastního profilu](custom-policy-custom-attributes.md). |
+| ClientId | Ne | Identifikátor klienta pro přístup k tenantovi jako třetí strana. Další informace najdete v tématu [použití vlastních atributů v zásadách úprav vlastního profilu](custom-policy-custom-attributes.md) . |
 
 
 

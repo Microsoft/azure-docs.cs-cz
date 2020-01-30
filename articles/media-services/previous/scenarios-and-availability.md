@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 1bdca9de0bb6fea608f2a30aa9928f2518fc9dce
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ef8596d8dcc9502f590c55223f207e71f5b91cf6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978164"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843935"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scénáře a dostupnost funkcí služby Media Services v datových centrech
 
@@ -33,11 +33,11 @@ V tomto tématu najdete běžné scénáře pro doručování obsahu v [reálné
 
 ## <a name="overview"></a>Přehled
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Pokud chcete začít používat Azure Media Services, potřebujete následující:
 
-* Účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v tématu [Bezplatná zkušební verze Azure](https://azure.microsoft.com).
+* Účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com).
 * Účet Azure Media Services. Další informace najdete v článku o [vytvoření účtu](media-services-portal-create-account.md).
 * Koncový bod streamování, ze kterého chcete streamovat obsah, musí být ve stavu **Spuštěno**.
 
@@ -211,9 +211,8 @@ Media Analytics je kolekce řečových a vizuálních komponent, které organiza
 |Azure Media Indexer|GA|Všechno|
 |Azure Media Motion Detector|Preview|Všechno|
 |Azure Media OCR|Preview|Všechno|
-|Azure Media Redactor|Preview|Všechno|
+|Azure Media Redactor|GA|Všechno|
 |Azure Media Video Thumbnails|Preview|Všechno|
-|Azure Media Indexer 2|Preview|Všechny s výjimkou Číny a oblasti federální vlády|
 
 ### <a name="protection"></a>Ochrana
 
@@ -223,7 +222,7 @@ Microsoft Azure Media Services umožňuje zabezpečení médií od okamžiku opu
 
 |Šifrování|Stav|Datacentra|
 |---|---|---| 
-|Úložiště|GA|Všechno|
+|Storage|GA|Všechno|
 |Klíče AES-128|GA|Všechno|
 |FairPlay|GA|Všechno|
 |PlayReady|GA|Všechno|

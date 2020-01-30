@@ -2,25 +2,23 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 11/27/2018
+ms.date: 01/13/2020
 ms.author: glenga
-ms.openlocfilehash: 031a460862cf12efa02c139074e5a7066f0526c6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c6579b8b091f9053e1e64be3793d17953e464a16
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174805"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842121"
 ---
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Než můžete aplikaci publikovat, musíte se přihlásit do Azure.
+Než můžete aplikaci publikovat, musíte se přihlásit do Azure. Pokud jste už přihlášení, přečtěte si další část.
 
-1. V **Azure: Funkce** oblasti, zvolte **přihlášení do Azure...** . Pokud ještě žádný nemáte, můžete si **vytvořit bezplatný účet Azure**.
+1. Zvolte ikonu Azure na řádku aktivity a potom v oblasti **Azure: funkce** zvolte **Přihlásit se k Azure...** . Pokud ho ještě nemáte, můžete si **vytvořit bezplatný účet Azure**.
 
     ![Odezva místního hostitele funkce v prohlížeči](./media/functions-sign-in-vs-code/functions-sign-into-azure.png)
 
-1. Po zobrazení výzvy vyberte **Kopírovat a otevřít**, nebo zkopírujte zobrazený kód a otevřete <https://aka.ms/devicelogin> v prohlížeči.
+1. Po zobrazení výzvy v prohlížeči vyberte svůj účet Azure a přihlaste se pomocí svých přihlašovacích údajů k účtu Azure. 
 
-1. Vložte zkopírovaný kód v **přihlášení na zařízení** stránce, ověřte přihlášení pro Visual Studio Code a pak vyberte **pokračovat**.  
-
-1. Proveďte přihlášení pomocí přihlašovacích údajů svého účtu Azure. Po úspěšném přihlášení můžete prohlížeč zavřít.
+1. Po úspěšném přihlášení můžete zavřít nové okno prohlížeče. Předplatná, která patří k vašemu účtu Azure, se zobrazí na bočním panelu.

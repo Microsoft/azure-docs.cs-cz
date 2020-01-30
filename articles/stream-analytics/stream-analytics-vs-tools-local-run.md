@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
-ms.openlocfilehash: c4854d050cce18082def436243a669ba09c474ad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 34c8555356d5c0142d7b677c8119fe66806ab064
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369656"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834901"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>Testování Stream Analytics dotazů v místním prostředí se sadou Visual Studio
 
@@ -71,7 +71,6 @@ Průběh můžete zobrazit v okně **výstup** .
 ![Výstup ukázkových dat](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-03.png)
 
 ## <a name="next-steps"></a>Další kroky
-
 
 * [Rychlý Start: vytvoření úlohy Stream Analytics pomocí sady Visual Studio](stream-analytics-quick-create-vs.md)
 * [Chcete-li zobrazit úlohy Azure Stream Analytics pomocí sady Visual Studio](stream-analytics-vs-tools.md)

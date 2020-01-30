@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2019
-ms.openlocfilehash: c8051126fc4a895c6e72e90942fac65d777afd8e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.date: 01/27/2020
+ms.openlocfilehash: be6fd633f026c98e8f75467dc8661e695e121721
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546482"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841263"
 ---
 # <a name="summarize-data"></a>Sumarizace dat
 
@@ -46,7 +46,7 @@ Modul vypočítá důležité skóre pro jednotlivé sloupce a vrátí řádek s
 
 Sestava z modulu může zahrnovat následující statistiky. 
 
-|Název sloupce|Popis|
+|název sloupce|Popis|
 |------|------|  
 |**Funkce**|Název sloupce|
 |**Výpočtu**|Počet všech řádků|
@@ -59,7 +59,7 @@ Sestava z modulu může zahrnovat následující statistiky.
 |**1. kvartil**|Hodnota při první kvartil|
 |**Medián**|Hodnota sloupce mediánu|
 |**třetí kvartil**|Hodnota při třetí kvartil|
-|**Režim**|Režim hodnot sloupců|
+|**Mode**|Režim hodnot sloupců|
 |**Rozsah**|Celé číslo představující počet hodnot mezi maximální a minimální hodnotou|
 |**Odchylka vzorku**|Variance pro sloupec; Viz Poznámka|
 |**Vzorová směrodatná odchylka**|Směrodatná odchylka pro sloupec; Viz Poznámka|
@@ -70,6 +70,20 @@ Sestava z modulu může zahrnovat následující statistiky.
 |**P5**|5% percentil|
 |**P95**|95% percentil|
 |**P 99,5**|99,5% percentil |
+
+## <a name="technical-notes"></a>Technické poznámky
+
+- Pro nečíselné sloupce jsou vypočítány pouze hodnoty pro počet, jedinečný počet hodnot a chybějící počet hodnot. Pro jiné statistiky se vrátí hodnota null.
+
+- Sloupce, které obsahují logické hodnoty, jsou zpracovávány pomocí těchto pravidel:
+
+    - Při výpočtu hodnoty min, je použita logická a.
+    
+    - Při výpočtu hodnoty Max, logického nebo se použije
+    
+    - Při výpočtu rozsahu modul nejprve ověří, zda se počet jedinečných hodnot ve sloupci rovná 2.
+    
+    - Při výpočtu jakýchkoli statistik, které vyžadují výpočty s plovoucí desetinnou čárkou, jsou hodnoty true považovány za 1,0 a hodnoty false jsou považovány za 0,0.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf9372cfc89aca3285128c96c1b7e6756ba42cda
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 306407252a6f5bc4071947b6aafa2d50bccc97a8
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026218"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842729"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Trvalá data úloh a úloh pro Azure Storage s knihovnou konvence souborů Batch pro .NET
 
@@ -46,7 +46,7 @@ Pokud se váš scénář liší od výše uvedených výše, možná budete muse
 
 ## <a name="what-is-the-batch-file-conventions-standard"></a>Jaké jsou standardní konvence souborů pro dávkové soubory?
 
-[Standardní zásady pro soubory služby Batch](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions) poskytují schéma pojmenování pro cílové kontejnery a cesty objektů blob, na které se zapisují vaše výstupní soubory. Soubory trvalé pro Azure Storage, které vyhovují standardům souborů, jsou automaticky k dispozici pro zobrazení v Azure Portal. Portál ví o konvenci vytváření názvů a může tak zobrazit soubory, které s ním vyhovují.
+[Standardní zásady pro soubory služby Batch](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files) poskytují schéma pojmenování pro cílové kontejnery a cesty objektů blob, na které se zapisují vaše výstupní soubory. Soubory trvalé pro Azure Storage, které vyhovují standardům souborů, jsou automaticky k dispozici pro zobrazení v Azure Portal. Portál ví o konvenci vytváření názvů a může tak zobrazit soubory, které s ním vyhovují.
 
 Knihovna konvence souborů pro .NET automaticky pojmenuje kontejnery úložiště a výstupní soubory úloh podle standardu souborů. Knihovna konvence souborů také poskytuje metody pro dotazování na výstupní soubory v Azure Storage podle ID úlohy, ID úlohy nebo účelu.
 
@@ -228,15 +228,15 @@ Knihovna konvence souborů služby Batch pro .NET je dostupná na [NuGet][nuget_
 - Informace o tom, jak používat rozhraní API služby Batch k uchovávání výstupních dat, najdete v tématu [zachování dat úkolu pro Azure Storage s rozhraním API služby Batch](batch-task-output-files.md) .
 
 [forum_post]: https://social.msdn.microsoft.com/Forums/en-US/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
-[github_file_conventions]: https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/Batch/FileConventions
-[github_file_conventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/AutoRest/src/Batch/FileConventions/README.md
+[github_file_conventions]: https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files
+[github_file_conventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files/README.md
 [github_persistoutputs]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [net_batchclient]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient.aspx
 [net_cloudjob]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.aspx
 [net_cloudstorageaccount]: https://docs.microsoft.com/java/api/com.microsoft.azure.storage._cloud_storage_account
 [net_cloudtask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
-[net_fileconventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/AutoRest/src/Batch/FileConventions/README.md
+[net_fileconventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files/README.md
 [net_joboutputkind]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputkind.aspx
 [net_joboutputstorage]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputstorage.aspx
 [net_joboutputstorage_saveasync]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputstorage.saveasync.aspx

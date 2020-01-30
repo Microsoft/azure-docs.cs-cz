@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 2c6986409f4cd9ad7e5799a55c4c301e51d5e879
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8942ad8bdc4f9fc37a88d09871c983f63cd8c1b9
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74968166"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773703"
 ---
 # <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>Dynamické šifrování: Konfigurace zásad autorizace klíče obsahu  
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -35,7 +35,7 @@ Služba Media Services podporuje více způsobů ověřování uživatelů, kte�
 
 Media Services neposkytuje službu STS. Můžete vytvořit vlastní STS nebo použít Azure Active Directory (Azure AD) k vydávání tokenů. Služba STS musí být nakonfigurovaná tak, aby vytvořila token podepsaný pomocí zadaného klíče a vydávala deklarace identity, které jste zadali v konfiguraci omezení tokenu (jak je popsáno v tomto článku). Pokud je token platný a deklarace identity v tokenu odpovídají nastavením nakonfigurovaným pro klíč obsahu, služba doručování Media Services Key vrátí šifrovací klíč klientovi.
 
-Další informace najdete v následujících článcích:
+Další informace najdete v těchto článcích:
 - [Ověřování tokenu JWT](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
 - [Integrace aplikace založené na Azure Media Services OWIN MVC s Azure Active Directory a omezení doručování klíčů obsahu na základě deklarací JWT](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
 
@@ -73,7 +73,7 @@ Požadavek:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: d732dbfa-54fc-474c-99d6-9b46a006f389
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 36
@@ -109,7 +109,7 @@ Požadavek:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: d225e357-e60e-4f42-add8-9d93aba1409a
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 168
@@ -145,7 +145,7 @@ Požadavek:
     Accept-Charset: UTF-8
     Content-Type: application/json
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 9847f705-f2ca-4e95-a478-8f823dbbaa29
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 154
@@ -166,7 +166,7 @@ Požadavek:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: e613efff-cb6a-41b4-984a-f4f8fb6e76a4
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 78
@@ -248,7 +248,7 @@ Požadavek:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 2643d836-bfe7-438e-9ba2-bc6ff28e4a53
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 1079
@@ -300,7 +300,7 @@ Požadavek:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 9e7fa407-f84e-43aa-8f05-9790b46e279b
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 58
@@ -337,7 +337,7 @@ Požadavek:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: f160ad25-b457-4bc6-8197-315604c5e585
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 593
@@ -385,7 +385,7 @@ Požadavek:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: ab079b0e-2ba9-4cf1-b549-a97bfa6cd2d3
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 1525
@@ -444,7 +444,7 @@ Přidejte AuthorizationPolicy do ContentKey, jak je znázorněno v části[Přid
 
 * Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
 
-## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
+## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu

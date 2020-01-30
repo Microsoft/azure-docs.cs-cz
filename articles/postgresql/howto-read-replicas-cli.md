@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/23/2020
-ms.openlocfilehash: bb2c83757bd86d02a93c52bacdd03ce89186614e
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: b10ac3b4bc9dacd723b8b1265911df721b781189
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719768"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774810"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Vytváření a Správa replik pro čtení z Azure CLI, REST API
 
@@ -38,8 +38,8 @@ Parametr `azure.replication_support` musí být nastaven na **repliku** na hlavn
    ```
 
 > [!NOTE]
-> Pokud se při pokusu o nastavení Azure. replication_support z rozhraní příkazového řádku Azure zobrazí chybová zpráva "Neplatná hodnota", je nejspíš, že server už má ve výchozím nastavení REPLIKu. Chyba zabraňuje tomu, aby se toto nastavení správně projevilo na novějších serverech, kde je REPLIKa interní výchozí.
-> Můžete přeskočit kroky připravit hlavní krok a přejít k části Vytvoření repliky.
+> Pokud se při pokusu o nastavení Azure. replication_support z rozhraní příkazového řádku Azure zobrazí chybová zpráva "Neplatná hodnota", je nejspíš, že server už má ve výchozím nastavení REPLIKu. Chyba zabraňuje tomu, aby se toto nastavení správně projevilo na novějších serverech, kde je REPLIKa interní výchozí. <br><br>
+> Můžete přeskočit kroky připravit hlavní krok a přejít k části Vytvoření repliky. <br><br>
 > Pokud se chcete ujistit, že je server v této kategorii, přejděte na stránku replikace serveru v Azure Portal. Možnost zakázat replikaci se zobrazí šedě a na panelu nástrojů bude aktivní možnost přidat repliku.
 
 2. Restartujte server, aby se změna projevila.

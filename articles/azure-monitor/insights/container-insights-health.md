@@ -3,12 +3,12 @@ title: Monitorování stavu clusteru Kubernetes s využitím Azure Monitor pro k
 description: Tento článek popisuje, jak můžete zobrazit a analyzovat stav svých clusterů AKS a non-AKS pomocí Azure Monitor for Containers.
 ms.topic: conceptual
 ms.date: 12/01/2019
-ms.openlocfilehash: 9ee710eb916923756633e65f3287751ba9a9dde3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f50ef13efca78bbb5285b99759b8111dc1915ad0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405098"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843986"
 ---
 # <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Pochopení stavu clusteru AKS pomocí služby Azure Monitor pro kontejnery
 
@@ -23,7 +23,7 @@ Informace o tom, jak povolit Azure Monitor pro kontejnery, najdete v tématu př
 >[!NOTE]
 >Pro podporu clusterů modulu AKS ověřte, že splňuje tyto požadavky:
 >- Používá nejnovější verzi [klienta Helm](https://helm.sh/docs/using_helm/).
->- Verze agenta s kontejnerem je *Microsoft/OMS: ciprod11012019*. Chcete-li upgradovat agenta, přečtěte si téma [Upgrade agenta v clusteru Kubernetes](container-insights-manage-agent.md#upgrading-agent-on-monitored-kubernetes-cluster).
+>- Verze agenta s kontejnerem je *Microsoft/OMS: ciprod11012019*. Chcete-li upgradovat agenta, přečtěte si téma [Upgrade agenta v clusteru Kubernetes](container-insights-manage-agent.md#upgrade-agent-on-monitored-kubernetes-cluster).
 >
 
 ## <a name="overview"></a>Přehled
@@ -48,13 +48,13 @@ Všechna monitorování se zobrazují v hierarchickém rozložení v podokně hi
 * Vyhodnotit využití paměti z uzlu a kontejneru.
 * Stav lusků a uzlů na základě výpočtu stavu připraveného pomocí Kubernetes.
 
-Toto jsou ikony používané k označení stavu:
+Následující ikony slouží k indikaci stavu:
 
 |Ikona|Význam|  
 |--------|-----------|  
-|![Zelená ikona zaškrtnutí označující bezvadný stav](./media/container-insights-health/healthyicon.png)|Úspěch, stav je OK (zelený)|  
-|![Žlutý trojúhelník a vykřičník představující upozornění](./media/container-insights-health/warningicon.png)|Varování (žlutý)|  
-|![Červené tlačítko s bílým symbolem X označující kritický stav](./media/container-insights-health/criticalicon.png)|Kritický (červený)|  
+|![Zelená ikona check indikuje v pořádku](./media/container-insights-health/healthyicon.png)|Úspěch, stav je OK (zelený)|  
+|![Žlutý trojúhelník a vykřičník se označují jako upozornění.](./media/container-insights-health/warningicon.png)|Upozornění (žlutá)|  
+|![Červené tlačítko s bílým symbolem X označující kritický stav](./media/container-insights-health/criticalicon.png)|Kritická (červená)|  
 |![Ikona šedá](./media/container-insights-health/grayicon.png)|Neznámé (šedá)|  
 
 ## <a name="monitor-configuration"></a>Konfigurace monitorování

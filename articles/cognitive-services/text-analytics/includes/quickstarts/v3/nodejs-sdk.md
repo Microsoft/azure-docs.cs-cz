@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 01/13/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: 69899f521e73cb5af1af145a0915dbe1a017f307
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 8ae78bb8c0b70e20bfe12b8dc52c02abb6030bdf
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281136"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774130"
 ---
 <a name="HOLTop"></a>
 
@@ -22,6 +22,7 @@ ms.locfileid: "76281136"
 
 > [!NOTE]
 > * V tomto rychlém startu se používá `3.0-preview` verze Analýza textu klientské knihovny, která zahrnuje verzi Public Preview pro vylepšené [Analýza mínění](../../../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) a [rozpoznávání pojmenovaných entit (ner)](../../../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features).
+>
 > * Kód v tomto článku používá nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. V produkčních scénářích doporučujeme odesílat řetězce v dávkách pro zajištění výkonu a škálovatelnosti. Například volání `SentimentBatchAsync()` namísto `Sentiment()`.
 
 ## <a name="prerequisites"></a>Požadavky
@@ -36,6 +37,9 @@ ms.locfileid: "76281136"
 [!INCLUDE [text-analytics-resource-creation](../resource-creation.md)]
 
 ### <a name="create-a-new-nodejs-application"></a>Vytvoření nové aplikace Node.js
+
+> [!NOTE]
+> Tuto verzi klientské knihovny Analýza textu můžete také spustit [v prohlížeči](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md).
 
 V okně konzoly (například cmd, PowerShell nebo bash) vytvořte nový adresář pro vaši aplikaci a přejděte na něj. 
 
@@ -93,7 +97,7 @@ Objekt Response je seznam obsahující informace o analýze pro každý dokument
 * [Propojení entit](#entity-linking)
 * [Extrakce klíčových frází](#key-phrase-extraction)
 
-## <a name="client-authentication"></a>Ověření klienta
+## <a name="client-authentication"></a>Ověřování klienta
 
 Vytvořte nový objekt `TextAnalyticsClient` s vaším klíčem a koncovým bodem jako parametry.
 

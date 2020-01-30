@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f07eb65243b4f797a2955e33aca50ed8c46d256e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: e6a92d12e7f2f24289aafa7e4a9acc9edccbd34c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950982"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840396"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>Migrace webového rozhraní API založeného na OWIN na b2clogin.com
 
@@ -29,11 +29,11 @@ V následujících částech najdete příklad povolení více vystavitelů ve w
 > [!NOTE]
 > Tento článek je určený pro Azure AD B2C zákazníky s aktuálně nasazenými rozhraními API a aplikacemi, které odkazují `login.microsoftonline.com` a kteří chtějí migrovat na doporučený `b2clogin.com` koncový bod. Pokud nastavujete novou aplikaci, použijte [b2clogin.com](b2clogin.md) jako směrovaný.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete pokračovat v krocích v tomto článku, budete potřebovat následující Azure AD B2C prostředky:
 
-* [Uživatelské toky](tutorial-create-user-flows.md) nebo [vlastní zásady](active-directory-b2c-get-started-custom.md) vytvořené ve vašem tenantovi
+* [Uživatelské toky](tutorial-create-user-flows.md) nebo [vlastní zásady](custom-policy-get-started.md) vytvořené ve vašem tenantovi
 
 ## <a name="get-token-issuer-endpoints"></a>Získat koncové body vystavitele tokenů
 
@@ -147,7 +147,7 @@ Když jsou během provádění webové aplikace vytvořeny řetězce koncového 
 
 V tomto článku jsme si předvedli metodu konfigurace webového rozhraní API implementující middleware Microsoft OWIN (Katana), který přijímá tokeny z více koncových bodů vystavitelů. Jak si můžete všimnout, existuje několik dalších řetězců v souborech *Web. config* obou projektů TaskService a TaskWebApp, které by bylo potřeba změnit, pokud chcete sestavit a spustit tyto projekty pro vašeho vlastního tenanta. Vítá vás, abyste mohli projekty upravovat, pokud je chcete vidět v akci, ale Úplný návod k tomu, že se to stane, je nad rámec tohoto článku.
 
-Další informace o různých typech tokenů zabezpečení emitovaných Azure AD B2C najdete v tématu [Přehled tokenů v Azure Active Directory B2C](active-directory-b2c-reference-tokens.md).
+Další informace o různých typech tokenů zabezpečení emitovaných Azure AD B2C najdete v tématu [Přehled tokenů v Azure Active Directory B2C](tokens-overview.md).
 
 <!-- LINKS - External -->
 [sample-archive]: https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip

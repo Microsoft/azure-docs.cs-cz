@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 996893f95b11d716feb4253688d3ab1d62d140ee
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 42dc09ef4518bfda8c63ee183499b1b2e8c22991
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659521"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841927"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Ukázky jazyka JavaScript pro použití v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Do aplikací Azure Active Directory B2C (Azure AD B2C) můžete přidat vlastní kód na straně klienta JavaScript. Pro povolení JavaScriptu pro vaše aplikace musíte přidat element do [vlastních zásad](active-directory-b2c-overview-custom.md), vybrat [rozložení stránky](page-layout.md)a ve svých žádostech použít [b2clogin.com](b2clogin.md) . Tento článek popisuje, jak můžete změnit vlastní zásady a povolit spouštění skriptů.
+Do aplikací Azure Active Directory B2C (Azure AD B2C) můžete přidat vlastní kód na straně klienta JavaScript. Pro povolení JavaScriptu pro vaše aplikace musíte přidat element do [vlastních zásad](custom-policy-overview.md), vybrat [rozložení stránky](page-layout.md)a ve svých žádostech použít [b2clogin.com](b2clogin.md) . Tento článek popisuje, jak můžete změnit vlastní zásady a povolit spouštění skriptů.
 
 > [!NOTE]
 > Pokud chcete povolit JavaScript pro toky uživatelů, přečtěte si téma [verze JavaScriptu a rozložení stránky v Azure Active Directory B2C](user-flow-javascript-overview.md).
@@ -151,4 +151,4 @@ V kódu, nahraďte `termsOfUseUrl` s odkazem na vaše smlouva o podmínkách pou
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak můžete přizpůsobit uživatelského rozhraní aplikací v [přizpůsobit uživatelské rozhraní vaší aplikace pomocí vlastních zásad v Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).
+Další informace o tom, jak můžete přizpůsobit uživatelského rozhraní aplikací v [přizpůsobit uživatelské rozhraní vaší aplikace pomocí vlastních zásad v Azure Active Directory B2C](custom-policy-ui-customization.md).

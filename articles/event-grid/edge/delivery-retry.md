@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 324c0e9b8dcaafacaac52b622ce9c533d82c7ff1
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 7df283b12a0d04d2b785c13a2f12b03115581e79
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100715"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841708"
 ---
 # <a name="delivery-and-retry"></a>Doručování a opakované pokusy
 
@@ -27,7 +27,7 @@ Event Grid poskytuje trvalé doručování. Pokusí se okamžitě doručovat ka�
 
 Po doručení zprávy vyčká Event Grid až 60 sekund na odpověď. Pokud koncový bod předplatitele neobdrží odpověď, bude zpráva zařazená do fronty v jedné z back-mailových front pro následné pokusy.
 
-K dispozici jsou dvě předem nakonfigurované back-Queues, které určují plán, podle kterého se bude opakovat pokus. Jsou:-
+K dispozici jsou dvě předem nakonfigurované back-Queues, které určují plán, podle kterého se bude opakovat pokus. Jsou to tyto:
 
 | Plán | Popis |
 | ---------| ------------ |
@@ -43,7 +43,7 @@ K dispozici jsou dvě předem nakonfigurované back-Queues, které určují plá
 
 ## <a name="retry-policy-limits"></a>Omezení zásad opakování
 
-Existují dvě konfigurace, které určují zásady opakování. Jsou:-
+Existují dvě konfigurace, které určují zásady opakování. Jsou to tyto:
 
 * Maximální počet pokusů
 * Hodnota TTL (Time to Live)
@@ -52,12 +52,12 @@ Pokud je dosažena kterákoli z omezení zásady opakování, bude událost zaho
 
 ## <a name="configuring-defaults-for-all-subscribers"></a>Konfigurace výchozích hodnot pro všechny předplatitele
 
-Existují dvě vlastnosti: `brokers:defaultMaxDeliveryAttempts` a `broker:defaultEventTimeToLiveInSeconds`, které lze nakonfigurovat jako součást nasazení Event Grid, které řídí výchozí nastavení zásad opakování pro všechny předplatitele.
+Existují dvě vlastnosti: `brokers__defaultMaxDeliveryAttempts` a `broker__defaultEventTimeToLiveInSeconds`, které lze nakonfigurovat jako součást nasazení Event Grid, které řídí výchozí nastavení zásad opakování pro všechny předplatitele.
 
 | Název vlastnosti | Popis |
 | ---------------- | ------------ |
-| `broker:defaultMaxDeliveryAttempts` | Maximální počet pokusů o doručení události Výchozí hodnota: 30.
-| `broker:defaultEventTimeToLiveInSeconds` | Hodnota TTL události v sekundách, po které bude událost vyřazena, pokud nebyla doručena. Výchozí hodnota: **7200** sekund
+| `broker__defaultMaxDeliveryAttempts` | Maximální počet pokusů o doručení události Výchozí hodnota: 30.
+| `broker__defaultEventTimeToLiveInSeconds` | Hodnota TTL události v sekundách, po které bude událost vyřazena, pokud nebyla doručena. Výchozí hodnota: **7200** sekund
 
 ## <a name="configuring-defaults-per-subscriber"></a>Konfigurace výchozích hodnot na odběratele
 
@@ -71,8 +71,8 @@ Následující příklad nastaví zásady opakování v modulu Event Grid s hodn
 ```json
 {
   "Env": [
-    "broker:defaultMaxDeliveryAttempts=3",
-    "broker:defaultEventTimeToLiveInSeconds=1800"
+    "broker__defaultMaxDeliveryAttempts=3",
+    "broker__defaultEventTimeToLiveInSeconds=1800"
   ],
   "HostConfig": {
     "PortBindings": {

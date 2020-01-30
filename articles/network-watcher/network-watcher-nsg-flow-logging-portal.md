@@ -1,12 +1,9 @@
 ---
-title: Kurz – protokolování toku síťových přenosů do a z virtuálního počítače pomocí Azure Portal
-titleSuffix: Azure Network Watcher
-description: V tomto kurzu se dozvíte, jak protokolovat tok síťového provozu do a z virtuálního počítače pomocí funkce protokolu NSG Flow služby Network Watcher.
+title: Protokolování toku síťového provozu do a z virtuálního počítače – kurz – Azure Portal | Microsoft Docs
+description: Zjistěte, jak protokolovat tok síťového provozu do a z virtuálního počítače pomocí funkce protokolů toku NSG služby Network Watcher.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 tags: azure-resource-manager
 Customer intent: I need to log the network traffic to and from a VM so I can analyze it for anomalies.
 ms.assetid: 01606cbf-d70b-40ad-bc1d-f03bb642e0af
@@ -16,16 +13,23 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/30/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 7f4466b6f6de5028db8b62389c9d5ddbdafc9d62
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: c295e6c8ffea564e157545c4662cbe7e1841edae
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280981"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841008"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Kurz: Protokolování síťového provozu do a z virtuálního počítače pomocí portálu Azure Portal
+
+> [!div class="op_single_selector"]
+> - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
+> - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
+> - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
+> - [REST API](network-watcher-nsg-flow-logging-rest.md)
+> - [Azure Resource Manager](network-watcher-nsg-flow-logging-azure-resource-manager.md)
 
 Skupina zabezpečení sítě (NSG) umožňuje filtrovat příchozí provoz do a odchozí provoz z virtuálního počítače. Můžete protokolovat síťový provoz procházející skupinou zabezpečení sítě pomocí funkce protokolu toku NSG služby Network Watcher. V tomto kurzu se naučíte:
 
@@ -93,7 +97,10 @@ Protokolování toku NSG vyžaduje poskytovatele **Microsoft.Insights**. Poskyto
     | Umístění       | Vyberte **USA – východ**.                                           |
     | Skupina prostředků | Vyberte **Použít existující** a pak vyberte **myResourceGroup**. |
 
-    Účet úložiště musí být ve stejné oblasti jako NSG. Vytvoření účtu úložiště může trvat kolem minuty. Se zbývajícími kroky nepokračujte, dokud se účet úložiště nevytvoří.     
+    Vytvoření účtu úložiště může trvat kolem minuty. Se zbývajícími kroky nepokračujte, dokud se účet úložiště nevytvoří. Pokud místo vytvoření nového účtu úložiště používáte už existující účet, vyberte účet úložiště, který má vybrané **Všechny sítě** (výchozí) v možnosti **Brány firewall a virtuální sítě** v **NASTAVENÍ** pro účet úložiště. Ve všech případech musí být účet úložiště ve stejné oblasti jako NSG.
+
+    > [!NOTE]
+    > I když jsou poskytovatelé služeb Microsoft. Insight a Microsoft. Network aktuálně podporováni jako důvěryhodné služby Microsoftu pro Azure Storage, protokoly toku NSG se pořád neúplně zaregistrují. Aby bylo možné povolit protokolování toku NSG, musí být **všechny sítě** stále vybrané, dokud není tato funkce plně zaregistrovaná. 
 4. V levé horním rohu portálu vyberte **Všechny služby**. Do **pole Filtr** zadejte *Network Watcher*. Jakmile se služba**Network Watcher** zobrazí ve výsledcích hledání, vyberte ji.
 5. Pod **PROTOKOLY** vyberte **Protokoly toku NSG**, jak je vidět na tomto obrázku:
 
@@ -107,8 +114,9 @@ Protokolování toku NSG vyžaduje poskytovatele **Microsoft.Insights**. Poskyto
 
 9. Vyberte účet úložiště, který jste vytvořili v kroku 3.
    > [!NOTE]
-   > Protokoly NSG Flow nebudou fungovat s účtem úložiště, pokud:
-   > * Účet úložiště má povolený [hierarchický obor názvů](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) .
+   > Protokoly NSG Flow nefungují s účty úložiště, pokud:
+   > * Účty úložiště mají povolenou bránu firewall.
+   > * Účty úložiště mají povolený [hierarchický obor názvů](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) .
 1. V levé horním rohu portálu vyberte **Všechny služby**. Do **pole Filtr** zadejte *Network Watcher*. Jakmile se služba**Network Watcher** zobrazí ve výsledcích hledání, vyberte ji.
 10. Nastavte **Doba uchování (dny)** na 5 a pak vyberte **Uložit**.
 
@@ -120,7 +128,7 @@ Protokolování toku NSG vyžaduje poskytovatele **Microsoft.Insights**. Poskyto
    ![Stažení protokolů toku](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
 3. Vyberte účet úložiště, který jste nakonfigurovali ve 2. kroku [Povolení protokolu toku NSG](#enable-nsg-flow-log).
-4. V části **BLOB Service**vyberte **kontejnery**a pak vyberte kontejner **Insights-logs-networksecuritygroupflowevent** .
+4. V části **BLOB Service**vyberte **objekty blob**a potom vyberte kontejner **Insights-logs-networksecuritygroupflowevent** .
 5. V kontejneru přejděte do hierarchie složek, dokud se nedostanete do souboru PT1H. JSON, jak je znázorněno na následujícím obrázku. Soubory protokolu se zapisují do hierarchie složek, které následují po následujících konvencích vytváření názvů: https://{storageAccountName}. blob. Core. Windows. NET/Insights-logs-networksecuritygroupflowevent/resourceId =/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y = {Year}/m = {month}/d = {Day}/h = {Hour}/m = 00/macAddress = {macAddress}/PT1H.json
 
    ![Protokol toku](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
@@ -220,4 +228,4 @@ Hodnota **mac** v předchozím výstupu je adresa MAC síťového rozhraní, kte
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili, jak povolit protokolování toku pro NSG pro NSG. Dál jste zjistili, jak stáhnout a zobrazit data zaprotokolovaná v souboru. Nezpracovaná data v souboru json může být obtížné interpretovat. K vizualizaci dat můžete použít [analýzu provozu](traffic-analytics.md) Network Watcher, Microsoft [PowerBI](network-watcher-visualize-nsg-flow-logs-power-bi.md) a další nástroje.
+V tomto kurzu jste se naučili, jak povolit protokolování toku pro NSG pro NSG. Dál jste zjistili, jak stáhnout a zobrazit data zaprotokolovaná v souboru. Nezpracovaná data v souboru json může být obtížné interpretovat. K vizualizaci dat protokolů toků můžete použít [Azure Analýza provozu](traffic-analytics.md), [Microsoft Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)a další nástroje. Můžete vyzkoušet alternativní metody povolení protokolů toku NSG, jako jsou [PowerShell](network-watcher-nsg-flow-logging-powershell.md), [Azure CLI](network-watcher-nsg-flow-logging-cli.md), [REST API](network-watcher-nsg-flow-logging-rest.md) a [šablony ARM](network-watcher-nsg-flow-logging-azure-resource-manager.md).

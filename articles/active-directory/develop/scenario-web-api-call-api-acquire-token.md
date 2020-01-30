@@ -15,18 +15,20 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 1c3d6f8d47152d70bdeaabbbc6d7b81187291857
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 2721837459af24f39bb15ee17d394345cbb37eb1
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701803"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834106"
 ---
 # <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>Webové rozhraní API, které volá webová rozhraní API: Získá token pro aplikaci.
 
 Po vytvoření objektu klientské aplikace jej použijte k získání tokenu, který můžete použít k volání webového rozhraní API.
 
 ## <a name="code-in-the-controller"></a>Kód v kontroleru
+
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 Tady je příklad kódu, který se volá v akcích řadičů rozhraní API. Volá rozhraní API pro příjem dat s názvem *ToDoList*.
 
@@ -68,6 +70,33 @@ public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
  return null;
 }
 ```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+Tady je příklad kódu, který se volá v akcích řadičů rozhraní API. Volá rozhraní API pro příjem dat Microsoft Graph.
+
+```java
+@RestController
+public class ApiController {
+
+    @Autowired
+    MsalAuthHelper msalAuthHelper;
+
+    @RequestMapping("/graphMeApi")
+    public String graphMeApi() throws MalformedURLException {
+
+        String oboAccessToken = msalAuthHelper.getOboToken("https://graph.microsoft.com/.default");
+
+        return callMicrosoftGraphMeEndpoint(oboAccessToken);
+    }
+
+}
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Webové rozhraní API v Pythonu bude muset použít nějaký middleware k ověření, že je nosný token přijatý od klienta. Webové rozhraní API pak může získat přístupový token pro rozhraní API pro příjem dat pomocí MSAL knihovny Python voláním metody [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) . Ukázka demonstrující tento tok pomocí MSAL Python ještě není k dispozici.
+
+---
 
 ## <a name="next-steps"></a>Další kroky
 

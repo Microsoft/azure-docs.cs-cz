@@ -10,16 +10,16 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: 4aeee7ebf2c96166392d49d218f8ac5de6fe2709
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f9434458bf838901915195ae7e90418c45efc52b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447570"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843001"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>Rychlý start: Vytvoření znalostní báze ve službě QnA Maker pomocí Pythonu
 
-Tento rychlý start vás provede vytvořením a publikováním ukázkové znalostní báze služby QnA Maker pomocí kódu programu. Služba QnA Maker automaticky extrahuje otázky a odpovědi z částečně strukturovaného obsahu, jako jsou třeba časté otázky, ze [zdrojů dat](../Concepts/data-sources-supported.md). Model pro znalostní bázi je definovaný v kódu ve formátu JSON poslaném v těle požadavku rozhraní API.
+Tento rychlý start vás provede vytvořením a publikováním ukázkové znalostní báze služby QnA Maker pomocí kódu programu. Služba QnA Maker automaticky extrahuje otázky a odpovědi z částečně strukturovaného obsahu, jako jsou třeba časté otázky, ze [zdrojů dat](../Concepts/knowledge-base.md). Model pro znalostní bázi je definovaný v kódu ve formátu JSON poslaném v těle požadavku rozhraní API.
 
 Tento rychlý start volá rozhraní API služby QnA Maker:
 * [Create KB](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
@@ -51,7 +51,7 @@ V horní části třídy program přidejte požadované konstanty pro přístup 
 
 Nastavte následující hodnoty:
 
-* `<your-qna-maker-subscription-key>` – **klíč** je řetězec znaků 32 a je k dispozici v Azure Portal v prostředku QnA maker na stránce rychlý Start. To není totéž jako klíč koncového bodu předpovědi.
+* `<your-qna-maker-subscription-key>` – **klíč** je řetězec znaků 32 a je k dispozici v Azure Portal na prostředku QnA maker na stránce rychlý Start. To není totéž jako klíč koncového bodu předpovědi.
 * `<your-resource-name>` – **název prostředku** se používá k vytvoření adresy URL koncového bodu pro vytváření obsahu ve formátu `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`. Nejedná se o stejnou adresu URL, která se používá k dotazování koncového bodu předpovědi.
 
 [!code-python[Add the required constants](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=5-13 "Add the required constants")]

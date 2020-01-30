@@ -3,12 +3,12 @@ title: Plánování nasazení clusteru Azure Service Fabric
 description: Přečtěte si o plánování a přípravě nasazení produkčního Service Fabric clusteru do Azure.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 69fb97e4e679b3ce5817a51d619799a3384fd753
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32d48f9ffa056d252bdf762304340f245d80fd26
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463319"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834446"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Plánování a příprava nasazení clusteru
 
@@ -37,9 +37,59 @@ Minimální velikost virtuálních počítačů pro každý typ uzlu je určena 
 
 Minimální počet virtuálních počítačů pro typ primárního uzlu závisí na zvolené [úrovni spolehlivosti][reliability] .
 
-Prohlédněte si minimální doporučení pro [typy primárních uzlů](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance), [stavové úlohy na neprimárních typech uzlů](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)a [bezstavové úlohy na neprimárních typech uzlů](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads). 
+Prohlédněte si minimální doporučení pro [typy primárních uzlů](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance), [stavové úlohy na neprimárních typech uzlů](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)a [bezstavové úlohy na neprimárních typech uzlů](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads).
 
 Jakékoli více než minimální počet uzlů by měl být založen na počtu replik aplikace nebo služeb, které chcete spustit v tomto typu uzlu.  [Plánování kapacity pro aplikace Service Fabric](service-fabric-capacity-planning.md) vám pomůže odhadnout prostředky, které potřebujete ke spuštění svých aplikací. Kdykoli můžete cluster škálovat nahoru nebo dolů později, aby se změnila změna aplikační úlohy. 
+
+#### <a name="use-ephemeral-os-disks-for-virtual-machine-scale-sets"></a>Používejte dočasné disky s operačním systémem pro služby Virtual Machine Scale Sets
+
+*Dočasné disky s operačním systémem* se vytvářejí na místním virtuálním počítači a neukládají se do vzdáleného Azure Storage. Doporučuje se pro všechny Service Fabric typy uzlů (primární a sekundární), protože jsou v porovnání s tradičními trvalými disky s operačním systémem a s dočasnými disky operačního systému:
+
+* Snížit latenci čtení/zápisu na disk s operačním systémem
+* Povolení rychlejšího resetování/obnovení operací správy uzlů na obrázku
+* Snižte celkové náklady (disky jsou bezplatné a neúčtují se žádné další náklady na úložiště).
+
+Dočasné disky s operačním systémem nejsou konkrétní funkcí Service Fabric, ale spíše funkcí *sady škálování virtuálních počítačů* Azure, které jsou namapované na Service Fabric typy uzlů. Použití s Service Fabric v šabloně Azure Resource Manager clusteru vyžaduje následující:
+
+1. Ujistěte se, že typy uzlů určují [podporované velikosti virtuálních počítačů Azure](../virtual-machines/windows/ephemeral-os-disks.md) pro dočasné disky s operačním systémem a že velikost virtuálního počítače má dostatečnou velikost mezipaměti, aby podporovala velikost disku s operačním systémem (viz *Poznámka* níže). Například:
+
+    ```xml
+    "vmNodeType1Size": {
+        "type": "string",
+        "defaultValue": "Standard_DS3_v2"
+    ```
+
+    > [!NOTE]
+    > Ujistěte se, že jste vybrali velikost virtuálního počítače, která je stejná nebo větší než velikost disku operačního systému samotného virtuálního počítače. v opačném případě může při nasazení Azure dojít k chybě (i v případě, že se původně přijal).
+
+2. Zadejte verzi sady škálování na virtuálním počítači (`vmssApiVersion`) `2018-06-01` nebo novější:
+
+    ```xml
+    "variables": {
+        "vmssApiVersion": "2018-06-01",
+    ```
+
+3. V části sada škálování virtuálního počítače v šabloně nasazení zadejte možnost `Local` pro `diffDiskSettings`:
+
+    ```xml
+    "apiVersion": "[variables('vmssApiVersion')]",
+    "type": "Microsoft.Compute/virtualMachineScaleSets",
+        "virtualMachineProfile": {
+            "storageProfile": {
+                "osDisk": {
+                        "vhdContainers": ["[concat(reference(concat('Microsoft.Storage/storageAccounts/', parameters('vmStorageAccountName')), variables('storageApiVersion')).primaryEndpoints.blob, parameters('vmStorageAccountContainerName'))]"],
+                        "caching": "ReadOnly",
+                        "createOption": "FromImage",
+                        "diffDiskSettings": {
+                            "option": "Local"
+                        },
+                }
+            }
+        }
+    ```
+
+Další informace a další možnosti konfigurace najdete v tématu [dočasné disky s operačním systémem pro virtuální počítače Azure](../virtual-machines/windows/ephemeral-os-disks.md) . 
+
 
 ### <a name="select-the-durability-and-reliability-levels-for-the-cluster"></a>Vybrat úrovně trvanlivosti a spolehlivosti pro cluster
 Úroveň odolnosti se používá k označení systému oprávnění, která vaše virtuální počítače mají s podkladovou infrastrukturou Azure. V primárním typu uzlu toto oprávnění umožňuje Service Fabric pozastavit jakoukoli žádost o infrastrukturu na úrovni virtuálního počítače (třeba restartování virtuálního počítače, obnovení virtuálního počítače nebo migraci virtuálního počítače), která mají vliv na požadavky kvora pro systémové služby a stavové služby. V neprimárních typech uzlů toto oprávnění umožňuje Service Fabric pozastavit všechny požadavky infrastruktury na úrovni virtuálního počítače (třeba restartování virtuálního počítače, obnovení bitové kopie virtuálního počítače a migrace virtuálních počítačů), které mají vliv na požadavky na kvorum pro stavové služby.  Výhody různých úrovní a doporučení, na kterých úroveň použít a kdy, najdete v tématu [charakteristiky odolnosti clusteru][durability].

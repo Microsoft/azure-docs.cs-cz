@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 3cecf334189989574e82772205c7d32298240867
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 06f51ca83449b39861e7565cc9accc29efbece3f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447822"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843969"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Kurz: Opravte si nejistotu, že předpovědi zkontroluje projevy koncového bodu.
 V tomto kurzu Vylepšete předpovědi aplikací tím, že ověříte nebo opravíte projevy, přijmete prostřednictvím koncového bodu LUIS HTTPS, který LUIS NEsI nedrží. Měli byste zkontrolovat projevy koncového bodu jako běžnou součást plánované údržby LUIS.
@@ -46,7 +46,7 @@ K importu aplikace použijte následující postup.
 
 1.  Stáhněte si [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true) a uložte si ho.
 
-1. Na [portálu Luis Preview](https://preview.luis-ai)importujte soubor. JSON do nové aplikace.
+1. Na [portálu Luis Preview](https://preview.luis.ai)importujte soubor. JSON do nové aplikace.
 
 1. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `review`.
 

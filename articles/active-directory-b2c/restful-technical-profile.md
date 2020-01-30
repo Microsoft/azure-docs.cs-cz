@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 00d5ba6fd86ea722270dfbe73324323bd831a529
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 8a562345caf47540321528560a5ee0b4854c42a9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263366"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840277"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu RESTful ve vlastní zásadě Azure Active Directory B2C
 
@@ -260,7 +260,7 @@ public class ResponseContent
 
 Příklady použití technického profilu RESTful najdete v následujících článcích:
 
-- [Integrace REST APIch výměn deklarací identity v cestě uživatele Azure AD B2C jako ověření vstupu uživatele](active-directory-b2c-custom-rest-api-netfw.md)
-- [Zabezpečte své služby RESTful pomocí ověřování HTTP Basic.](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
-- [Zabezpečte službu RESTful pomocí klientských certifikátů.](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
-- [Návod: integrace REST APIch výměn deklarací identity v cestě uživatele Azure AD B2C při ověřování vstupu uživatele](active-directory-b2c-rest-api-validation-custom.md)
+- [Integrace REST APIch výměn deklarací identity v cestě uživatele Azure AD B2C jako ověření vstupu uživatele](rest-api-claims-exchange-dotnet.md)
+- [Zabezpečte své služby RESTful pomocí ověřování HTTP Basic.](secure-rest-api-dotnet-basic-auth.md)
+- [Zabezpečte službu RESTful pomocí klientských certifikátů.](secure-rest-api-dotnet-certificate-auth.md)
+- [Návod: integrace REST APIch výměn deklarací identity v cestě uživatele Azure AD B2C při ověřování vstupu uživatele](custom-policy-rest-api-claims-validation.md)

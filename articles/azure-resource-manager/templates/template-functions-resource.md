@@ -3,12 +3,12 @@ title: Funkce šablon – prostředky
 description: Popisuje funkce pro použití v šabloně Azure Resource Manageru k načtení hodnoty o prostředcích.
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: 1b860876b0d8967a6a3f90c7bb68f20d6c442109
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 9021d7419820a9d321658c2b1fea8edb7e79b9a0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513860"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773239"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Prostředek funkce pro šablony Azure Resource Manageru
 
@@ -443,7 +443,7 @@ Vrátí objekt představující stav prostředků modulu runtime.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| resourceName nebo resourceIdentifier |Ano |string |Název nebo identifikátor prostředku. Při odkazování na prostředek v aktuální šablony, zadejte pouze název prostředku jako parametr. Při odkazování na dříve nasazený prostředek zadejte ID prostředku. |
+| resourceName nebo resourceIdentifier |Ano |string |Název nebo identifikátor prostředku. Při odkazování na prostředek v aktuální šablony, zadejte pouze název prostředku jako parametr. Když odkazujete na dříve nasazený prostředek nebo pokud je název prostředku dvojznačný, zadejte ID prostředku. |
 | apiVersion |Ne |string |Verze rozhraní API zadaný prostředek. Zahrnout tento parametr, pokud prostředek není zřízený v rámci stejné šablony. Obvykle ve formátu **rrrr mm-dd**. Platné verze rozhraní API pro váš prostředek naleznete v tématu [Reference k šabloně](/azure/templates/). |
 | "Úplné" |Ne |string |Hodnota, která určuje, jestli se má vrátit objekt úplné prostředku. Pokud nezadáte `'Full'`, je vrácen pouze objekt vlastnosti prostředku. Úplný objekt obsahuje hodnoty, jako je ID prostředku a umístění. |
 
@@ -460,11 +460,11 @@ Obvykle se používají **odkaz** funkci vrátíte konkrétní hodnoty z objektu
 ```json
 "outputs": {
     "BlobUri": {
-        "value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2016-01-01').primaryEndpoints.blob]",
+        "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')).primaryEndpoints.blob]",
         "type" : "string"
     },
     "FQDN": {
-        "value": "[reference(concat('Microsoft.Network/publicIPAddresses/', parameters('ipAddressName')), '2016-03-30').dnsSettings.fqdn]",
+        "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName')).dnsSettings.fqdn]",
         "type" : "string"
     }
 }
@@ -476,11 +476,11 @@ Použití `'Full'` Pokud potřebujete hodnoty prostředků, které nejsou souč�
 {
   "type": "Microsoft.KeyVault/vaults",
   "properties": {
-    "tenantId": "[reference(concat('Microsoft.Compute/virtualMachines/', variables('vmName')), '2017-03-30', 'Full').identity.tenantId]",
+    "tenantId": "[subscription().tenantId]",
     "accessPolicies": [
       {
-        "tenantId": "[reference(concat('Microsoft.Compute/virtualMachines/', variables('vmName')), '2017-03-30', 'Full').identity.tenantId]",
-        "objectId": "[reference(concat('Microsoft.Compute/virtualMachines/', variables('vmName')), '2017-03-30', 'Full').identity.principalId]",
+        "tenantId": "[reference(reosurceId('Microsoft.Compute/virtualMachines', variables('vmName')), '2019-03-01', 'Full').identity.tenantId]",
+        "objectId": "[reference(resourceId('Microsoft.Compute/virtualMachines', variables('vmName')), '2019-03-01', 'Full').identity.principalId]",
         "permissions": {
           "keys": [
             "all"
@@ -520,19 +520,21 @@ Když odkazujete na prostředek, který není nasazený ve stejné šabloně, za
 "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"
 ```
 
-Aby nedocházelo k nejednoznačnosti prostředků, na které odkazujete, můžete zadat plně kvalifikovaný název prostředku.
+Aby nedocházelo k nejednoznačnosti prostředků, na které odkazujete, můžete zadat plně kvalifikovaný identifikátor prostředku.
 
 ```json
-"value": "[reference(concat('Microsoft.Network/publicIPAddresses/', parameters('ipAddressName')))]"
+"value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName'))]"
 ```
 
 Při sestavování plně kvalifikovaného odkazu na prostředek, pořadí pro kombinování segmentů z typu a název není pouhým zřetězením obou. Místo toho je nutné po oboru názvů použít sekvenci dvojic *typů a názvů* z nejméně specifických na nejvíc:
 
 **{Resource-Provider-Namespace}/{Parent-Resource-Type}/{Parent-Resource-Name} [/{Child-Resource-Type}/{Child-Resource-Name}]**
 
-Například:
+Příklad:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt` je správné `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` není správné.
+
+Pro zjednodušení vytváření ID prostředku použijte funkce `resourceId()` popsané v tomto dokumentu namísto funkce `concat()`.
 
 ### <a name="get-managed-identity"></a>Získat spravovanou identitu
 
@@ -541,7 +543,7 @@ Například:
 Pokud například chcete získat ID tenanta pro spravovanou identitu, která se používá pro sadu škálování virtuálního počítače, použijte:
 
 ```json
-"tenantId": "[reference(concat('Microsoft.Compute/virtualMachineScaleSets/',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
+"tenantId": "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), '2019-03-01', 'Full').Identity.tenantId]"
 ```
 
 ### <a name="reference-example"></a>Příklad odkazu

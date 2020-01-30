@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 1ecbca99a65d99cc3b8d842a7b61d858398a80ff
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: a03bc24b689df342be40536c26149a7611fc5176
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885700"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773650"
 ---
 # <a name="managing-media-services-entities-with-rest"></a>Správa entit Media Services pomocí REST  
 
@@ -54,7 +54,7 @@ Následující příklad ukazuje, jak vytvořit AccessPolicy.
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.windows.net
     Content-Length: 74
@@ -71,7 +71,7 @@ Následující příklad načte seznam všech entit MediaProcessor.
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.windows.net
 
@@ -82,7 +82,7 @@ Můžete také načíst konkrétní entitu nebo všechny sady entit přidružen�
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.windows.net
 
@@ -91,7 +91,7 @@ Můžete také načíst konkrétní entitu nebo všechny sady entit přidružen�
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.windows.net
 
@@ -102,7 +102,7 @@ Následující příklad vrátí pouze vlastnost State všech úloh.
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.windows.net
 
@@ -113,7 +113,7 @@ Následující příklad vrátí všechny JobTemplates s názvem "SampleTemplate
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.windows.net
 
@@ -132,7 +132,7 @@ Následující příklad ukazuje, jak pomocí funkce **Skip** a **top** přesko�
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: media.windows.net
 
@@ -146,7 +146,7 @@ Následující příklad kódu ukazuje, jak aktualizovat vlastnost Name v entit�
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: media.windows.net
     Content-Length: 21
@@ -164,12 +164,12 @@ Následující příklad ukazuje, jak odstranit lokátor, který jste použili k
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: media.windows.net
     Content-Length: 0
 
-## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
+## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu

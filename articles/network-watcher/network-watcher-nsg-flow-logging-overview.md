@@ -4,27 +4,24 @@ titleSuffix: Azure Network Watcher
 description: Tento článek vysvětluje, jak používat funkci NSG Flow Logs v Azure Network Watcher.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 47d91341-16f1-45ac-85a5-e5a640f5d59e
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 509545443bc08e8613d5f7a9ba7f33d2a90684b8
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.author: damendo
+ms.openlocfilehash: f231a5339b9c696b2a427b0713118d4b46e30277
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830509"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840991"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Úvod do protokolování toků pro skupiny zabezpečení sítě
 
-Protokoly toku skupiny zabezpečení sítě (NSG) představují funkci ve službě Network Watcher, která umožňuje zobrazit informace o příchozím a odchozím provozu IP přes NSG. Protokoly toku jsou ve formátu JSON a uvádějí odchozí a příchozí toky pro jednotlivá pravidla, síťové rozhraní (NIC), na které se tok vztahuje, 5člennou řazenou kolekci členů pro daný tok (zdrojová/cílová IP adresa, zdrojový/cílový port a protokol), údaj, jestli byl provoz povolený nebo odepřený, a ve verzi 2 také informace o propustnosti (bajty a pakety).
+Protokoly toku NSG (Network Security Group) jsou funkce Network Watcher, které vám umožní zobrazit informace o příchozích a odchozích přenosech IP adres prostřednictvím NSG. Protokoly toků jsou napsané ve formátu JSON a zobrazují odchozí a příchozí toky na základě jednotlivých pravidel. síťové rozhraní (NIC) tok platí pro 5 – informace o toku (zdrojová nebo cílová IP adresa, zdrojový/cílový port a protokol), pokud byl provoz povolený nebo zakázaný, a ve verzi 2, informace o propustnosti (bajty a pakety).
 
 
 ![Přehled protokolů toků](./media/network-watcher-nsg-flow-logging-overview/figure1.png)

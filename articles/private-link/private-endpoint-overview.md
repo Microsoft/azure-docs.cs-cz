@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 38f424287788537cc5711bab8da60b5798a84b3a
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: cd06d4cbf62078c2c7a5def4a0032ddce97d67f0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867695"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842448"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je to privátní koncový bod Azure?
 
@@ -56,7 +56,7 @@ Prostředek privátního propojení je cílovým cílem daného privátního kon
 |**Azure SQL Database** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
 |**Azure SQL Data Warehouse** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
 |**Azure Storage**  | Microsoft.Storage/storageAccounts    |  BLOB (objekt blob, blob_secondary)<BR> Tabulka (tabulka, table_secondary)<BR> Queue (Queue, queue_secondary)<BR> Soubor (soubor, file_secondary)<BR> Web (web, web_secondary)        |
-|**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  BLOB (objekt blob, blob_secondary)       |
+|**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  BLOB (objekt blob, blob_secondary)<BR> Data Lake Gen2 systému souborů (DFS, dfs_secondary)       |
 |**Azure Cosmos DB** | Microsoft. AzureCosmosDB/databaseAccounts | SQL, MongoDB, Cassandra, Gremlin, tabulka|
 |**Azure Database for PostgreSQL – jeden server** | Microsoft.DBforPostgreSQL/servers   | postgresqlServer |
 |**Azure Database for MySQL** | Microsoft.DBforMySQL/servers    | mysqlServer |

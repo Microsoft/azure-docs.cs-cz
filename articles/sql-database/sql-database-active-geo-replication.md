@@ -11,16 +11,16 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2019
-ms.openlocfilehash: 33697fd8d3b0c6faea423026e1462834c6b1ef4c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e32250102d095f341b2de918037b9ad834adfd33
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822659"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842647"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Vytváření a používání aktivní geografické replikace
 
-Aktivní geografická replikace je Azure SQL Database funkce, která umožňuje vytvářet čitelné sekundární databáze pro jednotlivé databáze na serveru SQL Database ve stejném nebo jiném datovém centru (oblasti).
+Aktivní geografická replikace je funkce Azure SQL Database, která umožňuje vytvářet čitelné sekundární databáze pro jednotlivé databáze na serveru SQL Database ve stejném nebo jiném datovém centru (oblasti).
 
 > [!NOTE]
 > Aktivní geografická replikace není podporována spravovanou instancí. Pro geografické převzetí služeb při selhání u spravovaných instancí použijte [skupiny automatického převzetí služeb při selhání](sql-database-auto-failover-group.md).
@@ -124,6 +124,79 @@ Pokud se rozhodnete vytvořit sekundární s nižší výpočetní velikostí, g
 
 Další informace o SQL Database velikosti výpočetních prostředků najdete v tématu [co jsou SQL Database úrovně služeb](sql-database-purchase-models.md).
 
+## <a name="cross-subscription-geo-replication"></a>Geografická replikace mezi předplatnými
+
+Pokud chcete nastavit aktivní geografickou replikaci mezi dvěma databázemi, které patří do různých předplatných (bez ohledu na to, jestli se nacházejí v rámci stejného tenanta), musíte postupovat podle speciální procedury popsané v této části.  Postup je založen na příkazech SQL a vyžaduje: 
+
+- Vytvoření privilegovaného přihlášení na obou serverech
+- Přidání IP adresy do seznamu povolených klientů, který provádí změnu na obou serverech (například IP adresa hostitele se spuštěným SQL Server Management Studio). 
+
+Klient provádějící změny potřebuje síťový přístup k primárnímu serveru. I když se stejná IP adresa klienta musí přidat do seznamu povolených serverů na sekundárním serveru, síťové připojení k sekundárnímu serveru není naprosto povinné. 
+
+### <a name="on-the-master-of-the-primary-server"></a>V hlavní části primárního serveru
+
+1. Přidejte IP adresu do seznamu povolených klientů, který provádí změny (Další informace najdete v tématu [Konfigurace brány firewall](sql-database-firewall-configure.md)). 
+1. Vytvořte přihlašovací údaje vyhrazené pro nastavení aktivní geografické replikace (a podle potřeby upravte přihlašovací údaje):
+
+   ```sql
+   create login geodrsetup with password = 'ComplexPassword01'
+   ```
+
+1. Vytvořte odpovídajícího uživatele a přiřaďte ho k roli dbmanager: 
+
+   ```sql
+   create user geodrsetup for login gedrsetup
+   alter role geodrsetup dbmanager add member geodrsetup
+   ```
+
+1. Poznamenejte si identifikátor SID nového přihlášení pomocí tohoto dotazu: 
+
+   ```sql
+   select sid from sys.sql_logins where name = 'geodrsetup'
+   ```
+
+### <a name="on-the-source-database-on-the-primary-server"></a>Ve zdrojové databázi na primárním serveru
+
+1. Vytvořit uživatele pro stejné přihlášení:
+
+   ```sql
+   create user geodrsetup for login geodrsetup
+   ```
+
+1. Přidejte uživatele do role db_owner:
+
+   ```sql
+   alter role db_owner add member geodrsetup
+   ```
+
+### <a name="on-the-master-of-the-secondary-server"></a>V hlavní části sekundárního serveru 
+
+1. Přidejte IP adresu do seznamu povolených klientů, který provádí změny. Musí mít stejnou přesnou IP adresu primárního serveru. 
+1. Vytvořte stejné přihlašovací údaje jako na primárním serveru pomocí stejného hesla uživatele a čísla SID: 
+
+   ```sql
+   create login geodrsetup with password = 'ComplexPassword01', sid=0x010600000000006400000000000000001C98F52B95D9C84BBBA8578FACE37C3E
+   ```
+
+1. Vytvořte odpovídajícího uživatele a přiřaďte ho k roli dbmanager:
+
+   ```sql
+   create user geodrsetup for login geodrsetup;
+   alter role dbmanager add member geodrsetup
+   ```
+
+### <a name="on-the-master-of-the-primary-server"></a>V hlavní části primárního serveru
+
+1. Přihlaste se k hlavnímu serveru primárního serveru pomocí nového přihlášení. 
+1. Vytvořte sekundární repliku zdrojové databáze na sekundárním serveru (podle potřeby upravte název databáze a servername):
+
+   ```sql
+   alter database dbrep add secondary on server <servername>
+   ```
+
+Po počáteční instalaci je možné odebrat uživatele, přihlášení a vytvořená pravidla brány firewall. 
+
+
 ## <a name="keeping-credentials-and-firewall-rules-in-sync"></a>Udržování synchronizovaných přihlašovacích údajů a pravidel brány firewall
 
 Pro geograficky replikované databáze doporučujeme použít [pravidla brány firewall na úrovni databáze](sql-database-firewall-configure.md) , aby se tato pravidla mohla replikovat s databází, aby všechny sekundární databáze měla stejná pravidla FIREWALLU protokolu IP jako primární. Tento přístup eliminuje potřebu zákazníků ručně konfigurovat a udržovat pravidla brány firewall na serverech hostujících primární i sekundární databázi. Podobně použití [obsažených uživatelů databáze](sql-database-manage-logins.md) k přístupu k datům zajišťuje, že primární i sekundární databáze vždy mají stejné přihlašovací údaje uživatele, takže během převzetí služeb při selhání nedochází k výpadkům v důsledku neshody s přihlašovacími údaji a hesly. Díky přidání [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)můžou zákazníci spravovat přístup uživatelů k primární i sekundární databázi a eliminují nutnost spravovat přihlašovací údaje v databázích zcela.
@@ -172,9 +245,9 @@ Jak je popsáno výše, aktivní geografická replikace se dá spravovat taky pr
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Pro vytvoření sekundární databáze pro existující databázi a spuštění replikace dat použijte argument přidat sekundární na SERVER. |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Použití převzetí služeb při selhání nebo FORCE_FAILOVER_ALLOW_DATA_LOSS k přepnutí sekundární databáze na primární pro zahájení převzetí služeb při selhání |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Pomocí odebrat sekundární na serveru ukončete replikaci dat mezi SQL Database a zadanou sekundární databází. |
-| [sys. geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Vrátí informace o všech stávajících odkazech replikace pro každou databázi na serveru Azure SQL Database. |
-| [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Získá čas poslední replikace, prodlevu poslední replikace a další informace o odkazu replikace pro danou databázi SQL. |
-| [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Zobrazuje stav všech databázových operací, včetně stavu replikačních odkazů. |
+| [sys.geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Vrátí informace o všech stávajících odkazech replikace pro každou databázi na serveru Azure SQL Database. |
+| [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Získá čas poslední replikace, prodlevu poslední replikace a další informace o odkazu replikace pro danou databázi SQL. |
+| [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Zobrazuje stav všech databázových operací, včetně stavu replikačních odkazů. |
 | [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |způsobí, že aplikace počká, až budou všechny potvrzené transakce replikovány a potvrzeny aktivní sekundární databází. |
 |  | |
 
@@ -198,7 +271,7 @@ Jak je popsáno výše, aktivní geografická replikace se dá spravovat taky pr
 
 ### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST API: Správa převzetí služeb při selhání pro jednotlivé a sdružené databáze
 
-| Rozhraní API | Popis |
+| API | Popis |
 | --- | --- |
 | [Vytvořit nebo aktualizovat databázi (createMode = Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Vytvoří, aktualizuje nebo obnoví primární nebo sekundární databázi. |
 | [Získat stav databáze pro vytvoření nebo aktualizaci](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Vrátí stav během operace vytvoření. |

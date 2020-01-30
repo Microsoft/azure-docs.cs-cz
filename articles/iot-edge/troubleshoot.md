@@ -8,12 +8,12 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 255ccb5c8e9529ab9b36186ec0eeb5b3f55ed64f
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 98d75f75a985fca3448becab216ad6570d948468
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759223"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772235"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Běžné potíže se službou Azure IoT Edge a jejich řešení
 
@@ -391,7 +391,7 @@ Ve výchozím nastavení IoT Edge spouští moduly ve vlastní izolované síti 
 
 **Možnost 1: nastavení serveru DNS v nastavení modulu pro vytvoření kontejneru**
 
-Zadejte server DNS pro vaše prostředí v nastavení modulu container Engine, který bude platit pro všechny moduly kontejneru spouštěné modulem. Vytvořte soubor s názvem `daemon.json` určení serveru DNS, který chcete použít. Například:
+Zadejte server DNS pro vaše prostředí v nastavení modulu container Engine, který bude platit pro všechny moduly kontejneru spouštěné modulem. Vytvořte soubor s názvem `daemon.json` určení serveru DNS, který chcete použít. Příklad:
 
 ```json
 {
@@ -419,7 +419,7 @@ Restartujte modul kontejnerů, aby se aktualizace projevily.
 
 **Možnost 2: nastavení serveru DNS v nasazení IoT Edge na modul**
 
-Můžete nastavit server DNS pro *createOptions* modulu v nasazení IoT Edge. Například:
+Můžete nastavit server DNS pro *createOptions* modulu v nasazení IoT Edge. Příklad:
 
 ```json
 "createOptions": {

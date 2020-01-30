@@ -3,12 +3,12 @@ title: Matice podpory pro zálohování SAP HANA
 description: V tomto článku se dozvíte o podporovaných scénářích a omezeních při zálohování SAP HANA databází na virtuálních počítačích Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 2063da4c5210cace41454d8bdc5b12e636ba76cd
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 82d844385290ab0dc2953537c1f9a3387dd7b2b2
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705645"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842627"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Matice podpory pro zálohování databází SAP HANA na virtuálních počítačích Azure
 
@@ -33,7 +33,7 @@ Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Micros
 | **Scénář**               | **Podporované konfigurace**                                | **Nepodporované konfigurace**                              |
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | **Topologie**               | SAP HANA spouštění jenom na virtuálních počítačích Azure Linux                    | Velké instance HANA (HLI)                                   |
-| **Zeměpisných oblastech**                   | **GA**<br />**Evropa** – Západní Evropa, Severní Evropa, Francie – střed, Francie – jih, Velká Británie – jih, Velká Británie – západ, Německo – sever, Německo – středozápad, Švýcarsko – sever, Švýcarsko – západ<br />**Asie a Tichomoří** – Austrálie Central, Austrálie – střed 2, Austrálie – východ, Austrálie – jihovýchod, Japonsko – východ, Japonsko – západ, Korea – střed, Jižní Korea<br /><br>**Tisk**<br />**Severní Amerika** – Střed USA, Východní USA 2, Východní USA, Střed USA – sever, Střed USA – jih, Západní USA 2, Středozápadní USA, západní USA, Kanada – střed, Kanada – východ, Brazílie – jih<br />**Asie a Tichomoří** – východní Asie, jihovýchodní asie, střed Indie Jižní Indie | Čína – východ, Čína – sever, Čína – východ 2, Čína – sever 2, Západní Indie, Central Švýcarsko – sever, Jižní Afrika sever, Jižní Afrika – západ, Spojené arabské emiráty sever, Spojené arabské emiráty Central, Azure Government oblasti |
+| **Zeměpisných oblastech**                   | **GA**<br />**Evropa** – Západní Evropa, Severní Evropa, Francie – střed, Velká Británie – jih, Velká Británie – západ, Německo – sever, Německo – středozápad, Švýcarsko – sever, Švýcarsko – západ<br />**Asie a Tichomoří** – Austrálie Central, Austrálie – střed 2, Austrálie – východ, Austrálie – jihovýchod, Japonsko – východ, Japonsko – západ, Korea – střed, Jižní Korea<br /><br>**Tisk**<br />**Severní Amerika** – Střed USA, Východní USA 2, Východní USA, Střed USA – sever, Střed USA – jih, Západní USA 2, Středozápadní USA, západní USA, Kanada – střed, Kanada – východ <br />**Asie a Tichomoří** – východní Asie, jihovýchodní asie, střed Indie Jižní Indie | Čína – východ, Čína – sever, Čína – východ 2, Čína – sever 2, Západní Indie, Central Švýcarsko – sever, Jižní Afrika sever, Jižní Afrika – západ, Spojené arabské emiráty sever, Spojené arabské emiráty Central, Azure Government oblasti, Francie – jih, Brazílie – jih |
 | **Verze operačního systému**            | SLES 12 s aktualizací SP2, SP3 nebo SP4                                | SLES 15, RHEL                                                |
 | **Verze HANA**          | SDC v HANA 1. x, MDC na HANA 2. x < = SPS04 rev 44            | -                                                            |
 | **Nasazení HANA**       | SAP HANA jenom na jednom virtuálním počítači Azure – jenom škálovat               | Škálování na víc systémů                                                    |

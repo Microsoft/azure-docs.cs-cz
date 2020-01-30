@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 021767aa20dc35459c68fead674ff00510af2538
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: cdf07c6a4cb98f17a9bc15934a7be42ba70810f6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129363"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840447"
 ---
 # <a name="azure-identity-management-security-overview"></a>Přehled zabezpečení služby Azure Identity Management
 
@@ -40,7 +40,7 @@ Cílem tohoto článku je poskytnout přehled základních funkcí zabezpečení
 
 * Jednotné přihlašování
 * Reverzní proxy server
-* Multi-Factor Authentication
+* Multi-factor Authentication
 * Řízení přístupu na základě role (RBAC)
 * Monitorování zabezpečení, výstrahy a sestavy založené na strojovém učení
 * Správa identit a přístupu zákazníků
@@ -77,7 +77,7 @@ Další informace:
 * [Jednotné přihlašování s proxy aplikací](../../active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 * [Práce s podmíněným přístupem](../../active-directory/manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 
-## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+## <a name="multi-factor-authentication"></a>Multi-factor Authentication
 
 Azure Multi-Factor Authentication je metoda ověřování, která vyžaduje použití více než jedné metody ověřování a přidává kritickou druhou vrstvu zabezpečení pro přihlášení a transakce uživatelů. Multi-Factor Authentication pomáhá chránit přístup k datům a aplikacím a současně plnit požadavky uživatelů na jednoduchý proces přihlašování. Poskytuje silné ověřování prostřednictvím řady možností ověřování: telefonní hovory, textové zprávy nebo oznámení mobilní aplikace nebo ověřovací kódy a tokeny OAuth třetích stran.
 
@@ -102,11 +102,11 @@ Monitorování zabezpečení, výstrahy a sestavy založené na strojovém učen
 
 Sestavy v Azure Portal spadají do následujících kategorií:
 
-* **Sestavy anomálií**: Obsahuje přihlašovací události, které jsme zjistili, že se neobvyklé. Naším cílem je, abyste věděli o takové činnosti a bylo možné určit, jestli je událost podezřelá.
-* **Sestavy integrovaných aplikací**: Poskytněte vám přehled o tom, jak se ve vaší organizaci používají cloudové aplikace. Azure AD nabízí integraci s tisíci cloudových aplikací.
-* **Zprávy o chybách**: Indikuje chyby, které mohou nastat při zřizování účtů pro externí aplikace.
-* **Sestavy specifické pro uživatele**: Zobrazit data aktivit přihlašování zařízení pro určitého uživatele.
-* **Protokoly aktivit**: Obsahují záznam všech auditovaných událostí za posledních 24 hodin, posledních 7 dní nebo posledních 30 dnů, a změny aktivity skupiny a aktivity resetování hesel a registrace.
+* **Sestavy anomálií**: obsahují události přihlášení, které jsme zjistili, že jsou neobvyklé. Naším cílem je, abyste věděli o takové činnosti a bylo možné určit, jestli je událost podezřelá.
+* **Integrované sestavy aplikací**: poskytují přehled o tom, jak se ve vaší organizaci používají cloudové aplikace. Azure AD nabízí integraci s tisíci cloudových aplikací.
+* **Zprávy o chybách**: označuje chyby, které mohou nastat při zřizování účtů pro externí aplikace.
+* **Sestavy specifické pro uživatele**: zobrazení dat aktivit přihlašování zařízení pro určitého uživatele.
+* **Protokoly aktivit**: obsahují záznam všech auditovaných událostí za posledních 24 hodin, posledních 7 dní nebo posledních 30 dnů, a změny aktivity skupiny a aktivity resetování hesla a registrace.
 
 Další informace:
 
@@ -125,8 +125,8 @@ Když použijete Azure AD B2C, můžou si vaši zákazníci zaregistrovat své a
 Další informace:
 
 * [Co je Azure Active Directory B2C?](https://azure.microsoft.com/services/active-directory-b2c/)
-* [Azure Active Directory B2C verze Preview: Registrace a přihlášení uživatelů v aplikacích](../../active-directory-b2c/active-directory-b2c-overview.md)
-* [Azure Active Directory B2C verze Preview: Typy aplikací](../../active-directory-b2c/active-directory-b2c-apps.md)
+* [Azure Active Directory B2C Preview: registrace a přihlášení uživatelů ve vašich aplikacích](../../active-directory-b2c/overview.md)
+* [Azure Active Directory B2C Preview: typy aplikací](../../active-directory-b2c/application-types.md)
 
 ## <a name="device-registration"></a>Registrace zařízení
 
@@ -165,7 +165,7 @@ Azure AD Identity Protection je služba zabezpečení, která poskytuje konsolid
 Další informace:
 
 * [Azure AD Identity Protection](/azure/active-directory/identity-protection/overview)
-* [Kanál 9: Azure AD a zobrazení identity: Identity Protection ve verzi Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+* [Kanál 9: Azure AD a identity show: identita Protection Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="hybrid-identity-managementazure-ad-connect"></a>Hybridní Správa identit/Azure AD Connect
 

@@ -4,23 +4,20 @@ titleSuffix: Azure Network Watcher
 description: Tato stránka vysvětluje, jak používat Azure Network Watcher řešení potíží s rozhraním příkazového řádku Azure CLI
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 2838bc61-b182-4da8-8533-27db8fdbd177
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: kumud
-ms.openlocfilehash: ca61486ce58ccd3385518c2d22e0690c1fb34d16
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: dc0aa8e6099a7ec017aead2fe0f16e9712e17936
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277817"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840719"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli"></a>Řešení potíží s Virtual Network bránou a připojením pomocí Azure Network Watcher Azure CLI
 

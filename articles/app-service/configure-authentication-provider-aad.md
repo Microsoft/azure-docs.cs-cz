@@ -5,21 +5,18 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 09/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b85c68b19a44021710dbc9143e255600b43b2cba
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 69959418c52eb7324efe19ca41481e426b822ab4
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666138"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842349"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-ad-login"></a>Konfigurace aplikace App Service pro použití přihlášení Azure AD
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
 V tomto článku se dozvíte, jak nakonfigurovat Azure App Service pro použití Azure Active Directory (Azure AD) jako poskytovatele ověřování.
-
-> [!NOTE]
-> V současné době se Azure App Service a Azure Functions podporují jenom Azure AD v 1.0. Nepodporují [Microsoft Identity Platform v 2.0](https://docs.microsoft.com/azure/active-directory/develop/v2-overview), což zahrnuje knihovny Microsoft Authentication Library (MSAL).
 
 Při nastavování aplikace a ověřování použijte tyto osvědčené postupy:
 
@@ -30,29 +27,30 @@ Při nastavování aplikace a ověřování použijte tyto osvědčené postupy:
 ## <a name="express"> </a>Konfigurace pomocí expresního nastavení
 
 1. V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci.
-1. V levém podokně v části **Nastavení** vyberte **ověřování/autorizace** a ujistěte se, že je **zapnuté** **ověřování App Service** .
-1. Vyberte **Azure Active Directory**a potom v části **režim správy** vyberte **Express**.
-1. Výběrem **OK** zaregistrujete aplikaci App Service do Azure Active Directory. Vytvoří se nová registrace aplikace.
+2. V levém navigačním panelu vyberte **ověřování/autorizace** > **zapnuto**.
+3. Vyberte **Azure Active Directory** > **Express**.
 
    Pokud chcete místo toho zvolit existující registraci aplikace:
 
-   1. Zvolte **Vybrat existující aplikaci** a potom vyhledejte název dříve vytvořené registrace aplikace ve vašem tenantovi.
-   1. Vyberte registraci aplikace a pak vyberte **OK**.
-   1. Pak na stránce nastavení Azure Active Directory vyberte **OK** .
+   1. Zvolte **Vybrat existující aplikaci AD**a pak klikněte na **aplikace Azure AD**.
+   2. Vyberte existující registraci aplikace a klikněte na **OK**.
 
-   Ve výchozím nastavení App Service poskytuje ověřování, ale neomezuje autorizovaný přístup k obsahu a rozhraním API vašeho webu. Musíte autorizovat uživatele v kódu vaší aplikace.
-1. Volitelné Pokud chcete omezit přístup k aplikacím jenom na uživatele ověřené nástrojem Azure Active Directory, nastavte **akci, která se má provést, když se žádost neověřuje** , aby se **přihlásila pomocí Azure Active Directory**. Když nastavíte tuto funkci, aplikace vyžaduje ověření všech požadavků. Také přesměruje všechna neověřená na Azure Active Directory pro ověřování.
+3. Výběrem **OK** zaregistrujete aplikaci App Service do Azure Active Directory. Vytvoří se nová registrace aplikace.
+   
+    ![Expresní nastavení v Azure Active Directory](./media/configure-authentication-provider-aad/express-settings.png)
+   
+4. Volitelné Ve výchozím nastavení App Service poskytuje ověřování, ale neomezuje autorizovaný přístup k obsahu a rozhraním API vašeho webu. Musíte autorizovat uživatele v kódu vaší aplikace. Pokud chcete omezit přístup k aplikacím jenom na uživatele ověřené nástrojem Azure Active Directory, nastavte **akci, která se má provést, když se žádost neověřuje** , aby se **přihlásila pomocí Azure Active Directory**. Když nastavíte tuto funkci, aplikace vyžaduje ověření všech požadavků. Také přesměruje všechna neověřená na Azure Active Directory pro ověřování.
 
     > [!CAUTION]
     > Omezení přístupu tímto způsobem se vztahuje na všechna volání aplikace, která nemusí být žádoucí pro aplikace, které mají veřejně dostupnou domovskou stránku, stejně jako v mnoha aplikacích s jednou stránkou. U takových aplikací může být upřednostňována možnost **povolení anonymních požadavků (žádná akce)** , přičemž aplikace se ručně spouští samotné přihlášení. Další informace najdete v tématu [tok ověřování](overview-authentication-authorization.md#authentication-flow).
-1. Vyberte **Uložit**.
+5. Vyberte **Uložit**.
 
 ## <a name="advanced"> </a>Konfigurace s pokročilým nastavením
 
-Pokud chcete použít tenanta Azure AD, který je jiný než ten, který používáte k přihlášení do Azure, můžete nastavení aplikace nakonfigurovat ručně. K dokončení této vlastní konfigurace budete potřebovat:
+Nastavení aplikace můžete nakonfigurovat ručně, pokud chcete použít registraci aplikace z jiného tenanta Azure AD. Dokončení této vlastní konfigurace:
 
 1. Vytvořte registraci ve službě Azure AD.
-1. Zadejte informace o registraci pro App Service.
+2. Zadejte informace o registraci pro App Service.
 
 ### <a name="register"> </a>Vytvoření registrace aplikace v Azure AD pro vaši aplikaci App Service
 
@@ -68,7 +66,7 @@ Proveďte následující kroky:
 1. Přihlaste se k [Azure Portal], vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci. Poznamenejte si **adresu URL**vaší aplikace. Použijete ho ke konfiguraci registrace aplikace Azure Active Directory.
 1. Vyberte **Azure Active Directory** > **Registrace aplikací** > **nové registrace**.
 1. Na stránce **zaregistrovat aplikaci** zadejte **název** registrace vaší aplikace.
-1. V části **identifikátor URI pro přesměrování**vyberte **Web** a zadejte adresu URL vaší App Service aplikace a přidejte cestu `/.auth/login/aad/callback`. Například, `https://contoso.azurewebsites.net/.auth/login/aad/callback`. 
+1. V **identifikátoru URI přesměrování**vyberte **Web** a zadejte `<app-url>/.auth/login/aad/callback`. Například, `https://contoso.azurewebsites.net/.auth/login/aad/callback`. 
 1. Vyberte **Vytvořit**.
 1. Po vytvoření registrace aplikace zkopírujte **ID aplikace (klienta)** a **ID adresáře (tenant)** pro pozdější použití.
 1. Vyberte **branding**. Do pole **Adresa URL domovské stránky**zadejte adresu URL vaší aplikace App Service a vyberte **Uložit**.
@@ -84,12 +82,12 @@ Proveďte následující kroky:
 1. Volitelné Pokud chcete vytvořit tajný klíč klienta, vyberte **certifikáty & tajné klíče** > **nový tajný klíč klienta** > **Přidat**. Zkopírujte hodnotu tajného klíče klienta zobrazenou na stránce. Znovu se nezobrazí.
 1. Volitelné Pokud chcete přidat víc **adres URL odpovědi**, vyberte **ověřování**.
 
-### <a name="secrets"> </a>Přidání informací o Azure Active Directory do aplikace App Service
+### <a name="secrets"> </a>Povolení Azure Active Directory v aplikaci App Service
 
 1. V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci. 
-1. V levém podokně v části **Nastavení**vyberte **ověřování/autorizace** a ujistěte se, že je **zapnuté** **ověřování App Service** .
+1. V levém podokně v části **Nastavení**vyberte **ověřování/autorizace** > **zapnuto**.
 1. Volitelné Ve výchozím nastavení App Service ověřování umožňuje neověřený přístup k vaší aplikaci. Pokud chcete vyhovět ověřování uživatele, nastavte **akci, která se má provést, když se žádost neověřuje** , aby se **přihlásila pomocí Azure Active Directory**.
-1. V části zprostředkovatelé ověřování vyberte **Azure Active Directory**.
+1. V části **Zprostředkovatelé ověřování**vyberte **Azure Active Directory**.
 1. V **režimu správy**vyberte **upřesnit** a nakonfigurujte App Service ověřování podle následující tabulky:
 
     |Pole|Popis|
@@ -97,11 +95,9 @@ Proveďte následující kroky:
     |ID klienta| Použijte **ID aplikace (klienta)** registrace aplikace. |
     |ID vystavitele| Použijte `https://login.microsoftonline.com/<tenant-id>`a nahraďte *\<ID tenanta >* s **ID adresáře (tenant)** registrace aplikace. |
     |Tajný kód klienta (volitelné)| Použijte tajný klíč klienta, který jste vygenerovali v registraci aplikace.|
-    |Povolené cílové skupiny tokenů| Pokud se jedná o cloudovou nebo serverovou aplikaci a chcete z webové aplikace dovolit ověřovací tokeny, přidejte sem **identifikátor URI ID aplikace** webové aplikace. |
+    |Povolené cílové skupiny tokenů| Pokud se jedná o cloudovou nebo serverovou aplikaci a chcete z webové aplikace dovolit ověřovací tokeny, přidejte sem **identifikátor URI ID aplikace** webové aplikace. Nakonfigurované **ID klienta** se *vždycky* implicitně považuje za povolenou cílovou skupinu. |
 
-    > [!NOTE]
-    > Nakonfigurované **ID klienta** se *vždycky* implicitně považuje za povolenou cílovou skupinu, a to bez ohledu na to, jak jste nakonfigurovali **povolené cílové skupiny tokenů**.
-1. Vyberte **OK**a pak vyberte **Uložit**.
+2. Vyberte **OK**a pak vyberte **Uložit**.
 
 Nyní jste připraveni použít Azure Active Directory pro ověřování ve vaší aplikaci App Service.
 
@@ -111,11 +107,11 @@ Nativní klienty můžete registrovat, aby bylo možné ověřování pomocí kl
 
 1. V [Azure Portal]vyberte možnost **Active Directory** > **Registrace aplikací** > **nové registrace**.
 1. Na stránce **zaregistrovat aplikaci** zadejte **název** registrace vaší aplikace.
-1. V části **identifikátor URI pro přesměrování**vyberte **veřejný klient (mobilní & Desktop)** a zadejte adresu URL vaší aplikace App Service a přidejte cestu `/.auth/login/aad/callback`. Například, `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
-1. Vyberte **Vytvořit**.
+1. V části **identifikátor URI přesměrování**vyberte **veřejný klient (mobilní & Desktop)** a zadejte adresu URL `<app-url>/.auth/login/aad/callback`. Například, `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
 
     > [!NOTE]
     > V případě aplikace pro Windows použijte místo toho identifikátor [SID balíčku](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) .
+1. Vyberte **Vytvořit**.
 1. Po vytvoření registrace aplikace Zkopírujte hodnotu **ID aplikace (klienta)** .
 1. Vyberte **oprávnění rozhraní API** > **přidejte oprávnění** > **Moje rozhraní API**.
 1. Vyberte registraci aplikace, kterou jste vytvořili dříve pro App Service aplikaci. Pokud se registrace aplikace nezobrazuje, ujistěte se, že jste přidali obor **user_impersonation** v části [Vytvoření registrace aplikace ve službě Azure AD pro vaši aplikaci App Service](#register).
@@ -127,21 +123,6 @@ Nyní jste nakonfigurovali nativní klientskou aplikaci, která má přístup k 
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
-<!-- Images. -->
-
-[0]: ./media/app-service-mobile-how-to-configure-active-directory-authentication/app-service-webapp-url.png
-[1]: ./media/app-service-mobile-how-to-configure-active-directory-authentication/app-service-aad-app_registration.png
-[2]: ./media/app-service-mobile-how-to-configure-active-directory-authentication/app-service-aad-app-registration-create.png
-[3]: ./media/app-service-mobile-how-to-configure-active-directory-authentication/app-service-aad-app-registration-config-appidurl.png
-[4]: ./media/app-service-mobile-how-to-configure-active-directory-authentication/app-service-aad-app-registration-config-replyurl.png
-[5]: ./media/app-service-mobile-how-to-configure-active-directory-authentication/app-service-aad-endpoints.png
-[6]: ./media/app-service-mobile-how-to-configure-active-directory-authentication/app-service-aad-endpoints-fedmetadataxml.png
-[7]: ./media/app-service-mobile-how-to-configure-active-directory-authentication/app-service-webapp-auth.png
-[8]: ./media/configure-authentication-provider-aad/app-service-webapp-auth-config.png
-
-
-
 <!-- URLs. -->
 
 [Azure Portal]: https://portal.azure.com/
-[alternative method]:#advanced

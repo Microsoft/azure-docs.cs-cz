@@ -1,5 +1,5 @@
 ---
-title: Přesunutí aplikace démona volající webová rozhraní API do produkčního prostředí – Microsoft Identity Platform | Azure
+title: Přesunutí aplikace démona, která volá webová rozhraní API do produkčního prostředí – Microsoft Identity Platform | Azure
 description: Přečtěte si, jak přesunout aplikaci démona, která volá webová rozhraní API do produkčního prostředí.
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,20 +15,20 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 990273e84bfceb9f4a19eae8bf5890e8303a5857
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: db5f52c95daf4e93c140b4c93f39dad19971319d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702262"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775202"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Aplikace démona, která volá webová rozhraní API – přesun do produkčního prostředí
 
 Když teď víte, jak získat a použít token pro volání služby Service-to-Service, Naučte se, jak aplikaci přesunout do produkčního prostředí.
 
-## <a name="deployment---case-of-multi-tenant-daemon-apps"></a>Nasazení – případ aplikací démon s více klienty
+## <a name="deployment---multitenant-daemon-apps"></a>Nasazení – víceklientské aplikace démona
 
-Pokud jste nezávislý výrobce softwaru, který vytváří aplikaci démona, která může běžet v několika klientech, musíte se ujistit, že správci tenanta:
+Pokud jste nezávislý výrobce softwaru, který vytváří aplikaci démona, která může běžet v několika klientech, musíte se ujistit, že správce klienta:
 
 - Zřídí instanční objekt pro aplikaci.
 - Udělí souhlas aplikaci.
@@ -43,20 +43,20 @@ Tady je několik odkazů, které vám pomohou získat další informace:
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-- Pokud jste to ještě neučinili, vyzkoušejte si rychlý Start, [Získejte token a zavolejte Microsoft Graph API z konzolové aplikace pomocí identity aplikace](./quickstart-v2-netcore-daemon.md).
+- Rychlý Start: [získání tokenu a volání Microsoft Graph API z konzolové aplikace pomocí identity aplikace](./quickstart-v2-netcore-daemon.md)
 - Referenční dokumentace pro:
-  - Vytváření instancí [ConfidentialClientApplication](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)
-  - Volání [AcquireTokenForClient](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenforclientparameterbuilder)
+  - [ConfidentialClientApplication](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)se vytváření instancí.
+  - Volání [AcquireTokenForClient](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenforclientparameterbuilder).
 - Další ukázky/kurzy:
-  - [Microsoft-Identity-Platform-Console-démon](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) nabízí jednoduchou konzolovou aplikaci .NET Core daemon, která zobrazuje uživatele tenanta dotazování na Microsoft Graph.
+  - [Microsoft-Identity-Platform-Console-démon](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) nabízí jednoduchou konzolovou aplikaci .NET Core daemon, která zobrazuje uživatele Microsoft Graph dotazování tenanta.
 
-    ![topologie](media/scenario-daemon-app/daemon-app-sample.svg)
+    ![Ukázková topologie aplikace démona](media/scenario-daemon-app/daemon-app-sample.svg)
 
-    Stejná ukázka také znázorňuje variace s certifikáty.
+    Stejná ukázka také znázorňuje variaci s certifikáty:
 
-    ![topologie](media/scenario-daemon-app/daemon-app-sample-with-certificate.svg)
+    ![Ukázka topologie aplikace démona – certifikáty](media/scenario-daemon-app/daemon-app-sample-with-certificate.svg)
 
-  - [Microsoft-Identity-Platform-ASPNET-WebApp-daemon](https://github.com/Azure-Samples/microsoft-identity-platform-aspnet-webapp-daemon) obsahuje webovou aplikaci ASP.NET MVC, která synchronizuje data z Microsoft Graph pomocí identity aplikace, nikoli jménem uživatele. Ukázka také znázorňuje proces souhlasu správce.
+  - [Microsoft-Identity-Platform-ASPNET-WebApp-daemon](https://github.com/Azure-Samples/microsoft-identity-platform-aspnet-webapp-daemon) obsahuje webovou aplikaci ASP.NET MVC, která synchronizuje data z Microsoft Graph pomocí identity aplikace, nikoli jménem uživatele. Tato ukázka také znázorňuje proces souhlasu správce.
 
     ![topologie](media/scenario-daemon-app/damon-app-sample-web.svg)
 

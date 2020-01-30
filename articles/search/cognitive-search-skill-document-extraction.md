@@ -8,17 +8,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: chalton
-ms.openlocfilehash: a79b0476fccbd2e2b9d3cf47ecfdc99c17c2862d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 0f67caad03c4ebd1cf8f3721f377d8362219016a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113331"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837727"
 ---
 # <a name="document-extraction-cognitive-skill"></a>Rozpoznávání extrakce dokumentů – dovednost
 
 > [!IMPORTANT] 
-> Tato dovednost je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API verze 2019-05-06-Preview](search-api-preview.md) poskytuje funkce ve verzi Preview. V tuto chvíli není k dispozici žádný portál ani podpora sady .NET SDK.
+> Tato dovednost je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). V tuto chvíli není k dispozici žádný portál ani podpora sady .NET SDK.
 
 Dovednost **extrakce dokumentu** extrahuje obsah ze souboru v rámci kanálu pro obohacení. Díky tomu můžete využít krok extrakce dokumentu, ke kterému obvykle dochází před spuštěním dovednosti se soubory, které mohou být generovány jinými dovednostmi.
 
@@ -41,7 +41,7 @@ V parametrech jsou rozlišována malá a velká písmena.
 
 | Konfigurační parametr   | Povolené hodnoty | Popis |
 |-------------------------|----------------|-------------|
-| `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | Nastavte na `none`, pokud chcete ignorovat vložené obrázky nebo soubory obrázků v sadě dat. Toto je výchozí nastavení. <br/>V případě [analýzy obrázků s využitím odbornosti](cognitive-search-concept-image-scenarios.md)nastavte `generateNormalizedImages`, aby dovednost vytvořila pole normalizovaných imagí jako součást odhalujícího dokumentu. Tato akce vyžaduje, aby se `parsingMode` nastavila na `default` a `dataToExtract` je nastavená na `contentAndMetadata`. Normalizovaná bitová kopie odkazuje na další zpracování, které vede k podpoře konzistentního vykreslování při zahrnutí obrázků do výsledků vizuálního vyhledávání (například fotografie stejné velikosti v ovládacím prvku graf, jak je vidět v JFK). [ Ukázka](https://github.com/Microsoft/AzureSearch_JFK_Files)). Tyto informace jsou vygenerovány pro každý obrázek při použití této možnosti.  <br/>Pokud nastavíte `generateNormalizedImagePerPage`, soubory PDF budou zpracovávány jinak než při extrakci vložených obrázků, každá stránka bude vykreslena jako obrázek a bude odpovídajícím způsobem normalizována.  Typy souborů, které nejsou ve formátu PDF, se budou považovat za stejné, jako kdyby byla nastavena `generateNormalizedImages`.
+| `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | Nastavte na `none`, pokud chcete ignorovat vložené obrázky nebo soubory obrázků v sadě dat. Toto je výchozí nastavení. <br/>V případě [analýzy obrázků s využitím odbornosti](cognitive-search-concept-image-scenarios.md)nastavte `generateNormalizedImages`, aby dovednost vytvořila pole normalizovaných imagí jako součást odhalujícího dokumentu. Tato akce vyžaduje, aby se `parsingMode` nastavila na `default` a `dataToExtract` je nastavená na `contentAndMetadata`. Normalizovaná bitová kopie odkazuje na další zpracování, které vede k podpoře konzistentního vykreslování při zahrnutí obrázků do výsledků vizuálního vyhledávání (například fotografií stejné velikosti v ovládacím prvku graf, jak je vidět v [ukázce JFK](https://github.com/Microsoft/AzureSearch_JFK_Files)). Tyto informace jsou vygenerovány pro každý obrázek při použití této možnosti.  <br/>Pokud nastavíte `generateNormalizedImagePerPage`, soubory PDF budou zpracovávány jinak než při extrakci vložených obrázků, každá stránka bude vykreslena jako obrázek a bude odpovídajícím způsobem normalizována.  Typy souborů, které nejsou ve formátu PDF, se budou považovat za stejné, jako kdyby byla nastavena `generateNormalizedImages`.
 | `normalizedImageMaxWidth` | Libovolné celé číslo mezi 50-10000 | Maximální šířka (v pixelech) pro vygenerované normalizované bitové kopie. Výchozí hodnota je 2000. | 
 | `normalizedImageMaxHeight` | Libovolné celé číslo mezi 50-10000 | Maximální výška (v pixelech) pro vygenerované normalizované bitové kopie. Výchozí hodnota je 2000. |
 
@@ -145,7 +145,7 @@ Tento objekt odkazu na soubor může být vygenerován jedním ze tří způsob�
 }
 ```
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 + [Integrované dovednosti](cognitive-search-predefined-skills.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)

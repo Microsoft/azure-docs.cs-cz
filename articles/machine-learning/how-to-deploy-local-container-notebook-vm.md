@@ -10,19 +10,19 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 10/25/2019
-ms.openlocfilehash: bfb2d5a5a8918cbfc446c35b39f3e8e9954b7761
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 45f9f9d1c9c8414f7d3c97aab05b012a16079f40
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763517"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843527"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Nasazení modelu pro Azure Machine Learning výpočetních instancí
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 > [!NOTE]
-> Výpočetní instance (Preview) jsou k dispozici pouze pro pracovní prostory s oblastí **střed USA – sever** nebo **Velká Británie – jih**.
+> Výpočetní instance (Preview) jsou dostupné jenom pro pracovní prostory s **střed USA – sever**, * * východní USA 2 * *, **Severní Evropa** nebo **Velká Británie – jih**.
 >Pokud je váš pracovní prostor v jakékoli jiné oblasti, můžete místo toho vytvořit a použít [virtuální počítač s poznámkovým blokem](concept-compute-instance.md#notebookvm) .  Model můžete nasadit buď do výpočetní instance, nebo do virtuálního počítače poznámkového bloku pomocí kroků v tomto článku.
 
 Naučte se používat Azure Machine Learning k nasazení modelu jako webové služby ve vaší instanci služby Azure Machine Learning Compute. Pokud je splněna jedna z následujících podmínek, použijte výpočetní instance:

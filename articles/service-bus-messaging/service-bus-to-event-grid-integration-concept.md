@@ -1,10 +1,9 @@
 ---
 title: Přehled integrace služby Azure Service Bus do služby Event Grid | Microsoft Docs
-description: Popis integrace zasílání zpráv služby Service Bus a služby Event Grid
+description: Tento článek poskytuje popis způsobu, jakým se Azure Service Bus zasílání zpráv integruje s Azure Event Grid.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: f99766cb-8f4b-4baf-b061-4b1e2ae570e4
 ms.service: service-bus-messaging
@@ -12,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/15/2018
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 5d4ece6b631882200c6f98f6de5daa543fdf7ce4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1e514e2856afae4ff6f877bb193935da1bc5d623
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072139"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773477"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Přehled integrace služby Azure Service Bus do služby Event Grid
 
@@ -39,7 +38,7 @@ K povolení této funkce potřebujete následující položky:
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ### <a name="verify-that-you-have-contributor-access"></a>Ověření, že máte přístup přispěvatele
-Přejděte do svého oboru názvů služby Service Bus a vyberte **řízení přístupu (IAM)** a vyberte **přiřazení rolí** kartu. Ověřte, že máte přístup přispěvatele k oboru názvů. 
+Přejděte do oboru názvů Service Bus a pak vyberte možnost **řízení přístupu (IAM)** a vyberte kartu **přiřazení rolí** . Ověřte, zda máte přístup přispěvatele k oboru názvů. 
 
 ### <a name="events-and-event-schemas"></a>Události a schémata událostí
 
@@ -118,7 +117,7 @@ Pokud chcete přijímat události například pouze z jedné fronty nebo jednoho
 
 Odběry služby Event Grid pro obory názvů služby Service Bus můžete vytvořit třemi různými způsoby:
 
-* Na webu Azure Portal
+* V Azure Portal
 * V [Azure CLI](#azure-cli-instructions)
 * V [PowerShellu](#powershell-instructions)
 
@@ -153,7 +152,7 @@ namespaceid=$(az resource show --namespace Microsoft.ServiceBus --resource-type 
 az eventgrid event-subscription create --resource-id $namespaceid --name "<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>" --endpoint "<your_function_url>" --subject-ends-with "<YOUR SERVICE BUS SUBSCRIPTION NAME>"
 ```
 
-Pokud používáte prostředí BASH 
+Pokud používáte BASH 
 
 ## <a name="powershell-instructions"></a>Pokyny pro PowerShell
 
@@ -173,9 +172,9 @@ mespaceName "<YOUR NAMESPACE NAME>").Id
 New-AzEVentGridSubscription -EventSubscriptionName "<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>" -ResourceId $NSID -Endpoint "<YOUR FUNCTION URL>” -SubjectEndsWith "<YOUR SERVICE BUS SUBSCRIPTION NAME>"
 ```
 
-Z tohoto místa můžete prozkoumat další možnosti instalace nebo otestovat tok událostí.
+Odsud můžete prozkoumat další možnosti instalace nebo otestovat tok událostí.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Příklady](service-bus-to-event-grid-integration-example.md) pro službu Service Bus a Event Grid.
 * Další informace o službě [Event Grid](https://docs.microsoft.com/azure/event-grid/).

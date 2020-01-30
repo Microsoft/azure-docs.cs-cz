@@ -16,12 +16,12 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/07/2019
-ms.openlocfilehash: 0cf593ce4ab9e0ba299d10b34422ee30661f38a9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 618be4bc2d7669879daa927d5c4392b1097d29af
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228174"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774889"
 ---
 # <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>Kurz: nabízená oznámení na konkrétní zařízení s iOS pomocí Azure Notification Hubs
 
@@ -37,7 +37,7 @@ V tomto kurzu provedete následující kroky:
 
 > [!div class="checklist"]
 > * Přidání výběru kategorie do aplikace
-> * Posílání značených oznámení
+> * Posílání označených oznámení
 > * Odeslat oznámení ze zařízení
 > * Spuštění aplikace a generování oznámení
 
@@ -159,7 +159,7 @@ Prvním krokem je přidání prvků uživatelského rozhraní do stávajícího 
 9. V metodě `didRegisterForRemoteNotificationsWithDeviceToken` v `AppDelegate.m`nahraďte kód v metodě následujícím kódem pro předání tokenu zařízení třídě `notifications`. Třída `notifications` provádí registraci pro oznámení s kategoriemi. Pokud uživatel změní výběr kategorie, zavolejte metodu `subscribeWithCategories` v reakci na tlačítko přihlásit k **odběru** a aktualizujte je.
 
     > [!NOTE]
-    > Vzhledem k tomu, že token zařízení přiřazený Apple Push Notification Service (APNS) může kdykoli platit, měli byste se často zaregistrovat k oznámením, aby nedocházelo k chybám oznámení. V tomto příkladu se oznámení registrují při každém spuštění aplikace. Pokud se aplikace spouštějí často, třeba častěji než jednou denně, pravděpodobně můžete registraci přeskočit kvůli úspoře šířky pásma, protože od předchozí registrace neuplynul ani den.
+    > Vzhledem k tomu, že token zařízení přiřazený Apple Push Notification Service (APNS) se může kdykoli změnit, měli byste se často zaregistrovat k oznámením, aby nedocházelo k chybám oznámení. V tomto příkladu se oznámení registrují při každém spuštění aplikace. Pokud se aplikace spouštějí často, třeba častěji než jednou denně, pravděpodobně můžete registraci přeskočit kvůli úspoře šířky pásma, protože od předchozí registrace neuplynul ani den.
 
     ```objc
     self.notifications.deviceToken = deviceToken;

@@ -8,12 +8,12 @@ ms.date: 08/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 58959310a0daec3835585f64c53f2b8853eb553e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: bb31a10623bd5e8ea9a406b37acf84995774045c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548590"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772308"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Příprava k nasazení svého řešení IoT Edge v produkčním prostředí
 
@@ -39,7 +39,7 @@ Každé zařízení IoT Edge v produkčním prostředí potřebuje certifikát z
 
 Seznamte se s rolí zařízení certifikační Autority certifikátu, naleznete v tématu [používá certifikáty, jak Azure IoT Edge](iot-edge-certs.md).
 
-Další informace o tom, jak nainstalovat certifikáty na zařízení IoT Edge a odkázat je ze souboru config. yaml, najdete v tématu [instalace produkčních certifikátů na IoT Edge zařízení](how-to-create-transparent-gateway.md).
+Další informace o tom, jak nainstalovat certifikáty na zařízení IoT Edge a odkázat je ze souboru config. yaml, najdete v tématu [instalace produkčních certifikátů na IoT Edge zařízení](how-to-install-production-certificates.md).
 
 ### <a name="have-a-device-management-plan"></a>Nepotřebujete žádný další plán správy zařízení
 
@@ -233,7 +233,7 @@ Aby se změny projevily, musí být modul kontejneru restartován.
 
 #### <a name="option-adjust-log-settings-for-each-container-module"></a>Možnost: upravit nastavení protokolu pro každý modul kontejneru
 
-To můžete provést v **createOptions** každého modulu. Například:
+To můžete provést v **createOptions** každého modulu. Příklad:
 
 ```yml
 "createOptions": {

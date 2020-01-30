@@ -3,12 +3,12 @@ title: Nasazení více instancí prostředků
 description: Použijte operaci kopírování a pole v šabloně Azure Resource Manager k iterování několikrát při nasazování prostředků.
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 54d406771f64d97a3ba564556be6dc49677a732d
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 0250f5ee64c91d8d75ad246271ab31324a2553f8
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121977"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836925"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Iterace prostředku, vlastnosti nebo proměnné v šablonách Azure Resource Manager
 
@@ -205,6 +205,10 @@ Následující příklad ukazuje, jak použít `copy` na vlastnost datadisks na 
 
 Všimněte si, že při použití `copyIndex` v rámci iterace vlastnosti je nutné zadat název iterace. Při použití s iterací prostředků není nutné zadávat název.
 
+> [!NOTE]
+> Iterace vlastnosti také podporuje argument posunu. Posun musí být zadán za názvem iterace, například copyIndex (' datadisks ', 1).
+>
+
 Správce prostředků rozbalí `copy` pole během nasazování. Název pole se zobrazí jako název vlastnosti. Vstupní hodnoty se stanou vlastnostmi objektu. Nasazená šablona bude:
 
 ```json
@@ -299,6 +303,10 @@ Můžete použít iteraci prostředků a vlastností společně. Odkázat na ite
 ## <a name="variable-iteration"></a>Iterace proměnné
 
 Chcete-li vytvořit více instancí proměnné, použijte vlastnost `copy` v oddílu Variables. Vytvoříte pole prvků vytvořené z hodnoty vlastnosti `input`. Můžete použít vlastnost `copy` v rámci proměnné nebo na nejvyšší úrovni oddílu Variables. Při použití `copyIndex` uvnitř proměnné iterace je nutné zadat název iterace.
+
+> [!NOTE]
+> Proměnná iterace podporuje také argument posunu. Posun musí být zadán za názvem iterace, například copyIndex (' diskNames ', 1).
+>
 
 Jednoduchý příklad vytvoření pole řetězcových hodnot naleznete v tématu [copy Array Template](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/copy-array/azuredeploy.json).
 

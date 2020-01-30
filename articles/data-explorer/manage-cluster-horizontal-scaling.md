@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 52a9c0a13723361bbc93362cdd9e2c73ef0372f2
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.openlocfilehash: 8ab192957ead806b4bb3ae8e7395589f3b1ecbbe
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74942235"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833290"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>Správa horizontálního škálování clusteru (horizontální navýšení kapacity) v Azure Průzkumník dat, aby se vešly měnící se požadavky
 
@@ -45,7 +45,7 @@ Optimalizované automatické škálování je doporučovanou metodou automatick�
 
 1. Vyberte minimální počet instancí a maximální počet instancí. Automatické škálování clusteru mezi těmito dvěma čísly závisí na zatížení.
 
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
    ![Optimalizovaná metoda automatického škálování](media/manage-cluster-horizontal-scaling/optimized-autoscale-method.png)
 
@@ -58,9 +58,10 @@ Optimalizované automatické škálování začíná pracovat. Akce se teď zobr
 Když váš cluster přistupuje ke stavu nadlimitního využití, horizontální navýšení kapacity a udržení optimálního výkonu. K horizontálnímu navýšení kapacity dojde v těchto případech:
 * Počet instancí clusteru je pod maximálním počtem instancí definovaných uživatelem.
 * Využití mezipaměti je po celou hodinu vysoké.
+* PROCESOR je vysoký po celou hodinu.
 
 > [!NOTE]
-> Logika horizontálního navýšení kapacity aktuálně nebere v úvahu využití příjmu a metriky procesoru. Pokud jsou tyto metriky důležité pro váš případ použití, použijte [vlastní automatické škálování](#custom-autoscale).
+> Logika horizontálního navýšení kapacity aktuálně nebere v úvahu metriku využití pro přijímání. Pokud je tato metrika důležitá pro váš případ použití, použijte [vlastní automatické škálování](#custom-autoscale).
 
 **Horizontální navýšení kapacity**
 
@@ -84,7 +85,7 @@ Pomocí vlastního automatického škálování můžete cluster dynamicky šká
 
 1. Do pole **název nastavení automatického škálování** zadejte název, jako je například horizontální navýšení *kapacity: využití mezipaměti*. 
 
-   ![Pravítko měřítka](media/manage-cluster-horizontal-scaling/custom-autoscale-method.png)
+   ![Pravidlo škálování](media/manage-cluster-horizontal-scaling/custom-autoscale-method.png)
 
 2. V případě **režimu škálování**vyberte **škálovat na základě metriky**. Tento režim poskytuje dynamické škálování. Můžete také vybrat možnost **škálovat na konkrétní počet instancí**.
 
@@ -124,7 +125,7 @@ Pomocí vlastního automatického škálování můžete cluster dynamicky šká
     | **Výchozí** | Výchozí počet instancí. Toto nastavení se používá, pokud dochází k problémům se čtením metrik prostředků. |
     |  |  |
 
-7. Vyberte **Save** (Uložit).
+7. Vyberte **Uložit**.
 
 Nyní jste nakonfigurovali horizontální škálování pro váš cluster Průzkumník dat Azure. Přidejte další pravidlo pro vertikální škálování. Pokud potřebujete pomoc s problémy s škálováním clusteru, [otevřete žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) v Azure Portal.
 

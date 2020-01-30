@@ -9,14 +9,14 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 7d6b83354baf3db5ddb65f94fee1c3dce2dcca94
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: a6f033af34088081090251f2e5e7cd4a07ce43cc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992454"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841743"
 ---
-# <a name="output-batching"></a>Výstup dávkování
+# <a name="output-batching"></a>Dávkování výstupu
 
 Event Grid podporuje poskytování více než jedné události v rámci jedné žádosti o doručení. Tato funkce umožňuje zvýšit celkovou propustnost doručení bez placení režijních nákladů na požadavek HTTP. Dávkování je ve výchozím nastavení vypnuté a dá se zapnout pro každé předplatné.
 
@@ -79,8 +79,8 @@ Následující nastavení času nasazení určuje maximální hodnotu povolenou 
 
 | Název vlastnosti | Popis |
 | ------------- | ----------- | 
-| `api:deliveryPolicyLimits:maxpreferredBatchSizeInKilobytes` | Maximální povolená hodnota ovladače `PreferredBatchSizeInKilobytes`. Výchozí `1033`.
-| `api:deliveryPolicyLimits:maxEventsPerBatch` | Maximální povolená hodnota ovladače `MaxEventsPerBatch`. Výchozí `50`.
+| `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | Maximální povolená hodnota ovladače `PreferredBatchSizeInKilobytes`. Výchozí `1033`.
+| `api__deliveryPolicyLimits__maxEventsPerBatch` | Maximální povolená hodnota ovladače `MaxEventsPerBatch`. Výchozí `50`.
 
 ## <a name="configuring-runtime-default-values"></a>Konfigurace výchozích hodnot modulu runtime
 
@@ -88,5 +88,5 @@ Následující nastavení času nasazení řídí výchozí hodnotu modulu runti
 
 | Název vlastnosti | Popis |
 | ------------- | ----------- |
-| `broker:defaultMaxBatchSizeInBytes` | Maximální velikost žádosti o doručení, je-li zadána pouze `MaxEventsPerBatch`. Výchozí `1_058_576`.
-| `broker:defaultMaxEventsPerBatch` | Maximální počet událostí, které mají být přidány do dávky, pokud je zadána pouze `MaxBatchSizeInBytes`. Výchozí `10`.
+| `broker__defaultMaxBatchSizeInBytes` | Maximální velikost žádosti o doručení, je-li zadána pouze `MaxEventsPerBatch`. Výchozí `1_058_576`.
+| `broker__defaultMaxEventsPerBatch` | Maximální počet událostí, které mají být přidány do dávky, pokud je zadána pouze `MaxBatchSizeInBytes`. Výchozí `10`.

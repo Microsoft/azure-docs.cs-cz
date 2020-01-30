@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: cda02408f9e90cb9f19a4f7d806a34e5cff9c33c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f2876ea32bdcd900a454ae6b7ac58c11b8ec67c3
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426040"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840481"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>Živá data test místně pomocí nástroje Azure Stream Analytics pro Visual Studio (Preview)
 
@@ -38,7 +38,6 @@ Podporovány jsou následující možnosti místního testování:
 2. Chcete-li otestovat dynamických dat, zvolte **použití cloudu vstup** v rozevíracím.
 
    ![Vstup za cloud Azure Stream Analytics Visual Studio](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input.png)
-
 
 3. Nastavte **čas zahájení** k definování, kdy úloha spustí zpracování vstupní data. Úloha může potřebovat číst vstupní data předem, aby přesné výsledky. Výchozí doba je nastavena na 30 minut před aktuálním časem.
 
@@ -65,6 +64,5 @@ Podporovány jsou následující možnosti místního testování:
 ## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření úlohy Stream Analytics pomocí Azure Stream Analytics tools for Visual Studio](stream-analytics-quick-create-vs.md)
-* [Instalace nástroje Azure Stream Analytics pro Visual Studio](stream-analytics-tools-for-visual-studio-install.md)
 * [Testování dotazů Stream Analytics místně pomocí sady Visual Studio](stream-analytics-vs-tools-local-run.md)
 * [Chcete-li zobrazit úlohy Azure Stream Analytics pomocí sady Visual Studio](stream-analytics-vs-tools.md)

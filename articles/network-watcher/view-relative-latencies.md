@@ -3,25 +3,21 @@ title: Zobrazení relativních latencí v oblastech Azure z konkrétních umíst
 description: Naučte se zobrazovat relativní latence napříč poskytovateli internetu do oblastí Azure z konkrétních umístění.
 services: network-watcher
 documentationcenter: ''
-author: KumudD
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: damendo
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2017
-ms.author: kumud
+ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: edbc6f9ce4c1434fa27989f053c108914a151320
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: c3a85de3a201a89d6d9500e4f4b2df9e667e3537
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745772"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840532"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Zobrazení relativní latence do oblastí Azure z určitých umístění
 

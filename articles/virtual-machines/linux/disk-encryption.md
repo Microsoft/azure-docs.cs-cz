@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 2df0135953a9f810bdc142b18386c9a186028767
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 28c971993721744245a5d3d57f1f5b68df58b492
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76717602"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841178"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Šifrování na straně serveru Azure Managed disks
 
@@ -134,6 +134,19 @@ diskEncryptionSetName=yourDiskencryptionSetName
 diskEncryptionSetId=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [id] -o tsv)
 
 az vm create -g $rgName -n $vmName -l $location --image $image --size $vmSize --generate-ssh-keys --os-disk-encryption-set $diskEncryptionSetId --data-disk-sizes-gb 128 128 --data-disk-encryption-sets $diskEncryptionSetId $diskEncryptionSetId
+```
+
+
+#### <a name="encrypt-existing-unattached-managed-disks"></a>Zašifrovat existující nepřipojené spravované disky 
+
+Vaše existující disky se nesmí připojit ke spuštěnému virtuálnímu počítači, aby je bylo možné zašifrovat pomocí následujícího skriptu:
+
+```azurecli
+rgName=yourResourceGroupName
+diskName=yourDiskName
+diskEncryptionSetName=yourDiskEncryptionSetName
+ 
+az disk update -n $diskName -g $rgName --encryption-type EncryptionAtRestWithCustomerKey --disk-encryption-set $diskEncryptionSetId
 ```
 
 #### <a name="create-a-virtual-machine-scale-set-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>Vytvoření sady škálování virtuálních počítačů pomocí Image Marketplace, šifrování operačních systémů a datových disků pomocí klíčů spravovaných zákazníkem

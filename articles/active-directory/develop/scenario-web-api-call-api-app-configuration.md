@@ -15,18 +15,20 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: dd38cb58e6e6db9767be9adb8f299107601de580
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 82b5e1d9753fbb65fd81f24b06016d302457144e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701769"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834089"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Webové rozhraní API, které volá webová rozhraní API: Konfigurace kódu
 
 Po zaregistrování webového rozhraní API můžete nakonfigurovat kód pro aplikaci.
 
 Kód, který použijete ke konfiguraci webového rozhraní API tak, aby volal podřízená webová rozhraní API vytvořená na začátku kódu, který se používá k ochraně webového rozhraní API. Další informace najdete v tématu [chráněné webové rozhraní API: Konfigurace aplikace](scenario-protected-web-api-app-configuration.md).
+
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 ## <a name="code-subscribed-to-ontokenvalidated"></a>Kód přihlášený k odběru OnTokenValidated
 
@@ -47,7 +49,7 @@ public static IServiceCollection AddProtectedApiCallsWebApis(this IServiceCollec
     services.AddTokenAcquisition();
     services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, options =>
     {
-        // When an access token for our own web API is validated, we add it 
+        // When an access token for our own web API is validated, we add it
         // to the MSAL.NET cache so that it can be used from the controllers.
         options.Events = new JwtBearerEvents();
 
@@ -55,7 +57,7 @@ public static IServiceCollection AddProtectedApiCallsWebApis(this IServiceCollec
         {
             context.Success();
 
-            // Adds the token to the cache and handles the incremental consent 
+            // Adds the token to the cache and handles the incremental consent
             // and claim challenges
             AddAccountToCacheFromJwt(context, scopes);
             await Task.FromResult(0);
@@ -142,6 +144,82 @@ private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityTok
      }
 }
 ```
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Tok spouštěný za běhu (OBO) slouží k získání tokenu pro volání webového rozhraní API pro příjem dat. V tomto toku vaše webové rozhraní API obdrží token nosiče s delegovanými oprávněními z klientské aplikace a potom tento token vymění pro jiný přístupový token pro volání webového rozhraní API pro příjem dat.
+
+Níže uvedený kód používá `SecurityContextHolder` v rozhraní Web API k získání ověřeného nosných tokenů. Pak pomocí knihovny Java MSAL získá token pro rozhraní API pro příjem dat pomocí `acquireToken` volání `OnBehalfOfParameters`. MSAL ukládá token do mezipaměti, aby následné volání rozhraní API mohla použít `acquireTokenSilently` k získání tokenu v mezipaměti.
+
+```Java
+@Component
+class MsalAuthHelper {
+
+    @Value("${security.oauth2.client.authority}")
+    private String authority;
+
+    @Value("${security.oauth2.client.client-id}")
+    private String clientId;
+
+    @Value("${security.oauth2.client.client-secret}")
+    private String secret;
+
+    @Autowired
+    CacheManager cacheManager;
+
+    private String getAuthToken(){
+        String res = null;
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if(authentication != null){
+            res = ((OAuth2AuthenticationDetails) authentication.getDetails()).getTokenValue();
+        }
+        return res;
+    }
+
+    String getOboToken(String scope) throws MalformedURLException {
+        String authToken = getAuthToken();
+
+        ConfidentialClientApplication application =
+                ConfidentialClientApplication.builder(clientId, ClientCredentialFactory.create(secret))
+                        .authority(authority).build();
+
+        String cacheKey = Hashing.sha256()
+                .hashString(authToken, StandardCharsets.UTF_8).toString();
+
+        String cachedTokens = cacheManager.getCache("tokens").get(cacheKey, String.class);
+        if(cachedTokens != null){
+            application.tokenCache().deserialize(cachedTokens);
+        }
+
+        IAuthenticationResult auth;
+        SilentParameters silentParameters =
+                SilentParameters.builder(Collections.singleton(scope))
+                        .build();
+        auth = application.acquireTokenSilently(silentParameters).join();
+
+        if (auth == null){
+            OnBehalfOfParameters parameters =
+                    OnBehalfOfParameters.builder(Collections.singleton(scope),
+                            new UserAssertion(authToken))
+                            .build();
+
+            auth = application.acquireToken(parameters).join();
+        }
+
+        cacheManager.getCache("tokens").put(cacheKey, application.tokenCache().serialize());
+
+        return auth.accessToken();
+    }
+}
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Tok spouštěný za běhu (OBO) slouží k získání tokenu pro volání webového rozhraní API pro příjem dat. V tomto toku vaše webové rozhraní API obdrží token nosiče s delegovanými oprávněními z klientské aplikace a potom tento token vymění pro jiný přístupový token pro volání webového rozhraní API pro příjem dat.
+
+Webové rozhraní API v Pythonu bude muset použít nějaký middleware k ověření, že je nosný token přijatý od klienta. Webové rozhraní API pak může získat přístupový token pro rozhraní API pro příjem dat pomocí MSAL knihovny Python voláním metody [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) . Ukázka demonstrující tento tok pomocí MSAL Python ještě není k dispozici.
+
+---
 
 Můžete také zobrazit příklad implementace toku OBO v [Node. js a Azure Functions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61).
 

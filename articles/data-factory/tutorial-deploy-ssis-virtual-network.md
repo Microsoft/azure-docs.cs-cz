@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: 593ceb884e751ca3115b08baf0c9c7e802057f54
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 065610a9de4898d012cef8a16849c09a81f0774c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864983"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841093"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>Konfigurace prostředí Azure-služba SSIS (SQL Server Integration Services) (SSIS) Integration runtime (IR) pro připojení k virtuální síti
 
@@ -44,7 +44,7 @@ Postup je následující:
     
         Azure-SSIS IR musí vytvořit určité síťové prostředky ve stejné skupině prostředků jako virtuální síť. Mezi tyto prostředky patří:
         - Nástroj pro vyrovnávání zatížení Azure s názvem *\<Guid >-azurebatch-cloudserviceloadbalancer*
-        - Skupina zabezpečení práce v síti s názvem *\<GUID >-azurebatch-cloudservicenetworksecuritygroup
+        - Skupina zabezpečení sítě s názvem *\<GUID >-azurebatch-cloudservicenetworksecuritygroup
         - Veřejná IP adresa Azure s názvem-azurebatch-cloudservicepublicip
     
         Tyto prostředky budou vytvořeny při spuštění Azure-SSIS IR. Po zastavení Azure-SSIS IR se odstraní. Chcete-li zabránit zablokování Azure-SSIS IR zastavovat, nepoužívejte tyto síťové prostředky v jiných prostředcích.
@@ -66,7 +66,7 @@ Postup je následující:
 
 ## <a name="configure-a-virtual-network"></a>Konfigurace virtuální sítě
 
-Než se pokusíte připojit k Azure-SSIS IR, použijte Azure Portal k virtuální síti.
+Pomocí Azure Portal nakonfigurujte virtuální síť předtím, než se pokusíte připojit k Azure-SSIS IR.
 
 1. Spusťte Microsoft Edge nebo Google Chrome. V současné době pouze tyto webové prohlížeče podporují rozhraní Data Factory.
 

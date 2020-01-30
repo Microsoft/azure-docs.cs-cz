@@ -9,12 +9,12 @@ ms.date: 10/03/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: ee2b3a35b6f1817b89541a31d0bde4adf00ade2a
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 19f86b1d8233e05844201e1095c1f79324955cd7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992532"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841825"
 ---
 # <a name="rest-api"></a>Rozhraní REST API
 Tento článek popisuje rozhraní REST API Azure Event Grid v IoT Edge
@@ -183,6 +183,7 @@ Ukázky v této části se používají `EndpointType=Webhook;`. Ukázky JSON pr
             "eventExpiryInMinutes": 120,
             "maxDeliveryAttempts": 50
         },
+        "persistencePolicy": "true",
         "destination":
         {
             "endpointType": "WebHook",
@@ -527,7 +528,7 @@ Ukázky v této části se používají `EndpointType=Webhook;`. Ukázky JSON pr
 
 **Popisy polí datové části**
 - ```Id``` je povinný. Může to být jakákoli řetězcová hodnota, která je vyplněna volajícím. Event Grid neprovádí žádnou duplicitu ani neuplatňuje žádné sémantiky v tomto poli.
-- ```Topic``` je nepovinný, ale pokud je zadaný, musí odpovídat topic_name z adresy URL požadavku.
+- ```Topic``` je volitelná, ale pokud je zadaná, musí odpovídat topic_name z adresy URL požadavku.
 - ```Subject``` je povinná, může to být libovolná hodnota řetězce.
 - ```EventType``` je povinná, může to být libovolná hodnota řetězce.
 - ```EventTime``` je povinná, není ověřená, ale měla by být správného typu DateTime.
@@ -619,8 +620,8 @@ Tento typ cíle použijte k odeslání událostí do jakéhokoli jiného modulu 
 Omezení pro atribut `endpointUrl`:
 - Hodnota nesmí být null.
 - Musí se jednat o absolutní adresu URL.
-- Pokud je v nastavení EventGridModule nastavená možnost outbound__webhook__httpsOnly na hodnotu true, musí být pouze HTTPS.
-- Pokud je outbound__webhook__httpsOnly nastavené na false, může to být HTTP nebo HTTPS.
+- Je-outbound__webhook__httpsOnly li v nastavení EventGridModule nastaveno na hodnotu true, musí být pouze HTTPS.
+- Pokud je outbound__webhook__httpsOnly nastaveno na hodnotu false, může to být HTTP nebo HTTPS.
 
 Omezení vlastnosti `eventDeliverySchema`:
 - Musí odpovídat vstupnímu schématu tématu přihlášení k odběru.
@@ -673,9 +674,9 @@ EndpointUrl
 - Musí se jednat o absolutní adresu URL.
 - Cesta `/api/events` musí být definovaná v cestě URL požadavku.
 - Musí mít `api-version=2018-01-01` v řetězci dotazu.
-- Pokud je outbound__eventgrid__httpsOnly nastavené na true v nastavení EventGridModule (ve výchozím nastavení true), musí to být jenom HTTPS.
+- Outbound__eventgrid__httpsOnly Pokud je v nastavení EventGridModule nastavena hodnota true (výchozí hodnota je true), musí být pouze HTTPS.
 - Pokud je outbound__eventgrid__httpsOnly nastavené na false, může to být HTTP nebo HTTPS.
-- Pokud je outbound__eventgrid__allowInvalidHostnames nastavené na false (ve výchozím nastavení je false), musí se cílit na jeden z následujících koncových bodů:
+- Pokud je outbound__eventgrid__allowInvalidHostnames nastaveno na hodnotu false (výchozí hodnota je false), musí se cílit na jeden z následujících koncových bodů:
    - `eventgrid.azure.net`
    - `eventgrid.azure.us`
    - `eventgrid.azure.cn`
@@ -686,3 +687,93 @@ SasKey:
 Téma:
 - Pokud je předplatné. EventDeliverySchema nastavené na EventGridSchema, hodnota z tohoto pole se před přesměrováním do Event Grid v cloudu vloží do každého pole události.
 - Pokud je předplatné. EventDeliverySchema nastavené na CustomEventSchema, tato vlastnost se ignoruje a vlastní datová část události se přepošle přesně tak, jak byla přijata.
+
+## <a name="set-up-event-hubs-as-a-destination"></a>Nastavit Event Hubs jako cíl
+
+Pokud chcete publikovat do centra událostí, nastavte `endpointType` na `eventHub` a zadejte:
+
+* connectionString: připojovací řetězec pro konkrétní centrum událostí, které cílíte vygenerovat prostřednictvím zásad sdíleného přístupu.
+
+    >[!NOTE]
+    > Připojovací řetězec musí být specifický pro entitu. Použití připojovacího řetězce oboru názvů nebude fungovat. Připojovací řetězec specifický pro entitu můžete vygenerovat tak, že přejdete do konkrétního centra událostí, na které chcete publikovat na portálu Azure Portal, a kliknutím na **zásady sdíleného přístupu** vygenerujete nový connecection řetězec specifický pro danou entitu.
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "eventHub",
+              "properties": {
+                "connectionString": "<your-event-hub-connection-string>"
+              }
+            }
+          }
+        }
+    ```
+
+## <a name="set-up-service-bus-queues-as-a-destination"></a>Nastavit Service Bus fronty jako cíl
+
+Pokud chcete publikovat do Service Bus fronty, nastavte `endpointType` na `serviceBusQueue` a poskytněte:
+
+* connectionString: připojovací řetězec pro konkrétní frontu Service Bus, na kterou cílíte, vygenerovali pomocí zásad sdíleného přístupu.
+
+    >[!NOTE]
+    > Připojovací řetězec musí být specifický pro entitu. Použití připojovacího řetězce oboru názvů nebude fungovat. Vygenerujte připojovací řetězec specifický pro entitu tak, že přejdete na konkrétní Service Bus frontu, na kterou chcete publikovat na portálu Azure Portal, a kliknutím na **zásady sdíleného přístupu** vygenerujete nový connecection řetězec specifický pro danou entitu.
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "serviceBusQueue",
+              "properties": {
+                "connectionString": "<your-service-bus-queue-connection-string>"
+              }
+            }
+          }
+        }
+    ```
+
+## <a name="set-up-service-bus-topics-as-a-destination"></a>Nastavit Service Bus témata jako cíl
+
+Pokud chcete publikovat Service Bus téma, nastavte `endpointType` na `serviceBusTopic` a poskytněte:
+
+* connectionString: připojovací řetězec pro konkrétní Service Bus téma, které cílíte vygenerované pomocí zásad sdíleného přístupu.
+
+    >[!NOTE]
+    > Připojovací řetězec musí být specifický pro entitu. Použití připojovacího řetězce oboru názvů nebude fungovat. Vygenerujte připojovací řetězec specifický pro entitu tak, že přejdete na konkrétní Service Bus téma, na které byste chtěli publikovat na portálu Azure Portal, a kliknutím na **zásady sdíleného přístupu** vygenerujete nový connecection řetězec specifický pro danou entitu.
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "serviceBusTopic",
+              "properties": {
+                "connectionString": "<your-service-bus-topic-connection-string>"
+              }
+            }
+          }
+        }
+    ```
+
+## <a name="set-up-storage-queues-as-a-destination"></a>Nastavit fronty úložiště jako cíl
+
+Pokud chcete publikovat do fronty úložiště, nastavte `endpointType` na `storageQueue` a zadejte:
+
+* Queue: název fronty úložiště, do které se chystáte publikovat.
+* connectionString: připojovací řetězec pro účet úložiště, ve kterém je fronta úložiště.
+
+    >[!NOTE]
+    > Odřádkování Event Hubs, front Service Bus a Service Busch témat, připojovací řetězec používaný pro fronty úložiště není specifický pro entitu. Místo toho je třeba použít připojovací řetězec pro účet úložiště.
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "storageQueue",
+              "properties": {
+                "queueName": "<your-storage-queue-name>",
+                "connectionString": "<your-storage-account-connection-string>"
+              }
+            }
+          }
+        }
+    ```

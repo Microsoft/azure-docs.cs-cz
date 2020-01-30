@@ -1,14 +1,14 @@
 ---
 title: Externí ověřování z ACR úlohy
-description: Povolte spravovanou identitu pro prostředky Azure v úloze Azure Container Registry (ACR), která umožňuje, aby úloha četla přihlašovací údaje Docker, uložené v trezoru klíčů Azure.
+description: Nakonfigurujte úlohu Azure Container Registry (úkol ACR) pro čtení přihlašovacích údajů služby Docker, které jsou uložené v trezoru klíčů Azure, pomocí spravované identity pro prostředky Azure.
 ms.topic: article
-ms.date: 07/12/2019
-ms.openlocfilehash: a7086050a4aef380f11298c819817692396216b2
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/14/2020
+ms.openlocfilehash: 47d3d643ee1287ef4f444095a2c6cfe6dcab294b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456217"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842516"
 ---
 # <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Externí ověřování v úloze ACR s využitím identity spravované službou Azure 
 
@@ -20,7 +20,7 @@ Tento článek vyžaduje, abyste spustili Azure CLI verze 2.0.68 nebo novější
 
 ## <a name="scenario-overview"></a>Přehled scénáře
 
-Ukázkový úkol načte přihlašovací údaje Docker Hub uložené v trezoru klíčů Azure. Přihlašovací údaje jsou pro účet Docker Hub s oprávněním Write (push) k privátnímu úložišti v Docker Hub. Pokud chcete přihlašovací údaje přečíst, nakonfigurujete úlohu se spravovanou identitou a přiřadíte jí patřičná oprávnění. Úloha přidružená k identitě sestaví image a přihlásí do Docker Hub, aby nastavila image do soukromého úložiště. 
+Ukázkový úkol načte přihlašovací údaje Docker Hub uložené v trezoru klíčů Azure. Přihlašovací údaje jsou pro účet Docker Hub s oprávněním Write (push) do úložiště privátního centra Docker. Pokud chcete přihlašovací údaje přečíst, nakonfigurujete úlohu se spravovanou identitou a přiřadíte jí patřičná oprávnění. Úloha přidružená k identitě sestaví image a přihlásí do Docker Hub, aby nastavila image do soukromého úložiště. 
 
 Tento příklad ukazuje kroky buď pomocí uživatelsky přiřazené nebo spravované identity přiřazené systémem. Vaše volba identity závisí na potřebách vaší organizace.
 
@@ -71,7 +71,7 @@ V reálném scénáři by tajné klíče byly pravděpodobně nastaveny a udržo
 Kroky pro tento příklad úlohy jsou definovány v [souboru YAML](container-registry-tasks-reference-yaml.md). V místním pracovním adresáři vytvořte soubor s názvem `dockerhubtask.yaml` a vložte následující obsah. Nezapomeňte nahradit název trezoru klíčů v souboru názvem vašeho trezoru klíčů.
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 # Replace mykeyvault with the name of your key vault
 secrets:
   - id: username
@@ -80,12 +80,12 @@ secrets:
     keyvault: https://mykeyvault.vault.azure.net/secrets/Password
 steps:
 # Log in to Docker Hub
-  - cmd: docker login --username '{{.Secrets.username}}' --password '{{.Secrets.password}}'
+  - cmd: bash echo '{{.Secrets.password}}' | docker login --username '{{.Secrets.username}}' --password-stdin 
 # Build image
-  - build: -t {{.Values.PrivateRepo}}:{{.Run.ID}} https://github.com/Azure-Samples/acr-tasks.git -f hello-world.dockerfile
+  - build: -t {{.Values.PrivateRepo}}:$ID https://github.com/Azure-Samples/acr-tasks.git -f hello-world.dockerfile
 # Push image to private repo in Docker Hub
   - push:
-    - {{.Values.PrivateRepo}}:{{.Run.ID}}
+    - {{.Values.PrivateRepo}}:$ID
 ```
 
 Kroky úlohy jsou následující:
@@ -94,6 +94,7 @@ Kroky úlohy jsou následující:
 * Ověřte pomocí Docker Hub předáním tajných kódů do příkazu `docker login`.
 * Sestavte Image pomocí ukázkového souboru dockerfileu v úložišti [Azure-Samples/ACR-Tasks](https://github.com/Azure-Samples/acr-tasks.git) .
 * Nahrajte image do úložiště privátního Docker Hub.
+
 
 ## <a name="option-1-create-task-with-user-assigned-identity"></a>Možnost 1: vytvoření úlohy s identitou přiřazenou uživatelem
 
@@ -140,7 +141,10 @@ az acr task create \
 Pokud chcete nastavit zásady přístupu pro Trezor klíčů, spusťte následující příkaz [AZ Key trezor set-Policy][az-keyvault-set-policy] . Následující příklad umožňuje identitě číst tajné klíče z trezoru klíčů. 
 
 ```azurecli
-az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $principalID --secret-permissions get
+az keyvault set-policy --name mykeyvault \
+  --resource-group myResourceGroup \
+  --object-id $principalID \
+  --secret-permissions get
 ```
 
 ## <a name="manually-run-the-task"></a>Ručně spustit úlohu
@@ -148,7 +152,7 @@ az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --obje
 Chcete-li ověřit, zda je úloha, ve které jste povolili spravovanou identitu, úspěšně spuštěna, spusťte úlohu ručně pomocí příkazu [AZ ACR Task Run][az-acr-task-run] . Parametr `--set` slouží k předání názvu soukromého úložiště do úlohy. V tomto příkladu je zástupný název úložiště *hubuser/hubrepo*.
 
 ```azurecli
-az acr task run --name dockerhubtask --registry myregistry --set PrivateRepo=hubuser/hubrepo 
+az acr task run --name dockerhubtask --registry myregistry --set PrivateRepo=hubuser/hubrepo
 ```
 
 Po úspěšném spuštění úlohy výstup zobrazí úspěšné ověření v Docker Hub a image se úspěšně sestaví a vloží do privátního úložiště:

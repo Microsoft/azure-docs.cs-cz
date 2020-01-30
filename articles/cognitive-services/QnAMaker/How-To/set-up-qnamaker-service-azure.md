@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: ec19f4b4140fb6f4a1dc968f4e2cac3c3d7a1e76
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dc3bb6882963205e17e37f52ec9dcdffecdf9e21
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447718"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843102"
 ---
 # <a name="manage-qna-maker-resources"></a>Správa prostředků QnA Maker
 
@@ -116,9 +116,37 @@ QnA Maker vytvoří několik prostředků Azure. Pokud chcete snížit úroveň 
 
 Přečtěte si další informace o službě [App Service](../../../app-service/index.yml) a [službě vyhledávání](../../../search/index.yml).
 
-### <a name="using-a-single-search-service"></a>Použití jedné vyhledávací služby
+## <a name="using-a-single-search-service"></a>Použití jedné vyhledávací služby
 
 Pokud vytvoříte službu QnA a její závislosti (například vyhledávání) prostřednictvím portálu, vytvoří se vyhledávací služba pro vás a bude propojena s QnA Makerovou službou. Po vytvoření těchto prostředků můžete aktualizovat nastavení App Service tak, aby používalo dříve existující vyhledávací službu, a odebrat tu, kterou jste právě vytvořili.
+
+Pokud vytváříte službu QnA prostřednictvím šablon Azure Resource Manager, můžete vytvořit všechny prostředky a řídit vytvoření App Service, aby se používala existující vyhledávací služba.
+
+
+## <a name="configure-qna-maker-to-use-different-cognitive-search-resource"></a>Konfigurace QnA Maker pro použití jiného prostředku Kognitivní hledání
+
+Pokud vytvoříte službu QnA a její závislosti (například vyhledávání) prostřednictvím portálu, vytvoří se vyhledávací služba pro vás a bude propojena s QnA Makerovou službou. Po vytvoření těchto prostředků můžete aktualizovat nastavení App Service tak, aby používalo dříve existující vyhledávací službu, a odebrat tu, kterou jste právě vytvořili.
+
+Prostředek QnA Maker **App Service** používá prostředek kognitivní hledání. Chcete-li změnit prostředek Kognitivní hledání používaný QnA Maker, je třeba změnit nastavení v Azure Portal.
+
+1. Získejte **klíč správce** a **název** kognitivní hledání prostředku, který chcete QnA Maker použít.
+
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyhledejte **App Service** přidružené k vašemu prostředku QnA maker. Oba mají stejný název.
+
+1. Vyberte **Nastavení**a pak **Konfigurace**. Zobrazí se všechna existující nastavení App Service QnA Maker.
+
+    > [!div class="mx-imgBorder"]
+    > ![snímek obrazovky Azure Portal se zobrazením nastavení konfigurace App Service](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png)
+
+1. Změňte hodnoty následujících klíčů:
+
+    * **AzureSearchAdminKey**
+    * **AzureSearchName**
+
+1. Chcete-li použít nové nastavení, je nutné restartovat službu App Service. Vyberte **Přehled**a pak vyberte **restartovat**.
+
+    > [!div class="mx-imgBorder"]
+    > ![snímku obrazovky Azure Portal restartování App Service po změně nastavení konfigurace](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)
 
 Pokud vytváříte službu QnA prostřednictvím šablon Azure Resource Manager, můžete vytvořit všechny prostředky a řídit vytvoření App Service, aby se používala existující vyhledávací služba.
 

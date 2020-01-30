@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: f920df20a8dc1cace76f641ce1c71f9b91a30bf4
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 70253e66903916bde05f9e6e55e3c0609cb4a146
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867670"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841110"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Kurz: výuka a nasazení modelu z rozhraní příkazového řádku
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -246,7 +246,7 @@ Výstup tohoto příkazu je podobný následujícímu formátu JSON:
 > [!IMPORTANT]
 > Zkopírujte hodnotu položky `id`, jak je používáno v další části.
 
-Chcete-li se podívat na komplexnější šablonu pro soubor JSON, který popisuje datovou sadu, použijte následující příkaz:
+Chcete-li zobrazit komplexnější šablonu pro datovou sadu, použijte následující příkaz:
 ```azurecli-interactive
 az ml dataset register --show-template
 ```
@@ -288,7 +288,7 @@ data:
 
 Změňte hodnotu položky `id` tak, aby odpovídala hodnotě vracené při registraci datové sady. Tato hodnota se používá k načtení dat do výpočetního cíle během školení.
 
-Tento YAML provádí následující akce:
+Tato YAML má za následek následující akce během školení:
 
 * Připojí datovou sadu (na základě ID datové sady) ve školicím prostředí a ukládá cestu k přípojnému bodu v proměnné prostředí `mnist`.
 * Předá do skriptu pomocí argumentu `--data-folder` umístění dat (přípojný bod) uvnitř školicího prostředí.
@@ -298,7 +298,7 @@ Soubor RunConfig obsahuje také informace, které slouží ke konfiguraci prost�
 > [!TIP]
 > I když je možné soubor RunConfig vytvořit ručně, byl v tomto příkladu vytvořen pomocí souboru `generate-runconfig.py`, který je součástí úložiště. Tento soubor získá odkaz na registrovanou datovou sadu, vytvoří programově config a pak ho přetrvá do souboru.
 
-Další informace o spuštění konfiguračních souborů najdete v tématech [nastavení a použití výpočetních cílů pro školení modelů](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli)nebo na tento [soubor JSON](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json) , abyste viděli úplné schéma pro RunConfig.
+Další informace o spuštění konfiguračních souborů najdete v tématu [nastavení a použití výpočetních cílů pro školení modelů](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli). Úplný odkaz na JSON najdete v [runconfigschema. JSON](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json).
 
 ## <a name="submit-the-training-run"></a>Odeslat školicí běh
 
@@ -379,7 +379,9 @@ az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.yml --dc aci
 
 Tento příkaz nasadí novou službu s názvem `myservice`s použitím verze 1 modelu, který jste předtím zaregistrovali.
 
-Soubor `inferenceConfig.yml` poskytuje informace o tom, jak provést odvození, jako je například vstupní skript (`score.py`) a závislosti softwaru. Další informace o struktuře tohoto souboru naleznete v tématu [schéma konfigurace odvození](reference-azure-machine-learning-cli.md#inference-configuration-schema). Další informace o vstupních skriptech najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md#prepare-to-deploy).
+Soubor `inferenceConfig.yml` poskytuje informace o tom, jak použít model pro odvození. Například odkazuje na vstupní skript (`score.py`) a závislosti softwaru. 
+
+Další informace o struktuře tohoto souboru naleznete v tématu [schéma konfigurace odvození](reference-azure-machine-learning-cli.md#inference-configuration-schema). Další informace o vstupních skriptech najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md#prepare-to-deploy).
 
 `aciDeploymentConfig.yml` popisuje prostředí nasazení používané pro hostování služby. Konfigurace nasazení je specifická pro výpočetní typ, který používáte pro nasazení. V tomto případě se používá instance kontejneru Azure. Další informace najdete v tématu [schéma konfigurace nasazení](reference-azure-machine-learning-cli.md#deployment-configuration-schema).
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d754964ac6c16c87e6f0825b4f1a955d38fa3530
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: f11258457e60ea3458b0ede1fe00f042041bcb1a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756224"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841246"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Kurz: Konfigurace G Suite pro Automatické zřizování uživatelů
 
@@ -133,7 +133,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-g-suite-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro G Suite ve službě Azure AD:
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -209,6 +209,7 @@ Další informace o tom, jak číst zřizování protokoly Azure AD najdete v t�
 
 ## <a name="common-issues"></a>Běžné problémy
 * Pokud účet použitý k navázání připojení není pro správce v GSuite, může dojít k selháním autorizace. Ujistěte se, že účet, který se používá k autorizaci přístupu, má oprávnění správce pro **všechny domény** , se kterými se uživatelé musí zřídit. 
+* Azure AD podporuje zakázání uživatelů v GSuite, aby k nim neměli přístup, ale neodstraňují uživatele v GSuite.
 
 ## <a name="next-steps"></a>Další kroky
 

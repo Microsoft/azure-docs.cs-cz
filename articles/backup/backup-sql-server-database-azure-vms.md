@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak zálohovat SQL Server databáze n
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: fc0c3127594fe3ca90b0a66ce548f471c55f4e5f
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 8125f6d98151f91faaccef512e4bcfd2946fcdd0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156467"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773119"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Zálohování databází SQL Serveru ve virtuálních počítačích Azure
 
@@ -24,6 +24,10 @@ V tomto článku se dozvíte, jak:
 > * Vytvořte a nakonfigurujte trezor.
 > * Objevte databáze a nastavte zálohy.
 > * Nastavte automatickou ochranu pro databáze.
+
+>[!NOTE]
+>**Obnovitelné odstranění pro SQL Server na virtuálním počítači Azure a obnovitelné odstranění pro SAP HANA v úlohách virtuálních počítačů Azure** je teď dostupné ve verzi Preview.<br>
+>Pokud si chcete zaregistrovat verzi Preview, napište nám na AskAzureBackupTeam@microsoft.com
 
 ## <a name="prerequisites"></a>Požadavky
 

@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: dekapur
-ms.openlocfilehash: f7a1ff63f39777c1f7a83190adae2991138a11d3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 46be6acc1ef08770826a2e020c8930eba0787791
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464056"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774449"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Zabezpečení samostatného clusteru ve Windows pomocí zabezpečení systému Windows
 Aby se zabránilo neoprávněnému přístupu ke clusteru Service Fabric, musíte zabezpečit cluster. Zabezpečení je obzvláště důležité, když cluster spouští produkční úlohy. Tento článek popisuje, jak nakonfigurovat zabezpečení mezi uzly a klientem a uzlem pomocí zabezpečení systému Windows v souboru *ClusterConfig. JSON* .  Proces odpovídá kroku konfigurace zabezpečení [vytvoření samostatného clusteru běžícího v systému Windows](service-fabric-cluster-creation-for-windows-server.md). Další informace o tom, jak Service Fabric používá zabezpečení systému Windows, najdete v tématu [scénáře zabezpečení clusteru](service-fabric-cluster-security.md).
@@ -52,7 +52,7 @@ Ukázkový konfigurační soubor *ClusterConfig. gMSA. Windows. JSON* stažený 
 | Správce |Nastavte na hodnotu true, pokud chcete, aby měl uživatel domény oprávnění správce pro přístup klienta k uživateli nebo false. |
 
 > [!NOTE]
-> Hodnota ClustergMSAIdentity je ve formátu "mysfgmsa@mydomain".
+> Hodnota ClustergMSAIdentity musí být ve formátu "mysfgmsa@mydomain".
 
 [Zabezpečení uzlů na uzel](service-fabric-cluster-security.md#node-to-node-security) je nakonfigurované nastavením **ClustergMSAIdentity** , když Service Fabric potřebuje běžet pod gMSA. Aby bylo možné sestavovat vztahy důvěryhodnosti mezi uzly, je nutné, aby si je navzájem věděli. Toho lze dosáhnout dvěma různými způsoby: Určete skupinový účet spravované služby, který zahrnuje všechny uzly v clusteru, nebo zadejte skupinu počítačů, která zahrnuje všechny uzly v clusteru. Důrazně doporučujeme používat přístup [skupinového účtu spravované služby (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) , zvláště u větších clusterů (více než 10 uzlů) nebo u clusterů, které se nejspíš zvětšují nebo zmenšují.  
 Tento přístup nevyžaduje vytvoření skupiny domén, pro kterou se správcům clusteru udělila přístupová práva k přidávání a odebírání členů. Tyto účty jsou užitečné také pro automatickou správu hesel. Další informace najdete v tématu [Začínáme se skupinovými účty spravované služby](https://technet.microsoft.com/library/jj128431.aspx).  

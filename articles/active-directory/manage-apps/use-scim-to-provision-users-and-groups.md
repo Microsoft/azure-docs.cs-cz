@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6ad3e91b6826680eb8bcc9da4fc9d1cee37564c
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 2c2f0abeab31fc64fceb10bf17ef90924efefa22
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76711627"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841212"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure Active Directory (Azure AD)
 
@@ -67,7 +67,7 @@ Všimněte si, že nemusíte podporovat uživatele i skupiny ani všechny níže
 |employeeId|urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: employeeNumber|
 | Ve TelephoneNumber |phoneNumbers [typ eq "fax"] .value |
 | givenName |name.givenName |
-| pracovní funkce |title |
+| pracovní funkce |název |
 | e-mailu |e-mailů [typ eq "pracovní"] .value |
 | mailNickname |externalId |
 | manažer |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager |
@@ -78,7 +78,7 @@ Všimněte si, že nemusíte podporovat uživatele i skupiny ani všechny níže
 | streetAddress |.streetAddress adresy [typ eq "pracovní"] |
 | Příjmení |name.familyName |
 | telefonní číslo |phoneNumbers [typ eq "pracovní"] .value |
-| user-PrincipalName |userName |
+| user-PrincipalName |uživatelské jméno |
 
 
 ### <a name="table-2-default-group-attribute-mapping"></a>Tabulka 2: Výchozí skupiny atributů mapování
@@ -1375,6 +1375,8 @@ Specifikace SCIM nedefinuje schéma specifické pro SCIM pro ověřování a aut
 *  Adresa URL pro výměnu tokenu: adresa URL, kterou klient vyměňuje udělení autorizace přístupového tokenu, obvykle s ověřením klienta.
 *  ID klienta: autorizační server vydá registrovanému klientovi identifikátor klienta, což je jedinečný řetězec, který představuje registrační informace poskytované klientem.  Identifikátor klienta není tajný. je vystavena vlastníkovi prostředku a **nesmí** se používat samostatně pro ověřování klientů.  
 *  Tajný kód klienta: tajný klíč klienta je tajný kód vygenerovaný autorizačním serverem. Mělo by se jednat o jedinečnou hodnotu známou jenom pro autorizační Server. 
+
+Upozorňujeme, že OAuth v1 není podporován kvůli expozici tajného klíče klienta. Je podporován protokol OAuth v2.  
 
 Osvědčené postupy (doporučeno, ale není nutné):
 * Podporuje více adres URL pro přesměrování. Správci mohou nakonfigurovat zřizování z obou "portal.azure.com" i "aad.portal.azure.com". Podpora více adres URL pro přesměrování zajistí, že uživatelé budou moct autorizovat přístup z obou portálu.

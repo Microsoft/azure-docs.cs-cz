@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: b1c71a1329b930beea38fe39518914b278f9372d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 9e46d92812b8e6db1f07e27fbfad8f4e3d05c3a9
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74968404"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774986"
 ---
 # <a name="configuring-asset-delivery-policies"></a>Konfigurace zásad doručení assetu
 [!INCLUDE [media-services-selector-asset-delivery-policy](../../../includes/media-services-selector-asset-delivery-policy.md)]
@@ -85,7 +85,7 @@ Požadavek:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 4651882c-d7ad-4d5e-86ab-f07f47dcb41e
     Host: media.windows.net
 
@@ -132,7 +132,7 @@ Požadavek:
     Accept-Charset: UTF-8
     Content-Type: application/json
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 56d2763f-6e72-419d-ba3c-685f6db97e81
     Host: media.windows.net
 
@@ -160,7 +160,7 @@ Požadavek:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 569d4b7c-a446-4edc-b77c-9fb686083dd8
     Host: media.windows.net
     Content-Length: 21
@@ -200,7 +200,7 @@ Požadavek:
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: fff319f6-71dd-4f6c-af27-b675c0066fa7
     Host: media.windows.net
 
@@ -251,7 +251,7 @@ Požadavek:
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: fff319f6-71dd-4f6c-af27-b675c0066fa7
     Host: media.windows.net
 
@@ -260,7 +260,7 @@ Požadavek:
 
 Pokud chcete chránit svůj obsah pomocí Widevine DRM, aktualizujte hodnoty AssetDeliveryConfiguration na použití WidevineLicenseAcquisitionUrl (která má hodnotu 7) a zadejte adresu URL služby doručování licencí. Následující partneři AMS vám pomůžou s poskytováním licencí Widevine: [Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](https://ezdrm.com/), [castLabs](https://castlabs.com/company/partners/azure/).
 
-Například: 
+Příklad: 
 
     {"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":2,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{\"Key\":7,\"Value\":\"https:\\/\\/example.net\/WidevineLicenseAcquisition\/"}]"}
 
@@ -426,7 +426,7 @@ Následující výčet popisuje hodnoty, které můžete nastavit ke konfiguraci
 
 * Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
 
-## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
+## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu

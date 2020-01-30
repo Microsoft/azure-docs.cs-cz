@@ -7,17 +7,17 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 07/10/2019
-ms.openlocfilehash: 43d91bff6b8b67e79a9549c1524f918166c9adc4
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.date: 01/28/2020
+ms.openlocfilehash: d39ffa05448600fe3bd09baf6080aa1565ae19ba
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933995"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843567"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Dotazování dat v Azure Monitor pomocí Azure Průzkumník dat (Preview)
 
-Cluster proxy serveru Azure Průzkumník dat (proxy server ADX) je entita, která umožňuje provádět dotazy na více produktů mezi Azure Průzkumník dat, [Application Insights (AI)](/azure/azure-monitor/app/app-insights-overview)a [Log Analytics (La)](/azure/azure-monitor/platform/data-platform-logs) ve službě [Azure monitor](/azure/azure-monitor/) . Můžete namapovat Azure Monitor pracovní prostory Log Analytics nebo Application Insights aplikace jako proxy cluster. Pak můžete zadat dotaz na proxy cluster pomocí nástrojů Azure Průzkumník dat a odkazovat na něj v dotazu mezi clustery. Tento článek ukazuje, jak se připojit ke clusteru proxy, jak přidat proxy cluster do Azure Průzkumník dat webové uživatelské rozhraní a spouštět dotazy na aplikace AI nebo v pracovních prostorech LA z Azure Průzkumník dat.
+Cluster proxy serveru Azure Průzkumník dat (proxy server ADX) je entita, která umožňuje provádět dotazy na více produktů mezi Azure Průzkumník dat, [Application Insights (AI)](/azure/azure-monitor/app/app-insights-overview)a [Log Analytics (La)](/azure/azure-monitor/platform/data-platform-logs) ve službě [Azure monitor](/azure/azure-monitor/) . Můžete namapovat Azure Monitor pracovní prostory Log Analytics nebo Application Insights aplikace jako clustery proxy. Pak můžete zadat dotaz na proxy cluster pomocí nástrojů Azure Průzkumník dat a odkazovat na něj v dotazu mezi clustery. Tento článek ukazuje, jak se připojit ke clusteru proxy, jak přidat proxy cluster do Azure Průzkumník dat webové uživatelské rozhraní a spouštět dotazy na aplikace AI nebo v pracovních prostorech LA z Azure Průzkumník dat.
 
 Tok proxy serveru Azure Průzkumník dat: 
 
@@ -26,7 +26,7 @@ Tok proxy serveru Azure Průzkumník dat:
 ## <a name="prerequisites"></a>Požadavky
 
 > [!NOTE]
-> Proxy server ADX je v režimu náhledu. Pokud chcete tuto funkci povolit, obraťte se na tým [ADXProxy](mailto:adxproxy@microsoft.com) .
+> Proxy server ADX je v režimu náhledu. [Připojte se k proxy serveru](#connect-to-the-proxy) , aby bylo možné povolit funkci proxy serveru ADX pro vaše clustery. Kontaktujte tým [ADXProxy](mailto:adxproxy@microsoft.com) s případnými dotazy.
 
 ## <a name="connect-to-the-proxy"></a>Připojit k proxy
 
@@ -34,11 +34,12 @@ Tok proxy serveru Azure Průzkumník dat:
 
     ![Nativní cluster ADX](media/adx-proxy/web-ui-help-cluster.png)
 
-1. V uživatelském rozhraní Průzkumník dat Azure (https://dataexplorer.azure.com/clusters) vyberte **Přidat cluster**.
+1. V uživatelském rozhraní Azure Průzkumník dat (https://dataexplorer.azure.com/clusters) vyberte **Přidat cluster**.
 
-1. V okně **Přidat cluster** :
-
-    * Přidejte adresu URL do clusteru LA nebo AI. Příklad: `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`
+1. V okně **Přidat cluster** přidejte adresu URL do clusteru La nebo AI. 
+    
+    * Pro LA: `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`
+    * Pro AI: `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`
 
     * Vyberte **Přidat**.
 
@@ -52,27 +53,17 @@ Tok proxy serveru Azure Průzkumník dat:
 
 ## <a name="run-queries"></a>Spouštění dotazů
 
-K dotazování clusterů proxy můžete použít Kusto Explorer, ADX web Explorer, Jupyter Kqlmagic nebo REST API. 
+Dotazy můžete spouštět pomocí klientských nástrojů, které podporují dotazy Kusto, například: Kusto Explorer, ADX web UI, Jupyter Kqlmagic, flow, PowerQuery, PowerShell, Jarvis, Lens REST API.
 
 > [!TIP]
 > * Název databáze by měl mít stejný název jako prostředek zadaný v proxy clusteru. V názvech se rozlišují malá a velká písmena.
 > * V dotazech mezi clustery se ujistěte, že je správně Naming Application Insights aplikace a pracovní prostory Log Analytics.
 >     * Pokud názvy obsahují speciální znaky, budou nahrazeny kódováním adresy URL v názvu clusteru proxy serveru. 
->     * Pokud názvy obsahují znaky, které nevyhovují [pravidlům názvů identifikátorů KQL](/azure/kusto/query/schema-entities/entity-names), jsou nahrazeny **-** pomlčkou.
+>     * Pokud názvy obsahují znaky, které nevyhovují [pravidlům názvů identifikátorů KQL](/azure/kusto/query/schema-entities/entity-names), jsou nahrazeny pomlčkou **-** znakem.
 
-### <a name="query-against-the-native-azure-data-explorer-cluster"></a>Dotaz na nativní cluster Azure Průzkumník dat 
+### <a name="direct-query-from-your-la-or-ai-adx-proxy-cluster"></a>Přímý dotaz z clusteru ADX serveru pro LA nebo AI
 
-Spouštění dotazů v clusteru Azure Průzkumník dat (například tabulka *StormEvents* v clusteru s rutinou *help* ). Při spuštění dotazu ověřte, že je v levém podokně vybraný nativní cluster Azure Průzkumník dat.
-
-```kusto
-StormEvents | take 10 // Demonstrate query through the native ADX cluster
-```
-
-![Tabulka StormEvents dotazu](media/adx-proxy/query-adx.png)
-
-### <a name="query-against-your-la-or-ai-cluster"></a>Dotaz na váš cluster pro LA nebo AI
-
-Když spustíte dotazy v clusteru LA nebo AL, ověřte, že je v levém podokně vybraný cluster LA nebo AI. 
+Spusťte dotazy v clusteru LA nebo AI. Ověřte, že je váš cluster vybraný v levém podokně. 
 
 ```kusto
 Perf | take 10 // Demonstrate query through the proxy on the LA workspace
@@ -80,20 +71,9 @@ Perf | take 10 // Demonstrate query through the proxy on the LA workspace
 
 ![Pracovní prostor dotaz LA](media/adx-proxy/query-la.png)
 
-### <a name="query-your-la-or-ai-cluster-from-the-adx-proxy"></a>Dotazování clusteru LA nebo AI z proxy serveru ADX  
+### <a name="cross-query-of-your-la-or-ai-adx-proxy-cluster-and-the-adx-native-cluster"></a>Dotazování clusteru s proxy LA nebo AI ADX a nativním clusterem ADX 
 
-Když spustíte dotazy z proxy serveru v clusteru LA nebo AI, ověřte, že je v levém podokně vybraný cluster ADX Native. Následující příklad demonstruje dotaz na pracovní prostor LA pomocí nativního clusteru ADX.
-
-```kusto
-cluster('https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name').Perf
-| take 10 
-```
-
-![Dotaz z proxy serveru Azure Průzkumník dat](media/adx-proxy/query-adx-proxy.png)
-
-### <a name="cross-query-of-la-or-ai-cluster-and-the-adx-cluster-from-the-adx-proxy"></a>Mezi dotazem clusteru LA nebo AI a clusterem ADX z proxy serveru ADX 
-
-Při spouštění meziclusterových dotazů z proxy serveru ověřte, že je v levém podokně vybraný cluster ADX Native. Následující příklady ukazují kombinaci tabulek clusteru ADX (using `union`) s pracovním prostorem La.
+Při spouštění meziclusterových dotazů z proxy serveru ověřte, že je v levém podokně vybraný cluster ADX Native. Následující příklady ukazují kombinaci tabulek clusteru ADX (pomocí `union`) s pracovním prostorem LA.
 
 ```kusto
 union StormEvents, cluster('https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>').Perf
@@ -105,9 +85,9 @@ let CL1 = 'https://ade.loganalytics.io/subscriptions/<subscription-id>/resourceg
 union <ADX table>, cluster(CL1).database(<workspace-name>).<table name>
 ```
 
-![Vzájemný dotaz z proxy serveru Azure Průzkumník dat](media/adx-proxy/cross-query-adx-proxy.png)
+   [![vzájemný dotaz z proxy Azure Průzkumník dat](media/adx-proxy/cross-query-adx-proxy.png)](media/adx-proxy/cross-query-adx-proxy.png#lightbox)
 
-Použití operátoru namísto sjednocení může vyžadovat [`hint`](/azure/kusto/query/joinoperator#join-hints) , aby se spustilo na nativním clusteru Azure Průzkumník dat (a ne na proxy serveru). [ `join` ](/azure/kusto/query/joinoperator) 
+Použití [operátoru`join`](/azure/kusto/query/joinoperator)namísto sjednocení může vyžadovat, aby se [`hint`](/azure/kusto/query/joinoperator#join-hints) spouštěla v nativním clusteru Azure Průzkumník dat (a ne na proxy serveru). 
 
 ## <a name="additional-syntax-examples"></a>Další příklady syntaxe
 

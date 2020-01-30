@@ -4,8 +4,7 @@ titleSuffix: Azure Network Watcher
 description: V tomto článku se dozvíte, jak diagnostikovat potíže se síťovým směrováním virtuálního počítače pomocí funkce dalšího směrování Azure Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose virtual machine (VM) network routing problem that prevents communication to different destinations.
@@ -16,14 +15,14 @@ ms.topic: article
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 81e2af329661d485b2d189e9a1f70b50bd6d4b7d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: b5a636471eab188dc8648761afedd81694331953
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276117"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834701"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-powershell"></a>Diagnostika potíží se síťovým směrováním virtuálního počítače – Azure PowerShell
 
@@ -35,7 +34,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, Tento článek vyžaduje modul Azure PowerShell `Az`. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, Tento článek vyžaduje modul Azure PowerShell `Az`. Nainstalovanou verzi zjistíte spuštěním rutiny `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 
 

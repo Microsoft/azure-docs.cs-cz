@@ -11,16 +11,16 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3370ec8de0fb49b92c0fb4dd429439e293ad1d8b
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: bc8dbfd315702f666d6b811e855d6bcd99df938e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949870"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836044"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Překladače deklarací identity v Azure Active Directory B2C vlastní zásady
 
-Překladače deklarací identity v Azure Active Directory B2C (Azure AD B2C) [vlastní zásady](active-directory-b2c-overview-custom.md) poskytují kontextové informace o žádosti o autorizaci, jako je název zásady, ID korelace požadavku, jazyk uživatelského rozhraní a další.
+Překladače deklarací identity v Azure Active Directory B2C (Azure AD B2C) [vlastní zásady](custom-policy-overview.md) poskytují kontextové informace o žádosti o autorizaci, jako je název zásady, ID korelace požadavku, jazyk uživatelského rozhraní a další.
 
 Chcete-li použít překladač deklarací identity ve vstupní nebo výstupní deklaraci identity, definujte v rámci elementu [ClaimsSchema](claimsschema.md) řetězec **ClaimType**a pak nastavte hodnotu **DefaultValue** na překladač deklarací identity v elementu Input nebo Output. Azure AD B2C přečte hodnotu překladače deklarací identity a použije hodnotu v technickém profilu.
 
@@ -51,7 +51,7 @@ Následující části uvádějí dostupné překladače deklarací identity.
 | {Culture: LanguageGroup} | Dva číslice kódu ISO pro jazyk | en |
 | {Culture: LCID}   | Identifikátor LCID kódu jazyka. | 1033 |
 | {Culture: RegionName} | Dvě písmena kódu ISO pro oblast. | Spojené státy |
-| {Culture: RFC5646} | Kód jazyka RFC5646 | en-US |
+| {Culture: RFC5646} | Kód jazyka RFC5646 | cs-CZ |
 
 ### <a name="policy"></a>Zásady
 
@@ -72,7 +72,7 @@ Následující části uvádějí dostupné překladače deklarací identity.
 | {OIDC:LoginHint} |  Parametr řetězce dotazu `login_hint`. | someone@contoso.com |
 | {OIDC:MaxAge} | Hodnota `max_age` | Nevztahuje se |
 | {OIDC: nonce} |Parametr řetězce dotazu `Nonce`. | defaultNonce |
-| {OIDC:Prompt} | Parametr řetězce dotazu `prompt`. | přihlášení |
+| {OIDC:Prompt} | Parametr řetězce dotazu `prompt`. | Přihlásit |
 | {OIDC: Resource} |Parametr řetězce dotazu `resource`. | Nevztahuje se |
 | {OIDC:scope} |Parametr řetězce dotazu `scope`. | OpenID |
 
@@ -102,7 +102,7 @@ Libovolný název parametru, který je součástí žádosti OIDC nebo OAuth2, s
 
 | Deklarovat | Popis | Příklad: |
 | ----- | ----------------------- | --------|
-| {OAuth2: access_token} | Přístupový token. | Nevztahuje se |
+| {OAuth2: access_token} | Přístupový token | Nevztahuje se |
 
 ## <a name="how-to-use-claim-resolvers"></a>Jak používat překladače deklarací identity
 
@@ -137,7 +137,7 @@ Pomocí překladačů deklarací identity můžete předem naplnit přihlašovac
 
 ### <a name="dynamic-ui-customization"></a>Dynamické přizpůsobení uživatelského rozhraní
 
-Azure AD B2C umožňuje předat parametry řetězce dotazu do koncových bodů definice obsahu HTML, aby bylo možné dynamicky vykreslovat obsah stránky. Obrázek pozadí můžete například změnit na stránce Azure AD B2C registrace nebo přihlášení na základě vlastního parametru, který předáte z webové nebo mobilní aplikace. Další informace najdete v tématu [dynamická konfigurace uživatelského rozhraní pomocí vlastních zásad v Azure Active Directory B2C](active-directory-b2c-ui-customization-custom-dynamic.md). Můžete také lokalizovat stránku HTML na základě parametru jazyka nebo můžete změnit obsah na základě ID klienta.
+Azure AD B2C umožňuje předat parametry řetězce dotazu do koncových bodů definice obsahu HTML, aby bylo možné dynamicky vykreslovat obsah stránky. Obrázek pozadí můžete například změnit na stránce Azure AD B2C registrace nebo přihlášení na základě vlastního parametru, který předáte z webové nebo mobilní aplikace. Další informace najdete v tématu [dynamická konfigurace uživatelského rozhraní pomocí vlastních zásad v Azure Active Directory B2C](custom-policy-ui-customization-dynamic.md). Můžete také lokalizovat stránku HTML na základě parametru jazyka nebo můžete změnit obsah na základě ID klienta.
 
 Následující příklad předává do řetězce dotazu parametr s názvem **campaignId** s hodnotou `hawaii`, kód **jazyka** `en-US`a **aplikace** představující ID klienta:
 
@@ -159,7 +159,7 @@ V důsledku toho Azure AD B2C odesílá výše uvedené parametry na stránku ob
 
 ### <a name="application-insights-technical-profile"></a>Application Insights technický profil
 
-Díky Azure Application Insights a překladačům deklarací identity můžete získat přehled o chování uživatelů. V Application Insights Technical profil odešlete vstupní deklarace identity, které jsou trvalé ve službě Azure Application Insights. Další informace najdete v tématu [sledování chování uživatelů v Azure AD B2Cch cestách pomocí Application Insights](active-directory-b2c-custom-guide-eventlogger-appins.md). Následující příklad odešle ID zásady, ID korelace, jazyk a ID klienta do Azure Application Insights.
+Díky Azure Application Insights a překladačům deklarací identity můžete získat přehled o chování uživatelů. V Application Insights Technical profil odešlete vstupní deklarace identity, které jsou trvalé ve službě Azure Application Insights. Další informace najdete v tématu [sledování chování uživatelů v Azure AD B2Cch cestách pomocí Application Insights](analytics-with-application-insights.md). Následující příklad odešle ID zásady, ID korelace, jazyk a ID klienta do Azure Application Insights.
 
 ```XML
 <TechnicalProfile Id="AzureInsights-Common">

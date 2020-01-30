@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c2b74830463702e7de02d00bcfe88521fce2c803
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: caa7cbed7c56b63bcbf5ad8f287ab6cf32575c15
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932033"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840294"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -125,7 +125,7 @@ Element **SingleSignon** obsahuje následující atribut:
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | Rozsah | Ano | Rozsah chování jednotného přihlašování. Možné hodnoty: `Suppressed`, `Tenant`, `Application`nebo `Policy`. Hodnota `Suppressed` označuje, že chování je potlačeno. Například v případě relace jednotného přihlašování není pro uživatele udržována žádná relace a uživatel se vždy zobrazí výzva k výběru poskytovatele identity. Hodnota `TrustFramework` označuje, že chování je použito pro všechny zásady v rámci vztahu důvěryhodnosti. Například uživatel, který přecházení ze dvou cest zásad pro architekturu trustu, nevyzve k výběru poskytovatele identity. Hodnota `Tenant` označuje, že se chování aplikuje na všechny zásady v tenantovi. Například uživatel, který přecházení ze dvou cest zásad pro tenanta, nevyzve k výběru poskytovatele identity. Hodnota `Application` označuje, že chování bude použito pro všechny zásady aplikace, které vytváří požadavek. Například uživatel, který přecházení ze dvou cest zásad pro aplikaci, nezobrazuje výzvu k výběru poskytovatele identity. Hodnota `Policy` označuje, že chování se vztahuje pouze na zásadu. Například uživatel, který přechází ze dvou cest zásad pro rozhraní vztahu důvěryhodnosti, se při přepínání mezi zásadami zobrazí dotaz na výběr poskytovatele identity. |
-| KeepAliveInDays | Ano | Určuje, jak dlouho zůstane uživatel přihlášený. Nastavením hodnoty 0 dojde k vypnutí funkcí políčko zůstat přihlášeni. Další informace najdete v tématu [zůstat přihlášeni](active-directory-b2c-reference-kmsi-custom.md). |
+| KeepAliveInDays | Ano | Určuje, jak dlouho zůstane uživatel přihlášený. Nastavením hodnoty 0 dojde k vypnutí funkcí políčko zůstat přihlášeni. Další informace najdete v tématu [zůstat přihlášeni](custom-policy-keep-me-signed-in.md). |
 
 ## <a name="journeyinsights"></a>JourneyInsights
 
@@ -140,7 +140,7 @@ Element **JourneyInsights** obsahuje následující atributy:
 | ServerEnabled | Ano | Možné hodnoty: `true` nebo `false`. Pokud `true`, odešle existující UserJourneyRecorder JSON jako vlastní událost pro Application Insights. |
 | TelemetryVersion | Ano | Hodnota musí být `1.0.0`. |
 
-Další informace najdete v tématu [shromažďování protokolů](active-directory-b2c-troubleshoot-custom.md) .
+Další informace najdete v tématu [shromažďování protokolů](troubleshoot-with-application-insights.md) .
 
 ## <a name="contentdefinitionparameters"></a>ContentDefinitionParameters
 
@@ -162,7 +162,7 @@ Element **ContentDefinitionParameter** obsahuje následující atribut:
 | --------- | -------- | ----------- |
 | Name (Název) | Ano | Název páru klíč-hodnota. |
 
-Další informace najdete v tématu [Konfigurace uživatelského rozhraní s dynamickým obsahem pomocí vlastních zásad](active-directory-b2c-ui-customization-custom-dynamic.md) .
+Další informace najdete v tématu [Konfigurace uživatelského rozhraní s dynamickým obsahem pomocí vlastních zásad](custom-policy-ui-customization-dynamic.md) .
 
 ## <a name="technicalprofile"></a>TechnicalProfile
 

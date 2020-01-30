@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 10/25/2019
+ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 52f00b1c35daab142e4131c60110aa0ed686a6bd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dccd2ebb6ac2c11e19e986d39eabda5f0ab6a8fc
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75382051"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774293"
 ---
 # <a name="quickstart-content-moderator-client-library-for-net"></a>Rychlý Start: Klientská knihovna Content Moderator pro .NET
 
@@ -274,7 +274,6 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 * [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Další kroky
-
 
 V tomto rychlém startu jste zjistili, jak pomocí knihovny Content Moderator .NET provádět úlohy moderování. V dalším kroku se dozvíte další informace o moderování imagí nebo jiných médií. Přečtěte si koncepční průvodce.
 

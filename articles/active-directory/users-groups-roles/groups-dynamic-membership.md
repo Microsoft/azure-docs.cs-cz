@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ff2ff69ca00a9ed9c48ebd6f1704fac0b16d068
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 1df823776208418eae3e465693dd51e108c5a8bb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940997"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841025"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny v Azure Active Directory
 
@@ -96,7 +96,7 @@ Níže jsou uvedené vlastnosti uživatele, které můžete použít k vytvořen
 | Vlastnosti | Povolené hodnoty | Využití |
 | --- | --- | --- |
 | city |Libovolná hodnota řetězce nebo hodnota *null* |(User. City-EQ "hodnota") |
-| země |Libovolná hodnota řetězce nebo hodnota *null* |(User. Country-EQ "value") |
+| krajin |Libovolná hodnota řetězce nebo hodnota *null* |(User. Country-EQ "value") |
 | Společnosti | Libovolná hodnota řetězce nebo hodnota *null* | (User. companyName-EQ "value") |
 | Oddělení |Libovolná hodnota řetězce nebo hodnota *null* |(User. Department-EQ "hodnota") |
 | displayName |libovolná hodnota řetězce |(User. DisplayName-EQ "value") |
@@ -144,7 +144,7 @@ V následující tabulce jsou uvedeny všechny podporované operátory a jejich 
 | Neobsahuje |-notContains |
 | Contains |-obsahuje |
 | Neodpovídá |-notMatch |
-| Match |– shoda |
+| Přes |– shoda |
 | V | -in |
 | Není v | -notIn |
 
@@ -178,7 +178,7 @@ Hodnoty použité ve výrazu mohou sestávat z několika typů, včetně:
 
 * Řetězce
 * Logická hodnota – true, false
-* Numbers
+* Čísla
 * Pole – číselné pole, pole řetězců
 
 Při zadávání hodnoty v rámci výrazu je důležité použít správnou syntaxi, aby nedocházelo k chybám. Zde jsou některé tipy syntaxe:
@@ -370,7 +370,7 @@ Můžete také vytvořit pravidlo, které vybere objekty zařízení pro členst
 > [!NOTE]
 > systemlabels je atribut jen pro čtení, který nelze nastavit pomocí Intune.
 >
-> V případě systému Windows 10 je správný formát atributu deviceOSVersion následující: (Device. deviceOSVersion-EQ "10,0 (17763)"). Formátování se dá ověřit pomocí rutiny PowerShellu Get-MsolDevice.
+> Ve Windows 10 je správný formát atributu deviceOSVersion následující: (Device. deviceOSVersion-EQ "10.0.17763"). Formátování se dá ověřit pomocí rutiny PowerShellu Get-MsolDevice.
 
 Je možné použít následující atributy zařízení.
 

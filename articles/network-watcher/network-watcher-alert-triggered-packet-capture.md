@@ -4,9 +4,7 @@ titleSuffix: Azure Network Watcher
 description: Tento článek popisuje, jak vytvořit výstrahu zachytávání paketů aktivované pomocí Azure Network Watcher
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: 75e6e7c4-b3ba-4173-8815-b00d7d824e11
 ms.service: network-watcher
 ms.devlang: na
@@ -14,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 26599776abdf7ecbb6c86c332a40e0c2b7d6e67e
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: ea506e137d71fc3124a4f93f1e97750a08dd4284
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276121"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842933"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Použití zachytávání paketů pro proaktivní monitorování sítě s výstrahami a Azure Functions
 
@@ -144,13 +142,13 @@ Pokud chcete použít rutiny Network Watcher PowerShellu, nahrajte do aplikace F
 
 7. Opakujte tyto kroky pro **AZ. Accounts** a **AZ. Resources**.
 
-    ![Nahrání souborů][functions6]
+    ![Nahrávání souborů][functions6]
 
 1. Po dokončení by měly všechny složky obsahovat soubory modulu PowerShell z místního počítače.
 
     ![Soubory PowerShellu][functions7]
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Ověření
 
 Chcete-li použít rutiny prostředí PowerShell, je nutné provést ověření. Ověřování nakonfigurujete v aplikaci Function App. Pokud chcete nakonfigurovat ověřování, musíte nakonfigurovat proměnné prostředí a nahrát do aplikace Function app soubor se zašifrovaným klíčem.
 
@@ -349,10 +347,10 @@ Přejít na existující virtuální počítač a pak přidat pravidlo výstrahy
   |**Název**|TCP_Segments_Sent_Exceeded|Název pravidla výstrahy.|
   |**Popis**|Počet odeslaných segmentů TCP překročení prahové hodnoty|Popis pravidla výstrahy.|
   |**Metrika**|Odeslané segmenty TCP| Metrika, která se má použít k aktivaci výstrahy. |
-  |**Pomocné**|Větší než| Podmínka, která se má použít při vyhodnocování metriky.|
+  |**Pomocné**|Více než| Podmínka, která se má použít při vyhodnocování metriky.|
   |**Mezí**|100| Hodnota metriky, která aktivuje výstrahu. Tato hodnota by měla být nastavená na platnou hodnotu pro vaše prostředí.|
   |**Hodin**|Za posledních pět minut| Určuje období, ve kterém se má hledat prahová hodnota metriky.|
-  |**Webhooku**|[adresa URL Webhooku z aplikace Function app]| Adresa URL Webhooku z aplikace Function App, která byla vytvořena v předchozích krocích.|
+  |**Webhook**|[adresa URL Webhooku z aplikace Function app]| Adresa URL Webhooku z aplikace Function App, která byla vytvořena v předchozích krocích.|
 
 > [!NOTE]
 > Metrika segmentů TCP není ve výchozím nastavení povolena. Další informace o tom, jak povolit další metriky, najdete v tématu [povolení monitorování a diagnostiky](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md).
@@ -370,7 +368,7 @@ Pokyny ke stahování souborů z účtů Azure Storage najdete v tématu Začín
 Po stažení je vaše zachycení možné zobrazit pomocí libovolného nástroje, který může číst soubor **. Cap** . Následují odkazy na dva z těchto nástrojů:
 
 - [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx)
-- [Nástroj](https://www.wireshark.org/)
+- [WireShark](https://www.wireshark.org/)
 
 ## <a name="next-steps"></a>Další kroky
 

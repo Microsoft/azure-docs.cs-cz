@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9cf3bcc514118c7f8052981c39023d6cac361d22
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 2da009189e0265aafcb26b7ec96837965f1ea0c5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314721"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76838543"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Řešení běžných chyb a upozornění v indexeru v Azure Kognitivní hledání
 
@@ -147,7 +147,7 @@ Dokument byl načten a zpracován, ale indexer ho nemohl přidat do indexu vyhle
 | Dokument obsahuje příliš mnoho objektů v kolekci. | Kolekce v dokumentu překročila [maximální počet prvků napříč všemi složitými kolekcemi](search-limits-quotas-capacity.md#index-limits) . dokument s klíčovým `'1000052'` má `'4303'` objekty v kolekcích (pole JSON). V rámci celého dokumentu může být nejvýše `'3000'` objektů v kolekcích. Odeberte prosím objekty z kolekcí a zkuste dokument indexovat znovu. " | Doporučujeme zmenšit velikost komplexní kolekce v dokumentu pod limit a vyhnout se vysokému využití úložiště.
 | Problémy s připojením k cílovému indexu (které přetrvávají po opakování), protože služba je pod jiným zatížením, jako je například dotazování nebo indexování. | Nepovedlo se navázat spojení s indexem aktualizace. Služba vyhledávání je zatížená velkým zatížením. | [Horizontální navýšení kapacity služby Search](search-capacity-planning.md)
 | Služba Search je opravena pro aktualizaci služby nebo je uprostřed rekonfigurace topologie. | Nepovedlo se navázat spojení s indexem aktualizace. Služba Search je momentálně mimo provoz. služba Search prochází přechodem. | Konfigurace služby s minimálně 3 replikami pro 99,9% dostupnost na jednu z [dokladů SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)
-| Selhání základního výpočetního/síťového prostředku (zřídka) | Nepovedlo se navázat spojení s indexem aktualizace. Došlo k neznámému selhání. | Nakonfigurujte indexery, které se [spustí podle plánu](search-howto-schedule-indexers.md) pro výběr ze stavu selhání.
+| Selhání základního výpočetního/síťového prostředku (zřídka) | Nepovedlo se navázat spojení s indexem aktualizace. Došlo k neznámé chybě. | Nakonfigurujte indexery, které se [spustí podle plánu](search-howto-schedule-indexers.md) pro výběr ze stavu selhání.
 | Požadavek na indexování provedený do cílového indexu nebyl potvrzen v časovém limitu kvůli problémům se sítí. | Nepovedlo se včas navázat spojení s indexem vyhledávání. | Nakonfigurujte indexery, které se [spustí podle plánu](search-howto-schedule-indexers.md) pro výběr ze stavu selhání. Dále zkuste snížit [velikost dávky](https://docs.microsoft.com/rest/api/searchservice/create-indexer#parameters) indexeru, pokud tento chybový stav přetrvává.
 
 <a name="could-not-index-document-because-the-indexer-data-to-index-was-invalid"/>
@@ -249,7 +249,7 @@ Pokud víte, že vaše datová sada obsahuje několik jazyků, takže budete pot
 ```
 
 Tady jsou některé odkazy na aktuálně podporované jazyky pro každou dovednost, která může způsobit tuto chybovou zprávu:
-* [Analýza textu podporované jazyky](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) (pro [KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md), [EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)a [SentimentSkill](cognitive-search-skill-sentiment.md))
+* [Analýza textu podporované jazyky](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) (pro rozhraní [KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md), [EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md), [SentimentSkill](cognitive-search-skill-sentiment.md)a [PIIDetectionSkill](cognitive-search-skill-pii-detection.md))
 * [Překladatelé podporované jazyky](https://docs.microsoft.com/azure/cognitive-services/translator/language-support) (pro [text TranslationSkill](cognitive-search-skill-text-translation.md))
 * [SplitSkill textu](cognitive-search-skill-textsplit.md) Podporované jazyky: `da, de, en, es, fi, fr, it, ko, pt`
 
@@ -303,7 +303,7 @@ Další informace najdete v tématu [přírůstkový průběh a vlastní dotazy]
 <a name="truncated-extracted-text-to-x-characters"/>
 
 ## <a name="warning-truncated-extracted-text-to-x-characters"></a>Upozornění: zkrácený extrahovaný text na X znaků
-Indexery omezují, kolik textu lze z jednoho dokumentu extrahovat. Toto omezení závisí na cenové úrovni: 32 000 znaků pro úroveň Free, 64 000 pro Basic a 4 000 000 pro úrovně Standard, Standard S2 a Standard S3. Zkrácený text nebude indexován. Chcete-li se tomuto upozornění vyhnout, zkuste rozdělit dokumenty s velkými objemy textu do několika menších dokumentů. 
+Indexery omezují, kolik textu lze z jednoho dokumentu extrahovat. Toto omezení závisí na cenové úrovni: 32 000 znaků pro úroveň Free, 64 000 pro Basic, 4 000 000 pro standard, 8 000 000 pro standard S2 a 16 000 000 pro standard S3. Zkrácený text nebude indexován. Chcete-li se tomuto upozornění vyhnout, zkuste rozdělit dokumenty s velkými objemy textu do několika menších dokumentů. 
 
 Další informace najdete v tématu [omezení indexerů](search-limits-quotas-capacity.md#indexer-limits).
 

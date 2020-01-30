@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
-ms.date: 11/17/2019
-ms.openlocfilehash: 2574f27b4b86bab276a56f95fda9fa2a1434c095
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.date: 01/29/2020
+ms.openlocfilehash: c160f04ef7120a6c90991d8e6ecdf98b2f0d348e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995928"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836555"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>Kurz: ingestování a dotazování dat monitorování v Azure Průzkumník dat 
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Vytvoří všechny prostředky ve stejném umístění Azure nebo oblasti. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * [Cluster a databáze Azure Průzkumník dat](create-cluster-database-portal.md). V tomto kurzu je název databáze *TestDatabase*.
@@ -330,7 +330,7 @@ Chcete-li namapovat data protokolu aktivit na tabulku, použijte následující 
 2. Přidejte [zásadu aktualizace](/azure/kusto/concepts/updatepolicy) do cílové tabulky. Tato zásada automaticky spustí dotaz u všech nově zpracovaných dat v tabulce zprostředkujících dat *DiagnosticRawRecords* a ingestuje výsledky do tabulky *DiagnosticMetrics* :
 
     ```kusto
-    .alter table DiagnosticMetrics policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticMetricsExpand()", "IsEnabled": "True"}]'
+    .alter table DiagnosticMetrics policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticMetricsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
 # <a name="diagnostic-logstabdiagnostic-logs"></a>[Diagnostické protokoly](#tab/diagnostic-logs)
@@ -344,7 +344,7 @@ Chcete-li namapovat data protokolu aktivit na tabulku, použijte následující 
         | mv-expand events = Records
         | where isnotempty(events.operationName)
         | project
-            Timestamp = todatetime(events.time),
+            Timestamp = todatetime(events['time']),
             ResourceId = tostring(events.resourceId),
             OperationName = tostring(events.operationName),
             Result = tostring(events.resultType),
@@ -363,7 +363,7 @@ Chcete-li namapovat data protokolu aktivit na tabulku, použijte následující 
 2. Přidejte [zásadu aktualizace](/azure/kusto/concepts/updatepolicy) do cílové tabulky. Tato zásada automaticky spustí dotaz u všech nově zpracovaných dat v tabulce zprostředkujících dat *DiagnosticRawRecords* a ingestuje výsledky do tabulky *DiagnosticLogs* :
 
     ```kusto
-    .alter table DiagnosticLogs policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticLogsExpand()", "IsEnabled": "True"}]'
+    .alter table DiagnosticLogs policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticLogsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
 # <a name="activity-logstabactivity-logs"></a>[Protokoly aktivit](#tab/activity-logs)
@@ -376,7 +376,7 @@ Chcete-li namapovat data protokolu aktivit na tabulku, použijte následující 
         ActivityLogsRawRecords
         | mv-expand events = Records
         | project
-            Timestamp = todatetime(events.time),
+            Timestamp = todatetime(events['time']),
             ResourceId = tostring(events.resourceId),
             OperationName = tostring(events.operationName),
             Category = tostring(events.category),
@@ -393,7 +393,7 @@ Chcete-li namapovat data protokolu aktivit na tabulku, použijte následující 
 2. Přidejte [zásadu aktualizace](/azure/kusto/concepts/updatepolicy) do cílové tabulky. Tato zásada automaticky spustí dotaz u všech nově zpracovaných dat v tabulce zprostředkujících dat *ActivityLogsRawRecords* a ingestuje výsledky do tabulky *ActivityLogs* :
 
     ```kusto
-    .alter table ActivityLogs policy update @'[{"Source": "ActivityLogsRawRecords", "Query": "ActivityLogRecordsExpand()", "IsEnabled": "True"}]'
+    .alter table ActivityLogs policy update @'[{"Source": "ActivityLogsRawRecords", "Query": "ActivityLogRecordsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 ---
 
@@ -435,7 +435,7 @@ Vyberte prostředek, ze kterého se mají exportovat metriky. Několik typů pro
 
     ![Nastavení diagnostiky](media/ingest-data-no-code/diagnostic-settings.png)
 
-1. Otevře se podokno **nastavení diagnostiky** . Postupujte následovně:
+1. Otevře se podokno **nastavení diagnostiky** . Proveďte následující kroky:
    1. Poskytněte data diagnostického protokolu název *ADXExportedData*.
    1. V části **protokol**zaškrtněte políčka **SucceededIngestion** i **FailedIngestion** .
    1. V části **metrika**zaškrtněte políčko **výkon dotazu** .
@@ -450,7 +450,7 @@ Vyberte prostředek, ze kterého se mají exportovat metriky. Několik typů pro
     1. V seznamu **Vyberte název zásad centra událostí** vyberte **RootManagerSharedAccessKey**.
     1. Vyberte **OK**.
 
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
 # <a name="activity-logstabactivity-logs"></a>[Protokoly aktivit](#tab/activity-logs)
 ### <a name="connect-activity-logs-to-your-event-hub"></a>Připojení protokolů aktivit k centru událostí
@@ -526,7 +526,7 @@ Nyní potřebujete vytvořit datová připojení pro diagnostické metriky a pro
     | **Mapování sloupců** | *DiagnosticRawRecordsMapping* | Mapování, které jste vytvořili v databázi *TestDatabase* , která mapuje příchozí data JSON na názvy sloupců a datové typy tabulky *DiagnosticRawRecords* .|
     | | |
 
-1. Vyberte **Create** (Vytvořit).  
+1. Vyberte **Vytvořit**.  
 
 # <a name="activity-logstabactivity-logs"></a>[Protokoly aktivit](#tab/activity-logs)
 
@@ -553,7 +553,7 @@ Nyní potřebujete vytvořit datová připojení pro diagnostické metriky a pro
     | **Mapování sloupců** | *ActivityLogsRawRecordsMapping* | Mapování, které jste vytvořili v databázi *TestDatabase* , která mapuje příchozí data JSON na názvy sloupců a datové typy tabulky *ActivityLogsRawRecords* .|
     | | |
 
-1. Vyberte **Create** (Vytvořit).  
+1. Vyberte **Vytvořit**.  
 ---
 
 ## <a name="query-the-new-tables"></a>Dotazování na nové tabulky
@@ -595,7 +595,7 @@ Výsledky dotazu:
 
 |   |   |
 | --- | --- |
-|   |  COUNT | any_Database | any_Table | any_IngestionSourcePath
+|   |  count_ | any_Database | any_Table | any_IngestionSourcePath
 |   | 00:06.156 | TestDatabase | DiagnosticRawRecords | https://rtmkstrldkereneus00.blob.core.windows.net/20190827-readyforaggregation/1133_TestDatabase_DiagnosticRawRecords_6cf02098c0c74410bd8017c2d458b45d.json.zip
 | | |
 

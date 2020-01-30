@@ -4,23 +4,20 @@ titleSuffix: Azure Network Watcher
 description: Tato stránka vysvětluje, jak používat rutinu PowerShellu pro řešení potíží s Network Watcher Azure
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: f6f0a813-38b6-4a1f-8cfc-1dfdf979f595
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: kumud
-ms.openlocfilehash: 4e65be8254710beffc6cc042316305d8d64c43c3
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: 478b6cffb6fbb2be7a87b9b61d5b7e2ee71a74c2
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277836"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840702"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>Řešení potíží s Virtual Network bránou a připojením pomocí Azure Network Watcher PowerShellu
 

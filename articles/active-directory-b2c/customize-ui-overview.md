@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d737d010f323a5d5b230091ad07ba530d25d6e51
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: d14e6f98f49f112c8b20abec573b48c3b12705db
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949402"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841229"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní v Azure Active Directory B2C
 
@@ -28,15 +28,15 @@ Existuje několik způsobů, jak přizpůsobit uživatelské rozhraní aplikace,
 
 ### <a name="user-flows"></a>Toky uživatele
 
-Pokud používáte [toky uživatelů](active-directory-b2c-reference-policies.md), můžete změnit vzhled stránek toku uživatelů pomocí integrovaných *šablon rozložení stránky*nebo pomocí vlastních HTML a šablon stylů CSS. Obě metody jsou popsány dále v tomto článku.
+Pokud používáte [toky uživatelů](user-flow-overview.md), můžete změnit vzhled stránek toku uživatelů pomocí integrovaných *šablon rozložení stránky*nebo pomocí vlastních HTML a šablon stylů CSS. Obě metody jsou popsány dále v tomto článku.
 
 Pomocí [Azure Portal](tutorial-customize-ui.md) můžete nakonfigurovat přizpůsobení uživatelského rozhraní pro toky uživatelů.
 
 ### <a name="custom-policies"></a>Vlastní zásady
 
-Pokud používáte [vlastní zásady](active-directory-b2c-overview-custom.md) pro poskytování registrace nebo přihlašování, resetování hesel nebo úprav profilů v aplikaci, použijte [k přizpůsobení uživatelského rozhraní soubory zásad](active-directory-b2c-ui-customization-custom.md).
+Pokud používáte [vlastní zásady](custom-policy-overview.md) pro poskytování registrace nebo přihlašování, resetování hesel nebo úprav profilů v aplikaci, použijte [k přizpůsobení uživatelského rozhraní soubory zásad](custom-policy-ui-customization.md).
 
-Pokud potřebujete poskytnout dynamický obsah na základě rozhodnutí zákazníka, použijte vlastní zásady, které mohou [dynamicky měnit obsah stránky](active-directory-b2c-ui-customization-custom-dynamic.md) v závislosti na parametru, který je odeslán v řetězci dotazu. Můžete například změnit obrázek pozadí na Azure AD B2C přihlašovací stránku nebo přihlašovací stránku na základě parametru, který předáte z vaší webové nebo mobilní aplikace.
+Pokud potřebujete poskytnout dynamický obsah na základě rozhodnutí zákazníka, použijte vlastní zásady, které mohou [dynamicky měnit obsah stránky](custom-policy-ui-customization-dynamic.md) v závislosti na parametru, který je odeslán v řetězci dotazu. Můžete například změnit obrázek pozadí na Azure AD B2C přihlašovací stránku nebo přihlašovací stránku na základě parametru, který předáte z vaší webové nebo mobilní aplikace.
 
 ### <a name="javascript"></a>JavaScript
 
@@ -65,6 +65,8 @@ Potom v seznamu vyberte šablonu. Tady jsou příklady přihlašovacích stráne
 Když zvolíte šablonu, vybrané rozložení se použije na všechny stránky v toku uživatele a v poli **URI vlastní stránky** se zobrazí identifikátor URI pro každou stránku.
 
 ## <a name="custom-html-and-css"></a>Vlastní HTML a CSS
+
+Pokud chcete navrhnout vlastní rozložení zásad pomocí přizpůsobených HTML a šablon stylů CSS, můžete to udělat tak, že přepnete přepínač použít vlastní obsah stránky pro každé názvy rozložení přítomné ve vaší zásadě. Postupujte prosím podle následujících pokynů týkajících se vlastních konfigurací rozložení:
 
 Azure AD B2C spouští kód v prohlížeči zákazníka pomocí přístupu označovaného jako [sdílení prostředků mezi zdroji (CORS)](https://www.w3.org/TR/cors/).
 
@@ -150,7 +152,7 @@ V následující tabulce jsou uvedeny fragmenty kódu HTML, které se Azure AD B
 
 ## <a name="localize-content"></a>Lokalizace obsahu
 
-Obsah HTML můžete lokalizovat tím, že ve svém tenantovi Azure AD B2C povolíte [vlastní nastavení jazyka](active-directory-b2c-reference-language-customization.md) . Povolením této funkce umožníte Azure AD B2C přeposlání parametru OpenID Connect `ui-locales` do vašeho koncového bodu. Server obsahu může tento parametr použít k poskytování HTML stránek specifických pro jazyk.
+Obsah HTML můžete lokalizovat tím, že ve svém tenantovi Azure AD B2C povolíte [vlastní nastavení jazyka](user-flow-language-customization.md) . Povolením této funkce umožníte Azure AD B2C přeposlání parametru OpenID Connect `ui-locales` do vašeho koncového bodu. Server obsahu může tento parametr použít k poskytování HTML stránek specifických pro jazyk.
 
 Obsah lze z různých míst načíst na základě používaného národního prostředí. V rámci koncového bodu s povoleným CORS nastavíte strukturu složek na hostování obsahu pro konkrétní jazyky. Pokud použijete zástupnou hodnotu `{Culture:RFC5646}`, zavoláte tu správnou.
 
@@ -179,4 +181,4 @@ Ukázkové soubory HTML a CSS v šablonách se nacházejí v adresáři [/sample
     [Přizpůsobení uživatelského rozhraní aplikací v Azure Active Directory B2C](tutorial-customize-ui.md).
 - Pokud používáte **vlastní zásady**, můžete začít přizpůsobovat uživatelské rozhraní pomocí článku:
 
-    [Přizpůsobte uživatelské rozhraní aplikace pomocí vlastní zásady v Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).
+    [Přizpůsobte uživatelské rozhraní aplikace pomocí vlastní zásady v Azure Active Directory B2C](custom-policy-ui-customization.md).

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/14/2019
-ms.openlocfilehash: c0ce1648d7b5f7c25044ed8f66eafcca7b0009f4
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 01/28/2020
+ms.openlocfilehash: 45490e398abd8b5bd3c10adb95b56e1019d2bb94
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747340"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842465"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Protokolování auditu Azure Database for PostgreSQL – jeden server
 
@@ -65,10 +65,8 @@ pgAudit umožňuje konfigurovat protokolování auditu relace nebo objektů. [Pr
 Jakmile [nainstalujete pgAudit](#installing-pgaudit), můžete nakonfigurovat jeho parametry pro spuštění protokolování. [Dokumentace k pgAudit](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings) poskytuje definici každého parametru. Nejprve otestujte parametry a potvrďte, že se vám zobrazuje očekávané chování.
 
 > [!NOTE]
-> Nastavení `pgaudit.log_client` na ZAPNUTo bude přesměrovat protokoly do klientského procesu (například psql) místo zápisu do souboru. Toto nastavení by se obecně mělo nechávat zakázané.
-
-> [!NOTE]
-> `pgaudit.log_level` je povoleno pouze v případě, že je `pgaudit.log_client` zapnuto. V Azure Portal v současnosti existuje chyba s `pgaudit.log_level`: zobrazí se pole se seznamem, což znamená, že je možné vybrat více úrovní. Musí se však vybrat pouze jedna úroveň. 
+> Nastavení `pgaudit.log_client` na ZAPNUTo bude přesměrovat protokoly do klientského procesu (například psql) místo zápisu do souboru. Toto nastavení by se obecně mělo nechávat zakázané. <br> <br>
+> `pgaudit.log_level` je povoleno pouze v případě, že je `pgaudit.log_client` zapnuto.
 
 > [!NOTE]
 > V Azure Database for PostgreSQL nelze `pgaudit.log` nastavit pomocí zástupce `-` (mínus), jak je popsáno v dokumentaci k pgAudit. Všechny požadované třídy příkazů (ČTENÍ, ZÁPIS atd.) je potřeba zadat zvlášť.
@@ -87,6 +85,22 @@ Další informace o `log_line_prefix`najdete v [dokumentaci k PostgreSQL](https:
 ### <a name="getting-started"></a>Začínáme
 Chcete-li rychle začít, nastavte `pgaudit.log` na `WRITE`a otevřete protokoly a zkontrolujte výstup. 
 
+## <a name="viewing-audit-logs"></a>Zobrazení protokolů auditu
+Pokud používáte soubory. log, budou se protokoly auditu zahrnovat do stejného souboru jako protokoly chyb PostgreSQL. Soubory protokolu si můžete stáhnout z webu Azure [Portal](howto-configure-server-logs-in-portal.md) nebo rozhraní příkazového [řádku](howto-configure-server-logs-using-cli.md). 
+
+Pokud používáte diagnostické protokolování Azure, způsob přístupu k protokolům závisí na tom, který koncový bod zvolíte. Azure Storage najdete v článku [log Storage Account](../azure-monitor/platform/resource-logs-collect-storage.md) . Event Hubs najdete v článku [streamování protokolů Azure](../azure-monitor/platform/resource-logs-stream-event-hubs.md) .
+
+Protokoly Azure Monitor jsou odesílány do vybraného pracovního prostoru. Protokoly Postgres používají režim kolekce **AzureDiagnostics** , takže se dají dotazovat z tabulky AzureDiagnostics. Pole v tabulce jsou popsána níže. Přečtěte si další informace o dotazování a upozorňování v přehledu [dotazů Azure Monitorch protokolů](../azure-monitor/log-query/log-query-overview.md) .
+
+Pomocí tohoto dotazu můžete začít. Výstrahy můžete konfigurovat na základě dotazů.
+
+Vyhledat všechny protokoly Postgres pro konkrétní server za poslední den
+```
+AzureDiagnostics
+| where LogicalServerName_s == "myservername"
+| where TimeGenerated > ago(1d) 
+| where Message contains "AUDIT:"
+```
 
 ## <a name="next-steps"></a>Další kroky
 - [Další informace o přihlašování Azure Database for PostgreSQL](concepts-server-logs.md)

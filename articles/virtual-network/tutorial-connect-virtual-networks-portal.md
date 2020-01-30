@@ -4,25 +4,21 @@ description: V tomto kurzu zjistíte, jak propojit virtuální sítě s využit�
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
-tags: azure-resource-manager
 Customer intent: I want to connect two virtual networks so that virtual machines in one virtual network can communicate with virtual machines in the other virtual network.
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 08/16/2018
+ms.date: 01/22/2020
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: b32f3762f2546a4d4956bf38c914173657e9d3da
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a3966615d28630fdd2ab799f478ef7edaa3377e1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499871"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775298"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Kurz: Propojení virtuálních sítí s využitím partnerského vztahu virtuálních sítí pomocí webu Azure Portal
 
@@ -44,26 +40,28 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-virtual-networks"></a>Vytvoření virtuálních sítí
 
-1. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek**.
+1. V Azure Portal vyberte **vytvořit prostředek**.
 2. Vyberte **Sítě** a pak vyberte **Virtuální síť**.
-3. Na stránce **základy** zadejte nebo vyberte následující informace a u zbývajících nastavení přijměte výchozí hodnoty:
+3. Na kartě **základy** zadejte nebo vyberte následující informace a u zbývajících nastavení přijměte výchozí hodnoty:
 
     |Nastavení|Hodnota|
     |---|---|
     |Předplatné| Vyberte své předplatné.|
     |Skupina prostředků| Vyberte **Vytvořit novou** a zadejte *myResourceGroup*.|
-    |Oblast| Vyberte **USA – východ**.|
+    |Region (Oblast)| Vyberte **USA – východ**.|
     |Name (Název)|myVirtualNetwork1|
 
-4. Na stránce **IP adresy** zadejte 10.0.0.0/16 pro pole **adresní prostor** . Klikněte na tlačítko **Přidat podsíť** níže a jako **Rozsah adres podsítě**zadejte Subnet1 pro **název podsítě** a 10.0.0.0/24.
+4. Na kartě **IP adresy** zadejte 10.0.0.0/16 pro pole **adresní prostor** . Klikněte na tlačítko **Přidat podsíť** níže a jako **Rozsah adres podsítě**zadejte *Subnet1* pro **název podsítě** a 10.0.0.0/24.
+5. Vyberte **zkontrolovat + vytvořit** a pak vyberte **vytvořit**.
    
-5. Zopakujte kroky 1 až 3 s následujícími změnami:
+5. Zopakujte kroky 1 až 5 s následujícími změnami:
 
     |Nastavení|Hodnota|
     |---|---|
     |Name (Název)|myVirtualNetwork2|
     |Adresní prostor|10.1.0.0/16|
     |Skupina prostředků| Vyberte **Použít existující** a pak vyberte **myResourceGroup**.|
+    |Název podsítě | Podsíť Subnet2|
     |Rozsah adres podsítě|10.1.0.0/24|
 
 ## <a name="peer-virtual-networks"></a>Vytvoření partnerského vztahu virtuálních sítí
@@ -96,7 +94,7 @@ Vytvořte v obou virtuálních sítích virtuální počítač, abyste mezi nimi
 
 ### <a name="create-the-first-vm"></a>Vytvoření prvního virtuálního počítače
 
-1. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek**.
+1. V Azure Portal vyberte **vytvořit prostředek**.
 2. Vyberte **Compute** a potom vyberte **Windows Server 2016 Datacenter**. Můžete vybrat jiný operační systém, ale ve zbývajících krocích se předpokládá, že jste vybrali **Windows Server 2016 Datacenter**. 
 3. V části **Základy** zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **Vytvořit**:
 
@@ -115,9 +113,6 @@ Vytvořte v obou virtuálních sítích virtuální počítač, abyste mezi nimi
     |---|---|
     |Virtuální síť| myVirtualNetwork1 – Pokud ještě není vybraná, vyberte **virtuální síť** a pak vyberte **myVirtualNetwork1**.|
     |Podsíť| Subnet1 – Pokud ještě není vybraná, vyberte **podsíť** a pak vyberte **Subnet1**.|
-    
-
-    ![Nastavení virtuálního počítače](./media/tutorial-connect-virtual-networks-portal/virtual-machine-settings.png)
    
 6. Vyberte **sítě**. Vyberte možnost **Povolit vybrané porty** pro **veřejné příchozí porty** . V následujícím seznamu zvolte možnost **RDP** pro možnost **vybrat příchozí porty** . 
 

@@ -3,19 +3,19 @@ title: Posouzení v Azure Migrate
 description: Přečtěte si o hodnoceních v Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: a8912263432bc0e9cd7172c4b6c9b118132863d3
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 5fc61d9987c9e728a5d83cb3ab3f91b8e8f5f740
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029112"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833324"
 ---
 # <a name="about-assessments-in-azure-migrate"></a>O hodnoceních v Azure Migrate
 
 Tento článek popisuje, jak se vypočítávají vyhodnocení v [Azure Migrate: posouzení serveru](migrate-services-overview.md#azure-migrate-server-assessment-tool). Vyhledáte vyhodnocení u skupin místních počítačů, abyste zjistili, jestli jsou připravené na migraci na Azure Migrate.
 
 ## <a name="how-do-i-run-an-assessment"></a>Návody spustit posouzení?
-Můžete spustit posouzení pomocí Azure Migrate: posouzení serveru nebo jiného nástroje Azure nebo nástroje třetí strany. Po vytvoření projektu Azure Migrate přidejte potřebný nástroj. [Další informace] (how-to-add-tool-first-time.md
+Můžete spustit posouzení pomocí Azure Migrate: posouzení serveru nebo jiného nástroje Azure nebo nástroje třetí strany. Po vytvoření projektu Azure Migrate přidejte potřebný nástroj. [Další informace](how-to-add-tool-first-time.md)
 
 ### <a name="collect-compute-data"></a>Shromažďování výpočetních dat
 

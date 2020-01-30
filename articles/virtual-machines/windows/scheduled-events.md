@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: e6aa53ab5e71cbcc830e31ee1f3650feca7db63b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 107233248e5d0a8d6b578d9395d4cdbade79a842
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885513"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772634"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Scheduled Events pro virtuální počítače s Windows
 
@@ -56,14 +56,14 @@ Služba Azure metadata Service zpřístupňuje informace o spouštění Virtual 
 ### <a name="endpoint-discovery"></a>Zjišťování koncových bodů
 Pro virtuální počítače s povolenými VIRTUÁLNÍmi sítěmi je služba metadat dostupná ze statické IP adresy, která není směrovatelný, `169.254.169.254`. Úplný koncový bod pro nejnovější verzi Scheduled Events je: 
 
- > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01`
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01`
 
 Pokud se virtuální počítač nevytvoří v Virtual Network, výchozí případy cloudových služeb a klasických virtuálních počítačů vyžadují další logiku pro zjištění IP adresy, která se má použít. Informace o tom, jak [zjistit koncový bod hostitele](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm), najdete v této ukázce.
 
 ### <a name="version-and-region-availability"></a>Dostupnost verze a oblasti
 Služba Scheduled Events má verzi. Verze jsou povinné a aktuální verze je `2017-11-01`.
 
-| Version | Typ verze | Oblasti | Poznámky k verzi | 
+| Verze | Typ verze | Oblasti | Poznámky k verzi | 
 | - | - | - | - |
 | 2017-11-01 | Všeobecná dostupnost | Všechno | <li> Přidání podpory pro vyřazení virtuálních počítačů s názvem EventType<br> | 
 | 2017-08-01 | Všeobecná dostupnost | Všechno | <li> Z názvů prostředků pro virtuální počítače s IaaS se odebraly předpony s podtržítkem.<br><li>Požadavek na hlavičku metadat vynutil pro všechny požadavky | 
@@ -118,7 +118,7 @@ DocumentIncarnation je ETag a poskytuje snadný způsob, jak zkontrolovat, jestl
 |Vlastnost  |  Popis |
 | - | - |
 | ID události | Globálně jedinečný identifikátor pro tuto událost. <br><br> Příklad: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | Dopad této události způsobí. <br><br> Hodnoty: <br><ul><li> `Freeze`: u virtuálního počítače se naplánovalo pozastavení na několik sekund. Může být pozastaveno připojení k procesoru a k síti, ale neexistuje žádný vliv na paměť nebo otevřené soubory. <li>`Reboot`: pro virtuální počítač je naplánován restart (netrvalá paměť). <li>`Redeploy`: virtuální počítač má naplánovaný přesun na jiný uzel (dočasné disky se ztratí). <li>`Preempt`: odstraňuje se virtuální počítač se skvrnou (dojde ke ztrátě dočasných disků).|
+| Typ | Dopad této události způsobí. <br><br> Hodnoty: <br><ul><li> `Freeze`: u virtuálního počítače se naplánovalo pozastavení na několik sekund. Může být pozastaveno připojení k procesoru a k síti, ale neexistuje žádný vliv na paměť nebo otevřené soubory. <li>`Reboot`: pro virtuální počítač je naplánován restart (netrvalá paměť). <li>`Redeploy`: virtuální počítač má naplánovaný přesun na jiný uzel (dočasné disky se ztratí). <li>`Preempt`: odstraňuje se virtuální počítač se skvrnou (dojde ke ztrátě dočasných disků).|
 | ResourceType | Typ prostředku, na který tato událost ovlivňuje. <br><br> Hodnoty: <ul><li>`VirtualMachine`|
 | Materiály| Seznam prostředků, které tato událost ovlivňuje. Je zaručeno, že bude obsahovat počítače z jedné [aktualizační domény](manage-availability.md), ale nemusí obsahovat všechny počítače v ud. <br><br> Příklad: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | Stav události | Stav této události <br><br> Hodnoty: <ul><li>`Scheduled`: Tato událost je naplánována na spuštění po uplynutí doby zadané ve vlastnosti `NotBefore`.<li>`Started`: Tato událost je spuštěná.</ul> Není k dispozici žádný `Completed` ani podobný stav; Po dokončení události již událost nebude vrácena.
@@ -127,7 +127,7 @@ DocumentIncarnation je ETag a poskytuje snadný způsob, jak zkontrolovat, jestl
 ### <a name="event-scheduling"></a>Plánování událostí
 Každé události je naplánováno minimální množství času v budoucnu na základě typu události. Tento čas se projeví ve vlastnosti `NotBefore` události. 
 
-|EventType  | Minimální oznámení |
+|Typ  | Minimální oznámení |
 | - | - |
 | Uvolnění| 15 minut |
 | Restartování | 15 minut |

@@ -11,18 +11,18 @@ ms.topic: reference
 ms.date: 11/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 74666b1dc2ba4fac25aff0a56a52d048d746d465
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: a0a6581e0eed74725a7186e528618da5d8a4f890
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950931"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840243"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu SAML v Azure Active Directory B2C vlastní zásady
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) poskytuje podporu pro poskytovatele identity SAML 2,0. Tento článek popisuje konkrétní technické profily pro interakci se zprostředkovatelem deklarací, který podporuje tento standardizovaný protokol. S technickým profilem SAML můžete federovat poskytovatelem identity založeného na SAML, jako je [ADFS](active-directory-b2c-custom-setup-adfs2016-idp.md) nebo [Salesforce](active-directory-b2c-setup-sf-app-custom.md). Tato federace umožňuje vašim uživatelům přihlašovat se svými stávajícími sociálními nebo podnikovými identitami.
+Azure Active Directory B2C (Azure AD B2C) poskytuje podporu pro poskytovatele identity SAML 2,0. Tento článek popisuje konkrétní technické profily pro interakci se zprostředkovatelem deklarací, který podporuje tento standardizovaný protokol. S technickým profilem SAML můžete federovat poskytovatelem identity založeného na SAML, jako je [ADFS](identity-provider-adfs2016-custom.md) nebo [Salesforce](identity-provider-salesforce-custom.md). Tato federace umožňuje vašim uživatelům přihlašovat se svými stávajícími sociálními nebo podnikovými identitami.
 
 ## <a name="metadata-exchange"></a>Výměna metadat
 
@@ -150,5 +150,5 @@ Element **CryptographicKeys** obsahuje následující atributy:
 
 Příklady práce se zprostředkovateli identity SAML v Azure AD B2C najdete v následujících článcích:
 
-- [Přidání AD FS jako zprostředkovatele identity SAML pomocí vlastních zásad](active-directory-b2c-custom-setup-adfs2016-idp.md)
-- [Přihlaste se pomocí účtů Salesforce přes SAML.](active-directory-b2c-setup-sf-app-custom.md)
+- [Přidání AD FS jako zprostředkovatele identity SAML pomocí vlastních zásad](identity-provider-adfs2016-custom.md)
+- [Přihlaste se pomocí účtů Salesforce přes SAML.](identity-provider-salesforce-custom.md)

@@ -1,130 +1,62 @@
 ---
-title: Znalostní báze Knowledge Base – QnA Maker
-titleSuffix: Azure Cognitive Services
-description: QnA Maker znalostní báze se skládá ze sady párů otázek a odpovědí (QnA) a volitelných metadat přidružených ke každému páru QnA.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
+title: Import ze zdrojů dat – QnA Maker
+description: QnA Maker znalostní báze se skládá ze sady sad otázek a odpovědí (QnA) a volitelná Metadata přidružená ke každému páru QnA.
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: 355556e98300ecad6aa3141f0f4ab14b834cd91e
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.date: 01/27/2020
+ms.openlocfilehash: d47d994366a8057521c1cc2ab1ab8a7ec3393965
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73794900"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843343"
 ---
-# <a name="what-is-a-qna-maker-knowledge-base"></a>Co je znalostní báze QnA Maker Knowledge Base?
+# <a name="importing-from-data-sources"></a>Import ze zdrojů dat
 
-QnA Maker znalostní báze se skládá ze sady párů otázek a odpovědí (QnA) a volitelných metadat přidružených ke každému páru QnA.
+Znalostní báze se skládá z sad otázek a odpovědí, které zadávají veřejné adresy URL a soubory.
 
-## <a name="key-knowledge-base-concepts"></a>Klíčové pojmy znalostní báze Knowledge Base
+## <a name="data-source-locations"></a>Umístění zdroje dat.
 
-* **Otázky**: otázka obsahuje text, který nejlépe představuje dotaz uživatele. 
-* **Odpovědi**: odpověď je odpověď, která se vrátí, když se dotaz uživatele shoduje s přidruženou otázkou.  
-* **Metadata**: metadata jsou značky přidružené k páru QnA a jsou reprezentovány jako páry klíč-hodnota. Značky metadat slouží k filtrování párů QnA a omezení sady, u které se provádí párování dotazů.
+Obsah se načte do znalostní báze ze zdroje dat. Umístění zdrojů dat jsou **veřejné adresy URL nebo soubory**, které nevyžadují ověřování.
 
-Jedna QnA reprezentovaná číselným ID QnA má několik variant dotazu (alternativní otázky), které jsou všechny mapovány na jednu odpověď. Ke každému takové dvojici navíc může být přidruženo více polí metadat: jedna klávesa a jedna hodnota.
+Pro [soubory služby SharePoint](../how-to/add-sharepoint-datasources.md)zabezpečené s ověřováním se jedná o výjimku. Prostředky SharePoint musí být soubory, nikoli webové stránky. V případě, že adresa URL končí rozšířením web, například. ASPX se nebude naimportovat do QnA Maker ze SharePointu.
 
-![QnA Maker základy znalostí](../media/qnamaker-concepts-knowledgebase/knowledgebase.png) 
+## <a name="chit-chat-content"></a>Obsah chatu funkce CHITEST
 
-## <a name="knowledge-base-content-format"></a>Formát obsahu znalostní báze
+Sada obsahu QnA chatu CHITEST se nabízí jako úplný zdroj dat obsahu v několika jazycích a ve stylu konverzací. To může být výchozím bodem pro posouzení vašich osobnostních svého robota, a to vám ušetří čas a náklady na jejich vytváření od začátku. Přečtěte si, [jak přidat](../how-to/chit-chat-knowledge-base.md) tuto sadu obsahu do znalostní báze.
 
-Když do znalostní báze ingestujte bohatě bohatý obsah, QnA Maker se pokusí převést obsah na Markdownu. Přečtěte si [Tento blog](https://aka.ms/qnamaker-docs-markdown-support) , kde najdete další informace o formátech Markdownu, které jsou srozumitelné pro většinu klientů chatu.
+## <a name="structured-data-format-through-import"></a>Formát strukturovaných dat pomocí importu
 
-Pole metadat se skládají z párů klíč-hodnota oddělených dvojtečkou, jako je například produkt: Shredder. Klíč i hodnota musí být pouze text. Klíč metadat nesmí obsahovat žádné mezery. Metadata podporují pouze jednu hodnotu na klíč.
+Import znalostní báze nahradí obsah znalostní báze existující. Import vyžaduje strukturovaný `.tsv` soubor, který obsahuje otázky a odpověď. Tyto informace pomáhají QnA Maker skupinové sady pro otázky a jejich atributy na konkrétní zdroj dat.
 
-## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>Jak QnA Maker zpracovává dotaz uživatele, aby mohl vybrat nejlepší odpověď
+| Otázka  | Odpověď  | Zdroj| Metadata (1 klíč: 1 hodnota) |
+|-----------|---------|----|---------------------|
+| Question1 | Answer1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
+| Question2 | Answer2 | Redakční|    `Key:Value`       |
 
-Vyškolená a [publikovaná](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) QnA maker znalostní báze obdrží dotaz na uživatele z robota nebo jiné klientské aplikace v [rozhraní API pro GenerateAnswer](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage). Následující diagram znázorňuje proces, když je přijat dotaz uživatele.
+## <a name="structured-multi-turn-format-through-import"></a>Strukturované formáty vícenásobného přepínání prostřednictvím importu
 
-![Proces řazení pro dotaz uživatele](../media/qnamaker-concepts-knowledgebase/rank-user-query-first-with-azure-search-then-with-qna-maker.png)
+Můžete vytvořit vícenásobné konverzace ve formátu souboru `.tsv`. Tento formát vám umožní vytvořit vícenásobné konverzace analýzou předchozích protokolů chatu (s jinými procesy, bez použití QnA Maker) a pak vytvořit soubor `.tsv` prostřednictvím automatizace. Importujte soubor a nahraďte stávající znalostní bázi.
 
-### <a name="ranker-process"></a>Proces hodnocení
+> [!div class="mx-imgBorder"]
+> ![koncepční model 3 úrovní](../media/qnamaker-concepts-knowledgebase/nested-multi-turn.png)ch otázek s vícenásobným zapnutím
 
-Tento proces je vysvětlen v následující tabulce.
+**Zobrazí**se sloupec pro `.tsv`s vícenásobným zahnutím, který je specifický pro vícenásobný výběr. Příklad `.tsv`, zobrazený v Excelu, zobrazuje informace, které se mají zahrnout pro definování vícenásobného navýšení podřízených objektů:
 
-|Krok|Účel|
-|--|--|
-|1\. místo|Klientská aplikace pošle dotaz uživatele do [rozhraní GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage).|
-|2|QnA Maker předzpracovává dotazy uživatelů pomocí rozpoznávání jazyka, pravopisu a dělení slov.|
-|3|Tento předzpracování se provádí pro změnu dotazu uživatele na nejlepší výsledky hledání.|
-|4|Tento změněný dotaz se odešle do indexu služby Azure Kognitivní hledání, který obdrží `top` počet výsledků. Pokud se v těchto výsledcích nejedná o správnou odpověď, zvyšte hodnotu `top` mírně. Obecně platí, že hodnota 10 pro `top` funguje v 90% dotazů.|
-|5|QnA Maker použije rozšířená featurization k určení správnosti načtených výsledků hledání pro dotaz uživatele. |
-|6|Vyškolený model hodnocení používá skóre funkcí z kroku 5 k zařazení výsledků Kognitivní hledání Azure.|
-|7|Nové výsledky se vrátí do klientské aplikace v pořadí podle pořadí.|
-|||
-
-Použité funkce zahrnují, ale nejsou omezené na sémantiku na úrovni aplikace, důležitost na úrovni termínu v Corpus a hloubkované sémantické modely, které určují podobnost a relevanci mezi dvěma textovými řetězci.
-
-## <a name="http-request-and-response-with-endpoint"></a>Požadavek HTTP a odpověď s koncovým bodem
-Když publikujete znalostní bázi, služba vytvoří koncový bod HTTP založený na REST, který bude možné integrovat do vaší aplikace, obvykle robota chatu. 
-
-### <a name="the-user-query-request-to-generate-an-answer"></a>Požadavek na dotaz na uživatele pro vygenerování odpovědi
-
-Uživatelský dotaz je otázka, kterou koncový uživatel požaduje ve znalostní bázi, například `How do I add a collaborator to my app?`. Dotaz je často ve formátu přirozeného jazyka nebo některá klíčová slova, která reprezentují otázku, například `help with collaborators`. Dotaz se odešle do znalostní báze z požadavku HTTP v klientské aplikaci.
-
-```json
-{
-    "question": "qna maker and luis",
-    "top": 6,
-    "isTest": true,
-    "scoreThreshold": 20,
-    "strictFilters": [
-    {
-        "name": "category",
-        "value": "api"
-    }],
-    "userId": "sd53lsY="
-}
+```JSON
+[
+    {"displayOrder":0,"qnaId":2,"displayText":"Level 2 Question A"},
+    {"displayOrder":0,"qnaId":3,"displayText":"Level 2 - Question B"}
+]
 ```
 
-Odpověď řídíte nastavením vlastností, jako jsou [scoreThreshold](./confidence-score.md#choose-a-score-threshold), [Top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)a [strictFilters](../how-to/metadata-generateanswer-usage.md#filter-results-with-strictfilters-for-metadata-tags).
+**DisplayOrder** je číslo a **zobrazenýtext** je text, který by neměl zahrnovat Markdownu.
 
-Použijte [kontext konverzace](../how-to/metadata-generateanswer-usage.md#use-question-and-answer-results-to-keep-conversation-context) s [funkcemi vícenásobného zapínání](../how-to/multiturn-conversation.md) , aby konverzace mohla Upřesnit otázky a odpovědi a najít správnou a konečnou odpověď.
+> [!div class="mx-imgBorder"]
+> Příklad ![s vícenásobným zapnutím, jak je znázorněno v Excelu](../media/qnamaker-concepts-knowledgebase/multi-turn-tsv-columns-excel-example.png)
 
-### <a name="the-response-from-a-call-to-generate-an-answer"></a>Odpověď ze volání pro vygenerování odpovědi
+## <a name="export-as-example"></a>Exportovat jako příklad
 
-Odpověď HTTP je odpověď získaná ze znalostní báze na základě nejlepší shody pro daný dotaz uživatele. Odpověď obsahuje odpověď a skóre předpovědi. Pokud jste si vyžádali více než jednu horní odpověď s vlastností `top`, získáte více než jednu otázku nejvyšší odpovědi, z nichž každá má skóre. 
-
-```json
-{
-    "answers": [
-        {
-            "questions": [
-                "What is the closing time?"
-            ],
-            "answer": "10.30 PM",
-            "score": 100,
-            "id": 1,
-            "source": "Editorial",
-            "metadata": [
-                {
-                    "name": "restaurant",
-                    "value": "paradise"
-                },
-                {
-                    "name": "location",
-                    "value": "secunderabad"
-                }
-            ]
-        }
-    ]
-}
-```
-
-### <a name="test-and-production-knowledge-base"></a>Testovací a provozní znalostní báze
-Znalostní báze je úložiště otázek a odpovědí, které se vytvářejí, udržují a používají prostřednictvím QnA Maker. Každou vrstvu QnA Maker lze použít pro více znalostní báze.
-
-Znalostní báze má dva stavy: *test* a *Publikováno*.
-
-*Test Knowledge Base* je verze, která je upravována, ukládána a testována pro přesnost a úplnost reakcí. Změny provedené ve znalostní bázi test se netýkají koncového uživatele vaší aplikace nebo robota chatu. Testovací znalostní báze se v požadavku HTTP označuje jako `test`. 
-
-*Publikovaná znalostní báze* je verze, která se používá v robotu nebo v aplikaci chatu. Akce publikování znalostní báze znamená obsah testovací znalostní báze v publikované verzi znalostní báze. Vzhledem k tomu, že publikovaná znalostní báze je verze, kterou aplikace používá prostřednictvím koncového bodu, ujistěte se, že je obsah správný a dobře testovaný. Publikovaná znalostní báze se označuje jako `prod` v požadavku HTTP.
+Pokud si nejste jistí, jak reprezentovat QnA sadu v souboru `.tsv`, vytvořte sadu na portálu QnA Maker, uložte a pak exportujte znalostní bázi pro příklad způsobu reprezentace sady.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -133,12 +65,14 @@ Znalostní báze má dva stavy: *test* a *Publikováno*.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
+Použijte odkaz QnA Maker [Markdownu](../reference-markdown-format.md) , který vám umožní formátovat odpovědi.
+
 [Přehled služby QnA Maker](../Overview/overview.md)
 
-Vytvořte a upravte znalostní bázi pomocí: 
+Vytvořte a upravte znalostní bázi pomocí:
 * [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
 
-Generovat odpověď s: 
+Generovat odpověď s:
 * [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)

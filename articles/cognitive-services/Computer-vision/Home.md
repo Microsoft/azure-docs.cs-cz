@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 11/04/2019
+ms.date: 01/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 2b80e09f086cfaa90174dc9abc5a5cd06294036e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 17dd428f79f66bc70da47527314ad43a27955c82
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770420"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772499"
 ---
 # <a name="what-is-computer-vision"></a>Co je počítačové zpracování obrazu?
 
@@ -28,7 +28,7 @@ V aplikaci můžete použít Počítačové zpracování obrazu prostřednictví
 
 Počítačové zpracování obrazu může výkon mnoha scénářů správy digitálních prostředků (přehradit). Přehradní je obchodní proces organizace, ukládání a načítání multimediálních prostředků a správu digitálních práv a oprávnění. Společnost může například chtít seskupit a identifikovat obrázky na základě viditelných log, plošek, objektů, barev a tak dále. Nebo můžete chtít automaticky [vygenerovat titulky pro obrázky](./Tutorials/storage-lab-tutorial.md) a připojit klíčová slova, aby je bylo možné prohledávat. Pro přehradní řešení all-in-One pomocí Cognitive Services, Azure Kognitivní hledání a inteligentního generování sestav si Projděte [příručku akcelerátoru řešení](https://github.com/Azure-Samples/azure-search-knowledge-mining) pro vyhledávání znalostí na GitHubu. Další příklady přehrad naleznete v tématu [počítačové zpracování obrazu – úložiště šablon řešení](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates) .
 
-## <a name="analyze-images-for-insight"></a>Analýza obrázků za účelem získání přehledu
+## <a name="analyze-images-for-insight"></a>Analýza imagí pro přehled
 
 Můžete analyzovat obrázky, abyste zjistili a poskytovali přehled o jejich vizuálních funkcích a vlastnostech. Všechny funkce v tabulce níže jsou poskytovány rozhraním API pro [analýzu imagí](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) .
 

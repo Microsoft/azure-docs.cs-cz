@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.author: diberry
-ms.openlocfilehash: de078399a29af1c7eb2ae3fb237e1550ccaeacfa
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 681f00adde1d440fbb41f2e66652db34d53fbf99
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872294"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843256"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Použití následných dotazů k vytvoření konverzace s několika směry
 
@@ -65,7 +65,7 @@ Pokud vytváříte dokument s vícenásobným zahnutím, pamatujte na následuj�
 
 * Použijte záhlaví a dílčí záhlaví k označení hierarchie. Například můžete chtít, aby se QnAy, které jsou v nadřazeném prvku, a přiřadí se QnA, který by měl být proveden jako výzva. Použijte malou velikost nadpisu k označení další hierarchie. Nepoužívejte styly, barvy ani jiný mechanismus pro určení struktury v dokumentu, QnA Maker neextrahuje výzvy vícenásobného zapnutí.
 
-* První znak nadpisu musí být velkými písmeny. 
+* První znak nadpisu musí být velkými písmeny.
 
 * Nekončit záhlavím otazníkem, `?`.
 
@@ -368,7 +368,7 @@ Pomocí [rozhraní API pro QnA maker Update](https://docs.microsoft.com/rest/api
 
 ## <a name="export-knowledge-base-for-version-control"></a>Exportovat znalostní bázi pro správu verzí
 
-QnA Maker [podporuje správu verzí](../concepts/development-lifecycle-knowledge-base.md#version-control-of-a-knowledge-base) na portálu QnA maker tím, že do exportovaného souboru zapínají kroky pro vícenásobné konverzace.
+QnA Maker podporuje správu verzí zahrnutím kroků vícenásobného konverzace do exportovaného souboru.
 
 ## <a name="next-steps"></a>Další kroky
 

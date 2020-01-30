@@ -7,16 +7,16 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8bb8711bc4a6134ec740a55d9f5d5794b2de77ca
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 0380689ae6ca81e3f31a07f1e205c7773fdea8c6
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73588587"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773959"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-redash"></a>Vizualizace dat z Azure Průzkumník dat v přerušování
 
-[Pomlčky](https://www.redash.io/) se připojují k datovým zdrojům a dotazují se na ně, vytváří řídicí panely k vizualizaci dat a sdílí je s partnerskými složkami. V tomto článku se dozvíte, jak nastavit službu Azure Průzkumník dat jako zdroj dat pro přerušování a pak vizualizovat data.
+[Pomlčky](https://redash.io/) se připojují k datovým zdrojům a dotazují se na ně, vytváří řídicí panely k vizualizaci dat a sdílí je s partnerskými složkami. V tomto článku se dozvíte, jak nastavit službu Azure Průzkumník dat jako zdroj dat pro přerušování a pak vizualizovat data.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -64,7 +64,7 @@ ms.locfileid: "73588587"
 
 ### <a name="create-a-query-using-a-parameter"></a>Vytvoření dotazu pomocí parametru
 
-1. **Vytvořte** **dotaz** > pro vytvoření nového dotazu. Přidejte do něj parametr pomocí složených závorek {{}}. Vyberte **{{}}** pro otevření okna **Přidat parametr** . Můžete také vybrat *ikonu nastavení* pro úpravu atributů stávajícího parametru a otevření okna **< parameter_name >** . 
+1. **Vytvořte** **dotaz** > pro vytvoření nového dotazu. Přidejte do něj parametr pomocí složených závorek {{}}. Vyberte **{{}}** pro otevření okna **Přidat parametr** . Můžete také vybrat *ikonu nastavení* pro úpravu atributů existujícího parametru a otevření okna **< parameter_name >** . 
 
     ![vložit parametr](media/redash/insert-parameter.png)
 

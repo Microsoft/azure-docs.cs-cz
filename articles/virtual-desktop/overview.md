@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 01/23/2020
+ms.date: 01/27/2020
 ms.author: helohr
-ms.openlocfilehash: 83744750a664a3a992d823f0b7e76768e249aaba
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 168a345427be47dc1c33f43be1af47daa8f638ef
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721417"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772772"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop? 
 
@@ -139,7 +139,7 @@ Virtuální počítač s Windows podporuje následující image operačních sys
 * Windows Server 2016
 * Windows Server 2012 R2
 
-Virtuální počítač s Windows nepodporuje image operačního systému x86 (32-bit), Windows 10 Enterprise N nebo Windows 10 Enterprise KN.
+Virtuální počítač s Windows nepodporuje image operačního systému x86 (32-bit), Windows 10 Enterprise N nebo Windows 10 Enterprise KN. Windows 7 také nepodporuje žádná profilová řešení založená na VHD nebo VHDX, která jsou hostovaná na spravovaných Azure Storage z důvodu omezení velikosti sektoru.
 
 Dostupné možnosti automatizace a nasazení závisí na tom, který operační systém a jakou verzi si zvolíte, jak je znázorněno v následující tabulce: 
 

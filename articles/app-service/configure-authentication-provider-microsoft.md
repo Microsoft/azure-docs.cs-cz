@@ -5,24 +5,28 @@ ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
 ms.topic: article
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 12e16cc7e17ae217a334fe25d71672ab2cafa5a8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 95c603d4a10eb0e4d0817e20755c0f9b36baa96f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768431"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842329"
 ---
 # <a name="configure-your-app-service-app-to-use-microsoft-account-login"></a>Konfigurace aplikace App Service pro používání přihlášení k účtu Microsoft
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-V tomto tématu se dozvíte, jak nakonfigurovat Azure App Service pro použití účtu Microsoft jako poskytovatele ověřování. 
+V tomto tématu se dozvíte, jak nakonfigurovat Azure App Service k používání AAD k podpoře přihlašovacích údajů osobního účet Microsoft.
+
+> [!NOTE]
+> Poskytovatel identity AAD používají osobní účty Microsoft i účty organizace. V tuto chvíli není možné nakonfigurovat tohoto zprostředkovatele identity tak, aby podporoval oba typy protokolů.
 
 ## <a name="register-microsoft-account"> </a>Registrace aplikace pomocí účtu Microsoft
 
 1. V Azure Portal přejít na [**Registrace aplikací**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) . V případě potřeby se přihlaste pomocí účet Microsoft.
 1. Vyberte **Nová registrace**a pak zadejte název aplikace.
-1. V v **identifikátorech URI pro přesměrování**vyberte **Web**a pak zadejte `https://<app-domain-name>/.auth/login/microsoftaccount/callback`. Nahraďte *\<App-Domain-name >* názvem domény vaší aplikace.  Například, `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`. Nezapomeňte použít schéma HTTPS v adrese URL.
+1. V části **podporované typy účtů**vyberte **účty v jakémkoli adresáři organizace (libovolný adresář Azure AD – víceklientské) a osobní účty Microsoft (např. Skype, Xbox)** .
+1. V v **identifikátorech URI pro přesměrování**vyberte **Web**a pak zadejte `https://<app-domain-name>/.auth/login/aad/callback`. Nahraďte *\<App-Domain-name >* názvem domény vaší aplikace.  Například, `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Nezapomeňte použít schéma HTTPS v adrese URL.
 
 1. Vyberte **Zaregistrovat**.
 1. Zkopírujte **ID aplikace (klienta)** . Budete ho potřebovat později.
@@ -36,12 +40,12 @@ V tomto tématu se dozvíte, jak nakonfigurovat Azure App Service pro použití 
 
 1. V [Azure Portal]přejdete do své aplikace.
 1. Vyberte **nastavení** > **ověřování/autorizace**a ujistěte se, že je **zapnuté** **ověřování App Service** .
-1. V části **Zprostředkovatelé ověřování**vyberte **účet Microsoft**. Vložte do ID aplikace (klienta) a tajného klíče klienta, který jste získali dříve. Povolte všechny rozsahy, které vaše aplikace vyžaduje.
+1. V části **Zprostředkovatelé ověřování**vyberte **Azure Active Directory**. V části **režim správy**vyberte **Upřesnit** . Vložte do ID aplikace (klienta) a tajného klíče klienta, který jste získali dříve. Pro pole **Adresa URL vystavitele** použijte **https://login.microsoftonline.com/9188040d-6c67-4c5b-b112-36a304b66dad/v2.0** .
 1. Vyberte **OK**.
 
    App Service poskytuje ověřování, ale neomezuje autorizovaný přístup k obsahu a rozhraním API vašeho webu. Musíte autorizovat uživatele v kódu vaší aplikace.
 
-1. Volitelné Pokud chcete omezit přístup k účet Microsoft uživatelům, nastavte **akci, která se má provést, když se žádost neověřuje** pro **přihlášení pomocí účtu Microsoft**. Když nastavíte tuto funkci, aplikace vyžaduje ověření všech požadavků. Také přesměruje všechny neověřené požadavky na účet Microsoft pro ověřování.
+1. Volitelné Pokud chcete omezit přístup k účet Microsoft uživatelům, nastavte **akci, která se má provést, když se žádost neověřuje** , aby se **přihlásila pomocí Azure Active Directory**. Když nastavíte tuto funkci, aplikace vyžaduje ověření všech požadavků. Také přesměruje všechny neověřené požadavky na použití AAD pro ověřování. Všimněte si, že protože jste **adresu URL vystavitele** nakonfigurovali tak, aby používala tenanta účtu Microsoft, úspěšně se ověří jenom Personal acccounts.
 
    > [!CAUTION]
    > Omezení přístupu tímto způsobem se vztahuje na všechna volání aplikace, která nemusí být žádoucí pro aplikace, které mají veřejně dostupnou domovskou stránku, stejně jako v mnoha aplikacích s jednou stránkou. Pro takové aplikace může být vhodnější použití **anonymních požadavků (žádná akce)** , aby aplikace ručně spouštěla ověřování. Další informace najdete v tématu [tok ověřování](overview-authentication-authorization.md#authentication-flow).

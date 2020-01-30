@@ -13,12 +13,12 @@ ms.date: 10/29/2019
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 0f3aaa2489b94d254d64d5844e1a2e41d5ecc132
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: f28b7abc2b3a9ba753a2f7923c9cfed1897c8522
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695700"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834191"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Použití MSAL.NET k přihlašování uživatelů pomocí sociálních identit
 
@@ -78,7 +78,7 @@ textem:
 
 - `policy` je jeden z předchozích řetězců (pro `PolicySignUpSignIn`instance).
 - pro Android (aktivita) se vyžaduje `ParentActivityOrWindow` a volitelné pro jiné platformy, které podporují nadřazené uživatelské rozhraní, jako je Windows v systému Windows a UIViewController v iOS. Další informace najdete [v dialogovém okně uživatelského rozhraní](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow).
-- `GetAccountByPolicy(IEnumerable<IAccount>, string)` je metoda, která najde účet pro danou zásadu. Například:
+- `GetAccountByPolicy(IEnumerable<IAccount>, string)` je metoda, která najde účet pro danou zásadu. Příklad:
 
   ```csharp
   private IAccount GetAccountByPolicy(IEnumerable<IAccount> accounts, string policy)
@@ -176,7 +176,7 @@ Doporučeným řešením je použití [zásad ukládání do mezipaměti podle z
 Alternativně můžete použít `tid` deklarace identity, pokud používáte [vlastní zásady B2C](https://aka.ms/ief), protože poskytují možnost vracet do aplikace další deklarace identity. Další informace o [transformaci deklarací identity](/azure/active-directory-b2c/claims-transformation-technical-profile)
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>Zmírnění omezení u možnosti chybějící v odpovědi na token
-Jednou z možností je použít jako preferované uživatelské jméno deklaraci identity "Name". Tento proces se zmiňuje v tomto [dokumentu B2C doc](../../active-directory-b2c/active-directory-b2c-reference-policies.md) -> ve sloupci návratová deklarace vyberte deklarace identity, které se mají vrátit v autorizačních tokenech odesílaných zpět do aplikace po úspěšném prostředí pro úpravu profilu. Vyberte například zobrazované jméno, PSČ.
+Jednou z možností je použít jako preferované uživatelské jméno deklaraci identity "Name". Tento proces se zmiňuje v tomto [dokumentu B2C doc](../../active-directory-b2c/user-flow-overview.md) -> ve sloupci návratová deklarace vyberte deklarace identity, které se mají vrátit v autorizačních tokenech odesílaných zpět do aplikace po úspěšném prostředí pro úpravu profilu. Vyberte například zobrazované jméno, PSČ.
 
 ## <a name="next-steps"></a>Další kroky 
 

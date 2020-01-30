@@ -3,7 +3,7 @@ title: Podpora Azure pro virtuální počítače 2. generace
 description: Přehled podpory Azure pro virtuální počítače 2. generace
 services: virtual-machines-linux
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 12/03/2019
-ms.author: lahugh
-ms.openlocfilehash: cfa8d28a41bb5551277bca29c118698ecaa8d112
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/28/2020
+ms.author: jushiman
+ms.openlocfilehash: 766ac4f67c0d448f3988eb66c84dddbf44076ab5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791734"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841131"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Podpora virtuálních počítačů 2. generace v Azure
 
@@ -30,12 +30,12 @@ Virtuální počítače generace 2 používají novou architekturu na bázi rozh
 
 ## <a name="generation-2-vm-sizes"></a>Velikosti virtuálních počítačů 2. generace
 
-Virtuální počítače 1. generace jsou podporovány všemi velikostmi virtuálních počítačů v Azure. Azure teď nabízí podporu generace 2 pro následující vybranou řadu virtuálních počítačů:
+Virtuální počítače 1. generace jsou podporovány všemi velikostmi virtuálních počítačů v Azure (s výjimkou virtuálních počítačů s Mv2-Series). Azure teď nabízí podporu generace 2 pro následující vybranou řadu virtuálních počítačů:
 
 * [Řady B-Series](https://docs.microsoft.com/azure/virtual-machines/linux/b-series-burstable)
 * [DC-Series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dc-series)
 * Řady [Dsv2-Series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv2-series) a [Dsv3-Series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv3-series-1)
-* [Esv3-Series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#esv3-series)
+* [Esv3-series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#esv3-series)
 * [Fsv2-Series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-compute#fsv2-series-1)
 * [Řady GS](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#gs-series)
 * [Řady s více procesory](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#hb-series)
@@ -58,7 +58,7 @@ Virtuální počítače generace 2 podporují následující image na webu Marke
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
 * Ubuntu Server 16,04, 18,04, 19,04, 19,10 
-* RHEL 8,0
+* RHEL 8.0
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Místní a Azure generace 2 – virtuální počítače
 
@@ -123,6 +123,12 @@ Pomocí následující rutiny prostředí PowerShell můžete například získa
 
 ```powershell
 Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
+```
+
+Alternativně můžete pomocí Azure CLI Zobrazit všechny dostupné image generace 2 uvedené **vydavatelem**.
+
+```azurecli
+az vm image list --publisher Canonical --sku gen2 --output table --all
 ```
 
 Pokud vytváříte virtuální počítač s Windows Serverem 2012 jako operačním systémem, vyberete buď SKLADOVOU položku virtuálního počítače 1. generace (BIOS) nebo generace 2 (UEFI), což bude vypadat takto:

@@ -8,21 +8,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 2375d8ee92d9c04c287b7fca793fcdc236e1e8f4
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: f7f716734875d652de575991a4dc1b7bfe948ae3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720034"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773520"
 ---
 # <a name="set-up-advanced-threat-protection-for-azure-key-vault-preview"></a>Nastavení rozšířené ochrany před internetovými útoky pro Azure Key Vault (Preview)
 
 Rozšířená ochrana před internetovými útoky pro Azure Key Vault poskytuje další vrstvu funkce Security Intelligence. Tento nástroj detekuje potenciálně nebezpečné pokusy o přístup k účtům Key Vault a jejich zneužití. Pomocí nativní rozšířené ochrany před internetovými útoky v Azure Security Center můžete řešit hrozby, aniž by se jedná o odborníka na zabezpečení, a bez učení dalších systémů monitorování zabezpečení.
 
 Když Security Center detekuje aktivitu neobvyklé, zobrazí výstrahy. Také pošle e-mailem správce předplatného s podrobnostmi o podezřelé aktivitě a doporučeních k tomu, jak zjistit a opravit zjištěné hrozby.
-
-> [!NOTE]
-> Rozšířená ochrana před internetovými útoky pro Azure Key Vault je aktuálně dostupná jenom v Severní Amerikach oblastech.
 
 ## <a name="set-up-advanced-threat-protection-from-azure-security-center"></a>Nastavení rozšířené ochrany před internetovými útoky z Azure Security Center
 

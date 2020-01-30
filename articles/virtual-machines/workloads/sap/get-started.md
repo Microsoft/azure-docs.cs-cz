@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/17/2020
+ms.date: 01/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 55872d48dcf2a85812e1627e4e85bcd98b25d576
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 3c609c659d99ce6eca0326a5a14cbbb67099e686
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271324"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840464"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -121,6 +121,7 @@ Informace o integraci služeb Azure do komponent SAP najdete v těchto tématech
 
 ## <a name="change-log"></a>Protokol změn
 
+- 01/28/2020: Změna [vysoké dostupnosti SAP HANA na virtuálních počítačích Azure v RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel) , aby se zarovnaly časové limity SAP HANA prostředků clusteru, do doporučení Red Hat timeout
 - 01/17/2020: Změna ve [skupinách umístění v blízkosti Azure pro optimální latenci sítě s aplikacemi SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) pro změnu oddílu přesunutí stávajících virtuálních počítačů do skupiny umístění s blízkými místy
 - 01/17/2020: změňte [konfiguraci úloh SAP pomocí zóny dostupnosti Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones) , aby odkazovala na postup, který automatizuje měření latence mezi zóny dostupnosti
 - 01/16/2020: přepište, [Jak nainstalovat a nakonfigurovat SAP Hana (velké instance) v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-installation) , aby se mohly přizpůsobit vydané verze operačních systémů do IaaS hardwaru pro Hana.

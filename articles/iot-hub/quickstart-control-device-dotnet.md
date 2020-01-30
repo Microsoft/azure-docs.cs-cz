@@ -10,12 +10,12 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: a106699f4e3148eba85acc913e6f97be6ce9be66
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: bffba0ce5481250a696cdf4ec0aed6b59620bfe9
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515088"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773835"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>Rychlý start: Řízení zařízení připojeného k centru IoT (.NET)
 
@@ -27,13 +27,13 @@ Rychlý start používá dvě předem vytvořené aplikace .NET:
 
 * Aplikaci simulovaného zařízení, která odpovídá na přímé metody volané z back-endové aplikace. Aby bylo možné přijímat volání přímé metody, připojí se tato aplikace ke koncovému bodu centra IoT pro konkrétní zařízení.
 
-* Back-endovou aplikaci, která na simulovaném zařízení volá přímé metody. Aby na zařízení bylo možné volat přímou metodu, připojí se tato aplikace ke koncovému bodu centra IoT na straně služby.
+* Back-endovou aplikaci, která na simulovaném zařízení volá přímé metody. Aby na zařízení bylo možné volat přímou metodu, připojí se tato aplikace ke koncovému bodu na straně služby ve vašem centru IoT.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Dvě ukázkové aplikace, které spustíte v tomto rychlém startu, jsou napsány pomocí C#. Na počítači používaném pro vývoj musíte mít .NET Core SDK 2.1.0 nebo vyšší.
 
@@ -51,7 +51,7 @@ Spuštěním následujícího příkazu přidejte do instance služby Cloud Shel
 az extension add --name azure-cli-iot-ext
 ```
 
-Pokud jste to ještě neudělali, stáhněte si ukázkový projekt C# z webu https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip a extrahujte archiv ZIP.
+Pokud jste to ještě neudělali, Stáhněte si ukázky C# Azure IoT z https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip a Extrahujte archiv zip.
 
 ## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
 
@@ -76,7 +76,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
       --hub-name {YourIoTHubName} --device-id MyDotnetDevice
     ```
 
-2. Spuštěním následujícího příkazu ve službě Azure Cloud Shell získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
+2. Spuštěním následujícího příkazu v Azure Cloud Shellu získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
 
    **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 

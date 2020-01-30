@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 12/09/2019
-ms.openlocfilehash: b4a6ef4a8559276ea1f74e133055a613ddcbcab4
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 01/27/2020
+ms.openlocfilehash: 72fd23e4283925b91d749fef0afac4e87e93405c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495155"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841636"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Přineste si vlastní klíč pro Apache Kafka ve službě Azure HDInsight
 
@@ -39,13 +39,13 @@ Pokud chcete vytvořit cluster Kafka s podporou BYOK, Projděte si následujíc�
 
 Pokud chcete ověřit Key Vault, vytvořte uživatelem přiřazenou identitu pomocí [Azure Portal](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md), [Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md), [Azure Resource Manager](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md)nebo [Azure CLI](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md). Další informace o tom, jak spravované identity fungují ve službě Azure HDInsight, najdete v tématu [spravované identity ve službě Azure HDInsight](../hdinsight-managed-identities.md). I když je služba Azure Active Directory nutná pro spravované identity a BYOK na Kafka, nepožaduje se Balíček zabezpečení podniku (ESP). Nezapomeňte uložit ID spravovaného prostředku identity, pokud ho přidáte do zásad přístupu Key Vault.
 
-![Vytvoření spravované identity přiřazené uživatelem v Azure Portal](./media/apache-kafka-byok/user-managed-identity-portal.png)
+![Vytvoření spravované identity přiřazené uživatelem v Azure Portal](./media/apache-kafka-byok/azure-portal-create-managed-identity.png)
 
 ## <a name="set-up-the-key-vault-and-keys"></a>Nastavení Key Vault a klíčů
 
 HDInsight podporuje jenom Azure Key Vault. Pokud máte vlastní Trezor klíčů, můžete klíče importovat do Azure Key Vault. Mějte na paměti, že klíče musí obsahovat "obnovitelné odstranění". Funkce "obnovitelné odstranění" je k dispozici prostřednictvím rozhraní REST, .NETC#/, PowerShellu a rozhraní příkazového řádku Azure CLI.
 
-1. Pokud chcete vytvořit nový trezor klíčů, postupujte podle pokynů pro rychlý Start [Azure Key Vault](../../key-vault/key-vault-overview.md) . Další informace o importu existujících klíčů najdete v [informacích o klíčích, tajných klíčích a certifikátech](../../key-vault/about-keys-secrets-and-certificates.md).
+1. Pokud chcete vytvořit nový trezor klíčů, postupujte podle pokynů pro rychlý Start [Azure Key Vault](../../key-vault/quick-create-cli.md) . Další informace o importu existujících klíčů najdete v [informacích o klíčích, tajných klíčích a certifikátech](../../key-vault/about-keys-secrets-and-certificates.md).
 
 1. V trezoru klíčů Povolte "obnovitelné odstranění" pomocí příkazu [AZ Key trezor Update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) CLI.
 
@@ -79,7 +79,7 @@ HDInsight podporuje jenom Azure Key Vault. Pokud máte vlastní Trezor klíčů,
 
     b. V části **Vybrat objekt zabezpečení**vyberte spravovanou identitu přiřazenou uživatelem, kterou jste vytvořili.
 
-    ![Nastavení výběru objektu zabezpečení pro zásady Azure Key Vaultho přístupu](./media/apache-kafka-byok/add-key-vault-access-policy-select-principal.png)
+    ![Nastavení výběru objektu zabezpečení pro zásady Azure Key Vaultho přístupu](./media/apache-kafka-byok/azure-portal-add-access-policy.png)
 
     c. Nastavte **klíčová oprávnění** pro **získání**, **rozbalení klíče**a **zabalení klíče**.
 
@@ -97,9 +97,9 @@ HDInsight podporuje jenom Azure Key Vault. Pokud máte vlastní Trezor klíčů,
 
 Nyní jste připraveni vytvořit nový cluster HDInsight. BYOK se dá použít jenom pro nové clustery během vytváření clusteru. Šifrování nejde odebrat z clusterů BYOK a BYOK se nedá přidat do stávajících clusterů.
 
-![Kafka Disk Encryption v Azure Portal](./media/apache-kafka-byok/azure-portal-cluster-security-networking-kafka-byok.png)
+![Kafka Disk Encryption v Azure Portal](./media/apache-kafka-byok/azure-portal-cluster-security-networking-kafka.png)
 
-Během vytváření clusteru zadejte úplnou adresu URL klíče, včetně verze klíče. Například, `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Musíte také přiřadit spravovanou identitu ke clusteru a zadat identifikátor URI klíče.
+Během vytváření clusteru zadejte úplnou adresu URL klíče, včetně verze klíče. Například, `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Musíte také přiřadit spravovanou identitu ke clusteru a zadat identifikátor URI klíče. Úplné podrobnosti o vytváření clusterů najdete v tématu [Vytvoření clusterů Apache Hadoop pomocí Azure Portal](./apache-kafka-get-started.md)
 
 ## <a name="rotating-the-encryption-key"></a>Otočení šifrovacího klíče
 

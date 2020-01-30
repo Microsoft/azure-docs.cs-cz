@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 56765fa16bc1ea96f1429b72fded38c4385e65ec
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7142e3f9aaa25e7ba327194c04ad6a9b5f4e3ad1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452112"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774479"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Popište Cluster Service Fabric pomocí Správce prostředků clusteru.
 Funkce Správce prostředků clusteru v Azure Service Fabric poskytuje několik mechanismů pro popis clusteru:
@@ -375,7 +375,7 @@ Hodnota zadaná ve vlastnosti node může být řetězec, logická hodnota nebo 
 
 * Podmíněné kontroly pro vytváření konkrétních příkazů:
 
-  | Výpis | Syntaxe |
+  | vydá | Syntaxe |
   | --- |:---:|
   | rovná se | "==" |
   | "nerovná se" | "!=" |
@@ -386,7 +386,7 @@ Hodnota zadaná ve vlastnosti node může být řetězec, logická hodnota nebo 
 
 * Logické příkazy pro seskupování a logické operace:
 
-  | Výpis | Syntaxe |
+  | vydá | Syntaxe |
   | --- |:---:|
   | ani | "&&" |
   | ani | "&#124;&#124;" |
@@ -472,7 +472,7 @@ Nejprve je zajištěno, že nejsou počítače přetíženy. To znamená, že na
 
 Za druhé je vyrovnávání a optimalizace, které jsou důležité pro efektivní spouštění služeb. Cenově výhodné nebo nenáročné nabídky služeb neumožňují, aby některé uzly byly horké, zatímco jiné jsou studené. Aktivní uzly vedou k kolizí prostředků a k špatnému výkonu. Studené uzly reprezentují plýtvání prostředky a zvýšené náklady. 
 
-Service Fabric představuje prostředky jako *metriky*. Metriky jsou libovolný logický nebo fyzický prostředek, který chcete popsat Service Fabric. Příklady metrik jsou "WorkQueueDepth" nebo "MemoryInMb". Informace o fyzických prostředcích, které se Service Fabric můžou řídit na uzlech, najdete v tématu zásady [správného řízení prostředků](service-fabric-resource-governance.md). Informace o konfiguraci vlastních metrik a jejich použití najdete v [tomto článku](service-fabric-cluster-resource-manager-metrics.md).
+Service Fabric představuje prostředky jako *metriky*. Metriky jsou libovolný logický nebo fyzický prostředek, který chcete popsat Service Fabric. Příklady metrik jsou "WorkQueueDepth" nebo "MemoryInMb". Informace o fyzických prostředcích, které se Service Fabric můžou řídit na uzlech, najdete v tématu zásady [správného řízení prostředků](service-fabric-resource-governance.md). Informace o výchozích metrikách používaných Správce prostředků clusteru a o tom, jak nakonfigurovat vlastní metriky, najdete v [tomto článku](service-fabric-cluster-resource-manager-metrics.md).
 
 Metriky se liší od omezení umístění a vlastností uzlů. Vlastnosti uzlu jsou statické popisovače uzlů samotné. Metriky popisují prostředky, které mají uzly a které služby spotřebovávají při jejich spuštění na uzlu. Vlastnost uzlu může být **HasSSD** a může být nastavena na hodnotu true nebo false. Množství místa, které je dostupné na disku SSD a kolik je spotřebované službami, by bylo metrika, jako je například "DriveSpaceInMb". 
 

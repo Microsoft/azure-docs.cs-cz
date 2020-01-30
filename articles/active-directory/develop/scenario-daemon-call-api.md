@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5a234e0b5d3a88b722257aa80249f4d80182d12f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 338b638d6b33bcbbb5cf377643a96c71b0d314bd
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702228"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775198"
 ---
 # <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>Aplikace démona, která volá webové rozhraní API – volání webového rozhraní API z aplikace
 
-Aplikace typu démon může volat webové rozhraní API z aplikace démona .NET nebo volat několik předběžně schválených webových rozhraní API.
+Aplikace démona rozhraní .NET může volat webové rozhraní API. Aplikace démona rozhraní .NET může také volat několik předběžně schválených webových rozhraní API.
 
-## <a name="calling-a-web-api-daemon-application"></a>Volání aplikace webového rozhraní API démona
+## <a name="calling-a-web-api-from-a-daemon-application"></a>Volání webového rozhraní API z aplikace démona
 
 Tady je postup, jak použít token pro volání rozhraní API:
 
@@ -67,7 +67,7 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 ## <a name="calling-several-apis"></a>Volání několika rozhraní API
 
-Pro aplikace démona musí být webová rozhraní API, která zavoláte, předem schválená. Nedojde k žádnému přírůstkového souhlasu s aplikacemi démona (žádná interakce s uživatelem). Správce tenanta musí aplikace a všechna oprávnění API předem odsouhlasit. Pokud chcete volat několik rozhraní API, budete muset získat token pro každý prostředek při každém volání `AcquireTokenForClient`. MSAL použije mezipaměť tokenu aplikace, aby nedocházelo k zbytečným voláním služby.
+Pro aplikace démona musí být webová rozhraní API, která zavoláte, předem schválená. Pro aplikace démona není k dispozici žádný přírůstkový souhlas. (Žádná interakce s uživatelem.) Správce tenanta musí pro aplikaci a všechna oprávnění rozhraní API poskytnout předem souhlas. Pokud chcete volat několik rozhraní API, je nutné získat token pro každý prostředek pokaždé, když se zavolá `AcquireTokenForClient`. MSAL použije mezipaměť tokenu aplikace, aby nedocházelo k zbytečným voláním služby.
 
 ## <a name="next-steps"></a>Další kroky
 

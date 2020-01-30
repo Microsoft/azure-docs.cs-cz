@@ -1,6 +1,6 @@
 ---
-title: Jak získat instanci procesor médií pomocí REST | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit komponentu procesor médií pro kódování, převod formátu, šifrování nebo dešifrování obsahu médií pro Azure Media Services.
+title: Jak získat instanci procesoru médií pomocí REST | Microsoft Docs
+description: Naučte se vytvořit komponentu procesoru médií ke kódování, převedení formátu, šifrování nebo dešifrování mediálního obsahu pro Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: d342cff6d322195ee88a74215f814be7d702aa5e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d7b3922c9bb7eb79cd6436ba1b265714678fcc8
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761953"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774911"
 ---
-# <a name="how-to-get-a-media-processor-instance"></a>Jak získat instanci procesoru médií
+# <a name="how-to-get-a-media-processor-instance"></a>Jak získat instanci procesoru multimédií
 > [!div class="op_single_selector"]
 > * [.NET](media-services-get-media-processor.md)
 > * [REST](media-services-rest-get-media-processor.md)
@@ -29,26 +29,26 @@ ms.locfileid: "60761953"
 > 
 
 ## <a name="overview"></a>Přehled
-Procesory médií jsou komponenty, která zpracovává konkrétní videa nebo zpracování zvuku úloh, jako je například kódování, převod formátů, šifrování nebo dešifrování mediálního obsahu. Všechny úlohy, odeslané do Media Services vyžadují procesor médií kódování, šifrování nebo převést videa nebo zvukový obsah. 
+Procesory médií jsou součástí, která zpracovává konkrétní úlohu zpracování videa nebo zvuku, jako je například kódování, převod formátu, šifrování nebo dešifrování mediálního obsahu. Všechny úlohy odeslané do Media Services vyžadují, aby procesor médií mohl kódování, šifrování nebo převod zvukového nebo zvukového obsahu. 
 
 ## <a name="azure-media-processors"></a>Procesory médií Azure 
 
-V následujícím tématu najdete seznam procesory médií:
+V následujícím tématu najdete seznam procesorů médií:
 
-* [Kódovací procesory médií](scenarios-and-availability.md#encoding-media-processors)
-* [Analytické procesory médií](scenarios-and-availability.md#analytics-media-processors)
+* [Kódování procesorů médií](scenarios-and-availability.md#encoding-media-processors)
+* [Procesory pro analýzy multimédií](scenarios-and-availability.md#analytics-media-processors)
 
 >[!NOTE]
->Při přístupu k entity ve službě Media Services, musíte nastavit specifická pole hlaviček a hodnoty v požadavcích HTTP. Další informace najdete v tématu [instalace pro vývoj pro Media Services REST API](media-services-rest-how-to-use.md).
+>Při přístupu k entitám v Media Services musíte nastavit konkrétní pole a hodnoty hlaviček v požadavcích HTTP. Další informace najdete v tématu [instalace Media Services REST APIm vývoji](media-services-rest-how-to-use.md).
 
-## <a name="connect-to-media-services"></a>Připojení ke službě Media Services
+## <a name="connect-to-media-services"></a>Připojení k Media Services
 
-Informace o tom, jak se připojit k rozhraní API pro AMS, naleznete v tématu [přístup k rozhraní API Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Informace o tom, jak se připojit k rozhraní API AMS, najdete v tématu [přístup k rozhraní Azure Media Services API pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
 
 ## <a name="get-a-media-processor"></a>Získat procesor médií
 
-Následující volání REST ukazuje, jak získat instanci procesoru media podle názvu (v tomto případě **kodéru Media Encoder Standard**). 
+Následující volání REST ukazuje, jak získat instance procesoru médií podle názvu (v tomto případě **Media Encoder Standard**). 
 
 Požadavek:
 
@@ -59,7 +59,7 @@ Požadavek:
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <token>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: media.windows.net
 
 Odpověď:
@@ -81,12 +81,12 @@ Odpověď:
     }
 
 
-## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
+## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když víte, jak získat instanci procesor médií, přejděte [postupy kódování prostředku](media-services-rest-get-started.md) článek, který ukazuje, jak kódování prostředku pomocí Media Encoderu Standard.
+Když teď víte, jak získat instanci procesoru médií, přečtěte si článek [Postup kódování assetu](media-services-rest-get-started.md) , který ukazuje, jak použít Media Encoder Standard ke kódování assetu.
 

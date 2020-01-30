@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: a65f0918d04f77bc3076449347bb20046f73e92a
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: e622abd16f900ca811385ddada187f3c96e7d758
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779943"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773940"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Ingestování dat z centra událostí do Azure Průzkumník dat
 
@@ -118,6 +118,7 @@ Teď se můžete z Azure Data Exploreru připojit k centru událostí. Po naváz
     | Centrum událostí | *test-hub* | Centrum událostí, které jste vytvořili |
     | Skupina uživatelů | *test-group* | Skupina uživatelů, kterou jste definovali v centrum událostí, které jste vytvořili |
     | Vlastnosti systému událostí | Vyberte příslušné vlastnosti. | [Vlastnosti systému centra událostí](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). Pokud existuje více záznamů na jednu zprávu události, budou do prvního z nich přidány vlastnosti systému. Při přidávání vlastností systému, [Vytvoření](/azure/kusto/management/tables#create-table) nebo [aktualizace](/azure/kusto/management/tables#alter-table-and-alter-merge-table) schématu tabulky a [mapování](/azure/kusto/management/mappings) tak, aby zahrnovaly vybrané vlastnosti. |
+    | Komprese | *Žádné* | Typ komprese pro datovou část zpráv centra událostí. Podporované typy komprese: *žádné, gzip*.|
     | | |
 
     **Cílová tabulka:**
@@ -128,15 +129,15 @@ Teď se můžete z Azure Data Exploreru připojit k centru událostí. Po naváz
      **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
     | Table | *TestTable* | Tabulka, kterou jste vytvořili v databázi **TestDatabase** |
-    | Formát dat | *JSON* | Podporované formáty jsou Avro, CSV, JSON, VÍCEŘÁDKOVé JSON, PSV, SOHSV, SCSV, TSV, TSVE a TXT. Podporované možnosti komprese: GZip |
-    | Mapování sloupců | *TestMapping* | [Mapování](/azure/kusto/management/mappings) , které jste vytvořili v **TestDatabase**, které mapuje příchozí data JSON na názvy sloupců a datové typy **testovacího**typu. Vyžaduje se pro JSON, VÍCEŘÁDKOVé JSON nebo AVRO a volitelné pro jiné formáty.|
+    | Formát dat | *JSON* | Podporované formáty jsou Avro, CSV, JSON, VÍCEŘÁDKOVé JSON, PSV, SOHSV, SCSV, TSV, TSVE, TXT, ORC a PARQUET. |
+    | Mapování sloupců | *TestMapping* | [Mapování](/azure/kusto/management/mappings) , které jste vytvořili v **TestDatabase**, které mapuje příchozí data JSON na názvy sloupců a datové typy **testovacího**typu. Vyžaduje se pro JSON nebo VÍCEŘÁDKOVé JSON a volitelné pro jiné formáty.|
     | | |
 
     > [!NOTE]
     > * Vyberte **moje data zahrnují informace o směrování** pro použití dynamického směrování, kde data obsahují nezbytné informace o směrování, jak je vidět v komentářích [ukázkové aplikace](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) . Pokud jsou nastaveny statické i dynamické vlastnosti, přepíší dynamické vlastnosti statické. 
     > * Ingestují se jenom události zařazené do fronty po vytvoření datového připojení.
-    > * Povolte kompresi GZip pro statické směrování otevřením [žádosti o podporu v Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Povolte kompresi GZip pro dynamické směrování, jak je vidět v [ukázkové aplikaci](https://github.com/Azure-Samples/event-hubs-dotnet-ingest). 
-    > * Formát Avro a vlastnosti systému událostí nejsou podporovány pro datovou část komprese.
+    > * Typ komprese můžete také nastavit prostřednictvím dynamických vlastností, jak je vidět v [ukázkové aplikaci](https://github.com/Azure-Samples/event-hubs-dotnet-ingest).
+    > * Formáty Avro, ORC a PARQUET a také vlastnosti systému událostí nejsou podporovány v datové části komprese GZip.
 
 [!INCLUDE [data-explorer-container-system-properties](../../includes/data-explorer-container-system-properties.md)]
 

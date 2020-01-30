@@ -4,29 +4,26 @@ titleSuffix: Azure Network Watcher
 description: Tato stránka poskytuje přehled možností řešení potíží s Network Watcher prostředky.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: c1145cd6-d1cf-4770-b1cc-eaf0464cc315
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: kumud
-ms.openlocfilehash: 736bbd16456dd0abda3292b9b9e73ea5b941e7ed
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: 199b4fc762919c2e3988f477c14d09fc23b0136b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277776"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840685"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Úvod k řešení potíží s prostředky v Azure Network Watcher
 
 Brány Virtual Network poskytují konektivitu mezi místními prostředky a dalšími virtuálními sítěmi v rámci Azure. Pro zajištění, aby nedošlo k přerušení komunikace, je důležité monitorovat brány a jejich připojení. Network Watcher poskytuje možnost řešení potíží s bránami a připojeními. Schopnost se dá volat prostřednictvím portálu, PowerShellu, rozhraní příkazového řádku Azure nebo REST API. Při volání Network Watcher diagnostikuje stav brány nebo připojení a vrátí příslušné výsledky. Požadavek je dlouhodobá transakce. Výsledky se vrátí po dokončení diagnostiky.
 
-![portal][2]
+![portál][2]
 
 ## <a name="results"></a>Výsledky
 
@@ -76,7 +73,7 @@ V následujících tabulkách jsou uvedeny různé typy chyb (ID z předchozího
 | ConnectionIsMarkedDisconnected | Připojení je označeno jako odpojené. |Ne|
 | ConnectionNotConfiguredOnGateway | V podkladové službě není nakonfigurované připojení. | Ano |
 | ConnectionMarkedStandby | Podkladová služba je označena jako pohotovostní.| Ano|
-| Ověřování | Neshoda předsdíleného klíče | Ano|
+| Ověření | Neshoda předsdíleného klíče | Ano|
 | PeerReachability | Partnerská brána není dostupná. | Ano|
 | IkePolicyMismatch | Partnerská brána má zásady IKE, které Azure nepodporuje. | Ano|
 | WfpParse Error | Při analýze protokolu WFP došlo k chybě. |Ano|
@@ -88,14 +85,14 @@ Následující tabulka uvádí, které brány a připojení jsou podporované p�
 |  |  |
 |---------|---------|
 |**Typy bran**   |         |
-|Síť VPN      | Podporuje se        |
+|Síť VPN      | Podporováno        |
 |ExpressRoute | Nepodporuje se |
 |**Typy sítě VPN** | |
-|Založené na trasách | Podporuje se|
+|Založené na trasách | Podporováno|
 |Založené na zásadách | Nepodporuje se|
 |**Typy připojení**||
-|Podporují| Podporuje se|
-|VNet2Vnet| Podporuje se|
+|Podporují| Podporováno|
+|VNet2Vnet| Podporováno|
 |ExpressRoute| Nepodporuje se|
 |VPNClient| Nepodporuje se|
 

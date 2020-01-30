@@ -3,17 +3,15 @@ title: Sledování zpráv B2B s využitím protokolů Azure Monitoru
 description: Sledování komunikace B2B pro integrační účty a Azure Logic Apps s využitím Azure Log Analytics
 services: logic-apps
 ms.suite: integration
-author: divyaswarnkar
-ms.author: divswa
-ms.reviewer: jonfan, estfan, logicappspm
+ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 3726b0c8c22614d2acc797295543e69f9358d69c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 6e66bdfcfe9e84c1095f03a41439b904c7cb96df
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792931"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773719"
 ---
 # <a name="track-b2b-messages-with-azure-monitor-logs"></a>Sledování zpráv B2B s využitím protokolů Azure Monitoru
 
@@ -30,7 +28,7 @@ Po nastavení komunikace B2B mezi obchodními partnery v účtu integrace mohou 
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Aplikace logiky, která je nastavená pomocí diagnostického protokolování. Naučte [se, jak vytvořit aplikaci logiky](quickstart-create-first-logic-app-workflow.md) a [jak nastavit protokolování pro tuto aplikaci logiky](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
@@ -166,8 +164,8 @@ Tady jsou formáty názvů pro každou staženou složku zpráv AS2 a soubory.
 
 | Složka nebo soubor | Formát názvu |
 | :------------- | :---------- |
-| Složka zpráv | [Sender]\_[přijímač]\_AS2\_[Correlation-ID]\_[ID zprávy]\_[časové razítko] |
-| Vstup, výstup a v případě nastavení, potvrzení souborů | **Vstupní datová část**: [sender]\_[přijímač]\_AS2\_[Correlation-ID]\_input_payload. txt </p>**Výstupní datová část**: [sender]\_[přijímač]\_AS2\_[ID korelace]\_výstupní\_datové části. txt </p></p>**Vstupy**: [sender]\_[přijímač]\_AS2\_[Correlation-ID]\_Inputs. txt </p></p>**Výstupy**: [sender]\_[přijímač]\_AS2\_[Correlation-ID]\_Outputs. txt |
+| Složka zpráv | [sender]\_[receiver]\_AS2\_[correlation-ID]\_[message-ID]\_[timestamp] |
+| Vstup, výstup a nastavení, potvrzení souborů | **Vstupní datová část**: [sender]\_[přijímač]\_AS2\_[Correlation-ID]\_input_payload. txt </p>**Výstupní datová část**: [sender]\_[přijímač]\_AS2\_[ID korelace]\_výstupní\_datové části. txt </p></p>**Vstupy**: [sender]\_[přijímač]\_AS2\_[Correlation-ID]\_Inputs. txt </p></p>**Výstupy**: [sender]\_[přijímač]\_AS2\_[Correlation-ID]\_Outputs. txt |
 |          |             |
 
 <a name="x12-message-properties"></a>
@@ -199,8 +197,8 @@ Tady jsou formáty názvů pro každou staženou složku zpráv X12 a soubory.
 
 | Složka nebo soubor | Formát názvu |
 | :------------- | :---------- |
-| Složka zpráv | [Sender]\_[přijímač]\_X12\_[výměna-Control-Number]\_[Global-Control-Number]\_[transakce-set-Control-Number]\_[timestamp] |
-| Vstup, výstup a v případě nastavení, potvrzení souborů | **Vstupní datová část**: [sender]\_[přijímač]\_X12\_[Interchange-Control-number]\_input_payload. txt </p>**Výstupní datová část**: [sender]\_[přijímač]\_X12\_[Interchange-Control-number]\_výstupní\_datové části. txt </p></p>**Vstupy**: [sender]\_[přijímač]\_X12\_[Interchange-Control-number]\_Inputs. txt </p></p>**Výstupy**: [sender]\_[přijímač]\_X12\_[Interchange-Control-number]\_Outputs. txt |
+| Složka zpráv | [sender]\_[receiver]\_X12\_[interchange-control-number]\_[global-control-number]\_[transaction-set-control-number]\_[timestamp] |
+| Vstup, výstup a nastavení, potvrzení souborů | **Vstupní datová část**: [sender]\_[přijímač]\_X12\_[Interchange-Control-number]\_input_payload. txt </p>**Výstupní datová část**: [sender]\_[přijímač]\_X12\_[Interchange-Control-number]\_výstupní\_datové části. txt </p></p>**Vstupy**: [sender]\_[přijímač]\_X12\_[Interchange-Control-number]\_Inputs. txt </p></p>**Výstupy**: [sender]\_[přijímač]\_X12\_[Interchange-Control-number]\_Outputs. txt |
 |          |             |
 
 <a name="EDIFACT-message-properties"></a>
@@ -232,8 +230,8 @@ Tady jsou formáty názvů pro každou staženou složku zpráv EDIFACT a soubor
 
 | Složka nebo soubor | Formát názvu |
 | :------------- | :---------- |
-| Složka zpráv | [Sender]\_[přijímač]\_EDIFACT\_[výměna-Control-Number]\_[Global-Control-Number]\_[transakce-set-Control-Number]\_[timestamp] |
-| Vstup, výstup a v případě nastavení, potvrzení souborů | **Vstupní datová část**: [sender]\_[přijímač]\_EDIFACT\_[Interchange-Control-number]\_input_payload. txt </p>**Výstupní datová část**: [sender]\_[přijímač]\_EDIFACT\_[Interchange-Control-number]\_výstupní\_datové části. txt </p></p>**Vstupy**: [sender]\_[přijímač]\_EDIFACT\_[Interchange-Control-number]\_Inputs. txt </p></p>**Výstupy**: [sender]\_[přijímač]\_EDIFACT\_[Interchange-Control-number]\_Outputs. txt |
+| Složka zpráv | [sender]\_[receiver]\_EDIFACT\_[interchange-control-number]\_[global-control-number]\_[transaction-set-control-number]\_[timestamp] |
+| Vstup, výstup a nastavení, potvrzení souborů | **Vstupní datová část**: [sender]\_[přijímač]\_EDIFACT\_[Interchange-Control-number]\_input_payload. txt </p>**Výstupní datová část**: [sender]\_[přijímač]\_EDIFACT\_[Interchange-Control-number]\_výstupní\_datové části. txt </p></p>**Vstupy**: [sender]\_[přijímač]\_EDIFACT\_[Interchange-Control-number]\_Inputs. txt </p></p>**Výstupy**: [sender]\_[přijímač]\_EDIFACT\_[Interchange-Control-number]\_Outputs. txt |
 |          |             |
 
 ## <a name="next-steps"></a>Další kroky

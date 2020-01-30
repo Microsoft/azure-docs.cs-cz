@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: e36e3ae9ce2e8ca116921de428b4dcc09b37afb6
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a59ba62df546c60c4086829eec355d3e69b69363
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978573"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773724"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-nodejs-v4"></a>Rychlý Start: Azure Key Vault klientskou knihovnu pro Node. js (v4)
 
@@ -22,12 +22,12 @@ Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče použ
 - Zvyšte zabezpečení a kontrolu nad klíči a hesly.
 - Vytvářejte a importujte šifrovací klíče během několika minut.
 - Snižte latenci díky škálování cloudu a globální redundanci.
-- Zjednodušte a automatizujte úlohy pro certifikáty SSL/TLS.
+- Zjednodušte a automatizujte úlohy pro certifikáty TLS/SSL.
 - Použijte ověřený HSM úrovně 2 FIPS 140-2.
 
 [Referenční dokumentace k rozhraní API](/javascript/api/overview/azure/key-vault?view=azure-node-latest) |  | balíček [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault) [(npm)](https://www.npmjs.com/package/@azure/keyvault-secrets)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Aktuální [Node. js](https://nodejs.org) pro váš operační systém.
@@ -35,7 +35,7 @@ Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče použ
 
 V tomto rychlém startu se předpokládá, že používáte rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) v okně terminálu Linux.
 
-## <a name="setting-up"></a>Probíhá nastavení
+## <a name="setting-up"></a>Nastavení
 
 ### <a name="install-the-package"></a>Instalace balíčku
 

@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 345924c10feabe9a7d5f50905689a4a0edb065ce
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 25a8181d404091064c26407c98fe31465cd4f4b3
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74948807"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76838951"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Předání přístupového tokenu prostřednictvím toku uživatele do aplikace v Azure Active Directory B2C
 
-[Tok uživatele](active-directory-b2c-reference-policies.md) v Azure Active Directory B2C (Azure AD B2C) poskytuje uživatelům vaší aplikace možnost registrace nebo přihlášení pomocí poskytovatele identity. Po spuštění cesty Azure AD B2C obdrží od poskytovatele identity [přístupový token](active-directory-b2c-reference-tokens.md) . Azure AD B2C používá tento token k načtení informací o uživateli. V toku uživatele povolíte deklaraci identity, abyste mohli token předat do aplikací, které zaregistrujete v Azure AD B2C.
+[Tok uživatele](user-flow-overview.md) v Azure Active Directory B2C (Azure AD B2C) poskytuje uživatelům vaší aplikace možnost registrace nebo přihlášení pomocí poskytovatele identity. Po spuštění cesty Azure AD B2C obdrží od poskytovatele identity [přístupový token](tokens-overview.md) . Azure AD B2C používá tento token k načtení informací o uživateli. V toku uživatele povolíte deklaraci identity, abyste mohli token předat do aplikací, které zaregistrujete v Azure AD B2C.
 
-Azure AD B2C aktuálně podporuje pouze předávání přístupového tokenu zprostředkovatelů identity [OAuth 2,0](active-directory-b2c-reference-oauth-code.md) , které zahrnují [Facebook](active-directory-b2c-setup-fb-app.md) a [Google](active-directory-b2c-setup-goog-app.md). U všech ostatních zprostředkovatelů identity se deklarace identity vrátí jako prázdná.
+Azure AD B2C aktuálně podporuje pouze předávání přístupového tokenu zprostředkovatelů identity [OAuth 2,0](authorization-code-flow.md) , které zahrnují [Facebook](identity-provider-facebook.md) a [Google](identity-provider-google.md). U všech ostatních zprostředkovatelů identity se deklarace identity vrátí jako prázdná.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Vaše aplikace musí používat [uživatelský tok v2](user-flow-versions.md).
 * Tok uživatele má nakonfigurovaný poskytovatele identity OAuth 2,0.
@@ -56,4 +56,4 @@ Při testování aplikací v Azure AD B2C může být užitečné, aby se token 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v [přehledu Azure AD B2Cch tokenů](active-directory-b2c-reference-tokens.md).
+Další informace najdete v [přehledu Azure AD B2Cch tokenů](tokens-overview.md).

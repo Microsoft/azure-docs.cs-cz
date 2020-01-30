@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f419b19b576ebf6f7f853b41128908487f047df6
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 4f0975aceeb55c8f184ebe4e6a44d819b4a8bf38
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113379"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837856"
 ---
 # <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>Integrované schopnosti rozpoznávání textu a zpracování obrázků při indexování (Azure Kognitivní hledání)
 
@@ -35,6 +35,7 @@ Několik dovedností je flexibilní v tom, co spotřebovávají nebo vyrábí. O
 | [Microsoft.Skills.Text.LanguageDetectionSkill](cognitive-search-skill-language-detection.md)  | Tato dovednost používá předvlakový model ke zjištění, který jazyk se používá (jedno ID jazyka na dokument). Je-li v rámci stejných segmentů použito více jazyků, je výstupem identifikátor LCID převládajícího používaného jazyka.|
 | [Microsoft.Skills.Text.MergeSkill](cognitive-search-skill-textmerger.md) | Konsoliduje text z kolekce polí do jednoho pole.  |
 | [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) | Tato dovednost používá předem provedený model pro vytváření entit pro pevnou sadu kategorií: lidé, umístění, organizace, e-maily, adresy URL, pole DateTime. |
+| [Microsoft. dovednosti. text. PIIDetectionSkill](cognitive-search-skill-pii-detection.md)  | Tato dovednost používá předvlakový model k extrakci osobně identifikovatelných informací z daného textu. Tato dovednost také poskytuje různé možnosti pro maskování zjištěných entit PII v textu.  |
 | [Microsoft.Skills.Text.SentimentSkill](cognitive-search-skill-sentiment.md)  | Tato dovednost používá předvlakový model ke zjištění kladné nebo záporné míněníy záznamu na základě záznamů. Skóre je mezi 0 a 1. V případě, že mínění nelze detekovat, a pro text, který je považován za neutrální, se vyskytnou neutrální skóre.  |
 | [Microsoft.Skills.Text.SplitSkill](cognitive-search-skill-textsplit.md) | Rozdělí text na stránky, aby bylo možné přírůstkově rozšířit nebo rozšířit obsah. |
 | [Microsoft. dovednosti. text. TranslationSkill](cognitive-search-skill-text-translation.md) | Tato dovednost používá předvlakový model k překladu vstupního textu do celé řady jazyků pro normalizaci nebo použití lokalizace. |
@@ -48,7 +49,7 @@ Několik dovedností je flexibilní v tom, co spotřebovávají nebo vyrábí. O
 
 Pokyny k vytvoření [vlastní dovednosti](cognitive-search-custom-skill-web-api.md)najdete v tématu [jak definovat vlastní rozhraní](cognitive-search-custom-skill-interface.md) a [Příklad: Vytvoření vlastní dovednosti pro obohacení AI](cognitive-search-create-custom-skill-example.md).
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
 + [Definice rozhraní vlastní dovednosti](cognitive-search-custom-skill-interface.md)

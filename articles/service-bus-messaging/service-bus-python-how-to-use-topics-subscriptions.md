@@ -1,10 +1,9 @@
 ---
 title: 'Rychlý Start: použití témat Azure Service Bus a předplatných v Pythonu'
-description: Naučte se používat Azure Service Bus témata a odběry z Pythonu.
+description: V tomto článku se dozvíte, jak vytvořit Azure Service Bus téma, předplatné, poslat zprávy do tématu a přijímat zprávy z předplatného.
 services: service-bus-messaging
 documentationcenter: python
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: c4f1d76c-7567-4b33-9193-3788f82934e4
 ms.service: service-bus-messaging
@@ -12,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 94a49b31139947c6323ab391b78ecd03ee911e0a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 03e22c4c179850e5140015c0abc2d89f16d4b624
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748505"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774550"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>Rychlý Start: použití témat Service Bus a předplatných v Pythonu
 
@@ -182,7 +181,7 @@ Odstraněním tématu se odstraní všechna předplatná v tématu. Odběry mů�
 bus_service.delete_subscription('mytopic', 'HighMessages')
 ```
 
-Ve výchozím nastavení jsou témata a odběry trvalé a existují, dokud je neodstraníte. K automatickému odstranění předplatných po určitém časovém období můžete nastavit parametr [auto_delete_on_idle](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) v předplatném. 
+Ve výchozím nastavení jsou témata a odběry trvalé a existují, dokud je neodstraníte. K automatickému odstranění předplatných po uplynutí určitého časového období můžete nastavit parametr [auto_delete_on_idle](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) v předplatném. 
 
 > [!TIP]
 > Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer vám umožní připojit se k Service Busmu oboru názvů a snadno spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, a možnost testovat témata, fronty, odběry, služby přenosu, centra oznámení a centra událostí. 

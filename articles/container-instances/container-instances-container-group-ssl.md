@@ -3,28 +3,28 @@ title: Povolit SSL ve skupině kontejnerů
 description: Vytvoření koncového bodu SSL nebo TLS pro skupinu kontejnerů spuštěnou v Azure Container Instances
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 7578ad6f8c451694a90dde00b74bf2e8c6c61109
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 541d53a9a9530f7ac80227dbae598b3da2691301
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483484"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773063"
 ---
 # <a name="enable-an-ssl-endpoint-in-a-container-group"></a>Povolení koncového bodu SSL ve skupině kontejnerů
 
 Tento článek ukazuje, jak vytvořit [skupinu kontejnerů](container-instances-container-groups.md) pomocí kontejneru aplikace a kontejneru postranního vozíku s poskytovatelem SSL. Nastavením skupiny kontejnerů pomocí samostatného koncového bodu SSL povolíte připojení SSL pro aplikaci beze změny kódu aplikace.
 
-Nastavíte skupinu kontejnerů skládající se ze dvou kontejnerů:
+Nastavili jste ukázkovou skupinu kontejnerů skládající se ze dvou kontejnerů:
 * Kontejner aplikace, který spouští jednoduchou webovou aplikaci s použitím veřejné image Microsoft [ACI-Hello](https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld) . 
 * Kontejner postranového vozíku, který spouští veřejnou image [Nginx](https://hub.docker.com/_/nginx) , nakonfigurovaný na používání protokolu SSL. 
 
-V tomto příkladu skupina kontejnerů zveřejňuje port 443 pro Nginx s jeho veřejnou IP adresou. Nginx směruje požadavky HTTPS do doprovodné webové aplikace, která naslouchá interně na portu 80. Můžete upravit příklad pro kontejnerové aplikace, které naslouchají na jiných portech.
+V tomto příkladu skupina kontejnerů zveřejňuje port 443 pro Nginx s jeho veřejnou IP adresou. Nginx směruje požadavky HTTPS do doprovodné webové aplikace, která naslouchá interně na portu 80. Můžete upravit příklad pro kontejnerové aplikace, které naslouchají na jiných portech. Další přístupy k povolení SSL ve skupině kontejnerů najdete v části [Další kroky](#next-steps) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 K dokončení tohoto článku můžete použít Azure Cloud Shell nebo místní instalaci rozhraní příkazového řádku Azure. Pokud byste ho chtěli používat místně, doporučuje se verze 2.0.55 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
-## <a name="create-a-self-signed-certificate"></a>Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
+## <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
 
 Pokud chcete nastavit Nginx jako poskytovatele SSL, budete potřebovat certifikát SSL. V tomto článku se dozvíte, jak vytvořit a nastavit certifikát SSL podepsaný svým držitelem. V produkčních scénářích byste měli získat certifikát od certifikační autority.
 
@@ -235,4 +235,10 @@ Tento článek ukazuje, jak nastavit kontejner Nginx pro povolení připojení S
 
 I když tento článek používá Nginx v postranním vozíku, můžete použít jiného poskytovatele SSL, jako je [Caddy](https://caddyserver.com/).
 
-Dalším přístupem k povolení SSL ve skupině kontejnerů je nasazení skupiny ve [virtuální síti Azure](container-instances-vnet.md) pomocí [služby Azure Application Gateway](../application-gateway/overview.md). Bránu je možné nastavit jako koncový bod SSL. Podívejte se na vzorovou [šablonu nasazení](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet) , kterou můžete přizpůsobit a povolit tak ukončení protokolu SSL v bráně.
+Pokud nasadíte skupinu kontejnerů ve [službě Azure Virtual Network](container-instances-vnet.md), můžete zvážit další možnosti, jak povolit koncový bod SSL pro instanci kontejneru back-endu, včetně:
+
+* [Proxy služby Azure Functions](../azure-functions/functions-proxies.md)
+* [Azure API Management](../api-management/api-management-key-concepts.md)
+* [Azure Application Gateway](../application-gateway/overview.md)
+
+Pokud chcete použít Aplikační bránu, přečtěte si ukázkovou [šablonu nasazení](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet).

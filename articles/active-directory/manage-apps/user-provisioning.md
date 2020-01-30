@@ -15,12 +15,12 @@ ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eefdb42cebad2b7f532392254b652742527ed862
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 9848e686188288b507a0a74d0f9fa16f8f0e4253
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76711470"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841195"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-active-directory"></a>Automatizace zřizování uživatelů a jejich rušení s aplikacemi pomocí Azure Active Directory
 
@@ -67,7 +67,7 @@ Azure AD nabízí předem integrovanou podporu pro spoustu oblíbených aplikac�
 
 * **Aplikace, které podporují SCIM 2,0**. Informace o tom, jak obecně připojit aplikace, které implementují rozhraní API pro správu uživatelů na bázi SCIM 2,0, najdete v tématu [Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů](use-scim-to-provision-users-and-groups.md).
 
-## <a name="what-is-scim"></a>Co je SCIM?
+## <a name="what-is-system-for-cross-domain-identity-management-scim"></a>Co je systém pro správu identit mezi doménami (SCIM)?
 
 Aby se usnadnilo automatizace zřizování a rušení, aplikace zveřejňují proprietární rozhraní API pro uživatele a skupiny. Kdokoli, kdo se snaží spravovat uživatele ve více než jedné aplikaci, vám ale oznámí, že se každá aplikace pokusí provést stejné jednoduché akce, třeba při vytváření nebo aktualizaci uživatelů, přidávání uživatelů do skupin nebo rušení zřizování uživatelů. Nicméně všechny tyto jednoduché akce jsou implementovány pouze trochu odlišně, s použitím různých cest koncových bodů, různých metod pro zadání informací o uživateli a jiného schématu, které představují jednotlivé prvky informací.
 

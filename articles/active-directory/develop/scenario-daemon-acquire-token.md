@@ -15,20 +15,20 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 38df99f0a4932f477e900382c7ff1ae7b50febe9
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: b2d388160c6ca744b10c17bda17c59e22940f98b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702466"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775244"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Aplikace démona, která volá webová rozhraní API – získá token.
 
-Jakmile je důvěrná klientská aplikace vytvořená, můžete získat token pro aplikaci voláním ``AcquireTokenForClient``, předáním oboru a vynucením nebo neobnovením tokenu.
+Po sestavení důvěrné klientské aplikace můžete získat token pro aplikaci voláním `AcquireTokenForClient`, předáním oboru a volitelně vynucením aktualizace tokenu.
 
 ## <a name="scopes-to-request"></a>Rozsahy k vyžádání
 
-Obor pro požadavek na tok přihlašovacích údajů klienta je název prostředku následovaný `/.default`. Tento zápis oznamuje službě Azure AD, aby používala **oprávnění na úrovni aplikace** deklarované staticky během registrace aplikace. Jak už bylo uvedeno dříve, tato oprávnění rozhraní API musí udělit správce klienta.
+Obor pro požadavek na tok přihlašovacích údajů klienta je název prostředku následovaný `/.default`. Tento zápis oznamuje službě Azure Active Directory (Azure AD) používání *oprávnění na úrovni aplikace* deklarované staticky během registrace aplikace. Tato oprávnění rozhraní API musí taky udělit správce klienta.
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -39,7 +39,7 @@ var scopes = new [] {  ResourceId+"/.default"};
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-V MSAL Pythonu by měl konfigurační soubor vypadat jako následující fragment kódu:
+V MSAL Pythonu vypadá konfigurační soubor jako tento fragment kódu:
 
 ```Json
 {
@@ -55,26 +55,26 @@ final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default"
 
 ---
 
-### <a name="case-of-azure-ad-v10-resources"></a>Případ prostředků Azure AD (v 1.0)
+### <a name="azure-ad-v10-resources"></a>Prostředky Azure AD (v 1.0)
 
-Obor používaný pro přihlašovací údaje klienta by měl vždycky být resourceId + "/.default".
+Obor používaný pro pověření klienta by měl vždy být ID prostředku následovaný `/.default`.
 
 > [!IMPORTANT]
-> V případě, že MSAL žádá o přístupový token pro prostředek, který přijímá přístupový token v 1.0, Azure AD analyzuje požadovanou cílovou skupinu z požadovaného oboru tím, že převezme vše před poslední lomítko a použije ho jako identifikátor prostředku.
-> Proto pokud by jako Azure SQL ( **https://database.windows.net** ) prostředek očekává cílovou skupinu končící lomítkem (pro Azure SQL: `https://database.windows.net/` ), budete muset požádat o obor `https://database.windows.net//.default` (Poznamenejte si dvojité lomítko). Viz také MSAL.NET problém [#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): koncové lomítko adresy URL prostředku je vynecháno, což způsobilo selhání ověřování SQL.
+> Když MSAL požádá o přístupový token pro prostředek, který přijímá přístupový token verze 1,0, Azure AD analyzuje požadovanou cílovou skupinu z požadovaného oboru tím, že převezme vše před poslední lomítko a použije ho jako identifikátor prostředku.
+> Takže pokud, jako je například Azure SQL Database (**https:\//Database.Windows.NET**), očekává prostředek cílovou skupinu, která končí lomítkem (pro Azure SQL Database, `https://database.windows.net/`), budete muset vyžádat rozsah `https://database.windows.net//.default`. (Poznamenejte si dvojité lomítko.) Viz také MSAL.NET problém [#747: koncové lomítko adresy URL prostředku je vynecháno, což způsobilo selhání ověřování SQL](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
 
 ## <a name="acquiretokenforclient-api"></a>Rozhraní API pro AcquireTokenForClient
 
-K získání tokenu pro aplikaci použijete `AcquireTokenForClient` nebo ekvivalent v závislosti na platformách.
+K získání tokenu pro aplikaci použijete `AcquireTokenForClient` nebo její ekvivalent v závislosti na platformě.
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 ```csharp
 using Microsoft.Identity.Client;
 
-// With client credentials flows the scopes is ALWAYS of the shape "resource/.default", as the
+// With client credentials flows, the scope is always of the shape "resource/.default" because the
 // application permissions need to be set statically (in the portal or by PowerShell), and then granted by
-// a tenant administrator
+// a tenant administrator.
 string[] scopes = new string[] { "https://graph.microsoft.com/.default" };
 
 AuthenticationResult result = null;
@@ -85,14 +85,14 @@ try
 }
 catch (MsalUiRequiredException ex)
 {
-    // The application does not have sufficient permissions
-    // - did you declare enough app permissions in during the app creation?
-    // - did the tenant admin needs to grant permissions to the application.
+    // The application doesn't have sufficient permissions.
+    // - Did you declare enough app permissions during app creation?
+    // - Did the tenant admin grant permissions to the application?
 }
 catch (MsalServiceException ex) when (ex.Message.Contains("AADSTS70011"))
 {
-    // Invalid scope. The scope has to be of the form "https://resourceurl/.default"
-    // Mitigation: change the scope to be as expected !
+    // Invalid scope. The scope has to be in the form "https://resourceurl/.default"
+    // Mitigation: Change the scope to be as expected.
 }
 ```
 
@@ -102,9 +102,9 @@ catch (MsalServiceException ex) when (ex.Message.Contains("AADSTS70011"))
 # The pattern to acquire a token looks like this.
 result = None
 
-# Firstly, looks up a token from cache
-# Since we are looking for token for the current app, NOT for an end user,
-# notice we give account parameter as None.
+# First, the code looks up a token from the cache.
+# Because we're looking for a token for the current app, not for a user,
+# use None for the account parameter.
 result = app.acquire_token_silent(config["scope"], account=None)
 
 if not result:
@@ -112,17 +112,17 @@ if not result:
     result = app.acquire_token_for_client(scopes=config["scope"])
 
 if "access_token" in result:
-    # Call a protected API with the access token
+    # Call a protected API with the access token.
     print(result["token_type"])
 else:
     print(result.get("error"))
     print(result.get("error_description"))
-    print(result.get("correlation_id"))  # You may need this when reporting a bug
+    print(result.get("correlation_id"))  # You might need this when reporting a bug.
 ```
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Toto je extrakce z [MSALch ukázek Java pro vývoj](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/confidential-client/).
+Tento kód se extrahuje z [MSALch ukázek Java pro vývoj](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/confidential-client/).
 
 ```Java
 ClientCredentialParameters clientCredentialParam = ClientCredentialParameters.builder(
@@ -138,7 +138,7 @@ BiConsumer<IAuthenticationResult, Throwable> processAuthResult = (res, ex) -> {
     System.out.println("Returned ok - " + res);
     System.out.println("ID Token - " + res.idToken());
 
-    /* call a protected API with res.accessToken() */
+    /* Call a protected API with res.accessToken() */
 };
 
 future.whenCompleteAsync(processAuthResult);
@@ -149,12 +149,12 @@ future.join();
 
 ### <a name="protocol"></a>Protocol (Protokol)
 
-Pokud ještě nemáte knihovnu pro svůj jazyk podle vlastního výběru, můžete použít protokol přímo:
+Pokud ještě nemáte knihovnu pro zvolený jazyk, možná budete chtít použít protokol přímo:
 
-#### <a name="first-case-access-token-request-with-a-shared-secret"></a>První případ: žádost přístupového tokenu se sdíleným tajným klíčem
+#### <a name="first-case-access-the-token-request-by-using-a-shared-secret"></a>První případ: přístup k žádosti o token pomocí sdíleného tajného klíče
 
 ```Text
-POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity
+POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity.
 Host: login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
@@ -164,10 +164,10 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 &grant_type=client_credentials
 ```
 
-#### <a name="second-case-access-token-request-with-a-certificate"></a>Druhý případ: žádost o přístupový token s certifikátem
+#### <a name="second-case-access-the-token-request-by-using-a-certificate"></a>Druhý případ: přístup k žádosti o token pomocí certifikátu
 
 ```Text
-POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity
+POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity.
 Host: login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
@@ -182,7 +182,7 @@ Další informace najdete v dokumentaci k protokolu: [Microsoft Identity Platfor
 
 ## <a name="application-token-cache"></a>Mezipaměť tokenů aplikace
 
-V MSAL.NET používá `AcquireTokenForClient` **mezipaměť tokenu aplikace** (všechny ostatní metody AcquireTokenXX používají mezipaměť tokenu uživatele) nevolají `AcquireTokenSilent` před voláním `AcquireTokenForClient`, protože `AcquireTokenSilent` používá mezipaměť tokenu **uživatele** . `AcquireTokenForClient` kontroluje samotnou mezipaměť tokenu **aplikace** a aktualizuje ji.
+V MSAL.NET `AcquireTokenForClient` používá mezipaměť tokenu aplikace. (Všechny ostatní metody AcquireToken*XX* používají mezipaměť tokenu uživatele.) Nevolejte `AcquireTokenSilent` před voláním `AcquireTokenForClient`, protože `AcquireTokenSilent` používá mezipaměť tokenu *uživatele* . `AcquireTokenForClient` kontroluje samotnou mezipaměť tokenu *aplikace* a aktualizuje ji.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
@@ -192,8 +192,8 @@ Pokud se zobrazí chybová zpráva s oznámením, že jste použili neplatný ro
 
 ### <a name="did-you-forget-to-provide-admin-consent-daemon-apps-need-it"></a>Nezapomněli jste zadat souhlas správce? Aplikace démona vyžaduje!
 
-Pokud při volání rozhraní API **nedostatečná oprávnění k dokončení operace**dojde k chybě, správce klienta musí udělit oprávnění k aplikaci. Viz krok 6 registrace klientské aplikace výše.
-Obvykle se zobrazí a chyba podobá následujícímu popisu chyby:
+Pokud získáte **nedostatečná oprávnění k dokončení operace** při volání rozhraní API, správce klienta musí udělit oprávnění k aplikaci. Viz krok 6 registrace klientské aplikace výše.
+Obvykle se zobrazí chyba, která vypadá jako tato chyba:
 
 ```JSon
 Failed to call the web API: Forbidden

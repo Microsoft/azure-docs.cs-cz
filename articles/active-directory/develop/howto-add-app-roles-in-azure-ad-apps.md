@@ -14,12 +14,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d16ab7acd87fa6cc7907f8fee3400c2e416e6cfe
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 5400ede4f3afd9f94d7380c6dfd55d8aa45d08ca
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697417"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834242"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Postupy: Přidání rolí aplikace do aplikace a jejich přijetí v tokenu
 
@@ -35,7 +35,7 @@ Tyto aplikační role jsou definovány v [Azure Portal](https://portal.azure.com
 
 ### <a name="declare-app-roles-using-azure-portal"></a>Deklarace rolí aplikace pomocí Azure Portal
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Na panelu nástrojů portálu vyberte ikonu **adresář + předplatné** .
 1. V seznamu **Oblíbené** nebo **všechny adresáře** vyberte tenanta služby Active Directory, do kterého chcete aplikaci zaregistrovat.
 1. V Azure Portal vyhledejte a vyberte **Azure Active Directory**.
@@ -44,7 +44,7 @@ Tyto aplikační role jsou definovány v [Azure Portal](https://portal.azure.com
 1. Upravte manifest aplikace tak, že vyhledáte nastavení `appRoles` a přidáte všechny své aplikační role.
 
      > [!NOTE]
-     > Každá definice role aplikace v tomto manifestu musí mít pro vlastnost `id` jiný platný identifikátor GUID. 
+     > Každá definice role aplikace v tomto manifestu musí mít v kontextu manifestu pro vlastnost `id` jiný platný identifikátor GUID.    
      > 
      > Vlastnost `value` každé definice role aplikace by měla přesně odpovídat řetězcům, které jsou používány v kódu v aplikaci. Vlastnost `value` nesmí obsahovat mezery. Pokud k tomu dojde, při ukládání manifestu dojde k chybě.
      

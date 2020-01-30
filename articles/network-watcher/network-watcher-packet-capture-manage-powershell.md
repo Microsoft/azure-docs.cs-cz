@@ -4,23 +4,20 @@ titleSuffix: Azure Network Watcher
 description: Tato stránka vysvětluje, jak spravovat funkci zachytávání paketů Network Watcher pomocí prostředí PowerShell.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 04d82085-c9ea-4ea1-b050-a3dd4960f3aa
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 3be68f6ef87ba37bcfaf418225ce7f460aed53a1
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: e76193a635ee723e13ea4a8a23f668b6e3d1cbb0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277882"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840872"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>Správa zachytávání paketů pomocí Azure Network Watcher pomocí prostředí PowerShell
 

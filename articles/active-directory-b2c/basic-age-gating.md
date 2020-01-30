@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f7eb4d8e784acc659f6661ef6efbdb06816b142c
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1fc63b222fd2f08bb4b5596d58f825c8f6b1910e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064458"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836232"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Povolit omezení stáří v Azure Active Directory B2C
 
@@ -25,9 +25,9 @@ ms.locfileid: "71064458"
 
 Omezení stáří v Azure Active Directory B2C (Azure AD B2C) umožňuje identifikovat nezletilé, které chtějí používat vaši aplikaci. Můžete se rozhodnout, že nechcete, aby se v přihlašování k aplikaci zablokoval. Uživatelé se také můžou vrátit do aplikace a identifikovat jejich věkovou skupinu a jejich stav souhlasu rodičů. Azure AD B2C mohou blokovat mladistvé bez souhlasu rodičů. Je také možné nastavit Azure AD B2C, aby aplikace mohla rozhodnout o tom, co dělat s nezletilými.
 
-Po povolení stáří v [uživatelském toku](active-directory-b2c-reference-policies.md)se uživatelům zobrazí výzva, když byli narodili a ve které zemi nebo oblasti se v nich nacházejí. Pokud se uživatel přihlásí, že dříve nezadal informace, bude nutné ho zadat při příštím přihlášení. Pravidla se aplikují při každém přihlášení uživatele.
+Po povolení stáří v [uživatelském toku](user-flow-overview.md)se uživatelům zobrazí výzva, když byli narodili a ve které zemi nebo oblasti se v nich nacházejí. Pokud se uživatel přihlásí, že dříve nezadal informace, bude nutné ho zadat při příštím přihlášení. Pravidla se aplikují při každém přihlášení uživatele.
 
-Azure AD B2C používá informace, které uživatel zadá, k určení, jestli se jedná o vedlejší. Pole **ageGroup** se pak ve svém účtu aktualizuje. Hodnota `null`může být, `Minor`, `Undefined` ,`Adult`a .`NotAdult`  Pole **ageGroup** a **consentProvidedForMinor** se pak použijí k výpočtu hodnoty **legalAgeGroupClassification**.
+Azure AD B2C používá informace, které uživatel zadá, k určení, jestli se jedná o vedlejší. Pole **ageGroup** se pak ve svém účtu aktualizuje. Hodnota může být `null`, `Undefined`, `Minor`, `Adult`a `NotAdult`.  Pole **ageGroup** a **consentProvidedForMinor** se pak použijí k výpočtu hodnoty **legalAgeGroupClassification**.
 
 Omezení stáří zahrnuje dvě věkové hodnoty: stáří, které už někdo nepovažuje za nezletilou, a stáří, ve kterém by měl mít uživatel souhlas rodičů. V následující tabulce jsou uvedena věková pravidla, která se používají k definování vedlejších a méně závažného souhlasu.
 
@@ -38,11 +38,11 @@ Omezení stáří zahrnuje dvě věkové hodnoty: stáří, které už někdo ne
 | AT | Rakousko | 14 | 18 |
 | BE | Belgie | 14 | 18 |
 | BG | Bulharsko | 16 | 18 |
-| BH | Bahrain | Žádné | 21 |
+| BH | Bahrajn | Žádné | 21 |
 | CM | Kamerun | Žádné | 21 |
 | CY | Kypr | 16 | 18 |
 | CZ | Česká republika | 16 | 18 |
-| DE | Německo | 16 | 18 |
+| Německo | Německo | 16 | 18 |
 | DK | Dánsko | 16 | 18 |
 | EE | Estonsko | 16 | 18 |
 | EG | Egypt | Žádné | 21 |
@@ -59,7 +59,7 @@ Omezení stáří zahrnuje dvě věkové hodnoty: stáří, které už někdo ne
 | LU | Lucembursko | 16 | 18 |
 | LV | Lotyšsko | 16 | 18 |
 | MT | Malta | 16 | 18 |
-| Není k dispozici | Namibie | Žádné | 21 |
+| není k dispozici | Namibie | Žádné | 21 |
 | NL | Nizozemsko | 16 | 18 |
 | PL | Polsko | 13 | 18 |
 | PT | Portugalsko | 16 | 18 |
@@ -71,7 +71,7 @@ Omezení stáří zahrnuje dvě věkové hodnoty: stáří, které už někdo ne
 | VTR | Čad | Žádné | 21 |
 | TH | Thajsko | Žádné | 20 |
 | TW | Tchaj-wan | Žádné | 20 |
-| USA | Spojené státy | 13 | 18 |
+| Spojené státy | Spojené státy | 13 | 18 |
 
 ## <a name="age-gating-options"></a>Možnosti uzavírání stáří
 

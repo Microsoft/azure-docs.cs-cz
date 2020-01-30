@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: cf0332909e053a0875d41a00d15f196b193ba15e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e73e69f90b1228154d7f209c54c6b52cc03d5eb4
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466711"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837786"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Materiály k dokumentaci pro rozšíření AI v Azure Kognitivní hledání
 
@@ -29,7 +29,7 @@ Následující články jsou kompletní dokumentaci pro rozšíření AI.
 
 ## <a name="how-to-guidance"></a>Pokyny k návodům
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
-+ [Postup při odkazování na poznámky v dovednosti](cognitive-search-concept-annotations-syntax.md)
++ [Odkazování na poznámky v sadě dovedností](cognitive-search-concept-annotations-syntax.md)
 + [Mapování polí na index](cognitive-search-output-field-mapping.md)
 + [Postup zpracování a extrakce informací z imagí](cognitive-search-concept-image-scenarios.md)
 + [Postup opětovného sestavení indexu služby Azure Kognitivní hledání](search-howto-reindex.md)
@@ -40,30 +40,31 @@ Následující články jsou kompletní dokumentaci pro rozšíření AI.
 
 + [Integrované dovednosti](cognitive-search-predefined-skills.md)
   + [Microsoft. dovednosti. text. KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)
-  + [Microsoft. dovednosti. text. LanguageDetectionSkill](cognitive-search-skill-language-detection.md)
-  + [Microsoft. dovednosti. text. EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)
-  + [Microsoft. dovednosti. text. MergeSkill](cognitive-search-skill-textmerger.md)
-  + [Microsoft. dovednosti. text. SplitSkill](cognitive-search-skill-textsplit.md)
-  + [Microsoft. dovednosti. text. SentimentSkill](cognitive-search-skill-sentiment.md)
+  + [Microsoft.Skills.Text.LanguageDetectionSkill](cognitive-search-skill-language-detection.md)
+  + [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)
+  + [Microsoft.Skills.Text.MergeSkill](cognitive-search-skill-textmerger.md)
+  + [Microsoft. dovednosti. text. PIIDetectionSkill](cognitive-search-skill-pii-detection.md)
+  + [Microsoft.Skills.Text.SplitSkill](cognitive-search-skill-textsplit.md)
+  + [Microsoft.Skills.Text.SentimentSkill](cognitive-search-skill-sentiment.md)
   + [Microsoft. dovednosti. text. TranslationSkill](cognitive-search-skill-text-translation.md)
-  + [Microsoft. dovednosti. Vision. ImageAnalysisSkill](cognitive-search-skill-image-analysis.md)
-  + [Microsoft. dovednosti. Vision. OcrSkill](cognitive-search-skill-ocr.md)
+  + [Microsoft.Skills.Vision.ImageAnalysisSkill](cognitive-search-skill-image-analysis.md)
+  + [Microsoft.Skills.Vision.OcrSkill](cognitive-search-skill-ocr.md)
   + [Microsoft. dovednosti. util. ConditionalSkill](cognitive-search-skill-conditional.md)
   + [Microsoft. dovednosti. util. DocumentExtractionSkill](cognitive-search-skill-document-extraction.md)
-  + [Microsoft. dovednosti. util. ShaperSkill](cognitive-search-skill-shaper.md)
+  + [Microsoft.Skills.Util.ShaperSkill](cognitive-search-skill-shaper.md)
 
 + Vlastní dovednosti
-  + [Microsoft. dovednosti. Custom. WebApiSkill](cognitive-search-custom-skill-web-api.md)
+  + [Microsoft.Skills.Custom.WebApiSkill](cognitive-search-custom-skill-web-api.md)
 
 + [Zastaralé dovednosti](cognitive-search-skill-deprecated.md)
-  + [Microsoft. dovednosti. text. NamedEntityRecognitionSkill](cognitive-search-skill-named-entity-recognition.md)
+  + [Microsoft.Skills.Text.NamedEntityRecognitionSkill](cognitive-search-skill-named-entity-recognition.md)
 
 + [REST API](https://docs.microsoft.com/rest/api/searchservice/)
-  + [Create dovednosti (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-  + [Vytvoření indexeru (rozhraní API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
+  + [Create Skillset (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
+  + [Create Indexer (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
 + [REST API Kognitivní hledání Azure](https://docs.microsoft.com/rest/api/searchservice/)
-+ [Indexery v Azure Kognitivní hledání](search-indexer-overview.md)
++ [Indexery ve službě Azure Cognitive Search](search-indexer-overview.md)
 + [Co je Azure Kognitivní hledání?](search-what-is-azure-search.md)

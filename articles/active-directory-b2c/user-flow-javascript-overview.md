@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 92925dc32d7f26b224811aa852112a275f112b35
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 3f6d4849b02f320c7479469b4ee56be50e4f8dee
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950829"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840090"
 ---
 # <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Verze JavaScriptu a rozložení stránky v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Azure AD B2C poskytuje sadu sbaleného obsahu obsahujícího jazyky HTML, CSS a JavaScript pro prvky uživatelského rozhraní ve vašich uživatelských tocích a vlastních zásadách. Pokud chcete pro své aplikace povolit JavaScript, musíte přidat element na [vlastní zásadu](active-directory-b2c-overview-custom.md) nebo ho na portálu povolit pro toky uživatelů, vybrat rozložení stránky a použít [b2clogin.com](b2clogin.md) ve svých žádostech.
+Azure AD B2C poskytuje sadu sbaleného obsahu obsahujícího jazyky HTML, CSS a JavaScript pro prvky uživatelského rozhraní ve vašich uživatelských tocích a vlastních zásadách. Pokud chcete pro své aplikace povolit JavaScript, musíte přidat element na [vlastní zásadu](custom-policy-overview.md) nebo ho na portálu povolit pro toky uživatelů, vybrat rozložení stránky a použít [b2clogin.com](b2clogin.md) ve svých žádostech.
 
 Pokud máte v úmyslu povolit [JavaScriptový](javascript-samples.md) kód na straně klienta, je vhodné zajistit, aby prvky, na kterých je váš JavaScript založen, byly neměnné. V opačném případě by jakékoli změny mohly způsobit neočekávané chování na stránkách uživatele. Chcete-li těmto problémům zabránit, můžete vynutili použití rozložení stránky a určení verze rozložení stránky. Tím zajistíte, že všechny definice obsahu, na kterých jste vycházíte z JavaScriptu, jsou neměnné. I v případě, že nechcete povolit JavaScript, můžete zadat verzi rozložení stránky pro stránky.
 

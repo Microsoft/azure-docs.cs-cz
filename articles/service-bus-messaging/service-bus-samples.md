@@ -1,10 +1,9 @@
 ---
-title: Zasílání zpráv Azure Service Bus ukázky – přehled | Dokumentace Microsoftu
-description: Popisuje ukázky s odkazy na každou zasílání zpráv Service Bus
+title: Přehled ukázek Azure Service Bus zasílání zpráv
+description: Ukázky Service Bus zasílání zpráv ukazují klíčové funkce v Azure Service Bus zasílání zpráv. Obsahuje odkazy na ukázky na GitHubu.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: 0b420343-2d2a-4c65-98f1-ee0e39ef55c8
 ms.service: service-bus-messaging
@@ -12,31 +11,31 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/13/2019
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: a5ca41f1d9b1fb5b2dd8b9066af85543f1fddd23
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ccaca451ac4fb7b4301aca429a42baea91e5ed10
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65786766"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773463"
 ---
-# <a name="service-bus-messaging-samples"></a>Ukázky pro zasílání zpráv Service Bus
-Zasílání zpráv služby Service Bus ukázky ukazují klíčové funkce v [zasílání zpráv Service Bus](https://azure.microsoft.com/services/service-bus/). V současné době můžete najít ukázky na následujících místech:
+# <a name="service-bus-messaging-samples"></a>Ukázky Service Bus zasílání zpráv
+Ukázky Service Bus zasílání zpráv ukazují klíčové funkce v [Service Bus zasílání zpráv](https://azure.microsoft.com/services/service-bus/). V současné době můžete najít ukázky v následujících umístěních:
 
-| Programovací jazyk | Umístění sady SDK a ukázky |
+| Programovací jazyk | Umístění sady SDK nebo ukázek |
 | -------------------- | ----------------------- |
-| .NET, Java a správu | https://github.com/Azure/azure-service-bus/ |
+| .NET, Java a Správa | https://github.com/Azure/azure-service-bus/ |
 | Node.js | https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples |
 | Python | https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus |
 
 ## <a name="service-bus-explorer"></a>Service Bus Explorer
 
-Kromě toho [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer) je ukázka hostovaná na Githubu, který umožňuje připojit k oboru názvů služby Service Bus a snadno spravovat entity zasílání zpráv. Tento nástroj nabízí rozšířených funkcí, třeba funkce importu/exportu a schopnost testování entit pro zasílání zpráv a propojení služeb. Úplné Service Bus Exploreru zdroje a materiály můžete najít na [Githubu](https://github.com/paolosalvatori/ServiceBusExplorer).
+Kromě toho je [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) ukázka hostovaná na GitHubu, která umožňuje připojení k oboru názvů služby Service Bus a snadné správě entit zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, a možnost testování entit zasílání zpráv a přenosových služeb. Úplný Service Bus a dokumentaci k Průzkumníku můžete najít na [GitHubu](https://github.com/paolosalvatori/ServiceBusExplorer).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V následujících tématech koncepční přehled služby Service Bus.
+V následujících tématech najdete koncepční přehledy Service Bus.
 
 * [Přehled přenosu zpráv ve službě Service Bus](service-bus-messaging-overview.md)
 * [Architektura služby Service Bus](service-bus-architecture.md)

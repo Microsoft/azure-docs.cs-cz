@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a49eae95628645f6586a637c103433b122b5d287
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 2bc02433be9ee7955b0e10ac659ee40e315e5a5e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950948"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840158"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Kurz: Přidání zprostředkovatelů identit do aplikací v Azure Active Directory B2C
 
-V aplikacích můžete chtít povolit uživatelům, aby se přihlásili pomocí různých zprostředkovatelů identity. *Zprostředkovatel identity* vytváří, uchovává a spravuje informace o identitě při poskytování služeb ověřování aplikacím. Můžete přidat zprostředkovatele identity, které jsou podporovány aplikací Azure Active Directory B2C (Azure AD B2C), do [toků uživatelů](active-directory-b2c-reference-policies.md) pomocí Azure Portal.
+V aplikacích můžete chtít povolit uživatelům, aby se přihlásili pomocí různých zprostředkovatelů identity. *Zprostředkovatel identity* vytváří, uchovává a spravuje informace o identitě při poskytování služeb ověřování aplikacím. Můžete přidat zprostředkovatele identity, které jsou podporovány aplikací Azure Active Directory B2C (Azure AD B2C), do [toků uživatelů](user-flow-overview.md) pomocí Azure Portal.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -29,11 +29,11 @@ V tomto článku získáte informace o těchto tématech:
 > * Přidejte zprostředkovatele identity do svého tenanta.
 > * Přidání zprostředkovatelů identit do toku uživatele
 
-Ve svých aplikacích obvykle používáte pouze jednoho poskytovatele identity, ale máte možnost přidat další. V tomto kurzu se dozvíte, jak do vaší aplikace přidat poskytovatele identity Azure AD a poskytovatele identity Facebooku. Přidání obou těchto poskytovatelů identity do aplikace je volitelné. Můžete také přidat další zprostředkovatele identity, jako je [Amazon](active-directory-b2c-setup-amzn-app.md), [GitHub](active-directory-b2c-setup-github-app.md), [Google](active-directory-b2c-setup-goog-app.md), [LinkedIn](active-directory-b2c-setup-li-app.md), [Microsoft](active-directory-b2c-setup-msa-app.md)nebo [Twitter](active-directory-b2c-setup-twitter-app.md).
+Ve svých aplikacích obvykle používáte pouze jednoho poskytovatele identity, ale máte možnost přidat další. V tomto kurzu se dozvíte, jak do vaší aplikace přidat poskytovatele identity Azure AD a poskytovatele identity Facebooku. Přidání obou těchto poskytovatelů identity do aplikace je volitelné. Můžete také přidat další zprostředkovatele identity, jako je [Amazon](identity-provider-amazon.md), [GitHub](identity-provider-github.md), [Google](identity-provider-google.md), [LinkedIn](identity-provider-linkedin.md), [Microsoft](identity-provider-microsoft-account.md)nebo [Twitter](identity-provider-twitter.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [Vytvořte uživatelský tok](tutorial-create-user-flows.md) , který uživatelům umožní přihlásit se k aplikaci a přihlásit se k ní.
 
@@ -119,7 +119,7 @@ Po vytvoření aplikace pro zprostředkovatele identity, který chcete přidat, 
     * **Příjmení**: *family_name*
     * **E-mail**: *unique_name*
 
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
 ### <a name="add-the-facebook-identity-provider"></a>Přidat poskytovatele identity Facebooku
 
@@ -127,7 +127,7 @@ Po vytvoření aplikace pro zprostředkovatele identity, který chcete přidat, 
 1. Zadejte **název**. Například *Facebook*.
 1. Jako **ID klienta**zadejte ID aplikace Facebook, kterou jste vytvořili dříve.
 1. Pro **tajný klíč klienta**zadejte tajný kód aplikace, který jste si poznamenali.
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
 ## <a name="update-the-user-flow"></a>Aktualizace toku uživatele
 
@@ -135,7 +135,7 @@ V kurzu, který jste dokončili v rámci požadavků, jste vytvořili uživatels
 
 1. Vyberte **toky uživatelů (zásady)** a pak vyberte tok uživatele *B2C_1_signupsignin1* .
 2. Vyberte **Zprostředkovatelé identity**a vyberte poskytovatele identit **Azure AD** , kterého jste přidali **Facebook** a contoso.
-3. Vyberte **Save** (Uložit).
+3. Vyberte **Uložit**.
 
 ## <a name="test-the-user-flow"></a>Testování toku uživatele
 

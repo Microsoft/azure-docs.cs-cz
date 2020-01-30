@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 7df1651be01b4bed533c1173cc37bddda58f0aa3
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 597839f633ed2b925b86c5f859a0fb2d3b64dd59
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895819"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773663"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Přehled Media Servicesch operací REST API 
 
@@ -45,7 +45,7 @@ Při použití REST platí následující požadavky.
         Accept: application/json;odata=verbose
         DataServiceVersion: 3.0
         MaxDataServiceVersion: 3.0
-        x-ms-version: 2.17
+        x-ms-version: 2.19
         Authorization: Bearer <ENCODED JWT TOKEN> 
         Host: media.windows.net
   
@@ -60,7 +60,7 @@ Pro každé volání, které provedete v Media Services, je k dispozici sada po�
 
 | Hlavička | Typ | Hodnota |
 | --- | --- | --- |
-| Autorizace |Bearer |Držitelem je jediný přijatý autorizační mechanismus. Hodnota musí také zahrnovat přístupový token, který poskytuje Azure Active Directory. |
+| Autorizace |Nosný |Držitelem je jediný přijatý autorizační mechanismus. Hodnota musí také zahrnovat přístupový token, který poskytuje Azure Active Directory. |
 | x-ms-version |Decimal |2,17 (nebo novější verze)|
 | DataServiceVersion |Decimal |3.0 |
 | MaxDataServiceVersion |Decimal |3.0 |
@@ -75,12 +75,12 @@ Následuje sada volitelných hlaviček:
 | Hlavička | Typ | Hodnota |
 | --- | --- | --- |
 | Datum |RFC 1123 datum |Časové razítko požadavku |
-| Přijmout |Typ obsahu |Požadovaný typ obsahu pro odpověď, například následující:<p> -application/json;odata=verbose<p> – Application/Atom + XML<p> Odpovědi mohou mít jiný typ obsahu, například načtení objektu blob, kde úspěšná odpověď obsahuje datový proud blobu jako datovou část. |
-| Accept-Encoding |GZIP, uprostřed zúžené |Kódování GZIP a DEFLATE, pokud je to možné. Poznámka: u velkých prostředků Media Services může tuto hlavičku ignorovat a vracet nekomprimovaná data. |
+| Vyjádřit |Typ obsahu |Požadovaný typ obsahu pro odpověď, například následující:<p> -application/json;odata=verbose<p> – Application/Atom + XML<p> Odpovědi mohou mít jiný typ obsahu, například načtení objektu blob, kde úspěšná odpověď obsahuje datový proud blobu jako datovou část. |
+| Přijmout – kódování |GZIP, uprostřed zúžené |Kódování GZIP a DEFLATE, pokud je to možné. Poznámka: u velkých prostředků Media Services může tuto hlavičku ignorovat a vracet nekomprimovaná data. |
 | Přijmout – jazyk |"en", "ES" atd. |Určuje preferovaný jazyk pro odpověď. |
 | Přijmout znaková sada |Typ znakové sady jako UTF-8 |Výchozí hodnota je UTF-8. |
 | X-HTTP-Method |HTTP – metoda |Umožňuje klientům nebo branám firewall, které nepodporují metody HTTP, jako je PUT nebo DELETE, používat tyto metody, tunelování prostřednictvím volání GET. |
-| Content-Type |Typ obsahu |Typ obsahu textu žádosti v požadavcích PUT nebo POST |
+| Typ obsahu |Typ obsahu |Typ obsahu textu žádosti v požadavcích PUT nebo POST |
 | klient-požadavek-ID |Řetězec |Hodnota definovaná volajícím, která identifikuje daný požadavek. Je-li tento parametr zadán, bude tato hodnota ve zprávě odpovědi uvedena jako způsob mapování požadavku. <p><p>**Důležité upozornění**<p>Hodnoty by měly být omezené na 2096b (2k). |
 
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>Standardní hlavičky HTTP odpovědi, které podporuje Media Services
@@ -91,7 +91,7 @@ Následuje sada hlaviček, které mohou být vráceny v závislosti na prostřed
 | ID žádosti |Řetězec |Jedinečný identifikátor pro aktuální operaci, vygenerovala se služba. |
 | klient-požadavek-ID |Řetězec |Identifikátor určený volajícím v původní žádosti, pokud je k dispozici. |
 | Datum |RFC 1123 datum |Datum a čas zpracování žádosti. |
-| Content-Type |Různé |Typ obsahu textu odpovědi |
+| Typ obsahu |Různé |Typ obsahu textu odpovědi |
 | Kódování obsahu |Různé |Gzip nebo deflate, podle potřeby. |
 
 ## <a name="standard-http-verbs-supported-by-media-services"></a>Standardní příkazy HTTP podporované Media Services
@@ -104,7 +104,7 @@ Následuje úplný seznam příkazů HTTP, které lze použít při provádění
 | PUT |Nahradí objekt nebo vytvoří pojmenovaný objekt (je-li k dispozici). |
 | DELETE |Odstraní objekt. |
 | SLOUČENÍ |Aktualizuje existující objekt se změnami pojmenovaných vlastností. |
-| HEAD |Vrátí metadata objektu pro odpověď GET. |
+| ZÁHLAVÍ |Vrátí metadata objektu pro odpověď GET. |
 
 ## <a name="discover-and-browse-the-media-services-entity-model"></a>Zjištění a procházení modelu entity Media Services
 Aby bylo možné Media Services entit lépe zjistitelné, lze použít operaci $metadata. Umožňuje načíst všechny platné typy entit, vlastnosti entit, přidružení, funkce, akce a tak dále. Přidáním operace $metadata na konec Media Services koncového bodu REST API můžete získat přístup k této službě zjišťování.
@@ -123,7 +123,7 @@ Podrobnosti o psaní kódu, který se připojuje k REST API pomocí ověřován�
 ## <a name="next-steps"></a>Další kroky
 Informace o tom, jak používat ověřování Azure AD s Media Services REST API, najdete v tématu [použití ověřování Azure AD pro přístup k rozhraní API Azure Media Services pomocí REST](media-services-rest-connect-with-aad.md).
 
-## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
+## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu

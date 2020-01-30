@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: cherylmc
-ms.openlocfilehash: 2f847d8db983303d46b465f4f80bff65eeff632f
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 6f95107960cf11ab15cb5a8294a5432498956a7a
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168489"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775304"
 ---
 # <a name="virtual-wan-partners"></a>Virtuální partneři sítě WAN
 
@@ -27,7 +27,7 @@ Zařízení pobočky (místní zařízení VPN zákazníka nebo SDWAN CPE) obvyk
 * Otestujte možnosti portálu Azure Virtual WAN.
 * Pak rozhodněte, která část kroků připojení byste chtěli automatizovat. Je minimálně vhodné automatizovat tyto akce:
 
-  * Řízení přístupu
+  * Access Control
   * Nahrání informací o zařízeních z pobočky do Azure Virtual WAN
   * Stažení konfigurace Azure a nastavení připojení ze zařízení z větve do Azure Virtual WAN
 
@@ -45,7 +45,7 @@ Seznamte se s očekávaným prostředím pro zákazníky ve spojení s Azure Vir
   1. Virtuální síť WAN obvykle spustí proces vytvořením virtuálního prostředku sítě WAN.
   2. Uživatel nastaví přístup skupiny prostředků na základě instančního objektu pro místní systém (váš řadič vaší pobočky nebo software pro zřizování zařízení VPN) a zapíše informace o větvi do služby Azure Virtual WAN.
   3. Uživatel se může rozhodnout v tuto chvíli, aby se přihlásil k uživatelskému rozhraní a nastavil přihlašovací údaje instančního objektu. Až to bude hotové, váš řadič by měl být schopný nahrávat informace o větvích se službou Automation, kterou poskytnete. Ruční ekvivalent této akce na straně Azure je možnost vytvořit web.
-  4. Jakmile jsou informace o lokalitě (zařízení) k dispozici v Azure, uživatel připojení lokality k centru. Virtuální rozbočovač je virtuální síť spravovaná Microsoftem. Centrum obsahuje různé koncové body služby, které umožňují připojení z místní sítě (vpnsite). Rozbočovač je jádrem vaší sítě v určité oblasti. V rámci tohoto procesu může být pouze jeden uzel v každé oblasti Azure a koncový bod VPN (vpngateway). Brána sítě VPN je škálovatelná brána, která se vhodně přizpůsobí podle šířky pásma a potřeb připojení. Můžete se rozhodnout automatizovat virtuální rozbočovač a vytváření vpngateway z řídicího panelu řadiče zařízení ve větvi.
+  4. Jakmile jsou informace o lokalitě (zařízení) k dispozici v Azure, uživatel připojení lokality k centru. Virtuální rozbočovač je virtuální síť spravovaná Microsoftem. Rozbočovač obsahuje různé koncové body služby, které umožňují připojení z vaší místní sítě (vpnsite). Rozbočovač je základem vaší sítě v oblasti. V rámci tohoto procesu může být pouze jeden uzel v každé oblasti Azure a koncový bod VPN (vpngateway). Brána sítě VPN je škálovatelná brána, která se vhodně přizpůsobí podle šířky pásma a potřeb připojení. Můžete se rozhodnout automatizovat virtuální rozbočovač a vytváření vpngateway z řídicího panelu řadiče zařízení ve větvi.
   5. Jakmile je virtuální rozbočovač přidružen k lokalitě, je pro uživatele vygenerován konfigurační soubor, který bude stažen ručně. Tady je místo, kde se vaše automatizace nachází, a umožní uživateli bezproblémové prostředí. Místo toho, aby uživatel musel ručně stahovat a konfigurovat pobočkové zařízení, můžete nastavit automatizaci a poskytnout minimální možnosti kliknutí na uživatelské rozhraní, čímž dojde k zmírnění typických potíží s připojením, jako je neshoda sdíleného klíče, parametr IPSec Neshoda, konfigurační soubor pro čtení atd.
   6. Na konci tohoto kroku v řešení bude mít uživatel bezproblémové připojení typu Site-to-site mezi zařízením pobočky a virtuálním rozbočovačem. Můžete také nastavit další připojení mezi ostatními rozbočovači. Každé připojení je tunel aktivní-aktivní. Zákazník se může rozhodnout pro každé z těchto propojení pro tunel použít jiného poskytovatele internetových služeb.
   7. Zvažte možnost řešení potíží a monitorování v rozhraní pro správu CPE. Mezi typické scénáře patří "zákazník neschopný přístup k prostředkům Azure z důvodu problému CPE", "Zobrazit parametry protokolu IPsec na straně CPE" atd.
@@ -58,7 +58,7 @@ Zákazníci musí být schopni nastavit příslušné řízení přístupu pro v
 
 * Vytvořte aplikaci Azure Active Directory pro místní řadič zařízení.
 * Získat ID aplikace a ověřovací klíč
-* Získat ID tenanta
+* Získání ID tenanta
 * Přiřazení aplikace k roli Přispěvatel
 
 ###  <a name="branch"></a>Nahrát informace o zařízení pobočky
@@ -76,10 +76,10 @@ Tento krok zahrnuje stažení konfigurace Azure a nastavení připojení ze zař
 
 ## <a name="devicefile"></a>Konfigurační soubor zařízení
 
-Konfigurační soubor zařízení obsahuje nastavení, která se použijí při konfiguraci místního zařízení VPN. Při prohlížení tohoto souboru si všimněte následujících informací:
+Konfigurační soubor zařízení obsahuje nastavení, které se má použít při konfiguraci místního zařízení VPN. Při prohlížení souboru si všimněte následujících informací:
 
-* **vpnSiteConfiguration –** Tato část označuje podrobnosti o zařízení, které se nastavily jako lokalita připojující se k virtuální síti WAN. Obsahuje název a veřejnou IP adresu zařízení pobočky.
-* **vpnSiteConnections –** V této části najdete informace o následujících částech:
+* **vpnSiteConfiguration** – tato část udává podrobnosti o zařízení nastaveném jako lokalita, která se připojuje k virtuální síti WAN. Obsahuje název a veřejnou IP adresu zařízení pobočky.
+* **vpnSiteConnections** – tato část obsahuje následující informace:
 
     * **Adresní prostor** virtuální sítě virtuálních rozbočovačů.<br>Příklad:
  
@@ -89,15 +89,15 @@ Konfigurační soubor zařízení obsahuje nastavení, která se použijí při 
     * **Adresní prostor** virtuální sítě, který je připojený k rozbočovači.<br>Příklad:
 
          ```
-        "ConnectedSubnets":["10.2.0.0/16","10.30.0.0/16"]
+        "ConnectedSubnets":["10.2.0.0/16","10.3.0.0/16"]
          ```
-    * **IP adresy** virtuálního centra vpngateway. Vzhledem k tomu, že vpngateway má každé připojení tvořené 2 tunely v konfiguraci aktivní-aktivní, zobrazí se obě IP adresy uvedené v tomto souboru. V tomto příkladu se pro každou lokalitu zobrazí "Instance0" a "položku instance1".<br>Příklad:
+    * **IP adresy** brány sítě VPN virtuálního rozbočovače. Vzhledem k tomu, že každé připojení brány sítě VPN se skládá ze 2 tunelů v konfiguraci aktivní-aktivní, uvidíte v tomto souboru uvedené obě IP adresy. V tomto příkladu vidíte pro každou lokalitu položky Instance0 a Instance1.<br>Příklad:
 
         ``` 
         "Instance0":"104.45.18.186"
         "Instance1":"104.45.13.195"
         ```
-    * **Podrobnosti konfigurace připojení Vpngateway** , jako je protokol BGP, předsdílený klíč atd. PSK je předsdílený klíč, který se automaticky vygeneruje za vás. Připojení můžete vždycky upravit na stránce Přehled pro vlastní PSK.
+    * **Podrobnosti konfigurace připojení Vpngateway** , jako je protokol BGP, předsdílený klíč atd. PSK je předsdílený klíč, který se automaticky vygeneruje za vás. V případě vlastního předsdíleného klíče můžete připojení upravit na stránce Overview (Přehled).
   
 **Příklad konfiguračního souboru zařízení**
 
@@ -118,7 +118,7 @@ Konfigurační soubor zařízení obsahuje nastavení, která se použijí při 
                "Region":"West Europe",
                "ConnectedSubnets":[ 
                   "10.2.0.0/16",
-                  "10.30.0.0/16"
+                  "10.3.0.0/16"
                ]
             },
             "gatewayConfiguration":{ 
@@ -208,10 +208,10 @@ Konfigurační soubor zařízení obsahuje nastavení, která se použijí při 
 
 Vaše místní zařízení SDWAN/VPN nebo konfigurace SD-WAN musí odpovídat nebo obsahovat následující algoritmy a parametry, které zadáte v zásadách IPsec v Azure/IKE.
 
-* Šifrovací algoritmus IKE
-* Algoritmus integrity IKE
+* Algoritmus šifrování protokolem IKE
+* Algoritmus integrity protokolu IKE
 * Skupina DH
-* Šifrovací algoritmus IPsec
+* Algoritmus šifrování protokolem IPsec
 * Algoritmus integrity protokolu IPsec
 * Skupina PFS
 
@@ -227,4 +227,4 @@ Vaše místní zařízení SDWAN/VPN nebo konfigurace SD-WAN musí odpovídat ne
 
 Další informace o virtuální síti WAN najdete v tématu [o Azure Virtual WAN](virtual-wan-about.md) a [nejčastějších dotazech k Azure Virtual WAN](virtual-wan-faq.md).
 
-Pokud chcete získat další informace, pošlete prosím e-mail na <azurevirtualwan@microsoft.com>. Do řádku předmětu zadejte název vaší společnosti v části "[]".
+Pokud chcete získat další informace, pošlete prosím e-mail na <azurevirtualwan@microsoft.com>. V řádku předmětu uveďte název vaší společnosti v hranatých závorkách „[]“.

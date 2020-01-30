@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 01/06/2019
+ms.date: 01/27/2019
 ms.author: aahi
-ms.openlocfilehash: a9bfa2a51341bf60f92378f5d96a390bd1d92db1
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 9aa00898c6a567d495ed0c66bcf7bd475067fa0d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732774"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774144"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak používat rozpoznávání pojmenovaných entit v Analýza textu
 
@@ -23,7 +23,7 @@ Rozhraní API pro analýzu textu umožňuje přebírá nestrukturovaný text a v
 
 ### <a name="entity-linking"></a>Propojování entit
 
-Propojení entit je schopnost identifikovat a odstranit identitu entity nalezenou v textu (například určit, zda výskyt slova `Mars` odkazuje na globálním nebo římské jsou války). Tento proces vyžaduje přítomnost znalostní báze v příslušném jazyce, aby bylo možné propojit rozpoznané entity v textu. 
+Propojení entit je schopnost identifikovat a odstranit identitu entity nalezenou v textu (například určit, zda výskyt slova `Mars` odkazuje na globálním nebo římské jsou války). Tento proces vyžaduje přítomnost znalostní báze v příslušném jazyce, aby bylo možné propojit rozpoznané entity v textu. Při propojování entit se jako tato znalostní báze používá [Wikipedii](https://www.wikipedia.org/) .
 
 
 ### <a name="named-entity-recognition-ner"></a>Rozpoznávání pojmenovaných entit (NER)

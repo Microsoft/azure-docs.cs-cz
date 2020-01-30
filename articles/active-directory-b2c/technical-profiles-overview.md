@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: af08a24ff28d59bf743f92aa69ffa823dcdcc544
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 100f059f7c9f18ab6920f50c850b3b8d5a617908
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951033"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840192"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Informace o technických profilech v Azure Active Directory B2C vlastních zásadách
 
@@ -38,7 +38,7 @@ Technický profil umožňuje tyto typy scénářů:
 - [Poskytovatel RESTful](restful-technical-profile.md) – volání služeb REST API Services, například ověření vstupu uživatele, rozšíření uživatelských dat nebo integrace s podnikovými aplikacemi.
 - [Typu Saml2](saml-technical-profile.md) – federace s libovolným poskytovatelem identity protokolu SAML.
 - Uživatel s [vlastním uplatněním](self-asserted-technical-profile.md) : interakce s uživatelem. Například Shromážděte přihlašovací údaje uživatele pro přihlášení, vykreslete stránku pro registraci nebo resetování hesla.
-- [Správa relací](active-directory-b2c-reference-sso-custom.md) – zpracovává různé typy relací.
+- [Správa relací](custom-policy-reference-sso.md) – zpracovává různé typy relací.
 - **Application Insights**
 
 ## <a name="technical-profile-flow"></a>Tok technického profilu
@@ -49,7 +49,7 @@ Všechny typy technických profilů sdílejí stejný koncept. Můžete posílat
  
 1. **InputClaimsTransformation** – vstupní deklarace identity každé [transformace vstupních deklarací](claimstransformations.md) se vybírají z kontejneru deklarací identity a po provedení se výstupní deklarace identity vrátí do kontejneru deklarací identity. Deklarace výstupů vstupní deklarace identity můžou být vstupními deklaracemi za následné transformace vstupních deklarací.
 2. **InputClaims** – deklarace identity se vybírají z kontejneru deklarací identity a používají se pro technický profil. Například [technický profil s vlastním uplatněním](self-asserted-technical-profile.md) používá vstupní deklarace identity, které vyplní výstupní deklarace identity, které uživatel poskytuje. REST API technický profil používá vstupní deklarace identity k posílání vstupních parametrů do koncového bodu REST API. Azure Active Directory používá pro čtení, aktualizaci nebo odstranění účtu vstupní deklaraci identity jako jedinečný identifikátor.
-3. **Provádění technického profilu** – technický profil vyměňuje deklarace identity s konfigurovanou stranou. Například:
+3. **Provádění technického profilu** – technický profil vyměňuje deklarace identity s konfigurovanou stranou. Příklad:
     - Přesměrujte uživatele na zprostředkovatele identity, abyste mohli dokončit přihlášení. Po úspěšném přihlášení se uživatel vrátí zpět a provádění technického profilu bude pokračovat.
     - Volání REST API při posílání parametrů jako InputClaims a získání informací zpět jako OutputClaims.
     - Vytvořte nebo aktualizujte uživatelský účet.
@@ -57,7 +57,7 @@ Všechny typy technických profilů sdílejí stejný koncept. Můžete posílat
 4. **ValidationTechnicalProfiles** – pro [technický profil s vlastním uplatněním](self-asserted-technical-profile.md)můžete zavolat [technický profil pro ověření](validation-technical-profile.md)vstupu. Technický profil ověření ověřuje data profilovaná uživatelem a vrací chybovou zprávu nebo je v pořádku s výstupními deklaracemi nebo bez nich. Například předtím, než Azure AD B2C vytvoří nový účet, zkontroluje, zda uživatel již existuje v adresářových službách. Můžete zavolat REST API technický profil a přidat vlastní obchodní logiku.<p>Rozsah výstupních deklarací pro technický profil ověření je omezený na technický profil, který volá technický profil ověřování a další technické profily ověřování ve stejném technickém profilu. Pokud chcete použít výstupní deklarace v dalším kroku orchestrace, je nutné přidat výstupní deklarace identity do technického profilu, který vyvolá technický profil ověření.
 5. **OutputClaims** – deklarace identity se vrátí zpět do kontejneru deklarací identity. Tyto deklarace identity můžete použít v dalších krokech orchestrace nebo z výstupních transformací deklarací.
 6. **OutputClaimsTransformations** – vstupní deklarace všech výstupních [transformací deklarací identity](claimstransformations.md) se vybírají z kontejneru deklarací identity. Výstupní deklarace identity technického profilu z předchozích kroků můžou být vstupními deklaracemi výstupní transformace deklarací identity. Po spuštění se výstupní deklarace identity vrátí do kontejneru deklarací identity. Výstupní deklarace výstupní transformace deklarací identity můžou také vstupní deklarace identity následné výstupní transformace deklarací identity.
-7. **Správa relací jednotného přihlašování (SSO)**  - [Správa relací jednotného](active-directory-b2c-reference-sso-custom.md) přihlašování řídí interakci s uživatelem po ověření uživatele. Správce může třeba určit, jestli se má zobrazit výběr zprostředkovatelů identity, nebo jestli se mají zadat podrobnosti o místním účtu znovu.
+7. **Správa relací jednotného přihlašování (SSO)**  - [Správa relací jednotného](custom-policy-reference-sso.md) přihlašování řídí interakci s uživatelem po ověření uživatele. Správce může třeba určit, jestli se má zobrazit výběr zprostředkovatelů identity, nebo jestli se mají zadat podrobnosti o místním účtu znovu.
 
 Technický profil může dědit z jiného technického profilu a změnit nastavení nebo přidat nové funkce.  Element **IncludeTechnicalProfile** je odkazem na základní technický profil, ze kterého je odvozen technický profil.
 

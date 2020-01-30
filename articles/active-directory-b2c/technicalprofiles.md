@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 162597bf3d02cdfe53d321185b326bfbb1f6bd0d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 2e2a3dbf0ce3be28a78f04eb5bb1c369aeff1441
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712769"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773437"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -99,7 +99,7 @@ Element **TechnicalProfile** obsahuje následující atribut:
 | OutputClaimsTransformations | 0:1 | Seznam dříve definovaných odkazů na transformace deklarací identity, které by měly být provedeny po přijetí deklarací identity od zprostředkovatele deklarací identity. |
 | ValidationTechnicalProfiles | 0: n | Seznam odkazů na jiné technické profily, které technický profil používá pro účely ověření. Další informace najdete v tématu [technický profil ověření](validation-technical-profile.md) .|
 | SubjectNamingInfo | 0:1 | Řídí produkci názvu subjektu v tokenech, kde je název subjektu zadán nezávisle na deklaracích identity. Například protokol OAuth nebo SAML.  |
-| IncludeInSso | 0:1 |  Zda použití tohoto technického profilu by mělo pro relaci použít chování jednotného přihlašování (SSO), nebo místo toho vyžadovat explicitní interakci. Možné hodnoty: `true` (výchozí) nebo `false`. |
+| IncludeInSso | 0:1 |  Zda použití tohoto technického profilu by mělo pro relaci použít chování jednotného přihlašování (SSO), nebo místo toho vyžadovat explicitní interakci. Tento prvek je platný jenom v profilech SelfAsserted používaných v rámci technického profilu ověření. Možné hodnoty: `true` (výchozí) nebo `false`. |
 | IncludeClaimsFromTechnicalProfile | 0:1 | Identifikátor technického profilu, ze kterého chcete přidat všechny deklarace identity vstupu a výstupu do tohoto technického profilu. Odkazovaný technický profil musí být definován ve stejném souboru zásad. |
 | IncludeTechnicalProfile |0:1 | Identifikátor technického profilu, ze kterého chcete přidat všechna data do tohoto technického profilu. Odkazovaný technický profil musí existovat ve stejném souboru zásad. |
 | UseTechnicalProfileForSessionManagement | 0:1 | Jiný technický profil, který se má použít pro správu relací. |

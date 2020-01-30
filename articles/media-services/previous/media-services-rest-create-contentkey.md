@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 9927de3ab3fb68cea17095d7255fd8a68f66c9a8
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: d256f417fb3bacbf3f363fc2a9f8701a1bb49d71
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901479"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773630"
 ---
 # <a name="create-content-keys-with-rest"></a>Vytváření klíčů obsahu pomocí REST
 > [!div class="op_single_selector"]
@@ -90,7 +90,7 @@ Požadavek:
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: media.windows.net
 
 
@@ -122,7 +122,7 @@ Požadavek:
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 78d1247a-58d7-40e5-96cc-70ff0dfa7382
     Host: media.windows.net
 
@@ -150,7 +150,7 @@ Odpověď:
 ## <a name="create-the-contentkey"></a>Vytvoření ContentKey
 Po načtení certifikátu X. 509 a použití jeho veřejného klíče k zašifrování klíče obsahu vytvořte entitu **ContentKey** a odpovídajícím způsobem nastavte její hodnoty vlastností.
 
-Jedna z hodnot, které je třeba nastavit při vytváření klíče obsahu, je typ. Vyberte jednu z těchto hodnot:
+Jedna z hodnot, které je třeba nastavit při vytváření klíče obsahu, je typ. Vyberte jednu z následujících hodnot:
 
     public enum ContentKeyType
     {
@@ -189,7 +189,7 @@ Následující příklad ukazuje, jak vytvořit **ContentKey** s **ContentKeyTyp
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: media.windows.net
     {
     "Name":"ContentKey",
@@ -239,7 +239,7 @@ Požadavek:
     Accept-Charset: UTF-8
     Content-Type: application/json
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: media.windows.net
 
 
@@ -250,7 +250,7 @@ Odpověď:
     HTTP/1.1 204 No Content 
 
 
-## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
+## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu

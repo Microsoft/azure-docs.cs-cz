@@ -3,12 +3,12 @@ title: Chyby nenalezených prostředků
 description: Popisuje, jak vyřešit chyby, pokud se prostředek nenajde při nasazení pomocí šablony Azure Resource Manager.
 ms.topic: troubleshooting
 ms.date: 01/21/2020
-ms.openlocfilehash: c3e19af24fa7fb850eadf3deb346180476943241
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: b6f433118092e46f734d4b65040dd97c2fcb58d9
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310658"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773249"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>Vyřešit chyby nenalezení pro prostředky Azure
 
@@ -98,5 +98,5 @@ V referenční funkci použijte `Full` k získání všech vlastností včetně 
 Pokud například chcete získat ID tenanta pro spravovanou identitu, která se používá pro sadu škálování virtuálního počítače, použijte:
 
 ```json
-"tenantId": "[reference(concat('Microsoft.Compute/virtualMachineScaleSets/',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
+"tenantId": "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
 ```

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: d7304c1267c4a4f5548bb57ffb3e6016fac21d99
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: e3ea11f4faad204756f9e1296b5190e1f81a5cc0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122504"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772802"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>Nasazení nástroje pro správu pomocí PowerShellu
 
@@ -163,4 +163,4 @@ Pokud jste nahlásili mezi problémy s nástrojem pro správu nebo jinými nást
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili, jak nasadit a připojit se k nástroji pro správu, se dozvíte, jak pomocí služby Azure Services monitorovat problémy se službou a Poradce pro stav. Další informace najdete v našem [kurzu nastavení výstrah služby](./set-up-service-alerts.md).
+Teď, když jste se naučili, jak nasadit nástroj pro správu a připojit se k němu, se dozvíte, jak pomocí Azure Service Health monitorovat problémy se službami a Poradce pro stav. Další informace najdete v našem [kurzu nastavení výstrah služby](./set-up-service-alerts.md).

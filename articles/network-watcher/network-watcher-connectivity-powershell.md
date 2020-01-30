@@ -4,22 +4,21 @@ titleSuffix: Azure Network Watcher
 description: Naučte se používat funkci řešení potíží s připojením pro Azure Network Watcher s využitím PowerShellu.
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: damendo
 manager: twooley
-editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
-ms.author: kumud
-ms.openlocfilehash: 824799254b2706c64a17921034dbde3e4f60e132
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: abc9389c2c5fd5576795c26a89e3941b6eb5a939
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276000"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842831"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>Řešení potíží s připojením k Azure Network Watcher pomocí PowerShellu
 
@@ -46,7 +45,7 @@ Naučte se používat řešení potíží s připojením k ověření, jestli je
 
 Tento příklad zkontroluje připojení k cílovému virtuálnímu počítači přes port 80. Tento příklad vyžaduje, abyste v oblasti obsahující zdrojový virtuální počítač povolili Network Watcher.  
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 ```powershell
 $rgName = "ContosoRG"
@@ -140,7 +139,7 @@ Hops             : [
 
 Tento příklad kontroluje připojení mezi virtuálním počítačem a vzdáleným koncovým bodem. Tento příklad vyžaduje, abyste v oblasti obsahující zdrojový virtuální počítač povolili Network Watcher.  
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 ```powershell
 $rgName = "ContosoRG"
@@ -203,7 +202,7 @@ Hops             : [
 
 Následující příklad zkontroluje připojení k webu. Tento příklad vyžaduje, abyste v oblasti obsahující zdrojový virtuální počítač povolili Network Watcher.  
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 ```powershell
 $rgName = "ContosoRG"
@@ -255,7 +254,7 @@ Hops             : [
 
 Následující příklad zkontroluje připojení z virtuálního počítače k účtu úložiště blogu. Tento příklad vyžaduje, abyste v oblasti obsahující zdrojový virtuální počítač povolili Network Watcher.  
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 ```powershell
 $rgName = "ContosoRG"

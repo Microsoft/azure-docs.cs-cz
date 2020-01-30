@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/09/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 259ce2b1881c31c2558539fed34513575d193a48
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 9d96db5cf062da1b2e8badd80a9a00620b724fd4
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961985"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840413"
 ---
 # <a name="use-the-azure-portal-to-create-and-delete-consumer-users-in-azure-ad-b2c"></a>Použití Azure Portal k vytváření a odstraňování uživatelů spotřebitelů v Azure AD B2C
 
@@ -37,7 +37,7 @@ Tento článek se zaměřuje na práci s **uživatelskými účty** v Azure Port
 
 ## <a name="create-a-consumer-user"></a>Vytvoření uživatele spotřebitele
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. V části **Spravovat** vyberte **Uživatele**.
@@ -61,4 +61,4 @@ Podrobnosti o obnovení uživatele během prvních 30 dnů po odstranění nebo 
 
 ## <a name="next-steps"></a>Další kroky
 
-V případě automatizovaných scénářů správy uživatelů, například migrace uživatelů z jiného zprostředkovatele identity do adresáře Azure AD B2C, přečtěte si téma [Azure AD B2C: Migrace uživatelů](active-directory-b2c-user-migration.md).
+V případě automatizovaných scénářů správy uživatelů, například migrace uživatelů z jiného zprostředkovatele identity do adresáře Azure AD B2C, přečtěte si téma [Azure AD B2C: Migrace uživatelů](user-migration.md).

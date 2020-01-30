@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c4f0a72cb598a8e38fc69f23f62f0f456cccb04
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 165bd93f2d35425965df9358c8d85f79ce557d66
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543915"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833360"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementace synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect
 Tento článek obsahuje informace, které potřebujete k synchronizaci hesel uživatelů mezi místní instancí Active Directory a instanci cloudové služby Azure Active Directory (Azure AD).
@@ -130,9 +130,9 @@ Je typický vynutit, aby uživatel při prvním přihlášení změnil heslo, ze
   
 Funkce dočasného hesla pomáhá zajistit, že přenos vlastnictví přihlašovacích údajů se při prvním použití dokončí, aby se minimalizovala doba, během které má více než jedna osoba znalosti o těchto přihlašovacích údajích.
 
-Aby bylo možné v Azure AD podporovat dočasná hesla pro synchronizované uživatele, můžete povolit funkci *ForcePasswordResetOnLogonFeature* spuštěním následujícího příkazu na vašem serveru Azure AD Connect:
+Aby bylo možné v Azure AD podporovat dočasná hesla pro synchronizované uživatele, můžete povolit funkci *ForcePasswordChangeOnLogOn* spuštěním následujícího příkazu na vašem serveru Azure AD Connect:
 
-`Set-ADSyncAADCompanyFeature  -ForcePasswordResetOnLogonFeature $true`
+`Set-ADSyncAADCompanyFeature  -ForcePasswordChangeOnLogOn $true`
 
 > [!NOTE]
 > Vynucení, když uživatel změní heslo při příštím přihlášení, vyžaduje změnu hesla.  Služba AD Connect nenabídne příznak pro vynucení změny hesla sám o sobě; je doplněné ke zjištěné změně hesla, ke které dochází během synchronizace hodnot hash hesel.

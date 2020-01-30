@@ -10,23 +10,23 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c75eae72b94c807897d74e365ec9f4ef74c83dd9
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 6147dc64833f44f24afe14cd1da34432a3735519
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063676"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840226"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Konfigurace chování relace v Azure Active Directory B2C
 
-Tato funkce poskytuje jemně odstupňovaný ovládací prvek na [základě toku pro jednotlivé uživatele](active-directory-b2c-reference-policies.md):
+Tato funkce poskytuje jemně odstupňovaný ovládací prvek na [základě toku pro jednotlivé uživatele](user-flow-overview.md):
 
 - Životnost relací webových aplikací, které jsou spravovány Azure AD B2C.
 - Chování jednotného přihlašování (SSO) napříč několika aplikacemi a toky uživatelů ve vašem Azure AD B2C tenantovi.
 
 Tato nastavení nejsou k dispozici pro uživatelské toky resetování hesla.
 
-Azure AD B2C podporuje [ověřovací protokol OpenID Connect](active-directory-b2c-reference-oidc.md) pro povolení zabezpečeného přihlašování k webovým aplikacím. Pomocí následujících vlastností můžete spravovat relace webových aplikací:
+Azure AD B2C podporuje [ověřovací protokol OpenID Connect](openid-connect.md) pro povolení zabezpečeného přihlašování k webovým aplikacím. Pomocí následujících vlastností můžete spravovat relace webových aplikací:
 
 ## <a name="session-behavior-properties"></a>Vlastnosti chování relace
 
@@ -48,14 +48,14 @@ Následující případy použití jsou povolené pomocí těchto vlastností:
 
 ## <a name="configure-the-properties"></a>Konfigurace vlastností
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete adresář a filtr **předplatného** a vyberete adresář, který obsahuje vašeho Azure AD B2Cho tenanta.
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **toky uživatelů (zásady)** .
 5. Otevřete uživatelský tok, který jste vytvořili dříve.
-6. Vyberte **vlastnosti**.
+6. Vyberte **Vlastnosti**.
 7. Nakonfigurujte **dobu života relace webové aplikace (minuty)** , **časový limit relace webové aplikace**, **konfiguraci jednotného přihlašování**a **v případě potřeby vyžadovat token ID v žádostech o odhlášení** .
 
     ![Nastavení vlastností chování relace v Azure Portal](./media/session-behavior/session-behavior.png)
 
-8. Klikněte na **Uložit**.
+8. Klikněte na možnost **Uložit**.

@@ -6,17 +6,17 @@ ms.author: orspodek
 ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.openlocfilehash: ef5c7de782d833aad96516d3e5357a0ed575a781
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 01/27/2020
+ms.openlocfilehash: d293b76e004d693813a074cb8551a86cb3c0bec2
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722873"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772333"
 ---
 # <a name="ingest-json-formatted-sample-data-into-azure-data-explorer"></a>Ingestování ukázkových dat ve formátu JSON do Azure Průzkumník dat
 
-V tomto článku se dozvíte, jak ingestovat formátovaná data JSON do databáze Azure Průzkumník dat. Začnete s jednoduchými příklady nezpracovaných a mapovaných JSON, budete pokračovat na víceřádkové JSON a pak se rozhodnete komplexnější schémata JSON obsahující pole a slovníky. 
+V tomto článku se dozvíte, jak ingestovat formátovaná data JSON do databáze Azure Průzkumník dat. Začnete s jednoduchými příklady nezpracovaných a mapovaných JSON, budete pokračovat na víceřádkové JSON a pak se rozhodnete komplexnější schémata JSON obsahující pole a slovníky.  V příkladech je podrobně popsán proces ingestování formátovaných dat JSON pomocí dotazovacího jazyka C#KUSTO (KQL), nebo Pythonu. Dotazovací jazyk `ingest` Řídicí příkazy jsou spouštěny přímo do koncového bodu stroje. V produkčních scénářích se pro službu Správa dat spouští ingestování pomocí klientských knihoven nebo datových připojení. Přečtěte si data ingestování [pomocí knihovny Pythonu v azure Průzkumník dat](/azure/data-explorer/python-ingest-data) a ingestujte [data pomocí sady Azure Průzkumník dat .NET Standard SDK](/azure/data-explorer/net-standard-ingest-data) , kde najdete podrobné informace o ingestování dat pomocí těchto klientských knihoven.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -81,9 +81,6 @@ Použijte dotazovací jazyk Kusto k ingestování dat ve formátu RAW JSON.
     ```Kusto
     .ingest into table RawEvents h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=json, jsonMappingReference=RawEventMapping)
     ```
-
-    > [!NOTE]
-    > To ukazuje příkazy ovládacího prvku `ingest` spouštěny přímo do koncového bodu stroje. V produkčních scénářích se pro službu Správa dat spouští ingestování pomocí klientských knihoven nebo datových připojení. Přečtěte si data ingestování [pomocí knihovny Pythonu v azure Průzkumník dat](/azure/data-explorer/python-ingest-data) a ingestujte [data pomocí sady Azure Průzkumník dat .NET Standard SDK](/azure/data-explorer/net-standard-ingest-data) , kde najdete podrobné informace o ingestování dat pomocí těchto klientských knihoven.
 
 # <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
 

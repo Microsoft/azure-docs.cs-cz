@@ -1,25 +1,20 @@
 ---
 title: 'Rychlý Start: získání odpovědi z znalostní báze – REST, Python-QnA Maker'
-titleSuffix: Azure Cognitive Services
 description: Tento rychlý Start založený na REST Python vás provede tím, že vám prostřednictvím programu získá odpověď z znalostní báze.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 12/16/2019
-ms.author: diberry
-ms.openlocfilehash: 58cdf5dc8a5bb952f24318dfce020ca052c48863
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/28/2020
+ROBOTS: NOINDEX,NOFOLLOW
+ms.custom: RESTCHANGE-20200128
+ms.openlocfilehash: f439a492e2e63e3f99f80004b387d9cfc415e4b0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447464"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842950"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Rychlý Start: získání odpovědí na otázku ze znalostní báze pomocí Pythonu
 
-V tomto rychlém startu se dozvíte, jak programově získat odpověď z publikované QnA Maker znalostní báze. Znalostní báze obsahuje otázky a odpovědi ze [zdrojů dat](../Concepts/data-sources-supported.md) , jako jsou nejčastější dotazy. [Otázka](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) se odešle do služby QnA maker. [Odpověď](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) obsahuje horní předpokládanou odpověď.
+V tomto rychlém startu se dozvíte, jak programově získat odpověď z publikované QnA Maker znalostní báze. Znalostní báze obsahuje otázky a odpovědi ze [zdrojů dat](../Concepts/knowledge-base.md) , jako jsou nejčastější dotazy. [Otázka](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) se odešle do služby QnA maker. [Odpověď](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) obsahuje horní předpokládanou odpověď.
 
 [Referenční dokumentace](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime) | [Ukázka](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/get-answer/get-answer-3x.py)
 

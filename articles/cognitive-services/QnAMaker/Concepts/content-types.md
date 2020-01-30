@@ -1,0 +1,178 @@
+---
+title: Typy obsahu – QnA Maker
+description: Mezi typy obsahu patří mnoho standardních strukturovaných dokumentů, jako jsou soubory PDF, DOC a TXT.
+services: cognitive-services
+ms.topic: conceptual
+ms.date: 01/27/2020
+ms.openlocfilehash: ac94f51fbe20c2efc277c084f9c704b5bcfa3a86
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843432"
+---
+# <a name="content-types-of-documents-you-can-add-to-a-knowledge-base"></a>Typy obsahu dokumentů, které můžete přidat do znalostní báze
+Mezi typy obsahu patří mnoho standardních strukturovaných dokumentů, jako jsou soubory PDF, DOC a TXT.
+
+## <a name="file-and-url-data-types"></a>Datové typy souborů a adres URL
+
+Následující tabulka shrnuje typy obsahu a souboru formáty, které podporuje QnA Maker.
+
+|Typ zdroje|Typ obsahu| Příklady|
+|--|--|--|
+|Adresa URL|Nejčastější dotazy<br> (Plochý, s oddíly nebo s domovskou stránkou témat)<br>Stránky podpory <br> (Články s návody na jednu stranu, články týkající se řešení potíží atd.)|[Jednoduché Nejčastější dotazy](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs) <br>[Nejčastější dotazy s odkazy](https://www.microsoft.com/en-us/software-download/faq)<br> [Nejčastější dotazy s domovskou stránkou s tématy](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[Článek podpory](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
+|SOUBOR PDF / DOC|Nejčastější<br> Ruční produkt,<br> Brožury,<br> Formátech<br> Zásady oznámení<br> Průvodce podporou,<br> Strukturované QnA,<br> atd.|[Strukturované QnA. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/structured.docx),<br> [Ukázka ručního produktu. PDF](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf),<br> [Ukázka semi-Structured. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Ukázka dokumentu White Paper. PDF](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf),<br>[Ukázka multi-Turn. docx](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)|
+|\* Excel|Strukturované QnA souboru<br> (včetně formátu RTF, HTML support)|[Ukázka QnA FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
+|\* TXT/TSV|Strukturované QnA souboru|[Ukázka chit-chat.tsv](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
+
+Pokud pro zdroj dat potřebujete ověření, zvažte následující metody pro získání tohoto obsahu do QnA Maker:
+
+* Stáhnout soubor ručně a importovat do QnA Maker
+* Přidat soubor z ověřeného [umístění služby SharePoint](../how-to/add-sharepoint-datasources.md)
+
+## <a name="url-content"></a>Obsah adresy URL
+
+Pomocí **adresy URL** v QnA maker lze importovat dva typy dokumentů:
+
+* Nejčastější dotazy týkající se adresy URL
+* Adresy URL podpory
+
+Každý typ indikuje očekávaný formát.
+
+## <a name="file-based-content"></a>Obsah založený na souborech
+
+Do znalostní báze můžete přidat soubory z veřejného zdroje nebo místního systému souborů na [portálu QnA maker](https://www.qnamaker.ai).
+
+## <a name="content-format-guidelines"></a>Pokyny pro formát obsahu
+
+QnA Maker přidá obsah souboru a adresy URL a převede obsah na QnA sady uložený jako Markdownu (`.md`). Obsah je vhodný pro znalostní bázi, kde je obsah uspořádán v některém strukturovaném tvaru a je reprezentován v dobře definovaných oddílech. Oddíly mohou být dále rozděleny do pododdílů nebo dílčích témat. Extrakce funguje nejlépe na obsahu, který má jasně strukturu s hierarchickými nadpisy.
+
+QnA Maker identifikuje oddíly a pododdíly a vztahy v obsahu na základě vizuálních vzhledů, jako je velikost písma, styl písma, číslování, barvy atd. Částečně strukturovaný obsah zahrnuje příručky, nejčastější dotazy, pokyny, zásady, brožury, letáky a mnoho dalších typů souborů.
+
+## <a name="faq-urls"></a>Nejčastější dotazy týkající se adresy URL
+
+Nástroj QnA Maker může podporovat nejčastější dotazy k webové stránky ve 3 různých podob: prostý nejčastější dotazy k stránky, stránky – nejčastější dotazy s odkazy, nejčastější dotazy týkající se stránky s domovskou stránku témata.
+
+
+### <a name="plain-faq-pages"></a>Jednoduché stránky – nejčastější dotazy
+
+Toto je nejběžnější typ stránku s nejčastějšími dotazy, ve kterém odpovědi bezprostředně následuje dotazy na stejné stránce.
+
+Níže je příklad prostý stránku s nejčastějšími dotazy:
+
+![Prostý příklad stránky – nejčastější dotazy pro znalostní báze](../media/qnamaker-concepts-datasources/plain-faq.png)
+
+
+### <a name="faq-pages-with-links"></a>Nejčastější dotazy týkající se stránky s odkazy
+
+V tomto typu stránku s nejčastějšími dotazy otázky jsou agregovány dohromady a jsou propojeny s odpovědí, které jsou v různých částech na stejné stránce nebo v různých stránkách.
+
+Níže je příklad stránky – nejčastější dotazy s odkazy v části, které jsou na stejné stránce:
+
+ ![Příklad stránky nejčastější dotazy týkající se propojení části pro znalostní báze](../media/qnamaker-concepts-datasources/sectionlink-faq.png)
+
+
+### <a name="faq-pages-with-a-topics-homepage"></a>Nejčastější dotazy týkající se stránky s domovskou stránku témata
+
+Tento typ nejčastější dotazy k má Domovská stránka s tématy, kde každé téma se odkaz na jeho odpovídající maximálně na jiné stránce. Nástroj QnA Maker procházení tady, všechny připojené stránky k extrakci odpovídající otázky a odpovědi.
+
+Níže je příklad stránky nejčastější dotazy k domovské stránce témata kde obsahuje odkazy na části Nejčastější dotazy týkající se různých stránkách.
+
+ ![Příklad stránky přímý odkaz na nejčastější dotazy pro znalostní báze](../media/qnamaker-concepts-datasources/topics-faq.png)
+
+
+### <a name="support-urls"></a>Adresy URL podpory
+
+QnA Maker může zpracovat částečně strukturované webové stránky podpory, jako jsou například webové články, které popisují, jak provést danou úlohu, jak diagnostikovat a vyřešit daný problém a jaké jsou osvědčené postupy pro daný proces. Extrakce funguje nejlépe na obsahu, který má jasně strukturu s hierarchickými nadpisy.
+
+> [!NOTE]
+> Extrakce článků podpory je nová funkce a je v rané fázi. Funguje nejlépe pro jednoduché stránky, které jsou dobře strukturované a neobsahují složitá záhlaví a zápatí.
+
+![QnA Maker podporuje extrakci z částečně strukturovaných webových stránek tam, kde je k dispozici jasná struktura s hierarchickými nadpisy.](../media/qnamaker-concepts-datasources/support-web-pages-with-heirarchical-structure.png)
+
+
+## <a name="pdf-doc-files"></a>Soubor PDF / DOC soubory
+
+Nástroj QnA Maker můžete zpracovat semistrukturovaná obsah v souboru PDF nebo dokumentu a převádět je do maximálně. Dobré soubor, který může být extrahována a je jedním obsah je uspořádaný v nějaké podobě strukturovaných kde je reprezentován v částech dobře definované. Oddíly lze dále rozdělit na témata nebo dílčí témata. Extrakce funguje nejlépe na dokumenty, které se mají Vymazat strukturu s hierarchické záhlaví.
+
+QnA Maker identifikuje oddíly a pododdíly a vztahy v souboru na základě vizuálních vzhledů, jako je velikost písma, styl písma, číslování, barvy atd. Částečně strukturované soubory PDF nebo DOC můžou být příručky, nejčastější dotazy, pokyny, zásady, brožury, letáky a mnoho dalších typů souborů. Níže jsou uvedeny některé typy příklad těchto souborů.
+
+### <a name="product-manuals"></a>Produktových příruček
+
+Ruční je obvykle pokyny materiál, který doprovází produktu. Umožňuje uživateli nastavit, použít, udržovat a řešit produktu. Nástroj QnA Maker zpracovává ruční, extrahuje položek a podpoložek jako dotazy a další obsah jako odpovědi. Podívejte se příklad [tady](https://download.microsoft.com/download/2/9/B/29B20383-302C-4517-A006-B0186F04BE28/surface-pro-4-user-guide-EN.pdf).
+
+Tady je příklad příručky s indexovou stránku a hierarchické obsahu
+
+ ![Ruční příklad znalostní bázi produktu](../media/qnamaker-concepts-datasources/product-manual.png)
+
+> [!NOTE]
+> Extrakce funguje nejlépe na příručky, které mají tabulku obsah a/nebo indexovou stránku a Vymazat strukturu s hierarchické záhlaví.
+
+### <a name="brochures-guidelines-papers-and-other-files"></a>Brožury, pokyny, papírů a další soubory
+
+Mnoho dalších typů dokumentů mohou být také zpracovány ke generování dvojice dotazů a odpovědí, za předpokladu, že máte Vymazat strukturu a rozložení. Patří mezi ně: brožury, pokyny, sestavy, dokumenty White Paper, vědecké dokumenty, zásady, knihy atd. [Tady se můžete](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx)podívat na příklad.
+
+Níže je příklad částečně strukturovaných dokumentů, bez indexu:
+
+ ![Azure Blob storage částečně strukturovaných dokumentů](../media/qnamaker-concepts-datasources/semi-structured-doc.png)
+
+### <a name="structured-qna-document"></a>Strukturovaný QnA dokument
+
+Formát pro strukturované – odpovědi na otázky v souborech DOC, je ve formě střídavé otázky a odpovědi na každém řádku jednu otázku na řádek následovaný jeho odpovědí na následujícím řádku, jak je znázorněno níže:
+
+```text
+Question1
+
+Answer1
+
+Question2
+
+Answer2
+```
+
+Níže je příklad strukturovaných QnA wordový dokument:
+
+ ![Strukturované příklad QnA dokument znalostní báze](../media/qnamaker-concepts-datasources/structured-qna-doc.png)
+
+## <a name="structured-txt-tsv-and-xls-files"></a>Strukturované *TXT*, *TSV* a *XLS* soubory
+
+Strukturované maximálně ve formě *.txt*, *TSV* nebo *.xls* soubory se také dají nahrát pro nástroj QnA Maker k vytvoření nebo upravte znalostní báze.  Toto může být prostý text nebo může mít obsah ve formátu RTF nebo HTML.
+
+| Otázka  | Odpověď  | Metadata (1 klíč: 1 hodnota) |
+|-----------|---------|-------------------------|
+| Question1 | Answer1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
+| Question2 | Answer2 |      `Key:Value`           |
+
+Žádné další sloupce ve zdrojovém souboru jsou ignorovány.
+
+### <a name="example-of-structured-excel-file"></a>Příklad strukturovaného excelového souboru
+
+Níže je příklad strukturovaných QnA *.xls* soubor s obsahem HTML:
+
+ ![Strukturované QnA excel příklad znalostní báze](../media/qnamaker-concepts-datasources/structured-qna-xls.png)
+
+### <a name="example-of-alternate-questions-for-single-answer-in-excel-file"></a>Příklad alternativních otázek pro jednu odpověď v excelovém souboru
+
+Níže je uveden příklad strukturovaného souboru QnA *. xls* , který má několik alternativních otázek pro jednu odpověď:
+
+ ![Příklad alternativních otázek pro jednu odpověď v excelovém souboru](../media/qnamaker-concepts-datasources/xls-alternate-question-example.png)
+
+Po importu souboru se dvojice otázka a odpověď nachází ve znalostní bázi, jak je znázorněno níže:
+
+ ![Snímek obrazovky s alternativními otázkami pro import jedné odpovědi do znalostní báze Knowledge Base](../media/qnamaker-concepts-datasources/xls-alternate-question-example-after-import.png)
+
+## <a name="formatting-considerations"></a>Důležité informace o formátování
+
+Po importu souboru nebo adresy URL QnA Maker převádí a ukládá obsah ve [formátu Markdownu](https://en.wikipedia.org/wiki/Markdown). Proces převodu přidá nové řádky do textu, například `\n\n`. Znalost formátu Markdownu vám pomůže pochopit převedený obsah a spravovat obsah znalostní báze.
+
+Pokud přidáte nebo upravíte svůj obsah přímo ve znalostní bázi, použijte **formátování Markdownu** k vytvoření formátovaného textu nebo změňte obsah formátu Markdownu, který je již v odpovědi. QnA Maker podporuje většinu formátu Markdownu, aby bylo možné do obsahu dostat možnosti formátovaného textu. Klientská aplikace, jako je například robot pro chat, nemusí podporovat stejnou sadu formátů Markdownu. Je důležité otestovat zobrazení odpovědí klientské aplikace.
+
+Další informace najdete v [referenční dokumentaci k QnA maker Markdownu](../reference-markdown-format.md).
+
+## <a name="testing-your-markdown"></a>Testování Markdownu
+
+Pomocí kurzu **[CommonMark](https://commonmark.org/help/tutorial/index.html)** ověřte své Markdownu. V tomto kurzu je funkce **vyzkoušet** pro rychlé kopírování a vkládání.
+
+## <a name="next-steps"></a>Další kroky
+
+* Vysvětlení, jak navrhovat a spravovat [sady otázek a odpovědí (QnA)](question-answer-set.md)

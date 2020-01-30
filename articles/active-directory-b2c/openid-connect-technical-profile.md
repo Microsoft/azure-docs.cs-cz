@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fdb925f820cad79fe68e7082f4ed63292a7d9444
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8bda1d3bcce37cbb7b5306d460bddd4652349fe9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951084"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840345"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu OpenID Connect v Azure Active Directory B2C vlastní zásady
 
@@ -103,6 +103,6 @@ Když nakonfigurujete identifikátor URI pro přesměrování poskytovatele iden
 
 Příklady:
 
-- [Přidání účtu Microsoft (MSA) jako zprostředkovatele identity pomocí vlastních zásad](active-directory-b2c-custom-setup-msa-idp.md)
-- [Přihlášení pomocí účtů Azure AD](active-directory-b2c-setup-aad-custom.md)
-- [Umožňuje uživatelům přihlásit se k poskytovateli identit Azure AD s více klienty pomocí vlastních zásad.](active-directory-b2c-setup-commonaad-custom.md)
+- [Přidání účtu Microsoft (MSA) jako zprostředkovatele identity pomocí vlastních zásad](identity-provider-microsoft-account-custom.md)
+- [Přihlášení pomocí účtů Azure AD](identity-provider-azure-ad-single-tenant-custom.md)
+- [Umožňuje uživatelům přihlásit se k poskytovateli identit Azure AD s více klienty pomocí vlastních zásad.](identity-provider-azure-ad-multi-tenant-custom.md)

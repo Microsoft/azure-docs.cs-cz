@@ -1,7 +1,7 @@
 ---
-title: Vytvoření virtuální sítě – rychlý start – Azure CLI
+title: Vytvoření virtuální sítě – rychlý Start – Azure CLI
 titlesuffix: Azure Virtual Network
-description: V tomto rychlém startu zjistíte, jak vytvořit virtuální síť pomocí Azure CLI. Virtuální síť umožňuje prostředkům Azure, jako jsou virtuální počítače, komunikovat soukromě mezi sebou a s Internetem.
+description: V tomto rychlém startu se naučíte vytvořit virtuální síť pomocí Azure CLI. Virtuální síť umožňuje prostředkům Azure, jako jsou virtuální počítače, komunikovat soukromě mezi sebou a s internetem.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -11,34 +11,34 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 12/12/2018
+ms.date: 01/22/2019
 ms.author: kumud
-ms.openlocfilehash: 6306d893f491f93cc31b7e478afe5632e997285c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3cbfee90997c6b7cd9df1ec76543d77a4402100f
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64692646"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774522"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>Rychlý start: Vytvoření virtuální sítě pomocí Azure CLI
 
-Virtuální síť umožňuje prostředkům Azure, jako jsou virtuální počítače (VM), komunikovat soukromě mezi sebou a s Internetem. V tomto rychlém startu zjistíte, jak vytvořit virtuální síť. Po vytvoření virtuální sítě do ní nasadíte dva virtuální počítače. Potom z Internetu připojit k virtuálním počítačům a komunikovat soukromě mezi za novou virtuální síť.
+Virtuální síť umožňuje prostředkům Azure, jako jsou virtuální počítače, komunikovat soukromě mezi sebou a s internetem. V tomto rychlém startu zjistíte, jak vytvořit virtuální síť. Po vytvoření virtuální sítě do ní nasadíte dva virtuální počítače. Pak se k virtuálním počítačům připojíte z Internetu a soukromě komunikujte přes novou virtuální síť.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si teď [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure místně místo toho tento rychlý start vyžaduje použití Azure CLI verze 2.0.28 nebo novější. Nainstalovanou verzi zjistíte spuštěním `az --version`. Zobrazit [instalace Azure CLI](/cli/azure/install-azure-cli) pro instalaci nebo upgradu informace.
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte použít Azure CLI verze 2.0.28 nebo novější. Nainstalovanou verzi zjistíte spuštěním `az --version`. Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) .
 
-## <a name="create-a-resource-group-and-a-virtual-network"></a>Vytvořte skupinu prostředků a virtuální sítě
+## <a name="create-a-resource-group-and-a-virtual-network"></a>Vytvoření skupiny prostředků a virtuální sítě
 
-Než vytvoříte virtuální síť, je nutné vytvořit skupinu prostředků k hostování ve virtuální síti. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Tento příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v *eastus* umístění:
+Než budete moct vytvořit virtuální síť, musíte vytvořit skupinu prostředků, která bude hostovat virtuální síť. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Tento příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* :
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Vytvořte virtuální síť pomocí příkazu [az network vnet create](/cli/azure/network/vnet). Tento příklad vytvoří výchozí virtuální síť s názvem *myVirtualNetwork* s jednou podsítí *výchozí*:
+Vytvořte virtuální síť pomocí příkazu [az network vnet create](/cli/azure/network/vnet). Tento příklad vytvoří výchozí virtuální síť s názvem *myVirtualNetwork* s jednou podsítí s názvem *Default*:
 
 ```azurecli-interactive
 az network vnet create \
@@ -53,7 +53,7 @@ Vytvořte ve virtuální síti dva virtuální počítače.
 
 ### <a name="create-the-first-vm"></a>Vytvoření prvního virtuálního počítače
 
-Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Pokud ve výchozím umístění klíčů ještě neexistují klíče SSH, příkaz je vytvoří. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`. Pomocí možnosti `--no-wait` se virtuální počítač vytvoří na pozadí, takže můžete pokračovat k dalšímu kroku. Tento příklad vytvoří virtuální počítač s názvem *myVm1*:
+Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Pokud klíče SSH ve výchozím umístění klíče ještě neexistují, příkaz je vytvoří. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`. Pomocí možnosti `--no-wait` se virtuální počítač vytvoří na pozadí, takže můžete pokračovat k dalšímu kroku. Tento příklad vytvoří virtuální počítač s názvem *myVm1*:
 
 ```azurecli-interactive
 az vm create \
@@ -66,7 +66,7 @@ az vm create \
 
 ### <a name="create-the-second-vm"></a>Vytvoření druhého virtuálního počítače
 
-Protože jste použili `--no-wait` možnost v předchozím kroku, vám pokračujte a vytvořte druhý virtuální počítač s názvem *myVm2*.
+Vzhledem k tomu, že jste v předchozím kroku použili možnost `--no-wait`, můžete pokračovat a vytvořit druhý virtuální počítač s názvem *myVm2*.
 
 ```azurecli-interactive
 az vm create \
@@ -76,9 +76,9 @@ az vm create \
   --generate-ssh-keys
 ```
 
-### <a name="azure-cli-output-message"></a>Azure CLI výstupní zpráva
+### <a name="azure-cli-output-message"></a>Výstupní zpráva Azure CLI
 
-Vytvoření virtuálních počítačů trvá několik minut. Když Azure vytvářet virtuální počítače, Azure CLI vrátí výstup podobný tomuto:
+Vytvoření virtuálních počítačů trvá několik minut. Po vytvoření virtuálních počítačů Azure CLI vrátí výstup podobný tomuto:
 
 ```azurecli
 {
@@ -94,11 +94,11 @@ Vytvoření virtuálních počítačů trvá několik minut. Když Azure vytvá�
 }
 ```
 
-Poznamenejte si hodnotu **publicIpAddress**. Tuto adresu použijete pro připojení k virtuálnímu počítači z Internetu v dalším kroku.
+Poznamenejte si hodnotu **publicIpAddress**. Tato adresa se použije k připojení k virtuálnímu počítači z Internetu v dalším kroku.
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Připojení k virtuálnímu počítači z internetu
 
-V tomto příkazu nahraďte `<publicIpAddress>` s veřejnou IP adresu vašeho *myVm2* virtuálního počítače:
+V tomto příkazu nahraďte `<publicIpAddress>` veřejnou IP adresou vašeho virtuálního počítače *myVm2* :
 
 ```bash
 ssh <publicIpAddress>
@@ -106,26 +106,26 @@ ssh <publicIpAddress>
 
 ## <a name="communicate-between-vms"></a>Komunikace mezi virtuálními počítači
 
-Chcete ověřit soukromou komunikaci mezi *myVm2* a *myVm1* virtuální počítače, zadejte tento příkaz:
+Pokud chcete potvrdit privátní komunikaci mezi virtuálními počítači *myVm2* a *myVm1* , zadejte tento příkaz:
 
 ```bash
 ping myVm1 -c 4
 ```
 
-Obdržíte čtyři odpovědi z *10.0.0.4*.
+Dostanete čtyři odpovědi od *10.0.0.4*.
 
 Ukončete relaci SSH s virtuálním počítačem *myVm2*.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete použít [odstranění skupiny az](/cli/azure/group) k odebrání skupiny prostředků a všechny prostředky, které obsahuje:
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků, které obsahuje, použít příkaz [AZ Group Delete](/cli/azure/group) :
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili výchozí virtuální síť a dva virtuální počítače. Připojení k jednomu virtuálnímu počítači z Internetu a Navázali jste soukromou komunikaci mezi dvěma virtuálními počítači. Další informace o nastavení virtuální sítě najdete v tématu [Správa virtuální sítě](manage-virtual-network.md).
+V tomto rychlém startu jste vytvořili výchozí virtuální síť a dva virtuální počítače. Připojili jste se k jednomu virtuálnímu počítači z Internetu a komunikovali soukromě mezi těmito dvěma virtuálními počítači. Další informace o nastavení virtuální sítě najdete v tématu [Správa virtuální sítě](manage-virtual-network.md).
 
-Azure umožňuje neomezenou soukromou komunikaci mezi virtuálními počítači. Ve výchozím nastavení Azure pouze umožní příchozí připojení ke vzdálené ploše pro virtuální počítače s Windows z Internetu. Další informace o konfiguraci různých typů síťové komunikace mezi virtuálním počítači, přejděte [filtrování síťového provozu](tutorial-filter-network-traffic.md) kurzu.
+Azure umožňuje neomezenou soukromou komunikaci mezi virtuálními počítači. Azure ve výchozím nastavení umožňuje pouze příchozí připojení vzdálené plochy k virtuálním počítačům s Windows z Internetu. Další informace o konfiguraci různých typů síťových komunikací virtuálních počítačů najdete v kurzu [filtrování síťového provozu](tutorial-filter-network-traffic.md) .

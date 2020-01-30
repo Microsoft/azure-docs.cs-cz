@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f005266b6e2e12a13f79b3f2007b1bbbafb4acef
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 1b5ebbcd3a891149a72b3dbe8cb19b3c8de528a1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311560"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773773"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí Azure CLI
 
@@ -73,7 +73,7 @@ Zadáním následujících příkazů vytvořte tajný klíč v Key Vault s náz
 az keyvault secret set --vault-name "Contoso-Vault2" --name "ExamplePassword" --value "hVFkk965BuUv"
 ```
 
-Nyní na toto heslo, které jste přidali do služby Azure Key Vault, můžete odkazovat pomocí jeho identifikátoru URI. Aktuální verzi získáte pomocí **https://ContosoVault.vault.azure.net/secrets/ExamplePassword** . 
+Nyní na toto heslo, které jste přidali do služby Azure Key Vault, můžete odkazovat pomocí jeho identifikátoru URI. Aktuální verzi získáte pomocí **https://Contoso-Vault2.vault.azure.net/secrets/ExamplePassword** . 
 
 Pokud chcete zobrazit hodnotu v tajném kódu jako prostý text:
 

@@ -3,12 +3,12 @@ title: Nastavit Azure Active Directory pro ověřování klientů
 description: Přečtěte si, jak nastavit Azure Active Directory (Azure AD) pro ověřování klientů pro Service Fabric clustery.
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: bbad991e955a31e3f3c53931889f630e521e1a8c
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 2a6ffdb1c1fdc447545477286a6d131be2449cdb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614685"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843816"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Nastavit Azure Active Directory pro ověřování klientů
 
@@ -104,9 +104,19 @@ Při pokusu o přihlášení ke službě Azure AD v Service Fabric Explorer vrá
 Aplikace clusteru (Web), která představuje Service Fabric Explorer se pokouší o ověření vůči službě Azure AD a jako součást požadavku, poskytuje návratovou adresu URL pro přesměrování. Adresa URL ale není uvedená v seznamu **adres URL odpovědi** aplikace Azure AD.
 
 #### <a name="solution"></a>Řešení
-Na stránce AAD vyberte Registrace aplikací, vyberte svou aplikaci clusteru a pak vyberte tlačítko **adresy URL odpovědi** . Na stránce odpovědi na adresy URL přidejte adresu URL Service Fabric Explorer do seznamu nebo nahraďte jednu z položek v seznamu. Po dokončení změny uložte.
+Na stránce Azure AD vyberte **Registrace aplikací**, vyberte svou aplikaci v clusteru a pak vyberte **adresy URL odpovědí**. V podokně **adresy URL odpovědi** přidejte Service Fabric Explorer URL do seznamu nebo nahraďte jednu z položek v seznamu. Uložte změnu.
 
 ![Adresa URL odpovědi webové aplikace][web-application-reply-url]
+
+### <a name="connecting-to-the-cluster-using-azure-ad-authentication-via-powershell-gives-an-error-when-you-sign-in-aadsts50011"></a>Připojení ke clusteru pomocí ověřování Azure AD prostřednictvím PowerShellu přináší při přihlášení chybu: "AADSTS50011"
+#### <a name="problem"></a>Problém
+Když se pokusíte připojit ke clusteru Service Fabric pomocí Azure AD přes PowerShell, přihlašovací stránka vrátí chybu: "AADSTS50011: adresa URL odpovědi zadaná v požadavku neodpovídá adresám URL odpovědí nakonfigurovaným pro aplikaci: &lt;GUID&gt;."
+
+#### <a name="reason"></a>Důvod
+Podobně jako u předchozího problému se PowerShell pokusí ověřit vůči službě Azure AD, která poskytuje adresu URL pro přesměrování, která není uvedená v seznamu **adres URL odpovědí** aplikace Azure AD.  
+
+#### <a name="solution"></a>Řešení
+Použijte stejný proces jako v předchozím problému, ale adresa URL musí být nastavená na `urn:ietf:wg:oauth:2.0:oob`, speciální přesměrování pro ověřování pomocí příkazového řádku.
 
 ### <a name="connect-the-cluster-by-using-azure-ad-authentication-via-powershell"></a>Připojení clusteru pomocí ověřování Azure AD prostřednictvím PowerShellu
 Pokud chcete připojit Cluster Service Fabric, použijte následující příklad příkazu PowerShellu:

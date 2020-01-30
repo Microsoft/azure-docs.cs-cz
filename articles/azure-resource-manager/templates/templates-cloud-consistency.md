@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 0e4dd67e1686d3b63376138d1be2d1f7df4bb41a
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: fa0df19053c3c238e3c00c46733cb4626dd64072
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290644"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773133"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Vývoj šablon Azure Resource Manageru pro zajištění konzistence cloudu
 
@@ -449,7 +449,7 @@ Obecně se vyhýbejte koncové body pevně zakódované v šabloně. Osvědčen�
 Následující funkce šablony odkaz načte obor názvů koncového bodu z poskytovatele prostředků úložiště:
 
 ```json
-"diskUri":"[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2015-06-15').primaryEndpoints.blob, 'container/myosdisk.vhd')]"
+"diskUri":"[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))).primaryEndpoints.blob, 'container/myosdisk.vhd')]"
 ```
 
 Tak, že nahradíte hodnotu pevně zakódované koncový bod účtu úložiště se `reference` funkce šablony, můžete použít stejnou šablonu k nasazení do různých prostředí úspěšně bez provedení změn v referenci koncového bodu.
@@ -487,7 +487,7 @@ K načtení seznamu dostupných imagí virtuálních počítačů v umístění,
 az vm image list -all
 ```
 
-Můžete načíst stejného seznamu pomocí rutiny prostředí Azure PowerShell [Get-AzureRmVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) a zadejte umístění, které chcete, aby se `-Location` parametru. Například:
+Můžete načíst stejného seznamu pomocí rutiny prostředí Azure PowerShell [Get-AzureRmVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) a zadejte umístění, které chcete, aby se `-Location` parametru. Příklad:
 
 ```azurepowershell-interactive
 Get-AzureRmVMImagePublisher -Location "West Europe" | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRmVMImage
@@ -590,7 +590,7 @@ Chcete-li načíst seznam rozšíření virtuálních počítačů, které jsou 
 az vm extension image list --location myLocation
 ```
 
-Můžete taky spustit rutinu prostředí Azure PowerShell [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) rutiny a použít `-Location` k určení umístění image virtuálního počítače. Například:
+Můžete taky spustit rutinu prostředí Azure PowerShell [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) rutiny a použít `-Location` k určení umístění image virtuálního počítače. Příklad:
 
 ```azurepowershell-interactive
 Get-AzureRmVmImagePublisher -Location myLocation | Get-AzureRmVMExtensionImageType | Get-AzureRmVMExtensionImage | Select Type, Version

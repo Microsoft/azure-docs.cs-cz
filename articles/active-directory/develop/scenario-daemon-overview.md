@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: af4b00a630c2fc7d1b806a98f537e8635807609e
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: ffbad5981f29ade9f27a434a9273969af4ed82de
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702245"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773408"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>Scénář: aplikace démona, která volá webová rozhraní API
 
@@ -39,27 +39,27 @@ Vaše aplikace může získat token pro volání webového rozhraní API jménem
 Tady je několik příkladů případů použití pro aplikace démona:
 
 - Webové aplikace, které se používají ke zřizování nebo správě uživatelů nebo zpracování procesů Batch v adresáři
-- Aplikace klasické pracovní plochy (například služby systému Windows ve Windows nebo procesy démony na platformě Linux), které provádějí dávkové úlohy nebo služby operačního systému spuštěné na pozadí
+- Aplikace klasické pracovní plochy (například služby systému Windows v procesech Windows nebo démon na platformě Linux), které provádějí dávkové úlohy nebo služby operačního systému běžící na pozadí
 - Webová rozhraní API, která potřebují manipulovat s adresáři, ne konkrétními uživateli
 
-K dispozici je jiný běžný případ, kdy aplikace bez démona používají přihlašovací údaje klienta: i když jednají jménem uživatelů, potřebují přístup k webovému rozhraní API nebo prostředku s jejich identitou z technických důvodů. Příkladem je přístup k tajným klíčům v trezoru klíčů nebo službě Azure SQL Database pro mezipaměť.
+Existují další běžné případy, kdy aplikace bez démona používají přihlašovací údaje klienta: i když jednají jménem uživatelů, potřebují pro technické důvody přístup k webovému rozhraní API nebo prostředku v rámci vlastní identity. Příkladem je přístup k tajným klíčům v Azure Key Vault nebo databázi SQL Azure pro mezipaměť.
 
 Aplikace, které získají token pro vlastní identity:
 
-- jsou důvěrné klientské aplikace. Tyto aplikace, vzhledem k tomu, že získají přístup k prostředkům nezávisle na uživateli, musí prokázat jejich identitu. Místo toho jsou taky citlivé aplikace, které je potřeba schválit správci tenanta Azure Active Directory (Azure AD).
-- Zaregistrovali jste tajný klíč (heslo aplikace nebo certifikát) ve službě Azure AD. Tento tajný klíč se předává v průběhu volání služby Azure AD za účelem získání tokenu.
+- jsou důvěrné klientské aplikace. Tyto aplikace, vzhledem k tomu, že získají přístup k prostředkům nezávisle na uživatelích, musí prokázat jejich identitu. Jsou také místo citlivých aplikací. Musí je schválit správci tenanta Azure Active Directory (Azure AD).
+- Zaregistrovali jste tajný klíč (heslo aplikace nebo certifikát) ve službě Azure AD. Tento tajný klíč se předává během volání služby Azure AD za účelem získání tokenu.
 
 ## <a name="specifics"></a>Specifika
 
 > [!IMPORTANT]
 >
-> - Interakce uživatele není u aplikace démona možná. Aplikace démona vyžaduje svoji vlastní identitu. Tento typ aplikace požaduje přístupový token pomocí jeho identity aplikace a předvádí jeho ID aplikace, pověření (heslo nebo certifikátu) a identifikátor URI ID aplikace do služby Azure AD. Po úspěšném ověření získá démon token přístupu (a obnovovací token) z koncového bodu Microsoft Identity Platform, který je pak použit k volání webového rozhraní API (a je podle potřeby aktualizován).
-> - Vzhledem k tomu, že interakce uživatele není možná, nebude možné přírůstkové vyjádření souhlasu. Všechna požadovaná oprávnění rozhraní API je potřeba nakonfigurovat při registraci aplikace a kód aplikace pouze žádá staticky definovaná oprávnění. To také znamená, že aplikace démona nebude podporovat přírůstkový souhlas.
+> - Uživatelé nemůžou pracovat s aplikací démona. Aplikace démona vyžaduje svoji vlastní identitu. Tento typ aplikace požaduje přístupový token pomocí jeho identity aplikace a předvádí jeho ID aplikace, pověření (heslo nebo certifikátu) a identifikátor URI ID aplikace do služby Azure AD. Po úspěšném ověření dostane démon token přístupu (a obnovovací token) z koncového bodu Microsoft Identity Platform. Pomocí tohoto tokenu se pak zavolá webové rozhraní API (a aktualizuje se podle potřeby).
+> - Vzhledem k tomu, že uživatelé nemůžou pracovat s aplikacemi démona, není možné používat přírůstkový souhlas. Všechna požadovaná oprávnění rozhraní API je potřeba nakonfigurovat při registraci aplikace. Kód aplikace pouze žádá o staticky definovaná oprávnění. To také znamená, že aplikace démona nebude podporovat přírůstkový souhlas.
 
 Pro vývojáře mají koncová prostředí pro tento scénář následující aspekty:
 
-- Aplikace démona můžou pracovat jenom v klientech Azure AD. Nesmyslem je vytvořit aplikaci démona, která se pokusí manipulovat s osobními účty Microsoft. Pokud jste vývojář pro obchodní aplikace (LOB), vytvoříte v tenantovi aplikaci démona. Pokud jste nezávislý výrobce softwaru, možná budete chtít vytvořit aplikaci démona s více klienty. Bude muset být odsouhlasena každým správcem tenanta.
-- V průběhu [Registrace aplikace](./scenario-daemon-app-registration.md)není **identifikátor URI odpovědi** potřeba. Potřebujete sdílet tajné klíče, certifikáty nebo podepsané kontrolní výrazy s Azure AD a musíte požádat o oprávnění aplikací a udělit souhlas správce, aby tato oprávnění aplikace používal.
+- Aplikace démona můžou pracovat jenom v klientech Azure AD. Nesmyslem je vytvořit aplikaci démona, která se pokusí manipulovat s osobními účty Microsoft. Pokud jste vývojář pro obchodní aplikace (LOB), vytvoříte v tenantovi aplikaci démona. Pokud jste nezávislý výrobce softwaru, možná budete chtít vytvořit víceklientské aplikace démona. Každý správce tenanta bude muset poskytnout souhlas.
+- Během [Registrace aplikace](./scenario-daemon-app-registration.md)není nutné identifikátor URI odpovědi. Ke sdílení tajných kódů a certifikátů nebo podepsanou kontrolní výrazy můžete používat Azure AD. Musíte také požádat o oprávnění aplikace a udělit souhlas správce k používání oprávnění aplikace.
 - [Konfigurace aplikace](./scenario-daemon-app-configuration.md) musí při registraci aplikace zadat přihlašovací údaje klienta jako sdílené se službou Azure AD.
 - [Rozsah](scenario-daemon-acquire-token.md#scopes-to-request) použitý k získání tokenu s tokem pověření klienta musí být statickým oborem.
 

@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ed5e5c63bed90136e498491a6735cbaa127cf1f9
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: d7853d388b9159328a515818697ba9ddd5b95637
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689682"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773180"
 ---
 # <a name="tutorial-add-tags-in-your-resource-manager-template"></a>Kurz: Přidání značek do šablony Správce prostředků
 
@@ -26,7 +26,7 @@ Musíte mít Visual Studio Code s rozšířením Správce prostředků Tools a b
 
 Předchozí šablona nasadila účet úložiště, App Service plán a webovou aplikaci.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json":::
 
 Po nasazení těchto prostředků možná budete potřebovat sledovat náklady a hledat prostředky, které patří do určité kategorie. Můžete přidat značky, které vám pomohou tyto problémy vyřešit.
 
@@ -36,7 +36,7 @@ Prostředky označíte přidáním hodnot, které vám pomůžou identifikovat j
 
 Následující příklad zvýrazní změny šablony. Zkopírujte celý soubor a nahraďte šablonu jeho obsahem.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json?range=1-118&highlight=46-52,64,86,103)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json" range="1-118" highlight="46-52,64,78,102":::
 
 ## <a name="deploy-template"></a>Nasazení šablony
 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 673807377914aabad5b90d1ac2ecc16623870d30
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 5737a53d3eca0da440f178f9fd34adf5e968dd62
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063360"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840175"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -38,15 +38,15 @@ Vlastní zásady jsou reprezentovány jako jeden nebo více souborů ve formátu
 
 Element **TrustFrameworkPolicy** obsahuje následující atributy:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 |---------- | -------- | ----------- |
-| PolicySchemaVersion | Ano | Verze schématu, která se má použít ke spuštění zásad. Hodnota musí být`0.3.0.0` |
+| PolicySchemaVersion | Ano | Verze schématu, která se má použít ke spuštění zásad. Hodnota musí být `0.3.0.0` |
 | TenantObjectId | Ne | Jedinečný identifikátor objektu klienta Azure Active Directory B2C (Azure AD B2C). |
 | TenantId | Ano | Jedinečný identifikátor tenanta, ke kterému patří tato zásada |
-| `PolicyId` | Ano | Jedinečný identifikátor pro zásady Tento identifikátor musí být předponou *B2C_1A_* . |
+| `PolicyId` | Ano | Jedinečný identifikátor pro zásady Tento identifikátor musí být předponou *B2C_1A_* |
 | PublicPolicyUri | Ano | Identifikátor URI pro zásadu, která je kombinací ID tenanta a ID zásad. |
-| DeploymentMode | Ne | Možné hodnoty: `Production`, `Debugging`, nebo `Development`. `Production` je výchozí možnost. Tato vlastnost slouží k ladění zásad. Další informace najdete v tématu [shromažďování protokolů](active-directory-b2c-troubleshoot-custom.md). |
-| UserJourneyRecorderEndpoint | Ne | Koncový bod, který se používá , pokud je DeploymentMode `Development`nastaveno na. Hodnota musí být `urn:journeyrecorder:applicationinsights`. Další informace najdete v tématu [shromažďování protokolů](active-directory-b2c-troubleshoot-custom.md). |
+| DeploymentMode | Ne | Možné hodnoty: `Production`, `Debugging`nebo `Development`. `Production` je výchozí možnost. Tato vlastnost slouží k ladění zásad. Další informace najdete v tématu [shromažďování protokolů](troubleshoot-with-application-insights.md). |
+| UserJourneyRecorderEndpoint | Ne | Koncový bod, který se používá, když je **DeploymentMode** nastaveno na `Development`. Hodnota musí být `urn:journeyrecorder:applicationinsights`. Další informace najdete v tématu [shromažďování protokolů](troubleshoot-with-application-insights.md). |
 
 
 Následující příklad ukazuje, jak zadat element **TrustFrameworkPolicy** :
@@ -80,7 +80,7 @@ Model dědičnosti je následující:
 - Podřízená zásada na libovolné úrovni může dědit z nadřazené zásady a rozšiřuje ji přidáním nových elementů.
 - Počet úrovní není nijak omezený.
 
-Další informace najdete v tématu [Začínáme s vlastními zásadami](active-directory-b2c-get-started-custom.md).
+Další informace najdete v tématu [Začínáme s vlastními zásadami](custom-policy-get-started.md).
 
 ## <a name="base-policy"></a>Základní zásady
 
@@ -88,13 +88,13 @@ Aby bylo možné dědit zásadu z jiné zásady, musí být deklarován element 
 
 Element **BasePolicy** obsahuje následující prvky:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskytů | Popis |
 | ------- | ----------- | --------|
 | TenantId | 1:1 | Identifikátor vašeho tenanta Azure AD B2C. |
 | `PolicyId` | 1:1 | Identifikátor nadřazené zásady |
 
 
-Následující příklad ukazuje, jak zadat základní zásady. Tato zásada **B2C_1A_TrustFrameworkExtensions** je odvozená od zásad **B2C_1A_TrustFrameworkBase** .
+Následující příklad ukazuje, jak zadat základní zásady. Tato zásada **B2C_1A_TrustFrameworkExtensions** se odvozuje od zásad **B2C_1A_TrustFrameworkBase** .
 
 ``` XML
 <TrustFrameworkPolicy
@@ -120,7 +120,7 @@ Aplikace předávající strany, jako je například webová, mobilní nebo desk
 
 V souboru zásad RP zadáte element **DefaultUserJourney** , který odkazuje na [UserJourney](userjourneys.md). Cesta uživatele je obvykle definovaná v zásadách základní nebo rozšíření.
 
-Zásady B2C_1A_signup_signin:
+Zásada B2C_1A_signup_signin:
 
 ```XML
 <RelyingParty>
@@ -138,7 +138,7 @@ B2C_1A_TrustFrameWorkBase nebo B2C_1A_TrustFrameworkExtensionPolicy:
 
 Cesta uživatele definuje obchodní logiku, kterou uživatel prochází. Každou cestu uživatele tvoří sadu kroků orchestrace, které provádějí řadu akcí, a to v pořadí podle ověřování a shromažďování informací.
 
-Soubor zásad **SocialAndLocalAccounts** v [úvodní](active-directory-b2c-get-started-custom.md#custom-policy-starter-pack) sadě obsahuje cesty uživatelů v SignUpOrSignIn, ProfileEdit a PasswordReset. Můžete přidat další cesty uživatelů pro jiné scénáře, jako je například změna e-mailové adresy nebo propojení a odpojení účtu sociální sítě.
+Soubor zásad **SocialAndLocalAccounts** v [úvodní](custom-policy-get-started.md#custom-policy-starter-pack) sadě obsahuje cesty uživatelů v SignUpOrSignIn, ProfileEdit a PasswordReset. Můžete přidat další cesty uživatelů pro jiné scénáře, jako je například změna e-mailové adresy nebo propojení a odpojení účtu sociální sítě.
 
 Kroky orchestrace můžou zavolat na [technický profil](technicalprofiles.md). Technický profil poskytuje rozhraní s integrovaným mechanismem pro komunikaci s různými typy stran. Technický profil může například provádět tyto akce mimo jiné:
 

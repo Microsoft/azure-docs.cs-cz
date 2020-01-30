@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 10/24/2019
+ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 5aa4cc24484a4ba1da608da9676ade492db35b6c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9f25c845302d62e3bc9e230b4a6f8f2669f4ac35
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72936011"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774270"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Kurz: střední příspěvky a příkazy Facebooku pomocí Azure Content Moderator
 
@@ -35,9 +35,9 @@ Tento diagram znázorňuje jednotlivé komponenty tohoto scénáře:
 ![Diagram Content Moderator přijímání informací z Facebooku prostřednictvím "FBListener" a odesílání informací prostřednictvím "CMListener"](images/tutorial-facebook-moderation.png)
 
 > [!IMPORTANT]
-> V 2018 byla Facebook implementovala přísnější dozvíte ČSFD aplikací z Facebooku. Kroky tohoto kurzu nebudete moci dokončit, pokud vaše aplikace nebyla přezkoumána a schválena v rámci týmu pro kontrolu Facebooku.
+> V 2018 byla Facebook implementovala přísnější zásady dozvíte ČSFD pro aplikace Facebook. Kroky tohoto kurzu nebudete moci dokončit, pokud vaše aplikace nebyla přezkoumána a schválena v rámci týmu pro kontrolu Facebooku.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Klíč předplatného Content Moderatoru. Podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) se přihlaste k odběru služby Content moderator a Získejte svůj klíč.
 - [Účet Facebook](https://www.facebook.com/).

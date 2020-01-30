@@ -8,23 +8,24 @@ ms.custom: seo-javascript-september2019, seo-javascript-october2019
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 44d99a9420fc33bdd01c05fdb04d94671b7c815b
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: ca3a8bb093e81404da638ff869e05b5a4626626e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592351"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774839"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití Node. js k připojení a dotazování dat v Azure Database for PostgreSQL-Single server
-Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for PostgreSQL pomocí aplikace [Node.js](https://nodejs.org/). Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Kroky v tomto článku předpokládají, že máte zkušenosti s vývojem pomocí Node.js a teprve začínáte pracovat se službou Azure Database for PostgreSQL.
 
-## <a name="prerequisites"></a>Předpoklady
-Tento rychlý start využívá jako výchozí bod prostředky vytvořené v některém z těchto průvodců:
-- [Vytvoření databáze – portál](quickstart-create-server-database-portal.md)
-- [Vytvoření databáze – rozhraní příkazového řádku](quickstart-create-server-database-azure-cli.md)
+V tomto rychlém startu se připojíte k Azure Database for PostgreSQL pomocí aplikace Node. js. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Kroky v tomto článku předpokládají, že máte zkušenosti s vývojem pomocí Node.js a teprve začínáte pracovat se službou Azure Database for PostgreSQL.
 
-Budete také muset:
-- Instalovat [Node.js](https://nodejs.org)
+## <a name="prerequisites"></a>Požadavky
+
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+
+- Dokončení [rychlého startu: vytvoření serveru Azure Database for PostgreSQL v Azure Portal](quickstart-create-server-database-portal.md) nebo [rychlém startu: vytvoření Azure Database for POSTGRESQL pomocí Azure CLI](quickstart-create-server-database-azure-cli.md).
+
+- [Node.js](https://nodejs.org)
 
 ## <a name="install-pg-client"></a>Instalace klienta pg
 Nainstalovat [pg](https://www.npmjs.com/package/pg), což je klient PostgreSQL pro Node.js.
@@ -42,17 +43,17 @@ npm list
 ## <a name="get-connection-information"></a>Získání informací o připojení
 Získejte informace o připojení potřebné pro připojení ke službě Azure Database for PostgreSQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. V nabídce vlevo v Azure Portal vyberte **všechny prostředky**a potom vyhledejte server, který jste vytvořili (například **mydemoserver**).
-3. Vyberte název serveru.
-4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
- ![Azure databáze pro připojovací řetězec PostgreSQL ](./media/connect-nodejs/server-details-azure-database-postgresql.png)
+1. V [Azure Portal](https://portal.azure.com/)vyhledejte a vyberte server, který jste vytvořili (například **mydemoserver**).
+
+1. Na panelu **Přehled** serveru si poznamenejte **název serveru** a **uživatelské jméno správce**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
+
+   ![Připojovací řetězec Azure Database for PostgreSQL](./media/connect-nodejs/server-details-azure-database-postgresql.png)
 
 ## <a name="running-the-javascript-code-in-nodejs"></a>Spuštění kódu jazyka JavaScript v Node.js
 Node.js můžete spouštět z prostředí Bash, Terminálu nebo příkazového řádku Windows tak, že zadáte `node` a potom interaktivně spustíte příklad kódu jazyka JavaScript tak, že ho zkopírujete a vložíte na příkazový řádek. Případně můžete kód jazyka JavaScript uložit do textového souboru a provést příkaz `node filename.js`, kdy název souboru se bude shodovat s parametrem, který ho spouští.
 
 ## <a name="connect-create-table-and-insert-data"></a>Připojení, vytvoření tabulky a vložení dat
-Použijte následující kód k připojení a načtení dat pomocí příkazů **CREATE TABLE** a **INSERT INTO** jazyka SQL.
+Použijte následující kód k připojení a načtení dat pomocí příkazů jazyka SQL **CREATE TABLE** a **INSERT INTO**.
 Objekt [pg.Client](https://github.com/brianc/node-postgres/wiki/Client) slouží k vytvoření rozhraní pro server PostgreSQL. Funkce [pg.Client.connect()](https://github.com/brianc/node-postgres/wiki/Client#method-connect) se používá k navázání připojení k serveru. Funkce [pg.Client.query()](https://github.com/brianc/node-postgres/wiki/Query) se používá k provedení dotazu SQL na databázi PostgreSQL. 
 
 Nahraďte parametry host (hostitel), dbname (název databáze), user (uživatel) a password (heslo) hodnotami, které jste zadali při vytváření serveru a databáze.
@@ -152,7 +153,7 @@ function queryDatabase() {
 ```
 
 ## <a name="update-data"></a>Aktualizace dat
-Použijte následující kód k připojení a čtení dat pomocí příkazu **UPDATE** jazyka SQL. Objekt [pg.Client](https://github.com/brianc/node-postgres/wiki/Client) slouží k vytvoření rozhraní pro server PostgreSQL. Funkce [pg.Client.connect()](https://github.com/brianc/node-postgres/wiki/Client#method-connect) se používá k navázání připojení k serveru. Funkce [pg.Client.query()](https://github.com/brianc/node-postgres/wiki/Query) se používá k provedení dotazu SQL na databázi PostgreSQL. 
+Použijte následující kód k připojení a čtení dat pomocí příkazu jazyka SQL **UPDATE**. Objekt [pg.Client](https://github.com/brianc/node-postgres/wiki/Client) slouží k vytvoření rozhraní pro server PostgreSQL. Funkce [pg.Client.connect()](https://github.com/brianc/node-postgres/wiki/Client#method-connect) se používá k navázání připojení k serveru. Funkce [pg.Client.query()](https://github.com/brianc/node-postgres/wiki/Query) se používá k provedení dotazu SQL na databázi PostgreSQL. 
 
 Nahraďte parametry host (hostitel), dbname (název databáze), user (uživatel) a password (heslo) hodnotami, které jste zadali při vytváření serveru a databáze. 
 

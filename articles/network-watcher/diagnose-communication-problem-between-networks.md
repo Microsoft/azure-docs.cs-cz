@@ -4,9 +4,7 @@ titleSuffix: Azure Network Watcher
 description: V tomto kurzu se dozvíte, jak diagnostikovat problémy s komunikací mezi virtuální sítí Azure připojenou k místní nebo jiné virtuální síti přes bránu virtuální sítě Azure pomocí funkce diagnostiky sítě VPN Network Watcher.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 Customer intent: I need to determine why resources in a virtual network can't communicate with resources in a different network.
 ms.service: network-watcher
 ms.devlang: na
@@ -14,14 +12,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: e2ec59cf609fcde79d289e321331ca5018401a5e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 974e45b761fb45e4bc1c451fa6755e16cab49e11
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419733"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834676"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Kurz: Diagnostika potíží s komunikací mezi sítěmi na portálu Azure Portal
 
@@ -47,13 +45,13 @@ Vytvoření brány VPN pomocí tohoto skriptu trvá přibližně hodinu. Ve zbý
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlásit se na [Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 ## <a name="enable-network-watcher"></a>Povolení Network Watcheru
 
 Pokud už máte Network Watcher v oblasti USA – východ povolený, přeskočte na část [Diagnostika brány](#diagnose-a-gateway).
 
-1. Na portálu vyberte **Všechny služby**. Do **pole filtru** zadejte *Network Watcher*. Jakmile se služba **Network Watcher** zobrazí ve výsledcích, vyberte ji.
+1. Na webu Azure Portal vyberte **Všechny služby**. Do **pole filtru** zadejte *Network Watcher*. Jakmile se služba **Network Watcher** zobrazí ve výsledcích, vyberte ji.
 2. Rozbalte **Oblasti** a potom vedle **USA – východ** vyberte **...** (stejně jako v následujícím obrázku):
 
     ![Povolení Network Watcheru](./media/diagnose-communication-problem-between-networks/enable-network-watcher.png)
@@ -63,7 +61,7 @@ Pokud už máte Network Watcher v oblasti USA – východ povolený, přeskočte
 ## <a name="diagnose-a-gateway"></a>Diagnostika brány
 
 1. Na levé straně portálu vyberte **Všechny služby**.
-2. Do pole *Filtr* začněte psát **network watcher**. Jakmile se služba**Network Watcher** zobrazí ve výsledcích hledání, vyberte ji.
+2. Do pole **Filtr** začněte psát *network watcher*. Jakmile se služba**Network Watcher** zobrazí ve výsledcích hledání, vyberte ji.
 3. V části **NÁSTROJE PRO DIAGNOSTIKU SÍTĚ** vyberte **Diagnostika VPN**.
 4. Vyberte **Účet úložiště** a pak vyberte účet úložiště, do kterého se mají zapisovat diagnostické informace.
 5. V seznamu **Účty úložiště** vyberte účet úložiště, který chcete použít. Pokud účet úložiště ještě nemáte, vytvořte ho tak, že vyberete **+ Účet úložiště**, zadáte nebo vyberete požadované informace a pak vyberete **Vytvořit**. Pokud jste vytvořili bránu VPN pomocí skriptu uvedeného v části [Požadavky](#prerequisites), můžete se rozhodnout, že účet úložiště vytvoříte ve stejné skupině prostředků *TestRG1*, která se používá pro tuto bránu.
@@ -107,9 +105,9 @@ Brána se připojuje k jiným sítím přes připojení brány. Pro úspěšnou 
 
 Pokud jste vytvořili bránu VPN pomocí skriptu uvedeného v části [Požadavky](#prerequisites) výhradně pro účely tohoto kurzu a už ji nepotřebujete, odstraňte příslušnou skupinu prostředků a všechny prostředky, které obsahuje:
 
-1. Do pole *Hledat* v horní části portálu zadejte **TestRG1**. Když se ve výsledcích hledání zobrazí skupina prostředků **TestRG1**, vyberte ji.
+1. Do pole **Hledat** v horní části portálu zadejte *TestRG1*. Když se ve výsledcích hledání zobrazí skupina prostředků **TestRG1**, vyberte ji.
 2. Vyberte **Odstranit skupinu prostředků**.
-3. V části *ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ* zadejte **TestRG1** a vyberte **Odstranit**.
+3. V části **ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ** zadejte *TestRG1* a vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -4,8 +4,7 @@ titleSuffix: Azure Network Watcher
 description: Naučte se používat funkce řešení potíží s připojením v Azure Network Watcher pomocí Azure CLI.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 ms.service: network-watcher
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
-ms.author: kumud
-ms.openlocfilehash: 07358d5d77e91f0b4eebffa068ff72fc83c74893
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: 842e58de8dbc06d3f045b0e9d0dc6b99e6b1e2fe
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276023"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842882"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-cli"></a>Řešení potíží s připojením k Azure Network Watcher pomocí rozhraní příkazového řádku Azure
 
@@ -44,7 +43,7 @@ V tomto článku se předpokládá, že máte následující zdroje:
 
 Tento příklad zkontroluje připojení k cílovému virtuálnímu počítači přes port 80.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 ```azurecli
 az network watcher test-connectivity --resource-group ContosoRG --source-resource MultiTierApp0 --dest-resource Database0 --dest-port 80
@@ -125,7 +124,7 @@ Nic0/ipConfigurations/ipconfig1",
 
 Tento příklad kontroluje připojení mezi virtuálním počítačem a vzdáleným koncovým bodem.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 ```azurecli
 az network watcher test-connectivity --resource-group ContosoRG --source-resource MultiTierApp0 --dest-address 13.107.21.200 --dest-port 80
@@ -183,7 +182,7 @@ pNic0/ipConfigurations/ipconfig1",
 
 Následující příklad zkontroluje připojení k webu.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 ```azurecli
 az network watcher test-connectivity --resource-group ContosoRG --source-resource MultiTierApp0 --dest-address https://bing.com --dest-port 80
@@ -229,7 +228,7 @@ pNic0/ipConfigurations/ipconfig1",
 
 Následující příklad zkontroluje připojení z virtuálního počítače k účtu úložiště blogu.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 ```azurecli
 az network watcher test-connectivity --resource-group ContosoRG --source-resource MultiTierApp0 --dest-address https://contosoexamplesa.blob.core.windows.net/

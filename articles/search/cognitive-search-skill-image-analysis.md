@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4819f34e16efebcdab734270988382e086c44e36
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 106f83e4c8fdf33ac8752e5942dbb22a2df78693
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73479714"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840498"
 ---
 # <a name="image-analysis-cognitive-skill"></a>Vnímání znalostí analýzy obrázků
 
@@ -26,7 +26,7 @@ Dovednost **analýzy obrázků** extrahuje bohatou sadu vizuálních funkcí zal
 
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft. dovednosti. Vision. ImageAnalysisSkill 
+Microsoft.Skills.Vision.ImageAnalysisSkill 
 
 ## <a name="skill-parameters"></a>Parametry dovednosti
 
@@ -34,9 +34,9 @@ V parametrech jsou rozlišována malá a velká písmena.
 
 | Název parametru     | Popis |
 |--------------------|-------------|
-| defaultLanguageCode   |  Řetězec označující jazyk, který se má vrátit. Služba vrátí výsledky rozpoznávání v zadaném jazyce. Není-li tento parametr zadán, je použita výchozí hodnota "en". <br/><br/>Podporované jazyky: <br/>*EN* -angličtina (výchozí) <br/> *zh* – zjednodušená čínština|
-|visualFeatures |   Pole řetězců udávající typy vizuálních funkcí, které mají být vráceny. Mezi platné typy vizuálních funkcí patří:  <ul><li> *Categories* – roztřídí obsah obrázků podle taxonomie definované v [dokumentaci Cognitive Services počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy). </li><li> *Tags* – Taguje obrázek pomocí podrobného seznamu slov souvisejících s obsahem obrázku.</li><li>*Popis* – popisuje obsah obrázku s úplnou anglickou větou.</li><li>*obličeje* – zjišťuje, zda jsou k dispozici plošky. Pokud je k dispozici, vygeneruje souřadnice, pohlaví a stáří.</li><li>    *ImageType* – zjistí, zda je obrázek Klipart nebo kreslení čáry.</li><li>  *Color* – Určuje barvu zvýraznění, dominantní barvu a, zda je obrázek černý & bílá.</li><li>*dospělý* – zjistí, jestli je obrázek pornografickýý (znázorňuje nahotu nebo pohlaví). Zjistili jsme také zřejmý sugestivní obsah.</li></ul> Názvy vizuálních funkcí rozlišují velká a malá písmena.|
-| Zobrazí   | Pole řetězců udávající, které podrobnosti specifické pro doménu se mají vrátit. Mezi platné typy vizuálních funkcí patří: <ul><li>*celebrit* – identifikuje celebrit, pokud se v imagi zjistí.</li><li>*orientačních bodů* – identifikuje orientační části, pokud jsou v imagi zjištěné. </li></ul> |
+| defaultLanguageCode   |  Řetězec označující jazyk, který se má vrátit. Služba vrátí výsledky rozpoznávání v zadaném jazyce. Není-li tento parametr zadán, je použita výchozí hodnota "en". <br/><br/>Podporované jazyky: <br/>*EN* -angličtina (výchozí) <br/> *ES* – španělština <br/> Japonsko – japonština <br/> *PT* – portugalština <br/> *zh* – zjednodušená čínština|
+| visualFeatures |  Pole řetězců udávající typy vizuálních funkcí, které mají být vráceny. Mezi platné typy vizuálních funkcí patří:  <ul><li>*dospělý* – zjistí, jestli je obrázek pornografickýý (znázorňuje nahotu nebo sex), nebo je gorie (znázorňuje extrémní násilí nebo krev). Zjistil se také zřejmý sugestivní obsah (neboli obsah pikantní).</li><li>*značky* – detekuje různé značky v rámci obrázku, včetně přibližného umístění. Funkce vizuálních *značek* je k dispozici pouze v angličtině.</li><li> *Categories* – roztřídí obsah obrázků podle taxonomie definované v [dokumentaci Cognitive Services počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy). </li><li> *Color* – Určuje barvu zvýraznění, dominantní barvu a, zda je obrázek černý & bílá.</li><li>*Popis* – popisuje obsah obrázku s úplnou větou v podporovaných jazycích.</li><li>*obličeje* – zjišťuje, zda jsou k dispozici plošky. Pokud je k dispozici, vygeneruje souřadnice, pohlaví a stáří.</li><li>  *ImageType* – zjistí, zda je obrázek Klipart nebo kreslení čáry.</li><li>  *objekty* – detekuje různé objekty v rámci obrázku, včetně přibližného umístění. Funkce vizuálů *objektů* je k dispozici pouze v angličtině.</li><li> *Tags* – Taguje obrázek pomocí podrobného seznamu slov souvisejících s obsahem obrázku.</li></ul> Názvy vizuálních funkcí rozlišují velká a malá písmena.|
+| details   | Pole řetězců udávající, které podrobnosti specifické pro doménu se mají vrátit. Mezi platné typy vizuálních funkcí patří: <ul><li>*celebrit* – identifikuje celebrit, pokud se v imagi zjistí.</li><li>*orientačních bodů* – identifikuje orientační části, pokud jsou v imagi zjištěné. </li></ul> |
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
@@ -353,138 +353,163 @@ Můžete definovat mapování polí pro výstup na vlastnosti nižší úrovně,
 
 ```json
 {
-    "values": [
-        {
-            "recordId": "1",
-            "data": {
-                "categories": [
-                    {
-                        "name": "abstract_",
-                        "score": 0.00390625
-                    },
-                    {
-                        "name": "people_",
-                        "score": 0.83984375,
-                        "detail": {
-                            "celebrities": [
-                                {
-                                    "name": "Satya Nadella",
-                                    "faceBoundingBox": [
-                                        {
-                                            "x": 273,
-                                            "y": 309
-                                        },
-                                        {
-                                            "x": 395,
-                                            "y": 309
-                                        },
-                                        {
-                                            "x": 395,
-                                            "y": 431
-                                        },
-                                        {
-                                            "x": 273,
-                                            "y": 431
-                                        }
-                                    ],
-                                    "confidence": 0.999028444
-                                }
-                            ],
-                            "landmarks": [
-                                {
-                                    "name": "Forbidden City",
-                                    "confidence": 0.9978346
-                                }
-                            ]
-                        }
-                    }
-                ],
-                "adult": {
-                    "isAdultContent": false,
-                    "isRacyContent": false,
-                    "adultScore": 0.0934349000453949,
-                    "racyScore": 0.068613491952419281
-                },
-                "tags": [
-                    {
-                        "name": "person",
-                        "confidence": 0.98979085683822632
-                    },
-                    {
-                        "name": "man",
-                        "confidence": 0.94493889808654785
-                    },
-                    {
-                        "name": "outdoor",
-                        "confidence": 0.938492476940155
-                    },
-                    {
-                        "name": "window",
-                        "confidence": 0.89513939619064331
-                    }
-                ],
-                "description": {
-                    "tags": [
-                        "person",
-                        "man",
-                        "outdoor",
-                        "window",
-                        "glasses"
-                    ],
-                    "captions": [
+  "values": [
+    {
+      "recordId": "1",
+      "data": {
+        "categories": [
+          {
+            "name": "abstract_",
+            "score": 0.00390625
+          },
+          {
+            "name": "people_",
+            "score": 0.83984375,
+            "detail": {
+              "celebrities": [
+                {
+                  "name": "Satya Nadella",
+                  "faceBoundingBox": [
                         {
-                            "text": "Satya Nadella sitting on a bench",
-                            "confidence": 0.48293603002174407
+                            "x": 273,
+                            "y": 309
+                        },
+                        {
+                            "x": 395,
+                            "y": 309
+                        },
+                        {
+                            "x": 395,
+                            "y": 431
+                        },
+                        {
+                            "x": 273,
+                            "y": 431
                         }
-                    ]
-                },
-                "requestId": "0dbec5ad-a3d3-4f7e-96b4-dfd57efe967d",
-                "metadata": {
-                    "width": 1500,
-                    "height": 1000,
-                    "format": "Jpeg"
-                },
-                "faces": [
-                    {
-                        "age": 44,
-                        "gender": "Male",
-                        "faceBoundingBox": [
-                            {
-                                "x": 1601,
-                                "y": 395
-                            },
-                            {
-                                "x": 1653,
-                                "y": 395
-                            },
-                            {
-                                "x": 1653,
-                                "y": 447
-                            },
-                            {
-                                "x": 1601,
-                                "y": 447
-                            }
-                        ]
-                    }
-                ],
-                "color": {
-                    "dominantColorForeground": "Brown",
-                    "dominantColorBackground": "Brown",
-                    "dominantColors": [
-                        "Brown",
-                        "Black"
                     ],
-                    "accentColor": "873B59",
-                    "isBwImg": false
-                    },
-                "imageType": {
-                    "clipArtType": 0,
-                    "lineDrawingType": 0
+                  "confidence": 0.999028444
                 }
+              ],
+              "landmarks": [
+                {
+                  "name": "Forbidden City",
+                  "confidence": 0.9978346
+                }
+              ]
             }
-        }
-    ]
+          }
+        ],
+        "adult": {
+          "isAdultContent": false,
+          "isRacyContent": false,
+          "isGoryContent": false,
+          "adultScore": 0.0934349000453949,
+          "racyScore": 0.068613491952419281,
+          "goreScore": 0.08928389008070282
+        },
+        "tags": [
+          {
+            "name": "person",
+            "confidence": 0.98979085683822632
+          },
+          {
+            "name": "man",
+            "confidence": 0.94493889808654785
+          },
+          {
+            "name": "outdoor",
+            "confidence": 0.938492476940155
+          },
+          {
+            "name": "window",
+            "confidence": 0.89513939619064331
+          }
+        ],
+        "description": {
+          "tags": [
+            "person",
+            "man",
+            "outdoor",
+            "window",
+            "glasses"
+          ],
+          "captions": [
+            {
+              "text": "Satya Nadella sitting on a bench",
+              "confidence": 0.48293603002174407
+            }
+          ]
+        },
+        "requestId": "0dbec5ad-a3d3-4f7e-96b4-dfd57efe967d",
+        "metadata": {
+          "width": 1500,
+          "height": 1000,
+          "format": "Jpeg"
+        },
+        "faces": [
+          {
+            "age": 44,
+            "gender": "Male",
+            "faceBoundingBox": [
+                {
+                    "x": 1601,
+                    "y": 395
+                },
+                {
+                    "x": 1653,
+                    "y": 395
+                },
+                {
+                    "x": 1653,
+                    "y": 447
+                },
+                {
+                    "x": 1601,
+                    "y": 447
+                }
+            ]
+          }
+        ],
+        "color": {
+          "dominantColorForeground": "Brown",
+          "dominantColorBackground": "Brown",
+          "dominantColors": [
+            "Brown",
+            "Black"
+          ],
+          "accentColor": "873B59",
+          "isBwImg": false
+        },
+        "imageType": {
+          "clipArtType": 0,
+          "lineDrawingType": 0
+        },
+        "objects": [
+          {
+            "rectangle": {
+              "x": 25,
+              "y": 43,
+              "w": 172,
+              "h": 140
+            },
+            "object": "person",
+            "confidence": 0.931
+          }
+        ],
+        "brands":[  
+           {  
+              "name":"Microsoft",
+              "rectangle":{  
+                 "x":20,
+                 "y":97,
+                 "w":62,
+                 "h":52
+              }
+           }
+        ]
+      }
+    }
+  ]
 }
 ```
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 01/27/2020
 ms.author: diberry
-ms.openlocfilehash: a67852d333a86c5acf20e8bf69004aa9131e1f9f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0ee2b33aa3388b3cb99aa42c338ded800c9679a4
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448074"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772482"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Rychlý Start: nasazení aplikace na portálu LUIS
 
@@ -74,6 +74,9 @@ Pokaždé, když vytvoříte nový prostředek pro LUIS, je potřeba přiřadit 
 1. Při přidávání klíčového obsahu do aplikace proveďte stejný postup.
 
 1. Vyhledejte nový řádek v tabulce pro nový prostředek předpovědi a zkopírujte adresu URL koncového bodu. Je správně vytvořen tak, aby `HTTP GET` požadavek na koncový bod rozhraní API LUIS pro předpověď.
+
+> [!TIP]
+> Pokud máte v úmyslu k vylepšení aplikace LUIS používat aktivní výuku, vyberte možnost **změnit parametry dotazu** a vyberte **Uložit protokoly**. Tato akce změní ukázkovou adresu URL přidáním parametru `log=true` QueryString. Kopírování a použití změněné ukázkové adresy URL dotazu při provádění prediktivních dotazů na koncový bod modulu runtime.
 
 ## <a name="train-the-app"></a>Trénování aplikace
 

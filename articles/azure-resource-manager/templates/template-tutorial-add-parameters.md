@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 28c171dfa067ec9b3eff2e0d7e5d5dd0a0c274c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 89101a96f4fc228e2d5c45d67e10b52ac5d8aa11
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472965"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773203"
 ---
 # <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>Kurz: Přidání parametrů do šablony Správce prostředků
 
@@ -26,7 +26,7 @@ Musíte mít Visual Studio Code s rozšířením Správce prostředků Tools a b
 
 Na konci předchozího kurzu má vaše šablona následující JSON:
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json":::
 
 Možná jste si všimli, že došlo k potížím s touto šablonou. Název účtu úložiště je pevně kódovaný. Tuto šablonu můžete použít jenom k nasazení stejného účtu úložiště pokaždé, když. Chcete-li nasadit účet úložiště s jiným názvem, bude nutné vytvořit novou šablonu, což zjevně není praktický způsob, jak automatizovat nasazení.
 
@@ -36,7 +36,7 @@ Aby bylo možné šablonu znovu použít, přidejte parametr, který můžete po
 
 Zkopírujte celý soubor a nahraďte šablonu jeho obsahem.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json?range=1-26&highlight=4-10,15)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json" range="1-26" highlight="4-10,15":::
 
 ## <a name="deploy-template"></a>Nasazení šablony
 
@@ -80,7 +80,7 @@ Parametry umožňují přizpůsobit nasazení tím, že zadáte hodnoty vhodné 
 
 Předchozí šablona vždycky nasadila Standard_LRS účet úložiště. Možná budete chtít, aby flexibilita nasadila různé SKU v závislosti na prostředí. Následující příklad ukazuje změny pro přidání parametru pro SKLADOVOU položku. Zkopírujte celý soubor a vložte ho do šablony.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json?range=1-40&highlight=10-23,32)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json" range="1-40" highlight="10-23,32":::
 
 Parametr **storageSKU** má výchozí hodnotu. Tato hodnota se používá v případě, že při nasazení není zadána hodnota. Obsahuje také seznam povolených hodnot. Tyto hodnoty odpovídají hodnotám, které jsou potřeba k vytvoření účtu úložiště. Nechcete, aby uživatelé šablony předávali do SKU, které nefungují.
 

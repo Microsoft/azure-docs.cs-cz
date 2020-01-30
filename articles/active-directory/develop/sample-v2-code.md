@@ -17,12 +17,12 @@ ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ddffd75d960fe981382d880340d4bf61464cce3c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a4551a94c8a6b5ea54366fcc36b720cda1e6300e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702534"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834174"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity Platform Code Samples (koncový bod verze 2.0)
 
@@ -69,10 +69,11 @@ Následující ukázky ilustrují webové aplikace, které přihlásí uživatel
 
 Následující ukázky ukazují veřejné klientské aplikace (desktopové nebo mobilní aplikace), které přistupují k rozhraní Microsoft Graph API nebo vlastní webové rozhraní API v názvu uživatele. Všechny tyto klientské aplikace používají Microsoft Authentication Library (MSAL).
 
-| Klientská aplikace | Platforma | Tok a udělení | Volání Microsoft Graph | Volá webové rozhraní API ASP.NET Core 2,0. |
+| klientská aplikace | Platforma | Tok a udělení | Volání Microsoft Graph | Volá webové rozhraní API ASP.NET Core 2,0. |
 | ------------------ | -------- |  ----------| ---------- | ------------------------- |
 | Plocha (WPF)      | ![Tento obrázek ukazuje rozhraní .NET/C# logo](media/sample-v2-code/logo_NET.png) | [Interaktivní](msal-authentication-flows.md#interactive)| [dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [dotnet-native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi) |
 | Plocha (konzola)   | ![Tento obrázek ukazuje logo .NET/C# (Desktop).](media/sample-v2-code/logo_NET.png) | [Integrované ověřování systému Windows](msal-authentication-flows.md#integrated-windows-authentication) | [dotnet-iwa-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2) |  |
+| Plocha (konzola)   | ![Tento obrázek ukazuje logo Java.](media/sample-v2-code/logo_java.png) | [Integrované ověřování systému Windows](msal-authentication-flows.md#integrated-windows-authentication) |[MS-identity – Java-Desktop](https://github.com/Azure-Samples/ms-identity-java-desktop/) |  |
 | Plocha (konzola)   | ![Tento obrázek ukazuje logo .NET/C# (Desktop).](media/sample-v2-code/logo_NETcore.png) | [Uživatelské jméno a heslo](msal-authentication-flows.md#usernamepassword) |[dotnetcore-up-v2](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) |  |
 | Plocha (konzola)   | ![Tento obrázek ukazuje logo Java.](media/sample-v2-code/logo_java.png) | [Uživatelské jméno a heslo](msal-authentication-flows.md#usernamepassword) |[MS-identity – Java-Desktop](https://github.com/Azure-Samples/ms-identity-java-desktop/) |  |
 | Plocha (konzola)   | ![Tento obrázek ukazuje logo Pythonu.](media/sample-v2-code/logo_python.png) | [Uživatelské jméno a heslo](msal-authentication-flows.md#usernamepassword) |[MS-identity – Python – Desktop](https://github.com/Azure-Samples/ms-identity-python-desktop) |  |
@@ -86,7 +87,7 @@ Následující ukázky ukazují veřejné klientské aplikace (desktopové nebo 
 
 Následující ukázky ukazují aplikaci, která přistupuje k rozhraní Microsoft Graph API s vlastní identitou (bez uživatele).
 
-| Klientská aplikace | Platforma | Tok a udělení | Volání Microsoft Graph |
+| klientská aplikace | Platforma | Tok a udělení | Volání Microsoft Graph |
 | ------------------ | -------- | ---------- | -------------------- |
 | Console | ![Tento obrázek ukazuje logo .NET Core](media/sample-v2-code/logo_NETcore.png)</p> ASP.NET  | [Pověření klienta](msal-authentication-flows.md#client-credentials) | [dotnetcore-daemon-v2](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2) |
 | Webová aplikace | ![Na tomto obrázku vidíte logo ASP.NET](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET  | [Pověření klienta](msal-authentication-flows.md#client-credentials) | [dotnet-daemon-v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2) |
@@ -97,7 +98,7 @@ Následující ukázky ukazují aplikaci, která přistupuje k rozhraní Microso
 
 Následující ukázka ukazuje aplikaci veřejného klienta běžící na zařízení bez webového prohlížeče. Aplikace může být nástroj příkazového řádku, aplikace spuštěná v systému Linux nebo Mac nebo v aplikaci IoT. Ukázková aplikace přistupují k rozhraní Microsoft Graph API, a to jménem uživatele, který se přihlásí interaktivně na jiném zařízení (například mobilní telefon). Tato klientská aplikace používá knihovnu Microsoft Authentication Library (MSAL).
 
-| Klientská aplikace | Platforma | Tok a udělení | Volání Microsoft Graph |
+| klientská aplikace | Platforma | Tok a udělení | Volání Microsoft Graph |
 | ------------------ | -------- |  ----------| ---------- |
 | Plocha (konzola)   | ![Tento obrázek ukazuje logo .NET/C# (Desktop).](media/sample-v2-code/logo_NETcore.png) | [Tok kódu zařízení](msal-authentication-flows.md#device-code) |[dotnetcore-devicecodeflow-v2](https://github.com/azure-samples/active-directory-dotnetcore-devicecodeflow-v2) |
 | Plocha (konzola)   | ![Tento obrázek ukazuje logo Java.](media/sample-v2-code/logo_java.png) | [Tok kódu zařízení](msal-authentication-flows.md#device-code) |[MS-identity – Java – devicecodeflow](https://github.com/Azure-Samples/ms-identity-java-devicecodeflow) |

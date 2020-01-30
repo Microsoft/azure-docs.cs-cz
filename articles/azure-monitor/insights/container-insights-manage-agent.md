@@ -2,13 +2,13 @@
 title: Jak spravovat Azure Monitor pro agenta kontejnerů | Dokumentace Microsoftu
 description: Tento článek popisuje správu většiny běžných úloh údržby s kontejnerizovaných agenta Log Analytics používá Azure Monitor pro kontejnery.
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: b1fd9b70865dfb6bb71dadfe76620129e053acbb
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.date: 01/24/2020
+ms.openlocfilehash: 1a1f8d690979a846dbf5041999180221752acc0b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932863"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843952"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>Jak spravovat Azure Monitor pro kontejnery agenta
 
@@ -16,13 +16,13 @@ Azure Monitor pro kontejnery používá kontejnerizovaných verzi agenta Log Ana
 
 ## <a name="how-to-upgrade-the-azure-monitor-for-containers-agent"></a>Postup upgradu monitorování Azure pro kontejnery agenta
 
-Azure Monitor pro kontejnery používá kontejnerizovaných verzi agenta Log Analytics pro Linux. Po vydání nové verze agenta, agent automaticky upgradovány na vaše spravované clustery Kubernetes hostované ve službě Azure Kubernetes Service (AKS).  
+Azure Monitor pro kontejnery používá kontejnerizovaných verzi agenta Log Analytics pro Linux. Po vydání nové verze agenta se agent automaticky upgraduje na spravovaných clusterech Kubernetes hostovaných ve službě Azure Kubernetes Service (AKS) a Azure Red Hat OpenShift. Pro [hybridní cluster Kubernetes](container-insights-hybrid-setup.md) se agent nespravuje a potřebujete ručně upgradovat agenta.
 
-Pokud agent upgrade selže, tento článek popisuje postup ruční upgrade agenta. Postupujte podle vydané verze, najdete v článku [oznámení verzi agenta](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).   
+Pokud se upgrade agenta pro cluster hostovaný v AKS nepovede, Tento článek popisuje také Postup ručního upgradu agenta. Postupujte podle vydané verze, najdete v článku [oznámení verzi agenta](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).
 
-### <a name="upgrading-agent-on-monitored-kubernetes-cluster"></a>Upgrade agenta na sledovaných clusteru Kubernetes
+### <a name="upgrade-agent-on-monitored-kubernetes-cluster"></a>Upgrade agenta na monitorovaném clusteru Kubernetes
 
-Proces upgradu agenta v clusterech (kromě Azure Red Hat OpenShift) se skládá ze dvou přímých kroků. Prvním krokem je vypnout monitorování pro kontejnery pomocí Azure CLI s Azure Monitor.  Postupujte podle kroků popsaných v [zakázat monitorování](container-insights-optout.md?#azure-cli) článku. Pomocí Azure CLI umožňuje odebrat agenta z uzlů v clusteru bez dopadu na řešení a odpovídajících dat, která je uložena v pracovním prostoru. 
+Proces upgradu agenta v clusterech (kromě Azure Red Hat OpenShift) se skládá ze dvou přímých kroků. Prvním krokem je vypnout monitorování pro kontejnery pomocí Azure CLI s Azure Monitor. Postupujte podle kroků popsaných v [zakázat monitorování](container-insights-optout.md?#azure-cli) článku. Pomocí Azure CLI umožňuje odebrat agenta z uzlů v clusteru bez dopadu na řešení a odpovídajících dat, která je uložena v pracovním prostoru. 
 
 >[!NOTE]
 >Při provádění této aktivity údržby, uzly v clusteru nejsou předávání shromážděných dat a zobrazení výkonu nebudou zobrazovat data mezi časem odebrat agenta a nainstalujte novou verzi. 
@@ -52,6 +52,29 @@ Stav by měl vypadat následovně, kde hodnota *omi* a *omsagent* by měl odpov�
     omi 1.4.2.5
     omsagent 1.6.0-163
     docker-cimprov 1.0.0.31
+
+## <a name="upgrade-agent-on-hybrid-kubernetes-cluster"></a>Upgrade agenta na hybridním clusteru Kubernetes
+
+Proces upgradu agenta v hostovaném clusteru Kubernetes, AKS Engine v Azure a Azure Stack se dá dokončit spuštěním tohoto příkazu:
+
+```
+$ helm upgrade --name myrelease-1 \
+--set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<my_prod_cluster> incubator/azuremonitor-containers
+```
+
+Pokud je pracovní prostor Log Analytics v Azure Čína, spusťte následující příkaz:
+
+```
+$ helm upgrade --name myrelease-1 \
+--set omsagent.domain=opinsights.azure.cn,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
+```
+
+Pokud je pracovní prostor Log Analytics ve vládě Azure USA, spusťte následující příkaz:
+
+```
+$ helm upgrade --name myrelease-1 \
+--set omsagent.domain=opinsights.azure.us,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
+```
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>Jak zakázat kolekci proměnných prostředí v kontejneru
 

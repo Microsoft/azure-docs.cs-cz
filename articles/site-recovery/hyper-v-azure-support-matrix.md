@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/10/2020
+ms.date: 1/27/2020
 ms.author: raynew
-ms.openlocfilehash: bfa3f592ca799b71bef7c7f9409864026f6c8d6a
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: d4409fe61bfe1f0a9fe74171f5b1ec471b9a6a26
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863889"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774430"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Matice podpory pro zotavení po havárii místních virtuálních počítačů Hyper-V do Azure
 
@@ -33,7 +33,7 @@ Hyper-V bez Virtual Machine Manager | V Azure můžete provést zotavení po hav
 **Server** | **Požadavky** | **Podrobnosti**
 --- | --- | ---
 Hyper-V (běžící bez Virtual Machine Manager) |  Windows Server 2019, Windows Server 2016 (včetně instalace jádra serveru), Windows Server 2012 R2 s nejnovějšími aktualizacemi | Pokud jste už nakonfigurovali Windows Server 2012 R2 s/nebo SCVMM 2012 R2 s Azure Site Recovery a plánujete upgradovat operační systém, postupujte podle pokynů v [dokumentaci.](upgrade-2012R2-to-2016.md) 
-Hyper-V (běžící s Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Pokud se používá Virtual Machine Manager, hostitelé Windows serveru 2019 by měli být spravováni v Virtual Machine Manager 2019. Podobně by hostitelé systému Windows Server 2016 měli být spravováni v Virtual Machine Manager 2016.<br/><br/>
+Hyper-V (běžící s Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Pokud se používá Virtual Machine Manager, hostitelé Windows serveru 2019 by měli být spravováni v Virtual Machine Manager 2019. Podobně by hostitelé systému Windows Server 2016 měli být spravováni v Virtual Machine Manager 2016.<br/><br/> Poznámka: navrácení služeb po obnovení do alternativního umístění není podporováno pro hostitele systému Windows Server 2019.
 
 
 ## <a name="replicated-vms"></a>Replikované virtuální počítače
@@ -102,7 +102,7 @@ Multipath (multi-Path). Testováno pomocí:<br></br> Microsoft DSM, EMC PowerPat
 --- | --- | ---
 VMDK | není k dispozici | není k dispozici
 VHD/VHDX | Ano | Ano
-Virtuální počítač generace 2 | Ano | Ano
+Virtuální počítač 2. generace | Ano | Ano
 ROZHRANÍ EFI/UEFI<br></br>Migrovaný virtuální počítač v Azure se automaticky převede na spouštěcí virtuální počítač se systémem BIOS. Na virtuálním počítači by měl běžet jenom Windows Server 2012 a novější. Disk s operačním systémem by měl mít až pět oddílů nebo méně a velikost disku s operačním systémem by měla být menší než 300 GB.| Ano | Ano
 Disk sdíleného clusteru | Ne | Ne
 Zašifrovaný disk | Ne | Ne
@@ -111,7 +111,7 @@ SMB 3.0 | Ne | Ne
 RDM | není k dispozici | není k dispozici
 Disk > 1 TB | Ano, až 4 095 GB | Ano, až 4 095 GB
 Disk: 4K logický a fyzický sektor | Nepodporováno: Obecná 1/fin 2 | Nepodporováno: Obecná 1/fin 2
-Disk: 4K fyzický sektor a logický sektor 512 bajtů | Ano |  Ano
+Disk: 4K fyzický sektor a logický sektor 512-byte | Ano |  Ano
 Správa logických svazků (LVM). LVM se podporuje jenom na datových discích. Azure poskytuje jenom jeden disk s operačním systémem. | Ano | Ano
 Svazek se zakládaným diskem > 1 TB | Ano | Ano
 Prostory úložiště | Ne | Ne
@@ -133,8 +133,8 @@ Objekty blob bloku | Ne | Ne
 Šifrování v klidovém umístění (CMK) <br></br> (Jenom pro převzetí služeb při selhání pro Managed Disks)| Ano (přes PowerShell AZ 3.3.0 Module a vyšší) | Ano (přes PowerShell AZ 3.3.0 Module a vyšší)
 Premium Storage | Ano | Ano
 Služba import/export | Ne | Ne
-Účty úložiště Azure s povolenou bránou firewall | Ano. Pro cílové úložiště a mezipaměť. | Ano. Pro cílové úložiště a mezipaměť.
-Úprava účtu úložiště | Ne. Cílový účet Azure Storage se po povolení replikace nedá změnit. Chcete-li upravit, zakažte a znovu povolte zotavení po havárii. | Ne
+Účty Azure Storage s povolenou bránou firewall | Ano. Pro cílové úložiště a mezipaměť. | Ano. Pro cílové úložiště a mezipaměť.
+Úprava účtu úložiště | Ne. Cílový Azure Storage účet se po povolení replikace nedá změnit. Chcete-li upravit, zakázat a znovu povolit zotavení po havárii. | Ne
 
 
 ## <a name="azure-compute-features"></a>Funkce Azure COMPUTE
@@ -158,12 +158,12 @@ Počet disků operačního systému | 1\. místo | Nepodporovaná Chyba kontrol
 Počet datových disků | 16 nebo méně  | Nepodporovaná Chyba kontroly požadovaných součástí
 Velikost virtuálního pevného disku datového disku | Až 4 095 GB | Nepodporovaná Chyba kontroly požadovaných součástí
 Síťové adaptéry | Podporuje se více adaptérů |
-Sdílené VHD | Nepodporováno | Nepodporovaná Chyba kontroly požadovaných součástí
+Sdílený virtuální pevný disk | Nepodporováno | Nepodporovaná Chyba kontroly požadovaných součástí
 Disk FC | Nepodporováno | Nepodporovaná Chyba kontroly požadovaných součástí
-Formát pevného disku | VHD <br/><br/> VHDX | Při převzetí služeb při selhání do Azure Site Recovery automaticky převede VHDX na VHD. Po navrácení služeb po obnovení do místního nasazení budou virtuální počítače nadále používat formát VHDX.
+Formát pevného disku | VIRTUÁLNÍHO <br/><br/> VHDX | Při převzetí služeb při selhání do Azure Site Recovery automaticky převede VHDX na VHD. Po navrácení služeb po obnovení do místního nasazení budou virtuální počítače nadále používat formát VHDX.
 BitLocker | Nepodporováno | Aby bylo možné povolit replikaci virtuálního počítače, musí být nástroj BitLocker zakázán.
 název virtuálního počítače | 1 až 63 znaků. Pouze písmena, číslice a pomlčky. Název virtuálního počítače musí začínat a končit písmenem nebo číslicí. | Aktualizujte hodnotu ve vlastnostech virtuálního počítače v Site Recovery.
-Typ virtuálního počítače | 1\. generace<br/><br/> Generace 2 – Windows | Virtuální počítače 2. generace s typem disku operačního systému Basic (obsahující jeden nebo dva datové svazky formátované jako VHDX) a jsou podporované méně než 300 GB místa na disku.<br></br>Virtuální počítače se systémem Linux generace 2 nejsou podporovány. [Další informace](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
+Typ virtuálního počítače | Generace 1<br/><br/> Generace 2 – Windows | Virtuální počítače 2. generace s typem disku operačního systému Basic (obsahující jeden nebo dva datové svazky formátované jako VHDX) a jsou podporované méně než 300 GB místa na disku.<br></br>Virtuální počítače se systémem Linux generace 2 nejsou podporovány. [Další informace](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
 
 ## <a name="recovery-services-vault-actions"></a>Akce trezoru Recovery Services
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 8b1861b96f7ed53388d49e226bf3880bfcf657cb
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: bff6731e767fccb0800c30dfe3e75a800f54c59d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895867"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773057"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Sestavování řešení pro maloobchod s využitím služby Azure IoT Central
 
@@ -30,7 +30,7 @@ Následující části popisují možnosti těchto šablon aplikací:
 
 ## <a name="connected-logistics"></a>Propojená logistika
 
-U celkové logistické útraty se očekává, že se dosáhne $10.6 TN v 2020. Přeprava nákladových účtů pro většinu těchto výdajů a poskytovatelů námořní dopravy je v rámci výrazného konkurenčního tlaku a omezení.
+U celkové logistické útraty se očekává dosažení $10 600 000 000 000 v 2020. Přeprava nákladových účtů pro většinu těchto výdajů a poskytovatelů námořní dopravy je v rámci výrazného konkurenčního tlaku a omezení.
 
 Pomocí senzorů IoT můžete shromažďovat a monitorovat okolní podmínky, jako je teplota, vlhkost, náklon, náraz, světlo a umístění dodávky. Telemetrii získaná ze senzorů a zařízení IoT můžete kombinovat s dalšími zdroji dat, jako jsou například informace o počasí a provozu v cloudových business intelligencech systémech.
 

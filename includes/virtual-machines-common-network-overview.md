@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/01/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 93e53362257126130438d75da1c9b7ee5cac8e68
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 879202fe89aee6e8db2b7916aea7f33104e6510f
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75663137"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76776737"
 ---
 Když vytváříte virtuální počítač Azure, musíte vytvořit [virtuální síť](../articles/virtual-network/virtual-networks-overview.md) (VNet), nebo použít existující VNet. Také musíte rozhodnout, jak budou vaše virtuální počítače v síti VNet dostupné. Je důležité [plánovat před vytvořením prostředků](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md) a dobře porozumět [omezením síťových prostředků](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 
@@ -134,7 +134,7 @@ Tato tabulka shrnuje metody, které můžete použít k vytvoření internetové
 | Portál Azure |  [Pomocí Azure Portal můžete vyrovnávat zatížení internetového provozu na virtuálních počítačích](../articles/load-balancer/tutorial-load-balancer-standard-manage-portal.md). |
 | [Azure PowerShell](../articles/load-balancer/load-balancer-get-started-internet-arm-ps.md) | Pokud chcete zadat identifikátor veřejné IP adresy, kterou jste vytvořili dřív, použijte [New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig) s parametrem **-PublicIpAddress** . Pomocí [New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) vytvořte konfiguraci fondu back-end adres. Pomocí [New-AzLoadBalancerInboundNatRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) vytvořte pravidla příchozího překladu adres (NAT) přidružená ke konfiguraci front-endové IP adresy, kterou jste vytvořili. Pomocí [New-AzLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerprobeconfig) můžete vytvořit sondy, které potřebujete. Pomocí [New-AzLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerruleconfig) vytvořte konfiguraci nástroje pro vyrovnávání zatížení. K vytvoření nástroje pro vyrovnávání zatížení použijte [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer) .|
 | [Azure CLI](../articles/load-balancer/load-balancer-get-started-internet-arm-cli.md) | Pro vytvoření úvodní konfigurace nástroje pro vyrovnávání zatížení použijte [az network lb create](https://docs.microsoft.com/cli/azure/network/lb). Pro přidání veřejné IP adresy, kterou jste vytvořili dřív, použijte [az network lb frontend-ip create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip). K přidání konfigurace fondu back-endových adres použijte [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb/address-pool). K přidání pravidel NAT použijte [az network lb inbound-nat-rule create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule). K přidání pravidel nástroje pro vyrovnávání zatížení použijte [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule). K přidání sond použijte [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe). |
-| [Šablona](../articles/load-balancer/load-balancer-get-started-internet-arm-template.md) | Jako vodítko při nasazování nástroje pro vyrovnávání zatížení pomocí šablony použijte článek věnovaný [vytvoření dvou virtuálních počítačů v nástroji pro vyrovnávání zatížení a konfiguraci pravidel NAT v tomto prostředí](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-loadbalancer-natrules). |
+| [Šablona](../articles/load-balancer/quickstart-load-balancer-standard-public-template.md) | Jako vodítko při nasazování nástroje pro vyrovnávání zatížení pomocí šablony použijte článek věnovaný [vytvoření dvou virtuálních počítačů v nástroji pro vyrovnávání zatížení a konfiguraci pravidel NAT v tomto prostředí](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create). |
     
 Tato tabulka shrnuje metody, které můžete použít k vytvoření interního nástroje pro vyrovnávání zatížení.
 

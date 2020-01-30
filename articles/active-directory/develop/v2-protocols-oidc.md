@@ -17,12 +17,12 @@ ms.date: 04/12/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 97f05afadf38063a58e15e16cbf2e2c3d3e781ca
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 0ed1cb6a080a35fa81c6a859f88d987020c8504c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700256"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773327"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity Platform a OpenID Connect Protocol
 
@@ -75,7 +75,7 @@ Metadata jsou jednoduchý dokument JavaScript Object Notation (JSON). Příklad 
 }
 ```
 
-Pokud vaše aplikace obsahuje vlastní podpisové klíče v důsledku použití funkce [mapování deklarací](active-directory-claims-mapping.md) , musíte připojit parametr `appid` dotazu obsahujícího ID aplikace, aby se `jwks_uri` odkazovalo na informace o podpisovém klíči vaší aplikace. Například: `https://login.microsoftonline.com/{tenant}/.well-known/v2.0/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` obsahuje `jwks_uri` `https://login.microsoftonline.com/{tenant}/discovery/v2.0/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`.
+Pokud vaše aplikace obsahuje vlastní podpisové klíče v důsledku použití funkce [mapování deklarací](active-directory-claims-mapping.md) , musíte připojit parametr `appid` dotazu obsahujícího ID aplikace, aby se `jwks_uri` odkazovalo na informace o podpisovém klíči vaší aplikace. Například: `https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` obsahuje `jwks_uri` `https://login.microsoftonline.com/{tenant}/discovery/v2.0/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`.
 
 Obvykle byste tento dokument metadat použili ke konfiguraci knihovny nebo sady SDK OpenID Connect. Knihovna by tato metadata použila k tomu, aby fungovala. Pokud ale nepoužíváte předem vytvořenou knihovnu OpenID Connect, můžete k tomu použít postup ve zbývající části tohoto článku, abyste se mohli přihlásit do webové aplikace pomocí koncového bodu Microsoft Identity Platform.
 
@@ -90,7 +90,7 @@ Pokud vaše webová aplikace potřebuje ověřit uživatele, může uživatele n
 > [!IMPORTANT]
 > Aby bylo možné úspěšně požádat o token ID z koncového bodu/Authorization, musí registrace aplikace na [portálu pro registraci](https://portal.azure.com) mít povolený implicitní udělení id_tokens na kartě ověřování (což nastaví příznak `oauth2AllowIdTokenImplicitFlow` v [manifestu aplikace](reference-app-manifest.md) na `true`). Pokud není povoleno, bude vrácena `unsupported_response`á Chyba: "Zadaná hodnota pro vstupní parametr" response_type "není pro tohoto klienta povolena. Očekávaná hodnota je Code (kód).
 
-Například:
+Příklad:
 
 ```
 // Line breaks are for legibility only.

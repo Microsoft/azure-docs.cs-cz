@@ -11,20 +11,20 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 8860f2bea2877e7775db20be79181352d8cd55c8
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 6737b75a955bb12072722f274ac589cb6d525ffb
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705280"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772542"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Konfigurace omezeného delegování protokolu Kerberos (KCD) v Azure Active Directory Domain Services
 
-Při spouštění aplikací může být potřeba, aby tyto aplikace měly přístup k prostředkům v kontextu jiného uživatele. Active Directory Domain Services (služba AD DS) podporuje mechanismus označovaný jako *delegování protokolu Kerberos* , který umožňuje použití tohoto případu použití. *Omezené* delegování protokolu Kerberos (KCD) následně sestaví na tomto mechanismu k definování konkrétních prostředků, ke kterým je možné přistupovat v kontextu uživatele. Spravované domény Azure Active Directory Domain Services (Azure služba AD DS) jsou bezpečnějším způsobem uzamčeny, které používají tradiční místní služba AD DS prostředí, takže používejte bezpečnější KCD *založené na prostředcích* .
+Při spouštění aplikací může být potřeba, aby tyto aplikace měly přístup k prostředkům v kontextu jiného uživatele. Active Directory Domain Services (služba AD DS) podporuje mechanismus označovaný jako *delegování protokolu Kerberos* , který umožňuje použití tohoto případu použití. *Omezené* delegování protokolu Kerberos (KCD) následně sestaví na tomto mechanismu k definování konkrétních prostředků, ke kterým je možné přistupovat v kontextu uživatele. Spravované domény Azure Active Directory Domain Services (Azure služba AD DS) jsou bezpečnějším způsobem uzamčené než tradiční místní služba AD DS prostředí, takže použijte bezpečnější KCD *založené na prostředcích* .
 
 V tomto článku se dozvíte, jak nakonfigurovat omezené delegování protokolu Kerberos založené na prostředku ve spravované doméně Azure služba AD DS.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku potřebujete tyto prostředky:
 

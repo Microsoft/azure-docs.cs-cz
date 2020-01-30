@@ -2,18 +2,17 @@
 title: Kurz – spuštění Azure Functions v úlohách Azure Stream Analytics
 description: V tomto kurzu se naučíte nakonfigurovat Azure Functions jako výstupní jímku pro úlohy Stream Analytics.
 author: mamccrea
+ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 06/05/2019
-ms.author: mamccrea
-ms.reviewer: mamccrea
-ms.openlocfilehash: 84df3edcebb1ca9f14a68125ae9793f004e56c4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/27/2020
+ms.openlocfilehash: 1797654f290d751eb5c1cb65a77aaa7ca7a35aa1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369316"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772876"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Kurz: spuštění Azure Functions z úloh Azure Stream Analytics 
 
@@ -51,7 +50,7 @@ Postupem uvedeným v kurzu [Zjišťování možných podvodů v reálném čase]
 
 ## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-cache-for-redis"></a>Vytvoření funkce v Azure Functions, která může zapisovat data do mezipaměti Azure pro Redis
 
-1. Podívejte se v dokumentaci k Functions na část věnovanou [vytváření aplikací funkcí](../azure-functions/functions-create-first-azure-function.md#create-a-function-app). Provede vás postupem vytvoření aplikace funkcí a [funkce aktivované přes HTTP v Azure Functions](../azure-functions/functions-create-first-azure-function.md#create-function) pomocí jazyka CSharp.  
+1. Podívejte se v dokumentaci k Functions na část věnovanou [vytváření aplikací funkcí](../azure-functions/functions-create-first-azure-function.md#create-a-function-app). V této části se dozvíte, jak vytvořit aplikaci funkcí a funkci aktivovanou [protokolem HTTP v Azure Functions](../azure-functions/functions-create-first-azure-function.md#create-function)pomocí jazyka CSharp.  
 
 2. Vyhledejte funkci **run.csx**. Aktualizujte ji následujícím kódem. Místo **řetězce "\<mezipaměť Azure pro připojovací řetězec Redis se\>"** s mezipamětí Azure pro primární připojovací řetězec Redis, který jste získali v předchozí části. 
 
@@ -187,13 +186,10 @@ Postupem uvedeným v kurzu [Zjišťování možných podvodů v reálném čase]
    Tento příkaz by měl vytisknout hodnotu pro zadaný klíč:
 
    ![Snímek obrazovky Azure cache pro výstup Redis](./media/stream-analytics-with-azure-functions/image5.png)
-   
-## <a name="error-handling-and-retries"></a>Zpracování chyb a opakování
-V případě chyby při odesílání událostí do služby Azure Functions se Stream Analytics pokusí operaci znovu úspěšně dokončit. Existuje však několik chyb, u kterých se pokus o opakování neprovede. Jedná se o následující chyby:
 
- 1. HttpRequestExceptions
- 2. Příliš velká entita požadavku (kód chyby HTTP 413)
- 3. ApplicationExceptions
+## <a name="error-handling-and-retries"></a>Zpracování chyb a opakování
+
+Pokud při posílání událostí do Azure Functions dojde k selhání, Stream Analytics opakuje většinu operací. Všechny výjimky http se zopakují až do úspěchu s výjimkou chyby HTTP 413 (entita je moc velká). Entita příliš velká chyba je považována za chybu dat, která je předmětem [zásad opakování nebo vyřazení](stream-analytics-output-error-policy.md).
 
 ## <a name="known-issues"></a>Známé problémy
 
@@ -210,7 +206,7 @@ Odstraňte skupinu prostředků, úlohu streamování a všechny související p
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste vytvořili jednoduchou úlohu Stream Analytics, která spouští funkci Azure. Pokud chcete získat další informace o úlohách Stream Analytics, pokračujte dalším kurzem:
+V tomto kurzu jste vytvořili jednoduchou úlohu Stream Analytics, která spouští funkci Azure Functions. Další informace o úlohách Stream Analytics získáte v dalším kurzu:
 
 > [!div class="nextstepaction"]
 > [Spouštění uživatelem definovaných funkcí jazyka JavaScript v úlohách Stream Analytics](stream-analytics-javascript-user-defined-functions.md)

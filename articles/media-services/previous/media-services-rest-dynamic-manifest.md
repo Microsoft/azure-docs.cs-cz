@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewr: cenkdin
-ms.openlocfilehash: 29fef3bec90819b252b43491c08e7a5bc2b3d454
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: b778ad8c59cf51f92584cd3590f7d99244f37b2c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69014902"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774960"
 ---
 # <a name="creating-filters-with-azure-media-services-rest-api"></a>Vytváření filtrů pomocí Azure Media Services REST API 
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ Při vytváření filtrů se používají tyto typy:
 > 
 > Při přístupu k entitám v Media Services musíte nastavit konkrétní pole a hodnoty hlaviček v požadavcích HTTP. Další informace najdete v tématu [instalace Media Services REST APIm vývoji](media-services-rest-how-to-use.md).
 
-## <a name="connect-to-media-services"></a>Připojení ke službě Media Services
+## <a name="connect-to-media-services"></a>Připojení k Media Services
 
 Informace o tom, jak se připojit k rozhraní API AMS, najdete v tématu [přístup k rozhraní Azure Media Services API pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
@@ -65,7 +65,7 @@ Hlavičky požadavku
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host:media.windows.net 
 
@@ -118,7 +118,7 @@ Hlavičky požadavku
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net  
 
@@ -168,7 +168,7 @@ Chcete-li zobrazit seznam filtrů, použijte následující požadavky HTTP:
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     Host: media.windows.net 
 
 ### <a name="get-assetfilters-associated-with-an-asset"></a>Získat **AssetFilter**s přidruženou k assetu
@@ -179,7 +179,7 @@ Chcete-li zobrazit seznam filtrů, použijte následující požadavky HTTP:
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
 
@@ -191,7 +191,7 @@ Chcete-li zobrazit seznam filtrů, použijte následující požadavky HTTP:
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     x-ms-client-request-id: 00000000
 
 
@@ -213,7 +213,7 @@ Hlavičky žádosti:
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
     Content-Length: 384
@@ -253,7 +253,7 @@ Hlavičky žádosti:
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
 
@@ -291,7 +291,7 @@ Pokud chcete odstranit globální filtr, použijte následující požadavky HTT
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN>  
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     Host: media.windows.net 
 
 
@@ -305,7 +305,7 @@ Pokud chcete odstranit místní AssetFilter, použijte následující požadavky
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     Host: media.windows.net 
 
 ## <a name="build-streaming-urls-that-use-filters"></a>Vytváření streamování adres URL, které používají filtry
@@ -330,10 +330,10 @@ Následující příklady ukazují, jak přidat filtry na adresy URL streamován
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyFilter)
 
     
-## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
+## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Viz také

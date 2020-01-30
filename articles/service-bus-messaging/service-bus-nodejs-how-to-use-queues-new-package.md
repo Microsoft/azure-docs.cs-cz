@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: jak používat fronty Azure/Service-Bus v Node. js'
-description: 'Rychlý Start: Naučte se používat fronty Service Bus v Azure z aplikace Node. js pomocí balíčku Azure/Service-Bus.'
+title: Jak používat fronty Azure/Service-Bus v Node. js
+description: Naučte se psát program NodeJS, který odesílá zprávy do fronty Service Bus a přijímá je pomocí nového balíčku @azure/service-bus.
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -11,19 +11,19 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 9901ccd6bb1abf27bb1141c618d0bfde167b9cc3
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9db359d8331859e3eebf345d91fe5dc6e66c0d4c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721682"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774573"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>Rychlý Start: jak používat Service Bus fronty pomocí Node. js a balíčku Azure/Service-Bus
 > [!div class="op_multi_selector" title1="Programovací jazyk" title2="Manageru balíček s Node. js"]
 > - [(Node. js | Azure-SB)](service-bus-nodejs-how-to-use-queues.md)
-> - [(Node. js | @azure/service-bus)](service-bus-nodejs-how-to-use-queues-new-package.md)
+> - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-queues-new-package.md)
 
 V tomto kurzu se naučíte psát program NodeJS, který odesílá zprávy do fronty Service Bus a přijímá je pomocí nového balíčku [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) . Tento balíček používá rychlejší [Protokol AMQP 1,0](service-bus-amqp-overview.md) , zatímco starší balíček [Azure-SB](https://www.npmjs.com/package/azure-sb) používaný [Service Bus rozhraní API pro běh REST](/rest/api/servicebus/service-bus-runtime-rest). Ukázky jsou napsány v jazyce JavaScript.
 

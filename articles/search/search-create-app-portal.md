@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 12/05/2019
-ms.openlocfilehash: 16748d9948518964d47ee9543765e3cb59ae2ec4
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 9ed62ea6fdfc0732128ed340cc0bc48481eb73ec
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901994"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841076"
 ---
 # <a name="quickstart-create-a-search-app-in-the-portal-azure-cognitive-search"></a>Rychlý Start: Vytvoření vyhledávací aplikace na portálu (Azure Kognitivní hledání)
 
@@ -21,7 +21,9 @@ Pomocí průvodce **vytvořením vyhledávací aplikace** na portálu vygenerujt
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
+
+V tuto chvíli budete chtít upgradovat na [nejnovější verzi Microsoft Edge](https://www.microsoft.com/edge) nebo použít prohlížeč Chrome pro Google.
 
 [Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu. 
 
@@ -89,12 +91,12 @@ Následující snímek obrazovky ukazuje možnosti v průvodci, juxtaposed s vyk
 
 Základní index se skládá z fiktivních generovaných dat, která byla duplikována v rámci dokumentů, a popisy se někdy neshodují s obrázkem. Pokud vytváříte aplikaci na základě vlastních indexů, můžete očekávat ucelenější prostředí.
 
-![Spusťte aplikaci](media/search-create-app-portal/run-app.png)
+![Spuštění aplikace](media/search-create-app-portal/run-app.png)
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, abyste odstranili celou sadu prostředků.
+Pokud pracujete ve vlastním předplatném, je vhodné na konci projektu zjistit, zda stále potřebujete prostředky, které jste vytvořili. Prostředky, které se na něm zbývá, můžou mít náklady na peníze. Prostředky můžete odstranit jednotlivě nebo odstranit skupinu prostředků, abyste odstranili celou sadu prostředků.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 

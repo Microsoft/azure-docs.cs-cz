@@ -1,6 +1,6 @@
 ---
-title: ClaimsTransformations – Azure Active Directory B2C | Dokumentace Microsoftu
-description: Definice elementu ClaimsTransformations v Identity prostředí Framework schéma z Azure Active Directory B2C.
+title: ClaimsTransformations-Azure Active Directory B2C | Microsoft Docs
+description: Definice prvku ClaimsTransformations ve schématu rozhraní identity Experience Framework Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,20 +10,20 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c904ac9d4c59a467dd8402ec44682c3cbd03fd8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 66c94f08638895c85836fda37c3ae61f3857ee51
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511537"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836690"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**ClaimsTransformations** prvek obsahuje seznam funkcí transformace deklarací identity, které je možné v centrech uživatele jako součást [vlastní zásady](active-directory-b2c-overview-custom.md). Transformace deklarací identity převede daný deklarace identity na jiný. V transformaci deklarací identity zadejte metodu transformace, třeba přidání položky do kolekce řetězců nebo změna velikosti písmen řetězce.
+Element **ClaimsTransformations** obsahuje seznam transformačních funkcí deklarací identity, které se dají použít v rámci cest uživatelů jako součást [vlastních zásad](custom-policy-overview.md). Transformace deklarací převede danou deklaraci identity na jinou. V transformaci deklarací identity zadáte metodu transformace, například přidání položky do kolekce řetězců nebo změna velikosti písmen řetězce.
 
-Seznam funkcí transformace deklarací identity, které je možné zahrnout cesty uživatele, musí být deklarován element ClaimsTransformations XML části BuildingBlocks zásad.
+Chcete-li zahrnout seznam transformačních funkcí deklarací identity, které lze použít v rámci cest uživatelů, musí být element XML ClaimsTransformations deklarován v části BuildingBlocks v zásadách.
 
 ```xml
 <ClaimsTransformations>
@@ -33,16 +33,16 @@ Seznam funkcí transformace deklarací identity, které je možné zahrnout cest
 </ClaimsTransformations>
 ```
 
-**ClaimsTransformation** prvek obsahuje následující atributy:
+Element **ClaimsTransformation** obsahuje následující atributy:
 
-| Atribut |Požadováno | Popis |
+| Atribut |Požaduje se | Popis |
 | --------- |-------- | ----------- |
-| ID |Ano | Identifikátor, který slouží k jednoznačné identifikaci transformace deklarací identity. Identifikátor je odkazováno z dalších prvky XML v zásadách. |
-| TransformationMethod | Ano | Metoda transformace používané k transformaci deklarací identity. Každá transformace deklarací identity má své vlastní hodnoty. Zobrazit [odkaz na transformaci deklarací](#claims-transformations-reference) úplný seznam dostupných hodnot. |
+| ID |Ano | Identifikátor, který slouží k jednoznačné identifikaci transformace deklarace identity. Identifikátor je odkazován z dalších prvků XML v zásadě. |
+| TransformationMethod | Ano | Metoda transformace, která se má použít v transformaci deklarací Každá transformace deklarace má své vlastní hodnoty. Úplný seznam dostupných hodnot najdete v [referenčních informacích o transformaci deklarací identity](#claims-transformations-reference) . |
 
 ## <a name="claimstransformation"></a>ClaimsTransformation
 
-**ClaimsTransformation** prvek obsahuje následující prvky:
+Element **ClaimsTransformation** obsahuje následující prvky:
 
 ```xml
 <ClaimsTransformation Id="<identifier>" TransformationMethod="<method>">
@@ -59,67 +59,67 @@ Seznam funkcí transformace deklarací identity, které je možné zahrnout cest
 ```
 
 
-| Element | Výskyty | Popis |
+| Element | Výskytů | Popis |
 | ------- | -------- | ----------- |
-| InputClaims | 0:1 | Seznam **InputClaim** elementy, které určují typy deklarací, které jsou použity jako vstup do transformace deklarací identity. Každý z těchto elementů obsahuje odkaz na typu deklarace identity, již definovaná v části ClaimsSchema v zásadách. |
-| Vstupní parametry | 0:1 | Seznam **InputParameter** prvky, které jsou k dispozici jako vstup pro transformaci deklarací identity.  
-| OutputClaims | 0:1 | Seznam **OutputClaim** elementy, které určují typy deklarací identity, které jsou vytvořené po zavolání ClaimsTransformation. Každý z těchto elementů obsahuje odkaz na typu deklarace identity, již definovaná v části ClaimsSchema. |
+| InputClaims | 0:1 | Seznam **InputClaim** prvků, které určují typy deklarací identity, které jsou pořízeny jako vstup pro transformaci deklarací. Každý z těchto prvků obsahuje odkaz na objekt ClaimType, který je již definován v části ClaimsSchema v zásadách. |
+| Parametry | 0:1 | Seznam **InputParameter** prvků, které jsou zadány jako vstup pro transformaci deklarací.  
+| OutputClaims | 0:1 | Seznam elementů **OutputClaim** , které určují typy deklarací, které jsou vytvářeny po vyvolání ClaimsTransformation. Každý z těchto elementů obsahuje odkaz na objekt ClaimType, který je již definován v oddílu ClaimsSchema. |
 
 ### <a name="inputclaims"></a>InputClaims
 
-**InputClaims** prvek obsahuje následující element:
+Element **InputClaims** obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Element | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| InputClaim | 1: n | Typ deklarace identity očekávaný vstup. |
+| InputClaim | 1: n | Očekával se vstupní typ deklarace identity. |
 
 #### <a name="inputclaim"></a>InputClaim
 
-**InputClaim** prvek obsahuje následující atributy:
+Element **InputClaim** obsahuje následující atributy:
 
-| Atribut |Požadováno | Popis |
+| Atribut |Požaduje se | Popis |
 | --------- | ----------- | ----------- |
-| ClaimTypeReferenceId |Ano | Odkaz na typu deklarace identity, již definovaná v části ClaimsSchema v zásadách. |
-| TransformationClaimType |Ano | Typ deklarace identifikátoru tak, aby odkazovaly transformaci. Každá transformace deklarací identity má své vlastní hodnoty. Zobrazit [odkaz na transformaci deklarací](#claims-transformations-reference) úplný seznam dostupných hodnot. |
+| ClaimTypeReferenceId |Ano | Odkaz na objekt ClaimType již definovaný v části ClaimsSchema v zásadách. |
+| TransformationClaimType |Ano | Identifikátor, na který se má odkazovat typ deklarace transformace Každá transformace deklarace má své vlastní hodnoty. Úplný seznam dostupných hodnot najdete v [referenčních informacích o transformaci deklarací identity](#claims-transformations-reference) . |
 
-### <a name="inputparameters"></a>Vstupní parametry
+### <a name="inputparameters"></a>Parametry
 
-**Vstupní parametry** prvek obsahuje následující element:
+Element **vstupní parametry** obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Element | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| InputParameter | 1: n | Očekávaný vstupní parametr. |
+| InputParameter | 1: n | Očekával se vstupní parametr. |
 
 #### <a name="inputparameter"></a>InputParameter
 
-| Atribut | Požadováno |Popis |
+| Atribut | Požaduje se |Popis |
 | --------- | ----------- |----------- |
-| ID | Ano | Identifikátor, který je odkaz na parametr metody transformace deklarací identity. Každá metoda transformace deklarací identity má své vlastní hodnoty. V tabulce transformace deklarací identity pro úplný seznam dostupných hodnot. |
-| DataType | Ano | Typ dat parametr, jako je řetězec, logická hodnota, Int nebo data a času podle výčtu datového typu ve schématu XML vlastní zásady. Tento typ se používá k provedení aritmetické operace správně. Každá transformace deklarací identity má své vlastní hodnoty. Zobrazit [odkaz na transformaci deklarací](#claims-transformations-reference) úplný seznam dostupných hodnot. |
-| Hodnota | Ano | Hodnota, která je předána verbatim transformace. Některé hodnoty libovolného, některé z nich můžete vybrat z metody transformace deklarací identity. |
+| ID | Ano | Identifikátor, který je odkazem na parametr metody transformace deklarací identity. Každá metoda transformace deklarací má své vlastní hodnoty. Úplný seznam dostupných hodnot najdete v tabulce pro transformaci deklarací identity. |
+| DataType | Ano | Typ dat parametru, jako je například String, Boolean, int nebo DateTime, podle výčtu DataType ve schématu XML vlastní zásady. Tento typ se používá k správnému provádění aritmetických operací. Každá transformace deklarace má své vlastní hodnoty. Úplný seznam dostupných hodnot najdete v [referenčních informacích o transformaci deklarací identity](#claims-transformations-reference) . |
+| Hodnota | Ano | Hodnota, která je předána do transformace. Některé z těchto hodnot jsou libovolné, některé z nich si vybíráte z metody transformace deklarací identity. |
 
 ### <a name="outputclaims"></a>OutputClaims
 
-**OutputClaims** prvek obsahuje následující element:
+Element **OutputClaims** obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Element | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| outputClaim | 0: n | Typ deklarace identity očekávaný výstup. |
+| OutputClaim | 0: n | Očekával se výstupní typ deklarace identity. |
 
-#### <a name="outputclaim"></a>outputClaim 
+#### <a name="outputclaim"></a>OutputClaim 
 
-**OutputClaim** prvek obsahuje následující atributy:
+Element **OutputClaim** obsahuje následující atributy:
 
-| Atribut |Požadováno | Popis |
+| Atribut |Požaduje se | Popis |
 | --------- | ----------- |----------- |
-| ClaimTypeReferenceId | Ano | Odkaz na typu deklarace identity, již definovaná v části ClaimsSchema v zásadách.
-| TransformationClaimType | Ano | Typ deklarace identifikátoru tak, aby odkazovaly transformaci. Každá transformace deklarací identity má své vlastní hodnoty. Zobrazit [odkaz na transformaci deklarací](#claims-transformations-reference) úplný seznam dostupných hodnot. |
+| ClaimTypeReferenceId | Ano | Odkaz na objekt ClaimType již definovaný v části ClaimsSchema v zásadách.
+| TransformationClaimType | Ano | Identifikátor, na který se má odkazovat typ deklarace transformace Každá transformace deklarace má své vlastní hodnoty. Úplný seznam dostupných hodnot najdete v [referenčních informacích o transformaci deklarací identity](#claims-transformations-reference) . |
  
-Pokud vstupní a výstupní deklarací stejného typu (string a boolean), můžete použít stejný vstupní deklaraci identity jako výstup deklarace identity. V takovém případě transformace deklarací identity změní vstupní deklaraci identity s hodnotou výstup.
+Pokud vstupní deklarace identity a výstupní deklarace identity jsou stejného typu (řetězec nebo logická hodnota), můžete jako výstupní deklaraci identity použít stejnou vstupní deklaraci identity. V takovém případě transformace deklarací změní vstupní deklaraci na výstupní hodnotu.
 
 ## <a name="example"></a>Příklad:
 
-Například může ukládat poslední verzi služby, které uživatel přijal vaše podmínky. Při aktualizaci podmínky služby, můžete požádat uživatele tak, aby přijímal nové verze. V následujícím příkladu **HasTOSVersionChanged** transformaci deklarací identity porovnává hodnotu **TOSVersion** deklarace identity s hodnotou **LastTOSAcceptedVersion**deklarace identity a pak vrátí logickou hodnotu **TOSVersionChanged** deklarací identity.
+Můžete například uložit poslední verzi vašich podmínek služby, kterou uživatel přijal. Když aktualizujete podmínky služeb, můžete požádat uživatele, aby přijal novou verzi. V následujícím příkladu transformace deklarací **HasTOSVersionChanged** porovnává hodnotu deklarace identity **TOSVersion** s hodnotou deklarace **LastTOSAcceptedVersion** a potom vrátí logickou deklaraci identity **TOSVersionChanged** .
 
 ```XML
 <BuildingBlocks>
@@ -155,16 +155,16 @@ Například může ukládat poslední verzi služby, které uživatel přijal va
 </BuildingBlocks>
 ```
 
-## <a name="claims-transformations-reference"></a>Odkaz na transformaci deklarací identity
+## <a name="claims-transformations-reference"></a>Odkazy na transformace deklarací identity
 
-Příklady transformace deklarací naleznete na následujících stránkách odkaz:
+Příklady transformací deklarací identity najdete na následujících odkazových stránkách:
 
 - [Datový typ Boolean](boolean-transformations.md)
 - [Datum](date-transformations.md)
-- [Integer](integer-transformations.md)
+- [Čísla](integer-transformations.md)
 - [JSON](json-transformations.md)
 - [Obecné](general-transformations.md)
-- [Účtu na sociální síti](social-transformations.md)
+- [Účet sociální sítě](social-transformations.md)
 - [řetězec](string-transformations.md)
-- [StringCollection](stringcollection-transformations.md)
+- [Třída StringCollection](stringcollection-transformations.md)
 

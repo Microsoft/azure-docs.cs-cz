@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: db222515dae51fa5e0334430a3578816b1e8813d
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 5c9054daea76675ed621caf1630c509b16743f4e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75367650"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836338"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Nastavte adresy URL pro přesměrování na b2clogin.com pro Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ Je možné, že budete muset provést několik úprav, abyste mohli migrovat sv�
 
 * Změňte adresu URL pro přesměrování v aplikacích poskytovatele identity na odkaz na *b2clogin.com*.
 * Aktualizujte své aplikace Azure AD B2C tak, aby používaly *b2clogin.com* v uživatelském toku a odkazy na koncový bod tokenu.
-* Aktualizujte všechny **Povolené zdroje** , které jste definovali v nastavení CORS pro [přizpůsobení uživatelského rozhraní](active-directory-b2c-ui-customization-custom-dynamic.md).
+* Aktualizujte všechny **Povolené zdroje** , které jste definovali v nastavení CORS pro [přizpůsobení uživatelského rozhraní](custom-policy-ui-customization-dynamic.md).
 
 ## <a name="change-identity-provider-redirect-urls"></a>Změna adres URL pro přesměrování zprostředkovatele identity
 
@@ -73,7 +73,7 @@ Pro oba formáty:
 
 Kód ve vašich aplikacích a rozhraní API s podporou Azure AD B2C se může na několika místech vztahovat na `login.microsoftonline.com`. Kód může mít například odkazy na toky uživatelů a koncové body tokenu. Místo toho aktualizujte následující informace `your-tenant-name.b2clogin.com`:
 
-* Koncový bod autorizace
+* koncový bod autorizace
 * Koncový bod tokenu
 * Vydavatel tokenů
 

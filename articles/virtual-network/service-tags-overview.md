@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: dc64570ccf69c321f33b9689362def8c9caf975e
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 8d5377f7ec8de14f3d7d55bc109f6be731991051
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715411"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775268"
 ---
 # <a name="virtual-network-service-tags"></a>Značky služby virtuální sítě 
 <a name="network-service-tags"></a>
@@ -79,7 +79,7 @@ Ve výchozím nastavení značky služby odráží rozsahy celého cloudu. Někt
 | **ElasticAFD** | Elastické přední dveře Azure. | Obojí | Ne | Ne |
 | **EventHub** | Event Hubs Azure. | Odchozí | Ano | Ano |
 | **GatewayManager** | Provoz správy pro nasazení vyhrazená pro Azure VPN Gateway a Application Gateway. | Příchozí | Ne | Ne |
-| **GuestAndHybridManagement** | Azure Automation a konfigurace hostů. | Obojí | Ne | Ano |
+| **GuestAndHybridManagement** | Azure Automation a konfigurace hostů. | Odchozí | Ne | Ano |
 | **HDInsight** | Azure HDInsight. | Příchozí | Ano | Ne |
 | **Internet** | Adresní prostor IP adres, který je mimo virtuální síť a dosažitelný veřejným internetem.<br/><br/>Rozsah adres zahrnuje [veřejný adresní prostor IP adres ve vlastnictví Azure](https://www.microsoft.com/download/details.aspx?id=41653). | Obojí | Ne | Ne |
 | **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security. | Odchozí | Ne | Ne |

@@ -1,0 +1,176 @@
+---
+title: Network Watcher – vytváření protokolů toku NSG pomocí šablony Azure Resource Manager
+description: Pomocí šablony Azure Resource Manager a PowerShellu můžete snadno nastavit protokoly toku NSG.
+services: network-watcher
+documentationcenter: na
+author: damendo
+manager: twooley
+editor: ''
+tags: azure-resource-manager
+ms.service: network-watcher
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 01/26/2020
+ms.author: damendo
+ms.openlocfilehash: 2ae6314accf5ad9143e1e103239c2e7c884ec947
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76776635"
+---
+# <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>Konfigurace protokolů toku NSG ze šablony Azure Resource Manager
+
+> [!div class="op_single_selector"]
+> - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
+> - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
+> - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
+> - [REST API](network-watcher-nsg-flow-logging-rest.md)
+> - [Azure Resource Manager](network-watcher-nsg-flow-logging-azure-resource-manager.md)
+
+
+[Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) je nativní a výkonný způsob správy vaší [infrastruktury jako kódu](https://docs.microsoft.com/azure/devops/learn/what-is-infrastructure-as-code)v Azure.
+
+V tomto článku se dozvíte, jak povolit [protokoly toku NSG](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview) programově pomocí šablony Azure Resource Manager a Azure PowerShell. Začneme tak, že poskytneme Přehled vlastností objektu log Flow NSG následovaný několika ukázkovými šablonami. Pak šablonu nasadíme pomocí místní instance prostředí PowerShell.
+
+
+## <a name="nsg-flow-logs-object"></a>Objekt protokolů toku NSG
+
+V následujícím seznamu jsou uvedeny objekty protokolů toku NSG se všemi parametry with.
+Úplný přehled vlastností najdete v článku [referenční informace k šabloně NSG Flow log](https://docs.microsoft.com/azure/templates/microsoft.network/2019-11-01/networkwatchers/flowlogs#RetentionPolicyParameters).
+
+```json
+{
+  "name": "string",
+  "type": "Microsoft.Network/networkWatchers/flowLogs",
+  "location": "string",
+  "apiVersion": "2019-09-01",
+  "properties": {
+    "targetResourceId": "string",
+    "storageId": "string",
+    "enabled": "boolean",
+    "flowAnalyticsConfiguration": {
+      "networkWatcherFlowAnalyticsConfiguration": {
+         "enabled": "boolean",
+         "workspaceResourceId": "string",
+          "trafficAnalyticsInterval": "integer"
+        },
+        "retentionPolicy": {
+           "days": "integer",
+           "enabled": "boolean"
+         },
+        "format": {
+           "type": "string",
+           "version": "integer"
+         }
+      }
+    }
+  }
+```
+Pokud chcete vytvořit prostředek Microsoft. Network/networkWatchers/flowLogs, přidejte výše uvedený JSON do části Resources (prostředky) vaší šablony.
+
+
+## <a name="creating-your-template"></a>Vytvoření šablony
+
+Pokud používáte šablony Azure Resource Manager poprvé, můžete o nich získat další informace pomocí níže uvedených odkazů.
+
+* [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell#deploy-local-template)
+* [Kurz: vytvoření a nasazení první šablony Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-create-first-template?tabs=azure-powershell)
+
+
+Níže jsou uvedeny dva příklady kompletních šablon pro nastavení protokolů toku NSG.
+
+**Příklad 1**: předaná nejjednodušší verze výše s minimálními parametry. Níže uvedená šablona povoluje protokoly toku NSG na cílovém NSG a ukládá je do daného účtu úložiště.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "apiProfile": "2019-09-01",
+  "resources": [
+ {
+    "name": "NetworkWatcher_centraluseuap/Microsoft.NetworkDalanDemoPerimeterNSG",
+    "type": "Microsoft.Network/networkWatchers/FlowLogs/",
+    "location": "centraluseuap",
+    "apiVersion": "2019-09-01",
+    "properties": {
+      "targetResourceId": "/subscriptions/56abfbd6-ec72-4ce9-831f-bc2b6f2c5505/resourceGroups/DalanDemo/providers/Microsoft.Network/networkSecurityGroups/PerimeterNSG",
+      "storageId": "/subscriptions/56abfbd6-ec72-4ce9-831f-bc2b6f2c5505/resourceGroups/MyCanaryFlowLog/providers/Microsoft.Storage/storageAccounts/storagev2ira",
+      "enabled": true,
+      "flowAnalyticsConfiguration": {},
+      "retentionPolicy": {},
+      "format": {}
+    }
+
+  }
+  ]
+}
+```
+
+> [!NOTE]
+> * Název prostředku má formát "nadřazený prostředek > prostředek/Child". Tady je nadřazený prostředek místní instance Network Watcher (Format: NetworkWatcher_<RegionName>. Příklad: NetworkWatcher_centraluseuap)
+> * Parametrem targetresourceid je ID prostředku cílového NSG.
+> * storageId je ID prostředku cílového účtu úložiště.
+
+**Příklad 2**: následující šablony povolují protokoly NSG flow (verze 2) s uchováváním po dobu 5 dní. Povolení Analýza provozu s intervalem zpracování 10 minut.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "apiProfile": "2019-09-01",
+  "resources": [
+ {
+    "name": "NetworkWatcher_centraluseuap/Microsoft.NetworkDalanDemoPerimeterNSG",
+    "type": "Microsoft.Network/networkWatchers/FlowLogs/",
+    "location": "centraluseuap",
+    "apiVersion": "2019-09-01",
+    "properties": {
+      "targetResourceId": "/subscriptions/56abfbd6-ec72-4ce9-831f-bc2b6f2c5505/resourceGroups/DalanDemo/providers/Microsoft.Network/networkSecurityGroups/PerimeterNSG",
+      "storageId": "/subscriptions/56abfbd6-ec72-4ce9-831f-bc2b6f2c5505/resourceGroups/MyCanaryFlowLog/providers/Microsoft.Storage/storageAccounts/storagev2ira",
+      "enabled": true,
+      "flowAnalyticsConfiguration": {
+            "enabled": true,
+        "workspaceResourceId": "91a3d1e9-698e-4a49-96dc-f6fc585ae888",
+        "trafficAnalyticsInterval": 10
+      },
+      "retentionPolicy": {
+        "days": 5,
+        "enabled": true
+      },
+      "format": {
+        "type": "JSON",
+        "version": 1
+      }
+    }
+
+  }
+  ]
+}
+```
+
+## <a name="deploying-your-azure-resource-manager-template"></a>Nasazení šablony Azure Resource Manager
+
+V tomto kurzu se předpokládá, že máte existující skupinu prostředků a NSG, na které můžete povolit protokolování toku.
+Kteroukoli z výše uvedených příkladů šablon můžete uložit místně jako `azuredeploy.json`. Aktualizujte hodnoty vlastností tak, aby odkazovaly na platné prostředky v rámci vašeho předplatného.
+
+Pokud chcete nasadit šablonu, spusťte v PowerShellu následující příkaz.
+```azurepowershell
+New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatcherRG `
+    -TemplateFile "C:\MyTemplates\azuredeploy.json"
+```
+
+
+## <a name="verifying-your-deployment"></a>Ověření nasazení
+
+Existuje několik způsobů, jak ověřit, zda nasazení proběhlo úspěšně. Konzola PowerShellu by měla zobrazit "ProvisioningState" jako "úspěch". Kromě toho můžete navštívit [stránku portálu NSG Flow logs](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) a potvrdit změny. Pokud se s nasazením vyskytly problémy, podívejte se na [řešení běžných chyb při nasazení Azure pomocí Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/templates/common-deployment-errors).
+
+
+## <a name="next-steps"></a>Další kroky
+
+Naučte se vizualizovat data toku NSG pomocí:
+* [Microsoft Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
+* [Nástroje pro open source](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
+* [Analýza provozu Azure](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)

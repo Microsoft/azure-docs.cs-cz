@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cc492b29fd6bc4a820543740e9d1962fc74f2cfc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 21a3597a8c3675a060359b5e4feb9561e02f0149
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425510"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840141"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Kurz: vytvoření toků uživatelů v Azure Active Directory B2C
 
-Ve vašich aplikacích můžete mít [uživatelské toky](active-directory-b2c-reference-policies.md) , které uživatelům umožňují registraci, přihlašování a správu svého profilu. V tenantovi Azure Active Directory B2C (Azure AD B2C) můžete vytvořit více uživatelských toků různých typů a podle potřeby je ve svých aplikacích používat. Toky uživatelů se dají znovu použít napříč aplikacemi.
+Ve vašich aplikacích můžete mít [uživatelské toky](user-flow-overview.md) , které uživatelům umožňují registraci, přihlašování a správu svého profilu. V tenantovi Azure Active Directory B2C (Azure AD B2C) můžete vytvořit více uživatelských toků různých typů a podle potřeby je ve svých aplikacích používat. Toky uživatelů se dají znovu použít napříč aplikacemi.
 
 V tomto článku získáte informace o těchto tématech:
 

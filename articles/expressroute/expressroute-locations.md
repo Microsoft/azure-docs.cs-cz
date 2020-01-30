@@ -6,14 +6,14 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 01/17/2020
+ms.date: 01/28/2020
 ms.author: cherylmc
-ms.openlocfilehash: da84bea51271829e7d3e513ada21c69dbd61916c
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 61bc77e7ac7671cd439eedea25eac11c91457aa9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719955"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76838713"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -119,7 +119,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Podporováno |Podporováno |Amsterdam, Chicago, Praha, Londýn, Newport (Wales), Svatý Paulo, Seattle, Silicon sedl, Singapur, Washington DC |
 | **LG CNS** |Podporováno |Podporováno |Busan, Soul |
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |Podporováno |Podporováno |Kapské město, Johannesburg |
-| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Podporováno |Podporováno |Amsterdam, Brno, Auckland, Chicago, Praha, Denver, Dubai2, Dublin, Frankfurt, Hongkong – zvláštní správní oblast, Las Vegas, Londýn, London2, Los Angeles, Melbourne, Miami, Montreal, New York, Oslo, Perth, Quebec City, San Antonio, Seattle, Silicon sedl, Singapur, Singapur2, Sydney, Tokio, Toronto, Washington DC, Curych |
+| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Podporováno |Podporováno |Amsterdam, Brno, Auckland, Chicago, Praha, Denver, Dubai2, Dublin, Frankfurt, Ženeva, Hongkong – zvláštní správní oblast, Las Vegas, Londýn, London2, Los Angeles, Melbourne, Miami, Montreal, New York, Oslo, Perth, Quebec City, San Antonio, Seattle, Silicon sedl, Singapur, Singapur2, Sydney, Tokio, Toronto, Washington DC, Curych |
 | **[MTN](https://www.mtnbusiness.com/en/enterprise/Pages/microsoft-express-route.aspx)** |Podporováno |Podporováno |Londýn |
 | **[Neutrona Networks](https://www.neutrona.com/index.php/azure-expressroute/)** |Podporováno |Podporováno |Dallas, Los Angeles, Miami, Sao Paulo, Washington DC |
 | **[Next Generation Data](https://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |Podporováno |Podporováno |Newport(Wales) |
@@ -181,6 +181,7 @@ Národní cloudy Azure jsou oddělené od sebe navzájem i z celosvětově komer
 | **Poskytovatel služeb** | **Microsoft Azure** | **Office 365** | **Umístění** |
 | --- | --- | --- | --- |
 | **China Telecom** |Podporováno |Nepodporuje se |Peking, Beijing2, Shanghai, Shanghai2 |
+| **Čína UNICOM** | Podporováno | Nepodporuje se | Beijing2 |
 | **[GDS](http://www.gds-services.com/en/about_2.html)** |Podporováno |Nepodporuje se |Beijing2, Shanghai2 |
 
 Další informace najdete v tématu [ExpressRoute v Číně](http://www.windowsazure.cn/home/features/expressroute/).

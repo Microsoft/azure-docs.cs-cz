@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: f0f9b2c974c0a095719973b1c6173d682718dbbf
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 8989acc6d21a3c53be9d97c74ed7fbf03ba54819
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "69014873"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773683"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Začínáme s doručováním obsahu na vyžádání pomocí REST  
 
@@ -89,11 +89,11 @@ Ve službě Media Services můžete digitální soubory nahrát do assetu. Entit
 
 Jedna z hodnot, které musíte zadat při vytváření assetu, jsou možnosti vytváření prostředků. Vlastnost **Options** je hodnota výčtu, která popisuje možnosti šifrování, pomocí kterých lze vytvořit Asset. Platná hodnota je jedna z hodnot níže uvedeného seznamu, nikoli kombinace hodnot z tohoto seznamu:
 
-* Žádné = **0** – nepoužívá se žádné šifrování. Když použijete tuto možnost, váš obsah se nechrání během přenosu nebo v klidovém úložišti.
+* **Žádná** = **0** – nepoužívá se žádné šifrování. Když použijete tuto možnost, váš obsah se nechrání během přenosu nebo v klidovém úložišti.
     Pokud chcete pomocí progresivního stahování dodávat obsah ve formátu MP4, použijte tuto možnost.
-* StorageEncrypted = **1** – šifruje obsah místně pomocí šifrování AES-256 a pak ho nahraje, aby Azure Storage tam, kde je uložený zašifrovaný v klidovém stavu. Prostředky chráněné pomocí šifrování úložiště jsou před kódováním automaticky bez šifrování umístěny do systému souborů EFS a volitelně se znovu zašifrují před jejich odesláním zpět v podobě nového výstupního prostředku. Případem primárního použití šifrování úložiště je situace, kdy chcete zabezpečit soubory s vysoce kvalitními vstupními multimediálními soubory pomocí silného šifrování na disku.
-* CommonEncryptionProtected = **2** – tuto možnost použijte, pokud nahráváte obsah, který už je zašifrovaný a chráněný pomocí Common Encryption nebo PlayReady DRM (například Smooth Streaming chráněná pomocí technologie PlayReady DRM).
-* EnvelopeEncryptionProtected = **4** – tuto možnost použijte, pokud odesíláte HLS šifrované pomocí AES. Soubory musí být zakódované a šifrované pomocí nástroje pro transformaci.
+* **StorageEncrypted** = **1** – šifruje obsah místně pomocí šifrování AES-256 a pak ho nahraje, aby Azure Storage tam, kde je uložený zašifrovaný v klidovém stavu. Prostředky chráněné pomocí šifrování úložiště jsou před kódováním automaticky bez šifrování umístěny do systému souborů EFS a volitelně se znovu zašifrují před jejich odesláním zpět v podobě nového výstupního prostředku. Případem primárního použití šifrování úložiště je situace, kdy chcete zabezpečit soubory s vysoce kvalitními vstupními multimediálními soubory pomocí silného šifrování na disku.
+* **CommonEncryptionProtected** = **2** – tuto možnost použijte, pokud odesíláte obsah, který už je zašifrovaný a chráněný pomocí Common Encryption nebo PlayReady DRM (například Smooth Streaming chráněná pomocí technologie PlayReady DRM).
+* **EnvelopeEncryptionProtected** = **4** – tuto možnost použijte, pokud odesíláte HLS šifrované pomocí AES. Soubory musí být zakódované a šifrované pomocí nástroje pro transformaci.
 
 ### <a name="create-an-asset"></a>Vytvoření assetu
 Asset je kontejner pro více typů nebo sad objektů v Media Services, včetně videa, zvuku, obrázků, kolekcí miniatur, textových stop a souborů titulků. V REST API vytvoření Assetu vyžaduje odeslání žádosti POST do Media Services a umístění jakýchkoli vlastností informací o prostředku do textu žádosti.
@@ -109,7 +109,7 @@ Následující příklad ukazuje, jak vytvořit Asset.
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: c59de965-bc89-4295-9a57-75d897e5221e
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 45
@@ -163,7 +163,7 @@ Po nahrání digitálního mediálního souboru do kontejneru objektů BLOB se p
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 164
 
@@ -225,7 +225,7 @@ Následující příklad ukazuje, jak vytvořit AccessPolicy:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 74
 
@@ -284,7 +284,7 @@ Následující příklad ukazuje, jak vytvořit Lokátor adresy URL SAS, jak je 
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 178
 
@@ -348,7 +348,7 @@ Teď, když jste nahráli soubor, aktualizujte informace o velikosti Assetového
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
 
     {  
@@ -376,7 +376,7 @@ V případě úspěchu se vrátí následující:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
 
 
@@ -395,7 +395,7 @@ V případě úspěchu se vrátí následující:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
 
 **Odpověď HTTP**
@@ -426,7 +426,7 @@ Následující kód požaduje ID kodéru.
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
 
 
@@ -459,8 +459,8 @@ Následující kód požaduje ID kodéru.
        ]
     }
 
-### <a name="create-a-job"></a>Vytvoří úlohu
-Každá úloha může mít jeden nebo více úloh v závislosti na typu zpracování, které chcete provést. Pomocí REST API můžete vytvořit úlohy a jejich související úkoly jedním ze dvou způsobů: Úkoly lze definovat prostřednictvím vlastnosti navigace úkoly v entitách úlohy nebo prostřednictvím dávkového zpracování OData. Sada Media Services SDK používá dávkové zpracování. Nicméně pro čitelnost příkladů kódu v tomto článku jsou úkoly definovány jako vložené. Informace o dávkovém zpracování najdete v tématu [dávkové zpracování protokolu OData (Open Data Protocol)](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
+### <a name="create-a-job"></a>Vytvoření úlohy
+Každá úloha může mít jeden nebo více úloh v závislosti na typu zpracování, které chcete provést. Prostřednictvím REST API můžete vytvořit úlohy a jejich související úkoly jedním ze dvou způsobů: úkoly lze definovat prostřednictvím vlastnosti navigace úkoly v entitách úlohy nebo prostřednictvím dávkového zpracování OData. Sada Media Services SDK používá dávkové zpracování. Nicméně pro čitelnost příkladů kódu v tomto článku jsou úkoly definovány jako vložené. Informace o dávkovém zpracování najdete v tématu [dávkové zpracování protokolu OData (Open Data Protocol)](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
 Následující příklad ukazuje, jak vytvořit a publikovat úlohu s jednou nastavenou úlohou ke kódování videa v konkrétním rozlišení a kvalitě. V následující části dokumentace najdete seznam všech [přednastavení úloh](https://msdn.microsoft.com/library/mt269960) podporovaných procesorem Media Encoder Standard.  
 
@@ -473,7 +473,7 @@ Následující příklad ukazuje, jak vytvořit a publikovat úlohu s jednou nas
     Accept: application/json;odata=verbose
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 482
 
@@ -561,19 +561,19 @@ V případě úspěchu se vrátí následující odpověď:
 K dispozici je několik důležitých věcí, které je potřeba si uvědomit v každé žádosti o úlohu:
 
 * Vlastnosti TaskBody – musí použít literál XML pro definování počtu vstupních nebo výstupních prostředků, které úkol používá. Článek o úloze obsahuje definici schématu XML pro XML.
-* V definici TaskBody – je nutné, aby každá vnitřní `<inputAsset>` hodnota `<outputAsset>` pro a byla nastavena jako JobInputAsset (hodnota) nebo JobOutputAsset (hodnota).
+* V definici TaskBody – musí být každá vnitřní hodnota pro `<inputAsset>` a `<outputAsset>` nastavena jako JobInputAsset (hodnota) nebo JobOutputAsset (hodnota).
 * Úloha může mít více výstupních prostředků. Jeden JobOutputAsset (x) lze použít pouze jednou jako výstup úkolu v úloze.
 * Jako vstupní Asset úkolu můžete zadat JobInputAsset nebo JobOutputAsset.
 * Úkoly nesmí tvořit cyklus.
 * Parametr hodnoty, který předáte do JobInputAsset nebo JobOutputAsset, představuje hodnotu indexu pro Asset. Skutečné prostředky jsou definovány v navigačním vlastnosti InputMediaAssets a OutputMediaAssets v definici entity úlohy.
 
 > [!NOTE]
-> Vzhledem k tomu, že Media Services je postaven na OData V3, jsou jednotlivé prostředky v kolekcích vlastností InputMediaAssets a OutputMediaAssets odkazovány pomocí páru název-hodnota __metadata: URI.
+> Vzhledem k tomu, že Media Services je postavené na OData V3, jednotlivé prostředky v kolekcích vlastností navigace InputMediaAssets a OutputMediaAssets odkazují na dvojici název-hodnota __metadata: URI.
 >
 >
 
 * InputMediaAssets se mapuje na jeden nebo více assetů, které jste vytvořili v Media Services. OutputMediaAssets jsou vytvořeny systémem. Neodkazují na stávající Asset.
-* OutputMediaAssets lze pojmenovat pomocí atributu název prostředku. Pokud tento atribut není k dispozici, pak název OutputMediaAsset je bez ohledu na to, zda je vnitřní text `<outputAsset>` hodnoty prvku přípona hodnoty názvu úlohy nebo hodnota ID úlohy (v případě, že vlastnost Name není definována). Pokud například nastavíte hodnotu pro název prostředku na "Sample", vlastnost OutputMediaAsset Name bude nastavena na "Sample". Pokud jste však nenastavili hodnotu pro název prostředku, ale nastavili jste název úlohy na "NewJob", pak bude název OutputMediaAsset "JobOutputAsset (hodnota) _NewJob".
+* OutputMediaAssets lze pojmenovat pomocí atributu název prostředku. Pokud tento atribut není k dispozici, pak název OutputMediaAsset je bez ohledu na to, zda je vnitřní text hodnoty prvku `<outputAsset>` přípona hodnoty názvu úlohy nebo hodnota ID úlohy (v případě, že vlastnost Name není definována). Pokud například nastavíte hodnotu pro název prostředku na "Sample", vlastnost OutputMediaAsset Name bude nastavena na "Sample". Pokud jste však nenastavili hodnotu pro název prostředku, ale nastavili jste název úlohy na "NewJob", pak bude název OutputMediaAsset "JobOutputAsset (hodnota) _NewJob".
 
     Následující příklad ukazuje, jak nastavit atribut majetku:
 
@@ -595,7 +595,7 @@ Stav úlohy můžete načíst pomocí vlastnosti State, jak je znázorněno v n�
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs.net
     Content-Length: 0
@@ -632,7 +632,7 @@ Následující příklad ukazuje, jak volat CancelJob.
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.2
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs.net
 
@@ -656,7 +656,7 @@ Následující kód ukazuje, jak požádat o ID výstupního prostředku.
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
 
 
@@ -694,7 +694,7 @@ Následující kód ukazuje, jak požádat o ID výstupního prostředku.
 
 ## <a id="publish_get_urls"></a>Publikování assetu a získání adres URL streamování a progresivního stahování pomocí REST API
 
-Pokud chcete prostředek streamovat nebo stáhnout, musíte ho nejdřív „publikovat“ vytvořením lokátoru. Lokátory zajišťují přístup k souborům, které jsou obsaženy v assetu. Služba Media Services podporuje dva typy lokátorů: OnDemandOrigin Lokátory, které se používají ke streamování médií (například MPEG POMLČKa, HLS nebo Smooth Streaming) a Lokátory přístupového podpisu (SAS), které se používají ke stažení mediálních souborů. 
+Pokud chcete prostředek streamovat nebo stáhnout, musíte ho nejdřív „publikovat“ vytvořením lokátoru. Lokátory zajišťují přístup k souborům, které jsou obsaženy v assetu. Služba Media Services podporuje dva typy lokátorů: lokátor OnDemandOrigin, používaný ke streamování médií (například MPEG DASH, HLS nebo technologie Smooth Streaming), a lokátor s přístupovým podpisem (SAS), používaný ke stahování mediálních souborů. 
 
 Po vytvoření lokátorů můžete sestavit adresy URL, které se použijí ke streamování nebo stahování souborů.
 
@@ -733,7 +733,7 @@ Následující příklad ukazuje, jak zadat AccessPolicy pro oprávnění ke čt
     Accept: application/json
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs.net
     Content-Length: 74
@@ -756,7 +756,7 @@ Následující kód ukazuje, jak získat adresu URL, která se dá použít ke s
     Accept: application/json
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs.net
     Content-Length: 182
@@ -847,7 +847,7 @@ Následující kód ukazuje, jak vytvořit Lokátor adresy URL streamování:
     Accept: application/json
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs
     Content-Length: 182
@@ -918,5 +918,5 @@ Chcete-li otestovat progresivní stahování, vložte adresu URL do prohlížeč
 ## <a name="next-steps-media-services-learning-paths"></a>Další kroky: Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

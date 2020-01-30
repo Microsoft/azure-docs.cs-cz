@@ -1,108 +1,108 @@
 ---
-title: Model nasazení Azure Classic | Microsoft Docs
-description: Model nasazení Azure Classic
+title: Model nasazení Azure Classic
+description: Model nasazení Classic, který se teď nahradil modelem Správce prostředků, vynutil globální omezení vCPU kvóty pro virtuální počítače a služby Virtual Machine Scale Sets.
 author: sowmyavenkat86
 ms.author: svenkat
-ms.date: 06/20/2019
+ms.date: 01/27/2020
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: d8f4bf04251347c44ea1692cfdda2602e23117f4
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a3d5106cafc1d3bfe77f3e42e85cedb668fc4fa0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75897049"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835558"
 ---
 # <a name="classic-deployment-model"></a>Model nasazení Classic
 
-Model nasazení Classic je model nasazení Azure starší generace. Vynutila globální limit vCPU kvóty pro virtuální počítače a služby Virtual Machine Scale Sets. Model nasazení Classic již není doporučen a je nyní nahrazen modelem Správce prostředků. 
+Model nasazení Classic je model nasazení Azure starší generace. Vynutila globální limit vCPU kvóty pro virtuální počítače a služby Virtual Machine Scale Sets. Model nasazení Classic již není doporučen a je nyní nahrazen modelem Správce prostředků.
 
-Další informace o těchto dvou modelech nasazení a výhodách použití Správce prostředků najdete na stránce věnované [nasazení Správce prostředků a klasického nasazení](../../azure-resource-manager/management/deployment-models.md) .
- 
-Když se vytvoří nové předplatné, přiřadí se mu výchozí kvóta vCPU. I když je nový virtuální počítač nasazený pomocí modelu nasazení Classic, součet nového a stávajícího vCPUho využití ve všech oblastech nesmí překročit kvótu vCPU schválenou pro model nasazení Classic.
- 
-Přečtěte si další informace o kvótách na stránce [omezení předplatného a služeb Azure](https://aka.ms/quotalimits) .
+Další informace o těchto dvou modelech nasazení a výhodách použití Správce prostředků najdete v tématu [Správce prostředků a klasické nasazení](../../azure-resource-manager/management/deployment-models.md).
 
-Můžete požádat o zvýšení limitu kvóty vCPU pro model nasazení Classic prostřednictvím okna Help + support nebo pomocí okna využití + kvóta na portálu.
+Když se vytvoří nové předplatné, přiřadí se mu výchozí kvóta vCPU. Kdykoli je možné nasadit nový virtuální počítač pomocí modelu nasazení Classic, součet nového a stávajícího vCPUho využití ve všech oblastech nesmí překročit kvótu vCPU schválenou pro model nasazení Classic.
 
-## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-the-help--support-blade"></a>Požadavek na zvýšení kvóty vCPU řady virtuálních počítačů na úrovni předplatného pomocí okna pro **pomoc a podporu**
+Další informace o kvótách najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
-Podle pokynů níže vytvořte žádost o podporu prostřednictvím okna "Help + podpora" v Azure, které je dostupné v Azure Portal. 
+Můžete požádat o zvýšení limitu kvóty vCPU pro model nasazení Classic. V Azure Portal použijte možnost **help + podpora** nebo **využití a kvóty** .
 
-1. V https://portal.azure.com vyberte možnost **help + podpora**.
+## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-help--support"></a>Žádost o zvýšení kvóty vCPU podle řady virtuálních počítačů na úrovni předplatného s využitím pomoci a podpory
 
-   ![Nápověda a podpora](./media/resource-manager-core-quotas-request/helpsupport.png)
- 
-2.  Vyberte **Nová žádost o podporu**. 
+Podle následujících pokynů vytvořte žádost o podporu pomocí **pomoci a podpory** v Azure Portal.
 
-      ![Nová žádost o podporu](./media/resource-manager-core-quotas-request/newsupportrequest.png)
+1. V nabídce [Azure Portal](https://portal.azure.com) vyberte možnost **help + podpora**.
 
-3. V rozevíracím seznamu typ problému vyberte **omezení služby a předplatné (kvóty)** .
+   ![V Azure Portal vyberte Help + support.](./media/resource-manager-core-quotas-request/help-plus-support.png)
 
-   ![Rozevírací seznam typ problému](./media/resource-manager-core-quotas-request/issuetypedropdown.png)
+1. Vyberte **Nová žádost o podporu**.
 
-4. Vyberte předplatné, které potřebuje navýšit kvótu.
+   ![Vytvořit novou žádost o podporu v Azure Portal](./media/resource-manager-core-quotas-request/new-support-request.png)
 
-   ![Vybrat příspěvek odběru](./media/resource-manager-core-quotas-request/select-subscription-sr.png)
-   
-5. Vyberte **COMPUTE – virtuální počítač (jádra – vCPU) zvýšení limitu předplatného** v rozevíracím seznamu **typ kvóty** . 
+1. V možnosti **typ problému**vyberte **omezení služby a předplatné (kvóty)** .
+
+   ![Jako typ problému vyberte kvóty.](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
+
+1. Vyberte předplatné, jehož kvóta se má zvýšit.
+
+   ![Vyberte předplatné, pro které se má zvýšit kvóta.](./media/resource-manager-core-quotas-request/select-subscription-support-request.png)
+
+1. V části **typ kvóty**vyberte **COMPUTE-VM (cores-vCPU) zvýšení limitu předplatného**.
+
+   ![Vyberte typ kvóty, který se má zvýšit.](./media/resource-manager-core-quotas-request/select-quota-type.png)
+
+1. Vyberte **Další: řešení** pro otevření **podrobností problému**. Pokud chcete zadat další informace, vyberte **zadat podrobnosti** .
+
+   ![Zadejte podrobnosti, které vám pomůžou vaši žádost společně.](./media/resource-manager-core-quotas-request/provide-details-link.png)
+
+1. V **Podrobnosti kvóty**vyberte **Classic** a vyberte **umístění**.
+
+   ![Přidat podrobnosti včetně modelu nasazení a umístění](./media/resource-manager-core-quotas-request/quota-details-classic.png)
+
+1. Pro **rodinu SKU**vyberte jednu nebo více rodin SKU, které chcete zvýšit.
+
+   ![Určete rodinu SKU, která se má zvýšit.](./media/resource-manager-core-quotas-request/sku-family-classic.png)
+
+1. Zadejte nová omezení, která chcete v předplatném. Chcete-li odebrat řádek, zrušte výběr SKU z **řady SKU** nebo vyberte ikonu zahození "X". Až zadáte kvótu pro každou rodinu SKU, vyberte **Uložit a pokračovat** v **podrobnostech o kvótě** , abyste mohli pokračovat v žádosti o podporu.
+
+   ![Požádat o nová omezení](./media/resource-manager-core-quotas-request/new-limits-classic.png)
+
+## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-usage--quotas"></a>Žádost o zvýšení kvóty vCPU na řadu virtuálních počítačů na úrovni předplatného s využitím + kvót
+
+Podle následujících pokynů vytvořte žádost o podporu pomocí Azure Portal **a kvót** v.
+
+1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **předplatná**.
+
+   ![Přejít na předplatná v Azure Portal](./media/resource-manager-core-quotas-request/search-for-subscriptions.png)
+
+1. Vyberte předplatné, jehož kvóta se má zvýšit.
+
+   ![Vyberte předplatné, které chcete upravit.](./media/resource-manager-core-quotas-request/select-subscription-change-quota.png)
+
+1. Vyberte **využití a kvóty**.
+
+   ![Výběr využití a kvót pro předplatné](./media/resource-manager-core-quotas-request/select-usage-plus-quotas.png)
+
+1. V pravém horním rohu vyberte **požádat o zvýšení**.
+
+   ![Vyberte, chcete-li zvýšit kvótu.](./media/resource-manager-core-quotas-request/request-increase-from-subscription.png)
+
+1. Vyberte **COMPUTE-VM (cores-vCPU) limit předplatného se zvyšuje** jako **typ kvóty**.
 
    ![Vybrat typ kvóty](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
-6. V **podrobnostech o problémech**zadejte další informace, které vám pomůžou zpracovat vaši žádost kliknutím na **zadat podrobnosti**.
+1. Vyberte **Další: řešení** pro otevření **podrobností problému**. Pokud chcete zadat další informace, vyberte **zadat podrobnosti** .
 
-   ![Zadat podrobnosti](./media/resource-manager-core-quotas-request/provide-details.png)
+   ![Zadejte podrobnosti žádosti.](./media/resource-manager-core-quotas-request/provide-details-link.png)
 
-7. Na panelu **Podrobnosti kvóty** vyberte Classic a vyberte umístění.
+1. V **podrobnostech o kvótě**vyberte **Classic** a **umístění**.
 
-   ![Podrobnosti o kvótě DM](./media/resource-manager-core-quotas-request/quota-details-classic.png)
+   ![Výběr podrobností kvóty včetně modelu nasazení a umístění](./media/resource-manager-core-quotas-request/quota-details-classic.png)
 
-8. Vyberte **rodiny SKU** , které vyžadují zvýšení. 
+1. Vyberte jednu nebo více skupin SKU pro zvýšení.
 
-   ![Rodina SKU](./media/resource-manager-core-quotas-request/sku-family-classic.png)
+   ![Vybrat skupinu SKU pro zvýšení](./media/resource-manager-core-quotas-request/sku-family-classic.png)
 
-9. Zadejte nová omezení, která chcete v předplatném. Chcete-li odebrat řádek, zrušte položku SKU z rozevíracího seznamu rodina SKU nebo klikněte na ikonu zahodit "x". Po zadání požadované kvóty pro každou rodinu SKU klikněte na **Uložit a pokračujte** na panelu Podrobnosti o kvótě, aby bylo možné pokračovat v vytváření žádosti o podporu.
+1. Zadejte nová omezení, která chcete v předplatném. Chcete-li odebrat řádek, zrušte výběr SKU z **řady SKU** nebo vyberte ikonu zahození "X". Až zadáte kvótu pro každou rodinu SKU, vyberte **Uložit a pokračovat** v **podrobnostech o kvótě** , abyste mohli pokračovat v žádosti o podporu.
 
-   ![Nová omezení](./media/resource-manager-core-quotas-request/new-limits-classic.png)
-
-## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-usages--quota-blade"></a>Žádost o zvýšení kvóty vCPU na řadu virtuálních počítačů na úrovni předplatného pomocí okna **využití + kvóta**
-
-Pomocí následujících pokynů můžete vytvořit žádost o podporu prostřednictvím okna Azure využití + kvóty dostupného v Azure Portal. 
-
-1. Z https://portal.azure.com vyberte **předplatná**.
-
-   ![Předplatná](./media/resource-manager-core-quotas-request/subscriptions.png)
-
-2. Vyberte předplatné, které potřebuje navýšit kvótu.
-
-   ![Výběr předplatného](./media/resource-manager-core-quotas-request/select-subscription.png)
-
-3. Vybrat **využití a kvóty**
-
-   ![Vybrat využití a kvóty](./media/resource-manager-core-quotas-request/select-usage-quotas.png)
-
-4. V pravém horním rohu vyberte **požádat o zvýšení**.
-
-   ![Zvýšení žádosti](./media/resource-manager-core-quotas-request/request-increase.png)
-
-5. Vyberte **COMPUTE-VM (cores-vCPU) limit předplatného** , který se zvyšuje jako typ citace. 
-
-   ![Vyplnit formulář](./media/resource-manager-core-quotas-request/select-quota-type.png)
-   
-6. V **podrobnostech o problémech**zadejte další informace, které vám pomůžou zpracovat vaši žádost kliknutím na **zadat podrobnosti**.
-
-   ![Zadat podrobnosti](./media/resource-manager-core-quotas-request/provide-details.png)
-
-7. Na panelu **Podrobnosti kvóty** vyberte Classic a vyberte umístění.
-
-   ![Podrobnosti o kvótě DM](./media/resource-manager-core-quotas-request/quota-details-classic.png)
-
-8. Vyberte **rodiny SKU** , které vyžadují zvýšení. 
-
-   ![Rodina SKU](./media/resource-manager-core-quotas-request/sku-family-classic.png)
-
-9. Zadejte nová omezení, která chcete v předplatném. Chcete-li odebrat řádek, zrušte položku SKU z rozevíracího seznamu rodina SKU nebo klikněte na ikonu zahodit "x". Po zadání požadované kvóty pro každou rodinu SKU klikněte na **Uložit a pokračujte** na panelu Podrobnosti o kvótě, aby bylo možné pokračovat v vytváření žádosti o podporu.
-
-   ![Nová omezení](./media/resource-manager-core-quotas-request/new-limits-classic.png)
+   ![Zadejte novou kvótu.](./media/resource-manager-core-quotas-request/new-limits-classic.png)
 

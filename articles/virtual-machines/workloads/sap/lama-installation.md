@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: ffe68352fed0b9c0df0cdfb971c085d1bb7f18c4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2df0bfe8041216e207193832c8f7ca48967c4e5b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978062"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842431"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Konektor SAP LaMa pro Azure
 
@@ -87,7 +87,7 @@ Služba Azure Connector může k autorizaci na Microsoft Azure použít instanč
 1. Klikněte na nová registrace.
 1. Zadejte název a klikněte na zaregistrovat.
 1. Vyberte novou aplikaci a klikněte na certifikáty & tajné klíče na kartě nastavení.
-1. Vytvořte nový tajný klíč klienta, zadejte popis nového klíče, vyberte, kdy se má tajný klíč exire, a klikněte na Uložit.
+1. Vytvořte nový tajný klíč klienta, zadejte popis nového klíče, vyberte, kdy má tajný klíč vypršet, a klikněte na Uložit.
 1. Poznamenejte si hodnotu. Používá se jako heslo instančního objektu.
 1. Poznamenejte si ID aplikace. Používá se jako uživatelské jméno objektu služby.
 
@@ -294,7 +294,7 @@ ANF poskytuje systém souborů NFS pro Azure. V kontextu SAP LaMa to zjednodušu
 
 Austrálie – východ, Střed USA, Východní USA, Východní USA 2, Severní Evropa, Střed USA – jih, Západní Evropa a Západní USA 2.
 
-#### <a name="network-requirements"></a>Požadavky sítě
+#### <a name="network-requirements"></a>Požadavky na síť
 
 ANF vyžaduje delegovanou podsíť, která musí být součástí stejné virtuální sítě jako servery SAP. Tady je příklad pro takovou konfiguraci.
 Tato obrazovka ukazuje vytvoření virtuální sítě a první podsítě:
@@ -438,7 +438,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-as
 
 Spusťte SWPM a pro *název hostitele instance ASCS*použijte *AS1-ASCS* .
 
-#### <a name="install-sql-server"></a>Instalace SQL Serveru
+#### <a name="install-sql-server"></a>Nainstalovat SQL Server
 
 Musíte přidat IP adresu virtuálního hostitele databáze do síťového rozhraní. Doporučeným způsobem je použít sapacext. Pokud IP adresu připojíte pomocí sapacext, nezapomeňte po restartování připojit IP adresu znovu.
 

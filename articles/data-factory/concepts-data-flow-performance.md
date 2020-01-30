@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 12/19/2019
-ms.openlocfilehash: 3036fb44cdd636c4a7b9e690ee19aa3d5ab2f5ac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/25/2020
+ms.openlocfilehash: ff128d148abb87959894aee94d257ae71a3ca65e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444514"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773846"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Průvodce optimalizací výkonu a ladění toků dat
 
@@ -129,6 +129,12 @@ Nastavení propustnosti a vlastností dávky u jímky CosmosDB se projeví pouze
 * Velikost dávky: Vypočítejte přibližnou velikost řádků dat a ujistěte se, že velikost dávky rowSize * je menší než 2 000 000. Pokud je, zvyšte velikost dávky, abyste získali lepší propustnost.
 * Propustnost: tady nastavte vyšší propustnost, aby bylo možné dokumentům psát rychleji CosmosDB. Na základě nastavení vysoké propustnosti Prosím mějte na paměti vyšší náklady na RU.
 *   Rozpočet propustnosti zápisu: použijte hodnotu, která je menší než celková ru za minutu. Pokud máte tok dat s vysokým počtem oddílů Spark, nastavení propustnosti rozpočtu umožní v těchto oddílech větší rovnováhu.
+
+## <a name="join-performance"></a>Výkon připojení
+
+Správa výkonu spojení v toku dat je velice obvyklá operace, kterou provedete v celém životním cyklu transformací dat. V rámci ADF data nevyžadují, aby datové toky před spojením seřadily data, protože se tyto operace provádějí jako spojení s algoritmem hash ve Sparku. Díky optimalizaci spojení vysílání ale můžete využívat lepší výkon. Tím se vyhnete náhodnému vložení obsahu obou stran relace připojení do uzlu Spark. Tato funkce je vhodná pro menší tabulky, které se používají pro hledání odkazů. Větší tabulky, které se nevejdou do paměti uzlu, nejsou vhodnými kandidáty pro optimalizaci všesměrového vysílání.
+
+Další optimalizací spojení je vytvoření spojení tak, aby se zabránilo tomu, že Spark bude implementovat vzájemné spojení. Například pokud zahrnete literálové hodnoty do podmínek připojení, Spark může vidět, že jako první vyžaduje kompletní kartézském produkt a pak odfiltruje Spojené hodnoty. Pokud ale budete mít jistotu, že na obou stranách podmínky připojení máte hodnoty sloupce, můžete se tomuto kartézském produktu s procesorem Spark vyhnout a zvýšit výkon vašich spojení a toků dat.
 
 ## <a name="next-steps"></a>Další kroky
 

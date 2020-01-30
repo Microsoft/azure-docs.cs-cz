@@ -16,13 +16,13 @@ ms.workload: identity
 ms.date: 10/14/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b6271805b9d14db9f2fdcd85d089962e9874f6ba
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.custom: aaddev
+ms.openlocfilehash: 216c4a730828bf0959c2b932077dd110f5843739
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701140"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833273"
 ---
 # <a name="what-is-authentication"></a>Co je ověřování?
 
@@ -63,7 +63,7 @@ Ve výše popsaném příkladu scénáře můžete aplikace klasifikovat podle t
 
 V závislosti na tom, jak je váš klient sestavený, může použít jeden (nebo několik) toků ověřování podporovaných službou Azure AD. Tyto toky můžou vytvářet různé tokeny (id_tokens, aktualizovat tokeny, přístupové tokeny) a také autorizační kódy a při práci vyžadovat jiné tokeny. Tento graf poskytuje přehled:
 
-|Tok | Vyžaduje | id_token | přístupový token | aktualizovat token | autorizační kód | 
+|Tok | Nutné | id_token | přístupový token | aktualizovat token | autorizační kód | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Tok autorizačního kódu](v1-protocols-oauth-code.md) | | x | x | x | x|  
 |[Implicitní tok](v1-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |

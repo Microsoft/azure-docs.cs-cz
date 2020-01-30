@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: b70fcb1d63636984e1d014723b50170651a553d9
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 0fef7d6f59b8893ff400914f491f421cddf436b7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156875"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842916"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace prostředí pro vývoj pro Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +59,7 @@ Pokud chcete nainstalovat prostředí SDK pro svůj [místní počítač](#local
 Instance služby [compute Azure Machine Learning (Preview)](concept-compute-instance.md) je zabezpečená cloudová pracovní stanice Azure, která poskytuje odborníky na data pomocí serveru Jupyter notebook, JupyterLab a plně připraveného prostředí ml.
 
 > [!NOTE]
-> Výpočetní instance jsou k dispozici pouze pro pracovní prostory s oblastí **střed USA – sever** nebo **Velká Británie – jih**.
+> Výpočetní instance jsou dostupné jenom pro pracovní prostory s **střed USA – sever**, * * východní USA 2 * *, **Severní Evropa** nebo **Velká Británie – jih**.
 >Pokud je váš pracovní prostor v jakékoli jiné oblasti, můžete místo toho vytvořit a použít [virtuální počítač s poznámkovým blokem](concept-compute-instance.md#notebookvm) .
 
 Pro výpočetní instanci není nic k instalaci ani konfiguraci.  Vytvořte si ji kdykoli v pracovním prostoru Azure Machine Learning. Zadejte jenom název a zadejte typ virtuálního počítače Azure. Vyzkoušejte si to hned v tomto [kurzu: nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md).
@@ -295,10 +295,10 @@ Použijte tato nastavení:
 
 | Nastavení |Platí pro| Hodnota |
 |----|---|---|
-| Název clusteru |vždy| yourclustername |
-| Modul runtime Databricks |vždy|Běhový modul bez ML 6,0 (Scala 2,11, Spark 2.4.3) |
-| Verze Pythonu |vždy| 3 |
-| Pracovní procesy |vždy| 2 nebo vyšší |
+| Název clusteru |stál| yourclustername |
+| Modul runtime Databricks |stál|Běhový modul bez ML 6,0 (Scala 2,11, Spark 2.4.3) |
+| Verze Pythonu |stál| 3 |
+| Pracovníků |stál| 2 nebo vyšší |
 | Typy virtuálních počítačů uzlu pracovního procesu <br>(určuje maximální počet souběžných iterací) |Automatizované strojové učení<br>pouze| Preferovaný virtuální počítač pro optimalizaci paměti |
 | Povolení automatického škálování |Automatizované strojové učení<br>pouze| Zrušte zaškrtnutí políčka |
 
@@ -341,7 +341,7 @@ Sada SDK pro datacihly **_bez_** automatizovaného strojového učení ![Azure M
 
 Sada SDK pro datacihly **pomocí** automatizovaného strojového učení ![SDK s nainstalovaným automatickým strojovým učením pro datacihly](./media/how-to-configure-environment/automlonadb.png)
 
-### <a name="start-exploring"></a>Zahájení průzkumu
+### <a name="start-exploring"></a>Začít zkoumat
 
 Vyzkoušet:
 + I když je k dispozici mnoho ukázkových poznámkových bloků, **fungují pouze [Tyto ukázkové poznámkové bloky](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) s Azure Databricks.**

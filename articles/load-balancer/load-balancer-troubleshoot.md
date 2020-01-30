@@ -11,18 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/19/2019
+ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 21fc494f52b168f92da6972ee44be33b4e227a66
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 63706a3cdd34e5656f881c8668d8b88d9ac2e9ff
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046054"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843918"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Řešení potíží s nástrojem pro vyrovnávání zatížení Azure
-
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Tato stránka poskytuje informace pro odstraňování běžných otázek Azure Load Balancer. Když je připojení Load Balancer nedostupné, nejběžnější příznaky jsou následující: 
 - Virtuální počítače za Load Balancer nereagují na sondy stavu. 
@@ -123,7 +121,7 @@ Pokud se vaše aplikace hostovaná na virtuálním počítači back-endu Load Ba
 
 ### <a name="cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm"></a>Příčina 4: přístup k internímu Load Balancer front-endu z virtuálního počítače fondu back-endu Load Balancer
 
-Pokud je interní Load Balancer nakonfigurovaný v rámci virtuální sítě a jeden z back-end účastníka se snaží získat přístup k internímu front-endu Load Balancer, můžou se selhání vyskytnout, když se tok namapuje na původní virtuální počítač. Takový scénář se nepodporuje. Přečtěte si [omezení](concepts-limitations.md#limitations) pro podrobnou diskuzi.
+Pokud je interní Load Balancer nakonfigurovaný v rámci virtuální sítě a jeden z back-end účastníka se snaží získat přístup k internímu front-endu Load Balancer, můžou se selhání vyskytnout, když se tok namapuje na původní virtuální počítač. Tento scénář není podporován. Přečtěte si [omezení](concepts-limitations.md#limitations) pro podrobnou diskuzi.
 
 **Řešení** Existuje několik způsobů, jak tento scénář odblokovat, včetně použití proxy serveru. Vyhodnoťte Application Gateway nebo jiné proxy servery třetích stran (například Nginx nebo HAProxy). Další informace o Application Gateway najdete v tématu [přehled Application Gateway](../application-gateway/application-gateway-introduction.md)
 

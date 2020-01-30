@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a627b0eebc3aa4a19b0670f899d3032d8df58da4
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: f9573f4d226df4eb6068af679f2eb45dc87c7e40
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620460"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840056"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Přehled uživatelských účtů v Azure Active Directory B2C
 
@@ -76,12 +76,12 @@ K pozvání uživatele typu Host můžete použít taky [rozhraní Microsoft Gra
 
 ## <a name="consumer-user"></a>Uživatel příjemce
 
-Uživatel se může přihlásit k aplikacím zabezpečeným pomocí Azure AD B2C, ale nemůže získat přístup k prostředkům Azure, jako je Azure Portal. Uživatel s uživatelským účtem může používat místní účet nebo federované účty, jako je Facebook nebo Twitter. Účet příjemce se vytvoří pomocí [uživatelského toku registrace nebo přihlašování](../active-directory-b2c/active-directory-b2c-reference-policies.md), pomocí Graph API služby Azure AD nebo pomocí Azure Portal.
+Uživatel se může přihlásit k aplikacím zabezpečeným pomocí Azure AD B2C, ale nemůže získat přístup k prostředkům Azure, jako je Azure Portal. Uživatel s uživatelským účtem může používat místní účet nebo federované účty, jako je Facebook nebo Twitter. Účet příjemce se vytvoří pomocí [uživatelského toku registrace nebo přihlašování](user-flow-overview.md), pomocí Graph API služby Azure AD nebo pomocí Azure Portal.
 
-Data, která se shromažďují při vytváření uživatelského účtu uživatele, můžete zadat pomocí vlastních uživatelských atributů. Další informace najdete v tématu [definování vlastních atributů v Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-reference-custom-attr.md).
+Data, která se shromažďují při vytváření uživatelského účtu uživatele, můžete zadat pomocí vlastních uživatelských atributů. Další informace najdete v tématu [definování vlastních atributů v Azure Active Directory B2C](user-flow-custom-attributes.md).
 
-Informace v části **Vytvoření uživatelských účtů uživatelů** v tématu [použití Graph API služby Azure AD](active-directory-b2c-devquickstarts-graph-dotnet.md) můžete použít k vytvoření účtu uživatele Azure AD B2C. Můžete také použít informace v části **aktualizace uživatelských účtů uživatelů** ve stejném článku ke správě vlastností účtu.
+Informace v části **Vytvoření uživatelských účtů uživatelů** v tématu [použití Graph API služby Azure AD](manage-user-accounts-graph-api.md) můžete použít k vytvoření účtu uživatele Azure AD B2C. Můžete také použít informace v části **aktualizace uživatelských účtů uživatelů** ve stejném článku ke správě vlastností účtu.
 
 ### <a name="migrate-consumer-user-accounts"></a>Migrace uživatelských účtů uživatelů
 
-Možná budete muset migrovat existující uživatelské účty uživatelů od libovolného poskytovatele identity a Azure AD B2C. Další informace najdete v tématech [migrace uživatelů](active-directory-b2c-user-migration.md) nebo [migrace uživatelů se sociálními identitami](active-directory-b2c-social-migration.md).
+Možná budete muset migrovat existující uživatelské účty uživatelů od libovolného poskytovatele identity a Azure AD B2C. Další informace najdete v tématech [migrace uživatelů](user-migration.md) nebo [migrace uživatelů se sociálními identitami](migrate-social-identities.md).

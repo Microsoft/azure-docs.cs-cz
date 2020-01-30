@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 01/27/2020
 ms.author: diberry
-ms.openlocfilehash: ed0b9450217b06ff145641d9e268ccee28ee49b2
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 95b7c7446a47fafd26d00b0da4d880786340fcd0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76710599"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775113"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>Postup zlepšení aplikace LUIS kontrolou Endpoint projevy
 
@@ -27,6 +27,22 @@ Proces kontroly projevy koncového bodu pro správný předpovědi se nazývá [
 ## <a name="enable-active-learning"></a>Povolit aktivní učení
 
 Chcete-li povolit aktivní učení, je nutné protokolovat uživatelské dotazy. Toho je možné dosáhnout voláním [dotazu koncového bodu](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint) s parametrem `log=true` QueryString a hodnotou.
+
+Pomocí portálu LUIS vytvořte správný dotaz na koncový bod.
+
+1. Na [portálu Preview Luis](https://preview.luis.ai/)v seznamu aplikací vyberte svou aplikaci.
+1. V části **Správa** vyberte **prostředky Azure**.
+1. Pro přiřazený prostředek předpovědi vyberte **změnit parametry dotazu**.
+
+    > [!div class="mx-imgBorder"]
+    > ![pomocí portálu LUIS ukládat protokoly, které se vyžadují pro aktivní učení.](./media/luis-tutorial-review-endpoint-utterances/azure-portal-change-query-url-settings.png)
+
+1. Kliknutím na tlačítko **Dokončit**zapněte možnost **Uložit protokoly** a pak ji uložte.
+
+    > [!div class="mx-imgBorder"]
+    > ![pomocí portálu LUIS ukládat protokoly, které se vyžadují pro aktivní učení.](./media/luis-tutorial-review-endpoint-utterances/luis-portal-manage-azure-resource-save-logs.png)
+
+     Tato akce změní ukázkovou adresu URL přidáním parametru `log=true` QueryString. Kopírování a použití změněné ukázkové adresy URL dotazu při provádění prediktivních dotazů na koncový bod modulu runtime.
 
 ## <a name="correct-intent-predictions-to-align-utterances"></a>Správný předpovědi záměru pro zarovnání projevy
 

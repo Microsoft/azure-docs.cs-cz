@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 9f49a9224ed123b76f4d300c27a8dd5822e50ea3
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: eceb4b312476d701ec8ce4eb0ce4886621824b3a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706025"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841587"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrace úloh podregistru Azure HDInsight 3,6 do HDInsight 4,0
 
@@ -118,7 +118,7 @@ Tato komprimace je povinná, protože tabulky v HDInsight 3,6 a HDInsight 4,0 po
 
 Po dokončení kroků migrace a komprimace metastore můžete aktuální datový sklad migrovat. Po dokončení migrace datového skladu pro podregistr bude mít datový sklad HDInsight 4,0 následující vlastnosti:
 
-|3,6 |4,0 |
+|3.6 |4.0 |
 |---|---|
 |Externí tabulky|Externí tabulky|
 |Netransakční spravované tabulky|Externí tabulky|
@@ -183,7 +183,9 @@ V HDInsight 3,6 je klient grafického uživatelského rozhraní pro interakci se
 |Identifikátor URI skriptu bash|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
 |Typ (typy) uzlů|Hlavní uzel|
 
-Počkejte 5 až 10 minut a pak spusťte data Analytics Studio pomocí této adresy URL: `https://CLUSTERNAME.azurehdinsight.net/das/`.
+Počkejte 10 až 15 minut a pak spusťte data Analytics Studio pomocí této adresy URL: `https://CLUSTERNAME.azurehdinsight.net/das/`.
+
+Před přístupem DAS může být potřeba aktualizovat uživatelské rozhraní Ambari nebo restartovat všechny součásti Ambari.
 
 Pokud se po instalaci DAS nezobrazí dotazy, které jste spustili v prohlížeči dotazů, proveďte následující kroky:
 

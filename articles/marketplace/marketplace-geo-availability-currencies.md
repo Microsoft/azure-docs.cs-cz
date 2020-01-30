@@ -6,14 +6,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 02/28/2020
 ms.author: ellacroi
-ms.openlocfilehash: 0b12e122cef3a05af7a09918ba434d103e33a1a2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 54ad3049789a737ffb29519b6546973acda9b4ae
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822941"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843833"
 ---
 # <a name="geographic-availability-and-currency-support"></a>Geografická dostupnost a podpora měny
 
@@ -49,6 +49,7 @@ Nabídky Azure Marketplace a AppSource se dají koupit v 141 zeměpisných oblas
 | Cabo Verde                          | CV        | USD          |
 | Kajmanské ostrovy                      | KY        | USD          |
 | Chile                               | CL        | USD          |
+| Čína\**                            | CN        | Nevztahuje se          |
 | Kolumbie                            | CO        | USD          |
 | Kostarika                          | CR        | USD          |
 | Pobřeží slonoviny                       | CI        | USD          |
@@ -68,7 +69,7 @@ Nabídky Azure Marketplace a AppSource se dají koupit v 141 zeměpisných oblas
 | Finsko                             | FI        | EUR          |
 | Francie                              | FR        | EUR          |
 | Gruzie                             | GE        | USD          |
-| Německo                             | DE        | EUR          |
+| Německo                             | Německo        | EUR          |
 | Ghana                               | GH        | USD          |
 | Řecko                              | GR        | EUR          |
 | Guatemala                           | GT        | USD          |
@@ -107,7 +108,7 @@ Nabídky Azure Marketplace a AppSource se dají koupit v 141 zeměpisných oblas
 | Mongolsko                            | MN        | USD          |
 | Černá Hora                          | PAMATOVAT        | USD          |
 | Maroko                             | MA        | USD          |
-| Namibie                             | Není k dispozici        | USD          |
+| Namibie                             | není k dispozici        | USD          |
 | Nepál                               | NP        | USD          |
 | Nizozemsko                         | NL        | EUR          |
 | Nikaragua                           | NI        | USD          |
@@ -135,7 +136,7 @@ Nabídky Azure Marketplace a AppSource se dají koupit v 141 zeměpisných oblas
 | Singapur                           | SG        | USD          |
 | Slovensko                            | SK        | EUR          |
 | Slovinsko                            | SI        | EUR          |
-| Jižní Afrika                        | ZA        | USD          |
+| Jihoafrická republika                        | ZA        | USD          |
 | Španělsko                               | ES        | EUR          |
 | Srí Lanka                           | LK        | USD          |
 | Švédsko                              | SE        | SEK          |
@@ -154,7 +155,7 @@ Nabídky Azure Marketplace a AppSource se dají koupit v 141 zeměpisných oblas
 | Ukrajina                             | UA        | USD          |
 | Spojené arabské emiráty                | AE        | USD          |
 | Spojené království                      | GB        | GBP          |
-| Spojené státy                       | USA        | USD          |
+| Spojené státy                       | Spojené státy        | USD          |
 | Uruguay                             | UY        | USD          |
 | Uzbekistán                          | UZ        | USD          |
 | Venezuela                           | VE        | USD          |
@@ -165,3 +166,5 @@ Nabídky Azure Marketplace a AppSource se dají koupit v 141 zeměpisných oblas
 |   |   |   |
 
 \* pro zákazníky v Brazílii používá web Marketplace přes poskytovatele Cloud Solution Providers (CSP).
+
+\** jenom image virtuálních počítačů s bezplatným BYOL a.

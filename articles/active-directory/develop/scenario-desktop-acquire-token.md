@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bc00f348e9443384c7799bf227efd7309d6aeac2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 50ac62ded92b69f44324f4f9c5eacee939159449
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702194"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834123"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: získání tokenu
 
@@ -413,7 +413,7 @@ Pokud se chcete přihlásit k doméně uživatele v doméně nebo počítači p�
 
 - Autorita předaná `PublicClientApplicationBuilder` musí být:
   - Tenant ve formuláři `https://login.microsoftonline.com/{tenant}/`, kde `tenant` je buď identifikátor GUID, který představuje ID tenanta nebo doménu přidruženou k tenantovi.
-  - Pro všechny [pracovní a školní účty](`https://login.microsoftonline.com/organizations/`).
+  - Pro všechny pracovní a školní účty: `https://login.microsoftonline.com/organizations/`.
   - Osobní účty Microsoft nejsou podporované. Nemůžete použít klienty/běžné nebo/consumers.
 
 - Protože integrované ověřování systému Windows je tichý tok:

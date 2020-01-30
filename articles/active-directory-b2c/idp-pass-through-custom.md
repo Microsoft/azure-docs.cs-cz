@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8f7122035f8d70cb91f4ec4f64e1dd4f7b2842b8
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 697c904f98ea29395d5c4e95abe27556c06bb479
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949836"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76839087"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Předání přístupového tokenu pomocí vlastní zásady do aplikace v Azure Active Directory B2C
 
-[Vlastní zásada](active-directory-b2c-get-started-custom.md) v Azure Active Directory B2C (Azure AD B2C) poskytuje uživatelům vaší aplikace možnost registrace nebo přihlášení pomocí poskytovatele identity. Pokud k tomu dojde, Azure AD B2C obdrží od poskytovatele identity [přístupový token](active-directory-b2c-reference-tokens.md) . Azure AD B2C používá tento token k načtení informací o uživateli. Do vlastních zásad můžete přidat typ deklarace identity a výstupní deklaraci identity, abyste mohli token předat do aplikací, které zaregistrujete v Azure AD B2C.
+[Vlastní zásada](custom-policy-get-started.md) v Azure Active Directory B2C (Azure AD B2C) poskytuje uživatelům vaší aplikace možnost registrace nebo přihlášení pomocí poskytovatele identity. Pokud k tomu dojde, Azure AD B2C obdrží od poskytovatele identity [přístupový token](tokens-overview.md) . Azure AD B2C používá tento token k načtení informací o uživateli. Do vlastních zásad můžete přidat typ deklarace identity a výstupní deklaraci identity, abyste mohli token předat do aplikací, které zaregistrujete v Azure AD B2C.
 
-Azure AD B2C podporuje předávání přístupového tokenu [OAuth 2,0](active-directory-b2c-reference-oauth-code.md) a zprostředkovatele identity [OpenID Connect](active-directory-b2c-reference-oidc.md) . U všech ostatních zprostředkovatelů identity se deklarace identity vrátí jako prázdná.
+Azure AD B2C podporuje předávání přístupového tokenu [OAuth 2,0](authorization-code-flow.md) a zprostředkovatele identity [OpenID Connect](openid-connect.md) . U všech ostatních zprostředkovatelů identity se deklarace identity vrátí jako prázdná.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Vaše vlastní zásada je nakonfigurovaná s poskytovatelem identity OAuth 2,0 nebo OpenID Connect.
 
@@ -105,4 +105,4 @@ Při testování aplikací v Azure AD B2C může být užitečné, aby se token 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tokenech najdete v referenčních informacích k [tokenu Azure Active Directory B2C](active-directory-b2c-reference-tokens.md).
+Další informace o tokenech najdete v referenčních informacích k [tokenu Azure Active Directory B2C](tokens-overview.md).
