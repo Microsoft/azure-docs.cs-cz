@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: f45859370ae178fb186399fdd2648bf37f0985aa
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: dfc9c045af5347ebd3f15df48d5a5756dd2a9e05
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910905"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844747"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Kurz: směrování elektrických vozidel pomocí Azure Notebooks (Python)
 
@@ -22,7 +22,7 @@ Azure Maps je portfolio rozhraní API pro geoprostorové služby, která jsou na
 
 Rozhraní REST API pro Azure Maps se dají volat z jazyků, jako je Python a R, aby se povolily scénáře geoprostorového testování dat a strojového učení. Azure Maps nabízí robustní sadu [rozhraní API pro směrování](https://docs.microsoft.com/rest/api/maps/route) , která uživatelům umožňují vypočítat trasy mezi několika datovými body. Výpočty jsou založené na různých podmínkách, jako je typ vozidla nebo dosažitelná oblast. 
 
-V tomto kurzu se seznámíte se scénářem, který vám může pomoci strojvedoucímu, který má za následek nízké zatížení baterie elektrického vozidla, na základě času jednotky z umístění vozidla.
+V tomto kurzu provedete pomoc s ovladačem, jehož baterie elektrického vozidla je nízká. Ovladač potřebuje najít nejbližší možnou stanici zpoplatnění z umístění vozidla.
 
 V tomto kurzu provedete následující:
 
@@ -39,15 +39,15 @@ V tomto kurzu provedete následující:
 
 Abyste mohli tento kurz dokončit, musíte nejdřív vytvořit účet Azure Maps a získat primární klíč (klíč předplatného). 
 
-Pokud chcete vytvořit předplatné účtu Azure Maps v cenové úrovni S1, postupujte podle pokynů v části [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps) a vytvořte Azure Maps předplatné s cenovou úrovní S1. 
+Pokud chcete vytvořit předplatné účtu Azure Maps, postupujte podle pokynů v tématu [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps). Potřebujete předplatné účtu Azure Maps s cenovou úrovní S1. 
 
 Pokud chcete získat primární klíč předplatného pro svůj účet, postupujte podle pokynů v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account).
 
-Další podrobnosti o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
+Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
 
 ## <a name="create-an-azure-notebook"></a>Vytvoření poznámkového bloku Azure
 
-Pokud chcete postupovat podle tohoto kurzu, musíte vytvořit projekt Azure notebook a stáhnout a spustit soubor poznámkového bloku Jupyter. Soubor poznámkového bloku obsahuje kód Pythonu, který implementuje scénář v tomto kurzu. Pokud chcete vytvořit projekt pro notebook Azure a nahrát do něj dokument Jupyter poznámkového bloku, udělejte toto:
+Pokud chcete postupovat podle tohoto kurzu, musíte vytvořit projekt Azure notebook a stáhnout a spustit soubor poznámkového bloku Jupyter. Soubor poznámkového bloku obsahuje kód Pythonu, který implementuje scénář v tomto kurzu. Pokud chcete vytvořit projekt Azure notebook a nahrát do něj dokument Jupyter poznámkového bloku, proveďte následující kroky:
 
 1. Přejděte na [poznámkových bloků Azure](https://notebooks.azure.com) a přihlaste se. Další informace najdete v tématu [rychlý Start: přihlášení a nastavení ID uživatele](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks).
 1. V horní části stránky veřejného profilu vyberte **Moje projekty**.
@@ -64,7 +64,7 @@ Pokud chcete postupovat podle tohoto kurzu, musíte vytvořit projekt Azure note
 
 1. Vyberte **Vytvořit**.
 
-1. Po vytvoření projektu si stáhněte [soubor dokumentu poznámkového bloku Jupyter](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) Azure Maps z [úložiště poznámkového bloku Jupyter](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook). 
+1. Po vytvoření projektu si tento [soubor dokumentu poznámkového bloku Jupyter](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) stáhněte [Azure Maps z úložiště poznámkového bloku Jupyter](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook).
 
 1. V seznamu projekty na stránce **Moje projekty** vyberte svůj projekt a pak vyberte **Odeslat** a nahrajte soubor dokumentu poznámkového bloku Jupyter. 
 
@@ -72,15 +72,15 @@ Pokud chcete postupovat podle tohoto kurzu, musíte vytvořit projekt Azure note
 
 1. Nahrajte soubor z počítače a potom vyberte **Hotovo**.
 
-1. Po úspěšném dokončení nahrávání se Váš soubor zobrazí na stránce projektu. Vyberte soubor, který chcete otevřít jako Poznámkový blok Jupyter.
+1. Po úspěšném dokončení nahrávání se Váš soubor zobrazí na stránce projektu. Dvakrát klikněte na soubor a otevřete ho jako Jupyter Poznámkový blok.
 
-Abychom vám pomohli lépe porozumět funkcím, které jsou implementované v souboru poznámkového bloku, doporučujeme spustit kód v poznámkovém bloku po jedné buňce v jednom okamžiku. Kód můžete v každé buňce spustit tak, že v horní části aplikace Poznámkový blok vyberete tlačítko **Spustit** .
+Abychom vám pomohli lépe porozumět funkcím, které jsou implementované v souboru poznámkového bloku, spouštějte kód v poznámkovém bloku po jedné buňce v jednom okamžiku. Kód můžete v každé buňce spustit tak, že v horní části aplikace Poznámkový blok vyberete tlačítko **Spustit** .
 
   ![Tlačítko spustit](./media/tutorial-ev-routing/run.png)
 
 ## <a name="install-project-level-packages"></a>Instalace balíčků na úrovni projektu
 
-Chcete-li spustit kód v poznámkovém bloku, nainstalujte balíčky na úrovni projektu následujícím způsobem:
+Chcete-li spustit kód v poznámkovém bloku, nainstalujte balíčky na úrovni projektu pomocí následujících kroků:
 
 1. Stáhněte si soubor [*požadavky. txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) z [úložiště poznámkového bloku Azure Maps Jupyter](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)a pak ho nahrajte do svého projektu.
 1. Na řídicím panelu Projekt, vyberte **nastavení projektu**. 
@@ -95,9 +95,9 @@ Chcete-li spustit kód v poznámkovém bloku, nainstalujte balíčky na úrovni 
 
 ## <a name="load-the-required-modules-and-frameworks"></a>Načíst požadované moduly a architektury
 
-Pokud chcete načíst všechny požadované moduly a architektury, spusťte následující skript:
+Pokud chcete načíst všechny požadované moduly a architektury, spusťte následující skript.
 
-```python
+```Python
 import time
 import aiohttp
 import urllib.parse
@@ -106,9 +106,9 @@ from IPython.display import Image, display
 
 ## <a name="request-the-reachable-range-boundary"></a>Vyžádat hranici dostupného rozsahu
 
-V našem scénáři má společnost pro doručování balíčků ve svém loďstvu některá elektrická vozidla. V průběhu dne musí být elektrická vozidla znovu naúčtována bez nutnosti vracet se do skladu. Pokaždé, když se aktuální zbývající poplatek zruší na méně než hodinu (tj. baterie je bezplatná), vyhledáte sadu zpoplatněných stanic, které jsou v dosažitelném rozsahu, a získáte informace o hranicích daného rozsahu. 
+Společnost pro doručování balíčků má ve svém loďstvu některá elektrická vozidla. V průběhu dne musí být elektrická vozidla znovu naúčtována bez nutnosti vracet se do skladu. Pokaždé, když se zbývající poplatek sníží na méně než hodinu, vyhledáte sadu zpoplatněných stanic, které jsou v dosahu dosažitelného rozsahu. V podstatě vyhledáváte stanoviště zpoplatnění při nízkém nabití baterie. A získáte informace o hranicích pro daný rozsah zpoplatněných stanic. 
 
-Vzhledem k tomu, že se společnost upřednostňuje používat trasy, které vyžadují rovnováhu mezi ekonomicky a rychlostí, je požadovaná routeTypea *ekosystém*. Následující skript volá [rozhraní API rozsahu trasy](https://docs.microsoft.com/rest/api/maps/route/getrouterange) služby Azure Maps Routing Service pomocí parametrů pro model spotřeby vozidla. Skript pak analyzuje odpověď a vytvoří objekt mnohoúhelníku ve formátu injson, který představuje maximální dosažitelný rozsah auta.
+Vzhledem k tomu, že se společnost upřednostňuje používat trasy, které vyžadují rovnováhu mezi ekonomicky a rychlostí, je požadovaná routeTypea *ekosystém*. Následující skript volá [rozhraní API rozsahu trasy](https://docs.microsoft.com/rest/api/maps/route/getrouterange) služby Azure Maps Routing Service. Používá parametry pro model spotřeby vozidla. Skript pak analyzuje odpověď a vytvoří objekt mnohoúhelníku ve formátu injson, který představuje maximální dosažitelný rozsah auta.
 
 Chcete-li určit hranice pro dostupný rozsah elektrického vozidla, spusťte skript v následující buňce:
 
@@ -173,7 +173,7 @@ for loc in range(len(searchPolyResponse["results"])):
 
 ## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service"></a>Nahrajte dostupný rozsah a vyúčtování bodů do služby Azure Maps data Service.
 
-Budete chtít vizualizovat na mapě, kde jsou zpoplatněné stanice a hranice pro maximální dosažitelný rozsah elektrického vozidla. Provedete to tak, že nahrajete data hranic a nabíjíte data stanic jako své objekty pro Azure Maps datovou službu pomocí [rozhraní API pro nahrání dat](https://docs.microsoft.com/rest/api/maps/data/uploadpreview). 
+Na mapě budete chtít vizualizovat stanice zpoplatnění a hranici pro maximální dosažitelný rozsah elektrického vozidla. Provedete to tak, že nahrajete data hranic a nabíjíte data stanic jako své objekty pro Azure Maps datovou službu. Použijte [rozhraní API pro nahrání dat](https://docs.microsoft.com/rest/api/maps/data/uploadpreview). 
 
 Chcete-li nahrát data hranice a bodu zpoplatnění do služby Azure Maps data Service, spusťte následující dvě buňky:
 
@@ -239,7 +239,7 @@ poiUdid = getPoiUdid["udid"]
 
 ## <a name="render-the-charging-stations-and-reachable-range-on-a-map"></a>Vykreslovat stanice zpoplatnění a dosažitelný rozsah na mapě
 
-Po nahrání dat do datové služby zavolejte Azure Maps [získat image mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage) pro vykreslení bodů zpoplatnění a maximální dosažitelné hranice na statické imagi mapy spuštěním následujícího skriptu:
+Po nahrání dat do datové služby volejte [službu Azure Maps získat image mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage). Tato služba se používá k vykreslení bodů zpoplatnění a maximální dosažitelné hranice na statické imagi mapy spuštěním následujícího skriptu:
 
 ```python
 # Get boundaries for the bounding box.
@@ -281,9 +281,9 @@ display(Image(poiRangeMap))
 
 ## <a name="find-the-optimal-charging-station"></a>Najít optimální stanici zpoplatnění
 
-Jakmile určíte všechny potenciální stanice zpoplatnění v dosahu dostupného rozsahu, budete chtít zjistit, ke kterému z nich se dá získat minimální čas. 
+Nejdřív chcete určit všechny potenciální stanice zpoplatnění v dosažitelném rozsahu. Pak chcete zjistit, ke kterému z nich lze získat minimální čas. 
 
-Následující skript volá [rozhraní API pro směrování matrice](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)Azure Maps, které se vrátí pro zadané umístění vozidla. Doba cesty a vzdálenost ke každé stanici zpoplatnění. Skript v další buňce analyzuje odpověď, aby vyhledal nejbližší dostupnou stanici zpoplatnění s ohledem na čas.
+Následující skript volá [rozhraní API pro směrování matrice](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)Azure Maps. Vrátí zadané umístění vozidla, dobu trvání cesty a vzdálenost ke každé stanici zpoplatnění. Skript v další buňce analyzuje odpověď, aby vyhledal nejbližší dostupnou stanici zpoplatnění s ohledem na čas.
 
 Pokud chcete najít nejbližší dosažitelnou stanici, ke které se dá získat přístup v nejmenším množství času, spusťte skript v následující buňce:
 
@@ -336,7 +336,7 @@ routeData = {
 
 ## <a name="visualize-the-route"></a>Vizualizace trasy
 
-Pro lepší vizualizaci trasy nejprve odešlete data směrování jako objekt pro obAzure Maps datové služby pomocí [rozhraní API pro nahrání dat](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)Azure Maps. Potom zavolejte vykreslovací službu, [Získejte rozhraní API mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage)a vykreslete trasu na mapě a vizualizujte ji.
+Pro lepší vizualizaci trasy nejprve odešlete data směrování jako objekt pro obAzure Maps datové služby. K tomu použijte Azure Maps [rozhraní API pro nahrání dat](https://docs.microsoft.com/rest/api/maps/data/uploadpreview). Pak zavolejte vykreslovací službu, [Získejte rozhraní API mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage)pro vykreslení trasy na mapě a vizualizujte ji.
 
 Chcete-li získat obrázek pro vykreslenou trasu na mapě, spusťte následující skript:
 

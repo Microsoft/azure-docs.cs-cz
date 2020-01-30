@@ -4,18 +4,23 @@ description: Správa virtuálního počítače se shromažďováním dat pro inv
 services: automation
 ms.subservice: change-inventory-management
 keywords: inventory, automation, change, tracking
-ms.date: 02/06/2019
+ms.date: 01/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: c5ac5cb1b1f02ea1e8b7eccb65fba978c99cc4f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d0324038b8a38d7eba84e5472b8f90439b0322c1
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75419815"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844815"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Správa virtuálního počítače Azure se shromažďováním dat pro inventarizaci
 
-Sledování inventáře pro virtuální počítač Azure můžete povolit na stránce prostředků příslušného virtuálního počítače. Můžete shromažďovat a zobrazovat inventář softwaru, souborů, linuxových procesů démon, služeb systému Windows a klíčů registru Windows na vašich počítačích. Tato metoda poskytuje uživatelské rozhraní v prohlížeči pro nastavení a konfiguraci shromažďování dat pro inventarizaci.
+Sledování inventáře pro virtuální počítač Azure můžete povolit na stránce prostředků příslušného virtuálního počítače. V počítačích můžete shromažďovat a zobrazovat tyto informace o inventáři:
+
+- Software systému Windows (aplikace systému Windows a aktualizace systému Windows), služby, soubory a klíče registru
+- Procesy démonů a soubory Linux softwaru (balíčky)
+
+Tato metoda poskytuje uživatelské rozhraní v prohlížeči pro nastavení a konfiguraci shromažďování dat pro inventarizaci.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -101,7 +106,7 @@ Výběrem skupiny počítačů ze seznamu se otevře stránka skupiny počítač
 
 Kliknutím na tlačítko **+ klonovat** naklonujte skupinu počítačů. Tady musíte dát skupině Nový název a alias pro skupinu. Definici lze v tomto okamžiku změnit. Po změně dotazu stisknutím tlačítka **ověřit dotaz** zobrazíte náhled počítačů, které budou vybrány. Když jste spokojeni se skupinou, klikněte na **vytvořit** a vytvořte skupinu počítačů.
 
-Pokud chcete vytvořit novou skupinu počítačů, vyberte **+ vytvořit skupinu počítačů**. Tímto tlačítkem otevřete **stránku vytvořit skupinu počítačů** , kde můžete definovat novou skupinu. Vytvořte skupinu kliknutím na **Vytvořit**.
+Pokud chcete vytvořit novou skupinu počítačů, vyberte **+ vytvořit skupinu počítačů**. Tímto tlačítkem otevřete **stránku vytvořit skupinu počítačů** , kde můžete definovat novou skupinu. Kliknutím na **vytvořit** vytvořte skupinu.
 
 ![Vytvořit novou skupinu počítačů](./media/automation-vm-inventory/create-new-group.png)
 

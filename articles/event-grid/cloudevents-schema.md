@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: e7cddf95a6537e5799acc523effb484c2249453d
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 25a24c5bb44c77038a508e4c2f4e099132101f6a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548046"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844730"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>Použití schématu CloudEvents v 1.0 s Event Grid
 
@@ -73,7 +73,6 @@ Event Grid můžete použít pro vstupní i výstupní události ve schématu Cl
 |--------------------|---------------------
 | Formát CloudEvents | Formát CloudEvents
 | Formát Event Grid  | Formát CloudEvents
-| Formát CloudEvents | Formát Event Grid
 | Formát Event Grid  | Formát Event Grid
 
 Pro všechna schémata událostí Event Grid vyžaduje ověření při publikování do služby Event Grid a při vytváření odběru události. Další informace najdete v tématu [ověřování a zabezpečení služby Event Grid](security-authentication.md).
@@ -109,8 +108,6 @@ New-AzureRmEventGridTopic `
   -Name <topic_name> `
   -InputSchema CloudEventSchemaV1_0
 ```
-
-Aktuální verze CloudEvents nepodporuje dávkování událostí. Chcete-li publikovat události pomocí schématu CloudEvent do tématu, publikujte každou událost jednotlivě.
 
 ### <a name="output-schema"></a>Výstupní schéma
 

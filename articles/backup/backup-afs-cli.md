@@ -3,12 +3,12 @@ title: Zálohování sdílených složek Azure pomocí Azure CLI
 description: Naučte se používat Azure CLI k zálohování sdílených složek Azure v trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 10ae6d88e8a40ba4175e664ed338f0a02be7a7ca
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: ff1d8c6245521d2d0262b0440177d65713058742
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294484"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844037"
 ---
 # <a name="back-up-azure-file-shares-with-cli"></a>Zálohování sdílených složek Azure pomocí rozhraní příkazového řádku
 
@@ -104,7 +104,7 @@ Pokud chcete pro sdílenou složku aktivovat zálohování na vyžádání, mís
 
 Chcete-li aktivovat zálohování na vyžádání, je nutné zadat následující parametry:
 
-* **--Container-Name** je název účtu úložiště, který hostuje sdílenou složku. Pokud chcete načíst **název** nebo **popisný název** svého kontejneru, použijte příkaz [AZ Backup Container list](https://docs.microsoft.com/azure/backup/container?view=azure-cli-latest#az-backup-container-list) .
+* **--Container-Name** je název účtu úložiště, který hostuje sdílenou složku. Pokud chcete načíst **název** nebo **popisný název** svého kontejneru, použijte příkaz [AZ Backup Container list](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list) .
 * **--Item-Name** je název sdílené složky, pro kterou chcete aktivovat zálohování na vyžádání. Pokud chcete načíst **název** nebo **popisný název** zálohované položky, použijte příkaz [AZ Backup Item list](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list) .
 * **--zached – dokud** neurčíte, do kdy se má bod obnovení zachovat, do něj bude zachováno datum. Hodnota by měla být nastavena ve formátu času UTC (dd-mm-rrrr).
 

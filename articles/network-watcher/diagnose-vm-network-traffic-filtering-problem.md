@@ -4,8 +4,7 @@ titleSuffix: Azure Network Watcher
 description: V tomto rychlém startu zjistíte, jak diagnostikovat problém s filtrováním síťového provozu virtuálního počítače pomocí funkce ověření toku protokolů IP služby Azure Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose a virtual machine (VM) network traffic filter problem that prevents communication to and from a VM.
@@ -16,14 +15,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: d436fab100dc05cde8a434af564c67477b33d8d3
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 68f575164487f726c2f6c7477ceacd731bb52b0f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276016"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844917"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Rychlý start: Diagnostika problému s filtrováním síťového provozu virtuálního počítače pomocí webu Azure Portal
 
@@ -31,7 +30,7 @@ V tomto rychlém startu nasadíte virtuální počítač a potom zkontrolujete o
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
@@ -43,7 +42,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
     |Nastavení|Hodnota|
     |---|---|
-    |Název|myVm|
+    |Name (Název)|myVm|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
     |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Předplatné| Vyberte své předplatné.|
@@ -62,7 +61,7 @@ Pokud chcete otestovat síťovou komunikaci pomocí sledovacího procesu sítě,
 
 Pokud už sledovací proces sítě máte alespoň v jedné oblasti povolený, přeskočte vpřed na část [Použití ověření toku protokolu IP](#use-ip-flow-verify).
 
-1. Na portálu vyberte **Všechny služby**. Do **pole filtru** zadejte *Network Watcher*. Jakmile se služba **Network Watcher** zobrazí ve výsledcích, vyberte ji.
+1. Na webu Azure Portal vyberte **Všechny služby**. Do **pole filtru** zadejte *Network Watcher*. Jakmile se služba **Network Watcher** zobrazí ve výsledcích, vyberte ji.
 2. Povolte sledovací proces sítě v oblasti USA – východ, protože tam jste v předchozím kroku nasadili virtuální počítač. Rozbalte **Oblasti** a potom vedle **USA – východ** vyberte **...** (stejně jako v následujícím obrázku):
 
     ![Povolení Network Watcheru](./media/diagnose-vm-network-traffic-filtering-problem/enable-network-watcher.png)
@@ -73,7 +72,7 @@ Pokud už sledovací proces sítě máte alespoň v jedné oblasti povolený, p�
 
 Když vytvoříte virtuální počítač, Azure u něj ve výchozím nastavení blokuje příchozí i odchozí síťový provoz. Později můžete výchozí nastavení Azure přepsat a povolit nebo odepřít další typy provozu.
 
-1. Na portálu vyberte **Všechny služby**. Do **pole filtru** *všech služeb* zadejte *Network Watcher*. Jakmile se služba **Network Watcher** zobrazí ve výsledcích, vyberte ji.
+1. Na webu Azure Portal vyberte **Všechny služby**. Do pole *Filtr* **všechny služby** zadejte *Network Watcher*. Jakmile se služba **Network Watcher** zobrazí ve výsledcích, vyberte ji.
 2. V části **NÁSTROJE PRO DIAGNOSTIKU SÍTĚ** vyberte **Ověření toku protokolu IP**.
 3. Stejně jako na obrázku vyberte své předplatné, zadejte následující hodnoty, a potom vyberte **Zkontrolovat**:
 
@@ -83,7 +82,7 @@ Když vytvoříte virtuální počítač, Azure u něj ve výchozím nastavení 
     | Virtuální počítač   | Vyberte myVm.                                                                                       |
     | Síťové rozhraní | myVm – název síťového rozhraní, které web Azure Portal vytvořil, když jste vytvořili virtuální počítač, je jiný. |
     | Protocol (Protokol)          | TCP                                                                                               |
-    | Direction         | Odchozí                                                                                          |
+    | Směr         | Odchozí                                                                                          |
     | Místní IP adresa  | 10.0.0.4                                                                                          |
     | Místní port      | 60000                                                                                                |
     | Vzdálená IP adresa | 13.107.21.200 – jedna z adres pro > < www. Bing. com.                                             |
@@ -119,9 +118,9 @@ Kontroly v tomto rychlém startu testovaly konfiguraci Azure. Pokud kontroly vr�
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků a všechny prostředky, které obsahuje:
 
-1. Do pole *Hledat* v horní části portálu zadejte **myResourceGroup**. Jakmile se ve výsledcích hledání zobrazí skupina prostředků **myResourceGroup**, vyberte ji.
+1. Do pole **Hledat** v horní části portálu zadejte *myResourceGroup*. Jakmile se ve výsledcích hledání zobrazí skupina prostředků **myResourceGroup**, vyberte ji.
 2. Vyberte **Odstranit skupinu prostředků**.
-3. V části *ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ* zadejte **myResourceGroup** a vyberte **Odstranit**.
+3. V části **ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ** zadejte *myResourceGroup* a vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 

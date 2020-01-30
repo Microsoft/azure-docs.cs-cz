@@ -3,9 +3,7 @@ title: Vytvoření instance služby Azure Network Watcher | Microsoft Docs
 description: Naučte se, jak povolit Network Watcher v oblasti Azure.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: b1314119-0b87-4f4d-b44c-2c4d0547fb76
 ms.service: network-watcher
 ms.devlang: na
@@ -13,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: fd293c2815721295715c5e02846c55d4cdb74a32
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.author: damendo
+ms.openlocfilehash: b091c501fb565fb267c40f686dc037e41f3c90ee
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693491"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845119"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Vytvoření instance služby Azure Network Watcher
 
@@ -51,11 +49,11 @@ az provider register -n Microsoft.Network
 
 ## <a name="create-a-network-watcher-in-the-portal"></a>Vytvoření Network Watcher na portálu
 
-Přejděte na **všechny služby**  > **síťové**  > **Network Watcher**. Můžete vybrat všechna předplatná, která chcete povolit Network Watcher pro. Tato akce vytvoří Network Watcher v každé oblasti, která je k dispozici.
+Přejděte na **všechny služby** > **síťové** > **Network Watcher**. Můžete vybrat všechna předplatná, která chcete povolit Network Watcher pro. Tato akce vytvoří Network Watcher v každé oblasti, která je k dispozici.
 
 ![Vytvoření sledovacího procesu sítě](./media/network-watcher-create/figure1.png)
 
-Pokud povolíte Network Watcher pomocí portálu, název instance Network Watcher se automaticky nastaví na *NetworkWatcher_region_name* , kde *Region_name* odpovídá oblasti Azure, ve které je instance povolená. Například Network Watcher povolený v Středozápadní USA oblasti má název *NetworkWatcher_westcentralus*.
+Pokud povolíte Network Watcher pomocí portálu, název instance Network Watcher je automaticky nastaven na *NetworkWatcher_region_name* , kde *Region_name* odpovídá oblasti Azure, ve které je instance povolená. Například Network Watcher povolený v Středozápadní USA oblasti má název *NetworkWatcher_westcentralus*.
 
 Instance Network Watcher se automaticky vytvoří ve skupině prostředků s názvem *NetworkWatcherRG*. Skupina prostředků se vytvoří, pokud ještě neexistuje.
 
@@ -105,7 +103,7 @@ armclient put "https://management.azure.com/subscriptions/${subscriptionId}/reso
 
 ## <a name="delete-a-network-watcher-in-the-portal"></a>Odstranění Network Watcher na portálu
 
-Přejděte na **všechny služby**  > **síťové**  > **Network Watcher**.
+Přejděte na **všechny služby** > **síťové** > **Network Watcher**.
 
 Vyberte kartu Přehled, pokud ještě nejste. Pomocí rozevírací nabídky vyberte předplatné, ve kterém chcete sledovací proces sítě vypnout.
 Kliknutím na šipku rozbalte seznam oblastí zvoleného předplatného. V případě potřeby použijte pro přístup k místní nabídce 3 tečky na pravé straně.

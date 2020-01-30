@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: a8dd859b05c3e95a1c584a7947334dad25813122
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 61afad1d9994fd703bd8df047d1861baddeae997
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970653"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845342"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technické možnosti zabezpečení Azure
 Tento článek poskytuje Úvod do služby zabezpečení v Azure, které vám pomůžou chránit vaše data, prostředky a aplikace v cloudu a splňovat požadavky na zabezpečení vaší firmy.
@@ -57,7 +57,7 @@ Azure vám pomůže chránit obchodní a osobní údaje tím, že vám umožní 
 
 Výhody zabezpečení Azure Active Directory (Azure AD) zahrnují tyto možnosti:
 
-- Umožňuje vytvořit a spravovat jednu identitu pro každého uživatele v celém podniku a přitom zajistit synchronizaci uživatelů, skupin a zařízení.
+- Můžete vytvářet a spravovat jednu identitu pro každého uživatele v rámci hybridního podniku, udržovat uživatele, skupiny a zařízení v synchronizaci.
 
 - Poskytněte přístup k aplikacím s jednotným přihlašováním, včetně tisíců předem integrovaných aplikací SaaS.
 
@@ -119,7 +119,7 @@ V Azure Portal nebo prostřednictvím [portálu Azure Active Directory](https://
 
 [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) je vysoce dostupná, globální služba pro správu identit pro zákaznické aplikace, která se škáluje na stovky milionů identit. Dá se integrovat do mobilních i webových platforem. Zákazníci se můžou ke všem vašim aplikacím přihlašovat přes přizpůsobitelné prostředí pomocí svých existujících účtů v sociálních sítích nebo pomocí nově vytvořených přihlašovacích údajů.
 
-V minulosti mohli vývojáři aplikací, kteří se chtěli [zaregistrovat a přihlašovat](../../active-directory-b2c/active-directory-b2c-overview.md) do svých aplikací, napsat svůj vlastní kód. A použili by místní databáze nebo systémy k ukládání uživatelských jmen a hesel. Azure Active Directory B2C nabízí vaší organizaci lepší způsob integrace správy identit uživatelů do aplikací s využitím zabezpečené, standardizované platformy a rozsáhlé sady rozšiřitelných zásad.
+V minulosti mohli vývojáři aplikací, kteří se chtěli [zaregistrovat a přihlašovat](../../active-directory-b2c/overview.md) do svých aplikací, napsat svůj vlastní kód. A použili by místní databáze nebo systémy k ukládání uživatelských jmen a hesel. Azure Active Directory B2C nabízí vaší organizaci lepší způsob integrace správy identit uživatelů do aplikací s využitím zabezpečené, standardizované platformy a rozsáhlé sady rozšiřitelných zásad.
 
 Když použijete Azure Active Directory B2C, můžou si vaši zákazníci zaregistrovat své aplikace pomocí svých stávajících účtů sociálních sítí (Facebook, Google, Amazon, LinkedIn) nebo vytvořením nových přihlašovacích údajů (e-mailová adresa a heslo nebo uživatelského jména a hesla).
 
@@ -256,7 +256,7 @@ Větší sady dat lze přesunout pomocí vyhrazeného vysokorychlostního propoj
 
 Pokud spolupracujete s Azure Storage prostřednictvím webu Azure Portal, všechny transakce nastávají prostřednictvím protokolu HTTPS. K interakci s [Azure Storage](https://azure.microsoft.com/services/storage/) a [Azure SQL Database](https://azure.microsoft.com/services/sql-database/)je také možné použít [REST API úložiště](https://msdn.microsoft.com/library/azure/dd179355.aspx) prostřednictvím protokolu HTTPS.
 
-Organizace, které nechrání data při přenosu, jsou náchylnější k [útokům](https://technet.microsoft.com/library/gg195821.aspx)prostředníkem, [odposlouchávání](https://technet.microsoft.com/library/gg195641.aspx)a zneužití relace. Tyto útoky mohou představovat první krok k získání přístupu k důvěrným datům.
+Organizace, které nechrání data při přenosu, jsou náchylnější k [útokům](https://technet.microsoft.com/library/gg195821.aspx)prostředníkem, [odposlouchávání](https://technet.microsoft.com/library/gg195641.aspx)a zneužití relace. Tyto útoky můžou být prvním krokem při získávání přístupu k důvěrným datům.
 
 Další informace o možnosti Azure VPN najdete v článku [plánování a návrh VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
@@ -432,7 +432,7 @@ Security Center automaticky shromažďuje, analyzuje a integruje data protokolu 
 
 - Výstrahy zabezpečení z integrovaných antimalwarových programů a bran firewall
 
-### <a name="azure-monitor"></a>Azure monitor
+### <a name="azure-monitor"></a>Monitorování Azure
 
 [Azure monitor](../../azure-monitor/overview.md) poskytuje odkazy na informace o konkrétních typech prostředků. Nabízí vizualizaci, dotaz, směrování, upozorňování, automatické škálování a automatizaci dat jak z infrastruktury Azure (protokol aktivit), tak z každého jednotlivého prostředku Azure (diagnostické protokoly).
 

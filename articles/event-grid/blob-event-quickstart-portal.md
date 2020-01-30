@@ -9,12 +9,12 @@ ms.date: 11/05/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 1aa8c9ff26b85f5af8095ad1cff062b224abff83
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2daf17ccef1bca363fe92f71a332fbfa78637135
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982180"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844768"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Rychlý start: Události úložiště Blob trasy webový koncový bod pomocí webu Azure portal
 
@@ -41,6 +41,9 @@ Až budete hotovi, uvidíte, že se data události odeslala do webové aplikace.
 1. Pokud se chcete přihlásit k odběru událostí, vytvořte si účet úložiště pro obecné účely verze 2 nebo účet úložiště objektů blob. Další informace najdete v článku o [vytvoření účtu úložiště](../storage/common/storage-account-create.md).
 
    ![Počáteční kroky](./media/blob-event-quickstart-portal/provide-blob-values.png)
+
+>[!NOTE]
+> Integraci událostí podporují jenom účty úložiště typu **StorageV2 (obecné účely v2)** a **BlobStorage** . **Úložiště (Genral pro účely V1)** *nepodporuje integraci* s Event Grid.
 
 ## <a name="create-a-message-endpoint"></a>Vytvoření koncového bodu zpráv
 

@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/04/2019
-ms.openlocfilehash: 1c5b2879659305e55bb01e4cfab27c7a1b343155
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c35afe6e3d6ec74e8fc7cd134f533d1e618c820e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894853"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845740"
 ---
 # <a name="monitoring-azure-machine-learning"></a>Azure Machine Learning monitorování
 
@@ -32,7 +32,7 @@ Tento článek popisuje data monitorování vygenerovaná nástrojem Azure Machi
 
 Azure Machine Learning protokoluje data monitorování pomocí Azure Monitor, což je plná služba monitorování zásobníku v Azure. Azure Monitor poskytuje kompletní sadu funkcí pro monitorování prostředků Azure. Může také monitorovat prostředky v jiných cloudech i v místním prostředí.
 
-Začněte s článkem [Azure monitor přehled](/azure/azure-monitor/overview), který poskytuje přehled možností monitorování. V následujících částech najdete informace o těchto informacích pomocí Azure Monitor s využitím Azure Machine Learning.
+Začněte s článkem [Azure monitor přehled](/azure/azure-monitor/overview), který poskytuje přehled možností monitorování. Následující části obsahují informace o těchto informacích, které poskytují konkrétní použití Azure Monitor s Azure Machine Learning.
 
 Pokud chcete pochopit náklady spojené s Azure Monitor, přečtěte si téma [využití a odhadované náklady](/azure/azure-monitor/platform/usage-estimated-costs). Pokud chcete pochopit, jak dlouho trvá, aby se data zobrazovala v Azure Monitor, přečtěte si část [Doba přijímání dat protokolu](/azure/azure-monitor/platform/data-ingestion-time).
 

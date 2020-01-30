@@ -3,12 +3,12 @@ title: Objevte aplikace, role a funkce na místních serverech pomocí Azure Mig
 description: Naučte se zjišťovat aplikace, role a funkce na místních serverech pomocí vyhodnocení Azure Migrate serveru.
 ms.topic: article
 ms.date: 11/20/2019
-ms.openlocfilehash: 454d70a53c3ea00a4dc592703c0bc04d5517b97f
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 7c3a6360e051b8cb694393695e75578ce2c135ec
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280760"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846314"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Objevte aplikace pro počítače, role a funkce
 
@@ -28,7 +28,7 @@ Zjišťování aplikací pomocí Azure Migrate: posouzení serveru není bez age
 2. Ujistěte se, že jste [přidali](how-to-assess.md) Azure Migrate: Nástroj pro vyhodnocení serveru do projektu.
 4. Podívejte se na [požadavky VMware](migrate-support-matrix-vmware.md#vmware-requirements) pro zjišťování a vyhodnocování virtuálních počítačů VMware pomocí zařízení Azure Migrate.
 5. Ověřte [požadavky](migrate-appliance.md) na nasazení zařízení Azure Migrate.
-6. [Ověřte podporu a požadavky](/migrate-support-matrix-vmware.md#application-discovery) pro zjišťování aplikací.
+6. [Ověřte podporu a požadavky](migrate-support-matrix-vmware.md#application-discovery) pro zjišťování aplikací.
 
 ## <a name="prepare-for-app-discovery"></a>Příprava na zjišťování aplikací
 

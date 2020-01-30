@@ -2,21 +2,87 @@
 title: Témata rozšířeného upgradu aplikací
 description: Tento článek se věnuje několika pokročilým tématům, která se týkají upgradu aplikace Service Fabric.
 ms.topic: conceptual
-ms.date: 2/23/2018
-ms.openlocfilehash: bd95d651e02cb61bcbe7a108db92afce8b5484bd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 1/28/2020
+ms.openlocfilehash: 09f3fdf1f26a13c6722eb039e132256f33be38ff
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457526"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845431"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Upgrade Service Fabric aplikace: Pokročilá témata
-## <a name="adding-or-removing-service-types-during-an-application-upgrade"></a>Přidání nebo odebrání typů služeb během upgradu aplikace
+
+## <a name="add-or-remove-service-types-during-an-application-upgrade"></a>Přidání nebo odebrání typů služeb během upgradu aplikace
+
 Pokud se do publikované aplikace v rámci upgradu přidá nový typ služby, do nasazené aplikace se přidá nový typ služby. Takový upgrade nemá vliv na žádné instance služby, které již jsou součástí aplikace, ale je nutné vytvořit instanci přidaného typu, aby byl nový typ služby aktivní (viz [New-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)).
 
 Podobně lze typy služeb odebrat z aplikace jako součást upgradu. Před pokračováním v upgradu je ale nutné odebrat všechny instance služby, které mají být odebrány. (viz [Remove-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)).
 
+## <a name="avoid-connection-drops-during-stateless-service-planned-downtime-preview"></a>Vyhněte se výpadkům připojení během plánovaného výpadku nestavové služby (Preview)
+
+U plánovaných výpadků bezstavových instancí, jako je například upgrade aplikace nebo clusteru nebo deaktivace uzlu, je připojení možné vyřadit z důvodu nedostatku vystaveného koncového bodu po jeho výpadku.
+
+Pokud tomu chcete předejít, nakonfigurujte funkci *RequestDrain* (Preview) přidáním instance repliky *doba ukončení zpoždění* v konfiguraci služby. Tím se zajistí, že se koncový bod inzerovaný bezstavovou instancí odebere *před tím, než* se spustí časovač zpoždění pro uzavření instance. Tato prodleva umožní řádný odtok stávajících požadavků předtím, než se instance skutečně ukončí. Klienti jsou upozorněni na změnu koncového bodu funkcí zpětného volání, takže mohou znovu přeložit koncový bod a vyhnout se odesílání nových požadavků do instance.
+
+### <a name="service-configuration"></a>Konfigurace služby
+
+Existuje několik způsobů, jak nakonfigurovat zpoždění na straně služby.
+
+ * **Při vytváření nové služby**zadejte `-InstanceCloseDelayDuration`:
+
+    ```powershell
+    New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>`
+    ```
+
+ * **Při definování služby v oddílu výchozí v manifestu aplikace**přiřaďte vlastnost `InstanceCloseDelayDurationSeconds`:
+
+    ```xml
+          <StatelessService ServiceTypeName="Web1Type" InstanceCount="[Web1_InstanceCount]" InstanceCloseDelayDurationSeconds="15">
+              <SingletonPartition />
+          </StatelessService>
+    ```
+
+ * **Při aktualizaci existující služby**zadejte `-InstanceCloseDelayDuration`:
+
+    ```powershell
+    Update-ServiceFabricService [-Stateless] [-ServiceName] <Uri> [-InstanceCloseDelayDuration <TimeSpan>]`
+    ```
+
+### <a name="client-configuration"></a>Konfigurace klienta
+
+Aby klienti mohli dostávat oznámení, když se změní koncový bod, můžou zaregistrovat zpětné volání (`ServiceManager_ServiceNotificationFilterMatched`) takto: 
+
+```csharp
+    var filterDescription = new ServiceNotificationFilterDescription
+    {
+        Name = new Uri(serviceName),
+        MatchNamePrefix = true
+    };
+    fbClient.ServiceManager.ServiceNotificationFilterMatched += ServiceManager_ServiceNotificationFilterMatched;
+    await fbClient.ServiceManager.RegisterServiceNotificationFilterAsync(filterDescription);
+
+private static void ServiceManager_ServiceNotificationFilterMatched(object sender, EventArgs e)
+{
+      // Resolve service to get a new endpoint list
+}
+```
+
+Oznámení o změně je indikaci, že se koncové body změnily, klient by měl tyto koncové body znovu přeložit a nesmí používat koncové body, které už nejsou inzerované, protože budou brzy pokračovat.
+
+### <a name="optional-upgrade-overrides"></a>Volitelné přepsání upgradu
+
+Kromě nastavení výchozích dob trvání zpoždění na službu můžete také přepsat zpoždění během upgradu aplikace nebo clusteru pomocí stejné možnosti (`InstanceCloseDelayDurationSec`):
+
+```powershell
+Start-ServiceFabricApplicationUpgrade [-ApplicationName] <Uri> [-ApplicationTypeVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
+
+Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManifestVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
+```
+
+Doba trvání prodlevy se vztahuje pouze na vyvolanou instanci upgradu a jinak nemění konfigurace zpoždění jednotlivých služeb. Můžete například použít k zadání zpoždění `0`, aby se přeskočila jakákoli předkonfigurovaná zpoždění upgradu.
+
 ## <a name="manual-upgrade-mode"></a>Režim ručního upgradu
+
 > [!NOTE]
 > Režim *monitorovaného* upgradu je doporučen pro všechny upgrady Service Fabric.
 > Režim upgradu *UnmonitoredManual* by se měl považovat jenom za neúspěšné nebo pozastavené upgrady. 
@@ -30,6 +96,7 @@ V režimu *UnmonitoredManual* má správce aplikace celkovou kontrolu nad průb�
 *UnmonitoredAuto* režim je vhodný pro provádění iterací rychlého upgradu během vývoje nebo testování služby, protože není nutný žádný vstup uživatele a nejsou vyhodnoceny žádné zásady stavu aplikace.
 
 ## <a name="upgrade-with-a-diff-package"></a>Upgrade s rozdílovým balíčkem
+
 Místo zřízení kompletního balíčku aplikace je možné upgrady provádět taky pomocí zřizovacích balíčků, které obsahují jenom aktualizované balíčky Code/config/data, a to společně s úplným manifestem aplikace a kompletními manifesty služby. Kompletní balíčky aplikací jsou nutné pouze pro počáteční instalaci aplikace do clusteru. Další upgrady můžou být buď z kompletních balíčků aplikací, nebo rozdílných balíčků.  
 
 Jakýkoli odkaz v manifestu aplikace nebo manifestech služby rozdílového balíčku, který se nedá najít v balíčku aplikace, se automaticky nahradí aktuálně zřízenou verzí.
@@ -113,7 +180,7 @@ HealthState            : Ok
 ApplicationParameters  : { "ImportantParameter" = "2"; "NewParameter" = "testAfter" }
 ```
 
-## <a name="rolling-back-application-upgrades"></a>Vracení back-upgradech aplikací
+## <a name="roll-back-application-upgrades"></a>Vrácení upgradů aplikací zpátky
 
 I když se upgrady dají převádět v jednom ze tří režimů (*monitorované*, *UnmonitoredAuto*nebo *UnmonitoredManual*), dají se vrátit zpátky buď v režimu *UnmonitoredAuto* , nebo *UnmonitoredManual* . Vracení zpět v režimu *UnmonitoredAuto* funguje stejným způsobem jako při vracení s výjimkou, že výchozí hodnota *UpgradeReplicaSetCheckTimeout* je odlišná – viz [parametry upgradu aplikace](service-fabric-application-upgrade-parameters.md). Vracení zpět v režimu *UnmonitoredManual* funguje stejně jako postupné dopředné – vrácení zpět se po dokončení každého ud odblokuje a musí se explicitně obnovit pomocí funkce [Resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) , aby bylo možné pokračovat v vracení zpět.
 

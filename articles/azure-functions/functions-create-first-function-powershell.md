@@ -6,12 +6,12 @@ ms.author: jaiello
 ms.reviewer: glenga
 ms.date: 04/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: 8cc89805ce53c141ff2c012fccb3c01ff2e9db49
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: b1a1caf985e9693e261684c1edb21184071ebfc8
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167903"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845900"
 ---
 # <a name="create-your-first-powershell-function-in-azure"></a>Vytvoření první funkce PowerShellu v Azure
 
@@ -67,36 +67,7 @@ K dokončení tohoto rychlého startu je potřeba:
 
 Visual Studio Code vytvoří projekt aplikace Functions PowerShellu v novém pracovním prostoru. Tento projekt obsahuje konfigurační soubory [Host. JSON](functions-host-json.md) a [Local. Settings. JSON](functions-run-local.md#local-settings-file) , které se vztahují na všechny funkce v projektu. Tento [projekt PowerShell](functions-reference-powershell.md#folder-structure) je stejný jako aplikace Function App běžící v Azure.
 
-## <a name="run-the-function-locally"></a>Místní spuštění funkce
-
-Azure Functions Core Tools se integruje s Visual Studio Code, aby se mohl spustit a ladit Azure Functions projektu místně.  
-
-1. Chcete-li ladit funkci, vložte volání rutiny [`Wait-Debugger`] v kódu funkce předtím, než budete chtít připojit ladicí program, a stisknutím klávesy F5 spusťte projekt Function App a připojte ladicí program. Výstup z nástrojů Tools se zobrazí na panelu **Terminál**.
-
-1. Na panelu **Terminál** zkopírujte adresu URL koncového bodu vaší funkce aktivované protokolem HTTP.
-
-    ![Místní výstup Azure](./media/functions-create-first-function-powershell/functions-vscode-f5.png)
-
-1. Přidejte řetězec dotazu `?name=<yourname>` k této adrese URL a pak pomocí `Invoke-RestMethod` spusťte požadavek následujícím způsobem:
-
-    ```powershell
-    PS > Invoke-RestMethod -Method Get -Uri http://localhost:7071/api/HttpTrigger?name=PowerShell
-    Hello PowerShell
-    ```
-
-    Požadavek GET můžete také spustit z prohlížeče.
-
-    Když zavoláte koncový bod HttpTrigger bez předání parametru `name` buď jako parametr dotazu, nebo v těle, funkce vrátí chybu [HttpStatusCode]:: důvodu chybného požadavku. Když zkontrolujete kód v běhu. ps1, uvidíte, že k této chybě dochází podle návrhu.
-
-1. Pokud chcete zastavit ladění, stiskněte Shift + F5.
-
-Po ověření správného fungování funkce na místním počítači je na čase publikovat projekt do Azure.
-
-> [!NOTE]
-> Před publikováním funkcí do Azure nezapomeňte odebrat všechna volání `Wait-Debugger`. 
->
-> Vytvořením aplikace Function App v Azure se zobrazí výzva k zadání názvu aplikace Function App. Pro vás jsou definovány jiné hodnoty.
-> Nastavte `azureFunctions.advancedCreation` na `true`, aby se zobrazila výzva pro všechny ostatní hodnoty.
+[!INCLUDE [functions-run-function-test-local-vs-code-ps](../../includes/functions-run-function-test-local-vs-code-ps.md)]
 
 [!INCLUDE [functions-publish-project-vscode](../../includes/functions-publish-project-vscode.md)]
 
@@ -135,4 +106,4 @@ Použili jste Visual Studio Code k vytvoření aplikace funkce PowerShellu pomoc
 [Azure portal]: https://portal.azure.com
 [Azure Functions Core Tools]: functions-run-local.md
 [Rozšíření Azure Functions pro Visual Studio Code]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions
-[' Wait-Debugger ']: /powershell/module/microsoft.powershell.utility/wait-debugger?view=powershell-6
+[`Wait-Debugger`]: /powershell/module/microsoft.powershell.utility/wait-debugger?view=powershell-6

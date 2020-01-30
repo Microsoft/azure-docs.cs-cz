@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5534a46ba99d1536d331b5852ef47588f03d73a4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bf0740bbdd4754aeba43e64f1076a1bea33cffc6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980278"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844411"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Řešení potíží s Azure Stream Analytics dotazy
 
@@ -21,21 +21,24 @@ Tento článek popisuje běžné problémy při vývoji Stream Analytics dotazů
 
 ## <a name="query-is-not-producing-expected-output"></a>Dotaz nevyrábí očekávaný výstup.
 1.  Kontrola chyb pomocí místního testování:
-    - Na kartě **dotaz** vyberte **test**. K [otestování dotazu](stream-analytics-test-query.md)použijte stažená ukázková data. Prověřte případné chyby a pokuste se je opravit.   
-    - Dotaz můžete také [testovat přímo na živém vstupu](stream-analytics-live-data-local-testing.md) pomocí Stream Analyticsch nástrojů pro Visual Studio.
+    - Na Azure Portal na kartě **dotaz** vyberte **test**. K [otestování dotazu](stream-analytics-test-query.md)použijte stažená ukázková data. Prověřte případné chyby a pokuste se je opravit.   
+    - Dotaz můžete také [místně otestovat](stream-analytics-live-data-local-testing.md) pomocí Azure Stream Analyticsch nástrojů pro aplikaci Visual Studio nebo [Visual Studio Code](visual-studio-code-local-run-live-input.md). 
 
-2.  Pokud používáte [**časové razítko**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics), ověřte, zda mají události časové razítko větší, než je [čas spuštění úlohy](stream-analytics-out-of-order-and-late-events.md).
+2.  [Ladit dotazy krok za krokem místně pomocí diagramu úloh](debug-locally-using-job-diagram.md) v nástroji Azure Stream Analytics Tools for Visual Studio. Diagram úlohy je Ukázat, jak toky dat ze vstupních zdrojů (centra událostí, IoT Hub atd.) prostřednictvím více kroků dotazů a konečné výstupy do jímky. Každý krok dotazu je namapován na dočasnou sadu výsledků definovanou ve skriptu pomocí příkazu WITH. Můžete zobrazit data a také metriky v každém kroku dotazu v každé mezilehlé sadě výsledků, abyste našli zdroj problému.
+    ![výsledků náhledu diagramu úloh](./media/debug-locally-using-job-diagram/preview-result.png)
 
-3.  Odstraňte běžné nástrah, například:
+3.  Pokud používáte [**časové razítko**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics), ověřte, zda mají události časové razítko větší, než je [čas spuštění úlohy](stream-analytics-out-of-order-and-late-events.md).
+
+4.  Odstraňte běžné nástrah, například:
     - Klauzule [**WHERE**](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) v dotazu vyfiltroval všechny události, což znemožňuje vygenerování všech výstupů.
     - Funkce [**cast**](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) selže, což způsobí selhání úlohy. Chcete-li se vyhnout chybám přetypování typů, použijte místo toho [**TRY_CAST**](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics) .
     - Při použití funkcí okna počkejte na celou dobu trvání okna, aby se zobrazil výstup dotazu.
     - Časové razítko pro události předchází času zahájení úlohy a proto se události vynechává.
 
-4.  Zajistěte, aby byly zásady řazení událostí nakonfigurované podle očekávání. Přejít do **Nastavení** a vybrat [**řazení událostí**](stream-analytics-out-of-order-and-late-events.md). Zásada *se nepoužije,* když použijete tlačítko **test** k otestování dotazu. Výsledkem je jeden rozdíl mezi testováním v prohlížeči a spuštění úlohy v produkčním prostředí.
+5.  Zajistěte, aby byly zásady řazení událostí nakonfigurované podle očekávání. Přejít do **Nastavení** a vybrat [**řazení událostí**](stream-analytics-out-of-order-and-late-events.md). Zásada *se nepoužije,* když použijete tlačítko **test** k otestování dotazu. Výsledkem je jeden rozdíl mezi testováním v prohlížeči a spuštění úlohy v produkčním prostředí. 
 
-5. Ladit pomocí protokolů auditu a diagnostiky:
-    - K identifikaci a ladění chyb použijte [protokoly auditu](../azure-resource-manager/management/view-activity-logs.md)a filtr.
+6. Ladit pomocí protokolů auditu a diagnostiky:
+    - K identifikaci a ladění chyb použijte [protokoly auditu](../azure-resource-manager/resource-group-audit.md)a filtr.
     - K identifikaci a ladění chyb použijte [protokoly diagnostiky úlohy](stream-analytics-job-diagnostic-logs.md) .
 
 ## <a name="job-is-consuming-too-many-streaming-units"></a>Úloha spotřebovává příliš mnoho jednotek streamování.

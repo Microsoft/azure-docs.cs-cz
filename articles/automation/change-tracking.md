@@ -3,19 +3,29 @@ title: Sledování změn pomocí Azure Automation
 description: Řešení Change Tracking vám pomůže identifikovat změny softwaru a služeb systému Windows, ke kterým dochází ve vašem prostředí.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 04/29/2019
+ms.date: 01/28/2019
 ms.topic: conceptual
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7dce249a3e1e13fc9d7d2a962e7f056c803eb23e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 83babd65fdf22ab40b0137d93a1cbe7f1fd7ff04
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418749"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844798"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Sledování změn ve vašem prostředí pomocí Change Tracking řešení
 
-Tento článek vám pomůže s použitím řešení Change Tracking ke snadné identifikaci změn ve vašem prostředí. Řešení sleduje změny v softwaru Windows a Linux, souborech Windows a Linux, klíčích registru Windows, službách Windows a démonech systému Linux. Identifikace změn konfigurace vám může pomáhat určit provozní problémy.
+Tento článek vám pomůže s použitím řešení Change Tracking ke snadné identifikaci změn ve vašem prostředí. Řešení sleduje následující změny konfigurace, které vám pomůžou určit provozní problémy:
+
+- Software systému Windows
+- Software pro Linux (balíčky)
+
+    >[!NOTE]
+    >Change Tracking jenom sleduje software, který je spravovaný pomocí Správce balíčků distribuce.
+
+- Soubory Windows a Linux
+- Klíče registru Windows
+- Služby pro Windows
+- Procesy démon systému Linux
 
 Změny nainstalovaného softwaru, služeb systému Windows, registru a souborů systému Windows a démonů systému Linux na monitorovaných serverech se odesílají do služby Azure Monitor v cloudu ke zpracování. Na přijatá data se aplikuje logika a cloudová služba data zaznamená. Pomocí informací na řídicím panelu Change Tracking můžete snadno zobrazit změny provedené v serverové infrastruktuře.
 
@@ -32,7 +42,7 @@ Pro agenta Windows se oficiálně podporuje následující verze operačního sy
 
 Následující distribuce systému Linux jsou oficiálně podporována. Agent pro Linux se ale může spustit i v jiných distribucích, které nejsou uvedené. Pokud není uvedeno jinak, všechny dílčí verze jsou podporovány pro každou hlavní verzi uvedenou v seznamu.
 
-### <a name="64-bit"></a>64 bitů
+### <a name="64-bit"></a>64 – bit
 
 * CentOS 6 a 7
 * Amazon Linux 2017.09
@@ -42,7 +52,7 @@ Následující distribuce systému Linux jsou oficiálně podporována. Agent pr
 * Ubuntu Linux 14,04 LTS, 16,04 LTS a 18,04 LTS
 * SUSE Linux Enterprise Server 12
 
-### <a name="32-bit"></a>32 bitů
+### <a name="32-bit"></a>32 – bit
 
 * CentOS 6
 * Oracle Linux 6
@@ -70,7 +80,7 @@ Pro sledování změn v souborech v systémech Windows i Linux se používají h
 Azure Security Center se přidalo monitorování integrity souborů (FIM) založené na Azure Change Tracking. I když FIM monitoruje jenom soubory a registry, kompletní řešení Change Tracking zahrnuje taky:
 
 - Změny softwaru
-- Služby Windows
+- Služby systému Windows
 - Procesy démon systému Linux
 
 Pokud jste již vypnuli FIM a chcete vyzkoušet úplné Change Tracking řešení, je nutné provést následující kroky. Nastavení nejsou tímto procesem odebrána.
@@ -159,6 +169,8 @@ Ke konfiguraci sledování klíčů registru v počítačích se systémem Windo
 
 * Rekurze pro sledování registru Windows
 * Síťové systémy souborů
+* Různé metody instalace nejsou sledovány.
+* soubory *. exe nejsou sledovány pro Windows.
 
 Další omezení:
 
@@ -241,7 +253,7 @@ Agent sleduje pouze změny, optimalizuje výkon agenta. Nastavení vysoké praho
 
 Následující adresy jsou vyžadovány konkrétně pro Change Tracking. Komunikace s těmito adresami se provádí přes port 443.
 
-|Veřejný partnerský vztah Azure  |Azure Government  |
+|Veřejné Azure  |Azure Government  |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |

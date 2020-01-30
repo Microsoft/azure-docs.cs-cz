@@ -5,12 +5,12 @@ author: ColbyTresness
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.reviewer: azfuncdf, cotresne
-ms.openlocfilehash: 94ba2830824c4a918e9451a9fc5140d422110370
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b0a1d1a9305f6de2a072ee1ded310d8de174436b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231318"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845728"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Vytvoření první trvalé funkce v JavaScriptu
 
@@ -38,7 +38,31 @@ Pro absolvování tohoto kurzu potřebujete:
 
 [!INCLUDE [functions-install-vs-code-extension](../../../includes/functions-install-vs-code-extension.md)]
 
-[!INCLUDE [functions-create-function-app-vs-code](../../../includes/functions-create-function-app-vs-code.md)]
+## <a name="create-an-azure-functions-project"></a>Vytvořit místní projekt 
+
+V této části použijete Visual Studio Code k vytvoření místního projektu Azure Functions. 
+
+1. V Visual Studio Code stisknutím klávesy F1 otevřete paletu příkazů. V paletě příkazů vyhledejte a vyberte `Azure Functions: Create new project...`.
+
+1. Zvolte umístění adresáře pro váš pracovní prostor projektu a zvolte **možnost vybrat**.
+
+    > [!NOTE]
+    > Tyto kroky jsou navržené tak, aby se dokončily mimo pracovní prostor. V tomto případě nevybírejte složku projektu, která je součástí pracovního prostoru.
+
+1. Podle pokynů zadejte následující informace pro požadovaný jazyk:
+
+    | Výzva | Hodnota | Popis |
+    | ------ | ----- | ----------- |
+    | Vyberte jazyk pro projekt Function App. | JavaScript | Vytvoří místní projekt funkcí Node. js. |
+    | vybrat verzi | Azure Functions v2 | Tato možnost se zobrazí jenom v případě, že už nejsou nainstalované základní nástroje. V takovém případě se při prvním spuštění aplikace nainstalují základní nástroje. |
+    | Vyberte šablonu pro funkci prvního projektu. | Trigger HTTP | Vytvoření funkce aktivované protokolem HTTP v nové aplikaci Function App. |
+    | Zadejte název funkce. | HttpTrigger | Pokud chcete použít výchozí název, stiskněte klávesu ENTER. |
+    | Úroveň autorizace | Funkce | `function` úroveň autorizace vyžaduje, abyste při volání koncového bodu HTTP vaší funkce zadali přístupový klíč. To ztěžuje přístup k nezabezpečenému koncovému bodu. Další informace najdete v tématu [autorizační klíče](../functions-bindings-http-webhook.md#authorization-keys).  |
+    | Vyberte, jak se má projekt otevřít. | Přidat do pracovního prostoru | Vytvoří aplikaci Function App v aktuálním pracovním prostoru. |
+
+V případě potřeby Visual Studio Code nainstaluje Azure Functions Core Tools. Také vytvoří projekt Function App v novém pracovním prostoru. Tento projekt obsahuje konfigurační soubory [Host. JSON](../functions-host-json.md) a [Local. Settings. JSON](../functions-run-local.md#local-settings-file) . Vytvoří také složku HttpExample, která obsahuje soubor s [definicí Function. JSON](../functions-reference-node.md#folder-structure) a [soubor index. js](../functions-reference-node.md#exporting-a-function), soubor Node. js, který obsahuje kód funkce.
+
+V kořenové složce se vytvoří také soubor Package. JSON.
 
 ## <a name="install-the-durable-functions-npm-package"></a>Instalace balíčku Durable Functions npm
 
@@ -60,7 +84,7 @@ Nejdřív vytvořte funkci aktivovanou protokolem HTTP, která spustí orchestra
 
     ![Zvolit šablonu HTTP Starter](./media/quickstart-js-vscode/create-function-choose-template.png)
 
-3. Ponechte výchozí název `DurableFunctionsHttpStart` a stiskněte * * * * ENTER * * a pak vyberte **anonymní** ověřování.
+3. Ponechat výchozí název jako `DurableFunctionsHttpStart` a stiskněte klávesu ** **Enter**, pak vyberte **anonymní** ověřování.
 
     ![Volba anonymního ověřování](./media/quickstart-js-vscode/create-function-anonymous-auth.png)
 

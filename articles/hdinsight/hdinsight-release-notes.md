@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/08/2019
-ms.openlocfilehash: 56be45b8d0f8086d9a64811fe715fad967fca33e
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.date: 01/24/2020
+ms.openlocfilehash: 9d484afb1d80ee6b110438cc3ddea1d3d67ad999
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027770"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844679"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
 
@@ -23,7 +23,7 @@ Tento článek poskytuje informace **o nejnovějších aktualizacích vydaných*
 
 Azure HDInsight je jednou z nejoblíbenějších služeb pro podnikové zákazníky, kteří se týkají Open Source analýz v Azure.
 
-## <a name="release-date-01092019"></a>Datum vydání: 01/09/2019
+## <a name="release-date-01092020"></a>Datum vydání: 01/09/2020
 
 Tato verze platí pro HDInsight 3,6 a 4,0. Vydání HDInsight je zpřístupněno pro všechny oblasti více než několik dní. Datum vydání znamená datum vydání první oblasti. Pokud nevidíte níže uvedené změny, počkejte prosím, až bude verze ve vaší oblasti v průběhu několika dnů živá.
 
@@ -65,3 +65,34 @@ HDInsight nadále zdokonaluje spolehlivost a výkon clusteru.
 
 ## <a name="component-version-change"></a>Změna verze součásti
 Pro tuto verzi se nezměnila žádná verze součásti. Aktuální verze komponent pro HDInsight 4,0 AD HDInsight 3,6 najdete tady.
+
+## <a name="known-issues"></a>Známé problémy
+
+Od 24. ledna 2020 dochází k aktivnímu problému, při kterém se při pokusu o použití poznámkového bloku Jupyter může zobrazit chyba. Problém můžete vyřešit pomocí následujících kroků. Můžete se také podívat na tento příspěvek na [MSDN](https://social.msdn.microsoft.com/Forums/en-us/8c763fb4-79a9-496f-a75c-44a125e934ac/hdinshight-create-not-create-jupyter-notebook?forum=hdinsight) nebo tento [příspěvek na StackOverflow](https://stackoverflow.com/questions/59687614/azure-hdinsight-jupyter-notebook-not-working/59831103) pro aktuální informace nebo si klást další otázky. Tato stránka bude aktualizována, jakmile bude problém vyřešen.
+
+**Vyskytl**
+
+* ValueError: nejde převést Poznámkový blok na verzi V5, protože tato verze neexistuje.
+* Chyba při načítání poznámkového bloku při načítání tohoto poznámkového bloku došlo k neznámé chybě. Tato verze může načíst formáty poznámkových bloků v4 nebo starší.
+
+**Příčina** 
+
+Soubor _version. py v clusteru byl aktualizován na 5. x. x namísto 4.4. x. # #.
+
+**Řešení**
+
+Pokud vytvoříte nový Poznámkový blok Jupyter a dostanete jednu z výše uvedených chyb, proveďte následující kroky k vyřešení problému.
+
+1. Otevřete Ambari ve webovém prohlížeči tak, že na https://CLUSTERNAME.azurehdinsight.net, kde název_clusteru je název vašeho clusteru.
+1. V Ambari nabídce vlevo klikněte na **Jupyter**a pak na **Akce služby**klikněte na **zastavit**.
+1. Spusťte SSH do clusteru hlavnímu uzlu, kde je spuštěná služba Jupyter.
+1. Otevřete následující soubor/usr/bin/Anaconda/lib/python2.7/site-Packages/nbformat/_version. py v režimu sudo.
+1. Existující položka by měla vypadat podobně jako následující kód: 
+
+    version_info = (5, 0, 3)
+
+    Upravte položku na: 
+    
+    version_info = (4, 4, 0)
+1. Uložte soubor.
+1. Vraťte se na Ambari a v **akci služby**klikněte na **restartovat vše**.

@@ -4,9 +4,7 @@ titleSuffix: Azure Network Watcher
 description: Naučte se používat funkce řešení potíží s připojením v Azure Network Watcher s využitím REST API Azure.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -14,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: kumud
-ms.openlocfilehash: 792556a63b5ca9ef53a33960e8284354972b3895
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f1d4b02731f9e0f22fb1eaba03e55e49f84cd87a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275965"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845093"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>Řešení potíží s připojením k Azure Network Watcher pomocí Azure REST API
 
@@ -84,7 +82,7 @@ Z následujícího výstupu se používá ID virtuálního počítače v násled
 
 Tento příklad zkontroluje připojení k cílovému virtuálnímu počítači přes port 80.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -200,7 +198,7 @@ Následující odpověď je z předchozího příkladu.  V této odpovědi je `C
 
 V příkladu je zkontrolováno připojení mezi virtuálním počítačem a vzdáleným koncovým bodem.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -296,7 +294,7 @@ V následujícím příkladu je `connectionStatus` zobrazen jako **nedosažiteln
 
 Následující příklad zkontroluje připojení k webu.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -383,7 +381,7 @@ V následující reakci vidíte, že `connectionStatus` zobrazuje, jak lze **dos
 
 Následující příklad zkontroluje připojení z virtuálního počítače k účtu úložiště blogu.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"

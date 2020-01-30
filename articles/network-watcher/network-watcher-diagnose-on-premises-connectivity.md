@@ -4,9 +4,7 @@ titleSuffix: Azure Network Watcher
 description: Tento článek popisuje, jak diagnostikovat místní připojení prostřednictvím brány VPN pomocí řešení potíží s prostředky v Azure Network Watcher.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: aeffbf3d-fd19-4d61-831d-a7114f7534f9
 ms.service: network-watcher
 ms.devlang: na
@@ -14,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 528684031404dbd907205e69f3565155fa1856b0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: damendo
+ms.openlocfilehash: 835b3a69e779b536961110b674ae67f4e8c13ce0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454290"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845064"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnostika místního připojení prostřednictvím bran VPN
 
@@ -84,12 +82,12 @@ Funkce řešení potíží s Azure Network Watcher umožňuje diagnostikovat a �
 
 | Typ chyby | Důvod | Protokol|
 |---|---|---|
-| NoFault | Pokud není zjištěna žádná chyba. |Ano|
+| Chyba | Pokud není zjištěna žádná chyba. |Ano|
 | GatewayNotFound | Nejde najít bránu nebo bránu není zřízená. |Ne|
-| PlannedMaintenance |  V instanci brány probíhá údržba.  |Ne|
+| PlannedMaintenance |  Instance brány je pod údržbou.  |Ne|
 | UserDrivenUpdate | V případě, že probíhá aktualizace uživatele. Může se jednat o operaci změny velikosti. | Ne |
 | VipUnResponsive | Nelze se připojit k primární instanci brány. K tomu dojde, když sonda stavu neproběhne úspěšně. | Ne |
-| PlatformInActive | Došlo k problému s platformou. | Ne|
+| PlatformInActive | Došlo k potížím s platformou. | Ne|
 | ServiceNotRunning | Podkladová služba není spuštěná. | Ne|
 | NoConnectionsFoundForGateway | V bráně neexistují žádná připojení. Toto je pouze upozornění.| Ne|
 | ConnectionsNotConnected | Žádná připojení nejsou připojená. Toto je pouze upozornění.| Ano|
@@ -99,9 +97,9 @@ Funkce řešení potíží s Azure Network Watcher umožňuje diagnostikovat a �
 
 | Typ chyby | Důvod | Protokol|
 |---|---|---|
-| NoFault | Pokud není zjištěna žádná chyba. |Ano|
+| Chyba | Pokud není zjištěna žádná chyba. |Ano|
 | GatewayNotFound | Nejde najít bránu nebo bránu není zřízená. |Ne|
-| PlannedMaintenance | V instanci brány probíhá údržba.  |Ne|
+| PlannedMaintenance | Instance brány je pod údržbou.  |Ne|
 | UserDrivenUpdate | V případě, že probíhá aktualizace uživatele. Může se jednat o operaci změny velikosti.  | Ne |
 | VipUnResponsive | Nelze se připojit k primární instanci brány. K tomu dojde, když sonda stavu neproběhne úspěšně. | Ne |
 | ConnectionEntityNotFound | Chybí konfigurace připojení. | Ne |

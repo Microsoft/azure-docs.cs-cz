@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 3a87475146e2b23c4a824e568ea3da33e1f4abf0
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3a52d906d958fdfd1d7e09c6229b12af3204bc52
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512942"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846378"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Zdroje událostí v Azure Event Grid
 
@@ -132,6 +132,9 @@ Přihlaste se k odběru Service Busch událostí, aby reagovaly na zprávy bez a
 ## <a name="storage"></a>Storage
 
 Přihlaste se k odběru událostí Blob Storage pro reakci na události vytvořené a odstraněné objekty blob.
+
+>[!NOTE]
+> Integraci událostí podporují jenom účty úložiště typu **StorageV2 (obecné účely v2)** a **BlobStorage** . **Úložiště (Genral pro účely V1)** *nepodporuje integraci* s Event Grid.
 
 |Nadpis  |Popis  |
 |---------|---------|

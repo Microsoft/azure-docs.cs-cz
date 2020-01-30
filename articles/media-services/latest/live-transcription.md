@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: 875d8f498fc8405a53d8fb60631c52ce09b30a62
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 95cd759a5ef4f5f67ecf56e60595e709bbc8b44f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431931"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845684"
 ---
 # <a name="live-transcription-preview"></a>Živý přepis (Preview)
 
@@ -31,7 +31,7 @@ Tento článek popisuje, jak povolit živý přepis při streamování živé ud
 
 ## <a name="creating-the-live-event"></a>Vytváří se živá událost. 
 
-Chcete-li vytvořit živou událost, měli byste odeslat operaci PUT do verze 2019-05-01, například: 
+Chcete-li vytvořit živou událost, měli byste odeslat operaci PUT do verze 2019-05-01-Preview, například: 
 
 ```
 PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview&autoStart=true 

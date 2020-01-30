@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 169b0c8084259ac27b466dbfd3606e465da35d99
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: e403d690470f3c4f1d0c8e565e90641d9c114a80
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73098619"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844532"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Kurz: publikování, přihlášení k odběru událostí v místním prostředí
 
@@ -23,7 +23,7 @@ Tento článek vás provede všemi kroky potřebnými k publikování a přihlá
 > [!NOTE]
 > Další informace o Azure Event Grid tématech a předplatných najdete v tématu [Event Grid koncepty](concepts.md).
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 Aby bylo možné dokončit tento kurz, budete potřebovat:
 
 * **Předplatné Azure** – Pokud ho ještě nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) . 
@@ -47,7 +47,7 @@ Existuje několik způsobů, jak nasadit moduly do zařízení IoT Edge, a všec
 
 ### <a name="configure-a-deployment-manifest"></a>Konfigurace manifestu nasazení
 
-Manifest nasazení je dokument JSON, který popisuje, které moduly se mají nasadit, způsob, jakým jsou toky dat mezi moduly a požadované vlastnosti v modulu vlákna. Azure Portal má průvodce, který vás provede vytvořením manifestu nasazení místo ručního vytváření dokumentu JSON.  Má tři kroky: **přidat moduly**, **zadat trasy**a **zkontrolovat nasazení**.
+Manifest nasazení je dokument JSON, který popisuje, které moduly chcete nasadit, tok dat mezi moduly a požadované vlastnosti dvojčat modulů. Azure Portal má průvodce, který vás provede vytvořením manifestu nasazení místo ručního vytváření dokumentu JSON.  Má tři kroky: **přidat moduly**, **trasy zadejte**, a **zkontrolujte nasazení**.
 
 ### <a name="add-modules"></a>Přidat moduly
 
@@ -59,11 +59,13 @@ Manifest nasazení je dokument JSON, který popisuje, které moduly se mají nas
    * **Identifikátor URI image**: `mcr.microsoft.com/azure-event-grid/iotedge:latest`
    * **Možnosti vytvoření kontejneru**:
 
+   [!INCLUDE [event-grid-edge-module-version-update](../../../includes/event-grid-edge-module-version-update.md)]
+
     ```json
         {
           "Env": [
-            "inbound:clientAuth:clientCert:enabled=false",
-            "outbound:webhook:httpsOnly=false"
+            "inbound__clientAuth__clientCert__enabled=false",
+            "outbound__webhook__httpsOnly=false"
           ],
           "HostConfig": {
             "PortBindings": {
@@ -127,7 +129,7 @@ Ponechte výchozí trasy a vyberte **Další** , abyste pokračovali v části K
 ### <a name="submit-the-deployment-request"></a>Odeslat žádost o nasazení
 
 1. V části Kontrola se dozvíte, který manifest nasazení JSON byl vytvořen na základě vašich výběrů v předchozí části. Ověřte, že se zobrazují oba moduly: **eventgridmodule** a **předplatitelé** uvedené ve formátu JSON. 
-1. Zkontrolujte informace o svém nasazení a pak vyberte **Odeslat**. Po odeslání nasazení se vrátíte na stránku **zařízení** .
+1. Zkontrolujte informace o nasazení a pak vyberte **odeslat**. Po odeslání nasazení se vrátíte na stránku **zařízení** .
 1. V **části moduly**ověřte, že jsou uvedené moduly **eventgrid** a **předplatitelé** . A ověřte, zda je **zadaná hodnota ve sloupci nasazení** a **hlášená pomocí sloupce zařízení** nastavena na **hodnotu Ano**.
 
     Může chvíli trvat, než se modul na zařízení spustí a pak se znovu oznámí IoT Hub. Aktualizujte stránku, aby se zobrazil aktualizovaný stav.
@@ -178,6 +180,8 @@ Jako vydavatel události je třeba vytvořit téma Event Grid. V Azure Event Gri
 ## <a name="create-an-event-subscription"></a>Vytvoření odběru událostí
 
 Předplatitelé se můžou zaregistrovat pro události publikované v tématu. Pokud chcete přijímat jakékoli události, budete muset vytvořit předplatné Event Grid pro téma zájmu.
+
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. Vytvořte Subscription. JSON s následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md) .
 
@@ -307,4 +311,5 @@ V tomto kurzu jste vytvořili téma Event gridu, předplatné a publikované ud�
 - Podle [dokumentace](configure-client-auth.md) nakonfigurujte ověřování klientů.
 - Předejte události do Azure Functions v cloudu pomocí tohoto [kurzu](pub-sub-events-webhook-cloud.md) .
 - [Reakce na události Blob Storage v IoT Edge](react-blob-storage-events-locally.md)
+- [Monitorování témat a odběrů na hraničních zařízeních](monitor-topics-subscriptions.md)
 

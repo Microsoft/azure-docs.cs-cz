@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: e46574ae7f8faa67c2cc0c1afef1917270f69175
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1c2047fc4b92ecd5776cb835a2f2138c25f5cb65
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715898"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845466"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Export protokolu aktivit Azure do úložiště nebo do Azure Event Hubs
 
@@ -36,9 +36,10 @@ Archivace protokolu aktivit do účtu úložiště je užitečná v případě, 
 ### <a name="storage-account"></a>Účet úložiště
 Pokud budete protokol aktivit archivovat, musíte si [vytvořit účet úložiště](../../storage/common/storage-account-create.md) , pokud ho ještě nemáte. Neměli byste používat existující účet úložiště, který obsahuje jiná, nemonitorovaná data, která jsou v něm uložená, abyste mohli lépe řídit přístup k datům monitorování. Pokud i přesto archivujte protokoly a metriky do účtu úložiště, můžete použít stejný účet úložiště, abyste zachovali všechna data monitorování v centrálním umístění.
 
-Účet úložiště nemusí být ve stejném předplatném jako odběr, který vydává protokoly, pokud uživatel, který nakonfiguruje nastavení, má odpovídající přístup RBAC k oběma předplatným.
-> [!NOTE]
->  V tuto chvíli nemůžete archivovat data do účtu úložiště, který je za zabezpečenou virtuální sítí.
+Účet úložiště nemusí být ve stejném předplatném jako odběr, který vydává protokoly, pokud uživatel, který nakonfiguruje nastavení, má odpovídající přístup RBAC k oběma předplatným. 
+
+> [!TIP]
+> Další informace najdete v tématu [konfigurace Azure Storage bran firewall a virtuálních sítí](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) pro poskytování přístupu k účtu úložiště za zabezpečenou virtuální sítí.
 
 ### <a name="event-hubs"></a>Event Hubs
 Pokud odesíláte protokol aktivit do centra událostí, budete muset [vytvořit centrum událostí](../../event-hubs/event-hubs-create.md) , pokud ho ještě nemáte. Pokud jste do tohoto oboru názvů Event Hubs dříve zasílaly události protokolu aktivit, pak se toto centrum událostí znovu použije.

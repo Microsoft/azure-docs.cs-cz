@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7e83aa69cb4099885fc45e719c812a6c92299b7a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 161d9d18c914f65b3ab3ef7e44f8cd2f4a1992db
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75359902"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76887595"
 ---
 Tento článek obsahuje odpovědi na některé nejčastější dotazy týkající se Azure Managed Disks a Azure SSD úrovně Premium disků.
 
@@ -145,28 +145,20 @@ Bitové kopie 1. generace můžou na datových discích používat jenom oddíly
 
 Snímky podpory SSD úrovně Premium, Standard SSD a standardní HDD. U těchto tří typů disků se snímky podporují pro všechny velikosti disků (včetně disků až do 32 TiB velikosti). Disky Ultra nepodporují snímky.
 
-### <a name="disk-reservation"></a>Rezervace disku
+**Co jsou rezervace disků Azure?**
+Rezervace disku je možnost předem si koupit jeden rok diskového úložiště a snížit tak celkové náklady. Podrobnosti o rezervacích disků Azure najdete v našem článku na předmětu: [Vysvětlení způsobu použití zlevněné slevy na disk Azure](../articles/cost-management-billing/reservations/understand-disk-reservations.md).
 
-**Co je rezervace disku Azure?**
-Rezervace disku je možnost předem si koupit jeden rok diskového úložiště a snížit tak celkové náklady.
+**Jaké možnosti nabízí rezervace disku Azure?** Rezervace disku Azure nabízí možnost koupit SSD úrovně Premium v zadaných SKU z P30 (1 TiB) až P80 (32 TiB) po dobu jednoho roku. Minimální množství disků potřebných k zakoupení rezervovaného disku není nijak omezené. Kromě toho můžete zvolit jednu platbu předem nebo měsíční platby. Pro SSD úrovně Premium Managed Disks se neúčtují žádné další transakční náklady. 
 
-**Jaké možnosti nabízí rezervace disku Azure?**
-Rezervace disku Azure nabízí možnost koupit SSD úrovně Premium v zadaných SKU z P30 (1 TiB) až P80 (32 TiB) po dobu jednoho roku. Minimální množství disků potřebných k zakoupení rezervovaného disku není nijak omezené. Kromě toho můžete zvolit jednu platbu předem nebo měsíční platby. Pro SSD úrovně Premium Managed Disks se neúčtují žádné další transakční náklady.
+Rezervace se provádějí ve formě disků, mimo kapacitu. Jinými slovy, když rezervujete disk P80 (32 TiB), získáte jeden P80 disk, takže nemůžete tuto specifickou rezervaci rozdělit do dvou menších disků P70 (16 TiB). Můžete samozřejmě vyhradit tolik disků, kolik jich budete chtít, a to včetně dvou samostatných disků P70 (16 TiB).
 
-Rezervace se provádějí ve formě disků, mimo kapacitu. Jinými slovy, když rezervujete disk P80 (32 TiB), dostanete na jeden P80 disk, ale nebudete moct Divvy tuto specifickou rezervaci na dva menší P70 (16 TiB) disky. Můžete samozřejmě vyhradit tolik disků, kolik jich budete chtít, a to včetně dvou samostatných disků P70 (16 TiB).
+**Jak se používá rezervace disku Azure?**  
+Rezervace disků sleduje model podobný vyhrazeným instancím virtuálních počítačů. Rozdíl mezi tím, že se rezervace disku nedá použít u různých SKU, zatímco instance virtuálního počítače může. Další informace o instancích virtuálních počítačů najdete v tématu [úspory nákladů pomocí Azure Reserved VM Instances](../articles/virtual-machines/linux/prepay-reserved-vm-instances.md) .    
 
-**Jak se mi bude účtovat rezervace disku Azure?**
-- Pro zákazníky smlouva Enterprise (EA) se peněžní závazek Azure nejdřív použije k nákupu rezervací disků Azure. Ve scénářích, kdy zákazníci se smlouvou EA používali veškerý svůj peněžní závazek, mohou být zaúčtovány rezervace disku a tyto nákupy budou za jednotlivé poplatky za nadlimitní platby vyfakturovány.
+Můžu **použít svoje úložiště dat zakoupené prostřednictvím rezervovaného disku Azure v několika oblastech?**     
+Rezervace disků Azure se kupuje pro konkrétní oblast a SKU (jako je P30 v Východní USA 2), a proto se nedá použít mimo tyto konstrukce. U všech potřeb diskových úložišť, které jsou v jiných oblastech nebo SKU, si vždycky můžete koupit další rezervované disky Azure. 
 
-- Pro zákazníky, kteří si kupují přes Azure.com, se v době nákupu účtuje platební karta za úplnou platbu předem (nebo měsíční pevné platby) rezervace disků Azure.
-
-**Jak se používá rezervace disku Azure?**
-Rezervace disků sleduje model podobný vyhrazeným instancím virtuálních počítačů. Rozdíl mezi tím, že se rezervace disku nedá použít u různých SKU, zatímco instance virtuálního počítače může. Další informace o instancích virtuálních počítačů najdete v tématu [úspory nákladů pomocí Azure Reserved VM Instances](../articles/virtual-machines/linux/prepay-reserved-vm-instances.md) . 
-
-**Můžu použít svoje úložiště dat zakoupené prostřednictvím rezervovaného disku Azure v několika oblastech?**
-Rezervace disků Azure se kupuje pro konkrétní oblast a SKU (jako je P30 v Východní USA 2), a proto se nedá použít mimo tyto konstrukce. U všech potřeb diskových úložišť, které jsou v jiných oblastech nebo SKU, si vždycky můžete koupit další rezervované disky Azure.
-
-**Co se stane, když vyprší platnost rezervace na discích Azure?**
+**Co se stane, když vyprší platnost rezervace na discích Azure?**    
 Před vypršením platnosti a znovu po datu vypršení platnosti obdržíte e-mailová oznámení 30 dnů. Po vypršení platnosti rezervace budou nasazené disky i nadále spuštěné a budou se fakturovat s nejnovějšími [tarify](https://azure.microsoft.com/pricing/details/managed-disks/)průběžných plateb.
 
 ## <a name="ultra-disks"></a>Disky Ultra

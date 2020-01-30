@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: babanisa
-ms.openlocfilehash: dfa53acaf392e225873a40b05b8517de2f9780dc
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: e8913c1f198c89bdcd779d2faf2706f9d4079c5c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74169578"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846307"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid zabezpečení a ověřování 
 
@@ -87,7 +87,7 @@ Pro koncový bod vlastnictví prokázat způsobem, vracení kód pro ověření 
 
 Je nutné vrátit stavový kód odpovědi HTTP 200 OK. Přijatý protokol HTTP 202 nebyl rozpoznán jako platná odpověď ověření předplatného Event Grid. Požadavek HTTP musí být dokončen do 30 sekund. Pokud operace nekončí do 30 sekund, operace se zruší a může se znovu pokusit po 5 sekundách. Pokud se všechny pokusy nezdaří, bude se považovat za chybu ověřovací metody handshake.
 
-Nebo můžete ručně ověřit předplatné z odesláním požadavku GET na adresu URL pro ověření. Předplatné události zůstane v nedokončeném stavu, dokud se neověří. Ověřovací adresa URL používá port 553. Pokud vaše pravidla brány firewall blokují port 553, může být potřeba aktualizovat pravidla pro úspěšnou ruční handshaki.
+Nebo můžete ručně ověřit předplatné z odesláním požadavku GET na adresu URL pro ověření. Odběr událostí zůstane ve stavu čekající na vyřízení, dokud nebude ověření. Ověřovací adresa URL používá port 553. Pokud vaše pravidla brány firewall blokují port 553, může být potřeba aktualizovat pravidla pro úspěšnou ruční handshaki.
 
 Příklad zpracování handshake ověření předplatného, najdete v článku [ C# ukázka](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs).
 
@@ -95,7 +95,7 @@ Příklad zpracování handshake ověření předplatného, najdete v článku [
 
 Pokud se při vytváření odběru událostí zobrazuje chybová zpráva, například "pokus o ověření poskytnutého koncového bodu https:\//Your-Endpoint-here se nezdařila. Další podrobnosti najdete na adrese https:\//aka.ms/esvalidation ", což značí, že došlo k chybě ověřovací metody handshake. Chcete-li tuto chybu vyřešit, ověřte následující aspekty:
 
-* Máte kontrolu nad kódem aplikace v cílový koncový bod? Například pokud píšete triggeru HTTP na základě funkce Azure, máte přístup ke kódu aplikace provádět změny?
+* Ovládáte kód aplikace spuštěný v cílovém koncovém bodu? Například pokud píšete triggeru HTTP na základě funkce Azure, máte přístup ke kódu aplikace provádět změny?
 * Pokud máte přístup ke kódu aplikace, implementujte mechanismus handshake ValidationCode na základě, jak je znázorněno v příkladu výše.
 
 * Pokud nemáte přístup ke kódu aplikace (například při použití služby třetí strany, která podporuje webhooky), můžete použít mechanismus ruční metodu handshake. Ujistěte se, že používáte verzi rozhraní API 2018-05-01-preview nebo novější (instalace rozšíření rozhraní příkazového řádku Azure Event Grid) pro získání validationUrl v událost ověření. Dokončete ruční ověření metody handshake získání hodnoty `validationUrl` vlastnost a navštivte tuto adresu URL ve webovém prohlížeči. Pokud je ověření úspěšné, měli byste vidět zprávu ve webovém prohlížeči, je ověřování úspěšné. Uvidíte, že stav zřizování odběr události je "bylo úspěšné". 
@@ -348,6 +348,10 @@ Následují definice rolí služby Event Grid ukázky, které umožňují uživa
 ```
 
 Můžete vytvořit vlastní role se [PowerShell](../role-based-access-control/custom-roles-powershell.md), [rozhraní příkazového řádku Azure](../role-based-access-control/custom-roles-cli.md), a [REST](../role-based-access-control/custom-roles-rest.md).
+
+## <a name="encryption-at-rest"></a>Šifrování v klidovém stavu
+
+Všechny události nebo data zapsaná na disk službou Event Grid službou jsou šifrovány klíčem spravovaným společností Microsoft, který zajišťuje, že je zašifrovaný v klidovém stavu. Kromě toho je maximální doba, po kterou se události nebo data uchovávají, 24 hodin v dodržování [zásad Event Grid opakování](delivery-and-retry.md). Event Grid budou automaticky odstraňovat všechny události nebo data po 24 hodinách nebo na hodnotu TTL (Time to Live), podle toho, co je méně.
 
 ## <a name="next-steps"></a>Další kroky
 

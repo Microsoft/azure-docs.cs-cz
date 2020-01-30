@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 5350ecdd3b73894e43db3b9f342fc657cf73f224
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 40810b9a9b295f2aa9d56caaf4b51cab7dbbe5bc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76268213"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76887879"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Vysvětlení restartování virtuálních počítačů – údržba vs. výpadek
 Existují tři scénáře, které mohou vést k ovlivnění virtuálního počítače v Azure: neplánovaná údržba hardwaru, neočekávané výpadky a plánovaná údržba.
@@ -79,12 +79,13 @@ Get-AzComputeResourceSku | where{$_.ResourceType -eq 'availabilitySets' -and $_.
 az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Location:locationInfo[0].location, MaximumFaultDomainCount:capabilities[0].value}' -o Table
 ```
 
-> Poznámka: za určitých okolností se může stát, že 2 virtuální počítače, které jsou součástí stejného AvailabilitySet, sdílejí stejný FaultDomain. Můžete to ověřit tak, že do svého AvailabilitySetete a zkontrolujete sloupec doména selhání.
-> Toto chování může být zjištěno, když při nasazování virtuálních počítačů došlo k následující sekvenci:
+> [!NOTE]
+> Za určitých okolností by dva virtuální počítače ve stejné AvailabilitySet mohly sdílet stejný FaultDomain. Můžete to ověřit tak, že do své skupiny dostupnosti zavedete a zkontrolujete sloupec **Doména selhání** .
+> To může být způsobeno při nasazení virtuálních počítačů z následujícího pořadí:
 > - Nasazení prvního virtuálního počítače
 > - Zastavení nebo zrušení přidělení prvního virtuálního počítače
 > - Za těchto okolností nasaďte druhý virtuální počítač. disk s operačním systémem druhého virtuálního počítače se dá vytvořit ve stejné doméně selhání jako první virtuální počítač, takže druhý virtuální počítač se také bude nakládat na stejný FaultDomain. 
-> Chcete-li se tomuto problému vyhnout, doporučujeme, abyste virtuální počítač nezastavili nebo nezměnili mezi jeho nasazeními.
+> Chcete-li se tomuto problému vyhnout, doporučujeme zastavit nebo zrušit přidělení virtuálních počítačů mezi nasazeními.
 
 Pokud máte v úmyslu používat virtuální počítače s nespravovanými disky, postupujte podle osvědčených postupů pro účty úložiště, kde jsou virtuální pevné disky (VHD) virtuálních počítačů uložené jako [objekty blob stránky](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs).
 

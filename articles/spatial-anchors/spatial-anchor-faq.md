@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ac7fefd8ecabd40070b422c169befe64c08f12a8
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 563e2da8eba228636b05db2112739fdead4a4aa3
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277083"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844883"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Nejčastější dotazy k Azure Spatial Anchors
 
@@ -112,6 +112,7 @@ Při vytváření kotvy sada SDK klienta zachycuje informace o prostředí kolem
 **A:** Vývojáři mohou vytvářet aplikace pomocí prostorových kotev Azure pomocí známých nástrojů a architektur pro zařízení:
 
 - Unity napříč HoloLens, iOS a Androidem
+- Xamarin v iOS a Androidu
 - SWIFT nebo objektivní – C v iOS
 - Java nebo Android NDK v Androidu
 - C++/WinRT na HoloLens

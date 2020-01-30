@@ -3,9 +3,7 @@ title: Azure Network Watcher | Microsoft Docs
 description: Seznamte se s možnostmi monitorování, diagnostiky, sledování metrik a protokolování služby Azure Network Watcher pro prostředky ve virtuální síti.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 Customer intent: As someone with basic Azure network experience, I want to understand how Azure Network Watcher can help me resolve some of the network-related problems I've encountered and provide insight into how I use Azure networking.
 ms.assetid: 14bc2266-99e3-42a2-8d19-bd7257fec35e
 ms.service: network-watcher
@@ -14,14 +12,14 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/24/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 45470733c9cfed104e39786be48a6edae20ad489
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 81621a2b63eec804aaa7c74e1d77b06ef1adb79a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645204"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844985"
 ---
 # <a name="what-is-azure-network-watcher"></a>Co je Azure Network Watcher?
 
@@ -100,7 +98,7 @@ Další informace o protokolech toku NSG získáte tak, že si projdete kurz tý
 Pro síťové prostředky Azure, jako jsou skupiny zabezpečení sítě, veřejné IP adresy, nástroje pro vyrovnávání zatížení, brány virtuálních sítí a aplikační brány, můžete povolit protokolování diagnostiky. Funkce *diagnostických protokolů* poskytuje jednotné rozhraní umožňující povolení a zakázání diagnostických protokolů všech síťových prostředků, které generují diagnostické protokoly. Diagnostické protokoly můžete zobrazit pomocí nástrojů, jako jsou protokoly Microsoft Power BI a Azure Monitor. Další informace o analýze protokolů diagnostiky sítě Azure najdete [v tématu síťová řešení Azure v protokolu Azure monitor](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
 ## <a name="network-watcher-automatic-enablement"></a>Network Watcher automatické povolení
-Když ve svém předplatném vytvoříte nebo aktualizujete virtuální síť, automaticky se pro oblast této virtuální sítě povolí Network Watcher. Na vaše prostředky to nemá žádný dopad a za automatické povolení služby Network Watcher se neúčtuje žádný poplatek. Další informace najdete v tématu [Network Watcher Create](network-watcher-create.md).
+Když ve svém předplatném vytvoříte nebo aktualizujete virtuální síť, Network Watcher se automaticky povolí v oblasti vašeho Virtual Network. Na vaše prostředky to nemá žádný dopad a za automatické povolení služby Network Watcher se neúčtuje žádný poplatek. Další informace najdete v tématu [Network Watcher Create](network-watcher-create.md).
 
 ## <a name="next-steps"></a>Další kroky
 

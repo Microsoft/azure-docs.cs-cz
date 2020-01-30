@@ -4,15 +4,15 @@ description: Kurz týkající se nastavení pracovního postupu sestavení a ver
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 05/23/2019
+ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: e3f7bcee8969939e3c3e9d9e10b43a3eb234fd50
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4b05b4b44df53846a4880249785c6a5deda62f8a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441057"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846541"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Nastavení kanálu CI/CD pomocí úlohy sestavení emulátoru služby Azure Cosmos DB v Azure DevOps
 
@@ -47,12 +47,17 @@ Když je teď rozšíření nainstalované, přihlaste se ke svému účtu Azure
 
    ![Výběr týmového projektu, úložiště a větve pro kanál sestavení](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
 
-3. Nakonec vyberte požadovanou šablonu pro kanál sestavení. V tomto kurzu vybereme šablonu **ASP.NET**. 
+3. Nakonec vyberte požadovanou šablonu pro kanál sestavení. V tomto kurzu vybereme šablonu **ASP.NET**. Nyní máte kanál sestavení, který můžete nastavit tak, aby používal úlohu sestavení emulátoru Azure Cosmos DB. 
 
 > [!NOTE]
 > Fond agentů, který se má vybrat pro tuto CI, by měl mít Docker for Windows nainstalováno, pokud se instalace neprovádí ručně v předchozí úloze jako součást CI. Výběr fondů agentů najdete v článku [hostované agenti Microsoftu](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml) . Doporučujeme, abyste začali s `Hosted VS2017`.
 
-Teď máme kanál sestavení, který můžeme nastavit pro používání úlohy sestavení emulátoru služby Azure Cosmos DB. 
+Emulátor Azure Cosmos DB v tuto chvíli nepodporuje hostovaný fond agentů VS2019. Emulátor se ale už dodává s nainstalovaným VS2019 a použijete ho spuštěním emulátoru s následujícími rutinami PowerShellu. Pokud narazíte na problémy při používání VS2019, získáte nápovědu ke týmu [Azure DevOps](https://developercommunity.visualstudio.com/spaces/21/index.html) :
+
+```powershell
+Import-Module "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules\Microsoft.Azure.CosmosDB.Emulator"
+Start-CosmosDbEmulator
+```
 
 ## <a name="addEmulatorBuildTaskToBuildDefinition"></a>Přidání úlohy do kanálu sestavení
 

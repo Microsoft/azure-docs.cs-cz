@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 01/17/2020
+ms.date: 01/28/2020
 ms.author: cherylmc
-ms.openlocfilehash: cbddd912831247e30f2913414c6dfa13131dde99
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 02e2c0472a6ba7449229a5de5c6d8948be064644
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719853"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845782"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -95,7 +95,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Dubai2** | [du dataměna](http://datamena.com/solutions/data-centre) | 3 | Spojené arabské emiráty – sever | – | du dataměna, Megaport, oranžová, Orixcom |
 | **Dublin** | [Equinix DB3](https://www.equinix.com/locations/europe-colocation/ireland-colocation/dublin-data-centers/db3/) | 1\. místo | Severní Evropa | 10G, 100G | Colt, eir, Equinix, Interxion, Megaport |
 | **Frankfurt** | [Interxion FRA11](https://www.interxion.com/Locations/frankfurt/) | 1\. místo | Německo – středozápad | 10G, 100G | Colt, DE-CIX, GEANT, Interxion, Megaport, oranžová, Telia Carrier |
-| **Ženevě** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1\. místo | Švýcarsko – západ | 10G, 100G | Equinix |
+| **Ženevě** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1\. místo | Švýcarsko – západ | 10G, 100G | Equinix, Megaport |
 | **Hongkong – zvláštní správní oblast** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | Východní Asie | – | Aryaka Networks sítě, British Telecom, CenturyLink Cloud Connect, generální Telecom, Čína Telecom Global, Equinix, Cloud, Megaport, NTT Communications, oranžová, PCCW s globálním omezením, Tata Communications, Telia Carrier, Verizon |
 | **Jakarta** | Telkom Indonésie | 4 | – | 10G | |
 | **Johannesburg** | [Teraco JB1](https://www.teraco.co.za/data-centre-locations/johannesburg/#jb1) | 3 | Jižní Afrika – sever | 10G | British Telecom, Internet Solutions – Cloud Connect, Liquid Telecom, oranžová, teraco |
@@ -108,7 +108,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Melbourne** | [NextDC M1](https://www.nextdc.com/data-centres/m1-melbourne-data-centre) | 2 | Austrálie – jihovýchod | 10G, 100G | AARNet, Devoli, Equinix, Megaport, NEXTDC, Optus, Telstra Corporation, TPG Telecom |
 | **Miami** | [Equinix MI1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/miami-data-centers/mi1/) | 1\. místo | – | 10G | C3ntro, Equinix, Megaport, Neutrona sítě |
 | **Milán** | [IRIDEOS](https://irideos.it/en/data-centers/) | 1\. místo | – | 10G | |
-| **Montreal** | [Cologix MTL3](https://www.cologix.com/data-centers/montreal/mtl3/) | 1\. místo | – | – | Zvon Kanada, Cologix, Megaport, Telus, Zayo |
+| **Montreal** | [Cologix MTL3](https://www.cologix.com/data-centers/montreal/mtl3/) | 1\. místo | – | 10G, 100G | Zvon Kanada, Cologix, Megaport, Telus, Zayo |
 | **Bombaj** | Tata Communications | 2 | Západní Indie | – | Global CloudXchange (GCX), Spoléhácí se na jio, Sify, Tata Communications, Verizon |
 | **Mumbai2** | Airtel | 2 | Západní Indie | – | Airtel, Sify, Vodafone Idea |
 | **Mnichov** | [EdgeConneX](https://www.edgeconnex.com/locations/europe/) | 1\. místo | – | 10G, 100G | |
@@ -160,7 +160,7 @@ Národní cloudy Azure jsou oddělené od sebe navzájem i z celosvětově komer
 | **Umístění** | **Poskytovatelé služeb** |
 | --- | --- |
 | **Peking** |China Telecom |
-| **Beijing2** | Čína Telecom, GDS |
+| **Beijing2** | Čína Telecom, Čína UNICOM, GDS |
 | **Šanghaj** |China Telecom |
 | **Shanghai2** | Čína Telecom, GDS |
 

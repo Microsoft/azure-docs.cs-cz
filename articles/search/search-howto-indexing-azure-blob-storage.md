@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4f662df6692e03cf3eb948b0d8e2ae51002e815d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 793258b572fdcf2487d4b20fa07fb4ef5524b149
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113020"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846264"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Postup indexování dokumentů v Azure Blob Storage s využitím Azure Kognitivní hledání
 
@@ -134,7 +134,7 @@ V závislosti na [konfiguraci indexeru](#PartsOfBlobToIndex)může indexer objek
 * Textový obsah dokumentu se extrahuje do pole řetězce s názvem `content`.
 
 > [!NOTE]
-> Azure Kognitivní hledání omezuje počet vydaných textů v závislosti na cenové úrovni: 32 000 znaků pro úroveň Free, 64 000 pro Basic a 4 000 000 pro úrovně Standard, Standard S2 a Standard S3. V odpovědi na stav indexeru pro zkrácené dokumenty je k dispozici upozornění.  
+> Azure Kognitivní hledání omezuje množství využívaného textu v závislosti na cenové úrovni: 32 000 znaků pro úroveň Free, 64 000 pro Basic, 4 000 000 pro standard, 8 000 000 pro standard S2 a 16 000 000 pro standard S3. V odpovědi na stav indexeru pro zkrácené dokumenty je k dispozici upozornění.  
 
 * Uživatelsky definované vlastnosti metadat přítomné v objektu blob, pokud existují, jsou extrahovány do doslovného znění.
 * Vlastnosti standardních metadat objektů BLOB jsou extrahovány do následujících polí:

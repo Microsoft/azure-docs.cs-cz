@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 502a495bad4115daf9f0f4ffed276a307adf1fc4
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 7184fb5c45ce41de2bd63b55fb67cbd9ba6361e3
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100657"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844713"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>Kurz: přeposílání událostí do cloudu Event Grid
 
@@ -23,9 +23,9 @@ Tento článek vás provede všemi kroky potřebnými k předání hraničních 
 * Reagují na hraniční události v cloudu.
 * Předejte události do Event Grid v cloudu a použijte Azure Event Hubs nebo Azure Storage fronty k ukládání událostí do vyrovnávací paměti před jejich zpracováním v cloudu.
 
-K dokončení tohoto kurzu potřebujete rozumět konceptům Event Grid na [Edge](concepts.md) a v [Azure](../concepts.md).
+ K dokončení tohoto kurzu potřebujete rozumět konceptům Event Grid na [Edge](concepts.md) a v [Azure](../concepts.md). Další cílové typy naleznete v tématu [obslužné rutiny událostí](event-handlers.md). 
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 Aby bylo možné dokončit tento kurz, budete potřebovat:
 
 * **Předplatné Azure** – Pokud ho ještě nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) . 
@@ -83,6 +83,7 @@ Například pokud jste vytvořili téma s názvem `testegcloudtopic` v Západní
   
 ## <a name="create-event-grid-subscription-at-the-edge"></a>Vytvoření předplatného Event Grid na hraničních zařízeních
 
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. Vytvořte subscription3. JSON s následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md) .
 
@@ -201,3 +202,4 @@ V tomto kurzu jste publikovali událost na hranici a předáváte ji Event Grid 
 * Řešení potíží s používáním Azure Event Grid v IoT Edge najdete v tématu [Průvodce odstraňováním potíží](troubleshoot.md).
 * Předejte události do IoTHub pomocí tohoto [kurzu](forward-events-iothub.md) .
 * Předejte události do Webhooku v cloudu pomocí tohoto [kurzu](pub-sub-events-webhook-cloud.md) .
+* [Monitorování témat a odběrů na hraničních zařízeních](monitor-topics-subscriptions.md)

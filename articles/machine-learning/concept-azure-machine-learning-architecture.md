@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: e3dcd9305a48b0d34f1bcbea64d6628efabc1235
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 8e1f144fdf94df445fb64b9b489cba1e9998f381
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546057"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845614"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak Azure Machine Learning funguje: architektura a koncepty
 
@@ -57,8 +57,8 @@ Použijte tyto nástroje pro Azure Machine Learning:
 + <a href="#activities">Aktivita</a>
 + <a href="#compute-targets">Cíle výpočtů</a>
 + <a href="#datasets-and-datastores">Datová sada & úložiště dat</a>
-+ <a href="#endpoints">Koncové body</a>
-+ <a href="#environments">Prostředí</a>
++ <a href="#endpoints">Bod</a>
++ <a href="#environments">Environment</a>
 + [Odhady](#estimators)
 + <a href="#experiments">Experimenty</a>
 + <a href="#github-tracking-and-integration">Sledování Gitu</a>
@@ -85,7 +85,7 @@ Aktivity můžou poskytovat oznámení prostřednictvím sady SDK nebo webového
 ### <a name="compute-instance"></a>Instance COMPUTE (Preview)
 
 > [!NOTE]
-> Výpočetní instance jsou k dispozici pouze pro pracovní prostory s oblastí **střed USA – sever** nebo **Velká Británie – jih**.
+> Výpočetní instance jsou dostupné jenom pro pracovní prostory s **střed USA – sever**, * * východní USA 2 * *, **Severní Evropa** nebo **Velká Británie – jih**.
 >Pokud je váš pracovní prostor v jakékoli jiné oblasti, můžete místo toho vytvořit a použít [virtuální počítač s poznámkovým blokem](concept-compute-instance.md#notebookvm) . 
 
 **Instance služby compute Azure Machine Learning** (dříve virtuální počítač poznámkového bloku) je plně spravovaná cloudová pracovní stanice, která zahrnuje několik nástrojů a prostředí nainstalovaných pro strojové učení. Výpočetní instance se dají použít jako cíl výpočtů pro školení a Inferencing úlohy. V případě rozsáhlých úloh [Azure Machine Learning výpočetní clustery](how-to-set-up-training-targets.md#amlcompute) s možnostmi škálování s více uzly lepší volbou cíle pro výpočty.

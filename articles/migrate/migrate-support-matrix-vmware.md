@@ -3,12 +3,12 @@ title: Podpora pro vyhodnocení VMware v Azure Migrate
 description: Přečtěte si o podpoře vyhodnocení VMware v Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 74dae71404fe827c9e19d5e3042afd2f98a7a5dd
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 8ed20ecd37eacdcb771db7c166ff8fc22b96cb89
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154682"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846177"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Matice podpory pro vyhodnocení VMware 
 
@@ -52,11 +52,11 @@ Kromě zjišťování počítačů Azure Migrate: posouzení serveru může zji�
 --- | ---
 **vCenter Server** | Počítače, které chcete zjišťovat a hodnotit, se musí spravovat pomocí vCenter Server verze 5,5, 6,0, 6,5 nebo 6,7.
 **Oprávnění (posouzení)** | vCenter Server účet jen pro čtení.
-**Oprávnění (zjišťování aplikací)** | vCenter Server účet s přístupem jen pro čtení a oprávnění povolená pro virtuální počítače > operace hostů.
+**Oprávnění (zjišťování aplikací)** | vCenter Server účet s přístupem jen pro čtení a oprávnění povolená pro **virtuální počítače > operace hostů**.
 **Oprávnění (Vizualizace závislostí)** | Účet serveru Center s přístupem jen pro čtení a oprávnění povolených pro **virtuální počítače** > **operací hostů**.
 
 
-## <a name="azure-migrate-appliance-requirements"></a>Požadavky na zařízení Azure Migrate
+## <a name="azure-migrate-appliance-requirements"></a>Požadavky zařízení Azure Migrate
 
 Azure Migrate používá [zařízení Azure Migrate](migrate-appliance.md) ke zjišťování a hodnocení. Zařízení pro VMware je nasazeno pomocí šablony vajíček importované do vCenter Server. 
 
@@ -67,8 +67,9 @@ Azure Migrate používá [zařízení Azure Migrate](migrate-appliance.md) ke zj
 
 **zařízení** | **připojení**
 --- | ---
-Náplně | Příchozí připojení na portu TCP 3389 umožňující připojení ke vzdálené ploše zařízení.<br/><br/> Příchozí připojení na portu 44368 pro vzdálený přístup k aplikaci pro správu zařízení pomocí adresy URL: ```https://<appliance-ip-or-name>:44368``` <br/><br/>Odchozí připojení na portu 443, 5671 a 5672 pro odeslání metadat zjišťování a výkonu pro Azure Migrate.
+Náplně | Příchozí připojení na portu TCP 3389 umožňující připojení ke vzdálené ploše zařízení.<br/><br/> Příchozí připojení na portu 44368 pro vzdálený přístup k aplikaci pro správu zařízení pomocí adresy URL: ```https://<appliance-ip-or-name>:44368``` <br/><br/>Odchozí připojení na portu 443 (HTTPS), 5671 a 5672 (AMQP), která odesílají metadata zjišťování a výkonu Azure Migrate.
 Server vCenter | Příchozí připojení na portu TCP 443, aby zařízení mohla shromažďovat metadata o konfiguraci a výkonu pro posouzení. <br/><br/> Ve výchozím nastavení se zařízení připojuje ke vCenter na portu 443. Pokud Server vCenter naslouchá na jiném portu, můžete změnit port při nastavení zjišťování.
+Hostitelé ESXi | **Požadováno pouze pro [vizualizaci závislostí](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-dependency-visualization) [aplikace](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#application-discovery) a bez agentů** <br/><br/> Zařízení se připojí k hostitelům ESXi na portu TCP 443 a zjistí aplikace a spustí vizualizaci závislostí bez agentů na virtuálních počítačích běžících na hostitelích.
 
 ## <a name="agent-based-dependency-visualization"></a>Vizualizace závislostí založená na agentech
 
@@ -80,14 +81,14 @@ Server vCenter | Příchozí připojení na portu TCP 443, aby zařízení mohla
 **Nasazení** | Než nasadíte vizualizaci závislostí, měli byste mít Azure Migrate projekt, a to pomocí Azure Migrate: Nástroj pro vyhodnocení serveru přidaný do projektu. Vizualizace závislostí nasadíte po nastavení zařízení Azure Migrate pro zjišťování vašich místních počítačů.<br/><br/> Vizualizace závislostí není v Azure Government k dispozici.
 **Mapa služeb** | Vizualizace závislostí založená na agentech používá řešení [Service map](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) v [protokolech Azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview).<br/><br/> K nasazení aplikace přidružíte nový nebo existující Log Analytics pracovní prostor k projektu Azure Migrate.
 **Pracovní prostor služby Log Analytics** | Pracovní prostor musí být ve stejném předplatném jako projekt Azure Migrate.<br/><br/> Azure Migrate podporuje pracovní prostory, které jsou umístěné v oblastech Východní USA, jihovýchodní Asie a Západní Evropa.<br/><br/>  Pracovní prostor musí být v oblasti, ve které [je podporovaná Service map](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#prerequisites).<br/><br/> Pracovní prostor pro Azure Migrate projekt nelze po přidání změnit.
-**Charges** (Poplatky) | V řešení Service Map se neúčtují žádné poplatky za prvních 180 dní (od data, kdy jste přidružení pracovního prostoru Log Analytics k projektu Azure Migrate).<br/><br/> Po 180 dnech budou platit standardní poplatky za Log Analytics.<br/><br/> Použití jakéhokoli řešení, které je jiné než Service Map v přidruženém pracovním prostoru Log Analytics, bude mít za následek standardní Log Analytics poplatky.<br/><br/> Pokud odstraníte Azure Migrate projekt, pracovní prostor se s ním neodstraní. Po odstranění projektu Service Map není zadarmo a každý uzel se bude účtovat podle placené úrovně Log Analytics pracovního prostoru.
+**Poplatky za** | V řešení Service Map se neúčtují žádné poplatky za prvních 180 dní (od data, kdy jste přidružení pracovního prostoru Log Analytics k projektu Azure Migrate).<br/><br/> Po 180 dnech budou platit standardní poplatky za Log Analytics.<br/><br/> Použití jakéhokoli řešení, které je jiné než Service Map v přidruženém pracovním prostoru Log Analytics, bude mít za následek standardní Log Analytics poplatky.<br/><br/> Pokud odstraníte Azure Migrate projekt, pracovní prostor se s ním neodstraní. Po odstranění projektu Service Map není zadarmo a každý uzel se bude účtovat podle placené úrovně Log Analytics pracovního prostoru.
 **Technici** | Vizualizace závislostí na základě agentů vyžaduje instalaci dvou agentů do každého počítače, který chcete analyzovat.<br/><br/> - [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)<br/><br/> [Agent závislostí](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent)- . 
 **Připojení k Internetu** | Pokud nejsou počítače připojené k Internetu, musíte na ně nainstalovat bránu Log Analytics.
 
 
 ## <a name="agentless-dependency-visualization"></a>Vizualizace závislostí bez agenta
 
-Tato možnost je v současnosti v náhledové verzi. [Další informace](how-to-create-group-machine-dependencies-agentless.md). Požadavky jsou shrnuty v následující tabulce.
+Tato možnost je v současnosti ve verzi Preview. [Další informace](how-to-create-group-machine-dependencies-agentless.md). Požadavky jsou shrnuty v následující tabulce.
 
 **Požadavek** | **Podrobnosti**
 --- | ---

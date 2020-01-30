@@ -9,20 +9,20 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 5fb6cab4bfeea4308873210fb5f9122b37b61dcd
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: c82f1edfc3acd73c1d38425f963aaaf2976a1cc5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100311"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844581"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>Kurz: publikování, přihlášení k odběru událostí v cloudu
 
-Tento článek vás provede všemi kroky potřebnými k publikování a přihlášení k odběru událostí pomocí Event Grid v IoT Edge.
+Tento článek vás provede všemi kroky potřebnými k publikování a přihlášení k odběru událostí pomocí Event Grid v IoT Edge. Tento kurz používá a funguje jako obslužná rutina události Azure Functions. Další cílové typy naleznete v tématu [obslužné rutiny událostí](event-handlers.md).
 
 Další informace najdete v tématu [Event Grid koncepty](concepts.md) , které vám pomohou pochopit, co je téma a předplatné služby Event Grid.
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 Aby bylo možné dokončit tento kurz, budete potřebovat:
 
 * **Předplatné Azure** – Pokud ho ještě nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) . 
@@ -107,6 +107,8 @@ Jako vydavatel události je třeba vytvořit téma Event Grid. Téma odkazuje na
 ## <a name="create-an-event-subscription"></a>Vytvoření odběru událostí
 
 Předplatitelé se můžou zaregistrovat pro události publikované v tématu. Předplatitelé budou muset při přijímání jakékoli události vytvořit odběr služby Event Grid, a to v tématu o zájmu.
+
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. Vytvořte subscription2. JSON s následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md) .
 
@@ -203,3 +205,4 @@ V tomto kurzu jste vytvořili téma Event gridu, předplatné a publikované ud�
 * Nastavení trvalosti modulu Event Grid v systému [Linux](persist-state-linux.md) nebo [Windows](persist-state-windows.md)
 * Podle [dokumentace](configure-client-auth.md) nakonfigurujte ověřování klientů.
 * Předejte události do Azure Event Grid v cloudu pomocí tohoto [kurzu](forward-events-event-grid-cloud.md) .
+* [Monitorování témat a odběrů na hraničních zařízeních](monitor-topics-subscriptions.md)

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/23/2020
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: e56722831ef05364b8ee4d342553158fba19ffaa
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 159b00f9417f4a572655f1f93208dbc755012922
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760721"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844849"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Řešení potíží pro QnA Maker
 
@@ -95,7 +95,7 @@ Výchozí zprávu je součástí nastavení ve službě App service.
 
 ### <a name="why-is-my-sharepoint-link-not-getting-extracted"></a>Proč není získávání extrahovat odkaz SharePoint?
 
-Zobrazit [umístění zdroje dat](./Concepts/data-sources-supported.md#data-source-locations) Další informace.
+Zobrazit [umístění zdroje dat](./Concepts/knowledge-base.md#data-source-locations) Další informace.
 
 ### <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>Aktualizace provedené ve znalostní bázi při publikování neprojevily. Proč ne?
 

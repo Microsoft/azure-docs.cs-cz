@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/14/2020
-ms.openlocfilehash: 03be29cde42478abf32492f55a296aeee0a4a478
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: fabb2524547bd7837d3644d79f0023311ddccdfc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547247"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845552"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Odstranění a obnovení pracovního prostoru služby Azure Log Analytics
 
@@ -23,7 +23,7 @@ Tento článek vysvětluje koncept obnovitelného odstranění pracovního prost
 Když odstraníte Log Analytics pracovní prostor, provede se operace obnovitelného odstranění, která umožňuje obnovení pracovního prostoru včetně jeho dat a připojených agentů do 14 dnů, bez ohledu na to, zda bylo odstranění nechtěné nebo úmyslné. Po období obnovitelného odstranění jsou prostředky pracovního prostoru a jeho data neobnovitelná – jeho data jsou zařazená do fronty pro trvalé odstranění a kompletně vyprázdněna do 30 dnů. Název pracovního prostoru je uvolněný a můžete ho použít k vytvoření nového pracovního prostoru.
 
 > [!NOTE]
-> Chování obnovitelného odstranění nelze vypnout. Brzy přidáme možnost pro přepsání obnovitelného odstranění při použití značky Force v operaci DELETE.
+> Pokud chcete přepsat chování podmíněného odstranění a trvale odstranit pracovní prostor, postupujte podle kroků v části [trvalé odstranění pracovního prostoru](#Permanent workspace delete).
 
 Při odstraňování pracovního prostoru chcete postupovat opatrně, protože může dojít k důležitým datům a konfiguracím, které by mohly mít negativní dopad na provoz služby. Přečtěte si, jaké agenty, řešení a další služby a zdroje Azure ukládají svá data v Log Analytics, například:
 

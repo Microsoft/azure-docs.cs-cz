@@ -1,39 +1,36 @@
 ---
-title: Úvod do IP tok ověřit ve službě Azure Network Watcher | Dokumentace Microsoftu
-description: Tato stránka poskytuje přehled nástroje Network Watcher IP tok ověřit funkce
+title: Úvod do ověřování toků IP adres v Azure Network Watcher | Microsoft Docs
+description: Tato stránka poskytuje přehled možností ověření toku Network Watcher protokolu IP.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: d352fb2d-4b4f-4ac4-9c2e-1cfccf0e7e03
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2017
-ms.author: kumud
-ms.openlocfilehash: 5c34fd2b6d354f594ed153647c1bed700566fad6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: 69aca5e0901a0da8aa98fe310ac220898bf650b2
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64709587"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845002"
 ---
-# <a name="introduction-to-ip-flow-verify-in-azure-network-watcher"></a>Úvod do IP tok ověřit ve službě Azure Network Watcher
+# <a name="introduction-to-ip-flow-verify-in-azure-network-watcher"></a>Úvod do ověřování toků IP adres v Azure Network Watcher
 
-Ověření toku protokolu IP kontroly, jestli je paket povolený nebo zakázaný do nebo z virtuálního počítače. Informace se skládá z směr, protokol, místní IP Adrese, vzdálenou IP adresu, místní port a vzdálených portů. Pokud paketu je skupina zabezpečení, je vrácen název pravidla, které paket zamítlo. Při jakékoli zdrojové nebo cílové IP adresy mohou být vybrána, ověření toku protokolu IP umožňuje správcům rychle diagnostikovat problémy s připojením z nebo internet a z nebo v místním prostředí.
+Ověření toku protokolu IP kontroluje, jestli je paket povolený nebo zakázaný z virtuálního počítače. Informace se skládají ze směru, protokolu, místní IP adresy, vzdáleného protokolu IP, místního portu a vzdáleného portu. Pokud je paket zakázán skupinou zabezpečení, je vrácen název pravidla, které paket zamítlo. I když se dá zvolit kterákoli zdrojová nebo cílová IP adresa, ověřování toku IP pomáhá správcům rychle diagnostikovat problémy s připojením z Internetu a z místního prostředí nebo do něj.
 
-Ověření toku protokolu IP přihlíží pravidla pro všechny skupiny zabezpečení sítě (Nsg) použita k síťovému rozhraní, jako je například na síťový adaptér se podsítě nebo virtuální počítač Tok potom ověření podle nakonfigurovaného nastavení do nebo z rozhraní sítě. Ověření toku protokolu IP je užitečné v potvrzení, pokud se pravidlo skupiny zabezpečení sítě blokuje příchozí a odchozí provoz do nebo z virtuálního počítače.
+Ověření toku protokolu IP prohlíží pravidla pro všechny skupiny zabezpečení sítě (skupin zabezpečení sítě) použité pro síťové rozhraní, jako je například podsíť nebo síťová karta virtuálního počítače. Tok přenosů se pak ověří na základě nakonfigurovaného nastavení do nebo z tohoto síťového rozhraní. Ověření toku protokolu IP je užitečné při potvrzení, jestli pravidlo ve skupině zabezpečení sítě blokuje příchozí nebo odchozí provoz do nebo z virtuálního počítače.
 
-Instance Network Watcher je potřeba vytvořit ve všech oblastech, které máte v úmyslu spustit IP tok ověřit. Network Watcher je místní služba a může být ji spustili jenom s prostředky ve stejné oblasti. Instance používané nemá vliv na výsledky IP tok ověřit, jak přidružené k síťové KARTĚ nebo podsítě trasy je stále vrátit.
+Instance Network Watcher musí být vytvořená ve všech oblastech, ve kterých plánujete spustit ověřování toku IP adres. Network Watcher je místní služba a může být spuštěná jenom pro prostředky ve stejné oblasti. Použitá instance nemá vliv na výsledky ověřování toků IP, protože se pořád vrací jakákoli trasa přidružená k síťovému rozhraní nebo podsíti.
 
-![1][1]
+![1\. místo][1]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Naleznete v následujícím článku se dozvíte, pokud je paket povolený nebo zakázaný pro konkrétní virtuální počítač na portálu. [Zkontrolujte, jestli je povolený provoz na virtuální počítač s IP tok ověřit pomocí portálu](diagnose-vm-network-traffic-filtering-problem.md)
+Další informace o tom, jestli je paket povolený nebo zakázaný pro konkrétní virtuální počítač prostřednictvím portálu, najdete v následujícím článku. [Zkontrolujte, jestli je povolený provoz na virtuálním počítači s ověřením toku IP pomocí portálu.](diagnose-vm-network-traffic-filtering-problem.md)
 
 [1]: ./media/network-watcher-ip-flow-verify-overview/figure1.png
 

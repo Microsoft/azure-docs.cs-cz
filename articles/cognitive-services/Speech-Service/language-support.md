@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 01/28/2020
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 34d362a4b28ade5116c68e2243a2341bab9fca9d
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 008f0b1b83e8ba856fae2fe40b026dcc645e46ab
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760619"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845332"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>Podpora jazyků a oblastí pro službu Speech
 
@@ -72,7 +72,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 `ta-IN` | tamilština (Indie) | Ano | Jazykový model
 `te-IN` | telugština (Indie) | Ano | Ne
 `th-TH` | thajština (Thajsko) | Ano | Ne
-`tr-TR` | Turecko | Ano | Ne
+`tr-TR` | Turečtina (Turecko) | Ano | Ne
 `zh-CN` | Čínština (Mandarínština, zjednodušená čínština) | Ano | Akustický model<br>Jazykový model
 `zh-HK` | Čínština (kantonština, tradiční) | Ano | Jazykový model
 `zh-TW` | Čínština (Tchaj-wanská Mandarínština) | Ano | Jazykový model
@@ -111,7 +111,7 @@ Více než 75 standardních hlasů je k dispozici ve více než 45 jazycích a n
 
 Národní prostředí | Jazyk | Pohlaví | Úplné mapování názvu služby | Krátký název
 -------|----------|---------|----------|----------
-<sup>**1**</sup>`ar-EG` | arabština (Egypt) | Žena | "Microsoft Server řeči Text na řeč hlas (ar např Hoda)" | ar-EG-Hoda
+<sup>1</sup>`ar-EG` | arabština (Egypt) | Žena | "Microsoft Server řeči Text na řeč hlas (ar např Hoda)" | ar-EG-Hoda
 `ar-SA` | Arabština (Saúdská Arábie) | Muž | "Microsoft serveru řeči Text na řeč hlas (ar-SA, Naayf)" | ar-SA-Naayf "
 `bg-BG` | Bulharština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (bg – BG, Ivan)" | BG-BG-Ivan
 `ca-ES` | katalánština (Španělsko) | Žena | "Microsoft Server řeči převod textu na řeč hlasové (ca-ES, HerenaRUS)" | "Ca-ES-HerenaRUS"
@@ -181,7 +181,7 @@ Národní prostředí | Jazyk | Pohlaví | Úplné mapování názvu služby | K
 `ta-IN` | tamilština (Indie) | Muž | "Microsoft serveru řeči Text na řeč hlas, (ta v, Valluvar)" | "ta-IN-Valluvar"
 `te-IN` | telugština (Indie) | Žena | "Microsoft serveru řeči Text na řeč hlas (te v, Chitra)" | "te-IN-Chitra"
 `th-TH` | Thajština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (th TÝ, Pattara)" | "th-TH-Pattara"
-`tr-TR` | turečtina | Žena | "Microsoft Server řeči převod textu na řeč hlasové (tr-TR, SedaRUS)" | "tr-TR-SedaRUS"
+`tr-TR` | Turečtina (Turecko) | Žena | "Microsoft Server řeči převod textu na řeč hlasové (tr-TR, SedaRUS)" | "tr-TR-SedaRUS"
 `vi-VN` | Vietnamština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (vi VN)" | "VI-VN-a"
 `zh-CN` | Čínština (Španělsko) | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-CN, HuihuiRUS)" | zh-CN-HuihuiRUS "
 | | | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-CN, Yaoyao, Apollo)" | zh-CN-Yaoyao-Apollo "

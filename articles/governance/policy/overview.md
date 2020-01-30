@@ -3,12 +3,13 @@ title: Přehled zásad Azure
 description: Azure Policy je služba v Azure, pomocí které vytváříte, přiřazujete a spravujete definice zásad ve svém prostředí Azure.
 ms.date: 11/25/2019
 ms.topic: overview
-ms.openlocfilehash: a7cc5ebca74e249057d159334e4207a3efca37f5
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 9babfd52071ed7d033761802f696c3b6021287af
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885462"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846037"
 ---
 # <a name="what-is-azure-policy"></a>Co je Azure Policy?
 
@@ -27,7 +28,7 @@ Například můžete mít zásadu, která ve vašem prostředí povoluje jenom u
 
 ## <a name="how-is-it-different-from-rbac"></a>Čím se to liší od RBAC?
 
-Mezi Azure Policy a řízením přístupu na základě role (RBAC) existuje několik klíčových rozdílů. RBAC se zaměřuje na akce uživatelů v různých oborech. Můžete být přidáni do role přispěvatele pro skupinu prostředků, umožní vám provádět změny do této skupiny prostředků. Azure Policy se zaměřuje na vlastnosti prostředku během nasazování a už existující prostředky. Služba Azure Policy řídí vlastnosti, jako jsou typy nebo umístění prostředků. Na rozdíl od RBAC je Azure Policy výchozím systémem povolení a explicitním odepřením.
+Mezi Azure Policy a řízením přístupu na základě role (RBAC) existuje několik klíčových rozdílů. RBAC se zaměřuje na akce uživatelů v různých oborech. Můžete být přidáni do role přispěvatele pro skupinu prostředků, umožní vám provádět změny do této skupiny prostředků. Azure Policy se zaměřuje na vlastnosti prostředku během nasazování a už existující prostředky. Azure Policy řídí vlastnosti, jako jsou typy nebo umístění prostředků. Na rozdíl od RBAC je Azure Policy výchozím systémem povolení a explicitním odepřením.
 
 ### <a name="rbac-permissions-in-azure-policy"></a>Oprávnění RBAC ve službě Azure Policy
 
@@ -62,7 +63,7 @@ Další informace o strukturách definic zásad najdete v článku [Struktura de
 
 ## <a name="policy-assignment"></a>Přiřazení zásad
 
-Přiřazení zásady je definice zásady, která byla přiřazena, aby proběhla v rámci zadaného oboru. Tento obor může sahat od [skupiny pro správu](../management-groups/overview.md) až po skupinu prostředků. Termín *obor* označuje všechny skupiny prostředků, předplatná nebo skupiny pro správu, ke kterým je definice zásady přiřazená. Všechny podřízené prostředky dědí přiřazení zásad. Tento návrh znamená, že se zásady použijí pro skupinu prostředků platí také pro prostředky v příslušné skupině prostředků. Z přiřazení zásad však můžete vyloučit určitý podobor.
+Přiřazení zásady je definice zásady, která byla přiřazena, aby proběhla v rámci zadaného oboru. Tento rozsah může být v rozsahu od [skupiny pro správu](../management-groups/overview.md) k individuálnímu prostředku. Pojem *oboru* se vztahuje na všechny prostředky, skupiny prostředků, předplatná nebo skupiny pro správu, ke kterým je definice zásady přiřazená. Všechny podřízené prostředky dědí přiřazení zásad. Tento návrh znamená, že se zásady použijí pro skupinu prostředků platí také pro prostředky v příslušné skupině prostředků. Z přiřazení zásad však můžete vyloučit určitý podobor.
 
 Například v oboru předplatného můžete přiřadit zásadu, která brání vytváření síťových prostředků. Může vyloučit skupiny prostředků v tomto předplatném, která je určená pro síťovou infrastrukturu. Potom můžete udělit přístup k této skupině síťových prostředků uživatelům, kterým důvěřujete s vytvářením síťových prostředků.
 
@@ -93,7 +94,7 @@ V rámci této iniciativy byste měli například tyto definice zásad:
 
 ## <a name="initiative-assignment"></a>Přiřazení iniciativy
 
-Podobně jako přiřazení zásady je přiřazení iniciativy definicí iniciativy přiřazenou ke konkrétnímu oboru. Přiřazení iniciativ omezují potřebu vytváření několika definic iniciativ pro každý obor. Tento obor může také sahat od skupiny pro správu až po skupinu prostředků.
+Podobně jako přiřazení zásady je přiřazení iniciativy definicí iniciativy přiřazenou ke konkrétnímu oboru. Přiřazení iniciativ omezují potřebu vytváření několika definic iniciativ pro každý obor. Tento obor může také být v rozsahu od skupiny pro správu k jednotlivému prostředku.
 
 Každý iniciativy je přiřadit k různým oborům. Je možné přiřadit jednoho initiative obě **subscriptionA** a **subscriptionB**.
 
@@ -136,7 +137,7 @@ Tady je pár ukazatele a tipy brát v úvahu:
 - Při vyhodnocování přiřazení iniciativy se vyhodnocují taky všechny zásady v rámci této iniciativy.
   Pokud je potřeba vyhodnotit zásadu samostatně, je lepší položky nebudou zahrnuty v iniciativy.
 
-## <a name="video-overview"></a>Přehled videí
+## <a name="video-overview"></a>Video – přehled
 
 Následující přehled služby Azure Policy se týká sestavení 2018. Pro snímky nebo video stáhnout, navštivte [řízení prostředí Azure prostřednictvím Azure Policy](https://channel9.msdn.com/events/Build/2018/THR2030) na webu Channel 9.
 

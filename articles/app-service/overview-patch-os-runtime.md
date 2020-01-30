@@ -4,12 +4,12 @@ description: Přečtěte si, jak Azure App Service aktualizovat operační syst�
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1a56fed04399325be315d8d977e5a72223bddac5
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 02fa89305c19ee4ec5e151ad36f7f5fa3e130f63
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688574"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846245"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Opravy operačního systému a modulu runtime v Azure App Service
 
@@ -78,11 +78,12 @@ Následující tabulka ukazuje, jak verze Windows, tak jazykového modulu runtim
 | Informace | Kde ji najít | 
 |-|-|
 | Verze systému Windows | Viz `https://<appname>.scm.azurewebsites.net/Env.cshtml` (v části systémové informace) |
-| Verze .NET | Na `https://<appname>.scm.azurewebsites.net/DebugConsole`spusťte na příkazovém řádku následující příkaz: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
+| Verze rozhraní .NET | Na `https://<appname>.scm.azurewebsites.net/DebugConsole`spusťte na příkazovém řádku následující příkaz: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
 | Verze .NET Core | Na `https://<appname>.scm.azurewebsites.net/DebugConsole`spusťte na příkazovém řádku následující příkaz: <br> `dotnet --version` |
 | Verze PHP | Na `https://<appname>.scm.azurewebsites.net/DebugConsole`spusťte na příkazovém řádku následující příkaz: <br> `php --version` |
 | Výchozí verze Node. js | V [Cloud Shell](../cloud-shell/overview.md)spusťte následující příkaz: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
 | Verze Pythonu | Na `https://<appname>.scm.azurewebsites.net/DebugConsole`spusťte na příkazovém řádku následující příkaz: <br> `python --version` |  
+| Verze Java | Na `https://<appname>.scm.azurewebsites.net/DebugConsole`spusťte na příkazovém řádku následující příkaz: <br> `java -version` |  
 
 > [!NOTE]  
 > Přístup k umístění registru `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, kde jsou uložené informace o [opravách KB](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) , jsou uzamčené.

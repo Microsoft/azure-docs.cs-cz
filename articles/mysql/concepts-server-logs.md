@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/21/2020
-ms.openlocfilehash: e0c58c5c3fef41a472fe791f66292c9280531493
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.date: 01/28/2020
+ms.openlocfilehash: 9a3a58cab2d9673a4660967e3a11d7f88900e718
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514676"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844951"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Pomalé dotazování protokolů v Azure Database for MySQL
 V Azure Database for MySQL je k dispozici pro uživatele protokol pomalých dotazů. Přístup k transakčnímu protokolu není podporován. Protokol pomalých dotazů se dá použít k identifikaci problémových míst výkonu pro řešení problémů.
@@ -52,9 +52,6 @@ Mezi další parametry, které můžete upravit, patří:
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
 Azure Database for MySQL je integrován s protokoly diagnostiky Azure Monitor. Po povolení protokolů pomalých dotazů na serveru MySQL se můžete rozhodnout, že se mají vysílat Azure Monitor protokoly, Event Hubs nebo Azure Storage. Další informace o tom, jak povolit diagnostické protokoly, naleznete v části Postupy v [dokumentaci diagnostické protokoly](../azure-monitor/platform/platform-logs-overview.md).
 
-> [!IMPORTANT]
-> Tato diagnostická funkce pro protokoly serveru je k dispozici pouze v Pro obecné účely a v paměťově optimalizovaných [cenových úrovních](concepts-pricing-tiers.md).
-
 Následující tabulka popisuje, co je v každém protokolu. V závislosti na metodě Output se pole, která jsou součástí, a pořadí, ve kterém se zobrazují, můžou lišit.
 
 | **Vlastnost** | **Popis** |
@@ -82,7 +79,7 @@ Následující tabulka popisuje, co je v každém protokolu. V závislosti na me
 | `insert_id_s` | Vložit ID |
 | `sql_text_s` | Úplný dotaz |
 | `server_id_s` | ID serveru |
-| `thread_id_s` | ID podprocesu |
+| `thread_id_s` | ID vlákna |
 | `\_ResourceId` | Identifikátor URI prostředku |
 
 > [!Note]

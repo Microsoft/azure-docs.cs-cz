@@ -4,8 +4,7 @@ titleSuffix: Azure Network Watcher
 description: V tomto rychlém startu zjistíte, jak diagnostikovat problém s filtrováním síťového provozu virtuálního počítače pomocí funkce ověření toku protokolů IP služby Azure Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose a virtual machine (VM) network traffic filter problem that prevents communication to and from a VM.
@@ -16,14 +15,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 756c8d4d7e227d477c3031aab0d0a478454c35bf
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5438cc07670393cab69344544ea1b68c46c42bd6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276053"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844020"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-powershell"></a>Rychlý start: Diagnostika problému s filtrováním síťového provozu virtuálního počítače – Azure PowerShell
 
@@ -35,7 +34,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, vyžaduje tento rychlý Start modul Azure PowerShell `Az`. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, vyžaduje tento rychlý Start modul Azure PowerShell `Az`. Nainstalovanou verzi zjistíte spuštěním rutiny `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 
 
@@ -178,7 +177,7 @@ Vrácený výstup obsahuje následující text pravidla **AllowInternetOutbound*
   },
 ```
 
-Ve výstupu můžete vidět, že **předponou zdrojové adresy** (DestinationAddressPrefix) je **Internet**. Není však jasné, jak adresa 13.107.21.200, kterou jste testovali v části [Použití ověření toku protokolu IP](#use-ip-flow-verify), souvisí s **Internetem**. V části **ExpandedDestinationAddressPrefix** můžete vidět několik předpon adres a jednou z nich je **12.0.0.0/6**, která zahrnuje rozsah IP adres od 12.0.0.1 do 15.255.255.254. Vzhledem k tomu, že adresa 13.107.21.200 do tohoto rozsahu adres patří, pravidlo **AllowInternetOutBound** jí odchozí provoz umožní. Kromě toho na výstupu vráceném příkazem **nejsou uvedená žádná jiná pravidla s vyšší**prioritou`Get-AzEffectiveNetworkSecurityGroup` (nižším číslem), která by toto pravidlo přepisovala. Pokud byste chtěli odepřít odchozí komunikaci na IP adresu 13.107.21.200, mohli byste přidat pravidlo zabezpečení s vyšší prioritou, které portu 80 odchozí komunikaci na tuto IP adresu zakáže.
+Ve výstupu můžete vidět, že **předponou zdrojové adresy** (DestinationAddressPrefix) je **Internet**. Není však jasné, jak adresa 13.107.21.200, kterou jste testovali v části [Použití ověření toku protokolu IP](#use-ip-flow-verify), souvisí s **Internetem**. V části **ExpandedDestinationAddressPrefix** můžete vidět několik předpon adres a jednou z nich je **12.0.0.0/6**, která zahrnuje rozsah IP adres od 12.0.0.1 do 15.255.255.254. Vzhledem k tomu, že adresa 13.107.21.200 do tohoto rozsahu adres patří, pravidlo **AllowInternetOutBound** jí odchozí provoz umožní. Kromě toho na výstupu vráceném příkazem `Get-AzEffectiveNetworkSecurityGroup` nejsou uvedená žádná jiná pravidla s vyšší **prioritou** (nižším číslem), která by toto pravidlo přepisovala. Pokud byste chtěli odepřít odchozí komunikaci na IP adresu 13.107.21.200, mohli byste přidat pravidlo zabezpečení s vyšší prioritou, které portu 80 odchozí komunikaci na tuto IP adresu zakáže.
 
 Když jste spustili příkaz `Test-AzNetworkWatcherIPFlow`, abyste v části [Použití ověření toku protokolu IP](#use-ip-flow-verify) otestovali odchozí komunikaci na IP adresu 172.131.0.100, výstup vás informoval, že pravidlo **DefaultOutboundDenyAll** komunikaci odepřelo. Pravidlo **DefaultOutboundDenyAll** plní stejnou funkci jako pravidlo **DenyAllOutBound** uvedené v následujícím výstupu z příkazu `Get-AzEffectiveNetworkSecurityGroup`:
 

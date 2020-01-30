@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 83b4e1e10af8e398f6671f6b2561485bfdb6b7f4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 87c0b62cec0b61bfc52ec31233ca7c1f947fdd98
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432489"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846134"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Nastavení Azure Monitor pro aplikaci v Pythonu (Preview)
 
@@ -136,7 +136,7 @@ Tady jsou vývozci, kteří OpenCensus poskytují mapování na typy telemetrie,
 
 4. Když teď spouštíte skript Pythonu, měli byste být pořád vyzváni k zadání hodnot, ale v prostředí se tiskne jenom hodnota. Vytvořený `SpanData` bude odeslán do Azure Monitor. Data emitovaného rozsahu můžete najít v části `dependencies`.
 
-5. Informace o vzorkování v OpenCensus se podíváme na [vzorkování v OpenCensus](https://docs.microsoft.com/azure/azure-monitor/app/sampling#configuring-fixed-rate-sampling-in-opencensus-python).
+5. Informace o vzorkování v OpenCensus se podíváme na [vzorkování v OpenCensus](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications).
 
 6. Podrobnosti o korelaci telemetrie v datech trasování najdete v [korelaci telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)OpenCensus.
 

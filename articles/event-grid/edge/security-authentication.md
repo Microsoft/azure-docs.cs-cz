@@ -9,18 +9,18 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 77b4b265b2e993ccdbc9e07fd2dab5a37ed22a6b
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 5dfa17fd702b76e2cfaa7a91066dbc6749c1069e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992155"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844509"
 ---
 # <a name="security-and-authentication"></a>Zabezpečení a ověřování
 
 Zabezpečení a ověřování je pokročilý koncept a vyžaduje nejprve znalosti Event Grid základy. Začněte [tady](concepts.md) , pokud Event Grid IoT Edge. Event Grid modul vytváří na stávající infrastruktuře zabezpečení na IoT Edge. Podrobnosti a nastavení najdete v [této dokumentaci](../../iot-edge/security.md) .
 
-Následující části podrobně popisují, jak jsou tato nastavení zabezpečená a ověřená:-
+Následující části podrobně popisují, jak jsou tato nastavení zabezpečená a ověřená:
 
 * Konfigurace TLS
 * Příchozí ověřování klientů
@@ -37,7 +37,7 @@ Následující části podrobně popisují, jak jsou tato nastavení zabezpečen
 
 Event Grid modul hostuje koncové body HTTP i HTTPS. Každému IoT Edge modulu je přiřazen certifikát serveru pomocí procesu démon zabezpečení IoT Edge. K zabezpečení koncového bodu používáme certifikát serveru. Po vypršení platnosti se modul automaticky aktualizuje pomocí nového certifikátu z procesu démona zabezpečení IoT Edge.
 
-Ve výchozím nastavení je povolená jenom komunikace HTTPS. Toto chování můžete přepsat prostřednictvím **příchozích: serverAuth: tlsPolicy** Configuration. Následující tabulka zachycuje možné hodnoty této vlastnosti.
+Ve výchozím nastavení je povolená jenom komunikace HTTPS. Toto chování můžete přepsat pomocí **inbound__serverAuth__tlsPolicy** konfigurace. Následující tabulka zachycuje možné hodnoty této vlastnosti.
 
 | Možné hodnoty: | Popis |
 | ---------------- | ------------ |
@@ -49,29 +49,29 @@ Ve výchozím nastavení je povolená jenom komunikace HTTPS. Toto chování mů
 
 Klienti jsou entity prováděné operacemi správy a/nebo za běhu. Klienty můžou být jiné IoT Edge moduly, jiné aplikace než IoT.
 
-Event Grid modul podporuje dva typy ověřování klientů:-
+Event Grid modul podporuje dva typy ověřování klientů:
 
 * Založený na klíči SAS (Shared Access Signature)
-* na základě certifikátu
+* Na základě certifikátu
 
 Ve výchozím nastavení je modul Event Grid nakonfigurovaný tak, aby přijímal jenom ověřování na základě certifikátu. Při spuštění Event Grid modul načte "TrustBundle" z IoT Edge démon zabezpečení a použije ho k ověření jakéhokoli klientského certifikátu. Klientské certifikáty, které se do tohoto řetězce nepřekladují, se `UnAuthorized`zamítnou.
 
 ### <a name="certificate-based-client-authentication"></a>Ověřování klientů na základě certifikátu
 
-Ověřování na základě certifikátu je ve výchozím nastavení zapnuté. Ověřování na základě certifikátů můžete zakázat prostřednictvím vlastnosti **příchozí: clientAuth: clientCert: Enabled**. Následující tabulka zachycuje možné hodnoty.
+Ověřování na základě certifikátu je ve výchozím nastavení zapnuté. Ověřování na základě certifikátů můžete zakázat prostřednictvím **inbound__clientAuth__clientCert__enabled**vlastností. Následující tabulka zachycuje možné hodnoty.
 
 | Možné hodnoty: | Popis |
 | ----------------  | ------------ |
-| true | Default (Výchozí). Vyžaduje, aby všechny požadavky na modul Event Grid mohl předložit klientský certifikát. Kromě toho budete muset nakonfigurovat **příchozí: clientAuth: clientCert: Source**.
+| true | Default (Výchozí). Vyžaduje, aby všechny požadavky na modul Event Grid mohl předložit klientský certifikát. Kromě toho budete muset nakonfigurovat **inbound__clientAuth__clientCert__source**.
 | false | Vynutí, aby klient prezentující certifikát.
 
-Následující tabulka zachycuje možné hodnoty pro **příchozí: clientAuth: clientCert: Source**
+Následující tabulka zachycuje možné hodnoty pro **inbound__clientAuth__clientCert__source**
 
 | Možné hodnoty: | Popis |
 | ---------------- | ------------ |
 | IoT Edge | Default (Výchozí). K ověření všech klientských certifikátů používá Trustbundle IoT Edge.
 
-Pokud klient zobrazí podepsané svým držitelem, ve výchozím nastavení Event Grid modul tyto žádosti odmítne. Můžete povolit klientské certifikáty podepsané svým držitelem prostřednictvím příchozích vlastností **: clientAuth: clientCert: allowUnknownCA** . Následující tabulka zachycuje možné hodnoty.
+Pokud klient zobrazí podepsané svým držitelem, ve výchozím nastavení Event Grid modul tyto žádosti odmítne. Můžete zvolit, aby klientské certifikáty podepsané svým držitelem povolili prostřednictvím vlastnosti **inbound__clientAuth__clientCert__allowUnknownCA** . Následující tabulka zachycuje možné hodnoty.
 
 | Možné hodnoty: | Popis |
 | ----------------  | ------------|
@@ -79,20 +79,20 @@ Pokud klient zobrazí podepsané svým držitelem, ve výchozím nastavení Even
 | false | Selže, pokud se zobrazí certifikáty podepsané svým držitelem.
 
 >[!IMPORTANT]
->V produkčních scénářích můžete chtít nastavit **příchozí: clientAuth: clientCert: allowUnknownCA** na **false**.
+>V produkčních scénářích možná budete chtít nastavit **inbound__clientAuth__clientCert__allowUnknownCA** na **hodnotu NEPRAVDA**.
 
 ### <a name="sas-key-based-client-authentication"></a>Ověřování klienta na základě klíčů SAS
 
 Kromě ověřování založeného na certifikátech může modul Event Grid také provádět ověřování na základě klíčů SAS. Klíč SAS je jako tajný kód nakonfigurovaný v modulu Event Grid, který by měl použít k ověření všech příchozích volání. Klienti musí zadat tajný klíč v hlavičce HTTP AEG-SAS-Key. Požadavek bude odmítnut s `UnAuthorized`, pokud se neshoduje.
 
-Konfigurace pro řízení ověřování založeného na klíčích SAS je **příchozí: clientAuth: sasKeys: Enabled**.
+Konfigurace pro řízení ověřování založeného na klíčích SAS je **inbound__clientAuth__sasKeys__enabled**.
 
 | Možné hodnoty: | Popis  |
 | ----------------  | ------------ |
-| true | Povoluje ověřování založené na klíčích SAS. Vyžaduje **příchozí: clientAuth: sasKeys: klíč1** nebo **příchozí: clientAuth: sasKeys: key2**
+| true | Povoluje ověřování založené na klíčích SAS. Vyžaduje **inbound__clientAuth__sasKeys__key1** nebo **inbound__clientAuth__sasKeys__key2**
 | false | Default (Výchozí). Ověřování na základě klíčů SAS je zakázané.
 
- **příchozí: clientAuth: sasKeys: klíč1** a **příchozí: clientAuth: sasKeys: key2** jsou klíče, které nakonfigurujete modul Event Grid, aby kontroloval příchozí požadavky. Je nutné nakonfigurovat alespoň jeden z klíčů. Klient, který požadavek vydává, bude muset klíč prezentovat jako součást hlavičky žádosti "**AEG-SAS-Key**". Pokud jsou nakonfigurovány oba klíče, může klient buď zobrazit jeden z klíčů.
+ **inbound__clientAuth__sasKeys__key1** a **inbound__clientAuth__sasKeys__key2** jsou klíče, které konfigurujete modul Event Grid, aby kontroloval příchozí požadavky. Je nutné nakonfigurovat alespoň jeden z klíčů. Klient, který požadavek vydává, bude muset klíč prezentovat jako součást hlavičky žádosti "**AEG-SAS-Key**". Pokud jsou nakonfigurovány oba klíče, může klient buď zobrazit jeden z klíčů.
 
 > [!NOTE]
 >Můžete nakonfigurovat obě metody ověřování. V takovém případě se klíč SAS kontroluje jako první a jenom v případě, že se to nepovede, provádí se ověřování na základě certifikátu. Aby požadavek bylo úspěšné, musí být úspěšné jenom jedna z metod ověřování.
@@ -103,14 +103,14 @@ Klient v odchozím kontextu odkazuje na modul Event Grid. Prováděná operace d
 
 Každému IoT Edge modulu se přiřadí certifikát identity démon zabezpečení IoT Edge. Pro odchozí hovory používáme certifikát identity. Po vypršení platnosti se modul automaticky aktualizuje pomocí nového certifikátu z procesu démona zabezpečení IoT Edge.
 
-Konfigurace pro řízení odchozího ověřování klientů je **odchozí: clientAuth: clientCert: Enabled**.
+Konfigurace pro řízení odchozího ověřování klientů je **outbound__clientAuth__clientCert__enabled**.
 
 | Možné hodnoty: | Popis |
 | ----------------  | ------------ |
-| true | Default (Výchozí). Vyžaduje, aby všechny odchozí požadavky z modulu Event Grid obsahovaly certifikát. Je potřeba nakonfigurovat **odchozí: clientAuth: clientCert: Source**.
+| true | Default (Výchozí). Vyžaduje, aby všechny odchozí požadavky z modulu Event Grid obsahovaly certifikát. Je nutné nakonfigurovat **outbound__clientAuth__clientCert__source**.
 | false | Nevyžadovat, aby modul Event Grid k dispozici certifikát.
 
-Konfigurace, která řídí zdroj pro certifikát, je **odchozí: clientAuth: clientCert: Source**.
+Konfigurace, která řídí zdroj certifikátu, je **outbound__clientAuth__clientCert__source**.
 
 | Možné hodnoty: | Popis |
 | ---------------- | ------------ |
@@ -120,21 +120,21 @@ Konfigurace, která řídí zdroj pro certifikát, je **odchozí: clientAuth: cl
 
 Jeden z cílových typů pro předplatitele Event Grid je Webhook. Ve výchozím nastavení jsou pro tyto předplatitele přijímány pouze koncové body HTTPS.
 
-Konfigurace pro řízení odchozích cílových zásad u Webhooku **: Webhook: httpsOnly**.
+Konfigurace pro řízení cílových **outbound__webhook__httpsOnly**zásad pro Webhook.
 
 | Možné hodnoty: | Popis |
 | ----------------  | ------------ |
 | true | Default (Výchozí). Povoluje pouze předplatitele s koncovým bodem HTTPS.
 | false | Umožňuje odběratelům buď koncový bod HTTP, nebo HTTPS.
 
-Ve výchozím nastavení Event Grid modul ověří certifikát serveru předplatitele. Ověřování můžete přeskočit přepsáním **odchozí: Webhook: skipServerCertValidation**. Možné hodnoty jsou:-
+Ve výchozím nastavení Event Grid modul ověří certifikát serveru předplatitele. Ověřování můžete přeskočit přepsáním **outbound__webhook__skipServerCertValidation**. Možné hodnoty:
 
 | Možné hodnoty: | Popis |
 | ----------------  | ------------ |
 | true | Neověřovat certifikát serveru odběratele.
 | false | Default (Výchozí). Ověří certifikát serveru odběratele.
 
-Pokud je certifikát předplatitele podepsaný svým držitelem, pak ve výchozím nastavení Event Grid modul tyto předplatitele odmítne. Chcete-li umožnit certifikát podepsaný svým držitelem, můžete přepsat **odchozí: Webhook: allowUnknownCA**. Následující tabulka zachycuje možné hodnoty (y).
+Pokud je certifikát předplatitele podepsaný svým držitelem, pak ve výchozím nastavení Event Grid modul tyto předplatitele odmítne. Chcete-li umožnit certifikát podepsaný svým držitelem, můžete přepsat **outbound__webhook__allowUnknownCA**. Následující tabulka zachycuje možné hodnoty (y).
 
 | Možné hodnoty: | Popis |
 | ----------------  | ------------ |
@@ -142,7 +142,7 @@ Pokud je certifikát předplatitele podepsaný svým držitelem, pak ve výchoz�
 | false | Selže, pokud se zobrazí certifikáty podepsané svým držitelem.
 
 >[!IMPORTANT]
->V produkčních scénářích budete chtít nastavit **odchozí: Webhook: allowUnknownCA** na **hodnotu false**.
+>V produkčních scénářích budete chtít nastavit **outbound__webhook__allowUnknownCA** na **hodnotu NEPRAVDA**.
 
 > [!NOTE]
 >IoT Edge prostředí generuje certifikáty podepsané svým držitelem. Doporučujeme, abyste vygenerovali certifikáty vydávané autorizovanými certifikačními autoritami pro produkční úlohy a nastavili vlastnost **allowUnknownCA** u příchozích i odchozích na **hodnotu false**.
@@ -151,7 +151,7 @@ Pokud je certifikát předplatitele podepsaný svým držitelem, pak ve výchoz�
 
 Event Grid modul je **ve výchozím nastavení zabezpečený**. Pro produkční nasazení doporučujeme ponechat tato výchozí nastavení.
 
-V následující části jsou uvedené principy GUID, které se použijí při konfiguraci:-
+V následující části jsou uvedené principy GUID, které se použijí při konfiguraci:
 
 * Povolí v modulu pouze požadavky HTTPS.
 * Povolte pouze ověřování klientů na základě certifikátů. Povolte pouze ty certifikáty, které jsou vydány známými certifikačními autoritami. Zakažte certifikáty podepsané svým držitelem.
@@ -160,22 +160,22 @@ V následující části jsou uvedené principy GUID, které se použijí při k
 * Povolí pouze předplatitelům HTTPS pro cílové typy Webhooku.
 * Vždy ověřte certifikát serveru odběratele pro cílové typy Webhooku. Povolte pouze certifikáty vydané známými certifikačními autoritami. Zakažte certifikáty podepsané svým držitelem.
 
-Ve výchozím nastavení je Event Grid modul nasazený s následující konfigurací:-
+Ve výchozím nastavení je Event Grid modul nasazený s následující konfigurací:
 
  ```json
  {
   "Env": [
-    "inbound:serverAuth:tlsPolicy=strict",
-    "inbound:serverAuth:serverCert:source=IoTEdge",
-    "inbound:clientAuth:sasKeys:enabled=false",
-    "inbound:clientAuth:clientCert:enabled=true",
-    "inbound:clientAuth:clientCert:source=IoTEdge",
-    "inbound:clientAuth:clientCert:allowUnknownCA=true",
-    "outbound:clientAuth:clientCert:enabled=true",
-    "outbound:clientAuth:clientCert:source=IoTEdge",
-    "outbound:webhook:httpsOnly=true",
-    "outbound:webhook:skipServerCertValidation=false",
-    "outbound:webhook:allowUnknownCA=true"
+    "inbound__serverAuth__tlsPolicy=strict",
+    "inbound__serverAuth__serverCert__source=IoTEdge",
+    "inbound__clientAuth__sasKeys__enabled=false",
+    "inbound__clientAuth__clientCert__enabled=true",
+    "inbound__clientAuth__clientCert__source=IoTEdge",
+    "inbound__clientAuth__clientCert__allowUnknownCA=true",
+    "outbound__clientAuth__clientCert__enabled=true",
+    "outbound__clientAuth__clientCert__source=IoTEdge",
+    "outbound__webhook__httpsOnly=true",
+    "outbound__webhook__skipServerCertValidation=false",
+    "outbound__webhook__allowUnknownCA=true"
   ],
   "HostConfig": {
     "PortBindings": {

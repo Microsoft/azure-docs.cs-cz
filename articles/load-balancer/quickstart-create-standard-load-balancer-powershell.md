@@ -1,29 +1,29 @@
 ---
-title: 'Rychlý Start: vytvoření Standard Load Balancer-Azure PowerShell'
+title: 'Rychlý Start: vytvoření Load Balancer-Azure PowerShell'
 titleSuffix: Azure Load Balancer
-description: V tomto rychlém startu se dozvíte, jak vytvořit Standard Load Balancer pomocí Azure PowerShell
+description: V tomto rychlém startu se dozvíte, jak vytvořit Load Balancer pomocí Azure PowerShell
 services: load-balancer
 documentationcenter: na
 author: asudbring
 manager: twooley
-Customer intent: I want to create a Standard Load balancer so that I can load balance internet traffic to VMs.
+Customer intent: I want to create a Load balancer so that I can load balance internet traffic to VMs.
 ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/07/2019
+ms.date: 01/27/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 21488fbc8a5a9354db74d5b93719d100bce8878c
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 50a7854688164383bff08bfe55d356fe32239812
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045666"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846528"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-using-azure-powershell"></a>Rychlý Start: vytvoření Standard Load Balancer pomocí Azure PowerShell
+# <a name="quickstart-create-a-load-balancer-using-azure-powershell"></a>Rychlý Start: vytvoření Load Balancer pomocí Azure PowerShell
 
 Tento rychlý start ukazuje, jak pomocí Azure PowerShellu vytvořit Load Balancer úrovně Standard. K otestování nástroje pro vyrovnávání zatížení nasadíte tři virtuální počítače s Windows serverem a vyrovnáváte zatížení webové aplikace mezi virtuálními počítači. Další informace o Load Balanceru úrovně Standard najdete v tématu [Co je Load Balancer úrovně Standard](load-balancer-standard-overview.md).
 
@@ -45,7 +45,7 @@ New-AzResourceGroup -Name $rgName -Location $location
 
 ## <a name="create-a-public-ip-address"></a>Vytvoření veřejné IP adresy
 
-Pokud chcete mít k aplikaci přístup přes internet, potřebujete pro nástroj pro vyrovnávání zatížení veřejnou IP adresu. Vytvořte veřejnou IP adresu pomocí [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Následující příklad vytvoří veřejnou IP adresu s názvem *myPublicIP* ve skupině prostředků *myResourceGroupSLB* :
+Pokud chcete mít k aplikaci přístup přes internet, potřebujete pro nástroj pro vyrovnávání zatížení veřejnou IP adresu. Vytvořte veřejnou IP adresu pomocí [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Následující příklad vytvoří zónu redundantní veřejnou IP adresu s názvem *myPublicIP* ve skupině prostředků *myResourceGroupSLB* :
 
 ```azurepowershell
 $publicIp = New-AzPublicIpAddress `
@@ -56,11 +56,25 @@ $publicIp = New-AzPublicIpAddress `
  -SKU Standard
 ```
 
-## <a name="create-standard-load-balancer"></a>Vytvoření Load Balanceru úrovně Standard
+K vytvoření veřejné IP adresy oblasti v zóně 1 použijte následující:
+
+```azurepowershell
+$publicIp = New-AzPublicIpAddress `
+ -ResourceGroupName $rgName `
+ -Name 'myPublicIP' `
+ -Location $location `
+ -AllocationMethod static `
+ -SKU Standard
+ -zone 1
+```
+
+K vytvoření základní veřejné IP adresy použijte ```-SKU Basic```. Microsoft doporučuje používat pro produkční úlohy Standard.
+
+## <a name="create-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
 
 V této části nakonfigurujete front-end IP adresu a fond back-end adres pro nástroj pro vyrovnávání zatížení a potom vytvoříte Standard Load Balancer.
 
-### <a name="create-front-end-ip"></a>Vytvoření front-endové IP adresy
+### <a name="create-frontend-ip"></a>Vytvoření front-endové IP adresy
 
 Vytvořte front-end IP adresu pomocí [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig). Následující příklad vytvoří konfiguraci front-end IP adresy s názvem *myFrontEnd* a připojí *myPublicIP* adresu:
 
@@ -146,6 +160,8 @@ $lb = New-AzLoadBalancer `
   -InboundNatRule $natrule1,$natrule2,$natrule3
 ```
 
+K vytvoření základního Load Balancer použijte ```-SKU Basic```. Microsoft doporučuje používat pro produkční úlohy Standard.
+
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků
 Než nasadíte několik virtuálních počítačů a budete moci otestovat svůj nástroj pro vyrovnávání zatížení, musíte vytvořit podpůrné síťové prostředky – virtuální síť a virtuální síťové karty. 
 
@@ -195,6 +211,9 @@ $RdpPublicIP_3 = New-AzPublicIpAddress `
   -AllocationMethod static
 
 ```
+
+Pomocí ```-SKU Basic``` můžete vytvořit základní veřejné IP adresy. Microsoft doporučuje používat pro produkční úlohy Standard.
+
 ### <a name="create-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
 Vytvořte skupinu zabezpečení sítě, která definuje příchozí připojení k vaší virtuální síti.
 
@@ -344,7 +363,7 @@ Veřejnou IP adresu pak můžete zadat do webového prohlížeče. Zobrazí se w
 
 ![Test nástroje pro vyrovnávání zatížení](media/quickstart-create-basic-load-balancer-powershell/load-balancer-test.png)
 
-Pokud chcete zobrazit distribuci provozu nástrojem pro vyrovnávání zatížení mezi všechny virtuální počítače, na kterých je vaše aplikace spuštěná, můžete vynutit aktualizaci webového prohlížeče. 
+Pokud chcete zobrazit distribuci provozu nástrojem pro vyrovnávání zatížení mezi všechny tři virtuální počítače, na kterých je vaše aplikace spuštěná, můžete vynutit aktualizaci webového prohlížeče. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -356,7 +375,6 @@ Remove-AzResourceGroup -Name myResourceGroupSLB
 
 ## <a name="next-steps"></a>Další kroky
 
-V rámci tohoto rychlého startu jste vytvořili službu Load Balancer úrovně Standard, připojili jste k ní virtuální počítače, nakonfigurovali jste pravidlo provozu nástroje pro vyrovnávání zatížení a sondu stavu a pak jste nástroj pro vyrovnávání zatížení otestovali. Chcete-li zjistit další informace o službě Azure Load Balancer, přejděte ke kurzům pro Azure Load Balancer.
+V tomto rychlém startu jste vytvořili Standard Load Balancer k němu připojené virtuální počítače, nakonfigurovali jste pravidlo Load Balancer přenosů dat, sondu stavu a pak jste otestovali Load Balancer. Pokud se chcete dozvědět víc o Azure Load Balancer, pokračujte [Azure Load Balancer kurzy](tutorial-load-balancer-standard-public-zone-redundant-portal.md).
 
-> [!div class="nextstepaction"]
-> [Kurzy o službě Azure Load Balancer](tutorial-load-balancer-basic-internal-portal.md)
+Přečtěte si další informace o [Load Balancer a zónách dostupnosti](load-balancer-standard-availability-zones.md).

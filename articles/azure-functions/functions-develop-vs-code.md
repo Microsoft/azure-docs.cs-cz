@@ -3,12 +3,12 @@ title: Vývoj Azure Functions pomocí Visual Studio Code
 description: Naučte se vyvíjet a testovat Azure Functions pomocí rozšíření Azure Functions pro Visual Studio Code.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 4a5f60c2da8a77f385dba40dcd4d342583e989c1
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 59c350b267583a2bccfdd66996aa6c1f97954218
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547417"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845400"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Vývoj Azure Functions pomocí Visual Studio Code
 
@@ -65,11 +65,13 @@ Rozšíření Functions umožňuje vytvořit projekt Function App spolu s první
 
 1. Vyberte složku pro projekt Function App a pak **Vyberte jazyk pro projekt funkce**.
 
+1. Pokud jste ještě nenainstalovali základní nástroje, zobrazí se výzva k **výběru verze** základních nástrojů, které se mají nainstalovat. Vyberte verzi 2. x nebo novější. 
+
 1. Vyberte šablonu funkce **triggeru protokolu HTTP** , nebo můžete vybrat **Přeskočit nyní** , chcete-li vytvořit projekt bez funkce. [Funkci můžete do projektu kdykoli přidat](#add-a-function-to-your-project) později.
 
     ![Volba šablony triggeru HTTP](./media/functions-develop-vs-code/create-function-choose-template.png)
 
-1. Jako název funkce zadejte **HTTPTrigger** a vyberte Enter a pak vyberte Authorization – **funkce** . Tato úroveň autorizace vyžaduje zadání [klíče funkce](functions-bindings-http-webhook.md#authorization-keys) při volání koncového bodu funkce.
+1. Jako název funkce zadejte **HttpExample** a vyberte Enter a pak vyberte Authorization – **funkce** . Tato úroveň autorizace vyžaduje zadání [klíče funkce](functions-bindings-http-webhook.md#authorization-keys) při volání koncového bodu funkce.
 
     ![Vybrat autorizaci funkce](./media/functions-develop-vs-code/create-function-auth.png)
 
@@ -189,6 +191,8 @@ Další informace najdete v referenčních odkazech na [výstupní vazbu úloži
 ---
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
+
+[!INCLUDE [functions-sign-in-vs-code](../../includes/functions-sign-in-vs-code.md)]
 
 ## <a name="publish-to-azure"></a>Publikování aplikací do Azure
 
@@ -404,7 +408,7 @@ Rozšíření Azure Functions poskytuje užitečné grafické rozhraní v oblast
 | **Nainstalovat nebo aktualizovat Azure Functions Core Tools** | Nainstaluje nebo aktualizuje [Azure Functions Core Tools], která se používá ke spouštění funkcí místně. |
 | **Znovu nasadit**  | Umožňuje znovu nasadit soubory projektu z připojeného úložiště Git do konkrétního nasazení v Azure. Chcete-li znovu publikovat místní aktualizace z Visual Studio Code, [projekt znovu publikujte](#republish-project-files). |
 | **Přejmenovat nastavení** | Změní název klíče stávajícího nastavení aplikace Function App v Azure. Tento příkaz nemá vliv na nastavení v souboru Local. Settings. JSON. Po přejmenování nastavení v Azure byste [tyto změny měli stáhnout do místního projektu](#download-settings-from-azure). |
-| **Restartovat** | Restartuje aplikaci Function App v Azure. Nasazení aktualizací také restartuje funkci aplikace Function App. |
+| **Službu** | Restartuje aplikaci Function App v Azure. Nasazení aktualizací také restartuje funkci aplikace Function App. |
 | **Nastavení AzureWebJobsStorage**| Nastaví hodnotu nastavení aplikace `AzureWebJobsStorage`. Toto nastavení vyžaduje Azure Functions. Nastavuje se při vytváření aplikace funkcí v Azure. |
 | **Start** | Spustí zastavenou aplikaci Function App v Azure. |
 | **Spustit streamování protokolů** | Spustí protokoly streamování aplikace Function App v Azure. Při řešení potíží se vzdáleným zpracováním v Azure použijte protokoly streamování, pokud potřebujete zobrazit informace o protokolování téměř v reálném čase. Další informace najdete v tématu [streamování protokolů](#streaming-logs). |

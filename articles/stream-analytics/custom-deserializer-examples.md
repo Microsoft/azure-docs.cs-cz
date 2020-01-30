@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/30/2019
-ms.openlocfilehash: a64912921e5ce8c0dc76fbf2ae0be8fb34bacf1a
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.date: 1/28/2020
+ms.openlocfilehash: 270e9a31c28e7209cfe43ea8307b928ed3257a35
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75553014"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845254"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>Čtení vstupu v jakémkoli formátu pomocí vlastních deserializátorů .NET
 
@@ -80,7 +80,7 @@ Parametr `stream` je datový proud obsahující serializovaný objekt. `Deserial
 
 ## <a name="deserializer-examples"></a>Příklady deserializace
 
-V této části se dozvíte, jak psát vlastní deserializace pro Protobuf a CSV. Další příklady najdete [v Azure Stream Analytics na GitHubu](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers).
+V této části se dozvíte, jak psát vlastní deserializace pro Protobuf a CSV. Další příklady, jako je AVRO Format pro zachytávání centra událostí, Azure Stream Analytics najdete na webu [GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers).
 
 ### <a name="protocol-buffer-protobuf-format"></a>Formát vyrovnávací paměti protokolu (Protobuf)
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/22/2019
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 2c5312c2e0a7121237c4d11197d90a2a5638557c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: d94937a738034904413eac8b256121f14221d1ac
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76021214"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846000"
 ---
 | Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
@@ -21,16 +21,17 @@ ms.locfileid: "76021214"
 | Celkový počet jader virtuálního počítače na [předplatné](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> na oblast. | Obraťte se na podporu. |
 | Celkový počet jader virtuálních počítačů Azure na jedno [předplatné](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> na oblast. | Obraťte se na podporu. |
 | Virtuální počítač na řadu, například Dv2 a F, jader na [předplatné](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> na oblast. | Obraťte se na podporu. |
-| [Spolusprávci](../articles/cost-management-billing/manage/add-change-subscription-administrator.md) na předplatné |Neomezený počet. |Neomezený počet. |
 | [Účty úložiště](../articles/storage/common/storage-account-create.md) pro jednotlivé oblasti a předplatné |250 |250 |
-| [Skupiny prostředků](../articles/azure-resource-manager/management/overview.md) na předplatné |980 |980 |
 | [Skupiny dostupnosti](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) na předplatné |2 000 na oblast |2 000 na oblast |
-| Velikost požadavku rozhraní API pro Azure Resource Manager |4 194 304 bajtů. |4 194 304 bajtů. |
-| Značky na předplatné<sup>2</sup> |Neomezený počet. |Neomezený počet. |
-| Jedinečné výpočty značek na předplatné<sup>2</sup> | 10 000 | 10 000 |
-| [Cloudové služby](../articles/cloud-services/cloud-services-choose-me.md) na předplatné |Není k dispozici<sup>3</sup> |Není k dispozici<sup>3</sup> |
 | [Skupiny vztahů](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) na předplatné |Není k dispozici<sup>3</sup> |Není k dispozici<sup>3</sup> |
+| [Cloudové služby](../articles/cloud-services/cloud-services-choose-me.md) na předplatné |Není k dispozici<sup>3</sup> |Není k dispozici<sup>3</sup> |
+| [Skupiny prostředků](../articles/azure-resource-manager/management/overview.md) na předplatné |980 |980 |
+| Velikost požadavku rozhraní API pro Azure Resource Manager |4 194 304 bajtů. |4 194 304 bajtů. |
+| Značky na předplatné<sup>2</sup> |Počet. |Počet. |
+| Jedinečné výpočty značek na předplatné<sup>2</sup> | 10 000 | 10 000 |
 | [Nasazení na úrovni předplatného](../articles/azure-resource-manager/templates/deploy-to-subscription.md) na umístění | 800<sup>4</sup> | 800 |
+| Předplatná na tenanta Azure Active Directory | Počet. | Počet. |
+| [Spolusprávci](../articles/cost-management-billing/manage/add-change-subscription-administrator.md) na předplatné |Počet. |Počet. |
 
 <sup>1</sup> Výchozí limity se liší podle typu kategorie nabídky, jako je bezplatná zkušební verze a průběžné platby a podle řad, například Dv2, F a G. Například výchozí hodnota pro smlouva Enterprise předplatná je 350.
 

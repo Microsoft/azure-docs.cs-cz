@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 8656bbb070e2b05a06ea22dd1634a40182b440cb
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: b453a04a170764a037eed7415eaf71e5a4d37526
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73098681"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844580"
 ---
 ## <a name="deploy-event-grid-iot-edge-module"></a>Nasadit modul Event Grid IoT Edge
 
@@ -35,13 +35,15 @@ Existuje několik způsobů, jak nasadit moduly do zařízení IoT Edge, a všec
 
 ### <a name="configure-a-deployment-manifest"></a>Konfigurace manifestu nasazení
 
-Manifest nasazení je dokument JSON, který popisuje, které moduly se mají nasadit, způsob, jakým jsou toky dat mezi moduly a požadované vlastnosti v modulu vlákna. Azure Portal má průvodce, který vás provede vytvořením manifestu nasazení místo ručního vytváření dokumentu JSON.  Má tři kroky: **přidat moduly**, **zadat trasy**a **zkontrolovat nasazení**.
+Manifest nasazení je dokument JSON, který popisuje, které moduly chcete nasadit, tok dat mezi moduly a požadované vlastnosti dvojčat modulů. Azure Portal má průvodce, který vás provede vytvořením manifestu nasazení místo ručního vytváření dokumentu JSON.  Má tři kroky: **přidat moduly**, **trasy zadejte**, a **zkontrolujte nasazení**.
 
 ### <a name="add-modules"></a>Přidat moduly
 
 1. V části **moduly nasazení** vyberte **Přidat** .
 1. Z typů modulů v rozevíracím seznamu vyberte **IoT Edge modul** .
 1. Zadejte název, obrázek a možnosti vytvoření kontejneru kontejneru:
+
+[!INCLUDE [event-grid-edge-module-version-update](event-grid-edge-module-version-update.md)]
 
    * **Název**: eventgridmodule
    * **Identifikátor URI image**: `mcr.microsoft.com/azure-event-grid/iotedge:latest`
@@ -50,8 +52,8 @@ Manifest nasazení je dokument JSON, který popisuje, které moduly se mají nas
     ```json
         {
           "Env": [
-            "inbound:clientAuth:clientCert:enabled=false",
-            "outbound:webhook:httpsOnly=false"
+            "inbound__clientAuth:clientCert__enabled=false",
+            "outbound__webhook__httpsOnly=false"
           ],
           "HostConfig": {
             "PortBindings": {
@@ -76,10 +78,10 @@ Manifest nasazení je dokument JSON, který popisuje, které moduly se mají nas
 
  Ponechte výchozí trasy a vyberte **Další** , abyste pokračovali v části Kontrola.
 
-### <a name="review-deployment"></a>Zkontrolovat nasazení
+### <a name="review-deployment"></a>Zkontrolujte nasazení
 
-1. V části Kontrola se dozvíte, který manifest nasazení JSON byl vytvořen na základě vašich výběrů v předchozích dvou částech. Ověřte, že se v seznamu zobrazují tyto dva moduly: **$edgeAgent** a **$edgeHub**. Tyto dva moduly tvoří modul runtime IoT Edge a jsou požadované výchozí hodnoty v každém nasazení.
-1. Zkontrolujte informace o svém nasazení a pak vyberte **Odeslat**.
+1. Zkontrolujte část pořady, kterou jste nasazení JSON manifestu byl vytvořen na základě vašeho výběru v předchozích dvou částech. Ověřte, že se v seznamu zobrazují tyto dva moduly: **$edgeAgent** a **$edgeHub**. Tyto dva moduly tvoří modul runtime IoT Edge a jsou požadované výchozí hodnoty v každém nasazení.
+1. Zkontrolujte informace o nasazení a pak vyberte **odeslat**.
 
 ### <a name="verify-your-deployment"></a>Ověření nasazení
 

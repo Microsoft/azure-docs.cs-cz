@@ -7,14 +7,14 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/06/2019
-ms.openlocfilehash: 2c015db828bcbfa8b26f519b3a4707b5ec69b8f3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b452cb986e6f662aeb33c2a475f18695ebc75745
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982496"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846073"
 ---
-# <a name="customer-managed-key-disk-encryption"></a>Klíčové šifrování disku spravované zákazníkem
+# <a name="customer-managed-key-disk-encryption"></a>Šifrování disků s využitím klíčů spravovaných zákazníky
 
 Azure HDInsight podporuje klíče spravované zákazníky, označované taky jako Bring Your Own Key (BYOK) šifrování dat na spravovaných discích a discích prostředků připojených k virtuálním počítačům clusteru HDInsight. Tato funkce umožňuje použít Azure Key Vault ke správě šifrovacích klíčů, které chrání neaktivní data v clusterech HDInsight. Clustery můžou mít jeden nebo více připojených účtů Azure Storage, kde by mohly být šifrovací klíče taky spravované Microsoftem nebo spravované zákazníkem, ale šifrovací služba se liší.
 
@@ -79,7 +79,7 @@ HDInsight podporuje jenom Azure Key Vault. Pokud máte vlastní Trezor klíčů,
 
     b. V části **Vybrat objekt zabezpečení**vyberte spravovanou identitu přiřazenou uživatelem, kterou jste vytvořili.
 
-    ![Nastavení výběru objektu zabezpečení pro zásady Azure Key Vaultho přístupu](./media/disk-encryption/add-key-vault-access-policy-select-principal.png)
+    ![Nastavení výběru objektu zabezpečení pro zásady Azure Key Vaultho přístupu](./media/disk-encryption/azure-portal-add-access-policy.png)
 
     c. Nastavte **klíčová oprávnění** pro **získání**, **rozbalení klíče**a **zabalení klíče**.
 
@@ -100,6 +100,8 @@ Nyní jste připraveni vytvořit nový cluster HDInsight. Klíč spravovaný zá
 ### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
 
 Během vytváření clusteru zadejte úplnou adresu URL klíče, včetně verze klíče. Například, `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Musíte také přiřadit spravovanou identitu ke clusteru a zadat identifikátor URI klíče.
+
+![Vytvoření nového clusteru](./media/disk-encryption/create-cluster-portal.png)
 
 ### <a name="using-azure-cli"></a>Použití Azure CLI
 

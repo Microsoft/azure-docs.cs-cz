@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 11/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9b30ace8d7ae7a818611856d46b2c50ed8db06f7
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: fe9cee44970da94c346caffc0d5fe76ffebf4a0b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292446"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845154"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>Pro Azure Machine Learning použít rozšíření CLI
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -175,7 +175,7 @@ Následující příkazy ukazují, jak pracovat s datovými sadami v Azure Machi
     az ml dataset register -f mydataset.json
     ```
 
-    Informace o formátu souboru JSON, který slouží k definování datové sady, získáte pomocí `az ml dataset --show-template`.
+    Informace o formátu souboru JSON, který slouží k definování datové sady, získáte pomocí `az ml dataset register --show-template`.
 
     Další informace najdete v tématu [AZ ml DataSet Register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive).
 

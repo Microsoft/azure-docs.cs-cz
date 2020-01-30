@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 690a9751111ca4c86ebb34825f2845ea59d6f186
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6ee339cb709a5d825b39b4accf294761c99ee41a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462489"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846281"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Omezení služby v Azure Kognitivní hledání
 
@@ -78,7 +78,7 @@ Pokud portál indikuje omezení dokumentu, služba byla buď vytvořena před 20
 
 + Austrálie – východ
 + Východní Asie
-+ Střed Indie
++ Střední Indie
 + Japonsko – západ
 + Středozápadní USA
 
@@ -117,7 +117,7 @@ Pro zajištění rovnováhy a stability služby jako celku existovala maximáln�
 | Maximální doba běhu <sup>5</sup> | 1-3 minut |24 hodin |24 hodin |24 hodin |24 hodin |Nevztahuje se  |24 hodin |24 hodin |
 | Maximální doba spuštění pro rozpoznávání dovednosti nebo indexování objektů BLOB s analýzou obrázku <sup>5</sup> | 3-10 minut |2 hodiny |2 hodiny |2 hodiny |2 hodiny |Nevztahuje se  |2 hodiny |2 hodiny |
 | Indexer objektů BLOB: maximální velikost objektu blob, MB |16 |16 |128 |256 |256 |Nevztahuje se  |256 |256 |
-| Indexer objektů BLOB: maximální počet znaků obsahu extrahovaných z objektu BLOB |32,000 |64,000 |4&nbsp;milionů |4&nbsp;milionů |4&nbsp;milionů |Nevztahuje se |4&nbsp;milionů |4&nbsp;milionů |
+| Indexer objektů BLOB: maximální počet znaků obsahu extrahovaných z objektu BLOB |32,000 |64,000 |4&nbsp;milionů |8&nbsp;milionů |16&nbsp;milionů |Nevztahuje se |4&nbsp;milionů |4&nbsp;milionů |
 
 <sup>1</sup> bezplatné služby mají maximální dobu provádění indexeru 3 minuty pro zdroje objektů BLOB a 1 minutu pro všechny ostatní zdroje dat. V případě indexování AI, který volá Cognitive Services, jsou bezplatné služby omezené na 20 bezplatných transakcí za den, kde transakce je definovaná jako dokument, který úspěšně projde kanálem pro obohacení.
 
@@ -151,7 +151,7 @@ Pro vrstvy optimalizované pro úložiště byste měli očekávat nižší prop
 
 ## <a name="data-limits-ai-enrichment"></a>Omezení pro data (rozšíření AI)
 
-[Kanál pro obohacení AI](cognitive-search-concept-intro.md) , který umožňuje volat prostředek analýza textu pro [rozpoznávání entit](cognitive-search-skill-entity-recognition.md), [extrakci klíčových frází](cognitive-search-skill-keyphrases.md), [analýzu mínění](cognitive-search-skill-sentiment.md)a [rozpoznávání jazyka](cognitive-search-skill-language-detection.md) , podléhá omezením dat. Maximální velikost záznamu musí být 50 000 znaků měřenou [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Pokud potřebujete data před odesláním do nástroje mínění Analyzer rozdělit, použijte [dovednost rozdělení textu](cognitive-search-skill-textsplit.md).
+[Kanál pro obohacení AI](cognitive-search-concept-intro.md) , který umožňuje volat prostředek analýza textu pro [rozpoznávání entit](cognitive-search-skill-entity-recognition.md), [extrakci klíčových frází](cognitive-search-skill-keyphrases.md), [analýzu míněníí](cognitive-search-skill-sentiment.md), [detekci jazyka](cognitive-search-skill-language-detection.md)a [zjišťování PII](cognitive-search-skill-pii-detection.md) , podléhá omezením dat. Maximální velikost záznamu musí být 50 000 znaků měřenou [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Pokud potřebujete data před odesláním do nástroje mínění Analyzer rozdělit, použijte [dovednost rozdělení textu](cognitive-search-skill-textsplit.md).
 
 ## <a name="throttling-limits"></a>Omezení omezování
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 1a9801fc0d8a2a013fa737c9d53138dc7d52b398
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: acf7fd91eff6a868074c61d557effa076033e799
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768452"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845923"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Přidat certifikát SSL v Azure App Service
 
@@ -61,6 +61,7 @@ Bezplatný App Service spravovaný certifikát představuje řešení pro zabezp
 - Nepodporuje certifikáty se zástupnými znaky.
 - Nepodporuje holé domény.
 - Nelze exportovat.
+- Nepodporuje DNS A-záznam.
 
 > [!NOTE]
 > Bezplatný certifikát vystaví DigiCert. U některých domén nejvyšší úrovně musíte explicitně dovolit DigiCert jako vystavitele certifikátu vytvořením [záznamu domény CAA](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization) s hodnotou: `0 issue digicert.com`.
@@ -137,7 +138,7 @@ Na stránce **stav Key Vault** klikněte na **úložiště Key Vault** a vytvoř
 | Umístění | Vyberte stejné umístění jako aplikace App Service. |
 | Cenová úroveň | Informace najdete v tématu informace [o cenách Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/). |
 | Zásady přístupu| Definuje aplikace a povolený přístup k prostředkům trezoru. Později ji můžete nakonfigurovat podle kroků uvedených v části [udělení několika aplikací přístup k trezoru klíčů](../key-vault/key-vault-group-permissions-for-apps.md). |
-| Přístup k virtuální síti | Omezte přístup k trezoru na určité virtuální sítě Azure. Později ji můžete nakonfigurovat podle kroků v části [konfigurace Azure Key Vault brány firewall a virtuální sítě](../key-vault/key-vault-network-security.md) . |
+| Přístup k Virtual Network | Omezte přístup k trezoru na určité virtuální sítě Azure. Později ji můžete nakonfigurovat podle kroků v části [konfigurace Azure Key Vault brány firewall a virtuální sítě](../key-vault/key-vault-network-security.md) . |
 
 Po výběru trezoru zavřete stránku **Key Vault úložiště** . V části **Krok 1: úložiště** by se měla zobrazit zelená značka zaškrtnutí u možnosti úspěch. Nechejte stránku otevřenou pro další krok.
 

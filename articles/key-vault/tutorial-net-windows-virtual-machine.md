@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: fbda2f645308e30a6f408335b7a1b37095522921
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 5082ed06b4ce5baf3869fc035654be3c7a45f29f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003322"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845288"
 ---
-# <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>Kurz: Použití Azure Key Vault s virtuálním počítačem s Windows v .NET
+# <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>Kurz: použití Azure Key Vault s virtuálním počítačem s Windows v .NET
 
 Azure Key Vault pomáhá chránit tajné kódy, jako jsou klíče rozhraní API, databázové připojovací řetězce, které potřebujete pro přístup k aplikacím, službám a prostředkům IT.
 
@@ -84,7 +84,7 @@ Vytvořte Trezor klíčů ve skupině prostředků zadáním příkazu AZ Key [t
 
 * Název trezoru klíčů: řetězec na 3 až 24 znaků, který může obsahovat jenom číslice (0-9), písmena (a-z, A-Z) a spojovníky (-).
 * Název skupiny prostředků
-* Oblasti **Západní USA**
+* Umístění: **západní USA**
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
@@ -138,7 +138,7 @@ Pokud se chcete přihlásit k virtuálnímu počítači, postupujte podle pokyn�
 
 ## <a name="set-up-the-console-app"></a>Nastavení konzolové aplikace
 
-Vytvořte konzolovou aplikaci a nainstalujte požadované balíčky pomocí `dotnet` příkazu.
+Vytvořte konzolovou aplikaci a nainstalujte požadované balíčky pomocí příkazu `dotnet`.
 
 ### <a name="install-net-core"></a>Instalace .NET Core
 
@@ -181,10 +181,11 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 ```
 
-Upravte soubor třídy tak, aby obsahoval kód v následujícím dvou krocích procesu:
+Upravte soubor třídy tak, aby obsahoval kód v následujícím procesu se třemi kroky:
 
 1. Načte token z místního koncového bodu MSI na virtuálním počítači. Tím se taky načte token z Azure AD.
-1. Předejte token do trezoru klíčů a potom tento klíč načtěte. 
+2. Předejte token do trezoru klíčů a potom tento klíč načtěte. 
+3. Přidejte do žádosti název trezoru a tajný název.
 
 ```csharp
  class Program
@@ -205,9 +206,10 @@ Upravte soubor třídy tak, aby obsahoval kód v následujícím dvou krocích p
             WebResponse response = request.GetResponse();
             return ParseWebResponse(response, "access_token");
         }
-
+        
         static string FetchSecretValueFromKeyVault(string token)
         {
+            //Step 3: Add the vault name and secret name to the request.
             WebRequest kvRequest = WebRequest.Create("https://<YourVaultName>.vault.azure.net/secrets/<YourSecretName>?api-version=2016-10-01");
             kvRequest.Headers.Add("Authorization", "Bearer "+  token);
             WebResponse kvResponse = kvRequest.GetResponse();

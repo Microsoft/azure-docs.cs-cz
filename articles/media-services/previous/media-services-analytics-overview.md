@@ -15,23 +15,22 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
 ms.reviewer: milanga; johndeu
-ms.openlocfilehash: 66edbc872fe5f1d4320107aa21ed2792bdd4fecc
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 4b0d360c11313e086f6ec26e5ee46b8d6f49869a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083890"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844339"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Media Analytics na Media Services platformě 
 
 ## <a name="retirement-plans"></a>Plány vyřazení
 
 > [!IMPORTANT]
-> Následující starší verze mediálních procesorů se budou vyřadit v 2020. Další informace najdete v následující tabulce. 
+> Následující starší multimediální procesor bude vyřazení v 2020. Další informace najdete v následující tabulce. 
 
 |Název procesoru médií|Datum vyřazení|Další poznámky|
 |---|---|
-|[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)| Od 1. ledna 2020|Tento procesor médií bude nahrazen [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). Další informace najdete v tématu [migrace z Azure Media Indexer 2 do Azure Media Services video indexer](migrate-indexer-v1-v2.md).|
 |[Azure Media Indexer](media-services-index-content.md)|1\. října z 2020|Tento procesor médií bude nahrazen [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). Další informace najdete v tématu [migrace z Azure Media Indexer do Azure Media Services video indexer](migrate-indexer-v1-v2.md)
  
 ## <a name="overview"></a>Přehled
@@ -51,17 +50,21 @@ Procesory médií z Media Analytics vytvářejí soubory MP4 nebo soubory JSON. 
 ## <a name="media-analytics-services"></a>Služby Media Analytics
 
 ### <a name="indexer"></a>Indexovací modul
-Pomocí Azure Media Indexer můžete provádět hledání obsahu a generovat stopy s titulky. Ve srovnání s předchozí verzí Azure Media Indexer 2 Preview rychlejší indexování a širší podporu jazyků. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, čínština, portugalština a arabština. Podrobné informace a příklady najdete v tématu [zpracování videí pomocí Azure Media Indexer 2](media-services-process-content-with-indexer2.md).
+Pomocí Azure Media Indexer můžete provádět hledání obsahu a generovat stopy s titulky. Podrobné informace a příklady najdete v tématu [indexování mediálních souborů pomocí Azure Media Indexer](media-services-index-content.md).
+
 ### <a name="motion-detector"></a>Detektor pohybu
 Pomocí snímače pohybu můžete detekovat pohyb videa pomocí stacionárních pozadí. Díky tomu je možné kontrolovat falešně pozitivní události na událostech pohybu zjištěných sledovacími kamerami. Podrobné informace a příklady najdete v tématu [detekce pohybu pro Azure Media Analytics](media-services-motion-detection.md).
+
 ### <a name="face-detector"></a>Detektor tváří
 Pomocí rozpoznávání tváře můžete detekovat plošky uživatelů a jejich emocey, včetně štěstí, smutek a neočekávaně. Má několik užitečných průmyslových aplikací, které jsou popsány později, včetně agregace a analýzy reakcí lidí, kteří se účastní události. Podrobné informace a příklady naleznete v tématu [detekce obličeje a emoce pro Azure Media Analytics](media-services-face-and-emotion-detection.md).
+
 ### <a name="video-summarization"></a>Shrnutí videa
 Shrnutí videa vám může přispět k vytváření souhrnů dlouhých videí tím, že automaticky vybere zajímavé fragmenty ze zdrojového videa. Tato možnost je užitečná, když chcete poskytnout rychlý přehled o tom, co se má na dlouhém videu očekávat. Podrobné informace a příklady najdete v tématu [použití Azure Media Video Thumbnails k vytvoření shrnutí videa](media-services-video-summarization.md).
 ### <a name="optical-character-recognition"></a>Optické rozpoznávání znaků
 Pomocí Azure Media OCR (optické rozpoznávání znaků) můžete převést textový obsah v videosouborech na upravitelný a prohledávatelný digitální text. Pak můžete automatizovat extrakci smysluplných metadat z obrazového signálu vašeho média.
 ### <a name="scalable-face-redaction"></a>Škálovatelné redigování obličeje
 Azure Media Redactor je Media Analytics multimediální procesor, který nabízí škálovatelné redigování tváře v cloudu. Když použijete redigování, můžete upravit video a rozostřit plochy vybraných jednotlivců. Můžete chtít použít službu redigování obličeje na nosiči oznámení nebo v případě, že se jedná o veřejné zabezpečení. Několik minut záběrů, které obsahují více plošek, může trvat hodiny až při redigování ručně, ale s touto službou vynásobení redigování čelí pouze několika jednoduchým krokům. Další informace najdete v článku o [aplikaci Azure Media Analytics redigování](media-services-face-redaction.md) .
+
 ### <a name="content-moderation"></a>Moderování obsahu
 Azure Content Moderator umožňuje používat pro vaše videa moderování s asistencí počítače. Ve videích například můžete chtít detekovat potenciálně nevhodný obsah nebo obsah pro dospělé a označený obsah nechat zkontrolovat týmy lidského moderování. Ruční moderování videí pro nežádoucí obsah je časově náročná a náročná úloha. Díky této službě a přidruženým nástrojům pro kontrolu se kombinuje moderování počítačů s funkcemi, které jsou v rámci smyčky, díky funkcím, které umožňují efektivně a efektivně úspornou efektivitu. Další informace najdete v článku [zpracování videí pomocí Azure Content moderator](media-services-content-moderation.md) .
 
@@ -75,7 +78,7 @@ Media Analytics mohou organizacím a podnikům pomáhat glean nové poznatky z v
 Tato část obsahuje seznam Media Analyticsch procesorů médií a ukazuje, jak použít rozhraní .NET nebo REST k získání objektu procesoru médií (MP).
 
 ### <a name="mp-names"></a>Názvy MP
-* Azure Media Indexer 2 Preview
+
 * Azure Media Indexer
 * Azure Media Face Detector
 * Azure Media Motion Detector
@@ -112,7 +115,7 @@ Požadavek:
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <token>
-    x-ms-version: 2.12
+    x-ms-version: 2.19
     Host: media.windows.net
 
 Odpověď:
@@ -136,7 +139,7 @@ Odpověď:
 ## <a name="demos"></a>Ukázky
 Viz [ukázky Azure Media Analytics](https://azuremedialabs.azurewebsites.net/demos/Analytics.html).
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-articles"></a>Související články

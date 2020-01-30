@@ -4,12 +4,12 @@ description: Zjistěte, které metriky se běžně používají k automatickému
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
-ms.openlocfilehash: 7b9c19ba3b85813eb12f6b906427f3cfdc9a0f67
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2c335168683212337876c963a7cfdb441d0ac69a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364590"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845563"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor automatické škálování běžných metrik
 
@@ -36,7 +36,7 @@ Následující metriky na úrovni hostitele se ve výchozím nastavení generuj�
 - [Metriky hostitele pro virtuální počítače s Windows a Linuxem na Správce prostředků](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)
 - [Metriky hostitele pro Správce prostředků se systémem Windows a Linux VM Scale Sets](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
 
-### <a name="guest-os-metrics-resource-manager-based-windows-vms"></a>Metriky hostovaného operačního systému Správce prostředků virtuálních počítačů s Windows na bázi
+### <a name="guest-os-metrics-for-resource-manager-based-windows-vms"></a>Metriky hostovaného operačního systému pro virtuální počítače s Windows založené na Správce prostředků
 Když vytvoříte virtuální počítač v Azure, diagnostika je povolená pomocí diagnostického rozšíření. Diagnostické rozšíření emituje sadu metrik, které se provedou uvnitř virtuálního počítače. To znamená, že můžete automaticky škálovat metriky, které nejsou ve výchozím nastavení emitované.
 
 Seznam metrik můžete vygenerovat pomocí následujícího příkazu v PowerShellu.
@@ -129,8 +129,8 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \NetworkInterface\TotalTxErrors |Počet |
 | \NetworkInterface\TotalCollisions |Počet |
 
-## <a name="commonly-used-web-server-farm-metrics"></a>Metriky běžně používaného webu (serverové farmy)
-Automatické škálování můžete provádět i na základě běžných metrik webového serveru, jako je délka fronty http. Název metriky je **HttpQueueLength**.  V následující části jsou uvedeny dostupné metriky serverové farmy (Web Apps).
+## <a name="commonly-used-app-service-server-farm-metrics"></a>Běžně používaná metrika App Service (serverová farma)
+Automatické škálování můžete provádět i na základě běžných metrik webového serveru, jako je délka fronty http. Jeho název metriky je **HttpQueueLength**.  V následující části jsou uvedeny dostupné metriky serverové farmy (App Service).
 
 ### <a name="web-apps-metrics"></a>Web Apps metriky
 Seznam metrik Web Apps můžete vygenerovat pomocí následujícího příkazu v PowerShellu.
@@ -159,8 +159,8 @@ Například s klasickým účtem úložiště může metricTrigger nastavení au
 
 ```
 "metricName": "ApproximateMessageCount",
- "metricNamespace": "",
- "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ClassicStorage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
+"metricNamespace": "",
+"metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ClassicStorage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
  ```
 
 V případě účtu úložiště (neklasického) by měl metricTrigger zahrnovat:
@@ -177,7 +177,7 @@ Můžete škálovat podle Service Bus délky fronty, což je počet zpráv ve fr
 Pro službu VM Scale Sets můžete aktualizovat nastavení automatického škálování v šabloně Správce prostředků tak, aby se použila hodnota *metric* jako *ApproximateMessageCount* , a předat ID fronty úložiště jako *metricResourceUri*.
 
 ```
-"metricName": "MessageCount",
+"metricName": "ApproximateMessageCount",
  "metricNamespace": "",
 "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ServiceBus/namespaces/SB_NAMESPACE/queues/QUEUE_NAME"
 ```

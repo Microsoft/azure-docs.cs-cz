@@ -9,16 +9,18 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 3506399537fe2cb16014ceb3429bce5aeee8cb69
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 39b16c6cfd5b94d412827ed88197edbef2da1453
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100338"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844628"
 ---
 # <a name="persist-state-in-linux"></a>Trvalý stav v systému Linux
 
-Témata a odběry vytvořené v modulu Event Grid jsou ve výchozím nastavení uloženy v systému souborů kontejnerů. Bez trvalosti se při opětovném nasazení modulu všechna vytvořená metadata ztratí. V současné době jsou uložena pouze metadata. Události jsou uloženy v paměti. Pokud se modul Event Grid znovu nasazuje nebo restartuje, ztratí se všechny nedoručené události.
+Témata a odběry vytvořené v modulu Event Grid jsou ve výchozím nastavení uloženy v systému souborů kontejnerů. Bez trvalosti se při opětovném nasazení modulu všechna vytvořená metadata ztratí. Chcete-li zachovat data napříč nasazeními a restarty, je nutné zachovat data mimo systém souborů kontejnerů.
+
+Ve výchozím nastavení jsou uložena pouze metadata a události jsou stále uloženy v paměti pro zvýšení výkonu. Dodržujte oddíl trvalé události a povolte taky trvalost událostí.
 
 Tento článek popisuje postup nasazení modulu Event Grid s trvalým nasazením do systému Linux.
 
@@ -61,7 +63,8 @@ Například následující konfigurace bude mít za následek vytvoření svazku
   ],
   "HostConfig": {
     "Binds": [
-      "egmetadataDbVol:/app/metadataDb"
+      "egmetadataDbVol:/app/metadataDb",
+      "egdataDbVol:/app/eventsDb"
     ],
     "PortBindings": {
       "4438/tcp": [
@@ -74,7 +77,7 @@ Například následující konfigurace bude mít za následek vytvoření svazku
 }
 ```
 
-Alternativně můžete vytvořit svazek Docker pomocí příkazů klienta Docker. 
+Místo připojení svazku můžete vytvořit adresář v hostitelském systému a připojit tento adresář.
 
 ## <a name="persistence-via-host-directory-mount"></a>Stálost prostřednictvím hostitelského adresářového připojení
 
@@ -138,7 +141,8 @@ Místo svazku Docker máte také možnost připojit složku hostitele.
           ],
           "HostConfig": {
                 "Binds": [
-                  "/myhostdir:/app/metadataDb"
+                  "/myhostdir:/app/metadataDb",
+                  "/myhostdir2:/app/eventsDb"
                 ],
                 "PortBindings": {
                       "4438/tcp": [
@@ -153,3 +157,32 @@ Místo svazku Docker máte také možnost připojit složku hostitele.
 
     >[!IMPORTANT]
     >Neměňte druhou část hodnoty vazby. Odkazuje na konkrétní umístění v rámci modulu. Pro modul Event Grid v systému Linux musí být **/App/metadata**.
+
+
+## <a name="persist-events"></a>Zachovat události
+
+Chcete-li povolit trvalosti událostí, je nutné nejprve povolit trvalá metadata buď prostřednictvím připojení svazku, nebo připojení ke službě Host Directory pomocí výše uvedených částí.
+
+Důležité informace o trvalých událostech:
+
+* Trvalé události jsou povolené pro jednotlivé odběry událostí a po připojení svazku nebo adresáře se odhlásí.
+* Trvalá událost je nakonfigurovaná pro odběr události během vytváření a nedá se změnit po vytvoření odběru události. Chcete-li přepnout trvalost událostí, je nutné odstranit a znovu vytvořit odběr události.
+* Trvalé události jsou téměř vždy pomalejší než při operacích paměti, ale rozdíl rychlosti je vysoce závislý na charakteristikách jednotky. Kompromisy mezi rychlostí a spolehlivostí jsou podstatné pro všechny systémy zasílání zpráv, ale obecně se jenom noticible ve velkém měřítku.
+
+Pro povolení trvalosti událostí v odběru události nastavte `persistencePolicy` na `true`:
+
+ ```json
+        {
+          "properties": {
+            "persistencePolicy": {
+              "isPersisted": "true"
+            },
+            "destination": {
+              "endpointType": "WebHook",
+              "properties": {
+                "endpointUrl": "<your-webhook-url>"
+              }
+            }
+          }
+        }
+ ```

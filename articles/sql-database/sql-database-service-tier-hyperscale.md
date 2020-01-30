@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: aeda79ec4cb850ce73db18398c57d90aa4eb2acd
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 226ed1fcc72eada399c0a9a9eb4225d79cd83dd7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759495"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845888"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperškálování úrovně služby
 
@@ -72,7 +72,7 @@ Další informace o velikostech výpočtů pro úroveň služby technologie šk�
 
 - **Úložiště**:
 
-  Při konfiguraci databáze v rámci škálování není nutné zadávat maximální velikost dat. Na úrovni Hyperškálování se účtuje úložiště pro databázi podle skutečného přidělení. Úložiště se automaticky přiděluje mezi 40 GB a 100 TB, v přírůstcích, které se dynamicky upravují mezi 10 GB a 40 GB. Databáze s škálovatelným škálováním je vytvořená s počáteční velikostí 10 GB a začne růst o 10 GB každých 10 minut, dokud nedosáhne velikosti 40 GB.
+  Při konfiguraci databáze v rámci škálování není nutné zadávat maximální velikost dat. Na úrovni Hyperškálování se účtuje úložiště pro databázi podle skutečného přidělení. Úložiště se automaticky přiděluje mezi 40 GB a 100 TB, a to v 10 GB přírůstcích po 10 GB. V případě potřeby můžete v případě potřeby více datových souborů zvětšit. Databáze s škálovatelným škálováním je vytvořená s počáteční velikostí 10 GB a začne růst o 10 GB každých 10 minut, dokud nedosáhne velikosti 40 GB.
 
 Další informace o cenách na úrovni služby najdete v tématu [Azure SQL Database ceny](https://azure.microsoft.com/pricing/details/sql-database/single/) .
 
@@ -117,8 +117,8 @@ Databázi škálování na více systému je možné vytvořit pomocí [Azure Po
 Následující příkaz T-SQL vytvoří databázi s měřítkem. V příkazu `CREATE DATABASE` musíte zadat jak edici, tak i cíl služby. Seznam platných cílů služeb najdete v tématu [omezení prostředků](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale---provisioned-compute---gen4) .
 
 ```sql
--- Create a HyperScale Database
-CREATE DATABASE [HyperScaleDB1] (EDITION = 'HyperScale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
+-- Create a Hyperscale Database
+CREATE DATABASE [HyperscaleDB1] (EDITION = 'Hyperscale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
 GO
 ```
 Tím se vytvoří databáze Gen5 s využitím hardwaru s 4 jádry.
@@ -130,8 +130,8 @@ Stávající databáze SQL Azure můžete přesunout do škálování pomocí [A
 Následující příkaz T-SQL přesune databázi do vrstvy služby s škálováním na úrovni služeb. V příkazu `ALTER DATABASE` musíte zadat jak edici, tak i cíl služby.
 
 ```sql
--- Alter a database to make it a HyperScale Database
-ALTER DATABASE [DB2] MODIFY (EDITION = 'HyperScale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
+-- Alter a database to make it a Hyperscale Database
+ALTER DATABASE [DB2] MODIFY (EDITION = 'Hyperscale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
 GO
 ```
 
@@ -160,7 +160,7 @@ Pokud potřebujete obnovit Azure SQL Database DB škálování do jiné oblasti,
 2. Postupujte podle pokynů v tématu [geografické obnovení](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#geo-restore) stránky na stránce týkající se obnovení databází Azure SQL z automatických záloh.
 
 > [!NOTE]
-> Vzhledem k tomu, že zdroj a cíl jsou v samostatných oblastech, nemůže databáze sdílet snímkové úložiště se zdrojovou databází jako v negeografických obnoveních, což je kompletní velmi rychle.  V případě geografického obnovení databáze s měřítkem dat se bude jednat o velikost operace, i když je cíl v spárované oblasti geograficky replikovaného úložiště.  To znamená, že při geografickém obnovení bude čas odpovídat velikosti databáze, která se obnovuje.  Pokud je cíl v spárované oblasti, kopie bude v datovém centru, které bude výrazně rychlejší než dlouhé místo na internetu, ale bude stále kopírovat všechny bity.
+> Vzhledem k tomu, že zdroj a cíl jsou v samostatných oblastech, nemůže databáze sdílet snímkové úložiště se zdrojovou databází jako v negeografických obnoveních, což je kompletní velmi rychle. V případě geografického obnovení databáze s měřítkem dat se bude jednat o velikost operace, i když je cíl v spárované oblasti geograficky replikovaného úložiště.  To znamená, že při geografickém obnovení bude čas odpovídat velikosti databáze, která se obnovuje.  Pokud je cíl v spárované oblasti, kopie bude v rámci oblasti, která bude výrazně rychlejší než kopírování mezi oblastmi, ale bude stále i operací velikosti dat.
 
 ## <a name=regions></a>Dostupné oblasti
 
@@ -174,7 +174,7 @@ Azure SQL Database úroveň škálování je aktuálně dostupná v následujíc
 - Čína – východ 2
 - Čína – sever 2
 - Východní Asie
-- Východ USA
+- Východní USA
 - Východní USA 2
 - Francie – střed
 - Japonsko – východ

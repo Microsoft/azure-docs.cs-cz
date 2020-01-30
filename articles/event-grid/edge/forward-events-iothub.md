@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 073205b5bdc3f6de80bd7e347469c3f06aeb515b
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: d0034810ff86de2a40e275ca54a2f0f9cbc856c2
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73098685"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844696"
 ---
 # <a name="tutorial-forward-events-to-iothub"></a>Kurz: přeposílání událostí do IoTHub
 
@@ -28,7 +28,7 @@ K dokončení tohoto kurzu potřebujete pochopit následující koncepty:
 - [Event Grid koncepty](concepts.md)
 - [Centrum IoT Edge](../../iot-edge/module-composition.md) 
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 Aby bylo možné dokončit tento kurz, budete potřebovat:
 
 * **Předplatné Azure** – Pokud ho ještě nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) . 
@@ -81,6 +81,8 @@ Jako vydavatel události je třeba vytvořit téma Event Grid. Téma odkazuje na
 ## <a name="create-event-subscription"></a>Vytvořit odběr události
 
 Předplatitelé se můžou zaregistrovat pro události publikované v tématu. Aby bylo možné přijímat jakékoli události, musí vytvořit odběr služby Event Grid na téma, které vás zajímá.
+
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. Vytvořte subscription4. JSON s následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md) .
 
@@ -212,3 +214,4 @@ V tomto kurzu jste vytvořili téma Event gridu, předplatné centra Edge a publ
 * Nastavení trvalosti modulu Event Grid v systému [Linux](persist-state-linux.md) nebo [Windows](persist-state-windows.md)
 * Podle [dokumentace](configure-client-auth.md) nakonfigurujte ověřování klientů.
 * Předejte události do Azure Event Grid v cloudu pomocí tohoto [kurzu](forward-events-event-grid-cloud.md) .
+* [Monitorování témat a odběrů na hraničních zařízeních](monitor-topics-subscriptions.md)

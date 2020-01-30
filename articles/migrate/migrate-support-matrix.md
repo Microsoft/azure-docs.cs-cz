@@ -1,31 +1,19 @@
 ---
 title: Azure Migrateová matice podpory
 description: Poskytuje souhrn nastavení podpory a omezení pro službu Azure Migrate.
-services: backup
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 01/28/2020
 ms.author: raynew
-ms.openlocfilehash: fa6ea1ec1992c94d44531cda9802290edf8db301
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 5c29b80f30b024d34ec4e8f65e51b59fc70e8f93
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74669156"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846561"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrateová matice podpory
 
 [Službu Azure Migrate](migrate-overview.md) můžete použít k vyhodnocení a migraci počítačů do Microsoft Azure cloudu. Tento článek shrnuje obecná nastavení podpory a omezení pro Azure Migrate scénáře a nasazení.
-
-
-## <a name="azure-migrate-versions"></a>Verze Azure Migrate
-
-Existují dvě verze služby Azure Migrate:
-
-- **Aktuální verze**: pomocí této verze můžete vytvořit nové projekty Azure Migrate, zjišťovat místní vyhodnocení a orchestrovat posouzení a migrace. [Další informace](whats-new.md#release-version-july-2019).
-- **Předchozí verze**: pro zákazníky používající předchozí verzi Azure Migrate (podporuje se jenom posouzení místních virtuálních počítačů VMware), měli byste teď použít aktuální verzi. V předchozí verzi nemůžete vytvářet nové projekty Azure Migrate ani provádět nové zjišťování.
 
 ## <a name="supported-assessmentmigration-scenarios"></a>Podporované scénáře posouzení/migrace
 
@@ -51,7 +39,7 @@ Migrace serveru Azure Migrate | není k dispozici | Migrujte [virtuální počí
 [Technologie spolupronájmu](https://go.microsoft.com/fwlink/?linkid=2084928) | Vyhodnoťte a migrujte virtuální počítače VMware, virtuální počítače Hyper-V, fyzické servery a úlohy veřejného cloudu. |  Migrujte virtuální počítače VMware, virtuální počítače Hyper-V, fyzické servery a úlohy veřejného cloudu.
 [Zařízení 42](https://go.microsoft.com/fwlink/?linkid=2097158) | Vyhodnoťte virtuální počítače VMware, virtuální počítače Hyper-V, fyzické servery a úlohy veřejného cloudu.| není k dispozici
 [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | Vyhodnoťte místní SQL Server databáze. | není k dispozici
-[DOKUMENTŮ](https://docs.microsoft.com/azure/dms/dms-overview) | není k dispozici | Migrujte SQL Server, Oracle, MySQL, PostgreSQL, MongoDB. 
+[DMS](https://docs.microsoft.com/azure/dms/dms-overview) | není k dispozici | Migrujte SQL Server, Oracle, MySQL, PostgreSQL, MongoDB. 
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Posouzení infrastruktury virtuálních klientských počítačů (VDI) | není k dispozici
 [Movere](https://go.microsoft.com/fwlink/?linkid=2109528) | Posouzení virtuálních počítačů VMWare, virtuálních počítačů Hyper-V, virtuálních počítačů, virtuálních počítačů, pracovních stanic (včetně infrastruktury VDI), úloh veřejných cloudů | není k dispozici
 [RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | není k dispozici | Migrace virtuálních počítačů VMWare, virtuálních počítačů Hyper-V, virtuálních počítačů Xen, KVM virtuálních počítačů, fyzických počítačů, úloh veřejných cloudů 
@@ -70,6 +58,16 @@ Virtuální počítače VMware  | Vyhodnoťte až 35 000 virtuálních počíta�
 Virtuální počítače Hyper-V | Vyhodnoťte až 35 000 virtuálních počítačů Hyper-V v jednom projektu.
 
 Projekt může zahrnovat virtuální počítače VMware i virtuální počítače Hyper-V, a to až do limitů hodnocení.
+
+## <a name="azure-permissions"></a>Oprávnění Azure
+
+Aby Azure Migrate fungoval s Azure, budete potřebovat tato oprávnění předtím, než začnete vyhodnocování a migraci počítačů.
+
+**Úkol** | **Oprávnění** | **Podrobnosti**
+--- | --- | ---
+Vytvoření projektu Azure Migrate | Váš účet Azure potřebuje oprávnění k vytvoření projektu. | Nastavte pro [VMware](tutorial-prepare-vmware.md#assign-permissions-to-create-project), [Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-create-project)nebo [fyzické servery](tutorial-prepare-physical.md#assign-permissions-to-create-project).
+Registrace zařízení Azure Migrate | Azure Migrate využívá odlehčené [Azure Migrate zařízení](migrate-appliance.md) k vyhodnocení virtuálních počítačů VMware pomocí posouzení Azure Migrate serveru a spouštění migrace virtuálních počítačů VMware bez [agenta](server-migrate-overview.md) pomocí migrace serveru Azure Migrate. Toto zařízení vyhledá virtuální počítače a odešle údaje o metadatech a výkonu virtuálních počítačů do Azure Migrate.<br/><br/> Během registrace Azure Migrate vytvoří dvě aplikace Azure Active Directory (Azure AD), které zařízení jednoznačně identifikují, a potřebuje oprávnění k vytváření těchto aplikací.<br/><br/> – První aplikace komunikuje s koncovými body služby Azure Migrate.<br/><br/> – Druhá aplikace přistupuje k Azure Key Vault vytvořenému během registrace pro ukládání informací o aplikaci Azure AD a nastavení konfigurace zařízení. | Nastavte pro [VMware](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance), [Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-register-the-appliance)nebo [fyzické servery](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance).
+Vytvoření trezoru klíčů pro migraci bez agentů VMware | Pokud chcete migrovat virtuální počítače VMware s migrací Azure Migrate serveru bez agentů, Azure Migrate vytvoří Key Vault pro správu přístupových klíčů k účtu úložiště replikace v rámci vašeho předplatného. Chcete-li vytvořit trezor, nastavte oprávnění (vlastníka nebo přispěvatel a správce přístupu uživatele) na skupinu prostředků, ve které se nachází Azure Migrate projekt. | [Nastavte](tutorial-prepare-vmware.md#assign-role-assignment-permissions) oprávnění.
 
 ## <a name="supported-geographies"></a>Podporovaná geografická oblast
 
@@ -104,6 +102,14 @@ Spojené státy | Střed USA nebo Západní USA 2
 
 [Přečtěte](migrate-support-matrix-hyper-v.md) si matrici podpory Azure Migrate serveru a podpora migrace serveru pro virtuální počítače Hyper-V.
 
+
+
+## <a name="azure-migrate-versions"></a>Verze Azure Migrate
+
+Existují dvě verze služby Azure Migrate:
+
+- **Aktuální verze**: pomocí této verze můžete vytvořit nové projekty Azure Migrate, zjišťovat místní vyhodnocení a orchestrovat posouzení a migrace. [Další informace](whats-new.md#release-version-july-2019).
+- **Předchozí verze**: pro zákazníky používající předchozí verzi Azure Migrate (podporuje se jenom posouzení místních virtuálních počítačů VMware), měli byste teď použít aktuální verzi. V předchozí verzi nemůžete vytvářet nové projekty Azure Migrate ani provádět nové zjišťování.
 
 ## <a name="next-steps"></a>Další kroky
 

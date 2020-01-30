@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: e9e6eff4c527ff2e22be57ebc1eb3dcdb3c4e0ab
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 6614e70d130abe46067c657bda3ccdd7000caddc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241979"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845273"
 ---
 # <a name="api-management-policy-expressions"></a>API Management výrazy zásad
-Tento článek popisuje syntaxi výrazů zásad je C# 7. Každý výraz má přístup k implicitně zadané [kontextové](api-management-policy-expressions.md#ContextVariables) proměnné a povolené [podmnožině](api-management-policy-expressions.md#CLRTypes) typů .NET Framework.
+Tento článek popisuje syntaxi výrazů zásad ve C# 7. Každý výraz má přístup k implicitně zadané [kontextové](api-management-policy-expressions.md#ContextVariables) proměnné a povolené [podmnožině](api-management-policy-expressions.md#CLRTypes) typů .NET Framework.
 
-Další informace najdete tady:
+Další informace:
 
 - Podívejte se, jak do back-endu poskytovat informace o kontextu. K poskytnutí těchto informací použijte [parametr nastavení řetězce dotazu](api-management-transformation-policies.md#SetQueryStringParameter) a [nastavte zásady hlaviček protokolu HTTP](api-management-transformation-policies.md#SetHTTPheader) .
 - Podívejte se, jak použít zásadu [ověření JWT](api-management-access-restriction-policies.md#ValidateJWT) k předběžné autorizaci přístupu k operacím na základě deklarací identity tokenu.
@@ -76,134 +76,134 @@ Následující tabulka uvádí typy .NET Framework a jejich členy, které jsou 
 
 |Typ|Podporovaní členové|
 |--------------|-----------------------|
-|Newtonsoft. JSON. Formatting|Vše|
+|Newtonsoft. JSON. Formatting|Všechno|
 |Newtonsoft. JSON. JsonConvert|Funkce SerializeObject, DeserializeObject|
-|Newtonsoft.Json.Linq.Extensions|Vše|
-|Newtonsoft.Json.Linq.JArray|Vše|
-|Newtonsoft.Json.Linq.JConstructor|Vše|
-|Newtonsoft.Json.Linq.JContainer|Vše|
-|Newtonsoft.Json.Linq.JObject|Vše|
-|Newtonsoft.Json.Linq.JProperty|Vše|
-|Newtonsoft.Json.Linq.JRaw|Vše|
-|Newtonsoft.Json.Linq.JToken|Vše|
-|Newtonsoft.Json.Linq.JTokenType|Vše|
-|Newtonsoft.Json.Linq.JValue|Vše|
-|System. Array|Vše|
-|System. BitConverter|Vše|
-|System. Boolean|Vše|
-|System.Byte|Vše|
-|System.Char|Vše|
-|System.Collections.Generic.Dictionary<TKey, TValue>|Vše|
-|System. Collections. Generic. HashSet –\<T >|Vše|
-|System.Collections.Generic.ICollection\<T>|Vše|
-|System.Collections.Generic.IDictionary<TKey, TValue>|Vše|
-|System. Collections. Generic. IEnumerable\<T >|Vše|
-|System. Collections. Generic. IEnumerator\<T >|Vše|
-|System. Collections. Generic. IList\<T >|Vše|
-|System.Collections.Generic.IReadOnlyCollection\<T>|Vše|
-|System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>|Vše|
-|System.Collections.Generic.ISet\<T>|Vše|
-|System.Collections.Generic.KeyValuePair<TKey, TValue>|Vše|
-|System. Collections. Generic. list\<T >|Vše|
-|System.Collections.Generic.Queue\<T>|Vše|
-|System.Collections.Generic.Stack\<T>|Vše|
-|System.Convert|Vše|
+|Newtonsoft.Json.Linq.Extensions|Všechno|
+|Newtonsoft.Json.Linq.JArray|Všechno|
+|Newtonsoft.Json.Linq.JConstructor|Všechno|
+|Newtonsoft.Json.Linq.JContainer|Všechno|
+|Newtonsoft.Json.Linq.JObject|Všechno|
+|Newtonsoft.Json.Linq.JProperty|Všechno|
+|Newtonsoft.Json.Linq.JRaw|Všechno|
+|Newtonsoft.Json.Linq.JToken|Všechno|
+|Newtonsoft.Json.Linq.JTokenType|Všechno|
+|Newtonsoft.Json.Linq.JValue|Všechno|
+|System. Array|Všechno|
+|System. BitConverter|Všechno|
+|System. Boolean|Všechno|
+|System.Byte|Všechno|
+|System.Char|Všechno|
+|System.Collections.Generic.Dictionary<TKey, TValue>|Všechno|
+|System. Collections. Generic. HashSet –\<T >|Všechno|
+|System.Collections.Generic.ICollection\<T>|Všechno|
+|System.Collections.Generic.IDictionary<TKey, TValue>|Všechno|
+|System. Collections. Generic. IEnumerable\<T >|Všechno|
+|System. Collections. Generic. IEnumerator\<T >|Všechno|
+|System. Collections. Generic. IList\<T >|Všechno|
+|System.Collections.Generic.IReadOnlyCollection\<T>|Všechno|
+|System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>|Všechno|
+|System.Collections.Generic.ISet\<T>|Všechno|
+|System.Collections.Generic.KeyValuePair<TKey, TValue>|Všechno|
+|System. Collections. Generic. list\<T >|Všechno|
+|System.Collections.Generic.Queue\<T>|Všechno|
+|System.Collections.Generic.Stack\<T>|Všechno|
+|System.Convert|Všechno|
 |System.DateTime|(Konstruktor), Add, AddDays, AddHours, AddMilliseconds, AddMinutes, AddMonths, AddSeconds, AddTicks, AddYears, datum, den, DayOfWeek, DayOfYear, DaysInMonth, hodina, IsDaylightSavingTime, IsLeapYear, MaxValue, milisekunda, Minute, MinValue, month, Now , Analyze, Second, odečíst, takty, TimeOfDay, Today, ToString, UtcNow, Year|
 |System.DateTimeKind|UTC|
-|System.DateTimeOffset|Vše|
-|System.Decimal|Vše|
-|System.Double|Vše|
-|System. Exception|Vše|
-|System.Guid|Vše|
-|System.Int16|Vše|
-|System.Int32|Vše|
-|System.Int64|Vše|
-|System.IO.StringReader|Vše|
-|System. IO. StringWriter|Vše|
-|System. Linq. vyčíslitelné|Vše|
-|System.Math|Vše|
-|System. MidpointRounding|Vše|
-|System.Net.WebUtility|Vše|
-|System.Nullable|Vše|
-|System.Random|Vše|
-|System.SByte|Vše|
-|System.Security.Cryptography.AsymmetricAlgorithm|Vše|
-|System.Security.Cryptography.CipherMode|Vše|
-|System.Security.Cryptography.HashAlgorithm|Vše|
-|System.Security.Cryptography.HashAlgorithmName|Vše|
-|System.Security.Cryptography.HMAC|Vše|
-|System.Security.Cryptography.HMACMD5|Vše|
-|System.Security.Cryptography.HMACSHA1|Vše|
-|System.Security.Cryptography.HMACSHA256|Vše|
-|System.Security.Cryptography.HMACSHA384|Vše|
-|System.Security.Cryptography.HMACSHA512|Vše|
-|System.Security.Cryptography.KeyedHashAlgorithm|Vše|
-|System.Security.Cryptography.MD5|Vše|
-|System.Security.Cryptography.Oid|Vše|
-|System.Security.Cryptography.PaddingMode|Vše|
-|System.Security.Cryptography.RNGCryptoServiceProvider|Vše|
-|System.Security.Cryptography.RSA|Vše|
-|System.Security.Cryptography.RSAEncryptionPadding|Vše|
-|System.Security.Cryptography.RSASignaturePadding|Vše|
-|System.Security.Cryptography.SHA1|Vše|
-|System.Security.Cryptography.SHA1Managed|Vše|
-|System.Security.Cryptography.SHA256|Vše|
-|System.Security.Cryptography.SHA256Managed|Vše|
-|System.Security.Cryptography.SHA384|Vše|
-|System.Security.Cryptography.SHA384Managed|Vše|
-|System.Security.Cryptography.SHA512|Vše|
-|System.Security.Cryptography.SHA512Managed|Vše|
-|System.Security.Cryptography.SymmetricAlgorithm|Vše|
-|System.Security.Cryptography.X509Certificates.PublicKey|Vše|
-|System.Security.Cryptography.X509Certificates.RSACertificateExtensions|Vše|
-|System.Security.Cryptography.X509Certificates.X500DistinguishedName|Název|
-|System.Security.Cryptography.X509Certificates.X509Certificate|Vše|
-|System.Security.Cryptography.X509Certificates.X509Certificate2|Vše|
-|System.Security.Cryptography.X509Certificates.X509ContentType|Vše|
-|System.Security.Cryptography.X509Certificates.X509NameType|Vše|
-|System. Single|Vše|
-|System. String|Vše|
-|System.StringComparer|Vše|
-|System.StringComparison|Vše|
-|System.StringSplitOptions|Vše|
-|System.Text.Encoding|Vše|
+|System.DateTimeOffset|Všechno|
+|System.Decimal|Všechno|
+|System.Double|Všechno|
+|System. Exception|Všechno|
+|System.Guid|Všechno|
+|System.Int16|Všechno|
+|System.Int32|Všechno|
+|System.Int64|Všechno|
+|System.IO.StringReader|Všechno|
+|System. IO. StringWriter|Všechno|
+|System. Linq. vyčíslitelné|Všechno|
+|System.Math|Všechno|
+|System. MidpointRounding|Všechno|
+|System.Net.WebUtility|Všechno|
+|System.Nullable|Všechno|
+|System.Random|Všechno|
+|System.SByte|Všechno|
+|System.Security.Cryptography.AsymmetricAlgorithm|Všechno|
+|System.Security.Cryptography.CipherMode|Všechno|
+|System.Security.Cryptography.HashAlgorithm|Všechno|
+|System.Security.Cryptography.HashAlgorithmName|Všechno|
+|System.Security.Cryptography.HMAC|Všechno|
+|System.Security.Cryptography.HMACMD5|Všechno|
+|System.Security.Cryptography.HMACSHA1|Všechno|
+|System.Security.Cryptography.HMACSHA256|Všechno|
+|System.Security.Cryptography.HMACSHA384|Všechno|
+|System.Security.Cryptography.HMACSHA512|Všechno|
+|System.Security.Cryptography.KeyedHashAlgorithm|Všechno|
+|System.Security.Cryptography.MD5|Všechno|
+|System.Security.Cryptography.Oid|Všechno|
+|System.Security.Cryptography.PaddingMode|Všechno|
+|System.Security.Cryptography.RNGCryptoServiceProvider|Všechno|
+|System.Security.Cryptography.RSA|Všechno|
+|System.Security.Cryptography.RSAEncryptionPadding|Všechno|
+|System.Security.Cryptography.RSASignaturePadding|Všechno|
+|System.Security.Cryptography.SHA1|Všechno|
+|System.Security.Cryptography.SHA1Managed|Všechno|
+|System.Security.Cryptography.SHA256|Všechno|
+|System.Security.Cryptography.SHA256Managed|Všechno|
+|System.Security.Cryptography.SHA384|Všechno|
+|System.Security.Cryptography.SHA384Managed|Všechno|
+|System.Security.Cryptography.SHA512|Všechno|
+|System.Security.Cryptography.SHA512Managed|Všechno|
+|System.Security.Cryptography.SymmetricAlgorithm|Všechno|
+|System.Security.Cryptography.X509Certificates.PublicKey|Všechno|
+|System.Security.Cryptography.X509Certificates.RSACertificateExtensions|Všechno|
+|System.Security.Cryptography.X509Certificates.X500DistinguishedName|Name (Název)|
+|System.Security.Cryptography.X509Certificates.X509Certificate|Všechno|
+|System.Security.Cryptography.X509Certificates.X509Certificate2|Všechno|
+|System.Security.Cryptography.X509Certificates.X509ContentType|Všechno|
+|System.Security.Cryptography.X509Certificates.X509NameType|Všechno|
+|System. Single|Všechno|
+|System. String|Všechno|
+|System.StringComparer|Všechno|
+|System.StringComparison|Všechno|
+|System.StringSplitOptions|Všechno|
+|System.Text.Encoding|Všechno|
 |System.Text.RegularExpressions.Capture|Index, délka, hodnota|
 |System.Text.RegularExpressions.CaptureCollection|Počet, položka|
 |System.Text.RegularExpressions.Group|Zachycení, úspěch|
 |System.Text.RegularExpressions.GroupCollection|Počet, položka|
 |System.Text.RegularExpressions.Match|Prázdné, skupiny, výsledek|
 |System.Text.RegularExpressions.Regex|(Konstruktor), neshoda, shoda, shoda, nahradit, zrušit řídicí, rozdělit|
-|System.Text.RegularExpressions.RegexOptions|Vše|
-|System.Text.StringBuilder|Vše|
-|System. TimeSpan|Vše|
-|System.TimeZone|Vše|
-|System.TimeZoneInfo.AdjustmentRule|Vše|
-|System.TimeZoneInfo.TransitionTime|Vše|
-|System.TimeZoneInfo|Vše|
-|System.Tuple|Vše|
-|System.UInt16|Vše|
-|System.UInt32|Vše|
-|System.UInt64|Vše|
-|System.Uri|Vše|
-|System. UriPartial|Vše|
-|System.Xml.Linq.Extensions|Vše|
-|System.Xml.Linq.XAttribute|Vše|
-|System.Xml.Linq.XCData|Vše|
-|System.Xml.Linq.XComment|Vše|
-|System.Xml.Linq.XContainer|Vše|
-|System.Xml.Linq.XDeclaration|Vše|
+|System.Text.RegularExpressions.RegexOptions|Všechno|
+|System.Text.StringBuilder|Všechno|
+|System. TimeSpan|Všechno|
+|System.TimeZone|Všechno|
+|System.TimeZoneInfo.AdjustmentRule|Všechno|
+|System.TimeZoneInfo.TransitionTime|Všechno|
+|System.TimeZoneInfo|Všechno|
+|System.Tuple|Všechno|
+|System.UInt16|Všechno|
+|System.UInt32|Všechno|
+|System.UInt64|Všechno|
+|System.Uri|Všechno|
+|System. UriPartial|Všechno|
+|System.Xml.Linq.Extensions|Všechno|
+|System.Xml.Linq.XAttribute|Všechno|
+|System.Xml.Linq.XCData|Všechno|
+|System.Xml.Linq.XComment|Všechno|
+|System.Xml.Linq.XContainer|Všechno|
+|System.Xml.Linq.XDeclaration|Všechno|
 |System.Xml.Linq.XDocument|Vše, s výjimkou: Load|
-|System.Xml.Linq.XDocumentType|Vše|
-|System.Xml.Linq.XElement|Vše|
-|System.Xml.Linq.XName|Vše|
-|System.Xml.Linq.XNamespace|Vše|
-|System.Xml.Linq.XNode|Vše|
-|System.Xml.Linq.XNodeDocumentOrderComparer|Vše|
-|System.Xml.Linq.XNodeEqualityComparer|Vše|
-|System.Xml.Linq.XObject|Vše|
-|System.Xml.Linq.XProcessingInstruction|Vše|
-|System.Xml.Linq.XText|Vše|
-|System.Xml.XmlNodeType|Vše|
+|System.Xml.Linq.XDocumentType|Všechno|
+|System.Xml.Linq.XElement|Všechno|
+|System.Xml.Linq.XName|Všechno|
+|System.Xml.Linq.XNamespace|Všechno|
+|System.Xml.Linq.XNode|Všechno|
+|System.Xml.Linq.XNodeDocumentOrderComparer|Všechno|
+|System.Xml.Linq.XNodeEqualityComparer|Všechno|
+|System.Xml.Linq.XObject|Všechno|
+|System.Xml.Linq.XProcessingInstruction|Všechno|
+|System.Xml.Linq.XText|Všechno|
+|System.Xml.XmlNodeType|Všechno|
 
 ## <a name="ContextVariables"></a>Kontextová proměnná
 Proměnná s názvem `context` je implicitně dostupná ve všech [výrazech](api-management-policy-expressions.md#Syntax)zásad. Její členové poskytují informace, které se vztahují k `\request`. Všechny členy `context` jsou jen pro čtení.

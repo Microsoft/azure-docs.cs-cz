@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 01/21/2020
-ms.openlocfilehash: b38838c20e4ab18b64cabcb2749ec39163f1b52d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.date: 01/28/2020
+ms.openlocfilehash: 3f82a061f276aaf786bc0a9bae15b60e8bdda009
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76515050"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846336"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Pomalé dotazování protokolů v Azure Database for MariaDB
 V Azure Database for MariaDB je k dispozici pro uživatele protokol pomalých dotazů. Přístup k transakčnímu protokolu není podporován. Protokol pomalých dotazů se dá použít k identifikaci problémových míst výkonu pro řešení problémů.
@@ -52,9 +52,6 @@ Mezi další parametry, které můžete upravit, patří:
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
 Azure Database for MariaDB je integrován s protokoly diagnostiky Azure Monitor. Po povolení protokolů pomalých dotazů na serveru MariaDB se můžete rozhodnout, že se mají vysílat pro Azure Monitor protokolů, Event Hubs nebo Azure Storage. Další informace o tom, jak povolit diagnostické protokoly, naleznete v části Postupy v [dokumentaci diagnostické protokoly](../azure-monitor/platform/platform-logs-overview.md).
 
-> [!IMPORTANT]
-> Tato diagnostická funkce pro protokoly serveru je k dispozici pouze v Pro obecné účely a v paměťově optimalizovaných [cenových úrovních](concepts-pricing-tiers.md).
-
 Následující tabulka popisuje, co je v každém protokolu. V závislosti na metodě Output se pole, která jsou součástí, a pořadí, ve kterém se zobrazují, můžou lišit.
 
 | **Vlastnost** | **Popis** |
@@ -82,7 +79,7 @@ Následující tabulka popisuje, co je v každém protokolu. V závislosti na me
 | `insert_id_s` | Vložit ID |
 | `sql_text_s` | Úplný dotaz |
 | `server_id_s` | ID serveru |
-| `thread_id_s` | ID podprocesu |
+| `thread_id_s` | ID vlákna |
 | `\_ResourceId` | Identifikátor URI prostředku |
 
 ## <a name="analyze-logs-in-azure-monitor-logs"></a>Analyzovat protokoly v protokolu Azure Monitor

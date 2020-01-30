@@ -7,19 +7,19 @@ ms.service: event-grid
 ms.topic: overview
 ms.date: 10/22/2019
 ms.author: babanisa
-ms.openlocfilehash: e03429ed3df5bd3518d5e5194bd842b9a4f290ba
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: feac5891734731e6f7377750127958a40a815036
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991943"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844648"
 ---
 # <a name="what-is-azure-event-grid-on-azure-iot-edge"></a>Co je Azure Event Grid v Azure IoT Edge?
-Event Grid v IoT Edge přináší výkon a flexibilitu Azure Event Grid na hranici pro všechny scénáře založené na publikování a podřízení a událostech. Vytvářejte témata, publikujte události a přihlaste se k odběru více míst, ať už jsou moduly na stejném zařízení, v jiných hraničních zařízeních nebo službách v cloudu.
+Event Grid v IoT Edge přináší výkon a flexibilitu Azure Event Grid na hraničních zařízeních. Vytvářejte témata, publikujte události a přihlaste se k odběru více míst, ať už jsou moduly na stejném zařízení, v jiných hraničních zařízeních nebo službách v cloudu.
 
-Stejně jako v cloudu Event Grid modul IoT Edge zpracovává směrování, filtrování a spolehlivé doručování událostí ve velkém měřítku. Filtrovat události, aby se zajistilo, že se do různých obslužných rutin událostí odesílají pouze relevantní události pomocí pokročilých řetězcových, číselných a logických filtrů. Logika opakování zajišťuje, že událost dosáhne cílového modulu, hraničního zařízení nebo cloudové služby, a to i v případě, že není k dispozici v době publikování. Umožňuje použít Event Grid v IoT Edge jako výkonný mechanismus úložiště a dopředné mechanismu.
+Stejně jako v cloudu Event Grid modul IoT Edge zpracovává směrování, filtrování a spolehlivé doručování událostí ve velkém měřítku. Filtrovat události, aby se zajistilo, že se do různých obslužných rutin událostí odesílají pouze relevantní události pomocí pokročilých řetězcových, číselných a logických filtrů. Logika opakování zajišťuje, že událost dosáhne cílového cíle i v případě, že není k dispozici v době publikování. Umožňuje použít Event Grid v IoT Edge jako výkonný mechanismus úložiště a dopředné mechanismu.
 
-Event Grid v IoT Edge podporuje jak CloudEvents v 1.0, tak i vlastní schémata událostí. Podporuje také stejnou sémantiku publikování a odběru jako Event Grid v cloudu, aby bylo možné snadnou spolupráci s Azure a třetími stranami.
+Event Grid v IoT Edge podporuje jak CloudEvents v 1.0, tak i vlastní schémata událostí. Zároveň podporuje stejnou sémantiku pro publikování na více systémů, jako Event Grid v cloudu, a umožňuje tak snadnou spolupráci.
 
 Tento článek poskytuje přehled Azure Event Grid v IoT Edge. Podrobné pokyny, jak používat tento modul na hraničních zařízeních, najdete v tématu [publikování a přihlášení k odběru událostí místně](pub-sub-events-webhook-local.md). 
 
@@ -29,7 +29,7 @@ Tento obrázek ukazuje některé způsoby, jak můžete použít Event Grid na I
 
 ## <a name="when-to-use-event-grid-on-iot-edge"></a>Kdy použít Event Grid v IoT Edge
 
-Event Grid na IoT Edge je sestavená tak, aby poskytovala jednotný, snadno použitelný a spolehlivý model událostí pro sestavování architektury řízených událostmi mezi hraničním a cloudem.
+Event Grid v IoT Edge nabízí snadno použitelný a spolehlivý model událostí pro mezi hraničním a cloudem.
 
 Event Grid v IoT Edge je postavená s symetrickou plochou pro modul runtime do cloudové služby Azure, takže můžete použít stejné události a volání rozhraní API kdekoli, co potřebujete. Bez ohledu na to, jestli v cloudu provedete Pub/sub, může být na hranici nebo mezi těmito dvěma Event Grid v IoT Edge teď vaše řešení pro přechod do více stran.
 
@@ -55,8 +55,12 @@ Event Grid na IoT Edge je sestavená tak, aby odesílala události kdekoli, kde 
 
 * Další moduly zahrnující IoT Hub, funkce a vlastní moduly
 * Jiná hraniční zařízení
-* Služby hostované v cloudu, včetně Azure Event Grid a Azure Functions
 * Webhooky
+* Cloudová služba Azure Event Grid
+* Event Hubs
+* Fronty Service Bus
+* Témata Service Bus
+* Fronty úložiště
 
 ## <a name="supported-environments"></a>Podporovaná prostředí
 V současné době jsou podporována prostředí Windows 64-bit, Linux 64-bit a ARM 32-bit.

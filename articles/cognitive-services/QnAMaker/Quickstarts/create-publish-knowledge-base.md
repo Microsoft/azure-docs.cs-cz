@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 8ec3e399459adfbb7cef9e3eafbaa024fec1589f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 26c7996d6a955a183121a59254131dcb1dc6706f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447607"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844258"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rychlý Start: vytvoření, výuka a publikování znalostní báze QnA Maker Knowledge Base
 
@@ -155,9 +155,8 @@ Vyčistěte prostředky QnA Maker a bot Framework v Azure Portal.
 
 Další informace:
 
-* [Formát Markdownu v odpovědích](../concepts/data-sources-supported.md)
-* [Testování Markdownu](../concepts/data-sources-supported.md#testing-your-markdown)
-* QnA Maker [zdroje dat](../Concepts/data-sources-supported.md).
+* [Formát Markdownu v odpovědích](../reference-markdown-format.md)
+* QnA Maker [zdroje dat](../concepts/knowledge-base.md).
 * [Nastavení konfigurace prostředků robota](../tutorials/create-qna-bot.md).
 
 > [!div class="nextstepaction"]

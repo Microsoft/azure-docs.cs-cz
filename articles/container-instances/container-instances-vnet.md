@@ -4,12 +4,12 @@ description: Naučte se nasazovat skupiny kontejnerů do nové nebo existující
 ms.topic: article
 ms.date: 01/06/2020
 ms.author: danlep
-ms.openlocfilehash: 12260dcb43a675414d38cb5067b230832dd2d16b
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 920ad9598f17fbab25218827045a396d953a6531
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887952"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845178"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Nasazení instancí kontejnerů do služby Azure Virtual Network
 
@@ -33,6 +33,7 @@ Určitá omezení platí při nasazení skupin kontejnerů do virtuální sítě
 
 * Pro nasazení skupin kontejnerů do podsítě nemůže podsíť obsahovat žádné další typy prostředků. Před nasazením skupin kontejnerů do něj odeberte všechny stávající prostředky ze stávající podsítě, nebo vytvořte novou podsíť.
 * [Spravovanou identitu](container-instances-managed-identity.md) nemůžete použít ve skupině kontejnerů nasazené do virtuální sítě.
+* V rámci skupiny kontejnerů nasazených do virtuální sítě nemůžete povolit [test živého provozu](container-instances-liveness-probe.md) nebo test [připravenosti](container-instances-readiness-probe.md) .
 * Kvůli dalším zapojení síťových prostředků je nasazení skupiny kontejnerů na virtuální síť obvykle pomalejší než nasazení standardní instance kontejneru.
 
 [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
@@ -93,7 +94,7 @@ Předpony adresy virtuální sítě a podsítě určují adresní prostory pro v
 
 Po nasazení první skupiny kontejnerů pomocí této metody můžete nasadit do stejné podsítě zadáním virtuální sítě a názvů podsítí nebo síťového profilu, který vám Azure pro vás automaticky vytvoří. Vzhledem k tomu, že Azure deleguje podsíť k Azure Container Instances, můžete do podsítě nasadit *jenom* skupiny kontejnerů.
 
-### <a name="existing-virtual-network"></a>Stávající virtuální síť
+### <a name="existing-virtual-network"></a>Existující virtuální síť
 
 Nasazení skupiny kontejnerů do existující virtuální sítě:
 
@@ -247,7 +248,7 @@ appcontaineryaml  myResourceGroup  Running   mcr.microsoft.com/azuredocs/aci-hel
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-### <a name="delete-container-instances"></a>Odstranit instance kontejneru
+### <a name="delete-container-instances"></a>Odstranit instance kontejnerů
 
 Až budete pracovat s instancemi kontejnerů, které jste vytvořili, odstraňte je pomocí následujících příkazů:
 
@@ -261,7 +262,7 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 
 
 > [!NOTE]
-> Pokud při pokusu o odebrání profilu sítě dojde k chybě, povolte 2-3 dní, aby platforma automaticky zmírnila problém a znovu se pokusila o odstranění. Pokud stále máte problémy s odebráním profilu sítě, [otevřete žádost o podporu](https://azure.microsoft.com/support/create-ticket/).
+> Pokud při pokusu o odebrání profilu sítě dojde k chybě, povolte 3-4 dní, aby platforma automaticky zmírnila problém a znovu se pokusila o odstranění. Pokud potřebujete profil sítě odstranit okamžitě, [otevřete žádost o podporu](https://azure.microsoft.com/support/create-ticket/) odkazující na službu Azure Container Instances.
 
 Tato funkce v současnosti vyžaduje několik dalších příkazů k odstranění síťových prostředků, které jste vytvořili dříve. Pokud jste použili ukázkové příkazy v předchozích částech tohoto článku k vytvoření virtuální sítě a podsítě, můžete k odstranění těchto síťových prostředků použít následující skript.
 

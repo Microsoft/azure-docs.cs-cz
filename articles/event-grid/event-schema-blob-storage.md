@@ -7,18 +7,21 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 9c5b7b4301eb9cf019399795fc45b69fe152061d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 4a71f50a130bd9b22965d39fa942b47c70857a86
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722318"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844475"
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>Azure Event Grid schéma událostí pro úložiště objektů BLOB
 
 Tento článek poskytuje vlastnosti a schéma pro události služby Blob Storage. Úvod do schémat událostí najdete v tématu [Azure Event Grid schéma událostí](event-schema.md).
 
 Seznam ukázkových skriptů a kurzů najdete v tématu [zdroj události úložiště](event-sources.md#storage).
+
+>[!NOTE]
+> Integraci událostí podporují jenom účty úložiště typu **StorageV2 (obecné účely v2)** a **BlobStorage** . **Úložiště (Genral pro účely V1)** *nepodporuje integraci* s Event Grid.
 
 ## <a name="list-of-events-for-blob-rest-apis"></a>Seznam událostí pro rozhraní REST API objektů BLOB
 

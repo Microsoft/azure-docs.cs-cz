@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: 3624c8fd8b15f6d35917f4ead676221d93a26ddc
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: dfa7681b43bd18e15ee929156ab9a45bb9790c5b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646485"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845585"
 ---
 # <a name="plan-virtual-networks"></a>Plánování virtuálních sítí
 
@@ -39,9 +39,9 @@ Všechny prostředky Azure se vytvářejí v oblasti a předplatném Azure. Pros
 
 ## <a name="subscriptions"></a>Předplatná
 
-V rámci každého předplatného můžete nasadit libovolný počet virtuálních sítí, a to až do [limitu](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Některé organizace mají různá předplatná pro různá oddělení, například. Další informace a požadavky týkající se předplatných najdete v tématu zásady [správného řízení předplatného](/azure/architecture/cloud-adoption-guide/subscription-governance#define-your-hierarchy).
+V rámci každého předplatného můžete nasadit libovolný počet virtuálních sítí, a to až do [limitu](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Některé organizace mají různá předplatná pro různá oddělení, například. Další informace a požadavky týkající se předplatných najdete v tématu zásady [správného řízení předplatného](/azure/cloud-adoption-framework/reference/migration-with-enterprise-scaffold#define-your-hierarchy).
 
-## <a name="segmentation"></a>Segmentation
+## <a name="segmentation"></a>Segmentace
 
 Můžete vytvořit více virtuálních sítí pro každé předplatné a jednotlivé oblasti. V každé virtuální síti můžete vytvořit několik podsítí. Následující pokyny vám pomůžou určit, kolik virtuálních sítí a podsítí budete potřebovat:
 
