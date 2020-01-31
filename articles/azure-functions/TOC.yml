@@ -10,29 +10,28 @@
       href: functions-compare-logic-apps-ms-flow-webjobs.md
     - name: Možnosti plánu hostování
       href: functions-scale.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
-    - name: 'Vytvoření funkce – C#'
-      href: functions-create-your-first-function-visual-studio.md
-    - name: Vytvoření funkce – Java
-      href: functions-create-first-java-maven.md
-    - name: Vytvoření funkce – JavaScript
-      href: functions-create-first-function-vs-code.md
-    - name: Vytvoření funkce – PowerShell
-      href: functions-create-first-function-powershell.md
-    - name: Vytvoření funkce – Python
-      href: functions-create-first-function-python.md
-    - name: Připojení ke službám
+    - name: Vytvoření funkce
+      expanded: true
       items:
-        - name: 'Úložiště – C#'
-          href: functions-add-output-binding-storage-queue-vs.md
-        - name: Storage – Java
-          href: functions-add-output-binding-storage-queue-java.md
-        - name: Úložiště – JavaScript
+        - name: Visual Studio Code
+          href: /azure/azure-functions/functions-create-first-function-vs-code
+        - name: Visual Studio
+          href: functions-create-your-first-function-visual-studio.md
+        - name: Příkazový řádek
+          href: functions-create-first-azure-function-azure-cli.md
+        - name: Maven (Java)
+          href: functions-create-first-java-maven.md
+    - name: Připojení k úložišti
+      items:
+        - name: Visual Studio Code
           href: functions-add-output-binding-storage-queue-vs-code.md
-        - name: Storage – Python
-          href: functions-add-output-binding-storage-queue-python.md
+        - name: Visual Studio
+          href: functions-add-output-binding-storage-queue-vs.md
+        - name: Maven (Java)
+          href: functions-add-output-binding-storage-queue-java.md
 - name: Kurzy
   items:
     - name: Služba Functions s Logic Apps
@@ -55,7 +54,7 @@
       href: ../iot-edge/tutorial-deploy-function.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: Java s Azure Cosmos DB a Event Hubs
       href: functions-event-hub-cosmos-db.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Azure Serverless Community Library
       href: 'https://www.serverlesslibrary.net/'
@@ -160,7 +159,7 @@
                 - name: portál Azure
                   href: functions-create-first-azure-function.md
                 - name: Příkazový řádek
-                  href: functions-create-first-azure-function-azure-cli.md
+                  href: create-cli.md
                 - name: Visual Studio
                   href: create-visual-studio.md
                 - name: Visual Studio Code

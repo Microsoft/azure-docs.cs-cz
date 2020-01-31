@@ -232,6 +232,8 @@
           href: disks-types.md
         - name: Šifrování
           href: disk-encryption.md
+        - name: Rezervace služby Disk Storage
+          href: ../../cost-management-billing/reservations/understand-disk-reservations.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: Návrh pro vysoký výkon
           href: premium-storage-performance.md
         - name: Zvládání výkonových špiček disků
@@ -551,6 +553,8 @@
           href: disks-use-storage-explorer-managed-disks.md
         - name: Pořízení snímku disku
           href: snapshot-copy-managed-disk.md
+        - name: Rezervace služby Disk Storage
+          href: disks-reserved-capacity.md
         - name: Vytvoření přírůstkového snímku
           href: disks-incremental-snapshots.md
         - name: Zálohování nespravovaných disků

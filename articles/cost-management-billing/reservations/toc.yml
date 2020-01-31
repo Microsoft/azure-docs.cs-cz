@@ -12,6 +12,8 @@
           href: prepay-sql-data-warehouse-charges.md
         - name: Nákup rezervace virtuálního počítače
           href: ../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+        - name: Azure Disk Storage
+          href: ../../virtual-machines/linux/disks-reserved-capacity.md?toc=/azure/billing/TOC.json
         - name: Nákup rezervace Azure Storage
           href: ../../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/billing/TOC.json
         - name: Nákup rezervace Cosmos DB
@@ -40,8 +42,12 @@
       items:
         - name: Slevy na rezervovanou instanci virtuálního počítače
           href: ../manage/understand-vm-reservation-charges.md
+        - name: Jak se vytvářejí doporučení pro rezervace
+          href: reserved-instance-purchase-recommendations.md
         - name: Slevy na rezervovanou kapacitu Azure Storage
           href: understand-storage-charges.md
+        - name: Slevy na rezervace Azure Disk Storage
+          href: understand-disk-reservations.md
         - name: Slevy na rezervovanou kapacitu Cosmos DB
           href: understand-cosmosdb-reservation-charges.md
         - name: Slevy na rezervovanou kapacitu SQL Database

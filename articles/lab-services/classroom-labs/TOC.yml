@@ -44,6 +44,8 @@
           href: class-type-database-management.md
         - name: Poznámkové bloky Jupyter a Python
           href: class-type-jupyter-notebook.md
+        - name: Vývoj mobilních aplikací s využitím sady Android Studio
+          href: class-type-mobile-dev-android-studio.md
     - name: Vytvoření a konfigurace účtů testovacího prostředí (vlastník testovacího prostředí)
       items:
         - name: Vytvoření a správa účtů testovacího prostředí

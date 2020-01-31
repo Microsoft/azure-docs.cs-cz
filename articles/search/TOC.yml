@@ -400,6 +400,8 @@
           href: cognitive-search-skill-conditional.md
         - name: Extrakce dokumentů
           href: cognitive-search-skill-document-extraction.md
+        - name: Detekce PII
+          href: cognitive-search-skill-pii-detection.md
     - name: Vlastní dovednosti
       items:
         - name: Vlastní webové rozhraní API

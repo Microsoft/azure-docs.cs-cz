@@ -18,12 +18,14 @@
       href: forward-events-iothub.md
     - name: Reakce na události služby Blob Storage v místním prostředí
       href: react-blob-storage-events-locally.md
-- name: Ukázky
+- name: ukázky
   href: 'https://github.com/Azure/event-grid-iot-edge'
 - name: Koncepty
   items:
     - name: Koncepty Event Grid
       href: concepts.md
+    - name: Obslužné rutiny a cíle událostí
+      href: event-handlers.md
     - name: Zabezpečení a ověřování
       href: security-authentication.md
     - name: Schémata událostí
@@ -42,6 +44,8 @@
           href: persist-state-linux.md
         - name: Windows
           href: persist-state-windows.md
+    - name: Monitorování témat a odběrů
+      href: monitor-topics-subscriptions.md
     - name: Konfigurace protokolů rozhraní API
       href: configure-api-protocol.md
     - name: Konfigurace ověřování klientů
@@ -60,3 +64,5 @@
       href: configure-event-grid.md
     - name: Schéma konfigurace dvojčat modulů
       href: twin-json.md
+    - name: Poznámky k verzi
+      href: release-notes.md

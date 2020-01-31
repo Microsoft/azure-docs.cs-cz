@@ -67,23 +67,37 @@
       href: Tutorials/create-qna-bot.md
 - name: Koncepty
   items:
-    - name: Znalostní báze
-      href: Concepts/knowledge-base.md
-      displayName: 'metadata, pair'
-    - name: S využitím LUIS a QnA Makeru
-      href: ../luis/choose-natural-language-processing-service.md?toc=/azure/cognitive-services/qnamaker/toc.json
-    - name: Životní cyklus vývoje znalostní báze
-      href: Concepts/development-lifecycle-knowledge-base.md
-      displayName: 'version control, test, index, publish, monitor usage, create'
+    - name: Prostředky Azure
+      href: Concepts/azure-resources.md
+    - name: Návrh znalostní báze
+      items:
+        - name: Pro jazyky
+          href: Concepts/design-language-culture.md
+        - name: Pro klientské aplikace
+          href: Concepts/integration-with-other-applications.md
+    - name: Zdroje dat a obsah
+      items:
+        - name: Import ze zdrojů dat
+          href: Concepts/knowledge-base.md
+        - name: Importované typy obsahu
+          href: Concepts/content-types.md
+        - name: Sady otázek a odpovědí
+          href: Concepts/question-answer-set.md
+    - name: Životní cyklus znalostní báze
+      items:
+        - name: Životní cyklus vývoje
+          href: Concepts/development-lifecycle-knowledge-base.md
+          displayName: 'version control, test, index, publish, monitor usage, create'
+    - name: Znalostní báze dotazů
+      items:
+        - name: Získání odpovědi
+          displayName: 'DefaultAnswer, Default answer'
+          href: Concepts/query-knowledge-base.md
+        - name: Skóre spolehlivosti
+          href: Concepts/confidence-score.md
     - name: Osvědčené postupy
       href: Concepts/best-practices.md
       displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
-    - name: Skóre spolehlivosti
-      displayName: 'DefaultAnswer, Default answer'
-      href: Concepts/confidence-score.md
-    - name: Podporované zdroje dat
-      href: Concepts/data-sources-supported.md
-      displayName: 'metadata, pair, sharepoint, authentication, permissions, faq, pdf, excel, xls, rtf, html, txt, tsv, url, end of line, new line, carriage return, markdown, commonmark, format, standard'
 - name: Návody
   items:
     - name: Úprava znalostní báze
@@ -106,6 +120,8 @@
         - name: Získání odpovědí pomocí metadat
           href: How-To/metadata-generateanswer-usage.md
           displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
+        - name: Nastavení výchozí odpovědi
+          href: How-to/change-default-answer.md
         - name: Vytvoření robota s využitím QnA Makeru a LUIS
           href: Tutorials/integrate-qnamaker-luis.md
         - name: Výběr jazyka
