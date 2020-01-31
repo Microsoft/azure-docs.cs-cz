@@ -4,9 +4,9 @@ title: Dokumentace ke službě Azure App Configuration (Preview)
 metadata:
   title: 'Dokumentace ke službě Azure App Configuration – kurzy, reference k rozhraní API'
   description: 'Azure App Configuration je spravovaná služba, která vývojářům pomáhá jednoduše a bezpečně centralizovat nastavení funkcí a aplikací.'
-  author: yegu-ms
+  author: lisaguthrie
   manager: maiye
-  ms.author: yegu
+  ms.author: lcozzens
   ms.service: azure-app-configuration
   ms.topic: landing-page
   ms.date: 04/19/2019

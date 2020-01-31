@@ -459,6 +459,8 @@
           href: speech-sdk.md
         - name: Dostupnost scénáře
           href: scenario-availability.md
+        - name: Dodání aplikace
+          href: ship-application.md
     - name: Rychlé starty
       items:
         - name: Vytvoření projektu

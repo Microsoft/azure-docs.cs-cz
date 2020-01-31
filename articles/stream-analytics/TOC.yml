@@ -65,6 +65,7 @@
       items:
         - name: Principy a úpravy jednotek streamování
           href: stream-analytics-streaming-unit-consumption.md
+          displayName: 'scale, performance'
         - name: Vylepšení výkonu dotazů
           href: stream-analytics-parallelization.md
         - name: Přerozdělení vstupu
