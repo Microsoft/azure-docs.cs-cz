@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: c093cea9f8719722cc44c9d6424c06039360e90f
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: ffb9480508366b223e49f173df3dc76cb711116d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690389"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769174"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy stavu Load Balanceru
 
@@ -200,7 +200,7 @@ Load Balancer je průchozí služba (neukončuje připojení TCP) a tok je vždy
 
 Datagramy UDP budou doručeny do zdravých koncových bodů back-endu.
 
-Je přenos UDP a neexistuje žádný stav toku sledovány pro protokol UDP. Pokud dojde k chybě sondy stavu koncového bodu back-end, existující toky UDP se můžou přesunout do jiné v dobrém stavu v back-endu fondu.
+Je přenos UDP a neexistuje žádný stav toku sledovány pro protokol UDP. Pokud selže test stavu koncového bodu back-end, stávající toky UDP se přesunou do jiné funkční instance ve fondu back-endu.
 
 Pokud selžou i všechny testy v rámci všech instancí ve fondu back-endu, stávající toky UDP se ukončí u úrovní Basic a Standard nástroje pro vyrovnávání zatížení.
 

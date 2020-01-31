@@ -2,18 +2,18 @@
 title: Extrakce, transformace a načítání (ETL) ve velkém měřítku – Azure HDInsight
 description: Přečtěte si, jak se v HDInsight s Apache Hadoop používá extrakce, transformace a načtení.
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/13/2019
-ms.author: ashishth
-ms.openlocfilehash: ceafee2d3356d37e74039789c8243ace41c141b2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: hdinsightactive
+ms.date: 01/27/2020
+ms.openlocfilehash: f2c18a1e858fcebf8d2c82210f2290cf4a14d061
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435780"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846013"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Extrakce, transformace a načítání (ETL) ve velkém měřítku
 
@@ -85,13 +85,13 @@ V případě nahrávání datových sad v rozsahu terabajtů může být latence
 
 Azure SQL DW je skvělou volbou pro ukládání vyčištěných a připravených výsledků budoucích analýz.  Azure HDInsight se dá využít k provádění těchto služeb pro Azure SQL DW.
 
-Azure SQL Data Warehouse (SQL DW) je relační úložiště databáze optimalizované pro analytické úlohy.  Azure SQL DW škáluje na základě dělených tabulek.  Tabulky mohou být rozděleny mezi více uzlů.  V době vytváření jsou vybrané uzly Azure SQL DW.  Můžou se škálovat po faktu, ale to je aktivní proces, který může vyžadovat přesun dat. Další informace najdete v tématu [SQL Data Warehouse – Správa výpočetních](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md) prostředků.
+Azure SQL Data Warehouse (SQL DW) je relační úložiště databáze optimalizované pro analytické úlohy.  Azure SQL DW škáluje na základě dělených tabulek.  Tabulky mohou být rozděleny mezi více uzlů.  V době vytváření jsou vybrané uzly Azure SQL DW.  Můžou se škálovat po faktu, ale to je aktivní proces, který může vyžadovat přesun dat. Další informace najdete v tématu [SQL Data Warehouse – Správa výpočetních](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)prostředků.
 
 ### <a name="apache-hbase"></a>Apache HBase
 
 Apache HBA je úložiště hodnot klíč-hodnota dostupné ve službě Azure HDInsight.  Apache HBase je NoSQL databáze typu open source, která je založena na Hadoop a modelována podle Google BigTable. HBA poskytují náhodný přístup a silnou konzistenci pro velké objemy nestrukturovaných a částečně strukturovaných dat v databázi bez schématu uspořádané podle rodin sloupců.
 
-Data se ukládají na řádky tabulky a data v řádku jsou seskupena podle rodin sloupců. HBase je schemaless databáze ve smyslu, že před jejich použitím není třeba definovat sloupce ani v nich uložený typ dat. Kód open-source se škáluje lineárně pro manipulaci s petabajty dat na tisících uzlech. HBA mohou spoléhat na redundanci dat, dávkové zpracování a další funkce, které jsou poskytovány distribuovanými aplikacemi v ekosystému Hadoop.   
+Data se ukládají na řádky tabulky a data v řádku jsou seskupena podle rodin sloupců. HBase je schemaless databáze ve smyslu, že před jejich použitím není třeba definovat sloupce ani v nich uložený typ dat. Kód open-source se škáluje lineárně pro manipulaci s petabajty dat na tisících uzlech. HBA mohou spoléhat na redundanci dat, dávkové zpracování a další funkce, které jsou poskytovány distribuovanými aplikacemi v ekosystému Hadoop.
 
 HBA je vynikající cíl pro data senzorů a protokolů pro účely budoucí analýzy.
 
@@ -107,7 +107,7 @@ Azure nabízí jako platformu jako službu (PAAS) tři různé relační databá
 
 Tyto produkty se škálují nahoru, což znamená, že se škálují přidáním více PROCESORů a paměti.  Můžete také použít prémiové disky s produkty pro lepší výkon vstupně-výstupních operací.
 
-## <a name="azure-analysis-services"></a>Azure Analysis Services 
+## <a name="azure-analysis-services"></a>Azure Analysis Services
 
 Azure Analysis Services (AAS) je analytický datový stroj, který se používá v rozhodovací podpoře a obchodní analýze a poskytuje analytická data pro obchodní sestavy a klientské aplikace, jako jsou Power BI, Excel, sestavy služby Reporting Services a další data. nástroje pro vizualizaci.
 
@@ -115,11 +115,11 @@ Datové krychle analýzy se můžou škálovat změnou vrstev pro každou jednot
 
 ## <a name="extract-and-load"></a>Extrahovat a načíst
 
-Jakmile data v Azure existují, můžete k jejich extrakci a načtení do jiných produktů použít spoustu služeb.  HDInsight podporuje Sqoop a Flume. 
+Jakmile data v Azure existují, můžete k jejich extrakci a načtení do jiných produktů použít spoustu služeb.  HDInsight podporuje Sqoop a Flume.
 
 ### <a name="apache-sqoop"></a>Apache Sqoop
 
-Apache Sqoop je nástroj určený k efektivnímu přenosu dat mezi strukturovanými, částečně strukturovanými a nestrukturovanými zdroji dat. 
+Apache Sqoop je nástroj určený k efektivnímu přenosu dat mezi strukturovanými, částečně strukturovanými a nestrukturovanými zdroji dat.
 
 Sqoop používá MapReduce k importu a exportu dat, aby se zajistila paralelní operace a odolnost proti chybám.
 
@@ -131,10 +131,10 @@ Apache Flume se nedá použít se službou Azure HDInsight.  Místní instalace 
 
 ## <a name="transform"></a>Transformace
 
-Jakmile data ve vybraném umístění existují, je nutné je vyčistit, zkombinovat nebo připravit na konkrétní vzor použití.  Pro tento druh práce jsou k dispozici všechny vhodné možnosti pro podregistr, prasata a Spark SQL.  Jsou podporovány v HDInsight. 
+Jakmile data ve vybraném umístění existují, je nutné je vyčistit, zkombinovat nebo připravit na konkrétní vzor použití.  Pro tento druh práce jsou k dispozici všechny vhodné možnosti pro podregistr, prasata a Spark SQL.  Jsou všechny podporované v HDInsight.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Použití systému Apache prasete s Apache Hadoop v HDInsight](hdinsight-use-pig.md)
-* [Použití Apache Hive jako nástroje ETL](apache-hadoop-using-apache-hive-as-an-etl-tool.md) 
+* [Použití Apache Hive jako nástroje ETL](apache-hadoop-using-apache-hive-as-an-etl-tool.md)
 * [Použití služby Azure Data Lake Storage Gen2 s clustery Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
+* [Přesunutí dat z Azure SQL Database do tabulky Apache Hive](./apache-hadoop-use-sqoop-mac-linux.md)
