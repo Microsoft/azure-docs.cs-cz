@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a88f03adab3beaea75ec2fa9a1c6f59b09739025
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 932dfb9624177c299997c4f9f184dc5c973d0fa0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76153126"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899217"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Kurz: nastavení geografického plotu pomocí Azure Maps
 
@@ -174,7 +174,7 @@ Po instalaci aplikace pro publikování pomocí následujícího postupu nahrajt
 
 V této části vytvoříme obslužnou rutinu události, která obdrží oznámení. Tato obslužná rutina události by měla upozornit Operations Manager o událostech vstupu a ukončení jakéhokoli zařízení.
 
-Pro zpracování, zadávání a ukončení událostí provedeme dvě [Logic Apps](https://docs.microsoft.com/azure/event-grid/event-handlers#logic-apps) služby. V případě událostí v triggeru Logic Apps se v posloupnosti spouští více událostí. Nápad je odeslat výstrahy do Operations Manager v tomto případě e-mailů. Následující obrázek znázorňuje vytvoření aplikace logiky pro událost vstupu geografické zóny. Podobně můžete vytvořit další pro událost Exit. Další informace najdete v tématu všechny [podporované obslužné rutiny událostí](https://docs.microsoft.com/azure/event-grid/event-handlers) .
+Pro zpracování událostí Enter a Exit provedeme dvě [Logic Apps](https://docs.microsoft.com/azure/event-grid/event-handlers#logic-apps) služby. V případě událostí v triggeru Logic Apps se v posloupnosti spouští více událostí. Nápad je odeslat výstrahy do Operations Manager v tomto případě e-mailů. Následující obrázek znázorňuje vytvoření aplikace logiky pro událost vstupu geografické zóny. Podobně můžete vytvořit další pro událost Exit. Další informace najdete v tématu všechny [podporované obslužné rutiny událostí](https://docs.microsoft.com/azure/event-grid/event-handlers) .
 
 1. Vytvoření aplikace logiky v Azure Portal
 
@@ -194,7 +194,7 @@ Pro zpracování, zadávání a ukončení událostí provedeme dvě [Logic Apps
 
 ## <a name="create-an-azure-maps-events-subscription"></a>Vytvoření předplatného Azure Mapsch událostí
 
-Azure Maps podporuje tři typy událostí. Můžete se podívat na Azure Maps podporované typy událostí [zde] (https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps. Potřebujeme dvě různé odběry událostí, jednu pro událost Enter a jednu pro události Exit.
+Azure Maps podporuje tři typy událostí. [Tady](https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps)se můžete podívat na Azure Maps podporované typy událostí. Potřebujeme dvě různé odběry událostí, jednu pro událost Enter a jednu pro události Exit.
 
 Pomocí následujících kroků vytvořte odběr událostí pro události zadání geografických zón. Podobným způsobem se můžete přihlásit k odběru událostí ukončení geografického výstupu.
 

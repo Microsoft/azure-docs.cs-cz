@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: 772f6f51fb98b3a9adbd1efe6571842c667e8e8e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/30/2020
+ms.openlocfilehash: 35dbd064a09a96dae58e1b15a6d8889bda45ee0d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427032"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899846"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Výběr cenové úrovně pro Azure Kognitivní hledání
 
@@ -21,15 +21,20 @@ Když vytváříte službu Azure Kognitivní hledání, vytvoří se prostředek
 
 Většina zákazníků začíná na bezplatné úrovni, takže může službu vyhodnotit. Po vyhodnocení je běžné vytvořit druhou službu na jedné z vyšších úrovní vývoje a produkčních nasazení.
 
-I když všechny úrovně, včetně úrovně Free, všeobecně nabízejí paritu funkcí, větší úlohy můžou vymezit potřebu vyšších úrovní. Například [rozšíření AI](cognitive-search-concept-intro.md) má dlouhodobě běžící dovednosti, které vyprší časový limit bezplatné služby, pokud není datová sada malá.
+## <a name="feature-availability-by-tier"></a>Dostupnost funkcí podle úrovně
 
-> [!NOTE] 
-> Výjimkou parity funkcí jsou [indexery](search-indexer-overview.md), které nejsou k dispozici na standardu S3 HD.
->
+Téměř všechny funkce jsou k dispozici na všech úrovních, včetně bezplatné, ale funkce nebo pracovní postup, který je náročný na prostředky, nemusí fungovat správně, pokud jim neposkytnete dostatečnou kapacitu. Například [rozšíření AI](cognitive-search-concept-intro.md) má dlouhodobě běžící dovednosti, které vyprší časový limit bezplatné služby, pokud není datová sada malá.
 
-## <a name="available-tiers"></a>Dostupné úrovně
+Následující tabulka popisuje omezení funkcí souvisejících s vrstvami.
 
-Úrovně odrážejí charakteristiky hardwaru, který hostuje službu (spíše než funkce) a které jsou odlišené:
+| Funkce | Omezení |
+|---------|-------------|
+| [Indexery](search-indexer-overview.md) | Indexery nejsou k dispozici na S3 HD. |
+| [Šifrovací klíče spravované zákazníkem](search-security-manage-encryption-keys.md) | Není k dispozici na úrovni Free. |
+
+## <a name="tiers-skus"></a>Úrovně (SKU)
+
+Úrovně se liší:
 
 + Množství indexů a indexerů, které můžete vytvořit
 + Velikost a rychlost oddílů (fyzické úložiště)
@@ -80,7 +85,7 @@ V případě [obohacení AI](cognitive-search-concept-intro.md)byste měli napl�
 |-----------|----------------|
 | Trhliny dokumentů, extrakce textu | Zadarmo |
 | Trhliny dokumentů, extrakce obrázků | Účtuje se podle počtu imagí extrahovaných z vašich dokumentů. V [konfiguraci indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters)je **imageAction** parametr, který aktivuje extrakci imagí. Pokud je **imageAction** nastavené na None (výchozí nastavení), nebudete se vám za extrakci imagí účtovat. Sazba za extrakci imagí je popsána na stránce s [podrobnostmi o cenách](https://azure.microsoft.com/pricing/details/search/) pro Azure kognitivní hledání.|
-| [Vestavěné dovednosti při rozpoznávání](cognitive-search-predefined-skills.md) | Účtuje se se stejnou sazbou, jako kdyby jste provedli úlohu přímo pomocí Cognitive Services. |
+| [Předdefinované kognitivní dovednosti](cognitive-search-predefined-skills.md) | Účtuje se se stejnou sazbou, jako kdyby jste provedli úlohu přímo pomocí Cognitive Services. |
 | Vlastní dovednosti | Vlastní dovednost je funkce, kterou zadáte. Náklady na používání vlastní dovednosti závisí výhradně na tom, jestli vlastní kód volá jiné měřené služby. |
 
 <a name="search-units"></a>
@@ -97,9 +102,9 @@ Fakturační sazba je každou hodinu. Každá úroveň má postupně vyšší m�
 
 Většina zákazníků přinese jenom část celkové kapacity online, která uchovává zbývající rezervu. Pro účely fakturace určuje počet oddílů a replik, které přivedete do režimu online, vypočítané vzorcem SU za každou hodinu.
 
-## <a name="how-to-manage-and-reduce-costs"></a>Jak spravovat a snižovat náklady
+## <a name="how-to-manage-costs"></a>Jak spravovat náklady
 
-Kromě následujících návrhů přejděte na téma [fakturace a Správa nákladů](https://docs.microsoft.com/azure/billing/billing-getting-started).
+Následující návrhy vám pomůžou zajistit minimální náklady:
 
 - Vytvořte všechny prostředky ve stejné oblasti nebo v několika oblastech, abyste minimalizovali nebo vyloučili poplatky za šířku pásma.
 
@@ -109,7 +114,11 @@ Kromě následujících návrhů přejděte na téma [fakturace a Správa nákla
 
 - Nahorizontální navýšení operací náročných na prostředky, jako je indexování, a následná změna nastavení pro běžné úlohy dotazů. Začněte s minimální konfigurací pro Azure Kognitivní hledání (jeden SU tvořený jedním oddílem a jednou replikou) a pak sledujte aktivitu uživatelů, abyste mohli identifikovat vzorce používání, které by znamenaly nutnost větší kapacity. Pokud existuje předvídatelný vzor, může být možné synchronizovat škálování s aktivitou (pro automatizaci musíte napsat kód).
 
-Službu vyhledávání nemůžete vypnout, aby se snížila vaše vyúčtování. Vyhrazené prostředky jsou vždycky v provozu a jsou vyhrazené pro vaše výhradní použití po dobu života vaší služby. V rámci samotné služby je jediným způsobem, jak snížit vaše vyúčtování, je snížit počet replik a oddílů na úroveň, která stále poskytuje přijatelný výkon a [dodržování předpisů SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/), nebo vytvořit službu na nižší úrovni (hodinové sazby S1 jsou nižší než ceny S2 a S3). Za předpokladu, že jste službu zařídili na konci vašich projekce zatížení, můžete při zvětšování služby vytvořit druhou větší službu, znovu sestavit indexy na druhou službu a pak odstranit první z nich.
+Kromě toho si projděte téma [fakturace a Správa nákladů](https://docs.microsoft.com/azure/billing/billing-getting-started) pro integrované nástroje a funkce týkající se útraty.
+
+Vypínání vyhledávací služby na dočasné bázi není možné. Vyhrazené prostředky jsou vždycky v provozu a jsou vyhrazené pro vaše výhradní použití po dobu života vaší služby. Odstranění služby je trvalé a zároveň odstraní přidružená data.
+
+V rámci samotné služby je jediným způsobem, jak snížit vaše vyúčtování, je snížit počet replik a oddílů na úroveň, která stále poskytuje přijatelný výkon a [dodržování předpisů SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/), nebo vytvořit službu na nižší úrovni (hodinové sazby S1 jsou nižší než ceny S2 a S3). Za předpokladu, že jste službu zařídili na konci vašich projekce zatížení, můžete při zvětšování služby vytvořit druhou větší službu, znovu sestavit indexy na druhou službu a pak odstranit první z nich.
 
 ## <a name="how-to-evaluate-capacity-requirements"></a>Jak vyhodnotit požadavky na kapacitu
 

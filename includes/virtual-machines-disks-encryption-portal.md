@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/13/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 662b2792a2e09603425b1988138326799334f323
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0912316d1c41f46e5dba74b58017f4fd5e8ed529
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973393"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76909118"
 ---
 ### <a name="portal"></a>Portál
 
@@ -77,6 +77,7 @@ Měla by se zobrazit a úspěšně zobrazit dvě oznámení. Díky tomu budete m
 Teď, když jste vytvořili a nastavili Trezor klíčů a sadu šifrování disků, můžete nasadit virtuální počítač pomocí šifrování.
 Proces nasazení virtuálního počítače se podobá standardnímu procesu nasazení. jediným rozdílem je, že je potřeba nasadit virtuální počítač ve stejné oblasti, ve které se nacházejí vaše další prostředky, a Vy se rozhodnete použít spravovaný klíč zákazníka.
 
+1. Otevřete [odkaz sady Disk Encryption](https://aka.ms/diskencryptionsets).
 1. Vyhledejte **Virtual Machines** a vyberte **+ Přidat** a vytvořte virtuální počítač.
 1. Na kartě **základní** vyberte stejnou oblast jako sadu šifrování disku a Azure Key Vault.
 1. Zadejte další hodnoty na kartě **Basic** , jak chcete.
@@ -96,6 +97,7 @@ Chcete-li spravovat a konfigurovat šifrování disku na stávajících discích
 > [!CAUTION]
 > Povolení šifrování disku na všech discích připojených k VIRTUÁLNÍm počítačům bude vyžadovat, abyste virtuální počítač zastavili.
 
+1. Otevřete [odkaz sady Disk Encryption](https://aka.ms/diskencryptionsets).
 1. Přejděte k virtuálnímu počítači, který je ve stejné oblasti jako jedna ze sad pro šifrování disků.
 1. Otevřete virtuální počítač a vyberte **zastavit**.
 

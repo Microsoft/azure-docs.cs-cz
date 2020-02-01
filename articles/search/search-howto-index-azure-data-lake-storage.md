@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 628b8bb5c3cb83ae6038a7150420893d7abe61d5
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 4b725c8a1bf0649a640c02a9a1828ec9014d36d6
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112281"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905655"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>Indexování dokumentů v Azure Data Lake Storage Gen2
 
@@ -47,3 +47,10 @@ Indexování obsahu v Data Lake Storage Gen2 je stejné jako indexování obsahu
 Azure Data Lake Storage Gen2 implementuje [model řízení přístupu](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control) , který podporuje řízení přístupu na základě role (RBAC) Azure a seznamy řízení přístupu (ACL) typu POSIX. Při indexování obsahu z Data Lake Storage Gen2 Azure Kognitivní hledání z obsahu neextrahuje informace o RBAC a seznamu ACL. V důsledku toho tyto informace nebudou zahrnuty do indexu služby Azure Kognitivní hledání.
 
 Je-li udržování řízení přístupu u každého dokumentu v indexu důležité, je k implementaci [oříznutí zabezpečení](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search)k dispozici vývojář aplikace.
+
+## <a name="change-detection"></a>Zjišťování změn
+
+Data Lake Storage Gen2 indexer podporuje detekci změn. To znamená, že když indexer spustí, přeindexuje změněné objekty blob, jak je určuje časové razítko `LastModified` objektu BLOB.
+
+> [!NOTE] 
+> Data Lake Storage Gen2 povoluje přejmenování adresářů. Při přejmenování adresáře se neaktualizují časová razítka pro objekty BLOB v tomto adresáři. V důsledku toho indexer nebude tyto objekty blob Přeindexovat. Pokud potřebujete objekty BLOB v adresáři, který se má znovu indexovat po přejmenování adresáře, protože teď mají nové adresy URL, budete muset aktualizovat `LastModified` časové razítko pro všechny objekty BLOB v adresáři, aby indexer věděl, že je při budoucím spuštění přeindexuje.

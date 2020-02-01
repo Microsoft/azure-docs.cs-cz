@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 3bd13a63c3f4fa275f7e4789c184802445519388
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 57dc7bb98bf4c2f733be0f2c94e17481a429be6d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772608"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906798"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Konfigurace SQL Server instance clusteru s podporou převzetí služeb při selhání se službou Premium na virtuálních počítačích Azure
 
@@ -185,7 +185,7 @@ Po vytvoření a konfiguraci virtuálních počítačů můžete nakonfigurovat 
   > - Zvažte použití samostatné sdílené složky pro záložní soubory k uložení IOPS a kapacity prostoru této sdílené složky pro data a soubory protokolů. Pro záložní soubory můžete použít buď prémiovou, nebo standardní souborovou sdílenou složku.
   > - Pokud používáte systém Windows 2012 R2 a starší, připojte ke sdílené složce, kterou budete používat jako určující sdílenou složku, pomocí těchto stejných kroků. 
 
-## <a name="step-3-configure-the-failover-cluster-with-the-file-share"></a>Krok 3: konfigurace clusteru s podporou převzetí služeb při selhání se sdílenou složkou
+## <a name="step-3-configure-the-failover-cluster"></a>Krok 3: konfigurace clusteru s podporou převzetí služeb při selhání
 
 Dalším krokem je konfigurace clusteru s podporou převzetí služeb při selhání. V tomto kroku provedete následující kroky:
 

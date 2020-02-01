@@ -1,17 +1,17 @@
 ---
 title: Použití akcí GitHubu s synchronizací konfigurace aplikací Azure
 description: Použijte akce GitHubu, pokud chcete aktivovat aktualizaci instance konfigurace aplikace, když se definované akce provádějí v úložišti GitHubu.
-author: jpconnock
-ms.author: jeconnoc
+author: lisaguthrie
+ms.author: lcozzens
 ms.date: 01/14/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 1b7586e6321318a3fe4566e8c744c17a1d7ee179
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 269ae5630d1524cb8f89d3af8728892079f6eb5f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310598"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899625"
 ---
 # <a name="sync-your-app-configuration-instance-using-github-actions"></a>Synchronizace instance konfigurace aplikace pomocí akcí GitHubu
 Konfigurace aplikace Azure používá akce GitHubu k aktualizaci instance konfigurace aplikace, když se aktivuje akcí prováděnou v úložišti GitHubu. Pracovní postupy GitHubu můžete využít k aktualizaci konfigurace aplikace a povolení integrace aktualizací konfigurace aplikace do stejného pracovního postupu, který se používá k aktualizaci kódu aplikace.
@@ -192,9 +192,9 @@ Vstupní parametry určují data, která akce používá během běhu.  Následu
 | oddělování | Ano | Oddělovač použitý při sloučení konfiguračního souboru na páry klíč-hodnota.  Platné hodnoty jsou:. , ; : - _ __ / |
 | prefix | Ne | Předpona, která se má přidat na začátek klíčů |
 | label | Ne | Popisek použitý při nastavování párů klíč-hodnota Je-li tento parametr zadán, je použit popisek s hodnotou null. |
-| přísné | Ne | Logická hodnota, která určuje, zda je povolen striktní režim. Výchozí hodnota je false. |
+| zásadní | Ne | Logická hodnota, která určuje, zda je povolen striktní režim. Výchozí hodnota je false. |
 | Úrovní | Ne | Maximální hloubka pro sloučení konfiguračního souboru.  Hloubka musí být kladné číslo.  Výchozí hodnota nebude mít žádnou maximální hloubku. |
-| tags | Ne | Určuje sadu značek pro páry klíč-hodnota.  Očekávaným formátem je dokument formulář objektu JSON následujícího obrazce: {[propertyName: String]: String;} Název každé vlastnosti – hodnota se zobrazí jako značka. |
+| značek | Ne | Určuje sadu značek pro páry klíč-hodnota.  Očekávaným formátem je dokument formulář objektu JSON následujícího obrazce: {[propertyName: String]: String;} Název každé vlastnosti – hodnota se zobrazí jako značka. |
 
 ## <a name="next-steps"></a>Další kroky
 

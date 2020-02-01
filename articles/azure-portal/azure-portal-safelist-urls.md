@@ -1,30 +1,33 @@
 ---
-title: Safelist adresy URL Azure Portal | Microsoft Docs
+title: Safelist adresy URL Azure Portal v bráně firewall nebo proxy server
 description: Přidejte tyto adresy URL, aby bylo možné proxy server nepoužívat ke komunikaci s Azure Portal a jeho službami.
 services: azure-portal
 keywords: ''
 author: mgblythe
 ms.author: mblythe
-ms.date: 09/13/2019
+ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 3f81d41bc6d8ce07ea4e7b11c7c48f9b68d70466
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: c5bba7296a05cfbb72698a991ece1ef298689bd1
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310560"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900658"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>Safelist adresy URL Azure Portal v bráně firewall nebo proxy server
 
-Pro zajištění dobrého výkonu a připojení mezi vaší místní sítí a cloudem Azure nakonfigurujte místní zařízení zabezpečení tak, aby se pro adresy URL Azure Portal obcházela omezení zabezpečení. Správci sítě často nasazují proxy servery, brány firewall nebo jiná zařízení, aby pomohly zabezpečení a poskytovaly kontrolu nad tím, jak uživatelé přistupují k Internetu. Pravidla určená k ochraně uživatelů ale můžou někdy blokovat nebo zpomalit legitimní internetový provoz související s obchodem, včetně komunikace mezi vámi a Azure. K optimalizaci připojení mezi vaší sítí a Azure Portal a jejími službami doporučujeme přidat do svého Safelist Azure Portal adresy URL.
+Můžete nakonfigurovat místní zařízení zabezpečení a obejít omezení zabezpečení pro Azure Portal adresy URL. Tato konfigurace může zlepšit výkon a konektivitu mezi vaší místní sítí a cloudem Azure.
+
+Správci sítě často nasazují proxy servery, brány firewall nebo jiná zařízení. Tato zařízení vám pomůžou zabezpečit a poskytovat kontrolu nad tím, jak uživatelé přistupují k Internetu. Pravidla určená k ochraně uživatelů můžou někdy blokovat nebo zpomalit legitimní internetový provoz související s firmou. Tento provoz zahrnuje komunikaci mezi vámi a Azure. K optimalizaci připojení mezi vaší sítí a Azure Portal a jejími službami doporučujeme přidat do svého Safelist Azure Portal adresy URL.
 
 ## <a name="azure-portal-urls-for-proxy-bypass"></a>Azure Portal adresy URL pro obejití proxy serveru
 
-Koncové body adresy URL, které se Safelist pro Azure Portal, jsou specifické pro cloud Azure, ve kterém je vaše organizace nasazená. Vyberte svůj Cloud a pak přidejte seznam adres URL do proxy server nebo brány firewall, aby síťový provoz těchto koncových bodů mohl obejít omezení.
+Koncové body adresy URL, které se Safelist pro Azure Portal, jsou specifické pro cloud Azure, ve kterém je vaše organizace nasazená. Pokud chcete, aby síťový provoz do těchto koncových bodů mohl obejít omezení, vyberte svůj Cloud. Pak přidejte seznam adres URL do proxy server nebo brány firewall.
 
 #### <a name="public-cloudtabpublic-cloud"></a>[Veřejný cloud](#tab/public-cloud)
+
 ```
 *.aadcdn.microsoftonline-p.com
 *.aka.ms
@@ -48,6 +51,7 @@ Koncové body adresy URL, které se Safelist pro Azure Portal, jsou specifické 
 ```
 
 #### <a name="us-government-cloudtabus-government-cloud"></a>[Cloud pro státní správu USA](#tab/us-government-cloud)
+
 ```
 *.azure.us
 *.loganalytics.us
@@ -60,6 +64,7 @@ Koncové body adresy URL, které se Safelist pro Azure Portal, jsou specifické 
 ```
 
 #### <a name="china-government-cloudtabchina-government-cloud"></a>[Čína – Cloud pro státní správu](#tab/china-government-cloud)
+
 ```
 *.azure.cn
 *.microsoft.cn

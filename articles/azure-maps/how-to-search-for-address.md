@@ -1,6 +1,6 @@
 ---
-title: Hledat umístění pomocí Search Service Azure Maps | Mapy Microsoft Azure
-description: V tomto článku se naučíte, jak vyhledat umístění pomocí Search Service Microsoft Azure Maps.
+title: Vyhledat umístění pomocí služby Azure Maps Search Services | Mapy Microsoft Azure
+description: V tomto článku se naučíte, jak vyhledat umístění pomocí Microsoft Azure map Search Service k geografickému kódování a zpětnému zakódování.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 01/15/2020
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 20a2c18875096680cd1eba7601e88965fcbcc568
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 3b5da7eab9cff5c5e051fc4d5ab7ff582a95c20d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715355"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899229"
 ---
-# <a name="using-azure-maps-search-services-for-geocoding-and-reverse-geocoding"></a>Používání služby Azure Maps Search Services k zajištění geografického kódování a zpětného označování
+# <a name="search-for-a-location-using-azure-maps-search-services"></a>Vyhledat umístění pomocí služby Azure Maps Search Services
 
 Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) je sada rozhraní API pro RESTful navržená tak, aby vývojářům usnadnila hledání adres, míst, obchodních seznamů podle názvu nebo kategorie a dalších geografických informací. Kromě podpory tradičního geografického kódování můžou služby také přesměrovat adresy geografického kódu a meziulic na základě Latitudes a délky. Hodnoty zeměpisné šířky a délky vrácené hledáním se dají použít jako parametry v jiných Azure Maps službách, jako jsou třeba [trasy](https://docs.microsoft.com/rest/api/maps/route) a [povětrnostní](https://docs.microsoft.com/rest/api/maps/weather) služby.
 
-Pojďme se naučit, jak:
+V tomto článku se dozvíte, jak:
 
 * Vyžádat souřadnice zeměpisné šířky a délky pro adresu (umístění adresy geografického kódu) pomocí [rozhraní API pro hledání adres]( https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)
 * Hledání adresy nebo bodu zájmu (POI) pomocí [rozhraní API pro přibližné vyhledávání](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)
@@ -79,7 +79,7 @@ V tomto případě jste zadali kompletní dotaz na adresu a v těle odpovědi p�
 
 Příznak **typeahead** oznamuje rozhraní API pro vyhledávání adres, aby se dotaz považoval za částečný vstup a vrátil pole prediktivních hodnot.
 
-## <a name="search-for-an-address-using-fuzzy-search-api"></a>Hledání adresy pomocí rozhraní API pro přibližné vyhledávání
+## <a name="using-fuzzy-search-api"></a>Použití rozhraní API pro vyhledávání s fuzzy logikou
 
 Azure Maps[ rozhraní API pro vyhledávání s fuzzy logikou](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) se doporučuje používat v případě, že nevíte, jaké jsou uživatelské vstupy pro vyhledávací dotaz. Rozhraní API kombinuje hledání POI (Point of Interest) a geografické kódování na kanonickém "jednořádkovém hledání". Rozhraní API může například zpracovat vstupy libovolné kombinace adres nebo POI tokenu. Může být také vážená s kontextovou polohou (lat./lon. párové), plně omezená souřadnicí a poloměrem nebo bez jakýchkoli geografických posunutí bodu ukotvení.
 
@@ -136,49 +136,12 @@ Většina vyhledávacích dotazů ve výchozím nastavení `maxFuzzyLevel=1` pro
     | připojí | 47,620525 |
     | lon | -122,349274 |
 
-## <a name="search-for-address-properties-and-coordinates"></a>Hledání vlastností adresy a souřadnic
 
-Rozhraní API pro vyhledávání adres můžete předat úplnou nebo částečnou ulici. Pořád dostanete odpověď, která obsahuje podrobné vlastnosti adresy. Podrobné vlastnosti adresy jsou hodnoty, jako jsou poziční hodnoty v nadmořské výšce a délka, obec nebo dělení.
+## <a name="search-for-a-street-address-using-reverse-address-search"></a>Hledání adresy ulice pomocí zpětného vyhledávání adres
 
-1. V příspěvku klikněte na **nový požadavek** | **získat žádost** a pojmenovat **hledání na adrese**.
-2. Na kartě tvůrce vyberte metodu **Get** http, zadejte adresu URL žádosti pro koncový bod rozhraní API a vyberte autorizační protokol (pokud nějaký existuje).
+Azure Maps [získat reverzní rozhraní API]( https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) pro překládání se souřadnicemi (příklad: 37,786505,-122,3862) na adresu, kterou si můžete snáze přeložit. Nejčastěji to je potřeba ve sledovacích aplikacích, kde obdržíte informační kanál GPS ze zařízení nebo assetu a chcete znát adresu, kde se nachází souřadnice.
+Pokud máte k dispozici sadu souřadnicových umístění, můžete pomocí [rozhraní API pro reverzní vyhledávání](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressreversebatch) odeslat dávku dotazů v jednom volání rozhraní API.
 
-    ![Hledání adres](./media/how-to-search-for-address/address_search_url.png)
-  
-    | Parametr | Navrhovaná hodnota |
-    |---------------|------------------------------------------------|
-    | Metoda HTTP | GET |
-    | Adresa URL požadavku | [https://atlas.microsoft.com/search/address/json?](https://atlas.microsoft.com/search/address/json?) |
-    | Autorizace | Bez ověřování |
-
-3. Klikněte na **parametry**a zadejte následující páry klíč/hodnota, které se použijí jako parametry dotazu nebo cesty v adrese URL požadavku:
-  
-    ![Hledání adres](./media/how-to-search-for-address/address_search_params.png)
-  
-    | Klíč | Hodnota |
-    |------------------|-------------------------|
-    | api-version | 1.0 |
-    | předplatné – klíč | \<Azure Maps Key\> |
-    | query | 400, široká, Praha, WA 98109 |
-  
-4. Klikněte na **Odeslat** a zkontrolujte text odpovědi.
-  
-    V tomto případě jste zadali kompletní dotaz na adresu a v těle odpovědi přijali jeden výsledek.
-  
-5. V parametrech param řetězec dotazu upravte na následující hodnotu:
-    ```plaintext
-        400 Broad, Seattle
-    ```
-
-6. Do oddílu **param** přidejte následující dvojici klíč/hodnota a klikněte na **Odeslat**:
-
-    | Klíč | Hodnota |
-    |-----|------------|
-    | typeahead | true |
-
-    Příznak **typeahead** oznamuje rozhraní API pro vyhledávání adres, aby se dotaz považoval za částečný vstup a vrátil pole prediktivních hodnot.
-
-## <a name="make-a-reverse-address-search"></a>Vytvoření zpětného vyhledávání na adrese
 
 1. V příspěvku klikněte na **nový požadavek** | **získat žádost** a pojmenujte ho na **zpětné vyhledávání**.
 
@@ -265,3 +228,4 @@ Rozhraní API pro vyhledávání adres můžete předat úplnou nebo částečno
 ## <a name="next-steps"></a>Další kroky
 
 - Prozkoumejte dokumentaci k rozhraní API [služby Azure Maps Search Service](https://docs.microsoft.com/rest/api/maps/search) .
+- Seznamte se s [osvědčenými postupy](https://docs.microsoft.com/azure/azure-maps/how-to-use-best-practices-for-search).

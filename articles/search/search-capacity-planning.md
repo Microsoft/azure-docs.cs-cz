@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4020a40b87c32bdbd07e390a0d04769cb3d47f7d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 349587063c528fef1cbdb09d84e61e82443d45d1
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112128"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906730"
 ---
 # <a name="scale-up-partitions-and-replicas-to-add-capacity-for-query-and-index-workloads-in-azure-cognitive-search"></a>Nahorizontální navýšení kapacity pro úlohy dotazů a indexů v Azure Kognitivní hledání
 
@@ -24,7 +24,7 @@ Konfigurace prostředků je k dispozici při nastavení služby na úrovni [Basi
 Použití menšího počtu výsledků služby SUs v poměrné nižší faktuře. Fakturace je platná, pokud je služba nastavená. Pokud službu nepoužíváte, jediným způsobem, jak se vyvarovat, je odstranit službu a pak ji znovu vytvořit, až ji budete potřebovat.
 
 > [!Note]
-> Odstranění služby odstraní vše. V rámci Azure Kognitivní hledání neexistuje žádné zařízení pro zálohování a obnovování trvalých dat hledání. Chcete-li znovu nasadit stávající index nové služby, měli byste spustit program, který byl původně vytvořen a načten. 
+> Odstraněním služby dojde k odstranění veškerého jejího obsahu. Ve službě Azure Cognitive Search neexistuje žádný způsob, jak zálohovat a obnovit trvalá data vyhledávání. Chcete-li znovu nasadit stávající index nové služby, měli byste spustit program, který byl původně vytvořen a načten. 
 
 ## <a name="terminology-replicas-and-partitions"></a>Terminologie: repliky a oddíly
 Repliky a oddíly jsou primárními prostředky, které zálohují vyhledávací službu.
@@ -89,10 +89,10 @@ Všechny služby a služby optimalizované pro úložiště Standard a Storage m
 | **1 replika** |1\. SU |2\. SU |3 SU |4\. SU |6\. SU |12. SU |
 | **2 repliky** |2\. SU |4\. SU |6\. SU |8\. SU |12. SU |24 SU |
 | **3 repliky** |3 SU |6\. SU |9\. SU |12. SU |18 SU |36 SU |
-| **4 repliky** |4\. SU |8\. SU |12. SU |16. SU |24 SU |neuvedeno |
-| **5 replik** |5 SU |10. SU |15 SU |20 SU |30 SU |neuvedeno |
-| **6 replik** |6\. SU |12. SU |18 SU |24 SU |36 SU |neuvedeno |
-| **12 replik** |12. SU |24 SU |36 SU |neuvedeno |neuvedeno |neuvedeno |
+| **4 repliky** |4\. SU |8\. SU |12. SU |16. SU |24 SU |Nevztahuje se |
+| **5 replik** |5 SU |10. SU |15 SU |20 SU |30 SU |Nevztahuje se |
+| **6 replik** |6\. SU |12. SU |18 SU |24 SU |36 SU |Nevztahuje se |
+| **12 replik** |12. SU |24 SU |36 SU |Nevztahuje se |Nevztahuje se |Nevztahuje se |
 
 Služba SUs, ceny a kapacita jsou podrobně vysvětleny na webu Azure. Další informace najdete v [podrobnostech o cenách](https://azure.microsoft.com/pricing/details/search/).
 
@@ -123,7 +123,7 @@ Vysoká dostupnost pro Azure Kognitivní hledání souvisí s dotazy a aktualiza
 > [!NOTE]
 > Do indexu služby Azure Kognitivní hledání můžete přidat nová pole bez nového sestavení indexu. Hodnota nového pole bude null pro všechny dokumenty, které jsou již v indexu.
 
-Chcete-li zachovat dostupnost indexu během opětovného sestavení, je nutné mít kopii indexu s jiným názvem ve stejné službě nebo kopii indexu se stejným názvem v jiné službě a potom v kódu poskytnout logiku přesměrování nebo převzetí služeb při selhání.
+Při opakovaném sestavování indexu bude k dispozici časové období, kdy se data přidávají do nového indexu. Pokud chcete pokračovat v zpřístupnění starého indexu v průběhu této doby, musíte mít kopii starého indexu s jiným názvem ve stejné službě nebo kopii indexu se stejným názvem v jiné službě. a potom v kódu poskytněte logiku přesměrování nebo převzetí služeb při selhání.
 
 ## <a name="disaster-recovery"></a>Zotavení po havárii
 V současné době není k dispozici žádný vestavěný mechanismus pro zotavení po havárii. Přidání oddílů nebo replik by představovalo špatnou strategii pro splnění cílů zotavení po havárii. Nejběžnějším přístupem je přidat redundanci na úrovni služby nastavením druhé služby vyhledávání v jiné oblasti. Stejně jako v případě dostupnosti při opětovném sestavování indexu musí být logika přesměrování nebo převzetí služeb při selhání pocházet z vašeho kódu.

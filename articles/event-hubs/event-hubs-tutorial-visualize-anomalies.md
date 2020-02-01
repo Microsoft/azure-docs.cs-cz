@@ -8,19 +8,19 @@ ms.author: shvija
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
-ms.date: 12/20/2019
-ms.openlocfilehash: 1fc791519fd32b35bdbe3a69caec3c64e3ce3178
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/15/2020
+ms.openlocfilehash: 8fa123772ae380cd000c414c63bdf3908d279751
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437150"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906383"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Kurz: Vizualizace datových anomálií v událostech v reálném čase odesílaných do služby Azure Event Hubs
 
 V případě služby Azure Event Hubs můžete pomocí Azure Stream Analytics kontrolovat příchozí data a vytahovat anomálie, které pak můžete vizualizovat v Power BI. Řekněme, že máte tisíce zařízení, která neustále odesílají data v reálném čase do centra událostí a tato data představují až miliony událostí za sekundu. Jak v takovém množství dat kontrolovat anomálie nebo chyby? Například co když zařízení odesílá transakce kreditních karet a potřebujete zachytit kdekoli, kde máte více transakcí ve více zemích nebo oblastech během 5 sekund časového intervalu? K tomu může dojít, když někdo krade platební karty a pak je používá k nákupu věcí po celém světě ve stejnou dobu. 
 
-V tomto kurzu budete tento příklad simulovat. Spustíte aplikaci, která vytváří transakce provedené platebními kartami a odesílá je do centra událostí. Pak budete číst datový proud v reálném čase pomocí služby Azure Stream Analytics, která oddělí platné transakce od neplatných, a pak pomocí Power BI vizuálně identifikujete transakce označené jako neplatné.
+V tomto kurzu budete tento příklad simulovat. Spustíte aplikaci, která vytváří transakce provedené platebními kartami a odesílá je do centra událostí. Pak Přečtěte datový proud dat v reálném čase s Azure Stream Analytics, který odděluje platné transakce od neplatných transakcí, a pak pomocí Power BI vizuálně Identifikujte transakce, které jsou označeny jako neplatné.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Konfigurace úlohy Stream Analytics pro zpracování těchto transakcí
 > * Konfigurace vizualizace Power BI pro zobrazení výsledků
 
-K dokončení tohoto kurzu potřebujete předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet][] před tím, než začnete.
+K dokončení tohoto kurzu potřebujete předplatné Azure. Pokud ho nemáte, vytvořte si [bezplatný účet][] před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -156,14 +156,14 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 ## <a name="run-app-to-produce-test-event-data"></a>Spuštění aplikace a vygenerování testovacích dat událostí
 
-[Ukázky na GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) pro službu Event Hubs zahrnují [aplikaci detektoru anomálií](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/AnomalyDetector), která generuje testovací data za vás. Simuluje používání platebních karet tím, že do centra událostí zapisuje transakce provedené platebními kartami. Zároveň občas pro jednu platební kartu zapíše několik transakcí v několika oblastech, aby se označily jako anomálie. Pokud chcete tuto aplikaci spustit, postupujte následovně: 
+Event Hubs [ukázky na GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) obsahují aplikaci pro detekci anomálií, která vytváří testovací data za vás. Simuluje používání platebních karet tím, že do centra událostí zapisuje transakce provedené platebními kartami. Zároveň občas pro jednu platební kartu zapíše několik transakcí v několika oblastech, aby se označily jako anomálie. Pokud chcete tuto aplikaci spustit, postupujte následovně: 
 
 1. Z GitHubu si stáhněte [ukázky pro službu Azure Event Hubs](https://github.com/Azure/azure-event-hubs/archive/master.zip) a místně je rozbalte.
+2. Přejděte do složky **\azure-event-hubs-master\samples\DotNet\\** složka. 
+3. Přepněte do složky **Azure. Messaging. EventHubs\AnomalyDetector\\** a dvojím kliknutím na **AnomalyDetector. sln** otevřete řešení v aplikaci Visual Studio. 
 
-2. Přejděte do složky \azure-event-hubs-master\samples\DotNet\AnomalyDetector\ a dvojím kliknutím na soubor AnomalyDetector.sln otevřete řešení v sadě Visual Studio. 
-
+    Pokud chcete použít starou verzi ukázky, která používá starý balíček Microsoft. Azure. EventHubs, otevřete řešení ze složky **Microsoft. Azure. EventHubs\AnomalyDetector** . 
 3. Otevřete soubor Program.cs a nahraďte **Event Hubs connection string** připojovacím řetězcem, který jste si uložili při spuštění skriptu. 
-
 4. Nahraďte **Event Hub name** názvem vašeho centra událostí. Stisknutím klávesy F5 spusťte aplikaci. Aplikace začne odesílat události do vašeho centra událostí a pokračuje, dokud neodešle 1 000 událostí. Existuje několik případů, kdy aplikace musí být spuštěná, abyste mohli načíst data. V následujících pokynech jsou tyto případy na příslušných místech uvedené.
 
 ## <a name="set-up-azure-stream-analytics"></a>Nastavení služby Azure Stream Analytics
@@ -306,7 +306,7 @@ V úloze Stream Analytics klikněte na **Spustit**, pak na **Nyní** a pak na **
 
    ![Snímek obrazovky se zadáváním názvu řídicího panelu.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-dashboard-name.png)
 
-7. Na stránce řídicího panelu klikněte na **Přidat dlaždici**, v části **DATA V REÁLNÉM ČASE** vyberte **Vlastní streamovaná data** a pak klikněte na **Další**.
+7. Na stránce řídicí panel klikněte na **Přidat dlaždici**, v části **data v reálném čase** vyberte **vlastní streamovaná data** a pak klikněte na **Další**.
 
    ![Snímek obrazovky se zadáváním zdroje pro dlaždici.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-real-time-data.png)
 
@@ -386,4 +386,4 @@ Přejděte k dalšímu článku, kde najdete další informace o službě Azure 
 > [!div class="nextstepaction"]
 > [Začínáme s odesíláním zpráv do služby Azure Event Hubs v .NET Standard](event-hubs-dotnet-standard-getstarted-send.md)
 
-[vytvořte si bezplatný účet]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[bezplatný účet]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

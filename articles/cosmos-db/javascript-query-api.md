@@ -1,5 +1,5 @@
 ---
-title: Práce s integrovaným rozhraním API pro dotazy v jazyce JavaScript v Azure Cosmos DB
+title: Práce s integrovaným rozhraním API dotazů v jazyce JavaScript v Azure Cosmos DB uložených procedurách a triggerech
 description: V tomto článku se seznámíte s koncepty rozhraní API pro integrované dotazy jazyka JavaScript k vytváření uložených procedur a triggerů v Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
@@ -7,20 +7,20 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 8396608cdbc5638a3640f94c94b44ad7c5f52a73
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7b7ad470b3330224e80a7160fc1a37bb5ee1cde8
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445311"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901840"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Rozhraní API pro dotazování v jazyce JavaScript v Azure Cosmos DB
 
-Kromě vydávání dotazů pomocí rozhraní SQL API v Azure Cosmos DB umožňuje [Cosmos DB serverová sada SDK](https://azure.github.io/azure-cosmosdb-js-server/) provádět optimalizované dotazy pomocí rozhraní JavaScript. Pro použití tohoto rozhraní JavaScript nemusíte znát jazyk SQL. Rozhraní API pro dotazování v jazyce JavaScript umožňuje programově vytvářet dotazy tím, že předává funkce predikátů do sekvence volání funkce, se syntaxí ECMAScript5's předdefinované a oblíbené knihovny JavaScriptu, jako je Lodash. Dotazy jsou analyzovány modulem runtime jazyka JavaScript a efektivně spouštěny pomocí Azure Cosmos DB indexy.
+Kromě vydávání dotazů pomocí rozhraní SQL API v Azure Cosmos DB poskytuje [sada SDK na straně serveru Cosmos DB](https://azure.github.io/azure-cosmosdb-js-server/) rozhraní JavaScript pro provádění optimalizovaných dotazů v Cosmos DB uložených procedurách a triggerech. Pro použití tohoto rozhraní JavaScript nemusíte znát jazyk SQL. Rozhraní API pro dotazování v jazyce JavaScript umožňuje programově vytvářet dotazy tím, že předává funkce predikátů do sekvence volání funkce, se syntaxí ECMAScript5's předdefinované a oblíbené knihovny JavaScriptu, jako je Lodash. Dotazy jsou analyzovány modulem runtime jazyka JavaScript a efektivně spouštěny pomocí Azure Cosmos DB indexy.
 
 ## <a name="supported-javascript-functions"></a>Podporované funkce JavaScriptu
 
-| **Funkce** | **Popis** |
+| **Slouží** | **Popis** |
 |---------|---------|
 |`chain() ... .value([callback] [, options])`|Začíná value() zřetězené volání, které musí být ukončen.|
 |`filter(predicateFunction [, options] [, callback])`|Filtruje vstup pomocí funkce predikátu, který vrací hodnotu true nebo false, chcete-li filtrovat vstupních dokumentů vstup/výstup do výsledné sady. Tato funkce se chová podobně jako v klauzuli WHERE v SQL.|

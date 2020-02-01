@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/24/2020
-ms.openlocfilehash: 9d484afb1d80ee6b110438cc3ddea1d3d67ad999
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 01/29/2020
+ms.openlocfilehash: 091ca4d632d89405d85c66e264aff9867979fcd4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844679"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905232"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
 
@@ -68,7 +68,7 @@ Pro tuto verzi se nezměnila žádná verze součásti. Aktuální verze kompone
 
 ## <a name="known-issues"></a>Známé problémy
 
-Od 24. ledna 2020 dochází k aktivnímu problému, při kterém se při pokusu o použití poznámkového bloku Jupyter může zobrazit chyba. Problém můžete vyřešit pomocí následujících kroků. Můžete se také podívat na tento příspěvek na [MSDN](https://social.msdn.microsoft.com/Forums/en-us/8c763fb4-79a9-496f-a75c-44a125e934ac/hdinshight-create-not-create-jupyter-notebook?forum=hdinsight) nebo tento [příspěvek na StackOverflow](https://stackoverflow.com/questions/59687614/azure-hdinsight-jupyter-notebook-not-working/59831103) pro aktuální informace nebo si klást další otázky. Tato stránka bude aktualizována, jakmile bude problém vyřešen.
+Od 29. ledna 2020 existuje aktivní problém, ve kterém se při pokusu o použití poznámkového bloku Jupyter může zobrazit chyba. Problém můžete vyřešit pomocí následujících kroků. Můžete se také podívat na tento příspěvek na [MSDN](https://social.msdn.microsoft.com/Forums/en-us/8c763fb4-79a9-496f-a75c-44a125e934ac/hdinshight-create-not-create-jupyter-notebook?forum=hdinsight) nebo tento [příspěvek na StackOverflow](https://stackoverflow.com/questions/59687614/azure-hdinsight-jupyter-notebook-not-working/59831103) pro aktuální informace nebo si klást další otázky. Tato stránka bude aktualizována, jakmile bude problém vyřešen.
 
 **Vyskytl**
 
@@ -77,22 +77,26 @@ Od 24. ledna 2020 dochází k aktivnímu problému, při kterém se při pokusu 
 
 **Příčina** 
 
-Soubor _version. py v clusteru byl aktualizován na 5. x. x namísto 4.4. x. # #.
+Soubor _version. py v clusteru se aktualizoval na 5. x. x místo 4.4. x. # # nebo Ambari se musí restartovat.
 
 **Řešení**
 
 Pokud vytvoříte nový Poznámkový blok Jupyter a dostanete jednu z výše uvedených chyb, proveďte následující kroky k vyřešení problému.
 
-1. Otevřete Ambari ve webovém prohlížeči tak, že na https://CLUSTERNAME.azurehdinsight.net, kde název_clusteru je název vašeho clusteru.
+1. Otevřete Ambari ve webovém prohlížeči tak, že na `https://CLUSTERNAME.azurehdinsight.net`, kde název_clusteru je název vašeho clusteru.
 1. V Ambari nabídce vlevo klikněte na **Jupyter**a pak na **Akce služby**klikněte na **zastavit**.
 1. Spusťte SSH do clusteru hlavnímu uzlu, kde je spuštěná služba Jupyter.
 1. Otevřete následující soubor/usr/bin/Anaconda/lib/python2.7/site-Packages/nbformat/_version. py v režimu sudo.
-1. Existující položka by měla vypadat podobně jako následující kód: 
+1. Ověřte hodnotu version_info.
+1. Pokud je hodnota version_info nastavena na: 
 
     version_info = (5, 0, 3)
 
-    Upravte položku na: 
+    Pak položku upravte na: 
     
     version_info = (4, 4, 0)
-1. Uložte soubor.
+
+    A uložte soubor. 
+
+    Pokud je už version_info nastavené na (4, 4, 0), pak pokračujte dalším krokem, protože se musí restartovat jenom Ambari, takže se nevyžadují žádné další změny.
 1. Vraťte se na Ambari a v **akci služby**klikněte na **restartovat vše**.

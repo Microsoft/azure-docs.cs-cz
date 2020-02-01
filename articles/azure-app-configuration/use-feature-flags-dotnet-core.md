@@ -3,7 +3,7 @@ title: Kurz použití příznaků funkcí v aplikaci .NET Core | Microsoft Docs
 description: V tomto kurzu se naučíte implementovat příznaky funkcí v aplikacích .NET Core.
 services: azure-app-configuration
 documentationcenter: ''
-author: yegu-ms
+author: lisaguthrie
 manager: maiye
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 04/19/2019
-ms.author: yegu
+ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 4fe49c25ad71c48103f044915d187099b75b3d04
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: b04fe3b6451fd7250bc3b05970d49fdb8e7003bd
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121246"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899294"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Kurz: používání příznaků funkcí v aplikaci ASP.NET Core
 
@@ -172,7 +172,7 @@ public enum MyFeatureFlags
 
 ## <a name="feature-flag-checks"></a>Kontroly příznaků funkcí
 
-Základním vzorem správy funkcí je nejprve zjistit, zda je příznak funkce nastaven na hodnotu *zapnuto*. V takovém případě správce funkcí spustí akce, které funkce obsahuje. Například:
+Základním vzorem správy funkcí je nejprve zjistit, zda je příznak funkce nastaven na hodnotu *zapnuto*. V takovém případě správce funkcí spustí akce, které funkce obsahuje. Příklad:
 
 ```csharp
 IFeatureManager featureManager;
@@ -269,7 +269,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-## <a name="middleware"></a>Middleware
+## <a name="middleware"></a>Jiné
 
 Příznaky funkcí můžete použít také k podmíněnému přidávání větví aplikace a middlewaru. Následující kód vloží součást middleware do kanálu požadavku pouze v případě, že je povolena `FeatureA`:
 

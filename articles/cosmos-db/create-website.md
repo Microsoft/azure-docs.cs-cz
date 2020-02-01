@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: feab221c24034fe29df420b4f9eb6d84e06a90b5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 11b84877171fae8e788d3298973fd74645b35480
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719332"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901910"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Nasazení služby Azure Cosmos DB a Azure App Service Web Apps pomocí šablony Azure Resource Manageru
 V tomto kurzu se dozvíte, jak pomocí šablony Azure Resource Manageru k nasazení a integrace [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/), [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) webové aplikace a ukázkovou webovou aplikaci.
@@ -31,7 +31,7 @@ Po dokončení tohoto kurzu, budete moci odpovědět na následující otázky:
 > 
 > 
 
-Než budete postupovat podle pokynů v tomto kurzu, ujistěte se, že máte předplatné Azure. Azure je platforma založená na předplatném.  Další informace o získání předplatného najdete v tématu [možnosti nákupu](https://azure.microsoft.com/pricing/purchase-options/), [nabídky pro členy](https://azure.microsoft.com/pricing/member-offers/), nebo [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+Než budete postupovat podle pokynů v tomto kurzu, ujistěte se, že máte předplatné Azure. Azure je platforma založená na předplatném.  Další informace o získání předplatného najdete v tématu [možnosti nákupu](https://azure.microsoft.com/pricing/purchase-options/), [Nabídky členů](https://azure.microsoft.com/pricing/member-offers/), nebo [Bezplatná zkušební verze](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a id="CreateDB"></a>Krok 1: Stáhněte si soubory šablon
 Začněme tím, že si stáhnete soubory šablony, které tento kurz vyžaduje.
@@ -69,7 +69,7 @@ Teď nasadíme první šablony.
    ![Snímek obrazovky uživatelské rozhraní pro nasazení šablony](./media/create-website/TemplateDeployment6.png)
 7. Až se nasazení dokončí, otevře se podokno skupiny prostředků.
    ![Snímek obrazovky podokna skupiny prostředků](./media/create-website/TemplateDeployment7.png)  
-8. Pokud chcete použít aplikaci, přejděte na adresu URL webové aplikace (v předchozím příkladu je adresa URL bude http://mydemodocdbwebapp.azurewebsites.net).  Zobrazí se vám následující webové aplikaci:
+8. Pokud chcete použít aplikaci, přejděte na adresu URL webové aplikace (v příkladu výše `http://mydemodocdbwebapp.azurewebsites.net`adresa URL).  Zobrazí se vám následující webové aplikaci:
    
    ![Ukázková aplikace seznamu úkolů](./media/create-website/image2.png)
 9. Pokračujte a vytvořte několik úloh ve webové aplikaci a pak se vraťte do podokna skupiny prostředků na webu Azure Portal. Klikněte na prostředek účtu služby Azure Cosmos DB v seznamu prostředků a potom klikněte na **Průzkumník dat**.

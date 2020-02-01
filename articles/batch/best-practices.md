@@ -7,12 +7,12 @@ ms.date: 11/22/2019
 ms.service: batch
 ms.topic: article
 manager: gwallace
-ms.openlocfilehash: 20fc7844054fc7e05f56105e69ad6bd8a4272ed8
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: c2acd09df51b942a08a85d96d907e064367377a7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026156"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900278"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch osvědčené postupy
 
@@ -67,7 +67,7 @@ Doba života fondu se může lišit v závislosti na metodě přidělování a p
 
 Selhání přidělení fondu může probíhat kdykoli během prvního přidělení nebo po pozdější změně velikosti. Důvodem může být vyčerpání dočasné kapacity v oblasti nebo selhání jiných služeb Azure, na kterých služba Batch spoléhá. Kvóta základního prostředí není zárukou, ale omezením.
 
-### <a name="unplanned-downtime"></a>Neplánovaný výpadek
+### <a name="unplanned-downtime"></a>Neplánované výpadky
 
 Fondy služby Batch můžou při výpadku událostí v Azure vyskytnout. To je důležité vzít v úvahu při plánování a vývoji vašeho scénáře nebo pracovního postupu pro dávku.
 
@@ -109,7 +109,7 @@ Existuje výchozí [kvóta pro aktivní úlohu a plán úlohy](batch-quota-limit
 - **Odešlete do kolekce velký počet úkolů.**  
     Úkoly lze odesílat na základě individuálních nebo v kolekcích. Odesílat úlohy v [kolekcích](https://docs.microsoft.com/rest/api/batchservice/task/addcollection) až 100 v době, kdy se hromadně odesílají úkoly, které snižují náklady na režii a dobu odeslání.
 
-### <a name="task-execution"></a>Provedení úkolu
+### <a name="task-execution"></a>Provádění úlohy
 
 - **Výběr maximálního počtu úkolů na uzel**  
     Batch podporuje přepočet úkolů na uzlech (spouštění více úloh, než má uzel obsahuje jádra). Je to na vás, abyste se ujistili, že se vaše úkoly vejdou do uzlů ve fondu. Můžete mít například zhoršené prostředí, pokud se pokusíte naplánovat osm úloh, které každý využívá 25% využití CPU na jeden uzel (ve fondu s `maxTasksPerNode = 8`).
@@ -152,3 +152,15 @@ I když je to zřídka, může se úloha opakovat interně z důvodu selhání v
 ### <a name="security-isolation"></a>Izolace zabezpečení
 
 Pro účely izolace platí, že pokud váš scénář vyžaduje izolované úlohy od sebe navzájem, měli byste tyto úlohy izolovat v samostatných fondech. Fond je hranice izolace zabezpečení ve službě Batch a ve výchozím nastavení nejsou dva fondy viditelné ani vzájemně vzájemně komunikují. Vyhněte se použití samostatných účtů Batch jako izolačního prostředku.
+
+## <a name="moving"></a>Přesunul
+
+### <a name="move-batch-account-across-regions"></a>Přesunutí účtu Batch mezi oblasti 
+
+Existují různé scénáře, ve kterých byste chtěli přesunout existující účet Batch z jedné oblasti do druhé. Například můžete chtít přesunout do jiné oblasti v rámci plánování zotavení po havárii.
+
+Účty Azure Batch nejde přesunout z jedné oblasti do druhé. K exportu existující konfigurace účtu Batch ale můžete použít šablonu Azure Resource Manager.  Potom můžete prostředek vytvořit v jiné oblasti tak, že účet Batch exportujete do šablony, upravíte parametry tak, aby odpovídaly cílové oblasti, a pak šablonu nasadíte do nové oblasti. Po nahrání šablony do nové oblasti bude nutné znovu vytvořit certifikáty, plány úloh a balíčky aplikací. Chcete-li potvrdit změny a dokončit přesunutí účtu Batch, nezapomeňte odstranit původní účet Batch nebo skupinu prostředků.  
+
+Další informace o Správce prostředků a šablonách najdete v tématu [rychlý Start: vytvoření a nasazení Azure Resource Manager šablon pomocí Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+
+

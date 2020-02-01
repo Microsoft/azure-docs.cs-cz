@@ -11,12 +11,12 @@ ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6d51213402f852daee8fe4a6b5dbbd473afda659
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 917a698840850182d2d41ef780ba01d948e11c2f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122453"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896369"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Poznámky k verzi Azure SQL Data Warehouse
 
@@ -38,6 +38,7 @@ Použijte identifikovanou verzi a potvrďte, která verze se použila pro Azure 
 | --- | --- |
 |**Metriky Portál pro správu úloh (Preview)**|S vydáním [izolace úloh](/azure/sql-data-warehouse/sql-data-warehouse-workload-isolation) ve verzi Preview tohoto dne v říjnu můžou uživatelé vytvářet vlastní [skupiny úloh](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) , které budou efektivně spravovat systémové prostředky a zajistit, aby se zajistila možnost Business SLA.  V rámci celkových vylepšení [správy úloh](/azure/sql-data-warehouse/sql-data-warehouse-workload-management) pro Azure synapse Analytics jsou nyní k dispozici nové [metriky monitorování správy úloh](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor) .</br> </br> Monitorování vašich úloh teď má větší přehledy s následujícími metrikami: </br> – Procentuální hodnota efektivního prostředku  </br> -Efektivní minimální procento prostředků </br> – Aktivní dotazy skupiny úloh </br> -Přidělení skupiny úloh podle maximálního procenta prostředků </br> – Přidělení skupin úloh podle systémových procent </br> – Časový limit dotazu skupiny úloh </br> – Dotazování skupin úloh ve frontě </br></br> Pomocí těchto metrik určete [kritické body skupiny úloh](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#workload-group-bottleneck) nebo skupiny úloh, které jsou nakonfigurované s [nevyužitou izolací úloh](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#underutilized-workload-isolation).  Tyto metriky se dají použít na webu Azure Portal, který umožňuje rozdělení podle skupiny úloh.  Pomocí filtrování a připnutí oblíbených grafů na řídicí panel získáte rychlý přístup k přehledům.|
 |**Metriky monitorování portálu**| Na portál byly přidány následující metriky pro monitorování celkové aktivity dotazu: </br> – Aktivní dotazy </br> – Dotazy ve frontě </br> </br>Tyto metriky jsou popsané spolu se stávajícími metrikami v [dokumentaci sledování využití prostředků a aktivity dotazů](/azure/sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity).|
+|**Název produktu**|Od června 2020 se název produktu vrácený funkcí SELECT @@VERSION změní z Microsoft Azure SQL Data Warehouse na Azure synapse Analytics. Plán budeme publikovat v našich poznámkách k verzi. Tato změna je relevantní pro zákazníky, kteří analyzují název produktu z výsledku SELECT @@VERSION ve svém kódu aplikace. Aby se zabránilo změnám kódu aplikace v důsledku přeručního přizpůsobení produktu, použijte prosím tyto příkazy k dotazování SERVERPROPERTY pro název a verzi databázového produktu. </br> Pro vrácení čísla verze datového skladu XX X. XXXXX. X (bez názvu produktu) použijte tento příkaz: SELECT SERVERPROPERTY (' ProductVersion ') </br> Pokud chcete vrátit edici stroje, použijte tento příkaz, který vrátí 6 pro Azure synapse Analytics (dřív SQL Data Warehouse): vyberte SERVERPROPERTY (EngineEdition).|
 
 ## <a name="october-2019"></a>Říjen 2019
 

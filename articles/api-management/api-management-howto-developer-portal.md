@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 81daada7a62da86772d4657a1a8aaff91f27b673
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 4dd026377d5824853dd713a59a86ed742990bade
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045575"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898846"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Přehled portálu pro vývojáře Azure API Management
 
@@ -213,6 +213,18 @@ Tato chyba se zobrazí, když se `GET` volání `https://<management-endpoint-ho
 Pokud je vaše služba API Management ve virtuální síti, přečtěte si výše uvedenou otázku připojení k virtuální síti.
 
 Selhání volání může být způsobeno také certifikátem SSL, který je přiřazen vlastní doméně a není důvěryhodný pro prohlížeč. Jako zmírnění můžete odebrat vlastní doménu koncového bodu správy – API Management se vrátí k výchozímu koncovému bodu s důvěryhodným certifikátem.
+
+### <a name="whats-the-browser-support-for-the-portal"></a>Jaká je podpora prohlížeče pro portál?
+
+| Prohlížeč                     | Podporováno       |
+|-----------------------------|-----------------|
+| Apple Safari                | Ano<sup>1</sup> |
+| Google Chrome               | Ano<sup>1</sup> |
+| Microsoft Edge              | Ano<sup>1</sup> |
+| Microsoft Internet Explorer | Ne              |
+| Mozilla Firefox             | Ano<sup>1</sup> |
+
+ <small><sup>1</sup> podporuje se v obou nejnovějších produkčních verzích.</small>
 
 ## <a name="next-steps"></a>Další kroky
 

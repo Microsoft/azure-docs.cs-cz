@@ -1,19 +1,19 @@
 ---
 title: Kurz pro globální distribuci Azure Cosmos DB pro rozhraní API pro tabulky
 description: Přečtěte si, jak globální distribuce funguje v Azure Cosmos DB rozhraní API pro tabulky účty a jak nakonfigurovat preferovaný seznam oblastí.
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: tutorial
-ms.date: 12/02/2019
+ms.date: 01/30/2020
 ms.reviewer: sngun
-ms.openlocfilehash: e6cd574d1041908e91ad5e6629403c0e40d11c03
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 627086bdb13acdd29821af399f90fee8deaae432
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74870356"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900184"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-table-api"></a>Nastavení globální distribuce služby Azure Cosmos DB pomocí rozhraní Table API
 
@@ -28,19 +28,17 @@ Tento článek se zabývá následujícími úkony:
 
 ## <a name="connecting-to-a-preferred-region-using-the-table-api"></a>Připojení k preferované oblasti pomocí rozhraní Table API
 
-Aby mohly využívat [globální distribuci](distribute-data-globally.md), můžou mít klientské aplikace určený seřazený seznam preferovaných oblastí, které se mají použít k provádění operací s dokumenty. Můžete to provést nastavením vlastnosti [TableConnectionPolicy.PreferredLocations](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations?view=azure-dotnet). Sada SDK rozhraní Table API služby Azure Cosmos DB vybere nejlepší koncový bod pro komunikaci na základě konfigurace účtu, aktuální dostupnosti oblastí a zadaného seznamu preferencí.
+Aby bylo možné využít [globální distribuci](distribute-data-globally.md), měly by klientské aplikace určovat aktuální umístění, ve kterém je aplikace spuštěná. To se provádí nastavením vlastnosti `CosmosExecutorConfiguration.CurrentRegion`. Vlastnost `CurrentRegion` by měla obsahovat jedno umístění. Každá instance klienta může určit svou vlastní oblast pro čtení s nízkou latencí. Oblast musí být pojmenována pomocí [zobrazovaných názvů](https://msdn.microsoft.com/library/azure/gg441293.aspx) , jako je například "západní USA". 
 
-Seznam PreferredLocations by měl obsahovat čárkami oddělený seznam upřednostňovaných (vícenásobné navádění) umístění pro čtení. Každá instance klienta může určit podmnožinu těchto oblastí v upřednostňovaném pořadí pro zajištění nízké latence čtení. Oblasti musí být pojmenované pomocí jejich [zobrazovaného názvu](https://msdn.microsoft.com/library/azure/gg441293.aspx), například `West US`.
+Sada Azure Cosmos DB rozhraní API pro tabulky SDK automaticky vybere nejlepší koncový bod ke komunikaci s nástrojem na základě konfigurace účtu a aktuální regionální dostupnosti. Přidělí prioritu nejbližší oblasti, aby poskytovala lepší latenci klientům. Po nastavení vlastnosti aktuální `CurrentRegion` jsou požadavky na čtení a zápis směrovány následujícím způsobem:
 
-Všechny operace čtení se odesílají do první dostupné oblasti v seznamu PreferredLocations. Pokud požadavek selže, klient přejde k další oblasti v seznamu atd.
+* **Žádosti o čtení:** Všechny požadavky na čtení se odesílají do nakonfigurovaného `CurrentRegion`. Na základě blízkosti se sada SDK automaticky vybere jako záložní geograficky replikovaný region pro zajištění vysoké dostupnosti.
 
-Sada SDK se pokouší číst z oblastí uvedených v seznamu PreferredLocations. Takže pokud je například účet databáze dostupný ve třech oblastech, ale v seznamu PreferredLocations klienta jsou uvedené pouze dvě oblasti jen pro čtení, z oblasti pro zápis se číst nebude, a to ani v případě převzetí služeb při selhání.
+* **Požadavky na zápis:** Sada SDK automaticky pošle všechny požadavky na zápis do aktuální oblasti pro zápis. V rámci vícenásobného hlavního účtu budou aktuální oblasti sloužit i pro požadavky na zápis. Na základě blízkosti se sada SDK automaticky vybere jako záložní geograficky replikovaný region pro zajištění vysoké dostupnosti.
 
-Sada SDK automaticky odesílá všechny operace zápisu do aktuální oblasti pro zápis.
+Pokud nezadáte vlastnost `CurrentRegion`, sada SDK použije aktuální oblast zápisu pro všechny operace.
 
-Pokud vlastnost PreferredLocations není nastavená, všechny požadavky se budou obsluhovat z aktuální oblasti pro zápis.
-
-To je vše, tento kurz je u konce. Informace o správě konzistence vašeho globálně replikovaného účtu najdete v tématu [Úrovně konzistence ve službě Azure Cosmos DB](consistency-levels.md). Další informace o fungování globální replikace databází ve službě Azure Cosmos DB najdete v tématu [Globální distribuce dat pomocí služby Azure Cosmos DB](distribute-data-globally.md).
+Například pokud je účet Azure Cosmos v oblastech "Západní USA" a "Východní USA". Pokud je "Západní USA" oblast pro zápis a aplikace je k dispozici v "Východní USA". Pokud vlastnost CurrentRegion není nakonfigurovaná, všechny požadavky na čtení a zápis se vždycky přesměrují do oblasti "Západní USA". Pokud je nakonfigurována vlastnost CurrentRegion, jsou všechny požadavky na čtení obsluhovány z oblasti "Východní USA".
 
 ## <a name="next-steps"></a>Další kroky
 
