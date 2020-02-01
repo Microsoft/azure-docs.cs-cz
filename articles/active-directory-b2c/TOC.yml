@@ -382,6 +382,7 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory-b2c'
     - name: Definice souborů cookie
       href: cookie-definitions.md
+      displayName: 'cookies, SameSite'
     - name: Kódy chyb
       href: error-codes.md
     - name: Rezidence dat a dostupnost oblastí
