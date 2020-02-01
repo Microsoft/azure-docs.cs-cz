@@ -3,12 +3,12 @@ title: Nastavení sondy živého provozu na instanci kontejneru
 description: Naučte se konfigurovat sondy živého provozu pro restartování poškozených kontejnerů v Azure Container Instances
 ms.topic: article
 ms.date: 06/08/2018
-ms.openlocfilehash: 96d98d18a3f0ac666fb2c057216f7844b176d177
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 566f7952aff1cf460272fbb418a2a0efff411881
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481677"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901897"
 ---
 # <a name="configure-liveness-probes"></a>Konfigurace testů aktivity
 
@@ -17,6 +17,9 @@ Kontejnerové aplikace mohou běžet po delší dobu, což vede k nefunkčním s
 Tento článek vysvětluje, jak nasadit skupinu kontejnerů, která zahrnuje test živého provozu, který demonstruje automatické restartování simulovaného kontejneru, který není v pořádku.
 
 Azure Container Instances taky podporuje [testy připravenosti](container-instances-readiness-probe.md), které můžete nakonfigurovat tak, aby se zajistilo, že provoz dosáhne kontejneru jenom v případě, že je připravený.
+
+> [!NOTE]
+> V současné době nemůžete použít test živého provozu ve skupině kontejnerů nasazených do virtuální sítě.
 
 ## <a name="yaml-deployment"></a>Nasazení YAML
 

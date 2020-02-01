@@ -4,12 +4,12 @@ description: Naučte se nasazovat skupiny kontejnerů do nové nebo existující
 ms.topic: article
 ms.date: 01/06/2020
 ms.author: danlep
-ms.openlocfilehash: 920ad9598f17fbab25218827045a396d953a6531
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 40f312ce8bc08c9b59e7c47f05b6a5d3dc94a994
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845178"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901860"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Nasazení instancí kontejnerů do služby Azure Virtual Network
 
@@ -259,10 +259,6 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 ```
 
 ### <a name="delete-network-resources"></a>Odstranění síťových prostředků
-
-
-> [!NOTE]
-> Pokud při pokusu o odebrání profilu sítě dojde k chybě, povolte 3-4 dní, aby platforma automaticky zmírnila problém a znovu se pokusila o odstranění. Pokud potřebujete profil sítě odstranit okamžitě, [otevřete žádost o podporu](https://azure.microsoft.com/support/create-ticket/) odkazující na službu Azure Container Instances.
 
 Tato funkce v současnosti vyžaduje několik dalších příkazů k odstranění síťových prostředků, které jste vytvořili dříve. Pokud jste použili ukázkové příkazy v předchozích částech tohoto článku k vytvoření virtuální sítě a podsítě, můžete k odstranění těchto síťových prostředků použít následující skript.
 

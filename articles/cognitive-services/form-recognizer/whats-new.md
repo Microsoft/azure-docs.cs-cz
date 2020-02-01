@@ -1,5 +1,5 @@
 ---
-title: Co je nového ve funkci pro rozpoznávání formulářů?
+title: Co je nového ve službě Rozpoznávání formulářů?
 titleSuffix: Azure Cognitive Services
 description: Pochopení nejnovějších změn rozhraní API pro rozpoznávání formulářů
 author: PatrickFarley
@@ -9,14 +9,14 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.author: pafarley
-ms.openlocfilehash: cb5639dcf0e13ea03d34604816b3939085674c2e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2109d25d3962063c711dcab491855d9ebf1cf694
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456363"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901882"
 ---
-# <a name="whats-new-in-form-recognizer"></a>Co je nového ve funkci pro rozpoznávání formulářů?
+# <a name="whats-new-in-form-recognizer"></a>Co je nového ve službě Rozpoznávání formulářů?
 
 Tento článek popisuje hlavní změny, které se dodávají s novými verzemi rozhraní API pro rozpoznávání formulářů.
 
@@ -24,9 +24,6 @@ Tento článek popisuje hlavní změny, které se dodávají s novými verzemi r
 > Rychlé starty a příručky v této sadě dokumentů vždycky používají nejnovější verzi rozhraní API, pokud neurčí jinak.
 
 ## <a name="form-recognizer-20-preview"></a>Rozpoznávání formulářů 2,0 (Preview)
-
-> [!IMPORTANT]
-> Nástroj pro rozpoznávání formulářů 2,0 je aktuálně k dispozici pro odběry v oblastech `West US 2` a `West Europe`. Pokud vaše předplatné není v této oblasti, použijte rozhraní 1,0 API. Rychlé starty pro školení a používání vlastního modelu jsou k dispozici pro v 1.0 i v 2.0.
 
 ### <a name="new-features"></a>Nové funkce
 

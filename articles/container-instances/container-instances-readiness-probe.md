@@ -3,12 +3,12 @@ title: Nastavení testu připravenosti na instanci kontejneru
 description: Naučte se konfigurovat sondu, aby kontejnery v Azure Container Instances přijímaly požadavky pouze v případě, že jsou připravené.
 ms.topic: article
 ms.date: 10/17/2019
-ms.openlocfilehash: 5ebbcdeee231e3e67abd6758485a12984137997e
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 50cb341788434a6dc0bb0a1423d9e59a3d93634d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533566"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901848"
 ---
 # <a name="configure-readiness-probes"></a>Konfigurace testů připravenosti
 
@@ -17,6 +17,9 @@ U kontejnerových aplikací, které obsluhují provoz, můžete chtít ověřit,
 Tento článek vysvětluje, jak nasadit skupinu kontejnerů, která zahrnuje test připravenosti, aby kontejner přijímal jenom provoz, když je test úspěšný.
 
 Azure Container Instances podporuje také [sondy živého provozu](container-instances-liveness-probe.md), které můžete nakonfigurovat tak, aby způsobily, že se automaticky restartuje kontejner, který není v pořádku.
+
+> [!NOTE]
+> V současné době nemůžete použít test připravenosti ve skupině kontejnerů nasazených do virtuální sítě.
 
 ## <a name="yaml-configuration"></a>Konfigurace YAML
 

@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 01/29/2020
 ms.author: diberry
-ms.openlocfilehash: 26c7996d6a955a183121a59254131dcb1dc6706f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a3bdc118be96630ebcf3bf63a2948976dc9b4261
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844258"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901672"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rychlý Start: vytvoření, výuka a publikování znalostní báze QnA Maker Knowledge Base
 
@@ -39,7 +39,7 @@ Zahrňte do funkce CHITEST-chat preference, aby vaše znalosti uživatelů byly 
 1. Na stránce **vytvořit** vyberte možnost **vytvořit službu QnA**. Budete přesměrování na [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker), kde můžete nastavit službu QnA Maker ve vašem předplatném.
 
 1. V Azure Portal vytvořte prostředek. Mějte na paměti, že vaše Azure Active Directory ID, předplatné a název prostředku QnA jste zvolili při vytváření prostředku.
-1. Vraťte se na portál QnA Maker, aktualizujte webovou stránku na portálu a pokračujte v vytváření znalostní báze.
+1. Vraťte se na portál QnA Maker, aktualizujte webovou stránku na portálu a pokračujte v vytváření znalostní báze. Vyberte existujícího tenanta, předplatné a nový prostředek. Vyberte jazyk. Tento jazyk se používá pro všechny znalostní báze v této QnA Maker službě.
 
    ![Snímek obrazovky s výběrem znalostní báze služby QnA Maker](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 

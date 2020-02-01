@@ -4,12 +4,12 @@ description: Jak nasadit a nakonfigurovat síť sdružení prostředků infrastr
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: v-umha
-ms.openlocfilehash: 59e13b671f68c29271227d481b41562256d66fd6
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 93f78f2c8bc32a2012e5635e0daec10b8c51d167
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289641"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901626"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hlavní kniha prostředků infrastruktury pro službu Azure Kubernetes (AKS)
 
@@ -466,7 +466,7 @@ npm run queryCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL -f <que
 
 ```
 
-Zadejte název funkce dotazu a čárkami oddělený seznam argumentů v `<queryFunction>` a `<queryFuncArgs>`. Znovu se postará o `fabcar` chaincode jako na referenční materiály pro dotazování všech automobilů v celém světě nastavených `<queryFunction>` na `"queryAllCars"` a `<queryArgs>' to `"".
+Zadejte název funkce dotazu a čárkami oddělený seznam argumentů v `<queryFunction>` a `<queryFuncArgs>`. Znovu se postará o `fabcar` chaincode, aby se dotazoval na všechna vozidla v celém světě nastaveném `<queryFunction>` na `"queryAllCars"` a `<queryArgs>` `""`.
 
 Další podrobnosti o argumentech předaných příkazem najdete v nápovědě k příkazům.
 

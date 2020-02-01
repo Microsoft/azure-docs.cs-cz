@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 12/11/2019
+ms.date: 01/28/2020
 ms.author: diberry
-ms.openlocfilehash: 0ddce3e4112dfb14309878927493abb3cb6b451a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a9afef07af1332910cc9e25f9d66db5930df3bd4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447372"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901654"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>Kurz: vytvoření QnA robota s Azure Bot Service v4
 
@@ -41,11 +41,11 @@ Vytvořte robot jako klientskou aplikaci pro znalostní bázi.
 
 1. Na portálu QnA Maker otevřete stránku **publikovat** a publikujte znalostní bázi. Vyberte **vytvořit robot**.
 
-    ![Na portálu QnA Maker otevřete stránku publikovat a publikujte znalostní bázi. Vyberte Create Bot (Vytvořit robota).](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base-page.png)
+    [![na portálu QnA Maker otevřete stránku publikovat a publikujte znalostní bázi. Vyberte vytvořit robot.](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base-page.png)](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base-page.png#lightbox)
 
-    Azure Portal se otevře v konfiguraci pro vytváření robotů.
+    Azure Portal se otevře s konfigurací robota pro vytvoření.
 
-1.  Zadejte nastavení, na jejichž základě robota vytvoříte:
+1.  Zadejte nastavení pro vytvoření robota:
 
     |Nastavení|Hodnota|Účel|
     |--|--|--|
@@ -57,7 +57,7 @@ Vytvořte robot jako klientskou aplikaci pro znalostní bázi.
     |App name (Název aplikace)|`qna-maker-central-us-bot-app`|Toto je webová aplikace, která podporuje pouze robot. Nemělo by se jednat o stejný název aplikace, protože vaše služba QnA Maker už používá. Sdílení webové aplikace QnA Maker s jakýmkoli jiným prostředkem není podporováno.|
     |Jazyk sady SDK|C#|Toto je základní programovací jazyk používaný sadou robot Framework SDK. Vaše volby jsou [C#](https://github.com/Microsoft/botbuilder-dotnet) nebo [Node. js](https://github.com/Microsoft/botbuilder-js).|
     |QnA ověřovací klíč|**Neměnit**|Tato hodnota je vyplněna za vás.|
-    |Plán služby App Service / umístění|**Neměnit**|Pro tento kurz není umístění důležité.|
+    |Plán/umístění služby App Service|**Neměnit**|Pro tento kurz není umístění důležité.|
     |Application Insights|**Neměnit**|Do Application Insights se pošle protokolování.|
     |ID aplikace Microsoftu|**Neměnit**|Je nutné zadat uživatele a heslo služby Active Directory.|
 
@@ -70,9 +70,9 @@ Vytvořte robot jako klientskou aplikaci pro znalostní bázi.
 
 ## <a name="chat-with-the-bot"></a>Chat s roboty
 
-1. Na webu Azure Portal otevřete z oznámení nový prostředek, kterým je vytvořený robot.
+1. V Azure Portal otevřete nový prostředek robota z oznámení.
 
-    ![Na webu Azure Portal otevřete z oznámení nový prostředek, kterým je vytvořený robot.](../media/qnamaker-tutorials-create-bot/azure-portal-notifications.png)
+    ![V Azure Portal otevřete nový prostředek robota z oznámení.](../media/qnamaker-tutorials-create-bot/azure-portal-notifications.png)
 
 1. V **nástroji pro správu robotů**vyberte na **webu chat test** a zadejte: `How large can my KB be?`. Robot bude reagovat na:
 
@@ -101,8 +101,6 @@ Pokud jste nevytvořili novou skupinu prostředků, potřebujete najít prostře
 
 ## <a name="related-to-qna-maker-bots"></a>Související s QnA Maker roboty
 
-* QnA Maker Help robot, který se používá na portálu QnA Maker, je k dispozici jako [Ukázka robota](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support).
-    ikona ![QnA Maker pomocníka pro ochranu robota je červený robot](../media/qnamaker-tutorials-create-bot/answer-bot-icon.PNG)
 * [Zdravotní péče roboty](https://docs.microsoft.com/HealthBot/qna_model_howto) QnA Maker použít jako jeden z jejich [jazykových modelů](https://docs.microsoft.com/HealthBot/qna_model_howto).
 
 

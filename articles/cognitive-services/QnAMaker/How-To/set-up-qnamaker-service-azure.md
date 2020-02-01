@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 01/28/2020
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: dc3bb6882963205e17e37f52ec9dcdffecdf9e21
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 00b8e6d44ed8449aa4ddf8716039c8c85c558b8f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843102"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901738"
 ---
 # <a name="manage-qna-maker-resources"></a>Správa prostředků QnA Maker
 
@@ -97,7 +97,8 @@ Klíče koncového bodu je možné spravovat z [portál QnA Maker](https://qnama
 
 2. Zobrazení nebo resetování klíčů:
 
-    ![Správce klíčů koncového bodu](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
+    > [!div class="mx-imgBorder"]
+    > [v nastavení služby ![zobrazovat, kopírovat nebo nastavovat klíč koncového bodu.](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)](../media/qnamaker-how-to-key-management/Endpoint-keys1.png#lightbox)
 
     >[!NOTE]
     >Pokud si myslíte, že jsou vaše klíče ohrožené, aktualizujte je. To může vyžadovat odpovídající změny vaší klientské aplikace nebo kódu bot.
@@ -136,7 +137,7 @@ Prostředek QnA Maker **App Service** používá prostředek kognitivní hledán
 1. Vyberte **Nastavení**a pak **Konfigurace**. Zobrazí se všechna existující nastavení App Service QnA Maker.
 
     > [!div class="mx-imgBorder"]
-    > ![snímek obrazovky Azure Portal se zobrazením nastavení konfigurace App Service](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png)
+    > [![snímek obrazovky Azure Portal se zobrazením nastavení konfigurace App Service](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png)](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png#lightbox)
 
 1. Změňte hodnoty následujících klíčů:
 
@@ -146,7 +147,7 @@ Prostředek QnA Maker **App Service** používá prostředek kognitivní hledán
 1. Chcete-li použít nové nastavení, je nutné restartovat službu App Service. Vyberte **Přehled**a pak vyberte **restartovat**.
 
     > [!div class="mx-imgBorder"]
-    > ![snímku obrazovky Azure Portal restartování App Service po změně nastavení konfigurace](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)
+    > [![snímku obrazovky Azure Portal restartování App Service po změně nastavení konfigurace](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)
 
 Pokud vytváříte službu QnA prostřednictvím šablon Azure Resource Manager, můžete vytvořit všechny prostředky a řídit vytvoření App Service, aby se používala existující vyhledávací služba.
 
