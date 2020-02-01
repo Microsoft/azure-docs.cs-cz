@@ -4,16 +4,16 @@ description: Konfigurace, optimalizace a řešení potíží s AzCopy.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 01/28/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 6a1dcd2d8734d7701dab6d913beb8af0ad4e35ab
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 00ce40e24a01b765419186a609ecf19ce53c772b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75371390"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905260"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurace, optimalizace a řešení potíží s AzCopy
 
@@ -21,7 +21,7 @@ AzCopy je nástroj příkazového řádku, který můžete použít ke kopírov�
 
 > [!NOTE]
 > Pokud hledáte obsah, který vám pomůžete začít s AzCopy, přečtěte si některé z následujících článků:
-> - [Začínáme s nástrojem AzCopy](storage-use-azcopy-v10.md)
+> - [Začínáme s AzCopy](storage-use-azcopy-v10.md)
 > - [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
 > - [Přenos dat pomocí AzCopy a úložiště souborů](storage-use-azcopy-files.md)
 > - [Přenos dat pomocí kontejnerů AzCopy a Amazon S3](storage-use-azcopy-s3.md)
@@ -41,6 +41,14 @@ AzCopy v současné době nepodporuje proxy servery, které vyžadují ověřov�
 ## <a name="optimize-performance"></a>Optimalizace výkonu
 
 Můžete použít srovnávací testy výkonu a pak pomocí příkazů a proměnných prostředí najít optimální kompromisy mezi výkonem a spotřebou prostředků.
+
+Tato část vám pomůže provést tyto optimalizační úlohy:
+
+> [!div class="checklist"]
+> * Spustit testy srovnávacích testů
+> * Optimalizace propustnosti
+> * Optimalizace využití paměti 
+> * Optimalizovat synchronizaci souborů
 
 ### <a name="run-benchmark-tests"></a>Spustit testy srovnávacích testů
 
@@ -97,6 +105,14 @@ Vyjádřete tuto hodnotu v gigabajtech (GB).
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
 | **MacOS** | `export AZCOPY_BUFFER_GB=<value>` |
+
+### <a name="optimize-file-synchronization"></a>Optimalizovat synchronizaci souborů
+
+Příkaz [synchronizovat](storage-ref-azcopy-sync.md) identifikuje všechny soubory v cílovém umístění a pak porovná názvy souborů a poslední změněná časová razítka před zahájením operace synchronizace. Pokud máte velký počet souborů, můžete zvýšit výkon tím, že tento proces předem vynecháte. 
+
+Pokud to chcete provést, použijte místo toho příkaz [AzCopy Copy](storage-ref-azcopy-copy.md) a nastavte příznak `--overwrite` na `ifSourceNewer`. AzCopy bude porovnávat soubory při jejich kopírování bez provedení jakýchkoli kontrol a porovnání předem. V případech, kdy je k dispozici velký počet souborů k porovnání, poskytujeme hraniční výkon.
+
+Příkaz [AzCopy Copy](storage-ref-azcopy-copy.md) neodstraní soubory z cílového umístění, takže pokud chcete odstranit soubory v cílovém umístění, když už na zdroji neexistují, použijte příkaz [AzCopy Sync](storage-ref-azcopy-sync.md) s příznakem `--delete-destination` nastaveným na hodnotu `true` nebo `prompt`. 
 
 ## <a name="troubleshoot-issues"></a>Řešení potíží
 

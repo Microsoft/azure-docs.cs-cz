@@ -10,12 +10,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 11/04/2019
-ms.openlocfilehash: 885ddd5c25a36e2b12379ea7639956c1c4ca5437
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 0da5fe56bd56d360cd8052976bdde0cdc910c9a5
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75538420"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904278"
 ---
 # <a name="create-event-driven-machine-learning-workflows-preview"></a>Vytváření pracovních postupů strojového učení řízených událostmi (Preview)
 
@@ -32,21 +32,6 @@ Pomocí Event Grid můžete povolit běžné scénáře, jako například:
 
 * Přístup přispěvatele nebo vlastníka k pracovnímu prostoru Azure Machine Learning, pro který budete vytvářet události.
 * Vyberte koncový bod obslužné rutiny události, například Webhook nebo centrum událostí. Další informace naleznete v tématu [obslužné rutiny událostí](https://docs.microsoft.com/azure/event-grid/event-handlers). 
-
-## <a name="register-resource-providers"></a>Zaregistrovat poskytovatele prostředků
-
-Pokud jste použili Azure Event Grid nebo Machine Learning před vydáním listopadu 1 2019, bude pravděpodobně nutné znovu zaregistrovat poskytovatele prostředků, než budete moci postupovat podle kroků v tomto dokumentu. Pokud chcete poskytovatele znovu zaregistrovat, použijte následující postup:
-
-1. Přejít na Azure Portal a vyberte __předplatná__. Vyberte předplatné, se kterým chcete pracovat.
-1. Vyberte __poskytovatelé prostředků__a pak vyhledejte __EventGrid__.
-1. Vyberte položku __Microsoft. EventGrid__ a pak vyberte __znovu registrovat__.
-
-    ![znovu zaregistrovat – poskytovatel prostředků](./media/how-to-use-event-grid/re-register-resource-provider.png)
-
-1. Vyhledejte __MachineLearningServices__, vyberte položku a pak vyberte __znovu registrovat__.
-
-> [!TIP]
-> Pokud nemáte oprávnění k dokončení těchto kroků, požádejte správce předplatného, aby je provedl.
 
 ## <a name="configure-machine-learning-events-using-the-azure-portal"></a>Konfigurace událostí strojového učení pomocí Azure Portal
 

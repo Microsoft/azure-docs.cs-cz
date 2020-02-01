@@ -6,12 +6,12 @@ ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: f8aab2c5e942944f6251eef0aaaec204ce5ad076
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: fc05763046da365e7770a9b208100e0366062f25
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668780"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898873"
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>Přidání nabízených oznámení do aplikace Xamarin. Forms
 
@@ -28,7 +28,7 @@ V tomto kurzu přidáte nabízená oznámení do všech projektů, které vznikl
 
 Pokud nepoužíváte stažený projekt serveru pro rychlé zahájení, budete potřebovat balíček rozšíření nabízených oznámení. Další informace najdete v tématu [práce s back-end serverem .NET SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro iOS budete potřebovat [členství v programu Apple Developer](https://developer.apple.com/programs/ios/) a fyzické zařízení s iOS. [Simulátor iOS nepodporuje nabízená oznámení](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html).
 
@@ -59,7 +59,7 @@ S back-end nakonfigurovaným pomocí FCM můžete do klienta přidat komponenty 
 1. V projektu **Droid** klikněte pravým tlačítkem na **odkazy > spravovat balíčky NuGet...** .
 1. V okně Správce balíčků NuGet vyhledejte balíček **Xamarin. Firebase. Messaging** a přidejte ho do projektu.
 1. Ve vlastnostech projektu projektu **Droid** nastavte aplikaci na kompilovat pomocí Androidu verze 7,0 nebo vyšší.
-1. Přidejte soubor **Google-Services. JSON** stažený z konzoly Firebase do kořenového adresáře projektu **Droid** a nastavte jeho akci sestavení na **GoogleServicesJson**. Další informace najdete v tématu [Přidání souboru JSON služby Google Services](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/#Add_the_Google_Services_JSON_File).
+1. Přidejte soubor **Google-Services. JSON** stažený z konzoly Firebase do kořenového adresáře projektu **Droid** a nastavte jeho akci sestavení na **GoogleServicesJson**. Další informace najdete v tématu [přidat soubor JSON služby Google](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/#Add_the_Google_Services_JSON_File).
 
 #### <a name="registering-with-firebase-cloud-messaging"></a>Registrace ve službě Firebase Cloud Messaging
 
@@ -76,7 +76,7 @@ S back-end nakonfigurovaným pomocí FCM můžete do klienta přidat komponenty 
     </receiver>
     ```
 
-#### <a name="implementing-the-firebase-instance-id-service"></a>Implementace služby ID instance Firebase
+#### <a name="implementing-the-firebase-instance-id-service"></a>Implementace služby Firebase Instance ID
 
 1. Přidejte novou třídu do projektu **Droid** s názvem `FirebaseRegistrationService`a ujistěte se, že jsou v horní části souboru k dispozici následující příkazy `using`:
 
@@ -115,11 +115,11 @@ S back-end nakonfigurovaným pomocí FCM můžete do klienta přidat komponenty 
     }
     ```
 
-    Třída `FirebaseRegistrationService` zodpovídá za generování tokenů zabezpečení, které aplikaci opravňují k přístupu k FCM. Metoda `OnTokenRefresh` je vyvolána, když aplikace obdrží registrační token z FCM. Metoda načte token z vlastnosti `FirebaseInstanceId.Instance.Token`, která je asynchronně aktualizována pomocí FCM. Metoda `OnTokenRefresh` je zřídka vyvolána, protože token je aktualizován pouze v případě, že je aplikace nainstalována nebo odinstalována, když uživatel odstraní data aplikace, když aplikace smaže ID instance nebo když dojde k ohrožení zabezpečení tokenu. Kromě toho bude služba FCM instance ID požadovat, aby aplikace pravidelně aktualizovala svůj token, obvykle každých 6 měsíců.
+    Třída `FirebaseRegistrationService` zodpovídá za generování tokenů zabezpečení, které aplikaci opravňují k přístupu k FCM. `OnTokenRefresh` Metoda je voláno, když aplikace obdrží registračního tokenu z FCM. Metoda načte token z `FirebaseInstanceId.Instance.Token` vlastnost, která se aktualizuje asynchronně pomocí FCM. `OnTokenRefresh` Zřídka vyvoláním metody, protože token se aktualizuje jenom při instalaci nebo odinstalaci, když uživatel odstraní data aplikací, pokud aplikace odstraní Identifikátor Instance aplikace nebo tokenu zabezpečení byl dojde k ohrožení bezpečnosti. Kromě toho FCM Instance ID služby bude požadovat, že aplikace aktualizuje svůj token pravidelně, obvykle každých 6 měsíců.
 
-    Metoda `OnTokenRefresh` také vyvolá metodu `SendRegistrationTokenToAzureNotificationHub`, která se používá k přidružení tokenu registrace uživatele k centru oznámení Azure.
+    `OnTokenRefresh` Také vyvolá metodu `SendRegistrationTokenToAzureNotificationHub` metodu, která slouží k přidružení tokenu registrace uživatele do centra oznámení Azure.
 
-#### <a name="registering-with-the-azure-notification-hub"></a>Registrace pomocí Centra oznámení Azure
+#### <a name="registering-with-the-azure-notification-hub"></a>Registraci do centra oznámení Azure
 
 1. Přidejte novou třídu do projektu **Droid** s názvem `AzureNotificationHubService`a ujistěte se, že jsou v horní části souboru k dispozici následující příkazy `using`:
 
@@ -160,9 +160,9 @@ S back-end nakonfigurovaným pomocí FCM můžete do klienta přidat komponenty 
     }
     ```
 
-    Metoda `RegisterAsync` vytvoří jednoduchou šablonu zprávy oznámení jako JSON a registruje pro příjem oznámení šablon z centra oznámení pomocí registračního tokenu Firebase. Tím se zajistí, že všechna oznámení posílaná z centra oznámení Azure budou cílit na zařízení reprezentované registračním tokenem.
+    Metoda `RegisterAsync` vytvoří jednoduchou šablonu zprávy oznámení jako JSON a registruje pro příjem oznámení šablon z centra oznámení pomocí registračního tokenu Firebase. Tím se zajistí, že všechna naše oznámení odeslaná do centra oznámení Azure se zaměří na zařízení reprezentována registračního tokenu.
 
-#### <a name="displaying-the-contents-of-a-push-notification"></a>Zobrazení obsahu nabízeného oznámení
+#### <a name="displaying-the-contents-of-a-push-notification"></a>Zobrazení obsahu nabízené oznámení
 
 1. Přidejte novou třídu do projektu **Droid** s názvem `FirebaseNotificationService`a ujistěte se, že jsou v horní části souboru k dispozici následující příkazy `using`:
 
@@ -201,7 +201,8 @@ S back-end nakonfigurovaným pomocí FCM můžete do klienta přidat komponenty 
         {
             var intent = new Intent(this, typeof(MainActivity));
             intent.AddFlags(ActivityFlags.ClearTop);
-            var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.OneShot);
+            //Unique request code to avoid PendingIntent collision.
+            var requestCode = new Random().Next();
 
             var notificationBuilder = new NotificationCompat.Builder(this)
                 .SetSmallIcon(Resource.Drawable.ic_stat_ic_notification)
@@ -217,7 +218,7 @@ S back-end nakonfigurovaným pomocí FCM můžete do klienta přidat komponenty 
     }
     ```
 
-    Metoda `OnMessageReceived`, která je vyvolána, když aplikace obdrží oznámení od FCM, extrahuje obsah zprávy a zavolá metodu `SendNotification`. Tato metoda převede obsah zprávy na místní oznámení, které se spustí, když je aplikace spuštěná, s oznámením zobrazeným v oznamovací oblasti.
+    Metoda `OnMessageReceived`, která je vyvolána, když aplikace obdrží oznámení od FCM, extrahuje obsah zprávy a zavolá metodu `SendNotification`. Tato metoda převede obsah zprávy do místního oznámení, který se spustí, když je spuštěná aplikace s oznámením v oznamovací oblasti.
 
 Nyní jste připraveni nabízená oznámení testů v aplikaci spuštěné na zařízení s Androidem nebo v emulátoru.
 
@@ -403,7 +404,7 @@ Tato část je určena pro spouštění projektů Xamarin. Forms WinApp a WinPho
 Můžete získat další informace o nabízených oznámeních:
 
 * [Posílání nabízených oznámení z Azure Mobile Apps](https://developer.xamarin.com/guides/xamarin-forms/cloud-services/push-notifications/azure/)
-* [Firebase cloudové zasílání zpráv](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/firebase-cloud-messaging/)
+* [Firebase Cloud Messaging](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/firebase-cloud-messaging/)
 * [Vzdálená oznámení pomocí zasílání zpráv Firebase do cloudu](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/)
 * [Diagnostikovat problémy s nabízenými oznámeními](../notification-hubs/notification-hubs-push-notification-fixer.md)  
   Existují různé důvody, proč mohou být oznámení vyřazena nebo nekončí na zařízeních. V tomto tématu se dozvíte, jak analyzovat a zjistit hlavní příčinu selhání nabízených oznámení.

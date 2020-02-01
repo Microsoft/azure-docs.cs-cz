@@ -10,12 +10,12 @@ ms.date: 01/23/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: bca780eb31a16d3854a2e4dfac821d5a68e9ca43
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 40a7f49cbb2d74b55ccb85dce64eea936a20801e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719326"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905525"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>Zotavení po havárii a převzetí služeb při selhání v účtu (Preview)
 
@@ -126,21 +126,6 @@ Převzetí služeb při selhání účtu je dostupné ve verzi Preview pro všec
 - USA – západ 2
 
 Verze Preview je určena pouze pro neprodukční použití. Smlouvy o úrovni produkčních služeb (SLA) nejsou aktuálně k dispozici.
-
-### <a name="register-for-the-preview"></a>Zaregistrovat se pro verzi Preview
-
-Pokud se chcete zaregistrovat ve verzi Preview, spusťte v PowerShellu následující příkazy. Zástupný symbol v závorkách nahraďte vlastním ID předplatného:
-
-```powershell
-Connect-AzAccount -SubscriptionId <subscription-id>
-Register-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
-```
-
-Získání schválení pro verzi Preview může trvat 5-7 dní. Chcete-li ověřit, zda byla registrace schválena, spusťte následující příkaz:
-
-```powershell
-Get-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
-```
 
 ### <a name="additional-considerations"></a>Další aspekty
 

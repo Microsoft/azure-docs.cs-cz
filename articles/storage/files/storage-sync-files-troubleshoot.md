@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 527d0a602b9da1f2d4f21890e896eba9a951494b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 887c10097187f193f55c6e301be3e739a16d6bf7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842712"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906919"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -1102,7 +1102,7 @@ Pokud se soubory nedaří navrstvit na soubory Azure:
 | 0x80c83007 | -2134364153 | ECS_E_STORAGE_ERROR | Soubor se nepovedlo vytvořit z důvodu problému s úložištěm Azure. | Pokud chyba přetrvává, otevřete žádost o podporu. |
 | 0x800703e3 | -2147023901 | ERROR_OPERATION_ABORTED | Soubor se nepovedlo navrstvit, protože byl znovu vrácen ve stejnou dobu. | Nevyžaduje se žádná akce. Soubor bude vrstven po dokončení odvolání a soubor již nebude používán. |
 | 0x80c80264 | -2134375836 | ECS_E_GHOSTING_FILE_NOT_SYNCED | Nepovedlo se vytvořit vrstvu souboru, protože se nesynchronizoval do sdílené složky Azure. | Nevyžaduje se žádná akce. Až bude soubor synchronizovaný do sdílené složky Azure, bude ho mít na stejnou úroveň. |
-| 0x80070001 | -2147942401 | ERROR_INVALID_FUNCTION | Soubor se nepovedlo vytvořit, protože ovladač filtru vrstvy cloudu (storagesync. sys) neběží. | Chcete-li tento problém vyřešit, otevřete příkazový řádek se zvýšenými oprávněními a spusťte následující příkaz: příkaz fltmc Load storagesync <br>Pokud se nepovede načíst ovladač filtru storagesync při spuštění příkazu příkaz fltmc, odinstalujte agenta Azure File Sync, restartujte server a přeinstalujte agenta Azure File Sync. |
+| 0x80070001 | -2147942401 | ERROR_INVALID_FUNCTION | Soubor se nepovedlo vytvořit, protože ovladač filtru vrstvy cloudu (storagesync. sys) neběží. | Chcete-li tento problém vyřešit, otevřete příkazový řádek se zvýšenými oprávněními a spusťte následující příkaz: `fltmc load storagesync`<br>Pokud se nepovede načíst ovladač filtru storagesync při spuštění příkazu příkaz fltmc, odinstalujte agenta Azure File Sync, restartujte server a přeinstalujte agenta Azure File Sync. |
 | 0x80070070 | -2147024784 | ERROR_DISK_FULL | Soubor se nepovedlo vytvořit z důvodu nedostatku místa na disku, na kterém je umístěný koncový bod serveru. | Chcete-li tento problém vyřešit, uvolněte alespoň 100 MB místa na disku ve svazku, kde je umístěn koncový bod serveru. |
 | 0x80070490 | -2147023728 | ERROR_NOT_FOUND | Nepovedlo se vytvořit vrstvu souboru, protože se nesynchronizoval do sdílené složky Azure. | Nevyžaduje se žádná akce. Až bude soubor synchronizovaný do sdílené složky Azure, bude ho mít na stejnou úroveň. |
 | 0x80c80262 | -2134375838 | ECS_E_GHOSTING_UNSUPPORTED_RP | Nepodařilo se vytvořit vrstvu souboru, protože se jedná o nepodporovaný bod rozboru. | Pokud se jedná o bod rozboru odstranění duplicitních dat, postupujte podle kroků v [Průvodci plánováním](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#data-deduplication) a povolte podporu odstranění duplicitních dat. Soubory s jinými spojovacími body, než je odstranění duplicitních dat, nejsou podporovány a nebudou vrstveny.  |

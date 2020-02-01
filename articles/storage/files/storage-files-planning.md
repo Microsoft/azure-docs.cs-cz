@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a51bb91a63f032f87da59fe95f5e3282cbaa0bea
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b77d6fe03a051c019519f195d55cdeb00fb9afb2
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771611"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906271"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
@@ -201,49 +201,14 @@ Tato část se vztahuje pouze na standardní sdílené složky. Všechny sdílen
 
 ### <a name="regional-availability"></a>Dostupnost podle oblastí
 
-Standardní sdílené složky jsou k dispozici ve všech oblastech až do 5 TiB. V některých oblastech jsou k dispozici s omezením 100 TiB, tyto oblasti jsou uvedeny v následující tabulce:
+Standardní sdílené složky s 100 TiB limit kapacity jsou k dispozici globálně ve všech oblastech Azure –
 
-|Region (Oblast) |Podporovaná redundance |
-|-------|---------|
-|Austrálie – střed    |LRS     |
-|Austrálie – střed 2    |LRS     |
-|Austrálie – východ |LRS     |
-|Austrálie – jihovýchod|LRS |
-|Brazílie – jih    |LRS     |
-|Střední Kanada  |LRS     |
-|Východní Kanada     |LRS     |
-|Střed Indie  |LRS     |
-|Střed USA *   |LRS, ZRS    |
-|Východní Asie      |LRS     |
-|Východní USA *        |LRS, ZRS|
-|Východní USA 2 *      |LRS, ZRS     |
-|Francie – střed |LRS, ZRS|
-|Francie – jih   |LRS     |
-|Japonsko – východ     |LRS     |
-|Japonsko – západ     |LRS     |
-|Korea – střed  |LRS     |
-|Korea – jih    |LRS     |
-|Středoseverní USA |LRS   |
-|Severní Evropa   |LRS     |
-|Jižní Indie    |LRS     |
-|Středojižní USA |LRS     |
-|Jihovýchodní Asie |LRS, ZRS|
-|Švýcarsko – sever    |LRS     |
-|Švýcarsko – západ    |LRS     |
-|Spojené arabské emiráty – střed    |LRS     |
-|Spojené arabské emiráty – sever    |LRS     |
-|Velká Británie – sever   |LRS, ZRS    |
-|Spojené království – jih    |LRS     |
-|Velká Británie – západ    |LRS     |
-|Středozápadní USA|LRS     |
-|Západní Evropa *    |LRS, ZRS|
-|Západní Indie   |LRS     |
-|Západní USA        |LRS     |
-|Západní USA 2      |LRS, ZRS|
+- LRS: všechny oblasti kromě jar (Jižní Afrika – sever a Jižní Afrika – západ)
+   - Národní cloudy (vlády, Německo, Čína) jsou podporované prostřednictvím PowerShellu a rozhraní příkazového řádku Azure (CLI). Žádná podpora portálu 
+   - Východní USA USA 2, východ, Západní Evropa: všechny nové účty jsou podporovány. Malý počet existujících účtů nedokončil proces upgradu. Můžete zjistit, jestli vaše stávající účty úložiště dokončily proces upgradu tím, že se pokusí [Povolit velké sdílené složky souborů](storage-files-how-to-create-large-file-share.md).
 
-\* pro nové účty podporované, ne všechny stávající účty dokončily proces upgradu. Můžete zjistit, jestli vaše stávající účty úložiště dokončily proces upgradu tím, že se pokusí [Povolit velké sdílené složky souborů](storage-files-how-to-create-large-file-share.md).
-
-Abychom vám pomohli upřednostnit nové oblasti a funkce, vyplňte prosím tento [průzkum](https://aka.ms/azurefilesatscalesurvey).
+- ZRS: všechny oblasti kromě Japonska – východ, Severní Evropa, Jižní Afrika – sever.
+- GRS/GZRS: není podporováno.
 
 ### <a name="enable-and-create-larger-file-shares"></a>Povolit a vytvořit větší sdílené složky
 

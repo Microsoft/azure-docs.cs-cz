@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI – vytváření sfctl
 description: Přečtěte si o sfctl rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro Docker Compose aplikace.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 3a9fa142dd45674e4a3e88745acffef225b80a64
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 1e40ca4e3c5ec8b7566646aa7ef723bd4c9e45a1
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645391"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906129"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
 Vytvářejte, odstraňujte a spravujte aplikace Docker Compose.
@@ -21,7 +21,7 @@ Vytvářejte, odstraňujte a spravujte aplikace Docker Compose.
 | --- | --- |
 | vytvoření | Vytvoří Service Fabric vytváření nasazení. |
 | list | Získá seznam nasazení vytváření vytvořená v clusteru Service Fabric. |
-| remove | Odstraní existující Service Fabric vytvoření nasazení z clusteru. |
+| odebrány | Odstraní existující Service Fabric vytvoření nasazení z clusteru. |
 | status | Načte informace o nasazení Service Fabricho vytváření. |
 | upgrade | Spustí upgrade nasazení vytváření v clusteru Service Fabric. |
 | upgrade-rollback | Spustí vrácení upgradu nasazení do sestavení v clusteru Service Fabric. |

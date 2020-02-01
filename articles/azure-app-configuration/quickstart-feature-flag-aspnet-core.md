@@ -1,17 +1,17 @@
 ---
 title: Rychlý Start pro přidání příznaků funkcí do ASP.NET Core
 description: Přidání příznaků funkcí pro ASP.NET Core aplikací a jejich správa pomocí konfigurace aplikací Azure
-author: jpconnock
+author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 01/14/2020
-ms.author: jeconnoc
-ms.openlocfilehash: 6858648bc07546f30d4ebb92150c52f8c7729acd
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.author: lcozzens
+ms.openlocfilehash: fda0e8072984a25b33731a775780231538e92e3d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260275"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898693"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace ASP.NET Core
 
@@ -339,7 +339,7 @@ Přidejte do projektu [Nástroj Správce tajných klíčů](https://docs.microso
     V prohlížeči by se měla zobrazit stránka podobná následujícímu obrázku.
     ![rychlé spuštění aplikace spustit místní](./media/quickstarts/aspnet-core-feature-flag-local-before.png)
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **správce funkcí**a změňte stav **beta** klíče na **zapnuto**.
 

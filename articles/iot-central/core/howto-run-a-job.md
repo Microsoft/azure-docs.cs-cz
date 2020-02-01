@@ -8,19 +8,17 @@ ms.author: sahubbar
 ms.date: 07/08/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 2a18cfabdecf930f45ca10ae25e9be44cf3f1a5c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 114946fa37ae161aeb2efd5b7cd50444c5df4c2b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953145"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906706"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Vytvoření a spuštění úlohy v aplikaci Azure IoT Central
 
-Pomocí Microsoft Azure IoT Central můžete spravovat připojená zařízení ve velkém měřítku pomocí úloh. Úlohy umožňují hromadné aktualizace vlastností zařízení, nastavení a příkazů. Tento článek vás seznámí s postupem, jak začít používat úlohy ve vaší vlastní aplikaci.
+Pomocí Microsoft Azure IoT Central můžete spravovat připojená zařízení ve velkém měřítku pomocí úloh. Úlohy umožňují hromadné aktualizace vlastností a příkazů zařízení. Tento článek vás seznámí s postupem, jak začít používat úlohy ve vaší vlastní aplikaci.
 
-> [!NOTE] 
-> Úlohy pro zařízení Azure IoT Edge se v tuto chvíli nepodporují. 
 
 ## <a name="create-and-run-a-job"></a>Vytvoření a spuštění úlohy
 
@@ -34,28 +32,26 @@ V této části se dozvíte, jak vytvořit a spustit úlohu. Ukazuje, jak zvýš
 
 3. Zadejte název a popis pro identifikaci úlohy, kterou vytváříte.
 
-4. Vyberte sadu zařízení, na kterou se má vaše úloha vztahovat. Po výběru sady zařízení se zobrazí pravá strana naplněná pomocí zařízení v sadě zařízení. Pokud vyberete poškozenou sadu zařízení, nezobrazí se žádná zařízení a zobrazí se zpráva, že vaše zařízení je poškozené.
+4. Vyberte skupinu zařízení, na kterou se má vaše úloha vztahovat. V části Souhrn můžete zjistit, kolik zařízení vaše konfigurace úlohy bude platit. 
 
-5. Dále vyberte typ úlohy, která se má definovat (nastavení, vlastnost nebo příkaz). Vyberte **+** vedle vybraného typu úlohy a přidejte své operace.
+5. Dále vyberte typ úlohy, která se má definovat (vlastnost nebo příkaz). Nastavte konfiguraci úlohy tak, že vyberete vlastnost a nastavíte nové hodnoty nebo zvolíte příkaz. Současně lze přidat více vlastností.
 
     ![Konfigurovat úlohu](./media/howto-run-a-job/configurejob.png)
 
-6. Na pravé straně vyberte zařízení, na kterých chcete úlohu spustit. Když zaškrtnete horní políčko, všechna zařízení se vyberou v celé sadě zařízení. Zaškrtnutím políčka u položky **název**se vybere všechna zařízení na aktuální stránce.
-
-7. Po výběru zařízení zvolte **Spustit** nebo **Uložit**. Úloha se teď zobrazí na stránce hlavní **úlohy** . V tomto zobrazení uvidíte aktuálně spuštěnou úlohu a historii všech dříve spuštěných úloh. Spuštěná úloha se vždycky zobrazuje v horní části seznamu. Uloženou úlohu můžete kdykoli znovu otevřít, aby bylo možné pokračovat v úpravách nebo spouštění.
+6. Po výběru zařízení zvolte **Spustit** nebo **Uložit**. Úloha se teď zobrazí na stránce hlavní **úlohy** . V tomto zobrazení uvidíte aktuálně spuštěnou úlohu a historii všech dříve spuštěných úloh. Spuštěná úloha se vždycky zobrazuje v horní části seznamu. Uloženou úlohu můžete kdykoli znovu otevřít, aby bylo možné pokračovat v úpravách nebo spouštění.
 
     ![Zobrazit úlohu](./media/howto-run-a-job/viewjob.png)
 
     > [!NOTE]
     > Historii dříve spuštěných úloh můžete zobrazit po dobu až 30 dnů.
 
-8. Pokud chcete získat přehled o vaší úloze, vyberte úlohu, kterou chcete zobrazit v seznamu. Tento přehled obsahuje podrobnosti úlohy, zařízení a stavové hodnoty zařízení. Z tohoto přehledu můžete také vybrat **Stáhnout podrobnosti o úloze** a stáhnout soubor. csv s podrobnostmi o úloze, včetně zařízení a jejich stavových hodnot. Tyto informace mohou být užitečné při řešení potíží.
+7. Pokud chcete získat přehled o vaší úloze, vyberte úlohu, kterou chcete zobrazit v seznamu. Tento přehled obsahuje podrobnosti úlohy, zařízení a stavové hodnoty zařízení. Z tohoto přehledu můžete také vybrat **Stáhnout podrobnosti o úloze** a stáhnout soubor. csv s podrobnostmi o úloze, včetně zařízení a jejich stavových hodnot. Tyto informace mohou být užitečné při řešení potíží.
 
     ![Zobrazení stavu zařízení](./media/howto-run-a-job/downloaddetails.png)
 
 ### <a name="stop-a-running-job"></a>Zastavit běžící úlohu
 
-Chcete-li zastavit běžící úlohu, vyberte ji a zvolte možnost **zastavit** na panelu. Stav úlohy se změní, aby odrážela zastavení úlohy.
+Chcete-li zastavit běžící úlohu, vyberte ji a zvolte možnost **zastavit**. Stav úlohy se změní, aby odrážela zastavení úlohy.
 
    ![Zastavit úlohu](./media/howto-run-a-job/stopjob.png)
 
@@ -67,7 +63,7 @@ Pokud chcete spustit úlohu, která je aktuálně zastavená, vyberte zastavenou
 
 ## <a name="copy-a-job"></a>Kopírování úlohy
 
-Chcete-li zkopírovat existující úlohu, kterou jste vytvořili, vyberte ji na stránce hlavní úlohy a vyberte možnost **Kopírovat**. Otevře se nová kopie konfigurace úlohy, kterou můžete upravit. Novou úlohu můžete uložit nebo spustit. Pokud jste ve zvolené sadě zařízení udělali nějaké změny, projeví se v této zkopírované úloze, abyste je mohli upravit.
+Chcete-li zkopírovat existující úlohu, kterou jste vytvořili, otevřete úlohu, která byla vytvořena, a vyberte možnost **Kopírovat**. Otevře se nová kopie konfigurace úlohy, kterou můžete upravit. Novou úlohu můžete uložit nebo spustit. 
 
    ![Kopírovat úlohu](./media/howto-run-a-job/copyjob.png)
 

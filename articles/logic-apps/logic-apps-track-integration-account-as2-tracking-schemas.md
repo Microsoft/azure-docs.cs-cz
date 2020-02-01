@@ -1,38 +1,38 @@
 ---
 title: Schémata sledování AS2 pro zprávy B2B
-description: Vytvoření schémat sledování AS2, která monitorují zprávy B2B v integračních účtech pro Azure Logic Apps s Enterprise Integration Pack
+description: Vytvoření sledovacích schémat pro monitorování zpráv AS2 v Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 01/27/2017
-ms.openlocfilehash: 515d7cfc985ee9929f70de2c862170ff79ae4d60
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/01/2020
+ms.openlocfilehash: bccf69362279afd9e8148b20b61ff3ea9b472a03
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792806"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906974"
 ---
-# <a name="create-schemas-for-tracking-as2-messages-and-mdns-in-integration-accounts-for-azure-logic-apps"></a>Vytváření schémat pro sledování zpráv AS2 a MDNs v integračních účtech pro Azure Logic Apps
+# <a name="create-schemas-for-tracking-as2-messages-in-azure-logic-apps"></a>Vytváření schémat pro sledování zpráv AS2 v Azure Logic Apps
 
 Abyste vám pomohli monitorovat úspěšné, chyby a vlastnosti zpráv pro transakce B2B (Business-to-Business), můžete tato schémata sledování AS2 použít ve svém účtu integrace:
 
 * Schéma sledování zpráv AS2
-* Schéma sledování AS2 MDN
+* AS2 schéma sledování oznámení o zařazování zpráv (MDN)
 
 ## <a name="as2-message-tracking-schema"></a>Schéma sledování zpráv AS2
 
 ```json
 {
-   "agreementProperties": {  
-      "senderPartnerName": "",  
-      "receiverPartnerName": "",  
-      "as2To": "",  
-      "as2From": "",  
-      "agreementName": ""  
-   },  
+   "agreementProperties": {
+      "senderPartnerName": "",
+      "receiverPartnerName": "",
+      "as2To": "",
+      "as2From": "",
+      "agreementName": ""
+   },
    "messageProperties": {
       "direction": "",
       "messageId": "",
@@ -43,10 +43,8 @@ Abyste vám pomohli monitorovat úspěšné, chyby a vlastnosti zpráv pro trans
       "isMessageEncrypted": "",
       "isMessageCompressed": "",
       "correlationMessageId": "",
-      "incomingHeaders": {
-       },
-      "outgoingHeaders": {
-       },
+      "incomingHeaders": {},
+      "outgoingHeaders": {},
       "isNrrEnabled": "",
       "isMdnExpected": "",
       "mdnType": ""
@@ -54,28 +52,28 @@ Abyste vám pomohli monitorovat úspěšné, chyby a vlastnosti zpráv pro trans
 }
 ```
 
-| Vlastnost | Typ | Popis |
-| --- | --- | --- |
-| senderPartnerName | Řetězec | Název partnera pro odesílatele zprávy AS2. Volitelné |
-| receiverPartnerName | Řetězec | Název partnera pro zprávu AS2. Volitelné |
-| as2To | Řetězec | Název příjemce zprávy AS2, od záhlaví zprávy AS2. Závaznou |
-| as2From | Řetězec | AS2 jméno odesílatele zprávy, a to z hlaviček zprávy AS2. Závaznou |
-| smlouva | Řetězec | Název smlouvy AS2, na kterou jsou zprávy vyřešeny Volitelné |
-| směr | Řetězec | Směr toku zpráv, přijetí nebo odeslání. Závaznou |
-| Parametr | Řetězec | ID zprávy AS2, z hlaviček zprávy AS2 (volitelné) |
-| dispositionType |Řetězec | Hodnota typu dispozice oznámení MDN (zpráva) Volitelné |
-| fileName | Řetězec | Název souboru, který se nachází v hlavičce zprávy AS2. Volitelné |
-| isMessageFailed |Logická hodnota | Zda zpráva AS2 selhala. Závaznou |
-| isMessageSigned | Logická hodnota | Určuje, zda byla zpráva AS2 podepsána. Závaznou |
-| isMessageEncrypted | Logická hodnota | Určuje, zda byla zpráva AS2 zašifrována. Závaznou |
-| isMessageCompressed |Logická hodnota | Zda byla zpráva AS2 komprimovaná. Závaznou |
-| CorrelationMessageId | Řetězec | AS2 ID zprávy, aby bylo možné korelovat zprávy pomocí MDNs. Volitelné |
-| incomingHeaders |Slovník JToken | Podrobnosti hlavičky zprávy příchozího AS2 Volitelné |
-| outgoingHeaders |Slovník JToken | Podrobnosti hlavičky zprávy odchozího AS2 Volitelné |
-| isNrrEnabled | Logická hodnota | Pokud není hodnota známá, použijte výchozí hodnotu. Závaznou |
-| isMdnExpected | Logická hodnota | Pokud není hodnota známá, použijte výchozí hodnotu. Závaznou |
-| mdnType | Výčet | Povolené hodnoty jsou **notconfigured**, **Sync**a **Async**. Závaznou |
-||||
+| Vlastnost | Požaduje se | Typ | Popis |
+|----------|----------|------|-------------|
+| senderPartnerName | Ne | Řetězec | Název partnera pro odesílatele zprávy AS2 |
+| receiverPartnerName | Ne | Řetězec | Název partnera pro zprávu AS2 |
+| as2To | Ano | Řetězec | Název příjemce zprávy AS2 z hlaviček zprávy AS2 |
+| as2From | Ano | Řetězec | Jméno odesílatele zprávy AS2 z hlaviček zprávy AS2 |
+| smlouva | Ne | Řetězec | Název smlouvy AS2, na kterou jsou zprávy vyřešeny |
+| směr | Ano | Řetězec | Směr toku zpráv, který je buď `receive`, nebo `send` |
+| messageId | Ne | Řetězec | AS2 ID zprávy z hlaviček zprávy AS2 |
+| dispositionType | Ne | Řetězec | Hodnota neMDNelné typu oznámení o zařazování zpráv () |
+| fileName | Ne | Řetězec | Název souboru z hlavičky zprávy AS2 |
+| isMessageFailed | Ano | Logická hodnota | Zda se nezdařila zpráva AS2 |
+| isMessageSigned | Ano | Logická hodnota | Zda byla zpráva AS2 podepsána |
+| isMessageEncrypted | Ano | Logická hodnota | Zda byla zpráva AS2 zašifrována |
+| isMessageCompressed | Ano | Logická hodnota | Zda byla zpráva AS2 komprimovaná |
+| correlationMessageId | Ne | Řetězec | AS2 ID zprávy pro korelaci zpráv s MDNs |
+| incomingHeaders | Ne | Slovník JToken | Podrobnosti hlavičky zprávy příchozího AS2 |
+| outgoingHeaders | Ne | Slovník JToken | Podrobnosti hlavičky zprávy odchozího AS2 |
+| isNrrEnabled | Ano | Logická hodnota | Určuje, zda má být použita výchozí hodnota, pokud není hodnota známa. |
+| isMdnExpected | Ano | Logická hodnota | Určuje, zda má být použita výchozí hodnota, pokud není hodnota známa. |
+| mdnType | Ano | Výčet | Povolené hodnoty: `NotConfigured`, `Sync`a `Async` |
+|||||
 
 ## <a name="as2-mdn-tracking-schema"></a>Schéma sledování AS2 MDN
 
@@ -86,7 +84,7 @@ Abyste vám pomohli monitorovat úspěšné, chyby a vlastnosti zpráv pro trans
       "receiverPartnerName": "",
       "as2To": "",
       "as2From": "",
-      "agreementName": "g"
+      "agreementName": ""
    },
    "messageProperties": {
       "direction": "",
@@ -107,26 +105,26 @@ Abyste vám pomohli monitorovat úspěšné, chyby a vlastnosti zpráv pro trans
 }
 ```
 
-| Vlastnost | Typ | Popis |
-| --- | --- | --- |
-| senderPartnerName | Řetězec | Název partnera pro odesílatele zprávy AS2. Volitelné |
-| receiverPartnerName | Řetězec | Název partnera pro zprávu AS2. Volitelné |
-| as2To | Řetězec | Název partnera, který obdrží zprávu AS2. Závaznou |
-| as2From | Řetězec | Název partnera, který odesílá zprávu AS2. Závaznou |
-| smlouva | Řetězec | Název smlouvy AS2, na kterou jsou zprávy vyřešeny Volitelné |
-| směr |Řetězec | Směr toku zpráv, přijetí nebo odeslání. Závaznou |
-| Parametr | Řetězec | ID zprávy AS2 Volitelné |
-| originalMessageId |Řetězec | AS2 původní ID zprávy. Volitelné |
-| dispositionType | Řetězec | MDN hodnota typu dispozice. Volitelné |
-| isMessageFailed |Logická hodnota | Zda zpráva AS2 selhala. Závaznou |
-| isMessageSigned |Logická hodnota | Určuje, zda byla zpráva AS2 podepsána. Závaznou |
-| isNrrEnabled | Logická hodnota | Pokud není hodnota známá, použijte výchozí hodnotu. Závaznou |
-| StatusCode | Výčet | Povolené hodnoty jsou **přijaté**, **zamítnuté**a **AcceptedWithErrors**. Závaznou |
-| micVerificationStatus | Výčet | Povolené hodnoty jsou **NotApplicable**, **Succeeded**a **Failed**. Závaznou |
-| CorrelationMessageId | Řetězec | ID korelace. Původní ID zprávy (ID zprávy, pro kterou je nakonfigurované MDN). Volitelné |
-| incomingHeaders | Slovník JToken | Označuje podrobnosti hlavičky příchozích zpráv. Volitelné |
-| outgoingHeaders |Slovník JToken | Označuje podrobnosti záhlaví odchozí zprávy. Volitelné |
-||||
+| Vlastnost | Požaduje se | Typ | Popis |
+|----------|----------|------|-------------|
+| senderPartnerName | Ne | Řetězec | Název partnera pro odesílatele zprávy AS2 |
+| receiverPartnerName | Ne | Řetězec | Název partnera pro zprávu AS2 |
+| as2To | Ano | Řetězec | Jméno partnera, který přijímá zprávu AS2 |
+| as2From | Ano | Řetězec | Název partnera, který odesílá zprávu AS2 |
+| smlouva | Ne | Řetězec | Název smlouvy AS2, na kterou jsou zprávy vyřešeny |
+| směr | Ano | Řetězec | Směr toku zpráv, který je buď `receive`, nebo `send` |
+| messageId | Ne | Řetězec | ID zprávy AS2 |
+| originalMessageId | Ne | Řetězec | ID původní zprávy AS2 |
+| dispositionType | Ne | Řetězec | MDN hodnota typu dispozice |
+| isMessageFailed | Ano | Logická hodnota | Zda se nezdařila zpráva AS2 |
+| isMessageSigned | Ano | Logická hodnota | Zda byla zpráva AS2 podepsána |
+| isNrrEnabled | Ano | Logická hodnota | Určuje, zda má být použita výchozí hodnota, pokud není hodnota známa. |
+| statusCode | Ano | Výčet | Povolené hodnoty: `Accepted`, `Rejected`a `AcceptedWithErrors` |
+| micVerificationStatus | Ano | Výčet | Povolené hodnoty:`NotApplicable`, `Succeeded`a `Failed` |
+| correlationMessageId | Ne | Řetězec | ID korelace, což je ID původní zprávy s nakonfigurovaným MDN |
+| incomingHeaders | Ne | Slovník JToken | Podrobnosti hlavičky příchozí zprávy |
+| outgoingHeaders | Ne | Slovník JToken | Podrobnosti záhlaví odchozí zprávy |
+|||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>Schémata sledování protokolu B2B
 
@@ -137,5 +135,4 @@ Informace o schématech sledování protokolu B2B najdete v těchto tématech:
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o [sledování zpráv B2B](logic-apps-monitor-b2b-message.md)
-* Další informace o [sledování zpráv B2B v protokolech Azure monitor](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)
+* [Monitorování zpráv B2B pomocí protokolů Azure Monitor](../logic-apps/monitor-b2b-messages-log-analytics.md)

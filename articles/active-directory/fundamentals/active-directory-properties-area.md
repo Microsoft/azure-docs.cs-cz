@@ -5,6 +5,7 @@ services: active-directory
 author: msaburnley
 manager: daveba
 ms.service: active-directory
+ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/17/2018
@@ -12,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a2397662112bda6c6789b25691848344a4e611b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 95f1877ae630919ba7da5a851b5f8291ade2d165
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561813"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897580"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Přidání informací o ochraně osobních údajů vaší organizace pomocí služby Azure Active Directory
 Tento článek vysvětluje, jak může správce tenanta přidat informace týkající se ochrany osobních údajů v organizaci tenanta Azure Active Directory (Azure AD), na webu Azure portal.
@@ -54,6 +55,6 @@ Přidejte informace o ochraně osobních údajů vaší organizace v **vlastnost
 
 4.  Vyberte **Uložit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Uplatnění pozvání spolupráce služby Azure Active Directory s B2B](https://aka.ms/b2bredemption)
 - [Přidání nebo změně informací profilu pro uživatele v Azure Active Directory](active-directory-users-profile-azure-portal.md)

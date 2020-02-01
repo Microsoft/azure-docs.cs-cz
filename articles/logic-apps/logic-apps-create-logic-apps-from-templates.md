@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
-ms.openlocfilehash: 58c0ff8cf8a579e2b97ebbe195f47e4baef4621a
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: aac0060527af7b7d880f971e7608be3fa44a2d15
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666818"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905110"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Vytváření pracovních postupů aplikací logiky z předem připravených šablon
 
@@ -50,7 +50,7 @@ Pokud ještě nemáte předplatné Azure, [zaregistrujte si bezplatný účet Az
    | **Předplatné** | *název_vašeho_předplatného_Azure* | Vyberte předplatné Azure, které chcete použít. | 
    | **Skupina prostředků** | *název_vaší_skupiny_prostředků_Azure* | Vytvořte nebo vyberte [skupinu prostředků Azure](../azure-resource-manager/management/overview.md) pro tuto aplikaci logiky a uspořádejte všechny prostředky přidružené k této aplikaci. | 
    | **Umístění** | *oblast_vašeho_datového_centra_Azure* | Vyberte oblast datového centra pro nasazení aplikace logiky, například Západní USA. | 
-   | **Log Analytics** | **Vypnuto** (výchozí) nebo **zapnuto** | Zapněte [protokolování diagnostiky](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app) pro vaši aplikaci logiky prostřednictvím [protokolů Azure monitor](../log-analytics/log-analytics-overview.md). Vyžaduje, abyste již Log Analytics pracovní prostor. | 
+   | **Log Analytics** | **Vypnuto** (výchozí) nebo **zapnuto** | Pomocí [protokolů Azure monitor](../log-analytics/log-analytics-overview.md)nastavte [protokolování diagnostiky](../logic-apps/monitor-logic-apps-log-analytics.md) pro vaši aplikaci logiky. Vyžaduje, abyste již Log Analytics pracovní prostor. | 
    |||| 
 
 4. Až budete připraveni, vyberte **Připnout na řídicí panel**. Aplikace logiky se tak automaticky zobrazí na řídicím panelu Azure a po nasazení se automaticky otevře. Zvolte **Vytvořit**.
@@ -85,7 +85,7 @@ Pokud ještě nemáte předplatné Azure, [zaregistrujte si bezplatný účet Az
 
    Příklad:
 
-   ![Vytvoření připojení](./media/logic-apps-create-logic-apps-from-templates/logic-app-create-connection.png)
+   ![Vytvořit připojení](./media/logic-apps-create-logic-apps-from-templates/logic-app-create-connection.png)
 
    Jakmile budete hotovi, otevře se aplikace logiky a zobrazí se v Návrháři Logic Apps.
 
@@ -124,7 +124,7 @@ Pokud ještě nemáte předplatné Azure, [zaregistrujte si bezplatný účet Az
 
    * Pokud jste již nastavili tato připojení, klikněte na tlačítko **pokračovat**.
 
-   ![Vytvoření připojení](./media/logic-apps-create-logic-apps-from-templates/logic-app-create-connection.png)
+   ![Vytvořit připojení](./media/logic-apps-create-logic-apps-from-templates/logic-app-create-connection.png)
 
    Vaše aplikace logiky se teď otevře a zobrazí se v Návrháři Logic Apps.
 

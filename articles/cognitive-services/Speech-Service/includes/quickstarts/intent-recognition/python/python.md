@@ -1,28 +1,24 @@
 ---
-title: 'Rychlý Start: rozpoznávání řeči, záměrů a entit, Python-Speech Service'
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.date: 01/02/2020
+ms.date: 01/27/2020
 ms.topic: include
-ms.author: erhopf
+ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: f2a46b8a0868aaa1097dd7f1ae738a2a3e06e3b8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9bc514c32d97958d8ab154dc2c5533747f380e86
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75773041"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900626"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete:
 
-* Pokud se jedná o váš první projekt v Pythonu, pomocí tohoto průvodce <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md" target="_blank">vytvořte prázdný ukázkový projekt</a>.
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">Nainstalujte sadu Speech SDK pro vývojové prostředí</a>.
+* Pokud se jedná o váš první projekt v Pythonu, pomocí tohoto průvodce <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md" target="_blank">vytvořte prázdný ukázkový <span class="docon docon-navigate-external x-hidden-focus"> </span>projekt </a>.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">Nainstalujte sadu Speech SDK pro vývojové prostředí <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>Vytvoření aplikace v LUIS pro rozpoznávání záměrů
 
@@ -65,7 +61,7 @@ Nyní vytvoříme `IntentRecognizer`. Vložte tento kód přímo pod konfiguraci
 
 ## <a name="add-a-languageunderstandingmodel-and-intents"></a>Přidat LanguageUnderstandingModel a záměry
 
-Je potřeba přidružit `LanguageUnderstandingModel` k nástroji pro rozpoznávání záměrů a přidat záměry, které chcete rozpoznat. Budeme používat záměry z předem připravené domény pro automatizaci domů. 
+Je potřeba přidružit `LanguageUnderstandingModel` k nástroji pro rozpoznávání záměrů a přidat záměry, které chcete rozpoznat. Budeme používat záměry z předem připravené domény pro automatizaci domů.
 
 Vložte tento kód pod `IntentRecognizer`. Ujistěte se, že `"YourLanguageUnderstandingAppId"` nahradíte ID aplikace LUIS. 
 
@@ -90,7 +86,7 @@ Pod vaším voláním `recognize_once()`přidejte tento kód: [!code-python[](~/
 
 ## <a name="check-your-code"></a>Kontrolovat kód
 
-V tomto okamžiku váš kód by měl vypadat takto:  
+V tomto okamžiku váš kód by měl vypadat takto:
 
 > [!NOTE]
 > Do této verze jsme přidali nějaké komentáře.

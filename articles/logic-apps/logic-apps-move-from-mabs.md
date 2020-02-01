@@ -8,12 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: 10c9a1d3723ed30bee5437c3ab7a41308e253bd8
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 97399635399c12022006ac95e60c5828bf2a9dc5
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666648"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905435"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>Migrace aplikací a řešení z BizTalk Services na Azure Logic Apps
 
@@ -125,7 +125,7 @@ Na rozdíl od BizTalk Services jsou tyto akce oddělené od přenosových protok
 
 ## <a name="manage-and-monitor"></a>Správa a monitorování
 
-V BizTalk Services vyhrazený portál poskytoval funkce sledování, které sledují a řeší problémy. Logic Apps poskytuje bohatší možnosti sledování a monitorování prostřednictvím [Azure Portal](../logic-apps/logic-apps-monitor-your-logic-apps.md)a zahrnuje mobilní aplikaci, která vám při přesunu pomůžete sledovat věci.
+V BizTalk Services vyhrazený portál poskytoval funkce sledování, které sledují a řeší problémy. Logic Apps poskytuje bohatší možnosti sledování a monitorování pro [monitorování aplikací logiky v Azure Portal](../logic-apps/monitor-logic-apps.md)a zahrnuje mobilní aplikace, které vám při přesunu pomůžou sledovat věci.
 
 ## <a name="high-availability"></a>Vysoká dostupnost
 

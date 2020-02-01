@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: e7998ea0753ba7ab5d97142c34dc9e333f8b4f5d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d6b2fbe28aae8e8233aaeb75bc9b43a35a9ab588
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034084"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905278"
 ---
 # <a name="azcopy-login"></a>azcopy login
 
@@ -101,6 +101,8 @@ Zajistěte, aby se/path/to/my/CERT považovala za cestu k souboru PEM nebo PKCS1
 
 |Možnost|Popis|
 |--|--|
+|--AAD-koncový bod|Koncový bod Azure Active Directory, který se má použít. Výchozí hodnota (https://login.microsoftonline.com) je správná pro veřejný cloud Azure. Nastavte tento parametr při ověřování v národním cloudu. Viz [koncové body ověřování Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
+Tento příznak není pro Identita spravované služby potřebný.|
 |--ID aplikace – řetězec|ID aplikace identity přiřazené uživatelem Vyžaduje se pro ověřování instančního objektu.|
 |--Certificate-cesta – řetězec|Cesta k certifikátu pro ověřování hlavního názvu služby (SPN) Vyžaduje se pro ověřování instančního objektu založeného na certifikátech.|
 |-h,--help|Zobrazit obsah nápovědu pro příkaz pro přihlášení|
@@ -118,6 +120,6 @@ Zajistěte, aby se/path/to/my/CERT považovala za cestu k souboru PEM nebo PKCS1
 |--Cap – Mbps|Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.|
 |--výstupní řetězec typu|Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text".|
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [AzCopy](storage-ref-azcopy.md)

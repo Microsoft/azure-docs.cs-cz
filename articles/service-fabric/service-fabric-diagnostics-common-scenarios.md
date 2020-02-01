@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric – diagnostikování běžných scénářů
 description: Přečtěte si o řešení běžných scénářů monitorování a diagnostiky v rámci aplikací Azure Service Fabric.
-author: srrengar
 ms.topic: article
 ms.date: 02/25/2019
-ms.author: srrengar
-ms.openlocfilehash: b012e37bef7fe21e869fc3af415ca57b74c61dd8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 3c7f027bad71d48db5fba002f778f23db8225fa5
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645782"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906944"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Diagnostika běžných scénářů pomocí Service Fabric
 
@@ -134,6 +132,7 @@ V těchto odkazech najdete úplný seznam čítačů výkonu pro spolehlivé [sl
 
 ## <a name="next-steps"></a>Další kroky
 
+* [Vyhledat společné chyby při aktivaci balíčku kódu](./service-fabric-diagnostics-code-package-errors.md)
 * [V AI nastavte výstrahy](../azure-monitor/app/alerts.md) na změny výkonu nebo využití.
 * [Inteligentní zjišťování v Application Insights](../azure-monitor/app/proactive-diagnostics.md) provádí proaktivní analýzu telemetrie, která se POSÍLÁ do AI a upozorňuje na potenciální problémy s výkonem.
 * Přečtěte si další informace o tom, Azure Monitor protokoly [upozorňují](../log-analytics/log-analytics-alerts.md) na pomoc při detekci a diagnostice.

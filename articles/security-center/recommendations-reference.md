@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/18/2019
 ms.author: memildin
-ms.openlocfilehash: 686b8bedfeb4ae5e1b2b7bf3b750b51074677990
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 3c0fb29c5a4dd73135aa8352c97df29474c36caf
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76288978"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904130"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Doporučení zabezpečení – referenční příručka
 
@@ -32,9 +32,10 @@ Vaše zabezpečené skóre vychází z počtu Security Center doporučení, kter
 |Doporučení|Popis & souvisejících zásad|Závažnost|Je Rychlá oprava povolená? ([Další informace](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|Typ prostředku|
 |----|----|----|----|----|
 |**Na virtuálních počítačích by se mělo použít řízení přístupu k síti za běhu**|Použijte řízení přístupu k virtuálnímu počítači JIT (just-in-time) k trvalému uzamčení přístupu k vybraným portům a povolte oprávněným uživatelům, aby je mohli otevřít přes JIT, jenom po omezené množství času.<br>(Související zásady: řízení přístupu k síti za běhu by mělo být na virtuálních počítačích použito.)|Vysoký|N|Virtuální počítač|
-|**Měly by být povolené skupiny zabezpečení sítě na úrovni podsítě.**|Povolte skupinám zabezpečení sítě řídit síťový přístup k prostředkům nasazeným v podsítích.<br>(Související zásady: podsítě by měly být přidružené ke skupině zabezpečení sítě)|Vysoká/střední|N|Podsíť|
-|**Virtuální počítače by měly být přidružené ke skupině zabezpečení sítě.**|Povolte skupinám zabezpečení sítě řízení přístupu k síti virtuálních počítačů.<br>(Související zásady: virtuální počítače by měly být přidružené ke skupině zabezpečení sítě)|Vysoká/střední|N|Virtuální počítač|
-|**Přístup by měl být omezený na povolující skupiny zabezpečení sítě u virtuálních počítačů s přístupem k Internetu.**|Tím, že omezíte přístup ke stávajícím pravidlům povolení, posílíte skupiny zabezpečení sítě vašich virtuálních počítačů s přístupem k Internetu.<br>(Související zásady: pravidla skupiny zabezpečení sítě pro virtuální počítače s přístupem k Internetu by měla být Posílená.)|Vysoký|N|Virtuální počítač|
+|**Měly by být povolené skupiny zabezpečení sítě na úrovni podsítě.**|Povolte skupinám zabezpečení sítě řídit síťový přístup k prostředkům nasazeným v podsítích.<br>(Související zásady: podsítě by měly být přidružené ke skupině zabezpečení sítě.<br>Tato zásada je ve výchozím nastavení zakázaná.|Vysoká/střední|N|Podsíť|
+|**Virtuální počítače s přístupem k Internetu by měly být chráněné pomocí skupin zabezpečení sítě**|Povolte skupinám zabezpečení sítě řízení přístupu k síti virtuálních počítačů.<br>(Související zásady: virtuální počítače s přístupem k Internetu by měly být chráněné pomocí skupin zabezpečení sítě.)|Vysoká/střední|N|Virtuální počítač|
+|**Všechny síťové porty by se měly omezit na NSG přidružených k vašemu VIRTUÁLNÍmu počítači.**|Tím, že omezíte přístup ke stávajícím pravidlům povolení, posílíte skupiny zabezpečení sítě vašich virtuálních počítačů s přístupem k Internetu.<br>Toto doporučení se aktivuje, když se libovolný port otevře na *všech* zdrojích (s výjimkou portů 22, 3389, 5985, 5986, 80 a 1443).<br>(Související zásady: přístup přes internetový koncový bod by měl být omezený)|Vysoký|N|Virtuální počítač|
+|**Doporučení adaptivního posílení zabezpečení sítě by se měla použít na internetových virtuálních počítačích.**|Zákazníkům na cenové úrovni Standard se toto doporučení bude zobrazovat, když funkce adaptivního posílení sítě najde pravidlo, které je přes volitelnou NSG.<br>(Související zásady: doporučení adaptivního posílení zabezpečení sítě by se měla použít u virtuálních počítačů s internetem.)|Vysoký|N|Virtuální počítač|
 |**Pravidla pro webové aplikace v IaaS skupin zabezpečení sítě by se měla posílit.**|Posílit zabezpečení skupiny zabezpečení sítě (NSG) virtuálních počítačů, na kterých běží webové aplikace, s pravidly NSG, která jsou přesná, s ohledem na porty webových aplikací.<br>(Související zásady: pravidla skupin zabezpečení sítě pro webové aplikace v IaaS by měla být Posílená.)|Vysoký|N|Virtuální počítač|
 |**Přístup k App Services by měl být omezený.**|Omezte přístup k vašemu App Services změnou konfigurace sítě tak, aby odepřela příchozí provoz z rozsahů, které jsou příliš široké.<br>(Související zásady: [Preview]: přístup k App Services by měl být omezený)|Vysoký|N|App Service|
 |**Porty pro správu by měly být uzavřeny na virtuálních počítačích**|Posílení skupiny zabezpečení sítě virtuálních počítačů pro omezení přístupu k portům pro správu.<br>(Související zásady: porty pro správu by měly být uzavřeny na virtuálních počítačích)|Vysoký|N|Virtuální počítač|

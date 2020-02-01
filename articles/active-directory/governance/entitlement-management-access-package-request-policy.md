@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 649a4a50766d26f73584dae4481652c8007b2e9e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 493ba6396a7ceb11b917fbda5dd6c37c070f2fee
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174678"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897614"
 ---
 # <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Nastavení žádosti o změnu a schválení pro balíček přístupu v Azure AD – Správa nároků
 
@@ -42,6 +42,9 @@ Způsob, jakým určíte, kdo může žádat o přístup k balíčku, je zásado
 | Chci uživatelům v adresáři a také uživatelům, kteří jsou mimo můj adresář, dovolit přístup k balíčku pro přístup | Několik |
 | Chci pro některé uživatele zadat jiná nastavení schvalování | Několik |
 | Chci, aby někteří uživatelé měli přístup k vypršení platnosti přiřazení balíčků, zatímco ostatní uživatelé můžou svůj přístup rozšíří. | Několik |
+
+Informace o Logic prioritě, která se používá při použití více zásad, najdete v tématu [více zásad](entitlement-management-troubleshoot.md#multiple-policies
+).
 
 ### <a name="open-an-existing-policy-of-request-and-approval-settings"></a>Otevře existující zásadu nastavení požadavků a schválení.
 

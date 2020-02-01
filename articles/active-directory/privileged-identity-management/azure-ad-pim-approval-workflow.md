@@ -7,21 +7,21 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
+ms.subservice: pim
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.subservice: pim
 ms.date: 11/12/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05e69bad41391be5153eca0fb1930ffc59da453b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8bc4b518cd2400cf3826b31a590d499c1ad031e7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429940"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896536"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Schválení nebo zamítnutí žádostí o role Azure AD v Privileged Identity Management
 
@@ -40,7 +40,7 @@ Podle kroků v tomto článku můžete schvalovat nebo odmítat žádosti pro ro
 
 # <a name="previous-versiontabprevious"></a>[Předchozí verze](#tab/previous)
 
-## <a name="view-pending-requests"></a>Zobrazení žádostí čekajících na vyřízení
+## <a name="view-pending-requests"></a>Zobrazit nevyřízené žádosti
 
 Jako delegovaný schvalovatel obdržíte e-mailové oznámení, když požadavek role Azure AD čeká na vaše schválení. Tyto nedokončené žádosti můžete zobrazit v Privileged Identity Management.
 
@@ -66,7 +66,7 @@ Jako delegovaný schvalovatel obdržíte e-mailové oznámení, když požadavek
 
     ![Schválit podokno vybrané žádosti s odůvodněním schválení](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
 
-1. Klikněte na **Schválit**.
+1. Klikněte na tlačítko **schválit**.
 
     Symbol stavu bude aktualizován na vaše schválení.
 
@@ -88,7 +88,7 @@ Jako delegovaný schvalovatel obdržíte e-mailové oznámení, když požadavek
 
 # <a name="new-versiontabnew"></a>[Nová verze](#tab/new)
 
-## <a name="view-pending-requests"></a>Zobrazení žádostí čekajících na vyřízení
+## <a name="view-pending-requests"></a>Zobrazit nevyřízené žádosti
 
 Jako delegovaný schvalovatel obdržíte e-mailové oznámení, když požadavek role prostředku Azure čeká na vaše schválení. Tyto nedokončené žádosti můžete zobrazit v Privileged Identity Management.
 

@@ -3,41 +3,33 @@ title: 'Rychlý Start: knihovna úložiště objektů BLOB v Azure V12 – Pytho
 description: V tomto rychlém startu se dozvíte, jak pomocí klientské knihovny Azure Blob Storage verze 12 pro Python vytvořit kontejner a objekt BLOB v úložišti objektů BLOB (objekt). Dále se dozvíte, jak stáhnout objekt blob do místního počítače a jak zobrazit seznam všech objektů blob, které jsou v kontejneru.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: faa73874d7e662eb23e85d46ecaf21a11d10ce73
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 03f298b49e6a1eba84e8adf5ca6039df0bfe1abd
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443735"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906427"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-for-python"></a>Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure V12 pro Python
+# <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>Rychlý Start: Správa objektů BLOB pomocí sady Python V12 SDK
 
-Začněte s klientskou knihovnou V12 Azure Blob Storage pro Python. Azure Blob Storage je řešení úložiště objektů Microsoftu pro cloud. Postupujte podle kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy. Úložiště objektů blob je optimalizované pro ukládání velkých objemů nestrukturovaných dat.
-
-> [!NOTE]
-> Informace o tom, jak začít s předchozí verzí sady SDK, najdete v tématu [rychlý Start: Klientská knihovna pro Azure Blob Storage pro Python](storage-quickstart-blobs-python-legacy.md).
-
-Použijte klientskou knihovnu služby Azure Blob Storage k těmto akcím:
-
-* Vytvoření kontejneru
-* Nahrání objektu blob do Azure Storage
-* Výpis všech objektů BLOB v kontejneru
-* Stažení objektu blob do místního počítače
-* Odstranění kontejneru
+V tomto rychlém startu se naučíte spravovat objekty BLOB pomocí Pythonu. Objekty blob jsou objekty, které mohou obsahovat velké objemy textových nebo binárních dat, včetně obrázků, dokumentů, datových proudů médií a dat archivu. Můžete nahrávat, stahovat a vypisovat objekty BLOB a vytvářet a odstraňovat kontejnery.
 
 [Referenční dokumentace k rozhraní API](/python/api/azure-storage-blob) |  | balíčku [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob) [(Python Package index)](https://pypi.org/project/azure-storage-blob/) | [ukázky](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
 
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
-
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* Účet úložiště Azure – [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* [Python](https://www.python.org/downloads/) pro váš operační systém – 2,7, 3,5 nebo novější
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Účet služby Azure Storage. [Vytvoření účtu úložiště](../common/storage-account-create.md)
+- [Python](https://www.python.org/downloads/) 2,7, 3,5 nebo novější.
+
+> [!NOTE]
+> Informace o tom, jak začít s předchozí verzí sady SDK, najdete v tématu [rychlý Start: Správa objektů BLOB pomocí sady Python v 2.1 SDK](storage-quickstart-blobs-python-legacy.md).
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="setting-up"></a>Nastavení
 
@@ -81,7 +73,7 @@ Z adresáře projektu:
 
 1. Otevřít nový textový soubor v editoru kódu
 1. Přidat `import` příkazy
-1. Vytvoření struktury pro program, včetně velmi základního zpracování výjimek
+1. Vytvoření struktury pro program, včetně základního zpracování výjimek
 
     Zde je kód:
 
@@ -103,7 +95,7 @@ Z adresáře projektu:
 
 ## <a name="object-model"></a>Objektový model
 
-Úložiště objektů BLOB v Azure je optimalizované pro ukládání obrovských objemů nestrukturovaných dat. Jde o data, která nevyhovují konkrétnímu datovému modelu nebo definici, například textová nebo binární data. Úložiště objektů BLOB nabízí tři typy prostředků:
+Úložiště objektů BLOB v Azure je optimalizované pro ukládání obrovských objemů nestrukturovaných dat. Nestrukturovaná data jsou data, která nevyhovují konkrétnímu datovému modelu nebo definici, jako jsou textová nebo binární data. Úložiště objektů BLOB nabízí tři typy prostředků:
 
 * Účet úložiště
 * Kontejner v účtu úložiště
@@ -234,7 +226,7 @@ with open(download_file_path, "wb") as download_file:
 
 Následující kód vyčistí prostředky, které aplikace vytvořila, odebráním celého kontejneru pomocí metody [delete_container](/python/api/azure-storage-blob/azure.storage.blob.containerclient#delete-container---kwargs-) . Pokud chcete, můžete také odstranit místní soubory.
 
-Aplikace pozastaví vstup uživatele voláním `input()` předtím, než odstraní objekt blob, kontejner a místní soubory. Tato možnost je vhodná pro ověření, že prostředky byly ve skutečnosti vytvořeny správně, než byly odstraněny.
+Aplikace pozastaví vstup uživatele voláním `input()` předtím, než odstraní objekt blob, kontejner a místní soubory. Tato možnost je vhodná pro ověření, že se prostředky správně vytvořily, než se odstraní.
 
 Přidejte tento kód na konec `try` bloku:
 
@@ -298,4 +290,4 @@ Pokud chcete zobrazit ukázkové aplikace služby Blob Storage, pokračujte:
 > [Ukázky V12 v Pythonu pro Azure Blob Storage SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
 
 * Další informace najdete v tématu [sada Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/README.md).
-* Kurzy, ukázky, rychlé starty a další dokumentace najdete na webu [Azure pro vývojáře v Pythonu](/azure/python/).
+* Výukové programy, ukázky, rychlé starty a další dokumentaci najdete v [Azure pro vývojáře v Pythonu](/azure/python/).

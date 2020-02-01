@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: 76603642b90bd4d3926e10ce1c5a3c38391362cf
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2624f9fafd82aad9613d6940eca69486d897aa08
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749776"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905341"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Použití Azure Toolkit for IntelliJ k ladění Apache Spark aplikací vzdáleně ve službě HDInsight prostřednictvím sítě VPN
 
@@ -35,7 +35,7 @@ Tento článek poskytuje podrobné pokyny k používání nástrojů HDInsight v
 * **INTELLIJ nápad**. Tento článek používá verzi 2017,1. Můžete ji nainstalovat z [webu JetBrains](https://www.jetbrains.com/idea/download/).
 * **Nástroje HDInsight v Azure Toolkit for IntelliJ**. Nástroje HDInsight pro IntelliJ jsou k dispozici jako součást Azure Toolkit for IntelliJ. Pokyny k instalaci sady Azure Toolkit najdete v tématu [install Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation).
 * **Přihlaste se k předplatnému Azure z INTELLIJ nápadu**. Postupujte podle pokynů v tématu [použití Azure Toolkit for IntelliJ k vytvoření Apache Spark aplikací pro cluster HDInsight](apache-spark-intellij-tool-plugin.md).
-* **Alternativní řešení výjimky**. Při spuštění aplikace Spark Scala pro vzdálené ladění v počítači se systémem Windows může dojít k výjimce. Tato výjimka je vysvětlena v [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356) a nastane v důsledku chybějícího souboru WinUtils. exe v systému Windows. Pokud chcete tuto chybu obejít, musíte [spustitelný soubor stáhnout](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) do umístění, jako je například **C:\WinUtils\bin**. Přidejte **HADOOP_HOME** proměnnou prostředí a pak nastavte hodnotu proměnné na **C\WinUtils**.
+* **Alternativní řešení výjimky**. Při spuštění aplikace Spark Scala pro vzdálené ladění v počítači se systémem Windows může dojít k výjimce. Tato výjimka je vysvětlena v [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356) a nastane v důsledku chybějícího souboru WinUtils. exe v systému Windows. Chcete-li tuto chybu vyřešit, je třeba stáhnout `https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe` do umístění, jako je například **C:\WinUtils\bin**. Přidejte **HADOOP_HOME** proměnnou prostředí a pak nastavte hodnotu proměnné na **C\WinUtils**.
 
 ## <a name="step-1-create-an-azure-virtual-network"></a>Krok 1: vytvoření virtuální sítě Azure
 

@@ -4,15 +4,15 @@ description: Naučte se spravovat databázové role a uživatele na Analysis Ser
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 01/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9d1f3387fcea732e002689a4cdeaaf1d50d8a56f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 26d7c2d8919573c4c971edd7cb0e01b06fef3012
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147008"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901489"
 ---
 # <a name="manage-database-roles-and-users"></a>Správa databázových rolí a uživatelů
 
@@ -44,10 +44,10 @@ Při vytváření projektu s tabelárním modelem vytvoříte role a přidáte u
   
     |Oprávnění|Popis|  
     |----------------|-----------------|  
-    |**Žádné**|Členové nemohou upravovat schéma modelu a nemohou zadávat dotazy na data.|  
+    |**Žádné**|Členové nemohou číst ani upravovat schéma modelu a nemohou zadávat dotazy na data.|  
     |**Čtení**|Členové se můžou dotazovat na data (na základě filtrů řádků), ale nemůžou upravovat schéma modelu.|  
     |**Čtení a zpracování**|Členové mohou zadávat dotazy na data (na základě filtrů na úrovni řádků) a spouštět proces a zpracovávat všechny operace, ale nemohou upravovat schéma modelu.|  
-    |**Přihlášení**|Členové mohou spustit proces a zpracovat všechny operace. Schéma modelu nelze upravovat a nelze zadávat dotazy na data.|  
+    |**Přihlášení**|Členové mohou spustit proces a zpracovat všechny operace. Nelze číst ani upravovat schéma modelu a nelze zadávat dotazy na data.|  
     |**Správce**|Členové mohou upravit schéma modelu a dotazovat se na všechna data.|   
   
 5.  Pokud role, kterou vytváříte, má oprávnění ke čtení nebo čtení a zpracování, můžete přidat filtry řádků pomocí vzorce DAX. Klikněte na kartu **filtry řádků** a pak vyberte tabulku, klikněte na pole **filtru DAX** a pak zadejte vzorec DAX.
@@ -139,7 +139,7 @@ Filtry řádků se použijí na zadané řádky a související řádky. Pokud m
   
 |Table|Výraz DAX|  
 |-----------|--------------------|  
-|Oblast|= Region [Země] = "USA"|  
+|Region (Oblast)|= Region [Země] = "USA"|  
 |ProductCategory|= ProductCategory [název] = "jízdní kola"|  
 |Transakce|= Transakcí [rok] = 2016|  
   

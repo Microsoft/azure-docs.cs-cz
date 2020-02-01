@@ -1,28 +1,24 @@
 ---
-title: 'Rychlý Start: rozpoznávání řeči, záměrů a entit, Java-Speech Service'
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.date: 01/02/2020
+ms.date: 01/27/2020
 ms.topic: include
-ms.author: erhopf
+ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: c5d70bba32df5940d929482e37317d40bd496676
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: a6bf8bb558e82fefbbe6ff306f628a4b449a4e83
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76761443"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900565"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete:
 
-* Pokud se jedná o váš první projekt Java (JRE), použijte tento průvodce k <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=jre" target="_blank">Vytvoření prázdného ukázkového projektu</a>.
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=jre" target="_blank">Nainstalujte sadu Speech SDK pro vývojové prostředí</a>.
+* Pokud se jedná o váš první projekt Java (JRE), použijte tento průvodce k <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=jre" target="_blank">Vytvoření prázdného ukázkového projektu <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=jre" target="_blank">Nainstalujte sadu Speech SDK pro vývojové prostředí <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>Vytvoření aplikace v LUIS pro rozpoznávání záměrů
 
@@ -96,7 +92,7 @@ Je důležité, abyste prostředky řeči uvolnili, až je budete používat. Vl
 
 ## <a name="check-your-code"></a>Kontrolovat kód
 
-V tomto okamžiku váš kód by měl vypadat takto:  
+V tomto okamžiku váš kód by měl vypadat takto:
 
 > [!NOTE]
 > Do této verze jsme přidali nějaké komentáře.
@@ -105,7 +101,7 @@ V tomto okamžiku váš kód by měl vypadat takto:
 
 ## <a name="build-and-run-your-app"></a>Sestavení a spuštění aplikace
 
-Stiskněte F11 nebo vyberte **Run** (Spustit)  > **Debug** (Ladit).
+Stiskněte klávesu <kbd>F11</kbd>nebo vyberte **Spustit** > **ladění**.
 Následujících 15 sekund hlasového vstupu z mikrofonu se rozpozná a zaprotokoluje v okně konzoly.
 
 ## <a name="next-steps"></a>Další kroky

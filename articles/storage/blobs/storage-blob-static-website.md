@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: 8dc5599e681d9aee84f884cd4990163a2481d386
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: a35239354d23f75361d5577d6b7efc8254943147
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708158"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906593"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hostování statického webu v Azure Storage
 
@@ -81,22 +81,16 @@ Pokud například změníte úroveň veřejného přístupu kontejneru **$Web** 
 
 Veřejný přístup k primárnímu koncovému bodu služby BLOB Service se ale `https://contosoblobaccount.blob.core.windows.net/$web/index.html` změní z Private na Public. Nyní mohou uživatelé tento soubor otevřít pomocí některého z těchto dvou koncových bodů.
 
-## <a name="content-delivery-network-cdn-and-secure-socket-layer-ssl-support"></a>Content Delivery Network (CDN) a podpora protokolu SSL (Secure Socket Layer)
+## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>Mapování vlastní domény na statickou adresu URL webu
 
-Pokud chcete zajistit dostupnost svých statických webových souborů přes vaši vlastní doménu a HTTPS, přečtěte si téma [použití Azure CDN pro přístup k objektům blob s vlastními doménami přes protokol HTTPS](storage-https-custom-domain-cdn.md). V rámci tohoto procesu musíte síť CDN nasměrovat na primární koncový bod *statického webu* , a to na rozdíl od primárního koncového bodu *služby BLOB Service* . Je možné, že budete muset několik minut počkat, než se obsah zobrazí, protože se konfigurace CDN hned nespustí.
+Svůj statický Web můžete zpřístupnit prostřednictvím vlastní domény. 
 
-Když aktualizujete svůj statický web, nezapomeňte vymazat obsah uložený v mezipaměti na hraničních serverech CDN vyprázdněním koncového bodu CDN. Další informace najdete v tématu [Vyprázdnění koncového bodu Azure CDN](../../cdn/cdn-purge-endpoint.md).
+Pro vlastní doménu je snazší povolit přístup HTTP, protože je Azure Storage nativně podporuje. Pokud chcete povolit protokol HTTPS, musíte použít Azure CDN, protože Azure Storage ještě nativně nepodporuje protokol HTTPS s vlastními doménami. Podrobné pokyny najdete v tématu [Mapování vlastní domény na koncový bod Azure Blob Storage](storage-custom-domain-name.md) .
 
-> [!NOTE]
-> Protokol HTTPS se nativně podporuje prostřednictvím webového koncového bodu účtu, takže je webový koncový bod dostupný přes HTTP i HTTPS. Pokud je ale účet úložiště nakonfigurovaný tak, aby vyžadoval zabezpečený přenos přes protokol HTTPS, musí uživatelé použít koncový bod HTTPS. Další informace najdete v tématu [vyžadování zabezpečeného přenosu v Azure Storage](../common/storage-require-secure-transfer.md).
->
-> Použití vlastních domén přes HTTPS vyžaduje v tuto chvíli použití Azure CDN.
+Pokud je účet úložiště nakonfigurovaný tak, aby [vyžadoval zabezpečený přenos](../common/storage-require-secure-transfer.md) přes protokol HTTPS, musí uživatelé použít koncový bod HTTPS. 
 
-## <a name="custom-domain-names"></a>Vlastní názvy domén
-
-Svůj statický Web můžete zpřístupnit prostřednictvím vlastní domény. Další informace najdete v tématu [Konfigurace vlastního názvu domény pro účet Azure Storage](storage-custom-domain-name.md).
-
-Podrobný pohled na hostování vaší domény v Azure najdete v tématu [hostování vaší domény v Azure DNS](../../dns/dns-delegate-domain-azure-dns.md).
+> [!TIP]
+> Zvažte hostování vaší domény v Azure. Další informace najdete v tématu [hostování vaší domény v Azure DNS](../../dns/dns-delegate-domain-azure-dns.md).
 
 ## <a name="pricing"></a>Ceny
 
@@ -111,8 +105,7 @@ Pokud chcete povolit metriky na stránkách statického webu, přečtěte si té
 ## <a name="next-steps"></a>Další kroky
 
 * [Hostování statického webu v Azure Storage](storage-blob-static-website-how-to.md)
-* [Použití Azure CDN pro přístup k objektům blob s vlastními doménami přes HTTPS](storage-https-custom-domain-cdn.md)
-* [Konfigurace vlastního názvu domény pro objekt BLOB nebo webový koncový bod](storage-custom-domain-name.md)
+* [Mapování vlastní domény na koncový bod Azure Blob Storage](storage-custom-domain-name.md)
 * [Azure Functions](/azure/azure-functions/functions-overview)
 * [Azure App Service](/azure/app-service/overview)
 * [Sestavení první webové aplikace bez serveru](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)

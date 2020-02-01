@@ -3,17 +3,17 @@ title: Azure Service Fabric CLI – sfctl
 description: Přečtěte si o sfctl rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů a podskupin.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 518e60ee92a637533fdf5ab44053d1a1c8757bbe
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 56efa15a7de3414f9c535e66bd80c94594cd5038
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645238"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906219"
 ---
 # <a name="sfctl"></a>sfctl
-Příkazy pro správu Service Fabric clusterů a entit Tato verze je kompatibilní s modulem runtime Service Fabric 6,5.
+Příkazy pro správu Service Fabric clusterů a entit Tato verze je kompatibilní s modulem runtime Service Fabric 7,0.
 
 Příkazy se řídí vzorem slovesa substantivum. Další informace najdete v tématu podskupiny.
 
@@ -26,11 +26,11 @@ Příkazy se řídí vzorem slovesa substantivum. Další informace najdete v t�
 | [sestavit](service-fabric-sfctl-compose.md) | Vytvářejte, odstraňujte a spravujte aplikace Docker Compose. |
 | [container](service-fabric-sfctl-container.md) | Spusťte příkazy související s kontejnerem na uzlu clusteru. |
 | [událost](service-fabric-sfctl-events.md) | Načtěte události z úložiště událostí (Pokud je už nainstalovaná služba Eventstoru). |
-| [is](service-fabric-sfctl-is.md) | Dotazování a posílání příkazů do služby infrastruktury |
+| [dojde](service-fabric-sfctl-is.md) | Dotazování a posílání příkazů do služby infrastruktury |
 | [mesh](service-fabric-sfctl-mesh.md) | Umožňuje odstraňovat a spravovat aplikace Service Fabric sítě. |
 | [uzlu](service-fabric-sfctl-node.md) | Spravujte uzly, které tvoří cluster. |
 | [rozdělován](service-fabric-sfctl-partition.md) | Dotazování a Správa oddílů pro libovolnou službu. |
-| [property](service-fabric-sfctl-property.md) | Uložení a dotazování vlastností pod názvy Service Fabric. |
+| [majetek](service-fabric-sfctl-property.md) | Uložení a dotazování vlastností pod názvy Service Fabric. |
 | [změněno](service-fabric-sfctl-replica.md) | Spravovat repliky patřící k oddílům služeb. |
 | [/min](service-fabric-sfctl-rpm.md) | Dotazování a posílání příkazů do služby správce oprav. |
 | [sa-cluster](service-fabric-sfctl-sa-cluster.md) | Spravujte samostatné Service Fabric clustery. |

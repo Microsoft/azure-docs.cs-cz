@@ -1,21 +1,16 @@
 ---
-title: 'Rychlý Start: rozpoznávání řeči, záměrů a entit – Speech Service'
-titleSuffix: Azure Cognitive Services
-description: TBD
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
+ms.date: 01/27/2020
 ms.author: erhopf
-ms.openlocfilehash: fc3039c80066004e81ca62412912d51312b3f909
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2898db04ce7bb0a3a609c11c7ae0e62eeba8facc
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75468333"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900389"
 ---
 ## <a name="additional-language-and-platform-support"></a>Další podpora jazyků a platforem
 

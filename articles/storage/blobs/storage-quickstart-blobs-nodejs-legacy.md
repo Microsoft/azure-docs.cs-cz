@@ -3,24 +3,26 @@ title: 'Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azur
 description: Vytváření, odesílání a odstraňování objektů BLOB a kontejnerů v Node. js pomocí Azure Storage klientské knihovny v10 za účelem pro JavaScript
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/24/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: dd59dec65f75a17c35750140349101c600a92636
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 6a530c96c99a9f22f1943a5b874656bcabd9594b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862845"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906470"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v10-for-javascript"></a>Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure v10 za účelem pro JavaScript
+# <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>Rychlý Start: Správa objektů BLOB pomocí sady JavaScript v10 za účelem SDK v Node. js
 
-V tomto rychlém startu se dozvíte, jak sadu [Azure Storage v10 SDK pro JavaScript](https://github.com/Azure/azure-sdk-for-js) v Node.js použít k nahrání, stažení, vypsání a odstranění objektů blob a správě kontejnerů.
+V tomto rychlém startu se naučíte spravovat objekty BLOB pomocí Node. js. Objekty blob jsou objekty, které mohou obsahovat velké objemy textových nebo binárních dat, včetně obrázků, dokumentů, datových proudů médií a dat archivu. Můžete nahrávat, stahovat, vypisovat a odstraňovat objekty BLOB a vy budete spravovat kontejnery.
 
 ## <a name="prerequisites"></a>Požadavky
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Účet služby Azure Storage. [Vytvoření účtu úložiště](../common/storage-account-create.md)
+- [Node.js](https://nodejs.org/en/download/).
 
 ## <a name="download-the-sample-application"></a>Stažení ukázkové aplikace
 
@@ -133,7 +135,7 @@ const ONE_MEGABYTE = 1024 * 1024;
 const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
 ```
 
-Žádosti tohoto rozhraní API lze nastavit tak, aby jim po daném intervalu vypršel časový limit. Třída [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy) se stará o vypršení časového limitu žádostí a následující konstanta slouží k definování časových limitů použitých v této ukázce.
+Žádosti vytvořené rozhraním API je možné nastavit tak, aby po uplynutí daného intervalu vypršel časový limit. Třída [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy) se stará o vypršení časového limitu žádostí a následující konstanta slouží k definování časových limitů použitých v této ukázce.
 
 ```javascript
 const ONE_MINUTE = 60 * 1000;
@@ -203,7 +205,7 @@ Stejně jako kontejner tento objekt blob bloku zatím neexistuje. Proměnná *bl
 
 ### <a name="using-the-aborter-class"></a>Použití třídy Aborter
 
-Žádosti tohoto rozhraní API lze nastavit tak, aby jim po daném intervalu vypršel časový limit. Třída *Abort* zodpovídá za správu, jak vypršel časový limit požadavků. Následující kód vytvoří kontext, ve kterém je sada požadavků 30 minut spuštěna.
+Žádosti vytvořené rozhraním API je možné nastavit tak, aby po uplynutí daného intervalu vypršel časový limit. Třída *Abort* zodpovídá za správu, jak vypršel časový limit požadavků. Následující kód vytvoří kontext, ve kterém je sada požadavků 30 minut spuštěna.
 
 ```javascript
 const aborter = Aborter.timeout(30 * ONE_MINUTE);

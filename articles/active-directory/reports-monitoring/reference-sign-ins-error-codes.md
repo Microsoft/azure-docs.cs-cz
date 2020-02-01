@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7a025835275169b260dfd1f91b65341b5ba02ff
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: da2d598c7bb6d7b06e57dd497d1e2aebf1b63694
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294095"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898884"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Kódy chyb sestav aktivit přihlašování 
 
@@ -143,6 +143,7 @@ Pomocí [rozhraní API pro vytváření sestav](concept-reporting-api.md)můžet
 |53002|Použitá aplikace není schválenou aplikací pro podmíněný přístup. Pokud chce uživatel získat přístup, musí použít jednu z aplikací na seznamu schválených aplikací.|
 |53003|Přístup byl zablokován kvůli zásadám podmíněného přístupu.|
 |53004|Uživatel musí dokončit registraci pro vícefaktorové ověřování, než získá přístup k tomuto obsahu. Uživatel by se měl zaregistrovat k vícefaktorovému ověřování.|
+|53032|Účet je zablokovaný kvůli zásadám Azure AD Identity Protection.|
 |65001|Aplikace X nemá oprávnění pro přístup k aplikaci Y nebo oprávnění bylo odvoláno. Nebo Uživatel nebo správce nevyjádřil souhlas s použitím aplikace s ID X. Odešlete interaktivní žádost o autorizaci pro tohoto uživatele a prostředek. Nebo Uživatel nebo správce nevyjádřil souhlas s použitím aplikace s ID X. Odešlete správci tenanta žádost o autorizaci k jednání jménem aplikace Y pro prostředek Z.|
 |65004|Uživatel odmítl souhlas s udělením přístupu aplikace. Požádejte uživatele, aby se zkusil znovu přihlásit a udělil aplikaci souhlas.|
 |65005|Přístupový seznam požadovaných prostředků aplikace neobsahuje aplikace zjistitelné tímto prostředkem; klientská aplikace požadovala přístup k prostředku, který nebyl zadán v jejím přístupovém seznamu požadovaných prostředků; služba Graph vrátila chybnou žádost; nebo prostředek nebyl nalezen. Pokud aplikace podporuje SAML, pravděpodobně jste ji nakonfigurovali pomocí špatného identifikátoru (entity). Vyzkoušejte řešení uvedené pro SAML v následujícím odkazu: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)|
@@ -184,7 +185,7 @@ Pomocí [rozhraní API pro vytváření sestav](concept-reporting-api.md)můžet
 |90010|Požadavek není z různých důvodů podporován. Požadavek se například provede pomocí nepodporované metody Request (podporuje se jenom metoda POST) nebo se nepodporuje podpisový algoritmus tokenu, který se požaduje. Obraťte se na vývojáře aplikace.|
 |90014| Chybí povinné pole pro zprávu protokolu. Obraťte se na vlastníka aplikace. Pokud jste vlastníkem aplikace, ujistěte se, že máte všechny potřebné parametry pro žádost o přihlášení. |
 |90051| Neplatný token delegování Je zadané neplatné národní ID cloudu ({cloudId}).|
-|90072| Účet musí být nejprve v tenantovi přidán jako externí uživatel. Odhlaste se a znovu se přihlaste s jiným účtem služby Azure AD.|
+|90072| Účet musí být nejprve přidán jako externí uživatel v tenantovi. Odhlaste se a znovu se přihlaste s jiným účtem služby Azure AD.|
 |90094| Aplikace požádala o oprávnění, která přihlášenému uživateli není oprávněná k souhlasu, a uživatel byl zablokován. |
 |90095| Aplikace požádala o oprávnění, která přihlášenému uživateli není oprávněná k souhlasu, a uživatel byl zobrazen ve formuláři [žádosti o souhlas správce](../manage-apps/configure-admin-consent-workflow.md) . |
 |500011| Objekt zabezpečení prostředku s názvem <site address> nebyl nalezen v tenantovi s názvem <tenant ID>. K tomu může dojít, pokud aplikace nebyla nainstalována správcem tenanta nebo odsouhlasena žádným uživatelem v tenantovi. Možná jste odeslali žádost o ověření do nesprávného tenanta.|

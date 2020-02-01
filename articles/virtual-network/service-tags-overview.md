@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 8d5377f7ec8de14f3d7d55bc109f6be731991051
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 1fec2778ce8c839c5bac0c1d74085db0f8b283ce
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775268"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76903000"
 ---
 # <a name="virtual-network-service-tags"></a>Značky služby virtuální sítě 
 <a name="network-service-tags"></a>
@@ -43,7 +43,7 @@ Ve výchozím nastavení značky služby odráží rozsahy celého cloudu. Někt
 | Tag | Účel | Dá se použít příchozí nebo odchozí? | Je možné je rozregionovat? | Lze použít s Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **ApiManagement** | Provoz správy pro nasazení ve službě Azure API Management vyhrazena. | Obojí | Ne | Ano |
-| **ApplicationInsightsAvailability** | Application Insights dostupnost. | Obojí | Ne | Ne |
+| **ApplicationInsightsAvailability** | Application Insights dostupnost. | Příchozí | Ne | Ne |
 | **AppService**    | Azure App Service. Tato značka se doporučuje pro odchozí pravidla zabezpečení na front-endy webové aplikace. | Odchozí | Ano | Ano |
 | **AppServiceManagement** | Provoz správy pro nasazení vyhrazená pro App Service Environment. | Obojí | Ne | Ano |
 | **Azureactivedirectory selhala** | Azure Active Directory. | Odchozí | Ne | Ano |

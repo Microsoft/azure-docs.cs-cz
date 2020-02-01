@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 02/08/2018
 ms.author: kumud
 ms.custom: include file
-ms.openlocfilehash: 4b419bd8c19cffaf84582cb4fa9e46592746da3f
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 4219df03f74f737c5f2435f9bc0842189dc1fd49
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751838"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76909162"
 ---
 | | Standardní SKU | Základní SKU |
 | --- | --- | --- |
-| Velikost fondu back-endu | Podporuje až 1000 instancí. | Podporuje až 100 instancí. |
+| Velikost fondu back-endu | Podporuje až 1000 instancí. | Podporuje až 300 instancí. |
 | Koncové body fondu back-endu | Libovolný virtuální počítač v jedné virtuální síti, včetně blendů virtuálních počítačů, skupin dostupnosti a virtuálních počítačů s měřítkem. | Virtuální počítače v jedné skupině dostupnosti nebo v sadě škálování virtuálních počítačů. |
 | [Sondy stavu](../articles/load-balancer/load-balancer-custom-probe-overview.md#types) | TCP, HTTP, HTTPS | TCP, HTTP |
 | [Chování sondy stavu](../articles/load-balancer/load-balancer-custom-probe-overview.md#probedown) | Připojení TCP zůstávají v provozu při testování instance dolů __a__ na všech sondách. | Připojení TCP zůstávají v provozu při testování instance. Všechna připojení TCP se ukončí, když jsou všechny sondy mimo provoz. |
 | Zóny dostupnosti | Back-endy zóny a oblasti front-endu pro příchozí a odchozí provoz. Mapování odchozích toků při selhání zóny. Vyrovnávání zatížení mezi zónami. | Není k dispozici |
-| Diagnostika | službu Azure Monitor. Multidimenzionální metriky, včetně bajtů a čítačů paketů. Stav sondy stavu. Pokusy o připojení (TCP SYN). Stav odchozího připojení (úspěšné a neúspěšné toky SNAT). Aktivní měření roviny dat. | Azure Log Analytics jenom pro veřejné Load Balancer. Výstraha vyčerpání SNAT. Počet stavů back-end fondu |
+| Diagnostika | Azure Monitor. Multidimenzionální metriky, včetně bajtů a čítačů paketů. Stav sondy stavu. Pokusy o připojení (TCP SYN). Stav odchozího připojení (úspěšné a neúspěšné toky SNAT). Aktivní měření roviny dat. | Azure Log Analytics jenom pro veřejné Load Balancer. Výstraha vyčerpání SNAT. Počet stavů back-end fondu |
 | Porty HA | Interní nástroj pro vyrovnávání zatížení | Není k dispozici |
 | Zabezpečení ve výchozím nastavení | Veřejné IP adresy, koncové body veřejných Load Balancer a interní Load Balancer koncových bodů se zavřou do příchozích toků, pokud to nepovoluje skupina zabezpečení sítě. Upozorňujeme, že interní provoz z virtuální sítě do interního nástroje pro vyrovnávání zatížení je stále povolen. | Ve výchozím nastavení otevřete. Skupina zabezpečení sítě je volitelná. |
 | [Odchozí připojení](../articles/load-balancer/load-balancer-outbound-connections.md) | Můžete explicitně definovat odchozí NAT založené na fondu s [odchozími pravidly](../articles/load-balancer/load-balancer-outbound-rules-overview.md). Pro jedno pravidlo vyrovnávání zatížení můžete použít více front-endu s časovým limitem pro vyrovnávání zatížení. Odchozí scénář se _musí_ explicitně vytvořit pro virtuální počítač, skupinu dostupnosti nebo sadu škálování virtuálního počítače pro použití odchozího připojení. K koncovým bodům služby virtuální sítě se dá získat přístup bez definování odchozího připojení a nepočítá se od zpracovaných dat. Všechny veřejné IP adresy, včetně služeb Azure PaaS, nejsou k dispozici jako koncové body služby virtuální sítě, musí být dostupné pomocí odchozího připojení a počítají se ke zpracování dat. Když virtuální počítač, Skupina dostupnosti nebo sada škálování virtuálního počítače zachová jenom interní Load Balancer, odchozí připojení přes výchozí SNAT nejsou dostupná. Místo toho použijte [odchozí pravidla](../articles/load-balancer/load-balancer-outbound-rules-overview.md) . Odchozí programování SNAT závisí na protokolu transportu příchozího pravidla vyrovnávání zatížení. | Jeden front-end, vybraný náhodně, pokud je k dispozici více front-endy. Pokud virtuální počítač, Skupina dostupnosti nebo sada škálování virtuálních počítačů obsluhuje jenom interní Load Balancer, použije se výchozí SNAT. |

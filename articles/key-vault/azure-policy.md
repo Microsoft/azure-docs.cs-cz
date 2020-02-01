@@ -1,17 +1,17 @@
 ---
 title: Integrace Azure Key Vault s Azure Policy
-description: Naučte se vytvářet, načítat a odstraňovat tajné klíče z trezoru klíčů Azure pomocí klientské knihovny .NET (v4).
+description: Informace o tom, jak integrovat Azure Key Vault s Azure Policy
 author: msmbaldwin
 ms.author: mbaldwin
-ms.date: 11/12/2019
+ms.date: 01/28/2020
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: b59b367d38f95bafe7d3e1320d1365f708dc75dd
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c32d2fb45bbd4f4a9b4845bb4ef27a439d536677
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077369"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905864"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>Integrace Azure Key Vault s Azure Policy
 

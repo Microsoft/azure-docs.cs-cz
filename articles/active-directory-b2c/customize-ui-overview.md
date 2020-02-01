@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/25/2019
+ms.date: 01/30/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d14e6f98f49f112c8b20abec573b48c3b12705db
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f171d9d71d3e6f8fa57671578502675442293793
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841229"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76908924"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní v Azure Active Directory B2C
 
@@ -31,6 +31,9 @@ Existuje několik způsobů, jak přizpůsobit uživatelské rozhraní aplikace,
 Pokud používáte [toky uživatelů](user-flow-overview.md), můžete změnit vzhled stránek toku uživatelů pomocí integrovaných *šablon rozložení stránky*nebo pomocí vlastních HTML a šablon stylů CSS. Obě metody jsou popsány dále v tomto článku.
 
 Pomocí [Azure Portal](tutorial-customize-ui.md) můžete nakonfigurovat přizpůsobení uživatelského rozhraní pro toky uživatelů.
+
+> [!TIP]
+> Chcete-li upravit pouze logo banner, obrázek pozadí a barvu pozadí stránek toku uživatele, můžete vyzkoušet funkci [Branding společnosti (verze Preview)](#company-branding-preview) popsanou dále v tomto článku.
 
 ### <a name="custom-policies"></a>Vlastní zásady
 
@@ -149,6 +152,60 @@ V následující tabulce jsou uvedeny fragmenty kódu HTML, které se Azure AD B
 | Jednotné registrace nebo přihlašování | Zpracovává registraci i přihlašování zákazníků, kteří můžou používat poskytovatele sociálních identit, jako je Facebook, Google nebo místní účty. |
 | Multi-Factor Authentication | Zákazníci si můžou při registraci nebo přihlašování ověřit telefonní čísla (pomocí textu nebo hlasu). |
 | Chyba | Poskytne zákazníkovi informace o chybě. |
+
+## <a name="company-branding-preview"></a>Branding společnosti (Preview)
+
+Můžete přizpůsobit stránky toku uživatele pomocí loga nápisu, obrázku pozadí a barvy pozadí pomocí Azure Active Directory [Branding společnosti](../active-directory/fundamentals/customize-branding.md).
+
+Chcete-li přizpůsobit stránky toku uživatele, je třeba nejprve nakonfigurovat Branding společnosti v Azure Active Directory a pak ji povolit v rozložení stránky vašich uživatelských toků v Azure AD B2C.
+
+[!INCLUDE [preview note](../../includes/active-directory-b2c-public-preview.md)]
+
+### <a name="configure-company-branding"></a>Konfigurace brandingu společnosti
+
+Začněte tím, že nastavíte logo banner, obrázek pozadí a barvu pozadí v rámci **brandingu společnosti**.
+
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
+1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
+1. V části **Spravovat**vyberte **Branding společnosti**.
+1. Postupujte podle pokynů v části [Přidání brandingu na přihlašovací stránku Azure Active Directory vaší organizace](../active-directory/fundamentals/customize-branding.md).
+
+Při konfiguraci brandingu společnosti v Azure AD B2C mějte na paměti tyto věci:
+
+* Branding společnosti v Azure AD B2C je aktuálně omezen na **obrázek na pozadí**, **logo banneru**a přizpůsobení **barvy pozadí** . Ostatní vlastnosti v podokně Branding společnosti, například v části **Rozšířená nastavení**, nejsou *podporovány*.
+* Na stránkách toku uživatele se zobrazuje barva pozadí před načtením obrázku na pozadí. Doporučujeme, abyste si zvolili barvu pozadí, která se přesně shoduje s barvami v obrázku na pozadí pro účely hladkého načítání.
+* Logo banner se zobrazí v ověřovacích e-mailech odesílaných uživatelům při zahájení uživatelského toku registrace.
+
+### <a name="enable-branding-in-user-flow-pages"></a>Povolit brandingování na stránkách toku uživatele
+
+Po nakonfigurování firemního brandingu ho Povolte ve svých uživatelských tocích.
+
+1. V levé nabídce Azure Portal vyberte **Azure AD B2C**.
+1. V části **zásady**vyberte **toky uživatelů (zásady)** .
+1. Vyberte tok uživatele, pro který chcete povolit Branding společnosti. Branding společnosti není **podporován** pro *přihlašování* a úpravy profilů pro uživatele *v1 typu v1* .
+1. V části **přizpůsobit**vyberte **rozložení stránky**a potom vyberte rozložení, které chcete označit jako značku. Vyberte například možnost **sjednocení registrace nebo přihlášení na přihlašovací stránce**.
+1. Pro **verzi rozložení stránky (Preview)** vyberte verze **1.2.0** nebo vyšší.
+1. Vyberte **Uložit**.
+
+Chcete-li označit všechny stránky v toku uživatele, nastavte pro každé rozložení stránky v toku uživatele verzi rozložení stránky.
+
+![Výběr rozložení stránky v Azure AD B2C Azure Portal](media/customize-ui-overview/portal-02-page-layout-select.png)
+
+Tento příklad poznámky ukazuje vlastní logo banneru a obrázek na pozadí na stránce flow ( *registrace) a přihlášení* uživatele, která používá základní šablonu oceánu:
+
+![Přihlašovací stránka s brandingem, která je obsluhována Azure AD B2C](media/customize-ui-overview/template-ocean-blue-branded.png)
+
+### <a name="use-company-branding-assets-in-custom-html"></a>Použití prostředků brandingu společnosti ve vlastním HTML
+
+Chcete-li použít prostředky značky vaší společnosti ve vlastním HTML, přidejte následující značky mimo značku `<div id="api">`:
+
+```HTML
+<img data-tenant-branding-background="true" />
+<img data-tenant-branding-logo="true" alt="Company Logo" />
+```
+
+Zdroj obrázku je nahrazen symbolem obrázku pozadí a logem banner. Jak je popsáno v části Začínáme [s vlastními HTML a CSS](#get-started-with-custom-html-and-css) , použijte třídy CSS pro styly a umístění prostředků na stránce.
 
 ## <a name="localize-content"></a>Lokalizace obsahu
 

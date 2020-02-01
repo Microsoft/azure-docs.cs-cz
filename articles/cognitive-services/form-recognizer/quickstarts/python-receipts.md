@@ -9,21 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 6b6fa03337e857c6dda43f8c6ae41713d8c3dbe0
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 2b800cbc2f836d415afbb53a8415e9e400f40d0e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774195"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901966"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Rychlý Start: extrakce údajů o příjemcích pomocí REST API pro rozpoznávání formulářů v Pythonu
 
 V tomto rychlém startu použijete nástroj pro rozpoznávání formulářů Azure REST API s Pythonem k extrakci a identifikaci relevantních informací v prodejních příjemkách USA.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
-
-> [!IMPORTANT]
-> V tomto rychlém startu se používá rozhraní API pro rozpoznávání formulářů v 2.0. Pokud vaše předplatné není ve `West US 2` nebo `West Europe` oblasti, je potřeba použít rozhraní API v 1.0. Místo toho postupujte v [rychlém startu v 1.0](./curl-train-extract-v1.md) .
 
 ## <a name="prerequisites"></a>Požadavky
 

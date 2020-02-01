@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 05/28/2019
-ms.openlocfilehash: d5b8121c7888903f3e4552a21a6ddc175ecc5176
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4214c4eb9fbe1d3e39d1ee16289f30b893b94653
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489084"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906617"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Hostování statického webu v Azure Storage
 
@@ -58,7 +58,7 @@ Můžete povolit hostování statického webu pomocí [rozhraní příkazového 
    az storage blob service-properties update --account-name <storage-account-name> --static-website --404-document <error-document-name> --index-document <index-document-name>
    ```
 
-   * Nahraďte hodnotu zástupného znaku `<storage-account-name>` názvem vašeho účtu úložiště.
+   * Nahraďte hodnotu zástupného symbolu `<storage-account-name>` názvem svého účtu úložiště.
 
    * Zástupný symbol `<error-document-name>` nahraďte názvem dokumentu chyby, který se zobrazí uživatelům, když prohlížeč požaduje stránku na vašem webu, který neexistuje.
 
@@ -75,7 +75,7 @@ Můžete povolit hostování statického webu pomocí [rozhraní příkazového 
    az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-account-name>
    ```
 
-   * Nahraďte hodnotu zástupného znaku `<storage-account-name>` názvem vašeho účtu úložiště.
+   * Nahraďte hodnotu zástupného symbolu `<storage-account-name>` názvem svého účtu úložiště.
 
    * Nahraďte zástupný text `<source-path>` cestou k umístění souborů, které chcete nahrát.
 
@@ -96,7 +96,7 @@ Adresu URL najdete pomocí následujícího příkazu:
 az storage account show -n <storage-account-name> -g <resource-group-name> --query "primaryEndpoints.web" --output tsv
 ```
 
-* Nahraďte hodnotu zástupného znaku `<storage-account-name>` názvem vašeho účtu úložiště.
+* Nahraďte hodnotu zástupného symbolu `<storage-account-name>` názvem svého účtu úložiště.
 
 * Nahraďte hodnotu zástupného symbolu `<resource-group-name>` názvem vaší skupiny prostředků.
 
@@ -140,7 +140,7 @@ Hostování statického webu můžete povolit pomocí modulu Azure PowerShell.
 
    * Nahraďte hodnotu zástupného symbolu `<resource-group-name>` názvem vaší skupiny prostředků.
 
-   * Nahraďte hodnotu zástupného znaku `<storage-account-name>` názvem vašeho účtu úložiště.
+   * Nahraďte hodnotu zástupného symbolu `<storage-account-name>` názvem svého účtu úložiště.
 
 6. Povolte hostování statických webů.
 
@@ -181,7 +181,7 @@ Write-Output $storageAccount.PrimaryEndpoints.Web
 
 * Nahraďte hodnotu zástupného symbolu `<resource-group-name>` názvem vaší skupiny prostředků.
 
-* Nahraďte hodnotu zástupného znaku `<storage-account-name>` názvem vašeho účtu úložiště.
+* Nahraďte hodnotu zástupného symbolu `<storage-account-name>` názvem svého účtu úložiště.
 
 <a id="metrics" />
 
@@ -221,10 +221,5 @@ Po povolení metrik se na řídicím panelu metriky nahlásí Statistiky provozu
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Hostování statického webu ve službě Azure Storage](storage-blob-static-website.md)
-* [Použití Azure CDN pro přístup k objektům blob s vlastními doménami přes HTTPS](storage-https-custom-domain-cdn.md)
-* [Konfigurace vlastního názvu domény pro objekt BLOB nebo webový koncový bod](storage-custom-domain-name.md)
-* [Azure Functions](/azure/azure-functions/functions-overview)
-* [Azure App Service](/azure/app-service/overview)
-* [Sestavení první webové aplikace bez serveru](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
-* [Kurz: Hostování vaší domény v Azure DNS](../../dns/dns-delegate-domain-azure-dns.md)
+* Přečtěte si, jak nakonfigurovat vlastní doménu s vaším statickým webem. Viz téma [Mapování vlastní domény na koncový bod Azure Blob Storage](storage-custom-domain-name.md).
+

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: jonbeck
-ms.openlocfilehash: 5e10c0905237f3cc28dd0ac113dfaf844e781bac
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c16ff8fed19340811578ccb39cbac7242b7c5861
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646655"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905742"
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>Velikosti pro virtuální počítače se systémem Linux v Azure
 Tento článek popisuje dostupné velikosti a možnosti pro virtuální počítače Azure, které můžete použít ke spouštění aplikací a úloh pro Linux. Nabízí také informace o nasazení, které vám pomůžeme při plánování používání těchto prostředků. Tento článek je k dispozici také pro [virtuální počítače s Windows](../windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
@@ -67,7 +67,7 @@ Další informace o různých velikostech virtuálních počítačů, které jso
 - [Optimalizované z hlediska úložiště](sizes-storage.md)
 - [GPU](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
-- Podívejte se na stránku [předchozí generace](sizes-previous-gen.md) pro standardní, Dv1 (D1-4 a D11-14 V1) a řady A8-A11.
+- Podívejte se na stránku [předchozí generace](sizes-previous-gen.md) pro základní a standardní, vysoce výkonné A8-A11, D/DSv1 (D1-4 a D11-14 V1), F/Fsv1, G/GS, Lsv1 a NVv2 Series.
 
 
 

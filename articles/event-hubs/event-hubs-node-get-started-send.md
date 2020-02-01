@@ -1,33 +1,30 @@
 ---
-title: 'Rychlý Start: odesílání a příjem událostí pomocí Node. js – Azure Event Hubs'
-description: 'Rychlý Start: Tento článek poskytuje návod pro vytvoření aplikace Node. js, která odesílá události z Azure Event Hubs.'
+title: Odesílání a příjem událostí z Azure Event Hubs pomocí Node. js (starší verze)
+description: Tento článek poskytuje návod pro vytvoření aplikace Node. js, která odesílá a přijímá události do a z Azure Event Hubs pomocí starého balíčku Azure/Event-hub verze 2.
 services: event-hubs
 author: spelluru
-manager: kamalb
 ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
-ms.custom: seodec18
-ms.date: 01/08/2020
+ms.date: 01/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 39087b189c424866fffcc3ea8723c712883f288c
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 9aa2418657c2d3bcab9ef8883e5bd57422ce5e29
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940714"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899889"
 ---
-# <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-nodejs"></a>Rychlý Start: odeslání událostí do nebo příjem událostí z Azure Event Hubs pomocí Node. js
+# <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-nodejs-azureevent-hubs-version-2"></a>Rychlý Start: odeslání událostí do nebo příjem událostí z Azure Event Hubs pomocí Node. js (@azure/event-hubs verze 2)
 
 Azure Event Hubs je platforma pro zpracování velkých objemů dat a služba pro příjem událostí, která může přijímat a zpracovávat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).
 
 V tomto kurzu se dozvíte, jak vytvářet aplikace v Node. js pro posílání událostí nebo přijímání událostí z centra událostí.
 
-> [!IMPORTANT]
-> V tomto rychlém startu se používá verze 2 sady SDK skriptů pro Azure Event Hubs Java. Pokud s Event Hubs Azure začínáte, použijte verzi 5 skriptu Java Script SDK. Rychlý Start, který používá verzi 5 sady SDK skriptu Java, najdete v [tomto článku](get-started-node-send-v2.md). Pokud potřebujete migrovat existující kód z verze 2 na verzi 5, přečtěte si [příručku k migraci](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md).
+> [!WARNING]
+> Tento rychlý Start je pro verzi 2 sady SDK Azure Event Hubs Java scripter. Doporučujeme, abyste kód [migrovali](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md) do [verze 5 sady Java Script SDK](get-started-node-send-v2.md). 
 
-> [!NOTE]
-> Tento rychlý start si můžete stáhnout jako ukázku z [GitHubu](https://github.com/Azure/azure-event-hubs-node/tree/master/client), nahradit řetězce `EventHubConnectionString` a `EventHubName`, hodnotami pro vaše centrum událostí a spustit. Alternativně můžete vytvořit vlastní řešení podle kroků v tomto kurzu.
+
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -55,6 +52,9 @@ npm install @azure/event-processor-host
 ## <a name="send-events"></a>Odesílání událostí
 
 V této části se dozvíte, jak vytvořit aplikaci Node. js, která odesílá události do centra událostí. 
+
+> [!NOTE]
+> Tento rychlý start si můžete stáhnout jako ukázku z [GitHubu](https://github.com/Azure/azure-event-hubs-node/tree/master/client), nahradit řetězce `EventHubConnectionString` a `EventHubName`, hodnotami pro vaše centrum událostí a spustit. Alternativně můžete vytvořit vlastní řešení podle kroků v tomto kurzu.
 
 1. Otevřete oblíbený editor, například [Visual Studio Code](https://code.visualstudio.com). 
 2. Vytvořte soubor s názvem `send.js` a vložte do něj následující kód. Získání připojovacího řetězce pro obor názvů centra událostí podle pokynů v článku: [získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). 

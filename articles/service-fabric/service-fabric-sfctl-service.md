@@ -3,14 +3,14 @@ title: Služba Azure Service Fabric CLI – sfctl Service
 description: Přečtěte si o sfctl rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro správu služeb, typů služeb a balíčků služeb.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 24ba7fea2ed51ea57c0a44e3c1f26b5df6043e1e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 696de713129ca71dd7f2451501a7cc9eca0ee9b9
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639067"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906233"
 ---
 # <a name="sfctl-service"></a>sfctl service
 Umožňuje vytvářet, odstraňovat a spravovat služby, typy služeb a balíčky služeb.
@@ -35,7 +35,7 @@ Umožňuje vytvářet, odstraňovat a spravovat služby, typy služeb a balíčk
 | package-health | Získá informace o stavu balíčku služby pro konkrétní aplikaci nasazenou pro Service Fabric uzel a aplikaci. |
 | package-info | Načte seznam balíčků služeb nasazených na Service Fabric uzlu, které odpovídají přesně zadanému názvu. |
 | seznam balíčků | Načte seznam balíčků služeb nasazených na Service Fabric uzlu. |
-| obnovení | Určuje Cluster Service Fabric, který by se měl pokusit obnovit zadanou službu, která je aktuálně zablokovaná ve ztrátě kvora. |
+| opravitelné | Určuje Cluster Service Fabric, který by se měl pokusit obnovit zadanou službu, která je aktuálně zablokovaná ve ztrátě kvora. |
 | report-health | Odešle zprávu o stavu služby Service Fabric. |
 | vyřeší | Vyřešte Service Fabric oddíl. |
 | type-list | Získá seznam obsahující informace o typech služeb, které jsou podporované typem zřízené aplikace v clusteru Service Fabric. |
@@ -96,7 +96,7 @@ Vytvoří zadanou službu Service Fabric.
 |Argument|Popis|
 | --- | --- |
 | --App-ID [povinné] | Identita aplikace Obvykle se jedná o úplný název aplikace bez schématu identifikátoru URI\:Fabric. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem '\~'. Například pokud je název aplikace "Fabric\:/MyApp/app1", identita aplikace by byla "MyApp\~app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
-| --Name [povinné] | Název služby Tato položka by měla být podřízená ID aplikace. Toto je úplný název, včetně identifikátoru URI `fabric\:`. Například `fabric\:/A/B` služby je podřízenou položkou `fabric\:/A`aplikace. |
+| --Name [povinné] | Název služby. Tato položka by měla být podřízená ID aplikace. Toto je úplný název, včetně identifikátoru URI `fabric\:`. Například `fabric\:/A/B` služby je podřízenou položkou `fabric\:/A`aplikace. |
 | --Service-Type [povinné] | Název typu služby |
 | --Aktivace-režim | Režim aktivace balíčku služby |
 | --omezení | Omezení umístění jako řetězec. Omezení umístění jsou logické výrazy ve vlastnostech uzlu a umožňují omezení služby na konkrétní uzly na základě požadavků služby. Pokud například chcete umístit službu na uzly, kde je typ uzlu NodeType modrý, zadejte následující\:"NodeColor = = Blue". |
@@ -110,7 +110,7 @@ Vytvoří zadanou službu Service Fabric.
 | --int-scheme-low | Začátek rozsahu celého čísla klíče, pokud používáte jednotné celočíselné schéma oddílu. |
 | --Load-metriky | Seznam metrik kódovaný ve formátu JSON, který se používá při vyrovnávání zatížení služeb napříč uzly. |
 | --min-replica-set-size | Minimální velikost sady replik jako číslo. To platí jenom pro stavové služby. |
-| --Přesun-cost | Určuje náklady na přesun služby. Možné hodnoty jsou\: "Zero", "low", "Medium", "High". |
+| --Přesun-cost | Určuje náklady na přesun služby. Možné hodnoty jsou\: ' Zero ', ' nízká ', ' Medium ', ' High ', ' VeryHigh '. |
 | --named-scheme | Indikuje, že služba by měla mít více pojmenovaných oddílů. |
 | --named-scheme-list | Seznam názvů kódovaných ve formátu JSON, které se mají rozdělit do oddílů, pokud se používá schéma pojmenovaného oddílu |
 | --bez trvalého stavu | Pokud je hodnota true, znamená to, že služba nemá trvalý stav uložený na místním disku, nebo ukládá pouze stav paměti. |
@@ -118,6 +118,7 @@ Vytvoří zadanou službu Service Fabric.
 | --quorum-loss-wait | Maximální doba trvání v sekundách, po kterou může být oddíl ve stavu ztráty kvora. To platí jenom pro stavové služby. |
 | --replica-restart-wait | Doba trvání v sekundách mezi tím, kdy replika vychází a kdy se vytvoří nová replika. To platí jenom pro stavové služby. |
 | --škálování – zásady | Seznam zásad škálování v kódování JSON pro tuto službu. |
+| --Service-doba umístění | Doba, po kterou mohou repliky zůstat před vytvářením sestav, že sestavení je zablokováno. To platí jenom pro stavové služby. |
 | --singleton-scheme | Indikuje, že služba by měla mít jeden oddíl nebo být služba, která není rozdělená na oddíly. |
 | --rereplice – udržování | Maximální doba trvání v sekundách, po kterou budou pohotovostní repliky před odebráním zachovány. To platí jenom pro stavové služby. |
 | --Stavová | Označuje, že služba je stavová služba. |
@@ -267,7 +268,7 @@ Načte informace o stavu zadané služby. Pomocí EventsHealthStateFilter může
 | --- | --- |
 | --Service-ID [povinné] | Identita služby. Toto ID je obvykle úplný název služby bez schématu identifikátoru URI\:Fabric. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Pokud je například název služby "Fabric\:/MyApp/app1/svc1", identita služby by byla "MyApp\~app1\~svc1" ve verzích 6.0 + a "MyApp/app1/svc1" v předchozích verzích. |
 | --events-health-state-filter | Umožňuje filtrovat kolekci objektů HealthEvent vrácených na základě stavu. Možné hodnoty pro tento parametr zahrnují celočíselnou hodnotu jednoho z následujících stavů. Vrátí se pouze události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaného stavu. Pokud tento parametr nezadáte, vrátí se všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota by mohla být kombinací těchto hodnot získána pomocí bitového operátoru OR. Pokud je například zadaná hodnota 6, budou vráceny všechny události s hodnotou ' OK (2) a upozornění (4).  <br> -Výchozí-výchozí hodnota. Odpovídá jakémukoli elementu. Hodnota je nula.  <br> -None-Filter, který neodpovídá žádné hodnotě elementu. Používá se k tomu, aby se v dané kolekci stavů nevracely žádné výsledky. Hodnota je 1.  <br> -OK – filtr, který odpovídá zadanému vstupu s hodnotou podstavu OK. Hodnota je 2.  <br> -Warning-Filter, který odpovídá vstupu s upozorněním na podstavovou hodnotu. Hodnota je 4.  <br> – Filtr chyb, který odpovídá zadanému vstupu s chybou hodnoty elementu stav Hodnota je 8.  <br> -All – filtr, který odpovídá zadanému vstupu s jakoukoli hodnotou elementu. Hodnota je 65535. |
-| --Exclude-Health-Statistics | Určuje, zda mají být v rámci výsledku dotazu vráceny statistiky stavu. Ve výchozím nastavení má hodnotu false. Statistika zobrazuje počet podřízených entit ve stavu OK, varování a chyba. |
+| --Exclude-Health-Statistics | Určuje, zda mají být v rámci výsledku dotazu vráceny statistiky stavu. Výchozí hodnota je false. Statistika zobrazuje počet podřízených entit ve stavu OK, varování a chyba. |
 | --partitions-health-state-filter | Umožňuje filtrování objektů stavu oddílů vrácených v důsledku dotazu na stav služby na základě jejich stavu. Možné hodnoty pro tento parametr zahrnují celočíselnou hodnotu jednoho z následujících stavů. Vrátí se jenom oddíly, které odpovídají filtru. Všechny oddíly slouží k vyhodnocení agregovaného stavu. Pokud tento parametr nezadáte, vrátí se všechny položky. Hodnoty stavu jsou výčty založené na příznak, takže hodnota by mohla být kombinací hodnot získaných pomocí bitového operátoru OR. Například pokud je zadaná hodnota 6, pak se vrátí stav oddílů s hodnotou OK (2) a upozorněním (4).  <br> -Výchozí-výchozí hodnota. Odpovídá jakémukoli elementu. Hodnota je nula.  <br> -None-Filter, který neodpovídá žádné hodnotě elementu. Používá se k tomu, aby se v dané kolekci stavů nevracely žádné výsledky. Hodnota je 1.  <br> -OK – filtr, který odpovídá zadanému vstupu s hodnotou podstavu OK. Hodnota je 2.  <br> -Warning-Filter, který odpovídá vstupu s upozorněním na podstavovou hodnotu. Hodnota je 4.  <br> – Filtr chyb, který odpovídá zadanému vstupu s chybou hodnoty elementu stav Hodnota je 8.  <br> -All – filtr, který odpovídá zadanému vstupu s jakoukoli hodnotou elementu. Hodnota je 65535. |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí\: 60. |
 
@@ -562,11 +563,12 @@ Aktualizuje zadanou službu pomocí zadaného popisu aktualizace.
 | --instance-počet | Počet instancí. To platí jenom pro bezstavové služby. |
 | --Load-metriky | Seznam metrik kódovaný ve formátu JSON, který se používá při vyrovnávání zatížení napříč uzly. |
 | --min-replica-set-size | Minimální velikost sady replik jako číslo. To platí jenom pro stavové služby. |
-| --Přesun-cost | Určuje náklady na přesun služby. Možné hodnoty jsou\: "Zero", "low", "Medium", "High". |
+| --Přesun-cost | Určuje náklady na přesun služby. Možné hodnoty jsou\: ' Zero ', ' nízká ', ' Medium ', ' High ', ' VeryHigh '. |
 | --umístění-Zásady-seznam | Seznam zásad umístění pro službu a všechny přidružené názvy domén v kódování JSON Zásady můžou být jedním nebo více\: `NonPartiallyPlaceService`, `PreferPrimaryDomain``RequireDomain``RequireDomainDistribution`. |
 | --quorum-loss-wait | Maximální doba trvání v sekundách, po kterou může být oddíl ve stavu ztráty kvora. To platí jenom pro stavové služby. |
 | --replica-restart-wait | Doba trvání v sekundách mezi tím, kdy replika vychází a kdy se vytvoří nová replika. To platí jenom pro stavové služby. |
 | --škálování – zásady | Seznam zásad škálování v kódování JSON pro tuto službu. |
+| --Service-doba umístění | Doba, po kterou mohou repliky zůstat před vytvářením sestav, že sestavení je zablokováno. To platí jenom pro stavové služby. |
 | --rereplice – udržování | Maximální doba trvání v sekundách, po kterou budou pohotovostní repliky před odebráním zachovány. To platí jenom pro stavové služby. |
 | --Stavová | Indikuje, že cílová služba je stavová služba. |
 | – bez stavu | Indikuje, že cílová služba je Bezstavová služba. |

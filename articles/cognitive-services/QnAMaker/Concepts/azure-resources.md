@@ -3,12 +3,12 @@ title: Prostředky Azure – QnA Maker
 description: QnA Maker používá několik zdrojů Azure, z nichž každý má jiný účel. Porozumět tomu, jak se používají samostatně, vám umožní naplánovat a vybrat správnou cenovou úroveň nebo zjistit, kdy se má změnit cenová úroveň. Princip použití v kombinaci vám pomůže najít a opravit problémy, když k nim dojde.
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 2b3a06122ce6123cd8edcedf5dfbf38c3c12218a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 77aced459c7731a2cac432538cfc66ed9ce83f9d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843486"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76902065"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Prostředky Azure pro QnA Maker
 
@@ -111,6 +111,10 @@ První znalostní báze vytvořená v prostředku QnA Maker slouží k určení 
 Prostředek QnA Maker poskytuje přístup k rozhraním API pro vytváření a publikování a také ke vrstvě pro zpracování v přirozeném jazyce (NLP) na základě druhé vrstvy hodnocení (#2 seřazení) pro QnA sady za běhu.
 
 Druhé hodnocení používá inteligentní filtry, které mohou zahrnovat metadata a výzvy pro následné zpracování.
+
+#### <a name="qna-maker-resource-configuration-settings"></a>Nastavení konfigurace prostředků QnA Maker
+
+Když vytvoříte novou znalostní bázi na [portálu QnA maker](https://qnamaker.ai), nastavení **jazyka** bude jediným nastavením, které se použije na úrovni prostředků. Vyberte jazyk, když vytvoříte první znalostní bázi pro daný prostředek. 
 
 ### <a name="app-service-and-app-service-plan"></a>Služba App Service a plán služby App Service
 

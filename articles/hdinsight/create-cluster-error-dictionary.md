@@ -1,19 +1,19 @@
 ---
 title: Vytvoření slovníku chyb clusteru
 description: Naučte se vytvářet slovník chyb clusteru.
-ms.reviewer: hrasheed
 author: karkrish
-ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
-ms.topic: troubleshooting
-ms.date: 11/19/2019
 ms.author: v-todmc
-ms.openlocfilehash: ee9ed5374b12c3130d952770a4be6a759e37339a
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.reviewer: hrasheed
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 11/19/2019
+ms.openlocfilehash: 6e5ed996a0f44bae6c37027bc01f30be85d164f9
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156858"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905480"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: Chyby při vytváření clusteru
 
@@ -210,7 +210,7 @@ Tato chyba se obvykle generuje, když dojde k přechodnému problému nebo výpa
 
 ### <a name="resolution"></a>Rozlišení
 
-Podívejte se na stránku [stav Azure](https://status.azure.com/status) pro všechny výpadky Azure, které můžou mít vliv na nasazení clusteru. Pokud nedošlo k výpadkům, zkuste cluster nasadit znovu.
+Podívejte se na stránku [stav Azure](https://status.azure.com) pro všechny výpadky Azure, které můžou mít vliv na nasazení clusteru. Pokud nedošlo k výpadkům, zkuste cluster nasadit znovu.
 
 ## <a name="next-steps"></a>Další kroky
 

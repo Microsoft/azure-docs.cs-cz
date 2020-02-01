@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/12/2019
+ms.date: 01/30/2020
 ms.author: akjosh
-ms.openlocfilehash: 072e30baa4ebb976a662019e5213f7eb26808a93
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 604be42ec74f75e3aa9c790092ed83aee4ad25e1
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969949"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76907022"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>Azure Monitor rozšíření virtuálního počítače pro Windows
 
@@ -38,6 +38,7 @@ Následující tabulka poskytuje mapování verze rozšíření virtuálního po
 
 | Log Analytics verze sady Windows Agent | Azure Monitor verze rozšíření virtuálního počítače s Windows | Datum vydání | Poznámky k verzi |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
+| 10.20.18018 | 1.0.18018 | Říjen 2019 | <ul><li> Drobné opravy chyb a ustálená vylepšení </li></ul> |
 | 10.20.18011 | 1.0.18011 | Červenec 2019 | <ul><li> Drobné opravy chyb a ustálená vylepšení </li><li> Zvýšení MaxExpressionDepth na 10000 </li></ul> |
 | 10.20.18001 | 1.0.18001 | Červen 2019 | <ul><li> Drobné opravy chyb a ustálená vylepšení </li><li> Přidání možnosti zakázat výchozí pověření při vytváření připojení k proxy (podpora pro WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH) </li></ul>|
 | 10.19.13515 | 1.0.13515 | Březen 2019 | <ul><li>Menší stabilizace oprav </li></ul> |

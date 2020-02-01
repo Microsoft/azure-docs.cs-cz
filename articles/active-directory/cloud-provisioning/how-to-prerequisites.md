@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 019c2f8a13a80de395803ca1782e578c049a7923
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 51e5c58d29f01cadcc3ea2e8ec48ae67e58c4180
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549342"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76909036"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Předpoklady pro zřizování cloudu Azure AD Connect
 Tento článek poskytuje pokyny k výběru a používání Azure Active Directory (Azure AD) připojení cloudového zřizování jako řešení identity.
@@ -29,6 +29,9 @@ Pro použití Azure AD Connectho zřizování cloudu potřebujete následující
 - Účet globálního správce pro vašeho tenanta Azure AD.
 - Místní server pro zřizovacího agenta se systémem Windows 2012 R2 nebo novějším.
 - Místní konfigurace brány firewall.
+
+>[!NOTE]
+>Agent zřizování se momentálně dá nainstalovat jenom na anglické jazykové servery. Instalace anglické jazykové sady na neanglickém serveru nemá platné alternativní řešení a výsledkem bude selhání agenta při instalaci. 
 
 Ve zbývající části dokumentu najdete podrobné pokyny pro tyto požadavky.
 

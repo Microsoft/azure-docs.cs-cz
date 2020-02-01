@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b83f634e9f5954e7a465761b117b6ee32f843aa2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75425081"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Zřízení pilotního cloudu pro existující synchronizovanou doménovou strukturu AD 
@@ -182,7 +182,7 @@ Při konfiguraci zřizování použijte následující postup:
 ## <a name="verify-users-are-provisioned-by-cloud-provisioning"></a>Ověření uživatelů zajištěných zřizováním cloudu
 Nyní ověříte, že uživatelé, kteří byli v místním adresáři, byli synchronizováni a nyní existují v tenantovi Azure AD.  Mějte na paměti, že dokončení tohoto může trvat několik hodin.  Pokud chcete ověřit, jestli se zřizování uživatelů provádí zřizováním cloudu, postupujte podle těchto kroků:
 
-1. Přejděte na [Azure Portal](https://portal.azure.com) a přihlaste se pomocí účtu, který má předplatné Azure.
+1. Přejděte na [Azure Portal](https://portal.azure.com) a přihlaste se pomocí účtu s předplatným Azure.
 2. Na levé straně vyberte **Azure Active Directory**
 3. Klikněte na **Azure AD Connect**
 4. Klikněte na **Spravovat zřizování (Preview)** .
@@ -201,7 +201,7 @@ Azure AD Connect synchronizace synchronizuje změny, ke kterým došlo v místn�
 >[!NOTE] 
 >Pokud používáte vlastní Plánovač pro synchronizaci AAD Connect, povolte prosím Plánovač. 
 
-## <a name="something-went-wrong"></a>Něco se pokazilo.
+## <a name="something-went-wrong"></a>Něco se pokazilo
 V případě, že pilotní projekt nefunguje podle očekávání, můžete se vrátit k nastavení Azure AD Connect synchronizace pomocí následujících kroků:
 1.  Zakažte konfiguraci zřizování v Azure Portal. 
 2.  Pomocí nástroje Editor pravidel synchronizace zakažte všechna vlastní pravidla synchronizace vytvořená pro zřizování cloudu. Při vypnutí by se měla u všech konektorů způsobit Úplná synchronizace.

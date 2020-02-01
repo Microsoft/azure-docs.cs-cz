@@ -1,16 +1,16 @@
 ---
 title: Azure Service Fabric CLI – vlastnost sfctl
-description: Přečtěte si o sfctl rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro zadávání scénářů a dotazování na vlastnosti.
+description: Přečtěte si o sfctl rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro ukládání a dotazování vlastností.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: d9129f07db9f3499b51707965d10426dbc3d3c12
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: a9bd75e0b7f8bfceb50a71ca83b60ff1e7b45508
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639101"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905830"
 ---
 # <a name="sfctl-property"></a>sfctl property
 Uložení a dotazování vlastností pod názvy Service Fabric.
@@ -22,7 +22,7 @@ Uložení a dotazování vlastností pod názvy Service Fabric.
 | delete | Odstraní zadanou vlastnost Service Fabric. |
 | získat | Získá zadanou vlastnost Service Fabric. |
 | list | Získá informace o všech vlastnostech Service Fabric pod daným názvem. |
-| put | Vytvoří nebo aktualizuje vlastnost Service Fabric. |
+| převést | Vytvoří nebo aktualizuje vlastnost Service Fabric. |
 
 ## <a name="sfctl-property-delete"></a>odstranění vlastnosti sfctl
 Odstraní zadanou vlastnost Service Fabric.
@@ -105,7 +105,7 @@ Vytvoří nebo aktualizuje zadanou vlastnost Service Fabric v rámci daného ná
 | --- | --- |
 | --Name-ID [povinné] | Název Service Fabric bez schématu identifikátoru URI\:prostředků infrastruktury |
 | --Property-Name [povinné] | Název vlastnosti Service Fabric. |
-| --Value [povinné] | Popisuje hodnotu Service Fabric vlastnosti. Toto je řetězec JSON. <br><br> Řetězec JSON má dvě pole, "druh" dat a "hodnotu" dat. Hodnota "Kind" musí být první položka, která se má zobrazit v řetězci JSON, a může mít hodnotu "Binary", "Int64", "Double", "String" nebo "GUID". Hodnota by měla být schopná serializovat zadané typy. Hodnoty "druh" i "data" by měly být zadány jako řetězce. |
+| --Value [povinné] | Popisuje hodnotu Service Fabric vlastnosti. Toto je řetězec JSON. <br><br> Řetězec JSON má dvě pole, "druh" dat a hodnotu, která byla zadána jako "data" dat. Hodnota "Kind" musí být první položka, která se má zobrazit v řetězci JSON, a může mít hodnotu "Binary", "Int64", "Double", "String" nebo "GUID". Hodnota by měla být schopná serializovat zadané typy. Hodnoty "druh" i "data" by měly být zadány jako řetězce. |
 | --Custom-ID-– typ | ID vlastního typu vlastnosti Pomocí této vlastnosti může uživatel označit typ hodnoty vlastnosti. |
 | --Timeout-t | Výchozí\: 60. |
 

@@ -4,18 +4,18 @@ description: Vytvářejte a nasaďte kód Python bez serveru do cloudu pomocí A
 ms.date: 01/15/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 452c5aeab5d2a1092cb7d338d37e26a82d92396e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c665f807d78c699423db457bf57dca2f16109913
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845505"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898560"
 ---
 # <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>Rychlý Start: vytvoření funkce Python aktivované protokolem HTTP v Azure
 
 V tomto článku pomocí nástrojů příkazového řádku vytvoříte funkci Pythonu, která reaguje na požadavky HTTP. Po místním testování kódu ho nasadíte do prostředí Azure Functions bez serveru. Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům na několik centů nebo méně.
 
-K dispozici je také [Visual Studio Codeá verze](/azure/python/tutorial-vs-code-serverless-python-01) tohoto článku.
+K dispozici je také [Visual Studio Codeá verze](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-python) tohoto článku.
 
 ## <a name="prerequisites"></a>Požadavky
 

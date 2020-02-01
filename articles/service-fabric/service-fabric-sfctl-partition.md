@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI – oddíl sfctl
 description: Přečtěte si o sfctl rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro správu oddílů pro službu.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: c50fcb348dad7960be81f80ecb7c455dbffaadb3
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c038ef3266a727bf6984a5bd88ca540a589380db
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646054"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905850"
 ---
 # <a name="sfctl-partition"></a>sfctl partition
 Dotazování a Správa oddílů pro libovolnou službu.
@@ -28,7 +28,7 @@ Dotazování a Správa oddílů pro libovolnou službu.
 | Load-Reset | Obnoví aktuální zatížení oddílu Service Fabric. |
 | výpadek kvora | Vystaví ztrátu kvora pro daný oddíl stavové služby. |
 | kvorum – stav ztráty | Získá průběh operace ztráty kvora u oddílu zahájeného pomocí rozhraní StartQuorumLoss API. |
-| obnovení | Určuje Cluster Service Fabric, který by se měl pokusit obnovit konkrétní oddíl, který je aktuálně zablokovaný ve ztrátě kvora. |
+| opravitelné | Určuje Cluster Service Fabric, který by se měl pokusit obnovit konkrétní oddíl, který je aktuálně zablokovaný ve ztrátě kvora. |
 | Obnovit – vše | Určuje Cluster Service Fabric, který by se měl pokusit obnovit jakékoli služby (včetně systémových služeb), které jsou aktuálně zablokované ve ztrátě kvora. |
 | report-health | Odešle zprávu o stavu Service Fabric oddíl. |
 | restart | Toto rozhraní API bude restartovat některé nebo všechny repliky nebo instance zadaného oddílu. |
@@ -38,10 +38,13 @@ Dotazování a Správa oddílů pro libovolnou službu.
 ## <a name="sfctl-partition-data-loss"></a>data oddílu sfctl – ztráta
 Toto rozhraní API bude mít za následek ztrátu dat pro zadaný oddíl.
 
-Spustí volání rozhraní API OnDataLossAsync oddílu.  Toto rozhraní API bude mít za následek ztrátu dat pro zadaný oddíl. Spustí volání rozhraní API OnDataLoss oddílu. Skutečná ztráta dat bude záviset na zadané režim datalossmode.  <br> -PartialDataLoss – odeberou se jenom kvorum replik a pro oddíl se aktivuje OnDataLoss, ale skutečná ztráta dat závisí na přítomnosti replikace v letadle.  <br> -FullDataLoss – všechny repliky se odeberou, takže se ztratí všechna data a aktivuje se OnDataLoss. Toto rozhraní API by mělo být jako cíl voláno pouze se stavovou službou. Volání tohoto rozhraní API se systémovou službou, protože cíl není doporučeno.
+Spustí volání rozhraní API OnDataLossAsync oddílu.  Toto rozhraní API bude mít za následek ztrátu dat pro zadaný oddíl. Spustí volání rozhraní API OnDataLoss oddílu. Skutečná ztráta dat bude záviset na zadané režim datalossmode.
+- PartialDataLoss: odeberou se jenom kvorum replik a pro oddíl se aktivuje OnDataLoss, ale skutečná ztráta dat závisí na přítomnosti replikace v letadle.  
+- FullDataLoss: všechny repliky se odeberou, takže se ztratí všechna data a aktivuje se OnDataLoss. Toto rozhraní API by mělo být jako cíl voláno pouze se stavovou službou. Volání tohoto rozhraní API se systémovou službou, protože cíl není doporučeno.
 
 > [!NOTE]   
 > Po zavolání tohoto rozhraní API ho nejde vrátit zpět. Volání CancelOperation zastaví provádění a vyčistí stav interního systému. Nebude data obnovovat, pokud příkaz pokračoval dostatečně daleko, aby způsobil ztrátu dat. Zavolejte rozhraní API GetDataLossProgress se stejným OperationId a vraťte informace o operaci spuštěnou s tímto rozhraním API.
+
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
@@ -97,7 +100,7 @@ Pomocí EventsHealthStateFilter můžete filtrovat kolekci událostí stavu hlá
 | --- | --- |
 | --Partition-ID [povinné] | Identita oddílu |
 | --events-health-state-filter | Umožňuje filtrovat kolekci objektů HealthEvent vrácených na základě stavu. Možné hodnoty pro tento parametr zahrnují celočíselnou hodnotu jednoho z následujících stavů. Vrátí se pouze události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaného stavu. Pokud tento parametr nezadáte, vrátí se všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota by mohla být kombinací těchto hodnot získána pomocí bitového operátoru OR. Pokud je například zadaná hodnota 6, budou vráceny všechny události s hodnotou ' OK (2) a upozornění (4).  <br> -Výchozí-výchozí hodnota. Odpovídá jakémukoli elementu. Hodnota je nula.  <br> -None-Filter, který neodpovídá žádné hodnotě elementu. Používá se k tomu, aby se v dané kolekci stavů nevracely žádné výsledky. Hodnota je 1.  <br> -OK – filtr, který odpovídá zadanému vstupu s hodnotou podstavu OK. Hodnota je 2.  <br> -Warning-Filter, který odpovídá vstupu s upozorněním na podstavovou hodnotu. Hodnota je 4.  <br> – Filtr chyb, který odpovídá zadanému vstupu s chybou hodnoty elementu stav Hodnota je 8.  <br> -All – filtr, který odpovídá zadanému vstupu s jakoukoli hodnotou elementu. Hodnota je 65535. |
-| --Exclude-Health-Statistics | Určuje, zda mají být v rámci výsledku dotazu vráceny statistiky stavu. Ve výchozím nastavení má hodnotu false. Statistika zobrazuje počet podřízených entit ve stavu OK, varování a chyba. |
+| --Exclude-Health-Statistics | Určuje, zda mají být v rámci výsledku dotazu vráceny statistiky stavu. Výchozí hodnota je false. Statistika zobrazuje počet podřízených entit ve stavu OK, varování a chyba. |
 | --replicas-health-state-filter | Umožňuje filtrovat kolekci objektů ReplicaHealthState v oddílu. Hodnotu lze získat z členů nebo bitových operací na členech HealthStateFilter. Vrátí se jenom repliky, které odpovídají filtru. Všechny repliky budou použity k vyhodnocení agregovaného stavu. Pokud tento parametr nezadáte, vrátí se všechny položky. Hodnoty stavu jsou výčty založené na příznak, takže hodnota by mohla být kombinací těchto hodnot získaných pomocí bitového operátoru OR. Pokud je například zadaná hodnota 6, budou vráceny všechny události s hodnotou ' OK (2) a upozornění (4). Možné hodnoty pro tento parametr zahrnují celočíselnou hodnotu jednoho z následujících stavů.  <br> -Výchozí-výchozí hodnota. Odpovídá jakémukoli elementu. Hodnota je nula.  <br> -None-Filter, který neodpovídá žádné hodnotě elementu. Používá se k tomu, aby se v dané kolekci stavů nevracely žádné výsledky. Hodnota je 1.  <br> -OK – filtr, který odpovídá zadanému vstupu s hodnotou podstavu OK. Hodnota je 2.  <br> -Warning-Filter, který odpovídá vstupu s upozorněním na podstavovou hodnotu. Hodnota je 4.  <br> – Filtr chyb, který odpovídá zadanému vstupu s chybou hodnoty elementu stav Hodnota je 8.  <br> -All – filtr, který odpovídá zadanému vstupu s jakoukoli hodnotou elementu. Hodnota je 65535. |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí\: 60. |
 

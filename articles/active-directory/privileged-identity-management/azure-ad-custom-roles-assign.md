@@ -7,6 +7,7 @@ author: curtand
 manager: daveba
 ms.assetid: ''
 ms.service: active-directory
+ms.subservice: pim
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c4963e6563db166566cff41d381295a8a9e576b
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 7a1ec6ddf4f10aa2e03656eb6a3d92ead0d74922
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756363"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896580"
 ---
 # <a name="assign-an-azure-ad-custom-role-in-privileged-identity-management"></a>Přiřazení vlastní role Azure AD v Privileged Identity Management
 
@@ -71,7 +72,7 @@ Privileged Identity Management může spravovat vlastní role, které můžete v
 1. Pokud je **trvalé** zaškrtávací políčko k dispozici a je k dispozici (v závislosti na nastavení role), můžete určit, zda je přiřazení trvalé. Zaškrtnutím políčka zajistěte, aby se přiřazení trvale způsobilo nebo trvale přiřadilo. Zrušte zaškrtnutí políčka a určete dobu trvání přiřazení.
 1. Pokud chcete vytvořit nové přiřazení role, klikněte na **Uložit** a pak na **Přidat**. Zobrazí se oznámení o stavu procesu přiřazení.
 
-Přiřazení role ověříte tak, že v otevřené roli vyberete **přiřazení**  > **přiřadíte** a ověříte, že je přiřazení role správně identifikované jako oprávněné nebo aktivní.
+Přiřazení role ověříte tak, že v otevřené roli vyberete **přiřazení** > **přiřadíte** a ověříte, že je přiřazení role správně identifikované jako oprávněné nebo aktivní.
 
  ![Zkontrolujte, jestli je přiřazení role zobrazené jako oprávněné nebo aktivní.](./media/azure-ad-custom-roles-assign/verify-assignments.png)
 

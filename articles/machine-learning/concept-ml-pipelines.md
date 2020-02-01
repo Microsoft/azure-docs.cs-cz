@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: c93c936664f65e7846f6c4ad82d9aead973fa129
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 840c5cf061658f3210fec963b82b490185b92a4b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772597"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905731"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Co jsou kanály Azure Machine Learning?
 
@@ -26,7 +26,7 @@ Azure Machine Learning kanály umožňují vytvářet pracovní postupy v projek
 + Flexibilita
 + Správa verzí a sledování
 + Modularitu 
-+ Kontrola kvality
++ Zabezpečování kvality
 + Řízení nákladů
 
 Tyto výhody se stanou významnou, jakmile se váš projekt Machine Learning pohybuje mimo rámec čistého průzkumu a iterace. Můžou být užitečné i jednoduché kanály s jedním krokem. Projekty strojového učení jsou často ve složitém stavu a může být pro zajištění přesného splnění jednoho pracovního postupu jednoduchý proces.
@@ -48,10 +48,10 @@ Cloud Azure nabízí několik dalších kanálů, z nichž každý má jiný ú�
 
 ## <a name="what-can-azure-ml-pipelines-do"></a>Co můžou kanály Azure ML dělat?
 
-Kanál Azure Machine Learning je nezávisle spustitelný pracovní postup dokončené úlohy strojového učení. Dílčí úkoly jsou zapouzdřené jako série kroků v rámci kanálu. Kanál Azure Machine Learning může být jednoduchý jako ten, který volá skript Pythonu, takže _může_ dělat prakticky cokoli. Kanály _by se měly_ soustředit na úlohy strojového učení, jako jsou:
+Kanál Azure Machine Learning je nezávisle spustitelný pracovní postup dokončené úlohy strojového učení. Dílčí úlohy jsou v rámci kanálu zapouzdřené do série kroků. Kanál Azure Machine Learning může být jednoduchý jako ten, který volá skript Pythonu, takže _může_ dělat prakticky cokoli. Kanály _by se měly_ soustředit na úlohy strojového učení, jako jsou:
 
-+ Příprava dat zahrnující import, ověřování a čištění, munging a transformaci, normalizaci a přípravu
-+ Konfigurace školení, včetně argumentů Parametrizace, cest k umístěním a konfigurací protokolování/vytváření sestav
++ Přípravu dat, včetně importu, ověřování a čištění, transformace a nedefinované transformace, normalizace a fázování
++ Konfiguraci trénování, včetně parametrizace argumentů, cest k souborům a konfigurací protokolování a generování sestav
 + Efektivní a opakované školení, které může zahrnovat určení specifických podmnožin dat, různých hardwarových výpočetních prostředků, distribuovaného zpracování a sledování průběhu
 + Nasazení, včetně správy verzí, škálování, zřizování a řízení přístupu 
 
@@ -202,7 +202,21 @@ Mezi klíčové výhody použití kanálů pro pracovní postupy machine learnin
 |**Opětovné použití**|Vytvořte šablony kanálu pro konkrétní scénáře, jako je například přeškolení a dávkové vyhodnocování. Triggery publikovaných kanálů z externích systémů prostřednictvím jednoduchých volání REST.|
 |**Sledování a správy verzí**|Namísto ručního sledování dat a cest výsledků při iteraci můžete použít sadu SDK pro kanály k explicitnímu pojmenování a používání datových zdrojů, vstupů a výstupů. Skripty a data můžete spravovat i samostatně pro zvýšení produktivity.|
 | **Modularitu** | Oddělení otázek a izolace změn umožňuje softwaru vyvíjet se rychleji s vyšší kvalitou. | 
-|**Spolupráce**|Kanály umožňují odborníkům přes data spolupracovat ve všech oblastech procesu návrhu strojového učení, přičemž můžou souběžně fungovat na postupech kanálu.|
+|**Prostřednictvím**|Kanály umožňují odborníkům přes data spolupracovat ve všech oblastech procesu návrhu strojového učení, přičemž můžou souběžně fungovat na postupech kanálu.|
+
+## <a name="modules"></a>Moduly
+
+Zatímco kroky kanálu umožňují opakované použití výsledků předchozího spuštění, v mnoha případech konstrukce kroku předpokládá, že požadované skripty a závislé soubory musí být lokálně dostupné. Pokud chce odborník na data sestavovat na stávajícím kódu, skripty a závislosti často musí být klonovány ze samostatného úložiště.
+
+Moduly jsou podobné jako při použití kanálu, ale poskytují správu verzí, kterou usnadňuje pracovní prostor, který umožňuje spolupráci a opětovné použití ve velkém měřítku. Moduly jsou navržené tak, aby se znovu použily v několika kanálech, a můžou se vyvíjet pro přizpůsobení konkrétního výpočtu v různých případech použití. Uživatelé můžou v pracovním prostoru provádět následující úlohy bez použití externích úložišť:
+
+* Vytváření nových modulů a publikování nových verzí stávajících modulů
+* Vyřadit existující verze
+* Označit verze zakázané, aby uživatelé nemohli používat tuto verzi
+* Určení výchozích verzí
+* Načtěte moduly podle verze z pracovního prostoru, abyste zajistili, že týmy používají stejný kód.
+
+Příklady kódu pro vytváření, připojování a používání modulů v Azure Machine Learning kanálech najdete v [poznámkovém bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-modulestep.ipynb) .
 
 ## <a name="next-steps"></a>Další kroky
 

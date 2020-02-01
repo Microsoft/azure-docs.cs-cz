@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: e686328464ac88abf28a0a8985d338838abca3d0
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 03b40dea4949bb50c30f7755b56294ac53107403
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514234"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905242"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Signalizace při živém streamování vyprší metadata 
 
@@ -82,7 +82,7 @@ Následující dokumenty obsahují pravidla, která prostřednictvím odkazu v t
 | [MPEGCENC]        | Informační technologie – systémy MPEG Systems – část 7: běžné šifrování ve formátech souborů formátu základního média ISO. Února 2016. Zveřejněna. Adresa URL: https://www.iso.org/standard/68042.html                   |
 | [MS-SSTR]         | [Protokol Microsoft Smooth Streaminge, 15. května 2014](https://docs.microsoft.com/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)                                                     |
 | [MS-SSTR-ingestování]  | [Azure Media Services fragmentované specifikace ingestování MP4 v reálném čase](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)                                                      |
-| [RFC8216]         | R. Pantos, Ed.; W. květen. HTTP Live Streaming. Srpen 2017. Informační. [https://tools.ietf.org/html/rfc8216](https://tools.ietf.org/html/rfc8216)                                                            |
+| [RFC8216]         | R. Pantos, Ed.; W. květen. HTTP Live Streaming. Srpen 2017. Informativní. [https://tools.ietf.org/html/rfc8216](https://tools.ietf.org/html/rfc8216)                                                            |
 | [RFC4648]         | Kódování dat Base16, Base32 a Base64 – [https://tools.ietf.org/html/rfc4648](https://tools.ietf.org/html/rfc4648)                                                                                     |
 | RTMP            | ["Protokol zasílání zpráv v reálném čase od společnosti Adobe", od 21. prosince 2012](https://www.adobe.com/devnet/rtmp.html)                                                                                                            |
 | [SCTE-35-2019]    | SCTE 35:2019 – zpráva cueing pro vložení digitálního programu pro https://www.scte.org/SCTEDocs/Standards/ANSI_SCTE%2035%202019r1.pdf kabelů                                                                       |
@@ -249,7 +249,7 @@ V následující části se zobrazuje "jednoduchý" režim "v" režimu RTMP, kte
  
 #### <a name="example-mpeg-dash-manifest-output-when-using-adobe-rtmp-simple-mode"></a>Ukázkový výstup manifestu s POMLČKou MPEG při použití jednoduchého režimu Adobe RTMP
 
-Viz příklad [3.3.2.1 pro MPEG pomlčka. MPD EventStream pomocí jednoduchého režimu Adobe.](#3321-example-mpeg-dash-mpd-manifest-signaling-of-rtmp-streaming-using-adobe-simple-mode)
+Viz příklad [3.3.2.1 MPEG pomlčka. MPD EventStream pomocí jednoduchého režimu Adobe](#3321-example-mpeg-dash-mpd-manifest-signaling-of-rtmp-streaming-using-adobe-simple-mode)
 
 Viz příklad [3.3.3.1 pomlčky manifest s jednou periodou a Adobe Simple Mode](#3331-example-mpeg-dash-manifest-mpd-with-single-period-eventstream-using-adobe-simple-mode-signals)
 
@@ -280,7 +280,7 @@ V tomto scénáři je nutné odeslat z místního kodéru následující datovou
 Viz [část 3.3.3.2 příklad přerušovaného manifestu s SCTE-35](#3332-example-mpeg-dash-manifest-mpd-with-multi-period-eventstream-using-adobe-scte35-mode-signaling)
 
 #### <a name="example-hls-manifest-m3u8-with-scte-35-mode-signal"></a>Příklad HLS manifestu. m3u8 s signálem režimu SCTE-35
-Viz [Příklad manifestu 3.3.1.1 example HLS s SCTE-35](#3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35)
+Viz [část 3.2.1.1 příklad MANIFESTU HLS s SCTE-35](#3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35)
 
 ## <a name="215-rtmp-ad-signaling-with-oncuepoint-for-elemental-live"></a>2.1.5 RTMP AD signalizace s "onCuePoint" pro živé prvky
 
@@ -421,7 +421,7 @@ Zhuštěná stopa **musí** být deklarována v poli manifestu živého serveru 
 | parentTrackName    | Řetězec         | Požaduje se      | **Musí** být název nadřazeného záznamu, na který jsou kódy času zhuštěného stopy zarovnané na časovou osu. Nadřazená stopa nemůže být zhuštěná stopa.                                                                             |
 | manifestOutput     | Logická hodnota        | Požaduje se      | **Musí** být "true", aby bylo patrné, že zhuštěné stopy budou vloženy do hladkého manifestu klienta.                                                                                                                        |
 | Podtyp            | Řetězec         | Požaduje se      | **Musí** se jednat o čtyři kódy znaků "data".                                                                                                                                                                                  |
-| Schéma             | Řetězec         | Požaduje se      | **Musí** to být název URN nebo adresa URL identifikující schéma zprávy. U zpráv [SCTE-35] **musí** být název urn: SCTE: scte35:2013: bin, aby bylo možné zprávy odeslat HLS, hladkému a přerušovanému klientovi v souladu s [SCTE-35]. |
+| Programu             | Řetězec         | Požaduje se      | **Musí** to být název URN nebo adresa URL identifikující schéma zprávy. U zpráv [SCTE-35] **musí** být název urn: SCTE: scte35:2013: bin, aby bylo možné zprávy odeslat HLS, hladkému a přerušovanému klientovi v souladu s [SCTE-35]. |
 | trackName          | Řetězec         | Požaduje se      | **Musí** se jednat o název zhuštěného záznamu. Stop lze použít k odlišení více datových proudů událostí se stejným schématem. Každý datový proud událostí **musí** mít jedinečný název stopy.                                |
 | timescale          | Číslo         | Volitelné      | **Musí** se jednat o časovou osu nadřazené stopy.                                                                                                                                                                               |
 
@@ -767,7 +767,7 @@ Označení "starší" verze "EXT-X-HROMÁDKy je definováno níže a také můž
 | INFORMOVAT                | řetězec v uvozovkách                 | Požaduje se                                  | Zpráva zakódovaná jako řetězec kódovaný v kódování Base64, jak je popsáno v [RFC4648]. U zpráv [SCTE-35] se jedná o splice_info_section kódovaný v kódování Base64 ().                                                                                                                                      |
 | TYP               | řetězec v uvozovkách                 | Požaduje se                                  | Název URN nebo adresa URL, které identifikují schéma zprávy. U zpráv [SCTE-35] má typ speciální hodnotu "scte35".                                                                                                                                                                          |
 | ID                 | řetězec v uvozovkách                 | Požaduje se                                  | Jedinečný identifikátor události Pokud ID není zadáno při ingestování zprávy, vygeneruje Azure Media Services jedinečný identifikátor.                                                                                                                                              |
-| DOBA TRVÁNÍ           | desítkové číslo s plovoucí desetinnou čárkou | Požaduje se                                  | Doba trvání události. Pokud je tato hodnota neznámá, **měla by** být 0. Jednotky jsou factional sekund.                                                                                                                                                                                           |
+| ÚKOLU           | desítkové číslo s plovoucí desetinnou čárkou | Požaduje se                                  | Doba trvání události. Pokud je tato hodnota neznámá, **měla by** být 0. Jednotky jsou factional sekund.                                                                                                                                                                                           |
 | UPLYNULÝ            | desítkové číslo s plovoucí desetinnou čárkou | Volitelné, ale vyžadované pro posuvné okno | Když se signál opakuje pro podporu posuvných oken prezentace, toto pole **musí** být množství času prezentace, které uplynulo od začátku události. Jednotky jsou zlomky sekund. Tato hodnota může přesáhnout původní určenou dobu trvání připletení nebo segmentu. |
 | ČAS               | desítkové číslo s plovoucí desetinnou čárkou | Požaduje se                                  | Čas prezentace události Jednotky jsou zlomky sekund.                                                                                                                                                                                                                        |
 

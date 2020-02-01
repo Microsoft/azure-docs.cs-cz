@@ -1,7 +1,7 @@
 ---
-title: Změna podpisového hashovacího algoritmu pro Office 365 vztah důvěryhodnosti předávající strany – Azure
-description: Tato stránka poskytuje pokyny pro změnu algoritmus SHA pro vztah důvěryhodnosti federace s Office 365
-keywords: SHA1, SHA256, O365, federace, aadconnect, služby AD FS, ad fs, změny sha důvěryhodnosti federace, vztah důvěryhodnosti předávající strany
+title: Změnit algoritmus hash signatury pro vztah důvěryhodnosti předávající strany Office 365 – Azure
+description: Tato stránka poskytuje pokyny pro změnu algoritmu SHA pro vztah důvěryhodnosti federace se sadou Office 365.
+keywords: SHA1, SHA256, O365, federace, aadconnect, ADFS, AD FS, změna SHA, důvěryhodnost federace, vztah důvěryhodnosti předávající strany
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -9,6 +9,7 @@ manager: daveba
 editor: ''
 ms.assetid: cf6880e2-af78-4cc9-91bc-b64de4428bbd
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,38 +17,38 @@ ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b6c81343d52f016dc779f9e08176a0d909684c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2233b434fda628dcf812a62f06541fc4b0296aba
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65138629"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897351"
 ---
-# <a name="change-signature-hash-algorithm-for-office-365-relying-party-trust"></a>Změna podpisového hashovacího algoritmu pro Office 365 vztah důvěryhodnosti předávající strany
+# <a name="change-signature-hash-algorithm-for-office-365-relying-party-trust"></a>Změnit algoritmus hash podpisu pro vztah důvěryhodnosti předávající strany Office 365
 ## <a name="overview"></a>Přehled
-Active Directory Federation Services (AD FS) podepíše jeho tokeny do Microsoft Azure Active Directory a ujistěte se, že nemohlo být manipulováno s. Tento podpis může být založen na SHA1 nebo SHA256. Azure Active Directory teď podporuje tokeny podepsána s algoritmem SHA256. proto doporučujeme nastavit podpisové algoritmus SHA256 pro nejvyšší úroveň zabezpečení. Tento článek popisuje kroky potřebné k nastavení podpisové algoritmus SHA256 bezpečnější úrovně.
+Active Directory Federation Services (AD FS) (AD FS) podepisuje své tokeny do Microsoft Azure Active Directory, aby se zajistilo, že je nelze úmyslně poškodit. Tento podpis může být založený na SHA1 nebo SHA256. Azure Active Directory teď podporuje tokeny podepsané algoritmem SHA256 a doporučujeme nastavit algoritmus podepisování tokenů na SHA256 pro nejvyšší úroveň zabezpečení. Tento článek popisuje kroky potřebné k nastavení algoritmu podepisování tokenu na bezpečnější úroveň SHA256.
 
 >[!NOTE]
->Společnost Microsoft doporučuje použití SHA256 jako algoritmus k podepisování tokenů, jako je bezpečnější než SHA1, ale stále zůstává podporovanou možností SHA1.
+>Microsoft doporučuje použití SHA256 jako algoritmu pro podepisování tokenů, protože je bezpečnější než SHA1, ale SHA1 stále zůstává podporovanou možností.
 
-## <a name="change-the-token-signing-algorithm"></a>Změňte algoritmus podepisování
-Po nastavení algoritmus podpisu jedním ze dvou procesy uvedené níže služby AD FS podepisuje tokeny pro Office 365 vztah důvěryhodnosti předávající strany pomocí SHA256. Není nutné provádět žádné další konfigurace změny a tato změna nemá žádný vliv na schopnost přístupu k Office 365 nebo jiným aplikacím služby Azure AD.
+## <a name="change-the-token-signing-algorithm"></a>Změna podpisového algoritmu tokenů
+Po nastavení algoritmu podpisu pomocí jednoho ze dvou procesů AD FS podepíše tokeny pro vztah důvěryhodnosti předávající strany Office 365 s SHA256. Nemusíte provádět žádné dodatečné změny konfigurace a tato změna nemá žádný vliv na možnost přístupu k Office 365 nebo k jiným aplikacím služby Azure AD.
 
 ### <a name="ad-fs-management-console"></a>Konzola pro správu AD FS
-1. Otevřete konzolu pro správu služby AD FS na primárním serveru služby AD FS.
-2. Rozbalte uzel služby AD FS a klikněte na tlačítko **vztahy důvěryhodnosti předávající strany**.
-3. Klikněte pravým tlačítkem na důvěryhodnosti předávající strany Office 365 nebo Azure a vyberte **vlastnosti**.
-4. Vyberte **Upřesnit** kartě a vyberte zabezpečené hashovací algoritmus SHA256.
+1. Otevřete konzolu pro správu AD FS na primárním serveru AD FS.
+2. Rozbalte uzel AD FS a klikněte na **vztahy důvěryhodnosti předávající strany**.
+3. Klikněte pravým tlačítkem na vztah důvěryhodnosti předávající strany Office 365/Azure a vyberte **vlastnosti**.
+4. Vyberte kartu **Upřesnit** a vyberte zabezpečený algoritmus hash SHA256.
 5. Klikněte na **OK**.
 
-![Podpisový algoritmus SHA256 – konzoly MMC](./media/how-to-connect-fed-sha256-guidance/mmc.png)
+![SHA256 Signing Algorithm – MMC](./media/how-to-connect-fed-sha256-guidance/mmc.png)
 
-### <a name="ad-fs-powershell-cmdlets"></a>Rutiny služby AD FS Powershellu
-1. Na libovolném serveru služby AD FS otevřete prostředí PowerShell v rámci oprávnění správce.
-2. Nastavení zabezpečení hashovacího algoritmu použít **Set-AdfsRelyingPartyTrust** rutiny.
+### <a name="ad-fs-powershell-cmdlets"></a>Rutiny AD FS PowerShellu
+1. Na jakémkoli serveru AD FS otevřete PowerShell v části oprávnění správce.
+2. Pomocí rutiny **set-AdfsRelyingPartyTrust** nastavte algoritmus Secure Hash.
    
    <code>Set-AdfsRelyingPartyTrust -TargetName 'Microsoft Office 365 Identity Platform' -SignatureAlgorithm 'https://www.w3.org/2001/04/xmldsig-more#rsa-sha256'</code>
 
-## <a name="also-read"></a>Také číst
-* [Oprava důvěryhodnosti služeb Office 365 s Azure AD Connect](how-to-connect-fed-management.md#repairthetrust)
+## <a name="also-read"></a>Přečíst také
+* [Oprava vztahu důvěryhodnosti sady Office 365 s Azure AD Connect](how-to-connect-fed-management.md#repairthetrust)
 

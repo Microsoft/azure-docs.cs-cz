@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4da2e3696dd1fad1dcce81831385f1e21891f97
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 43f355f22774477466d2965cef02adcc4ec4f497
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712535"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76908849"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrace stávající infrastruktury serveru NPS do Azure Multi-Factor Authentication
 
@@ -192,6 +192,23 @@ Pokud uplynula platnost předchozího certifikátu počítače a vygeneroval se 
 
 > [!NOTE]
 > Pokud místo generování certifikátů pomocí skriptu PowerShell použijete vlastní certifikáty, ujistěte se, že jsou zarovnané na konvence vytváření názvů NPS. Název subjektu musí být **CN =\<TenantID\>, OU = rozšíření Microsoft NPS**. 
+
+### <a name="microsoft-azure-government-additional-steps"></a>Microsoft Azure Government dalších kroků
+
+Pro zákazníky, kteří používají Azure Government Cloud, jsou na každém serveru NPS potřeba tyto další kroky konfigurace:
+
+1. Otevřete **Editor registru** na serveru NPS.
+1. Přejděte na adresu `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa`. Nastavte následující hodnoty klíče:
+
+    | Klíč registru       | Hodnota |
+    |--------------------|-----------------------------------|
+    | AZURE_MFA_HOSTNAME | adnotifications.windowsazure.us   |
+    | STS_URL            | https://login.microsoftonline.us/ |
+
+1. Opakujte předchozí dva kroky a nastavte hodnoty klíče registru pro každý server NPS.
+1. Restartujte službu NPS pro každý server NPS.
+
+    Pro minimální dopad Převezměte každý server NPS z rotace vyrovnávání zatížení sítě po jednom a počkejte, až se všechna připojení vyprázdní.
 
 ### <a name="certificate-rollover"></a>Změna certifikátu
 

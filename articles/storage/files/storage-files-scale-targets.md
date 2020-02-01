@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 211dafd1ad3e30d37cfee926a7c93ba541037f62
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2e05f0cb46e1e54ced5911c0a78dd026dbb7f4fa
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749505"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905595"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure soubory škálovatelnost a výkonnostní cíle
 
@@ -51,7 +51,7 @@ Tato omezení najdete v části [cíle škálování účtu Azure Storage](#azur
 ### <a name="file-share-and-file-scale-targets"></a>Sdílení souborů a cíle pro škálování souborů
 
 > [!NOTE]
-> Standardní sdílené složky větší než 5 TiB mají určitá omezení a regionální omezení.
+> Standardní sdílené složky větší než 5 TiB mají určitá omezení.
 > Seznam omezení, regionálních informací a pokynů, jak tyto větší velikosti sdílených složek povolit, najdete v části připojení [k větším sdíleným složkám](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) v příručce pro plánování souborů.
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]

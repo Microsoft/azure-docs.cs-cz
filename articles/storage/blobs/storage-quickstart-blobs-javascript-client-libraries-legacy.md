@@ -6,29 +6,29 @@ author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
 ms.author: mhopkins
-ms.date: 08/29/2019
+ms.date: 01/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 7d481b115650c72df95f7516bb3b39411201bf83
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 257af309ebdb9080c3cd60b8b89a2c992ecf5145
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864005"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906570"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
-# <a name="quickstart-upload-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascripthtml-in-the-browser"></a>Rychlý Start: nahrávání, výpis a odstraňování objektů BLOB pomocí Azure Storage v10 za účelem SDK pro JavaScript/HTML v prohlížeči
+# <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-browser"></a>Rychlý Start: Správa objektů BLOB pomocí sady JavaScript v10 za účelem SDK v prohlížeči
 
-V tomto rychlém startu se naučíte používat [sadu Azure Storage SDK v10 za účelem pro JavaScript – knihovny objektů BLOB](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob#readme) pro správu objektů BLOB z kódu JavaScriptu, který běží zcela v prohlížeči. Níže použitý přístup ukazuje, jak používat požadovaná bezpečnostní opatření pro zajištění chráněného přístupu k účtu úložiště objektů blob.
+V tomto rychlém startu se naučíte spravovat objekty BLOB pomocí kódu JavaScriptu, který běží zcela v prohlížeči. Objekty blob jsou objekty, které mohou obsahovat velké objemy textových nebo binárních dat, včetně obrázků, dokumentů, datových proudů médií a dat archivu. Pro zajištění chráněného přístupu k účtu úložiště objektů BLOB budete používat požadovaná bezpečnostní opatření.
 
 ## <a name="prerequisites"></a>Požadavky
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
-
-Klientské knihovny Azure Storage JavaScript nebudou pracovat přímo ze systému souborů a musí být obsluhovány z webového serveru. V tomto tématu se používá [Node. js](https://nodejs.org) pro spuštění základního serveru. Pokud nechcete instalovat uzel, můžete použít jakékoli jiné prostředky pro spuštění místního webového serveru.
-
-Pokud chcete postupovat podle kroků pro ladění, budete potřebovat [Visual Studio Code](https://code.visualstudio.com) a [ladicí program pro Chrome](vscode:extension/msjsdiag.debugger-for-chrome) nebo [ladicí program pro rozšíření Microsoft Edge](vscode:extension/msjsdiag.debugger-for-edge) .
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Účet služby Azure Storage. [Vytvoření účtu úložiště](../common/storage-account-create.md)
+- Místní webový server. Tento článek používá [Node. js](https://nodejs.org) k otevření základního serveru.
+- [Visual Studio Code](https://code.visualstudio.com).
+- Rozšíření VS Code pro ladění prohlížeče, jako je například [ladicí program pro Chrome](vscode:extension/msjsdiag.debugger-for-chrome) nebo [ladicí program pro Microsoft Edge](vscode:extension/msjsdiag.debugger-for-edge).
 
 ## <a name="setting-up-storage-account-cors-rules"></a>Nastavení pravidel CORS pro účet úložiště
 

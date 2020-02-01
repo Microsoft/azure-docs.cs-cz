@@ -12,12 +12,12 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: d66b3e1b6ed2c8eef9f5cd21c0657648ad550ebe
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 06ca26ee9a8af7f49aba6a48a1831d30d5886851
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896156"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896323"
 ---
 # <a name="access-azure-media-services-api-with-the-azure-cli"></a>Přístup k rozhraní API Azure Media Services pomocí Azure CLI
  
@@ -28,11 +28,12 @@ Pokud chcete pro připojení k Azure Media Services rozhraní API použít ově�
 * Identifikátor URI prostředku pro Media Services REST
 * Hodnoty aplikace Azure AD: ID klienta a tajný klíč klienta
 
-Podrobné vysvětlení najdete v tématu [přístup k rozhraním api Media Services V3](media-services-apis-overview.md#accessing-the-azure-media-services-api).
+> [!IMPORTANT]
+> Podrobné vysvětlení najdete v popisu [přístupu k rozhraním api Media Services V3](media-services-apis-overview.md#accessing-the-azure-media-services-api).
 
 V tomto článku se dozvíte, jak pomocí rozhraní příkazového řádku Azure vytvořit aplikaci a instanční objekt služby Azure AD a získat hodnoty potřebné pro přístup k Azure Media Services prostředkům.
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 [Vytvoření účtu Media Services](create-account-cli-how-to.md).
 

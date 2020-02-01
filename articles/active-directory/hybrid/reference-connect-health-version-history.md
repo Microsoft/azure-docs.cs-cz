@@ -8,6 +8,7 @@ manager: daveba
 editor: curtand
 ms.assetid: 8dd4e998-747b-4c52-b8d3-3900fe77d88f
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,18 +16,18 @@ ms.topic: reference
 ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27c0d3055512145396f204fdb17e9375f65a0db3
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: ace8d170a5ba48c00775c3b376df8bb70a337d5d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562331"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897035"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Historie vydaných verzí
 Tým Azure Active Directory pravidelně aktualizuje Azure AD Connect Health novými funkcemi a funkcemi. V tomto článku jsou uvedené verze a funkce, které byly vydány.  
 
 > [!NOTE]
-> Při vydání nové verze se automaticky aktualizují agenti stavu připojení. Ujistěte se prosím, že nastavení automatického upgradu je povolené z Azure Portal. 
+> Při vydání nové verze se automaticky aktualizují agenti stavu připojení. Ujistěte se prosím, že nastavení automatického upgradu je povolené z Azure Portal.
 >
 
 Azure AD Connect Health pro synchronizaci je integrována s instalací Azure AD Connect. Přečtěte si další informace o [Azure AD Connect historii verzí](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history) pro zpětnou vazbu k funkcím, Hlasujte na [telefonním kanálu uživatele Connect Health](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)
@@ -72,7 +73,7 @@ Azure AD Connect Health pro synchronizaci je integrována s instalací Azure AD 
    4. Oprava chyby při zablokování více instancí agenta monitorování
 
 
-## <a name="november-2018"></a>Listopadu 2018
+## <a name="november-2018"></a>Listopad 2018
 **Nové funkce GA:** 
 * Azure AD Connect Health pro synchronizaci – Diagnostikujte a opravte chyby synchronizace duplicitních atributů z portálu.
 

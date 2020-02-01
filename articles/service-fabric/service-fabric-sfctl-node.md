@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI – uzel sfctl
 description: Přečtěte si o sfctl rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro správu uzlů clusteru.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 43b242d6c7c41b6198b8f909ab5ae056f0982307
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 5881e6485003abd4fd23a7f6d06a428e768c00fa
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645289"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905878"
 ---
 # <a name="sfctl-node"></a>sfctl node
 Spravujte uzly, které tvoří cluster.
@@ -19,17 +19,44 @@ Spravujte uzly, které tvoří cluster.
 
 |Příkaz|Popis|
 | --- | --- |
-| zakázat | Deaktivuje uzel clusteru Service Fabric se zadaným záměrem deaktivace. |
-| povolit | Aktivujte uzel clusteru Service Fabric, který je v tuto chvíli deaktivovaný. |
+| Přidání-konfigurace-parametru-Overrides | Přidá seznam přepsání konfigurace v zadaném uzlu. |
+| dezaktivovat | Deaktivuje uzel clusteru Service Fabric se zadaným záměrem deaktivace. |
+| aby | Aktivujte uzel clusteru Service Fabric, který je v tuto chvíli deaktivovaný. |
+| Get-Configuration-Overrides | Načte seznam přepsání konfigurace v zadaném uzlu. |
 | zdravotnictví | Získá stav uzlu Service Fabric. |
 | info | Získá informace o konkrétním uzlu v clusteru Service Fabric. |
 | list | Načte seznam uzlů v clusteru Service Fabric. |
 | načítání | Získá informace o načtení uzlu Service Fabric. |
+| odebrat – konfigurace – přepsání | Odebere přepsání konfigurace na zadaném uzlu. |
 | odebrat – stav | Upozorňuje Service Fabric, že trvalý stav na uzlu se trvale odebral nebo ztratil. |
 | report-health | Odešle zprávu o stavu na uzlu Service Fabric. |
 | restart | Restartuje uzel clusteru Service Fabric. |
 | Přejít | Spustí nebo zastaví uzel clusteru. |
 | přechod – stav | Získá průběh operace zahájené s použitím StartNodeTransition. |
+
+## <a name="sfctl-node-add-configuration-parameter-overrides"></a>sfctl uzel Add-Configuration-Parameter-Overrides
+Přidá seznam přepsání konfigurace v zadaném uzlu.
+
+Toto rozhraní API umožňuje přidat všechna existující přepsání konfigurace na zadaný uzel.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --config-parametr-override-list [povinné] | Popis pro přidání seznamu přepsání konfigurace |
+| --Node-Name [povinné] | Název uzlu |
+| --Force | Vynutí přidání přepsání konfigurace na zadané uzly. |
+| --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí\: 60. |
+
+### <a name="global-arguments"></a>Globální argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace a příklady najdete v tématu http\://jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 ## <a name="sfctl-node-disable"></a>zakázaný uzel sfctl
 Deaktivuje uzel clusteru Service Fabric se zadaným záměrem deaktivace.
@@ -58,6 +85,28 @@ Deaktivuje uzel clusteru Service Fabric se zadaným záměrem deaktivace. Po dea
 Aktivujte uzel clusteru Service Fabric, který je v tuto chvíli deaktivovaný.
 
 Aktivuje uzel clusteru Service Fabric, který je v tuto chvíli deaktivovaný. Po aktivaci se uzel znovu stane životaschopným cílem pro umístění nových replik a všechny deaktivované repliky na uzlu se znovu aktivují.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --Node-Name [povinné] | Název uzlu |
+| --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí\: 60. |
+
+### <a name="global-arguments"></a>Globální argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace a příklady najdete v tématu http\://jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
+
+## <a name="sfctl-node-get-configuration-overrides"></a>sfctl uzel Get-Configuration-Overrides
+Načte seznam přepsání konfigurace v zadaném uzlu.
+
+Toto rozhraní API umožňuje získat všechna existující přepsání konfigurace v zadaném uzlu.
 
 ### <a name="arguments"></a>Argumenty
 
@@ -167,10 +216,32 @@ Načte informace o načtení uzlu Service Fabric pro všechny metriky, které ma
 | --dotaz | Řetězec dotazu JMESPath Další informace a příklady najdete v tématu http\://jmespath.org/. |
 | --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
+## <a name="sfctl-node-remove-configuration-overrides"></a>odebrání uzlu sfctl-konfigurace – přepsání
+Odebere přepsání konfigurace na zadaném uzlu.
+
+Toto rozhraní API umožňuje odebrat všechna existující přepsání konfigurace v zadaném uzlu.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --Node-Name [povinné] | Název uzlu |
+| --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí\: 60. |
+
+### <a name="global-arguments"></a>Globální argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace a příklady najdete v tématu http\://jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
+
 ## <a name="sfctl-node-remove-state"></a>sfctl uzel-stav odebrání
 Upozorňuje Service Fabric, že trvalý stav na uzlu se trvale odebral nebo ztratil.
 
-To znamená, že není možné obnovit trvalý stav tohoto uzlu. K tomu obvykle dochází v případě, že byl pevný disk vymazán nebo pokud dojde k chybě pevného disku. Aby tato operace proběhla úspěšně, musí být uzel vypnutý. Tato operace umožňuje Service Fabric zjistit, že repliky na tomto uzlu již neexistují a že Service Fabric by se měla zastavit, aby se tyto repliky staly zálohovat. Nespouštějte tuto rutinu, pokud se stav uzlu neodebral a uzel se může vrátit se stavem beze změny. Od Service Fabric 6,5, aby bylo možné použít toto rozhraní API pro uzly počáteční hodnoty, změňte uzly počátečních hodnot na běžné (nepočáteční) uzly a potom toto rozhraní API vyvolejte k odebrání stavu uzlu. Pokud je cluster spuštěn v Azure, poté, co se dokončí uzel počáteční hodnoty, Service Fabric se pokusí ho změnit na nepočáteční uzel automaticky. Aby k tomu docházelo, ujistěte se, že počet nepočátečních uzlů v primárním uzlu je nižší než počet počátečních uzlů. V případě potřeby přidejte k primárnímu typu uzlu další uzly, abyste to dosáhli. V případě samostatného clusteru, pokud se neočekává, že se uzel dokončí v případě, že dojde k zálohování beze změny stavu, odeberte prosím uzel z clusteru, viz protokol HTTPS\://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes.
+To znamená, že není možné obnovit trvalý stav tohoto uzlu. K tomu obvykle dochází v případě, že byl pevný disk vymazán nebo pokud dojde k chybě pevného disku. Aby tato operace proběhla úspěšně, musí být uzel vypnutý. Tato operace umožňuje Service Fabric zjistit, že repliky na tomto uzlu již neexistují a že Service Fabric by se měla zastavit, aby se tyto repliky staly zálohovat. Nespouštějte tuto rutinu, pokud se stav uzlu neodebral a uzel se může vrátit se stavem beze změny. Od Service Fabric 6,5, aby bylo možné použít toto rozhraní API pro uzly počáteční hodnoty, změňte uzly počátečních hodnot na běžné (nepočáteční) uzly a potom toto rozhraní API vyvolejte k odebrání stavu uzlu. Pokud je cluster spuštěn v Azure, poté, co se dokončí uzel počáteční hodnoty, Service Fabric se pokusí ho změnit na nepočáteční uzel automaticky. Aby k tomu docházelo, ujistěte se, že počet nepočátečních uzlů v primárním uzlu je nižší než počet počátečních uzlů. V případě potřeby přidejte k primárnímu typu uzlu další uzly, abyste to dosáhli. V případě samostatného clusteru, pokud se neočekává, že se uzel dokončí v případě, že dojde k zálohování beze změny stavu, odeberte prosím uzel z clusteru, viz protokol HTTPS\://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes.
 
 ### <a name="arguments"></a>Argumenty
 
@@ -207,7 +278,7 @@ Hlásí stav zadaného uzlu Service Fabric. Sestava musí obsahovat informace o 
 | --Remove-when-vypršela platnost | Hodnota, která označuje, zda je sestava odebrána z Health Store v případě jejího platnosti. <br><br> Pokud je nastavená hodnota true, sestava se po vypršení platnosti odebere z Health Store. Pokud je nastavena hodnota false, bude sestava považována za chybu, pokud vypršela její platnost. Hodnota této vlastnosti je ve výchozím nastavení false. Při pravidelné sestavě klientů by měly být nastavené RemoveWhenExpired na hodnotu false (výchozí). Tímto způsobem má zpravodaj problémy (například zablokování) a nemůže hlásit, entita je vyhodnocena při vypršení platnosti sestavy stavu. Tím se označí entita jako v chybovém stavu. |
 | --pořadové číslo | Pořadové číslo pro tuto sestavu stavu jako číselný řetězec. <br><br> Číslo sekvence sestavy používá Health Store ke zjišťování zastaralých sestav. Není-li tento parametr zadán, je číslo sekvence automaticky generováno klientem stavu při přidání sestavy. |
 | --Timeout-t | Výchozí\: 60. |
-| --ttl | Doba, po kterou je tato sestava stavu platná. Toto pole používá formát ISO8601 k zadání doby trvání. <br><br> Při pravidelné sestavě klientů by měly odesílat sestavy s vyšší frekvencí, než je čas do provozu. Pokud klienti nahlásí přechod, můžou nastavit čas příliš živý na nekonečné. Po vypršení časového limitu životnosti události stavu, která obsahuje informace o stavu, se buď odeberou z Health Store, pokud je RemoveWhenExpired true, nebo se vyhodnotí při chybě, pokud RemoveWhenExpired false. Pokud není zadaný, hodnota TTL (Time to Live) nastaví nekonečnou hodnotu. |
+| --ttl | Doba, po kterou je tato sestava stavu platná. Toto pole používá formát ISO8601 k zadání doby trvání. <br><br> Při pravidelné sestavě klientů by měly odesílat sestavy s vyšší frekvencí, než je čas do provozu. Pokud klienti hlásí přechod, můžou nastavit čas na živého na nekonečné. Po vypršení časového limitu životnosti události stavu, která obsahuje informace o stavu, se buď odeberou z Health Store, pokud je RemoveWhenExpired true, nebo se vyhodnotí při chybě, pokud RemoveWhenExpired false. Pokud není zadaný, hodnota TTL (Time to Live) nastaví nekonečnou hodnotu. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 

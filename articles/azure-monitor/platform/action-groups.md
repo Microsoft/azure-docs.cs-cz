@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: a954898a334ead15d8ffdf6dab6e6a309bd57089
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: cc01145423d2961e32bf17313a2873633399d21a
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659827"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901470"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a Správa skupin akcí v Azure Portal
 Skupina akcí je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure. Výstrahy Azure Monitor a Service Health pomocí skupin akcí upozorní uživatele na aktivaci výstrahy. Různé výstrahy můžou v závislosti na požadavcích uživatele používat stejnou skupinu akcí nebo různé skupiny akcí. V rámci předplatného můžete nakonfigurovat až 2 000 skupin akcí.
@@ -88,13 +88,13 @@ E-maily budou odeslány z následujících e-mailových adres. Ujistěte se, že
 
 Ve skupině akcí můžete mít omezený počet e-mailových akcí. Podívejte se na článek [o omezení rychlosti](./../../azure-monitor/platform/alerts-rate-limiting.md) .
 
-### <a name="email-azure-resource-manager-role"></a>Poslat e-mail roli Azure Resource Manageru
+### <a name="email-azure-resource-manager-role"></a>Role e-mailové Azure Resource Manager
 Odešlete e-mail členům role předplatného.
 
 Ve skupině akcí můžete mít omezený počet e-mailových akcí. Podívejte se na článek [o omezení rychlosti](./../../azure-monitor/platform/alerts-rate-limiting.md) .
 
 ### <a name="function"></a>Funkce
-Klíče funkcí pro aplikace Function App nakonfigurované jako akce jsou čteny prostřednictvím rozhraní API Functions, které aktuálně vyžaduje aplikace funkce v2 ke konfiguraci nastavení aplikace "AzureWebJobsSecretStorageType" na "soubory". Další informace najdete v tématu [změny správy klíčů ve Functions v2]( https://aka.ms/funcsecrets).
+Zavolá existující koncový bod HTTP triggeru v [Azure Functions](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app).
 
 Ve skupině akcí můžete mít omezený počet akcí funkce.
 

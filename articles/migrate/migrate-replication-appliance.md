@@ -2,13 +2,13 @@
 title: Zařízení pro replikaci Azure Migrate
 description: Přečtěte si o zařízení replikace Azure Migrate pro migraci VMWare založenou na agentech.
 ms.topic: conceptual
-ms.date: 01/08/2020
-ms.openlocfilehash: 574877c6a0a5ade068cff08041b29d2465430ed1
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.date: 01/30/2020
+ms.openlocfilehash: 4521fce6310b319d155a2f0c418cd934be7e2cb8
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029036"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901555"
 ---
 # <a name="replication-appliance"></a>Replikační zařízení
 
@@ -53,7 +53,7 @@ Národní prostředí operačního systému | Angličtina (en-us)
 TLS | Je třeba povolit protokol TLS 1,2.
 .NET Framework | Na počítači by se měla nainstalovat .NET Framework 4,6 nebo novější (se zapnutým silným kryptografií.
 MySQL | Na zařízení by měl být nainstalován MySQL.<br/> Je potřeba nainstalovat MySQL. Instalaci můžete provést ručně, nebo ji Site Recovery můžete nainstalovat během nasazování zařízení.
-Jiné aplikace | Na zařízení replikace nespouštějte jiné aplikace.
+Další aplikace | Na zařízení replikace nespouštějte jiné aplikace.
 Role Windows Serveru | Nepovolujte tyto role: <br> – Active Directory Domain Services <br>– Internet Information Service <br> – Hyper-V
 Zásady skupiny | Nepovolujte tyto zásady skupiny: <br> – Zabraňte přístupu k příkazovému řádku. <br> – Zabraňte přístup k nástrojům pro úpravu registru. <br> – Logika vztahu důvěryhodnosti pro přílohy souborů. <br> -Zapnout provádění skriptu. <br> [Další informace](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
 IIS | -Žádný předdefinovaný výchozí web <br> -Žádný existující web nebo aplikace nenaslouchá na portu 443. <br>-Povolit [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Povolit nastavení [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)

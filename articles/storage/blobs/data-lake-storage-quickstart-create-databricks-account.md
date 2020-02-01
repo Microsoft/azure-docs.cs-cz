@@ -6,39 +6,29 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/15/2019
+ms.date: 01/28/2020
 ms.reviewer: jeking
-ms.openlocfilehash: 193fe96d3e98b2917d9228784b93a9335406283f
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 2a303070b7240bddfd4803ed3d4d796fa52fdef5
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771747"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906640"
 ---
-# <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Rychlý Start: Analýza dat v Azure Data Lake Storage Gen2 pomocí Azure Databricks
+# <a name="quickstart-analyze-data-with-databricks"></a>Rychlý Start: Analýza dat pomocí datacihlů
 
-V tomto rychlém startu se dozvíte, jak spustit úlohu Apache Spark pomocí Azure Databricks k provádění analýz dat uložených v účtu úložiště, který je povolený Azure Data Lake Storage Gen2.
-
-V rámci úlohy Spark budete analyzovat data předplatného rádiového kanálu, abyste získali přehled o bezplatném nebo placeném využití na základě demografických údajů.
-
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+V tomto rychlém startu spustíte úlohu Apache Spark pomocí Azure Databricks k provádění analýz dat uložených v účtu úložiště. V rámci úlohy Spark budete analyzovat data předplatného rádiového kanálu, abyste získali přehled o bezplatném nebo placeném využití na základě demografických údajů.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Vytvořte účet úložiště Data Lake Gen2. Další informace najdete v tématu [rychlý Start: vytvoření účtu úložiště Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md)
+* Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-  Vložte název účtu úložiště do textového souboru. Budete ho potřebovat brzy.
+* Název vašeho účtu úložiště Azure Data Lake Gen2 [Vytvořte účet úložiště Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md).
 
-* Vytvoření instančního objektu. Viz [Postup: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
-
-  K dispozici je několik konkrétních věcí, které budete muset udělat při provádění kroků v tomto článku.
-
-  : heavy_check_mark: při provádění kroků v části [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) v článku se ujistěte, že k instančnímu objektu přiřadíte roli **Přispěvatel dat objektu BLOB služby Storage** .
+* ID tenanta, ID aplikace a heslo instančního objektu Azure s přiřazenou rolí **přispěvatele dat objektu BLOB služby Storage**. [Vytvoření instančního objektu](../../active-directory/develop/howto-create-service-principal-portal.md).
 
   > [!IMPORTANT]
-  > Ujistěte se, že roli přiřadíte v oboru účtu úložiště Data Lake Storage Gen2. K nadřazené skupině prostředků nebo předplatnému můžete přiřadit roli, ale chyby související s oprávněními obdržíte, dokud tato přiřazení role nerozšíříte do účtu úložiště.
-
-  : heavy_check_mark: při provádění kroků v části [získat hodnoty pro přihlášení v](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) článku Vložte ID TENANTA, ID aplikace a heslo do textového souboru. Budete je potřebovat brzy.
+  > Přiřaďte roli v oboru účtu úložiště Data Lake Storage Gen2. K nadřazené skupině prostředků nebo předplatnému můžete přiřadit roli, ale chyby související s oprávněními obdržíte, dokud tato přiřazení role nerozšíříte do účtu úložiště.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Vytvoření pracovního prostoru Azure Databricks
 

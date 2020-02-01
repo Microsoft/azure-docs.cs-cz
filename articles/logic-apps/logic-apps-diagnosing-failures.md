@@ -5,108 +5,83 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 10/15/2017
-ms.openlocfilehash: 79cc9d1bf7aa9e8848197525646b0a3646a558d2
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.date: 01/31/2020
+ms.openlocfilehash: 1f83f13564a64a0d9d8a5e0144ca95af6a769d6c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666801"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905104"
 ---
 # <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Řešení potíží a Diagnostika selhání pracovního postupu v Azure Logic Apps
 
-Vaše aplikace logiky generuje informace, které vám pomohou diagnostikovat a ladit problémy ve vaší aplikaci. Aplikaci logiky můžete diagnostikovat tak, že zkontrolujete každý krok pracovního postupu prostřednictvím Azure Portal. Případně můžete do pracovního postupu přidat některé kroky pro ladění za běhu.
+Vaše aplikace logiky generuje informace, které vám pomohou diagnostikovat a ladit problémy ve vaší aplikaci. Aplikaci logiky můžete diagnostikovat tak, že zkontrolujete každý krok pracovního postupu prostřednictvím Azure Portal. Nebo můžete do pracovního postupu přidat některé kroky pro ladění za běhu.
 
-## <a name="review-trigger-history"></a>Kontrola historie aktivačních událostí
+<a name="check-trigger-history"></a>
 
-Každá aplikace logiky se spustí s triggerem. Pokud se Trigger neaktivuje, nejdřív ověřte historii triggeru. Tato historie obsahuje seznam všech pokusů o aktivační události, které vaše aplikace logiky vytvořila, a podrobnosti o vstupech a výstupech pro každý pokus o aktivaci.
+## <a name="check-trigger-history"></a>Kontrolovat historii aktivačních událostí
 
-1. Pokud chcete zjistit, jestli Trigger vyvolal, klikněte v nabídce aplikace logiky na **Přehled**. V části **Historie aktivační události**zkontrolujte stav triggeru.
+Každá aplikace logiky se spustí s pokusy o aktivaci, takže pokud se Trigger neaktivuje, postupujte podle těchto kroků:
 
-   > [!TIP]
-   > Pokud se nabídka aplikace logiky nezobrazí, zkuste se vrátit na řídicí panel Azure a otevřít aplikaci logiky znovu.
+1. Ověřte stav triggeru [kontrolou historie aktivačních událostí](../logic-apps/monitor-logic-apps.md#review-trigger-history). Chcete-li zobrazit další informace o pokusu o aktivační událost, vyberte tuto aktivační událost, například:
 
-   ![Kontrola historie aktivačních událostí](./media/logic-apps-diagnosing-failures/logic-app-trigger-history-overview.png)
+   ![Zobrazit stav triggeru a historii](./media/logic-apps-diagnosing-failures/logic-app-trigger-history.png)
 
-   > [!TIP]
-   > * Pokud nenajdete očekávaná data, zkuste na panelu nástrojů vybrat možnost **aktualizovat** .
-   > * Pokud se v seznamu zobrazí mnoho pokusů o aktivační události a nemůžete najít požadovanou položku, zkuste vyfiltrovat seznam.
+1. Zkontrolujte vstupy triggeru a potvrďte, že se zobrazují podle očekávání. V části **odkaz na vstupy**vyberte odkaz, který zobrazuje podokno **vstupy** .
 
-   Tady jsou možné stavy pro pokus o aktivační událost:
+   Vstupy triggerů zahrnují data, která Trigger očekává, a vyžaduje spuštění pracovního postupu. Tyto vstupy vám pomohou určit, zda jsou vstupy triggeru správné a zda byla podmínka splněna, aby mohl pracovní postup pokračovat.
 
-   | Stav | Popis | 
-   | ------ | ----------- | 
-   | **Úspěchu** | Aktivační událost kontrolovala koncový bod a našla dostupná data. Stav "aktivováno" se obvykle zobrazuje současně s tímto stavem. V takovém případě může mít definice triggeru podmínku nebo příkaz `SplitOn`, který nebyl splněn. <p>Tento stav se může vztahovat na manuální aktivační událost, Trigger opakování nebo aktivační událost cyklického dotazování. Aktivační událost může být úspěšně spuštěna, ale samotný běh může selhat i v případě, že akce generují neošetřené chyby. | 
-   | **Vynecháno** | Aktivační událost kontrolovala koncový bod, ale nenašla žádná data. | 
-   | **Se nezdařilo** | Došlo k chybě. Pokud chcete zkontrolovat všechny generované chybové zprávy pro aktivační událost, vyberte tuto aktivační událost a zvolte **výstup**. Například můžete najít vstupy, které nejsou platné. | 
-   ||| 
+   Například vlastnost `feedUrl` tady má nesprávnou hodnotu informačního kanálu RSS:
 
-   Můžete mít více položek triggeru se stejným datem a časem, k němuž dojde, když aplikace logiky nalezne více položek. 
-   Pokaždé, když se Trigger aktivuje, modul Logic Apps vytvoří instanci aplikace logiky pro spuštění vašeho pracovního postupu. Ve výchozím nastavení jsou jednotlivé instance spouštěny paralelně, takže žádný pracovní postup nesmí čekat před spuštěním spuštění.
+   ![Zkontrolovat vstupy triggeru pro chyby](./media/logic-apps-diagnosing-failures/review-trigger-inputs-for-errors.png)
+
+1. Zkontrolujte výstupy triggerů, pokud existují, a potvrďte tak, že se zobrazují podle očekávání. V části **odkaz na výstupy**vyberte odkaz, který zobrazuje podokno **výstupy** .
+
+   Výstupy triggerů zahrnují data, která aktivační událost projde k dalšímu kroku pracovního postupu. Tyto výstupy vám pomůžou určit, jestli se do dalšího kroku pracovního postupu předali správné nebo očekávané hodnoty, například:
+
+   ![Kontrola výstupů triggeru pro chyby](./media/logic-apps-diagnosing-failures/review-trigger-outputs-for-errors.png)
 
    > [!TIP]
-   > Aktivační událost se dá znovu ověřit bez čekání na další opakování. Na panelu nástrojů přehled zvolte možnost **Spustit Trigger**a vyberte aktivační událost, která vynucuje kontrolu. Případně vyberte možnost **Spustit** na panelu nástrojů návrháře Logic Apps.
+   > Pokud najdete nějaký obsah, který neznáte, přečtěte si další informace o [různých typech obsahu](../logic-apps/logic-apps-content-type.md) v Azure Logic Apps.
 
-3. Pokud si chcete prohlédnout podrobnosti o pokusu o aktivační událost, vyberte v části **Historie aktivační**události tento pokus o aktivaci. 
+<a name="check-runs-history"></a>
 
-   ![Vybrat pokus o aktivaci](./media/logic-apps-diagnosing-failures/logic-app-trigger-history.png)
+## <a name="check-runs-history"></a>Historie spuštění kontroly
 
-4. Zkontrolujte vstupy a výstupy, které aktivační událost vygenerovala. Výstupy aktivačních událostí zobrazují data, která byla získána z triggeru. Tyto výstupy vám pomohou určit, zda všechny vlastnosti vráceny podle očekávání.
+Pokaždé, když se Trigger aktivuje pro položku nebo událost, vytvoří modul Logic Apps a spustí samostatnou instanci pracovního postupu pro každou položku nebo událost. Pokud se spuštění nepovede, postupujte podle těchto kroků a Projděte si informace o tom, co se stalo během tohoto spuštění, včetně stavu každého kroku v pracovním postupu a vstupy a výstupy pro jednotlivé kroky.
 
-   > [!NOTE]
-   > Pokud najdete nějaký obsah, který nerozumíte, přečtěte si, jak Azure Logic Apps [zpracovává různé typy obsahu](../logic-apps/logic-apps-content-type.md).
+1. [Kontrolou historie spuštění](../logic-apps/monitor-logic-apps.md#review-runs-history)zkontroluje stav spuštění pracovního postupu. Pokud chcete zobrazit další informace o neúspěšném spuštění, včetně všech kroků v běhu ve svém stavu, vyberte neúspěšné spuštění.
 
-   ![Výstupy triggeru](./media/logic-apps-diagnosing-failures/trigger-outputs.png)
+   ![Zobrazit historii spuštění a vybrat neúspěšné spuštění](./media/logic-apps-diagnosing-failures/logic-app-runs-history.png)
 
-## <a name="review-run-history"></a>Kontrola historie spuštění
+1. Po zobrazení všech kroků v běhu rozbalte první neúspěšný krok.
 
-Každá aktivovaná aktivační událost spustí spuštění pracovního postupu. Můžete se podívat, co se stalo během tohoto spuštění, včetně stavu každého kroku v pracovním postupu, a také vstupy a výstupy pro jednotlivé kroky.
+   ![Rozbalit první neúspěšný krok](./media/logic-apps-diagnosing-failures/logic-app-run-pane.png)
 
-1. V nabídce aplikace logiky zvolte **Přehled**. V části **historie spuštění**zkontrolujte spuštění triggeru aktivovaného.
+1. Zkontrolujte vstupy neúspěšných kroků a ověřte, jestli se zobrazují podle očekávání.
 
-   > [!TIP]
-   > Pokud se nabídka aplikace logiky nezobrazí, zkuste se vrátit na řídicí panel Azure a otevřít aplikaci logiky znovu.
+1. Projděte si podrobnosti o jednotlivých krocích konkrétního spuštění. V části **historie spuštění**vyberte běh, který chcete prošetřit.
 
-   ![Historie spuštění kontroly](./media/logic-apps-diagnosing-failures/logic-app-runs-history-overview.png)
-
-   > [!TIP]
-   > * Pokud nenajdete očekávaná data, zkuste na panelu nástrojů vybrat možnost **aktualizovat** .
-   > * Pokud se v seznamu zobrazují spousty spuštění a nemůžete najít požadovanou položku, zkuste vyfiltrovat seznam.
-
-   Tady jsou možné stavy pro spuštění:
-
-   | Stav | Popis | 
-   | ------ | ----------- | 
-   | **Úspěchu** | Všechny akce byly úspěšné. <p>Pokud v určité akci došlo k nějakým chybám, tato akce v pracovním postupu tuto chybu zpracovala. | 
-   | **Se nezdařilo** | Nejméně jedna akce se nezdařila a žádné pozdější akce v pracovním postupu nebyly nastaveny pro zpracování tohoto selhání. | 
-   | **Stornován** | Pracovní postup byl spuštěn, ale přijal žádost o zrušení. | 
-   | **Instalovanou** | Pracovní postup je aktuálně spuštěný. <p>Tento stav může nastat pro omezené pracovní postupy nebo z důvodu aktuálního cenového plánu. Další informace najdete v tématu [omezení akcí na stránce s cenami](https://azure.microsoft.com/pricing/details/logic-apps/). Pokud nastavíte [diagnostické protokolování](../logic-apps/logic-apps-monitor-your-logic-apps.md), můžete také získat informace o všech událostech omezení, ke kterým dochází. | 
-   ||| 
-
-2. Projděte si podrobnosti o jednotlivých krocích konkrétního spuštění. V části **historie spuštění**vyberte běh, který chcete prošetřit.
-
-   ![Historie spuštění kontroly](./media/logic-apps-diagnosing-failures/logic-app-run-history.png)
-
-   Bez ohledu na to, zda se spuštění zdařilo nebo nebylo úspěšné, zobrazí se v zobrazení Podrobnosti o spuštění každý krok a zda byly úspěšné nebo neúspěšné.
+   ![Historie spuštění kontroly](./media/logic-apps-diagnosing-failures/logic-app-runs-history.png)
 
    ![Zobrazení podrobností o spuštění aplikace logiky](./media/logic-apps-diagnosing-failures/logic-app-run-details.png)
 
-3. Chcete-li prostudovat vstupy, výstupy a jakékoli chybové zprávy pro určitý krok, vyberte tento krok, aby se tvar rozbalí a zobrazí podrobnosti. Příklad:
+1. Chcete-li prostudovat vstupy, výstupy a jakékoli chybové zprávy pro určitý krok, vyberte tento krok, aby se tvar rozbalí a zobrazí podrobnosti. Příklad:
 
    ![Zobrazení podrobností o kroku](./media/logic-apps-diagnosing-failures/logic-app-run-details-expanded.png)
 
 ## <a name="perform-runtime-debugging"></a>Provést ladění za běhu
 
-Pro usnadnění ladění můžete do pracovního postupu přidat diagnostické kroky a zkontrolovat historii triggeru a spuštění. Můžete například přidat kroky, které používají službu [Tester Webhooku](https://webhook.site/) , abyste mohli kontrolovat požadavky HTTP a určit jejich přesnou velikost, tvar a formát.
+Pro usnadnění ladění můžete přidat diagnostické kroky do pracovního postupu aplikace logiky spolu s kontrolou triggeru a spuštění historie. Můžete například přidat kroky, které používají službu [Tester Webhooku](https://webhook.site/) , abyste mohli kontrolovat požadavky HTTP a určit jejich přesnou velikost, tvar a formát.
 
-1. Navštivte [Webhook Tester](https://webhook.site/) a zkopírujte jedinečnou VYTVOŘENOU adresu URL.
+1. Přejdete na web [Tester Webhooku](https://webhook.site/) a zkopírujete vygenerovanou jedinečnou adresu URL.
 
-2. V aplikaci logiky přidejte akci HTTP POST s obsahem textu, který chcete testovat, například výraz nebo výstup jiného kroku.
+1. V aplikaci logiky přidejte akci HTTP POST a obsah textu, který chcete otestovat, například výraz nebo výstup jiného kroku.
 
-3. Vložte adresu URL pro vašeho testera Webhooku do akce HTTP POST.
+1. Vložte adresu URL z testera Webhooku do akce HTTP POST.
 
-4. Chcete-li zjistit, jak je požadavek vytvořen při generování z modulu Logic Apps, spusťte aplikaci logiky a zobrazte podrobnosti v části Tester Webhooku.
+1. Chcete-li zjistit, jak je požadavek vytvořen při generování z modulu Logic Apps, spusťte aplikaci logiky a přečtěte si web Webhook Tester, kde najdete další podrobnosti.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Monitorování aplikace logiky](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+* [Monitorování aplikace logiky](../logic-apps/monitor-logic-apps.md)

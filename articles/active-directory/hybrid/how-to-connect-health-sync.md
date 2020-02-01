@@ -7,6 +7,7 @@ author: zhiweiwangmsft
 manager: daveba
 ms.assetid: 1dfbeaba-bda2-4f68-ac89-1dbfaf5b4015
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abed56ee64cbca8646c1aa1d24fea292aa4d8de3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 61490f75d12967f7f396d5f767f2d2e696474572
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60245478"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897203"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Sledování synchronizace Azure AD Connect pomocí služby Azure AD Connect Health
 Následující dokumentace se věnuje sledování služby Azure AD Connect (Sync) pomocí služby Azure AD Connect Health.  Informace o sledování služby AD FS pomocí služby Azure AD Connect Health najdete v článku [Používání služby Azure AD Connect Health se službou AD FS](how-to-connect-health-adfs.md). Informace o sledování služby Active Directory Domain Services pomocí služby Azure AD Connect Health najdete v článku [Používání služby Azure AD Connect Health se službou AD DS](how-to-connect-health-adds.md).
@@ -69,25 +70,25 @@ Tato funkce poskytuje sestavu chyb synchronizace, ke kterým může dojít při 
 * Sestava obsahuje chyby zaznamenané klientem synchronizace (Azure AD Connect verze 1.1.281.0 nebo vyšší).
 * Zahrnuje chyby, ke kterým došlo při poslední operaci synchronizace u synchronizačního modulu. (Export v konektoru Azure AD)
 * Agent služby Azure AD Connect Health pro synchronizaci musí mít odchozí připojení k požadovaným koncovým bodům, aby se v sestavě mohla promítnout nejnovější data.
-* Sestava se **aktualizuje každých 30 minut** pomocí dat nahraných agentem služby Azure AD Connect Health pro synchronizaci. Poskytuje následující klíčové funkce:
+* Sestava se **aktualizuje po každých 30 minutách** pomocí dat odesílaných agentem Azure AD Connect Health pro synchronizaci. Nabízí následující klíčové funkce:
 
   * Kategorizace chyb
   * Seznam chybných objektů podle kategorie
   * Všechna data o chybách na jednom místě
   * Souběžné porovnání objektů, u kterých došlo k chybě z důvodu konfliktu
-  * Stažení sestavy chyb ve formátu CSV
+  * Stažení zprávy o chybách jako CVS
 
 ### <a name="categorization-of-errors"></a>Kategorizace chyb
 Sestava zařazuje stávající chyby synchronizace do následujících kategorií:
 
-| Category | Popis |
+| Kategorie | Popis |
 | --- | --- |
 | Duplicitní atribut |Chyby vzniklé při pokusu služby Azure AD Connect o vytvoření nebo aktualizaci objektů s duplicitními hodnotami atributů ve službě Azure AD, které musí být v tenantovi jedinečné, například proxyAddresses, UserPrincipalName |
 | Neshoda dat |Chyby synchronizace vzniklé v důsledku neúspěšného měkkého párování objektů |
 | Chyba ověřování dat |Chyby vzniklé v důsledku neplatných dat, jako jsou nepodporované znaky v klíčových atributech (např. UserPrincipalName), chyby formátování, které se před zápisem do Azure AD nepodaří ověřit |
 | Změna federované domény | Chyby, když účty používají jinou federovanou doménu. |
 | Rozsáhlý atribut |Chyby vzniklé v důsledku toho, že některé atributy překračují povolenou velikost, délku nebo počet |
-| Ostatní |Všechny ostatní chyby, které nevyhovují uvedeným kategoriím Na základě zpětné vazby rozdělíme tuto kategorii do podkategorií. |
+| Jiné |Všechny ostatní chyby, které nevyhovují uvedeným kategoriím Na základě zpětné vazby rozdělíme tuto kategorii do podkategorií. |
 
 ![Souhrnná sestava chyb synchronizace](./media/how-to-connect-health-sync/errorreport01.png)
 ![Kategorie sestavy chyb synchronizace](./media/how-to-connect-health-sync/SyncErrorByTypes.PNG)

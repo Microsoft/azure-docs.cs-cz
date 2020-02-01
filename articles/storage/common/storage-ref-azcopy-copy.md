@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 0c1b09fbc425a80fe1f8d075c5a83455167073c3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b9ac15e6909498c38f618a24be6b010dc2774b07
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74029986"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905501"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -41,7 +41,7 @@ Další informace najdete v příkladech.
 - [Přenos dat pomocí AzCopy a úložiště souborů](storage-use-azcopy-files.md)
 - [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
 
-## <a name="advanced"></a>Upřesňující
+## <a name="advanced"></a>Rozšířený
 
 AzCopy automaticky detekuje typ obsahu souborů při nahrávání z místního disku na základě přípony souboru nebo obsahu (Pokud není zadáno žádné rozšíření).
 
@@ -81,7 +81,7 @@ Nahrajte celý adresář pomocí tokenu SAS:
   
 - AzCopy CP "/path/to/dir" "https://[účet]. blob. Core. Windows. NET/[Container]/[cesta/do/adresář]? [SAS] "--rekurzivní = true
 
-nebo
+– nebo –
 
 - AzCopy CP "/path/to/dir" "https://[účet]. blob. Core. Windows. NET/[Container]/[cesta/do/adresář]? [SAS] "--rekurzivní = true--Put-MD5
 
@@ -147,25 +147,25 @@ Zkopírujte všechny kontejnery objektů blob, adresáře a objekty BLOB z účt
 
 Zkopírování jednoho objektu do Blob Storage ze Amazon Web Services (AWS) S3 pomocí přístupového klíče a tokenu SAS. Nejprve nastavte proměnnou prostředí AWS_ACCESS_KEY_ID a AWS_SECRET_ACCESS_KEY pro zdroj AWS S3.
   
-- AzCopy CP "https://s3.amazonaws.com/[kontejner]/[Object]" "https://[destaccount]. blob. Core. Windows. NET/[kontejner]/[cesta/k/BLOB]? [SAS] "
+- AzCopy CP "https://s3.amazonaws.com/ [kontejner]/[Object]" "https://[destaccount]. blob. Core. Windows. NET/[kontejner]/[cesta/k/BLOB]? [SAS] "
 
 Zkopírování celého adresáře do Blob Storage z AWS S3 pomocí přístupového klíče a tokenu SAS. Nejprve nastavte proměnnou prostředí AWS_ACCESS_KEY_ID a AWS_SECRET_ACCESS_KEY pro zdroj AWS S3.
 
-- AzCopy CP "https://s3.amazonaws.com/[kontejner]/[složka]" "https://[destaccount]. blob. Core. Windows. NET/[Container]/[cesta/do/adresář]? [SAS] "--rekurzivní = true
+- AzCopy CP "https://s3.amazonaws.com/ [kontejner]/[složka]" "https://[destaccount]. blob. Core. Windows. NET/[Container]/[cesta/do/adresář]? [SAS] "--rekurzivní = true
 
 Pokud chcete lépe pochopit zástupný symbol [složka], přečtěte si prosím https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html.
 
 Zkopírujte všechny intervaly do Blob Storage z Amazon Web Services (AWS) pomocí přístupového klíče a tokenu SAS. Nejprve nastavte proměnnou prostředí AWS_ACCESS_KEY_ID a AWS_SECRET_ACCESS_KEY pro zdroj AWS S3.
 
-- AzCopy CP "https://s3.amazonaws.com/" "https://[destaccount]. blob. Core. Windows. NET? [SAS] "--rekurzivní = true
+- AzCopy CP "https://s3.amazonaws.com/ " "https://[destaccount]. blob. Core. Windows. NET? [SAS] "--rekurzivní = true
 
 Zkopírujte všechny intervaly do Blob Storage z oblasti Amazon Web Services (AWS) pomocí přístupového klíče a tokenu SAS. Nejprve nastavte proměnnou prostředí AWS_ACCESS_KEY_ID a AWS_SECRET_ACCESS_KEY pro zdroj AWS S3.
 
-- AzCopy CP "https://s3-[oblast]. amazonaws. com/" "https://[destaccount]. blob. Core. Windows. NET? [SAS] "--rekurzivní = true
+- AzCopy CP "https://s3- [oblast]. amazonaws. com/" "https://[destaccount]. blob. Core. Windows. NET? [SAS] "--rekurzivní = true
 
 Zkopírujte podmnožinu kontejnerů pomocí zástupného znaku (*) v názvu kontejneru. Stejně jako v předchozích příkladech budete potřebovat přístupový klíč a token SAS. Ujistěte se, že jste pro zdroj AWS S3 nastavili proměnnou prostředí AWS_ACCESS_KEY_ID a AWS_SECRET_ACCESS_KEY.
 
-- AzCopy CP "https://s3.amazonaws.com/[interval * název]/" "https://[destaccount]. blob. Core. Windows. NET? [SAS] "--rekurzivní = true
+- AzCopy CP "https://s3.amazonaws.com/ [interval * název]/" "https://[destaccount]. blob. Core. Windows. NET? [SAS] "--rekurzivní = true
 
 ## <a name="options"></a>Možnosti
 
@@ -217,7 +217,7 @@ Zkopírujte podmnožinu kontejnerů pomocí zástupného znaku (*) v názvu kont
 
 **--No-odhad-MIME-Type**                   Zabrání AzCopy zjištění typu obsahu založeného na příponě nebo obsahu souboru.
 
-**--přepsání** řetězce přepíše konfliktní soubory a objekty BLOB v cílovém umístění, pokud je tento příznak nastaven na hodnotu true. Možné hodnoty zahrnují "true", "false" a "prompt". (výchozí hodnota true)
+**--přepsání** řetězce přepíše konfliktní soubory a objekty BLOB v cílovém umístění, pokud je tento příznak nastaven na hodnotu true. Možné hodnoty zahrnují ' true ', ' false ', ' ifSourceNewer ' a ' prompt '. (výchozí hodnota true)
 
 **--Page-BLOB-** Page nahrání objektu blob stránky pro Azure Storage pomocí této úrovně objektu BLOB. (výchozí hodnota "none")
 
@@ -241,6 +241,6 @@ Zkopírujte podmnožinu kontejnerů pomocí zástupného znaku (*) v názvu kont
 
 **--výstupní** formát řetězce výstupu příkazu. Mezi možnosti patří: text, JSON. Výchozí hodnota je "text". (výchozí "text")
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [AzCopy](storage-ref-azcopy.md)

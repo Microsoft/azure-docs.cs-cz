@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: 433d53e09fce6d3f6b2010956da91c4b7cf91d49
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 111fab880887b54b2415d433bda2368c951381bd
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770165"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901217"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Streamování Azure Diagnostics dat v Hot Path pomocí Event Hubs
 Azure Diagnostics poskytuje flexibilní způsoby shromažďování metrik a protokolů z virtuálních počítačů cloudových služeb a výsledků přenosu do Azure Storage. Počínaje časovým rámcem, který začíná 2016. března (SDK 2,9), můžete do vlastních zdrojů dat odeslat diagnostiku a přenést data za provozu za pár sekund pomocí [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
@@ -201,7 +201,7 @@ V tomto příkladu se jímka aplikuje na protokoly a je filtrovaná jenom na tra
 ## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>Nasazení a aktualizace Cloud Services aplikace a konfigurace diagnostiky
 Visual Studio poskytuje nejjednodušší cestu k nasazení aplikace a konfigurace jímky Event Hubs. Pokud chcete soubor zobrazit a upravit, otevřete soubor *. wadcfgx* v aplikaci Visual Studio, upravte ho a uložte. Cesta je **projekt cloudové služby** > **role** >  **(roleName)**  > **Diagnostics. wadcfgx**.  
 
-V tomto okamžiku všechny akce nasazení a nasazení v aplikaci Visual Studio, Visual Studio Team System a všechny příkazy nebo skripty, které jsou založené na MSBuild a používají **parametr/t: publikovat** , zahrnují v procesu balení soubor *. wadcfgx* . Nasazení a aktualizace navíc nasadí soubor do Azure pomocí vhodného rozšíření agenta Azure Diagnostics na vašich virtuálních počítačích.
+V tomto okamžiku všechny akce aktualizace nasazení a nasazení v aplikaci Visual Studio, Visual Studio Team System a všechny příkazy nebo skripty, které jsou založené na MSBuild a používají `/t:publish` cíl, zahrnují soubor *. wadcfgx* v procesu balení. Nasazení a aktualizace navíc nasadí soubor do Azure pomocí vhodného rozšíření agenta Azure Diagnostics na vašich virtuálních počítačích.
 
 Po nasazení aplikace a konfigurace Azure Diagnostics se na řídicím panelu centra událostí okamžitě zobrazí aktivita. To znamená, že jste připraveni přejít k zobrazení dat pro cestu k Hot-PATH v nástroji pro naslouchání nebo pro analýzu podle vašeho výběru.  
 
@@ -215,13 +215,72 @@ Na následujícím obrázku Event Hubs řídicí panel zobrazovat v pořádku od
 >
 
 ## <a name="view-hot-path-data"></a>Zobrazení dat za horkou cestu
-Jak bylo popsáno dříve, existuje mnoho případů použití pro příjem a zpracování dat Event Hubs.
+Jak bylo popsáno dříve, existuje mnoho případů použití pro příjem a zpracování dat Event Hubs. Jedním jednoduchým přístupem je vytvořit malou testovací konzolovou aplikaci, která bude naslouchat centru událostí a tisknout výstupní datový proud. 
 
-Jedním jednoduchým přístupem je vytvořit malou testovací konzolovou aplikaci, která bude naslouchat centru událostí a tisknout výstupní datový proud. Můžete umístit následující kód, který je podrobněji vysvětlen v tématu [Začínáme s Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)), v konzolové aplikaci.  
+#### <a name="net-sdk-latest-500-or-latertablatest"></a>[Nejnovější rozhraní .NET SDK (5.0.0 nebo novější)](#tab/latest)
+Můžete umístit následující kód, který je podrobněji vysvětlen v tématu [Začínáme s Event Hubs](../../event-hubs/get-started-dotnet-standard-send-v2.md)), v konzolové aplikaci.
 
-Všimněte si, že Konzolová aplikace musí zahrnovat [balíček NuGet pro procesor událostí](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/).  
+```csharp
+using System;
+using System.Text;
+using System.Threading.Tasks;
+using Azure.Storage.Blobs;
+using Azure.Messaging.EventHubs;
+using Azure.Messaging.EventHubs.Processor;
+namespace Receiver1204
+{
+    class Program
+    {
+        private static readonly string ehubNamespaceConnectionString = "EVENT HUBS NAMESPACE CONNECTION STRING";
+        private static readonly string eventHubName = "EVENT HUB NAME";
+        private static readonly string blobStorageConnectionString = "AZURE STORAGE CONNECTION STRING";
+        private static readonly string blobContainerName = "BLOB CONTAINER NAME";
 
-Nezapomeňte nahradit hodnoty v lomených závorkách **Hlavní** funkce hodnotami vašich prostředků.   
+        static async Task Main()
+        {
+            // Read from the default consumer group: $Default
+            string consumerGroup = EventHubConsumerClient.DefaultConsumerGroupName;
+
+            // Create a blob container client that the event processor will use 
+            BlobContainerClient storageClient = new BlobContainerClient(blobStorageConnectionString, blobContainerName);
+
+            // Create an event processor client to process events in the event hub
+            EventProcessorClientOptions options = new EventProcessorClientOptions { }
+            EventProcessorClient processor = new EventProcessorClient(storageClient, consumerGroup, ehubNamespaceConnectionString, eventHubName);
+
+            // Register handlers for processing events and handling errors
+            processor.ProcessEventAsync += ProcessEventHandler;
+            processor.ProcessErrorAsync += ProcessErrorHandler;
+
+            // Start the processing
+            await processor.StartProcessingAsync();
+
+            // Wait for 10 seconds for the events to be processed
+            await Task.Delay(TimeSpan.FromSeconds(10));
+
+            // Stop the processing
+            await processor.StopProcessingAsync();
+        }
+
+        static Task ProcessEventHandler(ProcessEventArgs eventArgs)
+        {
+            Console.WriteLine("\tRecevied event: {0}", Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray()));
+            return Task.CompletedTask;
+        }
+
+        static Task ProcessErrorHandler(ProcessErrorEventArgs eventArgs)
+        {
+            Console.WriteLine($"\tPartition '{ eventArgs.PartitionId}': an unhandled exception was encountered. This was not expected to happen.");
+            Console.WriteLine(eventArgs.Exception.Message);
+            return Task.CompletedTask;
+        }
+    }
+}
+```
+
+#### <a name="net-sdk-legacy-410-or-earliertablegacy"></a>[.NET SDK starší verze (4.1.0 nebo starší)](#tab/legacy)
+
+Můžete umístit následující kód, který je podrobněji vysvětlen v tématu [Začínáme s Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)), v konzolové aplikaci. Všimněte si, že Konzolová aplikace musí zahrnovat [balíček NuGet pro procesor událostí](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/). Nezapomeňte nahradit hodnoty v lomených závorkách **Hlavní** funkce hodnotami vašich prostředků.   
 
 ```csharp
 //Console application code for EventHub test client
@@ -303,6 +362,7 @@ namespace EventHubListener
     }
 }
 ```
+---
 
 ## <a name="troubleshoot-event-hubs-sinks"></a>Řešení potíží s Event Hubsmi jímkami
 * Centrum událostí nezobrazuje příchozí nebo odchozí aktivitu události podle očekávání.
@@ -310,7 +370,7 @@ namespace EventHubListener
     Ověřte, že se vaše centrum událostí úspěšně zřídilo. Všechny informace o připojení v oddílu **PrivateConfig** v souboru *. wadcfgx* se musí shodovat s hodnotami prostředku, jak je vidět na portálu. Ujistěte se, že máte definované zásady SAS (v příkladu "SendRule") na portálu a že je udělené oprávnění *Odeslat* .  
 * Po aktualizaci přestane centrum událostí zobrazovat příchozí nebo odchozí aktivitu události.
 
-    Nejdřív se ujistěte, že je centrum událostí a informace o konfiguraci správné, jak je vysvětleno výše. V některých případech se **PrivateConfig** resetuje v aktualizaci nasazení. Doporučenou opravou je udělat v projektu všechny změny v *. wadcfgx* a pak odeslat úplnou aktualizaci aplikace. Pokud to není možné, ujistěte se, že aktualizace diagnostiky nahraje úplný **PrivateConfig** , který obsahuje klíč SAS.  
+    Nejdřív se ujistěte, že jsou informace o centru událostí a konfiguraci správné, jak je vysvětleno výše. V některých případech se **PrivateConfig** resetuje v aktualizaci nasazení. Doporučenou opravou je udělat v projektu všechny změny v *. wadcfgx* a pak odeslat úplnou aktualizaci aplikace. Pokud to není možné, ujistěte se, že aktualizace diagnostiky nahraje úplný **PrivateConfig** , který obsahuje klíč SAS.  
 * Vyzkoušel jsem návrhy a centrum událostí stále nepracuje.
 
     Zkuste hledat v tabulce Azure Storage, která obsahuje protokoly a chyby pro Azure Diagnostics sebe sama: **WADDiagnosticInfrastructureLogsTable**. Jednou z možností je použít pro připojení k tomuto účtu úložiště nástroj, například [Průzkumník služby Azure Storage](https://www.storageexplorer.com) , zobrazit tuto tabulku a přidat dotaz pro časové razítko za posledních 24 hodin. Pomocí tohoto nástroje můžete exportovat soubor. csv a otevřít ho v aplikaci, jako je Microsoft Excel. Aplikace Excel usnadňuje hledání řetězců volacích karet, jako je například **EventHubs**, k zobrazení informace o tom, jaká chyba je hlášena.  
@@ -386,7 +446,7 @@ Doplňkový *ServiceConfiguration. Cloud. cscfg* pro tento příklad vypadá pod
 </ServiceConfiguration>
 ```
 
-Ekvivalentní nastavení JSON pro virtuální počítače je následující:
+Ekvivalentní nastavení JSON pro virtuální počítače jsou následující:
 
 Veřejné nastavení:
 ```JSON

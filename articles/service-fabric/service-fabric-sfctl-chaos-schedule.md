@@ -3,14 +3,14 @@ title: Plán Azure Service Fabric CLI – sfctl chaos
 description: Přečtěte si o sfctl rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro plánování chaos.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: bff83e1d25d04f91611f5bea6c69dfcd299af04c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 29b365c48e405830e238945f1d94156f477c15b4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639169"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906186"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 Získejte a nastavte plán chaos.
@@ -71,9 +71,10 @@ Chaos automaticky naplánuje spuštění na základě plánu chaos. Plán chaos 
 
 ### <a name="examples"></a>Příklady
 
-Následující příkaz nastaví plán (za předpokladu, že má aktuální plán verzi 0), která začíná na 2016-01-01 a končí na 2038-01-01, který spouští chaos 24 hodin dne, 7 dní v týdnu. Chaos bude pro daný čas naplánován na cluster.
-
-    sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z" --expiry-date-utc "2038-01-01T00:00:00.000Z"
+Následující příkaz nastaví plán (za předpokladu, že má aktuální plán verzi 0), která začíná na 2016-01-01 a končí na 2038-01-01, který spouští chaos 24 hodin dne, 7 dní v týdnu.
+Chaos bude pro daný čas naplánován na cluster.
+```
+sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z" --expiry-date-utc "2038-01-01T00:00:00.000Z"
     --chaos-parameters-dictionary
     [
     {
@@ -134,6 +135,8 @@ Následující příkaz nastaví plán (za předpokladu, že má aktuální plá
         ]
     }
     ]
+```
+
 
 
 ## <a name="next-steps"></a>Další kroky

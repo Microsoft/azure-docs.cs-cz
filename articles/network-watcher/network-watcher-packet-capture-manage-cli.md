@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 7eea4c05a48c5e055766f942cc44ee4cf189de5d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f83fb2377f2db1deaed453131a61e26677b3d87d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840857"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896399"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>Správa zachytávání paketů pomocí Azure Network Watcher pomocí Azure CLI
 
@@ -52,7 +52,7 @@ V tomto článku se předpokládá, že máte následující zdroje:
 
 ### <a name="step-1"></a>Krok 1
 
-Spuštěním rutiny `az vm extension set` nainstalujte agenta zachytávání paketů do hostovaného virtuálního počítače.
+Spuštěním příkazu `az vm extension set` nainstalujte agenta zachytávání paketů do hostovaného virtuálního počítače.
 
 Pro virtuální počítače s Windows:
 
@@ -63,15 +63,21 @@ az vm extension set --resource-group resourceGroupName --vm-name virtualMachineN
 Pro virtuální počítače se systémem Linux:
 
 ```azurecli
-az vm extension set --resource-group resourceGroupName --vm-name virtualMachineName --publisher Microsoft.Azure.NetworkWatcher --name NetworkWatcherAgentLinux--version 1.4
+az vm extension set --resource-group resourceGroupName --vm-name virtualMachineName --publisher Microsoft.Azure.NetworkWatcher --name NetworkWatcherAgentLinux --version 1.4
 ```
 
 ### <a name="step-2"></a>Krok 2
 
-Abyste měli jistotu, že je agent nainstalovaný, spusťte rutinu `vm extension show` a předejte ji do skupiny prostředků a názvu virtuálního počítače. Zkontrolujte výsledný seznam a ujistěte se, že je agent nainstalovaný.
+Chcete-li zajistit, aby byl agent nainstalován, spusťte příkaz `vm extension show` a předejte mu skupinu prostředků a název virtuálního počítače. Zkontrolujte výsledný seznam a ujistěte se, že je agent nainstalovaný.
 
+Pro virtuální počítače s Windows:
 ```azurecli
 az vm extension show --resource-group resourceGroupName --vm-name virtualMachineName --name NetworkWatcherAgentWindows
+```
+
+Pro virtuální počítače se systémem Linux:
+```azurecli
+az vm extension show --resource-group resourceGroupName --vm-name virtualMachineName --name AzureNetworkWatcherExtension
 ```
 
 Následující ukázka je příkladem odpovědi na spuštění `az vm extension show`
@@ -100,31 +106,24 @@ Následující ukázka je příkladem odpovědi na spuštění `az vm extension 
 
 Po dokončení předchozích kroků se na virtuálním počítači nainstaluje agent zachytávání paketů.
 
+
 ### <a name="step-1"></a>Krok 1
-
-Dalším krokem je načtení instance Network Watcher. Do rutiny `az network watcher show` v kroku 4 se předává název TNelze načíst Network Watcher.
-
-```azurecli
-az network watcher show --resource-group resourceGroup --name networkWatcherName
-```
-
-### <a name="step-2"></a>Krok 2
 
 Načtěte účet úložiště. Tento účet úložiště se používá k uložení souboru zachycení paketů.
 
 ```azurecli
-azure storage account list
+az storage account list
 ```
 
-### <a name="step-3"></a>Krok 3
+### <a name="step-2"></a>Krok 2
 
-Filtry lze použít k omezení dat uložených zachytáváním paketů. Následující příklad nastaví zachytávání paketů s několika filtry.  První tři filtry shromažďují odchozí přenosy TCP pouze z místních IP 10.0.0.3 na cílové porty 20, 80 a 443.  Poslední filtr shromažďuje jenom přenosy UDP.
+V tuto chvíli jste připraveni vytvořit zachytávání paketů.  Nejdřív se podíváme na parametry, které můžete chtít nakonfigurovat. Filtry jsou jedním z těchto parametrů, které lze použít k omezení dat uložených zachytáváním paketů. Následující příklad nastaví zachytávání paketů s několika filtry.  První tři filtry shromažďují odchozí přenosy TCP pouze z místních IP 10.0.0.3 na cílové porty 20, 80 a 443.  Poslední filtr shromažďuje jenom přenosy UDP.
 
 ```azurecli
 az network watcher packet-capture create --resource-group {resourceGroupName} --vm {vmName} --name packetCaptureName --storage-account {storageAccountName} --filters "[{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"20\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"80\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"443\"},{\"protocol\":\"UDP\"}]"
 ```
 
-Následující příklad je očekávaný výstup z spuštění rutiny `az network watcher packet-capture create`.
+Následující příklad je očekávaným výstupem ze spuštění příkazu `az network watcher packet-capture create`.
 
 ```json
 {
@@ -179,13 +178,13 @@ roviders/microsoft.compute/virtualmachines/{vmName}/2017/05/25/packetcapture_16_
 
 ## <a name="get-a-packet-capture"></a>Získání zachytávání paketů
 
-Spuštění rutiny `az network watcher packet-capture show-status` načte stav aktuálně spuštěného nebo dokončeného zachytávání paketů.
+Spuštění příkazu `az network watcher packet-capture show-status` načte stav aktuálně spuštěného nebo dokončeného zachytávání paketů.
 
 ```azurecli
 az network watcher packet-capture show-status --name packetCaptureName --location {networkWatcherLocation}
 ```
 
-Následující příklad je výstupem z rutiny `az network watcher packet-capture show-status`. Následující příklad je po zastavení zachycení s důvoduZastavení TimeExceeded. 
+Následující příklad je výstupem z příkazu `az network watcher packet-capture show-status`. Následující příklad je po zastavení zachycení s důvoduZastavení TimeExceeded. 
 
 ```
 {
@@ -204,14 +203,14 @@ cketCaptures/packetCaptureName",
 
 ## <a name="stop-a-packet-capture"></a>Zastavení zachytávání paketů
 
-Spuštěním rutiny `az network watcher packet-capture stop`, pokud relace zachycení probíhá, je zastavena.
+Spuštěním příkazu `az network watcher packet-capture stop`, pokud relace zachycení probíhá, je zastavena.
 
 ```azurecli
 az network watcher packet-capture stop --name packetCaptureName --location westcentralus
 ```
 
 > [!NOTE]
-> Rutina nevrátí žádnou odpověď, pokud byla spuštěna v aktuálně spuštěné relaci zachycení nebo existující relaci, která je již zastavena.
+> Příkaz nevrátí žádnou odpověď, pokud je spuštěn v aktuálně spuštěné relaci zachycení nebo existující relaci, která je již zastavena.
 
 ## <a name="delete-a-packet-capture"></a>Odstranění zachytávání paketů
 

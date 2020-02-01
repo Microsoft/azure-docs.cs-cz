@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b606566fa2b8154eb9ac8fda97d3c3ae81cd3447
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 4b5ac2e899de33614fa30b1f4baf0e85efec26bb
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767427"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898854"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -194,7 +194,7 @@ Nepoužívat. Tato role je automaticky přiřazena ke službě Azure AD Connect 
 
 ### <a name="directory-writersdirectory-writers-permissions"></a>[Zapisovače adresářů](#directory-writers-permissions)
 
-Toto je starší role, která má být přiřazena aplikacím, které nepodporují [rámec souhlasu](../develop/quickstart-v1-integrate-apps-with-azure-ad.md). Neměl by být přiřazený žádnému uživateli.
+Toto je starší role, která má být přiřazena aplikacím, které nepodporují [rámec souhlasu](../develop/quickstart-register-app.md). Neměl by být přiřazený žádnému uživateli.
 
 ### <a name="dynamics-365-administrator--crm-administratorcrm-service-administrator-permissions"></a>[Správce Dynamics 365/správce CRM](#crm-service-administrator-permissions)
 

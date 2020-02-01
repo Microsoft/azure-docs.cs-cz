@@ -9,12 +9,12 @@ ms.author: mbullwin
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e30c4812ad11d7b39197062da30c90b2d8b1649b
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: c851978ea1b5af3006f1835f022c30aa7e7128f7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281066"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899077"
 ---
 # <a name="sampling-in-application-insights"></a>Vzorkování ve službě Application Insights
 
@@ -41,7 +41,7 @@ Následující tabulka shrnuje typy vzorkování dostupné pro každou sadu SDK 
 | Funkce Azure | [Ano (ve výchozím nastavení zapnuto)](#configuring-adaptive-sampling-for-azure-functions) | Ne | Jenom v případě, že se neplatí žádné jiné vzorkování |
 | Java | Ne | [Ano](#configuring-fixed-rate-sampling-for-java-applications) | Jenom v případě, že se neplatí žádné jiné vzorkování |
 | Python | Ne | [Ano](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Jenom v případě, že se neplatí žádné jiné vzorkování |
-| Všechny ostatní | Ne | Ne | [Ano](#ingestion-sampling) |
+| Všichni ostatní | Ne | Ne | [Ano](#ingestion-sampling) |
 
 > [!NOTE]
 > Informace na většině této stránky se vztahují na aktuální verze sad Application Insights SDK. Informace o starších verzích sad SDK [najdete v části níže](#older-sdk-versions).
@@ -531,7 +531,7 @@ Přesnost aproximace je převážně závislá na nakonfigurované procentuáln�
 
 *Existují určité vzácné události, které vždycky chcete vidět. Jak se dají dostat za modul vzorkování?*
 
-* Nejlepším způsobem, jak toho dosáhnout, je napsat vlastní [TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer), který nastaví `SamplingPercentage` na 100 pro položku telemetrie, kterou chcete uchovat, jak je znázorněno níže. Vzhledem k tomu, že je zaručeno spouštění inicializátorů před procesory telemetrie (včetně vzorkování), zajistí to, že všechny techniky vzorkování budou tuto položku ignorovat z jakéhokoli hlediska vzorkování.
+* Nejlepším způsobem, jak toho dosáhnout, je napsat vlastní [TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer), který nastaví `SamplingPercentage` na 100 pro položku telemetrie, kterou chcete uchovat, jak je znázorněno níže. Vzhledem k tomu, že je zaručeno spouštění inicializátorů před procesory telemetrie (včetně vzorkování), zajistí to, že všechny techniky vzorkování budou tuto položku ignorovat z jakéhokoli hlediska vzorkování. Vlastní Inicializátory telemetrie jsou k dispozici v sadě ASP.NET SDK, sadě ASP.NET Core SDK, sadě JavaScript SDK a sadě Java SDK. Můžete například nakonfigurovat inicializátor telemetrie pomocí sady ASP.NET SDK:
 
     ```csharp
     public class MyTelemetryInitializer : ITelemetryInitializer

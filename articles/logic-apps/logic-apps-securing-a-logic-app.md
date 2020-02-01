@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 4f8c20534cdd5abdf5ae97bb097238cf508480c7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 73b8a559eddec51dbc01f1d55f70414360ff2956
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843544"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898430"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Zabezpečený přístup a data v Azure Logic Apps
 
@@ -324,7 +324,7 @@ Tady je několik [důležitých informací, které](#obfuscation-considerations)
 
 #### <a name="considerations-when-hiding-inputs-and-outputs"></a>Předpoklady při skrývání vstupů a výstupů
 
-* Když zabezpečíte vstupy nebo výstupy na triggeru nebo akci, Logic Apps neodesílají zabezpečená data do Azure Log Analytics. Do této aktivační události nebo akce pro monitorování nemůžete také přidat [sledované vlastnosti](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details) .
+* Když zabezpečíte vstupy nebo výstupy na triggeru nebo akci, Logic Apps neodesílají zabezpečená data do Azure Log Analytics. Do této aktivační události nebo akce pro monitorování nemůžete také přidat [sledované vlastnosti](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data) .
 
 * [Rozhraní Logic Apps API pro zpracování historie pracovního postupu](https://docs.microsoft.com/rest/api/logic/) nevrací zabezpečené výstupy.
 
@@ -806,7 +806,7 @@ Pokud je k dispozici možnost [spravovaná identita](../active-directory/managed
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Automatizace nasazení pro Azure Logic Apps](logic-apps-azure-resource-manager-templates-overview.md)  
-* [Monitorování aplikací logiky](logic-apps-monitor-your-logic-apps.md)  
-* [Diagnostika chyb a problémů aplikace logiky](logic-apps-diagnosing-failures.md)  
-* [Automatizace nasazení aplikace logiky](logic-apps-azure-resource-manager-templates-overview.md)
+* [Automatizace nasazení pro Azure Logic Apps](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)  
+* [Monitorování Logic Apps](../logic-apps/monitor-logic-apps-log-analytics.md)  
+* [Diagnostika chyb a problémů aplikace logiky](../logic-apps/logic-apps-diagnosing-failures.md)  
+* [Automatizace nasazení aplikace logiky](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)

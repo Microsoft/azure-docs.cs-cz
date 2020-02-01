@@ -3,41 +3,33 @@ title: 'Rychlý Start: knihovna úložiště objektů BLOB v Azure V12-JavaScrip
 description: V tomto rychlém startu se dozvíte, jak pomocí klientské knihovny Azure Blob Storage verze 12 pro JavaScript vytvořit kontejner a objekt BLOB v úložišti objektů BLOB (objekt). Dále se dozvíte, jak stáhnout objekt blob do místního počítače a jak zobrazit seznam všech objektů blob, které jsou v kontejneru.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/19/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: c8473bff3b6e7d2079bb202befc23e1ada3791eb
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: eabfefbf28b54e4a0a025698f8da48518e7df9bf
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970252"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906462"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-for-javascript"></a>Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure V12 pro JavaScript
+# <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>Rychlý Start: Správa objektů BLOB pomocí sady JavaScript V12 SDK v Node. js
 
-Začněte s klientskou knihovnou V12 Azure Blob Storage pro JavaScript. Azure Blob Storage je řešení úložiště objektů Microsoftu pro cloud. Postupujte podle kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy. Úložiště objektů blob je optimalizované pro ukládání velkých objemů nestrukturovaných dat.
-
-> [!NOTE]
-> Informace o tom, jak začít s předchozí verzí sady SDK, najdete v tématu [rychlý Start: Klientská knihovna pro Azure Blob Storage pro JavaScript](storage-quickstart-blobs-nodejs-legacy.md).
-
-Použijte klientskou knihovnu služby Azure Blob Storage V12 pro JavaScript:
-
-* Vytvoření kontejneru
-* Nahrání objektu blob do Azure Storage
-* Výpis všech objektů BLOB v kontejneru
-* Stažení objektu blob do místního počítače
-* Odstranění kontejneru
+V tomto rychlém startu se naučíte spravovat objekty BLOB pomocí Node. js. Objekty blob jsou objekty, které mohou obsahovat velké objemy textových nebo binárních dat, včetně obrázků, dokumentů, datových proudů médií a dat archivu. Můžete nahrávat, stahovat a vypisovat objekty BLOB a vytvářet a odstraňovat kontejnery.
 
 [Referenční dokumentace k rozhraní API](/javascript/api/@azure/storage-blob) |  | balíčku [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob) [(Správce balíčků Node)](https://www.npmjs.com/package/@azure/storage-blob) | [ukázky](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)
 
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
-
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* Účet úložiště Azure – [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* Aktuální [Node. js](https://nodejs.org/en/download/) pro váš operační systém.
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Účet služby Azure Storage. [Vytvoření účtu úložiště](../common/storage-account-create.md)
+- [Node.js](https://nodejs.org/en/download/).
+
+> [!NOTE]
+> Informace o tom, jak začít s předchozí verzí sady SDK, najdete v tématu [rychlý Start: Správa objektů BLOB pomocí sady JavaScript v10 za účelem SDK v Node. js](storage-quickstart-blobs-nodejs-legacy.md).
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="setting-up"></a>Nastavení
 
@@ -96,7 +88,7 @@ Z adresáře projektu:
 
 1. Otevřít další nový textový soubor v editoru kódu
 1. Přidání volání `require` pro načtení modulů Azure a Node. js
-1. Vytvoření struktury pro program, včetně velmi základního zpracování výjimek
+1. Vytvoření struktury pro program, včetně základního zpracování výjimek
 
     Zde je kód:
 
@@ -118,7 +110,7 @@ Z adresáře projektu:
 
 ## <a name="object-model"></a>Objektový model
 
-Úložiště objektů BLOB v Azure je optimalizované pro ukládání obrovských objemů nestrukturovaných dat. Jde o data, která nevyhovují konkrétnímu datovému modelu nebo definici, například textová nebo binární data. Úložiště objektů BLOB nabízí tři typy prostředků:
+Úložiště objektů BLOB v Azure je optimalizované pro ukládání obrovských objemů nestrukturovaných dat. Nestrukturovaná data jsou data, která nevyhovují konkrétnímu datovému modelu nebo definici, jako jsou textová nebo binární data. Úložiště objektů BLOB nabízí tři typy prostředků:
 
 * Účet úložiště
 * Kontejner v účtu úložiště
@@ -314,7 +306,7 @@ Projděte si kód v ladicím programu a ověřte [Azure Portal](https://portal.a
 
 V tomto rychlém startu jste zjistili, jak nahrávat, stahovat a vypisovat objekty BLOB pomocí JavaScriptu.
 
-Kurzy, ukázky, rychlé starty a další dokumentace najdete na webu:
+Výukové programy, ukázky, rychlé starty a další dokumentaci najdete na webu:
 
 > [!div class="nextstepaction"]
 > [Dokumentace k Azure pro JavaScript](/azure/javascript/)

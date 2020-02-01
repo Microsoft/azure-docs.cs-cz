@@ -3,14 +3,14 @@ title: Cluster Azure Service Fabric CLI – sfctl
 description: Přečtěte si o sfctl rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro správu clusterů.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 807457f3edaef8e0edcdbf53b482e2e4ffee174c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 007ad6f59f0ce304db579f4faa1bb95611a93a37
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639152"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906148"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
 Umožňuje vybrat, spravovat a provozovat clustery Service Fabric.
@@ -28,7 +28,7 @@ Umožňuje vybrat, spravovat a provozovat clustery Service Fabric.
 | provision | Zřídit kód nebo konfigurační balíčky Service Fabricho clusteru. |
 | obnovení systému | Určuje Cluster Service Fabric, který by se měl pokusit obnovit systémové služby, které jsou aktuálně zablokované ve ztrátě kvora. |
 | report-health | Odešle zprávu o stavu v clusteru Service Fabric. |
-| vyberte | Připojí se ke koncovému bodu Service Fabric clusteru. |
+| vybrali | Připojí se ke koncovému bodu Service Fabric clusteru. |
 | Zobrazit připojení | Zobrazit, ke kterému Service Fabric clusteru je tato instance sfctl připojena. |
 | unprovision | Zrušení zřízení kódu nebo konfiguračních balíčků Service Fabricho clusteru. |
 | upgrade | Spusťte upgrade kódu nebo konfigurační verze Service Fabricho clusteru. |
@@ -92,8 +92,8 @@ Pomocí EventsHealthStateFilter můžete filtrovat kolekci událostí stavu hlá
 | --- | --- |
 | --applications-health-state-filter | Umožňuje filtrování objektů stavu aplikace vrácených ve výsledku dotazu na stav clusteru na základě jejich stavu. Možné hodnoty pro tento parametr zahrnují celočíselnou hodnotu získanou ze členů nebo bitové operace na členech výčtu HealthStateFilter. Vrátí se pouze aplikace, které odpovídají filtru. Všechny aplikace se používají k vyhodnocení agregovaného stavu. Pokud tento parametr nezadáte, vrátí se všechny položky. Hodnoty stavu jsou výčty založené na příznak, takže hodnota by mohla být kombinací těchto hodnot získaných pomocí bitového operátoru OR. Například pokud je zadaná hodnota 6, pak se vrátí stav aplikací s hodnotou OK (2) a upozornění (4).  <br> -Výchozí-výchozí hodnota. Odpovídá jakémukoli elementu. Hodnota je nula.  <br> -None-Filter, který neodpovídá žádné hodnotě elementu. Používá se k tomu, aby se v dané kolekci stavů nevracely žádné výsledky. Hodnota je 1.  <br> -OK – filtr, který odpovídá zadanému vstupu s hodnotou podstavu OK. Hodnota je 2.  <br> -Warning-Filter, který odpovídá vstupu s upozorněním na podstavovou hodnotu. Hodnota je 4.  <br> – Filtr chyb, který odpovídá zadanému vstupu s chybou hodnoty elementu stav Hodnota je 8.  <br> -All – filtr, který odpovídá zadanému vstupu s jakoukoli hodnotou elementu. Hodnota je 65535. |
 | --events-health-state-filter | Umožňuje filtrovat kolekci objektů HealthEvent vrácených na základě stavu. Možné hodnoty pro tento parametr zahrnují celočíselnou hodnotu jednoho z následujících stavů. Vrátí se pouze události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaného stavu. Pokud tento parametr nezadáte, vrátí se všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota by mohla být kombinací těchto hodnot získána pomocí bitového operátoru OR. Pokud je například zadaná hodnota 6, budou vráceny všechny události s hodnotou ' OK (2) a upozornění (4).  <br> -Výchozí-výchozí hodnota. Odpovídá jakémukoli elementu. Hodnota je nula.  <br> -None-Filter, který neodpovídá žádné hodnotě elementu. Používá se k tomu, aby se v dané kolekci stavů nevracely žádné výsledky. Hodnota je 1.  <br> -OK – filtr, který odpovídá zadanému vstupu s hodnotou podstavu OK. Hodnota je 2.  <br> -Warning-Filter, který odpovídá vstupu s upozorněním na podstavovou hodnotu. Hodnota je 4.  <br> – Filtr chyb, který odpovídá zadanému vstupu s chybou hodnoty elementu stav Hodnota je 8.  <br> -All – filtr, který odpovídá zadanému vstupu s jakoukoli hodnotou elementu. Hodnota je 65535. |
-| --Exclude-Health-Statistics | Určuje, zda mají být v rámci výsledku dotazu vráceny statistiky stavu. Ve výchozím nastavení má hodnotu false. Statistika zobrazuje počet podřízených entit ve stavu OK, varování a chyba. |
-| --include-System-Application-Health-Statistics | Určuje, jestli by statistiky stavu měly zahrnovat statistiky o stavu aplikace\: Fabric/. Ve výchozím nastavení má hodnotu false. Pokud je IncludeSystemApplicationHealthStatistics nastavené na true, Statistika stavu zahrnuje entity, které patří do aplikace Fabric\:/aplikace. V opačném případě výsledek dotazu zahrnuje statistiky stavu pouze pro uživatelské aplikace. Aby se tento parametr mohl použít, musí být do výsledku dotazu zahrnuté statistiky stavu. |
+| --Exclude-Health-Statistics | Určuje, zda mají být v rámci výsledku dotazu vráceny statistiky stavu. Výchozí hodnota je false. Statistika zobrazuje počet podřízených entit ve stavu OK, varování a chyba. |
+| --include-System-Application-Health-Statistics | Určuje, jestli by statistiky stavu měly zahrnovat statistiky o stavu aplikace\:Fabric/. Výchozí hodnota je false. Pokud je IncludeSystemApplicationHealthStatistics nastavené na true, Statistika stavu zahrnuje entity, které patří do aplikace Fabric\:/aplikace. V opačném případě výsledek dotazu zahrnuje statistiky stavu pouze pro uživatelské aplikace. Aby se tento parametr mohl použít, musí být do výsledku dotazu zahrnuté statistiky stavu. |
 | --nodes-health-state-filter | Umožňuje filtrování objektů stavu uzlu vrácených ve výsledku dotazu na stav clusteru na základě jejich stavu. Možné hodnoty pro tento parametr zahrnují celočíselnou hodnotu jednoho z následujících stavů. Vrátí se pouze uzly, které odpovídají filtru. Všechny uzly slouží k vyhodnocení agregovaného stavu. Pokud tento parametr nezadáte, vrátí se všechny položky. Hodnoty stavu jsou výčty založené na příznak, takže hodnota by mohla být kombinací těchto hodnot získaných pomocí bitového operátoru OR. Například pokud je zadaná hodnota 6, potom se vrátí stav uzlů s hodnotou OK (2) a upozornění (4).  <br> -Výchozí-výchozí hodnota. Odpovídá jakémukoli elementu. Hodnota je nula.  <br> -None-Filter, který neodpovídá žádné hodnotě elementu. Používá se k tomu, aby se v dané kolekci stavů nevracely žádné výsledky. Hodnota je 1.  <br> -OK – filtr, který odpovídá zadanému vstupu s hodnotou podstavu OK. Hodnota je 2.  <br> -Warning-Filter, který odpovídá vstupu s upozorněním na podstavovou hodnotu. Hodnota je 4.  <br> – Filtr chyb, který odpovídá zadanému vstupu s chybou hodnoty elementu stav Hodnota je 8.  <br> -All – filtr, který odpovídá zadanému vstupu s jakoukoli hodnotou elementu. Hodnota je 65535. |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí\: 60. |
 
@@ -235,7 +235,7 @@ Odešle zprávu o stavu v clusteru Service Fabric. Sestava musí obsahovat infor
 | --Remove-when-vypršela platnost | Hodnota, která označuje, zda je sestava odebrána z Health Store v případě jejího platnosti. <br><br> Pokud je nastavená hodnota true, sestava se po vypršení platnosti odebere z Health Store. Pokud je nastavena hodnota false, bude sestava považována za chybu, pokud vypršela její platnost. Hodnota této vlastnosti je ve výchozím nastavení false. Při pravidelné sestavě klientů by měly být nastavené RemoveWhenExpired na hodnotu false (výchozí). Tímto způsobem má zpravodaj problémy (například zablokování) a nemůže hlásit, entita je vyhodnocena při vypršení platnosti sestavy stavu. Tím se označí entita jako v chybovém stavu. |
 | --pořadové číslo | Pořadové číslo pro tuto sestavu stavu jako číselný řetězec. <br><br> Číslo sekvence sestavy používá Health Store ke zjišťování zastaralých sestav. Není-li tento parametr zadán, je číslo sekvence automaticky generováno klientem stavu při přidání sestavy. |
 | --Timeout-t | Výchozí\: 60. |
-| --ttl | Doba, po kterou je tato sestava stavu platná. Toto pole používá formát ISO8601 k zadání doby trvání. <br><br> Při pravidelné sestavě klientů by měly odesílat sestavy s vyšší frekvencí, než je čas do provozu. Pokud klienti nahlásí přechod, můžou nastavit čas příliš živý na nekonečné. Po vypršení časového limitu životnosti události stavu, která obsahuje informace o stavu, se buď odeberou z Health Store, pokud je RemoveWhenExpired true, nebo se vyhodnotí při chybě, pokud RemoveWhenExpired false. Pokud není zadaný, hodnota TTL (Time to Live) nastaví nekonečnou hodnotu. |
+| --ttl | Doba, po kterou je tato sestava stavu platná. Toto pole používá formát ISO8601 k zadání doby trvání. <br><br> Při pravidelné sestavě klientů by měly odesílat sestavy s vyšší frekvencí, než je čas do provozu. Pokud klienti hlásí přechod, můžou nastavit čas na živého na nekonečné. Po vypršení časového limitu životnosti události stavu, která obsahuje informace o stavu, se buď odeberou z Health Store, pokud je RemoveWhenExpired true, nebo se vyhodnotí při chybě, pokud RemoveWhenExpired false. Pokud není zadaný, hodnota TTL (Time to Live) nastaví nekonečnou hodnotu. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
@@ -250,7 +250,7 @@ Odešle zprávu o stavu v clusteru Service Fabric. Sestava musí obsahovat infor
 ## <a name="sfctl-cluster-select"></a>Výběr clusteru sfctl
 Připojí se ke koncovému bodu Service Fabric clusteru.
 
-Pokud se připojujete k zabezpečenému clusteru, zadejte absolutní cestu k certifikátu (. CRT) a soubor klíče (. Key) nebo jeden soubor s oběma (. pem). Nezadávejte obojí. Pokud budete chtít připojení k zabezpečenému clusteru, můžete taky zadat absolutní cestu k souboru nebo adresáři certifikačního úřadu CA.  Neexistují žádné připojení ke clusteru, aniž by bylo třeba spustit tento příkaz, včetně připojení k místnímu hostiteli. Pro připojení k místnímu clusteru ale není nutný žádný explicitní koncový bod.
+Pokud se připojujete k zabezpečenému clusteru, zadejte absolutní cestu k certifikátu (. CRT) a soubor klíče (. Key) nebo jeden soubor s oběma (. pem). Nezadávejte obojí. Pokud budete chtít připojení k zabezpečenému clusteru, můžete taky zadat absolutní cestu k souboru nebo adresáři certifikačního úřadu CA.  Neexistují žádné připojení ke clusteru, aniž by bylo třeba spustit tento příkaz, včetně připojení k místnímu hostiteli. Pro připojení k místnímu clusteru ale není nutný žádný explicitní koncový bod.  Pokud používáte certifikát podepsaný svým držitelem nebo jiný certifikát, který není podepsaný známou certifikační autoritou, předejte parametr--CA, abyste zajistili, že ověření proběhlo úspěšně. Pokud není v produkčním clusteru, pokud chcete obejít ověřování na straně klienta (užitečné pro podepsaný nebo neznámou známou certifikační autoritu), použijte možnost--No-ověření. I když je to možné, nedoporučuje se pro produkční clustery. V opačném případě může dojít k chybě ověření certifikátu.
 
 ### <a name="arguments"></a>Argumenty
 

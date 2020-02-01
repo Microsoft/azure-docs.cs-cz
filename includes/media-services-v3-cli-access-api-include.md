@@ -8,18 +8,24 @@ ms.topic: include
 ms.date: 05/01/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: b0f93f950b55052ea8d8b31538c47226413dc82a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 58e9156091702718dccd75eb4a57e5b6d8c1f073
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175098"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896325"
 ---
 ## <a name="access-the-media-services-api"></a>Přístup k rozhraní API služby Media Services
 
 Pro připojení k rozhraním Azure Media Services API použijte ověřování instančního objektu Azure AD. Následující příkaz vytvoří aplikaci Azure AD a připojí k danému účtu instanční objekt. Vrácené hodnoty byste měli použít ke konfiguraci vaší aplikace.
 
-Před spuštěním skriptu, byste měli vyměnit `amsaccount` a `amsResourceGroup` s názvy, které jste zvolili při vytváření těchto prostředků. `amsaccount` je název účtu Azure Media Services, ke kterému se daný instanční objekt připojí.
+Před spuštěním skriptu byste měli nahradit `amsaccount` a `amsResourceGroup` názvy, které jste si zvolili při vytváření těchto prostředků. `amsaccount` je název účtu Azure Media Services, ke kterému se daný instanční objekt připojí.
+
+Pokud máte přístup k několika předplatným, nejdřív nastavte aktivní předplatné na předplatné, ve kterém se vytvořil účet Media Services.
+
+```azurecli
+az account set --subscription subscriptionId
+```
 
 Následující příkaz vrací výstup `json`:
 

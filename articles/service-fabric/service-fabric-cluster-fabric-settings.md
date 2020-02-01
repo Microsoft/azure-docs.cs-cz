@@ -3,12 +3,12 @@ title: Změnit nastavení clusteru Azure Service Fabric
 description: Tento článek popisuje nastavení prostředků infrastruktury a zásady upgradu prostředků infrastruktury, které můžete přizpůsobit.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: ba98d4d30d14cb3a1981652fc0b86354923a8851
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 284e8ad566192f027d466ad08d66c2fc5265381d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772121"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905201"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Přizpůsobení Service Fabricho nastavení clusteru
 Tento článek popisuje různá nastavení prostředků infrastruktury pro váš Service Fabric cluster, který můžete přizpůsobit. Pro clustery hostované v Azure můžete nastavení přizpůsobit prostřednictvím [Azure Portal](https://portal.azure.com) nebo pomocí Azure Resource Manager šablony. Další informace najdete v tématu [Upgrade konfigurace clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). U samostatných clusterů můžete upravit nastavení aktualizací souboru *ClusterConfig. JSON* a provést upgrade konfigurace v clusteru. Další informace najdete v tématu [Upgrade konfigurace samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -89,6 +89,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |TargetReplicaSetSize |Int, výchozí hodnota je 7 |Nepovolené|TargetReplicaSetSize pro ClusterManager. |
 |UpgradeHealthCheckInterval |Čas v sekundách, výchozí hodnota je 60. |Dynamický|Frekvence kontroly stavu během monitorovaných upgradů aplikace |
 |UpgradeStatusPollInterval |Čas v sekundách, výchozí hodnota je 60. |Dynamický|Frekvence cyklického dotazování na stav upgradu aplikace. Tato hodnota určuje rychlost aktualizace pro libovolný GetApplicationUpgradeProgress hovor. |
+|CompleteClientRequest | Logická hodnota, výchozí hodnota je false. |Dynamický| Dokončete požadavek klienta, když ho akceptuje CM. |
 
 ## <a name="common"></a>Společné
 
@@ -504,7 +505,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|Čítače |Řetězec | Dynamický |Čárkami oddělený seznam čítačů výkonu ke shromáždění. |
+|Èítaèù |Řetězec | Dynamický |Čárkami oddělený seznam čítačů výkonu ke shromáždění. |
 |IsEnabled |Logická hodnota, výchozí hodnota je true. | Dynamický |Příznak označuje, zda je povolena kolekce čítačů výkonu v místním uzlu. |
 |MaxCounterBinaryFileSizeInMB |Int, výchozí hodnota je 1. | Dynamický |Maximální velikost (v MB) pro každý binární soubor čítače výkonu. |
 |NewCounterBinaryFileCreationIntervalInMinutes |Int, výchozí hodnota je 10. | Dynamický |Maximální interval (v sekundách), po kterém se vytvoří nový binární soubor čítače výkonu. |
@@ -568,6 +569,8 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |ValidatePlacementConstraint | Logická hodnota, výchozí hodnota je true. |Dynamický| Určuje, jestli se má PlacementConstraint výraz pro službu ověřit, když se aktualizuje ServiceDescription služby. |
 |ValidatePrimaryPlacementConstraintOnPromote| logická hodnota, výchozí hodnota je TRUE. |Dynamický|Určuje, jestli se má pro převzetí služeb při selhání vyhodnotit výraz PlacementConstraint pro službu pro primární preference. |
 |VerboseHealthReportLimit | Int, výchozí hodnota je 20 | Dynamický|Definuje počet, kolikrát musí být replika Neumístěná předtím, než se pro ni nahlásí upozornění na stav (Pokud je zapnuté podrobné hlášení stavu). |
+|NodeLoadsOperationalTracingEnabled | Logická hodnota, výchozí hodnota je true. |Dynamický|Konfigurace, která umožňuje zatížení uzlu provozovat provozní strukturální trasování v úložišti událostí. |
+|NodeLoadsOperationalTracingInterval | Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (20) | Dynamický|Zadejte časový interval v sekundách. Interval, pomocí kterého se má sledovat načtení uzlu do úložiště událostí pro každou doménu služby. |
 
 ## <a name="reconfigurationagent"></a>ReconfigurationAgent
 
@@ -578,8 +581,8 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |GracefulReplicaShutdownMaxDuration|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (120)|Dynamický|Zadejte časový interval v sekundách. Doba, po kterou systém počká, než se ukončí hostitelé služby s replikami, které jsou zablokované v Zavřít. Pokud je tato hodnota nastavená na 0, repliky se nedají pokyn zavřít.|
 |NodeDeactivationMaxReplicaCloseDuration | Čas v sekundách, výchozí hodnota je 900. |Dynamický|Zadejte časový interval v sekundách. Doba, po kterou systém počká, než se ukončí hostitelé služby s replikami, které jsou zablokované v zavření během deaktivace uzlu. |
 |PeriodicApiSlowTraceInterval | Čas v sekundách, výchozí hodnota je 5 minut. |Dynamický| Zadejte časový interval v sekundách. PeriodicApiSlowTraceInterval definuje interval, za který se budou přesledovat pomalá volání rozhraní API monitorováním rozhraní API. |
-|ReplicaChangeRoleFailureRestartThreshold|Int, výchozí hodnota je 10.|Dynamický| Celé číslo. Zadejte počet selhání rozhraní API při primární promoakci, po kterém se použije akce automatického zmírnění (restart repliky). |
-|ReplicaChangeRoleFailureWarningReportThreshold|int, výchozí hodnota je 2147483647|Dynamický| Celé číslo. Zadejte počet selhání rozhraní API při primární promoakci, po kterém bude vyvolána zpráva o stavu upozornění.|
+|ReplicaChangeRoleFailureRestartThreshold|Int, výchozí hodnota je 10.|Dynamický| Čísla. Zadejte počet selhání rozhraní API při primární promoakci, po kterém se použije akce automatického zmírnění (restart repliky). |
+|ReplicaChangeRoleFailureWarningReportThreshold|int, výchozí hodnota je 2147483647|Dynamický| Čísla. Zadejte počet selhání rozhraní API při primární promoakci, po kterém bude vyvolána zpráva o stavu upozornění.|
 |ServiceApiHealthDuration | Čas v sekundách, výchozí hodnota je 30 minut. |Dynamický| Zadejte časový interval v sekundách. ServiceApiHealthDuration definuje, jak dlouho čekáme na spuštění rozhraní API služby předtím, než pošleme zprávu, že není v pořádku. |
 |ServiceReconfigurationApiHealthDuration | Čas v sekundách, výchozí hodnota je 30. |Dynamický| Zadejte časový interval v sekundách. ServiceReconfigurationApiHealthDuration definuje, jak dlouho čekáme na spuštění rozhraní API služby předtím, než nahlásíme, že není v pořádku. To platí pro volání rozhraní API, která mají vliv na dostupnost.|
 

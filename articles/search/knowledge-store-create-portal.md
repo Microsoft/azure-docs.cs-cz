@@ -7,13 +7,13 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 12/30/2019
-ms.openlocfilehash: cffd94459e3a18567f2ff2f6b8fca35598cb5eed
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.date: 01/29/2020
+ms.openlocfilehash: b75b760704511627c74301ae3fff82c24a262e17
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563447"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904886"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Rychlý Start: vytvoření služby Azure Kognitivní hledání Knowledge Store v Azure Portal
 
@@ -81,7 +81,7 @@ Na stránce Přehled služby Search klikněte na panelu příkazů na **importov
 V tomto kroku průvodce vytvoříte dovednosti s obohacením vnímání dovedností. Zdrojová data se skládají z revizí zákazníků v několika jazycích. Mezi dovednosti, které jsou pro tuto datovou sadu relevantní, patří extrakce klíčových frází, detekce mínění a překlad textu. V pozdějším kroku budou tato rozšíření "" provedená "do úložiště znalostní báze jako tabulky Azure.
 
 1. Rozbalte položku **připojit Cognitive Services**. Ve výchozím nastavení je vybrané **bezplatné (omezená rozšíření)** . Tento prostředek můžete použít, protože počet záznamů v HotelReviews-Free. CSV je 19 a tento bezplatný prostředek umožňuje až 20 transakcí za den.
-1. Rozbalte možnost **Přidat dovednosti rozpoznávání**.
+1. Rozbalte položku **Přidat rozšíření**.
 1. Do **dovednosti název**zadejte `hotel-reviews-ss`.
 1. V **poli zdrojová data**zadejte **reviews_text**.
 1. Pro **úroveň podrobností obohacení**vyberte **stránky (5000 znaků bloků dat)** .
@@ -93,11 +93,11 @@ V tomto kroku průvodce vytvoříte dovednosti s obohacením vnímání dovednos
       ![Vytvoření dovednosti](media/knowledge-store-create-portal/hotel-reviews-ss.png "Vytvoření sady dovedností")
 
 1. Rozbalte položku **Uložit obohacení do úložiště znalostí**.
-1. Zadejte **připojovací řetězec účtu úložiště** , který jste uložili v předchozím kroku.
 1. Vyberte tyto **projekce tabulky Azure**:
-    + **Dokumenty**
+    + **Document**
     + **Stránky**
     + **Klíčové fráze**
+1. Zadejte **připojovací řetězec účtu úložiště** , který jste uložili v předchozím kroku.
 
     ![Konfigurace úložiště znalostí](media/knowledge-store-create-portal/hotel-reviews-ks.png "Konfigurace úložiště znalostí")
 

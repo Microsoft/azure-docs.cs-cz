@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 78654dfd5a11219d39d53b4042157333656f9aa3
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: f5bd6b741f85f35fe03c941ed09728354d6b3d2d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834750"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905716"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatické učení modelu prognózy časových řad
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -124,7 +124,7 @@ Objekt [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-auto
 
 Další informace najdete v [referenční dokumentaci](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) .
 
-Vytvořte nastavení časových řad jako objekt Dictionary. Nastavte `time_column_name` na pole `day_datetime` v sadě dat. Definujte parametr `grain_column_names`, aby se zajistilo, že se pro data vytvoří **dvě samostatné skupiny časových řad** . jednu pro Store a a B. Nakonec nastavte `max_horizon` na 50, aby bylo možné předpovědět celou sadu testů. Nastavte okno prognózy na 10 teček s `target_rolling_window_size`a zadejte jednu prodlevu u cílových hodnot pro dvě období předem s parametrem `target_lags`. Doporučuje se nastavit `max_horizon`, `target_rolling_window_size` a `target_lags` na auto, což tyto hodnoty automaticky detekuje za vás. V následujícím příkladu byly pro tyto parametrů použity nastavení "auto". 
+Vytvořte nastavení časových řad jako objekt Dictionary. Nastavte `time_column_name` na pole `day_datetime` v sadě dat. Definujte parametr `grain_column_names`, aby se zajistilo, že se pro data vytvoří **dvě samostatné skupiny časových řad** . jednu pro Store a a B. Nakonec nastavte `max_horizon` na 50, aby bylo možné předpovědět celou sadu testů. Nastavte okno prognózy na 10 teček s `target_rolling_window_size`a zadejte jednu prodlevu u cílových hodnot pro dvě období předem s parametrem `target_lags`. Doporučuje se nastavit `max_horizon`, `target_rolling_window_size` a `target_lags` na auto, což tyto hodnoty automaticky detekuje za vás. V následujícím příkladu se pro tyto parametry používala nastavení "auto". 
 
 ```python
 time_series_settings = {
@@ -226,7 +226,7 @@ Vypočítá RMSE (chyba čtvercového významu) mezi `actual_labels` skutečným
 from sklearn.metrics import mean_squared_error
 from math import sqrt
 
-rmse = sqrt(mean_squared_error(actual_lables, predict_labels))
+rmse = sqrt(mean_squared_error(actual_labels, predict_labels))
 rmse
 ```
 

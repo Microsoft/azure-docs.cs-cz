@@ -3,12 +3,12 @@ title: Podrobnosti struktury definice zásad
 description: Popisuje způsob, jakým se používají definice zásad k navázání konvencí pro prostředky Azure ve vaší organizaci.
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: 909d8e69e02b55ee6e45515b0d9c316a549e1332
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e37ff6e1bde594014510880492c2572ad1634400
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972837"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904416"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -175,6 +175,9 @@ Pokud je umístění definice:
 ## <a name="display-name-and-description"></a>Zobrazovaný název a popis
 
 Použijete **displayName** a **popis** identifikovat definice zásad a zadání při použití kontextu. hodnota **DisplayName** má maximální délku _128_ znaků a **popis** nesmí být delší než _512_ znaků.
+
+> [!NOTE]
+> Během vytváření nebo aktualizace definice zásady, **ID**, **typu**a **název** jsou definovány vlastnostmi, které jsou externí pro JSON a nejsou nezbytné v souboru JSON. Načtení definice zásady prostřednictvím sady SDK vrátí vlastnosti **ID**, **typu**a **názvu** jako součást formátu JSON, ale každá z nich je informace jen pro čtení, které se týkají definice zásady.
 
 ## <a name="policy-rule"></a>Pravidlo zásad
 
@@ -560,7 +563,7 @@ Pro použití v rámci pravidla zásad jsou k dispozici všechny [funkce šablon
 - newGuid()
 - pickZones()
 - Zprostředkovatelé ()
-- reference ()
+- Reference ()
 - resourceId()
 - proměnné ()
 

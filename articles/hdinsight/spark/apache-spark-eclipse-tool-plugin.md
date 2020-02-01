@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/13/2019
-ms.openlocfilehash: 6c82b8ce591bbacb6bf790c8b38635310b33263d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ceeea809232909a196895e11601ad01d3407f763
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435347"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905387"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Použití Azure Toolkit for Eclipse k vytvoření Apache Spark aplikací pro cluster HDInsight
 
@@ -33,7 +33,7 @@ Pomocí nástrojů HDInsight v sadě Azure Toolkit for [zatmění](https://www.e
 
 ## <a name="install-required-plug-ins"></a>Nainstalovat požadované moduly plug-in
 
-### <a name="install-azure-toolkit-for-eclipse"></a>Instalace sady Azure Toolkit for Eclipse
+### <a name="install-azure-toolkit-for-eclipse"></a>Nainstalovat Azure Toolkit for Eclipse
 
 Pokyny k instalaci najdete v tématu [instalace Azure Toolkit for Eclipse](https://docs.microsoft.com/azure/java/eclipse/azure-toolkit-for-eclipse-installation).
 
@@ -47,7 +47,7 @@ Když otevřete položku zatmění, nástroje HDInsight automaticky zjistí, jes
 
 1. Přejděte na web **Help** > **zatmění...** .
 
-1. Vyberte kartu **Nainstalováno**.
+1. Vyberte kartu **nainstalované** .
 
 1. Měli byste vidět aspoň tyto informace:
     * > Verze \<Azure Toolkit for Eclipse.
@@ -242,7 +242,7 @@ Pomocí nástrojů služby HDInsight v Azure Toolkit for Eclipse můžete spouš
 
 Když spouštíte místní aplikaci Spark Scala na počítači se systémem Windows, může se vám zobrazit výjimka, jak je vysvětleno v [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356). K této výjimce dochází, protože ve Windows chybí **WinUtils. exe** .
 
-Chcete-li tuto chybu vyřešit, je nutné [stáhnout spustitelný soubor](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) do umístění, jako je **C:\WinUtils\bin**, a pak přidat proměnnou prostředí **HADOOP_HOME** a nastavit hodnotu proměnné na **C\WinUtils**.
+Chcete-li vyřešit tuto chybu, potřebujete `https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe` do umístění, jako je **C:\WinUtils\bin**, a pak přidat proměnnou prostředí **HADOOP_HOME** a nastavit hodnotu proměnné na **C\WinUtils**.
 
 ### <a name="run-a-local-spark-scala-application"></a>Spuštění místní aplikace Spark Scala
 

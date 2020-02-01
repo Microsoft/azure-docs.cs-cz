@@ -3,33 +3,30 @@ title: 'Rychlý Start: Klientská knihovna služby Azure Blob Storage v 2.1 pro 
 description: V tomto rychlém startu vytvoříte v úložišti objektů (blob) účet úložiště a kontejner. Pak použijete klientskou knihovnu pro úložiště v 2.1 pro Python k nahrání objektu BLOB pro Azure Storage, stažení objektu BLOB a výpisu objektů BLOB v kontejneru.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/11/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 3e1adc9220dd9b49c49ff3fe5e798dfcc9d5c928
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 4b0248604b6e9189d5275177a4960e4c352e8215
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122674"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906440"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v21-for-python"></a>Rychlý Start: Klientská knihovna služby Azure Blob Storage v 2.1 pro Python
+# <a name="quickstart-manage-blobs-with-python-v21-sdk"></a>Rychlý Start: Správa objektů BLOB pomocí Pythonu v 2.1 SDK
 
-V tomto článku můžete pomocí Pythonu nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů BLOB v Azure. Objekty blob jsou jednoduše objekty, které mohou obsahovat velké objemy textových nebo binárních dat, včetně obrázků, dokumentů, datových proudů médií a dat archivu. Objekty BLOB v Azure Storage se liší od sdílených složek, tabulek bez schématu a front zpráv.  Další informace najdete v tématu [Úvod do Azure Storage](/azure/storage/common/storage-introduction).
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+V tomto rychlém startu se naučíte spravovat objekty BLOB pomocí Pythonu. Objekty blob jsou objekty, které mohou obsahovat velké objemy textových nebo binárních dat, včetně obrázků, dokumentů, datových proudů médií a dat archivu. Můžete nahrávat, stahovat a vypisovat objekty BLOB a vytvářet a odstraňovat kontejnery.
 
 ## <a name="prerequisites"></a>Požadavky
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Účet služby Azure Storage. [Vytvoření účtu úložiště](../common/storage-account-create.md)
+- [Python](https://www.python.org/downloads/).
+- [Sada SDK Azure Storage pro Python](https://github.com/Azure/azure-sdk-for-python)
 
-Ujistěte se, že máte nainstalované následující další požadavky:
-
-* [Python](https://www.python.org/downloads/)
-
-* [Sada SDK Azure Storage pro Python](https://github.com/Azure/azure-sdk-for-python)
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="download-the-sample-application"></a>Stažení ukázkové aplikace
 

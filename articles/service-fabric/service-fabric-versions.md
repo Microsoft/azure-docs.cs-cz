@@ -2,13 +2,13 @@
 title: Podporované verze clusteru v Azure Service Fabric
 description: Přečtěte si o verzích clusterů v Azure Service Fabric, včetně odkazu na nejnovější verze z blogu týmu Service Fabric.
 ms.topic: troubleshooting
-ms.date: 11/18/2019
-ms.openlocfilehash: 1d54f4f459b71469c5d10c949d35841572242c07
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 01/28/2020
+ms.openlocfilehash: 80ecf0861f3d740fff6b68b0373f94d0e2845a9d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638999"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76903476"
 ---
 # <a name="supported-service-fabric-versions"></a>Podporované verze Service Fabric
 
@@ -49,7 +49,7 @@ Následující tabulka uvádí podporované operační systémy pro podporované
 | Windows Server 1709 | 6.0 |
 | Windows Server 1803 | 6.4 |
 | Windows Server 1809 | 6.4.654.9590 |
-| Windows Server. 2019 | 6.4.654.9590 |
+| Windows Server 2019 | 6.4.654.9590 |
 | Linux Ubuntu 16,04 | 6.0 |
 
 ## <a name="supported-version-names"></a>Podporované názvy verzí
@@ -58,26 +58,26 @@ Následující tabulka uvádí názvy verzí Service Fabric a jejich odpovídaj�
 
 | Název verze | Číslo verze Windows | Číslo verze Linux |
 | --- | --- | --- |
-| 5,3 RTO | 5.3.121.9494 | Není k dispozici |
-| 5,3 CU1 | 5.3.204.9494 | Není k dispozici |
-| 5,3 CU2 | 5.3.301.9590 | Není k dispozici |
-| 5,3 CU3 | 5.3.311.9590 | Není k dispozici |
-| 5,4 CU2 | 5.4.164.9494 | Není k dispozici |
-| 5,5 CU1 | 5.5.216.0    | Není k dispozici |
-| 5,5 CU2 | 5.5.219.0    | Není k dispozici |
-| 5,5 CU3 | 5.5.227.0    | Není k dispozici |
-| 5,5 CU4 | 5.5.232.0    | Není k dispozici |
-| 5,6 RTO | 5.6.204.9494 | Není k dispozici |
-| 5,6 CU2 | 5.6.210.9494 | Není k dispozici |
-| 5,6 CU3 | 5.6.220.9494 | Není k dispozici |
-| 5,7 RTO | 5.7.198.9494 | Není k dispozici |
-| 5,7 CU4 | 5.7.221.9494 | Není k dispozici |
+| 5,3 RTO | 5.3.121.9494 | není k dispozici |
+| 5,3 CU1 | 5.3.204.9494 | není k dispozici |
+| 5,3 CU2 | 5.3.301.9590 | není k dispozici |
+| 5,3 CU3 | 5.3.311.9590 | není k dispozici |
+| 5,4 CU2 | 5.4.164.9494 | není k dispozici |
+| 5,5 CU1 | 5.5.216.0    | není k dispozici |
+| 5,5 CU2 | 5.5.219.0    | není k dispozici |
+| 5,5 CU3 | 5.5.227.0    | není k dispozici |
+| 5,5 CU4 | 5.5.232.0    | není k dispozici |
+| 5,6 RTO | 5.6.204.9494 | není k dispozici |
+| 5,6 CU2 | 5.6.210.9494 | není k dispozici |
+| 5,6 CU3 | 5.6.220.9494 | není k dispozici |
+| 5,7 RTO | 5.7.198.9494 | není k dispozici |
+| 5,7 CU4 | 5.7.221.9494 | není k dispozici |
 | 6,0 RTO | 6.0.211.9494 | 6.0.120.1 |
 | 6,0 CU1 | 6.0.219.9494 | 6.0.127.1 |
 | 6,0 CU2 | 6.0.232.9494 | 6.0.133.1 |
 | 6,1 CU1 | 6.1.456.9494 | 6.1.183.1 |
 | 6,1 CU2 | 6.1.467.9494 | 6.1.185.1 |
-| 6.1 CU3 | 6.1.472.9494 | Není k dispozici |
+| 6.1 CU3 | 6.1.472.9494 | není k dispozici |
 | 6.1 CU4 | 6.1.480.9494 | 6.1.187.1 |
 | 6,2 RTO | 6.2.269.9494 | 6.2.184.1 | 
 | 6,2 CU1 | 6.2.274.9494 | 6.2.191.1 |
@@ -87,16 +87,17 @@ Následující tabulka uvádí názvy verzí Service Fabric a jejich odpovídaj�
 | 6,3 CU1 | 6.3.176.9494 | 6.3.124.1 |
 | 6,3 CU1 | 6.3.187.9494 | 6.3.129.1 |
 | 6,4 RTO | 6.4.617.9590 | 6.4.625.1 |
-| 6,4 CU2 | 6.4.622.9590 | Není k dispozici |
+| 6,4 CU2 | 6.4.622.9590 | není k dispozici |
 | 6,4 CU3 | 6.4.637.9590 | 6.4.634.1 |
 | 6,4 CU4 | 6.4.644.9590 | 6.4.639.1 |
 | 6,4 CU5 | 6.4.654.9590 | 6.4.649.1 |
-| 6,4 CU6 | 6.4.658.9590 | Není k dispozici |
+| 6,4 CU6 | 6.4.658.9590 | není k dispozici |
 | 6,4 CU7 | 6.4.664.9590 | 6.4.661.1 |
-| 6,4 CU8 | 6.4.670.9590 | Není k dispozici |
+| 6,4 CU8 | 6.4.670.9590 | není k dispozici |
 | 6,5 RTO | 6.5.639.9590 | 6.5.435.1 |
 | 6,5 CU1 | 6.5.641.9590 | 6.5.454.1 |
 | 6,5 CU2 | 6.5.658.9590 | 6.5.460.1 |
 | 6,5 CU3 | 6.5.664.9590 | 6.5.466.1 |
 | 6,5 CU5 | 6.5.676.9590 | 6.5.467.1 |
 | 7,0 RTO | 7.0.457.9590 | 7.0.457.1 |
+| 7,0 CU2 | 7.0.464.9590 | 7.0.464.1 |

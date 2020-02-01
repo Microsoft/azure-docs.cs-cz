@@ -8,14 +8,14 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/28/2019
+ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: b416b38cfac48260f3375696caa2ecabcb4d57a9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 870bb9720500b6eda5e7b9eb258b6764a94f01b6
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973912"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76903591"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Pět kroků pro zabezpečení infrastruktury identity
 
@@ -28,8 +28,8 @@ Tento kontrolní seznam vám pomůže rychle nasadit kritické doporučené akce
 * Posílit své přihlašovací údaje.
 * Snižte prostor pro útoky.
 * Automatizujte reakci na hrozby.
-* Zvyšte povědomí o auditování a monitorování.
-* Umožněte větší předvídatelné a úplné zabezpečení koncových uživatelů díky samoobslužné nápovědě.
+* Využijte cloudové funkce Cloud Intelligence.
+* Povolit samoobslužnou službu koncového uživatele.
 
 Ujistěte se, že sledujete, které funkce a kroky jsou dokončeny při čtení tohoto kontrolního seznamu.
 
@@ -81,7 +81,7 @@ Pomocí [PowerShellu můžete zabránit vypršení platnosti hesel](../../active
 Pokud vaše organizace používá řešení hybridní identity s předávacím ověřováním nebo federaci, měli byste povolit synchronizaci hodnot hash hesel z následujících dvou důvodů:
 
 * Zpráva [Uživatelé s nevrácenými přihlašovacími údaji](../../active-directory/reports-monitoring/concept-risk-events.md) ve správě Azure AD vás upozorní na páry uživatelské jméno a heslo, které jsou vystavené na "tmavém webu". Nenáročné množství hesel se nevrací prostřednictvím útoků phishing, malwaru a hesla na webech třetích stran, které jsou později porušené. Společnost Microsoft nalezne mnoho z těchto nevrácených přihlašovacích údajů a oznámí vám v této sestavě, jestli se shodují s přihlašovacími údaji ve vaší organizaci – ale jenom v případě, že jste [povolili synchronizaci hodnot hash hesel](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md).
-* V případě výpadku místního výpadku (například při útoku ransomwarem) můžete přepínat na použití [cloudového ověřování pomocí synchronizace hodnot hash hesel](choose-ad-authn.md). Tato metoda ověřování záloh vám umožní pokračovat v přístupu k aplikacím nakonfigurovaným pro ověřování pomocí Azure Active Directory, včetně Office 365. V takovém případě pracovníci IT nebudou muset na osobní e-mailové účty sdílet data, dokud nedojde k vyřešení místního výpadku.
+* V případě výpadku místního výpadku (například při útoku ransomwarem) můžete přepínat na použití [cloudového ověřování pomocí synchronizace hodnot hash hesel](choose-ad-authn.md). Tato metoda ověřování záloh vám umožní pokračovat v přístupu k aplikacím nakonfigurovaným pro ověřování pomocí Azure Active Directory, včetně Office 365. V takovém případě se pracovníci IT nebudou muset oddělit k osobním e-mailovým účtům, aby mohli sdílet data, dokud nedojde k vyřešení místního výpadku.
 
 Přečtěte si další informace o tom, jak funguje [synchronizace hodnot hash hesel](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) .
 
@@ -116,7 +116,7 @@ S využitím duševního vlastnictví byste měli snížit dopad napadených už
 
 Je důležité pochopit různá [prostředí pro vyjádření souhlasu s aplikací Azure AD](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience), [typy oprávnění a souhlas](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)a jejich dopady na zabezpečení stav vaší organizace. Ve výchozím nastavení mohou všichni uživatelé v Azure AD udělit aplikacím, které využívají platformu Microsoft identity, přístup k datům vaší organizace. I když uživatelům, kteří si můžou udělit souhlas sami, umožní uživatelům snadno získat užitečné aplikace, které se integrují s Microsoft 365, Azure a dalšími službami, může představovat riziko, pokud se nepoužije a pečlivě monitoruje.
 
-Společnost Microsoft doporučuje [zakázat budoucí operace souhlasu s uživatelem](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-removing-user-access#i-want-to-disable-all-future-user-consent-operations-to-any-application) , aby se snížila plocha a zmírnila toto riziko. Pokud je souhlas koncového uživatele zakázaný, bude se i nadále akceptovat předchozí granty souhlasu, ale všechny budoucí operace souhlasu musí udělat správce. Souhlas správce můžou vyžádat uživatelé prostřednictvím [pracovního postupu integrovaných žádostí o souhlas správce](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow) nebo prostřednictvím vlastních procesů podpory. Než tuto funkci zakážete, doporučujeme zkontrolovat si protokol auditu, abyste zjistili, které aplikace uživatelé souhlasí, a odpovídajícím způsobem naplánovat změnu. Pro aplikace, kterým chcete umožnit přístup všem uživatelům, zvažte [udělení souhlasu jménem všech uživatelů](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent), aby uživatelé, kteří dosud nesouhlasili samostatně, měli přístup k aplikaci. Pokud nechcete, aby byly tyto aplikace dostupné pro všechny uživatele ve všech scénářích, použijte [přiřazení aplikace](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups) a [podmíněný přístup](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) k omezení přístupu uživatelů k aplikacím.
+Společnost Microsoft doporučuje [zakázat budoucí operace souhlasu s uživatelem](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-removing-user-access#i-want-to-disable-all-future-user-consent-operations-to-any-application) , aby se snížila plocha a zmírnila toto riziko. Pokud je souhlas koncového uživatele zakázaný, bude se i nadále akceptovat předchozí granty souhlasu, ale všechny budoucí operace souhlasu musí udělat správce. Souhlas správce můžou vyžádat uživatelé prostřednictvím [pracovního postupu integrovaných žádostí o souhlas správce](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow) nebo prostřednictvím vlastních procesů podpory. Před zakázáním souhlasu koncového uživatele použijte naše [doporučení](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-consent-requests) k naplánování této změny ve vaší organizaci. Pro aplikace, kterým chcete umožnit přístup všem uživatelům, zvažte [udělení souhlasu jménem všech uživatelů](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent), aby uživatelé, kteří dosud nesouhlasili samostatně, měli přístup k aplikaci. Pokud nechcete, aby byly tyto aplikace dostupné pro všechny uživatele ve všech scénářích, použijte [přiřazení aplikace](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups) a [podmíněný přístup](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) k omezení přístupu uživatelů k aplikacím.
 
 Ujistěte se, že uživatelé můžou požádat o schválení správcem pro nové aplikace, aby se snížila jeho tření, minimalizoval objem podpory a aby si mohli uživatelé zaregistrovat aplikace pomocí přihlašovacích údajů jiných než Azure AD. Po regulování svých operací by správci měli pravidelně auditovat aplikace a souhlasná oprávnění.
 
@@ -134,7 +134,7 @@ Dalším dopadem "předpokládat porušení" je nutnost minimalizovat pravděpod
 
 Povolte Azure AD PIM a pak si prohlédněte uživatele, kteří mají přiřazené administrativní role, a odeberte v těchto rolích zbytečné účty. U zbývajících privilegovaných uživatelů je přesuňte z trvalého na nárok. Nakonec vytvořte vhodné zásady, abyste se ujistili, že potřebují získat přístup k těmto privilegovaným rolím, a to tak, aby je bylo možné bezpečně provést s nezbytným ovládacím prvkem pro změnu.
 
-V rámci nasazení vašeho privilegovaného účtu postupujte podle [osvědčeného](../../active-directory/users-groups-roles/directory-admin-roles-secure.md) postupu, abyste měli jistotu, že budete mít přístup k Azure AD, když si sami nezamknete.
+V rámci nasazení vašeho privilegovaného účtu postupujte podle [osvědčeného postupu pro vytvoření alespoň dvou mimořádných účtů](../../active-directory/users-groups-roles/directory-admin-roles-secure.md) , abyste měli jistotu, že budete mít stále přístup k Azure AD, pokud si to sami zamknete.
 
 ## <a name="step-3---automate-threat-response"></a>Krok 3 – automatizace reakce na hrozby
 
@@ -152,7 +152,7 @@ Riziko přihlášení je pravděpodobnost, že se přihlašujete pomocí této i
 
 ![Přihlášení z anonymních IP adres](./media/steps-secure-identity/azure-ad-sec-steps2.png)
 
-## <a name="step-4---increase-your-awareness"></a>Krok 4 – zvýšení povědomí
+## <a name="step-4---utilize-cloud-intelligence"></a>Krok 4 – využití Cloud Intelligence
 
 Auditování a protokolování událostí souvisejících se zabezpečením a souvisejících výstrah jsou základními součástmi efektivní strategie ochrany. Protokoly zabezpečení a sestavy poskytují elektronický záznam o podezřelých aktivitách a umožňují detekovat vzory, které mohou označovat pokus nebo úspěšné vnější průnik sítě a interní útoky. Pomocí auditování můžete sledovat činnost uživatelů, dokumentovat dodržování předpisů, provádět analýzu forenzní a provádět další akce. Výstrahy obsahují oznámení o událostech zabezpečení.
 
@@ -180,7 +180,7 @@ Azure AD Identity Protection poskytuje dvě důležité sestavy, které byste m�
 
 Uživatelé mohou být vyzrazeni na napadený web nebo aplikace, které získají přístup k informacím o profilu a uživatelským datům, jako je například jejich e-mailová adresa. Škodlivý objekt actor může použít odsouhlasená oprávnění, která obdržela k šifrování obsahu poštovní schránky a vyžádání Ransom k opětovnému získání dat poštovní schránky. [Správci by měli kontrolovat a auditovat](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) oprávnění udělená uživateli nebo zakázat uživatelům udělit souhlas ve výchozím nastavení.
 
-Kromě auditování oprávnění udělených uživateli může pomáhat při pokusu o [nalezení rizikových nebo nežádoucích aplikací OAuth](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth), což je funkce dostupná pro prostředí Premium.
+Kromě auditování oprávnění udělených uživateli můžete v prostředích Premium [Najít rizikové nebo nežádoucí aplikace OAuth](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth) .
 
 ## <a name="step-5---enable-end-user-self-service"></a>Krok 5 – povolení samoobslužné služby pro koncové uživatele
 
@@ -196,7 +196,7 @@ Azure AD poskytuje správcům oprávnění ke správě přístupu k prostředků
 
 ### <a name="implement-azure-ad-access-reviews"></a>Implementace kontrol přístupu Azure AD
 
-Pomocí kontrol [přístupu ke službě Azure AD](../../active-directory/governance/access-reviews-overview.md)můžete spravovat přístup k balíčku a členství ve skupinách, přístup k podnikovým aplikacím a přiřazení privilegovaných rolí, abyste měli jistotu, že udržujete standard zabezpečení.  Vlastníci, vlastníci a kontroloři a jiní kontroloři mají jistotu, že si uživatelé neuchovávají přístup po delší dobu, kdy je už nepotřebují.
+Pomocí kontrol [přístupu ke službě Azure AD](../../active-directory/governance/access-reviews-overview.md)můžete spravovat přístup k balíčku a členství ve skupinách, přístup k podnikovým aplikacím a přiřazení privilegovaných rolí, abyste měli jistotu, že udržujete standard zabezpečení.  Vlastníci prohledí samy sebe, vlastníci prostředků a další kontroloři zajišťují, že uživatelé neuchovávají přístup po delší dobu, kdy je už nepotřebují.
 
 ## <a name="summary"></a>Souhrn
 
@@ -205,7 +205,7 @@ Existuje mnoho aspektů zabezpečení infrastruktury identity, ale tento kontrol
 * Posílit své přihlašovací údaje.
 * Snižte prostor pro útoky.
 * Automatizujte reakci na hrozby.
-* Zvyšte povědomí o auditování a monitorování.
+* Využijte cloudové funkce Cloud Intelligence.
 * Umožněte větší předvídatelné a úplné zabezpečení koncových uživatelů díky samoobslužné nápovědě.
 
 Vážíme si, jak vážně proberete zabezpečení identity a doufáme, že tento dokument je užitečným plánem pro bezpečnější stav vaší organizace.

@@ -7,12 +7,12 @@ ms.date: 01/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 9183805e2817459ac2c408648981b6989edf4e62
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 4ac2c1266933716697a658b1ba88efd8c2f05d34
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760007"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905757"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Verze Preview: Vytvoření šablony Azure image Builder 
 
@@ -59,7 +59,7 @@ Toto je základní formát šablony:
 
 Umístění je oblast, kde se vytvoří vlastní image. Pro náhled tvůrce imagí se podporují tyto oblasti:
 
-- Východ USA
+- Východní USA
 - Východ USA 2
 - Středozápadní USA
 - Západní USA
@@ -317,6 +317,8 @@ Přizpůsobení vlastností:
 - **restartCheckCommand** – příkaz pro kontrolu úspěšnosti restartování (volitelné). 
 - **rečas_spuštění** – byl zadán časový limit restartování jako řetězec velikosti a jednotky. Například `5m` (5 minut) nebo `2h` (2 hodiny). Výchozí hodnota je: ' 5 min '
 
+### <a name="linux-restart"></a>Restart pro Linux  
+Není k dispozici žádný restart pro Linux, ale pokud instalujete ovladače nebo součásti, které vyžadují restart, můžete je nainstalovat a vyvolat restartování pomocí prostředí. k virtuálnímu počítači sestavení je 20min časový limit SSH.
 
 ### <a name="powershell-customizer"></a>Úpravám PowerShellu 
 Úpravce prostředí podporuje spouštění PowerShellových skriptů a vložených příkazů, skripty musí být veřejně přístupné, aby k nim měly přístup IB.

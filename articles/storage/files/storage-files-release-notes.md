@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 67f04b3873da020853c2523f6acc8c7dc7dcdedc
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: d0e830aaca4f952f75c220b4f482ce831883b058
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749596"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905570"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Poznámky k verzi agenta Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Vaše instalace Windows Serveru se transformují na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS). Můžete mít libovolný počet mezipamětí po celém světě.
@@ -23,7 +23,7 @@ Tento článek obsahuje poznámky k podporovaným verzím agenta Synchronizace s
 ## <a name="supported-versions"></a>Podporované verze
 Agent Synchronizace souborů Azure podporuje následující verze:
 
-| Milník | Číslo verze agenta | Datum vydání | Stav |
+| RTM | Číslo verze agenta | Datum vydání | Stav |
 |----|----------------------|--------------|------------------|
 | Kumulativní aktualizace z prosince 2019 – [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 12. prosince 2019 | Podporováno |
 | Verze v9 – [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2\. prosince 2019 | Podporováno |
@@ -35,9 +35,9 @@ Agent Synchronizace souborů Azure podporuje následující verze:
 | Kumulativní aktualizace z června 2019 – [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 13. června 2019 | Podporováno |
 | Kumulativní aktualizace květen 2019 – [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 7\. května 2019 | Podporováno |
 | Verze V6 – [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 21. dubna 2019 | Podporováno |
-| Kumulativní aktualizace z dubna 2019 – [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 4\. dubna 2019 | Podporováno |
-| Kumulativní aktualizace z března 2019 – [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 7\. března 2019 | Podporováno |
-| Verze verze 5 – [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 12. února 2019 | Podporováno |
+| Kumulativní aktualizace z dubna 2019 – [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 4\. dubna 2019 | Verze Supported agenta vyprší 12. února 2020. |
+| Kumulativní aktualizace z března 2019 – [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 7\. března 2019 | Verze Supported agenta vyprší 12. února 2020. |
+| Verze verze 5 – [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 12. února 2019 | Verze Supported agenta vyprší 12. února 2020. |
 | Verze v4 | 4.0.1.0 - 4.3.0.0 | Nevztahuje se | Nepodporované – verze agentů vypršela 6. listopadu 2019 |
 | Verze v3 | 3.1.0.0 - 3.4.0.0 | Nevztahuje se | Nepodporované – platnost verzí agenta vyprší 19. srpna 2019 |
 | Agenti pre-GA | 1.1.0.0 – 3.0.13.0 | Nevztahuje se | Nepodporováno – platnost verzí agentů vypršela 1. října 2018 |
@@ -60,7 +60,7 @@ Následující poznámky k verzi jsou pro 9.0.0.0 agenta Azure File Sync (vydan�
 ### <a name="improvements-and-issues-that-are-fixed"></a>Vylepšení a problémy, které jsou vyřešeny
 
 - Podpora samoobslužného obnovení
-    - Uživatelé teď můžou svoje soubory obnovit pomocí funkce předchozí verze. Před vydáním verze v9 se funkce předchozí verze nepodporovala u svazků s povoleným vrstvou cloudu. Tato funkce musí být povolená pro každý svazek samostatně, na kterém existuje koncový bod s povoleným vrstvením cloudu. Další informace najdete v tématu .  
+    - Uživatelé teď můžou svoje soubory obnovit pomocí funkce předchozí verze. Před vydáním verze v9 se funkce předchozí verze nepodporovala u svazků s povoleným vrstvou cloudu. Tato funkce musí být povolená pro každý svazek samostatně, na kterém existuje koncový bod s povoleným vrstvením cloudu. Další informace najdete v tématu.  
 [Samoobslužné obnovení prostřednictvím předchozích verzí a služby VSS (služba Stínová kopie svazku)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service). 
  
 - Podpora větších velikostí sdílení souborů 

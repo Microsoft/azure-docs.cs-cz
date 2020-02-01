@@ -3,19 +3,21 @@ title: Omezení a kvóty předplatného Azure
 description: Poskytuje seznam běžných limitů, kvót a omezení předplatného a služeb Azure. Tento článek obsahuje informace o tom, jak zvýšit limity spolu s maximálními hodnotami.
 tags: billing
 ms.topic: conceptual
-ms.date: 01/28/2020
-ms.openlocfilehash: c6661ce6d3e0f62c47b1f234898dbf47de36f3ee
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 01/30/2020
+ms.openlocfilehash: c5714dd30be4d557086667a74fff2ff8117e2a2b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845998"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901416"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 
 Tento dokument obsahuje seznam některých nejběžnějších omezení Microsoft Azure, která se také někdy označují jako kvóty. Tento dokument v tuto chvíli nepokrývá všechny služby Azure. V průběhu času se seznam rozbalí a aktualizuje, aby pokryl víc služeb.
 
 Další informace o cenách Azure najdete v tématu [Přehled cen Azure](https://azure.microsoft.com/pricing/). V takovém případě můžete náklady odhadnout pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/). Můžete také přejít na stránku s podrobnostmi o cenách pro konkrétní službu, například na [virtuální počítače s Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows). Tipy, které vám pomůžou se správou nákladů, najdete v tématu [Ochrana před neočekávanými náklady pomocí fakturace a správy nákladů Azure](../../billing/billing-getting-started.md).
+
+Omezení názvů prostředků najdete v tématu [pravidla a omezení pojmenování pro prostředky Azure](resource-name-rules.md).
 
 > [!NOTE]
 > Pokud chcete limit nebo kvótu nad výchozím limitem zvýšit, [otevřete online žádost o zákaznickou podporu](../templates/error-resource-quota.md)zdarma. Mezní hodnoty se nedají vyhodnotit nad maximální hodnotou limitu uvedenou v následujících tabulkách. Pokud není sloupec maximální limit, prostředek nemá nastavitelný limit.
@@ -25,7 +27,7 @@ Další informace o cenách Azure najdete v tématu [Přehled cen Azure](https:/
 
 ## <a name="limits-and-azure-resource-manager"></a>Omezení a Azure Resource Manager
 
-Je teď možné zkombinovat několik prostředků Azure do jedné skupiny prostředků Azure. Když použijete skupiny prostředků, omezení, které byly globální, se spravují na regionální úrovni s Azure Resource Manager. Další informace o skupinách prostředků Azure najdete v tématu [přehled Azure Resource Manager](overview.md).
+Můžete zkombinovat několik prostředků Azure do jedné skupiny prostředků Azure. Když použijete skupiny prostředků, omezení, které byly globální, se spravují na regionální úrovni s Azure Resource Manager. Další informace o skupinách prostředků Azure najdete v tématu [přehled Azure Resource Manager](overview.md).
 
 V následujícím seznamu omezení zobrazuje nová tabulka rozdíly v omezeních při použití Azure Resource Manager. Například tabulka **omezení předplatného** a **omezení předplatného – Azure Resource Manager** tabulka. Pokud se limit vztahuje na oba scénáře, je zobrazen pouze v první tabulce. Pokud není uvedeno jinak, omezení jsou globální v rámci všech oblastí.
 
@@ -484,3 +486,4 @@ Omezení SQL Data Warehouse najdete v tématu [omezení prostředků SQL Data Wa
 * [Pochopení omezení a zvýšení počtu Azure](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 * [Velikosti virtuálních počítačů a cloudových služeb pro Azure](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Velikosti pro Azure Cloud Services](../../cloud-services/cloud-services-sizes-specs.md)
+* [Pravidla a omezení pro pojmenování prostředků Azure](resource-name-rules.md)

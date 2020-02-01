@@ -1,12 +1,13 @@
 ---
-title: Azure AD Connect Health – Diagnostika duplicitní atribut chyby synchronizace | Dokumentace Microsoftu
-description: Tento dokument popisuje proces Diagnostika chyb synchronizace duplicitním atributem a potenciální opravu osamocený objekt scénářů přímo z portálu Azure portal.
+title: Azure AD Connect Health-Diagnostika chyb synchronizace duplicitních atributů | Microsoft Docs
+description: Tento dokument popisuje proces diagnostiky chyb synchronizace duplicitních atributů a potenciální opravu scénářů osamoceného objektu přímo z Azure Portal.
 services: active-directory
 documentationcenter: ''
 author: zhiweiwangmsft
 manager: maheshu
 editor: billmath
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,40 +15,40 @@ ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1fd5f9746299d72ed58a3209013822505b19b56
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 48ed9abf3e088e2581a3dd81b7c89e6b99da3ceb
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702557"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897194"
 ---
-# <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Diagnostikovat a opravovat chyby synchronizace duplicitním atributem
+# <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Diagnostikovat a opravit chyby synchronizace duplicitních atributů
 
 ## <a name="overview"></a>Přehled
-Zvýrazněte chyby synchronizace trvá jeden krok dále, Azure Active Directory (Azure AD) Connect Health zavádí samoobslužnou nápravu. Odstraňování potíží s duplicitním atributem chyby synchronizace a opravy objekty, které jsou osamocené ze služby Azure AD.
+Provedením jednoho kroku a zvýrazněním chyb synchronizace se Azure Active Directory (Azure AD) Connect Health zavádí samoobslužná náprava. Řeší chyby synchronizace duplicitních atributů a opravuje objekty, které jsou osamocené z Azure AD.
 Funkce diagnostiky má tyto výhody:
-- Poskytuje diagnostické procedury, která se může zúžit chyby synchronizace duplicitní atribut. A navíc nabízí konkrétní opravy.
-- Oprava pro vyhrazené scénáře platí ze služby Azure AD k vyřešení chyby v jediném kroku.
-- Žádný upgrade nebo konfigurace je potřeba povolit tuto funkci.
-Další informace o službě Azure AD najdete v tématu [Identity synchronizace a odolnost duplicitních atributů](how-to-connect-syncservice-duplicate-attribute-resiliency.md).
+- Poskytuje diagnostický postup, který zužuje chyby synchronizace duplicitních atributů. A poskytuje konkrétní opravy.
+- Aplikuje opravu pro vyhrazené scénáře z Azure AD, aby se chyba vyřešila v jednom kroku.
+- K povolení této funkce není nutný žádný upgrade nebo konfigurace.
+Další informace o Azure AD najdete v tématu [synchronizace identity a odolnost duplicitních atributů](how-to-connect-syncservice-duplicate-attribute-resiliency.md).
 
-## <a name="problems"></a>Problémy
+## <a name="problems"></a>Problém
 ### <a name="a-common-scenario"></a>Běžný scénář
-Když **QuarantinedAttributeValueMustBeUnique** a **AttributeValueMustBeUnique** stát chyby synchronizace, je běžně setkat **UserPrincipalName** nebo **Adresy proxy serveru** konflikt ve službě Azure AD. Chyby synchronizace možná půjde vyřešit aktualizací konfliktní objekt zdroje ze strany místní. Chyba synchronizace bude vyřešen po příští synchronizaci. Například tento obrázek označuje, že dva uživatelé mají ke konfliktu jejich **UserPrincipalName**. Obě jsou **Joe.J\@contoso.com**. Konfliktní objekty jsou v karanténě ve službě Azure AD.
+Když dojde k chybám při synchronizaci **QuarantinedAttributeValueMustBeUnique** a **AttributeValueMustBeUnique** , je běžné vidět, že ve službě Azure AD dojde ke konfliktu adres **userPrincipalName** nebo **proxy** . Chyby synchronizace můžete vyřešit tak, že aktualizujete konfliktní zdrojový objekt z místní strany. Po další synchronizaci bude vyřešena chyba synchronizace. Například tento obrázek ukazuje, že dva uživatelé mají konflikt jejich **userPrincipalName**. Oba jsou **Jana. J\@contoso.com**. Konfliktní objekty jsou v karanténě v Azure AD.
 
-![Diagnostika běžný scénář Chyba synchronizace](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
+![Běžný scénář diagnostiky chyby synchronizace](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
 
-### <a name="orphaned-object-scenario"></a>Scénář osamocený objekt
-V některých případech můžete zjistit, že dojde ke ztrátě stávajícího uživatele **zdrojové ukotvení**. V místní službě Active Directory došlo k odstranění zdrojového objektu. Ale změna odstranění signálu je teď nikdy synchronizovány do Azure AD. To se stane, například z důvodu nezdařené modul synchronizace nebo migraci domény. Pokud na stejný objekt získá obnovit nebo znovu vytvořit logicky, stávajícího uživatele by měl být uživateli na synchronizaci z **zdrojové ukotvení**. 
+### <a name="orphaned-object-scenario"></a>Scénář osamoceného objektu
+V některých případech se může stát, že existující uživatel ztratí **zdrojové ukotvení**. Odstranění zdrojového objektu se stalo v místní službě Active Directory. Ale změna signálu odstranění se nikdy nesynchronizoval do Azure AD. K této ztrátě dochází z důvodů, jako jsou problémy s modulem synchronizace nebo migrace domény. Když se stejný objekt obnoví nebo znovu vytvoří, měl by být stávající uživatel uživatel, který se má synchronizovat ze **zdrojového ukotvení**. 
 
-Když stávajícího uživatele je objekt jenom pro cloud, uvidíte také konfliktní uživatele synchronizovány se službou Azure AD. Uživatele nelze porovnat synchronizované na existující objekt. Neexistuje žádný přímý způsob, jak namapovat **zdrojové ukotvení**. Přečtěte si více o [existující znalostní báze](https://support.microsoft.com/help/2647098). 
+Pokud je stávající uživatel objektem pouze cloudu, můžete také zobrazit kolidujícího uživatele synchronizovaného se službou Azure AD. Uživatel nemůže být spárován se synchronizací s existujícím objektem. Neexistuje přímý způsob, jak přemapovat **zdrojové ukotvení**. Přečtěte si další informace o [stávající znalostní bázi](https://support.microsoft.com/help/2647098). 
 
-Existující objekt ve službě Azure AD jako příklad, zachová licence Joe. Nově synchronizovaných objekt s jiným **zdrojové ukotvení** dochází v duplicitním atributem stavu ve službě Azure AD. Změny provedené u Joe v místní službě Active Directory se nepoužije pro původního uživatele Michalův (existující objekt) ve službě Azure AD.  
+Například stávající objekt v Azure AD zachovává licenci Jana. Nově synchronizovaný objekt s jinou **zdrojovou kotvou** se vyskytuje ve stavu duplicitního atributu ve službě Azure AD. Změny pro Jana v místní službě Active Directory se nepoužijí na původního uživatele Jana (existující objekt) ve službě Azure AD.  
 
-![Diagnostika scénář osamocený objekt Chyba synchronizace](./media/how-to-connect-health-diagnose-sync-errors/IIdFixOrphanedCase.png)
+![Scénář diagnostikování osamoceného objektu Chyba synchronizace](./media/how-to-connect-health-diagnose-sync-errors/IIdFixOrphanedCase.png)
 
-## <a name="diagnostic-and-troubleshooting-steps-in-connect-health"></a>Diagnostika a řešení potíží ve službě Connect Health 
-Funkce Diagnostika podporuje uživatelské objekty s následujícími duplicitní atributy:
+## <a name="diagnostic-and-troubleshooting-steps-in-connect-health"></a>Kroky pro diagnostiku a řešení potíží v Connect Health 
+Funkce diagnostiky podporuje uživatelské objekty s následujícími duplicitními atributy:
 
 | Název atributu | Typy chyb synchronizace|
 | ------------------ | -----------------|
@@ -57,102 +58,102 @@ Funkce Diagnostika podporuje uživatelské objekty s následujícími duplicitn�
 | OnPremiseSecurityIdentifier |  AttributeValueMustBeUnique |
 
 >[!IMPORTANT]
-> Pro přístup k této funkci **globálního správce** oprávnění, nebo **Přispěvatel** je vyžadované oprávnění na základě nastavení RBAC.
+> Aby bylo možné získat přístup k této funkci, je nutné mít oprávnění **globálního správce** nebo oprávnění **Přispěvatel** z nastavení RBAC.
 >
 
-Postupujte podle kroků na webu Azure Portal a zúžit podrobnosti o chybě synchronizace poskytující konkrétnější řešení:
+Postupujte podle kroků z Azure Portal pro zúžení podrobností o chybách synchronizace a poskytněte konkrétnější řešení:
 
-![Kroky pro diagnostiku Chyba synchronizace](./media/how-to-connect-health-diagnose-sync-errors/IIdFixSteps.png)
+![Kroky diagnostiky chyby synchronizace](./media/how-to-connect-health-diagnose-sync-errors/IIdFixSteps.png)
 
-Na webu Azure Portal proveďte několik kroků k identifikaci konkrétní opravitelné scénáře:  
-1.  Zkontrolujte, **diagnostikovat stav** sloupce. Stav se zobrazí, pokud je možný způsob, jak opravit chybu při synchronizaci přímo ze služby Azure Active Directory. Jinými slovy, řešení problémů s tok existuje, který můžete zúžit případě chyba a potenciálně ho opravit.
+V Azure Portal proveďte několik kroků k identifikaci konkrétních scénářů fixable:  
+1.  Zkontrolujte sloupec **stav diagnostiky** . Stav ukazuje, zda je možný způsob, jak opravit chybu synchronizace přímo z Azure Active Directory. Jinými slovy, existuje tok řešení potíží, který může zúžit velikost případu a potenciálně ho opravit.
 
-| Stav | Co znamená? |
+| Stav | Co to znamená? |
 | ------------------ | -----------------|
-| Nezahájeno | Jste nenavštívili tento proces diagnostiku. V závislosti na výsledek diagnostiky je potenciální způsob, jak opravit chybu synchronizace přímo z portálu. |
-| Vyžaduje se Ruční oprava | Chyba nevejde kritéria dostupných oprav z portálu. Buď konfliktní typy objektů nejsou uživatelů, nebo jste už provedli postup diagnostiky a nemusí se řešit oprava nebyl k dispozici z portálu. V takovém případě oprava ze strany místní je stále jedno z řešení. [Přečtěte si víc o místní opravy](https://support.microsoft.com/help/2647098). | 
-| Čeká se na synchronizaci | Oprava byla použita. Na portálu je čekání na další cyklus synchronizace vymazat chybu. |
+| Nezahájeno | Tento proces diagnostiky jste nenavštívili. V závislosti na výsledku diagnostiky existuje potenciální způsob, jak opravit chybu synchronizace přímo z portálu. |
+| Vyžadována Ruční oprava | Chyba nevyhovuje kritériím dostupných oprav z portálu. Buď konfliktní typy objektů nejsou uživateli, nebo jste již provedli diagnostické kroky, a z portálu nebylo k dispozici žádné řešení pro opravu. V druhém případě je oprava z místní strany stále jedním z řešení. [Přečtěte si další informace o místních opravách](https://support.microsoft.com/help/2647098). | 
+| Čeká na synchronizaci | Byla použita oprava. Portál čeká, než další synchronizační cyklus vymaže chybu. |
 
   >[!IMPORTANT]
-  > Sloupec stavu diagnostiky se resetuje za každý cyklus synchronizace. 
+  > Po každém synchronizačním cyklu se sloupec stav diagnostiky resetuje. 
   >
 
-1. Vyberte **Diagnostika** tlačítko v části Podrobnosti o chybě. Seznámíte se odpovědět na několik otázek a identifikovat podrobnosti o chybě synchronizace. Odpovědi na otázky identifikovat s případem osamocený objekt.
+1. V podrobnostech o chybě vyberte tlačítko **Diagnostika** . Odpovíte na pár otázek a Identifikujte podrobnosti o chybě synchronizace. Odpovědi na otázky vám pomůžou identifikovat osamocený objekt Case.
 
-1. Pokud **Zavřít** tlačítko se zobrazí na konci diagnostiky, neexistuje žádná Rychlá oprava dostupná z portálu, na základě vašich odpovědí. Odkazovat na řešení uvedené v předchozím kroku. Opravy v místním jsou stále řešení. Vyberte **Zavřít** tlačítko. Stav aktuální Chyba synchronizace se přepne do **vyžaduje se Ruční oprava**. Stav zůstane během aktuální cyklus synchronizace.
+1. Pokud se na konci diagnostiky zobrazí tlačítko **Zavřít** , na základě vašich odpovědí není dostupná žádná Rychlá oprava z portálu. Podívejte se na řešení zobrazené v posledním kroku. Opravy z místního prostředí jsou stále řešení. Vyberte tlačítko **Zavřít** . Stav aktuálních chybových přepínačů synchronizace, aby se **vyžadovala Ruční oprava**. Stav zůstane v průběhu aktuálního synchronizačního cyklu.
 
-1. Poté, co je označený osamocený objekt případ, můžete opravit duplicitní atributy chyby synchronizace přímo z portálu. Chcete-li spustit proces, vyberte **použít opravu** tlačítko. Stav aktuálních aktualizací chyb synchronizace na **čekající synchronizace**.
+1. Po identifikaci osamoceného objektu je možné duplicitní atributy opravit přímo z portálu. Chcete-li spustit proces, vyberte tlačítko **použít opravu** . Stav aktuálních aktualizací chyb synchronizace na **probíhající synchronizaci**.
 
-1. Po další cyklus synchronizace by měla být chybu odebrat ze seznamu.
+1. Po příštím cyklu synchronizace by se chyba měla odebrat ze seznamu.
 
-## <a name="how-to-answer-the-diagnosis-questions"></a>Jak odpovědět na otázky diagnostiky 
-### <a name="does-the-user-exist-in-your-on-premises-active-directory"></a>Uživatel existuje v místním Active Directory?
+## <a name="how-to-answer-the-diagnosis-questions"></a>Jak odpovědět na otázky ohledně diagnostiky 
+### <a name="does-the-user-exist-in-your-on-premises-active-directory"></a>Existuje uživatel ve vaší místní službě Active Directory?
 
-Tento dotaz se pokusí identifikovat zdrojový objekt stávajícího uživatele z místní služby Active Directory.  
-1. Zkontrolujte, jestli má Azure Active Directory pomocí zadaného objektu **UserPrincipalName**. Pokud ne, odpovězte **ne**.
-2. Pokud ano, zkontrolujte, zda je objekt stále v oboru synchronizace.  
-   - Vyhledejte v prostoru konektoru Azure AD pomocí DN.
-   - Pokud je objekt zjištěn **čekající přidání** stavu, odpovězte **ne**. Azure AD Connect nemůže připojit objekt k objektu přímo Azure AD.
+Tato otázka se pokusí identifikovat zdrojový objekt stávajícího uživatele z místní služby Active Directory.  
+1. Ověřte, zda Azure Active Directory má objekt se zadaným atributem **userPrincipalName**. Pokud ne, odpovězte **ne**.
+2. Pokud k tomu dojde, ověřte, zda je objekt stále v oboru pro synchronizaci.  
+   - Vyhledejte v prostoru konektoru služby Azure AD pomocí DN.
+   - Pokud se objekt nachází v **nedokončeném stavu přidání** , odpovězte **ne**. Azure AD Connect nemůže připojit objekt k pravému objektu služby Azure AD.
    - Pokud se objekt nenajde, odpovězte **Ano**.
 
-V těchto příkladech na otázku, pokusí se určit, zda **Joe Jackson** stále existuje v místním Active Directory.
-Pro **běžný scénář**, oba uživatelé **Joe Johnsonem** a **Joe Jackson** se nacházejí v místní službě Active Directory. Dva různí uživatelé jsou v karanténě objekty.
+V těchto příkladech se dotaz pokusí zjistit, zda **Jana Jacksonův diagram** stále existuje v místní službě Active Directory.
+V případě **běžných scénářů**se v místní službě Active Directory nacházejí oba uživatelé **Jana Johnsonem** a **Jan Jacksonův diagram** . Objekty v karanténě jsou dva různí uživatelé.
 
-![Diagnostika běžný scénář Chyba synchronizace](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
+![Běžný scénář diagnostiky chyby synchronizace](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
 
-Pro **osamocený objekt scénář**, pouze jednoho uživatele **Joe Johnsonem** je k dispozici v místní službě Active Directory:
+V **případě scénáře osamoceného objektu**je v místní službě Active Directory k dispozici pouze jeden uživatel **Jana Johnsonem** :
 
-![Diagnostika osamocený objekt synchronizace chyba * neexistuje uživatel * scénář](./media/how-to-connect-health-diagnose-sync-errors/IIdFixOrphanedCase.png)
+![Diagnostika chyby synchronizace osamocený objekt * uživatel existuje * scénář](./media/how-to-connect-health-diagnose-sync-errors/IIdFixOrphanedCase.png)
 
-### <a name="do-both-of-these-accounts-belong-to-the-same-user"></a>Obě tyto účty patří do stejného uživatele?
-Tento dotaz kontroluje příchozí konfliktní uživatele a existující objekt uživatele ve službě Azure AD, pokud chcete zobrazit, pokud patří do stejného uživatele.  
-1. Konfliktní objekt je nově synchronizovat do Azure Active Directory. Porovnání atributů objektů:  
+### <a name="do-both-of-these-accounts-belong-to-the-same-user"></a>Patří oba tyto účty stejnému uživateli?
+Tato otázka zkontroluje příchozího kolidujícího uživatele a stávající objekt uživatele v Azure AD, aby viděli, jestli patří stejnému uživateli.  
+1. Konfliktní objekt je nově synchronizovaný Azure Active Directory. Porovnejte atributy objektů:  
    - Zobrazovaný název
    - Hlavní název uživatele
    - ID objektu
-2. Pokud Azure AD nepodaří porovnat, zkontrolujte, zda služba Active Directory obsahuje objekty pomocí zadaných **názvy userPrincipalName**. Odpověď **ne** Pokud zjistíte, jak.
+2. Pokud Azure AD je nedokáže porovnat, ověřte, jestli má služba Active Directory objekty s poskytnutým **UserPrincipalNames**. Pokud najdete oba, odpovězte **ne** .
 
-V následujícím příkladu se tyto dva objekty patří do stejného uživatele **Joe Johnsonem**.
+V následujícím příkladu tyto dva objekty patří stejnému uživateli **Jan Johnsonem**.
 
-![Diagnostika osamocený objekt synchronizace chyba * stejný uživatel * scénář](./media/how-to-connect-health-diagnose-sync-errors/IIdFixOrphanedCase.png)
+![Diagnostika chyby synchronizace osamocený objekt * stejný uživatel * scénář](./media/how-to-connect-health-diagnose-sync-errors/IIdFixOrphanedCase.png)
 
 
-## <a name="what-happens-after-the-fix-is-applied-in-the-orphaned-object-scenario"></a>Co se stane po opravy je použít ve scénáři osamocený objekt
-Na základě odpovědí na předchozí otázky, zobrazí se vám **použít opravu** tlačítko opravu je dostupná z Azure AD. V takovém případě se místní objekt synchronizuje s neočekávaným Azure AD objektu. Dva objekty se mapují pomocí **zdrojové ukotvení**. **Použít opravu** změnit tyto přebírá nebo podobných kroků:
-1. Aktualizace **zdrojové ukotvení** správný objekt ve službě Azure AD.
-2. Odstraní konfliktní objekt ve službě Azure AD, pokud je k dispozici.
+## <a name="what-happens-after-the-fix-is-applied-in-the-orphaned-object-scenario"></a>Co se stane po použití opravy ve scénáři osamocený objekt
+Na základě odpovědí na předchozí otázky se zobrazí tlačítko **použít opravu** , pokud je k dispozici oprava z Azure AD. V tomto případě se místní objekt synchronizuje s neočekávaným objektem Azure AD. Tyto dva objekty jsou mapovány pomocí **zdrojového ukotvení**. Změna **použít opravu** přijímá tyto nebo podobné kroky:
+1. Aktualizuje **zdrojový kotvu** na správný objekt ve službě Azure AD.
+2. Odstraní konfliktní objekt v Azure AD, pokud je k dispozici.
 
-![Diagnostikujte chybu při synchronizaci po opravy](./media/how-to-connect-health-diagnose-sync-errors/IIdFixAfterFix.png)
+![Diagnostikovat chybu synchronizace po opravě](./media/how-to-connect-health-diagnose-sync-errors/IIdFixAfterFix.png)
 
 >[!IMPORTANT]
-> **Použít opravu** změna se vztahuje pouze na osamocený objekt případy.
+> Změna **použít opravu** se vztahuje pouze na případy osamoceného objektu.
 >
 
-Po provedení předchozích kroků má uživatel přístup původní zdroj, který je odkaz na existující objekt. **Diagnostikovat stav** aktualizuje hodnotu v zobrazení seznamu **čeká se na synchronizaci**. Chyba synchronizace bude vyřešen po příští synchronizaci. Připojení stavu se žádné delší zobrazit chyba přeložit synchronizace v zobrazení seznamu.
+Po předchozích krocích může uživatel získat přístup k původnímu prostředku, který je odkazem na existující objekt. Hodnota **stav diagnostiky** v zobrazení seznamu se aktualizuje na **čeká na synchronizaci**. Po další synchronizaci bude vyřešena chyba synchronizace. Funkce připojit stav již nebude zobrazovat vyřešenou chybu synchronizace v zobrazení seznamu.
 
 ## <a name="failures-and-error-messages"></a>Chyby a chybové zprávy
-**Uživatele s konfliktním atributem je obnovitelné odstranění v Azure Active Directory. Zkontrolujte, že uživatel je obtížné odstranit dřív, než zkuste to znovu.**  
-Uživatel s konfliktním atributem ve službě Azure AD by měl vyčistit, než použijete opravu. Podívejte se na [jak trvale odstranit uživatele ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-restore) než to zkusíte znovu vyřešit. Uživatel také se automaticky odstraní trvale po 30 dnech ve stavu obnovitelného odstraněno. 
+**Uživatel s konfliktním atributem je v Azure Active Directory měkký. Před opakováním zajistěte, aby byl uživatel pevným smazán.**  
+Uživatel s konfliktním atributem v Azure AD by měl být vyčištěný předtím, než můžete použít opravu. Podívejte se, [jak trvale odstranit uživatele ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-restore) , než zkusíte tuto opravu zkusit znovu. Uživatel se taky automaticky odstraní trvale po 30 dnech v tichém odstraněných stavech. 
 
-**Aktualizace zdrojového ukotvení pro cloudové uživatele ve vašem tenantovi se nepodporuje.**  
-Cloudových uživatelů ve službě Azure AD by neměl mít zdrojové ukotvení. Aktualizace zdrojového ukotvení není v tomto případě nepodporuje. Ruční oprava nic dalšího v místním prostředí. 
+**Aktualizace zdrojového kotvy na cloudový uživatel ve vašem tenantovi není podporovaná.**  
+Cloudový uživatel ve službě Azure AD by neměl mít zdrojové ukotvení. Aktualizace zdrojového kotvy není v tomto případě podporována. V místním prostředí se vyžaduje ruční Oprava. 
 
-## <a name="faq"></a>Nejčastější dotazy
-**Otázka:** Co se stane, když provádění **použít opravu** nezdaří?  
-**Odpověď:** Pokud se nezdaří spuštění, je možné, že Azure AD Connect je spuštěná chybu exportu. Aktualizujte stránku portálu a zkuste to znovu po příští synchronizaci. Cyklus synchronizace výchozí hodnota je 30 minut. 
-
-
-**Otázka:** Co když **existující objekt** by měla být objekt, který chcete odstranit?  
-**Odpověď:** Pokud **existující objekt** by měl být odstraněn, proces nezahrnuje změnu **zdrojové ukotvení**. Obvykle můžete vyřešit z místní služby Active Directory. 
+## <a name="faq"></a>Časté otázky
+**Otázka:** Co se stane, když dojde k chybě při **použití opravy** ?  
+**Odpověď:** Pokud je spuštění neúspěšné, je možné, že Azure AD Connect spouští chybu exportu. Aktualizujte stránku portálu a zkuste to znovu po další synchronizaci. Výchozí cyklus synchronizace je 30 minut. 
 
 
-**Otázka:** Chcete-li použít opravu jaká oprávnění potřebuje uživatel?  
-**Odpověď:** **Globální správce**, nebo **Přispěvatel** z nastavení RBAC v má oprávnění pro přístup k Diagnostika a řešení potíží s procesem.
+**Otázka:** Co když by měl **existující objekt** být objekt, který se má odstranit?  
+**Odpověď:** Pokud by měl být **existující objekt** odstraněn, proces nezahrnuje změnu **zdrojového ukotvení**. Obvykle ho můžete opravit z místní služby Active Directory. 
 
 
-**Otázka:** Je nutné nakonfigurovat službu Azure AD Connect nebo aktualizace agenta Azure AD Connect Health pro tuto funkci?  
-**Odpověď:** Ne, proces diagnostiku je kompletní cloudové funkce.
+**Otázka:** Jaké oprávnění uživatel potřebuje k použití opravy?  
+**Odpověď:** **Globální správce**nebo **Přispěvatel** z nastavení RBAC má oprávnění pro přístup k procesu diagnostiky a řešení potíží.
 
 
-**Otázka:** Pokud existující objekt je obnovitelné odstranění, bude proces diagnostiku objektu znovu aktivovat?  
-**Odpověď:** Ne, opravy nebude aktualizovat atributy objektů jiných než **zdrojové ukotvení**.
+**Otázka:** Je nutné nakonfigurovat Azure AD Connect nebo aktualizovat agenta Azure AD Connect Health pro tuto funkci?  
+**Odpověď:** Ne, proces diagnostiky je kompletní cloudová funkce.
+
+
+**Otázka:** Pokud je odstraněn stávající objekt, bude proces diagnostiky znovu aktivovat objekt.  
+**Odpověď:** Ne, Oprava nebude aktualizovat atributy objektů kromě **zdrojového ukotvení**.

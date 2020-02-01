@@ -12,12 +12,12 @@ ms.date: 09/27/2019
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 330f3100858d517666ac14fa8c206b4c06998c4f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 4f9ff446bae0a010b12e84172d5af60c6ca81c0e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274210"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896900"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Prostředí koncových uživatelů pro aplikace v Azure Active Directory
 
@@ -36,7 +36,7 @@ Přístupový panel na https://myapps.microsoft.com je webový portál, který u
 
 ![Snímek obrazovky se zobrazí na portálu Azure AD Access panel](media/what-is-single-sign-on/azure-ad-access-panel.png)
 
-Ve výchozím nastavení jsou všechny aplikace uvedeny společně na jedné stránce. Pracovní prostory ale můžete použít k seskupení souvisejících aplikací a jejich zobrazení na samostatné kartě, což usnadňuje jejich vyhledání. Pracovní prostory můžete například použít k vytvoření logických skupin aplikací pro konkrétní role úlohy, úkoly, projekty a tak dále. Informace najdete v tématu [Jak používat pracovní prostory moje aplikace k přizpůsobení panelů přístupu uživatele (Preview)](access-panel-workspaces.md). 
+Ve výchozím nastavení jsou všechny aplikace uvedeny společně na jedné stránce. Kolekce ale můžete použít k seskupení souvisejících aplikací a jejich zobrazení na samostatné kartě, což usnadňuje jejich vyhledání. Kolekce můžete například použít k vytvoření logických seskupení aplikací pro konkrétní role úlohy, úkoly, projekty a tak dále. Informace najdete v tématu [Jak používat kolekce mých aplikací k přizpůsobení panelů přístupu uživatelů](access-panel-collections.md). 
 
 Přístupový panel je oddělený od Azure Portal a nevyžaduje, aby uživatelé měli předplatné Azure nebo předplatné Office 365.
 

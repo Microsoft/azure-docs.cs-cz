@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 12/24/2019
-ms.openlocfilehash: 8e563ae095cf39cdce3e671d4099d2bf1592100a
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.date: 01/29/2020
+ms.openlocfilehash: d43b580f60f5ae8d2782cf9762b02aa1360e5a40
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513622"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901201"
 ---
 # <a name="collect-log-data-with-the-log-analytics-agent"></a>Shromažďovat data protokolu pomocí agenta Log Analytics
 
@@ -88,10 +88,10 @@ V následující tabulce jsou vysvětlené balíčky požadované pro podporovan
 |Požadovaný balíček |Popis |Minimální verze |
 |-----------------|------------|----------------|
 |Glibc |    Knihovna GNU C | 2.5-12 
-|Openssl    | Knihovny OpenSSL | 1,0. x nebo 1.1. x |
+|OpenSSL    | Knihovny OpenSSL | 1,0. x nebo 1.1. x |
 |Curl | Webový klient s kudrlinkou | 7.15.5 |
 |Python – ctypes | | 
-|PAM | Pluggable Authentication Modules | | 
+|MODULU | Moduly připojitelné k ověřování | | 
 
 >[!NOTE]
 >Aby bylo možné shromažďovat zprávy syslog, jsou vyžadovány buď rsyslog, nebo syslog-ng. Démon procesu syslog výchozí verze 5 Red Hat Enterprise Linux, CentOS a Oracle Linux verze (sysklog) není podporována pro shromažďování událostí protokolu syslog. Aby bylo možné shromažďovat data syslog z této verze těchto distribucí, je třeba nainstalovat démona rsyslog a nakonfigurovat tak, aby nahradila sysklog.
@@ -106,6 +106,7 @@ Níže uvedené informace uvádějí informace o konfiguraci proxy serveru a br�
 
 |Prostředek agenta|Porty |Směr |Obejít kontrolu protokolu HTTPS|
 |------|---------|--------|--------|   
+|OMS *. Azure. com |Port 443 |Odchozí |Ano |
 |*.ods.opinsights.azure.com |Port 443 |Odchozí|Ano |  
 |*.oms.opinsights.azure.com |Port 443 |Odchozí|Ano |  
 |*.blob.core.windows.net |Port 443 |Odchozí|Ano |  
@@ -142,7 +143,7 @@ Propojení počítačů v rámci předplatného Azure nebo hybridního prostřed
 
 |Zdroj | Metoda | Popis|
 |-------|-------------|-------------|
-|Virtuální počítač Azure| -Log Analytics virtuálního počítače rozšíření pro [Windows](../../virtual-machines/extensions/oms-windows.md) nebo [Linux](../../virtual-machines/extensions/oms-linux.md) pomocí rozhraní příkazového řádku Azure nebo pomocí šablony Azure Resource Manageru<br>- [ručně z Azure Portal](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json)<br>[Automatické zřizování - Azure Security Center](../../security-center/security-center-enable-data-collection.md)| – Rozšíření nainstaluje agenta Log Analytics na virtuální počítače Azure a zaregistruje je do existujícího pracovního prostoru Azure Monitor.<br>– Azure Security Center můžou zřídit agenta Log Analytics na všech podporovaných virtuálních počítačích Azure a všech nově vytvořených, pokud ji povolíte pro monitorování ohrožení zabezpečení a hrozeb. Pokud je tato možnost povolená, všechny nové nebo existující virtuální počítače bez nainstalovaného agenta budou zřízené.|
+|Virtuální počítač Azure| -Log Analytics virtuálního počítače rozšíření pro [Windows](../../virtual-machines/extensions/oms-windows.md) nebo [Linux](../../virtual-machines/extensions/oms-linux.md) pomocí rozhraní příkazového řádku Azure nebo pomocí šablony Azure Resource Manageru<br>- [ručně z Azure Portal](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json)<br>[Automatické zřizování - Azure Security Center](../../security-center/security-center-enable-data-collection.md)| – Rozšíření nainstaluje agenta Log Analytics na virtuální počítače Azure a zaregistruje je do existujícího pracovního prostoru Azure Monitor.<br>– Azure Security Center můžou zřídit agenta Log Analytics na všech podporovaných virtuálních počítačích Azure a všech nově vytvořených, pokud ji povolíte pro monitorování ohrožení zabezpečení a hrozeb. Pokud je povoleno, budou zřízeny všechny nové nebo existující virtuální počítače bez nainstalovaného agenta.|
 | Hybridní počítač s Windows|- [Ruční instalace](agent-windows.md)<br>- [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [Šablony Resource Manageru pomocí služby Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |Nainstalujte agenta Microsoft Monitoring Agent z příkazového řádku nebo pomocí automatizované metody, jako je například Azure Automation DSC, [Configuration Manager](https://docs.microsoft.com/configmgr/apps/deploy-use/deploy-applications)nebo se šablonou Azure Resource Manager, pokud jste nasadili Microsoft Azure Stack ve svém datovém centru.| 
 | Hybridní počítač s Linuxem| [Ruční instalace](../../azure-monitor/learn/quick-collect-linux-computer.md)|Instalace agenta pro Linux volání skript obálky hostovaná na Githubu. | 
 | System Center Operations Manager|[Integrace Operations Manageru s Log Analytics](om-agents.md) | Umožňuje konfigurovat integraci mezi protokoly Operations Manager a Azure Monitor a předávat shromážděná data z počítačů s Windows, která se vytvářejí do skupiny pro správu.|  

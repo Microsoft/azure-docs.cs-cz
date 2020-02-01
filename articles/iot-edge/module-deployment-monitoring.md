@@ -4,16 +4,16 @@ description: Automatické nasazení ve službě Azure IoT Edge použít ke sprá
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/12/2019
+ms.date: 01/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 406830add1891a058e9b43fccb8435aa4d339ed0
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 8aaac6100ba980301ff3e85a3ac3959bfee89b49
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548675"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76895963"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Principy automatického nasazení IoT Edge pro jednotlivá zařízení nebo ve velkém měřítku
 
@@ -61,7 +61,7 @@ Cílová podmínka se průběžně vyhodnocuje po celou dobu životnosti nasazen
 
 Máte například nasazení pomocí značek cílové podmínky. Environment = ' prod '. Pokud zahájíte nasazení, se 10 zařízení produkčního prostředí. Moduly se úspěšně nainstaloval v těchto 10 zařízení. Stav agenta IoT Edge zobrazuje 10 celkem zařízení, 10 úspěšných odpovědí, 0 odpovědí na chyby a 0 nedokončených odpovědí. Teď přidáte pět další zařízení s tags.environment = 'prod'. Služba zjistí změnu a stav agenta IoT Edge se změní na 15 celkových zařízení, 10 úspěšných odpovědí, 0 odpovědí na chyby a 5 nevyřízených odpovědí, zatímco se nasadí na pět nových zařízení.
 
-Vybrat cílová zařízení pomocí značky dvojčat zařízení nebo deviceId jakoukoli logickou podmínku. Pokud chcete použít podmínku se značkami, budete muset přidat "tags":{} oddílu ve dvojčeti zařízení v rámci stejné úrovně jako vlastnosti. [Další informace o značkách ve dvojčeti zařízení](../iot-hub/iot-hub-devguide-device-twins.md)
+Použijte jakoukoli logickou podmínku pro nepoužité značky zařízení, vykázaných vlastností zařízení, které jsou v seznamu, a vyberte cílové zařízení. Pokud chcete použít podmínku se značkami, budete muset přidat "tags":{} oddílu ve dvojčeti zařízení v rámci stejné úrovně jako vlastnosti. [Další informace o značkách ve dvojčeti zařízení](../iot-hub/iot-hub-devguide-device-twins.md)
 
 Příklady cílových podmínek:
 
@@ -70,10 +70,11 @@ Příklady cílových podmínek:
 * Tags.Environment = 'prod' AND tags.location = 'westus'
 * Tags.Environment = 'prod' OR tags.location = 'westus'
 * Tags.Operator = "Jan" a tags.environment = 'prod' není deviceId = 'linuxprod1.
+* Properties. inhlášeny. devicemodel = ' 4000x '
 
-Tady jsou některé omezí při konstrukci cílovou podmínku:
+Při vytváření cílové podmínky Vezměte v úvahu tato omezení:
 
-* Ve dvojčeti zařízení může vytvořit pouze cílovou podmínku pomocí značek nebo ID zařízení.
+* V zařízení je možné vytvořit jenom cílovou podmínku pomocí značek, hlášených vlastností nebo deviceId.
 * Dvojité uvozovky nejsou povolené v každé části cílovou podmínku. Použijte jednoduché uvozovky.
 * Jednoduché uvozovky představují hodnoty cílovou podmínku. Proto musíte před jednoduchá uvozovka s jinou jednoduché uvozovky, pokud je součástí názvu zařízení. Například cíl na nějaké zařízení názvem `operator'sDevice`, zápis `deviceId='operator''sDevice'`.
 * V cílové podmínku hodnoty jsou povoleny číslice, písmena a následující znaky: `-:.+%_#*?!(),=@;$`.
@@ -92,12 +93,12 @@ Ve výchozím nastavení všechna nasazení hlásí čtyři metriky:
 
 * **Cíl** zobrazuje IoT Edge zařízení, která se shodují s podmínkou cílení nasazení.
 * **Použito** ukazuje cílené IoT Edge zařízení, na která necílí jiné nasazení s vyšší prioritou.
-* **Po úspěšném hlášení** se zobrazí IoT Edge zařízení, která se vrátila ke službě, kterou moduly úspěšně nasadily.
-* **Při hlášení** se zobrazí IoT Edge zařízení, která se vrátila ke službě, že jeden nebo více modulů nebyl úspěšně nasazen. Aby to prověřili chybu, vzdálené připojení k těmto zařízením a zobrazit soubory protokolů.
+* **Po úspěšném hlášení** se zobrazí IoT Edge zařízení, která ohlásila, že byly moduly nasazeny úspěšně.
+* **Hlášení chyb** zobrazuje IoT Edge zařízení, která oznámily, že jeden nebo více modulů nebyl úspěšně nasazeny. Aby to prověřili chybu, vzdálené připojení k těmto zařízením a zobrazit soubory protokolů.
 
 Kromě toho můžete definovat vlastní metriky, které vám pomůžou monitorovat a spravovat nasazení.
 
-Metriky poskytují souhrnné počty různých stavů, které mohou zařízení nahlásit zpět v důsledku použití konfigurace nasazení. Metriky se mohou dotazovat na [nedokončené hlášené vlastnosti modulu edgeHub](module-edgeagent-edgehub.md#edgehub-reported-properties), jako je *lastDesiredStatus* nebo *lastConnectTime*. Například:
+Metriky poskytují souhrnné počty různých stavů, které mohou zařízení nahlásit zpět v důsledku použití konfigurace nasazení. Metriky se mohou dotazovat na [nedokončené hlášené vlastnosti modulu edgeHub](module-edgeagent-edgehub.md#edgehub-reported-properties), jako je *lastDesiredStatus* nebo *lastConnectTime*. Příklad:
 
 ```sql
 SELECT deviceId FROM devices
@@ -112,7 +113,7 @@ Navrstvená nasazení jsou automatická nasazení, která se dají vzájemně ko
 
 Navrstvená nasazení mají stejné základní komponenty jako jakékoli automatické nasazení. Cílí na zařízení na základě značek v zařízení a poskytují stejné funkce kolem popisků, metrik a hlášení stavu. Navrstvená nasazení mají taky přiřazené priority, ale místo toho, abyste zjistili, jaké nasazení se na zařízení používá, Priorita určuje, jak se v zařízení přiděluje více nasazení. Pokud například dvě vrstvená nasazení mají modul nebo trasu se stejným názvem, použije se vrstvené nasazení s vyšší prioritou, zatímco je nižší priorita přepsána.
 
-Moduly runtime systému, edgeAgent a edgeHub, nejsou nakonfigurované jako součást navrstveného nasazení. Jakékoli IoT Edge zařízení, na které cílí vrstvené nasazení, potřebuje pro něj nejprve standardní automatické nasazení, které poskytne základ pro přidání vrstvených nasazení.
+Moduly runtime systému, edgeAgent a edgeHub, nejsou nakonfigurované jako součást navrstveného nasazení. Všechna IoT Edge zařízení, na která cílí vrstvy nasazení, musí nejdřív použít standardní automatické nasazení. Automatické nasazení poskytuje základ, na základě kterého lze přidat navrstvená nasazení.
 
 Zařízení IoT Edge může použít jedno a pouze jedno standardní automatické nasazení, ale může použít více vrstevných automatických nasazení. Všechna vrstvená nasazení, která cílí na zařízení, musí mít vyšší prioritu než automatické nasazení tohoto zařízení.
 
@@ -141,7 +142,7 @@ Například ve standardním nasazení můžete přidat modul simulovaného senzo
 }
 ```
 
-V vrstveném nasazení, které cílí na stejná zařízení, nebo na podmnožinu stejných zařízení, můžete chtít přidat další vlastnost, která simuluje senzor, aby odesílal zprávy 1000 a pak se zastavil. Nechcete přepsat existující vlastnosti, takže vytvoříte novou část v rámci požadovaných vlastností s názvem `layeredProperties`, která obsahuje novou vlastnost:
+V vrstveném nasazení, které se zaměřuje na některá nebo všechna stejná zařízení, můžete přidat vlastnost, která dává simulovanému senzoru odeslání zpráv 1000 a pak se zastaví. Nechcete přepsat existující vlastnosti, takže vytvoříte novou část v rámci požadovaných vlastností s názvem `layeredProperties`, která obsahuje novou vlastnost:
 
 ```json
 "SimulatedTemperatureSensor": {
@@ -184,7 +185,7 @@ Postupné zavádění je proveden v následujících fází a kroků:
 
 Nasazení může být vrácena zpět, pokud se zobrazí chyby nebo chybné konfigurace. Vzhledem k tomu, že nasazení definuje absolutní konfiguraci modulu pro IoT Edge zařízení, musí být další nasazení cíleno na stejné zařízení s nižší prioritou, i když je cílem odebrat všechny moduly.  
 
-Odstraněním nasazení nedojde k odebrání modulů z cílových zařízení. Musí existovat jiné nasazení, které definuje novou konfiguraci pro zařízení, a to i v případě, že se jedná o prázdné nasazení.
+Odstraněním nasazení se moduly neodstraňují z cílových zařízení. Musí existovat jiné nasazení, které definuje novou konfiguraci pro zařízení, a to i v případě, že se jedná o prázdné nasazení.
 
 Proveďte vrácení zpět v následujícím pořadí:
 

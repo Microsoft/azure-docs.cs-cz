@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
-ms.openlocfilehash: d76338ccd4dcdf7a9a9a96baa1fb47ed5272d5ff
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 8a8619da831dfa5b240bd93d3a046c49cc30affa
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821964"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901411"
 ---
 | Prostředek | Standardní sdílené složky | Soubory ke sdílení souborů úrovně Premium |
 |----------|---------------|------------------------------------------|
@@ -27,4 +27,4 @@ ms.locfileid: "72821964"
 | Maximální délka názvu objektu (adresářů a souborů) | 2 048 znaků | 2 048 znaků |
 | Maximální součást cesty (v cestě \A\B\C\D je každé písmeno součásti) | 255 znaků | 255 znaků |
 
-\* není k dispozici ve všech oblastech, přečtěte si téma věnované [místní dostupnosti](../articles/storage/files/storage-files-planning.md#regional-availability) pro seznam dostupných oblastí.
+\* k dispozici ve většině oblastí, najdete v tématu věnovaném [regionální dostupnosti](../articles/storage/files/storage-files-planning.md#regional-availability) podrobnosti o dostupných oblastech.

@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI – kontejner sfctl
 description: Přečtěte si o sfctl rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro kontejnery.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 316715e65af07176b3dc276d47979a5fa3dc1d6f
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 07861e2b67eea67740b341cbea994de978973664
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639135"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906110"
 ---
 # <a name="sfctl-container"></a>sfctl container
 Spusťte příkazy související s kontejnerem na uzlu clusteru.

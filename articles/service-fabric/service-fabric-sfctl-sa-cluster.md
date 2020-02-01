@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI – sfctl SA – cluster
 description: Přečtěte si o sfctl rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro správu samostatných clusterů.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 765d7d76cb13758417bb3927ff9620026ca763b1
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 233148c04fb1a9c6cf1d6c7042c12c54eebd0205
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646020"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904924"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
 Spravujte samostatné Service Fabric clustery.
@@ -19,7 +19,7 @@ Spravujte samostatné Service Fabric clustery.
 
 |Příkaz|Popis|
 | --- | --- |
-| config | Získejte konfiguraci samostatného clusteru Service Fabric. |
+| Konfigurace | Získejte konfiguraci samostatného clusteru Service Fabric. |
 | konfigurace – upgrade | Spusťte upgrade konfigurace samostatného clusteru Service Fabric. |
 | upgrade-status | Získá stav upgradu konfigurace clusteru Service Fabric samostatného clusteru. |
 
@@ -80,9 +80,9 @@ Ověřte zadané parametry upgradu konfigurace a spusťte upgrade konfigurace cl
 ### <a name="examples"></a>Příklady
 
 Spuštění aktualizace konfigurace clusteru
-``` 
-sfctl sa-cluster config-upgrade --cluster-config <YOUR CLUSTER CONFIG> --application-health-    
-policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"   
+```
+sfctl sa-cluster config-upgrade --cluster-config <YOUR CLUSTER CONFIG> --application-health-
+policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"
 ```
 
 ## <a name="sfctl-sa-cluster-upgrade-status"></a>sfctl SA – upgrade clusteru – stav

@@ -9,6 +9,7 @@ manager: daveba
 editor: curtand
 ms.assetid: dc0e53d8-403e-462a-9543-164eaa7dd8b3
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,15 +18,15 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92825a9ef84edc30b6b34aa875f8a207c70c8511
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bbd1ad6178e0120bf8414fc424b79254e306d2c2
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60350439"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897276"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Sledování služby AD FS pomocí služby Azure AD Connect Health
-Následující dokumentace se věnuje sledování infrastruktury služby AD FS ve službě Azure AD Connect Health. Informace o sledování služby Azure AD Connect (Sync) pomocí služby Azure AD Connect Health najdete v článku [Používání služby Azure AD Connect Health pro synchronizaci](how-to-connect-health-sync.md). Informace o sledování služby Active Directory Domain Services pomocí služby Azure AD Connect Health najdete v článku [Používání služby Azure AD Connect Health se službou AD DS](how-to-connect-health-adds.md).
+Následující dokumentace se věnuje sledování infrastruktury služby AD FS ve službě Azure AD Connect Health. Informace o monitorování Azure AD Connect (synchronizace) s Azure AD Connect Health najdete v tématu [použití Azure AD Connect Health ke synchronizaci](how-to-connect-health-sync.md). Další informace o sledování Active Directory Domain Services pomocí Azure AD Connect Health najdete v tématu [použití Azure AD Connect Health s služba AD DS](how-to-connect-health-adds.md).
 
 ## <a name="alerts-for-ad-fs"></a>Upozornění služby AD FS
 Část pojednávající o upozorněních služby Azure AD Connect Health uvádí seznam aktivních upozornění. Každé upozornění obsahuje důležité informace, postup řešení a odkazy na související dokumentaci.
@@ -46,11 +47,11 @@ Funkce analýzy využití služby Azure AD Connect Health analyzuje ověřovací
 
 Pokud chcete vybrat další metriky, určit časový rozsah nebo změnit seskupení, klikněte pravým tlačítkem na graf analýzy využití a vyberte Upravit graf. Potom můžete zadat časový rozsah, vybrat jiné metriky a změnit seskupení. Distribuci ověřovacího provozu můžete zobrazit podle různých „metrik“ a jednotlivé metriky můžete seskupit pomocí příslušných parametrů možnosti „Seskupit podle“, které jsou uvedené v následující části:
 
-**Metrika: Celkový počet požadavků** – celkový počet požadavků zpracovaných servery AD FS.
+**Metrika: Celkový počet požadavků** – Celkový počet požadavků zpracovaných servery AD FS.
 
 |Seskupit podle | Co seskupení znamená a proč je užitečné? |
 | --- | --- |
-| Vše | Zobrazí celkový počet požadavků zpracovaných všemi servery AD FS.|
+| Všechno | Zobrazí celkový počet požadavků zpracovaných všemi servery AD FS.|
 | Aplikace | Seskupí celkový počet požadavků podle cílové přijímající strany. Toto seskupení vás seznámí s procentem celkového provozu, které jednotlivé aplikace přijímají. |
 |  Server |Seskupí celkový počet požadavků podle serveru, který požadavek zpracoval. Toto seskupení vás seznámí s distribucí zatížení celkového provozu.
 | Připojení k pracovišti |Seskupí celkový počet požadavků podle toho, jestli přicházejí ze zařízení, která jsou připojená k pracovišti (známá). Toto seskupení vás seznámí s tím, jestli se k vašim prostředkům přistupuje pomocí zařízení, které infrastruktura identity nezná. |
@@ -58,20 +59,20 @@ Pokud chcete vybrat další metriky, určit časový rozsah nebo změnit seskupe
 | Umístění v síti | Seskupí celkový počet požadavků podle umístění uživatele v síti. Může to být intranet nebo extranet. Toto seskupení vás seznámí s procentuálním podílem provozu z intranetu vzhledem k provozu z extranetu. |
 
 
-**Metrika: Celkový počet neúspěšných požadavků** – celkový počet neúspěšných požadavků zpracovaných službou FS. (Tato metrika je dostupná pouze ve službě AD FS pro Windows Server 2012 R2.)
+**Metrika: Celkový počet neúspěšných požadavků** – Celkový počet neúspěšných požadavků zpracovaných službou FS. (Tato metrika je dostupná pouze ve službě AD FS pro Windows Server 2012 R2.)
 
 |Seskupit podle | Co seskupení znamená a proč je užitečné? |
 | --- | --- |
-| Typ chyby | Zobrazí počet chyb podle předdefinovaných typů chyb. Toto seskupení vás seznámí s běžnými typy chyb. <ul><li>Nesprávné uživatelské jméno nebo heslo: Chyby vzniklé v důsledku nesprávné uživatelské jméno nebo heslo.</li> <li>"Uzamčení extranetu": Chyby způsobené požadavky přijatými od uživatele, který byl uzamčený přístup do extranetu </li><li> "Prošlé heslo": Chyby způsobené uživateli, kteří se přihlašují pomocí vypršet platnost jeho hesla.</li><li>"Zakázaný účet": Chyby způsobené uživateli, protokolování pomocí deaktivovaného účtu.</li><li>"Ověřování zařízení": Chyby způsobené uživateli, kteří neprovádějí ověřování pomocí ověření zařízení.</li><li>"Ověřování certifikátu uživatele": Chyby způsobené uživateli, kterým nefunguje ověřování kvůli neplatnému certifikátu.</li><li>"MFA": Chyby způsobené uživateli, kteří neprovádějí ověřování pomocí služby Multi-Factor Authentication.</li><li>"Jiné přihlašovací údaje": "Autorizace vystavení": Chyby způsobené selháním autorizace.</li><li>"Delegování vystavení": Chyby způsobené chybami delegace vystavení.</li><li>"Přijetí tokenu": Chyby způsobené Služba ADFS odmítla token od zprostředkovatele Identity třetí strany.</li><li>"Protokol": Chyba způsobená chybami protokolu.</li><li>"Neznámý": Zachytit vše. Jakékoli jiné chyby, které se nehodí do definovaných kategorií.</li> |
+| Typ chyby | Zobrazí počet chyb podle předdefinovaných typů chyb. Toto seskupení vás seznámí s běžnými typy chyb. <ul><li>Nesprávné uživatelské jméno nebo heslo: Chyby způsobené zadáním nesprávného uživatelského jména nebo hesla.</li> <li>„Uzamčení extranetu“: Selhání způsobené požadavky přijatými od uživatele, který má uzamčený přístup do extranetu. </li><li> „Prošlé heslo“: Chyby způsobené uživateli, kteří se přihlašují pomocí hesla, kterému vypršela platnost.</li><li>„Deaktivovaný účet“: Chyby způsobené uživateli, kteří se přihlašují pomocí deaktivovaného účtu.</li><li>„Ověřování zařízení“: Chyby způsobené uživateli, kteří neprovádějí ověřování pomocí ověření zařízení.</li><li>„Ověřování certifikátu uživatele“: Chyby způsobené uživateli, kterým nefunguje ověřování kvůli neplatnému certifikátu.</li><li>„MFA“: Chyby způsobené neúspěšným ověřením uživatele v případě použití Multi-Factor Authentication.</li><li>„Jiné přihlašovací údaje“: „Autorizace vystavení“: Chyby způsobené selháním autorizace.</li><li>„Delegování vystavení“: Chyby způsobené chybami delegace vystavení.</li><li>„Přijetí tokenu“: Chyby způsobené tím, že služba ADFS odmítla token od zprostředkovatele identity z řad třetích stran.</li><li>„Protokol“: Chyba způsobená chybami protokolu.</li><li>„Neznámá“: Zachytit vše. Jakékoli jiné chyby, které se nehodí do definovaných kategorií.</li> |
 | Server | Seskupí chyby podle serveru. Toto seskupení vás seznámí s distribucí chyb mezi servery. Nerovnoměrná distribuce může naznačovat vadný stav serveru. |
 | Umístění v síti | Seskupí chyby podle umístění požadavků v síti (intranet vs. extranet). Toto seskupení vás seznámí s typy neúspěšných požadavků. |
 |  Aplikace | Seskupí chyby podle cílové aplikace (přijímající strany). Toto seskupení vás seznámí s tím, která cílová aplikace zaznamenává největší počet chyb. |
 
-**Metrika: Počet uživatelů** – průměrný počet jedinečných uživatelů aktivně ověřujících pomocí AD FS
+**Metrika: Počet uživatelů** – Průměrný počet jedinečných uživatelů aktivně ověřujících pomocí AD FS
 
 |Seskupit podle | Co seskupení znamená a proč je užitečné? |
 | --- | --- |
-|Vše |Tato metrika poskytuje průměrný počet uživatelů, kteří používají službu FS ve vybraném časovém intervalu. Uživatelé nejsou seskupení. <br>Průměr závisí na vybraném časovém intervalu. |
+|Všechno |Tato metrika poskytuje průměrný počet uživatelů, kteří používají službu FS ve vybraném časovém intervalu. Uživatelé nejsou seskupení. <br>Průměr závisí na vybraném časovém intervalu. |
 | Aplikace |Seskupí průměrný počet uživatelů podle cílové aplikace (přijímající strany). Toto seskupení vás seznámí s počtem uživatelů používajících jednotlivé aplikace. |
 
 ## <a name="performance-monitoring-for-ad-fs"></a>Sledování výkonu služby AD FS
@@ -84,7 +85,7 @@ Výběrem možnosti Filtrovat (v horní části okna) můžete filtrovat podle s
 ## <a name="top-50-users-with-failed-usernamepassword-logins"></a>Nejčastějších 50 uživatelů s neúspěšným přihlášením kvůli uživatelskému jména nebo heslu
 Jednou z běžných příčin neúspěšného požadavku na ověření na serveru AD FS je požadavek provedený s neplatnými přihlašovacími údaji, tedy s nesprávným uživatelským jménem nebo heslem. Do této situace se uživatelé zpravidla dostávají v důsledku používání složitých hesel, zapomenutí hesel nebo překlepů.
 
-Ale existují další důvody, které může mít za následek neočekávaný počet požadavků zpracovávaných servery AD FS, jako například: Aplikace, která uloží uživatelské údaje a přihlašovací údaje vypršení platnosti nebo pokus o přihlášení k účtu pomocí řady známých hesel uživatel se zlými úmysly. Tyto dva příklady jsou legitimními důvody, které by mohly vést k prudkému nárůstu množství požadavků.
+Existují však i další důvody, které mohou mít za následek neočekávaný počet požadavků zpracovávaných vašimi servery služby AD FS. Příklady: Aplikace, která ukládá do mezipaměti přihlašovací údaje uživatelů a vypršení jejich platnosti nebo pokus uživatele se zlými úmysly o přihlášení k účtu s použitím řady známých hesel. Tyto dva příklady jsou legitimními důvody, které by mohly vést k prudkému nárůstu množství požadavků.
 
 Azure AD Connect Health pro ADFS poskytuje sestavy s nejčastějšími 50 uživateli, kteří se neúspěšně přihlašovali pomocí neplatného uživatelského jména nebo hesla. Tuto sestavu můžete vytvořit zpracováním událostí auditu, které generují všechny servery AD FS ve farmách.
 
@@ -120,5 +121,5 @@ Sestava obsahuje následující informace:
 ## <a name="related-links"></a>Související odkazy
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
 * [Instalace agenta služby Azure AD Connect Health](how-to-connect-health-agent-install.md)
-* [Sestavě rizikových IP adres](how-to-connect-health-adfs-risky-ip.md)
+* [Sestava rizikových IP adres](how-to-connect-health-adfs-risky-ip.md)
 

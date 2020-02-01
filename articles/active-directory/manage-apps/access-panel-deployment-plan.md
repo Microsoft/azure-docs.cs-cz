@@ -15,12 +15,12 @@ ms.date: 09/27/2019
 ms.author: baselden
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e9b2119964ec2af792e2f2a5b942fde12cf7eab
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 04d8b6c6d40aa81bf56baed59f90417f2147fa56
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512847"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897073"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Plánování nasazení přístupového panelu Azure Active Directory
 
@@ -36,8 +36,8 @@ Pomocí přístupového panelu Azure AD můžete:
 
 Umožňuje správcům taky spravovat tyto možnosti:
 
-* Terms of service
-* Organizations
+* Podmínka služby
+* Subjekt
 * Revize přístupu
 
 
@@ -149,7 +149,7 @@ Další informace najdete v tématu [Konfigurace způsobu, jakým koncoví uživ
 
 Když projekty technologie selžou, obvykle to vznikne, protože neshodují očekávání na dopad, výsledek a odpovědnosti. Chcete-li se těmto nástrah vyhnout, [Ujistěte se, že jste připravují správné zúčastněné strany](../fundamentals/active-directory-deployment-plans.md) a že role účastníků v projektu jsou dobře pochopitelné.
 
-### <a name="plan-communications"></a>Plán komunikace
+### <a name="plan-communications"></a>Plánování komunikace
 
 Komunikace je zásadní pro úspěch jakékoli nové služby. Proaktivně Informujte uživatele, jak a kdy se jejich prostředí změní a jak v případě potřeby získat podporu.
 
@@ -227,9 +227,9 @@ Naplánujte pořadí, ve kterém přidáte aplikace do spouštěče moje aplikac
 
 Do spouštěče moje aplikace se dá přidat libovolná aplikace s povoleným PŘIHLÁŠENÍm k Azure AD. Další aplikace se přidávají pomocí propojené možnosti jednotného přihlašování. Můžete nakonfigurovat dlaždici aplikace, která odkazuje na adresu URL vaší existující webové aplikace. Propojené jednotné přihlašování umožňuje zahájit přesměrování uživatelů na portál moje aplikace bez migrace všech aplikací do jednotného přihlašování služby Azure AD. Můžete postupně přecházet na aplikace konfigurované pro jednotné přihlašování služby Azure AD, aniž by došlo k přerušení činnosti uživatelů.
 
-#### <a name="use-my-apps-workspaces-preview"></a>Použití pracovních prostorů moje aplikace (Preview)
+#### <a name="use-my-apps-collections"></a>Použití kolekcí moje aplikace
 
-Ve výchozím nastavení jsou všechny aplikace uvedeny společně na jedné stránce. Pracovní prostory ale můžete použít k seskupení souvisejících aplikací a jejich zobrazení na samostatné kartě, což usnadňuje jejich vyhledání. Pracovní prostory můžete například použít k vytvoření logických skupin aplikací pro konkrétní role úlohy, úkoly, projekty a tak dále. Informace najdete v tématu [Jak používat pracovní prostory moje aplikace k přizpůsobení panelů přístupu uživatele (Preview)](access-panel-workspaces.md). 
+Ve výchozím nastavení jsou všechny aplikace uvedeny společně na jedné stránce. Kolekce ale můžete použít k seskupení souvisejících aplikací a jejich zobrazení na samostatné kartě, což usnadňuje jejich vyhledání. Kolekce můžete například použít k vytvoření logických seskupení aplikací pro konkrétní role úlohy, úkoly, projekty a tak dále. Informace najdete v tématu [Jak používat kolekce mých aplikací k přizpůsobení panelů přístupu uživatelů](access-panel-collections.md). 
 
 #### <a name="plan-whether-to-use-my-apps-or-an-existing-portal"></a>Plánování, jestli se mají používat moje aplikace nebo stávající portál
 
@@ -340,7 +340,7 @@ K provedení požadované úlohy v Azure Active Directory byste měli použít r
 | - | -| -|
 | Správce helpdesku| Podpora vrstvy 1| Žádné |
 | Správce identit| Konfigurace a ladění v případě problémů ovlivňujících službu Azure AD| Globální správce |
-| Správce aplikací| Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním| Žádné |
+| Správce aplikace| Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním| Žádné |
 | Správci infrastruktury| Vlastník změna certifikátu| Globální správce |
 | Vlastník/účastník společnosti| Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním| Žádné |
 

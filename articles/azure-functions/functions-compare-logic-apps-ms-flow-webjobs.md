@@ -4,13 +4,17 @@ description: 'Porovnání cloudových služeb Microsoftu, které jsou optimalizo
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 822726a7a9336df724d6361e40ce5e1da27b94a1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9f2c498b55e7c7cc84a047343d084e1f54569dd2
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75409839"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898922"
 ---
+> [!NOTE]
+> Microsoft Flow je teď Power Automate. Další informace najdete na tomto [blogu](https://aka.ms/flow-now-pa).
+> 
+> Tento obsah se aktualizuje tak, aby odrážel změnu brandingu během nadcházejících dnů.
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Volba správných služeb integrace a automatizace v Azure
 
 Tento článek porovnává tyto cloudové služby společnosti Microsoft:

@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI – brána sítě sfctl
 description: Přečtěte si o sfctl rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro získání a odstranění Service Fabricch prostředků brány sítě.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 86e63f88cf1412b54fad6f9e386a1a5052463917
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 3e398ff8a1a0a28fd9d0650a7c9d18ba04817d33
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646156"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906013"
 ---
 # <a name="sfctl-mesh-gateway"></a>sfctl mesh gateway
 Získejte a odstraňte prostředky brány sítě.
