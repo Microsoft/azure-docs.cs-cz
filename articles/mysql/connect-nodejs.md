@@ -8,29 +8,30 @@ ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 12/02/2019
-ms.openlocfilehash: 6773b5d4635089d0977dfa0699549ad22e00aead
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 96590faae26892771ce27c539bb6e71c84b65b10
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770726"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938947"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rychlý Start: použití Node. js k připojení a dotazování dat v Azure Database for MySQL
-Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL pomocí [Node.js](https://nodejs.org/) z platforem Windows, Ubuntu Linux a Mac. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Toto téma předpokládá, že máte zkušenosti s vývojem pomocí Node.js a teprve začínáte pracovat se službou Azure Database for MySQL.
 
-## <a name="prerequisites"></a>Předpoklady
-Tento rychlý start využívá jako výchozí bod prostředky vytvořené v některém z těchto průvodců:
-- [Vytvoření serveru Azure Database for MySQL pomocí webu Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
-- [Vytvoření serveru Azure Database for MySQL pomocí Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
+V tomto rychlém startu se připojíte k Azure Database for MySQL pomocí Node. js. Pak použijete příkazy SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi z platforem Mac, Ubuntu Linux a Windows. 
 
-Budete také muset:
-- Nainstalovat modul runtime [Node.js](https://nodejs.org).
-- Nainstalujte balíček [MySQL](https://www.npmjs.com/package/mysql) pro připojení k MySQL z aplikace Node. js. 
+V tomto tématu se předpokládá, že máte zkušenosti s vývojem pomocí Node. js, ale začínáte pracovat s Azure Database for MySQL.
+
+## <a name="prerequisites"></a>Požadavky
+
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Server Azure Database for MySQL. [Vytvořte Azure Database for MySQL server pomocí Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md) nebo [Vytvořte Azure Database for MySQL server pomocí Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md).
 
 ## <a name="install-nodejs-and-the-mysql-connector"></a>Instalace Node.js a konektoru MySQL
-V závislosti na vaší platformě nainstalujte Node.js podle pokynů v příslušné části. Pomocí npm nainstalujte balíček MySQL a jeho závislosti do složky projektu.
+
+V závislosti na vaší platformě nainstalujte [Node. js](https://nodejs.org)podle pokynů v příslušné části. Pomocí npm nainstalujte balíček [MySQL](https://www.npmjs.com/package/mysql) a jeho závislosti do složky projektu.
 
 ### <a name="windows"></a>**Windows**
+
 1. Přejděte na [stránku pro stažení Node.js](https://nodejs.org/en/download/) a vyberte požadovanou možnost Instalační služby systému Windows.
 2. Vytvořte místní složku projektu, například `nodejsmysql`. 
 3. Otevřete příkazový řádek a poté změňte adresář na složku projektu, například `cd c:\nodejsmysql\`
@@ -45,6 +46,7 @@ V závislosti na vaší platformě nainstalujte Node.js podle pokynů v příslu
 5. Ověřte instalaci kontrolou výstupního textu `npm list`. Číslo verze se může lišit v závislosti na vydávání nových oprav.
 
 ### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
+
 1. Spuštěním následujících příkazů nainstalujte **Node.js** a **npm** – správce balíčků pro Node.js.
 
    ```bash
@@ -62,6 +64,7 @@ V závislosti na vaší platformě nainstalujte Node.js podle pokynů v příslu
 3. Ověřte instalaci tak, že zkontrolujete výstupní text seznamu npm. Číslo verze se může lišit v závislosti na vydávání nových oprav.
 
 ### <a name="mac-os"></a>**Mac OS**
+
 1. Zadejte následující příkazy, abyste nainstalovali **brew**, snadno použitelného správce balíčků pro Mac OS X a **Node.js**.
 
    ```bash
@@ -80,21 +83,24 @@ V závislosti na vaší platformě nainstalujte Node.js podle pokynů v příslu
 3. Ověřte instalaci kontrolou výstupního textu `npm list`. Číslo verze se může lišit v závislosti na vydávání nových oprav.
 
 ## <a name="get-connection-information"></a>Získání informací o připojení
+
 Získejte informace o připojení potřebné pro připojení ke službě Azure Database for MySQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
 2. V nabídce vlevo v Azure Portal vyberte **všechny prostředky**a potom vyhledejte server, který jste vytvořili (například **mydemoserver**).
 3. Vyberte název serveru.
 4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
  ![Název serveru Azure Database for MySQL](./media/connect-nodejs/server-name-azure-database-mysql.png)
 
 ## <a name="running-the-javascript-code-in-nodejs"></a>Spuštění kódu jazyka JavaScript v Node.js
+
 1. Vložte kód jazyka JavaScript do textového souboru a ten uložte s příponou .js do složky projektu (například C:\nodejsmysql\createtable.js nebo /home/username/nodejsmysql/createtable.js).
 2. Otevřete příkazový řádek nebo prostředí bash a pak změňte adresář na složku vašeho projektu `cd nodejsmysql`.
 3. Chcete-li spustit aplikaci, zadejte příkaz Node následovaný názvem souboru, například `node createtable.js`.
 4. Pokud v systému Windows není aplikace Node ve vaší proměnné prostředí PATH, možná bude nutné ke spuštění aplikace Node použít úplnou cestu, například `"C:\Program Files\nodejs\node.exe" createtable.js`.
 
 ## <a name="connect-create-table-and-insert-data"></a>Připojení, vytvoření tabulky a vložení dat
+
 Pomocí následujícího kódu se připojte a nahrajte data s využitím příkazů **CREATE TABLE** a **INSERT INTO** jazyka SQL.
 
 Metoda [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) slouží k vytvoření rozhraní pro server MySQL. Funkce [connect()](https://github.com/mysqljs/mysql#establishing-connections) se používá k navázání připojení k serveru. Funkce [query()](https://github.com/mysqljs/mysql#performing-queries) se používá k provedení příkazu jazyka SQL na databázi MySQL. 
@@ -162,6 +168,7 @@ function queryDatabase(){
 ```
 
 ## <a name="read-data"></a>Čtení dat
+
 Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu **SELECT** jazyka SQL. 
 
 Metoda [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) slouží k vytvoření rozhraní pro server MySQL. Metoda [connect()](https://github.com/mysqljs/mysql#establishing-connections) se používá k navázání připojení k serveru. Metoda [query()](https://github.com/mysqljs/mysql#performing-queries) se používá k provedení příkazu jazyka SQL na databázi MySQL. Pole results slouží k ukládání výsledků dotazu.
@@ -214,6 +221,7 @@ function readData(){
 ```
 
 ## <a name="update-data"></a>Aktualizace dat
+
 Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu **UPDATE** jazyka SQL. 
 
 Metoda [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) slouží k vytvoření rozhraní pro server MySQL. Metoda [connect()](https://github.com/mysqljs/mysql#establishing-connections) se používá k navázání připojení k serveru. Metoda [query()](https://github.com/mysqljs/mysql#performing-queries) se používá k provedení příkazu jazyka SQL na databázi MySQL. 
@@ -262,6 +270,7 @@ function updateData(){
 ```
 
 ## <a name="delete-data"></a>Odstranění dat
+
 Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu **DELETE** jazyka SQL. 
 
 Metoda [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) slouží k vytvoření rozhraní pro server MySQL. Metoda [connect()](https://github.com/mysqljs/mysql#establishing-connections) se používá k navázání připojení k serveru. Metoda [query()](https://github.com/mysqljs/mysql#performing-queries) se používá k provedení příkazu jazyka SQL na databázi MySQL. 
@@ -310,5 +319,6 @@ function deleteData(){
 ```
 
 ## <a name="next-steps"></a>Další kroky
+
 > [!div class="nextstepaction"]
 > [Migrace vaší databáze pomocí exportu a importu](./concepts-migrate-import-export.md)

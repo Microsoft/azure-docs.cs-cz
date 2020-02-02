@@ -2,17 +2,17 @@
 title: Rychlý Start – vytvoření privátní zóny DNS Azure pomocí Azure CLI
 description: V tomto rychlém startu vytvoříte a otestujete privátní zónu a záznam DNS v Azure DNS. Pomocí tohoto podrobného průvodce můžete vytvořit a spravovat první privátní zónu a záznam DNS pomocí Azure CLI.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
 ms.date: 10/05/2019
-ms.author: allensu
-ms.openlocfilehash: 3c580eebd19eb2f2028768059140731fa24f4664
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 34a9858ffbec2360a347b8c765d53551fd2d9fc0
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210926"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935426"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-cli"></a>Rychlý Start: Vytvoření privátní zóny DNS Azure pomocí Azure CLI
 
@@ -213,5 +213,5 @@ az group delete --name MyAzureResourceGroup
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Scénáře pro privátní zóny Azure DNS](private-dns-scenarios.md)
+> [Azure DNS Private Zones scénáře](private-dns-scenarios.md)
 

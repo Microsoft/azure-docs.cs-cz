@@ -3,17 +3,17 @@ title: 'Rychlý Start: vytvoření zóny a záznamu DNS – Azure Portal'
 titleSuffix: Azure DNS
 description: Pomocí tohoto podrobného průvodce rychlým startem se dozvíte, jak vytvořit zónu Azure DNS a záznam pomocí Azure Portal.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
-ms.author: allensu
-ms.openlocfilehash: cb81b0ec2b5283ba242dd7c2dd549c330e230f0a
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.author: rohink
+ms.openlocfilehash: 26e5386f1c9730f1600e59a002ea7845b82ffe06
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082927"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937136"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>Rychlý Start: vytvoření zóny Azure DNS a záznamu pomocí Azure Portal
 

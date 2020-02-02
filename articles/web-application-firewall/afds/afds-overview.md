@@ -5,20 +5,22 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: overview
-ms.date: 11/23/2019
+ms.date: 02/01/2020
 ms.author: victorh
-ms.openlocfilehash: b646035f6a952f679059abab86d94179f447f9ff
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 925b859de28b8878412ee99402ffd727edcc4e7c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406209"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934724"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Firewall webových aplikací Azure na frontách Azure
 
-Firewall webových aplikací (WAF) Azure na frontách Azure poskytuje centralizovanou ochranu pro vaše webové aplikace, které jsou globálně dodávány pomocí služby Azure front-dveří. Je navržený a provozovaný tak, aby chránil vaše webové služby před běžným zneužitím a ohrožením zabezpečení, udržoval vaše služby vysoce dostupné pro uživatele a navíc pomáhal splnit požadavky na dodržování předpisů.
+Firewall webových aplikací Azure (WAF) na frontách Azure poskytuje centralizovanou ochranu pro vaše webové aplikace. WAF chrání vaše webové služby před běžnými zneužitími a chybami zabezpečení. Udržuje vaše služba vysoce dostupná pro vaše uživatele a pomáhá splnit požadavky na dodržování předpisů.
 
-WAF na předních dveřích je globální a centralizované řešení. Je nasazená na hraničních místech sítě Azure po celém světě a každý příchozí požadavek na webovou aplikaci s podporou WAF, která se dodává přes dveře, se kontroluje v hraniční síti. To umožňuje WAF zabránit škodlivým útokům blízko zdrojů útoků, než vstoupí do vaší virtuální sítě, a nabízí globální ochranu ve velkém měřítku, aniž by došlo k obětování výkonu. Zásady WAF můžete snadno propojit s libovolným profilem front-dveří v rámci předplatného a nová pravidla je možné nasadit během několika minut. můžete tak rychle reagovat na měnící se vzory hrozeb.
+WAF na předních dveřích je globální a centralizované řešení. Je nasazená na hraničních místech sítě Azure po celém světě. Webové aplikace s povolenou službou WAF kontrolují všechny příchozí žádosti doručené přes dvířka v hraniční síti. 
+
+WAF zabraňuje škodlivým útokům blízko zdrojů útoku předtím, než vstoupí do vaší virtuální sítě. Globální ochranu získáte škálováním bez obětování výkonu. Zásady WAF jednoduše odkazují na libovolný profil front-dveří v rámci vašeho předplatného. Nová pravidla se dají nasadit během několika minut, takže můžete rychle reagovat na měnící se vzory hrozeb.
 
 ![Firewall webových aplikací Azure](../media/overview/wafoverview.png)
 
@@ -32,17 +34,17 @@ Můžete nakonfigurovat zásady WAF a přidružit tuto zásadu k jedné nebo ví
 
 Pokud jsou přítomny obě, před zpracováním pravidel v sadě spravovaných pravidel se zpracují vlastní pravidla. Pravidlo se skládá z podmínky shody, priority a akce. Podporované typy akcí: ALLOW, BLOCK, LOG a REDIRECT. Můžete vytvořit plně přizpůsobené zásady, které vyhovují konkrétním požadavkům na ochranu aplikací, a to kombinováním spravovaných a vlastních pravidel.
 
-Pravidla v rámci zásad se zpracovávají v pořadí podle priority, kde priorita je jedinečné celé číslo, které definuje pořadí zpracovávaných pravidel. Menší celočíselná hodnota znamená vyšší prioritu a ta se vyhodnotí před pravidly s vyšší celočíselnou hodnotou. Po porovnání pravidla se na žádost aplikuje odpovídající akce, která byla definována v pravidle. Po zpracování této shody se pravidla s nižšími prioritami nezpracují dále.
+Pravidla v rámci zásad jsou zpracovávána v pořadí podle priority. Priorita je jedinečné celé číslo, které definuje pořadí pravidel pro zpracování. Menší celočíselná hodnota znamená vyšší prioritu a tato pravidla se vyhodnocují před pravidly s vyšší celočíselnou hodnotou. Po porovnání pravidla se na žádost aplikuje odpovídající akce, která byla definována v pravidle. Po zpracování této shody se pravidla s nižšími prioritami nezpracují dále.
 
-K webové aplikaci dodávané přes dvířka může být v jednu chvíli přidružená jenom jedna zásada WAF. Můžete ale mít konfiguraci front-dveří bez jakýchkoli zásad WAF, které jsou k němu přidružené. Pokud jsou přítomné zásady WAF, replikují se do všech našich hraničních umístění, aby se zajistila konzistence v zásadách zabezpečení po celém světě.
+K webové aplikaci dodávané přes dvířka může být v jednu chvíli přidružená jenom jedna zásada WAF. Můžete ale mít konfiguraci front-dveří bez jakýchkoli zásad WAF, které jsou k němu přidružené. Pokud je přítomná zásada WAF, replikuje se na všechna naše hraniční umístění, aby se zajistila konzistence zásad zabezpečení po celém světě.
 
 ## <a name="waf-modes"></a>WAF režimy
 
 Zásady WAF je možné nakonfigurovat tak, aby běžely v následujících dvou režimech:
 
-- **Detekční režim:** Při spuštění v režimu detekce neprovádí WAF žádné jiné jiné akce než monitory a zaznamená požadavek a odpovídající WAF pravidlo na WAF protokoly. Diagnostiku protokolování pro přední dvířka můžete zapnout (Pokud používáte portál, můžete to dosáhnout tak, že v Azure Portal v části **Diagnostika** ).
+- **Detekční režim:** Při spuštění v režimu detekce neprovádí WAF žádné jiné jiné akce než monitory a zaznamená požadavek a odpovídající WAF pravidlo do protokolů WAF. Diagnostiku protokolování můžete zapnout pro přední dveře. Když použijete portál, přejdete do části **Diagnostika** .
 
-- **Režim prevence:** Když je konfigurace spuštěna v režimu prevence, WAF převezme zadanou akci, pokud požadavek odpovídá pravidlu a pokud je nalezena shoda, nevyhodnotí se žádná další pravidla s nižší prioritou. V protokolech WAF se zaznamenávají i všechny odpovídající požadavky.
+- **Režim prevence:** V režimu prevence převezme WAF zadanou akci, pokud požadavek odpovídá pravidlu. Pokud je nalezena shoda, nejsou vyhodnocována žádná další pravidla s nižší prioritou. V protokolech WAF se zaznamenávají i všechny odpovídající požadavky.
 
 ## <a name="waf-actions"></a>Akce WAF
 
@@ -61,17 +63,17 @@ Zásady WAF můžou sestávat ze dvou typů pravidel zabezpečení – vlastní 
 
 Vlastní pravidla WAF můžete nakonfigurovat následujícím způsobem:
 
-- Seznam **povolených a blokovaných IP adres:** Můžete nakonfigurovat vlastní pravidla pro řízení přístupu k webovým aplikacím na základě seznamu IP adres klientů nebo rozsahů IP adres. Podporují se typy adres IPv4 i IPv6. Tento seznam je možné nakonfigurovat tak, aby buď blokoval, nebo povolil tyto požadavky, kde zdrojová IP adresa odpovídá IP adrese v seznamu.
+- Seznam **povolených a blokovaných IP adres:** Můžete řídit přístup k webovým aplikacím na základě seznamu IP adres klientů nebo rozsahů IP adres. Podporují se typy adres IPv4 i IPv6. Tento seznam je možné nakonfigurovat tak, aby buď blokoval, nebo povolil tyto požadavky, kde zdrojová IP adresa odpovídá IP adrese v seznamu.
 
-- **Geografické řízení přístupu:** Můžete nakonfigurovat vlastní pravidla pro řízení přístupu k webovým aplikacím na základě kódu země přidruženého k IP adrese klienta.
+- **Geografické řízení přístupu:** Přístup k webovým aplikacím můžete řídit na základě kódu země, který je přidružený k IP adrese klienta.
 
-- **Řízení přístupu na základě parametrů http:** Můžete nakonfigurovat vlastní pravidla na základě řetězců, které odpovídají parametrům požadavků HTTP/HTTPS, jako jsou řetězce dotazů, POST argumenty, identifikátor URI požadavku, Hlavička požadavku a text žádosti.
+- **Řízení přístupu na základě parametrů http:** Pro řetězcové shody v parametrech požadavků HTTP/HTTPS můžete základní pravidla.  Například řetězce dotazů, POST argumenty, identifikátor URI požadavku, Hlavička požadavku a text žádosti.
 
-- **Řízení přístupu na základě metody požadavku:** Vlastní pravidla můžete nakonfigurovat na základě metody požadavku HTTP, jako je například GET, PUT nebo HEAD.
+- **Řízení přístupu na základě metody požadavku:** Pravidla založená na metodě žádosti HTTP žádosti. Například GET, PUT nebo HEAD.
 
-- **Omezení velikosti:** Můžete nakonfigurovat vlastní pravidla na základě délek specifických částí požadavku, jako je řetězec dotazu, identifikátor URI nebo text žádosti.
+- **Omezení velikosti:** Pravidla můžete založit na délce určitých částí požadavku, jako je řetězec dotazu, identifikátor URI nebo text žádosti.
 
-- **Pravidla omezující rychlost:** Pravidlem řízení sazeb je omezit neobvykle vysoký provoz z jakékoli IP adresy klienta. Prahovou hodnotu můžete nakonfigurovat pro počet webových požadavků povolených z IP adresy klienta během doby trvání 1 minuty. To se liší od vlastního pravidla povolit/zablokování založeného na seznamu IP adres, které buď povolí všechny požadavky nebo zablokuje všechny žádosti z IP adresy klienta. Omezení rychlosti lze kombinovat s dalšími podmínkami shody, jako jsou například parametry HTTP (S) odpovídající pro detailní řízení sazeb.
+- **Pravidla omezující rychlost:** Pravidlem řízení sazeb je omezit neobvykle vysoký provoz z jakékoli IP adresy klienta. Prahovou hodnotu můžete nakonfigurovat pro počet webových požadavků povolených z IP adresy klienta během doby trvání 1 minuty. Toto pravidlo se liší od vlastního pravidla povolit/zablokování založeného na seznamu IP adres, které buď umožňuje všem žádostem z IP adresy klienta nebo blokovat všechny požadavky. Omezení přenosové rychlosti lze kombinovat s dalšími podmínkami shody, jako je například shoda parametru HTTP (S) pro detailní řízení míry.
 
 ### <a name="azure-managed-rule-sets"></a>Sady pravidel spravované v Azure
 
@@ -87,14 +89,24 @@ Sady pravidel spravované pomocí Azure poskytují snadný způsob, jak nasadit 
 - Ochrana před útoky prostřednictvím injektáže SQL.
 - Útočníci protokolu
 
-Číslo verze výchozí sady pravidel se zvýší, když budou do sady pravidel přidány nové podpisy útoků.
-Výchozí sada pravidel je ve výchozím nastavení povolená v režimu detekce v zásadách WAF. Můžete zakázat nebo povolit jednotlivá pravidla v rámci výchozího pravidla nastavená tak, aby splňovala požadavky vaší aplikace. Můžete také nastavit konkrétní akce (povolení/blokování/přesměrování/protokol) na pravidlo. Výchozí akce je zablokovat. Vlastní pravidla se navíc dají nakonfigurovat ve stejné zásadě WAF, pokud chcete vynechat některá z předkonfigurovaných pravidel v sadě výchozích pravidel.
-Vlastní pravidla se vždycky aplikují předtím, než se vyhodnotí pravidla v sadě výchozích pravidel. Pokud požadavek odpovídá vlastnímu pravidlu, použije se odpovídající akce pravidla a požadavek se buď zablokuje, nebo projde back-endu bez vyvolání jakýchkoli dalších vlastních pravidel nebo pravidel v sadě výchozích pravidel. Kromě toho máte možnost odebrat ze zásad WAF výchozí sadu pravidel.
+Číslo verze výchozích sad pravidel se zvýší, když jsou do sady pravidel přidány nové podpisy útoků.
+Výchozí sada pravidel je ve výchozím nastavení povolená v režimu detekce v zásadách WAF. Můžete zakázat nebo povolit jednotlivá pravidla v rámci výchozího pravidla nastavená tak, aby splňovala požadavky vaší aplikace. Můžete také nastavit konkrétní akce (povolení/blokování/přesměrování/protokol) na pravidlo.
 
+Výchozí akce je zablokovat. Vlastní pravidla se navíc dají nakonfigurovat ve stejných zásadách WAF, pokud chcete vynechat některá z předkonfigurovaných pravidel v sadě výchozích pravidel.
+
+Vlastní pravidla se vždycky aplikují předtím, než se vyhodnotí pravidla v sadě výchozích pravidel. Pokud požadavek odpovídá vlastnímu pravidlu, použije se odpovídající akce pravidla. Požadavek je buď zablokován, nebo předán do back-endu. Nezpracují se žádná další vlastní pravidla ani pravidla v sadě výchozích pravidel. Můžete taky odebrat výchozí sadu pravidel ze zásad WAF.
 
 ### <a name="bot-protection-rule-set-preview"></a>Sada pravidel ochrany robota (Preview)
 
-Sada pravidel spravované ochrany robotů může být povolená pro WAF, aby mohla přijímat vlastní akce na žádostech ze známých kategorií bot. Podporují se tři kategorie bot: Bad roboty, dobrý roboty a neznámý roboty. Signatury robota jsou spravované a dynamicky aktualizované platformou WAF. Škodlivé IP adresy pro chybně roboty jsou zdroje z kanálu Microsoft Threat Intelligence. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) využívá Microsoft Threat Intelligence a používá ho víc služeb, včetně Azure Security Center. Dobrá roboty zahrnovat ověřené vyhledávací stroje. Mezi neznámé kategorie patří další skupiny robotů. U různých typů roboty můžete nastavit vlastní akce pro blokování, povolení, protokolování nebo přesměrování.
+Můžete povolit spravovanou sadu pravidel ochrany robotů k přijetí vlastních akcí na žádostech ze známých kategorií bot. 
+
+Podporují se tři kategorie bot: chybné, dobré a neznámé. Signatury robota jsou spravované a dynamicky aktualizované platformou WAF.
+
+Chybný roboty zahrnuje roboty ze škodlivých IP adres a roboty, které si zazfalšována své identity. Škodlivé IP adresy se naúčtují z informačního kanálu Microsoft Threat Intelligence a aktualizují se každou hodinu. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) využívá Microsoft Threat Intelligence a používá ho víc služeb, včetně Azure Security Center.
+
+Dobrá roboty zahrnovat ověřené vyhledávací stroje. Mezi neznámé kategorie patří další skupiny robotů, které se identifikovaly jako roboty. Například analyzátor trhu, načítající informační kanály a agenti sběru dat. 
+
+Neznámý roboty jsou klasifikovány prostřednictvím publikovaných uživatelských agentů bez dalšího ověření. Můžete nastavit vlastní akce pro blokování, povolení, protokolování nebo přesměrování pro různé typy roboty.
 
 ![Sada pravidel ochrany bot](../media/afds-overview/botprotect2.png)
 
@@ -105,9 +117,9 @@ Pokud je zapnutá ochrana robota, příchozí požadavky, které odpovídají pr
 
 ## <a name="configuration"></a>Konfigurace
 
-Konfigurace a nasazení všech typů pravidel WAF je plně podporované pomocí Azure Portal, rozhraní REST API, šablon Azure Resource Manager a Azure PowerShell.
+Všechny typy pravidel WAF můžete nakonfigurovat a nasadit pomocí Azure Portal, rozhraní REST API, šablon Azure Resource Manager a Azure PowerShell.
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 
 Monitorování pro WAF ve front-dveřích je integrované s Azure Monitor pro sledování výstrah a snadné monitorování trendů provozu.
 

@@ -2,7 +2,7 @@
 title: 'Rychlý Start: vytvoření profilu pro HA aplikací – Azure Portal – Azure Traffic Manager'
 description: Tento článek Rychlý start popisuje, jak vytvořit profil služby Traffic Manager umožňující vytváření vysoce dostupných webových aplikací.
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 manager: twooley
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
-ms.author: allensu
-ms.openlocfilehash: b2163b76dc3a301359cf3474789c5b473f9e4552
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.author: rohink
+ms.openlocfilehash: 559ed0a134bb6db78d1e89634138b4025e04152b
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483671"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934768"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Rychlý Start: vytvoření profilu Traffic Manager pomocí Azure Portal
 
@@ -29,7 +29,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si teď [bezplatný účet](
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlásit se na [Azure Portal](https://portal.azure.com).
+Přihlaste se k [Portálu Azure](https://portal.azure.com).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -65,7 +65,7 @@ Vytvořte profil Traffic Manager, který přesměruje přenosy uživatelů na z�
 
     | Nastavení | Hodnota |
     | --------| ----- |
-    | Název | Zadejte jedinečný název profilu Traffic Manager.|
+    | Name (Název) | Zadejte jedinečný název profilu Traffic Manager.|
     | Metoda směrování | Vyberte **Priorita**.|
     | Předplatné | Vyberte předplatné, pro které chcete profil Traffic Manageru použít. |
     | Skupina prostředků | Vyberte *myResourceGroupTM1*.|
@@ -85,10 +85,10 @@ Přidejte web v oblasti *USA – východ* jako primární koncový bod, do kter�
     | Nastavení | Hodnota |
     | ------- | ------|
     | Typ | Vyberte **koncový bod Azure**. |
-    | Název | Zadejte *myPrimaryEndpoint*. |
+    | Name (Název) | Zadejte *myPrimaryEndpoint*. |
     | Typ cílového prostředku | Vyberte **App Service**. |
     | Cílový prostředek | Vyberte možnost **zvolit > App service** **východní USA**. |
-    | Priority | Vyberte **1**. Veškerý provoz směřuje do tohoto koncového bodu, pokud je v pořádku. |
+    | Priorita | Vyberte **1**. Veškerý provoz směřuje do tohoto koncového bodu, pokud je v pořádku. |
 
     ![Snímek obrazovky s přidáním koncového bodu do profilu Traffic Manager.](./media/quickstart-create-traffic-manager-profile/add-traffic-manager-endpoint.png)
 
@@ -98,10 +98,10 @@ Přidejte web v oblasti *USA – východ* jako primární koncový bod, do kter�
     | Nastavení | Hodnota |
     | ------- | ------|
     | Typ | Vyberte **koncový bod Azure**. |
-    | Název | Zadejte *myFailoverEndpoint*. |
+    | Name (Název) | Zadejte *myFailoverEndpoint*. |
     | Typ cílového prostředku | Vyberte **App Service**. |
     | Cílový prostředek | Vyberte možnost **zvolit > App service** **západní Evropa**. |
-    | Priority | Vyberte **2**. Veškerý provoz přechází na tento koncový bod převzetí služeb při selhání, pokud primární koncový bod není v pořádku. |
+    | Priorita | Vyberte **2**. Veškerý provoz přechází na tento koncový bod převzetí služeb při selhání, pokud primární koncový bod není v pořádku. |
 
 7. Vyberte **OK**.
 

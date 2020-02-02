@@ -4,12 +4,12 @@ description: Azure Policy je služba v Azure, pomocí které vytváříte, při�
 ms.date: 11/25/2019
 ms.topic: overview
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9babfd52071ed7d033761802f696c3b6021287af
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e886f37a8d7f1395b5c831e81e600ecc6e2dd20f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846037"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937820"
 ---
 # <a name="what-is-azure-policy"></a>Co je Azure Policy?
 
@@ -24,7 +24,7 @@ Například můžete mít zásadu, která ve vašem prostředí povoluje jenom u
 > [!IMPORTANT]
 > Vyhodnocování dodržování předpisů ve službě Azure Policy je teď dostupné pro všechna přiřazení bez ohledu na cenovou úroveň. Pokud vaše přiřazení nezobrazují data dodržování předpisů, ujistěte se, že je předplatné zaregistrované u poskytovatele prostředků Microsoft.PolicyInsights.
 
-[!INCLUDE [service-provider-management-toolkit](../../../includes/azure-lighthouse-supported-service.md)]
+[!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="how-is-it-different-from-rbac"></a>Čím se to liší od RBAC?
 
@@ -45,7 +45,7 @@ Pokud žádná z předdefinovaných rolí nemá požadovaná oprávnění, vytvo
 
 Postup vytváření a implementace zásady v Azure Policy začíná vytvořením definice zásady. Každá definice zásady obsahuje podmínky, za kterých se vynucuje. A nemá definovanou vliv, které u něho splnění podmínky.
 
-Ve službě Azure Policy nabízíme několik integrovaných zásad, které jsou k dispozici ve výchozím nastavení. Například:
+Ve službě Azure Policy nabízíme několik integrovaných zásad, které jsou k dispozici ve výchozím nastavení. Příklad:
 
 - **Povolené skladové položky účtu úložiště**: Určuje, zda je účet úložiště se nasazuje v sadě velikostí skladových položek. Jeho účinkem je zamítnutí všech účtů úložiště, které nedrží k sadě definovaných velikostí skladových položek.
 - **Povolený typ prostředku**: Definuje typy prostředků, které můžete nasadit. Jeho účinkem je zamítnutí všech prostředků, které nejsou součástí tomto definovaném seznamu.

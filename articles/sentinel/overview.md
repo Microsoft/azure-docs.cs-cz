@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: 964ba16fb7421c58f43d8b7d0d0d96f5cd377579
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 5f3a8fa7b9619958db1d7213236e27d00b417c54
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261866"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939114"
 ---
 # <a name="what-is-azure-sentinel"></a>Co je Azure Sentinel?
 
@@ -37,17 +37,17 @@ Azure Sentinel je pohled z ptačího oka v celém podniku, který řeší zátě
 
 - **Můžete rychle reagovat na incidenty** díky integrované orchestraci a automatizaci běžných úloh.
 
-
 ![Funkce Azure Sentinel Core](./media/overview/core-capabilities.png)
 
 V celé škále stávajících služeb Azure se v systému Azure Sentinel nativně nepodnikou osvědčené základy, jako je Log Analytics a Logic Apps. Sentinel Azure vylepšuje vaše vyšetřování a detekci pomocí AI a poskytuje Stream Intelligence Microsoftu pro hrozby a umožňuje využít vlastní analýzu hrozeb. 
 
- 
 ## <a name="connect-to-all-your-data"></a>Připojení ke všem datům
 
 Aby bylo možné připojit se ke službě Azure Sentinel, musíte se nejdřív [připojit ke zdrojům zabezpečení](connect-data-sources.md). Služba Azure Sentinel se dodává s řadou konektorů pro řešení Microsoftu, které jsou dostupné předem a poskytuje integraci v reálném čase, včetně řešení ochrany před internetovými útoky Microsoftu a Microsoft 365 zdrojů, včetně Office 365, Azure AD, Azure ATP a Microsoft Cloud App Security a další. Kromě toho jsou k dispozici Integrované konektory k širšímu ekosystému zabezpečení pro řešení jiných výrobců než Microsoftu. Pro připojení zdrojů dat k Azure Sentinel taky můžete použít také běžné formáty událostí, syslog nebo REST API.  
 
 ![Sběrače dat](./media/collect-data/collect-data-page.png)
+
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="workbooks"></a>Workbooks
 
@@ -92,5 +92,5 @@ Komunita Sentinel Azure je výkonným prostředkem pro detekci a automatizaci hr
 
 ## <a name="next-steps"></a>Další kroky
 
-- Abyste mohli začít používat službu Azure Sentinel, potřebujete Microsoft Azure předplatné. Pokud předplatné nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
+- Abyste mohli začít používat službu Azure Sentinel, potřebujete Microsoft Azure předplatné. Pokud nemáte předplatné, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
 - Naučte se, jak začlenit [data do Azure Sentinel](quickstart-onboard.md)a [získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).

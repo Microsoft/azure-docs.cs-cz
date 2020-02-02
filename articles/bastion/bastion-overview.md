@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: overview
-ms.date: 12/09/2019
+ms.date: 01/31/2020
 ms.author: cherylmc
-ms.openlocfilehash: 785d9da57171e60f5762a1449c24f9c767be3bc9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 96f5ecc0fb675835f129f40d83c592f42d222ce4
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972787"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938337"
 ---
 # <a name="what-is-azure-bastion"></a>Co je Azure Bastion?
 

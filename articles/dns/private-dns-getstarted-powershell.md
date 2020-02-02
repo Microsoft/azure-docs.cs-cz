@@ -2,17 +2,17 @@
 title: Rychlý Start – vytvoření privátní zóny DNS Azure pomocí Azure PowerShell
 description: V tomto článku vytvoříte a otestujete privátní zónu a záznam DNS v Azure DNS. Tento podrobný průvodce vám pomůže vytvořit a spravovat první privátní zónu a záznam DNS pomocí Azure PowerShellu.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
 ms.date: 10/05/2019
-ms.author: allensu
-ms.openlocfilehash: 5532eb9897de2f746b194fb6bd496548e989b994
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 0db53bcd6516bd52e2796deaa49fe0dd582e0588
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210822"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939396"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-azure-powershell"></a>Rychlý Start: Vytvoření privátní zóny DNS Azure pomocí Azure PowerShell
 
@@ -20,7 +20,7 @@ Tento článek vás provede kroky k vytvoření první privátní zóny a zázna
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-K hostování záznamů DNS pro konkrétní doménu se používá zóna DNS. Pokud chcete začít hostovat svou doménu v DNS Azure, musíte vytvořit zónu DNS pro daný název domény. Všechny záznamy DNS pro vaši doménu se pak vytvoří v této zóně DNS. Když chcete publikovat privátní zónu DNS do virtuální sítě, zadáte seznam virtuálních sítí, které mají povoleno překládat záznamy v rámci této zóny.  Ty se nazývají *propojené* virtuální sítě. Pokud je povolena automatická registrace, Azure DNS aktualizuje také záznamy zón při každém vytvoření virtuálního počítače, změní jeho IP adresu nebo se odstraní.
+Zóna DNS se používá k hostování záznamů DNS pro konkrétní doménu. Pokud chcete začít hostovat svou doménu v DNS Azure, musíte vytvořit zónu DNS pro daný název domény. Všechny záznamy DNS pro vaši doménu se pak vytvoří v této zóně DNS. Když chcete publikovat privátní zónu DNS do virtuální sítě, zadáte seznam virtuálních sítí, které mají povoleno překládat záznamy v rámci této zóny.  Ty se nazývají *propojené* virtuální sítě. Pokud je povolena automatická registrace, Azure DNS aktualizuje také záznamy zón při každém vytvoření virtuálního počítače, změní jeho IP adresu nebo se odstraní.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -208,4 +208,4 @@ Remove-AzResourceGroup -Name MyAzureResourceGroup
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Scénáře pro privátní zóny Azure DNS](private-dns-scenarios.md)
+> [Azure DNS Private Zones scénáře](private-dns-scenarios.md)

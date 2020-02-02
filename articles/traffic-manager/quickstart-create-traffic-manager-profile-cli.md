@@ -2,7 +2,7 @@
 title: 'Rychlý Start: vytvoření profilu pro HA aplikací – Azure CLI – Azure Traffic Manager'
 description: Tento článek rychlý Start popisuje, jak vytvořit profil Traffic Manager pro sestavení webové aplikace s vysokou dostupností.
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 mnager: twooley
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
-ms.author: allensu
-ms.openlocfilehash: b724a3e469c5dd8f7b4c4f30adef00c58c5c47c5
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.author: rohink
+ms.openlocfilehash: 36ad1c47e115f06aea2017a049cefe36304504bf
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483915"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934825"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>Rychlý Start: vytvoření profilu Traffic Manager pro webovou aplikaci s vysokou dostupností pomocí Azure CLI
 

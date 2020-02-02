@@ -1,17 +1,17 @@
 ---
 title: Co je Azure DNS?
 description: Přehled hostitelské služby DNS v Microsoft Azure. Hostujte svoji doménu na platformě Microsoft Azure.
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: overview
 ms.date: 3/21/2019
-ms.author: allensu
-ms.openlocfilehash: 6abdc48187950d9605bdc47b1c5d4f00e4e181f0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 1543c0daae7d637730a5f8f9da2305423ba7f84e
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211332"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932409"
 ---
 # <a name="what-is-azure-dns"></a>Co je Azure DNS?
 
@@ -41,7 +41,7 @@ Další informace najdete v tématu o [ochraně záznamů a zón DNS](dns-protec
 
 Azure DNS aktuálně nepodporuje DNSSEC. Ve většině případů můžete snížit nutnost rozšíření DNSSEC tím, že ve svých aplikacích konzistentně použijete HTTPS/TLS. Pokud je DNSSEC zásadním požadavkem pro zóny DNS, můžete tyto zóny hostovat s poskytovateli hostování DNS třetích stran.
 
-## <a name="ease-of-use"></a>Snadné používání
+## <a name="ease-of-use"></a>Snadné použití
 
  Azure DNS může spravovat záznamy DNS vašich služeb Azure a poskytovat DNS i externím prostředkům. Služba Azure DNS je integrovaná na webu Azure Portal a používá stejné přihlašovací údaje, smlouvu o podpoře i fakturaci jako ostatní služby Azure. 
 

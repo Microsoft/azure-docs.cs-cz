@@ -3,12 +3,12 @@ title: Přehled služby Azure Resource Graph
 description: Seznamte se s tím, jak služba Azure Resource Graph umožňuje složitý dotazování na prostředky ve velkém rozsahu napříč předplatnými a klienty.
 ms.date: 10/21/2019
 ms.topic: overview
-ms.openlocfilehash: 301543075d587079af0f53b6200890a75bfbb768
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 1e84de19d35f0c5f5d7975c8a94d5164100013e4
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965974"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76936515"
 ---
 # <a name="what-is-azure-resource-graph"></a>Co je Azure Resource Graph?
 
@@ -25,7 +25,7 @@ V této dokumentaci si podrobně projdete jednotlivé funkce.
 > Azure Resource Graph – pravomoci Azure Portal vyhledávací panel, nové možnosti procházet všechny prostředky a [historie změn](../policy/how-to/determine-non-compliance.md#change-history-preview) Azure Policy
 > _vizuální rozdíl_. Je navržena tak, aby zákazníkům pomohla spravovat rozsáhlá prostředí.
 
-[!INCLUDE [service-provider-management-toolkit](../../../includes/azure-lighthouse-supported-service.md)]
+[!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="how-does-resource-graph-complement-azure-resource-manager"></a>Jak Resource Graph doplňuje Azure Resource Manager
 

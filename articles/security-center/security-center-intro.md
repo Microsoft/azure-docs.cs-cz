@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: 378ad4fde94e8bccfbdad9765545675822d202ff
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 759cc3f22d8b57036bad48326ffec1d6fca42696
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558639"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939434"
 ---
 # <a name="what-is-azure-security-center"></a>Co je Centrum zabezpečení Azure?
 
@@ -42,6 +42,8 @@ Abychom vám pomohli chránit před těmito výzvami, Security Center poskytuje 
 -   **Ochrana před hrozbami**: Security Center posuzuje vaše úlohy a vyvolává doporučení prevence hrozeb a výstrahy detekce hrozeb.
 
 -   **Rychlejší zabezpečení**: v Security Center se všechno provádí v rychlosti cloudu. Vzhledem k tomu, že je nativně integrovaná, nasazení Security Center je jednoduché a poskytuje vám možnost autozřizování a ochrana pomocí služeb Azure.
+
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="architecture"></a>Architektura
 
@@ -143,7 +145,7 @@ Rozsáhlá kolekce protokolů – protokoly z Windows a Linux se využívají v 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud chcete začít využívat Security Center, musíte mít předplatné Microsoft Azure. Pokud předplatné nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
+- Pokud chcete začít využívat Security Center, musíte mít předplatné Microsoft Azure. Pokud nemáte předplatné, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
 - Cenová úroveň Free služby Security Center je povolená s vaším předplatným Azure. Pokud chcete využívat pokročilé možnosti správy zabezpečení a detekce hrozeb, musíte upgradovat na cenovou úroveň Standard. Úroveň Standard může být vyzkoušená zdarma. Další informace najdete na [stránce s cenami za Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 - Pokud už jste připraveni povolit Security Center, článek [Rychlý Start: Onboarding předplatného Azure na Security Center Standard](security-center-get-started.md) vás provede postupem.
 

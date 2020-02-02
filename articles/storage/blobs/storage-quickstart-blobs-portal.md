@@ -9,18 +9,18 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 7336260d7565697b0559419ae502848bcff9424c
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1e5ccc9d427755ea4274e836e81e3e324fffa39d
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892851"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937783"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí webu Azure Portal
 
 V tomto rychlém startu se naučíte použít web [Azure Portal](https://portal.azure.com/) k vytvoření kontejneru ve službě Azure Storage a k odeslání a stažení objektů blob bloku v tomto kontejneru.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -45,13 +45,14 @@ Pokud chcete do nového kontejneru na webu Azure Portal nahrát objekt blob blok
 
 1. Na webu Azure Portal přejděte do kontejneru, který jste vytvořili v předchozí části.
 2. Vyberte tento kontejner. Zobrazí se seznam objektů blob, které obsahuje. Protože je tento kontejner nový, nebude ještě obsahovat žádné objekty blob.
-3. Vyberte tlačítko **Nahrát** a nahrajte do kontejneru objekt blob.
-4. Projděte místní systém souborů a vyhledejte soubor, který chcete nahrát jako objekt blob bloku, a vyberte **Nahrát**.
+3. Kliknutím na tlačítko **nahrát** otevřete okno nahrát.
+4. Přejděte do místního systému souborů a vyhledejte soubor, který se má nahrát jako objekt blob bloku.
      
     ![Snímek obrazovky ukazující, jak nahrát objekt blob z místního disku](media/storage-quickstart-blobs-portal/upload-blob.png)
 
-5. Vyberte **Typ ověřování**. Výchozí hodnota je **SAS**.
-6. Tímto způsobem můžete nahrát libovolný počet objektů blob. Uvidíte, že nové objekty blob jsou teď zařazené v kontejneru.
+5. Volitelně můžete rozbalit oddíl Upřesnit a definovat další nastavení, jako je typ ověřování, úroveň přístupu nebo cesta k virtuální složce.
+6. Kliknutím na tlačítko **nahrát** potvrďte nahrávání.
+7. Tímto způsobem můžete nahrát libovolný počet objektů blob. Uvidíte, že nové objekty blob jsou teď zařazené v kontejneru.
 
 ## <a name="download-a-block-blob"></a>Stažení objektu blob bloku
 

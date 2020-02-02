@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b83f634e9f5954e7a465761b117b6ee32f843aa2
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 47806fe9c5c97c1f5a9c26d4ca38fb46bdf4057c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75425081"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931408"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Zřízení pilotního cloudu pro existující synchronizovanou doménovou strukturu AD 
 
@@ -68,7 +68,8 @@ Azure AD Connect synchronizace synchronizuje změny, ke kterým došlo v místn�
 
     **Název:** Udělení pravidla smysluplnému názvu<br>
     **Popis:** Přidat smysluplný popis<br> 
-    **připojený systém:** vyberte konektor služby AD, pro který píšete vlastní pravidlo synchronizace.<br>
+    
+    **Připojený systém:** Vyberte konektor služby Active Directory, pro který píšete vlastní pravidlo synchronizace.<br>
     **Typ připojeného systémového objektu:** Uživatelský<br>
     **Typ objektu úložiště metaverse:** Uživateli<br>
     **Typ odkazu:** Zúčastnit<br>

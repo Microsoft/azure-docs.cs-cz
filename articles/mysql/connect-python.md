@@ -8,24 +8,26 @@ ms.custom: seo-python-october2019
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/09/2020
-ms.openlocfilehash: 1550d8748d6c7c0e35796d2950d02d774fe52822
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 96296a4ecea8dd1d546adf2292291746bd37507d
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896253"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938938"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-with-azure-database-for-mysql"></a>Rychlý Start: použití Pythonu k připojení a dotazování dat pomocí Azure Database for MySQL
-Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL pomocí [Pythonu](https://python.org). Příkazy SQL můžete použít k dotazování, vkládání, aktualizaci a odstraňování dat v databázi z platforem Mac OS, Ubuntu Linux a Windows. 
 
-V tomto článku se předpokládá, že máte zkušenosti s vývojem pomocí Pythonu, ale začínáte pracovat s Azure Database for MySQL.
+V tomto rychlém startu se připojíte k Azure Database for MySQL pomocí Pythonu. Pak použijete příkazy SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi z platforem Mac, Ubuntu Linux a Windows. 
 
-## <a name="create-an-azure-database-for-mysql"></a>Vytvoření Azure Database for MySQL 
-Vytvořte Azure Database for MySQL server a databázi podle pokynů v tématu 
-- [Vytvoření serveru Azure Database for MySQL pomocí Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md) nebo 
-- [Vytvoření serveru Azure Database for MySQL pomocí Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md) 
+V tomto tématu se předpokládá, že máte zkušenosti s vývojem pomocí Pythonu, ale začínáte pracovat s Azure Database for MySQL.
+
+## <a name="prerequisites"></a>Požadavky
+
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Server Azure Database for MySQL. [Vytvořte Azure Database for MySQL server pomocí Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md) nebo [Vytvořte Azure Database for MySQL server pomocí Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md).
 
 ## <a name="install-python-and-the-mysql-connector"></a>Instalace Pythonu a konektoru MySQL
+
 Nainstalujte Python a konektor MySQL pro Python do počítače pomocí následujících kroků: 
 
 > [!NOTE]
@@ -48,9 +50,10 @@ Nainstalujte Python a konektor MySQL pro Python do počítače pomocí následuj
    Konektor Pythonu pro MySQL můžete také nainstalovat z [MySQL.com](https://dev.mysql.com/downloads/connector/python/). Další informace o konektoru MySQL pro Python najdete v tématu [Příručka pro vývojáře MySQL Connector/Python](https://dev.mysql.com/doc/connector-python/en/). 
 
 ## <a name="get-connection-information"></a>Získání informací o připojení
+
 Získejte informace o připojení, které potřebujete k připojení k Azure Database for MySQL z Azure Portal. Potřebujete název serveru, název databáze a přihlašovací údaje pro přihlášení.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com/).
    
 1. Na panelu hledání na portálu vyhledejte a vyberte server Azure Database for MySQL, který jste vytvořili, například **mydemoserver**.
    
@@ -61,6 +64,7 @@ Získejte informace o připojení, které potřebujete k připojení k Azure Dat
    ![Název serveru Azure Database for MySQL](./media/connect-python/azure-database-for-mysql-server-overview-name-login.png)
 
 ## <a name="run-the-python-examples"></a>Spuštění příkladů jazyka Python
+
 Pro každý příklad kódu v tomto článku:
 
 1. Vytvořte nový soubor v textovém editoru.
@@ -72,6 +76,7 @@ Pro každý příklad kódu v tomto článku:
    > Pokud se v systému Windows nenajde soubor *Python. exe* , možná budete muset přidat cestu k Pythonu do proměnné prostředí PATH nebo zadat úplnou cestu k souboru *Python. exe*, například `C:\python27\python.exe createtable.py`.
 
 ## <a name="create-a-table-and-insert-data"></a>Vytvoření tabulky a vložení dat
+
 Pomocí následujícího kódu se připojte k serveru a databázi, vytvořte tabulku a načtěte data pomocí příkazu **INSERT** jazyka SQL. 
 
 Kód importuje knihovnu MySQL. Connector a pomocí funkce [Connect ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) se připojí k Azure Database for MySQL pomocí [argumentů](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) v kolekci konfigurace. Kód používá kurzor na připojení a metoda [Cursor. Execute ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) provádí dotaz SQL na databázi MySQL. 
@@ -126,6 +131,7 @@ else:
 ```
 
 ## <a name="read-data"></a>Čtení dat
+
 Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu **SELECT** jazyka SQL. 
 
 Kód importuje knihovnu MySQL. Connector a pomocí funkce [Connect ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) se připojí k Azure Database for MySQL pomocí [argumentů](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) v kolekci konfigurace. Kód používá kurzor na připojení a metoda [Cursor. Execute ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) provádí dotaz SQL na databázi MySQL. 
@@ -175,6 +181,7 @@ else:
 ```
 
 ## <a name="update-data"></a>Aktualizace dat
+
 Pomocí následujícího kódu se připojte a aktualizujte data s využitím příkazu **UPDATE** jazyka SQL. 
 
 Kód importuje knihovnu MySQL. Connector a pomocí funkce [Connect ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) se připojí k Azure Database for MySQL pomocí [argumentů](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) v kolekci konfigurace. Kód používá kurzor na připojení a metoda [Cursor. Execute ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) provádí dotaz SQL na databázi MySQL. 
@@ -217,6 +224,7 @@ else:
 ```
 
 ## <a name="delete-data"></a>Odstranění dat
+
 Pomocí následujícího kódu se připojte a odeberte data s využitím příkazu **DELETE** jazyka SQL. 
 
 Kód importuje knihovnu MySQL. Connector a pomocí funkce [Connect ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) se připojí k Azure Database for MySQL pomocí [argumentů](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) v kolekci konfigurace. Kód používá kurzor na připojení a metoda [Cursor. Execute ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) provádí dotaz SQL na databázi MySQL. 
@@ -259,5 +267,6 @@ else:
 ```
 
 ## <a name="next-steps"></a>Další kroky
+
 > [!div class="nextstepaction"]
 > [Migrace vaší databáze pomocí exportu a importu](./concepts-migrate-import-export.md)
