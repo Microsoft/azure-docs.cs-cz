@@ -2,13 +2,13 @@
 title: Prostředky bez omezení počtu 800
 description: Obsahuje seznam typů prostředků Azure, které můžou mít víc než 800 instancí ve skupině prostředků.
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.openlocfilehash: 42e8ddeebcd1dda4fc67e4e7be137c5e01decdf4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 01/30/2020
+ms.openlocfilehash: 735cad0bfa936c41f603e42bdb9be77a1562cc1f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715623"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937939"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Prostředky, které nejsou omezeny na 800 instancí na skupinu prostředků
 
@@ -89,6 +89,10 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 * software
 * softwareUpdateProfile
 * softwareUpdates
+
+## <a name="microsoftinsights"></a>Microsoft.Insights
+
+* metricalerts
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
@@ -179,10 +183,6 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 
 * apiManagementAccounts/rozhraní API
 * sites
-
-## <a name="microsoftinsights"></a>microsoft.insights
-
-* metricalerts
 
 ## <a name="next-steps"></a>Další kroky
 

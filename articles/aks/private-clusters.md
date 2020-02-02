@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 1/24/2020
 ms.author: mlearned
-ms.openlocfilehash: a477c2011ff3c6cf1987ed80ef5c19c26abc40f0
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 934dfdb43d6d2e4ccc346b728f0ac4f5febea327
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76713321"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932598"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Vytvoření privátního clusteru služby Azure Kubernetes (Preview)
 
@@ -131,7 +131,7 @@ Koncový bod serveru rozhraní API nemá žádnou veřejnou IP adresu. V důsled
 * Pokud chcete použít vlastní server DNS, nasaďte server služby Active Directory se službou DNS pro přeposílání na tento protokol IP 168.63.129.16
 
 ## <a name="limitations"></a>Omezení 
-* Zóny dostupnosti se aktuálně nepodporují.
+* Zóny dostupnosti se aktuálně podporují jenom pro oblasti Východní USA 2 a Západní USA 2.
 * [Omezení služby pro privátní propojení Azure][private-link-service] platí pro privátní clustery, privátní koncové body Azure a koncové body služby virtuální sítě, které se v tuto chvíli nepodporují ve stejné virtuální síti.
 * Není podporovaná podpora virtuálních uzlů v privátním clusteru pro dálku privátního Azure Container Instances (ACI) v privátní virtuální síti Azure.
 * Žádná podpora pro integraci Azure DevOps není v krabici s privátními clustery

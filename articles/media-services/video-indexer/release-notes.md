@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 01/07/2020
 ms.author: juliako
-ms.openlocfilehash: 88effd58e807d39e5915aa41425ecf2e8ca8e3cc
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: f1387273f9736fea70682177d5d48dc2f141bbad
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832314"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933863"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Poznámky k verzi Azure Media Services Video Indexer
 
@@ -29,6 +29,24 @@ Abyste mohli používat aktuální pomocí nejnovější vývoj, tento článek 
 * Známé problémy
 * Opravy chyb
 * Zastaralé funkce
+
+## <a name="january-2020"></a>Leden 2020
+ 
+### <a name="custom-language-support-for-additional-languages"></a>Podpora vlastního jazyka pro další jazyky
+
+Video Indexer teď podporuje vlastní jazykové modely pro `ar-SY`, `en-UK`a `en-AU` (jenom rozhraní API).
+ 
+### <a name="delete-account-timeframe-action-update"></a>Odstranit aktualizaci akce časového rámce účtu
+
+Akce Odstranit účet nyní odstraní účet do 90 dnů, nikoli do 48 hodin.
+ 
+### <a name="new-video-indexer-github-repository"></a>Nové úložiště GitHub Video Indexer
+
+K dispozici je teď nový Video Indexer GitHub s různými projekty, příručky Začínáme a ukázky kódu: https://github.com/Azure-Samples/media-services-video-indexer
+ 
+### <a name="swagger-update"></a>Aktualizace Swagger
+
+Video Indexer sjednocené **ověřování** a **operace** do jedné [specifikace video indexer openapi (Swagger)](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson). Develpers můžou najít rozhraní API na [portálu pro vývojáře video indexer](https://api-portal.videoindexer.ai/).
 
 ## <a name="december-2019"></a>Prosinec 2019
 

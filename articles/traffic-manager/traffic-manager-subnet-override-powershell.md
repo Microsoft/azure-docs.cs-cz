@@ -3,18 +3,18 @@ title: Přepsání podsítě Azure Traffic Manager pomocí Azure PowerShell | Mi
 description: Tento článek vám pomůže porozumět tomu, jak se Traffic Manager přepsání podsítě používá k přepsání metody směrování Traffic Manager profilu pro směrování provozu do koncového bodu na základě IP adresy koncového uživatele prostřednictvím předdefinovaného rozsahu IP adres pro mapování koncových bodů pomocí Azure. Prostředí.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.topic: article
 ms.service: traffic-manager
 ms.date: 09/18/2019
-ms.author: allensu
-ms.openlocfilehash: 93362c0e1b359583e30886172f8ccb155c5ffaf4
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.author: rohink
+ms.openlocfilehash: 323093ec78a9486d19496b0ee90e37cb42eea341
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348890"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938423"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-powershell"></a>Přepsání podsítě Traffic Manager pomocí Azure PowerShellu
 
@@ -39,7 +39,7 @@ Pokud chcete vytvořit přepsání podsítě Traffic Manager, můžete pomocí A
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Můžete spustit příkazy, které následují v [Azure Cloud Shell](https://shell.azure.com/powershell), nebo spuštěním PowerShellu z počítače. Azure Cloud Shell je bezplatné interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Pokud spustíte PowerShell z počítače, budete potřebovat modul Azure PowerShell, 1.0.0 nebo novější. Nainstalovanou verzi `Get-Module -ListAvailable Az` můžete najít spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit `Login-AzAccount` pro přihlášení k Azure.
+Můžete spustit příkazy, které následují v [Azure Cloud Shell](https://shell.azure.com/powershell), nebo spuštěním PowerShellu z počítače. Azure Cloud Shell je bezplatné interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Pokud spustíte PowerShell z počítače, budete potřebovat modul Azure PowerShell, 1.0.0 nebo novější. Nainstalovanou verzi můžete najít spuštěním `Get-Module -ListAvailable Az`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit `Login-AzAccount` pro přihlášení k Azure.
 
 
 1. **Načíst koncový bod Traffic Manager:**

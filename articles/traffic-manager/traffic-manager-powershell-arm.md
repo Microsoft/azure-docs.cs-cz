@@ -3,20 +3,20 @@ title: Použití PowerShellu ke správě Traffic Manager v Azure
 description: Pomocí této cesty výukového programu můžete začít používat Azure PowerShell pro Traffic Manager.
 services: traffic-manager
 documentationcenter: na
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
-ms.author: allensu
-ms.openlocfilehash: f8dd01f22dec58c3345798b391c1c37c968d1025
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: rohink
+ms.openlocfilehash: 7886764a69eefa68be071a801bea65ae995fbdc3
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038119"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938500"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Použití PowerShellu ke správě Traffic Manager
 
@@ -61,11 +61,11 @@ Parametry jsou popsány v následující tabulce:
 
 | Parametr | Popis |
 | --- | --- |
-| Název |Název prostředku profilu Traffic Manager. Profily ve stejné skupině prostředků musí mít jedinečné názvy. Tento název je oddělený od názvu DNS, který se používá pro dotazy DNS. |
+| Name (Název) |Název prostředku profilu Traffic Manager. Profily ve stejné skupině prostředků musí mít jedinečné názvy. Tento název je oddělený od názvu DNS, který se používá pro dotazy DNS. |
 | ResourceGroupName |Název skupiny prostředků, která obsahuje prostředek profilu. |
 | TrafficRoutingMethod |Určuje metodu směrování provozu, pomocí které se určí, který koncový bod se vrátí v odpovědi na dotaz DNS. Možné hodnoty jsou Performance, vážená nebo priorita. |
 | RelativeDnsName |Určuje část názvu hostitele názvu DNS, kterou poskytuje tento Traffic Manager profil. Tato hodnota je kombinována s názvem domény DNS používaným službou Azure Traffic Manager k vytvoření plně kvalifikovaného názvu domény (FQDN) profilu. Například když nastavíte hodnotu "contoso", bude se jednat o "contoso.trafficmanager.net". |
-| TTL |Určuje hodnotu TTL (Time to Live) služby DNS v sekundách. Tato hodnota TTL informuje místní překladače DNS a klienty DNS, jak dlouho ukládat odpovědi DNS na tento profil Traffic Manager. |
+| Hodnota TTL |Určuje hodnotu TTL (Time to Live) služby DNS v sekundách. Tato hodnota TTL informuje místní překladače DNS a klienty DNS, jak dlouho ukládat odpovědi DNS na tento profil Traffic Manager. |
 | MonitorProtocol |Určuje protokol, který se má použít k monitorování stavu koncového bodu. Možné hodnoty jsou "HTTP" a "HTTPS". |
 | MonitorPort |Určuje port TCP, který se používá ke sledování stavu koncového bodu. |
 | MonitorPath |Určuje cestu relativní k názvu domény koncového bodu, který se používá k testování stavu koncového bodu. |

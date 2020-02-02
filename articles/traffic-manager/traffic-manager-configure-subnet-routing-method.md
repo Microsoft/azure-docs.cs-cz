@@ -3,7 +3,7 @@ title: Konfigurace směrování provozu v podsíti – Azure Traffic Manager
 description: Tento článek vysvětluje, jak nakonfigurovat Traffic Manager pro směrování provozu z konkrétních podsítí.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
-ms.author: allensu
-ms.openlocfilehash: d3751a14e8c317d6a4f23c1aa051b7e13305acf5
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.author: rohink
+ms.openlocfilehash: 60cddce610d223433d0ffe1f6b9234625aca9881
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014614"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938737"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Směrování provozu do konkrétních koncových bodů na základě podsítě uživatele pomocí služby Traffic Manager
 
@@ -52,7 +52,7 @@ V této části vytvoříte dva virtuální počítače *myEndpointVMEastUS* a *
 
     |Nastavení|Hodnota|
     |---|---|
-    |Název|myIISVMEastUS|
+    |Name (Název)|myIISVMEastUS|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
     |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Skupina prostředků| Vyberte **Nová** a zadejte *myResourceGroupTM1*.|
@@ -138,7 +138,7 @@ V této části vytvoříte virtuální počítač (*mVMEastUS* a *myVMWestEurop
 
     |Nastavení|Hodnota|
     |---|---|
-    |Název|myVMEastUS|
+    |Name (Název)|myVMEastUS|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
     |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Skupina prostředků| Vyberte **Existující** a pak vyberte *myResourceGroupTM1*.|
@@ -175,7 +175,7 @@ Vytvořte profil služby Traffic Manager, který vám umožní na základě zdro
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
-    | Název                   | Tento název musí být jedinečný v rámci zóny trafficmanager.net a ve výsledcích názvu DNS trafficmanager.net, který slouží k přístupu k vašemu profilu služby Traffic Manager.                                   |
+    | Name (Název)                   | Tento název musí být jedinečný v rámci zóny trafficmanager.net a ve výsledcích názvu DNS trafficmanager.net, který slouží k přístupu k vašemu profilu služby Traffic Manager.                                   |
     | Metoda směrování          | Jako metodu směrování vyberte **Podsíť**.                                       |
     | Předplatné            | Vyberte své předplatné.                          |
     | Skupina prostředků          | Vyberte **Existující** a zadejte *myResourceGroupTM1*. |
@@ -195,7 +195,7 @@ Přidejte dva virtuální počítače, na kterých běží servery IIS – *myII
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
     | Typ                    | Koncový bod Azure                                   |
-    | Název           | myTestWebSiteEndpoint                                        |
+    | Name (Název)           | myTestWebSiteEndpoint                                        |
     | Typ cílového prostředku           | Veřejná IP adresa                          |
     | Cílový prostředek          | **Zvolte veřejnou IP adresu** a zobrazí se výpis prostředků s veřejnými IP adresami ve stejném předplatném. Jako **Prostředek** vyberte veřejnou IP adresu *myIISVMEastUS-ip*. Toto je veřejná IP adresa virtuálního počítače se serverem služby IIS v oblasti USA – východ.|
     |  Nastavení směrování podsítě    |   Přidejte IP adresu testovacího virtuálního počítače *myVMEastUS* . Všechny dotazy uživatelů pocházející z tohoto virtuálního počítače se přesměrují na *myTestWebSiteEndpoint*.    |

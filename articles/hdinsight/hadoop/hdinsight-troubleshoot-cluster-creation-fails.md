@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/26/2019
-ms.openlocfilehash: 093bfbd976ace41f635976ff27fa4292e5c4df3c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 1e13c7ef8eae81ef2a12a8761b0596f6329f94dc
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905153"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937908"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Řešení chyb při vytváření clusteru s Azure HDInsight
 
@@ -64,7 +64,7 @@ Pokud používáte Express Route nebo vlastní server DNS, přečtěte si téma 
 
 ## <a name="resources-locks"></a>Zámky prostředků  
 
-Zajistěte, aby [ve vaší virtuální síti a skupině prostředků nejsou žádné zámky](../../azure-resource-manager/management/lock-resources.md).  
+Zajistěte, aby [ve vaší virtuální síti a skupině prostředků nejsou žádné zámky](../../azure-resource-manager/management/lock-resources.md). Clustery nelze vytvořit ani odstranit, pokud je skupina prostředků uzamčena. 
 
 ## <a name="unsupported-component-versions"></a>Nepodporované verze součástí
 

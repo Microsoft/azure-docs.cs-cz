@@ -2,13 +2,13 @@
 title: Nastavení testu připravenosti na instanci kontejneru
 description: Naučte se konfigurovat sondu, aby kontejnery v Azure Container Instances přijímaly požadavky pouze v případě, že jsou připravené.
 ms.topic: article
-ms.date: 10/17/2019
-ms.openlocfilehash: 50cb341788434a6dc0bb0a1423d9e59a3d93634d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 01/30/2020
+ms.openlocfilehash: 64bb4a3e429ce820835abbf8e235600e592f7868
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901848"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935682"
 ---
 # <a name="configure-readiness-probes"></a>Konfigurace testů připravenosti
 
@@ -23,7 +23,7 @@ Azure Container Instances podporuje také [sondy živého provozu](container-ins
 
 ## <a name="yaml-configuration"></a>Konfigurace YAML
 
-Jako příklad vytvořte soubor `readiness-probe.yaml` s následujícím fragmentem kódu, který obsahuje test připravenosti. Tento soubor definuje skupinu kontejnerů, která se skládá z kontejneru, na kterém běží malá webová aplikace. Aplikace je nasazená z veřejné `mcr.microsoft.com/azuredocs/aci-helloworld` image. Tato aplikace kontejneru je také znázorněna v rychlých startech, jako je například [nasazení instance kontejneru v Azure pomocí rozhraní příkazového řádku Azure CLI](container-instances-quickstart.md).
+Jako příklad vytvořte soubor `readiness-probe.yaml` s následujícím fragmentem kódu, který obsahuje test připravenosti. Tento soubor definuje skupinu kontejnerů, která se skládá z kontejneru, na kterém běží malá webová aplikace. Aplikace je nasazená z veřejné `mcr.microsoft.com/azuredocs/aci-helloworld` image. Tato kontejnerová aplikace je také znázorněna v [části nasazení instance kontejneru v Azure pomocí rozhraní příkazového řádku Azure](container-instances-quickstart.md) a dalších rychlých startů.
 
 ```yaml
 apiVersion: 2018-10-01
@@ -63,7 +63,9 @@ type: Microsoft.ContainerInstance/containerGroups
 
 ### <a name="start-command"></a>Spustit příkaz
 
-Soubor YAML obsahuje spouštěcí příkaz, který má být spuštěn při spuštění kontejneru definovaného vlastností `command`, který přijímá pole řetězců. Tento příkaz simuluje čas, kdy webová aplikace běží, ale kontejner není připravený. Nejprve spustí relaci prostředí a spustí příkaz `node`, který spustí webovou aplikaci. Také spustí příkaz do režimu spánku po 240 sekund, po jehož uplynutí vytvoří soubor s názvem `ready` v adresáři `/tmp`:
+Nasazení zahrnuje vlastnost `command` definující počáteční příkaz, který se spustí při prvním spuštění kontejneru. Tato vlastnost přijímá pole řetězců. Tento příkaz simuluje čas, kdy webová aplikace běží, ale kontejner není připravený. 
+
+Nejprve spustí relaci prostředí a spustí příkaz `node`, který spustí webovou aplikaci. Také spustí příkaz do režimu spánku po 240 sekund, po jehož uplynutí vytvoří soubor s názvem `ready` v adresáři `/tmp`:
 
 ```console
 node /usr/src/app/index.js & (sleep 240; touch /tmp/ready); wait

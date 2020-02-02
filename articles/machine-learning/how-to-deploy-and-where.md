@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: fbfe120484f7a5fdfb847448a4bba2309f3fedc6
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 3b3b83719da4c1c19706845fa4cb1dc75712d145
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543558"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932383"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Nasazení modelů pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,8 +26,8 @@ Naučte se, jak nasadit model strojového učení jako webovou službu v cloudu 
 Pracovní postup je podobný bez ohledu na [to, kam model nasazujete](#target) :
 
 1. Zaregistrujte model.
-1. Připravte nasazení. (Zadejte prostředky, využití, cílový výpočetní objekt.)
-1. Nasaďte model do cílového výpočetního objektu.
+1. Připravte se na nasazení. (Zadejte prostředky, využití, cíl výpočtů.)
+1. Model nasaďte do cílového výpočetního prostředí.
 1. Otestujte nasazený model, označovaný také jako webová služba.
 
 Další informace o konceptech, které jsou součástí pracovního postupu nasazení, najdete v tématu [Správa, nasazení a monitorování modelů pomocí Azure Machine Learning](concept-model-management-and-deployment.md).
@@ -40,7 +40,7 @@ Další informace o konceptech, které jsou součástí pracovního postupu nasa
 
 - [Rozšíření Azure CLI pro službu Machine Learning](reference-azure-machine-learning-cli.md), [sadu Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)nebo [rozšíření Azure Machine Learning Visual Studio Code](tutorial-setup-vscode-extension.md).
 
-## <a name="connect-to-your-workspace"></a>Připojení k pracovnímu prostoru
+## <a name="connect-to-your-workspace"></a>Připojení k vašemu pracovnímu prostoru
 
 Následující kód ukazuje, jak se připojit k pracovnímu prostoru Azure Machine Learning pomocí informací uložených v mezipaměti do místního vývojového prostředí:
 
@@ -174,7 +174,7 @@ E2E příklad, který ukazuje použití více modelů za jedním kontejnerovým 
 
 ## <a name="prepare-to-deploy"></a>Příprava nasazení
 
-K nasazení modelu budete potřebovat tyto položky:
+K nasazení modelu potřebujete následující položky:
 
 * **Vstupní skript**. Tento skript přijímá požadavky, zarovnává požadavky pomocí modelu a vrátí výsledky.
 
@@ -187,21 +187,21 @@ K nasazení modelu budete potřebovat tyto položky:
     >
     >   Alternativou, která může být pro váš scénář fungovat, je [předpověď dávky](how-to-use-parallel-run-step.md), která poskytuje přístup k úložištím dat během bodování.
 
-* **Závislosti**, jako jsou například pomocné skripty nebo balíčky Python/Conda vyžadované ke spuštění vstupního skriptu nebo modelu.
+* **Závislosti**, jako jsou například pomocné skripty nebo balíčky python/Conda, které jsou nutné ke spuštění vstupního skriptu nebo modelu.
 
-* **Konfigurace nasazení** pro cílový výpočetní objekt hostující nasazený model. Tato konfigurace popisuje například požadavky na paměť a procesor potřebné ke spuštění modelu.
+* **Konfigurace nasazení** pro výpočetní cíl, který je hostitelem nasazeného modelu. Tato konfigurace popisuje například požadavky na paměť a procesor potřebný ke spuštění modelu.
 
-Tyto položky jsou zapouzdřeny do *odvozené konfigurace* a *konfigurace nasazení*. Odvozená konfigurace odkazuje na vstupní skript a další závislosti. Tyto konfigurace můžete definovat programově při použití sady SDK k provedení nasazení. Definujete je v souborech JSON, když použijete rozhraní příkazového řádku.
+Tyto položky jsou zapouzdřeny do *Konfigurace odvození* a *Konfigurace nasazení*. Konfigurace odvození odkazuje na skript vstupu a další závislosti. Tyto konfigurace můžete definovat programově při použití sady SDK k provedení nasazení. Můžete je definovat v souborech JSON při použití rozhraní příkazového řádku.
 
 ### <a id="script"></a>1. definice vstupního skriptu a závislostí
 
-Vstupní skript přijímá data odeslaná do nasazené webové služby a předává je do modelu. Potom vezme odpověď vrácenou modelem a vrátí ji klientovi. *Skript je specifický pro váš model*. Musí pochopit data, která model očekává a vrátí.
+Skript vstupu přijímá data odeslaná do nasazené webové služby a předává je do modelu. Pak vezme odpověď vrácenou modelem a vrátí ji klientovi. *Skript je specifický pro váš model*. Musí pochopit data, která model očekává a vrátí.
 
 Skript obsahuje dvě funkce, které načítají a spouštějí model:
 
 * `init()`: Tato funkce obvykle načte model do globálního objektu. Tato funkce se spustí jenom jednou, když se spustí kontejner Docker pro vaši webovou službu.
 
-* `run(input_data)`: Tato funkce využívá model k predikci hodnoty založené na vstupní data. Vstupy a výstupy spuštění obvykle pro serializaci a deserializaci používají JSON. Pracovat můžete také s nezpracovanými binárními daty. Data můžete transformovat před jejich odesláním do modelu nebo před jejich vrácením klientovi.
+* `run(input_data)`: Tato funkce využívá model k predikci hodnoty založené na vstupní data. Vstupy a výstupy běhu obvykle používají JSON pro serializaci a deserializaci. Můžete také pracovat s nezpracovanými binárními daty. Data je možné transformovat před jejich odesláním do modelu nebo před vrácením do klienta.
 
 #### <a name="locate-model-files-in-your-entry-script"></a>Vyhledání souborů modelu ve vstupním skriptu
 
@@ -220,17 +220,23 @@ V následující tabulce je popsána hodnota AZUREML_MODEL_DIR v závislosti na 
 | Jeden model | Cesta ke složce obsahující model |
 | Více modelů | Cesta ke složce obsahující všechny modely Modely jsou umístěné podle názvu a verze v této složce (`$MODEL_NAME/$VERSION`). |
 
-Chcete-li získat cestu k souboru v modelu, slučte proměnnou prostředí s názvem souboru, který hledáte.
-Názvy souborů modelu se během registrace a nasazení uchovávají. 
+Během registrace a nasazení modelu jsou modely umístěny v AZUREML_MODEL_DIR cestě a jejich původní názvy souborů jsou zachovány.
+
+Pokud chcete získat cestu k souboru modelu ve vašem vstupním skriptu, slučte proměnnou prostředí s cestou k souboru, který hledáte.
 
 **Příklad jednoduchého modelu**
 ```python
+# Example when the model is a file
 model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_regression_model.pkl')
+
+# Example when the model is a folder containing a file
+file_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'my_model_folder', 'sklearn_regression_model.pkl')
 ```
 
 **Příklad více modelů**
 ```python
-model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model/1/sklearn_regression_model.pkl')
+# Example when the model is a file, and the deployment contains multiple models
+model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model', '1', 'sklearn_regression_model.pkl')
 ```
 
 ##### <a name="get_model_path"></a>get_model_path
@@ -971,7 +977,7 @@ package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
 ```
 
-Po vytvoření balíčku můžete použít `package.pull()` k vyžádání image do místního prostředí Docker. Výstup tohoto příkazu zobrazí název obrázku. Například: 
+Po vytvoření balíčku můžete použít `package.pull()` k vyžádání image do místního prostředí Docker. Výstup tohoto příkazu zobrazí název obrázku. Příklad: 
 
 `Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. 
 

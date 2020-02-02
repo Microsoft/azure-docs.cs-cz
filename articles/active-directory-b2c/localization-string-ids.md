@@ -7,54 +7,54 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 01/31/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: da1390de4e2eb0624032dc490416e7b6e5d61baa
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 349932073394a967da58bf521449d22a48c1f91d
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67846835"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931719"
 ---
 # <a name="localization-string-ids"></a>ID řetězců lokalizací
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Element **Localization** umožňuje v zásadách pro cesty uživatelů podporovat více národních prostředí nebo jazyků. Tento článek poskytuje seznam identifikátorů lokalizací, které můžete použít ve svých zásadách. Seznamte se s lokalizací uživatelského rozhraní [](localization.md), najdete v tématu lokalizace.
+Element **Localization** umožňuje v zásadách pro cesty uživatelů podporovat více národních prostředí nebo jazyků. Tento článek poskytuje seznam identifikátorů lokalizací, které můžete použít ve svých zásadách. Seznamte se s lokalizací uživatelského rozhraní, najdete v tématu [lokalizace](localization.md).
 
 ## <a name="sign-up-or-sign-in-page-elements"></a>Prvky přihlašovacích nebo přihlašovacích stránek
 
-Následující identifikátory se používají pro definici obsahu s ID `api.signuporsignin`.
+Pro definici obsahu s ID `api.signuporsignin`se použijí následující identifikátory.
 
-| id | Výchozí hodnota |
+| ID | Výchozí hodnota |
 | -- | ------------- |
-| **local_intro_email** | Přihlaste se se svým existujícím účtem. |
+| **local_intro_email** | Přihlaste se pomocí svého existujícího účtu |
 | **logonIdentifier_email** | E-mailová adresa |
 | **requiredField_email** | Zadejte prosím svůj e-mail. |
 | **invalid_email** | Zadejte prosím platnou e-mailovou adresu. |
 | **email_pattern** | ^ [a-zA-Z0-9.! # $% & ' ' *+/=? ^ _\`{\|} ~-] + @ [a-za-Z0-9-] + (?:\\. [ a-zA-Z0-9-] +)* $ |
-| **local_intro_username** | Přihlásit uživatelským jménem |
+| **local_intro_username** | Přihlaste se pomocí svého uživatelského jména. |
 | **logonIdentifier_username** | Uživatelské jméno |
-| **requiredField_username** | Zadejte prosím své uživatelské jméno. |
+| **requiredField_username** | Zadejte prosím svoje uživatelské jméno. |
 | **Heslo** | Heslo |
-| **requiredField_password** | Zadejte prosím své heslo. |
-| **invalid_password** | Heslo, které jste zadali, nemá očekávaný formát. |
+| **requiredField_password** | Zadejte prosím svoje heslo. |
+| **invalid_password** | Heslo, které jste zadali, není v očekávaném formátu. |
 | **forgotpassword_link** | Zapomněli jste heslo? |
 | **createaccount_intro** | Nemáte účet? |
 | **createaccount_link** | Zaregistrujte se |
 | **divider_title** | NEBO |
 | **cancel_message** | Uživatel zapomněl svoje heslo. |
-| **button_signin** | Přihlášení |
-| **social_intro** | Přihlaste se svým sociálním účtem. |
-  **remember_me** |Neodhlašovat|
-| **unknown_error** | Máme potíže s přihlášením. Zkuste to prosím znovu později. |
+| **button_signin** | Přihlásit se |
+| **social_intro** | Přihlaste se pomocí účtu sociální sítě. |
+  **remember_me** |Zůstat přihlášeni|
+| **unknown_error** | Máme potíže s přihlášením. Zkuste to prosím znova později. |
 
 Následující příklad ukazuje použití některých prvků uživatelského rozhraní na přihlašovací stránce nebo na přihlašovací stránce:
 
 ![Prvky uživatelského rozhraní pro registraci nebo přihlašovací stránku](./media/localization-string-ids/localization-susi.png)
 
-ID zprostředkovatelů identity je nakonfigurováno v elementu **ClaimsExchange** na cestě uživatele. Chcete-li lokalizovat název poskytovatele identity, je typ **ElementType** nastaven na `ClaimsProvider`hodnotu, zatímco **StringId** je `ClaimsExchange`nastaven na ID.
+ID zprostředkovatelů identity je nakonfigurováno v elementu **ClaimsExchange** na cestě uživatele. Chcete-li lokalizovat název poskytovatele identity, je typ **ElementType** nastaven na hodnotu `ClaimsProvider`, zatímco **StringId** je nastaven na ID `ClaimsExchange`.
 
 ```XML
 <OrchestrationStep Order="2" Type="ClaimsExchange">
@@ -79,12 +79,12 @@ V následujícím příkladu je lokalizován poskytovatel identity Facebooku do 
 <LocalizedString ElementType="ClaimsProvider" StringId="FacebookExchange">فيس بوك</LocalizedString>
 ```
 
-## <a name="sign-up-or-sign-in-error-messages"></a>Chybové zprávy týkající se registrace nebo přihlašování
+### <a name="sign-up-or-sign-in-error-messages"></a>Chybové zprávy týkající se registrace nebo přihlašování
 
-| id | Výchozí hodnota |
+| ID | Výchozí hodnota |
 | -- | ------------- |
-| **UserMessageIfInvalidPassword** | Vaše heslo není správné. |
-| **UserMessageIfClaimsPrincipalDoesNotExist** | Nedaří se nám najít váš účet. |
+| **UserMessageIfInvalidPassword** | Heslo není správné. |
+| **UserMessageIfClaimsPrincipalDoesNotExist** | Nemůžeme se zdát, že váš účet najdete. |
 | **UserMessageIfOldPasswordUsed** | Vypadá to, že jste použili staré heslo. |
 | **DefaultMessage** | Neplatné uživatelské jméno nebo heslo. |
 | **UserMessageIfUserAccountDisabled** | Váš účet byl uzamčen. Řekněte pracovníkovi podpory, aby ho odemkl, a pak to zkuste znovu. |
@@ -93,29 +93,29 @@ V následujícím příkladu je lokalizován poskytovatel identity Facebooku do 
 
 ## <a name="sign-up-and-self-asserted-pages-user-interface-elements"></a>Prvky uživatelského rozhraní pro registraci a samoobslužné stránky
 
-Níže jsou uvedená ID pro `api.localaccountsignup` definici obsahu s ID nebo libovolnou definicí obsahu, která `api.selfasserted`začíná, například `api.selfasserted.profileupdate` a `api.localaccountpasswordreset`.
+Níže jsou uvedená ID pro definici obsahu s ID `api.localaccountsignup` nebo jakákoli definice obsahu, která začíná `api.selfasserted`, například `api.selfasserted.profileupdate` a `api.localaccountpasswordreset`.
 
-| id | Výchozí hodnota |
+| ID | Výchozí hodnota |
 | -- | ------------- |
-| **ver_sent** | Ověřovací kód se odeslal na: |
+| **ver_sent** | Ověřovací kód byl odeslán do: |
 | **ver_but_default** | Výchozí |
 | **cancel_message** | Uživatel zrušil zadávání informací o vlastním vyhodnocení. |
-| **preloader_alt** | Počkejte prosím. |
-| **ver_but_send** | Poslat ověřovací kód |
+| **preloader_alt** | Počkejte prosím |
+| **ver_but_send** | Odeslat ověřovací kód |
 | **alert_yes** | Ano |
 | **error_fieldIncorrect** | Některá pole jsou vyplněna nesprávně. Zkontrolujte prosím své položky a zkuste to znovu. |
-| **jednolet** | Rok |
-| **verifying_blurb** | Počkejte prosím, než zpracujeme vaše údaje. |
+| **jednolet** | Year |
+| **verifying_blurb** | Počkejte prosím, než zpracujeme vaše informace. |
 | **button_cancel** | Zrušit |
-| **ver_fail_no_retry** | Provedli jste příliš mnoho nesprávných pokusů. Zkuste to prosím znovu později. |
-| **měsíčně** | Měsíc |
+| **ver_fail_no_retry** | Provedli jste příliš mnoho nesprávných pokusů. Zkuste to prosím znova později. |
+| **měsíčně** | Month |
 | **ver_success_msg** | E-mailová adresa byla ověřena. Nyní můžete pokračovat. |
-| **months** | leden, únor, březen, duben, květen, červen, červenec, srpen, září, říjen, listopad, prosinec |
+| **months** | Leden, únor, březen, duben, květen, červen, červenec, srpen, září, říjen, listopad, prosinec |
 | **ver_fail_server** | Při ověřování vaší e-mailové adresy máme problémy. Zadejte prosím platnou e-mailovou adresu a zkuste to znovu. |
 | **error_requiredFieldMissing** | Chybí povinné pole. Vyplňte prosím všechna povinná pole a zkuste to znovu. |
 | **initial_intro** | Zadejte prosím následující údaje. |
 | **ver_but_resend** | Poslat nový kód |
-| **button_continue** | Create |
+| **button_continue** | Vytváření |
 | **error_passwordEntryMismatch** | Pole pro zadání hesla se neshodují. Zadejte prosím do obou polí stejné heslo a zkuste to znovu. |
 | **ver_incorrect_format** | Nesprávný formát |
 | **ver_but_edit** | Změnit e-mail |
@@ -124,24 +124,24 @@ Níže jsou uvedená ID pro `api.localaccountsignup` definici obsahu s ID nebo l
 | **ver_info_msg** | Ověřovací kód byl odeslán do vaší doručené pošty. Zkopírujte ho prosím do následujícího pole pro zadání. |
 | **dnu** | Den |
 | **ver_fail_throttled** | Existuje příliš mnoho žádostí o ověření této e-mailové adresy. Chvíli prosím počkejte a pak to zkuste znovu. |
-| **helplink_text** | Co je to? |
+| **helplink_text** | Co to je? |
 | **ver_fail_retry** | Kód je nesprávný. Zkuste to prosím znovu. |
-| **alert_title** | Zrušit zadávání údajů |
-| **required_field** | Tyto informace jsou požadovány. |
-| **alert_message** | Opravdu chcete zrušit zadávání údajů? |
+| **alert_title** | Zrušit zadávání podrobností |
+| **required_field** | Tato informace je povinná. |
+| **alert_message** | Opravdu chcete zrušit zadávání podrobností? |
 | **ver_intro_msg** | Ověření je nezbytné. Klikněte prosím na tlačítko Odeslat. |
 | **ver_input** | Ověřovací kód |
 
-## <a name="sign-up-and-self-asserted-pages-error-messages"></a>Chybové zprávy pro registraci a samoobslužné stránky
+### <a name="sign-up-and-self-asserted-pages-error-messages"></a>Chybové zprávy pro registraci a samoobslužné stránky
 
-| id | Výchozí hodnota |
+| ID | Výchozí hodnota |
 | -- | ------------- |
 | **UserMessageIfClaimsPrincipalAlreadyExists** | Uživatel se zadaným ID už existuje. Zvolte prosím jiný. |
-| **UserMessageIfClaimNotVerified** | Deklarace identity není ověřená:{0} |
-| **UserMessageIfIncorrectPattern** | Nesprávný vzor pro:{0} |
-| **UserMessageIfMissingRequiredElement** | Chybí požadovaný element:{0} |
-| **UserMessageIfValidationError** | Chyba při ověřování uživatelem:{0} |
-| **UserMessageIfInvalidInput** | {0}má neplatný vstup. |
+| **UserMessageIfClaimNotVerified** | Deklarace identity není ověřená: {0} |
+| **UserMessageIfIncorrectPattern** | Nesprávný vzor pro: {0} |
+| **UserMessageIfMissingRequiredElement** | Chybí požadovaný element: {0} |
+| **UserMessageIfValidationError** | Chyba při ověřování pomocí: {0} |
+| **UserMessageIfInvalidInput** | {0} má neplatný vstup. |
 | **ServiceThrottled** | V tuto chvíli je moc velký počet požadavků. Chvíli prosím počkejte a zkuste to znovu. |
 
 Následující příklad ukazuje použití některých prvků uživatelského rozhraní na stránce pro registraci:
@@ -157,9 +157,9 @@ Následující příklad ukazuje použití některých prvků uživatelského ro
 
 Níže jsou uvedené identifikátory pro definici obsahu s ID `api.phonefactor`.
 
-| id | Výchozí hodnota |
+| ID | Výchozí hodnota |
 | -- | ------------- |
-| **button_verify** | Zavolejte mi |
+| **button_verify** | Zavolej mi |
 | **country_code_label** | Kód země |
 | **cancel_message** | Uživatel zrušil službu Multi-Factor Authentication. |
 | **text_button_send_second_code** | poslat nový kód |
@@ -168,20 +168,20 @@ Níže jsou uvedené identifikátory pro definici obsahu s ID `api.phonefactor`.
 | **intro_mixed_p** | Pro vás budeme nahrávat následující čísla. Vyberte číslo, které můžeme použít k telefonování, nebo pošle kód přes SMS, abychom vás ověřili. |
 | **button_verify_code** | Ověřit kód |
 | **requiredField_code** | Zadejte prosím ověřovací kód, který jste dostali. |
-| **invalid_code** | Zadejte prosím 6místný kód, který jste dostali. |
+| **invalid_code** | Zadejte prosím 6. kód číslice, který jste dostali. |
 | **button_cancel** | Zrušit |
 | **local_number_input_placeholder_text** | Telefonní číslo |
 | **button_retry** | Retry |
-| **alternative_text** | Nemám telefon. |
+| **alternative_text** | Nemám svůj telefon |
 | **intro_phone_p** | Pro vás budeme nahrávat následující čísla. Vyberte číslo, na které můžeme telefon ověřit. |
 | **intro_phone** | Pro vás budeme nahrávat následující číslo. Budeme vám telefonicky ověřit. |
-| **enter_code_text_intro** | Zadejte níže ověřovací kód, nebo  |
-| **intro_entry_phone** | Níže zadejte číslo, na které můžeme zavolat, abychom vás ověřili. |
-| **intro_entry_sms** | Níže zadejte číslo, na které můžeme poslat kód přes SMS, abychom vás ověřili. |
-| **button_send_code** | Poslat kód |
-| **invalid_number** | Zadejte platné telefonní číslo. |
+| **enter_code_text_intro** | Níže zadejte svůj ověřovací kód nebo  |
+| **intro_entry_phone** | Níže zadejte číslo, na které můžeme telefon ověřit. |
+| **intro_entry_sms** | Níže zadejte číslo, na které můžeme poslat kód prostřednictvím SMS, abychom vás mohli ověřit. |
+| **button_send_code** | Odeslat kód |
+| **invalid_number** | Zadejte prosím platné telefonní číslo. |
 | **intro_sms** | Pro vás budeme nahrávat následující číslo. Prostřednictvím SMS vám pošleme kód, abychom vás ověřili. |
-| **intro_entry_mixed** | Níže zadejte číslo, na které můžeme poslat kód přes SMS nebo zavolat, abychom vás ověřili. |
+| **intro_entry_mixed** | Níže zadejte číslo, které vám můžeme poslat kód přes SMS nebo telefon, abychom vás ověřili. |
 | **number_pattern** | ^\\+(?:[0-9][\\x20-]?){6,14}[0-9]$ |
 | **intro_sms_p** |Pro vás budeme nahrávat následující čísla. Vyberte číslo, na které můžeme poslat kód prostřednictvím SMS, abychom vás mohli ověřit. |
 | **requiredField_countryCode** | Vyberte prosím kód země. |
@@ -190,9 +190,9 @@ Níže jsou uvedené identifikátory pro definici obsahu s ID `api.phonefactor`.
 | **number_label** | Telefonní číslo |
 | **error_tryagain** | Telefonní číslo, které jste zadali, je zaneprázdněno nebo není k dispozici. Zkontrolujte prosím číslo a zkuste to znovu. |
 | **error_incorrect_code** | Ověřovací kód, který jste zadali, neodpovídá našim záznamům. Zkuste to prosím znovu nebo si vyžádejte nový kód. |
-| **countryList** | {\"Default\":země/\"oblast,AF\":\"Afghánistán,\"AX:Aland\"\"\"\"\" Ostrovy\",\"Al:\"Albánie\",DZ\":Alžírsko,jako\":\"\"\"\"\"\" Americká Samoa\",\"ad\":Andorry\",\"Ao:\"Angola,AI\":\"\"\"\" \"Anguilla,\"AQ\":Antarktida\",AG: Antigua aBarbuda\",\"\"\"\"\"\"Ar\":\"Argentina,am\":Arménská, AW:\"Aruba\"\"\"\"\"\" \",Au\":\"Austrálie,\"na:Rakousko,\"\"\"\"\"\" AZ\":\"Ázerbájdžán,\"BS\":Bahamy\",BH:\"\"\"\"\" Bahrajn\",\"BD:\"Bangladéš\",BB\":Barbados,\"\"\"\"\" O\":\"Bělorusko,\":Belgie\",BZ:\"\"\"\"\"\" Belize\",\"BJ:\"Benin\", BM:Bermudy\",\"\"\"\"\"BT\":Bhútán\",\"Bo:\"Bolívie,BQ–:\"\"\"\"\"\" Bonaire\",\"ba:Bosna\"aHercegovina\",černobílá\":Botswana\"\"\"<span class="notransla class=""></span class="notransla> Odlehlé ostrovy\",\"VI\": USA\" Panenské ostrovy\",\"g\":Uganda\",\"UA:\"Ukrajina,AE:\"\"\"\"\"\" Spojené arabské emiráty\",\"GB\":\"spojenékrálovství\",USA\":USA\"uy\"\"\" \":Uruguay\",\"uz:\"Uzbekistán, VU:Vanuatu\",\"\"\"\"\"\" \"VA:\"Vatikán\",ve\":Venezuela,vn\": Vietnam\"\"\"\"\"\" \",WF\":Wallisa\"Futuna,je\":\"Jemen,\"zm\"\"\"\"\":Zambie,\"ZW:Zimbabwe\"}\"\"\"\" |
-| **error_448** | Telefonní číslo, které jste zadali, není dostupné. |
-| **error_449** | Uživatel překročil počet opakování pokusů. |
+| **countryList** | {\"DEFAULT\":\"Country/Region\",\"AF\":\"Afghanistan\",\"AX\":\"Åland Islands\",\"AL\":\"Albania\",\"DZ\":\"Algeria\",\"AS\":\"American Samoa\",\"AD\":\"Andorra\",\"AO\":\"Angola\",\"AI\":\"Anguilla\",\"AQ\":\"Antarctica\",\"AG\":\"Antigua and Barbuda\",\"AR\":\"Argentina\",\"AM\":\"Armenia\",\"AW\":\"Aruba\",\"AU\":\"Australia\",\"AT\":\"Austria\",\"AZ\":\"Azerbaijan\",\"BS\":\"Bahamas\",\"BH\":\"Bahrain\",\"BD\":\"Bangladesh\",\"BB\":\"Barbados\",\"BY\":\"Belarus\",\"BE\":\"Belgium\",\"BZ\":\"Belize\",\"BJ\":\"Benin\",\"BM\":\"Bermuda\",\"BT\":\"Bhutan\",\"BO\":\"Bolivia\",\"BQ\":\"Bonaire\",\"BA\":\"Bosnia and Herzegovina\",\"BW\":\"Botswana\",\"BV\":\"Bouvet Island\",\"BR\":\"Brazil\",\"IO\":\"British Indian Ocean Territory\",\"VG\":\"British Virgin Islands\",\"BN\":\"Brunei\",\"BG\":\"Bulgaria\",\"BF\":\"Burkina Faso\",\"BI\":\"Burundi\",\"CV\":\"Cabo Verde\",\"KH\":\"Cambodia\",\"CM\":\"Cameroon\",\"CA\":\"Canada\",\"KY\":\"Cayman Islands\",\"CF\":\"Central African Republic\",\"TD\":\"Chad\",\"CL\":\"Chile\",\"CN\":\"China\",\"CX\":\"Christmas Island\",\"CC\":\"Cocos (Keeling) Islands\",\"CO\":\"Colombia\",\"KM\":\"Comoros\",\"CG\":\"Congo\",\"CD\":\"Congo (DRC)\",\"CK\":\"Cook Islands\",\"CR\":\"Costa Rica\",\"CI\":\"Côte d’Ivoire\",\"HR\":\"Croatia\",\"CU\":\"Cuba\",\"CW\":\"Curaçao\",\"CY\":\"Cyprus\",\"CZ\":\"Czech Republic\",\"DK\":\"Denmark\",\"DJ\":\"Djibouti\",\"DM\":\"Dominica\",\"DO\":\"Dominican Republic\",\"EC\":\"Ecuador\",\"EG\":\"Egypt\",\"SV\":\"El Salvador\",\"GQ\":\"Equatorial Guinea\",\"ER\":\"Eritrea\",\"EE\":\"Estonia\",\"ET\":\"Ethiopia\",\"FK\":\"Falkland Islands\",\"FO\":\"Faroe Islands\",\"FJ\":\"Fiji\",\"FI\":\"Finland\",\"FR\":\"France\",\"GF\":\"French Guiana\",\"PF\":\"French Polynesia\",\"TF\":\"French Southern Territories\",\"GA\":\"Gabon\",\"GM\":\"Gambia\",\"GE\":\"Georgia\",\"DE\":\"Germany\",\"GH\":\"Ghana\",\"GI\":\"Gibraltar\",\"GR\":\"Greece\",\"GL\":\"Greenland\",\"GD\":\"Grenada\",\"GP\":\"Guadeloupe\",\"GU\":\"Guam\",\"GT\":\"Guatemala\",\"GG\":\"Guernsey\",\"GN\":\"Guinea\",\"GW\":\"Guinea-Bissau\",\"GY\":\"Guyana\",\"HT\":\"Haiti\",\"HM\":\"Heard Island and McDonald Islands\",\"HN\":\"Honduras\",\"HK\":\"Hong Kong SAR\",\"HU\":\"Hungary\",\"IS\":\"Iceland\",\"IN\":\"India\",\"ID\":\"Indonesia\",\"IR\":\"Iran\",\"IQ\":\"Iraq\",\"IE\":\"Ireland\",\"IM\":\"Isle of Man\",\"IL\":\"Israel\",\"IT\":\"Italy\",\"JM\":\"Jamaica\",\"JP\":\"Japan\",\"JE\":\"Jersey\",\"JO\":\"Jordan\",\"KZ\":\"Kazakhstan\",\"KE\":\"Kenya\",\"KI\":\"Kiribati\",\"KR\":\"Korea\",\"KW\":\"Kuwait\",\"KG\":\"Kyrgyzstan\",\"LA\":\"Laos\",\"LV\":\"Latvia\",\"LB\":\"Lebanon\",\"LS\":\"Lesotho\",\"LR\":\"Liberia\",\"LY\":\"Libya\",\"LI\":\"Liechtenstein\",\"LT\":\"Lithuania\",\"LU\":\"Luxembourg\",\"MO\":\"Macao SAR\",\"MK\":\"North Macedonia\",\"MG\":\"Madagascar\",\"MW\":\"Malawi\",\"MY\":\"Malaysia\",\"MV\":\"Maldives\",\"ML\":\"Mali\",\"MT\":\"Malta\",\"MH\":\"Marshall Islands\",\"MQ\":\"Martinique\",\"MR\":\"Mauritania\",\"MU\":\"Mauritius\",\"YT\":\"Mayotte\",\"MX\":\"Mexico\",\"FM\":\"Micronesia\",\"MD\":\"Moldova\",\"MC\":\"Monaco\",\"MN\":\"Mongolia\",\"ME\":\"Montenegro\",\"MS\":\"Montserrat\",\"MA\":\"Morocco\",\"MZ\":\"Mozambique\",\"MM\":\"Myanmar\",\"NA\":\"Namibia\",\"NR\":\"Nauru\",\"NP\":\"Nepal\",\"NL\":\"Netherlands\",\"NC\":\"New Caledonia\",\"NZ\":\"New Zealand\",\"NI\":\"Nicaragua\",\"NE\":\"Niger\",\"NG\":\"Nigeria\",\"NU\":\"Niue\",\"NF\":\"Norfolk Island\",\"KP\":\"North Korea\",\"MP\":\"Northern Mariana Islands\",\"NO\":\"Norway\",\"OM\":\"Oman\",\"PK\":\"Pakistan\",\"PW\":\"Palau\",\"PS\":\"Palestinian Authority\",\"PA\":\"Panama\",\"PG\":\"Papua New Guinea\",\"PY\":\"Paraguay\",\"PE\":\"Peru\",\"PH\":\"Philippines\",\"PN\":\"Pitcairn Islands\",\"PL\":\"Poland\",\"PT\":\"Portugal\",\"PR\":\"Puerto Rico\",\"QA\":\"Qatar\",\"RE\":\"Réunion\",\"RO\":\"Romania\",\"RU\":\"Russia\",\"RW\":\"Rwanda\",\"BL\":\"Saint Barthélemy\",\"KN\":\"Saint Kitts and Nevis\",\"LC\":\"Saint Lucia\",\"MF\":\"Saint Martin\",\"PM\":\"Saint Pierre and Miquelon\",\"VC\":\"Saint Vincent and the Grenadines\",\"WS\":\"Samoa\",\"SM\":\"San Marino\",\"ST\":\"São Tomé and Príncipe\",\"SA\":\"Saudi Arabia\",\"SN\":\"Senegal\",\"RS\":\"Serbia\",\"SC\":\"Seychelles\",\"SL\":\"Sierra Leone\",\"SG\":\"Singapore\",\"SX\":\"Sint Maarten\",\"SK\":\"Slovakia\",\"SI\":\"Slovenia\",\"SB\":\"Solomon Islands\",\"SO\":\"Somalia\",\"ZA\":\"South Africa\",\"GS\":\"South Georgia and South Sandwich Islands\",\"SS\":\"South Sudan\",\"ES\":\"Spain\",\"LK\":\"Sri Lanka\",\"SH\":\"St Helena, Ascension, Tristan da Cunha\",\"SD\":\"Sudan\",\"SR\":\"Suriname\",\"SJ\":\"Svalbard\",\"SZ\":\"Swaziland\",\"SE\":\"Sweden\",\"CH\":\"Switzerland\",\"SY\":\"Syria\",\"TW\":\"Taiwan\",\"TJ\":\"Tajikistan\",\"TZ\":\"Tanzania\",\"TH\":\"Thailand\",\"TL\":\"Timor-Leste\",\"TG\":\"Togo\",\"TK\":\"Tokelau\",\"TO\":\"Tonga\",\"TT\":\"Trinidad and Tobago\",\"TN\":\"Tunisia\",\"TR\":\"Turkey\",\"TM\":\"Turkmenistan\",\"TC\":\"Turks and Caicos Islands\",\"TV\":\"Tuvalu\",\"UM\":\"U.S. Outlying Islands\",\"VI\":\"U.S. Virgin Islands\",\"UG\":\"Uganda\",\"UA\":\"Ukraine\",\"AE\":\"United Arab Emirates\",\"GB\":\"United Kingdom\",\"US\":\"United States\",\"UY\":\"Uruguay\",\"UZ\":\"Uzbekistan\",\"VU\":\"Vanuatu\",\"VA\":\"Vatican City\",\"VE\":\"Venezuela\",\"VN\":\"Vietnam\",\"WF\":\"Wallis and Futuna\",\"YE\":\"Yemen\",\"ZM\":\"Zambia\",\"ZW\":\"Zimbabwe\"} |
+| **error_448** | Telefonní číslo, které jste zadali, je nedosažitelné. |
+| **error_449** | Uživatel překročil počet opakovaných pokusů. |
 | **verification_code_input_placeholder_text** | Ověřovací kód |
 
 Následující příklad ukazuje použití některých prvků uživatelského rozhraní na stránce pro zápis MFA:
@@ -202,6 +202,29 @@ Následující příklad ukazuje použití některých prvků uživatelského ro
 Následující příklad ukazuje použití některých prvků uživatelského rozhraní na stránce ověřování MFA:
 
 ![Prvky uživatelského prostředí ověřování e-mailů pro registraci stránky](./media/localization-string-ids/localization-mfa2.png)
+
+## <a name="verification-display-control-user-interface-elements"></a>Ovládací prvky uživatelského rozhraní pro zobrazení ověření
+
+Níže jsou uvedené identifikátory pro [ovládací prvek zobrazení ověřování](display-control-verification.md) .
+
+| ID | Výchozí hodnota |
+| -- | ------------- |
+|verification_control_but_change_claims |Změnit |
+|verification_control_fail_send_code |Nepovedlo se odeslat kód, zkuste to prosím znovu později. |
+|verification_control_fail_verify_code |Nepovedlo se ověřit kód, zkuste to prosím znovu později. |
+|verification_control_but_send_code |Odeslat kód |
+|verification_control_but_send_new_code |Poslat nový kód |
+|verification_control_but_verify_code |Ověřit kód |
+
+### <a name="verification-display-control-error-messages"></a>Chybové zprávy ovládacího prvku zobrazení ověřování
+
+| ID | Výchozí hodnota |
+| -- | ------------- |
+|UserMessageIfMaxRetryAttempted |Jednorázové heslo poskytnuté při ověřování překročilo maximální počet pokusů. |
+|UserMessageIfSessionDoesNotExist |Jedna časová relace pro ověření hesla vypršela. |
+|UserMessageIfSessionConflict |Jedna časová relace ověření hesla je v konfliktu. |
+|UserMessageIfInvalidCode |Jedno časové heslo zadané pro ověření není správné. |
+
 
 
 

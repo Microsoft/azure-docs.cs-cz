@@ -8,17 +8,17 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: 598bf677b06c5ec1f431144e7e76deee55d23f33
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 982e80f4c47a6f59b65edb06461a9d592248cc61
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435470"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76929888"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>IP adresy správy HDInsight
 
 > [!Important]
-> Použijte funkci [značek služby](hdinsight-service-tags.md) pro skupiny zabezpečení sítě. Nové oblasti budou přidány pouze pro značky služby a statické IP adresy budou nakonec zastaralé.
+> Ve většině případů teď můžete místo ručního přidávání IP adres používat funkci [označení služby](hdinsight-service-tags.md) pro skupiny zabezpečení sítě. Nové oblasti budou přidány pouze pro značky služby a statické IP adresy budou nakonec zastaralé.
 
 Pokud k řízení příchozího provozu do clusteru HDInsight používáte skupiny zabezpečení sítě (skupin zabezpečení sítě) nebo trasy definované uživatelem (udr), musíte zajistit, aby váš cluster mohl komunikovat s důležitými službami stavu a správy Azure.  Některé z těchto IP adres pro tyto služby jsou specifické pro jednotlivé oblasti a některé z nich se vztahují na všechny oblasti Azure. Možná budete muset povolit provoz také ze služby Azure DNS, pokud nepoužíváte vlastní DNS.
 
@@ -64,7 +64,7 @@ Povolte provoz z IP adres uvedených pro služby stavu a správy Azure HDInsight
 | Francie | Francie – střed| 20.188.39.64</br>40.89.157.135 | \*:443 | Příchozí |
 | Německo | Německo – střed | 51.4.146.68</br>51.4.146.80 | \*:443 | Příchozí |
 | &nbsp; | Německo – severovýchod | 51.5.150.132</br>51.5.144.101 | \*:443 | Příchozí |
-| Indie | Střed Indie | 52.172.153.209</br>52.172.152.49 | \*:443 | Příchozí |
+| Indie | Střední Indie | 52.172.153.209</br>52.172.152.49 | \*:443 | Příchozí |
 | &nbsp; | Jižní Indie | 104.211.223.67<br/>104.211.216.210 | \*:443 | Příchozí |
 | Japonsko | Japonsko – východ | 13.78.125.90</br>13.78.89.60 | \*:443 | Příchozí |
 | &nbsp; | Japonsko – západ | 40.74.125.69</br>138.91.29.150 | \*:443 | Příchozí |
@@ -73,7 +73,7 @@ Povolte provoz z IP adres uvedených pro služby stavu a správy Azure HDInsight
 | Spojené království | Velká Británie – západ | 51.141.13.110</br>51.141.7.20 | \*:443 | Příchozí |
 | &nbsp; | Spojené království – jih | 51.140.47.39</br>51.140.52.16 | \*:443 | Příchozí |
 | Spojené státy | Střední USA | 13.89.171.122</br>13.89.171.124 | \*:443 | Příchozí |
-| &nbsp; | Východní USA | 13.82.225.233</br>40.71.175.99 | \*:443 | Příchozí |
+| &nbsp; | Východ USA | 13.82.225.233</br>40.71.175.99 | \*:443 | Příchozí |
 | &nbsp; | Středoseverní USA | 157.56.8.38</br>157.55.213.99 | \*:443 | Příchozí |
 | &nbsp; | Středozápadní USA | 52.161.23.15</br>52.161.10.167 | \*:443 | Příchozí |
 | &nbsp; | Západní USA | 13.64.254.98</br>23.101.196.19 | \*:443 | Příchozí |

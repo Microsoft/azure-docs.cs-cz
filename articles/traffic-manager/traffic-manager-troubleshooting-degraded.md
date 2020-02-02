@@ -3,7 +3,7 @@ title: Řešení potíží se stavem snížené funkčnosti v Azure Traffic Mana
 description: Jak řešit potíže s profilem Traffic Manager, když se zobrazuje jako snížený stav.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
-ms.author: allensu
-ms.openlocfilehash: 8b8fbdf55e408874f6a6e83d6333583238865b5c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: c398763405472c9018a5c30d34fbd3963ecb93b7
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227725"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938372"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Řešení potíží s degradací stavu v Azure Traffic Manager
 

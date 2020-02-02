@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 183b85ad8a61c76942981ebb764512b8a090b0a8
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 150927ac05cba058d1d152ce568d7a462043d076
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890445"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937758"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikace se službou IoT Hub pomocí protokolu MQTT
 
@@ -44,11 +44,29 @@ Následující tabulka obsahuje odkazy na ukázky kódu pro každý podporovaný
 
 | Jazyk | Parametr protokolu |
 | --- | --- |
-| [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) |Azure-IoT-Device-MQTT |
-| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |IotHubClientProtocol. MQTT |
+| [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) |azure-iot-device-mqtt |
+| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |IotHubClientProtocol.MQTT |
 | [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) |MQTT_Protocol |
-| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) |TransportType. MQTT |
+| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) |TransportType.Mqtt |
 | [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) |Ve výchozím nastavení vždycky podporuje MQTT |
+
+### <a name="default-keep-alive-timeout"></a>Výchozí časový limit zachování 
+
+Aby se zajistilo, že připojení typu klient/IoT Hub zůstane aktivní, služba i klient pravidelně odesílají do sebe *protokol směrování paketů Keep-Alive* . Klient využívající sadu IoT SDK pošle udržování připojení v intervalu definovaném v této tabulce:
+
+|Jazyk  |Výchozí interval Keep-Alive  |Konfigurovatelné  |
+|---------|---------|---------|
+|Node.js     |   180 sekund      |     Ne    |
+|Java     |    230 sekund     |     Ne    |
+|C     | 240 sekund |  [Ano](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
+|C#     | 300 sekund |  [Ano](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
+|Python (v2)   | 60 sekund |  Ne   |
+
+Po zadání [MQTT](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081)je interval testu Keep-Alive IoT Hub v době, kdy je hodnota keep-alive klienta 1,5. IoT Hub ale omezuje maximální časový limit na straně serveru na 29,45 minut (1767 sekund), protože všechny služby Azure jsou svázané s časovým limitem nečinnosti protokolu TCP pro vyrovnávání zatížení Azure, což je 29,45 minut. 
+
+Například zařízení, které používá sadu Java SDK, odešle příkaz pro připojení k síti příkazem pro udržování naživu a potom ztratí síťové připojení. 230 sekund později zařízení neobdrží příkaz k odeslání požadavku na udržování, protože je offline. IoT Hub ale připojení okamžitě neukončí – vyčká další `(230 * 1.5) - 230 = 115` sekund, než zařízení odpojíte s chybou [404104 DeviceConnectionClosedRemotely](iot-hub-troubleshoot-error-404104-deviceconnectionclosedremotely.md). 
+
+Hodnota maximální hodnoty Keep-Alive klienta, kterou můžete nastavit, je `1767 / 1.5 = 1177` sekund. U všech přenosů se obnoví Keep Alive. Například úspěšná aktualizace tokenu SAS obnoví udržování připojení.
 
 ### <a name="migrating-a-device-app-from-amqp-to-mqtt"></a>Migrace aplikace zařízení z AMQP do MQTT
 
@@ -230,10 +248,6 @@ client.publish("devices/" + device_id + "/messages/events/", "{id=123}", qos=1)
 client.loop_forever()
 ```
 
-Níže jsou uvedené pokyny k instalaci požadovaných součástí.
-
-[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
-
 Pokud chcete provést ověření pomocí certifikátu zařízení, aktualizujte výše uvedený fragment kódu pomocí následujících změn (Další informace najdete v tématu [Jak získat certifikát certifikační autority X. 509](./iot-hub-x509ca-overview.md#how-to-get-an-x509-ca-certificate) pro přípravu ověřování na základě certifikátů):
 
 ```python
@@ -309,11 +323,11 @@ Tělo odpovědi obsahuje oddíl vlastností vlákna zařízení, jak je znázorn
 
 Možné stavové kódy:
 
-|Status | Popis |
+|Stav | Popis |
 | ----- | ----------- |
 | 204 | Úspěch (není vrácen žádný obsah) |
 | 429 | Příliš mnoho požadavků (omezení) podle [omezení pro IoT Hub](iot-hub-devguide-quotas-throttling.md) |
-| 5 * * | Chyby serveru |
+| 5** | Chyby serveru |
 
 Další informace najdete v tématu [Příručka vývojáře pro vlákna v zařízení](iot-hub-devguide-device-twins.md).
 
@@ -340,12 +354,12 @@ Tělo zprávy požadavku obsahuje dokument JSON, který obsahuje nové hodnoty p
 
 Možné stavové kódy:
 
-|Status | Popis |
+|Stav | Popis |
 | ----- | ----------- |
 | 200 | Úspěch |
 | 400 | Chybný požadavek. Chybně vytvořený kód JSON |
 | 429 | Příliš mnoho požadavků (omezení) podle [omezení pro IoT Hub](iot-hub-devguide-quotas-throttling.md) |
-| 5 * * | Chyby serveru |
+| 5** | Chyby serveru |
 
 Níže uvedený fragment kódu Pythonu demonstruje nedokončený proces aktualizace vlastností prostřednictvím MQTT (pomocí klienta PAHO MQTT):
 

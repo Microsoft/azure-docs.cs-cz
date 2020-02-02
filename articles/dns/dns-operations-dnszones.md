@@ -3,7 +3,7 @@ title: Správa zón DNS v Azure DNS – PowerShell | Microsoft Docs
 description: Zóny DNS můžete spravovat pomocí Azure PowerShellu. Tento článek popisuje, jak aktualizovat, odstranit a vytvořit zóny DNS na Azure DNS
 services: dns
 documentationcenter: na
-author: asudbring
+author: rohinkoul
 manager: timlt
 ms.assetid: a67992ab-8166-4052-9b28-554c5a39e60c
 ms.service: dns
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
-ms.author: allensu
-ms.openlocfilehash: 7a838f10d44f3be0af79bba5d303467884159cbf
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 0120501aab7f0a63721126bfb5b3d04d9deb42fb
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211696"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76936807"
 ---
 # <a name="how-to-manage-dns-zones-using-powershell"></a>Správa Zóny DNS pomocí prostředí PowerShell
 

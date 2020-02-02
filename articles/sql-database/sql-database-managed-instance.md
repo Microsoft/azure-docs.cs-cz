@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 01/21/2020
-ms.openlocfilehash: fb9b665f5631e6992966679b1dc0864539fde543
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: d28eb6c4ee4fadf8a090a17121f6910eb34135e3
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514551"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935205"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Co je Azure SQL Database spravovaná instance?
 
@@ -45,7 +45,7 @@ Spravovaná instance kombinuje nejlepší funkce, které jsou k dispozici v Azur
 | **Výhody PaaS** | **Kontinuita podnikových procesů** |
 | --- | --- |
 |Bez nákupu a správy hardwaru <br>Žádná režie správy pro správu základní infrastruktury <br>Rychlé zřizování a škálování služby <br>Automatizované opravy a upgrade verze <br>Integrace s jinými datovými službami PaaS |Smlouva SLA o 99,99% provozu  <br>Integrovaná [Vysoká dostupnost](sql-database-high-availability.md) <br>Data chráněná pomocí [automatizovaných záloh](sql-database-automated-backups.md) <br>Uživatelsky konfigurovatelné období uchovávání záloh pro zákazníky <br>[Zálohy](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) iniciované uživatelem <br>Možnost [obnovení databáze bodu v čase](sql-database-recovery-using-backups.md#point-in-time-restore) |
-|**Zabezpečení a dodržování předpisů** | **Správa**|
+|**Zabezpečení a dodržování předpisů** | **Správu**|
 |Izolované prostředí ([Integrace virtuální](sql-database-managed-instance-connectivity-architecture.md)sítě, samostatná služba tenanta, vyhrazený výpočetní výkon a úložiště) <br>[Transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Ověřování Azure AD](sql-database-aad-authentication.md), podpora jednotného přihlašování <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Objekty zabezpečení serveru Azure AD (přihlášení)</a>  <br>Dodržuje standardy dodržování předpisů stejné jako Azure SQL Database. <br>[Auditování SQL](sql-database-managed-instance-auditing.md) <br>[Advanced Threat Protection](sql-database-managed-instance-threat-detection.md) |Rozhraní Azure Resource Manager API pro automatizaci zřizování a škálování služby <br>Azure Portal funkce ručního zřizování a škálování služeb <br>Služba migrace dat
 
 > [!IMPORTANT]
@@ -303,7 +303,7 @@ Následující diagram popisuje kompatibilitu oblasti Surface ve spravované ins
 
 ### <a name="key-differences-between-sql-server-on-premises-and-in-a-managed-instance"></a>Klíčové rozdíly mezi SQL Server místním prostředím a ve spravované instanci
 
-Možnost nasazení spravované instance je v cloudu vždycky v aktuálním stavu, což znamená, že některé funkce v místních SQL Server můžou být buď zastaralé, vyřazené nebo mají alternativy. Existují určité případy, kdy nástroje potřebují rozpoznat, že konkrétní funkce funguje trochu jinak, nebo že služba neběží v prostředí, které neovládáte úplně:
+Možnost nasazení spravované instance je v cloudu vždycky v aktuálním stavu, což znamená, že některé funkce v místních SQL Server můžou být buď zastaralé, vyřazené nebo mají alternativy. Existují určité případy, kdy nástroje potřebují rozpoznat, že konkrétní funkce funguje trochu jiným způsobem nebo že služba běží v prostředí, které neovládáte úplně:
 
 - Vysoká dostupnost je integrovaná a předem nakonfigurovaná s využitím technologie podobně jako [skupiny dostupnosti Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server).
 - Automatické zálohování a obnovení bodu v čase. Zákazník může zahájit zálohování `copy-only`, které nekoliduje s automatickým řetězcem zálohování.

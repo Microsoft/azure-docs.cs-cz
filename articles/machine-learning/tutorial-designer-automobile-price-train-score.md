@@ -8,18 +8,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 639a61cddde27b0d989e5a3dd4c599c353182a73
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 01/30/2020
+ms.openlocfilehash: c7a21bb3f086257b7f6a5edde5cbfdf835645a70
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720154"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934051"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Kurz: předpověď ceny automobilu pomocí návrháře (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-V tomto kurzu se dozvíte, jak pomocí návrháře Azure Machine Learning vyvíjet a nasazovat řešení prediktivní analýzy, které předpovídá cenu každé auta.
+V tomto kurzu se dozvíte, jak pomocí návrháře Azure Machine Learning naučit a nasazovat model strojového učení, který předpovídá cenu každého auta. Návrhář je nástroj pro přetahování, který umožňuje vytvářet modely strojového učení bez jediného řádku kódu.
 
 V první části kurzu se dozvíte, jak:
 
@@ -45,13 +45,15 @@ Pokud chcete vytvořit kanál Azure Machine Learning, potřebujete Azure Machine
 
 ### <a name="create-a-new-workspace"></a>Vytvořit nový pracovní prostor
 
+Aby bylo možné používat návrháře, musíte nejprve použít pracovní prostor Azure Machine Learning. Pracovní prostor je prostředek nejvyšší úrovně pro Azure Machine Learning, poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte v Azure Machine Learning.
+
 Pokud máte pracovní prostor Azure Machine Learning s edicí Enterprise, [přejděte k další části](#create-the-pipeline).
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
 
 ### <a name="create-the-pipeline"></a>Vytvoření kanálu
 
-1. Přihlaste se k [ml.Azure.com](https://ml.azure.com)a vyberte pracovní prostor, se kterým chcete pracovat.
+1. Přihlaste se k <a href="https://ml.azure.com?tabs=jre" target="_blank">ml.Azure.com</a>a vyberte pracovní prostor, se kterým chcete pracovat.
 
 1. Vyberte **Návrhář**.
 
@@ -60,6 +62,30 @@ Pokud máte pracovní prostor Azure Machine Learning s edicí Enterprise, [přej
 1. Vyberte **snadno použitelné předem připravené moduly**.
 
 1. V horní části plátna vyberte výchozí kanál názvu kanálu **– Vytvořeno**. Přejmenujte ho na *automobilovou předpověď cen*. Název nemusí být jedinečný.
+
+## <a name="set-the-default-compute-target"></a>Nastavit výchozí cíl výpočtů
+
+Kanál běží na výpočetním cíli, což je výpočetní prostředek, který je připojený k vašemu pracovnímu prostoru. Po vytvoření cíle výpočetní služby ho můžete znovu použít pro budoucí spuštění.
+
+Pro celý kanál můžete nastavit **výchozí výpočetní cíl** , který všem modulům oznámí, že ve výchozím nastavení bude používat stejný cíl výpočtů. Pro jednotlivé moduly ale můžete určit výpočetní cíle.
+
+1. Vedle názvu kanálu vyberte **ikonu ozubeného kola** ![snímku ikony ozubeného kolečka](./media/tutorial-designer-automobile-price-train-score/gear-icon.png) v horní části plátna otevřete podokno **Nastavení** .
+
+1. V podokně **Nastavení** napravo od plátna vyberte **vybrat cíl výpočtů**.
+
+    Pokud už máte dostupný cíl výpočtů, můžete ho vybrat ke spuštění tohoto kanálu.
+
+    > [!NOTE]
+    > Návrhář může spouštět experimenty pouze na Azure Machine Learning výpočetním cíli. Ostatní výpočetní cíle se nezobrazí.
+
+1. Zadejte název výpočetního prostředku.
+
+1. Vyberte **Uložit**.
+
+    > [!NOTE]
+    > Vytvoření výpočetního prostředku trvá přibližně pět minut. Po vytvoření prostředku ho můžete znovu použít a tuto dobu čekání přeskočit pro budoucí spuštění.
+    >
+    > Výpočetní prostředek se automaticky škáluje na nulové uzly, pokud je nečinný úspora nákladů. Když ho znovu použijete po uplynutí určité prodlevy, může se při škálování na pozadí vyskytnout přibližně pět minut čekací doby.
 
 ## <a name="import-data"></a>Import dat
 
@@ -77,7 +103,7 @@ Můžete vizualizovat data a pochopit datovou sadu, kterou budete používat.
 
 1. Vyberte modul **cena za automobilový data (RAW)** .
 
-1. V podokně vlastnosti napravo od plátna vyberte **výstupy**.
+1. V podokně podrobností modulu napravo od plátna vyberte **výstupy**.
 
 1. Vyberte ikonu grafu pro vizualizaci dat.
 
@@ -95,7 +121,7 @@ Datové sady obvykle vyžadují před analýzou určitý předzpracování. Při
 
 Při výukovém modelu je nutné provést něco o chybějících datech. Ve sloupci **normalizované ztráty** v této datové sadě chybí mnoho hodnot, takže tento sloupec z modelu zcela vyloučíte.
 
-1. Do pole Hledat v horní části palety zadejte **Select** a vyhledejte modul **Výběr sloupců v datové sadě** .
+1. V paletě modulu nalevo od plátna rozbalte část **transformace dat** a vyhledejte modul **Výběr sloupců v datové sadě** .
 
 1. Přetáhněte modul **Výběr sloupců v datové sadě** na plátno. Přetáhněte modul pod modul DataSet.
 
@@ -109,7 +135,7 @@ Při výukovém modelu je nutné provést něco o chybějících datech. Ve slou
 
 1. Vyberte modul **Výběr sloupců v datové sadě** .
 
-1. V podokně vlastnosti napravo od plátna vyberte **všechny sloupce**.
+1. V podokně podrobností modulu napravo od plátna vyberte **všechny sloupce**.
 
 1. Vyberte **+** pro přidání nového pravidla.
 
@@ -123,7 +149,7 @@ Při výukovém modelu je nutné provést něco o chybějících datech. Ve slou
 
 1. Vyberte modul **Výběr sloupců v datové sadě** . 
 
-1. V podokně Vlastnosti vyberte textové pole **Komentář** a zadejte *vyloučit normalizované ztráty*.
+1. V podokně podrobností modulu napravo od plátna vyberte textové pole **Komentář** a zadejte *vyloučit normalizované ztráty*.
 
     V grafu se zobrazí komentáře, které vám pomůžou organizovat svůj kanál.
 
@@ -134,13 +160,15 @@ V datové sadě ještě chybí hodnoty po odebrání sloupce **normalizované zt
 > [!TIP]
 > Vyčištění chybějících hodnot ze vstupních dat je předpokladem pro použití většiny modulů v návrháři.
 
-1. Do vyhledávacího pole zadejte **vyčistit** a vyhledejte modul **Vyčištění chybějících dat** .
+1. V paletě modulu nalevo od plátna rozbalte **transformaci dat**oddílu a vyhledejte modul **Vyčištění chybějících dat** .
 
 1. Přetáhněte modul **Vyčištění chybějících dat** na plátno kanálu. Připojte ho k modulu **Výběr sloupců v datové sadě** . 
 
-1. V podokně Vlastnosti vyberte v **režimu čištění**možnost **odstranit celý řádek** .
+1. Vyberte modul **Vyčištění chybějících dat** .
 
-1. V poli **Komentář** k podoknu vlastností zadejte příkaz *odebrat chybějící řádky hodnoty*. 
+1. V podokně podrobností modulu napravo od plátna vyberte **Odebrat celý řádek** v **režimu čištění**.
+
+1. V podokně podrobností modulu napravo od plátna vyberte pole **Komentář** a zadejte *odebrat řádky chybějících hodnot*. 
 
     Váš kanál by teď měl vypadat nějak takto:
     
@@ -156,26 +184,28 @@ Vzhledem k tomu, že chcete odhadnout cenu, což je číslo, můžete použít r
 
 Rozdělení dat je běžnou úlohou ve strojovém učení. Data budete rozdělit do dvou samostatných datových sad. Jedna datová sada povede model a druhá bude testovat, jak dobře byl model proveden.
 
-1. Do vyhledávacího pole zadejte **rozdělená data** , abyste mohli najít modul **rozdělených dat** . Připojte levý port modulu **Vyčištění chybějících dat** k modulu **rozdělit data** .
+1. V paletě modulu rozbalte **transformaci dat** oddílu a najděte modul **rozdělit data** .
+
+1. Přetáhněte modul **rozdělit data** na plátno kanálu.
+
+1. Připojte levý port modulu **Vyčištění chybějících dat** k modulu **rozdělit data** .
 
     > [!IMPORTANT]
     > Ujistěte se, že levé výstupní porty **vyčistit chybějící data** se připojují k **rozděleným datům**. Levý port obsahuje vyčištěná data. Pravý port obsahuje data, která jsou k diskošíku.
 
 1. Vyberte modul **rozdělit data** .
 
-1. V podokně Vlastnosti nastavte **zlomek řádků v první výstupní sadě dat** na 0,7.
+1. V podokně podrobností modulu napravo od plátna nastavte **zlomek řádků v první výstupní datové sadě** na 0,7.
 
     Tato možnost rozdělí 70 procent dat za účelem výuky modelu a 30 procent pro jeho testování. Datový objekt 70% bude přístupný prostřednictvím levého výstupního portu. Zbývající data budou k dispozici prostřednictvím správného výstupního portu.
 
-1. V poli **Komentář** podokna Vlastnosti zadejte *rozdělit datovou sadu do sady školení (0,7) a sady testů (0,3)* .
+1. V podokně podrobností modulu napravo od plátna vyberte pole **Komentář** a potom zadejte *rozdělit datovou sadu do sady školení (0,7) a sady testů (0,3)* .
 
 ### <a name="train-the-model"></a>Trénování modelu
 
 Vytvořte si model tak, že mu udělíte datovou sadu, která obsahuje cenu. Algoritmus vytvoří model, který vysvětluje vztah mezi funkcemi a cenou, jak je znázorněno v školicích datech.
 
-1. Chcete-li vybrat sledovací algoritmus, zrušte zaškrtnutí políčka pro hledání palety modulu.
-
-1. Rozbalte **Machine Learning algoritmy**.
+1. V paletě modulu rozbalte **Machine Learning algoritmy**.
     
     Tato možnost zobrazí několik kategorií modulů, které lze použít k inicializaci výukových algoritmů.
 
@@ -192,9 +222,11 @@ Vytvořte si model tak, že mu udělíte datovou sadu, která obsahuje cenu. Alg
 
     ![Snímek obrazovky znázorňující správnou konfiguraci modulu vlakového modelu. Modul lineární regrese se připojí k levému portu modulu vlakového modelu a modul rozdělit data se připojí k pravému portu modelu vlaku.](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
 
+1. V paletě modulu rozbalte možnost **školení modulu**oddíl a přetáhněte modul **vlak model** na plátno.
+
 1. Vyberte modul **vlakového modelu** .
 
-1. V podokně Vlastnosti vyberte možnost **Upravit selektor sloupců** .
+1. V podokně podrobností modulu napravo od plátna vyberte Upravit selektor **sloupců** .
 
 1. V dialogovém okně **popisek sloupce** rozbalte rozevírací nabídku a vyberte možnost **názvy sloupců**. 
 
@@ -204,7 +236,7 @@ Vytvořte si model tak, že mu udělíte datovou sadu, která obsahuje cenu. Alg
 
     ![Snímek obrazovky, který zobrazuje správnou konfiguraci kanálu po přidání modulu vlakového modelu.](./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png)
 
-## <a name="score-a-machine-learning-model"></a>Určení skóre modelu Machine Learning
+### <a name="add-the-score-model-module"></a>Přidat modul určení skóre modelu
 
 Jakmile svůj model provedete pomocí 70 procent dat, můžete ho použít k vyhodnocení dalších 30 procent, abyste viděli, jak dobře model funguje.
 
@@ -212,7 +244,7 @@ Jakmile svůj model provedete pomocí 70 procent dat, můžete ho použít k vyh
 
 1. Připojte výstup modulu **vlak model** k levému vstupnímu portu **modelu skóre**. Připojte výstup testovacích dat (pravý port) modulu **rozdělení dat** ke správnému vstupnímu portu **modelu skóre**.
 
-## <a name="evaluate-a-machine-learning-model"></a>Vyhodnocení modelu Machine Learning
+### <a name="add-the-evaluate-model-module"></a>Přidání modulu vyhodnocení modelu
 
 Pomocí modulu **vyhodnocení modelu** můžete vyhodnotit, jak dobře model vyhodnotil testovací datovou sadu.
 
@@ -226,7 +258,20 @@ Pomocí modulu **vyhodnocení modelu** můžete vyhodnotit, jak dobře model vyh
 
 ## <a name="run-the-pipeline"></a>Spuštění kanálu
 
-[!INCLUDE [aml-ui-create-training-compute](../../includes/aml-ui-create-training-compute.md)]
+Teď, když je váš kanál všemi nastaveními, můžete odeslat spuštění kanálu.
+
+1. V horní části plátna vyberte **Spustit**.
+
+1. V dialogovém okně **nastavit spuštění kanálu** vyberte **+ nový experiment** pro **experiment**.
+
+    > [!NOTE]
+    > Experimenty seskupují podobný kanál společně. Pokud kanál spouštíte několikrát, můžete vybrat stejný experiment pro po sobě jdoucí běhy.
+
+    1. Zadejte popisný název pro **název experimentu**.
+
+    1. Vyberte **Run** (Spustit).
+    
+    Stav spuštění a podrobnosti můžete zobrazit v pravém horním rohu plátna.
 
 ### <a name="view-scored-labels"></a>Zobrazit popisky s skóre
 
@@ -234,7 +279,7 @@ Po dokončení běhu můžete zobrazit výsledky spuštění kanálu. Nejprve se
 
 1. Vyberte modul určení **skóre modelu** , ve kterém chcete zobrazit jeho výstup.
 
-1. V podokně Vlastnosti vyberte možnost **výstupy** > ikona grafu ![vizualizace](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) ikona zobrazit výsledky.
+1. V podokně podrobností modulu napravo od plátna vyberte **výstupy** > ikony grafu ![vizualizaci ikony](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) k zobrazení výsledků.
 
     Tady vidíte předpovězené ceny a skutečné ceny z testovacích dat.
 
@@ -246,7 +291,7 @@ Pomocí **modelu vyhodnocení** můžete zjistit, jak dobře byl vyškolený mod
 
 1. Vyberte modul **vyhodnocení modelu** a zobrazte jeho výstup.
 
-1. V podokně Vlastnosti vyberte **výstupní** > ikonu grafu ![vizualizaci ikona](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) pro zobrazení výsledků.
+1. V podokně podrobností modulu napravo od plátna vyberte **výstupní** > ikonu grafu ![vizualizaci ikony](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) k zobrazení výsledků.
 
 Pro váš model se zobrazí následující statistiky:
 
@@ -260,16 +305,11 @@ Pro každou statistiku chyb platí, že menší hodnota je lepší. Menší hodn
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
+Tuto část přeskočte, pokud chcete pokračovat v části 2 tohoto kurzu, [nasazení modelů](tutorial-designer-automobile-price-deploy.md).
+
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
 ## <a name="next-steps"></a>Další kroky
-
-V první části tohoto kurzu jste dokončili následující úlohy:
-
-* Vytvoření kanálu
-* Příprava dat
-* Trénování modelu
-* Skóre a vyhodnocení modelu
 
 V části druhá část se dozvíte, jak model nasadit jako koncový bod v reálném čase.
 

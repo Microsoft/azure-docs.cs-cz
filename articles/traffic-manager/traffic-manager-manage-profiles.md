@@ -1,9 +1,9 @@
 ---
 title: Správa profilů Azure Traffic Manageru | Dokumentace Microsoftu
-description: Tento článek pomáhá vytvořit, zakázat, povolit a odstranit profil Azure Traffic Manageru.
+description: Tento článek vám pomůže vytvořit, zakázat, povolit a odstranit profil Azure Traffic Manager.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 manager: twooley
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
-ms.author: allensu
-ms.openlocfilehash: 8ec30a4d3f02505e764cd6f8dcec42c56d11ed27
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohink
+ms.openlocfilehash: adfe7d117d2329832a5b5e9e782a9029a682ff3b
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071101"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938612"
 ---
 # <a name="manage-an-azure-traffic-manager-profile"></a>Správa profilu Azure Traffic Manageru
 
@@ -37,7 +37,7 @@ Profil Traffic Manageru můžete vytvořit pomocí webu Azure Portal. Po vytvoř
     3. V poli **Předplatné** vyberte předplatné, v rámci kterého chcete profil vytvořit.
     4. V části **Skupina prostředků** vytvořte novou skupinu prostředků, do které chcete profil umístit.
     5. V poli **Umístění skupiny prostředků** vyberte umístění skupiny prostředků. Toto nastavení se týká umístění skupiny prostředků a nemá žádný vliv na profil Traffic Manageru, který se nasadí globálně.
-    6. Klikněte na možnost **Vytvořit**.
+    6. Klikněte na **Vytvořit**.
     7. Po dokončení globálního nasazení profilu Traffic Manageru bude uveden jako jeden z prostředků v příslušné skupině prostředků.
 
 ## <a name="disable-enable-or-delete-a-profile"></a>Zakázání, povolení nebo odstranění profilu
@@ -68,7 +68,7 @@ Existující profil můžete zakázat, aby Traffic Manager neodkazoval požadavk
 3. Klikněte na **Přehled** > **Odstranit**.
 4. Potvrďte odstranění profilu služby Traffic Manager.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Přidání koncového bodu](traffic-manager-endpoints.md)
 * [Konfigurace metody prioritního směrování](traffic-manager-configure-priority-routing-method.md)

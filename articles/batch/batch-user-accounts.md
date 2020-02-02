@@ -1,6 +1,6 @@
 ---
-title: Spouštění úloh v rámci uživatelských účtů – Azure Batch | Microsoft Docs
-description: Konfigurace uživatelských účtů pro spuštěné úlohy v Azure Batch
+title: Spouštění úloh v rámci uživatelských účtů – Azure Batch
+description: Je užitečné, abyste mohli nakonfigurovat uživatelský účet, pod kterým chcete úlohu spustit. Přečtěte si o typech uživatelských účtů a o tom, jak je nakonfigurovat.
 services: batch
 author: ju-shim
 manager: gwallace
@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 11/18/2019
 ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: d4975935c872f059dde6b08bcd7a4f06540c2dfd
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 01342c8fcd0d2d3c603762b06350a9fcf7c12d03
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029596"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937966"
 ---
 > [!NOTE] 
 > Uživatelské účty popsané v tomto článku se liší od uživatelských účtů používaných pro protokol RDP (Remote Desktop Protocol) (RDP) nebo Secure Shell (SSH) z bezpečnostních důvodů. 

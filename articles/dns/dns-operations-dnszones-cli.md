@@ -3,7 +3,7 @@ title: Správa zón DNS v Azure DNS – Azure CLI | Microsoft Docs
 description: Můžete spravovat zóny DNS pomocí rozhraní příkazového řádku Azure CLI. Tento článek popisuje, jak aktualizovat, odstranit a vytvořit zóny DNS na Azure DNS.
 services: dns
 documentationcenter: na
-author: asudbring
+author: rohinkoul
 manager: timlt
 ms.assetid: 8ab63bc4-5135-4ed8-8c0b-5f0712b9afed
 ms.service: dns
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
-ms.author: allensu
-ms.openlocfilehash: e1a3c401de32beb9757011ac306443334da8b867
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 413c2ab3ee04249c2bb52bf42ca6a31a58fb9082
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211926"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76936930"
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>Správa Zóny DNS v Azure DNS pomocí Azure CLI
 
@@ -32,7 +32,7 @@ Tato příručka ukazuje, jak spravovat zóny DNS pomocí rozhraní příkazové
 
 V této příručce se konkrétně zabývá veřejné zóny DNS. Informace o použití rozhraní příkazového řádku Azure ke správě privátních zón v Azure DNS najdete v tématu Začínáme [s Azure DNS Private Zones pomocí Azure CLI](private-dns-getstarted-cli.md).
 
-## <a name="introduction"></a>Úvod
+## <a name="introduction"></a>Představení
 
 [!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 

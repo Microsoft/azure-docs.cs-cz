@@ -5,15 +5,15 @@ services: automation
 ms.service: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 12/03/2019
+ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 65759b32889f9a99b0322823bb8a4924788e8c09
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e300bc0f29808215673407d21b65fe329e50ad45
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786465"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930427"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Správa modulů v Azure Automation
 
@@ -60,11 +60,11 @@ Moduly můžete také importovat z Galerie prostředí PowerShell přímo z vaš
 
 ## <a name="delete-modules"></a>Odstranit moduly
 
-Pokud máte s modulem problémy nebo potřebujete přejít zpět k předchozí verzi modulu, můžete ho odstranit z účtu Automation. Nelze odstranit původní verzi [výchozích modulů](#default-modules) , které jsou importovány při vytváření účtu Automation. Pokud je modul, který chcete odstranit, novější verze jednoho z nainstalovaných [výchozích modulů](#default-modules) , vrátí se zpět k verzi nainstalované s vaším účtem Automation. V opačném případě budou odebrány všechny moduly, které odstraníte z účtu Automation.
+Pokud máte s modulem problémy nebo potřebujete přejít zpět k předchozí verzi modulu, můžete ho odstranit z účtu Automation. Původní verzi [výchozích modulů](#default-modules) , které se importují při vytváření účtu Automation, nemůžete odstranit. Pokud je modul, který chcete odstranit, novější verze jednoho z nainstalovaných [výchozích modulů](#default-modules) , vrátí se zpět k verzi nainstalované s vaším účtem Automation. V opačném případě budou odebrány všechny moduly, které odstraníte z účtu Automation.
 
 ### <a name="azure-portal"></a>Portál Azure
 
-V Azure Portal přejděte do svého účtu Automation a v části **sdílené prostředky**vyberte **moduly** . Vyberte modul, který chcete odebrat. Na stránce **modul** clcick **Odstranit**. Pokud je tento modul jedním z [výchozích modulů](#default-modules), vrátí se zpět na verzi, která byla přítomna při vytvoření účtu Automation.
+V Azure Portal přejděte do svého účtu Automation a v části **sdílené prostředky**vyberte **moduly** . Vyberte modul, který chcete odebrat. Na stránce **modul** vyberte **Odstranit**. Pokud je tento modul jedním z [výchozích modulů](#default-modules), vrátí se zpět na verzi, která byla přítomna při vytvoření účtu Automation.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -79,7 +79,7 @@ Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automa
 Níže je uveden seznam rutin v interním `Orchestrator.AssetManagement.Cmdlets` modulu, který je importován do každého účtu Automation. Tyto rutiny jsou dostupné ve vašich sadách Runbook a konfiguracích DSC a umožňují interakci s prostředky v rámci vašeho účtu Automation. Kromě toho interní rutiny umožňují načíst tajné kódy z šifrovaných hodnot **proměnných** , **přihlašovacích údajů**a šifrovaných polí **připojení** . Rutiny Azure PowerShell nemůžou tyto tajné klíče načíst. Tyto rutiny nevyžadují při jejich používání implicitní připojení k Azure, jako je například použití účtu Spustit jako k ověření v Azure.
 
 >[!NOTE]
->Tyto interní rutiny nejsou k dispozici na Hybrid Runbook Worker, jsou přístupné pouze ze sad Runbook spuštěných v Azure. Použijte odpovídající moduly [AzureRM. Automation](https://docs.microsoft.com/powershell/module/AzureRM.Automation/?view=azurermps-6.13.0) nebo [AZ](../az-modules.md) pro Runbooky běžící přímo na počítači nebo u prostředků ve vašem prostředí. 
+>Tyto interní rutiny jsou k dispozici v Hybrid Runbook Worker Windows, nejsou k dispozici v Hybrid Runbook Worker pro Linux. Použijte odpovídající moduly [AzureRM. Automation](https://docs.microsoft.com/powershell/module/AzureRM.Automation/?view=azurermps-6.13.0) nebo [AZ](../az-modules.md) pro Runbooky běžící přímo na počítači nebo u prostředků ve vašem prostředí. 
 >
 
 |Name (Název)|Popis|
@@ -90,7 +90,7 @@ Níže je uveden seznam rutin v interním `Orchestrator.AssetManagement.Cmdlets`
 |Get-AutomationVariable|`Get-AutomationVariable [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]`|
 |Set-AutomationVariable|`Set-AutomationVariable [-Name] <string> -Value <Object> [<CommonParameters>]` |
 |Spustit – AutomationRunbook|`Start-AutomationRunbook [-Name] <string> [-Parameters <IDictionary>] [-RunOn <string>] [-JobId <guid>] [<CommonParameters>]`|
-|Čekání – AutomationJob|`Wait-AutomationJob -Id <guid[]> [-TimeoutInMinutes <int>] [-DelayInSeconds <int>] [-OutputJobsTransitionedToRunning] [<CommonParameters>]`|
+|Wait-AutomationJob|`Wait-AutomationJob -Id <guid[]> [-TimeoutInMinutes <int>] [-DelayInSeconds <int>] [-OutputJobsTransitionedToRunning] [<CommonParameters>]`|
 
 ## <a name="add-a-connection-type-to-your-module"></a>Přidání typu připojení do modulu
 
@@ -250,7 +250,7 @@ Přidejte `[OutputType([<MyOutputType>])]`, kde je MyOutputType platným typem. 
 
 ## <a name="default-modules"></a>Výchozí moduly
 
-Následující tabulka uvádí moduly, které jsou importovány ve výchozím nastavení při vytvoření účtu Automation. Moduly uvedené níže můžou mít naimportované novější verze. původní verzi ale z účtu Automation nemůžete odebrat, i když odstraníte novější verzi.
+Následující tabulka uvádí moduly, které jsou importovány ve výchozím nastavení při vytvoření účtu Automation. Moduly uvedené níže můžou mít naimportované novější verze, ale původní verzi nejde z účtu Automation odebrat, i když odstraníte novější verzi.
 
 |Název modulu|Version|
 |---|---|
@@ -264,14 +264,14 @@ Následující tabulka uvádí moduly, které jsou importovány ve výchozím na
 | AzureRM.Sql | 1.0.3 |
 | AzureRM.Storage | 1.0.3 |
 | ComputerManagementDsc | 5.0.0.0 |
-| GPRegistryPolicyParser | 0,2 |
-| Microsoft. PowerShell. Core | 0 |
-| Microsoft. PowerShell. Diagnostics |  |
-| Microsoft. PowerShell. Management |  |
-| Microsoft. PowerShell. Security |  |
+| GPRegistryPolicyParser | 0.2 |
+| Microsoft.PowerShell.Core | 0 |
+| Microsoft.PowerShell.Diagnostics |  |
+| Microsoft.PowerShell.Management |  |
+| Microsoft.PowerShell.Security |  |
 | Microsoft.PowerShell.Utility |  |
 | Microsoft. WSMan. Management |  |
-| Orchestrator. AssetManagement. rutiny | 1\. místo |
+| Orchestrator.AssetManagement.Cmdlets | 1\. místo |
 | PSDscResources | 2.9.0.0 |
 | SecurityPolicyDsc | 2.1.0.0 |
 | StateConfigCompositeResources | 1\. místo |

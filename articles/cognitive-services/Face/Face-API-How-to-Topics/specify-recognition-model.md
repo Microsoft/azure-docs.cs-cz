@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: longl
-ms.openlocfilehash: 44392b807659ff8f13511b48d0afd33db080e4f6
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: da9ad5576d146c007e45124668875e9681860ce6
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76166462"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938831"
 ---
 # <a name="specify-a-face-recognition-model"></a>Určení modelu rozpoznávání obličeje
 
@@ -109,6 +109,7 @@ V tomto článku jste zjistili, jak určit model rozpoznávání pro použití s
 
 * [Sada Face .NET SDK](../Quickstarts/csharp-sdk.md)
 * [Sada SDK pro tváře v Pythonu](../Quickstarts/python-sdk.md)
+* [Tvář – sada SDK](../Quickstarts/go-sdk.md)
 
 [Rozpoznávání obličeje]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
 [Plocha – najít podobné]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237

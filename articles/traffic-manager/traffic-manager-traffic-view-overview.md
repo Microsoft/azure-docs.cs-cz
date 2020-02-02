@@ -3,21 +3,21 @@ title: Zobrazení přenosů v Azure Traffic Manager
 description: V tomto úvodu se dozvíte, jak funguje zobrazení provozu Traffic Manageru.
 services: traffic-manager
 documentationcenter: traffic-manager
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/16/2018
-ms.author: allensu
+ms.author: rohink
 ms.custom: ''
-ms.openlocfilehash: 1cdad5873ea0f6d2fab129aef7be012ea11e8a60
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d5a03fde564b14baee97f50fa63fd58bf83694b7
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023245"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938346"
 ---
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager Zobrazení přenosů
 
@@ -66,7 +66,7 @@ Oblasti Azure, ve kterých se nachází koncové body, se zobrazují na mapě ja
 
 Data Zobrazení přenosů můžete zobrazit v tabulkovém formátu v Azure Portal. Existuje záznam pro každý pár IP/koncový bod překladače DNS, který zobrazuje IP adresu překladače DNS, název a zeměpisnou polohu oblasti Azure, ve které se nachází koncový bod (Pokud je k dispozici), objem požadavků přidružených k tomuto koncovému bodu DNS a zástupce pro koncové uživatele, který používá tuto službu DNS (tam, kde je k dispozici). Data Zobrazení přenosů můžete také stáhnout jako soubor CSV, který se dá použít jako součást pracovního postupu analýzy podle vašeho výběru.
 
-## <a name="billing"></a>Fakturace
+## <a name="billing"></a>Vyúčtování
 
 Při použití Zobrazení přenosů se fakturuje na základě počtu datových bodů použitých k vytvoření přehledů, které jsou k dispozici. V současné době je použit jediný typ datového bodu dotazy přijaté proti profilu Traffic Manager. Další podrobnosti o cenách najdete na [stránce s cenami Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager/).
 

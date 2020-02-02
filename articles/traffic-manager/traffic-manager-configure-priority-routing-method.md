@@ -3,7 +3,7 @@ title: Kurz – konfigurace směrování provozu s prioritou pomocí Azure Traff
 description: V tomto kurzu se dozvíte, jak nakonfigurovat metodu směrování provozu s prioritou v Traffic Manager
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
-ms.author: allensu
-ms.openlocfilehash: d5d58ec39841274b78ababf9f73f00a262cc37be
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.author: rohink
+ms.openlocfilehash: ca223a19ff7ddeae95878f941f3cf295664e62b4
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420302"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938732"
 ---
 # <a name="tutorial-configure-priority-traffic-routing-method-in-traffic-manager"></a>Kurz: Konfigurace metody směrování provozu priority v Traffic Manager
 

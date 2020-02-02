@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 553dffd14182c93a52ed076e742830c68130551b
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 4c89765a3bc59a37a182a2dfabf0727f95b575b8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911233"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933229"
 ---
 # <a name="add-a-drawing-tools-toolbar-to-a-map"></a>Přidání panelu nástrojů nástrojů pro kreslení na mapu
 
@@ -68,7 +68,7 @@ Prohlédněte si pero <a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>Přid�
 
 ## <a name="change-drawing-rendering-style"></a>Změnit styl vykreslování kresby
 
-Následující kód získá vrstvy vykreslování ze Správce výkresu a upraví jejich možnosti pro změnu stylu vykreslování pro kreslení. V takovém případě budou body vykresleny s modrou ikonou značek, čáry budou červené a čtyři pixelů na šířku, mnohoúhelníky budou mít zelenou barvu výplně a oranžový obrys.
+Následující kód získá vrstvy vykreslování ze Správce výkresu a upraví jejich možnosti pro změnu stylu vykreslování pro kreslení. V tomto případě budou body vykresleny s modrou ikonou značek. Čáry budou červené a čtyři pixelů na šířku. Mnohoúhelníky budou mít zelenou barvu výplně a oranžový obrys.
 
 ```Javascript
 var layers = drawingManager.getLayers();
@@ -114,7 +114,7 @@ Naučte se používat další funkce modulu nástrojů pro kreslení:
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [Panel nástrojů kreslení](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)

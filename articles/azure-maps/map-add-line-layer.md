@@ -9,21 +9,21 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5b59bdc06d455c7bd0ec9cf889f5cfa382948467
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 8503b12be628fe7d5651221c9d0379bee3e292bd
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911175"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933466"
 ---
 # <a name="add-a-line-layer-to-the-map"></a>Přidat řádkovou vrstvu do mapy
 
-Spojnicová vrstva se dá použít k vykreslování `LineString` a `MultiLineString` funkcí jako cest nebo tras na mapě. Spojnicovou vrstvu lze také použít k vykreslení osnovy `Polygon` a `MultiPolygon` funkcí. Zdroj dat je připojen k vrstvě čáry, aby bylo možné data vykreslit. 
+Spojnicová vrstva se dá použít k vykreslování `LineString` a `MultiLineString` funkcí jako cest nebo tras na mapě. Spojnicovou vrstvu lze také použít k vykreslení osnovy `Polygon` a `MultiPolygon` funkcí. Zdroj dat je připojen ke spojnici čáry, aby byl zajištěn pro vykreslování dat. 
 
 > [!TIP]
 > Vrstvy čar ve výchozím nastavení vykreslí souřadnice mnohoúhelníků a také čáry ve zdroji dat. Chcete-li omezit vrstvu tak, aby vykresluje pouze funkce LineString, nastavte vlastnost `filter` vrstvy na `['==', ['geometry-type'], 'LineString']` nebo `['any', ['==', ['geometry-type'], 'LineString'], ['==', ['geometry-type'], 'MultiLineString']]`, pokud chcete zahrnout také funkce MultiLineString.
 
-Následující kód ukazuje, jak vytvořit řádek, přidat ho do zdroje dat a vykreslit ho s vrstvou čáry pomocí třídy [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) .
+Následující kód ukazuje, jak vytvořit řádek. Přidejte čáru ke zdroji dat a potom ji vykreslete s vrstvou čáry pomocí třídy [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) .
 
 ```javascript
 //Create a data source and add it to the map.
@@ -51,7 +51,7 @@ Níže je uvedená ukázka kompletního spuštění kódu výše uvedené funkce
 
 ## <a name="add-symbols-along-a-line"></a>Přidat symboly podél čáry
 
-Tento příklad ukazuje, jak přidat ikony šipek podél čáry na mapě. Při použití vrstvy symbolů nastavte možnost umístění na "line", vykreslí se symboly podél čáry a nasadí se ikony (0 stupňů = vpravo).
+Tento příklad ukazuje, jak přidat ikony šipek podél čáry na mapě. Při použití vrstvy symbolů nastavte možnost umístění na řádek. Tato možnost vykreslí symboly podél čáry a otočí ikony (0 stupňů = vpravo).
 
 <br/>
 
@@ -66,7 +66,7 @@ Podívejte se na <a href='https://codepen.io/azuremaps/pen/drBJwX/'>šipku zobra
 
 ## <a name="add-a-stroke-gradient-to-a-line"></a>Přidání přechodu mezi tahy na čáru
 
-Kromě toho, že je možné použít jednu barvu tahu na čáru, můžete také vyplnit čáru barevným přechodem, aby se zobrazil přechod z jednoho segmentu čáry na další. Například barevné přechody lze použít k reprezentaci změn v průběhu času a vzdálenosti nebo různých teplot v rámci připojeného řádku objektů. Aby bylo možné tuto funkci použít na řádek, musí mít zdroj dat možnost `lineMetrics` nastavenou na hodnotu true, a poté lze výraz barevného přechodu barvy předat `strokeColor` možnosti řádku. Výraz přechodu na tah musí odkazovat na datový výraz `['line-progress']`, který zpřístupňuje metriku počítaného řádku k výrazu.
+Pro čáru můžete použít jednu barvu tahu. Můžete také vyplnit řádek s přechodem barev pro zobrazení přechodu z jednoho segmentu čáry do dalšího segmentu čáry. Například barevné přechody lze použít k reprezentaci změn v průběhu času a vzdálenosti nebo různých teplot v rámci připojeného řádku objektů. Aby bylo možné tuto funkci použít na řádek, musí mít zdroj dat možnost `lineMetrics` nastavenou na hodnotu true, a poté lze výraz barevného přechodu barvy předat `strokeColor` možnosti řádku. Výraz přechodu na tah musí odkazovat na datový výraz `['line-progress']`, který zpřístupňuje metriku počítaného řádku k výrazu.
 
 <br/>
 
@@ -76,7 +76,7 @@ Podívejte se na <a href='https://codepen.io/azuremaps/pen/wZwWJZ/'>čáru pera 
 
 ## <a name="customize-a-line-layer"></a>Přizpůsobení vrstvy čáry
 
-Vrstva čáry: několik možností stylu. Tady je nástroj pro jejich vyzkoušení.
+Spojnicová vrstva má několik možností stylů. Tady je nástroj pro jejich vyzkoušení.
 
 <br/>
 

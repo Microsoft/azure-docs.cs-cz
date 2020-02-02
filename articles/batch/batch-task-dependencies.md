@@ -1,5 +1,5 @@
 ---
-title: Použití závislostí úkolů ke spouštění úloh na základě dokončení jiných úloh – Azure Batch | Microsoft Docs
+title: Vytvoření závislostí úloh pro spouštění úloh – Azure Batch
 description: Vytvořte úkoly, které závisí na dokončení dalších úloh pro zpracování MapReduce stylu a podobných úloh velkých objemů dat v Azure Batch.
 services: batch
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 875e0314c41a6bb277769361b6faa0345312db2b
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 733c6e0fb178ed246ac77e0783225ddd642a5fed
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026232"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937772"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Vytváření závislostí úloh pro spouštění úloh, které jsou závislé na jiných úkolech
 
@@ -85,7 +85,7 @@ Existují tři základní scénáře závislosti úloh, které můžete použít
 > 
 > V příkladech v této části se závislá úloha spustí až po úspěšném dokončení nadřazených úloh. Toto chování je výchozím chováním závislé úlohy. Závislý úkol můžete spustit po chybě nadřazené úlohy zadáním akce závislosti pro přepsání výchozího chování. Podrobnosti najdete v části [Akce závislosti](#dependency-actions) .
 
-### <a name="one-to-one"></a>Relace jednoho k jednomu jinému
+### <a name="one-to-one"></a>Jeden k jednomu
 V relaci 1:1 závisí úkol na úspěšném dokončení jedné nadřazené úlohy. Pokud chcete vytvořit závislost, poskytněte [TaskDependencies][net_taskdependencies]jedno ID úlohy. [OnId][net_onid] statická metoda, když naplníte vlastnost [DependsOn][net_dependson] třídy [CloudTask][net_cloudtask].
 
 ```csharp
@@ -210,7 +210,7 @@ Vzorový projekt [TaskDependencies][github_taskdependencies] je jednou z [Azure 
 - Jak spouštět tyto úlohy ve fondu výpočetních uzlů.
 
 ## <a name="next-steps"></a>Další kroky
-### <a name="application-deployment"></a>Nasazení aplikací
+### <a name="application-deployment"></a>Nasazení aplikace
 Funkce [balíčků aplikací](batch-application-packages.md) služby Batch poskytuje snadný způsob nasazení a verze aplikací, které vaše úkoly spouštějí na výpočetních uzlech.
 
 ### <a name="installing-applications-and-staging-data"></a>Instalace aplikací a pracovních dat

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: e305a5634aa0c065342e1873c413039eb734b972
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: a9fb77ea30aa101653d50e7833876dbec6362093
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165890"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930150"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>Rychlý Start: Klientská knihovna pro tvář pro .NET
 
@@ -22,7 +22,6 @@ Začínáme s klientskou knihovnou obličeje pro .NET Pomocí těchto kroků nai
 
 Pomocí klientské knihovny obličeje pro .NET:
 
-* [Ověření klienta](#authenticate-the-client)
 * [Detekce plošek v obrázku](#detect-faces-in-an-image)
 * [Hledání podobných plošek](#find-similar-faces)
 * [Vytvoření a výuka skupiny osob](#create-and-train-a-person-group)
@@ -122,7 +121,7 @@ Níže uvedené fragmenty kódu ukazují, jak provádět následující úlohy p
 > [!NOTE]
 > V tomto rychlém startu se předpokládá, že jste [vytvořili proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro svůj klíč a koncový bod s názvem `FACE_SUBSCRIPTION_KEY` a `FACE_ENDPOINT`.
 
-V nové metodě vytvořte instanci klienta s vaším koncovým bodem a klíčem. Vytvořte objekt [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) s klíčem a použijte ho u svého koncového bodu k vytvoření objektu [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) .
+V nové metodě vytvořte instanci klienta s vaším koncovým bodem a klíčem. Vytvořte objekt **[ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.apikeyserviceclientcredentials?view=azure-dotnet)** s klíčem a použijte ho u svého koncového bodu k vytvoření objektu **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** .
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_auth)]
 
@@ -130,7 +129,7 @@ Pravděpodobně budete chtít zavolat tuto metodu v metodě `Main`.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_client)]
 
-## <a name="detect-faces-in-an-image"></a>Rozpoznávání tváří na obrázku
+## <a name="detect-faces-in-an-image"></a>Rozpoznávání tváří v obrázku
 
 V kořenovém adresáři třídy definujte následující řetězec adresy URL. Tato adresa URL odkazuje na sadu ukázkových imagí.
 
@@ -140,19 +139,19 @@ Volitelně můžete zvolit, který model AI se má použít k extrakci dat ze zj
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_models)]
 
-Konečná operace zjišťování bude mít objekt [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) , adresu URL obrázku a model rozpoznávání.
+Konečná operace zjišťování bude mít objekt **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** , adresu URL obrázku a model rozpoznávání.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_call)]
 
 ### <a name="get-detected-face-objects"></a>Získat zjištěné objekty Face
 
-V dalším bloku kódu `DetectFaceExtract` metoda detekuje plošky ve třech obrázcích na dané adrese URL a vytvoří seznam objektů [DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) v paměti pro programy. Seznam hodnot [FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) určuje, které funkce se mají extrahovat. 
+V dalším bloku kódu `DetectFaceExtract` metoda detekuje plošky ve třech obrázcích na dané adrese URL a vytvoří seznam objektů **[DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)** v paměti pro programy. Seznam hodnot **[FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** určuje, které funkce se mají extrahovat. 
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect)]
 
 ### <a name="display-detected-face-data"></a>Zobrazit zjištěná data obličeje
 
-Zbytek metody `DetectFaceExtract` analyzuje a tiskne data atributů pro každou zjištěnou plochu. Každý atribut se musí zadat samostatně v původním volání rozhraní API pro detekci obličeje (v seznamu [FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) ). Následující kód zpracuje každý atribut, ale bude pravděpodobně nutné použít pouze jeden nebo několik.
+Zbytek metody `DetectFaceExtract` analyzuje a tiskne data atributů pro každou zjištěnou plochu. Každý atribut se musí zadat samostatně v původním volání rozhraní API pro detekci obličeje (v seznamu **[FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** ). Následující kód zpracuje každý atribut, ale bude pravděpodobně nutné použít pouze jeden nebo několik.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_parse)]
 

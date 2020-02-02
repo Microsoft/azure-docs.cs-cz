@@ -10,14 +10,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 09/21/2019
+ms.date: 01/30/2020
 ms.author: juliako
-ms.openlocfilehash: 23d546d6adcdb91b4ef4702b81fe77536fe9f3d3
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 91a09df83c8ba474d3124c3322f4e3dd5eb7367c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186257"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934689"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Analýza videosouborů a zvukových souborů pomocí Azure Media Services
 
@@ -27,6 +27,10 @@ Chcete-li analyzovat obsah pomocí přednastavených Media Services V3, vytvořt
 
 > [!NOTE]
 > Pokud použijete předvolby analyzátoru videa nebo zvuku, pomocí webu Azure Portal nastavte pro svůj účet 10 rezervovaných jednotek médií S3. Další informace najdete v tématu [Škálování zpracování médií](media-reserved-units-cli-how-to.md).
+
+## <a name="compliance-privacy-and-security"></a>Dodržování předpisů, ochrana osobních údajů a zabezpečení
+
+Důležitou připomínkou je, že je nutné dodržovat všechny použitelné zákony v používání Video Indexer a nesmíte používat Video Indexer ani žádnou jinou službu Azure způsobem, který porušuje práva jiných nebo může být škodlivá jiným osobám. Před nahráním videí, včetně jakýchkoli biometrických dat, do služby Video Indexer pro zpracování a ukládání, musíte mít všechna patřičná práva, včetně příslušných souhlasů, od jednotlivých jednotlivců ve videu. Pokud se chcete dozvědět o dodržování předpisů, ochraně osobních údajů a zabezpečení v Video Indexer, [podmínky Cognitive Services](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)Microsoftu. Pro závazky ochrany osobních údajů Microsoftu a jejich zpracování si přečtěte [prohlášení o zásadách ochrany osobních údajů](https://privacy.microsoft.com/PrivacyStatement)od Microsoftu, [podmínky online služeb ("OST")](https://www.microsoft.com/licensing/product-licensing/products) a [doplněk pro zpracování dat](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (DPA). Další informace o ochraně osobních údajů, včetně uchovávání, odstranění nebo zničení dat, jsou k dispozici v OST a [zde](../video-indexer/faq.md). Když použijete Video Indexer, souhlasíte s tím, že jste vázáni na Cognitive Services podmínky, OST, DPA a prohlášení o zásadách ochrany osobních údajů.
 
 ## <a name="built-in-presets"></a>Předdefinované předvolby
 
@@ -63,7 +67,7 @@ Výstup obsahuje soubor JSON (Insights. JSON) se všemi přehledy, které najdet
 
 ### <a name="transcript"></a>záznamy
 
-|Název|Popis|
+|Name (Název)|Popis|
 |---|---|
 |id|ID řádku|
 |text|Samotný přepis.|
@@ -101,7 +105,7 @@ Příklad:
 
 ### <a name="ocr"></a>OCR
 
-|Název|Popis|
+|Name (Název)|Popis|
 |---|---|
 |id|ID řádku OCR|
 |text|Text OCR|
@@ -144,7 +148,7 @@ Příklad:
 
 ### <a name="faces"></a>emotikon
 
-|Název|Popis|
+|Name (Název)|Popis|
 |---|---|
 |id|ID obličeje|
 |jméno|Název obličeje Může to být neznámý #0, identifikovaný celebrit nebo osoba školená zákazníkem.|
@@ -154,7 +158,7 @@ Příklad:
 |knownPersonId|Interní ID (Pokud se jedná o známého uživatele).|
 |referenceId|ID Bingu (Pokud se jedná o celebrit Bingu).|
 |referenceType|Aktuálně pouze Bing.|
-|Název|Název (Pokud se jedná o celebrit, například "generální ředitel společnosti Microsoft").|
+|název|Název (Pokud se jedná o celebrit, například "generální ředitel společnosti Microsoft").|
 |imageUrl|Adresa URL obrázku, pokud se jedná o celebrit.|
 |instance|Instance, u kterých se v zadaném časovém rozsahu objevila plocha Každá instance má také thumbnailsId. |
 
@@ -189,7 +193,7 @@ Příklad:
 
 ### <a name="shots"></a>řizování
 
-|Název|Popis|
+|Name (Název)|Popis|
 |---|---|
 |id|ID snímku|
 |Klíčové snímky|Seznam klíčových snímků v rámci tohoto snímku (každý má ID a seznam časových rozsahů instancí). Instance klíčových snímků mají pole thumbnailId s ID miniatury klíčového snímku.|
@@ -246,7 +250,7 @@ Příklad:
 
 ### <a name="statistics"></a>týkají
 
-|Název|Popis|
+|Name (Název)|Popis|
 |---|---|
 |CorrespondenceCount|Počet korespondencí ve videu.|
 |WordCount|Počet slov na mluvčí.|
@@ -259,7 +263,7 @@ Příklad:
 
 Zabarvení jsou agregované podle jejich sentimentType pole (kladné/neutrální/záporné). Například 0-0,1, 0,1-0,2.
 
-|Název|Popis|
+|Name (Název)|Popis|
 |---|---|
 |id|ID mínění|
 |averageScore |Průměr všech skóre všech instancí tohoto typu mínění-kladný/neutrální/záporný|
@@ -294,7 +298,7 @@ Zabarvení jsou agregované podle jejich sentimentType pole (kladné/neutrální
 
 ### <a name="labels"></a>popisky
 
-|Název|Popis|
+|Name (Název)|Popis|
 |---|---|
 |id|ID popisku|
 |jméno|Název popisku (například "Computer", "TV").|
@@ -352,7 +356,7 @@ Zabarvení jsou agregované podle jejich sentimentType pole (kladné/neutrální
 
 ### <a name="keywords"></a>klíčová slova
 
-|Název|Popis|
+|Name (Název)|Popis|
 |---|---|
 |id|ID klíčového slova.|
 |text|Text klíčového slova|
@@ -403,7 +407,7 @@ Blok visualContentModeration obsahuje časové rozsahy, které Video Indexer nal
 
 K dispozici jsou videa, která se nacházejí v obsahu pro dospělé nebo pikantní, a to pouze pro privátní zobrazení. Uživatelé mohou odeslat žádost o revizi obsahu. v takovém případě atribut `IsAdult` bude obsahovat výsledek lidské recenze.
 
-|Název|Popis|
+|Name (Název)|Popis|
 |---|---|
 |id|ID moderování vizuálního obsahu.|
 |adultScore|Skóre dospělého (od moderátora obsahu).|

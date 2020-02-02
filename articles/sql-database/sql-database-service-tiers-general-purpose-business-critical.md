@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 01/23/2020
-ms.openlocfilehash: fab24d55509ab315775437ca343e35fc90174f63
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 01/30/2020
+ms.openlocfilehash: 09cc9e1475616700aa77cdf92fd7ca808cd4290c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715103"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937845"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL Database úrovní služeb
 
@@ -53,7 +53,7 @@ Následující tabulka popisuje klíčové rozdíly mezi úrovněmi služeb pro 
 |**OLTP v paměti** | | Nevztahuje se | Nevztahuje se | Dostupné |
 |**Repliky jen pro čtení**| | 0 – předdefinovaná <br> 0-4 použití [geografické replikace](sql-database-active-geo-replication.md) | 0-4 integrovaný | 1 Integrovaná, zahrnutá v ceně <br> 0-4 použití [geografické replikace](sql-database-active-geo-replication.md) |
 |**Ceny a fakturace** | Izolovaná databáze | účtují se [Vcore, rezervované úložiště a úložiště záloh](https://azure.microsoft.com/pricing/details/sql-database/single/) . <br/>IOPS se neúčtuje. | účtují se [Vcore pro každou repliku a využité úložiště](https://azure.microsoft.com/pricing/details/sql-database/single/) . <br/>IOPS se ještě neúčtuje. | účtují se [Vcore, rezervované úložiště a úložiště záloh](https://azure.microsoft.com/pricing/details/sql-database/single/) . <br/>IOPS se neúčtuje. |
-|| Managed Instance | účtuje se [Vcore a rezervované úložiště](https://azure.microsoft.com/pricing/details/sql-database/managed/) . <br/>IOPS se neúčtuje.<br/>Úložiště zálohování se ještě neúčtuje. | Nevztahuje se | účtuje se [Vcore a rezervované úložiště](https://azure.microsoft.com/pricing/details/sql-database/managed/) . <br/>IOPS se neúčtuje.<br/>Úložiště zálohování se ještě neúčtuje. | 
+|| Managed Instance | účtují se [Vcore, rezervované úložiště a úložiště zálohování](https://azure.microsoft.com/pricing/details/sql-database/managed/) . <br/>IOPS se neúčtuje.| Nevztahuje se | účtují se [Vcore, rezervované úložiště a úložiště zálohování](https://azure.microsoft.com/pricing/details/sql-database/managed/) . <br/>IOPS se neúčtuje.| 
 |**Modely slev**| | [Rezervované instance](sql-database-reserved-capacity.md)<br/>[Zvýhodněné hybridní využití Azure](sql-database-azure-hybrid-benefit.md) (není k dispozici v předplatných pro vývoj a testování)<br/>Předplatné [Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) a průběžné [platby podle](https://azure.microsoft.com/offers/ms-azr-0023p/) aktuálního využití pro vývoj/testování| [Zvýhodněné hybridní využití Azure](sql-database-azure-hybrid-benefit.md) (není k dispozici v předplatných pro vývoj a testování)<br/>Předplatné [Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) a průběžné [platby podle](https://azure.microsoft.com/offers/ms-azr-0023p/) aktuálního využití pro vývoj/testování| [Rezervované instance](sql-database-reserved-capacity.md)<br/>[Zvýhodněné hybridní využití Azure](sql-database-azure-hybrid-benefit.md) (není k dispozici v předplatných pro vývoj a testování)<br/>Předplatné [Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) a průběžné [platby podle](https://azure.microsoft.com/offers/ms-azr-0023p/) aktuálního využití pro vývoj/testování|
 
 Další informace najdete v podrobných rozdílech mezi úrovněmi služby v izolovaných [databázích (Vcore)](sql-database-vcore-resource-limits-single-databases.md), [fondech izolovaných databází (Vcore)](sql-database-dtu-resource-limits-single-databases.md), izolovanými databázemi [(DTU)](sql-database-dtu-resource-limits-single-databases.md), fondy izolovaných [databází (DTU)](sql-database-dtu-resource-limits-single-databases.md)a stránkami [spravované instance](sql-database-managed-instance-resource-limits.md) .

@@ -9,21 +9,21 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 744d5ecd3aab02071f7c3aaff7dd760fc14a2a62
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 8c39c7b57167d65dfa639d41665f5d5b38110183
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911163"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933130"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>Přidání vrstvy symbolů do mapy
 
-Symbol může být připojen ke zdroji dat a používá se k vykreslení ikony nebo textu v daném bodě. Vrstvy symbolů se vykreslují pomocí WebGL a dají se použít k vykreslování velkých kolekcí bodů na mapě. Tato vrstva může na mapě vykreslovat mnohem více bodů s dobrým výkonem, než kolik je možné pomocí značek HTML. Nicméně vrstva symbolů nepodporuje tradiční prvky CSS a HTML pro stylování.  
+Symbol připojený ke zdroji dat, který se používá k vykreslení ikony nebo textu v daném bodě. Vrstvy symbolů se vykreslují pomocí WebGL a používají se k vykreslování velkých kolekcí bodů na mapě. Ve srovnání s HTML značkou vrstva symbolů vykreslí na mapě velký počet bodů dat s lepším výkonem. Nicméně vrstva symbolů nepodporuje tradiční prvky CSS a HTML pro stylování.  
 
 > [!TIP]
-> Vrstvy symbolů ve výchozím nastavení vykreslí souřadnice všech geometrií ve zdroji dat. Chcete-li omezit vrstvu tak, aby vykreslí pouze funkce geometrie bodu, nastavte vlastnost `filter` vrstvy na `['==', ['geometry-type'], 'Point']` nebo `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`, pokud chcete zahrnout i funkce systému MultiPoint.
+> Vrstvy symbolů ve výchozím nastavení vykreslí souřadnice všech geometrií ve zdroji dat. Chcete-li omezit vrstvu tak, aby vykreslí pouze funkce geometrie bodu nastavte vlastnost `filter` vrstvy na `['==', ['geometry-type'], 'Point']` nebo `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` Pokud chcete, můžete také zahrnout funkce systému MultiPoint.
 
-Správce mapy Sprite obrázku, který se používá k načtení vlastních imagí používaných vrstvou symbolů, podporuje následující formáty obrázků:
+Správce mapy Sprite obrázku načte vlastní image používané vrstvou symbolů. Podporuje následující formáty obrázků:
 
 - JPEG
 - PNG
@@ -33,7 +33,7 @@ Správce mapy Sprite obrázku, který se používá k načtení vlastních imag�
 
 ## <a name="add-a-symbol-layer"></a>Přidání vrstvy symbolů
 
-Chcete-li přidat vrstvu symbolů do mapy a vykreslovat data, je třeba nejprve vytvořit zdroj dat a přidat mapu. Vrstvu symbolů lze poté vytvořit a předat zdroji dat a načíst data z. Nakonec je třeba přidat data do zdroje dat, aby bylo vygenerováno něco. Následující kód ukazuje kód, který by měl být přidán do mapy poté, co byl načten pro vykreslení jediného bodu na mapě pomocí vrstvy symbolů. 
+Předtím, než můžete na mapu přidat vrstvu symbolů, je nutné provést několik kroků. Nejprve vytvořte zdroj dat a přidejte jej do mapy. Vrstvu symbolů lze poté vytvořit a předat zdroji dat a načíst data ze zdroje dat. Nakonec je třeba do zdroje dat přidat data, aby bylo vygenerováno něco. Následující kód ukazuje kód, který by měl být přidán do mapy poté, co byl načten. Kód vykreslí jeden bod na mapě pomocí vrstvy symbolů. 
 
 ```javascript
 //Create a data source and add it to the map.
@@ -50,14 +50,14 @@ map.layers.add(layer);
 dataSource.add(new atlas.data.Point([0, 0]));
 ```
 
-Existují čtyři různé typy datových bodů, které je možné přidat do mapy:
+K mapě je možné přidat čtyři různé typy dat bodu:
 
 - Geometrická geometrie bodu JSON – tento objekt obsahuje pouze souřadnici bodu a nic jiného. Pomocnou třídu `atlas.data.Point` lze použít ke snadnému vytvoření těchto objektů.
-- Geometrická geometrie systému pro data JSON – tento objekt obsahuje souřadnice více bodů, ale nic jiného. Pomocnou třídu `atlas.data.MultiPoint` lze použít ke snadnému vytvoření těchto objektů.
+- Geometrická geometrie systému pro data JSON – tento objekt obsahuje souřadnice více bodů a nic jiného. Pomocnou třídu `atlas.data.MultiPoint` lze použít ke snadnému vytvoření těchto objektů.
 - Geografická funkce JSON – tento objekt se skládá z libovolného geometrického geometrie a sady vlastností, které obsahují metadata přidružená k geometrii. Pomocnou třídu `atlas.data.Feature` lze použít ke snadnému vytvoření těchto objektů.
-- Třída `atlas.Shape` je podobná funkci Geometricke v tom, že se skládá z geometrické geometrie JSON a sady vlastností, které obsahují metadata přidružená k geometrii. Pokud je objekt. JSON přidaný do zdroje dat, může být snadno vykreslen ve vrstvě, ale pokud je vlastnost souřadnice tohoto objektu. JSON aktualizována, zdroj dat a mapování se nemění, protože v objektu JSON není žádný mechanismus pro aktivaci aktualizace. Třída Shape poskytuje funkce pro aktualizaci dat, která obsahuje, a když je provedena změna, zdroj dat a mapa budou automaticky upozorňovány a aktualizovány. 
+- Třída `atlas.Shape` je podobná funkci "coclass JSON". Oba se skládají z geometrické geometrie a sady vlastností, které obsahují metadata přidružená k geometrii. Pokud je objekt typu "injson" přidán do zdroje dat, lze jej snadno vykreslit ve vrstvě. Nicméně, pokud je vlastnost souřadnice tohoto objektu. JSON aktualizována, zdroj dat a mapování se nemění. Důvodem je, že v objektu JSON není žádný mechanismus pro aktivaci aktualizace. Třída Shape poskytuje funkce pro aktualizaci dat, která obsahuje. Když je provedena změna, zdroj dat a mapa budou automaticky upozorňovány a aktualizovány. 
 
-Následující ukázka kódu vytvoří geometrii geometrického bodu JSON a předá ji do třídy `atlas.Shape`, aby se usnadnila její aktualizace. Uprostřed mapy se zpočátku používá k vykreslení symbolu. Událost Click je přidána do mapy tak, že když je aktivována, budou použity souřadnice místa, kde byla kliknuto myší použita s tvary `setCoordinates` funkce, která aktualizuje umístění symbolu na mapě.
+Následující ukázka kódu vytvoří geometrii geometrického bodu JSON a předá ji do třídy `atlas.Shape`, aby se usnadnila její aktualizace. Uprostřed mapy se zpočátku používá k vykreslení symbolu. Událost Click je přidána na mapu, například v případě, že je aktivována, jsou souřadnice myši použity spolu s tvary `setCoordinates` funkce. Souřadnice myši se zaznamenávají v době události Click. Poté `setCoordinates` aktualizuje umístění symbolu na mapě.
 
 <br/>
 
@@ -65,11 +65,11 @@ Následující ukázka kódu vytvoří geometrii geometrického bodu JSON a pře
 </iframe>
 
 > [!TIP]
-> Ve výchozím nastavení pro výkon, vrstvy symbolů optimalizují vykreslování symbolů skrytím symbolů, které se překrývají. Při přiblížení se budou skryté symboly zobrazovat. Chcete-li tuto funkci zakázat a vykreslit všechny symboly ve všech časech, nastavte vlastnost `allowOverlap` možností `iconOptions` na `true`.
+> Ve výchozím nastavení vrstvy symbolů optimalizují vykreslování symbolů skrytím symbolů, které se překrývají. Při přiblížení se budou skryté symboly zobrazovat. Chcete-li tuto funkci zakázat a vykreslit všechny symboly ve všech časech, nastavte vlastnost `allowOverlap` možností `iconOptions` na `true`.
 
 ## <a name="add-a-custom-icon-to-a-symbol-layer"></a>Přidání vlastní ikony do vrstvy symbolů
 
-Vrstvy symbolů se vykreslují pomocí WebGL. Jako takové všechny prostředky, například obrázky ikon, je nutné načíst do kontextu WebGL. Tento příklad ukazuje, jak přidat vlastní ikonu do prostředků mapy a pak ji použít k vykreslení dat bodů s vlastním symbolem na mapě. Vlastnost `textField` vrstvy symbolů vyžaduje, aby byl zadán výraz. V tomto případě chceme vykreslit vlastnost teploty, ale vzhledem k tomu, že se jedná o číslo, je nutné ji převést na řetězec. Navíc chceme k němu připojit "°F". K tomu lze použít výraz. `['concat', ['to-string', ['get', 'temperature']], '°F']`. 
+Vrstvy symbolů se vykreslují pomocí WebGL. Jako takové všechny prostředky, například obrázky ikon, je nutné načíst do kontextu WebGL. Tento příklad ukazuje, jak přidat vlastní ikonu k prostředkům mapy. Tato ikona se pak použije k vykreslení dat bodů s vlastním symbolem na mapě. Vlastnost `textField` vrstvy symbolů vyžaduje, aby byl zadán výraz. V tomto případě chceme vykreslit vlastnost teploty. Vzhledem k tomu, že teplota je číslo, je nutné ji převést na řetězec. Navíc chceme k němu připojit "°F". Výraz lze použít k provedení tohoto zřetězení; `['concat', ['to-string', ['get', 'temperature']], '°F']`. 
 
 <br/>
 
@@ -77,7 +77,7 @@ Vrstvy symbolů se vykreslují pomocí WebGL. Jako takové všechny prostředky,
 </iframe>
 
 > [!TIP]
-> Sada Azure Maps Web SDK poskytuje několik přizpůsobitelných šablon obrázků, které lze použít s vrstvou symbolů. Další informace získáte v dokumentu [použití šablon obrázků](how-to-use-image-templates-web-sdk.md) .
+> Sada Azure Maps Web SDK poskytuje několik přizpůsobitelných šablon obrázků, které lze použít s vrstvou symbolů. Další informace najdete v dokumentu [použití šablon obrázků](how-to-use-image-templates-web-sdk.md) .
 
 ## <a name="customize-a-symbol-layer"></a>Přizpůsobení vrstvy symbolů 
 
@@ -89,7 +89,7 @@ Vrstva symbolů má k dispozici mnoho možností stylů. Tady je nástroj, kter�
 </iframe>
 
 > [!TIP]
-> Pokud chcete pouze vykreslit text s vrstvou symbolů, můžete ikonu skrýt nastavením vlastnosti `image` možností ikony na `'none'`.
+> Pokud chcete vykreslit pouze text se symbolovou vrstvou, můžete ikonu skrýt nastavením vlastnosti `image` možností ikony na `'none'`.
 
 ## <a name="next-steps"></a>Další kroky
 

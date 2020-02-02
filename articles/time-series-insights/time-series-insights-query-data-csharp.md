@@ -9,34 +9,76 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 01/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3729bedf7591ffecc558b88660486f7e336fa717
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a5cb435b38a776ba652854592bdc7d3e833742d1
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705899"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935082"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>Dotazování dat z Azure Time Series Insightsho prostředí GA pomocíC#
 
-Tento C# příklad ukazuje, jak zadávat dotazy na data z Azure Time Series Insights GA prostředí.
+Tento C# příklad ukazuje, jak použít [rozhraní API pro dotazy GA](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) k dotazování dat z Azure Time Series Insights GA prostředí.
 
-V ukázce najdete několik základních příkladů použití rozhraní API pro dotazy:
+## <a name="summary"></a>Souhrn
 
-1. V rámci přípravného kroku získá přístupový token prostřednictvím rozhraní Azure Active Directory API. Tento token předejte v hlavičce `Authorization` každé žádosti rozhraní API pro dotazování. Informace o nastavení neinteraktivních aplikací najdete v tématu [ověřování a autorizace](time-series-insights-authentication-and-authorization.md). Také se ujistěte, že jsou správně nastaveny všechny konstanty definované na začátku ukázky.
-1. Získá se seznam prostředí, ke kterým má uživatel přístup. Jedno z prostředí se vybere jako prostředí zájmu a další data se pro toto prostředí dotazují.
-1. Jako příklad požadavku HTTPS se vyžádají data o dostupnosti pro prostředí, které nás zajímá.
-1. Jako příklad požadavku na webový socket se vyžádají agregovaná data o události pro prostředí, které nás zajímá. Data se vyžadují za celý časový rozsah dostupnosti.
+Vzorový kód níže znázorňuje následující funkce:
+
+* Získání přístupového tokenu prostřednictvím Azure Active Directory pomocí [Microsoft. IdentityModel. clients. Active](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).
+
+* Postup předání tohoto přístupového tokenu v `Authorization` hlavičce dalších požadavků na rozhraní API pro dotazování. 
+
+* Ukázka volá každé z rozhraní API pro dotazy GA, které demonstrují, jakým způsobem jsou požadavky HTTP provedeny:
+    * [Získat prostředí API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environments-api) pro vrácení prostředí, ke kterým má uživatel přístup
+    * [Získat rozhraní API dostupnosti prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-availability-api)
+    * [Získat rozhraní API metadat prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-metadata-api) pro načtení metadat prostředí
+    * [Získat rozhraní API pro události prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api)
+    * [Získat rozhraní API pro agregace prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api)
+    
+* Jak pracovat s rozhraními API pro dotazy GA pomocí WSS ke zprávě:
+
+   * [Načíst rozhraní API pro streamované události prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-streamed-api)
+   * [Načíst rozhraní API pro agregované datové prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-streamed-api)
 
 > [!NOTE]
 > Vzorový kód je k dispozici na adrese [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample).
 
+## <a name="prerequisites-and-setup"></a>Požadavky a instalace
+
+Před kompilací a spuštěním ukázkového kódu proveďte následující kroky:
+
+1. [Zřízení Azure Time Series Insightsho prostředí GA](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started)
+
+1. Nakonfigurujte Azure Time Series Insights prostředí pro Azure Active Directory, jak je popsáno v tématu [ověřování a autorizace](time-series-insights-authentication-and-authorization.md). 
+
+1. Nainstalujte požadované závislosti projektu.
+
+1. Níže uvedený ukázkový kód nahraďte každým **#DUMMY #** a příslušným identifikátorem prostředí.
+
+1. Spusťte kód v rámci sady Visual Studio.
+
+> [!TIP]
+> * Další ukázky kódů C# GA najdete na [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample).
+
 ## <a name="project-dependencies"></a>Závislosti projektu
 
-Přidejte `Microsoft.IdentityModel.Clients.ActiveDirectory` a `Newtonsoft.Json`balíčky NuGet.
+Doporučuje se použít nejnovější verzi sady Visual Studio:
 
-## <a name="c-example"></a>C#případě
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) – verze 16.4.2 +
+
+Vzorový kód má dvě požadované závislosti:
+
+* Balíček [Microsoft. IdentityModel. clients. Active](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) -3.13.9.
+* Balíček [Newtonsoft. JSON](https://www.nuget.org/packages/Newtonsoft.Json) -9.0.1.
+
+Přidejte balíčky pomocí [NuGet 2.12 +](https://www.nuget.org/):
+
+* `dotnet add package Newtonsoft.Json --version 9.0.1`
+* `dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory --version 3.13.9`
+
+## <a name="c-sample-code"></a>C#vzorový kód
 
 [!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-ga-sample/Program.cs)]
 

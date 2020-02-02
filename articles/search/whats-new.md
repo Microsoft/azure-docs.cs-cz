@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 24114defe5e78bb7adbd006adc4ddbf8250b3188
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 01/30/2020
+ms.openlocfilehash: d0e0e8a5aa3a3e43997e3f9512525be9f51d2018
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844968"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934865"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co je nového v Azure Kognitivní hledání
 
@@ -29,13 +29,15 @@ Azure Search se teď přejmenuje na **Azure kognitivní hledání** , aby odrá�
 
 ### <a name="february-2020"></a>Únor 2020
 
-+ [Detekce PII](cognitive-search-skill-pii-detection.md) je vnímání dovedností, která se používá při indexování, která extrahuje osobní údaje ze vstupního textu a poskytuje možnost jejich maskování z tohoto textu různými způsoby.
++ [Detekce PII (Preview)](cognitive-search-skill-pii-detection.md) je způsob rozpoznávání, který se používá při indexování, která extrahuje identifikovatelné osobní údaje ze vstupního textu a poskytuje možnost jejich maskování z tohoto textu různými způsoby.
+
++ [Vlastní vyhledávání entit (Preview)](cognitive-search-skill-custom-entity-lookup.md ) vyhledává text z vlastního uživatelsky definovaného seznamu slov a frází. Pomocí tohoto seznamu jsou všechny dokumenty označeny všemi vyhovujícími entitami. Dovednost také podporuje stupeň přibližné shody, které lze použít pro hledání shod, které jsou podobné, ale nejsou zcela přesné. 
 
 ### <a name="january-2020"></a>Leden 2020
 
 + [Šifrovací klíče spravované zákazníkem](search-security-manage-encryption-keys.md) jsou teď všeobecně dostupné. Pokud používáte REST, můžete k této funkci přistupovat pomocí `api-version=2019-05-06`. Pro spravovaný kód je správný balíček stále [.NET SDK verze 8,0-Preview](search-dotnet-sdk-migration-version-9.md) , i když funkce není ve verzi Preview. 
 
-+ Privátní přístup k vyhledávací službě je k dispozici prostřednictvím dvou mechanismů:
++ Privátní přístup k vyhledávací službě je k dispozici prostřednictvím dvou mechanismů v současnosti ve verzi Preview:
 
   + Přístup ke konkrétním IP adresám můžete omezit pomocí REST API pro správu `api-version=2019-10-01-Preview` k vytvoření služby. Rozhraní API ve verzi Preview má nové vlastnosti **IpRule** a **NetworkRuleSet** v [rozhraní CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate). Tato funkce ve verzi Preview je dostupná ve vybraných oblastech. Další informace najdete v tématu [Jak používat REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
 

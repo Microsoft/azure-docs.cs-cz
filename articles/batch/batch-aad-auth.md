@@ -1,6 +1,6 @@
 ---
-title: Použití Azure Active Directory k ověřování řešení služby Azure Batch | Microsoft Docs
-description: Služba Batch podporuje službu Azure AD k ověřování ze služby Batch.
+title: Ověřování služby Azure Batch Services pomocí Azure Active Directory
+description: Služba Batch podporuje službu Azure AD k ověřování ze služby Batch. Přečtěte si, jak ověřit jedním ze dvou způsobů.
 services: batch
 documentationcenter: .net
 author: ju-shim
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 01/28/2020
 ms.author: jushiman
-ms.openlocfilehash: ce3582539d6130e13ef205806d780164ba70c4fe
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c855293a64ed63fdcb8a5ce797497dec428ab5ae
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842533"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935294"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Ověřování řešení služby Batch ve službě Active Directory
 

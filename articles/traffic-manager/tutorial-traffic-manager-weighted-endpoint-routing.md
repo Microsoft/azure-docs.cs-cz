@@ -2,18 +2,18 @@
 title: 'Kurz: směrování provozu do vážených koncových bodů – Azure Traffic Manager'
 description: Tento kurz popisuje, jak pomocí služby Traffic Manager směrovat provoz do vážených koncových bodů.
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 Customer intent: As an IT Admin, I want to distribute traffic based on the weight assigned to a website endpoint so that I can control the user traffic to a given website.
 ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
-ms.author: allensu
-ms.openlocfilehash: 45ece08599722e04c4e6799fa5c3589cba1fca42
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: rohink
+ms.openlocfilehash: a4738b2e36786cd627f53af3e36bd8f1e3fbc375
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037917"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939482"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>Kurz: Řízení směrování provozu s váženými koncovými body pomocí služby Traffic Manager
 
@@ -40,7 +40,7 @@ Pokud chcete zobrazit službu Traffic Manager v akci, nasaďte pro účely tohot
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlásit se na [Azure Portal](https://portal.azure.com).
+Přihlaste se k [Portálu Azure](https://portal.azure.com).
 
 ### <a name="create-websites"></a>Vytvoření webů
 
@@ -139,7 +139,7 @@ Vytvořte profil služby Traffic Manager založený na metodě **váženého** s
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
-    | Název                   | Zadejte jedinečný název v rámci zóny trafficmanager.net. Výsledkem bude název DNS trafficmanager.net, který bude sloužit k přístupu k vašemu profilu služby Traffic Manager.                                   |
+    | Name (Název)                   | Zadejte jedinečný název v rámci zóny trafficmanager.net. Výsledkem bude název DNS trafficmanager.net, který bude sloužit k přístupu k vašemu profilu služby Traffic Manager.                                   |
     | Metoda směrování          | Vyberte metodu **váženého** směrování.                                       |
     | Předplatné            | Vyberte své předplatné.                          |
     | Skupina prostředků          | Vyberte **Použít existující** a pak vyberte **myResourceGroupTM1**. |
@@ -158,7 +158,7 @@ Přidejte dva virtuální počítače, na kterých běží servery IIS myIISVMEa
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
     | Typ                    | Zadejte koncový bod Azure.                                   |
-    | Název           | Zadejte **myEastUSEndpoint**.                                        |
+    | Name (Název)           | Zadejte **myEastUSEndpoint**.                                        |
     | Typ cílového prostředku           | Vyberte **Veřejná IP adresa**.                          |
     | Cílový prostředek          | Zvolte veřejnou IP adresu a zobrazí se výpis prostředků s veřejnými IP adresami ve stejném předplatném. Jako **Prostředek** vyberte veřejnou IP adresu **myIISVMEastUS-ip**. Toto je veřejná IP adresa virtuálního počítače se serverem služby IIS v oblasti USA – východ.|
     |  Hmotnost      | Zadejte **100**.        |

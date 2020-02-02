@@ -2,17 +2,17 @@
 title: 'Kurz: Hostování vaší domény a subdomény – Azure DNS'
 description: V tomto článku se dozvíte, jak nakonfigurovat Azure DNS pro hostování zón DNS.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
-ms.author: allensu
-ms.openlocfilehash: 062a5beaec30d510d37af436e00f4d57785245cd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 8f29a2bbe0eb392927dd111b13e2260111ddd18e
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212194"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937321"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Kurz: Hostování vaší domény v Azure DNS
 
@@ -52,7 +52,7 @@ Ukázková doména použitá pro tento kurz je contoso.net, ale použijte vlastn
    |**Název**|[název vaší domény] |Název domény, kterou jste si zakoupili. V tomto kurzu se jako příklad používá doména contoso.net.|
    |**Předplatné**|[Vaše předplatné]|Vyberte předplatné, ve kterém se má zóna vytvořit.|
    |**Skupina prostředků**|**Vytvořit novou:** contosoRG|Vytvořte skupinu prostředků. Název skupiny prostředků musí být v rámci vybraného předplatného jedinečný.<br>Umístění skupiny prostředků nemá žádný vliv na zónu DNS. Umístění zóny DNS je vždy globální a není zobrazeno.|
-   |**Umístění**|Východní USA||
+   |**Umístění**|Východ USA||
 
 ## <a name="retrieve-name-servers"></a>Načtení názvových serverů
 

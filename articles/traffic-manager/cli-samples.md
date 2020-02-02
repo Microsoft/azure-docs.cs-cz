@@ -1,9 +1,9 @@
 ---
-title: Ukázky Azure CLI pro službu Traffic Manager | Dokumentace Microsoftu
+title: Ukázky v Azure CLI pro Traffic Manager | Microsoft Docs
 description: Ukázky Azure CLI
 services: virtual-network
 documentationcenter: virtual-network
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: virtual-network
 ms.devlang: na
@@ -11,21 +11,21 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 10/23/2018
-ms.author: allensu
-ms.openlocfilehash: fb195f7e4df2fa40562141199ad68dd8b29f97bb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohink
+ms.openlocfilehash: 3b14cf2058f425f650d827e10ef0ca77f1278b55
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066836"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938015"
 ---
 # <a name="azure-cli-samples-for-traffic-manager"></a>Ukázky v Azure CLI pro Traffic Manager
 
-Následující tabulka obsahuje odkazy na skripty bash pro Traffic Manager vytvořené pomocí Azure CLI.
+Následující tabulka obsahuje odkazy na skripty bash pro Traffic Manager sestavené pomocí Azure CLI.
 
-|Titul  |Popis |
+|Nadpis  |Popis |
 |---------|---------|
-|[Směrovat přenos dat v několika oblastech pro aplikace s vysokou dostupností](./scripts/traffic-manager-cli-websites-high-availability.md)   |    Vytvoří dva plány služby app service, dvě webové aplikace, profil služby traffic manager a dva koncové body traffic Manageru.     |
+|[Přímý provoz napříč několika oblastmi pro zajištění vysoké dostupnosti aplikací](./scripts/traffic-manager-cli-websites-high-availability.md)   |    Vytvoří dva plány služby App Service, dvě webové aplikace, profil služby Traffic Manager a dva koncové body Traffic Manageru.     |
 |    |         |
 
 

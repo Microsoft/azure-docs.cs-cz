@@ -1,28 +1,29 @@
 ---
-title: Upgrade clusteru HDInsight na novější verzi – Azure
-description: Přečtěte si pokyny, jak upgradovat cluster Azure HDInsight na novější verzi.
-author: omidm1
-ms.author: omidm
+title: Migrovat cluster na novější verzi
+titleSuffix: Azure HDInsight
+description: Přečtěte si pokyny pro migraci clusteru Azure HDInsight na novější verzi.
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/06/2019
-ms.openlocfilehash: 1a1d4a71786ebb1e68f59084086b3256a1c1ea40
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.date: 01/31/2020
+ms.openlocfilehash: 95892bba1b3152dda718a4af3c5f45072054fdae
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951152"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935491"
 ---
-# <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>Upgrade clusteru HDInsight na novější verzi
+# <a name="migrate-hdinsight-cluster-to-a-newer-version"></a>Migrace clusteru HDInsight na novější verzi
 
-Pro využití nejnovějších funkcí HDInsight doporučujeme, aby clustery HDInsight byly upgradovány na nejnovější verzi. Pokud chcete upgradovat verze clusteru HDInsight, postupujte podle pokynů níže.
+Pro využití nejnovějších funkcí HDInsight doporučujeme, aby clustery HDInsight byly pravidelně migrovány na nejnovější verzi. HDInsight nepodporuje místní upgrady, když je existující cluster upgradovaný na novější verzi součásti. Musíte vytvořit nový cluster s požadovanou verzí součásti a platformy a potom migrovat aplikace tak, aby používaly nový cluster. Pokud chcete migrovat verze clusteru HDInsight, postupujte podle pokynů níže.
 
 > [!NOTE]  
 > Informace o podporovaných verzích HDInsight najdete v tématu [verze komponent HDInsight](hdinsight-component-versioning.md#supported-hdinsight-versions).
 
-## <a name="upgrade-tasks"></a>Úkoly upgradu
+## <a name="migration-tasks"></a>Úlohy migrace
 
 Postup upgradu clusteru HDInsight je následující.
 ![diagramu pracovního postupu upgradu HDInsight](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
@@ -39,6 +40,18 @@ Jakmile ověříte, že vše funguje podle očekávání, naplánujte prostoje p
 1. Vytvořte cluster ve stejné podsíti virtuální sítě s nejnovější (nebo podporovanou) verzí HDI pomocí stejného výchozího úložiště dat, které použil předchozí cluster. Tím umožníte, aby nový cluster pokračoval v práci s vašimi stávajícími provozními daty.
 1. Importujte všechna přechodná data, která jste zálohovali.
 1. Spustí úlohy/pokračovat ve zpracování pomocí nového clusteru.
+
+## <a name="workload-specific-guidance"></a>Pokyny pro konkrétní úlohy
+
+Následující dokumenty obsahují pokyny k migraci konkrétních úloh:
+
+* [Migrace adaptérů HBA](/hbase/apache-hbase-migrate-new-version.md)
+* [Migrace Kafka](/kafka/migrate-versions.md)
+* [Migrace podregistru/interaktivního dotazu](/interactive-query/apache-hive-migrate-workloads.md)
+
+## <a name="backup-and-restore"></a>Zálohování a obnovení
+
+Další informace o zálohování a obnovení databáze najdete v tématu [obnovení databáze SQL Azure pomocí automatických záloh databáze](../sql-database/sql-database-recovery-using-backups.md).
 
 ## <a name="next-steps"></a>Další kroky
 

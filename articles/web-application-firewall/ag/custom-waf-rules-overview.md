@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: article
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/04/2019
+ms.date: 01/30/2020
 ms.author: victorh
-ms.openlocfilehash: 323f01e08007260d4fb6d651b20937c5d5d5e357
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 9d9deca0365e13a0a8ad7404a476b05d0afef077
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645085"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935000"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Vlastní pravidla pro Firewall webových aplikací V2 v Azure Application Gateway
 
@@ -22,7 +22,7 @@ Vlastní pravidla umožňují vytvořit vlastní pravidla vyhodnocená pro každ
 
 Můžete například blokovat všechny požadavky z IP adresy v rozsahu 192.168.5.4/24. V tomto pravidle je operátor *IPMatch*, matchValues je rozsah IP adres (192.168.5.4/24) a akce slouží k blokování provozu. Nastavíte také název a prioritu pravidla.
 
-Vlastní pravidla podporují použití složené logiky k pokročilejším pravidlům, která řeší vaše požadavky na zabezpečení. Například (podmínka 1 **a** podmínka 2) **nebo** podmínka 3).  Tento příklad znamená, že pokud je splněna podmínka 1 **a** podmínka 2 **nebo** Pokud je splněna podmínka 3, WAF by měla provést akci určenou ve vlastním pravidle.
+Vlastní pravidla podporují použití složené logiky k pokročilejším pravidlům, která řeší vaše požadavky na zabezpečení. Například (podmínka 1 **a** podmínka 2) **nebo** podmínka 3). To znamená, že pokud jsou splněné podmínky 1 **a** Condition 2 **nebo** Pokud je splněna podmínka 3, WAF by měla provést akci určenou ve vlastním pravidle.
 
 Různé podmínky shod v rámci stejného pravidla jsou vždy složené pomocí **a**. Například zablokujte provoz z konkrétní IP adresy a jenom v případě, že používá určitý prohlížeč.
 
@@ -31,7 +31,7 @@ Pokud chcete **nebo** dvě různé podmínky, musí být tyto dvě podmínky v r
 > [!NOTE]
 > Maximální počet vlastních pravidel WAF je 100. Další informace o omezeních Application Gateway najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits).
 
-Regulární výrazy jsou také podporovány ve vlastních pravidlech, stejně jako v RuleSets počítačový počítač. Příklady těchto příkazů najdete v části Příklady 3 a 5 v tématu [Vytvoření a použití vlastních pravidel firewallu webových aplikací](create-custom-waf-rules.md).
+Regulární výrazy jsou také podporovány ve vlastních pravidlech, stejně jako v RuleSets počítačový počítač. Příklady najdete v tématu Příklady 3 a 5 v tématu [Vytvoření a použití vlastních pravidel firewallu webových aplikací](create-custom-waf-rules.md).
 
 ## <a name="allowing-vs-blocking"></a>Povolení vs. blokování
 
@@ -92,7 +92,7 @@ Toto vlastní pravidlo obsahuje název, prioritu, akci a pole podmínek porovná
 
 ### <a name="name-optional"></a>Název [nepovinné]
 
-Toto je název pravidla. Tento název se zobrazí v protokolech.
+Název pravidla  Zobrazí se v protokolech.
 
 ### <a name="priority-required"></a>Priorita [povinné]
 
@@ -133,7 +133,7 @@ Musí být jedním z následujících operátorů:
 - GreaterThanOrEqual
 - Filtr začíná na
 - EndsWith
-- Regulární výraz
+- regulární
 - Porovnat (Náhled)
 
 ### <a name="negate-condition-optional"></a>Podmínka negace [nepovinné]
@@ -145,7 +145,7 @@ Negace aktuální podmínky.
 Seznam řetězců s názvy transformací, které se mají provést před pokusem o shodu. Můžou to být následující transformace:
 
 - Malá písmena
-- Trim
+- Sklon
 - UrlDecode
 - UrlEncode 
 - RemoveNulls
@@ -157,198 +157,13 @@ Seznam hodnot, které mají být porovnány, což může být považováno za "j
 
 ### <a name="action-required"></a>Action [povinné]
 
-- Allow – autorizuje transakci a přeskočí všechna další pravidla. To znamená, že zadaný požadavek se přidá do seznamu povolených a po shodě se požadavek zastaví a pošle se do fondu back-end. Pravidla, která jsou na seznamu povolených, se nevyhodnotí pro žádná další vlastní pravidla ani spravovaná pravidla.
-- Block – zablokuje transakci na základě *SecDefaultAction* (režim detekce nebo prevence). Stejně jako u akce Allow se po vyhodnocení žádosti a přidání do seznamu blokovaných hodnot zastaví a zablokuje se požadavek. Všechny žádosti, které splňují stejné podmínky, se nevyhodnotí a budou jenom blokované. 
-- Log – umožňuje zapsání pravidla do protokolu, ale umožňuje, aby zbytek pravidel běžel pro vyhodnocení. Následná vlastní pravidla se vyhodnocují v pořadí podle priority, za kterými následuje spravovaná pravidla.
+- Povolit – autorizuje transakci a přeskočí všechna ostatní pravidla. Zadaný požadavek se přidá do seznamu povolených a po jeho spárování se požadavek zastaví a pošle se do fondu back-endu. Pravidla, která jsou na seznamu povolených, se nevyhodnotí pro žádná další vlastní pravidla ani spravovaná pravidla.
+- Block – zablokuje transakci na základě *SecDefaultAction* (režim detekce nebo prevence). Stejně jako u akce Allow se po vyhodnocení žádosti a přidání do seznamu blokovaných hodnot zastaví a zablokuje se požadavek. Všechny žádosti, které splňují stejné podmínky, nebudou vyhodnoceny a budou pouze zablokovány. 
+- Log – umožňuje zapsání pravidla do protokolu, ale umožňuje, aby zbytek pravidel běžel pro vyhodnocení. Ostatní vlastní pravidla se vyhodnocují v pořadí podle priority, za kterými následuje spravovaná pravidla.
 
 ## <a name="geomatch-custom-rules-preview"></a>Vlastní pravidla pro neshodu (Preview)
 
-Vlastní pravidla umožňují vytvářet upravená pravidla tak, aby vyhovovala přesným potřebám vašich aplikací a vašim zásadám zabezpečení. Nyní můžete omezit přístup k vašim webovým aplikacím podle země nebo oblasti, která je k dispozici ve verzi Public Preview. Stejně jako u všech vlastních pravidel může být tato logika složená s jinými pravidly, aby vyhovovala potřebám vaší aplikace. 
-
-   > [!NOTE]
-   > Vlastní pravidla pro inshodě jsou dostupná v Střed USA – jih a Severní Evropa. Pokud k nim chcete přistupovat na portálu, použijte prosím [Tento odkaz](https://aka.ms/AppGWWAFGeoMatch) , dokud nebude aktivní pro všechny. 
-
-Pokud používáte operátor geografického porovnávání, mohou být selektory libovolné z následujících dvoumístné kódů zemí. 
-
-|Kód země | Název země |
-| ----- | ----- |
-| AD | Andorra |
-| AE | Spojené arabské emiráty|
-| AF | Afghánistán|
-| AG | Antigua a Barbuda|
-| AL | Albánie|
-| AM | Arménie|
-| AO | Angola|
-| AR | Argentina|
-| AS | Americká Samoa|
-| AT | Rakousko|
-| AU | Austrálie|
-| AZ | Ázerbájdžán|
-| BA | Bosna a Hercegovina|
-| BB | Barbados|
-| BD | Bangladéš|
-| BE | Belgie|
-| BF | Burkina Faso|
-| BG | Bulharsko|
-| BH | Bahrajn|
-| BI | Burundi|
-| BJ | Benin|
-| BL | Svatý Bartoloměj|
-| BN | Brunej Darussalam|
-| BO | Bolívie|
-| BR | Brazílie|
-| BS | Bahamy|
-| BT | Bhútán|
-| BW | Botswana|
-| BY | Bělorusko|
-| BZ | Belize|
-| CA | Kanada|
-| CD | Demokratická republika Kongo|
-| CF | Středoafrická republika|
-| CH | Švýcarsko|
-| CI | Pobřeží slonoviny|
-| CL | Chile|
-| CM | Kamerun|
-| CN | Čína|
-| CO | Kolumbie|
-| CR | Kostarika|
-| CU | Kuba|
-| CV | Cabo Verde|
-| CY | Kypr|
-| CZ | Česká republika|
-| Německo | Německo|
-| DK | Dánsko|
-| DO | Dominikánská republika|
-| DZ | Alžírsko|
-| EC | Ekvádor|
-| EE | Estonsko|
-| EG | Egypt|
-| ES | Španělsko|
-| ET | Etiopie|
-| FI | Finsko|
-| FJ | Fidži|
-| FM | Federativní státy Mikronésie|
-| FR | Francie|
-| GB | Spojené království|
-| GE | Gruzie|
-| GF | Francouzská Guyana|
-| GH | Ghana|
-| GN | Guinea|
-| GP | Guadeloupe|
-| GR | Řecko|
-| GT | Guatemala|
-| GY | Guyana|
-| HK | Hongkong – zvláštní správní oblast|
-| HN | Honduras|
-| HR | Chorvatsko|
-| HT | Haiti|
-| HU | Maďarsko|
-| ID | Indonésie|
-| IE | Irsko|
-| IL | Izrael|
-| IN | Indie|
-| IQ | Irák|
-| IR | Íránská islámská republika|
-| IS | Island|
-| IT | Itálie|
-| JM | Jamajka|
-| JO | Jordánsko|
-| JP | Japonsko|
-| KE | Keňa|
-| KG | Kyrgyzstán|
-| KH | Kambodža|
-| KI | Kiribati|
-| KN | Svatý Kryštof a Nevis|
-| KP | Korejská lidově demokratická republika|
-| KR | Korejská republika|
-| KW | Kuvajt|
-| KY | Kajmanské ostrovy|
-| KZ | Kazachstán|
-| LATINSKÁ AMERIKA | Laoská lidově demokratická republika|
-| LB | Libanon|
-| LI | Lichtenštejnsko|
-| LK | Srí Lanka|
-| LR | Libérie|
-| LS | Lesotho|
-| LT | Litva|
-| LU | Lucembursko|
-| LV | Lotyšsko|
-| LY | Libye |
-| MA | Maroko|
-| MD | Moldavská republika|
-| MG | Madagaskar|
-| MK | Severní Makedonie|
-| ML | Mali|
-| MM | Myanmar|
-| MN | Mongolsko|
-| MO | Macao – zvláštní administrativní oblast|
-| MQ | Martinik|
-| MR | Mauritánie|
-| MT | Malta|
-| MV | Maledivy|
-| MW | Malawi|
-| MX | Mexiko|
-| MY | Malajsie|
-| MZ | Mosambik|
-| není k dispozici | Namibie|
-| NE | Niger|
-| NG | Nigérie|
-| NI | Nikaragua|
-| NL | Nizozemsko|
-| NO | Norsko|
-| NP | Nepál|
-| NR | Nauru|
-| NZ | Nový Zéland|
-| OM | Omán|
-| PA | Panama|
-| PE | Peru|
-| PH | Filipíny|
-| PK | Pákistán|
-| PL | Polsko|
-| PR | Portoriko|
-| PT | Portugalsko|
-| PW | Palau|
-| PY | Paraguay|
-| QA | Katar|
-| RE | Réunion|
-| RO | Rumunsko|
-| RS | Srbsko|
-| RU | Ruská federace|
-| RW | Rwanda|
-| SA | Saúdská Arábie|
-| SD | Súdán|
-| SE | Švédsko|
-| SG | Singapur|
-| SI | Slovinsko|
-| SK | Slovensko|
-| SN | Senegal|
-| SO | Somálsko|
-| SR | Surinam|
-| SS | Jižní Súdán|
-| SV | Salvador|
-| SY | Syrská arabská republika|
-| SZ | Svazijsko|
-| TC | Turks a Caicos|
-| TG | Togo|
-| TH | Thajsko|
-| TN | Tunisko|
-| TR | Turecko|
-| TT | Trinidad a Tobago|
-| TW | Tchaj-wan|
-| TZ | Sjednocená tanzanská republika|
-| UA | Ukrajina|
-| UG | Uganda|
-| Spojené státy | Spojené státy|
-| UY | Uruguay|
-| UZ | Uzbekistán|
-| VC | Svatý Vincenc a Grenadiny|
-| VE | Venezuela|
-| VG | Britské Panenské ostrovy|
-| VI | Americké Panenské ostrovy|
-| VN | Vietnam|
-| ZA | Jihoafrická republika|
-| ZM | Zambie|
-| ZW | Zimbabwe|
+Vlastní pravidla umožňují vytvářet přizpůsobená pravidla tak, aby vyhovovala přesným potřebám vašich aplikací a zásad zabezpečení. Přístup k vašim webovým aplikacím můžete omezit podle země nebo oblasti. Další informace najdete v tématu [vlastní pravidla pro inshodě (Preview)](geomatch-custom-rules.md).
 
 ## <a name="next-steps"></a>Další kroky
 

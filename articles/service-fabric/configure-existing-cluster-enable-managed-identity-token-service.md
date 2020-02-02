@@ -1,28 +1,30 @@
 ---
-title: Azure Service Fabric – konfigurace stávajícího clusteru Azure Service Fabric pro povolení podpory spravovaných identit
-description: V tomto článku se dozvíte, jak nakonfigurovat existující cluster Azure Service Fabric tak, aby povoloval podporu spravovaných identit.
+title: Konfigurace podpory spravované identity v existujícím clusteru Service Fabric
+description: Tady je postup povolení podpory spravovaných identit v existujícím clusteru Azure Service Fabric.
 ms.topic: article
 ms.date: 12/09/2019
-ms.openlocfilehash: 13b8b38a206b0dae0877263a5cda56a134d4788d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: sfrev
+ms.openlocfilehash: cb6e4ab00afd80cba41881e46296f7046a905919
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351612"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934953"
 ---
-# <a name="configure-an-existing-azure-service-fabric-cluster-to-enable-managed-identity-support-preview"></a>Konfigurace stávajícího clusteru Azure Service Fabric pro povolení podpory spravované identity (Preview)
-Aby bylo možné získat přístup k funkci Managed identity pro aplikace Service Fabric Azure, musíte nejdřív v clusteru povolit **službu Managed identity token** . Tato služba zodpovídá za ověřování Service Fabric aplikací pomocí svých spravovaných identit a pro získání přístupových tokenů jejich jménem. Jakmile je služba povolená, můžete ji zobrazit v Service Fabric Explorer v části **systém** v levém podokně, která běží pod názvem **Fabric:/System/ManagedIdentityTokenService**.
+# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster-preview"></a>Konfigurace podpory spravované identity v existujícím clusteru Service Fabric (Preview)
+
+Pokud chcete používat [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) ve vašich aplikacích Service Fabric, nejdřív v clusteru povolte *službu Managed identity token* . Tato služba zodpovídá za ověřování Service Fabric aplikací pomocí svých spravovaných identit a pro získání přístupových tokenů jejich jménem. Jakmile je služba povolená, můžete ji zobrazit v Service Fabric Explorer v části **systém** v levém podokně, která běží pod názvem **Fabric:/System/ManagedIdentityTokenService**.
 
 > [!NOTE]
 > Aby bylo možné povolit **službu tokenu spravované identity**, je nutné, aby verze modulu runtime Service Fabric 6.5.658.9590 nebo novější.  
-> 
+>
 > Service Fabric verzi clusteru můžete najít z Azure Portal otevřením prostředku clusteru a kontrolou vlastnosti **Service Fabric verze** v části **Essentials** .
-> 
+>
 > Pokud je cluster v režimu **ručního** upgradu, budete ho muset nejdřív upgradovat na 6.5.658.9590 nebo novější.
 
+## <a name="enable-managed-identity-token-service-in-an-existing-cluster"></a>Povolení *služby spravovaného tokenu identity* v existujícím clusteru
 
-## <a name="enable-the-managed-identity-token-service-in-an-existing-cluster"></a>Povolení služby spravovaného tokenu identity v existujícím clusteru
-Chcete-li povolit službu spravovaných tokenů identity v existujícím clusteru, bude nutné iniciovat upgrade clusteru s určením dvou změn: povolení služby spravovaného tokenu identity a vyžádání restartování každého uzlu. Provedete to tak, že do šablony Azure Resource Manager přidáte následující dva fragmenty kódu:
+Chcete-li povolit službu spravovaných tokenů identity v existujícím clusteru, bude nutné zahájit upgrade clusteru s určením dvou změn: (1) povolení služby spravovaného tokenu identity a (2) požadavky na restartování každého uzlu. Nejdřív přidejte následující fragment kódu, který Azure Resource Manager šablona clusteru:
 
 ```json
 "fabricSettings": [
@@ -55,7 +57,7 @@ Aby se změny projevily, budete také muset změnit zásadu upgradu, aby určova
 > [!NOTE]
 > Po úspěšném dokončení upgradu nezapomeňte vrátit nastavení `forceRestart`, abyste minimalizovali dopad následných upgradů. 
 
-## <a name="errors-and-troubleshooting"></a>Chyby a řešení problémů
+## <a name="errors-and-troubleshooting"></a>Chyby a řešení potíží
 
 Pokud se nasazení nepovede s následující zprávou, znamená to, že cluster neběží na dostatečně vysokém Service Fabric verzi:
 

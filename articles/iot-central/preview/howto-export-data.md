@@ -4,16 +4,16 @@ description: Jak exportovat data z aplikace Azure IoT Central do Azure Event Hub
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 12/06/2019
+ms.date: 01/30/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 1aac5af916e414178676a1caf42fead41109de68
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 612db9963b02e905c3a48d61a4f7a7ed6f832fba
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974457"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939022"
 ---
 # <a name="export-your-azure-iot-central-data-preview-features"></a>Export dat Azure IoT Central (funkce ve verzi Preview)
 
@@ -29,21 +29,21 @@ Tento článek popisuje, jak pomocí funkce pro export nepřetržitých dat v Az
 > [!Note]
 > Když zapnete export průběžných dat, dostanete od tohoto okamžiku pouze data. V současné době nelze data po vypnutí průběžného exportu dat načíst. Pokud chcete zachovat více historických dat, zapněte průběžný export dat.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Musíte být správcem aplikace IoT Central.
+Musíte být správce aplikace IoT Central, nebo mít oprávnění k exportu dat.
 
 ## <a name="set-up-export-destination"></a>Nastavit cíl exportu
 
 Před konfigurací průběžného exportu dat musí existovat váš cíl exportu.
 
-### <a name="create-event-hubs-namespace"></a>Vytvoření oboru názvů Event Hubs
+### <a name="create-event-hubs-namespace"></a>Vytvořit obor názvů Event Hubs
 
 Pokud nemáte existující Event Hubs obor názvů pro export do, postupujte podle těchto kroků:
 
 1. Vytvořte [Nový obor názvů Event Hubs v Azure Portal](https://ms.portal.azure.com/#create/Microsoft.EventHub). Další informace najdete v [dokumentaci k Azure Event Hubs](../../event-hubs/event-hubs-create.md).
 
-2. Zvolte předplatné. Můžete exportovat data do jiných předplatných, která nejsou ve stejném předplatném jako aplikace IoT Central s průběžnými platbami. V tomto případě se připojíte pomocí připojovacího řetězce.
+2. Vyberte předplatné. Můžete exportovat data do jiných předplatných, která nejsou ve stejném předplatném jako aplikace IoT Central s průběžnými platbami. V tomto případě se připojíte pomocí připojovacího řetězce.
 
 3. Vytvořte centrum událostí v oboru názvů Event Hubs. Vytvořte instanci centra událostí tak, že přejdete do svého oboru názvů a vyberete **+ centrum událostí** v horní části.
 
@@ -52,7 +52,7 @@ Pokud nemáte existující Event Hubs obor názvů pro export do, postupujte pod
 Pokud nemáte existující Service Bus obor názvů pro export do, postupujte podle těchto kroků:
 
 1. Vytvořte [Nový obor názvů Service Bus v Azure Portal](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5). Další informace najdete v [dokumentaci Azure Service Bus](../../service-bus-messaging/service-bus-create-namespace-portal.md).
-2. Zvolte předplatné. Můžete exportovat data do jiných předplatných, která nejsou ve stejném předplatném jako aplikace IoT Central s průběžnými platbami. V tomto případě se připojíte pomocí připojovacího řetězce.
+2. Vyberte předplatné. Můžete exportovat data do jiných předplatných, která nejsou ve stejném předplatném jako aplikace IoT Central s průběžnými platbami. V tomto případě se připojíte pomocí připojovacího řetězce.
 
 3. Pokud chcete vytvořit frontu nebo téma, do kterého chcete exportovat, klikněte na obor názvů Service Bus a vyberte **+ fronta** nebo **+ téma** v horní části.
 
@@ -78,7 +78,7 @@ Teď, když máte cíl exportovat data do, postupujte podle těchto kroků a nas
 2. V levém podokně vyberte **exportovat data**.
 
     > [!Note]
-    > Pokud nevidíte exportovat data v levém podokně, nejste správcem vaší aplikace. Pokud chcete nastavit export dat, obraťte se na správce.
+    > Pokud nevidíte exportovat data v levém podokně, nemáte oprávnění ke konfiguraci exportu dat ve vaší aplikaci. Pokud chcete nastavit export dat, obraťte se na správce.
 
 3. V pravém horním rohu vyberte tlačítko **+ Nový** . Jako cíl exportu vyberte jednu z **Event Hubs Azure**, **Azure Service Bus**nebo **Azure Blob Storage** . Maximální počet exportů na aplikaci je 5.
 
@@ -104,7 +104,7 @@ Teď, když máte cíl exportovat data do, postupujte podle těchto kroků a nas
 
 7. V části **data, která chcete exportovat**, vyberte typy dat k exportu nastavením typ na **zapnuto**.
 
-8. Pokud chcete zapnout funkci průběžného exportu dat, ujistěte se, že je **zapnutý přepínač pro** **Export dat** . Vyberte **Save** (Uložit).
+8. Pokud chcete zapnout funkci průběžného exportu dat, **Ujistěte se,** že je zapnutý přepínač **zapnuto** . Vyberte **Uložit**.
 
 9. Po několika minutách se vaše data zobrazí ve zvoleném cíli.
 
@@ -189,15 +189,16 @@ Toto je ukázkový záznam exportovaný do úložiště objektů BLOB:
 
 ## <a name="devices"></a>Zařízení
 
-Každá zpráva nebo záznam ve snímku představuje jednu nebo více změn zařízení a jeho vlastností od poslední exportované zprávy. To zahrnuje:
+Každá zpráva nebo záznam ve snímku představuje jednu nebo více změn zařízení a vlastností zařízení a cloudu od poslední exportované zprávy. To zahrnuje:
 
-- `@id` zařízení v IoT Central
-- `name` zařízení
-- `deviceId` ze [služby Device Provisioning Service](../core/howto-connect-nodejs.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json)
-- Informace o šabloně zařízení
+- `id` zařízení v IoT Central
+- `displayName` zařízení
+- ID šablony zařízení v `instanceOf`
+- příznak `simulated`, true, pokud je zařízení simulované zařízení
+- příznak `provisioned`, true, pokud bylo zařízení zřízené
+- příznak `approved`, true, pokud bylo zařízení schválené k odesílání dat
 - Hodnoty vlastností
-
-Šablona zařízení, do které patří každé zařízení, je reprezentovaná `instanceOf`. Chcete-li získat název a další informace o šabloně zařízení, nezapomeňte také exportovat data šablony zařízení.
+- `properties` včetně hodnot vlastností zařízení a cloudu
 
 Odstraněná zařízení se neexportují. V současné době nejsou v exportovaných zprávách žádné indikátory pro Odstraněná zařízení.
 
@@ -210,46 +211,41 @@ Toto je ukázková zpráva týkající se zařízení a vlastností dat v centru
 ```json
 {
   "body":{
-    "@id":"<id>",
-    "@type":"Device",
-    "displayName":"Airbox - 266d30aedn5",
-    "data":{
-      "$cloudProperties":{
-        "Color":"blue"
-      },
-      "EnvironmentalSensor":{
-        "thsensormodel":{
-          "reported":{
-            "value":"A1",
-            "$lastUpdatedTimestamp":"2019-10-02T18:14:49.3820326Z"
-          }
-        },
-        "pm25sensormodel":{
-          "reported":{
-            "value":"P1",
-            "$lastUpdatedTimestamp":"2019-10-02T18:14:49.3820326Z"
-          }
+    "id": "<device Id>",
+    "etag": "<etag>",
+    "displayName": "Sensor 1",
+    "instanceOf": "<device template Id>",
+    "simulated": false,
+    "provisioned": true,
+    "approved": true,
+    "properties": {
+        "sensorComponent": {
+            "setTemp": "30",
+            "fwVersion": "2.0.1",
+            "status": { "first": "first", "second": "second" },
+            "$metadata": {
+                "setTemp": {
+                    "desiredValue": "30",
+                    "desiredVersion": 3,
+                    "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
+                    "ackVersion": 3
+                },
+                "fwVersion": { "ackVersion": 3 },
+                "status": {
+                    "desiredValue": {
+                        "first": "first",
+                        "second": "second"
+                    },
+                    "desiredVersion": 2,
+                    "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
+                    "ackVersion": 2
+                }
+            },
+            
         }
-      },
-      "urn_azureiot_DeviceManagement_DeviceInformation":{
-        "totalStorage":{
-          "reported":{
-            "value":3088.1959855710156,
-            "$lastUpdatedTimestamp":"2019-10-02T18:14:49.3820326Z"
-          }
-        },
-        "totalMemory":{
-          "reported":{
-            "value":16005.703586477555,
-            "$lastUpdatedTimestamp":"2019-10-02T18:14:49.3820326Z"
-          }
-        }
-      }
     },
-    "instanceOf":"<templateId>",
-    "deviceId":"<deviceId>",
-    "simulated":true
-  },
+    "installDate": { "installDate": "2020-02-01" }
+},
   "annotations":{
     "iotcentral-message-source":"devices",
     "x-opt-partition-key":"<partitionKey>",
@@ -259,13 +255,324 @@ Toto je ukázková zpráva týkající se zařízení a vlastností dat v centru
   },
   "partitionKey":"<partitionKey>",
   "sequenceNumber":39740,
-  "enqueuedTimeUtc":"2019-10-02T18:14:49.3820326Z",
+  "enqueuedTimeUtc":"2020-02-01T18:14:49.3820326Z",
   "offset":"<offset>"
 }
 ```
 
 Toto je ukázkový snímek obsahující zařízení a vlastnosti dat v Blob Storage. Exportované soubory obsahují jeden řádek na záznam.
 
+```json
+{
+  "id": "<device Id>",
+  "etag": "<etag>",
+  "displayName": "Sensor 1",
+  "instanceOf": "<device template Id>",
+  "simulated": false,
+  "provisioned": true,
+  "approved": true,
+  "properties": {
+      "sensorComponent": {
+          "setTemp": "30",
+          "fwVersion": "2.0.1",
+          "status": { "first": "first", "second": "second" },
+          "$metadata": {
+              "setTemp": {
+                  "desiredValue": "30",
+                  "desiredVersion": 3,
+                  "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
+                  "ackVersion": 3
+              },
+              "fwVersion": { "ackVersion": 3 },
+              "status": {
+                  "desiredValue": {
+                      "first": "first",
+                      "second": "second"
+                  },
+                  "desiredVersion": 2,
+                  "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
+                  "ackVersion": 2
+              }
+          },
+          
+      }
+  },
+  "installDate": { "installDate": "2020-02-01" }
+}
+```
+
+## <a name="device-templates"></a>Šablony zařízení
+
+Každý záznam zprávy nebo snímku představuje jednu nebo více změn v publikované šabloně zařízení od poslední exportované zprávy. Mezi informace odesílané v každé zprávě nebo záznamu patří:
+
+- `id` šablony zařízení, která odpovídá `instanceOf` datového proudu zařízení výše
+- `displayName` šablony zařízení
+- Zařízení `capabilityModel` včetně `interfaces`a definic telemetrie, vlastností a příkazů.
+- definice `cloudProperties`
+- Přepisuje a počáteční hodnoty, vloženo s `capabilityModel`
+
+Odstraněné šablony zařízení se neexportují. V současné době nejsou v exportovaných zprávách pro odstraněné šablony zařízení žádné indikátory.
+
+V případě Event Hubs a Service Bus se zprávy obsahující data šablony zařízení odesílají do centra událostí Service Bus nebo do fronty nebo tématu v reálném čase téměř v reálném čase, jak se zobrazuje v IoT Central. 
+
+Pro Blob Storage nový snímek obsahující všechny změny od posledního napsaného typu se jednou za minutu vyexportuje.
+
+Toto je ukázková zpráva o datech šablon zařízení v centru událostí nebo Service Bus frontě nebo tématu:
+
+```json
+{
+  "body":{
+      "id": "<device template id>",
+      "etag": "<etag>",
+      "types": ["DeviceModel"],
+      "displayName": "Sensor template",
+      "capabilityModel": {
+          "@id": "<capability model id>",
+          "@type": ["CapabilityModel"],
+          "contents": [],
+          "implements": [
+              {
+                  "@id": "<component Id>",
+                  "@type": ["InterfaceInstance"],
+                  "name": "sensorComponent",
+                  "schema": {
+                      "@id": "<interface Id>",
+                      "@type": ["Interface"],
+                      "displayName": "Sensor interface",
+                      "contents": [
+                          {
+                              "@id": "<id>",
+                              "@type": ["Telemetry"],
+                              "displayName": "Humidity",
+                              "name": "humidity",
+                              "schema": "double"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Telemetry", "SemanticType/Event"],
+                              "displayName": "Error event",
+                              "name": "error",
+                              "schema": "integer"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Property"],
+                              "displayName": "Set temperature",
+                              "name": "setTemp",
+                              "writable": true,
+                              "schema": "integer",
+                              "unit": "Units/Temperature/fahrenheit",
+                              "initialValue": "30"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Property"],
+                              "displayName": "Firmware version read only",
+                              "name": "fwversion",
+                              "schema": "string"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Property"],
+                              "displayName": "Display status",
+                              "name": "status",
+                              "writable": true,
+                              "schema": {
+                                  "@id": "urn:testInterface:status:obj:ka8iw8wka:1",
+                                  "@type": ["Object"]
+                              }
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Command"],
+                              "commandType": "synchronous",
+                              "request": {
+                                  "@id": "<id>",
+                                  "@type": ["SchemaField"],
+                                  "displayName": "Configuration",
+                                  "name": "config",
+                                  "schema": "string"
+                              },
+                              "response": {
+                                  "@id": "<id>",
+                                  "@type": ["SchemaField"],
+                                  "displayName": "Response",
+                                  "name": "response",
+                                  "schema": "string"
+                              },
+                              "displayName": "Configure sensor",
+                              "name": "sensorConfig"
+                          }
+                      ]
+                  }
+              }
+          ],
+          "displayName": "Sensor capability model"
+      },
+      "solutionModel": {
+          "@id": "<id>",
+          "@type": ["SolutionModel"],
+          "cloudProperties": [
+              {
+                  "@id": "<id>",
+                  "@type": ["CloudProperty"],
+                  "displayName": "Install date",
+                  "name": "installDate",
+                  "schema": "dateTime",
+                  "valueDetail": {
+                      "@id": "<id>",
+                      "@type": ["ValueDetail/DateTimeValueDetail"]
+                  }
+              }
+          ]
+      }
+  },
+    "annotations":{
+      "iotcentral-message-source":"deviceTemplates",
+      "x-opt-partition-key":"<partitionKey>",
+      "x-opt-sequence-number":25315,
+      "x-opt-offset":"<offset>",
+      "x-opt-enqueued-time":1539274985085
+    },
+    "partitionKey":"<partitionKey>",
+    "sequenceNumber":25315,
+    "enqueuedTimeUtc":"2019-10-02T16:23:05.085Z",
+    "offset":"<offset>"
+  }
+}
+```
+
+Toto je ukázkový snímek obsahující zařízení a vlastnosti dat v Blob Storage. Exportované soubory obsahují jeden řádek na záznam.
+
+```json
+{
+      "id": "<device template id>",
+      "etag": "<etag>",
+      "types": ["DeviceModel"],
+      "displayName": "Sensor template",
+      "capabilityModel": {
+          "@id": "<capability model id>",
+          "@type": ["CapabilityModel"],
+          "contents": [],
+          "implements": [
+              {
+                  "@id": "<component Id>",
+                  "@type": ["InterfaceInstance"],
+                  "name": "Sensor component",
+                  "schema": {
+                      "@id": "<interface Id>",
+                      "@type": ["Interface"],
+                      "displayName": "Sensor interface",
+                      "contents": [
+                          {
+                              "@id": "<id>",
+                              "@type": ["Telemetry"],
+                              "displayName": "Humidity",
+                              "name": "humidity",
+                              "schema": "double"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Telemetry", "SemanticType/Event"],
+                              "displayName": "Error event",
+                              "name": "error",
+                              "schema": "integer"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Property"],
+                              "displayName": "Set temperature",
+                              "name": "setTemp",
+                              "writable": true,
+                              "schema": "integer",
+                              "unit": "Units/Temperature/fahrenheit",
+                              "initialValue": "30"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Property"],
+                              "displayName": "Firmware version read only",
+                              "name": "fwversion",
+                              "schema": "string"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Property"],
+                              "displayName": "Display status",
+                              "name": "status",
+                              "writable": true,
+                              "schema": {
+                                  "@id": "urn:testInterface:status:obj:ka8iw8wka:1",
+                                  "@type": ["Object"]
+                              }
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Command"],
+                              "commandType": "synchronous",
+                              "request": {
+                                  "@id": "<id>",
+                                  "@type": ["SchemaField"],
+                                  "displayName": "Configuration",
+                                  "name": "config",
+                                  "schema": "string"
+                              },
+                              "response": {
+                                  "@id": "<id>",
+                                  "@type": ["SchemaField"],
+                                  "displayName": "Response",
+                                  "name": "response",
+                                  "schema": "string"
+                              },
+                              "displayName": "Configure sensor",
+                              "name": "sensorconfig"
+                          }
+                      ]
+                  }
+              }
+          ],
+          "displayName": "Sensor capability model"
+      },
+      "solutionModel": {
+          "@id": "<id>",
+          "@type": ["SolutionModel"],
+          "cloudProperties": [
+              {
+                  "@id": "<id>",
+                  "@type": ["CloudProperty"],
+                  "displayName": "Install date",
+                  "name": "installDate",
+                  "schema": "dateTime",
+                  "valueDetail": {
+                      "@id": "<id>",
+                      "@type": ["ValueDetail/DateTimeValueDetail"]
+                  }
+              }
+          ]
+      }
+  }
+```
+## <a name="data-format-change-notice"></a>Upozornění na změnu formátu dat
+
+> [!Note]
+> Tato změna nemá vliv na formát dat datového proudu telemetrie. Jsou ovlivněna pouze data datových proudů zařízení a zařízení.
+
+Pokud máte v aplikaci ve verzi Preview existující export dat se zapnutými datovými proudy *šablon* *zařízení* a zařízení, budete muset svůj export aktualizovat o **30. června 2020**. To platí pro exporty do Azure Blob Storage, Azure Event Hubs a Azure Service Bus.
+
+Od 3. února 2020 budou všechny nové exporty v aplikacích se zapnutými šablonami zařízení a zařízení mít formát dat popsaný výše. Všechny exporty vytvořené před tímto způsobem zůstanou ve starém formátu dat až do 30. června 2020, potom se tyto exporty automaticky migrují do nového formátu dat. Nový formát dat odpovídá objektům [zařízení](https://docs.microsoft.com/rest/api/iotcentral/devices/get), [vlastnosti zařízení](https://docs.microsoft.com/rest/api/iotcentral/devices/getproperties), [vlastnosti cloudu zařízení](https://docs.microsoft.com/rest/api/iotcentral/devices/getcloudproperties) a [šablonám zařízení](https://docs.microsoft.com/rest/api/iotcentral/devicetemplates/get) ve veřejném rozhraní API IoT Central. 
+ 
+U **zařízení**se jedná o významné rozdíly mezi starým a novým datovým formátem:
+- `@id` pro zařízení se odeberou, `deviceId` se přejmenuje na `id` 
+- Přidání příznaku `provisioned` k popisu stavu zřizování zařízení
+- Přidání příznaku `approved` k popisu stavu schválení zařízení
+- `properties`, včetně vlastností zařízení a cloudu, odpovídá entitám ve veřejném rozhraní API.
+
+V případě **šablon zařízení**jsou významné rozdíly mezi starým a novým datovým formátem:
+
+- `@id` pro šablonu zařízení je přejmenována na `id`
+- `@type` pro šablonu zařízení se přejmenují na `types`a teď je pole.
+
+### <a name="devices-format-deprecated-as-of-3-february-2020"></a>Zařízení (formát se už nepoužívá od 3. února 2020)
 ```json
 {
   "@id":"<id-value>",
@@ -310,172 +617,7 @@ Toto je ukázkový snímek obsahující zařízení a vlastnosti dat v Blob Stor
 }
 ```
 
-## <a name="device-templates"></a>Šablony zařízení
-
-Každá zpráva nebo záznam snímku představuje jednu nebo více změn šablony zařízení od poslední exportované zprávy. Mezi informace odesílané v každé zprávě nebo záznamu patří:
-
-- `@id` šablony zařízení, která odpovídá `instanceOf` datového proudu zařízení výše
-- `name` šablony zařízení
-- `version` šablony zařízení
-- Zařízení `capabilityModel` včetně `interfaces`a definic telemetrie, vlastností a příkazů.
-- definice `cloudProperties`
-- Přepisuje a počáteční hodnoty, vloženo s `capabilityModel`
-
-Odstraněné šablony zařízení se neexportují. V současné době nejsou v exportovaných zprávách pro odstraněné šablony zařízení žádné indikátory.
-
-V případě Event Hubs a Service Bus se zprávy obsahující data šablony zařízení odesílají do centra událostí Service Bus nebo do fronty nebo tématu v reálném čase téměř v reálném čase, jak se zobrazuje v IoT Central. 
-
-Pro Blob Storage nový snímek obsahující všechny změny od posledního napsaného typu se jednou za minutu vyexportuje.
-
-Toto je ukázková zpráva o datech šablon zařízení v centru událostí nebo Service Bus frontě nebo tématu:
-
-```json
-{
-  "body":{
-    "@id":"<template-id>",
-    "@type":"DeviceModelDefinition",
-    "displayName":"Airbox",
-    "capabilityModel":{
-      "@id":"<id>",
-      "@type":"CapabilityModel",
-      "implements":[
-        {
-          "@id":"<id>",
-          "@type":"InterfaceInstance",
-          "name":"EnvironmentalSensor",
-          "schema":{
-            "@id":"<id>",
-            "@type":"Interface",
-            "comment":"Requires temperature and humidity sensors.",
-            "description":"Provides functionality to report temperature, humidity. Provides telemetry, commands and read-write properties",
-            "displayName":"Environmental Sensor",
-            "contents":[
-              {
-                "@id":"<id>",
-                "@type":"Telemetry",
-                "description":"Current temperature on the device",
-                "displayName":"Temperature",
-                "name":"temp",
-                "schema":"double",
-                "unit":"Units/Temperature/celsius",
-                "valueDetail":{
-                  "@id":"<id>",
-                  "@type":"ValueDetail/NumberValueDetail",
-                  "minValue":{
-                    "@value":"50"
-                  }
-                },
-                "visualizationDetail":{
-                  "@id":"<id>",
-                  "@type":"VisualizationDetail"
-                }
-              },
-              {
-                "@id":"<id>",
-                "@type":"Telemetry",
-                "description":"Current humidity on the device",
-                "displayName":"Humidity",
-                "name":"humid",
-                "schema":"integer"
-              },
-              {
-                "@id":"<id>",
-                "@type":"Telemetry",
-                "description":"Current PM2.5 on the device",
-                "displayName":"PM2.5",
-                "name":"pm25",
-                "schema":"integer"
-              },
-              {
-                "@id":"<id>",
-                "@type":"Property",
-                "description":"T&H Sensor Model Name",
-                "displayName":"T&H Sensor Model",
-                "name":"thsensormodel",
-                "schema":"string"
-              },
-              {
-                "@id":"<id>",
-                "@type":"Property",
-                "description":"PM2.5 Sensor Model Name",
-                "displayName":"PM2.5 Sensor Model",
-                "name":"pm25sensormodel",
-                "schema":"string"
-              }
-            ]
-          }
-        },
-        {
-          "@id":"<id>",
-          "@type":"InterfaceInstance",
-          "name":"urn_azureiot_DeviceManagement_DeviceInformation",
-          "schema":{
-            "@id":"<id>",
-            "@type":"Interface",
-            "displayName":"Device information",
-            "contents":[
-              {
-                "@id":"<id>",
-                "@type":"Property",
-                "comment":"Total available storage on the device in kilobytes. Ex. 20480000 kilobytes.",
-                "displayName":"Total storage",
-                "name":"totalStorage",
-                "displayUnit":"kilobytes",
-                "schema":"long"
-              },
-              {
-                "@id":"<id>",
-                "@type":"Property",
-                "comment":"Total available memory on the device in kilobytes. Ex. 256000 kilobytes.",
-                "displayName":"Total memory",
-                "name":"totalMemory",
-                "displayUnit":"kilobytes",
-                "schema":"long"
-              }
-            ]
-          }
-        }
-      ],
-      "displayName":"AAEONAirbox52"
-    },
-    "solutionModel":{
-      "@id":"<id>",
-      "@type":"SolutionModel",
-      "cloudProperties":[
-        {
-          "@id":"<id>",
-          "@type":"CloudProperty",
-          "displayName":"Color",
-          "name":"Color",
-          "schema":"string",
-          "valueDetail":{
-            "@id":"<id>",
-            "@type":"ValueDetail/StringValueDetail"
-          },
-          "visualizationDetail":{
-            "@id":"<id>",
-            "@type":"VisualizationDetail"
-          }
-        }
-      ]
-    },
-    "annotations":{
-      "iotcentral-message-source":"deviceTemplates",
-      "x-opt-partition-key":"<partitionKey>",
-      "x-opt-sequence-number":25315,
-      "x-opt-offset":"<offset>",
-      "x-opt-enqueued-time":1539274985085
-    },
-    "partitionKey":"<partitionKey>",
-    "sequenceNumber":25315,
-    "enqueuedTimeUtc":"2019-10-02T16:23:05.085Z",
-    "offset":"<offset>"
-  }
-}
-```
-
-Toto je ukázkový snímek obsahující zařízení a vlastnosti dat v Blob Storage. Exportované soubory obsahují jeden řádek na záznam.
-
+### <a name="device-templates-format-deprecated-as-of-3-february-2020"></a>Šablony zařízení (formát se už nepoužívá od 3. února 2020)
 ```json
 {
   "@id":"<template-id>",
@@ -607,7 +749,6 @@ Toto je ukázkový snímek obsahující zařízení a vlastnosti dat v Blob Stor
   }
 }
 ```
-
 ## <a name="next-steps"></a>Další kroky
 
 Teď, když víte, jak exportovat data do Azure Event Hubs, Azure Service Bus a Azure Blob Storage, přejděte k dalšímu kroku:

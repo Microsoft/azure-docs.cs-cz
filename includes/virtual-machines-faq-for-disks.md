@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 161d9d18c914f65b3ab3ef7e44f8cd2f4a1992db
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 39bcaac2ca94eedebd991a1c4e93f324ef651888
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76887595"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76961455"
 ---
 Tento článek obsahuje odpovědi na některé nejčastější dotazy týkající se Azure Managed Disks a Azure SSD úrovně Premium disků.
 
@@ -429,7 +429,7 @@ Ano.
 
 **Jaké jsou největší velikosti disků podporované službou Azure Backup a Azure Site Recovery?**
 
-Největší velikost disku podporovaná službou Azure Backup a službou Azure Site Recovery je 4 TiB. Podpora větších disků až do 32 TiB není ještě dostupná.
+Největší velikost disku podporovaná Azure Backup je 32 TiB (4 TiB pro šifrované disky). Největší velikost disku podporovaná Azure Site Recovery je 8 TiB. Podpora větších disků až do 32 TiB není v Azure Site Recovery ještě dostupná.
 
 **Jaké jsou doporučené velikosti virtuálních počítačů pro větší velikosti disků (> 4 TiB), SSD úrovně Standard a HDD úrovně Standard disků pro dosažení optimalizovaného diskového IOPS a šířky pásma?**
 

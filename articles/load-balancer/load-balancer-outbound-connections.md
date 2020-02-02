@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 5bdcd955919a91760f16287a62956542cfaa47c5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f9135d0a602bfa1f36f9723311e82a4d26abe6c9
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225287"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934557"
 ---
 # <a name="outbound-connections-in-azure"></a>Odchozí připojení v Azure
 
@@ -237,7 +237,7 @@ Pokud nakonfigurujete horizontální navýšení úrovně velikosti fondu back-e
 
 ### <a name="idletimeout"></a>Obnovení odchozího nečinného časového limitu pomocí kontroly stavu
 
-Odchozí připojení mají časový limit nečinnosti 4 minut. Tento časový limit není upravitelný. Můžete ale v případě potřeby použít přenos (například kontroly stavu protokolu TCP) nebo udržení naživu v aplikační vrstvě a obnovit tento časový limit nečinnosti.  
+Odchozí připojení mají časový limit nečinnosti 4 minut. Tento časový limit je přizpůsobitelný prostřednictvím [odchozích pravidel](../load-balancer/load-balancer-outbound-rules-overview.md#idletimeout). K aktualizaci toku nečinnosti můžete také použít přenos (například kontroly stavu protokolu TCP) nebo obnovení aplikační vrstvy a v případě potřeby resetovat časový limit nečinnosti.  
 
 Při použití kontroly udržení protokolu TCP je stačí povolit je na jedné straně připojení. Například stačí, abyste je povolili na straně serveru pouze k resetování časovače nečinnosti toku a není nutné, aby obě strany iniciovaly kontroly stavu protokolu TCP.  Pro aplikační vrstvu, včetně konfigurací klient-server databáze, existují podobné koncepty.  Na straně serveru můžete zjistit, jaké možnosti jsou pro kontroly a nastavení pro konkrétní aplikaci k dispozici.
 

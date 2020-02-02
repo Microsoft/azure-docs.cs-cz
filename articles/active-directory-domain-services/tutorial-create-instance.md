@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 01/15/2020
 ms.author: iainfou
-ms.openlocfilehash: ef203eec1398e9f23fb162845b9d570316083ecf
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 8905f2a0a306ec4c9c6e19479c6adb96a6ed39ca
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703691"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931281"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Kurz: vytvoření a konfigurace instance Azure Active Directory Domain Services
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
@@ -93,6 +93,9 @@ Dokončete pole v okně *základy* Azure Portal a vytvořte instanci Azure služ
 
     Není tu nic, co byste mohli nakonfigurovat pro Azure služba AD DS k distribuci mezi zónami. Platforma Azure automaticky zpracovává distribuci prostředků v zóně. Další informace a informace o dostupnosti oblastí najdete v tématu [co jsou zóny dostupnosti v Azure?][availability-zones]
 
+1. **SKU** určuje výkon, četnost záloh a maximální počet vztahů důvěryhodnosti doménové struktury, které můžete vytvořit. SKU můžete změnit po vytvoření spravované domény, pokud vaše obchodní požadavky nebo požadavky budou změněny. Další informace najdete v tématu [Koncepty služby Azure služba AD DS SKU][concepts-sku].
+
+    Pro tento kurz vyberte *standardní* SKU.
 1. *Doménová struktura* je logická konstrukce, kterou používá Active Directory Domain Services k seskupení jedné nebo více domén. Ve výchozím nastavení je spravovaná doména Azure služba AD DS vytvořená jako doménová struktura *uživatelů* . Tento typ doménové struktury synchronizuje všechny objekty z Azure AD, včetně všech uživatelských účtů vytvořených v místním služba AD DS prostředí. Doménová struktura *prostředků* synchronizuje jenom uživatele a skupiny vytvořené přímo ve službě Azure AD. Doménové struktury prostředků jsou momentálně ve verzi Preview. Další informace o doménových strukturách *prostředků* , včetně důvodů, proč je můžete použít a jak vytvořit vztahy důvěryhodnosti doménové struktury s místními služba AD DS doménami, najdete v tématu [Přehled doménových struktur Azure služba AD DS][resource-forests].
 
     V tomto kurzu se rozhodnete vytvořit doménovou strukturu *uživatelů* .
@@ -105,7 +108,7 @@ Pokud chcete rychle vytvořit spravovanou doménu Azure služba AD DS, můžete 
 * Vytvoří podsíť s názvem *aadds-Subnet* pomocí rozsahu IP adres *10.0.1.0/24*.
 * Synchronizuje *všechny* uživatele z Azure AD do spravované domény Azure služba AD DS.
 
-1. Výběrem možnosti **zkontrolovat + vytvořit** přijměte tyto výchozí možnosti konfigurace.
+Výběrem možnosti **zkontrolovat + vytvořit** přijměte tyto výchozí možnosti konfigurace.
 
 ## <a name="deploy-the-managed-domain"></a>Nasazení spravované domény
 
@@ -167,7 +170,7 @@ Chcete-li změnit heslo pouze pro cloudového uživatele, musí uživatel prové
 
 1. Na stránce **profil** vyberte **změnit heslo**.
 1. Na stránce **změnit heslo** zadejte stávající (staré) heslo a pak zadejte a potvrďte nové heslo.
-1. Vyberte **Odeslat**.
+1. Vyberte **odeslat**.
 
 Může to trvat několik minut, než se změní heslo pro nové heslo, aby bylo možné použít v Azure služba AD DS a úspěšně se přihlašujete k počítačům připojeným ke spravované doméně.
 
@@ -200,6 +203,7 @@ Před virtuálními počítači připojenými k doméně a nasazením aplikací,
 [skus]: overview.md
 [resource-forests]: concepts-resource-forest.md
 [availability-zones]: ../availability-zones/az-overview.md
+[concepts-sku]: administration-concepts.md#azure-ad-ds-skus
 
 <!-- EXTERNAL LINKS -->
 [naming-prefix]: /windows-server/identity/ad-ds/plan/selecting-the-forest-root-domain#selecting-a-prefix

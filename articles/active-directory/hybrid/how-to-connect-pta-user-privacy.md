@@ -1,8 +1,8 @@
 ---
-title: Předávací ověřování ochrana osobních údajů uživatelů a Azure Active Directory | Dokumentace Microsoftu
-description: Tento článek se zabývá předávací ověřování služby Azure Active Directory (Azure AD) a nařízení GDPR dodržování předpisů.
+title: Ochrana osobních údajů uživatelů a Azure Active Directory předávací ověřování | Microsoft Docs
+description: Tento článek se zabývá Azure Active Directory (Azure AD) předávacím ověřováním a dodržováním předpisů GDPR.
 services: active-directory
-keywords: Azure AD Connect předávací ověřování, nařízení GDPR, povinné součásti pro službu Azure AD, jednotné přihlašování, jednotné přihlašování
+keywords: Azure AD Connect předávací ověřování, GDPR, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -17,41 +17,41 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1a7b740a6b248a12fa3d95f85f602ef7a8b2fa5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0af1c42e7e2c163e7f9e7407d0236e35bfacf8e8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60242380"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931006"
 ---
-# <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Předávací ověřování ochrana osobních údajů uživatelů a Azure Active Directory
+# <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Ochrana osobních údajů uživatelů a Azure Active Directory předávací ověřování
 
 
 [!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="overview"></a>Přehled
 
-Azure AD předávací ověřování vytvoří následující typ protokolu, který může obsahovat osobní údaje:
+Předávací ověřování Azure AD vytvoří následující typ protokolu, který může obsahovat osobní údaje:
 
-- Soubory protokolu trasování Azure AD Connect.
-- Soubory protokolu trasování ověřování agenta.
-- Soubory protokolu událostí Windows.
+- Azure AD Connect soubory protokolu trasování.
+- Soubory protokolu trasování ověřovacího agenta.
+- Soubory protokolu událostí systému Windows.
 
-Vylepšení ochrany osobních údajů uživatele pro předávací ověřování dvěma způsoby:
+Zvyšte ochranu osobních údajů uživatelů pro předávací ověřování dvěma způsoby:
 
-1.  Na vyžádání extrahovat data pro osobu a odstranění dat z této osoby ze zařízení.
-2.  Ujistěte se, že žádná data se uchovávají za 48 hodin.
+1.  Na vyžádání rozbalte data pro osobu a odeberte data z této osoby z instalací.
+2.  Zajistěte, aby žádná data nezůstala déle než 48 hodin.
 
-Důrazně doporučujeme druhou možnost, jak usnadňuje implementaci a údržbu. Toto jsou pokyny pro jednotlivé typy protokolů:
+Tuto druhou možnost důrazně doporučujeme, protože je snazší ji implementovat a udržovat. Pro každý typ protokolu se používají tyto pokyny:
 
-### <a name="delete-azure-ad-connect-trace-log-files"></a>Odstranit soubory protokolu trasování služby Azure AD Connect
+### <a name="delete-azure-ad-connect-trace-log-files"></a>Odstranit Azure AD Connect soubory protokolu trasování
 
-Zkontrolujte obsah **%ProgramData%\AADConnect** složku a odstraňte trasování protokolu obsah (**trasování -\*.log** soubory) této složky do 48 hodin od instalace nebo upgrade služby Azure AD Connect nebo změna konfigurace předávacího ověřování, jako tuto akci mohou vytvořit data vztahuje nařízení GDPR.
+Ověřte obsah složky **%ProgramData%\AADConnect** a odstraňte obsah protokolu trasování (**Trace-\*. log** ) této složky během 48 hodin od instalace nebo upgradu Azure AD Connect nebo úpravou konfigurace předávacího ověřování, protože tato akce může vytvářet data, která jsou pokrytá GDPR.
 
 >[!IMPORTANT]
->Neodstraňovat **PersistedState.xml** soubor v této složce, a tento soubor se používá k uchování stavu předchozí instalace služby Azure AD Connect se používá, když se provádí upgrade instalace. Tento soubor, nikdy neobsahuje žádná data o osobě a měl by být nikdy odstraněn.
+>V této složce neodstraňujte soubor **PersistedState. XML** , protože tento soubor slouží k údržbě stavu předchozí instalace Azure AD Connect a používá se při instalaci upgradu. Tento soubor nikdy nebude obsahovat žádná data o osobě a neměl by se nikdy odstranit.
 
-Můžete zkontrolovat a odstranit tyto soubory protokolu trasování pomocí Průzkumníka Windows, nebo můžete použít následující skript prostředí PowerShell provádět potřebné akce:
+Tyto soubory protokolu trasování můžete zkontrolovat a odstranit pomocí Průzkumníka Windows nebo můžete použít následující skript PowerShellu k provedení nezbytných akcí:
 
 ```
 $Files = ((Get-Item -Path "$env:programdata\aadconnect\trace-*.log").VersionInfo).FileName 
@@ -61,24 +61,24 @@ Foreach ($file in $Files) {
 }
 ```
 
-Uložte skript v souboru se ". PS1 "rozšíření. Spusťte tento skript podle potřeby.
+Uložte skript do souboru s příponou. PS1 "rozšíření. Spusťte tento skript podle potřeby.
 
-Další informace o souvisejících požadavky GDPR připojení Azure AD, najdete v článku [v tomto článku](reference-connect-user-privacy.md).
+Další informace o souvisejících požadavcích Azure AD Connect GDPR najdete v [tomto článku](reference-connect-user-privacy.md).
 
-### <a name="delete-authentication-agent-event-logs"></a>Odstranit protokoly událostí ověřování agenta
+### <a name="delete-authentication-agent-event-logs"></a>Odstranit protokoly událostí ověřovacího agenta
 
-Tento produkt může také vytvořit **protokoly událostí Windows**. Další informace, přečtěte si prosím [v tomto článku](https://msdn.microsoft.com/library/windows/desktop/aa385780(v=vs.85).aspx).
+Tento produkt může také vytvářet **protokoly událostí systému Windows**. Pokud se chcete dozvědět víc, přečtěte si [Tento článek](https://msdn.microsoft.com/library/windows/desktop/aa385780(v=vs.85).aspx).
 
-Chcete-li zobrazit protokoly vztahujících se k agentovi předávací ověřování, otevřete **Prohlížeč událostí** aplikace na serveru a v části **aplikace a služby Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin** .
+Chcete-li zobrazit protokoly související s agentem předávacího ověřování, otevřete aplikaci **Prohlížeč událostí** na serveru a zaškrtněte v části **Application and Service Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin**.
 
-### <a name="delete-authentication-agent-trace-log-files"></a>Odstraňte soubory protokolů trasování ověřování agenta
+### <a name="delete-authentication-agent-trace-log-files"></a>Odstranit soubory protokolu trasování ověřovacího agenta
 
-Měli byste pravidelně zkontrolovat obsah <strong>%ProgramData%\Microsoft\Azure AD Connect Agent\Trace ověřování\</ strong > a odstraňte její obsah této složky každých 48 hodin. 
+Měli byste pravidelně kontrolovat obsah **služby%ProgramData%\Microsoft\Azure AD Connect Authentication Agent\Trace** a odstranit obsah této složky každých 48 hodin. 
 
 >[!IMPORTANT]
->Pokud je spuštěna Služba agenta ověřování, není možné odstranit aktuální soubor protokolu ve složce. Zastavte službu než to zkusíte znovu. Aby se zabránilo neúspěšných přihlášení uživatele, měli byste mít už nakonfigurovaný předávací ověřování pro [vysoké dostupnosti](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability).
+>Pokud je spuštěna služba ověřovacího agenta, nebudete moci odstranit aktuální soubor protokolu ve složce. Před opakováním pokusu službu zastavte. Aby nedocházelo k chybám při přihlašování uživatelů, měli byste mít již nakonfigurovanou předávací ověřování pro [vysokou dostupnost](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability).
 
-Můžete zkontrolovat a odstranit tyto soubory pomocí Průzkumníka Windows, nebo můžete použít následující skript provádět potřebné akce:
+Tyto soubory můžete buď zkontrolovat a odstranit pomocí Průzkumníka Windows, nebo můžete použít následující skript k provedení nezbytných akcí:
 
 ```
 $Files = ((Get-childitem -Path "$env:programdata\microsoft\azure ad connect authentication agent\trace" -Recurse).VersionInfo).FileName 
@@ -88,23 +88,23 @@ Foreach ($file in $files) {
 }
 ```
 
-Naplánování spuštění tohoto skriptu za 48 hodin, postupujte takto:
+Pokud chcete naplánovat spuštění tohoto skriptu každých 48 hodin, postupujte podle těchto kroků:
 
-1.  Uložte skript v souboru se ". PS1 "rozšíření.
-2.  Otevřít **ovládací panely** a klikněte na **systém a zabezpečení**.
-3.  V části **nástroje pro správu** záhlaví, klikněte na "**plánovat úkoly**".
-4.  V **Plánovač úloh**, klikněte pravým tlačítkem na "**knihovna plán úloh**"a klikněte na"**vytvořit základní úlohy...** ".
-5.  Zadejte název pro novou úlohu a klikněte na tlačítko **Další**.
-6.  Vyberte "**denní**" pro **aktivační událost úlohy** a klikněte na tlačítko **Další**.
-7.  Nastavení opakování na dvou dní a klikněte na tlačítko **Další**.
-8.  Vyberte "**spustit program**" akce a klikněte na **Další**.
-9.  Typ "**PowerShell**"v poli pro Program či skript a do pole s popiskem"**argumenty (volitelné) přidejte**", zadejte úplnou cestu ke skriptu, který jste vytvořili dříve a pak klikněte na tlačítko **Další**.
-10. Na další obrazovce zobrazuje souhrn úlohy, kterou se chystáte vytvořit. Ověřte hodnoty a klikněte na tlačítko **Dokončit** vytvoření úlohy:
+1.  Uložte skript do souboru s příponou. PS1 "rozšíření.
+2.  Otevřete **Ovládací panely** a klikněte na **systém a zabezpečení**.
+3.  V části **Nástroje pro správu** klikněte na**plán úlohy**.
+4.  V **Plánovač úloh**klikněte pravým tlačítkem na "**Knihovna plánování úkolů**" a klikněte na "**vytvořit základní úlohu...** ".
+5.  Zadejte název nové úlohy a klikněte na **Další**.
+6.  Pro **aktivační událost úlohy** vyberte**denní**a klikněte na **Další**.
+7.  Nastavte opakování na dva dny a klikněte na **Další**.
+8.  Jako akci vyberte**Spustit program**a klikněte na **Další**.
+9.  Do pole program nebo skript zadejte "**PowerShell**" a v poli označený jako "**Přidat argumenty (nepovinné)** " zadejte úplnou cestu ke skriptu, který jste vytvořili dříve, a pak klikněte na tlačítko **Další**.
+10. Na další obrazovce se zobrazí souhrn úlohy, kterou se chystáte vytvořit. Ověřte hodnoty a kliknutím na **Dokončit** vytvořte úlohu:
  
-### <a name="note-about-domain-controller-logs"></a>Mějte na paměti o protokolech řadiče domény
+### <a name="note-about-domain-controller-logs"></a>Poznámka o protokolech řadičů domény
 
-Pokud je povoleno protokolování auditu, tento produkt může generovat protokoly zabezpečení pro řadiče domény. Další informace o konfiguraci zásad auditu, najdete v tomto [článku](https://technet.microsoft.com/library/dd277403.aspx).
+Pokud je povoleno protokolování auditu, může tento produkt generovat protokoly zabezpečení pro řadiče domény. Další informace o konfiguraci zásad auditu najdete v tomto [článku](https://technet.microsoft.com/library/dd277403.aspx).
 
-## <a name="next-steps"></a>Další postup
-* [Projděte si zásady Microsoft Privacy Trust Center](https://www.microsoft.com/trustcenter)
-* [**Řešení potíží s** ](tshoot-connect-pass-through-authentication.md) – zjistěte, jak vyřešit běžné problémy s funkcí.
+## <a name="next-steps"></a>Další kroky
+* [Přečtěte si téma zásady ochrany osobních údajů Microsoftu na webu Trust Center.](https://www.microsoft.com/trustcenter)
+* [**Řešení potíží**](tshoot-connect-pass-through-authentication.md) – Naučte se řešit běžné problémy s touto funkcí.

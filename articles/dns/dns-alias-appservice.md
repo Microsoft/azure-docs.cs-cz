@@ -2,17 +2,17 @@
 title: Webové aplikace Azure s vyrovnáváním zatížení hostitele ve vrcholu zóny
 description: Použijte záznam aliasu Azure DNS k hostování webových aplikací s vyrovnáváním zatížení ve vrcholu zóny.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 08/10/2019
-ms.author: allensu
-ms.openlocfilehash: a673a74f8f6f919e7ebb7fc3b065ee0742ab3a10
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 8ba96a028d51e6e5503bb4a8e6735b48033c9ba1
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212371"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937369"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Webové aplikace Azure s vyrovnáváním zatížení hostitele ve vrcholu zóny
 
@@ -43,9 +43,9 @@ Vytvořte skupinu prostředků, která bude obsahovat všechny prostředky použ
 Vytvořte dva plány Web App Service ve skupině prostředků pomocí následující tabulky pro informace o konfiguraci. Další informace o vytvoření plánu App Service najdete v tématu [Správa plánu App Service v Azure](../app-service/app-service-plan-manage.md).
 
 
-|Název  |Operační systém  |Umístění  |Cenová úroveň  |
+|Name (Název)  |Operační systém  |Umístění  |Cenová úroveň  |
 |---------|---------|---------|---------|
-|ASP-01     |Windows|Východní USA|Vývoj/testování D1 – Shared|
+|ASP-01     |Windows|Východ USA|Vývoj/testování D1 – Shared|
 |ASP-02     |Windows|Střední USA|Vývoj/testování D1 – Shared|
 
 ## <a name="create-app-services"></a>Vytvořit App Services
@@ -58,9 +58,9 @@ Vytvořte dvě webové aplikace, jednu v každém plánu App Service.
 4. Vyberte **Vytvořit**.
 5. Přijměte výchozí hodnoty a pomocí následující tabulky nakonfigurujte dvě webové aplikace:
 
-   |Název<br>(musí být jedinečné v rámci. azurewebsites.net)|Skupina prostředků |Zásobník modulu runtime|Region (Oblast)|App Service plán/umístění
+   |Name (Název)<br>(musí být jedinečné v rámci. azurewebsites.net)|Skupina prostředků |Zásobník modulu runtime|Region (Oblast)|App Service plán/umístění
    |---------|---------|-|-|-------|
-   |App – 01|Použít existující<br>Výběr skupiny prostředků|.NET Core 2.2|Východní USA|ASP-01 (D1)|
+   |App – 01|Použít existující<br>Výběr skupiny prostředků|.NET Core 2.2|Východ USA|ASP-01 (D1)|
    |App-02|Použít existující<br>Výběr skupiny prostředků|.NET Core 2.2|Střední USA|ASP-02 (D1)|
 
 ### <a name="gather-some-details"></a>Shromáždit nějaké podrobnosti
@@ -87,9 +87,9 @@ Nyní můžete vytvořit koncové body pro tyto dvě webové aplikace.
 3. Vyberte **Přidat**.
 4. Pro konfiguraci koncových bodů použijte následující tabulku:
 
-   |Typ  |Název  |Cíl  |Umístění  |Vlastní nastavení hlaviček|
+   |Typ  |Name (Název)  |Výběr cílového umístění  |Umístění  |Vlastní nastavení hlaviček|
    |---------|---------|---------|---------|---------|
-   |Externí koncový bod     |Konec – 01|IP adresa, kterou jste si poznamenali pro App-01|Východní USA|Hostitel:\<adresu URL, kterou jste si poznamenali pro App-01\><br>Příklad: **Host: App-01.azurewebsites.NET**|
+   |Externí koncový bod     |Konec – 01|IP adresa, kterou jste si poznamenali pro App-01|Východ USA|Hostitel:\<adresu URL, kterou jste si poznamenali pro App-01\><br>Příklad: **Host: App-01.azurewebsites.NET**|
    |Externí koncový bod     |Konec-02|IP adresa, kterou jste si poznamenali pro App-02|Střední USA|Hostitel:\<adresu URL, kterou jste si poznamenali pro App-02\><br>Příklad: **Host: App-02.azurewebsites.NET**
 
 ## <a name="create-dns-zone"></a>Vytvořit zónu DNS
@@ -104,7 +104,7 @@ Když do svých webových aplikací přidáte vlastní název hostitele, bude vy
 2. Vyberte **Sada záznamů**.
 3. Přidejte sadu záznamů pomocí následující tabulky. Pro tuto hodnotu použijte skutečnou adresu URL webové aplikace, kterou jste předtím nahráli:
 
-   |Název  |Typ  |Hodnota|
+   |Name (Název)  |Typ  |Hodnota|
    |---------|---------|-|
    |@     |TXT|App-01.azurewebsites.net|
 
@@ -132,7 +132,7 @@ Nyní přidejte záznam aliasu pro vrchol zóny.
 2. Vyberte **Sada záznamů**.
 3. Přidejte sadu záznamů pomocí následující tabulky:
 
-   |Název  |Typ  |Sada záznamů aliasů  |Typ aliasu  |Prostředek Azure|
+   |Name (Název)  |Typ  |Sada záznamů aliasů  |Typ aliasu  |Prostředek Azure|
    |---------|---------|---------|---------|-----|
    |@     |A|Ano|Prostředek Azure|Traffic Manager – váš profil|
 

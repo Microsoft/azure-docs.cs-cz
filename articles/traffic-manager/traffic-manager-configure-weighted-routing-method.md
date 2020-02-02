@@ -3,7 +3,7 @@ title: Kurz – konfigurace směrování přenosu s váženým cyklem v kruhové
 description: Tento kurz vysvětluje, jak vyrovnávat zatížení provozu pomocí metody kruhového dotazování v Traffic Manager
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
-ms.author: allensu
-ms.openlocfilehash: 06bb86e635b7b3377e1f313ef3aa3487e1c215bc
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.author: rohink
+ms.openlocfilehash: 8bdc710b36cae70d29d32333f431b8a9dda154cc
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422766"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938715"
 ---
 # <a name="tutorial-configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Kurz: Konfigurace metody váženého směrování provozu v Traffic Manager
 

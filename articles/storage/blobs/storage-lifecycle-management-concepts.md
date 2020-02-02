@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 6bf391f22843991bf224539b82037c0e29251e7b
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: fdc98991134e0857d24575d22962a52e43266cbe
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260949"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939240"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Správa životního cyklu úložiště objektů blob v Azure
 
@@ -124,7 +124,7 @@ Existují dva způsoby, jak přidat zásadu prostřednictvím Azure Portal.
    }
    ```
 
-5. Vyberte **Save** (Uložit).
+5. Vyberte **Uložit**.
 
 6. Další informace o tomto příkladu JSON najdete v částech [zásady](#policy) a [pravidla](#rules) .
 
@@ -348,9 +348,9 @@ Tento příklad ukazuje, jak převést objekty blob bloku s předponou `containe
 }
 ```
 
-### <a name="archive-data-at-ingest"></a>Archivovaná data při příjmu
+### <a name="archive-data-after-ingest"></a>Archivovat data po ingestování
 
-Některá data v cloudu zůstanou nečinná a v případě potřeby jsou po uložení k dispozici zřídka. Následující zásady životního cyklu jsou nakonfigurovány k archivaci dat po jejich ingestování. Tento příklad přechází objekty blob bloku v účtu úložiště v kontejneru `archivecontainer` do archivní úrovně. Přechod se provádí na objektech blob 0 dní od poslední změny:
+Některá data v cloudu zůstanou nečinná a v případě potřeby jsou po uložení k dispozici zřídka. Následující zásady životního cyklu jsou nakonfigurovány k archivaci dat krátce po ingestování. Tento příklad přechází objekty blob bloku v účtu úložiště v kontejneru `archivecontainer` do archivní úrovně. Přechod se provádí na objektech blob 0 dní od poslední změny:
 
 > [!NOTE] 
 > Doporučujeme nahrát objekty blob přímo do archivní vrstvy, aby byly efektivnější. Můžete použít záhlaví x-MS-ACE-úrovně pro [PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob) nebo [PutBlockList](https://docs.microsoft.com/rest/api/storageservices/put-block-list) s REST verze 2018-11-09 a novějším nebo nejnovějšími klientskými knihovnami pro úložiště objektů BLOB. 

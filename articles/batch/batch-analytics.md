@@ -1,6 +1,6 @@
 ---
-title: Azure Batch Analytics | Microsoft Docs
-description: Referenční informace pro Azure Batch Analytics
+title: Analýzy Azure Batch
+description: Témata v dávkové analýze obsahují referenční informace o událostech a výstrahách, které jsou k dispozici pro prostředky služby Batch.
 services: batch
 author: ju-shim
 manager: gwallace
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: jushiman
-ms.openlocfilehash: 39a8bfb6a48bf55ae9f2ec36f7716959e6ada9dd
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 5f5063ff2b285a0613d8c7bf367007997afcb778
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027398"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935256"
 ---
 # <a name="batch-analytics"></a>Dávková analýza
 Témata v dávkové analýze obsahují referenční informace o událostech a výstrahách, které jsou k dispozici pro prostředky služby Batch.

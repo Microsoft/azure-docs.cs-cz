@@ -9,20 +9,30 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/27/2020
+ms.date: 01/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2bdd11c3b53b650e636d53942fcb94142de556b2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 079cfcee543cf1ce36c4a1394479a622b3658789
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772828"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935124"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>Správa referenčních dat GA pro Azure Time Series Insights prostředí pomocíC#
 
 Tento článek ukazuje, jak kombinovat C#, [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)a Azure Active Directory, aby programové požadavky rozhraní API [odkazovaly na rozhraní API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)Azure Time Series Insights GA Správa dat.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="summary"></a>Souhrn
+
+Vzorový kód níže znázorňuje následující funkce:
+
+* Získání přístupového tokenu pomocí [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication**
+* Sekvenční vytváření, čtení, aktualizace a odstraňování operací s [referencí GA Správa dat API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api).
+* Běžné kódy odpovědí včetně [běžných kódů chyb](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling).
+    
+    Reference Správa dat API každou položku zpracuje jednotlivě a chyba s jednou položkou nebrání úspěšnému dokončení ostatních položek. Pokud třeba vaše žádost obsahuje 100 položek a jedna položka obsahuje chybu, napíší se položky 99 a jedna z nich se odmítne.
+
+## <a name="prerequisites-and-setup"></a>Požadavky a instalace
 
 Před kompilací a spuštěním ukázkového kódu proveďte následující kroky:
 
@@ -296,16 +306,6 @@ namespace CsharpTsiMsalGaSample
     }
 }
 ```
-
-## <a name="summary"></a>Souhrn
-
-Vzorový kód výše znázorňuje následující funkce:
-
-* Získání přístupového tokenu pomocí [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication**
-* Sekvenční vytváření, čtení, aktualizace a odstraňování operací s [referencí GA Správa dat API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api).
-* Běžné kódy odpovědí včetně [běžných kódů chyb](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling).
-    
-    Reference Správa dat API každou položku zpracuje jednotlivě a chyba s jednou položkou nebrání úspěšnému dokončení ostatních položek. Pokud třeba vaše žádost obsahuje 100 položek a jedna položka obsahuje chybu, napíší se položky 99 a jedna z nich se odmítne.
 
 ## <a name="next-steps"></a>Další kroky
 

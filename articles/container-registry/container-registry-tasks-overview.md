@@ -3,12 +3,12 @@ title: Přehled úloh ACR
 description: Úvod k ACR úlohám, sadě funkcí v Azure Container Registry, která poskytuje zabezpečené, automatizované vytváření imagí kontejnerů, správu a opravy v cloudu.
 ms.topic: article
 ms.date: 09/05/2019
-ms.openlocfilehash: 96997f963f0bcb319d5318e2dd88a6e1e21fb36b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f8ab3c3bd259f83a61d0b030a49e158ccd6e2a69
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74840761"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938879"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatizace sestavení a údržby imagí kontejneru pomocí úloh ACR
 
@@ -56,10 +56,10 @@ Aktivovat sestavení image kontejneru nebo úlohu s více kroky, když je kód p
 
 Úlohy ACR podporují následující triggery při nastavení úložiště Git jako kontextu úkolu:
 
-| Trigger | Ve výchozím nastavení povolená |
+| Trigger | Ve výchozím nastavení povoleno |
 | ------- | ------------------ |
 | Potvrzení | Ano |
-| Žádost o přijetí změn | Ne |
+| Žádost o získání dat | Ne |
 
 Pokud chcete nakonfigurovat aktivační proceduru aktualizace zdrojového kódu, je nutné zadat úlohu pomocí tokenu PAT (Personal Access token) pro nastavení Webhooku ve veřejném nebo privátním úložišti GitHubu nebo Azure DevOps.
 
@@ -122,6 +122,7 @@ Následující tabulka ukazuje několik příkladů podporovaných umístění k
 | Větev hlavní větve GitHubu | Soubory v rámci hlavní větve (nebo jiné výchozí) ve veřejném nebo privátním úložišti GitHub.  | `https://github.com/gituser/myapp-repo.git` |
 | Větev GitHubu | Konkrétní větev veřejného nebo privátního úložiště GitHubu.| `https://github.com/gituser/myapp-repo.git#mybranch` |
 | Podsložka GitHubu | Soubory v podsložce ve veřejném nebo privátním úložišti GitHub. Příklad zobrazuje kombinaci specifikace větve a podsložky. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| Potvrzení GitHubu | Konkrétní potvrzení ve veřejném nebo privátním úložišti GitHub. Příklad zobrazuje kombinaci specifikace SHA (commit hash) a podsložky. | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |
 | Podsložka Azure DevOps | Soubory v podsložce ve veřejném nebo privátním úložišti Azure. Příklad ukazuje kombinaci specifikace větve a podsložek. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
 | Vzdálená tarballu | Soubory v komprimovaném archivu na vzdáleném serveru webserver. | `http://remoteserver/myapp.tar.gz` |
 
@@ -134,8 +135,8 @@ Ve výchozím nastavení ACR úlohy vytváří image pro Linux OS a amd64. Zadej
 
 | OS | Architektura|
 | --- | ------- | 
-| Linux | amd64<br/>arm<br/>arm64<br/>386 |
-| Windows | amd64 |
+| Linux | AMD<br/>ARM<br/>arm64<br/>386 |
+| Windows | AMD |
 
 ## <a name="view-task-logs"></a>Zobrazit protokoly úloh
 

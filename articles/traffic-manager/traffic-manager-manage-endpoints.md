@@ -3,20 +3,20 @@ title: Správa koncových bodů v Azure Traffic Manageru | Dokumentace Microsoft
 description: Tento článek vám pomůže při přidávání, odebírání, povolování a zakazování koncových bodů v Azure Traffic Manageru.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
-ms.author: allensu
-ms.openlocfilehash: 573a8f7ede29b045053d77194d15707df9e23641
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohink
+ms.openlocfilehash: 2aee4282fe6a66151ea39018f0d6c0db51f2c027
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071085"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939137"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>Přidávání, zakazování, povolování nebo odstraňování koncových bodů
 
@@ -71,10 +71,10 @@ Můžete také zakázat jednotlivé koncové body, které jsou součástí profi
 2. Na panelu hledání na portálu vyhledejte název **profilu služby Traffic Manager**, který chcete upravit, a pak na tento profil služby Traffic Manager klikněte v zobrazených výsledcích.
 3. V okně **Profil služby Traffic Manager** v části **Nastavení** klikněte na **Koncové body**. 
 4. Klikněte na koncový bod, který chcete odstranit.
-5. V **koncový bod** okna, klikněte na tlačítko **odstranit**
+5. V okně **koncový bod** klikněte na **Odstranit** .
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Správa profilů Traffic Manager](traffic-manager-manage-profiles.md)
 * [Konfigurace metod směrování](traffic-manager-configure-routing-method.md)

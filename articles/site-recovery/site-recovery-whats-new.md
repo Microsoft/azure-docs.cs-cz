@@ -2,13 +2,13 @@
 title: Co je nového v Azure Site Recovery
 description: Obsahuje souhrn nových funkcí a nejnovější aktualizace služby Azure Site Recovery.
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: ecd42c624cf1fe62c8041a0b8798585c8870cabc
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 01/31/2020
+ms.openlocfilehash: d6aa04586c9c087a736c7e1b10b8c21328a63cab
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896030"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934940"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co je nového ve službě Site Recovery
 
@@ -36,6 +36,18 @@ Pro Site Recovery komponenty podporujeme N-4 verze, kde N je nejnovější vydan
 
 ## <a name="updates-january-2020"></a>Aktualizace (leden 2020)
 
+### <a name="update-rollup-44"></a>Kumulativní aktualizace 44
+[Kumulativní aktualizace 44](https://support.microsoft.com/help/4538187/update-rollup-44-for-azure-site-recovery) poskytuje následující aktualizace.
+
+**Aktualizace** | **Podrobnosti**
+--- | ---
+**Opravy a vylepšení problémů** | Řada aktualizací Site Recovery agentů a zprostředkovatelů (jak je popsáno v souhrnu).
+
+### <a name="azure-vmware-disaster-recovery"></a>Zotavení po havárii Azure VMware
+
+Virtuální počítače Azure teď podporují virtuální počítače, které umožňují šifrování v klidovém případě pomocí klíčů spravovaných zákazníkem. [Další informace](azure-to-azure-how-to-enable-replication-cmk-disks.md).
+
+
 ### <a name="update-rollup-43"></a>Kumulativní aktualizace 43
 
 [Kumulativní aktualizace 43](https://support.microsoft.com/help/4537047/update-rollup-43-for-azure-site-recovery) poskytuje následující aktualizace.
@@ -58,7 +70,7 @@ Pro Site Recovery komponenty podporujeme N-4 verze, kde N je nejnovější vydan
 **Opravy a vylepšení problémů** | Řada oprav a vylepšení (jak je popsáno v souhrnu)
 
 
-## <a name="azure-vm-disaster-recovery"></a>Zotavení po havárii virtuálního počítače Azure
+### <a name="azure-vm-disaster-recovery"></a>Zotavení po havárii virtuálního počítače Azure
 
 Nové funkce pro zotavení po havárii virtuálních počítačů Azure jsou shrnuté v tabulce.
 

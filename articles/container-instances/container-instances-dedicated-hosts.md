@@ -1,38 +1,66 @@
 ---
-title: Nasazení na vyhrazené hostitele
-description: Použití vyhrazených hostitelů k dosažení skutečné izolace na úrovni hostitele pro vaše úlohy
+title: Nasadit na vyhrazeném hostiteli
+description: Použití vyhrazeného hostitele k dosažení skutečné izolace na úrovni hostitele pro vaše Azure Container Instances úlohy
 ms.topic: article
-ms.date: 01/10/2020
-ms.author: danlep
-ms.openlocfilehash: 619a39f4d08a4308cb0f566bc50860e9562bf9e4
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.date: 01/17/2020
+author: dkkapur
+ms.author: dekapur
+ms.openlocfilehash: adad0ddfc78530b3a3a7c139d9a95ec4790c8053
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903753"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934154"
 ---
-# <a name="deploy-on-dedicated-hosts"></a>Nasazení na vyhrazené hostitele
+# <a name="deploy-on-dedicated-hosts"></a>Nasazování na vyhrazené hostitele
 
 "Vyhrazeným" je SKU Azure Container Instances (ACI), které poskytuje izolované a vyhrazené výpočetní prostředí pro bezpečné spouštění kontejnerů. Výsledkem použití vyhrazené skladové položky v každé skupině kontejnerů je vyhrazený fyzický server v datovém centru Azure, které zajišťuje úplnou izolaci úloh, aby bylo možné lépe vyhovovat požadavkům vaší organizace na zabezpečení a dodržování předpisů. 
 
 Vyhrazená SKU je vhodná pro úlohy kontejneru, které vyžadují izolaci úloh z pohledu fyzického serveru.
 
-## <a name="using-the-dedicated-sku"></a>Použití vyhrazené SKU
+## <a name="prerequisites"></a>Požadavky
+
+* Výchozí omezení pro všechna předplatná, která používají vyhrazené SKU, je 0. Pokud chcete tuto sku použít pro nasazení produkčního kontejneru, vytvořte [support Request Azure][azure-support] pro zvýšení limitu.
+
+## <a name="use-the-dedicated-sku"></a>Použití vyhrazené SKU
 
 > [!IMPORTANT]
-> Použití vyhrazené SKU je dostupné jenom v nejnovější verzi rozhraní API (2019-12-01), která se v tuto chvíli zavádí. Tuto verzi rozhraní API zadejte v šabloně nasazení. Kromě toho je výchozí omezení pro všechna předplatná, která používají vyhrazené SKU, 0. Pokud chcete tuto sku použít pro nasazení produkčního kontejneru, vytvořte prosím [support Request Azure][azure-support] .
+> Použití vyhrazené SKU je dostupné jenom v nejnovější verzi rozhraní API (2019-12-01), která se v tuto chvíli zavádí. Tuto verzi rozhraní API zadejte v šabloně nasazení.
+>
 
-Počínaje rozhraním API verze 2019-12-01 existuje vlastnost SKU v části vlastností skupiny kontejnerů v šabloně nasazení, která je nutná pro nasazení ACI. V současné době můžete tuto vlastnost použít jako součást šablony nasazení Azure Resource Manager pro ACI. Další informace o nasazení prostředků ACI pomocí šablony v tomto [kurzu: nasazení skupiny s více kontejnery pomocí šablony Správce prostředků](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+Počínaje rozhraním API verze 2019-12-01 existuje vlastnost `sku` v části vlastnosti skupiny kontejnerů v šabloně nasazení, která je nutná pro nasazení ACI. V současné době můžete tuto vlastnost použít jako součást šablony nasazení Azure Resource Manager pro ACI. Další informace o nasazení prostředků ACI pomocí šablony v tomto [kurzu: nasazení skupiny s více kontejnery pomocí šablony Správce prostředků](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
 
-Vlastnost SKU může mít jednu z následujících hodnot:
-* Standard – volba standardního nasazení ACI, která stále garantuje zabezpečení na úrovni hypervisoru 
-* Vyhrazené – používá se pro izolaci na úrovni pracovního vytížení s vyhrazenými fyzickými hostiteli pro skupinu kontejnerů.
+Vlastnost `sku` může mít jednu z následujících hodnot:
+* `Standard` – volba standardních nasazení ACI, která stále garantuje zabezpečení na úrovni hypervisoru 
+* `Dedicated` – používá se pro izolaci úrovně úloh u vyhrazených fyzických hostitelů pro skupinu kontejnerů.
 
 ## <a name="modify-your-json-deployment-template"></a>Úprava šablony nasazení JSON
 
-V šabloně nasazení, kde je určen prostředek skupiny kontejnerů, zajistěte, aby `"apiVersion": "2019-12-01",`. V části vlastnosti prostředku skupiny kontejnerů nastavte `"sku": "Dedicated",`.
+V šabloně nasazení upravte nebo přidejte následující vlastnosti:
+* V části `resources`nastavte `apiVersion` na `2012-12-01`.
+* V části vlastnosti skupiny kontejnerů přidejte vlastnost `sku` s hodnotou `Dedicated`.
 
 Tady je příklad fragmentu pro oddíl Resources v šabloně nasazení skupiny kontejnerů, která používá vyhrazenou SKU:
+
+```json
+[...]
+"resources": [
+    {
+        "name": "[parameters('containerGroupName')]",
+        "type": "Microsoft.ContainerInstance/containerGroups",
+        "apiVersion": "2019-12-01",
+        "location": "[resourceGroup().location]",    
+        "properties": {
+            "sku": "Dedicated",
+            "containers": {
+                [...]
+            }
+        }
+    }
+]
+```
+
+Následuje úplná šablona, která nasadí ukázkovou skupinu kontejnerů se spuštěnou instancí jedné instance kontejneru:
 
 ```json
 {
@@ -91,9 +119,8 @@ Tady je příklad fragmentu pro oddíl Resources v šabloně nasazení skupiny k
                     ],
                     "type": "Public"
                 },
-                "osType": "Linux",
+                "osType": "Linux"
             },
-            "location": "eastus2euap",
             "tags": {}
         }
     ]
@@ -116,7 +143,7 @@ az group create --name myResourceGroup --location eastus
 az group deployment create --resource-group myResourceGroup --template-file deployment-template.json
 ```
 
-Během několika sekund by se měla zobrazit první odezva z Azure. Až se nasazení dokončí, všechna data související s tím, která jsou trvale zachovaná službou ACI, se zašifrují pomocí zadaného klíče.
+Během několika sekund by se měla zobrazit první odezva z Azure. Úspěšné nasazení se provádí na vyhrazeném hostiteli.
 
 <!-- LINKS - Internal -->
 [az-group-create]: /cli/azure/group#az-group-create

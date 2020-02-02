@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 79bafb331cb7ad38ea7cad9e510b22886b647764
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 45d210725f7f09663b126528479655d7f4d9c19f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911153"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933360"
 ---
 # <a name="add-a-popup-to-the-map"></a>Přidat místní nabídku na mapu
 
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak přidat místní nabídku do bodu na mapě.
 
 ## <a name="understand-the-code"></a>Vysvětlení kódu
 
-Následující kód přidá funkci Point, která má `name` a `description` vlastností, na mapu pomocí vrstvy symbolů. Instance [automaticky otevírané třídy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) je vytvořena, ale není zobrazena. Události myši se přidají do vrstvy symbolů, které aktivují otevírání a zavírání automaticky otevírané okno, když ukazatel myši setrvá a odkrývá značku symbolu. Při přechodu na symbol značky je vlastnost automaticky otevíraná okna `position` aktualizována umístěním značky a možnost `content` je aktualizována pomocí kódu HTML, který zabalí `name` a `description` vlastnosti bodu, který je ponechán. Automaticky otevíraná okna se pak zobrazí na mapě pomocí funkce `open`.
+Následující kód přidá funkci Point, která má `name` a `description` vlastností, na mapu pomocí vrstvy symbolů. Instance [automaticky otevírané třídy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) je vytvořena, ale není zobrazena. Události myši se přidají do vrstvy symbolů, které aktivují otevírání a zavírání automaticky otevíraného okna. Je-li symbol značky umístěn na místě, je vlastnost automaticky otevíraná okna `position` aktualizována umístěním značky a možnost `content` je aktualizována pomocí jazyka HTML, který zabalí `name` a `description` vlastnosti bodu, který je ponechán. Automaticky otevíraná okna se pak zobrazí na mapě pomocí funkce `open`.
 
 ```javascript
 //Define an HTML template for a custom popup content laypout.
@@ -85,7 +85,7 @@ Níže je uvedená ukázka kompletního spuštění kódu výše uvedené funkce
 
 ## <a name="reusing-a-popup-with-multiple-points"></a>Opakované použití automaticky otevíraného okna s více body
 
-Pokud máte velký počet bodů a chcete zobrazit jenom jedno automaticky otevírané okno najednou, nejlepším řešením je vytvořit jedno automaticky otevírané okno a znovu ho použít místo vytvoření místní nabídky pro každou funkci bodu. Po znovu použití překryvného seznamu je počet elementů modelu DOM vytvořených aplikací výrazně snížen, což může poskytovat lepší výkon. Následující ukázka vytvoří funkce 3 body. Pokud kliknete na kterýkoli z nich, zobrazí se automaticky otevírané okno s obsahem této funkce Point.
+Pokud máte velký počet bodů a chcete zobrazit jenom jedno automaticky otevírané okno najednou, nejlepším řešením je vytvořit jednu místní nabídku a znovu použít. Po znovu použití překryvného seznamu je počet elementů modelu DOM vytvořených aplikací výrazně snížen, což může poskytovat lepší výkon. Následující ukázka vytvoří funkce 3 body. Pokud kliknete na kterýkoli z nich, zobrazí se automaticky otevírané okno s obsahem této funkce Point.
 
 <br/>
 
@@ -94,7 +94,7 @@ Pokud máte velký počet bodů a chcete zobrazit jenom jedno automaticky oteví
 
 ## <a name="customizing-a-popup"></a>Přizpůsobení automaticky otevíraného okna
 
-Ve výchozím nastavení má místní nabídka bílé pozadí, šipku ukazatele dole a tlačítko Zavřít v pravém horním rohu. V následujícím příkladu se barva pozadí změní na černou pomocí možnosti `fillColor` automaticky otevírané okno. Tlačítko Zavřít se odebere nastavením možnosti `shoCloseButton` na hodnotu NEPRAVDA. Obsah HTML automaticky otevíraného okna používá v okrajích překryvného textu 10 pixelů a text je vytvořen bíle, takže se na černém pozadí zobrazí úhledný text.  
+Ve výchozím nastavení má místní nabídka bílé pozadí, šipku ukazatele dole a tlačítko Zavřít v pravém horním rohu. V následujícím příkladu se barva pozadí změní na černou pomocí možnosti `fillColor` automaticky otevírané okno. Tlačítko Zavřít se odebere nastavením možnosti `CloseButton` na hodnotu NEPRAVDA. Obsah HTML automaticky otevíraného okna používá čalounění 10 pixelů od okrajů automaticky otevíraného okna. Text je bílý, takže se zobrazí na černém pozadí.  
 
 <br/>
 
@@ -104,7 +104,7 @@ Prohlédněte si <a href='https://codepen.io/azuremaps/pen/ymKgdg/'>automaticky 
 
 ## <a name="popup-events"></a>Překryvné události
 
-Automaticky otevíraná okna lze otevřít, zavřít a přetáhnout. Automaticky otevíraná Třída poskytuje události, které vývojářům umožňují reagovat na tyto akce. Následující ukázka zvýrazní události, které se aktivují, když otevřete, zavřete nebo přetáhnete místní nabídku. 
+Automaticky otevíraná okna lze otevřít, zavřít a přetáhnout. Automaticky otevíraná Třída poskytuje události, které vývojářům umožňují reagovat na tyto události. Následující ukázka zvýrazní, které události se aktivují, když uživatel otevře, zavře nebo přetáhne automaticky otevírané okno. 
 
 <br/>
 
@@ -117,7 +117,7 @@ V CodePen (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='ht
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Automaticky otevřené okno](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
+> [Oken](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions?view=azure-iot-typescript-latest)

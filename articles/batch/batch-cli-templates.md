@@ -1,6 +1,6 @@
 ---
-title: Spouštění úloh od začátku do konce pomocí šablon-Azure Batch | Microsoft Docs
-description: Vytvořte fondy, úlohy a úkoly služby Batch pomocí souborů šablon a Azure CLI.
+title: Spuštění úloh od začátku do konce pomocí šablon – Azure Batch
+description: Když máte jenom příkazy rozhraní příkazového řádku, můžete vytvořit fond, nahrávat vstupní data, vytvářet úlohy a související úlohy a stahovat výsledná výstupní data.
 services: batch
 author: ju-shim
 manager: gwallace
@@ -11,12 +11,12 @@ ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 2612986491268651222e51646e75cdecc95dc40c
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 89a354320ed474ce3e5f9049a75e06313c5860e2
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029730"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935076"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Použití Azure Batch šablon CLI a přenosu souborů
 

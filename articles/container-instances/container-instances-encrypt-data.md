@@ -1,17 +1,18 @@
 ---
-title: Šifrovat data nasazení
+title: Šifrování dat nasazení
 description: Informace o šifrování trvalých dat pro prostředky instance kontejneru a o tom, jak šifrovat data pomocí klíče spravovaného zákazníkem
 ms.topic: article
-ms.date: 01/10/2020
-ms.author: danlep
-ms.openlocfilehash: 146effd7f1a7ad1ddd94886d1a79e2914bd1c94b
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.date: 01/17/2020
+author: dkkapur
+ms.author: dekapur
+ms.openlocfilehash: 14a51ce103d831bcf1dfd52c892102f72531a4c8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75904208"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934301"
 ---
-# <a name="encrypt-deployment-data"></a>Šifrovat data nasazení
+# <a name="encrypt-deployment-data"></a>Šifrování dat nasazení
 
 Při spuštění Azure Container Instances (ACI) prostředků v cloudu služba ACI shromažďuje a ukládá data týkající se vašich kontejnerů. ACI automaticky šifruje tato data, když je trvale v cloudu. Toto šifrování chrání vaše data, aby bylo možné pokrýt závazky týkající se zabezpečení a dodržování předpisů vaší organizace. ACI také poskytuje možnost šifrovat tato data pomocí vlastního klíče. tím získáte větší kontrolu nad daty souvisejícími s nasazeními ACI.
 
@@ -87,15 +88,18 @@ Zásady přístupu by se teď měly zobrazit v zásadách přístupu trezoru kl�
 > [!IMPORTANT]
 > Šifrování dat nasazení pomocí klíče spravovaného zákazníkem je dostupné v nejnovější verzi rozhraní API (2019-12-01), která se v tuto chvíli zavádí. Tuto verzi rozhraní API zadejte v šabloně nasazení. Pokud s tím máte nějaké problémy, obraťte se prosím na podporu Azure.
 
-Jakmile nastavíte klíč trezoru klíčů a zásadu přístupu, přidejte do šablony nasazení ACI následující vlastnost. Další informace o nasazení prostředků ACI pomocí šablony v tomto [kurzu: nasazení skupiny s více kontejnery pomocí šablony Správce prostředků](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+Jakmile nastavíte klíč trezoru klíčů a zásadu přístupu, přidejte do šablony nasazení ACI následující vlastnosti. Další informace o nasazení prostředků ACI pomocí šablony v tomto [kurzu: nasazení skupiny s více kontejnery pomocí šablony Správce prostředků](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+* V části `resources`nastavte `apiVersion` na `2012-12-01`.
+* V části vlastnosti skupiny kontejnerů v šabloně nasazení přidejte `encryptionProperties`, který obsahuje následující hodnoty:
+  * `vaultBaseUrl`: název DNS vašeho trezoru klíčů najdete v okně Přehled prostředku trezoru klíčů na portálu.
+  * `keyName`: název klíče vygenerovaného dříve.
+  * `keyVersion`: aktuální verze klíče. To můžete najít kliknutím na vlastní klíč (v části klíče v části nastavení v prostředku trezoru klíčů).
+* V části vlastnosti skupiny kontejnerů přidejte vlastnost `sku` s hodnotou `Standard`. V rozhraní API verze 2019-12-01 se vyžaduje vlastnost `sku`.
 
-Konkrétně v části vlastností skupiny kontejnerů v šabloně nasazení přidejte "encryptionProperties", která obsahuje následující hodnoty:
-* vaultBaseUrl: název DNS vašeho trezoru klíčů najdete v okně Přehled prostředku trezoru klíčů na portálu.
-* keyName: název klíče vygenerovaného dříve.
-* Version: aktuální verze klíče. To můžete najít kliknutím na vlastní klíč (v části klíče v části nastavení v prostředku trezoru klíčů).
-
+Následující fragment šablony zobrazuje tyto další vlastnosti pro šifrování dat nasazení:
 
 ```json
+[...]
 "resources": [
     {
         "name": "[parameters('containerGroupName')]",
@@ -108,12 +112,107 @@ Konkrétně v části vlastností skupiny kontejnerů v šabloně nasazení při
                 "keyName": "acikey",
                 "keyVersion": "xxxxxxxxxxxxxxxx"
             },
+            "sku": "Standard",
             "containers": {
                 [...]
             }
         }
     }
 ]
+```
+
+Toto je kompletní šablona přizpůsobená pomocí šablony v [kurzu: nasazení skupiny s více kontejnery pomocí šablony Správce prostředků](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "containerGroupName": {
+      "type": "string",
+      "defaultValue": "myContainerGroup",
+      "metadata": {
+        "description": "Container Group name."
+      }
+    }
+  },
+  "variables": {
+    "container1name": "aci-tutorial-app",
+    "container1image": "mcr.microsoft.com/azuredocs/aci-helloworld:latest",
+    "container2name": "aci-tutorial-sidecar",
+    "container2image": "mcr.microsoft.com/azuredocs/aci-tutorial-sidecar"
+  },
+  "resources": [
+    {
+      "name": "[parameters('containerGroupName')]",
+      "type": "Microsoft.ContainerInstance/containerGroups",
+      "apiVersion": "2019-12-01",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "encryptionProperties": {
+            "vaultBaseUrl": "https://example.vault.azure.net",
+            "keyName": "acikey",
+            "keyVersion": "xxxxxxxxxxxxxxxx"
+        },
+        "sku": "Standard",  
+        "containers": [
+          {
+            "name": "[variables('container1name')]",
+            "properties": {
+              "image": "[variables('container1image')]",
+              "resources": {
+                "requests": {
+                  "cpu": 1,
+                  "memoryInGb": 1.5
+                }
+              },
+              "ports": [
+                {
+                  "port": 80
+                },
+                {
+                  "port": 8080
+                }
+              ]
+            }
+          },
+          {
+            "name": "[variables('container2name')]",
+            "properties": {
+              "image": "[variables('container2image')]",
+              "resources": {
+                "requests": {
+                  "cpu": 1,
+                  "memoryInGb": 1.5
+                }
+              }
+            }
+          }
+        ],
+        "osType": "Linux",
+        "ipAddress": {
+          "type": "Public",
+          "ports": [
+            {
+              "protocol": "tcp",
+              "port": "80"
+            },
+            {
+                "protocol": "tcp",
+                "port": "8080"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "containerIPv4Address": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.ContainerInstance/containerGroups/', parameters('containerGroupName'))).ipAddress.ip]"
+    }
+  }
+}
 ```
 
 ### <a name="deploy-your-resources"></a>Nasazení prostředků

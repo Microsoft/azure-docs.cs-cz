@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/08/2019
+ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: f239bab48e732755361fe734fdc24b37d3823c63
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 682935fa2324b8de4992ab2f90c7f71e05c4f8ac
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481023"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931570"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Koncepce správy uživatelských účtů, hesel a správy v Azure Active Directory Domain Services
 
@@ -34,7 +34,7 @@ Uživatelské účty je možné v Azure služba AD DS vytvořit několika způso
 * Uživatelský účet může být synchronizovaný v rámci služby Azure AD. Patří sem pouze cloudové uživatelské účty vytvořené přímo v Azure AD a hybridní uživatelské účty synchronizované z místního služba AD DS prostředí pomocí Azure AD Connect.
     * Většina uživatelských účtů ve službě Azure služba AD DS se vytváří prostřednictvím procesu synchronizace z Azure AD.
 * Uživatelský účet se dá ručně vytvořit ve spravované doméně Azure služba AD DS a neexistuje v Azure AD.
-    * Pokud potřebujete vytvořit účty služeb pro aplikace, které běží jenom v Azure služba AD DS, můžete je ručně vytvořit ve spravované doméně. Vzhledem k jednosměrné synchronizaci z Azure AD se uživatelské účty vytvořené v Azure služba AD DS nesynchronizují zpátky do Azure AD.
+    * Pokud potřebujete vytvořit účty služeb pro aplikace, které běží jenom v Azure služba AD DS, můžete je ručně vytvořit ve spravované doméně. Když je synchronizace jedním ze služby Azure AD, uživatelské účty vytvořené v Azure služba AD DS se nesynchronizují zpátky do Azure AD.
 
 ## <a name="password-policy"></a>Zásady hesel
 
@@ -74,6 +74,36 @@ V doménové struktuře *prostředků* Azure služba AD DS se uživatelé ověř
 
 Další informace o typech doménové struktury v Azure služba AD DS najdete v tématu [co jsou doménové struktury prostředků?][concepts-forest] a [jak vztahy důvěryhodnosti doménové struktury fungují v Azure služba AD DS?][concepts-trust]
 
+## <a name="azure-ad-ds-skus"></a>SKU Azure služba AD DS
+
+V Azure služba AD DS jsou dostupné výkony a funkce založené na SKU. SKU vyberete při vytváření spravované domény a po nasazení spravované domény můžete přepínat SKU podle vašich obchodních požadavků. Následující tabulka popisuje dostupné SKU a rozdíly mezi nimi:
+
+| Název SKU   | Maximální počet objektů | Frekvence zálohování | Maximální počet odchozích vztahů důvěryhodnosti doménové struktury |
+|------------|----------------------|------------------|----|
+| Úroveň Standard   | Neomezený počet            | Každých 7 dní     | 0  |
+| Enterprise | Neomezený počet            | Každé 3 dny     | 5  |
+| Premium    | Neomezený počet            | Denně            | 10 |
+
+Před těmito SKU služby Azure služba AD DS byly použity fakturační modely založené na počtu objektů (uživatelských a počítačových účtů) ve spravované doméně Azure služba AD DS. V závislosti na počtu objektů ve spravované doméně už neexistují variabilní ceny.
+
+Další informace najdete na stránce s [cenami pro Azure služba AD DS][pricing].
+
+### <a name="managed-domain-performance"></a>Výkon spravované domény
+
+Výkon domény se liší v závislosti na tom, jak je ověřování pro aplikaci implementováno. Další výpočetní prostředky mohou pomoci zlepšit dobu odezvy na dotaz a zkrátit dobu trvání operací synchronizace. Při zvýšení úrovně SKU se zvýší i výpočetní prostředky dostupné pro spravovanou doménu. Monitorujte výkon svých aplikací a naplánujte požadované prostředky.
+
+Pokud se vaše firma nebo aplikace změní a potřebujete pro vaši službu Azure služba AD DS spravované domény Další výpočetní výkon, můžete přejít na jinou SKU.
+
+### <a name="backup-frequency"></a>Frekvence zálohování
+
+Frekvence zálohování určuje, jak často se snímek spravované domény bere. Zálohy jsou automatizovaný proces spravovaný platformou Azure. V případě potíží se spravovanou doménou vám podpora Azure pomůže při obnovení ze zálohy. Protože synchronizace probíhá pouze jednou *ze* služby Azure AD, jakékoli problémy v spravované doméně Azure služba AD DS nebudou mít vliv na Azure AD nebo místní služba AD DS prostředí a funkce.
+
+Při zvýšení úrovně SKU se zvyšuje frekvence zálohování snímků. Zkontrolujte své obchodní požadavky a cíl bodu obnovení (RPO) a určete požadovanou četnost zálohování pro spravovanou doménu. Pokud se vaše obchodní nebo aplikační požadavky změní a potřebujete častější zálohování, můžete přejít na jinou SKLADOVOU položku.
+
+### <a name="outbound-forests"></a>Odchozí doménové struktury
+
+Předchozí část podrobná jednosměrná odchozí důvěryhodnost doménové struktury ze spravované domény Azure služba AD DS do místního prostředí služba AD DS (aktuálně ve verzi Preview). SKU určuje maximální počet vztahů důvěryhodnosti doménové struktury, které můžete vytvořit pro spravovanou doménu Azure služba AD DS. Zkontrolujte požadavky firmy a aplikace, abyste zjistili, kolik vztahů důvěryhodnosti skutečně potřebujete, a vyberte příslušnou SKLADOVOU položku Azure služba AD DS. Pokud se vaše obchodní požadavky změní a potřebujete vytvořit další vztahy důvěryhodnosti doménové struktury, můžete přejít na jinou SKU.
+
 ## <a name="next-steps"></a>Další kroky
 
 Začněte tím, [že vytvoříte Azure služba AD DS spravovanou doménu][create-instance].
@@ -87,3 +117,6 @@ Začněte tím, [že vytvoříte Azure služba AD DS spravovanou doménu][create
 [tutorial-create-instance-advanced]: tutorial-create-instance-advanced.md
 [concepts-forest]: concepts-resource-forest.md
 [concepts-trust]: concepts-forest-trust.md
+
+<!-- EXTERNAL LINKS -->
+[pricing]: https://azure.microsoft.com/pricing/details/active-directory-ds/

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4f0975aceeb55c8f184ebe4e6a44d819b4a8bf38
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 9e1f62dcdb122726fc1c08b7bea4e4c214ce7906
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76837856"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933368"
 ---
 # <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>Integrované schopnosti rozpoznávání textu a zpracování obrázků při indexování (Azure Kognitivní hledání)
 
@@ -31,6 +31,7 @@ Několik dovedností je flexibilní v tom, co spotřebovávají nebo vyrábí. O
 
 | Tuhle | Popis |
 |-------|-------------|
+|[Microsoft. dovednosti. text. CustomEntityLookupSkill](cognitive-search-skill-custom-entity-lookup.md)| Vyhledá text z vlastního uživatelsky definovaného seznamu slov a frází.|
 | [Microsoft.Skills.Text.KeyPhraseSkill](cognitive-search-skill-keyphrases.md) | Tato dovednost používá předvýukový model k detekci důležitých frází na základě pojmu umístění, lingvistických pravidel, blízkost k ostatním podmínkám a způsobu, jakým je neobvyklá doba v rámci zdrojových dat. |
 | [Microsoft.Skills.Text.LanguageDetectionSkill](cognitive-search-skill-language-detection.md)  | Tato dovednost používá předvlakový model ke zjištění, který jazyk se používá (jedno ID jazyka na dokument). Je-li v rámci stejných segmentů použito více jazyků, je výstupem identifikátor LCID převládajícího používaného jazyka.|
 | [Microsoft.Skills.Text.MergeSkill](cognitive-search-skill-textmerger.md) | Konsoliduje text z kolekce polí do jednoho pole.  |

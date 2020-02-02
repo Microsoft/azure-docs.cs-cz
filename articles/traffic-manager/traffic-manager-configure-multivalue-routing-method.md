@@ -3,7 +3,7 @@ title: Konfigurace pro vícehodnotové směrování provozu – Azure Traffic Ma
 description: Tento článek vysvětluje, jak nakonfigurovat Traffic Manager pro směrování provozu do koncových bodů A/AAAA.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: allensu
-ms.openlocfilehash: 3e5e6cb55b86df8a48f96771fb2436afa8acaa18
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: rohink
+ms.openlocfilehash: daf7d09916d276130e337f7acea738228ee23707
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74040366"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938781"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Konfigurace metody směrování s více hodnotami v Traffic Manager
 
@@ -43,7 +43,7 @@ Vytvořte profil Traffic Manager, který směruje provoz uživatele odesláním 
     
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
-    | Název                   | Tento název musí být jedinečný v rámci zóny trafficmanager.net a ve výsledcích názvu DNS trafficmanager.net, který slouží k přístupu k vašemu profilu služby Traffic Manager.                                   |
+    | Name (Název)                   | Tento název musí být jedinečný v rámci zóny trafficmanager.net a ve výsledcích názvu DNS trafficmanager.net, který slouží k přístupu k vašemu profilu služby Traffic Manager.                                   |
     | Metoda směrování          | Vyberte metodu směrování s více **hodnotami** .                                       |
     | Předplatné            | Vyberte své předplatné.                          |
     | Skupina prostředků          | Vyberte *myResourceGroupTM1*. |
@@ -63,7 +63,7 @@ Přidejte dvě IP adresy jako externí koncové body do profilu vícehodnotovéh
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
     | Typ                    | Externí koncový bod                                   |
-    | Název           | myEndpoint1                                        |
+    | Name (Název)           | myEndpoint1                                        |
     | Plně kvalifikovaný název domény (FQDN) nebo IP adresa           | Zadejte veřejnou IP adresu koncového bodu, který chcete přidat do tohoto profilu Traffic Manager.                         |
     |        |           |
 

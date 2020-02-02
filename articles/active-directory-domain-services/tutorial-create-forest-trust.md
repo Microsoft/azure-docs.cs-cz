@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: bd0ec46d224e68f92b5d042826633d1efc7c336e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3637a11724c1f0bab049077c5abbd817e168bd44
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425421"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931236"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Kurz: Vytvoření vztahu důvěryhodnosti odchozí doménové struktury do místní domény v Azure Active Directory Domain Services (Preview)
 
@@ -45,7 +45,7 @@ K dokončení tohoto kurzu potřebujete následující prostředky a oprávněn�
     * V případě potřeby [vytvořte a nakonfigurujte instanci Azure Active Directory Domain Services][create-azure-ad-ds-instance-advanced].
     
     > [!IMPORTANT]
-    > Ujistěte se, že jste vytvořili spravovanou doménu Azure služba AD DS pomocí doménové struktury *prostředků* . Výchozí možnost vytvoří doménovou strukturu *uživatele* . Pouze doménové struktury prostředků můžou vytvářet vztahy důvěryhodnosti s Prem služba AD DSmi prostředími.
+    > Ujistěte se, že jste vytvořili spravovanou doménu Azure služba AD DS pomocí doménové struktury *prostředků* . Výchozí možnost vytvoří doménovou strukturu *uživatele* . Pouze doménové struktury prostředků můžou vytvářet vztahy důvěryhodnosti s Prem služba AD DSmi prostředími. Pro spravovanou doménu je také nutné použít minimálně jednotku SKU *Enterprise* . V případě potřeby [změňte SKU pro spravovanou doménu Azure služba AD DS][howto-change-sku].
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -188,7 +188,7 @@ Pomocí virtuálního počítače s Windows serverem připojeného k doménové 
 1. V seznamu **skupiny nebo jména uživatelů** vyberte *FileServerAccess* . V seznamu **oprávnění pro FileServerAccess** zvolte možnost *Povolení* oprávnění k **úpravám** a **zápisu** a pak vyberte **OK**.
 1. Vyberte kartu **sdílení** a pak zvolte **Rozšířené sdílení...**
 1. Zvolte **sdílet tuto složku**a pak zadejte zapamatovatelné jméno sdílené složky v **názvu sdílené složky** , například *CrossForestShare*.
-1. Vyberte **Oprávnění**. V seznamu **oprávnění pro všechny** vyberte možnost **udělit** oprávnění ke **změně** .
+1. Vyberte **oprávnění**. V seznamu **oprávnění pro všechny** vyberte možnost **udělit** oprávnění ke **změně** .
 1. Dvakrát klikněte na **OK** a pak na **Zavřít**.
 
 #### <a name="validate-cross-forest-authentication-to-a-resource"></a>Ověření ověřování mezi doménovými strukturami v prostředku
@@ -220,3 +220,4 @@ Další koncepční informace o typech doménové struktury v Azure služba AD D
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance-advanced]: tutorial-create-instance-advanced.md
+[howto-change-sku]: change-sku.md

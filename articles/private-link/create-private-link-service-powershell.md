@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: c4395628ac31dd69a4978f7f68ecc24ca1e15cfb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 225ae9d07cc6df2fa809e250083ee6007ab2f945
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453124"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932084"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>Vytvoření služby privátního propojení pomocí Azure PowerShell
 V tomto článku se dozvíte, jak vytvořit službu privátního propojení v Azure pomocí Azure PowerShell.
@@ -109,7 +109,7 @@ Získejte podrobnosti o službě privátního propojení pomocí příkazu [Get-
 $pls = Get-AzPrivateLinkService -Name $plsName -ResourceGroupName $rgName 
 ```
 
-V této fázi je vaše služba privátního propojení úspěšně vytvořená a připravená na příjem provozu. Všimněte si, že výše uvedený příklad je pouze ukázka vytvoření služby privátního propojení pomocí prostředí PowerShell.  Nenakonfigurovali jsme back-end fondy nástroje pro vyrovnávání zatížení ani žádné aplikace na back-end fondu, aby naslouchaly provozu. Pokud se chcete podívat na koncové toky přenosů dat, můžete nakonfigurovat aplikaci za vaším standardním nástrojem pro vyrovnávání zatížení. 
+V této fázi je vaše služba privátního propojení úspěšně vytvořená a připravená na příjem provozu. Všimněte si, že výše uvedený příklad je pouze ukázka vytvoření služby privátního propojení pomocí prostředí PowerShell.  Nenakonfigurovali jsme back-end fondy nástroje pro vyrovnávání zatížení ani žádné aplikace na back-end fondu, aby naslouchaly provozu. Pokud se chcete podívat na koncové toky přenosů dat, důrazně doporučujeme nakonfigurovat aplikaci za vaším standardním nástrojem pro vyrovnávání zatížení. 
 
 Dále vám ukážeme, jak namapovat tuto službu na privátní koncový bod v jiné virtuální síti pomocí PowerShellu. V tomto příkladu je tento příklad omezený na vytvoření privátního koncového bodu a připojení ke službě privátního propojení vytvořené výše. V Virtual Network můžete vytvořit Virtual Machines pro odesílání a příjem provozu do privátního koncového bodu pro vytvoření scénáře. 
 

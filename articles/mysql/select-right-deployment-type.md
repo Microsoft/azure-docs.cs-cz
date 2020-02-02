@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 3cc03ba1670299f1ea43a1fde666c2917eaf6b9d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 8cff61d547e75b186869b3ab4d57c5eb12e6e2f5
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770454"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935467"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Volba pravého serveru MySQL v Azure
 
@@ -36,7 +36,7 @@ Hlavní rozdíly mezi těmito možnostmi jsou uvedené v následující tabulce:
 | Smlouva o úrovni služeb (SLA)                | Nabízí smlouvu SLA s 99,99% dostupností.| Až 99,95% dostupnost se dvěma nebo více instancemi ve stejné skupině dostupnosti.<br/><br/>99,9% dostupnost s jednou instancí virtuálního počítače s využitím služby Premium Storage.<br/><br/>99,99% použití Zóny dostupnosti s více instancemi ve více skupinách dostupnosti.<br/><br/>Podívejte se na [Virtual Machines SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/). |
 | Opravy operačního systému        | Automaticky  | Spravováno zákazníky |
 | Aktualizace MySQL     | Automaticky  | Spravováno zákazníky |
-| Vysoká dostupnost | Model vysoké dostupnosti (HA) vychází z vestavěných mechanismů převzetí služeb při selhání pro případ, že dojde k přerušení na úrovni uzlu. V takových případech služba automaticky vytvoří novou instanci a připojí úložiště k této instanci. | Uživatelé architekti, implementujte, otestujete a Udržujte vysokou dostupnost. K funkcím může patřit Clustering s podporou převzetí služeb při selhání, trvalá replikace skupin, přesouvání protokolů nebo transakční replikace.|
+| Vysoká dostupnost | Model vysoké dostupnosti (HA) vychází z vestavěných mechanismů převzetí služeb při selhání pro případ, že dojde k přerušení na úrovni uzlu. V takových případech služba automaticky vytvoří novou instanci a připojí úložiště k této instanci. | Uživatelé architekti, implementujte, otestujete a Udržujte vysokou dostupnost. Mezi funkce můžou patřit clustering, replikace atd.|
 | Redundance zóny | Aktuálně není podporováno | Virtuální počítače Azure je možné nastavit tak, aby běžely v různých zónách dostupnosti. Pro místní řešení musí zákazníci vytvořit, spravovat a spravovat svoje vlastní sekundární datové centrum.|
 | Hybridní scénáře | Pomocí [replikace vstupních dat](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication)můžete synchronizovat data z externího serveru MySQL do služby Azure Database for MySQL. Externí server může být místní, virtuální počítače nebo databázová služba, jejímž hostitelem jsou jiní poskytovatelé cloudu.<br/><br/> Pomocí funkce [pro čtení repliky](https://docs.microsoft.com/azure/mysql/concepts-read-replicas) můžete replikovat data z hlavního serveru Azure Database for MySQL do pěti serverů repliky jen pro čtení. Repliky jsou buď ve stejné oblasti Azure, nebo v různých oblastech. Repliky jen pro čtení se asynchronně aktualizují pomocí technologie replikace binlog.| Spravováno zákazníky
 | Zálohování a obnovení | Automaticky vytvoří [zálohy serveru](https://docs.microsoft.com/azure/mysql/concepts-backup#backups) a uloží je v uživatelsky nakonfigurovaném úložišti, které je buď místně redundantní, nebo geograficky redundantní. Služba používá zálohy úplného, rozdílového a transakčního protokolu. | Spravováno zákazníky |

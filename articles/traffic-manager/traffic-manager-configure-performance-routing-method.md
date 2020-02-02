@@ -1,53 +1,53 @@
 ---
-title: Konfigurace metody směrování provozu výkonu pomocí Azure Traffic Manager | Dokumentace Microsoftu
-description: Tento článek vysvětluje postup konfigurace Traffic Manageru směrovat provoz na koncový bod s nejnižší latenci
+title: Konfigurace metody směrování provozu s výkonem pomocí Azure Traffic Manager | Microsoft Docs
+description: Tento článek vysvětluje, jak nakonfigurovat Traffic Manager pro směrování provozu do koncového bodu s nejnižší latencí.
 services: traffic-manager
 manager: twooley
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
-ms.author: allensu
-ms.openlocfilehash: 5e9b02a4145d86b86ea3ba0d509d06b7c148cc6d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohink
+ms.openlocfilehash: f5e9b7690c28793a35c692a6125a6b11c7a140a4
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67048477"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938762"
 ---
 # <a name="configure-the-performance-traffic-routing-method"></a>Konfigurace metody směrování provozu výkonu
 
-Metody směrování provozu výkonu umožňuje směrovat provoz na koncový bod s nejnižší latenci v klientské síti. Datové centrum s nejnižší latencí je obvykle nejbližšímu v geografické vzdálenosti. Tuto metodu směrování provozu nemůže účtu v reálném čase změny v konfiguraci sítě nebo načíst.
+Metoda směrování provozu umožňuje směrovat provoz do koncového bodu s nejnižší latencí ze sítě klienta. Obvykle je datové centrum s nejnižší latencí nejblíže geografické vzdálenosti. Tato metoda směrování provozu nemůže v reálném čase brát v úvahu změny v konfiguraci sítě nebo zatížení.
 
-##  <a name="to-configure-performance-routing-method"></a>Konfigurace metody směrování podle výkonu
+##  <a name="to-configure-performance-routing-method"></a>Konfigurace metody směrování výkonu
 
 1. V prohlížeči se přihlaste k webu [Azure Portal](https://portal.azure.com). Pokud ještě účet nemáte, můžete si zaregistrovat [zkušební verzi na měsíc zdarma](https://azure.microsoft.com/free/). 
-2. Na panelu hledání na portálu vyhledejte **profily Traffic Manageru** a potom klikněte na název profilu, který chcete konfigurovat metodu směrování pro.
-3. V **profil služby Traffic Manager** okno, ověřte, zda jsou k dispozici cloudovými službami a weby, které chcete zahrnout do vaší konfigurace.
-4. V **nastavení** klikněte na tlačítko **konfigurace**a **konfigurace** okno vyplňte následujícím způsobem:
-    1. Pro **nastavení metodu směrování provozu**, pro **metodu směrování** vyberte **výkonu**.
-    2. Nastavte **nastavení sledování koncových bodů** shodné pro všechny každý koncový bod v rámci tohoto profilu následujícím způsobem:
-        1. Vyberte příslušné **protokol**a zadejte **Port** číslo. 
-        2. Pro **cesta** zadejte lomítkem */* . Monitorování koncových bodů, musíte zadat cestu a název souboru. Dopředné lomítko "/" je platná položka pro relativní cestu a znamená, že se soubor nachází v kořenovém adresáři (výchozí).
-        3. V horní části stránky klikněte na tlačítko **Uložit**.
-5.  Otestujte změny v konfiguraci následujícím způsobem:
-    1.  Na panelu hledání na portálu vyhledejte název profilu Traffic Manageru a klikněte na profil Traffic Manageru ve výsledcích, který je zobrazeno.
-    2.  V **Traffic Manageru** profilu okna, klikněte na tlačítko **přehled**.
-    3.  **Profil služby Traffic Manager** okně se zobrazí název DNS váš nově vytvořený profil Traffic Manageru. Tímto lze všechny klienty (například tak, že přejdete do ní pomocí webového prohlížeče) získat směrovat na správný koncový bod jako Určuje typ směrování. V tomto případě směrují všechny požadavky na koncový bod s nejnižší latenci v klientské síti.
-6. Jakmile váš profil Traffic Manageru funguje, upravte záznam DNS na autoritativního serveru DNS pro název domény vaší společnosti odkazovat na název domény Traffic Manageru.
+2. Na panelu hledání na portálu vyhledejte **Traffic Manager profily** a potom klikněte na název profilu, pro který chcete nakonfigurovat metodu směrování.
+3. V okně **profil Traffic Manager** ověřte, zda jsou k dispozici jak cloudové služby, tak i weby, které chcete zahrnout do vaší konfigurace.
+4. V části **Nastavení** klikněte na možnost **Konfigurace**a v okně **Konfigurace** proveďte následující kroky:
+    1. V případě metody **směrování provozu**vyberte v možnosti **Směrování** možnost **výkon**.
+    2. **Nastavení monitorování koncového bodu** nastavte u všech koncových bodů v tomto profilu stejným způsobem:
+        1. Vyberte odpovídající **protokol**a zadejte číslo **portu** . 
+        2. Pro **cestu** zadejte */* lomítka. Chcete-li monitorovat koncové body, je nutné zadat cestu a název souboru. Lomítko "/" je platná položka relativní cesty a předpokládá, že se soubor nachází v kořenovém adresáři (výchozí).
+        3. V horní části stránky klikněte na **Uložit**.
+5.  Proveďte test změn v konfiguraci následujícím způsobem:
+    1.  Na panelu hledání na portálu vyhledejte název profilu Traffic Manager a klikněte na profil Traffic Manager v zobrazených výsledcích.
+    2.  V okně profil **Traffic Manager** klikněte na **Přehled**.
+    3.  Okno **profil Traffic Manager** zobrazuje název DNS nově vytvořeného profilu Traffic Manager. Můžete je použít u všech klientů (například tak, že na ně přejdete pomocí webového prohlížeče), abyste se dostali ke správnému koncovému bodu, který určuje typ směrování. V tomto případě jsou všechny požadavky směrovány do koncového bodu s nejnižší latencí ze sítě klienta.
+6. Jakmile profil Traffic Manager funguje, upravte záznam DNS na autoritativním serveru DNS tak, aby odkazoval na název domény vaší společnosti na název domény Traffic Manager.
 
-![Konfigurace metody směrování provozu výkonu pomocí Traffic Manageru][1]
+![Konfigurace metody směrování provozu s výkonem pomocí Traffic Manager][1]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si o [metodě váženého směrování provozu](traffic-manager-configure-weighted-routing-method.md).
 - Přečtěte si o [metodě prioritního směrování](traffic-manager-configure-priority-routing-method.md).
 - Přečtěte si o [metodě geografického směrování](traffic-manager-configure-geographic-routing-method.md).
-- Zjistěte, jak [test nastavení Traffic Manageru](traffic-manager-testing-settings.md).
+- Naučte se [Testovat nastavení Traffic Manager](traffic-manager-testing-settings.md).
 
 <!--Image references-->
 [1]: ./media/traffic-manager-performance-routing-method/traffic-manager-performance-routing-method.png

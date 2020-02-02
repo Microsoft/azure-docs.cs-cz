@@ -1,6 +1,6 @@
 ---
-title: Použití Azure Active Directory k ověřování řešení pro správu dávek | Microsoft Docs
-description: Aplikace vytvořené pomocí Azure Resource Manager a poskytovatele prostředků služby Batch se ověřují pomocí Azure AD.
+title: Použití Azure Active Directory k ověřování řešení pro správu dávek
+description: Prozkoumejte použití Azure Active Directory k ověření z aplikací, které používají knihovnu Batch Management .NET.
 services: batch
 documentationcenter: .net
 author: ju-shim
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: jushiman
-ms.openlocfilehash: 19aac0e25f9a036ce52d72a51e1ab7270eaaf3e5
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 1dce5118040e6164a468b0d5470d28e5cd06d8c5
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029848"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938260"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Ověřování řešení Batch Management se službou Active Directory
 
@@ -47,7 +47,7 @@ Po dokončení procesu registrace uvidíte ID aplikace a ID objektu (instanční
 
 V dalším kroku budete muset delegovat přístup k vaší aplikaci na rozhraní Azure Resource Manager API. Identifikátor Azure AD pro rozhraní Správce prostředků API je **rozhraní API pro správu služeb Windows Azure**.
 
-Na webu Azure Portal postupujte podle těchto pokynů:
+Postupujte podle následujících kroků v Azure Portal:
 
 1. V levém navigačním podokně Azure Portal vyberte **všechny služby**, klikněte na **Registrace aplikací**a pak klikněte na **Přidat**.
 2. V seznamu registrací aplikací vyhledejte název vaší aplikace:

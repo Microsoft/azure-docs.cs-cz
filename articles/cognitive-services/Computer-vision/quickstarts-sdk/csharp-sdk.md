@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: aa162fb47eab84ff26af2256f8fe0ba9896b7cf0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 61e7da2d82262b234d9352c7a1198d121d7f73f9
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448288"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935769"
 ---
 # <a name="quickstart-computer-vision-client-library-for-net"></a>Rychlý Start: Klientská knihovna Počítačové zpracování obrazu pro .NET
 
@@ -110,7 +110,7 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klie
 > [!NOTE]
 > V tomto rychlém startu se předpokládá, že jste pro svůj Počítačové zpracování obrazu klíč a koncový bod [vytvořili proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) s názvem `COMPUTER_VISION_SUBSCRIPTION_KEY` a `COMPUTER_VISION_ENDPOINT`.
 
-V nové metodě vytvořte instanci klienta s vaším koncovým bodem a klíčem. Vytvořte objekt [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) s klíčem a použijte ho u svého koncového bodu k vytvoření objektu [ComputerVisionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet) .
+V nové metodě vytvořte instanci klienta s vaším koncovým bodem a klíčem. Vytvořte objekt **[ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.apikeyserviceclientcredentials?view=azure-dotnet)** s klíčem a použijte ho u svého koncového bodu k vytvoření objektu **[ComputerVisionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet)** .
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_auth)]
 
@@ -137,7 +137,7 @@ Ve vaší třídě **programu** uložte odkaz na adresu URL obrázku, který chc
 
 ### <a name="specify-visual-features"></a>Zadat vizuální funkce
 
-Definujte novou metodu pro analýzu obrázků. Přidejte následující kód, který určuje vizuální funkce, které chcete v analýze extrahovat. Úplný seznam najdete v [VisualFeatureTypes](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-dotnet) výčtu.
+Definujte novou metodu pro analýzu obrázků. Přidejte následující kód, který určuje vizuální funkce, které chcete v analýze extrahovat. Úplný seznam najdete v **[VisualFeatureTypes](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-dotnet)** výčtu.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_visualfeatures)]
 

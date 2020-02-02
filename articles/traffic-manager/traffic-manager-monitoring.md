@@ -2,22 +2,22 @@
 title: Monitorování koncového bodu Azure Traffic Manager | Microsoft Docs
 description: Tento článek vám může porozumět tomu, jak Traffic Manager používá monitorování koncového bodu a automatické převzetí služeb při selhání, aby zákazníci Azure mohli nasadit aplikace s vysokou dostupností
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
-ms.author: allensu
-ms.openlocfilehash: e06d2ce93ac7c534f2c729dce794e66e3ee894d8
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.author: rohink
+ms.openlocfilehash: fcc9c5333b37c041342c2d20a53cf5d3908d1a26
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333815"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938559"
 ---
-# <a name="traffic-manager-endpoint-monitoring"></a>Monitorování koncového bodu Traffic Manager
+# <a name="traffic-manager-endpoint-monitoring"></a>Monitorování koncových bodů Traffic Manageru
 
 Azure Traffic Manager zahrnuje integrované monitorování koncových bodů a automatické převzetí služeb při selhání koncového bodu. Tato funkce vám pomůže doručovat aplikace s vysokou dostupností, které jsou odolné vůči selhání koncového bodu, včetně selhání oblasti Azure.
 
@@ -34,13 +34,13 @@ Pokud chcete nakonfigurovat monitorování koncového bodu, musíte v profilu Tr
 * **Tolerovat se počet selhání**. Tato hodnota určuje, kolik selhání agentu pro zjišťování Traffic Manager před příznačením tohoto koncového bodu na stav není v pořádku. Jeho hodnota může být v rozsahu od 0 do 9. Hodnota 0 znamená, že u tohoto koncového bodu může být označení není v pořádku. Pokud není zadaná žádná hodnota, použije se výchozí hodnota 3.
 * **Vypršel časový limit testu**. Tato vlastnost určuje dobu, po kterou má Traffic Manager Agent pro zjišťování počkat, než se zkontroluje, že se do koncového bodu pošle sonda kontroly stavu. Pokud je interval zjišťování nastavený na 30 sekund, pak můžete nastavit hodnotu časového limitu v rozmezí 5 až 10 sekund. Pokud není zadaná žádná hodnota, použije se výchozí hodnota 10 sekund. Pokud je interval zjišťování nastavený na 10 sekund, můžete nastavit hodnotu časového limitu mezi 5 a 9 sekundami. Pokud není zadaná žádná hodnota časového limitu, použije se výchozí hodnota 9 sekund.
 
-    ![Monitorování koncového bodu Traffic Manager](./media/traffic-manager-monitoring/endpoint-monitoring-settings.png)
+    ![Monitorování koncových bodů Traffic Manageru](./media/traffic-manager-monitoring/endpoint-monitoring-settings.png)
 
-    **Obrázek  Monitorování koncového bodu Traffic Manager**
+    **Obrázek: Traffic Manager monitorování koncového bodu**
 
 ## <a name="how-endpoint-monitoring-works"></a>Jak funguje monitorování koncových bodů
 
-Pokud je monitorovací protokol nastavený jako HTTP nebo HTTPS, agent Traffic Managerho zjišťování vytvoří požadavek GET na koncový bod pomocí zadaného protokolu, portu a relativní cesty. Pokud se vrátí odpověď 200-OK nebo kterákoli z odpovědí nakonfigurovaných v **rozsahu očekávaného stavového kódu \*** , pak je tento koncový bod považován za dobrý. Pokud je odpověď jinou hodnotou, nebo pokud se v zadaném časovém limitu nepřijme žádná odpověď, pak se agent Traffic Manager pro zjišťování pokusí znovu pokusit v závislosti na nastavení Tolerováného počtu selhání (Pokud je toto nastavení 0), pokusí se znovu pokusy o vyhodnocování. Pokud je počet po sobě jdoucích selhání vyšší než nastavení tolerovat počet selhání, pak je tento koncový bod označený jako není v pořádku. 
+Pokud je monitorovací protokol nastavený jako HTTP nebo HTTPS, agent Traffic Managerho zjišťování vytvoří požadavek GET na koncový bod pomocí zadaného protokolu, portu a relativní cesty. Pokud se vrátí odpověď 200-OK nebo kterákoli z odpovědí nakonfigurovaných v **očekávaném stavovém kódu \*rozsahy**, pak je tento koncový bod považován za dobrý. Pokud je odpověď jinou hodnotou, nebo pokud se v zadaném časovém limitu nepřijme žádná odpověď, pak se agent Traffic Manager pro zjišťování pokusí znovu pokusit v závislosti na nastavení Tolerováného počtu selhání (Pokud je toto nastavení 0), pokusí se znovu pokusy o vyhodnocování. Pokud je počet po sobě jdoucích selhání vyšší než nastavení tolerovat počet selhání, pak je tento koncový bod označený jako není v pořádku. 
 
 Pokud je monitorovací protokol TCP, agent Traffic Manager probingu inicializuje požadavek na připojení TCP pomocí zadaného portu. Pokud koncový bod odpoví na požadavek s odezvou na navázání připojení, bude tato kontrolu stavu označena jako úspěšná a Agent Traffic Manager agenta pro zjišťování obnoví připojení TCP. Pokud je odpověď jinou hodnotou nebo pokud se nepřijme žádná odpověď v rámci zadaného časového limitu, agent Traffic Managerho zjišťování se pokusí znovu pokusit o nastavení Tolerovatho počtu chyb, pokud je toto nastavení 0). Pokud je počet po sobě jdoucích selhání vyšší než nastavení tolerovat počet selhání, pak je tento koncový bod označen jako není v pořádku.
 
@@ -69,12 +69,12 @@ Stav monitorování koncového bodu je Traffic Manager generovaná hodnota, kter
 
 | Stav profilu | Stav koncového bodu | Stav monitorování koncového bodu | Poznámky |
 | --- | --- | --- | --- |
-| Zakázáno |Enabled |Neaktivní |Profil byl zakázán. I když je stav koncového bodu povolený, má přednost stav profilu (zakázáno). Koncové body v zakázaných profilech nejsou monitorovány. Pro dotaz DNS se vrátí kód NXDOMAIN odezvy. |
-| &lt;jakýmikoli&gt; |Zakázáno |Zakázáno |Koncový bod byl zakázán. Zakázané koncové body nejsou monitorovány. Koncový bod není zahrnutý v odpovědích DNS, proto nepřijímá přenosy. |
-| Enabled |Enabled |Online |Koncový bod je monitorovaný a je v pořádku. Je součástí odpovědí DNS a může přijímat provoz. |
-| Enabled |Enabled |Sníženo |Kontrola stavu monitorování koncového bodu se nezdařila. Koncový bod není zahrnutý v odpovědích DNS a nepřijímá přenosy. <br>Výjimkou je situace, kdy jsou všechny koncové body degradovány, v takovém případě jsou všechny z nich považovány za vrácené v reakci na dotaz).</br>|
-| Enabled |Enabled |CheckingEndpoint |Koncový bod je monitorovaný, ale výsledky prvního testu se ještě nepřijaly. CheckingEndpoint je dočasný stav, který se obvykle objevuje hned po přidání nebo povolení koncového bodu v profilu. Koncový bod v tomto stavu je zahrnutý v odpovědích DNS a může přijímat přenosy. |
-| Enabled |Enabled |Zastaveno |Webová aplikace, na kterou ukazuje koncový bod, není spuštěna. Ověřte nastavení webové aplikace. K tomu může dojít také v případě, že koncový bod je typu vnořený koncový bod a podřízený profil je zakázán nebo je neaktivní. <br>Koncový bod se stavem zastaveno není monitorován. Není součástí odpovědí DNS a nepřijímá provoz. Výjimkou je situace, kdy jsou všechny koncové body degradovány, a v takovém případě se všechny z nich budou považovat za vrácené v odpovědi na dotaz.</br>|
+| Zakázáno |Povoleno |Termín |Profil byl zakázán. I když je stav koncového bodu povolený, má přednost stav profilu (zakázáno). Koncové body v zakázaných profilech nejsou monitorovány. Pro dotaz DNS se vrátí kód NXDOMAIN odezvy. |
+| &lt;jakékoli&gt; |Zakázáno |Zakázáno |Koncový bod byl zakázán. Zakázané koncové body nejsou monitorovány. Koncový bod není zahrnutý v odpovědích DNS, proto nepřijímá přenosy. |
+| Povoleno |Povoleno |Online |Koncový bod je monitorovaný a je v pořádku. Je součástí odpovědí DNS a může přijímat provoz. |
+| Povoleno |Povoleno |Snížený výkon |Kontrola stavu monitorování koncového bodu se nezdařila. Koncový bod není zahrnutý v odpovědích DNS a nepřijímá přenosy. <br>Výjimkou je situace, kdy jsou všechny koncové body degradovány, v takovém případě jsou všechny z nich považovány za vrácené v reakci na dotaz).</br>|
+| Povoleno |Povoleno |CheckingEndpoint |Koncový bod je monitorovaný, ale výsledky prvního testu se ještě nepřijaly. CheckingEndpoint je dočasný stav, který se obvykle objevuje hned po přidání nebo povolení koncového bodu v profilu. Koncový bod v tomto stavu je zahrnutý v odpovědích DNS a může přijímat přenosy. |
+| Povoleno |Povoleno |Zastaveno |Webová aplikace, na kterou ukazuje koncový bod, není spuštěna. Ověřte nastavení webové aplikace. K tomu může dojít také v případě, že koncový bod je typu vnořený koncový bod a podřízený profil je zakázán nebo je neaktivní. <br>Koncový bod se stavem zastaveno není monitorován. Není součástí odpovědí DNS a nepřijímá provoz. Výjimkou je situace, kdy jsou všechny koncové body degradovány, a v takovém případě se všechny z nich budou považovat za vrácené v odpovědi na dotaz.</br>|
 
 Podrobnosti o tom, jak se počítá stav monitorování koncového bodu pro vnořené koncové body, najdete v tématu [vnořené Traffic Manager profily](traffic-manager-nested-profiles.md).
 
@@ -87,11 +87,11 @@ Stav monitorování profilu je kombinace nakonfigurovaného stavu profilu a hodn
 
 | Stav profilu (jak je nakonfigurováno) | Stav monitorování koncového bodu | Stav monitorování profilu | Poznámky |
 | --- | --- | --- | --- |
-| Zakázáno |&lt;libovolný&gt; nebo profil bez definovaných koncových bodů. |Zakázáno |Profil byl zakázán. |
-| Enabled |Stav nejméně jednoho koncového bodu je degradován. |Sníženo |Zkontrolujte hodnoty stavu jednotlivých koncových bodů a určete, které koncové body vyžadují další pozornost. |
-| Enabled |Stav aspoň jednoho koncového bodu je online. Žádné koncové body nemají stav snížené úrovně. |Online |Služba přijímá provoz. Nevyžaduje se žádná další akce. |
-| Enabled |Stav nejméně jednoho koncového bodu je CheckingEndpoint. Žádné koncové body nejsou v režimu online nebo snížený stav. |CheckingEndpoints |K tomuto stavu přechodu dojde, pokud je profil vytvořen nebo povolen. Stav koncového bodu je kontrolován při prvním spuštění. |
-| Enabled |Stavy všech koncových bodů v profilu jsou buď zakázané, nebo zastavené, nebo profil nemá žádné definované koncové body. |Neaktivní |Žádné koncové body nejsou aktivní, ale profil je stále povolen. |
+| Zakázáno |&lt;všechny&gt; nebo profil bez definovaných koncových bodů. |Zakázáno |Profil byl zakázán. |
+| Povoleno |Stav nejméně jednoho koncového bodu je degradován. |Snížený výkon |Zkontrolujte hodnoty stavu jednotlivých koncových bodů a určete, které koncové body vyžadují další pozornost. |
+| Povoleno |Stav aspoň jednoho koncového bodu je online. Žádné koncové body nemají stav snížené úrovně. |Online |Služba přijímá provoz. Nevyžaduje se žádná další akce. |
+| Povoleno |Stav nejméně jednoho koncového bodu je CheckingEndpoint. Žádné koncové body nejsou v režimu online nebo snížený stav. |CheckingEndpoints |K tomuto stavu přechodu dojde, pokud je profil vytvořen nebo povolen. Stav koncového bodu je kontrolován při prvním spuštění. |
+| Povoleno |Stavy všech koncových bodů v profilu jsou buď zakázané, nebo zastavené, nebo profil nemá žádné definované koncové body. |Termín |Žádné koncové body nejsou aktivní, ale profil je stále povolen. |
 
 ## <a name="endpoint-failover-and-recovery"></a>Převzetí služeb při selhání a obnovení koncového bodu
 
@@ -112,9 +112,9 @@ Další informace o řešení neúspěšných kontrol najdete v tématu [řešen
 
 ![Pořadí převzetí služeb při selhání koncového bodu Traffic Manager](./media/traffic-manager-monitoring/timeline.png)
 
-**Obrázek  Selhání koncového bodu služby Traffic Manager a sekvence obnovení**
+**Obrázek: převzetí služeb při selhání koncového bodu Traffic Manageru a posloupnost obnovení**
 
-1. **ZÍSKAT**. U každého koncového bodu provede Traffic Manager monitorovací systém požadavek GET na cestě určenou v nastavení monitorování.
+1. **Získat**. U každého koncového bodu provede Traffic Manager monitorovací systém požadavek GET na cestě určenou v nastavení monitorování.
 2. **200 OK nebo vlastní rozsah kódu zadaný Traffic Manager nastavení monitorování profilu** . Systém monitorování očekává, že se v rámci 10 sekund má vrátit protokol HTTP 200 OK nebo nebo vlastní rozsah kódu, Traffic Manager se zpráva nastavení monitorování profilu. Při přijetí této odpovědi rozpozná, že je služba k dispozici.
 3. **30 sekund mezi kontrolami**. Kontrolu stavu koncového bodu se opakuje každých 30 sekund.
 4. **Služba není k dispozici**. Služba nebude k dispozici. Traffic Manager nebude znát až do další kontroly stavu.
@@ -135,8 +135,8 @@ Pokud má koncový bod stav snížené úrovně, nebude se už vracet v reakci n
 * **Priorita**. Koncové body tvoří seznam s určenou prioritou. První dostupný koncový bod v seznamu se vždycky vrátí. Pokud je stav koncového bodu zhoršený, vrátí se další dostupný koncový bod.
 * **Vážená**. Libovolný dostupný koncový bod se náhodně vybere na základě jejich přiřazených vah a závaží dalších dostupných koncových bodů.
 * **Výkon**. Vrátí se koncový bod nejbližší koncovému uživateli. Pokud tento koncový bod není k dispozici, Traffic Manager přesune provoz do koncových bodů v nejbližší nejbližší oblasti Azure. Pomocí [vnořených profilů Traffic Manager](traffic-manager-nested-profiles.md#example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region)můžete nakonfigurovat alternativní plány převzetí služeb při selhání pro přenosy výkonu.
-* **Geografické**. Koncový bod namapovaný na poskytování geografického umístění na základě žádosti o IP adresu požadavku na dotaz je vrácen. Pokud tento koncový bod není k dispozici, není vybrán jiný koncový bod pro převzetí služeb při selhání, protože zeměpisná poloha může být mapována pouze na jeden koncový bod v profilu [](traffic-manager-FAQs.md#traffic-manager-geographic-traffic-routing-method)(další podrobnosti najdete v nejčastějších dotazech). Doporučujeme, abyste při použití geografického směrování používali zákazníkům vnořené Traffic Manager profily s více než jedním koncovým bodem jako koncovými body profilu.
-* **Vícehodnotové** Vrátí se několik koncových bodů mapovaných k adresám IPv4/IPv6. Při přijetí dotazu pro tento profil jsou v pořádku koncové body v závislosti na maximálním **počtu záznamů v hodnotě odpovědi** , kterou jste zadali. Výchozí počet odpovědí je dva koncové body.
+* **Geografické**. Koncový bod namapovaný na poskytování geografického umístění na základě žádosti o IP adresu požadavku na dotaz je vrácen. Pokud tento koncový bod není k dispozici, není vybrán jiný koncový bod pro převzetí služeb při selhání, protože zeměpisná poloha může být mapována pouze na jeden koncový bod v profilu (další podrobnosti najdete v [nejčastějších dotazech](traffic-manager-FAQs.md#traffic-manager-geographic-traffic-routing-method)). Doporučujeme, abyste při použití geografického směrování používali zákazníkům vnořené Traffic Manager profily s více než jedním koncovým bodem jako koncovými body profilu.
+* **Vícehodnotové** Vrátí se několik koncových bodů mapovaných k adresám IPv4/IPv6. Při přijetí dotazu pro tento profil jsou v pořádku koncové body v závislosti na **maximálním počtu záznamů v hodnotě odpovědi** , kterou jste zadali. Výchozí počet odpovědí je dva koncové body.
 * **Podsíť** Vrátí se koncový bod mapovaný na sadu rozsahů IP adres. Při přijetí požadavku z této IP adresy se vrátí koncový bod, který je pro tuto IP adresu namapovaný. 
 
 Další informace najdete v tématu [Traffic Manager metody směrování provozu](traffic-manager-routing-methods.md).
@@ -201,4 +201,4 @@ Další informace o [metodách směrování provozu](traffic-manager-routing-met
 
 Informace o tom, jak [vytvořit profil Traffic Manager](traffic-manager-manage-profiles.md)
 
-[Řešení potíží](traffic-manager-troubleshooting-degraded.md) se stavem sníženého koncového bodu Traffic Manager
+[Řešení potíží se stavem sníženého](traffic-manager-troubleshooting-degraded.md) koncového bodu Traffic Manager

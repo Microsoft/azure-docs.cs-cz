@@ -1,33 +1,33 @@
 ---
-title: Diagnostika a řešení potíží odpojení pomocí Azure IoT Hub
-description: Naučte se diagnostikovat a řešit běžné chyby s připojením zařízení pro Azure IoT Hub
+title: Monitorování a řešení potíží odpojení pomocí Azure IoT Hub
+description: Naučte se monitorovat a řešit běžné chyby s připojením zařízení pro Azure IoT Hub
 author: jlian
 manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/19/2018
+ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: 3904c6390cfe8de197bae470c4ae32d22605ae6a
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: ed1abe3565805810a6a3fe383e1ddfa209950469
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801423"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935375"
 ---
-# <a name="detect-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Zjištění a řešení potíží odpojení pomocí Azure IoT Hub
+# <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Monitorování, diagnostika a řešení potíží odpojení pomocí Azure IoT Hub
 
-Problémy s připojením pro zařízení IoT můžou být obtížné řešit, protože existuje mnoho možných bodů selhání. Všechny problémy s logikou aplikací na straně zařízení, fyzických sítí, protokolů, hardwaru a Azure IoT Hub můžou způsobovat problémy. Tento článek poskytuje doporučení, jak zjistit a řešit potíže s připojením zařízení na straně cloudu (na rozdíl od straně zařízení).
+Problémy s připojením pro zařízení IoT můžou být obtížné řešit, protože existuje mnoho možných bodů selhání. Služba Application Logic, fyzické sítě, protokoly, hardware, IoT Hub a další cloudové služby mohou způsobovat problémy. Možnost detekovat a identifikovat zdroj problému je kritická. Řešení IoT ve velkém měřítku ale může mít tisíce zařízení, takže není praktické kontrolovat jednotlivá zařízení ručně. Aby vám pomohl detekovat, diagnostikovat a řešit tyto problémy ve velkém měřítku, využijte možnosti monitorování IoT Hub poskytuje prostřednictvím Azure Monitor. Tyto možnosti jsou omezené na to, co IoT Hub může sledovat, proto doporučujeme, abyste pro zařízení a další služby Azure sledovali osvědčené postupy monitorování.
 
 ## <a name="get-alerts-and-error-logs"></a>Získat výstrahy a protokoly chyb
 
-Pomocí Azure Monitor získat výstrahy a zapsat protokoly při vyřazení zařízení z provozu.
+Pomocí Azure Monitor můžete získat výstrahy a zapsat protokoly, když se zařízení odpojí.
 
 ### <a name="turn-on-diagnostic-logs"></a>Zapnout diagnostické protokoly
 
-Pokud chcete protokolovat události a chyby připojení zařízení, zapněte diagnostiku pro IoT Hub.
+Pokud chcete protokolovat události a chyby připojení zařízení, zapněte diagnostiku pro IoT Hub. Tyto protokoly doporučujeme co nejdříve zapnout, protože pokud nejsou povolené diagnostické protokoly a dojde k odpojení zařízení, nebudete mít k dispozici žádné informace k řešení problému se službou.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
 
 2. Přejděte do služby IoT Hub.
 
@@ -39,15 +39,15 @@ Pokud chcete protokolovat události a chyby připojení zařízení, zapněte di
 
 6. Pro snazší analýzu zapněte **odeslání do Log Analytics** ([Viz ceny](https://azure.microsoft.com/pricing/details/log-analytics/)). Podívejte se na příklad v části [řešení chyb připojení](#resolve-connectivity-errors).
 
-   ![Doporučená nastavení](./media/iot-hub-troubleshoot-connectivity/diagnostic-settings-recommendation.png)
+   ![Doporučené nastavení](./media/iot-hub-troubleshoot-connectivity/diagnostic-settings-recommendation.png)
 
 Další informace najdete v tématu [monitorování stavu Azure IoT Hub a rychlé diagnostikování problémů](iot-hub-monitor-resource-health.md).
 
-### <a name="set-up-alerts-for-the-_connected-devices_-count-metric"></a>Nastavte výstrahy pro metriku počtu _připojených zařízení_ .
+### <a name="set-up-alerts-for-device-disconnect-at-scale"></a>Nastavení upozornění pro odpojení zařízení ve velkém měřítku
 
 Pokud chcete dostávat upozornění, když se zařízení odpojí, nakonfigurujte upozornění na metrikě **připojená zařízení (Preview)** .
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
 
 2. Přejděte do služby IoT Hub.
 
@@ -57,43 +57,46 @@ Pokud chcete dostávat upozornění, když se zařízení odpojí, nakonfigurujt
 
 5. Vyberte **Přidat podmínku**a pak vyberte připojená zařízení (Preview).
 
-6. Dokončete nastavení požadovaných prahových hodnot a možností upozorňování podle pokynů.
+6. Nastavte prahovou hodnotu a výstrahy pomocí následujících výzev.
 
-Další informace najdete v tématu [co jsou klasické výstrahy v Microsoft Azure?](../azure-monitor/platform/alerts-overview.md).
+Další informace najdete v tématu [co jsou výstrahy v Microsoft Azure?](../azure-monitor/platform/alerts-overview.md).
+
+#### <a name="detecting-individual-device-disconnects"></a>Zjišťování odpojení jednotlivých zařízení
+
+Chcete-li detekovat odpojení *podle zařízení* , například pokud potřebujete znát objekt pro vytváření, který je právě přepnut do režimu offline, [nakonfigurujte události odpojení zařízení pomocí Event Grid](iot-hub-event-grid.md).
 
 ## <a name="resolve-connectivity-errors"></a>Řešení chyb připojení
 
-Když zapnete diagnostické protokoly a výstrahy pro připojená zařízení, zobrazí se upozornění, když dojde k chybám. Tato část popisuje, jak vyřešit běžné problémy, když obdržíte výstrahu. Následující postup předpokládá, že jste nastavili protokoly Azure Monitor pro diagnostické protokoly.
+Když zapnete diagnostické protokoly a výstrahy pro připojená zařízení, zobrazí se upozornění, když dojde k chybám. Tato část popisuje, jak vyhledat běžné problémy, když obdržíte výstrahu. Následující postup předpokládá, že jste nastavili protokoly Azure Monitor pro diagnostické protokoly.
 
-1. Pro **Log Analytics** v Azure Portal si Projděte svůj pracovní prostor.
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
 
-2. Vyberte **prohledávání protokolu**.
+1. Přejděte do služby IoT Hub.
 
-3. Pokud chcete izolovat protokoly chyb připojení pro IoT Hub, zadejte následující dotaz a pak vyberte **Spustit**:
+1. Vyberte **Protokoly**.
+
+1. Pokud chcete izolovat protokoly chyb připojení pro IoT Hub, zadejte následující dotaz a pak vyberte **Spustit**:
 
     ```kusto
-    search *
-    | where ( Type == "AzureDiagnostics" and ResourceType == "IOTHUBS")
-    | where ( Category == "Connections" and Level == "Error")
+    AzureDiagnostics
+    | where ( ResourceType == "IOTHUBS" and Category == "Connections" and Level == "Error")
     ```
 
-1. Pokud jsou k dispozici výsledky, `OperationName`vyhledejte `ResultType` , (kód chyby) a `ResultDescription` (chybová zpráva), abyste získali více podrobností o chybě.
+1. Pokud dojde k výsledkům, vyhledejte `OperationName`, `ResultType` (kód chyby) a `ResultDescription` (chybová zpráva), abyste získali více podrobností o chybě.
 
    ![Příklad protokolu chyb](./media/iot-hub-troubleshoot-connectivity/diag-logs.png)
 
-2. Pomocí této tabulky můžete pochopit a řešit běžné chyby.
+1. Projděte si průvodce řešením problémů s nejčastějšími chybami:
 
-    | Chyba | Původní příčina | Řešení |
-    |-------|------------|------------|
-    | 404104 DeviceConnectionClosedRemotely | Připojení bylo zavřeno zařízením, ale IoT Hub neví, proč. Mezi běžné příčiny patří časový limit MQTT/AMQP a ztráta připojení k Internetu. | Ujistěte se, že se zařízení může připojit k IoT Hub [otestováním připojení](tutorial-connectivity.md). Pokud je připojení v pořádku, ale zařízení se odpojí, ujistěte se, že jste implementovali správnou logiku zařízení Keep Alive pro zvolený protokol (MQTT/AMPQ). |
-    | 401003 IoTHubUnauthorized | IoT Hub nemohl ověřit připojení. | Ujistěte se, že vypršela platnost SAS nebo jiného tokenu zabezpečení, který používáte. Sady [SDK Azure IoT](iot-hub-devguide-sdks.md) automaticky generují tokeny bez nutnosti speciální konfigurace. |
-    | 409002 LinkCreationConflict | Zařízení má více než jedno připojení. Když se pro zařízení dostane nový požadavek na připojení, IoT Hub se s touto chybou zavře předchozí. | V nejběžnějším případě zařízení zjistí odpojení a pokusí se znovu vytvořit připojení, ale IoT Hub se i nadále považovat za připojené zařízení. IoT Hub zavře předchozí připojení a zaznamená tuto chybu. Tato chyba se obvykle zobrazuje v důsledku vedlejšího efektu jiného, přechodného problému, takže se můžete podívat na další chyby v protokolech k dalšímu řešení potíží. V opačném případě se ujistěte, že chcete vydat novou žádost o připojení pouze v případě, že se připojení uvolní. |
-    | 500001 ServerError | IoT Hub došlo k problému na straně serveru. Problém je pravděpodobně přechodný. I když tým IoT Hub zachovává [smlouvu SLA](https://azure.microsoft.com/support/legal/sla/iot-hub/), malé podmnožiny IoT Hub uzlů můžou občas docházet k přechodným chybám. Když se vaše zařízení pokusí připojit k uzlu, kde dochází k problémům, zobrazí se tato chyba. | Chcete-li zmírnit přechodnou chybu, vydejte na zařízení Opakovaný pokus. Pokud chcete [automaticky spravovat opakované pokusy](iot-hub-reliability-features-in-sdks.md#connection-and-retry), ujistěte se, že používáte nejnovější verzi [sad SDK služby Azure IoT](iot-hub-devguide-sdks.md).<br><br>Osvědčené postupy při zpracování přechodných chyb a opakování najdete v tématu [zpracování přechodných chyb](/azure/architecture/best-practices/transient-faults).  <br><br>Pokud potíže potrvají i po opakování, zkontrolujte [Resource Health](iot-hub-monitor-resource-health.md#use-azure-resource-health) a [Azure status](https://azure.microsoft.com/status/history/) a zjistěte, zda IoT Hub má známý problém. Pokud neexistují žádné známé problémy a problém přetrvává, obraťte se na [podporu a požádejte](https://azure.microsoft.com/support/options/) o další šetření. |
-    | 500008 GenericTimeout | IoT Hub nemohl dokončit požadavek na připojení před vypršením časového limitu. Podobně jako v 500001 ServerError se tato chyba může dočasná. | Postupujte podle kroků pro řešení potíží, které se 500001 ServerError, do hlavní příčiny a vyřešte tuto chybu.|
+    - **[404104 DeviceConnectionClosedRemotely](iot-hub-troubleshoot-error-404104-deviceconnectionclosedremotely.md)**
+    - **[401003 IoTHubUnauthorized](iot-hub-troubleshoot-error-401003-iothubunauthorized.md)**
+    - **[409002 LinkCreationConflict](iot-hub-troubleshoot-error-409002-linkcreationconflict.md)**
+    - **[500001 ServerError](iot-hub-troubleshoot-error-500xxx-internal-errors.md)**
+    - **[500008 GenericTimeout](iot-hub-troubleshoot-error-500xxx-internal-errors.md)**
 
-## <a name="other-steps-to-try"></a>Další kroky k vyzkoušení
+## <a name="i-tried-the-steps-but-they-didnt-work"></a>Vyzkoušel jsem postup, ale nefungoval
 
-Pokud předchozí kroky nemohly být užitečné, můžete zkusit:
+Pokud vám předchozí kroky neudělaly, zkuste:
 
 * Pokud máte přístup k problematickým zařízením buď fyzicky, nebo vzdáleně (jako je SSH), postupujte podle pokynů v [Průvodci odstraňováním potíží na straně zařízení](https://github.com/Azure/azure-iot-sdk-node/wiki/Troubleshooting-Guide-Devices) a pokračujte v řešení potíží.
 

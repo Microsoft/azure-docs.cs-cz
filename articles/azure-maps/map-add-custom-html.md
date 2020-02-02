@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5a15b3b9e51772d8c7e5312968fecb180069e2a7
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 4cc3b1789ef2f7ef44e5421cbacb5a93c2a0a1ff
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911248"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933611"
 ---
 # <a name="add-html-markers-to-the-map"></a>Přidání značek HTML do mapy
 
@@ -24,7 +24,7 @@ V tomto článku se dozvíte, jak přidat vlastní kód HTML, jako je napříkla
 > Značky HTML se nepřipojují ke zdrojům dat. Místo toho se informace o poloze přidávají přímo do značky a značka se přidá do vlastnosti `markers` mapy, která je [HtmlMarkerManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager?view=azure-iot-typescript-latest).
 
 > [!IMPORTANT]
-> Na rozdíl od většiny vrstev ve webovém ovládacím prvku Azure Maps, které používají WebGL pro vykreslování, používají značky HTML tradiční prvky DOM pro vykreslování. V takovém případě více značek HTML přidalo stránku, další prvky modelu DOM jsou. Výkon se může snížit po přidání několika stovek značek HTML. U větších datových sad zvažte buď vytvoření clusterů dat, nebo použití symbolu nebo bublinové vrstvy.
+> Na rozdíl od většiny vrstev ve webovém ovládacím prvku Azure Maps, které používají WebGL pro vykreslování, používají značky HTML tradiční prvky DOM pro vykreslování. V takovém případě je více značek HTML přidaných na stránku, další prvky modelu DOM, které jsou k dispozici. Výkon se může snížit po přidání několika stovek značek HTML. U větších datových sad zvažte buď vytvoření clusterů dat, nebo použití symbolu nebo bublinové vrstvy.
 
 ## <a name="add-an-html-marker"></a>Přidat značku HTML
 
@@ -33,7 +33,7 @@ Třída [HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-contro
 Následující kód vytvoří značku HTML a nastaví vlastnost Color na "DodgerBlue" a vlastnost text na "10". Automaticky otevíraná okna jsou připojena k značce a `click` událost slouží k přepnutí viditelnosti místní nabídky.
 
 ```javascript
-//Create a HTML marker and add it to the map.
+//Create an HTML marker and add it to the map.
 var marker = new atlas.HtmlMarker({
     color: 'DodgerBlue',
     text: '10',

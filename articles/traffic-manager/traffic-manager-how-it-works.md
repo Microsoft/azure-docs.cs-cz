@@ -3,7 +3,7 @@ title: Jak funguje Azure Traffic Manager | Microsoft Docs
 description: Tento článek vám pomůže pochopit, jak Traffic Manager směrovat provoz pro zajištění vysokého výkonu a dostupnosti webových aplikací.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
-ms.author: allensu
-ms.openlocfilehash: 281e1e591d7c3cc31b77a116fb42af49dc27798c
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.author: rohink
+ms.openlocfilehash: 709e89b94ba10db954aa5cf3f70aeffb0d239edb
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312153"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938625"
 ---
 # <a name="how-traffic-manager-works"></a>Jak Traffic Manager funguje
 
@@ -49,7 +49,7 @@ Chcete-li dosáhnout této konfigurace, proveďte následující kroky:
 
 ### <a name="how-clients-connect-using-traffic-manager"></a>Jak se klienti připojují pomocí Traffic Manager
 
-Když klient požádá o stránku https://partners.contoso.com/login.aspx, provede následující kroky, aby vyřešil název DNS a navázal připojení:
+Když klient v předchozím příkladu vyžádá stránku https://partners.contoso.com/login.aspx, provede následující kroky, aby vyřešil název DNS a navázal připojení:
 
 ![Vytvoření připojení pomocí Traffic Manager][2]
 
@@ -67,7 +67,7 @@ Když klient požádá o stránku https://partners.contoso.com/login.aspx, prove
 7. Rekurzivní služba DNS slučuje výsledky a vrátí jednu odpověď DNS klientovi.
 8. Klient obdrží výsledky DNS a připojí se k dané IP adrese. Klient se připojí ke koncovému bodu služby Application Service přímo, nikoli prostřednictvím Traffic Manager. Vzhledem k tomu, že se jedná o koncový bod HTTPS, klient provede nezbytnou metodu handshake protokolu SSL/TLS a pak vytvoří požadavek HTTP GET na stránku/Login.aspx.
 
-Rekurzivní služba DNS ukládá do mezipaměti odpovědi DNS, které obdrží. Překladač DNS v klientském zařízení ukládá do mezipaměti také výsledek. Ukládání do mezipaměti umožňuje rychlejší zodpovězení dalších dotazů DNS pomocí dat z mezipaměti, nikoli při dotazování na jiné názvové servery. Doba trvání mezipaměti je určena vlastností TTL (Time-to-Live) každého záznamu DNS. Výsledkem kratších hodnot je rychlejší vypršení platnosti mezipaměti, což znamená větší zpáteční přenos na Traffic Manager názvové servery. Delší hodnota znamená, že může trvat delší dobu, než se přesměruje provoz z neúspěšného koncového bodu. Traffic Manager umožňuje nakonfigurovat hodnotu TTL použitou v Traffic Manager odpovědích DNS tak, aby byla menší než 0 sekund a 2 147 483 647 sekund (maximální rozsah kompatibilní se [specifikací RFC-1035](https://www.ietf.org/rfc/rfc1035.txt)), což vám umožní zvolit hodnotu, která nejlépe vyrovnává požadavky vaše aplikace.
+Rekurzivní služba DNS ukládá do mezipaměti odpovědi DNS, které obdrží. Překladač DNS v klientském zařízení ukládá do mezipaměti také výsledek. Ukládání do mezipaměti umožňuje rychlejší zodpovězení dalších dotazů DNS pomocí dat z mezipaměti, nikoli při dotazování na jiné názvové servery. Doba trvání mezipaměti je určena vlastností TTL (Time-to-Live) každého záznamu DNS. Výsledkem kratších hodnot je rychlejší vypršení platnosti mezipaměti, což znamená větší zpáteční přenos na Traffic Manager názvové servery. Delší hodnota znamená, že může trvat delší dobu, než se přesměruje provoz z neúspěšného koncového bodu. Traffic Manager umožňuje nakonfigurovat hodnotu TTL použitou v Traffic Manager odpovědích DNS tak, aby byla menší než 0 sekund a 2 147 483 647 sekund (maximální rozsah kompatibilní se [specifikací RFC-1035](https://www.ietf.org/rfc/rfc1035.txt)), což vám umožní zvolit hodnotu, která nejlépe vyvažuje požadavky vaší aplikace.
 
 ## <a name="faqs"></a>Nejčastější dotazy
 
@@ -93,7 +93,7 @@ Rekurzivní služba DNS ukládá do mezipaměti odpovědi DNS, které obdrží. 
 
 * [Jak můžu pochopit objem dotazů přicházejících do svého profilu?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-understand-the-volume-of-queries-coming-to-my-profile)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Traffic Manager [monitorování koncového bodu a automatické převzetí služeb při selhání](traffic-manager-monitoring.md).
 

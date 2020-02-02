@@ -3,7 +3,7 @@ title: Používání služeb vyrovnávání zatížení v Azure | Microsoft Docs
 description: 'V tomto kurzu se dozvíte, jak vytvořit scénář pomocí portfolia vyrovnávání zatížení Azure: Traffic Manager, Application Gateway a Load Balancer.'
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,17 +11,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
-ms.author: allensu
-ms.openlocfilehash: 4a7f8fd45b1e496ba3f0208d523ac569a24e9e7c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: b77248813463f51d4bd2c5186e421aec43ffaf52
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227791"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939212"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Použití služeb pro vyrovnávání zatížení v Azure
 
-## <a name="introduction"></a>Úvod
+## <a name="introduction"></a>Představení
 
 Microsoft Azure poskytuje několik služeb pro správu způsobu distribuce a vyrovnávání zatížení v provozu v síti. Tyto služby můžete použít samostatně nebo zkombinovat své metody podle vašich potřeb, abyste vytvořili optimální řešení.
 
@@ -88,10 +88,10 @@ Následující diagram znázorňuje architekturu tohoto scénáře:
    * **Počet**instancí: počet instancí, hodnota od 2 do 10.
    * **Skupina prostředků**: Skupina prostředků, která obsahuje aplikační bránu. Může se jednat o existující skupinu prostředků nebo o novou.
    * **Location (umístění**): oblast pro aplikační bránu, která je stejně umístění jako skupina prostředků. Umístění je důležité, protože virtuální síť a veřejná IP adresa musí být ve stejném umístění jako brána.
-3. Klikněte na tlačítko **OK**.
+3. Klikněte na **OK**.
 4. Definujte konfigurace virtuální sítě, podsítě, front-endové IP adresy a naslouchacího procesu pro službu Application Gateway. V tomto scénáři je front-end IP adresa **Veřejná**, což umožňuje později přidat jako koncový bod do profilu Traffic Manager.
 5. Nakonfigurujte naslouchací proces pomocí jedné z následujících možností:
-    * Pokud používáte protokol HTTP, není k dispozici žádná konfigurace. Klikněte na tlačítko **OK**.
+    * Pokud používáte protokol HTTP, není k dispozici žádná konfigurace. Klikněte na **OK**.
     * Pokud používáte protokol HTTPS, je vyžadována další konfigurace. Podívejte se na téma [Vytvoření aplikační brány](../application-gateway/application-gateway-create-gateway-portal.md), počínaje krokem 9. Po dokončení konfigurace klikněte na **OK**.
 
 #### <a name="configure-url-routing-for-application-gateways"></a>Konfigurace směrování adres URL pro brány Application Gateway

@@ -3,7 +3,7 @@ title: Měření reálných uživatelů s Visual Studio Mobile Center – Azure 
 description: Nastavte mobilní aplikaci vyvinutou pomocí aplikace Visual Studio Mobile Center k odeslání Měření reálných uživatelů do Traffic Manager
 services: traffic-manager
 documentationcenter: traffic-manager
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/16/2018
-ms.author: allensu
+ms.author: rohink
 ms.custom: ''
-ms.openlocfilehash: 734049a45eca2688b2ad309ee3245bbb7bf152de
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 3106334e1fb3e3000cbd09e00e413b34a1b55e54
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74040321"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939190"
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Postup odeslání Měření reálných uživatelů pro Traffic Manager v aplikaci Visual Studio Mobile Center
 

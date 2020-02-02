@@ -1,6 +1,6 @@
 ---
-title: Úlohy kontejneru – Azure Batch | Microsoft Docs
-description: Naučte se spouštět aplikace z imagí kontejnerů na Azure Batch.
+title: Úlohy kontejneru – Azure Batch
+description: Naučte se spouštět a škálovat aplikace z imagí kontejnerů na Azure Batch. Vytvořte fond výpočetních uzlů, které podporují spouštění úloh kontejneru.
 services: batch
 author: ju-shim
 manager: gwallace
@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 08/09/2019
 ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 097ab13ad64477274e756d8e8e93e3614dd1a4e8
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 493c9b30f6c7f735d69e113f3f1efe26ca6c1576
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029723"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935053"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Spustit aplikace kontejneru v Azure Batch
 

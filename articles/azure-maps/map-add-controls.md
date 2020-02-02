@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 6652ca30d9f38eb6184fce5f1ff5428d29c271a6
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: e2ad8eb181685d3ac3de8b1e0ed7ef8ddfa4e224
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911270"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933281"
 ---
 # <a name="add-controls-to-a-map"></a>Přidání ovládacích prvků do mapy
 
@@ -39,7 +39,7 @@ Níže je uvedená ukázka kompletního spuštění kódu výše uvedené funkce
 
 ## <a name="add-pitch-control"></a>Přidat ovládací prvek sklonu
 
-Ovládací prvek sklonu přidá tlačítka pro naklonění sklonu k mapě vzhledem k horizontu. Následující ukázka kódu vytvoří instanci třídy [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) a přidá ji do pravého horního rohu mapy.
+Ovládací prvek sklonu přidá tlačítka pro naklonění sklonu k mapě vzhledem k horizontu. Následující ukázka kódu vytvoří instanci třídy [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) . Přidá PitchControl do pravého horního rohu mapy.
 
 ```javascript
 //Construct a pitch control and add it to the map.

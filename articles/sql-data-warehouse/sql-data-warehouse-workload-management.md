@@ -11,12 +11,12 @@ ms.date: 01/13/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 66edde9591d4491fa630772f99372f9901319b2f
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 287ad5467f9f3aac7eb8c9d7c19ea15c380c6879
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940581"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935415"
 ---
 # <a name="what-is-workload-management"></a>Co je Správa úloh?
 
@@ -31,7 +31,7 @@ Zatížení datového skladu odkazuje na všechny operace, které se zobrazí ve
 - Export dat z datového skladu
 
 Kapacita výkonu datového skladu je určena [jednotkami datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md).
-- Chcete-li zobrazit prostředky přidělené pro všechny profily výkonu, přečtěte si téma [limity paměti a souběžnosti] paměť-Concurrency-limits.md).
+- Pokud chcete zobrazit prostředky přidělené pro všechny profily výkonu, přečtěte si téma [limity paměti a souběžnosti](memory-concurrency-limits.md).
 - Pokud chcete nastavit kapacitu, můžete [škálovat směrem nahoru nebo dolů](quickstart-scale-compute-portal.md).
 
 

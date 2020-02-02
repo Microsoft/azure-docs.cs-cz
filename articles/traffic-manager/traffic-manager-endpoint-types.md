@@ -3,7 +3,7 @@ title: Traffic Manager typy koncových bodů | Microsoft Docs
 description: Tento článek popisuje různé typy koncových bodů, které je možné používat s Azure Traffic Manager
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,15 +11,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
-ms.author: allensu
-ms.openlocfilehash: 9de5b161c6bb1897058898dddd620ad093f148be
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.author: rohink
+ms.openlocfilehash: 3d8f899a7899243129d31c2620a51dc764a8e917
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981057"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938666"
 ---
-# <a name="traffic-manager-endpoints"></a>Koncové body služby Traffic Manager
+# <a name="traffic-manager-endpoints"></a>Koncové body Traffic Manageru
 
 Microsoft Azure Traffic Manager vám umožní řídit způsob distribuce síťového provozu do nasazení aplikací spuštěných v různých datových centrech. Každé nasazení aplikace nakonfigurujete jako koncový bod v Traffic Manager. Když Traffic Manager obdrží požadavek DNS, zvolí dostupný koncový bod, který se vrátí v odpovědi DNS. Traffic Manager vychází z výběru aktuálního stavu koncového bodu a metody směrování provozu. Další informace najdete v tématu [jak Traffic Manager funguje](traffic-manager-how-it-works.md).
 
@@ -55,7 +55,7 @@ Externí koncové body se používají pro adresy IPv4/IPv6, plně kvalifikovan�
 * Snižte latenci aplikací pro uživatele po celém světě a rozšíříte stávající místní aplikaci do dalších geografických umístění v Azure. Další informace najdete v tématu [Traffic Manager směrování provozu výkonu](traffic-manager-routing-methods.md#performance).
 * Poskytněte další kapacitu pro existující místní aplikaci, ať už nepřetržitě nebo jako řešení typu "shluk-to-Cloud", aby splňovala špičku v poptávce pomocí Azure.
 
-V některých případech je užitečné použít externí koncové body, které odkazují na služby Azure (příklady najdete v nejčastějších [dotazech](traffic-manager-faqs.md#traffic-manager-endpoints)). V takovém případě se kontroly stavu účtují podle kurzu koncových bodů Azure, ne podle sazby externích koncových bodů. Nicméně na rozdíl od koncových bodů Azure když zastavíte nebo odstraníte základní službu, fakturace kontroly stavu pokračuje, dokud nezakážete nebo neodstraníte koncový bod v Traffic Manager.
+V některých případech je užitečné použít externí koncové body, které odkazují na služby Azure (příklady najdete v [nejčastějších dotazech](traffic-manager-faqs.md#traffic-manager-endpoints)). V takovém případě se kontroly stavu účtují podle kurzu koncových bodů Azure, ne podle sazby externích koncových bodů. Nicméně na rozdíl od koncových bodů Azure když zastavíte nebo odstraníte základní službu, fakturace kontroly stavu pokračuje, dokud nezakážete nebo neodstraníte koncový bod v Traffic Manager.
 
 ## <a name="nested-endpoints"></a>Vnořené koncové body
 
@@ -67,7 +67,7 @@ Při konfiguraci Web Apps jako koncových bodů v Traffic Manager platí někter
 
 1. Pro použití s Traffic Manager mají nárok pouze Web Apps v SKU Standard nebo vyšších. Pokusy o přidání webové aplikace s nižší jednotkou SKU selžou. Výsledkem snížení objemu skladové jednotky existující webové aplikace Traffic Manager tím, že už neodesílají provoz do této webové aplikace. Další informace o podporovaných plánech najdete v [App Servicech plánech](https://azure.microsoft.com/pricing/details/app-service/plans/) .
 2. Když koncový bod přijme požadavek HTTP, použije v žádosti hlavičku hosta k určení, která webová aplikace by měla požadavek obsluhovat. Hlavička hostitele obsahuje název DNS, který se používá k inicializaci požadavku, například ' contosoapp.azurewebsites.net '. Pokud chcete pro webovou aplikaci použít jiný název DNS, musí být název DNS registrovaný jako vlastní název domény pro aplikaci. Při přidávání koncového bodu webové aplikace jako koncového bodu Azure se název DNS profilu Traffic Manager pro aplikaci automaticky zaregistruje. Tato registrace je automaticky odebrána při odstranění koncového bodu.
-3. Každý profil Traffic Manager může mít maximálně jeden koncový bod webové aplikace z každé oblasti Azure. Pokud chcete toto omezení obejít, můžete nakonfigurovat webovou aplikaci jako externí koncový bod. Další informace najdete v nejčastějších [dotazech](traffic-manager-faqs.md#traffic-manager-endpoints).
+3. Každý profil Traffic Manager může mít maximálně jeden koncový bod webové aplikace z každé oblasti Azure. Pokud chcete toto omezení obejít, můžete nakonfigurovat webovou aplikaci jako externí koncový bod. Další informace najdete v [nejčastějších dotazech](traffic-manager-faqs.md#traffic-manager-endpoints).
 
 ## <a name="enabling-and-disabling-endpoints"></a>Povolování a zakazování koncových bodů
 
@@ -103,7 +103,7 @@ Pokud jsou všechny koncové body v profilu zakázané, nebo pokud je samotný p
 
 * [Návody přesunout koncové body Azure profilu Traffic Manager do jiné skupiny prostředků?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group-or-subscription)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si, [jak Traffic Manager funguje](traffic-manager-how-it-works.md).
 * Přečtěte si o Traffic Manager [monitorování koncového bodu a automatické převzetí služeb při selhání](traffic-manager-monitoring.md)

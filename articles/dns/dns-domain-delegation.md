@@ -2,17 +2,17 @@
 title: Přehled delegování Azure DNS
 description: Zjistěte, jak změnit delegování domény a pomocí názvových serverů Azure DNS umožněte hosting domén.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.date: 2/19/2019
-ms.author: allensu
+ms.author: rohink
 ms.topic: conceptual
-ms.openlocfilehash: 3d8a87e199736bf51fcdc051c17c2fded3402b79
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9304556edb5e6207296d8ee4e8392e345869cb92
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212088"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939052"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>Delegování zón DNS s využitím Azure DNS
 
@@ -24,7 +24,7 @@ Azure DNS vám umožňuje hostovat zónu DNS a spravovat záznamy DNS pro domén
 
 Domain Name System je hierarchie domén. Hierarchie začíná od kořenové domény, jejíž název je jednoduše „ **.** “.  Následují domény nejvyšší úrovně, jako jsou „com“, „net“, „org“, „uk“ nebo „jp“.  Pod doménami nejvyšší úrovně jsou domény druhé úrovně, jako jsou „org.uk“ nebo „co.jp“.  A tak dále. Domény v hierarchii DNS jsou hostované pomocí oddělených zón DNS. Tyto zóny jsou globálně distribuované a hostované názvovými servery DNS po celém světě.
 
-**Zóna DNS** – Doména je jedinečný název v systému DNS (Domain Name System), například contoso.com. K hostování záznamů DNS pro konkrétní doménu se používá zóna DNS. Například doména contoso.com může obsahovat několik záznamů DNS, třeba mail.contoso.com (pro poštovní server) a www.contoso.com (pro web).
+**Zóna DNS** – Doména je jedinečný název v systému DNS (Domain Name System), například contoso.com. Zóna DNS se používá k hostování záznamů DNS pro konkrétní doménu. Například doména contoso.com může obsahovat několik záznamů DNS, třeba mail.contoso.com (pro poštovní server) a www.contoso.com (pro web).
 
 **Doménový registrátor** – Doménový registrátor je společnost, která poskytuje názvy internetových domén. Ověří, zda je internetová doména, kterou chcete použít, volná a umožní vám ji zakoupit. Jakmile je název domény registrovaný, stanete se jejím právoplatným vlastníkem. Pokud již máte internetovou doménu, použijete pro delegování do Azure DNS současného doménového registrátora.
 

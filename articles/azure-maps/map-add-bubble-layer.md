@@ -9,23 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 0088cced84da08828d02d3a0f83846babf286b71
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 462d820824ad6c53ad4b93ad5c88c66128619467
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911285"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933653"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>Přidání bublinové vrstvy do mapy
 
-V tomto článku se dozvíte, jak můžete vykreslit data bodů ze zdroje dat jako bublinovou vrstvu na mapě. Bubliny vrstev vykreslí body jako kružnice na mapě s použitím poloměru s pevným pixelem. 
+V tomto článku se dozvíte, jak vykreslovat data bodů ze zdroje dat jako bublinovou vrstvu na mapě. Bubliny vrstev vykreslí body jako kružnice na mapě s použitím poloměru s pevným pixelem. 
 
 > [!TIP]
 > Bublinové vrstvy ve výchozím nastavení budou kreslit souřadnice všech geometrií ve zdroji dat. Chcete-li omezit vrstvu tak, aby vykreslí pouze funkce geometrie bodu, nastavte vlastnost `filter` vrstvy na `['==', ['geometry-type'], 'Point']` nebo `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`, pokud chcete zahrnout i funkce systému MultiPoint.
 
 ## <a name="add-a-bubble-layer"></a>Přidání vrstvy bublin
 
-Následující kód načte pole bodů do zdroje dat a připojí ho k [bublinové vrstvě](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest). Bublinová vrstva má k dispozici možnosti pro vykreslení poloměru každého prvku na pět pixelů, barvu výplně bílé, barvy tahu modrou a šířce tahu šesti pixelů. 
+Následující kód načte pole bodů do zdroje dat. Datové body jsou následně připojeny k [bublinové vrstvě](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest). Bublinová vrstva vykresluje poloměr každého bublinu s pěti pixely, barvou výplně bílé, barvy tahu modrou a šířkou tahu šest pixelů. 
 
 ```javascript
 //Add point locations.

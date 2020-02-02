@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 0ab714efc3e9eb0de9d6753854031110e09fe06b
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 79e65671613364f5cc05153d90cfdcd5959a279f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147839"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939329"
 ---
 # <a name="get-started-with-device-management-net"></a>Začínáme se správou zařízení (.NET)
 
@@ -40,7 +40,7 @@ Na konci tohoto kurzu budete mít dvě konzolové aplikace .NET:
 
 * Aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) .
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -81,7 +81,7 @@ V této části vytvoříte konzolovou aplikaci .NET pomocí nástroje C#, kter�
    using Microsoft.Azure.Devices.Shared;
    ```
 
-1. Do třídy **Program** přidejte následující pole. Nahraďte hodnotu [](#get-the-iot-hub-connection-string) zástupnéhosymbolupřipojovacímřetězcemIoTHub,kterýjstedřívezkopírovalivčástizískánípřipojovacíhořetězcecentraIoT`{iot hub connection string}` hub.
+1. Do třídy **Program** přidejte následující pole. Nahraďte hodnotu zástupného symbolu `{iot hub connection string}` připojovacím řetězcem IoT Hub, který jste dříve zkopírovali v [části získání připojovacího řetězce centra IoT Hub](#get-the-iot-hub-connection-string).
 
    ```csharp
    static RegistryManager registryManager;
@@ -116,7 +116,7 @@ V této části vytvoříte konzolovou aplikaci .NET pomocí nástroje C#, kter�
    }
    ```
 
-1. Nakonec do metody **Main** přidejte následující řádky:
+1. Nakonec přidejte do metody **Main** následující řádky:
 
    ```csharp
    registryManager = RegistryManager.CreateFromConnectionString(connString);
@@ -126,7 +126,7 @@ V této části vytvoříte konzolovou aplikaci .NET pomocí nástroje C#, kter�
    Console.ReadLine();
    ```
 
-1. Vyberte řešení sestavení sestavení. > 
+1. Vyberte **sestavení** **řešení**Build > .
 
 > [!NOTE]
 > Tento kurz provede pouze jeden dotaz pro hlášené vlastnosti zařízení. V produkčním kódu doporučujeme dotazování na detekci změn v hlášených vlastnostech.
@@ -164,7 +164,7 @@ K vytvoření aplikace simulovaného zařízení použijte následující postup
     using Microsoft.Azure.Devices.Shared;
     ```
 
-1. Do třídy **Program** přidejte následující pole. Nahraďte hodnotu [](#register-a-new-device-in-the-iot-hub) zástupnéhosymbolupřipojovacímřetězcemzařízení,kterýjstesidřívepoznamenalivčástiregistracenovéhozařízeníveslužběIoT`{device connection string}` hub.
+1. Do třídy **Program** přidejte následující pole. Nahraďte hodnotu zástupného symbolu `{device connection string}` připojovacím řetězcem zařízení, který jste si dříve poznamenali v [části registrace nového zařízení ve službě IoT Hub](#register-a-new-device-in-the-iot-hub).
 
     ```csharp
     static string DeviceConnectionString = "{device connection string}";
@@ -200,7 +200,7 @@ K vytvoření aplikace simulovaného zařízení použijte následující postup
            Console.WriteLine("Error in sample: {0}", ex.Message);
        }
 
-       string result = "'Reboot started.'";
+       string result = @"{""result"":""Reboot started.""}";
        return Task.FromResult(new MethodResponse(Encoding.UTF8.GetBytes(result), 200));
    }
    ```
@@ -236,7 +236,7 @@ K vytvoření aplikace simulovaného zařízení použijte následující postup
 
 1. Pro **běžné vlastnosti** > **spouštěný projekt**vyberte **jeden spouštěný projekt**a pak vyberte projekt **SimulateManagedDevice** . Vyberte **OK** uložte provedené změny.
 
-1. Vyberte řešení sestavení sestavení. > 
+1. Vyberte **sestavení** **řešení**Build > .
 
 > [!NOTE]
 > Za účelem zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu byste měli implementovat zásady opakování (například exponenciální omezení rychlosti), jak je navrženo při [zpracování přechodné chyby](/azure/architecture/best-practices/transient-faults).

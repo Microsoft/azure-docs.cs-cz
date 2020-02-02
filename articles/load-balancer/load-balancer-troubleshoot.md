@@ -13,16 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 63706a3cdd34e5656f881c8668d8b88d9ac2e9ff
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ca9b70bd71a618f8e3d5f4fe9504ba66a9f14c6f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843918"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935485"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Řešení potíží s nástrojem pro vyrovnávání zatížení Azure
 
-Tato stránka poskytuje informace pro odstraňování běžných otázek Azure Load Balancer. Když je připojení Load Balancer nedostupné, nejběžnější příznaky jsou následující: 
+Tato stránka poskytuje informace pro řešení běžných otázek Azure Load Balancer Basic a Standard. Další informace o Standard Load Balancer najdete v tématu [Standard Load Balancer Overview](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics).
+
+Když je připojení Load Balancer nedostupné, nejběžnější příznaky jsou následující: 
+
 - Virtuální počítače za Load Balancer nereagují na sondy stavu. 
 - Virtuální počítače za Load Balancer nereagují na provoz na konfigurovaném portu.
 
@@ -124,6 +127,10 @@ Pokud se vaše aplikace hostovaná na virtuálním počítači back-endu Load Ba
 Pokud je interní Load Balancer nakonfigurovaný v rámci virtuální sítě a jeden z back-end účastníka se snaží získat přístup k internímu front-endu Load Balancer, můžou se selhání vyskytnout, když se tok namapuje na původní virtuální počítač. Tento scénář není podporován. Přečtěte si [omezení](concepts-limitations.md#limitations) pro podrobnou diskuzi.
 
 **Řešení** Existuje několik způsobů, jak tento scénář odblokovat, včetně použití proxy serveru. Vyhodnoťte Application Gateway nebo jiné proxy servery třetích stran (například Nginx nebo HAProxy). Další informace o Application Gateway najdete v tématu [přehled Application Gateway](../application-gateway/application-gateway-introduction.md)
+
+## <a name="symptom-cannot-change-backend-port-for-existing-lb-rule-of-a-load-balancer-which-has-vm-scale-set-deployed-in-the-backend-pool"></a>Příznak: nejde změnit back-end port pro stávající pravidlo pro vyrovnávání zatížení, které má ve fondu back-end nasazenou službu VM Scale set. 
+### <a name="cause--the-backend-port-cannot-be-modified-for-a-load-balancing-rule-thats-used-by-a-health-probe-for-load-balancer-referenced-by-vm-scale-set"></a>Příčina: port back-endu nejde upravit pro pravidlo vyrovnávání zatížení, které používá sonda stavu pro nástroj pro vyrovnávání zatížení, na který odkazuje sada škálování virtuálního počítače.
+**Řešení** Pokud chcete změnit port, můžete odstranit sondu stavu tak, že aktualizujete sadu škálování virtuálního počítače, aktualizujte port a pak znovu nakonfigurujete test stavu.
 
 ## <a name="additional-network-captures"></a>Další síťové zachycení
 Pokud se rozhodnete otevřít případ podpory, shromážděte při rychlejším řešení následující informace. Vyberte jeden back-end virtuální počítač pro provedení následujících testů:

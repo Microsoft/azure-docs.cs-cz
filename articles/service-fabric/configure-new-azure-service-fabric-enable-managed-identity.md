@@ -1,24 +1,26 @@
 ---
-title: Nasazení nového clusteru Service Fabric se spravovanou identitou
-description: V tomto článku se dozvíte, jak vytvořit nový cluster Service Fabric se zapnutou spravovanou identitou.
+title: Konfigurace podpory spravovaných identit pro nový cluster Service Fabric
+description: Tady je postup povolení podpory spravovaných identit v novém clusteru Azure Service Fabric.
 ms.topic: article
 ms.date: 12/09/2019
-ms.openlocfilehash: 4893fe47de78445a7dccb4f5800498b30cd6c1f2
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.custom: sfrev
+ms.openlocfilehash: 0e35d2192fdcdb294b349105f3f0158564cec86b
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614855"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930461"
 ---
-# <a name="create-a-new-azure-service-fabric-cluster-with-managed-identity-support-preview"></a>Vytvoření nového clusteru Azure Service Fabric s podporou spravované identity (Preview)
+# <a name="configure-managed-identity-support-for-a-new-service-fabric-cluster-preview"></a>Konfigurace podpory spravovaných identit pro nový cluster Service Fabric (Preview)
 
-Aby bylo možné získat přístup k funkci Managed identity pro aplikace Service Fabric Azure, musíte nejdřív v clusteru povolit službu Managed identity token. Tato služba zodpovídá za ověřování Service Fabric aplikací pomocí svých spravovaných identit a pro získání přístupových tokenů jejich jménem. Jakmile je služba povolená, můžete ji zobrazit v Service Fabric Explorer v části **systém** v levém podokně, která je spuštěná pod názvem **Fabric:/System/ManagedIdentityTokenService** vedle ostatních systémových služeb.
+Pokud chcete používat [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) ve vašich aplikacích Service Fabric, nejdřív v clusteru povolte *službu Managed identity token* . Tato služba zodpovídá za ověřování Service Fabric aplikací pomocí svých spravovaných identit a pro získání přístupových tokenů jejich jménem. Jakmile je služba povolená, můžete ji zobrazit v Service Fabric Explorer v části **systém** v levém podokně, která je spuštěná pod názvem **Fabric:/System/ManagedIdentityTokenService** vedle ostatních systémových služeb.
 
 > [!NOTE]
 > Aby bylo možné povolit **službu tokenu spravované identity**, je nutné, aby verze modulu runtime Service Fabric 6.5.658.9590 nebo novější.  
 
-## <a name="enable-the-managed-identity-token-service"></a>Povolení služby tokenu spravované identity 
-Pokud chcete povolit službu spravovaných tokenů identity při vytváření clusteru, můžete použít následující fragment kódu v šabloně Azure Resource Manager:
+## <a name="enable-the-managed-identity-token-service"></a>Povolení služby tokenu spravované identity
+
+Pokud chcete službu Managed identity token Service povolit při vytváření clusteru, přidejte do své Azure Resource Manager šablony clusteru následující fragment kódu:
 
 ```json
 "fabricSettings": [
@@ -39,7 +41,6 @@ Pokud chcete povolit službu spravovaných tokenů identity při vytváření cl
 Pokud se nasazení v této zprávě nepovede, znamená to, že cluster není na požadované verzi Service Fabric (Minimální podporovaný modul runtime je 6,5 CU2):
 
 
-
 ```json
 {
     "code": "ParameterNotAllowed",
@@ -47,13 +48,14 @@ Pokud se nasazení v této zprávě nepovede, znamená to, že cluster není na 
 }
 ```
 
-
 ## <a name="related-articles"></a>Související články
+
 * Kontrola [podpory spravovaných identit](./concepts-managed-identity.md) v Azure Service Fabric
 
 * [Povolení podpory spravovaných identit v existujícím clusteru Azure Service Fabric](./configure-existing-cluster-enable-managed-identity-token-service.md)
 
 ## <a name="next-steps"></a>Další kroky
+
 * [Nasazení aplikace Azure Service Fabric se spravovanou identitou přiřazenou systémem](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Nasazení aplikace Azure Service Fabric s uživatelem přiřazenou spravovanou identitou](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [Využití spravované identity Service Fabric aplikace z kódu služby](./how-to-managed-identity-service-fabric-app-code.md)

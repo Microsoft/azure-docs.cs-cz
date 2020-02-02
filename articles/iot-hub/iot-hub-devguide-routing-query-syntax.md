@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 859b15954f64f8b481f6b86c04fc28b542599f02
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 04db62f402c25dd4a04281047f684dc23d41a502
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890502"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934618"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Syntaxe dotazu směrování zpráv IoT Hub
 
@@ -52,11 +52,11 @@ Vlastnosti systému vám pomůžou identifikovat obsah a zdroj zpráv.
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| Třída | řetězec | Uživatel Určuje typ obsahu zprávy. Pokud chcete pro tělo zprávy zapnout dotaz, měla by být tato hodnota nastavená na Application/JSON. |
-| contentEncoding | řetězec | Uživatel Určuje typ kódování zprávy. Povolené hodnoty jsou UTF-8, UTF-16, UTF-32, pokud je contentType nastavený na Application/JSON. |
-| iothub-ID zařízení-připojení | řetězec | Tato hodnota je nastavena IoT Hub a identifikuje ID zařízení. K dotazování použijte `$connectionDeviceId`. |
-| iothub – enqueuedtime | řetězec | Tato hodnota je nastavena IoT Hub a představuje skutečný čas enqueuing zprávy ve standardu UTC. K dotazování použijte `enqueuedTime`. |
-| iothub – název rozhraní | řetězec | Tato hodnota je nastavena uživatelem a představuje název digitálního vlákna, které implementuje zprávu telemetrie. K dotazování použijte `$interfaceName`. Tato funkce je k dispozici jako součást [IoT technologie Plug and Play Public Preview](../iot-pnp/overview-iot-plug-and-play.md). |
+| contentType | string | Uživatel Určuje typ obsahu zprávy. Pokud chcete pro tělo zprávy zapnout dotaz, měla by být tato hodnota nastavená na Application/JSON. |
+| contentEncoding | string | Uživatel Určuje typ kódování zprávy. Povolené hodnoty jsou UTF-8, UTF-16, UTF-32, pokud je contentType nastavený na Application/JSON. |
+| iothub-ID zařízení-připojení | string | Tato hodnota je nastavena IoT Hub a identifikuje ID zařízení. K dotazování použijte `$connectionDeviceId`. |
+| iothub-enqueuedtime | string | Tato hodnota je nastavena IoT Hub a představuje skutečný čas enqueuing zprávy ve standardu UTC. K dotazování použijte `enqueuedTime`. |
+| iothub – název rozhraní | string | Tato hodnota je nastavena uživatelem a představuje název digitálního vlákna, které implementuje zprávu telemetrie. K dotazování použijte `$interfaceName`. Tato funkce je k dispozici jako součást [IoT technologie Plug and Play Public Preview](../iot-pnp/overview-iot-plug-and-play.md). |
 
 Jak je popsáno v [IoT Hub zprávy](iot-hub-devguide-messages-construct.md), ve zprávě jsou další vlastnosti systému. Kromě **ContentType**, **contentEncoding**a **EnqueuedTime**lze také zadat dotaz **connectionDeviceId** a **connectionModuleId** .
 
@@ -163,7 +163,7 @@ $body.Weather.Temperature = 50 AND processingPath = 'hot'
 
 ## <a name="message-routing-query-based-on-device-twin"></a>Dotaz na směrování zpráv na základě vlákna zařízení 
 
-Směrování zpráv vám umožní dotazovat se na značky a vlastnosti v [zařízení](iot-hub-devguide-device-twins.md) , které jsou objekty JSON. Dotazování na zdvojení modulu není podporované. Ukázka dvojitých značek a vlastností zařízení je uvedená níže.
+Směrování zpráv vám umožní dotazovat se na značky a vlastnosti v [zařízení](iot-hub-devguide-device-twins.md) , které jsou objekty JSON. Podporuje se i dotaz na nevlákenný modul. Ukázka dvojitých značek a vlastností zařízení je uvedená níže.
 
 ```JSON
 {
@@ -196,7 +196,7 @@ Směrování zpráv vám umožní dotazovat se na značky a vlastnosti v [zaří
 
 ### <a name="query-expressions"></a>Výrazy dotazů
 
-Dotaz na text zprávy musí být s `$twin`předponou. Výraz dotazu může také kombinovat odkaz na dvojitou značku nebo vlastnost s odkazem na tělo, vlastnostmi systému zprávy a odkazem na vlastnosti aplikace zprávy. Doporučujeme použít v tagu a vlastnostech jedinečné názvy, protože dotaz nerozlišuje velká a malá písmena. V názvech vlastností také upustí od použití `twin`, `$twin`, `body`nebo `$body`. Například následující jsou všechny platné výrazy dotazu: 
+Dotaz na text zprávy musí být s `$twin`předponou. Výraz dotazu může také kombinovat odkaz na dvojitou značku nebo vlastnost s odkazem na tělo, vlastnostmi systému zprávy a odkazem na vlastnosti aplikace zprávy. Doporučujeme použít v tagu a vlastnostech jedinečné názvy, protože dotaz nerozlišuje velká a malá písmena. To platí pro vlákna zařízení i pro vlákna modulu. V názvech vlastností také upustí od použití `twin`, `$twin`, `body`nebo `$body`. Například následující jsou všechny platné výrazy dotazu: 
 
 ```sql
 $twin.properties.desired.telemetryConfig.sendFrequency = '5m'

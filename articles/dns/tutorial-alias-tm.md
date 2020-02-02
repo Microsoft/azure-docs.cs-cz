@@ -3,17 +3,17 @@ title: 'Kurz: vytvoření záznamu aliasu pro podporu názvů vrcholů domény �
 titleSuffix: Azure DNS
 description: V tomto kurzu se dozvíte, jak nakonfigurovat záznam aliasu Azure DNS pro podporu používání vrcholu názvu domény ve službě Traffic Manager.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
-ms.author: allensu
-ms.openlocfilehash: 3834b782be054611de67b782b7fcd0c46cbf3a19
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.author: rohink
+ms.openlocfilehash: 749e5eae64aa0d33c90ef8694da9a093647b8a8b
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082258"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937927"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Kurz: Konfigurace záznamu aliasu pro podporu vrcholů názvů domén ve službě Traffic Manager 
 

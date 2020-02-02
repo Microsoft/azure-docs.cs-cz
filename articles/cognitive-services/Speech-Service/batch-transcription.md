@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: 5732df2551eafa74b81f9a918a1cb7cf5ac1395c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 8a53f1cfbde2f518848e7ef1104bf41ba4996961
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768029"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76936392"
 ---
 # <a name="how-to-use-batch-transcription"></a>Použití dávkového přepisu
 
@@ -78,7 +78,7 @@ Parametry konfigurace jsou zadány jako JSON:
     "AddWordLevelTimestamps" : "True | False",
     "AddSentiment" : "True | False",
     "AddDiarization" : "True | False",
-    "TranscriptionResultsContainerUrl" : "<SAS to Azure container to store results into (write permission required)>"
+    "TranscriptionResultsContainerUrl" : "<service SAS URI to Azure container to store results into (write permission required)>"
   }
 }
 ```
@@ -94,7 +94,7 @@ K nakonfigurování přepisu použijte tyto volitelné vlastnosti:
 | `AddWordLevelTimestamps` | Určuje, zda mají být do výstupu přidány časová razítka na úrovni aplikace Word. Přípustné hodnoty jsou `true`, které umožňují, aby byla časová razítka na úrovni aplikace Word a `false` (výchozí hodnota) zakázána. |
 | `AddSentiment` | Určuje mínění by měl být přidán do utterance. Přijaté hodnoty jsou `true`, které povolují mínění na utterance a `false` (výchozí hodnotu), která ho zakáže. |
 | `AddDiarization` | Určuje, že by měla být provedena analýza diarization na vstupu, u kterého se očekává, že kanál mono obsahuje dvě hlasy. Přípustné hodnoty jsou `true`, které povolují diarization a `false` (výchozí hodnota), která ji zakáže. Také je nutné, aby bylo `AddWordLevelTimestamps` nastaveno na hodnotu true.|
-|`TranscriptionResultsContainerUrl`|Volitelný token SAS pro zapisovatelný kontejner v Azure. Výsledek bude uložen v tomto kontejneru.
+|`TranscriptionResultsContainerUrl`|Volitelná adresa URL s [SAS služby](../../storage/common/storage-sas-overview.md) pro zapisovatelný kontejner v Azure. Výsledek bude uložen v tomto kontejneru.
 
 ### <a name="storage"></a>Storage
 
