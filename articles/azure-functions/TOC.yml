@@ -130,6 +130,9 @@
     - name: Otázky výkonu
       href: functions-best-practices.md
       displayName: best practice
+    - name: Aspekty úložišť
+      href: storage-considerations.md
+      displayName: 'encryption, keys'
     - name: Proxy servery služby Functions
       href: functions-proxies.md
     - name: Možnosti sítí

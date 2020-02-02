@@ -423,6 +423,8 @@
           href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Vysoká dostupnost
           href: manage-availability.md
+        - name: Změna skupiny dostupnosti
+          href: ../windows/change-availability-set.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Vytvoření skupiny umístění bezkontaktní komunikace
           items:
             - name: Rozhraní příkazového řádku
