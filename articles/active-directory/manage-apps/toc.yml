@@ -151,8 +151,8 @@
               href: methods-for-assigning-users-and-groups.md
             - name: Přiřazení uživatele k aplikaci
               href: assign-user-or-group-access-portal.md
-            - name: Vytváření pracovních prostorů na portálu Moje aplikace (Preview)
-              href: access-panel-workspaces.md
+            - name: Vytváření kolekcí na portálu Moje aplikace
+              href: access-panel-collections.md
             - name: Použití samoobslužného přístupu k aplikacím
               href: access-panel-manage-self-service-access.md
             - name: Metody pro odebrání přístupu uživatele k aplikaci

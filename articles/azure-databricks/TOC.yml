@@ -888,13 +888,19 @@
             - name: Externí přístup ke sledování
               href: /azure/databricks/applications/mlflow/access-hosted-tracking-server
               maintainContext: true
+        - name: Vytváření řídicích panelů s využitím rozhraní API MLflow Search
+          href: /azure/databricks/applications/mlflow/build-dashboards
+          maintainContext: true
         - name: 'Ukládání, nahrávání a nasazování modelů'
           items:
             - name: 'Přehled ukládání, nahrávání a nasazování'
               href: /azure/databricks/applications/mlflow/models
               maintainContext: true
-            - name: Příklady modelu MLflow
-              href: /azure/databricks/applications/mlflow/  model-examples
+            - name: Příklad modelu MLflow
+              href: /azure/databricks/applications/mlflow/model-example
+              maintainContext: true
+            - name: Nasazení modelu scikit learn v Azure
+              href: /azure/databricks/applications/mlflow/scikit-learn-model-deployment-on-azure-ml
               maintainContext: true
         - name: Opakování spuštění s projekty MLflow
           href: /azure/databricks/applications/mlflow/projects
@@ -1411,7 +1417,7 @@
               maintainContext: true
         - name: Python
           items:
-            - name: Vytvoření clusteru s využitím Anacondy
+            - name: Vytvoření clusteru s využitím Condy
               href: /azure/databricks/kb/python/anaconda-environment
               maintainContext: true
             - name: Instalace a kompilace Cythonu
@@ -1465,6 +1471,9 @@
           items:
             - name: Spouštění kódu C++ v jazyce Scala
               href: /azure/databricks/kb/scala/running-c-plus-plus-code-scala
+              maintainContext: true
+            - name: Selhání souběžných úloh Spark JAR
+              href: /azure/databricks/kb/scala/spark-jar-job-error
               maintainContext: true
         - name: SQL
           items:

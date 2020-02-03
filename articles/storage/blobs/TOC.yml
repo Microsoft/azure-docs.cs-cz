@@ -82,11 +82,7 @@
             - name: 4. Ověření metrik latence a propustnosti
               href: storage-blob-scalable-app-verify-metrics.md
         - name: Hostování statického webu
-          items:
-            - name: 1. Vytvoření statického webu
-              href: storage-blob-static-website-host.md
-            - name: 2. Povolení vlastní domény s využitím SSL
-              href: storage-blob-static-website-custom-domain.md
+          href: storage-blob-static-website-host.md
         - name: Návrh aplikací pro zajištění vysoké dostupnosti
           items:
             - name: 1. Zajištění vysoké dostupnosti aplikace
@@ -383,10 +379,12 @@
             - name: Použití emulátoru služby Azure Storage
               href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Hostování statického webu
-          href: storage-blob-static-website-how-to.md
-        - name: Mapování Azure CDN na vlastní doménu pro přístup přes protokol HTTPS
-          href: storage-https-custom-domain-cdn.md
-        - name: Konfigurace vlastní domény
+          items:
+            - name: Hostování statického webu
+              href: storage-blob-static-website-how-to.md
+            - name: Integrace s Azure CDN
+              href: static-website-content-delivery-network.md
+        - name: Použití vlastní domény
           href: storage-custom-domain-name.md
         - name: Směrování událostí na vlastní koncový bod
           href: storage-blob-event-quickstart.md

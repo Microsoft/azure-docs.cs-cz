@@ -6,7 +6,7 @@
       href: notification-hubs-push-notification-overview.md
     - name: Integrace s App Service Mobile Apps
       href: notification-hubs-app-service.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření centra oznámení – Azure Portal
@@ -71,7 +71,7 @@
           href: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
         - name: Odesílání oznámení na základě polohy
           href: notification-hubs-push-bing-spatial-data-geofencing-notification.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky kódů
       href: samples.md
@@ -79,6 +79,8 @@
       href: samples-powershell.md
 - name: Koncepty
   items:
+    - name: Protokol TLS (Transport Layer Security)
+      href: notification-hubs-tls12.md
     - name: Doprovodné materiály k architektuře nabízení pro podniky
       href: notification-hubs-enterprise-push-notification-architecture.md
     - name: Registrace zařízení

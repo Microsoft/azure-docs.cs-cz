@@ -34,6 +34,8 @@
           href: how-to-install.md
         - name: Konfigurace zřizování cloudu
           href: how-to-configure.md
+        - name: Použití jednotného přihlašování
+          href: how-to-sso.md
     - name: Plánování a návrh
       items:
         - name: Topologie a scénáře pro zřízení cloudu Azure AD Connect

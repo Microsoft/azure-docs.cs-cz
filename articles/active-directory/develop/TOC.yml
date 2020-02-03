@@ -753,3 +753,5 @@
       href: developer-support-help-options.md
     - name: Spravované identity pro prostředky Azure
       href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
+    - name: Videa k platformě Microsoft Identity Platform
+      href: identity-videos.md

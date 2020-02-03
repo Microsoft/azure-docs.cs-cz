@@ -5,7 +5,7 @@
   items:
     - name: Informace o službě Service Fabric Mesh
       href: service-fabric-mesh-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: Nasazení aplikace Hello World
       href: service-fabric-mesh-quickstart-deploy-container.md
@@ -71,6 +71,8 @@
       href: service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md
     - name: Správa tajných kódů
       href: service-fabric-mesh-howto-manage-secrets.md
+    - name: Přesunutí aplikace do jiné oblasti Azure
+      href: move-across-regions.md
     - name: Vyhledání ukázek
       href: service-fabric-mesh-howto-find-samples.md
 - name: Referenční informace
