@@ -22,23 +22,23 @@ ms.locfileid: "76722165"
 
 Tento článek obsahuje ukázkové skripty Hive, které slouží ke zkoumání dat v tabulkách Hivu v clusteru HDInsight Hadoop.
 
-Tato úloha je nějaký krok [vědecké zpracování týmových dat](overview.md).
+Tento úkol je krok v rámci [vědeckého procesu týmového zpracování dat](overview.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Tento článek předpokládá, že máte:
 
-* Vytvoření účtu služby Azure storage. Pokud potřebujete pokyny, přečtěte si [vytvoření účtu služby Azure Storage](../../storage/common/storage-account-create.md)
-* Zřídit vlastní cluster Hadoop ve službě HDInsight. Pokud potřebujete získat pokyny, přečtěte si téma [přizpůsobení clusterů Azure HDInsight pro pokročilé analýzy Hadoop](customize-hadoop-cluster.md).
-* Data se odeslal do tabulek Hive v clusterech Azure HDInsight Hadoop. Pokud ne, postupujte podle pokynů v [vytvoření a načtení dat do tabulek Hive](move-hive-tables.md) nejdřív odesílat data do tabulek Hive.
-* Povolit vzdálený přístup ke clusteru. Pokud potřebujete získat pokyny, přečtěte si téma [přístup k hlavní uzel z clusteru Hadoop](customize-hadoop-cluster.md).
-* Pokud potřebujete získat pokyny o tom, jak odesílání dotazů Hive, přečtěte si téma [způsob odesílání dotazů Hive](move-hive-tables.md#submit)
+* Vytvoření účtu služby Azure storage. Pokud potřebujete pokyny, přečtěte si téma [Vytvoření účtu Azure Storage](../../storage/common/storage-account-create.md) .
+* Zřídit vlastní cluster Hadoop ve službě HDInsight. Pokud potřebujete pokyny, přečtěte si téma [přizpůsobení Azure HDInsight Hadoop clusterů pro pokročilou analýzu](customize-hadoop-cluster.md).
+* Data se odeslal do tabulek Hive v clusterech Azure HDInsight Hadoop. Pokud tomu tak není, postupujte podle pokynů v části [Vytvoření a načtení dat do tabulek podregistru](move-hive-tables.md) a nahrajte data do tabulek podregistru.
+* Povolit vzdálený přístup ke clusteru. Pokud potřebujete pokyny, přečtěte si téma [přístup k hlavnímu uzlu clusteru Hadoop](customize-hadoop-cluster.md).
+* Pokud potřebujete pokyny k odeslání dotazů na podregistr, přečtěte si téma [odeslání dotazů na podregistr](move-hive-tables.md#submit) .
 
 ## <a name="example-hive-query-scripts-for-data-exploration"></a>Příklady skriptů pro dotaz Hive pro zkoumání dat
-1. Získat počet připomínky na oddíl  `SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
-2. Získat počet vyjádření za den  `SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
+1. Získat počet pozorování na oddíl `SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
+2. Získá počet pozorování za den `SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
 3. Získání úrovně ve sloupci zařazené do kategorií  
     `SELECT  distinct <column_name> from <databasename>.<tablename>`
-4. Získat počet úrovní v kombinaci dva sloupce a bude zařazené do kategorií  `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
+4. Získá počet úrovní v kombinaci dvou kategorií sloupců `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
 5. Získání distribuce pro číselné sloupce  
     `SELECT <column_name>, count(*) from <databasename>.<tablename> group by <column_name>`
 6. Extrahování záznamů z spojení dvou tabulek
@@ -69,5 +69,5 @@ Tento článek předpokládá, že máte:
             ON a.<common_columnname1>=b.<common_columnname1> and a.<common_columnname2>=b.<common_columnname2>
 
 ## <a name="additional-query-scripts-for-taxi-trip-data-scenarios"></a>Další dotaz skripty pro scénáře dat o jízdách taxislužby města
-Příklady dotazů, které jsou specifické pro [Data o jízdách taxislužby NYC](https://chriswhong.com/open-data/foil_nyc_taxi/) scénáře jsou také uvedeny ve [úložiště GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). Tyto dotazy už mají zadáno schéma dat a jsou připravené k odeslání ke spuštění.
+Příklady dotazů, které jsou specifické pro scénáře [NYC dat TRIPS taxislužby](https://chriswhong.com/open-data/foil_nyc_taxi/) , jsou také k dispozici v [úložišti GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). Tyto dotazy už mají zadáno schéma dat a jsou připravené k odeslání ke spuštění.
 

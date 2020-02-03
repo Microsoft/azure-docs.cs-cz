@@ -19,10 +19,10 @@ ms.locfileid: "76717235"
 > * V tomto rychlém startu se používá `3.0-preview` verze Analýza textu klientské knihovny, která zahrnuje verzi Public Preview pro vylepšené [Analýza mínění](../../../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) a [rozpoznávání pojmenovaných entit (ner)](../../../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features).
 > * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Pro produkční scénáře doporučujeme použití dávkových asynchronních metod pro výkon a škálovatelnost. Například import klienta z oboru názvů `azure.ai.textanalytics.aio` a volání `analyze_sentiment()`namísto `analyze_sentiment()` z oboru názvů `azure.ai.textanalytics`.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* [Python 3.x](https://www.python.org/)
+* [Python 3. x](https://www.python.org/)
 
 ## <a name="setting-up"></a>Nastavení
 
@@ -69,7 +69,7 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí Anal
 * [Propojení entit](#entity-linking)
 * [Extrakce klíčových frází](#key-phrase-extraction)
 
-## <a name="sentiment-analysis"></a>Analýza subjektivního hodnocení
+## <a name="sentiment-analysis"></a>Analýza mínění
 
 > [!NOTE]
 > Níže uvedený kód je určen pro mínění Analysis v3, který je ve verzi Public Preview.
@@ -125,7 +125,7 @@ neutral=0.771
 negative=0.017
 ```
 
-## <a name="language-detection"></a>Detekce jazyka
+## <a name="language-detection"></a>Rozpoznávání jazyka
 
 Vytvořte novou funkci nazvanou `language_detection_example()`, která převezme koncový bod a klíč jako argumenty a potom zavolá funkci `single_detect_languages()`. Vrácený objekt odpovědi bude obsahovat zjištěný jazyk v `detected_languages`, pokud je to úspěšné, a `error`, pokud ne.
 
@@ -225,7 +225,7 @@ Personally Identifiable Information Entities:
         Offset:  33     Length:  11     Score: 0.850 
 ```
 
-## <a name="entity-linking"></a>Propojování entit
+## <a name="entity-linking"></a>Entity Linking
 
 Vytvořte novou funkci nazvanou `entity_linking_example()`, která převezme koncový bod a klíč jako argumenty a pak zavolá funkci `single_recognize_linked_entities()` a projde výsledky. Vrácený objekt odpovědi bude obsahovat seznam zjištěných entit v `entities` v případě úspěchu a `error`, pokud ne. Vzhledem k tomu, že propojené entity jsou jednoznačně identifikovány, jsou výskyty stejné entity seskupeny pod objektem `entity` jako seznam objektů `match`.
 

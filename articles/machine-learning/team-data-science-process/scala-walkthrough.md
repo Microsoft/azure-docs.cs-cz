@@ -19,29 +19,29 @@ ms.lasthandoff: 01/24/2020
 ms.locfileid: "76716759"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Vědecké zkoumání dat pomocí Scala a Spark v Azure
-Tento článek ukazuje, jak pomocí Scala pro úkoly technik strojového učení pomocí Sparku škálovatelné MLlib a Spark ML balíčky v clusteru Azure HDInsight Spark. Provede vás provedou úlohami, které tvoří [vědecké zkoumání dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/): příjem dat a zkoumání, vizualizaci, vytváření funkcí, modelování a modelu využití. Modely v článku zahrnují logistické a lineární regrese, náhodných doménové struktury a vylepšené přechodu stromů (GBTs), kromě dvě běžné úkoly technik strojového učení:
+Tento článek ukazuje, jak pomocí Scala pro úkoly technik strojového učení pomocí Sparku škálovatelné MLlib a Spark ML balíčky v clusteru Azure HDInsight Spark. Provede vás úkoly, které tvoří [proces vědeckého zpracování dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/): přijímání a zkoumání dat, vizualizace, strojírenství funkcí, modelování a využití modelu. Modely v článku zahrnují logistické a lineární regrese, náhodných doménové struktury a vylepšené přechodu stromů (GBTs), kromě dvě běžné úkoly technik strojového učení:
 
 * Regresní problém: předpověď tip částka cesty taxíkem ($)
 * Binární klasifikace: predikce tip nebo tip cesty taxíkem (1/0)
 
 Proces modelování vyžaduje trénování a hodnocení na testovací datové sady a relevantní přesnost metriky. V tomto článku se dozvíte, jak k uložení těchto modelů ve službě Azure Blob storage a jak stanovení skóre a vyhodnotit prediktivní výkonu. Tento článek se týká také pokročilejší témata o tom, jak pomocí křížového ověření a hyperparametrické sweeping optimalizaci modelů. Data používaná je ukázka 2013 NYC taxislužby cesty a tarif datové sady k dispozici na Githubu.
 
-[Scala](https://www.scala-lang.org/), objektově orientované a funkční jazykové koncepce integruje jazyk založený na virtuálním počítači Java. Je škálovatelné jazyk, který skvěle hodí pro distribuované zpracování v cloudu a spouští v clusterech Spark v Azure.
+[Scala](https://www.scala-lang.org/)jazyk založený na virtuálním počítači Java integruje koncepty objektově orientovaného a funkčního jazyka. Je škálovatelné jazyk, který skvěle hodí pro distribuované zpracování v cloudu a spouští v clusterech Spark v Azure.
 
-[Spark](https://spark.apache.org/) je open-source platforma paralelní zpracování, která podporuje zpracování v paměti pro zvýšení výkonu velkých objemů dat analytických aplikací. Modul zpracování Spark je postaven pro rychlost, snadné použití a sofistikované analýzy. Spark v paměti distribuovanou výpočetní možnosti usnadňují dobrou volbu pro iterativní algoritmy ve výpočtech machine learning a grafů. [Spark.ml](https://spark.apache.org/docs/latest/ml-guide.html) balíček poskytuje jednotné sadu rozhraní API vysoké úrovně postavené na data snímků, které vám pomůžou vytvořit a vyladit praktické strojového učení kanály. [MLlib](https://spark.apache.org/mllib/) je knihovny Spark škálovatelné machine learning, která přináší možnosti modelování do této distribuované prostředí.
+[Spark](https://spark.apache.org/) je open source platforma pro paralelní zpracování, která podporuje zpracování v paměti pro zvýšení výkonu aplikací pro analýzu velkých objemů dat. Modul zpracování Spark je postaven pro rychlost, snadné použití a sofistikované analýzy. Spark v paměti distribuovanou výpočetní možnosti usnadňují dobrou volbu pro iterativní algoritmy ve výpočtech machine learning a grafů. Balíček [Spark.ml](https://spark.apache.org/docs/latest/ml-guide.html) poskytuje jednotnou sadu rozhraní API na nejvyšší úrovni postavených na datových snímcích, které vám pomůžou vytvořit a ladit praktické kanály strojového učení. [MLlib](https://spark.apache.org/mllib/) je škálovatelná knihovna strojového učení Sparku, která přináší možnosti modelování do tohoto distribuovaného prostředí.
 
-[HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) je nabídka hostovaných v Azure z open-source Spark. Také zahrnuje podporu pro poznámkové bloky Jupyter Scala v clusteru Spark a možné spouštění interaktivních dotazů Spark SQL transformace, filtrovat a vizualizovat data uložená v úložišti objektů Blob v Azure. Fragmenty kódu Scala v tomto článku, které poskytují řešení a zobrazit příslušné grafy k vizualizaci dat spouštět v poznámkových blocích Jupyter nainstalované v clusterech Spark. Kroky modelování v těchto tématech mít kód, který popisuje, jak pro trénování, vyhodnocení, uložit a používat každý typ modelu.
+[HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) je nabídka Azure hostovaná jako open source Spark. Také zahrnuje podporu pro poznámkové bloky Jupyter Scala v clusteru Spark a možné spouštění interaktivních dotazů Spark SQL transformace, filtrovat a vizualizovat data uložená v úložišti objektů Blob v Azure. Fragmenty kódu Scala v tomto článku, které poskytují řešení a zobrazit příslušné grafy k vizualizaci dat spouštět v poznámkových blocích Jupyter nainstalované v clusterech Spark. Kroky modelování v těchto tématech mít kód, který popisuje, jak pro trénování, vyhodnocení, uložit a používat každý typ modelu.
 
-Postup instalace a kód v tomto článku jsou pro Azure HDInsight 3.4 Spark 1.6. Ale kódu v tomto článku a [Poznámkový blok Jupyter Scala](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb) jsou obecné a by mělo fungovat jakéhokoli jiného clusteru Spark. Postup instalace a správy clusteru může být mírně liší, jak je zobrazeno v tomto článku, pokud nepoužíváte HDInsight Spark.
+Postup instalace a kód v tomto článku jsou pro Azure HDInsight 3.4 Spark 1.6. Kód v tomto článku a [Scala Jupyter notebook](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb) jsou ale obecné a měly by fungovat na jakémkoli clusteru Spark. Postup instalace a správy clusteru může být mírně liší, jak je zobrazeno v tomto článku, pokud nepoužíváte HDInsight Spark.
 
 > [!NOTE]
-> Téma, které se dozvíte, jak pomocí Pythonu, spíše než Scala k provedení úloh pro proces vědy Data začátku do konce, naleznete v tématu [vědecké zkoumání dat pomocí Sparku v Azure HDInsight](spark-overview.md).
+> Téma, které vám ukáže, jak používat Python místo Scala k dokončení úloh pro kompletní proces zpracování dat, najdete v tématu věnovaném [datové vědy pomocí Sparku v Azure HDInsight](spark-overview.md).
 > 
 > 
 
-## <a name="prerequisites"></a>Požadavky
-* Mít předplatné Azure. Pokud již nemáte, [získat bezplatnou zkušební verzi Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* Potřebujete cluster Azure HDInsight 3.4 Spark 1.6 dokončete následující postup. K vytvoření clusteru, postupujte podle pokynů v [Začínáme: vytvoření Apache Spark v Azure HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Nastavit typ clusteru a verzi na **vybrat typ clusteru** nabídky.
+## <a name="prerequisites"></a>Předpoklady
+* Mít předplatné Azure. Pokud ho ještě nemáte, [Získejte bezplatnou zkušební verzi Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* Potřebujete cluster Azure HDInsight 3.4 Spark 1.6 dokončete následující postup. Pokud chcete vytvořit cluster, přečtěte si pokyny v tématu [Začínáme: vytvoření Apache Spark ve službě Azure HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). V nabídce **Vybrat typ clusteru** nastavte typ a verzi clusteru.
 
 ![Konfigurace clusteru typu HDInsight](./media/scala-walkthrough/spark-cluster-on-portal.png)
 
@@ -49,22 +49,22 @@ Postup instalace a kód v tomto článku jsou pro Azure HDInsight 3.4 Spark 1.6.
 > 
 > 
 
-Popis data o jízdách taxislužby NYC a pokyny o tom, jak spustit kód z poznámkového bloku Jupyter pro Spark cluster, najdete v příslušných částech [přehled datové vědy pomocí Sparku v Azure HDInsight](spark-overview.md).  
+Popis údajů o cestách NYC taxislužby a pokyny, jak spustit kód z poznámkového bloku Jupyter v clusteru Spark, najdete v příslušných oddílech v tématu [Přehled vědeckého zpracování dat pomocí Sparku v Azure HDInsight](spark-overview.md).  
 
 ## <a name="execute-scala-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>Spustit z poznámkového bloku Jupyter pro Spark cluster Scala kódu
-Můžete spustit Poznámkový blok Jupyter na webu Azure Portal. Najít cluster Spark na řídicím panelu a potom klikněte na něj přejděte na stránku správy pro váš cluster. Klepnutím na tlačítko **řídicí panely clusteru**a potom klikněte na tlačítko **Poznámkový blok Jupyter** otevřete Poznámkový blok přidružené ke clusteru Spark.
+Můžete spustit Poznámkový blok Jupyter na webu Azure Portal. Najít cluster Spark na řídicím panelu a potom klikněte na něj přejděte na stránku správy pro váš cluster. V dalším kroku klikněte na **řídicí panely clusteru**a potom kliknutím na **Jupyter notebook** otevřete Poznámkový blok přidružený ke clusteru Spark.
 
 ![Řídicí panel clusteru a poznámkové bloky Jupyter](./media/scala-walkthrough/spark-jupyter-on-portal.png)
 
-Můžete také přejít poznámkové bloky Jupyter v https://&lt;clustername&gt;.azurehdinsight.net/jupyter. Nahraďte *clustername* s názvem vašeho clusteru. Budete potřebovat heslo pro účet správce pro přístup k poznámkové bloky Jupyter.
+K poznámkovým blokům můžete také přistupovat na adrese https://&lt;název_clusteru&gt;. azurehdinsight.net/jupyter. Položku *název_clusteru* nahraďte názvem vašeho clusteru. Budete potřebovat heslo pro účet správce pro přístup k poznámkové bloky Jupyter.
 
 ![Přejděte do poznámkových bloků Jupyter s použitím názvu clusteru](./media/scala-walkthrough/spark-jupyter-notebook.png)
 
-Vyberte **Scala** zobrazíte adresář, který obsahuje několik příkladů předpřipravenou poznámkových bloků, které používají rozhraní API PySpark. Zkoumání modelování a vyhodnocování Scala.ipynb Poznámkový blok, který obsahuje kód pomocí ukázky pro tato sada témat Spark je k dispozici na [Githubu](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Scala).
+Pokud chcete zobrazit adresář s několika příklady předbalených poznámkových bloků, které používají rozhraní PySpark API, vyberte **Scala** . Pomocí poznámkového bloku Scala. ipynb, který obsahuje ukázky kódu pro tuto sadu témat Spark, je k dispozici na [GitHubu](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Scala)modelování a vyhodnocování průzkumu.
 
-Můžete nahrát ho přímo z Githubu na server poznámkového bloku Jupyter na svém clusteru Spark. Na domovské stránce Jupyter, klikněte na tlačítko **nahrát** tlačítko. V Průzkumníku souborů, vložte adresu URL Githubu (nezpracovaný obsah) poznámkového bloku Scala a pak klikněte na tlačítko **otevřít**. Poznámkový blok Scala je k dispozici na na následující adrese URL:
+Můžete nahrát ho přímo z Githubu na server poznámkového bloku Jupyter na svém clusteru Spark. Na domovské stránce Jupyter klikněte na tlačítko **nahrát** . V Průzkumníku souborů vložte adresu URL webu GitHub (RAW Content) do poznámkového bloku Scala a pak klikněte na **otevřít**. Poznámkový blok Scala je k dispozici na na následující adrese URL:
 
-[Exploration-Modeling-and-Scoring-using-Scala.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)
+[Průzkum – modelování a bodování – using-Scala. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)
 
 ## <a name="setup-preset-spark-and-hive-contexts-spark-magics-and-spark-libraries"></a>Instalační program: Kontexty přednastavený kontext Spark a Hive, Magic Sparku a Spark knihovny
 ### <a name="preset-spark-and-hive-contexts"></a>Přednastavení kontexty Spark a Hive
@@ -79,12 +79,12 @@ Spark jader, které jsou k dispozici s poznámkovými bloky Jupyter mají předn
 * `sqlContext` pro HiveContext
 
 ### <a name="spark-magics"></a>Spark Magic
-Jádra Spark poskytuje některé předdefinované "Magic,", které jsou speciální příkazy, které lze volat s `%%`. Dva z těchto příkazů se používají v následující ukázky kódu.
+Jádro Sparku poskytuje některé předdefinované "Magic", což jsou speciální příkazy, které můžete volat pomocí `%%`. Dva z těchto příkazů se používají v následující ukázky kódu.
 
-* `%%local` Určuje, že kód v dalších řádcích se spustí místně. Kód musí být platný kód Scala.
-* `%%sql -o <variable name>` Spustí dotaz Hive proti `sqlContext`. Pokud `-o` parametr se předává, výsledek dotazu se ukládají v `%%local` Scala kontextu jako datový rámec Spark.
+* `%%local` určuje, zda bude kód v dalších řádcích spouštěn místně. Kód musí být platný kód Scala.
+* `%%sql -o <variable name>` spustí dotaz na podregistr proti `sqlContext`. Pokud je předán parametr `-o`, výsledek dotazu je trvalý v kontextu `%%local` Scala jako datový rámec Spark.
 
-Pro další informace o jádrech pro poznámkové bloky Jupyter a jejich předdefinované "magics", který voláte s `%%` (například `%%local`), najdete v článku [jádra dostupná pro poznámkové bloky Jupyter s HDInsight Spark Linux clusterů v HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
+Další informace o jádrech pro Jupyter poznámkových blocích a jejich předdefinovaných "Magic", která zavoláte s `%%` (například `%%local`), najdete v tématu [jádra dostupná pro poznámkové bloky Jupyter s clustery HDInsight Spark Linux v HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 
 ### <a name="import-libraries"></a>Importovat knihovny
 Importujte Spark MLlib a dalších knihoven, které budete potřebovat pomocí následujícího kódu.
@@ -136,7 +136,7 @@ Prvním krokem v procesu pro datové vědy je zpracování příjmu dat, který 
 ### <a name="set-directory-paths-for-storage-locations-in-azure-blob-storage"></a>Nastavit cesty adresáře na umístění úložiště ve službě Azure Blob storage
 Spark může číst a zapisovat do úložiště objektů Blob v Azure. Můžete použití Spark ke zpracování některý z existujících dat a pak znovu ukládání výsledků do úložiště objektů Blob.
 
-Chcete-li uložit modely nebo souborů v úložišti objektů Blob, správně zadat cestu. Odkazovat na výchozí kontejner připojené ke clusteru Spark pomocí cesty, který začíná `wasb:///`. Odkazovat na jiné umístění s využitím `wasb://`.
+Chcete-li uložit modely nebo souborů v úložišti objektů Blob, správně zadat cestu. Odkažte na výchozí kontejner připojený ke clusteru Spark pomocí cesty, která začíná na `wasb:///`. Odkazování na jiná umístění pomocí `wasb://`.
 
 Následující příklad kódu určuje umístění vstupních dat pro čtení a cestu do úložiště objektů Blob, který je připojen ke clusteru Spark pro uložení modelu.
 
@@ -224,7 +224,7 @@ Následující příklad kódu určuje umístění vstupních dat pro čtení a 
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**Výstup:**
+**Výkonem**
 
 Čas spuštění buňku: 8 sekund.
 
@@ -245,7 +245,7 @@ V dalším kroku dotaz tabulku pro tarif, osobní a datový tip; filtrovat data 
     # SHOW ONLY THE TOP THREE ROWS
     sqlResultsDF.show(3)
 
-**Výstup:**
+**Výkonem**
 
 | fare_amount | passenger_count | tip_amount | šikmý |
 | --- | --- | --- | --- |
@@ -257,10 +257,10 @@ V dalším kroku dotaz tabulku pro tarif, osobní a datový tip; filtrovat data 
 Pokud přenesete data do Spark, je dalším krokem v procesu pro datové vědy získali lepší představu o datech prostřednictvím zkoumání a vizualizaci. V této části můžete prozkoumat data taxislužby města pomocí dotazů jazyka SQL. Pak importujte výsledky do datového rámce a vyznázorněte cílové proměnné a funkce pro vizuální kontrolu pomocí funkce Automatické vizualizace Jupyter.
 
 ### <a name="use-local-and-sql-magic-to-plot-data"></a>Použijte místní verzi a magický příkaz jazyka SQL k vykreslení dat
-Ve výchozím nastavení výstup jakékoli fragmenty kódu, který můžete spustit z poznámkového bloku Jupyter je k dispozici v rámci kontextu relace, která se ukládají na pracovních uzlech. Pokud chcete uložit cesty k pracovním uzlům pro každý výpočet, a pokud všechna data, je třeba vaše výpočtu je k dispozici místně na uzel serveru Jupyter (která je k hlavnímu uzlu), můžete použít `%%local` magic spouštět fragment kódu aplikace Jupyter Server.
+Ve výchozím nastavení výstup jakékoli fragmenty kódu, který můžete spustit z poznámkového bloku Jupyter je k dispozici v rámci kontextu relace, která se ukládají na pracovních uzlech. Pokud chcete uložit cestu k pracovním uzlům pro každý výpočet a pokud jsou všechna data potřebná pro výpočet místně k dispozici v uzlu serveru Jupyter (který je hlavním uzlem), můžete pomocí `%%local` Magic spustit fragment kódu na serveru Jupyter.
 
-* **Magický příkaz jazyka SQL** (`%%sql`). Jádra HDInsight Spark podporuje dotazy HiveQL snadno vložené na kontext SQLContext. (`-o VARIABLE_NAME`) Argument ukládá jako datový rámec Pandas na serveru aplikace Jupyter výstup příkazu jazyka SQL. Toto nastavení znamená, že výstup bude k dispozici v místním režimu.
-* `%%local` **Magic**. `%%local` Magic spouští kód místně na serveru Jupyter je k hlavnímu uzlu clusteru HDInsight. Obvykle použijete `%%local` magic ve spojení s `%%sql` magic s `-o` parametru. `-o` Parametr by trvalý výstup příkazu jazyka SQL místně a potom `%%local` magic aktivuje další sadu fragment kódu pro místní spuštění proti výstup dotazy SQL, který se ukládají místně.
+* **SQL Magic** (`%%sql`). Jádra HDInsight Spark podporuje dotazy HiveQL snadno vložené na kontext SQLContext. Argument (`-o VARIABLE_NAME`) uchovává výstup dotazu SQL jako datový rámec PANDAS na serveru Jupyter. Toto nastavení znamená, že výstup bude k dispozici v místním režimu.
+* `%%local` **Magic**. `%%local` Magic spouští kód místně na serveru Jupyter, což je hlavní uzel clusteru HDInsight. Obvykle používáte `%%local` Magic ve spojení s `%%sql` Magic s parametrem `-o`. Parametr `-o` porovná výstup dotazu SQL místně a potom `%%local` Magic spustí další sadu fragmentů kódu pro místní spuštění s výstupem dotazů SQL, které jsou trvale uložené v místním prostředí.
 
 ### <a name="query-the-data-by-using-sql"></a>Dotazování dat pomocí SQL
 Tento dotaz načte cesty taxíkem částka tarif, osobní počet a velikost špičky.
@@ -269,7 +269,7 @@ Tento dotaz načte cesty taxíkem částka tarif, osobní počet a velikost špi
     %%sql -q -o sqlResults
     SELECT fare_amount, passenger_count, tip_amount, tipped FROM taxi_train WHERE passenger_count > 0 AND passenger_count < 7 AND fare_amount > 0 AND fare_amount < 200 AND payment_type in ('CSH', 'CRD') AND tip_amount > 0 AND tip_amount < 25
 
-V následujícím kódu `%%local` magic vytvoří místní datový rámec, sqlResults. SqlResults můžete použít k vykreslení s použitím matplotlib.
+V následujícím kódu `%%local` Magic vytvoří místní datový rámec sqlResults. SqlResults můžete použít k vykreslení s použitím matplotlib.
 
 > [!TIP]
 > Místní magic se používá více než jednou v tomto článku. Pokud vaši datovou sadu je velká, ukázkový prosím k vytvoření datového rámce, který se vejde do místní paměti.
@@ -289,7 +289,7 @@ Můžete zobrazit pomocí kódu v Pythonu v místní kontext jako datový rámec
 
  Jádra Spark se automaticky vizualizuje výstup příkazů jazyka SQL (HiveQL) po spuštění kódu. Můžete si vybrat mezi několika typy vizualizací:
 
-* Table
+* Tabulka
 * Výsečový
 * Perokresba
 * Oblast
@@ -327,7 +327,7 @@ Tady je kód pro vykreslení dat:
     plt.show()
 
 
-**Výstup:**
+**Výkonem**
 
 ![Tip částka histogramu](./media/scala-walkthrough/plot-tip-amount-histogram.png)
 
@@ -338,11 +338,11 @@ Tady je kód pro vykreslení dat:
 ## <a name="create-features-and-transform-features-and-then-prep-data-for-input-into-modeling-functions"></a>Vytvoření funkcí a transformaci funkce a pak pro přípravu dat pro vstup do funkce modelování
 U funkce Spark ML a MLlib založený na stromové architektuře modelování budete muset připravit cíl a funkcí pomocí různých technik, jako je například binning, indexování, jeden horkou kódování a vektorizaci. Tady jsou postupy v této části:
 
-1. Vytvořit novou funkci ve **binning** hodin do provozu čas kbelíků.
-2. Použít **indexování a za běhu jeden kódování** zařazené do kategorií funkcí.
-3. **Ukázky a datové sady rozdělit** do zlomky trénování a testování.
-4. **Zadejte proměnnou školení a funkce**a pak vytvořit indexované nebo horkou jeden kódování, školení a testování vstupního bodu s popiskem odolné distribuované sady rdd (Resilient) nebo datové rámce.
-5. Automaticky **kategorizaci a vektorizovaná funkce a cíle** použít jako vstupy pro modely strojového učení.
+1. Vytvořte novou funkci tím, že **binningu** hodiny do časových intervalů provozu.
+2. Použijte **indexování a kódování One-Hot** k kategorií funkcím.
+3. **Ukázková a rozdělená datová sada** do školicích a testovacích frakcí.
+4. **Zadejte školicí proměnnou a funkce**a pak vytvořte indexované nebo jednosměrně zakódované školení a testování vstupních datových sad, které jsou označené jako "RDD", nebo datových rámců.
+5. Automatické **kategorizace a vektorizovaná funkcí a cílů** pro použití jako vstupů pro modely strojového učení.
 
 ### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>Vytvořit novou funkci binningu hodin do provozu časovým intervalům
 Tento kód ukazuje, jak vytvořit novou funkci binningu hodin do provozu časovým intervalům a výsledný datový rámec v paměti do mezipaměti. Kde Rdd a dat snímků se používá opakovaně, ukládání do mezipaměti vede k lepší spuštění s úspěšností. V několika fázích v následujících postupech budete odpovídajícím způsobem, mezipaměti Rdd a datové rámce.
@@ -368,11 +368,11 @@ Tento kód ukazuje, jak vytvořit novou funkci binningu hodin do provozu časov�
 ### <a name="indexing-and-one-hot-encoding-of-categorical-features"></a>Indexování a horkou jeden kódování funkcí zařazené do kategorií
 Modelování a předpovědět, funkce s kategorií vstupní data indexované nebo se musí kódováním než použití funkce MLlib vyžadují. Tato část ukazuje, jak index nebo kódování zařazené do kategorií funkce pro vstup do funkce modelování.
 
-Potřebujete indexovat nebo kódování vašich modelů různými způsoby v závislosti na modelu. Lineární a logistické regresní modely například vyžadovat jeden horkou kódování. Například funkce s tři kategorie se rozšířit do tří sloupců funkce. Každý sloupec obsahuje 0 nebo 1 podle kategorie hodnotu. Poskytuje MLlib [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) funkce pro jeden horkou kódování. Tomto kodéru mapuje sloupec indexů popisek ke sloupci binárního vektorů s maximálně jeden – hodnotu single. S toto kódování algoritmy, které očekávají číselnými hodnotami funkce, jako je logistické regrese, lze použít k funkcím zařazené do kategorií.
+Potřebujete indexovat nebo kódování vašich modelů různými způsoby v závislosti na modelu. Lineární a logistické regresní modely například vyžadovat jeden horkou kódování. Například funkce s tři kategorie se rozšířit do tří sloupců funkce. Každý sloupec obsahuje 0 nebo 1 podle kategorie hodnotu. MLlib poskytuje funkci [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) pro kódování s jedním aktivním příznakem. Tomto kodéru mapuje sloupec indexů popisek ke sloupci binárního vektorů s maximálně jeden – hodnotu single. S toto kódování algoritmy, které očekávají číselnými hodnotami funkce, jako je logistické regrese, lze použít k funkcím zařazené do kategorií.
 
 Tady můžete transformovat pouze čtyři proměnné zobrazíte příklady, které jsou řetězce znaků. Také můžete indexovat jiné proměnné, jako je například den v týdnu, reprezentovaný číselné hodnoty, jako proměnné zařazené do kategorií.
 
-Pro indexování, použijte `StringIndexer()`a ten hot kódování, použijte `OneHotEncoder()` funkcí z MLlib. Tady je kód pro index a kódování funkcí zařazené do kategorií:
+Pro indexování použijte `StringIndexer()`a pro kódování One-Hot použijte funkce `OneHotEncoder()` z MLlib. Tady je kód pro index a kódování funkcí zařazené do kategorií:
 
     # CREATE INDEXES AND ONE-HOT ENCODED VECTORS FOR SEVERAL CATEGORICAL FEATURES
 
@@ -409,7 +409,7 @@ Pro indexování, použijte `StringIndexer()`a ten hot kódování, použijte `O
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**Výstup:**
+**Výkonem**
 
 Čas spuštění buňku: 4 sekundy.
 
@@ -448,12 +448,12 @@ Přidáte náhodné číslo (mezi 0 a 1) pro každý řádek (ve sloupci "rand")
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**Výstup:**
+**Výkonem**
 
 Čas spuštění buňku: 2 sekundy.
 
 ### <a name="specify-training-variable-and-features-and-then-create-indexed-or-one-hot-encoded-training-and-testing-input-labeled-point-rdds-or-data-frames"></a>Zadejte proměnnou školení a funkce a pak vytvořte indexovaných nebo horkou jeden kódovaný trénování a testování vstupního bodu Rdd nebo datového rámce s popiskem
-Tato část obsahuje kód, který ukazuje, jak indexovat zařazené do kategorií textová data jako datový typ s popiskem bodu a jeho kódování, takže ho můžete použít pro trénování a testování logistické regrese MLlib a jiných modelů klasifikace. S popiskem bodových objektů jsou Rdd, které jsou formátovány způsobem, který je potřeba jako vstupní data pro většinu v MLlib algoritmů strojového učení. A [označené jako bod](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) je přidružený místní vektoru, dense nebo zhuštěný, popisek a odpovědí.
+Tato část obsahuje kód, který ukazuje, jak indexovat zařazené do kategorií textová data jako datový typ s popiskem bodu a jeho kódování, takže ho můžete použít pro trénování a testování logistické regrese MLlib a jiných modelů klasifikace. S popiskem bodových objektů jsou Rdd, které jsou formátovány způsobem, který je potřeba jako vstupní data pro většinu v MLlib algoritmů strojového učení. [Označený bod](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) je místní vektor, buď hustý, nebo zhuštěný, přidružený k popisku/odpovědi.
 
 V tomto kódu je třeba zadat Cílová proměnná (závislé) a funkce, které chcete použít k trénování modelů. Pak vytvoříte indexovaných nebo horkou jeden kódovaný trénování a testování vstupního bodu Rdd nebo datového rámce s popiskem.
 
@@ -491,7 +491,7 @@ V tomto kódu je třeba zadat Cílová proměnná (závislé) a funkce, které c
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**Výstup:**
+**Výkonem**
 
 Čas spuštění buňku: 4 sekundy.
 
@@ -535,18 +535,18 @@ Tady je kód pro tyto dvě úlohy.
 ## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>Model binární klasifikace: předpověď, jestli by měla být věnována tip
 V této části vytvoříte tři typy binární klasifikační modely a vytvořte předpověď, jestli by měla být věnována tip:
 
-* A **model logistické regrese** pomocí Spark ML `LogisticRegression()` – funkce
-* A **model klasifikace náhodné doménové struktury** pomocí Spark ML `RandomForestClassifier()` – funkce
-* A **přechodu zvýšení skóre model klasifikace stromu** pomocí MLlib `GradientBoostedTrees()` – funkce
+* **Model logistické regrese** s využitím funkce Spark ml `LogisticRegression()`
+* **Model klasifikace náhodných doménových struktur** pomocí funkce Spark ml `RandomForestClassifier()`
+* **Model klasifikace stromu se zesílením přechodu** pomocí funkce `GradientBoostedTrees()` MLlib
 
 ### <a name="create-a-logistic-regression-model"></a>Vytvořte Logistický regresní model
-Dále vytvořte model logistické regrese pomocí Spark ML `LogisticRegression()` funkce. Vytvoříte model sestavování kódu v sérii kroků:
+Dále vytvořte model logistické regrese pomocí funkce Spark ML `LogisticRegression()`. Vytvoříte model sestavování kódu v sérii kroků:
 
-1. **Trénování modelu** dat pomocí jednu sadu parametrů.
-2. **Vyhodnocení modelu** na testovací datové sady s metrikami.
-3. **Uložit model** v úložišti objektů Blob pro budoucí použití.
-4. **Modul score model** proti testovací data.
-5. **Zobrazit výsledky** s příjemce provozních charakteristik (roc s více TŘÍDAMI) křivky.
+1. **Analýza dat modelu** pomocí jedné sady parametrů.
+2. **Vyhodnoťte model** pro sadu testovacích dat s metrikami.
+3. **Uložte model** v úložišti objektů BLOB pro budoucí spotřebu.
+4. Určení **skóre modelu** proti testovacím datům.
+5. **Vyznázorněte výsledky** pomocí křivek s provozní charakteristikou (Roc).
 
 Zde je kód pro tyto postupy:
 
@@ -594,7 +594,7 @@ Načíst, stanovení skóre a uložte výsledky.
     println("ROC on test data = " + ROC)
 
 
-**Výstup:**
+**Výkonem**
 
 Roc s více TŘÍDAMI v testovacích dat = 0.9827381497557599
 
@@ -632,12 +632,12 @@ Použití Pythonu pro místní snímky dat Pandas k vykreslení křivka roc s v�
     plt.show()
 
 
-**Výstup:**
+**Výkonem**
 
 ![Popis tlačítka nebo žádná křivka roc s více TŘÍDAMI tip](./media/scala-walkthrough/plot-roc-curve-tip-or-not.png)
 
 ### <a name="create-a-random-forest-classification-model"></a>Vytvořte model klasifikace náhodné doménové struktury
-Dále vytvořte model klasifikace náhodné doménové struktury pomocí Spark ML `RandomForestClassifier()` funkci a pak vyhodnotit model na testovací data.
+Dále vytvořte model klasifikace s náhodnými doménovými strukturami pomocí funkce Spark ML `RandomForestClassifier()` a pak vyhodnoťte model testovacích dat.
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
@@ -665,12 +665,12 @@ Dále vytvořte model klasifikace náhodné doménové struktury pomocí Spark M
     println("ROC on test data = " + ROC)
 
 
-**Výstup:**
+**Výkonem**
 
 Roc s více TŘÍDAMI v testovacích dat = 0.9847103571552683
 
 ### <a name="create-a-gbt-classification-model"></a>Vytvoření modelu GBT klasifikace
-Dále vytvořte model klasifikace GBT pomocí vaší MLlib `GradientBoostedTrees()` funkci a pak vyhodnotit model na testovací data.
+Dále vytvořte model klasifikace GBT pomocí funkce `GradientBoostedTrees()` MLlib a pak vyhodnoťte model testovacích dat.
 
     # TRAIN A GBT CLASSIFICATION MODEL BY USING MLLIB AND A LABELED POINT
 
@@ -721,15 +721,15 @@ Dále vytvořte model klasifikace GBT pomocí vaší MLlib `GradientBoostedTrees
     println(s"Area under ROC curve: ${metrics.areaUnderROC}")
 
 
-**Výstup:**
+**Výkonem**
 
 Oblasti pod křivkou roc s více TŘÍDAMI: 0.9846895479241554
 
 ## <a name="regression-model-predict-tip-amount"></a>Regresní model: předpověď velikost špičky
 V této části vytvoříte dva typy regresní modely a vytvořte předpověď velikost špičky:
 
-* A **trénování modelu lineární regrese Vyřešeno** pomocí Spark ML `LinearRegression()` funkce. Budete uložení modelu a vyhodnocení modelu na testovací data.
-* A **zvýšení skóre přechodu stromu regresní model** pomocí Spark ML `GBTRegressor()` funkce.
+* **Pravidelný lineární regresní model** pomocí funkce Spark ml `LinearRegression()`. Budete uložení modelu a vyhodnocení modelu na testovací data.
+* **Model regresního nárůstu přechodu** pomocí funkce Spark ml `GBTRegressor()`.
 
 ### <a name="create-a-regularized-linear-regression-model"></a>Vytvoření trénování modelu lineární regrese Vyřešeno
     # RECORD THE START TIME
@@ -773,7 +773,7 @@ V této části vytvoříte dva typy regresní modely a vytvořte předpověď v
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**Výstup:**
+**Výkonem**
 
 Čas spuštění buňku: 13 sekund.
 
@@ -804,7 +804,7 @@ V této části vytvoříte dva typy regresní modely a vytvořte předpověď v
     println("R-sqr on test data = " + r2)
 
 
-**Výstup:**
+**Výkonem**
 
 R sqr na testovací data = 0.5960320470835743
 
@@ -821,7 +821,7 @@ V dalším kroku dotazu výsledky testů jako datový rámec a s její vizualiza
     # CLICK THE TYPE OF PLOT TO GENERATE (LINE, AREA, BAR, AND SO ON)
     sqlResults
 
-Kód vytvoří místní datový rámec z výstupu dotazu a zobrazí data. `%%local` Magic vytvoří místní datový rámec, `sqlResults`, který můžete použít k vykreslení s matplotlib.
+Kód vytvoří místní datový rámec z výstupu dotazu a zobrazí data. `%%local` Magic vytvoří místní datový rámec, `sqlResults`, který můžete použít k vykreslení pomocí matplotlib.
 
 > [!NOTE]
 > Tato magic Spark se používá více než jednou v tomto článku. Pokud je velké množství dat, by měl ukázkový k vytvoření datového rámce, který se vejde do místní paměti.
@@ -846,12 +846,12 @@ Vytvořte grafy pomocí Pythonu matplotlib.
     plt.axis([-1, 15, -1, 8])
     plt.show(ax)
 
-**Výstup:**
+**Výkonem**
 
 ![Tip množství: skutečnost a předpokládané](./media/scala-walkthrough/plot-actual-vs-predicted-tip-amount.png)
 
 ### <a name="create-a-gbt-regression-model"></a>Vytvořte GBT regresní model
-Vytvoření GBT regresní model pomocí Spark ML `GBTRegressor()` funkci a pak vyhodnotit model na testovací data.
+Vytvořte GBT regresní model pomocí funkce Spark ML `GBTRegressor()` a pak vyhodnoťte model testovacích dat.
 
 RozGBTSné [stromy](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) () jsou kompletem rozhodovacích stromů. GBTS vlaky rozhodují iterativním způsobem, aby se minimalizovala funkce ztráty. GBTS můžete použít pro regresi a klasifikaci. Jejich zvládne zařazené do kategorií funkcí, nevyžadují, aby funkce škálování a můžete zachytit nonlinearities a interakce funkce. Můžete také lze využít v nastavení multiclass klasifikace.
 
@@ -879,7 +879,7 @@ RozGBTSné [stromy](https://spark.apache.org/docs/latest/ml-classification-regre
     println("Test R-sqr is: " + Test_R2);
 
 
-**Výstup:**
+**Výkonem**
 
 Je zkušební R-sqr: 0.7655383534596654
 
@@ -890,11 +890,11 @@ V této části použijte nástroje machine learning, které vývojáři často 
 * Optimalizace modelu s použitím křížového ověření a hyperparametrické otevřeného pomocí funkce CrossValidator Spark ML (binární klasifikace)
 * Optimalizace modelu pomocí vlastního kódu křížového ověření a parametr sweeping používat jakékoli strojového učení sadu funkcí a parametr (lineární regrese)
 
-**Křížové ověření** je technika, která vyhodnocuje, jak dobře budou generalize modelů trénovaných na známé sady dat předpovědět funkcí datové sady, na kterých je nebyla cvičena. Obecnou myšlenku za tento postup je, že model se trénuje na datové sadě známých dat, a pak nemusí být jeho předpovědi je testován vůči nezávislé datové sady. Běžná implementace je rozdělit datové sady do *k*-zapnuta a potom trénování modelu způsobem kruhové dotazování na všechny kromě jednoho složení.
+**Křížové ověřování** je technika, která posuzuje, jak dobře je model vyhodnocený na známou sadu dat generalizuje, aby předpovídá funkce datových sad, na kterých nebyla vyškolená. Obecnou myšlenku za tento postup je, že model se trénuje na datové sadě známých dat, a pak nemusí být jeho předpovědi je testován vůči nezávislé datové sady. Společná implementace je rozdělit datovou sadu na skládání *k*--a poté vytvořit model v kruhovém dotazování pro všechny kromě jednoho ze skládání.
 
-**Technologie Hyper parametr optimalizace** potížím, které vyberete sadu hyperparametry pro algoritmu učení, obvykle s cílem optimalizovat míru výkonu algoritmus v nezávislé datové sady. Technologie hyper parametr je hodnota, která je nutné zadat mimo proces trénování modelu. Předpoklady o hyperparametrické hodnoty může ovlivnit, flexibilitu a přesnost modelu. Rozhodovací stromy mají hyperparametry, například, jako je například požadovaný hloubky a počet listů ve stromové struktuře. Je nutné nastavit podmínku chybnou penalizace pro počítač vektorové podpory (SVM).
+**Optimalizace parametrů technologie Hyper-** v je problém, který vybírá sadu Hyper-Parameters pro vzdělávací algoritmus, obvykle s cílem optimalizace míry výkonu algoritmu v nezávislé sadě dat. Technologie hyper parametr je hodnota, která je nutné zadat mimo proces trénování modelu. Předpoklady o hyperparametrické hodnoty může ovlivnit, flexibilitu a přesnost modelu. Rozhodovací stromy mají hyperparametry, například, jako je například požadovaný hloubky a počet listů ve stromové struktuře. Je nutné nastavit podmínku chybnou penalizace pro počítač vektorové podpory (SVM).
 
-Běžný způsob, jak provádět optimalizaci hyperparametrické je vyhledat mřížky, zkratka **Uklízení parametrů**. V mřížce hledání podrobné prohledávání se provádí prostřednictvím hodnoty zadané dílčí hyperparametrické místa pro algoritmus učení. Křížového ověření může poskytovat metrika výkonu optimální výsledky vytvořené metodou mřížky vyhledávacího algoritmu řazení. Pokud používáte sweeping hyperparametrické křížového ověřování, pomáhá omezit problémy, například overfitting modelu na trénovací data. Tímto způsobem model uchovává kapacity použít na obecné sadu dat, ze které byl extrahován trénovací data.
+Běžný způsob, jak provést optimalizaci pomocí technologie Hyper-v, je použít hledání v mřížce, které se označuje také jako **odsweep parametrů**. V mřížce hledání podrobné prohledávání se provádí prostřednictvím hodnoty zadané dílčí hyperparametrické místa pro algoritmus učení. Křížového ověření může poskytovat metrika výkonu optimální výsledky vytvořené metodou mřížky vyhledávacího algoritmu řazení. Pokud používáte sweeping hyperparametrické křížového ověřování, pomáhá omezit problémy, například overfitting modelu na trénovací data. Tímto způsobem model uchovává kapacity použít na obecné sadu dat, ze které byl extrahován trénovací data.
 
 ### <a name="optimize-a-linear-regression-model-with-hyper-parameter-sweeping"></a>Optimalizace modelu lineární regrese s hyperparametrické sweeping
 V dalším kroku rozdělení dat na trénování a ověření sady, použijte hyperparametrické cílit na konkrétní sadu školení pro optimalizaci modelu a vyhodnocení na sadě ověření (lineární regrese).
@@ -936,12 +936,12 @@ V dalším kroku rozdělení dat na trénování a ověření sady, použijte hy
     println("Test R-sqr is: " + Test_R2);
 
 
-**Výstup:**
+**Výkonem**
 
 Je zkušební R-sqr: 0.6226484708501209
 
 ### <a name="optimize-the-binary-classification-model-by-using-cross-validation-and-hyper-parameter-sweeping"></a>Optimalizovat binární klasifikační model s použitím křížového ověření a hyperparametrické sweeping
-V této části se dozvíte, jak optimalizovat binární klasifikační model s použitím křížového ověření a hyperparametrické sweeping. Tento mechanismus využívá Spark ML `CrossValidator` funkce.
+V této části se dozvíte, jak optimalizovat binární klasifikační model s použitím křížového ověření a hyperparametrické sweeping. Používá funkci Spark ML `CrossValidator`.
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
@@ -980,7 +980,7 @@ V této části se dozvíte, jak optimalizovat binární klasifikační model s 
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**Výstup:**
+**Výkonem**
 
 Čas spuštění buňku: 33 sekund.
 
@@ -1095,14 +1095,14 @@ V dalším kroku optimalizovat modelu s použitím vlastního kódu a určení n
     val test_rsqr = new RegressionMetrics(labelAndPreds).r2
 
 
-**Výstup:**
+**Výkonem**
 
 Čas spuštění buňku: 61 sekund.
 
 ## <a name="consume-spark-built-machine-learning-models-automatically-with-scala"></a>Použití modelů předdefinovaných ve Spark machine learning automaticky pomocí Scala
-Přehled o tématech, které vás provedou úkoly, které tvoří procesu pro datové vědy v Azure, najdete v části [vědecké zpracování týmových dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Přehled témat, která vás provedou úkoly, které se týkají procesu datové vědy v Azure, najdete v tématu věnovaném [vědeckému zpracování týmových dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
-[Průvodce vědeckým zpracováním dat týmu](walkthroughs.md) popisuje další začátku do konce postupy, které popisují kroky v vědecké zpracování týmových dat pro konkrétní scénáře. Názorné postupy také ukazují, jak zkombinovat cloudové a místní nástroje a služby do pracovního postupu nebo kanálu pro vytváření inteligentních aplikací.
+[Návody pro vědecké zpracování týmových dat](walkthroughs.md) popisují další komplexní návody, které ukazují kroky v procesu vědeckého zpracování týmových dat pro konkrétní scénáře. Názorné postupy také ukazují, jak zkombinovat cloudové a místní nástroje a služby do pracovního postupu nebo kanálu pro vytváření inteligentních aplikací.
 
-[Hodnotit modely předdefinovaných ve Spark machine learning](spark-model-consumption.md) ukazuje, jak pomocí Scala kódu se automaticky načíst a stanovíte jeho skóre nové datové sady s modely machine learning součástí Spark a uložen v úložišti objektů Blob v Azure. Můžete podle pokynů uvedených zde a jednoduše nahradit Scala kódu v tomto článku pro automatické použití kódu Pythonu.
+[Skóre Sparkem vytvořených modelů strojového učení](spark-model-consumption.md) se dozvíte, jak používat Scala kód k automatickému načítání a hodnocení nových datových sad pomocí modelů strojového učení sestavených v Sparku a uložených v úložišti objektů BLOB v Azure. Můžete podle pokynů uvedených zde a jednoduše nahradit Scala kódu v tomto článku pro automatické použití kódu Pythonu.
 

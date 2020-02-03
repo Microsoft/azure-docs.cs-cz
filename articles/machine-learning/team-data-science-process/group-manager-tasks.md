@@ -151,7 +151,7 @@ Postup přizpůsobení obsahu úložiště:
      
    - Chcete-li odeslat soubory, vyberte možnost **nahrát**soubory. 
      
-     ![Nahrávání souborů](./media/group-manager-tasks/upload-files.png)
+     ![Nahrání souborů](./media/group-manager-tasks/upload-files.png)
      
    - Pokud chcete upravit existující soubory, přejděte k souboru a pak vyberte **Upravit**. 
      
@@ -166,7 +166,7 @@ Postup přizpůsobení obsahu úložiště:
 Pokud chcete provádět změny pomocí místního počítače nebo DSVM a vložit změny do úložišť skupiny, ujistěte se, že máte předpoklady pro práci s Git a DSVMs:
 
 - Předplatné Azure, pokud chcete vytvořit DSVM.
-- V počítači je nainstalovaný Git. Pokud používáte DSVM, Git se předem nainstaluje. V opačném případě najdete v článku [platformami a nástroji příloha](platforms-and-tools.md#appendix).
+- V počítači je nainstalovaný Git. Pokud používáte DSVM, Git se předem nainstaluje. V opačném případě si přečtěte článek věnované [platformám a nástrojům](platforms-and-tools.md#appendix).
 - Pokud chcete použít DSVM, Windows nebo Linux DSVM vytvořeného a nakonfigurovaného v Azure. Další informace a pokyny najdete v dokumentaci k [Data Science Virtual Machine](/azure/machine-learning/data-science-virtual-machine/).
 - Pro Windows DSVM se na vašem počítači nainstaluje [Správce přihlašovacích údajů Git (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . V souboru *Readme.MD* se posuňte dolů k části **Stažení a instalace** a vyberte **nejnovější instalační program**. Stáhněte instalační program *. exe* z instalační stránky a spusťte ho. 
 - Pro Linux DSVM se v DSVM nastavil veřejný klíč SSH a přidal se do Azure DevOps. Další informace a pokyny najdete v části **vytvoření veřejného klíče SSH** v [příloze platformy a nástroje](platforms-and-tools.md#appendix). 
@@ -258,6 +258,6 @@ Konfigurace oprávnění pro členy:
 
 Tady jsou odkazy na podrobné popisy dalších rolí a úloh v rámci vědeckého zpracování týmových dat:
 
-- [Úkoly vedoucí týmu pro datové vědy tým](team-lead-tasks.md)
-- [Vedoucí úkoly pro datové vědy tým projektu](project-lead-tasks.md)
+- [Úkoly vedoucí týmu pro tým pro datové vědy](team-lead-tasks.md)
+- [Úkoly vedoucího projektu pro tým pro datové vědy](project-lead-tasks.md)
 - [Jednotlivé úkoly přispěvatele projektu pro tým pro datové vědy](project-ic-tasks.md)

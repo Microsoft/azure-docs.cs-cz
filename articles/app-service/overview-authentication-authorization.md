@@ -13,7 +13,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76715106"
 ---
-# <a name="authentication-and-authorization-in-azure-app-service"></a>Ověřování a autorizace v prostředí Azure App Service
+# <a name="authentication-and-authorization-in-azure-app-service"></a>Ověřování a autorizace v Azure App Service
 
 > [!NOTE]
 > V tuto chvíli se pro Azure App Services a Azure Functions nepodporuje AAD v2 (včetně MSAL). Vraťte se prosím na aktualizace.
@@ -46,7 +46,7 @@ Tento modul zpracovává několik věcí pro vaši aplikaci:
 
 Modul se spouští odděleně od kódu aplikace a je nakonfigurovaný pomocí nastavení aplikace. Nevyžadují se žádné sady SDK, konkrétní jazyky ani změny kódu vaší aplikace. 
 
-### <a name="user-claims"></a>Deklarace identity uživatele
+### <a name="user-claims"></a>Deklarací identity uživatelů
 
 Pro všechny jazykové architektury App Service zpřístupňuje deklarace identity uživatele vložením do hlaviček požadavku. Pro App Service aplikace ASP.NET 4,6 naplní [ClaimsPrincipal. Current](/dotnet/api/system.security.claims.claimsprincipal.current) deklarací identity ověřeného uživatele, takže můžete postupovat podle standardního vzoru kódu .NET, včetně atributu `[Authorize]`. Podobně pro aplikace PHP App Service naplní `_SERVER['REMOTE_USER']` proměnnou. Pro aplikace Java jsou deklarace identity [dostupné z servlet Tomcat](containers/configure-language-java.md#authenticate-users-easy-auth).
 
@@ -132,7 +132,7 @@ Pomocí této možnosti nemusíte v aplikaci psát žádný ověřovací kód. P
 > [!CAUTION]
 > Omezení přístupu tímto způsobem se vztahuje na všechna volání aplikace, která nemusí být žádoucí pro aplikace, které mají veřejně dostupnou domovskou stránku, stejně jako v mnoha aplikacích s jednou stránkou.
 
-## <a name="more-resources"></a>Další zdroje
+## <a name="more-resources"></a>Další zdroje informací
 
 [Kurz: ověřování a autorizace uživatelů na konci Azure App Service (Windows)](app-service-web-tutorial-auth-aad.md)  
 [Kurz: ověřování a autorizace uživatelů na konci Azure App Service pro Linux](containers/tutorial-auth-aad.md)  

@@ -34,7 +34,7 @@ Tento kurz používá Azure Machine Learning k sestavení prediktivního modelu 
 > 
 > 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pro jednotlivé kroky v tomto kurzu budete potřebovat:
 
 * SQL Data Warehouse s předem načtenými vzorovými daty AdventureWorksDW. Ke zřízení této konfigurace použijte článek [Vytvoření SQL Data Warehouse](create-data-warehouse-portal.md) a zvolte načtení ukázkových dat. Pokud už Data Warehouse máte, ale nemáte ukázková data, můžete [ukázková data načíst ručně](sql-data-warehouse-load-sample-databases.md).

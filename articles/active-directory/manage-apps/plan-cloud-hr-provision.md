@@ -53,7 +53,7 @@ Integrace aplikace pro cloudovou HR se zřizováním uživatelů Azure AD je ide
 - Vyžadovat, aby se uživatelé synchronizovaly do jedné nebo víc doménových struktur služby Active Directory, domén a organizačních jednotek, a to na základě informací o změně zjištěných v aplikaci cloudového HR.
 - K odeslání e-mailu použijte Office 365.
 
-## <a name="learn"></a>Získejte informace
+## <a name="learn"></a>Informace
 
 Zřizování uživatelů vytvoří základ pro průběžné řízení identit. Vylepšuje kvalitu obchodních procesů, které spoléhají na data autoritativní identity.
 
@@ -74,13 +74,13 @@ Tato schopnost zajišťování IT na základě lidských zdrojů nabízí tyto v
 - **Řešení dodržování předpisů a zásad správného řízení:** Azure AD podporuje protokoly nativního auditu pro požadavky uživatelů na zřizování prováděné aplikacemi ze zdrojového i cílového systému. Díky auditování můžete sledovat, kdo má přístup k aplikacím z jedné obrazovky.
 - **Spravovat náklady:** Automatické zřizování snižuje náklady tím, že se vyhne neefektivitám a lidským chybám přidruženým k ručnímu zřizování. Díky starším a zastaralým platformám omezuje nutnost sestavování řešení pro zřizování uživatelů vytvořených v průběhu času.
 
-### <a name="licensing"></a>Správa licencí
+### <a name="licensing"></a>Licencování
 
 Pokud chcete nakonfigurovat aplikaci cloudového HR na integraci zřizování uživatelů Azure AD, budete potřebovat platnou [licenci Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) a licenci pro aplikaci cloudového HR, jako je například Workday nebo SuccessFactors.
 
 Pro každého uživatele, který se bude nacházet z aplikace cloudového HR a je zajištěná v rámci služby Active Directory nebo Azure AD, potřebujete také platnou licenci pro předplatného Azure AD Premium P1 nebo vyšší. Jakýkoli nesprávný počet licencí vlastněných v aplikaci cloudového HR může vést k chybám při zřizování uživatele.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - Přístup globálního správce služby Azure AD ke konfiguraci Azure AD Connectho agenta zřizování.
 - Instance testu a výroby aplikace cloudového HR.
@@ -90,13 +90,13 @@ Pro každého uživatele, který se bude nacházet z aplikace cloudového HR a j
 
 ### <a name="training-resources"></a>Školicí materiály
 
-| **Materiály** | **Odkaz a popis** |
+| **Prostředky** | **Odkaz a popis** |
 |:-|:-|
 | Videa | [Co je zřizování uživatelů v aktivním adresáři Azure?](https://youtu.be/_ZjARPpI6NI) |
 | | [Postup nasazení zřizování uživatelů v aktivním adresáři Azure](https://youtu.be/pKzyts6kfrw) |
 | Kurzy | [Seznam kurzů pro integraci aplikací SaaS s Azure AD](../saas-apps/tutorial-list.md) |
 | | [Kurz: Konfigurace pracovního dne pro Automatické zřizování uživatelů](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
-| Časté otázky | [Automatizované zřizování uživatelů](user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
+| Nejčastější dotazy | [Automatizované zřizování uživatelů](user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
 | | [Zřizování z Workday do Azure AD](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
 
 ### <a name="solution-architecture"></a>Architektura řešení

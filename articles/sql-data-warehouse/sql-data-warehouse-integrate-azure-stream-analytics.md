@@ -23,7 +23,7 @@ Azure Stream Analytics je plně spravovaná služba, která poskytuje vysoce dos
 
 V tomto článku se naučíte, jak používat svou databázi datového skladu jako výstupní jímku pro vaše Stream Analytics úlohy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Nejprve proveďte následující kroky v kurzu [Začínáme s Azure Stream Analytics](../stream-analytics/stream-analytics-real-time-fraud-detection.md) .  
 
 1. Vytvoření vstupu centra událostí

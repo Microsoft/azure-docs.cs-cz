@@ -33,7 +33,7 @@ Mezi běžné problémy, se kterými se můžete setkat, patří:
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -167,7 +167,7 @@ V rámci pokrývání se sloupec tří hodnot převede na matici s jedním sloup
 
 **Results**
 
-|Sloupec1|Col2|Col3|Col4|
+|Sloupe|Col2|Col3|Col4|
 |---|---|---|---|
 |12|13|14|15|
 |120|130|140|150|
@@ -190,7 +190,7 @@ Nyní R vrátí jednu hodnotu jako výsledek.
 
 **Results**
     
-|Sloupec1|
+|Sloupe|
 |---|
 |1542|
 
@@ -222,10 +222,10 @@ Aby bylo možné vyplnit datový rámec, R opakuje prvky načtené z RTestData t
     
 |*Col2*|*Col3*|
 |----|----|
-|1\. místo|1\. místo|
+|1|1|
 |10|2|
 |100|3|
-|1\. místo|4|
+|1|4|
 |10|5|
 |100|6|
 

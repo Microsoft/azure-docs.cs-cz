@@ -26,24 +26,24 @@ Toto téma ukazuje, jak zprovoznit model uložené machine learning (ML) pomocí
 Postup instalace a kód pro zprovoznění modelu ML jsou k dispozici v tomto názorném postupu pro použití clusteru služby HDInsight Spark 1.6, jakož i cluster Spark 2.0. Kód pro tyto postupy také najdete v poznámkových bloků Jupyter.
 
 ### <a name="notebook-for-spark-16"></a>Poznámkový blok pro Spark 1.6
-[PySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) Poznámkový blok Jupyter ukazuje, jak na zprovoznění modelu uložené pomocí Pythonu v clusterech HDInsight. 
+Poznámkový blok [pySpark-Machine-Learning-data-věda-Spark-model-spotřebe. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) Jupyter ukazuje, jak zprovoznění uložený model pomocí Pythonu v clusterech HDInsight. 
 
 ### <a name="notebook-for-spark-20"></a>Poznámkový blok pro Spark 2.0
-Chcete-li upravit poznámkového bloku Jupyter pro Spark 1.6 používat s clusterem HDInsight Spark 2.0, nahradit soubor kódu Python s [tento soubor](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py). Tento kód ukazuje, jak využívat modelů vytvořených v Spark 2.0.
+Pokud chcete upravit Poznámkový blok Jupyter pro Spark 1,6 pro použití s clusterem HDInsight Spark 2,0, nahraďte soubor kódu Pythonu [tímto souborem](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py). Tento kód ukazuje, jak využívat modelů vytvořených v Spark 2.0.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-1. Potřebujete účet Azure a Spark 1.6 (nebo Spark 2.0) clusteru HDInsight k dokončení tohoto návodu. Zobrazit [přehled datové vědy pomocí Sparku v Azure HDInsight](spark-overview.md) pokyny o tom, jak tyto požadavky splňují. Toto téma obsahuje také popis dat taxislužby NYC 2013 se tady použít a pokyny o tom, jak spustit kód z poznámkového bloku Jupyter v clusteru Spark. 
+1. Potřebujete účet Azure a Spark 1.6 (nebo Spark 2.0) clusteru HDInsight k dokončení tohoto návodu. Pokyny, jak tyto požadavky naplnit, najdete v tématu [Přehled vědeckého zpracování dat pomocí Sparku ve službě Azure HDInsight](spark-overview.md) . Toto téma obsahuje také popis dat taxislužby NYC 2013 se tady použít a pokyny o tom, jak spustit kód z poznámkového bloku Jupyter v clusteru Spark. 
 2. Vytvářejte modely strojového učení, které se tady mají vyhodnotit, pomocí tématu [zkoumání a modelování dat pomocí Sparku](spark-data-exploration-modeling.md) pro cluster Spark 1,6 nebo pro notebooky Spark 2,0. 
-3. Poznámkové bloky Spark 2.0 použít další datové sady pro úkol klasifikace, dobře známé letecká společnost na čas odeslání datové sady z 2011 a 2012. Popis poznámkových bloků a odkazy na nich jsou součástí [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) pro úložiště GitHub, které je obsahují. Kromě toho kód tady v propojených poznámkových bloků je obecný a by mělo fungovat jakéhokoli jiného clusteru Spark. Pokud nepoužíváte HDInsight Spark, může být mírně lišit od co je znázorněna zde kroky instalace a správy clusteru. 
+3. Poznámkové bloky Spark 2.0 použít další datové sady pro úkol klasifikace, dobře známé letecká společnost na čas odeslání datové sady z 2011 a 2012. Popis poznámkových bloků a odkazů jsou k dispozici v [Readme.MD](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) pro úložiště GitHubu, které je obsahuje. Kromě toho kód tady v propojených poznámkových bloků je obecný a by mělo fungovat jakéhokoli jiného clusteru Spark. Pokud nepoužíváte HDInsight Spark, může být mírně lišit od co je znázorněna zde kroky instalace a správy clusteru. 
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
 ## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>Instalační program: umístění úložiště, knihovny a přednastavený kontext Spark
 Spark je možné číst a zapisovat do Azure Storage Blob (WASB). Takže existující data uložená existuje mohou být zpracovány pomocí Sparku a výsledky uložené znovu v WASB.
 
-Pokud chcete uložit soubory nebo modely WASB, cesta musí být zadán správně. Výchozí kontejner připojené ke clusteru Spark může být odkazováno pomocí cesta začínající: *"wasb / / / / /"* . Následující příklad kódu určuje umístění dat pro čtení a cestu k adresáři modelu úložiště, do kterého se uloží výstupní modelu. 
+Pokud chcete uložit soubory nebo modely WASB, cesta musí být zadán správně. K výchozímu kontejneru připojenému ke clusteru Spark se dá odkazovat pomocí cesty začínající na: *"wasb////"* . Následující příklad kódu určuje umístění dat pro čtení a cestu k adresáři modelu úložiště, do kterého se uloží výstupní modelu. 
 
 ### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>Nastavit cesty adresáře na umístění úložiště v WASB
 Modely se ukládají do: "wasb: / / / uživatel/remoteuser/NYCTaxi/modely". Pokud tato cesta není správně nastavená, modely nejsou načtené pro vyhodnocení.
@@ -51,7 +51,7 @@ Modely se ukládají do: "wasb: / / / uživatel/remoteuser/NYCTaxi/modely". Poku
 Scored výsledky byly uloženy v: "wasb: / / / uživatel/remoteuser/NYCTaxi/ScoredResults". Pokud je nesprávná cesta ke složce, výsledky nejsou uloženy v této složce.   
 
 > [!NOTE]
-> Cesta k umístění souborů lze kopírovat a vložit do zástupné symboly v tomto kódu z výstupu poslední buňku **machine-learning-data-science-spark-data-exploration-modeling.ipynb** poznámkového bloku.   
+> Umístění cesty k souboru je možné zkopírovat a vložit do zástupných symbolů v tomto kódu z výstupu poslední buňky v poznámkovém bloku **Machine-Learning-data-věda-Spark-data-prozkoumává-Modeling. ipynb** .   
 > 
 > 
 
@@ -80,7 +80,7 @@ Tady je kód pro nastavení cesty k adresáři:
     import datetime
     datetime.datetime.now()
 
-**VÝSTUP:**
+**VÝKONEM**
 
 DateTime.DateTime (2016, 4, 25, 23, 56, 19, 229403)
 
@@ -111,16 +111,16 @@ Jádra PySpark, které jsou k dispozici s poznámkovými bloky Jupyter nemají p
 
 Jádra PySpark poskytuje některé předdefinované "Magic", které jsou speciální příkazy, které lze volat s %%. Existují dva tyto příkazy, které se používají v těchto ukázek kódu.
 
-* **%% místní** zadat, že kód v další řádek je spuštěn místně. Kód musí být platný kód Pythonu.
+* **%% místní** Určili jsme, že kód na dalších řádcích se spustí místně. Kód musí být platný kód Pythonu.
 * **%% SQL-o \<název proměnné >** 
 * Spustí dotaz Hive proti kontext sqlContext. Pokud je předán parametr -o výsledek dotazu se ukládají v %% místní kontext Python jako Pandas dataframe.
 
-Pro další informace o jádrech pro poznámkové bloky Jupyter a předdefinované "magics", která poskytují, naleznete v tématu [jádra dostupná pro poznámkové bloky Jupyter s HDInsight Spark Linux clusterů v HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
+Další informace o jádrech pro Jupyter poznámkových blocích a předdefinovaných "Magic" najdete v tématu [jádra dostupná pro poznámkové bloky Jupyter s clustery HDInsight Spark Linux v HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 
 ## <a name="ingest-data-and-create-a-cleaned-data-frame"></a>Příjem dat a vytvořit objekt frame, vyčištěnou dat
 Tato část obsahuje kód pro řadu úloh potřebných k ingestování dat zohlednit. Číst v připojeném k ukázce 0,1 % taxislužby cesty a tarif souboru (uložený jako soubor TSV), formát data a pak vytvoří čisté datového rámce.
 
-Soubory odezvy a tarif taxislužby byly připojené na základě na postup uvedený v: [vědecké zpracování týmových dat v akci: clusterů systému HDInsight Hadoop](hive-walkthrough.md) tématu.
+Soubory taxislužby Trip a jízdné byly připojeny na základě postupu uvedeného v tématu: [vědecký proces týmového zpracování dat v akci: použití clusterů HDInsight Hadoop](hive-walkthrough.md) .
 
     # INGEST DATA AND CREATE A CLEANED DATA FRAME
 
@@ -180,7 +180,7 @@ Soubory odezvy a tarif taxislužby byly připojené na základě na postup uvede
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**VÝSTUP:**
+**VÝKONEM**
 
 Čas potřebný k provedení nad buňkou: 46.37 sekund
 
@@ -188,11 +188,11 @@ Soubory odezvy a tarif taxislužby byly připojené na základě na postup uvede
 Tato část ukazuje, jak index, kódování a škálovat zařazené do kategorií funkcí, abyste je připravili k použití v učení MLlib pod dohledem algoritmy pro klasifikaci a regrese.
 
 ### <a name="feature-transformation-index-and-encode-categorical-features-for-input-into-models-for-scoring"></a>Funkce transformace: index a kódování zařazené do kategorií funkce pro vstup do modelů pro vyhodnocení
-Tato část ukazuje, jak data zařazená do kategorií pomocí indexu `StringIndexer` a kódování funkcí `OneHotEncoder` vstup do modelů.
+V této části se dozvíte, jak indexovat kategorií data pomocí `StringIndexer` a kódovat funkce `OneHotEncoder` vstupu do modelů.
 
-[StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) kóduje sloupec řetězcového typu popisky na sloupec indexů popisek. Indexy jsou řazeny podle frekvence popisek. 
+[StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) zakóduje řetězcový sloupec Labels na sloupec indexů popisků. Indexy jsou řazeny podle frekvence popisek. 
 
-[OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) mapuje sloupec indexů popisek ke sloupci binárního vektorů s maximálně jeden – hodnotu single. Toto kódování umožňuje algoritmy, které očekávají průběžné Vážíme si toho funkce, jako je logistické regrese, použít zařazené do kategorií funkce.
+[OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) mapuje sloupec indexů popisků na sloupec binárních vektorů s maximálně jednou jednou hodnotou. Toto kódování umožňuje algoritmy, které očekávají průběžné Vážíme si toho funkce, jako je logistické regrese, použít zařazené do kategorií funkce.
 
     #INDEX AND ONE-HOT ENCODE CATEGORICAL FEATURES
 
@@ -252,14 +252,14 @@ Tato část ukazuje, jak data zařazená do kategorií pomocí indexu `StringInd
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**VÝSTUP:**
+**VÝKONEM**
 
 Čas potřebný k provedení nad buňkou: 5.37 sekund
 
 ### <a name="create-rdd-objects-with-feature-arrays-for-input-into-models"></a>Vytváření objektů RDD s poli funkce pro vstup do modelů
-Tato část obsahuje kód, který ukazuje, jak indexovat zařazené do kategorií textová data jako objekt RDD a horkou jeden kódovat, je možné pro trénování a testování založený na stromové architektuře modely a MLlib logistické regrese. Indexovaná data uložená v [odolné Distributed Dataset (RDD)](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) objekty. RDD jsou základní abstrakcí ve Sparku. Objekt RDD představuje neměnné a dělené sadu prvků, které mohou být provozována paralelně se Sparkem.
+Tato část obsahuje kód, který ukazuje, jak indexovat zařazené do kategorií textová data jako objekt RDD a horkou jeden kódovat, je možné pro trénování a testování založený na stromové architektuře modely a MLlib logistické regrese. Indexovaná data jsou uložena v objektech [odolné distribuované datové sady (RDD)](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) . RDD jsou základní abstrakcí ve Sparku. Objekt RDD představuje neměnné a dělené sadu prvků, které mohou být provozována paralelně se Sparkem.
 
-Také obsahuje kód, který ukazuje, jak škálovat data `StandardScalar` poskytované MLlib pro použití v lineární regrese s pomocí Stochastického přechodu sestup (SGD), Oblíbené algoritmů pro trénování širokou škálu modelů strojového učení. [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) se používá funkce, které se odchylka jednotek škálování. Funkce škálování, označované také jako data normalizace, zajistí, že funkce se značně Celková uhrazená hodnotami jsou neudělil nadměrné naváží ve funkci cíle. 
+Obsahuje také kód, který ukazuje, jak škálovat data pomocí `StandardScalar` poskytovaných MLlib pro použití v lineární regresi s stochastického přechodem (SGD), což je oblíbený algoritmus pro školení široké škály modelů strojového učení. [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) se používá k horizontálnímu navýšení kapacity funkcí na jednotkovou odchylku. Funkce škálování, označované také jako data normalizace, zajistí, že funkce se značně Celková uhrazená hodnotami jsou neudělil nadměrné naváží ve funkci cíle. 
 
     # CREATE RDD OBJECTS WITH FEATURE ARRAYS FOR INPUT INTO MODELS
 
@@ -326,7 +326,7 @@ Také obsahuje kód, který ukazuje, jak škálovat data `StandardScalar` poskyt
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**VÝSTUP:**
+**VÝKONEM**
 
 Čas potřebný k provedení nad buňkou: 11.72 sekund
 
@@ -357,12 +357,12 @@ Kód v této části ukazuje, jak načíst Logistický regresní Model, který b
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
-**VÝSTUP:**
+**VÝKONEM**
 
 Čas potřebný k provedení nad buňkou: 19.22 sekund
 
 ## <a name="score-a-linear-regression-model"></a>Určení skóre modelu lineární regrese
-Použili jsme [LinearRegressionWithSGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) pro trénování modelu lineární regrese pomocí Stochastického přechodu sestup (SGD) pro optimalizaci odhadnout množství tip placené. 
+[LinearRegressionWithSGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) používáme k vytvoření trendu lineární regrese s využitím stochastického přechodu (SGD) pro optimalizaci, který předpovídá množství placeného tipu. 
 
 Kód v této části ukazuje, jak načtení modelu lineární regrese z úložiště objektů blob v Azure, stanovení skóre pomocí škálován proměnných a uložte výsledky zpět do objektu blob.
 
@@ -390,16 +390,16 @@ Kód v této části ukazuje, jak načtení modelu lineární regrese z úloži�
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**VÝSTUP:**
+**VÝKONEM**
 
 Čas potřebný k provedení nad buňkou: 16.63 sekund
 
 ## <a name="score-classification-and-regression-random-forest-models"></a>Skóre klasifikačních a regresních modelů doménové struktury náhodné
 Kód v této části ukazuje, jak načíst uložené klasifikace a regresních modelů náhodné doménové struktury uložit ve službě Azure blob storage, hodnocení výkonu pomocí standardní třídění a regresní opatření a uložte výsledky zpět do úložiště objektů blob.
 
-[Náhodné doménových struktur](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) jsou umožňující rozhodovacích stromů.  Jejich kombinací mnoha rozhodovacích stromů, aby se snížilo riziko overfitting. Náhodné doménových struktur může zpracovat zařazené do kategorií funkce rozšíření do nastavení klasifikace víc tříd, nevyžadují, aby funkce škálování a budou moct zachytit nelineárností a funkce interakce. Náhodné doménových struktur jsou jednou z nejvíce úspěšný strojového učení pro klasifikačních a regresních modelů.
+[Náhodné doménové struktury](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) jsou komplety rozhodovacích stromů.  Jejich kombinací mnoha rozhodovacích stromů, aby se snížilo riziko overfitting. Náhodné doménových struktur může zpracovat zařazené do kategorií funkce rozšíření do nastavení klasifikace víc tříd, nevyžadují, aby funkce škálování a budou moct zachytit nelineárností a funkce interakce. Náhodné doménových struktur jsou jednou z nejvíce úspěšný strojového učení pro klasifikačních a regresních modelů.
 
-[Spark.mllib](https://spark.apache.org/mllib/) podporuje náhodné doménové struktury pro binární a víc tříd klasifikaci a regrese, pomocí funkce nepřetržitý a kategorií. 
+[Spark. mllib](https://spark.apache.org/mllib/) podporuje náhodné doménové struktury pro binární klasifikaci a klasifikaci s více třídami a pro regresi pomocí kontinuálních i kategorií funkcí. 
 
     # SCORE RANDOM FOREST MODELS FOR CLASSIFICATION AND REGRESSION
 
@@ -436,7 +436,7 @@ Kód v této části ukazuje, jak načíst uložené klasifikace a regresních m
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
-**VÝSTUP:**
+**VÝKONEM**
 
 Čas potřebný k provedení nad buňkou: 31.07 sekund
 
@@ -486,7 +486,7 @@ GBTS (probíhající se [rozvětvení barev](https://spark.apache.org/docs/lates
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**VÝSTUP:**
+**VÝKONEM**
 
 Čas potřebný k provedení nad buňkou: 14.6 sekund
 
@@ -509,7 +509,7 @@ GBTS (probíhající se [rozvětvení barev](https://spark.apache.org/docs/lates
     print "BoostedTreeRegressionFileLoc: " + btregressionfilename;
 
 
-**VÝSTUP:**
+**VÝKONEM**
 
 logisticRegFileLoc: LogisticRegressionWithLBFGS_2016-05-0317_22_38.953814.txt
 
@@ -524,10 +524,10 @@ BoostedTreeClassificationFileLoc: GradientBoostingTreeClassification_2016-05-031
 BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05-0317_23_56.860740.txt
 
 ## <a name="consume-spark-models-through-a-web-interface"></a>Použití Sparku modelů prostřednictvím webového rozhraní
-Spark poskytuje mechanismus pro vzdáleně pomocí komponenty s názvem Livy odeslání dávkových úloh Hive nebo interaktivní dotazy pomocí rozhraní REST. Livy je povolené ve výchozím nastavení na svém clusteru HDInsight Spark. Další informace o Livy najdete v tématu: [odesílání Sparkových úloh pomocí Livy vzdáleně](../../hdinsight/spark/apache-spark-livy-rest-interface.md). 
+Spark poskytuje mechanismus pro vzdáleně pomocí komponenty s názvem Livy odeslání dávkových úloh Hive nebo interaktivní dotazy pomocí rozhraní REST. Livy je povolené ve výchozím nastavení na svém clusteru HDInsight Spark. Další informace o Livy najdete v tématu [vzdálené odeslání úloh Sparku pomocí Livy](../../hdinsight/spark/apache-spark-livy-rest-interface.md). 
 
 Vám pomůže Livy vzdáleně odešlete úlohu, jejíž batch skóre, které se soubor, který je uložený v objektu blob Azure a výsledky pak zapíše do jiného objektu blob. K tomuto účelu můžete nahrát skript Pythonu z  
-[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) do objektu blob z clusteru Spark. Můžete použít nástroje, jako je **Microsoft Azure Storage Explorer** nebo **AzCopy** zkopírujte skript do objektu blob clusteru. V našem případě jsme nahráli skript, který chcete ***wasb:///example/python/ConsumeGBNYCReg.py***.   
+[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) do objektu BLOB clusteru Spark. Ke zkopírování skriptu do objektu BLOB clusteru můžete použít nástroj, například **Průzkumník služby Microsoft Azure Storage** nebo **AzCopy** . V našem případě jsme nahráli skript na ***wasb:///example/Python/ConsumeGBNYCReg.py***.   
 
 > [!NOTE]
 > Přístupové klíče, které budete potřebovat najdete na portálu pro účet úložiště související s clusterem Spark. 
@@ -576,16 +576,16 @@ Zde je kód Python pro volání HTTP:
     conn.close()
 
 
-Můžete také přidat tento kód Python [Azure Functions](https://azure.microsoft.com/documentation/services/functions/) aktivovat odeslání úlohy Spark, který získává objekt blob na základě různých událostí, jako je časovač, vytvoření nebo aktualizaci objektu blob. 
+Můžete taky přidat tento kód Pythonu pro [Azure Functions](https://azure.microsoft.com/documentation/services/functions/) , který aktivuje odeslání úlohy Sparku, která vyhodnotí objekt blob na základě různých událostí, jako je časovač, vytvoření nebo aktualizace objektu BLOB. 
 
-Pokud dáváte přednost prostředí bezplatného klienta kódu, použijte [Azure Logic Apps](https://azure.microsoft.com/documentation/services/app-service/logic/) k vyvolání Spark dávkového vyhodnocování tak, že definujete akce HTTP na **návrhář pro Logic Apps** a nastavení jeho parametry. 
+Pokud dáváte přednost kódu bez klienta, použijte [Azure Logic Apps](https://azure.microsoft.com/documentation/services/app-service/logic/) k vyvolání vyhodnocování dávkového zpracování Spark definováním akce HTTP v **Návrháři Logic Apps** a nastavením jeho parametrů. 
 
-* Z webu Azure portal vytvořte novou aplikaci logiky tak, že vyberete **+ nová** -> **Web + mobilní zařízení** -> **aplikace logiky**. 
-* Zobrazí se **návrhář pro Logic Apps**, zadejte název aplikace logiky a plán služby App Service.
+* Z Azure Portal vytvořte novou aplikaci logiky tak, že vyberete **+ nová** -> **web a mobilní zařízení** -> **Aplikace logiky**. 
+* Chcete-li vyvolat **Logic Apps návrháře**, zadejte název aplikace logiky a plán App Service.
 * Vyberte akci HTTP a zadejte parametry, které je znázorněno na následujícím obrázku:
 
 ![Návrhář pro Logic Apps](./media/spark-model-consumption/spark-logica-app-client.png)
 
-## <a name="whats-next"></a>A co dál?
-**Křížového ověření a hyperparameter sweeping**: naleznete v tématu [rozšířené zkoumání a modelování se Sparkem](spark-advanced-data-exploration-modeling.md) na to, jak modely můžete pomocí křížového ověření a hyperparametrické sweeping školení.
+## <a name="whats-next"></a>Co dále?
+**Křížové ověřování a**nakládání s parametry: Přečtěte si článek [pokročilý průzkum a modelování dat pomocí Sparku](spark-advanced-data-exploration-modeling.md) , jak lze modely vyškolené pomocí křížového ověřování a s využitím úklidu Hyper-parametr.
 

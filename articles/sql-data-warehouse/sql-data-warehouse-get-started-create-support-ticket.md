@@ -22,7 +22,7 @@ ms.locfileid: "76717842"
 Pokud máte nějaké problémy s vaším SQL Data Warehouse, vytvořte lístek podpory, aby vám tým technické podpory mohl pomoct.
 
 ## <a name="create-a-support-ticket"></a>Vytvoření lístku podpory
-1. Otevřete [portál Azure](https://portal.azure.com/).
+1. Otevřete web [Azure Portal](https://portal.azure.com/).
 2. Na domovské obrazovce klikněte na dlaždici **Nápověda a podpora**.
    
     ![Nápověda a podpora](./media/sql-data-warehouse-get-started-create-support-ticket/MainPage.PNG)
@@ -31,8 +31,8 @@ Pokud máte nějaké problémy s vaším SQL Data Warehouse, vytvořte lístek p
    Vyberte svůj [plán podpory Azure](https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/).
    
    * **Podpora k fakturaci, správě kvót a předplatného** je k dispozici na všech úrovních podpory.
-   * Podpora **přerušení oprav** je poskytována prostřednictvím [podpory Developer](https://azure.microsoft.com/support/plans/developer/), [Standard](https://azure.microsoft.com/support/plans/standard/), [Professional Direct](https://azure.microsoft.com/support/plans/prodirect/)nebo [Premier](https://azure.microsoft.com/support/plans/premier/) . Problémy vyžadující opravu jsou problémy zaznamenané uživateli při používání Azure, když existuje důvodný předpoklad, že je příčina na straně Microsoftu.
-   * V rámci podpory na úrovni [Professional Direct](https://azure.microsoft.com/support/plans/prodirect/) a [Premier](https://azure.microsoft.com/support/plans/premier/) jsou k dispozici služby **mentorování vývojářů** a **poradenské služby**. 
+   * Podpora **přerušení oprav** je poskytována prostřednictvím [podpory Developer](https://azure.microsoft.com/support/plans/developer/), [Standard](https://azure.microsoft.com/support/plans/standard/), [Professional Direct](https://azure.microsoft.com/support/plans/prodirect/)nebo [Premier](https://azure.microsoft.com/support/plans/premier/) . Problémy vyžadující opravu jsou problémy, které mají zákazníci při používání Azure a u kterých se dá předpokládat, že je způsobila společnosti Microsoft.
+   * V rámci podpory na úrovni **Professional Direct** a **Premier** jsou k dispozici služby [mentorování vývojářů](https://azure.microsoft.com/support/plans/prodirect/) a [poradenské služby](https://azure.microsoft.com/support/plans/premier/). 
      
      Pokud máte plán podpory Premier Support, můžete také problémy týkající se SQL Data Warehouse nahlásit na [online portálu Microsoft Premier](https://premier.microsoft.com/). Další informace o různých plánech podpory, včetně rozsahu, doby odezvy, cen atd. najdete v tématu věnovaném [plánům podpory Azure](https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/) .  Nejčastější dotazy týkající se podpory Azure najdete v [nejčastějších](https://azure.microsoft.com/support/faq/)dotazech k podpoře Azure.  
         
@@ -59,7 +59,7 @@ Po odeslání žádosti o podporu vás tým podpory Azure vás bude kontaktovat.
 
 ![Zkontrolování stavu](./media/sql-data-warehouse-get-started-create-support-ticket/Monitor_ticket.PNG)
 
-## <a name="other-resources"></a>Další zdroje informací
+## <a name="other-resources"></a>Další prostředky
 Můžete se také připojit k SQL Data Warehouse komunitě na [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw/) nebo prostřednictvím [fóra MSDN Azure SQL Data Warehouse](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/).
 
  

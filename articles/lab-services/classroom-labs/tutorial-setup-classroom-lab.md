@@ -32,7 +32,7 @@ V tomto kurzu provedete následující akce:
 > * Nastavit plán pro testovací prostředí
 > * Poslat e-mail pozvánky studentům
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete nastavit prostředí učebny v účtu testovacího prostředí, musíte být členem jedné z těchto rolí v účtu testovacího prostředí: vlastník, autor testovacího prostředí nebo přispěvatele. Účet, který jste použili k vytvoření účtu testovacího prostředí, je automaticky přidán do role vlastníka.
 
 Vlastník testovacího prostředí může přidat další uživatele do role **testovacího prostředí** . Například vlastník testovacího prostředí přidá profesory do role tvůrce testovacího prostředí. Pak profesory vytvořit Labs s virtuálními počítači pro své třídy. Studenti používají registrační odkaz, který obdrží z profesory k registraci do testovacího prostředí. Jakmile jsou zaregistrované, můžou pomocí virtuálních počítačů v laboratoři provádět pracovní a domácí práci. Podrobné pokyny pro přidání uživatelů do role testovacího prostředí najdete v tématu [Přidání uživatele do role testovacího prostředí](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
@@ -106,7 +106,7 @@ Vlastník testovacího prostředí může přidat další uživatele do role **t
 1. Na stránce **Přidat uživatele** zadejte e-mailové adresy uživatelů na samostatných řádcích nebo na jeden řádek oddělený středníky. 
 
     ![Přidat e-mailové adresy uživatele](../media/how-to-configure-student-usage/add-users-email-addresses.png)
-4. Vyberte **Uložit**. V seznamu se zobrazí e-mailové adresy uživatelů a jejich stavů (registrovaných nebo ne). 
+4. Vyberte **Save** (Uložit). V seznamu se zobrazí e-mailové adresy uživatelů a jejich stavů (registrovaných nebo ne). 
 
     ![Seznam uživatelů](../media/how-to-configure-student-usage/users-list-new.png)
 
@@ -131,7 +131,7 @@ Vytvořte naplánovanou událost pro testovací prostředí, aby se virtuální 
     1. Potvrďte, že je pro pole **Opakovat** nastaven **každý týden** . 
     2. Vyberte dny, ve kterých se má plán projevit. V následujícím příkladu je vybrána možnost pondělí – pátek. 
     3. Vyberte **koncové datum** pro plán.
-    8. Vyberte **Uložit**. 
+    8. Vyberte **Save** (Uložit). 
 
         ![Nastavit plán opakování](../media/how-to-create-schedules/set-repeat-schedule.png)
 

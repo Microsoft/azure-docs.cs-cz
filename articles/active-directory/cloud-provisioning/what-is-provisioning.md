@@ -1,5 +1,5 @@
 ---
-title: Co je zřizování identit pomocí Azure AD? | Dokumentace Microsoftu
+title: Co je zřizování identit pomocí Azure AD? | Microsoft Docs
 description: Popisuje přehled zřizování identit.
 services: active-directory
 author: billmath
