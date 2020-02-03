@@ -31,7 +31,7 @@ Dostanete chyby z Apache Ambari, které jsou podobné:
 
 V ovlivněných pracovních uzlech chybí zmíněné adresáře z upozornění Ambari.
 
-## <a name="resolution"></a>Rozlišení
+## <a name="resolution"></a>Řešení
 
 Ručně vytvořte chybějící adresáře na ovlivněných pracovních uzlech.
 

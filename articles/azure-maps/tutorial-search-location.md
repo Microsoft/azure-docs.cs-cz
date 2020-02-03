@@ -23,14 +23,14 @@ V tomto kurzu se dozvíte, jak nastavit účet s Azure Maps a pak pomocí rozhra
 > [!div class="checklist"]
 > * Vytvoření účtu Azure Maps
 > * Získání primárního klíče pro váš účet Maps
-> * Vytvořit novou webovou stránku s použitím rozhraní API pro mapové ovládací prvky
+> * Vytvoření nové webové stránky s použitím rozhraní API pro mapové ovládací prvky
 > * Vyhledání okolního bodu zájmu pomocí vyhledávací služby Maps
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [Portálu Azure](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 <a id="createaccount"></a>
 
@@ -72,7 +72,7 @@ Další informace o ověřování v Azure Maps najdete v tématu [Správa ověř
 Rozhraní Ovládací prvek Mapa API je praktická Klientská knihovna. Toto rozhraní API umožňuje snadno integrovat mapy do vaší webové aplikace. Skrývá složitost úplného volání služby REST a zvyšuje produktivitu díky přizpůsobitelným součástem. Následující kroky ukazují, jak vytvořit statickou stránku HTML s vloženým rozhraním API pro mapové ovládací prvky.
 
 1. Na místním počítači vytvořte nový soubor s názvem **MapSearch.html**.
-2. Přidejte do souboru následující součásti HTML:
+2. Přidejte do souboru následující komponenty HTML:
 
    ```HTML
     <!DOCTYPE html>

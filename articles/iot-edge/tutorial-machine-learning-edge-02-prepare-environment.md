@@ -30,7 +30,7 @@ Vytvořili jsme PowerShellový skript, který vytvoří virtuální počítač A
 
 Vývojový virtuální počítač se nastaví pomocí:
 
-* Windows 10
+* Windows 10
 * [Chocolatey](https://chocolatey.org/)
 * [Docker Desktop pro Windows](https://www.docker.com/products/docker-desktop)
 * [Git pro Windows](https://gitforwindows.org/)

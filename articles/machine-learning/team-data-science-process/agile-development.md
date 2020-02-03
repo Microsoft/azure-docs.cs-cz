@@ -19,7 +19,7 @@ ms.locfileid: "76722097"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Agilní vývoj projekty datových věd
 
-Tento dokument popisuje, jak můžou vývojáři spustit projekt vědeckého zpracování dat v systematicky, správy verzí a spolupráce v rámci týmového projektu pomocí [vědecké zpracování týmových dat](overview.md) (TDSP). TDSP je architektura vyvinutá Microsoftem, která poskytuje strukturovanou sekvenci aktivit pro efektivní spouštění cloudových řešení prediktivní analýzy. Přehled rolí a úloh, které jsou zpracovávány týmem pro datové vědy, se standardizací na TDSP, najdete v tématu [role procesů a úlohy vědeckého zpracování dat týmu](roles-tasks.md). 
+Tento dokument popisuje, jak můžou vývojáři spustit projekt pro datové vědy v systematické, řízené verzi a spolupráci v rámci projektového týmu pomocí [vědeckého zpracování týmových dat](overview.md) (TDSP). TDSP je architektura vyvinutá Microsoftem, která poskytuje strukturovanou sekvenci aktivit pro efektivní spouštění cloudových řešení prediktivní analýzy. Přehled rolí a úloh, které jsou zpracovávány týmem pro datové vědy, se standardizací na TDSP, najdete v tématu [role procesů a úlohy vědeckého zpracování dat týmu](roles-tasks.md). 
 
 Tento článek obsahuje pokyny o tom, jak: 
 
@@ -43,7 +43,7 @@ Tady jsou definice pro typy pracovních položek:
   
 - **Uživatelský scénář**: uživatelské scénáře jsou pracovními položkami, které jsou potřeba k dokončení funkce na konci. Mezi příklady uživatelských scénářů patří:
   - Získání dat 
-  - Prozkoumání dat 
+  - Zkoumání dat 
   - Generování funkcí
   - Sestavení modelů
   - Zprovoznění modelů 
@@ -152,15 +152,15 @@ Odborníci na data můžou být pohodlnější pomocí agilní šablony, která 
    1. V části **název**nahraďte **námětu** *TDSP projekty*. 
    1. V části **typy pracovních položek na této úrovni backlogu**vyberte **nový typ pracovní položky**, zadejte *projekt TDSP*a vyberte **Přidat**. 
    1. V části **výchozí typ pracovní položky**, rozevírací seznam a vyberte **projekt TDSP**. 
-   1. Vyberte **Uložit**.
+   1. Vyberte **Save** (Uložit).
    
    ![Nastavit úroveň nevyřízených položek portfolia](./media/agile-development/13-rename.png)  
    
 1. Použijte stejný postup k přejmenování **funkcí** do *TDSP fází*a přidejte následující typy pracovních položek:
    
-   - *Principy podniku*
+   - *Obchodní porozumění*
    - *Získání dat*
-   - *Modelování*
+   - *Situací*
    - *Nasazení*
    
 1. V části **nevyřízené položky požadavků**přejmenujte **příběhy** na *dílčí fáze TDSP*, přidejte novou *dílčí fázi TDSP*typu pracovní položky a nastavte výchozí typ pracovní položky na **TDSP dílčí fáze**.

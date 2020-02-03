@@ -79,7 +79,7 @@ Další informace najdete v tématu [přesun dat z místního SQL serveru pro SQ
 
 ### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>Kolik dat se má přesunout do Azure?
 
-Velké datové sady mohou překročit kapacitu úložiště určitých prostředí. Příklad najdete v diskuzi o omezeních velikosti pro Machine Learning Studio (Classic) v následující části. V takových případech můžete použít ukázku dat během analýzy. Podrobnosti o tom, jak dolů – ukázkové datové sady v různých prostředích Azure najdete v tématu [ukázkových dat v vědecké zpracování týmových dat](sample-data.md).
+Velké datové sady mohou překročit kapacitu úložiště určitých prostředí. Příklad najdete v diskuzi o omezeních velikosti pro Machine Learning Studio (Classic) v následující části. V takových případech můžete použít ukázku dat během analýzy. Podrobnosti o tom, jak vytvořit ukázkovou datovou sadu v různých prostředích Azure, najdete v tématu [vzorová data v rámci vědeckého zpracování týmových dat](sample-data.md).
 
 ## <a name="data-characteristics-questions-type-format-and-size"></a>Otázky ohledně dat charakteristiky: typ, formátu a velikost
 
@@ -90,7 +90,7 @@ Tyto otázky jsou klíčem k plánování prostředí úložiště a zpracován�
 * Číselné
 * Kategorické
 * Řetězce
-* Binary
+* Binární hodnota
 
 ### <a name="how-is-your-data-formatted"></a>Jak vaše data jsou formátovaná?
 
@@ -108,8 +108,8 @@ Tyto otázky jsou klíčem k plánování prostředí úložiště a zpracován�
 
 Vezměte v úvahu například prostředí Azure Machine Learning Studio (Classic):
 
-* Seznam datových formátů a typy podporované v aplikaci Azure Machine Learning Studio najdete v tématu [formáty dat a datové typy podporované](../studio/import-data.md#supported-data-formats-and-data-types) oddílu.
-* Informace o omezení použít v procesu analýzy dalšími službami Azure, najdete v části [předplatné Azure a limity, kvóty a omezení](../../azure-resource-manager/management/azure-subscription-service-limits.md).
+* Seznam formátů dat a typů podporovaných nástrojem Azure Machine Learning Studio najdete v části [formáty dat a podporované datové typy](../studio/import-data.md#supported-data-formats-and-data-types) .
+* Informace o omezeních ostatních služeb Azure, které se používají v procesu analýzy, najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 ## <a name="data-quality-questions-exploration-and-pre-processing"></a>Otázky ohledně dat kvality: zkoumání a předběžného zpracování
 
@@ -127,11 +127,11 @@ Tento krok je důležitý, abychom vám pomohli:
 * Formulujte hypotézu, která navrhuje nejvhodnější funkce nebo typ analýzy.
 * Formulujte plány pro další shromažďování dat
 
-Mezi užitečné techniky pro kontrolu dat patří výpočty popisných statistik a vizualizace. Podrobnosti o tom, jak prozkoumat datovou sadu v různých prostředích Azure najdete v tématu [zkoumání dat v vědecké zpracování týmových dat](explore-data.md).
+Mezi užitečné techniky pro kontrolu dat patří výpočty popisných statistik a vizualizace. Podrobnosti o tom, jak prozkoumat datovou sadu v různých prostředích Azure, najdete v tématu [prozkoumávání dat v rámci vědeckého zpracování týmových dat](explore-data.md).
 
 ### <a name="does-the-data-require-preprocessing-or-cleaning"></a>Vyžadují data předzpracování nebo čištění?
 
-Aby bylo možné datovou sadu efektivně použít pro strojové učení, možná budete muset data předzpracovat a vyčistit. Nezpracovaná data jsou často vysokou úrovní šumu a nespolehlivá. Můžou chybět hodnoty. Pomocí těchto dat pro modelování můžete vytvářet zavádějící výsledky. Popis najdete v tématu [úlohy k přípravě dat pro rozšířené strojové učení](prepare-data.md).
+Aby bylo možné datovou sadu efektivně použít pro strojové učení, možná budete muset data předzpracovat a vyčistit. Nezpracovaná data jsou často vysokou úrovní šumu a nespolehlivá. Můžou chybět hodnoty. Pomocí těchto dat pro modelování můžete vytvářet zavádějící výsledky. Popis najdete v tématu [úlohy pro přípravu dat pro rozšířené strojové učení](prepare-data.md).
 
 ## <a name="tools-and-languages-questions"></a>Otázky týkající se nástroje a jazyky
 
@@ -147,16 +147,16 @@ K dispozici je celá řada možností pro jazyky, vývojová prostředí a nást
 
 * [Microsoft Azure PowerShell](/powershell/azure/overview) – skriptovací jazyk, který se používá ke správě prostředků Azure ve skriptovacím jazyce
 * [Azure Machine Learning Studio](../studio/what-is-ml-studio.md)
-* [Společnosti Revolution Analytics](https://www.microsoft.com/sql-server/machinelearningserver)
+* [Analýza revoluce](https://www.microsoft.com/sql-server/machinelearningserver)
 * [RStudio](https://www.rstudio.com)
-* [Python Tools for Visual Studio](https://aka.ms/ptvsdocs)
+* [Python Tools pro Visual Studio](https://aka.ms/ptvsdocs)
 * [Anaconda](https://www.continuum.io/why-anaconda)
 * [Poznámkové bloky Jupyter](https://jupyter.org/)
-* [Microsoft Power BI](https://powerbi.microsoft.com)
+* [Power BI Microsoftu](https://powerbi.microsoft.com)
 
 ## <a name="identify-your-advanced-analytics-scenario"></a>Určení scénáře pokročilých analýz
 
-Po zodpovězení otázek v předchozí části jste připraveni určit, který scénář nejlépe vyhovuje vašemu případu. Vzorové scénáře jsou popsány v [scénáře pro pokročilé analýzy ve službě Azure Machine Learning](plan-sample-scenarios.md).
+Po zodpovězení otázek v předchozí části jste připraveni určit, který scénář nejlépe vyhovuje vašemu případu. Ukázkové scénáře jsou uvedené ve [scénářích pro pokročilou analýzu v Azure Machine Learning](plan-sample-scenarios.md).
 
 ## <a name="next-steps"></a>Další kroky
 

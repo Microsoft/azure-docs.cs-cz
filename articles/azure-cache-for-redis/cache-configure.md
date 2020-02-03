@@ -37,7 +37,7 @@ Pomocí **nabídky prostředků**můžete zobrazit a nakonfigurovat následujíc
 * [Diagnóza a řešení problémů](#diagnose-and-solve-problems)
 * [Nastavení](#settings)
     * [Přístupové klíče](#access-keys)
-    * [Upřesňující nastavení](#advanced-settings)
+    * [Rozšířená nastavení](#advanced-settings)
     * [Mezipaměť Azure pro poradce Redis](#azure-cache-for-redis-advisor)
     * [Škálování](#scale)
     * [Velikost clusteru](#cluster-size)
@@ -79,7 +79,7 @@ Kliknutím na **Protokol aktivit** zobrazíte akce provedené v mezipaměti. Pom
 Oddíl **značky** vám pomůže organizovat prostředky. Další informace najdete v článku [Použití značek k uspořádání prostředků Azure](../azure-resource-manager/management/tag-resources.md).
 
 
-### <a name="diagnose-and-solve-problems"></a>Diagnostika a řešení problémů
+### <a name="diagnose-and-solve-problems"></a>Diagnostikovat a řešit problémy
 
 Klikněte na **Diagnostika a řešení problémů** , které se budou poskytovat společně s běžnými problémy a strategiemi pro jejich řešení.
 
@@ -89,7 +89,7 @@ Klikněte na **Diagnostika a řešení problémů** , které se budou poskytovat
 Část **Nastavení** vám umožní získat přístup k následujícím nastavením pro mezipaměť a nakonfigurovat je.
 
 * [Přístupové klíče](#access-keys)
-* [Upřesňující nastavení](#advanced-settings)
+* [Rozšířená nastavení](#advanced-settings)
 * [Mezipaměť Azure pro poradce Redis](#azure-cache-for-redis-advisor)
 * [Škálování](#scale)
 * [Velikost clusteru](#cluster-size)
@@ -193,7 +193,7 @@ Každá cenová úroveň má odlišná omezení pro připojení klientů, pamě�
 Pokud chcete upgradovat mezipaměť, klikněte na **upgradovat** , aby se změnila cenová úroveň a [škálovat](#scale) mezipaměť. Další informace o volbě cenové úrovně najdete v tématu [co mám použít Azure cache pro nabídku Redis a velikost mám použít?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
 
-### <a name="scale"></a>Limit
+### <a name="scale"></a>Měřítko
 Kliknutím na tlačítko **škálovat** můžete zobrazit nebo změnit cenovou úroveň pro vaši mezipaměť. Další informace o škálování najdete v tématu [Jak škálovat Azure cache pro Redis](cache-how-to-scale.md).
 
 ![Cenová úroveň mezipaměti Azure pro Redis](./media/cache-configure/pricing-tier.png)
@@ -224,7 +224,7 @@ Další informace najdete v tématu [Konfigurace trvalosti pro službu Azure cac
 >
 >
 
-### <a name="schedule-updates"></a>Aktualizace plánu
+### <a name="schedule-updates"></a>Plán aktualizací
 V okně **naplánovat aktualizace** můžete určit časové období údržby pro aktualizace serveru Redis pro mezipaměť.
 
 > [!IMPORTANT]
@@ -232,7 +232,7 @@ V okně **naplánovat aktualizace** můžete určit časové období údržby pr
 >
 >
 
-![Aktualizace plánu](./media/cache-configure/redis-schedule-updates.png)
+![Plán aktualizací](./media/cache-configure/redis-schedule-updates.png)
 
 Chcete-li určit časový interval pro správu a údržbu, zaškrtněte požadované dny a zadejte časový interval pro správu a údržbu pro každý den a klikněte na tlačítko **OK**. Čas časového období údržby je UTC.
 
@@ -281,7 +281,7 @@ Kliknutím na **vlastnosti** zobrazíte informace o mezipaměti, včetně koncov
 ### <a name="locks"></a>Zámky
 Část **zámky** umožňuje uzamknout předplatné, skupinu prostředků nebo prostředek a zabránit tak ostatním uživatelům ve vaší organizaci v neúmyslném odstranění nebo úpravě důležitých prostředků. Další informace najdete v tématu [Zamknutí prostředků pomocí Azure Resource Manageru](../azure-resource-manager/management/lock-resources.md).
 
-### <a name="automation-script"></a>Skript Automation
+### <a name="automation-script"></a>Automatizační skript
 
 Klikněte na **skript Automation** a sestavte a exportujte šablonu nasazených prostředků pro budoucí nasazení. Další informace o práci se šablonami najdete v tématu [nasazení prostředků pomocí šablon Azure Resource Manager](../azure-resource-manager/templates/deploy-powershell.md).
 
@@ -324,7 +324,7 @@ Chcete-li restartovat jeden nebo více uzlů mezipaměti, vyberte požadované u
 >
 
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 
 Část **monitorování** vám umožní nakonfigurovat diagnostiku a monitorování pro mezipaměť Azure pro Redis.
 Další informace o službě Azure cache pro monitorování a diagnostiku Redis najdete v tématu [monitorování mezipaměti Azure pro Redis](cache-how-to-monitor.md).
@@ -338,7 +338,7 @@ Další informace o službě Azure cache pro monitorování a diagnostiku Redis 
 ### <a name="redis-metrics"></a>Redis metriky
 Kliknutím na **metriky Redis** [zobrazíte metriky](cache-how-to-monitor.md#view-cache-metrics) pro vaši mezipaměť.
 
-### <a name="alert-rules"></a>Pravidla upozornění
+### <a name="alert-rules"></a>Pravidla výstrah
 
 Kliknutím na **pravidla výstrah** můžete nakonfigurovat výstrahy založené na službě Azure cache pro metriky Redis. Další informace najdete v tématu [výstrahy](cache-how-to-monitor.md#alerts).
 
@@ -359,7 +359,7 @@ Nastavení v části **Podpora a řešení potíží** poskytují možnosti pro 
 * [Stav prostředku](#resource-health)
 * [Nová žádost o podporu](#new-support-request)
 
-### <a name="resource-health"></a>Stav prostředku
+### <a name="resource-health"></a>Stav prostředků
 **Stav prostředku** sleduje váš prostředek a oznamuje, zda je spuštěný podle očekávání. Další informace o službě Azure Resource Health najdete v článku [Přehled Azure Resource Health](../resource-health/resource-health-overview.md).
 
 > [!NOTE]
@@ -394,7 +394,7 @@ Nová mezipaměť Azure pro instance Redis je nakonfigurovaná s následujícím
 | `maxmemory-samples` |3 |Aby se ušetřila paměť, LRU a minimální algoritmy TTL jsou přibližné algoritmy místo přes přesné algoritmy. Ve výchozím nastavení Redis zkontroluje tři klíče a vybere ten, který byl naposledy použit méně. |
 | `lua-time-limit` |5 000 |Maximální doba provádění lua skriptu v milisekundách Pokud je dosaženo maximální doby spuštění, protokol Redis zaznamená, že skript je stále spuštěný po maximálním povoleném čase, a začne odpovídat na dotazy s chybou. |
 | `lua-event-limit` |500 |Maximální velikost fronty událostí skriptu |
-| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Limity výstupní vyrovnávací paměti klienta se dají použít k vynucení odpojení klientů, kteří nečtou data ze serveru z nějakého důvodu dostatečně rychle (běžným důvodem je to, že klient typu Pub/Sub nemůže spotřebovávat zprávy tak rychle, jak je může vydavatel vytvořit). Další informace najdete na adrese [https://redis.io/topics/clients](https://redis.io/topics/clients). |
+| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Limity výstupní vyrovnávací paměti klienta se dají použít k vynucení odpojení klientů, kteří nečtou data ze serveru z nějakého důvodu dostatečně rychle (běžným důvodem je to, že klient typu Pub/Sub nemůže spotřebovávat zprávy tak rychle, jak je může vydavatel vytvořit). Další informace najdete v tématu [https://redis.io/topics/clients](https://redis.io/topics/clients). |
 
 <a name="databases"></a>
 <sup>1</sup>limit pro `databases` se pro každou cenovou úroveň Azure cache pro Redis liší a dá se nastavit při vytváření mezipaměti. Pokud se během vytváření mezipaměti nezadá žádné nastavení `databases`, výchozí hodnota je 16.
@@ -452,7 +452,7 @@ Další informace o databázích najdete v tématu [co jsou databáze Redis?](ca
 > * BGREWRITEAOF
 > * BGSAVE
 > * Konfigurace
-> * LADÍ
+> * LADĚNÍ
 > * PŘENES
 > * ULOŽÍ
 > * VYPNUTÍ

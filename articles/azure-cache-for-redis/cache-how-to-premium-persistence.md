@@ -166,7 +166,7 @@ Další informace o škálování najdete v tématu [co se stane, když se šká
 
 Data uložená v souborech AOF se dělí na několik objektů blob stránky na jeden uzel, aby se zvýšil výkon ukládání dat do úložiště. Následující tabulka uvádí, kolik objektů blob stránky se používá pro každou cenovou úroveň:
 
-| Úroveň Premium | Bloby |
+| Úroveň Premium | Objekty blob |
 |--------------|-------|
 | P1           | 4 na horizontálních oddílů    |
 | P2           | 8 per horizontálních oddílů    |

@@ -34,11 +34,11 @@ Další informace najdete v článcích [přehled Azure SQL Database spravované
 
 Chcete-li nakonfigurovat replikaci mezi vydavatelem spravované instance a odběratelem spravované instance, přečtěte si téma [Konfigurace transakční replikace mezi dvěma spravovanými instancemi](replication-with-sql-database-managed-instance.md). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu se ujistěte, že máte následující požadavky:
 
-- [Předplatného Azure](https://azure.microsoft.com/free/). 
+- [Předplatné Azure](https://azure.microsoft.com/free/). 
 - Možnosti nasazení dvou spravovaných instancí v rámci stejné virtuální sítě. 
 - SQL Server předplatitelem, ať už místní, nebo virtuální počítač Azure. V tomto kurzu se používá virtuální počítač Azure.  
 - [SQL Server Management Studio (SSMS) 18,0 nebo vyšší](/sql/ssms/download-sql-server-management-studio-ssms).
@@ -135,7 +135,7 @@ Po navázání partnerského vztahu VPN, otestujte připojení tak, že na SQL S
 Privátní zóna DNS umožňuje směrování DNS mezi spravovanými instancemi a SQL Server. 
 
 ### <a name="create-private-dns-zone"></a>Vytvořit privátní zónu DNS
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com).
 1. Pokud chcete vytvořit nový prostředek Azure, vyberte **vytvořit prostředek** . 
 1. Vyhledejte `private dns zone` v Azure Marketplace. 
 1. Zvolte prostředek **zóny privátní DNS** publikovaný Microsoftem a pak vyberte **vytvořit** a vytvořte zónu DNS. 
@@ -271,12 +271,12 @@ Po nakonfigurování distribuce teď můžete vytvořit publikaci. Chcete-li to 
 1. Připojte se ke spravované instanci `sql-mi-publisher`. 
 1. V **Průzkumník objektů**rozbalte uzel **replikace** a klikněte pravým tlačítkem myši na složku **místní publikace** . Vybrat **novou publikaci...** . 
 1. Kliknutím na tlačítko **Další** přejdete za úvodní stránku. 
-1. Na stránce **databáze publikace** vyberte databázi `ReplTutorial`, kterou jste předtím vytvořili. Vyberte **Next** (Další). 
-1. Na stránce **Typ publikace** vyberte **transakční publikace**. Vyberte **Next** (Další). 
-1. Na stránce **články** zaškrtněte políčko vedle pole **tabulky**. Vyberte **Next** (Další). 
+1. Na stránce **databáze publikace** vyberte databázi `ReplTutorial`, kterou jste předtím vytvořili. Vyberte **Další**. 
+1. Na stránce **Typ publikace** vyberte **transakční publikace**. Vyberte **Další**. 
+1. Na stránce **články** zaškrtněte políčko vedle pole **tabulky**. Vyberte **Další**. 
 1. Na stránce **Filtrovat řádky tabulky** vyberte **Další** bez přidání jakýchkoli filtrů. 
-1. Na stránce **Agent snímku** zaškrtněte políčko vedle **vytvořit snímek hned a nechte snímek dostupný pro inicializaci předplatných**. Vyberte **Next** (Další). 
-1. Na stránce **zabezpečení agenta** vyberte **nastavení zabezpečení.** .. Zadejte SQL Server přihlašovací přihlašovací údaje pro použití pro agenta snímku a připojení k vydavateli. Výběrem **OK** zavřete stránku **zabezpečení agenta snímků** . Vyberte **Next** (Další). 
+1. Na stránce **Agent snímku** zaškrtněte políčko vedle **vytvořit snímek hned a nechte snímek dostupný pro inicializaci předplatných**. Vyberte **Další**. 
+1. Na stránce **zabezpečení agenta** vyberte **nastavení zabezpečení.** .. Zadejte SQL Server přihlašovací přihlašovací údaje pro použití pro agenta snímku a připojení k vydavateli. Výběrem **OK** zavřete stránku **zabezpečení agenta snímků** . Vyberte **Další**. 
 
    ![Konfigurace zabezpečení agenta snímků](media/sql-database-managed-instance-configure-replication-tutorial/snapshot-agent-security.png)
 

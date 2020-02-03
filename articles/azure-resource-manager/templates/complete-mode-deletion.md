@@ -22,154 +22,154 @@ Pokud nasadíte do [více než jedné skupiny prostředků v šabloně](cross-re
 
 Přejít na obor názvů poskytovatele prostředků:
 > [!div class="op_single_selector"]
-> - [Microsoft.AAD](#microsoftaad)
+> - [Microsoft. AAD](#microsoftaad)
 > - [Microsoft. addons](#microsoftaddons)
 > - [Microsoft. ADHybridHealthService](#microsoftadhybridhealthservice)
 > - [Microsoft. Advisor](#microsoftadvisor)
-> - [Microsoft.AlertsManagement](#microsoftalertsmanagement)
-> - [Microsoft.AnalysisServices](#microsoftanalysisservices)
-> - [Microsoft.ApiManagement](#microsoftapimanagement)
-> - [Microsoft.AppConfiguration](#microsoftappconfiguration)
+> - [Microsoft. AlertsManagement](#microsoftalertsmanagement)
+> - [Microsoft. AnalysisServices](#microsoftanalysisservices)
+> - [Microsoft. ApiManagement](#microsoftapimanagement)
+> - [Microsoft. AppConfiguration](#microsoftappconfiguration)
 > - [Microsoft. AppPlatform](#microsoftappplatform)
 > - [Microsoft. Attestation](#microsoftattestation)
 > - [Microsoft.Authorization](#microsoftauthorization)
-> - [Microsoft.Automation](#microsoftautomation)
+> - [Microsoft. Automation](#microsoftautomation)
 > - [Microsoft. Azconfig](#microsoftazconfig)
 > - [Microsoft. Azure. Ženeva](#microsoftazuregeneva)
-> - [Microsoft.AzureActiveDirectory](#microsoftazureactivedirectory)
+> - [Microsoft. Azureactivedirectory selhala](#microsoftazureactivedirectory)
 > - [Microsoft. AzureData](#microsoftazuredata)
-> - [Microsoft.AzureStack](#microsoftazurestack)
-> - [Microsoft.Batch](#microsoftbatch)
+> - [Microsoft. AzureStack](#microsoftazurestack)
+> - [Microsoft. Batch](#microsoftbatch)
 > - [Microsoft. fakturace](#microsoftbilling)
-> - [Microsoft.BingMaps](#microsoftbingmaps)
-> - [Microsoft.Blockchain](#microsoftblockchain)
-> - [Microsoft.Blueprint](#microsoftblueprint)
-> - [Microsoft.BotService](#microsoftbotservice)
-> - [Microsoft.Cache](#microsoftcache)
+> - [Microsoft. BingMaps](#microsoftbingmaps)
+> - [Microsoft. blockchain](#microsoftblockchain)
+> - [Microsoft. detail](#microsoftblueprint)
+> - [Microsoft. BotService](#microsoftbotservice)
+> - [Microsoft. cache](#microsoftcache)
 > - [Microsoft. Capacity](#microsoftcapacity)
-> - [Microsoft.Cdn](#microsoftcdn)
-> - [Microsoft.CertificateRegistration](#microsoftcertificateregistration)
-> - [Microsoft.ClassicCompute](#microsoftclassiccompute)
+> - [Microsoft. CDN](#microsoftcdn)
+> - [Microsoft. CertificateRegistration](#microsoftcertificateregistration)
+> - [Microsoft. ClassicCompute](#microsoftclassiccompute)
 > - [Microsoft. ClassicInfrastructureMigrate](#microsoftclassicinfrastructuremigrate)
-> - [Microsoft.ClassicNetwork](#microsoftclassicnetwork)
-> - [Microsoft.ClassicStorage](#microsoftclassicstorage)
-> - [Microsoft.CognitiveServices](#microsoftcognitiveservices)
+> - [Microsoft. ClassicNetwork](#microsoftclassicnetwork)
+> - [Microsoft. ClassicStorage](#microsoftclassicstorage)
+> - [Microsoft. Cognitiveservices Account](#microsoftcognitiveservices)
 > - [Microsoft. Commerce](#microsoftcommerce)
-> - [Microsoft.Compute](#microsoftcompute)
+> - [Microsoft. COMPUTE](#microsoftcompute)
 > - [Microsoft. spotřeba](#microsoftconsumption)
-> - [Microsoft.ContainerInstance](#microsoftcontainerinstance)
-> - [Microsoft.ContainerRegistry](#microsoftcontainerregistry)
-> - [Microsoft.ContainerService](#microsoftcontainerservice)
-> - [Microsoft.CortanaAnalytics](#microsoftcortanaanalytics)
-> - [Microsoft.CostManagement](#microsoftcostmanagement)
+> - [Microsoft. ContainerInstance](#microsoftcontainerinstance)
+> - [Microsoft. ContainerRegistry](#microsoftcontainerregistry)
+> - [Microsoft. ContainerService](#microsoftcontainerservice)
+> - [Microsoft. CortanaAnalytics](#microsoftcortanaanalytics)
+> - [Microsoft. CostManagement](#microsoftcostmanagement)
 > - [Microsoft. CustomerLockbox](#microsoftcustomerlockbox)
 > - [Microsoft. CustomProviders](#microsoftcustomproviders)
-> - [Microsoft.DataBox](#microsoftdatabox)
-> - [Microsoft.DataBoxEdge](#microsoftdataboxedge)
-> - [Microsoft.Databricks](#microsoftdatabricks)
-> - [Microsoft.DataCatalog](#microsoftdatacatalog)
-> - [Microsoft.DataFactory](#microsoftdatafactory)
-> - [Microsoft.DataLakeAnalytics](#microsoftdatalakeanalytics)
-> - [Microsoft.DataLakeStore](#microsoftdatalakestore)
-> - [Microsoft.DataMigration](#microsoftdatamigration)
+> - [Microsoft. DataBox](#microsoftdatabox)
+> - [Microsoft. DataBoxEdge](#microsoftdataboxedge)
+> - [Cihly Microsoft.](#microsoftdatabricks)
+> - [Microsoft. datacatalog](#microsoftdatacatalog)
+> - [Microsoft. DataFactory](#microsoftdatafactory)
+> - [Microsoft. DataLakeAnalytics](#microsoftdatalakeanalytics)
+> - [Microsoft. DataLakeStore](#microsoftdatalakestore)
+> - [Migrace Microsoft.](#microsoftdatamigration)
 > - [Microsoft. datashare](#microsoftdatashare)
-> - [Microsoft.DBforMariaDB](#microsoftdbformariadb)
-> - [Microsoft.DBforMySQL](#microsoftdbformysql)
-> - [Microsoft.DBforPostgreSQL](#microsoftdbforpostgresql)
-> - [Microsoft.DeploymentManager](#microsoftdeploymentmanager)
+> - [Microsoft. DBforMariaDB](#microsoftdbformariadb)
+> - [Microsoft. DBforMySQL](#microsoftdbformysql)
+> - [Microsoft. DBforPostgreSQL](#microsoftdbforpostgresql)
+> - [Microsoft. DeploymentManager](#microsoftdeploymentmanager)
 > - [Microsoft. DesktopVirtualization](#microsoftdesktopvirtualization)
-> - [Microsoft.Devices](#microsoftdevices)
+> - [Microsoft. Devices](#microsoftdevices)
 > - [Microsoft. DevOps](#microsoftdevops)
-> - [Microsoft.DevSpaces](#microsoftdevspaces)
-> - [Microsoft.DevTestLab](#microsoftdevtestlab)
-> - [Microsoft.DocumentDB](#microsoftdocumentdb)
-> - [Microsoft.DomainRegistration](#microsoftdomainregistration)
+> - [Microsoft. DevSpaces](#microsoftdevspaces)
+> - [Microsoft. DevTestLab](#microsoftdevtestlab)
+> - [Microsoft. DocumentDB](#microsoftdocumentdb)
+> - [Microsoft. DomainRegistration](#microsoftdomainregistration)
 > - [Microsoft. DynamicsLcs](#microsoftdynamicslcs)
-> - [Microsoft.EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
-> - [Microsoft.EventGrid](#microsofteventgrid)
-> - [Microsoft.EventHub](#microsofteventhub)
+> - [Microsoft. EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
+> - [Microsoft. EventGrid](#microsofteventgrid)
+> - [Microsoft. EventHub](#microsofteventhub)
 > - [Microsoft. Features](#microsoftfeatures)
 > - [Microsoft. Gallery](#microsoftgallery)
 > - [Microsoft. genomika](#microsoftgenomics)
 > - [Microsoft. GuestConfiguration](#microsoftguestconfiguration)
-> - [Microsoft.HanaOnAzure](#microsofthanaonazure)
+> - [Microsoft. HanaOnAzure](#microsofthanaonazure)
 > - [Microsoft. HardwareSecurityModules](#microsofthardwaresecuritymodules)
-> - [Microsoft.HDInsight](#microsofthdinsight)
-> - [Microsoft.HealthcareApis](#microsofthealthcareapis)
-> - [Microsoft.HybridCompute](#microsofthybridcompute)
-> - [Microsoft.HybridData](#microsofthybriddata)
+> - [Microsoft. HDInsight](#microsofthdinsight)
+> - [Microsoft. HealthcareApis](#microsofthealthcareapis)
+> - [Microsoft. HybridCompute](#microsofthybridcompute)
+> - [Microsoft. HybridData](#microsofthybriddata)
 > - [Microsoft. Hydra](#microsofthydra)
-> - [Microsoft.ImportExport](#microsoftimportexport)
+> - [Microsoft. ImportExport](#microsoftimportexport)
 > - [Microsoft. Intune](#microsoftintune)
-> - [Microsoft.IoTCentral](#microsoftiotcentral)
-> - [Microsoft.IoTSpaces](#microsoftiotspaces)
-> - [Microsoft.KeyVault](#microsoftkeyvault)
-> - [Microsoft.Kusto](#microsoftkusto)
-> - [Microsoft.LabServices](#microsoftlabservices)
-> - [Microsoft.Logic](#microsoftlogic)
-> - [Microsoft.MachineLearning](#microsoftmachinelearning)
-> - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
-> - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
+> - [Microsoft. IoTCentral](#microsoftiotcentral)
+> - [Microsoft. IoTSpaces](#microsoftiotspaces)
+> - [Trezor Microsoft.](#microsoftkeyvault)
+> - [Microsoft. Kusto](#microsoftkusto)
+> - [Microsoft. LabServices](#microsoftlabservices)
+> - [Microsoft. Logic](#microsoftlogic)
+> - [Microsoft. MachineLearning](#microsoftmachinelearning)
+> - [Microsoft. MachineLearningServices](#microsoftmachinelearningservices)
+> - [Microsoft. ManagedIdentity](#microsoftmanagedidentity)
 > - [Microsoft. ManagedServices](#microsoftmanagedservices)
 > - [Microsoft. Management](#microsoftmanagement)
-> - [Microsoft.Maps](#microsoftmaps)
+> - [Microsoft. Maps](#microsoftmaps)
 > - [Microsoft. Marketplace](#microsoftmarketplace)
-> - [Microsoft.MarketplaceApps](#microsoftmarketplaceapps)
+> - [Microsoft. MarketplaceApps](#microsoftmarketplaceapps)
 > - [Microsoft. MarketplaceOrdering](#microsoftmarketplaceordering)
-> - [Microsoft.Media](#microsoftmedia)
+> - [Microsoft. Media](#microsoftmedia)
 > - [Microsoft. Microservices4Spring](#microsoftmicroservices4spring)
-> - [Microsoft.Migrate](#microsoftmigrate)
+> - [Microsoft. migruje](#microsoftmigrate)
 > - [Microsoft. MixedReality](#microsoftmixedreality)
-> - [Microsoft.NetApp](#microsoftnetapp)
-> - [Microsoft.Network](#microsoftnetwork)
-> - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
+> - [Microsoft. NetApp](#microsoftnetapp)
+> - [Microsoft. Network](#microsoftnetwork)
+> - [Microsoft. NotificationHubs](#microsoftnotificationhubs)
 > - [Microsoft. ObjectStore](#microsoftobjectstore)
 > - [Microsoft. OffAzure](#microsoftoffazure)
-> - [Microsoft.OperationalInsights](#microsoftoperationalinsights)
-> - [Microsoft.OperationsManagement](#microsoftoperationsmanagement)
-> - [Microsoft.Peering](#microsoftpeering)
+> - [Microsoft. OperationalInsights](#microsoftoperationalinsights)
+> - [Microsoft. OperationsManagement](#microsoftoperationsmanagement)
+> - [Microsoft. peering](#microsoftpeering)
 > - [Microsoft.PolicyInsights](#microsoftpolicyinsights)
-> - [Microsoft.Portal](#microsoftportal)
-> - [Microsoft.PowerBI](#microsoftpowerbi)
-> - [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated)
+> - [Microsoft. Portal](#microsoftportal)
+> - [Microsoft. PowerBI](#microsoftpowerbi)
+> - [Microsoft. PowerBIDedicated](#microsoftpowerbidedicated)
 > - [Microsoft. ProjectBabylon](#microsoftprojectbabylon)
-> - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
-> - [Microsoft.Relay](#microsoftrelay)
+> - [Microsoft. RecoveryServices](#microsoftrecoveryservices)
+> - [Microsoft. Relay](#microsoftrelay)
 > - [Microsoft. RemoteApp](#microsoftremoteapp)
 > - [Microsoft. ResourceGraph](#microsoftresourcegraph)
 > - [Microsoft. ResourceHealth](#microsoftresourcehealth)
 > - [Microsoft. Resources](#microsoftresources)
-> - [Microsoft.SaaS](#microsoftsaas)
-> - [Microsoft.Scheduler](#microsoftscheduler)
-> - [Microsoft.Search](#microsoftsearch)
-> - [Microsoft.Security](#microsoftsecurity)
+> - [Microsoft. SaaS](#microsoftsaas)
+> - [Microsoft. Scheduler](#microsoftscheduler)
+> - [Microsoft. Search](#microsoftsearch)
+> - [Microsoft. Security](#microsoftsecurity)
 > - [Microsoft. SecurityGraph](#microsoftsecuritygraph)
 > - [Microsoft. SecurityInsights](#microsoftsecurityinsights)
 > - [Microsoft.ServiceBus](#microsoftservicebus)
-> - [Microsoft.ServiceFabric](#microsoftservicefabric)
-> - [Microsoft.ServiceFabricMesh](#microsoftservicefabricmesh)
+> - [Microsoft. ServiceFabric](#microsoftservicefabric)
+> - [Microsoft. ServiceFabricMesh](#microsoftservicefabricmesh)
 > - [Microsoft. Services](#microsoftservices)
 > - [Microsoft. SignalRService](#microsoftsignalrservice)
-> - [Microsoft.SiteRecovery](#microsoftsiterecovery)
+> - [Microsoft. SiteRecovery](#microsoftsiterecovery)
 > - [Microsoft. SoftwarePlan](#microsoftsoftwareplan)
-> - [Microsoft.Solutions](#microsoftsolutions)
+> - [Microsoft. Solutions](#microsoftsolutions)
 > - [Microsoft. SQL](#microsoftsql)
-> - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
-> - [Microsoft.Storage](#microsoftstorage)
-> - [Microsoft.StorageCache](#microsoftstoragecache)
+> - [Microsoft. SqlVirtualMachine](#microsoftsqlvirtualmachine)
+> - [Microsoft. Storage](#microsoftstorage)
+> - [Microsoft. StorageCache](#microsoftstoragecache)
 > - [Microsoft. StorageReplication](#microsoftstoragereplication)
-> - [Microsoft.StorageSync](#microsoftstoragesync)
-> - [Microsoft.StorageSyncDev](#microsoftstoragesyncdev)
-> - [Microsoft.StorageSyncInt](#microsoftstoragesyncint)
-> - [Microsoft.StorSimple](#microsoftstorsimple)
-> - [Microsoft.StreamAnalytics](#microsoftstreamanalytics)
+> - [Microsoft. StorageSync](#microsoftstoragesync)
+> - [Microsoft. StorageSyncDev](#microsoftstoragesyncdev)
+> - [Microsoft. StorageSyncInt](#microsoftstoragesyncint)
+> - [Microsoft. StorSimple](#microsoftstorsimple)
+> - [Microsoft. StreamAnalytics](#microsoftstreamanalytics)
 > - [Microsoft. Subscription](#microsoftsubscription)
-> - [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights)
-> - [Microsoft.VMwareCloudSimple](#microsoftvmwarecloudsimple)
+> - [Microsoft. TimeSeriesInsights](#microsofttimeseriesinsights)
+> - [Microsoft. VMwareCloudSimple](#microsoftvmwarecloudsimple)
 > - [Microsoft. VnfManager](#microsoftvnfmanager)
-> - [Microsoft.Web](#microsoftweb)
+> - [Microsoft. Web](#microsoftweb)
 > - [Microsoft. WindowsDefenderATP](#microsoftwindowsdefenderatp)
-> - [Microsoft.WindowsIoT](#microsoftwindowsiot)
+> - [Microsoft. WindowsIoT](#microsoftwindowsiot)
 > - [Microsoft. monitor zátěže byl](#microsoftworkloadmonitor)
 
 ## <a name="microsoftaad"></a>Microsoft.AAD
@@ -194,20 +194,20 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- |
 > | aadsupportcases | Ne |
 > | addsservices | Ne |
-> | technici | Ne |
+> | agenti | Ne |
 > | anonymousapiusers | Ne |
 > | konfigurace | Ne |
 > | Protokoly | Ne |
 > | reports | Ne |
 > | servicehealthmetrics | Ne |
-> | Služby | Ne |
+> | services | Ne |
 
 ## <a name="microsoftadvisor"></a>Microsoft.Advisor
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | konfiguračních | Ne |
+> | konfigurace | Ne |
 > | generateRecommendations | Ne |
 > | zprostředkovatele identity | Ne |
 > | Doporučení | Ne |
@@ -224,7 +224,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | alertsMetaData | Ne |
 > | alertsSummary | Ne |
 > | alertsSummaryList | Ne |
-> | Od | Ne |
+> | zpětná vazba | Ne |
 > | smartDetectorAlertRules | Ano |
 > | smartDetectorRuntimeEnvironments | Ne |
 > | smartGroups | Ne |
@@ -277,7 +277,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | denyAssignments | Ne |
 > | elevateAccess | Ne |
 > | findOrphanRoleAssignments | Ne |
-> | počtu | Ne |
+> | zámky | Ne |
 > | oprávnění | Ne |
 > | policyAssignments | Ne |
 > | policyDefinitions | Ne |
@@ -312,7 +312,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | environments | Ne |
+> | prostředí | Ne |
 > | prostředí/účty | Ne |
 > | prostředí/účty/obory názvů | Ne |
 > | prostředí/účty/obory názvů/konfigurace | Ne |
@@ -457,7 +457,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- |
 > | blockchainMembers | Ano |
 > | cordaMembers | Ano |
-> | diváků | Ano |
+> | sledovacích procesů | Ano |
 
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
 
@@ -503,7 +503,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | calculatePurchasePrice | Ne |
 > | catalogs | Ne |
 > | commercialReservationOrders | Ne |
-> | exchange | Ne |
+> | výměn | Ne |
 > | placePurchaseOrder | Ne |
 > | reservationOrders | Ne |
 > | reservationOrders / calculateRefund | Ne |
@@ -526,7 +526,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | CdnWebApplicationFirewallManagedRuleSets | Ne |
 > | CdnWebApplicationFirewallPolicies | Ano |
 > | edgenodes | Ne |
-> | profiles | Ano |
+> | profily | Ano |
 > | profily/koncové body | Ano |
 > | profily/koncové body/customdomains | Ne |
 > | profily/koncové body/zdroje | Ne |
@@ -757,7 +757,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | oddělení | Ne |
 > | Dimenze | Ne |
 > | enrollmentAccounts | Ne |
-> | Exporty | Ne |
+> | Vývozních | Ne |
 > | ExternalBillingAccounts | Ne |
 > | ExternalBillingAccounts/výstrahy | Ne |
 > | ExternalBillingAccounts/dimenzí | Ne |
@@ -772,7 +772,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Dotaz | Ne |
 > | Registrace | Ne |
 > | Reportconfigs | Ne |
-> | Sestavy | Ne |
+> | Reports | Ne |
 > | Nastavení | Ne |
 > | showbackRules | Ne |
 > | Zobrazení | Ne |
@@ -789,7 +789,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | Přidružení | Ne |
+> | přidružení | Ne |
 > | resourceProviders | Ano |
 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
@@ -837,7 +837,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | DataFactory/diagnosticSettings | Ne |
 > | DataFactory/metricDefinitions | Ne |
 > | dataFactorySchema | Ne |
-> | factories | Ano |
+> | továrny | Ano |
 > | továrny/integrationRuntimes | Ne |
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
@@ -865,7 +865,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | Služby | Ano |
+> | services | Ano |
 > | služby a projekty | Ano |
 
 ## <a name="microsoftdatashare"></a>Microsoft. datashare
@@ -1017,7 +1017,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | domény | Ano |
+> | domains | Ano |
 > | domény/domainOwnershipIdentifiers | Ne |
 > | generateSsoRequest | Ne |
 > | topLevelDomains | Ne |
@@ -1037,14 +1037,14 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | Služby | Ano |
+> | services | Ano |
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | domény | Ano |
+> | domains | Ano |
 > | domény a témata | Ne |
 > | eventSubscriptions | Ne |
 > | extensionTopics | Ne |
@@ -1076,7 +1076,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | Database | Ne |
+> | funkce | Ne |
 > | Zprostředkovatelé | Ne |
 
 ## <a name="microsoftgallery"></a>Microsoft.Gallery
@@ -1084,7 +1084,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | registrované | Ne |
+> | registrovat | Ne |
 > | galleryitems | Ne |
 > | generateartifactaccessuri | Ne |
 > | myareas | Ne |
@@ -1145,7 +1145,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | Služby | Ano |
+> | services | Ano |
 
 ## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
 
@@ -1198,7 +1198,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | Grafová databáze | Ano |
+> | Graph | Ano |
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
@@ -1232,7 +1232,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
 > | labaccounts | Ano |
-> | uživatelů | Ne |
+> | uživatelé | Ne |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
@@ -1269,7 +1269,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | nebyly | Ne |
+> | Identity | Ne |
 > | userAssignedIdentities | Ano |
 
 ## <a name="microsoftmanagedservices"></a>Microsoft. ManagedServices
@@ -1374,7 +1374,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | assessmentProjects | Ano |
 > | migrateprojects | Ano |
 > | moveCollections | Ano |
-> | projects | Ano |
+> | projekty | Ano |
 
 ## <a name="microsoftmixedreality"></a>Microsoft. MixedReality
 
@@ -1409,7 +1409,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | azureFirewalls | Ano |
 > | bastionHosts | Ano |
 > | bgpServiceCommunities | Ne |
-> | connections | Ano |
+> | připojení | Ano |
 > | ddosCustomPolicies | Ano |
 > | ddosProtectionPlans | Ano |
 > | dnsOperationStatuses | Ne |
@@ -1562,7 +1562,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
 > | Console | Ne |
-> | dashboards | Ano |
+> | řídicí panely | Ano |
 > | userSettings | Ne |
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
@@ -1577,7 +1577,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | capacities | Ano |
+> | kapacity | Ano |
 
 ## <a name="microsoftprojectbabylon"></a>Microsoft. ProjectBabylon
 
@@ -1612,7 +1612,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
 > | accounts | Ne |
-> | sbírk | Ano |
+> | – kolekce | Ano |
 > | Kolekce/aplikace | Ne |
 > | kolekce/securityprincipals | Ne |
 > | templateImages | Ne |
@@ -1641,7 +1641,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | stránka events | Ne |
 > | impactedResources | Ne |
 > | zprostředkovatele identity | Ne |
-> | připomenutí | Ne |
+> | oznámení | Ne |
 
 ## <a name="microsoftresources"></a>Microsoft. Resources
 
@@ -1652,7 +1652,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | nasazení/operace | Ne |
 > | deploymentScripts | Ano |
 > | deploymentScripts/protokoly | Ne |
-> | odkazy | Ne |
+> | propojení | Ne |
 > | notifyResourceJobs | Ne |
 > | Zprostředkovatelé | Ne |
 > | resourceGroups | Ne |
@@ -1664,7 +1664,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | aplikací | Ano |
+> | aplikace | Ano |
 > | saasresources | Ne |
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
@@ -1745,7 +1745,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | záložky | Ne |
 > | věcech | Ne |
 > | dataconnects | Ne |
-> | podnikům | Ne |
+> | entity | Ne |
 > | entityQueries | Ne |
 > | officeConsents | Ne |
 > | settings | Ne |
@@ -1773,14 +1773,14 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | aplikací | Ano |
+> | aplikace | Ano |
 > | clusters | Ano |
 > | clustery/aplikace | Ne |
 > | containerGroups | Ano |
 > | containerGroupSets | Ano |
 > | edgeclusters | Ano |
 > | edgeclusters/aplikace | Ne |
-> | networks | Ano |
+> | sítě | Ano |
 > | secretstores | Ano |
 > | secretstores/certifikáty | Ne |
 > | secretstores/tajné kódy | Ne |
@@ -1791,10 +1791,10 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | aplikací | Ano |
+> | aplikace | Ano |
 > | containerGroups | Ano |
 > | brány | Ano |
-> | networks | Ano |
+> | sítě | Ano |
 > | záleží | Ano |
 > | volumes | Ano |
 
@@ -1835,7 +1835,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
 > | applicationDefinitions | Ano |
-> | aplikací | Ano |
+> | aplikace | Ano |
 > | jitRequests | Ano |
 
 ## <a name="microsoftsql"></a>Microsoft.SQL
@@ -1962,7 +1962,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | operaci | Ne |
 > | CreateSubscription | Ne |
 > | aby | Ne |
-> | Změňte | Ne |
+> | rename | Ne |
 > | SubscriptionDefinitions | Ne |
 > | SubscriptionOperations | Ne |
 
@@ -1971,7 +1971,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | environments | Ano |
+> | prostředí | Ano |
 > | prostředí/accessPolicies | Ne |
 > | prostředí/EventSources | Ano |
 > | prostředí/referenceDataSets | Ano |
@@ -2011,9 +2011,9 @@ Přejít na obor názvů poskytovatele prostředků:
 > | apiManagementAccounts / connectionAcls | Ne |
 > | apiManagementAccounts/připojení | Ne |
 > | billingMeters | Ne |
-> | certificates | Ano |
+> | certifikáty | Ano |
 > | connectionGateways | Ano |
-> | connections | Ano |
+> | připojení | Ano |
 > | customApis | Ano |
 > | deletedSites | Ne |
 > | hostingEnvironments | Ano |
@@ -2065,7 +2065,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | componentsSummary | Ne |
 > | monitorInstances | Ne |
 > | monitorInstancesSummary | Ne |
-> | Monitor | Ne |
+> | monitory | Ne |
 > | notificationSettings | Ne |
 
 ## <a name="next-steps"></a>Další kroky

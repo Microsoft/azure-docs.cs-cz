@@ -60,7 +60,7 @@ Pokud chcete zobrazit Azure Monitor náklady za posledních 30 dní, klikněte n
 1. Azure Monitor
 2. Application Insights
 3. Log Analytics
-4. Insight and Analytics
+4. Statistiky a analýza
 
 Výsledkem je zobrazení, jako například:
 
@@ -87,7 +87,7 @@ Vyberte odkaz ve sloupci měsíční využití otevřete graf, který zobrazuje 
 
 ## <a name="operations-management-suite-subscription-entitlements"></a>Nároky na předplatné Operations Management Suite
 
-Zákazníci, kteří si zakoupili Microsoft Operations Management Suite E1 a E2 nárok nároků příjem dat podle uzlu [Log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) a [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing). Chcete-li tyto nároky pracovních prostorů Log Analytics a prostředky Application Insights se zobrazí v daném předplatném: 
+Zákazníci, kteří si zakoupili Microsoft Operations Management Suite E1 a E2, mají nárok na nároky na přijímání dat pro [Log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) a [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing)pro jednotlivé uzly. Chcete-li tyto nároky pracovních prostorů Log Analytics a prostředky Application Insights se zobrazí v daném předplatném: 
 
 - Pracovní prostory log Analytics používali "Za uzel (OMS)," cenovou úroveň.
 - Application Insights prostředky by měly používat cenové úrovně "Enterprise".

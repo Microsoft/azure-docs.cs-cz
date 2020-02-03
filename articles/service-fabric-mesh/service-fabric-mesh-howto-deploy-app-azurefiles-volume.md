@@ -19,7 +19,7 @@ Tento článek popisuje, jak připojit svazek založený na souborech Azure ve s
 
 Pokud chcete připojit svazek ve službě, vytvořte v aplikaci Service Fabric sítě prostředek svazku a pak na tento svazek odkázat v rámci služby.  Deklarace prostředku svazku a odkazování na něj v prostředku služby se dá provést buď v [souborech prostředků založených na YAML](#declare-a-volume-resource-and-update-the-service-resource-yaml) , nebo v [šabloně nasazení založené na JSON](#declare-a-volume-resource-and-update-the-service-resource-json). Před připojením svazku nejdřív vytvořte účet úložiště Azure a [sdílenou složku ve službě soubory Azure](/azure/storage/files/storage-how-to-create-file-share).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 > [!NOTE]
 > **Známý problém s nasazením na vývojovém počítači s Windows RS5:** K dispozici je otevřená chyba rutiny prostředí PowerShell New-SmbGlobalMapping na počítačích s Windows RS5, které zabraňují připojení svazků Azurefile. Níže je uvedená ukázková chyba, ke které došlo při připojení svazku založeného na AzureFile do místního vývojového počítače.
 ```

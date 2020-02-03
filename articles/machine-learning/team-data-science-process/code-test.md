@@ -19,7 +19,7 @@ ms.lasthandoff: 01/24/2020
 ms.locfileid: "76721958"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Data science kód testování na Azure s využitím vědecké zpracování týmových dat a služeb Azure DevOps
-Tento článek obsahuje pokyny pro předběžné pro testování kódu v pracovní postup datových věd. Testování poskytuje datovým vědcům systematicky a efektivní způsob, jak zkontrolovat kvality a očekávaný výsledek svůj kód. Používáme zpracování týmových dat vědy (TDSP) [projekt, který používá datovou sadu pro dospělé příjem UCI](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) , kterou jsme publikovali dříve ukazují, jak kód testování lze provést. 
+Tento článek obsahuje pokyny pro předběžné pro testování kódu v pracovní postup datových věd. Testování poskytuje datovým vědcům systematicky a efektivní způsob, jak zkontrolovat kvality a očekávaný výsledek svůj kód. Používáme projekt vědeckého zpracování týmových dat (TDSP) [, který používá datovou sadu pro příjem dat z Ski dospělé](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) , kterou jsme publikovali dříve, a ukazuje, jak se dá provést testování kódu. 
 
 ## <a name="introduction-on-code-testing"></a>Úvod k testování kódu
 "Testování částí" je dlouhodobě postupem pro vývoj softwaru. Pro datové vědy ale často není jasné, co znamená jednotkové testování, a způsob, jakým byste měli testovat kód pro různé fáze životního cyklu datové vědy, jako je například:
@@ -89,7 +89,7 @@ Nastavení a spuštění kódu, testování a automatizované sestavování s vy
 
       ![Kód pro kontrolu hodnoty predikcí](./media/code-test/check_prediction_values.PNG)
 
-1. Vložit všechny dohromady testovací funkce do skriptu v jazyce Python volá **test_funcs.py**:
+1. Všechny testovací funkce vložte do skriptu Pythonu s názvem **test_funcs. py**:
 
     ![Skript v jazyce Python pro testování funkcí](./media/code-test/create_file_test_func.PNG)
 
@@ -100,7 +100,7 @@ Nastavení a spuštění kódu, testování a automatizované sestavování s vy
     
     ![Soubor se seznamem testů ve třídě v jazyce Python](./media/code-test/create_file_test1_class.PNG)
 
-1. Tyto testy lze automaticky zjistit když vložíte **codetest.testCase** za názvem své třídy. V pravém podokně otevřete Průzkumníka testů a vyberte **spustit všechny**. Všechny testy se spouští sekvenčně a dozvíte se, pokud test je úspěšný, nebo ne.
+1. Tyto testy mohou být automaticky zjišťovány, pokud jako název třídy vložíte **codetest. testovací případ** . Otevřete Průzkumník testů v pravém podokně a vyberte možnost **Spustit vše**. Všechny testy se spouští sekvenčně a dozvíte se, pokud test je úspěšný, nebo ne.
 
     ![Spuštění testů](./media/code-test/run_tests.PNG)
 
@@ -112,7 +112,7 @@ Nastavení a spuštění kódu, testování a automatizované sestavování s vy
 
 1. Nastavení automatické sestavení a testování v Azure DevOps:
 
-    a. V úložišti projektů vyberte **sestavení a vydání**a pak vyberte **+ nová** k vytvoření nového procesu sestavení.
+    a. V úložišti projektu vyberte **sestavení a vydání**a potom vyberte **+ Nový** pro vytvoření nového procesu sestavení.
 
     ![Výběry pro spuštění nového procesu sestavení](./media/code-test/create_new_build.PNG)
 
@@ -120,7 +120,7 @@ Nastavení a spuštění kódu, testování a automatizované sestavování s vy
     
     ![Informace o zdroji, názvu, úložišti a větvi](./media/code-test/fill_in_build_info.PNG)
 
-    c. Vyberte šablonu. Protože neexistuje žádná šablona projektu Pythonu, začněte výběrem **prázdný proces**. 
+    c. Vyberte šablonu. Vzhledem k tomu, že neexistuje žádná šablona projektu v Pythonu, Začněte výběrem možnosti **prázdný proces**. 
 
     ![Seznam šablon a tlačítko "prázdný proces"](./media/code-test/start_empty_process_template.PNG)
 
@@ -128,11 +128,11 @@ Nastavení a spuštění kódu, testování a automatizované sestavování s vy
     
     ![Sestavení a výběr agentů](./media/code-test/select_agent.PNG)
 
-    e. Vyberte **+** v levém podokně, chcete-li přidat úlohu v této fázi sestavení. Vzhledem k tomu, že spustíme skript Pythonu **test1.py** pro dokončení všech kontrol, tato úloha používá příkaz prostředí PowerShell ke spouštění kódu Pythonu.
+    e. V levém podokně vyberte **+** pro přidání úlohy pro tuto fázi sestavení. Vzhledem k tomu, že spustíme skript Pythonu **test1.py** pro dokončení všech kontrol, tato úloha používá příkaz prostředí PowerShell ke spouštění kódu Pythonu.
     
     ![Podokno přidat úkoly s vybraným prostředím PowerShell](./media/code-test/add_task_powershell.PNG)
 
-    f. V podrobnostech o prostředí PowerShell zadejte požadované informace, jako jsou název a verze prostředí PowerShell. Zvolte **zpracování vloženého skriptu** jako typ. 
+    f. V podrobnostech o prostředí PowerShell zadejte požadované informace, jako jsou název a verze prostředí PowerShell. Jako typ vyberte **vložený skript** . 
     
     Do pole v části **vložený skript**můžete zadat **Python test1.py**. Ujistěte se, že je správně nastavená proměnná prostředí pro Python. Pokud potřebujete jinou verzi nebo jádro Pythonu, můžete explicitně zadat cestu, jak je znázorněno na obrázku: 
     
@@ -151,11 +151,11 @@ Pokud výstrahy nejsou nastaveny správně, budete upozorněni v e-mailu po doko
 ![Oznámení Azure DevOps úspěch sestavení](./media/code-test/vs_online_build_succeed.PNG)
 
 ## <a name="next-steps"></a>Další kroky
-* Najdete v článku [UCI příjem předpovědi úložiště](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) konkrétní příklady testů jednotek pro datové vědy scénáře.
+* V tématu věnovaném testování částí v případě scénářů pro datové vědy si prohlédněte [úložiště předpovědi pro předpověď výnosů](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) .
 * Postupujte podle předchozích osnovy a příklady z scénáře UCI příjem předpovědi ve své vlastní projekty datových věd.
 
 ## <a name="references"></a>Odkazy
 * [Vědecké zpracování týmových dat](https://aka.ms/tdsp)
 * [Testovací nástroje sady Visual Studio](https://www.visualstudio.com/vs/features/testing-tools/)
-* [Testování prostředky Azure DevOps](https://www.visualstudio.com/team-services/)
-* [Virtuální počítače pro datové vědy](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)
+* [Prostředky testování Azure DevOps](https://www.visualstudio.com/team-services/)
+* [Virtual Machines pro datové vědy](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)

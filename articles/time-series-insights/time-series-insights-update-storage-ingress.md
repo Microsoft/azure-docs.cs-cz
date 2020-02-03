@@ -29,7 +29,7 @@ V Time Series Insights ve verzi Preview určují zásady příchozího přenosu 
 
 ### <a name="ingress-policies"></a>Zásady příchozího přenosu dat
 
-#### <a name="event-sources"></a>Zdroje událostí
+#### <a name="event-sources"></a>Zdroj událostí
 
 Time Series Insights Preview podporuje následující zdroje událostí:
 
@@ -49,12 +49,12 @@ Azure Time Series Insights podporuje JSON s kódováním UTF8 odeslanou prostře
 
 Níže je uveden seznam podporovaných datových typů.
 
-| Data type | Popis |
+| Typ dat | Popis |
 |-----------|------------------|-------------|
-| bool      |   Datový typ, který má jednu ze dvou stavů: true nebo false.       |
+| logick      |   Datový typ, který má jednu ze dvou stavů: true nebo false.       |
 | Datum a čas    |   Představuje okamžitý čas, obvykle vyjádřený jako datum a denní dobu. Hodnoty DateTime by měly být ve formátu ISO 8601.      |
 | double    |   64 desetinná čárka IEEE 754 s dvojitou přesností
-| string    |   Textové hodnoty sestávající ze znaků Unicode.          |
+| řetězec    |   Textové hodnoty sestávající ze znaků Unicode.          |
 
 #### <a name="objects-and-arrays"></a>Objekty a pole
 

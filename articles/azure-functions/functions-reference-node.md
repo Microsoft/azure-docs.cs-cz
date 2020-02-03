@@ -267,9 +267,9 @@ Umožňuje zapisovat do protokolů funkcí streamování na výchozí úrovni tr
 
 | Metoda                 | Popis                                |
 | ---------------------- | ------------------------------------------ |
-| **error(_message_)**   | Zapisuje do protokolování na úrovni chyb nebo snižuje.   |
-| **warn(_message_)**    | Zapíše do protokolování na úrovni upozornění nebo sníží. |
-| **info(_message_)**    | Provede zápis do protokolování na úrovni informací nebo nižší.    |
+| **Chyba (_zpráva_)**   | Zapisuje do protokolování na úrovni chyb nebo snižuje.   |
+| **upozornit (_zpráva_)**    | Zapíše do protokolování na úrovni upozornění nebo sníží. |
+| **informace (_zpráva_)**    | Provede zápis do protokolování na úrovni informací nebo nižší.    |
 | **verbose (_zpráva_)** | Zapisuje do protokolování na úrovni podrobností.           |
 
 Následující příklad zapíše protokol na úrovni trasování upozornění:
@@ -344,12 +344,12 @@ Objekt `context.req` (Request) má následující vlastnosti:
 
 | Vlastnost      | Popis                                                    |
 | ------------- | -------------------------------------------------------------- |
-| _body_        | Objekt, který obsahuje tělo žádosti.               |
+| _těles_        | Objekt, který obsahuje tělo žádosti.               |
 | _záhlaví_     | Objekt, který obsahuje hlavičky požadavku.                   |
-| _method_      | Metoda HTTP požadavku.                                |
+| _Metoda_      | Metoda HTTP požadavku.                                |
 | _originalUrl_ | Adresa URL požadavku.                                        |
 | _params_      | Objekt, který obsahuje parametry směrování požadavku. |
-| _query_       | Objekt, který obsahuje parametry dotazu.                  |
+| _zadávání_       | Objekt, který obsahuje parametry dotazu.                  |
 | _rawBody_     | Tělo zprávy jako řetězec.                           |
 
 
@@ -359,10 +359,10 @@ Objekt `context.res` (Response) má následující vlastnosti:
 
 | Vlastnost  | Popis                                               |
 | --------- | --------------------------------------------------------- |
-| _body_    | Objekt, který obsahuje tělo odpovědi.         |
+| _těles_    | Objekt, který obsahuje tělo odpovědi.         |
 | _záhlaví_ | Objekt, který obsahuje hlavičky odpovědi.             |
 | _isRaw_   | Indikuje, že pro odpověď se přeskočilo formátování.    |
-| _status_  | Stavový kód protokolu HTTP odpovědi.                     |
+| _stav_  | Stavový kód protokolu HTTP odpovědi.                     |
 
 ### <a name="accessing-the-request-and-response"></a>Přístup k žádosti a odpovědi 
 
@@ -693,7 +693,7 @@ module.exports = async function (context) {
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících materiálech:
+Další informace najdete v následujících zdrojích:
 
 + [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
 + [Referenční informace pro vývojáře Azure Functions](functions-reference.md)

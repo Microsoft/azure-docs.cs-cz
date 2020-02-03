@@ -38,5 +38,5 @@ Aby bylo možné požádat o přístup ke kontejneru, je nutné nejprve dokonči
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si téma [instalace a spuštění kontejnerů](../anomaly-detector-container-configuration.md) pro vyžádání image kontejneru a spuštění kontejneru.
-* Kontrola [konfigurace kontejnery](../anomaly-detector-container-configuration.md) nastavení konfigurace
+* Přečtěte si téma [konfigurace kontejnerů](../anomaly-detector-container-configuration.md) pro nastavení konfigurace
 * [Další informace o službě rozhraní API detektoru anomálií](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

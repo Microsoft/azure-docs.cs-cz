@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Implementace zástupných procedur ve vygenerovaném kódu
 > * Spusťte kód pro otestování interakcí se službou IoT Hub.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete pracovat s modelem schopností zařízení v tomto kurzu, budete potřebovat:
 

@@ -44,7 +44,7 @@ Pokud se zprostředkovatel zobrazí jako *NotRegistered*, zaregistrujte poskytov
 az provider register --namespace Microsoft.ContainerInstance
 ```
 
-## <a name="regional-availability"></a>Dostupnost podle oblastí
+## <a name="regional-availability"></a>Regionální dostupnost
 
 Pro nasazení virtuálních uzlů jsou podporovány následující oblasti:
 

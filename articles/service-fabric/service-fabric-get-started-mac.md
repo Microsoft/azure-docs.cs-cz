@@ -22,7 +22,7 @@ ms.locfileid: "76722573"
 
 Pomocí Mac OS X můžete sestavit aplikace Azure Service Fabric, které poběží na clusterech s Linuxem. Tento dokument popisuje nastavení počítače Mac pro vývoj.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Azure Service Fabric nefunguje v Mac OS X nativně. Pro spuštění místního clusteru Service Fabric se poskytuje předkonfigurovaná image kontejneru Dockeru. Než začnete, budete potřebovat:
 
 * Minimálně 4 GB RAM
@@ -123,7 +123,7 @@ Pokud chcete nastavit místní kontejner Dockeru a mít v něm spuštěný clust
 
 ## <a name="set-up-the-service-fabric-cli-sfctl-on-your-mac"></a>Nastavení Service Fabric CLI (sfctl) na počítači Mac
 
-Pokud chcete nainstalovat Service Fabric CLI (`sfctl`) na svém počítači Mac, postupujte podle pokynů v tématu [Service Fabric CLI](service-fabric-cli.md#cli-mac).
+Pokud chcete nainstalovat Service Fabric CLI ([) na svém počítači Mac, postupujte podle pokynů v tématu ](service-fabric-cli.md#cli-mac)Service Fabric CLI`sfctl`.
 Příkazy rozhraní příkazového řádku podporují komunikaci s entitami Service Fabric, včetně clusterů, aplikací a služeb.
 
 1. Pokud se před nasazením aplikací chcete připojit ke clusteru, spusťte následující příkaz. 
@@ -188,7 +188,7 @@ Po vytvoření a sestavení aplikace Service Fabric ji můžete nasadit pomocí 
 
 ## <a name="set-up-net-core-20-development"></a>Nastavení pro vývoj v .NET Core 2.0
 
-Pokud chcete začít [vytvářet aplikace Service Fabric v jazyce C#](service-fabric-create-your-first-linux-application-with-csharp.md), nainstalujte sadu [.NET Core 2.0 SDK pro Mac](https://www.microsoft.com/net/core#macos). Balíčky pro aplikace Service Fabric v .NET Core 2.0 jsou hostované na NuGet.org, který je aktuálně ve verzi Preview.
+Pokud chcete začít [vytvářet aplikace Service Fabric v jazyce C#](https://www.microsoft.com/net/core#macos), nainstalujte sadu [.NET Core 2.0 SDK pro Mac](service-fabric-create-your-first-linux-application-with-csharp.md). Balíčky pro aplikace Service Fabric v .NET Core 2.0 jsou hostované na NuGet.org, který je aktuálně ve verzi Preview.
 
 ## <a name="install-the-service-fabric-plug-in-for-eclipse-on-your-mac"></a>Instalace modulu plug-in Service Fabric pro Eclipse na počítači Mac
 

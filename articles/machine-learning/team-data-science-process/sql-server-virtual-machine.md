@@ -18,7 +18,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76718476"
 ---
-# <a name="heading"></a>Zpracování dat v SQL serveru na virtuálním počítači Azure
+# <a name="heading"></a>Zpracování dat v SQL Server virtuálním počítači v Azure
 Tento dokument popisuje, jak zkoumat data a vygenerovat funkcí pro data uložená v virtuálního počítače s SQL serverem v Azure. Tento cíl může dokončit data tahání pomocí SQL nebo pomocí programovacího jazyka, jako je Python.
 
 > [!NOTE]
@@ -26,17 +26,17 @@ Tento dokument popisuje, jak zkoumat data a vygenerovat funkcí pro data uložen
 > 
 > 
 
-## <a name="SQL"></a>Pomocí SQL
+## <a name="SQL"></a>Používání SQL
 Popisujeme následující úkoly wrangling dat v této části pomocí jazyka SQL:
 
 1. [Zkoumání dat](#sql-dataexploration)
-2. [Funkce generování](#sql-featuregen)
+2. [Generace funkcí](#sql-featuregen)
 
 ### <a name="sql-dataexploration"></a>Zkoumání dat
 Tady je několik ukázky skriptů SQL, které lze použít k prozkoumání úložiště dat v systému SQL Server.
 
 > [!NOTE]
-> Například praktické, můžete použít [NYC taxislužby datovou sadu](https://www.andresmh.com/nyctaxitrips/) a odkazovat na IPNB s názvem [tahání dat NYC pomocí SQL Server a IPython Notebook](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) pro návod začátku do konce.
+> Pro praktické příklady můžete použít [datovou sadu taxislužby NYC](https://www.andresmh.com/nyctaxitrips/) a odkazovat na IPNB s názvem [NYC data tahání pomocí poznámkového bloku IPython a SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) pro ucelený návod.
 > 
 > 
 
@@ -53,19 +53,19 @@ Tady je několik ukázky skriptů SQL, které lze použít k prozkoumání úlo�
    
     `select <column_name>, count(*) from <tablename> group by <column_name>`
 
-### <a name="sql-featuregen"></a>Funkce generování
+### <a name="sql-featuregen"></a>Generace funkcí
 V této části popisujeme možnosti generování funkcí s použitím SQL:  
 
-1. [Počet na základě funkcí generace](#sql-countfeature)
-2. [Binning funkci generování](#sql-binningfeature)
-3. [Použití funkce z jednoho sloupce](#sql-featurerollout)
+1. [Generace funkcí na základě počtu](#sql-countfeature)
+2. [Generace funkcí binningu](#sql-binningfeature)
+3. [Zavádění funkcí z jednoho sloupce](#sql-featurerollout)
 
 > [!NOTE]
 > Jakmile vygenerujete další funkce, můžete je přidat jako sloupce do existující tabulky nebo vytvořit novou tabulku s další funkce a primární klíč, který jde připojit k původní tabulky. 
 > 
 > 
 
-### <a name="sql-countfeature"></a>Počet na základě funkcí generace
+### <a name="sql-countfeature"></a>Generace funkcí na základě počtu
 Následující příklady znázorňují dva způsoby generování počet funkcí. První metoda používá podmíněný součet a druhá metoda používá klauzuli 'where'. Tyto výsledky pak mohou být spojeny s původní tabulkou (pomocí sloupců primárního klíče), aby měly funkce Count společně s původními daty.
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3> 
@@ -73,16 +73,16 @@ Následující příklady znázorňují dva způsoby generování počet funkcí
     select <column_name1>,<column_name2> , sum(1) as Count_Features from <tablename> 
     where <column_name3> = '<some_value>' group by <column_name1>,<column_name2> 
 
-### <a name="sql-binningfeature"></a>Binning funkci generování
+### <a name="sql-binningfeature"></a>Generace funkcí binningu
 Následující příklad ukazuje, jak generovat rozdělený na intervaly funkce podle binning (přihrádkami pět) číselný sloupec, který lze použít jako funkci:
 
     `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
 
 
-### <a name="sql-featurerollout"></a>Použití funkce z jednoho sloupce
+### <a name="sql-featurerollout"></a>Zavádění funkcí z jednoho sloupce
 V této části jsme ukazují, jak zavést jeden sloupec v tabulce k vygenerování dalších funkcí. Příklad předpokládá, že je v tabulce, ze kterého jste se pokoušeli vygenerovat funkce sloupec zeměpisné šířky a délky.
 
-Tady je stručný úvod do data o poloze zeměpisnou šířkou/délkou (zdroje z stackoverflow [způsob měření přesnost zeměpisné šířky a délky?](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)). Tyto doprovodné materiály jsou užitečné k pochopení před zahrnutím umístění jako jedné nebo více funkcí:
+Tady je stručný úvod k datům o poloze/Zeměpisná šířka (znovu se zdroji z StackOverflow, [jak změřit přesnost zeměpisné šířky a délky?](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)). Tyto doprovodné materiály jsou užitečné k pochopení před zahrnutím umístění jako jedné nebo více funkcí:
 
 * Znaménko manažerech, jestli se sever nebo – Jih, východní nebo – západ na celém světě.
 * Nenulový stovky číslice nám říká, že používáme zeměpisná délka a šířka není!
@@ -111,17 +111,17 @@ Informace o umístění může být natrénuje následujícím způsobem odděle
 Tyto funkce založená na poloze dále slouží ke generování dalších počet funkcí, jak je popsáno výše. 
 
 > [!TIP]
-> Programově můžete vložit záznamy pomocí vašich jazyk podle vlastní volby. Možná budete muset vložit data za účelem zlepšení efektivity zápisu (příklad toho, jak to udělat pomocí pyodbc, naleznete v tématu [ukázky Hello World A pro přístup k systému SQL Server s pythonem](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)). Další možností je k vložení dat do databáze pomocí [nástroj BCP](https://msdn.microsoft.com/library/ms162802.aspx).
+> Programově můžete vložit záznamy pomocí vašich jazyk podle vlastní volby. Možná budete muset vložit data do bloků dat, abyste vylepšili efektivitu zápisu (příklad toho, jak to udělat pomocí pyodbc) najdete v [ukázce Hello pro přístup k SQLServer pomocí Pythonu](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python). Další možností je vkládat data do databáze pomocí [nástroje BCP](https://msdn.microsoft.com/library/ms162802.aspx).
 > 
 > 
 
-### <a name="sql-aml"></a>Připojení k Azure Machine Learning
+### <a name="sql-aml"></a>Připojování k Azure Machine Learning
 Nově vygenerovaný funkce můžete přidat jako sloupec do existující tabulky nebo uložené do nové tabulky a spojen s původní tabulky pro službu machine learning. Funkce se dají vygenerovat nebo zobrazit, pokud už je vytvořený, pomocí modulu [Import dat][import-data] v Azure Machine Learning, jak je znázorněno níže:
 
 ![čtenáři Azure ml][1] 
 
-## <a name="python"></a>Pomocí programovacího jazyka, jako je Python
-Použití Pythonu k zkoumat data a vygenerovat funkce, když jsou data v systému SQL Server je podobný zpracování dat v Azure blob pomocí Pythonu, jak je uvedeno v [data objektů Blob v Azure procesu v prostředí pro datové vědy](data-blob.md). Načtěte data z databáze do datového rámce PANDAS pro další zpracování. Dokumentujeme proces připojení k databázi a načítání dat do datového rámce v této části.
+## <a name="python"></a>Používání programovacího jazyka, jako je Python
+Použití Pythonu k prozkoumávání dat a generování funkcí, když jsou data v SQL Server podobná zpracování dat v Azure BLOB pomocí Pythonu, jak je popsáno v části [zpracování dat objektů BLOB v Azure v prostředí pro datové vědy](data-blob.md). Načtěte data z databáze do datového rámce PANDAS pro další zpracování. Dokumentujeme proces připojení k databázi a načítání dat do datového rámce v této části.
 
 Následující formát připojovacího řetězce je možné se připojit k databázi SQL serveru z Pythonu pomocí pyodbc (nahraďte název_serveru, dbname, uživatelské jméno a heslo s určitými hodnotami):
 
@@ -129,15 +129,15 @@ Následující formát připojovacího řetězce je možné se připojit k datab
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-[Knihovny Pandas](https://pandas.pydata.org/) v Pythonu nabízí bohatou sadu datových struktur a nástrojů pro analýzu dat pro manipulaci s daty pro programování v Pythonu. Následující kód načte výsledky vrácené z databáze SQL serveru do Pandas datového rámce:
+[Knihovna PANDAS](https://pandas.pydata.org/) v Pythonu poskytuje bohatou sadu datových struktur a nástrojů pro analýzu dat pro manipulaci s daty pro programování v Pythonu. Následující kód načte výsledky vrácené z databáze SQL serveru do Pandas datového rámce:
 
     # Query database and load the returned results in pandas data frame
     data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
 
-Teď můžete pracovat se datový rámec Pandas, jak je popsáno v článku [data objektů Blob v Azure procesu v prostředí pro datové vědy](data-blob.md).
+Nyní můžete pracovat s datovým rámcem PANDAS, jak je popsáno v článku [zpracování dat objektů BLOB v Azure ve vašem prostředí pro datové vědy](data-blob.md).
 
 ## <a name="azure-data-science-in-action-example"></a>Azure pro datové vědy v příkladu akce
-Příklad začátku do konce Průvodce vědecké zpracování dat Azure pomocí veřejné datové sady, naleznete v tématu [vědecké zpracování dat Azure v akci](sql-walkthrough.md).
+Podrobný příklad procesu Azure Data vědu pomocí veřejné datové sady najdete v tématu věnovaném [procesu Azure Data věda v akci](sql-walkthrough.md).
 
 [1]: ./media/sql-server-virtual-machine/reader_db_featurizedinput.png
 

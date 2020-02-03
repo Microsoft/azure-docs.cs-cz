@@ -28,12 +28,12 @@ Tady je doporučený postup pro rychlé zprovoznění:
 6. Podle pokynů v části **schéma oznámení** v tomto článku můžete analyzovat požadavky na oznámení a implementovat svoji obchodní logiku na základě oznámení.
 
 ## <a name="add-service-catalog-application-definition-notifications"></a>Přidat oznámení definice aplikace katalogu služeb
-#### <a name="azure-portal"></a>Portál Azure
+#### <a name="azure-portal"></a>portál Azure
 Informace o tom, jak začít, najdete v tématu [publikování aplikace katalogu služeb prostřednictvím Azure Portal](./publish-portal.md).
 
 ![Oznámení definice aplikace katalogu služeb v Azure Portal](./media/publish-notifications/service-catalog-notifications.png)
 
-#### <a name="rest-api"></a>Rozhraní REST API
+#### <a name="rest-api"></a>REST API
 
 > [!NOTE]
 > V současné době můžete v `notificationEndpoints` ve vlastnostech definice aplikace zadávat pouze jeden koncový bod.
@@ -67,15 +67,15 @@ Další informace najdete v tématu [Vytvoření nabídky aplikací Azure](../..
 ## <a name="event-triggers"></a>Aktivační události
 Následující tabulka popisuje všechny možné kombinace EventType a ProvisioningState a jejich aktivační události:
 
-Typ | ProvisioningState | Aktivační událost pro oznámení
+EventType | ProvisioningState | Aktivační událost pro oznámení
 ---|---|---
-PUT | Přijata | Spravovaná skupina prostředků se vytvořila a po vložení aplikace se úspěšně provedla. (před tím, než se nasazování do spravované skupiny prostředků dokončí).
+PUT | Přijato | Spravovaná skupina prostředků se vytvořila a po vložení aplikace se úspěšně provedla. (před tím, než se nasazování do spravované skupiny prostředků dokončí).
 PUT | Úspěch | Úplné zřízení spravované aplikace bylo po vložení úspěšné.
-PUT | Selhalo | Chyba při zřizování instance aplikace v jakémkoli bodě.
+PUT | Neúspěch | Chyba při zřizování instance aplikace v jakémkoli bodě.
 POUŽITA | Úspěch | Po úspěšné opravě instance spravované aplikace aktualizujte značky, zásady přístupu JIT nebo spravovanou identitu.
-DELETE | Odstraňování | Jakmile uživatel zahájí odstranění instance spravované aplikace.
-DELETE | Odstraněno | Po úplném a úspěšném odstranění spravované aplikace.
-DELETE | Selhalo | Po jakékoli chybě během procesu zrušení zřízení, který blokování odstraní.
+DELETE | Odstraňuje | Jakmile uživatel zahájí odstranění instance spravované aplikace.
+DELETE | Odstranění | Po úplném a úspěšném odstranění spravované aplikace.
+DELETE | Neúspěch | Po jakékoli chybě během procesu zrušení zřízení, který blokování odstraní.
 ## <a name="notification-schema"></a>Schéma oznámení
 Když nastavíte koncový bod Webhooku pro zpracování oznámení, budete muset analyzovat datovou část, abyste získali důležité vlastnosti, které pak budou fungovat na oznámení. Služba Service Catalog a Azure Marketplace oznámení o spravovaných aplikacích poskytují mnoho stejných vlastností. V tabulce, která následuje za ukázkami, jsou popsaný dva malé rozdíly.
 

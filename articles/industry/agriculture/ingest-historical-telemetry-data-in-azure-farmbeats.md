@@ -86,16 +86,16 @@ Postupujte následovně.
 |          Výrobce            |         Název výrobce    |
 |  ProductCode                    |  Kód produktu nebo číslo modelu zařízení Například EnviroMonitor # 6800.  |
 |            Porty          |     Název portu a typ, který je digitální nebo analogový.
-|     Name (Název)                 |  Název, který identifikuje prostředek. Například název modelu nebo název produktu.
+|     Název                 |  Název, který identifikuje prostředek. Například název modelu nebo název produktu.
       Popis     | Poskytněte smysluplný popis modelu.
 |    Vlastnosti          |    Další vlastnosti od výrobce.   |
-|    **zařízení**             |                      |
+|    **Zařízení**             |                      |
 |   DeviceModelId     |     ID přidruženého modelu zařízení  |
 |  HardwareId          | Jedinečné ID zařízení, například adresa MAC.
 |  ReportingInterval        |   Interval generování sestav v sekundách.
 |  Umístění            |  Zeměpisná šířka zařízení (-90 až + 90), zeměpisná délka (-180 až 180) a zvýšení úrovně (v metrech).   
 |ParentDeviceId       |    ID nadřazeného zařízení, ke kterému je připojeno toto zařízení Například uzel, který je připojen k bráně. Uzel má jako bránu parentDeviceId.  |
-|    Name (Název)            | Název, který identifikuje prostředek. Partneři zařízení musí poslat název, který je konzistentní s názvem zařízení na straně partnera. Pokud je název partnerského zařízení definovaný uživatelem, je potřeba rozšířit stejný uživatelsky definovaný název na FarmBeats.|
+|    Název            | Název, který identifikuje prostředek. Partneři zařízení musí poslat název, který je konzistentní s názvem zařízení na straně partnera. Pokud je název partnerského zařízení definovaný uživatelem, je potřeba rozšířit stejný uživatelsky definovaný název na FarmBeats.|
 |     Popis       |      Zadejte smysluplný popis. |
 |     Vlastnosti    |  Další vlastnosti od výrobce.
 |     **SensorModel**        |          |
@@ -107,7 +107,7 @@ Postupujte následovně.
 |    Typ > SensorMeasures    |Typ měření dat telemetrie senzorů. Systémem definované typy jsou AmbientTemperature, CO2, Hloubka, ElectricalConductivity, LeafWetness, Length, LiquidLevel, dusičnan, O2, PH, fosforečnan, PointInTime, draselný, tlak, RainGauge, RelativeHumidity, slanost, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, WindSpeed, evapotranspiration, PAR. Pokud chcete přidat další informace, podívejte se na rozhraní/ExtendedType API.|
 |        Jednotka > SensorMeasures              | Jednotka dat telemetrie snímačů. Jednotky definované systémem jsou jednotky jednotek, Celsia, Fahrenheita, Kelviny, Rankine, Pascal, rtuť, Psí, milimetry, centimetry, měřiče, palce, nohy, kilometry, KiloMeter, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, stupeň, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, procenta, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, litr, MilliLiter, sekundy, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour, další informace najdete v tématu rozhraní API pro/ExtendedType.|
 |    SensorMeasures > AggregationType    |  Hodnoty mohou být None, Average, maximum, minima nebo StandardDeviation.  |
-|          Name (Název)            | Název, který identifikuje prostředek. Například název modelu nebo název produktu.  |
+|          Název            | Název, který identifikuje prostředek. Například název modelu nebo název produktu.  |
 |    Popis        | Poskytněte smysluplný popis modelu.  |
 |   Vlastnosti       |  Další vlastnosti od výrobce.  |
 |    **Elektrické**      |          |
@@ -115,8 +115,8 @@ Postupujte následovně.
 |  SensorModelId     |    ID přidruženého modelu senzoru   |
 | Umístění          |  Zeměpisná šířka (-90 až + 90), zeměpisná délka (-180 až 180) a zvýšení úrovně (v metrech).|
 |   Název > portu        |  Název a typ portu, ke kterému je senzor připojen na zařízení. Tento název musí být stejný jako definovaný v modelu zařízení. |
-|    DeviceID  |    ID zařízení, ke kterému je senzor připojen.     |
-| Name (Název)            |   Název, který identifikuje prostředek. Například název senzoru nebo název produktu a číslo modelu nebo kód produktu.|
+|    ID zařízení  |    ID zařízení, ke kterému je senzor připojen.     |
+| Název            |   Název, který identifikuje prostředek. Například název senzoru nebo název produktu a číslo modelu nebo kód produktu.|
 |    Popis      | Zadejte smysluplný popis. |
 |    Vlastnosti        |Další vlastnosti od výrobce. |
 
@@ -126,7 +126,7 @@ Další informace o objektech naleznete v [Swagger](https://aka.ms/FarmBeatsData
 
 Chcete-li vytvořit požadavek rozhraní API, můžete zkombinovat metodu HTTP (POST), adresu URL služby API a identifikátor URI k prostředku, který se má dotazovat, odeslat data do, vytvořit nebo odstranit žádost. Pak přidáte jednu nebo více hlaviček požadavku HTTP. Adresa URL služby API je koncový bod rozhraní API, to znamená DataHub adresa URL (https://\<yourdatahub >. azurewebsites. NET).  
 
-### <a name="authentication"></a>Ověření
+### <a name="authentication"></a>Ověřování
 
 FarmBeats DataHub používá ověřování pomocí nosiče, které potřebuje následující přihlašovací údaje vygenerované v předchozí části:
 

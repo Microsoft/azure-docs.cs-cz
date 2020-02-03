@@ -20,15 +20,15 @@ ms.locfileid: "76722182"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Zkoumání dat ve službě Azure blob storage pomocí knihovny pandas
 
-Tento článek popisuje, jak zkoumat data, která je uložená v kontejneru objektů blob v Azure pomocí [pandas](https://pandas.pydata.org/) balíček Pythonu.
+Tento článek popisuje, jak prozkoumat data uložená v kontejneru objektů BLOB v Azure pomocí balíčku Pythonu [PANDAS](https://pandas.pydata.org/) .
 
-Tato úloha je nějaký krok [vědecké zpracování týmových dat](overview.md).
+Tento úkol je krok v rámci [vědeckého procesu týmového zpracování dat](overview.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Tento článek předpokládá, že máte:
 
-* Vytvoření účtu služby Azure storage. Pokud potřebujete pokyny, přečtěte si [vytvoření účtu služby Azure Storage](../../storage/common/storage-account-create.md)
-* Vaše data uložená v účtu úložiště objektů blob v Azure. Pokud potřebujete pokyny, přečtěte si [přesun dat do a z Azure Storage](../../storage/common/storage-moving-data.md)
+* Vytvoření účtu služby Azure storage. Pokud potřebujete pokyny, přečtěte si téma [Vytvoření účtu Azure Storage](../../storage/common/storage-account-create.md) .
+* Vaše data uložená v účtu úložiště objektů blob v Azure. Pokud potřebujete pokyny, přečtěte si téma [přesun dat do a z Azure Storage](../../storage/common/storage-moving-data.md)
 
 ## <a name="load-the-data-into-a-pandas-dataframe"></a>Načtení dat do pandas DataFrame
 K prozkoumání a manipulaci s datovou sadu, ho musíte nejprve stáhnout na zdroj objektu blob do místního souboru, který lze načíst v pandas DataFrame. Tady jsou kroky pro tento postup:
@@ -62,16 +62,16 @@ dataframe_blobdata = pd.read_csv(LOCALFILE)
 
 Nyní jste připraveni na zkoumání dat a generovat funkce pro tuto datovou sadu.
 
-## <a name="blob-dataexploration"></a>Příklady použití pandasu zkoumání dat
+## <a name="blob-dataexploration"></a>Příklady průzkumu dat pomocí PANDAS
 Tady je pár příkladů, jak zkoumat data pomocí pandas:
 
-1. Zkontrolujte **počet řádků a sloupců**
+1. Kontrola **počtu řádků a sloupců**
 
 ```python
 print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
 ```
 
-1. **Kontrola** několik prvním nebo posledním **řádky** v datové sadě následující:
+1. **Zkontrolujte** první nebo poslední **řádky** v následující datové sadě:
 
 ```python
 dataframe_blobdata.head(10)
@@ -79,14 +79,14 @@ dataframe_blobdata.head(10)
 dataframe_blobdata.tail(10)
 ```
 
-1. Zkontrolujte, **datový typ** každý sloupec byl importován jako následující ukázkový kód, pomocí
+1. Ověřte, že se **datový typ** každého sloupce importoval pomocí následujícího ukázkového kódu.
 
 ```python
 for col in dataframe_blobdata.columns:
     print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
 ```
 
-1. Zkontrolujte, **základní statistiky** pro sloupce v datech nastavte následujícím způsobem
+1. Ověřte **základní statistiky** pro sloupce v sadě dat následujícím způsobem.
 
 ```python
 dataframe_blobdata.describe()
@@ -98,14 +98,14 @@ dataframe_blobdata.describe()
 dataframe_blobdata['<column_name>'].value_counts()
 ```
 
-1. **Počet chybějících hodnot** a skutečný počet položek v jednotlivých sloupcích pomocí následujícího ukázkového kódu
+1. **Počítat chybějící hodnoty** oproti skutečnému počtu položek v každém sloupci pomocí následujícího ukázkového kódu
 
 ```python
 miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
 print miss_num
 ```
 
-1. Pokud máte **chybějící hodnoty** pro konkrétní sloupec v datech, můžete zrušit je následujícím způsobem:
+1. Pokud v datech **chybí hodnoty** pro určitý sloupec, můžete je odstranit takto:
 
 ```python
 dataframe_blobdata_noNA = dataframe_blobdata.dropna()
@@ -119,7 +119,7 @@ dataframe_blobdata_mode = dataframe_blobdata.fillna(
     {'<column_name>': dataframe_blobdata['<column_name>'].mode()[0]})
 ```
 
-1. Vytvoření **histogram** vykreslení pomocí proměnný počet intervalů k vykreslení distribuce proměnné
+1. Vytvoření grafu **histogramu** pomocí proměnlivého počtu přihrádek k vykreslení distribuce proměnné
 
 ```python
 dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
@@ -127,7 +127,7 @@ dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
 np.log(dataframe_blobdata['<column_name>']+1).hist(bins=50)
 ```
 
-1. Podívejte se na **korelace** mezi proměnné pomocí diagnostického nebo funkcí vestavěné korelace
+1. Podívejte se na **korelace** mezi proměnnými pomocí scatterplot nebo pomocí integrované funkce Correlation.
 
 ```python
 # relationship between column_a and column_b using scatter plot

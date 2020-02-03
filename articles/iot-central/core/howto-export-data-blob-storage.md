@@ -27,7 +27,7 @@ Tento článek popisuje, jak pomocí funkce pro export nepřetržitých dat v Az
 > Když zapnete export průběžných dat, dostanete od tohoto okamžiku pouze data. V současné době nelze data po vypnutí průběžného exportu dat načíst. Pokud chcete zachovat více historických dat, zapněte průběžný export dat.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Musíte být správcem aplikace IoT Central.
 
@@ -83,7 +83,7 @@ Teď, když máte cíl úložiště pro export dat, postupujte podle těchto kro
 
 8. V části **data, která chcete exportovat**, určete každý typ dat k exportu nastavením typ na **zapnuto**.
 
-9. Pokud chcete zapnout funkci průběžného exportu dat, ujistěte se, že je **zapnutý přepínač pro** **Export dat** . Vyberte **Uložit**.
+9. Pokud chcete zapnout funkci průběžného exportu dat, ujistěte se, že je **zapnutý přepínač pro** **Export dat** . Vyberte **Save** (Uložit).
 
    ![Konfigurace nepřetržitého exportu dat](media/howto-export-data/export-list-blob2.png)
 

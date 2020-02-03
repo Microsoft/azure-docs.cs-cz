@@ -28,21 +28,21 @@ Vaše úlohy mají přístup k prostředkům Azure navázáním připojení k va
 
 Runbooky v Azure Automation můžou běžet buď v izolovaném prostoru (sandbox) v Azure, nebo v [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md). Izolovaný prostor (sandbox) je sdílené prostředí v Azure, které může používat víc úloh. Úlohy používající stejný izolovaný prostor (sandbox) jsou vázány omezeními prostředků izolovaného prostoru (sandbox). Hybridní pracovní procesy Runbooku můžou spouštět Runbooky přímo v počítači, který je hostitelem role, a s prostředky v prostředí za účelem správy těchto místních prostředků. Sady Runbook jsou uloženy a spravovány v Azure Automation a poté dodány jednomu nebo více přiřazeným počítačům. Většinu runbooků lze snadno spustit v izolovaných prostorech Azure. Můžou se doporučit konkrétní scénáře, kdy se dá zvolit hybridní Runbook přes izolovaný prostor Azure pro spuštění Runbooku. V následující tabulce najdete seznam některých ukázkových scénářů:
 
-|Úkol|Nejlepší volba|Poznámky|
+|Úkol|Nejlepší volba|Poznámky:|
 |---|---|---|
 |Integrace s prostředky Azure|Azure Sandbox|Hostovaná v Azure je ověřování jednodušší. Pokud používáte Hybrid Runbook Worker na virtuálním počítači Azure, můžete použít [spravované identity pro prostředky Azure](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) .|
 |Optimální výkon pro správu prostředků Azure|Azure Sandbox|Skript se spouští ve stejném prostředí, které zase má nižší latenci.|
 |Minimalizace provozních nákladů|Azure Sandbox|Neexistují žádné režijní náklady na výpočetní výkon, není potřeba virtuální počítač.|
-|Dlouho běžící skript|Hybridní pracovní proces runbooku|Izolované prostory Azure mají [omezení na prostředky](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) .|
-|Interakce s místními službami|Hybridní pracovní proces runbooku|Může mít přístup přímo k hostitelskému počítači.|
-|Vyžadování softwaru a spustitelných souborů třetích stran|Hybridní pracovní proces runbooku|Můžete spravovat operační systém a instalovat software.|
-|Monitorování souboru nebo složky pomocí Runbooku|Hybridní pracovní proces runbooku|Použití [úlohy sledovacího](automation-watchers-tutorial.md) procesu v procesu Hybrid Runbook Worker|
-|Skript náročný na prostředky|Hybridní pracovní proces runbooku| Izolované prostory Azure mají [omezení na prostředky](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) .|
-|Používání modulů s konkrétními požadavky| Hybridní pracovní proces runbooku|Tady je několik příkladů:</br> **WinSCP** – závislost na WinSCP. exe </br> **IISAdministration** – vyžaduje, aby služba IIS byla povolená.|
-|Nainstalovat modul, který vyžaduje Instalační program|Hybridní pracovní proces runbooku|Moduly pro izolovaný prostor (sandbox) musí být copiable.|
-|Používání runbooků nebo modulů, které vyžadují .NET Framework odlišnou od 4.7.2|Hybridní pracovní proces runbooku|Izolované prostory pro automatizaci mají .NET Framework 4.7.2 a neexistuje žádný způsob, jak ji upgradovat.|
-|Skripty, které vyžadují zvýšení oprávnění|Hybridní pracovní proces runbooku|Izolované prostory neumožňují zvýšení oprávnění. Chcete-li tento problém vyřešit, použijte Hybrid Runbook Worker a můžete vypnout nástroj řízení uživatelských účtů a použít `Invoke-Command` při spuštění příkazu, který vyžaduje zvýšení úrovně oprávnění.|
-|Skripty, které vyžadují přístup ke službě WMI|Hybridní pracovní proces runbooku|Úlohy spuštěné v izolovaných prostorech v cloudu nemají [přístup ke službě WMI](#device-and-application-characteristics) .|
+|Dlouho běžící skript|Hybrid Runbook Worker|Izolované prostory Azure mají [omezení na prostředky](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) .|
+|Interakce s místními službami|Hybrid Runbook Worker|Může mít přístup přímo k hostitelskému počítači.|
+|Vyžadování softwaru a spustitelných souborů třetích stran|Hybrid Runbook Worker|Můžete spravovat operační systém a instalovat software.|
+|Monitorování souboru nebo složky pomocí Runbooku|Hybrid Runbook Worker|Použití [úlohy sledovacího](automation-watchers-tutorial.md) procesu v procesu Hybrid Runbook Worker|
+|Skript náročný na prostředky|Hybrid Runbook Worker| Izolované prostory Azure mají [omezení na prostředky](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) .|
+|Používání modulů s konkrétními požadavky| Hybrid Runbook Worker|Tady je několik příkladů:</br> **WinSCP** – závislost na WinSCP. exe </br> **IISAdministration** – vyžaduje, aby služba IIS byla povolená.|
+|Nainstalovat modul, který vyžaduje Instalační program|Hybrid Runbook Worker|Moduly pro izolovaný prostor (sandbox) musí být copiable.|
+|Používání runbooků nebo modulů, které vyžadují .NET Framework odlišnou od 4.7.2|Hybrid Runbook Worker|Izolované prostory pro automatizaci mají .NET Framework 4.7.2 a neexistuje žádný způsob, jak ji upgradovat.|
+|Skripty, které vyžadují zvýšení oprávnění|Hybrid Runbook Worker|Izolované prostory neumožňují zvýšení oprávnění. Chcete-li tento problém vyřešit, použijte Hybrid Runbook Worker a můžete vypnout nástroj řízení uživatelských účtů a použít `Invoke-Command` při spuštění příkazu, který vyžaduje zvýšení úrovně oprávnění.|
+|Skripty, které vyžadují přístup ke službě WMI|Hybrid Runbook Worker|Úlohy spuštěné v izolovaných prostorech v cloudu nemají [přístup ke službě WMI](#device-and-application-characteristics) .|
 
 ## <a name="runbook-behavior"></a>Chování sady Runbook
 
@@ -197,10 +197,10 @@ Runbooky spuštěné v Azure sandboxech nepodporují volání procesů (napřík
 
 Následující tabulka popisuje různé stavy, které můžou u úlohy nastat. Prostředí PowerShell má dva typy chyb, ukončení a neukončující chyby. Ukončení chyb nastaví stav Runbooku na **neúspěšný** , pokud k nim dojde. Neukončující chyby umožňují, aby skript pokračoval i po jeho výskytu. Příkladem neukončující chyby je použití rutiny `Get-ChildItem` s cestou, která neexistuje. PowerShell uvidí, že cesta neexistuje, vyvolá chybu a pokračuje do další složky. Tato chyba by **nedokázala** nastavit stav Runbooku na failed a mohl by být označený jako **dokončený**. Chcete-li vynutit zastavení sady Runbook při neukončující chybě, můžete použít `-ErrorAction Stop` v rutině.
 
-| Stav | Popis |
+| Status | Popis |
 |:--- |:--- |
 | Dokončeno |Úloha se úspěšně dokončila. |
-| Selhalo |Pro [grafické a powershellové Runbooky pracovních postupů](automation-runbook-types.md)se Runbook nepodařilo zkompilovat. Pro [Runbooky skriptu PowerShell](automation-runbook-types.md)se nepovedlo spustit sadu Runbook nebo úloha měla výjimku. |
+| Neúspěch |Pro [grafické a powershellové Runbooky pracovních postupů](automation-runbook-types.md)se Runbook nepodařilo zkompilovat. Pro [Runbooky skriptu PowerShell](automation-runbook-types.md)se nepovedlo spustit sadu Runbook nebo úloha měla výjimku. |
 | Selhání, čekání na prostředky |Úloha se nezdařila, protože dosáhla limitu [reálného podílu](#fair-share) třikrát a zároveň začíná ze stejného kontrolního bodu nebo od začátku Runbooku. |
 | Ve frontě |Úloha čeká, než budou dostupné prostředky pracovního procesu Automatizace, aby se dala spustit. |
 | Spouštění |Úloha byla přiřazena k pracovnímu procesu a systém ho spouští. |

@@ -22,7 +22,7 @@ Pokud chcete vytvořit odběr Event gridu, odeslat požadavek na operaci předpl
 PUT /subscriptions/{subscription-id}/resourceGroups/{group-name}/providers/{resource-provider}/{resource-type}/{resource-name}/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
 ``` 
 
-Například pro vytvoření odběru událostí účtu úložiště s názvem `examplestorage` ve skupině prostředků s názvem `examplegroup`, použijte následující formát:
+Pokud například chcete vytvořit odběr událostí pro účet úložiště s názvem `examplestorage` ve skupině prostředků s názvem `examplegroup`, použijte následující formát:
 
 ```HTTP
 PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageaccounts/examplestorage/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
@@ -34,24 +34,24 @@ Název odběru události musí být dlouhý 3 až 64 znaků a může obsahovat p
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| destination | object | Objekt, který definuje koncový bod. |
-| filter | object | Volitelné pole k filtrování typů událostí. |
+| cíl | objekt | Objekt, který definuje koncový bod. |
+| Filter | objekt | Volitelné pole k filtrování typů událostí. |
 
 ### <a name="destination-object"></a>cílový objekt
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| endpointType | string | Typ koncového bodu pro předplatné (webhook/HTTP, Centrum událostí nebo fronty). | 
-| endpointUrl | string | Cílová adresa URL pro události v tento odběr události. | 
+| endpointType | řetězec | Typ koncového bodu pro předplatné (webhook/HTTP, Centrum událostí nebo fronty). | 
+| endpointUrl | řetězec | Cílová adresa URL pro události v tento odběr události. | 
 
 ### <a name="filter-object"></a>objekt filtru
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | includedEventTypes | pole | Shoda, když typ události ve zprávě události je přesnou shodu na jednu z těchto názvů typu event. Vyvolá chybu, pokud název události se neshoduje s názvy typů registrované události pro zdroje událostí. Výchozí odpovídá všechny typy událostí. |
-| subjectBeginsWith | string | Shodu předpony filtr na pole Předmět v případě zprávy. Výchozí nebo prázdný řetězec odpovídá všem. | 
-| subjectEndsWith | string | Přípona match filtr na pole Předmět v případě zprávy. Výchozí nebo prázdný řetězec odpovídá všem. |
-| isSubjectCaseSensitive | string | Ovládací prvky malá a velká písmena odpovídající pro filtry. |
+| subjectBeginsWith | řetězec | Shodu předpony filtr na pole Předmět v případě zprávy. Výchozí nebo prázdný řetězec odpovídá všem. | 
+| subjectEndsWith | řetězec | Přípona match filtr na pole Předmět v případě zprávy. Výchozí nebo prázdný řetězec odpovídá všem. |
+| isSubjectCaseSensitive | řetězec | Ovládací prvky malá a velká písmena odpovídající pro filtry. |
 
 
 ## <a name="example-subscription-schema"></a>Příklad schéma předplatného
@@ -77,4 +77,4 @@ Název odběru události musí být dlouhý 3 až 64 znaků a může obsahovat p
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úvod do služby Event Grid najdete v tématu [novinky služby Event Grid?](overview.md)
+* Úvod do Event Grid najdete v tématu [co je Event Grid?](overview.md)

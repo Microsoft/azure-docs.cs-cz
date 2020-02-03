@@ -18,14 +18,14 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76720271"
 ---
-# <a name="heading"></a>Ukázková data v Azure blob storage
+# <a name="heading"></a>Ukázková data ve službě Azure Blob Storage
 
 Tento článek se týká vzorkování data uložená ve službě Azure blob storage pomocí stahování prostřednictvím kódu programu a pak ho pomocí procedury napsané v Pythonu vzorkování.
 
-**Proč ukázková data?**
+**Proč vzorkovat data?**
 Pokud je velké datové sady, které chcete analyzovat, je obvykle vhodné na nižší dat ke snížení velikosti menší, ale reprezentativní a lépe zvládnutelné. Vzorkování usnadňuje porozumění datům, průzkumům a inženýrům funkcí. Jejich rolí v procesu sady Cortana Analytics je umožnit rychlé vytváření prototypů funkcí pro zpracování dat a modelů strojového učení.
 
-Tato úloha vzorkování je krok [vědecké zpracování týmových dat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Tento úkol vzorkování je krok v rámci [vědeckého zpracování týmových dat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 ## <a name="download-and-down-sample-data"></a>Stažení a seznamu ukázkových dat
 1. Stáhněte si data z úložiště objektů BLOB v Azure pomocí Blob service v následujícím ukázkovém kódu Pythonu: 
@@ -53,7 +53,7 @@ Tato úloha vzorkování je krok [vědecké zpracování týmových dat (TDSP)](
         #directly ready from file on disk
         dataframe_blobdata = pd.read_csv(LOCALFILE)
 
-3. Data s využitím dolů sample `numpy`společnosti `random.choice` následujícím způsobem:
+3. Vyvzorkujte data pomocí `numpy``random.choice` následujícím způsobem:
    
         # A 1 percent sample
         sample_ratio = 0.01 
@@ -63,7 +63,7 @@ Tato úloha vzorkování je krok [vědecké zpracování týmových dat (TDSP)](
 
 Nyní můžete pracovat s výše uvedeným datovým rámcem s využitím jedné procentuální ukázky pro další zkoumání a generaci funkcí.
 
-## <a name="heading"></a>Nahrání dat a načíst do Azure Machine Learning
+## <a name="heading"></a>Nahrajte data a přečtěte je Azure Machine Learning
 Vám pomůže následující ukázka kódu dolů – ukázková data a použít ho přímo ve službě Azure Machine Learning:
 
 1. Zápis datového rámce do místního souboru
@@ -92,7 +92,7 @@ Vám pomůže následující ukázka kódu dolů – ukázková data a použít 
         except:            
             print ("Something went wrong with uploading to the blob:"+ BLOBNAME)
 
-3. Číst data z Azure blob pomocí Azure Machine Learning [Import dat](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) jak je znázorněno na následujícím obrázku:
+3. Přečtěte si data z objektu blob Azure pomocí Azure Machine Learning [importujte data](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) , jak je znázorněno na následujícím obrázku:
 
 ![Čtečka objektů blob](./media/sample-data-blob/reader_blob.png)
 

@@ -20,7 +20,7 @@ Správce imagí virtuálních počítačů Azure (Azure image Builder) umožňuj
 > Azure image Builder je momentálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="preview-features"></a>Funkce verze Preview
+## <a name="preview-features"></a>Funkce Preview
 
 Pro verzi Preview jsou tyto funkce podporované:
 
@@ -35,8 +35,8 @@ Pro verzi Preview jsou tyto funkce podporované:
 
 ## <a name="regions"></a>Oblasti
 Služba Azure image Builder bude k dispozici pro verzi Preview v těchto oblastech. Obrázky lze distribuovat mimo tyto oblasti.
-- Východ USA
-- Východ USA 2
+- USA – východ
+- Východní USA 2
 - Středozápadní USA
 - Západní USA
 - Západní USA 2

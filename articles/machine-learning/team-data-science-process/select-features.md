@@ -21,12 +21,12 @@ ms.locfileid: "76716685"
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Výběr funkcí ve vědeckém zpracování týmových dat (TDSP)
 Tento článek vysvětluje účely výběr součástí a poskytuje příklady jejich rolí v procesu rozšíření dat služby machine learning. Tyto příklady jsou vykreslovány vedle z Azure Machine Learning Studio.
 
-Konstrukce a výběr funkcí je jednou ze součástí nástroje zpracování týmových dat vědy (TDSP) uvedených v článku [co je vědecké zpracování týmových dat?](overview.md). Vytváření funkcí a výběru jsou části **vývoj funkcí** krok TDSP.
+Inženýrské a výběr funkcí je jednou z vědeckých procesů týmových dat (TDSP), které jsou uvedené v článku [co je vědecký proces týmových dat?](overview.md). Technologie a výběr funkcí jsou části kroku **vývoj funkcí** TDSP.
 
-* **konstrukce funkcí**: Tento proces pokusí vytvořit další odpovídající funkce z existující funkce nezpracovaných dat a ke zvýšení předpovídat algoritmu učení.
-* **Výběr funkcí**: Tento proces vybere klíče podmnožinu funkcí původní data za účelem snížení dimenzionalitu problém školení.
+* **inženýrské funkce**: Tento proces se pokusí vytvořit další relevantní funkce z existujících nezpracovaných funkcí v datech a zvýšit prediktivní sílu na školicí algoritmus.
+* **Výběr funkcí**: Tento proces vybere podmnožinu klíčových prvků pro původní data v pokusu snížit dimenzionální problém při výuce.
 
-Obvykle **konstruování** se použije první generovat další funkce a pak **výběr funkcí** krok se provádí za účelem odstranění irelevantní, redundantní nebo vysoce korelační funkce.
+Obvykle se pro generování dalších funkcí používá **inženýr funkcí** a pak se provede krok **výběru funkcí** , který eliminuje nepodstatné, redundantní nebo vysoce korelační funkce.
 
 ## <a name="filter-features-from-your-data---feature-selection"></a>Funkce filtru z vašich dat – výběr funkcí
 Výběr funkcí lze použít pro úlohy klasifikace nebo regrese. Cílem je vybrat podmnožinu funkcí z původní datové sady, který snížit jeho rozměry pomocí minimální sada funkcí pro reprezentaci maximální množství variance v datech. Tato podmnožina funkcí se používá pro trénování modelu. Výběr funkce má dva hlavní účely.
@@ -42,7 +42,7 @@ V Azure Machine Learning Studio jsou moduly, které jsou k dispozici pro výběr
 
 ![Funkce výběru modulů](./media/select-features/feature-Selection.png)
 
-Vezměte v úvahu například použití modulu [výběru funkcí založených na filtrech][filter-based-feature-selection] . Pro usnadnění práce pokračujte v používání příklad dolování textu. Předpokládejme, že chcete sestavit regresní model poté, co je vytvořena sada funkcí 256 pomocí modulu [hashování funkcí][feature-hashing] a že proměnná odpovědi je "Sloupec1", která obsahuje knihu hodnocení v rozsahu od 1 do 5. Nastavením "Funkce bodování metoda" na "Pearson korelace", "cílový sloupec" "Sloupec1" a "Počet požadovaných funkcí" na 50. Pak [Výběr funkce založený na filtrech][filter-based-feature-selection] vytvoří datovou sadu obsahující 50 funkcí společně s atributem target "Sloupec1". Následující obrázek znázorňuje tok tento experiment a vstupní parametry:
+Vezměte v úvahu například použití modulu [výběru funkcí založených na filtrech][filter-based-feature-selection] . Pro usnadnění práce pokračujte v používání příklad dolování textu. Předpokládejme, že chcete sestavit regresní model poté, co je vytvořena sada funkcí 256 pomocí modulu [hashování funkcí][feature-hashing] a že proměnná odpovědi je "Sloupe", která obsahuje knihu hodnocení v rozsahu od 1 do 5. Nastavením "Funkce bodování metoda" na "Pearson korelace", "cílový sloupec" "Sloupec1" a "Počet požadovaných funkcí" na 50. Pak [Výběr funkce založený na filtrech][filter-based-feature-selection] vytvoří datovou sadu obsahující 50 funkcí společně s atributem target "Sloupe". Následující obrázek znázorňuje tok tento experiment a vstupní parametry:
 
 ![Vlastnosti modulu výběru funkcí založených na filtrech](./media/select-features/feature-Selection1.png)
 
@@ -56,7 +56,7 @@ Odpovídající skóre vybrané funkce jsou vidět na následujícím obrázku:
 
 ![Skóre pro modul filtrovat na základě výběru funkce](./media/select-features/feature-Selection3.png)
 
-Použitím tohoto modulu [výběru funkcí založeného na filtrech][filter-based-feature-selection] se vybere 50 z 256 funkcí, protože mají nejvíc korelující funkce s cílovou proměnnou "Sloupec1" na základě metody bodování "Pearsonova Correlation".
+Použitím tohoto modulu [výběru funkcí založeného na filtrech][filter-based-feature-selection] se vybere 50 z 256 funkcí, protože mají nejvíc korelující funkce s cílovou proměnnou "Sloupe" na základě metody bodování "Pearsonova Correlation".
 
 ## <a name="conclusion"></a>Závěr
 Vytváření funkcí a výběr funkcí jsou dvě běžně navržené a vybrané funkce zvyšují efektivitu školicího procesu, který se pokouší extrahovat informace o klíčích obsažených v datech. Také zvyšují power tyto modely přesně klasifikovat vstupních dat a více robustní předvídat výstupy, které vás zajímají. Aby studijním výpočetně tractable můžete také kombinovat funkce konstrukce a výběr. Dělá to tak, že rozšíření a pak snížení počtu funkce potřebné pro nakalibrovat pro ni nebo trénování modelu. Funkce vybrané pro trénování modelu matematicky vzato jsou minimální sadu nezávislých proměnných, které popisují vzory v datech a pak úspěšně předpovědět výsledky.

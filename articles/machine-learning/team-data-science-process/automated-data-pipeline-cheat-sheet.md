@@ -19,7 +19,7 @@ ms.lasthandoff: 01/24/2020
 ms.locfileid: "76721859"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Tahák k automatizovanému datovému kanálu pro predikce služby Azure Machine Learning
-**Microsoft Azure Machine Learning automatizované tahák pro datový kanál** si projdete tuto technologii můžete použít k přesunu dat pro Machine Learning pomáhá webová služba, kde mohou být upraveny prediktivní analýzy model.
+**Tahák list s automatickým datovým kanálem Microsoft Azure Machine Learning** vám pomůže procházet technologii, kterou můžete použít k získání dat do Machine Learning webové služby, kde ji můžete vyhodnotit pomocí modelu prediktivní analýzy.
 
 V závislosti na tom, jestli jsou vaše data místní, v cloudu nebo streamování v reálném čase, jsou k dispozici různé mechanismy pro přesun dat do koncového bodu webové služby pro bodování.
 Tento tahák vás provede rozhodnutí, která je potřeba udělat, a nabízí odkazy na články, které pomáhají při vývoji řešení.
@@ -27,7 +27,7 @@ Tento tahák vás provede rozhodnutí, která je potřeba udělat, a nabízí od
 ## <a name="download-the-machine-learning-automated-data-pipeline-cheat-sheet"></a>Stáhněte si tahák Machine Learning automatizovaných datových kanálů
 Po stažení tahák můžete ho vytisknout ve velikosti tabloid (11 × 17 palců).
 
-Stáhněte si tahák tady:  **[Microsoft Azure Machine Learning automatizované tahák pro datový kanál](https://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
+Stáhněte si tahák list sem:  **[Microsoft Azure Machine Learning automaticky tahák list datového kanálu](https://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf) .**
 
 ![Přehled možností Microsoft Azure Machine Learning Studio (Classic)][op-cheat-sheet]
 
@@ -35,7 +35,7 @@ Stáhněte si tahák tady:  **[Microsoft Azure Machine Learning automatizované 
 
 
 ## <a name="more-help-with-machine-learning-studio"></a>Další nápověda k nástroji Machine Learning Studio
-* Přehled služby Microsoft Azure Machine Learning, naleznete v tématu [Úvod do strojového učení v Microsoft Azure](../studio/what-is-machine-learning.md).
-* Vysvětlení toho, jak nasadit hodnoticí webové služby najdete v tématu [nasazení webové služby Azure Machine Learning](../studio/deploy-a-machine-learning-web-service.md).
-* Informace o tom, jak využívat hodnoticí webové služby, najdete v článku [jak využívat Azure Machine Learning webové služby](../studio/consume-web-services.md).
+* Přehled Microsoft Azure Machine Learning najdete v tématu [Úvod do strojového učení v Microsoft Azure](../studio/what-is-machine-learning.md).
+* Vysvětlení, jak nasadit webovou službu bodování, najdete v tématu [nasazení webové](../studio/deploy-a-machine-learning-web-service.md)služby vyhodnocování Azure Machine Learning.
+* Diskuzi o tom, jak používat webovou službu bodování, najdete v tématu [How to spotřebovává Azure Machine Learning Web Service](../studio/consume-web-services.md).
 

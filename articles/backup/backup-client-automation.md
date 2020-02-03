@@ -14,7 +14,7 @@ ms.locfileid: "76710858"
 
 V tomto článku se dozvíte, jak pomocí PowerShellu nastavit Azure Backup pro Windows Server nebo klienta Windows a spravovat zálohování a obnovení.
 
-## <a name="install-azure-powershell"></a>Instalace Azure PowerShellu
+## <a name="install-azure-powershell"></a>Instalace prostředí Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

@@ -30,7 +30,7 @@ Vazby SendGrid jsou k dispozici v balíčku NuGet [Microsoft. Azure. WebJobs. Ex
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -96,7 +96,7 @@ Nastavením vlastnosti `ApiKey` atributu můžete vynechat, pokud máte klíč r
 
 Následující příklad ukazuje výstupní vazbu SendGrid v souboru *Function. JSON* a [ C# funkci skriptu](functions-reference-csharp.md) , která používá vazbu.
 
-Zde je vazba dat v *function.json* souboru:
+Tady jsou data vazby v souboru *Function. JSON* :
 
 ```json 
 {
@@ -120,7 +120,7 @@ Zde je vazba dat v *function.json* souboru:
 }
 ```
 
-[Konfigurace](#configuration) bodu vysvětluje tyto vlastnosti.
+Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#configuration) .
 
 Tady je kód skriptu jazyka C#:
 
@@ -155,7 +155,7 @@ public class Message
 
 Následující příklad ukazuje výstupní vazbu SendGrid v souboru *Function. JSON* a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu.
 
-Zde je vazba dat v *function.json* souboru:
+Tady jsou data vazby v souboru *Function. JSON* :
 
 ```json 
 {
@@ -173,7 +173,7 @@ Zde je vazba dat v *function.json* souboru:
 }
 ```
 
-[Konfigurace](#configuration) bodu vysvětluje tyto vlastnosti.
+Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#configuration) .
 
 Tady je kód jazyka JavaScript:
 
@@ -310,7 +310,7 @@ public class HttpTriggerSendGrid {
 
 V [ C# knihovnách tříd](functions-dotnet-class-library.md)použijte atribut [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) .
 
-Informace o vlastnostech atributů, které můžete konfigurovat, najdete v tématu [Konfigurace](#configuration). Tady je `SendGrid` příklad atributů v podpisu metody:
+Informace o vlastnostech atributů, které můžete konfigurovat, najdete v tématu [Konfigurace](#configuration). Tady je příklad atributu `SendGrid` v signatuře metody:
 
 ```csharp
 [FunctionName("SendEmail")]
@@ -346,15 +346,15 @@ Python nepodporuje atributy.
 
 V následující tabulce jsou uvedeny vlastnosti konfigurace vazby, které jsou k dispozici v souboru *Function. JSON* a atribut `SendGrid`/anotace.
 
-| *Function. JSON* – vlastnost | Atribut nebo vlastnost anotace | Popis | Volitelné |
+| *Function. JSON* – vlastnost | Atribut nebo vlastnost anotace | Popis | Nepovinné |
 |--------------------------|-------------------------------|-------------|----------|
-| type |–| Musí být nastaveno na `sendGrid`.| Ne |
-| směr |–| Musí být nastaveno na `out`.| Ne |
-| jméno |–| Název proměnné použitý v kódu funkce pro text žádosti nebo žádosti. Tato hodnota je `$return`, pokud je k dispozici pouze jedna návratová hodnota. | Ne |
+| type |neuvedeno| musí být nastavené na `sendGrid`.| Ne |
+| směr |neuvedeno| musí být nastavené na `out`.| Ne |
+| jméno |neuvedeno| Název proměnné použitý v kódu funkce pro text žádosti nebo žádosti. Tato hodnota je `$return`, pokud je k dispozici pouze jedna návratová hodnota. | Ne |
 | apiKey | ApiKey | Název nastavení aplikace, které obsahuje klíč rozhraní API. Pokud není nastavená, výchozí název nastavení aplikace je *AzureWebJobsSendGridApiKey*.| Ne |
-| na| až | E-mailová adresa příjemce | Ano |
-| od| Od | E-mailová adresa odesílatele |  Ano |
-| subject| Předmět | Předmět e-mailu. | Ano |
+| na| Akce | E-mailová adresa příjemce | Ano |
+| from| Z | E-mailová adresa odesílatele |  Ano |
+| subject| Subjekt | Předmět daného e-mailu. | Ano |
 | text| Text | Obsah e-mailu | Ano |
 
 Volitelné vlastnosti mohou mít ve vazbě definovány výchozí hodnoty a buď přidány nebo přepsány programově.
@@ -368,7 +368,7 @@ Volitelné vlastnosti mohou mít ve vazbě definovány výchozí hodnoty a buď 
 Tato část popisuje globální nastavení konfigurace, která jsou k dispozici pro tuto vazbu ve verzích 2. x a vyšší. Ukázkový soubor host. JSON níže obsahuje pouze nastavení verze 2. x + pro tuto vazbu. Další informace o globálních nastaveních konfigurace ve verzích 2. x a novějších naleznete v tématu [reference Host. JSON pro Azure Functions](functions-host-json.md).
 
 > [!NOTE]
-> Pro odkaz host.json ve funkcích 1.x, najdete v článku [referenční materiály k host.json pro Azure Functions 1.x](functions-host-json-v1.md).
+> Odkaz na Host. JSON ve funkcích 1. x najdete v [referenčních informacích k host. JSON pro Azure Functions 1. x](functions-host-json-v1.md).
 
 ```json
 {
@@ -383,10 +383,10 @@ Tato část popisuje globální nastavení konfigurace, která jsou k dispozici 
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|od|–|E-mailová adresa odesílatele napříč všemi funkcemi.| 
+|from|neuvedeno|E-mailová adresa odesílatele napříč všemi funkcemi.| 
 
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Další informace o aktivačních událostech Azure functions a vazby](functions-triggers-bindings.md)
+> [Další informace o aktivačních událostech a vazbách Azure Functions](functions-triggers-bindings.md)

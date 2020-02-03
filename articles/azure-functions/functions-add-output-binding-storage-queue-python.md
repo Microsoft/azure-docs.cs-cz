@@ -14,7 +14,7 @@ ms.locfileid: "76715364"
 
 V tomto článku integrujete frontu Azure Storage pomocí funkce a účtu úložiště, který jste vytvořili v tématu [Vytvoření funkce Pythonu aktivované protokolem HTTP](functions-create-first-function-python.md). Tuto integraci dosáhnete pomocí *výstupní vazby* , která zapisuje data z požadavku HTTP do zprávy ve frontě. Po dokončení tohoto článku se neúčtují žádné další náklady nad několik centů za USD předchozího rychlého startu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Dokončete rychlé zprovoznění a [vytvořte funkci Pythonu, která byla aktivována protokolem HTTP](functions-create-first-function-python.md). Pokud jste již vyčistili prostředky na konci tohoto článku, Projděte kroky znovu pro opětovné vytvoření aplikace Functions v Azure, ale ponechte prostředky na místě.
 
@@ -251,7 +251,7 @@ Teď, když jste místně otestovali funkci a ověřili, že zapsala zprávu do 
     
 1. Stejně jako v předchozím rychlém startu použijte k otestování znovu nasazené funkce prohlížeč nebo KUDRLINKOU.
 
-    # <a name="browsertabbrowser"></a>[Prohlížeč](#tab/browser)
+    # <a name="browsertabbrowser"></a>[Prohlížeee](#tab/browser)
     
     Zkopírujte úplnou **adresu URL pro vyvolání** zobrazenou ve výstupu příkazu publikovat do adresního řádku prohlížeče a přidejte parametr dotazu `&name=Azure`. V prohlížeči by se měl zobrazit podobný výstup jako při spuštění funkce místně.
 

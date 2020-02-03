@@ -33,7 +33,7 @@ GZRS a RA-GZRS jsou aktuálně k dispozici pro verzi Preview v následujících 
 - Evropa – sever
 - Evropa – západ
 - Japonsko – východ
-- Spojené království – jih
+- Velká Británie – jih
 - USA – východ
 - USA – východ 2
 - USA – střed
@@ -144,20 +144,20 @@ K vyžádání migrace za provozu použijte [Azure Portal](https://ms.portal.azu
 
 1. Vyberte **novou žádost o podporu**.
 2. Dokončete **základy** na základě informací o účtu. V části **Služba** vyberte **Správa účtu úložiště** a zadejte účet, který se má migrovat.
-3. Vyberte **Next** (Další).
+3. Vyberte **Další**.
 4. V části **problém** zadejte následující hodnoty:
     - **Závažnost**: ponechte výchozí hodnotu tak, jak je.
     - **Typ problému**: vyberte **migrace dat**.
     - **Kategorie**: vyberte **MIGROVAT do (RA-) GZRS v rámci oblasti**.
     - **Title**: zadejte popisný název, například **(RA-) GZRS Account Migration**.
     - **Podrobnosti**: v poli **podrobností** zadejte další podrobnosti, například "Chci migrovat na GZRS z [LRS, GRS] v \_ oblasti \_." nebo "Chci migrovat na RA-GZRS z [LRS, RA-GRS] v oblasti \_\_."
-5. Vyberte **Next** (Další).
+5. Vyberte **Další**.
 6. Ověřte, že kontaktní informace jsou správné v okně **kontaktní údaje** .
 7. Vyberte **Create** (Vytvořit).
 
 Zástupce podpory vás bude kontaktovat, abyste mohli poskytnout pomoc.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 - [Účet replikace Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 - [Místně redundantní úložiště (LRS): redundance dat s nízkými náklady pro Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)

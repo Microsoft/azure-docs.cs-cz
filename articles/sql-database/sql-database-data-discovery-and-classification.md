@@ -76,7 +76,7 @@ Po definování zásad pro všechny klienty můžete pokračovat v klasifikaci j
 
 ## <a name="classify-your-sql-database"></a>Klasifikace SQL Database
 
-1. Přejděte na [portál Azure](https://portal.azure.com).
+1. Přejděte na [Azure Portal](https://portal.azure.com).
 
 2. V záhlaví zabezpečení v podokně Azure SQL Database přejděte na **Rozšířené zabezpečení dat** . Kliknutím povolíte rozšířené zabezpečení dat a potom kliknete na kartu **klasifikace & zjišťování dat** .
 
@@ -88,7 +88,7 @@ Po definování zásad pro všechny klienty můžete pokračovat v klasifikaci j
 
 4. Chcete-li stáhnout sestavu ve formátu aplikace Excel, klikněte v horní nabídce okna na možnost **exportovat** .
 
-   ![Exportovat do aplikace Excel](./media/sql-data-discovery-and-classification/3_data_classification_export_report.png)
+   ![Export do aplikace Excel](./media/sql-data-discovery-and-classification/3_data_classification_export_report.png)
 
 5. <a id="step-5"></a>Chcete-li začít klasifikovat vaše data, klikněte na **kartu klasifikace** v horní části okna.
 
@@ -120,7 +120,7 @@ Po definování zásad pro všechny klienty můžete pokračovat v klasifikaci j
 
 8. Pokud chcete dokončit klasifikaci a trvale označit (označit) sloupce databáze s novými metadaty klasifikace, klikněte v horní nabídce okna na **Uložit** .
 
-   ![Uložit](./media/sql-data-discovery-and-classification/10_data_classification_save.png)
+   ![Uložení](./media/sql-data-discovery-and-classification/10_data_classification_save.png)
 
 ## <a id="subheading-3"></a>Auditování přístupu k citlivým datům
 

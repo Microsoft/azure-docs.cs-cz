@@ -188,7 +188,7 @@ Ne, Site Recovery nepodporuje replikaci do Azure Storage ve virtuálních sítí
 
 ## <a name="component-upgrade"></a>Upgrade součásti
 
-### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>Moje verze agenta služeb mobility nebo konfiguračního serveru je stará a můj upgrade se nezdařil. Co mám dělat?
+### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>Moje verze agenta služeb mobility nebo konfiguračního serveru je stará a můj upgrade se nezdařil. Co mám udělat?
 
 Site Recovery se řídí modelem podpory N-4. [Přečtěte si další informace](https://aka.ms/asr_support_statement) o tom, jak upgradovat z velmi starých verzí.
 

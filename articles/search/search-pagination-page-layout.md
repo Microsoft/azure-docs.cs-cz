@@ -53,7 +53,7 @@ Výsledky stránkování vyžadují `$top` i `$skip`, kde `$top` určuje počet 
 
     GET /indexes/online-catalog/docs?search=*&$top=15&$skip=30&$count=true
 
-## <a name="layout"></a>Layout
+## <a name="layout"></a>Rozložení
 
 Na stránce výsledků hledání možná budete chtít zobrazit miniaturu, podmnožinu polí a odkaz na plnou stránku produktu.
 

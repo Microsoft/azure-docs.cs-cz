@@ -318,8 +318,8 @@ Výběrem této možnosti efektivně vynutíte opětovnou synchronizaci všech u
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Automatizace uživatele zřizování a jeho rušení pro aplikace SaaS](user-provisioning.md)
+- [Automatizace zřizování a rušení zřizování uživatelů pro aplikace SaaS](user-provisioning.md)
 - [Zápis výrazů pro mapování atributů](functions-for-customizing-application-data.md)
 - [Filtry oborů pro zřizování uživatelů](define-conditional-rules-for-provisioning-user-accounts.md)
 - [Zapnutí automatického zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí SCIM](use-scim-to-provision-users-and-groups.md)
-- [Seznam kurzů o integraci aplikací SaaS](../saas-apps/tutorial-list.md)
+- [Seznam kurzů, jak integrovat aplikace SaaS](../saas-apps/tutorial-list.md)

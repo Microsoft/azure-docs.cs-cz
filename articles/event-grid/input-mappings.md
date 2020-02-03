@@ -17,7 +17,7 @@ ms.locfileid: "76721655"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Mapování vlastních polí na schéma Event Gridu
 
-Pokud vaše data události neodpovídá očekávané [schéma služby Event Grid](event-schema.md), stále můžete služby Event Grid směrování události odběratelům. Tento článek popisuje způsob mapování schématu do schématu služby Event Grid.
+Pokud vaše data události neodpovídají očekávanému [schématu Event Grid](event-schema.md), můžete i nadále používat Event Grid ke směrování událostí odběratelům. Tento článek popisuje způsob mapování schématu do schématu služby Event Grid.
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
@@ -45,11 +45,11 @@ I když tento formát neodpovídá požadovanému schématu, služby Event Grid 
 
 Při vytváření vlastního tématu, určete, jak mapovat pole z původní události mřížka schématu událostí. Existují tři hodnoty, které můžete použít k přizpůsobení mapování:
 
-* **Vstupní schéma** hodnota určuje typ schématu. Dostupné možnosti jsou schématu CloudEvents, vlastní událost schématu nebo schématu služby Event Grid. Výchozí hodnota je schéma služby Event Grid. Při vytváření vlastních mapování mezi schéma a schéma tabulky událostí použijte schéma vlastních událostí. Když události ve schématu CloudEvents, použití schématu Cloudevents.
+* Hodnota **vstupního schématu** určuje typ schématu. Dostupné možnosti jsou schématu CloudEvents, vlastní událost schématu nebo schématu služby Event Grid. Výchozí hodnota je schéma služby Event Grid. Při vytváření vlastních mapování mezi schéma a schéma tabulky událostí použijte schéma vlastních událostí. Když události ve schématu CloudEvents, použití schématu Cloudevents.
 
-* **Mapování výchozí hodnoty** vlastnost určuje výchozí hodnoty pro pole ve schématu služby Event Grid. Můžete nastavit výchozí hodnoty pro `subject`, `eventtype`, a `dataversion`. Obvykle použijete tento parametr, když vaše vlastní schéma neobsahuje pole, které odpovídá jedné z těchto tří polí. Například můžete zadat tuto verzi dat je vždycky nastavený na **1.0**.
+* Vlastnost **mapování výchozích hodnot** určuje výchozí hodnoty pro pole ve schématu Event Grid. Můžete nastavit výchozí hodnoty pro `subject`, `eventtype`a `dataversion`. Obvykle použijete tento parametr, když vaše vlastní schéma neobsahuje pole, které odpovídá jedné z těchto tří polí. Například můžete určit, že verze dat je vždy nastavená na **1,0**.
 
-* **Mapování polí produktu** hodnota mapuje pole z vašeho schématu do mřížky schématu událostí. Zadejte hodnoty do dvojic klíč/hodnota oddělených mezerami. Název klíče použijte název pole event grid. Pro hodnotu použijte název vlastního pole. Můžete použít názvy klíčů pro `id`, `topic`, `eventtime`, `subject`, `eventtype`, a `dataversion`.
+* Hodnota **mapování polí** mapuje pole ze schématu do schématu Event Grid. Zadejte hodnoty do dvojic klíč/hodnota oddělených mezerami. Název klíče použijte název pole event grid. Pro hodnotu použijte název vlastního pole. Můžete použít názvy klíčů pro `id`, `topic`, `eventtime`, `subject`, `eventtype`a `dataversion`.
 
 K vytvoření vlastního tématu pomocí Azure CLI, použijte:
 
@@ -135,7 +135,7 @@ New-AzureRmEventGridSubscription `
 
 ## <a name="publish-event-to-topic"></a>Publikování událostí do tématu
 
-Teď jste připraveni k odeslání události do vlastního tématu a zobrazit výsledek mapování. Následující skript pro událost v příspěvku [příkladu schématu](#original-event-schema):
+Teď jste připraveni k odeslání události do vlastního tématu a zobrazit výsledek mapování. Následující skript pro publikování události v [ukázkovém schématu](#original-event-schema):
 
 Pokud používáte Azure CLI, použijte:
 
@@ -189,7 +189,7 @@ První předplatné používá event grid schématu. Formát doručené událost
 }
 ```
 
-Tato pole obsahují mapování z vlastního tématu. **myEventTypeField** je namapována na **EventType**. Výchozí hodnoty pro **DataVersion** a **subjektu** se používají. **Data** obsahuje původní pole schématu událostí.
+Tato pole obsahují mapování z vlastního tématu. **myEventTypeField** je mapován na **typ EventType**. Použijí se výchozí hodnoty **dataversion** a **Subject** . **Datový** objekt obsahuje pole původních schémat událostí.
 
 Druhého předplatného používá schéma vstupních událostí. Formát doručené událostí je:
 
@@ -207,6 +207,6 @@ Všimněte si, že byly dodány původního pole.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o doručování událostí a opakovaných pokusů [doručování zpráv služby Event Grid a zkuste to znovu](delivery-and-retry.md).
-* Úvod do Event Gridu najdete v článku [Informace o službě Event Grid](overview.md).
-* Pokud chcete rychle začít používat služby Event Grid, přečtěte si téma [vytvoření a směrování vlastních událostí pomocí služby Azure Event Grid](custom-event-quickstart.md).
+* Pro informace o doručení a opakování události [Event Grid doručování zpráv a akci opakujte](delivery-and-retry.md).
+* Úvod do Event Gridu najdete v článku o [Event Gridu](overview.md).
+* Pokud chcete rychle začít používat Event Grid, přečtěte si téma [Vytvoření a směrování vlastních událostí pomocí Azure Event Grid](custom-event-quickstart.md).

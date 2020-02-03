@@ -333,7 +333,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-Kompletní příklad naleznete v tématu [Trigger – C# příklad](#trigger).
+Úplný příklad najdete v tématu [Trigger – C# příklad](#trigger).
 
 # <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
 
@@ -355,18 +355,18 @@ Z [běhové knihovny Functions](https://docs.microsoft.com/java/api/overview/azu
 
 ## <a name="trigger---configuration"></a>Aktivační události – konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru a `EventHubTrigger` atribut.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a atributu `EventHubTrigger`.
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type** | – | Musí být nastaveno na `eventHubTrigger`. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal.|
-|**direction** | – | Musí být nastaveno na `in`. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal. |
-|**name** | – | Název proměnné, která představuje položku události v kódu funkce. |
-|**Cesta** |**EventHubName** | Pouze funkce 1. x. Název centra událostí Pokud je v připojovacím řetězci přítomen i název centra událostí, tato hodnota tuto vlastnost Přepisuje za běhu. |
+|**type** | neuvedeno | musí být nastavené na `eventHubTrigger`. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal.|
+|**direction** | neuvedeno | musí být nastavené na `in`. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal. |
+|**Jméno** | neuvedeno | Název proměnné, která představuje položku události v kódu funkce. |
+|**dílčí** |**EventHubName** | Pouze funkce 1. x. Název centra událostí Pokud je v připojovacím řetězci přítomen i název centra událostí, tato hodnota tuto vlastnost Přepisuje za běhu. |
 |**eventHubName** |**EventHubName** | Functions 2. x a vyšší. Název centra událostí Pokud je v připojovacím řetězci přítomen i název centra událostí, tato hodnota tuto vlastnost Přepisuje za běhu. Dá se odkazovat prostřednictvím nastavení aplikace% eventHubName%. |
-|**consumerGroup** |**ConsumerGroup** | Volitelná vlastnost, která nastaví [skupinu uživatelů](../articles/event-hubs/event-hubs-features.md#event-consumers) použitou k přihlášení k odběru událostí v centru. Je-li tento parametr vynechán, je použita skupina příjemců `$Default`. |
-|**kardinalita** | – | Pro JavaScript. Pokud chcete povolit dávkování, nastavte na `many`.  Pokud tento parametr vynecháte nebo nastavíte na `one`, do funkce se předává jedna zpráva. |
-|**připojení** |**připojení** | Název nastavení aplikace, které obsahuje připojovací řetězec k oboru názvů centra událostí. Zkopírujte tento připojovací řetězec kliknutím na tlačítko **informace o připojení** pro [obor názvů](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), nikoli v samotném centru událostí. Tento připojovací řetězec musí mít aspoň oprávnění ke čtení pro aktivaci triggeru.|
+|**Klientská organizace** |**Klientská organizace** | Volitelná vlastnost, která nastaví [skupinu uživatelů](../articles/event-hubs/event-hubs-features.md#event-consumers) použitou k přihlášení k odběru událostí v centru. Je-li tento parametr vynechán, je použita skupina příjemců `$Default`. |
+|**kardinalita** | neuvedeno | Pro JavaScript. Pokud chcete povolit dávkování, nastavte na `many`.  Pokud tento parametr vynecháte nebo nastavíte na `one`, do funkce se předává jedna zpráva. |
+|**vázán** |**Vázán** | Název nastavení aplikace, které obsahuje připojovací řetězec k oboru názvů centra událostí. Zkopírujte tento připojovací řetězec kliknutím na tlačítko **informace o připojení** pro [obor názvů](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), nikoli v samotném centru událostí. Tento připojovací řetězec musí mít aspoň oprávnění ke čtení pro aktivaci triggeru.|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
@@ -384,7 +384,7 @@ Aktivační událost Event Hubs poskytuje několik [vlastností metadat](../arti
 |`SequenceNumber`|`Int64`|Číslo logické sekvence události|
 |`SystemProperties`|`IDictionary<String,Object>`|Vlastnosti systému, včetně dat události.|
 
-Zobrazit [příklady kódu](#trigger) , které používají tyto vlastnosti dříve v tomto článku.
+Podívejte se na [Příklady kódu](#trigger) , které používají tyto vlastnosti dříve v tomto článku.
 
 ## <a name="trigger---hostjson-properties"></a>Aktivační události – vlastnosti host.json
 
@@ -600,7 +600,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 }
 ```
 
-Kompletní příklad naleznete v tématu [výstup – příklad v jazyce C#](#output).
+Úplný příklad naleznete v tématu [Output- C# example](#output).
 
 # <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
 
@@ -622,16 +622,16 @@ V [knihovně modulu runtime Functions jazyka Java](https://docs.microsoft.com/ja
 
 ## <a name="output---configuration"></a>Výstup – konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru a `EventHub` atribut.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a atributu `EventHub`.
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type** | – | Musí být nastavené na eventHub. |
-|**direction** | – | Musí být nastavena na "out". Tento parametr je nastaven automaticky při vytváření vazby v Azure Portal. |
-|**name** | – | Název proměnné použitý v kódu funkce, který představuje událost. |
-|**Cesta** |**EventHubName** | Pouze funkce 1. x. Název centra událostí Pokud je v připojovacím řetězci přítomen i název centra událostí, tato hodnota tuto vlastnost Přepisuje za běhu. |
+|**type** | neuvedeno | Musí být nastavené na eventHub. |
+|**direction** | neuvedeno | Musí být nastavena na "out". Tento parametr je nastaven automaticky při vytváření vazby v Azure Portal. |
+|**Jméno** | neuvedeno | Název proměnné použitý v kódu funkce, který představuje událost. |
+|**dílčí** |**EventHubName** | Pouze funkce 1. x. Název centra událostí Pokud je v připojovacím řetězci přítomen i název centra událostí, tato hodnota tuto vlastnost Přepisuje za běhu. |
 |**eventHubName** |**EventHubName** | Functions 2. x a vyšší. Název centra událostí Pokud je v připojovacím řetězci přítomen i název centra událostí, tato hodnota tuto vlastnost Přepisuje za běhu. |
-|**připojení** |**připojení** | Název nastavení aplikace, které obsahuje připojovací řetězec k oboru názvů centra událostí. Zkopírujte tento připojovací řetězec kliknutím na tlačítko **informace o připojení** pro *obor názvů*, nikoli v samotném centru událostí. Tento připojovací řetězec musí mít oprávnění Odeslat pro odeslání zprávy do datového proudu událostí.|
+|**vázán** |**Vázán** | Název nastavení aplikace, které obsahuje připojovací řetězec k oboru názvů centra událostí. Zkopírujte tento připojovací řetězec kliknutím na tlačítko **informace o připojení** pro *obor názvů*, nikoli v samotném centru událostí. Tento připojovací řetězec musí mít oprávnění Odeslat pro odeslání zprávy do datového proudu událostí.|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
@@ -680,7 +680,7 @@ K dispozici jsou dvě možnosti pro výstup zprávy centra událostí z funkce p
 Tato část popisuje globální nastavení konfigurace, která jsou k dispozici pro tuto vazbu ve verzích 2. x a vyšší. Ukázkový soubor host. JSON níže obsahuje pouze nastavení verze 2. x + pro tuto vazbu. Další informace o globálních nastaveních konfigurace ve verzích 2. x a novějších naleznete v tématu [reference Host. JSON pro Azure Functions](../articles/azure-functions/functions-host-json.md).
 
 > [!NOTE]
-> Pro odkaz host.json ve funkcích 1.x, najdete v článku [referenční materiály k host.json pro Azure Functions 1.x](../articles/azure-functions/functions-host-json-v1.md).
+> Odkaz na Host. JSON ve funkcích 1. x najdete v [referenčních informacích k host. JSON pro Azure Functions 1. x](../articles/azure-functions/functions-host-json-v1.md).
 
 ```json
 {
@@ -701,4 +701,4 @@ Tato část popisuje globální nastavení konfigurace, která jsou k dispozici 
 |---------|---------|---------|
 |`maxBatchSize`|10|Maximální počet událostí přijatých pro jednu smyčku příjmu.|
 |`prefetchCount`|300|Výchozí počet předběžného načtení, který používá základní `EventProcessorHost`.|
-|`batchCheckpointFrequency`|1\. místo|Počet dávek události, které mají být zpracovány před vytvořením kontrolního bodu centra EventHub.|
+|`batchCheckpointFrequency`|1|Počet dávek události, které mají být zpracovány před vytvořením kontrolního bodu centra EventHub.|

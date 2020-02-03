@@ -20,11 +20,11 @@ ms.locfileid: "76720295"
 Tato stránka popisuje běžné problémy s vstupní připojení a postupy jejich řešení.
 
 ## <a name="input-events-not-received-by-job"></a>Nebyl přijat úlohou vstupní události 
-1.  Test připojení. Ověření připojení ke vstupům a výstupům pomocí **Test připojení** tlačítko pro každý vstupní a výstupní.
+1.  Test připojení. Ověřte připojení ke vstupům a výstupům pomocí tlačítka **Testovat připojení** pro jednotlivé vstupy a výstupy.
 
 2.  Zkontrolujte vstupní data.
 
-    1. Chcete-li ověřit, že se výstupní data přenášejí do centra událostí, použijte [Service Bus Exploreru](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a) pro připojení k Azure Eventhub (Pokud je vstup Centrum událostí se používá).
+    1. Pokud chcete ověřit, jestli se vstupní data přenášejí do centra událostí, připojte se k centru událostí Azure pomocí [Service Bus Exploreru](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a) (Pokud se používá vstup centra událostí).
         
     1. Pro jednotlivé vstupy použijte tlačítko [**ukázková data**](stream-analytics-sample-data-input.md) . Stáhněte si vstupní ukázková data.
         
@@ -35,7 +35,7 @@ Tato stránka popisuje běžné problémy s vstupní připojení a postupy jejic
 ## <a name="malformed-input-events-causes-deserialization-errors"></a>Poškozená vstupní událost způsobuje chyby deserializace 
 Deserializace potíže jsou způsobeny, když vstupní datový proud vaší úlohy Stream Analytics obsahuje špatně vytvořené zprávy. Například může být způsobeno poškozená zpráva. chybí pravá závorka. nebo závorka v objektu JSON nebo nesprávný časové razítko formátu v poli Doba. 
  
-Když úloha Stream Analytics přijímá chybnou zprávu z vstup, zahodí a upozorní uživatele s upozorněním. Symbol upozornění se zobrazí na **vstupy** dlaždici vaší úlohy Stream Analytics. Tento znak upozornění existuje za předpokladu, že je úloha ve spuštěném stavu:
+Když úloha Stream Analytics přijímá chybnou zprávu z vstup, zahodí a upozorní uživatele s upozorněním. Na dlaždici **vstupy** Stream Analytics úlohy se zobrazí výstražný symbol. Tento znak upozornění existuje za předpokladu, že je úloha ve spuštěném stavu:
 
 ![Dlaždici vstupy Azure Stream Analytics](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
@@ -53,11 +53,11 @@ Můžete využít následující kroky a analyzovat události vstupu podrobně l
 
    ![Stream Analytics varovné zprávy s posunem](media/stream-analytics-malformed-events/warning-message-with-offset.png)
    
-3. Vyhledat potřebná data JSON s nesprávný formát, spusťte CheckMalformedEvents.cs kód, který je k dispozici v [úložiště ukázek Githubu](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH). Tento kód čte ID oddílu, posun a vytiskne data, která se nachází v tento posun. 
+3. Pokud chcete najít data JSON s nesprávným formátem, spusťte kód CheckMalformedEvents.cs dostupný v [úložišti ukázek GitHubu](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH). Tento kód čte ID oddílu, posun a vytiskne data, která se nachází v tento posun. 
 
 4. Jakmile načtete data, můžete analyzovat a opravit formát serializace.
 
-5. Můžete také [číst události ze služby IoT Hub pomocí Průzkumníka Service Bus](https://code.msdn.microsoft.com/How-to-read-events-from-an-1641eb1b).
+5. [Události můžete z IoT Hub také číst pomocí Service Bus Exploreru](https://code.msdn.microsoft.com/How-to-read-events-from-an-1641eb1b).
 
 ## <a name="job-exceeds-maximum-event-hub-receivers"></a>Úloha překračuje maximální přijímače centra událostí
 Doporučený postup pro použití služby Event Hubs je použít víc skupin konzumentů zajistit škálovatelnost úloh. Počet čtenářů v rámci úlohy Stream Analytics pro určitý vstup ovlivňuje počet čtenářů v skupinu jednoho příjemce. Přesný počet přijímačů je založen na podrobnosti interní implementace pro horizontální navýšení kapacity topologie logiku a není dostupná externě. Při spuštění úlohy nebo během upgradu projektu můžete změnit počet čtenářů.
@@ -74,13 +74,13 @@ Chcete-li přidat novou skupinu uživatelů ve vaší instanci služby Event Hub
 
 2. Vyhledejte vaši službu Event Hubs.
 
-3. Vyberte **Event Hubs** pod **entity** záhlaví.
+3. V záhlaví **entity** vyberte **Event Hubs** .
 
 4. Vyberte Centrum událostí podle názvu.
 
-5. Na **Instance služby Event Hubs** stránce v části **entity** záhlaví, vyberte **skupiny příjemců**. Skupina uživatelů s názvem **$Default** je uvedena.
+5. Na stránce **Event Hubs instance** pod nadpisem **entity** vyberte **skupiny uživatelů**. V seznamu je uvedena skupina uživatelů s názvem **$Default** .
 
-6. Vyberte **+ skupina uživatelů** se přidat novou skupinu uživatelů. 
+6. Vyberte **+ Skupina uživatelů** a přidejte novou skupinu příjemců. 
 
    ![Přidat skupinu uživatelů ve službě Event Hubs](media/stream-analytics-event-hub-consumer-groups/new-eh-consumer-group.png)
 
@@ -93,9 +93,9 @@ Pokud streamování syntaxi dotazu odkazuje na stejný vstupní prostředek cent
 
 Scénáře, ve kterých počet čtenářů na oddíl překračuje limit služby Event Hubs pěti patří:
 
-* Více příkazů SELECT: Pokud používáte více příkazů SELECT, které odkazují na **stejné** vstup Centrum událostí, každý příkaz SELECT způsobí, že nového příjemce, který se má vytvořit.
-* SJEDNOCENÍ: Při použití SJEDNOCENÍ je možné mít více vstupů, které odkazují na **stejné** skupiny centra a příjemce událostí.
-* SPOJENÍ sama: Když použijete operaci JOIN SAMOOBSLUŽNÉHO, je možné odkazovat **stejné** centra událostí více než jednou.
+* Vícenásobné příkazy SELECT: Pokud použijete více příkazů SELECT, které odkazují na **stejný** vstup centra událostí, každý příkaz SELECT způsobí vytvoření nového příjemce.
+* SJEDNOCENí: když použijete SJEDNOCENí, je možné mít několik vstupů, které odkazují na **stejné** centrum událostí a skupinu uživatelů.
+* Připojovat se k sobě: když použijete operaci připojovat do sebe, je možné, že se na **stejné** centrum událostí odkazuje víckrát.
 
 Následující osvědčené postupy může pomoci zmírnit scénáře, ve kterých počet čtenářů na oddíl překračuje limit služby Event Hubs pět.
 
@@ -137,13 +137,13 @@ FROM data
 
 Pro dotazy, které jsou připojené tři nebo více vstupů do stejné skupiny příjemců centra událostí vytvořte samostatné příjemce skupiny. To vyžaduje vytvoření další vstupy Stream Analytics.
 
-## <a name="get-help"></a>Získání nápovědy
+## <a name="get-help"></a>Podpora
 
-Potřebujete další pomoc, vyzkoušejte naše [fóru Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Pokud potřebujete další pomoc, vyzkoušejte naši [Azure Stream Analytics Fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
+* [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
 * [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

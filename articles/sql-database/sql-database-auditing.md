@@ -16,7 +16,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76719802"
 ---
-# <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
+# <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditováním SQL Database
 
 Auditování pro Azure [SQL Database](sql-database-technical-overview.md) a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) sleduje události databáze a zapisuje je do protokolu auditu ve vašem účtu služby Azure Storage, Log Analytics pracovní prostor nebo Event Hubs. Auditování taky:
 
@@ -70,7 +70,7 @@ Zásady auditu je možné definovat pro určitou databázi nebo jako výchozí z
 
 V následující části je popsána konfigurace auditování pomocí Azure Portal.
 
-1. Přejděte na [portál Azure](https://portal.azure.com).
+1. Přejděte na [Azure Portal](https://portal.azure.com).
 2. V záhlaví zabezpečení v podokně SQL Database/Server přejděte na **audit** .
 
     <a id="auditing-screenshot"></a>Navigační podokno ![][1]
@@ -111,7 +111,7 @@ V následující části je popsána konfigurace auditování pomocí Azure Port
 
     ![Centrum událostí](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
 
-9. Klikněte na možnost **Uložit**.
+9. Klikněte na **Uložit**.
 10. Pokud chcete upravit auditované události, můžete to provést pomocí [rutin prostředí PowerShell](#subheading-7) nebo [REST API](#subheading-9).
 11. Po dokončení konfigurace nastavení auditování můžete zapnout funkci detekce nové hrozby a nakonfigurovat e-maily tak, aby přijímaly výstrahy zabezpečení. Pokud používáte detekci hrozeb, obdržíte proaktivní výstrahy týkající se neobvykléch databázových aktivit, které mohou označovat potenciální bezpečnostní hrozby. Další informace najdete v tématu [Začínáme s detekcí hrozeb](sql-database-threat-detection-get-started.md).
 
@@ -251,7 +251,7 @@ V produkčním prostředí pravděpodobně pravidelně aktualizujete klíče úl
 
     > [!IMPORTANT]
     > V současné době je k dispozici nastavení povolení chráněných objektů BLOB zápisů v závislosti na čase a viditelné pouze v následujících oblastech:
-    > - Východ USA
+    > - USA – východ
     > - Středojižní USA
     > - Západní USA 2
 

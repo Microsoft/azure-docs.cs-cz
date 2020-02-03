@@ -27,12 +27,12 @@ ms.locfileid: "76719479"
 
 Tento rychlý Start ukazuje, jak použít aplikaci Node. js pro připojení k účtu [SQL API](sql-api-introduction.md) v Azure Cosmos DB. Pak můžete použít dotazy Azure Cosmos DB SQL k dotazování a správě dat. Aplikace Node. js, kterou sestavíte v tomto článku, používá [sadu SQL JavaScript SDK](sql-api-sdk-node.md). V tomto rychlém startu se používá verze 2.0 sady [JavaScript SDK](https://www.npmjs.com/package/@azure/cosmos).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* Dále musí být splněny všechny tyto podmínky:
+* Navíc platí:
     * [Node.js](https://nodejs.org/en/) verze 6.0.0 nebo novější
     * [Git](https://git-scm.com/)
 
@@ -136,7 +136,7 @@ Teď se vraťte na Azure Portal a Získejte podrobnosti o připojovacím řetěz
 
 1. V [Azure Portal](https://portal.azure.com/)klikněte v účtu Azure Cosmos v levém navigačním panelu na **klíče**a potom klikněte na **klíče pro čtení i zápis**. V dalším kroku zkopírujete pomocí tlačítek kopírování na pravé straně obrazovky identifikátor URI a primární klíč do souboru `config.js`.
 
-    ![Zobrazení a zkopírování přístupového klíče na portálu Azure Portal v okně Klíče](./media/create-sql-api-dotnet/keys.png)
+    ![Zobrazení a zkopírování přístupového klíče na webu Azure Portal v okně Klíče](./media/create-sql-api-dotnet/keys.png)
 
 2. Otevřete soubor `config.js`. 
 
@@ -144,11 +144,11 @@ Teď se vraťte na Azure Portal a Získejte podrobnosti o připojovacím řetěz
 
     `config.endpoint = "<Your Azure Cosmos account URI>"`
 
-4. Potom z portálu zkopírujte hodnotu PRIMÁRNÍHO KLÍČE a nastavte ji jako hodnotu `config.key` v souboru `config.js`. Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné ke komunikaci s Azure Cosmos DB. 
+4. Potom z portálu zkopírujte hodnotu PRIMÁRNÍHO KLÍČE a nastavte ji jako hodnotu `config.key` v souboru `config.js`. Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné ke komunikaci s databází Azure Cosmos. 
 
     `config.key = "<Your Azure Cosmos account key>"`
     
-## <a name="run-the-app"></a>Spuštění aplikace
+## <a name="run-the-app"></a>Spusťte aplikaci
 
 1. Spusťte v terminálu `npm install`, aby se nainstalovaly požadované moduly NPM.
 

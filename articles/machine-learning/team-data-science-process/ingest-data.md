@@ -24,11 +24,11 @@ Vědecké zpracování týmových dat vyžaduje, aby data byla v jednotlivých f
 
 Následující články popisují, jak ingestovat data do různých cílových prostředích, kde je data uložena a zpracována.
 
-* Z/[úložiště objektů Blob v Azure](move-azure-blob.md)
-* K [systému SQL Server na virtuálním počítači Azure](move-sql-server-virtual-machine.md)
+* Do/z [Azure Blob Storage](move-azure-blob.md)
+* [SQL Server na virtuálním počítači Azure](move-sql-server-virtual-machine.md)
 * Pro [Azure SQL Database](move-sql-azure.md)
-* K [tabulky Hive](move-hive-tables.md)
-* K [dělené tabulky SQL](parallel-load-sql-partitioned-tables.md)
-* Z [místního SQL serveru](move-sql-azure-adf.md)
+* Do [tabulek podregistru](move-hive-tables.md)
+* Do [dělených tabulek SQL](parallel-load-sql-partitioned-tables.md)
+* Z [místních SQL Server](move-sql-azure-adf.md)
 
 Technické a obchodní potřeby a také počáteční umístění, formát a velikost vašich dat budou určovat nejlepší plán příjmu dat. Nejedná se o běžný plán, který by měl mít několik kroků. Toto pořadí úloh může obsahovat například zkoumání dat, předběžné zpracování, čištění, vzorkování dolů a cvičení modelu.  Azure Data Factory je doporučeným prostředkem Azure pro orchestraci přesunu a transformace dat.

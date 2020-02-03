@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 
 Můžete postupovat podle kroků v tomto článku v macOS, Linux nebo Windows. Postup je ve většině případů podobný, i když rozdíly nejsou v tomto kurzu podrobně popsané. Většina příkladů níže používá `bash` okno terminálu na platformě Linux. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem:
 
@@ -50,7 +50,7 @@ V okně místního terminálu spusťte `psql` a připojte se k místnímu server
 sudo su - postgres
 psql
 ```
-– nebo –
+nebo
 ```PowerShell
 psql -U postgres
 ```
@@ -91,7 +91,7 @@ Vytvořte a aktivujte virtuální prostředí Python pro spuštění vaší apli
 python3 -m venv venv
 source venv/bin/activate
 ```
-– nebo –
+nebo
 ```PowerShell
 py -3 -m venv venv
 venv\scripts\activate
@@ -102,7 +102,7 @@ V prostředí `venv` spusťte *env.sh* nebo *env. ps1* , abyste nastavili promě
 ```bash
 source ./env.sh
 ```
-– nebo –
+nebo
 ```PowerShell
 .\env.ps1
 ```
@@ -168,7 +168,7 @@ Server PostgreSQL vytvoříte pomocí příkazu [AZ Postgres Server Create](/cli
 
 V následujícím příkazu nahraďte *\<PostgreSQL-name >* jedinečným názvem serveru. Název serveru je součástí vašeho PostgreSQL koncového bodu *https://\<PostgreSQL-name >. Postgres. Database. Azure. com*, takže tento název musí být jedinečný napříč všemi servery v Azure. 
 
-Nahraďte *\<Resource-name >* a *\<region >* s názvem a oblastí skupiny prostředků, kterou chcete použít. Pro *\<admin-username >* a *\<* pro správce databáze Vytvořte přihlašovací údaje uživatele pro účet správce databáze. Mějte na paměti, že *\<admin-username >* a *\<* pro přihlašování k serveru a databázím PostgreSQL později použít.
+Nahraďte *\<Resource-name >* a *\<region >* s názvem a oblastí skupiny prostředků, kterou chcete použít. Pro *\<admin-username >* a *\<>* pro správce databáze Vytvořte přihlašovací údaje uživatele pro účet správce databáze. Mějte na paměti, že *\<admin-username >* a *\<>* pro přihlašování k serveru a databázím PostgreSQL později použít.
 
 ```azurecli-interactive
 az postgres server create --resource-group <resourcegroup-name> --name <postgresql-name> --location "<region>" --admin-user <admin-username> --admin-password <admin-password> --sku-name B_Gen5_1
@@ -247,7 +247,7 @@ export DBUSER="manager@<postgresql-name>"
 export DBNAME="pollsdb"
 export DBPASS="supersecretpass"
 ```
-– nebo –
+nebo
 ```powershell
 $Env:DBHOST = "<postgresql-name>.postgres.database.azure.com"
 $Env:DBUSER = "manager@<postgresql-name>"
@@ -259,7 +259,7 @@ V prostředí `venv` v místním okně terminálu spusťte upravený *env.sh* ne
 ```bash
 source ./env.sh
 ```
-– nebo –
+nebo
 ```PowerShell
 .\env.ps1
 ```
@@ -341,7 +341,7 @@ git commit -am "configure for App Service"
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux-no-h.md)]
 
-### <a name="create-a-web-app"></a>Vytvořte webovou aplikaci
+### <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-python-linux-no-h.md)]
 

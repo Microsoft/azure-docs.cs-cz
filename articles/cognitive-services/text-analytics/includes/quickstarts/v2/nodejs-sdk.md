@@ -15,7 +15,7 @@ ms.locfileid: "76748810"
 
 [Referenční dokumentace](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics) |  | [ukázky](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/) | balíčku [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) [(npm)](https://www.npmjs.com/package/@azure/cognitiveservices-textanalytics)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Aktuální verze [Node. js](https://nodejs.org/).
@@ -74,7 +74,7 @@ Objekt Response je seznam obsahující informace o analýze pro každý dokument
 ## <a name="code-examples"></a>Příklady kódu
 
 * [Ověření klienta](#authenticate-the-client)
-* [Analýza subjektivního hodnocení](#sentiment-analysis)
+* [Analýza mínění](#sentiment-analysis)
 * [Rozpoznávání jazyka](#language-detection)
 * [Rozpoznávání entit](#entity-recognition)
 * [Extrakce klíčových frází](#key-phrase-extraction)
@@ -87,7 +87,7 @@ Vytvoří nový objekt [TextAnalyticsClient](https://docs.microsoft.com/javascri
 [!code-javascript[Authentication and client creation](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=authentication)]
 
 
-## <a name="sentiment-analysis"></a>Analýza subjektivního hodnocení
+## <a name="sentiment-analysis"></a>Analýza mínění
 
 Vytvořte seznam objektů slovníku obsahující dokumenty, které chcete analyzovat. Zavolejte metodu [mínění ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#sentiment-models-textanalyticsclientsentimentoptionalparams-) klienta a získejte vrácenou [SentimentBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/sentimentbatchresult). Procházejte seznamem výsledků a vytiskněte ID každého dokumentu a mínění skóre. Skóre Blíže k 0 označuje negativní mínění, zatímco skóre Blíže k hodnotě 1 označuje kladný mínění.
 
@@ -104,7 +104,7 @@ Spusťte kód pomocí `node index.js` v okně konzoly.
 [ { id: '4', score: 1.00 } ]
 ```
 
-## <a name="language-detection"></a>Detekce jazyka
+## <a name="language-detection"></a>Rozpoznávání jazyka
 
 Vytvořte seznam objektů slovníku obsahující vaše dokumenty. Zavolejte metodu [operaci DetectLanguage ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#detectlanguage-models-textanalyticsclientdetectlanguageoptionalparams-) klienta a získejte vrácenou [LanguageBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/languagebatchresult). Potom Iterujte výsledky a vytiskněte ID a jazyk každého dokumentu.
 

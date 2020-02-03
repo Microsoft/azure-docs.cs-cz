@@ -35,4 +35,4 @@ Během TLS handshake jsou povoleny pouze následující šifry:
 
 ## <a name="customer-feedback"></a>Názory zákazníků
 
-I když je vynucování protokolu TLS 1.2 v celém oboru nejlepší volbou šifrování a bude podle plánu povolené, rádi se dozvíme od zákazníků o jejich konkrétních nasazeních a potížích s přijetím protokolu TLS 1.2. Pro účely tohoto účelu můžete odeslat své komentáře do [iot_tls1_deprecation@microsoft.com](mailto:iot_tls1_deprecation@microsoft.com).
+I když je vynucování TLS 1,2 v celém oboru nejlepší volbou šifrování a bude se používat jako plánované, budeme rádi vědět od zákazníků, kteří se týkají jejich konkrétního nasazení a potíží se zachováním TLS 1,2. Pro účely tohoto účelu můžete odeslat své komentáře do [iot_tls1_deprecation@microsoft.com](mailto:iot_tls1_deprecation@microsoft.com).

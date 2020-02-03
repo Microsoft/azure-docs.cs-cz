@@ -34,7 +34,7 @@ Ambari agenti nepřetržitě spouštějí kontroly stavu za účelem monitorová
 
 * Několik hostitelů v clusteru může hostovat mnoho komponent, takže bude nutné, aby spouštěla mnoho výstrah. Pokud je počet komponent velký, je možné, že úlohy výstrahy můžou přijít na naplánované intervaly.
 
-## <a name="resolution"></a>Rozlišení
+## <a name="resolution"></a>Řešení
 
 ### <a name="increase-alert-interval-time"></a>Prodloužit dobu trvání intervalu upozornění
 

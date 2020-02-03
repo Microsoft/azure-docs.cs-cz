@@ -30,7 +30,7 @@ Popis chyby obsahuje "překlad názvu hostitele se nezdařil".
 
 Tato chyba odkazuje na problém s vlastní konfigurací DNS. Servery DNS v rámci virtuální sítě můžou předávat dotazy DNS do rekurzivních překladačů Azure za účelem překladu názvů hostitelů v této virtuální síti (podrobnosti najdete [v tématu překlad IP adres ve virtuálních sítích](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) ). Přístup k rekurzivním překladačům Azure se poskytuje prostřednictvím virtuální IP adresy 168.63.129.16. Tato IP adresa je dostupná jenom z virtuálních počítačů Azure. Takže nebude fungovat, pokud používáte server DNS OnPrem nebo server DNS je virtuální počítač Azure, který není součástí virtuální sítě clusteru.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 1. Připojte se přes SSH k virtuálnímu počítači, který je součástí clusteru, a spusťte příkaz `hostname -f`. Tím se vrátí plně kvalifikovaný název domény hostitele (v následujících pokynech se označuje jako `<host_fqdn>`).
 
@@ -56,7 +56,7 @@ Popis chyby obsahuje "připojení k účtu Azure Storage se nepovedlo nebo se ne
 
 Azure Storage a SQL nemají pevné IP adresy, proto musíme Povolit odchozí připojení ke všem IP adresám, aby bylo možné získat přístup k těmto službám. Přesný postup řešení závisí na tom, jestli jste nastavili skupinu zabezpečení sítě (NSG) nebo uživatelsky definovaná pravidla (UDR). Podrobnosti o těchto konfiguracích najdete v části [řízení síťového provozu pomocí služby HDInsight se skupinami zabezpečení sítě a uživatelsky definovanými trasami](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ip) .
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 * Pokud váš cluster používá [skupinu zabezpečení sítě (NSG)](../../virtual-network/virtual-network-vnet-plan-design-arm.md).
 
@@ -85,7 +85,7 @@ ErrorDescription: Virtual Network configuration is not compatible with HDInsight
 
 Zřejmě došlo k potížím s vlastním nastavením DNS.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Ověřte, že je 168.63.129.16 ve vlastním řetězci DNS. Servery DNS v rámci virtuální sítě můžou předávat dotazy DNS do rekurzivních překladačů Azure za účelem překladu názvů hostitelů v této virtuální síti. Další informace najdete v tématu [překlad názvů ve virtuálních sítích](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server). Přístup k rekurzivním překladačům Azure se poskytuje prostřednictvím virtuální IP adresy 168.63.129.16.
 
@@ -101,7 +101,7 @@ Ověřte, že je 168.63.129.16 ve vlastním řetězci DNS. Servery DNS v rámci 
     cat /etc/resolv.conf | grep nameserver*
     ```
 
-    Mělo by se vám zobrazit přibližně toto:
+    Měli byste vidět zhruba toto:
 
     ```output
     nameserver 168.63.129.16

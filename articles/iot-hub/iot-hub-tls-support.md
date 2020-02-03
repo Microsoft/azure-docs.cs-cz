@@ -58,7 +58,7 @@ Vytvořený prostředek IoT Hub pomocí této konfigurace odmítne klienty zař�
 
 Centra IoT, která vyžadují použití protokolu TLS 1,2, se dají vytvořit v následujících oblastech:
 
-* Východ USA
+* USA – východ
 * Středojižní USA
 * Západní USA 2
 

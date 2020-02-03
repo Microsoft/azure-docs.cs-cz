@@ -483,8 +483,9 @@ Vrací hodnotu NULL. Použijte syntaxi funkce (null ()), pokud je sloupec s náz
 * ``isNull(10 + 20) -> false``
 * ``isNull(10/0) -> true``
 ___
-### <code>or</code><br/><br/>
-Logický operátor OR Stejné jako | | * ``or(true, false) -> true``
+### <code>or</code>
+<code><b>or(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : boolean) => boolean</b></code><br/><br/>
+Logický operátor OR. Stejné jako | | * ``or(true, false) -> true``
 * ``true || false -> true``
 ___
 ### <code>pMod</code>

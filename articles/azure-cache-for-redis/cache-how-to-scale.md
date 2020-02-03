@@ -31,7 +31,7 @@ Pokud zjistíte, že vaše mezipaměť již nesplňuje požadavky vaší aplikac
 ## <a name="scale-a-cache"></a>Škálování mezipaměti
 Pokud chcete škálovat mezipaměť, [přejděte do mezipaměti](cache-configure.md#configure-azure-cache-for-redis-settings) v [Azure Portal](https://portal.azure.com) a v **nabídce prostředků**klikněte na **škálovat** .
 
-![Limit](./media/cache-how-to-scale/redis-cache-scale-menu.png)
+![Měřítko](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
 V okně **vyberte cenovou úroveň** vyberte požadovanou cenovou úroveň a klikněte na **Vybrat**.
 

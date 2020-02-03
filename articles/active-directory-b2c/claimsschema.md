@@ -48,7 +48,7 @@ Element **ClaimType** obsahuje následující atribut:
 
 Element **ClaimType** obsahuje následující prvky:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | DisplayName | 0:1 | Název, který se zobrazí uživatelům na různých obrazovkách. Hodnota může být [lokalizována](localization.md). |
 | DataType | 0:1 | Typ deklarace identity. Lze použít datové typy Boolean, Date, dateTime, int, Long, String, StringCollection a alternativeSecurityIdCollection. |
@@ -63,7 +63,7 @@ PredicateValidationReference| 0:1 | Odkaz na element **PredicateValidationsInput
 
 **DefaultPartnerClaimTypes** může obsahovat následující element:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | Protocol (Protokol) | 0: n | Seznam protokolů s výchozím názvem typu deklarace identity partnera. |
 
@@ -71,7 +71,7 @@ Element **Protocol** obsahuje následující atributy:
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| Name (Název) | Ano | Název platného protokolu, který podporuje Azure AD B2C. Možné hodnoty jsou: OAuth1, OAuth2, typu Saml2, OpenIdConnect. |
+| Název | Ano | Název platného protokolu, který podporuje Azure AD B2C. Možné hodnoty jsou: OAuth1, OAuth2, typu Saml2, OpenIdConnect. |
 | PartnerClaimType | Ano | Název typu deklarace, který se má použít |
 
 Když v následujícím příkladu architektura prostředí identit komunikuje s poskytovatelem identity typu Saml2 nebo s aplikací předávající strany, **je tato deklarace identity** namapovaná na `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`s OpenIdConnect a OAuth2 je tato deklarace namapovaná na `family_name`.
@@ -150,12 +150,12 @@ Element **omezení** může obsahovat následující atribut:
 
 Element **omezení** obsahuje následující prvky:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| Enumeration | 1: n | Dostupné možnosti v uživatelském rozhraní pro uživatele, kteří mají vybrat pro deklaraci identity, například hodnotu v rozevíracím seznamu. |
+| Výčet | 1: n | Dostupné možnosti v uživatelském rozhraní pro uživatele, kteří mají vybrat pro deklaraci identity, například hodnotu v rozevíracím seznamu. |
 | Vzor | 1:1 | Regulární výraz, který má být použit. |
 
-### <a name="enumeration"></a>Enumeration
+### <a name="enumeration"></a>Výčet
 
 Prvek **výčtu** obsahuje následující atributy:
 
@@ -354,7 +354,7 @@ Typ vstupu uživatele **jen pro čtení** se používá k zadání pole jen pro 
 ```
 
 
-### <a name="paragraph"></a>Pododstavec
+### <a name="paragraph"></a>Odstavec
 
 **Odstavcový** typ vstupu uživatele slouží k poskytnutí pole, které zobrazuje text pouze v označení odstavce. Například &lt;p&gt;text&lt;/p&gt;.
 

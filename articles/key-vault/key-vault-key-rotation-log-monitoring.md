@@ -18,7 +18,7 @@ ms.locfileid: "76720108"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Nastavení Azure Key Vault s použitím rotace a auditování klíčů
 
-## <a name="introduction"></a>Představení
+## <a name="introduction"></a>Úvod
 
 Po použití trezoru klíčů ho můžete začít používat k ukládání klíčů a tajných kódů. Vaše aplikace už nepotřebují uchovávat vaše klíče nebo tajné kódy, ale podle potřeby je můžou vyžádat z trezoru. Trezor klíčů umožňuje aktualizovat klíče a tajné kódy, aniž by to mělo vliv na chování vaší aplikace. tím se otevře spousta možností pro správu klíčů a tajných kódů.
 

@@ -28,10 +28,10 @@ Tento článek obsahuje přehled TDSP a jeho hlavní komponenty. Poskytujeme obe
 
 TDSP se skládá z následujících klíčových komponent:
 
-- A **životního cyklu datové vědy** definice
-- A **standardizované struktura projektu**
-- **Infrastrukturu a prostředky** pro projekty datových věd
-- **Nástroje a pomůcky** pro spuštění projektu
+- Definice **životního cyklu datové vědy**
+- **Standardizovaná struktura projektu**
+- **Infrastruktura a prostředky** pro projekty pro datové vědy
+- **Nástroje a pomůcky** pro provádění projektů
 
 
 ## <a name="data-science-lifecycle"></a>Životního cyklu datové vědy
@@ -44,17 +44,17 @@ Tento životní cyklus byly navržené pro projekty datových věd, které se do
 
 Životní cyklus popisuje hlavní fáze, které jsou projekty obvykle spouštěny, často opakované:
 
-* **Principy podniku**
-* **Získávání a pochopení dat**
-* **Modelování**
+* **Obchodní porozumění**
+* **Získávání a porozumění dat**
+* **Situací**
 * **Nasazení**
-* **Schválení zákazníkem**
+* **Přijetí zákazníkovi**
 
-Zde je vizuální znázornění **životní cyklus vědeckého zpracování týmových dat**. 
+Tady je vizuální reprezentace **životního cyklu vědeckého zpracování týmových dat**. 
 
 ![TDSP Lifecycle2](./media/overview/tdsp-lifecycle2.png) 
 
-Cíle, úkoly a artefakty dokumentaci pro každou fázi životního cyklu v TDSP jsou popsané [životní cyklus vědeckého zpracování týmových dat](lifecycle.md) tématu. Tyto úkoly a artefakty jsou spojeny s rolemi projektu:
+Cíle, úlohy a artefakty dokumentace pro každou fázi životního cyklu v TDSP jsou popsány v tématu [životní cyklus procesu vědeckého zpracování dat týmu](lifecycle.md) . Tyto úkoly a artefakty jsou spojeny s rolemi projektu:
 
 - Architekt řešení
 - Projektový manažer
@@ -69,7 +69,7 @@ Následující diagram představuje zobrazení mřížky úloh (modře) a artefa
 
 Všechny projekty, sdílet adresářovou strukturu a používat šablony pro dokumenty projektu s usnadňuje členům týmu vyhledat informace o jejich projektech. Všechny kódu a dokumenty jsou uloženy v systému správy verzí (VC), jako je Git, TFS nebo Subversion, umožňuje spolupráci mezi týmy. Sledování úloh a funkcí v projektu aplikace agile sledování systému jako Jira technologie Rally a Azure DevOps umožňuje blíže sledování kódu pro jednotlivé funkce. Tyto sledování také umožňuje týmům získat lepší odhady nákladů. TDSP doporučuje vytvoření oddělené úložiště pro každý projekt na virtuální Clustery pro správu verzí, zabezpečení informací a spolupráci. Standardizované strukturu pro všechny projekty pomáhá institucionální znalosti budovat celé organizace.
 
-Poskytujeme šablony pro strukturu složek a požadované dokumenty ve standardním umístění. Tuto strukturu složek uspořádá soubory, které obsahují kód pro zkoumání dat a extrakci funkce a, který si poznamenejte modelu iterací. Tyto šablony usnadňují členové týmu pochopit práci ostatních nebo přidání nových členů do teams. Je snadné k zobrazování a aktualizace šablony dokumentů ve formátu markdown. Pomocí šablon můžete poskytnout kontrolní seznamy s klíčovými otázkami pro každý projekt, abyste měli jistotu, že problém je dobře definovaný a že dodávky odpovídají očekávané kvalitě. Patří mezi ně například:
+Poskytujeme šablony pro strukturu složek a požadované dokumenty ve standardním umístění. Tuto strukturu složek uspořádá soubory, které obsahují kód pro zkoumání dat a extrakci funkce a, který si poznamenejte modelu iterací. Tyto šablony usnadňují členové týmu pochopit práci ostatních nebo přidání nových členů do teams. Je snadné k zobrazování a aktualizace šablony dokumentů ve formátu markdown. Pomocí šablon můžete poskytnout kontrolní seznamy s klíčovými otázkami pro každý projekt, abyste měli jistotu, že problém je dobře definovaný a že dodávky odpovídají očekávané kvalitě. Příklady obsahují:
 
 - Projekt gossmanem dokumentovat obchodního problému a rozsah projektu
 - sestavy dat dokumentu strukturu a statistiky nezpracovaných dat
@@ -86,7 +86,7 @@ Adresářová struktura může být klonována z [GitHubu](https://github.com/Az
 TDSP poskytuje doporučení pro správu sdílené analýzy a infrastruktury úložiště, jako například:
 
 - systémy souborů cloudu pro ukládání datových sad 
-- databases
+- databáze
 - clustery velkých objemů dat (Hadoop nebo Spark) 
 - Služba Machine learning 
 
@@ -104,4 +104,4 @@ Tady je příklad sdílení různých komponent infrastruktury cloudové analýz
 
 ## <a name="next-steps"></a>Další kroky
 
-[Vědeckého zpracování týmových dat: Role a úlohy](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) Toto téma popisuje role klíče pracovníky a jejich přidružených úloh pro datové vědy tým, který standardizuje o tomto procesu. 
+[Vědecké zpracování týmových dat: role a úlohy](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) Popisuje klíčové role personálu a jejich přidružené úkoly pro tým pro datové vědy, který se v tomto procesu bude standardizovat. 

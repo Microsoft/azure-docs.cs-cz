@@ -37,7 +37,7 @@ Akcelerátory řešení IoT zabezpečují zařízení IoT pomocí následující
 
 Metoda tokenu zabezpečení poskytuje ověřování pro každé volání, které zařízení provedlo, k IoT Hub přiřazením symetrického klíče ke každému volání. Ověřování pomocí X. 509 umožňuje ověřování zařízení IoT ve fyzické vrstvě v rámci zřízení připojení TLS. Metoda založená na tokenech zabezpečení se dá použít bez ověřování X. 509, což je méně zabezpečený vzor. Volba mezi těmito dvěma metodami je primárně vyřízena způsobem, jakým je nutné zabezpečit ověřování zařízení, a dostupnost zabezpečeného úložiště na zařízení (bezpečné uložení privátního klíče).
 
-## <a name="iot-hub-security-tokens"></a>Tokeny zabezpečení IoT Hub
+## <a name="iot-hub-security-tokens"></a>IoT Hub tokeny zabezpečení
 
 IoT Hub používá k ověřování zařízení a služeb tokeny zabezpečení, aby nedocházelo k posílání klíčů v síti. Tokeny zabezpečení jsou navíc omezené v době platnosti a rozsahu. Sady SDK Azure IoT automaticky generují tokeny bez nutnosti jakékoli speciální konfigurace. Některé scénáře ale vyžadují, aby uživatel vygeneroval a použil tokeny zabezpečení přímo. Mezi tyto scénáře patří přímé použití MQTT, AMQP nebo povrchu HTTP nebo implementace vzoru služby tokenu.
 

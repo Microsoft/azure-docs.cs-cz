@@ -80,8 +80,8 @@ Data auditu můžete filtrovat v následujících polích:
 - Služba
 - Kategorie
 - Aktivita
-- Stav
-- Výběr cílového umístění
+- Status
+- Cíl
 - Spustil(a) (činitel)
 - Rozsah dat
 
@@ -89,7 +89,7 @@ Data auditu můžete filtrovat v následujících polích:
 
 Filtr **služby** umožňuje vybrat z rozevíracího seznamu následující služby:
 
-- Všechno
+- Vše
 - Kontroly přístupu
 - Zřizování účtů 
 - Jednotné přihlašování aplikace
@@ -98,7 +98,7 @@ Filtr **služby** umožňuje vybrat z rozevíracího seznamu následující slu�
 - Podmíněný přístup
 - Základní adresář
 - Správa nároků
-- Ochrany identit
+- Identity Protection
 - Pozvaní uživatelé
 - PIM
 - Samoobslužná správa skupin
@@ -107,19 +107,19 @@ Filtr **služby** umožňuje vybrat z rozevíracího seznamu následující slu�
 
 Filtr **kategorie** umožňuje vybrat jeden z následujících filtrů:
 
-- Všechno
+- Vše
 - AdministrativeUnit
 - ApplicationManagement
-- Ověření
+- Ověřování
 - Autorizace
-- Kontaktovat
+- Kontakt
 - Zařízení
 - DeviceConfiguration
 - DirectoryManagement
 - EntitlementManagement
 - GroupManagement
-- Jiné
-- Zásady
+- Ostatní
+- Zásada
 - ResourceManagement
 - RoleManagement
 - UserManagement
@@ -130,7 +130,7 @@ Seznam všech aktivit auditu můžete získat pomocí Graph API: `https://graph.
 
 Filtr **stavu** vám umožňuje filtrovat na základě stavu operace auditu. Stav může být jedna z následujících:
 
-- Všechno
+- Vše
 - Úspěch
 - Selhání
 

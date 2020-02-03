@@ -22,14 +22,14 @@ ms.locfileid: "76720091"
 
 Tento článek popisuje, jak zkoumat data, která je uložena v virtuálního počítače s SQL serverem v Azure. K prohlédnutí dat použijte SQL nebo Python.
 
-Tato úloha je nějaký krok [vědecké zpracování týmových dat](overview.md).
+Tento úkol je krok v rámci [vědeckého procesu týmového zpracování dat](overview.md).
 
 > [!NOTE]
 > Ukázky příkazů SQL v tomto dokumentu předpokládají, že data jsou v systému SQL Server. Pokud tomu tak není, podívejte se na mapování proces vědy dat cloudu se naučíte přesunout data do SQL serveru.
 > 
 > 
 
-## <a name="sql-dataexploration"></a>Zkoumání dat SQL pomocí skriptů SQL
+## <a name="sql-dataexploration"></a>Prozkoumat data SQL pomocí skriptů SQL
 Tady je několik ukázky skriptů SQL, které lze použít k prozkoumání úložiště dat v systému SQL Server.
 
 1. Získat počet vyjádření za den
@@ -46,12 +46,12 @@ Tady je několik ukázky skriptů SQL, které lze použít k prozkoumání úlo�
     `select <column_name>, count(*) from <tablename> group by <column_name>`
 
 > [!NOTE]
-> Například praktické, můžete použít [NYC taxislužby datovou sadu](https://www.andresmh.com/nyctaxitrips/) a odkazovat na IPNB s názvem [tahání dat NYC pomocí SQL Server a IPython Notebook](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) pro návod začátku do konce.
+> Pro praktické příklady můžete použít [datovou sadu taxislužby NYC](https://www.andresmh.com/nyctaxitrips/) a odkazovat na IPNB s názvem [NYC data tahání pomocí poznámkového bloku IPython a SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) pro ucelený návod.
 > 
 > 
 
-## <a name="python"></a>Zkoumání dat SQL s využitím Pythonu
-Použití Pythonu k zkoumat data a vygenerovat funkce, když jsou data v systému SQL Server je podobný zpracování dat v Azure blob pomocí Pythonu, jak je uvedeno v [data objektů Blob v Azure procesu v prostředí pro datové vědy](data-blob.md). Načtěte data z databáze do PANDAS dataframe a pak je můžete zpracovat dále. Dokumentujeme proces připojení k databázi a načítání dat do datového rámce v této části.
+## <a name="python"></a>Prozkoumat data SQL pomocí Pythonu
+Použití Pythonu k prozkoumávání dat a generování funkcí, když jsou data v SQL Server podobná zpracování dat v Azure BLOB pomocí Pythonu, jak je popsáno v části [zpracování dat objektů BLOB v Azure v prostředí pro datové vědy](data-blob.md). Načtěte data z databáze do PANDAS dataframe a pak je můžete zpracovat dále. Dokumentujeme proces připojení k databázi a načítání dat do datového rámce v této části.
 
 Následující formát připojovacího řetězce je možné se připojit k databázi SQL serveru z Pythonu pomocí pyodbc (nahraďte název_serveru, dbname, uživatelské jméno a heslo s určitými hodnotami):
 
@@ -59,13 +59,13 @@ Následující formát připojovacího řetězce je možné se připojit k datab
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-[Knihovny Pandas](https://pandas.pydata.org/) v Pythonu nabízí bohatou sadu datových struktur a nástrojů pro analýzu dat pro manipulaci s daty pro programování v Pythonu. Následující kód načte výsledky vrácené z databáze SQL serveru do Pandas datového rámce:
+[Knihovna PANDAS](https://pandas.pydata.org/) v Pythonu poskytuje bohatou sadu datových struktur a nástrojů pro analýzu dat pro manipulaci s daty pro programování v Pythonu. Následující kód načte výsledky vrácené z databáze SQL serveru do Pandas datového rámce:
 
     # Query database and load the returned results in pandas data frame
     data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
 
-Teď můžete pracovat s balíčky Pandas DataFrame, jak je popsáno v tématu [data objektů Blob v Azure procesu v prostředí pro datové vědy](data-blob.md).
+Nyní můžete pracovat s PANDAS dataframe, jak je popsáno v tématu [zpracování dat objektů BLOB v Azure ve vašem prostředí pro datové vědy](data-blob.md).
 
 ## <a name="the-team-data-science-process-in-action-example"></a>Vědecké zpracování týmových dat v příkladu akce
-Příklad začátku do konce Průvodce procesu sady Cortana Analytics pomocí veřejné datové sady, naleznete v tématu [vědecké zpracování týmových dat v akci: použití serveru SQL Server](sql-walkthrough.md).
+Podrobný příklad procesu Cortana Analytics, který používá veřejnou datovou sadu, najdete v tématu věnovaném [vědeckému zpracování týmových dat v akci: using SQL Server](sql-walkthrough.md).
 

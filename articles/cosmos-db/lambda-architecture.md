@@ -18,51 +18,51 @@ ms.locfileid: "76719734"
 Architektury lambda umožňují efektivní zpracování dat z obrovských datových sad. Architektury lambda minimalizovat latenci při dotazování velkých objemů dat pomocí dávkové zpracování, zpracování datových proudů a obslužné vrstvy. 
 
 Implementace architektury lambda v Azure, můžete kombinovat následující technologie k posílení analýzy velkých objemů dat v reálném čase:
-* [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/), první globálně distribuovaná a vícemodelová databázová služba v oboru. 
-* [Apache Spark pro Azure HDInsight](https://azure.microsoft.com/services/hdinsight/apache-spark/), platformu, na kterém běží velkých objemů dat analytických aplikací
-* Azure Cosmos DB [kanálu změn](change-feed.md), která nová data k vrstvě služby batch pro HDInsight ke zpracování datových proudů
-* [Spark je konektor služby Azure Cosmos DB](spark-connector.md)
+* [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/), první globálně distribuovaná databázová služba pro více modelů. 
+* [Apache Spark pro Azure HDInsight](https://azure.microsoft.com/services/hdinsight/apache-spark/), rozhraní pro zpracování, ve kterém běží aplikace pro analýzu velkých objemů dat
+* Azure Cosmos DB [změnu kanálu](change-feed.md), který streamuje nová data do dávkové vrstvy pro HDInsight ke zpracování
+* [Konektor Spark to Azure Cosmos DB](spark-connector.md)
 
 Tento článek popisuje základní informace o architektury lambda podle původního návrhu více vrstev a výhody architektury lambda "rearchitected", která zjednodušuje operace.  
 
 ## <a name="what-is-a-lambda-architecture"></a>Co je architektura lambda?
-Architektury lambda je obecný, škálovatelná, a odolné proti chybám data architekturu adresu zpracování služby batch a rychlosti latence scénáře, jak je popsáno v [Nathan Marz](https://twitter.com/nathanmarz).
+Architektura lambda je obecná a škálovatelná architektura pro zpracování dat odolná proti chybám, která řeší scénáře latence v dávce a rychlosti, jak je popsáno v [Nathan Marz](https://twitter.com/nathanmarz).
 
 ![Diagram znázorňující architektury lambda](./media/lambda-architecture/lambda-architecture-intro.png)
 
 Zdroj: http://lambda-architecture.net/
 
-Základní principy architektury lambda jsou popsané na předchozím obrázku jako za [ http://lambda-architecture.net ](http://lambda-architecture.net/).
+Základní principy architektury lambda jsou popsány v předchozím diagramu na základě [http://lambda-architecture.net](http://lambda-architecture.net/).
 
- 1. Všechny **data** odesílají do *obě* *dávková vrstva* a *rychlostní vrstva*.
- 2. **Dávková vrstva** má hlavní datové sady (set neměnné a jen pro připojení nezpracovaných dat) a předem vypočítá dávkové zobrazení.
- 3. **Obslužné vrstvy** má dávkové zobrazení pro rychlé zpracování dotazů. 
- 4. **Rychlostní vrstva** kompenzuje doba zpracování (do vrstvy obsluhující) a se zabývá jenom nejnovější data.
+ 1. Všechna **data** jsou vložena *do* vrstvy *vrstvy dávky* i *rychlosti*.
+ 2. **Dávková vrstva** má hlavní datovou sadu (neměnitelnou sadu pouze pro připojení nezpracovaných dat) a předem vypočítá dávková zobrazení.
+ 3. **Vrstva obsluhující** má pro rychlé dotazy dávkové zobrazení. 
+ 4. **Vrstva rychlosti** kompenzuje dobu zpracování (do vrstvy obsluhující) a pracuje s nejnovějšími daty.
  5. Všechny dotazy můžete zodpoví sloučení výsledků z dávkové zobrazení v reálném čase a zobrazení příkazu ping je jednotlivě.
 
 Na další čtení jsme bude možné implementaci této architektury pomocí jenom následující:
 
 * Cosmos kontejnerů Azure
 * Cluster HDInsight (Apache Sparku 2.1)
-* Konektor Spark [1.0](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.1.0_2.11/1.2.6/jar)
+* Konektor Spark [1,0](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.1.0_2.11/1.2.6/jar)
 
 ## <a name="speed-layer"></a>Rychlostní vrstva
 
-Z hlediska operace udržování dva proudy dat při zajištění správných stavů data může být složité zařízeními. Pro zjednodušení operací, využití [podpora kanálu změn databáze Azure Cosmos DB](change-feed.md) zachovat stav *dávková vrstva* při odhalení protokol změn služby Azure Cosmos DB prostřednictvím *změnit informační kanál rozhraní API* pro vaše *rychlostní vrstva*.  
-![Diagram zvýraznění nová data, rychlostní vrstva a datová sada hlavní část architektury lambda](./media/lambda-architecture/lambda-architecture-change-feed.png)
+Z hlediska operace udržování dva proudy dat při zajištění správných stavů data může být složité zařízeními. Aby bylo možné zjednodušit provoz, využijte [podporu Azure Cosmos DB změn kanálu](change-feed.md) , abyste zachovali stav pro *dávkovou vrstvu* a zároveň Odhalte Azure Cosmos DB protokol změn prostřednictvím *rozhraní API Change feed* pro vaši *rychlost*.  
+![diagramu zvýraznění nové části data, rychlosti vrstvy a hlavní datovou část architektury lambda](./media/lambda-architecture/lambda-architecture-change-feed.png)
 
 Co je důležité pro tyto vrstvy:
 
- 1. Všechny **data** je vloženo *pouze* do služby Azure Cosmos DB, proto se můžete vyhnout více přetypování problémy.
- 2. **Dávková vrstva** má hlavní datové sady (set neměnné a jen pro připojení nezpracovaných dat) a předem vypočítá dávkové zobrazení.
- 3. **Obslužné vrstvy** je popsáno v další části.
- 4. **Rychlostní vrstva** využívá HDInsight (Apache Spark) ke čtení kanálu změn služby Azure Cosmos DB. Umožňuje k uchování vašich dat. jde o dotazování a zpracovat souběžně.
+ 1. Všechna **data** jsou vložena *pouze* do Azure Cosmos DB, takže se můžete vyhnout problémům s vícenásobným přetypováním.
+ 2. **Dávková vrstva** má hlavní datovou sadu (neměnitelnou sadu pouze pro připojení nezpracovaných dat) a předem vypočítá dávková zobrazení.
+ 3. **Vrstva obsluhující** je popsána v následující části.
+ 4. **Rychlost** využívá HDInsight (Apache Spark) ke čtení Azure Cosmos DB změn kanálu. Umožňuje k uchování vašich dat. jde o dotazování a zpracovat souběžně.
  5. Všechny dotazy můžete zodpoví sloučení výsledků z dávkové zobrazení v reálném čase a zobrazení příkazu ping je jednotlivě.
  
 ### <a name="code-example-spark-structured-streaming-to-an-azure-cosmos-db-change-feed"></a>Příklad: Spark strukturované streamování do kanálu změn Azure Cosmos DB
-Spuštění rychlého prototypu kanálu jako součást změn služby Azure Cosmos DB **rychlostní vrstva**, můžete otestovat horizontálně s využitím dat Twitteru jako součást [Stream zpracování změn pomocí Azure Cosmos DB změnit informační kanál a Apache Sparku](https://github.com/Azure/azure-cosmosdb-spark/wiki/Stream-Processing-Changes-using-Azure-Cosmos-DB-Change-Feed-and-Apache-Spark)příklad. K nastartování výstupu Twitter, najdete v ukázce kódu v [Stream kanálu z Twitteru do služby Cosmos DB](https://github.com/tknandu/TwitterCosmosDBFeed). Z předchozího příkladu načítání dat Twitteru do služby Azure Cosmos DB a váš cluster HDInsight (Apache Spark) pak můžete nastavit pro připojení k kanálu změn. Další informace o tom, jak nastavit tuto konfiguraci najdete v tématu [Apache Spark pro Azure Cosmos DB konektor nastavení](https://github.com/Azure/azure-cosmosdb-spark/wiki/Spark-to-Cosmos-DB-Connector-Setup).  
+Chcete-li spustit rychlý prototyp Azure Cosmos DBho kanálu změn v rámci **vrstvy rychlosti**, můžete ho otestovat pomocí dat Twitteru jako součást [zpracování datových proudů pomocí Azure Cosmos DB změn kanálu a Apache Spark](https://github.com/Azure/azure-cosmosdb-spark/wiki/Stream-Processing-Changes-using-Azure-Cosmos-DB-Change-Feed-and-Apache-Spark) . Pokud chcete přejít na začátek výstupu na Twitteru, přečtěte si ukázku kódu v [kanálu Stream z Twitteru na Cosmos DB](https://github.com/tknandu/TwitterCosmosDBFeed). Z předchozího příkladu načítání dat Twitteru do služby Azure Cosmos DB a váš cluster HDInsight (Apache Spark) pak můžete nastavit pro připojení k kanálu změn. Další informace o nastavení této konfigurace najdete v tématu [Apache Spark nastavení konektoru Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-spark/wiki/Spark-to-Cosmos-DB-Connector-Setup).  
 
-Následující fragment kódu ukazuje, jak nakonfigurovat `spark-shell` ke spuštění strukturované streamování úlohy k připojení do Azure Cosmos DB změnit informační kanál, který kontroly v reálném čase datový proud Twitter, provádět počty interval.
+Následující fragment kódu ukazuje, jak nakonfigurovat `spark-shell` pro spuštění strukturované úlohy streamování pro připojení ke Azure Cosmos DB změnám kanálu, který zkontroluje datový proud Twitteru v reálném čase, aby provedl průběžný počet intervalů.
 
 ```
 // Import Libraries
@@ -91,35 +91,35 @@ var streamData = spark.readStream.format(classOf[CosmosDBSourceProvider].getName
 val query = streamData.withColumn("countcol", streamData.col("id").substr(0, 0)).groupBy("countcol").count().writeStream.outputMode("complete").format("console").start()
 ```
 
-Kompletní příklady najdete v části [azure cosmos DB – spark/lambda/samples](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/lambda), včetně:
-* [Streamování dotazu z Feed.scala změn služby Cosmos DB](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Query%20from%20Cosmos%20DB%20Change%20Feed.scala)
-* [Streamování značky dotaz z Feed.scala změn služby Cosmos DB](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Tags%20Query%20from%20Cosmos%20DB%20Change%20Feed%20.scala)
+Kompletní ukázky kódu najdete v tématu [Azure-cosmosdb-Spark/lambda/Samples](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/lambda), včetně:
+* [Streamování dotazu z Cosmos DB změny kanálu. Scala](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Query%20from%20Cosmos%20DB%20Change%20Feed.scala)
+* [Streamuje dotaz na značky Cosmos DB změny kanálu. Scala](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Tags%20Query%20from%20Cosmos%20DB%20Change%20Feed%20.scala)
 
-Výstup tohoto objektu je `spark-shell` konzolu, která je neustále spuštěna strukturované streamování úlohu, která provede interval započítávají dat Twitteru z kanálu změn služby Azure Cosmos DB. Následující obrázek ukazuje výstup úlohy služby stream a interval se počítá.
+Výstupem tohoto je `spark-shell` konzole, která průběžně spouští strukturované úlohy streamování, která provádí počet intervalů na data Twitteru z Azure Cosmos DBho kanálu změn. Následující obrázek ukazuje výstup úlohy služby stream a interval se počítá.
 
 ![Streamování výstup zobrazuje počet intervalu proti dat Twitteru z kanálu změn služby Azure Cosmos DB](./media/lambda-architecture/lambda-architecture-speed-layer-twitter-count.png) 
 
 Další informace o službě Azure Cosmos DB kanálu změn naleznete v tématu:
 
-* [Práce s změnu podpora kanálu ve službě Azure Cosmos DB](change-feed.md)
-* [Představujeme Azure cosmos DB změnit informační kanál knihovny procesoru](https://azure.microsoft.com/blog/introducing-the-azure-cosmosdb-change-feed-processor-library/)
-* [Stream zpracování změn: Kanál změn služby Azure cosmos DB a Apache Spark](https://azure.microsoft.com/blog/stream-processing-changes-azure-cosmosdb-change-feed-apache-spark/)
+* [Práce s podporou kanálu změn v Azure Cosmos DB](change-feed.md)
+* [Představujeme knihovnu Azure CosmosDB Change feed Processor](https://azure.microsoft.com/blog/introducing-the-azure-cosmosdb-change-feed-processor-library/)
+* [Změny zpracování streamu: Azure CosmosDB Change feed + Apache Spark](https://azure.microsoft.com/blog/stream-processing-changes-azure-cosmosdb-change-feed-apache-spark/)
 
 ## <a name="batch-and-serving-layers"></a>Batch a obsluhující vrstvy
-Protože nová data se načtou do služby Azure Cosmos DB (kde kanál změn se používá pro rychlostní vrstva), to je tam, kde **hlavní datovou sadu** nachází (neměnné a jen pro připojení sady nezpracovaných dat). Od této chvíle a vyšší pomocí HDInsight (Apache Spark) k provedení před výpočetních funkcí **dávková vrstva** k **obslužné vrstvy**, jak je znázorněno na následujícím obrázku:
+Vzhledem k tomu, že jsou nová data načtena do Azure Cosmos DB (kde se pro vrstvu rychlosti používá kanál změn), je v tomto umístění umístěna **hlavní datová sada** (neměnná sada nezpracovaných dat). Od tohoto bodu výše použijte HDInsight (Apache Spark) k provedení předběžného výpočetních funkcí z **vrstvy dávky** do **obsluhy**, jak je znázorněno na následujícím obrázku:
 
 ![Diagram zvýraznění dávková vrstva a obslužné vrstvy architektury lambda](./media/lambda-architecture/lambda-architecture-batch-serve.png)
 
 Co je důležité pro tyto vrstvy:
 
- 1. Všechny **data** odesílají pouze do služby Azure Cosmos DB (abyste předešli problémům vícesměrového vysílání s).
- 2. **Dávková vrstva** má hlavní datové sady (set neměnné a jen pro připojení nezpracovaných dat) uložené ve službě Azure Cosmos DB. Pomocí Hdinsight Spark, můžete předem výpočetní agregace v zobrazení počítané služby batch.
+ 1. Všechna **data** jsou vložena pouze do Azure Cosmos dB (aby nedocházelo k problémům s vícenásobným přetypováním).
+ 2. **Dávková vrstva** má hlavní datovou sadu (neměnné, pouze připojovací sadu nezpracovaných dat) uloženou v Azure Cosmos DB. Pomocí Hdinsight Spark, můžete předem výpočetní agregace v zobrazení počítané služby batch.
  3. **Vrstva obsluhující** je databáze Azure Cosmos s kolekcemi pro hlavní datovou sadu a vypočítané dávkové zobrazení.
- 4. **Rychlostní vrstva** je popsána dále v tomto článku.
+ 4. **Rychlost** je popsána dále v tomto článku.
  5. Všechny dotazy můžete zodpoví sloučení výsledků služby batch a v reálném čase zobrazení, nebo je jednotlivě příkazu ping.
 
 ### <a name="code-example-pre-computing-batch-views"></a>Příklad: předem computingu dávkové zobrazení
-K tom, jak spustit předem vypočítané zobrazení na prezentaci vaší **hlavní datovou sadu** z Apache Spark pro Azure Cosmos DB, použijte následující fragmenty kódu z poznámkových bloků [Rearchitected architektury Lambda - dávková vrstva ](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb) a [Rearchitected architektury Lambda - Batch se, že vrstvy](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb). V tomto scénáři použijte Twitteru data uložená ve službě Azure Cosmos DB.
+Chcete-li předběžně vypočítané zobrazení pro vaši **hlavní datovou sadu** z Apache Spark Azure Cosmos DB, použijte následující fragmenty kódu z poznámkových bloků [lambda](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb) s převedením architektury s [architekturou lambda a architekturou lambda znovu navrženou na obsluhu vrstvy](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb). V tomto scénáři použijte Twitteru data uložená ve službě Azure Cosmos DB.
 
 Začněme vytvořením konfigurace připojení k Twitteru datům ve službě Azure Cosmos DB pomocí níže uvedeného kódu PySpark.
 
@@ -179,7 +179,7 @@ val writeConfig = Config(writeConfigMap)
 
 ```
 
-Po zadání `SaveMode` (označující, jestli se má `Overwrite` nebo `Append` dokumenty), vytvořit `tweets_bytags` DataFrame podobný dotaz Spark SQL v předchozím příkladu.  S `tweets_bytags` vytvořen datový rámec, můžete ji pomocí Uložit `write` metodu pomocí dříve zadaná `writeConfig`.
+Po zadání `SaveMode` (označuje, zda se mají `Overwrite` nebo `Append` dokumentů) vytvořit `tweets_bytags` datový rámec podobný dotazu Spark SQL v předchozím příkladu.  Když je vytvořený `tweets_bytags` datový rámec, můžete ho uložit pomocí metody `write` pomocí dříve zadaného `writeConfig`.
 
 ```
 // Import SaveMode so you can Overwrite, Append, ErrorIfExists, Ignore
@@ -194,14 +194,14 @@ tweets_bytags.write.mode(SaveMode.Overwrite).cosmosDB(writeConfig)
 
 Tento poslední příkaz teď uložil váš datový rámec Spark do nového kontejneru Azure Cosmos; z perspektivy architektury lambda se jedná o **dávkové zobrazení** v rámci **vrstvy obsluhy**.
  
-#### <a name="resources"></a>Materiály
+#### <a name="resources"></a>Zdroje a prostředky
 
-Kompletní příklady najdete v části [azure cosmos DB – spark/lambda/samples](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/lambda) včetně:
-* Rearchitected architektury lambda - dávková vrstva [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.html) | [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb)
-* Rearchitected architektury lambda - dávkové vrstvě obsluhující [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.html) | [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb)
+Kompletní ukázky kódu najdete v tématu [Azure-cosmosdb-Spark/lambda/Samples](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/lambda) , včetně:
+* Architektura lambda je znovu navržena – dávková vrstva [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.html) | [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb)
+* Architektura lambda je znovu navržena – dávka pro obsluhu [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.html) | [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb)
 
 ## <a name="speed-layer"></a>Rychlostní vrstva
-Výše uvedené, pomocí Azure Cosmos DB změnit informační kanál Library umožňuje zjednodušují provoz mezi vrstvami služby batch a rychlost. V této architektuře pomocí Apache Sparku (prostřednictvím HDInsight) provádět *strukturované streamování* dotazy na data. Můžete také dočasně zachovat výsledky vašich dotazů strukturované streamování, tak jinými systémy můžete přístup k těmto datům.
+Výše uvedené, pomocí Azure Cosmos DB změnit informační kanál Library umožňuje zjednodušují provoz mezi vrstvami služby batch a rychlost. V této architektuře použijte Apache Spark (přes HDInsight) k provádění *strukturovaných streamických* dotazů na data. Můžete také dočasně zachovat výsledky vašich dotazů strukturované streamování, tak jinými systémy můžete přístup k těmto datům.
 
 ![Diagram zvýraznění rychlostní vrstva architektury lambda](./media/lambda-architecture/lambda-architecture-speed.png)
 
@@ -242,7 +242,7 @@ var streamingQuery = streamingQueryWriter.start()
 
 ## <a name="lambda-architecture-rearchitected"></a>Architektura lambda: Rearchitected
 Jak je uvedeno v předchozí části, můžete zjednodušit původní architektury lambda pomocí následující komponenty:
-* Azure Cosmos DB
+* Databáze Azure Cosmos
 * Azure Cosmos DB změnit informační kanál knihovně nemuseli všesměrového vysílání dat mezi vrstvami služby batch a rychlost
 * Apache Spark v HDInsight
 * Konektor Spark pro Azure Cosmos DB
@@ -256,24 +256,24 @@ S tímto návrhem potřebujete jenom dvě spravované služby Azure Cosmos DB a 
  4. Rychlostní vrstva kompenzuje doba zpracování (do vrstvy obsluhující) a se zabývá jenom nejnovější data.
  5. Všechny dotazy můžete zodpoví sloučení výsledků ze služby batch a v reálném čase zobrazení.
 
-### <a name="resources"></a>Materiály
+### <a name="resources"></a>Zdroje a prostředky
 
-* **Nová data**: [datového proudu kanál z Twitteru do služby cosmos DB](https://github.com/tknandu/TwitterCosmosDBFeed), což je mechanismus pro zápis nových dat do služby Azure Cosmos DB.
-* **Dávková vrstva:** dávková vrstva se skládá z *hlavní datovou sadu* (neměnné a jen pro připojení sady nezpracovaných dat) a schopnost předem compute dávkové zobrazení dat, které jsou vloženy do **obslužné vrstvy** .
-   * **Rearchitected architektury Lambda - dávková vrstva** Poznámkový blok [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.html) dotazy *hlavní datovou sadu* sadu dávkové zobrazení.
-* **Obslužné vrstvy:** **obslužné vrstvy** se skládá z předvypočítaných dat, což vede k zobrazení služby batch (např. agregace, konkrétní průřezy atd.) pro zajištění rychlých dotazů.
-  * **Rearchitected architektury Lambda - dávkové vrstvě obsluhující** Poznámkový blok [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.html) odesílá batch data do obslužné vrstvy; to znamená ve Sparku dotazuje služby batch kolekci tweetů, procesy a uloží je do jiné kolekce (vypočítané batch).
-    * **Rychlostní vrstva:** **rychlostní vrstva** se skládá z Sparku s využitím kanálu ke čtení a okamžitě reagovat na změn služby Azure Cosmos DB. Data můžou být uložené taky na *vypočítané RT* tak, aby ostatní systémy můžete dotazovat zpracovaných dat v reálném čase na rozdíl od spuštění v reálném čase dotazování sami.
-  * [Streamování dotazu z Cosmos DB změnit kanálu](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Query%20from%20Cosmos%20DB%20Change%20Feed.scala) scala skript provede streamování dotaz z kanálu pro výpočet počet intervalu z prostředí sparku změn služby Azure Cosmos DB.
-  * [Streamování dotazu značky z Cosmos DB změnit kanálu](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Tags%20Query%20from%20Cosmos%20DB%20Change%20Feed%20.scala) scala skript provede streamování dotaz z kanálu pro výpočet intervalu počet značek z prostředí sparku změn služby Azure Cosmos DB.
+* **Nová data**: [datový proud streamování z Twitteru do CosmosDB](https://github.com/tknandu/TwitterCosmosDBFeed), který je mechanismem pro vložení nových dat do Azure Cosmos DB.
+* **Dávková vrstva:** Dávková vrstva se skládá z *hlavní datové sady* (neproměnlivá sada nezpracovaných dat, která je pouze pro připojení) a schopnost předběžně vypočítat dávková zobrazení dat, která jsou vložena do **vrstvy obsluhy**.
+   * **Architektura lambda s rearchitektem-Batch** Poznámkový blok [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb) [ | se](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.html) dotazuje na *hlavní datovou* sadu zobrazení Batch.
+* **Obsluha vrstvy:** **Vrstva obsluhující** se skládá z předem vypočítaných dat, která mají za následek dávková zobrazení (například agregace, konkrétní průřezy atd.) pro rychlé dotazy.
+  * **Architektura lambda přearchitekta-Batch na obsluhu vrstvy** poznámkového bloku [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb) | [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.html) vloží data dávky do vrstvy obsluhující; To znamená, že Spark se dotazuje dávkové kolekce tweety, zpracuje ho a uloží ho do jiné kolekce (vypočítanou dávku).
+    * **Rychlost vrstvy:** **Vrstva rychlosti** se skládá ze Sparku, který využívá Azure Cosmos DB změny kanálu ke čtení a jednání okamžitě. Data je také možné uložit do *vypočítaného RT* , aby se ostatní systémy mohly dotazovat na zpracovaná data v reálném čase na rozdíl od provádění samotného dotazu v reálném čase.
+  * [Dotaz streamování z skriptu Cosmos DB Change feed](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Query%20from%20Cosmos%20DB%20Change%20Feed.scala) Scala spustí dotaz streamování z Azure Cosmos DB změn kanálu pro výpočet počtu intervalů z Spark-Shell.
+  * [Dotaz na značky streamování ze skriptu Cosmos DB Change feed](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Tags%20Query%20from%20Cosmos%20DB%20Change%20Feed%20.scala) Scala spustí dotaz streamování z Azure Cosmos DB změny kanálu, aby vypočítal počet intervalů značek z Spark-Shell.
   
 ## <a name="next-steps"></a>Další kroky
-Pokud jste tak dosud neučinili, stáhněte si Sparku do konektoru služby Azure Cosmos DB z [azure-cosmos DB – spark](https://github.com/Azure/azure-cosmosdb-spark) úložiště GitHub a další materiály v úložišti:
+Pokud jste to ještě neudělali, Stáhněte si z úložiště GitHubu Azure Cosmos DB pro [Azure-cosmosdb-Spark](https://github.com/Azure/azure-cosmosdb-spark) konektor Sparku a Prozkoumejte další prostředky v úložišti:
 * [Architektura lambda](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/lambda)
-* [Příklady distribuované agregace](https://github.com/Azure/azure-documentdb-spark/wiki/Aggregations-Examples)
-* [Ukázkové skripty a poznámkovými bloky](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples)
-* [Strukturované streamování ukázky](https://github.com/Azure/azure-cosmosdb-spark/wiki/Structured-Stream-demos)
-* [Ukázky kanálu změn](https://github.com/Azure/azure-cosmosdb-spark/wiki/Change-Feed-demos)
-* [Stream zpracovávat změny pomocí Azure Cosmos DB Change Feed a Apache Sparku](https://github.com/Azure/azure-cosmosdb-spark/wiki/Stream-Processing-Changes-using-Azure-Cosmos-DB-Change-Feed-and-Apache-Spark)
+* [Příklady distribuovaných agregací](https://github.com/Azure/azure-documentdb-spark/wiki/Aggregations-Examples)
+* [Ukázkové skripty a poznámkové bloky](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples)
+* [Ukázky strukturovaného streamování](https://github.com/Azure/azure-cosmosdb-spark/wiki/Structured-Stream-demos)
+* [Změny ukázek informačních kanálů](https://github.com/Azure/azure-cosmosdb-spark/wiki/Change-Feed-demos)
+* [Zpracování datových toků pomocí Azure Cosmos DB změny kanálu a Apache Spark](https://github.com/Azure/azure-cosmosdb-spark/wiki/Stream-Processing-Changes-using-Azure-Cosmos-DB-Change-Feed-and-Apache-Spark)
 
-Můžete také zkontrolovat [Apache Spark SQL, datových rámců a datových sad průvodce](https://spark.apache.org/docs/latest/sql-programming-guide.html) a [Apache Spark v Azure HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) článku.
+Můžete si také projít [průvodce Apache Spark SQL, datovými rámečky a datovými sadami](https://spark.apache.org/docs/latest/sql-programming-guide.html) a článkem [Apache Spark v Azure HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) .

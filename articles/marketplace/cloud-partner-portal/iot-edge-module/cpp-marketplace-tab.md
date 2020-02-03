@@ -159,7 +159,7 @@ Po úspěšném publikování vaší nabídky se ověří připojení zájemce a
 4. amp.com the tile -->
 
 
-## <a name="legal"></a>Právní informace
+## <a name="legal"></a>Legalit
 
 V této části můžete zadat dva právní dokumenty, které jsou potřeba pro jednotlivé nabídky: zásady ochrany osobních údajů a podmínky použití.
 

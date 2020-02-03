@@ -34,7 +34,7 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 
 ### <a name="query-and-write-operation-commands"></a>Příkazy pro dotazovací a zápisové operace
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 |delete | Ano |
 |find | Ano     |
@@ -51,16 +51,16 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 
 ### <a name="authentication-commands"></a>Příkazy pro ověření
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 |authenticate    |   Ano      |
-|odhlásit    |      Ano   |
+|logout    |      Ano   |
 |getnonce   |    Ano     |
 
 
 ### <a name="administration-commands"></a>Příkazy pro správu
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 |Kolekce omezené   |   Ne      |
 |cloneCollectionAsCapped     |   Ne      |
@@ -86,7 +86,7 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 
 ### <a name="diagnostics-commands"></a>Příkazy pro diagnostiku
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 |buildInfo       |   Ano      |
 |collStats    |  Ano       |
@@ -97,11 +97,11 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 |dbStats     |   Ano      |
 |částech     | Ne        |
 |Vysvětlení: executionStats     |     Ne    |
-|Database     |    Ne     |
+|funkce     |    Ne     |
 |hostInfo     |   Ne      |
 |listDatabases       |   Ano      |
 |listCommands     |  Ne       |
-|modulu     |  Ne       |
+|profiler     |  Ne       |
 |serverStatus     |  Ne       |
 |vrchol     |    Ne     |
 |whatsmyuri     |   Ano      |
@@ -112,7 +112,7 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 
 ### <a name="aggregation-commands"></a>Příkazy pro agregaci
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 |aggregate |   Ano  |
 |count     |   Ano  |
@@ -121,7 +121,7 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 
 ### <a name="aggregation-stages"></a>Fáze agregace
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 |$collStats |Ne|
 |$project   |Ano|
@@ -151,7 +151,7 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 
 ### <a name="boolean-expressions"></a>Logické výrazy
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 |$and| Ano|
 |$or|Ano|
@@ -159,7 +159,7 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 
 ### <a name="set-expressions"></a>Nastavovací výrazy
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 | $setEquals | Ano|
 |$setIntersection|Ano|
@@ -171,7 +171,7 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 
 ### <a name="comparison-expressions"></a>Porovnávací výrazy
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 |$cmp     |  Ano       |
 |$eq|   Ano| 
@@ -185,7 +185,7 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 
 ### <a name="arithmetic-expressions"></a>Aritmetické výrazy
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 |$abs |  Ano       |
 | $add |  Ano       |
@@ -205,7 +205,7 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 
 ### <a name="string-expressions"></a>Řetězcové výrazy
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 |$concat |  Ano       |
 | $indexOfBytes|  Ano       |
@@ -222,13 +222,13 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 
 ### <a name="text-search-operator"></a>Operátor hledání textu
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 | $meta | Ne|
 
 ### <a name="array-expressions"></a>Maticové výrazy
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 |$arrayElemAt   |   Ano|
 |$arrayToObject|    Ano|
@@ -247,14 +247,14 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 
 ### <a name="variable-operators"></a>Operátory proměnných
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 |$map   |Ne|
 |$let   |Ano|
 
 ### <a name="system-variables"></a>Systémové proměnné
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 |$ $CURRENT| Ano|
 |$ $DESCEND|     Ano|
@@ -265,13 +265,13 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 
 ### <a name="literal-operator"></a>Operátor literálu
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 |$literal   |Ano|
 
 ### <a name="date-expressions"></a>Datumové výrazy
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 |$dayOfYear |Ano    |
 |$dayOfMonth|   Ano |
@@ -293,7 +293,7 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 
 ### <a name="conditional-expressions"></a>Podmíněné výrazy
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 | $cond| Ano|
 | $ifNull| Ano|
@@ -301,13 +301,13 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 
 ### <a name="data-type-operator"></a>Operátor datového typu
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 | $type| Ano|
 
 ### <a name="accumulator-expressions"></a>Výrazy akumulovaných
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 |$sum   |Ano    |
 |$avg   |Ano    |
@@ -322,13 +322,13 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 
 ### <a name="merge-operator"></a>Operátor sloučení
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 | $mergeObjects | Ano|
 
 ## <a name="data-types"></a>Typy dat
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 |Double |Ano    |
 |Řetězec |Ano    |
@@ -354,7 +354,7 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 
 ### <a name="indexes"></a>Indexy
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 |Index jednoho pole |Ano    |
 |Složený index |Ano    |
@@ -366,10 +366,10 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 
 ### <a name="index-properties"></a>Vlastnosti indexu
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 |Hodnota TTL|   Ano |
-|Unique |Ano|
+|Jedinečná |Ano|
 |Částečně|   Ne|
 |Nerozlišuje malá a velká písmena.   |Ne|
 |Řídké |Ne |
@@ -379,7 +379,7 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 
 ### <a name="logical-operators"></a>Logické operátory
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 |$or    |   Ano|
 |$and   |   Ano|
@@ -388,14 +388,14 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 
 ### <a name="element-operators"></a>Operátory elementu
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 |$exists|   Ano|
 |$type  |   Ano|
 
 ### <a name="evaluation-query-operators"></a>Operátory dotazování pro vyhodnocení
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 |$expr  |   Ne|
 |$jsonSchema    |   Ne|
@@ -414,7 +414,7 @@ V první části se použije index k omezení hledání na dokumenty, které za�
 
 ### <a name="array-operators"></a>Operátory pole
 
-|Příkaz  |Podporováno | 
+|Příkaz  |Podporuje se | 
 |---------|---------|
 | $all | Ano| 
 | $elemMatch | Ano| 
@@ -422,13 +422,13 @@ V první části se použije index k omezení hledání na dokumenty, které za�
 
 ### <a name="comment-operator"></a>Operátor komentáře
 
-|Příkaz  |Podporováno | 
+|Příkaz  |Podporuje se | 
 |---------|---------|
 $comment |Ano| 
 
 ### <a name="projection-operators"></a>Operátory projekce
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 |$elemMatch |Ano|
 |$meta| Ne|
@@ -438,7 +438,7 @@ $comment |Ano|
 
 #### <a name="field-update-operators"></a>Operátory pro aktualizaci polí
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 |$inc   |   Ano|
 |$mul   |   Ano|
@@ -452,7 +452,7 @@ $comment |Ano|
 
 #### <a name="array-update-operators"></a>Operátory pro aktualizaci matic
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 |$  |Ano|
 |$[]|   Ano|
@@ -467,7 +467,7 @@ $comment |Ano|
 
 #### <a name="update-modifiers"></a>Aktualizovat modifikátory
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 |$each  |   Ano|
 |$slice |Ano|
@@ -476,7 +476,7 @@ $comment |Ano|
 
 #### <a name="bitwise-update-operator"></a>Operátor pro bitovou aktualizaci
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 | $bit  |   Ano|    
 |$bitsAllSet    |   Ne|
@@ -486,7 +486,7 @@ $comment |Ano|
 
 ### <a name="geospatial-operators"></a>Geoprostorové operátory
 
-Operátor | Podporováno| 
+Operátor | Podporuje se| 
 --- | --- |
 $geoWithin | Ano |
 $geoIntersects | Ano | 
@@ -502,7 +502,7 @@ $polygon |  Ano |
 
 ## <a name="cursor-methods"></a>Metody kurzoru
 
-|Příkaz  |Podporováno |
+|Příkaz  |Podporuje se |
 |---------|---------|
 |Cursor. batchSize () |   Ano|
 |Cursor. Close () |Ano|

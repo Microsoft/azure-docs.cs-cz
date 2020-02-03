@@ -36,7 +36,7 @@ Pro krok 6: nastavení řízení zabezpečení pro úložiště projektu, viz [P
 > [!NOTE] 
 > Tento článek používá Azure Repos k nastavení projektu TDSP, protože to znamená, jak implementovat TDSP v Microsoftu. Pokud váš tým používá jinou platformu hostování kódu, úkoly vedoucího projektu jsou stejné, ale způsob jejich dokončení může být jiný.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu se předpokládá, že váš [správce skupin](group-manager-tasks.md) a [vedoucí týmu](team-lead-tasks.md) si nastavili následující prostředky a oprávnění:
 
@@ -48,7 +48,7 @@ V tomto kurzu se předpokládá, že váš [správce skupin](group-manager-tasks
 Pokud chcete klonovat úložiště a upravovat obsah na vašem místním počítači nebo Data Science Virtual Machine (DSVM) nebo nastavit službu Azure File Storage a připojit ji k DSVM, musíte zvážit tento kontrolní seznam:
 
 - Předplatné Azure.
-- V počítači je nainstalovaný Git. Pokud používáte DSVM, Git se předem nainstaluje. V opačném případě najdete v článku [platformami a nástroji příloha](platforms-and-tools.md#appendix).
+- V počítači je nainstalovaný Git. Pokud používáte DSVM, Git se předem nainstaluje. V opačném případě si přečtěte článek věnované [platformám a nástrojům](platforms-and-tools.md#appendix).
 - Pokud chcete použít DSVM, Windows nebo Linux DSVM vytvořeného a nakonfigurovaného v Azure. Další informace a pokyny najdete v dokumentaci k [Data Science Virtual Machine](/azure/machine-learning/data-science-virtual-machine/).
 - Pro Windows DSVM se na vašem počítači nainstaluje [Správce přihlašovacích údajů Git (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . V souboru *Readme.MD* se posuňte dolů k části **Stažení a instalace** a vyberte **nejnovější instalační program**. Stáhněte instalační program *. exe* z instalační stránky a spusťte ho. 
 - Pro Linux DSVM se v DSVM nastavil veřejný klíč SSH a přidal se do Azure DevOps. Další informace a pokyny najdete v části **vytvoření veřejného klíče SSH** v [příloze platformy a nástroje](platforms-and-tools.md#appendix). 
@@ -95,6 +95,6 @@ Pokud potřebujete přizpůsobit obsah vašeho úložiště projektu tak, aby sp
 
 Zde jsou odkazy na podrobné popisy dalších rolí a úloh, které jsou definovány v rámci vědeckého zpracování týmových dat:
 
-- [Úlohy správce skupiny pro datové vědy tým](group-manager-tasks.md)
-- [Úkoly vedoucí týmu pro datové vědy tým](team-lead-tasks.md)
+- [Úlohy správce skupin pro tým pro datové vědy](group-manager-tasks.md)
+- [Úkoly vedoucí týmu pro tým pro datové vědy](team-lead-tasks.md)
 - [Jednotlivé úlohy přispěvatele pro tým pro datové vědy](project-ic-tasks.md)

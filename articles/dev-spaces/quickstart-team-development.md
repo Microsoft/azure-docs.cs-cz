@@ -23,7 +23,7 @@ V tomto průvodci se naučíte:
 
 ![Azure Dev Spaces vývoj týmu](media/azure-dev-spaces/collaborate-graphic.gif)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Pokud nemáte předplatné Azure, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 - [Nainstalované rozhraní Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)

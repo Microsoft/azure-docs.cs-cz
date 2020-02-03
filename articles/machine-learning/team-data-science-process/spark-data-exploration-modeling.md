@@ -20,16 +20,16 @@ ms.locfileid: "76718629"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Zkoumání a modelování dat pomocí Spark
 
-Tento návod používá HDInsight Spark provedete zkoumání dat a binární klasifikačních a regresních modelování úkoly k ukázce NYC taxi cesty a jízdenky 2013 datové sady.  Provede vás provede postupem [vědecké zpracování dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), end až do konce, použití cluster HDInsight Spark pro zpracování a Azure BLOB k ukládání dat a modely. Proces zkoumá a vizualizuje dat získaných z objektu Blob služby Azure Storage a pak připraví data k vytvoření prediktivních modelů. Tyto modely jsou sestavení pomocí nástrojů knihovna Spark MLlib vykonávat binární klasifikačních a regresních modelování.
+Tento návod používá HDInsight Spark provedete zkoumání dat a binární klasifikačních a regresních modelování úkoly k ukázce NYC taxi cesty a jízdenky 2013 datové sady.  Provede vás jednotlivými kroky [procesu pro datové vědy](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)a koncovým účelem použití clusteru HDInsight Spark ke zpracování a objektů BLOB v Azure k ukládání dat a modelů. Proces zkoumá a vizualizuje dat získaných z objektu Blob služby Azure Storage a pak připraví data k vytvoření prediktivních modelů. Tyto modely jsou sestavení pomocí nástrojů knihovna Spark MLlib vykonávat binární klasifikačních a regresních modelování.
 
-* **Binární klasifikace** úkol je předpovědět, jestli jde placenou tip pro cestu. 
-* **Regrese** úkolu je předpovědět, částky spropitného založených na jiných funkcích tip. 
+* V rámci úlohy **binární klasifikace** je předpovědět, zda je pro danou cestu placen Tip. 
+* **Regresní** úlohou je předpovědět množství tipů na základě dalších funkcí Tip. 
 
 Modely, které používáme zahrnují logistické a lineární regrese, náhodných doménové struktury a přechodu Posílený stromové struktury:
 
-* [Lineární regrese s SGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) je model lineární regrese, který používá metodu pomocí Stochastického přechodu sestup (SGD) a pro optimalizaci a funkce škálování předpovídat špičky částky zaplacené. 
-* [Logistickou regresi s LBFGS](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) nebo regresní model, který se dá použít při závislé proměnné je zařazená do kategorií provedete klasifikace dat je "logit" regrese. LBFGS je dál Newton optimalizace algoritmus, který blíží algoritmu Broyden – Fletcher – Goldfarb – Shanno (BFGS) pomocí omezené množství paměti a, která se často používá ve službě machine learning.
-* [Náhodné doménových struktur](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) jsou umožňující rozhodovacích stromů.  Jejich kombinací mnoha rozhodovacích stromů, aby se snížilo riziko overfitting. Náhodné doménové struktury se používají pro regresní a klasifikace a dokáže zpracovat zařazené do kategorií funkcí a je možné rozšířit na nastavení klasifikace víc tříd. Se nevyžadují, aby funkce škálování a budou moct zachytit nelineárností a funkce interakce. Náhodné doménových struktur jsou jednou z nejvíce úspěšný strojového učení pro klasifikačních a regresních modelů.
+* [Lineární regrese s SGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) je model lineární regrese, který používá metodu STOCHASTICKÉHO (SGD) a pro optimalizaci a škálování funkcí k předpovídání placených částek za špičku. 
+* [Logistické regrese s LBFGS](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) nebo "logit" regresí je regresní model, který lze použít, když je závislá proměnná kategorií k provedení klasifikace dat. LBFGS je dál Newton optimalizace algoritmus, který blíží algoritmu Broyden – Fletcher – Goldfarb – Shanno (BFGS) pomocí omezené množství paměti a, která se často používá ve službě machine learning.
+* [Náhodné doménové struktury](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) jsou komplety rozhodovacích stromů.  Jejich kombinací mnoha rozhodovacích stromů, aby se snížilo riziko overfitting. Náhodné doménové struktury se používají pro regresní a klasifikace a dokáže zpracovat zařazené do kategorií funkcí a je možné rozšířit na nastavení klasifikace víc tříd. Se nevyžadují, aby funkce škálování a budou moct zachytit nelineárností a funkce interakce. Náhodné doménových struktur jsou jednou z nejvíce úspěšný strojového učení pro klasifikačních a regresních modelů.
 * Probíhající se rozGBTSelné [stromy](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) () jsou komplety rozhodovacích stromů. GBTS rozhodovací stromy pro vlaky iterativním způsobem, aby se minimalizovala funkce ztráty. GBTS se používá pro regresi a klasifikaci a může zpracovávat funkce kategorií, nevyžadují škálování funkcí a dokáže zachytit nelinearitu a interakce funkcí. Můžete také používají v nastavení multiclass klasifikace.
 
 Kroky modelování také obsahovat kód ukazující způsob trénování, vyhodnocení a uložte každý typ modelu. Python se použil, jak se programují řešení a zobrazíte relevantní vykreslení.   
@@ -39,38 +39,38 @@ Kroky modelování také obsahovat kód ukazující způsob trénování, vyhodn
 > 
 > 
 
-## <a name="prerequisites"></a>Požadavky
-Potřebujete účet Azure a Spark 1.6 (nebo Spark 2.0) clusteru HDInsight k dokončení tohoto návodu. Zobrazit [přehled datové vědy pomocí Sparku v Azure HDInsight](spark-overview.md) pokyny o tom, jak tyto požadavky splňují. Toto téma obsahuje také popis dat taxislužby NYC 2013 se tady použít a pokyny o tom, jak spustit kód z poznámkového bloku Jupyter v clusteru Spark. 
+## <a name="prerequisites"></a>Předpoklady
+Potřebujete účet Azure a Spark 1.6 (nebo Spark 2.0) clusteru HDInsight k dokončení tohoto návodu. Pokyny, jak tyto požadavky naplnit, najdete v tématu [Přehled vědeckého zpracování dat pomocí Sparku ve službě Azure HDInsight](spark-overview.md) . Toto téma obsahuje také popis dat taxislužby NYC 2013 se tady použít a pokyny o tom, jak spustit kód z poznámkového bloku Jupyter v clusteru Spark. 
 
 ## <a name="spark-clusters-and-notebooks"></a>Clustery Spark a poznámkové bloky
-Postup instalace a kódu jsou k dispozici v tomto názorném postupu pro používání HDInsight Spark 1.6. Ale poznámkové bloky Jupyter jsou k dispozici pro clustery HDInsight Spark 1.6 i Spark 2.0. Popis poznámkových bloků a odkazy na nich jsou součástí [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) pro úložiště GitHub, které je obsahují. Kromě toho kód tady v propojených poznámkových bloků je obecný a by mělo fungovat jakéhokoli jiného clusteru Spark. Pokud nepoužíváte HDInsight Spark, může být mírně lišit od co je znázorněna zde kroky instalace a správy clusteru. Pro usnadnění práce tady jsou odkazy na poznámkové bloky Jupyter pro Spark 1.6 (ke spuštění v jádra pySpark aplikace Jupyter Notebook server) a Spark 2.0 (ke spuštění v pySpark3 jádra aplikace Jupyter Notebook serveru):
+Postup instalace a kódu jsou k dispozici v tomto názorném postupu pro používání HDInsight Spark 1.6. Ale poznámkové bloky Jupyter jsou k dispozici pro clustery HDInsight Spark 1.6 i Spark 2.0. Popis poznámkových bloků a odkazů jsou k dispozici v [Readme.MD](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) pro úložiště GitHubu, které je obsahuje. Kromě toho kód tady v propojených poznámkových bloků je obecný a by mělo fungovat jakéhokoli jiného clusteru Spark. Pokud nepoužíváte HDInsight Spark, může být mírně lišit od co je znázorněna zde kroky instalace a správy clusteru. Pro usnadnění práce tady jsou odkazy na poznámkové bloky Jupyter pro Spark 1.6 (ke spuštění v jádra pySpark aplikace Jupyter Notebook server) a Spark 2.0 (ke spuštění v pySpark3 jádra aplikace Jupyter Notebook serveru):
 
 ### <a name="spark-16-notebooks"></a>Poznámkové bloky Spark 1.6
 
-[pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb): poskytuje informace o tom, jak provádět zkoumání dat, modelování a vyhodnocování se několik různých algoritmů.
+[pySpark-Machine-Learning-data-věda-Spark-data-prozkoumávání-Modeling. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb): poskytuje informace o tom, jak provádět zkoumání dat, modelování a bodování s několika různými algoritmy.
 
 ### <a name="spark-20-notebooks"></a>Poznámkové bloky Spark 2.0
 Regrese a klasifikace úlohy, které jsou implementovány pomocí clusteru Spark 2.0 jsou v samostatných poznámkových bloků a Poznámkový blok klasifikaci používá jinou sadu dat:
 
-- [Spark2.0-pySpark3-Machine-Learning-data-Science-Spark-Advanced-data-Exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Tento soubor obsahuje informace o tom, jak provádět zkoumání dat, modelování, a hodnocení ve Spark 2.0 clusterů pomocí cesty taxíkem NYC a tarif popsané na sady dat [tady](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). Tento poznámkový blok může být dobrým výchozím bodem rychle prozkoumat kód, který jsme připravili pro Spark 2.0. Poznámkový blok podrobnější analyzuje data taxislužby NYC, najdete v části Další poznámkového bloku v tomto seznamu. Podívejte se na poznámky uvedené v tomto seznamu, které porovnávají tyto poznámkové bloky. 
-- [Spark2.0 pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): Tento soubor ukazuje, jak provádět tahání dat (Spark SQL a datový rámec operace), průzkum, modelování a vyhodnocování pomocí cesty taxíkem NYC a tarif datové sady je popsáno [zde ](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
-- [Spark2.0 pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): Tento soubor ukazuje, jak provádět tahání dat (Spark SQL a datový rámec operace), průzkum, modelování a vyhodnocování pomocí dobře známých odeslání letecká společnost v čase datové sady z 2011 a 2012. Integruje datovou sadu s daty o počasí na letišti (například Windspeed, teplotu, nadmořskou výšku atd.) před modelováním, takže tyto funkce počasí mohou být zahrnuty v modelu.
+- [Spark 2.0 – pySpark3-Machine-Learning-data-věda-Spark-Advanced-data-prozkoumání-Modeling. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Tento soubor poskytuje informace o tom, jak provádět zkoumání dat, modelování a bodování v clusterech Spark 2,0 pomocí dat o cestách NYC taxislužby, které jsou popsané [tady](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). Tento poznámkový blok může být dobrým výchozím bodem rychle prozkoumat kód, který jsme připravili pro Spark 2.0. Poznámkový blok podrobnější analyzuje data taxislužby NYC, najdete v části Další poznámkového bloku v tomto seznamu. Podívejte se na poznámky uvedené v tomto seznamu, které porovnávají tyto poznámkové bloky. 
+- [Spark 2.0-pySpark3_NYC_Taxi_Tip_Regression. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): Tento soubor ukazuje, jak provádět data tahání (operace Spark SQL a dataframe), zkoumat, modelování a vyhodnocování pomocí sady dat NYC taxislužby, která je popsaná [zde](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
+- [Spark 2.0-pySpark3_Airline_Departure_Delay_Classification. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): v tomto souboru se dozvíte, jak provádět data tahání (operace Spark SQL a dataframe), zkoumat, modelování a vyhodnocování pomocí známé datové sady pro dobu odeslání v čase v čase od 2011 do 2012. Integruje datovou sadu s daty o počasí na letišti (například Windspeed, teplotu, nadmořskou výšku atd.) před modelováním, takže tyto funkce počasí mohou být zahrnuty v modelu.
 
 <!-- -->
 
 > [!NOTE]
 > Datová sada letecká společnost byl přidán do poznámkových bloků Spark 2.0 abychom vám lépe předvedli použití klasifikace algoritmů. V následujících tématech o letecká společnost včas odeslání datovou sadu a datovou sadu weather:
 > 
-> - Data o včasných odeslání letecká společnost: [https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
+> - Data o odchodu za čas letecké společnosti: [https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
 > 
-> - Data o počasí letiště: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/) 
+> - Data o počasí z letiště: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/) 
 
 <!-- -->
 
 <!-- -->
 
 > [!NOTE]
-> Poznámkové bloky Spark 2.0 na NYC taxislužby města a letecká společnost letu zpoždění-sady dat může trvat 10 minut nebo déle ke spuštění (v závislosti na velikosti vašeho clusteru Hdinsight). První poznámkového bloku v seznamu nahoře ukazuje spoustu aspektů zkoumání dat, vizualizace a ML, model školení v poznámkovém bloku, která přebírá méně času na spuštění pomocí předvýpočtem zredukovaných NYC datové sady, ve kterém byly soubory taxislužby města a tarif předem připojené k doméně: [ Spark2.0-pySpark3-Machine-Learning-data-Science-Spark-Advanced-data-Exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) tento poznámkový blok trvá mnohem kratší dobu dokončení (2 až 3 minut) a může být vhodná výchozí bod pro rychlé zkoumání kódu uvádíme pro Spark 2.0. 
+> Poznámkové bloky Spark 2.0 na NYC taxislužby města a letecká společnost letu zpoždění-sady dat může trvat 10 minut nebo déle ke spuštění (v závislosti na velikosti vašeho clusteru Hdinsight). První Poznámkový blok v seznamu výše obsahuje mnoho aspektů školicích kurzů k datům, vizualizaci a modelů ML v poznámkovém bloku, které pobírají méně času na spuštění s NYC sadou dat s nižšími poukázkami. ve kterých byly soubory taxislužby a jízdné předem připojené: [Spark 2.0-pySpark3-Machine-Learning-data-věda-Spark-Advanced-data-Learning-Modeling. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) tento poznámkový blok trvá mnohem kratší dobu (2-3 minut) a může být dobrým výchozím bodem pro rychlé prozkoumání kódu, který poskytujeme pro Spark 2,0. 
 
 <!-- -->
 
@@ -128,7 +128,7 @@ Jádra PySpark, které jsou k dispozici s poznámkovými bloky Jupyter nemají p
 
 Jádra PySpark poskytuje některé předdefinované "Magic", které jsou speciální příkazy, které lze volat s %%. Existují dva tyto příkazy, které se používají v těchto ukázek kódu.
 
-* **%% místní** Určuje, že kód v dalších řádcích, je spuštěn lokálně. Kód musí být platný kód Pythonu.
+* **%% místní** Určuje, že kód v následných řádcích má být proveden místně. Kód musí být platný kód Pythonu.
 * **%% SQL-o \<název proměnné >** Spustí dotaz na podregistr pro kontext SqlContext. Pokud je předán parametr -o výsledek dotazu se ukládají v %% místní kontext Python jako Pandas DataFrame.
 
 Další informace o jádrech poznámkových bloků Jupyter a předdefinovaných "MAGICS" najdete v tématu [jádra dostupná pro poznámkové bloky Jupyter s clustery HDInsight Spark Linux v HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
@@ -202,7 +202,7 @@ Zde je kód pro ingestování.
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
-**VÝSTUP:**
+**VÝKONEM**
 
 Čas potřebný k provedení nad buňkou: 51.72 sekund
 
@@ -212,8 +212,8 @@ Jakmile data, nemůžete do Sparku, je dalším krokem v vědecké zpracování 
 ### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>Zobrazit histogram počtu frekvencí osobní v ukázce cesty taxíkem
 Tento kód a další fragmenty použití magický příkaz jazyka SQL k dotazování ukázka a místní magic k vykreslení data.
 
-* **Magický příkaz jazyka SQL (`%%sql`)** jádra PySpark HDInsight podporuje snadno vložené HiveQL dotazů kontext sqlContext. (-O VARIABLE_NAME) argument ukládá jako Pandas DataFrame na serveru Jupyter výstup příkazu jazyka SQL. Toto nastavení zpřístupní výstup v místním režimu.
-* **`%%local` Magic** se používá ke spouštění kódu místně na serveru Jupyter, což je hlavního uzlu clusteru HDInsight. Obvykle použijete `%%local` magic ve spojení s `%%sql` magic s parametrem -o. Parametr -o by trvalý výstup příkazu jazyka SQL místně a pak %% místní magic aktivuje další sadu fragment kódu pro místní spuštění proti výstup dotazy SQL, který se ukládají místně
+* **SQL Magic (`%%sql`)** Jádro HDInsight PySpark podporuje snadno vložené HiveQL dotazy proti kontext SqlContext. (-O VARIABLE_NAME) argument ukládá jako Pandas DataFrame na serveru Jupyter výstup příkazu jazyka SQL. Toto nastavení zpřístupní výstup v místním režimu.
+* **`%%local` Magic** se používá ke spouštění kódu místně na serveru Jupyter, což je hlavnímu uzlu clusteru HDInsight. Obvykle používáte `%%local` Magic ve spojení s parametrem `%%sql` Magic s parametrem-o. Parametr -o by trvalý výstup příkazu jazyka SQL místně a pak %% místní magic aktivuje další sadu fragment kódu pro místní spuštění proti výstup dotazy SQL, který se ukládají místně
 
 Výstup se automaticky vizualizuje po spuštění kódu.
 
@@ -228,7 +228,7 @@ Tento dotaz načte zkracuje dobu odezvy podle počtu osobní.
     WHERE passenger_count > 0 and passenger_count < 7 
     GROUP BY passenger_count 
 
-Tento kód vytvoří místní datový rámec z výstupu dotazu a zobrazí data. `%%local` Magic vytvoří místní snímek dat, `sqlResults`, kterou lze použít pro vykreslení s matplotlib. 
+Tento kód vytvoří místní datový rámec z výstupu dotazu a zobrazí data. `%%local` Magic vytvoří místní rámec dat `sqlResults`, který se dá použít k vykreslení pomocí matplotlib. 
 
 > [!NOTE]
 > Tato PySpark magic se používá více než jednou v tomto názorném postupu. Pokud je velké množství dat, by měl ukázkový vytvořte datový rámec, který se vejde do místní paměti.
@@ -259,11 +259,11 @@ Tady je kód pro vykreslení zkracuje dobu odezvy dle počtů osobní
     fig.set_ylabel('Trip counts')
     plt.show()
 
-**VÝSTUP:**
+**VÝKONEM**
 
 ![O jízdách frekvenci podle počtu osobní](./media/spark-data-exploration-modeling/trip-freqency-by-passenger-count.png)
 
-Můžete vybrat mezi několik různých typů vizualizace (tabulky, výsečové, řádek, oblasti nebo panelu) s použitím **typ** tlačítka nabídky v poznámkovém bloku. Pruhový graf je znázorněna zde.
+Pomocí tlačítek nabídky **typ** v poznámkovém bloku můžete vybrat mezi několika různými typy vizualizací (tabulka, výsečový, spojnicový, plošný nebo pruhový). Pruhový graf je znázorněna zde.
 
 ### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts"></a>Zobrazte histogram tip částek a jak se liší podle částky počet a tarif osobní velikost špičky.
 Použijte dotaz SQL na ukázková data.
@@ -313,7 +313,7 @@ Tuto buňku kódu použije k vytvoření tří vykreslení dat bude příkaz jaz
     plt.show()
 
 
-**VÝSTUP:** 
+**VÝKONEM** 
 
 ![Rozdělení částky tip](./media/spark-data-exploration-modeling/tip-amount-distribution.png)
 
@@ -353,15 +353,15 @@ Tento kód ukážeme, jak vytvořit novou funkci binningu hodiny do časovým in
     taxi_df_train_with_newFeatures.cache()
     taxi_df_train_with_newFeatures.count()
 
-**VÝSTUP:** 
+**VÝKONEM** 
 
 126050
 
 ### <a name="index-and-encode-categorical-features-for-input-into-modeling-functions"></a>Indexování a kódování zařazené do kategorií funkce pro vstup do funkce modelování
 Tato část ukazuje, jak index nebo kódování zařazené do kategorií funkce pro vstup do funkce modelování. Modelování a předpovědět, funkce s kategorií vstupní data indexované nebo se musí kódováním než použití funkce MLlib vyžadují. V závislosti na modelu budete muset index nebo kódování různými způsoby:  
 
-* **Založený na stromové architektuře modelování** vyžaduje kategorie kódovaný jako číselné hodnoty (například funkce s tři kategorie mohou být kódovány s 0, 1, 2). Tento algoritmus je poskytován funkcí [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) MLlib. Tato funkce kóduje řetězec sloupec s popisky sloupců popisek indexů, které jsou řazeny podle frekvence popisek. I když indexované číselné hodnoty pro vstup a zpracování dat, k odpovídajícím způsobem zpracovávat jako kategorie lze zadat algoritmy založený na stromové architektuře. 
-* **Modely logistické a lineární regrese** vyžadují jeden horkou kódování, kde, například funkce s tři kategorie se rozšířit do tří sloupců funkce s každou obsahující 0 nebo 1 podle kategorie hodnotu. Poskytuje MLlib [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) funkce dělat hot jeden kódování. Tomto kodéru mapuje sloupec indexů popisek ke sloupci binárního vektorů s maximálně jeden – hodnotu single. Toto kódování umožňuje algoritmy, které očekávají číselnými hodnotami funkce, jako je logistické regrese, použít zařazené do kategorií funkce.
+* **Modelování na základě stromové struktury** vyžaduje, aby byly kategorie kódovány jako číselné hodnoty (například funkce se třemi kategoriemi může být kódována s hodnotou 0, 1, 2). Tento algoritmus je poskytován funkcí [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) MLlib. Tato funkce kóduje řetězec sloupec s popisky sloupců popisek indexů, které jsou řazeny podle frekvence popisek. I když indexované číselné hodnoty pro vstup a zpracování dat, k odpovídajícím způsobem zpracovávat jako kategorie lze zadat algoritmy založený na stromové architektuře. 
+* **Logistické a lineární regresní modely** vyžadují jedno horké kódování, kde například funkce se třemi kategoriemi může být rozbalená na tři sloupce funkce, přičemž každý z nich obsahuje 0 nebo 1 v závislosti na kategorii pozorování. MLlib poskytuje funkci [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) k provedení kódování s jedním aktivním systémem. Tomto kodéru mapuje sloupec indexů popisek ke sloupci binárního vektorů s maximálně jeden – hodnotu single. Toto kódování umožňuje algoritmy, které očekávají číselnými hodnotami funkce, jako je logistické regrese, použít zařazené do kategorií funkce.
 
 Tady je kód pro index a kódování funkcí zařazené do kategorií:
 
@@ -406,14 +406,14 @@ Tady je kód pro index a kódování funkcí zařazené do kategorií:
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**VÝSTUP:**
+**VÝKONEM**
 
 Čas potřebný k provedení nad buňkou: 1,28 sekund
 
 ### <a name="create-labeled-point-objects-for-input-into-ml-functions"></a>Vytváření objektů označených bodu pro vstup do funkce ML
-Tato část obsahuje kód, který ukazuje, jak indexovat zařazené do kategorií textová data jako datový typ s popiskem bodu a kódovat, takže je možné pro trénování a testování logistické regrese MLlib a jiných modelů klasifikace. S popiskem bodových objektů jsou odolné distribuovaných datových sad (RDD) ve formátu způsobem, který je potřeba jako vstupní data pro většinu algoritmů ML v MLlib. A [označené jako bod](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) je přidružený místní vektoru, dense nebo zhuštěný, popisek a odpovědí.  
+Tato část obsahuje kód, který ukazuje, jak indexovat zařazené do kategorií textová data jako datový typ s popiskem bodu a kódovat, takže je možné pro trénování a testování logistické regrese MLlib a jiných modelů klasifikace. S popiskem bodových objektů jsou odolné distribuovaných datových sad (RDD) ve formátu způsobem, který je potřeba jako vstupní data pro většinu algoritmů ML v MLlib. [Označený bod](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) je místní vektor, buď hustý, nebo zhuštěný, přidružený k popisku/odpovědi.  
 
-Tato část obsahuje kód, který ukazuje, jak indexovat data zařazená do kategorií textu jako [označené jako bod](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) datový typ a kódovat, takže je možné pro trénování a testování logistické regrese MLlib a jiných modelů klasifikace. S popiskem bodových objektů jsou odolné distribuovaných datových sad (RDD) skládající se z popisku (cíl/odpověď proměnná) a funkce vektoru. Tento formát je potřeba jako vstup pro mnoho algoritmů ML v MLlib.
+Tato část obsahuje kód, který ukazuje, jak indexovat textová data kategorií jako datový typ [bodu s popiskem](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) a kódovat, aby je bylo možné použít ke školení a testování MLlib logistické regrese a dalších modelů klasifikace. S popiskem bodových objektů jsou odolné distribuovaných datových sad (RDD) skládající se z popisku (cíl/odpověď proměnná) a funkce vektoru. Tento formát je potřeba jako vstup pro mnoho algoritmů ML v MLlib.
 
 Tady je kód pro indexování a kódování funkcí text pro binární klasifikaci.
 
@@ -501,12 +501,12 @@ Tento kód vytvoří náhodný vzorkování dat (25 % používá zde). I když n
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**VÝSTUP:**
+**VÝKONEM**
 
 Doba potřebná k provedení výše uvedené buňky: 0,24 sekunda
 
 ### <a name="feature-scaling"></a>Funkce škálování
-Funkce škálování, označované také jako data normalizace, zajistí, že funkce se značně Celková uhrazená hodnotami jsou neudělil nadměrné naváží ve funkci cíle. Kód pro funkce používá škálování [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) funkce, které se odchylka jednotek škálování. Podle MLlib je určen pro použití v lineární regrese s pomocí Stochastického přechodu sestup (SGD), Oblíbené algoritmů pro trénování širokou řadu jiných modelů strojového učení, jako je například Vyřešeno regresí nebo počítače vektorové podpory (SVM).
+Funkce škálování, označované také jako data normalizace, zajistí, že funkce se značně Celková uhrazená hodnotami jsou neudělil nadměrné naváží ve funkci cíle. Kód pro škálování funkcí používá [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) ke škálování funkcí na odchylku jednotek. Podle MLlib je určen pro použití v lineární regrese s pomocí Stochastického přechodu sestup (SGD), Oblíbené algoritmů pro trénování širokou řadu jiných modelů strojového učení, jako je například Vyřešeno regresí nebo počítače vektorové podpory (SVM).
 
 > [!NOTE]
 > Našli jsme algoritmu LinearRegressionWithSGD brát ohled na funkce škálování.
@@ -544,7 +544,7 @@ Tady je kód, který škálování proměnné pro použití s regularized lineá
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**VÝSTUP:**
+**VÝKONEM**
 
 Čas potřebný k provedení nad buňkou: 13.17 sekund
 
@@ -575,7 +575,7 @@ Ukládání do mezipaměti vstupní datový rámec objekty používané pro klas
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**VÝSTUP:** 
+**VÝKONEM** 
 
 Doba potřebná k provedení výše uvedené buňky: 0,15 sekunda
 
@@ -588,14 +588,14 @@ Tato část ukazuje, jak použijte tři modely pro úlohy binární klasifikace:
 
 Každý model vytváření část kódu je rozdělený do kroků: 
 
-1. **Model školení** dat pomocí jednu sadu parametrů
-2. **Model hodnocení** na testovací datové sady s metrikami
-3. **Probíhá ukládání modelu** v objektu blob pro budoucí využití
+1. **Model školení** dat pomocí jedné sady parametrů
+2. **Vyhodnocení modelu** na testovací sadě dat s metrikami
+3. **Ukládá se model** v objektu BLOB pro budoucí spotřebu.
 
 ### <a name="classification-using-logistic-regression"></a>Klasifikace pomocí logistické regrese
-Kód v této části ukazuje, jak pro trénování, vyhodnocení a uložit model logistické regrese s [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) , který předpovídá, jestli je tip placené cesty v NYC taxislužby cesty a tarif datové sady.
+Kód v této části ukazuje, jak vytvořit model logistické regrese pomocí [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) , který předpovídá, jestli se u cesty NYC taxislužby Trip a datové sady tarifů hradí Tip.
 
-**Trénování modelu logistické regrese pomocí CV a hyperparameter sweeping**
+**Školení modelu logistické regrese s využitím CV a úklidu parametrů**
 
     # LOGISTIC REGRESSION CLASSIFICATION WITH CV AND HYPERPARAMETER SWEEPING
 
@@ -628,7 +628,7 @@ Kód v této části ukazuje, jak pro trénování, vyhodnocení a uložit model
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**VÝSTUP:** 
+**VÝKONEM** 
 
 Koeficienty: [0.0082065285375-0.0223675576104,-0.0183812028036, - 3.48124578069e - 05-0.00247646947233,-0.00165897881503, 0.0675394837328,-0.111823113101,-0.324609912762,-0.204549780032,-1.36499216354, 0.591088507921, - 0.664263411392-1.00439726852, 3.46567827545,-3.51025855172,-0.0471341112232,-0.043521833294, 0.000243375810385, 0.054518719222]
 
@@ -636,7 +636,7 @@ Zachycení:-0.0111216486893
 
 Čas potřebný k provedení nad buňkou: 14.43 sekund
 
-**Vyhodnocení binární klasifikační model pomocí standardních metrik**
+**Vyhodnocení binárního klasifikačního modelu se standardními metrikami**
 
     #EVALUATE LOGISTIC REGRESSION MODEL WITH LBFGS
 
@@ -682,7 +682,7 @@ Zachycení:-0.0111216486893
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
-**VÝSTUP:** 
+**VÝKONEM** 
 
 Oblasti v rámci žádosti o přijetí změn = 0.985297691373
 
@@ -698,9 +698,9 @@ F1 Skóre = 0.984304060189
 
 Čas potřebný k provedení nad buňkou: 57.61 sekund
 
-**Vykreslení křivka roc s více TŘÍDAMI.**
+**Znázorněte křivku ROC.**
 
-*PredictionAndLabelsDF* je zaregistrovaný jako tabulky, *tmp_results*, v předcházejí buňky. *tmp_results* slouží k provádění dotazů a výstup do data snímků sqlResults pro vykreslení. Zde je kód.
+*PredictionAndLabelsDF* je registrován jako tabulka, *tmp_results*v předchozí buňce. *tmp_results* lze použít k provádění dotazů a výstupních výsledků do sqlResults dat – rámec pro vykreslení. Zde je kód.
 
     # QUERY RESULTS                              
     %%sql -q -o sqlResults
@@ -735,7 +735,7 @@ Tady je kód pro predikci a vykreslení křivka roc s více TŘÍDAMI.
     plt.show()
 
 
-**VÝSTUP:**
+**VÝKONEM**
 
 ![Logistické regrese curve.png roc s více TŘÍDAMI](./media/spark-data-exploration-modeling/logistic-regression-roc-curve.png)
 
@@ -785,7 +785,7 @@ Kód v této části ukazuje, jak pro trénování, vyhodnocení a uložení ná
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**VÝSTUP:**
+**VÝKONEM**
 
 Oblast pod roc s více TŘÍDAMI = 0.985297691373
 
@@ -831,7 +831,7 @@ Kód v této části ukazuje, jak trénovat, vyhodnotit a uložit přechodu zvý
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**VÝSTUP:**
+**VÝKONEM**
 
 Oblast pod roc s více TŘÍDAMI = 0.985297691373
 
@@ -846,9 +846,9 @@ Tato část ukazuje, jak použít tři modely pro úlohu regrese předpověď č
 
 Tyto modely jsou popsány v úvodu. Každý model vytváření část kódu je rozdělený do kroků: 
 
-1. **Model školení** dat pomocí jednu sadu parametrů
-2. **Model hodnocení** na testovací datové sady s metrikami
-3. **Probíhá ukládání modelu** v objektu blob pro budoucí využití
+1. **Model školení** dat pomocí jedné sady parametrů
+2. **Vyhodnocení modelu** na testovací sadě dat s metrikami
+3. **Ukládá se model** v objektu BLOB pro budoucí spotřebu.
 
 ### <a name="linear-regression-with-sgd"></a>Lineární regrese s SGD
 Kód v této části ukazuje, jak používat škálován funkce k trénování lineární regrese, který se používá pro optimalizaci pomocí stochastického sestupu (SGD) a jak skóre, vyhodnocení a uložit model v Azure Blob Storage (WASB).
@@ -897,7 +897,7 @@ Kód v této části ukazuje, jak používat škálován funkce k trénování l
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**VÝSTUP:**
+**VÝKONEM**
 
 Koeficienty: [0.00457675809917-0.0226314167349,-0.0191910355236, 0.246793409578, 0.312047890459, 0.359634405999, 0.00928692253981,-0.000987181489428,-0.0888306617845, 0.0569376211553, 0.115519551711, 0.149250164995,- 0.00990211159703-0.00637410344522, 0.545083566179,-0.536756072402, 0.0105762393099,-0.0130117577055, 0.0129304737772,-0.00171065945959]
 
@@ -953,7 +953,7 @@ Kód v této části ukazuje, jak pro trénování, vyhodnotit a uložení náho
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**VÝSTUP:**
+**VÝKONEM**
 
 RMSE = 0.891209218139
 
@@ -964,7 +964,7 @@ R sqr = 0.759661334921
 ### <a name="gradient-boosting-trees-regression"></a>Přechodu zvýšení skóre regresní stromy
 Kód v této části ukazuje, jak pro trénování, vyhodnocení a uložení přechodu zvýšení skóre stromů modelu, který bude předpovídat částka tip pro data o jízdách NYC taxislužby.
 
-**Natrénování a vyhodnocení**
+**Výuka a vyhodnocení**
 
     #PREDICT TIP AMOUNTS USING GRADIENT BOOSTING TREES
 
@@ -1004,7 +1004,7 @@ Kód v této části ukazuje, jak pro trénování, vyhodnocení a uložení př
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**VÝSTUP:**
+**VÝKONEM**
 
 RMSE = 0.908473148639
 
@@ -1012,9 +1012,9 @@ R sqr = 0.753835096681
 
 Čas potřebný k provedení nad buňkou: 34.52 sekund
 
-**Vykreslení**
+**Znázorněte**
 
-*tmp_results* je zaregistrovaný jako tabulku Hive v předcházejí buňky. Výsledky z tabulky jsou výstup do *sqlResults* datového rámce pro vykreslení. Zde je kód
+*tmp_results* je zaregistrován jako tabulka podregistru v předchozí buňce. Výsledky z tabulky jsou ve výstupu *sqlResults* data-Frame pro vykreslování. Zde je kód
 
     # PLOT SCATTER-PLOT BETWEEN ACTUAL AND PREDICTED TIP VALUES
 
@@ -1040,12 +1040,12 @@ Tady je kód pro vykreslení dat pomocí Jupyter serveru.
     plt.show(ax)
 
 
-**VÝSTUP:**
+**VÝKONEM**
 
 ![Skutečná vs předpovědět – tip objemy](./media/spark-data-exploration-modeling/actual-vs-predicted-tips.png)
 
 ## <a name="clean-up-objects-from-memory"></a>Vyčištění objektů z paměti
-Použití `unpersist()` odstranit objekty uložené v mezipaměti v paměti.
+K odstranění objektů uložených v paměti použijte `unpersist()`.
 
     # REMOVE ORIGINAL DFs
     taxi_df_train_cleaned.unpersist()
@@ -1069,7 +1069,7 @@ Použití `unpersist()` odstranit objekty uložené v mezipaměti v paměti.
 
 
 ## <a name="record-storage-locations-of-the-models-for-consumption-and-scoring"></a>Záznam umístění úložiště pro využití a vyhodnocování modelů
-K využití a stanovíte jeho skóre nezávislé datové sadě služby podle [skóre a vyhodnocení modelů předdefinovaných ve Spark machine learning](spark-model-consumption.md) tématu, musíte zkopírovat a vložit tyto názvy soubor obsahující uložený modelů vytvořených tady do spotřeba Poznámkový blok Jupyter. Tady je kód, který vytiskne cesty k souborů modelů, které potřebujete existuje.
+Aby bylo možné využívat a hodnotit nezávislou datovou sadu popsanou v tématu [skóre a vyhodnotit modely strojového učení v Sparku](spark-model-consumption.md) , musíte zkopírovat a vložit tyto názvy souborů obsahující uložené modely, které tady vytvoří, do Jupyter poznámkového bloku spotřeby. Tady je kód, který vytiskne cesty k souborů modelů, které potřebujete existuje.
 
     # MODEL FILE LOCATIONS FOR CONSUMPTION
     print "logisticRegFileLoc = modelDir + \"" + logisticregressionfilename + "\"";
@@ -1080,7 +1080,7 @@ K využití a stanovíte jeho skóre nezávislé datové sadě služby podle [sk
     print "BoostedTreeRegressionFileLoc = modelDir + \"" + btregressionfilename + "\"";
 
 
-**VÝSTUP**
+**VÝKONEM**
 
 logisticRegFileLoc = modelDir + "LogisticRegressionWithLBFGS_2016-05-0317_03_23.516568"
 
@@ -1094,10 +1094,10 @@ BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassificatio
 
 BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-05-0317_06_51.737282"
 
-## <a name="whats-next"></a>A co dál?
+## <a name="whats-next"></a>Co dále?
 Teď, když jste vytvořili modely regrese a klasifikaci s knihovna Spark MlLib, jste připraveni se naučíte stanovení skóre a vyhodnocovat u nich tyto modely. Pokročilé zkoumání a modelování poznámkového bloku podrobně včetně křížového ověřování, hyperparametrické cílit na konkrétní, věnuje podrobnější a model hodnocení. 
 
-**Model spotřeby:** informace o určení skóre a vyhodnocovat u nich klasifikačních a regresních modelů vytvořených v tomto tématu najdete v tématu [skóre a vyhodnocení modelů strojového učení předdefinovaných Spark](spark-model-consumption.md).
+**Spotřeba modelu:** Informace o tom, jak hodnotit a hodnotit modely klasifikace a regrese vytvořené v tomto tématu, najdete v tématu [skóre a vyhodnocení modelů strojového učení s využitím Sparku](spark-model-consumption.md).
 
-**Křížové ověření a hyperparameter sweeping**: naleznete v tématu [rozšířené zkoumání a modelování se Sparkem](spark-advanced-data-exploration-modeling.md) na to, jak modely můžete školení pomocí křížového ověření a hyperparametrické sweeping
+**Křížové ověřování a mazání pomocí parametrů**: viz [Pokročilá kontrola a modelování dat pomocí Sparku](spark-advanced-data-exploration-modeling.md) , jak lze modely vyškolené pomocí křížového ověřování a s možnostími úklidu Hyper-Parameter.
 

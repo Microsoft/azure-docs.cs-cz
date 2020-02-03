@@ -31,7 +31,7 @@ Auditování [spravované instance](sql-database-managed-instance.md) sleduje ud
 
 V následující části je popsána konfigurace auditování na spravované instanci.
 
-1. Přejděte na [portál Azure](https://portal.azure.com).
+1. Přejděte na [Azure Portal](https://portal.azure.com).
 1. Vytvořte **kontejner** Azure Storage, ve kterém jsou uložené protokoly auditu.
 
    1. Přejděte do Azure Storage, kam chcete ukládat protokoly auditu.
@@ -171,7 +171,7 @@ Protokoly auditu ze spravované instance je možné odesílat i do hub nebo Azur
 
 5. Vyberte cíl pro události auditu – centrum událostí, protokoly Azure Monitor, nebo obojí. Pro každý cíl nakonfigurujte požadované parametry (třeba pracovní prostor Log Analytics).
 
-6. Klikněte na možnost **Uložit**.
+6. Klikněte na **Uložit**.
 
     ![Konfigurace nastavení diagnostiky](./media/sql-managed-instance-auditing/9_mi_configure_diagnostics.png)
 

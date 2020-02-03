@@ -25,7 +25,7 @@ Tento obrázek znázorňuje aplikaci, která má tři naslouchací procesy. Prvn
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="azure-virtual-network-and-dedicated-subnet"></a>Virtuální síť Azure a vyhrazená podsíť
 
@@ -153,7 +153,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 Podpora protokolu WebSocket je ve výchozím nastavení povolená. Neexistuje žádné uživatelsky konfigurovatelné nastavení, které by bylo možné povolit nebo zakázat. Můžete použít objekty WebSockets s naslouchacími procesy HTTP i HTTPS.
 
-### <a name="custom-error-pages"></a>Stránky vlastních chyb
+### <a name="custom-error-pages"></a>Vlastní chybové stránky
 
 Vlastní chybu můžete definovat na globální úrovni nebo na úrovni naslouchacího procesu. Ale vytváření vlastních chybových stránek na globální úrovni z Azure Portal aktuálně není podporováno. Vlastní chybovou stránku můžete nakonfigurovat pro chybu brány firewall webové aplikace 403 nebo pro stránku údržby 502 na úrovni naslouchacího procesu. Pro daný stavový kód chyby je nutné zadat také veřejně dostupnou adresu URL objektu BLOB. Další informace najdete v tématu [Vytvoření vlastních chybových stránek služby Application Gateway](https://docs.microsoft.com/azure/application-gateway/custom-error).
 
@@ -241,7 +241,7 @@ Další informace o přesměrování najdete v tématu:
 
 #### <a name="rewrite-the-http-header-setting"></a>Přepsání nastavení záhlaví HTTP
 
-Toto nastavení přidá, odebere nebo aktualizuje hlavičku požadavku a odpovědi HTTP, zatímco pakety požadavků a odpovědí přecházejí mezi klienty klienta a back-endové fondy. Další informace:
+Toto nastavení přidá, odebere nebo aktualizuje hlavičku požadavku a odpovědi HTTP, zatímco pakety požadavků a odpovědí přecházejí mezi klienty klienta a back-endové fondy. Další informace naleznete v tématu:
 
  - [Přehled hlaviček protokolu HTTP přepisu](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)
  - [Konfigurace přepsání hlaviček HTTP](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)

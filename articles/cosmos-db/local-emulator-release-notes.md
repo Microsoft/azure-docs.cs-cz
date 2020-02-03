@@ -17,7 +17,7 @@ ms.locfileid: "76719683"
 
 Tento článek obsahuje poznámky k verzi emulátoru Azure Cosmos se seznamem aktualizací funkcí, které byly provedeny v jednotlivých verzích. Obsahuje také nejnovější verzi emulátoru, která se má stáhnout a použít.
 
-## <a name="download"></a>Stáhnout
+## <a name="download"></a>Ke stažení
 
 | | |
 |---------|---------|

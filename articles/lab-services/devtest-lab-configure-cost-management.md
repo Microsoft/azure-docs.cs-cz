@@ -29,7 +29,7 @@ V této části se dozvíte, jak pomocí grafu **trendu předpokládaných nákl
 
 Chcete-li zobrazit graf trendu odhadovaných nákladů měsíčně, postupujte podle následujících kroků: 
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 3. V seznamu cvičení vyberte testovací prostředí.  
 4. V nabídce vlevo vyberte **Konfigurace a zásady** .  
@@ -85,7 +85,7 @@ DevTest Labs vám umožní lépe spravovat náklady v testovacím prostředí t�
 ## <a name="view-cost-by-resource"></a>Zobrazit náklady podle prostředku 
 Funkce trendu měsíčních nákladů v cvičení vám umožní zjistit, kolik jste strávili v aktuálním kalendářním měsíci. Zobrazuje také projekci útraty až do konce měsíce na základě vašich útraty za posledních sedm dní. Abychom vám pomohli pochopit, proč útraty v testovacím prostředí jsou na začátku prahové hodnoty, můžete použít funkci **náklady podle prostředků** , která zobrazuje měsíční náklady na **prostředek** v tabulce.
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 3. V seznamu cvičení vyberte požadované testovací prostředí.  
 4. V nabídce vlevo vyberte **Konfigurace a zásady** .

@@ -30,7 +30,7 @@ Rozšíření virtuálních počítačů Key Vault podporuje tyto distribuce sys
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
-Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního počítače. Rozšíření nevyžaduje chráněná nastavení – veškerá jeho nastavení jsou považována za informace bez dopadu na zabezpečení. Přípona vyžaduje seznam monitorovaných tajných kódů, četnost dotazování a cílové úložiště certifikátů. Zejména:  
+Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního počítače. Rozšíření nevyžaduje chráněná nastavení – veškerá jeho nastavení jsou považována za informace bez dopadu na zabezpečení. Přípona vyžaduje seznam monitorovaných tajných kódů, četnost dotazování a cílové úložiště certifikátů. Konkrétně:  
 ```json
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -67,17 +67,17 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Name (Název) | Hodnota / příklad | Typ dat |
+| Název | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| publisher | Microsoft.Azure.KeyVault | string |
-| type | KeyVaultForLinux | string |
+| publisher | Microsoft.Azure.KeyVault | řetězec |
+| type | KeyVaultForLinux | řetězec |
 | typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | string |
-| CertificateStoreName | MY | string |
-| linkOnRenewal | false | Boolean |
-| CertificateStoreLocation  | LocalMachine | string |
-| requiredInitialSync | true | Boolean |
+| pollingIntervalInS | 3600 | řetězec |
+| CertificateStoreName | MY | řetězec |
+| linkOnRenewal | false (nepravda) | Boolean |
+| CertificateStoreLocation  | LocalMachine | řetězec |
+| requiredInitialSync | true (pravda) | Boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | pole řetězců
 
 
@@ -197,7 +197,7 @@ Mějte na paměti následující omezení/požadavky:
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí Azure PowerShell. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure PowerShell.
 
-## <a name="azure-powershell"></a>Azure PowerShell
+## <a name="azure-powershell"></a>Azure Powershell
 ```powershell
 Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 ```
@@ -209,4 +209,4 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 
 ### <a name="support"></a>Podpora
 
-Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, můžete se obrátit odborníků na Azure na [fóra MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o používání podpory Azure najdete v článku [nejčastější dotazy k podpoře Microsoft Azure](https://azure.microsoft.com/support/faq/).
+Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete kontaktovat odborníky na Azure na [webu MSDN Azure a Stack Overflow fóra](https://azure.microsoft.com/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o použití podpory Azure najdete v tématu [Nejčastější dotazy k podpoře pro Microsoft Azure](https://azure.microsoft.com/support/faq/).

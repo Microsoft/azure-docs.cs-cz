@@ -363,14 +363,14 @@ Následující tabulka představuje mapování zásad použití klíče x509 na 
 
 |**Příznaky použití klíče x509**|**Operace klíče Key Vault Key**|**Výchozí chování**|
 |----------|--------|--------|
-|DataEncipherment|šifrování, dešifrování| Nevztahuje se |
-|DecipherOnly|mohli| Nevztahuje se  |
+|DataEncipherment|šifrování, dešifrování| Není k dispozici |
+|DecipherOnly|mohli| Není k dispozici  |
 |DigitalSignature|podepsat, ověřit| Key Vault výchozí bez specifikace použití při vytváření certifikátu | 
-|EncipherOnly|encrypt| Nevztahuje se |
-|KeyCertSign|podepsat, ověřit|Nevztahuje se|
+|EncipherOnly|encrypt| Není k dispozici |
+|KeyCertSign|podepsat, ověřit|Není k dispozici|
 |KeyEncipherment|wrapKey, unwrapKey| Key Vault výchozí bez specifikace použití při vytváření certifikátu | 
-|Nepopiratelnosti odpovědnosti|podepsat, ověřit| Nevztahuje se |
-|bit crlsign|podepsat, ověřit| Nevztahuje se |
+|Nepopiratelnosti odpovědnosti|podepsat, ověřit| Není k dispozici |
+|bit crlsign|podepsat, ověřit| Není k dispozici |
 
 ### <a name="certificate-issuer"></a>Vystavitel certifikátu
 

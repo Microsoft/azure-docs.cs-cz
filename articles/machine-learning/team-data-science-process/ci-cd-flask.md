@@ -60,7 +60,7 @@ Následující diagram a kroky popisují architekturu kanálu CI/CD:
 10. Žádosti uživatelů o aplikaci procházejí serverem DNS.
 11. Server DNS předává požadavky do nástroje pro vyrovnávání zatížení a odesílá odpovědi zpět uživatelům.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 - [Vědecké zpracování týmových dat (TDSP)](/azure/machine-learning/team-data-science-process/)
 - [Azure Machine Learning (AML)](/azure/machine-learning/)

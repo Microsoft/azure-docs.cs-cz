@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak nasadit více kontejnerů Azure Cognitive Serv
 
 Může být užitečné pro orchestraci více imagí kontejneru v jednom hostitelském počítači. V tomto článku budeme vyžádat kontejnery pro Rozpoznávání textu a vyžádané formuláře.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento postup vyžaduje několik nástrojů, které je třeba nainstalovat a spustit místně:
 

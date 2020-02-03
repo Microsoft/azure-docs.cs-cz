@@ -129,7 +129,7 @@ Použijte [úložiště šablon projektů](https://github.com/Azure/Azure-TDSP-P
 
 Prozkoumejte podrobnější popis role a úlohy určené vědecké zpracování týmových dat:
 
-- [Úlohy správce skupiny pro datové vědy tým](group-manager-tasks.md)
-- [Úkoly vedoucí týmu pro datové vědy tým](team-lead-tasks.md)
-- [Vedoucí úkoly pro datové vědy tým projektu](project-lead-tasks.md)
+- [Úlohy správce skupin pro tým pro datové vědy](group-manager-tasks.md)
+- [Úkoly vedoucí týmu pro tým pro datové vědy](team-lead-tasks.md)
+- [Úkoly vedoucího projektu pro tým pro datové vědy](project-lead-tasks.md)
 - [Jednotlivé úkoly přispěvatele projektu pro tým pro datové vědy](project-ic-tasks.md)

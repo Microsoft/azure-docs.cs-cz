@@ -34,7 +34,7 @@ Tento skript vytvoří vlastní téma Event Gridu.
 
 Tento skript k vytvoření vlastního tématu používá následující příkaz. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [az eventgrid topic create](https://docs.microsoft.com/cli/azure/eventgrid/topic#az-eventgrid-topic-create) | Vytvoří vlastní téma Event Gridu. |
 

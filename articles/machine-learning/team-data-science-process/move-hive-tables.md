@@ -22,7 +22,7 @@ ms.locfileid: "76722522"
 
 Tento článek představuje obecné dotazy Hive, které vytváření tabulek Hive a načtení dat z úložiště objektů blob v Azure. Některé poskytujeme také pokyny o dělení tabulek Hive a o používání optimalizované řádek úložiště se sloupcovou strukturou (ORC) formátování pro zlepšení výkonu dotazů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Tento článek předpokládá, že máte:
 
 * Vytvořili jste účet Azure Storage. Pokud potřebujete pokyny, přečtěte si téma [informace o Azure Storagech účtech](../../storage/common/storage-introduction.md).
@@ -30,31 +30,31 @@ Tento článek předpokládá, že máte:
 * Povolený vzdálený přístup ke clusteru, přihlášení a otevřít konzolu příkazového řádku Hadoopu. Pokud potřebujete pokyny, přečtěte si téma [správa Apache Hadoopch clusterů](../../hdinsight/hdinsight-administer-use-portal-linux.md).
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Nahrání dat do úložiště objektů blob v Azure
-Pokud jste vytvořili virtuální počítač Azure podle pokynů uvedených v [nastavení virtuálního počítače Azure pro pokročilou analýzu](../../machine-learning/data-science-virtual-machine/overview.md), tento soubor skriptu by byly staženy do *C:\\uživatelů \\ \<uživatelské jméno\>\\dokumenty\\Data Science skripty* adresář na virtuálním počítači. Tyto dotazy na podregistry vyžadují pouze zadání schématu dat a konfigurace služby Azure Blob Storage v příslušných polích, která budou připravena k odeslání.
+Pokud jste vytvořili virtuální počítač Azure podle pokynů uvedených v části [nastavení virtuálního počítače Azure pro pokročilé analýzy](../../machine-learning/data-science-virtual-machine/overview.md), měl by se tento soubor skriptu stáhnout do složky *C:\\Users\\\<uživatelského jména\>\\dokumenty\\data vědy skripty* na virtuálním počítači. Tyto dotazy na podregistry vyžadují pouze zadání schématu dat a konfigurace služby Azure Blob Storage v příslušných polích, která budou připravena k odeslání.
 
-Předpokládáme, že data do tabulek Hive je v **nekomprimované** formátu tabulky a že je nahraná data na výchozí hodnotu (a další) kontejneru účtu úložiště používá Hadoop cluster.
+Předpokládáme, že data pro tabulky podregistru jsou v **nekomprimovaném** tabulkovém formátu a že se data nahrála do výchozího (nebo do dalšího) kontejneru účtu úložiště používaného clusterem Hadoop.
 
-Pokud chcete postup na **Data o jízdách taxislužby NYC**, budete muset:
+Pokud chcete postupovat podle údajů o **cestách NYC taxislužby**, musíte:
 
-* **Stáhněte si** 24 [Data o jízdách taxislužby NYC](https://www.andresmh.com/nyctaxitrips) soubory (12 cesty a 12 tarif souborů)
-* **Rozbalte** všechny soubory do souborů CSV a pak
-* **nahrajte** je do výchozího (nebo vhodného kontejneru) účtu Azure Storage. možnosti pro takový účet se zobrazí v tématu [použití Azure Storage s clustery Azure HDInsight](../../hdinsight/hdinsight-hadoop-use-blob-storage.md) . Postup nahrání souborů CSV do výchozí kontejner v účtu úložiště najdete v tomto [stránky](hive-walkthrough.md#upload).
+* **Stáhněte** si 24 [datových souborů NYC taxislužby pro služební cestu](https://www.andresmh.com/nyctaxitrips) (soubory o 12 cestách a soubory tarifů),
+* **rozbalení všech souborů** do souborů. csv a potom
+* **nahrajte** je do výchozího (nebo vhodného kontejneru) účtu Azure Storage. možnosti pro takový účet se zobrazí v tématu [použití Azure Storage s clustery Azure HDInsight](../../hdinsight/hdinsight-hadoop-use-blob-storage.md) . Proces odeslání souborů. CSV do výchozího kontejneru v účtu úložiště najdete na této [stránce](hive-walkthrough.md#upload).
 
-## <a name="submit"></a>Postup odesílání dotazů Hive
+## <a name="submit"></a>Odeslání dotazů na podregistr
 Dotazy Hive můžete odeslat pomocí:
 
-* [Odesílání dotazů Hive pomocí příkazového řádku Hadoopu v hlavního uzlu clusteru Hadoop](#headnode)
-* [Odesílání dotazů Hive pomocí editoru Hive](#hive-editor)
-* [Odesílání dotazů Hive pomocí příkazů prostředí PowerShell pro Azure](#ps)
+* [Odeslání dotazů na podregistr prostřednictvím příkazového řádku Hadoop v hlavnímu uzlu clusteru Hadoop](#headnode)
+* [Odeslání dotazů na podregistr pomocí editoru podregistru](#hive-editor)
+* [Odeslání dotazů na podregistr pomocí příkazů Azure PowerShell](#ps)
 
-Dotazy Hive jsou podobném SQL. Pokud jste obeznámeni s SQL, můžete zjistit [Hive pro Ošidit seznam uživatelů SQL](https://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf) užitečné.
+Dotazy Hive jsou podobném SQL. Pokud jste obeznámeni s SQL, možná najdete [podregistr pro uživatele SQL tahák](https://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf) užitečné.
 
 Při odesílání dotazů Hive, můžete také řídit cíl výstupu z dotazů Hive, jestli se na obrazovce nebo do místního souboru hlavního uzlu nebo do objektu blob Azure.
 
 ### <a name="headnode"></a>Odeslání dotazů na podregistr prostřednictvím příkazového řádku Hadoop v hlavnímu uzlu clusteru Hadoop
 Pokud se dotaz Hive je komplexní, odesláním přímo do hlavního uzlu Hadoop cluster obvykle vede k otočení rychleji než jeho odesláním pomocí skriptů Hive Editor nebo Azure Powershellu.
 
-Přihlaste se k hlavnímu uzlu clusteru Hadoop, otevřete příkazový řádek systému Hadoop v klientských počítačích k hlavnímu uzlu a zadejte příkaz `cd %hive_home%\bin`.
+Přihlaste se k hlavnímu uzlu clusteru Hadoop, otevřete příkazový řádek Hadoop na ploše hlavního uzlu a zadejte příkaz `cd %hive_home%\bin`.
 
 Budete mít tři způsoby, jak odesílání dotazů Hive v příkazovém řádku Hadoop:
 
@@ -63,7 +63,7 @@ Budete mít tři způsoby, jak odesílání dotazů Hive v příkazovém řádku
 * pomocí příkazu konzoly Hive
 
 #### <a name="submit-hive-queries-directly-in-hadoop-command-line"></a>Odesílání dotazů Hive přímo v systému Hadoop příkazového řádku.
-Můžete spustit příkaz jako `hive -e "<your hive query>;` odeslat jednoduchých dotazů Hive přímo v systému Hadoop příkazového řádku. Tady je příklad, ve kterém červeným rámečkem popisuje příkaz, který odešle dotaz Hive a zeleného pole obsahuje výstup dotazu Hive.
+Můžete spustit příkaz, například `hive -e "<your hive query>;` pro odeslání jednoduchých dotazů na podregistr přímo do příkazového řádku Hadoop. Tady je příklad, ve kterém červeným rámečkem popisuje příkaz, který odešle dotaz Hive a zeleného pole obsahuje výstup dotazu Hive.
 
 ![Příkaz Odeslat dotaz Hive s výstupem z dotazu Hive](./media/move-hive-tables/run-hive-queries-1.png)
 
@@ -74,36 +74,36 @@ Pokud dotaz Hive je složitější a obsahuje více řádků, není praktické �
 
 ![Dotaz na podregistr v souboru. HQL](./media/move-hive-tables/run-hive-queries-3.png)
 
-**Potlačit obrazovka průběhu stavové dotazů Hive**
+**Potlačit obrazovku stavu průběhu – Tisk dotazů na podregistr**
 
-Ve výchozím nastavení Jakmile dotaz Hive se odešle do příkazového řádku Hadoopu, průběh úloh mapování/zmenšování se vytiskne na obrazovce. Pokud chcete potlačit obrazovky tisku průběhu úloh mapování/zmenšování, můžete použít argument `-S` ("S" velkými písmeny) v příkazu řádek následujícím způsobem:
+Ve výchozím nastavení Jakmile dotaz Hive se odešle do příkazového řádku Hadoopu, průběh úloh mapování/zmenšování se vytiskne na obrazovce. Chcete-li potlačit tisk obrazovky mapy/snížit průběh úlohy, můžete použít argument `-S` ("S" v horním případě) na příkazovém řádku následujícím způsobem:
 
     hive -S -f "<path to the '.hql' file>"
     hive -S -e "<Hive queries>"
 
 #### <a name="submit-hive-queries-in-hive-command-console"></a>Odesílání dotazů Hive v příkazové konzole Hive.
-Příkaz konzolu Hive můžete zadat také nejprve spuštěním příkazu `hive` v systému Hadoop příkazového řádku a potom odesílání dotazů Hive v příkazové konzole Hive. Tady je příklad. V tomto příkladu zvýrazněte dva červená pole použité ke vstupu Hive příkazové konzole příkazy a dotaz Hive v příkazové konzole Hive, respektive odeslán. Zeleného pole zvýrazní výstup dotazu Hive.
+Můžete také nejdřív zadat příkazovou konzolu pro podregistr spuštěním příkazu `hive` v příkazovém řádku Hadoop a pak odeslat dotazy na podregistr v konzole příkazů podregistru. Tady je příklad. V tomto příkladu zvýrazněte dva červená pole použité ke vstupu Hive příkazové konzole příkazy a dotaz Hive v příkazové konzole Hive, respektive odeslán. Zeleného pole zvýrazní výstup dotazu Hive.
 
 ![Otevřete konzolu Hive příkaz a zadejte příkaz, zobrazit výstup dotazu Hive](./media/move-hive-tables/run-hive-queries-2.png)
 
 V předchozích příkladech přímo výstup výsledků dotazu Hive na obrazovce. Můžete také napsat výstup do místního souboru hlavního uzlu, nebo do objektu blob Azure. Potom můžete použít jiné nástroje Pokud chcete hlouběji analyzovat výstup dotazů Hive.
 
-**Výstup výsledků dotazu Hive do místního souboru.**
+**Výsledky dotazu na výstupní podregistry do místního souboru.**
 K vypsání výsledků dotazu Hive do místního adresáře hlavního uzlu, budete muset odeslat dotaz Hive v příkazovém řádku Hadoopu následujícím způsobem:
 
     hive -e "<hive query>" > <local path in the head node>
 
-V následujícím příkladu je výstup dotazu Hive zapsán do souboru `hivequeryoutput.txt` v adresáři `C:\apps\temp`.
+V následujícím příkladu se výstup dotazu na podregistr zapíše do souboru `hivequeryoutput.txt` v adresářovém `C:\apps\temp`.
 
 ![Výstup dotazu Hive](./media/move-hive-tables/output-hive-results-1.png)
 
-**Výstup výsledků dotazu Hive do objektu blob Azure**
+**Výsledky dotazu na výstupní podregistr do objektu blob Azure**
 
 Můžete také výstup výsledků dotazu Hive do objektu blob Azure, v rámci výchozího kontejneru Hadoop cluster. Dotaz Hive pro to vypadá takto:
 
     insert overwrite directory wasb:///<directory within the default container> <select clause from ...>
 
-V následujícím příkladu je výstup dotazu Hive zapsán do adresáře objektů blob `queryoutputdir` v rámci výchozího kontejneru Hadoop cluster. Tady stačí zadat název adresáře, bez názvu objektu blob. Pokud zadáte názvy adresáře a objektů blob, jako například, je vržena chyba `wasb:///queryoutputdir/queryoutput.txt`.
+V následujícím příkladu se výstup dotazu na podregistr zapisuje do adresáře objektů BLOB `queryoutputdir` v rámci výchozího kontejneru clusteru Hadoop. Tady stačí zadat název adresáře, bez názvu objektu blob. Pokud zadáte název adresáře a objektů blob, například `wasb:///queryoutputdir/queryoutput.txt`, dojde k chybě.
 
 ![Výstup dotazu Hive](./media/move-hive-tables/output-hive-results-2.png)
 
@@ -115,10 +115,10 @@ Pokud otevřete výchozí kontejner clusteru Hadoop pomocí Průzkumníka služb
 Můžete také použít konzolu dotazů (Editor registru) zadáním adresy URL formuláře *https:\//\<Hadoop název clusteru >. azurehdinsight. NET/Home/HiveEditor* do webového prohlížeče. Musíte být přihlášeni se tato konzola, takže je nutné pověření clusteru Hadoop tady.
 
 ### <a name="ps"></a>Odeslání dotazů na podregistr pomocí příkazů Azure PowerShell
-Můžete také použít PowerShell k odesílání dotazů Hive. Pokyny najdete v tématu [Hive odeslání úlohy pomocí prostředí PowerShell](../../hdinsight/hadoop/apache-hadoop-use-hive-powershell.md).
+Můžete také použít PowerShell k odesílání dotazů Hive. Pokyny najdete v tématu [Odeslání úloh podregistru pomocí prostředí PowerShell](../../hdinsight/hadoop/apache-hadoop-use-hive-powershell.md).
 
-## <a name="create-tables"></a>Vytvořit databázi Hive a tabulky
-Dotazy Hive jsou sdílené v [úložiště GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_db_tbls_load_data_generic.hql) a odtud se dají stáhnout.
+## <a name="create-tables"></a>Vytvoření databáze a tabulek podregistru
+Dotazy na podregistr se sdílejí v [úložišti GitHubu](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_db_tbls_load_data_generic.hql) a můžete je stáhnout z něj.
 
 Tady je dotaz Hive, který vytvoří tabulku Hive.
 
@@ -142,9 +142,9 @@ Tady je popis jednotlivých polí, které potřebujete k modulu plug-in a dalš�
 * **oddělovač polí\<\>** : oddělovač, který omezuje pole v datovém souboru, který se má odeslat do tabulky podregistru.
 * **oddělovač čáry\<\>** : oddělovač, který odděluje řádky v datovém souboru.
 * **\<umístění úložiště\>** : umístění Azure Storage pro uložení dat tabulek podregistru. Pokud nezadáte *umístění \<umístění úložiště\>* , databáze a tabulky jsou ve výchozím nastavení uloženy v *podregistru/skladu/* adresáři ve výchozím kontejneru clusteru podregistru. Pokud chcete zadat umístění úložiště, umístění úložiště musí být v rámci výchozího kontejneru pro databáze a tabulky. Toto umístění se musí považovat za umístění relativní vzhledem k výchozímu kontejneru clusteru ve formátu *"wasb:///\<Directory 1 >/"* nebo *"wasb:///\<Directory 1 >/\<Directory 2 >/"* atd. Po provedení dotazu se relativní adresáře vytvoří v rámci výchozího kontejneru.
-* **TBLPROPERTIES("Skip.Header.line.Count"="1")** : datový soubor obsahuje řádek záhlaví, budete muset přidat tuto vlastnost **na konci** z *vytvořit tabulku* dotazu. V opačném případě řádek záhlaví je načtena jako záznam do tabulky. Pokud datový soubor nemá řádek záhlaví, tato konfigurace může vynechat v dotazu.
+* **TBLPROPERTIES ("Skip. Header. line. Count" = "1")** : Pokud datový soubor obsahuje řádek záhlaví, je nutné tuto vlastnost přidat **na konci** dotazu *Create Table* . V opačném případě řádek záhlaví je načtena jako záznam do tabulky. Pokud datový soubor nemá řádek záhlaví, tato konfigurace může vynechat v dotazu.
 
-## <a name="load-data"></a>Načtení dat do tabulek Hive
+## <a name="load-data"></a>Načtení dat do tabulek podregistru
 Tady je dotaz Hive, který načítá data do tabulky Hive.
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
@@ -152,14 +152,14 @@ Tady je dotaz Hive, který načítá data do tabulky Hive.
 * **\<cesta k datovým objektům blob\>** : Pokud se soubor objektu blob, který se má nahrát do tabulky podregistru, nachází ve výchozím kontejneru clusteru HDInsight Hadoop, *cesta\<k datům BLOB\>* by měla být ve formátu *adresář wasb://\<v tomto kontejneru >/\<název souboru BLOB*>. Soubor objektu blob může být také v dalších kontejneru clusteru HDInsight Hadoop. V takovém případě *\<cesta k datům blob\>* by měla být ve formátu *wasb://\<název kontejneru >\<název účtu úložiště >. blob. Core. Windows. NET/\<název souboru BLOB >* .
 
   > [!NOTE]
-  > Data objektů blob k nahrání do tabulky Hive musí být ve výchozím nastavení nebo další kontejneru účtu úložiště pro Hadoop cluster. V opačném případě *NAČÍST DATA* stěžovali, nelze přístup k datům se dotaz nezdaří.
+  > Data objektů blob k nahrání do tabulky Hive musí být ve výchozím nastavení nebo další kontejneru účtu úložiště pro Hadoop cluster. V opačném případě dotaz *načíst data* nevydá stížnost, že nemá přístup k datům.
   >
   >
 
-## <a name="partition-orc"></a>Pokročilá témata: dělené tabulky a úložiště dat Hive ve formátu ORC
+## <a name="partition-orc"></a>Pokročilá témata: dělená tabulka a data z podregistru úložiště ve formátu ORC
 Pokud jsou data velká, vytváření oddílů v tabulce je přínosné pro dotazy, které stačí kontrolovat několik oddílů v tabulce. Například je možné logicky rozdělení dat protokolu z webu data.
 
-Kromě dělení tabulek Hive, je také vhodné k uložení dat Hive ve formátu optimalizované řádek úložiště se sloupcovou strukturou (ORC). Další informace o formátování ORC najdete v tématu <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC#LanguageManualORC-ORCFiles" target="_blank">soubory ORC pomocí zlepšuje výkon při čtení, zápisu a zpracování dat Hive</a>.
+Kromě dělení tabulek Hive, je také vhodné k uložení dat Hive ve formátu optimalizované řádek úložiště se sloupcovou strukturou (ORC). Další informace o formátování ORC najdete v tématu <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC#LanguageManualORC-ORCFiles" target="_blank">použití souborů ORC vylepšuje výkon při čtení, zápisu a zpracování dat v podregistru</a>.
 
 ### <a name="partitioned-table"></a>Dělenou tabulku
 Tady je dotaz Hive, který vytvoří dělenou tabulku a načte data do ní.
@@ -181,10 +181,10 @@ Při dotazování na dělené tabulky doporučujeme přidat podmínku oddílu na
     from <database name>.<partitioned table name>
     where <partitionfieldname>=<partitionfieldvalue> and ...;
 
-### <a name="orc"></a>Data Store Hive ve formátu ORC
+### <a name="orc"></a>Uložení dat z podregistru ve formátu ORC
 Nelze načíst přímo data z úložiště objektů blob do tabulek Hive, která je uložena ve formátu ORC. Tady jsou kroky, které nutné provádět k načtení dat z Azure, objekty BLOB do tabulek Hive, které jsou uložené ve formátu ORC.
 
-Vytvoření externí tabulky **ULOŽEN jako textový soubor** a načtení dat z úložiště objektů blob do tabulky.
+Vytvořte externí tabulku **uloženou jako textfile** a načtěte data z úložiště objektů blob do tabulky.
 
         CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<external textfile table name>
         (

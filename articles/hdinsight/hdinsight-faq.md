@@ -202,7 +202,7 @@ Pokud chcete připojit virtuální počítače k doméně, musíte mít řadič 
 
 ### <a name="can-i-use-a-self-signed-certificate-in-an-aad-ds-secure-ldap-setup-and-provision-an-esp-cluster"></a>Můžu použít certifikát podepsaný svým držitelem v nastavení zabezpečeného LDAP AAD-DS a zřídit cluster ESP?
 
-Doporučuje se použít certifikát vydaný certifikační autoritou, ale použití certifikátu podepsaného svým držitelem se podporuje i v protokolu ESP. Další informace:
+Doporučuje se použít certifikát vydaný certifikační autoritou, ale použití certifikátu podepsaného svým držitelem se podporuje i v protokolu ESP. Další informace naleznete v tématu:
 
 - [Povolit Azure Active Directory Domain Services](domain-joined/apache-domain-joined-configure-using-azure-adds.md#enable-azure-ad-ds)
 
@@ -237,7 +237,7 @@ V clusterech ESP Spark je LLAP povolený z bezpečnostních důvodů (tj. Apache
 Toho lze dosáhnout dvěma způsoby: 1 – cluster můžete znovu vytvořit a přidat další skupinu v době vytváření clusteru. Pokud v AAD-DS používáte vymezenou synchronizaci, ujistěte se, že je skupina B zahrnutá v rámci synchronizace s vymezeným oborem.
 2 – přidejte skupinu jako vnořenou dílčí skupinu předchozí skupiny, která se použila k vytvoření clusteru ESP. Pokud jste například vytvořili cluster ESP se skupinami `A`, můžete později přidat skupinu `B` jako vnořenou podskupinu `A` a po přibližně jednu hodinu bude synchronizována a k dispozici v clusteru automaticky. 
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 
 ### <a name="can-i-add-an-azure-data-lake-storage-gen2-to-an-existing-hdinsight-cluster-as-an-additional-storage-account"></a>Je možné přidat Azure Data Lake Storage Gen2 do stávajícího clusteru HDInsight jako další účet úložiště?
 
@@ -279,7 +279,7 @@ done
 
 V současné době neexistuje žádný modul plug-in Ranger pro úložiště objektů BLOB a Azure Data Lake Storage Gen1 ani Gen2. U clusterů ESP byste měli použít Azure Data Lake Storage, protože na úrovni systému souborů pomocí nástrojů HDFS můžete ručně nastavit jemně odstupňovaná oprávnění. Při použití Azure Data Lake Storage se taky v clusterech s protokolem ESP provede některé řízení přístupu k systému souborů pomocí Azure Active Directory na úrovni clusteru. 
 
-Zásady přístupu k datům můžete přiřadit ke skupinám zabezpečení vašich uživatelů pomocí Průzkumník služby Azure Storage. Další informace:
+Zásady přístupu k datům můžete přiřadit ke skupinám zabezpečení vašich uživatelů pomocí Průzkumník služby Azure Storage. Další informace naleznete v tématu:
 
 - [Návody nastavení oprávnění pro uživatele Azure AD k dotazování na data v Data Lake Storage Gen2 pomocí podregistru nebo jiných služeb?](hdinsight-hadoop-use-data-lake-storage-gen2.md#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
 - [Nastavení oprávnění na úrovni souborů a adresářů pomocí Průzkumník služby Azure Storage s Azure Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
@@ -302,7 +302,7 @@ Po vytvoření hraničního uzlu se k němu můžete připojit pomocí SSH na po
 
 Trvalé skripty můžete použít k přizpůsobení nových pracovních uzlů přidaných do clusteru prostřednictvím operací škálování. Trvalé skripty se nevztahují na hraniční uzly.
 
-## <a name="rest-api"></a>Rozhraní REST API
+## <a name="rest-api"></a>REST API
 
 ### <a name="what-are-the-rest-api-calls-to-pull-a-tez-query-view-from-the-cluster"></a>Co jsou REST API voláním pro vyžádání zobrazení dotazu tez z clusteru?
 
@@ -345,7 +345,7 @@ Pokud příkaz zavoláte mimo virtuální síť nebo z nepartnerské virtuální
 > [!NOTE]
 > V kudrlinkou se zobrazí výzva k zadání hesla. Je nutné zadat platné heslo pro uživatelské jméno přihlášení clusteru.
 
-## <a name="billing"></a>Vyúčtování
+## <a name="billing"></a>Fakturace
 
 ### <a name="how-much-does-it-cost-to-deploy-an-hdinsight-cluster"></a>Kolik stojí za nasazení clusteru HDInsight?
 

@@ -106,7 +106,7 @@ Po odeslání do koncového bodu tématu obdržíte odpověď. Odpověď je stan
 |Úspěch  | 200 OK  |
 |Data události mají nesprávný formát. | 400 Chybný požadavek |
 |Neplatný přístupový klíč | 401 Neautorizováno |
-|Nesprávný koncový bod | 404 – Nenalezeno |
+|Nesprávný koncový bod | 404 Nenalezeno |
 |Pole nebo událost překračuje omezení velikosti. | datová část 413 je moc velká. |
 
 V případě chyb má tělo zprávy následující formát:

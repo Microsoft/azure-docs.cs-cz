@@ -25,7 +25,7 @@ Azure DevTest Labs umožňuje rychle vytvářet samoobslužná prostředí pro v
 Pokud chcete přidat uživatele do testovacího prostředí, přidejte uživatele do role **uživatele DevTest Labs** pro testovací prostředí. V tomto článku se dozvíte, jak automatizovat přidání uživatele do testovacího prostředí jedním z následujících způsobů:
 
 - Šablony Azure Resource Manageru
-- Rutiny PowerShellu pro Azure 
+- Rutiny Azure PowerShellu 
 - Azure CLI.
 
 ## <a name="use-azure-resource-manager-templates"></a>Použití šablon Azure Resource Manageru
@@ -176,7 +176,7 @@ Pokud plánujete používat šablonu několikrát pro přidání několika objek
 New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -ResourceGroupName 'MyLabResourceGroup' -TemplateFile .\azuredeploy.json -roleAssignmentGuid "$(New-Guid)" -labName "MyLab" -principalId "11111111-1111-1111-1111-111111111111"
 ```
 
-## <a name="use-azure-powershell"></a>Použití Azure PowerShellu
+## <a name="use-azure-powershell"></a>Použití Azure Powershell
 Jak je popsáno v úvodu, vytvoříte nové přiřazení role Azure, ve kterém přidáte uživatele do role **uživatele DevTest Labs** pro testovací prostředí. V PowerShellu to uděláte pomocí rutiny [New-AzureRMRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment?view=azurermps-6.13.0) . Tato rutina má mnoho volitelných parametrů, které umožňují flexibilitu. `ObjectId`, `SigninName`nebo `ServicePrincipalName` lze zadat jako objekt, kterému se udělují oprávnění.  
 
 Tady je ukázkový příkaz Azure PowerShell, který přidá uživatele do role uživatele DevTest Labs v zadaném testovacím prostředí.

@@ -20,7 +20,7 @@ Klientské knihovny jsou nezbytné pro připojení klientských aplikací a nás
 
 ## <a name="download-the-latest-client-libraries-windows-installer"></a>Stažení nejnovějších klientských knihoven (Instalační služba systému Windows)  
 
-|Stáhnout  |Verze produktu  | 
+|Ke stažení  |Verze produktu  | 
 |---------|---------|
 |[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.21.27    |
 |[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.21.27       |

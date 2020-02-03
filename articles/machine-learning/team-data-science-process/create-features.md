@@ -21,21 +21,21 @@ ms.locfileid: "76721128"
 # <a name="feature-engineering-in-data-science"></a>Konstrukce funkcí v datové vědy
 Tento článek vysvětluje účely vytváření funkcí a poskytuje příklady jejich rolí v procesu rozšíření dat služby machine learning. Příklady slouží ke znázornění tohoto procesu jsou vykreslovány vedle z Azure Machine Learning Studio. 
 
-Tato úloha je nějaký krok [vědecké zpracování týmových dat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Tento úkol je krok v rámci [vědeckého zpracování týmových dat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
-Funkce engineering pokusy o sofistikované prediktivní učení se supervizí vytvořením funkce z nezpracovaných dat, která usnadňují proces učení. Konstrukce a výběr funkcí TDSP uvedených v jedné části je [co je životní cyklus vědeckého zpracování týmových dat?](overview.md) Vytváření funkcí a výběru jsou části **vývoj funkcí** krok TDSP. 
+Funkce engineering pokusy o sofistikované prediktivní učení se supervizí vytvořením funkce z nezpracovaných dat, která usnadňují proces učení. Strojírenství a výběr funkcí je jednou z TDSP, které jsou uvedené v části [co je životní cyklus vědeckých procesů týmu dat?](overview.md) Technologie a výběr funkcí jsou části kroku **vývoj funkcí** TDSP. 
 
-* **konstrukce funkcí**: Tento proces pokusí vytvořit další odpovídající funkce ze stávajících funkcí nezpracovaných dat a prediktivní sofistikované algoritmus učení.
-* **Výběr funkcí**: Tento proces vybere klíče podmnožinu funkcí původní data za účelem snížení dimenzionalitu problém školení.
+* **inženýrské funkce**: Tento proces se pokusí vytvořit další relevantní funkce z existujících nezpracovaných funkcí v datech a zvýšit prediktivní sílu tohoto sledovacího algoritmu.
+* **Výběr funkcí**: Tento proces vybere podmnožinu klíčových prvků pro původní data v pokusu snížit dimenzionální problém při výuce.
 
-Obvykle **konstruování** se použije první generovat další funkce a pak **výběr funkcí** krok se provádí za účelem odstranění irelevantní, redundantní nebo vysoce korelační funkce.
+Obvykle se pro generování dalších funkcí používá **inženýr funkcí** a pak se provede krok **výběru funkcí** , který eliminuje nepodstatné, redundantní nebo vysoce korelační funkce.
 
 Extrakcí funkcí z nezpracovaných dat shromážděných často dá vylepšit trénovacích dat používají ve službě machine learning. Příklad inženýrství funkce v rámci učit, jak klasifikovat imagí zapsaných znaků je vytvoření trochu hustota mapy vyrobena z dat distribuční nezpracovaná bit. Toto mapování může pomoct efektivněji než jednoduše přímo pomocí nezpracované rozdělení vyhledejte hrany znaky.
 
 Vytvoření funkcí pro data v konkrétních prostředí, najdete v následujících článcích:
 
-* [Vytvoření funkcí pro data v systému SQL Server](create-features-sql-server.md)
-* [Vytvoření funkcí pro data v clusteru Hadoop pomocí dotazů Hive](create-features-hive.md)
+* [Vytváření funkcí pro data v SQL Server](create-features-sql-server.md)
+* [Vytváření funkcí pro data v clusteru Hadoop pomocí dotazů na podregistry](create-features-hive.md)
 
 ## <a name="create-features-from-your-data---feature-engineering"></a>Vytvoření funkce z dat – návrh funkcí
 Trénovacích dat se skládá z matice skládající se z příkladů (záznamy nebo pozorování, které jsou uložené v řádcích), z nichž každý má sadu funkcí (proměnných nebo polí, které jsou uložené ve sloupcích). Chcete-li charakterizovat vzory v datech se očekává funkce zadané v experimentální návrh. Počet polí nezpracovaná data mohou být přímo součástí vybranou funkci set využívají k tréninku modelu, je často případ, že je potřeba další (inženýrství) funkce zkonstruovat z funkce v nezpracovaných dat pro generování rozšířené trénovací datové sady.
@@ -44,8 +44,8 @@ Jaký druh funkcí měl by být vytvořen při cvičení modelu rozšířit dato
 
 Při spuštění pomocí služby Azure Machine Learning, je nejjednodušší pochopit její podstatu tohoto procesu namítají použití ukázek, které jsou součástí sady Studio. Dva příklady jsou uvedeny zde:
 
-* Příklad regrese [předpovědi počet pronajatých kol za](https://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) v pod dohledem experiment, ve kterém se ví, cílové hodnoty
-* Text dolování klasifikace příklad použití [Hashování](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/)
+* Regresní ukázkový [odhad počtu nájemních kol](https://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) v experimentu pod dohledem, kde jsou známé cílové hodnoty
+* Příklad klasifikace dolování textu pomocí [funkce hashing funkcí](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/)
 
 ## <a name="example-1-add-temporal-features-for-a-regression-model"></a>Příklad 1: Přidejte dočasné funkce pro regresní model
 Pomocí experimentu "vypovídání poptávky z kol" v Azure Machine Learning Studio (Classic) předvedeme předvedení funkcí pro regresní úlohu. Cílem tohoto experimentu je k predikci poptávky kol, to znamená, počet pronajatých kol za v rámci konkrétní měsíc/den/hodina. Datovou sadu "kol pronájmu Cyklistických datovou sadu" slouží jako nezpracovaný vstupní data. Tato datová sada je založen na reálná data z Bikeshare velké společnosti, která udržuje síť pronájem kola ve Washingtonu D.C. ve Spojených státech. Datová sada představuje počet pronajatých kol za v rámci konkrétní hodina dne v roce 2011 a roku 2012 a obsahuje 17379 řádky a sloupce 17. Nezpracovaná funkce sada obsahuje počasí (rychlost teploty a vlhkosti/větru) a zadejte den (sváteční/den v týdnu). Pole, které se má předpovědět, je počet CNT, který představuje nájemné za kolo v konkrétní hodinu a který rozsah od 1 do 977.
@@ -59,7 +59,7 @@ S cílem vytváření účinné funkce v trénovacích dat čtyři regrese, kter
 
 Kromě nastavení A funkce, která již existuje v původních nezpracovaných dat, se vytvoří další tři sady funkcí prostřednictvím funkce technické procesu. Sada funkcí B zachycuje poslední požadavek na kolaci. Funkci nastavit C zachycení poptávka po kola na konkrétní hodiny. Funkce nastavit poptávka kol po zachycení D konkrétní hodiny nebo na konkrétní den v týdnu. Čtyři trénovací datové sady jednotlivých zahrnuje funkce set A, A + B, A + B + C a A + B + C + D.
 
-V Azure Machine Learning experimentu jsou tyto čtyři cvičných datových sad vytvořený prostřednictvím čtyři větve z předem zpracovaných vstupní datové sady. S výjimkou první větev, každá z těchto větví obsahuje [spustit skript jazyka R](https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/) modul, ve kterém odvozené funkce (funkce sady B, C a D) jsou v uvedeném pořadí vytvořený a připojí k importované datové sady. Následující obrázek ukazuje skript jazyka R, který umožňuje vytvořit sadu funkcí B v druhé větvi vlevo.
+V Azure Machine Learning experimentu jsou tyto čtyři cvičných datových sad vytvořený prostřednictvím čtyři větve z předem zpracovaných vstupní datové sady. S výjimkou větve úplně vlevo obsahuje každá z těchto větví modul [spuštění skriptu jazyka R](https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/) , ve kterém jsou odvozené funkce (funkce, B, C a D) sestaveny a připojeny k importované datové sadě. Následující obrázek ukazuje skript jazyka R, který umožňuje vytvořit sadu funkcí B v druhé větvi vlevo.
 
 ![Vytvoření funkce](./media/create-features/addFeature-Rscripts.png)
 
@@ -69,12 +69,12 @@ Porovnání výsledky výkonu ze čtyř modelů je shrnuto v následující tabu
 
 Nejlepších výsledků jsou zobrazeny pro funkce A + B + C. Rychlost chyb se snižuje, když jsou do školicích dat zahrnuty další sady funkcí. Ověří, předpokládá, že sada funkcí B, C poskytnout další relevantní informace pro úlohu regrese. Ale přidání funkce D nefunguje zadejte jakékoli další snížení frekvence chyb.
 
-## <a name="example2"></a> Příklad 2: Vytvoření funkce v textu dolování
+## <a name="example2"></a>Příklad 2: vytváření funkcí v dolování textu
 Vytváření funkcí je široce použít v úlohy související s dolování textu, jako je například Analýza dokumentů klasifikace a mínění. Například když chcete klasifikovat dokumenty do několika kategorií, typické předpokladem je, že jsou zahrnuté v jedné kategorii dokumentu aplikace word/fráze méně pravděpodobné, že v jiné kategorii dokumentu dojde k. Jinými slovy je možné charakterizovat jiného dokumentu kategorií frekvence rozdělení slov nebo frází. V aplikacích dolování text protože jednotlivé obsah textu obvykle slouží jako vstupní data, je funkce technické procesu potřeba k vytvoření funkce zahrnující frekvencí slovo nebo fráze.
 
-K provedení této úlohy, volá se metoda **hashování** platí pro efektivní zapnutí funkcí libovolného textu do indexy. Místo přidružení jednotlivých funkcí text (slova nebo fráze) do konkrétního indexu, funkce v této metody tak, že použití funkce hash pro funkce a přímo pomocí jejich hodnoty hash jako indexy.
+K dosažení této úlohy se použije technika označovaná jako **hodnota hash funkcí** pro efektivní zapnutí libovolných textových funkcí v indexech. Místo přidružení jednotlivých funkcí text (slova nebo fráze) do konkrétního indexu, funkce v této metody tak, že použití funkce hash pro funkce a přímo pomocí jejich hodnoty hash jako indexy.
 
-V Azure Machine Learning existuje modul pro [Vyhashení funkcí](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) , který bude pohodlně vytvářet funkce slov/fráze. Následující obrázek ukazuje příklad použití tohoto modulu. Vstupní datová sada obsahuje dva sloupce: hodnocení kniha od 1 do 5 a skutečnou kontrolu obsahu. Cílem tohoto [Hashování](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) modulu je k načtení spoustu nových funkcí, které zobrazují četnost výskytu slova odpovídající / zkontrolujte phrase(s) v rámci konkrétního seznamu. Pokud chcete použít tento modul, proveďte následující kroky:
+V Azure Machine Learning existuje modul pro [Vyhashení funkcí](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) , který bude pohodlně vytvářet funkce slov/fráze. Následující obrázek ukazuje příklad použití tohoto modulu. Vstupní datová sada obsahuje dva sloupce: hodnocení kniha od 1 do 5 a skutečnou kontrolu obsahu. Cílem tohoto modulu [hashování funkcí](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) je načíst řadu nových funkcí, které znázorňují četnost výskytů odpovídajících slov (/Phrase) v rámci určité recenze knihy. Pokud chcete použít tento modul, proveďte následující kroky:
 
 * Nejdřív vyberte sloupec, který obsahuje vstupní text ("Col2" v tomto příkladu).
 * Za druhé, nastavte "Hashing bitsize" 8, což znamená, že 2 ^ 8 = 256, vytvoří se funkce. Word/fáze veškerý text se rozdělí na 256 indexy. Parametr "Hashing bitsize" od 1 do 31. Slova / phrase(s) jsou méně pravděpodobné, že se rozdělily na stejný index, pokud bude většímu počtu nastavení.

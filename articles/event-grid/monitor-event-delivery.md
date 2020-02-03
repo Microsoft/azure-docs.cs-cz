@@ -21,7 +21,7 @@ Tento článek popisuje, jak pomocí portálu zobrazit stav doručení událost�
 
 Event Grid poskytuje trvalé doručování. Každou zprávu pro každé předplatné zajišťuje aspoň jednou. Události se odesílají do registrovaného Webhooku každého předplatného hned. Pokud Webhook nepotvrdí přijetí události během 60 sekund od prvního pokusu o doručení, Event Grid pokusy o doručení události.
 
-Informace o doručování událostí a opakovaných pokusů [doručování zpráv služby Event Grid a zkuste to znovu](delivery-and-retry.md).
+Pro informace o doručení a opakování události [Event Grid doručování zpráv a akci opakujte](delivery-and-retry.md).
 
 ## <a name="delivery-metrics"></a>Metriky doručení
 
@@ -76,7 +76,7 @@ Zobrazit metriky pro vlastní událost tématu.
 
 ![Zobrazit metriky událostí](./media/monitor-event-delivery/custom-topic-metrics.png)
 
-## <a name="set-alerts"></a>Nastavení výstrah
+## <a name="set-alerts"></a>Nastavení upozornění
 
 Můžete nastavit výstrahy týkající se metrik a úrovně domény pro vlastní témata a domény událostí. V okně Přehled pro vyberte možnost **výstrahy** z nabídky prostředků vlevo, aby bylo možné zobrazit, spravovat a vytvářet pravidla výstrah. [Další informace o výstrahách Azure Monitor](../azure-monitor/platform/alerts-overview.md)
 
@@ -84,6 +84,6 @@ Můžete nastavit výstrahy týkající se metrik a úrovně domény pro vlastn�
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o doručování událostí a opakovaných pokusů [doručování zpráv služby Event Grid a zkuste to znovu](delivery-and-retry.md).
-* Úvod do Event Gridu najdete v článku [Informace o službě Event Grid](overview.md).
-* Pokud chcete rychle začít používat služby Event Grid, přečtěte si téma [vytvoření a směrování vlastních událostí pomocí služby Azure Event Grid](custom-event-quickstart.md).
+* Pro informace o doručení a opakování události [Event Grid doručování zpráv a akci opakujte](delivery-and-retry.md).
+* Úvod do Event Gridu najdete v článku o [Event Gridu](overview.md).
+* Pokud chcete rychle začít používat Event Grid, přečtěte si téma [Vytvoření a směrování vlastních událostí pomocí Azure Event Grid](custom-event-quickstart.md).

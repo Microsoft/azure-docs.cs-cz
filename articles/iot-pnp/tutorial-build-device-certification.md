@@ -28,7 +28,7 @@ Ověřovací testy kontrolují tyto podmínky:
 - Váš kód zařízení implementuje rozhraní informací o zařízení.
 - Model schopností a kód zařízení fungují s IoT Central.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 

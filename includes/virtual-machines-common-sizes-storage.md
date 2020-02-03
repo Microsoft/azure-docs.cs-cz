@@ -17,7 +17,7 @@ ms.locfileid: "76748978"
 ---
 Velikosti virtuálních počítačů optimalizované pro úložiště nabízejí vysokou propustnost disku a vstupně-výstupní operace a jsou ideální pro velké objemy dat, SQL, databáze NoSQL, datové sklady a velké transakční databáze.  Mezi příklady patří Cassandra, MongoDB, Cloudera a Redis. Tento článek poskytuje informace o počtu vCPU, datových discích a síťových adaptérů a propustnosti místního úložiště a šířce pásma sítě pro každou optimalizovanou velikost.
 
-Lsv2-Series nabízí vysokou propustnost, nízkou latenci a přímo namapované místní úložiště NVMe běžící na [procesorech AMD EPYC &trade; 7551](https://www.amd.com/en/products/epyc-7000-series) se všemi základními zvýšeními úrovně 2.55 GHz a maximálním zvýšením velikosti 3,0 GHz. Virtuální počítače řady Lsv2 se dodávají ve velikostech od 8 do 80 virtuálních procesorů s konfigurací souběžného multithreadingu.  K dispozici je 8 GiB paměti na virtuální procesor a jedno 1,92TB zařízení NVMe SSD M.2 na 8 virtuálních procesorů. Pro L80s v2 je k dispozici 19,2 TB (10 × 1,92 TB).
+Lsv2-Series nabízí vysokou propustnost, nízkou latenci a přímo namapované místní úložiště NVMe běžící na [procesorech AMD EPYC &trade; 7551](https://www.amd.com/en/products/epyc-7000-series) se všemi základními zvýšeními úrovně 2.55 GHz a maximálním zvýšením velikosti 3,0 GHz. Virtuální počítače řady Lsv2-Series přicházejí v případě souběžné konfigurace s více vlákny do velikosti od 8 do 80 vCPU.  K dispozici je 8 GiB paměti na vCPU a jedno 1.92 TB NVMe SSD M. 2 zařízení na 8 vCPU a až 19.2 TB (10x 1.92 TB), které je dostupné na L80s v2.
 
 > [!NOTE]
 > Virtuální počítače řady Lsv2-Series jsou optimalizované tak, aby používaly místní disk na uzlu připojeném přímo k virtuálnímu počítači namísto použití trvalých datových disků. To umožňuje pro vaše úlohy větší počet vstupně-výstupních operací a propustnosti. Lsv2 a ls-series nepodporují vytváření místní mezipaměti, aby bylo možné navýšit IOPs dosažitelné pomocí trvalých datových disků.
@@ -27,7 +27,7 @@ Lsv2-Series nabízí vysokou propustnost, nízkou latenci a přímo namapované 
 > Další informace najdete v tématu [optimalizace výkonu na virtuálních počítačích řady Lsv2-Series](../articles/virtual-machines/linux/storage-performance.md).  
 
 
-## <a name="lsv2-series"></a>Řada Lsv2
+## <a name="lsv2-series"></a>Lsv2-Series
 
 ACU: 150-175
 
@@ -35,7 +35,7 @@ Premium Storage: podporováno
 
 Ukládání Premium Storage do mezipaměti: nepodporováno
 
-| Velikost          | vCPU | Paměť (GiB) | Dočasný disk<sup>1</sup> (GIB) | Disky NVMe<sup>2</sup> | Propustnost disku NVMe<sup>3</sup> (čtení za sekundu/s) | Maximální propustnost datového disku neuloženého v mezipaměti (IOPs/MB/s)<sup>4</sup> | Maximální počet datových disků | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
+| Velikost          | Virtuální procesory | Paměť (GiB) | Dočasný disk<sup>1</sup> (GIB) | Disky NVMe<sup>2</sup> | Propustnost disku NVMe<sup>3</sup> (čtení za sekundu/s) | Maximální propustnost datového disku neuloženého v mezipaměti (IOPs/MB/s)<sup>4</sup> | Maximální počet datových disků | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
 |---------------|-----------|-------------|--------------------------|----------------|---------------------------------------------------|-------------------------------------------|------------------------------|------------------------------| 
 | Standard_L8s_v2   |  8 |  64 |  80 |  1x 1.92 TB  | 400000/2000  | 8000/160   | 16 | 2 / 3200  |
 | Standard_L16s_v2  | 16 | 128 | 160 |  2x 1.92 TB  | 800000/4000  | 16000/320  | 32 | 4 / 6400  |

@@ -52,7 +52,7 @@ Aplikace, které vyžadují, aby se v aplikaci nachází záznam uživatele pře
 
 * Snižte náklady na hostování a údržbu řešení pro zřizování s vlastním vývojem.
 
-## <a name="choose-a-provisioning-method"></a>Zvolit metodu zřizování
+## <a name="choose-a-provisioning-method"></a>Výběr metody zřizování
 
 Azure AD poskytuje několik integračních cest, které umožňují Automatické zřizování uživatelů pro vaši aplikaci.
 

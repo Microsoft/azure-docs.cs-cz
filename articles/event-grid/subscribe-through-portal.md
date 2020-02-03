@@ -28,7 +28,7 @@ Chcete-li vytvořit předplatné Event Grid pro některý z podporovaných [zdro
 
 1. Vyhledejte **Event Grid odběry** a vyberte ji z dostupných možností.
 
-   ![Hledat](./media/subscribe-through-portal/search.png)
+   ![Hledání](./media/subscribe-through-portal/search.png)
 
 1. Vyberte **+ Odběr události**.
 
@@ -66,6 +66,6 @@ Portál nabízí možnosti pro vytvoření odběru událostí, které je relevan
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o doručování událostí a opakovaných pokusů [doručování zpráv služby Event Grid a zkuste to znovu](delivery-and-retry.md).
-* Úvod do Event Gridu najdete v článku [Informace o službě Event Grid](overview.md).
-* Pokud chcete rychle začít používat služby Event Grid, přečtěte si téma [vytvoření a směrování vlastních událostí pomocí služby Azure Event Grid](custom-event-quickstart.md).
+* Pro informace o doručení a opakování události [Event Grid doručování zpráv a akci opakujte](delivery-and-retry.md).
+* Úvod do Event Gridu najdete v článku o [Event Gridu](overview.md).
+* Pokud chcete rychle začít používat Event Grid, přečtěte si téma [Vytvoření a směrování vlastních událostí pomocí Azure Event Grid](custom-event-quickstart.md).

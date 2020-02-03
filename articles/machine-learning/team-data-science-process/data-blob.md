@@ -18,7 +18,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76721094"
 ---
-# <a name="heading"></a>Zpracování dat objektů blob v Azure pomocí pokročilých analýz
+# <a name="heading"></a>Zpracování dat Azure BLOB pomocí pokročilých analýz
 Tento dokument popisuje analýzu dat a generování funkcí z dat uložených v úložišti objektů Blob v Azure. 
 
 ## <a name="load-the-data-into-a-pandas-data-frame"></a>Načtení dat do datového rámce Pandas
@@ -94,7 +94,7 @@ Tady je pár příkladů, jak zkoumat data pomocí Pandas:
         #correlation between column_a and column_b
         dataframe_blobdata[['<column_a>', '<column_b>']].corr()
 
-## <a name="blob-featuregen"></a>Funkce generování
+## <a name="blob-featuregen"></a>Generace funkcí
 Vygenerujeme funkce Python následujícím způsobem:
 
 ### <a name="blob-countfeature"></a>Generování funkcí na základě hodnoty ukazatele
@@ -116,7 +116,7 @@ Funkce zařazené do kategorií můžete vytvořit následujícím způsobem:
         #Remove the original column rate_code in df1_with_dummy
         dataframe_blobdata_with_identity.drop('<categorical_column>', axis=1, inplace=True)
 
-### <a name="blob-binningfeature"></a>Binning funkci generování
+### <a name="blob-binningfeature"></a>Generace funkcí binningu
 Pro generování rozdělený na intervaly funkce jsme postupujte následovně:
 
 1. Přidat posloupnost sloupců do adresáře bin číselný sloupec
@@ -130,7 +130,7 @@ Pro generování rozdělený na intervaly funkce jsme postupujte následovně:
    
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)    
 
-## <a name="sql-featuregen"></a>Zápis dat objektů blob v Azure a použití ve službě Azure Machine Learning
+## <a name="sql-featuregen"></a>Zápis dat zpět do objektu blob Azure a využití v Azure Machine Learning
 Po prozkoumání dat a vytvoření potřebných funkcí můžete data (sampleed nebo natrénuje) nahrát do objektu blob Azure a využít je v Azure Machine Learning pomocí následujících kroků: v Azure Machine Learning se dají vytvořit další funkce. Studio (Classic) také. 
 
 1. Zápis datového rámce do místního souboru

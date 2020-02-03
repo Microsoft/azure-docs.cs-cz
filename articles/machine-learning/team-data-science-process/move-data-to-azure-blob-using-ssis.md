@@ -19,7 +19,7 @@ ms.lasthandoff: 01/24/2020
 ms.locfileid: "76720867"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Přesun dat do nebo z Azure Blob Storage pomocí konektorů SSIS
-[SQL Server Integration Services Feature Pack for Azure](https://msdn.microsoft.com/library/mt146770.aspx) obsahuje součásti pro připojení k Azure, přenos dat mezi Azure a místních zdrojů dat a zpracování dat uložených v Azure.
+[Služba SSIS (SQL Server Integration Services) Feature Pack pro Azure](https://msdn.microsoft.com/library/mt146770.aspx) poskytuje komponenty pro připojení k Azure, přenos dat mezi Azure a místními zdroji dat a zpracování dat uložených v Azure.
 
 [!INCLUDE [blob-storage-tool-selector](../../../includes/machine-learning-blob-storage-tool-selector.md)]
 
@@ -27,38 +27,38 @@ Jakmile si zákazníci přesunou místní data do cloudu, budou mít přístup k
 
 Příklady používání těchto prostředků Azure najdete v návodech k [SQL](sql-walkthrough.md) a [HDInsight](hive-walkthrough.md) .
 
-Diskuzi o canonical scénáře, které používají služby SSIS k dosažení obchodních potřeb běžné v scénáře integrace hybridních dat, naleznete v tématu [udělat více s SQL Server Integration Services Feature Pack for Azure](https://blogs.msdn.com/b/ssis/archive/2015/06/25/doing-more-with-sql-server-integration-services-feature-pack-for-azure.aspx) blogu.
+Diskuzi o normativních scénářích, které používají SSIS k tomu, aby se v hybridních scénářích integrace dat prováděly běžné obchodní potřeby, najdete v článku [Další informace o služba SSIS (SQL Server Integration Services) balíčku funkcí pro blog Azure](https://blogs.msdn.com/b/ssis/archive/2015/06/25/doing-more-with-sql-server-integration-services-feature-pack-for-azure.aspx) .
 
 > [!NOTE]
-> Dokončení Úvod do Azure blob storage, najdete v tématu [základy Azure Blob](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) a [služby Azure Blob](https://msdn.microsoft.com/library/azure/dd179376.aspx).
+> Úplný Úvod do úložiště objektů BLOB v Azure najdete v tématu [základy Azure Blob](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) a [Azure Blob Service](https://msdn.microsoft.com/library/azure/dd179376.aspx).
 > 
 > 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Abyste mohli provádět úkoly popsané v tomto článku, musíte mít předplatné Azure a nastavený účet Azure Storage. Pro nahrání nebo stažení dat budete potřebovat název účtu Azure Storage a klíč účtu.
 
-* Nastavení **předplatného Azure**, naleznete v tématu [zkušební verze na měsíc zdarma](https://azure.microsoft.com/pricing/free-trial/).
+* Pokud chcete nastavit **předplatné Azure**, přečtěte si [bezplatnou měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 * Pokyny k vytvoření **účtu úložiště** a získání informací o účtu a klíči najdete v tématu [informace o Azure Storagech účtech](../../storage/common/storage-create-storage-account.md).
 
-Použít **konektorů SSIS**, je nutné stáhnout:
+Pokud chcete používat **konektory SSIS**, musíte si stáhnout:
 
-* **SQL Server 2014 nebo 2016 Standard (nebo novější)** : instalace zahrnuje SQL Server Integration Services.
+* **SQL Server 2014 nebo 2016 Standard (nebo vyšší)** : Install zahrnuje služba SSIS (SQL Server Integration Services).
 * **Balíček funkcí integračních služeb Microsoft SQL Server 2014 nebo 2016 pro Azure**: tyto konektory si můžete stáhnout na stránkách [SQL Server 2014 integrační služby](https://www.microsoft.com/download/details.aspx?id=47366) a [SQL Server služby 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) .
 
 > [!NOTE]
-> Služby SSIS je nainstalovaná se systémem SQL Server, ale není zahrnutý ve verzi Express. Informace o tom, jaké aplikace jsou zahrnuté v různých edicích systému SQL Server, naleznete v tématu [edice SQL serveru](https://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/)
+> Služby SSIS je nainstalovaná se systémem SQL Server, ale není zahrnutý ve verzi Express. Informace o tom, jaké aplikace jsou zahrnuté v různých edicích SQL Server, najdete v tématu [SQL Server Editions](https://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/) .
 > 
 > 
 
-Školicí materiály o prostředí SSIS, naleznete v tématu [rukou na školení pro službu SSIS](https://www.microsoft.com/sql-server/training-certification)
+Výukové materiály na SSIS najdete v tématu [školení pro SSIS](https://www.microsoft.com/sql-server/training-certification) .
 
-Informace o tom, jak získat nahoru a spuštění pomocí SISS vytvářet jednoduchá extrakce, transformace a načítání (ETL) balíčky, viz [SSIS kurz: vytvoření jednoduchého balíčku ETL](https://msdn.microsoft.com/library/ms169917.aspx).
+Informace o tom, jak pomocí SISS vytvořit jednoduché balíčky pro extrakci, transformaci a načítání (ETL), najdete v tématu [SSIS kurz: vytvoření jednoduchého balíčku ETL](https://msdn.microsoft.com/library/ms169917.aspx).
 
 ## <a name="download-nyc-taxi-dataset"></a>Stáhnout NYC taxislužby datovou sadu
-V příkladu je popsáno zde použít veřejně dostupné datové sady – [cesty taxíkem NYC](https://www.andresmh.com/nyctaxitrips/) datové sady. Datová sada se skládá z přibližně 173 milionů taxislužby lyžovačku v NYC v roce 2013. Existují dva druhy dat: Podrobnosti dat a tarif dat o jízdách. Vzhledem k tomu, že každý měsíc je soubor, máme 24 souborů, z nichž každý má přibližně 2 GB nekomprimovaných.
+V příkladu popsaném tady můžete použít veřejně dostupnou datovou sadu – datovou sadu [NYC taxislužby TRIPS](https://www.andresmh.com/nyctaxitrips/) . Datová sada se skládá z přibližně 173 milionů taxislužby lyžovačku v NYC v roce 2013. Existují dva druhy dat: Podrobnosti dat a tarif dat o jízdách. Vzhledem k tomu, že každý měsíc je soubor, máme 24 souborů, z nichž každý má přibližně 2 GB nekomprimovaných.
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Nahrání dat do úložiště objektů blob v Azure
-Pro přesun dat pomocí služby SSIS balíček z místního do Azure blob storage funkcí, můžeme použít instanci [ **úkol nahrát objekt Blob Azure**](https://msdn.microsoft.com/library/mt146776.aspx), je vidět tady:
+K přesunu dat pomocí balíčku funkcí SSIS z místního prostředí do úložiště objektů BLOB v Azure používáme instanci [**úlohy nahrávání objektů BLOB v Azure**](https://msdn.microsoft.com/library/mt146776.aspx), která se tady zobrazuje:
 
 ![Konfigurace data vědy vm](./media/move-data-to-azure-blob-using-ssis/ssis-azure-blob-upload-task.png)
 
@@ -70,20 +70,20 @@ Parametry, které používá úlohy jsou popsány zde:
 | **BlobContainer** |Určuje název kontejneru objektů blob, který obsahuje nahrané soubory jako objekty blob. |
 | **BlobDirectory** |Určuje adresář objektů blob, kde nahraný soubor je uložen jako objekt blob bloku. Adresáře objektů blob je virtuální hierarchickou strukturu. Pokud objekt blob již existuje, nahradí ia it. |
 | **LocalDirectory** |Určuje místní adresář, který obsahuje soubory k odeslání. |
-| **FileName** |Určuje filtr názvu a vyberte soubory se vzorem zadaným názvem. Například MySheet\*.xls\* obsahuje soubory, jako MySheet001.xls a MySheetABC.xlsx |
-| **TimeRangeFrom/TimeRangeTo** |Určuje časový filtr rozsahu. Upravené soubory po *TimeRangeFrom* a před *TimeRangeTo* jsou zahrnuty. |
+| **Bitmap** |Určuje filtr názvu a vyberte soubory se vzorem zadaným názvem. Například MySheet\*. xls\* obsahuje soubory, jako je například MySheet001. xls a MySheetABC. xlsx. |
+| **TimeRangeFrom/TimeRangeTo** |Určuje časový filtr rozsahu. Soubory upravené po *TimeRangeFrom* a před zahrnutím *TimeRangeTo* . |
 
 > [!NOTE]
-> **AzureStorageConnection** přihlašovací údaje musí být správná a **BlobContainer** musí existovat předtím, než dojde k pokusu o přenos.
+> Přihlašovací údaje **AzureStorageConnection** musí být správné a před pokusem o přenos musí existovat **BlobContainer** .
 > 
 > 
 
 ## <a name="download-data-from-azure-blob-storage"></a>Stáhnout data z úložiště objektů blob v Azure
-Stáhnout data z úložiště objektů blob Azure do místního úložiště pomocí služby SSIS, použít instanci [úloha stažení objektů Blob v Azure](https://msdn.microsoft.com/library/mt146779.aspx).
+Pokud chcete stáhnout data ze služby Azure Blob Storage do místního úložiště pomocí SSIS, použijte instanci [úlohy stažení objektu BLOB v Azure](https://msdn.microsoft.com/library/mt146779.aspx).
 
 ## <a name="more-advanced-ssis-azure-scenarios"></a>Pokročilejší scénáře SSIS Azure
 Funkce balíčku služby SSIS umožňuje složitější toky zpracovávat úlohy balení společně. Například může přímo do clusteru služby HDInsight, jejíž výstup může stáhnout zpět do objektu blob a pak do úložiště v místním kanálu dat objektů blob. SSIS můžete spouštět úlohy Hive a Pig na clusteru služby HDInsight pomocí dalších konektorů SSIS:
 
-* Pro spuštění skriptu Hive v clusteru Azure HDInsight pomocí služby SSIS, použít [Azure HDInsight Hive úloh](https://msdn.microsoft.com/library/mt146771.aspx).
-* Chcete-li spustit skript Pig v clusteru Azure HDInsight pomocí služby SSIS, použijte [úlohy Pig Azure HDInsight](https://msdn.microsoft.com/library/mt146781.aspx).
+* Pokud chcete spustit skript podregistru v clusteru Azure HDInsight s SSIS, použijte [úlohu pro podregistr Azure HDInsight](https://msdn.microsoft.com/library/mt146771.aspx).
+* Pokud chcete spustit skript prasete v clusteru Azure HDInsight s SSIS, použijte [úlohu Azure HDInsight pro prasečí](https://msdn.microsoft.com/library/mt146781.aspx).
 

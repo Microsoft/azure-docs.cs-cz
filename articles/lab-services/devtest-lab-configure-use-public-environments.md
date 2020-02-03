@@ -36,7 +36,7 @@ Můžete povolit nebo zakázat veřejná prostředí pro testovací prostředí 
 
 1. Vyberte **konfiguraci a zásady** pro testovací prostředí. 
 2. V části **základy virtuálního počítače** vyberte **Veřejná prostředí**.
-3. Pokud chcete pro testovací prostředí povolit veřejná prostředí, vyberte **Ano**. V opačném případě vyberte **ne**. 
+3. Pokud chcete pro testovací prostředí povolit veřejná prostředí, vyberte **Ano**. V opačném případě vyberte možnost **ne**. 
 4. Pokud jste povolili veřejná prostředí, všechna prostředí v úložišti jsou ve výchozím nastavení povolená. Můžete zrušit výběr prostředí, aby ho uživatelé testovacího prostředí nemohli mít k dispozici. 
 
 ![Stránka veřejné prostředí](media/devtest-lab-configure-use-public-environments/public-environments-page.png)

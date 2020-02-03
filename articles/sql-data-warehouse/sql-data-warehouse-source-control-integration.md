@@ -37,7 +37,7 @@ V tomto kurzu se naučíte, jak integrovat projekt databáze SSDT (SQL Server Da
 
    ![Spravovat připojení](media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Spravovat připojení")
 
-   ![Připojení](media/sql-data-warehouse-source-control-integration/3-connect.png "Propojení")
+   ![Připojení](media/sql-data-warehouse-source-control-integration/3-connect.png "Připojení")
 
 3. Naklonujte úložiště Azure úložiště z vašeho projektu na místní počítač.
 
@@ -63,7 +63,7 @@ V tomto kurzu se naučíte, jak integrovat projekt databáze SSDT (SQL Server Da
 
    ![Synchronizovat a vložit](media/sql-data-warehouse-source-control-integration/7.5-commit-push-changes.png "Synchronizovat a vložit")  
 
-## <a name="validation"></a>Ověřování
+## <a name="validation"></a>Ověření
 
 1. Pomocí sady Visual Studio SQL Server Data Tools (SSDT) ověřte, že jste do svého úložiště Azure posunuli změny pomocí aktualizace sloupce tabulky v projektu databáze.
 

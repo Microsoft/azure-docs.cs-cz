@@ -30,16 +30,16 @@ ms.locfileid: "76718169"
 > * [Hromadný prováděcí modul – .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Hromadný prováděcí modul – Java](sql-api-sdk-bulk-executor-java.md)
 
-Java SDK pro rozhraní API SQL podporuje synchronní operace. Pro asynchronní podporu, použijte [SQL API asynchronní Java SDK](sql-api-sdk-async-java.md). 
+Java SDK pro rozhraní API SQL podporuje synchronní operace. Pro asynchronní podporu použijte [rozhraní API SQL Async Java SDK](sql-api-sdk-async-java.md). 
 
 | |  |
 |---|---|
 |**Stažení sady SDK**|[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
-|**Dokumentace k rozhraní API**|[Dokumentace k rozhraní Java API](/java/api/com.microsoft.azure.documentdb)|
-|**Přispívat k sadě SDK**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
+|**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní Java API](/java/api/com.microsoft.azure.documentdb)|
+|**Přispívání do sady SDK**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
 |**Začínáme**|[Začínáme se sadou Java SDK](sql-api-java-get-started.md)|
-|**Kurz vývoje webové aplikace**|[Vývoj webových aplikací pomocí služby Azure Cosmos DB](sql-api-java-application.md)|
-|**Minimální podporovaný modul runtime**|[Java Development Kit (JDK) 7 +](https://aka.ms/azure-jdks)|
+|**Kurz webové aplikace**|[Vývoj webových aplikací pomocí Azure Cosmos DB](sql-api-java-application.md)|
+|**Minimální podporovaná doba běhu**|[Java Development Kit (JDK) 7 +](https://aka.ms/azure-jdks)|
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
@@ -127,7 +127,7 @@ Java SDK pro rozhraní API SQL podporuje synchronní operace. Pro asynchronní p
 
 ### <a name="a-name11501150"></a><a name="1.15.0"/>1.15.0
 * Vylepšený výkon serializace Json.
-* Tato verze sady SDK vyžaduje nejnovější verzi Azure emulátor služby Cosmos DB k dispozici ke stažení z https://aka.ms/cosmosdb-emulator.
+* Tato verze sady SDK vyžaduje k dispozici nejnovější verzi Azure Cosmos DB emulátoru ke stažení z https://aka.ms/cosmosdb-emulator.
 
 ### <a name="a-name11401140"></a><a name="1.14.0"/>1.14.0
 * Interní změny pro knihovny Microsoft přátel.
@@ -154,7 +154,7 @@ Java SDK pro rozhraní API SQL podporuje synchronní operace. Pro asynchronní p
 * Opravili jsme několik chyb v kontejneru relace, které mohou způsobit výjimku "Vlastník prostředek nebyl nalezen" požadavkům ihned po vytvoření kolekce.
 
 ### <a name="a-name195195"></a><a name="1.9.5"/>1.9.5
-* Přidání podpory pro dotazy agregace (počet, MIN, MAX, součet a průměr). Zobrazit [podporu agregace](sql-query-aggregates.md).
+* Přidání podpory pro dotazy agregace (počet, MIN, MAX, součet a průměr). Viz [Podpora agregace](sql-query-aggregates.md).
 * Přidání podpory pro kanál změn.
 * Přidání podpory pro informace o kvótě kolekce prostřednictvím RequestOptions.setPopulateQuotaInfo.
 * Přidání podpory pro uloženou proceduru skript protokolování prostřednictvím RequestOptions.setScriptLoggingEnabled.
@@ -212,7 +212,7 @@ Java SDK pro rozhraní API SQL podporuje synchronní operace. Pro asynchronní p
 * Další čas pro podporu live (TTL) pro dokumenty.
 
 ### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
-* Implementovat [dělené kolekce](partition-data.md) a [uživatelsky definovaným výkonem úrovně](performance-levels.md).
+* Implementované [dělené kolekce](partition-data.md) a [uživatelem definované úrovně výkonu](performance-levels.md).
 
 ### <a name="a-name151151"></a><a name="1.5.1"/>1.5.1
 * Oprava chyby v HashPartitionResolver ke generování hodnot hash v little endian, aby byla konzistentní s jiných sad SDK.
@@ -229,7 +229,7 @@ Java SDK pro rozhraní API SQL podporuje synchronní operace. Pro asynchronní p
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
 * Podporuje geoprostorové indexu
-* Ověří vlastnost ID pro všechny prostředky. ID prostředků nemůže obsahovat?, /, #, \, znaky ani končit mezerou.
+* Ověří vlastnost ID pro všechny prostředky. ID pro prostředky nesmí obsahovat znaky?,/, #, \, nebo končit mezerou.
 * Přidá nové záhlaví "index transformace průběh" ResourceResponse.
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
@@ -239,7 +239,7 @@ Java SDK pro rozhraní API SQL podporuje synchronní operace. Pro asynchronní p
 * GA SDK
 
 ## <a name="release-and-retirement-dates"></a>Datum vydání verze a vyřazení z provozu
-Microsoft bude poskytovat oznámení alespoň **12 měsíců** před vyřazením z provozu sady SDK ulehčení přechodu na verzi novější nebo podporované.
+Microsoft bude před vyřazením sady SDK do novější nebo podporované verze oznámení obsahovat alespoň **12 měsíců** .
 
 Nové funkce a funkce a optimalizace jsou přidány pouze aktuální sadu SDK, proto je doporučujeme vždy upgradovat na nejnovější SDK verzi co možná nejdříve.
 
@@ -251,17 +251,17 @@ Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítn
 >
 
 > [!WARNING]
-> Všechny verze SQL SDK pro Javu starší než verze **1.0.0** byly dostupné jenom do **29. února 2016**.
+> Všechny verze sady SQL SDK pro jazyk Java starší než verze **1.0.0** byly vyřazení od **29. února 2016**.
 > 
 > 
 
 <br/>
 
-| Verze | Datum vydání | Datum vyřazení z provozu |
+| Version | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
 | [2.1.3](#2.1.3) |13. března 2018 |--- |
 | [2.1.2](#2.1.2) |9\. března 2018 |--- |
-| [2.1.1](#2.1.1) |DEC 13, 2018 |--- |
+| [bodů](#2.1.1) |DEC 13, 2018 |--- |
 | [2.1.0](#2.1.0) |20. listopadu 2018 |--- |
 | [2.0.0](#2.0.0) |21. září 2018 |--- |
 | [1.16.4](#1.16.4) |10. září 2018 |30. května 2020 |
@@ -302,9 +302,9 @@ Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítn
 | 0.9.1-prelease |19. prosince 2014 |29. února 2016 |
 | 0.9.0-prelease |10. prosince 2014 |29. února 2016 |
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Další informace najdete v tématech
-Další informace o službě Cosmos DB najdete v tématu [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) stránku služby.
+## <a name="see-also"></a>Viz také
+Další informace o Cosmos DB najdete na stránce služby [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) .
 

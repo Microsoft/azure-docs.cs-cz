@@ -44,7 +44,7 @@ Pokud plánujete ochranu obsahu pomocí Media Services dynamického šifrování
 
 Váš klient streamování může určit následující formáty HLS:
 
-|Protocol (Protokol)|Příklad:|
+|Protocol (Protokol)|Příklad|
 |---|---|
 |HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`||
 |HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`||
@@ -54,7 +54,7 @@ Váš klient streamování může určit následující formáty HLS:
 
 Váš klient streamování může určit následující formáty MPEG-SPOJOVNÍK:
 
-|Protocol (Protokol)|Příklad:|
+|Protocol (Protokol)|Příklad|
 |---|---|
 |MPEG-SPOJOVNÍK CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` ||
 |MPEG-SPOJOVNÍK CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` ||
@@ -277,7 +277,7 @@ V případě POMLČKového manifestu by se měly přidat následující dva elem
 
 Pro HLS v7 a vyšší `(format=m3u8-cmaf)`by jeho seznam testů `AUTOSELECT=YES,CHARACTERISTICS="public.accessibility.describes-video"` při signalizaci stopy zvukového popisu.
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
 Další informace najdete v tématu [postup signalizace stopy zvukového popisu](signal-descriptive-audio-howto.md).
 
@@ -296,7 +296,7 @@ Chcete-li řídit počet běhů, formátů, přenosové rychlosti a časová obd
 
 Podívejte se na [Azure Media Services komunita](media-services-community.md) a podívejte se na různé způsoby, jak můžete klást otázky, sdělit svůj názor a získávat aktualizace Media Services.
 
-## <a name="need-help"></a>Potřebujete pomoct?
+## <a name="need-help"></a>Potřebujete pomoc?
 
 Lístek podpory můžete otevřít tak, že přejdete na [novou žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 

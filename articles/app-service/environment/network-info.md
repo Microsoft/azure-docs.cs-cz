@@ -53,7 +53,7 @@ Při horizontálním navýšení nebo snížení kapacity se přidají nové rol
 
 K fungování pomocného mechanismu pro zpracování vyžaduje jenom následující porty, které se dají otevřít:
 
-| Použití | Od | až |
+| Použití | Z | Akce |
 |-----|------|----|
 | Správa | Adresy pro správu App Service | Podsíť pomocného mechanismu: 454, 455 |
 |  Interní komunikace prostřednictvím pomocného mechanismu | Podsíť pomocného mechanismu: všechny porty | Podsíť pomocného mechanismu: všechny porty
@@ -84,13 +84,13 @@ Pro odchozí přístup závisí přístupový objekt na více externích systém
 
 Služba pomocného mechanismu oznamuje přístup k Internetu adres na těchto portech:
 
-| Využití | Porty |
+| Používá | Porty |
 |-----|------|
 | DNS | 53 |
 | NTP | 123 |
 | CRL, aktualizace Windows, závislosti Linux, služby Azure | 80/443 |
 | Azure SQL | 1433 | 
-| Sledování | 12000 |
+| Monitorování | 12000 |
 
 Odchozí závislosti jsou uvedené v dokumentu, který popisuje [uzamykání App Service Environment odchozích přenosů](./firewall-integration.md). Pokud přístupový modul pro přístup ztratí přístup k jeho závislostem, přestane fungovat. Pokud k tomu dojde dostatečně dlouho, pozastaví se pomocného mechanismu. 
 
@@ -113,8 +113,8 @@ Kromě funkčních závislostí pomocného mechanismu je několik dalších polo
 -   Streamování protokolů
 -   Kudu
 -   Rozšíření
--   Průzkumník procesů
--   Console
+-   Process Explorer
+-   Konzola
 
 Když použijete interního nástroje pomocného mechanismu, web SCM není přístupný mimo virtuální síť. Některé možnosti nebudou fungovat z portálu aplikace, protože vyžadují přístup k webu SCM aplikace. K webu SCM se můžete připojit přímo místo používání portálu. 
 
@@ -142,7 +142,7 @@ Pomocí externího pomocného uživatele můžete přiřadit IP adresy jednotliv
 
 Když má aplikace svoji vlastní adresu SSL založenou na IP adresách, pomocného mechanismu pro mapování na tuto IP adresu rezervuje dva porty. Jeden port je pro přenosy HTTP a druhý port pro protokol HTTPS. Tyto porty jsou uvedené v uživatelském rozhraní pomocného mechanismu v části IP adresy. Provoz musí být schopný získat přístup k těmto portům z virtuální IP adresy nebo jsou aplikace nedostupné. Tento požadavek je důležité pamatovat při konfiguraci skupin zabezpečení sítě (skupin zabezpečení sítě).
 
-## <a name="network-security-groups"></a>Skupiny zabezpečení sítě ##
+## <a name="network-security-groups"></a>Network Security Groups (Skupiny zabezpečení sítě) ##
 
 [Skupiny zabezpečení sítě][NSGs] poskytují možnost řídit přístup k síti v rámci virtuální sítě. Když použijete portál, existuje implicitní pravidlo odepření s nejnižší prioritou pro zamítnutí všeho. To, co sestavíte, jsou vaše pravidla povolení.
 
@@ -200,7 +200,7 @@ Chcete-li vytvořit stejné trasy ručně, postupujte podle následujících kro
 
 3. V uživatelském rozhraní směrovací tabulky vyberte **trasy** > **Přidat**.
 
-4. Nastavte **typ dalšího segmentu směrování** na **Internet** a **předponu adresy** na **0.0.0.0/0**. Vyberte **Uložit**.
+4. Nastavte **typ dalšího segmentu směrování** na **Internet** a **předponu adresy** na **0.0.0.0/0**. Vyberte **Save** (Uložit).
 
     Pak se zobrazí něco podobného následujícímu:
 

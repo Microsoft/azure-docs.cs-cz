@@ -117,7 +117,7 @@ az vmss create \
   --generate-ssh-keys
 ```
 
-Vytvoření a konfigurace všech prostředků škálovací sady a virtuálních počítačů trvá několik minut. Když vás Azure CLI vrátí na příkazový řádek, na pozadí stále poběží úlohy. Než k aplikaci budete mít přístup, může to ještě několik minut trvat.
+Vytvoření a konfigurace všech prostředků škálovací sady a virtuálních počítačů trvá několik minut. Jakmile vás Azure CLI vrátí na příkazový řádek, na pozadí stále poběží úlohy. Může trvat dalších několik minut, než k aplikaci budete mít přístup.
 
 
 ## <a name="allow-web-traffic"></a>Povolení webového provozu
@@ -212,7 +212,7 @@ az vmss list-instance-connection-info \
 Můžete vytvořit datové disky a použít je se škálovacími sadami. V předchozím kurzu jste zjistili, jak [spravovat disky Azure](tutorial-manage-disks.md), a seznámili jste se s osvědčenými postupy a vylepšeními výkonu pro sestavování aplikací na datových discích místo disku s operačním systémem.
 
 ### <a name="create-scale-set-with-data-disks"></a>Vytvoření škálovací sady s datovými disky
-Pokud chcete vytvořit škálovací sadu a připojit k ní datové disky, přidejte do příkazu [az vmss create](/cli/azure/vmss#az-vmss-create) parametr `--data-disk-sizes-gb`. Následující příklad vytvoří škálovací sadu s *50GB* datovým diskem připojeným ke každé instanci:
+Pokud chcete vytvořit škálovací sadu a připojit k ní datové disky, přidejte do příkazu `--data-disk-sizes-gb`az vmss create[ parametr ](/cli/azure/vmss#az-vmss-create). Následující příklad vytvoří škálovací sadu s *50GB* datovým diskem připojeným ke každé instanci:
 
 ```azurecli-interactive
 az vmss create \

@@ -25,13 +25,13 @@ ms.locfileid: "76720397"
 
  Pokud dáváte přednost více prostředím založeným na kódu, můžete [v Pythonu nakonfigurovat i automatizované experimenty strojového učení](how-to-configure-auto-train.md) s [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 * Azure Machine Learning pracovní prostor s typem edice **Enterprise**. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).  Pokud chcete upgradovat stávající pracovní prostor na edici Enterprise, přečtěte si téma [upgrade na Enterprise Edition](how-to-manage-workspace.md#upgrade).
 
-## <a name="get-started"></a>Začít
+## <a name="get-started"></a>Začínáme
 
 1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com). 
 
@@ -68,11 +68,11 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
         ----|----
         Formát souboru| Definuje rozložení a typ dat uložených v souboru.
         Oddělovač| Jeden nebo více znaků pro určení hranice mezi oddělenými a nezávislými oblastmi v prostém textu nebo v jiných datových proudech.
-        Encoding| Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.
+        Kódování| Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.
         Záhlaví sloupců| Určuje, jakým způsobem bude zpracována záhlaví datové sady (pokud existuje).
         Přeskočit řádky | Určuje, kolik, pokud nějaký z nich je v datové sadě vynecháno.
     
-        Vyberte **Next** (Další).
+        Vyberte **Další**.
 
     1. Formulář **schématu** se inteligentně vyplní na základě výběrů ve formuláři **nastavení a náhled** . Tady můžete nakonfigurovat datový typ pro každý sloupec, zkontrolovat názvy sloupců a vybrat, které sloupce nechcete pro svůj experiment **Zahrnout** . 
             
@@ -80,7 +80,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
 
     1. Formulář **potvrdit podrobnosti** je souhrn informací, které byly dříve vyplněny ve formulářích **základní informace** a **nastavení a náhled** . Máte také možnost profilovat datovou sadu pomocí výpočetní služby s povoleným profilací. Přečtěte si další informace o [profilování dat](#profile).
 
-        Vyberte **Next** (Další).
+        Vyberte **Další**.
 1. Jakmile se zobrazí, vyberte nově vytvořenou datovou sadu. Můžete si také zobrazit náhled datové sady a vzorových statistik. 
 
 1. Ve formuláři **Konfigurace spuštění** zadejte jedinečný název experimentu.
@@ -102,7 +102,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
     >[!NOTE]
     > Váš název COMPUTE určí, jestli je *povolená možnost profilace*, kterou vybíráte nebo vytváříte. (Další podrobnosti najdete v části [profilace dat](#profile) .)
 
-    Vyberte **Next** (Další).
+    Vyberte **Další**.
 
 1. Ve formuláři **typ úlohy a nastavení** vyberte typ úkolu: klasifikace, regrese nebo prognózování. Další informace najdete v tématu [Definování typů úloh](how-to-define-task-type.md) .
 
@@ -121,7 +121,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
     Automaticky featurization| Tuto možnost vyberte, pokud chcete povolit nebo zakázat předzpracování prováděné automatizovaným strojovým učením. Předzpracování zahrnuje automatické čištění dat, přípravu a transformaci, které generují syntetické funkce. [Přečtěte si další informace o předzpracování](#preprocess).
     Blokovaný algoritmus| Vyberte algoritmy, které chcete vyloučit z úlohy školení.
     Výstupní kritérium| Při splnění kteréhokoli z těchto kritérií se školicí úloha zastaví. <br> *Čas úlohy školení (hodiny)* : dobu, po kterou je možné spustit úlohu školení. <br> *Prahová hodnota skóre metriky*: minimální skóre metriky pro všechny kanály. Tím zajistíte, že pokud máte definovanou cílovou metriku, která má být dostupná, nebudete věnovat více času školicím úlohám, než je potřeba.
-    Ověřování| Vyberte jednu z možností vzájemného ověření, kterou chcete použít v úloze školení. [Další informace o vzájemném ověřování](how-to-configure-auto-train.md).
+    Ověření| Vyberte jednu z možností vzájemného ověření, kterou chcete použít v úloze školení. [Další informace o vzájemném ověřování](how-to-configure-auto-train.md).
     Souběžnost| *Maximální počet souběžných iterací*: maximální počet kanálů (iterací), které se mají testovat v úloze školení. Úloha nebude spouštět více než zadaný počet iterací. <br> *Maximální počet jader na iteraci*: vyberte omezení více jader, která chcete použít při použití COMPUTE s více jádry.
 
 <a name="profile"></a>
@@ -140,7 +140,7 @@ Profil| Vložená vizualizace na základě typu odvozeného. Například řetěz
 Distribuce typu| Počet vložené hodnoty typů v rámci sloupce. Hodnoty null jsou jejich vlastní typ, takže tato vizualizace je užitečná pro zjištění lichých nebo chybějících hodnot.
 Typ|Odvozený typ sloupce. Možné hodnoty jsou: řetězce, logické hodnoty, kalendářní data a desetinná místa.
 Minimum| Minimální hodnota sloupce Pro funkce, jejichž typ nemá základní řazení (např. logické hodnoty), se zobrazí prázdné položky.
-Max.| Maximální hodnota sloupce 
+Maximum| Maximální hodnota sloupce 
 Počet| Celkový počet chybějících a nechybějících položek ve sloupci
 Počet nechybějících| Počet položek ve sloupci, které nebyly nalezeny. Prázdné řetězce a chyby jsou považovány za hodnoty, takže nebudou přispívat k "nechybějícímu počtu".
 Quantiles| Přibližné hodnoty na jednotlivých Quantile, které poskytují smysl distribuce dat.
@@ -181,7 +181,7 @@ Automatizované Machine Learning nabízí data guardrails, která vám pomůžou
 
 V následující tabulce jsou popsány aktuálně podporované datové guardrails a související stavy, které mohou uživatelé pocházet při odesílání jejich experimentů.
 
-Guardrail|Stav|Podmínka&nbsp;pro aktivační událost&nbsp;
+Guardrail|Status|Podmínka&nbsp;pro aktivační událost&nbsp;
 ---|---|---
 Chybějící hodnoty&nbsp;&nbsp;imputace |**Předaný** <br> <br> **Určí**|    Žádná chybějící hodnota v žádném ze vstupních&nbsp;sloupců <br> <br> U některých sloupců chybí hodnoty.
 Křížové ověření|**Hotovo**|Pokud není zadaná žádná explicitní ověřovací sada
@@ -226,11 +226,11 @@ Automatizované ML vám pomůže s nasazením modelu bez psaní kódu:
 
     Pole| Hodnota
     ----|----
-    Name (Název)| Zadejte jedinečný název pro vaše nasazení.
+    Název| Zadejte jedinečný název pro vaše nasazení.
     Popis| Zadejte popis, který bude lépe identifikovat, pro které nasazení probíhá.
     Typ výpočtu| Vyberte typ koncového bodu, který chcete nasadit: *Azure Kubernetes Service (AKS)* nebo *Azure Container instance (ACI)* .
-    Name (Název)| *Platí jenom pro AKS:* Vyberte název clusteru AKS, do kterého chcete nasadit.
-    Povolení ověřování | Tuto možnost vyberte, pokud chcete povolení ověřování na základě tokenu nebo klíče.
+    Název| *Platí jenom pro AKS:* Vyberte název clusteru AKS, do kterého chcete nasadit.
+    Povolit ověřování | Tuto možnost vyberte, pokud chcete povolení ověřování na základě tokenu nebo klíče.
     Použití vlastních prostředků nasazení| Tuto funkci povolte, pokud chcete nahrát vlastní skript bodování a soubor prostředí. [Přečtěte si další informace o skriptech bodování](how-to-deploy-and-where.md#script).
 
     >[!Important]

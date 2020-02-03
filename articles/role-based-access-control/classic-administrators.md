@@ -138,7 +138,7 @@ Správce účtu je uživatel, který původně zaregistroval předplatné Azure,
 
 Pomocí těchto kroků zobrazíte správce účtu.
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Otevřete [Předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) a vyberte předplatné.
 

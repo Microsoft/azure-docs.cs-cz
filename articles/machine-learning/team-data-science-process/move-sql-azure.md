@@ -22,50 +22,50 @@ ms.locfileid: "76722454"
 
 Tento článek popisuje možnosti přesunu dat buď z plochých souborů (formáty CSV nebo TSV), nebo z dat uložených v místních SQL Server do Azure SQL Database. Tyto úlohy pro přesun dat do cloudu jsou součástí vědecké zpracování týmových dat.
 
-Téma, které popisuje možnosti pro přesun dat do SQL serveru v místním pro Machine Learning, naleznete v tématu [přesun dat do SQL serveru na virtuálním počítači Azure](move-sql-server-virtual-machine.md).
+Téma, které popisuje možnosti přesunu dat do místní SQL Server pro Machine Learning najdete v tématu [přesun dat do SQL Server na virtuálním počítači Azure](move-sql-server-virtual-machine.md).
 
 Následující tabulka shrnuje možnosti pro přesun dat do služby Azure SQL Database.
 
-| <b>ZDROJ</b> | <b>Cíl: Azure SQL Database</b> |
+| <b>Zdrojová</b> | <b>CÍL: Azure SQL Database</b> |
 | --- | --- |
-| <b>Plochý soubor (sdíleného svazku clusteru nebo ve formátu TSV)</b> |[Dotaz SQL pro hromadné vložení](#bulk-insert-sql-query) |
-| <b>Na místním SQL serveru</b> |1.[exportovat do plochých souborů](#export-flat-file)<br> 2. [Průvodce migrací SQL Database](#insert-tables-bcp)<br> 3. [zálohování a obnovení databáze](#db-migration)<br> 4. [Azure Data Factory](#adf) |
+| <b>Plochý soubor (ve formátu CSV nebo TSV)</b> |[Hromadné vložení dotazu SQL](#bulk-insert-sql-query) |
+| <b>Místní SQL Server</b> |1.[Export do plochého souboru](#export-flat-file)<br> 2. [Průvodce migrací SQL Database](#insert-tables-bcp)<br> 3. [zálohování a obnovení databáze](#db-migration)<br> 4. [Azure Data Factory](#adf) |
 
 ## <a name="prereqs"></a>Požadavky
 Postupy, podle zde uvedeného vyžadují, abyste měli:
 
-* **Předplatného Azure**. Pokud nemáte předplatné, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
-* **Účtu služby Azure storage**. Pro ukládání dat v tomto kurzu použijete účet úložiště Azure. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md). Po vytvoření účtu úložiště je třeba získat klíč účtu, který se používá pro přístup k účtu. Viz [Správa přístupových klíčů účtu úložiště](../../storage/common/storage-account-keys-manage.md).
-* Přístup **Azure SQL Database**. Pokud je nutné nastavit Azure SQL Database, [Začínáme s Microsoft Azure SQL Database](../../sql-database/sql-database-get-started.md) poskytuje informace o tom, jak zřídit novou instanci služby Azure SQL Database.
-* Nainstalovaný a nakonfigurovaný **prostředí Azure PowerShell** místně. Pokyny najdete v tématu [instalace a konfigurace Azure Powershellu](/powershell/azure/overview).
+* **Předplatné Azure**. Pokud předplatné nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* **Účet služby Azure Storage**. Pro ukládání dat v tomto kurzu použijete účet úložiště Azure. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md). Po vytvoření účtu úložiště je třeba získat klíč účtu, který se používá pro přístup k účtu. Viz [Správa přístupových klíčů účtu úložiště](../../storage/common/storage-account-keys-manage.md).
+* Přístup k **Azure SQL Database**. Pokud musíte nastavit Azure SQL Database, [Začínáme s Microsoft Azure SQL Database](../../sql-database/sql-database-get-started.md) poskytuje informace o tom, jak zřídit novou instanci Azure SQL Database.
+* Instalace a konfigurace **Azure PowerShell** lokálně. Pokyny najdete v tématu [instalace a konfigurace Azure PowerShell](/powershell/azure/overview).
 
-**Data**: procesu migrace je ukázán pomocí [datovou sadu NYC taxislužby](https://chriswhong.com/open-data/foil_nyc_taxi/). NYC taxislužby datová sada obsahuje informace o data o jízdách a veletrhů a je k dispozici ve službě Azure blob storage: [Data taxislužby města NYC](https://www.andresmh.com/nyctaxitrips/). Ukázka a popis tyto soubory jsou k dispozici v [NYC taxislužby zkracuje dobu odezvy datovou sadu popis](sql-walkthrough.md#dataset).
+**Data**: procesy migrace jsou znázorněny pomocí [datové sady taxislužby NYC](https://chriswhong.com/open-data/foil_nyc_taxi/). Datová sada taxislužby NYC obsahuje informace o datech na cestách a jejich veletrzích a je dostupná v Azure Blob Storage: [data NYC taxislužby](https://www.andresmh.com/nyctaxitrips/). Ukázka a popis těchto souborů jsou k dispozici v [popisu datové sady NYC taxislužby TRIPS](sql-walkthrough.md#dataset).
 
-Můžete přizpůsobit podle postupů popsaných tady na sadu vlastních dat nebo postupujte podle pokynů, jak je popsáno s použitím datové sady NYC taxislužby. K odeslání NYC taxislužby datovou sadu do místní databáze SQL serveru, postupujte podle postupu uvedeného v [hromadného importu dat do databáze SQL serveru](sql-walkthrough.md#dbload). Tyto pokyny jsou určené pro SQL Server na virtuálním počítači Azure, ale postup pro jeho odeslání do místního SQL serveru je stejný.
+Můžete přizpůsobit podle postupů popsaných tady na sadu vlastních dat nebo postupujte podle pokynů, jak je popsáno s použitím datové sady NYC taxislužby. Pokud chcete nahrát datovou sadu taxislužby NYC do místní databáze SQL Server, postupujte podle pokynů uvedených v [hromadném importu dat do databáze SQL Server](sql-walkthrough.md#dbload). Tyto pokyny jsou určené pro SQL Server na virtuálním počítači Azure, ale postup pro jeho odeslání do místního SQL serveru je stejný.
 
 ## <a name="file-to-azure-sql-database"></a>Přesun dat ze zdroje plochého souboru do Azure SQL Database
 Data v plochých souborech (ve formátu CSV nebo ve formátu TSV) se dají přesunout do Azure SQL Database pomocí hromadného vložení dotazu SQL.
 
-### <a name="bulk-insert-sql-query"></a> Dotaz SQL pro hromadné vložení
-Postup použití příkazu hromadného vkládání SQL se podobá Postup přesunutí dat z plochého zdroje souborů na SQL Server na virtuálním počítači Azure. Podrobnosti najdete v tématu [dotaz SQL vložte hromadné](move-sql-server-virtual-machine.md#insert-tables-bulkquery).
+### <a name="bulk-insert-sql-query"></a>Hromadné vložení dotazu SQL
+Postup použití příkazu hromadného vkládání SQL se podobá Postup přesunutí dat z plochého zdroje souborů na SQL Server na virtuálním počítači Azure. Podrobnosti najdete v tématu [hromadné vložení dotazu SQL](move-sql-server-virtual-machine.md#insert-tables-bulkquery).
 
 ## <a name="sql-on-prem-to-sazure-sql-database"></a>Přesun dat z místních SQL Server do Azure SQL Database
 Pokud jsou zdrojová data uložená v místních SQL Server, existují různé možnosti, jak data přesouvat do Azure SQL Database:
 
-1. [Exportovat do plochých souborů](#export-flat-file)
-2. [Průvodce migrací služby SQL Database](#insert-tables-bcp)
-3. [Databáze back up a obnovení](#db-migration)
+1. [Exportovat do plochého souboru](#export-flat-file)
+2. [Průvodce migrací SQL Database](#insert-tables-bcp)
+3. [Zálohování a obnovení databáze](#db-migration)
 4. [Azure Data Factory](#adf)
 
 Postup pro první tři jsou podobný těm oddílům [přesunu dat na SQL Server na virtuálním počítači Azure](move-sql-server-virtual-machine.md) , který pokrývá tyto stejné postupy. Odkazy na příslušné části v tomto tématu jsou k dispozici v následujících pokynech.
 
-### <a name="export-flat-file"></a>Exportovat do plochých souborů
+### <a name="export-flat-file"></a>Exportovat do plochého souboru
 Postup pro export do plochého souboru je podobný těm směrům popsaným v části [Export do plochého souboru](move-sql-server-virtual-machine.md#export-flat-file).
 
-### <a name="insert-tables-bcp"></a>Průvodce migrací služby SQL Database
+### <a name="insert-tables-bcp"></a>Průvodce migrací SQL Database
 Postup použití Průvodce migrací SQL Database je podobný těm směrům popsaným v [Průvodci migrací SQL Database](move-sql-server-virtual-machine.md#sql-migration).
 
-### <a name="db-migration"></a>Databáze back up a obnovení
+### <a name="db-migration"></a>Zálohování a obnovení databáze
 Postup použití zálohování a obnovení databáze je podobný těm směrům uvedeným v části [zálohování a obnovení databáze](move-sql-server-virtual-machine.md#sql-backup).
 
 ### <a name="adf"></a>Azure Data Factory

@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak shromažďovat data z a monitorovat modely nas
 [Přečtěte si další informace o Azure Application Insights](../azure-monitor/app/app-insights-overview.md). 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
@@ -52,28 +52,28 @@ V Azure Portal můžete povolit a zakázat službu Azure Application Insights.
 
 1. Na kartě **nasazení** vyberte službu, ve které chcete povolit Azure Application Insights
 
-   [![Seznam služeb na kartě nasazení](./media/how-to-enable-app-insights/Deployments.PNG)](././media/how-to-enable-app-insights/Deployments.PNG#lightbox)
+   [![seznam služeb na kartě nasazení](./media/how-to-enable-app-insights/Deployments.PNG)](././media/how-to-enable-app-insights/Deployments.PNG#lightbox)
 
 3. Vybrat **Upravit**
 
-   [![Tlačítko Upravit](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [![– tlačítko pro úpravy](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
 4. V okně **Upřesnit nastavení**zaškrtněte políčko **Povolit diagnostiku AppInsights** .
 
-   [![Zaškrtnuté zaškrtávací políčko pro povolení diagnostiky](./media/how-to-enable-app-insights/AdvancedSettings.png)](././media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
+   [![zaškrtnuté políčko pro povolení diagnostiky](./media/how-to-enable-app-insights/AdvancedSettings.png)](././media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
 
 1. V dolní části obrazovky vyberte **aktualizovat** , aby se změny projevily.
 
-### <a name="disable"></a>Zákaz
+### <a name="disable"></a>Zakázat
 
 1. V [Azure Portal](https://portal.azure.com)otevřete pracovní prostor.
 1. Vyberte **nasazení**, vyberte službu a pak vyberte **Upravit** .
 
-   [![Použijte tlačítko pro úpravy](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [![použít tlačítko Upravit](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
 1. V části **Upřesnit nastavení**zrušte zaškrtnutí políčka **Povolit diagnostiku AppInsights** .
 
-   [![Nezaškrtnuté zaškrtávací políčko pro povolení diagnostiky](./media/how-to-enable-app-insights/uncheck.png)](././media/how-to-enable-app-insights/uncheck.png#lightbox)
+   [zaškrtnutí políčka ![pro povolení diagnostiky nezaškrtnuté.](./media/how-to-enable-app-insights/uncheck.png)](././media/how-to-enable-app-insights/uncheck.png#lightbox)
 
 1. V dolní části obrazovky vyberte **aktualizovat** , aby se změny projevily.
  
@@ -95,7 +95,7 @@ V Azure Portal můžete povolit a zakázat službu Azure Application Insights.
 
 ### <a name="log-custom-traces-in-your-service"></a>Vlastní trasování protokolu ve službě
 
-Pokud chcete vlastní trasování protokolů, postupujte podle procesu standardní nasazení pro AKS nebo ACI v [nasazení a kde](how-to-deploy-and-where.md) dokumentu. Pak pomocí následujících kroků:
+Pokud chcete protokolovat vlastní trasování, postupujte podle standardního procesu nasazení pro AKS nebo ACI v tématu [postup nasazení a umístění](how-to-deploy-and-where.md) dokumentu. Pak pomocí následujících kroků:
 
 1. Aktualizace souboru bodování přidáním příkazů Print
     
@@ -130,7 +130,7 @@ Chcete-li zobrazit ho:
 
 1. Výběrem karty **Přehled** zobrazíte základní sadu metrik pro vaši službu.
 
-   [![Přehled](./media/how-to-enable-app-insights/overview.png)](././media/how-to-enable-app-insights/overview.png#lightbox)
+   [Přehled ![](./media/how-to-enable-app-insights/overview.png)](././media/how-to-enable-app-insights/overview.png#lightbox)
 
 1. Pokud chcete vyhledat požadavky na metadata a odpověď vaší webové služby, vyberte tabulku **požadavků** v části **protokoly (analýza)** a vyberte **Spustit** pro zobrazení požadavků.
 
@@ -138,9 +138,9 @@ Chcete-li zobrazit ho:
 
 
 3. Pokud chcete hledat vlastní trasování, vyberte **Analytics** .
-4. V části schématu vyberte **trasy**. Potom vyberte **spustit** ke spuštění dotazu. Data by se měla zobrazit ve formátu tabulky a měla by se namapovat na vaše vlastní volání v souboru bodování.
+4. V části schématu vyberte **trasování**. Pak vyberte **Spustit** a spusťte dotaz. Data by se měla zobrazit ve formátu tabulky a měla by se namapovat na vaše vlastní volání v souboru bodování.
 
-   [![Vlastní trasy](./media/how-to-enable-app-insights/logs.png)](././media/how-to-enable-app-insights/logs.png#lightbox)
+   [![vlastní trasování](./media/how-to-enable-app-insights/logs.png)](././media/how-to-enable-app-insights/logs.png#lightbox)
 
 Další informace o tom, jak používat Azure Application Insights, najdete v tématu [co je Application Insights?](../azure-monitor/app/app-insights-overview.md).
 

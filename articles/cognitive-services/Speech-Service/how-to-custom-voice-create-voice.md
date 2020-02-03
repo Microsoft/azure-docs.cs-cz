@@ -48,7 +48,7 @@ V následující tabulce jsou uvedeny stavy zpracování pro importované datov�
 | ----- | ------- |
 | Zpracování | Vaše datová sada byla přijata a je zpracovávána. |
 | Úspěch | Vaše datová sada byla ověřena a lze ji nyní použít k sestavení hlasového modelu. |
-| Selhalo | Vaše datová sada se během zpracování v důsledku mnoha důvodů nezdařila, například chyby souborů, problémy s daty nebo problémy se sítí. |
+| Neúspěch | Vaše datová sada se během zpracování v důsledku mnoha důvodů nezdařila, například chyby souborů, problémy s daty nebo problémy se sítí. |
 
 Po dokončení ověření uvidíte celkový počet odpovídajících projevy pro každou datovou sadu ve sloupci **projevy** . Pokud datový typ, který jste vybrali, vyžaduje segmentaci dlouhého zvuku, tento sloupec odráží jenom projevy, které jsme pro vás segmentoval buď na základě vašich přepisů, nebo prostřednictvím služby přepisu řeči. Můžete ještě více stáhnout datovou sadu, která je ověřená, aby se zobrazily podrobné výsledky projevy úspěšně naimportované a jejich přepisů mapování. Pomocný parametr: dlouhé segmentace zvuku může trvat déle než hodinu, než se zpracování dat dokončí.
 
@@ -90,7 +90,7 @@ Zobrazený stav odráží proces převodu datové sady na hlasový model, jak je
 | ----- | ------- |
 | Zpracování | Probíhá vytváření hlasového modelu. |
 | Úspěch | Váš hlasový model byl vytvořen a lze jej nasadit. |
-| Selhalo | Váš hlasový model se v rámci školení nezdařil z důvodu mnoha důvodů, například problémy s nezpracovanými daty nebo problémy se sítí. |
+| Neúspěch | Váš hlasový model se v rámci školení nezdařil z důvodu mnoha důvodů, například problémy s nezpracovanými daty nebo problémy se sítí. |
 
 Doba školení se liší v závislosti na objemu zpracovaných zvukových dat. Typický časový rozsah od přibližně 30 minut po stovky projevy až 40 hodin za 20 000 projevy. Po úspěšném školení o modelu ho můžete začít testovat.
 
@@ -117,7 +117,7 @@ Po úspěšném vytvoření hlasového písma ho můžete před nasazením pro p
     > [!NOTE]
     > Jazyk textu musí být stejný jako jazyk vašeho hlasového písma. Testovat lze pouze úspěšně proučené modely. V tomto kroku je podporován pouze prostý text.
 
-5.  Klikněte na **Vytvořit**.
+5.  Klikněte na možnost **Vytvořit**.
 
 Jakmile odešlete žádost o test, vrátíte se na stránku test. Tabulka nyní obsahuje položku, která odpovídá vaší nové žádosti a sloupci Stav. Vysyntetizování řeči může trvat několik minut. Když se sloupec Stav **úspěšně**dožádaný, můžete přehrát zvuk, nebo si stáhnout textový vstup (soubor. txt) a zvukový výstup (soubor. wav) a další Audition k jeho kvalitě.
 

@@ -27,7 +27,7 @@ Azure DevOps nabízí pohodlný způsob, jak připojit Azure Boards uživatelsk�
 
 Chcete-li připojit pracovní položku k nové větvi, **vyberte tři** tečky ( **...** ) vedle pracovní položky a v místní nabídce přejděte na a vyberte možnost **Nová větev**.  
 
-![1\. místo](./media/collaborative-coding-with-git/1-sprint-board-view.png)
+![1](./media/collaborative-coding-with-git/1-sprint-board-view.png)
 
 V dialogovém okně **vytvořit větev** zadejte název nové větve a základní Azure Repos úložiště Git a větev. Základní úložiště musí být ve stejném projektu Azure DevOps jako pracovní položka. Základní větví může být hlavní větev nebo jiná existující větev. Vyberte **vytvořit větev**. 
 
@@ -84,7 +84,7 @@ Na obrazovce **Nová žádost o** přijetí změn v případě potřeby přejdě
 
 ![7](./media/collaborative-coding-with-git/7-spring-send-pull-request.png)
 
-## <a name='ReviewandMerge-4'></a>Revize a sloučení
+## <a name='ReviewandMerge-4'></a>Kontrola a sloučení
 
 Po vytvoření žádosti o přijetí změn obdrží kontroloři e-mailové oznámení, aby zkontrolovali žádost o přijetí změn. Kontroloři otestují, zda změny fungují, a pokud je to možné, zkontrolujte změny v žadateli. Recenzenti mohou provádět komentáře, požadovat změny a schvalovat nebo odmítat žádosti o přijetí změn na základě jejich posouzení. 
 

@@ -30,7 +30,7 @@ Při horizontálním navýšení kapacity se vytvoří nová instance. Nový ná
 
 Pokud jste cluster nasadili v Azure Portal nebo jste použili ukázkovou šablonu Azure Resource Manager, zobrazí se všechny prostředky v rámci skupiny prostředků. Nástroje pro vyrovnávání zatížení můžete zobrazit pro jednotlivé sady škálování nebo typy uzlů. Název nástroje pro vyrovnávání zatížení používá následující formát: **&lt;název typu pro typ uzlu&gt;** . Příklad je sfcluster4doc-0, jak je znázorněno na následujícím obrázku:
 
-![Materiály][Resources]
+![Zdroje a prostředky][Resources]
 
 ## <a name="service-fabric-virtual-machine-extension"></a>Service Fabric rozšíření virtuálního počítače
 
@@ -72,19 +72,19 @@ Níže jsou uvedeny popisy vlastností:
 
 | **Název** | **Povolené hodnoty** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-| jméno | string | jedinečný název pro rozšíření |
+| jméno | řetězec | jedinečný název pro rozšíření |
 | type | "ServiceFabricLinuxNode" nebo "ServiceFabricWindowsNode" | Identifikuje Service Fabric operačního systému. |
 | autoUpgradeMinorVersion | true nebo false | Povolit automatický upgrade dílčích verzí SF modulu runtime |
 | publisher | Microsoft.Azure.ServiceFabric | Název vydavatele rozšíření Service Fabric |
-| clusterEndpont | string | Identifikátor URI: PORT pro koncový bod správy |
-| nodeTypeRef | string | název nodeType |
+| clusterEndpont | řetězec | Identifikátor URI: PORT pro koncový bod správy |
+| nodeTypeRef | řetězec | název nodeType |
 | durabilityLevel | bronzová, stříbrná, zlatá, Platinum | doba, po kterou je možné pozastavit neproměnlivou infrastrukturu Azure |
 | enableParallelJobs | true nebo false | Povolte výpočetní ParallelJobs, jako je například odebrat virtuální počítač a restartovat virtuální počítač ve stejné sadě škálování paralelně. |
-| nicPrefixOverride | string | Předpona podsítě jako 10.0.0.0/24 |
+| nicPrefixOverride | řetězec | Předpona podsítě jako 10.0.0.0/24 |
 | commonNames | řetězec [] | Běžné názvy instalovaných certifikátů clusteru |
-| x509StoreName | string | Název úložiště, ve kterém je umístěný nainstalovaný certifikát clusteru |
+| x509StoreName | řetězec | Název úložiště, ve kterém je umístěný nainstalovaný certifikát clusteru |
 | typeHandlerVersion | 1.1 | Verze rozšíření pro upgrade na 1,1 se doporučuje používat klasickou verzi 1,0. |
-| dataPath | string | Cesta k jednotce, která slouží k uložení stavu pro Service Fabric systémových služeb a dat aplikací.
+| dataPath | řetězec | Cesta k jednotce, která slouží k uložení stavu pro Service Fabric systémových služeb a dat aplikací.
 
 ## <a name="next-steps"></a>Další kroky
 

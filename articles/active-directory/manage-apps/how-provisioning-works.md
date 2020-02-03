@@ -154,7 +154,7 @@ Pokud chyba v cílovém systému brání přidání, aktualizaci nebo odstraněn
 
 Vyřešte tyto chyby úpravou hodnot atributu pro ovlivněného uživatele ve zdrojovém systému nebo úpravou mapování atributů tak, aby nezpůsobily konflikty.
 
-### <a name="quarantine"></a>Umístit
+### <a name="quarantine"></a>Dát do karantény
 
 Pokud se většina nebo všechna volání prováděná na cílovém systému konzistentně nezdařila kvůli chybě (například neplatné přihlašovací údaje správce), úloha zřizování přejde do stavu "karanténa". Tento stav je uveden v [sestavě souhrn zřizování](check-status-user-account-provisioning.md) a prostřednictvím e-mailu, pokud byly e-mailová oznámení konfigurována v Azure Portal.
 

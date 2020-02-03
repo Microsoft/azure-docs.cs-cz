@@ -118,7 +118,7 @@ Při použití [vzdáleného registru](https://support.microsoft.com/help/314837
 
 Pokud máte situaci, kdy se k virtuálnímu počítači nemůžete dostat pomocí žádné metody, rozšíření vlastních skriptů se nezdaří a bude nutné pracovat v OFFLINE režimu tak, že přímo na systémovém disku pracujete. Provedete to podle těchto kroků:
 
-1.  [Připojení disku systému pro virtuální počítač pro obnovení](troubleshoot-recovery-disks-portal-windows.md).
+1.  [Připojte systémový disk k virtuálnímu počítači pro obnovení](troubleshoot-recovery-disks-portal-windows.md).
 
 2.  Spusťte připojení ke vzdálené ploše pro virtuální počítač pro obnovení.
 
@@ -160,6 +160,6 @@ Pokud máte situaci, kdy se k virtuálnímu počítači nemůžete dostat pomoc�
     reg unload HKLM\BROKENSOFTWARE
     ```
 
-10. [Odpojení disku a znovu vytvořte virtuální počítač](troubleshoot-recovery-disks-portal-windows.md).
+10. [Odpojte systémový disk a vytvořte virtuální počítač znovu](troubleshoot-recovery-disks-portal-windows.md).
 
 11. Zkontrolujte, zda byl problém vyřešen.

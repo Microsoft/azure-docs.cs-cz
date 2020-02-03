@@ -74,13 +74,13 @@ Následující tabulka shrnuje časy synchronizace pro běžné scénáře zřiz
 | Konfigurace oboru | Uživatelé, skupiny a členové v oboru | Čas prvotního cyklu | Čas přírůstkového cyklu |
 | -------- | -------- | -------- | -------- |
 | Synchronizovat jenom přiřazené uživatele a skupiny |  < 1 000 |  < 30 minut | < 30 minut |
-| Synchronizovat jenom přiřazené uživatele a skupiny |  1,000 - 10,000 | 142 – 708 minut | < 30 minut |
+| Synchronizovat jenom přiřazené uživatele a skupiny |  1 000 – 10 000 | 142 – 708 minut | < 30 minut |
 | Synchronizovat jenom přiřazené uživatele a skupiny |   10 000 – 100 000 | 1 170 – 2 340 minut | < 30 minut |
 | Synchronizovat všechny uživatele a skupiny v Azure AD |  < 1 000 | < 30 minut  | < 30 minut |
-| Synchronizovat všechny uživatele a skupiny v Azure AD |  1,000 - 10,000 | < 30-120 minut | < 30 minut |
+| Synchronizovat všechny uživatele a skupiny v Azure AD |  1 000 – 10 000 | < 30-120 minut | < 30 minut |
 | Synchronizovat všechny uživatele a skupiny v Azure AD |  10 000 – 100 000  | 713 – 1 425 minut | < 30 minut |
 | Synchronizovat všechny uživatele v Azure AD|  < 1 000  | < 30 minut | < 30 minut |
-| Synchronizovat všechny uživatele v Azure AD | 1,000 - 10,000  | 43 – 86 minut | < 30 minut |
+| Synchronizovat všechny uživatele v Azure AD | 1 000 – 10 000  | 43 – 86 minut | < 30 minut |
 
 
 U **přiřazených uživatelů a skupin konfigurace synchronizace**konfigurací můžete pomocí následujících vzorců určit přibližné minimální a maximální očekávané **počáteční časy cyklů** :
