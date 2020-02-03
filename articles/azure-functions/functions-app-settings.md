@@ -3,12 +3,12 @@ title: Reference k nastavení aplikací pro službu Azure Functions
 description: Referenční dokumentace pro nastavení aplikace Azure Functions nebo proměnné prostředí.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 87852d940204f574350321e2690b70c9835093d9
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 3853ccbfd492bfaf4a82d62e6d31ab938285ee2e
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921094"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963695"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Reference k nastavení aplikací pro službu Azure Functions
 
@@ -32,14 +32,14 @@ Ve verzi 2. x a novějších verzích modulu runtime Functions konfiguruje chov�
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
-Připojovací řetězec účtu volitelné úložiště pro ukládání protokolů a jejich v zobrazení **monitorování** karta na portálu. Účet úložiště musí být pro obecné účely ten, který podporuje objekty BLOB, frontám a tabulkám. Zobrazit [účtu úložiště](functions-infrastructure-as-code.md#storage-account) a [požadavky na účet úložiště](functions-create-function-app-portal.md#storage-account-requirements).
+Připojovací řetězec účtu volitelné úložiště pro ukládání protokolů a jejich v zobrazení **monitorování** karta na portálu. Toto nastavení je platné jenom pro aplikace, které cílí na verzi 1. x Azure Functions runtime. Účet úložiště musí být pro obecné účely ten, který podporuje objekty BLOB, frontám a tabulkám. Další informace najdete v tématu [požadavky na účet úložiště](storage-considerations.md#storage-account-requirements).
 
 |Klíč|Ukázková hodnota|
 |---|------------|
-|AzureWebJobsDashboard|DefaultEndpointsProtocol = https; AccountName = [název]; AccountKey = [klíč]|
+|AzureWebJobsDashboard|DefaultEndpointsProtocol = https; Account =<name>; AccountKey =<key>|
 
-> [!TIP]
-> Pro činnosti a výkonu se doporučuje pro účely sledování místo AzureWebJobsDashboard APPINSIGHTS_INSTRUMENTATIONKEY a App Insights
+> [!NOTE]
+> Pro lepší výkon a prostředí používá modul runtime verze 2. x a novější verze APPINSIGHTS_INSTRUMENTATIONKEY a App Insights pro monitorování místo `AzureWebJobsDashboard`.
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
@@ -79,7 +79,7 @@ Určuje úložiště nebo zprostředkovatele má být použit pro úložiště k
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
-Modul runtime Azure Functions používá tento připojovací řetězec účtu úložiště pro všechny funkce kromě funkcí aktivovanou protokolem HTTP. Účet úložiště musí být pro obecné účely ten, který podporuje objekty BLOB, frontám a tabulkám. Zobrazit [účtu úložiště](functions-infrastructure-as-code.md#storage-account) a [požadavky na účet úložiště](functions-create-function-app-portal.md#storage-account-requirements).
+Modul runtime Azure Functions používá tento připojovací řetězec účtu úložiště pro všechny funkce kromě funkcí aktivovanou protokolem HTTP. Účet úložiště musí být pro obecné účely ten, který podporuje objekty BLOB, frontám a tabulkám. Zobrazit [účtu úložiště](functions-infrastructure-as-code.md#storage-account) a [požadavky na účet úložiště](storage-considerations.md#storage-account-requirements).
 
 |Klíč|Ukázková hodnota|
 |---|------------|

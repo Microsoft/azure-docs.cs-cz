@@ -11,14 +11,14 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e9a22e6ff76c0d26a346192c69bc067e7d42ccf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fd6cacae9c7af705b0de7b59e0f25f25637a5a89
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425324"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76962488"
 ---
-# <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zásady hesel a omezení v Azure Active Directory
+# <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zásady a omezení hesel v Azure Active Directory
 
 Tento článek popisuje zásady hesel a požadavky na složitost spojené s uživatelskými účty v tenantovi Azure Active Directory (Azure AD).
 
@@ -32,7 +32,7 @@ Zásady dvou bran vyžadují dvě části ověřovacích dat, jako je **e-mailov
 
 * Ovlivněny jsou všechny následující role správce Azure:
   * Správce helpdesku
-  * Správce služeb
+  * Správce služby Service support
   * Správce fakturace
   * Podpora partnerů úrovně 1
   * Podpora partnerů úrovně 2
@@ -43,13 +43,13 @@ Zásady dvou bran vyžadují dvě části ověřovacích dat, jako je **e-mailov
   * Globální správce nebo správce společnosti
   * Správce SharePointu
   * Správce dodržování předpisů
-  * Správce aplikací
+  * Správce aplikace
   * Správce zabezpečení
   * Správce privilegovaných rolí
   * Správce Intune
   * Správce služby proxy aplikací
   * Správce Dynamics 365
-  * Správce služby Power BI
+  * Správce služba Power BI
   * Správce ověřování
   * Správce privilegovaného ověřování
 
@@ -85,8 +85,8 @@ Následující tabulka popisuje nastavení zásad hesel, která se používají 
 | Nepovolené znaky | Znaky Unicode. |
 | Omezení hesla |<ul><li>Minimálně 8 znaků a maximálně 256 znaků.</li><li>Vyžaduje tři ze čtyř z následujících možností:<ul><li>Malými písmeny.</li><li>Velká písmena.</li><li>Čísla (0-9).</li><li>Symboly (viz předchozí omezení hesla).</li></ul></li></ul> |
 | Doba platnosti hesla vypršela (maximální stáří hesla) |<ul><li>Výchozí hodnota: **90** dní.</li><li>Hodnotu lze konfigurovat pomocí rutiny `Set-MsolPasswordPolicy` z modulu Azure Active Directory pro prostředí Windows PowerShell.</li></ul> |
-| Oznámení o vypršení platnosti hesla (když jsou uživatelé upozorňováni na vypršení platnosti hesla) |<ul><li>Výchozí hodnota: **14** dní (před vypršením platnosti hesla).</li><li>Hodnotu lze konfigurovat pomocí rutiny `Set-MsolPasswordPolicy`.</li></ul> |
-| Vypršení platnosti hesla (do vypršení platnosti hesla) |<ul><li>Výchozí hodnota: **false** dnů (indikuje, že je povolené heslo je povolené).</li><li>Hodnotu lze nakonfigurovat pro jednotlivé uživatelské účty pomocí rutiny `Set-MsolUser`.</li></ul> |
+| Oznámení o vypršení platnosti hesla (když se uživatelům oznámí vypršení platnosti hesla) |<ul><li>Výchozí hodnota: **14** dní (před vypršením platnosti hesla).</li><li>Hodnotu lze konfigurovat pomocí rutiny `Set-MsolPasswordPolicy`.</li></ul> |
+| Vypršení platnosti hesla (nechat vypršení platnosti hesla) |<ul><li>Výchozí hodnota: **false** (označuje, že heslo má datum vypršení platnosti).</li><li>Hodnotu lze nakonfigurovat pro jednotlivé uživatelské účty pomocí rutiny `Set-MsolUser`.</li></ul> |
 | Historie změn hesel | Poslední heslo *nelze* znovu použít, když uživatel změní heslo. |
 | Historie resetování hesla | Poslední heslo *lze* znovu použít, když uživatel resetuje zapomenuté heslo. |
 | Uzamčení účtu | Po 10 neúspěšných pokusech o přihlášení k nesprávnému heslu je uživatel zablokován na jednu minutu. Další nesprávné pokusy o přihlášení zablokují uživateli zvýšení doby trvání. [Inteligentní uzamykání](howto-password-smart-lockout.md) sleduje poslední tři chybné hodnoty hash hesla, aby nedošlo k vyššímu zvýšení čítače uzamčení pro stejné heslo. Pokud někdo několikrát zadá stejné chybné heslo, toto chování nebude mít za následek uzamčení účtu. |

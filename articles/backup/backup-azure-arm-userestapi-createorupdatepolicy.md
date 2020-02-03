@@ -4,33 +4,18 @@ description: V tomto článku se naučíte, jak vytvářet a spravovat zásady z
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: a086fc9c8be22f177d7fb1205e3545ddc52f5c83
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 0718ebc3612f53f1c2cc279096dd92de69bb5ef6
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554892"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963848"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Vytvoření zásad služby Azure Recovery Services Backup pomocí REST API
 
 Postup vytvoření zásady zálohování pro trezor služby Azure Recovery Services je popsaný v [dokumentu REST API zásad](/rest/api/backup/protectionpolicies/createorupdate). Tento dokument můžeme použít jako referenci k vytvoření zásady pro zálohování virtuálních počítačů Azure.
 
-## <a name="backup-policy-essentials"></a>Základy zásad zálohování
-
-- Zásady zálohování se vytvoří pro každý trezor.
-- Zásady zálohování se dají vytvořit pro zálohování následujících úloh.
-  - Virtuální počítač Azure
-  - SQL na virtuálním počítači Azure
-  - Sdílená složka Azure
-- Zásady je možné přiřadit k mnoha prostředkům. Zásady zálohování virtuálních počítačů Azure je možné použít k ochraně mnoha virtuálních počítačů Azure.
-- Zásada se skládá ze dvou součástí
-  - Plán: kdy se má provést zálohování
-  - Uchovávání informací: pro dobu, po kterou by se měly uchovávat zálohy.
-- Plán lze definovat jako "denní" nebo "týdně" s konkrétním časovým bodem.
-- Uchovávání informací lze definovat pro "denní", "týdenní", "měsíční", "roční" body zálohování.
-- "týdenní" odkazuje na zálohu v určitý den v týdnu, "měsíční" znamená zálohování v určitý den v měsíci a "roční" odkazuje na zálohu v určitý den v roce.
-- Doba uchovávání "měsíčně", "ročních" bodů zálohy se označuje jako "LongTermRetention".
-- Při vytvoření trezoru se vytvoří taky zásada pro zálohování virtuálních počítačů Azure označované jako "DefaultPolicy" a dá se použít k zálohování virtuálních počítačů Azure.
+## <a name="create-or-update-a-policy"></a>Vytvořit nebo aktualizovat zásadu
 
 Pokud chcete vytvořit nebo aktualizovat zásady Azure Backup, použijte následující operaci *vložení* .
 

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: cynthn
-ms.openlocfilehash: 6172b5da60037051517a43b1b3b8b91b50ab2aac
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: e2eb77bfd000ecaa3bad5fd3c5792d1aa3a81964
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895890"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964868"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-the-azure-cli"></a>Verze Preview: řízení aktualizací pomocí řízení údržby a Azure CLI
 
@@ -31,13 +31,13 @@ Pomocí řízení údržby můžete:
 > [!IMPORTANT]
 > Řízení údržby je aktuálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-> 
+>
 
 ## <a name="limitations"></a>Omezení
 
 - Virtuální počítače musí být na [vyhrazeném hostiteli](./linux/dedicated-hosts.md)nebo být vytvořené pomocí [izolované velikosti virtuálního počítače](./linux/isolation.md).
 - Po 35 dnech se automaticky použije aktualizace.
-- Uživatel musí mít přístup **vlastníka prostředku** .
+- Uživatel musí mít přístup k **přispěvateli prostředků** .
 
 
 ## <a name="install-the-maintenance-extension"></a>Instalace rozšíření údržby
@@ -151,6 +151,23 @@ az maintenance assignment list \
 
 Pokud chcete zjistit, jestli čekají na aktualizace, použijte `az maintenance update list`. Aktualizace--předplatné jako ID pro předplatné, které obsahuje virtuální počítač.
 
+Pokud nejsou k dispozici žádné aktualizace, příkaz vrátí chybovou zprávu, která bude obsahovat text: `Resource not found...StatusCode: 404`.
+
+Pokud jsou k dispozici aktualizace, bude vrácena pouze jedna, i když je dokončeno více aktualizací. Data pro tuto aktualizaci budou vrácena v objektu:
+
+```text
+[
+  {
+    "impactDurationInSec": 9,
+    "impactType": "Freeze",
+    "maintenanceScope": "Host",
+    "notBefore": "2020-03-03T07:23:04.905538+00:00",
+    "resourceId": "/subscriptions/9120c5ff-e78e-4bd0-b29f-75c19cadd078/resourcegroups/DemoRG/providers/Microsoft.Compute/hostGroups/demoHostGroup/hosts/myHost",
+    "status": "Pending"
+  }
+]
+  ```
+
 ### <a name="isolated-vm"></a>Izolovaný virtuální počítač
 
 Vyhledejte nedokončené aktualizace pro izolovaný virtuální počítač. V tomto příkladu je výstup formátovaný jako tabulka pro čitelnost.
@@ -166,7 +183,7 @@ az maintenance update list \
 
 ### <a name="dedicated-host"></a>Vyhrazený hostitel
 
-Pro kontrolu nedokončených aktualizací pro vyhrazeného hostitele. V tomto příkladu je výstup formátovaný jako tabulka pro čitelnost. Nahraďte hodnoty pro prostředky vlastními.
+Chcete-li vyhledat nedokončené aktualizace pro vyhrazeného hostitele (ADH). V tomto příkladu je výstup formátovaný jako tabulka pro čitelnost. Nahraďte hodnoty pro prostředky vlastními.
 
 ```azurecli-interactive
 az maintenance update list \
@@ -182,7 +199,7 @@ az maintenance update list \
 
 ## <a name="apply-updates"></a>Instalace aktualizací
 
-Použijte `az maintenance apply update` k instalaci nedokončených aktualizací.
+Použijte `az maintenance apply update` k instalaci nedokončených aktualizací. Po úspěšném provedení tohoto příkazu vrátí JSON obsahující podrobnosti o aktualizaci.
 
 ### <a name="isolated-vm"></a>Izolovaný virtuální počítač
 
@@ -191,7 +208,7 @@ Vytvořte žádost o použití aktualizací pro izolovaný virtuální počíta�
 ```azurecli-interactive
 az maintenance applyupdate create \
    --subscription 1111abcd-1a11-1a2b-1a12-123456789abc \
-   -g myMaintenanceRG\
+   --resource-group myMaintenanceRG \
    --resource-name myVM \
    --resource-type virtualMachines \
    --provider-name Microsoft.Compute
@@ -205,7 +222,7 @@ Použijte aktualizace na vyhrazeného hostitele.
 ```azurecli-interactive
 az maintenance applyupdate create \
    --subscription 1111abcd-1a11-1a2b-1a12-123456789abc \
-   -g myHostResourceGroup \
+   --resource-group myHostResourceGroup \
    --resource-name myHost \
    --resource-type hosts \
    --provider-name Microsoft.Compute \
@@ -217,9 +234,9 @@ az maintenance applyupdate create \
 
 Průběh aktualizací můžete zjistit pomocí `az maintenance applyupdate get`. 
 
-### <a name="isolated-vm"></a>Izolovaný virtuální počítač
+Jako název aktualizace můžete použít `default` k zobrazení výsledků Poslední aktualizace nebo nahrazení `myUpdateName` názvem aktualizace, která byla vrácena při spuštění `az maintenance applyupdate create`.
 
-Nahraďte `myUpdateName` názvem aktualizace, kterou jste vrátili při spuštění `az maintenance applyupdate create`.
+### <a name="isolated-vm"></a>Izolovaný virtuální počítač
 
 ```azurecli-interactive
 az maintenance applyupdate get \
@@ -227,7 +244,7 @@ az maintenance applyupdate get \
    --resource-name myVM \
    --resource-type virtualMachines \
    --provider-name Microsoft.Compute \
-   --apply-update-name myUpdateName 
+   --apply-update-name default 
 ```
 
 ### <a name="dedicated-host"></a>Vyhrazený hostitel
@@ -241,7 +258,7 @@ az maintenance applyupdate get \
    --provider-name Microsoft.Compute \
    --resource-parent-name myHostGroup \ 
    --resource-parent-type hostGroups \
-   --apply-update-name default \
+   --apply-update-name myUpdateName \
    --query "{LastUpdate:lastUpdateTime, Name:name, ResourceGroup:resourceGroup, Status:status}" \
    --output table
 ```

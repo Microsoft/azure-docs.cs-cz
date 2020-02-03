@@ -5,33 +5,29 @@ author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 40037252ddf8e505ae7fe734813d598e7de96336
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 910b582cb40b9f8aff6a553621b4677d6b019826
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834239"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963882"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Řešení potíží s modulem runtime funkcí je nedosažitelný.
 
-
-## <a name="error-text"></a>Text chyby
-Tento článek je určený k řešení následující chyby při zobrazení na portálu Functions.
+Tento článek je určený k řešení potíží s chybovou zprávou "běhový modul je nedosažitelný", když se zobrazuje v Azure Portal. Pokud k této chybě dojde, zobrazí se na portálu následující chybový řetězec.
 
 `Error: Azure Functions Runtime is unreachable. Click here for details on storage configuration`
 
-### <a name="summary"></a>Souhrn
-K tomuto problému dochází, když Modul runtime služby Azure Functions nepůjde spustit. Nejběžnějším důvodem této chyby je, že aplikace Function App ztratí přístup k účtu úložiště. [Přečtěte si další informace o požadavcích na účet úložiště.](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
+K tomu dochází, když Modul runtime služby Azure Functions nepůjde spustit. Nejběžnějším důvodem této chyby je, že aplikace Function App ztratí přístup k účtu úložiště. Další informace najdete v tématu [požadavky na účet úložiště](storage-considerations.md#storage-account-requirements).
 
-### <a name="troubleshooting"></a>Řešení potíží
-Projdeme si čtyři nejběžnější chybové případy, jak identifikovat a jak vyřešit jednotlivé případy.
+Zbytek tohoto článku vám pomůže vyřešit následující příčiny této chyby, včetně toho, jak identifikovat a vyřešit jednotlivé případy.
 
-1. Účet úložiště se odstranil.
-1. Odstranila se nastavení aplikace účtu úložiště.
-1. Přihlašovací údaje účtu úložiště nejsou platné.
-1. Účet úložiště není dostupný.
-1. Úplná kvóta spuštění plná
-1. Aplikace je za bránou firewall.
++ [Odstraněný účet úložiště](#storage-account-deleted)
++ [Odstraněné nastavení aplikace pro účet úložiště](#storage-account-application-settings-deleted)
++ [Neplatné přihlašovací údaje účtu úložiště](#storage-account-credentials-invalid)
++ [Nedostupný účet úložiště](#storage-account-inaccessible)
++ [Překročena denní kvóta spuštění](#daily-execution-quota-full)
++ [Vaše aplikace je za bránou firewall.](#app-is-behind-a-firewall)
 
 
 ## <a name="storage-account-deleted"></a>Účet úložiště se odstranil.
@@ -60,9 +56,9 @@ Pokud jste v předchozím kroku neměli připojovací řetězec účtu úložiš
 
 ### <a name="guidance"></a>Pokyny
 
-* U některého z těchto nastavení nezaškrtávejte možnost nastavení slotu. Při výměně slotů nasazení bude funkce přerušena.
+* Pro některá z těchto nastavení nekontrolujte nastavení slotu. Při prohození slotů nasazení se ukončí aplikace Function App.
 * Tato nastavení neměňte v rámci automatizovaných nasazení.
-* Tato nastavení musí být k dispozici a platná v době vytvoření. Automatizované nasazení, které neobsahuje tato nastavení, bude mít za následek nefunkční aplikaci, a to i v případě, že se nastavení přidá za fakt.
+* Tato nastavení musí být k dispozici a platná v době vytvoření. Automatizované nasazení, které neobsahuje tato nastavení, má za následek aplikaci Function App, která se nespustí, i když se nastavení přidá později.
 
 ## <a name="storage-account-credentials-invalid"></a>Přihlašovací údaje účtu úložiště nejsou platné.
 
@@ -70,36 +66,31 @@ Pokud znovu vygenerujete klíče úložiště, je potřeba aktualizovat připojo
 
 ## <a name="storage-account-inaccessible"></a>Účet úložiště není dostupný.
 
-Vaše Function App musí být schopné získat přístup k účtu úložiště. Mezi běžné problémy, které blokují přístup funkcí k účtu úložiště, patří:
+Vaše aplikace Function App musí být schopna získat přístup k účtu úložiště. Mezi běžné problémy, které blokují přístup funkcí k účtu úložiště, patří:
 
-* Aplikace Function App nasazené do App Service prostředí bez správných síťových pravidel povolujících provoz do a z účtu úložiště
-* Brána firewall účtu úložiště je povolená a není nakonfigurovaná tak, aby umožňovala provoz do a z funkcí. [Další informace o konfiguraci brány firewall pro účet úložiště najdete tady.](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
++ aplikace Function App se nasazují do prostředí App Service (pomocného mechanismu) bez správných síťových pravidel, která umožňují provoz do a z účtu úložiště.
+
++ Brána firewall účtu úložiště je povolená a není nakonfigurovaná tak, aby umožňovala provoz do a z funkcí. Další informace najdete v tématu [Konfigurace virtuálních sítí a bran firewall Azure Storage](../storage/common/storage-network-security.md).
 
 ## <a name="daily-execution-quota-full"></a>Úplná kvóta spuštění plná
 
-Pokud máte nakonfigurovanou denní kvótu spuštění, vaše Function App se dočasně zakáže a spousta ovládacích prvků portálu nebude k dispozici. 
+Pokud máte nakonfigurovanou denní kvótu spuštění, aplikace Function App je dočasně zakázaná, což způsobuje, že mnohé z ovládacích prvků portálu nebudou dostupné. 
 
-* Pokud chcete ověřit, otevřete funkce platformy > Nastavení Function App na portálu. Pokud překročíte kvótu, zobrazí se následující zpráva:
-    * `The Function App has reached daily usage quota and has been stopped until the next 24 hours time frame.`
-* Pokud chcete tento problém vyřešit, odeberte kvótu a restartujte aplikaci.
++ Pokud chcete ověřit [Azure Portal](https://portal.azure.com), otevřete **funkce platformy** > **Function App nastavení** ve vaší aplikaci Function App. Pokud jste nastavili **kvótu denního využití** , kterou nastavíte, zobrazí se tato zpráva:
+
+    `The function app has reached daily usage quota and has been stopped until the next 24 hours time frame.`
+
++ Pokud chcete tento problém vyřešit, odeberte nebo Zvyšte denní kvótu a restartujte aplikaci. V opačném případě bude spuštění aplikace zablokované do dalšího dne.
 
 ## <a name="app-is-behind-a-firewall"></a>Aplikace je za bránou firewall.
 
 Pokud je vaše aplikace Functions hostovaná s [interním vyrovnáváním zatížení App Service Environment](../app-service/environment/create-ilb-ase.md) a je nakonfigurovaná tak, aby blokovala příchozí internetový provoz, nebo má nakonfigurovaná [omezení příchozích IP adres](functions-networking-options.md#inbound-ip-restrictions) pro blokování přístupu k Internetu, nebude váš modul runtime vaší funkce dostupný. Azure Portal volá přímo do spuštěné aplikace, aby načetla seznam funkcí a také prostřednictvím volání HTTP do koncového bodu KUDU. Nastavení na úrovni platformy na kartě `Platform Features` bude stále k dispozici.
 
-* Pokud chcete ověřit konfiguraci pomocného programu pro čtení, přejděte k NSG podsítě, kde se nachází Správce služby, a ověřte příchozí pravidla, aby se povolil provoz z veřejné IP adresy počítače, na který aplikaci přistupuje. Portál můžete použít taky z počítače připojeného k virtuální síti, na které běží vaše aplikace, nebo na virtuálním počítači spuštěném ve virtuální síti. [Tady si můžete přečíst další informace o konfiguraci příchozího pravidla.](https://docs.microsoft.com/azure/app-service/environment/network-info#network-security-groups)
+Pokud chcete ověřit konfiguraci pomocného programu pro čtení, přejděte k NSG podsítě, kde se nachází Správce služby, a ověřte příchozí pravidla, aby se povolil provoz z veřejné IP adresy počítače, na který aplikaci přistupuje. Portál můžete použít taky z počítače připojeného k virtuální síti, na které běží vaše aplikace, nebo na virtuálním počítači spuštěném ve virtuální síti. [Tady si můžete přečíst další informace o konfiguraci příchozího pravidla.](../app-service/environment/network-info.md#network-security-groups)
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když je váš Function App zase v provozu, se podíváme na naše rychlé starty a vývojářské odkazy, abyste se mohli znovu začít pracovat!
+Seznamte se s monitorováním aplikací Function App:
 
-* [Vytvoření první funkce Azure](functions-create-first-azure-function.md)  
-  Umožňuje rovnou začít a vytvořit první funkci pomocí rychlého startu Azure Functions. 
-* [Referenční informace pro vývojáře Azure Functions](functions-reference.md)  
-  Poskytuje další odborné informace o modulu runtime Azure Functions a referenční informace pro kódování funkcí a definování triggerů a vazeb.
-* [Testování Azure Functions](functions-test-a-function.md)  
-  Toto téma popisuje různé nástroje a techniky pro testování funkcí.
-* [Postup škálování Azure Functions](functions-scale.md)  
-  Toto téma popisuje plány služby, které jsou dostupné se službou Azure Functions (včetně plánu hostování Consumption), a výběr správného plánu. 
-* [Další informace o Azure App Service](../app-service/overview.md)  
-  Azure Functions využívá službu Azure App Service pro základní funkce, jako jsou nasazení, proměnné prostředí a diagnostika. 
+> [!div class="nextstepaction"]
+> [Azure Functions monitorování](functions-monitoring.md)

@@ -5,25 +5,25 @@ description: Sestavte si klasifikátor pro více tříd logistické regrese pro 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: sample
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 73861456edbb7493038fbf2adbf12300d170cab2
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 4d22fd39eae5d5cf207d6d44819f0ce7ab2eceb5
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311032"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963237"
 ---
 # <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Sestavte klasifikátor pro předpověď kategorie společnost pomocí návrháře Azure Machine Learning.
 
-**Návrhář – ukázka 7**
+**Návrhář (Preview) – ukázka 7**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Tato ukázka předvádí, jak použít moduly Text Analytics k sestavení kanálu klasifikace textu v Návrháři Azure Machine Learning.
+Tato ukázka předvádí, jak použít moduly Text Analytics k sestavení kanálu klasifikace textu v Návrháři Azure Machine Learning (Preview).
 
 Cílem klasifikace textu je přiřazení části textu k jedné nebo více předdefinovaným třídám nebo kategoriím. Část textu může být dokument, novinka, vyhledávací dotaz, e-mail, seznam vstupenek, lístky podpory, názory zákazníků, Uživatelská recenze produktu atd. Mezi aplikace pro klasifikaci textu patří kategorizace článků o novinkách a obsahu novinek do témat, organizování webových stránek do hierarchických kategorií, filtrování nevyžádané pošty, analýzy mínění, předpověď záměru uživatele z vyhledávacích dotazů, směrování Podpora lístků a analýza zpětné vazby od zákazníků. 
 
@@ -35,7 +35,7 @@ Základní kroky pro školicí model strojového učení s textovými daty jsou:
 
 1. Předběžné zpracování textových dat
 
-1. Příprava atributů
+1. Strojírenství funkcí
 
    Převede funkci text na číselnou funkci s modulem pro extrakci funkcí, jako je například hashování funkcí, extrahuje n-gram funkce z textových dat.
 
@@ -65,7 +65,7 @@ Pro některé společnosti se nepovedlo najít články, takže počet záznamů
 
 K Předzpracování textových dat používáme modul **textu předzpracování** , včetně rozpoznávání vět, vět tokenizovat a tak dále. Všechny podporované možnosti najdete v článku [**předzpracování textu**](algorithm-module-reference/preprocess-text.md) . Po předběžném zpracování dat TEX používáme modul **rozdělit data** k náhodnému rozdělení vstupních dat, aby datová sada školení obsahovala 50% původních dat a testovací datová sada obsahuje 50% původních dat.
 
-## <a name="feature-engineering"></a>Příprava atributů
+## <a name="feature-engineering"></a>Strojírenství funkcí
 V této ukázce použijeme dvě metody, které provádí strojírenství funkcí.
 
 ### <a name="feature-hashing"></a>Hashování funkcí

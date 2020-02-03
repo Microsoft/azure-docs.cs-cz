@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/08/2019
+ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 7dff2a88da2e12388bfb3a97cfdad236045170cf
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: b2af392dc4dc848a099b8297bb58e7d4a7104fa6
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543881"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964035"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Nasazení modulu zabezpečení na zařízení IoT Edge
 
@@ -99,7 +99,7 @@ Dokončete každý krok, abyste dokončili nasazení IoT Edge pro Azure Security
       "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration":{}
     ```
 
-1. Vyberte **Aktualizovat**.
+1. Vyberte **aktualizovat**.
 
 #### <a name="step-2-runtime-settings"></a>Krok 2: nastavení modulu runtime
 
@@ -131,7 +131,7 @@ Dokončete každý krok, abyste dokončili nasazení IoT Edge pro Azure Security
     }
     ```
     
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
    
 1. Vyberte **Next** (Další).
 
@@ -167,9 +167,9 @@ Pokud narazíte na problém, je nejlepším způsobem, jak se dozvědět o stavu
    
 1. Ověřte, zda jsou spuštěny následující kontejnery:
    
-   | Name (Název) | IMAGE |
+   | Name (Název) | OBRAZU |
    | --- | --- |
-   | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.1 |
+   | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.2 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |
    | edgeAgent | mcr.microsoft.com/azureiotedge-agent:1.0.1 |
    

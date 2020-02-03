@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/16/2019
+ms.date: 01/30/2020
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: bf241bc15ccdcf9e7d65f277c235f1aa668fcbe0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bc906e1026dcc051ef152ff9fba94525ac700761
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696636"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76962083"
 ---
 # <a name="authentication-flows"></a>Toky ověřování
 
@@ -39,7 +39,7 @@ Tento článek popisuje různé toky ověřování, které poskytuje knihovna Mi
  
 V závislosti na tom, jak je váš klient sestavený, může použít jeden (nebo několik) toků ověřování podporovaných platformou Microsoft identity.  Tyto toky můžou vytvářet různé tokeny (id_tokens, aktualizovat tokeny, přístupové tokeny) a také autorizační kódy a při práci vyžadovat jiné tokeny. Tento graf poskytuje přehled:
  
-|Tok | Vyžaduje | id_token | přístupový token | aktualizovat token | autorizační kód | 
+|Tok | Nutné | id_token | přístupový token | aktualizovat token | autorizační kód | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Tok autorizačního kódu](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
 |[Implicitní tok](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
@@ -74,7 +74,7 @@ Mnoho moderních webových aplikací je postavených jako aplikace na straně kl
 
 Tento tok ověřování neobsahuje scénáře aplikací, které používají rozhraní JavaScript pro různé platformy, jako jsou například elektronicky a reagující na nativní, protože vyžadují další možnosti pro interakci s nativními platformami.
 
-## <a name="authorization-code"></a>Autorizační kód
+## <a name="authorization-code"></a>autorizační kód
 
 MSAL podporuje [udělení autorizačního kódu OAuth 2](v2-oauth2-auth-code-flow.md). Tento grant se dá použít v aplikacích, které jsou nainstalované na zařízení, aby získal přístup k chráněným prostředkům, například k webovým rozhraním API. Díky tomu můžete přidat přihlašování a přístup k rozhraní API pro mobilní a desktopové aplikace. 
 
@@ -101,7 +101,7 @@ MSAL podporuje [tok ověřování OAuth 2 pro uživatele](v2-oauth2-on-behalf-of
 
 ![Diagram toku za běhu](media/msal-authentication-flows/on-behalf-of.png)
 
-V předchozím schématu:
+V předchozím diagramu:
 
 1. Aplikace získá přístupový token pro webové rozhraní API.
 2. Klient (webová, desktopová, mobilní nebo jednostránková aplikace) volá chráněné webové rozhraní API a v ověřovací hlavičce požadavku HTTP se přidá přístupový token jako nosný token. Webové rozhraní API ověřuje uživatele.
@@ -149,7 +149,7 @@ Pomocí toku kódu zařízení aplikace získá tokeny prostřednictvím procesu
 
 ![Diagram toku kódu zařízení](media/msal-authentication-flows/device-code.png)
 
-V předchozím schématu:
+V předchozím diagramu:
 
 1. Kdykoli se vyžaduje ověření uživatele, aplikace poskytne kód a vyzve uživatele k použití jiného zařízení (například smartphone připojeného k Internetu) k přechodu na adresu URL (například https://microsoft.com/devicelogin). Uživatel se pak vyzve k zadání kódu a pokračuje v běžném prostředí ověřování, včetně výzev k vyjádření souhlasu a vícefaktorového ověřování v případě potřeby.
 

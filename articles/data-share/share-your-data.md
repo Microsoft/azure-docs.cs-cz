@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: 8749f7dee2ceeb09e37cc97d4e5bfe76c52e2da6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 64c5d80b5a2660164b21e71f06e847d5b11e40da
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438743"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964413"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Kurz: sdílení dat pomocí Azure Data Share  
 
@@ -22,7 +22,7 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Vytvořte instanci služby Data Share.
 > * Přidejte do ní datové sady.
-> * Povolte pro ni plán synchronizace. 
+> * Povolte plán snímků pro sdílenou složku dat. 
 > * Přidejte do ní příjemce. 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -33,29 +33,40 @@ V tomto kurzu se naučíte:
 ### <a name="share-from-a-storage-account"></a>Sdílet z účtu úložiště:
 
 * Účet Azure Storage: Pokud ho ještě nemáte, můžete vytvořit [účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* Oprávnění k přidání přiřazení role k účtu úložiště, který je k dispozici ve *službě Microsoft. Authorization/přiřazení role/* oprávnění k zápisu. Toto oprávnění existuje v roli vlastníka. 
+* Oprávnění k zápisu do účtu úložiště, který je k dispozici v *Microsoft. Storage/storageAccounts/Write*. Toto oprávnění existuje v roli Přispěvatel.
+* Oprávnění k přidání přiřazení role k účtu úložiště, který je k dispozici v *Microsoft. autorizace/přiřazení role/zápis*. Toto oprávnění existuje v roli vlastníka. 
+
 
 ### <a name="share-from-a-sql-based-source"></a>Sdílení ze zdroje založeného na jazyce SQL:
 
-* Azure SQL Database nebo Azure SQL Data Warehouse s tabulkami a zobrazeními, které chcete sdílet.
+* Azure SQL Database nebo Azure synapse Analytics (dříve Azure SQL Data Warehouse) s tabulkami a zobrazeními, které chcete sdílet.
+* Oprávnění k zápisu do databází na SQL serveru, které jsou k dispozici v *Microsoft. SQL/serverech/databázích/Write*. Toto oprávnění existuje v roli Přispěvatel.
 * Oprávnění ke sdílení dat pro přístup k datovému skladu. To lze provést pomocí následujících kroků: 
-    1. Nastavte jako správce Azure Active Directory pro server.
+    1. Nastavte jako správce Azure Active Directory pro SQL Server.
     1. Připojte se k Azure SQL Database/datový sklad pomocí Azure Active Directory.
-    1. Pomocí Editoru dotazů (Preview) spusťte následující skript, který přidá soubor MSI pro sdílení dat jako db_owner. Je nutné se připojit pomocí služby Active Directory a SQL Server ověřování. 
+    1. Pomocí Editoru dotazů (Preview) spusťte následující skript, který přidá identitu spravovaného prostředku pro sdílení dat jako db_datareader. Je nutné se připojit pomocí služby Active Directory a SQL Server ověřování. 
     
-```sql
-    create user <share_acct_name> from external provider;     
-    exec sp_addrolemember db_owner, <share_acct_name>; 
-```                   
-Všimněte si, že *< share_acc_name >* je název vašeho účtu pro sdílení dat. Pokud jste ještě nevytvořili účet pro sdílení dat, můžete se k tomuto předběžnému požadavku vrátit později.  
+        ```sql
+        create user "<share_acct_name>" from external provider;     
+        exec sp_addrolemember db_datareader, "<share_acct_name>"; 
+        ```                   
+       Všimněte si, že *< share_acc_name >* je název vašeho prostředku pro sdílení dat. Pokud jste ještě nevytvořili prostředek pro sdílení dat, můžete se k tomuto předběžnému požadavku vrátit později.  
 
-* Uživatel Azure SQL Database, který má [`db_owner` přístup](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#non-administrator-users) k procházení a výběru tabulek a zobrazení, která chcete sdílet. 
+* Uživatel Azure SQL Database s přístupem "db_datareader", který umožňuje procházet a vybírat tabulky a zobrazení, která chcete sdílet. 
 
-* IP adresa klienta SQL Server přístup k bráně firewall: dá se to udělat pomocí následujících kroků: 1. Přejděte na *brány firewall a virtuální sítě* 1. Kliknutím na přepínač **zapnuto** povolíte přístup ke službám Azure. 
+* IP adresa klienta SQL Server přístup k bráně firewall. To lze provést pomocí následujících kroků: 
+    1. V systému SQL Server v Azure Portal přejděte na *brány firewall a virtuální sítě* .
+    1. Kliknutím na přepínač **zapnuto** povolíte přístup ke službám Azure.
+    1. Klikněte na **+ Přidat IP adresu klienta** a klikněte na **Uložit**. IP adresa klienta se může změnit. Můžete také přidat rozsah IP adres. 
+
+### <a name="share-from-azure-data-explorer"></a>Sdílení z Azure Průzkumník dat
+* Cluster Azure Průzkumník dat s databázemi, které chcete sdílet.
+* Oprávnění k zápisu do clusteru Azure Průzkumník dat, který se nachází v *Microsoft. Kusto/Clusters/Write*. Toto oprávnění existuje v roli Přispěvatel.
+* Oprávnění k přidání přiřazení role do clusteru Azure Průzkumník dat, který je k dispozici v *Microsoft. autorizace/přiřazení role/zápis*. Toto oprávnění existuje v roli vlastníka.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+Přihlaste se k [Portálu Azure](https://portal.azure.com/).
 
 ## <a name="create-a-data-share-account"></a>Vytvoření účtu pro sdílení dat
 
@@ -91,7 +102,7 @@ Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
 
 1. Vyberte **Vytvořit**.   
 
-1. Vyplňte podrobnosti pro vaši sdílenou složku dat. Zadejte název, popis obsahu sdílení a podmínek použití (volitelné). 
+1. Vyplňte podrobnosti pro vaši sdílenou složku dat. Zadejte název, typ sdílení, popis obsahu sdílení a podmínek použití (volitelné). 
 
     ![EnterShareDetails](./media/enter-share-details.png "Zadat podrobnosti o sdílené složce") 
 
@@ -101,7 +112,7 @@ Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
 
     ![Datové sady](./media/datasets.png "Datové sady")
 
-1. Vyberte typ datové sady, který chcete přidat. Pokud sdílíte z Azure SQL Database nebo Azure SQL DataWarehouse, budete vyzváni k zadání některých přihlašovacích údajů SQL. Proveďte ověření pomocí uživatele, který jste vytvořili jako součást požadavků.
+1. Vyberte typ datové sady, který chcete přidat. V závislosti na typu sdílené položky (snímku nebo na místě), který jste vybrali v předchozím kroku, se zobrazí jiný seznam typů datových sad. Pokud sdílíte z Azure SQL Database nebo Azure SQL Data Warehouse, budete vyzváni k zadání některých přihlašovacích údajů SQL. Proveďte ověření pomocí uživatele, který jste vytvořili jako součást požadavků.
 
     ![AddDatasets](./media/add-datasets.png "Přidat datové sady")    
 
@@ -115,7 +126,7 @@ Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
 
 1. Vybrat **pokračovat**
 
-1. Pokud byste chtěli, aby váš příjemce dat mohl získat přírůstkové aktualizace vašich dat, povolte plán snímků. 
+1. Pokud jste vybrali typ sdílené složky snímků, můžete nakonfigurovat plán snímků pro poskytování aktualizací vašich dat příjemci dat. 
 
     ![EnableSnapshots](./media/enable-snapshots.png "Povolit snímky") 
 

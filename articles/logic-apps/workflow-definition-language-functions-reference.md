@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 08/23/2019
-ms.openlocfilehash: f1fd776f903b4f5b4f315147f460143c7843fdc9
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.date: 02/03/2020
+ms.openlocfilehash: 87798c93bbc1098daea2f7258a3af3e26bb4bb93
+ms.sourcegitcommit: 85d52b799621d35d7df32c2cb1e339071c619bb3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689073"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966091"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referenční příručka k používání funkcí ve výrazech pro Azure Logic Apps a automatizaci
 
@@ -124,14 +124,14 @@ Chcete-li pracovat s podmínkami, porovnat hodnoty a výsledky výrazů nebo vyh
 
 | Funkce logického porovnání | Úkol |
 | --------------------------- | ---- |
-| [a](../logic-apps/workflow-definition-language-functions-reference.md#and) | Ověřte, zda jsou všechny výrazy pravdivé. |
-| [equals](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Zkontroluje, jestli jsou obě hodnoty ekvivalentní. |
-| [greater](../logic-apps/workflow-definition-language-functions-reference.md#greater) | Ověřte, zda je první hodnota větší než druhá hodnota. |
+| [ani](../logic-apps/workflow-definition-language-functions-reference.md#and) | Ověřte, zda jsou všechny výrazy pravdivé. |
+| [rovná](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Zkontroluje, jestli jsou obě hodnoty ekvivalentní. |
+| [zvýšen](../logic-apps/workflow-definition-language-functions-reference.md#greater) | Ověřte, zda je první hodnota větší než druhá hodnota. |
 | [greaterOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#greaterOrEquals) | Ověřte, zda je první hodnota větší než nebo rovna druhé hodnotě. |
 | [if](../logic-apps/workflow-definition-language-functions-reference.md#if) | Zkontroluje, jestli je výraz pravdivý, nebo nepravdivý. Na základě výsledku vrátí zadanou hodnotu. |
-| [less](../logic-apps/workflow-definition-language-functions-reference.md#less) | Ověřte, zda je první hodnota menší než druhá hodnota. |
+| [tolik](../logic-apps/workflow-definition-language-functions-reference.md#less) | Ověřte, zda je první hodnota menší než druhá hodnota. |
 | [lessOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#lessOrEquals) | Ověřte, zda je první hodnota menší nebo rovna druhé hodnotě. |
-| [not](../logic-apps/workflow-definition-language-functions-reference.md#not) | Zkontroluje, jestli je výraz nepravdivý. |
+| [mění](../logic-apps/workflow-definition-language-functions-reference.md#not) | Zkontroluje, jestli je výraz nepravdivý. |
 | Hodnota [nebo](../logic-apps/workflow-definition-language-functions-reference.md#or) | Ověřte, zda je alespoň jeden výraz pravdivý. |
 |||
 
@@ -151,7 +151,7 @@ Další informace o tom, jak Logic Apps zpracovává typy obsahu během převodu
 | [base64ToBinary](../logic-apps/workflow-definition-language-functions-reference.md#base64ToBinary) | Vrátí binární verzi řetězce zakódovaného ve formátu base64. |
 | [base64ToString](../logic-apps/workflow-definition-language-functions-reference.md#base64ToString) | Vrátí verzi řetězce pro řetězec kódovaný v kódování Base64. |
 | [tvaru](../logic-apps/workflow-definition-language-functions-reference.md#binary) | Vrátí binární verzi pro vstupní hodnotu. |
-| [bool](../logic-apps/workflow-definition-language-functions-reference.md#bool) | Vrátí logickou verzi pro vstupní hodnotu. |
+| [logick](../logic-apps/workflow-definition-language-functions-reference.md#bool) | Vrátí logickou verzi pro vstupní hodnotu. |
 | [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray) | Vrátí pole z více vstupů. |
 | [dataUri](../logic-apps/workflow-definition-language-functions-reference.md#dataUri) | Vrátí identifikátor URI dat pro vstupní hodnotu. |
 | [dataUriToBinary](../logic-apps/workflow-definition-language-functions-reference.md#dataUriToBinary) | Vrátí binární verzi pro identifikátor URI dat. |
@@ -160,8 +160,8 @@ Další informace o tom, jak Logic Apps zpracovává typy obsahu během převodu
 | [decodeDataUri](../logic-apps/workflow-definition-language-functions-reference.md#decodeDataUri) | Vrátí binární verzi pro identifikátor URI dat. |
 | [decodeUriComponent](../logic-apps/workflow-definition-language-functions-reference.md#decodeUriComponent) | Vrátí řetězec, který nahradí řídicí znaky pomocí dekódování verzí. |
 | [encodeUriComponent](../logic-apps/workflow-definition-language-functions-reference.md#encodeUriComponent) | Vrátí řetězec, který nahradí URL – nebezpečné znaky pomocí řídicích znaků. |
-| [float](../logic-apps/workflow-definition-language-functions-reference.md#float) | Vrátí číslo s plovoucí desetinnou čárkou pro vstupní hodnotu. |
-| [int](../logic-apps/workflow-definition-language-functions-reference.md#int) | Vrátí celočíselnou verzi řetězce. |
+| [Plovák](../logic-apps/workflow-definition-language-functions-reference.md#float) | Vrátí číslo s plovoucí desetinnou čárkou pro vstupní hodnotu. |
+| [hmot](../logic-apps/workflow-definition-language-functions-reference.md#int) | Vrátí celočíselnou verzi řetězce. |
 | [json](../logic-apps/workflow-definition-language-functions-reference.md#json) | Vrátí hodnotu nebo objekt typu JavaScript Object Notation (JSON) pro řetězec nebo XML. |
 | [string](../logic-apps/workflow-definition-language-functions-reference.md#string) | Vrátí verzi řetězce pro vstupní hodnotu. |
 | [uriComponent](../logic-apps/workflow-definition-language-functions-reference.md#uriComponent) | Vrátí verzi kódovanou identifikátorem URI pro vstupní hodnotu nahrazením znaků, které nejsou bezpečné, pomocí řídicích znaků. |
@@ -179,13 +179,13 @@ Chcete-li pracovat s celými čísly a Floaty, můžete použít tyto matematick
 
 | Funkce Math | Úkol |
 | ------------- | ---- |
-| [add](../logic-apps/workflow-definition-language-functions-reference.md#add) | Vrátí výsledek z přidání dvou čísel. |
+| [přidávání](../logic-apps/workflow-definition-language-functions-reference.md#add) | Vrátí výsledek z přidání dvou čísel. |
 | [div](../logic-apps/workflow-definition-language-functions-reference.md#div) | Vrátí výsledek z dělení dvou čísel. |
 | [max](../logic-apps/workflow-definition-language-functions-reference.md#max) | Vrátí nejvyšší hodnotu ze sady čísel nebo pole. |
 | [dlouhé](../logic-apps/workflow-definition-language-functions-reference.md#min) | Vrátí nejnižší hodnotu ze sady čísel nebo pole. |
 | [střední](../logic-apps/workflow-definition-language-functions-reference.md#mod) | Vrátí zbytek po dělení dvou čísel. |
 | [mul](../logic-apps/workflow-definition-language-functions-reference.md#mul) | Vrátí produkt pro vynásobení dvou čísel. |
-| [rand](../logic-apps/workflow-definition-language-functions-reference.md#rand) | Vrátí náhodné celé číslo ze zadaného rozsahu. |
+| [funkcí](../logic-apps/workflow-definition-language-functions-reference.md#rand) | Vrátí náhodné celé číslo ze zadaného rozsahu. |
 | [range](../logic-apps/workflow-definition-language-functions-reference.md#range) | Vrátí celočíselné pole, které začíná zadaným celým číslem. |
 | [sub](../logic-apps/workflow-definition-language-functions-reference.md#sub) | Vrátí výsledek odečtením druhého čísla od prvního čísla. |
 |||
@@ -234,7 +234,7 @@ Tyto funkce pracovního postupu vám můžou pomáhat:
 Například můžete odkazovat na výstupy z jedné akce a používat tato data v pozdější akci.
 Úplný odkaz na jednotlivé funkce naleznete v [abecedním seznamu](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
-| Funkce pracovních postupů | Úkol |
+| Funkce pracovního postupu | Úkol |
 | ----------------- | ---- |
 | [kroky](../logic-apps/workflow-definition-language-functions-reference.md#action) | Vrátí výstup aktuální akce za běhu nebo hodnoty z jiných párů názvu a hodnoty JSON. Viz také [Akce](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
 | [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody) | Vrátí výstup akce `body` za běhu. Viz také [tělo](../logic-apps/workflow-definition-language-functions-reference.md#body). |
@@ -441,7 +441,7 @@ A vrátí tento výsledek:
 
 <a name="actions"></a>
 
-### <a name="actions"></a>akce
+### <a name="actions"></a>činností
 
 Vrátí výstup akce za běhu nebo hodnoty z jiných párů názvu a hodnoty JSON, které můžete přiřadit k výrazu. Ve výchozím nastavení funkce odkazuje na celý objekt akce, ale můžete volitelně zadat vlastnost, jejíž hodnota má být.
 Pro zkrácených verzí viz [actionBody ()](#actionBody), [actionOutputs ()](#actionOutputs)a [body ()](#body).
@@ -904,7 +904,7 @@ A vrátí tento výsledek: `["hello"]`
 
 <a name="base64"></a>
 
-### <a name="base64"></a>base64
+### <a name="base64"></a>Base
 
 Vrátí verzi kódovanou pro řetězec ve formátu base64.
 
@@ -1030,7 +1030,7 @@ A vrátí tento výsledek:
 
 <a name="body"></a>
 
-### <a name="body"></a>text
+### <a name="body"></a>těles
 
 Vrátí výstup akce `body` za běhu.
 Zkrácený `actions('<actionName>').outputs.body`.
@@ -1148,7 +1148,7 @@ A vrátí tyto výsledky:
 
 <a name="concat"></a>
 
-### <a name="concat"></a>concat
+### <a name="concat"></a>spojuje
 
 Kombinací dvou nebo více řetězců a vrácení kombinovaného řetězce.
 
@@ -1182,7 +1182,7 @@ A vrátí tento výsledek: `"HelloWorld"`
 
 Kontroluje, zda kolekce obsahuje konkrétní položku.
 Vrátí hodnotu true, pokud se položka najde, nebo vrátí hodnotu false, pokud nebyla nalezena.
-Tato funkce rozlišuje malá a velká písmena.
+Tato funkce rozlišuje velká a malá písmena.
 
 ```
 contains('<collection>', '<value>')
@@ -1769,7 +1769,7 @@ A vrátí tyto výsledky:
 
 <a name="endswith"></a>
 
-### <a name="endswith"></a>endsWith
+### <a name="endswith"></a>EndsWith
 
 Zkontroluje, jestli řetězec končí určitým podřetězcem.
 Vrátí hodnotu true, pokud se podřetězec najde, nebo vrátí hodnotu false, pokud nebyla nalezena.
@@ -1823,7 +1823,7 @@ equals('<object1>', '<object2>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*objekt1*>, <*objekt2*> | Ano | Různé | Hodnoty, výrazy nebo objekty, které se mají porovnat |
+| <*objekt1*>, <*objekt2*> | Ano | Některé | Hodnoty, výrazy nebo objekty, které se mají porovnat |
 |||||
 
 | Návratová hodnota | Typ | Popis |
@@ -2032,7 +2032,7 @@ formatNumber(<number>, <format>, <locale>?)
 Předpokládejme, že chcete naformátovat číslo `1234567890`. Tento příklad formátuje číslo jako řetězec "1 234 567 890,00".
 
 ```
-formatNumber(1234567890, "{0:0,0.00}", "en-us")
+formatNumber(1234567890, '{0:0,0.00}', 'en-us')
 ```
 
 \* Příklad 2 "
@@ -2040,7 +2040,7 @@ formatNumber(1234567890, "{0:0,0.00}", "en-us")
 Předpokládejme, že chcete naformátovat číslo `1234567890`. V tomto příkladu se zformátuje číslo do řetězce "1.234.567.890, 00".
 
 ```
-formatNumber(1234567890, "{0:0,0.00}", "is-is")
+formatNumber(1234567890, '{0:0,0.00}', 'is-is')
 ```
 
 *Příklad 3*
@@ -2048,7 +2048,7 @@ formatNumber(1234567890, "{0:0,0.00}", "is-is")
 Předpokládejme, že chcete naformátovat číslo `17.35`. V tomto příkladu se zformátuje číslo do řetězce "$17,35".
 
 ```
-formatNumber(17.36, "{0:C2}")
+formatNumber(17.36, 'C2')
 ```
 
 *Příklad 4*
@@ -2056,7 +2056,7 @@ formatNumber(17.36, "{0:C2}")
 Předpokládejme, že chcete naformátovat číslo `17.35`. V tomto příkladu se zformátuje číslo do řetězce "17, 35 kr".
 
 ```
-formatNumber(17.36, "{0:C2}", "is-is")
+formatNumber(17.36, 'C2', 'is-is')
 ```
 
 <a name="getFutureTime"></a>
@@ -2149,7 +2149,7 @@ A vrátí tento výsledek: `"Saturday, January 27, 2018"`
 
 <a name="greater"></a>
 
-### <a name="greater"></a>greater
+### <a name="greater"></a>zvýšen
 
 Ověřte, zda je první hodnota větší než druhá hodnota.
 Vrátí hodnotu true, pokud je první hodnota větší, nebo vrátí hodnotu false, pokud je menší.
@@ -2353,7 +2353,7 @@ A vrátí tento výsledek: `10`
 
 <a name="item"></a>
 
-### <a name="item"></a>item
+### <a name="item"></a>položkami
 
 Při použití v rámci opakující se akce nad polem vrátí aktuální položku v poli během aktuální iterace akce.
 Můžete také získat hodnoty z vlastností dané položky.
@@ -2629,7 +2629,7 @@ A vrátí tento výsledek: `"a.b.c"`
 
 <a name="last"></a>
 
-### <a name="last"></a>poslední
+### <a name="last"></a>posledního
 
 Vrátí poslední položku z kolekce.
 
@@ -2728,7 +2728,7 @@ A vrátí tento výsledek: `4`
 
 <a name="less"></a>
 
-### <a name="less"></a>less
+### <a name="less"></a>tolik
 
 Ověřte, zda je první hodnota menší než druhá hodnota.
 Vrátí hodnotu true, pokud je první hodnota menší, nebo vrátí hodnotu false, pokud je první hodnota větší.
@@ -2824,7 +2824,7 @@ Tento příklad ukazuje ukázkovou adresu URL zpětného volání, kterou může
 
 <a name="max"></a>
 
-### <a name="max"></a>max
+### <a name="max"></a>Počet
 
 Vrátí nejvyšší hodnotu ze seznamu nebo pole s čísly, která jsou zahrnuta na obou koncích.
 
@@ -2978,7 +2978,7 @@ multipartBody('<actionName>', <index>)
 
 <a name="not"></a>
 
-### <a name="not"></a>not
+### <a name="not"></a>mění
 
 Zkontroluje, jestli je výraz nepravdivý.
 Vrátí hodnotu true, pokud má výraz hodnotu false, nebo vrátí hodnotu false, pokud má hodnotu true.
@@ -3177,7 +3177,7 @@ A vrátí tento výsledek: `"Sophia Owen"`
 
 <a name="rand"></a>
 
-### <a name="rand"></a>rand
+### <a name="rand"></a>funkcí
 
 Vrátí náhodné celé číslo ze zadaného rozsahu, který je zahrnut pouze na počátečním konci.
 
@@ -3208,7 +3208,7 @@ A vrátí jednu z těchto čísel jako výsledek: `1`, `2`, `3`nebo `4`
 
 <a name="range"></a>
 
-### <a name="range"></a>range
+### <a name="range"></a>oblasti
 
 Vrátí celočíselné pole, které začíná zadaným celým číslem.
 
@@ -3239,9 +3239,9 @@ A vrátí tento výsledek: `[1, 2, 3, 4]`
 
 <a name="replace"></a>
 
-### <a name="replace"></a>replace
+### <a name="replace"></a>náhrady
 
-Nahraďte podřetězec zadaným řetězcem a vraťte výsledný řetězec. Tato funkce rozlišuje malá a velká písmena.
+Nahraďte podřetězec zadaným řetězcem a vraťte výsledný řetězec. Tato funkce rozlišuje velká a malá písmena.
 
 ```
 replace('<text>', '<oldText>', '<newText>')
@@ -3581,7 +3581,7 @@ Tady je aktualizovaný objekt JSON:
 
 <a name="skip"></a>
 
-### <a name="skip"></a>Přeskočit
+### <a name="skip"></a>přímo
 
 Odebere položky z přední části kolekce a vrátí *všechny ostatní* položky.
 
@@ -4211,7 +4211,7 @@ A vrátí tento výsledek: `"Hello World"`
 
 <a name="union"></a>
 
-### <a name="union"></a>sjednocení
+### <a name="union"></a>sjednocovací
 
 Vrátí kolekci, která obsahuje *všechny* položky ze zadaných kolekcí.
 Aby se zobrazila ve výsledku, může se položka objevit v jakékoli kolekci předané této funkci. Pokud má jedna nebo více položek stejný název, zobrazí se ve výsledku poslední položka se stejným názvem.

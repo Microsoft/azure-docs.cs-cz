@@ -3,12 +3,12 @@ title: Vývoj Azure Functions pomocí Visual Studio Code
 description: Naučte se vyvíjet a testovat Azure Functions pomocí rozšíření Azure Functions pro Visual Studio Code.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 59c350b267583a2bccfdd66996aa6c1f97954218
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7e533d5826d429a716ad1592d75159782ed43fa7
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845400"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964005"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Vývoj Azure Functions pomocí Visual Studio Code
 
@@ -79,6 +79,8 @@ Rozšíření Functions umožňuje vytvořit projekt Function App spolu s první
 
     ![Šablona funkce aktivovaná protokolem HTTP v Visual Studio Code](./media/functions-develop-vs-code/new-function-full.png)
 
+### <a name="generated-project-files"></a>Generované soubory projektu
+
 Šablona projektu vytvoří projekt ve zvoleném jazyce a nainstaluje požadované závislosti. Pro libovolný jazyk má nový projekt tyto soubory:
 
 * **Host. JSON**: umožňuje konfigurovat hostitele funkcí. Tato nastavení platí v případě, že používáte funkce místně a když je spouštíte v Azure. Další informace naleznete v tématu [reference Host. JSON](functions-host-json.md).
@@ -87,6 +89,30 @@ Rozšíření Functions umožňuje vytvořit projekt Function App spolu s první
 
     >[!IMPORTANT]
     >Vzhledem k tomu, že soubor Local. Settings. JSON může obsahovat tajné kódy, je nutné jej vyloučit ze správy zdrojového kódu projektu.
+
+V závislosti na jazyku jsou tyto další soubory vytvořeny:
+
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+
+* [HttpExample.cs soubor knihovny tříd](functions-dotnet-class-library.md#functions-class-library-project) , který implementuje funkci.
+
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+
+* Soubor Package. JSON v kořenové složce.
+
+* Složka HttpExample, která obsahuje [soubor definice Function. JSON](functions-reference-node.md#folder-structure) a [soubor index. js](functions-reference-node.md#exporting-a-function), soubor Node. js, který obsahuje kód funkce.
+
+<!-- # [PowerShell](#tab/powershell)
+
+* An HttpExample folder that contains the [function.json definition file](functions-reference-python.md#programming-model) and the run.ps1 file, which contains the function code.
+ 
+# [Python](#tab/python)
+    
+* A project-level requirements.txt file that lists packages required by Functions.
+    
+* An HttpExample folder that contains the [function.json definition file](functions-reference-python.md#programming-model) and the \_\_init\_\_.py file, which contains the function code.
+     -->
+---
 
 V tomto okamžiku můžete přidat vstupní a výstupní vazby do funkce [úpravou souboru Function. JSON](#add-a-function-to-your-project) nebo [přidáním parametru do funkce knihovny C# tříd](#add-a-function-to-your-project).
 

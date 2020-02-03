@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/15/2019
-ms.openlocfilehash: 437a0c95ea4b48baa74bf6a577dc06429833bc31
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.custom: hdinsightactive
+ms.date: 01/23/2020
+ms.openlocfilehash: 2a7d71c6d751d4a48ec93f020e657a4d43114cfc
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644575"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76764384"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Přístup k protokolům aplikace Apache Hadoop nitě v HDInsight se systémem Linux
 
@@ -27,7 +27,7 @@ Každá aplikace se může skládat z několika *pokusů o aplikace*. Pokud dojd
 
 Pokud chcete škálovat cluster tak, aby podporoval větší propustnost zpracování, můžete použít automatické [škálování](hdinsight-autoscale-clusters.md) nebo [škálování clusterů ručně pomocí několika různých jazyků](hdinsight-scaling-best-practices.md#utilities-to-scale-clusters).
 
-## <a name="YARNTimelineServer"></a>Server časové osy PŘÍZe
+## <a name="yarn-timeline-server"></a>Server časové osy PŘÍZe
 
 [Server časové osy Apache HADOOP příze](https://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/TimelineServer.html) poskytuje obecné informace o dokončených aplikacích.
 
@@ -38,7 +38,7 @@ Server časové osy PŘÍZe obsahuje následující typy dat:
 * Informace o pokusůch o dokončení aplikace
 * Kontejnery používané jakýmkoli pokusy o aplikace
 
-## <a name="YARNAppsAndLogs"></a>PŘÍZe aplikace a protokoly
+## <a name="yarn-applications-and-logs"></a>PŘÍZe aplikace a protokoly
 
 PŘÍZe podporuje více programovacích modelů ([Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) jednu z nich) tím, že odpojuje správu prostředků od plánování a monitorování aplikací. K PŘÍZi se používá globální *Správce prostředků* (RM), *NodeManagers* (NMs) a per-Application *ApplicationMasters* (AMs). Jednotlivé aplikace vyjednávají prostředky (CPU, paměť, disk, síť) pro spuštění aplikace s nástrojem RM. RM spolupracuje s NMs pro udělení těchto prostředků, které se udělují jako *kontejnery*. Zodpovídá za sledování průběhu kontejnerů, které mu jsou přiřazeny pomocí služby RM. Aplikace může vyžadovat mnoho kontejnerů v závislosti na povaze aplikace.
 
@@ -46,28 +46,115 @@ Každá aplikace se může skládat z několika *pokusů o aplikace*. Pokud dojd
 
 Protokoly aplikací (a přidružené protokoly kontejnerů) jsou důležité při ladění problematických aplikací Hadoop. PŘÍZe nabízí dobrý rámec pro shromažďování, agregaci a ukládání protokolů aplikací pomocí funkce [agregace protokolů](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/) . Funkce agregace protokolu usnadňuje přístup k protokolům aplikací. Agreguje protokoly mezi všemi kontejnery v pracovním uzlu a ukládá je jako jeden agregovaný soubor protokolu pro každý pracovní uzel. Protokol je po dokončení aplikace uložen ve výchozím systému souborů. Vaše aplikace může používat stovky nebo tisíce kontejnerů, ale protokoly pro všechny kontejnery spuštěné v jednom pracovním uzlu jsou vždycky agregované do jednoho souboru. Proto existuje pouze 1 protokol na jeden pracovní uzel používaný vaší aplikací. Agregace protokolů je ve výchozím nastavení povolená v clusterech HDInsight verze 3,0 a vyšší. Agregované protokoly jsou umístěny ve výchozím úložišti clusteru. Následující cesta je cesta HDFS k protokolům:
 
-    /app-logs/<user>/logs/<applicationId>
+```
+/app-logs/<user>/logs/<applicationId>
+```
 
 V cestě `user` je jméno uživatele, který aplikaci spustil. `applicationId` je jedinečný identifikátor přiřazený k aplikaci pomocí prostředků PŘÍZe RM.
 
 Agregované protokoly nejsou přímo čitelné, protože jsou napsány v [TFile](https://issues.apache.org/jira/secure/attachment/12396286/TFile%20Specification%2020081217.pdf) [binárním formátu](https://issues.apache.org/jira/browse/HADOOP-3315) indexovaném kontejnerem. Použijte protokoly PŘÍZe ResourceManager nebo nástroje CLI k zobrazení těchto protokolů jako prostý text pro aplikace nebo kontejnery, které vás zajímají.
 
+## <a name="yarn-logs-in-an-esp-cluster"></a>Záznamy příze v clusteru ESP
+
+Do vlastních `mapred-site` v Ambari musí být přidány dvě konfigurace.
+
+1. Ve webovém prohlížeči přejděte na `https://CLUSTERNAME.azurehdinsight.net`, kde `CLUSTERNAME` je název vašeho clusteru.
+
+1. V uživatelském rozhraní Ambari přejděte na **MapReduce2** > **konfigurace** > **Upřesnit** > **vlastní mapred-site**.
+
+1. Přidejte *jednu* z následujících sad vlastností:
+
+    **Nastavit 1**
+
+    ```
+    mapred.acls.enabled=true
+    mapreduce.job.acl-view-job=*
+    ```
+
+    **Nastavení 2**
+
+    ```
+    mapreduce.job.acl-view-job=<user1>,<user2>,<user3>
+    ```
+
+1. Uložte změny a restartujte všechny ovlivněné služby.
+
 ## <a name="yarn-cli-tools"></a>Nástroje rozhraní příkazového řádku PŘÍZ
 
-Chcete-li použít nástroje rozhraní příkazového řádku PŘÍZ, musíte se nejprve připojit ke clusteru HDInsight pomocí protokolu SSH. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+1. Připojte se ke clusteru pomocí [příkazu SSH](./hdinsight-hadoop-linux-use-ssh-unix.md) . Níže uvedený příkaz upravte tak, že ho nahradíte názvem clusteru a pak zadáte tento příkaz:
 
-Tyto protokoly můžete zobrazit jako prostý text spuštěním jednoho z následujících příkazů:
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
 
+1. Vypíše všechna ID aplikací aktuálně spuštěných Přízových aplikací pomocí následujícího příkazu:
+
+    ```bash
+    yarn top
+    ```
+
+    Poznamenejte si ID aplikace ze sloupce `APPLICATIONID`, jehož protokoly se mají stáhnout.
+
+    ```output
+    YARN top - 18:00:07, up 19d, 0:14, 0 active users, queue(s): root
+    NodeManager(s): 4 total, 4 active, 0 unhealthy, 0 decommissioned, 0 lost, 0 rebooted
+    Queue(s) Applications: 2 running, 10 submitted, 0 pending, 8 completed, 0 killed, 0 failed
+    Queue(s) Mem(GB): 97 available, 3 allocated, 0 pending, 0 reserved
+    Queue(s) VCores: 58 available, 2 allocated, 0 pending, 0 reserved
+    Queue(s) Containers: 2 allocated, 0 pending, 0 reserved
+    
+                      APPLICATIONID USER             TYPE      QUEUE   #CONT  #RCONT  VCORES RVCORES     MEM    RMEM  VCORESECS    MEMSECS %PROGR       TIME NAME
+     application_1490377567345_0007 hive            spark  thriftsvr       1       0       1       0      1G      0G    1628407    2442611  10.00   18:20:20 Thrift JDBC/ODBC Server
+     application_1490377567345_0006 hive            spark  thriftsvr       1       0       1       0      1G      0G    1628430    2442645  10.00   18:20:20 Thrift JDBC/ODBC Server
+    ```
+
+1. Tyto protokoly můžete zobrazit jako prostý text spuštěním jednoho z následujících příkazů:
+
+    ```bash
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
+    ```
 
-Zadejte &lt;applicationId > &lt;User-Started-the-Application >, &lt;containerId > a &lt;Work-Node-Address > informace při spuštění těchto příkazů.
+    Zadejte &lt;applicationId > &lt;User-Started-the-Application >, &lt;containerId > a &lt;Work-Node-Address > informace při spuštění těchto příkazů.
+
+### <a name="other-sample-commands"></a>Další ukázkové příkazy
+
+1. Pomocí níže uvedeného příkazu Stáhněte protokoly kontejnerů příz pro všechny hlavní servery aplikací. Tím se vytvoří soubor protokolu s názvem `amlogs.txt` v textovém formátu.
+
+    ```bash
+    yarn logs -applicationId <application_id> -am ALL > amlogs.txt
+    ```
+
+1. Stáhněte si protokoly kontejneru příze jenom pro nejnovější hlavní aplikace pomocí následujícího příkazu:
+
+    ```bash
+    yarn logs -applicationId <application_id> -am -1 > latestamlogs.txt
+    ```
+
+1. Stáhněte si protokoly kontejneru PŘÍZe pro první dva hlavní aplikační servery pomocí následujícího příkazu:
+
+    ```bash
+    yarn logs -applicationId <application_id> -am 1,2 > first2amlogs.txt
+    ```
+
+1. Stáhněte všechny protokoly kontejneru příze pomocí následujícího příkazu:
+
+    ```bash
+    yarn logs -applicationId <application_id> > logs.txt
+    ```
+
+1. Stáhněte si protokol kontejneru příze pro konkrétní kontejner pomocí následujícího příkazu:
+
+    ```bash
+    yarn logs -applicationId <application_id> -containerId <container_id> > containerlogs.txt
+    ```
 
 ## <a name="yarn-resourcemanager-ui"></a>Uživatelské rozhraní Správce prostředků PŘÍZe
 
 Uživatelské rozhraní Správce prostředků PŘÍZe běží na clusteru hlavnímu uzlu. Je k ní přistupované prostřednictvím webového uživatelského rozhraní Ambari. K zobrazení protokolů PŘÍZe použijte následující postup:
 
 1. Ve webovém prohlížeči přejděte na `https://CLUSTERNAME.azurehdinsight.net`. Položku název_clusteru nahraďte názvem vašeho clusteru HDInsight.
+
 2. V seznamu služeb vlevo vyberte možnost **příze**.
 
     ![Je vybraná služba Apache Ambari nitě](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)

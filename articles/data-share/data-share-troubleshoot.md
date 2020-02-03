@@ -7,12 +7,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.openlocfilehash: 6ad612d56b25da9e092070198e321e7fca8ad96b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 901f2b56bc045dc9a9837dd18b2e6ce7169aa3b9
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490569"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964222"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Řešení běžných problémů v Azure Data Share 
 
@@ -24,53 +24,72 @@ V některých případech platí, že když nový uživatel klikne na **přijmou
 
 ![Žádná pozvání](media/no-invites.png)
 
-Výše uvedená chyba je známý problém se službou a v tuto chvíli se řeší. Alternativním řešením je postupovat podle následujících kroků. 
+K tomu může dojít z následujících důvodů:
 
-1. V Azure Portal přejděte na **odběry** .
-1. Vyberte předplatné, které používáte pro sdílení dat Azure.
-1. Kliknout na **poskytovatelé prostředků**
-1. Hledání Microsoft. datashare
-1. Klikněte na **zaregistrovat** .
+* **Služba Azure Data Share není zaregistrovaná jako poskytovatel prostředku žádného předplatného Azure v tenantovi Azure.** K tomuto problému dochází, pokud ve vašem tenantovi Azure není žádný prostředek pro sdílení dat. Když vytvoříte prostředek sdílené složky Azure, zaregistruje se v předplatném Azure automaticky poskytovatele prostředků. Službu sdílení dat můžete také ručně zaregistrovat podle těchto kroků. K provedení těchto kroků budete potřebovat roli Přispěvatel Azure.
 
-K provedení těchto kroků budete potřebovat [roli RBAC přispěvatele Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) . 
+    1. V Azure Portal přejděte na **odběry** .
+    1. Vyberte předplatné, které chcete použít k vytvoření prostředku Azure Data Share
+    1. Kliknout na **poskytovatelé prostředků**
+    1. Hledání **Microsoft. Datashare**
+    1. Klikněte na **zaregistrovat** . 
 
-Pokud stále nemůžete zobrazit pozvánku ke sdílení dat, kontaktujte poskytovatele dat a zajistěte, aby odeslali pozvánku na vaši e-mailovou adresu Azure, a *ne* váš e-mailový alias. 
+    K provedení těchto kroků budete potřebovat [roli RBAC přispěvatele Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) . 
 
-> [!IMPORTANT]
-> Pokud jste už přijali pozvánku ke sdílené složce Azure a před konfigurací úložiště jste službu ukončili, postupujte podle pokynů uvedených v průvodci [Konfigurovat datovou sadu](how-to-configure-mapping.md) s návodem, kde se dozvíte, jak dokončit konfiguraci přijatých sdílených dat. a začněte přijímat data. 
+* **Pozvánka se pošle na váš e-mailový alias místo na přihlašovací e-mail Azure.** Pokud jste zaregistrovali službu Azure data Shared nebo už jste vytvořili prostředek pro sdílení dat v tenantovi Azure, ale pořád nevidíte pozvánku, může to být tím, že poskytovatel zadal váš e-mailový alias jako příjemce namísto přihlašovací e-mailové adresy Azure. Obraťte se na poskytovatele dat a zajistěte, aby odeslal pozvánku na vaši e-mailovou adresu Azure, a ne na váš e-mailový alias.
 
-## <a name="error-when-creating-or-receiving-a-new-data-share"></a>Chyba při vytváření nebo přijímání nové sdílené složky dat
+* **Pozvánka již byla přijata.** Odkaz v e-mailu vás přesměruje na stránku pozvánky ke sdílení dat v Azure Portal, která obsahuje jenom seznam nevyřízených pozvánek. Pokud jste již pozvánku přijali, již se nezobrazí na stránce pozvání ke sdílení dat. Přejděte ke zdroji dat, který jste použili k přijetí pozvánky, abyste si zobrazili přijaté sdílené složky a nakonfigurovali cílové nastavení clusteru Azure Průzkumník dat.
 
-"Chyba: operace vrátila neplatný stavový kód důvodu chybného požadavku."
+## <a name="error-when-creating-or-receiving-a-new-share"></a>Chyba při vytváření nebo přijímání nové sdílené složky
 
-"Chyba: AuthorizationFailed"
+"Nepovedlo se přidat datové sady."
 
-"Chyba: přiřazení role k účtu úložiště"
+Nepovedlo se namapovat datové sady.
 
-![Chyba oprávnění](media/error-write-privilege.png)
+"Nepovedlo se udělit prostředku sdílení dat x přístup k y"
 
-Pokud se při vytváření nebo přijímání nové sdílené datové složky zobrazí některá z výše uvedených chyb, je to z důvodu nedostatečných oprávnění k účtu úložiště. Požadovaná oprávnění jsou *Microsoft. Authorization/přiřazení role/zápis*, která existuje v roli vlastníka úložiště nebo je možné ji přiřadit vlastní roli. I když vytvoříte účet úložiště, automaticky to z vás NEDĚLÁ vlastníka účtu úložiště. Pokud si chcete udělit oprávnění vlastníka účtu úložiště, postupujte podle těchto kroků. Alternativně lze vytvořit vlastní roli s tímto oprávněním, které můžete přidat do nástroje do aplikace.  
+"Nemáte správná oprávnění k x"
 
-1. Na webu Azure Portal přejděte k účtu úložiště.
-1. Výběr **řízení přístupu (IAM)**
-1. Klikněte na **Přidat** .
-1. Přidejte sami sebe jako vlastníka.
+"Nemohli jsme přidat oprávnění k zápisu pro účet Azure Data Share k jednomu nebo více vybraným prostředkům"
+
+Pokud při vytváření nové sdílené složky nebo mapování datových sad dojde k některé z výše uvedených chyb, může to být způsobeno nedostatečnými oprávněními pro úložiště dat Azure. Další informace najdete v tématu [role a požadavky](concepts-roles-permissions.md) pro požadovaná oprávnění. 
+
+Ke sdílení nebo příjmu dat z úložiště dat Azure, které obvykle existuje v roli přispěvatel, potřebujete oprávnění k zápisu. 
+
+Pokud se jedná o první sdílení nebo příjem dat z úložiště dat Azure, potřebujete také *Microsoft. Authorization/role nebo* oprávnění k zápisu, které obvykle existují v roli vlastníka. I když jste vytvořili prostředek Azure Data Store, nevytvoří automaticky vlastníka tohoto prostředku. Pomocí správného oprávnění služba Azure Data Share automaticky uděluje přístup spravované identitě prostředku ke sdílení dat do úložiště dat. Tento proces může trvat několik minut, než se projeví. Pokud dojde k selhání kvůli této prodlevě, zkuste to znovu za několik minut.
+
+Sdílení založené na SQL vyžaduje další oprávnění. Podrobnosti najdete v tématu řešení potíží se sdílením na základě SQL.
 
 ## <a name="troubleshooting-sql-based-sharing"></a>Řešení potíží s sdílením na základě SQL
 
-"Chyba: datové sady x nebyly přidány, protože nemáte požadovaná oprávnění ke sdílení."
+"Uživatel x neexistuje v SQL Database"
 
-Pokud se tato chyba zobrazí při přidávání datové sady ze zdroje založeného na SQL, může to být tím, že jste nevytvořili uživatele pro soubor MSI Azure data Shared na vašem SQL Server.  Pokud chcete tento problém vyřešit, spusťte následující skript:
+Pokud se tato chyba zobrazí při přidávání datové sady ze zdroje založeného na SQL, může to být tím, že jste nevytvořili uživatele pro spravovanou identitu Azure data Shared na svém SQL Server.  Pokud chcete tento problém vyřešit, spusťte následující skript:
 
 ```sql
-    create user <share_acct_name> from external provider;     
-    exec sp_addrolemember db_owner, <share_acct_name>; 
+    create user "<share_acct_name>" from external provider; 
+    exec sp_addrolemember db_datareader, "<share_acct_name>";
 ```      
-Všimněte si, že *< share_acc_name >* je název vašeho účtu pro sdílení dat. Pokud jste ještě nevytvořili účet pro sdílení dat, můžete se k tomuto předběžnému požadavku vrátit později.         
+Pokud se tato chyba zobrazí při mapování datové sady k cíli založenému na SQL, může to být tím, že jste nevytvořili uživatele pro spravovanou identitu Azure data Shared na svém SQL Server.  Pokud chcete tento problém vyřešit, spusťte následující skript:
 
-Ujistěte se, že jste postupovali podle všech požadavků uvedených v kurzu [sdílení vašich dat](share-your-data.md) .
+```sql
+    create user "<share_acc_name>" from external provider; 
+    exec sp_addrolemember db_datareader, "<share_acc_name>"; 
+    exec sp_addrolemember db_datawriter, "<share_acc_name>"; 
+    exec sp_addrolemember db_ddladmin, "<share_acc_name>";
+```
+Všimněte si, že *< share_acc_name >* je název vašeho prostředku pro sdílení dat.      
+
+Ujistěte se, že jste postupovali podle všech požadavků uvedených v kurzu [sdílení dat](share-your-data.md) a [přijetí a přijetí dat](subscribe-to-data-share.md) .
+
+## <a name="snapshot-failed"></a>Nepodařilo se vytvořit snímek
+Snímek se kvůli nejrůznějším důvodům nezdařil. Podrobnou chybovou zprávu najdete tak, že kliknete na počáteční čas snímku a pak na stav každé datové sady. 
+
+Pokud chybová zpráva souvisí s oprávněním, ověřte, že služba sdílení dat má požadovaná oprávnění. Podrobnosti najdete v tématu [role a požadavky](concepts-roles-permissions.md) . Pokud snímek vyberete poprvé, může trvat několik minut, než se prostředku sdílení dat udělí přístup k úložišti dat Azure. Počkejte pár minut a zkuste to znovu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se chcete dozvědět, jak začít sdílet data, pokračujte do kurzu [sdílení vašich dat](share-your-data.md) .
+Pokud se chcete dozvědět, jak začít sdílet data, pokračujte do kurzu [sdílení vašich dat](share-your-data.md) . 
+
+Pokud se chcete dozvědět, jak přijímat data, přejděte k kurzu [přijetí a přijetí dat](subscribe-to-data-share.md) .
 

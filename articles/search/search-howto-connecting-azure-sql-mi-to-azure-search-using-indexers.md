@@ -8,12 +8,12 @@ ms.author: victliu
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0f91775e0175b4b4af9b57fa96e389c3a2a22564
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 65e483fd772e20daa73b465ea17dfa6ecde42233
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863117"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964885"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>Konfigurace připojení ze služby Azure Kognitivní hledání indexer na spravovanou instanci SQL
 
@@ -35,11 +35,14 @@ Ověřte, že skupina zabezpečení sítě má správná **příchozí pravidla 
    ![NSG příchozí pravidlo zabezpečení](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/nsg-rule.png "NSG příchozí pravidlo zabezpečení")
 
 > [!NOTE]
-> Omezením současného přístupu ke spravované instanci SQL se můžete rozhodnout, že nahradíte aktuální pravidlo (`public_endpoint_inbound`) pomocí 2 pravidel:
+> Indexery stále vyžadují, aby byla nakonfigurovaná instance SQL nakonfigurovaná s veřejným koncovým bodem, aby bylo možné číst data.
+> Můžete ale omezit příchozí přístup k tomuto veřejnému koncovému bodu tím, že nahradíte aktuální pravidlo (`public_endpoint_inbound`) následujícími dvěma pravidly:
 >
-> * Povolení příchozího přístupu ze [značky služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) `AzureCognitiveSearch` ("zdroj" = `AzureCognitiveSearch`)
+> * Povolení příchozího přístupu ze [značky služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) `AzureCognitiveSearch` ("Source" = `AzureCognitiveSearch`; "Name" = `cognitive_search_inbound`)
 >
-> * Povolení příchozího přístupu z IP adresy služby vyhledávání, která se dá získat pomocí příkazového testu pro plně kvalifikovaný název domény (např. `<your-search-service-name>.search.windows.net`). ("Zdroj" = `IP address`)
+> * Povolení příchozího přístupu z IP adresy služby vyhledávání, která se dá získat pomocí příkazového testu pro plně kvalifikovaný název domény (např. `<your-search-service-name>.search.windows.net`). ("SOURCE" = `IP address`; "NAME" = `search_service_inbound`)
+>
+> U každého z těchto 2 pravidel nastavte "PORT" = `3342`, protokol "= `TCP`," cíl "= `Any`," ACTION "= `Allow`
 
 ## <a name="get-public-endpoint-connection-string"></a>Získat připojovací řetězec veřejného koncového bodu
 Ujistěte se, že používáte připojovací řetězec pro **veřejný koncový bod** (port 3342, ne port 1433).

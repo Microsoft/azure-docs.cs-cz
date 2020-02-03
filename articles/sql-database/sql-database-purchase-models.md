@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 04/26/2019
-ms.openlocfilehash: 6dbe61c47a7323e2dec599d2f3c77453aa6f8d82
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 02/01/2020
+ms.openlocfilehash: aa7197dc631ea281bd5616b572f4ca01aeb9d45c
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973522"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964766"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Volba mezi vCore a nákupními modely DTU
 
@@ -47,9 +47,9 @@ Následující tabulka a graf se porovnávají a kontrastují s nákupními mode
 
 Ve zřízené výpočetní úrovni se náklady na výpočetní prostředky odráží v celkové výpočetní kapacitě zřízené pro aplikaci.
 
-Na úrovni služby důležité pro podnikání automaticky přidělíme aspoň 3 repliky. Vzhledem k tomu, že se toto dodatečné přidělení výpočetních prostředků projeví, cena v nákupním modelu založeném na vCore je přibližně 2.7 × vyšší v úrovni služeb pro důležité obchodní informace, než je v úrovni služby pro obecné účely. Podobně vyšší cena úložiště za GB v úrovni služby důležité pro podnikání odráží vysoké vstupně-výstupní operace a nízkou latenci úložiště SSD.
+Ve vrstvě služby Pro důležité obchodní informace automaticky přidělíme aspoň 3 repliky. Vzhledem k tomu, že se toto dodatečné přidělení výpočetních prostředků projeví, cena v nákupním modelu založeném na vCore je přibližně 2.7 × vyšší v úrovni služby Pro důležité obchodní informace, než je v úrovni služby Pro obecné účely. Podobně vyšší cena úložiště na GB v Pro důležité obchodní informace úrovni služby odráží vyšší limity vstupně-výstupní operace a nižší latenci úložiště SSD.
 
-Náklady na úložiště zálohování jsou stejné jako u důležitých podnikových služeb a na úrovni služby pro obecné účely, protože obě úrovně používají úložiště Standard Storage úrovně Standard.
+Náklady na úložiště zálohování jsou stejné jako pro úroveň služby Pro důležité obchodní informace a Pro obecné účely úroveň služby, protože obě úrovně používají pro zálohování standardní úložiště.
 
 ### <a name="serverless-compute-costs"></a>Náklady na výpočetní prostředky bez serveru
 
@@ -67,7 +67,7 @@ Další informace o cenách za úložiště najdete na stránce s [cenami](https
 
 Virtual Core (vCore) představuje logický procesor a nabízí možnost výběru mezi generacemi hardwaru a fyzickými charakteristikami hardwaru (například počet jader, paměti a velikost úložiště). Nákupní model založený na vCoreech poskytuje flexibilitu, kontrolu, transparentnost individuální spotřeby prostředků a snadný způsob, jak přeložit požadavky na místní úlohy do cloudu. Tento model umožňuje zvolit prostředky výpočtů, paměti a úložiště na základě potřeb vašich úloh.
 
-V rámci nákupního modelu založeného na vCore si můžete vybrat mezi úrovněmi služeb pro [jednotlivé databáze](sql-database-single-database-scale.md), [elastické fondy](sql-database-elastic-pool.md)a [spravované instance](sql-database-managed-instance.md)z hlediska [obecných účelů](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) a [důležitých podnikových](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) služeb. Pro izolované databáze můžete také zvolit [úroveň služby pro škálování na úrovni služeb](sql-database-service-tier-hyperscale.md).
+V rámci nákupního modelu založeného na vCore si můžete vybrat mezi [pro obecné účely](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) a [pro důležité obchodní informace](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) úrovněmi služeb pro izolované [databáze](sql-database-single-database-scale.md), [elastické fondy](sql-database-elastic-pool.md)a [spravované instance](sql-database-managed-instance.md). Pro izolované databáze můžete také zvolit [úroveň služby pro škálování na úrovni služeb](sql-database-service-tier-hyperscale.md).
 
 Nákupní model založený na vCore vám umožňuje nezávisle vybrat výpočetní prostředky a prostředky úložiště, odpovídat místnímu výkonu a optimalizovat ceny. V rámci nákupního modelu založeného na vCore platíte za:
 
@@ -83,8 +83,8 @@ Pokud vaše izolovaná databáze nebo elastický fond spotřebovává více než
 
 Chcete-li provést převod z nákupního modelu založeného na DTU na nákupní model založený na vCore, vyberte výpočetní velikost pomocí následujících pravidel pro palec:
 
-- Každé 100 DTU na úrovni Standard vyžaduje aspoň 1 vCore na úrovni služby pro obecné účely.
-- Každé 125 DTU na úrovni Premium vyžaduje aspoň 1 vCore na úrovni služby důležité pro podnikání.
+- Každé 100 DTU na úrovni Standard vyžaduje aspoň 1 vCore v úrovni služby Pro obecné účely.
+- Každé 125 DTU na úrovni Premium vyžaduje alespoň 1 vCore v úrovni služby Pro důležité obchodní informace.
 
 ## <a name="dtu-based-purchasing-model"></a>Nákupní model založený na DTU
 
@@ -102,7 +102,7 @@ Prostředky používané úlohou nemají vliv na prostředky, které jsou k disp
 
 ![ohraničovací rámeček](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
-DTU jsou nejužitečnější pro porozumění relativním prostředkům, které jsou přiděleny pro databáze SQL Azure v různých velikostech výpočtů a úrovních služby. Například:
+DTU jsou nejužitečnější pro porozumění relativním prostředkům, které jsou přiděleny pro databáze SQL Azure v různých velikostech výpočtů a úrovních služby. Příklad:
 
 - Zdvojnásobuje se DTU zvýšením velikosti databáze, která je rovna zdvojnásobení sady prostředků, které jsou k dispozici pro danou databázi.
 - P11 databáze úrovně Premium Service s 1750 DTU poskytuje výpočetní výkon 350x větší než základní databáze úrovně služeb s 5 DTU.  
@@ -125,7 +125,19 @@ Do existujícího fondu můžete přidat další eDTU bez výpadku databáze a b
 
 ### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>Určení počtu DTU potřebných pro zatížení
 
-Pokud chcete migrovat existující úlohu místního nebo SQL Server virtuálního počítače na Azure SQL Database, použijte [kalkulačku DTU](https://dtucalculator.azurewebsites.net/) k aproximaci počtu potřebných DTU. Pro existující úlohu Azure SQL Database použijte [přehledy výkonu dotazů](sql-database-query-performance.md) , které vám pomůžou pochopit využití prostředků databáze (DTU) a získat hlubší přehledy pro optimalizaci vašich úloh. Zobrazení dynamické správy (DMV) [resource_stats sys. dm_db_](https://msdn.microsoft.com/library/dn800981.aspx) umožňuje zobrazit spotřebu prostředků za poslední hodinu. V zobrazení katalogu [Sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) se zobrazuje spotřeba prostředků za posledních 14 dní, ale s nižší věrností průměrných průměrných rychlostí 5 minut.
+Pokud chcete migrovat existující úlohu místního nebo SQL Server virtuálního počítače na Azure SQL Database, použijte [kalkulačku DTU](https://dtucalculator.azurewebsites.net/) k aproximaci počtu potřebných DTU. Pro existující úlohu Azure SQL Database použijte [přehledy výkonu dotazů](sql-database-query-performance.md) , které vám pomůžou pochopit využití prostředků databáze (DTU) a získat hlubší přehledy pro optimalizaci vašich úloh. Zobrazení dynamické správy [Sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) (DMV) umožňuje zobrazit spotřebu prostředků za poslední hodinu. V zobrazení katalogu [Sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) se zobrazuje spotřeba prostředků za posledních 14 dní, ale s nižší věrností průměrných průměrných rychlostí 5 minut.
+
+### <a name="determine-dtu-utilization"></a>Určení využití DTU
+
+K určení průměrného procenta využití DTU/eDTU vzhledem k limitu DTU/eDTU databáze nebo elastického fondu použijte následující vzorec:
+
+`avg_dtu_percent = MAX(avg_cpu_percent, avg_data_io_percent, avg_log_write_percent)`
+
+Vstupní hodnoty pro tento vzorec lze získat z [Sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [Sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)a [Sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) zobrazení dynamické správy. Jinými slovy, chcete-li určit procento využití DTU/eDTU směrem k limitu DTU/eDTU databáze nebo elastického fondu, vyberte největší procentuální hodnotu z následujících hodnot: `avg_cpu_percent`, `avg_data_io_percent`a `avg_log_write_percent` v daném časovém okamžiku.
+
+> [!NOTE]
+> Omezení DTU databáze je určeno PROCESORem, čtením, zápisy a pamětí, která je k dispozici pro databázi. Vzhledem k tomu, že databázový stroj SQL Server obvykle používá veškerou dostupnou paměť pro jeho datovou mezipaměť ke zvýšení výkonu, bude hodnota `avg_memory_usage_percent` obvykle blízko 100%, bez ohledu na aktuální zatížení databáze. Proto i když paměť nepřímo ovlivňuje limit DTU, nepoužívá se ve vzorci využití DTU.
+>
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Úlohy, které využívají elastický fond prostředků
 

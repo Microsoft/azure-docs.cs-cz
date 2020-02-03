@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 09/11/2019
-ms.openlocfilehash: ae5cfcfcd394aab644b35ac66aafa213dc49dd42
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: ae05a0d0866c38c2414bacb638fa90936bb6dc15
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895383"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964613"
 ---
 # <a name="apache-ambari-heartbeat-issues-in-azure-hdinsight"></a>Problémy s prezenčním signálem Apache Ambari v Azure HDInsight
 
@@ -82,6 +82,21 @@ Výstrahy jsou způsobeny tím, že agent Ambari neběží.
     ```
 
     Pokud služby řadiče pro převzetí služeb při selhání neběží, pravděpodobně z důvodu problému brání agentovi HDInsight v spuštění řadiče pro převzetí služeb při selhání. Zkontroluje protokol HDInsight-Agent z `/var/log/hdinsight-agent/hdinsight-agent.out` souboru.
+
+## <a name="scenario-heartbeat-lost-for-ambari"></a>Scénář: prezenční signál se ztratil pro Ambari.
+
+### <a name="issue"></a>Problém
+
+Agent prezenčního signálu Ambari byl ztracen.
+
+### <a name="cause"></a>Příčina
+
+Protokoly OMS způsobují vysoké využití procesoru.
+
+### <a name="resolution"></a>Rozlišení
+
+* Zakažte protokolování OMS pomocí modulu PowerShellu [Disable-AzHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightoperationsmanagementsuite?view=azps-2.8.0) . 
+* Odstranit soubor protokolu `mdsd.warn`
 
 ---
 

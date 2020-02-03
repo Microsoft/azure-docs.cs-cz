@@ -12,12 +12,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ba7ba4be103beb494c31a844d1871c22c25b8c6
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 75fdc59b9110c3bfc29fe52be917a7d6e6636b8a
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756296"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963202"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydání verze
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -39,7 +39,7 @@ I když procházíme tímto procesem, číslo verze vydaných verzí se zobrazí
 Pro automatický upgrade nebudou zpřístupněny všechny verze Azure AD Connect. Stav vydání označuje, zda je vydaná verze dostupná pro automatický upgrade nebo pouze pro stažení. Pokud byl na Azure AD Connect serveru povolen automatický upgrade, server se automaticky upgraduje na nejnovější verzi Azure AD Connect vydanou pro automatický upgrade. Všimněte si, že ne všechny konfigurace Azure AD Connect mají nárok na automatický upgrade. Další informace o [automatickém upgradu](how-to-connect-install-automatic-upgrade.md) získáte pomocí tohoto odkazu.
 
 >[!IMPORTANT]
-> Od 1. listopadu 2020 zahájíme implementaci procesu vyřazení, přičemž verze Azure AD Connect vydané před více než 18 měsíci budou zastaralé. V tuto chvíli zahájíme tento proces tím, že vyřadíme všechny verze Azure AD Connect s verzí 1.1.751.0 (které byly vydané na 4/12/2018) a starší, a budeme pokračovat, abychom vyhodnotili vyřazení starších verzí Azure AD Connect pokaždé, když dojde k vydání nových verzí.
+> Od 1. listopadu 2020 zahájíme implementaci procesu vyřazení, přičemž verze Azure AD Connect vydané před více než 18 měsíci budou zastaralé. V tuto chvíli zahájíme tento proces tím, že vyřadíme všechny verze Azure AD Connect s verzí 1.3.20.0 (které byly vydané na 4/24/2019) a starší, a budeme pokračovat, abychom vyhodnotili vyřazení starších verzí Azure AD Connect pokaždé, když dojde k vydání nových verzí.
 >
 > Abyste získali optimální prostředí podpory, musíte mít jistotu, že používáte nejnovější verzi Azure AD Connect. 
 >

@@ -11,15 +11,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/25/2019
+ms.date: 01/31/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 5b3f3eea4d23d84d684648d19fb67258d1ea2050
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 0e04f7e190ef22fb5c2b288e478cac5ffaf89141
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906997"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76962505"
 ---
 # <a name="azure-instance-metadata-service"></a>Služba metadat instance Azure
 
@@ -482,7 +482,7 @@ resourceId | [Plně kvalifikované](https://docs.microsoft.com/rest/api/resource
 skladové | Konkrétní SKU pro bitovou kopii virtuálního počítače | 2017-04-02
 storageProfile | Viz [profil úložiště](#storage-profile) | 2019-06-01
 subscriptionId | Předplatné Azure pro virtuální počítač | 2017-08-01
-značek | [Značky](../../azure-resource-manager/management/tag-resources.md) pro virtuální počítač  | 2017-08-01
+tags | [Značky](../../azure-resource-manager/management/tag-resources.md) pro virtuální počítač  | 2017-08-01
 tagsList | Značky formátované jako pole JSON pro snazší programovou analýzu  | 2019-06-04
 version | Verze image virtuálního počítače | 2017-04-02
 vmId | [Jedinečný identifikátor](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) pro virtuální počítač | 2017-04-02
@@ -748,7 +748,7 @@ Pole `tags` je řetězec, jehož značky jsou odděleny středníky. To může b
 **Požadavek**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04&format=text"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04&format=json"
 ```
 
 **Odpověď**
@@ -1054,7 +1054,7 @@ Puppet | https://github.com/keirans/azuremetadata
 8. Návody získat podporu pro službu?
    * Pokud chcete získat podporu pro službu, vytvořte problém podpory v Azure Portal pro virtuální počítač, ke kterému nemůžete po dlouhou dobu pokusů získat odpověď na metadata.
 9. Vypršel časový limit žádosti o mé volání služby?
-   * V případě, že jste změnili trasy, musí být volání metadat z primární IP adresy přiřazené síťové kartě virtuálního počítače, a to i v případě, že jste změnili své trasy, musí být trasa pro 169.254.0.0/16 vycházející z vaší síťové karty.
+   * Volání metadat se musí nacházet z primární IP adresy přiřazené k primární síťové kartě virtuálního počítače. pro případ, že jste změnili své trasy, musí být ve vaší síťové kartě trasa pro adresu 169.254.0.0/16.
 10. Aktualizoval (a) jsem moje značky v sadě škálování virtuálního počítače, ale nezobrazují se v instancích na rozdíl od virtuálních počítačů?
     * V současné době se pro značky ScaleSets zobrazují jenom virtuální počítače na restartování/obnovení Image/nebo se změní na disk.
 

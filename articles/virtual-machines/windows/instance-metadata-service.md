@@ -11,15 +11,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/25/2019
+ms.date: 01/31/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 8849029f59ee4eef3baa43a6027022598e12d102
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 25b61b7e21e70c1cd4d27f88a0f5ce965c01c5a5
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045883"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964647"
 ---
 # <a name="azure-instance-metadata-service"></a>Služba metadat instance Azure
 
@@ -452,7 +452,7 @@ Data | Popis | Představená verze
 -----|-------------|-----------------------
 ověřuje přítomnost | Viz [Attestation data](#attested-data) | 2018-10-01
 identita | Spravované identity pro prostředky Azure. Viz [získání přístupového tokenu](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) . | 2018-02-01
-instance | Viz [rozhraní API instance](#instance-api) | 2017-04-02
+případě | Viz [rozhraní API instance](#instance-api) | 2017-04-02
 scheduledevents | Viz [Scheduled Events](scheduled-events.md) | 2017-08-01
 
 #### <a name="instance-api"></a>Rozhraní API instance
@@ -471,18 +471,18 @@ jméno | Název virtuálního počítače | 2017-04-02
 offer | Informace o nabídce pro image virtuálního počítače a jsou k dispozici jenom pro Image nasazené z Galerie imagí Azure | 2017-04-02
 osType | Linux nebo Windows | 2017-04-02
 placementGroupId | [Skupina umístění](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) vaší sady škálování virtuálních počítačů | 2017-08-01
-plánování | [Plánování](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) obsahující název, produkt a vydavatele pro virtuální počítač, pokud se jedná o Azure Marketplace image | 2018-04-02
+rozhraní | [Plánování](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) obsahující název, produkt a vydavatele pro virtuální počítač, pokud se jedná o Azure Marketplace image | 2018-04-02
 platformUpdateDomain |  [Aktualizujte doménu](manage-availability.md) , ve které je spuštěný virtuální počítač. | 2017-04-02
 platformFaultDomain | [Doména selhání](manage-availability.md) , ve kterém je spuštěný virtuální počítač | 2017-04-02
-Zprostředkovatel | Poskytovatel virtuálního počítače | 2018-10-01
+zprostředkovatele | Poskytovatel virtuálního počítače | 2018-10-01
 publicKeys | [Kolekce veřejných klíčů](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) přiřazených k virtuálnímu počítači a cestám | 2018-04-02
 publisher | Vydavatel image virtuálního počítače | 2017-04-02
 resourceGroupName | [Skupina prostředků](../../azure-resource-manager/management/overview.md) pro virtuální počítač | 2017-08-01
 resourceId | [Plně kvalifikované](https://docs.microsoft.com/rest/api/resources/resources/getbyid) ID prostředku | 2019-03-11
-skj | Konkrétní SKU pro bitovou kopii virtuálního počítače | 2017-04-02
+skladové | Konkrétní SKU pro bitovou kopii virtuálního počítače | 2017-04-02
 storageProfile | Viz [profil úložiště](#storage-profile) | 2019-06-01
 subscriptionId | Předplatné Azure pro virtuální počítač | 2017-08-01
-značek | [Značky](../../azure-resource-manager/management/tag-resources.md) pro virtuální počítač  | 2017-08-01
+tags | [Značky](../../azure-resource-manager/management/tag-resources.md) pro virtuální počítač  | 2017-08-01
 tagsList | Značky formátované jako pole JSON pro snazší programovou analýzu  | 2019-06-04
 version | Verze image virtuálního počítače | 2017-04-02
 vmId | [Jedinečný identifikátor](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) pro virtuální počítač | 2017-04-02
@@ -542,7 +542,7 @@ Objekt BLOB podpisu je verze dokumentu s podpisem [PKCS7](https://aka.ms/pkcs7) 
 
 Metadata instance lze v systému Windows načíst pomocí `curl`nástroje PowerShell:
 
- ```bash
+ ```powershell
 curl -H @{'Metadata'='true'} "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890" | select -ExpandProperty Content
 ```
 
@@ -821,12 +821,12 @@ Verification successful
 Data | Popis
 -----|------------
 nonce | Uživatel zadal nepovinný řetězec s požadavkem. Pokud se v požadavku nezadala hodnota nonce, vrátí se aktuální časové razítko UTC.
-plánování | [Naplánování](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) virtuálního počítače v tomto Azure Marketplace imagi obsahuje název, produkt a vydavatele.
+rozhraní | [Naplánování](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) virtuálního počítače v tomto Azure Marketplace imagi obsahuje název, produkt a vydavatele.
 časové razítko/createdOn | Časové razítko UTC, na kterém byl vytvořen první podepsaný dokument
 časové razítko/expiresOn | Časové razítko UTC, na kterém vyprší platnost podepsaného dokumentu
 vmId |  [Jedinečný identifikátor](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) pro virtuální počítač
 subscriptionId | Předplatné Azure pro virtuální počítač, které jste zavedli v `2019-04-30`
-skj | Konkrétní SKU pro bitovou kopii virtuálního počítače, představená v `2019-11-01`
+skladové | Konkrétní SKU pro bitovou kopii virtuálního počítače, představená v `2019-11-01`
 
 #### <a name="verifying-the-signature"></a>Ověření podpisu
 
@@ -858,7 +858,7 @@ openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -un
 
 V případech, kdy se zprostředkující certifikát nedá stáhnout kvůli omezením sítě během ověřování, jde zprostředkující certifikát připnout. Azure ale převezme certifikáty podle standardních postupů PKI. Připnuté certifikáty by se musely aktualizovat, když dojde k převrácení. Pokaždé, když se naplánuje změna aktualizace zprostředkujícího certifikátu, bude se aktualizovat blog Azure a budou se zákazníkům Azure informovat. Zprostředkující certifikáty najdete [tady](https://www.microsoft.com/pki/mscorp/cps/default.htm). Zprostředkující certifikáty pro jednotlivé oblasti se můžou lišit.
 
-### <a name="failover-clustering-in-windows-server"></a>Clustering s podporou převzetí služeb při selhání v systému Windows Server
+### <a name="failover-clustering-in-windows-server"></a>Clustering s podporou převzetí služeb při selhání ve Windows serveru
 
 V některých scénářích při dotazování na Instance Metadata Service s clusteringem s podporou převzetí služeb při selhání je nutné přidat trasu do směrovací tabulky.
 
@@ -916,14 +916,14 @@ Data    | Popis
 id      | ID prostředku
 offer   | Nabídka platformy nebo Image Marketplace
 publisher | Vydavatel obrázku
-skj     | SKU image
+skladové     | SKU image
 version | Verze image platformy nebo webu Marketplace
 
 Objekt disku operačního systému obsahuje následující informace o disku s operačním systémem, který používá virtuální počítač:
 
 Data    | Popis
 --------|-----------------
-ukládání do mezipaměti | Požadavky na ukládání do mezipaměti
+vyrovnávací | Požadavky na ukládání do mezipaměti
 createOption | Informace o tom, jak byl virtuální počítač vytvořen
 diffDiskSettings | Nastavení dočasného disku
 diskSizeGB | Velikost disku v GB
@@ -938,7 +938,7 @@ Pole datových disků obsahuje seznam datových disků připojených k virtuáln
 
 Data    | Popis
 --------|-----------------
-ukládání do mezipaměti | Požadavky na ukládání do mezipaměti
+vyrovnávací | Požadavky na ukládání do mezipaměti
 createOption | Informace o tom, jak byl virtuální počítač vytvořen
 diffDiskSettings | Nastavení dočasného disku
 diskSizeGB | Velikost disku v GB
@@ -1055,7 +1055,7 @@ Puppet | https://github.com/keirans/azuremetadata
 8. Návody získat podporu pro službu?
    * Pokud chcete získat podporu pro službu, vytvořte problém podpory v Azure Portal pro virtuální počítač, ke kterému nemůžete po dlouhou dobu pokusů získat odpověď na metadata.
 9. Vypršel časový limit žádosti o mé volání služby?
-   * V případě, že jste změnili trasy, musí být volání metadat z primární IP adresy přiřazené síťové kartě virtuálního počítače, a to i v případě, že jste změnili své trasy, musí být trasa pro 169.254.0.0/16 vycházející z vaší síťové karty.
+   * Volání metadat se musí nacházet z primární IP adresy přiřazené k primární síťové kartě virtuálního počítače. pro případ, že jste změnili své trasy, musí být ve vaší síťové kartě trasa pro adresu 169.254.0.0/16.
 10. Aktualizoval (a) jsem moje značky v sadě škálování virtuálního počítače, ale nezobrazují se v instancích na rozdíl od virtuálních počítačů?
     * V současné době se pro značky ScaleSets zobrazují jenom virtuální počítače na restartování/obnovení Image/nebo se změní na disk.
 

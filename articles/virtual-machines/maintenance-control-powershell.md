@@ -7,14 +7,14 @@ ms.service: virtual-machines
 ms.topic: article
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
-ms.date: 12/06/2019
+ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 7ca98723511cc7297b462747d4e1e12ca9bd38c2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: fc9cebd24b67e2991e89384e93479beafa889a7a
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979015"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964851"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-azure-powershell"></a>Preview: řízení aktualizací pomocí řízení údržby a Azure PowerShell
 
@@ -37,7 +37,7 @@ Pomocí řízení údržby můžete:
 
 - Virtuální počítače musí být na [vyhrazeném hostiteli](./linux/dedicated-hosts.md)nebo být vytvořené pomocí [izolované velikosti virtuálního počítače](./linux/isolation.md).
 - Po 35 dnech se automaticky použije aktualizace.
-- Uživatel musí mít přístup **vlastníka prostředku** .
+- Uživatel musí mít přístup k **přispěvateli prostředků** .
 
 
 ## <a name="enable-the-powershell-module"></a>Povolit modul prostředí PowerShell
@@ -131,7 +131,19 @@ New-AzConfigurationAssignment `
 
 Pokud chcete zjistit, jestli čekají na aktualizace, použijte [Get-AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate) . Pomocí `-subscription` určete předplatné Azure pro virtuální počítač, pokud se liší od přihlášení, které jste přihlásili.
 
-Pokud nejsou k dispozici žádné aktualizace, příkaz vrátí chybovou zprávu: `Resource not found...StatusCode: 404`.
+Pokud nejsou k dispozici žádné aktualizace k zobrazení, tento příkaz nebude nic vracet. V opačném případě vrátí objekt PSApplyUpdate:
+
+```json
+{
+   "maintenanceScope": "Host",
+   "impactType": "Freeze",
+   "status": "Pending",
+   "impactDurationInSec": 9,
+   "notBefore": "2020-02-21T16:47:44.8728029Z",
+   "properties": {
+      "resourceId": "/subscriptions/39c6cced-4d6c-4dd5-af86-57499cd3f846/resourcegroups/Ignite2019/providers/Microsoft.Compute/virtualMachines/MCDemo3"
+} 
+```
 
 ### <a name="isolated-vm"></a>Izolovaný virtuální počítač
 
@@ -144,6 +156,7 @@ Get-AzMaintenanceUpdate `
   -ResourceType VirtualMachines `
   -ProviderName Microsoft.Compute | Format-Table
 ```
+
 
 ### <a name="dedicated-host"></a>Vyhrazený hostitel
 
@@ -158,6 +171,7 @@ Get-AzMaintenanceUpdate `
    -ResourceParentType hostGroups `
    -ProviderName Microsoft.Compute | Format-Table
 ```
+
 
 ## <a name="apply-updates"></a>Instalace aktualizací
 
@@ -174,6 +188,8 @@ New-AzApplyUpdate `
    -ResourceType VirtualMachines `
    -ProviderName Microsoft.Compute
 ```
+
+Po úspěšném provedení tohoto příkazu vrátí objekt `PSApplyUpdate`. Chcete-li zjistit stav aktualizace, můžete použít atribut Name v příkazu `Get-AzApplyUpdate`. Podívejte se na téma [Zkontrolujte stav aktualizace](#check-update-status).
 
 ### <a name="dedicated-host"></a>Vyhrazený hostitel
 
@@ -192,7 +208,16 @@ New-AzApplyUpdate `
 ## <a name="check-update-status"></a>Kontrolovat stav aktualizace
 Ke kontrole stavu aktualizace použijte [příkaz Get-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate) . Níže uvedené příkazy zobrazují stav nejnovější aktualizace pomocí `default` pro parametr `-ApplyUpdateName`. Můžete nahradit název aktualizace (vrácenou příkazem [New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) ) a získat tak stav konkrétní aktualizace.
 
-Pokud nejsou k dispozici žádné aktualizace k zobrazení, příkaz vrátí chybovou zprávu: `Resource not found...StatusCode: 404`.
+```text
+Status         : Completed
+ResourceId     : /subscriptions/12ae7457-4a34-465c-94c1-17c058c2bd25/resourcegroups/TestShantS/providers/Microsoft.Comp
+ute/virtualMachines/DXT-test-04-iso
+LastUpdateTime : 1/1/2020 12:00:00 AM
+Id             : /subscriptions/12ae7457-4a34-465c-94c1-17c058c2bd25/resourcegroups/TestShantS/providers/Microsoft.Comp
+ute/virtualMachines/DXT-test-04-iso/providers/Microsoft.Maintenance/applyUpdates/default
+Name           : default
+Type           : Microsoft.Maintenance/applyUpdates
+```
 
 ### <a name="isolated-vm"></a>Izolovaný virtuální počítač
 
@@ -219,7 +244,7 @@ Get-AzApplyUpdate `
    -ResourceParentName myHostGroup `
    -ResourceParentType hostGroups `
    -ProviderName Microsoft.Compute `
-   -ApplyUpdateName default
+   -ApplyUpdateName myUpdateName
 ```
 
 ## <a name="remove-a-maintenance-configuration"></a>Odebrat konfiguraci údržby

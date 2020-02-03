@@ -740,18 +740,18 @@
   items:
     - name: Glosář
       href: developer-glossary.md
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Videa
+      href: identity-videos.md
     - name: Blog k Azure AD
       href: 'https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory'
     - name: Blog vývojářů platformy Microsoft Identity Platform
       href: 'https://developer.microsoft.com/en-us/identity/blogs/'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: Vyzkoušejte si funkci Přihlásit se účtem Microsoft
       href: 'https://azure.microsoft.com/develop/identity/signin/'
+    - name: Spravované identity pro prostředky Azure
+      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
     - name: Získání nápovědy
       displayName: 'support, help options'
       href: developer-support-help-options.md
-    - name: Spravované identity pro prostředky Azure
-      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
-    - name: Videa k platformě Microsoft Identity Platform
-      href: identity-videos.md

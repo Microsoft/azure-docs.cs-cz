@@ -8,16 +8,16 @@ ms.topic: reference
 ms.date: 12/18/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 0210317ef74433b740feb043a1cc4f1f9bc2ef57
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e67cd8c85d9ba85e32ef7aece402f97ab24243e5
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901151"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963440"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky s Azure Monitor
 
-Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně jejich grafu na portálu, přístupu k nim prostřednictvím REST API nebo jejich dotazování pomocí PowerShellu nebo rozhraní příkazového řádku. Níže je uvedený úplný seznam všech metrik, které jsou aktuálně k dispozici s kanálem metriky Azure Monitor. Jiné metriky mohou být k dispozici na portálu nebo pomocí starších rozhraní API. Tento seznam obsahuje jenom metriky, které jsou k dispozici, pomocí kanálu konsolidace Azure Monitor metriky. Pokud chcete zadat dotaz na tyto metriky a získat k nim přístup, použijte [rozhraní API verze 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) .
+Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně jejich grafu na portálu, přístupu k nim prostřednictvím REST API nebo jejich dotazování pomocí PowerShellu nebo rozhraní příkazového řádku. Níže je uvedený úplný seznam všech metrik, které jsou aktuálně k dispozici s kanálem metriky Azure Monitor. Jiné metriky mohou být k dispozici na portálu nebo pomocí starších rozhraní API. Tento seznam obsahuje jenom metriky, které jsou k dispozici, pomocí kanálu konsolidace Azure Monitor metriky. Metriky jsou uspořádány podle oboru názvů. Seznam služeb a obory názvů, které do nich patří, najdete v tématu [poskytovatelé prostředků pro služby Azure](../../azure-resource-manager/management/azure-services-resource-providers.md). Pokud chcete získat dotaz na tyto metriky a přistupovat k nim programově, použijte prosím [rozhraní API verze 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) .
 
 > [!NOTE]
 > Odesílání vícedimenzionálních metrik přes nastavení diagnostiky se v současné době nepodporuje. Metriky s dimenzemi se exportují jako ploché jednodimenzionální metriky agregované napříč hodnotami dimenzí.
@@ -25,7 +25,6 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 > *Příklad:* Metriku Příchozí zprávy v centru událostí je možné zkoumat a převést na graf na úrovni jednotlivých front. Pokud se však metrika exportuje přes nastavení diagnostiky, bude reprezentovaná jako všechny příchozí zprávy ve všech frontách v centru událostí.
 >
 > Seznam metrik platforem, které můžete exportovat prostřednictvím nastavení diagnostiky, najdete v [tomto článku](metrics-supported-export-diagnostic-settings.md).
-
 
 
 

@@ -3,12 +3,12 @@ title: Přehled architektury
 description: Poskytuje přehled architektury, komponent a procesů, které používá služba Azure Backup.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: de532bb02b4ecf5e912a71df404418338325d582
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f311f6d49a776a49080675f3c1ccc28a7a27cb92
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450194"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963933"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektura Azure Backup a součásti
 
@@ -101,6 +101,23 @@ Spustit přírůstkové zálohování |![Ano][green] |![Ano][green] |![Ano][gree
 Zálohování disků s odstraněnými duplicitními daty | | | ![Částečně][yellow]<br/><br/> Jenom pro servery DPM/MABS nasazené místně.
 
 ![Klíč tabulky](./media/backup-architecture/table-key.png)
+
+## <a name="backup-policy-essentials"></a>Základy zásad zálohování
+
+- Zásady zálohování se vytvoří pro každý trezor.
+- Zásady zálohování se dají vytvořit pro zálohování následujících úloh.
+  - Virtuální počítač Azure
+  - SQL na virtuálním počítači Azure
+  - Sdílená složka Azure
+- Zásady je možné přiřadit k mnoha prostředkům. Zásady zálohování virtuálních počítačů Azure je možné použít k ochraně mnoha virtuálních počítačů Azure.
+- Zásada se skládá ze dvou součástí
+  - Plán: kdy se má provést zálohování
+  - Uchovávání informací: pro dobu, po kterou by se měly uchovávat zálohy.
+- Plán lze definovat jako "denní" nebo "týdně" s konkrétním časovým bodem.
+- Uchovávání informací lze definovat pro "denní", "týdenní", "měsíční", "roční" body zálohování.
+- "týdenní" odkazuje na zálohu v určitý den v týdnu, "měsíční" znamená zálohování v určitý den v měsíci a "roční" odkazuje na zálohu v určitý den v roce.
+- Doba uchovávání "měsíčně", "ročních" bodů zálohy se označuje jako "LongTermRetention".
+- Při vytvoření trezoru se vytvoří taky zásada pro zálohování virtuálních počítačů Azure označované jako "DefaultPolicy" a dá se použít k zálohování virtuálních počítačů Azure.
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>Architektura: Integrovaná záloha virtuálního počítače Azure
 

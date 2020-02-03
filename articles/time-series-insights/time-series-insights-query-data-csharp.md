@@ -11,16 +11,19 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: a5cb435b38a776ba652854592bdc7d3e833742d1
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: c1c4f139dedc9be11a5f19730221ccec77139200
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935082"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76962012"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>Dotazování dat z Azure Time Series Insightsho prostředí GA pomocíC#
 
 Tento C# příklad ukazuje, jak použít [rozhraní API pro dotazy GA](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) k dotazování dat z Azure Time Series Insights GA prostředí.
+
+> [!TIP]
+> Podívejte se C# na ukázky kódů GA na [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample).
 
 ## <a name="summary"></a>Souhrn
 
@@ -42,9 +45,6 @@ Vzorový kód níže znázorňuje následující funkce:
    * [Načíst rozhraní API pro streamované události prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-streamed-api)
    * [Načíst rozhraní API pro agregované datové prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-streamed-api)
 
-> [!NOTE]
-> Vzorový kód je k dispozici na adrese [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample).
-
 ## <a name="prerequisites-and-setup"></a>Požadavky a instalace
 
 Před kompilací a spuštěním ukázkového kódu proveďte následující kroky:
@@ -58,9 +58,6 @@ Před kompilací a spuštěním ukázkového kódu proveďte následující krok
 1. Níže uvedený ukázkový kód nahraďte každým **#DUMMY #** a příslušným identifikátorem prostředí.
 
 1. Spusťte kód v rámci sady Visual Studio.
-
-> [!TIP]
-> * Další ukázky kódů C# GA najdete na [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample).
 
 ## <a name="project-dependencies"></a>Závislosti projektu
 
