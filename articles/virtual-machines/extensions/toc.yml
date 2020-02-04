@@ -8,7 +8,7 @@
       href: agent-linux.md
     - name: Agent virtuálního počítače s Windows
       href: agent-windows.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Použití rozšíření vlastních skriptů
@@ -64,18 +64,26 @@
           href: hpccompute-gpu-linux.md
         - name: Windows
           href: hpccompute-gpu-windows.md
-    - name: Log Analytics
+    - name: Azure Monitor
       items:
-        - name: Linux
-          href: oms-linux.md
-        - name: Windows
-          href: oms-windows.md
-    - name: Azure Monitor pro virtuální počítače
-      items:
-        - name: Agent závislostí pro Linux
-          href: agent-dependency-linux.md
-        - name: Agent závislostí pro Windows
-          href: agent-dependency-windows.md
+        - name: Rozšíření diagnostiky
+          items:
+            - name: Linux
+              href: diagnostics-linux.md
+            - name: Windows
+              href: ../../azure-monitor/platform/diagnostics-extension-overview.md?toc=/azure/virtual-machines/extensions/toc.json
+        - name: Log Analytics
+          items:
+            - name: Linux
+              href: oms-linux.md
+            - name: Windows
+              href: oms-windows.md
+        - name: Azure Monitor pro virtuální počítače
+          items:
+            - name: Agent závislostí pro Linux
+              href: agent-dependency-linux.md
+            - name: Agent závislostí pro Windows
+              href: agent-dependency-windows.md
     - name: PowerShell DSC
       href: dsc-overview.md
       items:
@@ -89,14 +97,6 @@
           href: dsc-template.md
     - name: Přístup k virtuálním počítačům
       href: vmaccess.md
-    - name: Diagnostika virtuálního počítače
-      items:
-        - name: Linux
-          href: diagnostics-linux.md
-        - name: Windows
-          href: diagnostics-windows.md
-        - name: Použití šablon
-          href: diagnostics-template.md
     - name: Rozšíření jiných výrobců
       items:
         - name: Chef

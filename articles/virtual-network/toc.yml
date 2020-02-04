@@ -83,6 +83,8 @@
           href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fvirtual-network%2ftoc.json
     - name: Možnosti připojení mezi sítěmi
       href: ../expressroute/cross-network-connectivity.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+    - name: Klasické nasazení
+      href: 'https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-network-ip-addresses-overview-classic'
 - name: Návody
   items:
     - name: Plánování
@@ -317,6 +319,8 @@
           href: what-is-ip-address-168-63-129-16.md
         - name: Řešení potíží s připojením k virtuálnímu počítači Azure
           href: troubleshoot-vm-connectivity.md
+    - name: Klasické nasazení
+      href: 'https://docs.microsoft.com/previous-versions/azure/virtual-network/create-virtual-network-classic'
 - name: Referenční informace
   items:
     - name: Azure CLI

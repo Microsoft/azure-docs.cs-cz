@@ -14,10 +14,8 @@
   items:
     - name: Klientská knihovna
       items:
-        - name: Analýza textu s využitím v3.0-preview
+        - name: Analýza textu s využitím klientské knihovny
           href: quickstarts/text-analytics-sdk.md
-        - name: Analýza textu s využitím v2
-          href: quickstarts/text-analytics-sdk-v2.md
     - name: REST API
       items:
         - name: Pomocí Javy

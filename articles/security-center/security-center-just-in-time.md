@@ -8,16 +8,16 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 782a23ba95519438dd369d3f69f52f7526461821
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 69a5452134e290f2072a9316ce1f067296ed2320
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156756"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939399"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Správa přístupu k virtuálnímu počítači pomocí za běhu
 
-Pomocí přístupu k virtuálním počítačům podle potřeby (JIT) je možné zamezit příchozímu provozu do virtuálních počítačů Azure a tím omezit vystavení útokům při stálém poskytování snadného přístupu pro připojení k virtuálním počítačům v případě potřeby.
+Přístup k virtuálnímu počítači za běhu (just-in-time) se dá použít k uzamknutí příchozího provozu do virtuálních počítačů Azure. tím se sníží riziko útoků na útoky a zároveň se vám umožní snadný přístup k virtuálním počítačům v případě potřeby.
 
 > [!NOTE]
 > Funkce za běhu je k dispozici na úrovni Standard Security Center. Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md).
@@ -48,7 +48,7 @@ Když si uživatel požádá o přístup k virtuálnímu počítači, Security C
 
 | Umožnění uživateli: | Oprávnění k nastavení|
 | --- | --- |
-| Konfigurace nebo úprava zásad JIT pro virtuální počítač | *Přiřaďte k roli tyto akce:*  <ul><li>V oboru předplatného nebo skupiny prostředků, která je přidružená k virtuálnímu počítači:<br/> `Microsoft.Security/locations/jitNetworkAccessPolicies/write` </li><li> V oboru předplatného nebo skupiny prostředků nebo virtuálního počítače: <br/>`Microsoft.Compute/virtualMachines/write`</li></ul> | 
+| Konfigurace nebo úprava zásad JIT pro virtuální počítač | *Přiřaďte k roli tyto akce:*  <ul><li>V oboru předplatného nebo skupiny prostředků, která je přidružená k virtuálnímu počítači:<br/> `Microsoft.Security/locations/jitNetworkAccessPolicies/write` </li><li> V oboru předplatného nebo skupiny prostředků virtuálního počítače: <br/>`Microsoft.Compute/virtualMachines/write`</li></ul> | 
 |Vyžádat přístup JIT k virtuálnímu počítači | *Přiřaďte uživatele k těmto akcím:*  <ul><li>V oboru předplatného nebo skupiny prostředků, která je přidružená k virtuálnímu počítači:<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action` </li><li>V oboru předplatného nebo skupiny prostředků, která je přidružená k virtuálnímu počítači:<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/*/read` </li><li>  V oboru předplatného nebo skupiny prostředků nebo virtuálního počítače:<br/> `Microsoft.Compute/virtualMachines/read` </li><li>  V oboru předplatného nebo skupiny prostředků nebo virtuálního počítače:<br/> `Microsoft.Network/networkInterfaces/*/read` </li></ul>|
 
 
@@ -98,7 +98,7 @@ Z Security Center můžete nakonfigurovat zásady JIT a požádat o přístup k 
       - 5986 – WinRM
 6. Můžete taky nakonfigurovat vlastní porty:
 
-      1. Klikněte na tlačítko **Přidat**. Otevře se okno **Přidat konfiguraci portu** .
+      1. Klikněte na tlačítko **Add** (Přidat). Otevře se okno **Přidat konfiguraci portu** .
       2. Pro každý port, který se rozhodnete nakonfigurovat, můžete nastavit výchozí i vlastní, abyste mohli přizpůsobit následující nastavení:
 
     - **Typ protokolu**– protokol, který je na tomto portu povolený, když je žádost schválená.
@@ -107,7 +107,7 @@ Z Security Center můžete nakonfigurovat zásady JIT a požádat o přístup k 
 
      3. Klikněte na **OK**.
 
-1. Klikněte na možnost **Uložit**.
+1. Klikněte na **Uložit**.
 
 > [!NOTE]
 >Když je pro virtuální počítač povolený přístup k virtuálnímu počítači JIT, Azure Security Center vytvoří pravidla odepřít veškerý příchozí provoz pro vybrané porty ve skupinách zabezpečení sítě, které jsou k ní přidružené a Azure Firewall. Pokud se pro vybrané porty vytvořila jiná pravidla, stávající pravidla mají přednost před novými pravidly odepřít všechna příchozí provoz. Pokud na vybraných portech neexistují žádná pravidla, nová pravidla odepřít všechna příchozí přenosy mají ve skupinách zabezpečení sítě a Azure Firewall nejvyšší prioritu.
