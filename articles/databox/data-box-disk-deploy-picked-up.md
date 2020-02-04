@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: d0acc2d92c564f89f4777ccb243c7255e47c9105
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: eb9231a84295240c20e34bfad56f406317c107da
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514115"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845483"
 ---
 ::: zone target="chromeless"
 
@@ -155,10 +155,28 @@ V případě potřeby můžete kontaktovat podporu společnosti Quantium Solutio
 
    V případě jakýchkoli potíží se laskavě obraťte na Data Box Operations Asia na adrese adbo@microsoft.com. V hlavičce uveďte název úlohy a problém, ke kterému došlo.
 
-3. Předejte zásilku kurýrovi. 
+3. Předejte zásilku kurýrovi.
 
+### <a name="in-self-managedtabin-selfmanaged"></a>[V případě svépomoci](#tab/in-selfmanaged)
+
+Pokud používáte Data Box Disk v Japonsku, Singapuru, Koreji a Západní Evropě a při vytváření objednávky jste vybrali možnost Expedice řízená svépomocí, postupujte podle těchto pokynů. 
+
+1. Na webu Azure Portal přejděte do okna **Přehled** pro vaši objednávku. Projděte si pokyny zobrazené po výběru **Naplánovat vyzvednutí**. Měl by se zobrazit autorizační kód, který se používá při předávání objednávky.
+
+2. Až budete připraveni vrátit toto zařízení, použijte následující šablonu a odešlete e-mail provoznímu týmu služby Azure Data Box.
+
+    ```
+    To: adbops@microsoft.com
+    Subject: Request for Azure Data Box Disk drop-off for order: ‘orderName’
+    Body: 
+     a. Order name
+     b. Contact name of the person dropping off. You will need to display a Government approved ID during the drop off.
+    ```
+3. Provozní tým služby Azure Data Box se s vámi spojí a domluví předání v datacentru Azure.
 
 ::: zone target="docs"
+
+---
 
 ## <a name="next-steps"></a>Další kroky
 

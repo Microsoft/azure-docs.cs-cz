@@ -389,6 +389,8 @@
               href: cognitive-search-predefined-skills.md
             - name: Podmíněné
               href: cognitive-search-skill-conditional.md
+            - name: Vyhledávání vlastních entit
+              href: cognitive-search-skill-custom-entity-lookup.md
             - name: Extrakce dokumentů
               href: cognitive-search-skill-document-extraction.md
             - name: Rozpoznávání entit

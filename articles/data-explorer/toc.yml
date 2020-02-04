@@ -174,12 +174,28 @@
               href: manage-cluster-vertical-scaling.md
             - name: Kontrola stavu clusteru
               href: check-cluster-health.md
+            - name: Přidání objektu zabezpečení clusteru
+              items:
+                - name: 'C#'
+                  href: cluster-principal-csharp.md
+                - name: Python
+                  href: cluster-principal-python.md
+                - name: Šablona Azure Resource Manageru
+                  href: cluster-principal-resource-manager.md
         - name: databáze
           items:
             - name: Následnické databáze
               href: follower.md
             - name: Správa databázových oprávnění
               href: manage-database-permissions.md
+            - name: Přidání objektu zabezpečení databáze
+              items:
+                - name: 'C#'
+                  href: database-principal-csharp.md
+                - name: Python
+                  href: database-principal-python.md
+                - name: Šablona Azure Resource Manageru
+                  href: database-principal-resource-manager.md
             - name: Zásady
               items:
                 - name: 'C#'

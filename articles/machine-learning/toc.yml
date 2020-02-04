@@ -142,6 +142,8 @@
           href: how-to-manage-workspace.md
         - name: Použití Azure CLI
           href: how-to-manage-workspace-cli.md
+        - name: Použití REST
+          href: how-to-manage-rest.md
         - name: Použití šablony Resource Manageru
           displayName: arm
           href: how-to-create-workspace-template.md
@@ -194,6 +196,9 @@
         - name: Vytváření datových sad s popisky
           displayName: 'data, labels, torchvision'
           href: how-to-use-labeled-dataset.md
+        - name: DevOps pro příjem dat
+          displayName: 'data, ingestion, devops'
+          href: how-to-cicd-data-ingestion.md
     - name: Trénování modelů
       items:
         - name: Použití designeru

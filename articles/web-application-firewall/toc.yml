@@ -38,8 +38,12 @@
           href: ./ag/application-gateway-crs-rulegroups-rules.md
         - name: Přehled vlastních pravidel
           href: ./ag/custom-waf-rules-overview.md
+        - name: Vlastní pravidla geografické shody
+          href: ./ag/geomatch-custom-rules.md
         - name: Omezení velikosti požadavků a seznamy vyloučení
           href: ./ag/application-gateway-waf-configuration.md
+        - name: Přehled zásad WAF
+          href: ./ag/policy-overview.md
     - name: Front Door
       items:
         - name: Vlastní pravidla

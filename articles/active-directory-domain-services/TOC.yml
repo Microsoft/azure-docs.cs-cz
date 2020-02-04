@@ -79,6 +79,8 @@
           href: delete-aadds.md
         - name: Migrace z klasického nasazení (Preview)
           href: migrate-from-classic-vnet.md
+        - name: Změna skladové položky
+          href: change-sku.md
     - name: Zabezpečení Azure AD DS
       items:
         - name: Zabezpečení spravované domény

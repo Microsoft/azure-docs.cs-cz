@@ -47,6 +47,7 @@
     - name: Konfigurace víceaplikačního ověřování Azure AD pro VPN uživatele (Preview)
       href: openvpn-azure-ad-tenant-multi-app.md
     - name: Konfigurace automatizace (partneři služby Virtual WAN)
+    - name: Stažení globálních profilů VPN a profilů VPN založených na centrech
       href: virtual-wan-configure-automation-providers.md
     - name: Konfigurace směrování
       items:

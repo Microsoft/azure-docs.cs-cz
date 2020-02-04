@@ -64,8 +64,6 @@
         - name: Průběžná integrace s využitím Azure Pipelines
           displayName: DevOps
           href: template-tutorial-use-azure-pipelines.md
-        - name: Aktualizace skriptu nasazení VS na AZ PowerShell
-          href: update-visual-studio-deployment-script.md
         - name: Použití postupů bezpečného nasazení
           displayName: adm
           href: deployment-manager-tutorial.md
@@ -145,6 +143,8 @@
           href: use-vs-code-to-create-template.md
         - name: Visual Studio
           href: create-visual-studio-deployment-project.md
+        - name: Aktualizace skriptu nasazení VS na modul AZ
+          href: update-visual-studio-deployment-script.md
         - name: IntelliJ IDEA
           href: create-templates-use-intellij.md
     - name: Nasazení šablon

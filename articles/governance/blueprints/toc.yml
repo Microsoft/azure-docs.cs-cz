@@ -63,6 +63,17 @@
         - name: Kroky pro nasazení
           displayName: 'standards, fedramp, moderate'
           href: ./samples/fedramp-m/deploy.md
+    - name: FedRAMP High
+      items:
+        - name: Přehled
+          displayName: 'standards, fedramp, high'
+          href: ./samples/fedramp-h/index.md
+        - name: Mapování kontrol
+          displayName: 'standards, fedramp, high'
+          href: ./samples/fedramp-h/control-mapping.md
+        - name: Kroky pro nasazení
+          displayName: 'standards, fedramp, high'
+          href: ./samples/fedramp-h/deploy.md
     - name: HIPAA HITRUST
       items:
         - name: Přehled

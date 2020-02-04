@@ -138,6 +138,8 @@
       href: custom-disaster-recovery.md
     - name: Řešení chyb
       href: troubleshoot-errors.md
+    - name: Povolení diagnostických protokolů pro téma
+      href: enable-diagnostic-logs-topic.md
 - name: Referenční informace
   items:
     - name: Azure CLI

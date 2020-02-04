@@ -1,9 +1,9 @@
-- name: Řešení VMware společnosti CloudSimple
+- name: VMware Solution by CloudSimple
   href: /azure/vmware-cloudsimple
   items:
     - name: Přehled
       items:
-        - name: Co je řešení VMware společnosti CloudSimple
+        - name: Co je VMware Solution by CloudSimple
           href: cloudsimple-vmware-solutions-overview.md
         - name: Klíčové koncepty pro správu
           href: key-concepts.md
@@ -136,6 +136,8 @@
               href: on-premises-dns-setup.md
             - name: Konfigurace vysoce dostupných připojení site-to-site VPN
               href: high-availability-vpn-connection.md
+            - name: Konfigurace DNS privátního cloudu v místním prostředí
+              href: private-cloud-dns-forwarding.md
         - name: Platforma VMware
           items:
             - name: Seznámení s modelem oprávnění privátního cloudu
