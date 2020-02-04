@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 3e51db98403b507c1c34ee455cfe218ea52c529b
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: ea4abada259c929f387b1477c127824ac6269319
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760568"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939172"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Použití emulátoru Azure Cosmos pro místní vývoj a testování
 
@@ -419,23 +419,7 @@ Pokud chcete otevřít Průzkumníka dat, přejděte v prohlížeči na následu
 
     https://<emulator endpoint provided in response>/_explorer/index.html
 
-Pokud máte klientskou aplikaci .NET spuštěnou v kontejneru Docker Linux a používáte emulátor Azure Cosmos na hostitelském počítači, v takovém případě se k účtu Azure Cosmos z emulátoru nemůžete připojit. Vzhledem k tomu, že aplikace není spuštěna na hostitelském počítači, nelze přidat certifikát zaregistrovaný v kontejneru Linux, který odpovídá koncovému bodu emulátoru. 
-
-Jako alternativní řešení můžete zakázat ověřování certifikátu SSL serveru z klientské aplikace předáním `HttpClientHandler` instance, jak je znázorněno v následující ukázce kódu .NET. Toto řešení se dá použít jenom v případě, že používáte `Microsoft.Azure.DocumentDB` balíček NuGet, ale balíček NuGet `Microsoft.Azure.Cosmos` nepodporuje:
- 
- ```csharp
-var httpHandler = new HttpClientHandler()
-{
-    ServerCertificateCustomValidationCallback = (req,cert,chain,errors) => true
-};
- 
-using (DocumentClient client = new DocumentClient(new Uri(strEndpoint), strKey, httpHandler))
-{
-    RunDatabaseDemo(client).GetAwaiter().GetResult();
-}
-```
-
-Kromě zakázání ověřování certifikátu SSL je důležité, abyste spustili emulátor s možností `/allownetworkaccess` a koncový bod emulátoru je dostupný z IP adresy hostitele místo `host.docker.internal` DNS.
+Pokud máte klientskou aplikaci .NET spuštěnou v kontejneru Docker platformy Linux a pokud používáte emulátor Azure Cosmos na hostitelském počítači, použijte prosím následující oddíl pro systém Linux k importu certifikátu do kontejneru Docker pro Linux.
 
 ## Spuštění v systému Mac nebo Linux<a id="mac"></a>
 
@@ -447,47 +431,59 @@ Ve virtuálním počítači s Windows spusťte níže uvedený příkaz a poznam
 ipconfig.exe
 ```
 
-V rámci aplikace potřebujete změnit identifikátor URI pro objekt DocumentClient tak, aby používal adresu IPv4 vrácenou `ipconfig.exe`. Dalším krokem je obejít ověřování CA při vytváření objektu DocumentClient. Za tímto účelem bude nutné poskytnout HttpClientHandler konstruktoru DocumentClient, který má vlastní implementaci pro ServerCertificateCustomValidationCallback.
+V rámci aplikace potřebujete změnit identifikátor URI, který se používá jako koncový bod pro použití adresy IPv4 vrácené `ipconfig.exe` místo `localhost`.
 
-Níže je uveden příklad toho, jak by měl kód vypadat jako.
-
-```csharp
-using System;
-using Microsoft.Azure.Documents;
-using Microsoft.Azure.Documents.Client;
-using System.Net.Http;
-
-namespace emulator
-{
-    class Program
-    {
-        static async void Main(string[] args)
-        {
-            string strEndpoint = "https://10.135.16.197:8081/";  //IPv4 address from ipconfig.exe
-            string strKey = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
-
-            //Work around the CA validation
-            var httpHandler = new HttpClientHandler()
-            {
-                ServerCertificateCustomValidationCallback = (req,cert,chain,errors) => true
-            };
-
-            //Pass http handler to document client
-            using (DocumentClient client = new DocumentClient(new Uri(strEndpoint), strKey, httpHandler))
-            {
-                Database database = await client.CreateDatabaseIfNotExistsAsync(new Database { Id = "myDatabase" });
-                Console.WriteLine($"Created Database: id - {database.Id} and selfLink - {database.SelfLink}");
-            }
-        }
-    }
-}
-```
-
-Nakonec z virtuálního počítače s Windows spusťte emulátor Cosmos z příkazového řádku pomocí následujících možností.
+V dalším kroku z na virtuálním počítači s Windows spustíte emulátor Cosmos z příkazového řádku pomocí následujících možností.
 
 ```cmd
 Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
 ```
+
+Nakonec musíme importovat certifikát CA emulátoru do prostředí Linux nebo Mac.
+
+### <a name="linux"></a>Linux
+
+Pokud pracujete na platformě Linux, aplikace .NET Relay na OpenSSL provede ověření:
+
+1. [Exportujte certifikát ve formátu PFX](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate) (při volbě exportu privátního klíče je k dispozici PFX). 
+
+1. Zkopírujte tento soubor PFX do svého prostředí Linux.
+
+1. Převést soubor PFX na soubor CRT
+
+   ```bash
+   openssl pkcs12 -in YourPFX.pfx -clcerts -nokeys -out YourCTR.crt
+   ```
+
+1. Zkopírujte soubor CRT do složky, která obsahuje vlastní certifikáty v distribuci systému Linux. V Debian distribucích se obvykle nachází na `/usr/local/share/ca-certificates/`.
+
+   ```bash
+   cp YourCTR.crt /usr/local/share/ca-certificates/
+   ```
+
+1. Aktualizujte certifikáty certifikační autority, které aktualizují složku `/etc/ssl/certs/`.
+
+   ```bash
+   update-ca-certificates
+   ```
+
+### <a name="mac-os"></a>Mac OS
+
+Pokud pracujete na Macu, použijte následující postup:
+
+1. [Exportujte certifikát ve formátu PFX](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate) (při volbě exportu privátního klíče je k dispozici PFX).
+
+1. Zkopírujte tento soubor PFX do prostředí Mac.
+
+1. Otevřete aplikaci pro *přístup k řetězci klíčů* a IMPORTUJTE soubor PFX.
+
+1. Otevřete seznam certifikátů a Identifikujte ho názvem `localhost`.
+
+1. Otevřete kontextovou nabídku pro tuto konkrétní položku, vyberte možnost *získat položku* a v části *důvěřovat* > *při použití tohoto certifikátu* vyberte možnost *vždy důvěřovat*. 
+
+   ![Otevřete kontextovou nabídku pro tuto konkrétní položku, vyberte získat položku a v části důvěřovat – při použití tohoto certifikátu vyberte možnost vždy důvěřovat.](./media/local-emulator/mac-trust-certificate.png)
+
+Po provedení tohoto postupu bude vaše prostředí důvěřovat certifikátu používanému emulátorem při připojování k IP adrese, kterou zpřístupňuje `/AllowNetworkAccess`.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
