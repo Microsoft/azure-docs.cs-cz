@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: e4ce97b69250d8af4c94e8eed8df9c9497e0bb46
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75993073"
 ---
 # <a name="cancel-your-azure-subscription"></a>Zrušení předplatného Azure
@@ -47,7 +47,7 @@ Následující tabulka popisuje oprávnění nutná ke zrušení předplatného.
 
 |Typ předplatného     |Kdo může zrušit  |
 |---------|---------|
-|Předplatná vytvořená při registraci Azure prostřednictvím webu Azure Může to být třeba tehdy, když si zaregistrujete [bezplatný účet Azure](https://azure.microsoft.com/offers/ms-azr-0044p/), [účet s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) nebo účet pro [předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/). |  Správce účtu, vlastníci a přispěvatelé předplatného  |
+|Předplatná vytvořená při registraci Azure prostřednictvím webu Azure Když si například zaregistrujete [bezplatný účet Azure](https://azure.microsoft.com/offers/ms-azr-0044p/), [účet s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) nebo jste [předplatitelem sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/). |  Správce účtu, vlastníci a přispěvatelé předplatného  |
 |[Smlouva Microsoft Enterprise](https://azure.microsoft.com/pricing/enterprise-agreement/) a [Enterprise pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0148p/)     |  Vlastník účtu, vlastníci a přispěvatelé předplatného       |
 |[Plán Azure](https://azure.microsoft.com/offers/ms-azr-0017g/) a [Plán Azure pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0148g/)     |  Vlastníci a přispěvatelé předplatného      |
 
@@ -58,7 +58,7 @@ Po zrušení se okamžitě zastaví účtování. Zrušení se ale na portálu m
 
 Po zrušení jsou vaše služby zakázané. To znamená, že se zruší přidělení vašich virtuálních počítačů, uvolní se dočasná IP adresa a úložiště přejde do režimu jen pro čtení.
 
-Před trvalým odstraněním vašich dat počkáme 90 dní pro případ, že k nim budete potřebovat přístup nebo že změníte své rozhodnutí. Za uchování těchto dat vám nic neúčtujeme. Další informace najdete v tématu [Centrum zabezpečení Microsoftu – Jak spravujeme vaše data](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
+Před trvalým odstraněním vašich dat počkáme 90 dní pro případ, že k nim budete potřebovat přístup nebo že změníte své rozhodnutí. Za uchování těchto dat vám nic neúčtujeme. Další informace najdete v článku [Centrum zabezpečení Microsoftu – jak spravujeme vaše data](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
 
 ## <a name="reactivate-subscription"></a>Opětovná aktivace předplatného
 
@@ -66,6 +66,6 @@ Pokud omylem zrušíte své předplatné s průběžnými platbami, můžete [ho
 
 Pokud se nejedná o předplatné s průběžnými platbami, požádejte během 90 dnů od zrušení podporu o opětovnou aktivaci svého předplatného.
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).

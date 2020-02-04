@@ -12,10 +12,10 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 5ac0918fcd8c5a1eb9242d603a7e3433d0f709ed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75988458"
 ---
 # <a name="azure-consumption-api-overview"></a>Přehled rozhraní API služby Azure Consumption
@@ -73,7 +73,7 @@ Zákazníci se smlouvou Enterprise můžou pomocí rozhraní API Zůstatky získ
 
 Rozhraní API nabízí tyto funkce:
 
--   **Řízení přístupu k Azure na základě rolí** – na webu [Azure Portal](https://portal.azure.com), v rozhraní [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo v [rutinách Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) se dají nakonfigurovat zásady přístupu určující, kteří uživatelé nebo aplikace můžou získat přístup k údajům o využití pro dané předplatné. Volající musí k ověření používat standardní tokeny Azure Active Directory. Pokud chcete, aby volající získal přístup k datům využití pro určité předplatné Azure, přidejte ho do role Čtenář fakturace, Čtenář, Vlastník nebo Přispěvatel.
+-   **Řízení přístupu k Azure na základě rolí** – na webu [Azure Portal](https://portal.azure.com), v rozhraní [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo v [rutinách Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) se dají nakonfigurovat zásady přístupu určující, kteří uživatelé nebo aplikace můžou získat přístup k údajům o využití pro dané předplatné. Volající musí k ověření používat standardní tokeny Azure Active Directory. Přidejte volajícího do role Čtenář fakturace, Čtenář, Vlastník nebo Přispěvatel, aby získal přístup k datům využití pro určité předplatné Azure.
 -   **Jenom zákazníci se smlouvou Enterprise** – toto rozhraní API je dostupné jenom zákazníkům se smlouvou Enterprise.
     - K volání tohoto rozhraní API potřebují zákazníci oprávnění správce smlouvy Enterprise.
 
@@ -92,7 +92,7 @@ Rozhraní API nabízí tyto funkce:
 -   **Filtrování** – rozpočet je možné filtrovat pomocí nastavitelných filtrů a zobrazit menší podmnožinu prostředků.
     - Skupina prostředků
     - Název prostředku
-    - Měření
+    - Měřič
 -   **Konfigurovatelná období rozpočtu** – můžete určit, jak často se má rozpočet obnovovat a jak dlouho je rozpočet platný.
 
 Další informace najdete v technické specifikaci [rozhraní API Rozpočty](https://docs.microsoft.com/rest/api/consumption/budgets).

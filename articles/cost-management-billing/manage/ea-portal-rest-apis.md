@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: 8680a575872053f4b575db70ec649b6c1669b961
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992137"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Rozhraní Azure Enterprise REST API
@@ -86,8 +86,8 @@ Pokud používáte rozhraní API, budou se zobrazovat kódy stavu odpovědí. Js
 | 200 | OK | Bez chyby |
 | 401 | Neautorizováno | Klíč rozhraní API se nedá najít, je neplatný, vypršela jeho platnost atd. |
 | 404 | Neaktivní | Nenašel se koncový bod sestavy. |
-| 400 | Chybný požadavek | Neplatné parametry – rozsahy dat, čísla smluv EA atd. |
-| 500 | Chyba serveru | Neočekávaná chyba při zpracování požadavku |
+| 400 | Nesprávná žádost | Neplatné parametry – rozsahy dat, čísla smluv EA atd. |
+| 500 | Chyba serveru | Neočekávaná chyba při zpracování žádosti |
 
 ### <a name="usage-and-billing-data-update-frequency"></a>Frekvence aktualizace dat o využití a fakturačních dat
 
@@ -123,20 +123,20 @@ Ze sestavy CSV se vygenerují data ve formátu JSON. Výsledný formát proto st
 | Název předplatného | SubscriptionName | SubscriptionName |   |
 | Datum | Datum | Datum | Zobrazuje datum, kdy byla spuštěna sestava katalogu služeb. Formátem je řetězec data bez časového razítka. |
 | Month | Month | Month |   |
-| Den | Den | Den |   |
-| Year | Year | Year |   |
+| Den | Day | Den |   |
+| Rok | Rok | Year |   |
 | Produkt | BillableItemName | Produkt |   |
-| ID měření | ResourceGUID | ID měřiče |   |
-| Kategorie měřiče | Služba | MeterCategory | Užitečné při hledání služeb. Relevantní pro služby, které mají více položek ServiceType. Například Virtual Machines. |
-| Podkategorie měřiče | ServiceType | MeterSubCategory | Poskytuje druhou úroveň podrobností pro službu. Například Virtuální počítač A1 (ne Windows).  |
+| ID měření | ResourceGUID | MeterId |   |
+| Kategorie měření | Služba | MeterCategory | Užitečné při hledání služeb. Relevantní pro služby, které mají více položek ServiceType. Například Virtual Machines. |
+| Podkategorie měření | ServiceType | MeterSubCategory | Poskytuje druhou úroveň podrobností pro službu. Například Virtuální počítač A1 (ne Windows).  |
 | Oblast měření | ServiceRegion | MeterRegion | Třetí úroveň podrobností požadovaných pro službu. Užitečné při hledání kontextu oblasti pro ResourceGUID. |
-| Název měřiče | ServiceResource | MeterName | Název služby |
+| Název měření | ServiceResource | MeterName | Název služby |
 | Spotřebované množství | ResourceQtyConsumed | ConsumedQuantity |   |
 | ResourceRate | ResourceRate | ResourceRate |   |
 | ExtendedCost | ExtendedCost | ExtendedCost |   |
 | Umístění prostředku | ServiceSubRegion | ResourceLocation |   |
 | Spotřebovaná služba | ServiceInfo | ConsumedService |   |
-| ID instance | Součást | InstanceId |   |
+| ID instance | Komponenta | InstanceId |   |
 | ServiceInfo1 | ServiceInfo1 | ServiceInfo1 |   |
 | ServiceInfo2 | ServiceInfo2 | ServiceInfo2 |   |
 | AdditionalInfo | AdditionalInfo | AdditionalInfo |   |
@@ -144,7 +144,7 @@ Ze sestavy CSV se vygenerují data ve formátu JSON. Výsledný formát proto st
 | Identifikátor služby úložiště   | OrderNumber | StoreServiceIdentifier   |   |
 | Název oddělení | DepartmentName | DepartmentName |   |
 | Nákladové středisko | CostCenter | CostCenter |   |
-| Jednotka měření | UnitOfMeasure | UnitOfMeasure | Příklady hodnot: hodiny, GB, události, nabízení, jednotka, Hodiny za jednotku, MB, denní jednotky |
+| Jednotka měření | UnitOfMeasure | UnitOfMeasure | Příklady hodnot: hodiny, GB, události, nabízená oznámení, jednotky, hodiny za jednotku, MB, denní jednotky |
 | ResourceGroup | ResourceGroup | ResourceGroup |   |
 
 #### <a name="azure-marketplace-report"></a>Sestava pro Azure Marketplace
@@ -157,10 +157,10 @@ Ze sestavy CSV se vygenerují data ve formátu JSON. Výsledný formát proto st
 | SubscriptionGuid | SubscriptionGuid | SubscriptionGuid |
 | Název předplatného | SubscriptionName |  SubscriptionName |
 | Datum | BillingCycle |  Date (jen datový řetězec bez časového razítka)
-| Month | Month |  Month |
-| Den | Den |  Den |
-| Year | Year |  Year |
-| ID měření | MeterResourceId |  ID měřiče |
+| Měsíc | Month |  Month |
+| Den | Day |  Den |
+| Rok | Rok |  Rok |
+| ID měření | MeterResourceId |  MeterId |
 | Název vydavatele | PublisherFriendlyName |  Název vydavatele |
 | Název nabídky | OfferFriendlyName |  OfferName |
 | Název plánu | PlanFriendlyName |  PlanName |

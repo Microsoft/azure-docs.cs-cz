@@ -15,95 +15,95 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 2768d6e146a37e86bb36353f661179ebd7b5033d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75994126"
 ---
-# <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Fakturační účty a obory v Azure Portal
+# <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Rozsahy a fakturační účty na webu Azure Portal
 
-Fakturační účet se vytváří při registraci k Azure. Ten slouží ke správě faktur a plateb a sledování nákladů. Přístup můžete mít k více fakturačním účtům. Může to být třeba v situaci, kdy se zaregistrujete do Azure, abyste mohli pracovat na svých osobních projektech, ale současně máte přístup i prostřednictvím smlouvy Enterprise vaší organizace nebo smlouvy se zákazníkem Microsoftu. Pro každý z těchto scénářů tak máte samostatný fakturační účet.
+Když se zaregistrujete do Azure, vytvoří se vám fakturační účet. Ten slouží ke správě faktur a plateb a sledování nákladů. Přístup můžete mít k více fakturačním účtům. Může to být třeba v situaci, kdy se zaregistrujete do Azure, abyste mohli pracovat na svých osobních projektech, ale současně máte přístup i prostřednictvím smlouvy Enterprise vaší organizace nebo smlouvy se zákazníkem Microsoftu. Pro každý z těchto scénářů tak máte samostatný fakturační účet.
 
 Azure Portal podporuje následující typ fakturačních účtů:
 
-- **Program Microsoft Online Services**: fakturační účet pro program Microsoft Online Services se vytvoří při registraci k Azure prostřednictvím webu Azure. Může to být třeba tehdy, když si zaregistrujete [bezplatný účet Azure](https://azure.microsoft.com/offers/ms-azr-0044p/), [účet s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) nebo účet pro [předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/).
+- **Program MOSP (Microsoft Online Services Program):** Fakturační účet pro program MOSP (Microsoft Online Services Program) se vytvoří při registraci do Azure prostřednictvím webu Azure. Může to být třeba tehdy, když si zaregistrujete [bezplatný účet Azure](https://azure.microsoft.com/offers/ms-azr-0044p/), [účet s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) nebo účet pro [předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/).
 
-- **Smlouva Enterprise**: fakturační účet pro smlouva Enterprise se vytvoří, když vaše organizace podepíše [smlouva Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) , aby používala Azure.
+- **Smlouva Enterprise:** Fakturační účet pro smlouvu Enterprise se vytvoří, když vaše organizace uzavře [smlouvu Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) na používání Azure.
 
-- **Smlouva o zákaznících Microsoftu**: fakturační účet pro smlouvu o zákaznících Microsoftu se vytvoří, když vaše organizace spolupracuje s zástupcem Microsoftu k podepsání smlouvy o zákaznících Microsoftu. Někteří zákazníci ve vybraných oblastech, kteří si zaregistrují web Azure pro [účet s tarify](https://azure.microsoft.com/offers/ms-azr-0003p/) průběžných plateb nebo [bezplatný účet Azure](https://azure.microsoft.com/offers/ms-azr-0044p/) , můžou mít fakturační účet i pro smlouvy o zákaznících Microsoftu. Další informace najdete v tématu [Začínáme s fakturačními účty pro smlouvu se zákazníkem Microsoftu](../understand/mca-overview.md).
+- **Smlouva se zákazníkem Microsoftu:** Fakturační účet pro smlouvu se zákazníkem Microsoftu se vytvoří tehdy, když vaše organizace uzavře smlouvu se zákazníkem Microsoftu prostřednictvím zástupce Microsoftu. Fakturační účet pro smlouvu se zákazníkem Microsoftu mohou mít i někteří zákazníci ve vybraných oblastech, kteří si prostřednictvím webu Azure zaregistrují [účet s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) nebo [bezplatný účet Azure](https://azure.microsoft.com/offers/ms-azr-0044p/). Další informace najdete v tématu [Začínáme s fakturačními účty pro smlouvu se zákazníkem Microsoftu](../understand/mca-overview.md).
 
-- **Smlouva o partnerovi Microsoftu**: fakturační účet pro partnerský vztah Microsoftu se vytvoří pro partnery poskytovatele Cloud Solution Provider (CSP), aby mohli spravovat své zákazníky v novém prostředí pro obchod. Partneři musí mít aspoň jednoho zákazníka s [plánem Azure](https://docs.microsoft.com/partner-center/purchase-azure-plan) ke správě fakturačního účtu v Azure Portal. Další informace najdete v tématu [Začínáme s fakturačním účtem pro dohodu o partnerovi Microsoftu](../understand/mpa-overview.md).
+- **Smlouva s partnerem Microsoftu:** Fakturační účty pro smlouvu s partnerem Microsoftu se vytváří pro partnery CSP (Cloud Solution Provider), aby mohli spravovat své zákazníky v novém komerčním prostředí. Aby mohli partneři spravovat svůj fakturační účet na webu Azure Portal, musí mít nejméně jednoho zákazníka s [plánem Azure](https://docs.microsoft.com/partner-center/purchase-azure-plan). Další informace najdete v tématu [Začínáme s fakturačními účty pro smlouvu s partnerem Microsoftu](../understand/mpa-overview.md).
 
 Pokud chcete zjistit, jaký typ fakturačního účtu máte, přejděte do části [Ověření typu fakturačního účtu](#check-the-type-of-your-account).
 
 ## <a name="scopes-for-billing-accounts"></a>Rozsahy pro fakturační účty
-Obor je uzel v rámci fakturačního účtu, který používáte k zobrazení a správě fakturace. Je tam, kde spravujete fakturační údaje, platby, faktury a provedete obecnou správu účtů.
+Rozsah je uzel v rámci fakturačního účtu, pomocí kterého zobrazujete a spravujete fakturaci. Právě tady spravujete fakturační údaje, platby a faktury a provádíte všeobecnou správu účtu.
 
 ### <a name="microsoft-online-services-program"></a>Program MOSP (Microsoft Online Services Program)
 
- ![Snímek obrazovky zobrazující hierarchii MOSP](./media/view-all-accounts/mosp-hierarchy.png)
+ ![Snímek obrazovky znázorňující hierarchii MOSP](./media/view-all-accounts/mosp-hierarchy.png)
 
 |Rozsah  |Definice  |
 |---------|---------|
-|Fakturační účet     | Představuje smlouvu, kterou zákazník přijímá k používání Azure. Obsahuje jeden nebo více předplatných.  |
-|Předplatné     |  Představuje seskupení prostředků Azure. V tomto rozsahu se generují faktury. K tomuto oboru jsou přidruženy další fakturační informace, jako jsou způsoby platby a adresa použití.|
+|Fakturační účet     | Představuje smlouvu, kterou zákazník přijímá, aby mohl využívat Azure. Obsahuje jedno nebo několik předplatných.  |
+|Předplatné     |  Představuje seskupení prostředků Azure. V tomto rozsahu se generují faktury. K tomuto rozsahu jsou přidružené další fakturační informace, jako jsou způsoby platby a adresa využití.|
 
 ### <a name="enterprise-agreement"></a>Smlouva Enterprise
 
-![Snímek obrazovky zobrazující hierarchii EA](./media/view-all-accounts/ea-hierarchy.png)
+![Snímek obrazovky znázorňující hierarchii EA](./media/view-all-accounts/ea-hierarchy.png)
 
 |Rozsah  |Definice  |
 |---------|---------|
-|Fakturační účet    | Představuje registraci smlouvy Enterprise. Obsahuje jednu nebo více oddělení a účtů. V tomto rozsahu se generují faktury. |
-|Oddělení     |  Volitelné seskupení účtů pro rozdělení nákladů do logických seskupení a nastavení rozpočtu.     |
-|Účet     |  Představuje vlastníka jednoho účtu. Vlastníci účtu mají oprávnění k vytváření a správě předplatných Azure, která se účtují k registraci. |
+|Fakturační účet    | Představuje registraci smlouvy Enterprise. Obsahuje jeden nebo více oddělení a účtů. V tomto rozsahu se generují faktury. |
+|Oddělení     |  Volitelné seskupení účtů pro rozdělení nákladů do logických skupin a nastavení rozpočtů.     |
+|Účet     |  Představuje vlastníka jednoho účtu. Vlastníci účtu mají oprávnění k vytváření a správě předplatných Azure, která se účtují na příslušnou registraci. |
 
 ### <a name="microsoft-customer-agreement"></a>Smlouva se zákazníkem Microsoftu
 
-![Snímek obrazovky, který zobrazuje hierarchii MCA](./media/view-all-accounts/mca-hierarchy.png)
+![Snímek obrazovky znázorňující hierarchii MCA](./media/view-all-accounts/mca-hierarchy.png)
 
 |Rozsah  |Úlohy  |
 |---------|---------|
-|Fakturační účet     |   Představuje smlouvu, kterou zákazník přijímá k používání produktů a služeb společnosti Microsoft. Obsahuje jeden nebo více fakturačních profilů. |
-|Fakturační profil     |   Představuje fakturu a související fakturační informace, jako jsou způsoby platby a fakturační adresa. Obsahuje jednu nebo více oddílů faktury. |
-|Oddíl faktury     |   Představuje seskupení nákladů na faktuře. K tomuto oboru jsou přidružená předplatná Azure a další nákupy, například Azure Marketplace a zdrojové produkty aplikací.    |
+|Fakturační účet     |   Představuje smlouvu, kterou zákazník přijímá, aby mohl využívat služby a produkty Microsoftu. Obsahuje jeden nebo několik fakturačních profilů. |
+|Fakturační profil     |   Představuje fakturu a související fakturační informace, jako jsou způsoby platby a fakturační adresa. Obsahuje jeden nebo několik oddílů faktur. |
+|Oddíl faktury     |   Představuje seskupení nákladů na faktuře. K tomuto rozsahu jsou přidružená předplatná Azure a další nákupy, například na Azure Marketplace a App Source.    |
 
-### <a name="microsoft-partner-agreement"></a>Partnerská smlouva Microsoftu
+### <a name="microsoft-partner-agreement"></a>Smlouva s partnerem Microsoftu
 
-![Snímek obrazovky zobrazující hierarchii aktivace](./media/view-all-accounts/mpa-hierarchy.png)
+![Snímek obrazovky znázorňující hierarchii MPA](./media/view-all-accounts/mpa-hierarchy.png)
 
 |Rozsah  |Úlohy  |
 |---------|---------|
-|Fakturační účet     |   Představuje smlouvu partnera pro správu produktů a služeb společnosti Microsoft pro zákazníky v novém prostředí pro obchod. Obsahuje jeden nebo více fakturačních profilů a zákazníků.   |
-|Fakturační profil     |   Představuje fakturu pro měnu.     |
-|Zákazník    |   Představuje zákazníka pro partnera poskytovatele Cloud Solution Provider (CSP).  K tomuto oboru jsou přidružená předplatná Azure a další nákupy, například Azure Marketplace a zdrojové produkty aplikací.  |
-|Prodejce    |   Prodejce, který poskytuje služby zákazníkům. Je to volitelné pole pro předplatné a platí jenom pro nepřímé zprostředkovatele v modelu dvou vrstev CSP.     |
+|Fakturační účet     |   Představuje partnerskou smlouvu pro správu produktů a služeb Microsoftu pro zákazníky v novém komerčním prostředí. Obsahuje jeden nebo několik fakturačních profilů a zákazníků.   |
+|Fakturační profil     |   Představuje fakturu pro konkrétní měnu.     |
+|Zákazník    |   Představuje zákazníka pro partnera CSP (Cloud Solution Provider).  K tomuto rozsahu jsou přidružená předplatná Azure a další nákupy, například na Azure Marketplace a App Source.  |
+|Prodejce    |   Prodejce, který poskytuje služby zákazníkům. Toto pole pro předplatné je volitelné a vztahuje se jenom na nepřímé prodejce ve dvouúrovňovém modelu CSP.     |
 
 ## <a name="switch-billing-scope-in-the-azure-portal"></a>Změna rozsahu fakturace na webu Azure Portal
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Vyhledejte **Cost Management a fakturace**.
 
    ![Snímek obrazovky znázorňující hledání na webu Azure Portal](./media/view-all-accounts/billing-search-cost-management-billing.png)
 
-3. Na stránce Přehled vyberte možnost **obor přepínače**.
+3. Na stránce s přehledem vyberte **Přepnout rozsah**.
 
-   ![Snímek obrazovky zobrazující rozsahy fakturace](./media/view-all-accounts/overview-select-scopes.png)
+   ![Snímek obrazovky s rozsahy fakturace](./media/view-all-accounts/overview-select-scopes.png)
 
    > [!Note]
     >
-    > Pokud máte přístup jenom k jednomu oboru, nezobrazí se rozsah přepnutí.
+    > Pokud máte přístup jenom k jednomu rozsahu, možnost Přepnout rozsah se vám nezobrazí.
 
 4. Výběrem určitého oboru zobrazíte podrobnosti.
 
-   ![Snímek obrazovky zobrazující rozsahy fakturace](./media/view-all-accounts/list-of-scopes.png)
+   ![Snímek obrazovky s rozsahy fakturace](./media/view-all-accounts/list-of-scopes.png)
 
-## <a name="check-the-type-of-your-account"></a>Ověřte typ účtu.
+## <a name="check-the-type-of-your-account"></a>Ověření typu účtu
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-account-type.md)]
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 

@@ -13,10 +13,10 @@ ms.date: 09/30/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 14346ceda9574d18050108e585d5ff4cdb133e31
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992020"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>Zobrazení a stažení cen Azure pro vaši organizaci
@@ -36,7 +36,7 @@ V závislosti na zásadách nastavených pro vaši organizaci podnikovým správ
 
    ![Snímek obrazovky ukazující možnost Využití a poplatky v části Fakturace](./media/ea-pricing/ea-pricing-usage-charges-nav.png)
 
-1. Vyberte ![snímek obrazovky zobrazující Azure portal hledání](./media/ea-pricing/download-icon.png) **Stáhnout** za měsíc.
+1. U požadovaného měsíce vyberte ![Snímek obrazovky znázorňující hledání na webu Azure Portal](./media/ea-pricing/download-icon.png) **Stáhnout**.
 
 1. V části **Ceník** vyberte **Stáhnout CSV**.
 
@@ -48,7 +48,7 @@ Pokud máte smlouvu MCA a chcete zobrazit a stáhnout informace o cenách, musí
 
 ### <a name="download-price-sheets-for-billed-charges"></a>Stažení ceníků účtovaných poplatků
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyhledejte *Cost Management a fakturace*.
 1. Vyberte fakturační profil. V závislosti na úrovni vašeho přístupu možná budete muset nejprve vybrat fakturační účet.
 1. Vyberte **Faktury**.
@@ -65,7 +65,7 @@ Pokud máte smlouvu MCA a chcete zobrazit a stáhnout informace o cenách, musí
 
 Pokud máte smlouvu MCA, můžete si stáhnout informace o cenách pro aktuální fakturační období.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyhledejte *Cost Management a fakturace*.
 1. Vyberte fakturační profil. V závislosti na úrovni vašeho přístupu možná budete muset nejprve vybrat fakturační účet.
 1. V oblasti **Přehled** najdete odkazy ke stažení pod poplatky od začátku měsíce.
@@ -97,13 +97,13 @@ Pokud jste zákazníkem se smlouvou EA, projděte si tato témata:
 
 - [Správa přístupu k fakturačním údajům smlouvy EA v Azure](manage-billing-access.md)
 - [Zobrazení a stažení faktury za Microsoft Azure](../understand/download-azure-invoice.md)
-- [Zobrazení a stažení využití a poplatků za Microsoft Azure](../understand/download-azure-daily-usage.md)
+- [Zobrazení a stažení informací o využití a poplatcích za Microsoft Azure](../understand/download-azure-daily-usage.md)
 - [Vysvětlení informací na faktuře pro zákazníky se smlouvou Enterprise](../understand/review-enterprise-agreement-bill.md)
 
 Pokud máte smlouvu se zákazníkem Microsoftu, projděte si tato témata:
 
 - [Vysvětlení výrazů v ceníku pro smlouvu se zákazníkem Microsoftu](mca-understand-pricesheet.md)
 - [Zobrazení a stažení faktury za Microsoft Azure](../understand/download-azure-invoice.md)
-- [Zobrazení a stažení využití a poplatků za Microsoft Azure](../understand/download-azure-daily-usage.md)
+- [Zobrazení a stažení informací o využití a poplatcích Microsoft Azure](../understand/download-azure-daily-usage.md)
 - [Zobrazení a stažení daňových dokumentů pro váš fakturační profil](../understand/mca-download-tax-document.md)
 - [Vysvětlení poplatků na faktuře pro váš fakturační profil](../understand/review-customer-agreement-bill.md)

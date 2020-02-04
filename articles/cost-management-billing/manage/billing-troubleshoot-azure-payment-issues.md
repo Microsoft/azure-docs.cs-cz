@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: jaserano
 ms.openlocfilehash: 986af72ed2ac10a285cfe32768d8541b7fce2428
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989992"
 ---
 # <a name="troubleshoot-azure-payment-issues"></a>Řešení potíží s platbami za Azure
@@ -50,7 +50,7 @@ Pokud chcete tento problém vyřešit, přečtěte si téma [Chyba přihlášen�
 
 ## <a name="unable-to-make-payment-for-a-subscription"></a>Nejde provést platbu za předplatné
 
-Pokud se zobrazí chybová zpráva: *Platba je po splatnosti. Došlo k potížím s vaším způsobem platby nebo je* *nám líto, ale informace nejde Uložit. Zavřete prohlížeč a zkuste to znovu.* na kartě se čeká na platbu, protože karta byla zamítnuta vaší finanční institucí.
+Pokud se zobrazí chybová zpráva *Platba je po splatnosti. Došlo k problému s vaším způsobem platby* nebo *Je nám líto, ale údaje se nepodařilo uložit. Zavřete prohlížeč a zkuste to znovu.* , je na kartě platba čekající na zpracování, protože karta byla zamítnuta vaší finanční institucí.
 
 Ověřte, že na platební kartě je dostatečný zůstatek k provedení platby. Pokud není, použijte k provedení platby jinou kartu nebo se obraťte na svou finanční instituci a požádejte o pomoc při řešení problému.
 

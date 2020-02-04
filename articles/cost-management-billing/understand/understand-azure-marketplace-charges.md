@@ -13,10 +13,10 @@ ms.date: 10/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f94b79e03cf97275ec4dacf17e097e1678e81d10
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989420"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>Vysvětlení poplatků za externí služby v Azure
@@ -54,10 +54,10 @@ Pokud máte smlouvu se zákazníkem Microsoftu (MCA) nebo smlouvu s partnerem Mi
 
 Pokud nemáte smlouvu MCA ani MPA, poplatky za služby třetích stran najdete na samostatné faktuře. Faktury za Azure Marketplace si můžete na webu Azure Portal zobrazit a stáhnout pomocí následujícího postupu:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyhledejte **Cost Management a fakturace**.
 1. V nabídce vlevo vyberte **Faktury**.
-1. Klikněte na kartu **Azure Marketplace a rezervace** .  ![obrázek karty Azure Marketplace a rezervace](./media/understand-azure-marketplace-charges/invoice-tabs.png)
+1. Klikněte na kartu **Azure Marketplace a rezervace**.  ![Obrázek karty Azure Marketplace a rezervace](./media/understand-azure-marketplace-charges/invoice-tabs.png)
 1. V rozevíracím seznamu předplatných vyberte předplatné obsahující externí služby, pro které chcete zobrazit faktury.
 
 ## <a name="external-spending-for-ea-customers"></a>Externí výdaje u zákazníků se smlouvou Enterprise
@@ -68,7 +68,7 @@ Zákazníci se smlouvou Enterprise si můžou zobrazit a stáhnout sestavy exter
 
 Při nákupu externí služby si zvolíte předplatné Azure pro daný prostředek. Způsob platby za vybrané předplatné Azure se použije i jako způsob platby za externí službu. Pokud chcete způsob platby za externí službu změnit, je potřeba [změnit způsob platby předplatného Azure](../manage/change-credit-card.md) svázaného s danou externí službou. To, se kterým předplatným je objednávka externí služby svázaná, zjistíte pomocí následujícího postupu:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V navigační nabídce vlevo klikněte na **Všechny prostředky**.
      ![Snímek obrazovky s položkou nabídky Všechny prostředky](./media/understand-azure-marketplace-charges/all-resources.png)
 1. Vyhledejte externí službu.
@@ -97,7 +97,7 @@ Při nákupu externí služby si zvolíte předplatné Azure pro daný prostřed
 ## <a name="cancel-an-external-service-order"></a>Zrušení objednávky externí služby
 Pokud chcete objednávku externí služby zrušit, na webu [Azure Portal](https://portal.azure.com) odstraňte příslušný prostředek.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V navigační nabídce vlevo klikněte na **Všechny prostředky**.
     ![Snímek obrazovky s položkou nabídky Všechny prostředky](./media/understand-azure-marketplace-charges/all-resources.png)
 1. Vyhledejte externí službu.
@@ -111,7 +111,7 @@ Pokud chcete objednávku externí služby zrušit, na webu [Azure Portal](https:
 ## <a name="check-billing-account-type"></a>Kontrola typu fakturačního účtu
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 

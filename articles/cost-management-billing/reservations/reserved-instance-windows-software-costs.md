@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 11/14/2019
 ms.author: banders
 ms.openlocfilehash: 7807129061328d1c6d563b9058987388e84c6e4c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995686"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Softwarové náklady nezahrnuté ve službě Azure Reserved VM Instances
@@ -49,7 +49,7 @@ Slevy na rezervované instance virtuálního počítače a rezervované kapacity
 
 ## <a name="cloud-services-software-meters-not-included-in-reservation-cost"></a>Softwarové měřiče cloudových služeb nezahrnuté v nákladech na rezervaci
 
-| ID měřiče | Název měřiče v souboru využití |
+| MeterId | Název měřiče v souboru využití |
 | ------- | ------------------------|
 |ac9d47ff-ff68-4afc-a145-0c321cf8d0d5|Cloud Services – licence pro 1 vCPU|
 |e0434559-19ee-4132-9c46-05ad4044f3f7|Cloud Services – licence pro 2 vCPU|
@@ -75,6 +75,6 @@ Další informace o rezervacích pro Azure najdete v následujících článcíc
 - [Vysvětlení využití rezervací u předplatného s průběžnými platbami](understand-reserved-instance-usage.md)
 - [Vysvětlení využití rezervací u smlouvy Enterprise](understand-reserved-instance-usage-ea.md)
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).

@@ -9,10 +9,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.openlocfilehash: 88ab9c475d417bc935cf5d2d67f1678794fb74d1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995621"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-data-explorer"></a>Vysvětlení uplatňování slevy za rezervaci na Azure Data Explorer
@@ -21,7 +21,7 @@ Když si zakoupíte rezervovanou kapacitu Azure Data Exploreru, na prostředky A
 
 ## <a name="how-reservation-discount-is-applied"></a>Jak se uplatňuje sleva za rezervaci
 
-Nevyužitá sleva za rezervaci se *nenahrazuje*. Pokud tedy nemáte na každou hodinu odpovídající prostředky, o rezervované množství za danou hodinu přijdete. Nevyužité rezervované hodiny nelze převést na další období.
+Nevyužitá sleva za rezervaci se *nenahrazuje*. Pokud tedy nemáte na každou hodinu odpovídající prostředky, o rezervované množství za danou hodinu přijdete. Nevyužité rezervované hodiny vám nemůžeme převést.
 
 Když vypnete určitý prostředek, sleva za rezervaci se automaticky uplatní na další vyhovující prostředek v zadaném rozsahu. Pokud se v zadaném rozsahu nenajdou žádné vyhovující prostředky, o rezervované hodiny *přijdete*.
 
@@ -36,7 +36,7 @@ Sleva za rezervaci se na přirážku za Azure Data Explorer uplatňuje po hodin�
 ## <a name="examples"></a>Příklady
 
 Následující příklady ukazují, jak se sleva za rezervovanou kapacitu Azure Data Exploreru uplatňuje v závislosti na počtu zakoupených jednotek přirážky a na tom, kdy jsou spuštěné.
-Například pro velikost clusteru Engine: **2 D11_v2 virtuální počítače**, vaše celkové poplatky na vyžádání jsou pro čtyři jednotky Azure Průzkumník dat měření značek za hodinu. 
+Například v případě clusteru modulu se **2 virtuálními počítači řady D11_v2** se vám budou účtovat celkové poplatky za vyžádání čtyř jednotek měřiče přirážky za Azure Data Explorer za hodinu. 
 
 **Scénář 1** 
 
@@ -58,7 +58,7 @@ Od 13:00 do 13:45 spustíte jeden cluster modulu Azure Data Exploreru s 16 jádr
 
 Vysvětlení a znázornění uplatňování rezervací Azure v sestavách fakturace využití najdete v tématu [Vysvětlení využití rezervací Azure](understand-reserved-instance-usage-ea.md).
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
@@ -67,7 +67,7 @@ Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https
 Další informace o rezervacích Azure najdete v následujících článcích:
 
 * [Předplacení výpočetních prostředků Azure Data Exploreru s využitím rezervované kapacity Azure Data Exploreru](../../data-explorer/pricing-reserved-capacity.md)  
-* [Co jsou rezervace v Azure?](save-compute-costs-reservations.md)  
+* [Co jsou rezervace v Azure](save-compute-costs-reservations.md)  
 * [Správa rezervací Azure](manage-reserved-vm-instance.md)  
 * [Vysvětlení využití rezervací u předplatného s průběžnými platbami](understand-reserved-instance-usage.md)
 * [Vysvětlení využití rezervací u smlouvy Enterprise](understand-reserved-instance-usage-ea.md)

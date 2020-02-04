@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 83937e31d844ba0cc8efc17f1ecefa2ad6e7a7c1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992826"
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>Kontrola využití bezplatných služeb, které jsou součástí bezplatného účtu Azure
@@ -24,7 +24,7 @@ Za služby zahrnuté bezplatně v rámci bezplatného účtu Azure se neúčtuj�
 
 ## <a name="check-usage-in-the-azure-portal"></a>Kontrola využití na webu Azure Portal
 
-1.  Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2.  Vyhledejte **Předplatná**.
 
@@ -38,19 +38,19 @@ Za služby zahrnuté bezplatně v rámci bezplatného účtu Azure se neúčtuj�
 
     Tabulka obsahuje následující sloupce:
 
-* **Měřič:** Určuje měrnou jednotku spotřebované služby.
-* **Využití/omezení:** Využití a omezení aktuálního měsíce pro měřič.
-* **Stav:** Stav využití služby V závislosti na vašem využití se může zobrazit jeden z následujících stavů:
-  * **Nepoužívá se:** Nepoužili jste měřič nebo využití pro měření nedosáhlo fakturačního systému.
-  * **Překročení > data \<:** Překročili jste limit > data měřiče \<.
-  * **Nepravděpodobné překročení:** U měřiče pravděpodobně nepřekračujete limit.
-  * **Překračuje > datum \<:** Pravděpodobně budete překročili limit > data měřiče \<.
+* **Měřič:** Určuje měrnou jednotku spotřebovávané služby.
+* **Využití/limit:** Využití za aktuální měsíc a limit daného měřiče.
+* **Stav:** Stav využití dané služby. V závislosti na vašem využití se může zobrazit jeden z následujících stavů:
+  * **Nepoužívá se:** Měřič nepoužíváte nebo fakturační systém ještě nepřijal informace o využití z měřiče.
+  * **Překročeno dne \<Date>:** Dne \<Date> jste překročili limit měřiče.
+  * **Pravděpodobně se nepřekročí:** Pravděpodobně nepřekročíte limit měřiče.
+  * **Překročí se dne \<Date>:** Dne \<Date> pravděpodobně překročíte limit měřiče.
 
 > [!IMPORTANT]
 >
 > Bezplatné služby jsou k dispozici pouze pro předplatné, které se vytvořilo, když jste si zaregistrovali bezplatný účet Azure. Pokud se na stránce s přehledem předplatného nezobrazí tabulka bezplatných služeb, znamená to, že pro dané předplatné nejsou bezplatné služby k dispozici.
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 

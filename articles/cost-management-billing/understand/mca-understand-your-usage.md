@@ -1,5 +1,5 @@
 ---
-title: Smlouvy o využití Azure a poplatky za soubory poplatků pro zákazníky v Microsoftu
+title: Výrazy v soubor s informacemi o využití Azure a poplatcích pro smlouvu se zákazníkem Microsoftu
 description: Zjistěte, jak číst různé oddíly souboru CSV s informacemi o využití Azure a poplatcích pro váš fakturační profil a jak je chápat.
 author: bandersmsft
 manager: jureid
@@ -12,15 +12,15 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: b48cc5d5a36a382909adb250dd76b4f5783a4340
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990902"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Výrazy v souboru s informacemi o využití Azure a poplatcích pro smlouvu se zákazníkem Microsoftu
 
-Tento článek se týká fakturačních účtů smluv se zákazníkem Microsoftu. [Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu](#check-access-to-a-microsoft-customer-agreement).
+Tento článek se týká fakturačního účtu smlouvy se zákazníky Microsoftu. [Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu](#check-access-to-a-microsoft-customer-agreement).
 
 Soubor CSV s informacemi o využití Azure a poplatcích obsahuje poplatky za využívání za den a na úrovni jednotlivých měřičů pro aktuální fakturační období.
 
@@ -37,14 +37,14 @@ Pokud jste byli zákazníkem se smlouvou Enterprise, zjistíte, že se výrazy v
 | Datum | date |
 | Month| date |
 | Den | date |
-| Year | date |
+| Rok | date |
 | Produkt | product |
-| ID měřiče | meterID |
+| MeterId | meterID |
 | MeterCategory | meterCategory |
 | MeterSubCategory | meterSubCategory |
 | MeterRegion | meterRegion |
 | MeterName | meterName |
-| ConsumedQuantity | množství |
+| ConsumedQuantity | quantity |
 | ResourceRate | effectivePrice |
 | ExtendedCost | cost |
 | ResourceLocation | resourceLocation |
@@ -53,8 +53,8 @@ Pokud jste byli zákazníkem se smlouvou Enterprise, zjistíte, že se výrazy v
 | ServiceInfo1 | serviceInfo1 |
 | ServiceInfo2 | serviceInfo2 |
 | AdditionalInfo | additionalInfo |
-| Značky | značek |
-| StoreServiceIdentifier | Nevztahuje se |
+| Značky | tags |
+| StoreServiceIdentifier | – |
 | DepartmentName | invoiceSection |
 | CostCenter | costCenter |
 | UnitOfMeasure | unitofMeasure |
@@ -65,7 +65,7 @@ Pokud jste byli zákazníkem se smlouvou Enterprise, zjistíte, že se výrazy v
 
 Následující výrazy se objevují v souboru s informacemi o využití Azure a poplatcích.
 
-Doba účinnosti | Popis
+Označení | Popis
 --- | ---
 invoiceId | Jedinečné ID dokumentu uvedené v souboru PDF faktury
 previousInvoiceId | Odkaz na původní fakturu, pokud tato řádková položka představuje refundaci
@@ -105,14 +105,14 @@ resourceId | Jedinečný identifikátor instance prostředku
 resourceType | Typ instance prostředku
 resourceLocation | Určuje umístění datového centra, ve kterém prostředek běží
 location | Normalizované umístění prostředku, pokud jsou ve stejných oblastech nakonfigurovaná různá umístění prostředků
-množství | Počet zakoupených nebo spotřebovaných jednotek
+quantity | Počet zakoupených nebo spotřebovaných jednotek
 unitOfMeasure | Měrná jednotka pro fakturaci služby. Například služby výpočetních prostředků se účtují po hodinách
-chargeType | Typ poplatku. Hodnoty: <ul><li>AsCharged – použití: poplatky se účtují na základě využití služby Azure. To zahrnuje využívání na virtuálních počítačích, které se neúčtují, protože jsou součástí rezervovaných instancí.</li><li>AsCharged-PurchaseMarketplace: jednorázové nebo pevně účtované periodické poplatky z nákupu na webu Marketplace</li><li>AsCharged-UsageMarketplace: poplatky za služby Marketplace, které se účtují na základě jednotek spotřeby</li></ul>
-isAzureCreditEligible | Příznak, který označuje, jestli má být poplatky za službu placená za použití kreditů Azure (hodnoty: true, false)
+chargeType | Typ poplatku. Hodnoty: <ul><li>AsCharged-Usage: Poplatky se účtují na základě využívání určité služby Azure. To zahrnuje využívání na virtuálních počítačích, které se neúčtují, protože jsou součástí rezervovaných instancí.</li><li>AsCharged-PurchaseMarketplace: Jednorázové nebo pevné periodické poplatky za nákupy z Marketplace.</li><li>AsCharged-UsageMarketplace: Poplatky za služby z Marketplace, které se účtují na základě počtu jednotek spotřeby.</li></ul>
+isAzureCreditEligible | Příznak, který udává, jestli se může poplatek za službu platit z kreditů Azure (hodnoty: True, False)
 serviceInfo1 | Metadata konkrétních služeb
 serviceInfo2 | Zastaralé pole, které obsahuje volitelná metadata konkrétních služeb
 additionalInfo | Další metadata konkrétních služeb
-značek | Značky, které přiřadíte k prostředku
+tags | Značky, které přiřadíte k prostředku
 
 ### <a name="make-sure-that-charges-are-correct"></a>Kontrola správnosti poplatků
 
@@ -121,11 +121,11 @@ Pokud se chcete ujistit, že jsou v souboru s podrobnými informacemi o využit�
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu k zákaznické smlouvě Microsoftu
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Zobrazení a stažení faktury za Microsoft Azure](download-azure-invoice.md)
-- [Zobrazení a stažení využití a poplatků za Microsoft Azure](download-azure-daily-usage.md)
+- [Zobrazení a stažení informací o využití a poplatcích Microsoft Azure](download-azure-daily-usage.md)

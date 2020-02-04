@@ -8,12 +8,12 @@ ms.date: 01/22/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: effc7dfb8ca540d044b5698b90b3195da0f29b19
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
-ms.translationtype: MT
+ms.openlocfilehash: dfb46a40291a74cb8a2c172700f621ef835ef50e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547570"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76769673"
 ---
 # <a name="azure-ea-portal-administration"></a>Správa portálu Azure EA
 
@@ -21,7 +21,7 @@ V tomto článku jsou vysvětlené nejčastější úkoly, které provádí spr�
 
 ## <a name="add-a-new-enterprise-administrator"></a>Přidání nového podnikového správce
 
-Podnikoví správci mají při správě registrace do Azure EA největší oprávnění. Úvodní správce Azure EA byl vytvořen při nastavení smlouvy EA. Nové správce můžete kdykoliv přidat nebo odebrat. Nové správce přidávají jenom stávající správci. Další informace o přidání dalších podnikových správců najdete v tématu [vytvoření dalšího podnikového správce](ea-portal-get-started.md#create-another-enterprise-admin). Další informace o rolích a úkolech fakturačního profilu najdete v tématu [role a úlohy fakturačního profilu](understand-mca-roles.md#billing-profile-roles-and-tasks).
+Podnikoví správci mají při správě registrace do Azure EA největší oprávnění. Úvodní správce Azure EA byl vytvořen při nastavení smlouvy EA. Nové správce můžete kdykoliv přidat nebo odebrat. Nové správce přidávají jenom stávající správci. Další informace o přidání dalších podnikových správců najdete v tématu [Vytvoření dalšího podnikového správce](ea-portal-get-started.md#create-another-enterprise-administrator). Další informace o rolích a úlohách fakturačního profilu najdete v tématu [Role a úlohy fakturačního profilu](understand-mca-roles.md#billing-profile-roles-and-tasks).
 
 ## <a name="update-user-state-from-pending-to-active"></a>Aktualizace stavu uživatele z Čeká na vyřízení na Aktivní
 
@@ -31,7 +31,7 @@ Při prvním přidání nových vlastníků účtů do registrace Azure EA se u 
 
 Jakmile správce Azure EA vytvoří oddělení, může přidat správce oddělení a přidružit je k oddělením. Správce oddělení může vytvářet nové účty. Nové účty jsou potřeba pro vytvářená předplatná Azure EA.
 
-Další informace o přidání správce oddělení najdete v tématu věnovaném [vytvoření správce oddělení Azure EA](ea-portal-get-started.md#add-a-department-admin).
+Další informace o přidání správce oddělení najdete v tématu věnovaném [vytvoření správce oddělení Azure EA](ea-portal-get-started.md#add-a-department-administrator).
 
 ## <a name="associate-an-account-to-a-department"></a>Přidružit účet k oddělení
 
@@ -44,7 +44,7 @@ Podnikoví správci můžou přidružovat existující účty k oddělením v r�
 1. Klikněte na **Oddělení**.
 1. Najeďte myší na řádek s požadovaným účtem a klikněte na ikonu tužky na pravé straně.
 1. V rozevírací nabídce vyberte požadované oddělení.
-1. Klikněte na možnost **Uložit**.
+1. Klikněte na **Uložit**.
 
 ## <a name="department-spending-quotas"></a>Kvóty útraty oddělení
 
@@ -63,7 +63,7 @@ Správce oddělení může zobrazit kvótu útraty, ale pouze podnikový správc
     - V tuto chvíli můžete upravit také Název oddělení a Nákladové středisko.
  1. Klikněte na **Uložit**.
 
-Kvóta útraty pro oddělení se teď zobrazí v zobrazení seznamu oddělení na kartě oddělení. Na konci aktuálního závazku bude mít portál Azure EA kvóty výdajů pro další období závazku.
+Kvóta útraty oddělení se teď zobrazí na kartě Oddělení v zobrazení Seznam oddělení. Na konci aktuálního závazku se na portálu Azure EA zachovají kvóty útraty pro další období závazku.
 
 Výše kvóty oddělení je nezávislá na aktuálním peněžním závazku a výše kvóty a související upozornění se vztahují pouze na využití první stranou. Kvóta útraty oddělení slouží pouze k informačním účelům a nevynucuje limity útraty.
 
@@ -202,13 +202,13 @@ Zobrazení uživatelů s přístupem RBAC k předplatnému:
 
 Pokud se předplatné převede do účtu jiného tenanta Azure AD, tak všichni uživatelé, skupiny a instanční objekty, které měly ke správě prostředků přístup [RBAC](../../role-based-access-control/overview.md), tento přístup _ztratí_. I když neexistuje přístup RBAC, může být přístup k předplatnému dostupný prostřednictvím bezpečnostních mechanismů, jako je například:
 
-- Certifikáty pro správu, které udělují uživateli oprávnění správce prostředků předplatného. Další informace najdete v tématu o [vytvoření a nahrání certifikátu pro správu Azure](../../cloud-services/cloud-services-certs-create.md).
+- Správa certifikátů, které udělují uživateli oprávnění správce prostředků předplatného. Další informace najdete v tématu o [vytvoření a nahrání certifikátu pro správu Azure](../../cloud-services/cloud-services-certs-create.md).
 - Přístupové klíče pro služby, jako je Storage. Další informace najdete v tématu [Přehled účtu Azure Storage](../../storage/common/storage-account-overview.md).
 - Oprávnění pro vzdálený přístup ke službám, jako je Azure Virtual Machines.
 
 Pokud příjemce potřebuje omezit přístup k prostředkům Azure, měl by zvážit aktualizaci tajných kódů přidružených ke službě. Většinu prostředků můžete aktualizovat takto:
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. V nabídce centra vyberte **Všechny prostředky**.
 3. Vyberte prostředek.
 4. Na stránce prostředku klikněte na **Nastavení**. Tady se můžete podívat na stávající tajné kódy nebo je můžete aktualizovat.
@@ -250,7 +250,7 @@ Přidání kontaktu:
 
 1. Klikněte na **+Přidat kontakt**.
 2. Zadejte e-mailovou adresu a potvrďte ji.
-3. Klikněte na možnost **Uložit**.
+3. Klikněte na **Uložit**.
 
 Nový kontakt pro oznámení se zobrazí v oddílu **Kontakt pro oznámení**. Pokud chcete změnit frekvenci oznamování, vyberte kontakt pro oznámení a klikněte na symbol tužky, který je napravo od vybraného řádku. Nastavte **denní**, **týdenní**, **měsíční** nebo **žádnou** frekvenci.
 
@@ -293,7 +293,7 @@ Pokud uživatel nedostává oznámení, zkontrolujte, jestli jsou správně nast
 4. Pokud chcete upravit předvolby oznámení, najeďte myší na příslušného správce a klikněte na symbol tužky.
 5. Podle potřeby aktualizujte frekvenci a životní cyklus oznámení.
 6. Pokud potřebujete přidat kontakt, klikněte na **Přidat**.
-7. Klikněte na možnost **Uložit**.
+7. Klikněte na **Uložit**.
 
 ![Příklad ukazující pole pro přidání kontaktu ](./media/ea-portal-administration/create-ea-manage-partner-notification.png)
 
@@ -368,4 +368,4 @@ Abyste mohli vytvořit předplatné nabídky Enterprise Azure, musíte na [port�
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si, jak vám můžou [rezervace virtuálních počítačů](ea-portal-vm-reservations.md) pomoci ušetřit peníze.
-- Pokud potřebujete pomoct vyřešit potíže s portálem Azure EA, přečtěte si téma [Řešení potíží s přístupem k portálu Azure EA](ea-portal-troubleshoot.md).
+- Pokud potřebujete pomoc při řešení potíží s portálem Azure EA, přečtěte si téma [Řešení potíží s přístupem k portálu Azure EA](ea-portal-troubleshoot.md).

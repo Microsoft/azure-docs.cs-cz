@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 07/22/2019
 ms.author: banders
 ms.openlocfilehash: 7555fc490804a847e61a46f194e77c62f0a985d9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989745"
 ---
 # <a name="terms-in-your-microsoft-partner-agreement-invoice"></a>Výrazy na faktuře za smlouvu s partnerem Microsoftu
@@ -36,7 +36,7 @@ Fakturace probíhá každý měsíc. Poplatky, které se naúčtují mezi koncem
 
 <!-- add screenshot -->
 
-| Doba účinnosti | Popis |
+| Označení | Popis |
 | --- | --- |
 | Kupující |Adresa vaší právnické osoby zadaná ve vlastnostech fakturačního účtu|
 | Příjemce faktury |Fakturační adresa fakturačního profilu, který dostane fakturu, zadaná ve vlastnostech fakturačního profilu|
@@ -52,7 +52,7 @@ Fakturace probíhá každý měsíc. Poplatky, které se naúčtují mezi koncem
 
 <!-- add screenshot -->
 
-| Doba účinnosti | Popis |
+| Označení | Popis |
 | --- | --- |
 | Poplatky|Celková výše poplatků Microsoftu pro tento fakturační profil od posledního fakturačního období |
 | Kredity |Kredity, které jste dostali za vratky |
@@ -77,7 +77,7 @@ Pokud máte na faktuře služby třetích stran, zobrazí se ve spodní části 
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Kontrola přístupu ke smlouvě s partnerem Microsoftu
 [!INCLUDE [billing-check-mpa](../../../includes/billing-check-mpa.md)]
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 

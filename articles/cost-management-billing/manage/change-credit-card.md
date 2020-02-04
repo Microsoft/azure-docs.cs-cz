@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: banders
 ms.openlocfilehash: 6ae55e0075883de08af516b71089f00353975b34
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992839"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Přidání, aktualizace nebo odebrání platební karty v Azure
@@ -33,7 +33,7 @@ Pokud máte [smlouvu se zákazníkem Microsoftu](#check-access-to-a-microsoft-cu
 ## <a name="add-a-new-credit-card-to-an-azure-subscription"></a>Přidání nové platební karty k předplatnému Azure
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce účtu.
-1. Vyhledejte **Cost Management a fakturace**.
+1. Vyhledejte položku **Správa nákladů a fakturace**.
 
     ![Snímek obrazovky znázorňující hledání](./media/change-credit-card/search.png)
 
@@ -49,7 +49,7 @@ Pokud máte [smlouvu se zákazníkem Microsoftu](#check-access-to-a-microsoft-cu
 
 1. Pokud chcete tuto kartu nastavit jako aktivní způsob platby, zaškrtněte nad formulářem políčko vedle možnosti **Nastavit tento způsob platby jako aktivní**. Tato karta se stane aktivním platebním nástrojem pro všechna předplatná využívající stejnou kartu jako vybrané předplatné.
 
-1. Vyberte **Next** (Další).
+1. Vyberte **Další**.
 
 Pokud po přidání platební karty dojde k chybě, přečtěte si téma věnované [odmítnutí platební karty při registraci do Azure](../../billing/billing-credit-card-fails-during-azure-sign-up.md).
 
@@ -58,7 +58,7 @@ Pokud po přidání platební karty dojde k chybě, přečtěte si téma věnova
 Pokud dojde k obnovení vaší platební karty a její číslo zůstane stejné, můžete aktualizovat údaje stávající platební karty, jako je datum vypršení platnosti. Pokud se číslo vaší karty změní, třeba z důvodu ztráty, krádeže nebo vypršení platnosti karty, postupujte podle návodu v části [Přidání platební karty jako způsobu platby](#addcard). Kód CVV není nutné aktualizovat.
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce účtu.
-1. Vyhledejte **Cost Management a fakturace**.
+1. Vyhledejte položku **Správa nákladů a fakturace**.
 
     ![Snímek obrazovky znázorňující hledání](./media/change-credit-card/search.png)
 
@@ -78,7 +78,7 @@ Pokud dojde k obnovení vaší platební karty a její číslo zůstane stejné,
 Pokud má více vašich předplatných stejný aktivní způsob platby, změnou aktivního způsobu platby u kteréhokoli z těchto předplatných zároveň aktualizujete aktivní způsob platby u ostatních předplatných.
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce účtu.
-1. Vyhledejte **Cost Management a fakturace**.
+1. Vyhledejte položku **Správa nákladů a fakturace**.
 
     ![Snímek obrazovky znázorňující hledání](./media/change-credit-card/search.png)
 
@@ -113,13 +113,13 @@ Způsob platby pro určitý fakturační profil může změnit jenom osoba, kter
 
 Pokud chcete změnit výchozí způsob platby na šek / bezhotovostní převod, přečtěte si, jak [změnit nastavení fakturačního profilu na šek / bezhotovostní převod](pay-by-invoice.md).
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyhledejte **Cost Management a fakturace**.
 1. V nabídce na levé straně klikněte na **Fakturační profily**.
 
     ![Snímek obrazovky s možností Fakturační profily v nabídce](./media/change-credit-card/billing-profile.png)
 
-1. Vyberte fakturační profil.
+1. Zvolte fakturační profil.
 1. V nabídce na levé straně vyberte **Způsoby platby**.
 
    ![Snímek obrazovky s možností Způsoby platby v nabídce](./media/change-credit-card/billing-profile-payment-methods.png)
@@ -163,7 +163,7 @@ Pokud chcete přidat nebo aktualizovat DIČ, aktualizujte svůj profil v [Centru
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu k zákaznické smlouvě Microsoftu
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 

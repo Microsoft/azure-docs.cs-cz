@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
 ms.openlocfilehash: 553cc7fd27571ebc925e33f824060c023664a369
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991773"
 ---
 # <a name="export-and-view-your-top-level-subscription-information"></a>Export a zobrazení informací o předplatném nejvyšší úrovně
@@ -28,9 +28,9 @@ Pokud potřebujete zobrazit sadu ID předplatných přidružených k vašim při
 [!INCLUDE [gdpr-dsr-and-stp-note](../../../includes/gdpr-dsr-and-stp-note.md)]
 
 Stažený soubor JSON poskytuje následující informace:
-- E-mail: e-mailová adresa přidružená k vašemu účtu.
-- PUID: jedinečný identifikátor přidružený k vašemu fakturačnímu účtu.
-- SubscriptionIds: seznam předplatných náležejících k vašemu účtu, který je výčtem ID předplatného.
+- Email: E-mailová adresa, která je přidružená vašemu účtu.
+- PUID: Jedinečný identifikátor přidružený vašemu fakturačnímu účtu.
+- SubscriptionIds: Seznam předplatných náležejících k vašemu účtu, která jsou uvedená podle ID předplatného.
 
 ### <a name="subscriptionsjson-sample"></a>Ukázka souboru subscriptions.json
 

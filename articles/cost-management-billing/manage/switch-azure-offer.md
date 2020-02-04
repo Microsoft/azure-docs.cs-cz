@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: banders
 ms.openlocfilehash: 8e083391a04188345143f8fdf9a5a945abcd9eb1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75994282"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>Změna předplatného Azure na jinou nabídku
@@ -89,7 +89,7 @@ Tlačítko **Přepnout na jinou nabídku** se vám nemusí zobrazit z následuj�
 
 Tady najdete informace o tom, co se stane, když v Centru účtů přepnete nabídky Azure.
 
-#### <a name="no-service-downtime"></a>Žádné výpadky služby
+#### <a name="no-service-downtime"></a>Žádné výpadky služeb
 
 Žádní uživatelé přidružení k předplatnému nezaznamenají výpadky služeb. Nabídka, na kterou přepnete, ale může mít určitá omezení. Některé nabídky například zakazují použití v produkčním prostředí, takže byste museli přesunout produkční prostředky do jiného předplatného.
 
@@ -97,7 +97,7 @@ Tady najdete informace o tom, co se stane, když v Centru účtů přepnete nab�
 
 Když přepnete nabídky, dojde k obnovení výchozího nastavení [všech navýšení limitů nebo kvót nad výchozí hodnotu](../../azure-portal/supportability/resource-manager-core-quotas-request.md). Nedojde k žádným výpadkům služeb, ani pokud máte víc prostředků, než je výchozí limit. Pokud například v předplatném používáte 200 jader, při přepnutí nabídek se kvóta počtu jader vrátí na výchozí hodnotu 20 jader. Virtuální počítače, které používají 200 jader, nezaznamenají žádnou změnu a budou běžet dál. Pokud ale nezadáte nový požadavek na navýšení kvóty, nebudete moct zřídit žádná další jádra.
 
-#### <a name="billing"></a>Vyúčtování
+#### <a name="billing"></a>Fakturace
 
 V den přepnutí se vygeneruje faktura za všechny nevyřízené poplatky. Potom se začne vaše předplatné účtovat podle cenových podmínek nové nabídky. Fakturační den předplatného se změní na datum, kdy jste změnili nabídky. Data o využití a fakturaci z doby před změnou nabídky se nezachovají, takže vám doporučujeme stáhnout si před předpnutím jejich kopii.
 
@@ -111,7 +111,7 @@ V den přepnutí se vygeneruje faktura za všechny nevyřízené poplatky. Potom
 * Informace o přímé migraci prostředků na nové předplatné najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
 * Informace o tom, jak převést vlastnictví předplatného Azure a jeho veškerého obsahu na jinou osobu, najdete v tématu [Převod vlastnictví předplatného Azure](billing-subscription-transfer.md).
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 

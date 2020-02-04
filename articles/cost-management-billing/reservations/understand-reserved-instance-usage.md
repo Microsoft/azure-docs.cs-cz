@@ -1,5 +1,5 @@
 ---
-title: Využití rezervace Azure pro individuální předplatné
+title: Využití rezervací Azure pro jednotlivé předplatné
 description: Zjistěte, jak číst informace o využití, abyste pochopili, jak se uplatňuje rezervace Azure pro vaše samostatné předplatné s průběžnými platbami.
 author: bandersmsft
 manager: yashr
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 1404f8626086124aa2c6affcf2d173cef0be7df3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995361"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Vysvětlení využití rezervací Azure u jednoho předplatného s průběžnými platbami
@@ -33,9 +33,9 @@ Pro potřeby následujících částí si představte, že používáte virtuál
 | Pole | Hodnota |
 |---| :---: |
 |ReservationId |8117adfb-1d94-4675-be2b-f3c1bca808b6|
-|Množství |1\. místo|
-|Skladová položka | Standard_DS1_v2|
-|Region (Oblast) | eastus |
+|Množství |1|
+|Skladová jednotka (SKU) | Standard_DS1_v2|
+|Oblast | eastus |
 
 Rezervace pokrývá hardwarovou část virtuálního počítače, protože nasazený virtuální počítač vyhovuje atributům rezervace. Informace o tom, na který software Windows se rezervovaná instance virtuálního počítače nevztahuje, najdete v tématu [Náklady na software pro rezervované instance virtuálních počítačů Azure s Windows](reserved-instance-windows-software-costs.md).
 
@@ -55,7 +55,7 @@ Filtrujte sloupec **Další informace** a zadejte své **ID rezervace**. Násled
 
 1. Položka **ReservationId** v poli **Další informace** odpovídá rezervaci použité pro daný virtuální počítač.
 2. **ConsumptionMeter** je ID měřiče pro daný virtuální počítač.
-3. Řádková **kategorie měřiče** **rezervované základní virtuální počítače** představuje $0 nákladů v části prohlášení. Náklady na provoz tohoto virtuálního počítače jsou už zahrnuté v ceně rezervace.
+3. Řádek **Rezervované základní virtuální počítače** ve sloupci **Podkategorie měřiče** představuje částku 0 USD z oddílu s výpisem. Náklady na provoz tohoto virtuálního počítače jsou už zahrnuté v ceně rezervace.
 4. **ID měřiče** je ID měřiče pro danou rezervaci. Náklady na tento měřič jsou 0 USD. Toto ID měřiče se zobrazí pro každý virtuální počítač, který má nárok na slevu za rezervaci.
 5. Standard_DS1_v2 je virtuální počítač s jedním vCPU a je nasazený bez zvýhodněného hybridního využití Azure. To znamená, že tento měřič zaznamenává dodatečné poplatky za software pro Windows. Pokud chcete najít měřič odpovídající jednojádrovému virtuálnímu počítači řady D, přečtěte si téma [Náklady na software pro rezervované instance virtuálních počítačů Azure s Windows](reserved-instance-windows-software-costs.md). Pokud máte zvýhodněné hybridní využití Azure, tento dodatečný poplatek se vám neúčtuje.
 
@@ -70,7 +70,7 @@ Předpokládejme, že používáte SQL Database Gen 4 v oblasti USA – východ 
 |ReservationId |446ec809-423d-467c-8c5c-bbd5d22906b1|
 |Množství |2|
 |Produkt| SQL Database Gen 4 (2 jádra)|
-|Region (Oblast) | eastus |
+|Oblast | eastus |
 
 ### <a name="statement-section-of-csv-file"></a>Oddíl výpisu v souboru CSV
 
@@ -90,7 +90,7 @@ Filtrujte sloupec **Další informace** a zadejte své **ID rezervace**. Násled
 2. **ConsumptionMeter** je ID měřiče pro daný prostředek SQL Database.
 3. **ID měřiče** je měřič rezervace. Náklady na tento měřič jsou 0 USD. Toto ID měřiče se nachází v souboru CSV pro všechny prostředky služby SQL Database, které mají nárok na slevu za rezervaci.
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 

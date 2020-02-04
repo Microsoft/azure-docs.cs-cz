@@ -13,10 +13,10 @@ ms.date: 03/01/2018
 ms.author: banders
 ROBOTS: NOINDEX
 ms.openlocfilehash: 111b95ddcff3667fa3f1e7df694af1d38887710f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990018"
 ---
 # <a name="why-is-my-azure-for-students-subscription-disabled-and-how-do-i-reactivate-it"></a>Proč je moje předplatné Azure for Students deaktivované a jak ho můžu znovu aktivovat?
@@ -40,9 +40,9 @@ Zbývající kredit můžete zkontrolovat na [portálu Microsoft Azure Sponsorsh
 
 Tabulka obsahuje následující sloupce:
 
-* **Název služby:** Služba, která spotřebovává kredit Azure.
-* **Prostředek služby:** Jednotka měření spotřebované služby.
-* **Výdaje:** Částka kreditu v USD ($) strávená na této službě
+* **Název služby:** Služba, která spotřebovává váš kredit Azure
+* **Prostředek služby:** Měrná jednotka spotřebovávané služby
+* **Útrata:** Částka kreditu v USD ($) utracená za službu
 
 ## <a name="your-credit-has-expired"></a>Vypršela platnost vašeho kreditu
 
@@ -52,6 +52,6 @@ Platnost vašeho kreditu Azure for Students vyprší po uplynutí 12 měsíců. 
 
 Pokud jste své předplatné Azure for Students omylem zrušili, můžete ho znovu aktivovat tak, že kontaktujete [podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Po opětovné aktivaci máte stále přístup ke zbývajícímu kreditu a bezplatným službám po dobu 12 měsíců od data vaší registrace.
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).

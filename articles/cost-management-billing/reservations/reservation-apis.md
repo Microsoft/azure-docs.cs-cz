@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 992e46cd8f10ff3c434f34a9f90c777870f3ada4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995816"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>Rozhraní API pro automatizaci rezervací Azure
@@ -82,7 +82,7 @@ Pokud jste zákazníkem EA, můžete využití rezervací ve vaší organizaci z
 Pokud zjistíte, že se rezervace vaší organizace využívají málo:
 
 - Ujistěte se, že virtuální počítače, které vaše organizace vytváří, odpovídají velikosti virtuálních počítačů v rezervaci.
-- Ověřte, že je zapnutá flexibilní velikost instance. Další informace najdete v článku [Správa rezervací – změna nastavení optimalizace u rezervovaných instancí virtuálních počítačů](manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances).
+- Ujistěte se, že je povolená flexibilita velikosti instance. Další informace najdete v článku [Správa rezervací – změna nastavení optimalizace u rezervovaných instancí virtuálních počítačů](manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances).
 - Změňte rozsah rezervace na sdílený, aby se rezervace uplatnila ve větší šíři. Další informace najdete v článku [Správa rezervací – změna rozsahu rezervace](manage-reserved-vm-instance.md#change-the-reservation-scope).
 - Proveďte výměnu nevyužitého množství. Další informace najdete v článku [Správa rezervací](manage-reserved-vm-instance.md).
 
@@ -96,7 +96,7 @@ Seznam všech rezervací, ke kterým má uživatel přístup, lze získat pomoc�
 
 ## <a name="split-or-merge-reservation"></a>Rozdělení nebo sloučení rezervace
 
-Po zakoupení více než jedné instance prostředku v rámci rezervace můžete instance v této rezervaci přiřadit k různým předplatným. Rozsah rezervace můžete změnit tak, aby se vztahoval na všechna předplatná v rámci stejného kontextu fakturace. Pro účely správy nákladů nebo plánování rozpočtu ale můžete rozsah ponechat jako „jedno předplatné“ a instance v rezervaci přiřadit k určitému předplatnému.
+Po zakoupení více než jedné instance prostředku v rámci rezervace můžete instance v této rezervaci přiřadit různým předplatným. Rozsah rezervace můžete změnit tak, aby se vztahoval na všechna předplatná v rámci stejného kontextu fakturace. Pro účely správy nákladů nebo plánování rozpočtu ale můžete rozsah ponechat jako „jedno předplatné“ a instance v rezervaci přiřadit k určitému předplatnému.
 
 K rozdělení rezervace použijte rozhraní API [Reservation – Split](/rest/api/reserved-vm-instances/reservation/split). Rezervaci můžete rozdělit také pomocí PowerShellu. Další informace najdete v článku [Správa rezervací – rozdělení rezervace na dvě rezervace](manage-reserved-vm-instance.md#split-a-single-reservation-into-two-reservations).
 
@@ -110,7 +110,7 @@ Ke změně rozsahu prostřednictvím programu použijte rozhraní API [Reservati
 
 ## <a name="learn-more"></a>Další informace
 
-- [Co jsou rezervace v Azure?](save-compute-costs-reservations.md)
+- [Co jsou rezervace v Azure](save-compute-costs-reservations.md)
 - [Vysvětlení způsobu uplatnění slevy za rezervaci virtuálních počítačů](../manage/understand-vm-reservation-charges.md)
 - [Vysvětlení způsobu uplatnění slevy pro plán softwaru SUSE Linux Enterprise](understand-suse-reservation-charges.md)
 - [Vysvětlení způsobu uplatnění slev za jiné rezervace](understand-reservation-charges.md)

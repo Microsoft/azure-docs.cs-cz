@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: v-miegge
 ms.openlocfilehash: 74cf3f197895823bcbd94db0bf3c7bd8065df767
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75988133"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>Řešení potíží s přihlášením k předplatnému Azure
@@ -28,11 +28,11 @@ Tato příručka vám pomůže vyřešit problémy s přihlášením na Azure Po
 
 ### <a name="page-hangs-in-the-loading-status"></a>Stránka zamrzne ve stavu načítání
 
-Pokud stránka v internetovém prohlížeči zamrzne, vyzkoušejte postupně všechny následující kroky, dokud se nedostanete na Azure Portal:
+Pokud stránka v internetovém prohlížeči zamrzne, vyzkoušejte postupně všechny následující kroky, dokud se nedostanete na Azure Portal.
 
 - Aktualizujte stránku.
 - Použijte jiný internetový prohlížeč.
-- Použijte privátní režim prohlížeče. Pro Internet Explorer: klikněte na **nástroje** > **zabezpečení** > **procházení InPrivate**a potom přejděte a přihlaste se do [Azure Portal](https://portal.azure.com/) nebo [centra účtů Azure](https://account.azure.com/Subscriptions).
+- Použijte privátní režim prohlížeče. Internet Explorer: Klikněte na **Nástroje** > **Zabezpečení** > **Procházení InPrivate**, a pak přejděte na [Azure Portal](https://portal.azure.com/) nebo [Centrum účtů Azure](https://account.azure.com/Subscriptions).
 
 ### <a name="you-are-automatically-signed-in-as-a-different-user"></a>Automaticky se přihlásíte jako jiný uživatel
 
@@ -42,22 +42,22 @@ Při řešení tohoto problému zkuste použít některou z následujících met
 
 - Vymažte mezipaměť a odstraňte internetové soubory cookie. V Internet Exploreru klikněte na **Nástroje** > **Možnosti internetu** > **Odstranit**. Ujistěte se, že jsou zaškrtnutá políčka pro dočasné soubory, soubory cookie, hesla a historie procházení, a pak klikněte na Odstranit.
 - Resetováním nastavení aplikace Internet Explorer vraťte všechna osobní nastavení, která jste nakonfigurovali. Klikněte na **Nástroje** > **Možnosti internetu** > **Upřesnit** > vyberte políčko **Odstranit osobní nastavení** > **Resetovat**.
-- Použijte privátní režim prohlížeče. Pro Internet Explorer: klikněte na **nástroje** > **zabezpečení** > **procházení InPrivate**a potom přejděte a přihlaste se do [Azure Portal](https://portal.azure.com/) nebo [centra účtů Azure](https://account.azure.com/Subscriptions).
+- Použijte privátní režim prohlížeče. Internet Explorer:  Klikněte na **Nástroje** > **Zabezpečení** > **Procházení InPrivate**, a pak přejděte na [Azure Portal](https://portal.azure.com/) nebo [Centrum účtů Azure](https://account.azure.com/Subscriptions).
 
 ### <a name="i-can-sign-in-but-i-see-no-subscriptions-found"></a>Můžu se přihlásit, ale zobrazí se zpráva *Nenašla se žádná předplatná*
 
 K tomuto problému dochází, pokud jste vybrali nesprávný adresář nebo pokud váš účet nemá dostatečná oprávnění.
 
-**Scénář 1:** V [Azure Portal](https://portal.azure.com/) byla přijata chybová zpráva.
+**Scénář 1:** Chybová zpráva se objeví na webu [Azure Portal](https://portal.azure.com/).
 
 Pokud chcete tento problém vyřešit:
 
-- Klikněte vpravo nahoře na svůj účet a ujistěte se, že je vybraný správný adresář Azure.
+- Klikněte vpravo nahoře na svůj účet a ujistěte se, že je vybrán správný adresář Azure.
 - Pokud je vybrán správný adresář Azure, ale chybová zpráva se přesto zobrazuje, zajistěte, aby váš účet byl [přidán jako Vlastník](add-change-subscription-administrator.md).
 
-**Scénář 2:** V [centrum účtů Azure](https://account.windowsazure.com/Subscriptions) byla přijata chybová zpráva.
+**Scénář 2:** Chybová zpráva se objeví v [Centru účtů Azure](https://account.windowsazure.com/Subscriptions).
 
-Zkontrolujte, jestli účet, který jste použili, je účet správce účtu. Pokud chcete ověřit, kdo je správce účtu, postupujte takto:
+Zkontrolujte, jestli použitý účet je Správce účtu. Pokud chcete ověřit, kdo je správce účtu, postupujte takto:
 
 1. Přihlaste se k [zobrazení předplatných na webu Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 

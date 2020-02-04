@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: c148351a4475bfdbee474a5e0951cc3b5717404e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995725"
 ---
 # <a name="how-azure-databricks-pre-purchase-discount-is-applied"></a>Způsob uplatňování slevy za předběžný nákup služby Azure Databricks
@@ -43,7 +43,7 @@ Pokud chcete určit využití plánu DBCU, na webu Azure Portal přejděte do č
 
 Když na využití služby Databricks uplatníte slevu za předběžný nákup, v datech o využití se zobrazí nulové poplatky za vyžádání. Další informace o nákladech na rezervace a jejich využití najdete v tématu [Získání nákladů na rezervace a jejich využití v rámci smlouvy Enterprise](understand-reserved-instance-usage-ea.md).
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 

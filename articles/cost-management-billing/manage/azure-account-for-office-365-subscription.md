@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
 ms.openlocfilehash: 034df0de027a50c61e5a7cab3d1e829446002c86
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75993593"
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Registrace předplatného Office 365 s využitím účtu Azure
@@ -54,7 +54,7 @@ Pokud jste vytvořili předplatné Office 365 pro vaši organizaci, pomocí nás
 Po registraci se předplatné Office 365 přidá do stejné instance Azure Active Directory, do které patří vaše předplatné Azure. Další informace najdete v tématech [Další informace o předplatných Azure a Office 365](office-365-account-for-azure-subscription.md#more-about-subs) a [Přidružování předplatných Azure se službou Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
 ## <a id="RoleInAzureAD"></a>Kontrola oprávnění účtu v Azure AD
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Klikněte na **Všechny služby** a pak vyhledejte **Active Directory**.
 
     ![Snímek obrazovky se službou Active Directory na webu Azure Portal](./media/azure-account-for-office-365-subscription/billing-more-services-active-directory.png)
@@ -70,6 +70,6 @@ Po registraci se předplatné Office 365 přidá do stejné instance Azure Activ
 
     ![Snímek obrazovky s rolí adresáře Správce fakturace na webu Azure Portal](./media/azure-account-for-office-365-subscription/billing-directoryrole-limited.png)
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).

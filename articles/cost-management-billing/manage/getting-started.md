@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: a78edc29ef85430dc8af57e60dfcba1f2e46413e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991474"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Jak zabránit neočekávaným poplatkům pomocí fakturace a řízení nákladů v Azure
@@ -34,7 +34,7 @@ Při registraci Azure máte k dispozici několik možností, které vám pomohou
 K odhadu nákladů na používání služeb Azure použijte některý z následujících nástrojů:
 - Cenová kalkulačka Azure
 - Ceník Azure
-- Portál Azure
+- portál Azure
 
 Na obrázcích v následujících částech jsou zobrazeny příklady cen v amerických dolarech.
 
@@ -82,7 +82,7 @@ Po spuštění služeb Azure sledujte svou útratu v Azure tím, že budete prav
 
 4. Můžete filtrovat podle různých vlastností, jako jsou značky, typ prostředku nebo časový rozsah. Pokud chcete přidat filtr pro nějakou vlastnost, klikněte na **Přidat filtr** a vyberte hodnoty, podle kterých chcete filtrovat. Výběrem možnosti **Exportovat** můžete zobrazení exportovat do souboru hodnot oddělených čárkami (.csv).
 
-5. Kliknutím na popisky grafu navíc můžete zobrazit historii denní útraty pro daný popisek. Další: na následujícím snímku obrazovky se kliknutím na virtuální počítače zobrazí denní náklady na spuštění virtuálních počítačů.
+5. Kliknutím na popisky grafu navíc můžete zobrazit historii denní útraty pro daný popisek. Příklad: Na následujícím snímku obrazovky se po kliknutí na virtuální počítače zobrazí denní náklady na provoz virtuálních počítačů.
 
     ![Snímek obrazovky se zobrazením historie výdajů na webu Azure Portal](./media/getting-started/costhistory.png)
 
@@ -128,11 +128,11 @@ Pomocí rozhraní API pro [fakturaci](https://docs.microsoft.com/rest/api/billin
 ### <a name="ea-csp-and-sponsorship-customers"></a>Zákazníci využívající EA, CSP a Sponsorship
 Začněte tím, že kontaktujete svého account manažera nebo partnera Azure.
 
-| Nabídka | Materiály |
+| Nabídka | Zdroje a prostředky |
 |-------------------------------|-----------------------------------------------------------------------------------|
 | Smlouva Enterprise (EA) | [Portál EA](https://ea.azure.com/), [nápověda](https://ea.azure.com/helpdocs) a [sestava Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-enterprise/) |
-| Cloud Solution Provider (CSP) | Kontaktujte svého poskytovatele. |
-| Sponzorství Azure | [Portál Sponsorship](https://www.microsoftazuresponsorships.com/) |
+| CSP (Cloud Solution Provider) | Kontaktujte svého poskytovatele. |
+| Azure Sponsorship | [Portál Sponsorship](https://www.microsoftazuresponsorships.com/) |
 
 Pokud se staráte o IT ve velké organizaci, doporučujeme, abyste si přečetli článek o [používání Azure v podnicích](/azure/architecture/cloud-adoption-guide/subscription-governance) a [dokument white paper o podnikovém IT](https://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) (soubor .pdf ke stažení, jen v angličtině).
 
@@ -162,11 +162,11 @@ Pokud máte přístup k Azure prostřednictvím fakturačního účtu pro smlouv
 
 ### <a name="request-a-service-level-agreement-credit-for-a-service-incident"></a>Vyžádání kreditu smlouvy o úrovni služeb za servisní incident
 
-Smlouva o úrovni služeb (SLA) popisuje závazky společnosti Microsoft týkající se dostupnosti a konektivity. Servisní incident je nahlášen, když se služby Azure potýkají s problémem, který má dopad na dostupnost nebo konektivitu, a často se označuje jako *výpadek*. Pokud nedosáhneme a neudržíme úrovně jednotlivých služeb, jak je popsáno ve smlouvě SLA, můžete mít nárok na kredit části vašich měsíčních poplatků za služby.
+Smlouva o úrovni služeb (SLA) popisuje závazky Microsoftu týkající se dostupnosti a konektivity. Servisní incident je nahlášen, když se služby Azure potýkají s problémem, který má dopad na dostupnost nebo konektivitu, a často se označuje jako *výpadek*. Pokud nedosáhneme a neudržíme úrovně jednotlivých služeb, jak je popsáno ve smlouvě SLA, můžete mít nárok na kredit části vašich měsíčních poplatků za služby.
 
 Kredit si vyžádáte takto:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/). Pokud máte více účtů, nezapomeňte použít ten, který byl ovlivněn výpadkem Azure.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/). Pokud máte více účtů, nezapomeňte použít ten, který byl ovlivněn výpadkem Azure.
 2. Vytvořte novou žádost o podporu.
 3. V seznamu **Typ problému** vyberte **Fakturace**.
 4. V seznamu **Typ problému** vyberte **Žádost o refundaci**.
@@ -179,7 +179,7 @@ U některých služeb musí být splněny určité předpoklady, aby šla smlouv
 
 Další informace najdete v dokumentaci ke [smlouvám o úrovni služeb](https://azure.microsoft.com/support/legal/sla/) a [souhrnu smluv SLA pro služby Azure](https://azure.microsoft.com/support/legal/sla/summary/).
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 

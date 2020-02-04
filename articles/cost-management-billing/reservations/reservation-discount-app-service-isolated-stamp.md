@@ -1,5 +1,5 @@
 ---
-title: Slevy za rezervované Azure App Service
+title: Sleva za rezervace pro Azure App Service
 description: Zjistěte, jak se na kolky služby App Service v izolovaném prostředí uplatňují slevy za rezervaci.
 services: billing
 author: yashesvi
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 1294ee126ecef1f635ffc4d6bec6da02c6171897
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995790"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-app-service-isolated-stamps"></a>Způsob uplatňování slev za rezervaci na kolky služby App Service v izolovaném prostředí
@@ -39,14 +39,14 @@ Rezervaci pro Linux si kupte jenom v případě, že se chystáte používat v k
 
 Následující příklady ukazují, jak se uplatňuje sleva za rezervované instance poplatků za izolované kolky v závislosti na druhu nasazení.
 
-- **Příklad 1**: zakoupíte jednu instanci izolované rezervované kapacity razítka v oblasti bez služba App Service v izolovaném prostředí razítek. Do této oblasti nasadíte nový kolek a budete za tento kolek platit sazbu za rezervaci.
-- **Příklad 2**: zakoupíte jednu instanci izolované rezervované kapacity razítka v oblasti, která již má nasazené služba App Service v izolovaném prostředí razítko. Na nasazený kolek se začne uplatňovat sazba za rezervaci.
-- **Příklad 3**: zakoupíte jednu instanci izolované rezervované kapacity razítka v oblasti s již nasazeným služba App Service v izolovaném prostředím razítkem. Na nasazený kolek se začne uplatňovat sazba za rezervaci. Později kolek odstraníte a nasadíte nový. Pro tento nový kolek získáte sazbu za rezervaci. Za období, kdy nejsou nasazené žádné kolky, se slevy nepřevádějí.
-- **Příklad 4**: v oblasti si můžete koupit jednu instanci izolovaného razítka s vyhrazeným systémem Linux a potom do ní nasadit nové razítko. Při počátečním nasazení kolku bez pracovních procesů se vytvoří měřič kolku pro Windows. Nezískáte žádnou slevu. Při nasazení prvního pracovního procesu pro Linux do tohoto kolku se vytvoří měřič kolku pro Linux a začne se uplatňovat sleva za rezervaci. Pokud se do kolku později nasadí pracovní proces pro Windows, nahradí se měřič kolku měřičem kolku pro Windows. Už se vám nebude uplatňovat sleva za rezervaci rezervované kapacity izolovaného kolku pro Linux.
+- **Příklad 1:** Zakoupíte si jednu instanci rezervované kapacity izolovaného kolku v oblasti, kde nejsou žádné kolky služby App Service v izolovaném prostředí. Do této oblasti nasadíte nový kolek a budete za tento kolek platit sazbu za rezervaci.
+- **Příklad 2:** Zakoupíte si jednu instanci rezervované kapacity izolovaného kolku v oblasti, kde už je nasazený jeden kolek služby App Service v izolovaném prostředí. Na nasazený kolek se začne uplatňovat sazba za rezervaci.
+- **Příklad 3:** Zakoupíte si jednu instanci rezervované kapacity izolovaného kolku v oblasti, kde už máte nasazený jeden kolek služby App Service v izolovaném prostředí. Na nasazený kolek se začne uplatňovat sazba za rezervaci. Později kolek odstraníte a nasadíte nový. Pro tento nový kolek získáte sazbu za rezervaci. Za období, kdy nejsou nasazené žádné kolky, se slevy nepřevádějí.
+- **Příklad 4:** V určité oblasti si zakoupíte jednu instanci rezervované kapacity izolovaného kolku pro Linux a potom do této oblasti nasadíte nový kolek. Při počátečním nasazení kolku bez pracovních procesů se vytvoří měřič kolku pro Windows. Nezískáte žádnou slevu. Při nasazení prvního pracovního procesu pro Linux do tohoto kolku se vytvoří měřič kolku pro Linux a začne se uplatňovat sleva za rezervaci. Pokud se do kolku později nasadí pracovní proces pro Windows, nahradí se měřič kolku měřičem kolku pro Windows. Už se vám nebude uplatňovat sleva za rezervaci rezervované kapacity izolovaného kolku pro Linux.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o tom, jak spravovat rezervace, najdete v tématu [Správa rezervací Azure](manage-reserved-vm-instance.md).
+- Informace o tom, jak spravovat rezervaci, najdete v tématu [Správa rezervací Azure](manage-reserved-vm-instance.md).
 - Další informace o tom, jak nakoupit rezervovanou kapacitu kolku služby App Service v izolovaném prostředí předem a ušetřit peníze, najdete v tématu věnovaném [předplacení poplatků za kolky služby App Service v izolovaném prostředí s rezervovanou kapacitou](prepay-app-service-isolated-stamp.md).
 - Další informace o rezervacích Azure najdete v následujících článcích:
   - [Co jsou rezervace Azure?](save-compute-costs-reservations.md)

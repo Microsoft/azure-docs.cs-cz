@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: v-miegge
 ms.openlocfilehash: e13a55143e554a55a2902fc2350f6fde6a8afb09
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989290"
 ---
 # <a name="troubleshoot-azure-sign-up"></a>Řešení potíží s registrací do Azure
@@ -32,7 +32,7 @@ Při pokusu o registraci nového účtu na portálu Microsoft Azure nebo v Centr
 
 Při řešení chyb vyberte z následujících problémů ten, ke kterému dochází, když se pokusíte zaregistrovat do Azure.
 
-### <a name="error-we-cannot-proceed-with-sign-up-due-to-an-issue-with-your-account-please-contact-billing-support"></a>Chyba: *nemůžeme pokračovat v registraci kvůli problému s vaším účtem. Kontaktujte prosím podporu fakturace.*
+### <a name="error-we-cannot-proceed-with-sign-up-due-to-an-issue-with-your-account-please-contact-billing-support"></a>Chyba: *Nemůžeme pokračovat v registraci kvůli problému s vaším účtem. Kontaktujte prosím podporu fakturace.*
 
 Pokud chcete tento problém vyřešit, postupujte následovně:
 
@@ -109,7 +109,7 @@ Ujistěte se, že k přihlášení používáte správné přihlašovací údaje
 
 Pokud chcete vytvořit předplatné Azure v rámci licenčního programu Open, musíte mít platný klíč OSA (Online Service Activation), ke kterému je přidružený alespoň jeden token Azure v rámci licenčního programu Open. Pokud klíč OSA nemáte, kontaktujte některého z partnerů Microsoftu, kteří jsou uvedení na webu [Microsoft Pinpoint.](https://pinpoint.microsoft.com/)
 
-### <a name="error-you-are-not-eligible-for-an-azure-subscription"></a>Chyba: nemáte *nárok na předplatné Azure* .
+### <a name="error-you-are-not-eligible-for-an-azure-subscription"></a>Chyba: *Nemáte oprávnění získat předplatné Azure*
 
 Pokud chcete tento problém vyřešit, překontrolujte, jestli jsou pravdivá následující tvrzení:
 
@@ -117,7 +117,7 @@ Pokud chcete tento problém vyřešit, překontrolujte, jestli jsou pravdivá n�
 - Údaje o platební kartě jsou správné.​
 - Ještě nemáte účet Microsoft se stejnými údaji.
 
-### <a name="error-your-current-account-type-is-not-supported"></a>Chyba: *váš aktuální typ účtu není podporovaný* .
+### <a name="error-your-current-account-type-is-not-supported"></a>Chyba: *Váš aktuální typ účtu se nepodporuje*
 
 K tomuto problému může dojít, pokud je účet registrován v [nespravovaném adresáři Azure AD](../../active-directory/users-groups-roles/directory-self-service-signup.md) a není v adresáři Azure AD vaší organizace.
 

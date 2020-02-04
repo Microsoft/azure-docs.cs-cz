@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: 41af65c2bfa35da30a0172ae7a39b3bad56597b8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992124"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>Řešení potíží s přístupem k portálu Azure EA
@@ -41,7 +41,7 @@ Aktualizace úrovně ověřování:
 3. Klikněte na kartu**Registrace**.
 4. V části **Podrobnosti registrace** vyberte **Úroveň ověřování**.
 5. Klikněte na symbol tužky.
-6. Klikněte na možnost **Uložit**.
+6. Klikněte na **Uložit**.
 
 ![Příklad znázorňující úrovně ověřování ](./media/ea-portal-troubleshoot/create-ea-authentication-level-types.png)
 
@@ -93,7 +93,7 @@ Jakmile budete mít všechny požadované informace, odešlete žádost na strá
 Prvního správce EA je možné aktualizovat na webu Volume Licensing Service Center aktualizací kontaktu pro zasílání oznámení a online správce na portálu. Aktualizace portálu EA bude trvat přibližně 24 hodin. Po aktualizaci nový správce EA obdrží aktivační e-mail.
 
 Pokud nemáte přístup k portálu VLSC nebo pokud váš původní správce EA už nemůže spravovat registraci a nemá přístup k portálu EA, na stránce [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) odešlete žádost o aktualizaci a zadejte následující informace:
-- Registrační číslo
+- Číslo registrace
 - E-mailová adresa, která se má přidat, a typ ověřování (pracovní nebo školní účet nebo účet Microsoft)
 - Důvod změny původního správce EA
 - E-mailové schválení od původního správce EA
@@ -101,7 +101,7 @@ Pokud nemáte přístup k portálu VLSC nebo pokud váš původní správce EA u
 ### <a name="my-current-ea-admin-is-no-longer-with-the-company"></a>Aktuální správce EA už u společnosti nepracuje
 
 Registrace EA může mít několik správců EA. S žádostí o přidání nového správce EA, vlastníka účtu nebo správce oddělení se tedy můžete obrátit na jiného správce EA. Pokud si však nejste jisti, kdo je ve vaší společnosti správcem EA, nebo pokud v dané registraci není k dispozici žádný jiný správce EA, obraťte se na nás s následujícími informacemi:
-- Registrační číslo
+- Číslo registrace
 - E-mailová adresa, která se má přidat, a typ ověřování (pracovní nebo školní účet nebo účet Microsoft)
 - Informace o tom, že aktuální správce EA už u společnosti nepracuje
 
@@ -146,9 +146,9 @@ Pokud výše uvedený postup při řešení potíží selže, na stránce [https
 
 ### <a name="what-is-the-difference-between-a-workschool-account-and-microsoft-account"></a>Jaký je rozdíl mezi pracovním nebo školním účtem a účtem Microsoft?
 
-**Účet Microsoft:** Účty, které byly přidruženy k Live ID na [https://signup.live.com](https://signup.live.com).
+**Účet Microsoft:** Účty přidružené k účtu Live ID na stránce [https://signup.live.com](https://signup.live.com).
 
-**Pracovní/školní účet:** K dispozici pouze pro společnosti, které nastavily službu Active Directory s federaci na Cloud a všechny účty v jednom tenantovi. Pokud je interní služba Active Directory dané společnosti federovaná na cloud, je možné přidávat uživatele s ověřováním prostřednictvím jejich pracovních nebo školních účtů.
+**Pracovní nebo školní účet:** K dispozici pouze pro společnosti, které si nastavily službu Active Directory s federací na cloud a všechny účty mají v jednom tenantovi. Pokud je interní služba Active Directory dané společnosti federovaná na cloud, je možné přidávat uživatele s ověřováním prostřednictvím jejich pracovních nebo školních účtů.
 
   Od září 2016 Microsoft již neumožňuje registraci pracovních nebo školních e-mailových adres jako účtů Microsoft. Další podrobnosti najdete v následujících materiálech: [https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/](https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/).
 

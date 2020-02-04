@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 26d130023a4ed7b4131af3963ae7afdb33e79bd7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995179"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>Zobrazení rezervací Azure na webu Azure Portal
@@ -31,7 +31,7 @@ Další informace najdete v tématu [Přidání nebo změna uživatelů, kteří
 
 Pokud chcete zobrazit rezervaci jako vlastník nebo čtenář, postupujte následovně:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyhledejte **Rezervace**.
     ![Snímek obrazovky znázorňující hledání na webu Azure Portal](./media/view-reservations/portal-reservation-search.png)  
 3. V seznamu se zobrazí všechny rezervace, u kterých máte roli Vlastník nebo Čtenář. U každé rezervace se zobrazí poslední známé procento využití.  
@@ -48,7 +48,7 @@ Pokud potřebujete změnit rozsah rezervace, rozdělit rezervaci nebo změnit, k
 
 Pokud chcete zobrazit transakce rezervací na webu Azure Portal, postupujte následovně:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyhledejte **Cost Management a fakturace**.
 
     ![Snímek obrazovky znázorňující hledání na webu Azure Portal](./media/view-reservations/portal-cm-billing-search.png)
@@ -85,6 +85,6 @@ Vysvětlení využití:
 - [Vysvětlení využití rezervací u smlouvy Enterprise](understand-reserved-instance-usage-ea.md)
 - [Vysvětlení využití rezervací u předplatných CSP](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).

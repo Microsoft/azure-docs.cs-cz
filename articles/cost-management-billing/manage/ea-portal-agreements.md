@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: d748be3a304222831a55bb9319a04fba1e28e955
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992358"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Smlouvy k Azure EA a jejich změny
@@ -72,16 +72,16 @@ Microsoft nezpřístupní a nevyužije poskytnutou přirážku a související c
 
 ### <a name="how-the-calculation-works"></a>Jak funguje výpočet
 
-Poskytovatel LSP poskytne jednu procentní hodnotu na webu EA Portal.  Veškeré komerční informace na portálu se předají z procenta poskytnutého LSP. Příklad:
+Poskytovatel LSP poskytne jednu procentní hodnotu na webu EA Portal.  Všechny komerční informace na portálu se zvýší o počet procent, který tento poskytovatel LSP uvedl. Příklad:
 
 - Zákazník podepíše smlouvu EA s peněžním závazkem ve výši 100 000 USD.
 - Sazba měřiče za službu A je 10 USD za hodinu.
 - LSP nastaví na webu EA Portal procentní přirážku ve výši 10 %.
 - Příklad uvedený níž ukazuje, jak se budou zákazníkům zobrazovat komerční informace:
-    - Peněžní zůstatek: USD 110 000.
-    - Frekvence měření pro službu A: USD 11 za hodinu.
-    - Informace o využití/hostování pro službu A při použití po dobu 100 hodin: USD 1 100.
-    - K dispozici je peněžní zůstatek k dispozici pro odvození servisního příspěvku A spotřeby: USD 108 900.
+    - Peněžní zůstatek: 110 000 USD
+    - Sazba měřiče pro službu A: 11 USD za hodinu.
+    - Informace o využití/hostingu pro službu A, pokud se využívá 100 hodin: 1 100 USD
+    - Peněžní zůstatek, který má zákazník k dispozici po odečtení využití služby A: 108 900 USD
 
 ### <a name="when-to-use-a-markup"></a>Kdy používat přirážku
 
@@ -101,7 +101,7 @@ Před publikováním cen s přirážkami pro koncového zákazníka prosím neza
 
 ### <a name="how-to-add-a-price-markup"></a>Jak přidat cenovou přirážku
 
-**Krok 1: přidejte cenové označení**
+**Krok 1: Přidání cenové přirážky**
 
 1. V levém navigačním panelu portálu Enterprise Portal klikněte na **Sestavy**.
 1. V části _Usage Summary_ (Souhrn využití) klikněte na modře označené slovo **Markup** (Přirážka).
@@ -116,7 +116,7 @@ V zobrazení zákazníka v části _Usage Summary_ (Souhrn využití) zkontroluj
 1. Změny je možné provést před publikováním, a to volbou **Edit** (Úpravy) na kartě _View Usage Summary > Customer View_ (Zobrazit souhrn využití > Zobrazení zákazníka).  
   Pro ceny služeb i zůstatky závazků se použije stejná procentní přirážka. Pokud máte jiný počet procent pro peněžní zůstatek a sazby měřičů nebo různé počty procent pro různé služby, tuto funkci prosím nepoužívejte.
 
-**Krok 3: publikování**
+**Krok 3: Publikování**
 
 Po kontrole a ověření cen klikněte na **Publish** (Publikovat).
   
@@ -124,7 +124,7 @@ Ceny s přirážkou budou podnikovým správcům k dispozici hned po výběru t�
 
 ### <a name="which-enrollments-have-a-markup-enabled"></a>U kterých prováděcích smluv je přirážka aktivovaná?
 
-Chcete-li zjistit, zda zápis obsahuje publikované označení, klikněte na tlačítko **Spravovat** na levém navigačním panelu a klikněte na kartu **zápis** . zaškrtněte políčko pro registraci a zobrazte stav označení v části _Podrobnosti registrace_. Aktuální stav funkce přirážky pro příslušnou smlouvu EA se zobrazí jako Disabled (Neaktivní), Preview nebo Published (Publikovaná).
+Pokud chcete zkontrolovat, jestli je publikovaná přirážka, v levé navigační nabídce klikněte na **Manage** (Spravovat) a potom klikněte na kartu **Enrollment** (Registrace). Zaškrtněte políčko pro registraci a podívejte se na stav přirážky v části _Enrollment Detail_ (Podrobnosti o registraci). Aktuální stav funkce přirážky pro příslušnou smlouvu EA se zobrazí jako Disabled (Neaktivní), Preview nebo Published (Publikovaná).
 
 ### <a name="how-can-the-customer-download-usage-estimates"></a>Jak si může zákazník stáhnout odhady využití?
 
@@ -145,7 +145,7 @@ Partneři mohou funkci přirážky (pro Azure EA) využít po zpracování změn
 | Hostované služby Microsoft Azure | 6 hostovaných služeb | Tento limit hostovaných služeb nelze pro jednotlivé předplatné navýšit na více než šest. Pokud požadujete další hostované služby, přidejte prosím další předplatná. |
 | Microsoft Azure Storage | 5 účtů úložiště, každý s maximální velikostí 100 TB | Počet účtů úložiště můžete navýšit až na 20 na jedno předplatné. Pokud požadujete další účty úložiště, přidejte prosím další předplatná. |
 | SQL Azure | 149 databází jednoho z typů (tj. Web Edition nebo Business Edition) |   |
-| Access Control | 50 oborů názvů na účet 100 milionů transakcí řízení přístupu za měsíc |   |
+| Řízení přístupu | 50 oborů názvů na účet 100 milionů transakcí řízení přístupu za měsíc |   |
 | Service Bus | 50 oborů názvů na účet 40 připojení služby Service Bus | Kvóty zákazníků, kteří si kupují připojení služby Service Bus prostřednictvím balíčků připojení, se budou rovnat střednímu bodu mezi zakoupeným balíčkem připojení a dalším vyšším balíčkem připojení. Zákazníci, kteří si zvolí balíček 500 připojení, budou mít kvótu 750. |
 
 ## <a name="resource-commitment"></a>Závazek týkající se prostředků
@@ -228,7 +228,7 @@ Podnikoví správci můžou přidat nové vlastníky účtů, přidružit stáva
 
 ### <a name="existingnew-account-owners-to-create-new-subscriptions"></a>Stávající a noví vlastníci účtů pro vytváření nových předplatných
 
-**Krok 1: přihlášení k účtu**
+**Krok 1: Přihlášení k účtu**
 1. Na portálu Azure EA Portal vyberte kartu **Spravovat** a v horní nabídce přejděte na **Předplatné**.
 1. Ověřte, že jste přihlášeni jako vlastník tohoto účtu.
 1. Klikněte na **+ Přidat předplatné**.
@@ -259,11 +259,11 @@ Při prvním přidání nových vlastníků účtů k registraci se u nich vždy
 
 K tomuto scénáři dochází, když zákazník nasadí služby pod nesprávným číslem registrace nebo vybere nesprávné služby.
 
-Pokud chcete ověřit, že nasazujete v rámci správné registrace, můžete prostřednictvím ceníku zkontrolovat informace o zahrnutých jednotkách. Přihlaste se jako správce podnikové sítě a v levém navigačním panelu klikněte na **sestavy** a vyberte kartu **ceníku** . klikněte na ikonu Stáhnout v pravém horním rohu a vyhledejte odpovídající část s příslušnými plány plánu s filtrem na sloupec "zahrnuté množství" a vyberte hodnoty větší než 0.
+Pokud chcete ověřit, že nasazujete v rámci správné registrace, můžete prostřednictvím ceníku zkontrolovat informace o zahrnutých jednotkách. Přihlaste se jako podnikový správce, v levém navigačním panelu klikněte na **Reports** (Sestavy) a potom vyberte kartu **Price Sheet** (Ceník). Klikněte na ikonu pro stažení v pravém horním rohu, pomocí filtru pro sloupec Included Quantity (Zahrnuté množství) vyhledejte odpovídající výrobní čísla skladových položek plánu a vyberte hodnoty větší než 0.
 
 Zkontrolujte, že se plán OMS zobrazuje v ceníku v rámci zahrnutých jednotek. Pokud vaše registrace nemá pro plán OMS žádné zahrnuté jednotky, je plán OMS pravděpodobně pod jinou registrací. Kontaktujte tým podpory Azure Enterprise Portal Support na [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport).
 
-Pokud zahrnuté jednotky pro služby na ceníku se neshodují s tím, co jste nasadili, například Operational Insights prémiová data analyzovaná vs. Operational Insights Analyzovaná data, znamená to, že jste nasadili služby, které tento plán nepokrývá, kontaktujte prosím podporu Azure Enterprise Portal na [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) , abychom vám mohli pomoct.
+Pokud se zahrnuté jednotky pro služby na ceníku neshodují s tím, co jste nasadili, například analyzovaná data Operational Insights úrovně Premium vs. analyzovaná data Operational Insights úrovně Standard, znamená to, že jste pravděpodobně nasadili služby, které váš plán nepokrývá. V takovém případě prosím kontaktujte tým podpory Azure Enterprise Portal Support na [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport), abychom vám mohli dále pomoci.
 
 **Zřízené služby skladových položek plánu v nesprávné registraci**
 

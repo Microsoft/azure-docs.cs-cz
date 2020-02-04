@@ -1,5 +1,5 @@
 ---
-title: Ušetřete poplatky za SQL Data Warehouse s využitím rezervované kapacity Azure
+title: Úspora nákladů na poplatky za SQL Data Warehouse s využitím rezervované kapacity Azure
 description: Přečtěte si, jak pomocí rezervované kapacity ušetřit náklady na poplatky za SQL Data Warehouse a dosáhnout tak úspory peněz.
 services: billing
 author: yashesvi
@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
 ms.openlocfilehash: b4069c9b18f9591e79d983a1317f00df11cf0611
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995842"
 ---
 # <a name="save-costs-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Úspora nákladů na poplatky za SQL Data Warehouse pomocí rezervované kapacity
 
-U služby Azure SQL Data Warehouse můžete ušetřit, když se rozhodnete rezervovat využití jednotek cDWU na dobu jednoho roku nebo tří let. Pokud chcete zakoupit rezervovanou kapacitu služby SQL Data Warehouse, musíte zvolit oblast Azure a období. Pak si můžete do košíku vložit skladovou položku služby SQL Data Warehouse a zvolit množství jednotek cDWU, které si chcete zakoupit.
+U služby Azure SQL Data Warehouse můžete ušetřit, když se rozhodnete rezervovat využití jednotek cDWU na dobu jednoho roku nebo tří let. Pokud chcete zakoupit rezervovanou kapacitu služby SQL Data Warehouse, musíte zvolit oblast Azure a období. Pak do košíku vložíte skladovou položku (SKU) služby SQL Data Warehouse a zvolíte množství jednotek cDWU, které chcete zakoupit.
 
-Když si zakoupíte rezervaci, využití služby SQL Data Warehouse odpovídající atributům rezervace se už nebude účtovat podle sazeb pro průběžné platby.
+Když zakoupíte rezervaci, využití služby SQL Data Warehouse odpovídající atributům rezervace se už nebude účtovat podle sazeb pro průběžné platby.
 
 Rezervace se nevztahuje na poplatky za úložiště ani sítě související s využitím služby SQL Data Warehouse.
 
-Když rezervovaná kapacita vyprší, instance služby SQL Data Warehouse poběží dál, ale budou se fakturovat podle sazeb pro průběžné platby. Rezervace se automaticky neprodlužují.
+Když rezervovaná kapacita vyprší, instance služby SQL Data Warehouse poběží dál, ale budou se fakturovat podle sazeb pro průběžné platby. Rezervace se neprodlužují automaticky.
 
 Informace o cenách najdete v [nabídce rezervované kapacity služby SQL Data Warehouse](https://azure.microsoft.com/pricing/details/sql-data-warehouse/gen2/).
 
@@ -43,15 +43,15 @@ Předpokládejme například, že vaše celková spotřeba kapacity služby SQL 
 
 ## <a name="buy-sql-data-warehouse-reserved-capacity"></a>Zakoupení rezervované kapacity služby SQL Data Warehouse
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Vyberte **Všechny služby** > **Rezervace**.
-3. Vyberte předplatné. K výběru předplatného, které se použije k placení rezervované kapacity, použijte seznam předplatných. Náklady na rezervovanou kapacitu se účtují pomocí způsobu platby zvoleného pro předplatné. Typ předplatného musí být smlouva Enterprise (čísla nabídek: MS-AZR-0017P nebo MS-AZR-0148P) nebo průběžné platby (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P).
+3. Vyberte předplatné. K výběru předplatného, které se použije k placení rezervované kapacity, použijte seznam předplatných. Náklady na rezervovanou kapacitu se účtují pomocí způsobu platby zvoleného pro předplatné. Musí se jednat o předplatné se smlouvou Enterprise (číslo nabídky: MS-AZR-0017P nebo MS-AZR-0148P) nebo předplatné s průběžnými platbami (číslo nabídky: MS-AZR-0003P nebo MS-AZR-0023P).
    - V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití.
    - V případě předplatného s průběžnými platbami se poplatky účtují na platební kartu nebo pomocí způsobu platby faktur určeného v předplatném.
 4. Vyberte rozsah. K výběru rozsahu předplatného použijte seznam Rozsah.
-   - **Rozsah na jednu skupinu prostředků** – Sleva za rezervaci se uplatní jenom u odpovídajících prostředků ve vybrané skupině prostředků.
+   - Rozsah **Jedna skupina prostředků** – sleva za rezervaci se uplatní jenom u odpovídajících prostředků ve vybrané skupině prostředků.
    - Rozsah **Jedno předplatné** – sleva za rezervaci se uplatní u odpovídajících prostředků ve vybraném předplatném.
-   - Rozsah **Sdílený** – sleva za rezervaci se uplatní u odpovídajících prostředků v oprávněných předplatných v kontextu fakturace. U zákazníků se smlouvou Enterprise je kontextem fakturace prováděcí smlouva. U individuálních předplatných se sazbami pro průběžné platby jsou rozsahem fakturace všechna oprávněná předplatná vytvořená správcem účtu.
+   - Rozsah **Sdílený** – sleva za rezervaci se uplatní u odpovídajících prostředků v oprávněných předplatných v kontextu fakturace. U zákazníků se smlouvou Enterprise je kontextem fakturace prováděcí smlouva. U jednotlivých předplatných se sazbami pro průběžné platby jsou rozsahem fakturace všechna oprávněná předplatná vytvořená správcem účtu.
    - U zákazníků se smlouvou Enterprise je kontextem fakturace prováděcí smlouva EA.
    - U zákazníků s průběžnými platbami jsou v rozsahu Sdílený všechna předplatná s průběžnými platbami vytvořená správcem účtu.
 5. Vyberte oblast Azure, která je pokrytá rezervovanou kapacitou.
@@ -67,7 +67,7 @@ Rezervace je možné s určitými omezeními zrušit, vyměnit nebo refundovat. 
 
 Sleva za rezervaci se automaticky uplatní na počet instancí SQL Data Warehouse, které odpovídají rozsahu a oblasti rezervované kapacity SQL Data Warehouse. Rozsah rezervované kapacity SQL Data Warehouse můžete aktualizovat prostřednictvím webu [Azure Portal](https://portal.azure.com/), PowerShellu, rozhraní příkazového řádku nebo rozhraní API.
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://portal.azure.com/).
 

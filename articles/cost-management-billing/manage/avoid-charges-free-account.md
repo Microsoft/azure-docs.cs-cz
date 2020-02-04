@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 632d8ef84fc30ee7e97b8961d74fbb95ced42234
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990057"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Jak se vyhnout poplatkům na bezplatném účtu Azure
@@ -41,7 +41,7 @@ Po upgradu vašeho účtu se vám za využití služeb, které nejsou bezplatně
 
 Platnost bezplatných služeb a množství skončí po 12 měsících. To, kdy vyprší platnost bezplatných služeb, zjistíte na webu Azure Portal.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. V levé navigační oblasti vyberte **Všechny služby**.
 
@@ -56,7 +56,7 @@ Platnost bezplatných služeb a množství skončí po 12 měsících. To, kdy v
 
 Po vypršení platnosti bezplatných služeb a množství se vám všechny využívané služby začnou účtovat podle tarifů průběžných plateb. Na webu Azure Portal můžete odstranit prostředky služeb, které nevyužíváte. Pokud se nechystáte využívat žádné služby Azure, můžete [zrušit své předplatné](cancel-azure-subscription.md).
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 

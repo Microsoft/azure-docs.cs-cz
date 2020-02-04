@@ -14,10 +14,10 @@ ms.date: 10/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3e1e99313454c8352b96b8f11ec35f482521f7b5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989771"
 ---
 # <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-account"></a>Upgrade bezplatného účtu Azure nebo účtu Azure for Students Starter
@@ -30,7 +30,7 @@ Pokud jste si zaregistrovali [účet Azure for Students Starter](https://azure.m
 
 ## <a name="upgrade-your-azure-free-account"></a>Upgrade bezplatného účtu Azure
 
-Pokud provedete upgrade bezplatného účtu Azure, váš zbývající kredit vám zůstane po celých 30 dnů od registrace. Příklad: Pokud jste se zaregistrovali 1. listopadu a upgradujte 5. listopadu, budou všechny nevyužité kredity k dispozici do 30. listopadu. Po dobu 12 měsíců od upgradu také budete mít přístup k bezplatným službám.
+Pokud provedete upgrade bezplatného účtu Azure, váš zbývající kredit vám zůstane po celých 30 dnů od registrace. Příklad: Pokud jste se zaregistrovali 1. listopadu a 5. listopadu provedete upgrade, všechny nevyužité kredity budou k dispozici až do 30. listopadu. Po dobu 12 měsíců od upgradu také budete mít přístup k bezplatným službám.
 
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
 1. Vyhledejte **Předplatná**.

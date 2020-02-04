@@ -1,5 +1,5 @@
 ---
-title: Výrazy v ceníku smlouvy o zákaznících Microsoftu – Azure
+title: Výrazy v ceníku pro smlouvu se zákazníkem Microsoftu – Azure
 description: Zjistěte, jak číst informace o využití a fakturu za smlouvu se zákazníkem Microsoftu a jak je chápat.
 author: bandersmsft
 manager: jureid
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 09/26/2019
 ms.author: banders
 ms.openlocfilehash: 44ead1d376bf8b57134380db90733ed48deda14e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75994477"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-price-sheet"></a>Výrazy v ceníku pro smlouvu se zákazníkem Microsoftu
@@ -43,24 +43,24 @@ Následující část popisuje důležité výrazy uvedené v ceníku pro smlouv
 | includedQuantity | Objem konkrétní služby, na který má zákazník nárok bez zvýšení poplatků |
 | marketPrice | Aktuální převažující cena na trhu pro konkrétní službu |
 | meterId  | Jedinečný identifikátor měřiče |
-| meterCategory  | Název klasifikační kategorie měřiče. Například _Cloud Services_, _Networking_ atd. |
+| meterCategory  | Název klasifikační kategorie měřiče. Například _Cloudové služby_, _Sítě_ atd. |
 | meterName  | Název měřiče. Měřič představuje nasaditelný prostředek služby Azure. |
 | meterSubCategory  | Název klasifikační podkategorie měřiče  |
 | meterType  |  Název typu měřiče |
 | meterRegion  | Název oblasti, ve které je daný měřič služby dostupný. Určuje polohu datového centra. U některých služeb vycházejí ceny z umístění datového centra.    |
-| Produkt  | Název produktu, který účtuje poplatky. Příklad: základní SQL DB a standardní databáze SQL  |
+| Produkt  | Název produktu, za který se účtují poplatky, např.: SQL Database úrovně Basic nebo SQL Database úrovně Standard  |
 | productId  | Jedinečný identifikátor produktu, jehož měřič se spotřebovává |
 | productOrderName  | Název zakoupeného plánu produktu |
-| serviceFamily  | Typ služby Azure. Ex: výpočty, analýzy, zabezpečení |
+| serviceFamily  | Typ služby Azure, např.: výpočetní, analytická nebo bezpečnostní |
 | tierMinimumUnits  | Definuje dolní mez rozsahu úrovně pro který se definují ceny. Pokud je například rozsah od 0 do 100, hodnota tierMinimumUnits je 0.  |
-| unitOfMeasure  | Určuje měrné jednotky pro fakturaci služby. Například služby výpočetních prostředků se účtují po hodinách |
-| unitPrice  | Cena za jednotku v době fakturace (nikoli platná smíšená cena) pro konkrétní měřič a název objednávky produktu.  Poznámka: Jednotková cena není stejná jako platná cena v podrobnostech o využití stahování v případě služeb, které mají rozdílové ceny napříč úrovněmi.  V případě služeb s různými cenami pro různé úrovně platná cena představuje smíšenou sazbu za všechny úrovně, a nepředstavuje jednotkovou cenu pro konkrétní úroveň. Smíšená neboli platná cena je čistá cena za spotřebované množství napříč různými úrovněmi (kde pro každou úroveň platí jiná jednotková cena). |
+| unitOfMeasure  | Určuje měrné jednotky pro fakturaci služby. Například výpočetní služby se účtují po hodinách. |
+| unitPrice  | Cena za jednotku v době fakturace (nikoli platná smíšená cena) pro konkrétní měřič a název objednávky produktu.  Poznámka: V případě služeb, které mají pro různé úrovně různé ceny, se jednotková cena liší od platné ceny ve stažených podrobnostech o využití.  V případě služeb s různými cenami pro různé úrovně platná cena představuje smíšenou sazbu za všechny úrovně, a nepředstavuje jednotkovou cenu pro konkrétní úroveň. Smíšená neboli platná cena je čistá cena za spotřebované množství napříč různými úrovněmi (kde pro každou úroveň platí jiná jednotková cena). |
 
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu k zákaznické smlouvě Microsoftu
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 

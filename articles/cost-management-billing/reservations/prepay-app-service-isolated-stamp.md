@@ -1,5 +1,5 @@
 ---
-title: Uložit pro Azure App Service s rezervovanou kapacitou
+title: Úspora za Azure App Service s využitím rezervované kapacity
 description: Přečtěte si, jak můžete pomocí rezervované kapacity ušetřit náklady na poplatky za kolek služby Azure App Service v izolovaném prostředí.
 services: billing
 author: yashesvi
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
 ms.openlocfilehash: 8161b169e8801fae4a9aa81290cf29ec28abf858
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995881"
 ---
 # <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>Úspora nákladů na poplatky za kolek služby Azure App Service v izolovaném prostředí pomocí rezervované kapacity
@@ -21,7 +21,7 @@ Když potvrdíte rezervaci pro využití kolku na dobu tří let, můžete ušet
 
 Když zakoupíte rezervaci, využití poplatků za kolek v izolovaném prostředí odpovídající atributům rezervace se už nebude účtovat podle sazeb pro průběžné platby. Rezervace se automaticky použije na počet izolovaných kolků, který odpovídá rozsahu a oblasti rezervované kapacity. Rezervaci nemusíte přiřazovat k izolovanému kolku. Rezervace se nevztahuje na pracovní procesy, takže všechny další prostředky přidružené ke kolku se účtují samostatně.
 
-Když rezervovaná kapacita vyprší, izolované kolky poběží dál, ale budou se fakturovat podle sazeb pro průběžné platby. Rezervace se automaticky neprodlužují.
+Když rezervovaná kapacita vyprší, izolované kolky poběží dál, ale budou se fakturovat podle sazeb pro průběžné platby. Rezervace se neprodlužují automaticky.
 
 ## <a name="determine-the-right-reservation-to-purchase"></a>Určení správné rezervace k zakoupení
 
@@ -47,17 +47,17 @@ Rezervovanou kapacitu izolovaného kolku si můžete koupit na webu [Azure Porta
 **Postup při nákupu:**
 
 1. Přejděte na web [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D).
-1. Vyberte předplatné. K výběru předplatného, které se použije k placení rezervované kapacity, použijte seznam **Předplatné**. Náklady na rezervovanou kapacitu se účtují pomocí způsobu platby zvoleného pro předplatné. Typ předplatného musí být smlouva Enterprise (čísla nabídky: MS-AZR-0017P nebo MS-AZR-0148P) nebo průběžné platby (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P) nebo předplatné CSP.
+1. Vyberte předplatné. K výběru předplatného, které se použije k placení rezervované kapacity, použijte seznam **Předplatné**. Náklady na rezervovanou kapacitu se účtují pomocí způsobu platby zvoleného pro předplatné. Musí se jednat o předplatné se smlouvou Enterprise (číslo nabídky: MS-AZR-0017P nebo MS-AZR-0148P) nebo předplatné s průběžnými platbami (číslo nabídky: MS-AZR-0003P nebo MS-AZR-0023P) nebo předplatné CSP.
     - V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití.
     - V případě předplatného s průběžnými platbami se poplatky účtují na platební kartu nebo pomocí způsobu platby faktur určeného v předplatném.
 1. Vyberte **Rozsah** a zvolte rozsah předplatného.
-    - **Rozsah na jednu skupinu prostředků** – Sleva za rezervaci se uplatní jenom u odpovídajících prostředků ve vybrané skupině prostředků.
+    - Rozsah **Jedna skupina prostředků** – sleva za rezervaci se uplatní jenom u odpovídajících prostředků ve vybrané skupině prostředků.
     - Rozsah **Jedno předplatné** – sleva za rezervaci se uplatní u odpovídajících prostředků ve vybraném předplatném.
     - Rozsah **Sdílený** – sleva za rezervaci se uplatní u odpovídajících prostředků v oprávněných předplatných v kontextu fakturace. U zákazníků se smlouvou Enterprise je kontextem fakturace prováděcí smlouva. U individuálních předplatných se sazbami pro průběžné platby jsou rozsahem fakturace všechna oprávněná předplatná vytvořená správcem účtu.
 1. Vyberte **Oblast** a zvolte oblast Azure, která je pokrytá rezervovanou kapacitou. Pak přidejte rezervaci do košíku.
 1. Vyberte typ Isolated Plan a pak klikněte na **Vybrat**.  
     ![Příklad ](./media/prepay-app-service-isolated-stamp/app-service-isolated-stamp-select.png)
-1. Zadejte množství izolovaných kolků služby App Service, které chcete rezervovat. Například množství 3 vám poskytne tři rezervované kolky na oblast. Klikněte na **Další: zkontrolovat a koupit**.
+1. Zadejte množství izolovaných kolků služby App Service, které chcete rezervovat. Například množství 3 vám poskytne tři rezervované kolky na oblast. Klikněte na **Další: Zkontrolovat + koupit**.
 1. Zkontrolujte a klikněte na **Koupit**.
 
 Po nákupu můžete přejít na stránku [Rezervace](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade), na které můžete kdykoli zobrazit a monitorovat stav nákupu.

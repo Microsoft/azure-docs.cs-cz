@@ -12,51 +12,51 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: c8ea083e216331904c9d5741b97f69b7f5a8249a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991331"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Sledování zůstatku kreditu Azure u smlouvy se zákazníkem Microsoftu
 
-Můžete kontrolovat zůstatek kreditu Azure pro fakturační účet smlouvy o zákaznících Microsoftu ve Azure Portal nebo prostřednictvím rozhraní REST API.
+Zůstatek kreditů Azure u fakturačního účtu pro smlouvu se zákazníkem Microsoftu můžete zobrazit na webu Azure Portal nebo prostřednictvím rozhraní REST API.
 
-V rámci fakturačního účtu pro smlouvu se zákazníkem Microsoftu se kredity přiřazují k fakturačnímu profilu. Každý Fakturační profil má své vlastní kredity, které se automaticky vztahují na poplatky na faktuře. K zobrazení zůstatku kreditu Azure u fakturačního profilu musíte mít roli vlastníka, přispěvatele, čtenáře nebo správce faktur daného fakturačního profilu nebo roli vlastníka, přispěvatele nebo čtenáře u fakturačního účtu. Další informace o rolích najdete v tématu [Vysvětlení rolí pro správu smluv se zákazníky Microsoftu v Azure](understand-mca-roles.md).
+V rámci fakturačního účtu pro smlouvu se zákazníkem Microsoftu se kredity přiřazují k fakturačnímu profilu. Každý fakturační profil má své vlastní kredity, které se automaticky uplatní u poplatků na příslušné faktuře. K zobrazení zůstatku kreditu Azure u fakturačního profilu musíte mít roli vlastníka, přispěvatele, čtenáře nebo správce faktur daného fakturačního profilu nebo roli vlastníka, přispěvatele nebo čtenáře u fakturačního účtu. Další informace o rolích najdete v tématu [Vysvětlení rolí pro správu smluv se zákazníky Microsoftu v Azure](understand-mca-roles.md).
 
-Tento článek se týká fakturačních účtů smluv se zákazníkem Microsoftu. [Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu](#check-access-to-a-microsoft-customer-agreement).
+Tento článek se týká fakturačního účtu smlouvy se zákazníky Microsoftu. [Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu](#check-access-to-a-microsoft-customer-agreement).
 
 ## <a name="check-your-credit-balance"></a>Kontrola zůstatku kreditu
 
 ### <a name="azure-portaltabportal"></a>[Azure Portal](#tab/portal)
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Vyhledejte **Cost Management a fakturace**.
 
     ![Snímek obrazovky znázorňující hledání položky Cost Management a fakturace](./media/mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
-3. Na stránce fakturační obory vyberte fakturační účet, pro který chcete sledovat zůstatek dal. Fakturační účet by měl být typu **smlouva Microsoft Customer Agreement**.
+3. Na stránce s fakturačními rozsahy vyberte fakturační účet, pro který chcete sledovat zůstatek kreditů. Tento fakturační účet by měl být typu **Smlouva se zákazníkem Microsoftu**.
 
     ![Snímek obrazovky znázorňující hledání položky Cost Management a fakturace](./media/mca-check-azure-credits-balance/list-of-scopes.png)
 
     > [!NOTE]
     >
-    > Azure Portal pamatuje poslední obor fakturace, ke kterému přistupujete, a tento obor se zobrazí při příštím Cost Management + fakturační stránce. Pokud jste dříve navštívili Cost Management + fakturace, nezobrazí se stránka fakturační obory. Pokud ano, ověřte, že jste ve [správném oboru](#check-access-to-a-microsoft-customer-agreement). V takovém případě [Přepněte obor](view-all-accounts.md#switch-billing-scope-in-the-azure-portal) a vyberte fakturační účet smlouvy o zákaznících Microsoftu.
+    > Azure Portal si pamatuje poslední rozsah fakturace, který jste využili, a tento rozsah se zobrazí, když na stránku Správa nákladů a fakturace vrátíte příště. Pokud jste stránku Správa nákladů a fakturace navštívili dřív, stránka s rozsahy fakturace se vám nezobrazí. Pokud ano, zkontrolujte, že jste ve [správném rozsahu](#check-access-to-a-microsoft-customer-agreement). Pokud ne, [přepněte rozsah](view-all-accounts.md#switch-billing-scope-in-the-azure-portal) a vyberte fakturační účet pro smlouvu se zákazníkem Microsoftu.
 
-3. Na levé straně vyberte **způsoby platby** a potom vyberte **kredity Azure**.
+3. Na levé straně vyberte **Způsoby platby** a potom vyberte **Kredity Azure**.
 
-   ![Snímek obrazovky s vyrovnáváním kreditu pro fakturační profil](./media/mca-check-azure-credits-balance/mca-payment-methods.png)
+   ![Snímek obrazovky se zůstatkem kreditů pro fakturační profil](./media/mca-check-azure-credits-balance/mca-payment-methods.png)
 
-4. Stránka kredity Azure obsahuje následující oddíly:
+4. Stránka s kredity Azure má následující oddíly:
 
    #### <a name="balance"></a>Zůstatek
 
-   Část vyvážení zobrazuje souhrn zůstatku vašeho kreditu Azure.
+   V oddílu zůstatku se zobrazuje přehled zůstatku kreditů Azure.
 
-   ![Snímek obrazovky s vyrovnáváním kreditu pro fakturační profil](./media/mca-check-azure-credits-balance/mca-credit-balance.png)
+   ![Snímek obrazovky se zůstatkem kreditů pro fakturační profil](./media/mca-check-azure-credits-balance/mca-credit-balance.png)
 
-   | Doba účinnosti               | Definice                           |
+   | Označení               | Definice                           |
    |--------------------|--------------------------------------------------------|
    | Odhadovaný zůstatek  | Odhadované množství vašich kreditů po zvážení všech fakturovaných a nevyřízených transakcí |
    | Aktuální zůstatek    | Množství kreditů podle vaší poslední faktury. Nezahrnuje žádné nevyřízené transakce |
@@ -65,37 +65,37 @@ Tento článek se týká fakturačních účtů smluv se zákazníkem Microsoftu
 
    #### <a name="credits-list"></a>Seznam kreditů
 
-   V části seznam kreditů se zobrazí seznam kreditů Azure.
+   Oddíl se seznamem kreditů zobrazuje seznam kreditů Azure.
 
    ![Snímek obrazovky se seznamy kreditů pro určitý fakturační profil](./media/mca-check-azure-credits-balance/mca-credits-list.png)
 
-   | Doba účinnosti | Definice |
+   | Označení | Definice |
    |---|---|
    | Zdroj | Zdroj pořízení kreditu |
    | Počáteční datum | Datum získání kreditu |
    | Datum vypršení platnosti | Datum, kdy vyprší platnost kreditu |
    | Aktuální zůstatek | Zůstatek na základě poslední faktury |
    | Původní množství | Původní množství kreditů |
-   | Stav | Aktuální stav kreditů. Možné stavy: Aktivní, Použito, Platnost vypršela nebo Platnost vyprší |
+   | Status | Aktuální stav kreditů. Možné stavy: Aktivní, Použito, Platnost vypršela nebo Platnost vyprší |
 
    #### <a name="transactions"></a>Transakce
 
-   V části transakce se zobrazí všechny transakce, které ovlivnily zůstatek kreditu.
+   V oddílu transakcí se zobrazují všechny transakce, které ovlivnily váš zůstatek kreditů.
 
-   ![Snímek kreditních transakcí pro fakturační profil](./media/mca-check-azure-credits-balance/mca-credits-transactions.png)
+   ![Snímek obrazovky s kreditními transakcemi pro fakturační profil](./media/mca-check-azure-credits-balance/mca-credits-transactions.png)
 
-   | Doba účinnosti | Definice |
+   | Označení | Definice |
    |---|---|
-   | Datum transakce | Datum, kdy se transakce stala |
+   | Datum transakce | Datum uskutečnění transakce |
    | Popis | Popis transakce |
    | Částka| Částka transakce |
    | Zůstatek | Zůstatek po transakci |
 
     > [!NOTE]
     >
-    > Pokud nevidíte kredity Azure na stránce způsoby platby, buď nemáte kredity, nebo jste nevybrali správný obor. Vyberte fakturační účet, který má kredity nebo jeden z jeho fakturačních profilů. Informace o tom, jak změnit obory, najdete [v tématu Switch Scope scopes in the Azure Portal](view-all-accounts.md#switch-billing-scope-in-the-azure-portal).
+    > Pokud se vám na stránce se způsoby platby nezobrazují kredity Azure, buď nemáte žádné kredity, nebo jste vybrali nesprávný rozsah. Vyberte fakturační účet, který má kredity, nebo jeden z jeho fakturačních profilů. Informace o postupu při změně rozsahu najdete v tématu věnovaném [přepínání rozsahů fakturace na webu Azure Portal](view-all-accounts.md#switch-billing-scope-in-the-azure-portal).
 
-5. Pokud zobrazujete kredity Azure v oboru fakturačního účtu a fakturační účet má více než jeden Fakturační profil, stránka kredity Azure zobrazí tabulku se shrnutím kreditů Azure pro každý Fakturační profil. V seznamu vyberte fakturační profil, vyberte způsoby platby a potom kredity Azure, abyste si zobrazili podrobnosti pro fakturační profil.
+5. Pokud zobrazujete kredity Azure v rozsahu fakturačního účtu a tento fakturační účet má víc než jeden fakturační profil, na stránce s kredity Azure se zobrazí tabulka se souhrnem kreditů Azure pro jednotlivé fakturační profily. Pokud chcete zobrazit podrobnosti pro konkrétní fakturační profil, vyberte ho v seznamu, vyberte Způsoby platby a potom Kredity Azure.
 
     ![Snímek obrazovky se seznamem kreditů pro fakturační účet](./media/mca-check-azure-credits-balance/mca-account-credit-list.png)
 
@@ -154,11 +154,11 @@ V odpovědi rozhraní API se vrátí seznam fakturačních účtů a příslušn
 }
 ```
 
-Pomocí vlastnosti `displayName` profilu fakturace Identifikujte profil fakturace, pro který chcete kontrolovat zůstatek kreditu. Zkopírujte vlastnost `id` fakturačního profilu. Pokud například chcete zkontrolovat zůstatek kreditu u fakturačního profilu **Vývoj**, zkopírujte hodnotu ```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```. Tuto hodnotu někam vložte, abyste ji mohli použít v dalším kroku.
+Pomocí vlastnosti `displayName` fakturačního profilu můžete identifikovat fakturační profil, u kterého chcete zkontrolovat zůstatek kreditů. Zkopírujte vlastnost `id` fakturačního profilu. Pokud například chcete zkontrolovat zůstatek kreditu u fakturačního profilu **Vývoj**, zkopírujte hodnotu ```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```. Tuto hodnotu někam vložte, abyste ji mohli použít v dalším kroku.
 
 ### <a name="get-azure-credit-balance"></a>Získání zůstatku kreditu Azure
 
-Proveďte následující požadavek, který nahradí `<billingProfileId>` `id` zkopírovali jste v prvním kroku (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```).
+Proveďte následující požadavek a nahraďte přitom `<billingProfileId>` hodnotou `id`, kterou jste zkopírovali v prvním kroku (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```).
 
 ```json
 GET https://management.azure.com<billingProfileId>/providers/Microsoft.Consumption/credits/balanceSummary?api-version=2019-10-01
@@ -209,7 +209,7 @@ V odpovědi rozhraní API se vrátí odhadovaný a aktuální zůstatek u faktur
 
 ### <a name="get-list-of-credits"></a>Získání seznamu kreditů
 
-Proveďte následující požadavek, který nahradí `<billingProfileId>` `id` zkopírovali jste v prvním kroku (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```).
+Proveďte následující požadavek a nahraďte přitom `<billingProfileId>` hodnotou `id`, kterou jste zkopírovali v prvním kroku (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```).
 
 ```json
 GET https://management.azure.com<billingProfileId>/providers/Microsoft.Consumption/lots?api-version=2019-10-01
@@ -273,7 +273,7 @@ V odpovědi rozhraní API se vrátí seznam kreditů Azure pro fakturační prof
 
 ### <a name="get-transactions-that-affected-credit-balance"></a>Získání transakcí, které ovlivnily zůstatek kreditu
 
-Proveďte následující požadavek, který nahradí `<billingProfileId>` `id` zkopírovali jste v prvním kroku (```providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```). Pokud chcete získat transakce za určité období, musíte předat hodnoty **startDate** a **endDate**.
+Proveďte následující požadavek a nahraďte přitom `<billingProfileId>` hodnotou `id`, kterou jste zkopírovali v prvním kroku (```providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```). Pokud chcete získat transakce za určité období, musíte předat hodnoty **startDate** a **endDate**.
 
 ```json
 GET https://management.azure.com<billingProfileId>/providers/Microsoft.Consumption/events?api-version=2019-10-01&startDate=2018-10-01T00:00:00.000Z&endDate=2019-10-11T12:00:00.000Z?api-version=2019-10-01
@@ -385,12 +385,12 @@ Kredity, které získáte, přiřadíte k fakturačnímu profilu. Ve chvíli vyt
 - Visual Studio Professional (měsíční)
 - Visual Studio Professional (roční)
 - Produkty z Azure Marketplace
-- Plány podpory Azure
+- plánům podpory Azure
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu k zákaznické smlouvě Microsoftu
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Ověření přístupu ke smlouvě se zákazníkem Microsoftu
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Obraťte se na podporu.
 
 Pokud potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a ta vám pomůže váš problém rychle vyřešit.
 

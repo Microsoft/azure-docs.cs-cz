@@ -1,5 +1,5 @@
 ---
-title: Úkoly EA v rámci smlouvy o zákaznících Microsoftu – Azure
+title: Úlohy EA ve smlouvě se zákazníkem Microsoftu – Azure
 description: Naučte se provádět úkoly ze smlouvy Enterprise v novém fakturačním účtu.
 author: amberbhargava
 manager: amberb
@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 01/02/2020
 ms.author: banders
 ms.openlocfilehash: 0cdf95b8d91938d6b9b4de413bc5d5dcb8caa2f4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991240"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>Provádění úkolů ze smlouvy Enterprise ve fakturačním účtu pro smlouvu se zákazníkem Microsoftu
@@ -132,7 +132,7 @@ Abyste mohli vytvářet další předplatná Azure, máte u nového fakturační
 
 **Tvůrce předplatného Azure** – máte přiřazenu roli tvůrce předplatného Azure u oddílu faktury, který je vytvořen pro vaše oddělení ve smlouvě Enterprise. Pokud váš účet nepatří do oddělení, získáte roli tvůrce předplatného Azure u oddílu s názvem Výchozí oddíl faktury. Role vám umožňuje vytvářet předplatná Azure pro oddíl faktury.
 
-### <a name="create-an-azure-subscription"></a>Vytvořit předplatné Azure
+### <a name="create-an-azure-subscription"></a>Vytvoření předplatného Azure
 
 Předplatná Azure pro váš oddíl faktury můžete vytvářet na webu Azure Portal. Další informace najdete v tématu o [vytvoření dalšího předplatného Azure pro smlouvu se zákazníkem Microsoftu](create-subscription.md).
 
@@ -144,7 +144,7 @@ Pokud chcete zobrazit poplatky pro předplatná, která patří do účtu, přej
 
 Na poplatky pro předplatné se můžete podívat buď na [stránce předplatných](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade), nebo v analýze nákladů Azure. Další informace o analýze nákladů Azure najdete v tématu o [prozkoumání a analýze nákladů pomocí služby Analýza nákladů](../costs/quick-acm-cost-analysis.md).
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontakty na podporu
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory
 
 Pokud potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a ta vám pomůže váš problém rychle vyřešit.
 

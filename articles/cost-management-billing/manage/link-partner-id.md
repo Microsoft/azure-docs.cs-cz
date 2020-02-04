@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: a67f2985e2db8c48d7e50a91d20c76b88c1c55e6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991916"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Propojení ID partnera s účty Azure
@@ -28,11 +28,11 @@ Partneři Microsoftu poskytují služby, které zákazníkům pomáhají dosahov
 
 Před propojením vašeho ID partnera vám zákazník musí udělit přístup k prostředkům Azure pomocí jedné z následujících možností:
 
-- **Uživatel typu Host**: váš zákazník vás může přidat jako uživatele typu Host a přiřadit libovolné role řízení přístupu na základě role (RBAC). Další informace najdete v tématu [Přidání uživatelů typu host z jiného adresáře](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
+- **Uživatel typu host**: Zákazník vás může přidat jako uživatele typu host a přiřadit nějaké role řízení přístupu na základě role (RBAC). Další informace najdete v tématu [Přidání uživatelů typu host z jiného adresáře](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
 
-- **Účet adresáře**: zákazník může vytvořit uživatelský účet ve vlastním adresáři a přiřadit libovolné role RBAC.
+- **Účet v adresáři**: Zákazník vám může vytvořit uživatelský účet ve svém vlastním adresáři a přiřadit nějakou roli RBAC.
 
-- **Instanční objekt**: zákazník může do svého adresáře přidat aplikaci nebo skript z vaší organizace a přiřadit roli RBAC. Identita aplikace nebo skriptu se označuje jako instanční objekt.
+- **Instanční objekt**: Zákazník může přidat aplikaci nebo skript z vaší organizace do svého adresáře a přiřadit nějakou roli RBAC. Identita aplikace nebo skriptu se označuje jako instanční objekt.
 
 ## <a name="link-to-a-partner-id"></a>Propojení s ID partnera
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: 26c132d42bfc89c9b6e887c8ca02232848513698
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992072"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Rezervované instance virtuálních počítačů Azure EA
@@ -54,7 +54,7 @@ Po povolení přidávání rezervovaných instancí v registraci EA může jaký
 
 ### <a name="how-to-view-reserved-instance-purchase-details"></a>Zobrazení podrobností o nákupu rezervovaných instancí
 
-Podrobnosti o nákupu rezervovaných instancí můžete zobrazit prostřednictvím nabídky _Rezervace_ na levé straně webu [Azure Portal](https://aka.ms/reservations) nebo na [portálu Azure EA](https://ea.azure.com/). V nabídce na levé straně vyberte **sestavy** a posuňte se dolů na kartu _poplatky za služby_ na kartě _Souhrn využití_ . Posuňte se na konec oddílu a vaše rezervované instance a využití se budou zobrazovat na konci, jak je uvedeno v označení "1 rok" nebo "3 roky" vedle názvu služby, například: Standard_DS1_v2 eastus 1 Year nebo Standard_D2s_v3 eastus2 3 roky.
+Podrobnosti o nákupu rezervovaných instancí můžete zobrazit prostřednictvím nabídky _Rezervace_ na levé straně webu [Azure Portal](https://aka.ms/reservations) nebo na [portálu Azure EA](https://ea.azure.com/). V nabídce vlevo vyberte **Sestavy** a na kartě _Souhrn využití_ se posuňte dolů do části _Poplatky podle služeb_. Posuňte se na konec této části, kde se zobrazí výpis zakoupených rezervovaných instancí a jejich využití – vedle názvu služby mají označení „1 rok“ nebo „3 roky“, například: Standard_DS1_v2 eastus (1 rok) nebo Standard_D2s_v3 eastus2 (3 roky).
 
 ### <a name="how-can-i-change-the-subscription-associated-with-reserved-instance-or-transfer-my-reserved-instance-benefits-to-a-subscription-under-the-same-account"></a>Jak můžu změnit předplatné přidružené k rezervované instanci nebo převést výhody rezervovaných instancí na jiné předplatné v rámci stejného účtu?
 
@@ -65,7 +65,7 @@ Výhody rezervovaných instancí může v jednu chvíli využívat pouze jedno p
 
 ### <a name="how-to-view-reserved-instance-usage-details"></a>Zobrazení podrobností o využití rezervovaných instancí
 
-Podrobnosti o využití rezervovaných instancí můžete zobrazit na webu [Azure Portal](https://aka.ms/reservations) nebo na [portálu Azure EA](https://ea.azure.com/) (v případě zákazníků se smlouvou Enterprise, kteří mají přístup k zobrazení fakturačních údajů) v části _Sestavy_ > _Souhrn využití_ > _Poplatky podle služeb_. Rezervované instance se můžou identifikovat jako názvy služeb, které obsahují "rezervace", například: Rezervované základní virtuální počítače nebo Virtual Machines rezervaci-Windows počítače (1 jádro).
+Podrobnosti o využití rezervovaných instancí můžete zobrazit na webu [Azure Portal](https://aka.ms/reservations) nebo na [portálu Azure EA](https://ea.azure.com/) (v případě zákazníků se smlouvou Enterprise, kteří mají přístup k zobrazení fakturačních údajů) v části _Sestavy_ > _Souhrn využití_ > _Poplatky podle služeb_. Rezervované instance poznáte podle toho, že název služby obsahuje slovo „Rezervované“, například: Rezervované základní virtuální počítače nebo Rezervované virtuální počítače s Windows Serverem (1jádrové).
 
 Další informace o využití rezervovaných instancí najdete v souboru CSV s podrobnostmi o využití a rozšířenou sestavou ke stažení. Pole _Další informace_ vám pomůže zjistit využití rezervovaných instancí.
 
@@ -79,7 +79,7 @@ Pokud zákazníci se smlouvou Azure Enterprise využijí celý svůj peněžní 
 
 ### <a name="reserved-instance-expiration"></a>Vypršení platnosti rezervované instance
 
-30 dnů před vypršením platnosti rezervace a při vypršení její platnosti obdržíte e-mailová oznámení. Po vypršení platnosti rezervace zůstanou nasazené virtuální počítače spuštěné a budou se účtovat podle sazby pro průběžné platby. Další informace najdete v [nabídce rezervovaných instancí virtuálních počítačů](https://azure.microsoft.com/pricing/reserved-vm-instances/).
+30 dnů před vypršením platnosti rezervace a při vypršení její platnosti obdržíte e-mailová oznámení. Po vypršení platnosti rezervace zůstanou nasazené virtuální počítače spuštěné a budou se účtovat podle tarifů průběžných plateb. Další informace najdete v [nabídce rezervovaných instancí virtuálních počítačů](https://azure.microsoft.com/pricing/reserved-vm-instances/).
 
 ## <a name="next-steps"></a>Další kroky
 - Další informace o rezervacích Azure najdete v tématu [Co jsou rezervace Azure?](../reservations/save-compute-costs-reservations.md).

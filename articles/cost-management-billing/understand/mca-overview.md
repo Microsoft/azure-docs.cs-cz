@@ -1,5 +1,5 @@
 ---
-title: Začínáme s fakturací na zákaznickou smlouvu Microsoftu – Azure
+title: Začínáme s fakturací pro smlouvu se zákazníkem Microsoftu – Azure
 description: Seznamte se se svým fakturačním účtem pro smlouvu se zákazníkem Microsoftu
 author: bandersmsft
 manager: amberbhargava
@@ -11,17 +11,17 @@ ms.workload: na
 ms.date: 09/10/2019
 ms.author: banders
 ms.openlocfilehash: 7d26c98ae8e5b9b95038a4a775134282703fa7c6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995114"
 ---
 # <a name="get-started-with-your-microsoft-customer-agreement-billing-account"></a>Začínáme s fakturačními účty pro smlouvu se zákazníkem Microsoftu
 
-Fakturační účet se vytváří při registraci k Azure. Slouží ke správě faktur a plateb a sledování nákladů. Přístup můžete mít k více fakturačním účtům. Může to být třeba v situaci, kdy se zaregistrujete do Azure, abyste mohli pracovat na svých osobních projektech, ale současně máte k Azure přístup i prostřednictvím smlouvy Enterprise vaší organizace nebo smlouvy se zákazníkem Microsoftu. Pro každý z těchto scénářů tak máte samostatný fakturační účet.
+Fakturační účet se vytváří při registraci k Azure. Slouží ke správě faktur a plateb a sledování nákladů. Přístup můžete mít k více fakturačním účtům. Je to například tehdy, když se zaregistrujete v Azure pro práci na svých osobních projektech, ale současně máte k Azure přístup i prostřednictvím smlouvy Enterprise vaší organizace nebo smlouvy se zákazníkem Microsoftu. Pro každý z těchto scénářů tak máte samostatný fakturační účet.
 
-Tento článek se týká fakturačních účtů smluv se zákazníkem Microsoftu. [Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu](#check-access-to-a-microsoft-customer-agreement).
+Tento článek se týká fakturačního účtu smlouvy se zákazníky Microsoftu. [Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu](#check-access-to-a-microsoft-customer-agreement).
 
 ## <a name="your-billing-account"></a>Váš fakturační účet
 
@@ -45,7 +45,7 @@ K rolím ve fakturačních profilech se vážou oprávnění pro zobrazování a
 
 Na začátku kalendářního měsíce se pro každý fakturační profil vygeneruje měsíční faktura. Tato faktura obsahuje všechny poplatky za předchozí měsíc.
 
-Zobrazit fakturu, stáhnout dokumenty nebo změnit nastavení tak, aby se vám další faktury zasílaly e-mailem, je možné webu Azure Portal. Další informace najdete v článku [Stahování faktur pro smlouvu se zákazníkem Microsoftu](../manage/download-azure-invoice-daily-usage-date.md#download-invoices-for-a-microsoft-customer-agreement).
+Zobrazit fakturu, stáhnout dokumenty nebo změnit nastavení tak, aby se vám další faktury zasílaly e-mailem, je možné webu Azure Portal. Podrobnosti najdete v tématu [Stahování faktur pro smlouvu se zákazníkem Microsoftu](../manage/download-azure-invoice-daily-usage-date.md#download-invoices-for-a-microsoft-customer-agreement).
 
 ### <a name="invoice-payment-methods"></a>Způsoby platby faktur
 
@@ -65,7 +65,7 @@ Zásady slouží k řízení nákupů na Azure Marketplace a rezervací Azure pr
 
 Plány Azure stanovují ceny a smlouvy o úrovni služeb pro předplatná Azure. Při vytvoření fakturačního profilu se povolí automaticky. Využívat je mohou všechny oddíly faktury, které jsou přidružené k fakturačnímu profilu. Uživatelé, kteří mají přístup k oddílu faktury, vytváří pomocí plánů předplatná Azure. Ve fakturačních účtech pro smlouvu se zákazníkem Microsoftu se podporují následující plány Azure:
 
-| Plánujte             | Definice  |
+| Plánování             | Definice  |
 |------------------|-------------|
 |Plán Microsoft Azure   | Umožňuje uživatelům vytvářet předplatná, ve kterých lze spouštět jakékoli úlohy.  |
 |Plán Microsoft Azure pro vývoj a testování | Umožňuje předplatitelům sady Visual Studio vytvářet předplatná omezená jen na úlohy vývoje a testování. Výhodou těchto předplatných jsou nižší sazby a přístup k exkluzivním imagím virtuálních počítačů na webu Azure Portal. |
@@ -81,7 +81,7 @@ Pro role v oddílu faktury jsou k dispozici oprávnění, pomocí kterých můž
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu k zákaznické smlouvě Microsoftu
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Obraťte se na podporu.
 
 Pokud potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a ta vám pomůže váš problém rychle vyřešit.
 

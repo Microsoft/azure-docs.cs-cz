@@ -9,10 +9,10 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 01/03/2020
 ms.openlocfilehash: 02d446d1b70b64092501804e793b400e983a4d80
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995127"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Zobrazení a stažení informací o využití a poplatcích za Azure
@@ -23,7 +23,7 @@ Pokud máte smlouvu se zákazníkem Microsoftu (MCA) a chcete zobrazit informace
 
 ## <a name="download-usage-from-the-azure-portal-csv"></a>Stažení informací o využití (ve formátu .csv) z webu Azure Portal
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyhledejte *Cost Management a fakturace*.
 
     ![Snímek obrazovky znázorňující hledání na webu Azure Portal](./media/download-azure-daily-usage/portal-cm-billing-search.png)
@@ -31,14 +31,14 @@ Pokud máte smlouvu se zákazníkem Microsoftu (MCA) a chcete zobrazit informace
 1. V závislosti na úrovni vašeho přístupu možná budete muset vybrat fakturační účet nebo fakturační profil.
 1. V nabídce vlevo v části **Fakturace** vyberte **Faktury**.
 1. V tabulce faktur najděte řádek s fakturačním obdobím odpovídajícím informacím o využití, které chcete stáhnout.
-1. Na pravé straně vyberte **ikonu pro stažení** nebo se třemi tečkami (`...`).
-1. Otevře se podokno stahování na pravé straně. V části **Podrobnosti o využití** vyberte **Stáhnout** .
+1. Klikněte na **ikonu stahování** nebo tři tečky (`...`) na pravé straně.
+1. Napravo se otevře podokno stahování. V části **Podrobnosti o využití** vyberte **Stáhnout**.
 
 ## <a name="download-usage-for-ea-customers"></a>Stažení informací o využití pro zákazníky se smlouvou Enterprise
 
 Pokud si chcete zobrazit a stáhnout data o využití jako zákazník se smlouvou Enterprise, musíte být podnikový správce, vlastník účtu nebo správce oddělení s povolenou zásadou zobrazení poplatků.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyhledejte *Cost Management a fakturace*.
 
     ![Snímek obrazovky znázorňující hledání na webu Azure Portal](./media/download-azure-daily-usage/portal-cm-billing-search.png)
@@ -50,7 +50,7 @@ Pokud si chcete zobrazit a stáhnout data o využití jako zákazník se smlouvo
 
 Pokud máte smlouvu se zákazníkem Microsoftu, můžete si stáhnout informace o využití od začátku měsíce za aktuální fakturační období. Jedná se o poplatky za využití, které se ještě nefakturovaly.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyhledejte *Cost Management a fakturace*.
 3. Vyberte fakturační profil. V závislosti na úrovni vašeho přístupu možná budete muset nejprve vybrat fakturační účet.
 4. V oblasti **Přehled** najdete odkazy ke stažení pod poplatky od začátku měsíce.
@@ -61,7 +61,7 @@ Pokud máte smlouvu se zákazníkem Microsoftu, můžete si stáhnout informace 
 ## <a name="check-your-billing-account-type"></a>Kontrola typu fakturačního účtu
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-account-type.md)]
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 

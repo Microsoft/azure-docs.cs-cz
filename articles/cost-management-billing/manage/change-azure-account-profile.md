@@ -14,10 +14,10 @@ ms.date: 04/29/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a1cbbbcb110e9943f9714d9f6463c01b408fc1d7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75993047"
 ---
 # <a name="change-the-profile-information-for-your-azure-account"></a>Změna informací o profilu na účtu Azure
@@ -76,7 +76,7 @@ Kontaktní e-mailovou adresu můžete změnit těmito způsoby:
 
 * Přejděte na webu Azure Portal do části [Kontaktní údaje](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) a zadejte e-mailovou adresu. Na zadanou adresu se budou zasílat zprávy o službách a marketingové zprávy. Automaticky se upraví i e-mailová adresa v profilu v Centru účtů Azure. Při aktualizaci profilové e-mailové adresy nedojde k aktualizaci přihlašovací e-mailové adresy.
 
-* Na webu [Azure Portal](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) vyberte ikonu s vašimi iniciálami nebo obrázkem. Pak vyberte kontextovou nabídku ( **...** ). Potom v nabídce vyberte **moje kontaktní informace** a zadejte e-mailovou adresu. Na zadanou adresu se budou zasílat zprávy o službách a marketingové zprávy. Automaticky se upraví i e-mailová adresa ve vašem profilu v Centru účtů Azure. Při aktualizaci profilové e-mailové adresy nedojde k aktualizaci přihlašovací e-mailové adresy.
+* Na webu [Azure Portal](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) vyberte ikonu s vašimi iniciálami nebo obrázkem. Pak vyberte místní nabídku ( **…** ). Pak v nabídce vyberte **Moje kontaktní údaje** a zadejte e-mailovou adresu. Na zadanou adresu se budou zasílat zprávy o službách a marketingové zprávy. Automaticky se upraví i e-mailová adresa ve vašem profilu v Centru účtů Azure. Při aktualizaci profilové e-mailové adresy nedojde k aktualizaci přihlašovací e-mailové adresy.
 
 ![Příklad aktualizace e-mailové adresy v Azure](./media/change-azure-account-profile/azure-contact-information.png)
 
@@ -98,7 +98,7 @@ Po odhlášení ze zasílání marketingových zpráv budete dál dostávat ozn�
     ![Příklad přejmenování předplatného Azure](./media/change-azure-account-profile/rename-sub.png)
 1. Až změníte název, vyberte **Uložit**.
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 

@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 08/06/2019
 ms.author: banders
 ms.openlocfilehash: cc24c176b5b61210d68d2dcb244d63f15402928b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75994048"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Správa rezervací prostředků Azure
@@ -28,7 +28,7 @@ Když si koupíte rezervované instance virtuálních počítačů Azure, může
 
 ## <a name="reservation-order-and-reservation"></a>Objednávka rezervace a rezervace
 
-Při nákupu rezervace se vytvoří dva objekty: **objednávka rezervace** a **rezervace**.
+Při nákupu rezervace se vytvoří dva objekty: **Objednávka rezervace** a **Rezervace**.
 
 V době nákupu má pod sebou objednávka rezervace jednu rezervaci. Při rozdělení, sloučení, částečné refundaci nebo výměně se pod **objednávkou rezervace** vytvářejí nové rezervace.
 
@@ -44,7 +44,7 @@ Rezervace dědí oprávnění od své objednávky rezervace.
 
 Rozsah rezervace aktualizujete takto:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **Všechny služby** > **Rezervace**.
 3. Vyberte rezervaci.
 4. Vyberte **Nastavení** > **Konfigurace**.
@@ -65,7 +65,7 @@ Aby bylo možné provést výměnu nebo refundaci, musí mít uživatel přístu
 
 Přístup ke správě rezervace delegujete takto:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Výběrem **Všechny služby** > **Rezervace** zobrazte seznam rezervací, ke kterým máte přístup.
 3. Vyberte rezervaci, ke které chcete delegovat přístup jiným uživatelům.
 4. Vyberte **Řízení přístupu (IAM)** .
@@ -120,7 +120,7 @@ U rezervací s jedním rozsahem můžete rezervaci optimalizovat pro prioritu ka
 
 Nastavení optimalizace rezervace aktualizujete takto:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **Všechny služby** > **Rezervace**.
 3. Vyberte rezervaci.
 4. Vyberte **Nastavení** > **Konfigurace**.
@@ -134,7 +134,7 @@ Nastavení optimalizace rezervace aktualizujete takto:
 
 Jeden ze způsobů, jak zobrazit využití rezervace, představuje Azure Portal.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Vyberte **Všechny služby** > [**Rezervace**](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) a podívejte se u rezervace na **Využití (%)** .  
   ![Obrázek ukazující seznam rezervací](./media/manage-reserved-vm-instance/reservation-list.png)
 3. Vyberte některou rezervaci.
@@ -157,7 +157,7 @@ Pokud zjistíte, že se rezervace ve vaší organizaci dostatečně nevyužívaj
 - Zvažte výměnu nevyužitého množství. Další informace najdete v článku [Zrušení a výměny](#cancel-exchange-or-refund-reservations).
 
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
@@ -167,12 +167,12 @@ Další informace o rezervacích Azure najdete v následujících článcích:
 
 - [Co jsou rezervace v Azure?](save-compute-costs-reservations.md)
 
-Nákup plánu služby:
+Zakoupení plánu služby:
 - [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Předplacení výpočetních prostředků SQL Database se záložní kapacitou služby Azure SQL Database](../../sql-database/sql-database-reserved-capacity.md)
 - [Předplacení prostředků Azure Cosmos DB pomocí rezervované kapacity služby Azure Cosmos DB](../../cosmos-db/cosmos-db-reserved-capacity.md)
 
-Nákup plánu softwaru:
+Zakoupení plánu softwaru:
 - [Předplacení plánů softwaru Red Hat z rezervací Azure](../../virtual-machines/linux/prepay-rhel-software-charges.md)
 - [Předplacení plánů softwaru SUSE z rezervací Azure](../../virtual-machines/linux/prepay-suse-software-charges.md)
 

@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 99ceebe0825c868e40f6a68f44ca55eee91f087c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992774"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>Vytvoření služeb zahrnutých v bezplatném účtu Azure
@@ -34,7 +34,7 @@ Informace o dostupnosti služeb Azure v jednotlivých oblastech najdete v témat
 ## <a name="create-multiple-service-instances-in-allowed-limits"></a>V mezích povolených limitů můžete vytvořit více instancí služeb
 Bezplatně můžete vytvořit více instancí služeb, pokud jejich souhrnné využití nepřekročí limit využití. S bezplatným účtem Azure například získáte 750 hodin virtuálního počítače B1S s Windows měsíčně zdarma. Těchto 750 hodin můžete využít v libovolné kombinaci. Můžete například vytvořit 5 virtuálních počítačů B1S s Windows a každý z nich využívat 150 hodin.
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 

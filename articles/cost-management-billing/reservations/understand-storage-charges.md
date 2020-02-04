@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: tamram
 ms.openlocfilehash: 40fba61b173979fb9362de73a87d6192aac9941d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995309"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-storage"></a>Vysvětlení uplatňování slevy za rezervaci ve službě Azure Storage
@@ -25,7 +25,7 @@ Informace o cenách rezervací služby Azure Storage najdete v tématech [Ceny o
 
 Sleva za rezervovanou kapacitu služby Azure Storage se na objekty blob bloku a prostředky Azure Data Lake Storage Gen2 uplatňuje po hodinách.
 
-Nevyužitá sleva za rezervovanou kapacitu služby Azure Storage se nenahrazuje. Pokud v určitou hodinu nemáte žádné objekty blob bloku ani prostředky Azure Data Lake Storage Gen2, které splňují podmínky rezervace, o rezervované množství za danou hodinu přijdete. Nevyužité rezervované hodiny nelze převést na další období.
+Nevyužitá sleva za rezervovanou kapacitu služby Azure Storage se nenahrazuje. Pokud v určitou hodinu nemáte žádné objekty blob bloku ani prostředky Azure Data Lake Storage Gen2, které splňují podmínky rezervace, o rezervované množství za danou hodinu přijdete. Nevyužité rezervované hodiny vám nemůžeme převést.
 
 Když určitý prostředek odstraníte, sleva za rezervaci se automaticky uplatní na další vyhovující prostředek v zadaném rozsahu. Pokud se v zadaném rozsahu nenajdou žádné vyhovující prostředky, o rezervované hodiny přijdete.
 
@@ -47,7 +47,7 @@ Předpokládejme, že jste v určitou hodinu rezervačního období využili pou
 
 Předpokládejme, že jste v určitou hodinu rezervačního období využili 101 TB kapacity úložiště. Sleva za rezervaci se vztahuje na 100 TB dat a zbývající 1 TB se za danou hodinu účtuje podle tarifů průběžných plateb. Pokud se další hodinu vaše využití změní na 100 TB, rezervace pokryje veškeré využití.
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 

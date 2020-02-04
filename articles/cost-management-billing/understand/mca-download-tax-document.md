@@ -13,10 +13,10 @@ ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: ad2388e0e24b76d38a53ff2439deb6dccc8277d5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990954"
 ---
 # <a name="view-and-download-tax-documents-for-your-azure-invoice"></a>Zobrazení a stažení daňových dokladů pro vaši fakturu za Azure
@@ -25,7 +25,7 @@ Daňové doklady pro vaši fakturu za Azure si můžete stáhnout, pokud máte p
 
 ## <a name="view-and-download-tax-documents"></a>Zobrazení a stažení daňových dokumentů
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyhledejte *Cost Management a fakturace*.
 1. V závislosti na úrovni vašeho přístupu možná budete muset vybrat fakturační účet nebo fakturační profil.
 1. V nabídce vlevo v části **Fakturace** vyberte **Faktury**.
@@ -39,4 +39,4 @@ Daňové doklady pro vaši fakturu za Azure si můžete stáhnout, pokud máte p
 ## <a name="next-steps"></a>Další kroky
 
 - [Zobrazení a stažení faktury za Microsoft Azure](download-azure-invoice.md)
-- [Zobrazení a stažení využití a poplatků za Microsoft Azure](download-azure-daily-usage.md)
+- [Zobrazení a stažení informací o využití a poplatcích Microsoft Azure](download-azure-daily-usage.md)

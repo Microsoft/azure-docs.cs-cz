@@ -1,7 +1,7 @@
 ---
 title: Stažení faktury za Azure a dat o denním využití | Microsoft Docs
 description: Vysvětluje, jak stáhnout nebo zobrazit fakturu za Azure a data o denním využití.
-keywords: billing invoice, invoice download, azure invoice, azure usage
+keywords: billing invoice,invoice download,azure invoice,azure usage
 services: billing
 documentationcenter: ''
 author: genlin
@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: banders
 ms.openlocfilehash: c5068dc38597d64634f19297fa7784de8d55d590
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992553"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Stažení nebo zobrazení faktury za Azure a dat o denním využití
@@ -36,7 +36,7 @@ Pokud máte smlouvu se zákazníkem Microsoftu a chcete zobrazit informace o fak
 
 ## <a name="download-your-azure-invoices-pdf"></a>Stahování faktur za Azure (PDF)
 
-U většiny předplatných si fakturu můžete stáhnout z webu Azure Portal. Pokud máte smlouvu se zákazníkem Microsoftu, projděte si téma Stahování faktur pro fakturační profil.
+U většiny předplatných si můžete fakturu stáhnout z webu Azure Portal. Pokud máte smlouvu se zákazníkem Microsoftu, projděte si téma Stahování faktur pro fakturační profil.
 
 ### <a name="download-invoices-for-an-individual-subscription"></a>Stahování faktur pro jedno předplatné
 
@@ -114,12 +114,12 @@ Pokud máte smlouvu se zákazníkem Microsoftu, můžete se přihlásit k zasíl
 1. Vyberte fakturační profil.
 1. V části **Nastavení** vyberte **Vlastnosti**.
 1. V části **Poslat fakturu e-mailem** vyberte **Aktualizovat předvolbu odesílání faktury e-mailem**.
-1. Vyberte **Přihlásit**.
+1. Zvolte **Přihlásit**.
 1. Klikněte na **Aktualizovat**.
 
 ### <a name="opt-out-of-getting-your-billing-profile-invoices-in-email"></a>Odhlášení ze zasílání faktur pro fakturační profil e-mailem
 
-Odeslání faktury e-mailem můžete zrušit podle výše uvedených kroků **a kliknutím na Odhlásit.** U všech vlastníků, přispěvatelů, čtenářů a správců faktur se vám bude týkat také používání e-mailů. Pokud jste čtenář, nemůžete měnit předvolby zasílání faktury e-mailem.
+Pokud chcete vyjádřit výslovný nesouhlas s příjmem faktur e-mailem, proveďte výše uvedený postup a klikněte na **Odhlásit**. Ze zasílání faktur e-mailem budou odhlášeni i všichni vlastníci, přispěvatelé, čtenáři a správci faktur. Pokud jste čtenář, nemůžete měnit předvolby zasílání faktury e-mailem.
 
 ## <a name="download-usage-in-azure-portal"></a>Stažení využití na webu Azure Portal
 
@@ -139,7 +139,7 @@ Odeslání faktury e-mailem můžete zrušit podle výše uvedených kroků **a 
 
 Pokud si chcete zobrazit a stáhnout data o využití jako zákazník se smlouvou Enterprise, musíte být podnikový správce, vlastník účtu nebo správce oddělení s povolenou zásadou zobrazení poplatků.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyhledejte *Cost Management a fakturace*.
 
     ![Snímek obrazovky znázorňující hledání na webu Azure Portal](./media/download-azure-invoice-daily-usage-date/portal-cm-billing-search.png)
@@ -171,7 +171,7 @@ Můžete si taky stáhnout informace o využití od začátku měsíce za aktuá
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu k zákaznické smlouvě Microsoftu
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 

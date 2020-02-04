@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 01/02/2020
 ms.author: banders
 ms.openlocfilehash: ae33d320213cc526710845e78c23a83143a73771
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989901"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Principy rolí pro správu smlouvy Azure Enterprise v Azure
@@ -38,10 +38,10 @@ Následující části popisují omezení a možnosti jednotlivých rolí.
 
 |Role| Limit počtu uživatelů|
 |---|---|
-|Podnikový správce|Neomezený počet|
-|Podnikový správce (jen pro čtení)|Neomezený počet|
-|Správce oddělení|Neomezený počet|
-|Správce oddělení (jen pro čtení)|Neomezený počet|
+|Podnikový správce|Unlimited|
+|Podnikový správce (jen pro čtení)|Unlimited|
+|Správce oddělení|Unlimited|
+|Správce oddělení (jen pro čtení)|Unlimited|
 |Vlastník účtu|1 na účet<sup>1</sup>|
 
 <sup>1</sup> Každý účet vyžaduje jedinečný účet Microsoft nebo pracovní či školní účet.
@@ -97,7 +97,7 @@ V následující tabulce je uveden vztah mezi rolemi správce smlouvy Enterprise
 |Vlastník účtu nebo Správce oddělení|✘ Zakázáno|Vlastník|Maloobchodní ceny|
 |Vlastník účtu nebo Správce oddělení|✔ Povoleno |Žádná|Žádné ceny|
 |Vlastník účtu nebo Správce oddělení|✘ Zakázáno |Žádná|Žádné ceny|
-|Žádné|Nevztahuje se |Vlastník|Maloobchodní ceny|
+|Žádná|Neuvedeno |Vlastník|Maloobchodní ceny|
 
 Role správce smlouvy Enterprise a zásady zobrazování nákladů se nastavují na webu Enterprise Portal. Role RBAC se dá aktualizovat na webu Azure Portal. Další informace najdete v tématu [Správa přístupu pomocí RBAC a webu Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
