@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
-ms.openlocfilehash: d1665ef3e845491f116174cf1914c38e7cf5c691
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: d1bfad64175ad5b29e4ec158ebe8d8e982b8b100
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660796"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964443"
 ---
 # <a name="what-is-azure-data-share"></a>Co je Azure Data Share?
 
@@ -37,7 +37,7 @@ Dalším případem použití pro sdílenou složku Azure je vytvořit datovou C
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Azure Data Share v současné době nabízí sdílení na základě snímků a místní sdílení (ve verzi s omezením verze Preview). 
+Služba Azure Data Share v současné době nabízí sdílení na základě snímků a místní sdílení. 
 
 V případě sdílení na základě snímků se data pohybují z předplatného Azure poskytovatele dat a v rámci předplatného Azure datového příjemce. Jako poskytovatel dat zřizujete sdílenou složku a budete pozvat příjemce ke sdílení dat. Příjemci dat obdrží pozvánku do sdílené složky prostřednictvím e-mailu. Jakmile příjemce dat pozvánku přijme, může aktivovat úplný snímek dat, která jsou s nimi sdílená. Tato data se přijímají do účtu úložiště dat pro uživatele. Příjemci dat můžou dostávat pravidelné a přírůstkové aktualizace dat, která jsou s nimi sdílená, aby vždy měli nejnovější verzi dat. 
 
@@ -47,7 +47,7 @@ Poskytovatelé dat můžou svým spotřebitelům dat postupně aktualizovat data
 
 Když příjemce dat přijme sdílenou složku, může přijímat data v úložišti dat podle svého výběru. Pokud například poskytovatel dat sdílí data pomocí Azure Blob Storage, příjemce dat může tato data přijímat v Azure Data Lake Store. Podobně platí, že pokud poskytovatel dat sdílí data z Azure SQL Data Warehouse, příjemce dat si může vybrat, jestli chtějí data přijímat, do Azure Data Lake Store, Azure SQL Database nebo Azure SQL Data Warehouse. V případě sdílení ze zdrojů založených na jazyce SQL může příjemce dat také zvolit, zda budou přijímat data v Parquet nebo CSV. 
 
-Místní sdílení je momentálně ve verzi omezené verze Preview pro Azure Průzkumník dat. Poskytovatelé dat můžou sdílet data, kde se nacházejí, bez přesunu dat prostřednictvím symbolického odkazu. Zaregistrujte si omezené verze Preview služby Azure Průzkumník dat [místní sdílení.](https://aka.ms/azuredatasharepreviewsignup) 
+Díky místnímu sdílení můžou poskytovatelé dat sdílet data, kde se nacházejí, bez kopírování dat. Po navázání vztahu sdílení prostřednictvím toku pozvánky se vytvoří symbolické propojení mezi zdrojovým úložištěm dat zprostředkovatele dat a cílovým úložištěm dat příjemce dat. Příjemce dat může data číst a dotazovat se v reálném čase pomocí vlastního úložiště dat. Změny zdrojového úložiště dat jsou k dispozici pro příjemce dat okamžitě. Místní sdílení je v současnosti ve verzi Preview pro Azure Průzkumník dat.
 
 ## <a name="key-capabilities"></a>Klíčové funkce
 
@@ -56,6 +56,8 @@ Azure Data Share umožňuje zprostředkovatelům dat:
 * Sdílení dat ze seznamu [podporovaných úložišť dat](supported-data-stores.md) se zákazníky a partnery mimo vaši organizaci
 
 * Udržujte si přehled o tom, se kterými jste data sdíleli
+
+* Výběr snímku nebo místního sdílení
 
 * Jak často příjemci dat přijímají aktualizace vašich dat
 
@@ -69,13 +71,13 @@ Azure Data Share umožňuje příjemcům dat:
 
 * Přijmout nebo odmítnout pozvánku ke sdílené složce Azure Data Share
 
-* Aktivace úplného nebo přírůstkového snímku sdílené složky dat, kterou s vámi organizace sdílí
-
-* Přihlaste se k odběru sdílení dat, abyste získali nejnovější kopii dat prostřednictvím přírůstkové kopie snímku.
-
 * Přijměte data sdílená s vámi do [podporovaného úložiště dat](supported-data-stores.md).
 
-Všechny výše uvedené klíčové funkce jsou podporované prostřednictvím Azure nebo přes rozhraní REST API. Další informace o používání sdílené složky Azure prostřednictvím rozhraní REST API najdete v naší referenční dokumentaci. 
+* Aktivace úplného nebo přírůstkového snímku sdílené složky dat, kterou s vámi organizace sdílí
+
+* Přihlaste se k odběru sdílení dat, abyste získali nejnovější kopii dat prostřednictvím přírůstkového snímku.
+
+Všechny výše uvedené klíčové funkce jsou podporované prostřednictvím Azure Portal nebo přes rozhraní REST API. Další informace o používání sdílené složky Azure prostřednictvím rozhraní REST API najdete v naší referenční dokumentaci. 
 
 ## <a name="security"></a>Zabezpečení
 
@@ -88,9 +90,9 @@ Azure Data Share využívá spravované identity pro prostředky Azure (dříve 
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
-Seznam oblastí Azure, které zpřístupňují sdílenou složku Azure Data Share, najdete na stránce [produkty dostupné v oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=data-share/) a ve službě Azure Data Share. 
+Seznam oblastí Azure, které zpřístupňují sdílenou složku Azure Data Share, najdete na stránce [produkty dostupné v oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=data-share) a ve službě Azure Data Share. 
 
-Azure Data Share neukládá žádná data. Data jsou uložena v podkladovém úložišti dat, které je sdíleno. Pokud například producent dat ukládá svá data do účtu Azure Data Lake Store, který se nachází v Západní USA, kde jsou data uložená. Pokud sdílí data s účtem Azure Storage umístěným v Západní Evropa, data se přenesou přímo na účet Azure Storage umístěný v Západní Evropa. 
+Azure Data Share neukládá kopii samotných dat. Data jsou uložena v podkladovém úložišti dat, které je sdíleno. Pokud například producent dat ukládá svá data do účtu Azure Data Lake Store, který se nachází v Západní USA, kde jsou data uložená. Pokud sdílí data s účtem Azure Storage, který se nachází v Západní Evropa prostřednictvím snímku, obvykle se data přenesou přímo na účet Azure Storage umístěný v Západní Evropa.
 
 Služba Azure Data Share není ve vaší oblasti k dispozici, aby ji bylo možné využívat. Pokud máte například data uložená v účtu Azure Storage umístěném v oblasti, kde není ještě dostupná služba Azure Data Share, můžete tuto službu využít ke sdílení dat. 
 

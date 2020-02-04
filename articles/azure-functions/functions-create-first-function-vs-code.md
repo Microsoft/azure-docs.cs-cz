@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: mvc, devcenter
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 0540c7b01d693975f34515c7d13f0477ac74d4a1
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 26313c68305f4d7e6411d31fa12366442ce4bd38
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842124"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964081"
 ---
 # <a name="quickstart-create-an-azure-functions-project-using-visual-studio-code"></a>Rychlý Start: vytvoření projektu Azure Functions pomocí Visual Studio Code
 
@@ -18,31 +18,39 @@ V tomto článku použijete Visual Studio Code k vytvoření funkce, která reag
 
 K dispozici je také verze tohoto článku [na bázi CLI](functions-create-first-azure-function-azure-cli.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="configure-your-environment"></a>Konfigurace prostředí
 
-+ [Visual Studio Code](https://code.visualstudio.com/) na některé z [podporovaných platforem](https://code.visualstudio.com/docs/supporting/requirements#_platforms). 
-::: zone pivot="programming-language-csharp"
-+ Rozšíření pro Visual Studio Code. [ C# ](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
-::: zone-end
-::: zone pivot="programming-language-javascript,programming-language-typescript"
-+ Verze [Node. js](https://nodejs.org/), Active LTS a Maintenance LTS (Doporučené 8.11.1 a 10.14.1).
-::: zone-end
+Než začnete, ujistěte se, že máte zavedené následující požadavky:
+
++ Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+
+::: zone pivot="programming-language-csharp,programming-language-powershell,programming-language-python"  
++ [Node. js](https://nodejs.org/), který vyžaduje systém Windows pro npm. Pouze [aktivní LTS a verze LTS údržby ](https://nodejs.org/about/releases/). K ověření verze použijte příkaz `npm --version`.
+    Nevyžaduje se pro místní vývoj na MacOS a Linux.   
+::: zone-end  
+::: zone pivot="programming-language-javascript,programming-language-typescript"  
++ LTS verze [Node. js](https://nodejs.org/), Active a Maintenance LTS (Doporučené 10.14.1). K ověření verze použijte příkaz `npm --version`.
+::: zone-end 
 ::: zone pivot="programming-language-python"
 + [Python 3,7](https://www.python.org/downloads/release/python-375/) nebo [Python 3,6](https://www.python.org/downloads/release/python-368/), který podporuje Azure Functions. Python 3,8 není zatím podporován. 
-
-+ [Přípona Pythonu](https://marketplace.visualstudio.com/items?itemName=ms-python.python) pro Visual Studio Code.
-::: zone-end
+::: zone-end   
 ::: zone pivot="programming-language-powershell"
 + [Jádro PowerShellu](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-+ [.NET Core SDK 2.2 +](https://www.microsoft.com/net/download)
-
-+ [Rozšíření PowerShellu pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell). 
-::: zone-end
++ [.NET Core SDK 2.2 +](https://www.microsoft.com/net/download)  
+::: zone-end  
++ [Visual Studio Code](https://code.visualstudio.com/) na některé z [podporovaných platforem](https://code.visualstudio.com/docs/supporting/requirements#_platforms).  
+::: zone pivot="programming-language-csharp"  
++ Rozšíření pro Visual Studio Code. [ C# ](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)  
+::: zone-end  
+::: zone pivot="programming-language-python"
++ [Přípona Pythonu](https://marketplace.visualstudio.com/items?itemName=ms-python.python) pro Visual Studio Code.  
+::: zone-end  
+::: zone pivot="programming-language-powershell"
++ [Rozšíření PowerShellu pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell).  
+::: zone-end  
 
 + [Azure Functions rozšíření](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) pro Visual Studio Code. 
-
-+ [Účet Azure](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing) s aktivním předplatným. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 ## <a name="create-an-azure-functions-project"></a>Vytvořit místní projekt 
 
@@ -60,111 +68,36 @@ V této části použijete Visual Studio Code k vytvoření místního projektu 
 1. Zadejte následující informace na následujících dotazech:
 
     ::: zone pivot="programming-language-csharp"
-
-    | Výzva | Hodnota | 
-    | ------ | ----- | 
-    | Vyberte jazyk pro váš projekt funkce. | C# |
-    | vybrat verzi | Azure Functions v2 | 
-    | Vyberte šablonu pro funkci prvního projektu. | Trigger HTTP | 
-    | Zadejte název funkce. | HttpExample | 
-    | Zadejte obor názvů. | My. Functions | 
-    | Úroveň autorizace | Anonymní | 
-    | Vyberte, jak se má projekt otevřít. | Přidat do pracovního prostoru |
-
+    + **Vyberte jazyk pro projekt funkce**: zvolte `C#`.
     ::: zone-end
-
     ::: zone pivot="programming-language-javascript"
-
-    | Výzva | Hodnota | 
-    | ------ | ----- | 
-    | Vyberte jazyk pro váš projekt funkce. | JavaScript | 
-    | vybrat verzi | Azure Functions v2 | 
-    | Vyberte šablonu pro funkci prvního projektu. | Trigger HTTP | 
-    | Zadejte název funkce. | HttpExample | 
-    | Úroveň autorizace | Anonymní | 
-    | Vyberte, jak se má projekt otevřít. | Přidat do pracovního prostoru |
-
+    + **Vyberte jazyk pro projekt funkce**: zvolte `JavaScript`.
     ::: zone-end
-
     ::: zone pivot="programming-language-typescript"
-
-    | Výzva | Hodnota | 
-    | ------ | ----- | 
-    | Vyberte jazyk pro váš projekt funkce. | TypeScript | 
-    | vybrat verzi | Azure Functions v2 | 
-    | Vyberte šablonu pro funkci prvního projektu. | Trigger HTTP | 
-    | Zadejte název funkce. | HttpExample | 
-    | Úroveň autorizace | Anonymní | 
-    | Vyberte, jak se má projekt otevřít. | Přidat do pracovního prostoru |
-
+    + **Vyberte jazyk pro projekt funkce**: zvolte `TypeScript`.
     ::: zone-end
-
     ::: zone pivot="programming-language-powershell"
-
-    | Výzva | Hodnota | 
-    | ------ | ----- | 
-    | Vyberte jazyk pro váš projekt funkce. | PowerShell | 
-    | vybrat verzi | Azure Functions v2 | 
-    | Vyberte šablonu pro funkci prvního projektu. | Trigger HTTP | 
-    | Zadejte název funkce. | HttpExample | 
-    | Úroveň autorizace | Anonymní | 
-    | Vyberte, jak se má projekt otevřít. | Přidat do pracovního prostoru |
-
+    + **Vyberte jazyk pro projekt funkce**: zvolte `PowerShell`.
     ::: zone-end
-
     ::: zone pivot="programming-language-python"
+    + **Vyberte jazyk pro projekt funkce**: zvolte `Python`.
 
-    | Výzva | Hodnota | 
-    | ------ | ----- | 
-    | Vyberte jazyk pro váš projekt funkce. | Python | 
-    | vybrat verzi | Azure Functions v2 | 
-    | Vyberte alias Pythonu pro vytvoření virtuálního prostředí. | Alias Pythonu | 
-    | Vyberte šablonu pro funkci prvního projektu. | Trigger HTTP | 
-    | Zadejte název funkce. | HttpExample | 
-    | Úroveň autorizace | Anonymní | 
-    | Vyberte, jak se má projekt otevřít. | Přidat do pracovního prostoru | 
-
+    + **Vyberte alias Pythonu pro vytvoření virtuálního prostředí**: Zvolte umístění překladače Pythonu. Pokud se umístění nezobrazuje, zadejte úplnou cestu k binárnímu souboru Pythonu.  
     ::: zone-end
 
-1. Visual Studio Code provádí následující akce:
-
-    + Vytvoří projekt Azure Functions v novém pracovním prostoru, který obsahuje konfigurační soubory [Host. JSON](functions-host-json.md) a [Local. Settings. JSON](functions-run-local.md#local-settings-file) . 
-
+    + **Vyberte šablonu pro funkci prvního projektu**: zvolte `HTTP trigger`.
+    
+    + Zadejte **název funkce**: typ `HttpExample`.
+    
     ::: zone pivot="programming-language-csharp"
+    + Zadejte **obor názvů**: typ `My.Functions`. 
+    ::: zone-end
 
-    + Vytvoří [soubor knihovny tříd HttpExample.cs](functions-dotnet-class-library.md#functions-class-library-project) , který implementuje funkci.
+    + **Úroveň autorizace**: vyberte `Anonymous`, která umožňuje komukoli zavolat koncový bod funkce. Další informace o úrovni autorizace najdete v tématu [autorizační klíče](functions-bindings-http-webhook.md#authorization-keys).
 
-    ::: zone-end
-        
-    ::: zone pivot="programming-language-javascript"
-    
-    + Vytvoří v kořenové složce soubor Package. JSON.
+    + **Vyberte způsob, jakým chcete projekt otevřít**: zvolte `Add to workspace`.
 
-    + Vytvoří složku HttpExample, která obsahuje [soubor s definicí Function. JSON](functions-reference-node.md#folder-structure) a [soubor index. js](functions-reference-node.md#exporting-a-function), soubor Node. js, který obsahuje kód funkce.
-    
-    ::: zone-end
-    
-    ::: zone pivot="programming-language-typescript"
-    
-    + Vytvoří soubor Package. JSON a soubor tsconfig. JSON v kořenové složce.
-
-    + Vytvoří složku HttpExample, která obsahuje [soubor s definicí Function. JSON](functions-reference-node.md#folder-structure) a [soubor index. TS](functions-reference-node.md#typescript), soubor TypeScript, který obsahuje kód funkce.
-    
-    ::: zone-end
-    
-    ::: zone pivot="programming-language-powershell"
-    
-    + Vytvoří složku HttpExample, která obsahuje [soubor definice Function. JSON](functions-reference-python.md#programming-model) a soubor run. ps1, který obsahuje kód funkce.
-    
-    ::: zone-end
-    
-    ::: zone pivot="programming-language-python"
-    
-    + Vytvoří soubor. txt s požadavky na úrovni projektu, ve kterém jsou uvedeny balíčky požadované funkcemi.
-    
-    + Vytvoří složku HttpExample, která obsahuje [soubor definice Function. JSON](functions-reference-python.md#programming-model) a soubor \_\_init\_\_. py, který obsahuje kód funkce.
-    
-    ::: zone-end
+1. Pomocí těchto informací Visual Studio Code generuje Azure Functions projekt pomocí triggeru protokolu HTTP. Můžete zobrazit soubory místních projektů v Průzkumníkovi. Další informace o souborech, které jsou vytvořeny, najdete v tématu [vygenerované soubory projektu](functions-develop-vs-code.md#generated-project-files). 
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python"
 
@@ -186,13 +119,15 @@ Po ověření, že se funkce na místním počítači spustí správně, je čas
 
 ## <a name="run-the-function-in-azure"></a>Spuštění funkce v Azure
 
-1. Zkopírujte adresu URL triggeru HTTP z panelu **Výstup**. Znovu přidejte řetězec dotazu `name` jako `?name=<yourname>` na konec této adresy URL a spusťte požadavek.
+1. Zpátky v oblasti **Azure: Functions (funkce** ) na bočním panelu rozbalte novou aplikaci Function App v rámci vašeho předplatného. Rozbalte **funkce**, klikněte pravým tlačítkem myši (Windows) nebo Ctrl + Click (MacOS) na **HttpExample**a pak zvolte **Kopírovat adresu URL funkce**.
 
-    Adresa URL, která volá funkci aktivovanou protokolem HTTP, by měla být v následujícím formátu:
+    ![Zkopírujte adresu URL funkce pro nový Trigger HTTP.](./media/functions-create-first-function-vs-code/function-copy-endpoint-url.png)
 
-        http://<functionappname>.azurewebsites.net/api/httpexample?name=<yourname> 
+1. Vložte tuto adresu URL pro požadavek HTTP do adresního řádku prohlížeče, přidejte `name` řetězec dotazu jako `?name=Functions` na konec této adresy URL a pak spusťte požadavek. Adresa URL, která volá funkci aktivovanou protokolem HTTP, by měla být v následujícím formátu:
 
-1. Vložte tuto novou adresu URL pro požadavek HTTP do panelu Adresa prohlížeče. Následující příklad ukazuje odpověď v prohlížeči na požadavek Remote GET vracený funkcí: 
+        http://<functionappname>.azurewebsites.net/api/httpexample?name=Functions 
+        
+    Následující příklad ukazuje odpověď v prohlížeči na požadavek Remote GET vracený funkcí: 
 
     ![Odezva funkce v prohlížeči](./media/functions-create-first-function-vs-code/functions-test-remote-browser.png)
 

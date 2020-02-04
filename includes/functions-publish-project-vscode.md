@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
-ms.openlocfilehash: f1553a5c9d55366b2764877b48d0606ff8e0b370
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 8c63d314c253152d2815a70831870fe331071c68
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842117"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964079"
 ---
 ## <a name="publish-the-project-to-azure"></a>Publikování projektu do Azure
 
@@ -21,29 +21,24 @@ V této části vytvoříte aplikaci funkcí a související prostředky v před
 
 1. Zadejte následující informace na následujících dotazech:
 
-    ::: zone pivot="programming-language-csharp,programming-language-powershell"
+    + **Vyberte předplatné**: zvolte předplatné, které chcete použít. Toto se nezobrazí, pokud máte jenom jedno předplatné.
 
-    | Výzva | Hodnota | Popis |
-    | ------ | ----- | ----- |
-    | Výběr předplatného | Vaše předplatné | Zobrazuje se, když máte více předplatných. |
-    | Výběr Function App v Azure | + Vytvořit nové Function App | Publikování do existující aplikace funkcí přepíše obsah této aplikace v Azure. |
-    | Zadejte globálně jedinečný název aplikace Function App. | Jedinečný název | Platné znaky pro název aplikace funkcí jsou `a-z`, `0-9` a `-`. |
-    | Vyberte umístění pro nové prostředky. | Region (Oblast) | Zvolte [oblast](https://azure.microsoft.com/regions/) ve vaší blízkosti. | 
-
+    + **Vyberte Function App v Azure**: zvolte `+ Create new Function App` (není `Advanced`). Tento článek nepodporuje [pokročilý tok publikování](../articles/azure-functions/functions-develop-vs-code.md#enable-publishing-with-advanced-create-options). 
+    
+    >[!IMPORTANT]
+    > Publikování do existující aplikace funkcí přepíše obsah této aplikace v Azure. 
+    
+    + **Zadejte globálně jedinečný název aplikace Function App**: zadejte název, který je platný v cestě URL. Název, který zadáte, bude ověřený, abyste se ujistili, že je v Azure Functions jedinečný. 
+    
+    ::: zone pivot="programming-language-python"
+    + **Vyberte modul runtime**: Zvolte verzi Pythonu, kterou jste spustili místně. K zkontrolování vaší verze můžete použít příkaz `python --version`.
     ::: zone-end
 
-    ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python"
-
-    | Výzva | Hodnota | Popis |
-    | ------ | ----- | ----- |
-    | Výběr předplatného | Vaše předplatné | Zobrazuje se, když máte více předplatných. |
-    | Výběr Function App v Azure | + Vytvořit nové Function App | Publikování do existující aplikace funkcí přepíše obsah této aplikace v Azure. |
-    | Zadejte globálně jedinečný název aplikace Function App. | Jedinečný název | Platné znaky pro název aplikace funkcí jsou `a-z`, `0-9` a `-`. |
-    | Vyberte modul runtime. | Vaše verze | Vyberte jazykovou verzi, kterou jste spustili místně. |
-    | Vyberte umístění pro nové prostředky. | Region (Oblast) | Zvolte [oblast](https://azure.microsoft.com/regions/) ve vaší blízkosti. | 
-
+    ::: zone pivot="programming-language-javascript,programming-language-typescript"
+    + **Vyberte modul runtime**: Zvolte verzi Node. js, kterou jste spustili místně. K zkontrolování vaší verze můžete použít příkaz `node --version`.
     ::: zone-end
 
+    + **Vyberte umístění pro nové prostředky**: pro lepší výkon zvolte [oblast](https://azure.microsoft.com/regions/) poblíž. 
     
 1.  Po dokončení se ve vašem předplatném vytvoří následující prostředky Azure:
 
@@ -55,10 +50,6 @@ V této části vytvoříte aplikaci funkcí a související prostředky v před
 
     Po vytvoření aplikace funkcí a použití balíčku nasazení se zobrazí oznámení. 
     
-1. Pokud chcete zobrazit výsledky vytvoření a nasazení, včetně prostředků Azure, které jste vytvořili, vyberte **Zobrazit výstup** v tomto oznámení.
+1. Pokud chcete zobrazit výsledky vytvoření a nasazení, včetně prostředků Azure, které jste vytvořili, vyberte **Zobrazit výstup** v tomto oznámení. Pokud jste oznámení nezobrazili, vyberte ikonu zvonku v pravém dolním rohu, abyste ji viděli znovu.
 
     ![Vytvořit kompletní oznámení](media/functions-publish-project-vscode/function-create-notifications.png)
-
-1. Zpátky v oblasti **Azure: Functions (funkce** ) na bočním panelu rozbalte novou aplikaci Function App v rámci vašeho předplatného. Rozbalte **funkce**, klikněte pravým tlačítkem myši (Windows) nebo Ctrl + Click (MacOS) na **HttpExample**a pak zvolte **Kopírovat adresu URL funkce**.
-
-    ![Zkopírujte adresu URL funkce pro nový Trigger HTTP.](./media/functions-publish-project-vscode/function-copy-endpoint-url.png)

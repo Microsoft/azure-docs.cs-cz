@@ -1,5 +1,5 @@
 ---
-title: Rychlý Start – monitorování Node. js pomocí Azure Monitor Application Insights
+title: 'Rychlý Start: monitorování Node. js pomocí Azure Monitor Application Insights'
 description: Poskytuje pokyny pro rychlé nastavení webové aplikace Node. js pro monitorování pomocí Azure Monitor Application Insights
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,38 +8,31 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 1f42dd50ee70d42b5209e186b8af63c820a9a85e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a6d6d70336badeaa86c9982dfa977ea389ed5402
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398782"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963525"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Rychlý Start: spuštění sledování webové aplikace v Node. js pomocí Azure Application Insights
 
-Tento rychlý start vás provede přidáním sady Application Insights SDK pro Node.js verze 0.22 do existující webové aplikace Node.js.
+V tomto rychlém startu přidáte sadu Application Insights SDK verze 0,22 pro Node. js do existující webové aplikace Node. js.
 
-Služba Azure Application Insights umožňuje monitorovat webové aplikace z hlediska dostupnosti, výkonu a využití. Můžete také rychle identifikovat a diagnostikovat chyby ve vaší aplikaci a nečekat na to, až je nahlásí uživatelé. Pomocí sady SDK verze 0.20 a novější můžete monitorovat běžné balíčky třetích stran, včetně MongoDB, MySQL a Redis.
+Azure Application Insights umožňuje snadné monitorování webové aplikace z hlediska dostupnosti, výkonu a využití. Můžete také rychle identifikovat a diagnostikovat chyby ve vaší aplikaci a nečekat na to, až je nahlásí uživatelé. Pomocí sady SDK verze 0.20 a novější můžete monitorovat běžné balíčky třetích stran, včetně MongoDB, MySQL a Redis.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto rychlého startu je potřeba:
-
-- Potřebujete předplatné Azure a webovou aplikaci Node.js.
-
-Pokud webovou aplikaci Node.js nemáte, můžete si ji vytvořit pomocí [kurzu Rychlý start pro vytvoření webové aplikace Node.js](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-nodejs).
-
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-
-## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
-
-Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+* Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Funkční aplikace Node. js.
 
 ## <a name="enable-application-insights"></a>Povolení Application Insights
 
-Application Insights může shromažďovat telemetrická data ze všech aplikací připojených k internetu bez ohledu na to, jestli jsou spuštěné místně nebo v cloudu. Pokud chcete tato data začít zobrazovat, použijte následující kroky.
+Application Insights můžou shromažďovat data telemetrie z jakékoli aplikace připojené k Internetu, ať už běží místně nebo v cloudu. Pokud chcete tato data začít zobrazovat, použijte následující kroky.
 
-1. Vyberte **Vytvořit prostředek** > **Vývojářské nástroje** > **Application Insights**.
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com/).
+
+2. Vyberte **Vytvořit prostředek** > **Vývojářské nástroje** > **Application Insights**.
 
    ![Přidání prostředku Azure Application Insights](./media/nodejs-quick-start/azure-app-insights-create-resource.png)
 
@@ -50,13 +43,13 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
     | Nastavení        | Hodnota           | Popis  |
    | ------------- |:-------------|:-----|
-   | **Název**      | Globálně jedinečná hodnota | Název identifikující aplikaci, kterou monitorujete |
-   | **Skupina prostředků**     | myResourceGroup      | Název nové skupiny prostředků pro hostování dat App Insights Můžete vytvořit novou skupinu prostředků nebo použít existující. |
-   | **Umístění** | Východní USA | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
+   | **Název**      | Globálně jedinečná hodnota | Název, který identifikuje aplikaci, kterou sledujete |
+   | **Skupina prostředků**     | myResourceGroup      | Název nové skupiny prostředků, která bude hostovat data AppInsights. Můžete vytvořit novou skupinu prostředků nebo použít existující. |
+   | **Umístění** | Východ USA | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
 
-2. Vyberte **Vytvořit**.
+3. Vyberte **Vytvořit**.
 
-## <a name="configure-app-insights-sdk"></a>Konfigurace sady App Insights SDK
+## <a name="configure-appinsights-sdk"></a>Konfigurace sady AppInsights SDK
 
 1. Vyberte **Přehled** a zkopírujte **klíč instrumentace**vaší aplikace.
 
@@ -68,7 +61,7 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
    npm install applicationinsights --save
    ```
 
-3. Upravte první soubor .js vaší aplikace a do horní části skriptu přidejte následující dva řádky. Pokud používáte [aplikaci Rychlý start pro Node.js](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-nodejs), upravíte soubor index.js. Nahraďte &lt;instrumentační klíč&gt; klíčem vaší aplikace. 
+3. Upravte první soubor *. js* aplikace a přidejte dva řádky níže do nejvyšší části skriptu. Pokud používáte [aplikaci pro rychlý Start Node. js](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-nodejs), upravili byste soubor *index. js* . Nahraďte `<instrumentation_key>` klíčem instrumentace vaší aplikace. 
 
    ```JavaScript
    const appInsights = require('applicationinsights');
@@ -90,7 +83,7 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
    ![Application Insights mapa aplikace](./media/nodejs-quick-start/azure-app-insights-application-map.png)
 
-3. Vyberte ikonu **Analýza aplikace** ![ikona mapa aplikace](./media/nodejs-quick-start/azure-app-insights-analytics-icon.png) **Zobrazit v analýze**.  Otevře se **Application Insights – Analytics** s bohatým dotazovacím jazykem pro analýzu všech dat shromážděných službou Application Insights. V tomto případě jsme za vás vytvořili dotaz, který vykreslí počet požadavků ve formě grafu. Můžete psát své vlastní dotazy pro analýzu dalších dat.
+3. Vyberte ikonu **Analýza aplikace** ![ikona mapa aplikace](./media/nodejs-quick-start/azure-app-insights-analytics-icon.png) **Zobrazit v analýze**.  Tato akce otevře **Application Insights Analytics**, která poskytuje bohatý dotazovací jazyk pro analýzu všech dat shromážděných pomocí Application Insights. V tomto případě jsme za vás vytvořili dotaz, který vykreslí počet požadavků ve formě grafu. Můžete psát své vlastní dotazy pro analýzu dalších dat.
 
    ![Grafy Application Insights Analytics](./media/nodejs-quick-start/azure-app-insights-analytics-queries.png)
 
@@ -120,11 +113,11 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
    </script>
    ```
 
-5. Na levé straně vyberte **Metriky**. Pomocí Průzkumníka metrik můžete prozkoumat stav a využití vašeho prostředku. Můžete vybrat možnost **Přidat nový graf** a vytvořit další vlastní zobrazení nebo vybrat **Upravit** a upravit existující typy grafů, výšku, paletu barev, seskupení a metriky. Můžete například vytvořit graf, který zobrazuje průměrnou dobu načítání stránek prohlížeče, a to tak, že v rozevíracím seznamu metriky a průměr z agregace vyberete "čas načtení stránky". Další informace o Azure Průzkumník metrik najdete [v článku Začínáme s azure Průzkumník metrik](../../azure-monitor/platform/metrics-getting-started.md).
+5. Na levé straně vyberte **metriky**. Pomocí Průzkumníka metrik můžete prozkoumat stav a využití vašeho prostředku. Můžete vybrat možnost **Přidat nový graf** a vytvořit další vlastní zobrazení nebo vybrat **Upravit** a upravit existující typy grafů, výšku, paletu barev, seskupení a metriky. Můžete například vytvořit graf, který zobrazuje průměrnou dobu načítání stránek prohlížeče, a to tak, že v rozevíracím seznamu metriky a průměr z agregace vyberete "čas načtení stránky". Další informace o službě Azure Průzkumník metrik najdete v článku [Začínáme s azure Průzkumník metrik](../../azure-monitor/platform/metrics-getting-started.md).
 
    ![Graf metrik Application Insights serveru](./media/nodejs-quick-start/azure-app-insights-server-metrics.png)
 
-Další informace o monitorování Node.js najdete v [další dokumentaci k Node.js pro App Insights](../../azure-monitor/app/nodejs.md).
+Další informace o monitorování Node. js najdete v [další dokumentaci k AppInsights Node. js](../../azure-monitor/app/nodejs.md).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

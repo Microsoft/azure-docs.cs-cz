@@ -6,38 +6,34 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/18/2019
+ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: ec61abca19579426818e227687e08e66b73969cb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a153416a247ec3a38ec29e95b83fa919e765942b
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503756"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76966645"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
-* Počáteční klíč.
+* Azure Language Understanding – vytváření znaků a vytváření kódu URL koncového bodu prostředku 32. Vytvořte pomocí [Azure Portal](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) nebo [Azure CLI](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli).
 * Importujte aplikaci [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) z úložiště GitHub-Services-Language-porozumění.
 * ID aplikace LUIS pro importovanou aplikaci TravelAgent ID aplikace je uvedené na řídicím panelu aplikace.
 * ID verze v rámci aplikace, která přijímá projevy. Výchozí ID je 0.1.
-* Programovací jazyk [Go](https://golang.org/)  
+* Programovací jazyk [Go](https://golang.org/)
 * [Visual Studio Code](https://code.visualstudio.com/)
 
 ## <a name="example-utterances-json-file"></a>Soubor JSON s ukázkovými promluvami
 
 [!INCLUDE [Quickstart explanation of example utterance JSON file](get-started-get-model-json-example-utterances.md)]
 
-## <a name="get-luis-key"></a>Získání klíče LUIS
-
-[!INCLUDE [Use authoring key for endpoint](../includes/get-key-quickstart.md)]
-
 ## <a name="change-model-programmatically"></a>Programové změny modelu
 
-Pomocí možnosti přejít přidejte do aplikace [rozhraní API](https://aka.ms/luis-apim-v3-authoring) náročné na počítač. 
+Pomocí možnosti přejít přidejte do aplikace [rozhraní API](https://aka.ms/luis-apim-v3-authoring) náročné na počítač.
 
 1. Vytvořte nový soubor s názvem `predict.go`. Přidejte následující kód:
-    
+
     ```go
     // dependencies
     package main
@@ -48,21 +44,21 @@ Pomocí možnosti přejít přidejte do aplikace [rozhraní API](https://aka.ms/
         "log"
         "strings"
     )
-    
+
     // main function
     func main() {
-    
+
         // NOTE: change to your app ID
         var appID = "YOUR-APP-ID"
-    
-        // NOTE: change to your starter key
+
+        // NOTE: change to your authoring key
         var authoringKey = "YOUR-KEY"
-    
-        // NOTE: change to your starter key's endpoint, for example, westus.api.cognitive.microsoft.com
-        var endpoint = "YOUR-ENDPOINT"  
-    
+
+        // NOTE: change to your authoring key's endpoint, for example, your-resource-name.api.cognitive.microsoft.com
+        var endpoint = "YOUR-ENDPOINT"
+
         var version = "0.1"
-    
+
         var exampleUtterances = `
         [
             {
@@ -83,50 +79,50 @@ Pomocí možnosti přejít přidejte do aplikace [rozhraní API](https://aka.ms/
             }
           ]
         `
-    
+
         fmt.Println("add example utterances requested")
         addUtterance(authoringKey, appID, version, exampleUtterances, endpoint)
-    
+
         fmt.Println("training selected")
         requestTraining(authoringKey, appID, version, endpoint)
-    
+
         fmt.Println("training status selected")
         getTrainingStatus(authoringKey, appID, version, endpoint)
     }
-    
+
     // get utterances from file and add to model
     func addUtterance(authoringKey string, appID string,  version string, labeledExampleUtterances string, endpoint string){
-    
+
         var authoringUrl = fmt.Sprintf("https://%s/luis/authoring/v3.0-preview/apps/%s/versions/%s/examples", endpoint, appID, version)
-    
+
         httpRequest("POST", authoringUrl, authoringKey, labeledExampleUtterances)
     }
     func requestTraining(authoringKey string, appID string,  version string, endpoint string){
-    
+
         trainApp("POST", authoringKey, appID, version, endpoint)
     }
     func trainApp(httpVerb string, authoringKey string, appID string,  version string, endpoint string){
-    
+
         var authoringUrl = fmt.Sprintf("https://%s/luis/authoring/v3.0-preview/apps/%s/versions/%s/train", endpoint, appID, version)
-    
+
         httpRequest(httpVerb,authoringUrl, authoringKey, "")
     }
     func getTrainingStatus(authoringKey string, appID string, version string, endpoint string){
-    
+
         trainApp("GET", authoringKey, appID, version, endpoint)
     }
     // generic HTTP request
     // includes setting header with authoring key
     func httpRequest(httpVerb string, url string, authoringKey string, body string){
-    
+
         client := &http.Client{}
-    
+
         request, err := http.NewRequest(httpVerb, url, strings.NewReader(body))
         request.Header.Add("Ocp-Apim-Subscription-Key", authoringKey)
-    
+
         fmt.Println("body")
         fmt.Println(body)
-    
+
         response, err := client.Do(request)
         if err != nil {
             log.Fatal(err)
@@ -139,34 +135,34 @@ Pomocí možnosti přejít přidejte do aplikace [rozhraní API](https://aka.ms/
             fmt.Println("   ", response.StatusCode)
             fmt.Println(string(contents))
         }
-    }    
+    }
     ```
 
-1. Nahraďte následující hodnoty:
+1. Hodnoty začínající `YOUR-` nahraďte vlastními hodnotami.
 
-    * `YOUR-KEY` pomocí počátečního klíče
-    * `YOUR-ENDPOINT` s vaším koncovým bodem, například `westus2.api.cognitive.microsoft.com`
-    * `YOUR-APP-ID` s ID vaší aplikace
+    |Informace|Účel|
+    |--|--|
+    |`YOUR-KEY`|Klíč pro vytváření znaků 32.|
+    |`YOUR-ENDPOINT`| Váš koncový bod adresy URL pro vytváření Například, `replace-with-your-resource-name.api.cognitive.microsoft.com`. Název prostředku se nastaví při vytváření prostředku.|
+    |`YOUR-APP-ID`| Vaše ID aplikace LUIS |
+
+    Přiřazené klíče a prostředky jsou zobrazené na portálu LUIS v části Správa na stránce **prostředky Azure** . ID aplikace je k dispozici ve stejné části pro správu na stránce **nastavení aplikace** .
 
 1. Pomocí příkazového řádku ve stejném adresáři, ve kterém jste vytvořili soubor, zadejte následující příkaz pro zkompilování souboru přejít:
 
     ```console
     go build model.go
-    ```  
+    ```
 
-1. Aplikaci Go spusťte z příkazového řádku zadáním následujícího textu do příkazového řádku: 
+1. Aplikaci Go spusťte z příkazového řádku zadáním následujícího textu do příkazového řádku:
 
     ```console
     go run model.go
     ```
 
-## <a name="luis-keys"></a>Klíče služby LUIS
-
-[!INCLUDE [Use authoring key for endpoint](../includes/starter-key-explanation.md)]
-
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Až budete s tímto rychlým startem hotovi, odstraňte soubor ze systému souborů. 
+Až budete s tímto rychlým startem hotovi, odstraňte soubor ze systému souborů.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,19 +1,19 @@
 ---
 title: Připojení ukázkového kódu zařízení pro IoT technologie Plug and Play Preview IoT Hub | Microsoft Docs
 description: Pomocí Java sestavíte a spustíte IoT technologie Plug and Play Preview ukázkový kód zařízení, který se připojuje ke centru IoT. K zobrazení informací odesílaných zařízením do centra použijte nástroj Azure IoT Explorer.
-author: baanders
-ms.author: baanders
+author: dominicbetts
+ms.author: dobett
 ms.date: 12/27/2019
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: e1454a197620cacaa8c8303e8f36a8d4a87aec00
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: aa676dd374eccf2a4b5c4622689ed402c8679e5a
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531305"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964817"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-java"></a>Rychlý Start: připojení ukázkové aplikace technologie Plug and Play v rámci IoT pro IoT Hub (Java)
 

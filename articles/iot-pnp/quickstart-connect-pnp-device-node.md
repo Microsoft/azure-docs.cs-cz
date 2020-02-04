@@ -1,19 +1,19 @@
 ---
 title: Připojení ukázkového kódu zařízení pro IoT technologie Plug and Play Preview IoT Hub | Microsoft Docs
 description: Pomocí Node. js můžete sestavovat a spouštět technologie Plug and Play IoT Preview ukázkový kód zařízení, který se připojuje ke centru IoT. K zobrazení informací odesílaných zařízením do centra použijte nástroj Azure IoT Explorer.
-author: baanders
-ms.author: baanders
+author: dominicbetts
+ms.author: dobett
 ms.date: 12/26/2019
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 64f478d9d5c3330167df81de9766ff02eb943c98
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: c5d69ae21cd240b0c68b9694a55de2cf879a1966
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531213"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964783"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-nodejs"></a>Rychlý Start: připojení ukázkové aplikace pro technologie Plug and Play ve verzi IoT pro IoT Hub (Node. js)
 

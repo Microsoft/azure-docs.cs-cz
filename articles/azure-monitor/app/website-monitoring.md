@@ -1,6 +1,6 @@
 ---
-title: Monitorování webů pomocí Azure Monitor Application Insights
-description: Pokyny pro rychlé nastavení monitorování webů na straně klienta nebo prohlížeče pomocí Azure Monitor Application Insights
+title: 'Rychlý Start: monitorování webů pomocí Azure Monitor Application Insights'
+description: Poskytuje pokyny pro rychlý Start při nastavení monitorování klienta/webu na straně prohlížeče pomocí Azure Monitor Application Insights
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
@@ -8,36 +8,30 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/15/2019
 ms.custom: mvc
-ms.openlocfilehash: 54bd12db9a85cf237d6c22ad63e6f20f7d2b713a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 408b24c83c5b3d795a86d1ad0275d732bb54a6db
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770216"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963615"
 ---
-# <a name="start-monitoring-your-website"></a>Zahájení monitorování webu
+# <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>Rychlý Start: Začněte monitorovat web pomocí Azure Monitor Application Insights
 
-Azure Monitor Application Insights umožňuje snadné monitorování webu z hlediska dostupnosti, výkonu a využití. Můžete také rychle identifikovat a diagnostikovat chyby ve vaší aplikaci a nečekat na to, až je nahlásí uživatelé. Application Insights nabízí monitorování na straně serveru i možnosti monitorování na straně klienta nebo prohlížeče.
+V tomto rychlém startu se naučíte, jak na web přidat Open Source sadu Application Insights JavaScript SDK. Naučíte se také, jak lépe pochopit možnosti klienta nebo prohlížeče pro návštěvníky webu.
 
-Tento rychlý Start vás provede přidáním [Open source Application Insights JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS) , který vám umožní pochopit prostředí klienta nebo prohlížeče pro návštěvníky webu.
+Azure Monitor Application Insights umožňuje snadné monitorování webu z hlediska dostupnosti, výkonu a využití. Můžete také rychle identifikovat a diagnostikovat chyby ve vaší aplikaci a nečekat na to, až je nahlásí uživatelé. Application Insights poskytuje možnosti monitorování na straně serveru i klienta nebo prohlížeče.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto rychlého startu je potřeba:
-
-- Mít předplatné Azure.
-
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-
-## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
-
-Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+* Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Web, na který můžete přidat Application Insights JavaScript SDK.
 
 ## <a name="enable-application-insights"></a>Povolení Application Insights
 
 Application Insights může shromažďovat telemetrická data ze všech aplikací připojených k internetu a spuštěných místně nebo v cloudu. Pokud chcete tato data začít zobrazovat, použijte následující kroky.
 
-1. Vyberte **Vytvořit prostředek** > **Nástroje pro správu** > **Application Insights**.
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com/).
+2. Vyberte **Vytvořit prostředek** > **Nástroje pro správu** > **Application Insights**.
 
    > [!NOTE]
    >Pokud vytvoříte prostředek Application Insightse poprvé, můžete se dozvědět víc v článku [vytvoření prostředku Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) .
@@ -46,11 +40,11 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
     | Nastavení        | Hodnota           | Popis  |
    | ------------- |:-------------|:-----|
-   | **Název**      | Globálně jedinečná hodnota | Název identifikující aplikaci, kterou monitorujete |
-   | **Skupina prostředků**     | myResourceGroup      | Název nové skupiny prostředků pro hostování dat App Insights Můžete vytvořit novou skupinu prostředků nebo použít existující. |
-   | **Umístění** | Východní USA | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
+   | **Název**      | Globálně jedinečná hodnota | Název, který identifikuje aplikaci, kterou sledujete |
+   | **Skupina prostředků**     | myResourceGroup      | Název nové skupiny prostředků pro hostování dat Application Insights. Můžete vytvořit novou skupinu prostředků nebo použít existující. |
+   | **Umístění** | Východ USA | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
 
-2. Klikněte na **Vytvořit**.
+3. Klikněte na **Vytvořit**.
 
 ## <a name="create-an-html-file"></a>Vytvoření souboru HTML
 
@@ -70,11 +64,11 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
     </html>
     ```
 
-## <a name="configure-app-insights-sdk"></a>Konfigurace sady App Insights SDK
+## <a name="configure-application-insights-sdk"></a>Konfigurace Application Insights SDK
 
 1. Vyberte **Přehled** > **Základy** a zkopírujte **instrumentační klíč** vaší aplikace.
 
-   ![Formulář Nový prostředek App Insights](media/website-monitoring/instrumentation-key-001.png)
+   ![Formulář Nový prostředek Application Insights](media/website-monitoring/instrumentation-key-001.png)
 
 2. Do souboru ``hello_world.html`` přidejte před ukončovací značku ``</head>`` následující skript:
 
@@ -90,13 +84,13 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
 3. Upravte soubor ``hello_world.html`` a přidejte svůj instrumentační klíč.
 
-4. Otevřete soubor ``hello_world.html`` v místní relaci prohlížeče. Tím se vytvoří jedno zobrazení stránky. Prohlížeč můžete aktualizovat a vygenerovat tak více testovacích zobrazení stránky.
+4. Otevřete soubor ``hello_world.html`` v místní relaci prohlížeče. Tato akce vytvoří jeden PageView. Prohlížeč můžete aktualizovat a vygenerovat tak více testovacích zobrazení stránky.
 
 ## <a name="start-monitoring-in-the-azure-portal"></a>Zahájení monitorování na webu Azure Portal
 
-1. Teď můžete znovu otevřít stránku **Přehled** služby Application Insights na webu Azure Portal, kde jste získali svůj instrumentační klíč, a zobrazit podrobné informace o aktuálně spuštěné aplikaci. Čtyři výchozí grafy na stránce Přehled mají nastavený obor na data aplikace na straně serveru. Vzhledem k tomu, že instrumentujeme interakce se sadou JavaScript SDK na straně klienta nebo prohlížeče, toto konkrétní zobrazení nás nezajímá, pokud nemáme nainstalovanou také sadu SDK na straně serveru.
+1. Nyní můžete znovu otevřít stránku **přehled** Application Insights v Azure Portal a zobrazit podrobnosti o aktuálně spuštěné aplikaci. Na stránce **Přehled** je místo, kde jste načetli klíč instrumentace. Čtyři výchozí grafy na stránce Přehled mají nastavený obor na data aplikace na straně serveru. Vzhledem k tomu, že instrumentuje interakce klienta nebo prohlížeče se sadou JavaScript SDK, toto konkrétní zobrazení se nepoužije, pokud je v něm také nainstalovaná sada SDK na straně serveru.
 
-2. Klikněte na ![ikona mapa aplikace](media/website-monitoring/006.png) **Analytics**.  Otevře se okno **Analýza** s bohatým dotazovacím jazykem pro analýzu všech dat shromážděných službou Application Insights. Pokud chcete zobrazit data související s požadavky prohlížeče na straně klienta, spusťte následující dotaz:
+2. Klikněte na ![ikona mapa aplikace](media/website-monitoring/006.png) **Analytics**.  Tato akce otevře **analýzu**, která poskytuje bohatý dotazovací jazyk pro analýzu všech dat shromážděných v Application Insights. Pokud chcete zobrazit data související s požadavky prohlížeče na straně klienta, spusťte následující dotaz:
 
     ```kusto
     // average pageView duration by name
@@ -115,11 +109,11 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
    ![Graf analýzy uživatelských požadavků za časové období](./media/website-monitoring/analytics-query.png)
 
-3. Vraťte se na stránku **Přehled**. Klikněte na **Prohlížeč** pod nadpisem **Prozkoumat** a pak vyberte **Výkon**. Tady najdete metriky související s výkonem vašeho webu. Najdete tu také odpovídající zobrazení pro analýzu selhání a výjimek na vašem webu. Kliknutím na **Ukázky** můžete přejít k podrobnostem o jednotlivých transakcích. Tady můžete získat přístup k prostředí s [podrobnostmi o celé transakci](../../azure-monitor/app/transaction-diagnostics.md).
+3. Vraťte se na stránku **Přehled**. Klikněte na **Prohlížeč** pod nadpisem **Prozkoumat** a pak vyberte **Výkon**. Tady najdete metriky související s výkonem vašeho webu. K dispozici je také odpovídající zobrazení pro analýzu selhání a výjimek na vašem webu. Kliknutím na **Ukázky** můžete přejít k podrobnostem o jednotlivých transakcích. Tady můžete získat přístup k prostředí s [podrobnostmi o celé transakci](../../azure-monitor/app/transaction-diagnostics.md).
 
    ![Graf metrik serveru](./media/website-monitoring/browser-performance.png)
 
-4. Pokud chcete začít zkoumat [nástroje pro analýzu chování uživatelů](../../azure-monitor/app/usage-overview.md), v hlavní nabídce Application Insights pod nadpisem **Využití** vyberte [**Uživatelé**](../../azure-monitor/app/usage-segmentation.md). Protože testujeme z jediného počítače, zobrazí se nám data pouze pro jednoho uživatele. V případě živého webu by distribuce uživatelů mohla vypadat nějak takto:
+4. Pokud chcete začít zkoumat [nástroje pro analýzu chování uživatelů](../../azure-monitor/app/usage-overview.md), v hlavní nabídce Application Insights pod nadpisem **Využití** vyberte [**Uživatelé**](../../azure-monitor/app/usage-segmentation.md). Vzhledem k tomu, že provádíme testování z jednoho počítače, uvidíme jenom data pro jednoho uživatele. V případě živého webu by distribuce uživatelů mohla vypadat nějak takto:
 
      ![Graf uživatelů](./media/website-monitoring/usage-users.png)
 
@@ -131,7 +125,7 @@ Pokud se chcete dozvědět o pokročilejších konfiguracích monitorování web
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete pokračovat v práci s dalšími rychlými starty nebo kurzy, nevyčišťujte prostředky vytvořené v rámci tohoto rychlého startu. Pokud však pokračovat nechcete, pomocí následujících kroků odstraňte všechny prostředky vytvořené tímto rychlým startem na webu Azure Portal.
+Pokud máte v úmyslu pokračovat v práci s dalšími rychlými starty nebo kurzy, neprovádějte čištění prostředků vytvořených v rámci tohoto rychlého startu. Jinak pokud pokračovat nechcete, pomocí následujícího postupu odstraňte všechny prostředky vytvořené tímto rychlým startem v Azure Portal.
 
 > [!NOTE]
 > Pokud jste použili existující skupinu prostředků, následující pokyny nebudou fungovat a bude potřeba jenom odstranit jednotlivé prostředky Application Insights. Mějte na paměti, že kdykoli odstraníte skupinu prostředků, odstraní se všechny základního prostředky, které jsou členy této skupiny.
