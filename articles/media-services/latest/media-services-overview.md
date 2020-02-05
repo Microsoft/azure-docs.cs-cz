@@ -14,15 +14,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 09/17/2019
+ms.date: 02/03/2020
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: c17f1094e562960e851204b40281f5b04c1d40ce
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 559050d11b6b85a9842c679b94e0e5b2fd5dd0f8
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186058"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987709"
 ---
 # <a name="azure-media-services-v3-overview"></a>Přehled Azure Media Services V3
 
@@ -32,6 +32,14 @@ Sady SDK Media Services V3 jsou založené na [Media Services V3 openapi Specifi
 
 > [!NOTE]
 > V současné době nemůžete použít Azure Portal ke správě prostředků v3. Použijte rozhraní [REST API](https://aka.ms/ams-v3-rest-ref), [rozhraní příkazového řádku](https://aka.ms/ams-v3-cli-ref) nebo některou z podporovaných sad [SDK](media-services-apis-overview.md#sdks).
+
+## <a name="compliance-privacy-and-security"></a>Dodržování předpisů, ochrana osobních údajů a zabezpečení
+ 
+Jako důležité připomenutí musíte dodržovat všechny příslušné zákony, ve vašem užívání Azure Media Services a nesmíte používat Azure Media Services ani žádnou jinou službu Azure způsobem, který porušuje práva jiných nebo může být pro ostatní škodlivá. 
+
+Než nahrajete videa nebo obrázky, včetně všech biometrických dat, Media Services pro zpracování a ukládání, musíte (1) mít všechna správná práva k videím a obrázkům. a (2) mají všechny příslušné souhlasy od jednotlivých jednotlivců ve videích, které umožňují použití a ukládání svých biometrických dat v Media Services. 
+
+Pokud se chcete dozvědět o dodržování předpisů, ochraně osobních údajů a o tom, jak Microsoft chrání a zabezpečuje vaše data v Azure Media Services, navštivte prosím [Centrum zabezpečení](https://www.microsoft.com/trust-center/?rtc=1)Azure. Pro závazky Microsoftu na ochranu osobních údajů a zpracování vašich dat si přečtěte [prohlášení o zásadách ochrany osobních údajů](https://privacy.microsoft.com/PrivacyStatement)od Microsoftu, [podmínky online služeb](https://www.microsoft.com/licensing/product-licensing/products) ("OST") a [doplněk pro zpracování dat](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (DPA). Informace o uchovávání a odstraňování zákaznických dat jsou k dispozici v DPA. Pomocí Azure Media Services souhlasíte s tím, že DPA a prohlášením o zásadách ochrany osobních údajů.
 
 ## <a name="what-can-i-do-with-media-services"></a>Co všechno jde dělat v Media Services?
 
@@ -58,7 +66,7 @@ Naučte se kódovat a zabalit obsah, streamovat videa na vyžádání, živě vy
 
 Začněte vyvíjet pomocí [sad SDK klienta Azure Media Services V3](media-services-apis-overview.md#sdks).
 
-### <a name="quickstarts"></a>Šablony Rychlý start  
+### <a name="quickstarts"></a>Rychlé starty  
 
 V rychlých startech se při rychlém vyzkoušení Media Services v nových zákaznících zobrazují základní pokyny od dne 1.
 
@@ -76,7 +84,7 @@ Kurzy ukazují postupy založené na scénářích pro některé z hlavních Med
 * [Analýza videa – .NET](analyze-videos-tutorial-with-api.md)
 * [Dynamické šifrování AES-128 – .NET](protect-with-aes128.md)
 
-### <a name="samples"></a>Ukázky kódu
+### <a name="samples"></a>ukázky
 
 Pomocí [tohoto prohlížeče ukázek](https://docs.microsoft.com/samples/browse/?products=azure-media-services) můžete procházet Azure Media Services ukázky kódu.
 

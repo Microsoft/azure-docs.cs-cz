@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 01/29/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5a20f40c893c36823906d5cecadd9be21b8a4fd2
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 0bda94344a22f39daf104e7b95e33723187c4aa1
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836010"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983006"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
 
@@ -52,7 +52,7 @@ Element **ClaimsProvider** obsahuje následující podřízené prvky:
 | Element | Výskytů | Popis |
 | ------- | ---------- | ----------- |
 | Domain (Doména) | 0:1 | Řetězec, který obsahuje název domény pro poskytovatele deklarací identity. Například pokud váš zprostředkovatel deklarací zahrnuje technický profil Facebooku, název domény je Facebook.com. Tento název domény se používá pro všechny technické profily definované ve zprostředkovateli deklarací, pokud není přepsán technickým profilem. Na název domény se taky dá odkazovat v **domain_hint**. Další informace najdete v části **přihlášení k přesměrování do poskytovatele sociálních sítí** v tématu [Nastavení přímého přihlašování pomocí Azure Active Directory B2C](direct-signin.md). |
-| DisplayName | 1:1 | Řetězec, který obsahuje název zprostředkovatele deklarací identity, který lze zobrazit uživatelům. |
+| DisplayName | 1:1 | Řetězec, který obsahuje název zprostředkovatele deklarací. |
 | [TechnicalProfiles](technicalprofiles.md) | 0:1 | Sada technických profilů podporovaná zprostředkovatelem deklarací identity |
 
 **ClaimsProvider** organizuje, jak se vaše technické profily vztahují k poskytovateli deklarací identity. Následující příklad ukazuje zprostředkovatele deklarací Azure Active Directory s Azure Active Directory technickými profily:

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/04/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b82001b8bceac620dec9f1fe6ef47f4aa81b1011
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b6c70e1a5c7e5b81157c09a794ff75e276a20d1f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425608"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982734"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu s vlastním uplatněním v Azure Active Directory B2C vlastní zásady
 
@@ -189,15 +189,16 @@ Pomocí obchodní logiky můžete také volat REST API technický profil, přeps
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| setting.showContinueButton | Ne | Zobrazí tlačítko pokračovat. Možné hodnoty: `true` (výchozí) nebo `false` |
-| setting.showCancelButton | Ne | Zobrazí tlačítko Storno. Možné hodnoty: `true` (výchozí) nebo `false` |
 | nastavení. operatingMode | Ne | Pro přihlašovací stránku Tato vlastnost řídí chování pole username, jako je například ověřování vstupu a chybové zprávy. Očekávané hodnoty: `Username` nebo `Email`. |
+| AllowGenerationOfClaimsWithNullValues| Ne| Povoluje generování deklarace identity s hodnotou null. Například v případě, že uživatel nevybere zaškrtávací políčko.|
 | ContentDefinitionReferenceId | Ano | Identifikátor [definice obsahu](contentdefinitions.md) přidruženého k tomuto technickému profilu. |
 | EnforceEmailVerification | Ne | Pro registraci nebo úpravy profilu vynutilo ověřování e-mailů. Možné hodnoty: `true` (výchozí) nebo `false`. |
-| nastavení. showSignupLink | Ne | Zobrazí tlačítko pro registraci. Možné hodnoty: `true` (výchozí) nebo `false` |
 | nastavení. retryLimit | Ne | Určuje počet pokusů, kolikrát se uživatel může pokusit zadat data, která jsou zkontrolována na technický profil ověření. Uživatel se například pokusí zaregistrovat pomocí účtu, který už existuje, a pokračuje v tom, dokud nedosáhne limitu.
 | SignUpTarget | Ne | Identifikátor cílového Exchange registrace. Když uživatel klikne na tlačítko pro registraci, Azure AD B2C spustí zadaný identifikátor Exchange. |
-
+| setting.showCancelButton | Ne | Zobrazí tlačítko Storno. Možné hodnoty: `true` (výchozí) nebo `false` |
+| setting.showContinueButton | Ne | Zobrazí tlačítko pokračovat. Možné hodnoty: `true` (výchozí) nebo `false` |
+| nastavení. showSignupLink | Ne | Zobrazí tlačítko pro registraci. Možné hodnoty: `true` (výchozí) nebo `false` |
+| nastavení. forgotPasswordLinkLocation| Ne| Zobrazí odkaz zapomenuté heslo. Možné hodnoty: `AfterInput` (výchozí) odkaz se zobrazí v dolní části stránky, nebo `None` odebere odkaz zapomenuté heslo.| 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče
 
 Element **CryptographicKeys** se nepoužívá.

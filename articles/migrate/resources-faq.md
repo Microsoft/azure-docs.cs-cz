@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: snehaa
-ms.openlocfilehash: d06e75ec900faa17ed4441c20a52d8da60ee4d97
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: a9d008406e59c66a8b742194e2e2d388c778ac9e
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289454"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989344"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: běžné otázky
 
@@ -62,14 +62,14 @@ Identifikujte potřebný nástroj a přidejte ho do projektu Azure Migrate. Poku
 - V každém nástroji je k dispozici možnost připojit se k Azure Migrate. Použijte pokyny a dokumentaci k nástroji pro připojení nástroje k Azure Migrate.
 Svou cestu k migraci můžete centrálně sledovat v rámci Azure Migrateho projektu v rámci Azure a dalších nástrojů.
 
-### <a name="how-do-i-delete-a-project"></a>Návody odstranit projekt?
+## <a name="how-do-i-delete-a-project"></a>Návody odstranit projekt?
 
 [Přečtěte si, jak](how-to-delete-project.md) odstranit projekt. 
 
 
+## <a name="do-machines-retain-domain-identity-after-migration"></a>Uchovávají počítače po migraci identitu domény?
 
-
-
+Za předpokladu, že doménové služby jsou [integrované do Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/), pak členství v doméně a identitu počítače v doméně se po migraci uchovávají. 
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si [přehled Azure Migrate](migrate-services-overview.md).

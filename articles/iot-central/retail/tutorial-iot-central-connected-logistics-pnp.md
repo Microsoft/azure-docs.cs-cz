@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 17d429444b81746a5c5082b8310c5208bc35f3d2
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 6ddf0a5300caa5e202b16fc4f376056489cd9b61
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889039"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984270"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>Kurz: nasazení a procházení prostřednictvím připojené šablony logistické aplikace
 
@@ -32,19 +32,22 @@ V tomto kurzu se naučíte,
 Aplikaci můžete vytvořit pomocí následujících kroků.
 1. Přejděte na web Azure IoT Central Správce aplikací. V levém navigačním panelu vyberte **Build (sestavit** ) a pak klikněte na kartu **maloobchod** .
 
-> [!div class="mx-imgBorder"]
-> Řídicí panel ![připojená logistika](./media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png)
+    > [!div class="mx-imgBorder"]
+    > Řídicí panel ![připojená logistika](./media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png)
 
 2. Vybrat **vytvořit aplikaci** v rámci **připojené logistické aplikace**
 
 3. Při **vytváření aplikace** se otevře formulář nové aplikace a vyplní se požadované podrobnosti, jak je vidět níže.
    * **Název aplikace**: můžete použít výchozí navrhovaný název nebo zadat popisný název aplikace.
-   * **Adresa URL**: můžete použít navrhovanou výchozí adresu URL nebo zadat svou snadno jedinečnou adresu URL. Pokud už máte předplatné Azure, doporučuje se výchozí nastavení. jinak můžete začít s bezplatným zkušebním obdobím a můžete ho převést kdykoli před vypršením doby platnosti bezplatného koncového data.
+   * **Adresa URL**: můžete použít navrhovanou výchozí adresu URL nebo zadat svou snadno jedinečnou adresu URL. V dalším kroku se doporučuje výchozí nastavení, pokud už předplatné Azure máte. Můžete začít s cenovým tarifem bezplatné zkušební verze na 7 dní a po dobu platnosti bezplatného záznamu můžete kdykoli převést na standardní cenový plán.
    * **Informace o fakturaci**: ke zřízení prostředků se vyžaduje adresář, předplatné Azure a podrobnosti o oblasti.
    * **Vytvořit** : v dolní části stránky vyberte vytvořit a nasaďte svoji aplikaci.
 
-> [!div class="mx-imgBorder"]
-> Řídicí panel ![připojená logistika](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png)
+    > [!div class="mx-imgBorder"]
+    > Řídicí panel ![připojená logistika](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png)
+
+    > [!div class="mx-imgBorder"]
+    > informace o fakturaci logistiky ![](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png)
 
 ## <a name="walk-through-the-application"></a>Procházení aplikací 
 

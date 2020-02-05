@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: fd3396a98359aef966cd8bb2f984e556fc6abcc7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 08fbe9565356dc1b7db952fdd265770fef600ca8
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584802"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989038"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Vytvoření a Správa šablony učebny v Azure Lab Services
-Šablona v testovacím prostředí je základní image virtuálního počítače, ze které se vytváří všechny virtuální počítače uživatelů. Nastavte virtuální počítač šablony tak, aby byl nakonfigurován přesně podle toho, co chcete uživatelům testovacího prostředí poskytovat. Můžete zadat název a popis šablony, které uvidí uživatelé testovacího prostředí. Pak publikujete šablonu, aby byly k dispozici instance virtuálního počítače šablony pro vaše uživatele testovacího prostředí. Jakmile publikujete šablonu, vytvoří služba Azure Lab Services pomocí této šablony virtuální počítače v testovacím prostředí. Počet virtuálních počítačů, které se v tomto procesu vytvoří, se rovná maximálnímu počtu uživatelů, kteří mohou k testovacímu prostředí přistupovat. Tento počet můžete nastavit v zásadách používání testovacího prostředí. Všechny virtuální počítače mají stejnou konfiguraci jako šablona.
+Šablona v testovacím prostředí je základní image virtuálního počítače, ze které se vytváří všechny virtuální počítače uživatelů. Nastavte virtuální počítač šablony tak, aby byl nakonfigurovaný přesně podle toho, co chcete uživatelům testovacího prostředí poskytnout. Můžete zadat název a popis šablony, které uvidí uživatelé testovacího prostředí. Pak publikujete šablonu, aby byly k dispozici instance virtuálního počítače šablony pro vaše uživatele testovacího prostředí. Jakmile publikujete šablonu, vytvoří služba Azure Lab Services pomocí této šablony virtuální počítače v testovacím prostředí. Počet virtuálních počítačů, které se v tomto procesu vytvoří, se rovná maximálnímu počtu uživatelů, kteří mohou k testovacímu prostředí přistupovat. Tento počet můžete nastavit v zásadách používání testovacího prostředí. Všechny virtuální počítače mají stejnou konfiguraci jako šablona.
 
 Tento článek popisuje, jak vytvořit a spravovat virtuální počítač šablony v laboratorním prostředí pro učebnu Azure Lab Services. 
 
@@ -39,17 +39,15 @@ Pomocí následujícího postupu můžete nastavit název a popis poprvé a pozd
 ## <a name="update-a-template-vm"></a>Aktualizace virtuálního počítače šablony
 Pomocí následujících kroků aktualizujte virtuální počítač šablony.  
 
-1. Na stránce **Šablona** vyberte **přizpůsobit šablonu** na panelu nástrojů. 
-2. V dialogovém okně **přizpůsobit šablonu** vyberte **pokračovat**. Po spuštění šablony a provedení změn už nebude mít stejné nastavení jako virtuální počítače, které jsou naposledy publikované pro vaše uživatele. Změny šablony se neprojeví na stávajících virtuálních počítačích vašich uživatelů, dokud je znovu nepublikujete.
-
-    ![Dialogové okno přizpůsobit](../media/how-to-create-manage-template/customize-template-dialog.png)
 1. Počkejte, než se spustí virtuální počítač šablony, a pak vyberte **připojit k šabloně** na panelu nástrojů, abyste se připojili k virtuálnímu počítači šablony, a postupujte podle pokynů. Pokud se jedná o počítač s Windows, zobrazí se možnost stáhnout soubor RDP. 
+1. Jakmile se připojíte k šabloně a provedete změny, již nebude mít stejné nastavení jako virtuální počítače naposledy publikované pro vaše uživatele. Změny šablony se neprojeví na stávajících virtuálních počítačích vašich uživatelů, dokud je znovu nepublikujete.
 
     ![Připojení k šabloně virtuálního počítače](../media/how-to-create-manage-template/connect-template-vm.png)
+    
 1. Nainstalujte software, který studenti v testovacím prostředí potřebují (například sadu Visual Studio, Průzkumníka služby Azure Storage atd.). 
-2. Odpojte se od šablony virtuálního počítače (ukončete relaci vzdálené plochy). 
-3. Kliknutím na **zastavit šablonu** **zastavte** virtuální počítač šablony. 
-4. Pokud chcete **publikovat** aktualizovaný virtuální počítač šablony, postupujte podle kroků v následující části. 
+1. Odpojte se od šablony virtuálního počítače (ukončete relaci vzdálené plochy). 
+1. Kliknutím na **zastavit šablonu** **zastavte** virtuální počítač šablony. 
+1. Pokud chcete **publikovat** aktualizovaný virtuální počítač šablony, postupujte podle kroků v následující části. 
 
 ## <a name="publish-the-template-vm"></a>Publikování šablony virtuálního počítače  
 Pokud šablonu nepublikujete během vytváření testovacího prostředí, můžete ji publikovat později. Před publikováním se můžete chtít připojit k virtuálnímu počítači šablony a aktualizovat ho pomocí libovolného softwaru. Jakmile publikujete šablonu, vytvoří služba Azure Lab Services pomocí této šablony virtuální počítače v testovacím prostředí. Počet virtuálních počítačů vytvořených v tomto procesu je počet virtuálních počítačů, které jste zadali při prvním publikování nebo které jste zadali na stránce fondu virtuálních počítačů. Všechny virtuální počítače mají stejnou konfiguraci jako šablona. 
@@ -61,7 +59,7 @@ Pokud šablonu nepublikujete během vytváření testovacího prostředí, můž
 
     > [!IMPORTANT]
     > Jakmile je šablona publikovaná, nejde to vrátit. Šablonu můžete publikovat i v takovém případě. 
-4. Stav procesu publikování můžete zobrazit na stránce šablony. Počkejte, až se stav šablony změní na **Publikováno**. 
+1. Stav procesu publikování můžete zobrazit na stránce šablony. Počkejte, až se stav šablony změní na **Publikováno**. 
 
     ![Stav publikování](../media/how-to-create-manage-template/publish-status.png)
 1. Přepněte na stránku **Virtual machines** (Virtuální počítače) a zkontrolujte, že se zobrazí virtuální počítače ve stavu **Unassigned** (Nepřiřazeno). Tyto virtuální počítače ještě nejsou přiřazené ke studentům. Počkejte na vytvoření virtuálních počítačů. Měly by být ve stavu **Stopped** (Zastaveno). Na této stránce můžete spustit studentský virtuální počítač, připojit se k němu, zastavit ho a odstranit ho. Můžete je spustit na této stránce nebo nechat své studenty začít s virtuálními počítači. 

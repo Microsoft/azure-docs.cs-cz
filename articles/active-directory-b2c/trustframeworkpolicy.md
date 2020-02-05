@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 01/31/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5737a53d3eca0da440f178f9fd34adf5e968dd62
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b49c873112358db4fec2992ef3d2d61161e8b373
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840175"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982411"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -45,7 +45,7 @@ Element **TrustFrameworkPolicy** obsahuje následující atributy:
 | TenantId | Ano | Jedinečný identifikátor tenanta, ke kterému patří tato zásada |
 | `PolicyId` | Ano | Jedinečný identifikátor pro zásady Tento identifikátor musí být předponou *B2C_1A_* |
 | PublicPolicyUri | Ano | Identifikátor URI pro zásadu, která je kombinací ID tenanta a ID zásad. |
-| DeploymentMode | Ne | Možné hodnoty: `Production`, `Debugging`nebo `Development`. `Production` je výchozí možnost. Tato vlastnost slouží k ladění zásad. Další informace najdete v tématu [shromažďování protokolů](troubleshoot-with-application-insights.md). |
+| DeploymentMode | Ne | Možné hodnoty: `Production`nebo `Development`. `Production` je výchozí možnost. Tato vlastnost slouží k ladění zásad. Další informace najdete v tématu [shromažďování protokolů](troubleshoot-with-application-insights.md). |
 | UserJourneyRecorderEndpoint | Ne | Koncový bod, který se používá, když je **DeploymentMode** nastaveno na `Development`. Hodnota musí být `urn:journeyrecorder:applicationinsights`. Další informace najdete v tématu [shromažďování protokolů](troubleshoot-with-application-insights.md). |
 
 

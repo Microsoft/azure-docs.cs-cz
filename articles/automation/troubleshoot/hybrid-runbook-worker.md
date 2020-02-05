@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a5885df67464095061d9a95aa59010a1629fb8f8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: d5adc94061cd656b0654fba6609d36ecfd38c75d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76930353"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988035"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Řešení potíží s procesy Hybrid Runbook Worker
 
@@ -22,7 +22,7 @@ Tento článek poskytuje informace o řešení potíží s procesy Hybrid Runboo
 
 ## <a name="general"></a>Obecné
 
-Hybrid Runbook Worker závisí na agentovi ke komunikaci s vaším účtem Automation za účelem registrace pracovního procesu, příjmu úloh sady Runbook a stavu sestavy. Pro Windows je tímto agentem agent Log Analytics pro Windows (také označovaný jako Microsoft Monitoring Agent (MMA)). Pro Linux se jedná o agenta Log Analytics pro Linux.
+Hybrid Runbook Worker závisí na agentovi ke komunikaci s vaším účtem Automation za účelem registrace pracovního procesu, příjmu úloh sady Runbook a stavu sestavy. Pro Windows je tento agent agentem Log Analytics pro Windows, označovaný taky jako Microsoft Monitoring Agent (MMA). Pro Linux se jedná o agenta Log Analytics pro Linux.
 
 ### <a name="runbook-execution-fails"></a>Scénář: spuštění sady Runbook se nezdařilo
 
@@ -34,7 +34,7 @@ Spuštění sady Runbook se nezdařilo a zobrazí se následující chyba:
 "The job action 'Activate' cannot be run, because the process stopped unexpectedly. The job action was attempted three times."
 ```
 
-Vaše sada Runbook se krátce pozastaví, jakmile se pokusí ji spustit třikrát. Existují podmínky, které mohou rušit dokončení sady Runbook. Související chybová zpráva nemusí obsahovat žádné další informace.
+Vaše sada Runbook je pozastavena krátce poté, co se pokusí provést tři časy. Existují podmínky, které mohou rušit dokončení sady Runbook. Související chybová zpráva nemusí obsahovat žádné další informace.
 
 #### <a name="cause"></a>Příčina
 
@@ -72,7 +72,6 @@ At line:3 char:1
     + CategoryInfo          : CloseError: (:) [Connect-AzureRmAccount], ArgumentException
     + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.ConnectAzureRmAccountCommand
 ```
-
 #### <a name="cause"></a>Příčina
 
 K této chybě dochází, pokud se pokusíte použít [účet Spustit jako](../manage-runas-account.md) v sadě Runbook, která běží na Hybrid Runbook Worker, kde není přítomen certifikát účtu Spustit jako. Hybridní pracovní procesy Runbooku nemají ve výchozím nastavení prostředek certifikátu, který je vyžadován pro správné fungování účtu Spustit jako.
@@ -80,41 +79,6 @@ K této chybě dochází, pokud se pokusíte použít [účet Spustit jako](../m
 #### <a name="resolution"></a>Rozlišení
 
 Pokud je vaším Hybrid Runbook Worker VIRTUÁLNÍm počítačem Azure, můžete místo toho použít [spravované identity pro prostředky Azure](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) . Tento scénář zjednodušuje ověřování tím, že umožňuje ověřování prostředků Azure pomocí spravované identity virtuálního počítače Azure namísto účtu Spustit jako. Když Hybrid Runbook Worker je místní počítač, musíte na tento počítač nainstalovat certifikát účtu Spustit jako. Informace o tom, jak nainstalovat certifikát, najdete v tématu spuštění PowerShellu export-RunAsCertificateToHybridWorker ve [spouštění Runbooků na Hybrid Runbook Worker](../automation-hrw-run-runbooks.md).
-
-## <a name="linux"></a>Linux
-
-Hybrid Runbook Worker pro Linux závisí na [agentovi Log Analytics pro Linux](../../azure-monitor/platform/log-analytics-agent.md) ke komunikaci s vaším účtem Automation za účelem registrace pracovního procesu, příjmu úloh Runbooku a stavu sestavy. Pokud se registrace pracovního procesu nezdařila, můžete k této chybě použít některé možné příčiny:
-
-### <a name="oms-agent-not-running"></a>Scénář: Agent Log Analytics pro Linux není spuštěný.
-
-#### <a name="issue"></a>Problém
-
-Agent Log Analytics pro Linux není spuštěný.
-
-#### <a name="cause"></a>Příčina
-
-Pokud agent neběží, zabrání Hybrid Runbook Worker pro Linux komunikovat s Azure Automation. Agent možná není spuštěný z různých důvodů.
-
-#### <a name="resolution"></a>Rozlišení
-
- Ověřte, jestli je agent spuštěný, a to zadáním následujícího příkazu: `ps -ef | grep python`. Měl by se zobrazit výstup podobný následujícímu: aplikace Python zpracuje s uživatelským účtem **nxautomation** . Pokud nejsou povolena řešení Update Management nebo Azure Automation, není spuštěn žádný z následujících procesů.
-
-```bash
-nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
-nxautom+   8593      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/state/automationworker/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
-nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/<workspaceId>/state/automationworker/diy/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
-```
-
-V následujícím seznamu jsou uvedeny procesy, které jsou spuštěny pro Hybrid Runbook Worker pro Linux. Všechno jsou umístěné v adresáři `/var/opt/microsoft/omsagent/state/automationworker/`.
-
-
-* **OMS. conf** – tato hodnota je proces správce pracovních procesů. Spouští se přímo z DSC.
-
-* **Worker. conf** – tento proces je automaticky registrovaný Hybrid Worker, který je spuštěný správcem pracovních procesů. Tento proces používá Update Management a je pro uživatele transparentní. Tento proces není k dispozici, pokud řešení Update Management není na počítači povoleno.
-
-* **svépomocná/Worker. conf** – tento proces je hybridní pracovní proces svépomocná. Hybridní pracovní proces SVÉPOMOCNÁ slouží ke spouštění sad Runbook na Hybrid Runbook Worker. Liší se pouze od automatického zaregistrovaného hybridního pracovního procesu v podrobnostech klíče, který používá jinou konfiguraci. Tento proces není k dispozici, pokud je řešení Azure Automation zakázané a Hybrid Worker SVÉPOMOCNÁ Linux není zaregistrované.
-
-Pokud agent neběží, spusťte následující příkaz, který službu spustí: `sudo /opt/microsoft/omsagent/bin/service_control restart`.
 
 ### <a name="error-403-on-registration"></a>Scénář: Chyba 403 během registrace Hybrid Runbook Worker
 
@@ -142,6 +106,41 @@ Pokud chcete ověřit, jestli se ID nebo klíč pracovního prostoru agenta nevy
 Váš pracovní prostor Log Analytics a účet Automation musí být v propojené oblasti. Seznam podporovaných oblastí naleznete v tématu [Azure Automation a Log Analytics mapování pracovních prostorů](../how-to/region-mappings.md).
 
 Může být také nutné aktualizovat datum nebo časové pásmo počítače. Pokud vyberete vlastní časový rozsah, ujistěte se, že je rozsah v UTC, což se může lišit od místního časového pásma.
+
+## <a name="linux"></a>Linux
+
+Hybrid Runbook Worker pro Linux závisí na [agentovi Log Analytics pro Linux](../../azure-monitor/platform/log-analytics-agent.md) ke komunikaci s vaším účtem Automation za účelem registrace pracovního procesu, příjmu úloh Runbooku a stavu sestavy. Pokud se registrace pracovního procesu nezdařila, můžete k této chybě použít některé možné příčiny:
+
+### <a name="oms-agent-not-running"></a>Scénář: Agent Log Analytics pro Linux není spuštěný.
+
+#### <a name="issue"></a>Problém
+
+Agent Log Analytics pro Linux není spuštěný.
+
+#### <a name="cause"></a>Příčina
+
+Pokud agent neběží, zabrání Hybrid Runbook Worker pro Linux komunikovat s Azure Automation. Je možné, že agent neběží z různých důvodů.
+
+#### <a name="resolution"></a>Rozlišení
+
+ Ověřte, jestli je agent spuštěný, a to zadáním následujícího příkazu: `ps -ef | grep python`. Měl by se zobrazit výstup podobný následujícímu: aplikace Python zpracuje s uživatelským účtem **nxautomation** . Pokud nejsou povolena řešení Update Management nebo Azure Automation, není spuštěn žádný z následujících procesů.
+
+```bash
+nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
+nxautom+   8593      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/state/automationworker/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
+nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/<workspaceId>/state/automationworker/diy/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
+```
+
+V následujícím seznamu jsou uvedeny procesy, které jsou spuštěny pro Hybrid Runbook Worker pro Linux. Všechno jsou umístěné v adresáři `/var/opt/microsoft/omsagent/state/automationworker/`.
+
+
+* **OMS. conf** – proces správce pracovních procesů. Spouští se přímo z DSC.
+
+* **Worker. conf** – automaticky registrovaný hybridní pracovní proces je spuštěný správcem pracovních procesů. Tento proces používá Update Management a je pro uživatele transparentní. Tento proces není k dispozici, pokud řešení Update Management není na počítači povoleno.
+
+* **svépomocná/Worker. conf** – svépomocná Hybrid Worker. Hybridní pracovní proces SVÉPOMOCNÁ slouží ke spouštění sad Runbook na Hybrid Runbook Worker. Liší se pouze od automatického zaregistrovaného hybridního pracovního procesu v podrobnostech klíče, který používá jinou konfiguraci. Tento proces není k dispozici, pokud je řešení Azure Automation zakázané a Hybrid Worker SVÉPOMOCNÁ Linux není zaregistrované.
+
+Pokud agent neběží, spusťte následující příkaz, který službu spustí: `sudo /opt/microsoft/omsagent/bin/service_control restart`.
 
 ### <a name="class-does-not-exist"></a>Scénář: Zadaná třída neexistuje.
 
@@ -181,7 +180,7 @@ Důvodem může být to, že proxy server nebo brána firewall sítě blokuje ko
 
 #### <a name="resolution"></a>Rozlišení
 
-Protokoly se ukládají místně na každý hybridní pracovní proces na C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes. V protokolu událostí Logs\Microsoft-SMA\Operations a **Application and Services Logs\Operations Manageru** služby **Application and** Services je možné zjistit, zda nejsou k dispozici žádné události upozornění nebo chyby, které označují připojení nebo jiný problém, který má vliv na registraci role Azure Automation nebo vystavování při běžném provozu. Další pomoc při řešení potíží s agentem Log Analytics najdete v tématu [řešení potíží s agentem Log Analytics Windows](../../azure-monitor/platform/agent-windows-troubleshoot.md).
+Protokoly se ukládají místně na každý hybridní pracovní proces na C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes. Můžete ověřit, zda se v protokolu událostí Logs\Microsoft-SMA\Operations a Application and Services pro aplikace a **služby Logs\Operations** ( **Application** and Services) vyskytnou nějaké události s varováním nebo chybou, které označují připojení nebo jiný problém, který má vliv na registraci role Azure Automation nebo vydání při běžném provozu. Další pomoc při řešení potíží s agentem Log Analytics najdete v tématu [řešení potíží s agentem Log Analytics Windows](../../azure-monitor/platform/agent-windows-troubleshoot.md).
 
 [Výstup runbooku a zprávy](../automation-runbook-output-and-messages.md) se odesílají Azure Automation z hybridních pracovních procesů stejně jako úlohy Runbooku, které běží v cloudu. Můžete také povolit streamování verbose a průběh stejným způsobem jako jiné sady Runbook.
 

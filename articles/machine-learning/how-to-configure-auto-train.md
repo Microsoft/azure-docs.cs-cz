@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 03f01e4c69e92f62774c9b128c960ec2190c9937
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: b4396c82851969b39841ba77fb8aba9679363474
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76937889"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986491"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace automatizovaných experimentů ML v Pythonu
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -172,7 +172,7 @@ Možné příklady:
         n_cross_validations=5)
     ```
 
-Existují tři různé hodnoty parametrů `task` (třetí typ úlohy je `forecasting`a používá podobný fond algoritmů jako `regression` úkoly). určuje seznam modelů, které se mají použít. Pomocí parametrů `whitelist` nebo `blacklist` můžete dále upravit iterace s dostupnými modely, které chcete zahrnout nebo vyloučit. Seznam podporovaných modelů lze nalézt ve [třídě SupportedModels](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels) pro [klasifikace] (https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification) , [prognózy] (https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting) a [regrese] (https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression).
+Existují tři různé hodnoty parametrů `task` (třetí typ úlohy je `forecasting`a používá podobný fond algoritmů jako `regression` úkoly). určuje seznam modelů, které se mají použít. Pomocí parametrů `whitelist` nebo `blacklist` můžete dále upravit iterace s dostupnými modely, které chcete zahrnout nebo vyloučit. Seznam podporovaných modelů lze nalézt ve [třídě SupportedModels](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels) pro ([klasifikace](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification), [Prognózování](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)a [regresi](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression)).
 
 ### <a name="primary-metric"></a>Primární metriku
 Primární metrika určuje metriku, která se má použít během školení modelu pro optimalizaci. Dostupné metriky můžete vybrat podle typu úlohy, kterou zvolíte, a v následující tabulce jsou uvedeny platné primární metriky pro každý typ úkolu.

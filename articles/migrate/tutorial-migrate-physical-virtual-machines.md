@@ -1,27 +1,23 @@
 ---
-title: Migrace místních fyzických počítačů nebo virtualizovaných počítačů do Azure pomocí migrace Azure Migrate serveru | Microsoft Docs
-description: Tento článek popisuje, jak migrovat místní fyzické počítače nebo virtualizované počítače do Azure pomocí migrace Azure Migrate serveru.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
+title: Migrujte počítače jako fyzický server do Azure pomocí Azure Migrate.
+description: Tento článek popisuje, jak migrovat fyzické počítače do Azure pomocí Azure Migrate.
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.author: raynew
+ms.date: 02/03/2020
 ms.custom: MVC
-ms.openlocfilehash: 4a6e33770f93c365d5ccd034803c7c7f247d528a
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 6cdd107cb761aab3a85b73067fd646a36fe97d63
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028798"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989752"
 ---
-# <a name="migrate-physical-or-virtualized-servers-to-azure"></a>Migrace fyzických nebo virtualizovaných serverů do Azure 
+# <a name="migrate-machines-as-physical-servers-to-azure"></a>Migrace počítačů jako fyzických serverů do Azure
 
-V tomto článku se dozvíte, jak migrovat fyzické nebo virtualizované servery do Azure. Nástroj pro migraci serveru Azure Migrate nabízí migraci fyzických a virtualizovaných serverů pomocí replikace založené na agentech. Pomocí tohoto nástroje můžete migrovat široké spektrum počítačů do Azure:
+V tomto článku se dozvíte, jak migrovat počítače jako fyzické servery do Azure pomocí nástroje Azure Migrate: Server pro migraci. Migrace počítačů jejich použitím jako fyzických serverů je užitečná v různých scénářích:
 
 - Migrujte místní fyzické servery.
 - Migrujte virtuální počítače virtualizované pomocí platforem, jako je Xen, KVM.
-- Migrujte virtuální počítače Hyper-V nebo VMware. To je užitečné, pokud z nějakého důvodu nemůžete použít standardní tok migrace, který Azure Migrate nabízí migrace serveru pro [Hyper-V](tutorial-migrate-hyper-v.md), migraci bez [agenta VMware](tutorial-migrate-vmware.md) nebo migraci [na základě agenta VMware](tutorial-migrate-vmware-agent.md) .
+- Migrace virtuálních počítačů s Hyper-V nebo VMware, pokud z nějakého důvodu nemůžete použít standardní proces migrace pro [Hyper-v](tutorial-migrate-hyper-v.md)nebo migraci [VMware](server-migrate-overview.md) .
 - Migrujte virtuální počítače běžící v privátních cloudech.
 - Migrujte virtuální počítače běžící ve veřejných cloudech, jako je Amazon Web Services (AWS) nebo Google Cloud Platform (GCP).
 
@@ -175,7 +171,7 @@ Prvním krokem migrace je nastavení zařízení replikace. Stáhněte si instal
 
 ### <a name="download-the-replication-appliance-installer"></a>Stažení instalačního programu zařízení replikace
 
-1. V Azure Migrate projektu > na **serverech*****Azure Migrate: Migrace serveru**klikněte na **Vyhledat**.
+1. V Azure Migrate Project > **servery**v části **Azure Migrate: Migrace serveru**klikněte na **Vyhledat**.
 
     ![Vyhledání virtuálních počítačů](./media/tutorial-migrate-physical-virtual-machines/migrate-discover.png)
 
@@ -205,7 +201,7 @@ Po dokončení registrace může trvat až 15 minut, než se zjištěné počít
 
 ## <a name="install-the-mobility-service"></a>Instalace služby Mobility
 
-V počítačích, které chcete migrovat, je potřeba nainstalovat agenta služby mobility. Instalační programy agentů jsou k dispozici na zařízení replikace. Najdete správný instalační program a nainstalujete agenta na každý počítač, který chcete migrovat. Proveďte to následujícím způsobem:
+V počítačích, které chcete migrovat, je potřeba nainstalovat agenta služby mobility. Instalační programy agentů jsou k dispozici na zařízení replikace. Najdete správný instalační program a nainstalujete agenta na každý počítač, který chcete migrovat. Postupujte následovně:
 
 1. Přihlaste se k zařízení replikace.
 2. Přejděte na **%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository**.
@@ -266,8 +262,7 @@ Teď vyberte počítače pro migraci.
 
 2. V případě **replikace**> **Nastavení zdroje** > **jsou vaše počítače virtualizované?** vyberte **nevirtualizované/jiné**.
 3. V části **místní zařízení**vyberte název zařízení Azure Migrate, které jste nastavili.
-4. V systému **vCenter Server**zadejte název vCenter serveru, který spravuje virtuální počítače, nebo vSphere Server, na kterém jsou virtuální počítače hostované.
-5. V části **procesový Server**vyberte název zařízení replikace.
+4. V části **procesový Server**vyberte název zařízení replikace.
 6. V části **přihlašovací údaje hosta**zadáte účet správce virtuálních počítačů, který se bude používat pro nabízenou instalaci služby mobility. V tomto kurzu nainstalujeme službu mobility ručně, takže můžete přidat libovolný fiktivní účet. Pak klikněte na **Další: virtuální počítače**.
 
     ![Replikace virtuálních počítačů](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)

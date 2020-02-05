@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: cd06d4cbf62078c2c7a5def4a0032ddce97d67f0
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 27b430ca6e90eba933662bd35d8d97b08234c84e
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842448"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989021"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je to privátní koncový bod Azure?
 
@@ -130,9 +130,7 @@ Následující tabulka obsahuje seznam známých omezení při použití privát
 
 |Omezení |Popis |Omezení rizik  |
 |---------|---------|---------|
-|Pravidla skupiny zabezpečení sítě (NSG) a uživatelsky definované trasy se nevztahují na soukromý koncový bod.    |NSG se nepodporuje u privátních koncových bodů. V případě, že k podsítím obsahujícím soukromý koncový bod může být přidruženo NSG, pravidla nebudou platná pro přenosy zpracovávané privátním koncovým bodem. K nasazení privátních koncových bodů v podsíti je nutné, aby bylo [vynucování zásad sítě zakázané](disable-private-endpoint-network-policy.md) . NSG se pořád vynutil na jiných úlohách hostovaných ve stejné podsíti. Při směrování v každé podsíti klienta bude použita předpona/32, změna výchozího chování směrování vyžaduje podobný UDR  | Řízení provozu pomocí pravidel NSG pro odchozí přenosy na zdrojových klientech. Nasaďte jednotlivé trasy s předponou/32 a přepište trasy privátních koncových bodů.        |
-|  Partnerský Virtual Network s privátními koncovými body se nepodporují.   |   Při připojování k privátním koncovým bodům na Virtual Network s partnerským vztahem bez nutnosti jiné úlohy není podporovaná.       | Nasazení jediného virtuálního počítače v partnerském Virtual Network pro povolení připojení |
-|Specializované úlohy nemůžou přistupovat k privátním koncovým bodům.    |   Následující služby nasazené do vaší virtuální sítě nemají přístup k jakémukoli prostředku privátního propojení pomocí privátních koncových bodů:<br>Plán služby App Service</br>Instance kontejneru Azure</br>Azure NetApp Files</br>Rezervované HSM Azure<br>       |   Ve verzi Preview není žádné zmírnění.       |
+|Pravidla skupiny zabezpečení sítě (NSG) a uživatelsky definované trasy se nevztahují na soukromý koncový bod.    |NSG se nepodporuje u privátních koncových bodů. V případě, že k podsítím obsahujícím soukromý koncový bod může být přidruženo NSG, pravidla nebudou platná pro přenosy zpracovávané privátním koncovým bodem. K nasazení privátních koncových bodů v podsíti je nutné, aby bylo [vynucování zásad sítě zakázané](disable-private-endpoint-network-policy.md) . NSG se pořád vynutil na jiných úlohách hostovaných ve stejné podsíti. Při směrování v každé podsíti klienta bude použita předpona/32, změna výchozího chování směrování vyžaduje podobný UDR  | Řízení provozu pomocí pravidel NSG pro odchozí přenosy na zdrojových klientech. Nasaďte jednotlivé trasy s předponou/32, abyste mohli přepsat trasy privátních koncových bodů. Protokoly toku NSG a informace o monitorování pro odchozí připojení se pořád podporují a dají se použít.        |
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: f6e16ed6646340a5c623ecd027e8b0fe323bf7f9
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: b19c23c7adb8dce84530b8f3f8d994f4e32869cc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910615"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988936"
 ---
 # <a name="azure-maps-routing-coverage"></a>Pokrytí směrování Azure Maps
 
-Tento článek poskytuje informace o pokrytí pro Azure Maps směrování. Když vyhledáváte optimální trasu z umístění A na B, Azure Maps může poskytovat vysoce přesné cesty, živé aktualizované cestovní informace a pokyny pro trasy. Trasa bude brát v úvahu další hledané podmínky, jako je aktuální provoz, typ a podmínky prostředku, abyste se vyhnuli. Možnost optimalizace trasy závisí na oblasti, protože Azure Maps má různé úrovně informací a přesnost pro různé oblasti. V následující tabulce jsou uvedené oblasti a jaké druhy informací si můžete pro ně vyžádat.
+Tento článek poskytuje informace o pokrytí pro Azure Maps směrování. Po vyhledávacím dotazu Azure Maps vrátí optimální trasu z umístění A do umístění B. Máte k dispozici přesné cestovné, živé aktualizace informací o cestách a pokyny pro směrování. Můžete také přidat další parametry vyhledávání, jako je aktuální přenos, typ vozidla a podmínky, abyste se vyhnuli. Optimalizace trasy závisí na oblasti. Důvodem je, Azure Maps má různé úrovně informací a přesnost pro různé oblasti. V následující tabulce jsou uvedené oblasti a jaké druhy informací si můžete pro ně vyžádat.
  
 Podívejte se na pokrytí pro [**geografické kódování**](geocoding-coverage.md).       
 Rezervujte [**provoz**](traffic-coverage.md)na pokrytí.  
 Rezervujte pokrytí pro [**vykreslování**](render-coverage.md).
 <br>  
-**Legenda**
+**Popisek**
 
-| Symbol             | Význam                                |
+| Písmeno             | Význam                                |
 |--------------------|----------------------------------------|
 | ✓                  | Země nebo oblast, které jsou k dispozici s podrobnými daty.   |
 | Ø                  | Země/oblast poskytnutá s zjednodušenými daty |
@@ -69,7 +69,7 @@ Následující tabulka poskytuje informace o pokrytí Azure Maps směrování.
 | Nigérie                        |        ✓       |         ✓            |             |
 | Rwanda                         |        ✓       |                       |             |
 | Senegal                        |        ✓       |                       |             |
-| Seychely                     |        ✓       |                       |             |
+| Seychel                     |        ✓       |                       |             |
 | Jihoafrická republika                   |        ✓       ||         ✓            |             |
 | Svazijsko                      |        ✓       |                       |             |
 | Tanzanie                       |        ✓       |                       |             |
@@ -131,7 +131,7 @@ Následující tabulka poskytuje informace o pokrytí Azure Maps směrování.
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Austrálie                      |        ✓       |         ✓            |     ✓       |
 | A Vánoční ostrov              |        ✓       |                      |             |
-| Brunej                         |        ✓       |         ✓            |             |
+| Sultanát                         |        ✓       |         ✓            |             |
 | Kambodža                       |        ✓       |                      |             |
 | Fidži                           |        ✓       |                      |             |
 | Guam                           |        ✓       |                      |             |
@@ -141,7 +141,7 @@ Následující tabulka poskytuje informace o pokrytí Azure Maps směrování.
 | Kazachstán                |        ✓       |                     |             |
 | Korea                          |        Ø       |                      |             |
 | Laos                           |        ✓       |                      |             |
-| Macao – zvláštní administrativní oblast                      |        ✓       |         ✓            |             |
+| Macao – zvláštní správní oblast                      |        ✓       |         ✓            |             |
 | Malajsie                       |        ✓       |         ✓            |             |
 | Myanmar                        |        ✓       |                      |             |
 | Nový Zéland                    |        ✓       |         ✓            |     ✓       | 

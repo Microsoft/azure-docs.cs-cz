@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 98b5cc707ca8b5ebd1ee88f02082fd3f10fa73dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9042f3d34ee550af50e043167db6339f36b71bd0
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435004"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987590"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Rozšiřování IoT Central Azure pomocí vlastních pravidel pomocí Stream Analytics, Azure Functions a SendGrid
 
@@ -40,7 +40,7 @@ Na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) vytvo�
 
 | Nastavení | Hodnota |
 | ------- | ----- |
-| Platební plán | Průběžné platby |
+| Cenový tarif | Úroveň Standard |
 | Šablona aplikace | Starší verze aplikace |
 | Název aplikace | Přijměte výchozí nebo vyberte svůj vlastní název. |
 | Adresa URL | Přijměte výchozí nebo vyberte vlastní jedinečnou předponu adresy URL. |
@@ -64,10 +64,10 @@ Pomocí [Azure Portal vytvořte obor názvů Event Hubs](https://portal.azure.co
 | Cenová úroveň | Úroveň Basic |
 | Předplatné | Vaše předplatné |
 | Skupina prostředků | DetectStoppedDevices |
-| Umístění | Východní USA |
+| Umístění | Východ USA |
 | Jednotky propustnosti | 1\. místo |
 
-### <a name="stream-analytics-job"></a>Úloha Stream Analytics
+### <a name="stream-analytics-job"></a>Stream Analytics úlohy
 
 Pomocí [Azure Portal vytvořte úlohu Stream Analytics](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob) s následujícím nastavením:
 
@@ -76,7 +76,7 @@ Pomocí [Azure Portal vytvořte úlohu Stream Analytics](https://portal.azure.co
 | Name (Název)    | Vyberte název vaší úlohy. |
 | Předplatné | Vaše předplatné |
 | Skupina prostředků | DetectStoppedDevices |
-| Umístění | Východní USA |
+| Umístění | Východ USA |
 | Hostitelské prostředí | Cloud |
 | Jednotky streamování | 3 |
 
@@ -90,8 +90,8 @@ Pomocí [Azure Portal vytvořte aplikaci funkcí](https://portal.azure.com/#crea
 | Předplatné | Vaše předplatné |
 | Skupina prostředků | DetectStoppedDevices |
 | OS | Windows |
-| Plán Hosting | Plán Consumption |
-| Umístění | Východní USA |
+| Plán hostování | Plán Consumption |
+| Umístění | Východ USA |
 | Zásobník modulu runtime | .NET |
 | Storage | Vytvořit nový |
 

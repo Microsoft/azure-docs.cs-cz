@@ -1,28 +1,28 @@
 ---
-title: Povolení a práce s protokoly diagnostiky Azure bastionu | Microsoft Docs
+title: Povolení a práce s protokoly diagnostiky Azure bastionu
 description: V tomto článku se dozvíte, jak povolit a pracovat s diagnostickými protokoly Azure bastionu.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8ae421b48f3cfa8055f636052c990f99e0c775b4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2167a17d5d388c97ad357398c4ac2676e43be5a4
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512402"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989446"
 ---
 # <a name="enable-and-work-with-bastion-diagnostic-logs"></a>Povolení a práce s diagnostickými protokoly bastionu
 
-Uživatelé, kteří se připojují k úlohám pomocí Azure bastionu, můžou bastionu protokolovat diagnostiku vzdálených relací. Potom můžete pomocí diagnostiky zobrazit, kteří uživatelé se k nimž úlohám připojeni a v jakém čase mají a jiné tyto relevantní informace o protokolování. Aby bylo možné používat diagnostiku, musíte povolit diagnostické protokoly v Azure bastionu. Tento článek vám pomůže povolit diagnostické protokoly a pak zobrazit protokoly.
+Uživatelé, kteří se připojují k úlohám pomocí Azure bastionu, můžou bastionu protokolovat diagnostiku vzdálených relací. Pak můžete pomocí diagnostiky zobrazit, kteří uživatelé se k nimž mají připojené úlohy, v jakém čase, kdy a dalších relevantních informací o protokolování. Aby bylo možné používat diagnostiku, musíte povolit diagnostické protokoly v Azure bastionu. Tento článek vám pomůže povolit diagnostické protokoly a pak zobrazit protokoly.
 
 ## <a name="enable"></a>Povolit diagnostický protokol
 
 1. V [Azure Portal](https://portal.azure.com)přejděte do svého prostředku Azure bastionu a na stránce Azure bastionu vyberte **nastavení diagnostiky** .
 
-   ![Nastavení diagnostiky](./media/diagnostic-logs/1diagnostics-settings.png)
+   ![nastavení diagnostiky](./media/diagnostic-logs/1diagnostics-settings.png)
 2. Vyberte **nastavení diagnostiky**a pak vyberte **+ Přidat nastavení diagnostiky** a přidejte tak cíl pro protokoly.
 
    ![Přidat nastavení diagnostiky](./media/diagnostic-logs/2add-diagnostic-setting.png)
@@ -39,7 +39,7 @@ Chcete-li získat přístup k diagnostickým protokolům, můžete přímo použ
 
 1. Přejděte k prostředku svého účtu úložiště a potom do **kontejnerů**. V kontejneru objektů BLOB v účtu úložiště se zobrazí objekt BLOB **Insights-logs-bastionauditlogs** .
 
-   ![Nastavení diagnostiky](./media/diagnostic-logs/1-navigate-to-logs.png)
+   ![nastavení diagnostiky](./media/diagnostic-logs/1-navigate-to-logs.png)
 2. Při přechodu dovnitř kontejneru uvidíte na svém blogu různé složky. Tyto složky označují hierarchii prostředků pro váš prostředek Azure bastionu.
 
    ![Přidat nastavení diagnostiky](./media/diagnostic-logs/2-resource-h.png)

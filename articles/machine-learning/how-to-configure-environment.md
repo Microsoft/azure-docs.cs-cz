@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0fef7d6f59b8893ff400914f491f421cddf436b7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 56d6e8642ffd127f0982485902c466b76cbaaeed
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842916"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986508"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace prostředí pro vývoj pro Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +59,7 @@ Pokud chcete nainstalovat prostředí SDK pro svůj [místní počítač](#local
 Instance služby [compute Azure Machine Learning (Preview)](concept-compute-instance.md) je zabezpečená cloudová pracovní stanice Azure, která poskytuje odborníky na data pomocí serveru Jupyter notebook, JupyterLab a plně připraveného prostředí ml.
 
 > [!NOTE]
-> Výpočetní instance jsou dostupné jenom pro pracovní prostory s **střed USA – sever**, * * východní USA 2 * *, **Severní Evropa** nebo **Velká Británie – jih**.
+> Výpočetní instance jsou k dispozici pouze pro pracovní prostory s oblastí **střed USA – sever**, **východní USA 2**, **Severní Evropa** nebo **Velká Británie – jih**s podporou pro jiné oblasti, které již brzy připravujeme.
 >Pokud je váš pracovní prostor v jakékoli jiné oblasti, můžete místo toho vytvořit a použít [virtuální počítač s poznámkovým blokem](concept-compute-instance.md#notebookvm) .
 
 Pro výpočetní instanci není nic k instalaci ani konfiguraci.  Vytvořte si ji kdykoli v pracovním prostoru Azure Machine Learning. Zadejte jenom název a zadejte typ virtuálního počítače Azure. Vyzkoušejte si to hned v tomto [kurzu: nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md).

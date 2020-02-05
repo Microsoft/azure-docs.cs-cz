@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 6ecba85a859e902922dfa2b7563a3ceb96a9ef4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1bff46c8584934ab8bcffce74763edc8363533d6
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457455"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988239"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -37,7 +37,7 @@ Příkaz synchronizovat se v několika ohledech liší od příkazu pro kopírov
 
 ## <a name="related-conceptual-articles"></a>Související koncepční články
 
-- [Začínáme s nástrojem AzCopy](storage-use-azcopy-v10.md)
+- [Začínáme s AzCopy](storage-use-azcopy-v10.md)
 - [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
 - [Přenos dat pomocí AzCopy a úložiště souborů](storage-use-azcopy-files.md)
 - [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
@@ -141,13 +141,13 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--Exclude vyloučení – řetězec cesty** vyloučí tyto cesty při kopírování. Tato možnost nepodporuje zástupné znaky (*). Kontroluje předponu relativní cesty (například: myFolder; myFolder/subDirName/File. PDF). Pokud se používá v kombinaci s procházením účtu, cesty neobsahují název kontejneru.
 
-**--vyloučit-vzorové** soubory vyloučení, kde název odpovídá seznamu vzorů. Například: *. jpg;* . PDF; přesný
+**--vyloučit-vzorové** soubory vyloučení, kde název odpovídá seznamu vzorů. Například: \*. jpg;\*. PDF; Exact
 
 **-h,--** Help Help pro synchronizaci
 
 **--include-** Attribute String (pouze Windows) obsahují pouze soubory, jejichž atributy odpovídají seznamu atributů. Příklad: A; Pracují Í
 
-**--include – řetězec vzorů** zahrnuje pouze soubory, u kterých se název shoduje se seznamem vzorů. Například: *. jpg;* . PDF; přesný
+**--include – řetězec vzorů** zahrnuje pouze soubory, u kterých se název shoduje se seznamem vzorů. Například: \*. jpg;\*. PDF; Exact
 
 **--řetězec na úrovni protokolu** definuje podrobnosti protokolu pro soubor protokolu, dostupné úrovně: informace (všechny žádosti a odpovědi), upozornění (pomalé odezvy), chybu (pouze neúspěšné žádosti) a žádné (žádné protokoly výstupu). (výchozí informace). (výchozí "informace")
 

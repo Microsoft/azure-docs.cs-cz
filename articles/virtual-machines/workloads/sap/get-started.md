@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/28/2020
+ms.date: 02/03/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c609c659d99ce6eca0326a5a14cbbb67099e686
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 42df2d24aad1465a200203e648feb97d4e96fd18
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840464"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989820"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -121,6 +121,7 @@ Informace o integraci služeb Azure do komponent SAP najdete v těchto tématech
 
 ## <a name="change-log"></a>Protokol změn
 
+- 02/03/2020: Změna [vysoké dostupnosti pro SAP NW na virtuálních počítačích Azure v SLES pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse) a [vysokou dostupnost pro SAP NW na virtuálních počítačích Azure v SLES s ANF pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) pro odebrání upozornění na použití pomlčky v názvech hostitelů uzlů clusteru v SLES
 - 01/28/2020: Změna [vysoké dostupnosti SAP HANA na virtuálních počítačích Azure v RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel) , aby se zarovnaly časové limity SAP HANA prostředků clusteru, do doporučení Red Hat timeout
 - 01/17/2020: Změna ve [skupinách umístění v blízkosti Azure pro optimální latenci sítě s aplikacemi SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) pro změnu oddílu přesunutí stávajících virtuálních počítačů do skupiny umístění s blízkými místy
 - 01/17/2020: změňte [konfiguraci úloh SAP pomocí zóny dostupnosti Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones) , aby odkazovala na postup, který automatizuje měření latence mezi zóny dostupnosti

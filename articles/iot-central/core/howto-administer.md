@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4c729d2502464df021df4d03e989d489b2d1ecea
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 89c4dd294cbbf0953545e1055e32adfc5f7cce28
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954588"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990789"
 ---
 # <a name="manage-your-iot-central-application"></a>Správa aplikace IoT Central
 
@@ -40,9 +40,9 @@ Postup změny image aplikace najdete v tématu [Příprava a nahrání imagí do
 
 ## <a name="copy-an-application"></a>Zkopírování aplikace
 
-Můžete vytvořit kopii libovolné aplikace, mínus instance zařízení, historii dat zařízení a uživatelská data. Kopie je aplikace s průběžnými platbami, za kterou se vám bude účtovat. Tímto způsobem nemůžete vytvořit zkušební aplikaci.
+Můžete vytvořit kopii libovolné aplikace, mínus instance zařízení, historii dat zařízení a uživatelská data. Kopie používá standardní cenový plán, který se vám bude účtovat. Tímto způsobem nemůžete vytvořit aplikaci, která používá bezplatný cenový plán.
 
-Vyberte **Kopírovat**. Do dialogového okna zadejte podrobnosti nové aplikace s průběžnými platbami. Pak vyberte **Kopírovat** a potvrďte, že chcete pokračovat. Další informace o polích v tomto formuláři najdete v části Vytvoření rychlého startu [aplikace](quick-deploy-iot-central.md) .
+Vyberte **Kopírovat**. Do dialogového okna zadejte podrobnosti nové aplikace. Pak vyberte **Kopírovat** a potvrďte, že chcete pokračovat. Další informace o polích v tomto formuláři najdete v části Vytvoření rychlého startu [aplikace](quick-deploy-iot-central.md) .
 
 ![Stránka nastavení aplikace](media/howto-administer/appcopy2.png)
 
@@ -71,7 +71,7 @@ Můžete najít příklady použití sad Azure Resource Manager SDK v [https://g
 
 Další informace najdete v následujících úložištích a balíčcích GitHubu:
 
-| Jazyk | Úložištì | Balíček |
+| Jazyk | Úložiště | Balíček |
 | ---------| ---------- | ------- |
 | Uzel | [https://github.com/Azure/azure-sdk-for-node](https://github.com/Azure/azure-sdk-for-node) | [https://www.npmjs.com/package/azure-arm-iotcentral](https://www.npmjs.com/package/azure-arm-iotcentral)
 | Python |[https://github.com/Azure/azure-sdk-for-python](https://github.com/Azure/azure-sdk-for-python) | [https://pypi.org/project/azure-mgmt-iotcentral](https://pypi.org/project/azure-mgmt-iotcentral)

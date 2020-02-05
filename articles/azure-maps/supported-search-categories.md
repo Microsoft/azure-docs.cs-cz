@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: de44d07b5ebc6a898e3c098f16e553e9d4a46150
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 9dbcae6e3947576a7d2bc204c2a3a6fb2e95953d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910412"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988279"
 ---
 # <a name="azure-maps-supported-categories"></a>Azure Maps podporované kategorie
 
-Když provedete [Hledání kategorií](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) bodů zájmu, existují více než sto podporovaných kategorií. Níže je uveden seznam kódů kategorií pro podporované názvy kategorií. Kódy kategorií se generují pro kategorie nejvyšší úrovně. Všechny dílčí kategorie sdílejí stejný kód kategorie. Všimněte si, že v tomto seznamu kategorií se může změnit nová verze dat.
+Když provedete [Hledání kategorií](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) bodů zájmu, existují více než sto podporovaných kategorií. Níže je uveden seznam kódů kategorií pro podporované názvy kategorií. Kódy kategorií se generují pro kategorie nejvyšší úrovně. Všechny dílčí kategorie sdílejí stejný kód kategorie. Tento seznam kategorií se může změnit novými verzemi dat.
 
 <br/>
 
@@ -45,7 +45,7 @@ Když provedete [Hledání kategorií](https://docs.microsoft.com/rest/api/maps/
 | ŠKOLNÍ\_univerzita | nižší školní škola/komunitní univerzita, univerzita, univerzita, univerzita, školní škola, Univerzita |
 | Komerční\_– sestavování | budova Office, parková ústředí, komerční budova |
 | Komunita centra\_ | Centrum komunity |
-| SPOLEČNOST | elektronika, výroba, počítačové datové služby, technologie veřejného zdraví, propracovaná finanční oddělení, letecká společnost, letecké dopravce, pronájem zařízení, služba, e-mail/balení/nákladní dopravné, sběrnicové linky, opravy domácích zařízení, čisticí služby, výrobce OEM, daňové služby, olivový olej ze zemního plynu, zákonné služby, konstrukce, telekomunikace, přeprava, Technický inženýr, služby, investiční poradce, inzerce, marketing, přesun úložišť, úspory a instituce, pojišťovnictví, počítačový software, farmaceutické výrobky, stravovací služby, zemědělská technologie, obchod, obchod, taxislužby, Limousine kyvadlo, nájemce autobusů, těžba, technologie pro publikování, nemovitého telefonu, distribuce pro import/export, společnost, azyl, oblasti pro uhlí |
+| PODNIKOVÝ | elektronika, výroba, počítačové datové služby, technologie veřejného zdraví, propracovaná finanční oddělení, letecká společnost, letecké dopravce, pronájem zařízení, služba, e-mail/balení/nákladní dopravné, sběrnicové linky, opravy domácích zařízení, čisticí služby, výrobce OEM, daňové služby, olivový olej ze zemního plynu, zákonné služby, konstrukce, telekomunikace, přeprava, Technický inženýr, služby, investiční poradce, inzerce, marketing, přesun úložišť, úspory a instituce, pojišťovnictví, počítačový software, farmaceutické výrobky, stravovací služby, zemědělská technologie, obchod, obchod, taxislužby, Limousine kyvadlo, nájemce autobusů, těžba, technologie pro publikování, nemovitého telefonu, distribuce pro import/export, společnost, azyl, oblasti pro uhlí |
 | COURTHOUSE | courthouse |
 | KULTURNÍ centrum\_ | kulturní centrum |
 | DENTIST | dentist |
@@ -73,7 +73,7 @@ Když provedete [Hledání kategorií](https://docs.microsoft.com/rest/api/maps/
 | DŮLEŽITÉ\_turistické\_přitažlivosti | sestavování, Observatory, propojení, tunelu, Statue, věž, most, Planetarium, Mausoleum/čárka, památkách, díra, zemní přitažlivosti, důležité turistické přitažlivosti, Promenade, pyramidy, Pagoda, Castle, Palace, Hermitage, pyramida, Fort, hradlo,, přehradní, Lighthouse, přízvuk |
 | VYTVÁŘENÍ průmyslových\_ | slévárenský, palivový sklad, průmyslové budovy, továrna |
 | CENTRUM\_pro volný čas | Bowling, Snooker, pool kulečníkové, létající klub, roztancoval Studio School, sauna, solarium Massage, centrum pro volný čas, Spa |
-| KNIHOVNA | knihovna |
+| Knihovna | Knihovna |
 | VÝROBNÍ\_– zařízení | výrobní zařízení |
 | MARINA | povodí Yacht, Marina |
 | UVÁDĚT | Hypermarkets, zemědělce, veřejný, neformální, trh |
@@ -86,7 +86,7 @@ Když provedete [Hledání kategorií](https://docs.microsoft.com/rest/api/maps/
 | NIGHTLIFE | pruhový, karaoke klub, nápadný klub, soukromý klub, vinný pruh, komedie klub, koktejlu bar, Discotheque, Nightlife |
 | ORGANIZACE, která není\_vládní\_ | nevládní organizace |
 | OTEVŘÍT oblast\_\_parkování | otevřít parkovací oblast, zaparkovat šarži |
-| JINÉ | místní, volná obchodní zóna, dopravní kruh, neznámý |
+| JINÁ | místní, volná obchodní zóna, dopravní kruh, neznámý |
 | GARÁŽe PARKOVACÍho\_ | parkovací garáž |
 | \_oblast pro rekreační\_v PARKu | historické pracoviště, Lakeshore, Seashore, oblast Scenic řeky, rybolovná oblast pro lov ryb, Battlefield, zimní sport, spouštěcí rampa, zachování, oblast doménové struktury, oblast pro rekreaci,, Ski, Cemetery, historický park, Parkway, Memorial, Fairground, pikniková oblast, oblast Wilderness, oblast rekreačního dostání, doménové struktury, vystrukturovaná doménová struktura, zahrady, rezerva pro volně žijící osoby, rezervní síť, stanoviště doménové struktury, lovecká rezerva, rezerva doménové struktury, Park |
 | ČERPACÍ stanice\_ | čerpací stanice |

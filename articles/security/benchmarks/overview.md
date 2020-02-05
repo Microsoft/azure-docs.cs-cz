@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-baselines
-ms.openlocfilehash: 2d12fa85fbc134ba2578795619db89f4a5058b26
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: de6bbb81b04b93cce8ab7ddaf1d983cb7e4a700d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934747"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990585"
 ---
-# <a name="overview-of-azure-security-controls"></a>Přehled ovládacích prvků zabezpečení Azure
+# <a name="overview-of-azure-security-controls"></a>Přehled mechanismů zabezpečení Azure
 
 Srovnávací test zabezpečení Azure obsahuje doporučení, která vám pomůžou vylepšit zabezpečení vašich aplikací a dat v Azure.
 
@@ -51,4 +51,5 @@ Uvítáme vaši podrobnou zpětnou vazbu a aktivní účast v úsilí Azure Secu
 ## <a name="next-steps"></a>Další kroky
 
 - Podívejte se na první ovládací prvek zabezpečení: [zabezpečení sítě](security-control-network-security.md)
+- Přečtěte si [Úvod k zabezpečení Azure Security test](introduction.md)
 - Stažení [tabulky Azure Security test benchmark v1 Excel](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/spreadsheets)

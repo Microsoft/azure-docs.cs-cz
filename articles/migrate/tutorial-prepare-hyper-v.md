@@ -4,12 +4,12 @@ description: Přečtěte si, jak připravit na posouzení/migraci virtuálních 
 ms.topic: tutorial
 ms.date: 01/01/2020
 ms.custom: mvc
-ms.openlocfilehash: 6140d9689dafe8a97ae77346ea2212846e964cdc
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 1315b52e4ee6f39c27d21e3307d228219bc953d7
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028917"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984740"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Příprava na posouzení a migraci virtuálních počítačů Hyper-V do Azure
 
@@ -39,10 +39,10 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Je nutné nastavit oprávnění pro nasazení Azure Migrate.
 
-- Oprávnění pro účet Azure k vytvoření projektu Azure Migrate.
-- Oprávnění pro váš účet k registraci zařízení Azure Migrate. Zařízení se používá ke zjišťování a hodnocení virtuálních počítačů Hyper-V, které migrujete. Při registraci zařízení Azure Migrate vytvoří dvě aplikace Azure Active Directory (Azure AD), které zařízení jednoznačně identifikují:
-    - První aplikace komunikuje s koncovými body služby Azure Migrate.
-    - Druhá aplikace přistupuje k Azure Key Vault vytvořenému během registrace, aby se ukládaly informace o aplikaci Azure AD a nastavení konfigurace zařízení.
+**Úkol** | **Oprávnění**
+--- | ---
+**Vytvoření projektu Azure Migrate** | Váš účet Azure potřebuje oprávnění k vytvoření projektu.
+**Registrace zařízení Azure Migrate** | Azure Migrate využívá odlehčené Azure Migrate zařízení ke zjišťování a vyhodnocení virtuálních počítačů Hyper-v s Azure Migrate vyhodnocování serveru. Toto zařízení vyhledá virtuální počítače a odešle údaje o metadatech a výkonu virtuálních počítačů do Azure Migrate.<br/><br/>Při registraci zařízení se u předplatného, které jste zvolili v části zařízení – Microsoft. OffAzure, Microsoft. Migruj a Microsoft. klíčů, zaregistrují následující poskytovatelé registrace. Když zaregistrujete poskytovatele prostředků, nakonfigurujete vaše předplatné, aby fungovalo s poskytovatelem prostředků. Pokud chcete zaregistrovat poskytovatele prostředků, potřebujete roli přispěvatel nebo Owner v předplatném.<br/><br/> V rámci připojování Azure Migrate vytvoří aplikaci Azure Active Directory (Azure AD):<br/> Aplikace AAD se používá pro komunikaci (ověřování a autorizaci) mezi agenty běžícími na zařízení s příslušnými službami běžícími na Azure. Tato aplikace nemá oprávnění k tomu, aby zavedla volání ARM nebo přístup RBAC k jakémukoli prostředku.
 
 
 
@@ -59,15 +59,14 @@ Ověřte, že máte oprávnění k vytvoření projektu Azure Migrate.
 
 ### <a name="assign-permissions-to-register-the-appliance"></a>Přiřazení oprávnění k registraci zařízení
 
-Můžete přiřadit oprávnění pro Azure Migrate k vytváření aplikací Azure AD vytvořených během registrace zařízení pomocí jedné z následujících metod:
+Můžete přiřadit oprávnění pro Azure Migrate vytvoření aplikace Azure AD během registrace zařízení pomocí jedné z následujících metod:
 
 - Tenant nebo globální správce může udělit oprávnění uživatelům v tenantovi, aby mohli vytvářet a registrovat aplikace služby Azure AD.
 - Tenant nebo globální správce může k účtu přiřadit roli vývojáře aplikace (která má oprávnění).
 
-Je potřeba poznamenat, že:
-
-- Aplikace nemají žádná jiná přístupová oprávnění k předplatnému, kromě výše popsaných výše.
-- Tato oprávnění budete potřebovat, jenom když zaregistrujete nové zařízení. Po nastavení zařízení můžete oprávnění odebrat.
+> [!NOTE]
+> - Aplikace nemá žádná jiná přístupová oprávnění k předplatnému, kromě výše popsaných výše.
+> - Tato oprávnění budete potřebovat, jenom když zaregistrujete nové zařízení. Po nastavení zařízení můžete oprávnění odebrat.
 
 
 #### <a name="grant-account-permissions"></a>Udělení oprávnění účtu

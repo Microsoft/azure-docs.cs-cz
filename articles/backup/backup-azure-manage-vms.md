@@ -4,12 +4,12 @@ description: Naučte se spravovat a monitorovat zálohy virtuálních počítač
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 3c4c4341286b7ee4f382192d291e08c83ff64994
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: dd4e9dc199048b3faf3da0cadfdf60bdcb26c5bc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172980"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989684"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Správa záloh virtuálních počítačů Azure pomocí služby Azure Backup
 
@@ -30,40 +30,40 @@ Zálohy můžete spravovat pomocí řídicího panelu a přechodem k jednotlivý
 
 Postup zobrazení virtuálních počítačů na řídicím panelu trezoru:
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
-2. V nabídce centra vyberte **Procházet**. V seznamu prostředků zadejte **Služby zotavení**. Při psaní se seznam filtruje podle vašeho zadání. Vyberte **úložiště Recovery Services**.
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com/).
+2. V nabídce centra vyberte **Procházet**. V seznamu prostředků zadejte **Recovery Services**. Při psaní se seznam filtruje podle vašeho zadání. Vyberte **úložiště Recovery Services**.
 
     ![Vytvoření trezoru Služeb zotavení](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)
 
 3. Pro snadné použití klikněte pravým tlačítkem na trezor a vyberte **Připnout na řídicí panel**.
 4. Otevřete řídicí panel trezoru.
 
-    ![Otevřete řídicí panel trezoru a okno nastavení.](./media/backup-azure-manage-vms/full-view-rs-vault.png)
+    ![Otevření řídicího panelu trezoru a podokna nastavení](./media/backup-azure-manage-vms/full-view-rs-vault.png)
 
 5. Na dlaždici **zálohované položky** vyberte **Azure Virtual Machines**.
 
     ![Otevřít dlaždici zálohované položky](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-6. V okně **zálohované položky** můžete zobrazit seznam chráněných virtuálních počítačů. V tomto příkladu trezor chrání jeden virtuální počítač: demobackup.  
+6. V podokně **zálohované položky** můžete zobrazit seznam chráněných virtuálních počítačů. V tomto příkladu trezor chrání jeden virtuální počítač: demobackup.  
 
-    ![Zobrazit okno zálohované položky](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
+    ![Zobrazit podokno zálohované položky](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
 7. Z řídicího panelu položky trezoru upravte zásady zálohování, spusťte zálohování na vyžádání, zastavte nebo obnovte ochranu virtuálních počítačů, odstraňte data záloh, zobrazte body obnovení a spusťte obnovení.
 
-    ![Řídicí panel zálohované položky a okno nastavení](./media/backup-azure-manage-vms/item-dashboard-settings.png)
+    ![Řídicí panel zálohované položky a podokno nastavení](./media/backup-azure-manage-vms/item-dashboard-settings.png)
 
 ## <a name="manage-backup-policy-for-a-vm"></a>Správa zásad zálohování pro virtuální počítač
 
 Správa zásad zálohování:
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com/). Otevřete řídicí panel trezoru.
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com/). Otevřete řídicí panel trezoru.
 2. Na dlaždici **zálohované položky** vyberte **Azure Virtual Machines**.
 
     ![Otevřít dlaždici zálohované položky](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-3. V okně **zálohované položky** můžete zobrazit seznam chráněných virtuálních počítačů a stav posledního zálohování s časem poslední body obnovení.
+3. V podokně **zálohované položky** můžete zobrazit seznam chráněných virtuálních počítačů a stav posledního zálohování s časem poslední body obnovení.
 
-    ![Zobrazit okno zálohované položky](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
+    ![Zobrazit podokno zálohované položky](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
 4. Z řídicího panelu položky trezoru můžete vybrat zásadu zálohování.
 
@@ -85,8 +85,8 @@ Aktivace zálohování na vyžádání:
 
     ![Možnost zálohovat nyní](./media/backup-azure-manage-vms/backup-now-button.png)
 
-2. Z **typu správy zálohování**vyberte **virtuální počítač Azure**. Zobrazí se okno **zálohovaná položka (virtuální počítač Azure)** .
-3. Vyberte virtuální počítač a výběrem **Zálohovat nyní** vytvořte zálohu na vyžádání. Zobrazí se okno **Zálohovat nyní** .
+2. Z **typu správy zálohování**vyberte **virtuální počítač Azure**. Zobrazí se podokno **zálohovaná položka (virtuální počítač Azure)** .
+3. Vyberte virtuální počítač a výběrem **Zálohovat nyní** vytvořte zálohu na vyžádání. Zobrazí se podokno **Zálohovat nyní** .
 4. Do pole **uchovat zálohu** zadejte datum, kdy se má záloha zachovat.
 
     ![Kalendář Backup Now](./media/backup-azure-manage-vms/backup-now-check.png)
@@ -157,6 +157,8 @@ Existují dva způsoby, jak odstranit data zálohy virtuálního počítače:
     ![Odstranění zálohovaných dat](./media/backup-azure-manage-vms/delete-backup-data1.png)
 
   * Chcete-li odstranit data zálohy pro položku, vyberte možnost **Odstranit**. Zpráva s oznámením vám poskytne informace o odstranění zálohovaných dat.
+
+K ochraně dat Azure Backup zahrnuje funkci obnovitelného odstranění. Díky obnovitelnému odstranění i po odstranění zálohy (všechny body obnovení) virtuálního počítače se zálohovaná data uchovávají po dobu 14 dalších dnů. Další informace najdete v [dokumentaci k obnovitelnému odstranění](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud).
 
   > [!NOTE]
   > Při odstraňování zálohovaných dat odstraníte všechny přidružené body obnovení. Nemůžete zvolit konkrétní body obnovení, které se mají odstranit.

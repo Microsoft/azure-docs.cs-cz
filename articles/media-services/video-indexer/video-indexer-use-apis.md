@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: 4da437fecf0529194d72b2d403302ff81055ec0f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 8b6d160f71bfe8b2e5c447296d511b54ce6542c8
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892681"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989769"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Kurz: Používání rozhraní API Video Indexeru
 
@@ -86,7 +86,7 @@ Parametr Account ID (ID účtu) se vyžaduje u všech volání API operací. ID 
 
 * K získání ID účtu prostřednictvím programu použijte **Video Indexer Developer Portal**.
 
-    Použijte API [Get Accounts](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Accounts?) (Získat účty).
+    Použijte rozhraní [Get Account](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Account?) API.
 
     > [!TIP]
     > Přístupové tokeny pro účty můžete vygenerovat tak, že definujete `generateAccessTokens=true`.
@@ -214,4 +214,6 @@ Debug.WriteLine(playerWidgetLink);
 
 ## <a name="next-steps"></a>Další kroky
 
-[Prozkoumejte podrobnosti výstupního JSON](video-indexer-output-json-v2.md).
+- [Projděte si podrobnosti výstupního formátu JSON.](video-indexer-output-json-v2.md)
+- Podívejte se na [vzorový kód](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/API) , který ukazuje důležité aspekty nahrávání a indexování videa. Po probíhal kódu získáte dobrou představu o použití našeho rozhraní API pro základní funkce. Nezapomeňte si přečíst vložené komentáře a poznamenat naše rady k osvědčeným postupům.
+

@@ -2,17 +2,17 @@
 title: 'Rychlý Start: Apache Spark clusterů pomocí Azure CLI – Azure HDInsight'
 description: V tomto rychlém startu se dozvíte, jak pomocí Azure CLI vytvořit cluster Apache Spark ve službě Azure HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
-ms.date: 06/12/2019
-ms.author: hrasheed
-ms.openlocfilehash: 71b5e9f0ece79633673b183ca7288852f42ca3c0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 02/03/2020
+ms.openlocfilehash: ac937519ca3fa9381fe4970f2e4336fe4a0a9227
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494723"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989123"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-cli"></a>Rychlý Start: Vytvoření clusteru Apache Spark ve službě Azure HDInsight pomocí rozhraní příkazového řádku Azure
 
@@ -20,15 +20,15 @@ V tomto rychlém startu se dozvíte, jak vytvořit cluster Apache Spark v Azure 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Rozhraní příkazového řádku Azure Pokud jste nenainstalovali Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) pro kroky.
+Azure CLI. Pokud jste nenainstalovali Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) pro kroky.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-an-apache-spark-cluster"></a>Vytvoření clusteru Apache Spark
 
-1. Přihlaste se ke svému předplatnému Azure. Pokud plánujete použít Azure Cloud Shell pak jednoduše vyberte **vyzkoušet** v pravém horním rohu bloku kódu. V opačném případě zadejte následující příkaz:
+1. Přihlaste se ke svému předplatnému Azure. Pokud plánujete použít Azure Cloud Shell, vyberte **vyzkoušet** v pravém horním rohu bloku kódu. V opačném případě zadejte následující příkaz:
 
     ```azurecli-interactive
     az login
@@ -103,18 +103,18 @@ Rozhraní příkazového řádku Azure Pokud jste nenainstalovali Azure CLI, př
         --http-password $httpCredential \
         --http-user admin \
         --location $location \
-        --size $clusterSizeInNodes \
+        --workernode-count $clusterSizeInNodes \
         --ssh-password $sshCredentials \
         --ssh-user sshuser \
         --storage-account $AZURE_STORAGE_ACCOUNT \
         --storage-account-key $AZURE_STORAGE_KEY \
-        --storage-default-container $AZURE_STORAGE_CONTAINER \
+        --storage-container $AZURE_STORAGE_CONTAINER \
         --version $clusterVersion
     ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Po dokončení rychlého startu možná budete chtít cluster odstranit. Pomocí HDInsight jsou vaše data uložena v Azure Storage, takže můžete clusteru bezpečně odstranit, pokud není používán. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány.
+Po dokončení rychlého startu možná budete chtít cluster odstranit. Ve službě HDInsight jsou vaše data uložená v Azure Storage, takže můžete cluster bezpečně odstranit, pokud se nepoužívá. Účtují se vám také poplatky za cluster HDInsight, a to i v případě, že se už nepoužívá. Vzhledem k tomu, že se poplatky za cluster mnohokrát účtují rychleji než poplatky za úložiště, má ekonomický smysl odstraňovat clustery, když se nepoužívají.
 
 Pro odebrání prostředků zadejte všechny nebo některé z následujících příkazů:
 

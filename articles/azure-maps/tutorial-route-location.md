@@ -3,18 +3,18 @@ title: 'Kurz: Vyhledání trasy do umístění | Mapy Microsoft Azure'
 description: V tomto kurzu se dozvíte, jak vykreslit cestu k umístění (bod zájmu) na mapě pomocí služby směrování Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/12/2019
+ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 7f13e5342e880a9ed5e2cb35ebaf558a1641618b
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 3fedb045773cb975d37e2d866862e7863a6232e3
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910837"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989633"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>Kurz: směrování do bodu zájmu pomocí Azure Maps
 
@@ -27,7 +27,7 @@ V tomto kurzu se dozvíte, jak pomocí účtu Azure Maps a sady SDK Route Servic
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než budete pokračovat, postupujte podle pokynů v části [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps) a vytvořte předplatné účtu Azure Maps s cenovou úrovní S1 a podle kroků v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) Získejte primární klíč pro svůj účet. Další podrobnosti o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
+Než budete pokračovat, postupujte podle pokynů v tématu [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps), potřebujete předplatné s cenovou úrovní S1. Použijte k získání primárního klíče pro váš účet postup uvedený v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) . Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
 <a id="getcoordinates"></a>
 
@@ -139,7 +139,7 @@ V tomto kurzu se vykreslí jednoduchá trasa. Pro začátek a konec trasy se pou
     });
     ```
     
-    V obslužné rutině události Maps `ready` se vytvoří zdroj dat pro uložení řádku trasy i počátečního a koncového bodu. Vytvoří se vrstva čar, která se připojí ke zdroji dat a která definuje, jak se vykreslí čára trasy. Čára trasy se vykreslí se vykreslí v pěkném odstínu modré s tloušťkou 5 pixelů a zaoblenými spoji a zakončeními. Při přidávání vrstvy do mapy se předá druhý parametr s hodnotou `'labels'`, který určuje, že se má tato vrstva vykreslit pod popisky mapy. Tím se zajistí, že čára trasy nepřekryje popisky silnic. Vytvoří se vrstva symbolů, která se připojí ke zdroji dat. Tato vrstva určuje, jak se vykreslí počáteční a koncový bod. V tomto případě se do ní přidaly výrazy pro načtení informací o obrázku ikony a textovém popisku z vlastností objektů jednotlivých bodů. 
+    V obslužné rutině události Maps `ready` se vytvoří zdroj dat pro uložení řádku trasy a počátečního a koncového bodu. Vytvoří se vrstva čar, která se připojí ke zdroji dat a která definuje, jak se vykreslí čára trasy. Čára trasy bude vykreslena jako dobrý barevný nádech modrou. Bude mít šířku 5 pixelů, zaoblených spojení a zakončení. Při přidávání vrstvy do mapy se předá druhý parametr s hodnotou `'labels'`, který určuje, že se má tato vrstva vykreslit pod popisky mapy. Tím se zajistí, že čára trasy nepřekryje popisky silnic. Vytvoří se vrstva symbolů, která se připojí ke zdroji dat. Tato vrstva určuje způsob vykreslování počátečních a koncových bodů. V tomto případě byly přidány výrazy pro načtení obrázku ikony a informace o popisku textu z vlastností u jednotlivých objektů objektu Point. 
     
 2. Pro účely tohoto kurzu nastavte jako počáteční bod Microsoft a jako koncový bod čerpací stanici v Seattlu. V obslužné rutině události Maps `ready` přidejte následující kód.
 
@@ -164,7 +164,7 @@ V tomto kurzu se vykreslí jednoduchá trasa. Pro začátek a konec trasy se pou
     });
     ```
 
-    Tento kód vytvoří dva [objekty Inčárkového bodu JSON](https://en.wikipedia.org/wiki/GeoJSON) pro reprezentaci počátečního a koncového bodu trasy a přidá body do objektu DataSource. Ke každému bodu se přidají vlastnosti `title` a `icon`. Poslední blok nastaví zobrazení kamery s použitím informací o zeměpisné šířce a délce počátečního a koncového bodu pomocí vlastnosti [SetCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) mapy.
+    Tento kód vytvoří dva [objekty Inčárkového bodu JSON](https://en.wikipedia.org/wiki/GeoJSON) pro reprezentaci počátečního a koncového bodu trasy a přidá body do objektu DataSource. Ke každému bodu se přidají vlastnosti `title` a `icon`. Poslední blok nastaví zobrazení kamery pomocí zeměpisné šířky a délky počátečního a koncového bodu pomocí vlastnosti [SetCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) mapy.
 
 3. Uložte soubor **MapRoute.html** a aktualizujte prohlížeč. Mapa se teď nacentruje na střed Seattle a vidíte modrý kód PIN, který označuje počáteční bod a kulatě modrý kód PIN označení bodu dokončení.
 
@@ -174,9 +174,9 @@ V tomto kurzu se vykreslí jednoduchá trasa. Pro začátek a konec trasy se pou
 
 ## <a name="get-directions"></a>Získání pokynů
 
-V této části se dozvíte, jak pomocí rozhraní API služby Azure Maps Route vyhledat trasu z daného počátečního bodu do koncového bodu. Route Service poskytuje rozhraní API pro plánování *nejrychlejší*, *nejkratší*, *úsporné* nebo *vzrušující* trasy mezi dvěma místy. Umožňuje uživatelům také plánovat trasy v budoucnu s použitím rozsáhlé databáze Azure s historickými dopravními informacemi a předvídat dobu trvání trasy pro kterýkoli den a čas. Další informace najdete v tématu [Získání pokynů k trase](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Všechny následující funkce by měly být přidány **v rámci mapy připravené naslouchacího procesu událostí** , aby bylo zajištěno, že budou načteny po přípravě prostředků mapy k dispozici.
+V této části se dozvíte, jak používat Azure Maps rozhraní API služby směrování. Rozhraní API služby směrování vyhledá trasu z daného počátečního bodu do koncového bodu. V rámci této služby existuje rozhraní API pro plánování *nejrychlejší*, *nejkratší*, *ekonomické*nebo *Thrilling* trasy mezi dvěma místy. Tato služba také umožňuje uživatelům plánovat trasy v budoucnu pomocí rozsáhlé historické databáze přenosů Azure. Uživatelům se může zobrazit předpověď trvání trasy v libovolném zvoleném dni a času. Další informace najdete v tématu [Získání pokynů k trase](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Všechny následující funkce by měly být přidány **v rámci mapy připravené naslouchacího procesu událostí** , aby bylo zajištěno, že budou načteny po přípravě prostředků mapy k dispozici.
 
-1. Do funkce GetMap přidejte následující kód JavaScript Code.
+1. Do funkce GetMap přidejte následující kód jazyka JavaScript.
 
     ```JavaScript
     // Use SubscriptionKeyCredential with a subscription key

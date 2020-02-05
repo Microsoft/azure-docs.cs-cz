@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops
-ms.openlocfilehash: 8fda8e3079084ad917ad5a7fcfc4f80a622e2d82
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: bb7c773d02c5da5c115af79cd9e90c78e71eb6bf
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277238"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988324"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Kurz: nasazení aplikace do virtuálních počítačů se systémem Linux v Azure pomocí Azure DevOps Services a Azure Pipelines
 
@@ -86,7 +86,7 @@ Postupujte podle dalších kroků popsaných níže v závislosti na zásobníku
 
 - Pro nasazování aplikací založených na spouštěcím a jarním cloudu v jazyce Java vytvořte v Azure virtuální počítač Linux pomocí [této](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) šablony, která poskytuje plně podporovaný modul runtime založený na OpenJDK.
 - Pro nasazení Java servletů na serveru Tomcat vytvořte pomocí [této](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) šablony Azure virtuální počítač se systémem Linux s jazykem Java 8 a [nakonfigurujte Tomcat 9. x jako službu](https://tomcat.apache.org/tomcat-9.0-doc/setup.html).
-- Pro nasazení aplikace založené na jazyce Java EE použijte šablonu Azure k vytvoření [virtuálního počítače se systémem Linux + Java + WebSphere 9. x](https://azuremarketplace.microsoft.com/marketplace/apps/midvision.websphere-application-server-nde-90) nebo [Linux VM + Java + WebLogic 12. x](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleWebLogicServer12cEnterprise) nebo [Linux VM + Java](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) + WildFly/JBoss 14 
+- Pro nasazení aplikace založené na jazyce Java EE použijte šablonu Azure k vytvoření [virtuálního počítače se systémem Linux + Java + WebSphere 9. x](https://azuremarketplace.microsoft.com/marketplace/apps/midvision.websphere-application-server-nde-90) nebo [Linux VM + Java + WebLogic 12. x](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.20191009-arm-oraclelinux-wls-admin) nebo [Linux VM + Java](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) + WildFly/JBoss 14 
 
 #### <a name="javascripttabjava-script"></a>[JavaScript](#tab/java-script)
 

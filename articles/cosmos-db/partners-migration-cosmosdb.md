@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 30083b4f2f5f9b69368a47ecaf5505c04ccd6df9
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 3e400f62ed4afcb40d5d68aeb357d47083445802
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530693"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988171"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL migrace a aplikace partnery vývoj
 
@@ -21,7 +21,6 @@ Pomocí migrace NoSQL vývoje aplikací můžete z celé řady partnerů integr�
 
 |**Partner**  |**Možnosti a prostředí**  |**Podporované země/oblasti**  |**Obraťte se na**  |
 |---------|---------|---------|---------|
-|![ImanisData][1]   | Migrace dat z MongoDB do Azure Cosmos DB. <br/> Imanis Data povolí globální podniky, které chcete rychle a snadno migrujte své místní nebo cloudové databáze MongoDB do služby Azure Cosmos DB. Imanis Data poskytují přístup migrace bez agenta, přírůstkové věčný cloud pro MongoDB úložiště dat, které zjednodušuje migraci a výrazně zkracuje dobu výpadku.|  USA  |   [Web](https://www.cohesity.com/products/imanis-data/)      |
 |![Striim][2]    |  [Přesun dat v reálném čase do služby Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/) z různých datových zdrojů. <br/> Striim zjednodušuje shromažďování dat v reálném čase a pohyb dat z nejrůznějších místních zdrojů, včetně podnikového dokumentu a relačních databází, senzorů a souborů protokolu do Azure Cosmos DB. |   USA   |  [Web](https://www.striim.com/)       |
 
 ## <a name="systems-integrator-partners"></a>Partneři Integrátorům systémů
@@ -59,7 +58,6 @@ Pomocí migrace NoSQL vývoje aplikací můžete z celé řady partnerů integr�
 Další informace o některých dalších partnerů Microsoftu, najdete v článku [webu Microsoft Partner](https://partner.microsoft.com/en-US/).
 
 <!--Image references-->
-[1]: ./media/partners-migration-cosmosdb/imanisdata_logo.png
 [2]: ./media/partners-migration-cosmosdb/striim_logo.png
 [3]: ./media/partners-migration-cosmosdb/altoros_logo.png
 [4]: ./media/partners-migration-cosmosdb/attunix_logo.png

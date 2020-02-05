@@ -1,18 +1,15 @@
 ---
 title: Příprava virtuálních počítačů VMware pro posouzení/migraci pomocí Azure Migrate
 description: Přečtěte si, jak připravit na posouzení/migraci virtuálních počítačů VMware pomocí Azure Migrate.
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
-ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 4dec76140f61c433561ccfea07b833d9821acfc5
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 25dab303ce62e33a09346d14c0a08a43b715075d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028905"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989130"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>Příprava virtuálních počítačů VMware pro posouzení a migraci do Azure
 
@@ -41,8 +38,12 @@ Tato oprávnění budete potřebovat.
 **Úkol** | **Oprávnění**
 --- | ---
 **Vytvoření projektu Azure Migrate** | Váš účet Azure potřebuje oprávnění k vytvoření projektu.
-**Registrace zařízení Azure Migrate** | Azure Migrate využívá odlehčené Azure Migrate zařízení k vyhodnocení virtuálních počítačů VMware pomocí posouzení Azure Migrate serveru a spouštění migrace virtuálních počítačů VMware bez [agenta](server-migrate-overview.md) pomocí migrace serveru Azure Migrate. Toto zařízení vyhledá virtuální počítače a odešle údaje o metadatech a výkonu virtuálních počítačů do Azure Migrate.<br/><br/>Během registrace Azure Migrate vytvoří dvě aplikace Azure Active Directory (Azure AD), které zařízení jednoznačně identifikují, a potřebuje oprávnění k vytváření těchto aplikací.<br/> – První aplikace komunikuje s koncovými body služby Azure Migrate.<br/> – Druhá aplikace přistupuje k Azure Key Vault vytvořenému během registrace pro ukládání informací o aplikaci Azure AD a nastavení konfigurace zařízení.
+**Registrace zařízení Azure Migrate** | Azure Migrate využívá odlehčené Azure Migrate zařízení k vyhodnocení virtuálních počítačů VMware pomocí posouzení Azure Migrate serveru a spouštění migrace virtuálních počítačů VMware bez [agenta](server-migrate-overview.md) pomocí migrace serveru Azure Migrate. Toto zařízení vyhledá virtuální počítače a odešle údaje o metadatech a výkonu virtuálních počítačů do Azure Migrate.<br/><br/>Při registraci zařízení se u předplatného, které jste zvolili v části zařízení – Microsoft. OffAzure, Microsoft. Migruj a Microsoft. klíčů, zaregistrují následující poskytovatelé registrace. Když zaregistrujete poskytovatele prostředků, nakonfigurujete vaše předplatné, aby fungovalo s poskytovatelem prostředků. Pokud chcete zaregistrovat poskytovatele prostředků, potřebujete roli přispěvatel nebo Owner v předplatném.<br/><br/> V rámci připojování Azure Migrate vytvoří dvě aplikace Azure Active Directory (Azure AD):<br/> – První aplikace se používá pro komunikaci (ověřování a autorizaci) mezi agenty běžícími na zařízení s příslušnými službami běžícími na Azure. Tato aplikace nemá oprávnění k tomu, aby zavedla volání ARM nebo přístup RBAC k jakémukoli prostředku.<br/> – Druhá aplikace se používá výhradně pro přístup k trezoru klíčů vytvořenému v předplatném uživatele pro migraci bez agentů. Je k dispozici s přístupem RBAC na Azure Key Vault (vytvořeným v tenantovi zákazníka) při zahájení zjišťování ze zařízení.
 **Vytvoření Key Vault** | Pokud chcete migrovat virtuální počítače VMware pomocí migrace serveru Azure Migrate, Azure Migrate vytvoří Key Vault pro správu přístupových klíčů k účtu úložiště replikace v rámci vašeho předplatného. K vytvoření trezoru potřebujete oprávnění přiřazení role ve skupině prostředků, ve které se nachází Azure Migrate projekt.
+
+
+
+
 
 
 ### <a name="assign-permissions-to-create-project"></a>Přiřadit oprávnění k vytvoření projektu
@@ -80,9 +81,9 @@ Tenant nebo globální správce může udělit oprávnění následujícím způ
 
 Tenant/globální správce může přiřadit roli vývojář aplikace k účtu. [Další informace](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
 
-### <a name="assign-role-assignment-permissions"></a>Přiřadit oprávnění přiřazení role
+### <a name="assign-permissions-to-create-a-key-vault"></a>Přiřazení oprávnění k vytvoření Key Vault
 
-Pokud chcete povolit Azure Migrate vytvoření Key Vault, přiřaďte oprávnění přiřazení role následujícím způsobem:
+Chcete-li povolit Azure Migrate vytvoření Key Vault, přiřaďte oprávnění následujícím způsobem:
 
 1. Ve skupině prostředků v Azure Portal vyberte **řízení přístupu (IAM)** .
 2. V části **kontrolovat přístup**Najděte příslušný účet a kliknutím na něj Zobrazte oprávnění.

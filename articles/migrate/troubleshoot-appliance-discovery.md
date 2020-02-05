@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 3f3604205d4aedffdda128ec4a6b895786245e56
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: e8d0f446442db6eeb0aec38efcc69bdf09c9b56f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772037"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990704"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Řešení potíží s Azure Migrate zařízením a zjišťováním
 
@@ -39,14 +39,7 @@ Pokud se zobrazí chyba "zadaný soubor manifestu je neplatný: Neplatná polož
 K tomu může dojít, pokud je počítač zařízení za proxy serverem.
 
 - Ujistěte se, že přihlašovací údaje pro autorizaci zadáte, pokud je proxy vyžaduje.
-- Pokud k řízení odchozího připojení používáte proxy server brány firewall založený na adrese URL, přidejte tyto adresy URL do seznamu povolených adres:
-
-    - [Adresy URL pro vyhodnocení VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
-    - [Adresy URL pro posouzení technologie Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)
-    - [Adresy URL pro migraci bez agentů VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
-    - [Adresy URL pro migraci založené na agentech VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
-    - [Adresy URL pro migraci technologie Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)
-
+- Pokud k řízení odchozího připojení používáte proxy server brány firewall založený na adrese URL, přidejte [tyto adresy URL](migrate-appliance.md#url-access) do seznamu povolených.
 - Pokud pro připojení k Internetu používáte zachycení proxy serveru, importujte certifikát proxy serveru do virtuálního počítače zařízení pomocí [těchto kroků](https://docs.microsoft.com/azure/migrate/concepts-collector).
 
 ##  <a name="datetime-synchronization-error"></a>Chyba synchronizace data a času

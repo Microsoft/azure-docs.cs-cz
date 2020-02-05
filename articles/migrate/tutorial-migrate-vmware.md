@@ -4,12 +4,12 @@ description: Naučte se spouštět migraci virtuálních počítačů VMware bez
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: fa77b9d730c28c21569064d05ca3a600dfb71071
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 79ba3f17b225357267cbd114659851614279bb7f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028697"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989361"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>Migrace virtuálních počítačů VMware do Azure (bez agenta)
 
@@ -97,7 +97,7 @@ Azure Migrate vyžaduje změny virtuálních počítačů, aby bylo zajištěno,
 
 ### <a name="prepare-windows-server-vms"></a>Příprava virtuálních počítačů s Windows serverem
 
-**Akce** | **Podrobnosti** | **Pokyny**
+**Akce** | **Podrobnosti** | **Pokynů**
 --- | --- | ---
 Zajistěte, aby svazky Windows na virtuálním počítači Azure používaly stejná přiřazení písmen jednotek jako místní virtuální počítač. | Nakonfigurujte zásady sítě SAN jako online vše. | 1. Přihlaste se k virtuálnímu počítači pomocí účtu správce a otevřete příkazové okno.<br/> 2. zadáním příkazu **DiskPart** spustíte nástroj Diskpart.<br/> 3. zadejte **zásady sítě San = OnlineAll**<br/> 4. Zadejte příkaz exit pro opuštění programu DiskPart a zavřete příkazový řádek.
 Povolení konzole sériového přístupu Azure pro virtuální počítač Azure | To pomáhá při řešení potíží. Nemusíte restartovat virtuální počítač. Virtuální počítač Azure se spustí s použitím bitové kopie disku a je stejný jako restart nového virtuálního počítače. | Pokud chcete povolit, postupujte podle [těchto pokynů](https://docs.microsoft.com/azure/virtual-machines/windows/serial-console) .
@@ -184,7 +184,7 @@ Pokud se jedná o první virtuální počítač, který se replikuje v projektu 
 - **Service Bus**: migrace Azure Migrate serveru používá Service Bus k posílání zpráv orchestrace replikace do zařízení.
 - **Účet úložiště brány**: Migrace serveru používá účet úložiště brány k ukládání informací o stavu virtuálních počítačů, které se replikují.
 - **Účet úložiště protokolu**: zařízení Azure Migrate nahrává protokoly replikace pro virtuální počítače do účtu úložiště protokolu. Azure Migrate použije informace o replikaci na spravované disky repliky.
-- **Trezor klíčů**: zařízení Azure Migrate používá Trezor klíčů ke správě připojovacích řetězců pro Service Bus a přístup k klíčům pro účty úložiště používané v replikaci. Měli byste nastavit oprávnění, která Trezor klíčů potřebuje k přístupu k účtu úložiště, když jste připravili. [Zkontrolujte tato oprávnění](tutorial-prepare-vmware.md#assign-role-assignment-permissions).   
+- **Trezor klíčů**: zařízení Azure Migrate používá Trezor klíčů ke správě připojovacích řetězců pro Service Bus a přístup k klíčům pro účty úložiště používané v replikaci. Měli byste nastavit oprávnění, která Trezor klíčů potřebuje k přístupu k účtu úložiště, když jste připravili. [Zkontrolujte tato oprávnění](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault).   
 
 
 ## <a name="track-and-monitor"></a>Sledování a sledování

@@ -9,38 +9,38 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 83e8f6d684d6d39102fd682653cd19816a9f7b10
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 61d7a11df499e6b740adb45968721b6a9bb1af22
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911097"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988596"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>Přidání vrstvy dlaždic do mapy
 
-V tomto článku se dozvíte, jak lze překrýt vrstvu dlaždice na mapě. Vrstvy dlaždic vám umožní superimpose obrázky nad Azure Maps dlaždice základní mapy. Další informace o Azure Maps systému dlaždic najdete v dokumentaci [úrovně přiblížení a mřížka dlaždic](zoom-levels-and-tile-grid.md) .
+V tomto článku se dozvíte, jak překrýt vrstvu dlaždice na mapě. Vrstvy dlaždic vám umožní superimpose obrázky nad Azure Maps dlaždice základní mapy. Další informace o Azure Maps systému skládání naleznete v tématu [úrovně přiblížení a mřížka dlaždic](zoom-levels-and-tile-grid.md).
 
-Vrstva dlaždice se načte do dlaždic ze serveru. Tyto obrázky mohou být buď předem vykresleny a uloženy jako jakákoli jiná bitová kopie na serveru pomocí zásad vytváření názvů, kterou vrstva dlaždice rozumí, nebo dynamické služby, která vytváří bitové kopie za běhu. Existují tři různé konvence pojmenování dlaždic, které podporuje Azure Maps třídy [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) : 
+Vrstva dlaždice se načte do dlaždic ze serveru. Tyto obrázky mohou být buď předem vykresleny, nebo dynamicky vykresleny. Předem vykreslené obrázky jsou uloženy stejně jako jakékoli jiné obrázky na serveru pomocí zásady vytváření názvů, kterou vrstva dlaždice rozumí. Dynamicky vykreslené image používají službu k načtení imagí blízko v reálném čase. Existují tři různé konvence pojmenování dlaždic, které podporuje Azure Maps třídy [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) : 
 
-* X, Y, přibližování zápisu na úrovni přiblížení, x je sloupec a Y je pozice dlaždice v mřížce dlaždice.
-* Quadkey Notation – kombinace x, y, informace o přiblížení na jednu řetězcovou hodnotu, která je jedinečný identifikátor pro dlaždici.
-* Souřadnice ohraničovacího rámečku vázaného rámečku lze použít k určení obrázku ve formátu `{west},{south},{east},{north}`, který se běžně používá službou [mapování webu (WMS)](https://www.opengeospatial.org/standards/wms).
+* X, Y, zoom Notation-X je sloupec, Y je umístěním dlaždice v mřížce dlaždice a přiblížením je hodnota na základě úrovně přiblížení.
+* Quadkey Notation – kombinuje informace x, y a přiblížení do jediné řetězcové hodnoty. Tato řetězcová hodnota se pro jednu dlaždici stala jedinečným identifikátorem.
+* Ohraničovací rámeček – určete obrázek v souřadnicích ohraničovacího rámečku: `{west},{south},{east},{north}`. Tento formát se běžně používá ve [službě mapování webu (WMS)](https://www.opengeospatial.org/standards/wms).
 
 > [!TIP]
-> [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) je skvělý způsob, jak vizualizovat velké datové sady na mapě. Z obrázku lze generovat pouze dlaždicovou vrstvu, ale vektorová data lze také vykreslovat jako dlaždicovou vrstvu. Vykreslováním vektorových dat jako dlaždicovou vrstvou musí mapový ovládací prvek načíst pouze dlaždice, jejichž velikost může být mnohem menší než vektorová data, která představují. Tato technika je používána mnoha uživateli, kteří potřebují vykreslit miliony řádků dat na mapě.
+> [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) je skvělý způsob, jak vizualizovat velké datové sady na mapě. Pouze z obrázku lze vytvořit pouze dlaždicovou vrstvu, vektorová data lze také vykreslovat jako dlaždicovou vrstvu. Vykreslováním vektorových dat jako vrstvy dlaždice musí mapový ovládací prvek načíst pouze dlaždice, které jsou menší než velikost souboru, než vektorová data, která představují. Tato technika se běžně používá k vykreslování milionů řádků dat na mapě.
 
-Adresa URL dlaždice předaná do vrstvy dlaždice musí být adresa URL protokolu HTTP/HTTPS pro prostředek TileJSON nebo šablona adresy URL dlaždice, která používá následující parametry: 
+Adresa URL dlaždice předaná vrstvě dlaždice musí být adresa URL protokolu HTTP nebo HTTPS pro prostředek TileJSON nebo šablonu URL dlaždice, která používá následující parametry: 
 
 * pozice dlaždice `{x}`-X Také musí `{y}` a `{z}`.
 * pozice dlaždice `{y}`-Y. Také musí `{x}` a `{z}`.
 * `{z}` – úroveň přiblížení dlaždice Také musí `{x}` a `{y}`.
 * `{quadkey}` – quadkey identifikátor dlaždice založený na konvenci pojmenování systému dlaždic mapy Bing
 * `{bbox-epsg-3857}` – řetězec ohraničujícího pole s formátem `{west},{south},{east},{north}` v prostorovém referenčním systému EPSG 3857.
-* `{subdomain}` – zástupný symbol, kde se budou hodnoty subdomény zadat, se přidají.
+* `{subdomain}` – zástupný symbol pro hodnoty subdomény, pokud je zadaný `subdomain` přidáte.
 
 ## <a name="add-a-tile-layer"></a>Přidání vrstvy dlaždic
 
- Tento příklad ukazuje, jak vytvořit dlaždici vrstvy, která odkazuje na sadu dlaždic, které používají systém x, y a zoom dláždění. Zdrojem této vrstvy dlaždic je překrytí paprsky v podobě počasí z [mesonetu Iowa v oblasti životního prostředí Iowa státní školy](https://mesonet.agron.iastate.edu/ogc/). Při prohlížení dat paprsků by uživatelé měli možnost jasně zobrazit popisky měst při navigaci na mapě, což lze provést vložením vrstvy dlaždice pod `labels`ovou vrstvou.
+ Tento příklad ukazuje, jak vytvořit dlaždicovou vrstvu, která odkazuje na sadu dlaždic. V této ukázce se používá systém dělení osy x, y a lupy. Zdrojem této vrstvy dlaždic je překrytí paprsky v podobě počasí z [mesonetu Iowa v oblasti životního prostředí Iowa státní školy](https://mesonet.agron.iastate.edu/ogc/). Při prohlížení dat paprsků se ideálním uživatelům jasně zobrazí popisky měst při navigaci na mapě. Toto chování lze implementovat vložením vrstvy dlaždice pod `labels`ovou vrstvou.
 
 ```javascript
 //Create a tile layer and add it to the map below the label layer.

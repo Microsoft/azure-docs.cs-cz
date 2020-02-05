@@ -1,24 +1,24 @@
 ---
 title: 'Kurz: spojení dat senzorů s daty předpovědi počasí pomocí Azure Notebooks (Python) | Mapy Microsoft Azure'
-description: V tomto kurzu se dozvíte, jak spojit data senzorů s daty předpovědi počasí z Microsoft Azure Maps služba počasí pomocí Azure Notebooks (Python).
+description: V tomto kurzu se dozvíte, jak spojit data senzorů s daty předpovědi počasí z Microsoft Azure služby mapy počasí pomocí Azure Notebooks (Python).
 author: walsehgal
 ms.author: v-musehg
-ms.date: 12/09/2019
+ms.date: 01/29/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 1a1493033717b18bef5d80b28d06004c901ffb29
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 6d49a305a9b2e02d9e9d743ff8f076f453a08fcb
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910782"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989616"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Kurz: spojení dat senzorů s daty předpovědi počasí pomocí Azure Notebooks (Python)
 
-Větrná energie je jedním z alternativních zdrojů energie pro fosilní paliva v boji proti změnám klimatu. Vzhledem k tomu, že samotný vítr není v souladu s povahou, je nutné, aby operátoři napájení větru sestavovat modely ML (Machine Learning) a předpovídat kapacitu větru, aby splnila požadavky na elektřinu a zajistila stabilitu mřížky. V tomto kurzu se naučíme, jak Azure Maps data předpovědi počasí kombinovat s ukázkovou datovou sadou umístění senzorů se čteními počasí. Data předpovědi počasí jsou požadována voláním Azure Maps služby počasí.
+Větrná energie je jedním z alternativních zdrojů energie pro fosilní paliva v boji proti změnám klimatu. Vzhledem k tomu, že vítr není konzistentní vzhledem k povaze, je potřeba, aby operátoři napájení větru sestavili modely strojového učení (ML) pro předpověď kapacity výkonu větru. Tato předpověď je nutná k tomu, aby splňovala požadavky na elektřinu a zajistila stabilitu mřížky. V tomto kurzu se naučíme, jak Azure Maps data předpovědi počasí kombinovat s ukázkovými daty pro čtení počasí. Data předpovědi počasí jsou požadována voláním Azure Maps služby počasí.
 
 V tomto kurzu provedete následující:
 
@@ -39,7 +39,7 @@ K dokončení tohoto kurzu je nutné nejprve provést tyto kroky:
 2. Získejte primární klíč předplatného pro váš účet, postupujte podle pokynů v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account).
 
 
-Další podrobnosti o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
+Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
 
 Chcete-li se seznámit s poznámkovým blokům Azure a vědět, jak začít, postupujte podle pokynů v tématu [vytvoření poznámkového bloku Azure](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebook).
 
@@ -51,15 +51,16 @@ Chcete-li se seznámit s poznámkovým blokům Azure a vědět, jak začít, pos
 Pokud chcete načíst všechny požadované moduly a architektury, spusťte následující skript:
 
 ```python
-import aiohttp
 import pandas as pd
 import datetime
 from IPython.display import Image, display
+!pip install aiohttp
+import aiohttp
 ```
 
 ## <a name="import-weather-data"></a>Importovat data o počasí
 
-Pro účely tohoto kurzu budeme používat data o počasí ze senzorů nainstalovaných ve čtyřech různých větrných turbínách. Ukázková data se skládají z 30 dnů od čtení počasí shromážděných z datových center s počasí v blízkosti každého turbínového umístění. Ukázková data obsahují čtená data pro teplotu, rychlost větru a směr. Ukázková data si můžete stáhnout [tady](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data/data). Skript níže importuje ukázková data do poznámkového bloku Azure.
+Pro účely tohoto kurzu použijeme čtení dat počasí ze senzorů nainstalovaných ve čtyřech různých větrných turbínách. Ukázková data se skládají z 30 dnů od čtení počasí. Tato čtení se shromažďují z datových center počasí poblíž každého místa pro turbíny. Ukázková data obsahují čtená data pro teplotu, rychlost větru a směr. Ukázková data si můžete stáhnout [tady](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data/data). Skript níže importuje ukázková data do poznámkového bloku Azure.
 
 ```python
 df = pd.read_csv("./data/weather_dataset_demo.csv")
@@ -67,7 +68,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>Požadovat data denní předpovědi
 
-V našem ukázkovém scénáři chceme pro každé umístění snímače požádat o denní předpověď. Následující skript volá [rozhraní API denní předpovědi](https://aka.ms/AzureMapsWeatherDailyForecast) služby Azure Maps počasí, aby získala každodenní předpověď počasí pro každou větrnou turbínu po dobu příštích 15 dní od aktuálního data.
+V našem scénáři chceme pro každé umístění senzoru požádat o denní předpověď. Následující skript volá [rozhraní API denní předpovědi](https://aka.ms/AzureMapsWeatherDailyForecast) služby Azure Maps počasí, aby získala každodenní předpověď počasí pro každou větrnou turbínu po dobu příštích 15 dní od aktuálního data.
 
 
 ```python
@@ -128,7 +129,7 @@ display(Image(poi_range_map))
 ![Umístění turbíny](./media/weather-service-tutorial/location-map.png)
 
 
-Aby bylo možné rozšířit ukázková data daty předpovědi, Seskupujte data předpovědi s ukázkovými daty na základě ID stanice pro datové centrum počasí.
+Data prognózy se seskupují s ukázkovými daty na základě ID stanice datového centra počasí. Toto seskupení rozšiřuje ukázková data o data předpovědi. 
 
 ```python
 # Group forecasted data for all locations
@@ -156,7 +157,7 @@ grouped_weather_data.get_group(station_ids[0]).reset_index()
 
 ## <a name="plot-forecast-data"></a>Vykreslovat data předpovědi
 
-Aby bylo možné zjistit, jak se rychlost a směr větru mění v průběhu následujících 15 dnů, vyhodnotí se hodnoty prognózy oproti dnům, pro které jsou předpovědi.
+Hodnoty prognózy vyhodnotí za dny, pro které jsou předpovědi prognózy. Toto vykreslení nám umožňuje zobrazit rychlost a směrové změny větru po dobu příštích 15 dnů.
 
 ```python
 # Plot wind speed
@@ -175,7 +176,7 @@ windsPlot.set_xlabel("Date")
 windsPlot.set_ylabel("Wind direction")
 ```
 
-Níže uvedené grafy vizualizují data předpovědi pro změnu rychlosti větru (levý graf) a směr (vpravo graf) v následujících 15 dnech od dne, kdy jsou data požadována.
+Níže uvedené grafy vizualizují data předpovědi. Změnu rychlosti větru najdete v levém grafu. Pro změnu ve směru větru si přečtěte v pravém grafu. Tato data jsou předpovědi následujících 15 dnů od dne, kdy jsou data požadována.
 
 <center>
 
@@ -184,7 +185,7 @@ Níže uvedené grafy vizualizují data předpovědi pro změnu rychlosti větru
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili, jak volat Azure Maps rozhraní REST API, abyste získali data předpovědi počasí a vizualizujete data v grafech.
+V tomto kurzu jste se naučili, jak volat Azure Maps rozhraní REST API, abyste získali data předpovědi počasí. Zjistili jste také, jak vizualizovat data v grafech.
 
 Další informace o tom, jak volat Azure Maps rozhraní REST API v Azure Notebooks, najdete v tématu [Směrování EV pomocí Azure Notebooks](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing).
 

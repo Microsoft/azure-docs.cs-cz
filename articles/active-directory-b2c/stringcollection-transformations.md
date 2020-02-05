@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fbbd7b4bdddf2b58e66cb1203414b5a63eec2f27
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8f91db91eff3320691a5979d9453bf515ccd59a2
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950999"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982292"
 ---
 # <a name="stringcollection-claims-transformations"></a>Transformace deklarací řetězcové deklarace
 
@@ -30,9 +30,9 @@ Přidá deklaraci identity řetězce do nové deklarace identitycollection řet�
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | item | string | Deklarace ClaimType, která se má přidat do výstupní deklarace |
-| InputClaim | – kolekce | stringCollection | Volitelné Je-li tento parametr zadán, transformace deklarací zkopíruje položky z této kolekce a přidá položku na konec deklarace výstupní kolekce. |
-| outputClaim | – kolekce | stringCollection | ClaimTypes, které jsou vytvářeny po vyvolání tohoto ClaimsTransformation. |
+| InputClaim | položkami | string | Deklarace ClaimType, která se má přidat do výstupní deklarace |
+| InputClaim | kolekce | stringCollection | Volitelné Je-li tento parametr zadán, transformace deklarací zkopíruje položky z této kolekce a přidá položku na konec deklarace výstupní kolekce. |
+| OutputClaim | kolekce | stringCollection | ClaimTypes, které jsou vytvářeny po vyvolání tohoto ClaimsTransformation. |
 
 Tuto transformaci deklarací použijte k přidání řetězce do nové nebo existující řetězcové. Běžně se používá v technickém profilu **AAD-UserWriteUsingAlternativeSecurityId** . Před vytvořením nového účtu sociální sítě **CreateOtherMailsFromEmail** transformuje deklarace ClaimType a přidá hodnotu do **otherMails** ClaimType.
 
@@ -64,9 +64,9 @@ Přidá řetězcový parametr do nové deklarace identitycollection řetězce.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | – kolekce | stringCollection | Volitelné Je-li tento parametr zadán, transformace deklarací zkopíruje položky z této kolekce a přidá položku na konec deklarace výstupní kolekce. |
-| InputParameter | item | string | Hodnota, která se má přidat do výstupní deklarace |
-| outputClaim | – kolekce | stringCollection | ClaimTypes, který bude vytvořen po vyvolání této ClaimsTransformation. |
+| InputClaim | kolekce | stringCollection | Volitelné Je-li tento parametr zadán, transformace deklarací zkopíruje položky z této kolekce a přidá položku na konec deklarace výstupní kolekce. |
+| InputParameter | položkami | string | Hodnota, která se má přidat do výstupní deklarace |
+| OutputClaim | kolekce | stringCollection | ClaimTypes, který bude vytvořen po vyvolání této ClaimsTransformation. |
 
 Tuto transformaci deklarací použijte k přidání řetězcové hodnoty do nové nebo existující řetězcové. V následujícím příkladu je do **otherMails** deklarace identity přidána konstantní e-mailová adresa (admin@contoso.com).
 
@@ -99,8 +99,8 @@ Získá první položku ze zadané kolekce řetězců.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | – kolekce | stringCollection | ClaimTypes, které jsou používány transformací deklarací k získání položky. |
-| outputClaim | extractedItem | string | ClaimTypes, které jsou vytvářeny po vyvolání tohoto ClaimsTransformation. První položka v kolekci |
+| InputClaim | kolekce | stringCollection | ClaimTypes, které jsou používány transformací deklarací k získání položky. |
+| OutputClaim | extractedItem | string | ClaimTypes, které jsou vytvářeny po vyvolání tohoto ClaimsTransformation. První položka v kolekci |
 
 Následující příklad přečte deklaraci identity **otherMails** a vrátí první položku do deklarace **e-mailu** .
 
@@ -121,4 +121,42 @@ Následující příklad přečte deklaraci identity **otherMails** a vrátí pr
   - **kolekce**: ["someone@outlook.com", "someone@contoso.com"]
 - Deklarace výstupů:
   - **extractedItem**: "someone@outlook.com"
+
+
+## <a name="stringcollectioncontains"></a>StringCollectionContains
+
+Zkontroluje, jestli typ deklarace identitycollection typu StringCollection obsahuje element.
+
+| Položka | TransformationClaimType | Typ dat | Poznámky |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | InputClaim | stringCollection | Typ deklarace, který má být prohledán. |
+|InputParameter|položkami|string|Hodnota, která se má hledat|
+|InputParameter|ignoreCase|string|Určuje, zda toto porovnání má ignorovat případ porovnávaných řetězců.|
+| OutputClaim | OutputClaim | Boolean | Deklarace ClaimType, která je vytvořena po vyvolání tohoto ClaimsTransformation. Logický indikátor, pokud kolekce obsahuje takový řetězec |
+
+Následující příklad zkontroluje, zda typ deklarace `roles` StringCollection obsahuje hodnotu **admin**.
+
+```XML
+<ClaimsTransformation Id="IsAdmin" TransformationMethod="StringCollectionContains">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
+  </InputClaims>
+  <InputParameters>
+    <InputParameter  Id="item" DataType="string" Value="Admin"/>
+    <InputParameter  Id="ignoreCase" DataType="string" Value="true"/>
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="isAdmin" TransformationClaimType="outputClaim"/>
+  </OutputClaims>         
+</ClaimsTransformation>
+```
+
+- Vstupní deklarace identity:
+    - **inputClaim**: ["čtenář"; "Author"; "admin"]
+- Vstupní parametry:
+    - **položka**: "admin"
+    - **IgnoreCase**: "pravda"
+- Deklarace výstupů:
+    - **outputClaim**: "true"
+
 

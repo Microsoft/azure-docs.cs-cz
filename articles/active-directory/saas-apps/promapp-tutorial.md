@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s Promapp | Dokumentace Microsoftu'
-description: V tomto kurzu se dozvíte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Promapp.
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Promappem Nintex | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Nintex Promapp.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,103 +11,80 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/27/2019
+ms.date: 01/30/2020
 ms.author: jeedes
-ms.openlocfilehash: 2ddb8777a6470c0e739545e71867a694022d1723
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 581c850801c153996031378cbf470457264cad3d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67093604"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984401"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-promapp"></a>Kurz: Integrace Azure Active Directory s Promapp
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nintex-promapp"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Promappem Nintex
 
-V tomto kurzu se dozvíte, jak integrovat Promapp s Azure Active Directory (Azure AD).
-Tato integrace poskytuje tyto výhody:
+V tomto kurzu se dozvíte, jak integrovat Nintex Promapp s Azure Active Directory (Azure AD). Když integrujete Nintex Promapp s Azure AD, můžete:
 
-* Můžete řídit, kdo má přístup k Promapp Azure AD.
-* Můžete povolit uživatelům, aby se automaticky přihlášeni k Promapp (jednotné přihlašování) s jejich účty Azure AD.
-* Můžete spravovat své účty v jednom centrálním místě: na webu Azure portal.
+* Řízení ve službě Azure AD, která má přístup k Nintex Promapp.
+* Umožněte uživatelům, aby se automaticky přihlásili k Nintex Promapp s účty Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Promapp, musíte mít:
+Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete si zaregistrovat [zkušební verze na jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
-* Promapp předplatné, které obsahuje single sign-on povoleno.
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Předplatné Nintex Promapp s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu budete nakonfigurovat a otestovat Azure AD jednotné přihlašování v testovacím prostředí.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Promapp podporuje jednotné přihlašování iniciovaného Zprostředkovatelem přihlašování a zahájené pomocí IdP.
+* Nintex Promapp podporuje **SP a IDP** iniciované jednotné přihlašování.
+* Nintex Promapp podporuje zřizování uživatelů **jenom v čase**
 
-* Promapp podporuje zřizování uživatelů just-in-time.
+## <a name="adding-nintex-promapp-from-the-gallery"></a>Přidání Nintex Promapp z Galerie
 
-## <a name="add-promapp-from-the-gallery"></a>Přidání Promapp z Galerie
+Pokud chcete nakonfigurovat integraci Nintex Promapp do služby Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat Nintex Promapp z galerie.
 
-Nastavení integrace Promapp do služby Azure AD, budete muset přidat Promapp z Galerie na váš seznam spravovaných aplikací SaaS.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Nintex Promapp** .
+1. Z panelu výsledků vyberte **Nintex Promapp** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-1. V [webu Azure portal](https://portal.azure.com), v levém podokně vyberte **Azure Active Directory**:
+## <a name="configure-and-test-azure-ad-single-sign-on-for-nintex-promapp"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Nintex Promapp
 
-    ![Vyberte Azure Active Directory.](common/select-azuread.png)
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Nintex Promapp s použitím testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Nintex Promapp.
 
-2. Přejděte na **podnikové aplikace** > **všechny aplikace**:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s Nintex Promapp, dokončete následující stavební bloky:
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    * **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Nakonfigurujte Nintex PROMAPP SSO](#configure-nintex-promapp-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    * **[Vytvořit Nintex Promapp Test User](#create-nintex-promapp-test-user)** -to znamená, že má protějšek B. Simon v Nintex Promapp, která je propojená s reprezentací uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-3. Chcete-li přidat aplikaci, vyberte **novou aplikaci** v horní části okna:
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-    ![Vyberte novou aplikaci](common/add-new-app.png)
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-4. Do vyhledávacího pole zadejte **Promapp**. Vyberte **Promapp** ve výsledcích hledání a pak vyberte **přidat**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Promapp Nintex** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-     ![Výsledky hledání](common/search-new-app.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
 
-V této části budete konfigurovat a Azure AD jednotné přihlašování s Promapp test pomocí testovacího uživatele s názvem Britta Simon.
-Pokud chcete povolit jednotné přihlašování, budete muset vytvořit vztah mezi uživatele služby Azure AD a odpovídajícího uživatele v Promapp.
+    1. Do pole **identifikátor** zadejte adresu URL v tomto vzoru:
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Promapp, které potřebujete k dokončení těchto kroků:
-
-1. **[Konfigurace služby Azure AD jednotného přihlašování](#configure-azure-ad-single-sign-on)**  k povolení této funkce pro vaše uživatele.
-2. **[Konfigurace Promapp jednotného přihlašování](#configure-promapp-single-sign-on)**  na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  k otestování služby Azure AD jednotného přihlašování.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  povolení služby Azure AD jednotného přihlašování pro uživatele.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  k ověření, že konfigurace funguje.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
-
-V této části budete povolení služby Azure AD jednotného přihlašování na portálu Azure portal.
-
-Ke konfiguraci Azure AD jednotné přihlašování s Promapp, proveďte tyto kroky:
-
-1. V [webu Azure portal](https://portal.azure.com/), vyberte na stránce Promapp integrace aplikací, **jednotného přihlašování**:
-
-    ![Vyberte jednotného přihlašování](common/select-sso.png)
-
-2. V **vybrat jedinou metodu přihlašování** dialogovém okně vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování:
-
-    ![Vyberte metodu jednotné přihlašování](common/select-saml-option.png)
-
-3. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, vyberte **upravit** ikony otevřete **základní konfiguraci SAML** dialogové okno:
-
-    ![Upravit ikonu](common/edit-urls.png)
-
-4. V **základní konfiguraci SAML** dialogové okno, pokud chcete nakonfigurovat aplikace v režimu zahájené pomocí IdP, proveďte následující kroky.
-
-    ![Dialogové okno základní konfigurace SAML](common/idp-intiated.png)
-
-    1. V **identifikátor** pole, zadejte adresu URL v tomto vzoru:
-
-       | |
+        | |
         |--|
         | `https://go.promapp.com/TENANTNAME/`|
         | `https://au.promapp.com/TENANTNAME/`|
@@ -117,129 +94,101 @@ Ke konfiguraci Azure AD jednotné přihlašování s Promapp, proveďte tyto kro
         |   |
 
        > [!NOTE]
-       > Integrace Azure AD s Promapp je nakonfigurován pouze pro ověřování spouštěných službou. (To znamená, že přejdete na adresu URL Promapp zahájí proces ověřování.) Ale **adresy URL odpovědi** pole je povinné pole.
+       > Integrace Azure AD s Nintex Promapp se aktuálně konfiguruje jenom pro ověřování iniciované službou. (To znamená, že přístup k adrese URL Nintex Promapp zahájí proces ověřování.) Ale pole **Adresa URL odpovědi** je povinné pole.
 
-    1. V **adresy URL odpovědi** pole, zadejte adresu URL v tomto vzoru:
+    1. Do pole **Adresa URL odpovědi** zadejte adresu URL v tomto vzoru:
 
        `https://<DOMAINNAME>.promapp.com/TENANTNAME/saml/authenticate.aspx`
 
-5. Pokud chcete nakonfigurovat aplikace v režimu iniciovaného Zprostředkovatelem přihlašování, vyberte **nastavit další adresy URL**. V **přihlašovací adresa URL** pole, zadejte adresu URL v tomto vzoru:
+1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-      `https://<DOMAINNAME>.promapp.com/TENANTNAME/saml/authenticate`
-
-    ![Promapp domény a adresy URL jednotného přihlašování – informace](common/metadata-upload-additional-signon.png)
-
-   
+    Do pole **přihlašovací adresa URL** zadejte adresu URL v tomto vzoru: `https://<DOMAINNAME>.promapp.com/TENANTNAME/saml/authenticate`
 
     > [!NOTE]
-    > Tyto hodnoty jsou zástupné symboly. Budete muset použít skutečné identifikátor, adresa URL pro odpověď a adresu URL přihlašování. Obraťte se [tým podpory Promapp](https://www.promapp.com/about-us/contact-us/) k získání hodnoty. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** dialogové okno na webu Azure Portal.
+    > Tyto hodnoty jsou zástupné symboly. Musíte použít skutečný identifikátor, adresu URL odpovědi a přihlašovací adresu URL. Pokud chcete získat hodnoty, obraťte se na [tým podpory Nintex Promapp](https://www.promapp.com/about-us/contact-us/) . Můžete se také podívat na vzory zobrazené v dialogovém okně **základní konfigurace SAML** v Azure Portal.
 
-6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** vyberte **Stáhnout** odkaz **certifikát (Base64)** , podle požadavků vaší a uložte certifikát v počítači:
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
     ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-7. V **nastavení Promapp** tématu, zkopírujte příslušné adresy URL, na základě vašich požadavků:
+1. V části **Nastavení Promapp Nintex** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
-
-    1. **Adresa URL pro přihlášení**.
-
-    1. **Identifikátor služby Azure AD**.
-
-    1. **Odhlašovací adresa URL**.
-
-### <a name="configure-promapp-single-sign-on"></a>Konfigurace Promapp jednotného přihlašování
-
-1. Přihlaste se k webu společnosti Promapp jako správce.
-
-2. V nabídce v horní části okna vyberte **správce**:
-   
-    ![Vyberte správce][12]
-
-3. Vyberte **konfigurace**:
-   
-    ![Vyberte konfiguraci][13]
-
-4. V **zabezpečení** dialogové okno pole, proveďte následující kroky.
-   
-    ![Dialogové okno zabezpečení][14]
-    
-    1. Vložit **přihlašovací adresa URL** , který jste zkopírovali z portálu Azure portal do **adresu URL pro jednotné přihlášení** pole.
-    
-    1. V **jednotným Přihlašováním – Single Sign-on režimu** seznamu vyberte **volitelné**. Vyberte **Uložit**.
-
-       > [!NOTE]
-       > Volitelné režim je pouze pro testování. Jakmile budete spokojeni s konfigurací, vyberte **vyžaduje** v **jednotným Přihlašováním – Single Sign-on režimu** seznamu pro všechny uživatele k ověření ve službě Azure AD.
-
-    1. V poznámkovém bloku otevřete certifikát, který jste si stáhli v předchozí části. Zkopírujte obsah certifikát bez první řádek ( **---BEGIN CERTIFICATE---** ) nebo poslední řádek ( **---END CERTIFICATE---** ). Vložení obsahu do certifikátu **certifikát x.509 jednotného přihlašování** a potom vyberte **Uložit**.
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-V této části vytvoříte testovacího uživatele s názvem Britta Simon na webu Azure Portal.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. Na webu Azure Portal, vyberte **Azure Active Directory** v levém podokně vyberte **uživatelé**a pak vyberte **všichni uživatelé**:
-
-    ![Vyberte možnost Všichni uživatelé](common/users.png)
-
-2. Vyberte **nového uživatele** v horní části obrazovky:
-
-    ![Vyberte nového uživatele](common/new-user.png)
-
-3. V **uživatele** dialogové okno pole, proveďte následující kroky.
-
-    ![Dialogové okno uživatelského](common/user-properties.png)
-
-    1. V **název** zadejte **BrittaSimon**.
-  
-    1. V **uživatelské jméno** zadejte **BrittaSimon @\<doména_společnosti >.\< Rozšíření >** . (Například BrittaSimon@contoso.com.)
-
-    1. Vyberte **zobrazit heslo**a zapište si hodnotu, která je v **heslo** pole.
-
-    1. Vyberte **Vytvořit**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. Vyberte **nového uživatele** v horní části obrazovky.
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části se budou moci používat jednotné přihlašování Azure tím, že udělíte přístup k Promapp Britta Simon.
+V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k Nintex Promapp.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Promapp**.
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte možnost **Nintex Promapp**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-2. V seznamu aplikací vyberte **Promapp**.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Seznam aplikací](common/all-applications.png)
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-3. V levém podokně vyberte **uživatelů a skupin**:
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-    ![Vyberte uživatele a skupiny](common/users-groups-blade.png)
+## <a name="configure-nintex-promapp-sso"></a>Konfigurace jednotného přihlašování Nintex Promapp
 
-4. Vyberte **přidat uživatele**a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogové okno.
+1. Přihlaste se k webu společnosti Nintex Promapp jako správce.
 
-    ![Výběr možnosti Přidat uživatele](common/add-assign-user.png)
+2. V nabídce v horní části okna vyberte **správce**:
 
-5. V **uživatelů a skupin** dialogu **Britta Simon** v seznamu uživatelů a pak klikněte na tlačítko **vyberte** tlačítko v dolní části obrazovky.
+    ![Vybrat správce][12]
 
-6. Pokud očekáváte, že hodnotu kontrolního výrazu SAML, do role v **vybrat roli** dialogového okna, vyberte vhodnou roli pro uživatele ze seznamu. Klikněte na tlačítko **vyberte** tlačítko v dolní části obrazovky.
+3. Vyberte **Konfigurovat**:
 
-7. V **přidat přiřazení** dialogu **přiřadit**.
+    ![Vyberte konfigurovat.][13]
 
-### <a name="just-in-time-user-provisioning"></a>Zřizování uživatelů just-in-time
+4. V dialogovém okně **zabezpečení** proveďte následující kroky.
 
-Promapp podporuje zřizování uživatelů just-in-time. Tato funkce je ve výchozím nastavení povolena. Pokud uživatel již neexistuje mezi Promapp, vytvoří se nový po ověření.
+    ![Dialogové okno zabezpečení][14]
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+    1. Vložte **adresu URL pro přihlášení** , kterou jste zkopírovali z Azure Portal do pole **Adresa URL pro přihlášení SSO** .
 
-Teď je potřeba otestovat vaši konfiguraci Azure AD jednotné přihlašování pomocí přístupového panelu.
+    1. V seznamu režim jednotného přihlašování **(SSO** ) vyberte **volitelné**. Vyberte **Uložit**.
 
-Při výběru dlaždice Promapp na přístupovém panelu, vám by měl být automaticky přihlášeni Promapp instanci, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [přístup a používání aplikací na portálu Moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+       > [!NOTE]
+       > Volitelný režim je pouze pro testování. Až budete s konfigurací spokojeni, vyberte v seznamu Režim přihlašování jednotného **přihlašování** u všech uživatelů možnost **požadováno** k vynucení ověření pomocí služby Azure AD.
 
-## <a name="additional-resources"></a>Další materiály
+    1. V programu Poznámkový blok otevřete certifikát, který jste si stáhli v předchozí části. Zkopírujte obsah certifikátu bez prvního řádku ( **-----začít certifikát-----** ) nebo poslední řádek ( **-----konec certifikátu-----** ). Vložte obsah certifikátu do pole **certifikát SSO-x. 509** a pak vyberte **Uložit**.
 
-- [Kurzy integrace aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+### <a name="create-nintex-promapp-test-user"></a>Vytvořit testovacího uživatele Nintex Promapp
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+V této části se na Nintex Promapp vytvoří uživatel s názvem B. Simon. Nintex Promapp podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě v Nintex Promapp neexistuje, vytvoří se po ověření nový.
+
+## <a name="test-sso"></a>Test SSO
+
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+
+Když na přístupovém panelu kliknete na dlaždici Nintex Promapp, měli byste být automaticky přihlášeni k Nintex Promapp, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="additional-resources"></a>Další zdroje informací:
+
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Vyzkoušejte si Nintex Promapp s Azure AD](https://aad.portal.azure.com/)
 
 <!--Image references-->
 

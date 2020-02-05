@@ -6,14 +6,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: cf6b94418516f681bf6c782fe02f3434faa5374e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e58e36b3caa5a5ecd137cb9cb61dad7ddb95ff3a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426282"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986984"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Výstup Azure Stream Analytics ke službě Azure Cosmos DB  
 Azure Stream Analytics může cílit [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) na výstup JSON, povolit archivaci dat a dotazy s nízkou latencí na nestrukturovaná data JSON. Tento dokument uvádí i některé doporučené postupy pro implementaci této konfigurace.
@@ -97,7 +97,7 @@ Míra příchozích událostí v Event Hubs je dvakrát větší než Azure Cosm
 
 S 1,2 je Stream Analytics více inteligentních procesů, které využívají 100 procent dostupné propustnosti v Azure Cosmos DB s velmi malým počtem opětovného odeslání od omezení nebo omezení rychlosti. To poskytuje lepší možnosti pro jiné úlohy, jako jsou dotazy běžící na kontejneru ve stejnou dobu. Pokud chcete zjistit, jak Stream Analytics škálovat s Azure Cosmos DB jako jímku pro 1 000 až 10 000 zpráv za sekundu, vyzkoušejte [Tento ukázkový projekt Azure](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb).
 
-Propustnost výstupu Azure Cosmos DB je shodná s 1,0 a 1,1. Vzhledem k tomu, že 1,2 aktuálně není výchozím nastavením, můžete [nastavit úroveň kompatibility](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) pro úlohu Stream Analytics pomocí portálu nebo pomocí [volání funkce vytvořit Stream Analytics REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job). *Důrazně doporučujeme* , abyste v Stream Analytics s Azure Cosmos DB používali úroveň kompatibility 1,2.
+Propustnost výstupu Azure Cosmos DB je shodná s 1,0 a 1,1. *Důrazně doporučujeme* , abyste v Stream Analytics s Azure Cosmos DB používali úroveň kompatibility 1,2.
 
 ## <a name="azure-cosmos-db-settings-for-json-output"></a>Nastavení Azure Cosmos DB pro výstup JSON
 

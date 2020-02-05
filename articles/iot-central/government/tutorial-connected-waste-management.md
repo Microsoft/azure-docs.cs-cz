@@ -7,12 +7,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 38da444779a56f39d4119f3797ddb5bd2f31aeae
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 771e4a822df3e7d8eeee53174d657426bf226372
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112637"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990014"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Kurz: Vytvoření aplikace pro správu propojených odpadů v IoT Central
 
@@ -64,7 +64,10 @@ Vytvoření nové aplikace pro správu nepřipojených odpadů v Azure IoT Centr
 5. V dolní části stránky klikněte na tlačítko **vytvořit** . 
 
     ![Stránka aplikace pro vytvoření propojeného odpadu v Azure IoT Central](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement.png)
+    
+    ![Informace o fakturaci pro vytvoření propojeného služby Azure IoT Central](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement-billinginfo.png)
 
+ 
 6. Nyní jste vytvořili aplikaci pro správu připojení k síti pomocí **šablony správy propojených odpadů**v Azure IoT Central. 
 
 Blahopřejeme! Vaše nově vytvořená aplikace je dodávána s předem nakonfigurovaným:
@@ -131,7 +134,7 @@ Postup zobrazení šablony zařízení:
 
 2. V seznamu šablony zařízení se zobrazí **Přihrádka připojené odpadu**. Otevřete kliknutím na název.
 
-3. Familirize se šablonou zařízení možnosti. Můžete vidět, že definuje senzory, jako je *úroveň výplně*, *měřič Odor*, *váha*, *umístění* atd.
+3. Seznamte se s možnostmi šablon zařízení. Můžete vidět, že definuje senzory, jako je *úroveň výplně*, *měřič Odor*, *váha*, *umístění* atd.
 
    ![Šablona zařízení](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
 

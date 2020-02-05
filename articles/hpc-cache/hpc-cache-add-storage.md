@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 75d657fd9f3ee13c331450b324fd3b99e9cb6ca5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: a68bf06bad995f71bedf6a5bdedcb676737a8c61
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647206"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990602"
 ---
 # <a name="add-storage-targets"></a>Přidání cílů úložiště
 
@@ -38,8 +38,6 @@ Nový kontejner můžete z této stránky vytvořit těsně před tím, než ho 
 Pro definování kontejneru objektů BLOB v Azure zadejte tyto informace.
 
 ![snímek obrazovky s cílovou stránkou pro přidání cílení úložiště s informacemi o novém cíli úložiště Azure Blob Storage](media/hpc-cache-add-blob.png)
-
-<!-- need to replace screenshot after note text is updated with both required RBAC roles and also with correct search term -->
 
 * **Název cíle úložiště** – nastavte název, který identifikuje tento cíl úložiště v mezipaměti prostředí Azure HPC.
 * **Cílový typ** – vyberte **objekt BLOB**.
@@ -151,7 +149,7 @@ Tato tabulka shrnuje rozdíly v modelu použití:
 | Model využití | Režim ukládání do mezipaměti | Ověření back-endu | Maximální zpoždění před zpětným zápisem |
 | ---- | ---- | ---- | ---- |
 | Čtení těžkých, nečastých zápisů | Čtení | Nikdy | Žádné |
-| Více než 15% zápisů | Čtení/zápis | Nikdy | 1 hodina |
+| Více než 15% zápisů | Čtení a zápis | Nikdy | 1 hodina |
 | Klienti obcházejí mezipaměť | Čtení | 30 sekund | Žádné |
 
 ## <a name="next-steps"></a>Další kroky

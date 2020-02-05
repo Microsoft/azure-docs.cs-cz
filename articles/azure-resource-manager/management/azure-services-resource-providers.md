@@ -3,12 +3,12 @@ title: Poskytovatelé prostředků podle služeb Azure
 description: Vypíše všechny obory názvů poskytovatele prostředků pro Azure Resource Manager a zobrazí službu Azure pro tento obor názvů.
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: cdf56c5c84f8837538c2f59b34c3bcf4265d78cb
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d16c5fe148f8b6c907c897963e72cb84bc9ae2d5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644303"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984366"
 ---
 # <a name="resource-providers-for-azure-services"></a>Poskytovatelé prostředků pro služby Azure
 
@@ -32,8 +32,8 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft.AzureActiveDirectory | [Azure Active Directory B2C](../../active-directory-b2c/index.yml) |
 | Microsoft.AzureStack | jádro |
 | Microsoft.Batch | [Batch](../../batch/index.yml) |
-| Microsoft. fakturace | [Fakturace](/azure/billing/) |
-| Microsoft.BingMaps | [Bing Maps](https://docs.microsoft.com/BingMaps/#pivot=main&panel=BingMapsAPI) |
+| Microsoft. fakturace | [Cost Management a fakturace](/azure/billing/) |
+| Microsoft.BingMaps | [Mapy Bing](https://docs.microsoft.com/BingMaps/#pivot=main&panel=BingMapsAPI) |
 | Microsoft.Blockchain | [Služba Azure blockchain](/azure/blockchain/workbench/) |
 | Microsoft.Blueprint | [Plány Azure](/azure/governance/blueprints/) |
 | Microsoft.BotService | [Azure Bot Service](/azure/bot-service/) |
@@ -135,7 +135,7 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft.ServiceBus | [Service Bus](/azure/service-bus/) |
 | Microsoft.ServiceFabric | [Service Fabric](../../service-fabric/index.yml) |
 | Microsoft.ServiceFabricMesh | [Service Fabricová síť](../../service-fabric-mesh/index.yml) |
-| Microsoft. SignalRService | [Služba Azure SignalR](../../azure-signalr/index.yml) |
+| Microsoft. SignalRService | [Služba signalizace Azure](../../azure-signalr/index.yml) |
 | Microsoft.SiteRecovery | [Site Recovery](../../site-recovery/index.yml) |
 | Microsoft.Solutions | [Azure Managed Applications](../managed-applications/index.yml) |
 | Microsoft.Sql | [Azure SQL Database](../../sql-database/index.yml)<br />[SQL Data Warehouse](/azure/sql-data-warehouse/) |

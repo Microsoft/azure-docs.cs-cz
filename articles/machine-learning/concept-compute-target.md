@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 15bf6533106fe826c56b38cfb345c509d6d67966
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 3d6439424f2a39bf5b5477cebd5fadb23a6370b0
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844088"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984808"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Jaké jsou výpočetní cíle v Azure Machine Learning? 
 
@@ -58,7 +58,7 @@ Můžete vytvořit Azure Machine Learning výpočetních instancí (Preview) neb
 Po vytvoření těchto výpočetních prostředků se tento pracovní prostor automaticky dojedná na rozdíl od jiných druhů výpočetních cílů.
 
 > [!NOTE]
-> Výpočetní instance jsou dostupné jenom pro pracovní prostory s **střed USA – sever**, * * východní USA 2 * *, **Severní Evropa** nebo **Velká Británie – jih**.
+> Výpočetní instance jsou k dispozici pouze pro pracovní prostory s oblastí **střed USA – sever**, **východní USA 2**, **Severní Evropa** nebo **Velká Británie – jih**s podporou pro jiné oblasti, které již brzy připravujeme.
 >Pokud je váš pracovní prostor v jakékoli jiné oblasti, můžete místo toho vytvořit a použít [virtuální počítač s poznámkovým blokem](concept-compute-instance.md#notebookvm) . 
 
 ### <a name="compute-clusters"></a>Výpočetní clustery

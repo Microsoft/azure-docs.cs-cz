@@ -1,6 +1,6 @@
 ---
 title: Použití modulu služby Azure Maps Services | Mapy Microsoft Azure
-description: V tomto článku se naučíte, jak pomocí modulu služby Azure Maps Services používat službu REST (Microsoft Azure Maps).
+description: V tomto článku se dozvíte, jak pomocí modulu služby Azure Maps Services používat službu Microsoft Azure Maps (REST).
 author: rbrundritt
 ms.author: richbrun
 ms.date: 03/25/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 6bfbbb38d164dcb179541084de3ffeb89f44668d
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: e985fdda4638529e8ade2c700456d595ff355e8a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911316"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988732"
 ---
 # <a name="use-the-azure-maps-services-module"></a>Použití modulu služby Azure Maps Services
 
@@ -31,7 +31,7 @@ Sada Azure Maps Web SDK poskytuje *modul služeb*. Tento modul je pomocná kniho
 
     - Případně můžete modul služby pro Azure Maps zdrojového kódu sady web SDK načíst místně pomocí balíčku [Azure-Maps-REST](https://www.npmjs.com/package/azure-maps-rest) npm a potom ho hostovat s vaší aplikací. Tento balíček obsahuje také definice TypeScript. Použijte tento příkaz:
     
-        > **npm install azure-maps-rest**
+        > **NPM instalace Azure – Maps – REST**
     
         Pak přidejte odkaz na skript do prvku `<head>` souboru:
 

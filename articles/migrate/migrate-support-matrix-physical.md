@@ -3,12 +3,12 @@ title: Podpora posouzení fyzického serveru pomocí Azure Migrate
 description: Přečtěte si o podpoře fyzického serveru pro posouzení pomocí Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 489f95bbbbeb261b56f1a3a86da44f5fcce0adf5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f2698d0ff046147599a8c5c791a0980a54090932
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846568"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990330"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Matice podpory pro posouzení fyzického serveru 
 
@@ -38,7 +38,7 @@ K vyhodnocení místních počítačů pro migraci do Azure pomocí tohoto člá
 | **Podpora**                | **Podrobnosti**               
 | :-------------------       | :------------------- |
 | **Nasazení fyzického serveru**       | Fyzický server může být samostatný nebo nasazený v clusteru. |
-| **Oprávnění**           | **Windows:** Nastavte místní uživatelský účet na všech serverech Windows, které chcete zahrnout do zjišťování. Uživatelský účet musí být přidán do těchto skupin – Uživatelé vzdálené plochy, sledování výkonu a uživatelé protokolu výkonu. <br/> **Linux:** Na serverech se systémem Linux, které chcete zjistit, potřebujete kořenový účet. |
+| **Oprávnění**           | **Windows:** Nastavte místní nebo doménový uživatelský účet na všech serverech Windows, které chcete zahrnout do zjišťování. Uživatelský účet musí být přidán do těchto skupin – Uživatelé vzdálené plochy, sledování výkonu a uživatelé protokolu výkonu. <br/> **Linux:** Na serverech se systémem Linux, které chcete zjistit, potřebujete kořenový účet. |
 | **Operační systém** | Podporovány jsou všechny operační systémy [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) a [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) s výjimkou následujících:<br/> Windows Server 2003 <br/> SUSE Linux|
 
 

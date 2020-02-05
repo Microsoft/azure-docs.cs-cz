@@ -3,8 +3,8 @@ title: Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v SUSE Linux 
 description: Průvodce vysokou dostupností pro SAP NetWeaver v SUSE Linux Enterprise Server pro aplikace SAP
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/07/2019
-ms.author: sedusch
-ms.openlocfilehash: d08f17bd22188f3d969261d8626d47a9e0faf08e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.date: 02/03/2020
+ms.author: radeltch
+ms.openlocfilehash: 77a26d229ddc4ce5f35fde3db010e3b7c146a563
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839609"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985513"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server pro aplikace SAP
 
@@ -89,7 +89,7 @@ Server NFS, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver OLAJÍCÍCH a d
 > [!IMPORTANT]
 > Clustering s více identifikátory SID pro SAP ASCS/OLAJÍCÍCH s SUSE Linux jako hostovaný operační systém ve virtuálních počítačích **Azure se nepodporuje.** Clustering s více SID popisuje instalaci více instancí SAP ASCS/OLAJÍCÍCH s různými identifikátory SID v jednom clusteru Pacemaker.
 
-### <a name="ascs"></a>Určitého SCS
+### <a name="ascs"></a>(A)SCS
 
 * Konfigurace front-endu
   * 10.0.0.7 IP adres
@@ -159,7 +159,7 @@ K nasazení všech požadovaných prostředků můžete použít jednu z šablon
    9. Uživatelské jméno správce a heslo správce  
       Vytvoří se nový uživatel, který se dá použít k přihlášení k počítači.
    10. ID podsítě  
-   Pokud chcete virtuální počítač nasadit do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako/Subscriptions/ **&lt;ID předplatného&gt;** /resourceGroups/ **&lt;název skupiny prostředků&gt;** /providers/Microsoft.Network/virtualNetworks/ **&lt;virtuální síť&gt;** /subnets/ **&lt;název podsítě&gt;**
+   Pokud chcete virtuální počítač nasadit do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako/Subscriptions/ **&lt;ID předplatného&gt;** /resourceGroups/ **&lt;název skupiny prostředků&gt;** /Providers/Microsoft.Network/virtualNetworks/ **&lt;název virtuální sítě&gt;** /subnets/ **&lt;název podsítě&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Ruční nasazení Linux pomocí Azure Portal
 
@@ -269,7 +269,7 @@ Postupujte podle kroků v části [Nastavení Pacemaker na SUSE Linux Enterprise
 
 ### <a name="installation"></a>Instalace
 
-Následující položky jsou předpony buď **[A]** – platí pro všechny uzly, **[1]** – platí pouze pro uzel 1 nebo **[2]** – platí pouze pro uzel 2.
+Následující položky jsou s předponou buď **[A]** – platí pro všechny uzly, **[1]** – platí jenom pro uzel 1 nebo **[2]** – platí jenom pro uzel 2.
 
 1. **[A]** instalace KONEKTORu SUSE
 
@@ -277,7 +277,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    </code></pre>
 
    > [!NOTE]
-   > V hostitelských uzlech uzlů clusteru nepoužívejte pomlčky. V opačném případě nebude cluster fungovat. Jedná se o známé omezení a SUSE pracuje na opravě. Oprava se uvolní jako oprava balíčku SAP-SUSE-Cloud-Connector.
+   > Známý problém s používáním pomlčky v názvech hostitelů je opravený s verzí **3.1.1** balíčku **SAP-SUSE-cluster-Connector**. Pokud používáte uzly clusteru s pomlčkou v názvu hostitele, ujistěte se, že používáte aspoň verzi 3.1.1 balíčku SAP-SUSE-cluster-Connector. V opačném případě nebude cluster fungovat. 
 
    Ujistěte se, že jste nainstalovali novou verzi konektoru SAP SUSE cluster. Stará se o to, že se navolala sap_suse_cluster_connector a ta nového se nazývá **SAP-SUSE-cluster-Connector**.
 
@@ -319,15 +319,15 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    sudo zypper in -t patch SUSE-SLE-HA-12-SP2-2017-886=1
    </code></pre>
 
-1. **[A]** nastavení rozlišení názvu hostitele
+1. **[A]**  Nastavit rozlišení názvu hostitele
 
-   Můžete buď použít server DNS, nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
+   Můžete buď použít DNS server nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
    V následujících příkazech nahraďte IP adresu a název hostitele.
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   Vložte následující řádky do/etc/hosts. Změňte IP adresu a název hostitele tak, aby odpovídaly vašemu prostředí.   
+   Vložte následující řádky do/etc/hosts. Změňte IP adresu a název hostitele, aby odpovídaly vašemu prostředí   
 
    <pre><code># IP address of the load balancer frontend configuration for NFS
    <b>10.0.0.4 nw1-nfs</b>
@@ -446,7 +446,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
 
 1. **[1]** instalace SAP NetWeaver ASCS  
 
-   Nainstalujte SAP NetWeaver ASCS jako kořen v prvním uzlu pomocí virtuálního hostitele, který se mapuje na IP adresu konfigurace front-endu nástroje pro vyrovnávání zatížení pro ASCS, například <b>NW1-ASCS</b>, <b>10.0.0.7</b> a číslo instance, kterou jste použili pro test paměti. Nástroj pro vyrovnávání zatížení, například <b>00</b>.
+   Nainstalujte SAP NetWeaver ASCS jako kořen v prvním uzlu pomocí virtuálního hostitele, který se mapuje na IP adresu konfigurace front-endu nástroje pro vyrovnávání zatížení pro ASCS, například <b>NW1-ASCS</b>, <b>10.0.0.7</b> a číslo instance, kterou jste použili pro sondu nástroje pro vyrovnávání zatížení, například <b>00</b>.
 
    Pomocí parametru sapinst SAPINST_REMOTE_ACCESS_USER můžete pro uživatele, který není rootem, připojovat se k sapinst.
 
@@ -505,7 +505,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
 
 1. **[2]** instalace SAP NetWeaver olajících
 
-   Nainstalujte SAP NetWeaver OLAJÍCÍCH jako kořen na druhém uzlu pomocí virtuálního hostitele, který se mapuje na IP adresu konfigurace front-endu služby Vyrovnávání zatížení pro OLAJÍCÍCH, například <b>NW1-aers</b>, <b>10.0.0.8</b> a číslo instance, kterou jste použili pro test paměti. Nástroj pro vyrovnávání zatížení, například <b>02</b>.
+   Nainstalujte SAP NetWeaver OLAJÍCÍCH jako kořenovou složku na druhém uzlu pomocí virtuálního hostitele, který se mapuje na IP adresu konfigurace front-endu služby Vyrovnávání zatížení pro OLAJÍCÍCH, například <b>NW1-aers</b>, <b>10.0.0.8</b> a číslo instance, kterou jste použili pro sondu nástroje pro vyrovnávání zatížení, například <b>02</b>.
 
    Pomocí parametru sapinst SAPINST_REMOTE_ACCESS_USER můžete pro uživatele, který není rootem, připojovat se k sapinst.
 
@@ -669,7 +669,7 @@ Postup níže předpokládá, že instalujete aplikační server na jiný server
 
 1. Konfigurace operačního systému
 
-   Snižte velikost nečisté mezipaměti. Další informace najdete v tématu [nízký výkon zápisu na serverech SLES 11/12 s velkou pamětí RAM](https://www.suse.com/support/kb/doc/?id=7010287).
+   Snížení velikosti mezipaměti změny. Další informace najdete v tématu [zápisu s nízkou výkonu na SLES 11/12 servery s velkou paměť RAM](https://www.suse.com/support/kb/doc/?id=7010287).
 
    <pre><code>sudo vi /etc/sysctl.conf
 
@@ -680,14 +680,14 @@ Postup níže předpokládá, že instalujete aplikační server na jiný server
 
 1. Nastavení rozlišení názvu hostitele
 
-   Můžete buď použít server DNS, nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
+   Můžete buď použít DNS server nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
    V následujících příkazech nahraďte IP adresu a název hostitele.
 
    ```bash
    sudo vi /etc/hosts
    ```
 
-   Vložte následující řádky do/etc/hosts. Změňte IP adresu a název hostitele tak, aby odpovídaly vašemu prostředí.
+   Vložte následující řádky do/etc/hosts. Změňte IP adresu a název hostitele, aby odpovídaly vašemu prostředí
 
    <pre><code># IP address of the load balancer frontend configuration for NFS
    <b>10.0.0.4 nw1-nfs</b>
@@ -909,7 +909,7 @@ Následující testy jsou kopie testovacích případů v SUSE průvodců osvěd
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-1. HAFailoverToNode testu
+1. Test HAFailoverToNode
 
    Stav prostředku před spuštěním testu:
 

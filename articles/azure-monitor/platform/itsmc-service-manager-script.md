@@ -4,15 +4,15 @@ description: Pomocí automatizovaného skriptu pro připojení ke konektoru pro 
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: JYOTHIRMAISURI
+author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: 443fe6aa7e97e666075a2fbb985a9b8b00baf81a
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a97ea4d505d17d1d5fb2f2035fb23f3fce94aebe
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932254"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990925"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>Vytvoření Service Manager webové aplikace pomocí automatizovaného skriptu
 
@@ -25,7 +25,7 @@ Spusťte skript zadáním následujících požadovaných podrobností:
 - Umístění
 - Podrobnosti Service Manager serveru (název serveru, doména, uživatelské jméno a heslo)
 - Předpona názvu webu pro vaši webovou aplikaci
-- Obor názvů ServiceBus
+- ServiceBus Namespace.
 
 Skript vytvoří webovou aplikaci s názvem, který jste zadali (spolu s několika dalšími řetězci pro její jedinečné nastavení). Vygeneruje **adresu URL webové aplikace**, **ID klienta**a **tajný klíč klienta**.
 
@@ -33,7 +33,7 @@ Tyto hodnoty uložte, budete je potřebovat při vytváření připojení ke kon
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
  Windows Management Framework 5,0 nebo vyšší.
 Windows 10 má ve výchozím nastavení 5,1. Rozhraní si můžete stáhnout [tady](https://www.microsoft.com/download/details.aspx?id=50395):

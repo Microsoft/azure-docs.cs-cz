@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: d72636265ff3ac654faba91d1420b502b35d3192
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: ce1b8e80806935ca3d35814e73790f191b3e4733
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889002"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984013"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>Kurz: nasazení a procházení šablonou aplikace pro správu inteligentního inventáře
 
@@ -33,19 +33,22 @@ V tomto kurzu se naučíte,
 Aplikaci můžete vytvořit pomocí následujících kroků.
 1. Přejděte na web Azure IoT Central Správce aplikací. V levém navigačním panelu vyberte **Build (sestavit** ) a pak klikněte na kartu **maloobchod** .
 
-> [!div class="mx-imgBorder"]
-> Řídicí panel pro správu inteligentního inventáře ![](./media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png)
+    > [!div class="mx-imgBorder"]
+    > Řídicí panel pro správu inteligentního inventáře ![](./media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png)
 
-2. Vyberte kartu **maloobchod** a v části * * Správa inteligentního inventáře vyberte **vytvořit aplikaci** . * *
+2. Vyberte kartu **maloobchod** a v části **Správa inteligentního inventáře** vyberte **vytvořit aplikaci** .
 
 3. Při **vytváření aplikace** se otevře formulář nové aplikace a vyplní se požadované podrobnosti, jak je vidět níže.
    **Název aplikace**: můžete použít výchozí navrhovaný název nebo zadat popisný název aplikace.
-   **Adresa URL**: můžete použít navrhovanou výchozí adresu URL nebo zadat svou snadno jedinečnou adresu URL. Pokud už máte předplatné Azure nebo pokud už máte předplatné Azure, doporučuje se výchozí nastavení, které můžete začít používat na sedm dní bezplatných zkušebních verzí, a pokud chcete, můžete kdykoli převést průběžné platby.
+   **Adresa URL**: můžete použít navrhovanou výchozí adresu URL nebo zadat svou snadno jedinečnou adresu URL. V dalším kroku se doporučuje výchozí nastavení, pokud už předplatné Azure máte. Můžete začít s cenovým tarifem bezplatné zkušební verze na 7 dní a po dobu platnosti bezplatného záznamu můžete kdykoli převést na standardní cenový plán.
    **Informace o fakturaci**: ke zřízení prostředků se vyžaduje adresář, předplatné Azure a podrobnosti o oblasti.
    **Vytvořit**: v dolní části stránky vyberte vytvořit a nasaďte svoji aplikaci.
 
-> [!div class="mx-imgBorder"]
-> Řídicí panel pro správu inteligentního inventáře ![](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png)
+    > [!div class="mx-imgBorder"]
+    > Řídicí panel pro správu inteligentního inventáře ![](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png)
+
+    > [!div class="mx-imgBorder"]
+    > ![informace o fakturaci správy inteligentního inventáře](./media/tutorial-iot-central-smart-inventory-management/smart-inventory-management-app-create-billinginfo.png)
 
 ## <a name="walk-through-the-application"></a>Procházení aplikací 
 

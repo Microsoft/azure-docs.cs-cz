@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 65bc11282726d9e66dbed8fa1fbb75fc1b89c1d1
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 3dfb2c201138a65379aa509ce1bf10894ab6819b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615499"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984706"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Rozhraní pro hloubkové učení a AI pro Azure Data Science VM
 Architektury hloubkového učení na DSVM jsou uvedené níže.
@@ -115,7 +115,7 @@ Architektury hloubkového učení na DSVM jsou uvedené níže.
 
 |    |           |
 | ------------- | ------------- |
-| Podporované verze | 1.2.0 |
+| Podporované verze | 1.2.0 (Ubuntu 16,04, Windows 2016, Windows 2019), 1.4.0 (Ubuntu 18,04) |
 | Podporované edice DSVM      | Linux |
 | Jak ho nakonfigurovat či nainstalovaná na datové VĚDY?  | Nainstalováno v [pythonu 3,5](dsvm-tools-languages.md#python-linux-edition). Obsahuje ukázky Jupyter poznámkových bloků a ukázky jsou v/dsvm/Samples/pytorch. |
 | Jak ji spustit      | Terminál: Aktivujte správné prostředí a pak spusťte Python.<br/>* [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine): Connect a pak otevřete adresář PyTorch pro ukázky.  |
@@ -124,7 +124,7 @@ Architektury hloubkového učení na DSVM jsou uvedené níže.
 
 |    |           |
 | ------------- | ------------- |
-| Podporované verze | 1.13 |
+| Podporované verze | 1,13 |
 | Podporované edice DSVM      | Windows, Linux |
 | Jak ho nakonfigurovat či nainstalovaná na datové VĚDY?  | Nainstalováno v Pythonu 3,5 v systémech [Linux](dsvm-tools-languages.md#python-linux-edition) a Python 3,6 ve [Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) |
 | Jak ji spustit      | Terminál: Aktivujte správné prostředí a pak spusťte Python. <br/> * Jupyter: Připojte se k [Jupyter](provision-vm.md) nebo [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)a potom otevřete adresář TensorFlow pro ukázky.   |
@@ -133,7 +133,7 @@ Architektury hloubkového učení na DSVM jsou uvedené níže.
 
 |    |           |
 | ------------- | ------------- |
-| Podporované verze | 1.12 |
+| Podporované verze | 1,12 |
 | Podporované edice DSVM      | Linux |
 | Jak ho nakonfigurovat či nainstalovaná na datové VĚDY?  | tensorflow_model_server je k dispozici v terminálu. |
 | Jak ji spustit      |  Ukázky jsou k dispozici [online](https://www.tensorflow.org/serving/).   |

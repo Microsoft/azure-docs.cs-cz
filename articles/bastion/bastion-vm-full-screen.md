@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 87a6c046d5f20b8f38381acbfefbfef43b09092c
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: ff19fd056aa81ca8a1f53c387a208d35fb9a3265
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014230"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989429"
 ---
 # <a name="change-to-full-screen-view-for-a-vm-session-azure-bastion"></a>Změnit na zobrazení na celé obrazovce pro relaci virtuálních počítačů: Azure bastionu
 

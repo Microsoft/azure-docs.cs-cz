@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edb543a85779fb083b6990a58dc5ec0b8ef3eb9c
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c58ff181ec144dcd0b1089b0e53f868f241be73f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291409"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985250"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s pracovištěm na Facebooku
 
@@ -50,7 +50,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 * Pracoviště podle Facebooku podporuje **zřizování za běhu**
 * Pracoviště – na Facebooku podporuje  **[Automatické zřizování uživatelů](workplacebyfacebook-provisioning-tutorial.md)**
 * Mobilní aplikace na pracovišti na pracovišti se teď dají nakonfigurovat pomocí Azure AD a povolit jednotné přihlašování. V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
-* Jakmile nakonfigurujete pracovní plochu na Facebooku, můžete vynutili řízení relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Jakmile nakonfigurujete pracovní plochu na Facebooku, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-workplace-by-facebook-from-the-gallery"></a>Přidání pracovního místa na Facebooku z Galerie
 
@@ -226,7 +226,7 @@ Když na přístupovém panelu kliknete na dlaždici pracovní plocha na Faceboo
 
     ![Jednou](./media/workplacebyfacebook-tutorial/test04.png)
 
-4. Klikněte na **Povolit**.
+4. Klikněte na tlačítko **povoleno**.
 
     ![Povolení](./media/workplacebyfacebook-tutorial/test03.png)
 
@@ -248,4 +248,3 @@ Když na přístupovém panelu kliknete na dlaždici pracovní plocha na Faceboo
 
 - [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Jak chránit pracovní plochu prostřednictvím Facebooku s pokročilými viditelnostmi a ovládacími prvky](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

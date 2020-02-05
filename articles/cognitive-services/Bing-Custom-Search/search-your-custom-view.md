@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
-ms.date: 05/09/2019
-ms.author: maheshb
-ms.openlocfilehash: f04bfc306a89c7bb6caf3f928f5fdfec66358649
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.date: 02/03/2020
+ms.author: aahi
+ms.openlocfilehash: f00ffee47e3eb6366d632d8b6ee9beb01f048442
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072744"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983108"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>Volání instance Vlastní vyhledávání Bingu z portálu
 
@@ -35,14 +35,14 @@ Níže jsou uvedeny některé důležité parametry:
 |---------|---------|
 |Dotaz     | Hledaný termín. K dispozici pouze pro koncové body webu, obrázku, videa a Automatický návrh |
 |ID vlastní konfigurace | ID konfigurace vybrané instance vlastního vyhledávání. Toto pole je jen pro čtení. |
-|Market     | Trh, ze kterého budou výsledky pocházet. K dispozici pouze pro koncové body webu, obrázku, videa a hostovaného uživatelského rozhraní.        |
+|Trh     | Trh, ze kterého budou výsledky pocházet. K dispozici pouze pro koncové body webu, obrázku, videa a hostovaného uživatelského rozhraní.        |
 |Klíč předplatného | Klíč předplatného, pomocí kterého se má testovat. Můžete vybrat klíč z rozevíracího seznamu nebo ho zadat ručně.          |
 
 Kliknutím na **Další parametry** se odhalí následující parametry:  
 
 |Parametr  |Popis  |
 |---------|---------|
-|Safe Search     | Filtr použitý k filtrování webových stránek pro obsah určený pro dospělé K dispozici pouze pro koncové body webu, obrázku, videa a hostovaného uživatelského rozhraní.        |
+|Safe Search     | Filtr použitý k filtrování webových stránek pro obsah určený pro dospělé K dispozici pouze pro koncové body webu, obrázku, videa a hostovaného uživatelského rozhraní. Všimněte si, že vlastní Vyhledávání videí Bingu podporuje jenom dvě hodnoty: `moderate` a `strict`.        |
 |Jazyk uživatelského rozhraní    | Jazyk používaný pro řetězce uživatelského rozhraní. Pokud například povolíte image a videa v hostovaném uživatelském rozhraní, na kartách **Obrázek** a **video** se použije zadaný jazyk.        |
 |Počet     | Počet výsledků hledání, které se mají vrátit v odpovědi K dispozici pouze pro koncové body webu, obrázku a videa.         |
 |Posun    | Počet výsledků hledání, které se mají přeskočit před vrácením výsledků K dispozici pouze pro koncové body webu, obrázku a videa.        |

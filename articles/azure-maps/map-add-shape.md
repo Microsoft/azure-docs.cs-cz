@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 77d952666be12d7dea780b3aa8f094cf5f70f2d3
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: bae47e2f5cd473893d97678977030643cc9949fe
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911130"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988613"
 ---
 # <a name="add-a-polygon-layer-to-the-map"></a>Přidat mnohoúhelníkovou vrstvu k mapě
 
-V tomto článku se dozvíte, jak vykreslit oblasti `Polygon` a `MultiPolygon` funkcí geometrií na mapě pomocí mnohoúhelníkové vrstvy. Sada Azure Maps Web SDK také podporuje vytváření geometrií kroužků, jak je definováno v [rozšířeném schématu pro stanovení biojson](extend-geojson.md#circle). Tyto kružnice jsou transformované na mnohoúhelníky při vykreslování na mapě. Všechny funkce geometrií je také možné snadno aktualizovat, pokud jsou zabaleny pomocí nástroje [Atlas. Třída Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest)
+V tomto článku se dozvíte, jak vykreslit oblasti `Polygon` a `MultiPolygon` funkcí geometrií na mapě pomocí mnohoúhelníkové vrstvy. Sada Azure Maps Web SDK také podporuje vytváření geometrií kroužků, jak je definováno v [rozšířeném schématu pro stanovení biojson](extend-geojson.md#circle). Tyto kružnice jsou transformované na mnohoúhelníky při vykreslování na mapě. Všechny funkce geometrií se dají snadno aktualizovat při zabalení do nástroje [Atlas. Třída Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest)
 
 ## <a name="use-a-polygon-layer"></a>Použít mnohoúhelníkovou vrstvu 
 
-Když je mnohoúhelníková vrstva připojená ke zdroji dat a načte se na mapě, vykreslí oblast `Polygon` a `MultiPolygon` funkce. Následující kód ukazuje, jak vytvořit mnohoúhelník, přidat ho do zdroje dat a vykreslit ho pomocí mnohoúhelníkové vrstvy pomocí třídy [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) .
+Když je mnohoúhelníková vrstva připojená ke zdroji dat a načte se na mapě, vykreslí oblast s funkcemi `Polygon` a `MultiPolygon`. Chcete-li vytvořit mnohoúhelník, přidejte ho do zdroje dat a vykreslete ho pomocí mnohoúhelníkové vrstvy pomocí třídy [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) .
 
 ```javascript
 //Create a data source and add it to the map.
@@ -47,7 +47,7 @@ map.layers.add(new atlas.layer.PolygonLayer(dataSource, null,{
 }));
 ```
 
-Níže je uvedená ukázka kompletního spuštění kódu výše uvedené funkce.
+Níže je uvedená úplná a spuštěná ukázka výše uvedeného kódu.
 
 <br/>
 
@@ -56,14 +56,14 @@ Níže je uvedená ukázka kompletního spuštění kódu výše uvedené funkce
 
 ## <a name="use-a-polygon-and-line-layer-together"></a>Použít mnohoúhelník a čáru vrstev společně
 
-Spojnicová vrstva se dá použít k vykreslení obrysu mnohoúhelníků. Následující ukázka kódu vykreslí mnohoúhelník jako předchozí příklad, ale nyní přidá řádkovou vrstvu jako druhou vrstvu připojenou ke zdroji dat.  
+Spojnicová vrstva se používá k vykreslení obrysu mnohoúhelníků. Následující ukázka kódu vykreslí mnohoúhelník jako předchozí příklad, ale nyní přidá řádkovou vrstvu. Tato vrstva čáry je druhá vrstva připojená ke zdroji dat.  
 
 <iframe height='500' scrolling='no' title='Mnohoúhelníková a Spojnicová vrstva pro přidání mnohoúhelníku' src='//codepen.io/azuremaps/embed/aRyEPy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Pokud chcete přidat mnohoúhelník Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>, podívejte se na <a href='https://codepen.io/azuremaps/pen/aRyEPy/'>mnohoúhelník a vrstvu čáry</a> .
 </iframe>
 
 ## <a name="fill-a-polygon-with-a-pattern"></a>Naplnění mnohoúhelníku vzorem
 
-Kromě naplnění mnohoúhelníku barvou lze také použít vzor obrázku. Načtěte vzorek obrázku do prostředků mapy Sprite obrázku a pak na tento obrázek odkázat pomocí vlastnosti `fillPattern` vrstvy mnohoúhelníku.
+Kromě naplnění mnohoúhelníku barvou můžete mnohoúhelník vyplnit pomocí vzorku obrázku. Načtěte vzorek obrázku do prostředků mapy Sprite obrázku a pak na tento obrázek odkázat pomocí vlastnosti `fillPattern` vrstvy mnohoúhelníku.
 
 <br/>
 
@@ -88,7 +88,7 @@ Vrstva mnohoúhelníku má pouze několik možností stylů. Tady je nástroj pr
 
 ## <a name="add-a-circle-to-the-map"></a>Přidání kruhu k mapě
 
-Azure Maps používá rozšířenou verzi schématu injson, která poskytuje definici pro kruhy, jak je uvedeno [zde](extend-geojson.md#circle). Kruh lze na mapě vykreslit vytvořením funkce `Point`, která má vlastnost `subType` s hodnotou `"Circle"` a `radius` vlastností, která má číslo představující poloměr v metrech. Příklad:
+Azure Maps používá rozšířenou verzi schématu injson, která poskytuje definici pro kruhy, jak je uvedeno [zde](extend-geojson.md#circle). Kruh se na mapě vykreslí vytvořením funkce `Point`. Tato `Point` má vlastnost `subType` s hodnotou `"Circle"` a vlastnost `radius` s číslem, které představuje poloměr v metrech. 
 
 ```javascript
 {
@@ -104,7 +104,7 @@ Azure Maps používá rozšířenou verzi schématu injson, která poskytuje def
 }  
 ```
 
-Azure Maps webová sada SDK převede tyto `Point` funkce na `Polygon` funkce v rámci pokrývání a lze je vykreslit na mapě pomocí vrstev mnohoúhelníku a čáry, jak je znázorněno v následujícím příkladu kódu.
+Azure Maps webová sada SDK tyto funkce `Point` převede na `Polygon` funkce. Tyto funkce se pak vykreslují na mapě pomocí mnohoúhelníku a vrstev čáry, jak je znázorněno v následujícím příkladu kódu.
 
 <br/>
 
@@ -113,7 +113,7 @@ Azure Maps webová sada SDK převede tyto `Point` funkce na `Polygon` funkce v r
 
 ## <a name="make-a-geometry-easy-to-update"></a>Usnadnění aktualizace geometrie
 
-Třída `Shape` obaluje [geometrii](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest) nebo [funkci](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) a usnadňuje jejich aktualizaci a údržbu. Obrazec lze vytvořit předáním do geometrie a sady vlastností nebo předáním funkce, jak je znázorněno v následujícím kódu.
+Třída `Shape` obtéká [geometrii](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest) nebo [funkci](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) a usnadňuje aktualizaci a údržbu těchto funkcí. Chcete-li vytvořit instanci proměnné tvaru, předejte geometrii nebo sadu vlastností konstruktoru tvaru.
 
 ```javascript
 //Creating a shape by passing in a geometry and a object containing properties.
@@ -123,7 +123,7 @@ var shape1 = new atlas.Shape(new atlas.data.Point[0,0], { myProperty: 1 });
 var shape2 = new atlas.Shape(new atlas.data.Feature(new atlas.data.Point[0,0], { myProperty: 1 });
 ```
 
-Následující ukázka kódu ukazuje, jak zabalit objekt informující o středníku objektu JSON se třídou Shape a snadno aktualizovat vlastnost RADIUS pomocí posuvníku. Jak se změní hodnota poloměru v obrazci, vykreslování kružnice se automaticky aktualizuje na mapě.
+Následující ukázka kódu ukazuje, jak zabalit objekt informující o středníku objektu JSON s třídou Shape. Při změně hodnoty poloměru v obrazci se kroužek automaticky vykresluje na mapě.
 
 <br/>
 

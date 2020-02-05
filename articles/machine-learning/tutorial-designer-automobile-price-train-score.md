@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 01/30/2020
-ms.openlocfilehash: c7a21bb3f086257b7f6a5edde5cbfdf835645a70
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: de9ed700363bd6578ac49f0add0c48dc33356692
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934051"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982585"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Kurz: předpověď ceny automobilu pomocí návrháře (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -135,11 +135,13 @@ Při výukovém modelu je nutné provést něco o chybějících datech. Ve slou
 
 1. Vyberte modul **Výběr sloupců v datové sadě** .
 
-1. V podokně podrobností modulu napravo od plátna vyberte **všechny sloupce**.
+1. V podokně podrobností modulu napravo od plátna vyberte **Upravit sloupec**.
+
+1. Rozbalte rozevírací seznam **názvů sloupců** vedle položky **Zahrnout**a vyberte možnost **všechny sloupce**.
 
 1. Vyberte **+** pro přidání nového pravidla.
 
-1. V rozevírací nabídce vyberte **vyloučit** a **názvy sloupců**.
+1. V rozevíracích nabídkách vyberte **vyloučit** a **názvy sloupců**.
     
 1. Do textového pole zadejte *normalizované ztráty* .
 

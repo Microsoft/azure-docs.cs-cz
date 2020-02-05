@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 9fd1e72568b4f0c8813a5d050ce7fa7214ca7cd9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: c362829b1babf954868452a3858da1f319008a9a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722437"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990772"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnostika služby Standard Load Balancer s metrikami, upozorněními a stavem prostředků
 
@@ -41,6 +41,8 @@ Různé konfigurace Standard Load Balancer poskytují následující metriky:
 | Stav sondy stavu (dostupnost DIP) | Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer používá distribuovanou službu pro zjišťování stavu, která monitoruje stav koncového bodu vaší aplikace podle nastavení konfigurace. Tato metrika poskytuje agregované zobrazení každého koncového bodu instance ve fondu nástroje pro vyrovnávání zatížení, které je filtrované podle počtu koncových bodů. Můžete zjistit, jak Load Balancer zobrazení stavu aplikace, jak je uvedeno v konfiguraci sondy stavu. |  Průměr |
 | SYN (synchronizace) paketů | Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer neukončuje připojení TCP (Transmission Control Protocol) ani interakci s toky paketů TCP nebo UDP. Toky a jejich metody handshake jsou vždy mezi zdrojem a instancí virtuálního počítače. K lepšímu řešení potíží se scénáři protokolu TCP můžete použít čítače paketů SYN, abyste pochopili, kolik pokusů o připojení TCP je prováděno. Metrika hlásí počet přijatých paketů TCP SYN.| Průměr |
 | Připojení SNAT | Veřejný Nástroj pro vyrovnávání zatížení |Standard Load Balancer oznamuje počet odchozích toků, které jsou maskované na front-endu veřejné IP adresy. Porty zdrojového překladu adres (SNAT) jsou prostředek exhaustible. Tato metrika vám může poskytnout informace o tom, jak intenzivně se aplikace spoléhá na SNAT pro odchozí vzniklé toky. Čítače pro úspěšné a neúspěšné odchozí toky SNAT jsou hlášeny a lze je použít k řešení potíží a pochopení stavu odchozích toků.| Průměr |
+| Přidělené porty SNAT | Veřejný Nástroj pro vyrovnávání zatížení | Standard Load Balancer oznamuje počet přidělených portů SNAT na back-end instanci. | Vypočítat. |
+| Používané porty SNAT | Veřejný Nástroj pro vyrovnávání zatížení | Standard Load Balancer oznamuje počet portů SNAT, které se využívají na instanci back-endu. | Průměr | 
 | Čítače bajtů |  Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer oznamuje data zpracovaná za front-end. Můžete si všimnout, že bajty nejsou rovnoměrně distribuované napříč instancemi back-endu. Očekává se, že Load Balancer algoritmus Azure je založený na tocích | Průměr |
 | Čítače paketů |  Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer hlásí zpracované pakety za front-end.| Průměr |
 
@@ -195,7 +197,7 @@ V následující tabulce jsou uvedeny různé stavy prostředků a jejich popisy
 
 | Stav prostředku | Popis |
 | --- | --- |
-| K dispozici. | Váš prostředek standardního nástroje pro vyrovnávání zatížení je v pořádku a dostupný. |
+| Dostupné | Váš prostředek standardního nástroje pro vyrovnávání zatížení je v pořádku a dostupný. |
 | Neaktivní | Váš prostředek standardního nástroje pro vyrovnávání zatížení není v pořádku. Diagnostikujte stav tak, že vyberete **Azure Monitor** > **metriky**.<br>(*Nedostupný* stav může také znamenat, že prostředek není připojený k vašemu standardnímu nástroji pro vyrovnávání zatížení.) |
 | Není známo | Stav prostředku pro prostředek standardního nástroje pro vyrovnávání zatížení se ještě neaktualizoval.<br>(*Neznámý* stav může také znamenat, že prostředek není připojen k vašemu standardnímu nástroji pro vyrovnávání zatížení.)  |
 

@@ -1,17 +1,17 @@
 ---
 title: Azure Stream Analytics úrovně kompatibility
-description: Naučte se nastavit úroveň kompatibility pro úlohu Azure Stream Analytics a významné změny v nejnovější úrovni kompatibility.
+description: Zjistěte, jak nastavit úroveň kompatibility pro úlohy Azure Stream Analytics a hlavní změny v nejnovější úroveň kompatibility
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.openlocfilehash: 888c1f0bb38a5317cc27790ea47917c182d49593
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 02/03/2020
+ms.openlocfilehash: e1eb852b7cf7aea887dea429e19b0a3b1ac5805a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925644"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989854"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Úroveň kompatibility pro úlohy Azure Stream Analytics
 
@@ -21,13 +21,13 @@ Některé nové funkce ve službě však mohou způsobit zásadní změnu, např
 
 ## <a name="choose-a-compatibility-level"></a>Zvolit úroveň kompatibility
 
-Úroveň kompatibility řídí chování za běhu úlohy Stream Analytics. 
+Úroveň kompatibility řídí chování za běhu úlohy stream analytics. 
 
 Azure Stream Analytics aktuálně podporuje tři úrovně kompatibility:
 
 * 1,0 – předchozí chování
 * 1,1 – výchozí chování
-* 1,2 (Preview) – nejnovější chování s nejnovějšími vylepšeními ve vyhodnocování
+* 1,2 – nejnovější chování s nejnovějšími vylepšeními
 
 Původní úroveň kompatibility 1,0 byla zavedena během obecné dostupnosti Azure Stream Analytics před několika lety.
 
@@ -40,16 +40,16 @@ Když vytváříte novou Stream Analytics úlohu, je osvědčeným postupem, jak
 Postup aktualizace úrovně kompatibility úlohy v Azure Portal:
 
 1. K vyhledání Stream Analytics úlohy použijte [Azure Portal](https://portal.azure.com) .
-2. Před aktualizací úrovně kompatibility úlohu **zastavte** . Úroveň kompatibility nejde aktualizovat, pokud je vaše úloha ve spuštěném stavu.
+2. Před aktualizací úrovně kompatibility úlohu **zastavte** . Úroveň kompatibility nelze aktualizovat, pokud vaše úloha není ve spuštěném stavu.
 3. V části **Konfigurovat** záhlaví vyberte **úroveň kompatibility**.
 4. Vyberte hodnotu úrovně kompatibility, kterou chcete.
 5. V dolní části stránky vyberte **Save (Uložit** ).
 
-![Úroveň kompatibility Stream Analytics v Azure Portal](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
+![Úroveň kompatibility Stream Analytics na webu Azure portal](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
 
-Když aktualizujete úroveň kompatibility, kompilátor T-SQL ověří úlohu se syntaxí, která odpovídá vybrané úrovni kompatibility.
+Při aktualizaci úrovně kompatibility T-Compiler ověří úlohu se syntaxí, která odpovídá vybrané úrovni kompatibility.
 
-## <a name="compatibility-level-12-preview"></a>Úroveň kompatibility 1,2 (Preview)
+## <a name="compatibility-level-12"></a>Úroveň kompatibility 1.2
 
 V úrovni kompatibility 1,2 jsou představeny tyto hlavní změny:
 
@@ -115,11 +115,11 @@ Výsledkem použití předpony "System" pro jakékoli uživatelsky definované f
 
 ## <a name="compatibility-level-11"></a>Úroveň kompatibility 1,1
 
-V úrovni kompatibility 1,1 jsou představeny tyto hlavní změny:
+V úrovni kompatibility 1.1 byly zavedeny následující hlavní změny:
 
 ### <a name="service-bus-xml-format"></a>Service Bus formát XML
 
-**úroveň 1,0:** Azure Stream Analytics použila DataContractSerializer, takže obsah zprávy obsahuje značky XML. Například:
+**úroveň 1,0:** Azure Stream Analytics použila DataContractSerializer, takže obsah zprávy obsahuje značky XML. Příklad:
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 
@@ -132,19 +132,19 @@ V úrovni kompatibility 1,1 jsou představeny tyto hlavní změny:
 **1,1 úroveň:** rozlišování malých a velkých písmen je u názvů polí při zpracovávání modulem Azure Stream Analytics trvalé.
 
 > [!NOTE]
-> Zachování citlivosti na velká a malá písmena pro streamování analytických úloh hostovaných pomocí hraničního prostředí ještě není k dispozici. V důsledku toho jsou názvy všech polí převedeny na malá písmena, pokud je vaše úloha hostována na hraničních zařízeních.
+> Zachování rozlišování ještě není k dispozici pro Stream analytických úloh, které jsou hostované pomocí hraničním prostředí. Názvy všech polí v důsledku toho jsou převedeny na malá písmena, pokud vaše úloha je hostovaná na hraničních zařízeních.
 
 ### <a name="floatnandeserializationdisabled"></a>FloatNaNDeserializationDisabled
 
-**úroveň 1,0:** Příkaz CREATE TABLE nefiltroval události s NaN (nejedná se o číslo). Například nekonečno,-nekonečno) v typu sloupce typu FLOAT, protože jsou z dokumentovaného rozsahu pro tato čísla.
+**úroveň 1,0:** Příkaz CREATE TABLE nefiltroval události s NaN (nejedná se o číslo). Například nekonečno, - nekonečno) ve sloupci PLOVOUCÍ typ, protože jsou mimo rozsah zdokumentovaných pro tato čísla.
 
-**úroveň 1,1:** CREATE TABLE umožňuje zadat silné schéma. Modul Stream Analytics ověří, že data odpovídají tomuto schématu. Pomocí tohoto modelu může příkaz Filtrovat události s hodnotami NaN.
+**úroveň 1,1:** CREATE TABLE umožňuje zadat silné schéma. Modul Stream Analytics ověří, že toto schéma odpovídá data. V tomto modelu můžete příkaz Filtrovat události s hodnoty NaN.
 
 ### <a name="disable-automatic-upcast-for-datetime-strings-in-json"></a>Zakázat automatické přetypování pro řetězce DateTime ve formátu JSON
 
 **úroveň 1,0:** Analyzátor JSON automaticky přesměruje řetězcové hodnoty s informacemi o datu a času nebo zóně na typ DateTime a pak je převede na UTC. Výsledkem tohoto chování je ztráta informací o časovém pásmu.
 
-**úroveň 1,1:** Neexistují žádné další automatické přetypování řetězcových hodnot s informacemi o datu a času nebo zóně k typu DateTime. V důsledku toho se uchovávají informace o časovém pásmu.
+**úroveň 1,1:** Neexistují žádné další automatické přetypování řetězcových hodnot s informacemi o datu a času nebo zóně k typu DateTime. V důsledku toho se ukládají informace o časovém pásmu.
 
 ## <a name="next-steps"></a>Další kroky
 

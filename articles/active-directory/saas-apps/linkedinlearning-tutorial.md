@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace jednotného přihlašování s výukou LinkedInu | Microsoft Docs'
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování pomocí programu LinkedIn Learning | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a učením LinkedInu.
 services: active-directory
 documentationCenter: na
@@ -11,19 +11,18 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cf5f8d79c2f416ea0c00064fecc8fd6008ae047
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 15509866980cdf85f54fc03cb77eed36f83c982f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71119850"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983363"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-learning"></a>Kurz: Azure Active Directory integrace jednotného přihlašování pomocí programu LinkedIn Learning
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-learning"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí programu LinkedIn Learning
 
 V tomto kurzu se dozvíte, jak integrovat výuku LinkedInu pomocí Azure Active Directory (Azure AD). Při integraci LinkedInového učení s Azure AD můžete:
 
@@ -46,6 +45,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * LinkedIn Learning podporuje **SP a IDP** iniciované jednotné přihlašování.
 * Učení LinkedIn podporuje **při zřizování uživatelů jenom včas**
+* Jakmile nakonfigurujete výuku LinkedInu, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-linkedin-learning-from-the-gallery"></a>Přidání učení LinkedInu z Galerie
 
@@ -119,7 +119,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -171,7 +171,7 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 
 Když kliknete na dlaždici učení LinkedInu na přístupovém panelu, měli byste se automaticky přihlásit k učení LinkedIn, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -181,3 +181,4 @@ Když kliknete na dlaždici učení LinkedInu na přístupovém panelu, měli by
 
 - [Vyzkoušejte si LinkedIn Learning s Azure AD](https://aad.portal.azure.com/)
 
+- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

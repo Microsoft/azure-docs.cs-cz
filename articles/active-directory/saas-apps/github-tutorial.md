@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with GitHub | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and GitHub.
+title: 'Kurz: Azure Active Directory integrace s GitHubem | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a GitHubem.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,22 +12,22 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c61ab2279592c93fa22c1bb5102c868f3e13e473
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 4ddc2622a67979f989c030d615c402387e7762d5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289880"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983465"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Tutorial: Azure Active Directory single sign-on (SSO) integration with GitHub
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) k GitHubu
 
-In this tutorial, you'll learn how to integrate GitHub with Azure Active Directory (Azure AD). When you integrate GitHub with Azure AD, you can:
+V tomto kurzu se dozvíte, jak integrovat GitHub s Azure Active Directory (Azure AD). Když integrujete GitHub s Azure AD, můžete:
 
-* Control in Azure AD who has access to GitHub.
-* Enable your users to be automatically signed-in to GitHub with their Azure AD accounts.
+* Řízení ve službě Azure AD, která má přístup k GitHubu.
+* Umožněte uživatelům, aby se do GitHubu automaticky přihlásili pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -46,7 +46,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 * GitHub podporuje jednotné přihlašování (SSO) s podporou **SP**
 
 * GitHub podporuje [ **automatizované** zřizování uživatelů](github-provisioning-tutorial.md)
-* Jakmile nakonfigurujete GitHub, můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Po nakonfigurování GitHubu můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-github-from-the-gallery"></a>Přidání GitHubu z Galerie
 
@@ -221,5 +221,3 @@ Po kliknutí na dlaždici GitHub na přístupovém panelu byste se měli automat
 - [Vyzkoušejte si GitHub s Azure AD](https://aad.portal.azure.com/)
 
 - [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [Jak chránit GitHub s pokročilými viditelnostmi a ovládacími prvky](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

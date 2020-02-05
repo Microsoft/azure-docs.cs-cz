@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 01/29/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2e2a3dbf0ce3be28a78f04eb5bb1c369aeff1441
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: ad6b84323ac49713506bc61bd0051421e0234a94
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773437"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982275"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -84,7 +84,7 @@ Element **TechnicalProfile** obsahuje následující atribut:
 | Element | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | Domain (Doména) | 0:1 | Název domény pro technický profil. Pokud například váš technický profil určuje poskytovatele identity Facebooku, název domény je Facebook.com. |
-| DisplayName | 0:1 | Název technického profilu, který se může zobrazit uživatelům |
+| DisplayName | 1:1 | Název technického profilu, který se může zobrazit uživatelům |
 | Popis | 0:1 | Popis technického profilu, který se může zobrazit uživatelům |
 | Protocol (Protokol) | 0:1 | Protokol používaný pro komunikaci s druhou stranou. |
 | Metadata | 0:1 | Kolekce párů klíč/hodnota, které jsou využívány protokolem pro komunikaci s koncovým bodem v průběhu transakce. |

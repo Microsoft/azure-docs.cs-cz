@@ -1,27 +1,33 @@
 ---
 title: Spuštění služby Azure Service Fabric v rámci účtu gMSA
-description: Naučte se spouštět službu jako gMSA na samostatném clusteru Service Fabric se systémem Windows.
+description: Naučte se, jak spustit službu jako účet spravované služby (gMSA) na samostatném clusteru s Service Fabric Windows.
 author: dkkapur
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/29/2018
 ms.author: dekapur
-ms.openlocfilehash: 99d8089bd12d05e46f91e55c933d58d50baa92f5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: sfrev
+ms.openlocfilehash: 19343d370547cb5457f6bed70a8465187ff27102
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464270"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988392"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>Spuštění služby jako skupinový účet spravované služby
-V samostatném clusteru se systémem Windows Server můžete službu spustit jako skupinový účet spravované služby (gMSA) pomocí zásad RunAs.  Ve výchozím nastavení Service Fabric aplikace běží pod účtem, pod kterým běží proces Fabric. exe. Spouštění aplikací v rámci různých účtů, i ve sdíleném hostovaném prostředí, je mezi sebou bezpečnější. Všimněte si, že se používá místní služba Active Directory v rámci vaší domény a ne Azure Active Directory (Azure AD). Pomocí gMSA není v manifestu aplikace uloženo žádné heslo ani šifrované heslo.  Službu můžete spustit také jako [uživatel nebo skupina služby Active Directory](service-fabric-run-service-as-ad-user-or-group.md).
 
-Následující příklad ukazuje, jak vytvořit účet gMSA s názvem *svc-test $* ; Jak nasadit tento účet spravované služby na uzly clusteru; a jak nakonfigurovat objekt zabezpečení uživatele.
+V samostatném clusteru se systémem Windows Server můžete službu spustit jako *skupinový účet spravované služby* (gMSA) pomocí zásad *runas* .  Ve výchozím nastavení Service Fabric aplikace běží pod účtem, pod kterým běží proces `Fabric.exe`. Spouštění aplikací v rámci různých účtů, i ve sdíleném hostovaném prostředí, je mezi sebou bezpečnější. Pomocí gMSA není v manifestu aplikace uloženo žádné heslo ani šifrované heslo.  Službu můžete spustit také jako [uživatel nebo skupina služby Active Directory](service-fabric-run-service-as-ad-user-or-group.md).
+
+Následující příklad ukazuje, jak vytvořit účet gMSA s názvem *svc-test $* , jak nasadit tento účet spravované služby na uzly clusteru a jak nakonfigurovat objekt zabezpečení uživatele.
+
+> [!NOTE]
+> Použití gMSA se samostatným clusterem Service Fabric vyžaduje místní službu Active Directory v rámci vaší domény (místo Azure Active Directory (Azure AD)).
 
 Požadavky:
+
 - Doména potřebuje kořenový klíč KDS.
 - V doméně musí být alespoň jeden řadič domény se systémem Windows Server 2012 (nebo R2).
 
-1. Správce domény služby Active Directory vytvoří skupinový účet spravované služby pomocí `New-ADServiceAccount` rutiny a zajistěte, aby `PrincipalsAllowedToRetrieveManagedPassword` zahrnoval všechny uzly clusteru Service Fabric. `AccountName`, `DnsHostName`a `ServicePrincipalName` musí být jedinečné.
+1. Správce domény služby Active Directory vytvoří účet spravované služby pomocí rutiny `New-ADServiceAccount` a zajistěte, aby `PrincipalsAllowedToRetrieveManagedPassword` zahrnoval všechny Service Fabric uzly clusteru. `AccountName`, `DnsHostName`a `ServicePrincipalName` musí být jedinečné.
 
     ```powershell
     New-ADServiceAccount -name svc-Test$ -DnsHostName svc-test.contoso.com  -ServicePrincipalNames http/svc-test.contoso.com -PrincipalsAllowedToRetrieveManagedPassword SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$
@@ -35,7 +41,7 @@ Požadavky:
     Test-AdServiceAccount svc-Test$
     ```
 
-3. Nakonfigurujte objekt zabezpečení uživatele a nakonfigurujte RunAsPolicy tak, aby odkazoval na uživatele.
+3. Nakonfigurujte objekt zabezpečení uživatele a nakonfigurujte `RunAsPolicy` pro odkazování na [uživatele](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-fabric-settings#runas).
     
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -55,14 +61,14 @@ Požadavky:
     </ApplicationManifest>
     ```
 
-> [!NOTE] 
-> Použijete-li zásadu RunAs na službu a manifest služby deklaruje prostředky koncového bodu s protokolem HTTP, je nutné zadat **SecurityAccessPolicy**.  Další informace najdete v tématu [přiřazení zásad zabezpečení přístupu k koncovým bodům http a HTTPS](service-fabric-assign-policy-to-endpoint.md). 
+> [!NOTE]
+> Použijete-li zásadu RunAs na službu a manifest služby deklaruje prostředky koncového bodu s protokolem HTTP, je nutné zadat **SecurityAccessPolicy**.  Další informace najdete v tématu [přiřazení zásad zabezpečení přístupu k koncovým bodům http a HTTPS](service-fabric-assign-policy-to-endpoint.md).
 >
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-V dalším kroku si přečtěte následující články:
-* [Pochopení aplikačního modelu](service-fabric-application-model.md)
-* [Určení prostředků v manifestu služby](service-fabric-service-manifest-resources.md)
-* [Nasazení aplikace](service-fabric-deploy-remove-applications.md)
+Následující články vás provedou dalšími kroky:
+
+- [Pochopení aplikačního modelu](service-fabric-application-model.md)
+- [Určení prostředků v manifestu služby](service-fabric-service-manifest-resources.md)
+- [Nasazení aplikace](service-fabric-deploy-remove-applications.md)
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png

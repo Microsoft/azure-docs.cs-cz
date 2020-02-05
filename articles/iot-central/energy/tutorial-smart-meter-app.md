@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: a73f4d75811a384eb822d1f8594a22506509d560
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 7b04251211e716ef8e5f8c77aa3a2e74f6e9ef77
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112541"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982485"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Kurz: vytvoření a procházení šablony aplikace pro monitorování inteligentního měření 
 
@@ -30,7 +30,7 @@ Tento kurz vás provede procesem vytvoření aplikace pro monitorování intelig
 Pokud předplatné nemáte, [Vytvořte si bezplatný zkušební účet](https://azure.microsoft.com/free)
 
 ## <a name="prerequisites"></a>Požadavky
-- Žádný
+- Žádné
 - Doporučuje se předplatné Azure, ale není to nutné.
 
 ## <a name="create-a-smart-meter-monitoring-app"></a>Vytvoření aplikace pro inteligentní monitorování měřičů 
@@ -51,8 +51,9 @@ Tuto aplikaci můžete vytvořit ve třech jednoduchých krocích:
     * **7. den bezplatné zkušební verze**: Pokud už máte předplatné Azure, doporučuje se výchozí nastavení. Pokud nemáte předplatné Azure, začněte s bezplatnou zkušební verzí.
     * **Informace o fakturaci**: aplikace je zadarmo. K zřizování prostředků vaší aplikace se vyžaduje adresář, předplatné Azure a podrobnosti o oblasti.
     * V dolní části stránky klikněte na tlačítko **vytvořit** a vaše aplikace se vytvoří za minutu.     
-        > [!div class="mx-imgBorder"]
-        > ![formulář nové aplikace](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app.png)
+         ![formulář nové aplikace](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app.png)
+
+         ![Informace o fakturaci formuláře nové aplikace](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app-billinginfo.png)
 
 
 ### <a name="verify-the-application-and-simulated-data"></a>Ověření aplikace a simulovaných dat

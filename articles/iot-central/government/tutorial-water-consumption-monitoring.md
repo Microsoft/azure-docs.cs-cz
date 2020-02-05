@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 0b100e0bebc7c5b26449e396650da5434334075d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d31ef856103d809fc02a183603bc45f9d94939c8
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112617"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990542"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-in-iot-central"></a>Kurz: Vytvoření aplikace monitorování spotřeby vody v IoT Central
 
@@ -66,6 +66,7 @@ Vytvoření nové aplikace monitorování spotřeby v Azure IoT Centrale:
 
     ![Stránka aplikace Azure IoT Central](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring.png)
 
+    ![Azure IoT Central vytvořit informace o fakturaci aplikace](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring-billinginfo.png)
 6. Nyní jste vytvořili aplikaci pro monitorování spotřeby vody pomocí šablony monitorování využití služby Azure IoT Central **voda** .
 
 Blahopřejeme! Dokončili jste tvorbu aplikace pro monitorování kvality vody, která je dodávána s předem nakonfigurovaným:
@@ -126,7 +127,7 @@ Aplikace **monitorování spotřeby vody** se dodává se dvěma referenčními 
 Postup zobrazení šablony zařízení:
 
 1. V IoT Central v levém navigačním podokně aplikace klikněte na **šablony zařízení** . 
-    V seznamu šablony zařízení se zobrazí dva **měřiče toku** a **inteligentní ventily** pro šablony zařízení.
+    V seznamu šablony zařízení se zobrazí dvě **měřiče toku** a **inteligentní ventily** pro šablony zařízení.
 
    ![Šablona zařízení](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate.png)
 

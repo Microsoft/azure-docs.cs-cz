@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
-ms.date: 01/13/2020
+ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: 3a5ddf5bd4614b68e97e7616173a3e0640007530
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 1f3d442ea7cf6d95427aaa9c072410119e2735af
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941559"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989803"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Rychlý Start: jak se zaregistrovat a nahrát své první video
 
@@ -49,15 +49,17 @@ Seznam formátů souborů, které můžete použít s Video Indexer, najdete v �
 
     Když Video Indexer dokončí analýzu, zobrazí se oznámení s odkazem na vaše video a krátkým popisem, co se ve videu našlo. Například: lidé, témata, OCR.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="see-also"></a>Další informace najdete v tématech
 
 Další podrobnosti najdete v tématu [videa pro nahrávání a indexování](upload-index-videos.md) .
 
 Po nahrání a indexování videa můžete začít používat web [video indexer](video-indexer-view-edit.md) nebo [portál pro vývojáře video indexer](video-indexer-use-apis.md) , abyste viděli přehledy videa. 
 
-## <a name="see-also"></a>Další informace najdete v tématech
+[Začínáme používat rozhraní API](video-indexer-use-apis.md)
 
-[Přehled Video Indexeru](video-indexer-overview.md)
+## <a name="next-steps"></a>Další kroky
 
-[Začínáme používat API](video-indexer-use-apis.md)
+Podrobný Úvod najdete v našem [testovacím prostředí](https://github.com/Azure-Samples/media-services-video-indexer/blob/master/IntroToVideoIndexer.md). 
+
+Na konci dílny budete mít dobrý přehled o druhu informací, které je možné extrahovat z videa a zvukového obsahu, budete připraveni k identifikaci příležitostí souvisejících s funkcí Content Intelligence, stoupání videa AI v Azure a Ukázka několika scénáře na Video Indexer.
 

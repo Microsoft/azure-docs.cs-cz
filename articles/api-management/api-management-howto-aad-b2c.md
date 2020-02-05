@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 11dae2b6d771138503643c402ba4525df1f04a88
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4f311d2772a6a60798795b4f2e6237e8153b9547
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430752"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76981207"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Jak autorizovat vývojářské účty pomocí Azure Active Directory B2C v Azure API Management
 
@@ -38,61 +38,65 @@ Azure Active Directory B2C je cloudové řešení správy identit pro zákaznick
    > [!NOTE]
    > Pokud jste ještě nevytvořili instanci služby API Management, přečtěte si téma [vytvoření instance služby API Management][Create an API Management service instance] v [kurzu Začínáme se službou Azure API Management][Get started with Azure API Management].
 
-2. V části **identity**. Klikněte na **+ Přidat** v horní části.
+1. V části **identity**. Klikněte na **+ Přidat** v horní části.
 
    Na pravé straně se zobrazí podokno **Přidat poskytovatele identity** . Vyberte **Azure Active Directory B2C**.
     
    ![Přidat AAD B2C jako zprostředkovatele identity][api-management-howto-add-b2c-identity-provider]
 
-3. Zkopírujte **adresu URL pro přesměrování**.
+1. Zkopírujte **adresu URL pro přesměrování**.
 
    ![Adresa URL pro přesměrování zprostředkovatele identity AAD B2C][api-management-howto-copy-b2c-identity-provider-redirect-url]
 
-4. Na nové kartě získáte přístup k tenantovi Azure Active Directory B2C v Azure Portal a otevřete okno **aplikace** .
+1. Na nové kartě získáte přístup k tenantovi Azure Active Directory B2C v Azure Portal a otevřete okno **aplikace** .
 
    ![Zaregistrovat novou aplikaci 1][api-management-howto-aad-b2c-portal-menu]
 
-5. Kliknutím na tlačítko **Přidat** vytvořte novou Azure Active Directory B2C aplikaci.
+1. Kliknutím na tlačítko **Přidat** vytvořte novou Azure Active Directory B2C aplikaci.
 
    ![Registrace nové aplikace 2][api-management-howto-aad-b2c-add-button]
 
-6. V okně **Nová aplikace** zadejte název aplikace. V části **Webová aplikace/webové rozhraní API**vyberte **Ano** a v části **Povolení implicitního toku**vyberte **Ano** . Pak vložte **adresu URL pro přesměrování** zkopírovanou v kroku 3 do textového pole **Adresa URL odpovědi** .
+1. V okně **Nová aplikace** zadejte název aplikace. V části **Webová aplikace/webové rozhraní API**vyberte **Ano** a v části **Povolení implicitního toku**vyberte **Ano** . Pak vložte **adresu URL pro přesměrování** zkopírovanou v kroku 3 do textového pole **Adresa URL odpovědi** .
 
    ![Registrace nové aplikace 3][api-management-howto-aad-b2c-app-details]
 
-7. Klikněte na tlačítko **Vytvořit**. Když je aplikace vytvořená, zobrazí se v okně **aplikace** . Kliknutím na název aplikace zobrazíte její podrobnosti.
+1. Pokud používáte nový portál pro vývojáře (ne starší portál pro vývojáře), zahrňte v deklaracích aplikací **křestní jméno**, **příjmení**a **ID objektu uživatele** .
+
+    ![Deklarace identity aplikace](./media/api-management-howto-aad-b2c/api-management-application-claims.png)
+
+1. Klikněte na tlačítko **Vytvořit**. Když je aplikace vytvořená, zobrazí se v okně **aplikace** . Kliknutím na název aplikace zobrazíte její podrobnosti.
 
    ![Registrace nové aplikace 4][api-management-howto-aad-b2c-app-created]
 
-8. V okně **vlastnosti** zkopírujte **ID aplikace** do schránky.
+1. V okně **vlastnosti** zkopírujte **ID aplikace** do schránky.
 
    ![ID aplikace 1][api-management-howto-aad-b2c-app-id]
 
-9. Přepněte zpátky do API Management **Přidat zprostředkovatele identity** a vložte ID do textového pole **ID klienta** .
+1. Přepněte zpátky do API Management **Přidat zprostředkovatele identity** a vložte ID do textového pole **ID klienta** .
     
-10. Přepněte zpátky na registraci aplikace B2C, klikněte na tlačítko **klíče** a pak klikněte na **vygenerovat klíč**. Kliknutím na **Uložit** uložte konfiguraci a zobrazte **klíč aplikace**. Zkopírujte klíč do schránky.
+1.  Přepněte zpátky na registraci aplikace B2C, klikněte na tlačítko **klíče** a pak klikněte na **vygenerovat klíč**. Kliknutím na **Uložit** uložte konfiguraci a zobrazte **klíč aplikace**. Zkopírujte klíč do schránky.
 
     ![Klíč aplikace 1][api-management-howto-aad-b2c-app-key]
 
-11. Přepněte zpátky do API Management **Přidat zprostředkovatele identity** a vložte ho do textového pole **tajný klíč klienta** .
+1.  Přepněte zpátky do API Management **Přidat zprostředkovatele identity** a vložte ho do textového pole **tajný klíč klienta** .
     
-12. V části **přihlášení tenanta**zadejte název domény Azure Active Directory B2C tenanta.
+1.  V části **přihlášení tenanta**zadejte název domény Azure Active Directory B2C tenanta.
 
-13. Pole **autorita** umožňuje řídit Azure AD B2C přihlašovací adresu URL, která se má použít. Nastavte hodnotu na **< your_b2c_tenant_name >. b2clogin. com**.
+1.  Pole **autorita** umožňuje řídit Azure AD B2C přihlašovací adresu URL, která se má použít. Nastavte hodnotu na **< your_b2c_tenant_name >. b2clogin. com**.
 
-14. Zadejte **zásady registrace** a zásady **přihlášení** ze zásad klienta B2C. Volitelně můžete také zadat **zásady pro úpravu profilu** a **resetování hesel**.
+1. Zadejte **zásady registrace** a zásady **přihlášení** ze zásad klienta B2C. Volitelně můžete také zadat **zásady pro úpravu profilu** a **resetování hesel**.
 
-15. Po zadání požadované konfigurace klikněte na **Uložit**.
+1. Po zadání požadované konfigurace klikněte na **Uložit**.
 
     Po uložení změn budou moci vývojáři vytvářet nové účty a přihlašovat se k portálu pro vývojáře pomocí Azure Active Directory B2C.
 
 ## <a name="developer-portal---add-azure-ad-b2c-account-authentication"></a>Portál pro vývojáře – přidání ověřování účtu Azure AD B2C
 
-Na portálu pro vývojáře je možné přihlašovat pomocí AAD B2C s pomůckou pro **tlačítka OAuth** . Pomůcka už je součástí přihlašovací stránky výchozího obsahu portálu pro vývojáře.
-
-![Pomůcka tlačítek AAD](./media/api-management-howto-aad/portal-oauth-widget.png)
+Na portálu pro vývojáře je možné přihlašovat pomocí AAD B2C pomocí **tlačítka pro přihlášení: widget OAuth** . Pomůcka už je součástí přihlašovací stránky výchozího obsahu portálu pro vývojáře.
 
 I když se nový účet automaticky vytvoří, když se přihlásí nový uživatel pomocí AAD B2C, můžete zvážit přidání stejného widgetu do registrační stránky.
+
+**Formulář pro registraci: widget OAuth** představuje formulář používaný k registraci pomocí protokolu OAuth.
 
 > [!IMPORTANT]
 > Aby se změny AAD projevily, je potřeba [znovu publikovat portál](api-management-howto-developer-portal-customize.md#publish) .

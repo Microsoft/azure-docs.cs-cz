@@ -8,12 +8,12 @@ ms.date: 07/10/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: cc89033cedcdf185ce7e18c3981045e2a20569f5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1992b8925d5d9ba59c36452187f5b6eb510e72dc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952170"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990806"
 ---
 # <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>Seskupit více akcí ke spuštění z jednoho nebo více pravidel
 
@@ -23,9 +23,9 @@ ms.locfileid: "72952170"
 
 V Azure IoT Central vytvoříte pravidla ke spouštění akcí, když je splněna podmínka. Pravidla jsou založená na telemetrie a událostech zařízení. Například můžete informovat operátora, když teplota v zařízení překročí prahovou hodnotu. Tento článek popisuje, jak pomocí [Azure Monitorch](../../azure-monitor/overview.md) *skupin akcí* připojit k pravidlu IoT Central více akcí. Skupinu akcí můžete připojit k několika pravidlům. [Skupina akcí](../../azure-monitor/platform/action-groups.md) je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Aplikace s průběžnými platbami
+- Aplikace vytvořená pomocí standardního cenového plánu
 - Účet a předplatné Azure pro vytváření a správu Azure Monitorch skupin akcí
 
 ## <a name="create-action-groups"></a>Vytvoření skupin akcí
@@ -53,7 +53,7 @@ Vyberte skupinu akcí z předplatného Azure:
 
 ![Zvolit skupinu akcí](media/howto-use-action-groups/chooseactiongroup.png)
 
-Vyberte **Save** (Uložit). Skupina akcí se nyní zobrazí v seznamu akcí, které mají být spuštěny při aktivaci pravidla:
+Vyberte **Uložit**. Skupina akcí se nyní zobrazí v seznamu akcí, které mají být spuštěny při aktivaci pravidla:
 
 ![Uložená skupina akcí](media/howto-use-action-groups/savedactiongroup.png)
 

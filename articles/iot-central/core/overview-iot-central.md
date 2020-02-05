@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: a1aa2f12f62a95ac14750c821079df2bac46e8ac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6c62b247da9447138bd7e5d84dfe49fdf75a06fd
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434970"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990755"
 ---
 <!---
 Purpose of an Overview article: 
@@ -69,6 +69,13 @@ Jako tvůrce můžete taky přizpůsobit uživatelské rozhraní aplikace Azure 
 - Definovat rozložení vlastností a nastavení v šabloně zařízení
 - Nakonfigurovat vlastní řídicí panely, které operátorům pomůžou rychleji zjišťovat informace a řešit problémy
 - Nakonfigurovat vlastní analýzy pro zkoumání časových řad dat z připojených zařízení
+
+## <a name="pricing"></a>Ceny
+
+IoT Central aplikaci můžete vytvořit pomocí bezplatné zkušební verze 7 dní nebo použít Cenový tarif Standard.
+
+- Aplikace vytvořené pomocí *bezplatného* plánu jsou po dobu sedmi dnů zdarma a podporují až pět zařízení. Můžete je kdykoli převést na používání standardního cenového plánu, než vyprší jejich platnost.
+- Aplikace, které vytvoříte pomocí plánu *Standard* , se účtují podle jednotlivých zařízení. můžete zvolit Cenový tarif **Standard 1** nebo **Standard 2** s prvními dvěma zařízeními, která jsou zdarma. Přečtěte si další informace o [cenách IoT Central](https://aka.ms/iotcentral-pricing).
 
 ## <a name="connect-your-devices"></a>Připojit zařízení
 

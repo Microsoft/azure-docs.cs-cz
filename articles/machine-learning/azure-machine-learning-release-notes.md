@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 07ef3858cc6a514ed60a9d25046dc4ff9566fa31
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 963572e19be71bf572357aadeee443696210a262
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546346"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984961"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
@@ -363,7 +363,7 @@ Azure Machine Learning je teď poskytovatel prostředků pro Event Grid, můžet
 + Rozhraní Azure Machine Learningho vizuálu (Preview) se převedlo na běh [Azure Machine Learning kanálů](concept-ml-pipelines.md). Kanály (dříve označované jako experimenty) vytvořené v rámci vizuálního rozhraní jsou teď plně integrované se základními Azure Machine Learning prostředími.
   + Jednotné prostředí pro správu pomocí prostředků sady SDK
   + Správa verzí a sledování modelů, kanálů a koncových bodů pro vizuální rozhraní
-  + Přepracované uživatelské rozhraní
+  + Přepracování uživatelského rozhraní
   + Přidání nasazení odvozeného z dávky
   + Přidání podpory služby Azure Kubernetes (AKS) pro cílení na odvození výpočtů
   + Nový pracovní postup vytváření kanálů v Pythonu – krok
@@ -1187,7 +1187,7 @@ Použijte virtuální počítač s poznámkovým blokem jako zabezpečené hosti
   + Nasazení kontejneru na zařízení [Azure Data box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview) serveru
   + Určení skóre dat pomocí koncového bodu gRPC pomocí této [ukázky](https://github.com/Azure-Samples/aml-hardware-accelerated-models)
 
-### <a name="automated-machine-learning"></a>Automatizované strojové učení
+### <a name="automated-machine-learning"></a>Automatizované Machine Learning
 
 + Funkce, která umožňuje dynamické přidávání :::no-loc text="featurizers"::: pro optimalizaci výkonu. Nové :::no-loc text="featurizers":::: vkládání pracovních verzí, váha legitimace, cílové kódování, kódování textu v cíli, vzdálenost clusteru
 + Inteligentní CV pro zpracování rozdělených a platných rozdělení v rámci automatizovaného ML
@@ -1236,7 +1236,7 @@ Sada Azure Machine Learning SDK pro Python v 1.0.30 vydaná.
 
 ### <a name="azure-machine-learning-data-prep-sdk-v112"></a>Sada Azure Machine Learning data PREP SDK v 1.1.2
 
-Poznámka: sada SDK pro přípravu dat už nebude instalovat balíčky `numpy` a `pandas`. Viz [aktualizované pokyny k instalaci](https://aka.ms/aml-data-prep-installation).
+Poznámka: sada SDK pro přípravu dat už nebude instalovat balíčky `numpy` a `pandas`. Viz [aktualizované pokyny k instalaci](https://github.com/Microsoft/AMLDataPrepDocs).
 
 + **Nové funkce**
   + Nyní můžete použít transformaci pivotu.
@@ -1421,7 +1421,7 @@ Poznámka: sada SDK pro přípravu dat už nebude instalovat balíčky `numpy` a
     - Histogram
     - Skládaný pruhový graf
     - Krabicový diagram
-    - Bodové vykreslení
+    - Bodový graf
     - Bublinový graf
 + Portál nyní dynamicky generuje sestavy pro experimenty. Když uživatel odešle běh do experimentu, automaticky se vygeneruje sestava s protokolovanými metrikami a grafy, aby se povolilo porovnání v různých spuštěních.
 

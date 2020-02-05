@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 0e49a5c8edd074c71d5972ee8d9c2e81f9c512ea
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 22ed36c3c55d55ab9a733c2a0552f0ac3dcce1f5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453980"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987650"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Vytvoření a Správa aplikace Azure IoT Central z portálu CSP
 
@@ -39,9 +39,11 @@ Pokud chcete vytvořit aplikaci Azure IoT Central, v levé nabídce vyberte **se
 
 ![Vytvořit stránku aplikace pro zprostředkovatele CSP](media/howto-create-application-csp/image4-1.png)
 
-## <a name="payment-plan"></a>Platební plán
+![Vytvořit stránku aplikace pro informace o fakturaci CSP](media/howto-create-application-csp/image4-2.png)
 
-Jako CSP můžete vytvářet jenom aplikace s průběžnými platbami. Pokud chcete předprezentovat Azure IoT Central zákazníkům, můžete si vytvořit zkušební aplikaci samostatně. Přečtěte si další informace o zkušební verzi a aplikacích s průběžnými platbami na [stránce s cenami za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
+## <a name="pricing-plan"></a>Cenový tarif
+
+Můžete vytvářet jenom aplikace, které jako CSP používají standardní cenový plán. Abyste svým zákazníkům předvedli IoT Central Azure, můžete vytvořit aplikaci, která bude používat bezplatný cenový plán zvlášť. Další informace o cenových plánech zdarma a Standard najdete na [stránce s cenami za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
 
 ## <a name="application-name"></a>Název aplikace
 
@@ -63,7 +65,7 @@ Další informace najdete v tématu [Azure Active Directory](https://docs.micros
 
 ## <a name="azure-subscription"></a>Předplatné Azure
 
-Předplatné Azure vám umožňuje vytvářet instance služeb Azure. Azure IoT Central automaticky najde všechna předplatná Azure, ke kterým máte přístup, a zobrazí je v rozevírací nabídce na stránce **vytvořit aplikaci** . Pokud chcete vytvořit novou aplikaci Azure IoT Central, vyberte předplatné Azure.
+Předplatné Azure umožňuje vytvářet instance služeb Azure. Azure IoT Central automaticky najde všechna předplatná Azure, ke kterým máte přístup, a zobrazí je v rozevírací nabídce na stránce **vytvořit aplikaci** . Pokud chcete vytvořit novou aplikaci Azure IoT Central, vyberte předplatné Azure.
 
 Pokud nemáte předplatné Azure, můžete ho vytvořit v partnerském centru Microsoftu. Po vytvoření předplatného Azure se vraťte na stránku **Create Application** (Vytvořit aplikaci). Vaše nové předplatné se zobrazí v rozevírací nabídce **Azure Subscription** (Předplatné Azure).
 

@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/10/2020
+ms.date: 02/03/2020
 ms.author: radeltch
-ms.openlocfilehash: c2d6e3e42c581c255f207af4a5008e2d09c50a7d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 1a413ce55604ef8b5c3219e8de466fcc23d41bac
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887117"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990937"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP
 
@@ -185,7 +185,7 @@ Při zvažování Azure NetApp Files pro SAP NetWeaver v architektuře SUSE pro 
 Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální počítače. Následně vytvoříte Nástroj pro vyrovnávání zatížení a použijete virtuální počítače ve fondech back-endu.
 
 1. Vytvoření skupiny prostředků
-1. Vytvoření virtuální sítě
+1. Vytvoření Virtual Network
 1. Vytvoření skupiny dostupnosti pro ASCS  
    Nastavit maximální aktualizační doménu
 1. Vytvořit virtuální počítač 1  
@@ -253,7 +253,7 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální poč
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte front-end IP fond a klikněte na Přidat.
          1. Zadejte název nového fondu IP adres front-endu (například **front-end. QAS. ASCS**)
          1. Nastavte přiřazení na statické a zadejte IP adresu (například **10.1.1.20**).
-         1. Klikněte na tlačítko OK.
+         1. Klikněte na OK.
       1. 10.1.1.21 IP adres pro ASCS OLAJÍCÍCH
          * Opakujte výše uvedené kroky v části a a vytvořte tak IP adresu pro OLAJÍCÍCH (například **10.1.1.21** a **front-end. QAS. OLAJÍCÍCH**)
    1. Vytvoření back-end fondů
@@ -269,7 +269,7 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální poč
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte sondy stavu a klikněte na Přidat.
          1. Zadejte název nového testu stavu (například **stav). QAS. ASCS**)
          1. Vybrat TCP as Protocol, port 620**00**, zachovat interval 5 a špatný práh 2
-         1. Klikněte na tlačítko OK.
+         1. Klikněte na OK.
       1. Port 621**01** pro ASCS olajících
             * Opakujte výše uvedené kroky v části "c", chcete-li vytvořit sondu stavu pro OLAJÍCÍCH (například 621**01** a **stav). QAS. OLAJÍCÍCH**)
    1. Pravidla vyrovnávání zatížení
@@ -280,7 +280,7 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální poč
          1. Vybrat **porty ha**
          1. Prodloužit časový limit nečinnosti na 30 minut
          1. **Ujistěte se, že jste povolili plovoucí IP adresu.**
-         1. Klikněte na tlačítko OK.
+         1. Klikněte na OK.
          * Opakujte výše uvedené kroky a vytvořte tak pravidla vyrovnávání zatížení pro OLAJÍCÍCH (například **kg. QAS. OLAJÍCÍCH**)
 1. Případně, pokud váš scénář vyžaduje základní nástroj pro vyrovnávání zatížení (interní), postupujte podle následujících kroků:  
    1. Vytvoření IP adresy front-endu
@@ -288,7 +288,7 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální poč
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte front-end IP fond a klikněte na Přidat.
          1. Zadejte název nového fondu IP adres front-endu (například **front-end. QAS. ASCS**)
          1. Nastavte přiřazení na statické a zadejte IP adresu (například **10.1.1.20**).
-         1. Klikněte na tlačítko OK.
+         1. Klikněte na OK.
       1. 10.1.1.21 IP adres pro ASCS OLAJÍCÍCH
          * Opakujte výše uvedené kroky v části a a vytvořte tak IP adresu pro OLAJÍCÍCH (například **10.1.1.21** a **front-end. QAS. OLAJÍCÍCH**)
    1. Vytvoření back-end fondů
@@ -298,13 +298,13 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální poč
          1. Klikněte na Přidat virtuální počítač.
          1. Vyberte skupinu dostupnosti, kterou jste vytvořili dříve pro ASCS. 
          1. Vyberte virtuální počítače v clusteru (A) SCS.
-         1. Klikněte na tlačítko OK.
+         1. Klikněte na OK.
    1. Vytvoření sond stavu
       1. Port 620**00** pro ASCS
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte sondy stavu a klikněte na Přidat.
          1. Zadejte název nového testu stavu (například **stav). QAS. ASCS**)
          1. Vybrat TCP as Protocol, port 620**00**, zachovat interval 5 a špatný práh 2
-         1. Klikněte na tlačítko OK.
+         1. Klikněte na OK.
       1. Port 621**01** pro ASCS olajících
             * Opakujte výše uvedené kroky v části "c", chcete-li vytvořit sondu stavu pro OLAJÍCÍCH (například 621**01** a **stav). QAS. OLAJÍCÍCH**)
    1. Pravidla vyrovnávání zatížení
@@ -315,7 +315,7 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální poč
          1. Zachovejte protokol **TCP**, zadejte port **3200**
          1. Prodloužit časový limit nečinnosti na 30 minut
          1. **Ujistěte se, že jste povolili plovoucí IP adresu.**
-         1. Klikněte na tlačítko OK.
+         1. Klikněte na OK.
       1. Další porty pro ASCS
          * Opakujte výše uvedené kroky v části "d" pro porty**36 00**,**39 00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 a TCP pro ASCS
       1. Další porty pro ASCS OLAJÍCÍCH
@@ -341,7 +341,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    </code></pre>
 
    > [!NOTE]
-   > V hostitelských uzlech uzlů clusteru nepoužívejte pomlčky. V opačném případě nebude cluster fungovat. Jedná se o známé omezení a SUSE pracuje na opravě. Oprava se uvolní jako oprava balíčku SAP-SUSE-Cloud-Connector.
+   > Známý problém s používáním pomlčky v názvech hostitelů je opravený s verzí **3.1.1** balíčku **SAP-SUSE-cluster-Connector**. Pokud používáte uzly clusteru s pomlčkou v názvu hostitele, ujistěte se, že používáte aspoň verzi 3.1.1 balíčku SAP-SUSE-cluster-Connector. V opačném případě nebude cluster fungovat. 
 
    Ujistěte se, že jste nainstalovali novou verzi konektoru SAP SUSE cluster. Stará se o to, že se navolala sap_suse_cluster_connector a ta nového se nazývá **SAP-SUSE-cluster-Connector**.
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dcebcc3e2021938f3fd3bde236ef08e4f26b8a97
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: f0d6d74271cc4ff0be4a653b389cc70ad5c56ef9
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949887"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983074"
 ---
 # <a name="boolean-claims-transformations"></a>Logické transformace deklarací identity
 
@@ -32,7 +32,7 @@ Provede operaci a se dvěma logickými inputClaims a nastaví outputClaim s výs
 |-------| ------------------------ | ---------- | ----- |
 | InputClaim | inputClaim1 | Boolean | První deklarace ClaimType pro vyhodnocení. |
 | InputClaim | inputClaim2  | Boolean | Druhá deklarace ClaimType pro vyhodnocení. |
-|outputClaim | outputClaim | Boolean | ClaimTypes, který bude vytvořen po vyvolání této transformace deklarací (true nebo false). |
+|OutputClaim | OutputClaim | Boolean | ClaimTypes, který bude vytvořen po vyvolání této transformace deklarací (true nebo false). |
 
 Následující transformace deklarací identity ukazuje, jak a dvě Boolean ClaimTypes: `isEmailNotExist`a `isSocialAccount`. Výstupní `presentEmailSelfAsserted` deklarace identity je nastavená na `true`, pokud je hodnota obou vstupních deklarací `true`. V kroku orchestrace můžete použít předběžnou podmínku k přednastavení stránky s vlastním kontrolním účtem, jenom když je e-mail účtu v sociální síti prázdný.
 
@@ -114,6 +114,44 @@ Technický profil s vlastním uplatněním volá ověřovací **přihlášení �
     - **valueToCompareTo**: true
 - Výsledek: došlo k chybě
 
+## <a name="comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue
+
+Kontroluje, zda je logická hodnota deklarace identity rovna `true` nebo `false`a vrátí výsledek komprese. 
+
+| Položka | TransformationClaimType  | Typ dat  | Poznámky |
+| ---- | ------------------------ | ---------- | ----- |
+| InputClaim | InputClaim | Boolean | Deklarace ClaimType, která má být uplatněna. |
+| InputParameter |valueToCompareTo | Boolean | Hodnota, která má být porovnána (true nebo false). |
+| OutputClaim | InputClaim | Boolean | Deklarace ClaimType, která je vytvořena po vyvolání tohoto ClaimsTransformation. |
+
+
+Následující transformace deklarací identity ukazuje, jak kontrolovat hodnotu logického typu ClaimType s hodnotou `true`. Pokud je hodnota `IsAgeOver21Years` ClaimType rovna `true`, transformace deklarací identity vrátí `true`, jinak `false`.
+
+```XML
+<ClaimsTransformation Id="AssertAccountEnabled" TransformationMethod="CompareBooleanClaimToValue">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="IsAgeOver21Years" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="valueToCompareTo" DataType="boolean" Value="true" />
+  </InputParameters>
+  <OutputClaims>
+      <OutputClaim  ClaimTypeReferenceId="accountEnabled" TransformationClaimType="compareResult"/>
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Příklad:
+
+- Vstupní deklarace identity:
+    - **inputClaim**: false
+- Vstupní parametry:
+    - **valueToCompareTo**: true
+- Deklarace výstupů:
+    - **compareResult**: false 
+
+
+
 ## <a name="notclaims"></a>NotClaims
 
 Provede operaci not pro logickou inputClaim a nastaví outputClaim s výsledkem operace.
@@ -121,7 +159,7 @@ Provede operaci not pro logickou inputClaim a nastaví outputClaim s výsledkem 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | InputClaim | Boolean | Deklaraci identity, která se má provozovat. |
-| outputClaim | outputClaim | Boolean | ClaimTypes, které jsou vytvářeny po vyvolání tohoto ClaimsTransformation (true nebo false). |
+| OutputClaim | OutputClaim | Boolean | ClaimTypes, které jsou vytvářeny po vyvolání tohoto ClaimsTransformation (true nebo false). |
 
 Pomocí této transformace deklarace identity proveďte logickou negaci deklarace identity.
 
@@ -150,7 +188,7 @@ Vypočítá nebo ze dvou logických inputClaims a nastaví outputClaim s výsled
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | Boolean | První deklarace ClaimType pro vyhodnocení. |
 | InputClaim | inputClaim2 | Boolean | Druhá deklarace ClaimType pro vyhodnocení. |
-| outputClaim | outputClaim | Boolean | ClaimTypes, který bude vytvořen po vyvolání této ClaimsTransformation (true nebo false). |
+| OutputClaim | OutputClaim | Boolean | ClaimTypes, který bude vytvořen po vyvolání této ClaimsTransformation (true nebo false). |
 
 Následující transformace deklarací identity ukazuje, jak `Or` dvou logických ClaimTypes. V kroku orchestrace můžete použít předběžnou podmínku k přednastavení stránky s vlastním oceněním, pokud je hodnota jedné z deklarací `true`.
 
@@ -174,4 +212,3 @@ Následující transformace deklarací identity ukazuje, jak `Or` dvou logickýc
     - **inputClaim2**: false
 - Deklarace výstupů:
     - **outputClaim**: true
-

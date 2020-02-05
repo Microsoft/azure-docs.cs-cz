@@ -1,17 +1,17 @@
 ---
 title: Klauzule WHERE v Azure Cosmos DB
 description: Seznamte se s klauzulí WHERE SQL pro Azure Cosmos DB
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.author: mjbrown
-ms.openlocfilehash: cd5643d8be06afcd43c5bfe38d6f5e9caa6f906e
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.date: 02/03/2020
+ms.author: tisande
+ms.openlocfilehash: 31653b598f0f3a79bf7f9c09231b1d111f167a16
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326642"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982225"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>Klauzule WHERE v Azure Cosmos DB
 
@@ -104,10 +104,10 @@ Můžete také použít unární operátory +,-, ~ a ne v dotazech, jak je znáz
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-Odkazy na vlastnosti můžete použít také v dotazech. Například `SELECT * FROM Families f WHERE f.isRegistered` vrátí položku JSON obsahující Vlastnost `isRegistered` s hodnotou rovnou `true`. Jakákoli jiná hodnota, například `false`, `null`, `Undefined`, `<number>`, `<string>`, `<object>`nebo `<array>`, vyloučí položku z výsledku. 
+Odkazy na vlastnosti můžete použít také v dotazech. Například `SELECT * FROM Families f WHERE f.isRegistered` vrátí položku JSON obsahující Vlastnost `isRegistered` s hodnotou rovnou `true`. Jakákoli jiná hodnota, například `false`, `null`, `Undefined`, `<number>`, `<string>`, `<object>`nebo `<array>`, vyloučí položku z výsledku.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Začínáme](sql-query-getting-started.md)
-- [Ukázky v Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Klíčové slovo IN](sql-query-keywords.md#in)
 - [FROM – klauzule](sql-query-from.md)

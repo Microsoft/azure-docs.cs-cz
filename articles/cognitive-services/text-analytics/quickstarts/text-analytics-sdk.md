@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: Klientská knihovna Analýza textu V3 | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu zjistíte jazyk pomocí rozhraní API pro analýzu textu z Azure Cognitive Services.
+description: Pomocí tohoto rychlého startu můžete své aplikace připojit k rozhraní API pro analýzu textu z Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,46 +10,79 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 01/23/2020
 ms.author: aahi
-zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: 89680ad61296cd225bb87d2d6b46259586304da2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+zone_pivot_groups: programming-languages-text-analytics
+ms.openlocfilehash: 87cf5f226a8b2d1efcc0ee967d84f6e0002cb03d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774110"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987879"
 ---
-# <a name="quickstart-use-the-text-analytics-client-library-v3"></a>Rychlý Start: použití klientské knihovny Analýza textu V3
+# <a name="quickstart-use-the-text-analytics-client-library"></a>Rychlý Start: použití klientské knihovny Analýza textu
 
 Začněte s klientskou knihovnou Analýza textu. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.
 
-K provedení této akce použijte Analýza textu `3.0-preview` klientské knihovny:
+Použijte klientskou knihovnu Analýza textu k provedení těchto akcí:
 
-* Analýza mínění (Public Preview)
+* Analýza subjektivního hodnocení
 * Detekce jazyka
-* Rozpoznávání pojmenovaných entit (Public Preview)
+* Rozpoznávání entit
 * Extrakce klíčových frází
 
 ::: zone pivot="programming-language-csharp"
 
-[!INCLUDE [C# quickstart](../includes/quickstarts/v3/csharp.md)]
+> [!IMPORTANT]
+> * Nejnovější verze Preview rozhraní API pro analýzu textu je `3.0-preview`, která zahrnuje verzi Public Preview pro vylepšené [Analýza mínění](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) a [rozpoznávání pojmenovaných entit (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). Nejnovější stabilní verze je `2.1`.
+>    * Nezapomeňte pouze postupovat podle pokynů pro verzi, kterou používáte.
+> * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Pro produkční scénáře doporučujeme použití dávkových asynchronních metod pro výkon a škálovatelnost. Další informace najdete v referenční dokumentaci níže.
+
+[!INCLUDE [C# quickstart](../includes/quickstarts/csharp-sdk.md)]
 
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
 
-[!INCLUDE [Python quickstart](../includes/quickstarts/v3/python-sdk.md)]
+> [!IMPORTANT]
+> * Nejnovější verze Preview rozhraní API pro analýzu textu je `3.0-preview`, která zahrnuje verzi Public Preview pro vylepšené [Analýza mínění](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) a [rozpoznávání pojmenovaných entit (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). Nejnovější stabilní verze je `2.1`.
+>    * Nezapomeňte pouze postupovat podle pokynů pro verzi, kterou používáte.
+> * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Pro produkční scénáře doporučujeme použití dávkových asynchronních metod pro výkon a škálovatelnost. Další informace najdete v referenční dokumentaci níže. 
+
+[!INCLUDE [Python quickstart](../includes/quickstarts/python-sdk.md)]
 
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
 
-[!INCLUDE [Java quickstart](../includes/quickstarts/v3/java-sdk.md)]
+> [!IMPORTANT]
+> * Tento rychlý Start je určen pouze pro `3.0-preview` verze Analýza textu klientské knihovny, která zahrnuje verzi Public Preview pro vylepšené [Analýza mínění](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) a [rozpoznávání pojmenovaných entit (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features).
+>    * Nezapomeňte pouze postupovat podle pokynů pro verzi, kterou používáte.
+> * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Pro produkční scénáře doporučujeme použití dávkových asynchronních metod pro výkon a škálovatelnost. Další informace najdete v referenční dokumentaci níže.
+
+[!INCLUDE [Java quickstart](../includes/quickstarts/java-sdk.md)]
 
 ::: zone-end
 
-::: zone pivot="programming-language-nodejs"
+::: zone pivot="programming-language-javascript"
 
-[!INCLUDE [NodeJS quickstart](../includes/quickstarts/v3/nodejs-sdk.md)]
+> [!IMPORTANT]
+> * Nejnovější verze Preview rozhraní API pro analýzu textu je `3.0-preview`, která zahrnuje verzi Public Preview pro vylepšené [Analýza mínění](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) a [rozpoznávání pojmenovaných entit (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). Nejnovější stabilní verze je `2.1`.
+>    * Nezapomeňte pouze postupovat podle pokynů pro verzi, kterou používáte.
+> * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Pro produkční scénáře doporučujeme použití dávkových asynchronních metod pro výkon a škálovatelnost. Další informace najdete v referenční dokumentaci níže.
+
+[!INCLUDE [NodeJS quickstart](../includes/quickstarts/nodejs-sdk.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-other"
+
+## <a name="additional-language-support"></a>Podpora dalších jazyků
+
+Pokud jste na tuto kartu klikli, pravděpodobně jste v oblíbeném programovacím jazyce nezobrazili rychlý Start. Nedělejte si starosti, máme k dispozici další rychlé starty. Použijte tabulku k vyhledání správné ukázky pro programovací jazyk.
+
+| Jazyk | Dostupná verze | 
+|----------|------------------------|
+| Ruby     | [Verze 2,1](ruby-sdk.md)          | 
+| Go       | [Verze 2,1](go-sdk.md)          | 
 
 ::: zone-end
 

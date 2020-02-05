@@ -3,22 +3,22 @@ title: 'Kurz: vyhledání více tras podle režimu cestování | Mapy Microsoft 
 description: V tomto kurzu se naučíte, jak najít trasy pro různé režimy cestování pomocí Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/12/2019
+ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 258572d4451be6d9a1090c032467e85889148d14
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 73cc2ff49653c91d635d52b79a92d1974bfd895b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910854"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989650"
 ---
 # <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>Kurz: Vyhledání tras pro různé režimy cestování pomocí Azure Maps
 
-Tento kurz demonstruje způsob použití účtu Azure Maps a služby Route Service k vyhledání trasy k bodu zájmu s určením priority podle režimu dopravy. Na mapě zobrazíte dvě různé trasy, jednu pro auta a jednu pro nákladní vozy, pro které můžou platit omezení trasy kvůli výšce, váze nebo nebezpečnému nákladu. V tomto kurzu se naučíte:
+V tomto kurzu se dozvíte, jak používat účet Azure Maps a službu Směrování. Služba směrování může trasu najít do svého bodu zájmu a nastavit prioritu podle vašeho způsobu cestování. Na mapě můžete zobrazit dvě různé trasy, jednu pro automobily a jednu pro nákladní automobily. Směrovací služba vezme v úvahu omezení z důvodu výšky a váhy vozidla nebo v případě, že vozidlo uskutečňuje nebezpečný náklad. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvořit novou webovou stránku s použitím rozhraní API pro mapové ovládací prvky
@@ -27,7 +27,7 @@ Tento kurz demonstruje způsob použití účtu Azure Maps a služby Route Servi
 > * Zobrazení více tras na mapě
 
 ## <a name="prerequisites"></a>Požadavky
-Než budete pokračovat, postupujte podle pokynů v části [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps) a vytvořte předplatné účtu Azure Maps s cenovou úrovní S1 a podle kroků v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) Získejte primární klíč pro svůj účet. Další podrobnosti o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
+Než budete pokračovat, postupujte podle pokynů v části [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps) a vyberte cenovou úroveň S1. Použijte k získání primárního klíče pro váš účet postup uvedený v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) . Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
 ## <a name="create-a-new-map"></a>Vytvoření nové mapy
 
@@ -123,7 +123,7 @@ Následující kroky ukazují, jak vytvořit statickou stránku HTML s vložený
 
 ## <a name="define-how-the-route-will-be-rendered"></a>Definice způsobu vykreslení trasy
 
-V tomto kurzu se vypočítají dvě trasy, které se vykreslí na mapě. Jedna trasa využívá silnice pro automobilovou dopravu a druhá využívá silnice pro nákladní dopravu. Při vykreslení zobrazíme ikonu symbolu pro začátek a konec trasy a pro každou cestu trasy použijeme čáru jiné barvy.
+V tomto kurzu se vypočítají dvě trasy, které se vykreslí na mapě. Jedna trasa využívá silnice pro automobilovou dopravu a druhá využívá silnice pro nákladní dopravu. Když se vykreslí, zobrazí se ikona pro začátek a konec trasy a pro každou cestu cesty se vytvoří různé barevné čáry.
 
 1. Po inicializaci mapy přidejte do obslužné rutiny události map `ready` následující kód jazyka JavaScript.
 
@@ -158,7 +158,7 @@ V tomto kurzu se vypočítají dvě trasy, které se vykreslí na mapě. Jedna t
     });
     ```
     
-    V obslužné rutině události Maps `ready` se vytvoří zdroj dat pro ukládání řádků trasy i počátečního a koncového bodu. Vytvoří se vrstva čar, která se připojí ke zdroji dat a která definuje, jak se vykreslí čára trasy. Ve funkci čáry trasy se tloušťka a barva čáry načte z vlastností pomocí výrazů. Při přidávání vrstvy do mapy se předá druhý parametr s hodnotou `'labels'`, který určuje, že se má tato vrstva vykreslit pod popisky mapy. Tím se zajistí, že čára trasy nepřekryje popisky silnic. Vytvoří se vrstva symbolů, která se připojí ke zdroji dat. Tato vrstva určuje, jak se vykreslí počáteční a koncový bod. V tomto případě se do ní přidaly výrazy pro načtení informací o obrázku ikony a textovém popisku z vlastností objektů jednotlivých bodů. 
+    V obslužné rutině události Maps `ready` se vytvoří zdroj dat pro uložení řádků trasy a počátečního a koncového bodu. Vytvoří se vrstva čar, která se připojí ke zdroji dat a která definuje, jak se vykreslí čára trasy. Ve funkci čáry trasy se tloušťka a barva čáry načte z vlastností pomocí výrazů. Při přidávání vrstvy do mapy se předá druhý parametr s hodnotou `'labels'`, který určuje, že se má tato vrstva vykreslit pod popisky mapy. Tím se zajistí, že čára trasy nepřekryje popisky silnic. Vytvoří se vrstva symbolů, která se připojí ke zdroji dat. Tato vrstva určuje, jak budou vykresleny počáteční a koncové body. V tomto případě byly přidány výrazy pro načtení obrázku ikony a informace o popisku textu z vlastností u jednotlivých objektů objektu Point. 
     
 2. Pro účely tohoto kurzu jako počáteční bod nastavte fiktivní společnost Fabrikam v Seattlu a jako cílový bod nastavte pobočku Microsoftu. V obslužné rutině události Maps `ready` přidejte následující kód.
 
@@ -192,7 +192,7 @@ V tomto kurzu se vypočítají dvě trasy, které se vykreslí na mapě. Jedna t
 
     Počáteční a koncový bod se přidají ke zdroji dat. Ohraničující rámeček pro počáteční a koncový bod se vypočítá pomocí funkce `atlas.data.BoundingBox.fromData`. Toto ohraničovací pole slouží k nastavení zobrazení mapy kamer přes celou trasu pomocí funkce `map.setCamera`. Přidá se odsazení, které kompenzuje rozměry ikon symbolů v pixelech.
 
-4. Uložte soubor a aktualizujte prohlížeč. Na mapě se zobrazí špendlíky. Teď se ve středu mapy zobrazí Seattle a můžete si všimnou modrých špendlíků, které označují počáteční a koncový bod.
+4. Uložte soubor a aktualizujte prohlížeč. Na mapě se zobrazí špendlíky. Mapa se teď nacentruje na střed Seattle. Můžete zobrazit kulatě modrý kód PIN, který označuje počáteční bod a modrý kód PIN označující bod dokončení.
 
    ![Zobrazení mapy s počátečním a koncovým bodem](./media/tutorial-prioritized-routes/pins-map.png)
 
@@ -244,7 +244,7 @@ V této části se dozvíte, jak pomocí rozhraní API služby mapy tras vyhleda
     });
     ```
 
-    Tento fragment kódu výše se dotazuje směrovací služby Azure Maps pomocí metody [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) . Z odpovědi, která je extrahována pomocí metody `geojson.getFeatures()`, je následně extrahována z kolekce funkcí pro použití funkce injson. Řádek trasy se pak přidá do zdroje dat. Také přidá index 0, aby bylo zajištěno, že je vykreslen před všemi ostatními řádky ve zdroji dat. To se provádí proto, že výpočet trasy pro nákladní vůz bude často pomalejší než výpočet trasy pro auto, a kdyby se čára trasy pro nákladní vůz přidala ke zdroji dat až po čáře trasy pro auto, vykreslila by se nad ní. Do řádku trasy vozíku se přidají dvě vlastnosti, Barva tahu, která je dobrým barevným trendem modrou, a tloušťka čáry devět pixelů.
+    Tento fragment kódu výše se dotazuje směrovací služby Azure Maps pomocí metody [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) . Z odpovědi, která je extrahována pomocí metody `geojson.getFeatures()`, je následně extrahována z kolekce funkcí pro použití funkce injson. Řádek trasy se pak přidá do zdroje dat. Index 0 zajistí, že se vykreslí před všemi ostatními řádky ve zdroji dat. To se provádí proto, že výpočet trasy pro nákladní vůz bude často pomalejší než výpočet trasy pro auto, a kdyby se čára trasy pro nákladní vůz přidala ke zdroji dat až po čáře trasy pro auto, vykreslila by se nad ní. Do řádku trasy vozíku se přidají dvě vlastnosti, Barva tahu, která je dobrým barevným trendem modrou, a tloušťka čáry devět pixelů.
 
 3. Přidáním následujícího kódu jazyka JavaScript vytvořte trasu pro automobil a zobrazte výsledky.
 

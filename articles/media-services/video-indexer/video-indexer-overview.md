@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/23/2019
+ms.date: 02/02/2020
 ms.author: juliako
-ms.openlocfilehash: 6d03e66d125c4234a95e5a79f212bc81e7cea560
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: aee4390d9b892eddbd7dc59887f5268e4c35d3f7
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933393"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989786"
 ---
 # <a name="what-is-video-indexer"></a>Co je Video Indexer?
 
@@ -29,7 +29,7 @@ Následující diagram představuje ilustraci a nejedná se o technické vysvět
 
 ## <a name="compliance-privacy-and-security"></a>Dodržování předpisů, ochrana osobních údajů a zabezpečení
  
-Důležitou připomínkou je, že je nutné dodržovat všechny použitelné zákony v používání Video Indexer a nesmíte používat Video Indexer ani žádnou jinou službu Azure způsobem, který porušuje práva jiných nebo může být škodlivá jiným osobám. Před nahráním videí, včetně jakýchkoli biometrických dat, do služby Video Indexer pro zpracování a ukládání, musíte mít všechna patřičná práva, včetně příslušných souhlasů, od jednotlivých jednotlivců ve videu. Pokud se chcete dozvědět o dodržování předpisů, ochraně osobních údajů a zabezpečení v Video Indexer, [podmínky Cognitive Services](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)Microsoftu. Pro závazky ochrany osobních údajů Microsoftu a jejich zpracování si přečtěte [prohlášení o zásadách ochrany osobních údajů](https://privacy.microsoft.com/PrivacyStatement)od Microsoftu, [podmínky online služeb ("OST")](https://www.microsoft.com/licensing/product-licensing/products) a [doplněk pro zpracování dat](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (DPA). Další informace o ochraně osobních údajů, včetně uchovávání, odstranění nebo zničení dat, jsou k dispozici v OST a [zde](faq.md). Když použijete Video Indexer, souhlasíte s tím, že jste vázáni na Cognitive Services podmínky, OST, DPA a prohlášení o zásadách ochrany osobních údajů.
+Důležitou připomínkou je, že je nutné dodržovat všechny použitelné zákony v používání Video Indexer a nesmíte používat Video Indexer ani žádnou jinou službu Azure způsobem, který porušuje práva jiných nebo může být škodlivá jiným osobám. Před nahráním videí, včetně jakýchkoli biometrických dat, do služby Video Indexer pro zpracování a ukládání, musíte mít všechna patřičná práva, včetně příslušných souhlasů, od jednotlivých jednotlivců ve videu. Pokud se chcete dozvědět o dodržování předpisů, ochraně osobních údajů a zabezpečení v Video Indexer, [podmínky Cognitive Services](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)Microsoftu. Pro závazky ochrany osobních údajů Microsoftu a jejich zpracování si přečtěte [prohlášení o zásadách ochrany osobních údajů](https://privacy.microsoft.com/PrivacyStatement)od Microsoftu, [podmínky online služeb](https://www.microsoft.com/licensing/product-licensing/products) ("OST") a [doplněk pro zpracování dat](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (DPA). Další informace o ochraně osobních údajů, včetně uchovávání, odstranění nebo zničení dat, jsou k dispozici v OST a [zde](faq.md). Když použijete Video Indexer, souhlasíte s tím, že jste vázáni na Cognitive Services podmínky, OST, DPA a prohlášení o zásadách ochrany osobních údajů.
 
 ## <a name="what-can-i-do-with-video-indexer"></a>Co se dá dělat s Video Indexer?
 

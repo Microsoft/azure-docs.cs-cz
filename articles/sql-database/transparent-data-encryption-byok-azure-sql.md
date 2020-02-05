@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 11/19/2019
-ms.openlocfilehash: 4f1fe1ea031cd7831ffb24ee4302d6834a8d9976
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/03/2019
+ms.openlocfilehash: 305af8e8acd7e7a54fae8c831d36bee0aad4ad6b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981892"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990976"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL transparentní šifrování dat s klíčem spravovaným zákazníkem
 
@@ -124,7 +124,7 @@ Po obnovení přístupu k tomuto klíči bude zálohování databáze zpět onli
 
 - Pokud se přístup k klíči obnoví do 8 hodin, bude databáze automaticky zacelená během příští hodiny.
 
-- Pokud se přístup k klíči obnoví po více než 8 hodin, automatické zacelení není možné a přenesení databáze může trvat poměrně dlouhou dobu v závislosti na velikosti databáze a vyžaduje otevření lístku podpory. Jakmile je databáze znovu online, dříve konfigurovaná nastavení na úrovni serveru, jako je například konfigurace [skupiny převzetí služeb při selhání](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group) , historie obnovení bodu v čase a značky, bude ztracena. Proto se doporučuje implementovat systém oznámení, který vám umožní identifikovat a vyřešit problémy s přístupem k základnímu klíči během 8 hodin.
+- Pokud je přístup k klíči obnoven po více než 8 hodin, automatické zacelení není možné a uvedení databáze na portál vyžaduje další kroky na portálu a může trvat poměrně dlouhou dobu v závislosti na velikosti databáze. Jakmile je databáze znovu online, dříve konfigurovaná nastavení na úrovni serveru, jako je například konfigurace [skupiny převzetí služeb při selhání](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group) , historie obnovení bodu v čase a značky, **bude ztracena**. Proto se doporučuje implementovat systém oznámení, který vám umožní identifikovat a vyřešit problémy s přístupem k základnímu klíči během 8 hodin.
 
 ### <a name="accidental-tde-protector-access-revocation"></a>Odvolání přístupu k nechtěně TDE ochraně
 

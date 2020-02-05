@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 9de1bcf4-b15b-4d0b-9284-8889ecf0c438
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 3b5b11b148910e9bd1348b20a25fa8383fc2ec9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 21d59f6543df7fe9d1fad47a006260bff9c93e2b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60812751"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988052"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-sdk-for-nodejs"></a>Správa Azure Data Lake Analytics pomocí sady Azure SDK pro Node.js
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -23,9 +23,9 @@ Tento článek popisuje, jak můžete spravovat účty, zdroje dat, uživatele a
 
 Podporují se následující verze:
 * **Verze Node.js: 0.10.0 nebo vyšší**
-* **Verze rozhraní REST API pro účet: 2015-10-01-preview**
-* **Verze rozhraní REST API pro katalog: 2015-10-01-preview**
-* **Verze rozhraní REST API pro úlohu: 2016-03-20-preview**
+* **Verze rozhraní REST API pro Účet: 2015-10-01-preview**
+* **Verze rozhraní REST API pro Katalog: 2015-10-01-preview**
+* **Verze rozhraní REST API pro Úlohu: 2016-03-20 preview**
 
 ## <a name="features"></a>Funkce
 * Správa účtů: vytvoření, získání, seznam, aktualizace a odstranění.
@@ -131,5 +131,3 @@ catalogClient.catalog.listDatabases(accountName, function (err, result, request,
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Microsoft Azure SDK pro Node.js](https://github.com/azure/azure-sdk-for-node)
-* [Microsoft Azure SDK pro Node.js – správa Data Lake Storu](https://github.com/Azure/azure-sdk-for-node/tree/autorest/lib/services/dataLake.Store)
-

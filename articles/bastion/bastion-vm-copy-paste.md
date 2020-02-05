@@ -1,18 +1,18 @@
 ---
-title: 'Kopírování a vkládání do a z virtuálního počítače: Azure bastionu | Microsoft Docs'
+title: 'Kopírování a vložení do a z virtuálního počítače: Azure bastionu'
 description: V tomto článku se dozvíte, jak kopírovat a vkládat do a z virtuálního počítače Azure pomocí bastionu.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: ed8d52a4932271020dfb2a010392b312fa38703b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0aaf816cdfe7d42fd345eb4f010cf47b1615f462
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73519356"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989531"
 ---
 # <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>Zkopírování a vložení do virtuálního počítače: Azure bastionu
 
@@ -33,7 +33,7 @@ Po připojení k virtuálnímu počítači pomocí [Azure Portal ](https://porta
 
    ![Paleta nástrojů](./media/bastion-vm-manage/left.png)
 
-   ![Obsah](./media/bastion-vm-manage/clipboard.png)
+   ![obsah](./media/bastion-vm-manage/clipboard.png)
 1. Zkopírovaný text se obvykle automaticky zobrazuje na paletě pro vložení bastionu kopírování. Pokud text tam není, vložte text do textové oblasti na paletě.
 1. Jakmile je text v oblasti textu, můžete ho vložit do vzdálené relace.
 
@@ -48,7 +48,7 @@ Po připojení k virtuálnímu počítači pomocí [Azure Portal ](https://porta
    ![Paleta nástrojů](./media/bastion-vm-manage/remote.png)
 1. Během vzdálené relace spusťte na paletě nástrojů pro přístup ke schránce bastionu výběr dvou šipek. Šipky se nacházejí v levém středu relace.
 
-   ![Obsah](./media/bastion-vm-manage/clipboard2.png)
+   ![obsah](./media/bastion-vm-manage/clipboard2.png)
 1. Zkopírovaný text se obvykle automaticky zobrazuje na paletě pro vložení bastionu kopírování. Pokud text tam není, vložte text do textové oblasti na paletě.
 1. Jakmile se text v oblasti textu nachází, můžete ho vložit do místního zařízení.
 

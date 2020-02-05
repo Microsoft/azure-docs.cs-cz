@@ -1,6 +1,6 @@
 ---
 title: Zpracování událostí mapy | Mapy Microsoft Azure
-description: V tomto článku se dozvíte, jak vytvořit interaktivní mapu webové sady SDK s událostmi mapy pomocí webové sady Microsoft Azure Maps.
+description: V tomto článku se dozvíte, jak vytvořit interaktivní mapu web SDK s událostmi map pomocí webové sady SDK Microsoft Azure Maps.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 09/10/2019
@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 742cb76f491e76db6dc9ec415c6718066b46f137
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 06fdb9733ad9c173c88936e5502214b58f5d10ee
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911083"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985913"
 ---
 # <a name="interact-with-the-map"></a>Interakce s mapou
 
-V tomto článku se dozvíte, jak použít vlastnost [události třídy mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events) k zvýraznění událostí na mapě a v různých vrstvách mapy. Také ukazuje, jak použít vlastnost události map Class k zvýraznění událostí při interakci se značkou HTML.
+V tomto článku se dozvíte, jak používat [třídu událostí mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events). Vlastnost zvýrazní události na mapě a v různých vrstvách mapy. Můžete také zvýraznit události při interakci se značkou HTML.
 
 ## <a name="interact-with-the-map"></a>Interakce s mapou
 
-Začněte s mapou níže a podívejte se na odpovídající události myši zvýrazněné vpravo. Kliknutím na **kartu js** můžete zobrazit a upravit kód JavaScriptu. Můžete také kliknout na tlačítko **Upravit při CodePen** a upravit kód v CodePen.
+Začněte s mapou níže a podívejte se na odpovídající události myši zvýrazněné vpravo. Kliknutím na **kartu js** můžete zobrazit a upravit kód JavaScriptu. Můžete také kliknout na **Upravit v CodePen** a upravit kód v CodePen.
 
 <br/>
 
@@ -31,7 +31,7 @@ Začněte s mapou níže a podívejte se na odpovídající události myši zvý
 
 ## <a name="interact-with-map-layers"></a>Interakce s vrstvami mapy
 
-Následující kód zvýrazní název události, které se při interakci s vrstvou symbolů spustí. Vrstva symbol, bublina, čára a mnohoúhelník podporuje stejnou sadu událostí. Heat mapa a vrstvy dlaždic nepodporují žádnou z těchto událostí.
+Následující kód zvýrazní událost, která je aktivována při interakci s vrstvou symbolů. Vrstva symbol, bublina, čára a mnohoúhelník podporuje stejnou sadu událostí. Heat mapa a vrstvy dlaždic nepodporují žádnou z těchto událostí.
 
 <br/>
 

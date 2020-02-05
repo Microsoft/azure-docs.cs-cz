@@ -10,17 +10,22 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 7e289b83daa9c30703d94a7f4c0ff459f96256c0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 1367bf32eea58b828c00ee23a59a32a2fec699ab
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702517"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983091"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>Omezení pro adresu URL odpovědi / identifikátor URI přesměrování
 
 Identifikátor URI pro přesměrování nebo adresa URL odpovědi je umístění, do kterého bude autorizační server odesílat uživatele po úspěšném ověření aplikace a udělení autorizačního kódu nebo přístupového tokenu. Kód nebo token jsou obsaženy v identifikátoru URI přesměrování nebo tokenu odpovědi, takže je důležité, abyste v rámci procesu registrace aplikace zaregistrovali správné umístění.
 
+ Pro adresy URL odpovědí platí následující omezení:
+
+    * Adresa URL odpovědi musí začínat `https`schématu.
+    * Adresa URL odpovědi rozlišuje velká a malá písmena. Jeho velikost se musí shodovat s písmenem adresy URL vaší běžící aplikace. Pokud například vaše aplikace obsahuje jako součást cesty `.../abc/response-oidc`, nezadávejte `.../ABC/response-oidc` v adrese URL odpovědi. Vzhledem k tomu, že webový prohlížeč považuje cesty jako rozlišování velkých a malých písmen, mohou být soubory cookie přidružené k `.../abc/response-oidc` vyloučeny při přesměrování na neshodnou `.../ABC/response-oidc` adresu URL.
+    
 ## <a name="maximum-number-of-redirect-uris"></a>Maximální počet identifikátorů URI pro přesměrování
 
 Následující tabulka uvádí maximální počet identifikátorů URI přesměrování, které můžete přidat při registraci aplikace.

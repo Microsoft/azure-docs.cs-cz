@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 0e841b1f386d45ddb4af8598855d8e739750307e
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 1f6f282406c6813b2b126c300f21bda21e8f9464
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910746"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988970"
 ---
 # <a name="migrate-from-google-maps-to-azure-maps"></a>Migrace z Google Maps na Azure Maps
 
@@ -22,11 +22,11 @@ V tomto kurzu najdete informace o tom, jak migrovat webové a mobilní aplikace 
 
 ## <a name="azure-maps-platform-overview"></a>Přehled platformy Azure Maps
 
-Azure Maps poskytuje vývojářům ze všech průmyslových odvětví výkonné geoprostorové funkce, které jsou zabaleny s pravidelnými aktualizovanými daty mapy a poskytují geografickou souvislost pro webové a mobilní aplikace. Azure Maps má sadu rozhraní REST API, která je kompatibilní s rozhraním Azure One API pro mapy, vyhledávání, směrování, provoz, časová pásma, geografickou polohu, monitorování geografických zón, mapování dat, počasí, mobilitu a prostorových operací, které spolu s nimi nabízí web i sady Android SDK, které usnadňují vývoj, flexibilní a Přenosné napříč různými platformami.
+Azure Maps poskytuje vývojářům ze všech průmyslových odvětví výkonné geoprostorové funkce, které jsou zabaleny s pravidelnými aktualizovanými daty mapy a poskytují geografickou souvislost pro webové a mobilní aplikace. Azure Maps má sadu rozhraní REST API, která je kompatibilní s rozhraním Azure One API. Tato rozhraní REST API nabízí mapy, vyhledávání, směrování, provoz, časová pásma, geografickou polohu, monitorování geografických zón, mapování dat, počasí, mobility a prostorové operace. K operacím jsou připojeny webové i sady Android SDK, které usnadňují vývoj, flexibilní a přenosné prostředí napříč různými platformami.
 
 ## <a name="high-level-platform-comparison"></a>Porovnání platforem vysoké úrovně
 
-Následující tabulka obsahuje seznam funkcí Google Maps na nejvyšší úrovni a relativní podporu pro tyto funkce v Azure Maps. Tento seznam neobsahuje další funkce Azure Maps, jako je usnadnění přístupu, rozhraní API pro monitorování geografických zón, izochronů, prostorové operace, přímý mapový přístup dlaždic, služby Batch a porovnání pokrytí dat (tj. pokrytí snímků).
+Následující tabulka obsahuje seznam Azure Mapsch funkcí, které odpovídají funkcím služby Google Maps, na nejvyšší úrovni. V tomto seznamu se nezobrazují všechny funkce Azure Maps. Další Azure Maps zahrnují přístupnost, rozhraní API pro monitorování geografických zón, izochronů, prostorové operace, přístup dlaždic s přímým mapováním, přístup k dávkovým službám a porovnávání pokrytí dat (tj. pokrytí snímků).
 
 | Funkce mapy Google         | Podpora Azure Maps                     |
 |-----------------------------|:--------------------------------------:|
@@ -49,14 +49,14 @@ Následující tabulka obsahuje seznam funkcí Google Maps na nejvyšší úrovn
 | Rozhraní API pro mapování Embedded           | Nevztahuje se                                    |
 | Mapování adres URL                    | Nevztahuje se                                    |
 
-Google Maps poskytuje základní ověřování založené na klíčích. Azure Maps poskytuje základní ověřování založené na klíčích i vysoce zabezpečené ověřování Azure Active Directory.
+Google Maps poskytuje základní ověřování založené na klíčích. Azure Maps poskytuje základní ověřování založené na klíčích a vysoce zabezpečené ověřování Azure Active Directory.
 
 ## <a name="licensing-considerations"></a>Požadavky na licencování
 
 Při migraci na Azure Maps z Google Maps by se měly brát v úvahu tyto body s ohledem na licencování.
 
-- Azure Maps poplatky za použití interaktivních map na základě počtu načtených dlaždic mapy, zatímco Google Maps účtuje za načítání mapového ovládacího prvku. V interaktivních sadách Azure Maps SDK se dlaždice map automaticky ukládají do mezipaměti, aby se snížily náklady pro vývojáře. Jedna Azure Mapsová transakce je vygenerována pro každých 15 dlaždic map, které jsou načteny. Interaktivní Azure Maps sady SDK používají dlaždice 512-pixel a v průměru generuje jednu nebo méně transakcí na zobrazení stránky.
-- K nahrazení statických imagí map z webových služeb Google Maps pomocí Azure Maps Web SDK je často mnohem cenově výhodnější, protože se používá dlaždice mapy a pokud uživatel neposouvá a nezvětšuje mapu, často generuje jenom zlomek transakce na zatížení mapy. Sada Azure Maps Web SDK obsahuje možnosti pro vypnutí posouvání a zvětšování. Azure Maps webová sada SDK navíc nabízí spoustu dalších možností vizualizace než webová služba statické mapy.
+- Azure Maps poplatky za použití interaktivních map, které jsou založené na počtu načtených dlaždic map, ale za načítání mapového ovládacího prvku se účtují poplatky za Google Maps. V interaktivních sadách Azure Maps SDK se dlaždice map automaticky ukládají do mezipaměti, aby se snížily náklady pro vývojáře. Jedna Azure Mapsová transakce je vygenerována pro každých 15 dlaždic map, které jsou načteny. Interaktivní Azure Maps sady SDK používají dlaždice 512-pixel a v průměru generuje jednu nebo méně transakcí na zobrazení stránky.
+- Nahrazení statických imagí map z webových služeb Google Maps pomocí Azure Maps Web SDK je často mnohem efektivnější. Sada Azure Maps Web SDK používá dlaždice mapy a pokud uživatel neposouvá a nezvětšuje mapu, často generuje pouze zlomek transakce na zatížení mapy. Sada Azure Maps Web SDK obsahuje možnosti pro vypnutí posouvání a zvětšování. Azure Maps webová sada SDK navíc nabízí spoustu dalších možností vizualizace než webová služba statické mapy.
 - Azure Maps umožňuje ukládat data z své platformy do Azure. Dá se taky ukládat do mezipaměti jinde až po dobu šesti měsíců, a to podle [podmínek použití](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46).
 
 Tady je několik souvisejících prostředků pro Azure Maps:

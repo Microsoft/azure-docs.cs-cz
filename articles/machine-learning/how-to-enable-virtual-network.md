@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: fafb40c8505b7178782ab15c14184c5bec052a1b
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 3dfdbc56456ea67c830d0e1e9785b9d0032bf2cc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76937860"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988209"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Zabezpečení experimentů s Azure ML a odvození úloh v rámci Azure Virtual Network
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -180,8 +180,8 @@ Pokud nechcete používat výchozí odchozí pravidla a chcete omezit odchozí p
 - Odmítne odchozí připojení k Internetu pomocí pravidel NSG.
 
 - V případě __výpočetní instance__ nebo __výpočetního clusteru__omezte odchozí provoz na následující položky:
-   - Azure Storage pomocí __označení služby__ __úložiště__
-   - Azure Container Registry pomocí __označení služby__ __AzureContainerRegistry__
+   - Azure Storage pomocí __označení služby__ __Storage. RegionName__. Kde `{RegionName}` je název oblasti Azure.
+   - Azure Container Registry pomocí __označení služby__ __AzureContainerRegistry. RegionName__. Kde `{RegionName}` je název oblasti Azure.
    - Azure Machine Learning pomocí __označení služby__ __AzureMachineLearning__
    
 - Pro __výpočetní instanci__přidejte také následující položky:

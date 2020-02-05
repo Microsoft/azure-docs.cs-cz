@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 6e375e809308da8be0723fb2fcbdf718e9fb5479
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1f71476e398d5fd4466fd861e35ecc3f5b3666b9
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957766"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987607"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Prohlídka uživatelského rozhraní Azure IoT Central
 
@@ -71,7 +71,7 @@ Na každé stránce se zobrazuje horní nabídka:
 - Pokud chcete vyhledat šablony zařízení a zařízení, zadejte **hledanou** hodnotu.
 - Chcete-li změnit jazyk uživatelského rozhraní nebo motiv, klikněte na ikonu **Nastavení** .
 - Pokud se chcete odhlásit z aplikace, vyberte ikonu **účtu** .
-- Pokud potřebujete nápovědu a podporu, otevřete rozevírací nabídku **Nápověda**, která obsahuje seznam zdrojů. V aplikaci zkušební verze zahrnují prostředky podpory přístup k [živému chatu](howto-show-hide-chat.md).
+- Pokud potřebujete nápovědu a podporu, otevřete rozevírací nabídku **Nápověda**, která obsahuje seznam zdrojů. V aplikaci podle cenového plánu zdarma zahrnuje prostředky podpory přístup k [živému chatu](howto-show-hide-chat.md).
 
 Můžete si vybrat mezi světlým a tmavým motivem uživatelského rozhraní:
 
@@ -88,7 +88,7 @@ Můžete si vybrat mezi světlým a tmavým motivem uživatelského rozhraní:
 
 * Jako operátor můžete vytvářet přizpůsobené řídicí panely a přepínat mezi nimi a výchozím řídicím panelem. Další informace najdete v článku o postupu [Vytvoření osobního řídicího panelu pro Azure IoT Central](howto-create-personal-dashboards.md) .
 
-## <a name="device-explorer"></a>Device Explorer
+## <a name="device-explorer"></a>Průzkumník zařízení
 
 ![Stránka Explorer (Průzkumník)](media/overview-iot-central-tour/explorer.png)
 

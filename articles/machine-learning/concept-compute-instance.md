@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 7f7e0c3eef96970c1820783225a4ff59be8113b3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: f6d2da49e2659cfa69d25e3fe71351547706fd42
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76769104"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984842"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Co je instance služby COMPUTE Azure Machine Learning?
 
@@ -27,7 +27,7 @@ Použijte výpočetní instanci jako vaše plně nakonfigurované a spravované 
 Výpočetní instance se obvykle používají jako vývojová prostředí.  Můžou se také používat jako výpočetní cíl pro školení a Inferencing pro vývoj a testování.  Pro velké úlohy je [Azure Machine Learning výpočetní cluster](how-to-set-up-training-targets.md#amlcompute) s možnostmi škálování s více uzly lepší volbou cíle pro výpočty.
 
 > [!NOTE]
-> Výpočetní instance jsou v tuto chvíli dostupné jenom pro pracovní prostory s oblastí **střed USA – sever** nebo **Velká Británie – jih**, která už brzy podporuje další oblasti.
+> Výpočetní instance jsou v tuto chvíli dostupné jenom pro pracovní prostory s oblastí **střed USA – sever**, **východní USA 2**, **Severní Evropa** nebo **Velká Británie – jih**. Podpora dalších oblastí už brzy bude dostupná.
 >Pokud je váš pracovní prostor v jakékoli jiné oblasti, můžete místo toho vytvořit a použít [virtuální počítač s poznámkovým blokem](concept-compute-instance.md#notebookvm) . 
 
 ## <a name="why-use-a-compute-instance"></a>Proč používat výpočetní instanci?

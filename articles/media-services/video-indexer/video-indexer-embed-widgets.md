@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 07/29/2019
+ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: b9fb15fc9f3dc51a0df40a4ccb738a97d4558dff
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: ed3e2cf9830e3776886e662fd27f43f76728d6b2
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545887"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988715"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>Vložení Video Indexer widgetů do vašich aplikací
 
@@ -86,9 +86,9 @@ Chcete-li vložit soukromé video, je nutné předat token přístupu v atributu
     
 K získání obsahu pomůcky pro rozpoznávání přehledů použijte jednu z následujících možností:<br/>
 - Rozhraní API [pomůcky Get Insights](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget)<br/>
-- [Přístupový token získat přístup k videu](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?). Přidejte ho jako parametr dotazu na adresu URL. Zadejte tuto adresu URL jako hodnotu **Src** prvku IFRAME, jak je uvedeno výše.
+- [Přístupový token získat přístup k videu](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?). Přidejte ho jako parametr dotazu na adresu URL. Zadejte tuto adresu URL jako hodnotu **Src** prvku IFRAME, jak je uvedeno výše.
 
-Pokud chcete zajistit možnosti úprav v rámci vložené pomůcky, musíte předat přístupový token, který zahrnuje oprávnění k úpravám. Použijte [pomůcku Get Insights](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) nebo [Získejte přístup k videu](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) pomocí `&allowEdit=true`. 
+Pokud chcete zajistit možnosti úprav v rámci vložené pomůcky, musíte předat přístupový token, který zahrnuje oprávnění k úpravám. Použijte [pomůcku Get Insights](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) nebo [Získejte přístup k videu](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?) pomocí `&allowEdit=true`. 
 
 ## <a name="widgets-interaction"></a>Interakce widgetů
 
@@ -187,7 +187,7 @@ Pokud používáte přehrávač videa, který není Azure Media Player, je nutn�
         </video>    
 
 2. Vložte widget Cognitive Insights.
-3. Implementujte komunikaci pro přehrávač prostřednictvím naslouchání události „zpráva“. Například:
+3. Implementujte komunikaci pro přehrávač prostřednictvím naslouchání události „zpráva“. Příklad:
 
         <script>
     
@@ -248,7 +248,7 @@ Všimněte si, že je tato možnost relevantní jenom v případech, když přeh
 
 Pokud vložíte přehrávač Video Indexeru, můžete zvolit velikost přehrávače zadáním velikosti prvku iframe.
 
-Například:
+Příklad:
 
 `<iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />`
 
@@ -264,6 +264,23 @@ Pokud chcete popisky zakázat, můžete hodnotu parametru `captions` předat jak
 
 #### <a name="autoplay"></a>AutoPlay
 Ve výchozím nastavení se přehrávač začne přehrávat ve videu. Můžete se rozhodnout, že nechcete předat `&autoplay=false` do předchozí adresy URL pro vložení.
+
+## <a name="code-samples"></a>Ukázky kódu
+
+Podívejte se na úložiště [ukázek kódu](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Widgets) , které obsahuje ukázky pro video indexer rozhraní API a widgety:
+
+| Soubor nebo složka                       | Popis                                |
+|-----------------------------------|--------------------------------------------|
+| `azure-media-player`              | Načíst video indexerer ve vlastním Azure Media Player                        |
+| `azure-media-player-vi-insights`  | Vložení VI Insights s vlastní Azure Media Player                             |
+| `control-vi-embedded-player`      | Vložit VI přehrávač a ovládat ho z vnějšku                                    |
+| `custom-index-location`           | Vložení VI Insights z vlastního externího umístění (může být zákazníkem objekt BLOB)     |
+| `embed-both-insights`             | Základní využití VI Insights na základě perspektivy i Insights                            |
+| `embed-insights-with-AMP`         | Vložení widgetu VI Insights s vlastním Azure Media Player                      |
+| `customize-the-widgets`           | Vložení VI widgetů s přizpůsobenými možnostmi                                     |
+| `embed-both-widgets`              | Vkládání VI přehrávačů a přehledů a komunikace mezi nimi                      |
+| `url-generator`                   | Vygeneruje vlastní adresu URL pro vložení widgetů na základě možností zadaných uživatelem.             |
+| `html5-player`                    | Vložení VI Insights s výchozím přehrávačem videí HTML5                            |
 
 ## <a name="next-steps"></a>Další kroky
 

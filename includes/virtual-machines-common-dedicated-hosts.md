@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 207f5180db8a589ed4a68741ac18180370d21788
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 934a4fdf7cabb89c4b98c7800252cb24d4e23abf
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833874"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "77013888"
 ---
 ## <a name="limitations"></a>Omezení
 
 - Sady škálování virtuálních počítačů se na vyhrazených hostitelích aktuálně nepodporují.
-- Podporují se tyto řady virtuálních počítačů: DSv3 a ESv3. 
+- Podporují se tyto řady virtuálních počítačů: DSv3, ESv3 a Fsv2. 
 
 ## <a name="benefits"></a>Výhody 
 
@@ -73,7 +73,7 @@ Infrastruktura, která podporuje vaše virtuální počítače, se občas může
 **Řízení údržby** poskytuje zákazníkům možnost přeskočit běžné aktualizace platforem naplánované na jejich vyhrazených hostitelích a pak je použít v době jejich výběru v rámci 35ho okna.
 
 > [!NOTE]
->  Řízení údržby je aktuálně ve fázi omezené verze Preview a vyžaduje proces zprovoznění. Platí pro tuto verzi Preview tím, že odešlete [průzkum nominálních](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6lJf7DwiQxNmz51ksQvxV9UNUM3UllWUjBMTFZQUFhHUDI0VTBPQlJFNS4u)hodnot.
+>  Řízení údržby je aktuálně ve verzi Public Preview. Další informace najdete v tématu **řízení aktualizací pomocí řízení údržby pomocí rozhraní příkazového [řádku](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) nebo [PowerShellu](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-powershell?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json)** .
 
 ## <a name="capacity-considerations"></a>Důležité informace o kapacity
 

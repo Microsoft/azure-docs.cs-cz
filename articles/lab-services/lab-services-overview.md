@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 11/26/2019
+ms.date: 02/03/2020
 ms.author: spelluru
-ms.openlocfilehash: 4258bec3ceacd52f9679f48d8357be558ee0e27f
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: ef296035ee8f0c80b4ee078303639d7aedf5a91d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561631"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986627"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Seznámení s Azure Lab Services
 V Azure existují dvě služby, které umožňují nastavit testovací prostředí v cloudu. 
@@ -35,9 +35,6 @@ Tyto služby (Azure DevTest Labs a Azure Lab Services) podporují následující
 - **Optimalizace nákladů a analýza**. Vlastník testovacího prostředí může nastavit plány automatického vypínání a spouštění virtuálních počítačů. Vlastník testovacího prostředí může vytvořit plán s časovými úseky, kdy mají být virtuální počítače v testovacím prostředí dostupné pro uživatele, optimalizovat náklady nasazením zásad pro uživatele nebo celé testovací prostředí a analyzovat trendy využití a aktivity v testovacím prostředí. Pro spravované typy testovacích prostředí, jako je například učebna Labs, je aktuálně k dispozici menší podmnožina možností optimalizace nákladů a analýzy.
 - **Integrované zabezpečení**. Vlastník testovacího prostředí může pro testovací prostředí nastavit privátní virtuální sítě a podsítě a povolit sdílené veřejné IP adresy. Uživatelé testovacích prostředí můžou pomocí virtuálních sítí nakonfigurovaných s využitím ExpressRoute nebo sítě VPN typu Site-to-Site zajistit zabezpečený přístup k prostředkům. (Aktuálně k dispozici pouze v DevTest Labs)
 - **Integrace v pracovních postupech a nástrojích**. Azure Lab Services umožňuje integrovat testovací prostředí do systémů pro správu a na web vaší organizace. Nástroje pro průběžnou integraci a průběžné nasazování (CI/CD) umožňují automaticky zřizovat prostředí. (Aktuálně k dispozici pouze v DevTest Labs)
-
-> [!NOTE]
-> Azure Lab Services momentálně podporuje jenom virtuální počítače vytvořené z imagí z webu Azure Marketplace. Pokud chcete použít vlastní image nebo vytvořit další prostředky PaaS v testovacím prostředí, použijte DevTest Labs. Další informace najdete v tématu [Vytvoření vlastní image v DevTest Labs](devtest-lab-create-custom-image-from-vm-using-portal.md) a [vytváření laboratorních prostředí pomocí šablon Správce prostředků](devtest-lab-create-environment-from-arm.md).
 
 ## <a name="scenarios"></a>Scénáře
 

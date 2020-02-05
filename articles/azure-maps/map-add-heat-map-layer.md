@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 98c8db4e4b866879a437d1ffad6668cbae42fcdf
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: d52d808813078c2aca7de59aa626e83f96221720
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933594"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986236"
 ---
 # <a name="add-a-heat-map-layer"></a>Přidání vrstvy heat mapy
 
@@ -49,7 +49,7 @@ map.sources.add(datasource);
 //Load a dataset of points, in this case earthquake data from the USGS.
 datasource.importDataFromUrl('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson');
 
-//Create a heatmap and add it to the map.
+//Create a heat map and add it to the map.
 map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
   radius: 10,
   opacity: 0.8
@@ -108,14 +108,12 @@ Podívejte se na <a href='https://codepen.io'>CodePen</a>(<a href='https://codep
 
 > [!TIP]
 > Pokud povolíte clusteringu na zdroji dat, body, které jsou blízko sebe, jsou seskupeny dohromady jako clusterovaný bod. Počet bodů každého clusteru můžete použít jako výraz váhy pro Heat mapu. To může významně snížit počet bodů, které mají být vykresleny. Počet bodů clusteru je uložený ve vlastnosti `point_count` funkce Point: 
-
 > ```JavaScript
 > var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 >    weight: ['get', 'point_count']
 > });
 > ```
-
-> Pokud je poloměr clusteringu jenom v několika pixelech, bude se ve vykreslování jednat o malý vizuální rozdíl. Větší skupiny RADIUS mají více bodů do každého clusteru a zvyšují výkon heatmapu.
+> Pokud je poloměr clusteringu jenom v několika pixelech, v vykreslování by byl malý vizuální rozdíl. Větší skupiny RADIUS mají více bodů do každého clusteru a zvyšují výkon heatmapu.
 
 ## <a name="next-steps"></a>Další kroky
 

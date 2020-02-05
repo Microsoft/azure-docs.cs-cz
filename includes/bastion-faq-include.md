@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 12/17/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c085ce4aba6760b09dcc3eaf2f6232c5cc904706
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 922e8a71a22db975685cb82bbd51a125c619ccf2
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75466993"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989484"
 ---
 ### <a name="regions"></a>Které oblasti jsou k dispozici?
 
@@ -21,7 +21,7 @@ ms.locfileid: "75466993"
 
 ### <a name="publicip"></a>Potřebuji na svém virtuálním počítači veřejnou IP adresu?
 
-Na virtuálním počítači Azure, ke kterému se připojujete pomocí služby Azure bastionu, nepotřebujete veřejnou IP adresu. Služba bastionu otevře relaci RDP/SSH nebo připojení k virtuálnímu počítači přes soukromou IP adresu vašeho virtuálního počítače v rámci vaší virtuální sítě.
+Když se připojíte k VIRTUÁLNÍmu počítači pomocí Azure bastionu, nepotřebujete veřejnou IP adresu na virtuálním počítači Azure, ke kterému se připojujete. Služba bastionu otevře relaci RDP/SSH nebo připojení k virtuálnímu počítači přes soukromou IP adresu vašeho virtuálního počítače v rámci vaší virtuální sítě.
 
 ### <a name="is-ipv6-supported"></a>Je podporován protokol IPv6?
 
@@ -33,7 +33,7 @@ K využití připojení RDP/SSH k virtuálnímu počítači Azure na webu Azure 
 
 ### <a name="agent"></a>Potřebuji na virtuálním počítači Azure agenta, který je spuštěný?
 
-Do virtuálních počítačů Azure a prohlížeče nemusíte instalovat žádné agenty ani jiný software. Služba Bastion je bez agentů a pro RDP/SSH nevyžaduje žádný další software.
+V prohlížeči nebo na virtuálním počítači Azure nemusíte instalovat agenta ani žádný software. Služba Bastion je bez agentů a pro RDP/SSH nevyžaduje žádný další software.
 
 ### <a name="browsers"></a>Které prohlížeče se podporují?
 
@@ -62,7 +62,7 @@ Azure bastionu v současné době podporuje rozložení klávesnice en-US-QWERTY
 ### <a name="udr"></a>Je uživatelsky definované směrování (UDR) podporované v podsíti Azure bastionu?
 
 Ne. UDR se nepodporuje v podsíti Azure bastionu.
-V případě scénářů, které zahrnují virtuální zařízení Azure bastionu i Azure Firewall/sítě (síťové virtuální zařízení) ve stejné virtuální síti, nemusíte vynutit provoz z podsítě Azure bastionu Azure Firewall, protože komunikace mezi Azure bastionu a virtuálními počítači je privátní. Další podrobnosti najdete v tématu věnovaném [přístupu k virtuálním počítačům za Azure firewall pomocí bastionu](https://azure.microsoft.com/blog/accessing-virtual-machines-behind-azure-firewall-with-azure-bastion/).
+V případě scénářů, které zahrnují virtuální zařízení Azure bastionu i Azure Firewall/sítě (síťové virtuální zařízení) ve stejné virtuální síti, nemusíte vynutit provoz z podsítě Azure bastionu Azure Firewall, protože komunikace mezi Azure bastionu a virtuálními počítači je privátní. Další informace najdete v tématu [přístup k virtuálním počítačům za Azure firewall pomocí bastionu](https://azure.microsoft.com/blog/accessing-virtual-machines-behind-azure-firewall-with-azure-bastion/).
 
 ### <a name="filetransfer"></a>Podporuje se přenos souborů v relaci Azure bastionu RDP?
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4bf13477bfee39b5be39715374592811e8f8cc89
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: bcf100236d4a2a707a007a24e9e51105cc9ca0ac
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911030"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76991193"
 ---
 # <a name="weather-services-in-azure-maps"></a>Služby počasí v Azure Maps
 
@@ -21,13 +21,13 @@ V tomto článku se seznámíte s koncepty, které se vztahují na [Azure Maps p
 
 ## <a name="unit-types"></a>Typy jednotek
 
-Některá z rozhraní API služby počasí umožňují uživateli určit, jestli se data vrátí v rámci metriky nebo v britských jednotkách. Vrácená odpověď pro tato rozhraní API obsahuje také jednotkách UnitType číselnou hodnotu, která může být použita pro překlady jednotek. Tyto hodnoty můžete interpretovat prosím v tabulce níže.
+Některá z rozhraní API služby počasí umožňují uživateli určit, jestli se data vrátí v rámci metriky nebo v britských jednotkách. Vrácené odpovědi pro tato rozhraní API zahrnují jednotkách UnitType a číselnou hodnotu, která se dá použít pro překlady jednotek. Tyto hodnoty můžete interpretovat v tabulce níže.
 
 |Jednotkách UnitType|Popis         |
 |--------|--------------------|
 |0       |větve                |
 |1\. místo       |Cm              |
-|2       |miles               |
+|2       |mílí               |
 |3       |mm          |
 |4       |×          |
 |5       |měřiče               |
@@ -52,7 +52,7 @@ Některá z rozhraní API služby počasí umožňují uživateli určit, jestli
 
 ## <a name="weather-icons"></a>Ikony počasí
 
-Některá z rozhraní API služby počasí vrací kódy ikon (iconCode) v odpovědi, číselnou hodnotu, která se dá použít k definování ikony. Neodkazujte na tyto image přímo z vašich aplikací, adresy URL se můžou a změní.
+Některá z rozhraní API služby počasí vrací `iconCode` v odpovědi. `iconCode` je číselná hodnota, která se používá k definování ikony. Neodkazujte na tyto obrázky přímo z vašich aplikací, adresy URL se můžou a změní.
 
 | Číslo ikony |Ikona| Den | Veletrh | Text |
 |-------------|:----:|-----|-------|------|
@@ -82,7 +82,7 @@ Některá z rozhraní API služby počasí vrací kódy ikon (iconCode) v odpov�
 | 26           |![](./media/weather-services-concepts/freezing-rain.png)              | Ano |  Ano   | Zamrznutí deště|
 | 29           |![](./media/weather-services-concepts/rain-snow.png)                  | Ano |  Ano   | Deště a sněhu|
 | 30           |![](./media/weather-services-concepts/hot-i.png)                       | Ano |  Ano   | Hot|
-| 31           |![](./media/weather-services-concepts/cold-i.png)                      | Ano |  Ano   | Bez zájmu|
+| 31           |![](./media/weather-services-concepts/cold-i.png)                      | Ano |  Ano   | Chladírenský|
 | 32           |![](./media/weather-services-concepts/windy-i.png)                     | Ano |  Ano   | Vítr|
 | 33           |![](./media/weather-services-concepts/clear-night.png)                | Ne  |  Ano   | Vymazat|
 | 34           |![](./media/weather-services-concepts/mostly-clear-night.png)          | Ne  |  Ano   | Hlavně jasné|

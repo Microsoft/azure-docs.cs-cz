@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: c7354ecce9873cd65580dc2a9d79f9f3b8ac37db
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 9252fbbf0895bf821c119272ac37d3af1c91fc89
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76966647"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987757"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -25,7 +25,7 @@ ms.locfileid: "76966647"
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com)
 1. Klikněte na [vytvořit **Language Understanding** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
-1. Zadejte všechna požadovaná nastavení pro klíč za běhu:
+1. Zadejte všechna požadovaná nastavení pro klíč **za běhu** :
 
     |Nastavení|Hodnota|
     |--|--|
@@ -89,11 +89,11 @@ Pomocí Node. js můžete zadat dotaz na [koncový bod předpovědi](https://aka
     getPrediction().then(()=>console.log("done")).catch((err)=>console.log(err));
     ```
 
-1. Hodnoty `YOUR-KEY` a `YOUR-ENDPOINT` nahraďte vlastním klíčem předpovědi a koncovým bodem.
+1. Hodnoty `YOUR-KEY` a `YOUR-ENDPOINT` nahraďte vlastním klíčovým a koncovým bodem **prostředí** pro předpověď.
 
     |Informace|Účel|
     |--|--|
-    |`YOUR-KEY`|Klíč předpovědi znaků 32.|
+    |`YOUR-KEY`|Klíč **běhu** pro předpověď znaků 32.|
     |`YOUR-ENDPOINT`| Koncový bod adresy URL předpovědi Například, `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
 1. Pomocí tohoto příkazu nainstalujte závislosti `request`, `request-promise`a `querystring`:

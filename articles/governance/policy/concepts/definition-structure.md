@@ -3,12 +3,12 @@ title: Podrobnosti struktury definice zásad
 description: Popisuje způsob, jakým se používají definice zásad k navázání konvencí pro prostředky Azure ve vaší organizaci.
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: e37ff6e1bde594014510880492c2572ad1634400
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 7502c1c9a2e125052abf71e50273fbd9bab15cd1
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904416"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989871"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -251,8 +251,7 @@ Podmínka vyhodnocuje, zda **pole** nebo **hodnota** přistupující objekty spl
 Při použití **jako** a **notLike** podmínky, zadat zástupný znak `*` v hodnotě.
 Hodnota by neměla mít více než jeden zástupný znak `*`.
 
-Pokud používáte podmínky **Match** a **notMatch** , zadejte `#`, aby odpovídaly číslici, `?` pro písmeno, `.`, aby odpovídaly jakémukoli znaku a jakýkoli jiný znak, aby odpovídal tomuto skutečnému znaku.
-Při **porovnávání** a **notMatch** se rozlišují velká a malá písmena. Alternativy nerozlišující velká a malá písmena jsou k dispozici v **matchInsensitively** a **notMatchInsensitively**. Příklady najdete v tématu [povolit několik vzory názvů](../samples/allow-multiple-name-patterns.md).
+Pokud používáte podmínky **Match** a **notMatch** , zadejte `#`, aby odpovídaly číslici, `?` pro písmeno, `.`, aby odpovídaly jakémukoli znaku a jakýkoli jiný znak, aby odpovídal tomuto skutečnému znaku. Při **porovnávání** a **notMatch** se rozlišují velká a malá písmena. všechny ostatní podmínky, které vyhodnocují _StringValue_ , rozlišují malá a velká písmena. Alternativy nerozlišující velká a malá písmena jsou k dispozici v **matchInsensitively** a **notMatchInsensitively**. Příklady najdete v tématu [povolit několik vzory názvů](../samples/allow-multiple-name-patterns.md).
 
 ### <a name="fields"></a>Fields (Pole)
 
@@ -399,7 +398,7 @@ Pomocí revidovaného pravidla zásad `if()` zkontroluje délku **názvu** a pot
 
 ### <a name="count"></a>Počet
 
-Podmínky, které počítají, kolik členů pole v datové části prostředků, které odpovídají výrazu podmínky, mohou být tvořeny pomocí výrazu **Count** . Běžné scénáře kontrolují, jestli alespoň jedno z ', ' přesně jedno z ', ' vše z ' nebo ' žádné z ', které členové pole splní. funkce **Count** vyhodnocuje jednotlivé členy pole pro výraz podmínky a sečte _skutečné_ výsledky, které jsou pak porovnány s operátorem výrazu.
+Podmínky, které počítají, kolik členů pole v datové části prostředků, které odpovídají výrazu podmínky, mohou být tvořeny pomocí výrazu **Count** . Běžné scénáře kontrolují, jestli alespoň jedno z ', ' přesně jedno z ', ' vše z ' nebo ' žádné z ', které členové pole splní. funkce **Count** vyhodnocuje každý [\[\*\] člena pole aliasu](#understanding-the--alias) pro výraz podmínky a sečte _skutečné_ výsledky, které jsou následně porovnány s operátorem výrazu.
 
 Struktura výrazu **Count** je:
 
@@ -763,10 +762,7 @@ Následující příklad ukazuje, jak vytvořit iniciativu pro zpracování dvě
                 }
             }
         ]
-    },
-    "id": "/subscriptions/<subscription-id>/providers/Microsoft.Authorization/policySetDefinitions/billingTagsPolicy",
-    "type": "Microsoft.Authorization/policySetDefinitions",
-    "name": "billingTagsPolicy"
+    }
 }
 ```
 

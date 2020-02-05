@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 879e1911c715688c2fed4044e23f437b3bbef7b2
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 90d171e3353061ffd855d9132c8a7fe40116e3cd
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890664"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984083"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Kurz: nasazení a procházení šablonou aplikace digitálního distribučního centra
 
@@ -34,19 +34,22 @@ Aplikaci můžete vytvořit pomocí následujících kroků.
 
 1. Přejděte na web Azure IoT Central Správce aplikací. V levém navigačním panelu vyberte **Build (sestavit** ) a pak klikněte na kartu **maloobchod** .
 
-> [!div class="mx-imgBorder"]
-> ![](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png) digital Distribution Center
+    > [!div class="mx-imgBorder"]
+    > ![](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png) digital Distribution Center
 
-2. Vyberte kartu **maloobchod** a v části * * aplikace pro digitální distribuční centrum * * vyberte **vytvořit aplikaci** .
+2. Vyberte kartu **maloobchod** a v části **aplikace Digital Distribution Center** vyberte **vytvořit aplikaci** .
 
 3. Při **vytváření aplikace** se otevře formulář nové aplikace a vyplní se požadované podrobnosti, jak je vidět níže.
    **Název aplikace**: můžete použít výchozí navrhovaný název nebo zadat popisný název aplikace.
-   **Adresa URL**: můžete použít navrhovanou výchozí adresu URL nebo zadat jedinečnou, snadno SROZUMITELNOU adresu URL. V dalším kroku se doporučuje výchozí nastavení, pokud už předplatné Azure máte. Jinak můžete začít se sedmi bezplatnými zkušebními obdobími a kdykoli ještě před vypršením doby platnosti bezplatného záznamu zvolit převod průběžných plateb.
+   **Adresa URL**: můžete použít navrhovanou výchozí adresu URL nebo zadat svou snadno jedinečnou adresu URL. V dalším kroku se doporučuje výchozí nastavení, pokud už předplatné Azure máte. Můžete začít s cenovým tarifem bezplatné zkušební verze na 7 dní a po dobu platnosti bezplatného záznamu můžete kdykoli převést na standardní cenový plán.
    **Informace o fakturaci**: ke zřízení prostředků se vyžaduje adresář, předplatné Azure a podrobnosti o oblasti.
    **Vytvořit**: v dolní části stránky vyberte vytvořit a nasaďte svoji aplikaci.
 
-> [!div class="mx-imgBorder"]
-> ![](./media/tutorial-iot-central-ddc/ddc-create.png) digital Distribution Center
+    > [!div class="mx-imgBorder"]
+    > ![](./media/tutorial-iot-central-ddc/ddc-create.png) digital Distribution Center
+
+    > [!div class="mx-imgBorder"]
+    > ![informace o fakturaci digitální distribuce](./media/tutorial-iot-central-ddc/ddc-create-billinginfo.png)
 
 ## <a name="walk-through-the-application-dashboard"></a>Procházení řídicím panelem aplikace 
 

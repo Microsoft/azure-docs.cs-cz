@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 9a946d189706c9c789ab884670d13b0b3e7fcb0c
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: a89983a9ae45f21deb7a823de049373b4ff9b935
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911816"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989055"
 ---
 # <a name="react-to-azure-maps-events-by-using-event-grid"></a>Reakce na události Azure Maps pomocí Event Grid 
 
-Azure Maps se integruje s Azure Event Grid, abyste mohli odesílat oznámení o událostech jiným službám a aktivovat podřízené procesy. Tento článek vám umožní nakonfigurovat obchodní aplikace tak, aby naslouchaly událostem Azure Maps, abyste mohli reagovat na kritické události spolehlivým, škálovatelným a zabezpečeným způsobem. Můžete například sestavit aplikaci, která provede více akcí, jako je aktualizace databáze, vytvoření lístku a doručování e-mailových oznámení pokaždé, když zařízení vstoupí do geografické zóny.
+Azure Maps se integruje s Azure Event Grid, aby uživatelé mohli posílat oznámení o událostech jiným službám a aktivovat podřízené procesy. Účelem tohoto článku je pomáhat při konfiguraci obchodních aplikací, aby naslouchaly Azure Maps události. Tato služba umožňuje reagovat na kritické události spolehlivým, škálovatelným a zabezpečeným způsobem. Uživatelé můžou třeba vytvořit aplikaci pro aktualizaci databáze, vytvořit lístek a poslat e-mailové oznámení, když zařízení vstoupí do geografické zóny.
 
-Azure Event Grid je plně spravovaná služba Směrování událostí, která používá model publikování a odběru. Event Grid má integrovanou podporu pro služby Azure, jako je [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) a [Azure Logic Apps](https://docs.microsoft.com/azure/azure-functions/functions-overview), a může doručovat výstrahy událostí na služby mimo Azure pomocí webhooků. Úplný seznam obslužných rutin událostí, které Event Grid podporuje, najdete v [úvodu k Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview).
+Azure Event Grid je plně spravovaná služba Směrování událostí, která používá model publikování a odběru. Event Grid obsahuje integrovanou podporu pro služby Azure, jako je [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) a [Azure Logic Apps](https://docs.microsoft.com/azure/azure-functions/functions-overview). Může doručovat výstrahy událostí na služby mimo Azure pomocí webhooků. Úplný seznam obslužných rutin událostí, které Event Grid podporuje, najdete v [úvodu k Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview).
 
 
 ![Azure Event Grid funkční model](./media/azure-maps-event-grid-integration/azure-event-grid-functional-model.png)
@@ -38,7 +38,7 @@ Event Grid používá [odběry událostí](https://docs.microsoft.com/azure/even
 
 ## <a name="event-schema"></a>Schéma událostí
 
-Následující příklad ukazuje schéma pro GeofenceResult
+Následující příklad ukazuje schéma pro GeofenceResult:
 
 ```JSON
 {   

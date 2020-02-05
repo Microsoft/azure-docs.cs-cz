@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 12/09/2019
 ms.author: swmachan
-ms.openlocfilehash: 5e19e4247e58135c6a9bb7c6cc327cb566d294df
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0075862e198ce67cc7367efe94d624ad18e6eb3b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978454"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984163"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Kurz: sestavení aplikace v baňce pomocí Azure Cognitive Services
 
@@ -44,7 +44,7 @@ Pro ty, které chcete podrobně po tomto kurzu, je zde několik užitečných od
 * [Dokumentace k baňce](http://flask.pocoo.org/)
 * [Baňka pro Dummies – příručka pro začátečníky do baňky](https://codeburst.io/flask-for-dummies-a-beginners-guide-to-flask-part-uno-53aec6afc5b1)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pojďme si projít klíče softwaru a předplatného, které pro tento kurz budete potřebovat.
 
@@ -128,7 +128,7 @@ Požadavky jsou oblíbený modul, který se používá k odesílání požadavk�
    ```
 
 > [!NOTE]
-> Pokud se chcete dozvědět víc o požadavcích, přečtěte si téma [požadavky: http pro lidi](http://docs.python-requests.org/en/master/).
+> Pokud se chcete dozvědět víc o požadavcích, přečtěte si téma [požadavky: http pro lidi](https://2.python-requests.org/en/master/).
 
 ### <a name="install-and-configure-flask"></a>Instalace a konfigurace baňky
 
@@ -319,7 +319,7 @@ V následujících částech se tento proces opakuje při vytváření tras pro 
        return jsonify(response)
    ```
 
-### <a name="update-indexhtml"></a>Aktualizace souboru `index.html`
+### <a name="update-indexhtml"></a>Aktualizovat `index.html`
 
 Teď, když máte funkci pro překlad textu a trasu do vaší aplikace, která ji volá, je dalším krokem zahájení vytváření HTML pro vaši aplikaci. Následující kód HTML má několik věcí:
 
@@ -556,7 +556,7 @@ Pojďme v aplikaci v baňce vytvořit trasu, která volá `sentiment.py`. Tato t
        return jsonify(response)
    ```
 
-### <a name="update-indexhtml"></a>Aktualizace souboru `index.html`
+### <a name="update-indexhtml"></a>Aktualizovat `index.html`
 
 Teď, když máte funkci pro spuštění analýzy mínění a trasu do vaší aplikace, která ji volá, je dalším krokem spuštění psaní HTML pro vaši aplikaci. Následující kód HTML má několik věcí:
 
@@ -581,7 +581,7 @@ Teď, když máte funkci pro spuštění analýzy mínění a trasu do vaší ap
    </div>
    ```
 
-### <a name="update-mainjs"></a>Aktualizace souboru `main.js`
+### <a name="update-mainjs"></a>Aktualizovat `main.js`
 
 V níže uvedeném kódu se k vytvoření požadavku na svou trasu na baňce používá obsah z HTML. Konkrétně je obsah textové oblasti a selektor jazyka přiřazen k proměnným a pak je předána spolu s požadavkem `sentiment-analysis` trasy.
 
@@ -751,7 +751,7 @@ Pojďme v aplikaci v baňce vytvořit trasu, která volá `synthesize.py`. Tato 
        return audio_response
    ```
 
-### <a name="update-indexhtml"></a>Aktualizace souboru `index.html`
+### <a name="update-indexhtml"></a>Aktualizovat `index.html`
 
 Teď, když máte funkci pro převod textu na řeč a trasu v aplikaci, abyste ji mohli zavolat, je dalším krokem spuštění psaní HTML pro vaši aplikaci. Následující kód HTML má několik věcí:
 
@@ -834,7 +834,7 @@ Teď, když máte funkci pro převod textu na řeč a trasu v aplikaci, abyste j
 
 5. Nezapomeňte svou práci uložit.
 
-### <a name="update-mainjs"></a>Aktualizace souboru `main.js`
+### <a name="update-mainjs"></a>Aktualizovat `main.js`
 
 V níže uvedeném kódu se k vytvoření požadavku na svou trasu na baňce používá obsah z HTML. Konkrétně je překlad a písmo hlasu přiřazen proměnným a pak předány do požadavku `text-to-speech` trasy.
 

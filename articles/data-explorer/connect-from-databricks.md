@@ -1,82 +1,82 @@
 ---
-title: Připojit do Průzkumníku dat Azure z Azure Databricks s využitím Pythonu
-description: Toto téma ukazuje, jak použít knihovnu Pythonu v Azure Databricks pro přístup k datům z Průzkumníku dat Azure pomocí jedné ze dvou metod ověřování.
+title: Připojení k Azure Průzkumník dat z Azure Databricks pomocí Pythonu
+description: V tomto tématu se dozvíte, jak používat knihovnu Pythonu v Azure Databricks k přístupu k datům z Azure Průzkumník dat pomocí jedné ze dvou metod ověřování.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.openlocfilehash: 55257d441916971b505432247f28033d6222c3be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 03dee0570faa863ca411ed91f2a6ec85a1e38380
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60861199"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985675"
 ---
-# <a name="connect-to-azure-data-explorer-from-azure-databricks-by-using-python"></a>Připojit do Průzkumníku dat Azure z Azure Databricks s využitím Pythonu
+# <a name="connect-to-azure-data-explorer-from-azure-databricks-by-using-python"></a>Připojení k Azure Průzkumník dat z Azure Databricks pomocí Pythonu
 
-[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks) je založená na Apache Sparku analytická platforma optimalizovaná s ohledem na platformě Microsoft Azure. Tento článek ukazuje, jak použít knihovnu Pythonu v Azure Databricks pro přístup k datům z Průzkumníku dat Azure. Existuje několik způsobů, jak ověřovat pomocí Průzkumníka dat služby Azure, včetně přihlašovací údaje zařízení a aplikace Azure Active Directory (Azure AD).
+[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks) je analytická platforma založená na Apache Spark, která je optimalizovaná pro Microsoft Azure platformu. V tomto článku se dozvíte, jak používat knihovnu Pythonu v Azure Databricks k přístupu k datům z Azure Průzkumník dat. Existuje několik způsobů, jak ověřit pomocí Průzkumník dat Azure, včetně přihlášení zařízení a aplikace Azure Active Directory (Azure AD).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Vytvoření clusteru Průzkumník dat Azure a databáze](/azure/data-explorer/create-cluster-database-portal).
-- [Vytvoření pracovního prostoru Azure Databricks](/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace). V části **služba Azure Databricks**v **cenová úroveň** rozevíracího seznamu vyberte **Premium**. Tato volba umožňuje používat Azure Databricks tajné kódy ukládat svoje přihlašovací údaje a odkazovat na ně poznámkových bloků a úlohy.
+- [Vytvořte cluster a databázi Azure Průzkumník dat](/azure/data-explorer/create-cluster-database-portal).
+- [Vytvořte pracovní prostor Azure Databricks](/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace). V části **Azure Databricks služba**vyberte v rozevíracím seznamu **cenová úroveň** možnost **Premium**. Tento výběr umožňuje použít Azure Databricks tajných klíčů k ukládání vašich přihlašovacích údajů a jejich odkazování v poznámkových blocích a úlohách.
 
-- [Vytvoření clusteru](https://docs.azuredatabricks.net/user-guide/clusters/create.html) v Azure Databricks s následujícími specifikacemi (minimální nastavení potřebných ke spuštění ukázkové poznámkové bloky):
+- V Azure Databricks [vytvořte cluster](https://docs.azuredatabricks.net/user-guide/clusters/create.html) s následujícími specifikacemi (minimální nastavení potřebná ke spuštění ukázkových poznámkových bloků):
 
    ![Specifikace pro vytvoření clusteru](media/connect-from-databricks/databricks-create-cluster.png)
 
-## <a name="install-the-python-library-on-your-azure-databricks-cluster"></a>Nainstalujte knihovnu Pythonu ve vašem clusteru Azure Databricks
+## <a name="install-the-python-library-on-your-azure-databricks-cluster"></a>Instalace knihovny Pythonu na Azure Databricks clusteru
 
-Chcete-li nainstalovat [knihovna Python](/azure/kusto/api/python/kusto-python-client-library) v clusteru Azure Databricks:
+Postup instalace [knihovny Pythonu](/azure/kusto/api/python/kusto-python-client-library) na Azure Databricks clusteru:
 
-1. Přejděte do pracovního prostoru Azure Databricks a [vytvořit knihovnu](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library).
-2. [Nahrát balíček Python PyPI nebo Python Egg](https://docs.azuredatabricks.net/user-guide/libraries.html#upload-a-python-pypi-package-or-python-egg).
-   - Nahrát, instalaci a připojení knihovny ke clusteru Databricks.
-   - Zadejte název PyPi: **dat azure kusto**.
+1. Přejít do svého pracovního prostoru Azure Databricks a [vytvořit knihovnu](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library).
+2. [Nahrajte balíček python PyPI nebo vaječný Python](https://docs.azuredatabricks.net/user-guide/libraries.html#upload-a-python-pypi-package-or-python-egg).
+   - Nahrajte, nainstalujte a připojte knihovnu k vašemu clusteru datacihly.
+   - Zadejte název PyPi: **Azure-kusto-data**.
 
-## <a name="connect-to-azure-data-explorer-by-using-a-device-login"></a>Připojit do Průzkumníku dat Azure pomocí přihlašovacích údajů zařízení
+## <a name="connect-to-azure-data-explorer-by-using-a-device-login"></a>Připojení k Azure Průzkumník dat pomocí přihlášení zařízení
 
-[Import poznámkového bloku](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-a-notebook) pomocí [dotazu ADX zařízení přihlášení](https://github.com/Azure/azure-kusto-docs-samples/blob/master/Databricks_notebooks/Query-ADX-device-login.ipynb) poznámkového bloku. Pak do Průzkumníku dat Azure můžete připojit pomocí vašich přihlašovacích údajů.
+[Naimportujte Poznámkový](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-a-notebook) blok pomocí poznámkového bloku [Query-ADX-Device-Login](https://github.com/Azure/azure-kusto-docs-samples/blob/master/Databricks_notebooks/Query-ADX-device-login.ipynb) . Pak se můžete k Azure Průzkumník dat připojit pomocí vašich přihlašovacích údajů.
 
-## <a name="connect-to-adx-by-using-an-azure-ad-app"></a>Připojení k ADX s použitím aplikace Azure AD
+## <a name="connect-to-adx-by-using-an-azure-ad-app"></a>Připojení k ADX pomocí aplikace Azure AD
 
-1. Vytvoření aplikace Azure AD podle [zřizování aplikaci Azure AD](/azure/kusto/management/access-control/how-to-provision-aad-app).
-1. Udělení přístupu k aplikaci Azure AD ve vaší databázi Průzkumník dat Azure následujícím způsobem:
+1. Vytvořte aplikaci Azure AD tím, že [zřídíte aplikaci Azure AD](/azure/kusto/management/access-control/how-to-provision-aad-app).
+1. Udělte přístup k vaší aplikaci Azure AD ve službě Azure Průzkumník dat Database následujícím způsobem:
 
     ```kusto
     .set database <DB Name> users ('aadapp=<AAD App ID>;<AAD Tenant ID>') 'AAD App to connect Spark to ADX
     ```
     |   |   |
     | - | - |
-    | ```DB Name``` | Název databáze |
-    | ```AAD App ID``` | ID aplikace Azure AD |
-    | ```AAD Tenant ID``` | vaše ID tenanta Azure AD |
+    | ```DB Name``` | název databáze |
+    | ```AAD App ID``` | vaše ID aplikace Azure AD |
+    | ```AAD Tenant ID``` | ID tenanta Azure AD |
 
-### <a name="find-your-azure-ad-tenant-id"></a>Najít ID vašeho tenanta Azure AD
+### <a name="find-your-azure-ad-tenant-id"></a>Najít ID tenanta Azure AD
 
-K ověření aplikace, nastavení používá Průzkumník dat Azure vaše ID tenanta Azure AD. K vyhledání ID vašeho tenanta, použijte následující adresu URL. Nahraďte doménou pro *doména*.
+K ověření aplikace používá Azure Průzkumník dat vaše ID tenanta Azure AD. Pokud chcete zjistit ID tenanta, použijte následující adresu URL. Nahraďte doménu pro *yourdomain*.
 
 ```
 https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
 ```
 
-Pokud je vaše doména například *contoso.com*, je adresa URL [https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/). Vyberte tuto adresu URL pro zobrazení výsledků. První řádek je následujícím způsobem: 
+Pokud je vaše doména například *contoso.com*, je adresa URL [https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/). Výběrem této adresy URL zobrazíte výsledky. První řádek je následující: 
 
 ```
 "authorization_endpoint":"https://login.windows.net/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
 ```
 
-Váš tenant ID je `6babcaad-604b-40ac-a9d7-9fd97c0b779f`. 
+Vaše ID tenanta je `6babcaad-604b-40ac-a9d7-9fd97c0b779f`. 
 
-### <a name="store-and-secure-your-azure-ad-app-id-and-key"></a>Store a zabezpečení Azure AD app ID a klíč 
+### <a name="store-and-secure-your-azure-ad-app-id-and-key"></a>Uložení a zabezpečení ID a klíče aplikace Azure AD 
 
-Store a zabezpečení Azure AD app ID a klíč pomocí Azure Databricks [tajných kódů](https://docs.azuredatabricks.net/user-guide/secrets/index.html#secrets) následujícím způsobem:
-1. [Nastavení rozhraní příkazového řádku](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#set-up-the-cli).
-1. [Instalace rozhraní příkazového řádku](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
-1. [Nastavení ověřování](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#set-up-authentication).
-1. Konfigurace [tajných kódů](https://docs.azuredatabricks.net/user-guide/secrets/index.html#secrets) pomocí následující ukázkové příkazy:
+Pomocí Azure Databricks [tajných klíčů](https://docs.azuredatabricks.net/user-guide/secrets/index.html#secrets) si uložte a zabezpečte své ID a klíč aplikace Azure AD následujícím způsobem:
+1. [Nastavte rozhraní](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#set-up-the-cli)příkazového řádku.
+1. [Nainstalujte rozhraní](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli)příkazového řádku. 
+1. [Nastavte ověřování](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#set-up-authentication).
+1. Konfigurujte [tajné klíče](https://docs.azuredatabricks.net/user-guide/secrets/index.html#secrets) pomocí následujících ukázkových příkazů:
 
     ```databricks secrets create-scope --scope adx```
 
@@ -86,5 +86,5 @@ Store a zabezpečení Azure AD app ID a klíč pomocí Azure Databricks [tajnýc
 
     ```databricks secrets list --scope adx```
 
-### <a name="import-a-notebook"></a>Import poznámkového bloku
-[Import poznámkového bloku](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-a-notebook) pomocí [dotazu ADX AAD aplikace](https://github.com/Azure/azure-kusto-docs-samples/blob/master/Databricks_notebooks/Query-ADX-AAD-App.ipynb) Poznámkový blok jupyter připojit do Průzkumníku dat Azure. Hodnoty zástupných symbolů aktualizujte název clusteru, název databáze a ID tenanta Azure AD
+### <a name="import-a-notebook"></a>Importovat Poznámkový blok
+[Naimportujte Poznámkový blok](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-a-notebook) pomocí poznámkového bloku [Query-ADX-AAD-App](https://github.com/Azure/azure-kusto-docs-samples/blob/master/Databricks_notebooks/Query-ADX-AAD-App.ipynb) , abyste se připojili k Azure Průzkumník dat. Zástupné hodnoty aktualizujte pomocí názvu clusteru, názvu databáze a ID tenanta Azure AD.

@@ -3,12 +3,12 @@ title: Zařízení Azure Migrate
 description: Poskytuje přehled zařízení Azure Migrate používaných při posuzování a migraci serveru.
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: efad1c48dd2c92c0fd5f268013b4a59f34b3a766
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 6311f24a9c977b5f8b34384f0754f041a0c57ce7
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028823"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990738"
 ---
 # <a name="azure-migrate-appliance"></a>Zařízení Azure Migrate
 
@@ -21,7 +21,7 @@ Zařízení Azure Migrate se používá v následujících scénářích.
 **Scénář** | **Nástroj** | **Používá pro** 
 --- | --- | ---
 Virtuální počítač VMware | Azure Migrate: posouzení serveru<br/><br/> Azure Migrate: Migrace serveru | Zjistit virtuální počítače VMware<br/><br/> Zjistit aplikace a závislosti počítačů<br/><br/> Shromažďovat metadata počítače a metadata výkonu pro posouzení.<br/><br/> Replikace virtuálních počítačů VMware s migrací bez agentů
-Virtuální počítač s technologií Hyper-V | Azure Migrate: posouzení serveru | Zjistit virtuální počítače Hyper-V<br/><br/> Shromažďovat metadata počítače a metadata výkonu pro posouzení.
+Virtuální počítač Hyper-V | Azure Migrate: posouzení serveru | Zjistit virtuální počítače Hyper-V<br/><br/> Shromažďovat metadata počítače a metadata výkonu pro posouzení.
 Fyzický počítač |  Azure Migrate: posouzení serveru |  Zjistit fyzické servery<br/><br/> Shromažďovat metadata počítače a metadata výkonu pro posouzení.
 
 ## <a name="appliance---vmware"></a>Zařízení – VMware 
@@ -31,15 +31,15 @@ Fyzický počítač |  Azure Migrate: posouzení serveru |  Zjistit fyzické ser
 **Formát stažení** | . VAJÍČK 
 **Odkaz ke stažení** | https://aka.ms/migrate/appliance/vmware 
 **Velikost ke stažení** | 11,2 GB
-**Licence** | Stažená šablona zařízení je součástí zkušební licence Windows Server 2016, která je platná po dobu 180 dnů. Pokud se zkušební období blíží vypršení platnosti, doporučujeme, abyste si stáhli a nasadili nové zařízení nebo aktivovali licenci k operačnímu systému virtuálního počítače zařízení.
-**Nasazení** | Zařízení nasadíte jako virtuální počítač VMware. Potřebujete dostatek prostředků na vCenter Server k přidělení virtuálního počítače s 32 GB paměti RAM, 8 vCPU, přibližně 80 GB diskového úložiště a externím virtuálním přepínačem.<br/><br/> Zařízení vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.<br/> Virtuální počítač zařízení musí být nasazen na hostiteli ESXi, na kterém běží verze 5,5 nebo novější.<br/><br/> Zařízení se může připojit k jednomu vCenter Server.
+**Průkaz** | Stažená šablona zařízení je součástí zkušební licence Windows Server 2016, která je platná po dobu 180 dnů. Pokud se zkušební období blíží vypršení platnosti, doporučujeme, abyste si stáhli a nasadili nové zařízení nebo aktivovali licenci k operačnímu systému virtuálního počítače zařízení.
+**Nasazení** | Zařízení nasadíte jako virtuální počítač VMware. Potřebujete dostatek prostředků na vCenter Server k přidělení virtuálního počítače s 32 GB paměti RAM, 8 vCPU, přibližně 80 GB diskového úložiště a externím virtuálním přepínačem.<br/> Zařízení vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.<br/> Zařízení se může připojit k jednomu vCenter Server.
 **Hardware** | Prostředky v vCenter pro přidělení virtuálního počítače s 32 GB paměti RAM 8 vCPU, přibližně 80 GB diskového úložiště a externím virtuálním přepínačem. 
 **Hodnota hash** | MD5: c06ac2a2c0f870d3b274a0b7a73b78b1<br/><br/> SHA256:4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 **Server vCenter/hostitel** | Virtuální počítač zařízení musí být nasazen na hostiteli ESXi, na kterém běží verze 5,5 nebo novější.<br/><br/> vCenter Server se spouští 5,5, 6,0, 6,5 nebo 6,7.
 **Azure Migrate projekt** | Zařízení může být přidruženo k jednomu projektu. <br/> K jednomu projektu může být přidružen libovolný počet zařízení.<br/> 
 **Zjišťování** | Zařízení může na vCenter Server zjistit až 10 000 virtuálních počítačů VMware.<br/> Zařízení se může připojit k jednomu vCenter Server.
 **Součásti zařízení** | Aplikace pro správu: webová aplikace v zařízení pro vstup uživatele během nasazování.<br/> Agent zjišťování: shromažďuje data konfigurace počítače.<br/> Agent hodnocení: shromažďování údajů o výkonu.<br/> DRA: orchestruje replikaci virtuálních počítačů a koordinuje komunikaci mezi počítači a Azure.<br/> Brána: odesílá replikovaná data do Azure.<br/> Služba automatické aktualizace: aktualizovat součásti (spouští se každých 24 hodin).
-**VDDK (migrace bez agenta)** | Pokud při migraci Azure Migrate serveru používáte migraci bez agenta, musí být na virtuálním počítači zařízení nainstalovaná VMware vSphere VDDK).
+**VDDK (migrace bez agenta)** | Pokud při migraci Azure Migrate serveru používáte migraci bez agenta, musí být na virtuálním počítači zařízení nainstalovaná VMware vSphere VDDK.
 
 
 ## <a name="appliance---hyper-v"></a>Zařízení – Hyper-V
@@ -49,7 +49,7 @@ Fyzický počítač |  Azure Migrate: posouzení serveru |  Zjistit fyzické ser
 **Formát stažení** | Složka zip (s virtuálním pevným diskem)
 **Odkaz ke stažení** | https://aka.ms/migrate/appliance/hyperv 
 **Velikost ke stažení** | 10 GB
-**Licence** | Stažená šablona zařízení je součástí zkušební licence Windows Server 2016, která je platná po dobu 180 dnů. Pokud se zkušební období blíží vypršení platnosti, doporučujeme, abyste si stáhli a nasadili nové zařízení nebo aktivovali licenci k operačnímu systému virtuálního počítače zařízení.
+**Průkaz** | Stažená šablona zařízení je součástí zkušební licence Windows Server 2016, která je platná po dobu 180 dnů. Pokud se zkušební období blíží vypršení platnosti, doporučujeme, abyste si stáhli a nasadili nové zařízení nebo aktivovali licenci k operačnímu systému virtuálního počítače zařízení.
 **Nasazení zařízení**   |  Zařízení nasadíte jako virtuální počítač Hyper-V.<br/> Virtuální počítač zařízení, který poskytuje Azure Migrate, je virtuální počítač Hyper-V verze 5,0.<br/> Na hostiteli Hyper-V musí běžet Windows Server 2012 R2 nebo novější.<br/> Hostitel potřebuje dostatek místa pro přidělení 16 GB paměti RAM, 8 vCPU, přibližně 80 GB úložného prostoru a externí přepínač pro virtuální počítač zařízení.<br/> Zařízení potřebuje statickou nebo dynamickou IP adresu a přístup k Internetu.
 **Hardware** | Prostředky na hostiteli Hyper-V, které přidělují 16 GB paměti RAM, 8 vCPU, přibližně 80 GB úložného prostoru a externím přepínači pro virtuální počítač zařízení.
 **Hodnota hash** | MD5:29a7531f32bcf69f32d964fa5ae950bc<br/><br/> SHA256:37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
@@ -66,14 +66,12 @@ Fyzický počítač |  Azure Migrate: posouzení serveru |  Zjistit fyzické ser
 **Formát stažení** | Zip složka (s skriptem instalačního programu PowerShellu)
 **Odkaz ke stažení** | [Odkaz ke stažení](https://go.microsoft.com/fwlink/?linkid=2105112)
 **Velikost ke stažení** | 59,7 MB
-**Hardware** | Vyhrazený fyzický počítač nebo virtuální počítač. Počítač, na kterém běží zařízení, potřebuje 16 GB paměti RAM, 8 vCPU, přibližně 80 GB úložného prostoru a externí přepínač.<br/><br/> Zařízení potřebuje statickou nebo dynamickou IP adresu a přístup k Internetu.
-**Hodnota hash** | MD5:96fd99581072c400aa605ab036a0a7c0<br/><br/> SHA256: f5454beef510c0aa38ac1c6be6346207c351d5361afa0c9cea4772d566fcdc36
+**Hardware** | Vyhrazený fyzický počítač nebo virtuální počítač. Počítač, na kterém běží zařízení, potřebuje 16 GB paměti RAM, 8 vCPU, přibližně 80 GB úložného prostoru a externí přepínač.<br/> Zařízení potřebuje statickou nebo dynamickou IP adresu a přístup k Internetu.
+**Hodnota hash** | MD5:1e92ede3e87c03bd148e56a708cdd33f<br/><br/> SHA256: a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
 **Software** | Počítač zařízení by měl používat Windows Server 2016. 
 **Nasazení zařízení**   |  Skript instalačního programu zařízení se stáhne z portálu (ve složce zip). <br/> Rozbalte složku a spusťte PowerShellový skript (AzureMigrateInstaller. ps1).
 **Zjišťování** | Zařízení může zjistit až 250 fyzických serverů.
 **Součásti zařízení** | Aplikace pro správu: webová aplikace v zařízení pro vstup uživatele během nasazování.<br/> Agent zjišťování: shromažďuje data konfigurace počítače.<br/> Agent hodnocení: shromažďování údajů o výkonu.<br/>  Služba automatické aktualizace: aktualizovat součásti (spouští se každých 24 hodin).
-**Přístup k portu** | Po nakonfigurování zařízení příchozí připojení na portu TCP 3389 umožní připojení ke vzdálené ploše zařízení.<br/><br/> Příchozí připojení na portu 44368 pro vzdálený přístup k aplikaci pro správu zařízení pomocí adresy URL: https://< zařízení-IP-nebo-name >: 44368.<br/><br/> Odchozí připojení na portu 443, 5671 a 5672 pro odeslání metadat zjišťování a výkonu pro Azure Migrate.
-
 
 
 ## <a name="url-access"></a>Přístup URL
@@ -85,17 +83,17 @@ Zařízení Azure Migrate potřebuje připojení k Internetu.
 
 **Adresa URL** | **Podrobnosti**  
 --- | --- |
-*.portal.azure.com  | Přejděte na web Azure Portal.
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | Přihlaste se ke svému předplatnému Azure.
+*.portal.azure.com  | Přejděte na Azure Portal.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com | Přihlaste se ke svému předplatnému Azure.
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Vytvořte pro zařízení služby Active Directory, které budou komunikovat s Azure Migrate.
 management.azure.com | Vytvořte pro zařízení služby Active Directory, které budou komunikovat se službou Azure Migrate.
 dc.services.visualstudio.com | Nahrávat protokoly aplikací používané pro interní monitorování
 *.vault.azure.net | Správa tajných kódů v Azure Key Vault.
 aka.ms/* | Povolí přístup k odkazům. Používá se k aktualizaci Azure Migrate zařízení.
 download.microsoft.com/download | Povolí stahování ze služby Stažení softwaru společnosti Microsoft.
-*.servicebus.windows.net | Používá se pro migraci bez agentů VMware.<br/><br/> Komunikace mezi zařízením a službou Azure Migrate.
-*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | Používá se pro migraci bez agentů VMware.<br/><br/> Připojte se k adresám URL služby Azure Migrate.
-*.blob.core.windows.net |  Používá se pro migraci bez agentů VMware.<br/><br/>Nahrajte data do úložiště.
+*.servicebus.windows.net | **Používá se pro migraci bez agentů VMware.**<br/><br/> Komunikace mezi zařízením a službou Azure Migrate.
+*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | **Používá se pro migraci bez agentů VMware.**<br/><br/> Připojte se k adresám URL služby Azure Migrate.
+*.blob.core.windows.net |  **Používá se pro migraci bez agentů VMware.**<br/><br/>Nahrajte data do úložiště.
 
 
 
@@ -156,7 +154,7 @@ Propustnost zápisu (MB za sekundu) | virtualDisk.write.average
 Název síťového adaptéru | síťových. Zkrat
 Adresa MAC | ((VirtualEthernetCard)nic).MacAddress
 Adresy IPv4 | síť. Guest.Net
-Adresy IPv6 | síť. Guest.Net
+IPv6 adresy | síť. Guest.Net
 Propustnost čtení (MB za sekundu) | net.received.average
 Propustnost zápisu (MB za sekundu) | net.transmitted.average
 **Podrobnosti o cestě inventáře** | 

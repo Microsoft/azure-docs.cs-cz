@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: dc741007c7de8d8e24f9c0f9e4e0c03306d036a4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7dad6a517341f83f693e1e7e1f7d27e899e00f7e
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498353"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990483"
 ---
 # <a name="connect-to-a-windows-virtual-machine-using-azure-bastion"></a>Připojení k virtuálnímu počítači s Windows pomocí Azure bastionu
 
@@ -20,13 +20,22 @@ V tomto článku se dozvíte, jak bezpečně a hladce RDP na virtuální počít
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Ujistěte se, že jste nastavili hostitele Azure bastionu pro virtuální síť, ve které se virtuální počítač nachází. Další informace najdete v tématu [Vytvoření hostitele Azure bastionu](bastion-create-host-portal.md). Jakmile se služba bastionu zřídí a nasadí ve vaší virtuální síti, můžete ji použít pro připojení k libovolnému virtuálnímu počítači v této virtuální síti. Bastionu předpokládá, že používáte protokol RDP pro připojení k virtuálnímu počítači s Windows a SSH pro připojení k virtuálním počítačům Linux. Informace o připojení k virtuálnímu počítači se systémem Linux najdete v tématu [připojení k virtuálnímu počítači](bastion-connect-vm-ssh.md)se systémem Linux.
+Ujistěte se, že jste nastavili hostitele Azure bastionu pro virtuální síť, ve které se virtuální počítač nachází. Další informace najdete v tématu [Vytvoření hostitele Azure bastionu](bastion-create-host-portal.md). Jakmile se služba bastionu zřídí a nasadí ve vaší virtuální síti, můžete ji použít pro připojení k libovolnému virtuálnímu počítači v této virtuální síti.
 
+Bastionu předpokládá, že používáte protokol RDP pro připojení k virtuálnímu počítači s Windows a SSH pro připojení k virtuálním počítačům Linux. Informace o připojení k virtuálnímu počítači se systémem Linux najdete v tématu [připojení k virtuálnímu počítači](bastion-connect-vm-ssh.md)se systémem Linux.
+
+### <a name="required-roles"></a>Požadované role
 Aby bylo možné vytvořit připojení, jsou vyžadovány následující role:
 
 * Role čtenář na virtuálním počítači
 * Role čtecího zařízení na síťové kartě s privátní IP adresou virtuálního počítače
 * Role čtenář v prostředku Azure bastionu
+
+### <a name="ports"></a>Porty
+
+Aby bylo možné se připojit k virtuálnímu počítači s Windows přes RDP, musíte mít na VIRTUÁLNÍm počítači s Windows otevřené následující porty:
+
+* Příchozí porty: RDP (3389)
 
 ## <a name="rdp"></a>Připojit pomocí protokolu RDP
 

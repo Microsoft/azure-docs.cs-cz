@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: 246af99cfec5ca41347da70e80bfc6dfff448eb3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f17b4ee0e4ce79cd12a6fda6f056b4e63b4161c9
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75368031"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76991027"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Překlad názvů pro prostředky v Azure Virtual Networks
 
@@ -31,13 +31,13 @@ Když prostředky nasazené ve virtuálních sítích potřebují překládat n�
 To, který typ překladu názvů použijete, závisí na tom, jak spolu vaše prostředky potřebují vzájemně komunikovat. Následující tabulka ilustruje scénáře a odpovídající řešení pro překlad názvů:
 
 > [!NOTE]
-> V závislosti na vašem scénáři můžete chtít použít funkci Azure DNS Private Zones, která je v současnosti v Public Preview. Další informace najdete v tématu o [použití Azure DNS pro privátní domény](../dns/private-dns-overview.md).
+> V závislosti na vašem scénáři budete možná chtít použít Azure DNS privátní zóny. Další informace najdete v tématu o [použití Azure DNS pro privátní domény](../dns/private-dns-overview.md).
 >
 
 | **Scénář** | **Řešení** | **Auditování** |
 | --- | --- | --- |
-| Překlad názvů mezi virtuálními počítači umístěnými ve stejné virtuální síti nebo instancemi rolí Azure Cloud Services ve stejné cloudové službě. | [Azure DNS Private Zones](../dns/private-dns-overview.md) nebo [překlad názvů poskytovaných službou Azure](#azure-provided-name-resolution) |Název hostitele nebo plně kvalifikovaný název domény |
-| Překlad názvů mezi virtuálními počítači v různých virtuálních sítích nebo instancích rolí v různých cloudových službách. |[Azure DNS Private Zones](../dns/private-dns-overview.md) nebo, servery DNS spravované zákazníkem předávají dotazy mezi virtuálními sítěmi a rozlišením pomocí Azure (DNS proxy). Přečtěte si téma [Překlad adres IP pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
+| Překlad názvů mezi virtuálními počítači umístěnými ve stejné virtuální síti nebo instancemi rolí Azure Cloud Services ve stejné cloudové službě. | [Azure DNS privátní zóny](../dns/private-dns-overview.md) nebo [Překlad adres poskytovaných službou Azure](#azure-provided-name-resolution) |Název hostitele nebo plně kvalifikovaný název domény |
+| Překlad názvů mezi virtuálními počítači v různých virtuálních sítích nebo instancích rolí v různých cloudových službách. |[Azure DNS privátní zóny](../dns/private-dns-overview.md) nebo servery DNS spravované zákazníkem, které předávají dotazy mezi virtuálními sítěmi pro účely překladu Azure (DNS proxy). Přečtěte si téma [Překlad adres IP pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
 | Překlad názvů z Azure App Service (webová aplikace, funkce nebo robot) pomocí integrace virtuální sítě do instancí rolí nebo virtuálních počítačů ve stejné virtuální síti. |Servery DNS spravované zákazníky, které předávají dotazy mezi virtuálními sítěmi pro překlad prostřednictvím Azure (DNS proxy). Přečtěte si téma [Překlad adres IP pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
 | Překlad názvů z App Service Web Apps na virtuální počítače ve stejné virtuální síti. |Servery DNS spravované zákazníky, které předávají dotazy mezi virtuálními sítěmi pro překlad prostřednictvím Azure (DNS proxy). Přečtěte si téma [Překlad adres IP pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
 | Překlad názvů z App Service Web Apps v jedné virtuální síti na virtuální počítače v jiné virtuální síti |Servery DNS spravované zákazníky, které předávají dotazy mezi virtuálními sítěmi pro překlad prostřednictvím Azure (DNS proxy). Přečtěte si téma [Překlad adres IP pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |

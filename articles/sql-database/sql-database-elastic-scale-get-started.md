@@ -11,12 +11,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: b5c323bf3d5ff55c2c30961003e8c456cbe39c82
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4577f611287a27366b1168e07565861c16fe0e38
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823665"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987018"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Začínáme s nástroji pro Elastic Database
 
@@ -54,7 +54,7 @@ Chcete-li vytvořit soubory JAR a začít s ukázkovým projektem, postupujte n�
     
 5. Chcete-li získat další informace o možnostech klientské knihovny, Experimentujte s různými možnostmi. Nebojte se prozkoumat kód, abyste se dozvěděli o implementaci ukázkové aplikace.
 
-    ![Průběh – Java][5]
+    ![Progress-java][5]
     
 Blahopřejeme! Úspěšně jste vytvořili a spustili svou první aplikaci horizontálně dělené pomocí nástrojů Elastic Database v Azure SQL Database. Pomocí sady Visual Studio nebo SQL Server Management Studio se připojte ke svojí databázi SQL a Prohlédněte si horizontálních oddílů, kterou ukázka vytvořila. Všimnete si nových ukázkových databází horizontálních oddílů a databáze správce map horizontálních oddílů, kterou vytvořila ukázka. 
 
@@ -81,7 +81,7 @@ Knihovnu nainstalujete tak, že přejdete na [Microsoft. Azure. SqlDatabase. Ela
 
 Chcete-li stáhnout a spustit ukázku, postupujte podle následujících kroků: 
 
-1. Stáhněte si [ukázku nástrojů elastické databáze pro Azure SQL-Začínáme](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-a80d8dc6) z MSDN. Rozbalte ukázku do zvoleného umístění.
+1. Stáhněte si [ukázku nástrojů elastické databáze pro Azure SQL-Začínáme](https://github.com/Azure/elastic-db-tools). Rozbalte ukázku do zvoleného umístění.
 
 2. Chcete-li vytvořit projekt, otevřete řešení *ElasticScaleStarterKit. sln* z *C#* adresáře.
 
@@ -91,7 +91,7 @@ Chcete-li stáhnout a spustit ukázku, postupujte podle následujících kroků:
 
 5. Chcete-li získat další informace o možnostech klientské knihovny, Experimentujte s různými možnostmi. Poznamenejte si kroky, které aplikace převezme ve výstupu konzoly, a nebojte se prozkoumat kód na pozadí.
    
-    ![Přejde][4]
+    ![Průběh][4]
 
 Blahopřejeme! Úspěšně jste vytvořili a spustili svou první aplikaci horizontálně dělené pomocí nástrojů Elastic Database v SQL Database. Pomocí sady Visual Studio nebo SQL Server Management Studio se připojte ke svojí databázi SQL a Prohlédněte si horizontálních oddílů, kterou ukázka vytvořila. Všimnete si nových ukázkových databází horizontálních oddílů a databáze správce map horizontálních oddílů, kterou vytvořila ukázka.
 
@@ -127,7 +127,7 @@ Informace o cenách najdete v [podrobnostech o cenách SQL Database](https://azu
 Další informace o Elastic Databasech nástrojích najdete v následujících článcích:
 
 * Ukázky kódu: 
-  * Elastic Database nástroje ([.NET](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE), [Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
+  * Elastic Database nástroje ([.NET](https://github.com/Azure/elastic-db-tools), [Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
   * [Elastic Database Tools for Azure SQL-Entity Framework Integration](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
   * [Elastická horizontálních oddílů v centru skriptů](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * Blog: [oznámení elastického škálování](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)

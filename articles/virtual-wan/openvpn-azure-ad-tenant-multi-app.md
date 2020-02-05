@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 1/10/2020
 ms.author: alzam
-ms.openlocfilehash: b390b5f8b00f61994db820a3af7bce26a3e0a30d
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 90244b9dcf30c2ef01d4e57c9d8e35fa1d71f434
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934970"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985641"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Vytvoření tenanta Azure Active Directory pro připojení protokolu P2S OpenVPN
 
@@ -84,7 +84,7 @@ Postup v [tomto článku](../active-directory/fundamentals/add-users-azure-activ
 
 6. Po zobrazení výzvy vyberte **přijmout** .
 
-    ![Přijmout](./media/openvpn-azure-ad-tenant-multi-app/accept.jpg)
+    ![Vyjádřit](./media/openvpn-azure-ad-tenant-multi-app/accept.jpg)
 
 7. V rámci Azure AD se v **podnikových aplikacích**zobrazí uvedená služba **Azure VPN** .
 
@@ -154,114 +154,116 @@ Konfigurace P2S definuje parametry pro připojení vzdálených klientů.
 
    ```powershell
    $aadConfig = New-AzVpnServerConfiguration -ResourceGroupName <ResourceGroup> -Name newAADConfig -VpnProtocol OpenVPN -VpnAuthenticationType AAD -AadTenant $aadTenant -AadIssuer $aadIssuer -AadAudience $aadAudience -Location westcentralus
-> [!NOTE]
-> Do not use the Azure VPN client's application ID in the commands above as it will grant all users access to the VPN gateway. Use the ID of the application(s) you registered.
-
-## <a name="hub"></a>7. Edit hub assignment
-
-1. Navigate to the **Hubs** blade under the virtual WAN.
-2. Select the hub that you want to associate the vpn server configuration to and click the ellipsis (...).
-
-   ![new site](media/virtual-wan-point-to-site-azure-ad/p2s4.jpg)
-3. Click **Edit virtual hub**.
-4. Check the **Include point-to-site gateway** check box and pick the **Gateway scale unit** that you want.
-
-   ![new site](media/virtual-wan-point-to-site-azure-ad/p2s2.jpg)
-5. Enter the **Address pool** from which the VPN clients will be assigned IP addresses.
-6. Click **Confirm**.
-7. The operation will can take up to 30 minutes to complete.
-
-## <a name="device"></a>8. Download VPN profile
-
-Use the VPN profile to configure your clients.
-
-1. On the page for your virtual WAN, click **User VPN configurations**.
-2. At the top of the  page, click **Download user VPN config**.
-3. Once the file has finished creating, you can click the link to download it.
-4. Use the profile file to configure the VPN clients.
-
-4. Extract the downloaded zip file.
-
-5. Browse to the unzipped “AzureVPN” folder.
-
-6. Make a note of the location of the “azurevpnconfig.xml” file. The azurevpnconfig.xml contains the setting for the VPN connection and can be imported directly into the Azure VPN Client application. You can also distribute this file to all the users that need to connect via e-mail or other means. The user will need valid Azure AD credentials to connect successfully.
-## Configure user VPN clients
-
-To connect, you need to download the Azure VPN Client (Preview) and import the VPN client profile that was downloaded in the previous steps on every computer that wants to connect to the VNet.
+   ```
 
 > [!NOTE]
-> Azure AD authentication is supported only for OpenVPN® protocol connections.
+> V předchozích příkazech nepoužívejte ID aplikace klienta Azure VPN. tím se udělí všem uživatelům přístup k bráně VPN. Použijte ID registrovaných aplikací.
+
+## <a name="hub"></a>7. Úprava přiřazení centra
+
+1. Přejděte do okna **centra** v rámci virtuální sítě WAN.
+2. Vyberte centrum, ke kterému chcete přiřadit konfiguraci serveru VPN, a klikněte na tlačítko se třemi tečkami (...).
+
+   ![nová lokalita](media/virtual-wan-point-to-site-azure-ad/p2s4.jpg)
+3. Klikněte na **Upravit virtuální rozbočovač**.
+4. Zaškrtněte políčko **Zahrnout bránu Point-to-site** a vyberte **jednotku škálování brány** , kterou chcete použít.
+
+   ![nová lokalita](media/virtual-wan-point-to-site-azure-ad/p2s2.jpg)
+5. Zadejte **fond adres** , ze kterého budou klienti VPN přiřazeni IP adresy.
+6. Klikněte na **Confirm** (Potvrdit).
+7. Dokončení operace může trvat až 30 minut.
+
+## <a name="device"></a>8. stáhnout profil sítě VPN
+
+Pomocí profilu sítě VPN nakonfigurujte své klienty.
+
+1. Na stránce pro virtuální síť WAN klikněte na **Konfigurace sítě VPN uživatele**.
+2. V horní části stránky klikněte na **Stáhnout uživatelskou konfiguraci VPN**.
+3. Jakmile se dokončí vytváření souboru, můžete ho kliknutím na odkaz stáhnout.
+4. K nakonfigurování klientů VPN použijte profilový soubor.
+
+4. Extrahujte stažený soubor zip.
+
+5. Přejděte do složky unzip "AzureVPN".
+
+6. Poznamenejte si umístění souboru azurevpnconfig. XML. Azurevpnconfig. XML obsahuje nastavení pro připojení VPN a dá se importovat přímo do klientské aplikace Azure VPN. Tento soubor můžete také distribuovat všem uživatelům, kteří se potřebují připojit prostřednictvím e-mailu nebo jiným způsobem. Uživatel bude potřebovat platné přihlašovací údaje Azure AD pro úspěšné připojení.
+## <a name="configure-user-vpn-clients"></a>Konfigurace klientů VPN uživatelů
+
+Abyste se mohli připojit, je potřeba stáhnout klienta Azure VPN (Preview) a importovat profil klienta VPN, který jste stáhli v předchozích krocích v každém počítači, který se chce připojit k virtuální síti.
+
+> [!NOTE]
+> Ověřování Azure AD se podporuje jenom pro připojení OpenVPN® protokolu.
 >
 
-#### To download the Azure VPN client
+#### <a name="to-download-the-azure-vpn-client"></a>Stažení klienta Azure VPN
 
-Use this [link](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab) to download the Azure VPN Client (Preview).
+Pomocí tohoto [odkazu](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab) si stáhněte klienta Azure VPN (Preview).
 
-#### <a name="import"></a>To import a client profile
+#### <a name="import"></a>Import profilu klienta
 
-1. On the page, select **Import**.
+1. Na stránce vyberte **importovat**.
 
-    ![import](./media/virtual-wan-point-to-site-azure-ad/import/import1.jpg)
+    ![importovat](./media/virtual-wan-point-to-site-azure-ad/import/import1.jpg)
 
-2. Browse to the profile xml file and select it. With the file selected, select **Open**.
+2. Přejděte k souboru XML profilu a vyberte ho. Když je vybraný soubor, vyberte **otevřít**.
 
-    ![import](./media/virtual-wan-point-to-site-azure-ad/import/import2.jpg)
+    ![importovat](./media/virtual-wan-point-to-site-azure-ad/import/import2.jpg)
 
-3. Specify the name of the profile and select **Save**.
+3. Zadejte název profilu a vyberte **Uložit**.
 
-    ![import](./media/virtual-wan-point-to-site-azure-ad/import/import3.jpg)
+    ![importovat](./media/virtual-wan-point-to-site-azure-ad/import/import3.jpg)
 
-4. Select **Connect** to connect to the VPN.
+4. Vyberte **připojit** a připojte se k síti VPN.
 
-    ![import](./media/virtual-wan-point-to-site-azure-ad/import/import4.jpg)
+    ![importovat](./media/virtual-wan-point-to-site-azure-ad/import/import4.jpg)
 
-5. Once connected, the icon will turn green and say **Connected**.
+5. Po připojení se ikona změní na zelenou a znamená se **připojit**.
 
-    ![import](./media/virtual-wan-point-to-site-azure-ad/import/import5.jpg)
+    ![importovat](./media/virtual-wan-point-to-site-azure-ad/import/import5.jpg)
 
-#### <a name="delete"></a>To delete a client profile
+#### <a name="delete"></a>Odstranění profilu klienta
 
-1. Select the ellipsis (...) next to the client profile that you want to delete. Then, select **Remove**.
+1. Vyberte tři tečky (...) vedle profilu klienta, který chcete odstranit. Pak vyberte **Odebrat**.
 
     ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete1.jpg)
 
-2. Select **Remove** to delete.
+2. Vyberte **Odebrat** a odstraňte.
 
     ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete2.jpg)
 
-#### <a name="diagnose"></a>Diagnose connection issues
+#### <a name="diagnose"></a>Diagnostika problémů s připojením
 
-1. To diagnose connection issues, you can use the **Diagnose** tool. Select the ellipsis (...) next to the VPN connection that you want to diagnose to reveal the menu. Then select **Diagnose**.
+1. K diagnostice problémů s připojením můžete použít nástroj pro **diagnostiku** . Vyberte tři tečky (...) vedle připojení VPN, které chcete diagnostikovat, aby se nabídka zobrazila. Pak vyberte **Diagnostika**.
 
-    ![diagnose](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose1.jpg)
+    ![diagnóz](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose1.jpg)
 
-2. On the **Connection Properties** page, select **Run Diagnosis**.
+2. Na stránce **Vlastnosti připojení** vyberte **Spustit diagnostiku**.
 
-    ![diagnose](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose2.jpg)
+    ![diagnóz](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose2.jpg)
 
-3. Sign in with your credentials.
+3. Přihlaste se pomocí svých přihlašovacích údajů.
 
-    ![diagnose](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose3.jpg)
+    ![diagnóz](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose3.jpg)
 
-4. View the diagnosis results.
+4. Zobrazení výsledků diagnostiky.
 
-    ![diagnose](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose4.jpg)
+    ![diagnóz](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose4.jpg)
 
-## <a name="viewwan"></a>View your virtual WAN
+## <a name="viewwan"></a>Zobrazení virtuální sítě WAN
 
-1. Navigate to the virtual WAN.
-2. On the Overview page, each point on the map represents a hub. Hover over any point to view the hub health summary.
-3. In the Hubs and connections section, you can view hub status, site, region, VPN connection status, and bytes in and out.
+1. Přejděte na virtuální síť WAN.
+2. Na stránce Overview (Přehled) každý bod na mapě představuje jeden rozbočovač. Podržením ukazatele na některém z těchto bodů zobrazíte souhrn stavu rozbočovače.
+3. V části Hubs and connections (Rozbočovače a připojení) můžete zjistit stav rozbočovače, lokalitu, oblast, stav připojení VPN a přijaté a odeslané bajty.
 
-## <a name="viewhealth"></a>View your resource health
+## <a name="viewhealth"></a>Zobrazení stavu prostředku
 
-1. Navigate to your WAN.
-2. On your WAN page, in the **SUPPORT + Troubleshooting** section, click **Health** and view your resource.
+1. Přejděte na svoji síť WAN.
+2. Na stránce sítě WAN v části **SUPPORT + Troubleshooting** (Podpora a řešení potíží) klikněte na **Health** (Stav) a prohlédněte si stav svého prostředku.
 
 
-## <a name="cleanup"></a>Clean up resources
+## <a name="cleanup"></a>Vyčištění prostředků
 
-When you no longer need these resources, you can use [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) to remove the resource group and all of the resources it contains. Replace "myResourceGroup" with the name of your resource group and run the following PowerShell command:
+Pokud už tyto prostředky nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků, které obsahuje, použít rutinu [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup). Položku myResourceGroup nahraďte názvem vaší skupiny prostředků a spusťte následující příkaz PowerShellu:
 
 ```azurepowershell-interactive
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force

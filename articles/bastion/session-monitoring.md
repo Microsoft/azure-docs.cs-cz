@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: a4a97ebd0e44bfd3b0ee167a2f3a7da435ac5087
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f56a724174b81966642b2870360014597436eade
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513000"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76981085"
 ---
 # <a name="session-monitoring-and-management-for-azure-bastion"></a>Monitorování a Správa relací pro Azure bastionu
 
@@ -28,7 +28,7 @@ Jakmile se služba bastionu zřídí a nasadí ve vaší virtuální síti, mů�
    ![Zobrazit relaci](./media/session-monitoring/view-session.png)
 3. Kliknutím na **aktualizovat** zobrazíte aktualizovaný seznam vzdálených relací. Když vyberete možnost aktualizovat, Azure bastionu načte nejnovější informace o monitorování a aktualizuje ji na portálu.
 
-   ![Téhle](./media/session-monitoring/refresh.png)
+   ![téhle](./media/session-monitoring/refresh.png)
 
 >[!IMPORTANT]
 > Povolte port 4443 pro příchozí provoz z Správce brány, aby monitorování relace fungovalo.
@@ -40,7 +40,7 @@ Můžete vybrat sadu relací a vynutit jejich odpojení. Následující kroky uk
 
 1. Přejděte do svého prostředku Azure bastionu a vyberte **relace** na stránce Azure bastionu.
 
-   ![Otevře](./media/session-monitoring/navigate.png)
+   ![otevře](./media/session-monitoring/navigate.png)
 2. Po výběru relací se zobrazí seznam vzdálených relací.
 
    ![výpis relací](./media/session-monitoring/list.png)
@@ -49,7 +49,7 @@ Můžete vybrat sadu relací a vynutit jejich odpojení. Následující kroky uk
    ![delete](./media/session-monitoring/delete.png)
 4. Když vyberete odstranit, Vzdálená relace se odpojí a uživateli se zobrazí zpráva, že jste byli odpojeni ve vzdálené relaci.
 
-   ![Dobu](./media/session-monitoring/disconnect.png)
+   ![dobu](./media/session-monitoring/disconnect.png)
 
 ## <a name="next-steps"></a>Další kroky
 

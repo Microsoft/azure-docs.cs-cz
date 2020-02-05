@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/13/2019
-ms.openlocfilehash: 1268dc0d78bf64e0a4b79592c28a9c1e70db7bf3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 01/28/2020
+ms.openlocfilehash: def57dc125a148abd330643fc5848a35cd3b52bf
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75892926"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990997"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Kopírování a transformace dat v Azure SQL Database pomocí Azure Data Factory
 
@@ -589,6 +589,10 @@ Nastavení specifická pro Azure SQL Database jsou k dispozici na kartě **Možn
 Nastavení specifická pro Azure SQL Database jsou k dispozici na kartě **Nastavení** transformace jímky.
 
 **Metoda aktualizace:** Určuje, jaké operace jsou pro cíl databáze povolené. Ve výchozím nastavení je povolen pouze vkládání. Chcete-li aktualizovat, Upsert nebo odstranit řádky, je pro označení řádků pro tyto akce nutná transformace ALTER Row. V případě aktualizací upsertuje a DELETE musí být klíčový sloupec nebo sloupce nastaveny k určení, který řádek má být změněn.
+
+![Klíčové sloupce](media/data-flow/keycolumn.png "Klíčové sloupce")
+
+Název sloupce, který vyberete jako klíč, bude v rámci této aktualizace použit jako součást následné aktualizace, Upsert a DELETE. Proto je nutné vybrat sloupec, který existuje v mapování jímky. Pokud chcete do tohoto klíčového sloupce nezazapisovat hodnotu, klikněte na přeskočit zápis klíčových sloupců.
 
 **Akce tabulky:** Určuje, zda mají být před zápisem znovu vytvořeny nebo odebrány všechny řádky z cílové tabulky.
 * Žádné: v tabulce se neprovede žádná akce.

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/24/2019
-ms.openlocfilehash: 80a13e504b7cb075692256d5c813a95c51002ab6
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 02/03/2020
+ms.openlocfilehash: 0921caa19ee86ddf2766642211d8204059550b02
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495117"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990687"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Vytváření clusterů HDInsight pomocí rozhraní příkazového řádku Azure
 
@@ -46,7 +46,7 @@ Azure CLI. Pokud jste nenainstalovali Azure CLI, přečtěte si téma [instalace
 
     |Parametr | Popis |
     |---|---|
-    |`--size`| Počet uzlů pracovního procesu v clusteru. V tomto článku se používá proměnná `clusterSizeInNodes` jako hodnota předaná do `--size`. |
+    |`--workernode-count`| Počet uzlů pracovního procesu v clusteru. V tomto článku se používá proměnná `clusterSizeInNodes` jako hodnota předaná do `--workernode-count`. |
     |`--version`| Verze clusteru HDInsight. V tomto článku se používá proměnná `clusterVersion` jako hodnota předaná do `--version`. Viz také: [podporované verze HDInsight](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
     |`--type`| Zadejte cluster HDInsight, například: Hadoop, interactivehive, HBA, Kafka,, Spark, Rserver, mlservices.  V tomto článku se používá proměnná `clusterType` jako hodnota předaná do `--type`. Viz také: [typy clusterů a konfigurace](./hdinsight-hadoop-provision-linux-clusters.md#cluster-types).|
     |`--component-version`|Verze různých komponent systému Hadoop ve formátu "Component = Version" ve verzích oddělených mezerami. V tomto článku se používá proměnná `componentVersion` jako hodnota předaná do `--component-version`. Viz také: [komponenty Hadoop](./hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions).|
@@ -120,12 +120,12 @@ Azure CLI. Pokud jste nenainstalovali Azure CLI, přečtěte si téma [instalace
         --http-password $httpCredential \
         --http-user admin \
         --location $location \
-        --size $clusterSizeInNodes \
+        --workernode-count $clusterSizeInNodes \
         --ssh-password $sshCredentials \
         --ssh-user sshuser \
         --storage-account $AZURE_STORAGE_ACCOUNT \
         --storage-account-key $AZURE_STORAGE_KEY \
-        --storage-default-container $AZURE_STORAGE_CONTAINER \
+        --storage-container $AZURE_STORAGE_CONTAINER \
         --version $clusterVersion
     ```
 
@@ -172,7 +172,6 @@ Teď, když jste úspěšně vytvořili cluster HDInsight pomocí rozhraní př�
 ### <a name="apache-hadoop-clusters"></a>Clustery Apache Hadoop
 
 * [Použití Apache Hive se službou HDInsight](hadoop/hdinsight-use-hive.md)
-* [Použití Apache prasete se službou HDInsight](hadoop/hdinsight-use-pig.md)
 * [Použití MapReduce se službou HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Clustery Apache HBA

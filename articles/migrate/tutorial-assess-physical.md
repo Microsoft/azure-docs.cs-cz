@@ -3,12 +3,12 @@ title: Posouzení fyzických serverů pro migraci do Azure pomocí posouzení se
 description: Popisuje postup vyhodnocení místních fyzických serverů pro migraci do Azure pomocí Azure Migrate posouzení serveru.
 ms.topic: tutorial
 ms.date: 11/18/2019
-ms.openlocfilehash: 10cd13831fe6cb6b843f0a79a5d5ba56814bcde0
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: c89c731712a625e5f3b7a1a7e9306f6a7480b96b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028989"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990296"
 ---
 # <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>Vyhodnotit fyzické servery pomocí Azure Migrate: posouzení serveru
 
@@ -98,14 +98,14 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 1. Na počítači, do kterého jste soubor stáhli, otevřete jako správce příkazový řádek.
 2. Spusťte následující příkaz, který vygeneruje hodnotu hash pro soubor zip.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Příklady použití: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller\AzureMigrateInstaller.ps1 SHA256```
+    - Příklady použití: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
 
 3.  Pro nejnovější verzi zařízení by se vygenerovaná hodnota hash měla shodovat s tímto nastavením.
 
   **Algoritmus** | **Hodnota hash**
   --- | ---
-  MD5 | 96fd99581072c400aa605ab036a0a7c0
-  SHA256 | f5454beef510c0aa38ac1c6be6346207c351d5361afa0c9cea4772d566fcdc36
+  MD5 | 1e92ede3e87c03bd148e56a708cdd33f
+  SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
 
 ### <a name="run-the-azure-migrate-installer-script"></a>Spusťte skript instalačního programu Azure Migrate
 

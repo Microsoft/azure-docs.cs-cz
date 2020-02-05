@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 52791719e518f6a6b1a4178d8b9a010f1db14fc4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 4078f2a005dcd324fa9c1d31cdca4b1f8337eecd
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003855"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988375"
 ---
-# <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-python"></a>Kurz: Použití Azure Key Vault s virtuálním počítačem s Windows v Pythonu
+# <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-python"></a>Kurz: použití Azure Key Vault s virtuálním počítačem s Windows v Pythonu
 
 Azure Key Vault pomáhá chránit tajné kódy, jako jsou klíče rozhraní API, databázové připojovací řetězce, které potřebujete pro přístup k aplikacím, službám a prostředkům IT.
 
@@ -52,7 +52,7 @@ Když povolíte MSI pro službu Azure, například Azure Virtual Machines, Azure
 
 Pokud chcete získat přístupový token, váš kód volá místní službu metadat, která je k dispozici v prostředku Azure. K ověření u Azure Key Vault služby používá váš kód přístupový token, který získá z místního koncového bodu MSI. 
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
 Pokud se chcete přihlásit k Azure pomocí Azure CLI, zadejte:
 
@@ -81,7 +81,7 @@ Pokud chcete vytvořit Trezor klíčů ve skupině prostředků, kterou jste vyt
 
 * Název trezoru klíčů: řetězec na 3 až 24 znaků, který může obsahovat jenom číslice (0-9), písmena (a-z, A-Z) a spojovníky (-).
 * Název skupiny prostředků
-* Oblasti **Západní USA**
+* Umístění: **západní USA**
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
@@ -136,7 +136,7 @@ Pokud se chcete přihlásit k virtuálnímu počítači, postupujte podle pokyn�
 
 ## <a name="create-and-run-a-sample-python-app"></a>Vytvoření a spuštění ukázkové aplikace v Pythonu
 
-V další části je příklad souboru s názvem *Sample.py*. Používá knihovnu [požadavků](http://docs.python-requests.org/en/master/) k tomu, aby volání HTTP GET.
+V další části je příklad souboru s názvem *Sample.py*. Používá knihovnu [požadavků](https://2.python-requests.org/en/master/) k tomu, aby volání HTTP GET.
 
 ## <a name="edit-samplepy"></a>Upravit Sample.py
 

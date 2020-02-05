@@ -3,18 +3,18 @@ title: Reference Host. JSON pro Azure Functions 2. x
 description: Referenční dokumentace pro soubor Azure Functions Host. JSON s modulem runtime v2
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 782998e49b9af3bf4d2ae5a561faaca399c6809f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 6c4cfbb40c0337a6141d3b1f9844a33227a4963f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978812"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988698"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Reference Host. JSON pro Azure Functions 2. x a novější 
 
 > [!div class="op_single_selector" title1="Vyberte verzi Azure Functions runtime, kterou používáte: "]
 > * [Verze 1](functions-host-json-v1.md)
-> * [Verze 2](functions-host-json.md)
+> * [Verze 2 +](functions-host-json.md)
 
 Soubor metadat *Host. JSON* obsahuje možnosti globální konfigurace, které mají vliv na všechny funkce aplikace Function App. Tento článek obsahuje seznam nastavení, která jsou k dispozici od verze 2. x Azure Functions runtime.  
 
@@ -27,7 +27,7 @@ Některá nastavení Host. JSON se používají jenom v případě, že se spou�
 
 ## <a name="sample-hostjson-file"></a>Ukázkový soubor host. JSON
 
-Následující ukázkový soubor *Host. JSON* má všechny možné zadané možnosti (kromě těch, které jsou jenom pro interní použití).
+Následující ukázkový soubor *Host. JSON* pro verzi 2. x + obsahuje všechny možné možnosti (kromě těch, které jsou určeny pouze pro interní použití).
 
 ```json
 {
@@ -218,7 +218,7 @@ Nastavení konfigurace lze nalézt v [vazby pro Durable Functions](durable/durab
 
 Nastavení konfigurace najdete v [aktivačních událostech a vazbách centra událostí](functions-bindings-event-hubs.md#host-json). 
 
-## <a name="extensions"></a>rozšíření
+## <a name="extensions"></a>SND
 
 Vlastnost, která vrací objekt, který obsahuje všechna nastavení specifická pro vazbu, například [http](#http) a [eventHub](#eventhub).
 
@@ -280,7 +280,7 @@ Nastavení konfigurace pro [Monitor stavu hostitele](https://github.com/Azure/az
 
 Nastavení konfigurace najdete v [aktivačních událostech http a vazbách](functions-bindings-http-webhook.md#hostjson-settings).
 
-## <a name="logging"></a>protokolování
+## <a name="logging"></a>protokolu
 
 Řídí chování protokolování aplikace Function App, včetně Application Insights.
 
@@ -339,7 +339,7 @@ Spravovaná závislost je funkce, kterou momentálně podporuje jenom funkce zal
 }
 ```
 
-## <a name="queues"></a>fronty
+## <a name="queues"></a>vytvořil
 
 Nastavení konfigurace najdete v [aktivačních událostech a vazbách fronty úložiště](functions-bindings-storage-queue.md#host-json).  
 
@@ -377,7 +377,7 @@ Nastavení konfigurace pro chování zámku typu singleton. Další informace na
 
 ## <a name="version"></a>version
 
-Pro aplikaci Function App, která cílí na modul runtime v2, se vyžaduje `"version": "2.0"` řetězec verze.
+Tato hodnota označuje verzi schématu Host. JSON. Řetězec verze `"version": "2.0"` je vyžadován pro aplikaci funkcí, která cílí na modul runtime v2 nebo na novější verzi. Mezi v2 a V3 nejsou žádné změny schématu Host. JSON.
 
 ## <a name="watchdirectories"></a>watchDirectories
 

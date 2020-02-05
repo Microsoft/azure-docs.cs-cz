@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/25/2019
+ms.date: 02/02/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: caa7cbed7c56b63bcbf5ad8f287ab6cf32575c15
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7659c8187f7f4763b51b09362c94dad9554ed1c0
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840294"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982836"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -126,6 +126,8 @@ Element **SingleSignon** obsahuje následující atribut:
 | --------- | -------- | ----------- |
 | Rozsah | Ano | Rozsah chování jednotného přihlašování. Možné hodnoty: `Suppressed`, `Tenant`, `Application`nebo `Policy`. Hodnota `Suppressed` označuje, že chování je potlačeno. Například v případě relace jednotného přihlašování není pro uživatele udržována žádná relace a uživatel se vždy zobrazí výzva k výběru poskytovatele identity. Hodnota `TrustFramework` označuje, že chování je použito pro všechny zásady v rámci vztahu důvěryhodnosti. Například uživatel, který přecházení ze dvou cest zásad pro architekturu trustu, nevyzve k výběru poskytovatele identity. Hodnota `Tenant` označuje, že se chování aplikuje na všechny zásady v tenantovi. Například uživatel, který přecházení ze dvou cest zásad pro tenanta, nevyzve k výběru poskytovatele identity. Hodnota `Application` označuje, že chování bude použito pro všechny zásady aplikace, které vytváří požadavek. Například uživatel, který přecházení ze dvou cest zásad pro aplikaci, nezobrazuje výzvu k výběru poskytovatele identity. Hodnota `Policy` označuje, že chování se vztahuje pouze na zásadu. Například uživatel, který přechází ze dvou cest zásad pro rozhraní vztahu důvěryhodnosti, se při přepínání mezi zásadami zobrazí dotaz na výběr poskytovatele identity. |
 | KeepAliveInDays | Ano | Určuje, jak dlouho zůstane uživatel přihlášený. Nastavením hodnoty 0 dojde k vypnutí funkcí políčko zůstat přihlášeni. Další informace najdete v tématu [zůstat přihlášeni](custom-policy-keep-me-signed-in.md). |
+|EnforceIdTokenHintOnLogout| Ne|  Vynutí předání dříve vydaného tokenu ID koncovému bodu pro odhlášení jako pomocný parametr pro aktuální ověřenou relaci koncového uživatele s klientem. Možné hodnoty: `false` (výchozí) nebo `true`. Další informace najdete v tématu věnovaném [webovému přihlášení pomocí OpenID Connect](openid-connect.md).  |
+
 
 ## <a name="journeyinsights"></a>JourneyInsights
 
@@ -176,12 +178,12 @@ Element **TechnicalProfile** obsahuje následující atribut:
 
 | Element | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| DisplayName | 0:1 | Řetězec, který obsahuje název technického profilu, který se zobrazí uživatelům. |
-| Popis | 0:1 | Řetězec, který obsahuje popis technického profilu, který se zobrazí uživatelům. |
+| DisplayName | 1:1 | Řetězec, který obsahuje název technického profilu. |
+| Popis | 0:1 | Řetězec, který obsahuje popis technického profilu. |
 | Protocol (Protokol) | 1:1 | Protokol používaný pro federaci. |
 | Metadata | 0:1 | Kolekce *položek* párů klíč/hodnota využívané protokolem pro komunikaci s koncovým bodem v průběhu transakce pro konfiguraci interakce mezi předávající stranou a ostatními účastníky komunity. |
-| OutputClaims | 0:1 | Seznam typů deklarací, které jsou pořízeny jako výstup v technickém profilu. Každý z těchto prvků obsahuje odkaz na objekt **ClaimType** , který je již definován v části **ClaimsSchema** nebo v zásadě, ze které tento soubor zásad dědí. |
-| SubjectNamingInfo | 0:1 | Název subjektu, který se používá v tokenech. |
+| OutputClaims | 1:1 | Seznam typů deklarací, které jsou pořízeny jako výstup v technickém profilu. Každý z těchto prvků obsahuje odkaz na objekt **ClaimType** , který je již definován v části **ClaimsSchema** nebo v zásadě, ze které tento soubor zásad dědí. |
+| SubjectNamingInfo | 1:1 | Název subjektu, který se používá v tokenech. |
 
 Element **Protocol** obsahuje následující atribut:
 

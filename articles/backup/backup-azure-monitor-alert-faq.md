@@ -4,50 +4,49 @@ description: V tomto článku najdete odpovědi na běžné otázky týkající 
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 9cf7bf49d29b5faa9811a591b45179fe83c1d483
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: f5be97458ba658f315c31ae34e540842b64e3ec4
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172913"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989565"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Výstraha monitorování Azure Backup – Nejčastější dotazy
 
-Tento článek obsahuje odpovědi na nejčastější dotazy týkající se výstrahy monitorování Azure.
+Tento článek obsahuje odpovědi na běžné dotazy týkající se Azure Backup monitorování a vytváření sestav.
 
 ## <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 
-### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-storage-account"></a>Návody ověřit, jestli se data vytváření sestav začala přesměrovat do účtu úložiště?
+### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-log-analytics-la-workspace"></a>Návody ověřit, zda byla data vytváření sestav spouštěna v pracovním prostoru Log Analytics (LA)?
 
-Přejít na účet úložiště, který jste nakonfigurovali, a vyberte kontejnery. Pokud má kontejner záznam pro Insights-logs-azurebackupreport, znamená to, že se data pro vytváření sestav spustila v.
+Přejděte do pracovního prostoru LA, který jste nakonfigurovali, přejděte na položku nabídky **protokoly** a spusťte dotaz CoreAzureBackup | Vezměte 1. Pokud se zobrazí vracený záznam, znamená to, že se data začala přesměrovat do pracovního prostoru. Počáteční nabízení dat může trvat až 24 hodin.
 
-### <a name="what-is-the-frequency-of-data-push-to-a-storage-account-and-the-azure-backup-content-pack-in-power-bi"></a>Jaká je četnost vkládání dat do účtu úložiště a Azure Backup balíčku obsahu v Power BI?
+### <a name="what-is-the-frequency-of-data-push-to-an-la-workspace"></a>Jaká je frekvence nabízených dat do pracovního prostoru LA?
 
-  Pro uživatele dne 0 trvá zápis dat do účtu úložiště během 24 hodin. Po dokončení tohoto počátečního nabízení oznámení se data aktualizují o frekvenci znázorněnou na následujícím obrázku.
+Diagnostická data z trezoru se do Log Analyticsho pracovního prostoru napumpa s určitou prodlevou. Každá událost se doručí na Log Analytics pracovní prostor od 20 do 30 minut od jeho vložení z trezoru Recovery Services. Tady jsou další podrobnosti o prodlevě:
 
-* Data související s **úlohami**, **výstrahami**, **zálohovanými položkami**, **trezory**, **chráněnými servery**a **zásadami** se odešlou do účtu úložiště zákazníka jako a při jejich zaznamenání.
+* V rámci všech řešení se integrované výstrahy služby Backup odešlou hned po jejich vytvoření. Proto se obvykle zobrazují v pracovním prostoru Log Analytics po 20 až 30 minutách.
+* V rámci všech řešení se úlohy zálohování na vyžádání a úlohy obnovení odešlou hned po dokončení.
+* Pro všechna řešení kromě zálohování SQL se naplánované úlohy zálohování odešlou hned po dokončení.
+* U služby SQL Backup, protože k zálohování protokolů může docházet každých 15 minut, informace o všech dokončených úlohách plánovaného zálohování, včetně protokolů, jsou dávkové a vložené každých 6 hodin.
+* V rámci všech řešení se pro všechny ostatní informace, jako je například zálohovaná položka, zásada, body obnovení, úložiště a tak dále, je alespoň jednou denně nabízena.
+* Změna v konfiguraci zálohování (například změna zásady nebo zásady úprav) aktivuje vložení všech souvisejících informací o zálohování.
 
-* Data týkající se **úložiště** se každých 24 hodin odesílají do účtu úložiště zákazníka.
+### <a name="how-long-can-i-retain-reporting-data"></a>Jak dlouho mohu uchovávat data vytváření sestav?
 
-    ![Frekvence odesílání dat sestav Azure Backup](./media/backup-azure-configure-reports/reports-data-refresh-cycle.png)
+Po vytvoření pracovního prostoru LA se můžete rozhodnout, že budete uchovávat data po dobu maximálně 2 let. Ve výchozím nastavení uchovává pracovní prostor LA data po dobu 31 dnů.
 
-* Power BI má [naplánovanou aktualizaci jednou denně](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/#what-can-be-refreshed). Můžete provést ruční aktualizaci dat v Power BI balíčku obsahu.
+### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-la-workspace"></a>Budou se po konfiguraci pracovního prostoru LA zobrazovat všechna moje data v sestavách?
 
-### <a name="how-long-can-i-retain-reports"></a>Jak dlouho mohu uchovávat sestavy?
-
-Když nakonfigurujete účet úložiště, můžete pro data sestavy v účtu úložiště vybrat dobu uchování. Postupujte podle kroku 6 v části [Konfigurace účtu úložiště pro sestavy](backup-azure-configure-reports.md#configure-storage-account-for-reports) . Můžete také [analyzovat sestavy v aplikaci Excel](https://powerbi.microsoft.com/documentation/powerbi-service-analyze-in-excel/) a ušetřit je po delší dobu uchovávání podle vašich potřeb.
-
-### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-storage-account"></a>Zobrazí se po konfiguraci účtu úložiště všechna moje data v sestavách?
-
- Všechna data vygenerovaná po nakonfigurování účtu úložiště se odešlou do účtu úložiště a jsou dostupná v sestavách. Probíhající úlohy nejsou nabízeny pro vytváření sestav. Až se úloha dokončí nebo dojde k jejímu výpadku, pošle se do sestav.
-
-### <a name="if-i-already-configured-the-storage-account-to-view-reports-can-i-change-the-configuration-to-use-another-storage-account"></a>Když už mám nakonfigurovaný účet úložiště pro zobrazování sestav, můžu změnit konfiguraci tak, aby používala jiný účet úložiště?
-
-Ano, konfiguraci můžete změnit tak, aby odkazovala na jiný účet úložiště. Při připojování k balíčku obsahu Azure Backup použijte nově nakonfigurovaný účet úložiště. Po nakonfigurování jiného účtu úložiště se taky v tomto účtu úložiště vytvoří nové datové toky. Starší data (před změnou konfigurace) zůstávají stále ve starším účtu úložiště.
+ Všechna data vygenerovaná po konfiguraci nastavení diagnostiky se odešlou do pracovního prostoru LA a jsou dostupná v sestavách. Probíhající úlohy nejsou nabízeny pro vytváření sestav. Až se úloha dokončí nebo dojde k jejímu výpadku, pošle se do sestav.
 
 ### <a name="can-i-view-reports-across-vaults-and-subscriptions"></a>Můžu zobrazit sestavy napříč trezory a předplatnými?
 
-Ano, můžete nakonfigurovat stejný účet úložiště v různých trezorech a zobrazit tak sestavy mezi trezory. Můžete taky nakonfigurovat stejný účet úložiště pro trezory v rámci předplatných. Pak můžete tento účet úložiště použít při připojení k Azure Backup balíčku obsahu v Power BI k zobrazení sestav. Vybraný účet úložiště musí být ve stejné oblasti jako trezor Recovery Services.
+Ano, sestavy můžete zobrazit v rámci trezorů a odběrů i oblastí. Vaše data můžou být uložená v jednom pracovním prostoru LA nebo skupině pracovních prostorů LA.
+
+### <a name="can-i-view-reports-across-tenants"></a>Můžu zobrazit sestavy v klientech?
+
+Pokud jste uživatelem [Azure Lighthouse](https://azure.microsoft.com/services/azure-lighthouse/) , který má delegovaný přístup k pracovním prostorům pro vaše zákazníky nebo k pracovním prostorům La, můžete pomocí sestav zálohování zobrazit data ve všech klientech.
 
 ### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Jak dlouho trvá, než se stav úlohy agenta Azure Backup projeví na portálu?
 
@@ -85,7 +84,7 @@ Ano. V následujících situacích se oznámení neodesílají:
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další Nejčastější dotazy:
+Přečtěte si další nejčastější dotazy:
 
-* [Běžné dotazy](backup-azure-vm-backup-faq.md) k zálohování virtuálních počítačů Azure.
-* [Běžné otázky](backup-azure-file-folder-backup-faq.md) týkající se agenta Azure Backup
+* [Běžné dotazy](backup-azure-vm-backup-faq.md) týkající se zálohování virtuálních počítačů Azure
+* [Běžné dotazy](backup-azure-file-folder-backup-faq.md) týkající se agenta Azure Backup

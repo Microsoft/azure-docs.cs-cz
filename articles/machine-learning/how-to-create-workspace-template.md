@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 6cd450ac18007e31d9d8144fdb0e8554dd31c363
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b8584a77eaf9f8db13c948051c34b18236e2cc1a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75968663"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986372"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -55,6 +55,9 @@ Příklad šablony má dva parametry:
     Šablona bude používat umístění, které jste vybrali pro většinu prostředků. Výjimkou je služba Application Insights, která není dostupná ve všech umístěních, ve kterých jsou jiné služby. Pokud vyberete umístění, kde není k dispozici, bude služba vytvořena v umístění Střed USA – jih.
 
 * **Název pracovního prostoru**, což je popisný název pracovního prostoru Azure Machine Learning.
+
+    > [!NOTE]
+    > V názvu pracovního prostoru se nerozlišují malá a velká písmena.
 
     Názvy ostatních služeb jsou vygenerovány náhodně.
 

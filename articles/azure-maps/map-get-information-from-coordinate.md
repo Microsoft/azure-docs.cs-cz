@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5450ada04a1af44a3fff0402b30540e899cc4dd5
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 0b1ab7b2c233eb1e6e231b0ae7935b6c24363948
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911047"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988528"
 ---
 # <a name="get-information-from-a-coordinate"></a>Získání informací ze souřadnice
 
@@ -27,17 +27,17 @@ Existují dva způsoby, jak provést zpětné vyhledávání v rámci adresy. Je
 <iframe height='500' scrolling='no' title='Získání informací ze souřadnice (modul služby)' src='//codepen.io/azuremaps/embed/ejEYMZ/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se, <a href='https://codepen.io/azuremaps/pen/ejEYMZ/'>jak pero získá informace ze souřadnice (modulu služby)</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Ve výše uvedeném kódu první blok kódu vytvoří objekt mapy a nastaví mechanismus ověřování pro využití přístupového tokenu. Pokyny najdete v tématu [vytvoření mapy](./map-create.md) .
+Ve výše uvedeném kódu vytvoří první blok objekt mapy a nastaví mechanismus ověřování pro použití přístupového tokenu. Pokyny najdete v tématu [vytvoření mapy](./map-create.md) .
 
-Druhý blok kódu vytvoří `TokenCredential` k ověření požadavků HTTP pro Azure Maps pomocí přístupového tokenu. Poté předá `TokenCredential` `atlas.service.MapsURL.newPipeline()` a vytvoří instanci [kanálu](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) . `searchURL` představuje adresu URL pro Azure Maps operace [vyhledávání](https://docs.microsoft.com/rest/api/maps/search) .
+Druhý blok kódu vytvoří `TokenCredential` pro ověření požadavků HTTP pro Azure Maps pomocí přístupového tokenu. Poté předá `TokenCredential` `atlas.service.MapsURL.newPipeline()` a vytvoří instanci [kanálu](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) . `searchURL` představuje adresu URL pro Azure Maps operace [vyhledávání](https://docs.microsoft.com/rest/api/maps/search) .
 
-Třetí blok kódu aktualizuje styl ukazatele myši na ukazatel a vytvoří [Překryvný](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open) objekt. Pokyny najdete [v tématu Přidání místní nabídky na mapě](./map-add-popup.md) .
+Třetí blok kódu aktualizuje styl ukazatele myši na ukazatel a vytvoří [místní](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open) objekt. Pokyny najdete [v tématu Přidání místní nabídky na mapě](./map-add-popup.md) .
 
-Čtvrtý blok kódu přidá [naslouchací proces události](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)kliknutí myší. Když se aktivuje, vytvoří vyhledávací dotaz s souřadnicemi bodu kliknutí. Pak použije metodu [getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-iot-typescript-latest#searchaddressreverse-aborter--geojson-position--searchaddressreverseoptions-) modulu služby k dotazování na [rozhraní API pro zpětné vyhledávání adres](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) pro adresu souřadnic. Kolekce funkcí pro injson z odpovědi se pak extrahuje pomocí metody `geojson.getFeatures()`.
+Čtvrtý blok kódu přidá [naslouchací proces události](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)kliknutí myší. Když se aktivuje, vytvoří vyhledávací dotaz s souřadnicemi bodu kliknutí. Pak použije metodu [getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-iot-typescript-latest#searchaddressreverse-aborter--geojson-position--searchaddressreverseoptions-)pro dotazování rozhraní [Get Search Reverted](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) pro adresu souřadnic. Kolekce funkcí pro injson se pak extrahuje pomocí metody `geojson.getFeatures()` z odpovědi.
 
 Pátý blok kódu nastaví obsah místní nabídky HTML tak, aby zobrazoval adresu odpovědi pro kliknutím na souřadnicovou polohu.
 
-Změna kurzoru, překryvný objekt a událost Click jsou vytvořeny v [naslouchací službě událostí načtení](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) mapy, aby bylo zajištěno, že se mapa kompletně načte před tím, než mohou být načteny informace o souřadnicích.
+Změna kurzoru, překryvný objekt a událost Click jsou vytvořeny v [naslouchací službě událostí načtení](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) mapy, aby bylo zajištěno, že se mapa kompletně načte před načtením informací o souřadnicích.
 
 ## <a name="make-a-reverse-search-request-via-fetch-api"></a>Vytvoření požadavku zpětného vyhledávání přes rozhraní API pro načtení
 
@@ -46,23 +46,23 @@ Klikněte na mapu a pomocí načíst převratte žádost o změnu geografického
 <iframe height='500' scrolling='no' title='Získání informací ze souřadnice' src='//codepen.io/azuremaps/embed/ddXzoB/?height=516&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se, <a href='https://codepen.io/azuremaps/pen/ddXzoB/'>jak pero získá informace od souřadnice</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Ve výše uvedeném kódu první blok kódu vytvoří objekt mapy a nastaví mechanismus ověřování pro využití přístupového tokenu. Pokyny najdete v tématu [vytvoření mapy](./map-create.md) .
+Ve výše uvedeném kódu první blok kódu vytvoří objekt mapy a nastaví mechanismus ověřování pro použití přístupového tokenu. Pokyny najdete v tématu [vytvoření mapy](./map-create.md) .
 
-Druhý blok kódu aktualizuje styl ukazatele myši na ukazatel a [Překryvný](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open) objekt. Pokyny najdete [v tématu Přidání místní nabídky na mapě](./map-add-popup.md) .
+Druhý blok kódu aktualizuje styl ukazatele myši na ukazatel. Vytvoří instanci [překryvného](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open) objektu. Pokyny najdete [v tématu Přidání místní nabídky na mapě](./map-add-popup.md) .
 
-Třetí blok kódu přidá naslouchací proces události pro kliknutí myší. Po kliknutí myší používá [rozhraní API pro načtení](https://fetch.spec.whatwg.org/) k dotazování [Azure Maps rozhraní API pro hledání zpětné adresy](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) pro kliknutí na adresu. Pro úspěšnou odpověď shromažďuje adresu pro kliknutí na umístění a definuje obsah automaticky otevíraného okna a umístění prostřednictvím funkce [setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) místní třídy.
+Třetí blok kódu přidá naslouchací proces události pro kliknutí myší. Kliknete-li na tlačítko myši, používá [rozhraní API načtení](https://fetch.spec.whatwg.org/) k dotazování [Azure Maps rozhraní API pro vyhledávání zpětné adresy](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) pro kliknutí na souřadnicovou adresu. V případě úspěšné odpovědi aplikace shromáždí adresu pro kliknutí na umístění. Slouží k definování obsahu a umístění automaticky otevíraného okna pomocí funkce [setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) místní třídy.
 
-Změna kurzoru, překryvný objekt a událost Click jsou vytvořeny v [naslouchací službě událostí načtení](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) mapy, aby bylo zajištěno, že se mapa kompletně načte před tím, než mohou být načteny informace o souřadnicích.
+Změna kurzoru, překryvný objekt a událost Click jsou vytvořeny v [naslouchací službě událostí načtení](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) mapy, aby bylo zajištěno, že se mapa načte kompletně před tím, než se načtou informace o souřadnicích.
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [Automaticky otevřené okno](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
+> [Oken](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
 
 Úplné příklady kódu najdete v následujících článcích:
 

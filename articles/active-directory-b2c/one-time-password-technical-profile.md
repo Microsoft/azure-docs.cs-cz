@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c50edb03fe849c70596c0bfb3cdc2dafa15f136f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dab35fbcd221af9f4eb587b8c98a8ff85aeef59f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480200"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982785"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Definování technického profilu s jednorázovým heslem v Azure AD B2C vlastní zásady
 
@@ -77,6 +77,7 @@ Následující nastavení lze použít ke konfiguraci generování a údržby k�
 | CodeLength | Ne | Délka kódu. Výchozí hodnota je `6`. |
 | CharacterSet | Ne | Znaková sada pro kód formátovaný pro použití v regulárním výrazu. Například, `a-z0-9A-Z`. Výchozí hodnota je `0-9`. Znaková sada musí obsahovat minimálně 10 různých znaků v zadané sadě. |
 | NumRetryAttempts | Ne | Počet pokusů o ověření před kódem, který je považován za neplatný. Výchozí hodnota je `5`. |
+| Operace | Ano | Operace, která má být provedena. Možné hodnoty: `GenerateCode`nebo `VerifyCode`. |
 | ReuseSameCode | Ne | Bez ohledu na to, zda by měl být uveden duplicitní kód namísto generování nového kódu, pokud uplynula platnost daného kódu a je stále platný. Výchozí hodnota je `false`. |
 
 ### <a name="returning-error-message"></a>Vracení chybové zprávy

@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 285b3608bc57d88ca2e81ed14355923436ed9d8d
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: f0e7c3bbbdcd1edad24422163fde38e3fdce7e27
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028510"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988647"
 ---
 # <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Úvod k přírůstkové obohacení a ukládání do mezipaměti v Azure Kognitivní hledání
 
@@ -97,7 +97,7 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 
 Účelem mezipaměti je vyhnout se zbytečnému zpracování, ale Předpokládejme, že provedete změnu dovednosti, kterou indexer nedetekuje (například změna nějakého externího kódu, jako je třeba vlastní dovednost).
 
-V takovém případě můžete použít [dovednost obnovení](preview-api-resetskills.md) k vynucení přepracování konkrétní dovednosti, včetně všech dovedností, které jsou závislé na výstupu této dovednosti. Toto rozhraní API přijme požadavek POST se seznamem dovedností, které by měly být neověřené a označené k novému zpracování. Po resetování dovedností spusťte indexer k vyvolání kanálu.
+V takovém případě můžete použít [dovednost obnovení](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills) k vynucení přepracování konkrétní dovednosti, včetně všech dovedností, které jsou závislé na výstupu této dovednosti. Toto rozhraní API přijme požadavek POST se seznamem dovedností, které by měly být neověřené a označené k novému zpracování. Po resetování dovedností spusťte indexer k vyvolání kanálu.
 
 ## <a name="change-detection"></a>Zjišťování změn
 
@@ -136,39 +136,27 @@ Přírůstkové zpracování vyhodnocuje vaši definici dovednosti a určuje, kt
 * Změny v projekcích ve znalostní bázi Store mají za následek reprojekci dokumentů.
 * Mapování polí výstupu změněné u indexeru má za následek reprodukci dokumentů do indexu.
 
-## <a name="api-reference-content-for-incremental-enrichment"></a>Referenční obsah rozhraní API pro přírůstkové obohacení
+## <a name="api-reference"></a>Referenční materiály k rozhraním API
 
-REST `api-version=2019-05-06-Preview` poskytuje rozhraní API pro přírůstkové obohacení s dodatky k indexerům, dovednosti a zdroji dat. [Oficiální Referenční dokumentace](https://docs.microsoft.com/rest/api/searchservice/) je pro všeobecně dostupná rozhraní API a nezabývá se funkcemi verze Preview. V následující části najdete referenční obsah pro ovlivněná rozhraní API.
+REST API verze `2019-05-06-Preview` poskytuje přírůstkové rozšíření prostřednictvím dalších vlastností indexerů, dovednosti a zdrojů dat. Kromě referenční dokumentace najdete další informace o volání rozhraní API v tématu [Konfigurace ukládání do mezipaměti pro přírůstkové obohacení](search-howto-incremental-index.md) .
 
-Informace o využití a příklady najdete v v [konfiguraci ukládání do mezipaměti pro přírůstkové obohacení](search-howto-incremental-index.md).
++ [Create indexer (API-Version = 2019-05 -06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer) 
 
-### <a name="indexers"></a>Indexovací moduly
++ [Aktualizace indexeru (API-Version = 2019-05 -06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-indexer) 
 
-[Vytvoření indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer) a [aktualizace indexeru](https://docs.microsoft.com/rest/api/searchservice/update-indexer) teď budou zveřejňovat nové vlastnosti týkající se mezipaměti:
++ [Update dovednosti (API-Version = 2019-05 -06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) (nový parametr URI na žádosti)
 
-+ `StorageAccountConnectionString`: připojovací řetězec k účtu úložiště, který se použije k ukládání mezilehlých výsledků do mezipaměti.
++ [Resetování dovedností (API-Version = 2019-05 -06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills)
 
-+ `EnableReprocessing`: ve výchozím nastavení se nastaví na `true`, když se nastaví na `false`, dokumenty se budou do mezipaměti zapisovat, ale žádné existující dokumenty se nebudou znovu zpracovávat na základě dat mezipaměti.
++ Indexery databází (Azure SQL, Cosmos DB). Některé indexery načítají data prostřednictvím dotazů. U dotazů, které načítají data, [aktualizuje zdroj dat](https://docs.microsoft.com/rest/api/searchservice/update-data-source) v žádosti **ignoreResetRequirement**nový parametr, který by měl být nastaven na hodnotu `true`, pokud by vaše akce aktualizace neměla zrušit platnost mezipaměti. 
 
-+ `ID` (jen pro čtení): `ID` je identifikátor kontejneru v rámci `annotationCache` účtu úložiště, který se použije jako mezipaměť pro tento indexer. Tato mezipaměť bude pro tohoto indexer jedinečná a pokud se indexer odstraní a znovu vytvoří se stejným názvem, `ID` se znovu vygeneruje. `ID` nelze nastavit, je vždy vygenerována službou.
-
-### <a name="skillsets"></a>Sady dovedností
-
-+ [Aktualizace dovednosti](https://docs.microsoft.com/rest/api/searchservice/update-skillset) podporuje nový parametr v požadavku: `disableCacheReprocessingChangeDetection`, který by měl být nastaven na hodnotu `true`, pokud chcete, aby na základě aktuální akce nebyly žádné aktualizace stávajících dokumentů.
-
-+ [Resetování dovedností](preview-api-resetskills.md) je nová operace, která se používá k devalidaci dovednosti.
-
-### <a name="datasources"></a>Zdroje dat
-
-+ Některé indexery načítají data prostřednictvím dotazů. U dotazů, které načítají data, [aktualizuje zdroj dat](https://docs.microsoft.com/rest/api/searchservice/update-data-source) v `ignoreResetRequirement`žádosti nový parametr, který by měl být nastaven na hodnotu `true`, pokud by vaše akce aktualizace neměla mít za následek zrušení platnosti mezipaměti.
-
-`ignoreResetRequirement` můžete použít zřídka, protože by mohlo vést k nezamýšlené nekonzistenci vašich dat, která se nezjistí snadno.
+  **IgnoreResetRequirement** můžete použít zřídka, protože by mohlo vést k nezamýšlené nekonzistenci vašich dat, která se nezjistí snadno.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přírůstkové obohacení je výkonná funkce, která rozšiřuje sledování změn na rozšíření dovednosti a AI. Jak je to dovednosti, přírůstkové rozšíření zajišťuje co nejmenší možné práci a přitom stále chrání vaše dokumenty v konečném důsledku konzistence.
+Přírůstkové obohacení je výkonná funkce, která rozšiřuje sledování změn na rozšíření dovednosti a AI. Rozšíření AIncremental umožňuje opakované použití existujícího zpracovávaného obsahu při iteraci během návrhu dovednosti.
 
-Začněte přidáním mezipaměti do stávajícího indexeru nebo při definování nového indexeru přidejte mezipaměť.
+V dalším kroku Povolte ukládání do mezipaměti pro existující indexer nebo přidání mezipaměti při definování nového indexeru.
 
 > [!div class="nextstepaction"]
 > [Konfigurace ukládání do mezipaměti pro přírůstkové obohacení](search-howto-incremental-index.md)

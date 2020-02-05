@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 10/02/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 60c1109d0f540c8301cc536c2079537dca5115f4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1e206d9a1b14fc8ff1b92e4eb7217824d81212cf
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435014"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990105"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Správa IoT Central z Azure Portal
 
@@ -50,7 +50,6 @@ Můžete vytvořit aplikaci IoT Central s všeobecně dostupnými funkcemi, a to
 > [!NOTE]
 > Šablony aplikace ve verzi Preview jsou v tuto chvíli dostupné jenom v oblastech **Evropa** a **USA** .
 
-![Portál pro správu: vytvoření prostředku IoT Central](media/howto-manage-iot-central-from-portal/image1a.png)  
 
 Po vyplnění všech polí vyberte **vytvořit**.
 
@@ -59,7 +58,7 @@ Po vyplnění všech polí vyberte **vytvořit**.
 Pokud už máte aplikaci Azure IoT Central, můžete ji odstranit nebo ji přesunout do jiného předplatného nebo skupiny prostředků v Azure Portal.
 
 > [!NOTE]
-> V Azure Portal neuvidíte zkušební aplikace, protože nejsou přidružené k vašemu předplatnému.
+> V Azure Portal neuvidíte aplikace vytvořené v cenovém plánu zdarma, protože nejsou přidružené k vašemu předplatnému.
 
 Začněte tím, že vyberete **všechny prostředky** v hlavním podokně vlevo. Pomocí vyhledávacího pole zadejte název vaší aplikace, abyste ho našli v seznamu prostředků. Pak vyberte aplikaci IoT Central, kterou chcete spravovat.
 

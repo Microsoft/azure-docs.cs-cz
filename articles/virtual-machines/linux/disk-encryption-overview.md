@@ -7,16 +7,16 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: f78ef583a58b8a51276823a2a4730540b6735bb0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 96ac1becfed74141b3b1544646f5d82bd0985045
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896359"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988416"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption pro virtuální počítače se systémem Linux 
 
-Azure Disk Encryption přispívá k zabezpečení a ochraně vašich dat, aby byly splněny závazky organizace související se zabezpečením a dodržováním předpisů. Používá funkci [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) systému Linux k poskytování šifrování svazku pro operační systém a datové disky virtuálních počítačů Azure a je integrována s [Azure Key Vault](../../key-vault/index.yml) , která vám pomůžou řídit a spravovat klíče šifrování disku a tajné kódy. 
+Azure Disk Encryption pomáhá chránit a chránit vaše data, aby splňovala závazky zabezpečení vaší organizace a dodržování předpisů. Používá funkci [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) systému Linux k poskytování šifrování svazku pro operační systém a datové disky virtuálních počítačů Azure a je integrována s [Azure Key Vault](../../key-vault/index.yml) , která vám pomůžou řídit a spravovat klíče šifrování disku a tajné kódy. 
 
 Pokud používáte [Azure Security Center](../../security-center/index.yml), budete upozorněni v případě, že máte virtuální počítače, které nejsou šifrované. Zobrazit výstrahy jako vysokou závažností a doporučuje se pro šifrování tyto virtuální počítače.
 
@@ -53,21 +53,21 @@ Azure Disk Encryption je podporovaná u podmnožiny [distribucí systému Linux 
 
 Distribuce serverů pro Linux, které nejsou schváleny v Azure, nepodporují Azure Disk Encryption; z těch, které jsou schváleny, podporuje pouze následující distribuce a verze Azure Disk Encryption:
 
-| Linuxové distribuce | Verze | Typ svazku podporovaný pro šifrování|
+| Linuxové distribuce | Version | Typ svazku podporovaný pro šifrování|
 | --- | --- |--- |
 | Ubuntu | 18,04| Disk operačního systému a dat |
 | Ubuntu | 16.04| Disk operačního systému a dat |
 | Ubuntu | 14.04.5</br>[s vyladěným jádrem Azure se aktualizovala na 4,15 nebo novější.](disk-encryption-troubleshooting.md) | Disk operačního systému a dat |
-| RHEL | 7.7 | Operační systém a datový disk (viz poznámka níže) |
-| RHEL | 7.6 | Operační systém a datový disk (viz poznámka níže) |
+| RHEL | 7,7 | Operační systém a datový disk (viz poznámka níže) |
+| RHEL | 7,6 | Operační systém a datový disk (viz poznámka níže) |
 | RHEL | 7.5 | Operační systém a datový disk (viz poznámka níže) |
 | RHEL | 7.4 | Operační systém a datový disk (viz poznámka níže) |
 | RHEL | 7.3 | Operační systém a datový disk (viz poznámka níže) |
 | RHEL | 7.2 | Operační systém a datový disk (viz poznámka níže) |
 | RHEL | 6.8 | Datový disk (viz poznámka níže) |
 | RHEL | 6.7 | Datový disk (viz poznámka níže) |
-| CentOS | 7.7 | Disk operačního systému a dat |
-| CentOS | 7.6 | Disk operačního systému a dat |
+| CentOS | 7,7 | Disk operačního systému a dat |
+| CentOS | 7,6 | Disk operačního systému a dat |
 | CentOS | 7.5 | Disk operačního systému a dat |
 | CentOS | 7.4 | Disk operačního systému a dat |
 | CentOS | 7.3 | Disk operačního systému a dat |
@@ -78,7 +78,9 @@ Distribuce serverů pro Linux, které nejsou schváleny v Azure, nepodporují Az
 | SLES | 12-SP3 | Datový disk |
 
 > [!NOTE]
-> Nová implementace ADE je podporovaná pro RHEL operační systém a datový disk pro Image RHEL7 s průběžnými platbami. ADE se v současné době nepodporuje pro image RHEL s využitím vlastních předplatných (BYOS). 
+> Nová implementace Azure Disk Encryption je podporovaná pro RHEL operační systém a datový disk pro Image RHEL7 s průběžnými platbami.  
+>
+> ADE se podporuje taky pro zlaté RHELy s využitím vlastního předplatného, ale až **po** registraci předplatného. Další informace najdete v tématu [Red Hat Enterprise Linux na základě vlastních předplatných Gold v Azure](../workloads/redhat/byos.md##encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images) .
 
 ## <a name="additional-vm-requirements"></a>Další požadavky na virtuální počítače
 

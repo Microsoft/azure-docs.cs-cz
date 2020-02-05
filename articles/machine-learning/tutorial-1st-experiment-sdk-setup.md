@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/25/2019
-ms.openlocfilehash: 84fa6b1d7f48ac7aea44e693a7df8945ba180d29
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 125cde85d3caa6fd1a33045e85c5383f83a669bf
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658640"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982530"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Kurz: Začínáme s vytvářením prvního experimentu ML pomocí sady Python SDK
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -101,7 +101,7 @@ Dokončili jste následující postup experimentování a spouštění v sadě A
 Pokud máte vlastní widgety nebo dáváte přednost použití Jupyter/JupyterLab, vyberte rozevírací nabídku **Jupyter** úplně vpravo a potom vyberte **Jupyter** nebo **JupyterLab**. Otevře se nové okno prohlížeče.
 
 > [!NOTE]
-> Výpočetní instance (Preview) jsou v tuto chvíli dostupné jenom pro pracovní prostory s oblastí **střed USA – sever** nebo **Velká Británie – jih**, která už brzy podporuje další oblasti.
+> Výpočetní instance (Preview) jsou v tuto chvíli dostupné jenom pro pracovní prostory s oblastí **střed USA – sever**, **východní USA 2**, **Severní Evropa** nebo **Velká Británie – jih**. Podpora dalších oblastí už brzy bude dostupná.
 >Pokud je váš pracovní prostor v jakékoli jiné oblasti, můžete místo toho vytvořit a použít [virtuální počítač s poznámkovým blokem](concept-compute-instance.md#notebookvm) .  Ke spuštění poznámkového bloku můžete použít buď virtuální počítač s poznámkovým blokem, nebo instanci služby Compute. Virtuální počítač bude pokračovat v běhu a bude mít náklady, dokud ho nezastavíte. Můžete ji zastavit ručně z karty **COMPUTE** v nástroji Studio nebo v [příspěvku blogu](https://techcommunity.microsoft.com/t5/educator-developer-blog/azure-virtual-machine-auto-shutdown/ba-p/379342) při povolování automatického vypínání virtuálních počítačů Azure.
 
 ## <a name="next-steps"></a>Další kroky

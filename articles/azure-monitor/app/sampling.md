@@ -9,12 +9,12 @@ ms.author: mbullwin
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c851978ea1b5af3006f1835f022c30aa7e7128f7
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9fda3bb0188a2030572ee686ff5a942aca61ea36
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899077"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989973"
 ---
 # <a name="sampling-in-application-insights"></a>Vzorkování ve službě Application Insights
 
@@ -347,12 +347,13 @@ Typy telemetrie, které lze zahrnout nebo vyloučit z vzorkování, jsou: `Depen
 
 ### <a name="configuring-fixed-rate-sampling-for-opencensus-python-applications"></a>Konfigurace vzorkování s pevnou sazbou pro aplikace OpenCensus v Pythonu
 
-1. Instrumentujte svoji aplikaci pomocí nejnovějšího [OpenCensus Azure monitor vývozců](../../azure-monitor/app/opencensus-python.md).
+Instrumentujte svoji aplikaci pomocí nejnovějšího [OpenCensus Azure monitor vývozců](../../azure-monitor/app/opencensus-python.md).
 
 > [!NOTE]
-> Vzorkování s pevnou sazbou je k dispozici pouze pomocí exportéra sledování. To znamená, že příchozí a odchozí požadavky jsou jediné typy telemetrie, ve kterých je možné nakonfigurovat vzorkování.
+> Vzorkování s pevnou sazbou není pro exportéra metrik k dispozici. To znamená, že vlastní metriky jsou jediné typy telemetrie, ve kterých nelze nakonfigurovat vzorkování. Exportér metrik pošle veškerou telemetrii, kterou sleduje.
 
-2. V rámci konfigurace `Tracer` můžete zadat vzorkovník `sampler`. Pokud není zadaný žádný explicitní vzorkovník, použije se ve výchozím nastavení `ProbabilitySampler`. `ProbabilitySampler` by ve výchozím nastavení použila sazbu 1/10000, což znamená, že se do Application Insights pošle jeden z každých 10000 požadavků. Informace o zadání vzorkovací frekvence najdete níže.
+#### <a name="fixed-rate-sampling-for-tracing"></a>Vzorkování s pevnou sazbou pro trasování ####
+V rámci konfigurace `Tracer` můžete zadat vzorkovník `sampler`. Pokud není zadaný žádný explicitní vzorkovník, použije se ve výchozím nastavení `ProbabilitySampler`. `ProbabilitySampler` by ve výchozím nastavení použila sazbu 1/10000, což znamená, že se do Application Insights pošle jeden z každých 10000 požadavků. Informace o zadání vzorkovací frekvence najdete níže.
 
 Pokud chcete určit vzorkovací frekvenci, ujistěte se, že `Tracer` určuje vzorkovník s vzorkovací frekvencí mezi 0,0 a 1,0 včetně. Vzorkovací frekvence 1,0 představuje 100%, což znamená, že všechny vaše požadavky budou odeslány jako telemetrie do Application Insights.
 
@@ -362,6 +363,16 @@ tracer = Tracer(
         instrumentation_key='00000000-0000-0000-0000-000000000000',
     ),
     sampler=ProbabilitySampler(1.0),
+)
+```
+
+#### <a name="fixed-rate-sampling-for-logs"></a>Vzorkování s pevnou sazbou pro protokoly ####
+Vzorkování s pevnou sazbou můžete nakonfigurovat pro `AzureLogHandler` úpravou volitelného argumentu `logging_sampling_rate`. Pokud není zadán žádný argument, bude použita vzorkovací frekvence 1,0. Vzorkovací frekvence 1,0 představuje 100%, což znamená, že všechny vaše požadavky budou odeslány jako telemetrie do Application Insights.
+
+```python
+exporter = metrics_exporter.new_metrics_exporter(
+    instrumentation_key='00000000-0000-0000-0000-000000000000',
+    logging_sampling_rate=0.5,
 )
 ```
 

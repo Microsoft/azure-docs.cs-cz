@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
-ms.date: 01/27/2020
+ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: a1263ecacc2af0559c726fb12c799d0e6d2f1014
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: dce7db9fc508c70d79be62a7e97b3bf52a316b22
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543337"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983694"
 ---
 # <a name="track-models-metrics-with-mlflow-and-azure-machine-learning-preview"></a>Sledování metrik modelů pomocí MLflow a Azure Machine Learning (Preview)
 
@@ -108,7 +108,7 @@ MLflow sledování pomocí Azure Machine Learning umožňuje ukládat protokolov
 
 Vzdálené spuštění vám umožní naučit vaše modely s výkonnějšími výpočetními prostředky, jako jsou virtuální počítače s podporou GPU nebo Výpočetní prostředky služby Machine Learning clustery. Další informace o různých možnostech výpočtů najdete v tématu [nastavení cílových výpočetních prostředků pro školení modelů](how-to-set-up-training-targets.md) .
 
-Nakonfigurujte prostředí COMPUTE a školicích programů pomocí třídy [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) . Do oddílu [`CondaDependencies`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py) prostředí zahrnout balíčky `mlflow` a `azure-contrib-run` PIP. Pak vytvořte [`ScriptRunConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py) s využitím vzdáleného COMPUTE jako cíle výpočtů.
+Nakonfigurujte prostředí COMPUTE a školicích programů pomocí třídy [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) . Do oddílu [`CondaDependencies`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py) prostředí zahrnout balíčky `mlflow` a `azureml-mlflow` PIP. Pak vytvořte [`ScriptRunConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py) s využitím vzdáleného COMPUTE jako cíle výpočtů.
 
 ```Python
 from azureml.core.environment import Environment
@@ -120,7 +120,7 @@ exp = Experiment(workspace = 'my_workspace',
 
 mlflow_env = Environment(name='mlflow-env')
 
-cd = CondaDependencies.create(pip_packages=['mlflow', 'azureml-contrib-run'])
+cd = CondaDependencies.create(pip_packages=['mlflow', 'azureml-mlflow'])
 
 mlflow_env.python.conda_dependencies = cd
 

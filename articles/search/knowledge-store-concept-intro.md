@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 9a6fa62384615f60da88bb41da8ad3538d34e62a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: b330b6176ba9cadc85fad81876caf2583021d503
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754111"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988630"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Seznámení s znalostními obchody v Azure Kognitivní hledání
 
@@ -133,147 +133,11 @@ Jakmile rozšíření existují v úložišti, můžete použít jakýkoli nást
 
 ## <a name="api-reference"></a>Referenční materiály k rozhraním API
 
-Tato část je verze referenčního dokumentu [Create dovednosti (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-skillset) , která se změnila tak, aby zahrnovala `knowledgeStore` definici. 
+REST API verze `2019-05-06-Preview` poskytuje znalostní bázi s dalšími definicemi na dovednosti. Kromě odkazu najdete informace o tom, jak volat rozhraní API, v tématu [Vytvoření úložiště znalostí pomocí služby post](knowledge-store-create-rest.md) .
 
-### <a name="example---knowledgestore-embedded-in-a-skillset"></a>Příklad – knowledgeStore vložený do dovednosti
++ [Create dovednosti (API-Version = 2019-05 -06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-skillset) 
++ [Update dovednosti (rozhraní API-Version = 2019-05 -06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) 
 
-Následující příklad ukazuje `knowledgeStore` v dolní části definice dovednosti. 
-
-* Pro formulaci žádosti použijte **post** nebo **Put** .
-* K získání přístupu k funkcím úložiště znalostí použijte `api-version=2019-05-06-Preview` verzi REST API. 
-
-```http
-POST https://[servicename].search.windows.net/skillsets?api-version=2019-05-06-Preview
-api-key: [admin key]
-Content-Type: application/json
-```
-
-Text požadavku je dokument JSON, který definuje dovednosti, který obsahuje `knowledgeStore`.
-
-```json
-{
-  "name": "my-skillset-name",
-  "description": "Extract organization entities and generate a positive-negative sentiment score from each document.",
-  "skills":
-  [
-    {
-      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
-      "categories": [ "Organization" ],
-      "defaultLanguageCode": "en",
-      "inputs": [
-        {
-          "name": "text",
-          "source": "/document/content"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "organizations",
-          "targetName": "organizations"
-        }
-      ]
-    },
-    {
-      "@odata.type": "#Microsoft.Skills.Text.SentimentSkill",
-      "inputs": [
-        {
-          "name": "text",
-          "source": "/document/content"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "score",
-          "targetName": "mySentiment"
-        }
-      ]
-    },
-  ],
-  "cognitiveServices": 
-    {
-    "@odata.type": "#Microsoft.Azure.Search.CognitiveServicesByKey",
-    "description": "mycogsvcs resource in West US 2",
-    "key": "<YOUR-COGNITIVE-SERVICES-KEY>"
-    },
-    "knowledgeStore": { 
-        "storageConnectionString": "<YOUR-AZURE-STORAGE-ACCOUNT-CONNECTION-STRING>", 
-        "projections": [ 
-            { 
-                "tables": [  
-                { "tableName": "Organizations", "generatedKeyName": "OrganizationId", "source": "/document/organizations*"}, 
-                { "tableName": "Sentiment", "generatedKeyName": "SentimentId", "source": "/document/mySentiment"}
-                ], 
-                "objects": [ ], 
-                "files": [  ]       
-            }    
-        ]     
-    } 
-}
-```
-
-### <a name="request-body-syntax"></a>Syntaxe textu žádosti  
-
-Následující JSON určuje `knowledgeStore`, který je součástí [`skillset`](https://docs.microsoft.com/rest/api/searchservice/create-skillset), který je vyvolán `indexer` (nezobrazený). Pokud jste již obeznámeni s rozšířením AI, určuje dovednosti složení obohaceného dokumentu. Dovednosti musí obsahovat alespoň jednu dovednost, pravděpodobně Shaperou dovednost, pokud pracujete se strukturou dat.
-
-Syntaxe pro strukturování datové části požadavku je následující.
-
-```json
-{   
-    "name" : "Required for POST, optional for PUT requests which sets the name on the URI",  
-    "description" : "Optional. Anything you want, or null",  
-    "skills" : "Required. An array of skills. Each skill has an odata.type, name, input and output parameters",
-    "cognitiveServices": "A key to Cognitive Services, used for billing.",
-    "knowledgeStore": { 
-        "storageConnectionString": "<YOUR-AZURE-STORAGE-ACCOUNT-CONNECTION-STRING>", 
-        "projections": [ 
-            { 
-                "tables": [ 
-                    { "tableName": "<NAME>", "generatedKeyName": "<FIELD-NAME>", "source": "<DOCUMENT-PATH>" },
-                    { "tableName": "<NAME>", "generatedKeyName": "<FIELD-NAME>", "source": "<DOCUMENT-PATH>" },
-                    . . .
-                ], 
-                "objects": [ 
-                    {
-                    "storageContainer": "<BLOB-CONTAINER-NAME>", 
-                    "source": "<DOCUMENT-PATH>", 
-                    }
-                ], 
-                "files": [ 
-                    {
-                    "storageContainer": "<BLOB-CONTAINER-NAME>",
-                    "source": "/document/normalized_images/*"
-                    }
-                ]  
-            },
-            {
-                "tables": [ ],
-                "objects": [ ],
-                "files":  [ ]
-            }  
-        ]     
-    } 
-}
-```
-
-`knowledgeStore` má dvě vlastnosti: `storageConnectionString` pro Azure Storage účet a `projections` definující fyzické úložiště. Můžete použít libovolný účet úložiště, ale je cenově výhodné použít služby ve stejné oblasti.
-
-Kolekce `projections` obsahuje objekty projekce. Každý objekt projekce musí mít `tables`, `objects``files` (jedna z nich), které jsou buď zadány, nebo null. Syntaxe uvedená výše ukazuje dva objekty, jeden úplně zadaný a druhý plně null. V rámci objektu projekce, jakmile je vyjádřen v úložišti, jsou zachovány všechny relace mezi daty, pokud byly zjištěny. 
-
-Vytvořte tolik objektů projekce, kolik potřebujete k podpoře izolaci a specifických scénářů (například datové struktury používané pro zkoumání, oproti tomu, které jsou potřeba v rámci úlohy datové vědy). Můžete získat izolaci a přizpůsobení pro konkrétní scénáře nastavením `source` a `storageContainer` nebo `table` na různé hodnoty v rámci objektu. Další informace a příklady najdete v tématu [práce s projekcemi ve znalostní bázi Knowledge Store](knowledge-store-projection-overview.md).
-
-|Vlastnost      | Platí pro | Popis|  
-|--------------|------------|------------|  
-|`storageConnectionString`| `knowledgeStore` | Povinná hodnota. V tomto formátu: `DefaultEndpointsProtocol=https;AccountName=<ACCOUNT-NAME>;AccountKey=<ACCOUNT-KEY>;EndpointSuffix=core.windows.net`|  
-|`projections`| `knowledgeStore` | Povinná hodnota. Kolekce objektů vlastností sestávající z `tables`, `objects`, `files` a jejich odpovídajících vlastností. Nepoužívané projekce lze nastavit na hodnotu null.|  
-|`source`| Všechny projekce| Cesta k uzlu stromu obohacení, který je kořenem projekce. Tento uzel je výstupem jakékoli dovednosti v dovednosti. Cesty začínají `/document/`, představující obohacený dokument, ale lze ho rozšířit na `/document/content/` nebo na uzly v rámci stromu dokumentu. Příklady: `/document/countries/*` (všechny země) nebo `/document/countries/*/states/*` (všechny stavy ve všech zemích). Další informace o cestách k dokumentům najdete v tématu [Koncepty a kompozice dovednosti](cognitive-search-working-with-skillsets.md).|
-|`tableName`| `tables`| Tabulka, která se má vytvořit v úložišti tabulek v Azure |
-|`storageContainer`| `objects`, `files`| Název kontejneru, který se má vytvořit ve službě Azure Blob Storage. |
-|`generatedKeyName`| `tables`| Sloupec vytvořený v tabulce, který jednoznačně identifikuje dokument. Kanál pro obohacení vyplní tento sloupec generovanými hodnotami.|
-
-
-### <a name="response"></a>Odpověď  
-
- V případě úspěšné žádosti by se měl zobrazit stavový kód "201 vytvořeno". Ve výchozím nastavení text odpovědi bude obsahovat JSON pro definici dovednosti, která byla vytvořena. Vyvolejte, že znalostní databáze není vytvořená, dokud nevrátíte indexer, který na tento dovednosti odkazuje.
 
 ## <a name="next-steps"></a>Další kroky
 

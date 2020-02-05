@@ -3,12 +3,12 @@ title: Změnit nastavení clusteru Azure Service Fabric
 description: Tento článek popisuje nastavení prostředků infrastruktury a zásady upgradu prostředků infrastruktury, které můžete přizpůsobit.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 284e8ad566192f027d466ad08d66c2fc5265381d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f42cfd1b41ab463c3c3042987b5d0a0b3b00f67e
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905201"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986185"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Přizpůsobení Service Fabricho nastavení clusteru
 Tento článek popisuje různá nastavení prostředků infrastruktury pro váš Service Fabric cluster, který můžete přizpůsobit. Pro clustery hostované v Azure můžete nastavení přizpůsobit prostřednictvím [Azure Portal](https://portal.azure.com) nebo pomocí Azure Resource Manager šablony. Další informace najdete v tématu [Upgrade konfigurace clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). U samostatných clusterů můžete upravit nastavení aktualizací souboru *ClusterConfig. JSON* a provést upgrade konfigurace v clusteru. Další informace najdete v tématu [Upgrade konfigurace samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -831,7 +831,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
 |ContainerNetworkName|řetězec, výchozí hodnota je ""| Statický |Název sítě, který se má použít při nastavování sítě kontejneru|
-|ContainerNetworkSetup|logická hodnota, výchozí hodnota je FALSE.| Statický |Určuje, zda se má nastavit síť kontejneru.|
+|ContainerNetworkSetup|bool, výchozí hodnota je FALSE (Linux) a výchozí hodnota je TRUE (Windows).| Statický |Určuje, zda se má nastavit síť kontejneru.|
 |FabricDataRoot |Řetězec | Nepovolené |Service Fabric adresář data root. Výchozí hodnota pro Azure je d:\svcfab |
 |FabricLogRoot |Řetězec | Nepovolené |Kořenový adresář protokolu Service Fabric. To je místo, kde jsou umístěny záznamy a záznamy SF. |
 |NodesToBeRemoved|řetězec, výchozí hodnota je ""| Dynamický |Uzly, které by měly být odebrány jako součást upgradu konfigurace. (Jenom pro samostatná nasazení)|

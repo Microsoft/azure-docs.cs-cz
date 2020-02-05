@@ -9,21 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 36914240caf3c1321dfa0102bd87cb29173f8b1d
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: f01e07ea2bbfd0f6b3b0cc19dd219d71984a0d45
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911053"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988562"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map"></a>Přidání vrstvy vysunutí mnohoúhelníku na mapu
 
-V tomto článku se dozvíte, jak použít vrstvu vysunutí mnohoúhelníku k vykreslení oblastí `Polygon` a `MultiPolygon` funkcí geometrií jako vytlačené obrazce na mapě. Sada Azure Maps Web SDK také podporuje vytváření geometrií kroužků, jak je definováno v [rozšířeném schématu pro stanovení biojson](extend-geojson.md#circle). Tyto kružnice jsou transformované na mnohoúhelníky při vykreslování na mapě. Všechny funkce geometrií je také možné snadno aktualizovat, pokud jsou zabaleny pomocí nástroje [Atlas. Třída Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest)
-
+V tomto článku se dozvíte, jak použít vrstvu vysunutí mnohoúhelníku k vykreslení oblastí `Polygon` a `MultiPolygon` funkcí geometrií jako vytlačené obrazce. Sada Azure Maps Web SDK podporuje vykreslování geometrií kroužků, jak je definováno v [rozšířeném schématu](extend-geojson.md#circle)pro zobrazení. JSON. Tyto kroužky je možné transformovat na mnohoúhelníky při vykreslování na mapě. Všechny funkce geometrií se můžou snadno aktualizovat při zabalení pomocí nástroje [Atlas. Třída Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest)
 
 ## <a name="use-a-polygon-extrusion-layer"></a>Použití vrstvy vysunutí mnohoúhelníku
 
-Když je [vrstva vysunutí mnohoúhelníku](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer?view=azure-maps-typescript-latest) připojena ke zdroji dat a načtena na mapě, vykresluje oblasti `Polygon` a `MultiPolygon` funkcí jako vytlačené obrazce. Vlastnosti `height` a `base` vrstvy vysunutí mnohoúhelníku definují základní vzdálenost od základu a výšky vytlačeného obrazce v **měřičích**. Následující kód ukazuje, jak vytvořit mnohoúhelník, přidat ho do zdroje dat a vykreslit pomocí třídy vrstev vytlačení mnohoúhelníku.
+Připojte [vrstvu vysunutí mnohoúhelníku](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer?view=azure-maps-typescript-latest) ke zdroji dat. Pak ho načtete na mapě. Vrstva vysunutí mnohoúhelníku vykresluje oblasti `Polygon` a `MultiPolygon` funkcí jako vytlačené obrazce. Vlastnosti `height` a `base` vrstvy vysunutí mnohoúhelníku definují základní vzdálenost od základu a výšky vytlačeného obrazce v **měřičích**. Následující kód ukazuje, jak vytvořit mnohoúhelník, přidat ho do zdroje dat a vykreslit pomocí třídy vrstev vytlačení mnohoúhelníku.
 
 > [!Note]
 > Hodnota `base` definovaná ve vrstvě vytlačení mnohoúhelníku by měla být menší nebo rovna hodnotě `height`.
@@ -34,9 +33,9 @@ Když je [vrstva vysunutí mnohoúhelníku](https://docs.microsoft.com/javascrip
 Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/wvvBpvE'>vytlačený mnohoúhelník</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.</iframe>
 
 
-## <a name="add-data-driven-multipolygons"></a>Přidat data řízená více mnohoúhelníků
+## <a name="add-data-driven-polygons"></a>Přidat mnohoúhelníky řízené daty
 
-Mapu kartogramy lze vykreslit pomocí vrstvy vysunutí mnohoúhelníku, když nastavíte její `height` a vlastnosti `fillColor` v poměru k měření statistické proměnné v `Polygon` a `MultiPolygon` funkce geometrií. Následující ukázka kódu ukazuje vytlačenou mapu kartogramyu U. S na základě měření hustoty populace podle stavu.
+Mapu kartogramy lze vykreslit pomocí vrstvy vysunutí mnohoúhelníku. Nastavte `height` a vlastnosti `fillColor` vrstvy vytlačení na měření statistické proměnné v `Polygon` a `MultiPolygon` funkcí geometrií. Následující ukázka kódu ukazuje vytlačenou mapu kartogramyu U. S na základě měření hustoty populace podle stavu.
 
 <br/>
 
@@ -62,7 +61,7 @@ Azure Maps používá rozšířenou verzi schématu injson, která poskytuje def
 } 
 ```
 
-Azure Maps webová sada SDK převede tyto `Point` funkce na `Polygon` funkce v digestoři a lze je vykreslit na mapě pomocí vrstvy vytlačení mnohoúhelníku, jak je znázorněno v následujícím příkladu kódu.
+Azure Maps webová sada SDK převede tyto `Point` funkce na `Polygon` funkce v digestoři. Tyto funkce `Point` lze na mapě vykreslovat pomocí vrstvy vytlačení mnohoúhelníku, jak je znázorněno v následujícím příkladu kódu.
 
 <br/>
 

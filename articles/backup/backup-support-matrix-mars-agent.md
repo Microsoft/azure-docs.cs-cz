@@ -3,12 +3,12 @@ title: Matice podpory pro agenta MARS
 description: Tento článek shrnuje Azure Backup podporu při zálohování počítačů, na kterých běží agent služby Microsoft Azure Recovery Services (MARS).
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 27ad81c42a079485d8eab95bb1250cba41e8fb5b
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: a87d778bff5a52f4251d83e401028c9949713e33
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281270"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988069"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Matice podpory pro zálohování s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -95,8 +95,6 @@ Windows 7 (Ultimate, Enterprise, pro, Home Premium/Basic, Starter) | Ano | Ne | 
 Windows Server 2016 (Standard, Datacenter, Essentials) | Ano | Ano | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
 Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Ano | Ano | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
 Windows Server 2012 (Standard, Datacenter, základ) | Ano | Ano |– .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0 <br> – Údržba a správa bitových kopií (DISM. exe)
-Windows Server 2008 R2 (Standard, Enterprise, Datacenter, základ) | Ano | Ano | – .NET 3,5, .NET 4,5 <br> – Windows PowerShell <br> -Kompatibilní Microsoft VC + + Redistributable <br> – Microsoft Management Console (MMC) 3,0 <br> – Údržba a správa bitových kopií (DISM. exe)
-Windows Server 2008 SP2 (Standard, Datacenter, Foundation) | Ano | Ne | – .NET 3,5, .NET 4,5 <br> – Windows PowerShell <br> -Kompatibilní Microsoft VC + + Redistributable <br> – Microsoft Management Console (MMC) 3,0 <br> – Údržba a správa bitových kopií (DISM. exe) <br> – Virtual Server 2005 Base + KB KB948515
 Windows Storage Server 2016/2012 R2/2012 (Standard, Workgroup) | Ano | Ne | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
 Windows Server 2019 (Standard, Datacenter, Essentials) | Ano | Ano | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
 
@@ -129,7 +127,7 @@ Komprimované | Podporuje se.
 Řídké | Podporuje se.
 Komprimované a zhuštěné |Podporuje se.
 Pevné odkazy| Není podporováno. Přeskočeno.
-Spojovací bod| Není podporováno. Přeskočeno.
+Bod rozboru| Není podporováno. Přeskočeno.
 Šifrované a zhuštěné |Není podporováno. Přeskočeno.
 Komprimovaný datový proud| Není podporováno. Přeskočeno.
 Zhuštěný datový proud| Není podporováno. Přeskočeno.

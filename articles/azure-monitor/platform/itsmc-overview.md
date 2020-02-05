@@ -4,15 +4,15 @@ description: Tento článek poskytuje přehled konektoru pro správu služeb IT 
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: JYOTHIRMAISURI
+author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 83d5b7ffb49a08d02d5dd34ad561ce725ead7e0e
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 68aff01ea541a24be1f8d526fecbb6a9d2c30086
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289131"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990670"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Připojení Azure k nástrojům ITSM pomocí konektoru pro správu služeb IT
 
@@ -152,7 +152,7 @@ Data incidentu a žádosti o změnu lze vizuálně vylepšovat pomocí řídicí
 
 Můžete také vizualizovat incidenty synchronizované s ovlivněnými počítači v rámci řešení Service Map.
 
-Service Map automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikaci mezi službami. Umožňuje zobrazit servery přirozeným způsobem – jako propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy a porty v jakékoli architektuře propojené pomocí protokolu TCP a nevyžaduje přitom žádnou konfiguraci kromě instalace agenta. [Další informace](../../azure-monitor/insights/service-map.md).
+Service Map automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikaci mezi službami. Umožňuje vám zobrazit vaše servery podle toho, jak si je považujete – jako propojené systémy, které poskytují důležité služby. Service Map zobrazuje připojení mezi servery, procesy a porty v rámci libovolné architektury připojené k protokolu TCP bez nutnosti jiné konfigurace než instalace agenta. [Další informace](../../azure-monitor/insights/service-map.md).
 
 Pokud používáte řešení Service Map, můžete zobrazit položky oddělení služeb vytvořené v řešeních ITSM, jak je znázorněno v následujícím příkladu:
 
@@ -188,7 +188,7 @@ ServiceDeskWorkItemType_s="Incident"
 - Vyřešil
 - Uzavřel
 - Zdroj
-- Přiřazeno
+- Přiřazený pro
 - Kategorie
 - Nadpis
 - Popis
@@ -209,7 +209,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Autor
 - Uzavřel
 - Zdroj
-- Přiřazeno
+- Přiřazený pro
 - Nadpis
 - Typ
 - Kategorie
@@ -220,7 +220,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Priorita
 - Riziko
 - Dopad
-- Přiřazeno
+- Přiřazený pro
 - Datum vytvoření
 - Datum uzavření
 - Datum poslední změny
@@ -245,13 +245,13 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ResolvedBy_s | Vyřešil|
 | ClosedBy_s  | Uzavřel |
 | Source_s| Typ kontaktu |
-| AssignedTo_s | Přiřazeno komu  |
+| AssignedTo_s | Přiřazeno  |
 | Category_s | Kategorie |
 | Title_s|  Krátký popis |
 | Description_s|  Poznámky |
 | CreatedDate_t|  Otevřít |
 | ClosedDate_t| Uzavřeno|
-| ResolvedDate_t|Vyřešeno|
+| ResolvedDate_t|Přeložit|
 | Počítač  | Položka konfigurace |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>Výstupní data pro žádost o změnu ServiceNow
@@ -261,7 +261,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ServiceDeskId_s| Číslo |
 | CreatedBy_s | Požadoval (a) |
 | ClosedBy_s | Uzavřel |
-| AssignedTo_s | Přiřazeno komu  |
+| AssignedTo_s | Přiřazeno  |
 | Title_s|  Krátký popis |
 | Type_s|  Typ |
 | Category_s|  Kategorie |
@@ -274,8 +274,8 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ClosedDate_t | Datum uzavření |
 | PlannedStartDate_t  |     Plánované počáteční datum |
 | PlannedEndDate_t  |   Plánované koncové datum |
-| WorkStartDate_t  | Skutečné počáteční datum |
-| WorkEndDate_t | Skutečné koncové datum|
+| WorkStartDate_t  | Skutečné datum zahájení |
+| WorkEndDate_t | Skutečné datum ukončení|
 | Description_s | Popis |
 | Počítač  | Položka konfigurace |
 

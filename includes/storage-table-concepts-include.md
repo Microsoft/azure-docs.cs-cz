@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 83f66fb7e4d9b07cdcd72e47da1b397a85886e29
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 91a52e7eac40c0ac2ab682f251a2ae0013259b25
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75467954"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "77013695"
 ---
 ## <a name="what-is-table-storage"></a>Co je služba Table Storage
 Služba Azure Table Storage ukládá velké objemy strukturovaných dat. Služba je úložištěm dat typu NoSQL, které přijímá ověřená volání z cloudu Azure i z prostředí mimo něj. Tabulky Azure jsou ideální pro ukládání strukturovaných, nerelačních dat. Mezi běžná použití služby Table Storage patří:
@@ -31,7 +31,7 @@ Služba Table Storage obsahuje následující komponenty:
   Účty rozhraní API pro tabulky Azure Cosmos DB používají tento formát: `http://<storage account>.table.cosmosdb.azure.com/<table>`  
 
   Tabulky Azure můžete adresovat přímo pomocí této adresy s protokolem OData. Další informace najdete v tématu [OData.org][OData.org].
-* **Účty:** Veškerý přístup ke službě Azure Storage se provádí prostřednictvím účtu úložiště. Další informace o účtech úložiště najdete v tématu [přehled účtu úložiště] [.. /articles/storage/common/storage-account-overview.md].
+* **Účty:** Veškerý přístup ke službě Azure Storage se provádí prostřednictvím účtu úložiště. Další informace o účtech úložiště najdete v tématu [Přehled účtu úložiště](../articles/storage/common/storage-account-overview.md).
 
     Veškerý přístup ke službě Azure Cosmos DB se provádí prostřednictvím účtu rozhraní API pro tabulky. Podrobnosti o vytvoření účtu rozhraní API pro tabulky najdete v tématu věnovaném [Vytvoření účtu rozhraní API pro tabulky](../articles/cosmos-db/create-table-dotnet.md#create-a-database-account).
 * **Tabulka**: Tabulka je kolekcí entit. Tabulky nevynucují u entit schéma, což znamená, že jedna tabulka může obsahovat entity s různými sadami vlastností.  

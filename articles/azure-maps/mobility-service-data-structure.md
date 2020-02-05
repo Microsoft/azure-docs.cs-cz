@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 213910ee2439fa958b9f1d4926883eb8e066ba41
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: ceecdcc508e5b43c8775b6a88f9b4e4f0eb23c77
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910726"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989004"
 ---
 # <a name="data-structures-in-azure-maps-mobility-service"></a>Datové struktury ve službě Azure Maps mobility
 
-V tomto článku se seznámíte s pojmem oblasti metro ve [službě Azure Maps mobility](https://aka.ms/AzureMapsMobilityService) a některými běžnými poli vrácenými prostřednictvím služeb při jejich dotazování na zastávky a řádky veřejného přenosu. Než začnete s rozhraními API služby mobility, doporučujeme projít tento článek. Tato společná pole probereme níže.
+Tento článek představuje koncept oblasti metro ve [službě Azure Maps mobility](https://aka.ms/AzureMapsMobilityService). Probereme některá společná pole, která se vrátí, když se tato služba dotáže na zastavení a řádky veřejného přenosu. Před vývojem s rozhraními API služby mobility doporučujeme tento článek přečíst.
 
 ## <a name="metro-area"></a>Oblast Metro
 
-Data služby mobility jsou rozdělená na podporované oblasti metro. Oblasti metro nenásledují po hranicích měst, oblast Metro může obsahovat více měst, například hustě naplněné město a jeho okolní města. a země/oblast může být jedna oblast Metro. 
+Data služby mobility se seskupují podle podporovaných oblastí Metro. Oblasti metro nenásledují na hranicích měst. Oblast Metro může obsahovat více měst, hustě vyplněné města a okolní města. Ve skutečnosti může být země nebo oblast jedna oblast Metro. 
 
-`metroID` je ID oblasti metro, které se dá použít k volání [rozhraní API pro získání informací o oblasti Get Metro](https://aka.ms/AzureMapsMobilityMetroAreaInfo) k vyžádání podporovaných typů přenosů a dalších podrobností pro oblast Metro, jako jsou například tranzitní úřady a aktivní výstrahy. K vyžádání podporovaných oblastí metro a metroIDs můžete použít Azure Maps získat rozhraní API Metro. ID oblasti metro se mohou změnit.
+`metroID` je ID oblasti metro, které se dá použít k volání [rozhraní API pro informace o oblasti Get Metro](https://aka.ms/AzureMapsMobilityMetroAreaInfo). Pomocí Azure Maps získat rozhraní API služby Metro pro vyžádání typů přenosů, přenosných úřadů, aktivních výstrah a dalších podrobností pro zvolenou službu Metro. Můžete si také vyžádat podporované oblasti metro a metroIDs. ID oblasti metro se mohou změnit.
 
 **metroID:** 522 **Název:** Seattle-Tacoma-Bellevue
 
@@ -31,25 +31,25 @@ Data služby mobility jsou rozdělená na podporované oblasti metro. Oblasti me
 
 ## <a name="stop-ids"></a>ID zastavení
 
-Přechody na zastávky můžou být odkazovány dvěma typy ID, identifikátorem [GFTS (General tranzitní kanál Specification)](https://gtfs.org/) (označovaným jako stopKey) a id zastavení Azure Maps (označovaným jako stopid). Při odkazování na zastavení v průběhu času je navrženo použití ID stop Azure Maps, protože toto ID je stabilnější a nebude se nejspíš měnit, dokud existuje fyzické zastavení. ID stop GTFS se často aktualizuje, například v případě, že ho poskytovatel GTFS potřebuje změnit nebo když se uvolní nová verze GTFS, i když se u fyzického zastavení nezměnila.
+Přechody na zastávky můžou být odkazovány dvěma typy ID, identifikátorem [GFTS (General tranzitní kanál Specification)](https://gtfs.org/) a id zastavení Azure Maps. ID GFTS se označuje jako stopKey a ID stop Azure Maps je odkazováno jako stopID. Při častém odkazování na zastavení přenosu doporučujeme použít Azure Maps stop ID. stopID je více stabilní a může zůstat stejná, dokud existuje fyzické zastavení. ID stop GTFS se často aktualizuje. Například GTFS stop ID lze aktualizovat podle požadavku poskytovatele GTFS nebo při vydání nové verze GTFS. I když se fyzické zastavení žádné změny nezměnilo, může se změnit ID stop GTFS.
 
-Abyste mohli začít, můžete požádat o přechod do blízkosti [provozu pomocí rozhraní získat rozhraní API pro nejbližší](https://aka.ms/AzureMapsMobilityNearbyTransit)přenos.
+Začněte tím, že požádáte o okolní přenos, který se zastaví pomocí [rozhraní získat rozhraní API pro nejbližší přenos](https://aka.ms/AzureMapsMobilityNearbyTransit).
 
 ## <a name="line-groups-and-lines"></a>Řádky a skupiny řádků
 
-Služba mobility používá paralelní datový model pro spojnice a spojnicové skupiny, aby bylo lépe zabývat se změnami děděnými z [GTFSch](https://gtfs.org/) tras a datových modelů cest.
+Služba mobility používá pro spojnice a spojnicové skupiny paralelní datový model. Tento model se používá k lepšímu obchodování se změnami děděnými z [GTFSch](https://gtfs.org/) tras a dat cest.
 
 
 ### <a name="line-groups"></a>Skupiny řádků
 
-Řádková skupina je entita, která seskupuje všechny řádky, které jsou logicky součástí stejné skupiny. Spojnicová skupina obvykle bude obsahovat dva řádky, jeden z bodu A na B a druhý návrat z bodu B do A, který patří ke stejné veřejné přenosové agentuře a má stejné číslo řádku. Mohou však nastat případy, kdy skupina řádků obsahuje více než dva řádky nebo pouze jeden řádek v rámci něj.
+Řádková skupina je entita, která seskupuje všechny řádky, které jsou logicky součástí stejné skupiny. Spojnicová skupina obvykle obsahuje dva řádky, jeden z bodu A na B a druhá se vrací z bodu B do. Oba řádky by patřily do stejné veřejné přenosového úřadu a mají stejné číslo řádku. Mohou však nastat případy, kdy skupina řádků obsahuje více než dva řádky nebo pouze jeden řádek v rámci něj.
 
 
-### <a name="lines"></a>Spojnice
+### <a name="lines"></a>Přím
 
-Jak je popsáno výše, každá skupina řádků se skládá ze sady řádků. Často jednotlivé řádky popisují směr a jednotlivé spojnicové skupiny se skládají ze dvou řádků. Existují však případy, kdy se skládá z více řádků, například je řádek, který někdy provádí detreke v určitém okolí a někdy není a je provozován v obou případech za stejným číslem řádku a existují i jiné případy, kdy řádek g kupiny se skládá z jednoho řádku, například kruhové spojnice s jedním směrem.
+Jak je popsáno výše, každá skupina řádků se skládá ze sady řádků. Každá řádková skupina se skládá ze dvou řádků a každý řádek popisuje směr.  Existují však případy, kdy více řádků tvoří skupinu řádků. Například je k dispozici řádek, který někdy rozchází z určitého okolí a někdy ne. V obou případech funguje pod stejným číslem řádku. Spojnicová skupina může být také tvořena jedním řádkem. KRUHOVÁ čára s jedním směrem je Ling skupina s jedním řádkem.
 
-Chcete-li začít, můžete požádat o skupiny řádků pomocí [rozhraní API pro přenos řádků](https://aka.ms/AzureMapsMobilityTransitLine) a později přejít k podrobnostem na řádky.
+Chcete-li začít, můžete požádat o skupiny řádků pomocí [rozhraní API pro přenosové linky](https://aka.ms/AzureMapsMobilityTransitLine).
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -7,38 +7,51 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: 9985e7ac70c5851699839a95d1e23af4dcca35e7
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.date: 02/03/2020
+ms.openlocfilehash: fd21a4b821e1911e94d542a0922e5269786c365d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935107"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76991061"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Funkce ve verzi Preview v Azure Kognitivní hledání
 
 Tento článek obsahuje seznam funkcí, které jsou v současnosti ve verzi Preview. Funkce, které přecházejí z verze Preview na obecnou dostupnost, se z tohoto seznamu odeberou. Můžete kontrolovat [aktualizace služby](https://azure.microsoft.com/updates/?product=search) nebo [novinky](whats-new.md) pro oznámení týkající se všeobecné dostupnosti.
 
-I když některé funkce verze Preview můžou být dostupné na portálu a .NET SDK, má REST API vždycky funkce ve verzi Preview. Aktuální verze Preview rozhraní API je `2019-05-06-Preview`.
+I když některé funkce verze Preview můžou být dostupné na portálu a .NET SDK, má REST API vždycky funkce ve verzi Preview. 
+
++ Aktuální verze Preview rozhraní API pro operace vyhledávání je [`2019-05-06-Preview`](https://docs.microsoft.com/rest/api/searchservice/index-2019-05-06-preview)
++ Aktuální verze Preview pro operace správy je [`2019-10-01-Preview`](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview)
 
 > [!IMPORTANT]
 > Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="features-in-public-preview"></a>Funkce ve verzi Public Preview
+## <a name="ai-enrichment-features"></a>Funkce obohacení AI
 
-+ [Vlastní vyhledávání entit (Preview)](cognitive-search-skill-custom-entity-lookup.md ) vyhledává text z vlastního uživatelsky definovaného seznamu slov a frází. Pomocí tohoto seznamu jsou všechny dokumenty označeny všemi vyhovujícími entitami. Dovednost také podporuje stupeň přibližné shody, které lze použít pro hledání shod, které jsou podobné, ale nejsou zcela přesné. 
+Prozkoumejte nejnovější vylepšení rozšíření AI prostřednictvím [rozhraní API pro vyhledávání ve verzi Preview](https://docs.microsoft.com/rest/api/searchservice/index-2019-05-06-preview).
 
-+ [Detekce PII (Preview)](cognitive-search-skill-pii-detection.md) je způsob rozpoznávání, který se používá při indexování, která extrahuje identifikovatelné osobní údaje ze vstupního textu a poskytuje možnost jejich maskování z tohoto textu různými způsoby.
++ [Vlastní dovednosti při vyhledávání entit (Preview)](cognitive-search-skill-custom-entity-lookup.md ) je vnímání znalostí, které hledá text z vlastního uživatelsky definovaného seznamu slov a frází. Pomocí tohoto seznamu jsou všechny dokumenty označeny všemi vyhovujícími entitami. Dovednost také podporuje stupeň přibližné shody, které lze použít pro hledání shod, které jsou podobné, ale nejsou zcela přesné. 
+
++ [Dovednost detekce PII (Preview)](cognitive-search-skill-pii-detection.md) je způsob rozpoznávání, který se používá při indexování, která extrahuje osobní údaje ze vstupního textu a poskytuje možnost jejich maskování z tohoto textu různými způsoby.
 
 + [Přírůstkové obohacení (Preview)](cognitive-search-incremental-indexing-conceptual.md) přidá do kanálu pro rozšíření ukládání do mezipaměti, což vám umožní znovu použít stávající výstup, pokud cílené změny, jako je například aktualizace dovednosti nebo jiného objektu, nemění obsah. Ukládání do mezipaměti se týká pouze obohacených dokumentů vyprodukovaných dovednosti.
+
++ [Znalostní báze Knowledge Store (Preview)](knowledge-store-concept-intro.md) je nový cíl kanálu pro rozšíření na bázi AI. Fyzická datová struktura existuje v úložišti objektů BLOB v Azure a v úložišti tabulek Azure a je vytvořená a naplněná při spuštění indexeru, který má připojené rozpoznávání dovednosti. Definice samotného úložiště znalostí je specifikována v rámci definice dovednosti. V rámci definice znalostní báze Knowledge Store můžete řídit fyzické struktury dat prostřednictvím prvků *projekce* , které určují způsob, jakým jsou data uložená v úložišti tabulek nebo objektů blob, a to, jestli existuje více zobrazení.
+
+## <a name="indexing-and-query-features"></a>Indexování a funkce dotazů
+
+Funkce ve verzi Preview indexeru jsou dostupné v rozhraní API pro vyhledávání ve verzi Preview. 
 
 + [Cosmos DB indexer](search-howto-index-cosmosdb.md) podporuje rozhraní MongoDB API (Preview), rozhraní Gremlin API (Preview) a rozhraní API Cassandra (Preview).
 
 + [Azure Data Lake Storage Gen2 indexer (Preview)](search-howto-index-azure-data-lake-storage.md) může indexovat obsah a metadata z Data Lake Storage Gen2.
 
-+ [Znalostní báze Knowledge Store (Preview)](knowledge-store-concept-intro.md) je nový cíl kanálu pro rozšíření na bázi AI. Fyzická datová struktura existuje v úložišti objektů BLOB v Azure a v úložišti tabulek Azure a je vytvořená a naplněná při spuštění indexeru, který má připojené rozpoznávání dovednosti. Definice samotného úložiště znalostí je specifikována v rámci definice dovednosti. V rámci definice znalostní báze Knowledge Store můžete řídit fyzické struktury dat prostřednictvím prvků *projekce* , které určují způsob, jakým jsou data uložená v úložišti tabulek nebo objektů blob, a to, jestli existuje více zobrazení.
-
 + [parametr dotazu moreLikeThis (Preview)](search-more-like-this.md) vyhledá dokumenty, které jsou relevantní pro určitý dokument. Tato funkce je ve starších verzích Preview. 
+
+## <a name="management-features"></a>Funkce správy
+
++ [Podpora privátního koncového bodu](service-create-private-endpoint.md) prostřednictvím [`api-version=2019-10-01-Preview`](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview) REST API správy. Můžete vytvořit službu, která má omezení k přístupu ke koncovému bodu.
 
 ## <a name="earlier-preview-features"></a>Dřívější funkce ve verzi Preview
 

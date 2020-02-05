@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: c1c4f139dedc9be11a5f19730221ccec77139200
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 9f7819974e3548baf5e10f0bf9a2d656d9412beb
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962012"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987967"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>Dotazování dat z Azure Time Series Insightsho prostředí GA pomocíC#
 
@@ -50,13 +50,9 @@ Vzorový kód níže znázorňuje následující funkce:
 Před kompilací a spuštěním ukázkového kódu proveďte následující kroky:
 
 1. [Zřízení Azure Time Series Insightsho prostředí GA](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started)
-
 1. Nakonfigurujte Azure Time Series Insights prostředí pro Azure Active Directory, jak je popsáno v tématu [ověřování a autorizace](time-series-insights-authentication-and-authorization.md). 
-
 1. Nainstalujte požadované závislosti projektu.
-
 1. Níže uvedený ukázkový kód nahraďte každým **#DUMMY #** a příslušným identifikátorem prostředí.
-
 1. Spusťte kód v rámci sady Visual Studio.
 
 ## <a name="project-dependencies"></a>Závislosti projektu
@@ -70,7 +66,9 @@ Vzorový kód má dvě požadované závislosti:
 * Balíček [Microsoft. IdentityModel. clients. Active](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) -3.13.9.
 * Balíček [Newtonsoft. JSON](https://www.nuget.org/packages/Newtonsoft.Json) -9.0.1.
 
-Přidejte balíčky pomocí [NuGet 2.12 +](https://www.nuget.org/):
+Stáhněte balíčky v aplikaci Visual Studio 2019 výběrem možnosti **sestavit** > **Sestavit řešení** .
+
+Případně přidejte balíčky pomocí [NuGet 2.12 +](https://www.nuget.org/):
 
 * `dotnet add package Newtonsoft.Json --version 9.0.1`
 * `dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory --version 3.13.9`

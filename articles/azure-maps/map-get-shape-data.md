@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: ca1b9854b118d359167873313f1fcb11bfecee52
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: d74a7906157eed33487a5f88082701da1b2269dc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911011"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988545"
 ---
 # <a name="get-shape-data"></a>Získání dat tvaru
 
-V tomto článku se dozvíte, jak získat data obrazců vykreslená na mapě pomocí funkce **drawingManager. GetSource ()** [nástroje Drawing Manager](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#getsource--) . Může existovat několik scénářů, ve kterých můžete chtít extrahovat data o nestandardních JSON vykresleného obrazce a využít je jinde.  
+V tomto článku se dozvíte, jak získat data tvarů vykreslených na mapě. Používáme funkci **drawingManager. GetSource ()** uvnitř [Správce výkresu](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#getsource--). K dispozici jsou různé scénáře, kdy chcete extrahovat data o nesprávném formátu JSON vykresleného obrazce a použít ho jinde.  
 
 
 ## <a name="get-data-from-drawn-shape"></a>Získat data z vykresleného obrazce
 
-Následující funkce získá zdrojová data vykresleného obrazce a vytvoří výstup na obrazovce. 
+Následující funkce získá zdrojová data vykresleného obrazce a vytvoří výstup na obrazovku. 
 
 ```Javascript
 function getDrawnShapes() {
@@ -53,7 +53,7 @@ Naučte se používat další funkce modulu nástrojů pro kreslení:
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [Správce výkresu](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: tutorial
-ms.date: 12/09/2019
+ms.date: 02/03/2020
 ms.author: aahi
-ms.openlocfilehash: 7c8485a5521709452217fb4ab1832b6a42cce9ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fb989825ed27cc83c14c36e6394e37ae2db2c12a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75382459"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988256"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Kurz: Jednostránková aplikace s vyhledáváním videí
 Rozhraní API Bingu pro vyhledávání videí umožňuje hledat na webu a získávat výsledky videí relevantní pro vyhledávací dotaz. V tomto kurzu sestavíme jednostránkovou webovou aplikaci, která používá rozhraní API pro vyhledávání Bingu k zobrazení výsledků hledání na stránce. Aplikace zahrnuje komponenty HTML, CSS a JavaScriptu.
@@ -120,7 +120,7 @@ function bingSearchOptions(form) {
 
     var options = [];
     options.push("mkt=" + form.where.value);
-    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "off"));
+    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "moderate"));
 
     if (form.when.value.length) options.push("freshness=" + form.when.value);
     var what = [];
@@ -138,7 +138,7 @@ function bingSearchOptions(form) {
 }
 ```
 
-Například parametr `SafeSearch` ve skutečném volání rozhraní API může být `strict`, `moderate` nebo `off` a výchozí hodnota je `moderate`. Náš formulář ale používá zaškrtávací políčko, které má jenom dva stavy. Kód JavaScriptu toto nastavení převede na `strict` nebo `off` (`moderate` se nepoužívá).
+Například parametr `SafeSearch` v samotném volání rozhraní API může být `strict`nebo `moderate`s `moderate` je výchozím nastavením.
 
 ## <a name="performing-the-request"></a>Provedení požadavku
 Na základě dotazu, řetězce možností a klíče rozhraní API funkce `BingWebSearch` použije objekt `XMLHttpRequest` k provedení požadavku na koncový bod vyhledávání Bingu. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
@@ -380,14 +380,14 @@ Odpovědi z rozhraní API pro vyhledávání Bingu můžou zahrnovat hlavičku `
 
 Poskytnutí hlavičky `X-MSEdge-ClientID` umožňuje rozhraním API Bingu spojit si všechna uživatelova vyhledávání. To má dvě důležité výhody.
 
-Zaprvé to umožňuje, aby vyhledávací web Bing na vyhledávání aplikoval minulý kontext a našel výsledky, které uživatele více uspokojí. Pokud uživatel v minulosti vyhledával třeba výrazy týkající se lodí, může pozdější vyhledání „uzlů“ přednostně vrátit informace o uzlech používaných při plavbě lodí.
+Zaprvé to umožňuje, aby vyhledávací web Bing na vyhledávání aplikoval minulý kontext a našel výsledky, které uživatele více uspokojí. Pokud uživatel v minulosti vyhledával třeba výrazy týkající se lodí, pozdější vyhledání „uzlů“ může přednostně vrátit informace o uzlech používaných při plavbě lodí.
 
 Za druhé může Bing náhodně vybírat uživatele k vyzkoušení nových funkcí, než budou všeobecně dostupné. Poskytnutí stejného ID klienta s každým požadavkem zajistí, že uživatelé, kteří tuto funkci vidí, ji vidí vždy. Bez ID klienta může uživatel funkci ve svých výsledcích hledání zdánlivě náhodně někdy vidět a jindy ne.
 
 Zásady zabezpečení prohlížeče (CORS) můžou bránit tomu, aby byla hlavička `X-MSEdge-ClientID` pro JavaScript dostupná. K tomuto omezení dochází, když odpověď na vyhledávání má jiný zdroj než stránka, která o ni požádala. V produkčním prostředí je potřeba tyto zásady vyřešit hostováním skriptu na straně serveru, který provádí volání rozhraní API ve stejné doméně jako webová stránka. Protože tento skript má stejný původ jako webová stránka, hlavička `X-MSEdge-ClientID` je pak pro JavaScript dostupná.
 
 > [!NOTE]
-> V produkční webové aplikaci byste měli požadavek provádět na straně serveru. Jinak musí být klíč rozhraní API pro vyhledávání Bingu součástí webové stránky, kde je k dispozici každému, kdo si zobrazí zdroj. Účtuje se vám veškeré využívání vašeho klíče předplatného rozhraní API, dokonce i požadavky provedené neoprávněnými stranami, proto je důležité klíč nezveřejňovat.
+> V produkční webové aplikaci byste měli požadavek provádět na straně serveru. Jinak musí být klíč rozhraní API pro vyhledávání Bingu součástí webové stránky, kde je k dispozici každému, kdo si zobrazí zdroj. Účtuje se veškeré využívání vašeho klíče předplatného rozhraní API, dokonce i žádosti provedené neoprávněnými stranami, proto je důležité klíč nezveřejňovat.
 
 Pro účely vývoje můžete požadavek na rozhraní API Bingu pro vyhledávání na webu provést prostřednictvím proxy serveru CORS. Odpověď z takového serveru proxy má `Access-Control-Expose-Headers` záhlaví, které umožňuje použití hlaviček odpovědí a zpřístupňuje je pro JavaScript.
 

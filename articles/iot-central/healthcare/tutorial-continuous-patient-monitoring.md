@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 97a215d8f111753c8fcc857fe4c48956c1236b3b
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: c9a153cc5b1b8c43a42b37d591a8946a545f63ff
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027441"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986412"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Kurz: nasazení a návod pro šablonu aplikace monitorování průběžného pacienta
 
@@ -36,14 +36,15 @@ Přejděte na [web Azure IoT Central Správce aplikací](https://apps.azureiotce
 
 Klikněte na tlačítko **vytvořit aplikaci** a začněte vytvářet aplikaci a pak se přihlaste pomocí osobního, pracovního nebo školního účtu Microsoft. Tím přejdete na stránku **Nová aplikace** .
 
->[!div class="mx-imgBorder"] 
->![vytvoření zdravotní péče aplikace](media/app-manager-health-create.png)
+![Vytvoření zdravotnictví pro aplikace](media/app-manager-health-create.png)
+
+![Vytvořit informace o fakturaci zdravotní péče pro aplikace](media/app-manager-health-create-billinginfo.png)
 
 Vytvoření aplikace:
 
 1. Azure IoT Central automaticky navrhuje název aplikace na základě vámi vybrané šablony. Můžete přijmout tento název nebo zadat vlastní popisný název aplikace, například **monitorování nepřetržitého pacienta**. Azure IoT Central také na základě názvu aplikace vygeneruje jedinečnou předponu adresy URL. Tuto předponu adresy URL můžete změnit na něco, co byste si chtěli.
 
-2. Můžete vybrat, jestli chcete vytvořit aplikaci **zkušební verze** nebo aplikaci s průběžnými **platbami** . **Zkušební verze** aplikací je zdarma po dobu sedmi dnů, než vyprší platnost a dovolují až pět bezplatných zařízení. Před vypršením platnosti je možné je kdykoli převést na průběžné platby. Pokud vytvoříte zkušební aplikaci, je nutné zadat své kontaktní informace a vybrat, zda chcete dostávat informace a tipy od společnosti Microsoft. Aplikace s průběžnými **platbami** podporují až dvě volná zařízení a vyžadují, abyste je umístili do informací o předplatném Azure.
+2. Můžete vybrat, jestli chcete vytvořit aplikaci pomocí cenového plánu *zdarma* nebo jednoho ze *standardních* cenových plánů. Aplikace, které vytvoříte pomocí bezplatného plánu, jsou po dobu sedmi dnů zdarma a dovolují až pět bezplatných zařízení. Aplikaci můžete kdykoli přesunout z bezplatného plánu do cenového plánu Standard. Pokud zvolíte bezplatný plán, je nutné zadat kontaktní informace a vybrat, zda chcete dostávat informace a tipy od společnosti Microsoft. Aplikace, které vytvoříte pomocí plánu Standard, podporují až dvě volná zařízení a vyžadují, abyste zadali informace o vašem předplatném Azure pro účely fakturace.
 
 3. V dolní části stránky vyberte **vytvořit** a nasaďte svoji aplikaci.
 

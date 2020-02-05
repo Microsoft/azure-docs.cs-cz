@@ -5,18 +5,20 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6cae6d258da2ddf0c3bfaade65ae74f1201b67b7
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: c3e4c2f2bac45f2e366764473a34b0536bb4cc44
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121075"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990432"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-powershell"></a>Vytvoření hostitele Azure bastionu pomocí Azure PowerShell
 
-V tomto článku se dozvíte, jak vytvořit hostitele Azure bastionu. Po zřízení služby Azure bastionu ve vaší virtuální síti bude bezproblémové prostředí RDP/SSH dostupné pro všechny vaše virtuální počítače ve stejné virtuální síti. Toto nasazení je na jednu virtuální síť, ne na předplatné/účet nebo virtuální počítač.
+V tomto článku se dozvíte, jak vytvořit hostitele Azure bastionu pomocí prostředí PowerShell. Jakmile ve své virtuální síti zřídíte službu Azure bastionu, bezproblémové prostředí RDP/SSH je dostupné všem virtuálním počítačům ve stejné virtuální síti. Nasazení Azure bastionu je vázané na virtuální síť, ne pro předplatné/účet nebo virtuální počítač.
+
+Volitelně můžete vytvořit hostitele Azure bastionu pomocí [Azure Portal](bastion-create-host-portal.md).
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -28,7 +30,7 @@ Ověřte, že máte předplatné Azure. Pokud ještě nemáte předplatné Azure
 
 Tato část vám pomůže vytvořit nový prostředek Azure bastionu pomocí Azure PowerShell.
 
-1. Vytvořte virtuální síť a podsíť Azure bastionu. Podsíť Azure bastionu musíte vytvořit pomocí hodnoty Name **AzureBastionSubnet**. Tato hodnota umožňuje službě Azure zjistit, do které podsítě nasadit prostředky bastionu. To se liší od podsítě brány. Je nutné použít podsíť alespoň a/27 nebo větší podsíť (/27,/26 atd.). Vytvořte **AzureBastionSubnet** bez směrovacích tabulek nebo delegování. Pokud používáte skupiny zabezpečení sítě na **AzureBastionSubnet**, přečtěte si téma [práce s skupin zabezpečení sítě](bastion-nsg.md).
+1. Vytvořte virtuální síť a podsíť Azure bastionu. Podsíť Azure bastionu musíte vytvořit pomocí hodnoty Name **AzureBastionSubnet**. Tato hodnota umožňuje službě Azure zjistit, do které podsítě nasadit prostředky bastionu. To se liší od podsítě brány. Je nutné použít podsíť s alespoň/27 nebo větší podsítí (/27,/26 atd.). Vytvořte **AzureBastionSubnet** bez směrovacích tabulek nebo delegování. Pokud používáte skupiny zabezpečení sítě na **AzureBastionSubnet**, přečtěte si článek [práce s skupin zabezpečení sítě](bastion-nsg.md) .
 
    ```azurepowershell-interactive
    $subnetName = "AzureBastionSubnet"
@@ -42,7 +44,7 @@ Tato část vám pomůže vytvořit nový prostředek Azure bastionu pomocí Azu
    $publicip = New-AzPublicIpAddress -ResourceGroupName "myBastionRG" -name "myPublicIP" -location "westeurope" -AllocationMethod Static -Sku Standard
    ```
 
-3. Vytvořte nový prostředek Azure bastionu v AzureBastionSubnet vaší virtuální sítě. Vytvoření a nasazení prostředku bastionu trvá přibližně 5 minut.
+3. Vytvořte nový prostředek Azure bastionu v AzureBastionSubnet vaší virtuální sítě. Vytváření a nasazování prostředků bastionu trvá přibližně 5 minut.
 
    ```azurepowershell-interactive
    $bastion = New-AzBastion -ResourceGroupName " myBastionRG " -Name "myBastion" -PublicIpAddress $publicip -VirtualNetwork $vnet
@@ -50,4 +52,6 @@ Tato část vám pomůže vytvořit nový prostředek Azure bastionu pomocí Azu
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si [Nejčastější dotazy k bastionu](bastion-faq.md).
+* Další informace najdete v tématu [bastionu – Nejčastější dotazy](bastion-faq.md) .
+
+* Pokud chcete používat skupiny zabezpečení sítě s podsítí Azure bastionu, přečtěte si téma [práce s skupin zabezpečení sítě](bastion-nsg.md).

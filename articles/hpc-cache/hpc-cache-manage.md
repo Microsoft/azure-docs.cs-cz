@@ -4,18 +4,18 @@ description: Jak spravovat a aktualizovat mezipaměť HPC Azure pomocí Azure Po
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 1/08/2020
+ms.date: 1/29/2020
 ms.author: rohogue
-ms.openlocfilehash: a166a904b2e63419efd5803fd54be1d1b59836fb
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 9ad6348e15c8a25f721a89be7eab3e17c58ae17c
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867086"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988837"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>Správa mezipaměti z Azure Portal
 
-Stránka s přehledem mezipaměti v Azure Portal zobrazuje podrobnosti projektu, stav mezipaměti a základní statistiky pro vaši mezipaměť. Obsahuje taky ovládací prvky pro odstranění mezipaměti, vyprazdňování dat do dlouhodobého úložiště nebo aktualizaci softwaru.
+Stránka s přehledem mezipaměti v Azure Portal zobrazuje podrobnosti projektu, stav mezipaměti a základní statistiky pro vaši mezipaměť. Obsahuje taky ovládací prvky pro zastavení nebo spuštění mezipaměti, odstranění mezipaměti, vyprázdnění dat pro dlouhodobé ukládání a aktualizace softwaru.
 
 Chcete-li otevřít stránku Přehled, vyberte prostředek mezipaměti v Azure Portal. Načtěte například stránku **všechny prostředky** a klikněte na název mezipaměti.
 
@@ -23,12 +23,29 @@ Chcete-li otevřít stránku Přehled, vyberte prostředek mezipaměti v Azure P
 
 Tlačítka v horní části stránky vám pomůžou spravovat mezipaměť:
 
+* **Spustit** a [**zastavit**](#stop-the-cache) – pozastaví operaci mezipaměti.
 * [**Flush**](#flush-cached-data) – zapisuje změněná data do cílů úložiště
 * [**Upgrade**](#upgrade-cache-software) – aktualizuje software pro mezipaměť.
 * **Refresh** -znovu načte stránku Přehled.
 * [**Odstranit**](#delete-the-cache) – trvale zničí mezipaměť
 
 Přečtěte si další informace o těchto možnostech.
+
+## <a name="stop-the-cache"></a>Zastavení mezipaměti
+
+Můžete zastavit mezipaměť a snížit tak náklady během neaktivního období. Za dobu provozu se vám neúčtují při zastavení mezipaměti, ale účtují se vám poplatky za úložiště na disku přidělené mezipamětí. (Podrobnosti najdete na stránce s [cenami](https://aka.ms/hpc-cache-pricing) .)
+
+Zastavená mezipaměť nereaguje na požadavky klientů. Před zastavením mezipaměti byste měli odpojit klienty.
+
+Tlačítko **zastavit** pozastavuje aktivní mezipaměť. Tlačítko **zastavit** je k dispozici, když je stav mezipaměti **v pořádku** nebo je **degradován**.
+
+![snímek obrazovky horních tlačítek se zvýrazněným stopou a automaticky otevíraná zpráva popisující akci zastavení a dotazování chcete pokračovat? s Ano (výchozí) a bez tlačítek](media/stop-cache.png)
+
+Po kliknutí na tlačítko Ano potvrďte zastavení mezipaměti, mezipaměť automaticky vyprázdní svůj obsah do cílů úložiště. Tento proces může nějakou dobu trvat, ale zajišťuje konzistenci dat. Nakonec se stav mezipaměti změní na **Zastaveno**.
+
+Chcete-li znovu aktivovat zastavenou mezipaměť, klikněte na tlačítko **Start** . Není nutné žádné potvrzení.
+
+![snímek obrazovky horních tlačítek se zvýrazněnou možností Start](media/start-cache.png)
 
 ## <a name="flush-cached-data"></a>Vyprázdnit data uložená v mezipaměti
 
@@ -68,13 +85,14 @@ Záložní úložné svazky používané jako cíle úložiště nejsou při ods
 > [!NOTE]
 > Mezipaměť HPC Azure nepřed odstraněním mezipaměti automaticky nezapisuje změněná data z mezipaměti do back-endové systémů úložiště.
 >
-> Chcete-li zajistit, aby byla veškerá data v mezipaměti zapsána do dlouhodobého úložiště, postupujte podle následujících pokynů:
+> Chcete-li zajistit, aby byla všechna data v mezipaměti zapsána do dlouhodobého úložiště, [zastavte mezipaměť](#stop-the-cache) před odstraněním. Před kliknutím na tlačítko Odstranit se ujistěte, že zobrazuje stav **Zastaveno** .
+<!--... written to long-term storage, follow this procedure:
 >
-> 1. Pomocí tlačítka odstranit na stránce cíle úložiště [odeberte](hpc-cache-edit-storage.md#remove-a-storage-target) všechny cíle úložiště z mezipaměti prostředí Azure HPC. Systém před odstraněním cíle automaticky zapisuje všechna změněná data z mezipaměti do back-endového systému úložiště.
-> 1. Počkejte na úplné odebrání cíle úložiště. Pokud je pro zápis z mezipaměti k dispozici velké množství dat, může proces trvat hodinu nebo déle. Když je to hotové, oznámení na portálu říká, že operace odstranění byla úspěšná a cíl úložiště zmizí ze seznamu.
-> 1. Po odstranění všech ovlivněných cílů úložiště je bezpečné mezipaměť odstranit.
+> 1. [Remove](hpc-cache-edit-storage.md#remove-a-storage-target) each storage target from the Azure HPC Cache by using the delete button on the Storage targets page. The system automatically writes any changed data from the cache to the back-end storage system before removing the target.
+> 1. Wait for the storage target to be completely removed. The process can take an hour or longer if there is a lot of data to write from the cache. When it is done, a portal notification says that the delete operation was successful, and the storage target disappears from the list.
+> 1. After all affected storage targets have been deleted, it is safe to delete the cache.
 >
-> Alternativně můžete použít možnost [flush](#flush-cached-data) k uložení dat uložených v mezipaměti, ale dojde k malému riziku ztráty práce, pokud klient zapíše změnu do mezipaměti po dokončení vyprázdnění, ale před zničením instance mezipaměti.
+> Alternatively, you can use the [flush](#flush-cached-data) option to save cached data, but there is a small risk of losing work if a client writes a change to the cache after the flush completes but before the cache instance is destroyed.-->
 
 ## <a name="cache-metrics-and-monitoring"></a>Metriky a monitorování mezipaměti
 

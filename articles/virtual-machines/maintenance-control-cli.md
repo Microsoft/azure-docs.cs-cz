@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: cynthn
-ms.openlocfilehash: e2eb77bfd000ecaa3bad5fd3c5792d1aa3a81964
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 13e4923bc5d49843710c9df4523992f541f1d343
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964868"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988018"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-the-azure-cli"></a>Verze Preview: řízení aktualizací pomocí řízení údržby a Azure CLI
 
@@ -183,7 +183,7 @@ az maintenance update list \
 
 ### <a name="dedicated-host"></a>Vyhrazený hostitel
 
-Chcete-li vyhledat nedokončené aktualizace pro vyhrazeného hostitele (ADH). V tomto příkladu je výstup formátovaný jako tabulka pro čitelnost. Nahraďte hodnoty pro prostředky vlastními.
+Pro kontrolu nedokončených aktualizací pro vyhrazeného hostitele. V tomto příkladu je výstup formátovaný jako tabulka pro čitelnost. Nahraďte hodnoty pro prostředky vlastními.
 
 ```azurecli-interactive
 az maintenance update list \
