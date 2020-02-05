@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: 4e4d4c69eb51e0058d3b6b561b5167051079bf89
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 129f407dd66b32ea097daf4ed9110ffbba23660c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442693"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77017595"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrace API Management v interní virtuální síti s Application Gateway
 
@@ -185,6 +185,9 @@ $apimService = New-AzApiManagement -ResourceGroupName $resGroupName -Location $l
 Po úspěšném provedení výše uvedeného příkazu se podívejte na [konfiguraci DNS, která je nutná pro přístup k interní službě VNET API Management](api-management-using-with-internal-vnet.md#apim-dns-configuration) pro přístup k ní. Tento krok může trvat déle než půl hodiny.
 
 ## <a name="set-up-a-custom-domain-name-in-api-management"></a>Nastavení vlastního názvu domény v API Management
+
+> [!IMPORTANT]
+> [Nový portál pro vývojáře](api-management-howto-developer-portal.md) také vyžaduje povolení připojení ke koncovému bodu správy API Management kromě následujících kroků.
 
 ### <a name="step-1"></a>Krok 1
 

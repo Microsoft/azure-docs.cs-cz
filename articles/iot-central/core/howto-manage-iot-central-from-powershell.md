@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: df663861010177ba54c56ee4495458ea1b928359
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: a95b59c6cc0d486c1d4b10f39d0d272dd4b34f54
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985709"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018988"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Správa řešení IoT Central z Azure PowerShellu
 
@@ -61,30 +61,24 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
   -DisplayName "My Custom Display Name"
 ```
 
-Skript nejprve vytvoří skupinu prostředků v umístění východní USA pro danou aplikaci. Následující tabulka popisuje parametry, které se používají v příkazu **New-AzIotCentralApp** :
+Skript nejprve vytvoří skupinu prostředků v oblasti východní USA pro aplikaci. Následující tabulka popisuje parametry, které se používají v příkazu **New-AzIotCentralApp** :
 
 |Parametr         |Popis |
 |------------------|------------|
 |ResourceGroupName |Skupina prostředků, která obsahuje aplikaci. Tato skupina prostředků už musí existovat ve vašem předplatném. |
-|Umístění |Ve výchozím nastavení používá tato rutina umístění ze skupiny prostředků. V současné době můžete vytvořit aplikaci IoT Central v **USA**, **Austrálii**, **Asie a Tichomoří**nebo v **Evropě** .  |
+|Umístění |Ve výchozím nastavení používá tato rutina umístění ze skupiny prostředků. V současné době můžete vytvořit aplikaci IoT Central v oblastech **východní USA**, **západní USA**, **Severní Evropa**nebo **západní Evropa** nebo v zeměpisných oblastech **Austrálie** a **Asie a Tichomoří** .  |
 |Name (Název)              |Název aplikace v Azure Portal. |
 |subdomény         |Subdoména v adrese URL aplikace V příkladu je adresa URL aplikace https://mysubdomain.azureiotcentral.com. |
 |SKU               |V současné době můžete použít buď **ST1** nebo **ST2**. Viz [ceny za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
 |Šablona          | Šablona aplikace, která se má použít Další informace najdete v následující tabulce: |
 |DisplayName       |Název aplikace, jak se zobrazuje v uživatelském rozhraní. |
 
-**Šablona aplikace s všeobecně dostupnými funkcemi**
+**Šablony aplikací**
 
 | Název šablony            | Popis |
 | ------------------------ | ----------- |
 | iotc-default@1.0.0       | Vytvoří prázdnou aplikaci, kterou můžete naplnit vlastními šablonami zařízení a zařízeními.
-
-
-**Šablony aplikací s funkcemi veřejné verze Preview**
-
-| Název šablony            | Popis |
-| ------------------------ | ----------- |
-| iotc-pnp-preview@1.0.0   | Vytvoří prázdnou aplikaci typu Plug and Play Preview, která vám umožní naplnit vlastní šablony zařízení a zařízení. |
+| iotc-pnp-preview@1.0.0   | Vytvoří prázdnou aplikaci technologie Plug and Play (Preview), která vám umožní naplnit vlastní šablony zařízení a zařízení. |
 | iotc-condition@1.0.0     | Vytvoří aplikaci s analytickou šablonou monitorování podmínek in-Store. Pomocí této šablony můžete připojit a monitorovat prostředí úložiště. |
 | iotc-consumption@1.0.0   | Vytvoří aplikaci s šablonou monitorování spotřeby vody. Pomocí této šablony můžete monitorovat a řídit tok vody. |
 | iotc-distribution@1.0.0  | Vytvoří aplikaci s šablonou digitální distribuce. Pomocí této šablony můžete zvýšit efektivitu výstupu datového skladu tím, že digitalizing klíče a akce. |
@@ -96,9 +90,6 @@ Skript nejprve vytvoří skupinu prostředků v umístění východní USA pro d
 | iotc-quality@1.0.0       | Vytvoří aplikaci se šablonou monitorování kvality vody. Pomocí této šablony můžete digitálně monitorovat kvalitu vody.|
 | iotc-store@1.0.0         | Vytvoří aplikaci se šablonou pro rezervaci in-Store –. Pomocí této šablony můžete monitorovat a spravovat tok rezervací v rámci svého obchodu. |
 | iotc-waste@1.0.0         | Vytvoří aplikaci s propojenou šablonou správy odpadu. Tuto šablonu použijte k monitorování odpadkových přihrádek a operátorů polí dispatch. |
-
-> [!NOTE]
-> Šablony aplikace ve verzi Preview jsou v tuto chvíli dostupné jenom v oblastech **Evropa** a **USA** .
 
 ## <a name="view-your-iot-central-applications"></a>Zobrazení aplikací IoT Central
 

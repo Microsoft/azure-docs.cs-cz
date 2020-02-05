@@ -7,16 +7,16 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: d979c4210c7de4588338c8e3c30b179056102d0d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3a64ca5b0c2a092f895873e097ea6beb9a235a37
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498803"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77017696"
 ---
 # <a name="water-consumption-monitoring-reference-architecture"></a>Referenční architektura monitorování spotřeby vody 
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Řešení pro monitorování spotřeby vody se dají vytvořit pomocí **šablony aplikace Azure IoT Central** jako aplikace IoT Starter. Tento článek poskytuje podrobné pokyny k architektuře referenční architektury pro vytváření kompletního řešení. 
 
@@ -32,9 +32,9 @@ Koncepty:
 Pojďme se podívat na klíčové komponenty, které obecně hrají součást v řešení monitorování spotřeby vody.
 
 ## <a name="devices-and-connectivity"></a>Zařízení a připojení 
-V této části budeme označovat zařízení, která se používají pro inteligentní řešení na vodu, jako je monitorování kvality vody nebo monitorování spotřeby vody, obecně jako zařízení s inteligentním napájením. Inteligentní zařízení na vodu může být Flow měřičů, monitorů kvality vody, inteligentní ventily, detektory netěsnosti atd.
+Tato část se týká zařízení používaných pro inteligentní řešení na vodu, jako je monitorování kvality vody nebo monitorování spotřeby vody, obecně jako zařízení inteligentních vod. Inteligentní zařízení může být Flow měřičů, monitorů kvality vody, inteligentní ventily, detektory nevracení a tak dále.
 
-Zařízení použitá v inteligentních vodách budou obecně připojena prostřednictvím operátoru sítě (LPWAN) s nízkou spotřebou (WAN) prostřednictvím operátoru sítě třetí strany. U těchto typů zařízení můžete využít [most služby Azure IoT Central](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge) k posílání dat zařízení do vaší aplikace IoT ve službě Azure IoT Central. Alternativně můžete mít brány zařízení, které jsou schopné IP a můžou se přímo připojit k IoT Central.
+Zařízení použitá v inteligentních vodách budou obecně připojena prostřednictvím operátoru sítě (LPWAN) s nízkou spotřebou (WAN). U těchto typů zařízení můžete k posílání dat zařízení do vaší aplikace IoT v Azure IoT Central použít [most IoT Central pro zařízení Azure](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge) . Alternativně můžete mít brány zařízení, které jsou schopné IP a můžou se přímo připojit k IoT Central.
 
 ## <a name="iot-central"></a>IoT Central 
 Azure IoT Central je aplikační platforma IoT, která vám umožní rychle začít pracovat v řešení IoT. Vaše řešení můžete označit, přizpůsobit a integrovat s službami třetích stran.
@@ -44,11 +44,11 @@ Po připojení inteligentních zařízení k IoT Central získáte příkazy a o
 ## <a name="extensibility-and-integrations"></a>Rozšiřitelnost a integrace 
 Aplikaci IoT můžete v IoT Central zvětšit a volitelně:
 * Transformujte a Integrujte data IoT pro pokročilé analýzy, například školení modelů strojového učení, prostřednictvím průběžného exportu dat z aplikace IoT Central.
-* automatizace pracovních postupů v jiných systémech aktivací akcí prostřednictvím Microsoft Flow nebo webhooků z aplikace IoT Central
+* automatizace pracovních postupů v jiných systémech aktivací akcí pomocí Microsoft Flow nebo webhooků z aplikace IoT Central
 * programově přístup k aplikaci IoT v IoT Central prostřednictvím rozhraní API IoT Central
 
 ## <a name="business-applications"></a>Obchodní aplikace 
-Data IoT je možné využít k napájení různých podnikových aplikací v rámci vodního nástroje. Další informace o tom, jak připojit aplikaci monitorování spotřeby IoT Central vody k polím služby, najdete v kurzu o [integraci s poli služby Dynamics 365](./how-to-configure-connected-field-services.md) . 
+Data IoT se dají použít k napájení různých druhů podnikových aplikací v rámci vodního nástroje. Další informace o tom, jak připojit aplikaci monitorování spotřeby IoT Central vody k polím služby, najdete v kurzu o [integraci s poli služby Dynamics 365](./how-to-configure-connected-field-services.md) . 
 
 
 ## <a name="next-steps"></a>Další kroky

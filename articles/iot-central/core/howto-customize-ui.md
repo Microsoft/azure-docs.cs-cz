@@ -3,23 +3,23 @@ title: Přizpůsobení uživatelského rozhraní Azure IoT Central | Microsoft D
 description: Jak přizpůsobit motiv a odkazy na nápovědu pro aplikaci Azure IoT Central
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/26/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 829ea1bcca36dfba2da3e3946b48b7249f69ee62
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3afa86aae3b51ea20610dcbff5211e59fb341650
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953587"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018427"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>Přizpůsobení uživatelského rozhraní Azure IoT Central
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
+Tento článek popisuje, jak jako správce můžete přizpůsobit uživatelské rozhraní aplikace pomocí vlastních motivů a úpravou odkazů na odkazy, které odkazují na vaše vlastní prostředky pro usnadnění. 
 
-Tento článek popisuje, jak jako správce můžete přizpůsobit uživatelské rozhraní aplikace pomocí vlastních motivů a úpravou odkazů na odkazy, které odkazují na vaše vlastní prostředky pro usnadnění.
+
 
 Následující snímek obrazovky ukazuje stránku používající standardní motiv:
 
@@ -41,7 +41,7 @@ Na této stránce můžete přizpůsobit následující aspekty aplikace:
 
 Obrázek PNG, který není větší než 1 MB, s průhledným pozadím. Toto logo se zobrazí vlevo v záhlaví aplikace IoT Central.
 
-Pokud obrázek loga obsahuje název vaší aplikace, můžete skrýt text s názvem aplikace. Další informace najdete v tématu [Správa aplikace](./howto-administer.md#change-application-name-and-url).
+Pokud obrázek loga obsahuje název vaší aplikace, můžete skrýt text s názvem aplikace. Další informace najdete v tématu [Správa aplikace](howto-administer.md#change-application-name-and-url).
 
 ### <a name="browser-icon-favicon"></a>Ikona prohlížeče (favicon)
 
@@ -78,4 +78,4 @@ Můžete také přidat nové položky do nabídky Help a odebrat výchozí polo�
 Teď, když jste se naučili, jak přizpůsobit uživatelské rozhraní ve vaší aplikaci IoT Central, je zde několik navrhovaných dalších kroků:
 
 - [Správa aplikace](./howto-administer.md)
-- [Přidání dlaždic do řídicího panelu](./howto-add-tiles-to-your-dashboard.md)
+- [Přidání dlaždic do řídicího panelu](howto-add-tiles-to-your-dashboard.md)

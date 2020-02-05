@@ -1,6 +1,6 @@
 ---
-title: Řešení Azure VMware podle CloudSimple – kvóta uzlu CloudSimple
-description: Popisuje omezení kvót pro uzly CloudSimple a způsob, jak požádat o zvýšení kvóty.
+title: Řešení Azure VMware (AVS) – kvóta uzlu AVS
+description: Popisuje omezení kvóty pro uzly služby AVS a postup, jak požádat o zvýšení kvóty.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/19/2019
@@ -8,27 +8,27 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 83dc9e26e03eb955d88340d1ed21084d4e685ed8
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: fa1b056c8c96fb09def63ca1cd696fc2da5e9bed
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70913935"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019634"
 ---
-# <a name="cloudsimple-node-quota-limits"></a>Omezení kvóty uzlu CloudSimple
+# <a name="avs-node-quota-limits"></a>Omezení kvóty uzlu AVS
 
-V případě, že je vaše předplatné pro službu CloudSimple povolené, jsou čtyři uzly výchozím množstvím dostupným k nákupu.  Z Azure Portal můžete koupit libovolný [typ uzlu](cloudsimple-node.md) .  K vytvoření privátního cloudu se vyžadují aspoň tři uzly stejné SKU.  Pokud jste uzly zakoupili, může se při pokusu o zakoupení dalších uzlů zobrazit chyba.
+Když je vaše předplatné služby AVS povolené, jsou čtyři uzly výchozím množstvím dostupným k nákupu. Z Azure Portal můžete koupit libovolný [typ uzlu](cloudsimple-node.md) . K vytvoření privátního cloudu služby AVS se vyžadují aspoň tři uzly stejné SKU. Pokud jste uzly zakoupili, může se při pokusu o zakoupení dalších uzlů zobrazit chyba.
 
 ## <a name="quota-increase"></a>Navýšení kvóty
 
-Můžete zvýšit kvótu uzlu odesláním žádosti o podporu. Provozní tým služby vyhodnotí požadavek a bude spolupracovat s vámi k zvýšení kvóty uzlů.  Po otevření nového lístku vyberte následující možnosti:
+Můžete zvýšit kvótu uzlu odesláním žádosti o podporu. Provozní tým služby vyhodnotí požadavek a bude spolupracovat s vámi k zvýšení kvóty uzlů. Po otevření nového lístku vyberte následující možnosti:
 
-* Typ problému: **Odbornou**
+* Typ problému: **technický**
 * Předplatné: **ID vašeho předplatného**
-* Typ služby: **Řešení VMware podle CloudSimple**
-* Typ problému: **Kvóta vyhrazených uzlů**
-* Podtyp problému: **Zvýšení kvóty vyhrazených uzlů**
-* Závislosti **Zvýšení kvóty**
+* Typ služby: **řešení VMware pomocí služby AVS**
+* Typ problému: **kvóta vyhrazených uzlů**
+* Podtyp problému: **zvýšení kvóty vyhrazených uzlů**
+* Předmět: **zvýšení kvóty**
 
 V podrobnostech lístku podpory zadejte požadovaný počet uzlů a SKU uzlu.
 
@@ -38,4 +38,4 @@ V podrobnostech lístku podpory zadejte požadovaný počet uzlů a SKU uzlu.
 ## <a name="next-steps"></a>Další kroky
 
 * [Koupit uzly](create-nodes.md)
-* [CloudSimple uzly – přehled](cloudsimple-node.md)
+* [Přehled uzlů pro funkci AVS](cloudsimple-node.md)

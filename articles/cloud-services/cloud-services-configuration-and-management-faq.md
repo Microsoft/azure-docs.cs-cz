@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 50dd6e2387abbf5b24adcee708dd2ff387e33261
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 4ca8c18d448297cc2d2e2249a1dbbe04ecccd092
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845373"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019413"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s konfigurací a správou pro Azure Cloud Services: nejčastější dotazy
 
@@ -174,11 +174,11 @@ Další informace najdete v tématu [New: konfigurovatelný časový limit neči
 
 ### <a name="how-do-i-associate-a-static-ip-address-to-my-cloud-service"></a>Návody přidružit ke cloudové službě statickou IP adresu?
 Chcete-li nastavit statickou IP adresu, je nutné vytvořit vyhrazenou IP adresu. Tato vyhrazená IP adresa může být přidružená k nové cloudové službě nebo ke stávajícímu nasazení. Podrobnosti najdete v následujících dokumentech:
-* [Postup vytvoření rezervované IP adresy](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#manage-reserved-vips)
-* [Vyhrazení IP adresy existující cloudové služby](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
-* [Přidružení rezervované IP adresy k nové cloudové službě](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-new-cloud-service)
-* [Přidružení rezervované IP adresy k běžícímu nasazení](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-running-deployment)
-* [Přidružení rezervované IP adresy ke cloudové službě pomocí konfiguračního souboru služby](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
+* [Postup vytvoření rezervované IP adresy](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#manage-reserved-vips)
+* [Vyhrazení IP adresy existující cloudové služby](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#reserve-the-ip-address-of-an-existing-cloud-service)
+* [Přidružení rezervované IP adresy k nové cloudové službě](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-new-cloud-service)
+* [Přidružení rezervované IP adresy k běžícímu nasazení](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-running-deployment)
+* [Přidružení rezervované IP adresy ke cloudové službě pomocí konfiguračního souboru služby](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
 ### <a name="what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides"></a>Jaké jsou funkce a možnosti, které Azure Basic IP/IDS a DDOS poskytuje?
 Azure má na fyzických serverech Datacenter IP/ID, aby se mohly chránit před hrozbami. Kromě toho můžou zákazníci nasazovat řešení zabezpečení třetích stran, například brány firewall webových aplikací, síťové brány firewall, antimalwarové funkce, zjišťování neoprávněných vniknutí, systémy prevence (ID/IP adresy) a další. Další informace najdete v tématech [Ochrana vašich dat a prostředků a dodržování globálních standardů zabezpečení](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity).

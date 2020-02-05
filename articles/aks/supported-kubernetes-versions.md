@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: saudas
-ms.openlocfilehash: bba4196547bda3d3ddcf3344032de5b9286639a0
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 8c144fb0c9818e21c2ca5bd61525067b485531bb
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996744"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026111"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Podporované verze Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -96,7 +96,7 @@ New Supported Version List
 * Pro nové **menší** verze Kubernetes
   * Všichni uživatelé budou veřejně vyrozuměni o nové verzi a jaká verze bude odebrána.
   * Při vydání nové verze opravy se ve stejnou chvíli odebere nejstarší verze opravy.
-  * Zákazníci mají **60 dní** od data veřejné oznámení k upgradu na podporovanou verzi dílčí verze.
+  * Zákazníci mají **30 dnů** od data veřejného oznámení pro upgrade na podporovanou verzi dílčí verze.
 * Pro nové verze **patch** Kubernetes
   * Všem uživatelům se zobrazí oznámení o vydání nové verze opravy a k upgradu na nejnovější verzi opravy.
   * Upgrade na novější podporovanou verzi opravy pro uživatele má **30 dní** . Aby uživatelé před odebráním nejstarší verze nastavili upgrade na podporovanou verzi, mají **30 dní** .
@@ -139,7 +139,7 @@ az aks get-versions --location eastus --output table
 
 **Co se stane, když zákazník upgraduje cluster Kubernetes s menší verzí, která není podporovaná?**
 
-Pokud používáte verzi *n-3* , jste mimo podporu a budete vyzváni k upgradu. Pokud váš upgrade z verze n-3 na n-2 uspěje, jste teď v rámci našich zásad podpory. Například:
+Pokud používáte verzi *n-3* , jste mimo podporu a budete vyzváni k upgradu. Pokud váš upgrade z verze n-3 na n-2 uspěje, jste teď v rámci našich zásad podpory. Příklad:
 
 - Pokud je nejstarší podporovaná verze AKS *1.13.* a a jste na *1.12. b* nebo starším, jste mimo podporu.
 - Pokud upgrade z *1.12. b* na *1.13. a* nebo vyšší je úspěšný, jste zpátky v rámci našich zásad podpory.

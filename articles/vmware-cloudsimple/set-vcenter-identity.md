@@ -1,6 +1,6 @@
 ---
-title: Řešení Azure VMware podle CloudSimple – nastavení zdrojů vCenter identity v privátním cloudu
-description: Popisuje, jak nastavit privátní cloud vCenter pro ověřování pomocí služby Active Directory pro správce VMware pro přístup k serveru vCenter.
+title: Řešení Azure VMware (AVS) – nastavení zdrojů identit vCenter v privátním cloudu služby AVS
+description: Popisuje postup nastavení privátního cloudu služby AVS pro ověřování pomocí služby Active Directory pro správce VMware pro přístup k serveru vCenter.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,27 +8,27 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: eeced5205b836a15a43fbccfb8c6cb60b4bec29f
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: ad4a7b2bc67b7d50d9e9a5f8337a09dbe77366ea
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76542861"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77014211"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Nastavení zdrojů identity vCenter pro používání služby Active Directory
 
 ## <a name="about-vmware-vcenter-identity-sources"></a>O zdrojích identity VMware vCenter
 
-VMware vCenter podporuje různé zdroje identity pro ověřování uživatelů, kteří přistupují k vCenter.  Váš CloudSimple privátní cloud vCenter se dá nastavit tak, aby se pro správce VMware nastavila ověřování se službou Active Directory pro přístup k serveru vCenter. Po dokončení instalace může uživatel **cloudowner** přidat uživatele ze zdroje identity do vCenter.  
+VMware vCenter podporuje různé zdroje identity pro ověřování uživatelů, kteří přistupují k vCenter. Váš privátní cloud pro službu AVS můžete nastavit tak, aby se ověřil ve službě Active Directory, aby měli správci VMware přístup k serveru vCenter. Po dokončení instalace může uživatel **cloudowner** přidat uživatele ze zdroje identity do vCenter. 
 
 Doménu a řadiče domény služby Active Directory můžete nastavit některým z těchto způsobů:
 
 * Doména a řadiče domény služby Active Directory místně spuštěné
 * Doména a řadiče domény služby Active Directory běžící na Azure jako virtuální počítače ve vašem předplatném Azure
-* Nová doména a řadiče domény služby Active Directory běžící v privátním cloudu
+* Nová doména a řadiče domény služby Active Directory běžící v privátním cloudu služby AVS
 * Služba Azure Active Directory
 
-V této příručce se dozvíte, jak nastavit doménu a řadiče domény služby Active Directory, které jsou spuštěné místně nebo jako virtuální počítače ve vašich předplatných.  Pokud chcete jako zdroj identity použít Azure AD, přečtěte si téma [použití Azure AD jako zprostředkovatele identity pro vCenter v CloudSimple privátním cloudu](azure-ad.md) , kde najdete podrobné pokyny k nastavení zdroje identity.
+V této příručce se dozvíte, jak nastavit doménu a řadiče domény služby Active Directory, které jsou spuštěné místně nebo jako virtuální počítače ve vašich předplatných. Pokud chcete jako zdroj identity použít Azure AD, přečtěte si téma [použití Azure AD jako zprostředkovatele identity pro vCenter v privátním cloudu](azure-ad.md) , kde najdete podrobné pokyny k nastavení zdroje identity.
 
 Před [přidáním zdroje identity](#add-an-identity-source-on-vcenter)dočasně předávejte [oprávnění vCenter](escalate-private-cloud-privileges.md).
 
@@ -39,14 +39,14 @@ Před [přidáním zdroje identity](#add-an-identity-source-on-vcenter)dočasně
 ## <a name="identity-source-options"></a>Možnosti zdroje identity
 
 * [Přidání místní služby Active Directory jako zdroje identity jednotného přihlašování](#add-on-premises-active-directory-as-a-single-sign-on-identity-source)
-* [Nastavení nové služby Active Directory v privátním cloudu](#set-up-new-active-directory-on-a-private-cloud)
+* [Nastavení nové služby Active Directory na privátním cloudu služby AVS](#set-up-new-active-directory-on-an-avs-private-cloud)
 * [Nastavení služby Active Directory v Azure](#set-up-active-directory-on-azure)
 
 ## <a name="add-on-premises-active-directory-as-a-single-sign-on-identity-source"></a>Přidání místní služby Active Directory jako zdroje identity jednotného přihlašování
 
 Pokud chcete nastavit místní službu Active Directory jako zdroj identity jednotného přihlašování, budete potřebovat:
 
-* [Připojení VPN typu Site-to-site](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) z místního datacentra do privátního cloudu.
+* [Připojení VPN typu Site-to-site](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) z místního datacentra k privátnímu cloudu služby AVS.
 * IP adresa místního serveru DNS přidaná do vCenter a řadiče služeb platformy (PSC).
 
 Při nastavování domény služby Active Directory použijte informace v následující tabulce.
@@ -69,9 +69,9 @@ Pokud máte informace v předchozí tabulce, můžete do vCenter přidat místn�
 > [!TIP]
 > Další informace o zdrojích identity jednotného přihlašování najdete na [stránce dokumentace k VMware](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html).
 
-## <a name="set-up-new-active-directory-on-a-private-cloud"></a>Nastavení nové služby Active Directory v privátním cloudu
+## <a name="set-up-new-active-directory-on-an-avs-private-cloud"></a>Nastavení nové služby Active Directory na privátním cloudu služby AVS
 
-V privátním cloudu můžete nastavit novou doménu služby Active Directory a použít ji jako zdroj identity pro jednotné přihlašování.  Doména služby Active Directory může být součástí existující doménové struktury služby Active Directory nebo může být nastavena jako nezávislá doménová struktura.
+V privátním cloudu služby AVS můžete nastavit novou doménu služby Active Directory a použít ji jako zdroj identity pro jednotné přihlašování. Doména služby Active Directory může být součástí existující doménové struktury služby Active Directory nebo může být nastavena jako nezávislá doménová struktura.
 
 ### <a name="new-active-directory-forest-and-domain"></a>Nová doménová struktura a doména služby Active Directory
 
@@ -100,15 +100,15 @@ Po nastavení domény služby Active Directory můžete do [vCenter přidat zdro
 
 ## <a name="set-up-active-directory-on-azure"></a>Nastavení služby Active Directory v Azure
 
-Služba Active Directory běžící v Azure je podobná službě Active Directory běžící v místním prostředí.  K nastavení služby Active Directory běžící v Azure jako zdroje identity jednotného přihlašování na vCenter musí mít vCenter Server a PSC připojení k síti Azure Virtual Network, kde jsou spuštěné služby Active Directory.  Toto připojení můžete vytvořit pomocí [azure Virtual Networkho připojení pomocí služby ExpressRoute](azure-expressroute-connection.md) z Azure Virtual Network, kde jsou spuštěné služby Active Directory pro CloudSimple privátní cloud.
+Služba Active Directory běžící v Azure je podobná službě Active Directory běžící v místním prostředí. K nastavení služby Active Directory běžící v Azure jako zdroje identity jednotného přihlašování na vCenter musí mít vCenter Server a PSC připojení k síti Azure Virtual Network, kde jsou spuštěné služby Active Directory. Toto připojení můžete vytvořit pomocí [Virtual Network připojení k Azure pomocí ExpressRoute](azure-expressroute-connection.md) z Azure Virtual Network, kde jsou spuštěné služby Active Directory pro službu AVS privátní cloud.
 
-Po navázání síťového připojení použijte postup v části [Přidání místní služby Active Directory jako zdroje identity jednotného přihlašování](#add-on-premises-active-directory-as-a-single-sign-on-identity-source) a přidejte ho jako zdroj identity.  
+Po navázání síťového připojení použijte postup v části [Přidání místní služby Active Directory jako zdroje identity jednotného přihlašování](#add-on-premises-active-directory-as-a-single-sign-on-identity-source) a přidejte ho jako zdroj identity. 
 
 ## <a name="add-an-identity-source-on-vcenter"></a>Přidání zdroje identity na vCenter
 
-1. [Eskalace oprávnění](escalate-private-cloud-privileges.md) ve vašem privátním cloudu.
+1. [Eskalace oprávnění](escalate-private-cloud-privileges.md) v privátním cloudu služby AVS
 
-2. Přihlaste se k vCenter pro váš privátní cloud.
+2. Přihlaste se k vCenter pro privátní cloud služby AVS.
 
 3. Vyberte možnost **domovská > Správa**.
 

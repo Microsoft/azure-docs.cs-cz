@@ -1,6 +1,6 @@
 ---
-title: Řešení Azure VMware podle CloudSimple – volba řešení vyrovnávání zatížení pro privátní cloudy CloudSimple
-description: Popisuje možnosti vyrovnávání zatížení, které nasazují aplikaci v privátním cloudu.
+title: Řešení Azure VMware (AVS) – volba řešení vyrovnávání zatížení pro privátní cloudy služby AVS
+description: Popisuje možnosti vyrovnávání zatížení nasazení aplikace v privátním cloudu služby AVS
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6c98b699b1d3aba15ce69c519d35d7ce3e90d123
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 405bc9d95b8d82e2181e2fb828d6bcc00c8c4639
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045728"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77014874"
 ---
-# <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>Volba řešení vyrovnávání zatížení pro privátní cloudy CloudSimple
+# <a name="choose-a-load-balancing-solution-for-avs-private-clouds"></a>Volba řešení vyrovnávání zatížení pro privátní cloudy služby AVS
 
-Když nasazujete aplikaci v privátním cloudu CloudSimple, můžete pro vyrovnávání zatížení zvolit některou z několika možností.
+Při nasazování aplikace v privátním cloudu služby AVS můžete zvolit některou z několika možností pro vyrovnávání zatížení.
 
-Můžete zvolit virtuální nebo softwarový nástroj pro vyrovnávání zatížení ve vašem privátním cloudu CloudSimple nebo dokonce použít nástroj pro vyrovnávání zatížení Azure L7 spuštěný ve vašem předplatném Azure ke front-endu virtuálních počítačů webové vrstvy, které běží v privátním cloudu CloudSimple. Tady je seznam několika možností:
+Můžete zvolit virtuální nebo softwarový nástroj pro vyrovnávání zatížení v privátním cloudu služby AVS nebo dokonce použít nástroj pro vyrovnávání zatížení Azure L7 spuštěný ve vašem předplatném Azure k front-endu virtuálních počítačů webové vrstvy spuštěných v privátním cloudu služby AVS. Tady je seznam několika možností:
 
 ## <a name="virtual-load-balancers"></a>Virtuální nástroje pro vyrovnávání zatížení
 
@@ -29,13 +29,13 @@ Někteří oblíbená dodavatelé jsou: NginX: http://nginx.org/en/docs/http/loa
 
 ## <a name="azure-l7-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure L7
 
-Pokud používáte Azure Application Gateway jako nástroj pro vyrovnávání zatížení L7 pro vaši aplikaci spuštěnou v privátním cloudu, nemusíte spravovat software nástroje pro vyrovnávání zatížení. Software pro vyrovnávání zatížení se spravuje v Azure. Všechny virtuální počítače webové vrstvy v privátním cloudu používají privátní IP adresy a k překladu názvů nevyžadují další pravidla překladu adres (NAT) ani veřejné IP adresy. Virtuální počítače webové vrstvy komunikují s Application Gateway Azure přes privátní připojení s nízkou latencí a velkou šířkou pásma.
+Pokud používáte Azure Application Gateway jako nástroj pro vyrovnávání zatížení L7 pro vaši aplikaci spuštěnou v privátním cloudu služby AVS, nemusíte spravovat software nástroje pro vyrovnávání zatížení. Software pro vyrovnávání zatížení se spravuje v Azure. Všechny virtuální počítače webové vrstvy v privátním cloudu služby AVS používají privátní IP adresy a k překladu názvů nevyžadují další pravidla překladu adres (NAT) ani veřejné IP adresy. Virtuální počítače webové vrstvy komunikují s Application Gateway Azure přes privátní připojení s nízkou latencí a velkou šířkou pásma.
 
 Další informace o tom, jak nakonfigurovat toto řešení, najdete v Průvodci řešením použití Azure Application Gateway jako nástroje pro vyrovnávání zatížení L7.
 
 ## <a name="azure-internal-load-balancer"></a>Interní nástroj pro vyrovnávání zatížení Azure
 
-Pokud se rozhodnete aplikaci spustit v hybridním nasazení, kde webová front-end je spuštěná ve virtuální síti Azure v rámci vašeho předplatného Azure a vrstva DB aplikace je spuštěná ve virtuálních počítačích VMware v privátním cloudu CloudSimple, můžete použít interní zatížení Azure. Vyrovnávání zatížení (L4 Load Balancer) před virtuálními počítači vrstvy databáze pro správu provozu.
+Pokud se rozhodnete aplikaci spustit v hybridním nasazení, kde webová front-end je spuštěná ve virtuální síti Azure v rámci vašeho předplatného Azure a vrstva databáze aplikace běží na virtuálních počítačích VMware v privátním cloudu služby AVS, můžete použít interní nástroj pro vyrovnávání zatížení Azure (L 4 Nástroj pro vyrovnávání zatížení) před virtuálními počítači vrstvy databáze pro správu provozu.
 
 Další informace najdete v dokumentaci k [interním Load Balancer](../load-balancer/concepts-limitations.md#internalloadbalancer) Azure.
 

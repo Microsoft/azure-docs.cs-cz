@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 8c7d2481fe3ef361386bacc652d87744c1c790bb
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 13b626945743c17bad8df58fba77e1c960e90ef3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581504"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016558"
 ---
 # <a name="build-energy-solutions-with-iot-central"></a>Sestavování řešení pro energetiku s využitím služby IoT Central 
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 
 Inteligentní měřiče a sluneční panely hrají důležitou roli v transformaci z energetického odvětví. Inteligentní měřiče poskytují více ovládacích prvků a přehledy o spotřebě energie a růstu slunečních panelů, což roste při obnovitelné výrobě energie. Aplikace pro monitorování inteligentního měření a slunečního panelu jsou ukázkové šablony, které znázorňují různé možnosti. Partneři můžou tyto šablony využít k sestavování energetických řešení pomocí IoT Central pro jejich konkrétní potřeby. Pro nasazení a používání těchto aplikací nejsou potřeba žádné nové kódování a žádné další náklady. Přečtěte si další informace o šablonách energetické aplikace a jejich schopnostech.

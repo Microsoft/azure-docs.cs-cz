@@ -2,18 +2,18 @@
 title: Použití Galerie sdílených imagí k vytvoření vlastního fondu – Azure Batch | Microsoft Docs
 description: Vytvořte fond služby Batch pomocí Galerie sdílených imagí a zřiďte vlastní image pro výpočetní uzly, které obsahují software a data, která pro vaši aplikaci potřebujete. Vlastní image představují účinný způsob konfigurace výpočetních uzlů pro spouštění úloh služby Batch.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.topic: article
 ms.date: 08/28/2019
-ms.author: jushiman
-ms.openlocfilehash: a933d0656bb4c22e848a663757f4e5e3fa276c61
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: 2cff6a0e48fc7bf58a642f509fcda6b114e002ef
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029649"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022932"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>Vytvoření vlastního fondu pomocí Galerie sdílených imagí
 
@@ -133,7 +133,7 @@ private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfi
 
 Pomocí následujících kroků můžete vytvořit fond ze sdílené image v Azure Portal.
 
-1. Otevřete [portál Azure](https://portal.azure.com).
+1. Otevřete web [Azure Portal](https://portal.azure.com).
 1. Přejít na **účty Batch** a vyberte svůj účet.
 1. Vyberte **fondy** a potom **Přidat** a vytvořte nový fond.
 1. V části **typ obrázku** vyberte **sdílená Galerie imagí**.

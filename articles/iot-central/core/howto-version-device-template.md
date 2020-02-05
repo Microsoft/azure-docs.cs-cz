@@ -1,58 +1,72 @@
 ---
-title: Správa verzí šablon zařízení pro Azure IoT Central aplikace | Microsoft Docs
+title: Principy správy verzí šablon zařízení pro aplikace Azure IoT Central | Microsoft Docs
 description: Iterujte na šablonách zařízení vytvořením nových verzí a bez dopadu na živá zařízení připojená k síti.
-author: sandeeppujar
-ms.author: sandeepu
-ms.date: 07/08/2019
+author: sarahhubbard
+ms.author: sahubbar
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: feaa8abcb6635573b3680b77befa5ccb462ec73a
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 530208ed82c95187fac2173aa763ef5507f56b0b
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930129"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018206"
 ---
 # <a name="create-a-new-device-template-version"></a>Vytvořit novou verzi šablony zařízení
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
 
-Azure IoT Central umožňuje rychlý vývoj aplikací IoT. Můžete rychle iterovat v návrzích šablon zařízení přidáním, úpravou nebo odstraněním měření, nastavení nebo vlastností. Některé z těchto změn můžou být pro aktuálně připojená zařízení rušivé. Azure IoT Central identifikuje tyto zásadní změny a poskytuje způsob, jak tyto aktualizace bezpečně nasadit do zařízení.
 
-Šablona zařízení má číslo verze při jeho vytváření. Ve výchozím nastavení je číslo verze 1.0.0. Pokud upravíte šablonu zařízení a tato změna by mohla mít vliv na živá připojená zařízení, Azure IoT Central vás vyzve k vytvoření nové verze šablony zařízení.
+Azure IoT Central umožňuje rychlý vývoj aplikací IoT. Můžete rychle iterovat v návrzích šablon zařízení přidáním, úpravou nebo odstraněním možností zařízení, zobrazení a přizpůsobení. Po publikování šablony zařízení se v modelu schopností zařízení zobrazí jako **publikované** s ikonami zámku vedle modelu. Aby bylo možné provádět změny v modelu schopností zařízení, budete muset vytvořit novou verzi šablony zařízení. V současné době se vlastnosti cloudu, přizpůsobení a zobrazení dají kdykoli upravovat, aniž byste museli verzi šablony zařízení potřebovat. Po uložení kterékoli z těchto změn můžete šablonu zařízení publikovat, aby se k dispozici nejnovější změny pro obsluhu, aby bylo možné zobrazit v Device Explorer.
 
 > [!NOTE]
-> Další informace o tom, jak vytvořit šablonu zařízení, najdete v tématu [nastavení šablony zařízení](howto-set-up-template.md) .
+> Další informace o tom, jak vytvořit šablonu zařízení, najdete v tématu [nastavení a Správa šablony zařízení](howto-set-up-template.md) .
 
-## <a name="changes-that-prompt-a-version-change"></a>Změny, které se dotazují na změnu verze
+## <a name="add-customizations-to-the-device-template-without-versioning"></a>Přidání přizpůsobení do šablony zařízení bez správy verzí
 
-V části Obecné změny nastavení nebo vlastností šablony zařízení se zobrazí výzva ke změně verze.
+Některé prvky možností zařízení je možné upravovat, aniž byste museli mít k disverzi šablonu a rozhraní pro vaše zařízení. Mezi tato pole patří například zobrazované jméno, sémantický typ, minimální hodnota, maximální hodnota, desetinná místa, barva, jednotka, zobrazovaná jednotka, komentář a popis. Přidání jednoho z těchto přizpůsobení:
+
+1. Přejít na stránku **šablony zařízení** .
+1. Vyberte šablonu zařízení, kterou chcete přizpůsobit.
+1. Klikněte na kartu **přizpůsobit** .
+1. Tady jsou uvedené všechny funkce definované v modelu schopností zařízení. Všechna pole, která můžete upravit tady, se dají uložit a používat napříč vaší aplikací, aniž byste museli verzi šablony zařízení použít. Pokud existují pole, která chcete upravit, jsou jen pro čtení, budete muset verzi šablony zařízení změnit. Vyberte pole, které chcete upravit, a zadejte nové hodnoty.
+1. Klikněte na **Uložit**. Tyto hodnoty teď přepíšou vše, co se původně uložilo v šabloně zařízení a použije se v rámci aplikace.
+
+## <a name="versioning-a-device-template"></a>Správa verzí šablony zařízení
+
+Vytvořením nové verze šablony zařízení se vytvoří koncept verze šablony, kde můžete upravit model schopností zařízení. Všechna publikovaná rozhraní zůstanou publikovaná, dokud nebudou samostatně nahlášená verze. Aby bylo možné upravit publikované rozhraní, je třeba nejprve vytvořit novou verzi šablony zařízení.
+
+Při pokusu o úpravu části modelu schopností zařízení, kterou nemůžete upravit v části vlastní nastavení v šabloně zařízení, by měla být šablona zařízení jenom ve verzi. 
+
+Chcete-li pořídit verzi šablony zařízení:
+
+1. Přejít na stránku **šablony zařízení** .
+1. Vyberte šablonu zařízení, u které se pokoušíte o verzi.
+1. V horní části stránky klikněte na tlačítko **verze** a zadejte nový název šablony. Navrhli jsme nový název, který se dá upravit.
+1. Klikněte na **Vytvořit**.
+1. Šablona zařízení je teď v režimu konceptu. Uvidíte, že vaše rozhraní jsou pořád uzamčená a je nutné je upravovat individuálně. 
+
+### <a name="versioning-an-interface"></a>Správa verzí rozhraní
+
+Správa verzí rozhraní umožňuje přidat, aktualizovat a odebrat funkce v rozhraní, které jste už vytvořili. 
+
+Aby bylo možné verzi rozhraní:
+
+1. Přejít na stránku **šablony zařízení** .
+1. Vyberte šablonu zařízení, kterou máte v režimu konceptu.
+1. Vyberte rozhraní, které je v publikovaném režimu, ve kterém chcete verzi upravit.
+1. Klikněte na tlačítko **verze** v horní části stránky rozhraní. 
+1. Klikněte na **Vytvořit**.
+1. Rozhraní je nyní v režimu konceptu. Do svého rozhraní budete moct přidávat nebo upravovat možnosti bez přerušení stávajících úprav a zobrazení. 
 
 > [!NOTE]
-> Změny provedené v šabloně zařízení se nezobrazí při vytváření nové verze, když není připojeno žádné zařízení nebo zařízení na jednom.
+> Standardní rozhraní publikovaná pomocí Azure IoT se nedají vyměnit verze ani upravovat. Tato standardní rozhraní se používají pro certifikaci zařízení.
 
-Následující seznam popisuje akce uživatelů, které mohou vyžadovat novou verzi:
+> [!NOTE]
+> Po publikování rozhraní nemůžete odstranit žádnou z jeho funkcí i v režimu konceptu. Možnosti lze upravovat nebo přidávat pouze do rozhraní v režimu konceptu.
 
-* Vlastnosti (povinné)
-    * Přidání nebo odstranění požadované vlastnosti
-    * Změna názvu pole vlastnosti, názvu pole, kterou vaše zařízení používá k odesílání zpráv.
-*  Vlastnosti (volitelné)
-    * Odstranění volitelné vlastnosti
-    * Změna názvu pole vlastnosti, názvu pole, kterou vaše zařízení používá k odesílání zpráv.
-    * Změna volitelné vlastnosti na požadovanou vlastnost
-*  Nastavení
-    * Přidání nebo odstranění nastavení
-    * Změna názvu pole nastavení, názvu pole, které vaše zařízení používá k posílání a přijímání zpráv.
-
-## <a name="what-happens-on-version-change"></a>Co se stane při změně verze?
-
-Co se stane s pravidly a řídicími panely zařízení, když dojde ke změně verze?
-
-**Pravidla** v předchozí verzi šablony zařízení nadále fungují beze změny. Pravidla se automaticky nemigrují na novou verzi šablony zařízení. Pravidla pro novou verzi šablony můžete vytvořit obvyklým způsobem. Další informace najdete v článku [Vytvoření pravidla telemetrie a nastavení oznámení v](howto-create-telemetry-rules.md) článku s postupem pro Azure IoT Central aplikace.
-
-**Řídicí panely zařízení** mohou obsahovat několik typů dlaždic. Některé dlaždice mohou obsahovat nastavení a vlastnosti. Pokud je odebrána vlastnost nebo nastavení použité v dlaždici, je dlaždice zcela nebo částečně přerušena. Můžete přejít na dlaždici a opravit problém buď odebráním dlaždice, nebo aktualizací obsahu dlaždice.
 
 ## <a name="migrate-a-device-across-device-template-versions"></a>Migrace zařízení napříč verzemi šablon zařízení
 
@@ -60,8 +74,8 @@ Můžete vytvořit několik verzí šablony zařízení. V průběhu času budet
 
 1. Přejít na stránku **Device Explorer** .
 1. Vyberte zařízení, které potřebujete migrovat na jinou verzi.
-1. Vyberte **migrovat zařízení**.
-1. Vyberte číslo verze, do kterého chcete migrovat zařízení, a zvolte **migrovat**.
+1. Klikněte na tlačítko **migrovat**.
+1. Vyberte šablonu zařízení s číslem verze, na které chcete zařízení migrovat, a zvolte **migrovat**.
 
 ![Postup migrace zařízení](media/howto-version-device-template/pick-version.png)
 
@@ -70,4 +84,4 @@ Můžete vytvořit několik verzí šablony zařízení. V průběhu času budet
 Teď, když jste se naučili používat verze šablon zařízení ve vaší aplikaci Azure IoT Central, je tady doporučený další krok:
 
 > [!div class="nextstepaction"]
-> [Jak vytvořit pravidla telemetrie](howto-create-telemetry-rules.md)
+> [Jak vytvořit pravidla telemetrie](tutorial-create-telemetry-rules.md)

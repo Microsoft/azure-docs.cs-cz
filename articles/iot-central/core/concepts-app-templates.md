@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 12c624c6798ca48cad9312cafaf3425091a82a71
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: fde46ddfe85ca2cd1aa4ba65c8bd93d4db328410
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867444"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019039"
 ---
 # <a name="what-are-application-templates"></a>Co jsou šablony aplikací?
 
@@ -26,44 +26,27 @@ ms.locfileid: "75867444"
 - Předem konfigurovaná pravidla a úlohy
 - Bohatá dokumentace, včetně kurzů a postupů
 
-## <a name="preview-templates"></a>Náhled šablon
+Šablonu aplikace zvolíte při vytváření aplikace. Po vytvoření aplikace už šablonu nemůžete změnit.
 
-Vaše volba šablony aplikace určuje, jestli vaše aplikace používá funkce IoT Central verze Preview, jako je technologie Plug and Play pro zařízení.
+## <a name="custom-templates"></a>Vlastní šablony
 
-V současné době je šablona aplikace, která používá _všeobecně dostupné_ funkce, následující:
+Pokud chcete vytvořit aplikaci od začátku, vyberte jednu ze dvou šablon vlastní aplikace:
 
-- Vlastní aplikace > starší verze aplikace
+- Custom application (Vlastní aplikace)
+- Vlastní aplikace (starší verze)
 
-
-V současné době jsou šablony aplikací, které používají funkce _veřejné verze Preview_ :
-
-- Aplikace vlastní aplikace > Preview
-- > Připojená logistika v maloobchodní síti
-- Retail > digital Distribution Center
-- Analýzy maloobchodních > v obchodě – monitorování podmínek
-- Analýzy maloobchodních > v obchodě – rezervace
-- Prodejní > – Centrum pro doplňování
-- Správa inteligentního inventáře > maloobchodního prodeje
-- Monitorování inteligentních měřičů energie >
-- Sledování panelu Energy > slunečního dozoru
-- Správa propojených odpadů v oblasti státní správy >
-- Monitorování spotřeby vody > státní správy
-- Monitorování kvality >ch vod pro státní správu
-- Zdravotní péče > nepřetržité monitorování pacientů
-
-> [!NOTE]
-> Šablony **starších verzí aplikací** jsou aktuálně k dispozici v **USA**, **Austrálii**, **Asie a Tichomoří**nebo v **Evropě** , zatímco jiné šablony jsou aktuálně dostupné pouze v **Evropě** a v umístění **USA** .
+Pokud nemáte konkrétní důvod k použití starší šablony aplikace, vyberte šablonu **vlastní aplikace** .
 
 ## <a name="industry-focused-templates"></a>Šablony zaměřené na odvětví
 
 Azure IoT Central je nezávislá aplikační platforma pro odvětví. Šablony aplikací jsou příklady zaměřené na obory, které jsou v současnosti dostupné pro tyto odvětví. Další informace jsou k dispozici v budoucnu:
 
-- [Maloobchod](../retail/overview-iot-central-retail-pnp.md)
+- [Prodejci](../retail/overview-iot-central-retail-pnp.md)
   - Propojená logistika
   - Digitální distribuční centrum
   - Analýzy v obchodě – monitorování podmínek
   - Analýza v obchodě – rezervace
-  - Správa inteligentních inventářů
+  - Inteligentní správa inventáře
 - [Energie](../energy/overview-iot-central-energy.md)
   - Inteligentní monitorování měřičů
   - Monitorování solárních panelů

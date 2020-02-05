@@ -6,13 +6,13 @@ ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
-ms.date: 01/21/2020
-ms.openlocfilehash: dff4901f1488406ed1259d1411a6b05b949382cb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/04/2020
+ms.openlocfilehash: fcdcef5d63163b24fe5de0f547dc2dde00cd674f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715841"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016251"
 ---
 # <a name="update-to-azure-activity-log-collection-and-export"></a>Aktualizace shromažďování a exportu protokolů aktivit Azure
 [Protokol aktivit Azure](platform-logs-overview.md) je [protokol platformy](platform-logs-overview.md) , který poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo v Azure. Metoda odeslání položek protokolu aktivit do [centra událostí nebo účtu úložiště](activity-log-export.md) nebo do [pracovního prostoru Log Analytics](activity-log-collect.md) se změnila na použití [nastavení diagnostiky](diagnostic-settings.md). Tento článek popisuje rozdíl mezi metodami a vymazáním nastavení starší verze v přípravě na možnost změnit nastavení diagnostiky.
@@ -53,6 +53,9 @@ Byl přidán následující sloupec:
 - Authorization_d
 - Claims_d
 - Properties_d
+
+> [!IMPORTANT]
+> V některých případech mohou být hodnoty v těchto sloupcích velkými písmeny. Pokud máte dotaz, který obsahuje tyto sloupce, měli byste použít [operátor = ~](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators) pro porovnání velkých a malých písmen.
 
 ## <a name="work-with-legacy-settings"></a>Práce se staršími nastaveními
 Nastavení starší verze pro shromažďování protokolu aktivit budou fungovat i v případě, že se nerozhodnete nahradit nastavením diagnostiky. Pomocí následující metody můžete spravovat profil protokolu pro předplatné.
