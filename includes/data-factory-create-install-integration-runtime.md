@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 12c2f1bd2a3185d26eae02b5cd756392b5b87c16
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: e7717cdeec33a32f926cb5ef4c1f6d28c25f9d93
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533263"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989076"
 ---
 ## <a name="create-a-self-hosted-integration-runtime"></a>Vytvoření místního prostředí Integration Runtime
 
@@ -83,7 +83,8 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
 
 5. Pro registraci místního prostředí Integration Runtime, které nainstalujete na počítači v dalších krocích, zkopírujte jeden z klíčů (bez uvozovek).  
 
-## <a name="install-the-integration-runtime"></a>Instalace prostředí Integration Runtime
+## <a name="install-the-integration-runtime-tool"></a>Instalace nástroje Integration runtime
+
 1. Pokud již na počítači máte prostředí Integration Runtime, odinstalujte ho pomocí panelu **Přidat nebo odebrat programy**. 
 
 2. Na místním počítači s Windows [stáhněte](https://www.microsoft.com/download/details.aspx?id=39717) místní prostředí Integration Runtime. Spusťte instalaci.
@@ -135,5 +136,4 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
     h. Pokud chcete potvrdit, že se prostředí Integration Runtime může připojit k SQL Serveru, vyberte **Test**. Pokud je připojení úspěšné, zobrazí se zelená značka zaškrtnutí. Jestliže připojení není úspěšné, zobrazí se chybová zpráva. Opravte všechny problémy a ověřte, že se prostředí Integration Runtime může připojit k SQL Serveru.    
 
     > [!NOTE]
-    > Poznamenejte si hodnoty pro typ ověřování, server, databázi, uživatele a heslo. Použijete je později v tomto kurzu. 
-    
+    > Poznamenejte si hodnoty pro typ ověřování, server, databázi, uživatele a heslo. Použijete je později v tomto kurzu.

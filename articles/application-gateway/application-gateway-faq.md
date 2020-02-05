@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 14fe8780bb7919d942da186698275d5199f4586e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9d47986df9b9cbc6b8519aa0466b3434d6216e72
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770080"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985998"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Nejčastější dotazy týkající se Application Gateway
 
@@ -68,7 +68,9 @@ Pokud jako koncový bod používáte veřejnou IP adresu, najdete informace o IP
 
 ### <a name="what-are-the-settings-for-keep-alive-timeout-and-tcp-idle-timeout"></a>Jaká jsou nastavení časového limitu pro zachování a časový limit nečinnosti protokolu TCP?
 
- V SKU Application Gateway v1 má časový limit zachování 120 sekund. Časový limit zachování pro SKU v2 je 75 sekund. Časový limit nečinnosti protokolu TCP je výchozí 4 minuty na front-endové virtuální IP adrese (VIP) Application Gateway.
+*Časový limit zachování* určuje, jak dlouho Application Gateway čekat, než klient pošle další požadavek HTTP na trvalé připojení, než ho znovu použije nebo zavře. *Časový limit nečinnosti protokolu TCP* určuje, jak dlouho zůstane připojení TCP otevřené v případě žádné aktivity. 
+
+*Časový limit udržování* připojení v SKU Application Gateway v1 je 120 sekund a v SKU v2 je 75 sekund. *Časový limit nečinnosti TCP* je výchozí 4 minuty na front-endové virtuální IP adrese (VIP) verze V1 i v2 Application Gateway. 
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>Mění se IP adresa nebo název DNS po celou dobu životnosti služby Application Gateway?
 

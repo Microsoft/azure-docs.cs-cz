@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8c832982a5525b0296155197d89684932cebaa95
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfbf54c19aef00cbda886a4531797cda7ef3a191
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418826"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986100"
 ---
 # <a name="az-module-support-in-azure-automation"></a>AZ modul Support in Azure Automation
 
@@ -18,7 +18,7 @@ Azure Automation podporuje možnost použít [Azure PowerShell AZ Module](/power
 
 ## <a name="considerations"></a>Požadavky
 
-Při použití modulu AZ Module v Azure Automation je třeba vzít v úvahu mnoho věcí. Runbooky a moduly můžou používat řešení vyšší úrovně ve vašem účtu Automation. Úpravy runbooků nebo upgradované moduly můžou potenciálně způsobovat problémy se sadami Runbook. Před importem nových modulů `Az` byste měli všechny Runbooky a řešení pečlivě otestovat v samostatném účtu Automation. Jakékoli úpravy modulů můžou negativně [začínat a zastavovat](automation-solution-vm-management.md) řešení. V účtech Automation, které obsahují žádná řešení, se nedoporučuje měnit moduly a runbooky. Toto chování není specifické pro funkce AZ Modules. Toto chování je potřeba vzít v úvahu při zavádění změn v účtu Automation.
+Při použití modulu AZ Module v Azure Automation je třeba vzít v úvahu mnoho věcí. Runbooky a moduly můžou používat řešení vyšší úrovně ve vašem účtu Automation. Úpravy runbooků nebo upgradované moduly můžou potenciálně způsobovat problémy se sadami Runbook. Před importem nových modulů `Az` byste měli všechny Runbooky a řešení pečlivě otestovat v samostatném účtu Automation. Jakékoli úpravy modulů můžou negativně ovlivnit řešení [Spustit/zastavit](automation-solution-vm-management.md) . Nedoporučujeme měnit moduly a runbooky v účtech Automation, které obsahují žádná řešení. Toto chování není specifické pro funkce AZ Modules. Toto chování je potřeba vzít v úvahu při zavádění změn v účtu Automation.
 
 Import modulu `Az` ve vašem účtu Automation neimportuje modul automaticky v relaci PowerShellu, kterou používají Runbooky. Moduly se importují do relace PowerShellu v následujících situacích:
 
