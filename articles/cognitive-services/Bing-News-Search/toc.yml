@@ -8,7 +8,7 @@
     - name: Porovnání rozhraní API pro vyhledávání Bingu
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: REST API
       items:
@@ -40,7 +40,7 @@
   items:
     - name: Vytvoření jednostránkové webové aplikace
       href: tutorial-bing-news-search-single-page-app.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+News+Search'
@@ -56,10 +56,6 @@
       href: ../bing-web-search/resize-and-crop-thumbnails.md
     - name: Upgrade rozhraní API z v5 na v7
       href: bing-news-upgrade-guide-v5-to-v7.md
-    - name: Práce se sadou Visual Studio
-      items:
-        - name: Použití připojené služby Vyhledávání zpráv Bingu
-          href: vs-bing-news-search-connected-service.md
 - name: Koncepty
   items:
     - name: Odesílání dotazů pro vyhledávání

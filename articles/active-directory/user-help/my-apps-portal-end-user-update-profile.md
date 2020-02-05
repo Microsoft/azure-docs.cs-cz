@@ -2,31 +2,38 @@
 title: Aktualizace informací o profilu & účtu na portálu moje aplikace – Azure AD
 description: Naučte se aktualizovat svůj profil a informace o pracovním nebo školním účtu, včetně změny hesla, zapnutí resetování hesla, aktualizaci metod ověření zabezpečení, zobrazení podmínek použití vaší organizace a odhlášení z všude, co jste přihlášeni pomocí svého pracovního nebo školního účtu.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/21/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 787a0b38cecd76c58017e6dff3da1607ac283d23
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a6bcfa7fc58d47e64bff0838ff698bc59eda4e70
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704863"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022275"
 ---
-# <a name="update-your-profile-and-work-or-school-account-information-on-the-my-apps-portal"></a>Aktualizace informací o profilu a pracovním nebo školním účtu na portálu moje aplikace
+# <a name="update-your-profile-and-account-information-on-the-my-apps-portal"></a>Aktualizace informací o profilu a účtu na portálu moje aplikace
 
-Svůj pracovní nebo školní účet můžete použít s webem **Moje aplikace** na základě webu, abyste mohli zobrazit a spustit mnoho cloudových aplikací vaší organizace, abyste mohli aktualizovat některé z vašich informací o profilech a účtech, abyste viděli informace o **skupinách** a prováděli kontroly **přístupu** pro aplikace a skupiny. Pokud nemáte přístup k portálu **Moje aplikace** , musíte se obrátit na helpdesk, aby vám udělil oprávnění.
+Svůj pracovní nebo školní účet můžete použít na portálu **Moje aplikace** na základě webu 
+
+- Zobrazení a spuštění mnoha cloudových aplikací vaší organizace
+- Aktualizace informací o profilu a účtu
+- Zobrazit informace o **skupinách**
+- Proveďte kontroly **přístupu** pro vaše aplikace a skupiny. 
+
+Pokud nemáte přístup k portálu **Moje aplikace** , musíte se obrátit na helpdesk, aby vám udělil oprávnění.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
->[!Important]
->Tento obsah je určený pro uživatele. Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat cloudové aplikace v [dokumentaci pro správu aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps).
+> [!Important]
+> Tento obsah je určený pro uživatele **mých aplikací** . Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat cloudové aplikace v [dokumentaci pro správu aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps).
 
 ## <a name="view-your-organization-related-profile-information"></a>Zobrazit informace o profilu souvisejícím s vaší organizací
 

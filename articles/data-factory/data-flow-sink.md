@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: 1c65a456270cdca345504c07b927a7ef7e1f725b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b631c068d1a444691345e054219208c4c8b0b8c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440272"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020042"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Transformace jímky v toku dat mapování
 
@@ -47,11 +47,17 @@ Po přidání jímky proveďte konfiguraci přes kartu **jímka** . Tady můžet
 
 **Ověřit schéma:** Pokud je vybraná možnost ověřit schéma, tok dat selže, pokud některý sloupec v definovaném schématu datové sady nebude nalezen.
 
-## <a name="field-mapping"></a>Mapování pole
+## <a name="field-mapping"></a>Mapování polí
 
 Podobně jako u transformace Select se můžete rozhodnout, které příchozí sloupce budou zapsány na kartě **mapování** jímky. Ve výchozím nastavení jsou namapovány všechny vstupní sloupce, včetně unášených sloupců. Toto je známé jako **automatické mapování**.
 
 Když automatické mapování vypnete, budete mít možnost přidat buď pevná mapování na sloupce, nebo mapování na základě pravidel. Mapování na základě pravidel umožňují psát výrazy s porovnáváním vzorů, zatímco pevné mapování bude mapovat logické a fyzické názvy sloupců. Další informace o mapování na základě pravidel najdete v tématu [vzory sloupců v části mapování toku dat](concepts-data-flow-column-pattern.md#rule-based-mapping-in-select-and-sink).
+
+## <a name="custom-sink-ordering"></a>Vlastní řazení jímky
+
+Ve výchozím nastavení jsou data zapisována do více umyvadel v nedeterministickém pořadí. Spouštěcí modul zapisuje data paralelně, protože je dokončena transformace logiky a řazení jímky se může u každého spuštění lišit. Chcete-li zadat a přesné řazení jímky, povolte **vlastní řazení jímky** na kartě Obecné v toku dat. Pokud je povoleno, jímky budou zapisovány postupně ve vzestupném pořadí.
+
+![Vlastní řazení jímky](media/data-flow/custom-sink-ordering.png "Vlastní řazení jímky")
 
 ## <a name="data-preview-in-sink"></a>Náhled dat v jímky
 

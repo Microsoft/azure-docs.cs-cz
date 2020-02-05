@@ -1,27 +1,27 @@
 ---
-title: Správa oprávnění aplikace z portálu moje aplikace (Preview) – Azure Active Directory | Microsoft Docs
-description: Naučte se spravovat oprávnění aplikací pro cloudové aplikace vaší organizace na portálu moje aplikace (Preview).
+title: Správa oprávnění aplikace z portálu moje aplikace – Azure Active Directory | Microsoft Docs
+description: Naučte se spravovat oprávnění aplikací pro cloudové aplikace vaší organizace na portálu moje aplikace.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: kasimpso
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 10/30/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 36abbee0bf25550425f4e476e6a4e7b75df815a6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bac33386371b13950163727497cabd0f262df135
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705050"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022405"
 ---
-# <a name="edit-or-revoke-application-permissions-in-the-my-apps-preview-portal"></a>Upravit nebo odvolat oprávnění aplikace na portálu moje aplikace (Preview)
+# <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>Upravit nebo odvolat oprávnění aplikace na portálu moje aplikace
 
-Pokud používáte aplikace organizace na portálu **Moje aplikace** (Preview), často udělíte oprávnění a ukládáte informace o účtu. Aby vaše data byla zabezpečená, možná budete chtít zkontrolovat a odvolat oprávnění nebo zrušit přihlašovací údaje uloženého účtu. Odebrání oprávnění nebo účtů může poškodit některé funkce aplikace. Pokud máte po odebrání oprávnění nebo účtů problémy, požádejte o další pomoc Helpdesk vaší organizace.
+Pokud používáte aplikace organizace na portálu **Moje aplikace** , často udělíte oprávnění a ukládáte informace o účtu. Aby vaše data byla zabezpečená, možná budete chtít zkontrolovat a odvolat oprávnění nebo zrušit přihlašovací údaje uloženého účtu. Odebrání oprávnění nebo účtů může poškodit některé funkce aplikace. Pokud máte po odebrání oprávnění nebo účtů problémy, požádejte o další pomoc Helpdesk vaší organizace.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
@@ -46,11 +46,11 @@ V dolní části okna oprávnění se zobrazuje informace o tom, co váš správ
 
 Po správě oprávnění aplikace a uložených účtů na portálu **Moje aplikace** můžete:
 
-- Uspořádejte své aplikace do různých kategorií vytvořených a poskytovaných vaší organizací. Další informace najdete v tématu [přístup k pracovním prostorům a jejich používání na portálu moje aplikace (Preview)](my-applications-portal-workspaces.md).
+- Uspořádejte své aplikace do různých kategorií vytvořených a poskytovaných vaší organizací. Další informace najdete v tématu věnovaném [přístupu a používání kolekcí na portálu moje aplikace](my-applications-portal-workspaces.md).
 
 ## <a name="related-articles"></a>Související články
 
-- [Aktualizujte informace o profilu a účtu](my-account-portal-overview.md). Pokyny, jak aktualizovat osobní údaje, které se zobrazí na portálu **můj profil** (Preview).
+- [Aktualizujte informace o profilu a účtu](my-account-portal-overview.md). Pokyny, jak aktualizovat osobní údaje, které se zobrazí na portálu **můj profil**
 
 - [Spravujte své organizace](my-account-portal-organizations-page.md). Pokyny, jak zobrazit a spravovat informace týkající se vaší organizace, najdete na stránce **organizace** na portálu **můj profil** .
 

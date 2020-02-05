@@ -1,6 +1,6 @@
 ---
-title: Řešení Azure VMware podle CloudSimple – nastavení služby DNS a DHCP pro privátní cloud
-description: Popisuje, jak nastavit DNS a DHCP pro aplikace a úlohy běžící v prostředí privátního cloudu CloudSimple.
+title: Řešení Azure VMware (AVS) – nastavení úloh DNS a DHCP pro privátní cloud služby AVS
+description: Popisuje, jak nastavit DNS a DHCP pro aplikace a úlohy spuštěné v prostředí privátního cloudu služby AVS.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ef1266b783034cf18dc2b3ea4be5ebc01bc12c70
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: f2a5cae868f2d8f3689f05dd9d466715ab2008a3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121858"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024683"
 ---
-# <a name="set-up-dns-and-dhcp-applications-and-workloads-in-your-cloudsimple-private-cloud"></a>Nastavení aplikací a úloh DNS a DHCP v privátním cloudu CloudSimple
+# <a name="set-up-dns-and-dhcp-applications-and-workloads-in-your-avs-private-cloud"></a>Nastavení aplikací DNS a DHCP a úloh v privátním cloudu služby AVS
 
-Aplikace a úlohy běžící v prostředí privátního cloudu vyžadují překlad IP adres a služby DHCP pro vyhledání a přiřazení IP adresy.  K poskytování těchto služeb se vyžaduje správná infrastruktura DHCP a DNS.  Virtuální počítač můžete nakonfigurovat tak, aby poskytoval tyto služby v prostředí vašeho privátního cloudu.  
+Aplikace a úlohy, které běží v prostředí privátního cloudu služby AVS, vyžadují překlad IP adres a služby DHCP pro vyhledání a přiřazení IP adresy. K poskytování těchto služeb se vyžaduje správná infrastruktura DHCP a DNS. Virtuální počítač můžete nakonfigurovat tak, aby poskytoval tyto služby v prostředí privátního cloudu služby AVS. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -27,7 +27,7 @@ Aplikace a úlohy běžící v prostředí privátního cloudu vyžadují překl
 
 ## <a name="linux-based-dns-server-setup"></a>Instalace serveru DNS se systémem Linux
 
-Linux nabízí různé balíčky pro nastavení serverů DNS.  Tady je [Příklad nastavení z DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-18-04) s pokyny pro nastavení Open-Source serveru DNS BIND.
+Linux nabízí různé balíčky pro nastavení serverů DNS. Tady je [Příklad nastavení z DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-18-04) s pokyny pro nastavení Open-Source serveru DNS BIND.
 
 ## <a name="windows-based-setup"></a>Instalace založená na systému Windows
 

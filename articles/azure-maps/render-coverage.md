@@ -1,6 +1,6 @@
 ---
 title: Pokrytí vykreslování | Mapy Microsoft Azure
-description: V tomto článku se dozvíte o oblastech pomocí Microsoft Azure mapování vykreslování, včetně jejich úrovně vygenerovaných podrobností.
+description: V tomto článku se seznámíte s oblastmi, které Microsoft Azure mapují pokrytí vykreslování, spolu s úrovní vykreslených podrobností.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 03/22/2019
@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 84d5d7fc6490420857032ead964f5bccea8f397a
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 04e7aeddaa4e3aba38f1bf08893b0b0487109653
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910667"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025448"
 ---
 # <a name="azure-maps-render-coverage"></a>Pokrytí vykreslování Azure Maps
 
-Pro vytváření map používá Azure Maps rastrové dlaždice i vektorové dlaždice. V nejnižším rozlišení se celý svět vejde na jednu dlaždici. V jeho nejvyšším rozlišení jedna dlaždice představuje 38 čtvereční měřiče. Při přiblížení na mapě vám proto můžete zobrazit stále více podrobností o kontinentech, oblastech, městech a jednotlivých ulic. Další informace najdete v tématu [úrovně přiblížení a mřížka dlaždic](zoom-levels-and-tile-grid.md).
+Pro vytváření map používá Azure Maps rastrové dlaždice i vektorové dlaždice. Při nejnižším rozlišení se celý svět vejde do jedné dlaždice. Při nejvyšším rozlišení jedna dlaždice představuje 38 čtvereční měřiče. Při přiblížení se zobrazí další podrobnosti o kontinentech, oblastech, městech a jednotlivých ulic. Další informace o dlaždicích najdete v tématu [úrovně přiblížení a mřížka dlaždic](zoom-levels-and-tile-grid.md).
 
-Mapy ale nemají stejnou úroveň informací a přesnost pro všechny oblasti. Následující tabulky obsahují informace o tom, jakou úroveň podrobností z jednotlivých oblastí se má vykreslovat.
+Mapy ale nemají stejnou úroveň informací a přesnost pro všechny oblasti. Následující tabulky obsahují podrobné informace o úrovni informací, které můžete vykreslit pro jednotlivé oblasti.
 
-## <a name="legend"></a>Legenda
+## <a name="legend"></a>Popisek
 
-| Symbol | Význam |
+| Písmeno | Význam |
 |--------|---------|
 | ✓ | Oblast je zastoupena s podrobnými daty.   |
 | Ø | Oblast je reprezentována s zjednodušenými daty. |
@@ -161,15 +161,15 @@ Mapy ale nemají stejnou úroveň informací a přesnost pro všechny oblasti. N
 | Bangladéš                |   | Ø |
 | Bhútán                    |   | Ø |
 | Britské území v Indickém oceánu |   | Ø |
-| Brunej                    | ✓ | ✓ |
+| Sultanát                    | ✓ | ✓ |
 | Kambodža                  |   | Ø |
 | Čína                     |   | Ø |
-| Kokosové ostrovy   |   | Ø |
+| Kokosové (Keelingovy) ostrovy   |   | Ø |
 | Korejská lidově demokratická republika |   | Ø |
 | Hongkong – zvláštní správní oblast             | ✓ | ✓ |
 | Indie                     | Ø | ✓ | 
 | Indonésie                 | ✓ | ✓ |
-| Iran                      |   | Ø |
+| Írán                      |   | Ø |
 | Irák                      | ✓ | ✓ |
 | Izrael                    |   | ✓ |
 | Japonsko                     |   | Ø |
@@ -179,7 +179,7 @@ Mapy ale nemají stejnou úroveň informací a přesnost pro všechny oblasti. N
 | Kyrgyzstán                |   | Ø |
 | Laoská lidově demokratická republika |   | Ø |
 | Libanon                   | ✓ | ✓ |
-| Macao – zvláštní administrativní oblast                 | ✓ | ✓ |
+| Macao – zvláštní správní oblast                 | ✓ | ✓ |
 | Malajsie                  | ✓ | ✓ |
 | Maledivy                  |   | Ø |
 | Mongolsko                  |   | Ø |
@@ -206,7 +206,7 @@ Mapy ale nemají stejnou úroveň informací a přesnost pro všechny oblasti. N
 | Vietnam                   | ✓ | ✓ |
 | Jemen                     | ✓ | ✓ |
 
-## <a name="oceania"></a>Oceania
+## <a name="oceania"></a>Oceánie a
 
 | Země/oblast | Rastrové dlaždice sjednocené | Sjednocení vektorových dlaždic |
 | ------ | :------------------: | :------------------: |
@@ -223,10 +223,10 @@ Mapy ale nemají stejnou úroveň informací a přesnost pro všechny oblasti. N
 | Nová Kaledonie             |   | Ø |
 | Nový Zéland               | ✓ | ✓ |
 | Niue                      |   | Ø |
-| Norfolk            |   | Ø |
+| Ostrov Norfolk            |   | Ø |
 | Palau                     |   | Ø |
-| Papua-Nová Guinea          |   | Ø |
-| Pitcairn                  |   | Ø |
+| Papua – Nová Guinea          |   | Ø |
+| Pitcairnovy                  |   | Ø |
 | Samoa                     |   | Ø |
 | Šalamounovy ostrovy           |   | Ø|
 | Tokelau                   |   | Ø |

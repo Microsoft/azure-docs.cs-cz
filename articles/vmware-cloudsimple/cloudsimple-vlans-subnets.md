@@ -1,6 +1,6 @@
 ---
-title: SÍTĚ VLAN a podsítě v řešení Azure VMware podle CloudSimple
-description: Informace o sítích VLAN a podsítích v privátním cloudu CloudSimple
+title: SÍTĚ VLAN a podsítě v řešeních Azure VMware (AVS)
+description: Informace o sítích VLAN a podsítích v privátním cloudu pro funkci AVS
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/15/2019
@@ -8,42 +8,42 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2451fbb69636624db354006df2a7925ef9e75459
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d0ce15c782ae70e16f55a28ec8c4b70f3b080f54
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372733"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024887"
 ---
 # <a name="vlans-and-subnets-overview"></a>Přehled sítí VLAN a podsítí
 
-CloudSimple poskytuje síť pro oblast, ve které je nasazená vaše služba CloudSimple.  Ve výchozím nastavení je síť jedním adresním prostorem TCP vrstvy 3 s povoleným směrováním.  Všechny privátní cloudy a podsítě vytvořené v této oblasti můžou vzájemně komunikovat bez jakékoli další konfigurace.  Distribuované skupiny portů můžete v vCenter vytvořit pomocí sítí VLAN.
+Služba AVS poskytuje síť na oblast, ve které je nasazená vaše služba AVS. Ve výchozím nastavení je síť jedním adresním prostorem TCP vrstvy 3 s povoleným směrováním. Všechny privátní cloudy a podsítě pro funkci AVS vytvořené v této oblasti můžou vzájemně komunikovat bez jakékoli další konfigurace. Distribuované skupiny portů můžete v vCenter vytvořit pomocí sítí VLAN.
 
-![Topologie sítě CloudSimple](media/cloudsimple-network-topology.png)
+![Síťová topologie AVS](media/cloudsimple-network-topology.png)
 
 ## <a name="vlans"></a>Sítě VLAN
 
-Síť VLAN (síť 2) se vytvoří pro každý privátní cloud.  Provoz vrstvy 2 zůstává v rámci hranice privátního cloudu, což vám umožní izolovat místní provoz v rámci privátního cloudu.  SÍŤ VLAN vytvořená v privátním cloudu se dá použít k vytvoření distribuovaných skupin portů jenom v tomto privátním cloudu.  SÍŤ VLAN vytvořená v privátním cloudu se automaticky nakonfiguruje na všech přepínačích připojených k hostitelům privátního cloudu.
+Síť VLAN (síť 2) se vytvoří pro každý privátní cloud služby AVS. Provoz vrstvy 2 zůstává v rámci hranice privátního cloudu služby AVS, což vám umožní izolovat místní provoz v rámci privátního cloudu služby AVS. SÍŤ VLAN vytvořená v privátním cloudu pro funkci AVS se dá použít k vytvoření distribuovaných skupin portů jenom v takovém privátním cloudu pro funkci AVS. SÍŤ VLAN vytvořená v privátním cloudu služby AVS se automaticky nakonfiguruje na všech přepínačích připojených k hostitelům privátního cloudu služby AVS.
 
 ## <a name="subnets"></a>Podsítě
 
 Podsíť můžete vytvořit, když vytvoříte síť VLAN tak, že definujete adresní prostor podsítě. IP adresa z adresního prostoru je přiřazena jako brána podsítě. Jeden adresní prostor privátní vrstvy 3 je přiřazený pro zákazníka a oblast. V oblasti sítě můžete nakonfigurovat libovolný adresní prostor RFC 1918 bez překrývání adresního prostoru s vaší místní sítí nebo virtuální sítí Azure.
 
-Všechny podsítě můžou ve výchozím nastavení vzájemně komunikovat a snížit tak režijní náklady na konfiguraci směrování mezi privátními cloudy. Data východní sítě v různých počítačích ve stejné oblasti zůstanou ve stejné síti vrstvy 3 a přenos přes infrastrukturu místní sítě v rámci dané oblasti. Pro komunikaci mezi privátními cloudy v oblasti se nevyžaduje žádný výstup. Tento přístup eliminuje snížení výkonu sítě WAN a odchozích dat při nasazení různých úloh v různých privátních cloudech.
+Všechny podsítě můžou ve výchozím nastavení vzájemně komunikovat a snížit tak režijní náklady na konfiguraci směrování mezi privátními cloudy služby AVS. Data východní sítě v různých počítačích ve stejné oblasti zůstanou ve stejné síti vrstvy 3 a přenos přes infrastrukturu místní sítě v rámci dané oblasti. Pro komunikaci mezi privátními cloudy služby AVS v oblasti se nevyžaduje žádný výstup. Tento přístup eliminuje snížení výkonu sítě WAN a odchozích dat při nasazování různých úloh v různých privátních cloudech AVS.
 
 ## <a name="vspherevsan-subnets-cidr-range"></a>Rozsah CIDR vSphere/síti vSAN v podsíti
 
-Privátní cloud se vytvoří jako izolovaný zásobník VMware (ESXi hosts, vCenter, síti vSAN a NSX), který spravuje Server vCenter.  Součásti pro správu se nasazují v síti vybrané pro směrování vSphere/síti vSAN pro sítě.  Rozsah směrování sítě je v průběhu nasazení rozdělen do různých podsítí.
+Privátní cloud služby AVS je vytvořený jako izolovaný zásobník VMware (ESXi hosts, vCenter, síti vSAN a NSX), který spravuje Server vCenter. Součásti pro správu se nasazují v síti vybrané pro směrování vSphere/síti vSAN pro sítě. Rozsah směrování sítě je v průběhu nasazení rozdělen do různých podsítí.
 
 * Minimální předpona rozsahu CIDR podsítě vSphere/síti vSAN: **/24**
 * Maximální předpona rozsahu CIDR podsítě vSphere/síti vSAN: **/21**
 
-> [!CAUTION]
-> IP adresy v rozsahu vSphere/síti vSAN CIDR jsou vyhrazené pro použití v infrastruktuře privátního cloudu.  Nepoužívejte IP adresu v tomto rozsahu na žádném virtuálním počítači.
+> [!IMPORTANT]
+> IP adresy v rozsahu vSphere/síti vSAN CIDR jsou vyhrazené pro použití v infrastruktuře privátního cloudu služby AVS. Nepoužívejte IP adresu v tomto rozsahu na žádném virtuálním počítači.
 
 ### <a name="vspherevsan-subnets-cidr-range-limits"></a>omezení rozsahu vSphere/síti vSAN podsítí CIDR
 
-Výběr velikosti rozsahu CIDR v podsítích vSphere/síti vSAN má vliv na velikost vašeho privátního cloudu.  Následující tabulka uvádí maximální počet uzlů, které můžete mít na základě velikosti směrování vSphere/síti vSAN v podsítích.
+Výběr velikosti rozsahu CIDR v podsítích vSphere/síti vSAN má vliv na velikost privátního cloudu služby AVS. Následující tabulka uvádí maximální počet uzlů, které můžete mít na základě velikosti směrování vSphere/síti vSAN v podsítích.
 
 | Zadaná délka předpony vSphere/síti vSAN podsítí CIDR | Maximální počet uzlů |
 |---------------------------------------------------|-------------------------|
@@ -52,9 +52,9 @@ Výběr velikosti rozsahu CIDR v podsítích vSphere/síti vSAN má vliv na veli
 | /22 | 118 |
 | /21 | 220 |
 
-### <a name="management-subnets-created-on-a-private-cloud"></a>Podsítě pro správu vytvořené v privátním cloudu
+### <a name="management-subnets-created-on-an-avs-private-cloud"></a>Podsítě pro správu vytvořené v privátním cloudu služby AVS
 
-Při vytváření privátního cloudu se vytvoří následující podsítě pro správu.
+Při vytváření privátního cloudu služby AVS se vytvoří následující podsítě pro správu.
 
 * **Správa systému**. Síť VLAN a podsíť pro virtuální sítě pro správu hostitele ESXi, server DNS a vCenter Server.
 * **VMotion**. Síť VLAN a podsíť pro vMotion hostitele ESXi.
@@ -66,7 +66,7 @@ Při vytváření privátního cloudu se vytvoří následující podsítě pro 
 
 ### <a name="management-network-cidr-range-breakdown"></a>Rozpis rozsahu CIDR sítě pro správu
 
-zadaný rozsah vSphere/síti vSAN podsítí CIDR je rozdělen do několika podsítí.  V následující tabulce je uveden příklad rozpisu pro povolené předpony.  V příkladu se jako rozsah CIDR používá 192.168.0.0.
+zadaný rozsah vSphere/síti vSAN podsítí CIDR je rozdělen do několika podsítí. V následující tabulce je uveden příklad rozpisu pro povolené předpony. V příkladu se jako rozsah CIDR používá 192.168.0.0.
 
 Příklad:
 

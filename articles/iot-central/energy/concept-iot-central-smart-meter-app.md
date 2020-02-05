@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: cab593990369bb8a4135e82534a2eb409b574e96
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 8f3772c1d65780337c421cfaaa7b70d7ac7186cf
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582768"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024309"
 ---
 # <a name="azure-iot-central---smart-meter-app-architecture"></a>Azure IoT Central – architektura aplikací inteligentního měření
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Tento článek poskytuje přehled architektury šablon aplikace monitorování inteligentního měření. Následující diagram znázorňuje běžně použitou architekturu pro aplikace inteligentního měření v Azure pomocí IoT Central platformy.
 
@@ -28,7 +28,7 @@ Tato architektura se skládá z následujících komponent. Některá řešení 
 
 ## <a name="smart-meters-and-connectivity"></a>Inteligentní měřiče a konektivita 
 
-Inteligentní měřič je jedním z nejdůležitějších zařízení ze všech energetických prostředků. Zaznamenává data spotřeby energie a komunikuje s nimi pro účely monitorování a jiné případy použití, například fakturace a odpověď na vyžádání. Na základě typu měřiče se může připojit k IoT Central buď prostřednictvím bran, nebo prostřednictvím jiných zprostředkujících zařízení nebo systémů, jako jsou hraniční zařízení a hlavní systémy. Sestavte most IoT Central zařízení pro připojení zařízení, která se nedají připojit přímo. Most zařízení IoT Central je open source řešení a [tady](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge)můžete najít kompletní podrobnosti. 
+Inteligentní měřič je jedním z nejdůležitějších zařízení ze všech energetických prostředků. Zaznamenává data spotřeby energie a komunikuje s nimi pro účely monitorování a jiné případy použití, například fakturace a odpověď na vyžádání. V závislosti na typu měřiče se může připojit k IoT Central buď pomocí bran, nebo jiných zprostředkujících zařízení nebo systémů, jako jsou hraniční zařízení a systémy hlavního zakončení. Sestavte most IoT Central zařízení pro připojení zařízení, která se nedají připojit přímo. Most zařízení IoT Central je open source řešení a [tady](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge)můžete najít kompletní podrobnosti. 
 
 
 ## <a name="iot-central-platform"></a>IoT Central platforma

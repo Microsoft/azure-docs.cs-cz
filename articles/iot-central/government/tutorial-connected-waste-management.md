@@ -7,22 +7,23 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 771e4a822df3e7d8eeee53174d657426bf226372
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 6b8458ce41a1bdacddc4102e8282bbc638d4c01c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990014"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016489"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Kurz: Vytvoření aplikace pro správu propojených odpadů v IoT Central
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Tento kurz vás provede vytvořením aplikace pro správu nepřipojeného odpadu v Azure IoT Central ze šablony IoT Central **připojené aplikace pro správu odpadu** . 
 
-V tomto kurzu se dozvíte, jak: 
+V tomto kurzu se naučíte: 
 
 > [!div class="checklist"]
+
 > * Použití šablony **správy propojených odpadů** v Azure IoT Central k vytvoření aplikace pro správu připojení
 > * Řídicí panel pro prohlížení a přizpůsobení operátoru 
 > * Prozkoumat šablonu zařízení připojené odpadní přihrádky
@@ -33,12 +34,12 @@ V tomto kurzu se dozvíte, jak:
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto kurzu potřebujete:
+Pro absolvování tohoto kurzu potřebujete:
 -  Doporučuje se předplatné Azure. Volitelně můžete použít bezplatnou 7 dní zkušební verzi. Pokud nemáte předplatné Azure, můžete ho vytvořit na [stránce registrace do Azure](https://aka.ms/createazuresubscription).
 
 ## <a name="create-connected-waste-management-app-in-iot-central"></a>Vytvořit aplikaci pro správu propojených odpadů v IoT Central
 
-V této části použijeme **šablonu správy propojených odpadů** v Azure IoT Central k vytvoření vaší připojené aplikace pro správu odcházejících odpadů v IoT Central.
+V této části použijete **šablonu správy propojených odpadů** v Azure IoT Central k vytvoření aplikace pro správu propojených odpadů v IoT Central.
 
 Vytvoření nové aplikace pro správu nepřipojených odpadů v Azure IoT Central:  
 
@@ -59,7 +60,7 @@ Vytvoření nové aplikace pro správu nepřipojených odpadů v Azure IoT Centr
     * **Adresa URL** – Volitelně můžete zvolit požadovanou adresu URL. Adresu URL můžete později změnit. 
     * Pokud máte předplatné Azure, zadejte svůj *adresář, předplatné Azure a oblast*. Pokud předplatné nemáte, můžete povolit **7 dní bezplatnou zkušební verzi** a dokončit požadované kontaktní údaje.  
 
-    Další informace o adresářích a předplatných najdete v [rychlém startu k vytvoření aplikace](../preview/quick-deploy-iot-central.md).
+    Další informace o adresářích a předplatných najdete v [rychlém startu k vytvoření aplikace](../core/quick-deploy-iot-central.md).
 
 5. V dolní části stránky klikněte na tlačítko **vytvořit** . 
 
@@ -132,9 +133,9 @@ Postup zobrazení šablony zařízení:
 
     ![Šablona zařízení](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
 
-2. V seznamu šablony zařízení se zobrazí **Přihrádka připojené odpadu**. Otevřete kliknutím na název.
+2. V seznamu šablony zařízení se zobrazí složka **připojené odpadní přihrádka**. Otevřete kliknutím na název.
 
-3. Seznamte se s možnostmi šablon zařízení. Můžete vidět, že definuje senzory, jako je *úroveň výplně*, *měřič Odor*, *váha*, *umístění* atd.
+3. Seznamte se s možnostmi šablon zařízení. Můžete vidět, že definuje senzory, jako je *úroveň výplně*, *měřič Odor*, *váhy*, *umístění*a další.
 
    ![Šablona zařízení](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
 
@@ -152,7 +153,7 @@ Zkuste upravit následující:
 ### <a name="add-a-cloud-property"></a>Přidat vlastnost cloudu 
 
 1. Přejít na **vlastnost Cloud** z nabídky šablony zařízení
-2. Kliknutím na **+ přidat cloudovou vlastnost**přidejte novou vlastnost cloudu. V IoT Central můžete přidat vlastnost, která je relevantní pro zařízení, ale neočekává se, aby se odesílala zařízením. Jako příklad může být cloudová vlastnost Výstražná prahová hodnota specifická pro oblast instalace, informace o aktivech nebo informace o údržbě atd. 
+2. Kliknutím na **+ přidat cloudovou vlastnost**přidejte novou vlastnost cloudu. V IoT Central můžete přidat vlastnost, která je relevantní pro zařízení, ale neočekává se, aby se odesílala zařízením. Cloudová vlastnost může být například prahová hodnota pro výstrahy specifická pro oblast instalace, informace o aktivech nebo informace o údržbě a další informace. 
 3. **Uložit** všechny změny 
  
 ### <a name="views"></a>Zobrazení 

@@ -3,20 +3,22 @@ title: Rozšiřování IoT Central Azure s vlastními pravidly a oznámeními | 
 description: Jako vývojář řešení můžete nakonfigurovat aplikaci IoT Central, aby odesílala e-mailová oznámení v případě, že zařízení přestane odesílat telemetrii. Toto řešení používá Azure Stream Analytics, Azure Functions a SendGrid.
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/23/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 9042f3d34ee550af50e043167db6339f36b71bd0
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 541cbc0c34a691f51c1a3a53f71920379c447f5d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987590"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022439"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Rozšiřování IoT Central Azure pomocí vlastních pravidel pomocí Stream Analytics, Azure Functions a SendGrid
+
+
 
 V této příručce se dozvíte, jak pomocí vývojářů řešení rozšíříte svou IoT Central aplikaci pomocí vlastních pravidel a oznámení. Příklad ukazuje odeslání oznámení do operátoru, když zařízení přestane odesílat telemetrii. Řešení používá [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) dotaz k detekci, kdy zařízení zastavilo odesílání telemetrie. Stream Analytics úloha používá [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) k posílání e-mailů s oznámením pomocí [SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/).
 
@@ -41,14 +43,16 @@ Na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) vytvo�
 | Nastavení | Hodnota |
 | ------- | ----- |
 | Cenový tarif | Úroveň Standard |
-| Šablona aplikace | Starší verze aplikace |
+| Šablona aplikace | Analýzy v obchodě – monitorování podmínek |
 | Název aplikace | Přijměte výchozí nebo vyberte svůj vlastní název. |
 | Adresa URL | Přijměte výchozí nebo vyberte vlastní jedinečnou předponu adresy URL. |
 | Adresář | Váš tenant Azure Active Directory |
 | Předplatné Azure | Vaše předplatné Azure |
-| Region (Oblast) | Spojené státy |
+| Region (Oblast) | Vaše nejbližší oblast |
 
 Příklady a snímky obrazovky v tomto článku používají oblast **USA** . Vyberte umístění, které chcete zavřít, a ujistěte se, že jste vytvořili všechny prostředky ve stejné oblasti.
+
+Tato šablona aplikace zahrnuje dvě simulovaná termostata zařízení, která odesílají telemetrii.
 
 ### <a name="resource-group"></a>Skupina prostředků
 
@@ -237,7 +241,7 @@ test-device-3   2019-05-02T14:24:28.919Z
 
 Toto řešení používá Stream Analytics dotaz k detekci, kdy se zařízení zastaví odesílání telemetrie na více než 120 sekund. Dotaz používá telemetrii z centra událostí jako svůj vstup. Úloha odešle výsledky dotazu do aplikace Function App. V této části nakonfigurujete úlohu Stream Analytics:
 
-1. V Azure Portal přejděte na úlohu Stream Analytics, v části **topologie úlohy** vyberte **vstupy**, zvolte **+ Přidat vstup streamu**a pak zvolte **centrum událostí**.
+1. V Azure Portal přejděte na Stream Analytics úlohu, v části **topologie úlohy** vyberte **vstupy**, zvolte **+ Přidat vstup streamu**a pak zvolte **centrum událostí**.
 1. Použijte informace v následující tabulce ke konfiguraci vstupu pomocí centra událostí, které jste předtím vytvořili, a pak zvolte **Uložit**:
 
     | Nastavení | Hodnota |
@@ -307,7 +311,7 @@ Toto řešení používá Stream Analytics dotaz k detekci, kdy se zařízení z
 
 Na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) přejděte do IoT Central aplikace, kterou jste vytvořili ze šablony společnosti Contoso. V této části nakonfigurujete aplikaci pro streamování telemetrie z simulovaných zařízení do centra událostí. Konfigurace exportu:
 
-1. Přejděte na stránku **průběžné exportu dat** , vyberte **+ Nový**a pak **Azure Event Hubs**.
+1. Přejděte na stránku pro **Export dat** , vyberte **+ Nový**a pak **Azure Event Hubs**.
 1. Pro konfiguraci exportu použijte následující nastavení a pak vyberte **Uložit**:
 
     | Nastavení | Hodnota |
@@ -328,15 +332,15 @@ Než budete pokračovat, počkejte, než se **spustí** stav exportu.
 
 K otestování řešení můžete zakázat export průběžných dat z IoT Central na simulovaná zastavená zařízení:
 
-1. V aplikaci IoT Central přejděte na stránku pro **Export průběžných dat** a vyberte **Export do Event Hubs** Exportovat konfiguraci.
+1. V aplikaci IoT Central přejděte na stránku pro **Export dat** a vyberte **exportovat do Event Hubs** Exportovat konfiguraci.
 1. Nastavte hodnotu **zapnuto** na **vypnuto** a klikněte na **Uložit**.
 1. Po nejméně dvou minutách obdrží e-mailová adresa jeden nebo více e **-mailů** , které vypadají jako v následujícím ukázkovém obsahu:
 
     ```txt
     The following device(s) have stopped sending telemetry:
 
-    Device ID   Time
-    7b169aee-c843-4d41-9f25-7a02671ee659    2019-05-09T14:28:59.954Z
+    Device ID         Time
+    Thermostat-Zone1  2019-11-01T12:45:14.686Z
     ```
 
 ## <a name="tidy-up"></a>Uklizený nahoru

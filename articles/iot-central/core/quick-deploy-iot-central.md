@@ -9,58 +9,57 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 5268f5438c005033f9c6ecf74657dc1a01d3b673
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 09ff84bf17bbc07ee86e90f3985a949f70d9fe27
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989384"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018291"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Vytvoření aplikace Azure IoT Central
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
-
-Jako _tvůrce_ můžete pomocí uživatelského rozhraní Azure IoT Central definovat vaši aplikaci Azure IoT Central. V tomto rychlém startu se dozvíte, jak vytvořit aplikaci IoT Central Azure, která obsahuje ukázkovou _šablonu zařízení_. Vytvořená aplikace nepoužívá žádné funkce verze Preview.
+V tomto rychlém startu se dozvíte, jak vytvořit aplikaci Azure IoT Central.
 
 ## <a name="create-an-application"></a>Vytvoření aplikace
 
 Přejděte na web [Azure IoT Central Build](https://aka.ms/iotcentral) . Pak se přihlaste pomocí osobního, pracovního nebo školního účtu Microsoft.
 
-Pokud chcete začít vytvářet aplikaci IoT Central Azure bez povolených funkcí ve verzi Preview, vyberte **Build (sestavit**). Tento odkaz vás přesměruje na stránku **sestavení aplikace IoT** .
+Novou aplikaci vytvoříte buď ze seznamu relevantních IoT Central šablon, které vám pomůžou rychle začít, nebo začít úplně od začátku pomocí šablony **vlastní aplikace** . V tomto rychlém startu použijete šablonu **vlastní aplikace** .
 
-![Stránka sestavení Azure IoT Central](media/quick-deploy-iot-central/iotcentralcreate.png)
+Vytvoření nové aplikace Azure IoT Central ze šablony **vlastní aplikace** :
 
-Pak vyberte **vlastní aplikace**.
+1. Přejděte na stránku **sestavení** :
 
-Vytvoření nové aplikace Azure IoT Central:
+    ![Sestavení stránky aplikace IoT](media/quick-deploy-iot-central/iotcentralcreate-new-application.png)
 
-1. Azure IoT Central automaticky navrhuje název aplikace na základě šablony aplikace, kterou jste vybrali. Můžete přijmout tento název nebo zadat vlastní popisný název aplikace, například **Contoso IoT**. Azure IoT Central také na základě názvu aplikace vygeneruje jedinečnou adresu URL. Tuto předponu adresy URL můžete změnit na něco, co byste si chtěli.
+1. Vyberte **vlastní aplikace** a ujistěte se, že je vybraná Šablona **vlastní aplikace** .
 
-1. Vyberte šablonu **starší verze aplikace** , která nepoužívá funkce verze Preview.
+1. Azure IoT Central automaticky navrhuje **název aplikace** na základě šablony aplikace, kterou jste vybrali. Můžete použít tento název nebo zadat vlastní popisný název aplikace.
 
-    | Šablona aplikace | Popis |
-    | -------------------- | ----------- |
-    | Starší verze aplikace   | Vytvoří prázdnou aplikaci, kterou můžete naplnit vlastními šablonami zařízení a zařízeními. |
+1. Azure IoT Central také na základě názvu aplikace vygeneruje jedinečnou předponu **adresy URL aplikace** . Tuto adresu URL použijete pro přístup k aplikaci. Pokud chcete, změňte tuto předponu adresy URL na něco srozumitelnější.
 
-    ![Nová aplikace v Azure IoT Central](media/quick-deploy-iot-central/newapplication.png)
+    ![Stránka pro vytvoření aplikace v Azure IoT Central](media/quick-deploy-iot-central/iotcentralcreate-custom.png)
 
-    ![Informace o fakturaci IoT Central Azure](media/quick-deploy-iot-central/billinginfo.png)
+    ![Informace o fakturaci IoT Central Azure](media/quick-deploy-iot-central/iotcentralcreate-billinginfo-pnp.png)
+
+    > [!NOTE]
+    > Pokud jste na předchozí stránce vybrali **vlastní aplikaci** , zobrazí se rozevírací nabídka **šablony aplikace** . Odsud můžete přepínat mezi vlastními a staršími šablonami. Můžete se také podívat na další šablony, které jsou pro vaši organizaci k dispozici.
 
 1. Tuto aplikaci můžete vytvořit pomocí cenového plánu bezplatné zkušební verze 7 dní, případně podle standardních cenových plánů:
-   - Aplikace vytvořené pomocí *bezplatného* plánu jsou po dobu sedmi dnů zdarma a podporují až pět zařízení. Můžete je kdykoli převést na používání standardního cenového plánu, než vyprší jejich platnost.
-   - Aplikace, které vytvoříte pomocí plánu *Standard* , se účtují podle jednotlivých zařízení. můžete zvolit Cenový tarif **Standard 1** nebo **Standard 2** s prvními dvěma zařízeními, která jsou zdarma. Další informace o cenových plánech zdarma a Standard najdete na [stránce s cenami za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). Pokud vytvoříte standardní aplikaci, budete muset vybrat svůj *adresář*, *předplatné Azure*a *umístění*:
-        - *Adresář* je Azure Active Directory (AD) k vytvoření aplikace. Obsahuje identity uživatelů, přihlašovací údaje a další organizační informace. Pokud nemáte Azure AD, vytvoří se při vytváření předplatného Azure jedna za vás.
-        - *Předplatné Azure* umožňuje vytvářet instance služeb Azure. IoT Central zřídí prostředky v předplatném. Pokud předplatné Azure nemáte, můžete si ho vytvořit na [registrační stránce Azure](https://aka.ms/createazuresubscription). Po vytvoření předplatného Azure přejděte zpátky na stránku **vytvořit aplikaci** . Vaše nové předplatné se zobrazí v rozevírací nabídce **Azure Subscription** (Předplatné Azure).
-        - *Umístění* je [geografická](https://azure.microsoft.com/global-infrastructure/geographies/) oblast, kde byste chtěli vytvořit aplikaci. Obvykle byste měli zvolit umístění, které je fyzicky nejbližší pro vaše zařízení, aby se dosáhlo optimálního výkonu. Služba Azure IoT Central je aktuálně dostupná v **USA**, **Austrálii**, **Asie a Tichomoří**nebo v **Evropě**.  Jakmile zvolíte umístění, nemůžete později přesunout aplikaci do jiného umístění.
-        Další informace o cenách najdete na [stránce s cenami za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
 
-1. Vyplňte další informace požadované pro plán platby, který jste vybrali dříve v kroku 1.
+    - Aplikace vytvořené pomocí *bezplatného* plánu jsou po dobu sedmi dnů zdarma a podporují až pět zařízení. Můžete je kdykoli převést na používání standardního cenového plánu, než vyprší jejich platnost.
+    - Aplikace, které vytvoříte pomocí plánu *Standard* , se účtují podle jednotlivých zařízení. můžete si vybrat Cenový tarif **Standard 1** nebo **Standard 2** s prvními dvěma zařízeními, která jsou zdarma. Další informace o cenových plánech zdarma a Standard najdete na [stránce s cenami za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). Pokud vytvoříte standardní aplikaci, budete muset vybrat svůj *adresář*, *předplatné Azure*a *umístění*:
+        - *Adresář* je Azure Active Directory, ve kterém vytvoříte aplikaci. Azure Active Directory obsahuje identity uživatelů, přihlašovací údaje a další informace o organizaci. Pokud nemáte Azure Active Directory, vytvoří se při vytváření předplatného Azure jedna za vás.
+        - *Předplatné Azure* umožňuje vytvářet instance služeb Azure. IoT Central zřídí prostředky v předplatném. Pokud předplatné Azure nemáte, můžete si ho na [stránce pro registraci k Azure](https://aka.ms/createazuresubscription)vytvořit zdarma. Po vytvoření předplatného Azure přejděte zpátky na stránku **Nová aplikace** . Vaše nové předplatné se teď zobrazí v rozevíracím seznamu **předplatné Azure** .
+        - *Umístění* je [geografická](https://azure.microsoft.com/global-infrastructure/geographies/) oblast, kde byste chtěli vytvořit aplikaci. Obvykle byste měli zvolit umístění, které je fyzicky nejbližší pro vaše zařízení, aby se dosáhlo optimálního výkonu. Jakmile zvolíte umístění, nemůžete později přesunout aplikaci do jiného umístění.
 
-1. V dolní části stránky vyberte **vytvořit** .
+1. Přečtěte si podmínky a ujednání a v dolní části stránky vyberte **vytvořit** . Po několika minutách IoT Central aplikace je připravená k použití:
+
+    ![Aplikace Azure IoT Central](media/quick-deploy-iot-central/iotcentral-application.png)
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste vytvořili aplikaci IoT Central. Další navrhovaný krok:
 
 > [!div class="nextstepaction"]
-> [Definování nového typu zařízení v aplikaci Azure IoT Central](./tutorial-define-device-type.md)
+> [Přidání simulovaného zařízení do aplikace IoT Central](./quick-create-pnp-device.md)

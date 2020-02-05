@@ -1,7 +1,7 @@
 ---
-title: Údržba a aktualizace CloudSimple
-titleSuffix: Azure VMware Solution by CloudSimple
-description: Popisuje proces služby CloudSimple pro plánovanou údržbu a aktualizace.
+title: Řešení Azure VMware (AVS) – údržba a aktualizace služby AVS
+description: Popisuje proces služby AVS pro plánovanou údržbu a aktualizace.
+titleSuffix: Azure VMware Solutions (AVS)
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -9,16 +9,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 826fae1123b355a4143118b53ba649f0939acaf7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bf5937183fc20579ecd21aca8543a0a78d4b9ff3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372819"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025023"
 ---
-# <a name="cloudsimple-maintenance-and-updates"></a>Údržba a aktualizace CloudSimple
+# <a name="avs-maintenance-and-updates"></a>Údržba a aktualizace pro funkci AVS
 
-Prostředí privátního cloudu je navrženo tak, aby nedošlo k žádnému jedinému bodu selhání.
+Prostředí privátního cloudu pro funkci AVS je navrženo tak, aby nemohlo být jediným bodem selhání.
 
 * Clustery ESXi jsou nakonfigurovány s vysokou dostupností vSphere (HA). Clustery mají velikost alespoň jednoho náhradního uzlu pro odolnost.
 * Redundantní primární úložiště poskytuje síti vSAN, což vyžaduje aspoň tři uzly, aby se zajistila ochrana před jediným selháním. Síti vSAN je možné nakonfigurovat tak, aby poskytovala vyšší odolnost proti většímu objemu clusterů.
@@ -26,36 +26,36 @@ Prostředí privátního cloudu je navrženo tak, aby nedošlo k žádnému jedi
 * Hostitelé ESXi mají redundantní ventilátory a síťové karty.
 * Přepínače pro mandát a hřbet jsou nakonfigurovány ve dvojicích HA za účelem zajištění odolnosti.
 
-CloudSimple nepřetržitě sleduje následující virtuální počítače po dobu provozu a dostupnost a poskytuje SLA dostupnosti:
+Služby AVS nepřetržitě monitorují následující virtuální počítače z provozu a dostupnosti a poskytuje SLA dostupnosti:
 
 * Hostitelé ESXi
 * vCenter
 * PSC
 * NSX Manager
 
-CloudSimple také sleduje chyby v nepřetržitém důsledku:
+Služby AVS také neustále monitorují následující chyby:
 
 * Pevné disky
 * Fyzické porty NIC
 * Servery
-* Fans
+* Větrák
 * Power
-* přepínače,
+* Přepínače
 * Porty přepínače
 
 Pokud dojde k chybě disku nebo uzlu, do ovlivněného clusteru VMware se automaticky přidá nový uzel, aby byl okamžitě vrácen do stavu.
 
-CloudSimple zálohuje, udržuje a aktualizuje tyto prvky VMware v privátních cloudech:
+Aplikace AVS zálohuje, udržuje a aktualizuje tyto prvky VMware v privátních cloudech AVS:
 
 * ESXi
 * Služby platformy vCenter
-* Správce
+* Kontrolér
 * vSAN
 * NSX
 
 ## <a name="back-up-and-restore"></a>Zálohování a obnovení
 
-CloudSimple Backup zahrnuje:
+Záloha pro funkci AVS zahrnuje:
 
 * Noční přírůstkové zálohování pravidel vCenter, PSC a DVS.
 * nativní rozhraní API vCenter pro zálohování komponent v aplikační vrstvě.
@@ -66,15 +66,15 @@ Obnovení si můžete vyžádat otevřením [support Request](https://portal.azu
 
 ## <a name="maintenance"></a>Údržba
 
-CloudSimple má několik typů plánované údržby.
+Pro funkci AVS existuje několik typů plánované údržby.
 
 ### <a name="backendinternal-maintenance"></a>Back-end/interní údržba
 
-Tato údržba obvykle zahrnuje změnu konfigurace fyzických prostředků nebo instalaci oprav softwaru. Neovlivňuje normální spotřebu prostředků, které se obsluhují. Díky redundantním síťovým kartám, které jsou na každém fyzickém stojanu, se neovlivní normální síťové přenosy a privátní cloud. Dopad na výkon si můžete všimnout pouze v případě, že vaše organizace očekává použití plné redundantní šířky pásma během intervalu údržby.
+Tato údržba obvykle zahrnuje změnu konfigurace fyzických prostředků nebo instalaci oprav softwaru. Neovlivňuje normální spotřebu prostředků, které se obsluhují. Díky redundantním síťovým kartám, které jsou na každém fyzickém stojanu, se neovlivní normální síťové přenosy a operace privátního cloudu AVS Dopad na výkon si můžete všimnout pouze v případě, že vaše organizace očekává použití plné redundantní šířky pásma během intervalu údržby.
 
-### <a name="cloudsimple-portal-maintenance"></a>Údržba portálu CloudSimple
+### <a name="avs-portal-maintenance"></a>Údržba portálu AVS
 
-Při aktualizaci roviny ovládacího prvku CloudSimple nebo infrastruktury se vyžaduje některá omezená výpadky služeb. V současné době mohou být intervaly údržby stejně časté jako jedenkrát za měsíc. Frekvence se očekává, že se v průběhu času odmítne. CloudSimple poskytuje oznámení pro údržbu portálu a udržuje co nejkratší interval. Během intervalu údržby portálu budou následující služby fungovat bez dopadu:
+Při aktualizaci plochy ovládacího prvku AVS nebo infrastruktury se vyžaduje některá omezená výpadky služeb. V současné době mohou být intervaly údržby stejně časté jako jedenkrát za měsíc. Frekvence se očekává, že se v průběhu času odmítne. AVS poskytuje oznámení pro údržbu portálu a udržuje co nejkratší interval. Během intervalu údržby portálu budou následující služby fungovat bez dopadu:
 
 * Rovina správy VMware a aplikace
 * přístup vCenter
@@ -83,7 +83,7 @@ Při aktualizaci roviny ovládacího prvku CloudSimple nebo infrastruktury se vy
 
 ### <a name="vmware-infrastructure-maintenance"></a>Údržba infrastruktury VMware
 
-V některých případech je potřeba provést změny v konfiguraci infrastruktury VMware.  V současné době se tyto intervaly můžou vyskytnout každých 1-2 měsíců, ale frekvence se očekává, že se v průběhu času odmítne. Tento typ údržby se obvykle dá provést bez přerušení běžné spotřeby služeb CloudSimple Services. Během intervalu údržby VMware budou následující služby fungovat bez dopadu:
+V některých případech je potřeba provést změny v konfiguraci infrastruktury VMware. V současné době se tyto intervaly můžou vyskytnout každých 1-2 měsíců, ale frekvence se očekává, že se v průběhu času odmítne. Tento typ údržby se obvykle dá provést bez přerušení běžné spotřeby služeb AVS. Během intervalu údržby VMware budou následující služby fungovat bez dopadu:
 
 * Rovina správy VMware a aplikace
 * přístup vCenter
@@ -92,7 +92,7 @@ V některých případech je potřeba provést změny v konfiguraci infrastruktu
 
 ## <a name="updates-and-upgrades"></a>Aktualizace a upgrady
 
-CloudSimple zodpovídá za správu životního cyklu softwaru VMware (ESXi, vCenter, PSC a NSX) v privátním cloudu.
+Službě AVS zodpovídá za správu životního cyklu softwaru VMware (ESXi, vCenter, PSC a NSX) v privátním cloudu služby AVS.
 
 Mezi aktualizace softwaru patří:
 
@@ -100,9 +100,9 @@ Mezi aktualizace softwaru patří:
 * **Aktualizace**. Dílčí verze změny komponenty zásobníku VMware.
 * **Upgrady**. Hlavní změna verze komponenty zásobníku VMware.
 
-CloudSimple testuje kritickou opravu zabezpečení, jakmile bude k dispozici z VMware. V rámci smlouvy SLA CloudSimple zavede opravu zabezpečení do prostředí privátního cloudu za týden.
+AVS testuje kritickou opravu zabezpečení, jakmile bude k dispozici z VMware. V rámci smlouvy o úrovni služeb (AVS) odvede Oprava zabezpečení pro prostředí privátního cloudu v týdnu.
 
-CloudSimple poskytuje čtvrtletní aktualizace pro softwarové komponenty VMware. Když je k dispozici nová hlavní verze softwaru VMware, CloudSimple spolupracuje se zákazníky na koordinaci vhodného časového období údržby pro upgrade.
+AVS nabízí čtvrtletní aktualizace softwaru VMware. Pokud je k dispozici nová hlavní verze softwaru VMware, funkce AVS spolupracuje se zákazníky na koordinaci vhodného časového období údržby pro upgrade.
 
 ## <a name="next-steps"></a>Další kroky
 

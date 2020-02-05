@@ -1,6 +1,6 @@
 ---
-title: Řešení Azure VMware podle CloudSimple – přehled
-description: Přečtěte si o funkcích, scénářích a výhodách řešení VMware v Azure pomocí služby CloudSimple.
+title: Řešení Azure VMware (AVS) – přehled
+description: Přečtěte si o funkcích, scénářích a výhodách řešení VMware v Azure pomocí služby AVS.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 7b5017cdeade14e53778b58154456412507c5ce8
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 5de5a11f520a6882bb474e9926ad370bf330be1e
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430703"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024870"
 ---
-# <a name="what-is-azure-vmware-solution-by-cloudsimple"></a>Co je řešení Azure VMware podle CloudSimple
+# <a name="what-is-azure-vmware-solutions-avs"></a>Co je řešení Azure VMware (AVS)
 
-**Řešení Azure VMware od CloudSimple** je plně spravovaná služba, která umožňuje spouštět platformu VMware v Azure. Toto řešení zahrnuje vSphere, vCenter, síti vSAN, NSX-T a odpovídající nástroje. Vaše prostředí VMware běží nativně na holé infrastruktuře Azure v cloudových umístěních Azure. Služba zahrnuje všechny funkce potřebné ke efektivnímu a bezpečnému využívání platforem VMware.
+**Azure VMware Solution (AVS)** je plně spravovaná služba, která umožňuje spouštět platformu VMware v Azure. Toto řešení zahrnuje vSphere, vCenter, síti vSAN, NSX-T a odpovídající nástroje. Vaše prostředí VMware běží nativně na holé infrastruktuře Azure v cloudových umístěních Azure. Služba zahrnuje všechny funkce potřebné ke efektivnímu a bezpečnému využívání platforem VMware.
 
-![Řešení VMware v Azure podle CloudSimple – přehled](media/azure-vmware-solution-by-cloudsimple.png)
+![Řešení VMware v Azure podle služby AVS – přehled](media/azure-vmware-solution-by-cloudsimple.png)
 
 ## <a name="features"></a>Funkce
 
@@ -36,7 +36,7 @@ ms.locfileid: "72430703"
 
 ## <a name="benefits"></a>Výhody
 
-* **Provozní kontinuita**. CloudSimple nabízí nativní přístup k platformám VMware. Architektura CloudSimple je kompatibilní s vaším stávajícím:
+* **Provozní kontinuita**. AVS nabízí nativní přístup k platformám VMware. Architektura služby AVS je kompatibilní s vaším stávajícím:
     * Aplikace
     * Operations
     * Zabezpečení
@@ -46,24 +46,24 @@ ms.locfileid: "72430703"
     * Nástroje pro dodržování předpisů
     * Procesy
 * **Žádná rekurze**. Kompatibilita platformy VMware umožňuje využívat stávající dovednosti a znalosti.
-* **Flexibilita infrastruktury**. Už nemusíte předpovídat všechny nároky na kapacitu a pak končit neočekávanými kapacitami nebo nedostupnými infrastrukturami. CloudSimple se doručuje jako cloudová služba a kdykoli můžete kdykoli přidat nebo snížit kapacitu.
-* **Zabezpečení.** Přístup k prostředí CloudSimple prostřednictvím Azure poskytuje integrovanou DDoS ochranu a monitorování zabezpečení.
-* **Nižší náklady**. Platforma CloudSimple je vysoce inženýrovaná a poskytuje vysoké úrovně automatizace, provozní efektivity a úspory. CloudSimple navíc zveřejňuje architektury řešení, které využívají přítomnost VMware ve veřejném cloudu a snižuje tak náklady. Mezi příklady patří Azure AD, zálohování do úložiště Azure, Application Gateway, nástroj pro vyrovnávání zatížení a další.
-* **Nová hybridní platforma**. Služba umožňuje vysokorychlostní a nízkou latenci přístupu ke zbytku Azure. Správa CloudSimple umožňuje jednotnou správu virtuálních počítačů VMware a zbytek Azure pomocí stejného uživatelského rozhraní a rozhraní API. Vaše vývojové týmy můžou využít výhod veřejných i privátních platforem integrovaným a konzistentním způsobem.
-* **Monitorování infrastruktury, řešení potíží a podpora**. CloudSimple funguje jako služba vaše základní infrastruktura. Selhání hardwaru je automaticky nahrazeno. Můžete se zaměřit na spotřebu, zatímco CloudSimple zajišťuje plynulé spuštění prostředí.
+* **Flexibilita infrastruktury**. Už nemusíte předpovídat všechny nároky na kapacitu a pak končit neočekávanými kapacitami nebo nedostupnými infrastrukturami. Služba AVS se doručuje jako cloudová služba a kdykoli můžete kapacitu kdykoli přidat nebo snížit.
+* **Zabezpečení.** Přístup k prostředí služby AVS prostřednictvím Azure poskytuje integrovanou DDoS ochranu a monitorování zabezpečení.
+* **Nižší náklady**. Platforma AVS je vysoce inženýrovaná a poskytuje vysoké úrovně automatizace, provozní efektivity a úspory. Kromě toho se v prostředí AVS publikují architektury řešení, které využijí přítomnost VMware ve veřejném cloudu, aby se snížily náklady. Mezi příklady patří Azure AD, zálohování do úložiště Azure, Application Gateway, nástroj pro vyrovnávání zatížení a další.
+* **Nová hybridní platforma**. Služba umožňuje vysokorychlostní a nízkou latenci přístupu ke zbytku Azure. Služba AVS Management umožňuje jednotnou správu virtuálních počítačů VMware a zbytek Azure pomocí stejného uživatelského rozhraní a rozhraní API. Vaše vývojové týmy můžou využít výhod veřejných i privátních platforem integrovaným a konzistentním způsobem.
+* **Monitorování infrastruktury, řešení potíží a podpora**. Služba AVS pracuje se základní infrastrukturou jako službou. Selhání hardwaru je automaticky nahrazeno. Můžete se zaměřit na spotřebu a aplikace AVS zajišťuje plynulé spouštění prostředí.
 * **Kompatibilita zásad**. Udržujte své nástroje založené na VMware, bezpečnostní postupy, postupy auditování a certifikace dodržování předpisů.
 
 ## <a name="scenarios"></a>Scénáře
 
 * **Vyřazení nebo migrace datacentra**. Získejte další kapacitu, když dosáhnete limitů stávajícího datového centra nebo obnovíte hardware. Je snadné přidat potřebnou kapacitu do cloudu a eliminovat souvisejícím problémům správou správy aktualizací hardwaru. Snižte riziko a náklady na migrace do cloudu v porovnání s časově náročnými převody nebo rearchitekturou. K urychlení migrace do cloudu používejte známé nástroje a dovednosti VMware. V cloudu pomocí služeb Azure modernizovat své aplikace podle svého tempa.
 * **Rozbalí se na vyžádání**. Rozbalíte do cloudu, abyste splnili neočekávané potřeby, jako jsou nová vývojová prostředí nebo sezónní nárůst kapacity. Můžete snadno vytvářet nové kapacity na vyžádání a uchovávat je jenom tak dlouho, jak je potřebujete. Snižte svoji investici předem, Zrychlete zřizování a snižte složitost se stejnou architekturou a zásadami v místním prostředí i v cloudu.
-* **Zotavení po havárii a virtuální plochy v cloudu Azure**. Navažte vzdálený přístup k datům, aplikacím a plochám v cloudu Azure. Díky připojením s velkou šířkou pásma můžete rychle nahrávat a stahovat data z incidentů. Sítě s nízkou latencí poskytují rychlou odezvu, kterou uživatelé očekávají z desktopové aplikace. Pomocí CloudSimple je snadné replikovat všechny zásady a sítě v cloudu pomocí portálu CloudSimple a známých nástrojů VMware. Snadné obnovení a replikace významně snižuje úsilí a riziko vytváření a správy implementací DR a VDI.
-* **Vysoce výkonné aplikace a databáze**. CloudSimple poskytuje připravenou architekturu navrženou pro spouštění nejnáročnějších úloh VMware. Spouštějte Oracle, Microsoft SQL Server, middlewarové systémy a vysoce výkonné databáze bez databází SQL. Vyzkoušejte si Cloud jako své vlastní datové centrum s vysokorychlostními síťovými připojeními 25 GB, která umožňují spouštět hybridní aplikace, které jsou místní, VMware v Azure a soukromé úlohy Azure, aniž by došlo k narušení výkonu.
+* **Zotavení po havárii a virtuální plochy v cloudu Azure**. Navažte vzdálený přístup k datům, aplikacím a plochám v cloudu Azure. Díky připojením s velkou šířkou pásma můžete rychle nahrávat a stahovat data z incidentů. Sítě s nízkou latencí poskytují rychlou odezvu, kterou uživatelé očekávají z desktopové aplikace. Díky funkci AVS je snadné replikovat všechny zásady a sítě v cloudu pomocí portálu AVS a známých nástrojů VMware. Snadné obnovení a replikace významně snižuje úsilí a riziko vytváření a správy implementací DR a VDI.
+* **Vysoce výkonné aplikace a databáze**. Služby AVS nabízí vlastní architekturu navrženou pro spouštění nejnáročnějších úloh VMware. Spouštějte Oracle, Microsoft SQL Server, middlewarové systémy a vysoce výkonné databáze bez databází SQL. Vyzkoušejte si Cloud jako své vlastní datové centrum s vysokorychlostními síťovými připojeními 25 GB, která umožňují spouštět hybridní aplikace, které jsou místní, VMware v Azure a soukromé úlohy Azure, aniž by došlo k narušení výkonu.
 * **Skutečná Hybrid**. Sjednotte DevOps napříč VMware a Azure. Optimalizujte správu VMware pro služby a řešení Azure, které se dají použít napříč všemi vašimi úlohami. Přístup k veřejným cloudovým službám bez nutnosti rozšíření datového centra nebo změna architekta aplikací. Centralizovat identity, zásady řízení přístupu, protokolování a monitorování pro aplikace VMware v Azure.
 
 ![Scénáře](media/cloudsimple-scenarios.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vytvoření služby CloudSimple](quickstart-create-cloudsimple-service.md)
-* [Vytvoření privátního cloudu](quickstart-create-private-cloud.md)
+* [Vytvořit službu AVS](quickstart-create-cloudsimple-service.md)
+* [Vytvoření privátního cloudu pro funkci AVS](quickstart-create-private-cloud.md)

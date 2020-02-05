@@ -3,8 +3,8 @@ title: Instalovat balíčky aplikací na výpočetních uzlech – Azure Batch |
 description: Pomocí funkce balíčky aplikací Azure Batch můžete snadno spravovat víc aplikací a verzí pro instalaci na výpočetních uzlech služby Batch.
 services: batch
 documentationcenter: .net
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: 3b6044b7-5f65-4a27-9d43-71e1863d16cf
 ms.service: batch
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/26/2019
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dc136a0359c73b164eb1e175092a97f2fde4bdfa
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 6cad3b3b01a98462e37a4b4b96ba02a1b61a5f62
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029785"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025924"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Nasazení aplikací do výpočetních uzlů pomocí balíčků aplikací Batch
 
@@ -110,7 +110,7 @@ Po výběru této možnosti nabídky se otevře okno **aplikace** :
 V tomto okně se zobrazuje ID jednotlivých aplikací ve vašem účtu a následující vlastnosti:
 
 * **Balíčky**: počet verzí přidružených k této aplikaci.
-* **Výchozí verze**: verze aplikace je nainstalovaná, pokud při určování aplikace pro fond neurčíte verzi. Toto nastavení je nepovinné.
+* **Výchozí verze**: verze aplikace je nainstalovaná, pokud při určování aplikace pro fond neurčíte verzi. Toto nastavení je volitelné.
 * **Povolit aktualizace**: hodnota, která určuje, zda jsou povoleny aktualizace balíčků, odstraňování a přidání. Pokud je toto nastavení nastaveno na **ne**, aktualizace balíčků a odstranění jsou pro aplikaci zakázané. Přidat lze pouze nové verze balíčku aplikace. Výchozí hodnota je **Yes** (Ano).
 
 Pokud chcete zobrazit strukturu souborů balíčku aplikace na výpočetním uzlu, přejděte na portál na účet Batch. Z účtu Batch přejděte na **fondy**. Vyberte fond, který obsahuje výpočetní uzel (y), na které vás zajímáte.

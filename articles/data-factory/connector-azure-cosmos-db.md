@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/11/2019
-ms.openlocfilehash: 52bec8bba7bb3ddf545e3bd1866775f0964c6ad3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 6e9e1d54599ab88092638762ccd7974e44c82cbf
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893138"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025805"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Kopírování a transformace dat v Azure Cosmos DB (SQL API) pomocí Azure Data Factory
 
@@ -24,7 +24,7 @@ ms.locfileid: "75893138"
 > * [Verze 1](v1/data-factory-azure-documentdb-connector.md)
 > * [Aktuální verze](connector-azure-cosmos-db.md)
 
-V tomto článku se naučíte, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z a do Azure Cosmos DB (SQL API) a jak transformovat data v Azure Cosmos DB (SQL API) pomocí toku dat. Další informace o Azure Data Factory najdete v článku [úvodní článek](introduction.md).
+Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory kopírovat data do a ze služby Azure Cosmos DB (SQL API) a jak pomocí Toku dat transformovat data ve službě Azure Cosmos DB (SQL API). Další informace o Azure Data Factory najdete v článku [úvodní článek](introduction.md).
 
 >[!NOTE]
 >Tento konektor podporuje pouze Cosmos DB rozhraní SQL API. MongoDB API najdete v tématu [konektor pro rozhraní api Azure Cosmos DB pro MongoDB](connector-azure-cosmos-db-mongodb-api.md). Jiné typy rozhraní API se teď nepodporují.
@@ -249,7 +249,7 @@ Použijete-li zdroj typu "DocumentDbCollectionSink", je stále podporováno, pro
 ]
 ```
 
-### <a name="schema-mapping"></a>Schema mapping
+### <a name="schema-mapping"></a>Mapování schématu
 
 Chcete-li kopírovat data z Azure Cosmos DB do tabulkové jímky nebo obráceně, přečtěte si téma [mapování schématu](copy-activity-schema-and-type-mapping.md#schema-mapping).
 
@@ -268,6 +268,18 @@ Nastavení specifická pro Azure Cosmos DB jsou k dispozici na kartě **Možnost
 **Propustnost:** Nastavte volitelnou hodnotu pro počet ru, který chcete použít pro kolekci CosmosDB pro každé spuštění tohoto toku dat během operace čtení. Minimum je 400.
 
 **Preferované oblasti:** Vyberte preferované oblasti čtení pro tento proces.
+
+#### <a name="json-settings"></a>Nastavení JSON
+
+**Jeden dokument:** Tuto možnost vyberte, pokud má ADF zacházet s celým souborem jako s jedním dokumentem JSON.
+
+**Názvy sloupců bez uvozovek:** Tuto možnost vyberte, pokud názvy sloupců ve formátu JSON nejsou v uvozovkách.
+
+**Má komentáře:** Tento výběr použijte, pokud dokumenty JSON obsahují komentáře v datech.
+
+**Jednoduché v uvozovkách:** Tato možnost by měla být vybrána, pokud jsou sloupce a hodnoty v dokumentu citovány s jednoduchými uvozovkami.
+
+**Zpětné lomítko bylo uvozeno:** Pokud používáte zpětná lomítka k řídicím znakům ve formátu JSON, vyberte tuto možnost.
 
 ### <a name="sink-transformation"></a>Transformace jímky
 

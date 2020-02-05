@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 9633975f53b3e398537067b17a870f621d9a7435
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 03daafd383810a5e6cf086ca8e546981b06fa6eb
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045061"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025703"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Použití nástroje pro vyrovnávání zatížení Standard SKU ve službě Azure Kubernetes (AKS)
 
@@ -26,7 +26,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.74 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.81 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -162,9 +162,14 @@ az aks create \
     --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
 ```
 
-## <a name="show-the-outbound-rule-for-your-load-balancer"></a>Zobrazit odchozí pravidlo pro nástroj pro vyrovnávání zatížení
+## <a name="configure-outbound-ports-and-idle-timeout"></a>Konfigurace odchozích portů a vypršení časového limitu nečinnosti
 
-Pokud chcete zobrazit odchozí pravidlo vytvořené v nástroji pro vyrovnávání zatížení, použijte příkaz [AZ Network Outbound-rule list][az-network-lb-outbound-rule-list] a zadejte skupinu prostředků uzlu clusteru AKS:
+> [!WARNING]
+> Následující část je určena pro pokročilé scénáře většího škálování sítě nebo pro řešení potíží s vyčerpáním SNAT s výchozími konfiguracemi. Před změnou *AllocatedOutboundPorts* nebo *IdleTimeoutInMinutes* z výchozí hodnoty, abyste zachovali v pořádku clustery, musíte mít přesný inventář dostupné kvóty pro virtuální počítače a IP adresy.
+> 
+> Změna hodnot pro *AllocatedOutboundPorts* a *IdleTimeoutInMinutes* může významně změnit chování odchozího pravidla pro nástroj pro vyrovnávání zatížení. Před aktualizací těchto hodnot si přečtěte [Load Balancer odchozí pravidla][azure-lb-outbound-rules-overview], [odchozí pravidla vyrovnávání zatížení][azure-lb-outbound-rules]a [odchozí připojení v Azure][azure-lb-outbound-connections] , abyste plně pochopili dopad vašich změn.
+
+Odchozí porty a jejich časový limit nečinnosti se používají pro [SNAT][azure-lb-outbound-connections]. Ve výchozím nastavení používá nástroj pro vyrovnávání zatížení *Standard* SKU [Automatické přiřazení pro počet odchozích portů na základě velikosti fondu back-endu][azure-lb-outbound-preallocatedports] a vypršení časového limitu nečinnosti 30 minut pro každý port. Pokud chcete zobrazit tyto hodnoty, použijte příkaz [AZ Network Outbound-rule list][az-network-lb-outbound-rule-list] a zobrazte odchozí pravidlo pro nástroj pro vyrovnávání zatížení:
 
 ```azurecli-interactive
 NODE_RG=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
@@ -179,7 +184,46 @@ AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name        
 0                         True              30                      aksOutboundRule  All         Succeeded            MC_myResourceGroup_myAKSCluster_eastus  
 ```
 
-V příkladu výstupu je *AllocatedOutboundPorts* 0. Hodnota pro *AllocatedOutboundPorts* znamená, že se přidělení portu SNAT vrátí na automatické přiřazení na základě velikosti fondu back-endu. Další podrobnosti najdete v tématu [Load Balancer odchozích pravidel][azure-lb-outbound-rules] a [odchozích připojení v Azure][azure-lb-outbound-connections] .
+Vzorový výstup zobrazuje výchozí hodnotu pro *AllocatedOutboundPorts* a *IdleTimeoutInMinutes*. Hodnota 0 pro *AllocatedOutboundPorts* nastaví počet odchozích portů pomocí automatického přiřazování pro počet odchozích portů na základě velikosti fondu back-endu. Například pokud má cluster 50 nebo méně uzlů, přidělí se porty 1024 pro každý uzel.
+
+Zvažte změnu nastavení *allocatedOutboundPorts* nebo *IdleTimeoutInMinutes* , pokud očekáváte vyčerpání SNAT v závislosti na výše uvedené výchozí konfiguraci. Každá další IP adresa povoluje 64 000 dalších portů pro přidělení, ale Standard Load Balancer Azure při přidání dalších IP adres automaticky nezvětšuje porty na uzel. Tyto hodnoty můžete změnit nastavením *Nástroje pro vyrovnávání zatížení – Odchozí porty* a *Vyrovnávání zatížení – nečinné parametry – časový limit* . Příklad:
+
+```azurecli-interactive
+az aks update \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --load-balancer-outbound-ports 0 \
+    --load-balancer-idle-timeout 30
+```
+
+> [!IMPORTANT]
+> [Požadovaná kvóta musí být vypočítána][calculate-required-quota] před přizpůsobením *allocatedOutboundPorts* , aby nedocházelo k problémům s připojením nebo škálováním. Hodnota, kterou zadáte pro *allocatedOutboundPorts* , musí být také násobkem 8.
+
+Při vytváření clusteru můžete také *použít nástroje pro vyrovnávání zatížení – Odchozí porty* a *Vyrovnávání zatížení – parametry časového limitu nečinnosti* , ale musíte také zadat buď službu *Vyrovnávání zatížení – spravovaná – odchozí*IP *adresy*, nebo *Nástroj pro vyrovnávání zatížení – odchozí IP adresy a jejich předpony* .  Příklad:
+
+```azurecli-interactive
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --vm-set-type VirtualMachineScaleSets \
+    --node-count 1 \
+    --load-balancer-sku standard \
+    --generate-ssh-keys \
+    --load-balancer-managed-outbound-ip-count 2 \
+    --load-balancer-outbound-ports 0 \
+    --load-balancer-idle-timeout 30
+```
+
+Při změně nastavení nástroje pro vyrovnávání *zatížení – Odchozí porty* a *Vyrovnávání zatížení – parametry časového limitu nečinnosti* , které mají vliv na chování profilu nástroje pro vyrovnávání zatížení, který ovlivňuje celý cluster.
+
+### <a name="required-quota-for-customizing-allocatedoutboundports"></a>Požadovaná kvóta pro přizpůsobení allocatedOutboundPorts
+Na základě počtu virtuálních počítačů uzlů a požadovaných odchozích portů musíte mít dostatek odchozích IP adres. Pokud chcete ověřit, že máte dostatek odchozích IP adres, použijte tento vzorec: 
+ 
+*outboundIPs* \* 64 000 \> *nodeVMs* \* *desiredAllocatedOutboundPorts*.
+ 
+Pokud máte například 3 *nodeVMs*a 50 000 *desiredAllocatedOutboundPorts*, musíte mít aspoň 3 *outboundIPs*. Doporučuje se, abyste zahrnuli Další odchozí IP kapacitu nad rámec toho, co potřebujete. Kromě toho musíte při výpočtu kapacity odchozí IP adresy účtu pro automatické škálování clusteru a možnost upgradů fondu uzlů. Pro automatické škálování clusteru Zkontrolujte aktuální počet uzlů a maximální počet uzlů a použijte vyšší hodnotu. Pro upgrade můžete pro každý fond uzlů, který umožňuje upgradování, přihlédnout k virtuálnímu počítači pro další uzly.
+ 
+Při nastavování *IdleTimeoutInMinutes* na jinou hodnotu než výchozí hodnota 30 minut zvažte, jak dlouho budou vaše úlohy potřebovat odchozí připojení. Zvažte také výchozí hodnotu časového limitu pro nástroj pro vyrovnávání zatížení *Standard* SKU, který se používá mimo AKS, na 4 minuty. Hodnota *IdleTimeoutInMinutes* , která přesněji odráží konkrétní úlohu AKS, může přispět ke snížení vyčerpání SNAT způsobená vytvořením připojení, která se už nepoužívají.
 
 ## <a name="restrict-access-to-specific-ip-ranges"></a>Omezení přístupu ke konkrétním rozsahům IP adres
 
@@ -239,9 +283,12 @@ Další informace o službách Kubernetes Services najdete v [dokumentaci ke slu
 [azure-lb-comparison]: ../load-balancer/concepts-limitations.md#skus
 [azure-lb-outbound-rules]: ../load-balancer/load-balancer-outbound-rules-overview.md#snatports
 [azure-lb-outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md#snat
+[azure-lb-outbound-preallocatedports]: ../load-balancer/load-balancer-outbound-connections.md#preallocatedports
+[azure-lb-outbound-rules-overview]: ../load-balancer/load-balancer-outbound-rules-overview.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [internal-lb-yaml]: internal-lb.md#create-an-internal-load-balancer
 [kubernetes-concepts]: concepts-clusters-workloads.md
 [use-kubenet]: configure-kubenet.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[calculate-required-quota]: #required-quota-for-customizing-allocatedoutboundports

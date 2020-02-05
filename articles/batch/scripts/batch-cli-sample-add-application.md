@@ -3,8 +3,8 @@ title: Ukázkový skript Azure CLI – Přidání aplikace ve službě Batch
 description: Tento ukázkový skript ukazuje, jak přidat aplikaci pro použití s fondem Azure Batch nebo úlohou.
 services: batch
 documentationcenter: ''
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -13,13 +13,13 @@ ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
-ms.author: jushiman
-ms.openlocfilehash: f8fb891c2ec6f531ff87b15fe12da46a9cd93941
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: b19f5dbe27ba0ecabdca6557e4e8e1996fbef78a
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029432"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77017118"
 ---
 # <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>Příklad rozhraní příkazového řádku: Přidání aplikace do účtu Azure Batch
 

@@ -3,12 +3,12 @@ title: Podpora pro migraci VMware v Azure Migrate
 description: Přečtěte si o podpoře migrace virtuálních počítačů VMware v Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 6593d4de6823f15f570ab8922d76cbe84fb0e348
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e5a2f40611f6b358a8b5ff1dfb99cadebae4fab6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901538"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77013990"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Matice podpory pro migraci VMware
 
@@ -123,7 +123,7 @@ Při nastavování zařízení replikace pomocí šablony vajíček, která je k
 
 - Seznamte se s [požadavky na zařízení replikace](migrate-replication-appliance.md#appliance-requirements) pro VMware.
 - V zařízení musí být nainstalovaný MySQL. Přečtěte si o [možnostech instalace](migrate-replication-appliance.md#mysql-installation).
-- Přečtěte si o [adresách URL](migrate-replication-appliance.md#url-access) a [portech]() , které musí zařízení replikace mít.
+- Přečtěte si o [adresách URL](migrate-replication-appliance.md#url-access) a [portech](migrate-replication-appliance.md#port-access) , které musí zařízení replikace mít.
 
 ## <a name="agent-based-ports"></a>Porty založené na agentech
 

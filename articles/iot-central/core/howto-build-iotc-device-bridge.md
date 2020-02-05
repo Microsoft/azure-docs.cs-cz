@@ -8,12 +8,12 @@ ms.author: viviali
 ms.date: 07/09/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: c98574bc3447482429d7a028c6b47197e08e2e38
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b79020b4da08eeade0af885b4a6ca9f01c81c526
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954536"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023204"
 ---
 # <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>Sestavení mostu IoT Central zařízení pro připojení dalších cloudů IoT k IoT Central
 

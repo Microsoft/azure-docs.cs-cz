@@ -3,8 +3,8 @@ title: Metriky, výstrahy a diagnostické protokoly – Azure Batch | Microsoft 
 description: Zaznamenávat a analyzovat události diagnostických protokolů pro účet prostředky služby Azure Batch, jako jsou fondy a úlohy.
 services: batch
 documentationcenter: ''
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 12/05/2018
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: ffe8eb58fba570bf6002884ee365e76d9b53a273
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 70c53ea9a8fc64615a9a493efc42405631a3f06d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027206"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025159"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch metriky, výstrahy a protokoly pro diagnostické hodnocení a monitorování
 
@@ -105,7 +105,7 @@ Ostatní volitelné cíle pro diagnostické protokoly:
 
     Když vyberete účet úložiště, volitelně nastavte zásady uchovávání informací. Pokud nechcete zadat počet dní pro uchovávání dat, data se uchovávají po dobu trvání účtu úložiště.
 
-4. Klikněte na možnost **Uložit**.
+4. Klikněte na **Uložit**.
 
     ![Diagnostika služby batch](media/batch-diagnostics/diagnostics-portal.png)
 

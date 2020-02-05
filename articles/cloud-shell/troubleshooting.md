@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 5af73e166f3caa4997851ae4b17d8377550bf40a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: db1e2d09c1a75401a8ca24859e9b2d5da9f54b72
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961550"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024275"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Řešení potíží s omezeními & Azure Cloud Shell
 
@@ -36,8 +36,8 @@ Známá řešení potíží s Azure Cloud Shell zahrnují:
 
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>Zakázání Cloud Shell v uzamčeném síťovém prostředí
 
-- **Podrobnosti**: Správci můžou chtít zakázat přístup k Cloud Shell pro své uživatele. Cloud Shell využívá přístup k doméně `ux.console.azure.com`, která může být zamítnutá, zastavení jakéhokoli přístupu ke vstupním parametrům Cloud Shell, včetně portal.azure.com, shell.azure.com, Visual Studio Code rozšíření účtu Azure a docs.microsoft.com.
-- **Řešení**: Omezte přístup k `ux.console.azure.com` prostřednictvím nastavení sítě do vašeho prostředí. Ikona Cloud Shell bude i nadále existovat v portal.azure.com, ale nebude se k této službě úspěšně připojovat.
+- **Podrobnosti**: Správci můžou chtít zakázat přístup k Cloud Shell pro své uživatele. Cloud Shell využívá přístup k doméně `ux.console.azure.com`, která může být zamítnutá, zastavení jakéhokoli přístupu ke vstupním parametrům Cloud Shell, včetně portal.azure.com, shell.azure.com, Visual Studio Code rozšíření účtu Azure a docs.microsoft.com. V cloudu pro státní správu USA je tento vstupní bod `ux.console.azure.us`. neexistuje žádný odpovídající shell.azure.us.
+- **Řešení**: Omezte přístup k `ux.console.azure.com` nebo `ux.console.azure.us` prostřednictvím nastavení sítě do vašeho prostředí. Ikona Cloud Shell bude stále existovat v Azure Portal, ale nebude se k ní úspěšně připojovat.
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Dialog úložiště – chyba: 403 RequestDisallowedByPolicy
 
@@ -163,7 +163,7 @@ Azure Cloud Shell převezme vaše osobní údaje, budou se data zachycená a ulo
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-### <a name="export"></a>Export
+### <a name="export"></a>Exportovat
 Chcete-li **exportovat** nastavení uživatele Cloud Shell Uložit pro vás, jako je preferované prostředí, velikost písma a typ písma, spusťte následující příkazy.
 
 1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)

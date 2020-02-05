@@ -3,8 +3,8 @@ title: Přehled pro vývojáře – Azure Batch | Microsoft Docs
 description: Informace o funkcích služby Batch a jejích rozhraní API z hlediska vývoje.
 services: batch
 documentationcenter: .net
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: 416b95f8-2d7b-4111-8012-679b0f60d204
 ms.service: batch
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-compute
 ms.date: 08/29/2019
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 6ea5ce71622e98b60d68c1680382dc63c767999d
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 4d6c4ff06783489ea7b6c3488cf6746d579b4c6a
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029772"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025941"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Vývoj rozsáhlých paralelních výpočetních řešení pomocí služby Batch
 
@@ -87,7 +87,7 @@ Batch podporuje následující typy účtů Azure Storage:
 * Účty pro obecné účely verze 1 (GPv1)
 * Účty úložiště Blob (v současnosti podporuje fondy v konfiguraci virtuálního počítače)
 
-Další informace o účtech úložiště najdete v [přehledu účtu Azure Storage](../storage/common/storage-account-overview.md).
+Další informace o účtech úložiště najdete v [přehledu účtu úložiště Azure](../storage/common/storage-account-overview.md).
 
 Účet úložiště můžete ke svému účtu Batch přidružit při vytváření účtu Batch nebo později. Při výběru účtu úložiště zvažte své požadavky na náklady a výkon. Například možnosti účtu úložiště GPv2 a účtu úložiště objektů blob podporují ve srovnání s účty GPv1 vyšší [limity kapacity a škálovatelnosti](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/). (Kontaktujte podporu Azure a požádejte o zvýšení limitu úložiště.) Tyto možnosti účtu můžou zlepšit výkon řešení Batch, který obsahuje velký počet paralelních úloh, které čtou nebo zapisují do účtu úložiště.
 
@@ -441,7 +441,7 @@ Vzorec škálování může být založen na následujících metrikách:
 
 Když automatické škálování snižuje počet výpočetních uzlů ve fondu, je nutné zvážit, jak naložit s úkoly, které v okamžiku snižování již běží. K tomuto účelu poskytuje služba Batch *možnost zrušení přidělení uzlu*, kterou můžete ve vzorcích používat. Můžete například zadat, že spuštěné úkoly se mají okamžitě zastavit a pak znovu zařadit do fronty pro provedení na jiném uzlu, nebo nechat dokončit před odebráním uzlu z fondu.
 
-Další informace o automatickém škálování aplikace naleznete v tématu [Automatické škálování výpočetních uzlů ve fondu Azure Batch](batch-automatic-scaling.md).
+Další informace o automatickém škálování aplikace najdete v tématu [Automatické škálování výpočetních uzlů ve fondu Azure Batch](batch-automatic-scaling.md).
 
 > [!TIP]
 > Pokud chcete maximalizovat využití výpočetních prostředků, nastavte cílový počet uzlů na konci úlohy na hodnotu nula, ale povolte dokončení spouštěných úkolů.

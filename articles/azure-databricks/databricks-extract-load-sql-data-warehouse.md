@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: 4c73a1e314888d99f4a5beea997265d28077e847
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a505145eeba47eda9950c5a4c8221e4c9ae4b3a4
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898616"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024071"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Kurz: extrakce, transformace a načtení dat pomocí Azure Databricks
 
@@ -65,7 +65,7 @@ Než začnete s tímto kurzem, dokončete tyto úkoly:
 
    * Při provádění kroků v části [získat hodnoty pro přihlášení v](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) článku Vložte ID TENANTA, ID aplikace a tajné hodnoty do textového souboru. Budete je potřebovat brzy.
 
-* Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+* Přihlaste se k [Portálu Azure](https://portal.azure.com/).
 
 ## <a name="gather-the-information-that-you-need"></a>Shromážděte informace, které potřebujete.
 
@@ -216,7 +216,7 @@ V buňce stiskněte **SHIFT + ENTER** a kód se spustí.
 1. Ukázkový soubor JSON teď můžete načíst jako datový rámec v Azure Databricks. Do nové buňky vložte následující kód. Zástupné symboly zobrazené v závorkách nahraďte hodnotami.
 
    ```scala
-   val df = spark.read.json("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/small_radio_json.json")
+   val df = spark.read.json("abfss://" + fileSystemName + "@" + storageAccountName + ".dfs.core.windows.net/small_radio_json.json")
    ```
 2. Stiskněte klávesy **SHIFT + ENTER** a spusťte kód v tomto bloku.
 

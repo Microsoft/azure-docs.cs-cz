@@ -5,7 +5,7 @@
   items:
     - name: Co je počítačové zpracování obrazu?
       href: Home.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: S využitím klientské sady SDK
       items:
@@ -135,8 +135,6 @@
         - name: Použití instancí kontejneru
           href: deploy-computer-vision-on-container-instances.md
           displayName: 'container instances, container, containers, images'
-    - name: Použití připojené služby počítačového zpracování obrazu
-      href: vs-computer-vision-connected-service.md
     - name: Analýza videa v reálném čase
       href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
 - name: Referenční informace
@@ -165,7 +163,7 @@
           href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable'
 - name: Zdroje a prostředky
   items:
-    - name: Ukázky
+    - name: ukázky
       items:
         - name: Aplikace pro zpracování obrázků
           href: Tutorials/CSharpTutorial.md

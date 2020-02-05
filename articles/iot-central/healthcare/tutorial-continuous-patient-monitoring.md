@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: c9a153cc5b1b8c43a42b37d591a8946a545f63ff
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 35ac39109bfcb4dc63b738c947d2ad8caf8ac0a6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986412"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77021283"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Kurz: nasazení a návod pro šablonu aplikace monitorování průběžného pacienta
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-V tomto kurzu se dozvíte, jak můžete začít tím, že nasadíte šablonu aplikace monitorování s průběžnými pacienty IoT Central. Naučíte se, jak nasadit šablonu, co je součástí okna a co byste chtěli udělat dál.
+
+V tomto kurzu se dozvíte, jak můžete začít tím, že nasadíte šablonu aplikace monitorování s průběžnými pacienty IoT Central. Naučíte se, jak nasadit šablonu, co je součástí okna a co můžete udělat dál.
 
 V tomto kurzu se naučíte:
 
@@ -34,7 +34,7 @@ Přejděte na [web Azure IoT Central Správce aplikací](https://apps.azureiotce
 >[!div class="mx-imgBorder"] 
 >![](media/app-manager-health.png) péče Správce aplikací
 
-Klikněte na tlačítko **vytvořit aplikaci** a začněte vytvářet aplikaci a pak se přihlaste pomocí osobního, pracovního nebo školního účtu Microsoft. Tím přejdete na stránku **Nová aplikace** .
+Klikněte na tlačítko **vytvořit aplikaci** a začněte vytvářet aplikaci a pak se přihlaste pomocí osobního, pracovního nebo školního účtu Microsoft. Přejdete na stránku **Nová aplikace** .
 
 ![Vytvoření zdravotnictví pro aplikace](media/app-manager-health-create.png)
 
@@ -52,13 +52,13 @@ Vytvoření aplikace:
 
 ### <a name="dashboards"></a>Řídicí panely
 
-Po nasazení šablony aplikace se na **řídicím panelu monitorování Lamna na pacientech**nejprve dostanou. Lamna zdravotnictví je fiktivní ústavní systém, který obsahuje dvě nemocnice: Woodgrove nemocnice a Burkville nemocnice. Na tomto řídicím panelu pro Woodgrove nemocnice uvidíte informace a telemetrii o zařízeních v této šabloně spolu se sadou příkazů, úloh a akcí, které můžete provést. Z řídicího panelu můžete:
+Po nasazení šablony aplikace se na **řídicím panelu monitorování Lamna na pacientech**stanete první půdou. Lamna zdravotnictví je fiktivní ústavní systém, který obsahuje dvě nemocnice: Woodgrove nemocnice a Burkville nemocnice. Na tomto řídicím panelu pro Woodgrove nemocnice uvidíte informace a telemetrii o zařízeních v této šabloně spolu se sadou příkazů, úloh a akcí, které můžete provést. Z řídicího panelu můžete:
 
 * Podívejte se na telemetrii a vlastnosti zařízení, jako je například **úroveň baterie** vašeho zařízení nebo stav **připojení** .
 
 * Prohlédněte si plán a umístění **dílenského** zařízení s opravou inteligentních zásad.
 
-* **Znovu zřídit** opravu inteligentních zásad pro nový pacient.
+* Znovu **zajistěte** opravu pro nový pacient, která je v případě inteligentních zásad nezbytná.
 
 * Podívejte se na příklad **řídicího panelu poskytovatele** , který může tým ústavní péče sledovat své pacienty.
 
@@ -78,7 +78,7 @@ Na obou řídicích panelech můžete vždy propojit zpátky na tuto dokumentaci
 
 Pokud kliknete na kartu **šablony zařízení** , uvidíte, že existují dva různé typy zařízení, které jsou součástí šablony:
 
-* **Oprava inteligentního zabezpečení**: Toto zařízení představuje opravu, která měří celou řadu důležitých příznaků, které se dají použít k monitorování pacientů v nemocnicích i mimo něj. Pokud kliknete na šablonu, uvidíte, že kromě odesílání dat zařízení, jako je například úroveň baterie a teplota zařízení, tato oprava také odesílá data o zdravotním stavu, jako je třeba míra dýchacího a krevního tlaku.
+* **Oprava inteligentního zabezpečení**: Toto zařízení představuje opravu, která měří různé typy životně důležitých značek. Dá se použít k monitorování pacientů v nemocnicích i mimo něj. Pokud kliknete na šablonu, uvidíte, že kromě odesílání dat zařízení, jako je například úroveň baterie a teplota zařízení, tato oprava také odesílá data o zdravotním stavu, jako je třeba míra dýchacího a krevního tlaku.
 
 * **Chytrá závorka kolena**: Toto zařízení představuje složenou závorku, kterou můžou pacienti použít při obnovování z karty s výměnou kolena. Pokud kliknete na tuto šablonu, uvidíte kromě dat zařízení i možnosti, jako je například rozsah pohybu a akcelerace.
 
@@ -102,7 +102,7 @@ Při přechodu na kartu pravidla se zobrazí tři pravidla, která existují v �
 
 ### <a name="devices"></a>Zařízení
 
-Klikněte na kartu **zařízení** a pak vyberte instanci **čipové složené závorky**. Uvidíte, že existují tři zobrazení, která vám pomůžou prozkoumat informace o konkrétním zařízení, které jste vybrali. Tato zobrazení jsou vytvářena a publikována při sestavování šablony zařízení pro vaše zařízení. To znamená, že budou konzistentní napříč všemi zařízeními, která připojíte nebo simulujete.
+Klikněte na kartu **zařízení** a pak vyberte instanci **čipové složené závorky**. Uvidíte, že existují tři zobrazení, která vám pomohou prozkoumat informace o konkrétním zařízení, které jste vybrali. Tato zobrazení jsou vytvářena a publikována při sestavování šablony zařízení pro vaše zařízení, což znamená, že budou konzistentní napříč všemi zařízeními, která jsou připojena nebo Simulovaná.
 
 Zobrazení **řídicího panelu** poskytuje přehled telemetrie a vlastností, které pocházejí ze zařízení, které je orientované na obsluhu.
 

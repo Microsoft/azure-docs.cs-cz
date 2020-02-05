@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: f0e7c3bbbdcd1edad24422163fde38e3fdce7e27
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 09003c26ead9108d07ae339fcf64235c246474a4
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988647"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024139"
 ---
 # <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Úvod k přírůstkové obohacení a ukládání do mezipaměti v Azure Kognitivní hledání
 
@@ -26,7 +26,7 @@ Přírůstkové obohacení přidává do kanálu pro rozšíření mezipaměť a
 
 Přírůstkové obohacení přidá do kanálu pro rozšíření mezipaměť. Indexer ukládá výsledky z odhalujícího dokumentu do mezipaměti a také výstupy jednotlivých dovedností pro každý dokument. Jakmile se dovednosti aktualizuje, budou se znovu spouštět jenom změněné nebo podřízené. Aktualizované výsledky se zapisují do mezipaměti a dokument se aktualizuje v indexu vyhledávání nebo ve znalostní bázi Knowledge Store.
 
-Mezipaměť je fyzicky uložená v kontejneru objektů BLOB v účtu Azure Storage. Všechny indexy v rámci vyhledávací služby můžou sdílet stejný účet úložiště pro mezipaměť indexeru. Každému indexeru je přiřazen jedinečný a neproměnlivý identifikátor mezipaměti pro kontejner, který používá.
+Mezipaměť je fyzicky uložená v kontejneru objektů BLOB v účtu Azure Storage. Mezipaměť také používá úložiště tabulek pro interní záznam aktualizací zpracování. Všechny indexy v rámci vyhledávací služby můžou sdílet stejný účet úložiště pro mezipaměť indexeru. Každému indexeru je přiřazen jedinečný a neproměnlivý identifikátor mezipaměti pro kontejner, který používá.
 
 ## <a name="cache-configuration"></a>Konfigurace mezipaměti
 

@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 22ed36c3c55d55ab9a733c2a0552f0ac3dcce1f5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 40c5f612b5b1571bb3d39f452d64a7005701f7c1
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987650"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023799"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Vytvoření a Správa aplikace Azure IoT Central z portálu CSP
 
@@ -23,25 +23,27 @@ Jako CSP můžete pomocí [partnerského centra Microsoftu](https://partnercente
 
 Začněte tím, že se přihlásíte ke svému účtu na portálu Microsoft Partner Portal a vyberete zákazníka, pro který chcete vytvořit aplikaci Azure IoT Central. Přejděte na správu služby pro zákazníka z levé navigace.
 
-![Centrum partnerů Microsoftu, zobrazení zákazníků](media/howto-create-application-csp/image1.png)
+![Centrum partnerů Microsoftu, zobrazení zákazníků](media/howto-create-and-manage-applications-csp/image1.png)
 
 Azure IoT Central je uveden jako služba, kterou je možné spravovat. Na stránce vyberte odkaz Azure IoT Central, abyste mohli vytvářet nové aplikace nebo spravovat existující aplikace pro tohoto zákazníka.
 
-![Správa Azure IoT Central k dispozici pro správu](media/howto-create-application-csp/image2.png)
+![Správa Azure IoT Central k dispozici pro správu](media/howto-create-and-manage-applications-csp/image2.png)
 
 Na stránce Azure IoT Central Správce aplikací se zakoupíte. Azure IoT Central udržuje kontext, který jste dostali z partnerského centra Microsoftu a kterou jste získali za správu tohoto konkrétního zákazníka. Toto potvrzení se zobrazí v záhlaví stránky Správce aplikací. Z tohoto místa můžete buď přejít na existující aplikaci, kterou jste předtím vytvořili, aby tento zákazník mohl spravovat nebo vytvořit novou aplikaci pro zákazníka.
 
-![Vytvořit správce pro zprostředkovatele CSP](media/howto-create-application-csp/image3.png)
+![Vytvořit správce pro zprostředkovatele CSP](media/howto-create-and-manage-applications-csp/image3.png)
 
 Pokud chcete vytvořit aplikaci Azure IoT Central, v levé nabídce vyberte **sestavit** . Vyberte jednu z průmyslových šablon nebo vyberte **starší aplikace** a vytvořte zcela novou aplikaci. Tím se načte stránka pro vytvoření aplikace. Musíte vyplnit všechna pole na této stránce a pak zvolit **vytvořit**. Další informace o každém z těchto polí najdete v části.
 
-![Vytvořit stránku aplikace pro zprostředkovatele CSP](media/howto-create-application-csp/image4.png)
+![Vytvořit stránku aplikace pro zprostředkovatele CSP](media/howto-create-and-manage-applications-csp/image4.png)
 
-![Vytvořit stránku aplikace pro zprostředkovatele CSP](media/howto-create-application-csp/image4-1.png)
+![Vytvořit stránku aplikace pro zprostředkovatele CSP](media/howto-create-and-manage-applications-csp/image4-1.png)
 
-![Vytvořit stránku aplikace pro informace o fakturaci CSP](media/howto-create-application-csp/image4-2.png)
+![Vytvořit stránku aplikace pro informace o fakturaci CSP](media/howto-create-and-manage-applications-csp/image4-2.png)
 
 ## <a name="pricing-plan"></a>Cenový tarif
+
+Můžete vytvářet jenom aplikace, které jako CSP používají standardní cenový plán. Abyste svým zákazníkům předvedli IoT Central Azure, můžete vytvořit aplikaci, která bude používat bezplatný cenový plán zvlášť. Další informace o cenových plánech zdarma a Standard najdete na [stránce s cenami za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
 
 Můžete vytvářet jenom aplikace, které jako CSP používají standardní cenový plán. Abyste svým zákazníkům předvedli IoT Central Azure, můžete vytvořit aplikaci, která bude používat bezplatný cenový plán zvlášť. Další informace o cenových plánech zdarma a Standard najdete na [stránce s cenami za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
 
@@ -75,9 +77,6 @@ Další informace najdete v tématu [předplatná Azure](https://docs.microsoft.
 
 Vyberte oblast nebo [zeměpisnou](https://azure.microsoft.com/global-infrastructure/geographies/) oblast, ve které chcete vytvořit aplikaci Azure IoT Central. Obvykle byste měli zvolit oblast, která je pro vaše zařízení nejbližší, aby získala optimální výkon.
 
-> [!NOTE]
-> Šablony aplikace ve verzi Preview jsou v tuto chvíli dostupné jenom v oblastech **Evropa** a **USA** .
-
 Další informace najdete v tématu [oblasti Azure](https://azure.microsoft.com/global-infrastructure/regions/) a [Zeměpisná oblast Azure](https://azure.microsoft.com/global-infrastructure/geographies/).
 
 Oblasti, ve kterých je Azure IoT Central k dispozici, můžete zobrazit na stránce [produkty dostupné podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=iot-central) .
@@ -87,11 +86,7 @@ Oblasti, ve kterých je Azure IoT Central k dispozici, můžete zobrazit na str�
 
 ## <a name="application-template"></a>Šablona aplikace
 
-Můžete zvolit níže uvedenou šablonu aplikace pro novou aplikaci Azure IoT Central.
-
-| Šablona aplikace | Popis |
-| -------------------- | ----------- |
-| Starší verze aplikace   | Vytvoří prázdnou aplikaci, kterou můžete naplnit vlastními šablonami zařízení a zařízeními. |
+Vyberte šablonu aplikace, kterou chcete použít pro vaši aplikaci.
 
 
 ## <a name="next-steps"></a>Další kroky

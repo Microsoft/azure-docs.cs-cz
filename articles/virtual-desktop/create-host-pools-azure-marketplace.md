@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: e5be2490ebf756c030e6a53b226f91c49c7bccaf
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 25dd4810cf8cccab8bcbf211da4f6abbcd147056
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605586"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020025"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Kurz: Vytvoření fondu hostitelů pomocí Azure Marketplace
 
@@ -34,7 +34,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se k [Portálu Azure](https://portal.azure.com).
 
 ## <a name="run-the-azure-marketplace-offering-to-provision-a-new-host-pool"></a>Spuštění nabídky Azure Marketplace pro zřízení nového fondu hostitelů
 
@@ -55,7 +55,7 @@ Tady je přehled toho, co je pro okno **základy** :
 3. Zadejte čárkami oddělený seznam uživatelů, kteří se můžou přihlásit k klientům virtuální plochy Windows a získat přístup k ploše po dokončení nabídky Azure Marketplace. Například pokud chcete přiřadit user1@contoso.com a přístup k user2@contoso.com, zadejte "user1@contoso.com,user2@contoso.com."
 4. Vyberte **vytvořit nový** a zadejte název nové skupiny prostředků.
 5. V poli **umístění**vyberte stejné umístění jako virtuální síť, která má připojení k serveru služby Active Directory.
-6. Vyberte **OK**.
+6. Vyberte **Další: Konfigurace virtuálních počítačů >** .
 
 >[!IMPORTANT]
 >Pokud používáte čistě Azure Active Directory Domain Services a Azure Active Directory řešení, nezapomeňte nasadit fond hostitelů ve stejné oblasti jako Azure Active Directory Domain Services, abyste se vyhnuli chybám připojení k doméně a přihlašovacím údajům.
@@ -66,7 +66,7 @@ Pro okno **Konfigurace virtuálních počítačů** :
 
 1. Buď přijměte výchozí hodnoty, nebo upravte počet a velikost virtuálních počítačů.
 2. Zadejte předponu názvů virtuálních počítačů. Pokud například zadáte název "prefix", virtuální počítače budou nazývány "prefix-0," prefix-1, "atd.
-3. Vyberte **OK**.
+3. Vyberte **Další: nastavení virtuálního počítače**.
 
 ### <a name="virtual-machine-settings"></a>Nastavení virtuálního počítače
 
@@ -80,7 +80,7 @@ Pro okno **nastavení virtuálního počítače** :
 1. V části **zdroj obrázku**vyberte zdroj a zadejte příslušné informace, jak ho najít a jak ho uložit. Pokud se rozhodnete nepoužívat spravované disky, vyberte účet úložiště, který obsahuje soubor. VHD.
 2. Zadejte hlavní uživatelské jméno a heslo pro účet domény, který se připojí k virtuálním počítačům k doméně služby Active Directory. Stejné uživatelské jméno a heslo se vytvoří na virtuálních počítačích jako místní účet. Tyto místní účty můžete později obnovit.
 3. Vyberte virtuální síť, která má připojení k serveru služby Active Directory, a pak zvolte podsíť, která bude hostovat virtuální počítače.
-4. Vyberte **OK**.
+4. Vyberte **Další: informace o virtuálním počítači s Windows**.
 
 ### <a name="windows-virtual-desktop-tenant-information"></a>Informace o tenantovi virtuálních klientů Windows
 
@@ -90,15 +90,14 @@ V okně **informace o Tenantovi virtuálních počítačů s Windows** :
 2. Do pole **název tenanta virtuálních klientů Windows**zadejte název tenanta, do kterého budete tento fond hostitelů vytvářet.
 3. Zadejte typ přihlašovacích údajů, které chcete použít k ověření jako vlastník klienta vzdálené plochy Windows. Pokud jste dokončili [kurz vytvoření objektů služby a přiřazení rolí pomocí PowerShellu](./create-service-principal-role-powershell.md), vyberte **instanční objekt**. Po zobrazení **ID tenanta služby Azure AD** zadejte id instance Azure Active Directory, která obsahuje instanční objekt.
 4. Zadejte přihlašovací údaje pro účet správce tenanta. Podporují se jenom instanční objekty s přihlašovacími údaji hesla.
-5. Vyberte **OK**.
+5. Vyberte **Další: zkontrolovat + vytvořit**.
 
 ## <a name="complete-setup-and-create-the-virtual-machine"></a>Dokončení instalace a vytvoření virtuálního počítače
 
 Pro poslední dvě okna:
 
-1. V okně **Souhrn** zkontrolujte informace o instalaci. Pokud potřebujete něco změnit, vraťte se do příslušného okna a před pokračováním proveďte změnu. Pokud informace vypadají vpravo, vyberte **OK**.
-2. V okně **koupit** si přečtěte další informace o nákupu z Azure Marketplace.
-3. Vyberte **vytvořit** a nasaďte fond hostitelů.
+1. V okně **Kontrola a vytvoření** zkontrolujte informace o instalaci. Pokud potřebujete něco změnit, vraťte se do příslušného okna a před pokračováním proveďte změnu. Pokud informace vypadají vpravo, vyberte **OK**.
+2. Vyberte **vytvořit** a nasaďte fond hostitelů.
 
 V závislosti na počtu virtuálních počítačů, které vytváříte, může tento proces trvat 30 minut nebo i déle.
 

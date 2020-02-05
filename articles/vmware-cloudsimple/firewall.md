@@ -1,6 +1,6 @@
 ---
-title: Řešení Azure VMware podle CloudSimple – nastavení tabulek a pravidel brány firewall
-description: Popisuje, jak nastavit tabulky a pravidla brány firewall privátního cloudu pro omezení provozu v podsítích a sítích VLAN.
+title: Řešení Azure VMware (AVS) – nastavení tabulek a pravidel brány firewall
+description: Popisuje, jak nastavit tabulky a pravidla brány firewall privátního cloudu pro funkci AVS, aby se omezil provoz v podsítích a sítích VLAN.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,14 +8,14 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 411b4bb74c21a445f4001c949e1c7811af212453
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: d133f4d0ac8cc8b70060563ad07da35e9fdf2d37
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606452"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025278"
 ---
-# <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>Nastavení tabulek a pravidel brány firewall pro privátní cloudy
+# <a name="set-up-firewall-tables-and-rules-for-avs-private-clouds"></a>Nastavení tabulek a pravidel brány firewall pro privátní cloudy služby AVS
 
 Tabulky brány firewall a přidružená pravidla umožňují určit omezení provozu, která se mají použít na konkrétní podsítě a sítě VLAN.
 
@@ -24,7 +24,7 @@ Tabulky brány firewall a přidružená pravidla umožňují určit omezení pro
 
 ## <a name="add-a-new-firewall-table"></a>Přidat novou tabulku brány firewall
 
-1. [Přejděte na portál CloudSimple](access-cloudsimple-portal.md) a v postranní nabídce vyberte **síť** .
+1. [Přejděte na portál pro funkci AVS](access-cloudsimple-portal.md) a v postranní nabídce vyberte **síť** .
 2. Vyberte **tabulky brány firewall**.
 3. Vyberte **vytvořit tabulku brány firewall**.
 
@@ -51,7 +51,7 @@ Pravidla brány firewall určují, jak brána firewall zpracovává konkrétní 
 2. Pravidlo nastavte takto:
     * **Název**. Zadejte název pravidla.
     * **Priorita**. Přiřaďte k pravidlu prioritu. Jako první se spustí pravidla s nižšími čísly.
-    * **Typ provozu**. Vyberte, jestli je pravidlo pro provoz privátního cloudu, Internetu nebo VPN (bez stavu) nebo pro veřejnou IP adresu (Stavový).
+    * **Typ provozu**. Vyberte, jestli se jedná o pravidlo pro přenos dat privátního cloudu, Internetu nebo VPN (bez stavu) nebo pro veřejnou IP adresu (stav).
     * **Protokol**. Vyberte protokol, na který se vztahuje pravidlo (TCP, UDP nebo jakýkoli protokol).
     * **Směr**. Vyberte, zda je pravidlo pro příchozí nebo odchozí provoz. Musíte definovat samostatná pravidla pro příchozí a odchozí provoz.
     * **Akce**. Vyberte akci, která se má provést, pokud pravidlo souhlasí (povolit nebo odepřít).
@@ -75,5 +75,5 @@ Po definování tabulky brány firewall můžete určit podsítě, na které se 
 1. Na stránce **tabulky brány firewall** **sítě** > vyberte tabulku brány firewall.
 2. Otevřete kartu **připojené sítě VLAN/podsíť** .
 3. Klikněte na **připojit k síti VLAN nebo podsíti**.
-4. Vyberte privátní cloud a síť VLAN. Zobrazí se název přidružené podsítě a blok CIDR.
-5. Klikněte na **Odeslat**.
+4. Vyberte privátní cloud a síť VLAN pro funkci AVS. Zobrazí se název přidružené podsítě a blok CIDR.
+5. Klikněte na **Submit** (Odeslat).

@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: b6516b07f24c40fcb95d47e05b22dd7672c10f2a
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ef5ce9cc1cda7f1ff6b1985771e20cb20123e264
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531197"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025635"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Glosář pojmů pro IoT technologie Plug and Play Preview
 
@@ -115,9 +115,9 @@ Vývojář zařízení používá model, [rozhraní](#interface)a sadu [funkcí]
 
 [Vývojář zařízení](#device-developer) používá k modelování schopností [technologie Plug and Play zařízení IoT](#iot-plug-and-play-device) [Jazyk digitálního vlákna s definicemi](#digital-twin-definition-language) . Model se dá sdílet pomocí úložiště modelu. Vývojář zařízení může z modelu vygenerovat kostru kódu zařízení. [Vývojář řešení](#solution-developer) může nakonfigurovat řešení IoT z modelu.
 
-## <a name="device-provisioning-service"></a>Služba zřizování zařízení
+## <a name="device-provisioning-service"></a>Služba Device Provisioning
 
-[Azure IoT Central](#azure-iot-central) používá službu Device Provisioning ke správě veškeré registrace a připojení zařízení. Další informace najdete v tématu [připojení zařízení v Azure IoT Central](../iot-central/preview/overview-iot-central-get-connected.md). Službu Device Provisioning můžete použít také ke správě registrace zařízení a připojení k řešení IoT založenému na IoT Hub. Další informace najdete v tématu [zřizování zařízení pomocí Azure IoT Hub Device Provisioning Service](../iot-dps/about-iot-dps.md).
+[Azure IoT Central](#azure-iot-central) používá službu Device Provisioning ke správě veškeré registrace a připojení zařízení. Další informace najdete v tématu [připojení zařízení v Azure IoT Central](../iot-central/core/concepts-get-connected.md). Službu Device Provisioning můžete použít také ke správě registrace zařízení a připojení k řešení IoT založenému na IoT Hub. Další informace najdete v tématu [zřizování zařízení pomocí Azure IoT Hub Device Provisioning Service](../iot-dps/about-iot-dps.md).
 
 ## <a name="device-registration"></a>Registrace zařízení
 

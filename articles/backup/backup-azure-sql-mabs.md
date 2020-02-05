@@ -3,12 +3,12 @@ title: Zálohování SQL Server pomocí Azure Backup Server
 description: V tomto článku se seznámíte s postupy konfigurace zálohování SQL Server databází pomocí serveru Microsoft Azure Backup (MABS).
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: d5e0c49e2cad77e42960fafec9311b31d4cf2601
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 461faa2c88b8db9c1e3b2f9af19783b7d6b7fa07
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172663"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024003"
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>Zálohování SQL Server do Azure s využitím Azure Backup Server
 
@@ -101,7 +101,7 @@ Než začnete, ujistěte se, že jste [nainstalovali a připravili Azure Backup 
 14. Klikněte na **Další** a vyberte odpovídající možnost pro přenos prvotní záložní kopie do Azure. Můžete vybrat možnost **automaticky prostřednictvím sítě** nebo **offline zálohování**.
 
     * **Automaticky přes síť** přenáší zálohovaná data do Azure podle plánu vybraného pro zálohování.
-    * Způsob práce s **offline zálohováním** je vysvětleno v tématu [pracovní postup offline zálohování v Azure Backup](backup-azure-backup-import-export.md).
+    * Způsob, jakým funguje **offline zálohování** , je vysvětleno v tématu [Přehled zálohování offline](offline-backup-overview.md).
 
     Vyberte příslušný přenosový mechanismus pro odeslání prvotní záložní kopie do Azure a klikněte na **Další**.
 15. Po kontrole podrobností zásad na obrazovce **souhrnu** dokončete pracovní postup kliknutím na tlačítko **vytvořit skupinu** . Můžete kliknout na tlačítko **Zavřít** a monitorovat průběh úlohy v pracovním prostoru monitorování.

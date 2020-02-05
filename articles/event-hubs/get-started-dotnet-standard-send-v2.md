@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/15/2020
 ms.author: spelluru
-ms.openlocfilehash: fc9ffc62e765f3b8c8fa418f3189f84686987821
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c8c6e2741eeeadf2afc0c027da8f9cf957c29c95
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76907114"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023238"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>Odesílání událostí do nebo příjem událostí z Azure Event Hubs – .NET Core (Azure. Messaging. EventHubs) 
 Event Hubs je služba, která zpracovává velké objemy dat událostí (telemetrie) z připojených zařízení a aplikací. Po shromáždění dat do Event Hubs můžete data ukládat pomocí clusteru úložiště nebo událostí procesu. Můžete například transformovat data událostí pomocí poskytovatele analýz v reálném čase. Tato rozsáhlá funkce shromažďování a zpracování událostí je klíčovou součástí moderních architektur aplikace, včetně Internet věcí (IoT). Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).
@@ -118,9 +118,9 @@ V této části se dozvíte, jak napsat konzolovou aplikaci .NET Core, která p�
 ### <a name="create-an-azure-storage-and-a-blob-container"></a>Vytvoření Azure Storage a kontejneru objektů BLOB
 V tomto rychlém startu použijete Azure Storage jako úložiště kontrolního bodu. Pomocí těchto kroků vytvořte účet Azure Storage. 
 
-1. [Vytvoření účtu Azure Storage](/storage/common/storage-quickstart-create-account.md?tabs=azure-portal)
-2. [Vytvoření kontejneru objektů BLOB](/storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
-3. [Získání připojovacího řetězce k účtu úložiště](/storage/common/storage-configure-connection-string?#view-and-copy-a-connection-string)
+1. [Vytvoření účtu Azure Storage](/azure/storage/common/storage-account-create?tabs=azure-portal)
+2. [Vytvoření kontejneru objektů BLOB](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
+3. [Získání připojovacího řetězce k účtu úložiště](../storage/common/storage-configure-connection-string.md?#view-and-copy-a-connection-string)
 
     Poznamenejte si připojovací řetězec a název kontejneru. Budete je používat v kódu příjmu. 
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4926cb2bb4cb1aa15b212cc7130e0db995a24ed9
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: eec8e47e75a6c92be8f893af893761a9ccddc650
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910438"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025431"
 ---
 # <a name="localization-support-in-azure-maps"></a>Podpora lokalizace v Azure Maps
 
@@ -36,23 +36,23 @@ Azure Maps jsou lokalizované v různých jazycích v rámci služeb. Následuj�
 | bg-BG      | Bulharština              |   ✓   |    ✓   |    ✓    |     ✓     |                   |        ✓       |
 | ES certifikační autority      | Katalánština                |       |    ✓   |         |    ✓      |                   |                |
 | zh-HanS    | Čínština (zjednodušená)   |       |  zh-CN |         |     zh-CN   |                   |                |
-| zh-HanT    | Hongkong (zvláštní správní oblast ČLR)  |  |   |    |    zh-HK   |                   |           |
+| zh-HanT    | Čínština (Hongkong – zvláštní administrativní oblast)  |  |   |    |    zh-HK   |                   |           |
 | zh-HanT    | Čínština (Tchaj-wan)  | zh-TW |  zh-TW |  zh-TW  |    zh-TW   |                   |      zh-TW     |
 | hr-HR      | Chorvatština               |       |    ✓   |         |    ✓      |                   |                |
 | cs-CZ      | Čeština                  |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
 | da-DK      | dánština                 |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| nl-BE      | Nizozemština (Belgie)        |       |    ✓   |         |      ✓    |                   |                |
+| nl-BE      | Holandština (Belgie)        |       |    ✓   |         |      ✓    |                   |                |
 | NL-NL      | Nizozemština (Nizozemsko)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | cs AU      | angličtina (Austrálie)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | cs NZ      | angličtina (Nový Zéland)  |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | en-GB      | Angličtina (Velká Británie) |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | cs-CZ      | Angličtina (USA)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
-| et-EE      | Estonština               |       |    ✓   |         |      ✓    |         ✓         |                |
+| et – EE      | Estonština               |       |    ✓   |         |      ✓    |         ✓         |                |
 | náhl-PH     | Filipínština               |       |       |         |     ✓    |                   |                |
 | fi-FI      | Finština                |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | fr-FR      | Francouzština                 |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | fr-CA      | Francouzština (Kanada)      |       |    ✓   |         |     ✓     |                   |                |
-| gl-ES      | Galicijština               |       |    ✓   |         |         |                   |                |
+| HK – ES      | Galicijština               |       |    ✓   |         |         |                   |                |
 | de-DE      | Němčina                 |   ✓   |    ✓   |    ✓    |   ✓      |         ✓         |        ✓       |
 | el-GR      | Řečtina                  |   ✓   |    ✓   |    ✓    |    ✓     |         ✓         |        ✓       |
 | Gu – IN      | Gudžarátština                |       |       |         |     ✓    |                   |                |
@@ -72,7 +72,7 @@ Azure Maps jsou lokalizované v různých jazycích v rámci služeb. Následuj�
 | MK-MK      | Makedonie             |       |       |         |     ✓    |                   |                |
 | Moje MS      | Malajština (latinka)          |   ✓   |    ✓   |    ✓    |    ✓   |                   |        ✓       |
 | mr-IN      | Maráthština                 |       |       |         |     ✓    |                   |                |
-| nb-NO      | Norština bokmål       |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
+| nb-NO      | Norština, Bokmål       |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | NGT        | Neutrální uzemněné – úřední jazyky pro všechny oblasti v místních skriptech, pokud jsou k dispozici |   ✓     |        |         |       |        |      ✓          |
 | NGT – Latn   | Neutrální uzemnění – Latinská exonyms Pokud je k dispozici skript latinky, bude použit |   ✓     |        |         |         |                |        ✓         |
 | pl-PL      | polština                 |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
@@ -82,7 +82,7 @@ Azure Maps jsou lokalizované v různých jazycích v rámci služeb. Následuj�
 | ro RO      | Rumunština               |       |    ✓    |         |     ✓    |         ✓         |                |
 | ru-RU      | ruština                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | sr-Cyrl-RS | Srbština (cyrilice)     |       |   SR-RS  |         |    SR-RS     |                   |                |
-| sr-Latn-RS | Srbština (latinka)        |       |       |         |     SR-Latn    |                   |                |
+| SR-Latn-RS | Srbština (latinka)        |       |       |         |     SR-Latn    |                   |                |
 | sk-SK      | Slovenština             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | sl-SL      | Slovinština              |   ✓   |    ✓   |    ✓    |     ✓    |                   |        ✓       |
 | es-ES      | Španělština                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
@@ -92,7 +92,7 @@ Azure Maps jsou lokalizované v různých jazycích v rámci služeb. Následuj�
 | te v      | telugština (Indie)                 |       |       |         |     ✓    |                   |                |
 | th TH      | Thajština                   |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | tr-TR      | turečtina                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| uk-UA      | Ukrajinština               |       |    ✓   |         |     ✓    |                   |                |
+| Spojené království – UA      | Ukrajinština               |       |    ✓   |         |     ✓    |                   |                |
 | ur-PK      | Urdština                 |       |       |         |     ✓    |                   |                |
 | uz-Latn-UZ | Uzbečtina                 |       |       |         |     ✓    |                   |                |
 | vi-VN      | Vietnamština             |       |    ✓   |         |      ✓    |                  |                |
@@ -101,13 +101,15 @@ Azure Maps jsou lokalizované v různých jazycích v rámci služeb. Následuj�
 ## <a name="azure-maps-supported-views"></a>Azure Maps podporovaná zobrazení
 
 > [!Note]
-> Azure Maps byla vydána v následujících zemích nebo oblastech od 1. srpna 2019:
+> Od 1. srpna 2019 byl Azure Maps vydán v následujících zemích nebo oblastech:
 >  * Argentina
 >  * Indie
 >  * Maroko
 >  * Pákistán
 >
-> Až od 1. srpna 2019 bude nastavení parametrů **zobrazení** definovat vrácený obsah mapy pro nové oblasti nebo země uvedené výše. Doporučujeme, abyste se ujistili, že jste nastavili parametr zobrazení požadovaný pro rozhraní REST API a sady SDK, které vaše služby používají.
+> Od 1. srpna 2019 bude parametr **zobrazení** definovat vrácený obsah mapy pro nové oblasti nebo země uvedené výše. Azure Maps parametr **zobrazení** (také označovaný jako "parametr oblasti uživatele") je dvě číslice země ISO-3166, která zobrazí správná mapování pro danou zemi nebo oblast, která určuje, která sada geopoliticky sporného obsahu se vrátí prostřednictvím služby Azure Maps, včetně ohraničení a popisků zobrazených na mapě. 
+
+Ujistěte se, že jste nastavili parametr **zobrazení** požadovaný pro rozhraní REST API a sady SDK, které vaše služby používají.
 >  
 >
 >  **Rozhraní REST API:**
@@ -135,15 +137,12 @@ Azure Maps jsou lokalizované v různých jazycích v rámci služeb. Následuj�
 >    
 >  **Sady SDK**
 >
->  Ujistěte se, že jste nastavili parametr zobrazení podle potřeby a máte nejnovější verzi sady web SDK a Android SDK. Ovlivněné sady SDK:
+>  Ujistěte se, že jste nastavili parametr **zobrazení** podle potřeby a máte nejnovější verzi sady web SDK a Android SDK. Ovlivněné sady SDK:
 >
 >    * Azure Maps Web SDK
 >    * Azure Maps Android SDK
 
-
-Azure Maps parametr **zobrazení** (také označovaný jako "parametr oblasti uživatele") je dvě číslice země ISO-3166, která zobrazí správná mapování pro danou zemi nebo oblast, která určuje, která sada geopoliticky sporného obsahu se vrátí prostřednictvím služby Azure Maps, včetně ohraničení a popisků zobrazených na mapě. 
-
-Ve výchozím nastavení je parametr zobrazení nastaven na hodnotu **sjednocené**, i když jste ho v žádosti nedefinovali. Je vaší zodpovědností určit umístění uživatelů a pak pro toto umístění nastavit parametr zobrazení správně. Případně můžete nastavit možnost zobrazit = automaticky, která vrátí data mapy na základě IP adresy žádosti.  Parametr zobrazení v Azure Maps musí být používán v souladu s platnými zákony, včetně těch, které se týkají mapování země, kde jsou k dispozici mapy, obrázky a další data a obsah třetích stran, ke kterým máte oprávnění přistupovat prostřednictvím Azure Maps.
+Ve výchozím nastavení je parametr zobrazení nastavený na **sjednocené**, i když jste ho v žádosti nedefinovali. Určete umístění uživatelů a pak pro toto umístění nastavte parametr **zobrazení** správně. Případně můžete nastavit možnost zobrazit = automaticky, která vrátí data mapy na základě IP adresy žádosti.  Parametr **zobrazení** v Azure Maps musí být použit v souladu s platnými zákony, včetně zákonů o mapování země, kde jsou k dispozici mapy, obrázky a další data a obsah třetích stran, ke kterým máte oprávnění pro přístup prostřednictvím Azure Maps.
 
 
 Následující tabulka poskytuje podporovaná zobrazení.
@@ -166,5 +165,5 @@ Následující tabulka poskytuje podporovaná zobrazení.
 | SA           | Saúdská Arábie (zobrazení arabštiny)            |   ✓   |        |     ✓          |
 | SY           | Sýrie (zobrazení arabštiny)                   |   ✓   |        |     ✓          |
 | JE           | Jemen (zobrazení arabštiny)                   |   ✓   |        |     ✓          |
-| Auto         | Vraťte data mapy na základě IP adresy žádosti.|   ✓   |    ✓   |     ✓          |
+| Automaticky         | Vraťte data mapy na základě IP adresy žádosti.|   ✓   |    ✓   |     ✓          |
 | Unifikace      | Sjednocené zobrazení (ostatní)                  |   ✓   |   ✓     |     ✓          |

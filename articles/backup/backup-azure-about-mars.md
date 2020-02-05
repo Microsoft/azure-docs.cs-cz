@@ -4,12 +4,12 @@ description: Zjistěte, jak agent MARS podporuje scénáře zálohování.
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: d558a19b3025ab1400e873f97b0ce5e5a860c75a
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 348980b840b814c09ce46627f286489d4caa9f8f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902861"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023952"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>O agentovi Microsoft Azure Recovery Services (MARS)
 
@@ -58,8 +58,7 @@ Agent MARS podporuje následující scénáře obnovení:
 ### <a name="additional-scenarios"></a>Další scénáře
 -   **Zálohování konkrétních souborů a složek v rámci virtuálních počítačů Azure**: primární metodou pro zálohování virtuálních počítačů Azure je použití rozšíření Azure Backup na virtuálním počítači. Rozšíření zálohuje celý virtuální počítač. Pokud chcete zálohovat konkrétní soubory a složky v rámci virtuálního počítače, můžete agenta MARS nainstalovat na virtuální počítače Azure. Další informace najdete v tématu [Architektura: Integrovaná záloha virtuálních počítačů Azure](https://docs.microsoft.com/azure/backup/backup-architecture#architecture-built-in-azure-vm-backup).
 
--   **Offline osazení**: počáteční úplné zálohování dat do Azure obvykle přenáší velké objemy dat a vyžadují větší šířku pásma sítě. Následující zálohy přenesou jenom rozdílové nebo přírůstkové množství dat. Azure Backup zkomprimuje počáteční zálohy. Díky procesu *offline osazení*může Azure Backup použít disky k nahrání komprimovaných počátečních zálohovaných dat offline do Azure. Další informace najdete v tématu [pracovní postup offline zálohování pro aplikaci DPM a Azure Backup Server](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export-).
-
+-   **Offline osazení**: počáteční úplné zálohování dat do Azure obvykle přenáší velké objemy dat a vyžadují větší šířku pásma sítě. Následující zálohy přenesou jenom rozdílové nebo přírůstkové množství dat. Azure Backup zkomprimuje počáteční zálohy. Díky procesu *offline osazení*může Azure Backup použít disky k nahrání komprimovaných počátečních zálohovaných dat offline do Azure. Další informace najdete v tématu [Azure Backup offline zálohování pomocí Azure Data box](offline-backup-azure-data-box.md).
 
 ## <a name="next-steps"></a>Další kroky
 [Matice podpory agenta MARS](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)

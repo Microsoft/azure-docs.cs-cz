@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 10/02/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 1e206d9a1b14fc8ff1b92e4eb7217824d81212cf
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 90bccf76b4c98c732cb926bb4252654d20478412
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990105"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018971"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Správa IoT Central z Azure Portal
 
@@ -41,14 +41,9 @@ Nyní vyberte **vytvořit**.
 
 Vyplňte všechna pole ve formuláři. Tento formulář je podobný formuláři, který vyplníte, abyste mohli vytvářet aplikace na webu [Správce aplikací Azure IoT Central](https://aka.ms/iotcentral) . Další informace najdete v tématu rychlý Start [k vytvoření IoT Central aplikace](quick-deploy-iot-central.md) .
 
-Můžete vytvořit aplikaci IoT Central s všeobecně dostupnými funkcemi, a to tak, že vyberete **starší aplikaci** jako šablonu aplikace, všechny ostatní šablony aplikací budou používat funkce veřejné verze Preview.
-
 ![vytvořit formulář IoT Central](media/howto-manage-iot-central-from-portal/image6a.png)
 
 **Umístění** je [geografická](https://azure.microsoft.com/global-infrastructure/geographies/) oblast, kde byste chtěli vytvořit aplikaci. Obvykle byste měli zvolit umístění, které je fyzicky nejbližší pro vaše zařízení, aby se dosáhlo optimálního výkonu. Služba Azure IoT Central je aktuálně dostupná v **USA**, **Austrálii**, **Asie a Tichomoří**nebo v **Evropě**.  Jakmile zvolíte umístění, nemůžete později přesunout aplikaci do jiného umístění.
-
-> [!NOTE]
-> Šablony aplikace ve verzi Preview jsou v tuto chvíli dostupné jenom v oblastech **Evropa** a **USA** .
 
 
 Po vyplnění všech polí vyberte **vytvořit**.

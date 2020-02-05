@@ -1,6 +1,6 @@
 ---
-title: Řešení Azure VMware podle CloudSimple – roztažení místní sítě vrstvy 2 do privátního cloudu
-description: Popisuje, jak nastavit síť VPN vrstvy 2 mezi NSX-T v privátním cloudu CloudSimple a místním klientovi samostatného NSX Edge.
+title: Řešení Azure VMware (AVS) – roztáhnout síť druhé vrstvy do místní sítě do funkce AVS Private Cloud
+description: Popisuje, jak nastavit síť VPN vrstvy 2 mezi NSX-T na privátním cloudu služby AVS a místně samostatného klienta NSX Edge.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/19/2019
@@ -8,29 +8,29 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2ddfa9611143d5c3f823539e018c8afc885c6a46
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 975ffcd7142aac24363c2235db3742c155c1007b
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232386"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019821"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Migrace úloh pomocí roztažené sítě vrstvy 2
 
-V této příručce se dozvíte, jak pomocí sítě VPN úrovně 2 roztáhnout síť 2 z místního prostředí do privátního cloudu CloudSimple. Toto řešení umožňuje migrovat úlohy běžící v místním prostředí VMware do privátního cloudu v Azure v rámci stejného adresního prostoru podsítě, aniž by bylo nutné znovu přinášet vaše úlohy.
+V této příručce se dozvíte, jak pomocí sítě VPN úrovně 2 roztáhnout síť 2 z místního prostředí do vašeho privátního cloudu služby AVS. Toto řešení umožňuje migrovat úlohy běžící v místním prostředí VMware do privátního cloudu služby AVS v Azure v rámci stejného adresního prostoru podsítě, aniž by bylo nutné znovu zabývat své úlohy.
 
 Roztažení sítí vrstvy 2 na základě L2VPN může spolupracovat se sítěmi založenými na NSX nebo bez nich v místním prostředí VMware. Pokud nemáte sítě založené na NSX pro úlohy v místním prostředí, můžete použít samostatnou bránu služby NSX Edge.
 
 > [!NOTE]
-> Tato příručka se zabývá scénářem, ve kterém jsou připojení k síti VPN typu Site-to-site připojená k místním i datacentrům privátního cloudu.
+> Tato příručka se zabývá scénářem, ve kterém jsou datová centra v místním prostředí a v privátním cloudu služby AVS připojena přes síť VPN typu Site-to-site.
 
 ## <a name="deployment-scenario"></a>Scénář nasazení
 
-K roztažení místní sítě pomocí L2VPN musíte nakonfigurovat L2VPN Server (cílový směrovač NSX-T Tier0) a klienta L2VPN (zdrojový samostatný klient).  
+K roztažení místní sítě pomocí L2VPN musíte nakonfigurovat L2VPN Server (cílový směrovač NSX-T Tier0) a klienta L2VPN (zdrojový samostatný klient). 
 
-V tomto scénáři nasazení je váš privátní cloud připojený k místnímu prostředí prostřednictvím tunelu VPN typu Site-to-site, který umožňuje místní správě a vMotion podsítě komunikovat s podsítěmi privátního cloudu a vMotion. Toto uspořádání je nezbytné pro vMotion pro různé platformy vCenter (xVC-vMotion). Tier0 směrovač NSX-T je nasazený jako server L2VPN v privátním cloudu.
+V tomto scénáři nasazení je váš privátní cloud služby AVS připojený k místnímu prostředí prostřednictvím tunelu VPN typu Site-to-site, který umožňuje místní správě a vMotion podsítě komunikovat se síťovými podsítěmi služby AVS (Private Cloud Management) a vMotion. Toto uspořádání je nezbytné pro vMotion pro různé platformy vCenter (xVC-vMotion). Tier0 směrovač NSX-T je nasazen jako server L2VPN v privátním cloudu služby AVS.
 
-Samostatná NSX Edge se v místním prostředí nasadí jako klient L2VPN a následně se spáruje se serverem L2VPN. Koncový bod tunelu GRE se vytvoří na každé straně a nakonfiguruje se tak, aby se do vašeho privátního cloudu natáhla místní síť vrstvy 2. Tato konfigurace je znázorněna na následujícím obrázku.
+Samostatná NSX Edge se v místním prostředí nasadí jako klient L2VPN a následně se spáruje se serverem L2VPN. Koncový bod tunelu GRE se vytvoří na každé straně a nakonfiguruje se tak, aby se do vašeho privátního cloudu služby AVS natáhla místní síť vrstvy 2. Tato konfigurace je znázorněna na následujícím obrázku.
 
 ![Scénář nasazení](media/l2vpn-deployment-scenario.png)
 
@@ -42,29 +42,29 @@ Před nasazením a konfigurací řešení ověřte, zda je k dismístě:
 
 * Místní verze vSphere je 6.7 U1 + nebo 6.5 P03 + +.
 * Místní licence vSphere je na úrovni podniku plus (pro distribuovaný přepínač vSphere).
-* Identifikujte síť 2 úlohy zatížení, která se má roztáhnout do vašeho privátního cloudu.
+* Identifikujte síť 2 úlohy zatížení, která bude roztažena k privátnímu cloudu služby AVS.
 * Identifikujte síť ve vrstvě 2 v místním prostředí pro nasazení klientského zařízení L2VPN.
-* [Privátní cloud je již vytvořen](create-private-cloud.md).
-* Verze samostatného hraničního zařízení NSX-T je kompatibilní s verzí Správce NSX-t (NSX-T 2.3.0), která se používá ve vašem privátním cloudovém prostředí.
+* [Privátní cloud služby AVS je již vytvořen](create-private-cloud.md).
+* Verze samostatného hraničního zařízení NSX-T je kompatibilní s verzí Správce NSX-t (NSX-T 2.3.0), která se používá v prostředí vašeho privátního cloudu služby AVS.
 * Skupina portů se vytvořila v místním serveru vCenter s povolenými falešnými přenosy.
 * Veřejná IP adresa byla rezervována pro použití pro samostatnou IP adresu odchozího připojení klienta NSX-T a 1:1 NAT pro překlad mezi těmito dvěma adresami.
-* Předávání DNS se nastavuje na místních serverech DNS pro doménu az.cloudsimple.io tak, aby odkazovaly na servery DNS privátního cloudu.
+* Předávání DNS se nastavuje na místních serverech DNS pro AZ. AVS.io doménu, aby odkazovala na servery DNS privátního cloudu služby AVS.
 * Latence RTT je menší nebo rovna 150 ms, jak je potřeba, aby vMotion fungovalo na těchto dvou lokalitách.
 
 ## <a name="limitations-and-considerations"></a>Omezení a požadavky
 
-V následující tabulce jsou uvedeny podporované verze vSphere a typy síťových adaptérů.  
+V následující tabulce jsou uvedeny podporované verze vSphere a typy síťových adaptérů. 
 
 | verze vSphere | Zdrojový typ virtuálního přepínače | Ovladač virtuální síťové karty | Cílový typ virtuálního přepínače | Podporované? |
 ------------ | ------------- | ------------ | ------------- | ------------- 
-| Všechny | DVS | Všechny | DVS | Ano |
+| Všechno | DVS | Všechno | DVS | Ano |
 | vSphere 6.7 UI nebo vyšší, 6.5 P03 nebo vyšší | DVS | VMXNET3 | N-VDS | Ano |
 | vSphere 6.7 UI nebo vyšší, 6.5 P03 nebo vyšší | DVS | E1000 | N-VDS | [Nepodporováno na VWware](https://kb.vmware.com/s/article/56991) |
-| vSphere 6.7 UI nebo 6.5 P03, NSX-V nebo verze nižší než NSX-T 2.2, 6.5 P03 nebo vyšší | Všechny | Všechny | N-VDS | [Nepodporováno na VWware](https://kb.vmware.com/s/article/56991) |
+| vSphere 6.7 UI nebo 6.5 P03, NSX-V nebo verze nižší než NSX-T 2.2, 6.5 P03 nebo vyšší | Všechno | Všechno | N-VDS | [Nepodporováno na VWware](https://kb.vmware.com/s/article/56991) |
 
 Od verze VMware NSX-T 2,3:
 
-* Logický přepínač na straně privátního cloudu, která je roztažená na místní přes L2VPN, se nedá směrovat současně. Roztažený logický přepínač nelze připojit k logickému směrovači.
+* Logický přepínač na straně privátního cloudu funkce AVS, který je roztažený na místní přes L2VPN, se nedá směrovat současně. Roztažený logický přepínač nelze připojit k logickému směrovači.
 * Sítě VPN v L2VPN a protokolu IPSEC založené na směrování se dají konfigurovat jenom pomocí volání rozhraní API.
 
 Další informace najdete v dokumentaci k VMware v tématu [virtuální privátní sítě](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58.html#GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58__section_44B4972B5F12453B90625D98F86D5704) .
@@ -88,7 +88,7 @@ Další informace najdete v dokumentaci k VMware v tématu [virtuální privátn
 | REŽIM | 472 |
 | IPv4/IPv6| 10.250.3.0/24 |
 
-### <a name="private-cloud-ip-schema-for-nsx-t-tier0-router-l2-vpn-serve"></a>Schéma IP adresy privátního cloudu pro směrovač NSX-T Tier0 (L2 VPN slouží)
+### <a name="avs-private-cloud-ip-schema-for-nsx-t-tier0-router-l2-vpn-serve"></a>Schéma IP adresy privátního cloudu služby AVS pro směrovač NSX-T Tier0 (L2 VPN slouží)
 
 | **Položka** | **Hodnota** |
 |------------|-----------------|
@@ -97,7 +97,7 @@ Další informace najdete v dokumentaci k VMware v tématu [virtuální privátn
 | Logický přepínač (roztaženo) | Stretch_LS |
 | Rozhraní zpětné smyčky (IP adresa NAT) | 104.40.21.81 |
 
-### <a name="private-cloud-network-to-be-mapped-to-the-stretched-network"></a>Síť privátního cloudu, která má být namapována na roztaženou síť
+### <a name="avs-private-cloud-network-to-be-mapped-to-the-stretched-network"></a>Síť privátního cloudu pro funkci AVS k namapování na roztaženou síť
 
 | **Položka** | **Hodnota** |
 |------------|-----------------|
@@ -116,7 +116,7 @@ Následující kroky ukazují, jak načíst ID logického směrovače Tier0 DR i
 
     ![Poznámka k IP správě](media/l2vpn-fetch02.png)
 
-3. Otevřete relaci SSH s IP adresou pro správu virtuálního počítače Edge. Spusťte příkaz ```get logical-router``` s uživatelským jménem **správce** a heslem **CloudSimple 123!** .
+3. Otevřete relaci SSH s IP adresou pro správu virtuálního počítače Edge. Spusťte příkaz ```get logical-router``` se **správcem** uživatelského jména a heslem **AVS 123!** .
 
     ![získat výstup logického směrovače](media/l2vpn-fetch03.png)
 
@@ -126,7 +126,7 @@ Následující kroky ukazují, jak načíst ID logického směrovače Tier0 DR i
 
     ![Vytvořit logický přepínač](media/l2vpn-fetch04.png)
 
-6. Připojte zástupný přepínač ke směrovači Tier1 s místní IP adresou propojení nebo jinou překrývající podsíť z místního počítače nebo vašeho privátního cloudu. Další informace najdete v dokumentaci k VMware v tématu [Přidání portu pro stahování na logický směrovač vrstvy 1](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-E7EA867C-604C-4224-B61D-2A8EF41CB7A6.html) .
+6. Připojte zástupný přepínač ke směrovači Tier1 s místní IP adresou propojení nebo jinou překrývající podsíť z místního prostředí nebo privátního cloudu služby AVS. Další informace najdete v dokumentaci k VMware v tématu [Přidání portu pro stahování na logický směrovač vrstvy 1](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-E7EA867C-604C-4224-B61D-2A8EF41CB7A6.html) .
 
     ![Připojit fiktivní přepínač](media/l2vpn-fetch05.png)
 
@@ -137,7 +137,7 @@ Následující kroky ukazují, jak načíst ID logického směrovače Tier0 DR i
 ## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>Načtení IDENTIFIKÁTORu logického přepínače potřebného pro L2VPN
 
 1. Přihlaste se ke [Správci NSX-T](https://nsx-t-manager-ip-address).
-2. Vyberte **sítě** > **přepínání** > **přepínačů** >  **< přepínač \Logical**\>**Přehled**. > 
+2. Vyberte **sítě** > **přepínání** > **přepínačů** >  **< přepínač \Logical**\>**Přehled**.
 3. Poznamenejte si identifikátor UUID roztaženého logického přepínače, který se při konfiguraci L2VPN vyžaduje.
 
     ![získat výstup logického směrovače](media/l2vpn-fetch-switch01.png)
@@ -148,22 +148,22 @@ Aby bylo možné vytvořit síť VPN založenou na trasách protokolu IPsec mezi
 
 ### <a name="allow-udp-5004500-for-ipsec"></a>Povolení UDP 500/4500 pro protokol IPsec
 
-1. [Vytvořte veřejnou IP adresu](public-ips.md) rozhraní zpětné smyčky NSX-T Tier0 na portálu CloudSimple.
+1. [Vytvořte veřejnou IP adresu](public-ips.md) rozhraní zpětné smyčky NSX-T Tier0 na portálu AVS.
 
 2. [Vytvořte tabulku brány firewall](firewall.md) se stavovým pravidlem, která povolují příchozí přenosy UDP 500/4500 a připojte tabulku brány firewall k podsíti NSX-T HostTransport.
 
 ### <a name="advertise-the-loopback-interface-ip-to-the-underlay-network"></a>Inzerování IP adresy rozhraní zpětné smyčky do sítě Underlay
 
-1. Vytvořte trasu s hodnotou null pro síť rozhraní zpětné smyčky. Přihlaste se ke Správci NSX-T a vyberte **sítě** > **směrování** > **směrovače** > **Provider-LR** > **Routing** > **Static Routes**. Klikněte na **Přidat**. V poli **síť**zadejte IP adresu rozhraní zpětné smyčky. Pro **Další segmenty směrování**klikněte na **Přidat**, pro další segment směrování zadejte null a pro vzdálenost správce ponechte výchozí hodnotu 1.
+1. Vytvořte trasu s hodnotou null pro síť rozhraní zpětné smyčky. Přihlaste se ke Správci NSX-T a vyberte **sítě** > **směrování** > **směrovače** > **Provider-LR** > **Routing** > **Static Routes**. Klikněte na tlačítko **Add** (Přidat). V poli **síť**zadejte IP adresu rozhraní zpětné smyčky. Pro **Další segmenty směrování**klikněte na **Přidat**, pro další segment směrování zadejte null a pro vzdálenost správce ponechte výchozí hodnotu 1.
 
     ![Přidat statickou trasu](media/l2vpn-routing-security01.png)
 
-2. Vytvoří seznam předpon IP adres. Přihlaste se ke Správci NSX-T a vyberte **sítě** > **směrování** > **směrovače** > **Provider-LR** > **seznam předpon > IP adres**pro **Směrování** . Klikněte na **Přidat**. Zadejte název pro identifikaci seznamu. V případě **předpon**klikněte dvakrát na tlačítko **Přidat** . Do prvního řádku zadejte pro **akci** **Network** a Deny hodnotu 0.0.0.0/0. Ve druhém řádku vyberte možnost **kterákoli** pro **síť** a **Povolit** **akci**.
+2. Vytvoří seznam předpon IP adres. Přihlaste se ke Správci NSX-T a vyberte **sítě** > **směrování** > **směrovače** > **Provider-LR** > **seznam předpon > IP adres**pro **Směrování** . Klikněte na tlačítko **Add** (Přidat). Zadejte název pro identifikaci seznamu. V případě **předpon**klikněte dvakrát na tlačítko **Přidat** . Do prvního řádku zadejte pro **akci** **Network** a Deny hodnotu 0.0.0.0/0. Ve druhém řádku vyberte možnost **kterákoli** pro **síť** a **Povolit** **akci**.
 3. Přiřaďte seznam předpon IP adres oběma sousedním uzlům protokolu BGP (mandát). Připojením seznamu předpony IP k sousednímu směrovači protokolu BGP znemožníte inzerování výchozí trasy v protokolu BGP k přepínačům MANDÁTu. Nicméně jakákoli jiná trasa, která obsahuje trasu s hodnotou null, bude inzerovat IP adresu rozhraní zpětné smyčky pro přepínače MANDÁTu.
 
     ![Vytvořit seznam předpon IP adres](media/l2vpn-routing-security02.png)
 
-4. Přihlaste se ke Správci NSX-T a vyberte **sítě** > **směrování** > **směrovače** > **Provider-LR** > **Routing** > **routers** > **BGP** . Vyberte první sousední uzel. Klikněte na **upravit** > **rodin adres**. V případě řady IPv4 upravte sloupec **Filtr pro výstup** a vyberte seznam předpon IP adres, který jste vytvořili. Klikněte na možnost **Uložit**. Tento krok opakujte pro druhý sousední uzel.
+4. Přihlaste se ke Správci NSX-T a vyberte **sítě** > **směrování** > **směrovače** > **Provider-LR** > **Routing** > **routers** > **BGP** . Vyberte první sousední uzel. Klikněte na **upravit** > **rodin adres**. V případě řady IPv4 upravte sloupec **Filtr pro výstup** a vyberte seznam předpon IP adres, který jste vytvořili. Klikněte na **Uložit**. Tento krok opakujte pro druhý sousední uzel.
 
     ![připojit seznam předpon IP adres 1](media/l2vpn-routing-security03.png) ![připojit seznam předpon IP adres 2](media/l2vpn-routing-security04.png)
 
@@ -173,9 +173,9 @@ Aby bylo možné vytvořit síť VPN založenou na trasách protokolu IPsec mezi
 
 ## <a name="configure-a-route-based-vpn-on-the-nsx-t-tier0-router"></a>Konfigurace sítě VPN založené na směrování ve směrovači NSX-T Tier0
 
-Pomocí následující šablony vyplňte všechny podrobnosti o konfiguraci sítě VPN založené na směrování ve směrovači NSX-T Tier0. V následných voláních POST jsou vyžadovány identifikátory UUID v každém volání POST. IP adresy pro rozhraní zpětné smyčky a tunelu pro L2VPN musí být jedinečné a nesmí se překrývat s místními nebo privátními cloudy.
+Pomocí následující šablony vyplňte všechny podrobnosti o konfiguraci sítě VPN založené na směrování ve směrovači NSX-T Tier0. V následných voláních POST jsou vyžadovány identifikátory UUID v každém volání POST. IP adresy pro rozhraní zpětné smyčky a tunelu pro L2VPN musí být jedinečné a nesmí se překrývat s místními nebo ne sítěmi privátního cloudu.
 
-IP adresy zvolené pro rozhraní zpětné smyčky a tunelu používané pro L2VPN musí být jedinečné a nesmí se překrývat s místními nebo privátními cloudy. Síť rozhraní zpětné smyčky musí být vždy/32.
+IP adresy zvolené pro rozhraní zpětné smyčky a tunelu používané pro L2VPN musí být jedinečné a nesmí se překrývat s místními nebo nepoužívanými sítěmi privátního cloudu. Síť rozhraní zpětné smyčky musí být vždy/32.
 
 ```
 Loopback interface ip : 192.168.254.254/32
@@ -422,7 +422,7 @@ GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes
 
 ## <a name="deploy-the-nsx-t-standalone-client-on-premises"></a>Nasazení samostatného klienta NSX-T (místně)
 
-Před nasazením ověřte, že vaše místní pravidla brány firewall umožňují příchozí a odchozí přenosy UDP 500/4500 z/na veřejnou IP adresu CloudSimple, která byla vyhrazená dříve pro rozhraní zpětné smyčky směrovače NSX-T T0. 
+Před nasazením ověřte, že vaše místní pravidla brány firewall umožňují příchozí a odchozí přenosy UDP 500/4500 z/na veřejnou IP adresu služby AVS, která byla vyhrazená dříve pro rozhraní zpětné smyčky směrovače NSX-T T0. 
 
 1. [Stažení samostatného klienta NSX Edge](https://my.vmware.com/group/vmware/details?productId=673&rPId=33945&downloadGroup=NSX-T-230) OVF a extrahujte soubory ze stažené sady do složky.
 
@@ -448,14 +448,14 @@ Před nasazením ověřte, že vaše místní pravidla brány firewall umožňuj
 
     Rozbalte L2T:
 
-    * **Adresa partnera**. Zadejte IP adresu rezervovanou na portálu Azure CloudSimple pro rozhraní NSX-T Tier0 Loopback.
+    * **Adresa partnera**. Zadejte IP adresu rezervovanou na portálu Azure AVS pro rozhraní NSX-T Tier0 Loopback.
     * **Partnerský kód**. Vložte partnerský kód získaný z posledního kroku nasazení L2VPN serveru.
     * **Dílčí rozhraní sítě VLAN (ID tunelu)** . Zadejte ID sítě VLAN, které chcete roztáhnout. V závorkách () zadejte ID tunelu, které jste dříve nakonfigurovali.
 
     Rozbalte rozhraní pro odesílání:
 
     * **IP adresa DNS**. Zadejte místní IP adresu DNS.
-    * **Výchozí brána**.  Zadejte výchozí bránu sítě VLAN, která bude pro tohoto klienta sloužit jako výchozí brána.
+    * **Výchozí brána**. Zadejte výchozí bránu sítě VLAN, která bude pro tohoto klienta sloužit jako výchozí brána.
     * **IP adresa**. Zadejte IP adresu pro odesílání samostatného klienta.
     * **Délka předpony**. Zadejte délku předpony pro síť VLAN nebo podsíť pro odesílání.
     * Rozhraní **CLI správce/povolení/heslo uživatele root**. Nastavte heslo pro účet správce/Enable/root.

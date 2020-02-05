@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.topic: conceptual
 ms.workload: big-data
-ms.date: 12/12/2019
+ms.date: 02/04/2020
 ms.custom: seodec18
-ms.openlocfilehash: fd6de7dfe9509e7f99adeed0e5de3e157335e6bf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9dfe499a7d6084a23fd71ab98db472befe71fc04
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452817"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024360"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Sdílení vlastního zobrazení pomocí parametrizovaných adres URL
 

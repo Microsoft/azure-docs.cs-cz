@@ -7,22 +7,22 @@ ms.date: 10/23/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a862a221f9fe2db5448473bddcca2a9932716e0e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 159691ee101e586419d2fd8df314947af28219dd
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464082"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016506"
 ---
 # <a name="building-government-solutions-with-azure-iot-central"></a>Sestavování řešení pro státní správu s využitím služby Azure IoT Central
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Začněte s vytvářením řešení inteligentních měst s využitím šablon aplikací Azure IoT Central. Začněte teď s **monitorováním kvality vody**, **monitorováním spotřeby vody**a **správou propojených odpadů**.
+
+Začněte s vytvářením řešení inteligentních měst pomocí šablon aplikací Azure IoT Central. Začněte teď s **monitorováním kvality vody**, **monitorováním spotřeby vody**a **správou propojených odpadů**.
 
 ## <a name="what-is-water-quality-monitoring-application-template"></a>Co je šablona aplikace monitorování kvality vody?   
 
-Tradiční monitorování kvality vod spoléhá na ruční vzorkování vzorků a analýzu polních laboratoří, což je časově náročné a nákladné. Díky vzdálené monitorování kvality vody v reálném čase je možné spravovat problémy s kvalitou vody před tím, než budou mít občané dotčeny občany. Díky pokročilým analýzám, nástrojům pro práci s vodou a ekologickým úřadům se navíc můžou vycházet z včasného varování o potenciálních problémech s kvalitou vody a předem plánovat zpracování vody.  
+Tradiční monitorování kvality vod spoléhá na ruční vzorkování vzorků a analýzu polních laboratoří, což je časově náročné a nákladné. Díky vzdálenému monitorování kvality vody v reálném čase je možné spravovat problémy s kvalitou vody před tím, než budou občané ovlivněny. Díky pokročilým analýzám, nástrojům pro práci s vodou a ekologickým úřadům se navíc můžou vycházet z včasného varování o potenciálních problémech s kvalitou vody a předem plánovat zpracování vody.  
 
 Aplikace pro monitorování kvality vody je IoT Central šablony aplikace, které vám pomůžou Kickstart vývoj řešení IoT a povolit vodním nástrojům digitálně monitorovat kvalitu vody ve inteligentních městech. 
 
@@ -40,7 +40,7 @@ Začněte s [kurzem pro monitorování kvality vody](./tutorial-water-quality-mo
 
 ## <a name="what-is-water-consumption-monitoring-application-template"></a>Co je šablona aplikace monitorování spotřeby vody? 
 
-Tradiční sledování konzumace vod spoléhá na ruční čtení měřičů spotřeby vody na lokalitách měřiče. Další a další města nahrazují tradiční měřiče pomocí pokročilých inteligentních měřičů, které umožňují vzdálené monitorování spotřeby a také vzdálené řízení ventilů pro řízení toku vody. Monitorování spotřeby vody společně se zprávou o digitální zpětné vazbě na občana může zvýšit povědomí a snížit spotřebu vody. 
+Tradiční sledování konzumace vod spoléhá na ruční čtení měřičů spotřeby vody na lokalitách měřiče. Další a další města nahrazují tradiční měřiče s pokročilými inteligentními měřiči, což umožňuje vzdálené monitorování spotřeby a vzdálené řízení ventilů pro kontrolu vodního toku. Monitorování spotřeby vody společně se zprávou o digitální zpětné vazbě na občana může zvýšit povědomí a snížit spotřebu vody. 
 
 
 Aplikace pro monitorování spotřeby vody je šablonou aplikace IoT Central, která vám pomůže Kickstart vývoj řešení IoT, aby bylo možné na dálku monitorovat a řídit vodní toky a snižovat spotřebu. 

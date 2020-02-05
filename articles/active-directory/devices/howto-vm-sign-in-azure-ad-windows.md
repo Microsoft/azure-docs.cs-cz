@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42d1fde92e9315e8df3f65b2ab91ced74b377c0a
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 70fe718884796ac127be38c375003dd728089be8
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293449"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016030"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlášení k virtuálnímu počítači s Windows v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -85,7 +85,7 @@ Vytvoření virtuálního počítače s Windows serverem 2019 Datacenter v Azure
 1. Přihlaste se k [Azure Portal](https://portal.azure.com)s účtem, který má přístup k vytváření virtuálních počítačů, a vyberte **+ vytvořit prostředek**.
 1. Do vyhledávacího panelu webu Marketplace zadejte **Windows Server** .
    1. Klikněte na **Windows Server** a zvolte **Windows Server 2019 Datacenter** v rozevíracím seznamu vybrat plán softwaru.
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na **vytvořit**.
 1. Na kartě Správa povolte možnost **Přihlásit se pomocí přihlašovacích údajů AAD (Preview)** v části Azure Active Directory z možností vypnuto na **zapnuto**.
 1. Ujistěte se, že je v části Identita nastavená **spravovaná identita systému** **na zapnuto**. Tato akce by se měla provést automaticky po povolení přihlášení s přihlašovacími údaji Azure AD.
 1. Projděte si zbytek zkušeností při vytváření virtuálního počítače. V této verzi Preview budete muset vytvořit uživatelské jméno a heslo správce pro virtuální počítač.
@@ -239,9 +239,9 @@ Aby virtuální počítač dokončil proces připojení k Azure AD, musí se ús
 
    | Příkaz, který se má spustit | Očekávaný výstup |
    | --- | --- |
-   | Metadata typu kudrlinkou-H: true "http://169.254.169.254/metadata/instance?api-version=2017-08-01" | Správné informace o virtuálním počítači Azure |
-   | Metadata typu kudrlinkou-H: true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01" | Platné ID tenanta přidružené k předplatnému Azure |
-   | Metadata typu kudrlinkou-H: true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01" | Platný přístupový token vydaný Azure Active Directory pro spravovanou identitu, která je přiřazená k tomuto virtuálnímu počítači |
+   | `curl -H @{"Metadata"="true"} "http://169.254.169.254/metadata/instance?api-version=2017-08-01"` | Správné informace o virtuálním počítači Azure |
+   | `curl -H @{"Metadata"="true"} "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01"` | Platné ID tenanta přidružené k předplatnému Azure |
+   | `curl -H @{"Metadata"="true"} "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01"` | Platný přístupový token vydaný Azure Active Directory pro spravovanou identitu, která je přiřazená k tomuto virtuálnímu počítači |
 
    > [!NOTE]
    > Přístupový token se dá dekódovat pomocí nástroje, jako je [http://calebb.net/](http://calebb.net/). Ověřte, že "AppID" v přístupovém tokenu odpovídá spravované identitě přiřazené k virtuálnímu počítači.

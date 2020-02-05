@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/31/2020
-ms.openlocfilehash: 95892bba1b3152dda718a4af3c5f45072054fdae
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: f7198aeff5e9ef6d37e29c2336dc38e4eec0dda1
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935491"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023969"
 ---
 # <a name="migrate-hdinsight-cluster-to-a-newer-version"></a>Migrace clusteru HDInsight na novější verzi
 
@@ -45,9 +45,9 @@ Jakmile ověříte, že vše funguje podle očekávání, naplánujte prostoje p
 
 Následující dokumenty obsahují pokyny k migraci konkrétních úloh:
 
-* [Migrace adaptérů HBA](/hbase/apache-hbase-migrate-new-version.md)
-* [Migrace Kafka](/kafka/migrate-versions.md)
-* [Migrace podregistru/interaktivního dotazu](/interactive-query/apache-hive-migrate-workloads.md)
+* [Migrace adaptérů HBA](./hbase/apache-hbase-migrate-new-version.md)
+* [Migrace Kafka](./kafka/migrate-versions.md)
+* [Migrace podregistru/interaktivního dotazu](./interactive-query/apache-hive-migrate-workloads.md)
 
 ## <a name="backup-and-restore"></a>Zálohování a obnovení
 

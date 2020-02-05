@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/28/2019
+ms.date: 02/03/2020
 ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: ecc55c0d41f552d2c29fe5c964a7c40ab9e382ba
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bfc656911abf3349e03543e6bb668db977422738
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701378"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022626"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>Postupy: Konfigurace jednotného přihlašování v macOS a iOS
 
@@ -69,9 +69,11 @@ Pokud chcete povolit jednotné přihlašování napříč vašimi aplikacemi, mu
 
 Aby mohla aplikace od Microsoftu zjistit, které aplikace můžou tyto tokeny sdílet, musí tyto aplikace sdílet stejné ID klienta nebo ID aplikace. Toto je jedinečný identifikátor, který vám byl poskytnut při registraci první aplikace na portálu.
 
-Způsob, jakým Microsoft Identity Platform oznamuje aplikacím, které používají stejné ID aplikace, je pomocí **identifikátorů URI pro přesměrování**. Každá aplikace může obsahovat více identifikátorů URI pro přesměrování v portálu pro registraci. Každá aplikace v sadě bude mít jiný identifikátor URI pro přesměrování. Například:
+Způsob, jakým Microsoft Identity Platform oznamuje aplikacím, které používají stejné ID aplikace, je pomocí **identifikátorů URI pro přesměrování**. Každá aplikace může obsahovat více identifikátorů URI pro přesměrování v portálu pro registraci. Každá aplikace v sadě bude mít jiný identifikátor URI pro přesměrování. Příklad:
 
-Identifikátor URI pro přesměrování app1: `msauth.com.contoso.mytestapp1://auth` app2 URI pro přesměrování: `msauth.com.contoso.mytestapp2://auth` APP3 URI pro přesměrování: `msauth.com.contoso.mytestapp3://auth`
+App1 URI pro přesměrování: `msauth.com.contoso.mytestapp1://auth`  
+App2 URI pro přesměrování: `msauth.com.contoso.mytestapp2://auth`  
+APP3 URI pro přesměrování: `msauth.com.contoso.mytestapp3://auth`  
 
 > [!IMPORTANT]
 > Formát identifikátorů URI pro přesměrování musí být kompatibilní s formátem, který podporuje MSAL, který je popsán v části [požadavky formátu identifikátoru URI přesměrování MSAL](redirect-uris-ios.md#msal-redirect-uri-format-requirements).
@@ -96,6 +98,18 @@ Pokud máte oprávnění nastavené správně, zobrazí se soubor `entitlements.
 </plist>
 ```
 
+#### <a name="add-a-new-keychain-group"></a>Přidat novou skupinu řetězce klíčů
+
+Přidejte novou skupinu řetězce klíčů do **možností**projektu. Skupina řetězce klíčů by měla být:
+* `com.microsoft.adalcache` v iOS 
+* `com.microsoft.identity.universalstorage` v macOS.
+
+![příklad řetězce klíčů](media/single-sign-on-macos-ios/keychain-example.png)
+
+Další informace najdete v tématu [skupiny řetězce klíčů](howto-v2-keychain-objc.md).
+
+## <a name="configure-the-application-object"></a>Konfigurace objektu aplikace
+
 Jakmile budete mít v každé aplikaci povolený nárok na řetězce klíčů a jste připraveni použít jednotné přihlašování, nakonfigurujte `MSALPublicClientApplication` pomocí přístupové skupiny pro řetězce klíčů jako v následujícím příkladu:
 
 Cíl-C:
@@ -113,16 +127,14 @@ Swift:
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "<my-client-id>")
 config.cacheConfig.keychainSharingGroup = "my.keychain.group"
-        
+
 do {
-    let application = try MSALPublicClientApplication(configuration: config)
-  // continue on with application          
+   let application = try MSALPublicClientApplication(configuration: config)
+  // continue on with application
 } catch let error as NSError {
   // handle error here
-}       
+}
 ```
-
-
 
 > [!WARNING]
 > Když ve svých aplikacích sdílíte řetězce klíčů, může kterákoli aplikace odstraňovat uživatele nebo dokonce i všechny tokeny v rámci vaší aplikace.
@@ -137,7 +149,7 @@ MSAL poskytuje podporu pro zprostředkované ověřování pomocí Microsoft Aut
 
 Následující postup slouží k povolení jednotného přihlašování pomocí zprostředkovatele ověřování pro vaši aplikaci:
 
-1. Zaregistrujte formát identifikátoru URI přesměrování kompatibilního s zprostředkovatelem pro aplikaci v souboru info. plist vaší aplikace. Formát identifikátoru URI přesměrování kompatibilního s zprostředkovatelem je `msauth.<app.bundle.id>://auth`. Nahraďte ' < App. sada. ID > ' ' s ID sady prostředků vaší aplikace. Například:
+1. Zaregistrujte formát identifikátoru URI přesměrování kompatibilního s zprostředkovatelem pro aplikaci v souboru info. plist vaší aplikace. Formát identifikátoru URI přesměrování kompatibilního s zprostředkovatelem je `msauth.<app.bundle.id>://auth`. Nahraďte ' < App. sada. ID > ' ' s ID sady prostředků vaší aplikace. Příklad:
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -206,7 +218,7 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
         MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: sourceApp)
     }
 ```
-    
+
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o [tocích ověřování a scénářích aplikací](authentication-flows-app-scenarios.md)

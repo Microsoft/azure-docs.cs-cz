@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 186e8ee232fc8e0500f55404b65e00d7af696230
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 376741005f0755d01c95baad8d3a3d33e9952933
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760925"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023901"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co je Azure Load Balancer?
 
-*Vyrovnávání zatížení* označuje rovnoměrně distribuci zatížení (příchozí síťový provoz) napříč skupinou back-end prostředků nebo serverů. Azure nabízí [celou řadu možností pro vyrovnávání zatížení](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview) , ze kterých si můžete vybrat podle svých potřeb. Tento dokument popisuje Azure Load Balancer.
+*Vyrovnávání zatížení* označuje rovnoměrně distribuci zatížení (příchozí síťový provoz) napříč skupinou back-end prostředků nebo serverů. 
 
 Azure Load Balancer funguje ve vrstvě čtyř modelu propojení Open Systems (OSI). Je jedním kontaktním bodem pro klienty. Load Balancer distribuuje příchozí toky, které dorazí na front-end služby Vyrovnávání zatížení do instancí fondu back-endu. Tyto toky jsou podle nakonfigurovaných pravidel vyrovnávání zatížení a sond stavu. Instance fondu back-endu můžou být Azure Virtual Machines nebo instancemi v sadě škálování virtuálního počítače.
 
@@ -38,6 +38,11 @@ Azure Load Balancer funguje ve vrstvě čtyř modelu propojení Open Systems (OS
 *Obrázek: vyrovnávání vícevrstvých aplikací s využitím veřejného i interního Load Balancer*
 
 Další informace o jednotlivých součástech nástroje pro vyrovnávání zatížení najdete v tématu [Azure Load Balancer – komponenty a omezení](./concepts-limitations.md) .
+
+>[!NOTE]
+> Azure pro vaše scénáře poskytuje sadu plně spravovaných řešení pro vyrovnávání zatížení. Pokud potřebujete vysoce výkonné, nízké latence, Vyrovnávání zatížení vrstvy 4, přečtěte si téma [co je Azure Load Balancer?](../load-balancer/load-balancer-overview.md) Pokud hledáte globální vyrovnávání zatížení DNS, přečtěte si téma [co je Traffic Manager?](../traffic-manager/traffic-manager-overview.md) Vaše ucelené scénáře můžou využít kombinaci těchto řešení.
+>
+> Porovnání možností vyrovnávání zatížení Azure najdete v tématu [Přehled možností vyrovnávání zatížení v Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
 
 ## <a name="why-use-azure-load-balancer"></a>Proč použít Azure Load Balancer?
 Pomocí Standard Load Balancer můžete škálovat aplikace a vytvářet vysoce dostupné služby. Nástroj pro vyrovnávání zatížení podporuje scénáře příchozího i odchozího přenosu. Load Balancer poskytuje nízkou latenci a vysokou propustnost a škáluje až milionů toků pro všechny aplikace TCP a UDP.

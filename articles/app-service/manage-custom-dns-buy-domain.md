@@ -5,18 +5,18 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: 6bc6f1ca29343e027730cbbd99d210f911fcb492
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: afb40d0f3681bc02351e43166fccfaafe7741128
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967300"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023408"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Koupit vlastní název domény pro Azure App Service
 
 App Service domény jsou domény nejvyšší úrovně, které se spravují přímo v Azure. Usnadňují správu vlastních domén pro [Azure App Service](overview.md). V tomto kurzu se dozvíte, jak koupit doménu App Service a přiřadit k Azure App Service názvy DNS.
 
-Informace o virtuálním počítači nebo Azure Storage Azure najdete v tématu [přiřazení App Service domény k virtuálnímu počítači Azure nebo Azure Storage](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/31/assign-app-service-domain-to-azure-vm-or-azure-storage/). Cloud Services najdete v tématu [Konfigurace vlastního názvu domény pro cloudovou službu Azure](../cloud-services/cloud-services-custom-domain-name-portal.md).
+Informace o virtuálním počítači nebo Azure Storage Azure najdete v tématu [přiřazení App Service domény k virtuálnímu počítači Azure nebo Azure Storage](https://azure.github.io/AppService/2017/07/31/Assign-App-Service-domain-to-Azure-VM-or-Azure-Storage). Cloud Services najdete v tématu [Konfigurace vlastního názvu domény pro cloudovou službu Azure](../cloud-services/cloud-services-custom-domain-name-portal.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -108,7 +108,7 @@ V dalším kroku vyberte požadované možnosti pro vaši doménu. Vysvětlení 
 
 | Nastavení | Navrhovaná hodnota | Popis |
 |-|-|-|
-|Privacy protection | Povolení | Přihlaste se k ochraně osobních údajů, která je zahrnutá v ceně nákupu _zdarma_. Některé domény nejvyšší úrovně jsou spravovány registrátory, které nepodporují ochranu osobních údajů, a jsou uvedeny na stránce **Ochrana osobních údajů** . |
+|Ochrana osobních údajů | Povolení | Přihlaste se k ochraně osobních údajů, která je zahrnutá v ceně nákupu _zdarma_. Některé domény nejvyšší úrovně jsou spravovány registrátory, které nepodporují ochranu osobních údajů, a jsou uvedeny na stránce **Ochrana osobních údajů** . |
 | Přiřadit výchozí názvy hostitelů | **webové** a **\@** | V případě potřeby vyberte požadované vazby hostitele. Po dokončení operace nákupu domény může být aplikace dostupná na vybraných hostitelských hostitelích. Pokud je aplikace za [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), nevidíte možnost přiřadit kořenovou doménu (@), protože Traffic Manager nepodporuje záznamy. Po dokončení nákupu domény můžete provádět změny v přiřazeních hostitelů. |
 
 ### <a name="accept-terms-and-purchase"></a>Přijmout podmínky a koupit

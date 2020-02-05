@@ -1,6 +1,6 @@
 ---
-title: Řešení Azure VMware podle CloudSimple – přidělení veřejných IP adres
-description: Popisuje, jak přidělit veřejné IP adresy pro virtuální počítače v prostředí privátního cloudu.
+title: Řešení Azure VMware (AVS) – přidělit veřejné IP adresy
+description: Popisuje, jak přidělit veřejné IP adresy pro virtuální počítače v prostředí privátního cloudu služby AVS
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 565c9ad0fbd37b026a1ba555d83b9032d2efcba4
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 87133f5efb9f096d3fdb0956aab1caac58b4bd94
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773799"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024292"
 ---
-# <a name="allocate-public-ip-addresses-for-private-cloud-environment"></a>Přidělit veřejné IP adresy pro prostředí privátního cloudu
+# <a name="allocate-public-ip-addresses-for-avs-private-cloud-environment"></a>Přidělit veřejné IP adresy pro prostředí privátního cloudu pro funkci AVS
 
-Otevřete kartu veřejné IP adresy na stránce síť a přidělte veřejné IP adresy pro virtuální počítače ve vašem prostředí privátního cloudu.
+Otevřete kartu veřejné IP adresy na stránce síť a přidělte veřejné IP adresy pro virtuální počítače v prostředí privátního cloudu služby AVS.
 
-1. [Přejděte na portál CloudSimple](access-cloudsimple-portal.md) a v postranní nabídce vyberte **síť** .
+1. [Přejděte na portál pro funkci AVS](access-cloudsimple-portal.md) a v postranní nabídce vyberte **síť** .
 2. Vyberte **veřejné IP adresy**.
 3. Klikněte na **nová veřejná IP adresa**.
 

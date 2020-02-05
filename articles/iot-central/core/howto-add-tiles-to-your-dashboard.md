@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: b13349ae4293f6377429e9dc72b6c2cb43f92348
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 35965f238ed5b7768dd174788453838c917adb32
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435112"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023221"
 ---
 # <a name="configure-the-application-dashboard"></a>Konfigurace řídicího panelu aplikace
 
@@ -48,7 +48,6 @@ Když teď operátor zobrazí výchozí řídicí panel aplikace, uvidí novou d
 > [!div class="mx-imgBorder"]
 > karta řídicího panelu se zobrazeným nastavením a vlastnostmi pro dlaždici ![](media/howto-add-tiles-to-your-dashboard/settings-and-properties.png)
 
-
 ## <a name="edit-tiles"></a>Upravit dlaždice
 
 Chcete-li upravit dlaždici na řídicím panelu, nejprve klikněte na tlačítko **Upravit** v levém horním rohu stránky, čímž otevřete režim úprav řídicího panelu a všech jeho dlaždic. 
@@ -70,7 +69,7 @@ Vizualizaci grafu můžete také změnit kliknutím na ikonu **pravítka** na dl
 
 Následující tabulka shrnuje použití dlaždic v Azure IoT Central:
  
-| Dlaždice | Řídicí panel | Popis
+| Podobě | Řídicí panel | Popis
 | ----------- | ------- | ------- |
 | Obsah | Řídicí panely pro aplikace a nastavení zařízení |Dlaždice podporované Markdownu jsou kliknutí na dlaždice, které zobrazují nadpis a text popisu. Tuto dlaždici můžete použít také jako dlaždici odkazů a povolit tak uživateli přejít na adresu URL, která se vztahuje k vaší aplikaci.|
 | Obrázek | Řídicí panely pro aplikace a nastavení zařízení |Dlaždice obrázku zobrazují vlastní obrázek a lze na něj kliknout. Pomocí dlaždice obrázek můžete přidat grafiku na řídicí panel a volitelně povolit uživateli přejít na adresu URL, která se vztahuje k vaší aplikaci.|
@@ -81,10 +80,10 @@ Následující tabulka shrnuje použití dlaždic v Azure IoT Central:
 | Výsečový graf | Řídicí panely pro aplikace a nastavení zařízení |Dlaždice výsečového grafu zobrazují graf agregovaných měření pro zařízení za určité časové období.|
 | Heat mapa | Řídicí panely pro aplikace a nastavení zařízení |Dlaždice Heat mapy zobrazují informace o sadě zařízení reprezentované jako barvy.|
 | Historie událostí | Řídicí panely aplikací a zařízení |Dlaždice historie událostí zobrazují události pro zařízení za časové období. Můžete ho například použít k zobrazení všech změn teploty zařízení během poslední hodiny.|
-| Historie stavů | Řídicí panely aplikací a zařízení |Dlaždice historie stavu zobrazují hodnoty měření za časové období. Můžete ho například použít k zobrazení hodnot teploty pro zařízení během poslední hodiny.|
+| Historie stavu | Řídicí panely aplikací a zařízení |Dlaždice historie stavu zobrazují hodnoty měření za časové období. Můžete ho například použít k zobrazení hodnot teploty pro zařízení během poslední hodiny.|
 | Klíčové ukazatele výkonu | Řídicí panely aplikací a zařízení | Dlaždice klíčových ukazatelů výkonu zobrazují agregovanou telemetrii nebo měření událostí za časové období. Můžete ho například použít k zobrazení maximální teploty zařízení během poslední hodiny.|
 | Poslední známá hodnota | Řídicí panely aplikací a zařízení |Dlaždice Poslední známá hodnota zobrazují nejnovější hodnotu pro telemetrii nebo měření stavu. Pomocí této dlaždice můžete například zobrazit nejnovější měření teploty, tlaku a vlhkosti zařízení.|
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili, jak nakonfigurovat výchozí řídicí panel aplikace Azure IoT Central, se můžete [dozvědět, jak připravit a nahrávat obrázky](howto-prepare-images.md).
+Teď, když jste se naučili, jak nakonfigurovat výchozí řídicí panel aplikace Azure IoT Central, si můžete [přečíst, jak vytvořit osobní řídicí panel](howto-create-personal-dashboards.md).

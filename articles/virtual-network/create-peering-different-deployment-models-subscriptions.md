@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: kumud
 ms.reviewer: anavin
-ms.openlocfilehash: 6d45e3d911b8070529c43d9069a3d0d2fa5d3e69
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0429bf4968f457e201491db3df16f0004f216f30
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978999"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023272"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Vytvoření partnerského vztahu virtuálních sítí – různé modely nasazení a odběry
 
@@ -57,7 +57,7 @@ V tomto kurzu se pro každé předplatné používá jiný účet. Pokud použí
 6. V okně **myVnetA – řízení přístupu (IAM)** , které se zobrazí, klikněte na **+ Přidat přiřazení role**.
 7. V okně **Přidat přiřazení role** , které se zobrazí, vyberte v poli **role** možnost **Přispěvatel sítě** .
 8. V poli **Vybrat** vyberte UserB nebo zadejte e-mailovou adresu UserB, kterou chcete vyhledat. Seznam zobrazených uživatelů je ze stejného klienta Azure Active Directory jako virtuální síť, pro kterou nastavujete partnerský vztah. Po zobrazení v seznamu klikněte na UserB.
-9. Klikněte na možnost **Uložit**.
+9. Klikněte na **Uložit**.
 10. Odhlaste se z portálu jako UserA a pak se přihlaste jako UserB.
 11. Klikněte na **+ Nový**, do pole **Hledat na Marketplace** zadejte *virtuální síť* a potom ve výsledcích hledání klikněte na **virtuální síť** .
 12. V zobrazeném okně **Virtual Network** v poli **Vybrat model nasazení** vyberte **Classic** a pak klikněte na **vytvořit**.
@@ -325,4 +325,4 @@ Po dokončení tohoto kurzu možná budete chtít odstranit prostředky, které 
 
 - Před vytvořením partnerského vztahu virtuálních sítí pro produkční použití důkladně se seznamte s důležitými [omezeními a chováním partnerských vztahů virtuálních sítí](virtual-network-manage-peering.md#requirements-and-constraints) .
 - Přečtěte si o [nastaveních partnerského vztahu virtuálních sítí](virtual-network-manage-peering.md#create-a-peering).
-- Naučte se [vytvářet síťové topologie centra a paprsků](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) s využitím partnerského vztahu virtuálních sítí.
+- Naučte se [vytvářet síťové topologie centra a paprsků](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering) s využitím partnerského vztahu virtuálních sítí.

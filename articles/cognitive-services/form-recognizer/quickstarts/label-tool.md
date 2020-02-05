@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: f00702326cf6fe2efd8d4abbfce7174815ea0b1d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 158faaba1525e162c40c44179f30f7c3cea83b38
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770284"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025907"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Výukový model pro rozpoznávání formulářů pomocí popisků pomocí nástroje pro vzorkování popisků
 
@@ -26,7 +26,6 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 K dokončení tohoto rychlého startu musíte mít:
 - Přístup k nástroji pro rozpoznávání přístupu s omezeným přístupem ve formě přístupu Chcete-li získat přístup k verzi Preview, vyplňte a odešlete [formulář žádosti o přístup pro rozpoznávání formulářů](https://aka.ms/FormRecognizerRequestAccess). Obdržíte e-mail s odkazem na vytvoření prostředku pro rozpoznávání formulářů.
-- Přístup k ukázkovému nástroji pro označování vydaným nástrojem pro rozpoznávání formulářů Chcete-li získat přístup, vyplňte a odešlete [formulář žádosti nástroje pro rozpoznávání formuláře](https://aka.ms/LabelToolRequestAccess). Obdržíte e-mail s pokyny, jak získat vaše přihlašovací údaje a získat přístup k soukromému registru kontejneru. 
 - Sada alespoň šest forem stejného typu. Tato data použijete ke školení modelu a testování formuláře. Pro tento rychlý Start můžete použít [ukázkovou datovou sadu](https://go.microsoft.com/fwlink/?linkid=2090451) . Nahrajte školicí soubory do kořenového adresáře kontejneru úložiště objektů BLOB v účtu Azure Storage.
 
 ## <a name="set-up-the-sample-labeling-tool"></a>Nastavení nástroje pro označování ukázek
@@ -38,18 +37,13 @@ Pomocí modulu Docker spustíte ukázkový nástroj pro označování vzorků. P
     |:--|:--|:--|
     |Ukázkový nástroj pro popisky|2 jádra, 4 GB paměti|4 jádra, 8 GB paměti|
     
-1. Dál budete potřebovat [rozhraní příkazového řádku Azure (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Pokud jste to ještě neudělali, nainstalujte ji na svůj počítač.
-1. Pak na příkazovém řádku zadejte následující příkaz. Hodnoty pro `<username>` a `<password>` jsou v uvítacím e-mailu pro rozpoznávání formulářů.
-    ```
-    docker login containerpreview.azurecr.io -u <username> -p <password>
-    ```
 1. Získejte vzorový kontejner nástrojů pro označování pomocí příkazu `docker pull`.
     ```
-    docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer-custom-supervised-labeltool:latest
+    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
     ```
 1. Nyní jste připraveni spustit kontejner s `docker run`.
     ```
-    docker run -it -p 3000:80 containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer-custom-supervised-labeltool eula=accept
+    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
     ```
 
    Tento příkaz zpřístupní ukázkovou jmenovku nástroje prostřednictvím webového prohlížeče. Přejděte do [ (Nastavení)http://localhost:3000](http://localhost:3000) (Integrace a služby).

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f858e0dd475361ff097f5a05ae01df2af00e4eca
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: bd1c3d27ebedfb8479b9f30ac08d8132b2a44a04
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989990"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023459"
 ---
 # <a name="toggle-live-chat"></a>Přepnutí živého chatu
 

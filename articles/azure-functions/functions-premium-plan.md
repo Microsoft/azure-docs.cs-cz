@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 5f6825243b7e410b49b54d04a028b5d71610ea68
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: b373691a6b9649a43d68c9da93b49fd20536c42b
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561950"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024632"
 ---
 # <a name="azure-functions-premium-plan"></a>Plán Azure Functions Premium
 
@@ -37,7 +37,7 @@ K dispozici jsou následující funkce pro aplikace Functions nasazené do plán
 
 ### <a name="pre-warmed-instances"></a>Předem zahřívání instance
 
-Pokud v plánu spotřeby nejsou žádné události a spuštění, vaše aplikace může škálovat dolů na nulové instance. Když se přidají nové události v, musí být speciální instance specializovaná na svou aplikaci, která je na ní spuštěná.  Specializace nových instancí může v závislosti na aplikaci nějakou dobu trvat.  Tato další latence při prvním volání se často označuje jako studený start aplikace.
+Pokud v plánu spotřeby nejsou žádné události a spuštění, vaše aplikace se může škálovat na nulové instance. Když se přidají nové události v, musí být speciální instance specializovaná na svou aplikaci, která je na ní spuštěná.  Specializace nových instancí může v závislosti na aplikaci nějakou dobu trvat.  Tato další latence při prvním volání se často označuje jako studený start aplikace.
 
 V plánu Premium můžete mít aplikaci předem zahřívání na určitém počtu instancí až do minimální velikosti plánu.  Předem zavedené instance také umožňují předem škálovat aplikaci před velkým objemem zátěže. Vzhledem k tomu, že se aplikace škáluje, nejprve se škáluje do předem zahřívání instancí. Další instance pokračují ve vyrovnávací paměti a zahřívá se hned po přípravě na další operaci škálování. Když máte vyrovnávací paměť předběžně zavedených instancí, můžete efektivně zabránit latenci při počátečním startu.  Předem zavedené instance jsou součástí plánu Premium a je potřeba, abyste zachovali aspoň jednu instanci, která je spuštěná a dostupná vždy, když je plán aktivní.
 
@@ -108,7 +108,7 @@ Níže jsou uvedené aktuálně podporované oblasti pro každý operační syst
 |Střední Kanada| ✔ |  |
 |Střední USA| ✔ |  |
 |Východní Asie| ✔ |  |
-|Východní USA | ✔ | ✔<sup>1</sup> |
+|Východ USA | ✔ | ✔<sup>1</sup> |
 |Východ USA 2| ✔ |  |
 |Francie – střed| ✔ |  |
 |Německo – středozápad| ✔ | |

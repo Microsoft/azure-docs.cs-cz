@@ -4,7 +4,7 @@ description: Další informace o používání služby Azure Batch pro rozsáhl�
 services: batch
 documentationcenter: ''
 author: mscurrell
-manager: gwallace
+manager: evansma
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 01/19/2018
 ms.author: markscu
 ms.custom: mvc
-ms.openlocfilehash: ee61f0f550a09640469914d29bde175028b59142
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7ca2a5e91a0ec0d765e106baca20f135996bc26e
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094323"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022796"
 ---
 # <a name="what-is-azure-batch"></a>Co je Azure Batch?
 
@@ -73,12 +73,12 @@ Následující diagram znázorňuje kroky v běžném pracovním postupu služby
 
 |Krok  |Popis  |
 |---------|---------|
-|1.  Nahrajte **vstupní soubory** a **aplikace**, které je budou zpracovávat, do účtu Azure Storage.     |Vstupní soubory mohou být jakákoli data, která vaše aplikace zpracuje, třeba data finančního modelování nebo videosoubory k převodu. Soubory aplikací můžou zahrnovat skripty nebo aplikace zpracovávající data, třeba převaděč médií.|
-|2.  Vytvořte ve svém účtu Batch **fond** výpočetních uzlů služby Batch, **úlohu** pro spuštění ve fondu a **úkoly** v této úloze.     | Uzly fondu jsou virtuální počítače, které budou provádět vaše úkoly. Zadejte vlastnosti, jako je počet a velikost uzlů, image virtuálních počítačů s Windows nebo Linuxem a aplikaci, která se má nainstalovat, když se uzly připojí k fondu. Náklady na fond a jeho velikost můžete omezit použitím [virtuálních počítačů s nízkou prioritou](batch-low-pri-vms.md) nebo [automatického škálování](batch-automatic-scaling.md) počtu uzlů v závislosti na změnách zatížení. <br/><br/>Když do úlohy přidáte úkoly, služba Batch automaticky naplánuje úkoly k provedení ve výpočetních uzlech ve fondu. Každý úkol používá aplikaci, kterou jste nahráli, ke zpracování vstupních souborů. |
-|3.  Stáhněte do služby Batch **vstupní soubory** a **aplikace**.     |Každý úkol může před spuštěním stáhnout vstupní data, která bude zpracovávat v přiřazeném výpočetním uzlu. Pokud ještě není aplikace v daných uzlech fondu nainstalovaná, může se stáhnout v této fázi. Po dokončení stahování ze služby Azure Storage se v přiřazeném uzlu spustí příslušný úkol.|
-|4.  Monitorujte **provádění úkolů**.     |Když se úkoly spouštějí, můžete ve službě Batch zadat dotaz na monitorování postupu úloh a jejich úkolů. Vaše klientská aplikace nebo služba komunikuje se službou Batch přes HTTPS. Vzhledem k tomu, že můžete monitorovat tisíce úloh spuštěných v tisících výpočetních uzlů, ujistěte se, že [se služby Batch dotazujete efektivně](batch-efficient-list-queries.md).|
-|5.  Nahrajte **výstup úkolu**.     |Úkoly mohou po dokončení nahrát data svých výsledků do služby Azure Storage. Soubory můžete také načíst přímo ze systému souborů na výpočetním uzlu.|
-|6.  Stáhněte **výstupní soubory**.     |Když funkce monitorování zjistí, že jsou úkoly ve vaší úloze dokončené, klientská aplikace nebo služba může stáhnout výstupní data k dalšímu zpracování.|
+|1. nahrání **vstupních souborů** a **aplikací** pro zpracování těchto souborů na účet Azure Storage.     |Vstupní soubory mohou být jakákoli data, která vaše aplikace zpracuje, třeba data finančního modelování nebo videosoubory k převodu. Soubory aplikací můžou zahrnovat skripty nebo aplikace zpracovávající data, třeba převaděč médií.|
+|2. na účtu Batch vytvořte **fond** výpočetních uzlů služby Batch, **úlohu** pro spuštění úlohy ve fondu a **úkoly** v úloze.     | Uzly fondu jsou virtuální počítače, které budou provádět vaše úkoly. Zadejte vlastnosti, jako je počet a velikost uzlů, image virtuálních počítačů s Windows nebo Linuxem a aplikaci, která se má nainstalovat, když se uzly připojí k fondu. Náklady na fond a jeho velikost můžete omezit použitím [virtuálních počítačů s nízkou prioritou](batch-low-pri-vms.md) nebo [automatického škálování](batch-automatic-scaling.md) počtu uzlů v závislosti na změnách zatížení. <br/><br/>Když do úlohy přidáte úkoly, služba Batch automaticky naplánuje úkoly k provedení ve výpočetních uzlech ve fondu. Každý úkol používá aplikaci, kterou jste nahráli, ke zpracování vstupních souborů. |
+|3. stažení **vstupních souborů** a **aplikací** do dávky     |Každý úkol může před spuštěním stáhnout vstupní data, která bude zpracovávat v přiřazeném výpočetním uzlu. Pokud ještě není aplikace v daných uzlech fondu nainstalovaná, může se stáhnout v této fázi. Po dokončení stahování ze služby Azure Storage se v přiřazeném uzlu spustí příslušný úkol.|
+|4. monitorování **provádění úlohy**     |Když se úkoly spouštějí, můžete ve službě Batch zadat dotaz na monitorování postupu úloh a jejich úkolů. Vaše klientská aplikace nebo služba komunikuje se službou Batch přes HTTPS. Vzhledem k tomu, že můžete monitorovat tisíce úloh spuštěných v tisících výpočetních uzlů, ujistěte se, že [se služby Batch dotazujete efektivně](batch-efficient-list-queries.md).|
+|5. odeslání **výstupu úlohy**     |Úkoly mohou po dokončení nahrát data svých výsledků do služby Azure Storage. Soubory můžete také načíst přímo ze systému souborů na výpočetním uzlu.|
+|6. stažení **výstupních souborů**     |Když funkce monitorování zjistí, že jsou úkoly ve vaší úloze dokončené, klientská aplikace nebo služba může stáhnout výstupní data k dalšímu zpracování.|
 
 
 
@@ -87,7 +87,7 @@ Mějte na paměti, že toto je jenom jeden ze způsobů použití služby Batch 
 
 Podrobnější informace o prostředcích služby fondech, uzlech a úlohách a mnoha funkcích rozhraní API, které můžete používat při sestavování aplikace služby Batch, najdete v článku [Přehled funkcí Batch pro vývojáře](batch-api-basics.md). Prohlédněte si také nejnovější [aktualizace služby Batch](https://azure.microsoft.com/updates/?product=batch).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Začněte pracovat se službou Azure Batch pomocí jedné z těchto šablon Rychlý start:
 * [Spuštění první úlohy služby Batch pomocí rozhraní příkazového řádku Azure](quick-create-cli.md)

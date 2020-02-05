@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: 7a438a52ab69810ecf49319c148f817da974ea61
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 128b15bd5b3ba3c3ac891719bf5c3ec8e5137cce
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440224"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023510"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>Transformace zdroje v toku dat mapování 
 
@@ -44,6 +44,8 @@ Jakmile přidáte zdroj, nakonfigurujte ho přes kartu **Nastavení zdroje** . T
 
 ![Karta nastavení zdroje](media/data-flow/source1.png "Karta nastavení zdroje")
 
+**Test připojení:** Otestuje, jestli se služba Spark datového toku může úspěšně připojit k propojené službě použité ve zdrojové datové sadě. Aby bylo možné tuto funkci povolit, musí být zapnutý režim ladění.
+
 **Posun schématu:** [posun schématu](concepts-data-flow-schema-drift.md) je schopnost objektu pro vytváření dat nativně zpracovávat flexibilní schémata v datových tocích, aniž by bylo nutné explicitně definovat změny sloupců.
 
 * Zaškrtněte políčko pro **Povolení posunu schématu** , pokud se zdrojové sloupce často mění. Toto nastavení umožňuje, aby všechna vstupní pole zdroje prošla transformacemi do jímky.
@@ -69,13 +71,17 @@ Stejně jako schémata v datových sadách definuje projekce ve zdroji datové s
 
 ![Nastavení na kartě projekce](media/data-flow/source3.png "Projekce")
 
-Pokud textový soubor nemá žádné definované schéma, vyberte možnost **detekovat datový typ** , aby data Factory vzorkovat a odvodit datové typy. Pro automatické rozpoznání výchozích formátů dat vyberte možnost **definovat výchozí formát** . 
+Pokud textový soubor nemá žádné definované schéma, vyberte možnost **detekovat datový typ** , aby data Factory vzorkovat a odvodit datové typy. Pro automatické rozpoznání výchozích formátů dat vyberte možnost **definovat výchozí formát** .
+
+**Resetování schématu** obnoví projekci na to, co je definováno v odkazované datové sadě.
 
 Můžete upravit typy dat sloupce v transformaci odvozeného sloupce z vedlejšího datového proudu. Použijte transformaci SELECT k úpravě názvů sloupců.
 
 ### <a name="import-schema"></a>Importovat schéma
 
-Datové sady, jako jsou Avro a CosmosDB, které podporují komplexní datové struktury, nevyžadují, aby v datové sadě existovaly definice schématu. Proto budete moci kliknout na tlačítko **importovat schéma** na kartě **projekce** pro tyto typy zdrojů.
+Tlačítko **importovat schéma** na kartě **projekce** umožňuje použít aktivní cluster ladění k vytvoření projekce schématu. Import schématu, který je k dispozici v každém typu zdroje, přepíše projekci definovanou v datové sadě. Objekt DataSet nebude změněn.
+
+To je užitečné v datových sadách, jako je Avro a CosmosDB, které podporují složité datové struktury, nevyžadují, aby definice schématu existovaly v datové sadě.
 
 ## <a name="optimize-the-source-transformation"></a>Optimalizace zdrojové transformace
 

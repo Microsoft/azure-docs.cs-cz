@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6a07d019893e69308b35b4a941fe50d2736efe01
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: fb36b81d1b2a343da334d63d9c0555ed537ef122
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921913"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024649"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions škálování a hostování
 
@@ -44,9 +44,9 @@ Následující tabulka uvádí aktuální úroveň podpory pro tři plány hosto
 
 ## <a name="consumption-plan"></a>Plán Consumption
 
-Pokud používáte plán spotřeby, instance Azure Functions hostitele se dynamicky přidávají a odstraňují na základě počtu příchozích událostí. Tento bezserverový plán se automaticky škáluje a výpočetní prostředky se vám účtují, jenom když vaše funkce běží. V plánu Spotřeba po nastavené době vyprší časový limit spuštění funkce.
+Pokud používáte plán spotřeby, instance Azure Functions hostitele se dynamicky přidávají a odstraňují na základě počtu příchozích událostí. Tento plán bez serveru se škáluje automaticky a účtují se vám poplatky za výpočetní prostředky jenom v případě, že jsou vaše funkce spuštěné. V plánu spotřeby vyprší doba spuštění funkce po konfigurovatelném časovém intervalu.
 
-Fakturace vychází z počtu spuštění, doby spuštění a použité paměti. Fakturace se agreguje napříč všemi funkcemi v rámci aplikace funkce. Další informace najdete na stránce s [cenami Azure Functions](https://azure.microsoft.com/pricing/details/functions/).
+Fakturace vychází z počtu spuštění, času spuštění a využité paměti. Fakturace se agreguje napříč všemi funkcemi v rámci aplikace Function App. Další informace najdete na stránce s [cenami Azure Functions](https://azure.microsoft.com/pricing/details/functions/).
 
 Plán spotřeby je výchozím plánem hostování a nabízí následující výhody:
 
@@ -152,7 +152,7 @@ Jednotka škálování pro Azure Functions je aplikace Function App. Při horizo
 
 Škálování se může u různých faktorů lišit a škáluje se různě na základě zvoleného triggeru a jazyka. Existuje několik složitými rozhraními chování škálování, která je potřeba znát:
 
-* Jedna aplikace funkcí se může škálovat maximálně na 200 instancí. Jedna instance může zpracovávat více než jednu zprávu nebo požádat současně, takže neexistuje nastavený limit počtu souběžných spuštění.
+* Jedna aplikace Function App se škáluje maximálně na 200 instancí. Jedna instance může zpracovávat více než jednu zprávu nebo požádat současně, takže neexistuje nastavený limit počtu souběžných spuštění.
 * U triggerů HTTP se nové instance přiřazují jenom jednou za 1 sekundu.
 * U triggerů bez protokolu HTTP se nové instance přiřazují jenom každých 30 sekund.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: 22f7c0ba98390b391a79a121f120b8ab6172cfb9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7caeba0e88f63106eae80f7142b5d65463f8d7a7
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845364"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019396"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s připojením a sítí pro Azure Cloud Services: nejčastější dotazy
 
@@ -101,8 +101,8 @@ Vzhledem k tomu, že je tato vazba hlavičky hostitele vynutila prostřednictví
 
 Abyste se ujistili, že se veřejná IP adresa vaší cloudové služby (označovaná také jako VIP) nikdy nemění, aby mohla být běžně povolená několika konkrétními klienty, doporučujeme, abyste k ní měli přiřazenou rezervovanou IP adresu. V opačném případě se virtuální IP adresa poskytovaná Azure z vašeho předplatného oddělí, pokud nasazení odstraníte. Pro úspěšnou operaci odkládacích adres VIP potřebujete jednotlivé rezervované IP adresy pro produkční i přípravné sloty. Bez nich operace prohození neproběhne úspěšně. Pokud si chcete vyhradit IP adresu a přidružit ji ke cloudové službě, přečtěte si tyto články:
 
-- [Vyhrazení IP adresy existující cloudové služby](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
-- [Přidružení rezervované IP adresy ke cloudové službě pomocí konfiguračního souboru služby](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
+- [Vyhrazení IP adresy existující cloudové služby](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#reserve-the-ip-address-of-an-existing-cloud-service)
+- [Přidružení rezervované IP adresy ke cloudové službě pomocí konfiguračního souboru služby](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
 Pokud máte pro své role více než jednu instanci, přidružením protokolu RIP ke cloudové službě by nemělo dojít k výpadku. Případně můžete přidat rozsah IP adres vašeho datacentra Azure do seznamu povolených. Všechny rozsahy IP adres Azure najdete na [webu služby Stažení softwaru](https://www.microsoft.com/en-us/download/details.aspx?id=41653).
 

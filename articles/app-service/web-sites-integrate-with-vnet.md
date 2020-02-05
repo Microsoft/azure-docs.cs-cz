@@ -6,13 +6,13 @@ ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 71dc37fc000b2f195478e06f7e755fa8df926444
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 472fe621fc7a95317f143ef96a1d7f8b5adfe581
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688293"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016965"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrace aplikace s Virtual Network Azure
 Tento dokument popisuje funkci Integrace virtuální sítě Azure App Service a jak ji nastavit pomocí aplikací v [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Virtuální sítě Azure][VNETOverview] (virtuální sítě) umožňují umístit spoustu vašich prostředků Azure do sítě směrovatelné do jiné sítě.  
@@ -34,7 +34,7 @@ Aplikace může v jednom okamžiku používat jenom jednu formu funkce integrace
 | Problém  | Řešení | 
 |----------|----------|
 | Chcete se spojit s adresou RFC 1918 (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) ve stejné oblasti. | Místní integrace virtuální sítě |
-| Chcete se připojit k prostředkům v klasické virtuální síti nebo virtuální síti v jiné oblasti. | Požadovaná brána Integration VNet |
+| Chcete se připojit k prostředkům v klasické virtuální síti nebo virtuální síti v jiné oblasti. | požadovaná brána Integration VNet |
 | Chcete se dostat ke koncovým bodům RFC 1918 napříč ExpressRoute | Místní integrace virtuální sítě |
 | Chcete oslovit prostředky napříč koncovými body služby | Místní integrace virtuální sítě |
 
@@ -74,7 +74,7 @@ Tato funkce je ve verzi Preview, ale podporuje se pro produkční úlohy aplikac
 * Je možné, že máte přístup pouze k adresám, které jsou v rozsahu RFC 1918. Ty jsou adresy v blocích adres 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16.
 * Nemůžete se připojit k prostředkům napříč globálními připojeními partnerských vztahů.
 * Nemůžete nastavit trasy přenášené z vaší aplikace do vaší virtuální sítě.
-* Tato funkce je dostupná jenom z novějších jednotek škálování App Service, které podporují plány App Service PremiumV2.
+* Tato funkce je dostupná jenom z novějších jednotek škálování App Service, které podporují plány App Service PremiumV2. Všimněte si, že to neznamená, že vaše aplikace musí běžet na PremiumV2 SKU, jenom to, že musí běžet v plánu App Service, kde je dostupná možnost PremiumV2 (což znamená, že se jedná o novější jednotku škálování, kde je tato funkce integrace virtuální sítě dostupná taky).
 * Podsíť integrace se dá použít jenom v jednom plánu App Service.
 * Tuto funkci nemůže používat aplikace izolovaného plánu, které jsou ve App Service Environment.
 * Tato funkce vyžaduje nepoužitou podsíť, která je/27 s 32 adresou nebo větší ve vaší virtuální síti Správce prostředků.
@@ -106,7 +106,7 @@ Regionální integrace virtuální sítě vyžaduje, aby vaše podsíť integrac
 Pokud chcete aplikaci odpojit od virtuální sítě, vyberte **Odpojit**. Tím dojde k restartování vaší webové aplikace. 
 
 
-#### <a name="web-app-for-containers"></a>Web App for Containers
+#### <a name="web-app-for-containers"></a>Služba Web App for Containers
 
 Pokud používáte App Service v systému Linux s vestavěnými bitovými kopiemi, funkce Místní integrace virtuální sítě funguje bez dalších změn. Pokud používáte Web App for Containers, je nutné upravit image Docker, aby bylo možné použít integraci virtuální sítě. V imagi Docker použijte proměnnou prostředí portu jako port naslouchání hlavního webového serveru namísto použití pevně zakódované čísla portu. Proměnná prostředí portu je automaticky nastavena App Service platformou v době spuštění kontejneru. Pokud používáte SSH, musí být démon procesu SSH nakonfigurovaný tak, aby naslouchal na čísle portu určeném proměnnou prostředí SSH_PORT při použití místní integrace virtuální sítě.
 
@@ -251,7 +251,7 @@ Existují tři související poplatky za použití funkce integrace virtuální 
 ## <a name="troubleshooting"></a>Řešení potíží
 I když se tato funkce dá snadno nastavit, neznamená to, že vaše zkušenosti budou bez problémů. Pokud máte problémy s přístupem k požadovanému koncovému bodu, můžete použít některé nástroje, pomocí kterých můžete testovat připojení z konzoly aplikace. Můžete použít dvě konzoly. Jedním z nich je konzola Kudu a druhá je konzola v Azure Portal. Pokud se chcete připojit ke konzole Kudu z vaší aplikace, použijte nástroje-> Kudu. Ke konzole Kudo se můžete dostat i na adrese [název_webu]. SCM. azurewebsites. NET. Po načtení webu přejdete na kartu ladit konzolu. Pokud se chcete dostat do Azure Portal hostované konzoly, pak z aplikace přejdete do konzoly nástroje->. 
 
-#### <a name="tools"></a>Nástroje
+#### <a name="tools"></a>nástroje
 **Příkazy příkazového testu**a nástroje **nslookup** a **tracert** nebudou prostřednictvím konzoly fungovat z důvodu omezení zabezpečení. K vyplnění void se přidaly dva samostatné nástroje. K otestování funkcí DNS jsme přidali nástroj s názvem nameresolver. exe. Syntaxe je:
 
     nameresolver.exe hostname [optional: DNS Server]

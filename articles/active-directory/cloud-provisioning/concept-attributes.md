@@ -15,12 +15,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fc68626959daaccb5ddc05ce6148c5948052d41
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: cd013b44454cc0283ef84d6a978b15400eca8786
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549376"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022490"
 ---
 # <a name="understand-the-azure-ad-schema"></a>Pochopení schématu Azure AD
 Objekt v Azure Active Directory (Azure AD), podobně jako jakýkoli adresář, je programovou datovou konstrukcí vysoké úrovně, která představuje takové věci jako uživatelé, skupiny a kontakty. Když vytvoříte nového uživatele nebo kontakt ve službě Azure AD, vytváříte novou instanci tohoto objektu. Tyto instance se můžou odlišit na základě jejich vlastností.
@@ -72,7 +72,7 @@ Chcete-li zobrazit schéma a ověřit jej, postupujte podle těchto kroků.
 1.  Přejít na [Průzkumník grafů](https://developer.microsoft.com/graph/graph-explorer).
 1.  Přihlaste se pomocí účtu globálního správce.
 1.  Na levé straně vyberte změnit oprávnění a zajistěte, aby byl adresář. **nepřístupný** **. všechno** se *poslalo*.
-1.  Spusťte dotaz https://graph.microsoft.com/beta/serviceprincipals/. Tento dotaz vrátí seznam objektů služby.
+1.  Spusťte dotaz https://graph.microsoft.com/beta/serviceprincipals/? $filter = StartsWith (DisplayName, ' Active '). Tento dotaz vrátí seznam objektů služby, které jsou vyfiltrovány.
 1.  Vyhledejte `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` a poznamenejte si hodnotu `"id"`.
     ```
     "value": [

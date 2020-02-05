@@ -9,12 +9,13 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: cd2e34be7ef55c4ee6d18c6db6010134a7d935d1
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 1c2bac06f2526260fb290b63e5aa559a1e2337b4
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76895952"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020620"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Postup indexování dokumentů v Azure Blob Storage s využitím Azure Kognitivní hledání
 
@@ -136,7 +137,7 @@ V závislosti na [konfiguraci indexeru](#PartsOfBlobToIndex)může indexer objek
 > [!NOTE]
 > Azure Kognitivní hledání omezuje množství využívaného textu v závislosti na cenové úrovni: 32 000 znaků pro úroveň Free, 64 000 pro Basic, 4 000 000 pro standard, 8 000 000 pro standard S2 a 16 000 000 pro standard S3. V odpovědi na stav indexeru pro zkrácené dokumenty je k dispozici upozornění.  
 
-* Uživatelsky definované vlastnosti metadat přítomné v objektu blob, pokud existují, jsou extrahovány do doslovného znění.
+* Uživatelsky definované vlastnosti metadat přítomné v objektu blob, pokud existují, jsou extrahovány do doslovného znění. Všimněte si, že to vyžaduje, aby pole bylo definováno v indexu se stejným názvem jako klíč metadat objektu BLOB. Pokud má váš objekt BLOB například klíč metadat `Sensitivity` s hodnotou `High`, měli byste v indexu vyhledávání definovat pole s názvem `Sensitivity`, které se naplní hodnotou `High`.
 * Vlastnosti standardních metadat objektů BLOB jsou extrahovány do následujících polí:
 
   * **metadata\_úložiště\_název** (EDM. String) – název souboru objektu BLOB. Pokud máte například objekt BLOB/my-Container/My-Folder/subfolder/Resume.PDF, hodnota tohoto pole je `resume.pdf`.

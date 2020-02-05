@@ -3,24 +3,24 @@ title: Rozšiřování Azure IoT Central s využitím vlastních analýz | Micro
 description: Jako vývojář řešení můžete nakonfigurovat aplikaci IoT Central, aby vlastní analýzy a vizualizace. Toto řešení používá Azure Databricks.
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/23/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 39d99b8b6167411fc75677878b7f82a27deab958
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 7e5e8331509e99a7e556105ff1ea8ca2d0b285e7
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987624"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023833"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Rozšiřování Azure IoT Central s využitím vlastních analýz pomocí Azure Databricks
 
 V této příručce se dozvíte, jak pomocí vývojářů řešení rozšíříte svou IoT Centralovou aplikaci s využitím vlastních analýz a vizualizací. V tomto příkladu se používá pracovní prostor [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) k analýze IoT Centralho datového proudu telemetrie a k vygenerování vizualizací, jako je například [krabicový graf](https://wikipedia.org/wiki/Box_plot).
 
-V této příručce se dozvíte, jak můžete IoT Central nad rámec toho, co už s [integrovanými analytickými nástroji](howto-create-analytics.md)udělat.
+V této příručce se dozvíte, jak můžete IoT Central nad rámec toho, co už s [integrovanými analytickými nástroji](./howto-create-custom-analytics.md)udělat.
 
 V této příručce se dozvíte, jak:
 
@@ -40,14 +40,16 @@ Na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) vytvo�
 | Nastavení | Hodnota |
 | ------- | ----- |
 | Cenový tarif | Úroveň Standard |
-| Šablona aplikace | Starší verze aplikace |
+| Šablona aplikace | Analýzy v obchodě – monitorování podmínek |
 | Název aplikace | Přijměte výchozí nebo vyberte svůj vlastní název. |
 | Adresa URL | Přijměte výchozí nebo vyberte vlastní jedinečnou předponu adresy URL. |
 | Adresář | Váš tenant Azure Active Directory |
 | Předplatné Azure | Vaše předplatné Azure |
-| Region (Oblast) | Spojené státy |
+| Region (Oblast) | Vaše nejbližší oblast |
 
 Příklady a snímky obrazovky v tomto článku používají oblast **USA** . Vyberte umístění, které chcete zavřít, a ujistěte se, že jste vytvořili všechny prostředky ve stejné oblasti.
+
+Tato šablona aplikace zahrnuje dvě simulovaná termostata zařízení, která odesílají telemetrii.
 
 ### <a name="resource-group"></a>Skupina prostředků
 
@@ -101,7 +103,7 @@ Váš Event Hubs obor názvů vypadá jako na následujícím snímku obrazovky:
 
 Na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) přejděte do IoT Central aplikace, kterou jste vytvořili ze šablony společnosti Contoso. V této části nakonfigurujete aplikaci pro streamování telemetrie z simulovaných zařízení do centra událostí. Konfigurace exportu:
 
-1. Přejděte na stránku **průběžné exportu dat** , vyberte **+ Nový**a pak **Azure Event Hubs**.
+1. Přejděte na stránku pro **Export dat** , vyberte **+ Nový**a pak **Azure Event Hubs**.
 1. Pro konfiguraci exportu použijte následující nastavení a pak vyberte **Uložit**:
 
     | Nastavení | Hodnota |
@@ -114,7 +116,7 @@ Na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) přejd
     | Zařízení | Vypnuto |
     | Šablony zařízení | Vypnuto |
 
-![Konfigurace kontinuálního exportu dat](media/howto-create-custom-analytics/cde-configuration.png)
+![Konfigurace exportu dat](media/howto-create-custom-analytics/cde-configuration.png)
 
 Než budete pokračovat, počkejte, než se **spustí** stav exportu.
 
@@ -132,7 +134,7 @@ K vytvoření clusteru použijte informace v následující tabulce:
 | ------- | ----- |
 | Název clusteru | centralanalysis |
 | Režim clusteru | Úroveň Standard |
-| Verze Databricks Runtime | 5,3 (Scala 2,11, Spark 2.4.0) |
+| Verze Databricks Runtime | 5,5 LTS (Scala 2,11, Spark 2.4.3) |
 | Verze Pythonu | 3 |
 | Povolení automatického škálování | Ne |
 | Ukončit po minutách nečinnosti | 30 |
@@ -229,4 +231,4 @@ V této příručce se naučíte:
 * Pomocí *průběžného exportu dat*Streamujte telemetrii z IoT Central aplikace.
 * Vytvořte prostředí Azure Databricks pro analýzu a vykreslení dat telemetrie.
 
-Teď, když víte, jak vytvářet vlastní analýzy, je navržený další krok, kde se dozvíte, jak [vizualizovat a analyzovat data Azure IoT Central v řídicím panelu Power BI](howto-connect-powerbi.md).
+Teď, když víte, jak vytvářet vlastní analýzy, je navržený další krok, kde se dozvíte, jak [spravovat vaši aplikaci](howto-administer.md).

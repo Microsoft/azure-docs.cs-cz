@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: a35cf935d990dbb61f440d2592d59d21f33a2ae8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6507c2a2d1100d480c879c73861c02e477d38416
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037242"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026128"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Řízení přístupu v Azure Data Lake Storage Gen2
 
@@ -21,7 +21,7 @@ Azure Data Lake Storage Gen2 implementuje model řízení přístupu, který pod
 
 <a id="azure-role-based-access-control-rbac" />
 
-## <a name="role-based-access-control"></a>Řízení přístupu na základě role
+## <a name="role-based-access-control"></a>Řízení přístupu založené na rolích
 
 RBAC používá přiřazení rolí k efektivnímu použití sad oprávnění pro *objekty zabezpečení*. Objekt *zabezpečení* je objekt, který představuje uživatele, skupinu, instanční objekt nebo spravovanou identitu, která je definovaná v Azure Active Directory (AD), která žádá o přístup k prostředkům Azure.
 
@@ -58,10 +58,15 @@ Seznam řízení přístupu nemůžete použít k zajištění úrovně přístu
 
 Chcete-li nastavit oprávnění na úrovni souborů a adresářů, přečtěte si některé z následujících článků:
 
-|Pokud chcete použít tento nástroj:    |Viz tento článek:    |
+|||
 |--------|-----------|
-|Azure Storage Explorer    |[Nastavení oprávnění na úrovni souborů a adresářů pomocí Průzkumník služby Azure Storage s Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)|
-|REST API    |[Cesta – aktualizace](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
+|Průzkumník služby Azure Storage |[Správa adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 pomocí Průzkumník služby Azure Storage](data-lake-storage-explorer.md#managing-access)|
+|.NET |[Správa adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 pomocí .NET](data-lake-storage-directory-file-acl-dotnet.md)|
+|Java|[Správa adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 pomocí jazyka Java](data-lake-storage-directory-file-acl-java.md)|
+|Python|[Použití Pythonu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-python.md)|
+|PowerShell|[Použití PowerShellu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-powershell.md)|
+|Azure CLI|[Použití Azure CLI ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-cli.md)|
+|Rozhraní REST API |[Cesta – aktualizace](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
 > Pokud *je objekt zabezpečení instanční objekt* , je důležité použít ID objektu instančního objektu a nikoli ID objektu související registrace aplikace. Pokud chcete získat ID objektu instančního objektu, otevřete Azure CLI a pak použijte tento příkaz: `az ad sp show --id <Your App ID> --query objectId`. zástupný symbol `<Your App ID>` nahraďte ID aplikace registrace vaší aplikace.
@@ -281,7 +286,7 @@ Skupiny zabezpečení Azure AD vždycky používejte jako přiřazený objekt za
 
 - Volající má oprávnění Super User,
 
-Nebo
+nebo
 
 - Nadřazený adresář musí mít oprávnění zapisovat + provést.
 - Adresář, který se má odstranit, a každý adresář v něm vyžaduje oprávnění číst + zapisovat + provést.
@@ -297,7 +302,7 @@ Autor souboru nebo adresáře se stal vlastníkem. V případě kořenového adr
 
 Vlastnící skupina je zkopírována z vlastnící skupiny nadřazeného adresáře, pod nímž je vytvořen nový soubor nebo adresář.
 
-### <a name="i-am-the-owning-user-of-a-file-but-i-dont-have-the-rwx-permissions-i-need-what-do-i-do"></a>Jsem vlastnícím uživatelem souboru, ale nemám potřebné oprávnění RWX. Co mám udělat?
+### <a name="i-am-the-owning-user-of-a-file-but-i-dont-have-the-rwx-permissions-i-need-what-do-i-do"></a>Jsem vlastnícím uživatelem souboru, ale nemám potřebné oprávnění RWX. Co mám dělat?
 
 Vlastnící uživatel může změnit oprávnění k souboru a sám si udělit veškerá potřebná oprávnění RWX.
 
@@ -335,6 +340,6 @@ Seznamy ACL nedědí. Výchozí seznamy ACL je ale možné použít k nastavení
 * [POSIX ACL na Ubuntu](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [ACL: Using Access Control Lists on Linux (Seznamy ACL: Používání seznamů řízení přístupu v Linuxu)](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Přehled Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md)

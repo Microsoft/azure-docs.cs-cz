@@ -174,7 +174,7 @@
     - name: Azure NetApp Files
       tocHref: /azure/azure-netapp-files/
       topicHref: /azure/azure-netapp-files/
-    - name: Řešení Azure VMware společnosti CloudSimple
+    - name: Azure VMware Solution by CloudSimple
       tocHref: /azure/vmware-cloudsimple/
       topicHref: /azure/vmware-cloudsimple/
     - name: Dokumentace k webu Azure Portal
@@ -194,19 +194,16 @@
             - name: IoT Central
               tocHref: /azure/iot-central/core/
               topicHref: /azure/iot-central/core/
-            - name: IoT Central (funkce Preview)
-              tocHref: /azure/iot-central/preview/
-              topicHref: /azure/iot-central/preview/
-            - name: IoT Central pro energetiku (funkce Preview)
+            - name: IoT Central pro energetiku
               tocHref: /azure/iot-central/energy/
               topicHref: /azure/iot-central/energy/
-            - name: IoT Central pro státní správu (funkce Preview)
+            - name: IoT Central pro státní správu
               tocHref: /azure/iot-central/government/
               topicHref: /azure/iot-central/government/
-            - name: IoT Central pro zdravotnictví (funkce Preview)
+            - name: IoT Central pro zdravotnictví
               tocHref: /azure/iot-central/healthcare/
               topicHref: /azure/iot-central/healthcare/
-            - name: IoT Central pro maloobchod (funkce Preview)
+            - name: IoT Central pro maloobchod
               tocHref: /azure/iot-central/retail/
               topicHref: /azure/iot-central/retail/
         - name: IoT Edge

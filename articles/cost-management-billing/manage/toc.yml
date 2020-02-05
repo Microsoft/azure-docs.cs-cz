@@ -101,8 +101,6 @@
           href: ea-portal-vm-reservations.md
         - name: Řešení potíží s přístupem k portálu Azure EA
           href: ea-portal-troubleshoot.md
-        - name: Úlohy EA ve smlouvě se zákazníkem Microsoftu
-          href: mca-enterprise-operations.md
 - name: Řešení potíží
   items:
     - name: Nenalezena žádná předplatná

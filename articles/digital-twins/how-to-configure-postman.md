@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/10/2020
-ms.openlocfilehash: 42b697babe2bc004663c80e6e2f71f90ba1e5e5b
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 02/03/2020
+ms.openlocfilehash: 377639d7a88478308709743ab842db71028686ed
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765402"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023306"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Jak nakonfigurovat metodu post pro digitální vlákna Azure
 
@@ -33,45 +33,15 @@ Prostřednictvím klienta pro řešení můžou vývojáři řešení určit dru
 
 ## <a name="configure-azure-active-directory-to-use-the-oauth-20-implicit-grant-flow"></a>Konfigurace Azure Active Directory pro použití procesu implicitního udělení žádosti OAuth 2,0
 
-Nakonfigurujte aplikaci Azure Active Directory tak, aby používala tok implicitního udělení OAuth 2,0.
-
-1. Otevřete podokno **oprávnění rozhraní API** pro registraci vaší aplikace. Vyberte tlačítko **Přidat oprávnění** . V podokně **oprávnění API pro vyžádání** vyberte **rozhraní API moje organizace používá** kartu a pak vyhledejte:
-    
-    1. `Azure Digital Twins`. Vyberte rozhraní API **digitálních vláken Azure** .
-
-        [rozhraní API pro vyhledávání ![nebo digitální vlákna Azure](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png)](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
-
-    1. Případně vyhledejte `Azure Smart Spaces Service`. Vyberte rozhraní API **služby Azure Smart Spaces** .
-
-        [rozhraní API pro hledání ![pro inteligentní prostory Azure](../../includes/media/digital-twins-permissions/aad-app-search-api.png)](../../includes/media/digital-twins-permissions/aad-app-search-api.png#lightbox)
-
-    > [!IMPORTANT]
-    > Název a ID rozhraní API služby Azure AD, které se zobrazí, závisí na vašem tenantovi:
-    > * Testovací klient a účty zákazníka by měli hledat `Azure Digital Twins`.
-    > * Jiné účty Microsoft by měly hledat `Azure Smart Spaces Service`.
-
-1. Vybrané rozhraní API se zobrazí jako **digitální vlákna Azure** ve stejném PODOKNĚ **oprávnění API pro žádosti** . Vyberte rozevírací seznam **načíst (1)** a potom zaškrtněte políčko **číst. zapsat** . Klikněte na tlačítko **Přidat oprávnění** .
-
-    [![přidání oprávnění API pro digitální vlákna Azure](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
-
-1. V závislosti na nastaveních vaší organizace možná budete muset provést další kroky, abyste tomuto rozhraní API udělili přístup správce. Pro další informace se obraťte na správce. Po schválení přístupu správce se sloupec **požadováno souhlasu správce** v podokně **oprávnění API** zobrazí jako pro vaše rozhraní API podobně jako u následujících:
-
-    [![nakonfigurovat schválení souhlasu správce](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
-
-1. Nakonfigurujte druhý **identifikátor URI pro přesměrování** na `https://www.getpostman.com/oauth2/callback`.
+1. Pomocí kroků v [rychlém](quickstart-view-occupancy-dotnet.md#set-permissions-for-your-app) startu vytvořte a nakonfigurujte aplikaci Azure Active Directory. Alternativně můžete znovu použít stávající registraci aplikace.
 
     [![nakonfigurovat nový identifikátor URI pro přesměrování po odeslání](media/how-to-configure-postman/authentication-redirect-uri.png)](media/how-to-configure-postman/authentication-redirect-uri.png#lightbox)
 
-1. Abyste se ujistili, že [je aplikace zaregistrovaná jako **veřejný klient**](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration), otevřete podokno **ověřování** pro registraci vaší aplikace a posuňte se v tomto podokně dolů. V části **výchozí typ klienta** zvolte možnost **Ano** pro **považovat aplikaci za veřejného klienta**a stiskněte **Uložit**.
+1. Nyní přidejte **identifikátor URI pro přesměrování** do `https://www.getpostman.com/oauth2/callback`.
 
-    Ověřte **přístupové tokeny** a povolte nastavení **oauth2AllowImplicitFlow** v manifestu. JSON.
+1. Zaškrtněte políčko **implicitní udělení** > **přístupové tokeny** , abyste umožnili použití toku implicitního udělení OAuth 2,0. Vyberte **Konfigurovat**a pak **Uložit**.
 
-    [![nastavení konfigurace veřejného klienta](../../includes/media/digital-twins-permissions/aad-configure-public-client.png)](../../includes/media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
-
-1. Zkopírujte a zachovejte **ID aplikace** vaší aplikace Azure Active Directory. Používá se v následujících krocích.
-
-   [ID aplikace ![Azure Active Directory](../../includes/media/digital-twins-permissions/aad-app-reg-app-id.png)](../../includes/media//digital-twins-permissions/aad-app-reg-app-id.png#lightbox)
-
+1. Zkopírujte **ID klienta** vaší aplikace Azure Active Directory.
 
 ## <a name="obtain-an-oauth-20-token"></a>Získání tokenu OAuth 2,0
 
@@ -91,15 +61,13 @@ Nastavte a nakonfigurujte metodu post pro získání tokenu Azure Active Directo
 
 1. Pokud si chcete aplikaci stáhnout, navštivte [www.getpostman.com](https://www.getpostman.com/) .
 
-1. Otevřete aplikaci pro vystavování a klikněte na nový | Vytvořte nový a vyberte požadavek. Zadejte název žádosti. Vyberte kolekci nebo složku, do které chcete uložit, a klikněte na Uložit. 
-
 1. Chceme vytvořit žádost o získání. Vyberte kartu **autorizace** , vyberte OAuth 2,0 a potom vyberte **získat nový přístupový token**.
 
     | Pole  | Hodnota |
     |---------|---------|
     | Typ udělení | `Implicit` |
     | Adresa URL zpětného volání | `https://www.getpostman.com/oauth2/callback` |
-    | Adresa URL ověření | Použijte **autorizační adresu URL** z **kroku 2** . |
+    | Adresa URL ověření | Použijte **autorizační adresu URL** z **kroku 1** . |
     | ID klienta | Použijte **ID aplikace** pro aplikaci Azure Active Directory, která se vytvořila nebo znovu použila z předchozí části. |
     | Rozsah | Ponechte prázdné |
     | Stav | Ponechte prázdné |

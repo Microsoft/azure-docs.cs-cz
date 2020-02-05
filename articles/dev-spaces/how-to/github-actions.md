@@ -1,17 +1,17 @@
 ---
 title: Akce GitHubu & službě Azure Kubernetes
 services: azure-dev-spaces
-ms.date: 11/04/2019
+ms.date: 02/04/2020
 ms.topic: conceptual
 description: Revize a testování změn z žádosti o přijetí změn přímo ve službě Azure Kubernetes pomocí akcí GitHubu a Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, akce GitHubu, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 7d96726e829154847744d9aec07a9cb0938f75de
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 35050d0c9d1e6062866747dc8544d03574a8d8fe
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771117"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026094"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>Akce GitHubu & službě Azure Kubernetes (Preview)
 
@@ -58,7 +58,6 @@ az ad sp create-for-rbac --sdk-auth --skip-assignment
 
 Výstup JSON uložte, protože se používá v pozdějším kroku.
 
-
 K zobrazení *ID* clusteru AKS použijte [AZ AKS show][az-aks-show] :
 
 ```cmd
@@ -93,7 +92,6 @@ Přejděte do rozvětvené úložiště a klikněte na *Nastavení*. Na levém b
 1. *CLUSTER_NAME*: název clusteru AKS, který je v tomto příkladu *MyAKS*.
 1. *CONTAINER_REGISTRY*: *loginServer* pro ACR.
 1. *Hostitel*: hostitel pro vývojové místo, který má formu *< MASTER_SPACE >. < APP_NAME >. < HOST_SUFFIX >* , který v tomto příkladu je *dev.bikesharingweb.fedcab0987.EUS.azds.IO*.
-1. *HOST_SUFFIX*: přípona hostitele pro místo pro vývoj, která je v tomto příkladu *fedcab0987.EUS.azds.IO*.
 1. *IMAGE_PULL_SECRET*: název tajného klíče, který chcete použít, například *ukázkový tajný klíč*.
 1. *MASTER_SPACE*: název vašeho nadřazeného vývojového prostoru, který je v tomto příkladu *vývojem*.
 1. *REGISTRY_USERNAME*: *CLIENTID* z výstupu JSON z vytváření objektu služby.
@@ -101,6 +99,8 @@ Přejděte do rozvětvené úložiště a klikněte na *Nastavení*. Na levém b
 
 > [!NOTE]
 > Všechny tyto tajné kódy používá akce GitHub a jsou nakonfigurované v [. GitHub/Workflows/Bikes. yml][github-action-yaml].
+
+Případně, pokud chcete aktualizovat hlavní prostor po sloučení žádosti o přijetí změn, přidejte *GATEWAY_HOST* tajný klíč, který má formu *< MASTER_SPACE >. brána. <* HOST_SUFFIX >, který v tomto příkladu je *dev.Gateway.fedcab0987.EUS.azds.IO*. Po sloučení změn do hlavní větve ve vašem rozvětvení se spustí další akce, která znovu sestaví a spustí celou aplikaci v hlavním vývojovém prostoru. V tomto příkladu je hlavním místem *vývoj*. Tato akce je nakonfigurovaná ve [. GitHub/Workflows/bikesharing. yml][github-action-bikesharing-yaml].
 
 ## <a name="create-a-new-branch-for-code-changes"></a>Vytvořit novou větev pro změny kódu
 

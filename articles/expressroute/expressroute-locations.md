@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2f76d94cc50d1451835bd14577efc8f68acb0390
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3ea5b63642328db6996a322e64360c3af5d757b2
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901590"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022473"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -45,7 +45,7 @@ Následující tabulka obsahuje mapování oblastí Azure na umístění Express
 | **Australská vláda** |Austrálie – střed, Austrálie – střed 2 |Canberra, Canberra2 |
 | **Evropa** | Francie – střed, Francie – jih, Německo – sever, Německo – středozápad, Severní Evropa, Norsko – východ, Norsko – západ, Švýcarsko – sever, Švýcarsko – západ, Velká Británie – západ, Velká Británie – jih, Západní Evropa |Amsterdam, Amsterdam2, Kodaň, Dublin, Frankfurt, Ženeva, Londýn, London2, Marseille, Milán, Mnichov, Newport (Wales), Oslo, Paříž, Stavanger, Stockholm, Curych |
 | **Severní Amerika** |Východní USA, Západní USA, Východní USA 2, Západní USA 2, Střední USA, Středojižní USA, Středoseverní USA, Středozápadní USA, Střední Kanada, Východní Kanada |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Miami, New York, San Antonio, Seattle, Silicon Valley, Silicon Valley2, Washington DC, Washington DC2, Montreal, Quebec City, Toronto |
-| **Asie** | Východní Asie, Jihovýchodní Asie |Hongkong – zvláštní správní oblast, Jakarta, Kuala Lumpur, Singapur, Singapur2, Taipei |
+| **Asie** | Východní Asie, Jihovýchodní Asie | Bangkok, Hongkong, Hongkong, Kong2, Jakarta, Kuala Lumpur, Singapur, Singapur2, Taipei |
 | **Indie** | Indie – západ, Indie – střed, Indie – jih |Čennaj, Čennaj2, Bombaj, Bombaj2 |
 | **Japonsko** | Japonsko – západ, Japonsko – východ |Ósaka, Tokio |
 | **Oceánie a** | Austrálie – jihovýchod, Austrálie – východ |Auckland, Melbourne, Perth, Sydney, Sydney2 |
@@ -78,6 +78,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | --- | --- | --- | --- |
 | **[AARNet](https://www.aarnet.edu.au/network-and-services/connectivity-services/azure-expressroute)** |Podporováno |Podporováno |Melbourne, Sydney |
 | **[Airtel](https://www.airtel.in/business/#/)** | Podporováno | Podporováno | Čennaj2, Bombaj2 |
+| **[SYSTÉMEM](http://business.ais.co.th/solution/microsoft-azure.html?category=cloud)** | Podporováno | Podporováno | Bangkok |
 | **[Aryaka Networks](https://www.aryaka.com/)** |Podporováno |Podporováno |Amsterdam, Chicago, Praha, Hongkong – zvláštní správní oblast, Svatý Paulo, Seattle, Silicon sedla, Singapur, Tokio, Washington DC |
 | **[Datová centra Ascenty](https://www.ascenty.com/en/cloud/microsoft-express-route)** |Podporováno |Podporováno |Sao Paulo |
 | **[AT&amp;T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Podporováno |Podporováno |Amsterdam, Chicago, Dallas, Londýn, Silicon Valley, Singapur, Sydney, Tokio, Toronto, Washington DC |
@@ -226,7 +227,7 @@ Pokud jste vzdáleně a nemáte připojení k vláknu nebo chcete prozkoumat dal
 
 ## <a name="connectivity-through-additional-service-providers"></a>Připojení prostřednictvím dalších poskytovatelů služeb
 
-| **Poskytovatel připojení** | **Exchange** | **Umístění** |
+| **Poskytovatel připojení** | **Výměna** | **Umístění** |
 | --- | --- | --- |
 | **[1CLOUDSTAR](https://www.1cloudstar.com/service/cloudconnect-azure-expressroute/)** |Equinix |Singapur |
 | **[Airgate Technologies, Inc.](https://www.airgate.ca/expressroute)** | Equinix, Cologix | Toronto, Montreal |
@@ -288,7 +289,7 @@ Pokud jste vzdáleně a nemáte připojení k vláknu nebo chcete prozkoumat dal
 
 ## <a name="connectivity-through-datacenter-providers"></a>Připojení prostřednictvím poskytovatelů Datacenter
 
-| **Poskytovatel** | **Exchange** |
+| **Poskytovatel** | **Výměna** |
 | --- | --- |
 | **[CyrusOne](https://cyrusone.com/enterprise-data-center-services/connectivity-and-interconnection/cloud-connectivity-reaching-amazon-microsoft-google-and-more/microsoft-azure-expressroute/?doing_wp_cron=1498512235.6733090877532958984375)** | Megaport, PacketFabric |
 | **[Cyxtera](https://www.cyxtera.com/data-center-services/interconnection)** | Megaport, PacketFabric |

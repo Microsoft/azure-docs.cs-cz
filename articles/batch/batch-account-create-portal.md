@@ -3,8 +3,8 @@ title: Vytvoření účtu v Azure Portal-Azure Batch | Microsoft Docs
 description: Naučte se vytvořit účet Azure Batch na portálu Azure, abyste mohli spouštět velké paralelní úlohy v cloudu.
 services: batch
 documentationcenter: ''
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: 3fbae545-245f-4c66-aee2-e25d7d5d36db
 ms.service: batch
@@ -12,14 +12,14 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4eb6b0c64fc40dec48dc9103c67e8e4a0730d7e2
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: a0c6fab0c9e26630bd54830044da56dba20564b3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029802"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025892"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Vytvoření účtu Batch pomocí webu Azure Portal
 
@@ -31,7 +31,7 @@ Informace o scénářích a účtech Batch najdete v [přehledu funkcí](batch-a
 
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
-1. Přihlaste se na web [Azure Portal][azure_portal].
+1. Přihlaste se k [Portálu Azure][azure_portal].
 
 1. Vyberte **Vytvořit prostředek** > **Compute** > **Služba Batch**.
 
@@ -83,7 +83,7 @@ Pokud zvolíte možnost vytvořit účet Batch v režimu předplatného uživate
 
 Při vytváření prvního účtu Batch v režimu předplatného uživatele musíte zaregistrovat předplatné ve službě Batch. (Pokud jste tento postup již provedli, přejděte k další části.)
 
-1. Přihlaste se na web [Azure Portal][azure_portal].
+1. Přihlaste se k [Portálu Azure][azure_portal].
 
 1. Vyberte **Všechny služby** > **Předplatná** a vyberte předplatné, které chcete pro účet Batch použít.
 

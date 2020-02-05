@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 5205b12a5f9f6acad8755b69d6da2216ffd4d83e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 408501232891a7971d03c89acc647d9ed19609b3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760823"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026145"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Funkce jsou informace o akcích a kontextu.
 
@@ -133,6 +133,8 @@ Je možné vylepšit sady funkcí jejich úpravou, aby byly větší a více neb
 
 Například časové razítko dolů na druhou je velmi zhuštěná funkce. Je možné, že je možné provést více hustě (v platnosti) tím, že rozklasifikujete časy do "ráno", "poledne", "odpoledne" atd.
 
+Informace o poloze také obvykle těží z vytváření širších klasifikací. Například souřadnice zeměpisné délky, jako je například lat: 47,67402 ° N, Long: 122,12154 ° W, je příliš přesné a vynutí, aby se model dozvěděl o zeměpisné šířce a délce jako odlišné rozměry. Při pokusu o přizpůsobení na základě informací o poloze pomáhá seskupovat informace o poloze ve větších sektorech. Snadným způsobem, jak to provést, je zvolit vhodnou přesnost zaokrouhlení pro číselné hodnoty v tabulce LAT a kombinovat zeměpisnou šířku a délku do "oblastí" tím, že je provedete do jednoho řetězce. Dobrým způsobem, jak vyjádřit 47,67402 ° N, Long: 122,12154 ° W v oblastech, přibližně pár kilometrů na šířku by bylo "umístění": "34.3, 12,1".
+
 
 #### <a name="expand-feature-sets-with-extrapolated-information"></a>Rozbalení sad funkcí s použitím extrapolace informací
 
@@ -144,7 +146,7 @@ Umělá logika a Cognitive Services připravená ke spuštění můžou být vel
 
 Díky předzpracování vašich položek pomocí umělých analytických služeb můžete automaticky extrahovat informace, které jsou pravděpodobně relevantní pro přizpůsobení.
 
-Například:
+Příklad:
 
 * Můžete spustit filmový soubor prostřednictvím [video indexer](https://azure.microsoft.com/services/media-services/video-indexer/) k extrakci elementů scény, text, mínění a mnoha dalších atributů. Tyto atributy je pak možné odrážet tak, aby odrážely vlastnosti, které původní metadata položky neobsahovaly. 
 * Image je možné spouštět pomocí detekce objektů, plošek až po mínění atd.

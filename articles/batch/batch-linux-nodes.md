@@ -3,8 +3,8 @@ title: Provozovat Linux na výpočetních uzlech virtuálních počítačů – 
 description: Naučte se zpracovávat paralelní výpočetní úlohy na fondech virtuálních počítačů se systémem Linux v Azure Batch.
 services: batch
 documentationcenter: python
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
 ms.service: batch
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: na
 ms.date: 06/01/2018
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 080310d5884ca82a3ff02ff0474777ea3a71997e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 3691790b2e47ef43c6742fa912aff8d7777900f8
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547604"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023697"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Zřizování výpočetních uzlů pro Linux ve fondech Batch
 
@@ -48,7 +48,7 @@ Když nakonfigurujete odkaz na image virtuálního počítače, zadáte vlastnos
 | Vydavatel |Canonical |
 | Nabídka |UbuntuServer |
 | Skladová položka |14.04.4-LTS |
-| Verze |latest |
+| Version |latest |
 
 > [!TIP]
 > Další informace o těchto vlastnostech a způsobu vypsání imagí na Marketplace najdete v tématu [navigace a výběr imagí virtuálních počítačů se systémem Linux v Azure pomocí rozhraní příkazového řádku nebo PowerShellu](../virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Všimněte si, že ne všechny image Marketplace jsou aktuálně kompatibilní se službou Batch. Další informace najdete v tématu [SKU agenta uzlu](#node-agent-sku).
@@ -217,8 +217,8 @@ Následující tabulka obsahuje seznam imagí virtuálních počítačů Marketp
 
 | **Publisher** | **Nabídka** | **SKU image** | **Verze** | **ID SKU agenta uzlu** |
 | ------------- | --------- | ------------- | ----------- | --------------------- |
-| batch | rendering-centos73 | vykreslení | latest | batch.node.centos 7 |
-| batch | rendering-windows2016 | vykreslení | latest | Batch. Node. Windows amd64 |
+| batch | rendering-centos73 | vykreslování | latest | batch.node.centos 7 |
+| batch | rendering-windows2016 | vykreslování | latest | Batch. Node. Windows amd64 |
 | Canonical | UbuntuServer | 16.04-LTS | latest | batch.node.ubuntu 16.04 |
 | Canonical | UbuntuServer | 14.04.5-LTS | latest | batch.node.ubuntu 14.04 |
 | credativ | Debian | 9 | latest | Batch. Node. debian 9 |

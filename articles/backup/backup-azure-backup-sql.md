@@ -3,18 +3,18 @@ title: Zálohování SQL Server do Azure jako úlohy DPM
 description: Úvod k zálohování databází SQL Server pomocí služby Azure Backup
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: b5709eb845d07e3638e0c100c857e5538e293317
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: ea55081d6f3b58c6c64c16e64c7a9d0f673ec196
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173268"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025397"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Zálohování SQL Server do Azure jako úlohy DPM
 
 Tento článek vás provede kroky konfigurace pro zálohování SQL Server databází pomocí Azure Backup.
 
-K zálohování databází SQL Server do Azure potřebujete účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v tématu [bezplatnou zkušební verzi Azure](https://azure.microsoft.com/pricing/free-trial/).
+K zálohování databází SQL Server do Azure potřebujete účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v tématu [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 Správa zálohování SQL Server databáze do Azure a obnovení z Azure zahrnuje tři kroky:
 
@@ -103,7 +103,7 @@ Než začnete, ujistěte se, že byly splněny všechny [požadavky](backup-azur
 14. Klikněte na **Další** a vyberte odpovídající možnost pro přenos prvotní záložní kopie do Azure. Můžete vybrat možnost **automaticky prostřednictvím sítě** nebo **offline zálohování**.
 
     * **Automaticky přes síť** přenáší zálohovaná data do Azure podle plánu vybraného pro zálohování.
-    * Způsob práce s **offline zálohováním** je vysvětleno v tématu [pracovní postup offline zálohování v Azure Backup](backup-azure-backup-import-export.md).
+    * Způsob, jakým funguje **offline zálohování** , je vysvětleno v tématu [Přehled zálohování offline](offline-backup-overview.md).
 
     Vyberte příslušný přenosový mechanismus pro odeslání prvotní záložní kopie do Azure a klikněte na **Další**.
 15. Po kontrole podrobností zásad na obrazovce **souhrnu** dokončete pracovní postup kliknutím na tlačítko **vytvořit skupinu** . Můžete kliknout na tlačítko **Zavřít** a monitorovat průběh úlohy v pracovním prostoru monitorování.

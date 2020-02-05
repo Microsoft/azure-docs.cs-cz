@@ -1,6 +1,6 @@
 ---
-title: Řešení Azure VMware podle CloudSimple – veřejná IP adresa
-description: Další informace o veřejných IP adresách a jejich přínosech k řešení Azure VMware od CloudSimple
+title: Azure VMware Solutions (AVS) – Veřejná IP adresa
+description: Seznamte se s veřejnými IP adresami a jejich výhodami v řešeních Azure VMware (AVS).
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 147ab6b5ace4493e1a0b303c320cb2e81d829b29
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 2cb9d0e33da4447760ae0be216c1dd9868c498bd
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877683"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024972"
 ---
-# <a name="cloudsimple-public-ip-address-overview"></a>CloudSimple – přehled veřejné IP adresy
+# <a name="avs-public-ip-address-overview"></a>Přehled veřejné IP adresy pro funkci AVS
 
-Veřejná IP adresa umožňuje, aby internetové prostředky komunikovaly s prostředky privátního cloudu na privátní IP adrese. Soukromá IP adresa je virtuální počítač nebo nástroj pro vyrovnávání zatížení softwaru ve vašem privátním cloudu vCenter. Veřejná IP adresa umožňuje vystavit služby, které běží na vašem privátním cloudu, na Internet.
+Veřejná IP adresa umožňuje, aby internetové prostředky komunikovaly s příchozími prostředky privátního cloudu ze sítě na privátní IP adrese. Soukromá IP adresa je virtuální počítač nebo nástroj pro vyrovnávání zatížení softwaru v rámci vašeho privátního cloudu služby AVS. Veřejná IP adresa umožňuje vystavit služby běžící na vašem privátním cloudu služby AVS na internetu.
 
 Veřejná IP adresa je vyhrazená pro soukromou IP adresu, dokud ji nezrušíte. Veřejná IP adresa se dá přiřadit jenom k jedné privátní IP adrese.
 
@@ -31,6 +31,6 @@ Použití veřejné IP adresy ke komunikaci příchozích adres poskytuje:
 * Nepřetržité monitorování provozu a zmírnění běžných útoků na úrovni sítě v reálném čase. Tyto obrany mají stejnou ochranu, kterou používá Microsoft online služby.
 * Celá škála globální sítě Azure. Síť lze použít k distribuci a zmírnění provozu útoku napříč oblastmi.  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Informace o [přidělení veřejné IP adresy](public-ips.md)

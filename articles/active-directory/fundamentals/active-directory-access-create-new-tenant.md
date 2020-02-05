@@ -10,14 +10,14 @@ ms.workload: identity
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: ajburnle
-ms.custom: it-pro, seodec18
+ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ef577f5d086b22779392cd6d8b5d43a340f7329
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: de205beaf9800c2061cc41343b4153bd0e2b5dc7
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423103"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024598"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Rychlý start: Vytvoření nového tenanta Azure Active Directory
 Pomocí portálu Azure Active Directory (Azure AD) můžete provádět všechny úlohy správy, včetně vytvoření nového tenanta pro vaši organizaci. 
@@ -31,7 +31,7 @@ Po přihlášení k webu Azure Portal můžete vytvořit nového tenanta pro svo
 
 ### <a name="to-create-a-new-tenant"></a>Vytvoření nového tenanta
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) vaší organizace pomocí účtu globálního správce.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/)vaší organizace.
 
 1. V nabídce Azure Portal vyberte **vytvořit prostředek**.  
 
@@ -58,6 +58,7 @@ Váš nový tenant se vytvoří s doménu contoso.onmicrosoft.com.
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Pokud tuto aplikaci nebudete používat, můžete tenanta odstranit provedením následujících kroků:
 
+- Ujistěte se, že jste přihlášeni k adresáři, který chcete odstranit pomocí filtru **Directory + Subscription** na webu Azure Portal, a v případě potřeby přepnete do cílového adresáře.
 - Vyberte **Azure Active Directory** a pak na stránce **Contoso - přehled** vyberte **Odstranit adresář**.
 
     Tím odstraníte tenanta a k němu přidružené informace.

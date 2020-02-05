@@ -1,332 +1,270 @@
 ---
-title: Nastavení šablony zařízení v aplikaci Azure IoT Central | Microsoft Docs
-description: Naučte se, jak nastavit šablonu zařízení pomocí měření, nastavení, vlastností, pravidel a řídicího panelu.
-author: viv-liu
-ms.author: viviali
-ms.date: 06/19/2019
-ms.topic: conceptual
+title: Definování nového typu zařízení IoT v Azure IoT Central | Microsoft Docs
+description: V tomto kurzu se dozvíte jako tvůrce, jak v aplikaci Azure IoT Central vytvořit novou šablonu zařízení Azure IoT. Definujete telemetrii, stav, vlastnosti a příkazy pro svůj typ.
+author: dominicbetts
+ms.author: dobett
+ms.date: 12/06/2019
+ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c4df07174a5d8826acd7682fa3035fcfd201c5c9
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2313c347e3836b6fa9d6055f99c258624e44c51f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953093"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023782"
 ---
-# <a name="set-up-a-device-template"></a>Nastavení šablony zařízení
-
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
+# <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Definování nového typu zařízení IoT v aplikaci Azure IoT Central
 
 Šablona zařízení je podrobný plán, který definuje charakteristiky a chování typu zařízení, které se připojuje k aplikaci Azure IoT Central.
 
 Tvůrce může například vytvořit šablonu zařízení pro připojený ventilátor, která má následující vlastnosti:
 
-- Měření telemetrie teploty
-- Měření polohy
-- Měření událostí chyb motoru ventilátoru
-- Měření provozního stavu ventilátoru
-- Nastavení rychlosti ventilátoru
-- Pravidla odesílající výstrahy
-- Řídicí panel, který vám poskytne celkový přehled o zařízení
+- Odesílá telemetrii teploty.
+- Odeslat vlastnost Location
+- Odesílá chybové události motocyklu pro ventilátor.
+- Odešle provozní stav ventilátoru.
+- Poskytuje vlastnost rychlosti ventilátoru umožňující zápis.
+- Poskytuje příkaz k restartování zařízení.
+- Poskytuje celkový přehled o zařízení prostřednictvím řídicího panelu.
 
-Pomocí této šablony zařízení může operátor vytvořit a propojit reálné ventilátory s názvy, jako jsou **ventilátory 1** a **ventilátor-2**. Všechny tyto ventilátory mají měření, nastavení, vlastnosti, pravidla a řídicí panel, který mohou uživatelé vaší aplikace monitorovat a spravovat.
-
-> [!NOTE]
-> Šablony zařízení můžou vytvářet, upravovat a odstraňovat jenom tvůrci a správci. Každý uživatel může na stránce **Device Explorer** vytvořit zařízení z existujících šablon zařízení.
-
-## <a name="create-a-device-template"></a>Vytvoření šablony zařízení
-
-1. Přejděte na stránku **šablony zařízení** .
-
-2. Pokud chcete vytvořit šablonu, začněte tím, že vyberete **+ Nová**.
-
-3. Pokud chcete rychle začít, vyberte si z existujících předem připravených šablon. V opačném případě vyberte možnost **vlastní**, zadejte název a kliknutím na tlačítko **vytvořit** Sestavte vlastní šablonu od začátku.
-
-   ![Knihovna šablon zařízení](./media/howto-set-up-template/newtemplate.png)
-
-4. Když vytvoříte vlastní šablonu, zobrazí se stránka s **podrobnostmi o zařízení** pro novou šablonu zařízení. Při vytvoření šablony zařízení IoT Central automaticky vytvoří simulované zařízení. Simulované zařízení umožňuje testovat chování aplikace před připojením reálného zařízení.
-
-V následujících částech jsou popsány jednotlivé karty na stránce **šablony zařízení** .
-
-## <a name="measurements"></a>Měření
-
-Měření jsou data, která pocházejí z vašeho zařízení. Do šablony zařízení můžete přidat několik měření, která budou odpovídat možnostem vašeho zařízení.
-
-- Měření **telemetrie** jsou Numerické datové body, které zařízení shromažďuje v průběhu času. Jsou reprezentovány jako průběžný datový proud. Příkladem je teplota.
-- Měření **událostí** jsou data v časovém okamžiku, která v zařízení představují něco z významnosti. Úroveň závažnosti představuje důležitost události. Příkladem může být chyba ventilátoru.
-- Měření **stavu** představuje stav zařízení nebo jeho součástí v časovém intervalu. Například režim ventilátoru lze definovat jako **operační** a **zastavené** jako dva možné stavy.
-- Měření **polohy** jsou souřadnice zeměpisné délky a šířky zařízení v časovém intervalu. Například ventilátor lze přesunout z jednoho umístění do druhého.
-
-### <a name="create-a-telemetry-measurement"></a>Vytvoření měření telemetrie
-
-Pokud chcete přidat nové měření telemetrie, vyberte **+ nové měření**, jako typ měření zvolte **telemetrie** a zadejte podrobnosti formuláře.
+Z této šablony zařízení může operátor vytvářet a připojovat reálné ventilátory. Všechny tyto ventilátory mají měření, vlastnosti a příkazy, které operátory používají pro monitorování a správu. Operátory používají řídicí panely a formuláře zařízení k interakci se zařízeními ventilátoru.
 
 > [!NOTE]
-> Názvy polí v šabloně zařízení musí odpovídat názvům vlastností v odpovídajícím kódu zařízení, aby se měření telemetrie zobrazovalo v aplikaci při připojení reálného zařízení. Stejný postup proveďte při konfiguraci nastavení, vlastností zařízení a příkazů během definování šablony zařízení v následujících oddílech.
+> Šablony zařízení můžou vytvářet, upravovat a odstraňovat jenom tvůrci a správci. Každý uživatel může vytvořit zařízení na stránce **zařízení** z existujících šablon zařízení.
 
-Můžete například přidat nové měření telemetrie na teplotu:
+[IoT technologie Plug and Play (Preview)](../../iot-pnp/overview-iot-plug-and-play.md) umožňuje IoT Central integrovat zařízení, aniž byste museli psát žádný integrovaný kód zařízení. V jádru IoT technologie Plug and Play (Preview) je schéma modelu schopností zařízení, které popisuje možnosti zařízení. V aplikaci IoT Central používají šablony zařízení tyto modely schopností zařízení technologie Plug and Play IoT (Preview).
 
-| Zobrazovaný název        | Název pole    |  Jednotky    | Minimum   |Max.|
-| --------------------| ------------- |-----------|-------|---|
-| Teplota         | názvem          |  degC     |  0    |100|
+Jako tvůrce máte k dispozici několik možností pro vytváření šablon zařízení:
 
-![Formulář pro vytvoření telemetrie s podrobnostmi pro měření teploty](./media/howto-set-up-template/measurementsform.png)
+- Navrhněte šablonu zařízení v IoT Central a potom v kódu zařízení implementujte svůj model schopností zařízení.
+- Importujte model schopností zařízení z [katalogu zařízení Azure Certified for IoT](https://aka.ms/iotdevcat). Pak přidejte libovolné vlastnosti cloudu, přizpůsobení a řídicí panely, které vaše aplikace IoT Central potřebuje.
+- Vytvořte model schopností zařízení pomocí Visual Studio Code. Implementujte kód zařízení z modelu. Model schopností zařízení naimportujte ručně do aplikace IoT Central a pak přidejte všechny vlastnosti cloudu, přizpůsobení a řídicí panely, které aplikace IoT Central potřebuje.
+- Vytvořte model schopností zařízení pomocí Visual Studio Code. Naimplementujte kód zařízení z modelu a připojte skutečné zařízení k vaší IoT Central aplikaci pomocí připojení zařízení, které se používá jako první. IoT Central najde a naimportuje model schopností zařízení z veřejného úložiště za vás. Pak můžete přidat libovolné vlastnosti cloudu, vlastní nastavení a řídicí panely, které vaše aplikace IoT Central potřebuje k šabloně zařízení.
 
-Po výběru **Uložit**se v seznamu měření zobrazí měření **teploty** . V krátké době vidíte vizualizaci dat o teplotě z simulovaného zařízení.
+## <a name="create-a-device-template-from-the-device-catalog"></a>Vytvoření šablony zařízení z katalogu zařízení
 
-Při zobrazování telemetrie si můžete vybrat z následujících možností agregace: průměr, minimum, maximum, součet a počet. **Průměr** je vybrán jako výchozí agregace v grafu.
+Jako tvůrce můžete rychle začít vytvářet vaše řešení pomocí certifikovaného zařízení IoT technologie Plug and Play (Preview). Podívejte se na seznam v [katalogu zařízení Azure IoT](https://catalog.azureiotsolutions.com/alldevices). IoT Central se integruje s katalogem zařízení, abyste mohli naimportovat model schopností zařízení z některého z těchto certifikovaných zařízení IoT technologie Plug and Play (Preview). Chcete-li vytvořit šablonu zařízení z jednoho z těchto zařízení v IoT Central:
 
-> [!NOTE]
-> Datový typ měření telemetrie je číslo s plovoucí desetinnou čárkou.
+1. V aplikaci IoT Central otevřete stránku **šablony zařízení** .
+1. Vyberte **+ Nový**a potom z katalogu vyberte kterékoli z certifikovaných zařízení technologie Plug and Play IoT (Preview). IoT Central vytvoří šablonu zařízení založenou na tomto modelu schopností zařízení.
+1. Přidejte do šablony zařízení všechny vlastnosti cloudu, vlastní nastavení nebo zobrazení.
+1. Vyberte **publikovat** a zpřístupněte tak šablonu pro operátory k zobrazení a připojení zařízení.
 
-### <a name="create-an-event-measurement"></a>Vytvoření měření události
+## <a name="create-a-device-template-from-scratch"></a>Vytvoření zcela nové šablony zařízení
 
-Chcete-li přidat novou měření události, vyberte **+ Nová měření** a jako typ měření vyberte **událost** . Do formuláře **vytvořit událost** zadejte podrobnosti.
+Šablona zařízení obsahuje:
 
-Zadejte **Zobrazovaný název**, **název pole**a podrobnosti o **závažnosti** události. Můžete si vybrat ze tří dostupných úrovní závažnosti: **Chyba**, **Upozornění**a **informace**.
+- _Model schopností zařízení_ , který určuje telemetrii, vlastnosti a příkazy, které zařízení implementuje. Tyto možnosti jsou uspořádány do jednoho nebo více rozhraní.
+- _Vlastnosti cloudu_ , které definují informace, které vaše aplikace IoT Central ukládá na vaše zařízení. Například vlastnost cloudu může zaznamenat datum, kdy bylo zařízení naposledy obsluhované. Tyto informace se zařízení nikdy nesdílí.
+- _Přizpůsobení_ umožní tvůrci přepsat některé definice v modelu schopností zařízení. Tvůrce může například přepsat název vlastnosti zařízení. Názvy vlastností se zobrazí v IoT Central řídicích panelech a formulářích.
+- _Řídicí panely a formuláře_ umožňují tvůrci vytvořit uživatelské rozhraní, které umožňuje operátorům monitorovat a spravovat zařízení připojená k vaší aplikaci.
 
-Můžete například přidat novou událost **chyby motoru ventilátoru** .
+Vytvoření šablony zařízení v IoT Central:
 
-| Zobrazovaný název        | Název pole    |  Výchozí závažnost |
-| --------------------| ------------- |-----------|
-| Chyba motoru ventilátoru     | fanmotorerror |  Chyba    |
+1. V aplikaci IoT Central otevřete stránku **šablony zařízení** .
+1. Vyberte **+ nový** > **vlastní**.
+1. Zadejte název šablony, například **snímač pro životní prostředí**.
+1. Stiskněte **Enter**. IoT Central vytvoří prázdnou šablonu zařízení.
 
-![Formulář vytvořit událost s podrobnostmi o události ventilátoru](./media/howto-set-up-template/eventmeasurementsform.png)
+## <a name="manage-a-device-template"></a>Správa šablony zařízení
 
-Po výběru **Uložit**se v seznamu měření zobrazí měření **chyb motoru ventilátoru** . V krátké době se zobrazí vizualizace dat událostí z simulovaného zařízení.
+Šablonu můžete přejmenovat nebo odstranit z domovské stránky šablony.
 
-Chcete-li zobrazit další podrobnosti o události, vyberte ikonu události v grafu:
+Až do šablony přidáte model schopností zařízení, můžete ho publikovat. Dokud šablonu nepublikujete, nemůžete připojit zařízení založené na této šabloně pro vaše operátory a zobrazit je na stránce **zařízení** .
 
-![Podrobnosti o události "Chyba motoru ventilátoru"](./media/howto-set-up-template/eventmeasurementsdetail.png)
+## <a name="create-a-capability-model"></a>Vytvoření modelu schopností
 
-> [!NOTE]
-> Datový typ měření události je řetězec.
+Pokud chcete vytvořit model schopností zařízení, můžete:
 
-### <a name="create-a-state-measurement"></a>Vytvoření měření stavu
+- Pomocí IoT Central vytvořit vlastní model od začátku.
+- Importuje model ze souboru JSON. Tvůrce zařízení mohl použít Visual Studio Code k vytvoření modelu schopností zařízení pro vaši aplikaci.
+- Vyberte jedno ze zařízení z katalogu zařízení. Tato možnost importuje model schopností zařízení, který výrobce pro toto zařízení publikoval. Automaticky se publikuje model schopností zařízení importovaný jako takový.
 
-Chcete-li přidat nové měření stavu, vyberte tlačítko **+ nové měření** a jako typ míry vyberte možnost **stav** . Do formuláře **vytvořit stav** zadejte podrobnosti.
+## <a name="manage-a-capability-model"></a>Správa modelu schopností
 
-Zadejte podrobnosti pro **zobrazované jméno**, **název pole**a **hodnoty** stavu. Každá hodnota může mít také zobrazovaný název, který se použije, když se hodnota zobrazí v grafech a tabulkách.
+Po vytvoření modelu schopností zařízení můžete:
 
-Můžete například přidat nový stav **režimu ventilátoru** , který má dvě možné hodnoty, které může zařízení odeslat, **provozovat** a **zastavit**.
+- Přidejte do modelu rozhraní. Model musí mít alespoň jedno rozhraní.
+- Upravte metadata modelu, jako je jeho ID, obor názvů a název.
+- Odstraňte model.
 
-| Zobrazovaný název | Název pole    |  Hodnota 1   | Zobrazovaný název | Hodnota 2    |Zobrazovaný název  |
-| -------------| ------------- |----------- | -------------| -----------| -------------|
-| Režim ventilátoru     | fanmode       |  1\. místo         | Funguje    |     0      | Zastaveno      |
+## <a name="create-an-interface"></a>Vytvoření rozhraní
 
-![Formulář "upravit stav" s podrobnostmi pro režim ventilátoru](./media/howto-set-up-template/statemeasurementsform.png)
+Schopnost zařízení musí mít aspoň jedno rozhraní. Rozhraní je opakovaně použitelná kolekce funkcí.
 
-Po výběru **Uložit**se v seznamu měření zobrazí měření stavu **režimu ventilátoru** . V krátké době vidíte vizualizaci stavových dat ze simulovaného zařízení.
+Vytvoření rozhraní:
 
-Pokud zařízení odesílá příliš mnoho datových bodů v krátké době, zobrazí se měření stavu s jiným vizuálů. Výběrem grafu zobrazíte všechny datové body v tomto časovém období v chronologickém pořadí. Můžete také zúžit časový rozsah, aby se zobrazila měření zobrazená v grafu.
+1. Přejdete do modelu schopností zařízení a zvolíte **+ Přidat rozhraní**.
 
-> [!NOTE]
-> Datový typ měření stavu je řetězec.
+1. Na stránce **Vybrat rozhraní** můžete:
 
-### <a name="create-a-location-measurement"></a>Vytvořit měření polohy
+    - Vytvořte vlastní rozhraní od začátku.
+    - Importuje existující rozhraní ze souboru. Je možné, že Visual Studio Code k vytváření rozhraní pro vaše zařízení použít nástroj pro sestavovatele zařízení.
+    - Vyberte jedno ze standardních rozhraní, například rozhraní **informací o zařízení** . Standardní rozhraní určují možnosti společné pro mnoho zařízení. Tato standardní rozhraní jsou publikována službou Azure IoT a nelze je upravovat ani upravovat.
 
-Chcete-li přidat nové měření umístění, vyberte **+ nové měření**, zvolte **umístění** jako typ měření a zadejte podrobnosti formuláře **vytvořit měření** .
+1. Po vytvoření rozhraní změňte zobrazovaný název rozhraní výběrem možnosti **Upravit identitu** .
 
-Můžete například přidat nové měření telemetrie umístění:
+1. Pokud se rozhodnete vytvořit vlastní rozhraní od začátku, můžete přidat možnosti svého zařízení. Možnosti zařízení jsou telemetrie, vlastnosti a příkazy.
 
-| Zobrazovaný název        | Název pole    |
-| --------------------| ------------- |
-| Umístění assetu      |  assetloc     |
+### <a name="telemetry"></a>Telemetrie
 
-![Formulář pro vytvoření umístění s podrobnostmi pro měření polohy](./media/howto-set-up-template/locationmeasurementsform.png)
+Telemetrie je proud hodnot odeslaných ze zařízení, typicky ze senzoru. Senzor může například ohlásit okolní teplotu.
 
-Po výběru **Uložit**se v seznamu měření zobrazí měření **umístění** . V krátké době se zobrazí vizualizace dat umístění z simulovaného zařízení.
+Následující tabulka ukazuje nastavení konfigurace pro schopnost telemetrie:
 
-Při zobrazování umístění můžete vybrat z následujících možností: nejnovější umístění a historie umístění. **Historie umístění** se aplikuje jenom na vybraný časový rozsah.
+| Pole | Popis |
+| ----- | ----------- |
+| Zobrazovaný název | Zobrazovaný název hodnoty telemetrie používané na řídicích panelech a formulářích |
+| Name (Název) | Název pole ve zprávě telemetrie IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. |
+| Typ schopnosti | Telemetrie. |
+| Sémantický typ | Sémantický typ telemetrie, jako je například teplota, stav nebo událost. Volba sémantického typu Určuje, která z následujících polí je k dispozici. |
+| Schéma | Datový typ telemetrie, například Double, String nebo Vector. Dostupné možnosti určují sémantický typ. Schéma není k dispozici pro sémantické typy události a stavu. |
+| Závažnost | K dispozici pouze pro sémantický typ události. Závažnosti jsou **chyby**, **informace**nebo **Upozornění**. |
+| Hodnoty stavu | K dispozici pouze pro sémantický typ State. Definujte hodnoty možných stavů, z nichž každá má zobrazované jméno, název, Výčtový typ a hodnotu. |
+| Jednotka | Jednotka pro hodnotu telemetrie, například **mph**, **%** nebo **&deg;C**. |
+| Zobrazit jednotku | Zobrazovací jednotka pro použití na řídicích panelech a formulářích. |
+| Poznámka | Jakékoli komentáře k schopnosti telemetrie. |
+| Popis | Popis schopnosti telemetrie. |
 
-Datový typ měření umístění je objekt, který obsahuje zeměpisnou délku, zeměpisnou šířku a volitelnou nadmořskou výšku. Následující fragment kódu ukazuje strukturu JavaScriptu:
+### <a name="properties"></a>Vlastnosti
 
-```javascript
-assetloc: {
-  lon: floating point number,
-  lat: floating point number,
-  alt?: floating point number
-}
-```
+Vlastnosti znázorňují hodnoty bodu v čase. Zařízení může například pomocí vlastnosti nahlásit cílovou teplotu, se kterou se snaží dosáhnout. Můžete nastavit zapisovatelné vlastnosti z IoT Central.
 
-Po připojení reálného zařízení se umístění, které jste přidali jako měření, aktualizuje s hodnotou odeslanou zařízením. Po nakonfigurování měření polohy můžete [Přidat mapu, která bude vizualizovat umístění na řídicím panelu zařízení](#add-a-location-measurement-in-the-dashboard).
+Následující tabulka ukazuje nastavení konfigurace pro schopnost vlastnosti:
 
-## <a name="settings"></a>Nastavení
+| Pole | Popis |
+| ----- | ----------- |
+| Zobrazovaný název | Zobrazovaný název hodnoty vlastnosti používané na řídicích panelech a formulářích. |
+| Name (Název) | Název vlastnosti. IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. |
+| Typ schopnosti | Majetek. |
+| Sémantický typ | Sémantický typ vlastnosti, jako je například teplota, stav nebo událost. Volba sémantického typu Určuje, která z následujících polí je k dispozici. |
+| Schéma | Datový typ vlastnosti, například Double, String nebo Vector. Dostupné možnosti určují sémantický typ. Schéma není k dispozici pro sémantické typy události a stavu. |
+| Zapisovatelné | Pokud vlastnost není zapisovatelná, může zařízení nahlásit hodnoty vlastností IoT Central. Pokud je vlastnost zapisovatelná, může zařízení nahlásit hodnoty vlastností IoT Central a IoT Central může odesílat aktualizace vlastností do zařízení.
+| Závažnost | K dispozici pouze pro sémantický typ události. Závažnosti jsou **chyby**, **informace**nebo **Upozornění**. |
+| Hodnoty stavu | K dispozici pouze pro sémantický typ State. Definujte hodnoty možných stavů, z nichž každá má zobrazované jméno, název, Výčtový typ a hodnotu. |
+| Jednotka | Jednotka pro hodnotu vlastnosti, například **mph**, **%** nebo **&deg;C**. |
+| Zobrazit jednotku | Zobrazovací jednotka pro použití na řídicích panelech a formulářích. |
+| Poznámka | Jakékoli komentáře k funkci vlastnosti. |
+| Popis | Popis schopnosti vlastnosti. |
 
-Nastavení řídí zařízení. Umožňují operátorům poskytovat vstup do zařízení. K šabloně zařízení, která se zobrazí jako dlaždice na kartě **Nastavení** , můžete přidat více nastavení, která se použijí pro operátory, které se mají použít. Můžete přidat mnoho typů nastavení: číslo, text, datum, přepínač a popisek oddílu.
+### <a name="commands"></a>Příkazy
 
-Nastavení může být v jednom ze tří stavů. Zařízení hlásí tyto stavy.
+Příkazy zařízení můžete volat z IoT Central. Příkazy volitelně předají do zařízení parametry a obdrží odpověď ze zařízení. Například můžete zavolat příkaz k restartování zařízení za 10 sekund.
 
-- **Synchronizované**: zařízení se změnilo tak, aby odráželo hodnotu nastavení.
+Následující tabulka ukazuje nastavení konfigurace pro funkci příkazu:
 
-- **Čeká na vyřízení**: zařízení se v současné době mění na hodnotu nastavení.
+| Pole | Popis |
+| ----- | ----------- |
+| Zobrazovaný název | Zobrazovaný název příkazu, který se používá na řídicích panelech a formulářích. |
+| Name (Název) | Název příkazu IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. |
+| Typ schopnosti | Systému. |
+| Příkaz | `SynchronousExecutionType`. |
+| Poznámka | Jakékoli komentáře k funkci příkazu. |
+| Popis | Popis funkce příkazu |
+| Žádost | Pokud je povoleno, definice parametru Request, včetně názvu, zobrazovaného názvu, schématu, jednotky a zobrazované jednotky. |
+| Odpověď | Pokud je povoleno, definice odpovědi příkazu, včetně názvu, zobrazovaného názvu, schématu, jednotky a zobrazované jednotky, je-li povolena. |
 
-- **Chyba**: zařízení vrátilo chybu.
+## <a name="manage-an-interface"></a>Správa rozhraní
 
-Můžete například přidat nové nastavení rychlosti ventilátoru výběrem **Nastavení** a zadáním v nastavení nové **číslo** :
+Pokud jste rozhraní nepublikovali, můžete upravit možnosti definované rozhraním. Pokud chcete provést změny, budete po publikování rozhraní muset vytvořit novou verzi šablony zařízení a verzi rozhraní. V části **přizpůsobení** můžete provádět změny, které nevyžadují správu verzí, jako jsou názvy zobrazení nebo jednotky.
 
-| Zobrazovaný název  | Název pole    |  Jednotky  | desetinných míst |Pořizovací|
-| --------------| ------------- |---------| ---------|---- |
-| Rychlost ventilátoru     | fanSpeed      | /MIN     | 2        | 0   |
+Rozhraní můžete také exportovat jako soubor JSON, pokud ho chcete znovu použít v jiném modelu schopností.
 
-![Formulář "konfigurovat číslo" s podrobnostmi pro nastavení rychlosti](./media/howto-set-up-template/settingsform.png)
+## <a name="add-cloud-properties"></a>Přidat vlastnosti cloudu
 
-Po výběru **Uložit**se nastavení **rychlosti ventilátoru** zobrazí jako dlaždice. Operátor může použít nastavení na stránce **Device Explorer** ke změně rychlosti ventilátoru zařízení.
+Pomocí vlastností cloudu můžete ukládat informace o zařízeních v IoT Central. Vlastnosti cloudu se nikdy neodesílají do zařízení. Pomocí vlastností cloudu můžete například uložit jméno zákazníka, který má nainstalované zařízení, nebo datum poslední služby daného zařízení.
 
-## <a name="properties"></a>Vlastnosti
+Následující tabulka ukazuje nastavení konfigurace pro cloudovou vlastnost:
 
-Vlastnosti jsou metadata, která jsou přidružená k zařízení, jako je pevné umístění zařízení a sériové číslo. Přidejte do šablony zařízení více vlastností, které se zobrazí jako dlaždice na kartě **vlastnosti** . Vlastnost má typ, jako je číslo, text, datum, přepínač, vlastnost zařízení, popisek nebo pevné umístění. Operátor určuje hodnoty vlastností při vytváření zařízení a může kdykoli upravovat tyto hodnoty. Vlastnosti zařízení jsou jen pro čtení a odesílají se ze zařízení do aplikace. Operátor nemůže změnit vlastnosti zařízení. Po připojení reálného zařízení se v aplikaci aktualizují dlaždice vlastností zařízení.
+| Pole | Popis |
+| ----- | ----------- |
+| Zobrazovaný název | Zobrazovaný název hodnoty vlastnosti cloudu používaný na řídicích panelech a formulářích. |
+| Name (Název) | Název vlastnosti cloudu IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. |
+| Sémantický typ | Sémantický typ vlastnosti, jako je například teplota, stav nebo událost. Volba sémantického typu Určuje, která z následujících polí je k dispozici. |
+| Schéma | Datový typ cloudové vlastnosti, jako je například Double, String nebo Vector. Dostupné možnosti určují sémantický typ. |
 
-Vlastnosti se dělí do dvou kategorií:
+## <a name="add-customizations"></a>Přidat přizpůsobení
 
-- _Vlastnosti zařízení_ , které zařízení hlásí do aplikace IoT Central. Vlastnosti zařízení jsou hodnoty jen pro čtení hlášené zařízením a v aplikaci se aktualizují při připojení reálného zařízení.
-- _Vlastnosti aplikace_ , které jsou uloženy v aplikaci a mohou být upravovány operátorem. Vlastnosti aplikace jsou uloženy pouze v aplikaci a nikdy se nezobrazuje v zařízení.
+Vlastní nastavení použijte v případě, že potřebujete upravit importované rozhraní nebo přidat funkce specifické pro IoT Central do funkce. Můžete přizpůsobit pouze pole, která neruší kompatibilitu rozhraní. Můžete například provést následující věci:
 
-Například můžete přidat poslední datum služby pro zařízení jako vlastnost nového **data** (vlastnost aplikace) na kartě **vlastnosti** :
+- Přizpůsobení zobrazovaného názvu a jednotek schopnosti.
+- Přidejte výchozí barvu, která se použije, když se hodnota zobrazí v grafu.
+- Zadejte počáteční, minimální a maximální hodnoty vlastnosti.
 
-| Zobrazovaný název  | Název pole | Počáteční hodnota   |
-| --------------| -----------|-----------------|
-| Last serviced (Poslední údržba)      | lastServiced        | 01/29/2019     |
+Nemůžete přizpůsobit název schopnosti ani typ schopnosti. Pokud existují změny, které nemůžete provést v části **přizpůsobení** , budete muset verzi šablony a rozhraní upravit tak, aby se tato možnost změnila.
 
-![Formulář konfigurace poslední služby na kartě Vlastnosti](./media/howto-set-up-template/propertiesform.png)
+### <a name="generate-default-views"></a>Generovat výchozí zobrazení
 
-Po výběru **Uložit**se jako dlaždice zobrazí poslední datum a čas doručení zařízení.
+Generování výchozích zobrazení je rychlý způsob, jak vizualizovat důležité informace o zařízení. Máte k dispozici až tři výchozí zobrazení vygenerovaná pro šablonu zařízení:
 
-Po vytvoření dlaždice můžete změnit hodnotu vlastnosti aplikace v **Device Explorer**.
+- **Příkazy** poskytují zobrazení pomocí příkazů zařízení a umožňují operátorovi, aby je odesílal do vašeho zařízení.
+- **Přehled** nabízí zobrazení telemetrie zařízení, zobrazení grafů a metrik.
+- **O produktu** poskytuje zobrazení s informacemi o zařízení a zobrazuje vlastnosti zařízení.
 
-### <a name="create-a-location-property"></a>Vytvoření vlastnosti umístění
+Jakmile vyberete možnost **Generovat výchozí zobrazení**, uvidíte, že byly automaticky přidány do části **zobrazení** v šabloně zařízení.
 
-Data o poloze v Azure můžete poskytnout geografickým kontextům IoT Central a namapovat libovolné souřadnice zeměpisné šířky a délky nebo ulici. Azure Maps tuto funkci povoluje v IoT Central.
+## <a name="add-dashboards"></a>Přidat řídicí panely
 
-Můžete přidat dva typy vlastností umístění:
+Přidejte řídicí panely do šablony zařízení a umožněte tak operátorům vizualizovat zařízení pomocí grafů a metrik. Pro šablonu zařízení můžete mít více řídicích panelů.
 
-- **Umístění jako vlastnost aplikace**, která je uložena v aplikaci. Vlastnosti aplikace jsou uloženy pouze v aplikaci a nikdy se nezobrazuje v zařízení.
-- **Umístění jako vlastnost zařízení**, kterou zařízení hlásí do aplikace. Tento typ vlastnosti se nejlépe používá pro statické umístění.
+Přidání řídicího panelu do šablony zařízení:
 
-> [!NOTE]
-> Umístění jako vlastnost nezaznamenává historii. Pokud je žádoucí historie, použijte měření umístění.
+1. Otevřete šablonu zařízení a vyberte **zobrazení**.
+1. Vyberte **vizualizaci zařízení**.
+1. Do **název řídicího panelu**zadejte název řídicího panelu.
+1. Přidejte dlaždice na řídicí panel ze seznamu statických, vlastností, vlastností cloudu, telemetrie a příkazových dlaždic. Přetáhněte dlaždice, které chcete přidat na řídicí panel.
+1. Chcete-li vykreslit více hodnot telemetrie na dlaždici s jedním grafem, vyberte hodnoty telemetrie a pak vyberte **kombinovat**.
+1. Nakonfigurujte každou dlaždici, kterou přidáte, abyste mohli přizpůsobit způsob zobrazení dat. To můžete provést tak, že vyberete ikonu ozubeného kolečka nebo na dlaždici grafu vyberete **změnit konfiguraci** .
+1. Uspořádejte a změňte velikost dlaždic na řídicím panelu.
+1. Uložte změny.
 
-#### <a name="add-location-as-an-application-property"></a>Přidat umístění jako vlastnost aplikace
+### <a name="configure-preview-device-to-view-dashboard"></a>Konfigurace zařízení Preview pro zobrazení řídicího panelu
 
-Vlastnost Location můžete vytvořit jako vlastnost aplikace pomocí Azure Maps ve vaší aplikaci IoT Central. Můžete například přidat adresu instalace zařízení:
+Řídicí panel zobrazíte a otestujete tak, že vyberete **Konfigurovat zařízení ve verzi Preview**. To vám umožní zobrazit řídicí panel tak, jak ho váš operátor uvidí po publikování. Tuto možnost použijte, pokud chcete ověřit, jestli se v zobrazeních zobrazují správná data. Můžete si vybrat z těchto možností:
 
-1. Přejděte na kartu **vlastnosti** .
+- Žádné zařízení ve verzi Preview
+- Reálné testovací zařízení, které jste nakonfigurovali pro šablonu zařízení.
+- Existující zařízení v aplikaci pomocí ID zařízení.
 
-2. V knihovně vyberte **umístění**.
+## <a name="add-forms"></a>Přidat formuláře
 
-3. Nakonfigurujte **zobrazované jméno**, **název pole**a (volitelně) **počáteční hodnotu** pro umístění.
+Přidejte formuláře do šablony zařízení a umožněte tak operátorům spravovat zařízení zobrazením a nastavením vlastností. Operátoři můžou upravovat jenom vlastnosti cloudu a zapisovatelné vlastnosti zařízení. Pro šablonu zařízení můžete mít několik forem.
 
-    | Zobrazovaný název  | Název pole | Počáteční hodnota |
-    | --------------| -----------|---------|
-    | Adresa instalace | installAddress | Microsoft, 1 Microsoft Way, Redmond, WA 98052   |
+Přidání formuláře do šablony zařízení:
 
-   ![Formulář Konfigurace umístění s podrobnostmi pro umístění](./media/howto-set-up-template/locationcloudproperty2.png)
+1. Otevřete šablonu zařízení a vyberte **zobrazení**.
+1. Vyberte možnost **Upravit zařízení a data v cloudu**.
+1. Do **názvu**formuláře zadejte název formuláře.
+1. Vyberte počet sloupců, které se mají použít k rozložení formuláře.
+1. Přidejte vlastnosti do existující části formuláře nebo vyberte vlastnosti a zvolte možnost **přidat oddíl**. K seskupení vlastností formuláře použijte oddíly. Do oddílu můžete přidat název.
+1. Nakonfigurujte jednotlivé vlastnosti formuláře, abyste mohli přizpůsobit jeho chování.
+1. Uspořádejte vlastnosti ve formuláři.
+1. Uložte změny.
 
-   Existují dva podporované formáty pro přidání umístění:
-   - **Umístění jako adresa**
-   - **Umístění jako souřadnice**
+## <a name="publish-a-device-template"></a>Publikování šablony zařízení
 
-4. Vyberte **Save** (Uložit). Operátor může aktualizovat hodnotu umístění v **Device Explorer**.
+Předtím, než budete moci připojit zařízení, které implementuje model schopností zařízení, je nutné publikovat šablonu zařízení.
 
-#### <a name="add-location-as-a-device-property"></a>Přidat umístění jako vlastnost zařízení
+Po publikování šablony zařízení můžete provádět pouze omezené změny modelu schopností zařízení. Chcete-li změnit rozhraní, je třeba [vytvořit a publikovat novou verzi](./howto-version-device-template.md).
 
-Vlastnost Location můžete vytvořit jako vlastnost zařízení, kterou zařízení hlásí. Například pokud chcete sledovat umístění zařízení:
+Šablonu zařízení publikujete tak, že přejdete na šablonu zařízení a vyberete **publikovat**.
 
-1. Přejděte na kartu **vlastnosti** .
+Po publikování šablony zařízení může operátor přejít na stránku **zařízení** a přidat buď skutečná, nebo simulovaná zařízení, která používají šablonu zařízení. Můžete i nadále upravovat a ukládat šablonu zařízení, když provádíte změny. Pokud chcete tyto změny vložit do operátoru, který se zobrazí na stránce **zařízení** , je nutné vybrat **publikovat** pokaždé.
 
-2. V knihovně vyberte **vlastnost zařízení** .
-
-3. Nakonfigurujte zobrazované jméno a název pole a jako datový typ vyberte **umístění** :
-
-    | Zobrazovaný název  | Název pole | Typ dat |
-    | --------------| -----------|-----------|
-    | Device location (Umístění zařízení) | deviceLocation | location  |
-
-   > [!NOTE]
-   > Názvy polí musí odpovídat názvům vlastností v odpovídajícím kódu zařízení.
-
-   ![Formulář "Konfigurace vlastností zařízení" s podrobnostmi pro umístění](./media/howto-set-up-template/locationdeviceproperty2.png)
-
-Po připojení reálného zařízení se umístění, které jste přidali jako vlastnost zařízení, aktualizuje s hodnotou odeslanou zařízením. Po nakonfigurování vlastnosti Location můžete [Přidat mapu, která bude vizualizovat umístění na řídicím panelu zařízení](#add-a-location-property-in-the-dashboard).
-
-## <a name="commands"></a>Příkazy
-
-Příkazy slouží ke vzdálené správě zařízení. Umožňují operátorům spouštět na zařízení příkazy. K šabloně zařízení, která se zobrazí jako dlaždice na kartě **příkazy** , můžete přidat více příkazů, které se použijí pro operátory, které se mají použít. Jako tvůrce zařízení máte flexibilní možnost definovat příkazy podle vašich požadavků.
-
-Jak se příkaz liší od nastavení?
-
-- **Nastavení**: nastavení je konfigurace, kterou chcete použít pro zařízení. Chcete, aby zařízení zachovalo tuto konfiguraci, dokud je nezměníte. Například chcete nastavit teplotu mrazicího programu a chcete toto nastavení i v případě, že se mraznička restartuje.
-
-- **Příkaz**: příkazy můžete použít k okamžitému spuštění příkazu na zařízení vzdáleně z IoT Central. Pokud zařízení není připojené, vyprší příkaz a dojde k chybě. Například chcete restartovat zařízení.
-
-Nový příkaz **echo** můžete například přidat tak, že vyberete kartu **příkazy** , vyberete **+ Nový příkaz**a zadáte podrobnosti nového příkazu:
-
-| Zobrazovaný název  | Název pole | Výchozí časový limit | Typ dat |
-| --------------| -----------|---------------- | --------- |
-| Příkaz pro zobrazení výsledků  | echo       |  30             | text      |
-
-![Formulář "konfigurace příkazu" s podrobnostmi pro echo](./media/howto-set-up-template/commandsecho1.png)
-
-Po výběru **Uložit**se příkaz **echo** zobrazí jako dlaždice a je připravený k použití z **Device Explorer** při připojení reálného zařízení. Aby příkazy úspěšně běžely, musí názvy polí příkazu odpovídat názvům vlastností v odpovídajícím kódu zařízení.
-
-[Tady je odkaz na ukázkový kód zařízení jazyka C.](https://github.com/Azure/iot-central-firmware/blob/ad40358906aeb8f2040a822ba5292df866692c16/MXCHIP/mxchip_advanced/src/AzureIOTClient.cpp#L34)
-
-## <a name="rules"></a>Pravidla
-
-Pravidla umožňují operátorům monitorovat zařízení téměř v reálném čase. Pravidla automaticky vyvolávají akce, jako je odeslání e-mailu, když se pravidlo aktivuje. V současné době je k dispozici jeden typ pravidla:
-
-- **Pravidlo telemetrie**, které se aktivuje, když vybraná telemetrie zařízení přebírá určenou prahovou hodnotu. [Přečtěte si další informace o pravidlech telemetrie](howto-create-telemetry-rules.md).
-
-## <a name="dashboard"></a>Řídicí panel
-
-Řídicí panel je místo, kde operátor přejde k zobrazení informací o zařízení. Jako tvůrce přidáte na tuto stránku dlaždice, které pomůžou operátorům pochopit, jak se zařízení chová. Můžete přidat mnoho typů dlaždic řídicích panelů, jako je například obrázek, spojnicový graf, pruhový graf, klíčový ukazatel výkonu (KPI), nastavení a vlastnosti a popisek.
-
-Můžete například přidat dlaždici **nastavení a vlastnosti** pro zobrazení výběru aktuální hodnoty nastavení a vlastností výběrem karty **řídicí panel** a dlaždice z knihovny:
-
-![Formulář konfigurace podrobností o zařízení s podrobnostmi o nastavení a vlastnostech](./media/howto-set-up-template/dashboardsettingsandpropertiesform1.png)
-
-Když teď operátor zobrazí řídicí panel v **Device Explorer**, uvidí dlaždici.
-
-### <a name="add-a-location-measurement-in-the-dashboard"></a>Přidání měření polohy na řídicím panelu
-
-Pokud jste nakonfigurovali měření umístění, můžete umístění vizualizovat pomocí mapy na řídicím panelu zařízení. Pro měření polohy máte možnost vykreslovat historii umístění.
-
-1. Přejděte na kartu **řídicí panel** .
-
-1. Na řídicím panelu zařízení vyberte **Mapa** z knihovny.
-
-1. Dejte mapě název. Následující příklad má název **zařízení aktuální umístění**. Pak zvolte měření umístění, které jste předtím nakonfigurovali na kartě **měření** . V následujícím příkladu je vybraná možnost měření **umístění assetu** :
-
-   ![Formulář konfigurace mapy s podrobnostmi pro název a vlastnosti](./media/howto-set-up-template/locationcloudproperty5map.png)
-
-1. Vyberte **Save** (Uložit). Dlaždice mapa nyní zobrazuje umístění, které jste vybrali.
-
-Můžete změnit velikost dlaždice mapy. Když operátor zobrazí řídicí panel v **Device Explorer**, zobrazí se všechny dlaždice řídicího panelu, které jste nakonfigurovali, včetně mapy umístění.
-
-### <a name="add-a-location-property-in-the-dashboard"></a>Přidání vlastnosti Location na řídicím panelu
-
-Pokud jste nakonfigurovali vlastnost Location (umístění), můžete vizualizovat umístění pomocí mapy na řídicím panelu zařízení.
-
-1. Přejděte na kartu **řídicí panel** .
-
-1. Na řídicím panelu zařízení vyberte **Mapa** z knihovny.
-
-1. Dejte mapě název. Následující příklad má název **zařízení aktuální umístění**. Pak zvolte vlastnost umístění, kterou jste předtím nakonfigurovali na kartě **vlastnosti** . V následujícím příkladu je vybráno měření **umístění zařízení** :
-
-   ![Konfigurovat formulář mapy s podrobnostmi pro název a vlastnosti](./media/howto-set-up-template/locationcloudproperty6map.png)
-
-1. Vyberte **Save** (Uložit). Dlaždice mapa nyní zobrazuje umístění, které jste vybrali.
-
-Můžete změnit velikost dlaždice mapy. Když operátor zobrazí řídicí panel v **Device Explorer**, zobrazí se všechny dlaždice řídicího panelu, které jste nakonfigurovali, včetně mapy umístění.
-
-Další informace o tom, jak používat dlaždice v Azure IoT Central, najdete v tématu [použití dlaždic řídicího panelu](howto-use-tiles.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili, jak v aplikaci Azure IoT Central nastavit šablonu zařízení, můžete:
+V tomto kurzu jste se naučili:
 
-- [Vytvořit novou verzi šablony zařízení](howto-version-device-template.md)
-- [Připojení zařízení IoT DevKit MXChip k aplikaci Azure IoT Central](howto-connect-devkit.md)
-- [Připojení Obecné klientské aplikace k aplikaci Azure IoT Central (Node. js)](howto-connect-nodejs.md)
+* Vytvořte novou šablonu zařízení IoT.
+* Vytvořte vlastnosti cloudu.
+* Vytvořte vlastní nastavení.
+* Definujte vizualizaci pro telemetrii zařízení.
+* Publikujte šablonu zařízení.
+
+V dalším kroku můžete:
+
+> [!div class="nextstepaction"]
+> [Připojení zařízení](howto-connect-devkit.md)

@@ -3,16 +3,16 @@ title: Vykreslování aplikací – Azure Batch
 description: Je možné použít jakékoli aplikace pro vykreslování Azure Batch. Azure Marketplace imagí virtuálních počítačů ale jsou k dispozici společně s předinstalovanými běžnými aplikacemi.
 services: batch
 ms.service: batch
-author: ju-shim
-ms.author: jushiman
+author: LauraBrenner
+ms.author: labrenne
 ms.date: 09/19/2019
 ms.topic: conceptual
-ms.openlocfilehash: e47d05594142de87fabd2d61faeb40d25fdc1873
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 77672534b2aad993a44e9b637fbed58df8610e97
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934596"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022983"
 ---
 # <a name="pre-installed-applications-on-rendering-vm-images"></a>Předem instalované aplikace na vykreslování imagí virtuálních počítačů
 

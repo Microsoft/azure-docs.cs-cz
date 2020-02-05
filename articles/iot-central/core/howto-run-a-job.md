@@ -8,12 +8,12 @@ ms.author: sahubbar
 ms.date: 07/08/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 114946fa37ae161aeb2efd5b7cd50444c5df4c2b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 68d4dbff364f8d3fda72fc2377722031e9cccc3d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906706"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018886"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Vytvoření a spuštění úlohy v aplikaci Azure IoT Central
 
@@ -38,7 +38,9 @@ V této části se dozvíte, jak vytvořit a spustit úlohu. Ukazuje, jak zvýš
 
     ![Konfigurovat úlohu](./media/howto-run-a-job/configurejob.png)
 
-6. Po výběru zařízení zvolte **Spustit** nebo **Uložit**. Úloha se teď zobrazí na stránce hlavní **úlohy** . V tomto zobrazení uvidíte aktuálně spuštěnou úlohu a historii všech dříve spuštěných úloh. Spuštěná úloha se vždycky zobrazuje v horní části seznamu. Uloženou úlohu můžete kdykoli znovu otevřít, aby bylo možné pokračovat v úpravách nebo spouštění.
+6. Na pravé straně vyberte zařízení, na kterých chcete úlohu spustit. Když zaškrtnete horní políčko, všechna zařízení se vyberou v celé sadě zařízení. Zaškrtnutím políčka u položky **název**se vybere všechna zařízení na aktuální stránce.
+
+7. Po výběru zařízení zvolte **Spustit** nebo **Uložit**. Úloha se teď zobrazí na stránce hlavní **úlohy** . V tomto zobrazení uvidíte aktuálně spuštěnou úlohu a historii všech dříve spuštěných úloh. Spuštěná úloha se vždycky zobrazuje v horní části seznamu. Uloženou úlohu můžete kdykoli znovu otevřít, aby bylo možné pokračovat v úpravách nebo spouštění.
 
     ![Zobrazit úlohu](./media/howto-run-a-job/viewjob.png)
 
@@ -103,6 +105,5 @@ Pokud chcete zobrazit stav úlohy a všechna postižená zařízení, vyberte ú
 
 Teď, když jste se naučili vytvářet úlohy v aplikaci Azure IoT Central, tady je několik dalších kroků:
 
-- [Použití sad zařízení](howto-use-device-sets.md)
 - [Správa zařízení](howto-manage-devices.md)
 - [Verze šablony zařízení](howto-version-device-template.md)

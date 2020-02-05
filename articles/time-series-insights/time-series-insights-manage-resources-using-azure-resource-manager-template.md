@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 02/04/2020
 ms.custom: seodec18
-ms.openlocfilehash: b60b036954691bdea12dfff559ceee86f179d44d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 1caa80469504d52d3103fb2776fb3e7210971690
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973225"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024394"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Vytváření Time Series Insightsch prostředků pomocí šablon Azure Resource Manager
 
@@ -57,7 +57,7 @@ Následující postup popisuje, jak pomocí PowerShellu nasadit šablonu Azure R
 
     <div id="required-parameters"></div>
 
-   * Povinné parametry
+   * Požadované parametry
 
      | Parametr | Popis |
      | --- | --- |
@@ -75,7 +75,7 @@ Následující postup popisuje, jak pomocí PowerShellu nasadit šablonu Azure R
      | --- | --- |
      | existingEventHubResourceId | Volitelné ID prostředku existujícího centra událostí, které bude připojeno ke Time Series Insights prostředí prostřednictvím zdroje událostí. **Poznámka:** Uživatel, který šablonu nasazuje, musí mít oprávnění k provedení operace klíče listkey v centru událostí. Pokud není předána žádná hodnota, vytvoří se v šabloně nové centrum událostí. |
      | environmentDisplayName | Volitelný popisný název, který se zobrazí v nástrojích nebo uživatelských rozhraních místo názvu prostředí. |
-     | environmentSkuName | Název skladové jednotky. Další informace najdete na stránce s [cenami pro Time Series Insights](https://azure.microsoft.com/pricing/details/time-series-insights/).  |
+     | environmentSkuName | Název sku. Další informace najdete na stránce s [cenami pro Time Series Insights](https://azure.microsoft.com/pricing/details/time-series-insights/).  |
      | environmentSkuCapacity | Kapacita jednotky SKU. Další informace najdete na stránce s [cenami pro Time Series Insights](https://azure.microsoft.com/pricing/details/time-series-insights/).|
      | environmentDataRetentionTime | Minimální časové rozpětí, které budou události prostředí k dispozici pro dotaz. Hodnota musí být zadána ve formátu ISO 8601, například `P30D` pro zásady uchovávání informací po dobu 30 dnů. |
      | eventSourceDisplayName | Volitelný popisný název, který se zobrazí v nástrojích nebo uživatelských rozhraních namísto názvu zdroje události. |
@@ -188,7 +188,7 @@ Následující postup popisuje, jak pomocí PowerShellu nasadit šablonu Azure R
       New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
       ```
 
-    * Vložené parametry můžete použít také při spuštění rutiny nasazení. Příkaz vypadá takto:
+    * Vložené parametry můžete použít také při spuštění rutiny nasazení. Příkaz je následující:
 
       ```powershell
       New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"

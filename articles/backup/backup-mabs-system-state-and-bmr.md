@@ -3,12 +3,12 @@ title: Ochrana stavu systému a úplné obnovení systému
 description: Použijte Azure Backup Server k zálohování stavu systému a zajištění ochrany úplného obnovení systému (BMR).
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 2940ef5b8c0c2a7d751c46209253d4f4dbe6d13f
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 0e89b149fe8b06bdd70c72aa442f50125c5e3786
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172250"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025499"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Zálohování stavu systému a obnovení do holých počítačů pomocí Azure Backup Server
 
@@ -25,21 +25,21 @@ Následující tabulka shrnuje, co můžete zálohovat a obnovit. Podrobné info
 
 |Backup|Problém|Obnovení ze zálohy služby Azure Backup Server|Obnovení ze zálohy stavu systému|BMR|
 |----------|---------|---------------------------|------------------------------------|-------|
-|**Data souborů**<br /><br />Zálohování běžných dat<br /><br />BMR/zálohování stavu systému|Ztracená data souborů|Ano|Ne|Ne|
-|**Data souborů**<br /><br />Azure Backup Server zálohování dat souborů<br /><br />BMR/zálohování stavu systému|Ztracený nebo poškozený operační systém|Ne|Ano|Ano|
-|**Data souborů**<br /><br />Azure Backup Server zálohování dat souborů<br /><br />BMR/zálohování stavu systému|Ztracený Server (datové svazky nedotčeny)|Ne|Ne|Ano|
+|**Data souborů**<br /><br />Zálohování běžných dat<br /><br />BMR/zálohování stavu systému|Ztracená data souborů|Ano|N|N|
+|**Data souborů**<br /><br />Azure Backup Server zálohování dat souborů<br /><br />BMR/zálohování stavu systému|Ztracený nebo poškozený operační systém|N|Ano|Ano|
+|**Data souborů**<br /><br />Azure Backup Server zálohování dat souborů<br /><br />BMR/zálohování stavu systému|Ztracený Server (datové svazky nedotčeny)|N|N|Ano|
 |**Data souborů**<br /><br />Azure Backup Server zálohování dat souborů<br /><br />BMR/zálohování stavu systému|Ztracený Server (datové svazky se ztratily)|Ano|Ne|Ano (BMR, následované pravidelným obnovením zálohovaných dat souborů)|
-|**Data služby SharePoint**:<br /><br />Azure Backup Server zálohování dat farmy<br /><br />BMR/zálohování stavu systému|Ztracené weby, seznamy, položky seznamu, dokumenty|Ano|Ne|Ne|
-|**Data služby SharePoint**:<br /><br />Azure Backup Server zálohování dat farmy<br /><br />BMR/zálohování stavu systému|Ztracený nebo poškozený operační systém|Ne|Ano|Ano|
-|**Data služby SharePoint**:<br /><br />Azure Backup Server zálohování dat farmy<br /><br />BMR/zálohování stavu systému|Zotavení po havárii|Ne|Ne|Ne|
-|Windows Server 2012 R2 Hyper-V<br /><br />Azure Backup Server zálohování hostitele nebo hosta technologie Hyper-V<br /><br />BMR/zálohování stavu systému hostitele|Ztracený virtuální počítač|Ano|Ne|Ne|
-|Hyper-V<br /><br />Azure Backup Server zálohování hostitele nebo hosta technologie Hyper-V<br /><br />BMR/zálohování stavu systému hostitele|Ztracený nebo poškozený operační systém|Ne|Ano|Ano|
-|Hyper-V<br /><br />Azure Backup Server zálohování hostitele nebo hosta technologie Hyper-V<br /><br />BMR/zálohování stavu systému hostitele|Ztracené hostitele Hyper-V (virtuální počítače nedotčeny)|Ne|Ne|Ano|
-|Hyper-V<br /><br />Azure Backup Server zálohování hostitele nebo hosta technologie Hyper-V<br /><br />BMR/zálohování stavu systému hostitele|Ztracené hostitele Hyper-V (virtuální počítače se ztratily)|Ne|Ne|Ano<br /><br />BMR, následované pravidelným obnovením Azure Backup Server|
-|SQL Server/Exchange<br /><br />Zálohování aplikace Azure Backup Server<br /><br />BMR/zálohování stavu systému|Ztracená data aplikací|Ano|Ne|Ne|
-|SQL Server/Exchange<br /><br />Zálohování aplikace Azure Backup Server<br /><br />BMR/zálohování stavu systému|Ztracený nebo poškozený operační systém|Ne|Y|Ano|
-|SQL Server/Exchange<br /><br />Zálohování aplikace Azure Backup Server<br /><br />BMR/zálohování stavu systému|Ztracený Server (protokoly databáze/transakce nedotčeny)|Ne|Ne|Ano|
-|SQL Server/Exchange<br /><br />Zálohování aplikace Azure Backup Server<br /><br />BMR/zálohování stavu systému|Ztracený Server (ztracené protokoly databáze nebo transakcí)|Ne|Ne|Ano<br /><br />BMR obnovení, následované pravidelným obnovením Azure Backup Server|
+|**Data služby SharePoint**:<br /><br />Azure Backup Server zálohování dat farmy<br /><br />BMR/zálohování stavu systému|Ztracené weby, seznamy, položky seznamu, dokumenty|Ano|N|N|
+|**Data služby SharePoint**:<br /><br />Azure Backup Server zálohování dat farmy<br /><br />BMR/zálohování stavu systému|Ztracený nebo poškozený operační systém|N|Ano|Ano|
+|**Data služby SharePoint**:<br /><br />Azure Backup Server zálohování dat farmy<br /><br />BMR/zálohování stavu systému|Zotavení po havárii|N|N|N|
+|Windows Server 2012 R2 Hyper-V<br /><br />Azure Backup Server zálohování hostitele nebo hosta technologie Hyper-V<br /><br />BMR/zálohování stavu systému hostitele|Ztracený virtuální počítač|Ano|N|N|
+|Hyper-V<br /><br />Azure Backup Server zálohování hostitele nebo hosta technologie Hyper-V<br /><br />BMR/zálohování stavu systému hostitele|Ztracený nebo poškozený operační systém|N|Ano|Ano|
+|Hyper-V<br /><br />Azure Backup Server zálohování hostitele nebo hosta technologie Hyper-V<br /><br />BMR/zálohování stavu systému hostitele|Ztracené hostitele Hyper-V (virtuální počítače nedotčeny)|N|N|Ano|
+|Hyper-V<br /><br />Azure Backup Server zálohování hostitele nebo hosta technologie Hyper-V<br /><br />BMR/zálohování stavu systému hostitele|Ztracené hostitele Hyper-V (virtuální počítače se ztratily)|N|N|Ano<br /><br />BMR, následované pravidelným obnovením Azure Backup Server|
+|SQL Server/Exchange<br /><br />Zálohování aplikace Azure Backup Server<br /><br />BMR/zálohování stavu systému|Ztracená data aplikací|Ano|N|N|
+|SQL Server/Exchange<br /><br />Zálohování aplikace Azure Backup Server<br /><br />BMR/zálohování stavu systému|Ztracený nebo poškozený operační systém|N|Y|Ano|
+|SQL Server/Exchange<br /><br />Zálohování aplikace Azure Backup Server<br /><br />BMR/zálohování stavu systému|Ztracený Server (protokoly databáze/transakce nedotčeny)|N|N|Ano|
+|SQL Server/Exchange<br /><br />Zálohování aplikace Azure Backup Server<br /><br />BMR/zálohování stavu systému|Ztracený Server (ztracené protokoly databáze nebo transakcí)|N|N|Ano<br /><br />BMR obnovení, následované pravidelným obnovením Azure Backup Server|
 
 ## <a name="how-system-state-backup-works"></a>Jak funguje zálohování stavu systému
 
@@ -90,7 +90,7 @@ Po dokončení zálohování se soubor přenese na počítač se záložním ser
 
 ## <a name="before-you-begin"></a>Než začnete
 
-1. **Nasazení Azure Backup Server**. Ověřte, jestli je záložní server správně nasazený. Další informace naleznete v tématu:
+1. **Nasazení Azure Backup Server**. Ověřte, jestli je záložní server správně nasazený. Další informace:
     * [Požadavky na systém pro Azure Backup Server](https://docs.microsoft.com/system-center/dpm/install-dpm#setup-prerequisites)
     * [Matice ochrany záložního serveru](backup-mabs-protection-matrix.md)
 
@@ -140,7 +140,7 @@ Nastavte skupinu ochrany, jak je popsáno v tématu [nasazení skupin ochrany](h
 
 12. Na stránce **zadat zásady uchovávání online** vyberte způsob, jakým se v Azure uchovávají body obnovení vytvořené z denního, týdenního, měsíčního a ročního zálohování.
 
-13. Na stránce **Zvolte online replikaci** vyberte, jak se má počáteční Úplná replikace dat nacházet. Můžete provést replikaci přes síť nebo provést offline zálohování (offline předvyplnění). Offline zálohování používá funkci importu Azure. Další informace najdete v tématu [pracovní postup offline zálohování v Azure Backup](backup-azure-backup-import-export.md).
+13. Na stránce **Zvolte online replikaci** vyberte, jak se má počáteční Úplná replikace dat nacházet. Můžete provést replikaci přes síť nebo provést offline zálohování (offline předvyplnění). Offline zálohování používá funkci importu Azure. Další informace najdete v tématu [pracovní postup offline zálohování v Azure Backup](offline-backup-azure-data-box.md).
 
 14. Na stránce **Souhrn** zkontrolujte nastavení. Po výběru **vytvořit skupinu**se spustí počáteční replikace dat. Po dokončení replikace dat je stav skupiny ochrany **OK**na stránce **stav** . Pak proběhne zálohování podle nastavení skupiny ochrany.
 

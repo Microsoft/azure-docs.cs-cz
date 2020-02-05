@@ -3,12 +3,12 @@ title: Vytvoření pravidla Azure Load Balancer pro cluster
 description: Nakonfigurujte Azure Load Balancer pro otevření portů pro cluster Azure Service Fabric.
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: 5cc392a74b8cf5ef92be8b5783b5b70289e602af
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f4599b2e0174381ab7df04aeeb33db7e3ee60f26
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351483"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025380"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Otevření portů pro cluster Service Fabric
 
@@ -60,7 +60,7 @@ Příkaz Azure CLI má několik parametrů, které jsou popsané v následujíc�
 
 
 >[!NOTE]
->Další informace o tom, jak vytvořit nástroj pro vyrovnávání zatížení pomocí Azure CLI, najdete v tématu [Vytvoření nástroje pro vyrovnávání zatížení pomocí Azure CLI](../load-balancer/load-balancer-get-started-internet-arm-cli.md).
+>Další informace o tom, jak vytvořit nástroj pro vyrovnávání zatížení pomocí Azure CLI, najdete v tématu [Vytvoření nástroje pro vyrovnávání zatížení pomocí Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md).
 
 ## <a name="powershell"></a>PowerShell
 
@@ -96,7 +96,7 @@ $lb | Set-AzLoadBalancer
 V souvislosti s příkazem `New-AzLoadBalancerRuleConfig` představuje `-FrontendPort` port, který nástroj pro vyrovnávání zatížení zveřejňuje pro externí připojení, a `-BackendPort` představuje port, na který aplikace Service Fabric naslouchá.
 
 >[!NOTE]
->Další informace o tom, jak vytvořit nástroj pro vyrovnávání zatížení pomocí PowerShellu, najdete v tématu [Vytvoření nástroje pro vyrovnávání zatížení pomocí PowerShellu](../load-balancer/load-balancer-get-started-internet-arm-ps.md).
+>Další informace o tom, jak vytvořit nástroj pro vyrovnávání zatížení pomocí PowerShellu, najdete v tématu [Vytvoření nástroje pro vyrovnávání zatížení pomocí PowerShellu](../load-balancer/load-balancer-get-started-ilb-arm-ps.md).
 
 ## <a name="next-steps"></a>Další kroky
 

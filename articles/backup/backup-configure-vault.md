@@ -3,12 +3,12 @@ title: Zálohování počítačů s Windows pomocí agenta MARS
 description: K zálohování počítačů s Windows použijte agenta Azure Backup Microsoft Recovery Services (MARS).
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.openlocfilehash: c6e5ea1ed1ec9dd922793dfc6834238c431ddc38
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 990929cc95d1c25117873ca39415d33370456b91
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "76290865"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025533"
 ---
 # <a name="back-up-windows-machines-with-the-azure-backup-mars-agent"></a>Zálohování počítačů s Windows s využitím agenta MARS služby Azure Backup
 
@@ -49,7 +49,7 @@ To, co se dá zálohovat, závisí na tom, kde je agent nainstalovaný.
 
 Pokud má počítač omezený přístup k Internetu, zajistěte, aby nastavení brány firewall na počítači nebo proxy umožňovalo tyto adresy URL a IP adresy:
 
-#### <a name="urls"></a>Adresy URL
+#### <a name="urls"></a>Adrese
 
 * www\.msftncsi.com
 * *.Microsoft.com
@@ -68,7 +68,7 @@ Přístup ke všem adresám URL a IP adresám uvedeným výše používá protok
 
 Trezor Recovery Services ukládá všechny zálohy a body obnovení, které vytvoříte v průběhu času, a obsahuje zásady zálohování použité pro zálohované počítače. Vytvořte Trezor následujícím způsobem:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí svého předplatného Azure.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí svého předplatného Azure.
 
 2. Vyhledejte a vyberte **trezory Recovery Services**.
 
@@ -134,7 +134,7 @@ Stáhněte agenta MARS pro instalaci na počítačích, které chcete zálohovat
 
     ![stažení přihlašovacích údajů trezoru](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-7. Klikněte na možnost **Uložit**. Soubor se stáhne do složky pro stahování. Nejde otevřít soubor s přihlašovacími údaji trezoru.
+7. Klikněte na **Uložit**. Soubor se stáhne do složky pro stahování. Nejde otevřít soubor s přihlašovacími údaji trezoru.
 
 ## <a name="install-and-register-the-agent"></a>Instalace a registrace agenta
 
@@ -215,10 +215,10 @@ Vytvořte zásadu následujícím způsobem:
         -   Zálohy provedené v sobotu v posledním týdnu v měsíci s půlnocí a 6:00 PM se uchovávají po dobu 12 měsíců.
         -   Zálohy provedené na sobotu v posledním týdnu v březnu jsou uchovány po dobu 10 let.
 
-    ![Příklad uchování](./media/backup-configure-vault/retention-example.png)
+        ![Příklad uchování](./media/backup-configure-vault/retention-example.png)
 
 
-11. V části **zvolit typ prvotní zálohy** rozhodněte, jestli chcete provést prvotní zálohování přes síť, nebo použít offline zálohování (Další informace o offline zálohování najdete v tomto [článku](backup-azure-backup-import-export.md)). Chcete-li provést prvotní zálohování sítě, vyberte možnost **automaticky přes síť** a klikněte na tlačítko **Další**.
+11. V části **zvolit typ prvotní zálohy** rozhodněte, jestli chcete provést prvotní zálohování přes síť, nebo použít offline zálohování (Další informace o offline zálohování najdete v tomto [článku](offline-backup-azure-data-box.md)). Chcete-li provést prvotní zálohování sítě, vyberte možnost **automaticky přes síť** a klikněte na tlačítko **Další**.
 
     ![Typ prvotní zálohy](./media/backup-azure-manage-mars/choose-initial-backup-type.png)
 
@@ -245,7 +245,7 @@ Počáteční zálohu můžete spustit automaticky přes síť nebo offline. Po�
 5. V datacentru se data disku zkopírují do účtu služby Azure Storage.
 6. Azure Backup zkopíruje data z účtu úložiště do trezoru a naplánují se přírůstkové zálohy.
 
-[Přečtěte si další informace](backup-azure-backup-import-export.md) o dosazení offline.
+[Přečtěte si další informace](offline-backup-azure-data-box.md) o dosazení offline.
 
 ### <a name="enable-network-throttling"></a>Povolit omezení sítě
 

@@ -2,18 +2,18 @@
 title: Konfigurace koncových bodů uzlu ve fondu Azure Batch | Microsoft Docs
 description: Jak nakonfigurovat nebo zakázat přístup k portům SSH nebo RDP na výpočetních uzlech ve fondu Azure Batch.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.topic: article
 ms.date: 02/13/2018
-ms.author: jushiman
-ms.openlocfilehash: 1ac4c7647125cd6164235e98a4a828f6b072cbee
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: 098ccf999391412520989c4ec2433fd73bc0a72d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029462"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77017220"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Konfigurace nebo zakázání vzdáleného přístupu k výpočetním uzlům ve fondu Azure Batch
 

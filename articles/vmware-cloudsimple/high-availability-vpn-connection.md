@@ -1,6 +1,6 @@
 ---
-title: Řešení Azure VMware podle CloudSimple – konfigurace vysoké dostupnosti z místního úložiště na CloudSimple VPN Gateway
-description: Popisuje, jak nakonfigurovat připojení s vysokou dostupností z místního prostředí na CloudSimple bránu VPN, která je povolená pro vysokou dostupnost.
+title: Řešení Azure VMware (AVS) – konfigurace vysoké dostupnosti z místního prostředí do služby AVS VPN Gateway
+description: Popisuje, jak nakonfigurovat připojení s vysokou dostupností z místního prostředí na bránu VPN typu AVS, která je povolená pro vysokou dostupnost.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6e3118814eacc6cc63b5db59bd7f1877c1d347dc
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: b6dc309c1405a07cf192301208a97975ca9ce256
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927290"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025261"
 ---
-# <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>Konfigurace připojení s vysokou dostupností z místního prostředí do CloudSimple VPN Gateway
+# <a name="configure-a-high-availability-connection-from-on-premises-to-an-avs-vpn-gateway"></a>Konfigurace připojení s vysokou dostupností z místního prostředí k bráně VPN typu AVS
 
-Správci sítě můžou nakonfigurovat připojení VPN typu Site-to-site s vysokou dostupností z místního prostředí na CloudSimple bránu VPN.
+Správci sítě můžou nakonfigurovat připojení VPN typu Site-to-site s vysokou dostupností z místního prostředí na bránu sítě služby AVS VPN.
 
 V této příručce najdete postup konfigurace místní brány firewall pro připojení VPN typu Site-to-Site VPN s vysokou dostupností. Podrobné pokyny jsou specifické pro typ místní brány firewall. V příkladech se v tomto průvodci zobrazují kroky pro dva typy bran firewall: Cisco ASA a Palo Alto Networks.
 
@@ -25,8 +25,8 @@ V této příručce najdete postup konfigurace místní brány firewall pro při
 
 Před konfigurací místní brány firewall proveďte následující úlohy.
 
-1. Ověřte, že vaše organizace [zřídila](create-nodes.md) požadované uzly a vytvořila aspoň jeden privátní cloud CloudSimple.
-2. [Nakonfigurujte bránu VPN typu Site-to-site](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) mezi vaší místní sítí a privátním cloudem CloudSimple.
+1. Ověřte, že vaše organizace [zřídila](create-nodes.md) požadované uzly a vytvořila aspoň jeden privátní cloud služby AVS.
+2. [Nakonfigurujte bránu VPN typu Site-to-site](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) mezi vaší místní sítí a Vaším privátním cloudem služby AVS.
 
 V tématu [Přehled bran VPN](cloudsimple-vpn-gateways.md) najdete podporované návrhy fáze 1 a fáze 2.
 
@@ -34,7 +34,7 @@ V tématu [Přehled bran VPN](cloudsimple-vpn-gateways.md) najdete podporované 
 
 Pokyny v této části se vztahují na Cisco ASA verze 8,4 a novější. V příkladu konfigurace je software Cisco Adaptive Security pro zařízení verze 9,10 nasazený a nakonfigurovaný v IKEv1 režimu.
 
-Aby síť VPN typu Site-to-site fungovala, je nutné na vnějším rozhraní pro místní bránu Cisco ASA VPN zakázat protokol UDP 500/4500 a ESP (IP Protocol 50) z primární a sekundární veřejné IP adresy CloudSimple (peer IP adresa).
+Aby síť VPN typu Site-to-site fungovala, je nutné na vnějším rozhraní místní brány VPN pro Cisco ASA zakázat protokol UDP 500/4500 a ESP (IP Protocol 50) z primární a sekundární veřejné IP adresy služby AVS (peer IP adresa).
 
 ### <a name="1-configure-phase-1-ikev1"></a>1. konfigurace fáze 1 (IKEv1)
 
@@ -71,7 +71,7 @@ ikev1 pre-shared-key *****
 
 ### <a name="4-configure-phase-2-ipsec"></a>4. konfigurace fáze 2 (IPsec)
 
-Pokud chcete konfigurovat fázi 2 (IPsec), vytvořte seznam řízení přístupu (ACL), který definuje šifrovaný a tunelový přenos. V následujícím příkladu je přenos dat z tunelu z tunelu, který je vytvořen z místní podsítě (10.16.1.0/24) do vzdálené podsítě privátního cloudu (192.168.0.0/24). Seznam ACL může obsahovat více položek v případě, že mezi lokalitami existuje více podsítí.
+Pokud chcete konfigurovat fázi 2 (IPsec), vytvořte seznam řízení přístupu (ACL), který definuje šifrovaný a tunelový přenos. V následujícím příkladu je přenos dat z tunelu, který je vytvořen z místní podsítě (10.16.1.0/24), do vzdálené podsítě privátního cloudu služby AVS (192.168.0.0/24). Seznam ACL může obsahovat více položek v případě, že mezi lokalitami existuje více podsítí.
 
 Ve verzích Cisco ASA 8,4 a novějších lze vytvořit objekty nebo skupiny objektů, které slouží jako kontejnery pro sítě, podsítě, IP adresy hostitelů nebo více objektů. Vytvořte objekt pro místní a objekt pro vzdálené podsítě a použijte je pro seznam ACL šifrování a příkazy NAT.
 
@@ -82,7 +82,7 @@ object network AZ_inside
 subnet 10.16.1.0 255.255.255.0
 ```
 
-#### <a name="define-the-cloudsimple-remote-subnet-as-an-object"></a>Definování vzdálené podsítě CloudSimple jako objektu
+#### <a name="define-the-avs-remote-subnet-as-an-object"></a>Definování vzdálené podsítě služby AVS jako objektu
 
 ```
 object network CS_inside
@@ -97,7 +97,7 @@ access-list ipsec-acl extended permit ip object AZ_inside object CS_inside
 
 ### <a name="5-configure-the-transform-set"></a>5. konfigurace sady transformací
 
-Nakonfigurujte sadu transformací (TS), která musí zahrnovat klíčové slovo ```ikev1```. Atributy šifrování a hash zadané v TS se musí shodovat s parametry uvedenými ve [výchozí konfiguraci pro brány VPN CloudSimple](cloudsimple-vpn-gateways.md).
+Nakonfigurujte sadu transformací (TS), která musí zahrnovat klíčové slovo ```ikev1```. Atributy šifrování a hash zadané v TS se musí shodovat s parametry uvedenými ve [výchozí konfiguraci pro brány VPN typu AVS](cloudsimple-vpn-gateways.md#cryptographic-parameters).
 
 ```
 crypto ipsec ikev1 transform-set devtest39 esp-aes-256 esp-sha-hmac 
@@ -143,13 +143,13 @@ Výstup fáze 2:
 
 Pokyny v této části se vztahují na Palo Alto Networks verze 7,1 a novější. V tomto příkladu konfigurace je Palo Alto Networks VM-Series software verze 8.1.0 nasazená a nakonfigurovaná v režimu IKEv1.
 
-Aby síť VPN typu Site-to-site fungovala, je nutné na vnějším rozhraní místní brány Palo Alto Networks zakázat protokol UDP 500/4500 a ESP (IP Protocol 50) z primární a sekundární veřejné IP adresy CloudSimple (peer IP adresa).
+Aby síť VPN typu Site-to-site fungovala, musíte na vnějším rozhraní místní brány Palo Alto Networks zapnout protokol UDP 500/4500 a ESP (IP Protocol 50) z primární a sekundární veřejné IP adresy služby AVS (peer IP adresa).
 
 ### <a name="1-create-primary-and-secondary-tunnel-interfaces"></a>1. Vytvoření primárních a sekundárních tunelových rozhraní
 
 Přihlaste se k bráně firewall Palo Alto, vyberte **síťová** > **rozhraní** > **Tunnel** > **Přidat**, nakonfigurujte následující pole a klikněte na **OK**.
 
-* Název rozhraní. První pole je automaticky vyplněné pomocí klíčového slova Tunnel. Do sousedního pole zadejte číslo od 1 do 9999. Toto rozhraní se použije jako primární tunelové rozhraní k přenosu dat mezi místním datacentrem a privátním cloudem.
+* Název rozhraní. První pole je automaticky vyplněné pomocí klíčového slova Tunnel. Do sousedního pole zadejte číslo od 1 do 9999. Toto rozhraní se použije jako primární tunelové rozhraní pro přenos dat mezi lokalitami mezi místním datacentrem a privátním cloudem AVS.
 * Vytvořena. Zadejte komentáře pro snadnější identifikaci účelu tunelu
 * Profil NetFlow Ponechte výchozí.
 * Konfigurace. Přiřadit rozhraní k: virtuální směrovač: vyberte **výchozí**. 
@@ -158,14 +158,16 @@ Přihlaste se k bráně firewall Palo Alto, vyberte **síťová** > **rozhraní*
 
 Vzhledem k tomu, že tato konfigurace je pro síť VPN s vysokou dostupností, vyžadují se dvě rozhraní tunelu: jedna primární a jedna sekundární. Opakujte předchozí postup pro vytvoření sekundárního tunelového připojení. Vyberte jiné ID tunelu a jinou nevyužitou IP adresu/32.
 
-### <a name="2-set-up-static-routes-for-private-cloud-subnets-to-be-reached-over-the-site-to-site-vpn"></a>2. Nastavení statických tras pro podsítě privátního cloudu, které se mají dosáhnout přes síť VPN typu Site-to-site
+### <a name="2-set-up-static-routes-for-avs-private-cloud-subnets-to-be-reached-over-the-site-to-site-vpn"></a>2. Nastavení statických tras pro podsítě privátního cloudu služby AVS, které se mají dosáhnout přes síť VPN typu Site-to-site
 
-Trasy jsou nezbytné pro místní podsítě, aby se dostaly k podsítím privátního cloudu CloudSimple.
+Pro místní podsítě jsou potřeba trasy, které budou mít přístup k podsítím privátního cloudu služby AVS.
 
 Vyberte **síťové** > **virtuální směrovače** > *výchozí* > **statické trasy** > **Přidat**, nakonfigurujte následující pole a klikněte na **OK**.
 
 * Jméno. Zadejte libovolný název, který umožňuje snadnou identifikaci účelu trasy.
-* Tabulka. Zadejte CloudSimple podsítě privátního cloudu, které se mají kontaktovat přes tunelová rozhraní S2S z místního prostředí.
+
+* Tabulka. Zadejte podsítě privátního cloudu služby AVS, které budou dostupné přes tunelová rozhraní S2S z místního prostředí.
+
 * Prostředí. Vyberte primární tunelové rozhraní vytvořené v kroku 1 (oddíl-2) z rozevíracího seznamu. V tomto příkladu je to Tunnel. 20.
 * Další segment směrování. Vyberte **žádné**.
 * Vzdálenost správce. Ponechte výchozí.
@@ -174,7 +176,7 @@ Vyberte **síťové** > **virtuální směrovače** > *výchozí* > **statické 
 * Profil BFD Ponechte výchozí.
 * Monitorování cesty. Nechte nezaškrtnuté.
 
-Zopakováním předchozích kroků vytvořte další trasu pro podsítě privátního cloudu, která se použije jako sekundární a záložní postup přes sekundární tunelové rozhraní. Tentokrát vyberte jiné ID tunelu a vyšší metriku než u primární trasy.
+Zopakováním předchozích kroků vytvořte další trasu pro podsítě privátního cloudu služby AVS, kterou použijete jako sekundární a záložní trasu prostřednictvím sekundárního tunelového rozhraní. Tentokrát vyberte jiné ID tunelu a vyšší metriku než u primární trasy.
 
 ### <a name="3-define-the-cryptographic-profile"></a>3. definování kryptografického profilu
 
@@ -197,17 +199,17 @@ Vyberte **network** > **rozbalte profily sítě** > **brány IKE** > **Přidat**
 
 Karta Obecné:
 
-* Jméno. Zadejte název brány IKE, ke které se má navázat partnerský vztah primárního CloudSimple VPN.
+* Jméno. Zadejte název brány IKE, na kterou se má navázat partnerský vztah primární sítě služby AVS VPN.
 * Znění. Vyberte **režim pouze IKEv1**.
 * Typ adresy Vyberte **IPv4**.
 * Prostředí. Vyberte veřejné nebo vnější rozhraní.
 * Místní IP adresa. Ponechte výchozí.
 * Typ IP adresy partnerského vztahu Vyberte **IP adresa**.
-* Adresa partnera. Zadejte IP adresu primárního partnera VPN CloudSimple.
+* Adresa partnera. Zadejte primární IP adresu partnerského uzlu virtuální sítě pro službu AVS.
 * Přihlašovací. Vyberte **předsdílený klíč**.
-* Předsdílený klíč/potvrzení předsdíleného klíče. Zadejte předsdílený klíč, který bude odpovídat klíči brány VPN CloudSimple.
+* Předsdílený klíč/potvrzení předsdíleného klíče. Zadejte předsdílený klíč, který se bude shodovat s klíčem brány VPN služby AVS.
 * Místní identifikace. Zadejte veřejnou IP adresu místní brány firewall Palo Alto.
-* Identifikace partnerského vztahu. Zadejte IP adresu primárního partnera VPN CloudSimple.
+* Identifikace partnerského vztahu. Zadejte primární IP adresu partnerského uzlu virtuální sítě pro službu AVS.
 
 Karta Upřesnit možnosti:
 
@@ -234,7 +236,7 @@ Vyberte možnost **síť** > **rozbalte položku profily sítě** > **šifrován
 * Platné. Nastaví se na 30 minut.
 * Aby. Nechejte políčko nezaškrtnuté.
 
-Zopakováním předchozích kroků vytvořte další kryptografický profil IPsec, který bude použit jako sekundární partnerský uzel CloudSimple VPN. Stejný kryptografický profil IPSEC se dá použít i pro primární i sekundární tunelové propojení IPsec (viz následující postup).
+Zopakováním předchozích kroků vytvořte další kryptografický profil IPsec, který bude použit jako sekundární partnerský uzel služby AVS VPN. Stejný kryptografický profil IPSEC se dá použít i pro primární i sekundární tunelové propojení IPsec (viz následující postup).
 
 ### <a name="6-define-monitor-profiles-for-tunnel-monitoring"></a>6. definování profilů monitorování pro monitorování tunelu
 
@@ -251,7 +253,7 @@ Vyberte **síťové** **tunely IPSec** >  > **Přidat**, nakonfigurujte následu
 
 Karta Obecné:
 
-* Jméno. Zadejte libovolný název primárního tunelového propojení IPSEC, kterému se má navázat partnerský vztah primárního CloudSimple VPN.
+* Jméno. Zadejte libovolný název primárního tunelového propojení IPSEC, kterému se má navázat partnerský vztah primární sítě služby AVS VPN.
 * Rozhraní tunelu. Vyberte primární tunelové rozhraní.
 * textový. Ponechte výchozí.
 * Typ adresy Vyberte **IPv4**.
@@ -260,17 +262,17 @@ Karta Obecné:
 * Povolte ochranu před přehráním. Ponechte výchozí.
 * Zkopírujte hlavičku TOS. Nechejte políčko nezaškrtnuté.
 * Monitorování tunelu. Zaškrtněte políčko.
-* Cílová IP adresa. Zadejte libovolnou IP adresu patřící do podsítě privátního cloudu CloudSimple, která je povolená přes připojení Site-to-site. Ujistěte se, že rozhraní tunelu (například Tunnel. 20-10.64.5.2/32 a Tunnel. 30-10.64.6.2/32) v Palo Alto mají povolený přístup k IP adrese privátního cloudu CloudSimple přes síť Site-to-Site VPN. Podívejte se na následující konfiguraci ID proxy serveru.
+* Cílová IP adresa. Zadejte libovolnou IP adresu patřící do podsítě privátního cloudu pro funkci AVS, která je povolená přes připojení Site-to-site. Ujistěte se, že rozhraní tunelu (například Tunnel. 20-10.64.5.2/32 a Tunnel. 30-10.64.6.2/32) v Palo Alto mají povolený přístup k IP adrese privátního cloudu AVS přes síť Site-to-Site VPN. Podívejte se na následující konfiguraci ID proxy serveru.
 * Profilu. Vyberte profil monitorování.
 
 Karta ID proxy serveru: klikněte na **IPv4** > **Přidat** a nakonfigurovat následující:
 
 * ID proxy serveru. Zadejte libovolný název zajímavého provozu. V rámci jednoho tunelu IPsec mohlo být provedeno více ID proxy serveru.
-* Místní. Zadejte místní místní podsítě, které mohou komunikovat s podsítěmi privátního cloudu prostřednictvím sítě VPN typu Site-to-site.
-* Vzdálené. Zadejte vzdálené podsítě privátního cloudu, které mají povoleno komunikovat s místními podsítěmi.
+* Místní. Zadejte místní místní podsítě, které mohou komunikovat s podsítěmi privátního cloudu AVS přes síť VPN typu Site-to-site.
+* Vzdálené. Zadejte vzdálené podsítě v privátním cloudu pro funkci AVS, které mají povoleno komunikovat s místními podsítěmi.
 * Protokol. Vyberte **libovolný**.
 
-Zopakováním předchozích kroků vytvořte další tunelové propojení IPsec, které chcete použít pro sekundárního partnera VPN CloudSimple.
+Zopakováním předchozích kroků vytvořte další tunelové propojení IPsec, které chcete použít pro sekundárního partnerského uzlu služby AVS VPN.
 
 ## <a name="references"></a>Odkazy
 

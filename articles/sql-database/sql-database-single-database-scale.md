@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: e23a4c39f93ea4de7f5dd38bb266d63ed52913cb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 940baf219f1b3994585472f0eed9d171ba319d4e
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845859"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023136"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Škálování jednoho databázového prostředku v Azure SQL Database
 
@@ -93,8 +93,8 @@ else {
 - Pokud provádíte upgrade na vyšší úroveň služby nebo výpočetní velikost, nezvýší se maximální velikost databáze, pokud explicitně neurčíte větší velikost (MaxSize).
 - Aby bylo možné downgradovat databázi, musí být využité místo v databázi menší než maximální povolená velikost cílové úrovně služby a výpočetní velikosti.
 - Při přechodu z úrovně **Premium** na úroveň **Standard** se platí dodatečné náklady na úložiště, pokud je maximální velikost databáze podporována v cílové výpočetní velikosti a (2) maximální velikost překračuje zahrnutou velikost úložiště cílové výpočetní velikosti. Pokud je například databáze P1 s maximální velikostí 500 GB zmenšován do S3, platí dodatečné náklady na úložiště, protože S3 podporuje maximální velikost 1 TB a velikost zahrnutého úložiště je pouze 250 GB. Navíc je velikost dodatečného úložiště 500 GB – 250 GB = 250 GB. Ceny dodatečného úložiště najdete v tématu [SQL Database ceny](https://azure.microsoft.com/pricing/details/sql-database/). Pokud je skutečné množství využitého místa menší než zahrnuté množství úložiště, je možné tyto dodatečné náklady vyvarovat snížením maximální velikosti databáze na zahrnutou částku.
-- Při upgradu databáze s povolenou [geografickou replikací](sql-database-geo-replication-portal.md) Upgradujte své sekundární databáze na požadovanou úroveň služby a výpočetní velikost před upgradem primární databáze (Obecné pokyny pro nejlepší výkon). Při upgradu na jinou je třeba nejprve upgradovat sekundární databázi.
-- Když se downgrade databáze s povolenou [geografickou replikací](sql-database-geo-replication-portal.md) , downgrade primárních databází na požadovanou úroveň služby a výpočetní velikost před přechodem na sekundární databázi (Obecné pokyny pro nejlepší výkon). Když se downgrade na jinou edici, je nutné nejprve downgradovat primární databázi.
+- Při upgradu databáze s povolenou [geografickou replikací](sql-database-geo-replication-portal.md) Upgradujte své sekundární databáze na požadovanou úroveň služby a výpočetní velikost před upgradem primární databáze (Obecné pokyny pro nejlepší výkon). Při upgradu na jinou edici je nutné nejprve upgradovat sekundární databázi.
+- Když se downgrade databáze s povolenou [geografickou replikací](sql-database-geo-replication-portal.md) , downgrade primárních databází na požadovanou úroveň služby a výpočetní velikost před přechodem na sekundární databázi (Obecné pokyny pro nejlepší výkon). Při downgradu na jinou edici je nutné, aby byla primární databáze nejprve downgradovaná.
 - Nabídky služeb pro obnovení se u různých úrovní služby liší. Pokud přecházíte na úroveň **Basic** , je k dispozici nižší doba uchovávání záloh. Viz [zálohy Azure SQL Database](sql-database-automated-backups.md).
 - Nové vlastnosti databáze se nepoužijí, dokud nebudou změny dokončeny.
 

@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak řešit chyby zjištěné při z�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 6baf878a1afac011997800b78f059e254e3f2a06
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 9dbb76b3c0bb6c0ff1f4fb51fbf4846b74a3a1f3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845528"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019091"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Řešení potíží se zálohováním virtuálních počítačů Azure
 
@@ -278,6 +278,6 @@ Zálohování virtuálního počítače se spoléhá na vystavování příkazů
 Aby fungovala záloha virtuálního počítače IaaS, musí být v hostovi povolen protokol DHCP. Pokud potřebujete statickou privátní IP adresu, nakonfigurujte ji pomocí Azure Portal nebo PowerShellu. Ujistěte se, že je ve virtuálním počítači povolená možnost DHCP.
 Získejte další informace o tom, jak nastavit statickou IP adresu prostřednictvím PowerShellu:
 
-* [Postup přidání statické interní IP adresy do existujícího virtuálního počítače](/previous-versions/azure/virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)
+* [Postup přidání statické interní IP adresy do existujícího virtuálního počítače](/previous-versions/azure/virtual-network/virtual-networks-reserved-private-ip#how-to-add-a-static-internal-ip-to-an-existing-vm)
 * [Změna metody alokace pro soukromou IP adresu přiřazenou síťovému rozhraní](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)
 

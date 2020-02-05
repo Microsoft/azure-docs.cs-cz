@@ -8,14 +8,19 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: a9817205a419e2b61af66dba16d09620e2c1dec9
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 2bac317d6a3a5c6895a3cea4dae22694b603cabf
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310857"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024020"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Řešení potíží s povolením nebo zobrazením Application Insights Profiler
+
+## <a name="active-issues"></a>Aktivní problémy
+
+* Profilace pro aplikace ASP.NET Core 3. x se ještě nepodporuje.
+  * Pokud musíte mít Profiler zapnutý, je alternativním řešením použití [Application Insights profiler pro ASP.NET Core](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore). Profiler je označený pro Linux, ale funguje taky s aplikacemi .NET Core 3.0 + ve Windows. Podrobnosti najdete v tématu [podporované verze](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore#supported-versions).
 
 ## <a id="troubleshooting"></a>Obecné řešení potíží
 

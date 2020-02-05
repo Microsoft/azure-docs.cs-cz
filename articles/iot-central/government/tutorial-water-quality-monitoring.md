@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 47d1fa4e2911fa0f898804e6293af5754f572f7f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: d738868e0e4ca7599f4aaf8d6e09d22f26a8db92
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987528"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016370"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Kurz: Vytvoření aplikace pro monitorování kvality vody v Azure IoT Central
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Tento kurz vás provede vytvořením aplikace monitorování kvality vody v Azure IoT Central. Aplikaci vytvoříte z šablony aplikace **monitorování kvality** služby Azure IoT Central voda.
 
@@ -64,7 +64,9 @@ V této části použijete šablonu **monitorování kvality vody** Azure IoT Ce
 
     ![Stránka nové aplikace Azure IoT Central](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1.png)
 
-    ![informace o fakturaci nové aplikace v Azure IoT Central,](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1-billinginfo.png) teď jste vytvořili aplikaci pro monitorování kvality vody pomocí šablony monitorování IoT Central **kvality** pro Azure.
+    ![Informace o fakturaci IoT Central nové aplikace v Azure](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1-billinginfo.png)
+
+Nyní jste vytvořili aplikaci pro monitorování kvality vody pomocí šablony **monitorování kvality** služby Azure IoT Central voda.
 
 Vaše nová aplikace je dodávána s těmito předem konfigurovanými součástmi:
 

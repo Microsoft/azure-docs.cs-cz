@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 86b7a1b373d80f0e6bb7f40f57f71d20e396a6c1
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 27874e5731bd6fb9821e7aeda9333adbdbb79099
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934600"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023289"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Referenční dokumentace k sadě Swagger pro Azure Digital revlákens
 
@@ -93,11 +93,11 @@ Příklady také obsahují chybové kódy, které vám pomůžou ladit nebo vyle
 ## <a name="swagger-oauth-20-authorization"></a>Autorizace pro Swagger 2,0 OAuth
 
 > [!NOTE]
-> * Objekt zabezpečení uživatele, který vytvořil prostředek digitálních vláken Azure, bude mít přiřazenou roli správce prostoru a bude moct vytvořit další přiřazení rolí pro ostatní uživatele. Tito uživatelé a jejich role mohou být autorizováni pro volání rozhraní API.
+> * Objekt zabezpečení uživatele, který vytvořil prostředek digitálních vláken Azure, bude mít přiřazenou roli správce prostoru a bude moct vytvořit další přiřazení rolí pro ostatní uživatele. Uživatelé a jejich role mohou být autorizováni pro volání rozhraní API.
 
-1. Pokud chcete vytvořit a nakonfigurovat aplikaci Azure AD, postupujte podle kroků v [tomto rychlém](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) startu. Alternativně můžete znovu použít stávající registraci aplikace.
+1. Pomocí kroků v [rychlém](quickstart-view-occupancy-dotnet.md#set-permissions-for-your-app) startu vytvořte a nakonfigurujte aplikaci Azure Active Directory. Alternativně můžete znovu použít stávající registraci aplikace.
 
-1. Do registrace aplikace Azure AD přidejte následující **adresu URL pro přesměrování** :
+1. Do registrace aplikace Azure Active Directory přidejte následující **identifikátor URI pro přesměrování** :
 
     [![zaregistrovat adresu URL pro přesměrování Swagger v AAD](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png)](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png#lightbox)
 
@@ -108,7 +108,9 @@ Příklady také obsahují chybové kódy, které vám pomůžou ladit nebo vyle
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | Adresa URL vašeho REST API pro správu se našla na portálu.  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
-1. Zkopírujte **ID klienta** vaší aplikace služby Azure AD.
+1. Zaškrtněte políčko **implicitní udělení** > **přístupové tokeny** , abyste umožnili použití toku implicitního udělení OAuth 2,0. Vyberte **Konfigurovat**a pak **Uložit**.
+
+1. Zkopírujte **ID klienta** vaší aplikace Azure Active Directory.
 
 Po dokončení registrace Azure Active Directory:
 

@@ -2,22 +2,22 @@
 title: Aktualizace informací o skupinách na portálu moje aplikace – Azure AD
 description: Naučte se, jak zobrazit a aktualizovat informace související se skupinami, včetně zobrazení skupin, které vlastníte, vytváření nových skupin, zobrazení skupin, do kterých už jste členem, a připojení ke skupinám, do kterých už jste členem.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/21/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: de7fa1952b2e23276a9f088f5840e54675b44d01
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 00639462fce4e67561b8e50609264d4423872c82
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704948"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022292"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>Aktualizace informací o skupinách na portálu moje aplikace
 
@@ -90,15 +90,13 @@ Pokud vám správce udělil oprávnění k zobrazení dlaždice **skupiny** , m�
 
     - **Zásady skupiny.** Tuto možnost vyberte, pokud chcete, aby se všichni mohli připojovat ke skupině, nebo jenom vlastníkovi skupiny přidávají členy.
 
-3. Vyberte **Create** (Vytvořit).
+3. Vyberte **Vytvořit**.
 
     Vytvoří se nová skupina s vámi jako vlastník a zobrazí se v seznamu **vlastní skupiny** . Vzhledem k tomu, že jste vlastníkem, tato skupina se zobrazí také v seznamu skupiny, které jsem **v** seznamu.
 
 ## <a name="edit-an-existing-group"></a>Úprava existující skupiny
 
 Po vytvoření skupiny můžete upravit její podrobnosti, včetně aktualizace jakýchkoli stávajících informací.
-
-### <a name="to-edit-your-details"></a>Úprava podrobností
 
 1. Na stránce **skupiny** vyberte skupinu, kterou chcete upravit, a pak na stránce *&lt;Group_name&gt;* vyberte **Upravit podrobnosti** .
 
@@ -108,9 +106,7 @@ Po vytvoření skupiny můžete upravit její podrobnosti, včetně aktualizace 
 
 ## <a name="add-or-remove-a-member"></a>Přidat nebo odebrat člena
 
-Můžete přidat nebo odebrat členy pro libovolnou z vašich vlastních skupin.
-
-### <a name="to-add-or-remove-a-member"></a>Přidání nebo odebrání člena
+Můžete přidat nebo odebrat členy pro všechny skupiny, které vlastníte.
 
 1. Vyberte skupinu, do které chcete přidat členy, a pak na stránce *&lt;group_name&gt;* vyberte **+** .
 
@@ -130,8 +126,6 @@ Můžete přidat nebo odebrat členy pro libovolnou z vašich vlastních skupin.
 
 Pokud to vaše organizace umožňuje, můžete obnovit skupinu Office 365 a prodloužit datum vypršení platnosti.
 
-### <a name="to-renew-a-group"></a>Obnovení skupiny
-
 1. Vyberte skupinu Office 365, kterou chcete obnovit, a pak vyberte **obnovit skupinu**.
 
     ![Prodloužit platnost skupiny Office 365 a prodloužit datum vypršení platnosti](media/my-apps-portal/my-apps-portal-renew-group-link.png)
@@ -144,8 +138,6 @@ Pokud to vaše organizace umožňuje, můžete obnovit skupinu Office 365 a prod
 
 Jakékoli vlastní skupiny můžete kdykoli odstranit. Pokud však odstraníte skupinu omylem, budete ji muset vytvořit a znovu přidat členy.
 
-### <a name="to-delete-the-group"></a>Odstranění skupiny
-
 1. Vyberte skupinu, kterou chcete trvale odstranit, a pak na stránce *&lt;group_name&gt;* vyberte **Odstranit skupinu** .
 
     ![Stránka < Group_name > s zvýrazněným odkazem odstranit skupinu](media/my-apps-portal/my-apps-portal-delete-group-link.png)
@@ -156,9 +148,7 @@ Jakékoli vlastní skupiny můžete kdykoli odstranit. Pokud však odstraníte s
 
 ## <a name="join-an-existing-group"></a>Připojit se k existující skupině
 
-Existující skupinu můžete připojit ze stránky **skupiny** .
-
-### <a name="to-join-or-leave-a-group"></a>Připojení nebo opuštění skupiny
+Existující skupinu můžete ze stránky **skupiny** připojit nebo opustit.
 
 1. Na stránce **skupiny** vyberte **připojit skupinu** ze skupin, které jsem v oblasti jsem **v** oblasti.
 
@@ -172,7 +162,7 @@ Existující skupinu můžete připojit ze stránky **skupiny** .
 
 3. Pokud jste se připojili ke skupině omylem nebo pokud už nemusíte být součástí této skupiny, můžete na stránce **spojovací skupiny** vybrat název skupiny a pak vybrat **opustit skupinu**.
 
-    ![Stránka spojit skupiny se zvýrazněným tlačítkem opustit skupinu](media/my-apps-portal/my-apps-portal-leave-group-link.png)    
+    ![Stránka spojit skupiny se zvýrazněným tlačítkem opustit skupinu](media/my-apps-portal/my-apps-portal-leave-group-link.png)
 
 ## <a name="next-steps"></a>Další kroky
 

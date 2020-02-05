@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 02/05/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 860577938eab0f7561e9b66d0f58c9fc0d077b26
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.custom: fasttrack-edit
+ms.openlocfilehash: e4a4e9d8d1d100fe2e8c35053cea31c55b0f030d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704149"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023153"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Rychlý Start: nastavení tenanta
 
@@ -57,7 +57,7 @@ Pokud existujícího tenanta přidruženého k účtu nemáte, zobrazí se pod n
 
 ### <a name="create-a-new-azure-ad-tenant"></a>Vytvoření nového tenanta Azure AD
 
-Pokud ještě tenanta Azure AD nemáte nebo chcete pro účely vývoje vytvořit nového, postupujte podle [prostředí pro vytváření adresářů](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory). Při vytváření nového tenanta budete muset zadat následující informace:
+Pokud ještě nemáte tenanta Azure AD nebo chcete vytvořit nový pro vývoj, Projděte si [rychlý Start](../fundamentals/active-directory-access-create-new-tenant.md) nebo jednoduše postupujte podle [možnosti vytvoření adresáře](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory). Při vytváření nového tenanta budete muset zadat následující informace:
 
 - **Název organizace**
 - **Počáteční doména** – bude to část domény *.onmicrosoft.com. Doménu můžete dále přizpůsobit později.

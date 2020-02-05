@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 01/27/2020
-ms.openlocfilehash: e48f41f1e13346f551f1d83f462de697631d1b9a
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 3f5f51c944cab84c00e29b2f72433a726ed70d33
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775379"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024343"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Kurz: Konfigurace skupin dostupnosti pro SQL Server virtuálních počítačů s RHEL v Azure 
 
@@ -782,7 +782,7 @@ Pokud je seznam `synchronization_state_desc` synchronizovaný pro `db1`, znamen�
 
 ## <a name="create-availability-group-resources-in-the-pacemaker-cluster"></a>Vytvoření prostředků skupiny dostupnosti v clusteru Pacemaker
 
-Po [vytvoření prostředků skupiny dostupnosti v clusteru Pacemaker](/sql/linux/sql-server-linux-create-availability-group]#create-the-availability-group-resources-in-the-pacemaker-cluster-external-only)budeme postupovat podle pokynů.
+Po [vytvoření prostředků skupiny dostupnosti v clusteru Pacemaker](/sql/linux/sql-server-linux-create-availability-group#create-the-availability-group-resources-in-the-pacemaker-cluster-external-only)budeme postupovat podle pokynů.
 
 ### <a name="create-the-ag-cluster-resource"></a>Vytvoření prostředku clusteru AG
 

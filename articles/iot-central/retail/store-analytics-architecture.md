@@ -9,18 +9,18 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 728c5dcbf94e030e860a222add6498824c66930d
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 6c2514bd078cc3feee4bd2802cf314079b824311
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615403"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022116"
 ---
 # <a name="in-store-analytics-architecture"></a>Architektura analýzy v úložišti
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Analytická řešení v obchodě umožňují sledovat různé podmínky v rámci prostředí maloobchodního obchodu. Tato řešení lze sestavit pomocí jedné z šablon aplikací v rámci IoT Central a architektury uvedenou níže jako doprovodné materiály.
+
+Analytická řešení v obchodě umožňují sledovat různé podmínky v rámci prostředí maloobchodního obchodu. Tato řešení lze sestavit pomocí jedné z šablon aplikací v rámci IoT Central a níže uvedenou architekturou jako doprovodné materiály.
 
 
 ![Azure IoT Central Store Analytics](./media/architecture/store-analytics-architecture-frame.png)
@@ -35,7 +35,7 @@ Pojďme se podívat na klíčové komponenty, které obecně hrají součást v 
 
 ## <a name="condition-monitoring-sensors"></a>Senzory monitorování podmínek
 
-Řešení IoT začíná sadou senzorů, které zachytí smysluplné signály z maloobchodního prostředí v obchodě. Projeví se v nejrůznějších senzorech úplně vlevo od diagramu architektury výše.
+Řešení IoT začíná sadou senzorů, které zachytí smysluplné signály z maloobchodního prostředí v obchodě. Projeví se v různých druzích senzorů úplně vlevo od diagramu architektury výše.
 
 ## <a name="gateway-devices"></a>Zařízení brány
 
@@ -43,7 +43,7 @@ Mnoho senzorů IoT může zacházet s nezpracovanými signály přímo do cloudu
 
 ## <a name="iot-central-application"></a>IoT Central aplikace
 
-Aplikace Azure IoT Central ingestuje data z nejrůznějších senzorů IoT, stejně jako zařízení brány v rámci prostředí maloobchodního obchodu a vygeneruje sadu smysluplných přehledů.
+Aplikace IoT Central v Azure ingestuje data z různých druhů IoT snímačů, a to i zařízení brány v rámci maloobchodního prostředí v prodejnách a generuje sadu smysluplných přehledů.
 
 Azure IoT Central také poskytuje přizpůsobené prostředí pro operátora Store, které umožňuje vzdáleně monitorovat a spravovat zařízení infrastruktury.
 
@@ -51,8 +51,8 @@ Azure IoT Central také poskytuje přizpůsobené prostředí pro operátora Sto
 Aplikace Azure IoT Central v rámci řešení se dá nakonfigurovat tak, aby exportovali nezpracované nebo agregované poznatky do sady služeb Azure PaaS (platforma jako služba), které můžou provádět manipulaci s daty a rozšiřovat tyto přehledy před jejich vyvoláním do firmy. použití. 
 
 ## <a name="business-application"></a>Obchodní aplikace
-Data IoT je možné použít k napájení v různých podnikových aplikacích nasazených v rámci maloobchodního prostředí. Manažer maloobchodního prodejna nebo zaměstnanec může využít tyto aplikace k vizualizaci obchodních přehledů a provádět smysluplné akce v reálném čase. Pokud se chcete dozvědět, jak vytvořit řídicí panel Power BI v reálném čase pro maloobchodní tým, postupujte prosím podle tohoto [kurzu](./tutorial-in-store-analytics-create-app-pnp.md).
+Data IoT se dají použít k napájení různých druhů podnikových aplikací nasazených v rámci maloobchodního prostředí. Manažer maloobchodního obchodu nebo zaměstnanec může tyto aplikace využívat k vizualizaci obchodních přehledů a provádět smysluplné akce v reálném čase. Pokud chcete zjistit, jak vytvořit řídicí panel Power BI v reálném čase pro maloobchodní tým, postupujte podle tohoto [kurzu](./tutorial-in-store-analytics-create-app-pnp.md).
 
 ## <a name="next-steps"></a>Další kroky
 * Začněte s [rezervací analýz v rámci obchodu](https://aka.ms/checkouttemplate) a v šablonách aplikací [monitorování podmínek analýzy v úložišti](https://aka.ms/conditiontemplate) . 
-* Podívejte se na úvodní [kurz](https://aka.ms/storeanalytics-tutorial) , který vás provede vytvořením řešení s využitím jedné z šablon aplikací pro analýzu v rámci úložiště.
+* Podívejte se na úvodní [kurz](https://aka.ms/storeanalytics-tutorial) , který vás provede vytvořením řešení pomocí jedné z šablon aplikací pro analýzu v úložišti.

@@ -2,21 +2,21 @@
 title: Proměnné prostředí modulu runtime úkolu – Azure Batch | Microsoft Docs
 description: Doprovodné materiály k proměnnou prostředí modulu runtime úlohy a referenční informace pro Azure Batch Analytics.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.assetid: ''
 ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 09/12/2019
-ms.author: jushiman
-ms.openlocfilehash: fd3c8ac9e65f7f77be070e1d1d108490e61eb248
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: b6a9e21157884c86577b498671e4cfd0bc6068cd
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027188"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020195"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Proměnné prostředí Azure Batch runtime
 

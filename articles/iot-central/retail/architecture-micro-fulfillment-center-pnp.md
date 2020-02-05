@@ -9,18 +9,16 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 35f99abaf5e0142c29d6dd43c968b66b21a28a50
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f752c77a6a62b9b259a8bb1869ca03ff6a19b1f5
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75899213"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020875"
 ---
 # <a name="micro-fulfillment-center-architecture"></a>Architektura Micro-splního centra
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
-
-Řešení pro vyplňování vám umožňují digitálně propojit, monitorovat a spravovat všechny aspekty plně automatizovaného centra plnění a snížit tak náklady tím, že se při zvyšování zabezpečení a celkové efektivity sníží prostoje. Tato řešení lze sestavit pomocí jedné z šablon aplikací v rámci IoT Central a architektury uvedenou níže jako doprovodné materiály.
+Řešení pro vyplňování vám umožňují digitálně propojit, monitorovat a spravovat všechny aspekty plně automatizovaného centra plnění a snížit tak náklady tím, že se při zvyšování zabezpečení a celkové efektivity sníží prostoje. Tato řešení lze sestavit pomocí jedné z šablon aplikací v rámci IoT Central a níže uvedenou architekturou jako doprovodné materiály.
 
 ![Azure IoT Central Store Analytics](./media/architecture/micro-fulfillment-center-architecture-frame.png)
 
@@ -34,11 +32,11 @@ Pojďme se podívat na klíčové komponenty, které obvykle hrají součást v 
 
 ## <a name="robotic-carriers"></a>Robotní operátoři
 
-Řešení pro mikroplnění do středu bude pravděpodobně mít velkou sadu robotických dopravců generujících celou řadu signálů telemetrie. Tyto signály můžou být ingestované zařízením brány, agregované a pak odesílány IoT Central tak, jak se projeví na levé straně diagramu architektury.  
+Řešení pro mikroplnění do středu bude pravděpodobně mít velkou sadu automatických dopravců generujících různé druhy signálů telemetrie. Tyto signály můžou být ingestované zařízením brány, agregované a pak odesílány IoT Central tak, jak se projeví na levé straně diagramu architektury.  
 
 ## <a name="condition-monitoring-sensors"></a>Senzory monitorování podmínek
 
-Řešení IoT začíná sadou senzorů, které zachytí smysluplné signály v rámci vašeho centra pro splnění. Projeví se v nejrůznějších senzorech úplně vlevo od diagramu architektury výše.
+Řešení IoT začíná sadou senzorů, které zachytí smysluplné signály v rámci vašeho centra pro splnění. Odrazí se v různých druzích senzorů úplně vlevo od diagramu architektury výše.
 
 ## <a name="gateway-devices"></a>Zařízení brány
 
@@ -46,7 +44,7 @@ Mnoho senzorů IoT může zacházet s nezpracovanými signály přímo do cloudu
 
 ## <a name="iot-central-application"></a>IoT Central aplikace
 
-Aplikace Azure IoT Central ingestuje data z nejrůznějších senzorů IoT, robotů, stejně jako zařízení brány v prostředí doplňování a vygeneruje sadu smysluplných přehledů.
+Aplikace IoT Central v Azure ingestuje data z různých druhů IoT snímačů, robotů, stejně jako zařízení brány v rámci prostředí pro splnění a vygeneruje sadu smysluplných přehledů.
 
 Azure IoT Central také poskytuje přizpůsobené prostředí pro operátora Store, které umožňuje vzdáleně monitorovat a spravovat zařízení infrastruktury.
 
@@ -54,8 +52,8 @@ Azure IoT Central také poskytuje přizpůsobené prostředí pro operátora Sto
 Aplikace Azure IoT Central v rámci řešení se dá nakonfigurovat tak, aby exportovali nezpracované nebo agregované poznatky do sady služeb Azure PaaS (platforma jako služba), které můžou provádět manipulaci s daty a rozšiřovat tyto přehledy před jejich vyvoláním do firmy. použití. 
 
 ## <a name="business-application"></a>Obchodní aplikace
-Data IoT je možné použít k napájení v různých podnikových aplikacích nasazených v rámci maloobchodního prostředí. Správce plnění nebo zaměstnanec může využít tyto aplikace k vizualizaci obchodních přehledů a provádět smysluplné akce v reálném čase. Pokud chcete zjistit, jak vytvořit řídicí panel Power BI v reálném čase pro maloobchodní tým, postupujte podle tohoto [kurzu](./tutorial-in-store-analytics-create-app-pnp.md).
+Data IoT se dají použít k napájení různých druhů podnikových aplikací nasazených v rámci maloobchodního prostředí. Správce plnění nebo zaměstnanec může využít tyto aplikace k vizualizaci obchodních přehledů a provádět smysluplné akce v reálném čase. Pokud chcete zjistit, jak vytvořit řídicí panel Power BI v reálném čase pro maloobchodní tým, postupujte podle tohoto [kurzu](./tutorial-in-store-analytics-create-app-pnp.md).
 
 ## <a name="next-steps"></a>Další kroky
 * Začněte s šablonou aplikace [centra pro vyplňování](https://aka.ms/checkouttemplate) . 
-* Podívejte se na [kurz](https://aka.ms/mfc-tutorial) , který vás provede vytvořením řešení s využitím šablony aplikace pro vyřizování softwaru.
+* Podívejte se na [kurz](https://aka.ms/mfc-tutorial) , který vás provede vytvořením řešení pomocí šablony aplikace pro vyplňování.

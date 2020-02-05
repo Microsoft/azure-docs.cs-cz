@@ -3,8 +3,8 @@ title: Vytvoření závislostí úloh pro spouštění úloh – Azure Batch
 description: Vytvořte úkoly, které závisí na dokončení dalších úloh pro zpracování MapReduce stylu a podobných úloh velkých objemů dat v Azure Batch.
 services: batch
 documentationcenter: .net
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: b8d12db5-ca30-4c7d-993a-a05af9257210
 ms.service: batch
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 733c6e0fb178ed246ac77e0783225ddd642a5fed
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: ca771117e889afc8e143c4ca4626ab2d3bb4da2f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76937772"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022898"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Vytváření závislostí úloh pro spouštění úloh, které jsou závislé na jiných úkolech
 

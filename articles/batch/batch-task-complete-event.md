@@ -2,21 +2,21 @@
 title: Událost dokončení úlohy Azure Batch
 description: Referenční informace pro událost dokončení dávkové úlohy Tato událost je generována po dokončení úkolu bez ohledu na ukončovací kód.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.assetid: ''
 ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: jushiman
-ms.openlocfilehash: 2f591330df4a3757ba1f5c6be1a34955c4cc2fa6
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.author: labrenne
+ms.openlocfilehash: 0fee5f071d5c7005e466bf4c3d0c1d0a7db24731
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76937737"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022915"
 ---
 # <a name="task-complete-event"></a>Událost dokončení úlohy
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
-ms.openlocfilehash: abfd96eae38bf7c0ad145c2c262efc044b741cea
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 176cd9b0bf72a123bc644ebc27ee0e091aa54e97
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936723"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024615"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Typy IP adres a metody přidělování v Azure
 
@@ -33,7 +33,7 @@ Prostřednictvím předpony veřejné IP adresy můžete vytvořit také souvisl
 > Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  Tento článek se věnuje modelu nasazení Resource Manager, který Microsoft doporučuje pro většinu nových nasazení namísto [klasického modelu nasazení](virtual-network-ip-addresses-overview-classic.md).
 > 
 
-Pokud už klasický model nasazení znáte, prohlédněte si [rozdíly v IP adresování mezi klasickým nasazením a nasazením Resource Manageru](/previous-versions/azure/virtual-network-ip-addresses-overview-classic.md#differences-between-resource-manager-and-classic-deployments).
+Pokud už klasický model nasazení znáte, prohlédněte si [rozdíly v IP adresování mezi klasickým nasazením a nasazením Resource Manageru](/previous-versions/azure/virtual-network/virtual-network-ip-addresses-overview-classic#differences-between-resource-manager-and-classic-deployments).
 
 ## <a name="public-ip-addresses"></a>Veřejné IP adresy
 

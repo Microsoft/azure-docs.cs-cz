@@ -7,16 +7,16 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 90d171e3353061ffd855d9132c8a7fe40116e3cd
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 93a77d73b5cc249c39609f98f055a7b1927dd6ed
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984083"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025482"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Kurz: nasazení a procházení šablonou aplikace digitálního distribučního centra
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 V tomto kurzu se dozvíte, jak začít tím, že nasadíte šablonu aplikace IoT Central **digital Distribution Center** . Naučíte se, jak nasadit šablonu, co je součástí okna a co byste chtěli udělat dál.
 
@@ -116,4 +116,4 @@ Pokud nebudete tuto aplikaci nadále používat, odstraňte šablonu aplikace na
 ## <a name="next-steps"></a>Další kroky
 * Další informace o [konceptu služby](./architecture-digital-distribution-center-pnp.md) digital Distribution Center pro digitální distribuci
 * Další informace o jiných [šablonách IoT Central maloobchodních prodejů](./overview-iot-central-retail-pnp.md)
-* Další informace o IoT Central najdete v tématu [IoT Central Overview](../preview/overview-iot-central.md) .
+* Další informace o IoT Central najdete v tématu [IoT Central Overview](../core/overview-iot-central.md) .

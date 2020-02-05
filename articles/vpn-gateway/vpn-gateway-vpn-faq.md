@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: 50b751d8e4e1a69a34e6421884f8b99c3eeb5924
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c556b71acf814203a67317039dafeede5f7b65a6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895978"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016744"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway – nejčastější dotazy
 
@@ -66,16 +66,17 @@ Brány založené na zásadách implementují sítě VPN založené na zásadác
 
 ### <a name="what-is-a-route-based-dynamic-routing-gateway"></a>Co je to brána založená na směrování (s dynamickým směrováním)?
 
-Brány založené na směrování implementují sítě VPN založené na směrování. Sítě VPN založené na směrování používají ke směrování paketů do příslušných rozhraní tunelových propojení „trasy“ v tabulce předávání IP nebo směrovací tabulce IP. Rozhraní tunelového propojení potom šifrují nebo dešifrují pakety směřující do tunelových propojení nebo z nich. Zásady nebo selektor provozu pro sítě VPN založené na směrování používají konfiguraci typu any-to-any (se zástupnými znaky).
+Brány založené na směrování implementují sítě VPN založené na směrování. Sítě VPN založené na směrování používají ke směrování paketů do příslušných rozhraní tunelových propojení „trasy“ v tabulce předávání IP nebo směrovací tabulce IP. Rozhraní tunelového propojení potom zašifruje nebo dešifruje pakety směřující do tunelových propojení nebo z nich. Zásady nebo selektor provozu pro sítě VPN založené na směrování používají konfiguraci typu any-to-any (se zástupnými znaky).
 
-### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Můžu aktualizovat bránu VPN založenou na zásadách tak, aby byla založená na směrování?
+### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Můžu aktualizovat moji bránu VPN založenou na zásadách na základě směrování?
+
 Ne. Typ brány virtuální sítě Azure se nedá změnit ze zásad, které jsou založené na směrování nebo jiným způsobem. Brána se musí odstranit a znovu vytvořit a tento proces trvá přibližně 60 minut. IP adresa brány ani předsdílený klíč (PSK) se nezachovají.
 1. Odstraňte všechna připojení přidružená k bráně, která se má odstranit.
 1. Odstraňte bránu:
-1. [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
-1. [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-1. [Azure PowerShell – Classic](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-1. [Vytvoření nové brány požadovaného typu a dokončení nastavení sítě VPN](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)
+   - [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+   - [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
+   - [Azure PowerShell – klasický](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+1. [Vytvořte novou bránu typu, který chcete, a dokončete nastavení sítě VPN](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway).
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>Potřebuji GatewaySubnet?
 
@@ -89,11 +90,15 @@ Ne.
 
 ### <a name="can-i-get-my-vpn-gateway-ip-address-before-i-create-it"></a>Je možné získat IP adresu brány VPN předtím, než se vytvoří?
 
-Ne. Nejprve je třeba vytvořit bránu, aby se získala IP adresa. Pokud bránu VPN odstraníte a znovu vytvoříte, IP adresa se změní.
+Neredundantní brány a brány oblastí (skladové položky brány, které _AZ_ v názvu) spoléhají na _standardní SKU_ prostředku veřejné IP adresy Azure. Prostředky veřejné IP adresy standardní SKU Azure musí používat metodu statického přidělení. Proto budete mít veřejnou IP adresu pro bránu VPN hned po vytvoření prostředku veřejné IP adresy standardní SKU, který pro něj máte v úmyslu použít.
+
+Pro brány neredundantních a negeografických bran (SKU brány, které _nepoužívají_ _AZ_ v názvu) nemůžete získat IP adresu brány VPN dřív, než se vytvoří. IP adresa se změní jenom v případě, že bránu VPN odstraníte a znovu vytvoříte.
 
 ### <a name="can-i-request-a-static-public-ip-address-for-my-vpn-gateway"></a>Je možné vyžádat si pro bránu VPN statickou veřejnou IP adresu?
 
-Ne. Podporuje se pouze dynamické přiřazení IP adresy. To ale neznamená, že se IP adresa po přiřazení k vaší bráně VPN bude měnit. Změna IP adresy brány VPN proběhne pouze v případě odstranění a nového vytvoření brány. V případě změny velikosti, resetování nebo jiné operace údržby/upgradu vaší brány VPN se veřejná IP adresa brány VPN nezmění. 
+Jak je uvedeno výše, brány redundantní v zóně a oblasti oblastí (skladové položky brány, které _AZ_ v názvu) závisí na prostředku veřejné IP adresy _Standard SKU_ Azure. Prostředky veřejné IP adresy standardní SKU Azure musí používat metodu statického přidělení.
+
+Pro brány neredundantních a negeografických zón (SKU brány, které _nepoužívají_ _AZ_ v názvu) se podporuje jenom přiřazování dynamických IP adres. To ale neznamená, že se IP adresa po přiřazení k vaší bráně VPN bude měnit. Jediná IP adresa brány VPN se změní jenom v případě, že se brána odstraní a pak se znovu vytvoří. Veřejná IP adresa brány VPN se při změně velikosti, resetování nebo dokončení jiné interní údržby a upgradu vaší brány VPN nemění.
 
 ### <a name="how-does-my-vpn-tunnel-get-authenticated"></a>Jak se tunelové připojení sítě VPN ověřuje?
 

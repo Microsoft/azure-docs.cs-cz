@@ -2,19 +2,19 @@
 title: Rozhraní API a nástroje pro vývojáře – Azure Batch | Microsoft Docs
 description: Přečtěte si o dostupných rozhraních API a nástrojích pro vývoj řešení pomocí služby Azure Batch.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: a353651fa045b146b257432c812c73bec9485566
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 00d2a74946957f690979eec1d3a03a9b766299d8
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027359"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025873"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Přehled rozhraní API a nástrojů služby Batch
 
@@ -42,7 +42,7 @@ Vaše aplikace a služby mohou provádět přímá volání rozhraní REST API n
 | **Batch REST** |[docs.microsoft.com][batch_rest] |Nevztahuje se |- |- | [Podporované verze](/rest/api/batchservice/batch-service-rest-api-versioning) |
 | **Batch .NET** |[docs.microsoft.com][api_net] |[NuGet][api_net_nuget] |[Kurz](tutorial-parallel-dotnet.md) |[GitHub][api_sample_net] | [Poznámky k verzi](https://aka.ms/batch-net-dataplane-changelog) |
 | **Batch Python** |[docs.microsoft.com][api_python] |[PyPI][api_python_pypi] |[Kurz](tutorial-parallel-python.md)|[GitHub][api_sample_python] | [Soubor Readme](https://github.com/Azure/azure-sdk-for-python/blob/master/doc/batch.rst) |
-| **Batch Node.js** |[docs.microsoft.com][api_nodejs] |[npm][api_nodejs_npm] |[Kurz](batch-nodejs-get-started.md) |- | [Soubor Readme](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
+| **Batch Node.js** |[docs.microsoft.com][api_nodejs] |[NPM][api_nodejs_npm] |[Kurz](batch-nodejs-get-started.md) |- | [Soubor Readme](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
 | **Batch Java** |[docs.microsoft.com][api_java] |[Maven][api_java_jar] |- |[Soubor Readme][api_sample_java] | [Soubor Readme](https://github.com/Azure/azure-batch-sdk-for-java)|
 
 ## <a name="batch-management-apis"></a>Rozhraní API služby Batch Management
@@ -54,7 +54,7 @@ Rozhraní API Azure Resource Manageru pro službu Batch poskytují programový p
 | **Správa služby Batch pomocí REST** |[docs.microsoft.com][api_rest_mgmt] |Nevztahuje se |- |[GitHub](https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts) |
 | **Knihovna Batch Management .NET** |[docs.microsoft.com][api_net_mgmt] |[NuGet][api_net_mgmt_nuget] | [Kurz](batch-management-dotnet.md) |[GitHub][api_sample_net] |
 | **Správa služby Batch pomocí Pythonu** |[docs.microsoft.com][api_python_mgmt] |[PyPI][api_python_mgmt_pypi] |- |- |
-| **Správa služby Batch pomocí Node.js** |[docs.microsoft.com][api_nodejs_mgmt] |[npm][api_nodejs_mgmt_npm] |- |- | 
+| **Správa služby Batch pomocí Node.js** |[docs.microsoft.com][api_nodejs_mgmt] |[NPM][api_nodejs_mgmt_npm] |- |- | 
 | **Správa služby Batch pomocí Javy** |- |[Maven][api_java_mgmt_jar] |- |- |
 ## <a name="batch-command-line-tools"></a>Nástroje příkazového řádku služby Batch
 

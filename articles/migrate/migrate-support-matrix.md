@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení pro službu Azure Mi
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.author: raynew
-ms.openlocfilehash: 81939292885e33ec6397eb4a437bef63b4ad0787
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5c3adecf62f9bd15c820baf116dbc01e5d3542fa
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990721"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77014007"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrateová matice podpory
 
@@ -66,7 +66,7 @@ Aby Azure Migrate fungoval s Azure, budete potřebovat tato oprávnění předt�
 **Úkol** | **Oprávnění** | **Podrobnosti**
 --- | --- | ---
 Vytvoření projektu Azure Migrate | Váš účet Azure potřebuje oprávnění k vytvoření projektu. | Nastavte pro [VMware](tutorial-prepare-vmware.md#assign-permissions-to-create-project), [Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-create-project)nebo [fyzické servery](tutorial-prepare-physical.md#assign-permissions-to-create-project).
-Registrace zařízení Azure Migrate | Azure Migrate využívá odlehčené [Azure Migrate zařízení](migrate-appliance.md) k vyhodnocení virtuálních počítačů VMware pomocí posouzení Azure Migrate serveru a spouštění migrace virtuálních počítačů VMware bez [agenta](server-migrate-overview.md) pomocí migrace serveru Azure Migrate. Toto zařízení vyhledá virtuální počítače a odešle údaje o metadatech a výkonu virtuálních počítačů do Azure Migrate.<br/><br/> Během registrace Azure Migrate vytvoří dvě aplikace Azure Active Directory (Azure AD), které zařízení jednoznačně identifikují, a potřebuje oprávnění k vytváření těchto aplikací.<br/><br/> – První aplikace komunikuje s koncovými body služby Azure Migrate.<br/><br/> – Druhá aplikace přistupuje k Azure Key Vault vytvořenému během registrace pro ukládání informací o aplikaci Azure AD a nastavení konfigurace zařízení. | Nastavte pro [VMware](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance), [Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-register-the-appliance)nebo [fyzické servery](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance).
+Registrace zařízení Azure Migrate| Azure Migrate využívá odlehčené [Azure Migrate zařízení](migrate-appliance.md) k vyhodnocení počítačů pomocí nástroje Azure Migrateho posouzení serveru a spouštění [migrace](server-migrate-overview.md) virtuálních počítačů VMware bez agenta pomocí migrace serveru Azure Migrate. Toto zařízení zjišťuje počítače a odesílá data o metadatech a výkonu Azure Migrate.<br/><br/> Během registrace se registrace zprostředkovatelů (Microsoft. OffAzure, Microsoft. Migruj a Microsoft. klíčů) zaregistrují u předplatného, které jste zvolili v zařízení, aby předplatné fungovalo s poskytovatelem prostředků. K registraci budete potřebovat přístup pro přispěvatele nebo vlastníka k tomuto předplatnému.<br/><br/> **VMware**– během připojování Azure Migrate vytvoří dvě aplikace Azure Active Directory (Azure AD). První aplikace komunikuje mezi agenty zařízení a službou Azure Migrate. Aplikace nemá oprávnění k provedení volání správy prostředků Azure nebo přístupu k prostředkům RBAC. Druhá aplikace přistupuje k Azure Key Vault vytvořenému v předplatném uživatele jenom pro migraci VMware bez agenta. Při migraci bez agenta Azure Migrate vytvoří Key Vault pro správu přístupových klíčů k účtu úložiště replikace v rámci vašeho předplatného. Při zahájení zjišťování ze zařízení má přístup RBAC na Azure Key Vault (v tenantovi zákazníka).<br/><br/> **Hyper-V**– při připojování. Azure Migrate vytvoří jednu aplikaci Azure AD. Aplikace komunikuje mezi agenty zařízení a službou Azure Migrate. Aplikace nemá oprávnění k provedení volání správy prostředků Azure nebo přístupu k prostředkům RBAC. | Nastavte pro [VMware](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance), [Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-register-the-appliance)nebo [fyzické servery](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance).
 Vytvoření trezoru klíčů pro migraci bez agentů VMware | Pokud chcete migrovat virtuální počítače VMware s migrací Azure Migrate serveru bez agentů, Azure Migrate vytvoří Key Vault pro správu přístupových klíčů k účtu úložiště replikace v rámci vašeho předplatného. Chcete-li vytvořit trezor, nastavte oprávnění (vlastníka nebo přispěvatel a správce přístupu uživatele) na skupinu prostředků, ve které se nachází Azure Migrate projekt. | [Nastavte](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault) oprávnění.
 
 ## <a name="supported-geographies"></a>Podporovaná geografická oblast

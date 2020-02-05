@@ -4,12 +4,12 @@ description: Obnovení virtuálního počítače Azure z bodu obnovení pomocí 
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: d0b2e85fa3dfb0168c40c6b8838c7b9890c92ab6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 23e34d65a06f5fbf3ad8ce53311862c680ddebd0
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844003"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77021980"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Postup obnovení dat virtuálního počítače Azure v Azure Portal
 
@@ -187,7 +187,7 @@ K dispozici je řada běžných scénářů, ve kterých může být nutné obno
 **Obnovení virtuálních počítačů s několika řadiči domény v jedné doméně** | Pokud je možné přes síť dosáhnout jiných řadičů domény ve stejné doméně, může být řadič domény obnovený jako libovolný virtuální počítač. Pokud se jedná o poslední zbývající řadič domény v doméně, nebo se provede obnovení v izolované síti, použijte [obnovení doménové struktury](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery).
 **Obnovení více domén v jedné doménové struktuře** | Doporučujeme [obnovení doménové struktury](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery).
 **Úplné obnovení** | Hlavním rozdílem mezi virtuálními počítači Azure a místními hypervisory je, že v Azure není k dispozici žádná konzola virtuálních počítačů. Pro určité scénáře se vyžaduje konzola, jako je třeba obnovení pomocí zálohování typu úplného obnovení systému (BMR). Obnovení virtuálního počítače z trezoru je ale úplná náhrada pro BMR.
-**Obnovení virtuálních počítačů se speciálními síťovými konfiguracemi** | Mezi speciální síťové konfigurace patří virtuální počítače s využitím interního nebo externího vyrovnávání zatížení, použití více síťových adaptérů nebo více rezervovaných IP adres. Tyto virtuální počítače obnovíte pomocí [možnosti obnovit disk](#restore-disks). Tato možnost vytvoří kopii VHD do zadaného účtu úložiště a pak můžete vytvořit virtuální počítač s [interním](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/) nebo [externím](https://azure.microsoft.com/documentation/articles/load-balancer-internet-getstarted/) nástrojem pro vyrovnávání zatížení, [několika síťovými kartami](../virtual-machines/windows/multiple-nics.md)nebo [více rezervovanými IP adresami](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)v souladu s vaší konfigurací.
+**Obnovení virtuálních počítačů se speciálními síťovými konfiguracemi** | Mezi speciální síťové konfigurace patří virtuální počítače s využitím interního nebo externího vyrovnávání zatížení, použití více síťových adaptérů nebo více rezervovaných IP adres. Tyto virtuální počítače obnovíte pomocí [možnosti obnovit disk](#restore-disks). Tato možnost vytvoří kopii VHD do zadaného účtu úložiště a pak můžete vytvořit virtuální počítač s [interním](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/) nebo [externím](/azure/load-balancer/quickstart-create-standard-load-balancer-powershell) nástrojem pro vyrovnávání zatížení, [několika síťovými kartami](../virtual-machines/windows/multiple-nics.md)nebo [více rezervovanými IP adresami](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)v souladu s vaší konfigurací.
 **Skupina zabezpečení sítě (NSG) na síťové kartě nebo podsíti** | Zálohování virtuálních počítačů Azure podporuje zálohování a obnovení NSG informací na úrovni virtuální sítě, podsítě a síťové karty.
 **Virtuální počítače připojené k zóně** | Azure Backup podporuje zálohování a obnovení připnutých virtuálních počítačů v zóně. [Další informace](https://azure.microsoft.com/global-infrastructure/availability-zones/)
 
@@ -214,7 +214,7 @@ Po aktivaci operace obnovení vytvoří služba Backup úlohu pro sledování. A
 Po obnovení virtuálního počítače je potřeba poznamenat si několik věcí:
 
 - Rozšíření, která jsou přítomna během konfigurace zálohování, jsou nainstalována, ale nejsou povolena. Pokud se zobrazí problém, přeinstalujte rozšíření.
-- Pokud má zálohovaný virtuální počítač statickou IP adresu, obnovený virtuální počítač bude mít dynamickou IP adresu, aby se předešlo konfliktu. [Do obnoveného virtuálního počítače můžete přidat STATICKOU IP adresu](/previous-versions/azurevirtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm).
+- Pokud má zálohovaný virtuální počítač statickou IP adresu, obnovený virtuální počítač bude mít dynamickou IP adresu, aby se předešlo konfliktu. [Do obnoveného virtuálního počítače můžete přidat STATICKOU IP adresu](/previous-versions/azure/virtual-network/virtual-networks-reserved-private-ip#how-to-add-a-static-internal-ip-to-an-existing-vm).
 - Obnovený virtuální počítač nemá skupinu dostupnosti. Pokud použijete možnost obnovit disk, můžete [zadat skupinu dostupnosti](../virtual-machines/windows/tutorial-availability-sets.md) při vytváření virtuálního počítače z disku pomocí zadané šablony nebo PowerShellu.
 - Pokud používáte distribuci Linux založenou na cloudu, jako je například Ubuntu, z důvodu zabezpečení je heslo po obnovení zablokované. K [resetování hesla](../virtual-machines/linux/reset-password.md)použijte rozšíření VMAccess na OBNOVENém virtuálním počítači. V těchto distribucích doporučujeme používat klíče SSH, takže po obnovení nemusíte heslo resetovat.
 - Pokud nemůžete získat přístup k virtuálnímu počítači po obnovení z důvodu přerušeného vztahu k virtuálnímu počítači s řadičem domény, postupujte podle následujících kroků a zajistěte si virtuální počítač:

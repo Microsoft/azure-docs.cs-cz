@@ -11,16 +11,16 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 6fa4521cb50ecfc37004cbf9cff08644dc53f000
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 6b89b667855d827acfb7c181da014cd0d0b4bfc4
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990627"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022099"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Kurz: vytvoření analytické aplikace v obchodě v Azure IoT Central
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 V tomto kurzu se dozvíte, jak vytvořit Azure IoT Central v aplikaci pro analýzu v rámci obchodu. Ukázková aplikace je určena pro maloobchodní obchod. Jedná se o řešení běžných obchodních potřeb pro sledování a přizpůsobení podmínek obsazení a životního prostředí.
 
@@ -64,7 +64,7 @@ Vytvoření nové aplikace Azure IoT Central:
 
 1. Vyberte **Retail (maloobchod**).  Na stránce prodej se zobrazí několik šablon maloobchodních aplikací.
 
-Vytvoření nové aplikace pro rezervaci v rámci úložiště, která používá funkce verze Preview:  
+Vytvoření nové aplikace pro rezervaci v rámci úložiště:  
 
 1. Vyberte šablonu aplikace pro **analýzu v rámci úložiště** . Tato šablona obsahuje šablony zařízení pro všechna zařízení použitá v tomto kurzu s výjimkou senzorů RuuviTag. Šablona také poskytuje řídicí panel operátora pro monitorování podmínek a stavu životního prostředí a stavu zařízení. 
 
@@ -75,7 +75,7 @@ Vytvoření nové aplikace pro rezervaci v rámci úložiště, která použív�
 
 1. Pokud máte předplatné Azure, zadejte svůj *adresář, předplatné Azure a oblast*. Pokud předplatné nemáte, můžete povolit **7 dní bezplatnou zkušební verzi** a dokončit požadované kontaktní údaje.  
 
-    Další informace o adresářích a předplatných najdete v [rychlém startu k vytvoření aplikace](../preview/quick-deploy-iot-central.md).
+    Další informace o adresářích a předplatných najdete v [rychlém startu k vytvoření aplikace](../core/quick-deploy-iot-central.md).
 
 1. Vyberte **Vytvořit**.
 
@@ -84,6 +84,7 @@ Vytvoření nové aplikace pro rezervaci v rámci úložiště, která použív�
     ![Azure IoT Central vytvořit informace o fakturaci aplikace](./media/tutorial-in-store-analytics-create-app-pnp/preview-application-template-billinginfo.png)
 
 ## <a name="customize-application-settings"></a>Přizpůsobení nastavení aplikace
+
 Jako tvůrce můžete změnit několik nastavení pro přizpůsobení uživatelského prostředí aplikace. V této části vyberete předdefinovaný motiv aplikace. Volitelně se naučíte, jak vytvořit vlastní motiv a aktualizovat image aplikace. Vlastní motiv vám umožní nastavit barvy prohlížeče aplikace, ikonu prohlížeče a logo aplikace, které se zobrazí v záhlaví grafiky.
 
 Výběr předdefinovaného motivu aplikace:
@@ -162,7 +163,7 @@ Potom Přizpůsobte šablony zařízení přidáním vlastností cloudu. Vlastno
 
 Třetí, přizpůsobení šablon zařízení vytvářením vlastních zobrazení. Zobrazení umožňují operátorům vizualizovat telemetrie a metadata pro vaše zařízení, jako jsou metriky a stav zařízení.
 
-Tady použijete první dvě metody k přizpůsobení šablony zařízení pro senzory RuuviTag. Informace o vytváření zobrazení pro senzory najdete v tématu [Přidání simulovaného zařízení do rychlého startu aplikace IoT Central](../preview/quick-create-pnp-device.md) .
+Tady použijete první dvě metody k přizpůsobení šablony zařízení pro senzory RuuviTag. Informace o vytváření zobrazení pro senzory najdete v tématu [Přidání simulovaného zařízení do rychlého startu aplikace IoT Central](../core/quick-create-pnp-device.md) .
 
 Přizpůsobení vestavěných rozhraní šablony zařízení RuuviTag:
 
@@ -202,7 +203,7 @@ Zadejte následující hodnoty pro vytvoření vlastní vlastnosti pro uložení
 
 1. Zadejte *umístění* hodnoty pro **Zobrazovaný název**. Tato hodnota se automaticky zkopíruje do pole **název** , což je popisný název vlastnosti. Můžete použít zkopírovanou hodnotu nebo ji změnit.
 
-1. V rozevíracím seznamu **schématu** vyberte *řetězec* . Typ řetězce umožňuje přidružit řetězec názvu umístění k libovolnému zařízení na základě šablony. Například můžete k jednotlivým zařízením přidružit oblast v úložišti. Volitelně můžete nastavit **sémantický typ** vlastnosti na umístění a to automaticky nastaví **schéma** na *geografickou* *hodnotu.* To vám umožní přidružit k zařízení souřadnice GPS. 
+1. V rozevíracím seznamu **schématu** vyberte *řetězec* . Typ řetězce umožňuje přidružit řetězec názvu umístění k libovolnému zařízení na základě šablony. Například můžete k jednotlivým zařízením přidružit oblast v úložišti. Volitelně můžete nastavit **sémantický typ** vlastnosti na umístění a to automaticky nastaví **schéma** na *geografickou* *hodnotu.* Umožňuje přidružit k zařízení souřadnice GPS. 
 
 1. Nastavte **minimální délku** na *2*. 
 
@@ -227,10 +228,10 @@ Pro účely tohoto kurzu použijete pro sestavení aplikace následující sadu 
 > [!NOTE]
 > Pokud nemáte skutečná zařízení, můžete i přesto dokončit tento kurz vytvořením simulovaných senzorů RuuviTag. Následující pokyny obsahují kroky pro vytvoření simulovaného RuuviTag. Nemusíte vytvářet simulovanou bránu.
 
-Provedením kroků v následujících dvou článcích spojíte skutečnou Rigado bránu a snímače RuuviTag. Po dokončení se vraťte k tomuto kurzu. Vzhledem k tomu, že už jste v tomto kurzu vytvořili šablony zařízení, nemusíte je vytvářet znovu v následující sadě pokynů.
+Provedením kroků v následujících dvou článcích spojíte skutečnou Rigado bránu a snímače RuuviTag. Až budete hotovi, vraťte se k tomuto kurzu. Vzhledem k tomu, že už jste v tomto kurzu vytvořili šablony zařízení, nemusíte je vytvářet znovu v následující sadě pokynů.
 
-- Pokud chcete připojit bránu Rigado, přečtěte si článek [připojení 500 Rigado do aplikace Azure IoT Central](../preview/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json).
-- Pokud chcete připojit senzory RuuviTag, přečtěte si téma [připojení snímače RuuviTag k aplikaci Azure IoT Central](../preview/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json). V případě potřeby můžete také použít tyto pokyny k vytvoření dvou simulovaných senzorů.
+- Pokud chcete připojit bránu Rigado, přečtěte si článek [připojení 500 Rigado do aplikace Azure IoT Central](../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json).
+- Pokud chcete připojit senzory RuuviTag, přečtěte si téma [připojení snímače RuuviTag k aplikaci Azure IoT Central](../core/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json). V případě potřeby můžete také použít tyto pokyny k vytvoření dvou simulovaných senzorů.
 
 ## <a name="add-rules-and-actions"></a>Přidat pravidla a akce
 V rámci používání senzorů ve vaší aplikaci Azure IoT Central k monitorování podmínek můžete vytvořit pravidla ke spouštění akcí, když jsou splněné určité podmínky. Pravidlo je spojeno se šablonou zařízení a jedním nebo více zařízeními a obsahuje podmínky, které musí být splněny na základě telemetrie a událostí zařízení. Pravidlo má také jednu nebo více přidružených akcí. Akce můžou zahrnovat posílání e-mailových oznámení nebo aktivaci akce Webhooku pro posílání dat do jiných služeb. Šablona aplikace v rámci služby **Store Analytics – rezervace** obsahuje některá předdefinovaná pravidla pro zařízení v aplikaci.
@@ -249,7 +250,7 @@ Vytvoření pravidla:
 
 1. V části **obory**vyberte šablonu zařízení RuuviTag. Pravidlo, které definujete, bude platit pro všechny senzory založené na této šabloně. Volitelně můžete vytvořit filtr, který by pravidlo použilo jenom pro definovanou podmnožinu senzorů. 
 
-1. Jako **telemetrii**vyberte `Relative humidity`. Toto je funkce zařízení, kterou jste přizpůsobili v předchozím kroku.
+1. Jako **telemetrii**vyberte `Relative humidity`. Je to funkce zařízení, kterou jste přizpůsobili v předchozím kroku.
 
 1. Jako **operátor**vyberte `Is greater than`. 
 

@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 27cd2e58eabcd96414391cac1a517ea242a65c21
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3cf88b4d3c4c74493235d2997db4d464bb055b81
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73809808"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023748"
 ---
-# <a name="summary-of-customer-data-request-features"></a>Shrnutí funkcí žádosti o data zákazníků
+# <a name="summary-of-customer-data-request-features"></a>Souhrnné informace o zákaznická data žádosti o funkce
 
 Azure IoT Central je plně spravované řešení pro Internet věcí (IoT) typu software jako služba, které usnadňuje připojení, sledování a správu vašich prostředků IoT ve velkém měřítku, vytváření podrobných přehledů z vašich dat IoT a zajištění informování.
 
@@ -31,13 +31,11 @@ V případě zařízení společnost Microsoft neudržuje žádné informace a n
 
 Pokud používáte Microsoft Enterprise Services, společnost Microsoft vygeneruje některé informace, které se nazývají systémem generované protokoly. Tyto protokoly představují věcné akce prováděné v rámci služby a diagnostická data související s jednotlivými zařízeními a nesouvisejí s aktivitou uživatelů. Protokoly generované systémem Azure IoT Central nejsou k dispozici nebo je lze exportovat pomocí Správce aplikací.
 
-## <a name="deleting-customer-data"></a>Odstraňují se zákaznická data
+## <a name="deleting-customer-data"></a>Odstraňuje se zákaznická data
 
 Možnost odstranění uživatelských dat je zajištěna pouze prostřednictvím stránky pro správu IoT Central. Správci aplikací můžou vybrat uživatele, který se má odstranit, a vybrat **Odstranit** v pravém horním rohu aplikace a záznam odstranit. Správci aplikací můžou také odebrat jednotlivé účty, které už nejsou přidružené k dané aplikaci.
 
 Po odstranění uživatele nebudou do nich zasílány žádné další výstrahy. Jejich e-mailová adresa se ale musí jednotlivě odebrat z každé nakonfigurované výstrahy.
-
-Další informace najdete v tématu [Konfigurace pravidel a akcí pro vaše zařízení](tutorial-configure-rules.md).
 
 ## <a name="exporting-customer-data"></a>Export zákaznických dat
 

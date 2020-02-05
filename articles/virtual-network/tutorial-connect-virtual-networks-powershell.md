@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 63584eedb0e51ddbca0d644bc17db3facd9225b5
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 18a252e1e169aeb094e4aa6a507ff1e3d5ee931f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164017"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022065"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-powershell"></a>Propojení virtuálních sítí s využitím partnerského vztahu virtuálních sítí pomocí PowerShellu
 
@@ -208,6 +208,6 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak propojit dvě sítě ve stejné oblasti Azure s partnerským vztahem virtuální sítě. Můžete vytvářet také partnerské vztahy virtuálních sítí v různých [podporovaných oblastech](virtual-network-manage-peering.md#cross-region) a [různých předplatných Azure](create-peering-different-subscriptions.md#powershell), stejně jako vytvářet [návrhy hvězdicovitých sítí](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) s partnerskými vztahy. Další informace o partnerských vztazích virtuálních sítí najdete v tématech [Přehled partnerských vztahů virtuálních sítí](virtual-network-peering-overview.md) a [Správa partnerských vztahů virtuálních sítí](virtual-network-manage-peering.md).
+V tomto článku jste zjistili, jak propojit dvě sítě ve stejné oblasti Azure s partnerským vztahem virtuální sítě. Můžete vytvářet také partnerské vztahy virtuálních sítí v různých [podporovaných oblastech](virtual-network-manage-peering.md#cross-region) a [různých předplatných Azure](create-peering-different-subscriptions.md#powershell), stejně jako vytvářet [návrhy hvězdicovitých sítí](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering) s partnerskými vztahy. Další informace o partnerských vztazích virtuálních sítí najdete v tématech [Přehled partnerských vztahů virtuálních sítí](virtual-network-peering-overview.md) a [Správa partnerských vztahů virtuálních sítí](virtual-network-manage-peering.md).
 
 [Vlastní počítač můžete připojit k virtuální síti](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) pomocí sítě VPN a pracovat s prostředky ve virtuální síti nebo v partnerských virtuálních sítích. Aby bylo možné opakovaně použitelným skriptům dokončit mnoho úloh popsaných v článcích o virtuální síti, přečtěte si téma [ukázky skriptů](powershell-samples.md).

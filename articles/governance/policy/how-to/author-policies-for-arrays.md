@@ -3,12 +3,12 @@ title: Vytváření zásad pro vlastnosti polí u prostředků
 description: Naučte se pracovat s parametry pole a výrazy jazyka pole, vyhodnotit alias [*] a přidat prvky pomocí pravidel Definice Azure Policy.
 ms.date: 11/26/2019
 ms.topic: how-to
-ms.openlocfilehash: 915f50945e0c2520fbda09c4db1b581c9381073b
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 462d9acbda37bbbd007af6d6d1267e9b0e7d3e0a
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873093"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023187"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Vytváření zásad pro vlastnosti pole v prostředcích Azure
 
@@ -140,7 +140,8 @@ Očekávaným **typem** podmínky `equals` je _řetězec_. Vzhledem k tomu, že 
 
 ### <a name="evaluating-the--alias"></a>Vyhodnocení aliasu [*]
 
-Aliasy, které mají **\[\*\]** připojeny k jejich názvu, označují, že **typ** je _pole_. Místo vyhodnocení hodnoty celého pole **\[\*\]** umožňuje vyhodnotit každý prvek pole. Existují tři standardní scénáře, které jsou pro vyhodnocení každé položky užitečné: žádné, žádné a všechny. U složitých scénářů použijte [počet](../concepts/definition-structure.md#count).
+Aliasy, které mají **\[\*\]** připojeny k jejich názvu, označují, že **typ** je _pole_. Místo vyhodnocení hodnoty celého pole **\[\*\]** umožňuje vyhodnotit každý prvek pole individuálně, s logickými hodnotami a mezi nimi. Existují tři standardní scénáře, které jsou pro vyhodnocení každé položky užitečné: _žádné_, _žádné_nebo _všechny_ prvky se shodují.
+U složitých scénářů použijte [počet](../concepts/definition-structure.md#count).
 
 Modul zásad aktivuje **efekt** v **a pak** jenom v případě, že se pravidlo **if** vyhodnotí jako true.
 Tento fakt je důležitý pro pochopení v kontextu způsobu, jakým **\[\*\]** vyhodnocuje každý jednotlivý prvek pole.
@@ -183,16 +184,16 @@ U každého příkladu podmínky nahraďte `<field>` `"field": "Microsoft.Storag
 
 Následující výsledky jsou výsledkem kombinace podmínky a ukázkového pravidla zásad a pole stávajících hodnot výše:
 
-|Podmínka |Výsledek |Vysvětlení |
-|-|-|-|
-|`{<field>,"notEquals":"127.0.0.1"}` |Nic |Jeden prvek pole se vyhodnotí jako false (127.0.0.1! = 127.0.0.1) a jeden jako true (127.0.0.1! = 192.168.1.1), takže podmínka **notEquals** je _nepravdivá_ a efekt se neaktivuje. |
-|`{<field>,"notEquals":"10.0.4.1"}` |Vliv na zásady |Obě prvky pole se vyhodnocují jako true (10.0.4.1! = 127.0.0.1 a 10.0.4.1! = 192.168.1.1), takže podmínka **notEquals** je _pravdivá_ a výsledek se aktivuje. |
-|`"not":{<field>,"Equals":"127.0.0.1"}` |Vliv na zásady |Jeden prvek pole se vyhodnotí jako true (127.0.0.1 = = 127.0.0.1) a jeden jako false (127.0.0.1 = = 192.168.1.1), takže podmínka **Equals** je _false_. Logický operátor se vyhodnotí jako true (**ne** _false_), takže se efekt aktivuje. |
-|`"not":{<field>,"Equals":"10.0.4.1"}` |Vliv na zásady |Obě prvky pole jsou vyhodnoceny jako false (10.0.4.1 = = 127.0.0.1 a 10.0.4.1 = = 192.168.1.1), takže podmínka **Equals** je _false_. Logický operátor se vyhodnotí jako true (**ne** _false_), takže se efekt aktivuje. |
-|`"not":{<field>,"notEquals":"127.0.0.1" }` |Vliv na zásady |Jeden prvek pole se vyhodnotí jako false (127.0.0.1! = 127.0.0.1) a jeden jako true (127.0.0.1! = 192.168.1.1), takže podmínka **notEquals** je _NEPRAVDA_. Logický operátor se vyhodnotí jako true (**ne** _false_), takže se efekt aktivuje. |
-|`"not":{<field>,"notEquals":"10.0.4.1"}` |Nic |Obě prvky pole jsou vyhodnoceny jako true (10.0.4.1! = 127.0.0.1 a 10.0.4.1! = 192.168.1.1), takže podmínka **notEquals** je _pravdivá_. Logický operátor se vyhodnotí jako false (**ne** _true_), takže se efekt neaktivuje. |
-|`{<field>,"Equals":"127.0.0.1"}` |Nic |Jeden prvek pole se vyhodnotí jako true (127.0.0.1 = = 127.0.0.1) a jeden jako false (127.0.0.1 = = 192.168.1.1), takže podmínka **Equals** je _false_ a efekt se neaktivuje. |
-|`{<field>,"Equals":"10.0.4.1"}` |Nic |Obě prvky pole jsou vyhodnoceny jako false (10.0.4.1 = = 127.0.0.1 a 10.0.4.1 = = 192.168.1.1), takže podmínka **Equals** je _false_ a účinek není aktivován. |
+|Podmínka |Výsledek | Scénář |Vysvětlení |
+|-|-|-|-|
+|`{<field>,"notEquals":"127.0.0.1"}` |Žádným |Žádná shoda |Jeden prvek pole se vyhodnotí jako false (127.0.0.1! = 127.0.0.1) a jeden jako true (127.0.0.1! = 192.168.1.1), takže podmínka **notEquals** je _nepravdivá_ a efekt se neaktivuje. |
+|`{<field>,"notEquals":"10.0.4.1"}` |Vliv na zásady |Žádná shoda |Obě prvky pole se vyhodnocují jako true (10.0.4.1! = 127.0.0.1 a 10.0.4.1! = 192.168.1.1), takže podmínka **notEquals** je _pravdivá_ a výsledek se aktivuje. |
+|`"not":{<field>,"notEquals":"127.0.0.1" }` |Vliv na zásady |Jedna nebo více shod |Jeden prvek pole se vyhodnotí jako false (127.0.0.1! = 127.0.0.1) a jeden jako true (127.0.0.1! = 192.168.1.1), takže podmínka **notEquals** je _NEPRAVDA_. Logický operátor se vyhodnotí jako true (**ne** _false_), takže se efekt aktivuje. |
+|`"not":{<field>,"notEquals":"10.0.4.1"}` |Žádným |Jedna nebo více shod |Obě prvky pole jsou vyhodnoceny jako true (10.0.4.1! = 127.0.0.1 a 10.0.4.1! = 192.168.1.1), takže podmínka **notEquals** je _pravdivá_. Logický operátor se vyhodnotí jako false (**ne** _true_), takže se efekt neaktivuje. |
+|`"not":{<field>,"Equals":"127.0.0.1"}` |Vliv na zásady |Neshoda |Jeden prvek pole se vyhodnotí jako true (127.0.0.1 = = 127.0.0.1) a jeden jako false (127.0.0.1 = = 192.168.1.1), takže podmínka **Equals** je _false_. Logický operátor se vyhodnotí jako true (**ne** _false_), takže se efekt aktivuje. |
+|`"not":{<field>,"Equals":"10.0.4.1"}` |Vliv na zásady |Neshoda |Obě prvky pole jsou vyhodnoceny jako false (10.0.4.1 = = 127.0.0.1 a 10.0.4.1 = = 192.168.1.1), takže podmínka **Equals** je _false_. Logický operátor se vyhodnotí jako true (**ne** _false_), takže se efekt aktivuje. |
+|`{<field>,"Equals":"127.0.0.1"}` |Žádným |Všechny shody |Jeden prvek pole se vyhodnotí jako true (127.0.0.1 = = 127.0.0.1) a jeden jako false (127.0.0.1 = = 192.168.1.1), takže podmínka **Equals** je _false_ a efekt se neaktivuje. |
+|`{<field>,"Equals":"10.0.4.1"}` |Žádným |Všechny shody |Obě prvky pole jsou vyhodnoceny jako false (10.0.4.1 = = 127.0.0.1 a 10.0.4.1 = = 192.168.1.1), takže podmínka **Equals** je _false_ a účinek není aktivován. |
 
 ## <a name="the-append-effect-and-arrays"></a>Efekt připojení a pole
 

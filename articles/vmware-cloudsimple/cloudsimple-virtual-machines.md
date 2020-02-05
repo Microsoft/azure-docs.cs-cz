@@ -1,7 +1,7 @@
 ---
-title: Přehled virtuálních počítačů
-titleSuffix: Azure VMware Solution by CloudSimple
-description: Seznamte se s CloudSimple virtuálními počítači a jejich výhodami.
+title: Azure VMware Solutions (AVS) – přehled virtuálních počítačů
+description: Přečtěte si o virtuálních počítačích se AVS a jejich výhodách.
+titleSuffix: Azure VMware Solutions (AVS)
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -9,28 +9,28 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 436a5ab6fb286ce206f981487b6a29d774ecd1a1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0e6cc6d51e37cea98cc553a236295311d21f595a
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372785"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024904"
 ---
-# <a name="cloudsimple-virtual-machines-overview"></a>Přehled virtuálních počítačů s CloudSimple
+# <a name="avs-virtual-machines-overview"></a>Přehled virtuálních počítačů s funkcí AVS
 
-CloudSimple umožňuje správu virtuálních počítačů VMware z Azure Portal.  Cluster nebo fond zdrojů z clusteru vSphere se spravuje přes Azure, protože ho namapuje na vaše předplatné.
+Možnost AVS umožňuje správu virtuálních počítačů VMware z Azure Portal. Cluster nebo fond zdrojů z clusteru vSphere se spravuje přes Azure, protože ho namapuje na vaše předplatné.
 
-Aby bylo možné vytvořit virtuální počítač s CloudSimple z Azure, musí existovat šablona virtuálních počítačů ve vašem privátním cloudu vCenter.  Šablona se používá k přizpůsobení operačního systému a aplikací.  Šablona virtuálního počítače se dá posílit, aby splňovala podnikové zásady zabezpečení.  Šablonu můžete použít k vytvoření virtuálních počítačů a jejich využití z Azure Portal pomocí modelu samoobslužné služby.
+Pokud chcete vytvořit virtuální počítač ze služby AVS z Azure, musí existovat šablona virtuálních počítačů ve vašem privátním cloudu služby AVS. Šablona se používá k přizpůsobení operačního systému a aplikací. Šablona virtuálního počítače se dá posílit, aby splňovala podnikové zásady zabezpečení. Šablonu můžete použít k vytvoření virtuálních počítačů a jejich využití z Azure Portal pomocí modelu samoobslužné služby.
 
 ## <a name="benefits"></a>Výhody
 
-CloudSimple virtuální počítače z Azure Portal poskytují samoobslužný mechanismus pro uživatele, kteří můžou vytvářet a spravovat virtuální počítače VMware.
+Virtuální počítače služby AVS z Azure Portal poskytují samoobslužný mechanismus pro uživatele, kteří můžou vytvářet a spravovat virtuální počítače VMware.
 
-* Vytvoření virtuálního počítače s CloudSimple v privátním cloudu vCenter
+* Vytvoření virtuálního počítače služby AVS v privátním cloudu služby AVS
 * Spravovat vlastnosti virtuálního počítače
   * Přidat nebo odebrat disky
   * Přidat nebo odebrat síťové karty
-* Operace napájení pro virtuální počítač s CloudSimple
+* Operace napájení virtuálního počítače služby AVS
   * Zapnutí a vypnutí
   * Resetovat virtuální počítač
 * Odstranit virtuální počítač

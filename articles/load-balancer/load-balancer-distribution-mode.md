@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: ddccd02e7157792d942309ae4f74933322f246f9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5c50186692438be5d0922cd329c28e665310e5c2
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225377"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023527"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Konfigurace distribučního režimu nástroje pro vyrovnávání zatížení Azure
 
@@ -59,7 +59,7 @@ Jiné scénáře použití není odešlete médium. Probíhá odesílání dat p
 
 ## <a name="configure-source-ip-affinity-settings"></a>Konfigurace nastavení spřažení zdrojové IP adresy
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure
 
 Konfiguraci režimu distribuce můžete změnit úpravou pravidla vyrovnávání zatížení na portálu.
 
@@ -74,7 +74,7 @@ Konfiguraci režimu distribuce můžete změnit úpravou pravidla vyrovnávání
 
 5. Zvolte režim distribuce a pak klikněte na **Uložit**.
 
-### <a name="azure-powershell"></a>Azure Powershell
+### <a name="azure-powershell"></a>Azure PowerShell
 
 Pro virtuální počítače nasazené s Správce prostředků použijte PowerShell ke změně nastavení distribuce nástroje pro vyrovnávání zatížení pro existující pravidlo vyrovnávání zatížení. Následující příkaz aktualizuje distribuční režim: 
 
@@ -154,7 +154,7 @@ Následující příklad ukazuje, jak změnit konfiguraci distribučního režim
 
 ### <a name="change-distribution-mode-for-deployed-load-balanced-set"></a>Změnit režim distribuce pro nasazené sady s vyrovnáváním zatížení
 
-Chcete-li změnit existující konfiguraci nasazení použijte model nasazení Azure classic. Přidejte hlavičku `x-ms-version` a nastavte hodnotu na verze 2014-09-01 nebo novější.
+Chcete-li změnit existující konfiguraci nasazení použijte model nasazení Azure classic. Přidat `x-ms-version` hlavičku a hodnotu verze 2014-09-01 nastavte nebo novější.
 
 #### <a name="request"></a>Žádost
 
@@ -193,6 +193,6 @@ Jak je popsáno výše, nastavte prvek `LoadBalancerDistribution` tak, aby sourc
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přehled interních Load Balancer Azure](load-balancer-internal-overview.md)
-* [Začínáme s konfigurací internetového nástroje pro vyrovnávání zatížení](load-balancer-get-started-internet-arm-ps.md)
+* [Přehled služby Azure Internal Load Balancer](load-balancer-internal-overview.md)
+* [Začínáme s konfigurací nástroje pro vyrovnávání zatížení přístupem k Internetu](quickstart-create-standard-load-balancer-powershell.md)
 * [Konfigurace nastavení časového limitu nečinnosti protokolu TCP pro nástroj pro vyrovnávání zatížení](load-balancer-tcp-idle-timeout.md)

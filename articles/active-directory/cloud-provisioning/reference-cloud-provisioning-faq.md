@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc3c4a943f24ba1f987aa1daf513b9e05ada65a7
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: e2067bea25dae05c496c81929ae65d00565bf4f1
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76309995"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020756"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Nejčastější dotazy ke službě Azure Active Directory Connect
 
@@ -31,6 +31,10 @@ Zřizování cloudu se plánuje spouštět každé 2 minuty. Každé 2 minuty se
 **Otázka: zobrazení chyb synchronizace hodnot hash hesel při prvním spuštění. Proč?**
 
 To se očekává. Příčinou chyb je objekt uživatele, který není ve službě Azure AD přítomen. Po zřízení uživatele v Azure AD by se měly hodnoty hash hesel zřídit v následném spuštění. Počkejte na několik spuštění a potvrďte, že synchronizace hodnot hash hesel už neobsahuje chyby.
+
+**Otázka: co se stane, pokud instance služby Active Directory obsahuje atributy, které nejsou podporovány službou Cloud provisoning (např. rozšíření adresáře)?**
+
+Zřizování cloudu se spustí a zřídí podporované atributy. Nepodporované atributy se nezřídí do Azure AD. Zkontrolujte přípony adresářů ve službě Active Directory a ujistěte se, že nepotřebujete, aby tento atribut Flow do služby Azure AD. Pokud je vyžadován jeden nebo více atributů, zvažte použití Azure AD Connect synchronizaci nebo přesunutí požadovaných informací do jednoho z podporovaných atributů (například atributy rozšíření 1-15).
 
 **Otázka: Jaký je rozdíl mezi Azure AD Connect synchronizace a zřizování cloudu?**
 

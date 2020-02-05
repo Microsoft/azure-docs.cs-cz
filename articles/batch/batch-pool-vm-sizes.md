@@ -3,8 +3,8 @@ title: Zvolit velikosti virtuálních počítačů pro fondy – Azure Batch | M
 description: Jak vybrat z dostupných velikostí virtuálních počítačů pro výpočetní uzly ve fondech Azure Batch
 services: batch
 documentationcenter: ''
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/12/2019
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 34ab09f7d8d47804992b8ef6864bfea60d1c9b4d
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: be19de19dab92bc40ca5529ad578e033a98929cd
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026609"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023561"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Vyberte velikost virtuálního počítače pro výpočetní uzly ve fondu Azure Batch.
 
@@ -78,7 +78,7 @@ Fondy dávek v konfiguraci cloudové služby podporují všechny [velikosti virt
 | A-Series   | Velmi malý       |
 | Av2-series | Standard_A1_v2, Standard_A2_v2 Standard_A2m_v2 |
 
-## <a name="size-considerations"></a>Informace o velikosti
+## <a name="size-considerations"></a>Požadavky na velikost
 
 * **Požadavky na aplikaci** – zvažte charakteristiky a požadavky aplikace, které budete spouštět na uzlech. To, jestli je aplikace vícevláknová, kolik paměti používá, a další aspekty vám mohou pomoci při určování nejvhodnější a cenově nejefektivnější velikosti uzlu. Pro [úlohy MPI](batch-mpi.md) nebo CUDA aplikace v několika instancích zvažte specializované velikosti virtuálních počítačů s podporou [HPC](../virtual-machines/linux/sizes-hpc.md) nebo [GPU](../virtual-machines/linux/sizes-gpu.md) . (Viz [použití instancí podporujících technologii RDMA nebo GPU ve fondech Batch](batch-pool-compute-intensive-sizes.md).)
 

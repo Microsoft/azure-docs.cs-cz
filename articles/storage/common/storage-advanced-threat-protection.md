@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 02/04/2020
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 8efbf2107104f31bcfc5e4e5669dbed1835a034b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f9889f58ead8d1dd35ceb50fa100b2b466cbe7cf
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457412"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022388"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Konfigurace rozšířené ochrany před internetovými útoky pro Azure Storage
 
@@ -29,7 +29,7 @@ Rozšířená ochrana před internetovými útoky pro Azure Storage ingestuje di
 
 ## <a name="set-up-advanced-threat-protection"></a>Nastavení rozšířené ochrany před internetovými útoky
 
-Rozšířená ochrana před internetovými útoky je ve výchozím nastavení povolená pro váš účet úložiště. Rozšířenou ochranu před internetovými útoky můžete nakonfigurovat libovolným z několika způsobů popsaných v následujících částech.
+Rozšířenou ochranu před internetovými útoky můžete nakonfigurovat libovolným z několika způsobů popsaných v následujících částech.
 
 ### <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -55,7 +55,7 @@ Když se přihlásíte k odběru úrovně Standard v Azure Security Center, Roz�
 1. V části **Vybrat cenovou úroveň podle typu prostředku** na řádku **účty úložiště** klikněte na **povoleno** nebo **zakázáno**.
 
     ![Povolit ATP v Security Center](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
-1. Klikněte na možnost **Uložit**.
+1. Klikněte na **Uložit**.
 
 ### <a name="templatetabtemplate"></a>[Šablona](#tab/template)
 

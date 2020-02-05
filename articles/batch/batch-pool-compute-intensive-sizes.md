@@ -2,8 +2,8 @@
 title: Použití virtuálních počítačů Azure náročných na výpočetní výkon pomocí služby Batch
 description: Jak využít výhod velikosti virtuálních počítačů HPC a GPU v fondech Azure Batch. Seznamte se se závislostmi operačních systémů a podívejte se na několik příkladů scénářů.
 documentationcenter: ''
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -11,13 +11,13 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/17/2018
-ms.author: jushiman
-ms.openlocfilehash: 1fb490c6db5115edf32ff2562e43cf1084e0a6c8
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: 17cd9db1e86a66630d3b93c8295915933abb1ec2
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026792"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023595"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Použití instancí RDMA nebo GPU ve fondech Batch
 
@@ -44,7 +44,7 @@ Schopnosti RDMA nebo GPU pro velikosti náročné na výpočetní výkon ve slu�
 
 | Velikost | Schopnost | Operační systémy | Požadovaný software | Nastavení fondu |
 | -------- | -------- | ----- |  -------- | ----- |
-| [H16r, H16mr, A8, A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16,04 LTS nebo<br/>HPC založené na CentOS<br/>(Azure Marketplace) | Intel MPI 5<br/><br/>Ovladače systému Linux RDMA | Povolit komunikaci mezi uzly, zakázat souběžné provádění úloh |
+| [H16r, H16mr, A8, A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | PODPORUJÍ | Ubuntu 16,04 LTS nebo<br/>HPC založené na CentOS<br/>(Azure Marketplace) | Intel MPI 5<br/><br/>Ovladače systému Linux RDMA | Povolit komunikaci mezi uzly, zakázat souběžné provádění úloh |
 | [Řady NC, NCv2, NCv3, NDv2 Series](../virtual-machines/linux/n-series-driver-setup.md) | Grafický procesor NVIDIA Tesla (liší se podle řad) | Ubuntu 16,04 LTS nebo<br/>CentOS 7,3 nebo 7,4<br/>(Azure Marketplace) | Ovladače NVIDIA CUDA nebo CUDA Toolkit | Nevztahuje se | 
 | [NV, NVv2 Series](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16,04 LTS nebo<br/>CentOS 7.3<br/>(Azure Marketplace) | Ovladače pro MŘÍŽKu NVIDIA | Nevztahuje se |
 
@@ -54,7 +54,7 @@ Schopnosti RDMA nebo GPU pro velikosti náročné na výpočetní výkon ve slu�
 
 | Velikost | Schopnost | Operační systémy | Požadovaný software | Nastavení fondu |
 | -------- | ------ | -------- | -------- | ----- |
-| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Windows Server 2016, 2012 R2 nebo<br/>2012 (Azure Marketplace) | Microsoft MPI 2012 R2 nebo novější nebo<br/> Intel MPI 5<br/><br/>Ovladače Windows RDMA | Povolit komunikaci mezi uzly, zakázat souběžné provádění úloh |
+| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | PODPORUJÍ | Windows Server 2016, 2012 R2 nebo<br/>2012 (Azure Marketplace) | Microsoft MPI 2012 R2 nebo novější nebo<br/> Intel MPI 5<br/><br/>Ovladače Windows RDMA | Povolit komunikaci mezi uzly, zakázat souběžné provádění úloh |
 | [Řady NC, NCv2, NCv3, ND, NDv2 Series](../virtual-machines/windows/n-series-driver-setup.md) | Grafický procesor NVIDIA Tesla (liší se podle řad) | Windows Server 2016 nebo <br/>2012 R2 (Azure Marketplace) | Ovladače NVIDIA CUDA nebo CUDA Toolkit| Nevztahuje se | 
 | [NV, NVv2 Series](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 nebo<br/>2012 R2 (Azure Marketplace) | Ovladače pro MŘÍŽKu NVIDIA | Nevztahuje se |
 
@@ -68,7 +68,7 @@ Schopnosti RDMA nebo GPU pro velikosti náročné na výpočetní výkon ve slu�
 
 | Velikost | Schopnost | Operační systémy | Požadovaný software | Nastavení fondu |
 | -------- | ------- | -------- | -------- | ----- |
-| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2016, 2012 R2, 2012 nebo<br/>2008 R2 (řada operačních systémů Host) | Microsoft MPI 2012 R2 nebo novější nebo<br/>Intel MPI 5<br/><br/>Ovladače Windows RDMA | Povolit komunikaci mezi uzly,<br/> zakázat souběžné provádění úloh |
+| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | PODPORUJÍ | Windows Server 2016, 2012 R2, 2012 nebo<br/>2008 R2 (řada operačních systémů Host) | Microsoft MPI 2012 R2 nebo novější nebo<br/>Intel MPI 5<br/><br/>Ovladače Windows RDMA | Povolit komunikaci mezi uzly,<br/> zakázat souběžné provádění úloh |
 
 ## <a name="pool-configuration-options"></a>Možnosti konfigurace fondu
 

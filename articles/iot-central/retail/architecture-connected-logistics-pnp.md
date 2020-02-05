@@ -7,18 +7,18 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 797488632f04af9a170f05590154e50310570b28
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: bde703310bb04cacbda0b90aec337cbbf1768d76
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890722"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77021130"
 ---
 # <a name="architecture-of-iot-central-connected-logistics-application-template"></a>Architektura šablony logistické aplikace IoT Central připojené
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Partneři & zákazník může využít šablonu aplikace & následující pokyny pro vývoj koncových řešení, která se dokončí koncovým **připojením**.
+
+Partneři & zákazník může použít šablonu aplikace & následující pokyny k vývoji koncových řešení, která se dokončí koncovým **připojením**.
 
 > [!div class="mx-imgBorder"]
 > řídicí panel ![připojená logistika](./media/concept-connected-logistics-architecture/connected-logistics-architecture.png)
@@ -26,25 +26,25 @@ Partneři & zákazník může využít šablonu aplikace & následující pokyny
 1. Sada značek IoT odesílajících data telemetrie na zařízení brány
 2. Zařízení brány odesílající telemetrii a agregované přehledy pro IoT Central
 3. Data jsou směrována do požadované služby Azure pro manipulaci
-4. Služby Azure, jako je ASA nebo Azure Functions, se dají využít k přeformátování datových proudů a posílání do požadovaných účtů úložiště. 
+4. Služby Azure, jako je ASA nebo Azure Functions, se dají použít k přeformátování datových proudů a posílání do požadovaných účtů úložiště. 
 5. Různé obchodní pracovní postupy můžou být napájené pomocí podnikových aplikací koncových uživatelů.
 
 ## <a name="details"></a>Podrobnosti
 Následující část popisuje jednotlivé části ingestování telemetrie architektury konceptuální architektury z značek IoT & Branch.
 
 ## <a name="iot-tags"></a>Značky IoT
-Značky IoT poskytují možnosti fyzických, okolních a environmentálních senzorů, jako je teplota, vlhkost, náraz, náklon & světlo. Značky IoT se obvykle připojují k zařízení brány prostřednictvím ZigBee (802.15.4). Značky jsou levné senzory; Proto mohou být zahozeny na konci typické logistické cesty, aby se zabránilo problémům s reverzním logistikou.
+Značky IoT poskytují možnosti fyzických, okolních a environmentálních senzorů, jako je teplota, vlhkost, náraz, náklon & světlo. Značky IoT se obvykle připojují k zařízení brány prostřednictvím ZigBee (802.15.4). Značky jsou levnější senzory; To znamená, že je můžete zahodit na konci typické logistické cesty, abyste se vyhnuli problémům s reverzní logistikou.
 
 ## <a name="gateway"></a>brána
-Brány mohou fungovat také jako značky IoT s možnostmi okolního průzkumu. Brána umožňuje navázat Azure IoT Cloud konektivitu (MQTT) přes mobilní kanály Wi-Fi.  Režimy Bluetooth, NFC a 802.15.4 bezdrátového senzoru sítě (WSN) se používají pro bezkontaktní komunikaci se značkami IoT. Brány poskytují koncovým zabezpečeným cloudovým připojením, párování značek IoT, agregaci dat senzorů, uchovávání dat a možnost konfigurace prahových hodnot alarmu.
+Brány mohou fungovat také jako značky IoT s možnostmi okolního průzkumu. Brána umožňuje navázat Azure IoT Cloud konektivitu (MQTT) pomocí mobilních kanálů Wi-Fi.  Režimy Bluetooth, NFC a 802.15.4 bezdrátového senzoru sítě (WSN) se používají pro bezkontaktní komunikaci se značkami IoT. Brány poskytují koncovým zabezpečeným cloudovým připojením, párování značek IoT, agregaci dat senzorů, uchovávání dat a možnost konfigurace prahových hodnot alarmu.
 
 ## <a name="device-management-with-iot-central"></a>Správa zařízení pomocí IoT Central 
 Azure IoT Central je vývojová platforma pro řešení, která zjednodušuje připojení zařízení IoT, konfiguraci a správu. Platforma významně snižuje zatížení a náklady na správu zařízení IoT, operace a související vývoj. Zákazníci, kteří & partneři, mohou vytvořit koncová podniková řešení pro zajištění smyčky digitální zpětné vazby v logistikě.
 
-## <a name="business-insights--actions-via-data-egress"></a>& Akcí v obchodní Insights prostřednictvím výstupních dat 
-Platforma IoT Central poskytuje bohatou možnost rozšiřitelnosti prostřednictvím exportu a rozhraní API pro průběžné exporty dat (CDE). Obchodní přehledy založené na zpracování dat telemetrie nebo nezpracovaná telemetrie se obvykle exportují do upřednostňované obchodní aplikace. Toho je možné dosáhnout pomocí Webhooku, Service Bus, centra událostí nebo úložiště objektů BLOB k sestavování, výuce a nasazení modelů strojového učení & další obohacení přehledů.
+## <a name="business-insights-and-actions-using-data-egress"></a>Obchodní přehledy a akce využívající výstup dat 
+Platforma IoT Central poskytuje bohatou možnost rozšiřitelnosti prostřednictvím exportu a rozhraní API pro průběžné exporty dat (CDE). Obchodní přehledy založené na zpracování dat telemetrie nebo nezpracovaná telemetrie se obvykle exportují do upřednostňované obchodní aplikace. Dá se dosáhnout pomocí Webhooku, Service Bus, centra událostí nebo úložiště objektů BLOB k sestavování, výuce a nasazení modelů strojového učení & dalších obohacení přehledů.
 
 ## <a name="next-steps"></a>Další kroky
 * Naučte se nasadit [připojenou šablonu logistického řešení](./tutorial-iot-central-connected-logistics-pnp.md) .
 * Další informace o [IoT Central maloobchodních šablon](./overview-iot-central-retail-pnp.md)
-* Další informace o IoT Central najdete v tématu [IoT Central Overview](../preview/overview-iot-central.md) .
+* Další informace o IoT Central najdete v tématu [IoT Central Overview](../core/overview-iot-central.md) .

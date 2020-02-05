@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: anavin
-ms.openlocfilehash: e44a27178434e7e5decbd30fda8febe0a710e7f0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: da85d8904fcd44788d6a87a22ea14d683982e333
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978944"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020008"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Vytvoření partnerského vztahu virtuální sítě – Správce prostředků různých předplatných
 
@@ -330,4 +330,4 @@ Po dokončení tohoto kurzu možná budete chtít odstranit prostředky, které 
 
 - Před vytvořením partnerského vztahu virtuálních sítí pro produkční použití důkladně se seznamte s důležitými [omezeními a chováním partnerských vztahů virtuálních sítí](virtual-network-manage-peering.md#requirements-and-constraints) .
 - Přečtěte si o [nastaveních partnerského vztahu virtuálních sítí](virtual-network-manage-peering.md#create-a-peering).
-- Naučte se [vytvářet síťové topologie centra a paprsků](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) s využitím partnerského vztahu virtuálních sítí.
+- Naučte se [vytvářet síťové topologie centra a paprsků](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering) s využitím partnerského vztahu virtuálních sítí.

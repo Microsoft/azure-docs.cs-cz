@@ -1,5 +1,5 @@
 ---
-title: Přesun databáze Azure AD Connect z SQL Serveru Express na SQL Server. | Dokumenty Microsoft
+title: Přesun databáze Azure AD Connect z SQL Serveru Express na SQL Server. | Dokumentace Microsoftu
 description: Tento dokument popisuje, jak přesunout databázi Azure AD Connect z místního serveru SQL Server Express na vzdálený SQL Server.
 services: active-directory
 author: billmath
@@ -11,12 +11,12 @@ ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ae0e87fddabee9f42cbb5506dce4cd7a5f4f082
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 742bc307c90ad58b83b7d4c92f9546b87c163c3b
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64918853"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019277"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Přesun databáze Azure AD Connect z SQL Serveru Express na SQL Server 
 
@@ -25,24 +25,24 @@ Tento dokument popisuje, jak přesunout databázi Azure AD Connect z místního 
 ## <a name="about-this-scenario"></a>O tomto scénáři
 Následuje několik stručných informací o tomto scénáři.  V tomto scénáři je na jednom řadiči domény s Windows Serverem 2016 nainstalovaný nástroj Azure AD Connect verze 1.1.819.0.  Pro svou databázi využívá integrovaný SQL Server 2012 Express Edition.  Databáze se přesune na server SQL Server 2017.
 
-![Architektury scénáře](media/how-to-connect-install-move-db/move1.png)
+![Architektura scénáře](media/how-to-connect-install-move-db/move1.png)
 
 ## <a name="move-the-azure-ad-connect-database"></a>Přesun databáze Azure AD Connect
 Pomocí následujících kroků přesuňte databázi Azure AD Connect na vzdálený SQL Server.
 
 1. Na serveru Azure AD Connect přejděte do části **Služby** a zastavte službu **Microsoft Azure AD Sync**.
-2. Vyhledejte **% Program Files%\Microsoft Azure AD Sync/Data/** složku a Kopírovat **ADSync.mdf** a **ADSync_log.ldf** soubory na vzdálený server SQL.
+2. Vyhledejte složku **%ProgramFiles%\Microsoft Azure AD Sync\Data** a zkopírujte soubory **AdSync. mdf** a **ADSync_log. ldf** do vzdáleného SQL Server.
 3. Na serveru Azure AD Connect restartujte službu **Microsoft Azure AD Sync**.
 4. Odinstalujte Azure AD Connect tak, že přejdete do části Ovládací panely > Programy > Programy a funkce.  Vyberte Microsoft Azure AD Connect a v horní části klikněte na Odinstalovat.
 5. Na vzdáleném SQL Serveru otevřete SQL Server Management Studio.
 6. V části Databáze klikněte pravým tlačítkem a vyberte Připojit.
 7. Na obrazovce **Připojit databáze** klikněte na **Přidat** a přejděte k souboru ADSync.mdf.  Klikněte na **OK**.
-   ![připojení databáze](media/how-to-connect-install-move-db/move2.png)
+   ![připojení](media/how-to-connect-install-move-db/move2.png) databáze
 
 8. Po připojení databáze se vraťte na server Azure AD Connect a nainstalujte Azure AD Connect.
 9. Po dokončení instalace MSI se spustí průvodce Azure AD Connect v režimu expresní instalace. Zavřete obrazovku kliknutím na ikonu Ukončit.
    ![Uvítání](./media/how-to-connect-install-move-db/db1.png)
-10. Spusťte nový příkazový řádek nebo novou relaci PowerShellu. Přejděte do složky \<jednotku > \program files\Microsoft Azure AD Connect. Spuštěním příkazu .\AzureADConnect.exe /useexistingdatabase spusťte průvodce Azure AD Connect v režimu instalace Použít stávající databázi.
+10. Spusťte nový příkazový řádek nebo novou relaci PowerShellu. Přejděte do složky \<jednotka > \Program files\Microsoft Azure AD Connect. Spuštěním příkazu .\AzureADConnect.exe /useexistingdatabase spusťte průvodce Azure AD Connect v režimu instalace Použít stávající databázi.
     ![PowerShell](./media/how-to-connect-install-move-db/db2.png)
 11. Zobrazí se obrazovka Vítá vás Azure AD Connect. Jakmile odsouhlasíte licenční podmínky a oznámení o ochraně osobních údajů, klikněte na **Pokračovat**.
     ![Uvítání](./media/how-to-connect-install-move-db/db3.png)
@@ -70,7 +70,7 @@ Pomocí následujících kroků přesuňte databázi Azure AD Connect na vzdále
  
 18. Po dokončení instalace se na serveru Azure AD Connect automaticky zapne pracovní režim. Před vypnutím pracovního režimu se doporučuje zkontrolovat neočekávané změny v konfiguraci serveru a čekajících sestavách. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).
 - [Instalace nástroje Azure AD Connect s využitím existující databáze ADSync](how-to-connect-install-existing-database.md)

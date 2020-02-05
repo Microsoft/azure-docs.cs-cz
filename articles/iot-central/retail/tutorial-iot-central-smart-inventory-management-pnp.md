@@ -7,16 +7,16 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: ce1b8e80806935ca3d35814e73790f191b3e4733
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5632d98d9d853d9a4b0882c28cad1836bb6f3cef
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984013"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025465"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>Kurz: nasazení a procházení šablonou aplikace pro správu inteligentního inventáře
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 V tomto kurzu se dozvíte, jak začít tím, že nasadíte šablonu aplikace IoT Central **správy inteligentního inventáře** . Naučíte se, jak nasadit šablonu, co je součástí okna a co byste chtěli udělat dál.
 
@@ -25,12 +25,14 @@ V tomto kurzu se naučíte,
 * Procházení aplikací 
 
 ## <a name="prerequisites"></a>Požadavky
+
 * K nasazení této aplikace nejsou nutné žádné konkrétní požadavky.
 * Doporučuje se použít předplatné Azure, ale můžete to zkusit i bez něj.
 
 ## <a name="create-smart-inventory-management-application-template"></a>Vytvořit šablonu aplikace pro správu inteligentního inventáře
 
 Aplikaci můžete vytvořit pomocí následujících kroků.
+
 1. Přejděte na web Azure IoT Central Správce aplikací. V levém navigačním panelu vyberte **Build (sestavit** ) a pak klikněte na kartu **maloobchod** .
 
     > [!div class="mx-imgBorder"]
@@ -53,6 +55,7 @@ Aplikaci můžete vytvořit pomocí následujících kroků.
 ## <a name="walk-through-the-application"></a>Procházení aplikací 
 
 ### <a name="dashboard"></a>Řídicí panel 
+
 Po úspěšném nasazení šablony aplikace je výchozím řídicím panelem portál pro správu inteligentních inventářů. Northwind obchodník je fiktivní poskytovatel inteligentního inventáře, který spravuje sklad pomocí technologie Bluetooth Low energií (BULK) a prodejnového obchodu s identifikací rádiového kmitočtu (RFID). V tomto řídicím panelu uvidíte dvě různé brány, které poskytují telemetrii o inventáři spolu s přidruženými příkazy, úlohami a akcemi, které můžete provádět. Tento řídicí panel je předem nakonfigurovaný tak, aby předvedl kritickou aktivitu operací zařízení správy inteligentních inventářů.
 Řídicí panel je logicky dělený mezi dvěma různými operacemi správy zařízení brány. 
    * Datový sklad je nasazený s pevnou bránou v aplikaci v poli & tagů na paletách, aby bylo možné sledovat & inventáře trasování na větším zařízení.
@@ -72,7 +75,7 @@ Po úspěšném nasazení šablony aplikace je výchozím řídicím panelem por
 ## <a name="device-template"></a>Šablona zařízení
 Klikněte na kartu šablony zařízení a zobrazí se model schopností brány. Model schopností je strukturovaný kolem dvou různých rozhraní **telemetrie brány & vlastností** a **příkazů brány** .
 
-**Vlastnost telemetrie brány &** – toto rozhraní představuje veškerou telemetrii týkající se senzorů, umístění, informací o zařízení a možností vlastností dopředných zařízení, jako jsou prahové hodnoty brány & intervaly aktualizací.
+**Vlastnost telemetrie brány &** – toto rozhraní představuje veškerou telemetrii týkající se senzorů, umístění, informací o zařízení a možností vlastností, které jsou v zařízení, jako jsou prahové hodnoty brány a intervaly aktualizací.
 
 > [!div class="mx-imgBorder"]
 > Řídicí panel pro správu inteligentního inventáře ![](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_devicetemplate1.png)
@@ -86,15 +89,15 @@ Klikněte na kartu šablony zařízení a zobrazí se model schopností brány. 
 ## <a name="rules"></a>Pravidla
 Vyberte kartu pravidla a podívejte se na dvě různá pravidla, která existují v této šabloně aplikace. Tato pravidla jsou nakonfigurovaná tak, aby se pro další šetření použila e-mailová oznámení pro operátory.
 
-**Brána offline**: Toto pravidlo se aktivuje, pokud brána nehlásí do cloudu dlouhou dobu. Brána nemohla reagovat z důvodu úsporného režimu baterie, ztráty připojení a stavu zařízení.
+**Brána offline**: Toto pravidlo se aktivuje, pokud brána nehlásí do cloudu po dlouhou dobu. Brána může přestat reagovat z důvodu nízkého stavu baterie, ztráty připojení a stavu zařízení.
 
-**Neznámé značky**: je klíčové pro sledování všech značek & v rámci RFID přidružených k assetu. Pokud brána zjišťuje příliš mnoho neznámých značek, znamená to, že se jedná o výzvy k synchronizaci s aplikacemi pro zdrojové značky.
+**Neznámé značky**: je velmi důležité sledovat všechny štítky & v rámci RFID přidružené k assetu. Pokud brána zjišťuje příliš mnoho neznámých značek, znamená to, že se jedná o výzvy k synchronizaci s aplikacemi pro zdrojové značky.
 
 > [!div class="mx-imgBorder"]
 > Řídicí panel pro správu inteligentního inventáře ![](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_rules.png)
 
 ## <a name="jobs"></a>Úlohy
-Vyberte kartu úlohy pro zobrazení pěti různých úloh, které existují jako součást této šablony aplikace: funkce úloh můžete využít k provádění operací v rámci řešení. V tomto případě se v rámci úloh správy inventáře používají příkazy zařízení & zdvojené schopnosti provádět úlohy, jako například,
+Vyberte kartu úlohy pro zobrazení pěti různých úloh, které existují jako součást této šablony aplikace: můžete použít funkci Jobs k provádění operací v rámci řešení. Tady jsou uvedené úlohy správy inventáře, které používají příkazy zařízení a možnost provádět úlohy, jako je například,
    * zákaz čtenářů napříč všemi branami
    * Úprava prahové hodnoty telemetrie mezi 
    * proveďte kontrolu inventáře na vyžádání v rámci celého řešení.
@@ -112,4 +115,4 @@ Pokud nebudete tuto aplikaci nadále používat, odstraňte šablonu aplikace na
 ## <a name="next-steps"></a>Další kroky
 * Další informace o [konceptu správy inteligentního inventáře](./architecture-smart-inventory-management-pnp.md) správy inteligentních zásob
 * Další informace o jiných [šablonách IoT Central maloobchodních prodejů](./overview-iot-central-retail-pnp.md)
-* Další informace o IoT Central najdete v tématu [IoT Central Overview](../preview/overview-iot-central.md) .
+* Další informace o IoT Central najdete v tématu [IoT Central Overview](../core/overview-iot-central.md) .

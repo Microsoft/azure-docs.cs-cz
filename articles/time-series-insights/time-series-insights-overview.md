@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: overview
-ms.date: 12/11/2019
+ms.date: 02/04/2020
 ms.custom: seodec18
-ms.openlocfilehash: c068e33bc7844c464bc8a289387990128d96dd35
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: a938dc69b2b0401a062b1db314d71100b4fbbc4f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861791"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024377"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Co je Azure Time Series Insights?
 
@@ -84,7 +84,7 @@ Chcete-li začít, postupujte podle těchto kroků.
 1. Nahrajte referenční data. Nejedná se o další službu.
 1. Zkontrolujte a zobrazte si data během několika minut pomocí Time Series Insights Exploreru.
 
-## <a name="explorer"></a>Průzkumník
+## <a name="explorer"></a>Prohlížeč
 
 Umožňuje zobrazit, analyzovat a zjišťovat trendy ve vašich datech pomocí Azure Time Series Insights Exploreru.
 

@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 165bd93f2d35425965df9358c8d85f79ce557d66
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: d3a76b06c08d670cfb3ab0757e8c46dac0988c5f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76833360"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025176"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementace synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect
 Tento článek obsahuje informace, které potřebujete k synchronizaci hesel uživatelů mezi místní instancí Active Directory a instanci cloudové služby Azure Active Directory (Azure AD).
@@ -124,7 +124,7 @@ Upozornění: Pokud jsou v Azure AD synchronizované účty, u kterých je potř
 > [!NOTE]
 > Tato funkce je teď v Public Preview.
 
-#### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-reset-on-next-logon"></a>Public Preview synchronizace dočasných hesel a vynucené resetování hesla při příštím přihlášení
+#### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>Public Preview synchronizace dočasných hesel a "vynucení změny hesla při příštím přihlášení"
 
 Je typický vynutit, aby uživatel při prvním přihlášení změnil heslo, zejména když dojde k resetování hesla správce.  Obvykle se označuje jako nastavení "dočasného" hesla a je dokončený zaškrtnutím příznaku "uživatel musí změnit heslo při příštím přihlášení" u objektu uživatele ve službě Active Directory (AD).
   

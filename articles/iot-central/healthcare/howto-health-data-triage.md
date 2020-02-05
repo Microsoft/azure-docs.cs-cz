@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 40e850bcbd177b15c91e57ec369c6b04963ffb84
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 99b27ec53d955079b5f73986408e698955c0969b
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132276"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77021640"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Kurz: sestavení řídicího panelu poskytovatele Power BI
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Při sestavování řešení pro monitorování nepřetržitého pacienta můžete také vytvořit řídicí panel pro tým ústavní péče, který bude vizualizovat data pacienta. Tento kurz vás provede jednotlivými kroky, které vám pomohou vytvořit Power BI řídicí panel pro streamování v reálném čase ze své IoT Central šablony aplikace pro monitorování nepřetržitého pacienta.
+
+Při sestavování řešení pro monitorování nepřetržitého pacienta můžete také vytvořit řídicí panel pro tým ústavní péče, který bude vizualizovat data pacienta. V tomto kurzu se naučíte, jak vytvořit řídicí panel Power BI pro streamování v reálném čase ze šablony vaší IoT Central nepřetržité aplikace pro monitorování.
 
 >[!div class="mx-imgBorder"]
 >](media/dashboard-gif-3.gif) ![ho řídicího panelu ve formátu GIF
@@ -51,7 +51,7 @@ V tomto kurzu se naučíte:
 * Účet služba Power BI. Pokud ho ještě nemáte, můžete [pro služba Power BI vytvořit bezplatný zkušební účet](https://app.powerbi.com/). Pokud jste už Power BI ještě nepoužili, může být užitečné projít [si Začínáme s Power BI](https://docs.microsoft.com/power-bi/service-get-started).
 
 ## <a name="set-up-a-continuous-data-export-to-azure-event-hubs"></a>Nastavení průběžného exportu dat do Azure Event Hubs
-Nejdřív budete muset nastavit průběžný export dat ze šablony aplikace Azure IoT Central do centra událostí Azure v rámci vašeho předplatného. Můžete to udělat podle kroků v tomto kurzu pro Azure IoT Central pro [Export do Event Hubs](https://docs.microsoft.com/azure/iot-central/preview/howto-export-data). Pro účely tohoto kurzu budete muset jenom vyexportovat pro telemetrii.
+Nejdřív budete muset nastavit průběžný export dat ze šablony aplikace Azure IoT Central do centra událostí Azure v rámci vašeho předplatného. Můžete to udělat podle kroků v tomto kurzu pro Azure IoT Central pro [Export do Event Hubs](https://docs.microsoft.com/azure/iot-central/core/howto-export-data). Pro účely tohoto kurzu budete muset jenom vyexportovat pro telemetrii.
 
 ## <a name="create-a-power-bi-streaming-dataset"></a>Vytvoření datové sady streamování Power BI
 
@@ -86,12 +86,12 @@ Pokud chcete aplikaci logiky připojit k Azure Event Hubs, můžete postupovat p
 Na konci tohoto kroku by měl návrhář aplikace logiky vypadat takto:
 
 >[!div class="mx-imgBorder"] 
->![Logic Apps se připojit k Event Hubs](media/eh-logic-app.png)
+>![Logic Apps se připojuje Event Hubs](media/eh-logic-app.png)
 
 ## <a name="stream-data-to-power-bi-from-your-logic-app"></a>Streamování dat do Power BI z aplikace logiky
 V dalším kroku budete analyzovat data přicházející z centra událostí, abyste je mohli streamovat do Power BIch datových sad, které jste vytvořili dříve.
 
-1. Než to uděláte, budete muset pochopit datovou část JSON, která se posílá ze zařízení do vašeho centra událostí. Můžete to udělat tak, že si prohlédněte toto [ukázkové schéma](https://docs.microsoft.com/azure/iot-central/preview/howto-export-data#telemetry) a upravíte ho tak, aby odpovídalo vašemu schématu, nebo pomocí [Průzkumníka Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer) zkontrolovat zprávy. Pokud používáte aplikace pro monitorování nepřetržitého pacienta, vaše zprávy budou vypadat takto:
+1. Než to uděláte, budete muset pochopit datovou část JSON, která se posílá ze zařízení do vašeho centra událostí. Můžete to udělat tak, že si prohlédněte toto [ukázkové schéma](https://docs.microsoft.com/azure/iot-central/core/howto-export-data#telemetry) a upravíte ho tak, aby odpovídalo vašemu schématu, nebo pomocí [Průzkumníka Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer) zkontrolovat zprávy. Pokud používáte aplikace pro monitorování nepřetržitého pacienta, vaše zprávy budou vypadat takto:
 
 **Inteligentní telemetrie opravy – nedůležité**
 
@@ -143,7 +143,7 @@ V dalším kroku budete analyzovat data přicházející z centra událostí, ab
 
     |Parametr|Hodnota|
     |---|---|
-    |Název|Název rozhraní|
+    |Name (Název)|Název rozhraní|
     |Typ|Řetězec|
 
     Klikněte na **Uložit**. 

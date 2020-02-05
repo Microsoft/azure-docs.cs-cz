@@ -1,6 +1,6 @@
 ---
-title: Řešení Azure VMware podle CloudSimple – zálohování virtuálních počítačů s úlohami v privátním cloudu pomocí Veeam
-description: Popisuje, jak můžete zálohovat virtuální počítače, které běží v privátním cloudu CloudSimple založeném na Azure pomocí Veeam B & R 9,5.
+title: Řešení Azure VMware (AVS) – zálohování virtuálních počítačů s úlohami v privátním cloudu služby AVS pomocí Veeam
+description: Popisuje, jak můžete zálohovat virtuální počítače, které jsou spuštěné v privátním cloudu služby AVS založeném na Azure, pomocí Veeam B & R 9,5.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3262841efb9109b1de24fe501ea0a7bea0dd612d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d8dc822ec07bdf061121b97384d0e2f9f239d6e2
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232363"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025125"
 ---
-# <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Zálohování virtuálních počítačů s úlohami v privátním cloudu CloudSimple pomocí Veeam B & R
+# <a name="back-up-workload-vms-on-avs-private-cloud-using-veeam-br"></a>Zálohování virtuálních počítačů pro úlohy v privátním cloudu se systémem AVS pomocí Veeam B & R
 
-Tato příručka popisuje, jak můžete zálohovat virtuální počítače, které běží v privátním cloudu CloudSimple založeném na Azure, pomocí Veeam B & R 9,5.
+Tato příručka popisuje, jak můžete zálohovat virtuální počítače, které jsou spuštěné v privátním cloudu služby AVS založeném na Azure, pomocí Veeam B & R 9,5.
 
 ## <a name="about-the-veeam-back-up-and-recovery-solution"></a>Řešení zálohování a obnovení Veeam
 
@@ -43,16 +43,16 @@ Mezi záložním serverem a dalšími součástmi infrastruktury zálohování s
 
 **Úložiště záloh**
 
-Úložiště zálohování je umístění úložiště, ve kterém Veeam udržuje záložní soubory, kopie virtuálních počítačů a metadata replikovaných virtuálních počítačů.  Úložiště může být server s Windows nebo Linux s místními disky (nebo připojeným systémem souborů NFS/SMB) nebo zařízením pro odstranění duplicitních dat v hardwarovém úložišti.
+Úložiště zálohování je umístění úložiště, ve kterém Veeam udržuje záložní soubory, kopie virtuálních počítačů a metadata replikovaných virtuálních počítačů. Úložiště může být server s Windows nebo Linux s místními disky (nebo připojeným systémem souborů NFS/SMB) nebo zařízením pro odstranění duplicitních dat v hardwarovém úložišti.
 
 ### <a name="veeam-deployment-scenarios"></a>Scénáře nasazení Veeam
-Azure můžete využít k poskytnutí úložiště zálohování a cíle úložiště pro dlouhodobé zálohování a archivaci. Veškerá síťová přenosová data mezi virtuálními počítači v privátním cloudu a úložištěm záloh v Azure se přenáší přes propojení s velkou šířkou pásma a nízkou latencí. Provoz replikace mezi oblastmi se cestuje přes interní síť Azure pro replánování, která snižuje náklady na šířku pásma pro uživatele.
+Azure můžete využít k poskytnutí úložiště zálohování a cíle úložiště pro dlouhodobé zálohování a archivaci. Veškerá síťová přenosová data mezi virtuálními počítači v privátním cloudu služby AVS a úložištěm záloh v Azure se přenáší přes připojení s vysokou šířkou pásma a nízkou latencí. Provoz replikace mezi oblastmi se cestuje přes interní síť Azure pro replánování, která snižuje náklady na šířku pásma pro uživatele.
 
 **Základní nasazení**
 
-Pro prostředí, která mají k zálohování méně než 30 TB, CloudSimple doporučuje následující konfiguraci:
+Pro prostředí, která mají méně než 30 TB pro zálohování, doporučuje aplikace AVS následující konfiguraci:
 
-* Veeam Backup Server a proxy server nainstalovaná na stejném virtuálním počítači v privátním cloudu.
+* Veeam Backup Server a proxy server nainstalovaná na stejném virtuálním počítači v privátním cloudu AVS.
 * Primární úložiště záloh založené na systému Linux v Azure nakonfigurované jako cíl pro úlohy zálohování.
 * `azcopy` se používá ke kopírování dat z primárního úložiště záloh do kontejneru objektů BLOB v Azure, který se replikuje do jiné oblasti.
 
@@ -60,10 +60,10 @@ Pro prostředí, která mají k zálohování méně než 30 TB, CloudSimple dop
 
 **Pokročilé nasazení**
 
-Pro prostředí, která mají víc než 30 TB pro zálohování, CloudSimple doporučuje následující konfiguraci:
+Pro prostředí, která mají víc než 30 TB na zálohování, doporučuje aplikace AVS následující konfiguraci:
 
 * Jednu proxy server na uzel v clusteru síti vSAN, jak to doporučila Veeam.
-* Primární úložiště záloh založené na Windows v privátním cloudu pro ukládání dat do mezipaměti pro rychlé obnovení.
+* Primární úložiště záloh založené na systému Windows v privátním cloudu služby AVS, které ukládá do mezipaměti pět dnů pro rychlé obnovení.
 * Záložní úložiště pro Linux v Azure jako cíl pro úlohy zálohování s delší dobou trvání. Toto úložiště by mělo být nakonfigurované jako úložiště zálohování se škálováním na více instancí.
 * `azcopy` se používá ke kopírování dat z primárního úložiště záloh do kontejneru objektů BLOB v Azure, který se replikuje do jiné oblasti.
 
@@ -71,32 +71,32 @@ Pro prostředí, která mají víc než 30 TB pro zálohování, CloudSimple dop
 
 Na předchozím obrázku si všimněte, že záložní proxy je virtuální počítač s nástrojem Hot Add Access pro úlohy virtuálních počítačů na síti vSAN úložiště dat. Veeam používá transportní režim proxy serveru pro zálohování virtuálních zařízení pro síti vSAN.
 
-## <a name="requirements-for-veeam-solution-on-cloudsimple"></a>Požadavky na řešení Veeam na CloudSimple
+## <a name="requirements-for-veeam-solution-on-avs"></a>Požadavky na řešení Veeam na funkci AVS
 
 Řešení Veeam vyžaduje, abyste provedete následující kroky:
 
 * Zadejte vlastní licence Veeam.
-* Nasaďte a spravujte Veeam a zálohujte úlohy spuštěné v privátním cloudu CloudSimple.
+* Nasaďte a spravujte Veeam a zálohujte úlohy spuštěné v privátním cloudu služby AVS.
 
 Toto řešení poskytuje úplnou kontrolu nad nástrojem Veeam Backup a nabízí možnost použít nativní rozhraní Veeam nebo modul plug-in Veeam vCenter ke správě úloh zálohování virtuálních počítačů.
 
 Pokud jste existující uživatel Veeam, můžete přeskočit oddíl na součásti řešení Veeam a přímo přejít ke [scénářům nasazení Veeam](#veeam-deployment-scenarios).
 
-## <a name="install-and-configure-veeam-backups-in-your-cloudsimple-private-cloud"></a>Instalace a konfigurace záloh Veeam v privátním cloudu CloudSimple
+## <a name="install-and-configure-veeam-backups-in-your-avs-private-cloud"></a>Instalace a konfigurace záloh Veeam v privátním cloudu služby AVS
 
-Následující části popisují, jak nainstalovat a nakonfigurovat řešení zálohování Veeam pro privátní cloud CloudSimple.
+Následující části popisují, jak nainstalovat a nakonfigurovat řešení zálohování Veeam pro privátní cloud služby AVS.
 
 Proces nasazení se skládá z těchto kroků:
 
-1. [uživatelské rozhraní vCenter: nastavení služby infrastruktury ve vašem privátním cloudu](#vcenter-ui-set-up-infrastructure-services-in-your-private-cloud)
-2. [Portál CloudSimple: nastavení sítě privátního cloudu pro Veeam](#cloudsimple-private-cloud-set-up-private-cloud-networking-for-veeam)
-3. [Portál CloudSimple: eskalace oprávnění](#cloudsimple-private-cloud-escalate-privileges-for-cloudowner)
-4. [Azure Portal: připojení virtuální sítě k privátnímu cloudu](#azure-portal-connect-your-virtual-network-to-the-private-cloud)
-5. [Azure Portal: vytvoření úložiště záloh v Azure](#azure-portal-connect-your-virtual-network-to-the-private-cloud)
+1. [uživatelské rozhraní vCenter: nastavení služeb infrastruktury v privátním cloudu služby AVS](#vcenter-ui-set-up-infrastructure-services-in-your-avs-private-cloud)
+2. [Portál pro funkci AVS: nastavení sítě pro privátní cloud využívající funkci AVS pro Veeam](#avs-private-cloud-set-up-avs-private-cloud-networking-for-veeam)
+3. [Portál pro funkci AVS: zvýšení oprávnění](#avs-private-cloud-escalate-privileges-for-cloudowner)
+4. [Azure Portal: připojení virtuální sítě k privátnímu cloudu služby AVS](#azure-portal-connect-your-virtual-network-to-the-avs-private-cloud)
+5. [Azure Portal: vytvoření úložiště záloh v Azure](#azure-portal-connect-your-virtual-network-to-the-avs-private-cloud)
 6. [Azure Portal: konfigurace úložiště objektů BLOB v Azure pro dlouhodobé uchovávání dat](#configure-azure-blob-storage-for-long-term-data-retention)
-7. [uživatelské rozhraní vCenter privátního cloudu: instalace Veeam B & R](#vcenter-console-of-private-cloud-install-veeam-br)
+7. [uživatelské rozhraní vCenter privátního cloudu pro funkci AVS: Nainstalujte Veeam B & R](#vcenter-console-of-avs-private-cloud-install-veeam-br)
 8. [Konzola Veeam: konfigurace softwaru Veeam Backup pro obnovení &](#veeam-console-install-veeam-backup-and-recovery-software)
-9. [Portál CloudSimple: nastavení přístupu Veeam a oprávnění ke zrušení eskalace](#cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges)
+9. [Portál pro funkci AVS: nastavení přístupu Veeam a oprávnění ke zrušení eskalace](#avs-portal-set-up-veeam-access-and-de-escalate-privileges)
 
 ### <a name="before-you-begin"></a>Než začnete
 
@@ -106,29 +106,28 @@ Než začnete Veeam nasazení, jsou potřeba následující:
 * Předem vytvořená skupina prostředků Azure
 * Virtuální síť Azure ve vašem předplatném
 * Účet úložiště Azure
-* [Privátní cloud](create-private-cloud.md) vytvořený pomocí portálu CloudSimple.  
+* [Privátní cloud služby AVS](create-private-cloud.md) vytvořený pomocí portálu služby AVS.  
 
 Během fáze implementace jsou potřeba tyto položky:
 
 * Šablony VMware pro Windows k instalaci Veeam (například Windows Server 2012 R2 – 64 bitová kopie)
 * Zjištěna jedna dostupná síť VLAN pro záložní síť
 * CIDR podsítě, která se má přiřadit k síti zálohování
-* Veeam 9,5 U3 installed Media (ISO) nahrané do úložiště dat síti vSAN privátního cloudu
+* Veeam 9,5 U3 installed Media (ISO) nahrané do úložiště dat síti vSAN privátního cloudu pro funkci AVS
 
-### <a name="vcenter-ui-set-up-infrastructure-services-in-your-private-cloud"></a>uživatelské rozhraní vCenter: nastavení služby infrastruktury ve vašem privátním cloudu
+### <a name="vcenter-ui-set-up-infrastructure-services-in-your-avs-private-cloud"></a>uživatelské rozhraní vCenter: nastavení služeb infrastruktury v privátním cloudu služby AVS
 
-Konfigurujte služby infrastruktury v privátním cloudu, abyste usnadnili správu úloh a nástrojů.
+Nakonfigurujte služby infrastruktury v privátním cloudu služby AVS, abyste usnadnili správu úloh a nástrojů.
 
 * Můžete přidat externího poskytovatele identity, jak je popsáno v části [Nastavení zdrojů identity vCenter na používání služby Active Directory](set-vcenter-identity.md) , pokud platí některá z následujících možností:
-
-  * Chcete identifikovat uživatele z místní služby Active Directory (AD) ve vašem privátním cloudu.
-  * Chcete nastavit službu AD v privátním cloudu pro všechny uživatele.
+  * Chcete identifikovat uživatele z místní služby Active Directory (AD) ve vašem privátním cloudu služby AVS.
+  * Chcete vytvořit službu AD v privátním cloudu služby AVS pro všechny uživatele.
   * Chcete používat Azure AD.
-* Pokud chcete pro vaše úlohy v privátním cloudu poskytnout vyhledávání IP adres, správu IP adres a služby překladu IP adres, nastavte server DHCP a DNS, jak je popsáno v tématu [nastavení aplikací DNS a DHCP a úloh v privátním cloudu CloudSimple](dns-dhcp-setup.md).
+* Pokud chcete pro své úlohy v privátním cloudu služby AVS zadat vyhledávání IP adres, správu IP adres a služby překladu názvů, nastavte server DHCP a DNS, jak je popsáno v tématu [nastavení aplikací DNS a DHCP a úloh v privátním cloudu služby AVS](dns-dhcp-setup.md).
 
-### <a name="cloudsimple-private-cloud-set-up-private-cloud-networking-for-veeam"></a>Privátní cloud CloudSimple: nastavení sítě privátního cloudu pro Veeam
+### <a name="avs-private-cloud-set-up-avs-private-cloud-networking-for-veeam"></a>Privátní cloud služby AVS: nastavení sítě pro privátní cloud využívající funkci AVS pro Veeam
 
-Přístup k portálu CloudSimple k nastavení sítě privátního cloudu pro řešení Veeam.
+Přístup k portálu služby AVS a nastavení privátního cloudu služby AVS pro řešení Veeam
 
 Vytvořte síť VLAN pro záložní síť a přiřaďte ji k podsíti CIDR. Pokyny najdete v tématu [Vytvoření a správa sítí VLAN a podsítí](create-vlan-subnet.md).
 
@@ -149,19 +148,19 @@ V následující tabulce je uveden seznam portů.
     | Úložiště záloh  | Záložní proxy server  | TCP  | 2500 – 5000  | 
     | Zdrojové úložiště záloh<br> *Používá se pro úlohy záložního kopírování.*  | Cílové úložiště zálohování  | TCP  | 2500 – 5000  | 
 
-Vytvořte pravidla brány firewall mezi podsítí úloh a záložní sítí, jak je popsáno v tématu [Nastavení tabulek a pravidel brány firewall](firewall.md).  Pro zálohování a obnovení, které podporuje aplikace, je nutné otevřít [Další porty](https://helpcenter.veeam.com/docs/backup/vsphere/used_ports.html?ver=95) na virtuálních počítačích úloh, které hostují konkrétní aplikace.
+Vytvořte pravidla brány firewall mezi podsítí úloh a záložní sítí, jak je popsáno v tématu [Nastavení tabulek a pravidel brány firewall](firewall.md). Pro zálohování a obnovení, které podporuje aplikace, je nutné otevřít [Další porty](https://helpcenter.veeam.com/docs/backup/vsphere/used_ports.html?ver=95) na virtuálních počítačích úloh, které hostují konkrétní aplikace.
 
-Ve výchozím nastavení CloudSimple poskytuje odkaz 1Gb/s ExpressRoute. U větších velikostí prostředí se může vyžadovat odkaz na větší šířku pásma. Pokud chcete získat další informace o propojeních s větší šířkou pásma, kontaktujte podporu Azure.
+Služba AVS standardně poskytuje odkaz 1Gb/s ExpressRoute. U větších velikostí prostředí se může vyžadovat odkaz na větší šířku pásma. Pokud chcete získat další informace o propojeních s větší šířkou pásma, kontaktujte podporu Azure.
 
-Abyste mohli pokračovat v instalaci, budete potřebovat autorizační klíč a identifikátor URI partnerského okruhu a přístup k vašemu předplatnému Azure.  Tyto informace jsou k dispozici na stránce Virtual Network připojení na portálu CloudSimple. Pokyny najdete v tématu [získání informací o partnerském vztahu pro službu Azure Virtual Network do CloudSimple připojení](virtual-network-connection.md). Pokud máte potíže s získáním informací, obraťte se na [podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Abyste mohli pokračovat v instalaci, budete potřebovat autorizační klíč a identifikátor URI partnerského okruhu a přístup k vašemu předplatnému Azure. Tyto informace jsou k dispozici na stránce Virtual Network připojení na portálu AVS. Pokyny najdete v tématu [získání informací o partnerském vztahu pro virtuální síť Azure a připojení k funkci AVS](virtual-network-connection.md). Pokud máte potíže s získáním informací, obraťte se na [podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-### <a name="cloudsimple-private-cloud-escalate-privileges-for-cloudowner"></a>Privátní cloud CloudSimple: zvýšení oprávnění pro cloudowner
+### <a name="avs-private-cloud-escalate-privileges-for-cloudowner"></a>Privátní cloud služby AVS: zvýšení oprávnění pro **cloudowner**
 
-Výchozí uživatel cloudowner nemá dostatečná oprávnění v privátním cloudu vCenter pro instalaci VEEAM, takže musí být namířená oprávnění pro vCenter uživatele. Další informace najdete v tématu [Eskalace oprávnění](escalate-private-cloud-privileges.md).
+Výchozí uživatel cloudowner nemá dostatečná oprávnění v privátním cloudu pro síťové rozhraní AVS pro instalaci VEEAM, proto musí být navýšení oprávnění vCenter uživatele. Další informace najdete v tématu [Eskalace oprávnění](escalate-private-cloud-privileges.md).
 
-### <a name="azure-portal-connect-your-virtual-network-to-the-private-cloud"></a>Azure Portal: připojení virtuální sítě k privátnímu cloudu
+### <a name="azure-portal-connect-your-virtual-network-to-the-avs-private-cloud"></a>Azure Portal: připojení virtuální sítě k privátnímu cloudu služby AVS
 
-Připojte virtuální síť k privátnímu cloudu podle pokynů v tématu [připojení k Azure Virtual Network pomocí nástroje ExpressRoute](azure-expressroute-connection.md).
+Připojte virtuální síť k privátnímu cloudu služby AVS pomocí pokynů v tématu [připojení k Azure Virtual Network pomocí nástroje ExpressRoute](azure-expressroute-connection.md).
 
 ### <a name="azure-portal-create-a-backup-repository-vm"></a>Azure Portal: Vytvoření virtuálního počítače úložiště zálohování
 
@@ -169,7 +168,7 @@ Připojte virtuální síť k privátnímu cloudu podle pokynů v tématu [přip
 2. Vyberte bitovou kopii založenou na CentOS 7,4.
 3. Nakonfigurujte skupinu zabezpečení sítě (NSG) pro virtuální počítač. Ověřte, že virtuální počítač nemá veřejnou IP adresu a není dosažitelný z veřejného Internetu.
 4. Vytvořte uživatelský účet založený na uživatelských jménech a hesle pro nový virtuální počítač. Pokyny najdete v tématu [Vytvoření virtuálního počítače se systémem Linux v Azure Portal](../virtual-machines/linux/quick-create-portal.md).
-5. Vytvořte 1x512 GiB Standard HDD a připojte ho k virtuálnímu počítači úložiště.  Pokyny najdete v tématu [Postup připojení spravovaného datového disku k virtuálnímu počítači s Windows v Azure Portal](../virtual-machines/windows/attach-managed-disk-portal.md).
+5. Vytvořte 1x512 GiB Standard HDD a připojte ho k virtuálnímu počítači úložiště. Pokyny najdete v tématu [Postup připojení spravovaného datového disku k virtuálnímu počítači s Windows v Azure Portal](../virtual-machines/windows/attach-managed-disk-portal.md).
 6. [Vytvořte na spravovaném disku svazek XFS](https://www.digitalocean.com/docs/volumes/how-to/). Přihlaste se k virtuálnímu počítači pomocí dříve uvedených přihlašovacích údajů. Spuštěním následujícího skriptu vytvořte logický svazek, přidejte do něj disk, vytvořte [oddíl](https://www.digitalocean.com/docs/volumes/how-to/partition/) systému souborů XFS a [Připojte](https://www.digitalocean.com/docs/volumes/how-to/mount/) oddíl pod cestu/Backup1.
 
     Ukázkový skript:
@@ -185,7 +184,7 @@ Připojte virtuální síť k privátnímu cloudu podle pokynů v tématu [přip
     sudo mount -t xfs /dev/mapper/backup1-backup1 /backup1
     ```
 
-7. Zveřejněte/Backup1 jako přípojný bod systému souborů NFS na záložní server Veeam, který běží v privátním cloudu. Pokyny najdete v článku o digitálním oceánu, [jak nastavit připojení NFS na CentOS 6](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nfs-mount-on-centos-6). Tento název sdílené složky systému souborů NFS použijte při konfiguraci úložiště zálohování na serveru Veeam Backup.
+7. Zveřejněte/Backup1 jako přípojný bod systému souborů NFS na záložní server Veeam, který běží v privátním cloudu služby AVS. Pokyny najdete v článku o digitálním oceánu, [jak nastavit připojení NFS na CentOS 6](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nfs-mount-on-centos-6). Tento název sdílené složky systému souborů NFS použijte při konfiguraci úložiště zálohování na serveru Veeam Backup.
 
 8. Nakonfigurujte pravidla filtrování v NSG pro virtuální počítač úložiště zálohování tak, aby explicitně povolovala veškerý síťový provoz do a z virtuálního počítače.
 
@@ -206,11 +205,11 @@ Připojte virtuální síť k privátnímu cloudu podle pokynů v tématu [přip
     sudo yum -y install icu
     ```
 
-3. Pomocí příkazu `azcopy` můžete kopírovat záložní soubory do kontejneru objektů BLOB a z něj.  Podrobné příkazy najdete v tématu [přenos dat pomocí AzCopy v systému Linux](../storage/common/storage-use-azcopy-linux.md) .
+3. Pomocí příkazu `azcopy` můžete kopírovat záložní soubory do kontejneru objektů BLOB a z něj. Podrobné příkazy najdete v tématu [přenos dat pomocí AzCopy v systému Linux](../storage/common/storage-use-azcopy-linux.md) .
 
-### <a name="vcenter-console-of-private-cloud-install-veeam-br"></a>Konzola vCenter pro privátní cloud: Nainstalujte Veeam B & R
+### <a name="vcenter-console-of-avs-private-cloud-install-veeam-br"></a>Konzola vCenter s privátním cloudem pro funkci AVS: Nainstalujte Veeam B & R
 
-Přístup k vCenter z vašeho privátního cloudu pro vytvoření účtu služby Veeam, nainstalujte Veeam B & R 9,5 a nakonfigurujte Veeam pomocí účtu služby.
+Přístup k vCenter z privátního cloudu služby AVS pro vytvoření účtu služby Veeam, nainstalujte Veeam B & R 9,5 a nakonfigurujte Veeam pomocí účtu služby.
 
 1. Vytvořte novou roli s názvem Veeam Backup role a přiřaďte jí potřebná oprávnění, která doporučila Veeam. Podrobnosti najdete v tématu Veeam s [požadovanými oprávněními](https://helpcenter.veeam.com/docs/backup/vsphere/required_permissions.html?ver=95).
 2. Vytvořte novou skupinu Veeam User Group v vCenter a přiřaďte ji k roli zálohování Veeam.
@@ -228,7 +227,7 @@ Přístup k vCenter z vašeho privátního cloudu pro vytvoření účtu služby
 
 Pomocí konzoly Veeam nakonfigurujte software pro zálohování a obnovení Veeam. Podrobnosti najdete v tématu [Veeam Backup & Replication v9-Installation and Deployment](https://www.youtube.com/watch?v=b4BqC_WXARk).
 
-1. Přidejte VMware vSphere jako prostředí spravovaného serveru. Po zobrazení výzvy zadejte přihlašovací údaje k účtu služby Veeam, který jste vytvořili na začátku [konzoly vCenter v privátním cloudu: Nainstalujte Veeam B & R](#vcenter-console-of-private-cloud-install-veeam-br).
+1. Přidejte VMware vSphere jako prostředí spravovaného serveru. Po zobrazení výzvy zadejte přihlašovací údaje účtu služby Veeam, který jste vytvořili na začátku [konzoly vCenter pro privátní cloud: Nainstalujte Veeam B & R](#vcenter-console-of-avs-private-cloud-install-veeam-br).
 
     * Použijte výchozí nastavení pro řízení zatížení a výchozí upřesňující nastavení.
     * Nastavte umístění serveru připojení na záložní server.
@@ -253,7 +252,7 @@ Pomocí konzoly Veeam nakonfigurujte software pro zálohování a obnovení Veea
     * Pokud chcete nakonfigurovat úlohy zálohování, postupujte podle pokynů ve videu [Vytvoření úlohy zálohování při kopírování](https://www.youtube.com/watch?v=LvEHV0_WDWI&t=2s).
     * V části **Upřesnit nastavení > úložiště**Povolte šifrování záložních souborů.
 
-### <a name="cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges"></a>Portál CloudSimple: nastavení přístupu Veeam a oprávnění ke zrušení eskalace
+### <a name="avs-portal-set-up-veeam-access-and-de-escalate-privileges"></a>Portál pro funkci AVS: nastavení přístupu Veeam a oprávnění ke zrušení eskalace
 Vytvořte veřejnou IP adresu pro Veeam Backup and Recovery Server. Pokyny najdete v tématu [přidělování veřejných IP adres](public-ips.md).
 
 Vytvořte pravidlo brány firewall pomocí nástroje, aby server Veeam Backup mohl vytvořit odchozí připojení k webu Veeam pro stahování aktualizací nebo oprav na portu TCP 80. Pokyny najdete v tématu [Nastavení tabulek a pravidel brány firewall](firewall.md).
@@ -262,15 +261,15 @@ Chcete-li zrušit oprávnění, přečtěte si téma oprávnění ke zrušení [
 
 ## <a name="references"></a>Odkazy
 
-### <a name="cloudsimple-references"></a>Odkazy na CloudSimple
+### <a name="avs-references"></a>Odkazy na funkci AVS
 
-* [Vytvoření privátního cloudu](create-private-cloud.md)
+* [Vytvoření privátního cloudu pro funkci AVS](create-private-cloud.md)
 * [Vytváření a správa sítí VLAN a podsítí](create-vlan-subnet.md)
 * [Zdroje identity vCenter](set-vcenter-identity.md)
 * [Nastavení služby DNS a DHCP pro úlohy](dns-dhcp-setup.md)
 * [Eskalace oprávnění](escalate-privileges.md)
 * [Nastavení tabulek a pravidel brány firewall](firewall.md)
-* [Oprávnění privátního cloudu](learn-private-cloud-permissions.md)
+* [Oprávnění privátního cloudu pro funkci AVS](learn-private-cloud-permissions.md)
 * [Přidělit veřejné IP adresy](public-ips.md)
 
 ### <a name="veeam-references"></a>Odkazy na Veeam

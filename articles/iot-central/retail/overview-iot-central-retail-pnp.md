@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: bff6731e767fccb0800c30dfe3e75a800f54c59d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 171f06ad238f862adbd7071ee10d81133d7a6855
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773057"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022133"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Sestavování řešení pro maloobchod s využitím služby Azure IoT Central
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Azure IoT Central je aplikační platforma IoT, která snižuje zatížení a náklady spojené s vývojem, správou a údržbou řešení IoT na podnikové úrovni. Když zvolíte sestavení pomocí Azure IoT Central, získáte možnost zaměřit se na vaše podnikání, peníze a energii při transformaci vaší firmy na data IoT, a ne jenom zachovat a aktualizovat složitou a nepřetržitou vývojovou infrastrukturu IoT.
 
@@ -78,7 +78,7 @@ Další informace najdete v kurzu [nasazení a procházení prostřednictvím š
 
 V případě mnoha prodejců jsou podmínky prostředí v rámci svých obchodů klíčovým rozdílem od jejich konkurence. Maloobchodní prodejci chtějí zachovat ve svých obchodech zvýhodněné podmínky pro využívání svých zákazníků.  
 
-Jako tvůrce řešení můžete použít šablonu aplikace monitorování podmínky analýzy IoT Central v rámci úložiště k sestavení uceleného řešení. Šablona aplikace vám umožní digitálně se připojit k prodejnímu prostředí pro prodejny a monitorovat je pomocí různých zařízení snímačů. Tato zařízení snímače generují telemetrii, kterou můžete převést na obchodní přehledy, které pomáhají maloobchodníkovi snižovat provozní náklady a vytvářet skvělé prostředí pro zákazníky.
+Jako tvůrce řešení můžete použít šablonu aplikace monitorování podmínky analýzy IoT Central v rámci úložiště k sestavení uceleného řešení. Šablona aplikace vám umožní digitálně se připojit k prodejnímu prostředí pro prodejny a monitorovat je pomocí různých druhů zařízení snímačů. Tato zařízení snímače generují telemetrii, kterou můžete převést na obchodní přehledy, které pomáhají maloobchodníkovi snižovat provozní náklady a vytvářet skvělé prostředí pro zákazníky.
 
 Použijte šablonu aplikace k těmto akcím:
 
@@ -149,8 +149,8 @@ Ve stále rostoucí maloobchodní konkurenci mají maloobchodníci nepřetržit�
 
 Šablona aplikace vám umožní: 
 
-- Bez problémů spojíte celou řadu senzorů IoT, jako jsou snímače robotů nebo monitorování podmínek, do instance aplikace IoT Central.
-- Monitorujte a spravujte stav sítě snímačů a také všechna zařízení brány v daném prostředí.
+- Bez problémů spojíte různé druhy senzorů IoT, jako jsou snímače robotů nebo monitorování podmínek, do instance aplikace IoT Central.
+- Monitorujte a spravujte stav sítě snímačů a všech zařízení brány v prostředí.
 - Vytvořte si vlastní pravidla týkající se podmínek v oblasti životního prostředí v rámci centra plnění, která aktivuje příslušné výstrahy.
 - Transformujte podmínky prostředí v rámci vašeho centra plnění na přehledy, které může využívat tým maloobchodního skladu.
 - Exportujte agregované poznatky do stávajících nebo nových obchodních aplikací pro výhody maloobchodních zaměstnanců.
