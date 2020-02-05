@@ -2,7 +2,7 @@
 documentType: LandingData
 title: Dokumentace k Průzkumníku dat Azure
 metadata:
-  title: 'Dokumentace k Azure Data Exploreru – rychlá zprovoznění, kurzy a reference k jazykům a rozhraní API'
+  title: 'Rychlá zprovoznění, kurzy a dokumentace k jazykům/API – Azure Data Explorer'
   description: 'Průzkumník dat Azure je cloudová platforma analytiky protokolů, která je optimalizovaná pro ad-hoc dotazy nad velkými objemy dat.'
   author: orspod
   ms.author: orspodek

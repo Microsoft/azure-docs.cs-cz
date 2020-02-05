@@ -15,6 +15,10 @@
   items:
     - name: Použití rozhraní API Video Indexeru
       href: video-indexer-use-apis.md
+- name: ukázky
+  items:
+    - name: Ukázky Video Indexeru
+      href: 'https://github.com/Azure-Samples/media-services-video-indexer'
 - name: Koncepty
   items:
     - name: Přehled

@@ -14,11 +14,11 @@
       href: learn/quick-monitor-azure-resource.md
     - name: Monitorování virtuálních počítačů
       items:
-        - name: Shromažďování – virtuální počítače Azure
+        - name: Virtuální počítače Azure
           href: learn/quick-collect-azurevm.md
-        - name: Shromažďování – počítač Linux
+        - name: Počítač s Linuxem
           href: learn/quick-collect-linux-computer.md
-        - name: Shromažďování – počítač s Windows
+        - name: Počítač s Windows
           href: learn/quick-collect-windows-computer.md
     - name: Monitorování aplikací
       items:
@@ -439,6 +439,8 @@
               href: app/configuration-with-applicationinsights-config.md
             - name: Korelace vlastních zdrojů dat
               href: app/custom-data-correlation.md
+            - name: Připojovací řetězce
+              href: app/sdk-connection-string.md
             - name: Speciální témata
               items:
                 - name: Hloubková diagnostika webových aplikací a služeb
@@ -535,23 +537,18 @@
               href: 'faq.md#agents'
             - name: Rozšíření Azure Diagnostics
               items:
-                - name: Přehled
-                  href: platform/diagnostics-extension-overview.md
-                - name: Shromažďování protokolů
-                  href: platform/azure-storage-iis-table.md
                 - name: Windows
+                  displayname: diagnostics extension
                   items:
-                    - name: Historie verzí
-                      href: platform/diagnostics-extension-schema.md
-                    - name: Schéma
-                      href: platform/diagnostics-extension-schema-1dot3.md
-                    - name: Odeslání do Azure Storage
-                      href: platform/diagnostics-extension-to-storage.md
-                    - name: Odeslání do Application Insights
-                      href: platform/diagnostics-extension-to-application-insights.md
-                    - name: Odeslání do Event Hubs
-                      href: platform/diagnostics-extension-stream-event-hubs.md
-                    - name: Odeslání do Azure Monitoru jako vlastní metriky
+                    - name: Přehled
+                      href: platform/diagnostics-extension-overview.md
+                    - name: Instalace a konfigurace
+                      items:
+                        - name: PowerShell
+                          href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
+                        - name: Šablona Resource Manageru
+                          href: ../virtual-machines/extensions/diagnostics-template.md?toc=/azure/azure-monitor/toc.json
+                    - name: Odeslání do metrik Azure Monitoru
                       items:
                         - name: Virtuální počítač
                           href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
@@ -561,17 +558,28 @@
                           href: platform/collect-custom-metrics-guestos-vm-classic.md
                         - name: Cloudová služba
                           href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
+                    - name: Odeslání do Event Hubs
+                      href: platform/diagnostics-extension-stream-event-hubs.md
+                    - name: Odeslání do protokolů
+                      href: platform/azure-storage-iis-table.md
+                    - name: Odeslání do Azure Storage
+                      href: platform/diagnostics-extension-to-storage.md
+                    - name: Odeslání do Application Insights
+                      href: platform/diagnostics-extension-to-application-insights.md
+                    - name: Historie verzí
+                      href: platform/diagnostics-extension-schema.md
                     - name: Formát protokolů prostředků řádků JSON
                       href: platform/diagnostic-logs-append-blobs.md
                     - name: Řešení potíží
                       href: platform/diagnostics-extension-troubleshooting.md
                 - name: Linux
+                  displayname: diagnostics extension
                   items:
-                    - name: Použití s virtuálními počítači
-                      href: ../virtual-machines/extensions/diagnostics-linux.md
-                    - name: Vlastní metriky s využitím Telegrafu
+                    - name: Přehled
+                      href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
+                    - name: Shromažďování metrik s využitím Telegrafu
                       href: platform/collect-custom-metrics-linux-telegraf.md
-            - name: Agenti Log Analytics
+            - name: Agent Log Analytics
               items:
                 - name: Přehled
                   href: platform/log-analytics-agent.md
@@ -589,6 +597,28 @@
                   href: platform/agent-manage.md
                 - name: Stav agenta
                   href: insights/solution-agenthealth.md
+                - name: Zdroje dat
+                  items:
+                    - name: Přehled
+                      href: platform/agent-data-sources.md
+                    - name: Události systému Windows
+                      href: platform/data-sources-windows-events.md
+                    - name: Vlastní data JSON
+                      href: platform/data-sources-json.md
+                    - name: Shromážděná data o výkonu
+                      href: platform/data-sources-collectd.md
+                    - name: Syslog
+                      href: platform/data-sources-syslog.md
+                    - name: Čítače výkonu
+                      href: platform/data-sources-performance-counters.md
+                    - name: Výkon linuxových aplikací
+                      href: platform/data-sources-linux-applications.md
+                    - name: Protokoly IIS
+                      href: platform/data-sources-iis-logs.md
+                    - name: Vlastní protokoly
+                      href: platform/data-sources-custom-logs.md
+                    - name: Vlastní pole
+                      href: platform/custom-fields.md
             - name: Řešení potíží
               items:
                 - name: Rozšíření Log Analytics pro virtuální počítače
@@ -600,28 +630,6 @@
                 - name: Linuxový agent Log Analytics
                   displayname: 'troubleshoot, troubleshooting'
                   href: platform/agent-linux-troubleshoot.md
-        - name: Zdroje dat agenta
-          items:
-            - name: Přehled
-              href: platform/agent-data-sources.md
-            - name: Události systému Windows
-              href: platform/data-sources-windows-events.md
-            - name: Vlastní data JSON
-              href: platform/data-sources-json.md
-            - name: Shromážděná data o výkonu
-              href: platform/data-sources-collectd.md
-            - name: Syslog
-              href: platform/data-sources-syslog.md
-            - name: Čítače výkonu
-              href: platform/data-sources-performance-counters.md
-            - name: Výkon linuxových aplikací
-              href: platform/data-sources-linux-applications.md
-            - name: Protokoly IIS
-              href: platform/data-sources-iis-logs.md
-            - name: Vlastní protokoly
-              href: platform/data-sources-custom-logs.md
-            - name: Vlastní pole
-              href: platform/custom-fields.md
         - name: Azure Monitor pro virtuální počítače
           items:
             - name: Přehled
@@ -660,14 +668,16 @@
               href: insights/vminsights-dependency-agent-maintenance.md
             - name: Zákaz monitorování
               href: insights/vminsights-optout.md
-        - name: Řešení kapacity a výkonu
-          href: insights/capacity-performance.md
-        - name: Řešení VMware Analytics
-          href: insights/vmware.md
-        - name: Řešení Wire Data
-          href: insights/wire-data.md
-        - name: Řešení Service Map
-          href: insights/service-map.md
+        - name: Řešení
+          items:
+            - name: Řešení kapacity a výkonu
+              href: insights/capacity-performance.md
+            - name: Řešení VMware Analytics
+              href: insights/vmware.md
+            - name: Řešení Wire Data
+              href: insights/wire-data.md
+            - name: Řešení Service Map
+              href: insights/service-map.md
         - name: Skupiny počítačů
           href: platform/computer-groups.md
     - name: Monitorování kontejnerů
@@ -1125,6 +1135,10 @@
   items:
     - name: Omezení služby
       href: service-limits.md
+    - name: Rozšíření diagnostiky
+      items:
+        - name: Schéma
+          href: platform/diagnostics-extension-schema-1dot3.md
     - name: Application Insights
       items:
         - name: Automatické shromažďování závislostí

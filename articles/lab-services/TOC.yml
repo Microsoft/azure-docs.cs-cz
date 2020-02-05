@@ -152,6 +152,8 @@
           href: deploy-nested-template-environments.md
         - name: Použití spravovaných identit Azure k nasazení prostředí
           href: use-managed-identities-environments.md
+        - name: Výstrahy zabezpečení pro prostředí
+          href: environment-security-alerts.md
     - name: Správa opětovně využitelných šablon
       items:
         - name: Vlastní image versus vzorce

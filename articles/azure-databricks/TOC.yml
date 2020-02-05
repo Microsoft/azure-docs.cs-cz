@@ -1150,6 +1150,9 @@
             - name: Analýza potíží s výkonem uživatelského rozhraní
               href: /azure/databricks/kb/cloud/har-log-analysis
               maintainContext: true
+            - name: Úlohy v pracovním prostoru nepostupují
+              href: /azure/databricks/kb/cloud/azure-vnet-jobs-not-progressing
+              maintainContext: true
         - name: Clustery
           items:
             - name: Výpočet počtu jader v clusteru
@@ -1248,6 +1251,9 @@
               maintainContext: true
             - name: Nejde číst soubory ve WASB
               href: /azure/databricks/kb/data-sources/wasb-check-blob-types
+              maintainContext: true
+            - name: Optimalizace výkonu při čtení ze zdrojů dat JDBC
+              href: /azure/databricks/kb/data-sources/jdbc-optimize-read
               maintainContext: true
         - name: DBFS
           items:

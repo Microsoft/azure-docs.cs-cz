@@ -258,6 +258,8 @@
           href: backup-azure-backup-server-import-export-.md
     - name: Monitorování a výstrahy
       items:
+        - name: Použití průzkumníka záloh
+          href: monitor-azure-backup-with-backup-explorer.md
         - name: Použití webu Azure Portal
           href: backup-azure-monitoring-built-in-monitor.md
         - name: Pomocí Azure Monitoru
