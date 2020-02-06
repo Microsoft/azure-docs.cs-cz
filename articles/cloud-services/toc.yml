@@ -137,6 +137,8 @@
               href: /visualstudio/azure/vs-azure-tools-intellitrace-debug-published-cloud-services?toc=/azure/cloud-services/toc.json
         - name: Chyba přidělení cloudové služby
           href: cloud-services-allocation-failures.md
+        - name: Aplikace nepodporují TLS 1.2
+          href: applications-dont-support-TLS-1-2.md
         - name: Běžné příčiny recyklování rolí cloudové služby
           href: cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md
         - name: Výchozí velikost složky TEMP je pro roli příliš malá

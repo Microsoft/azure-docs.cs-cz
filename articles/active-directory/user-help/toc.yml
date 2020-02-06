@@ -94,21 +94,17 @@
       href: user-help-device-remediation.md
 - name: Nápověda k portálu Moje aplikace
   items:
-    - name: Přístup k portálu Moje aplikace a jeho používání
+    - name: Přihlášení k portálu Moje aplikace a jeho používání
       href: my-apps-portal-end-user-access.md
     - name: Aktualizace informací o profilu a účtu
       href: my-apps-portal-end-user-update-profile.md
     - name: Aktualizace informací o skupinách
       href: my-apps-portal-end-user-groups.md
+    - name: Uspořádání aplikací pomocí kolekcí
+      href: my-applications-portal-workspaces.md
+    - name: Úpravy nebo odvolání oprávnění aplikace
+      href: my-applications-portal-permissions-saved-accounts.md
     - name: Provedení vlastních kontrol přístupu
       href: my-apps-portal-end-user-access-reviews.md
     - name: Řešení potíží
       href: my-apps-portal-end-user-troubleshoot.md
-- name: Nápověda k portálu Moje aplikace (Preview)
-  items:
-    - name: Přístup k portálu Moje aplikace a jeho používání
-      href: my-applications-portal-access.md
-    - name: Přístup k pracovním prostorům a jejich použití
-      href: my-applications-portal-workspaces.md
-    - name: Úpravy nebo odvolání oprávnění aplikace
-      href: my-applications-portal-permissions-saved-accounts.md

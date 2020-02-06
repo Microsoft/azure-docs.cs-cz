@@ -1,4 +1,4 @@
-- name: Dokumentace k řešení Azure IoT Central
+- name: Dokumentace ke službě Azure IoT Central
   href: index.yml
 - name: Přehled
   items:
@@ -9,134 +9,132 @@
 - name: Rychlé starty
   expanded: true
   items:
-    - name: Vytvoření nové aplikace
+    - name: 1. Vytvoření nové aplikace
       href: quick-deploy-iot-central.md
+    - name: 2. Přidání simulovaného zařízení
+      href: quick-create-pnp-device.md
+    - name: 3. Konfigurace pravidel a akcí
+      href: quick-configure-rules.md
+    - name: 4. Monitorování zařízení
+      href: quick-monitor-devices.md
 - name: Kurzy
   items:
-    - name: 1. Definování nového typu zařízení
-      href: tutorial-define-device-type.md
-    - name: 2. Konfigurace pravidel
-      href: tutorial-configure-rules.md
-    - name: 3. Přizpůsobení zobrazení operátora
-      href: tutorial-customize-operator.md
-    - name: 4. Monitorování vašich zařízení
-      href: tutorial-monitor-devices.md
-    - name: 5. Přidání zařízení
-      href: tutorial-add-device.md
+    - name: Připojování
+      items:
+        - name: Připojení zařízení Plug and Play (Preview)
+          href: tutorial-connect-pnp-device.md
+        - name: Vytvoření šablony zařízení brány
+          href: tutorial-define-gateway-device-type.md
+        - name: Připojení zařízení IoT Edge
+          href: tutorial-add-edge-as-leaf-device.md
+    - name: Stálé připojení
+      items:
+        - name: Vytvoření skupiny zařízení
+          href: tutorial-use-device-groups.md
+    - name: Transformace
+      items:
+        - name: Vytvoření pravidla
+          href: tutorial-create-telemetry-rules.md
+        - name: Použití rozhraní REST API
+          href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
 - name: Koncepty
   items:
     - name: Architektura
       href: concepts-architecture.md
-    - name: Připojení
-      href: concepts-connectivity.md
     - name: Co jsou šablony aplikací?
       href: concepts-app-templates.md
+    - name: Připojování
+      href: concepts-get-connected.md
+    - name: Připojení zařízení IoT
+      href: concepts-iot-edge.md
 - name: Návody
   items:
-    - name: Připojení zařízení
-      items:
-        - name: Příprava a připojení aplikace v Node.js (generické)
-          href: howto-connect-nodejs.md
-        - name: Příprava a připojení sady MXChip IoT DevKit
-          href: howto-connect-devkit.md
-        - name: Příprava a připojení Raspberry Pi (Python)
-          href: howto-connect-raspberry-pi-python.md
-        - name: 'Příprava a připojení Raspberry Pi (C#)'
-          href: howto-connect-raspberry-pi-csharp.md
-        - name: Příprava a připojení zařízení Windows IoT Core
-          href: howto-connect-windowsiotcore.md
-        - name: Příprava a připojení zařízení SensorTile.box
-          href: howto-connect-sensortile.md
-        - name: Monitorování připojení zařízení pomocí příkazového řádku
-          href: howto-use-iotc-explorer.md
-    - name: Správa zařízení
+    - name: Připojování
       items:
         - name: Nastavení šablony zařízení
           href: howto-set-up-template.md
-        - name: správu zařízení
-          href: howto-manage-devices.md
-        - name: Spuštění úlohy
-          href: howto-run-a-job.md
-        - name: Použití sad zařízení
-          href: howto-use-device-sets.md
-        - name: Vytváření verzí šablon zařízení
-          href: howto-version-device-template.md
-    - name: Sledování a analýza
-      items:
-        - name: Vytvoření pravidla telemetrie
-          href: howto-create-telemetry-rules.md
-        - name: Vytvoření pravidla událostí
-          href: howto-create-event-rules.md
-        - name: Analýza dat zařízení
-          href: howto-create-analytics.md
-    - name: Akce a rozšiřitelnost
-      items:
-        - name: Seskupení několika akcí na základě pravidel
-          href: howto-use-action-groups.md
-        - name: Vytváření akcí webhooků na základě pravidel
-          href: howto-create-webhooks.md
-        - name: Sestavení pracovních postupů v Microsoft Flow
-          href: howto-add-microsoft-flow.md
-        - name: Sestavení pracovních postupů ve službě Azure Logic Apps
-          href: howto-build-azure-logic-apps.md
-        - name: Aktivace Azure Functions
-          href: howto-trigger-azure-functions.md
-        - name: Export dat
-          items:
-            - name: Export do služeb Event Hubs a Service Bus
-              href: howto-export-data-event-hubs-service-bus.md
-            - name: Export do Blob Storage
-              href: howto-export-data-blob-storage.md
-        - name: Vytvoření vlastních rolí
-          href: howto-create-custom-rules.md
-        - name: Vytvoření vlastní analýzy
-          href: howto-create-custom-analytics.md
-        - name: Vizualizace dat v Power BI
-          href: howto-connect-powerbi.md
+        - name: Příprava a připojení sady MXChip IoT DevKit
+          href: howto-connect-devkit.md
+        - name: Příprava a připojení zařízení RuuviTag
+          href: howto-connect-ruuvi.md
+        - name: Příprava a připojení Rigado Cascade 500
+          href: howto-connect-rigado-cascade-500.md
         - name: Připojení dalších cloudů IoT
           href: howto-build-iotc-device-bridge.md
+    - name: Stálé připojení
+      items:
+        - name: Monitorování připojení zařízení s využitím Azure CLI
+          href: howto-monitor-devices-azure-cli.md
+        - name: Vytváření verzí šablon zařízení
+          href: howto-version-device-template.md
+        - name: správu zařízení
+          href: howto-manage-devices.md
+        - name: Konfigurace pravidel
+          href: howto-configure-rules.md
+        - name: Analýza dat zařízení
+          href: howto-create-analytics.md
+        - name: Přidání dlaždic na řídicí panel
+          href: howto-add-tiles-to-your-dashboard.md
+        - name: Vytvoření osobních řídicích panelů Azure IoT Central
+          href: howto-create-personal-dashboards.md
+        - name: Spuštění úlohy
+          href: howto-run-a-job.md
+        - name: Vytváření verzí šablon zařízení
+          href: howto-version-device-template.md
+    - name: Transformace
+      items:
+        - name: Konfigurace nepřetržitého exportu dat
+          href: howto-export-data.md
+        - name: Vytváření webhooků pro pravidla
+          href: howto-create-webhooks.md
+        - name: Připojení skupin akcí Azure Monitoru k pravidlům
+          href: howto-use-action-groups.md
+        - name: Vytvoření vlastních rolí
+          href: howto-create-custom-rules.md
+        - name: Vytváření vlastních analýz s využitím Databricks
+          href: howto-create-custom-analytics.md
     - name: Správa
       items:
         - name: Správa vaší aplikace
-          href: howto-administer.md
-        - name: Správa uživatelů a skupin
-          href: howto-manage-users-roles.md
-        - name: Zobrazení vašeho vyúčtování
-          href: howto-view-bill.md
-        - name: Přizpůsobení uživatelského rozhraní aplikací
-          href: howto-customize-ui.md
-        - name: Příprava a nahrávání image
-          href: howto-prepare-images.md
-        - name: Přidání dlaždic na řídicí panel
-          href: howto-add-tiles-to-your-dashboard.md
-        - name: Použití dlaždic řídicího panelu
-          href: howto-use-tiles.md
-        - name: Použití šablon aplikací
-          href: howto-use-app-templates.md
-        - name: Správa z webu Azure Portal
-          href: howto-manage-iot-central-from-portal.md
-        - name: Správa z Azure CLI
-          href: howto-manage-iot-central-from-cli.md
-        - name: Správa z Azure PowerShellu
-          href: howto-manage-iot-central-from-powershell.md
-        - name: Vytvoření a správa aplikace jako odběratel CSP
-          href: howto-create-and-manage-applications-csp.md
-    - name: Personalizace
-      items:
-        - name: Vytvoření osobních řídicích panelů Azure IoT Central
-          href: howto-create-personal-dashboards.md
-        - name: Správa vašich předvoleb
-          href: howto-manage-preferences.md
-        - name: Přepnutí živého chatu
-          href: howto-show-hide-chat.md
+          items:
+            - name: Změna nastavení aplikace
+              href: howto-administer.md
+            - name: Správa uživatelů a skupin
+              href: howto-manage-users-roles.md
+            - name: Správa vyúčtování
+              href: howto-view-bill.md
+            - name: Přizpůsobení uživatelského rozhraní aplikací
+              href: howto-customize-ui.md
+            - name: Export vaší aplikace
+              href: howto-use-app-templates.md
+        - name: Správa z jiných míst
+          items:
+            - name: Správa z webu Azure Portal
+              href: howto-manage-iot-central-from-portal.md
+            - name: Správa z Azure CLI
+              href: howto-manage-iot-central-from-cli.md
+            - name: Správa z Azure PowerShellu
+              href: howto-manage-iot-central-from-powershell.md
+            - name: Správa z portálu CSP
+              href: howto-create-and-manage-applications-csp.md
+        - name: Přizpůsobení aplikace
+          items:
+            - name: Správa vašich osobních předvoleb
+              href: howto-manage-preferences.md
+            - name: Přepnutí živého chatu
+              href: howto-show-hide-chat.md
 - name: Související
   items:
-    - name: Řešení
+    - name: Šablony oborových aplikací
       items:
-        - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
-        - name: Akcelerátory řešení IoT
-          href: /azure/iot-accelerators
+        - name: Maloobchod
+          href: ../retail/overview-iot-central-retail-pnp.md
+        - name: Energetický sektor
+          href: ../energy/overview-iot-central-energy.md
+        - name: Státní správa
+          href: ../government/overview-iot-central-government.md
+        - name: Zdravotnictví
+          href: ../healthcare/overview-iot-central-healthcare.md
     - name: Služby platformy
       items:
         - name: IoT Hub
@@ -161,6 +159,8 @@
   items:
     - name: Možnosti pomoci a podpory
       href: /azure/iot-fundamentals/iot-support-help
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/iotcentral/'
     - name: Požadavky na zákaznická data
       href: iot-central-customer-data-requests.md
     - name: Podporované prohlížeče

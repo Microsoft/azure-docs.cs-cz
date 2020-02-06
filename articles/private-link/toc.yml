@@ -40,6 +40,12 @@
       href: disable-private-link-service-network-policy.md
     - name: Správa privátních koncových bodů
       href: manage-private-endpoint.md
+    - name: Řešení potíží
+      items:
+        - name: Řešení problémů s připojením privátního koncového bodu
+          href: troubleshoot-private-endpoint-connectivity.md
+        - name: Řešení problémů s připojením služby Private Link
+          href: troubleshoot-private-link-connectivity.md
 - name: Referenční informace
   items:
     - name: Azure CLI

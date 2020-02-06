@@ -4,16 +4,13 @@
   items:
     - name: Co je ověřování?
       href: overview-authentication.md
-- name: Rychlý start
-  items:
-    - name: Konfigurace resetování hesel
-      href: quickstart-sspr.md
 - name: Kurzy
+  expanded: true
   items:
-    - name: 1. Povolení MFA pro aplikace
+    - name: Povolení samoobslužného resetování hesel
+      href: tutorial-enable-sspr.md
+    - name: Povolení MFA pro aplikace
       href: tutorial-mfa-applications.md
-    - name: 2. Povolení pilotního nasazení SSPR
-      href: tutorial-sspr-pilot.md
     - name: Povolení místní integrace SSPR
       href: tutorial-enable-writeback.md
     - name: Integrace ochrany identit Azure

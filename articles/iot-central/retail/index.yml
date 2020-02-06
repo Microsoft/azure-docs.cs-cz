@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: 637da382af333d069161b25c6fcb5666f843a855
-  ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+  ms.openlocfilehash: 416d4a1eee6f3fe89fbe697bda896b30c8441756
+  ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 11/12/2019
-  ms.locfileid: "73957965"
+  ms.lasthandoff: 02/05/2020
+  ms.locfileid: "77020807"
 landingContent:
 - title: Tvorba řešení pro maloobchod
   linkLists:
@@ -40,19 +40,19 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Připojení Rigado Cascade 500
-      url: ../preview/howto-connect-rigado-cascade-500.md
+      url: ../core/howto-connect-rigado-cascade-500.md
 - title: Připojování
   linkLists:
   - linkListType: tutorial
     links:
     - text: Nastavení šablony zařízení
-      url: ../preview/howto-set-up-template.md
-    - text: Připojení zařízení IoT Plug and Play
-      url: ../preview/tutorial-connect-pnp-device.md
+      url: ../core/howto-set-up-template.md
+    - text: Připojení zařízení IoT Plug and Play (Preview)
+      url: ../core/tutorial-connect-pnp-device.md
   - linkListType: how-to-guide
     links:
     - text: Příprava a připojení sady MXChip IoT DevKit
-      url: ../preview/howto-connect-devkit.md
+      url: ../core/howto-connect-devkit.md
     - text: Připojení dalších cloudů IoT
       url: ../core/howto-build-iotc-device-bridge.md
 - title: Stálé připojení
@@ -60,46 +60,46 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: Použití skupin zařízení
-      url: ../preview/tutorial-use-device-groups.md
+      url: ../core/tutorial-use-device-groups.md
   - linkListType: how-to-guide
     links:
     - text: správu zařízení
-      url: ../preview/howto-manage-devices.md
+      url: ../core/howto-manage-devices.md
     - text: Spuštění úlohy
       url: ../core/howto-run-a-job.md
     - text: Analýza dat zařízení
-      url: ../preview/howto-create-analytics.md
+      url: ../core/howto-create-analytics.md
 - title: Transformace
   linkLists:
   - linkListType: tutorial
     links:
     - text: Vytvoření pravidla
-      url: ../preview/quick-configure-rules.md
+      url: ../core/quick-configure-rules.md
     - text: Vytvoření pravidel telemetrie
-      url: ../preview/tutorial-create-telemetry-rules.md
+      url: ../core/tutorial-create-telemetry-rules.md
     - text: Export do Blob Storage
-      url: ../preview/howto-export-data.md
+      url: ../core/howto-export-data.md
   - linkListType: how-to-guide
     links:
     - text: Vytvoření vlastních rolí
-      url: ../preview/howto-create-custom-rules.md
+      url: ../core/howto-create-custom-rules.md
     - text: Vytvoření vlastní analýzy
-      url: ../preview/howto-create-custom-analytics.md
+      url: ../core/howto-create-custom-analytics.md
 - title: Správa
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Správa vaší aplikace
-      url: ../preview/howto-administer.md
+      url: ../core/howto-administer.md
     - text: Správa uživatelů a skupin
-      url: ../preview/howto-manage-users-roles.md
+      url: ../core/howto-manage-users-roles.md
     - text: Zobrazení vašeho vyúčtování
-      url: ../preview/howto-view-bill.md
+      url: ../core/howto-view-bill.md
     - text: Přizpůsobení uživatelského rozhraní aplikací
-      url: ../preview/howto-customize-ui.md
+      url: ../core/howto-customize-ui.md
     - text: Konfigurace osobních řídicích panelů
       url: ../core/howto-create-personal-dashboards.md
     - text: Použití dlaždic řídicího panelu
       url: ../core/howto-add-tiles-to-your-dashboard.md
     - text: Použití šablon aplikací
-      url: ../preview/howto-use-app-templates.md
+      url: ../core/howto-use-app-templates.md
