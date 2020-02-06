@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak zálohovat SQL Server databáze n
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 8125f6d98151f91faaccef512e4bcfd2946fcdd0
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 10f55bb4c5c488975f075aa0382296f808a9a5b1
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773119"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029567"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Zálohování databází SQL Serveru ve virtuálních počítačích Azure
 
@@ -29,7 +29,7 @@ V tomto článku se dozvíte, jak:
 >**Obnovitelné odstranění pro SQL Server na virtuálním počítači Azure a obnovitelné odstranění pro SAP HANA v úlohách virtuálních počítačů Azure** je teď dostupné ve verzi Preview.<br>
 >Pokud si chcete zaregistrovat verzi Preview, napište nám na AskAzureBackupTeam@microsoft.com
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před zálohováním SQL Server databáze ověřte následující kritéria:
 
@@ -109,6 +109,9 @@ Vyhněte se použití následujících prvků v názvech databází:
 * Lomítkem (/)
 
 Aliasing je k dispozici pro nepodporované znaky, ale doporučujeme je vyhnout. Další informace najdete v tématu [Vysvětlení datového modelu služby Table Storage](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN).
+
+>[!NOTE]
+>Operace **Konfigurace ochrany** pro databáze se speciálními znaky, jako je "+" nebo "&" v názvu není podporována. Můžete buď změnit název databáze, nebo povolit **automatickou ochranu**, která může úspěšně chránit tyto databáze.
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -281,7 +284,7 @@ Pokud potřebujete vypnout automatickou ochranu, vyberte název instance v čás
 
 ## <a name="next-steps"></a>Další kroky
 
-Získáte informace o těchto tématech:
+Naučte se:
 
 * [Obnovení zálohovaných SQL Server databází](restore-sql-database-azure-vm.md)
 * [Správa zálohovaných SQL Server databází](manage-monitor-sql-database-backup.md)

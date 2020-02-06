@@ -164,8 +164,6 @@
               href: concepts-data-flow-overview.md
             - name: Režim ladění
               href: concepts-data-flow-debug-mode.md
-            - name: Zpracování JSON
-              href: concepts-data-flow-json.md
             - name: Posun schématu
               href: concepts-data-flow-schema-drift.md
             - name: Vzory sloupců
