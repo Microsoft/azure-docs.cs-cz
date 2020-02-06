@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: e51e96c0c553bcf37284878cab11f3ec592ddd05
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c8879884cf3d882e6a6b441244ed139072bedeeb
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72753379"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029465"
 ---
 # <a name="indexing-using-azure-cosmos-dbs-api-for-mongodb"></a>Indexování pomocí rozhraní API Azure Cosmos DB pro MongoDB
 
@@ -21,17 +21,100 @@ Rozhraní API Azure Cosmos DB pro MongoDB využívá automatické možnosti spr�
 
 ## <a name="indexing-for-version-36"></a>Indexování pro verzi 3,6
 
-Účty obsluhující síťový protokol verze 3,6 poskytují jiné výchozí zásady indexování než zásady poskytované staršími verzemi. Ve výchozím nastavení je indexováno pouze pole _ID. Aby bylo možné indexovat další pole, musí uživatel použít příkazy pro správu indexu MongoDB. Chcete-li použít řazení pro dotaz, je v současné době nutné vytvořit index pro pole použitá v operaci řazení.
+Účty obsluhující síťový protokol verze 3,6 poskytují jiné výchozí zásady indexování než zásady poskytované staršími verzemi. Ve výchozím nastavení je indexováno pouze pole _id. Aby bylo možné indexovat další pole, musí uživatel použít příkazy pro správu indexu MongoDB. Chcete-li použít řazení pro dotaz, je v současné době nutné vytvořit index pro pole použitá v operaci řazení.
 
 ### <a name="dropping-the-default-indexes-36"></a>Vyřazení výchozích indexů (3,6)
 
-U účtů obsluhujících síťový protokol verze 3,6 je jediným výchozím indexem _ID, který nelze vyřadit.
+U účtů obsluhujících síťový protokol verze 3,6 se _id jediný výchozí index, který nelze vyřadit.
 
 ### <a name="creating-a-compound-index-36"></a>Vytvoření složeného indexu (3,6)
 
 U účtů využívajících přenosový protokol 3,6 jsou podporovány i složené složené indexy. Následující příkaz vytvoří složený index pro pole a a b: `db.coll.createIndex({a:1,b:1})`
 
 Složené indexy lze použít k efektivnímu řazení více polí najednou, například: `db.coll.find().sort({a:1,b:1})`
+
+### <a name="track-the-index-progress"></a>Sledovat průběh indexu
+
+Verze 3,6 Azure Cosmos DB API pro účty MongoDB podporuje `currentOp()` příkaz ke sledování průběhu indexu instance databáze. Tento příkaz vrátí dokument, který obsahuje informace o probíhajících operacích instance databáze. Příkaz `currentOp` se používá ke sledování všech probíhajících operací v nativním MongoDB, zatímco v rozhraní Azure Cosmos DB API pro MongoDB tento příkaz podporuje pouze sledování operace indexu.
+
+Zde je několik příkladů, které ukazují, jak použít příkaz `currentOp` ke sledování průběhu indexu:
+
+• Získejte průběh indexu pro kolekci:
+
+   ```shell
+   db.currentOp({"command.createIndexes": <collectionName>, "command.$db": <databaseName>})
+   ```
+
+• Získejte průběh indexu pro všechny kolekce v databázi:
+
+  ```shell
+  db.currentOp({"command.$db": <databaseName>})
+  ```
+
+• Získejte průběh indexu pro všechny databáze a kolekce v účtu Azure Cosmos:
+
+  ```shell
+  db.currentOp({"command.createIndexes": { $exists : true } })
+  ```
+
+Podrobnosti o průběhu indexu obsahují procento průběhu aktuální operace indexu. Následující příklad ukazuje formát výstupního dokumentu pro různé fáze průběhu indexu:
+
+1. Pokud operace indexu v kolekci foo a na panelu databáze s úplným dokončením indexování 60%, bude mít následující výstupní dokument. `Inprog[0].progress.total` zobrazí 100 jako dokončení cíle.
+
+   ```json
+   {
+        "inprog" : [
+        {
+                ………………...
+                "command" : {
+                        "createIndexes" : foo
+                        "indexes" :[ ],
+                        "$db" : bar
+                },
+                "msg" : "Index Build (background) Index Build (background): 60 %",
+                "progress" : {
+                        "done" : 60,
+                        "total" : 100
+                },
+                …………..…..
+        }
+        ],
+        "ok" : 1
+   }
+   ```
+
+2. Pro operaci indexu, která se právě spustila v kolekci ' foo ' a ' bar ', může výstupní dokument zobrazovat 0% průběhu až do dosažení měřitelné úrovně.
+
+   ```json
+   {
+        "inprog" : [
+        {
+                ………………...
+                "command" : {
+                        "createIndexes" : foo
+                        "indexes" :[ ],
+                        "$db" : bar
+                },
+                "msg" : "Index Build (background) Index Build (background): 0 %",
+                "progress" : {
+                        "done" : 0,
+                        "total" : 100
+                },
+                …………..…..
+        }
+        ],
+       "ok" : 1
+   }
+   ```
+
+3. Po dokončení probíhající operace indexu se ve výstupním dokumentu zobrazí prázdné operace inoperace.
+
+   ```json
+   {
+      "inprog" : [],
+      "ok" : 1
+   }
+   ```
 
 ## <a name="indexing-for-version-32"></a>Indexování pro verzi 3,2
 
@@ -59,7 +142,7 @@ Následující operace jsou společné pro oba účty obsluhující protokol dr�
 >[!Important]
 > V současné době je možné jedinečné indexy vytvořit pouze v případě, že je kolekce prázdná (neobsahuje žádné dokumenty).
 
-Následující příkaz vytvoří jedinečný index v poli "student_id":
+Následující příkaz vytvoří jedinečný index v poli student_id:
 
 ```shell
 globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1 }, {unique:true} )

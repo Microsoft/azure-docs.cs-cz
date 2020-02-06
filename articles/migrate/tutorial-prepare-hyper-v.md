@@ -4,12 +4,12 @@ description: Přečtěte si, jak připravit na posouzení/migraci virtuálních 
 ms.topic: tutorial
 ms.date: 01/01/2020
 ms.custom: mvc
-ms.openlocfilehash: 1315b52e4ee6f39c27d21e3307d228219bc953d7
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 1d327f558806e0205540c183c56b92ba31e33cb7
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984740"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031216"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Příprava na posouzení a migraci virtuálních počítačů Hyper-V do Azure
 
@@ -42,7 +42,7 @@ Je nutné nastavit oprávnění pro nasazení Azure Migrate.
 **Úkol** | **Oprávnění**
 --- | ---
 **Vytvoření projektu Azure Migrate** | Váš účet Azure potřebuje oprávnění k vytvoření projektu.
-**Registrace zařízení Azure Migrate** | Azure Migrate využívá odlehčené Azure Migrate zařízení ke zjišťování a vyhodnocení virtuálních počítačů Hyper-v s Azure Migrate vyhodnocování serveru. Toto zařízení vyhledá virtuální počítače a odešle údaje o metadatech a výkonu virtuálních počítačů do Azure Migrate.<br/><br/>Při registraci zařízení se u předplatného, které jste zvolili v části zařízení – Microsoft. OffAzure, Microsoft. Migruj a Microsoft. klíčů, zaregistrují následující poskytovatelé registrace. Když zaregistrujete poskytovatele prostředků, nakonfigurujete vaše předplatné, aby fungovalo s poskytovatelem prostředků. Pokud chcete zaregistrovat poskytovatele prostředků, potřebujete roli přispěvatel nebo Owner v předplatném.<br/><br/> V rámci připojování Azure Migrate vytvoří aplikaci Azure Active Directory (Azure AD):<br/> Aplikace AAD se používá pro komunikaci (ověřování a autorizaci) mezi agenty běžícími na zařízení s příslušnými službami běžícími na Azure. Tato aplikace nemá oprávnění k tomu, aby zavedla volání ARM nebo přístup RBAC k jakémukoli prostředku.
+**Registrace zařízení Azure Migrate** | Azure Migrate využívá odlehčené Azure Migrate zařízení ke zjišťování a vyhodnocení virtuálních počítačů Hyper-V s Azure Migrate vyhodnocování serveru. Toto zařízení vyhledá virtuální počítače a odešle údaje o metadatech a výkonu virtuálních počítačů do Azure Migrate.<br/><br/>Při registraci zařízení se zaregistrují následující poskytovatelé prostředků s předplatným vybraným v zařízení – Microsoft. OffAzure, Microsoft. migruje a Microsoft. klíčů trezor. Když zaregistrujete poskytovatele prostředků, nakonfigurujete vaše předplatné, aby fungovalo s poskytovatelem prostředků. Pokud chcete zaregistrovat poskytovatele prostředků, potřebujete roli přispěvatel nebo Owner v předplatném.<br/><br/> V rámci připojování Azure Migrate vytvoří aplikaci Azure Active Directory (Azure AD):<br/> Aplikace AAD se používá pro komunikaci (ověřování a autorizaci) mezi agenty běžícími na zařízení s příslušnými službami běžícími na Azure. Tato aplikace nemá oprávnění k tomu, aby zavedla volání ARM nebo přístup RBAC k jakémukoli prostředku.
 
 
 
@@ -139,7 +139,7 @@ Spusťte skript následujícím způsobem:
 
 Hodnoty hash jsou:
 
-| **Hash** | **Hodnota** |
+| **Kontrole** | **Hodnota** |
 | --- | --- |
 | **ALGORITMY** | 0ef418f31915d01f896ac42a80dc414e |
 | **SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2 |
@@ -227,7 +227,7 @@ Před nastavením zařízení Azure Migrate a zahájením posouzení v dalším 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Nastavte oprávnění účtu Azure.

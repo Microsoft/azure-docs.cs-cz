@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: a487e0c9d565993b45f7e271af23a622e61389ad
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 42eb603be0152b9e8cfb36d02e8f0602c40afe54
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990823"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031199"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Příprava na posouzení a migraci fyzických serverů do Azure
 
@@ -44,7 +44,7 @@ Je nutné nastavit oprávnění pro nasazení Azure Migrate.
 **Úkol** | **Oprávnění**
 --- | ---
 **Vytvoření projektu Azure Migrate** | Váš účet Azure potřebuje oprávnění k vytvoření projektu.
-**Registrace zařízení Azure Migrate** | Azure Migrate využívá odlehčené Azure Migrate zařízení ke zjišťování a hodnocení fyzických serverů pomocí Azure Migrate vyhodnocování serveru. Toto zařízení zjistí servery a pošle jejich metadata a data o výkonu do Azure Migrate.<br/><br/>Při registraci zařízení se u předplatného, které jste zvolili v části zařízení – Microsoft. OffAzure, Microsoft. Migruj a Microsoft. klíčů, zaregistrují následující poskytovatelé registrace. Když zaregistrujete poskytovatele prostředků, nakonfigurujete vaše předplatné, aby fungovalo s poskytovatelem prostředků. Pokud chcete zaregistrovat poskytovatele prostředků, potřebujete roli přispěvatel nebo Owner v předplatném.<br/><br/> V rámci připojování Azure Migrate vytvoří aplikaci Azure Active Directory (Azure AD):<br/> Aplikace AAD se používá pro komunikaci (ověřování a autorizaci) mezi agenty běžícími na zařízení s příslušnými službami běžícími na Azure. Tato aplikace nemá oprávnění k tomu, aby zavedla volání ARM nebo přístup RBAC k jakémukoli prostředku.
+**Registrace zařízení Azure Migrate** | Azure Migrate využívá odlehčené Azure Migrate zařízení ke zjišťování a hodnocení fyzických serverů pomocí Azure Migrate vyhodnocování serveru. Toto zařízení zjistí servery a pošle jejich metadata a data o výkonu do Azure Migrate.<br/><br/>Při registraci zařízení se zaregistrují následující poskytovatelé prostředků s předplatným vybraným v zařízení – Microsoft. OffAzure, Microsoft. migruje a Microsoft. klíčů trezor. Když zaregistrujete poskytovatele prostředků, nakonfigurujete vaše předplatné, aby fungovalo s poskytovatelem prostředků. Pokud chcete zaregistrovat poskytovatele prostředků, potřebujete roli přispěvatel nebo Owner v předplatném.<br/><br/> V rámci připojování Azure Migrate vytvoří aplikaci Azure Active Directory (Azure AD):<br/> Aplikace AAD se používá pro komunikaci (ověřování a autorizaci) mezi agenty běžícími na zařízení s příslušnými službami běžícími na Azure. Tato aplikace nemá oprávnění k tomu, aby zavedla volání ARM nebo přístup RBAC k jakémukoli prostředku.
 
 
 
@@ -127,7 +127,7 @@ Projděte si požadavky na migraci fyzických serverů.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Nastavte oprávnění účtu Azure.

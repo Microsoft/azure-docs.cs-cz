@@ -7,114 +7,64 @@ author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.custom: seo-lt-2019
-ms.date: 12/19/2019
-ms.openlocfilehash: 06746cfc3b39a242c16a6b4f4c95b3c212a9abd5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/04/2020
+ms.openlocfilehash: 901868da8ed859a846a507557d383db760f297c9
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443952"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029516"
 ---
-# <a name="troubleshoot-azure-data-factory-data-flows"></a>Řešení potíží s Azure Data Factory toky dat
+# <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Řešení potíží s toky dat v Azure Data Factory
 
 Tento článek popisuje běžné metody řešení potíží pro toky dat v Azure Data Factory.
 
 ## <a name="common-errors-and-messages"></a>Běžné chyby a zprávy
 
-### <a name="error-message-df-sys-01-shadeddatabricksorgapachehadoopfsazureazureexception-commicrosoftazurestoragestorageexception-the-specified-container-does-not-exist"></a>Chybová zpráva: DF-SYS-01: vystínované. datacihly. org. Apache. Hadoop. FS. Azure. AzureException: com. Microsoft. Azure. Storage. StorageException: zadaný kontejner neexistuje.
+### <a name="error-code-df-executor-sourceinvalidpayload"></a>Kód chyby: DF-exekutor-SourceInvalidPayload
+- **Zpráva**: spuštění toku dat ve verzi Preview, ladění a kanálu se nezdařilo, protože kontejner neexistuje.
+- **Příčiny**: když datová sada obsahuje kontejner, který v úložišti neexistuje.
+- **Doporučení**: Ujistěte se, že kontejner odkazovaný ve vaší datové sadě existuje nebo je přístupný.
 
-- **Příznaky**: spuštění toku dat ve verzi Preview, ladění a kanálu se nezdařilo, protože kontejner neexistuje.
+### <a name="error-code-df-executor-systemimplicitcartesian"></a>Kód chyby: DF-exekutor-SystemImplicitCartesian
 
-- **Příčina**: když DataSet obsahuje kontejner, který v úložišti neexistuje.
+- **Zpráva**: implicitní kartézském produkt pro vnitřní spojení není podporován, místo toho použijte vzájemné spojení. Sloupce používané ve spojení by měly vytvořit jedinečný klíč pro řádky.
+- **Příčiny**: implicitní kartézském produkt pro vnitřní spojení mezi logickými plány není podporován. Pokud sloupce používané ve spojení vytvoří jedinečný klíč
+- **Doporučení**: u spojení, která nejsou založená na rovnosti, je nutné se rozhodnout pro vzájemné spojení.
 
-- **Řešení**: Ujistěte se, že kontejner, na který odkazujete, existuje ve vaší datové sadě.
+### <a name="error-code-df-executor-systeminvalidjson"></a>Kód chyby: DF-exekutor-SystemInvalidJson
 
-### <a name="error-message-df-sys-01-javalangassertionerror-assertion-failed-conflicting-directory-structures-detected-suspicious-paths"></a>Chybová zpráva: DF-SYS-01: Java. lang. AssertionError: kontrolní výraz se nezdařil: byly zjištěny konfliktní struktury adresáře. Podezřelé cesty
+- **Zpráva**: Chyba analýzy JSON, nepodporované kódování nebo víceřádkové
+- **Příčiny**: možné problémy se souborem JSON: nepodporované kódování, poškozené bajty nebo použití zdroje JSON jako jednoho dokumentu na mnoha vnořených řádcích
+- **Doporučení**: Ověřte, že se podporuje kódování souboru JSON. Ve zdrojové transformaci, která používá datovou sadu JSON, rozbalte ' nastavení JSON ' a zapněte ' jednotlivý dokument '.
+ 
+### <a name="error-code-df-executor-broadcasttimeout"></a>Kód chyby: DF-exekutor-BroadcastTimeout
 
-- **Příznaky**: při použití zástupných znaků ve zdrojové transformaci pomocí souborů Parquet
+- **Zpráva**: Chyba vypršení časového limitu spojení všesměrového vysílání, ujistěte se, že Stream všesměrového vysílání generuje data během 60 sekund v ladění běhu a 300 s ve spuštění úlohy
+- **Příčiny**: všesměrové vysílání má výchozí časový limit 60 sekund v ladicích běhůch a 300 sekund ve spuštění úlohy. Datový proud, který se vybral pro vysílání, se jeví jako velký a v rámci tohoto omezení vytváří data.
+- **Doporučení**: Vyhněte se všesměrovému vysílání velkých datových proudů, kde zpracování může trvat více než 60 sekund. Místo toho vyberte menší datový proud, který se má vysílat. Rozsáhlé tabulky a zdrojové soubory SQL/DW jsou obvykle špatné kandidáty.
 
-- **Příčina**: nesprávná nebo neplatná syntaxe zástupných znaků
+### <a name="error-code-df-executor-conversion"></a>Kód chyby: DF-prováděcí-převod
 
-- **Řešení**: Podívejte se na zástupnou syntaxi, kterou používáte v možnostech transformace zdroje.
+- **Zpráva**: převod na datum nebo čas se nezdařil z důvodu neplatného znaku.
+- **Příčiny**: data nejsou v očekávaném formátu.
+- **Doporučení**: Použijte správný datový typ
 
-### <a name="error-message-df-src-002-container-container-name-is-required"></a>Chybová zpráva: DF-SRC-002: Container (název kontejneru) je povinný.
+### <a name="error-code-df-executor-invalidcolumn"></a>Kód chyby: DF-exekutor-InvalidColumn
 
-- **Příznaky**: spuštění toku dat ve verzi Preview, ladění a kanálu se nezdařilo, protože kontejner neexistuje.
-
-- **Příčina**: když DataSet obsahuje kontejner, který v úložišti neexistuje.
-
-- **Řešení**: Ujistěte se, že kontejner, na který odkazujete, existuje ve vaší datové sadě.
-
-### <a name="error-message-df-uni-001-primarykeyvalue-has-incompatible-types-integertype-and-stringtype"></a>Chybová zpráva: DF-UNI-001: PrimaryKeyValue má nekompatibilní typy IntegerType a StringType
-
-- **Příznaky**: spuštění toku dat ve verzi Preview, ladění a kanálu se nezdařilo, protože kontejner neexistuje.
-
-- **Příčina**: nastane při pokusu vložit nesprávný typ primárního klíče v jímky databáze.
-
-- **Řešení**: použijte odvozený sloupec k přetypování sloupce, který používáte pro primární klíč v toku dat tak, aby odpovídal datovému typu cílové databáze.
-
-### <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-the-tcpip-connection-to-the-host-xxxxxdatabasewindowsnet-port-1433-has-failed-error-xxxxdatabasewindowsnet-verify-the-connection-properties-make-sure-that-an-instance-of-sql-server-is-running-on-the-host-and-accepting-tcpip-connections-at-the-port-make-sure-that-tcp-connections-to-the-port-are-not-blocked-by-a-firewall"></a>Chybová zpráva: DF-SYS-01: com. Microsoft. SqlServer. JDBC. SQLServerException: připojení TCP/IP k hostitelskému portu xxxxx.database.windows.net 1433 se nezdařilo. Chyba: "xxxx.database.windows.net. Ověřte vlastnosti připojení. Ujistěte se, že je na hostiteli spuštěná instance SQL Server a přijímá připojení TCP/IP na portu. Ujistěte se, že brána firewall neblokuje připojení TCP k portu.
-
-- **Příznaky**: nejde zobrazit náhled dat nebo spustit kanál se zdrojem nebo jímkou databáze.
-
-- **Příčina**: databáze je chráněná branou firewall
-
-- **Řešení**: otevřete bránu firewall pro přístup k databázi.
-
-### <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-there-is-already-an-object-named-xxxxxx-in-the-database"></a>Chybová zpráva: DF-SYS-01: com. Microsoft. SqlServer. JDBC. SQLServerException: v databázi se již nachází objekt s názvem "XXXXXX".
-
-- **Příznaky**: jímka nemůže vytvořit tabulku.
-
-- **Příčina**: v cílové databázi už existuje existující název tabulky se stejným názvem, který je definovaný ve vašem zdroji nebo v sadě dat.
-
-- **Řešení**: Změna názvu tabulky, kterou se pokoušíte vytvořit
-
-### <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-string-or-binary-data-would-be-truncated"></a>Chybová zpráva: DF-SYS-01: com. Microsoft. SqlServer. JDBC. SQLServerException: data String nebo Binary by byla zkrácena. 
-
-- **Příznaky**: při zápisu dat do jímky SQL se datový tok při spuštění kanálu nezdařil s možnou chybou zkrácení.
-
-- **Příčina**: pole z datového toku se mapuje do sloupce ve vaší databázi SQL Database není dostatečné pro uložení hodnoty, což způsobí, že ovladač SQL vyvolá tuto chybu.
-
-- **Řešení**: můžete zkrátit délku dat pro sloupce řetězců pomocí ```left()``` v odvozeném sloupci nebo implementovat [vzor "chybový řádek".](how-to-data-flow-error-rows.md)
-
-### <a name="error-message-since-spark-23-the-queries-from-raw-jsoncsv-files-are-disallowed-when-the-referenced-columns-only-include-the-internal-corrupt-record-column"></a>Chybová zpráva: protože Spark 2,3, dotazy z nezpracovaných souborů JSON/CSV jsou zakázané, pokud odkazované sloupce obsahují jenom interní poškozený sloupec záznamu. 
-
-- **Příznaky**: čtení ze zdroje JSON se nepovedlo.
-
-- **Příčina**: při čtení ze zdroje JSON s jedním dokumentem na mnoha vnořených řádcích, ADF, přes Spark, nemůže určit, kde začíná nový dokument a předchozí dokument končí.
-
-- **Řešení**: ve zdrojové transformaci, která používá datovou sadu JSON, rozbalte "nastavení JSON" a zapněte "jednotlivý dokument".
-
-### <a name="error-message-duplicate-columns-found-in-join"></a>Chybová zpráva: v JOIN byly nalezeny duplicitní sloupce.
-
-- **Příznaky**: výsledkem transformace spojení jsou sloupce vlevo a na pravé straně, které obsahují duplicitní názvy sloupců.
-
-- **Příčina**: datové proudy, které jsou spojeny, mají běžné názvy sloupců.
-
-- **Řešení**: přidejte transformaci SELECT po spojení a vyberte možnost odebrat duplicitní sloupce pro vstup i výstup.
-
-### <a name="error-message-possible-cartesian-product"></a>Chybová zpráva: možná produkt kartézském
-
-- **Příznaky**: při spuštění toku dat se zjistilo, že se kartézském produkt v transformaci spojení nebo vyhledávání.
-
-- **Příčina**: Pokud jste nemuseli explicitně vytvořit ADF pro použití vzájemného spojení, tok dat může selhat.
-
-- **Řešení**: Změňte transformaci nebo Transformujte na JOIN pomocí vlastního vzájemného spojení a zadejte podmínku Lookup nebo JOIN v editoru výrazů. Pokud chcete explicitně vytvořit úplný kartézském produkt, použijte transformaci odvozeného sloupce v každém ze dvou nezávislých datových proudů předtím, než se připojíte k vytvoření syntetického klíče, který se má shodovat. Můžete například vytvořit nový sloupec v odvozeném sloupci v každém datovém proudu s názvem ```SyntheticKey``` a nastavit jej jako ```1```. Pak jako vlastní výraz JOIN použijte ```a.SyntheticKey == b.SyntheticKey```.
-
-> [!NOTE]
-> Nezapomeňte do vlastního vzájemného spojení zahrnout alespoň jeden sloupec z každé strany levého a pravého vztahu. Provádění vzájemného spojení se statickými hodnotami místo sloupců z každé strany má za následek úplnou kontrolu celé datové sady, což způsobí, že tok dat nebude dostatečně fungovat.
+- **Zpráva**: v dotazu je nutné zadat název sloupce, nastavit alias, pokud se používá funkce SQL.
+- **Příčiny**: nebyl zadán žádný název sloupce.
+- **Doporučení**: Pokud používáte funkci SQL, jako je například min ()/Max (), nastavte alias ().
 
 ## <a name="general-troubleshooting-guidance"></a>Obecné pokyny k odstraňování potíží
 
 1. Ověřte stav připojení datové sady. V každé transformaci zdroje a jímky navštivte propojenou službu pro každou datovou sadu, kterou používáte, a otestujte připojení.
-2. Ověřte stav připojení k souborům a tabulkám z návrháře toku dat. Přepněte na ladění a klikněte na náhled dat ve vašich zdrojových transformacích, abyste měli jistotu, že budete mít přístup k datům.
-3. Pokud vše vypadá z verze Preview, přejdete do návrháře kanálů a zadáte tok dat do aktivity kanálu. Ladění kanálu pro ucelený test.
+1. Ověřte stav připojení k souborům a tabulkám z návrháře toku dat. Přepněte na ladění a klikněte na náhled dat ve vašich zdrojových transformacích, abyste měli jistotu, že budete mít přístup k datům.
+1. Pokud vše vypadá z verze Preview, přejdete do návrháře kanálů a zadáte tok dat do aktivity kanálu. Ladění kanálu pro ucelený test.
 
 ## <a name="next-steps"></a>Další kroky
 
 Pro další nápovědu k řešení potíží zkuste tyto prostředky:
-
 *  [Blog Data Factory](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Žádosti o Data Factory funkcí](https://feedback.azure.com/forums/270578-data-factory)
 *  [Videa k Azure](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)

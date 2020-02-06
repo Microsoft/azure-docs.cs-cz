@@ -15,14 +15,14 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6b2f9853c2699b69a0c9be13e6925a4b30f358f7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f5ea0ddff38532b119d8d984f2dabd6d898b44a5
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102028"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031352"
 ---
-# <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Informace o zabezpečení pro SQL Server v Azure Virtual Machines
+# <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Požadavky na zabezpečení pro SQL Server v Azure Virtual Machines
 
 Toto téma obsahuje obecné pokyny pro zabezpečení, které vám pomůžou navázat zabezpečený přístup k SQL Server instancí na virtuálním počítači Azure (VM).
 
@@ -57,6 +57,10 @@ Pokud používáte koncové body s modelem nasazení Classic, odeberte všechny 
 
 Nakonec zvažte povolení šifrovaných připojení pro instanci databázového stroje SQL Server na virtuálním počítači Azure. Nakonfigurujte instanci systému SQL Server s podepsaným certifikátem. Další informace najdete v tématu [Povolení šifrovaných připojení k databázovému stroji](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine) a [syntaxi připojovacího řetězce](https://msdn.microsoft.com/library/ms254500.aspx).
 
+## <a name="encryption"></a>Šifrování
+
+Spravované disky nabízejí šifrování na straně serveru a Azure Disk Encryption. [Šifrování na straně serveru](/azure/virtual-machines/windows/disk-encryption) poskytuje šifrování v klidovém prostředí a chrání vaše data, aby splňovala závazky zabezpečení vaší organizace a dodržování předpisů. [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) používá technologii BITLOCKER nebo dm-crypt a integruje se s Azure Key Vault k šifrování operačního systému a datových disků. 
+
 ## <a name="use-a-non-default-port"></a>Použít jiný než výchozí port
 
 Ve výchozím nastavení SQL Server naslouchá na známém portu 1433. Pro zvýšení zabezpečení nakonfigurujte SQL Server, aby naslouchala na jiný než výchozí port, například 1401. Pokud zřizujete obrázek Galerie SQL Server v Azure Portal, můžete tento port zadat v okně **nastavení SQL Server** .
@@ -74,7 +78,7 @@ Pokud to chcete nakonfigurovat po zřízení, máte dvě možnosti:
 > [!IMPORTANT]
 > Pokud je port SQL Server otevřený pro veřejná internetová připojení, je vhodné zadat jiný než výchozí port.
 
-Pokud SQL Server naslouchá na portu, který není výchozí, je nutné při připojování zadat port. Představte si třeba situaci, kdy se IP adresa serveru 13.55.255.255 a SQL Server naslouchá na portu 1401. Pokud se chcete připojit k SQL Server, zadali `13.55.255.255,1401` jste v připojovacím řetězci.
+Pokud SQL Server naslouchá na portu, který není výchozí, je nutné při připojování zadat port. Představte si třeba situaci, kdy se IP adresa serveru 13.55.255.255 a SQL Server naslouchá na portu 1401. Chcete-li se připojit k SQL Server, zadejte `13.55.255.255,1401` v připojovacím řetězci.
 
 ## <a name="manage-accounts"></a>Správa účtů
 
@@ -93,9 +97,14 @@ Nechcete, aby útočníci mohli snadno uhodnout názvy účtů nebo hesla. Násl
 
   - Pokud musíte použít přihlašovací jméno **SA** , povolte přihlašovací údaje po zřízení a přiřaďte nové silné heslo.
 
-## <a name="follow-on-premises-best-practices"></a>Dodržovat osvědčené postupy pro místní prostředí
+## <a name="additional-best-practices"></a>Další osvědčené postupy
 
-Kromě postupů popsaných v tomto tématu doporučujeme, abyste provedli kontrolu a implementaci tradičních místních postupů zabezpečení, pokud je to možné. Další informace najdete v tématu [požadavky na zabezpečení pro instalaci SQL Server](https://docs.microsoft.com/sql/sql-server/install/security-considerations-for-a-sql-server-installation) .
+Kromě postupů popsaných v tomto tématu doporučujeme, abyste provedli kontrolu a implementaci osvědčených postupů zabezpečení z tradičních místních postupů zabezpečení i osvědčených postupů zabezpečení virtuálních počítačů. 
+
+Další informace o místních postupech zabezpečení najdete v tématu požadavky na [zabezpečení pro instalaci SQL Server](/sql/sql-server/install/security-considerations-for-a-sql-server-installation) a [služby Security Center](/sql/relational-databases/security/security-center-for-sql-server-database-engine-and-azure-sql-database). 
+
+Další informace o zabezpečení virtuálních počítačů najdete v tématu [Přehled zabezpečení virtuálních počítačů](/azure/security/fundamentals/virtual-machines-overview).
+
 
 ## <a name="next-steps"></a>Další kroky
 

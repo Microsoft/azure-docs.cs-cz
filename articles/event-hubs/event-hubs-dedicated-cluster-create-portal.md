@@ -3,19 +3,19 @@ title: Vytvoření vyhrazeného clusteru Event Hubs pomocí Azure Portal
 description: V tomto rychlém startu se dozvíte, jak vytvořit cluster Azure Event Hubs pomocí Azure Portal.
 services: event-hubs
 documentationcenter: ''
-author: xurui203
+author: femila
 manager: ''
 ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 12/20/2019
-ms.author: xurui
-ms.openlocfilehash: dbe34b95652d972a9e75f4ab8f2c208061359ae9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: femila
+ms.openlocfilehash: 7003cc90bdb456eba9cfaebc1e24332d2e4a6251
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437210"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029924"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>Rychlý Start: vytvoření vyhrazeného clusteru Event Hubs pomocí Azure Portal 
 Clustery Event Hubs nabízejí nasazení s jedním nájemcem pro zákazníky s nejnáročnějšími požadavky na streamování. Tato nabídka má garantovanou smlouvu SLA 99,99% a je dostupná jenom na naší vyhrazené cenové úrovni. [Cluster Event Hubs](event-hubs-dedicated-overview.md) může příchozí miliony událostí za sekundu se zaručenou kapacitou a latencí druhé sekundy. Obory názvů a centra událostí vytvořené v rámci clusteru obsahují všechny funkce standardní nabídky a další, ale bez omezení příchozího přenosu dat. Vyhrazená nabídka také zahrnuje oblíbenou funkci [Event Hubs Capture](event-hubs-capture-overview.md) bez dalších poplatků, což vám umožní automaticky dávkovat a zasílat datové proudy do [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) nebo [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md).
@@ -26,7 +26,7 @@ Vyhrazené clustery se zřídí a účtují podle **kapacitních jednotek (kapac
 > Toto samoobslužné prostředí je teď dostupné ve verzi Preview na webu [Azure Portal](https://aka.ms/eventhubsclusterquickstart). Pokud máte nějaké dotazy týkající se vyhrazené nabídky, obraťte se prosím na [tým Event Hubs](mailto:askeventhubs@microsoft.com).
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
 - Účet Azure. Pokud ho ještě nemáte, [Zakupte si účet](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) ještě před tím, než začnete. Tato funkce není podporována s bezplatným účtem Azure. 

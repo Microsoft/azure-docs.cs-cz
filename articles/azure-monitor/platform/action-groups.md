@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: cc01145423d2961e32bf17313a2873633399d21a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 01d3edb3de9e57fa7fa8db2ede863c2aa3e100ed
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901470"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030740"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a Správa skupin akcí v Azure Portal
 Skupina akcí je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure. Výstrahy Azure Monitor a Service Health pomocí skupin akcí upozorní uživatele na aktivaci výstrahy. Různé výstrahy můžou v závislosti na požadavcích uživatele používat stejnou skupinu akcí nebo různé skupiny akcí. V rámci předplatného můžete nakonfigurovat až 2 000 skupin akcí.
@@ -62,7 +62,7 @@ Informace o použití šablon Azure Resource Manager ke konfiguraci skupin akcí
 
 ## <a name="manage-your-action-groups"></a>Správa skupin akcí
 
-Po vytvoření skupiny akcí je tato skupina zobrazená v části **skupiny akcí** v podokně **monitorování** . Vyberte skupinu akcí, pro kterou chcete spravovat:
+Po vytvoření skupiny akcí můžete zobrazit **skupiny akcí** tak, že vyberete **Spravovat akce** na úvodní stránce **výstrahy** v podokně **monitorování** . Vyberte skupinu akcí, pro kterou chcete spravovat:
 
 * Přidat, upravit nebo odebrat akce.
 * Odstraňte skupinu akcí.
@@ -80,7 +80,7 @@ Ve skupině akcí můžete mít omezený počet akcí sady Runbook.
 ### <a name="azure-app-push-notifications"></a>Nabízená oznámení aplikace Azure
 Můžete mít omezený počet akcí aplikace Azure ve skupině akcí.
 
-### <a name="email"></a>E-mail
+### <a name="email"></a>Email
 E-maily budou odeslány z následujících e-mailových adres. Ujistěte se, že je správně nakonfigurováno filtrování e-mailů.
 - azure-noreply@microsoft.com
 - azureemail-noreply@microsoft.com
@@ -103,7 +103,7 @@ Akce ITSM vyžaduje připojení ITSM. Naučte se vytvořit [připojení ITSM](..
 
 Ve skupině akcí můžete mít omezený počet ITSM akcí. 
 
-### <a name="logic-app"></a>Logická aplikace
+### <a name="logic-app"></a>Aplikace logiky
 Ve skupině akcí můžete mít omezený počet akcí aplikace logiky.
 
 ### <a name="secure-webhook"></a>Zabezpečený Webhook
@@ -111,7 +111,7 @@ Ve skupině akcí můžete mít omezený počet akcí aplikace logiky.
 
 Akce Webhooku skupin akcí vám umožní využít výhod Azure Active Directory k zabezpečení připojení mezi skupinou akcí a vaším chráněným webovým rozhraním API (koncový bod Webhooku). Celkový pracovní postup pro využití této funkce je popsaný níže. Přehled aplikací a instančních objektů služby Azure AD najdete v tématu [Přehled Microsoft Identity Platform (v 2.0)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview).
 
-1. Vytvořte aplikaci Azure AD pro vaše chráněné webové rozhraní API. Viz https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview.
+1. Vytvořte aplikaci Azure AD pro vaše chráněné webové rozhraní API. Viz třída https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview.
     - Nakonfigurujte chráněné rozhraní API, které bude volat aplikace typu démon.
     
 1. Povolením použití skupin akcí v aplikaci Azure AD.

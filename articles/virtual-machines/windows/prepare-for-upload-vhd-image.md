@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 6a9385a49e85806464e8f9ccf11d9232fae42435
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 933f0c52cf0d65c7dca480971589c0d0f2ebabf0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461133"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906778"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava virtuálního pevného disku (VHD) nebo VHDX systému Windows pro nahrání do Azure
 
@@ -33,6 +33,22 @@ Informace o zásadách podpory pro virtuální počítače Azure najdete v téma
 > Pokyny v tomto článku se týkají:
 >1. 64 verze systému Windows Server 2008 R2 a novějších operačních systémů Windows Server. Informace o spuštění 32 operačního systému v Azure najdete v tématu [Podpora pro 32 operační systémy ve virtuálních počítačích Azure](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines).
 >2. Pokud bude k migraci zatížení použit libovolný nástroj pro zotavení po havárii, například Azure Site Recovery nebo Azure Migrate, je nutné tento proces ještě provést a následně pokračovat v hostovaném operačním systému, aby bylo možné image připravit před migrací.
+
+## <a name="system-file-checker-sfc-command"></a>Kontrola systémových souborů (SFC) – příkaz
+
+### <a name="run-windows-system-file-checker-utility-run-sfc-scannow-on-os-prior-to-generalization-step-of-creating-customer-os-image"></a>Spuštění nástroje pro kontrolu systémových souborů systému Windows (spustit příkaz sfc/scannow) v operačním systému před generalizací krok vytvoření image operačního systému zákazníka
+
+Příkaz nástroje pro kontrolu systémových souborů (SFC) se používá k ověření a nahrazení systémových souborů systému Windows.
+
+Spuštění příkazu SFC:
+
+1. Otevřete příkazový řádek se zvýšenými oprávněními jako správce.
+1. Zadejte `sfc /scannow` a vyberte **ENTER**.
+
+    ![Kontrola systémových souborů](media/prepare-for-upload-vhd-image/system-file-checker.png)
+
+
+Po dokončení kontroler SFC se pokuste nainstalovat aktualizace systému Windows a restartovat počítač.
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-and-to-vhd"></a>Převést virtuální disk na pevnou velikost a na VHD
 
@@ -156,7 +172,7 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
 Ujistěte se, že jsou pro vzdálený přístup správně nakonfigurovaná následující nastavení:
 
 >[!NOTE] 
->Při spuštění `Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -Name <object name> -Value <value>`se může zobrazit chybová zpráva. Tuto zprávu klidně ignorujte. Znamená to, že doména nenabízí tuto konfiguraci prostřednictvím objektu Zásady skupiny.
+>Při spuštění `Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -Name <object name> -Value <value>`se může zobrazit chybová zpráva. Tuto zprávu můžete bez obav ignorovat. Znamená to, že doména nenabízí tuto konfiguraci prostřednictvím objektu Zásady skupiny.
 
 1. Protokol RDP (Remote Desktop Protocol) (RDP) je povolený:
    
@@ -225,7 +241,7 @@ Ujistěte se, že jsou pro vzdálený přístup správně nakonfigurovaná násl
     | NLA – zásady skupiny                         | Settings\Administrative Templates\Components\Remote Desktop – relace pro pracovní plochu – Host\Security                                                    | Vyžadovat ověření uživatele pro vzdálený přístup pomocí NLA |
     | Nastavení Keep-Alive                      | Computer cestě konfigurace Settings\Administrative pro správu \ součásti systému \ pracovní plocha – relace – Host\Connections | Konfigurace intervalu připojení Keep-Alive                                                 |
     | Znovu připojit nastavení                       | Computer cestě konfigurace Settings\Administrative pro správu \ součásti systému \ pracovní plocha – relace – Host\Connections | Znovu připojit automaticky                                                                   |
-    | Omezený počet nastavení připojení | Computer cestě konfigurace Settings\Administrative pro správu \ součásti systému \ pracovní plocha – relace – Host\Connections | Omezit počet připojení                                                              |
+    | Omezený počet nastavení připojení | Computer cestě konfigurace Settings\Administrative pro správu \ součásti systému \ pracovní plocha – relace – Host\Connections | Omezení počtu připojení                                                              |
 
 ## <a name="configure-windows-firewall-rules"></a>Konfigurace pravidel brány Windows Firewall
 1. Zapnout bránu Windows Firewall na třech profilech (doména, Standard a veřejné):
@@ -346,9 +362,9 @@ Ujistěte se, že je virtuální počítač v pořádku, zabezpečený a dostupn
 
    - Správci
 
-   - Backup Operators
+   - Operátoři zálohování
 
-   - Everyone
+   - Všemi
 
    - Uživatelé
 

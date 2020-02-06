@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 2d26cbce3398b9a44530553fbff0413c631b7579
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 0649908e4767e48d23306c72b8db92dea9f26284
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744772"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030914"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Škálování clusterů Azure HDInsight
 
@@ -29,7 +29,7 @@ Cluster můžete škálovat ručně pomocí jedné z metod popsaných níže neb
 
 Microsoft poskytuje následující nástroje pro škálování clusterů:
 
-|Nástroj | Popis|
+|Spuštění | Popis|
 |---|---|
 |[PowerShell AZ](https://docs.microsoft.com/powershell/azure)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -název_clusteru \<název clusteru >-TargetInstanceCount \<NewSize >|
 |[AzureRM PowerShellu](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -název_clusteru \<název clusteru >-TargetInstanceCount \<NewSize >|
@@ -37,7 +37,7 @@ Microsoft poskytuje následující nástroje pro škálování clusterů:
 |[Azure CLI](hdinsight-administer-use-command-line.md)|Změna velikosti clusteru Azure HDInsight \<název_clusteru > \<cílový počet instancí > |
 |[Azure Portal](https://portal.azure.com)|Otevřete podokno cluster HDInsight, v nabídce vlevo vyberte **Velikost clusteru** a pak v podokně velikost clusteru zadejte počet pracovních uzlů a vyberte Uložit.|  
 
-![Možnost clusteru Azure Portal Scale](./media/hdinsight-scaling-best-practices/scale-cluster-blade1.png)
+![Možnost clusteru Azure Portal Scale](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
 
 Pomocí kterékoli z těchto metod můžete škálovat cluster HDInsight během několika minut nahoru nebo dolů.
 
@@ -126,7 +126,7 @@ Pokud chcete tuto spuštěnou aplikaci odstranit ručně, spusťte v prostředí
 yarn application -kill <application_id>
 ```
 
-Příklad:
+Například:
 
 ```bash
 yarn application -kill "application_1499348398273_0003"

@@ -12,27 +12,38 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/05/2019
+ms.date: 02/04/2020
 ms.subservice: app-mgmt
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ce9549765f6a912b3e95f99d11da20347b82ad8
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: cac9eac2d17fa0a4f1db487d4c7f8beb67de24a9
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326464"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030662"
 ---
-# <a name="azure-ad-connect-provisioning-agent-version-release-history"></a>Agent zřizování Azure AD Connect: Historie vydaných verzí
+# <a name="azure-ad-connect-provisioning-agent-version-release-history"></a>Agent zřizování Azure AD Connect: Historie verzí
 V tomto článku jsou uvedené verze a funkce Azure Active Directory Connect zřizovacího agenta, který byl vydán. Tým Azure AD pravidelně aktualizuje agenta zřizování o nové funkce a funkce. Agent zřizování se aktualizuje automaticky, když se uvolní nová verze. 
 
 Pro vaše agenty doporučujeme povolit automatické aktualizace, abyste měli jistotu, že máte nejnovější funkce a opravy chyb. Microsoft poskytuje přímou podporu pro nejnovější verzi agenta a jednu verzi.
+
+## <a name="11960"></a>1.1.96.0
+
+### <a name="release-status"></a>Stav verze
+
+4\. prosince 2019: vydáno ke stažení
+
+### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
+
+* Zahrnuje podporu [Azure AD Connectho zřizování cloudu](../cloud-provisioning/what-is-cloud-provisioning.md) pro synchronizaci dat uživatelů, kontaktů a skupin z místní služby Active Directory do Azure AD.
+
 
 ## <a name="11670"></a>1.1.67.0
 
 ### <a name="release-status"></a>Stav verze
 
-9\. září 2019: Vydaná pro automatickou aktualizaci
+9\. září 2019: vydáno pro automatickou aktualizaci
 
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
 
@@ -49,7 +60,7 @@ Pro vaše agenty doporučujeme povolit automatické aktualizace, abyste měli ji
 
 ### <a name="release-status"></a>Stav verze
 
-23. ledna 2019: Vydáno ke stažení
+23. ledna 2019: vydáno ke stažení
 
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
 

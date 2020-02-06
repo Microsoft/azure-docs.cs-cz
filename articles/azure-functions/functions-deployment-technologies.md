@@ -1,17 +1,17 @@
 ---
 title: Technologie nasazení v Azure Functions
 description: Seznamte se s různými způsoby, jak můžete nasadit kód pro Azure Functions.
-author: ColbyTresness
+author: georgewallace
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: cotresne
-ms.openlocfilehash: 39b3a96ddd3a9007600d1fa956c4e2d48f6adae9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.author: gwallace
+ms.openlocfilehash: 7b95fae3c7b713a9f97c31578a3bb24a9062fa2e
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714802"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029856"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Technologie nasazení v Azure Functions
 

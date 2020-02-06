@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/23/2016
-ms.openlocfilehash: 550ac9ff3b425e682fdda16501613aa41a80d765
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: dcc71739d859fb9cf4e03e5d3540d3cdbc69ac49
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847250"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031539"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Filtrování a předzpracování telemetrie v sadě Application Insights SDK
 
@@ -192,7 +192,7 @@ public void Process(ITelemetry item)
 }
 ```
 
-#### <a name="diagnose-dependency-issues"></a>Diagnóza problémů se závislostí
+#### <a name="diagnose-dependency-issues"></a>Diagnostika problémů se závislostmi
 
 [Tento blog](https://azure.microsoft.com/blog/implement-an-application-insights-telemetry-processor/) popisuje projekt pro diagnostiku problémů se závislostmi tím, že automaticky posílá standardní příkazy pro odesílání do závislostí.
 
@@ -272,7 +272,7 @@ namespace MvcWebRole.Telemetry
 
 **Aplikace ASP.NET: načíst inicializátor**
 
-V souboru ApplicationInsights. config:
+In ApplicationInsights.config:
 
 ```xml
 <ApplicationInsights>
@@ -378,6 +378,107 @@ Vložte inicializátor telemetrie hned po inicializačním kódu, který jste z�
 Shrnutí nevlastních vlastností dostupných v telemetryItem najdete v tématu [Export datového modelu Application Insights](../../azure-monitor/app/export-data-model.md).
 
 Můžete přidat tolik inicializátorů, kolik chcete, a jsou volány v pořadí, ve kterém jsou přidány.
+
+### <a name="opencensus-python-telemetry-processors"></a>Procesory telemetrie OpenCensus Python
+
+Procesory telemetrie v OpenCensus Pythonu jsou funkce zpětného volání volané pro zpracování telemetrie před jejich exportem. Funkce zpětného volání musí jako svůj parametr přijmout datový typ [obálky](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/protocol.py#L86) . Pokud chcete vyfiltrovat telemetrie z exportu, ujistěte se, že funkce zpětného volání vrací `False`. V [tomto umístění](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/protocol.py)můžete zobrazit schéma pro Azure monitor datové typy v obálkách.
+
+```python
+# Example for log exporter
+import logging
+
+from opencensus.ext.azure.log_exporter import AzureLogHandler
+
+logger = logging.getLogger(__name__)
+
+# Callback function to append '_hello' to each log message telemetry
+def callback_function(envelope):
+    envelope.data.baseData.message += '_hello'
+    return True
+
+handler = AzureLogHandler(connection_string='InstrumentationKey=<your-instrumentation_key-here>')
+handler.add_telemetry_processor(callback_function)
+logger.addHandler(handler)
+logger.warning('Hello, World!')
+```
+```python
+# Example for trace exporter
+import requests
+
+from opencensus.ext.azure.trace_exporter import AzureExporter
+from opencensus.trace import config_integration
+from opencensus.trace.samplers import ProbabilitySampler
+from opencensus.trace.tracer import Tracer
+
+config_integration.trace_integrations(['requests'])
+
+# Callback function to add os_type: linux to span properties
+def callback_function(envelope):
+    envelope.data.baseData.properties['os_type'] = 'linux'
+    return True
+
+exporter = AzureExporter(
+    connection_string='InstrumentationKey=<your-instrumentation-key-here>'
+)
+exporter.add_telemetry_processor(callback_function)
+tracer = Tracer(exporter=exporter, sampler=ProbabilitySampler(1.0))
+with tracer.span(name='parent'):
+response = requests.get(url='https://www.wikipedia.org/wiki/Rabbit')
+```
+
+```python
+# Example for metrics exporter
+import time
+
+from opencensus.ext.azure import metrics_exporter
+from opencensus.stats import aggregation as aggregation_module
+from opencensus.stats import measure as measure_module
+from opencensus.stats import stats as stats_module
+from opencensus.stats import view as view_module
+from opencensus.tags import tag_map as tag_map_module
+
+stats = stats_module.stats
+view_manager = stats.view_manager
+stats_recorder = stats.stats_recorder
+
+CARROTS_MEASURE = measure_module.MeasureInt("carrots",
+                                            "number of carrots",
+                                            "carrots")
+CARROTS_VIEW = view_module.View("carrots_view",
+                                "number of carrots",
+                                [],
+                                CARROTS_MEASURE,
+                                aggregation_module.CountAggregation())
+
+# Callback function to only export the metric if value is greater than 0
+def callback_function(envelope):
+    return envelope.data.baseData.metrics[0].value > 0
+
+def main():
+    # Enable metrics
+    # Set the interval in seconds in which you want to send metrics
+    exporter = metrics_exporter.new_metrics_exporter(connection_string='InstrumentationKey=<your-instrumentation-key-here>')
+    exporter.add_telemetry_processor(callback_function)
+    view_manager.register_exporter(exporter)
+
+    view_manager.register_view(CARROTS_VIEW)
+    mmap = stats_recorder.new_measurement_map()
+    tmap = tag_map_module.TagMap()
+
+    mmap.measure_int_put(CARROTS_MEASURE, 1000)
+    mmap.record(tmap)
+    # Default export interval is every 15.0s
+    # Your application should run for at least this amount
+    # of time so the exporter will meet this interval
+    # Sleep can fulfill this
+    time.sleep(60)
+
+    print("Done recording metrics")
+
+if __name__ == "__main__":
+    main()
+```
+Můžete přidat tolik procesorů, kolik chcete, a které jsou volány v pořadí, v jakém byly přidány. Pokud má jeden procesor vyvolat výjimku, nemá vliv na následující procesory.
 
 ### <a name="example-telemetryinitializers"></a>Příklad TelemetryInitializers
 

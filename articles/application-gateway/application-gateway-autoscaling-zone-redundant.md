@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/09/2019
 ms.author: victorh
-ms.openlocfilehash: 66978f313f5cb3881f8befc61289d7de0f4214cb
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 8fe38870f593dd57d8e4dad5601ea404e99c3d10
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668146"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031556"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatické škálování a zónově redundantní služby Application Gateway v2 
 
@@ -42,7 +42,7 @@ SKU Standard_v2 a WAF_v2 jsou k dispozici v následujících oblastech: Střed U
 V případě SKU verze v2 je cenový model založený na spotřebě a již není připojen k počtům nebo velikostem instancí. Ceny SKU v2 mají dvě komponenty:
 
 - **Pevná cena** – je to hodinová (nebo částečná hodinová) cena za účelem zřízení Standard_v2 nebo WAF_v2 brány. Počítejte s tím, že 0 dalších minimálních instancí stále zajišťuje vysokou dostupnost služby, která je vždycky zahrnutá do pevné ceny.
-- **Jednotková cena kapacity** – jedná se o náklady založené na spotřebě, které se účtují i s pevnými náklady. Poplatek za jednotky kapacity se počítá po hodinách nebo částečně po hodinách. Jednotka kapacity má tři dimenze – výpočetní jednotka, trvalá připojení a propustnost. Výpočetní jednotka měří spotřebovanou kapacitu procesoru. Faktory ovlivňující výpočetní jednotku jsou připojení TLS/s, výpočty přepisu adresy URL a zpracování pravidel WAF. Trvalé připojení je míra navázaných připojení TCP k aplikační bráně v daném fakturačním intervalu. Propustnost je průměr MB/s zpracováno systémem v daném fakturačním intervalu.  Fakturace se provádí na úrovni kapacitní jednotky pro cokoli nad rezervovaným počtem instancí.
+- **Jednotková cena kapacity** – jedná se o náklady založené na spotřebě, které se účtují i s pevnými náklady. Poplatky za jednotku se vypočítávají také každou hodinu nebo částečně. Existují tři dimenze kapacity jednotek a výpočetní jednotky, trvalá připojení a propustnost. Výpočetní jednotka je míra spotřebované kapacity procesoru. Faktory ovlivňující výpočetní jednotku jsou připojení TLS/s, výpočty přepisu adresy URL a zpracování pravidel WAF. Trvalé připojení je míra navázaných připojení TCP k aplikační bráně v daném fakturačním intervalu. Propustnost je průměr MB/s zpracováno systémem v daném fakturačním intervalu.  Fakturace se provádí na úrovni kapacitní jednotky pro cokoli nad rezervovaným počtem instancí.
 
 Každá jednotka kapacity se skládá z maximálně: 1 výpočetní jednotka nebo 2500 trvalých připojení nebo propustnosti 2,22 MB/s.
 
@@ -64,7 +64,7 @@ V následující tabulce jsou uvedeny ukázkové ceny a jsou pouze pro ilustrati
 | Standard_v2                                       |    0,20             | 0,0080                          |
 | WAF_v2                                            |    0,36             | 0,0144                          |
 
-Další informace o cenách najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/application-gateway/). Fakturace je naplánována na začátek od 1. července 2019.
+Další informace o cenách najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/application-gateway/). 
 
 **Příklad 1**
 
@@ -155,7 +155,7 @@ Následující tabulka porovnává funkce, které jsou k dispozici u jednotlivý
 | Ukončení protokolu SSL (Secure Sockets Layer)            | &#x2713; | &#x2713; |
 | Komplexní šifrování SSL                         | &#x2713; | &#x2713; |
 | Spřažení relací                                  | &#x2713; | &#x2713; |
-| Stránky vlastních chyb                                | &#x2713; | &#x2713; |
+| Vlastní chybové stránky                                | &#x2713; | &#x2713; |
 | Podpora protokolu WebSocket                                 | &#x2713; | &#x2713; |
 | Podpora HTTP/2                                    | &#x2713; | &#x2713; |
 | Vyprázdnění připojení                               | &#x2713; | &#x2713; |
@@ -168,11 +168,11 @@ Následující tabulka porovnává funkce, které jsou k dispozici u jednotlivý
 |Rozdíl|Podrobnosti|
 |--|--|
 |Ověřovací certifikát|Nepodporuje se.<br>Další informace najdete v tématu [Přehled koncového šifrování protokolu SSL s Application Gateway](ssl-overview.md#end-to-end-ssl-with-the-v2-sku).|
-|Kombinování Standard_v2 a standardních Application Gateway ve stejné podsíti|Nepodporováno|
-|Uživatelem definovaná trasa (UDR) na Application Gateway podsíti|Nepodporováno|
+|Kombinování Standard_v2 a standardních Application Gateway ve stejné podsíti|Nepodporuje se|
+|Uživatelem definovaná trasa (UDR) na Application Gateway podsíti|Nepodporuje se|
 |NSG pro rozsah portů pro příchozí spojení| -65200 až 65535 pro Standard_v2 SKU<br>-65503 až 65534 pro SKU Standard.<br>Další informace najdete v [nejčastějších dotazech](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
 |Protokoly výkonu v diagnostice Azure|Nepodporuje se.<br>Měly by se používat metriky Azure.|
-|Vyúčtování|Fakturace naplánovala zahájení od 1. července 2019.|
+|Fakturace|Fakturace naplánovala zahájení od 1. července 2019.|
 |Režim FIPS|V tuto chvíli se nepodporují.|
 |Jenom interního nástroje režim|To se v tuto chvíli nepodporuje. Podporují se veřejné a interního nástroje režimy.|
 |Integrace Netwatcher|Nepodporuje se.|

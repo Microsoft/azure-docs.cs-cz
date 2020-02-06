@@ -1,6 +1,6 @@
 ---
-title: Řešení Azure VMware společnosti CloudSimple
-description: Portál dokumentace pro řešení Azure VMware od společnosti CloudSimple
+title: Řešení Azure VMware (AVS)
+description: Portál dokumentace pro řešení Azure VMware (AVS)
 author: sharaths-cs
 ms.author: b-mashar
 ms.date: 08/20/2019
@@ -8,23 +8,23 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 936a9eb4d9b33b45800fab213fc72a306a04146e
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: d81ea6778f3ba31d72c34334b1439994b076647c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972744"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025210"
 ---
-# <a name="azure-vmware-solution-by-cloudsimple"></a>Řešení Azure VMware společnosti CloudSimple
+# <a name="azure-vmware-solution-by-avs"></a>Řešení Azure VMware od AVS
 
-Vítá vás univerzální portál, který vám pomůže s řešením Azure VMware od společnosti CloudSimple.
+Vítá vás univerzální portál, který vám pomůže s řešeními Azure VMware od AVS.
 Na dokumentačním webu se dozvíte víc o následujících tématech:
 
 ## <a name="overview"></a>Přehled
 
-Další informace o řešení Azure VMware od společnosti CloudSimple
+Další informace o řešeních Azure VMware (AVS)
 
-* Další informace o funkcích, výhodách a scénářích využití najdete v tématu [Co je řešení Azure VMware od společnosti CloudSimple](cloudsimple-vmware-solutions-overview.md).
+* Další informace o funkcích, výhodách a scénářích využití najdete v tématu [Co je řešení Azure VMware od AVS](cloudsimple-vmware-solutions-overview.md)
 * Projděte si [klíčové koncepty pro správu](key-concepts.md).
 
 ## <a name="quickstart"></a>Rychlý start
@@ -32,17 +32,17 @@ Další informace o řešení Azure VMware od společnosti CloudSimple
 Naučte se toto řešení využívat.
 
 * Zjistěte, jak [inicializovat tuto službu a koupit kapacitu](quickstart-create-cloudsimple-service.md).
-* V článku věnovaném [konfiguraci prostředí privátního cloudu](quickstart-create-private-cloud.md) se naučíte vytvořit nové prostředí VMware.
+* V článku věnovaném [konfiguraci prostředí privátního cloudu AVS](quickstart-create-private-cloud.md) se naučíte vytvořit nové prostředí VMware.
 * Projděte si článek věnovaný [využití virtuálních počítačů VMware v Azure](quickstart-create-vmware-virtual-machine.md) a zjistěte, jak sjednotit správu napříč VMware a Azure.
 
 ## <a name="concepts"></a>Koncepty
 
 Přečtěte si víc o následujících konceptech.
 
-* [Služba CloudSimple](cloudsimple-service.md) (označuje se také jako Řešení Azure VMware od společnosti CloudSimple – služba). Tento prostředek se musí vytvořit jednou pro každou oblast.
-* Nákup kapacity pro vaše prostředí vytvořením jednoho nebo několika prostředků [Uzel CloudSimple](cloudsimple-node.md). Tyto prostředky se také označují jako Řešení Azure VMware od společnosti CloudSimple – uzel.
-* Inicializace a konfigurace prostředí VMware s využitím [privátních cloudů](cloudsimple-private-cloud.md).
-* Sjednocení správy s využitím [virtuálních počítačů CloudSimple](cloudsimple-virtual-machines.md) (označují se také jako Řešení Azure VMware od společnosti CloudSimple – virtuální počítač).
+* [Služba AVS](cloudsimple-service.md) (označovaná také jako řešení Azure VMware (AVS) – služba). Tento prostředek se musí vytvořit jednou pro každou oblast.
+* Nákup kapacity pro vaše prostředí vytvořením jednoho nebo několika prostředků [Uzel AVS](cloudsimple-node.md). Tyto prostředky se také označují jako řešení Azure VMware od AVS – uzel.
+* Inicializace a konfigurace prostředí VMware s využitím [privátních cloudů AVS](cloudsimple-private-cloud.md).
+* Sjednocení správy s využitím [virtuálních počítačů AVS](cloudsimple-virtual-machines.md) (označují se také jako řešení Azure VMware od AVS – virtuální počítač).
 * Návrh základní sítě s využitím [sítí VLAN nebo podsítí](cloudsimple-vlans-subnets.md).
 * Segmentace a zabezpečení základní sítě s využitím prostředku [Tabulka bran firewall](cloudsimple-firewall-tables.md).
 * Zajištění zabezpečeného přístupu k vašim prostředím VMware přes WAN s využitím [služeb VPN Gateway](cloudsimple-vpn-gateways.md).
@@ -56,10 +56,10 @@ Přečtěte si víc o následujících konceptech.
 
 Naučte se provádět běžné úlohy, například:
 
-* [Vytvoření služby CloudSimple](create-cloudsimple-service.md), jedné pro každou oblast, ve které chcete nasadit prostředí VMware.
-* Správa základních funkcí služby na [portálu CloudSimple](access-cloudsimple-portal.md).
-* Povolení kapacity a optimalizace fakturace pro vaši infrastrukturu prostřednictvím [nákupu uzlů CloudSimple](create-nodes.md).
-* Správa konfigurací prostředí VMware s využitím privátních cloudů. Privátní cloudy můžete [vytvářet](create-private-cloud.md), [spravovat](manage-private-cloud.md), [zvětšovat](expand-private-cloud.md) nebo [zmenšovat](shrink-private-cloud.md).
+* [Vytvoření služby AVS](create-cloudsimple-service.md), jedné pro každou oblast, ve které chcete nasadit prostředí VMware.
+* Správa základních funkcí služby na [portálu AVS](access-cloudsimple-portal.md).
+* Povolení kapacity a optimalizace fakturace pro vaši infrastrukturu prostřednictvím [nákupu uzlů AVS](create-nodes.md).
+* Správa konfigurací prostředí VMware s využitím privátních cloudů AVS. Privátní cloudy AVS můžete [vytvářet](create-private-cloud.md), [spravovat](manage-private-cloud.md), [zvětšovat](expand-private-cloud.md) nebo [zmenšovat](shrink-private-cloud.md).
 * Zajištění jednotné správy díky [mapování předplatných Azure](azure-subscription-mapping.md).
 * Monitorování aktivity uživatelů a systému prostřednictvím [stránek aktivit](monitor-activity.md)
 * Konfigurace sítě pro vaše prostředí [vytvořením podsítí a jejich správou](create-vlan-subnet.md).
@@ -68,7 +68,7 @@ Naučte se provádět běžné úlohy, například:
 * Zajištění možností připojení z interních sítí nebo klientských pracovních stanic [nastavením VPN](vpn-gateway.md).
 * Povolení komunikace z [místních prostředí](on-premises-connection.md) i do [virtuálních sítí Azure](virtual-network-connection.md).
 * Konfigurace cílů upozornění a zobrazení celkové zakoupené kapacity v [přehledu účtů](account.md).
-* Zobrazení [uživatelů](users.md), kteří využili přístup k portálu CloudSimple.
+* Zobrazení [uživatelů](users.md), kteří využili přístup k portálu AVS.
 * Správa virtuálních počítačů VMware na webu Azure Portal:
     * [Vytváření virtuálních počítačů](azure-create-vm.md) na webu Azure Portal.
     * [Správa virtuálních počítačů](azure-manage-vm.md), které jste vytvořili.

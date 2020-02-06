@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: jaredro
-ms.openlocfilehash: c5cb8366465d5983823184c87eb54fad6aaffbd0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 2722a852b1119ef619bc414bce5cb3a8ff6f8f00
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705917"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031608"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>Jak nakonfigurovat ExpressRoute Direct
 
@@ -27,7 +27,13 @@ Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti
 
    Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
    ```
-2. Výpis všech umístění, kde se podporuje přímý ExpressRoute.
+   
+2. Opětovně zaregistrujete předplatné do Microsoftu. Network pro přístup k rozhraním API expressrouteportslocation a expressrouteport.
+
+   ```powershell
+   Register-AzResourceProvider -ProviderNameSpace "Microsoft.Network"
+   ```   
+3. Výpis všech umístění, kde se podporuje přímý ExpressRoute.
   
    ```powershell
    Get-AzExpressRoutePortsLocation
@@ -60,7 +66,7 @@ Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti
    Contact             : support@equinix.com
    AvailableBandwidths : []
    ```
-3. Pokud výše uvedené umístění určila dostupnou šířku pásma
+4. Pokud výše uvedené umístění určila dostupnou šířku pásma
 
    ```powershell
    Get-AzExpressRoutePortsLocation -LocationName "Equinix-San-Jose-SV1"
@@ -82,7 +88,7 @@ Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti
                           }
                         ]
    ```
-4. Vytvoření prostředku ExpressRoute přímo na základě umístění zvoleno výše
+5. Vytvoření prostředku ExpressRoute přímo na základě umístění zvoleno výše
 
    Přímé ExpressRoute podporuje QinQ a Dot1Q zapouzdření. Vybrali QinQ každý okruh ExpressRoute se dynamicky přiřadí značku S a bude jedinečný v rámci prostředku ExpressRoute přímo. Každá značka C na okruh musí být jedinečný v okruhu, ale ne přes ExpressRoute přímo.  
 
@@ -149,7 +155,7 @@ Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti
    Circuits                   : []
    ```
 
-## <a name="state"></a>Změnit stav správce odkazů
+## <a name="state"></a>Změnit stav Správce odkazů
 
   Tento proces by měla sloužit k provedení testu vrstvy 1, zajistit, aby každý křížové připojení správně opravený do směrovače pro primární a sekundární.
 1. Získáte přímé ExpressRoute podrobnosti.
@@ -217,7 +223,7 @@ Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti
    Circuits                   : []
    ```
 
-   Použijte stejný postup s `AdminState = "Disabled"` Chcete-li snížit porty.
+   Pro vypnutí portů použijte stejný postup jako u `AdminState = "Disabled"`.
 
 ## <a name="circuit"></a>Vytvoření okruhu
 
@@ -271,4 +277,4 @@ Vytvoření okruhu ExpressRoute přímo prostředku.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o ExpressRoute Direct, najdete v článku [přehled](expressroute-erdirect-about.md).
+Další informace o ExpressRoute Direct najdete v [přehledu](expressroute-erdirect-about.md).

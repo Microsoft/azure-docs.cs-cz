@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
-ms.openlocfilehash: 8c63d314c253152d2815a70831870fe331071c68
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 256510f855256e648ae9203f46eb9f66c9ffaed6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964079"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029276"
 ---
 ## <a name="publish-the-project-to-azure"></a>Publikování projektu do Azure
 
@@ -46,7 +46,7 @@ V této části vytvoříte aplikaci funkcí a související prostředky v před
     + **[Účet úložiště](../articles//storage/common/storage-introduction.md#types-of-storage-accounts)** : účet úložiště úrovně Standard se vytvoří s jedinečným názvem, který je založený na názvu vaší aplikace Function App.
     + **[Plán hostování](../articles/azure-functions/functions-scale.md)** : v oblasti západní USA se vytvoří plán spotřeby pro hostování aplikace Function bez serveru.
     + **Aplikace Function App**: projekt se nasadí do této nové aplikace Function App a spustí se.
-    + **[Application Insights]()** : instance, která je připojená k vaší aplikaci Function App, je vytvořená na základě názvu vaší funkce.
+    + **Application Insights**: instance, která je připojená k vaší aplikaci Function App, je vytvořená na základě názvu vaší funkce.
 
     Po vytvoření aplikace funkcí a použití balíčku nasazení se zobrazí oznámení. 
     

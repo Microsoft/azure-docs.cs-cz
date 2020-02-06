@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/13/2019
+ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: 26a353251bd85a30ab26c86f3d6b363b0a84e074
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 59839df1e67c5ea7f18df373ad0530a2ea740209
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889528"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030893"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak používat API Management Azure s virtuálními sítěmi
 Virtuální sítě Azure umožňují umístit jakékoli prostředky Azure do jiné než internetové sítě podporující směrování, ke které můžete řídit přístup. Tyto sítě je pak možné připojit k místním sítím pomocí různých technologií VPN. Další informace o virtuálních sítích Azure najdete tady: [Přehled Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -31,7 +31,7 @@ Službu Azure API Management lze nasadit v rámci virtuální sítě (VNET), aby
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků popsaných v tomto článku musíte mít:
 
@@ -70,7 +70,7 @@ K provedení kroků popsaných v tomto článku musíte mít:
     > [!IMPORTANT]
     > Při nasazování instance Azure API Management do virtuální sítě Správce prostředků musí být služba ve vyhrazené podsíti, která neobsahuje žádné další prostředky s výjimkou instancí Azure API Management. Pokud se provede pokus o nasazení instance služby Azure API Management do podsítě Správce prostředků virtuální sítě, která obsahuje další prostředky, nasazení se nezdaří.
 
-    Pak vyberte **Použít**. Stránka **virtuální síť** vaší instance API Management se aktualizuje novými možnostmi virtuální sítě a podsítě.
+    Pak vyberte **použít**. Stránka **virtuální síť** vaší instance API Management se aktualizuje novými možnostmi virtuální sítě a podsítě.
 
     ![Vybrat síť VPN][api-management-setup-vpn-select]
 
@@ -136,9 +136,9 @@ Následuje seznam běžných potíží s chybou konfigurace, ke kterým může d
 
     | Prostředí Azure | Koncové body                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Veřejný partnerský vztah Azure      | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com, kde `East US 2` je eastus2.warm.ingestion.msftcloudes.com</li></ul> |
+    | Veřejné Azure      | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com, kde `East US 2` je eastus2.warm.ingestion.msftcloudes.com</li></ul> |
     | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
-    | Azure (Čína)       | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
+    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
 
 + **Předávání SMTP**: odchozí připojení k síti pro přenos SMTP, které se řeší pod `smtpi-co1.msn.com`hostitele, `smtpi-ch1.msn.com`, `smtpi-db3.msn.com``smtpi-sin.msn.com` a `ies.global.microsoft.com`
 
@@ -150,13 +150,7 @@ Následuje seznam běžných potíží s chybou konfigurace, ke kterým může d
 
   * Povolte koncové body služby v podsíti, ve které je nainstalovaná služba API Management. Pro Azure SQL, Azure Storage, Azure EventHub a Azure ServiceBus musí být povolené [koncové body služby][ServiceEndpoints] . Povolení koncových bodů přímo z API Management delegované podsítě těmto službám umožňuje používat páteřní síť Microsoft Azure, která poskytuje optimální směrování pro provoz služeb. Pokud používáte koncové body služby s vynuceným tunelovou správou rozhraní API, výše uvedený provoz služeb Azure není vynuceně tunelování. Druhý provoz závislosti služby API Management je vynucené tunelování a nelze ho ztratit nebo služba API Management nebude správně fungovat.
     
-  * Všechny přenosy řídicích rovin z Internetu do koncového bodu správy služby API Management jsou směrovány přes konkrétní sadu příchozích IP adres hostovaných API Management. V případě vynuceného tunelování nebudou odpovědi symetricky mapovány zpět na tyto příchozí IP adresy příchozích dat. Abychom překonali omezení, musíme přidat následující uživatelsky definované trasy ([udr][UDRs]) k řízení provozu zpátky do Azure tím, že nastavíte cíl těchto hostitelských tras na Internet. Sada příchozích IP adres pro přenos rovin řízení je následující:
-    
-     | Prostředí Azure | IP adresy pro správu                                                                                                                                                                                                                                                                                                                                                              |
-    |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Veřejný partnerský vztah Azure      | 13.84.189.17/32, 13.85.22.63/32, 23.96.224.175/32, 23.101.166.38/32, 52.162.110.80/32, 104.214.19.224/32, 52.159.16.255/32, 40.82.157.167/32, 51.137.136.0/32, 40.81.185.8/32, 40.81.47.216/32, 51.145.56.125/32, 40.81.89.24/32, 52.224.186.99/32, 51.145.179.78/32, 52.140.238.179/32, 40.66.60.111/32, 52.139.80.117/32, 20.46.144.85/32, 191.233.24.179/32, 40.90.185.46/32, 102.133.130.197/32, 52.139.20.34/32, 40.80.232.185/32, 13.71.49.1/32, 13.64.39.16/32, 20.40.160.107/32, 20.37.52.67/32, 20.44.33.246/32, 13.86.102.66/32, 20.40.125.155/32, 51.143.127.203/32, 52.253.225.124/32, 52.253.159.160/32, 20.188.77.119/32, 20.44.72.3/32, 52.142.95.35/32, 52.139.152.27/32, 20.39.80.2/32, 51.107.96.8/32, 20.39.99.81/32, 20.37.81.41/32, 51.107.0.91/32, 102.133.0.79/32, 51.116.96.0/32, 51.116.0.0/32 |
-    | Azure Government  | 52.127.42.160/32, 52.127.34.192/32 |
-    | Azure (Čína)       | 139.217.51.16/32, 139.217.171.176/32 |
+  * Všechny přenosy řídicích rovin z Internetu do koncového bodu správy služby API Management jsou směrovány přes konkrétní sadu příchozích IP adres hostovaných API Management. V případě vynuceného tunelování nebudou odpovědi symetricky mapovány zpět na tyto příchozí IP adresy příchozích dat. Abychom překonali omezení, musíme přidat následující uživatelsky definované trasy ([udr][UDRs]) k řízení provozu zpátky do Azure tím, že nastavíte cíl těchto hostitelských tras na Internet. Sada příchozích IP adres pro provoz řídicí roviny je doložená [IP adresami řídicí roviny](#control-plane-ips) .
 
   * Pro jiné závislosti API Management služby, které jsou vynuceným tunelovým propojením, by měl existovat způsob, jak tento název hostitele vyřešit a jak se obrátit na koncový bod. Mezi ně patří
       - Metriky a sledování stavu
@@ -167,7 +161,7 @@ Následuje seznam běžných potíží s chybou konfigurace, ke kterým může d
 ## <a name="troubleshooting"> </a>Řešení potíží
 * **Počáteční nastavení**: když počáteční nasazení služby API Management do podsítě neproběhne úspěšně, doporučuje se nejdřív nasadit virtuální počítač do stejné podsítě. Další Vzdálená plocha na virtuální počítač a ověřte, že existuje připojení k jednomu z prostředků níže v předplatném Azure.
     * Azure Storage objekt BLOB
-    * Databáze SQL Azure
+    * Azure SQL Database
     * Azure Storage tabulka
 
   > [!IMPORTANT]
@@ -182,7 +176,7 @@ Azure rezervuje některé IP adresy v rámci každé podsítě a tyto adresy se 
 
 Kromě IP adres, které používá infrastruktura virtuální sítě Azure, každá instance služby API Management v podsíti používá dvě IP adresy na jednotku SKU úrovně Premium nebo jednu IP adresu pro SKU pro vývojáře. Každá instance si vyhrazuje další IP adresu pro externí nástroj pro vyrovnávání zatížení. Při nasazování do interní virtuální sítě musí pro interní nástroj pro vyrovnávání zatížení vyžadovat další IP adresu.
 
-Vzhledem k výpočtu výše minimální velikosti podsítě, ve které API Management lze nasadit, je/29, což poskytuje tři IP adresy.
+Vzhledem k výpočtu výše minimální velikosti podsítě, ve které API Management lze nasadit, je/29, které poskytuje tři použitelné IP adresy.
 
 ## <a name="routing"></a> Směrování
 + Veřejná IP adresa (VIP) s vyrovnáváním zatížení bude vyhrazena pro poskytování přístupu ke všem koncovým bodům služby.
@@ -196,12 +190,76 @@ Vzhledem k výpočtu výše minimální velikosti podsítě, ve které API Manag
 * Pro API Management nasazení ve více oblastech, která jsou nakonfigurovaná v režimu interní virtuální sítě, se uživatelům zodpovídá za správu vyrovnávání zatížení napříč různými oblastmi, a to při vlastním směrování.
 * Připojení z prostředku v globálně partnerské virtuální síti v jiné oblasti do API Management služby v interním režimu nebude fungovat v důsledku omezení platformy. Další informace najdete v tématu [prostředky v jedné virtuální síti nemůžou komunikovat s interním nástrojem pro vyrovnávání zatížení Azure v partnerské virtuální síti](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints) .
 
+## <a name="control-plane-ips"></a> IP adresy řídicí roviny
+
+IP adresy se dělí **prostředím Azure**. Pokud je povolená IP adresa příchozích požadavků označená s **globálním** umístěním, musí být na seznamu povolená i IP adresa specifická pro **oblast** .
+
+| **Prostředí Azure**|   **Oblast**|  **IP adresa**|
+|-----------------|-------------------------|---------------|
+| Veřejné Azure| Střed USA – jih (globální)| 104.214.19.224|
+| Veřejné Azure| Střed USA – sever (globální)| 52.162.110.80|
+| Veřejné Azure| Středozápadní USA| 52.253.135.58|
+| Veřejné Azure| Jižní Korea – střed| 40.82.157.167|
+| Veřejné Azure| Spojené království – západ| 51.137.136.0|
+| Veřejné Azure| Japonsko – západ| 40.81.185.8|
+| Veřejné Azure| Středoseverní USA| 40.81.47.216|
+| Veřejné Azure| Velká Británie – jih| 51.145.56.125|
+| Veřejné Azure| Indie – západ| 40.81.89.24|
+| Veřejné Azure| USA – východ| 52.224.186.99|
+| Veřejné Azure| Západní Evropa| 51.145.179.78|
+| Veřejné Azure| Japonsko – východ| 52.140.238.179|
+| Veřejné Azure| Francie – střed| 40.66.60.111|
+| Veřejné Azure| Kanada – východ| 52.139.80.117|
+| Veřejné Azure| Spojené arabské emiráty sever| 20.46.144.85|
+| Veřejné Azure| Brazílie – jih| 191.233.24.179|
+| Veřejné Azure| Jihovýchodní Asie| 40.90.185.46|
+| Veřejné Azure| Jižní Afrika – sever| 102.133.130.197|
+| Veřejné Azure| Kanada – střed| 52.139.20.34|
+| Veřejné Azure| Jižní Korea – jih| 40.80.232.185|
+| Veřejné Azure| Střed Indie| 13.71.49.1|
+| Veřejné Azure| Západní USA| 13.64.39.16|
+| Veřejné Azure| Austrálie – jihovýchod| 20.40.160.107|
+| Veřejné Azure| Austrálie – střed| 20.37.52.67|
+| Veřejné Azure| Indie – jih| 20.44.33.246|
+| Veřejné Azure| Střední USA| 13.86.102.66|
+| Veřejné Azure| Austrálie – východ| 20.40.125.155|
+| Veřejné Azure| Západní USA 2| 51.143.127.203|
+| Veřejné Azure| Východní USA 2 EUAP| 52.253.229.253|
+| Veřejné Azure| Střed USA EUAP| 52.253.159.160|
+| Veřejné Azure| Středojižní USA| 20.188.77.119|
+| Veřejné Azure| Východní USA 2| 20.44.72.3|
+| Veřejné Azure| Severní Evropa| 52.142.95.35|
+| Veřejné Azure| Východní Asie| 52.139.152.27|
+| Veřejné Azure| Francie – jih| 20.39.80.2|
+| Veřejné Azure| Švýcarsko – západ| 51.107.96.8|
+| Veřejné Azure| Austrálie – střed 2| 20.39.99.81|
+| Veřejné Azure| Spojené arabské emiráty – střed| 20.37.81.41|
+| Veřejné Azure| Švýcarsko – sever| 51.107.0.91|
+| Veřejné Azure| Jižní Afrika – západ| 102.133.0.79|
+| Veřejné Azure| Německo – středozápad| 51.116.96.0|
+| Veřejné Azure| Německo – sever| 51.116.0.0|
+| Veřejné Azure| Norsko – východ| 51.120.2.185|
+| Veřejné Azure| Norsko – západ| 51.120.130.134|
+| Azure China 21Vianet| Čína – sever (globální)| 139.217.51.16|
+| Azure China 21Vianet| Čína – východ (globální)| 139.217.171.176|
+| Azure China 21Vianet| Čína – sever| 40.125.137.220|
+| Azure China 21Vianet| Čína – východ| 40.126.120.30|
+| Azure China 21Vianet| Čína – sever 2| 40.73.41.178|
+| Azure China 21Vianet| Čína – východ 2| 40.73.104.4|
+| Azure Government| USGov) – Virginia (globální)| 52.127.42.160|
+| Azure Government| USGov Texas (Global)| 52.127.34.192|
+| Azure Government| USGov) – Virginia| 52.227.222.92|
+| Azure Government| USGov Iowa| 13.73.72.21|
+| Azure Government| USGov Arizona| 52.244.32.39|
+| Azure Government| USGov Texas| 52.243.154.118|
+| Azure Government| USDoD – střed| 52.182.32.132|
+| Azure Government| USDoD východ| 52.181.32.192|
 
 ## <a name="related-content"> </a>Související obsah
 * [Připojení Virtual Network k back-endu pomocí služby VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)
 * [Připojení Virtual Network z různých modelů nasazení](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [Jak používat inspektora rozhraní API k trasování volání v Azure API Management](api-management-howto-api-inspector.md)
-* [Virtual Network Faq](../virtual-network/virtual-networks-faq.md)
+* [Virtual Network nejčastějších dotazech](../virtual-network/virtual-networks-faq.md)
 * [Značky služeb](../virtual-network/security-overview.md#service-tags)
 
 [api-management-using-vnet-menu]: ./media/api-management-using-with-vnet/api-management-menu-vnet.png

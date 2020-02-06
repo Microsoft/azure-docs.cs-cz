@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 71344f954990952856f031829f13273e062b62c5
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 65006b8357db44c3e1b8f8d9e819615b5dd9db6e
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933168"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031744"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Řešení chyb pomocí runbooků
 
@@ -56,7 +56,7 @@ Tato chyba má dvě primární příčiny:
 * Různé verze modulů AzureRM
 * Snažíte se získat přístup k prostředkům v samostatném předplatném.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Pokud se tato chyba zobrazí po aktualizaci jednoho modulu AzureRM, měli byste všechny moduly AzureRM aktualizovat na stejnou verzi.
 
@@ -106,7 +106,7 @@ K této chybě může dojít, pokud:
 
 * Uživatel Azure Active Directory, který se pokouší získat podrobnosti o předplatném, není nakonfigurovaný jako správce předplatného.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Pomocí následujících kroků zjistíte, jestli jste se ověřili do Azure a máte přístup k předplatnému, které se pokoušíte vybrat:
 
@@ -140,7 +140,7 @@ Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is re
 
 Pokud máte na svém účtu Azure Multi-Factor Authentication, nemůžete k ověřování v Azure použít Azure Active Directoryho uživatele. Místo toho je třeba použít certifikát nebo instanční objekt k ověření v Azure.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Pokud chcete použít certifikát s rutinami modelu nasazení Azure Classic, přečtěte si téma [Vytvoření a přidání certifikátu pro správu služeb Azure](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx). Pokud chcete použít instanční objekt s rutinami Azure Resource Manager, přečtěte si téma [Vytvoření instančního objektu pomocí Azure Portal](../../active-directory/develop/howto-create-service-principal-portal.md) a [ověřování instančního objektu pomocí Azure Resource Manager](../../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
@@ -166,7 +166,7 @@ At line:16 char:1
 
 Tato chyba je způsobená použitím rutin AzureRM a AZ v sadě Runbook. Tato situace nastane, když naimportujete `Az` před importem `AzureRM`.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Rutiny AZ a AzureRM se nedají importovat a používat ve stejné sadě Runbook. Další informace o AZ rutinách v Azure Automation najdete v tématu [AZ modul Support in Azure Automation](../az-modules.md).
 
@@ -184,7 +184,7 @@ Exception: A task was canceled.
 
 Tato chyba může být způsobena používáním zastaralých modulů Azure.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Tuto chybu můžete vyřešit tak, že aktualizujete moduly Azure na nejnovější verzi.
 
@@ -200,7 +200,7 @@ Při spouštění Runbooků se sada Runbook nedokáže spravovat prostředky Azu
 
 Sada Runbook při spuštění nepoužívá správný kontext.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Při práci s více předplatnými může být kontext předplatného ztracen při vyvolávání sad Runbook. Chcete-li zajistit, aby byl kontext předplatného předán runbooků, přidejte do rutiny parametr `AzureRmContext` a předejte jí kontext. Doporučuje se také použít rutinu `Disable-AzureRmContextAutosave` s oborem **procesu** , aby se zajistilo, že použitá pověření se použijí jenom pro aktuální Runbook.
 
@@ -248,7 +248,7 @@ K této chybě může dojít z následujících důvodů:
 * Modul obsahující rutinu se neimportuje do účtu Automation.
 * Modul obsahující rutinu je importován, ale je zastaralý.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Tuto chybu lze vyřešit provedením jedné z následujících úloh:
 
@@ -280,7 +280,7 @@ K této chybě dochází z důvodu některého z následujících problémů.
 
 * Příliš mnoho dat výjimky. Runbook se pokusil zapsat příliš mnoho dat výjimky do výstupního datového proudu.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 * Limit paměti, síťové sokety. Navrhované způsoby práce s omezeními paměti jsou rozdělení zatížení mezi více sad Runbook, zpracování méně dat v paměti, vyhněte se zbytečným výstupům z vašich runbooků a vezměte v úvahu, kolik kontrolních bodů se zapisuje do pracovního postupu PowerShellu. runbooků. K vymazání proměnných použijte metodu Clear, například `$myVar.clear`, a pomocí `[GC]::Collect` spusťte uvolňování paměti okamžitě. Tyto akce snižují nároky na paměť Runbooku během běhu.
 
@@ -310,7 +310,7 @@ No certificate was found in the certificate store with thumbprint
 
 K této chybě dochází, pokud název assetu přihlašovacích údajů není platný. K této chybě může dojít také v případě, že uživatelské jméno a heslo, které jste použili k nastavení assetu přihlašovacích údajů automatizace, nejsou platné.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Chcete-li zjistit, co je chybné, proveďte následující kroky:
 
@@ -363,9 +363,9 @@ Object reference not set to an instance of an object
 
 ### <a name="cause"></a>Příčina
 
-Došlo k známému problému, kdy rutina Start-AzureRmAutomationRunbook nezpracovává výstupní datový proud správně, pokud obsahuje objekty.
+Je známý problém, kdy rutina Start-AzureRmAutomationRunbook nezpracovává výstupní datový proud správně, pokud obsahuje objekty.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Chcete-li tento problém vyřešit, doporučujeme implementovat logiku cyklického dotazování a pomocí rutiny [Get-AzureRmAutomationJobOutput](/powershell/module/azurerm.automation/get-azurermautomationjoboutput) načíst výstup. Ukázka této logiky je definována v následujícím příkladu.
 
@@ -407,7 +407,7 @@ Cannot convert the <ParameterType> value of type Deserialized <ParameterType> to
 
 Pokud je vaše sada Runbook pracovním postupem PowerShellu, ukládá složité objekty v deserializovaném formátu pro zachování stavu Runbooku, pokud je pracovní postup pozastaven.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Tento problém opravíte některým z následujících tří řešení:
 
@@ -429,7 +429,7 @@ The quota for the monthly total job run time has been reached for this subscript
 
 K této chybě dojde, pokud provádění úlohy překročí kvótu Free 500-minut pro váš účet. Tato kvóta se vztahuje na všechny typy úloh spuštění úlohy. Některé z těchto úloh mohou testovat úlohu, spouštět úlohu z portálu, spouštět úlohy pomocí webhooků nebo naplánování úlohy ke spuštění pomocí Azure Portal nebo ve vašem datovém centru. Další informace o cenách pro automatizaci najdete v tématu [ceny služby Automation](https://azure.microsoft.com/pricing/details/automation/).
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Pokud chcete používat více než 500 minut zpracování za měsíc, musíte změnit předplatné z úrovně Free na úroveň Basic. Můžete upgradovat na úroveň Basic provedením následujících kroků:
 
@@ -452,7 +452,7 @@ Vaše úloha Runbooku se nezdařila s chybou:
 
 Tato chyba je způsobená tím, že modul PowerShellu nemůže najít rutinu, kterou používáte v Runbooku. Příčinou této chyby je, že modul, který obsahuje rutinu, v účtu chybí, je v konfliktu s názvem sady Runbook nebo rutina existuje i v jiném modulu a automatizace nemůže tento název přeložit.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Problém vyřeší některá z následujících řešení:
 
@@ -477,7 +477,7 @@ Toto chování je záměrné vzhledem k tomu, že se jedná o monitorování pro
 
 Sada Runbook běžela prostřednictvím limitu 3 hodin, který je povolený pro sdílení v izolovaném prostoru Azure.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Jedním z doporučených řešení je spuštění sady Runbook na [Hybrid Runbook Worker](../automation-hrw-run-runbooks.md).
 
@@ -505,7 +505,7 @@ Při pokusu o vyvolání Webhooku pro Azure Automation sadu Runbook se zobrazí 
 
 Webhook, který se pokoušíte volat, je buď zakázán, nebo vypršela jeho platnost.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Pokud je Webhook zakázaný, můžete Webhook znovu povolit prostřednictvím Azure Portal. po vypršení platnosti Webhooku je potřeba Webhook odstranit a znovu vytvořit. Webhook se dá [obnovit jenom v](../automation-webhooks.md#renew-webhook) případě, že ještě nevypršela jeho platnost.
 
@@ -523,7 +523,7 @@ Při spuštění rutiny `Get-AzureRmAutomationJobOutput` se zobrazí následují
 
 K této chybě může dojít při načítání výstupu úlohy z Runbooku, který má mnoho [podrobných streamů](../automation-runbook-output-and-messages.md#verbose-stream).
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Tuto chybu můžete vyřešit dvěma způsoby:
 
@@ -544,7 +544,7 @@ Exception was thrown - Cannot invoke method. Method invocation is supported only
 
 K této chybě může dojít při spuštění úlohy PowerShellu v Runbooku, který běží v Azure. K tomuto chování může dojít, protože Runbooky spuštěné v izolovaném prostoru Azure nemusí běžet v [plném jazykovém režimu](/powershell/module/microsoft.powershell.core/about/about_language_modes).
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Tuto chybu můžete vyřešit dvěma způsoby:
 
@@ -552,6 +552,22 @@ Tuto chybu můžete vyřešit dvěma způsoby:
 * Pokud má sada Runbook tuto chybovou zprávu, spusťte ji na Hybrid Runbook Worker
 
 Další informace o tomto chování a dalších chování sady Runbook Azure Automation naleznete v tématu [chování sady Runbook](../automation-runbook-execution.md#runbook-behavior).
+
+## <a name="scenario-linux-hybrid-runbook-worker-receives-a-prompt-for-a-password-when-signing-a-runbook"></a>Scénář: Linux Hybrid Runbook Worker při podepisování Runbooku zobrazit výzvu k zadání hesla
+
+### <a name="issue"></a>Problém
+
+Spuštění příkazu **sudo** pro Linux Hybrid Runbook Worker načte neočekávanou výzvu k zadání hesla.
+
+### <a name="cause"></a>Příčina
+
+Účet nxautomationuser pro agenta Log Analytics pro Linux není správně nakonfigurovaný v souboru sudoers. Hybrid Runbook Worker potřebuje odpovídající konfiguraci oprávnění účtu a dalších dat, aby mohla podepisovat Runbooky na Linux Runbook Worker.
+
+### <a name="resolution"></a>Řešení
+
+* Ujistěte se, že Hybrid Runbook Worker má na počítači spustitelný soubor GnuPG (GPG).
+
+* Ověřte konfiguraci účtu nxautomationuser v souboru sudoers. Viz [spouštění Runbooků na Hybrid Runbook Worker](../automation-hrw-run-runbooks.md)
 
 ## <a name="other"></a>Můj problém není uvedený výše.
 

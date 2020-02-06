@@ -7,14 +7,14 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 01/23/2020
+ms.date: 02/03/2020
 ms.custom: include file
-ms.openlocfilehash: a1576e4a97af5de0b936c662de636aae542a19b5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: cfe3eb4c0ac1378b7c519b3b34094945612d8508
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76748852"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029094"
 ---
 >[!NOTE]
 >V této části najdete pokyny k [registraci aplikací Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
@@ -27,24 +27,40 @@ ms.locfileid: "76748852"
 
     [![klikněte na tlačítko Nová registrace.](./media/digital-twins-permissions/aad-app-register.png)](./media/digital-twins-permissions/aad-app-register.png#lightbox)
 
-1. Zadejte popisný název pro registraci této aplikace v poli **název** . V části **identifikátor URI přesměrování (volitelné)** vyberte v rozevírací nabídce na levé straně možnost **veřejný klient/nativní (mobilní & plocha)** a do textového pole napravo zadejte `https://microsoft.com`. Vyberte **Zaregistrovat**.
+1. Zadejte popisný název pro registraci této aplikace v poli **název** . 
+
+    1. V části **URI přesměrování (volitelné)** zadejte do textového pole `https://microsoft.com`.     
+
+    1. Ověřte, které účty a klienti podporuje vaše aplikace Azure Active Directory.
+
+    1. Vyberte **Zaregistrovat**.
 
     [![vytvořit podokno](./media/digital-twins-permissions/aad-app-reg-create.png)](./media/digital-twins-permissions/aad-app-reg-create.png#lightbox)
 
-1. Abyste se ujistili, že [je aplikace zaregistrovaná jako **veřejný klient**](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration), otevřete podokno **ověřování** pro registraci vaší aplikace a posuňte se v tomto podokně dolů. V části **výchozí typ klienta** zvolte možnost **Ano** pro **považovat aplikaci za veřejného klienta**a stiskněte **Uložit**.
+1. Okno **ověřování** určuje nastavení konfigurace pro ověřování. 
+
+    1. Přidejte **identifikátory URI pro přesměrování** a nakonfigurujte **přístupové tokeny** tak, že vyberete **+ Přidat platformu**.
+
+    1. Vyberte **Ano** , pokud chcete určit, že aplikace je **veřejným klientem**.
+
+    1. Ověřte, které účty a klienti podporuje vaše aplikace Azure Active Directory.
+
+    [![nastavení konfigurace veřejného klienta](./media/digital-twins-permissions/aad-configure-public-client.png)](./media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
+
+1. Po výběru příslušné platformy nakonfigurujte **identifikátory URI přesměrování** a **přístupové tokeny** na bočním panelu napravo od uživatelského rozhraní.
 
     1. **Identifikátory URI pro přesměrování** se musí shodovat s adresou zadanou požadavkem ověřování:
 
-        * Pro aplikace hostované v místním vývojovém prostředí vyberte možnost **veřejný klient (mobilní & Desktop)** . Nezapomeňte nastavit **výchozí typ klienta** na Ano.
+        * Pro aplikace hostované v místním vývojovém prostředí vyberte možnost **veřejný klient (mobilní & Desktop)** . Nezapomeňte nastavit **veřejného klienta** na **Ano**.
         * V případě aplikací s jednou stránkou hostovaných v Azure App Service vyberte **Web**.
 
-        Vyberte **veřejný klient (mobilní & Desktop)** a zadejte `http://localhost:8080/`.
+    1. Určete, zda je **Adresa URL pro odhlášení** vhodná.
 
-        [![konfigurace identifikátorů URI pro přesměrování](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png)](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png#lightbox)
+    1. Povolte tok implicitního udělení kontrolou **přístupových tokenů** nebo **tokenů ID**.
+                
+    [![konfigurace identifikátorů URI pro přesměrování](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png)](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png#lightbox)
 
-    1. Ověřte **přístupové tokeny** a nakonfigurujte nastavení **oauth2AllowImplicitFlow** tak, aby `true` ve formátu JSON **manifestu** vašeho prostředku.
-
-        [![nastavení konfigurace veřejného klienta](./media/digital-twins-permissions/aad-configure-public-client.png)](./media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
+    Klikněte na **Konfigurovat**a pak na **Uložit**.
 
 1.  Otevřete podokno **Přehled** vaší registrované aplikace a zkopírujte hodnoty následujících entit do dočasného souboru. Tyto hodnoty použijete ke konfiguraci ukázkové aplikace v následujících oddílech.
 

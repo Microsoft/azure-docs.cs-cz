@@ -3,12 +3,12 @@ title: Nastavení Azure Monitor pro kontejnery živá data (Preview) | Microsoft
 description: Tento článek popisuje, jak nastavit zobrazení protokolů kontejnerů v reálném čase (stdout/stderr) a událostí bez použití kubectl s Azure Monitor for Containers.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 5a3d020132e3c93eab7fec46d1ffe45d00b5ed43
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1ca52384e5ce657e4fedeb42e3304449a2d6be11
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404704"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030668"
 ---
 # <a name="how-to-setup-the-live-data-preview-feature"></a>Jak nastavit funkci živých dat (Preview)
 
@@ -33,7 +33,7 @@ Tento článek vysvětluje, jak nakonfigurovat ověřování pro řízení pří
 >[!NOTE]
 >Tato funkce je dostupná ve všech oblastech Azure, včetně Azure Čína. V tuto chvíli není dostupná ve službě Azure USA pro státní správu.
 
-## <a name="authentication-model"></a>Režim ověřování
+## <a name="authentication-model"></a>Model ověřování
 
 Funkce Live data (Preview) využívá rozhraní Kubernetes API, které je stejné jako nástroj příkazového řádku `kubectl`. Koncové body rozhraní API Kubernetes využívají certifikát podepsaný svým držitelem, který se nedá ověřit v prohlížeči. Tato funkce využívá interní proxy server k ověření certifikátu se službou AKS, která zajišťuje důvěryhodnost provozu.
 
@@ -101,7 +101,7 @@ Registrace klienta Azure AD musí být překonfigurována, aby Azure Portal mohl
 Další informace o pokročilém nastavení zabezpečení v Kubernetes najdete v [dokumentaci k Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/rbac/). 
 
 >[!NOTE]
->Pokud vytváříte nový cluster s podporou RBAC, přečtěte si téma [integrace Azure Active Directory se službou Azure Kubernetes](../../aks/azure-ad-integration.md) a postup při konfiguraci ověřování Azure AD. V průběhu postupu vytvoření klientské aplikace Poznámka v tomto oddílu zvýrazní dvě adresy URL pro přesměrování, které je potřeba vytvořit pro Azure Monitor pro kontejnery. 
+>Pokud vytváříte nový cluster s podporou RBAC, přečtěte si téma [integrace Azure Active Directory se službou Azure Kubernetes](../../aks/azure-ad-integration.md) a postup při konfiguraci ověřování Azure AD. Všimněte si, že během postupu vytvoření klientské aplikace se v této části zvýrazní dvě adresy URL pro přesměrování, které je potřeba vytvořit pro Azure Monitor pro kontejnery odpovídající hodnotám uvedeným v kroku 3 níže.
 
 ### <a name="client-registration-reconfiguration"></a>Konfigurace registrace klienta
 

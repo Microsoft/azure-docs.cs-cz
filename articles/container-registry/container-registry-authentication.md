@@ -1,21 +1,33 @@
 ---
 title: Možnosti ověřování v registru
-description: Možnosti ověřování pro službu Azure Container Registry, včetně přihlašování pomocí Azure Active Directory identity, pomocí instančních objektů a použití volitelných přihlašovacích údajů správce.
+description: Možnosti ověřování privátního služby Azure Container Registry, včetně přihlašování pomocí Azure Active Directory identity, pomocí instančních objektů a použití volitelných přihlašovacích údajů správce.
 ms.topic: article
-ms.date: 12/21/2018
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fbe77dee4104e3c654aad58db82765733b2c3e1d
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.date: 01/30/2020
+ms.openlocfilehash: 384f401a986c58dc6ce63384ce3e2a43b8db27fa
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264505"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029873"
 ---
-# <a name="authenticate-with-a-private-docker-container-registry"></a>Ověřování pomocí privátního registru kontejnerů Docker
+# <a name="authenticate-with-an-azure-container-registry"></a>Ověřování pomocí služby Azure Container Registry
 
 Existuje několik způsobů, jak ověřit pomocí služby Azure Container Registry, z nichž každá je platná pro jeden nebo více scénářů použití registru.
 
 Mezi doporučené způsoby patří ověřování v registru přímo přes [jednotlivé přihlašovací údaje](#individual-login-with-azure-ad), nebo vaše aplikace a orchestrace kontejnerů můžou provádět bezobslužné nebo "nezabezpečené" ověřování pomocí [instančního objektu služby](#service-principal)Azure Active Directory (Azure AD).
+
+## <a name="authentication-options"></a>Možnosti ověřování
+
+V následující tabulce jsou uvedeny dostupné metody ověřování a Doporučené scénáře. Podrobnosti najdete v tématu s propojeným obsahem.
+
+| Metoda                               | Ověřování                                           | Scénáře                                                            | RBAC                             | Omezení                                |
+|---------------------------------------|-------------------------------------------------------|---------------------------------------------------------------------|----------------------------------|--------------------------------------------|
+| [Individuální  identity AD](#individual-login-with-azure-ad)               | `az acr login` v rozhraní příkazového řádku Azure CLI                             | Interaktivní nabízení a vyžádané sdílení pro vývojáře, testery                                    | Ano                              | Token AD se musí obnovit každé 3 hodiny.     |
+|   [instančního objektu služby AD](#service-principal)                 | `docker login`<br/><br/>`az acr login` v Azure CLI<br/><br/> Nastavení přihlášení do registru v rozhraních API nebo nástrojích<br/><br/>      tajného kódu pro vyžádání obsahu Kubernetes                                       | Bezobslužné vkládání z kanálu CI/CD<br/><br/> Bezobslužné stažení do Azure nebo externích služeb  | Ano                              | Výchozí platnost hesla SP je 1 rok.       |                                                           
+| [Integrace s AKS](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)                    | Připojit registr při vytvoření nebo aktualizaci clusteru AKS  | Bezobslužné stažení do clusteru AKS                                                  | Ne, jenom přístup pro vyžádání             | K dispozici pouze v clusteru AKS            |
+| [Spravovaná identita pro prostředky Azure](container-registry-authentication-managed-identity.md)  | `docker login`<br/><br/>  `az acr login`v rozhraní příkazového řádku Azure                                       | Bezobslužné vkládání z kanálu CI/CD z Azure<br/><br/> Bezobslužné získání dat do služeb Azure<br/><br/>   | Ano                              | Používejte jenom ze služeb Azure, které [podporují spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) .              |
+|   [uživatelů správce](#admin-account)                           | `docker login`                                          | Interaktivní nabízená oznámení nebo vyžádaná osoba pro jednotlivé vývojáře nebo testery                           | Ne, vždycky získávat a nabízet přístup  | Jeden účet na registr, nedoporučuje se pro více uživatelů         |
+|   [přístupového tokenu v oboru úložiště](container-registry-repository-scoped-permissions.md)              | `docker login`<br/><br/>`az acr login` v Azure CLI   | Interaktivní nabízená oznámení nebo vyžádání do úložiště podle individuálního vývojáře nebo testerů<br/><br/> Bezobslužné odeslání/vyžádání do úložiště podle individuálního systému nebo externího zařízení                  | Ano                              | Aktuálně není integrováno se službou AD identity  |
 
 ## <a name="individual-login-with-azure-ad"></a>Individuální přihlášení pomocí Azure AD
 
@@ -25,11 +37,15 @@ Při přímém práci s registrem, jako je například navýšení a vkládání
 az acr login --name <acrName>
 ```
 
-Když se přihlásíte pomocí `az acr login`, rozhraní příkazového řádku použije token vytvořený při provedení [AZ Login](/cli/azure/reference-index#az-login) k bezproblémovému ověření relace s registrem. Po přihlášení budete přihlašovací údaje ukládat do mezipaměti a následné `docker` příkazy ve vaší relaci nevyžadují uživatelské jméno ani heslo. 
+Když se přihlásíte pomocí `az acr login`, rozhraní příkazového řádku použije token vytvořený při provedení [AZ Login](/cli/azure/reference-index#az-login) k bezproblémovému ověření relace s registrem. K dokončení toku ověřování musí být Docker nainstalovaný a spuštěný ve vašem prostředí. `az acr login` používá klienta Docker k nastavení tokenu Azure Active Directory v souboru `docker.config`. Po přihlášení budete přihlašovací údaje ukládat do mezipaměti a následné `docker` příkazy ve vaší relaci nevyžadují uživatelské jméno ani heslo.
+
+> [!TIP]
+> Pomocí `az acr login` můžete také ověřit jednotlivou identitu, pokud chcete nasdílet nebo vyžádat jiné artefakty než Image Docker do registru, například [artefakty OCI](container-registry-oci-artifacts.md).  
+
 
 V případě přístupu k registru je token používaný `az acr login` platný po dobu **3 hodin**, takže před spuštěním příkazu `docker` doporučujeme, abyste se k registru vždy přihlásili. V případě vypršení platnosti tokenu ho můžete znovu aktualizovat pomocí příkazu `az acr login` znovu ověřit. 
 
-Použití `az acr login` s identitami Azure zajišťuje [přístup založený na rolích](../role-based-access-control/role-assignments-portal.md). V některých scénářích se můžete chtít přihlásit k registru s vlastní individuální identitou v Azure AD. Pro scénáře mezi službami nebo pro zpracování potřeb pracovní skupiny, u kterých nechcete spravovat individuální přístup, se můžete také přihlásit pomocí [spravované identity pro prostředky Azure](container-registry-authentication-managed-identity.md).
+Použití `az acr login` s identitami Azure zajišťuje [přístup založený na rolích](../role-based-access-control/role-assignments-portal.md). V některých scénářích se můžete chtít přihlásit k registru s vlastní individuální identitou v Azure AD. Pro scénáře mezi službami nebo pro zpracování potřeb pracovní skupiny nebo pracovního postupu vývoje, kde nechcete spravovat individuální přístup, se můžete také přihlásit pomocí [spravované identity pro prostředky Azure](container-registry-authentication-managed-identity.md).
 
 ## <a name="service-principal"></a>Instanční objekt
 
@@ -45,7 +61,7 @@ K dispozici jsou role pro registr kontejnerů:
 
 Úplný seznam rolí najdete v tématu [Azure Container Registry role a oprávnění](container-registry-roles.md).
 
-Pokud chcete, aby skripty rozhraní příkazového řádku vytvořily instanční objekt pro ověřování pomocí služby Azure Container registry a pokyny k používání instančního objektu, přečtěte si téma [Azure Container Registry ověřování s instančními objekty](container-registry-auth-service-principal.md).
+Pro skripty rozhraní příkazového řádku pro vytvoření instančního objektu pro ověřování pomocí služby Azure Container registry a další pokyny najdete v tématu [Azure Container Registry ověřování pomocí instančních objektů](container-registry-auth-service-principal.md).
 
 ## <a name="admin-account"></a>Účet správce
 
