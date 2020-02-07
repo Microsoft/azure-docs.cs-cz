@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: kumud
-ms.openlocfilehash: e8717d10f61dfd50b9cdfa20a91203a5842d4c7d
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: de80094c3fd2df7d2f8b32d1e968e9bebea847a1
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185385"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064338"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Přidání, změna nebo odstranění podsítě virtuální sítě
 
 Naučte se přidávat, měnit nebo odstraňovat podsítě virtuální sítě. Všechny prostředky Azure nasazené ve virtuální síti se nasazují do podsítě v rámci virtuální sítě. Pokud s virtuálními sítěmi začínáte, můžete o nich získat další informace v [přehledu virtuální sítě](virtual-networks-overview.md) nebo v tématu dokončení [kurzu](quick-create-portal.md). Informace o vytvoření, změně nebo odstranění virtuální sítě najdete v tématu [Správa virtuální sítě](manage-virtual-network.md).
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -49,11 +49,12 @@ Před dokončením kroků v jakékoli části tohoto článku proveďte následu
    - **Skupina zabezpečení sítě**: k podsíti můžete přidružit žádnou nebo jednu existující skupinu zabezpečení sítě, aby bylo možné filtrovat příchozí a odchozí síťový provoz pro danou podsíť. Skupina zabezpečení sítě musí existovat ve stejném předplatném a umístění jako virtuální síť. Přečtěte si další informace o [skupinách zabezpečení sítě](security-overview.md) a [o tom, jak vytvořit skupinu zabezpečení sítě](tutorial-filter-network-traffic.md).
    - **Směrovací tabulka**: k podsíti můžete přidružit žádnou nebo jednu existující směrovací tabulku k řízení směrování provozu sítě do jiných sítí. Směrovací tabulka musí existovat ve stejném předplatném a umístění jako virtuální síť. Přečtěte si další informace o [Směrování Azure](virtual-networks-udr-overview.md) a [o tom, jak vytvořit směrovací tabulku](tutorial-create-route-table-portal.md) .
    - **Koncové body služby:** Podsíť může mít pro ni nula nebo více koncových bodů služby. Chcete-li povolit koncový bod služby pro službu, vyberte služby nebo služby, pro které chcete povolit koncové body služby ze seznamu **služeb** . Umístění je konfigurováno automaticky pro koncový bod. Ve výchozím nastavení jsou koncové body služby nakonfigurované pro oblast virtuální sítě. Pro Azure Storage pro podporu regionálních scénářů převzetí služeb při selhání se koncové body automaticky nakonfigurují na [spárované oblasti Azure](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
-   - **Delegování podsítě:** Pro podsíť může být k dispozici nula pro více delegování. Delegování podsítě dává službě explicitní oprávnění k vytváření prostředků specifických pro službu v podsíti pomocí jedinečného identifikátoru při nasazování služby. Chcete-li delegovat službu, v seznamu **služeb** vyberte službu, ze které chcete delegovat oprávnění.
-
+   
        Chcete-li odebrat koncový bod služby, zrušte výběr služby, pro kterou chcete odebrat koncový bod služby. Další informace o koncových bodech služby a službách, pro které je možné je povolit, najdete v tématu [Přehled koncových bodů služby virtuální sítě](virtual-network-service-endpoints-overview.md). Po povolení koncového bodu služby pro službu musíte taky povolit přístup k síti pro podsíť pro prostředek vytvořený pomocí služby. Pokud například povolíte koncový bod služby pro *Microsoft. Storage*, musíte taky povolit přístup k síti pro všechny účty Azure Storage, ke kterým chcete udělit přístup k síti. Podrobnosti o tom, jak povolit síťový přístup k podsítím, pro které je povolen koncový bod služby, najdete v dokumentaci k jednotlivé službě, pro kterou jste povolili koncový bod služby.
 
      Pokud chcete ověřit, jestli je koncový bod služby pro podsíť povolený, podívejte se na [efektivní trasy](diagnose-network-routing-problem.md) pro jakékoli síťové rozhraní v podsíti. Při konfiguraci koncového bodu se zobrazí *výchozí* trasa s předponami adres služby a typem **VirtualNetworkServiceEndpoint**. Další informace o směrování najdete v tématu [Přehled směrování](virtual-networks-udr-overview.md).
+   - **Delegování podsítě:** Pro podsíť může být k dispozici nula pro více delegování. Delegování podsítě dává službě explicitní oprávnění k vytváření prostředků specifických pro službu v podsíti pomocí jedinečného identifikátoru při nasazování služby. Chcete-li delegovat službu, v seznamu **služeb** vyberte službu, ze které chcete delegovat oprávnění.
+
 6. Pokud chcete přidat podsíť do virtuální sítě, kterou jste vybrali, vyberte **OK**.
 
 **Příkaz**
@@ -73,7 +74,7 @@ Před dokončením kroků v jakékoli části tohoto článku proveďte následu
     - **Skupina zabezpečení sítě** a **směrovací tabulka**: viz krok 5 [Přidání podsítě](#add-a-subnet).
     - **Koncové body služby**: v kroku 5 části [Přidání podsítě](#add-a-subnet)se podívejte na koncové body služby. Při povolování koncového bodu služby pro existující podsíť zajistěte, aby na žádném prostředku v podsíti neběžely žádné kritické úlohy. Koncové body služby přepínají trasy v každém síťovém rozhraní v podsíti, aby používaly výchozí trasu s předponou adresy *0.0.0.0/0* a typem dalšího segmentu směrování *Internet*, aby používaly novou trasu s předponami adres služby a typ dalšího segmentu směrování *VirtualNetworkServiceEndpoint*. Během přepínače se můžou ukončit všechna otevřená připojení TCP. Koncový bod služby není povolený, dokud se přenos toků ke službě pro všechna síťová rozhraní neaktualizuje pomocí nové trasy. Další informace o směrování najdete v tématu [Přehled směrování](virtual-networks-udr-overview.md).
     - **Delegování podsítě:** Viz koncové body služby v kroku 5 části [Přidání podsítě](#add-a-subnet). Delegování podsítě lze změnit na hodnotu nula nebo více delegování, které jsou pro něj povoleny. Pokud je v podsíti již nasazen prostředek pro službu, nelze přidat ani odebrat delegování podsítě, dokud nebudou odebrány všechny prostředky pro službu. Chcete-li delegovat jinou službu, v seznamu **služeb** vyberte službu, ze které chcete delegovat oprávnění.
-5. Vyberte **Uložit**.
+5. Vyberte **Save** (Uložit).
 
 **Příkaz**
 

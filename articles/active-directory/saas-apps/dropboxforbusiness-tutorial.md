@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf5b3c79e39e9baef49ce2c14408a15c3686a6a8
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: df7fc366c5087e66c3022c212870397d77e6e34d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293432"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046762"
 ---
 # <a name="tutorial-integrate-dropbox-for-business-with-azure-active-directory"></a>Kurz: integrace Dropboxu pro firmy s Azure Active Directory
 
@@ -44,7 +44,7 @@ Chcete-li začít, potřebujete následující položky:
 * V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí. Dropbox pro **firmy podporuje jednotné** přihlašování (SSO) iniciované.
 
 * Dropbox pro firmy podporuje [automatizované zřizování a rušení zřizování uživatelů](dropboxforbusiness-tutorial.md)
-* Jakmile nakonfigurujete Dropbox, můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Jakmile nakonfigurujete Dropbox, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-dropbox-for-business-from-the-gallery"></a>Přidání Dropboxu pro firmy z Galerie
 
@@ -64,8 +64,8 @@ Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Dropboxu 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Dropboxu pro firmy, dokončete následující stavební bloky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.    
-    1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-    1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 1. **[NAKONFIGURUJTE jednotné přihlašování Dropbox pro firmy](#configure-dropbox-for-business-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
     1. **[Vytvořte si uživatele Dropbox pro obchodní test](#create-dropbox-for-business-test-user)** , který bude mít protějšek Britta Simon v Dropboxu pro firmy, který je propojený s reprezentací uživatele Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
@@ -109,12 +109,12 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 V této části vytvoříte testovacího uživatele v Azure Portal s názvem Britta Simon.
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
+1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `Britta Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `BrittaSimon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. například `BrittaSimon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -178,7 +178,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
     d. Klikněte na **Kopírovat odkaz** a vložte zkopírovanou hodnotu do pole **přihlašovací adresa URL** **pro doménu Dropbox pro firmy a adresy URL** na Azure Portal.
 
-    e. Klikněte na možnost **Uložit**.
+    e. Klikněte na **Uložit**.
 
 ### <a name="create-dropbox-for-business-test-user"></a>Vytvořit uživatele Dropbox pro firemní testování
 
@@ -191,12 +191,12 @@ V této části se ve Dropboxu pro firmy vytvoří uživatel s názvem Britta Si
 
 Když vyberete dlaždici Dropbox pro firmy na přístupovém panelu, měli byste se automaticky přihlásit k Dropboxu pro firmy, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další prostředky
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/cloud-app-security/protect-dropbox)
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Jak chránit Dropbox pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Jak chránit Dropbox pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/protect-dropbox)

@@ -2,21 +2,21 @@
 title: Přidání účtů mimo Microsoft do aplikace Microsoft Authenticator – Azure AD
 description: Přidejte účty jiné než Microsoft, například pro Google nebo Facebook do aplikace Microsoft Authenticator k ověření vaší identity při použití dvojúrovňového ověřování.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: da5e2f60334148be1206ce61a9c6397a3acf85e3
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 8650d0170e8ff910140e2b432dd1c998d19e72d8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704761"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063947"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Přidání jiných účtů než do aplikace Microsoft Authenticator
 

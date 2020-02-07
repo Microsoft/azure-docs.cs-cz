@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: lbosq
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 1b37475cfa8df38a00ea6017d47e90677ed457d2
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 9f9b6614c586d9c7c721dfc59da9c4a9c342b57c
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212637"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062035"
 ---
-# <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-table-api"></a>Rychlý start: Sestavení databáze grafu pomocí sady Java SDK a Azure Cosmos DB rozhraní API pro tabulky
+# <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-gremlin-api"></a>Rychlý Start: vytvoření databáze grafu pomocí sady Java SDK a rozhraní Azure Cosmos DB Gremlin API
 
 > [!div class="op_single_selector"]
 > * [Konzola Gremlin](create-graph-gremlin-console.md)
@@ -27,21 +27,13 @@ ms.locfileid: "71212637"
 > * [PHP](create-graph-php.md)
 >  
 
-Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Pomocí Azure Cosmos DB můžete rychle vytvořit a dotazovat spravované databáze dokumentů, tabulek a grafů. 
-
-V tomto rychlém startu se vytvoří jednoduchá databáze grafů pomocí nástrojů pro Azure Cosmos DB na webu Azure Portal. V tomto rychlém startu se také dozvíte, jak rychle vytvořit konzolovou aplikaci Java, která používá databázi [Gremlin API](graph-introduction.md), pomocí ovladače OSS [Apache TinkerPop](https://tinkerpop.apache.org/). Pokyny v tomto rychlém startu platí pro všechny operační systémy, které podporují Javu. Tento rychlý start vás seznámí s vytvářením a upravováním grafů v uživatelském rozhraní nebo programově podle toho, čemu dáváte přednost. 
+V tomto rychlém startu vytvoříte a spravujete účet rozhraní API pro Azure Cosmos DB Gremlin (Graph) z Azure Portal a přidáte data pomocí aplikace Java naklonované z GitHubu. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
 
 ## <a name="prerequisites"></a>Požadavky
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-Navíc platí:
-
-* [Java Development Kit (JDK) verze 8](https://aka.ms/azure-jdks)
-    * Nezapomeňte nastavit proměnnou prostředí JAVA_HOME tak, aby odkazovala na složku, ve které je sada JDK nainstalovaná.
-* [Stáhněte](https://maven.apache.org/download.cgi) a [nainstalujte](https://maven.apache.org/install.html) binární archiv [Maven](https://maven.apache.org/).
-    * Na Ubuntu můžete Maven nainstalovat spuštěním příkazu `apt-get install maven`.
-* [Git](https://www.git-scm.com/)
-    * Na Ubuntu můžete Git nainstalovat spuštěním příkazu `sudo apt-get install git`.
+- Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
+- [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Najeďte proměnnou prostředí `JAVA_HOME` na složku, ve které je nainstalovaná JDK.
+- [Binární archiv Maven](https://maven.apache.org/download.cgi) 
+- [Git](https://www.git-scm.com/downloads) 
 
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze
 
@@ -79,9 +71,11 @@ Teď přejděme k práci s kódem. Pojďme naklonovat aplikaci rozhraní Gremlin
 
 Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Aktualizace informací o připojení](#update-your-connection-information).
 
-Následující fragmenty kódu pocházejí ze souboru C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\GetStarted\Program.java.
+Všechny následující fragmenty kódu jsou pořízeny ze souboru *C:\git-samples\azure-Cosmos-DB-Graph-Java-Getting-started\src\GetStarted\Program.Java* .
 
-* Klient Gremlin `Client` se inicializuje z konfigurace v souboru C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\remote.yaml.
+Tato aplikace konzoly Java používá databázi [rozhraní API Gremlin](graph-introduction.md) s ovladačem OSS [Apache TinkerPop](https://tinkerpop.apache.org/) . 
+
+- `Client` Gremlin se inicializuje z konfigurace v souboru *C:\git-samples\azure-Cosmos-DB-Graph-Java-Getting-started\src\remote.yaml* .
 
     ```java
     cluster = Cluster.build(new File("src/remote.yaml")).create();
@@ -89,7 +83,7 @@ Následující fragmenty kódu pocházejí ze souboru C:\git-samples\azure-cosmo
     client = cluster.connect();
     ```
 
-* Pomocí metody `client.submit` se provede série kroků Gremlin.
+- Pomocí metody `client.submit` se provede série kroků Gremlin.
 
     ```java
     ResultSet results = client.submit(gremlin);
@@ -106,18 +100,18 @@ Následující fragmenty kódu pocházejí ze souboru C:\git-samples\azure-cosmo
 
 Teď se vraťte na portál Azure, kde najdete informace o připojení, a zkopírujte je do aplikace. Tato nastavení umožní aplikaci komunikovat s hostovanou databází.
 
-1. V [Azure Portal](https://portal.azure.com/)vyberte **klíče**. 
+1. V Azure Cosmos DB účtu v [Azure Portal](https://portal.azure.com/)vyberte **klíče**. 
 
     Zkopírujte první část hodnoty identifikátoru URI.
 
     ![Zobrazení a zkopírování přístupového klíče na portálu Azure na stránce Klíče](./media/create-graph-java/copy-access-key-azure-portal.png)
-2. Otevřete soubor src/remote.yaml a vložte jedinečnou hodnotu ID místo `$name$` v části `hosts: [$name$.graphs.azure.com]`.
+2. Otevřete soubor *Src/Remote. yaml* a vložte hodnotu jedinečného ID přes `$name$` v `hosts: [$name$.graphs.azure.com]`.
 
-    Řádek 1 souboru remote.yaml by teď měl vypadat nějak takto: 
+    Řádek 1 *vzdáleného. yaml* by teď měl vypadat nějak podobně jako 
 
     `hosts: [test-graph.graphs.azure.com]`
 
-3. V `endpoint` změňte `graphs` na `gremlin.cosmosdb`. (Pokud jste účet databáze grafu vytvořili před 20. prosincem, 2017, neprovádějte žádné změny hodnoty koncového bodu a pokračujte dalším krokem.)
+3. V `graphs` změňte `gremlin.cosmosdb` na `endpoint`. (Pokud jste účet databáze grafu vytvořili před 20. prosincem, 2017, neprovádějte žádné změny hodnoty koncového bodu a pokračujte dalším krokem.)
 
     Hodnota koncového bodu by teď měla vypadat takto:
 
@@ -125,11 +119,11 @@ Teď se vraťte na portál Azure, kde najdete informace o připojení, a zkop�
 
 4. Na webu Azure Portal pomocí tlačítka pro kopírování zkopírujte PRIMÁRNÍ KLÍČ a vložte ho místo `$masterKey$` v části `password: $masterKey$`.
 
-    Řádek 4 souboru remote.yaml by teď měl vypadat nějak takto: 
+    Řádek 4 *vzdáleného. yaml* by teď měl vypadat nějak podobně jako 
 
     `password: 2Ggkr662ifxz2Mg==`
 
-5. Změňte řádek 3 souboru remote.yaml z
+5. Změna řádku 3 ze *vzdáleného. yaml* z
 
     `username: /dbs/$database$/colls/$collection$`
 
@@ -139,7 +133,7 @@ Teď se vraťte na portál Azure, kde najdete informace o připojení, a zkop�
 
     Pokud jste pro svou ukázkovou databázi nebo graf použili jedinečný název, aktualizujte hodnoty odpovídajícím způsobem.
 
-6. Uložte soubor remote.yaml.
+6. Uložte soubor *Remote. yaml* .
 
 ## <a name="run-the-console-app"></a>Spuštění aplikace konzoly
 
@@ -163,7 +157,7 @@ Teď se vraťte na portál Azure, kde najdete informace o připojení, a zkop�
 
     V okně terminálu se zobrazí vrcholy, které se přidávají do grafu. 
     
-    Pokud dochází k chybám časového limitu, zkontrolujte, jestli jste v části [Aktualizace informací o připojení](#update-your-connection-information) správně aktualizovali informace o připojení, a zkuste poslední příkaz spustit znovu. 
+    Pokud dochází k chybám časového limitu, zkontrolujte, že jste v části [Aktualizace informací o připojení](#update-your-connection-information) správně aktualizovali informace o připojení, a zkuste poslední příkaz spustit znovu. 
     
     Po zastavení programu vyberte Enter a pak přepněte zpátky na Azure Portal v internetovém prohlížeči. 
 
@@ -172,7 +166,7 @@ Teď se vraťte na portál Azure, kde najdete informace o připojení, a zkop�
 
 Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané do grafu a přidat další datové body.
 
-1. Vyberte **Průzkumník dat**, rozbalte **Sample-Graph**, vyberte **graf**a pak vyberte **použít filtr**. 
+1. V Azure Cosmos DB účtu v Azure Portal vyberte možnost **Průzkumník dat**, rozbalte položku **Ukázka-graf**, vyberte možnost **graf**a pak vyberte možnost **použít filtr**. 
 
    ![Vytváření nových dokumentů v Průzkumníku dat na portálu Azure Portal](./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png)
 
@@ -213,11 +207,11 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
 
 10. Vyberte **OK**. 
 
-11. ClSelectck tlačítko **použít filtr** s výchozím `g.V()` filtrem pro zobrazení všech hodnot v grafu. Teď se v seznamu **Výsledky** zobrazí všichni uživatelé. 
+11. Vyberte tlačítko **použít filtr** s výchozím filtrem `g.V()` pro zobrazení všech hodnot v grafu. Teď se v seznamu **Výsledky** zobrazí všichni uživatelé. 
 
     S přidáváním dalších dat můžete pomocí filtrů omezit výsledky. Průzkumník dat ve výchozím nastavení pomocí filtru `g.V()` načte všechny vrcholy v grafu. Můžete ho změnit na jiný [dotaz grafu](tutorial-query-graph.md), třeba `g.V().count()`, který vrátí počet všech vrcholů v grafu ve formátu JSON. Pokud jste filtr změnili, změňte filtr zpět na `g.V()` a vyberte **použít filtr** pro zobrazení všech výsledků znovu.
 
-12. Teď můžete propojit uživatele rakesh a ashley. V seznamu **výsledků** ověřte, že je vybraná možnost **Ashley** , ![a potom v grafu klikněte na tlačítko změnit cíl](./media/create-graph-java/edit-pencil-button.png) vrcholu v grafu vedle **cílů** na pravé straně. Možná budete muset rozšířit okno, aby se tlačítko zobrazilo.
+12. Teď můžete propojit uživatele rakesh a ashley. V seznamu **výsledků** ověřte, že je vybraná možnost **Ashley** , a pak vyberte ![změnit cíl vrcholu v grafu](./media/create-graph-java/edit-pencil-button.png) vedle **cílů** na dolní pravé straně. Možná budete muset rozšířit okno, aby se tlačítko zobrazilo.
 
     ![Změna cíle vrcholu v grafu – Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
 
@@ -229,7 +223,7 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
 
     ![Dva vrcholy připojené v Průzkumník dat – Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
 
-    Tím je dokončená část tohoto kurzu věnovaná vytváření prostředků. Můžete pokračovat přidáním vrcholů do grafu, úpravou existujících vrcholů nebo změnou dotazů. Teď si projdeme metriky, které služba Azure Cosmos DB nabízí, a pak vyčistíme prostředky. 
+Tím je dokončená část tohoto kurzu věnovaná vytváření prostředků. Můžete pokračovat přidáním vrcholů do grafu, úpravou existujících vrcholů nebo změnou dotazů. Teď si projdeme metriky, které služba Azure Cosmos DB nabízí, a pak vyčistíme prostředky. 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Ověření podmínek SLA na portálu Azure Portal
 
@@ -239,9 +233,9 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se seznámili s postupem vytvoření účtu databáze Azure Cosmos, vytvoření grafu pomocí Průzkumníku dat a spuštění aplikace. Teď můžete pomocí konzoly Gremlin vytvářet složitější dotazy a implementovat účinnou logiku procházení grafů. 
+V tomto rychlém startu jste zjistili, jak vytvořit účet Azure Cosmos DB, jak vytvořit graf pomocí Průzkumník dat a spustit aplikaci Java, která do grafu přidá data. Teď můžete pomocí konzoly Gremlin vytvářet složitější dotazy a implementovat účinnou logiku procházení grafů. 
 
 > [!div class="nextstepaction"]
 > [Dotazování pomocí konzoly Gremlin](tutorial-query-graph.md)

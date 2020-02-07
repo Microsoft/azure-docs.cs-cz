@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 05a796e5bf197bf9ea4f8f47adfbf30851b300ca
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 35c6944ddcfac1553ffb2c1cc28472f2a56d4515
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445507"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061696"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Rychlý Start: Vytvoření konzolové aplikace pomocí Java a rozhraní MongoDB API v Azure Cosmos DB
 
@@ -27,18 +27,13 @@ ms.locfileid: "75445507"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-V tomto rychlém startu použijete rozhraní Azure Cosmos DB API pro Mongo DB a Java SDK k vytvoření webové aplikace konzoly. Azure Cosmos DB vám umožňuje rychle vytvořit a dotazovat databáze typu klíč/hodnota a graf, které využívají výhod globální distribuce a možností horizontálního škálování v jádru Cosmos DB.
-
-Tento rychlý Start ukazuje, jak vytvořit účet Cosmos s [rozhraním API Azure Cosmos DB pro MongoDB](mongodb-introduction.md). Pak sestavíte a nasadíte konzolovou aplikaci vytvořenou pomocí [ovladače MongoDB Java](https://docs.mongodb.com/ecosystem/drivers/java/). 
+V tomto rychlém startu vytvoříte a spravujete Azure Cosmos DB pro účet rozhraní MongoDB API z Azure Portal a přidáte data pomocí aplikace Java SDK naklonované z GitHubu. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
 
 ## <a name="prerequisites"></a>Požadavky
-
-Než budete moct tuto ukázku spustit, je potřeba splnit následující požadavky:
-* [Instalace JDK pro Azure a Azure Stack JDK verze 8](https://aka.ms/azure-jdks)
-* Maven (pokud nemáte Maven, spusťte `apt-get install maven`)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-[!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
+- Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. Můžete také použít [emulátor Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) s připojovacím řetězcem `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true`.
+- [Java Development Kit (JDK) verze 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). 
+- [Maven](https://maven.apache.org/download.cgi). Nebo spusťte `apt-get install maven` pro instalaci Maven.
+- [Git](https://git-scm.com/downloads) 
 
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze
 
@@ -46,7 +41,7 @@ Než budete moct tuto ukázku spustit, je potřeba splnit následující požada
 
 ## <a name="add-a-collection"></a>Přidání kolekce
 
-Novou databázi pojmenujte **db** a novou kolekci **coll**.
+Pojmenujte novou **databázi databáze a novou**kolekci **coll**.
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)] 
 
@@ -54,7 +49,7 @@ Novou databázi pojmenujte **db** a novou kolekci **coll**.
 
 Teď naklonujte aplikaci z GitHubu, nastavíme připojovací řetězec a spustíme ji. Přesvědčíte se, jak snadno se pracuje s daty prostřednictvím kódu programu. 
 
-1. Otevřete příkazový řádek, vytvořte novou složku git-samples a pak příkazový řádek zavřete.
+1. Otevřete příkazový řádek, vytvořte novou složku git-samples a potom příkazový řádek zavřete.
 
     ```bash
     md "C:\git-samples"
@@ -78,7 +73,9 @@ Teď naklonujte aplikaci z GitHubu, nastavíme připojovací řetězec a spustí
 
 Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Aktualizace informací o připojení](#update-your-connection-string). 
 
-Všechny následující fragmenty kódu pocházejí ze souboru Program.java.
+Všechny následující fragmenty kódu jsou pořízeny ze souboru *program. Java* .
+
+Tato aplikace konzoly používá [ovladač Java MongoDB](https://docs.mongodb.com/ecosystem/drivers/java/). 
 
 * Inicializuje se DocumentClient.
 
@@ -112,11 +109,11 @@ Všechny následující fragmenty kódu pocházejí ze souboru Program.java.
 
 ## <a name="update-your-connection-string"></a>Aktualizace připojovacího řetězce
 
-Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace.
+Teď se vraťte zpátky na web Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace.
 
-1. Z účtu vyberte **rychlé zprovoznění**, vyberte **Java**a pak zkopírujte připojovací řetězec do schránky.
+1. Z účtu Azure Cosmos DB vyberte **rychlé zprovoznění**, vyberte **Java**a pak zkopírujte připojovací řetězec do schránky.
 
-2. Otevřete soubor `Program.java` a nahraďte argument konstruktoru MongoClientURI připojovacím řetězcem. Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné ke komunikaci s Azure Cosmos DB. 
+2. Otevřete soubor *program. Java* , nahraďte argument konstruktorem MongoClientURI připojovacím řetězcem. Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné ke komunikaci s Azure Cosmos DB. 
     
 ## <a name="run-the-console-app"></a>Spuštění aplikace konzoly
 
@@ -136,7 +133,7 @@ Teď můžete provádět dotazy a úpravy a pracovat s těmito novými daty v pr
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se naučili, jak vytvořit účet Cosmos, vytvořit kolekci a spustit konzolovou aplikaci. Nyní můžete importovat další data do databáze Cosmos.
+V tomto rychlém startu jste zjistili, jak vytvořit Azure Cosmos DB API pro účet služby Mongo DB, přidat databázi a kontejner pomocí Průzkumník dat a přidat data pomocí konzolové aplikace Java. Nyní můžete importovat další data do databáze Cosmos. 
 
 > [!div class="nextstepaction"]
-> [Importování dat MongoDB do databáze Azure Cosmos](mongodb-migrate.md)
+> [Importování dat MongoDB do služby Azure Cosmos DB](mongodb-migrate.md)

@@ -3,8 +3,8 @@ title: Běžné chyby při migraci z modelu Classic na Azure Resource Manager
 description: Tento článek je katalogem nejčastějších chyb a rizik během migrace prostředků IaaS ze správy služeb Azure do zásobníku služby Azure Resource Manager.
 services: virtual-machines-windows
 documentationcenter: ''
-author: singhkays
-manager: gwallace
+author: tanmaygore
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 5bc03a1b-eb1c-438c-83d9-f0e9d61f1b6a
@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 03/30/2017
-ms.author: kasing
-ms.openlocfilehash: e448559bbf0179cc6d5003d89f3f9b108f8ebb2d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.date: 02/06/2020
+ms.author: tagore
+ms.openlocfilehash: 999b3c42182d6b94fe089fb5391d427689d7e8cf
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033280"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77056987"
 ---
 # <a name="common-errors-during-classic-to-azure-resource-manager-migration"></a>Běžné chyby při migraci z modelu Classic na Azure Resource Manager
 [!INCLUDE [virtual-machines-common-migration-errors](../../../includes/virtual-machines-common-classic-resource-manager-migration-common-errors.md)]

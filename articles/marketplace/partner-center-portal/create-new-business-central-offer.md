@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 22a5b86c8b3df4da5fe338a8ba1230d0247a5826
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 4c0467039cf4fefd7625f1146c4bade99b49304d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046002"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048731"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Vytvoření nové nabídky Business Central v Dynamics 365
 
@@ -61,7 +61,7 @@ Seznamte se s vaší nabídkou pro zákazníky s odkazem na bezplatnou zkušebn�
 
 Shromažďovat kontaktní údaje zákazníka propojením systému pro správu vztahů se zákazníky (CRM). Zákazník bude požádán o oprávnění ke sdílení svých informací. Tyto podrobnosti o zákaznících spolu s názvem nabídky, ID a zdrojem Marketplace, kde si vaši nabídku našli, budou odeslány do systému CRM, který jste nakonfigurovali. Další informace o konfiguraci CRM najdete v tématu [připojení správy zájemců](#connect-lead-management). 
 
-### <a name="test-drive"></a>Testovací verze
+### <a name="test-drive"></a>Testovací jednotka
 
 Testovací jednotka představuje skvělý způsob, jak předvést vaši nabídku potenciálním zákazníkům tím, že jim nabídne možnost vyzkoušet si před nákupem. Výsledkem je zvýšená konverze a generace vysoce kvalifikovaných potenciálních zákazníků. [Přečtěte si další informace o testovacích jednotkách.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
 
@@ -108,19 +108,9 @@ Vyberte minimálně jednu a maximálně tři kategorie, které se použijí k um
 
 Zadejte číslo verze vaší nabídky. Zákazníci uvidí tuto verzi uvedenou na stránce s podrobnostmi nabídky.
 
-### <a name="standard-contract"></a>Standardní kontrakt
+### <a name="terms-and-conditions"></a>podmínky a ujednání
 
-Pro zjednodušení procesu nákupu pro zákazníky a omezení právní složitosti pro dodavatele softwaru nabízí společnost Microsoft standardní šablonu smlouvy, aby usnadnila transakci na webu Marketplace.
-
-Místo toho, abyste mohli vlastní podmínky a ujednání, si můžete vybrat, abyste software nabídli v rámci standardní smlouvy, které zákazníci stačí Vet a přijmout jenom jednou.
-
-Standardní kontrakt najdete tady: https://go.microsoft.com/fwlink/?linkid=2041178
-
-Pokud chcete použít standardní smlouvu, zaškrtněte políčko **použít standardní kontrakt?** .
-
-#### <a name="terms-of-use"></a>Podmínky použití
-
-Pokud políčko **použít standardní smlouvu?** nezaškrtněte, budete muset v poli **podmínky použití** zadat vlastní právní podmínku použití. Zadejte až 10 000 znaků textu nebo, pokud vaše podmínkami použití vyžadují delší popis, zadejte adresu URL, na které se můžou najít vaše další licenční smlouvy. Zákazníci budou muset tyto podmínky přijmout, aby mohli svoji aplikaci vyzkoušet.
+V poli **podmínky a ujednání** zadejte vlastní právní podmínky. Můžete taky zadat adresu URL, kde se můžou vaše podmínky a ujednání najít. Zákazníci budou muset tyto podmínky přijmout, aby mohli svoji nabídku vyzkoušet.
 
 ## <a name="offer-listing"></a>Seznam nabídek
 
@@ -131,7 +121,7 @@ Pro každý jazyk nebo trh budete muset zadat podrobnosti o Marketplace (název 
 > [!NOTE]
 > Obsah seznamu nabídek (například popis, dokumenty, snímky obrazovky, podmínky použití atd.) nemusí být v angličtině, pokud popis nabídky začíná frází "Tato aplikace je k dispozici pouze v [jazykovém jazyce, který není v angličtině]." Je také přijatelné poskytnout *užitečnou adresu URL pro odkaz* k poskytnutí obsahu v jiném jazyce, než který je použit v obsahu nabídky.
 
-### <a name="name"></a>Name (Název)
+### <a name="name"></a>Název
 
 Název, který sem zadáte, se zákazníkům zobrazí jako název seznamu nabídek. Toto pole se předem vyplní textem, který jste zadali jako **alias nabídky** při vytváření nabídky, ale tuto hodnotu můžete změnit. Tento název může být ochranných známek (a může obsahovat symboly ochranných známek a autorských práv). Název nesmí být delší než 50 znaků a nesmí obsahovat žádné emoji.
 
@@ -172,7 +162,7 @@ Pomocí následujících pokynů můžete použít Editor formátovaného textu:
 
      ![Použití editoru formátovaného textu k odsazení](./media/text-editor5.png)
 
-### <a name="search-keywords"></a>Hledat klíčová slova
+### <a name="search-keywords"></a>Hledaná klíčová slova
 
 Volitelně můžete zadat až tři klíčová slova pro hledání, která zákazníkům pomůžou najít vaši nabídku na webu Marketplace. Pro dosažení nejlepších výsledků zkuste použít tato klíčová slova i v popisu.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 34d3a7fb299ba143eee01b6b7184f1c566d41aba
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: af9d4aa15a4ff2784d2e1ca1334d9c24a8d12251
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515447"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062672"
 ---
 # <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zscaler ZSCloud pro Automatické zřizování uživatelů
 
@@ -80,7 +80,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 > [!TIP]
 > Pro Zscaler ZSCloud možná budete chtít povolit jednotné přihlašování založené na SAML. Pokud to uděláte, postupujte podle pokynů v [kurzu Zscaler ZSCloud jednotného přihlašování](zscaler-zsCloud-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, ale tyto dvě funkce spolu doplňují.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a **Vyberte podnikové aplikace** > **všechny aplikace** > **Zscaler ZSCloud**:
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **podnikové aplikace** > **všechny aplikace** > **Zscaler ZSCloud**:
 
     ![Podnikové aplikace](common/enterprise-applications.png)
 
@@ -98,7 +98,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 5. V části **přihlašovací údaje správce** zadejte **adresu URL tenanta** a **tajný token** účtu Zscaler ZSCloud, jak je popsáno v dalším kroku.
 
-6. Pokud chcete získat **adresu URL tenanta** a **tajný token**, klikněte na portál Zscaler ZSCloud na**nastavení ověřování** pro **správu** > a v části **typ ověřování**vyberte **SAML** :
+6. Pokud chcete získat **adresu URL tenanta** a **tajný token**, klikněte na **Správa** > **nastavení ověřování** na portálu Zscaler ZSCloud a v části **typ ověřování**vyberte **SAML** :
 
     ![Nastavení ověřování Zscaler ZSCloud](./media/zscaler-zscloud-provisioning-tutorial/secrettoken1.png)
 
@@ -110,13 +110,13 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 7. Až zadáte hodnoty do polí **Adresa URL tenanta** a **tajný token** , vyberte **Test připojení** a ujistěte se, že se služba Azure AD může připojit k Zscaler ZSCloud. Pokud se připojení nepovede, ujistěte se, že váš účet Zscaler ZSCloud má oprávnění správce, a zkuste to znovu.
 
-    ![Otestovat připojení](./media/zscaler-zscloud-provisioning-tutorial/testconnection.png)
+    ![Otestování připojení](./media/zscaler-zscloud-provisioning-tutorial/testconnection.png)
 
-8. V poli **e-mail** s oznámením zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování. Vyberte **Odeslat e-mailové oznámení, když dojde k selhání**:
+8. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování. Vyberte **Odeslat e-mailové oznámení, když dojde k selhání**:
 
     ![Nastavení e-mailu s oznámením](./media/zscaler-zscloud-provisioning-tutorial/Notification.png)
 
-9. Vyberte **Uložit**.
+9. Vyberte **Save** (Uložit).
 
 10. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé ZscalerZSCloud**:
 
@@ -152,12 +152,12 @@ Tato operace spustí počáteční synchronizaci všech uživatelů a skupin def
 
 Informace o tom, jak číst protokoly zřizování služby Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../active-directory-saas-provisioning-reporting.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../active-directory-saas-provisioning-reporting.md)
 

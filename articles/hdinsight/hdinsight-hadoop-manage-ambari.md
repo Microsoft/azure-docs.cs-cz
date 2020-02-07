@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/11/2019
-ms.openlocfilehash: 81b57191a02dd3214928ac90e2761f5f8dfb2cfc
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive
+ms.date: 02/05/2020
+ms.openlocfilehash: d8cb8bfa32db958b6dfdda0df23429669ce2a439
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311657"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063794"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari
 
@@ -29,16 +29,16 @@ V tomto dokumentu se dozvíte, jak používat webové uživatelské rozhraní Am
 
 ## <a name="connectivity"></a>Připojení
 
-Webové uživatelské rozhraní Ambari je v clusteru HDInsight k dispozici na `https://CLUSTERNAME.azurehdinsight.net`, kde `CLUSTERNAME` je název vašeho clusteru.
+Webové uživatelské rozhraní Ambari je k dispozici v clusteru HDInsight na adrese `https://CLUSTERNAME.azurehdinsight.net`, kde `CLUSTERNAME` je název vašeho clusteru.
 
 > [!IMPORTANT]  
-> Připojení k Ambari v HDInsight vyžaduje protokol HTTPS. Po zobrazení výzvy k ověření použijte název účtu správce a heslo, které jste zadali při vytvoření clusteru.
+> Připojení k Ambari v HDInsight vyžaduje protokol HTTPS. Po zobrazení výzvy k ověření použijte název účtu správce a heslo, které jste zadali při vytvoření clusteru. Pokud se vám nezobrazí výzva k zadání přihlašovacích údajů, zkontrolujte nastavení sítě a potvrďte, že mezi klientem a clustery Azure HDInsight nedochází k potížím s připojením.
 
 ## <a name="ssh-tunnel-proxy"></a>Tunel SSH (proxy)
 
 I když je Ambari pro váš cluster přístupný přímo přes Internet, některé odkazy z webového uživatelského rozhraní Ambari (například na JobTracker) nejsou zveřejněné na internetu. Chcete-li získat přístup k těmto službám, je nutné vytvořit tunel SSH. Další informace najdete v tématu [použití tunelového propojení SSH se službou HDInsight](hdinsight-linux-ambari-ssh-tunnel.md).
 
-## <a name="ambari-web-ui"></a>Webové uživatelské rozhraní Ambari
+## <a name="ambari-web-ui"></a>Ambari Web UI
 
 > [!WARNING]  
 > Ve službě HDInsight nejsou podporovány všechny funkce webového uživatelského rozhraní Ambari. Další informace najdete v části [nepodporované operace](#unsupported-operations) v tomto dokumentu.
@@ -57,13 +57,13 @@ Po otevření stránky si poznamenejte pruh v horní části. Tento panel obsahu
 |Řídicí panel|Zobrazí řídicí panel.|
 |Služby|Informace a konfigurační nastavení pro služby v clusteru.|
 |Hostitelé|Informace a nastavení konfigurace pro uzly v clusteru.|
-|Výstrahy|Protokol informací, upozornění a kritických výstrah.|
-|Správ|Softwarový zásobník/služby, které jsou nainstalovány v clusteru, informace o účtu služby a zabezpečení protokolu Kerberos.|
+|Upozornění|Protokol informací, upozornění a kritických výstrah.|
+|Správce|Softwarový zásobník/služby, které jsou nainstalovány v clusteru, informace o účtu služby a zabezpečení protokolu Kerberos.|
 |Tlačítko Správce|Správa Ambari, uživatelské nastavení a odhlášení.|
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 
-### <a name="alerts"></a>Výstrahy
+### <a name="alerts"></a>Upozornění
 
 Následující seznam obsahuje běžné stavy výstrah, které používá Ambari:
 
@@ -159,8 +159,8 @@ Na stránce **hostitelé** jsou uvedeni všichni hostitelé v clusteru. Chcete-l
     |Zapnout režim údržby|Potlačí výstrahy pro hostitele. Tento režim by měl být povolen, pokud provádíte akce, které generují výstrahy. Například zastavení a spuštění služby.|
     |Vypnout režim údržby|Vrátí hostitele do normálního upozorňování.|
     |Zastavit|Zastaví na hostiteli datanode nebo NodeManagers.|
-    |Začátek|Spustí na hostiteli datanode nebo NodeManagers.|
-    |Restartování|Zastaví a spustí na hostiteli datanode nebo NodeManagers.|
+    |Spustit|Spustí na hostiteli datanode nebo NodeManagers.|
+    |Restart|Zastaví a spustí na hostiteli datanode nebo NodeManagers.|
     |Vyřazení|Odebere hostitele z clusteru. **Tuto akci nepoužívejte u clusterů HDInsight.**|
     |Reprovize|Přidá dříve vyřazeného hostitele do clusteru. **Tuto akci nepoužívejte u clusterů HDInsight.**|
 

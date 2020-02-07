@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/24/2020
-ms.openlocfilehash: 3877632565c1ca2c9a16681e03f8931a94af0599
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 01/31/2020
+ms.openlocfilehash: ea7c695ddb92d441018503839b974c1f4bb33473
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765751"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047843"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Azure Monitor pro virtuální počítače všeobecně dostupné (GA) nejčastější dotazy
 
@@ -37,7 +37,9 @@ V minulosti jsme povolili řešení ServiceMap v pracovním prostoru a nastavili
 
 
 ## <a name="how-do-i-upgrade"></a>Návody upgradovat?
-Každý virtuální počítač, který vyžaduje upgrade, se identifikuje na **kartě Začínáme v** Azure monitor pro virtuální počítače Azure Portal. Můžete upgradovat jeden virtuální počítač nebo vybrat více pro upgrade společně. K upgradu pomocí prostředí PowerShell použijte následující příkaz:
+Když se pracovní prostor Log Analytics upgraduje na nejnovější verzi Azure Monitor na virtuální počítače, upgraduje se agent závislostí na každém virtuálním počítači připojeném k tomuto pracovnímu prostoru. Každý virtuální počítač, který vyžaduje upgrade, se identifikuje na **kartě Začínáme v** Azure monitor pro virtuální počítače Azure Portal. Když se rozhodnete upgradovat virtuální počítač, upgraduje se pracovní prostor pro tento virtuální počítač společně s ostatními virtuálními počítači připojenými k tomuto pracovnímu prostoru. Můžete vybrat jeden nebo více virtuálních počítačů, skupiny prostředků nebo odběry. 
+
+Pomocí následujícího příkazu upgradujte pracovní prostor pomocí prostředí PowerShell:
 
 ```PowerShell
 Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-group-name> -WorkspaceName <workspace-name> -IntelligencePackName "VMInsights" -Enabled $True
@@ -97,7 +99,7 @@ Očekáváme, že tuto aktualizaci vydáte Azure Monitor pro virtuální počít
 
 ## <a name="health-feature-is-in-limited-public-preview"></a>Funkce Health je ve verzi Public Preview omezená.
 
-Od zákazníků jsme dostali spoustu skvělé zpětné vazby o sadě funkcí stavu virtuálních počítačů. Tato funkce budí velký zájem a nadšení díky potenciálu podpory monitorování pracovních postupů. Plánujeme posloupnost změn, v rámci kterých přidáme funkce a budeme se zabývat obdrženou zpětnou vazbou. 
+Od zákazníků jsme dostali spoustu skvělé zpětné vazby o sadě funkcí stavu virtuálních počítačů. Tato funkce má spoustu zájmu a setkalo se na jejich potenciál, aby podporovaly monitorovací pracovní postupy. Plánujeme udělat řadu změn pro přidání funkcí a vyřešení zpětné vazby, kterou jsme dostali. 
 
 Abychom minimalizovali dopad těchto změn na nové zákazníky, přesunuli jsme tuto funkci do **omezené verze Public Preview**. Tato aktualizace se stala v říjnu 2019.
 
@@ -119,4 +121,4 @@ Pokud jste stávající zákazník, který používá funkci Health a chcete ho 
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom požadavky a metody, které vám pomohou monitorovat virtuální počítače, projděte si [nasazení Azure Monitor pro virtuální počítače](vminsights-enable-overview.md).
+Pokud chcete pochopit požadavky a metody, které vám pomůžou monitorovat virtuální počítače, přečtěte si téma [nasazení Azure monitor pro virtuální počítače](vminsights-enable-overview.md).

@@ -3,28 +3,28 @@ title: Funkce šablon – prostředky
 description: Popisuje funkce pro použití v šabloně Azure Resource Manageru k načtení hodnoty o prostředcích.
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: b8d0a3e60654c9d3f951c6f288ea904bb4c0d50b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: cfcc9ff3af33fe9de813d8a31b7d102f00725ce4
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76900649"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048805"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Prostředek funkce pro šablony Azure Resource Manageru
 
 Resource Manager poskytuje následující funkce pro načtení prostředků hodnot:
 
 * [extensionResourceId](#extensionresourceid)
-* [seznam *](#list)
-* [Zprostředkovatelé](#providers)
-* [Referenční dokumentace](#reference)
+* [seznamu](#list)
+* [dodavateli](#providers)
+* [odkaz](#reference)
 * [resourceGroup](#resourcegroup)
-* [ID prostředku](#resourceid)
+* [Prostředku](#resourceid)
 * [předplatné](#subscription)
 * [subscriptionResourceId](#subscriptionresourceid)
 * [tenantResourceId](#tenantresourceid)
 
-Chcete-li získat hodnoty z parametrů, proměnných nebo aktuální nasazení, přečtěte si téma [funkce hodnotu nasazení](template-functions-deployment.md).
+Chcete-li získat hodnoty z parametrů, proměnných nebo aktuálního nasazení, přečtěte si téma [funkce hodnot nasazení](template-functions-deployment.md).
 
 ## <a name="extensionresourceid"></a>extensionResourceId
 
@@ -36,12 +36,12 @@ Vrátí ID prostředku pro [prostředek rozšíření](../management/extension-r
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| resourceId |Ano |string |ID prostředku prostředku, na který se prostředek rozšíření používá |
-| resourceType |Ano |string |Typ prostředku včetně obor názvů zprostředkovatele prostředků. |
-| resourceName1 |Ano |string |Název prostředku. |
-| resourceName2 |Ne |string |Další segment názvu prostředku (v případě potřeby). |
+| resourceId |Ano |řetězec |ID prostředku prostředku, na který se prostředek rozšíření používá |
+| resourceType |Ano |řetězec |Typ prostředku včetně obor názvů zprostředkovatele prostředků. |
+| resourceName1 |Ano |řetězec |Název prostředku. |
+| resourceName2 |Ne |řetězec |Další segment názvu prostředku (v případě potřeby). |
 
 Pokračujte v přidávání názvů prostředků jako parametrů, pokud typ prostředku obsahuje více segmentů.
 
@@ -112,15 +112,15 @@ Následující příklad vrátí ID prostředku pro zámek skupiny prostředků.
 list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
 ```
 
-Syntaxe této funkce se liší podle názvu operací seznamu. Každá implementace vrací hodnoty pro typ prostředku, který podporuje operaci list. Název operace musí začínat na `list`. Některé běžné použití jsou `listKeys` a `listSecrets`. 
+Syntaxe této funkce se liší podle názvu operací seznamu. Každá implementace vrací hodnoty pro typ prostředku, který podporuje operaci list. Název operace musí začínat na `list`. Některé běžné použití jsou `listKeys` a `listSecrets`.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| resourceName nebo resourceIdentifier |Ano |string |Jedinečný identifikátor prostředku. |
-| apiVersion |Ano |string |Verze rozhraní API prostředku běhový stav. Obvykle ve formátu **rrrr mm-dd**. |
-| functionValues |Ne |object | Objekt, který obsahuje hodnoty pro funkci. Tento objekt poskytují pouze pro funkce, které podporují přijímá objekt s hodnotami parametrů, jako například **listAccountSas** v účtu úložiště. Příklad předávání hodnot funkcí je uveden v tomto článku. | 
+| resourceName nebo resourceIdentifier |Ano |řetězec |Jedinečný identifikátor prostředku. |
+| apiVersion |Ano |řetězec |Verze rozhraní API prostředku běhový stav. Obvykle ve formátu **yyyy-MM-DD**. |
+| functionValues |Ne |object | Objekt, který obsahuje hodnoty pro funkci. Tento objekt Poskytněte jenom pro funkce, které podporují příjem objektu s hodnotami parametrů, jako je například **listAccountSas** v účtu úložiště. Příklad předávání hodnot funkcí je uveden v tomto článku. |
 
 ### <a name="valid-uses"></a>Platná použití
 
@@ -134,13 +134,13 @@ Možná použití seznamu * jsou uvedena v následující tabulce.
 | ------------- | ------------- |
 | Microsoft.AnalysisServices/servers | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
 | Microsoft.AppConfiguration/configurationStores | Klíče listkey |
-| Microsoft. Automation/automationAccounts | [klíče Listkey](/rest/api/automation/keys/listbyautomationaccount) |
+| Microsoft. Automation/automationAccounts | [Klíče listkey](/rest/api/automation/keys/listbyautomationaccount) |
 | Microsoft.Batch/batchAccounts | [klíče listkey](/rest/api/batchmanagement/batchaccount/getkeys) |
 | Microsoft. BatchAI/pracovní prostory/experimenty/úlohy | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
 | Microsoft. blockchain/blockchainMembers | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/blockchainmembers/listapikeys) |
 | Microsoft. blockchain/blockchainMembers/transactionNodes | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/transactionnodes/listapikeys) |
-| Microsoft.Cache/redis | [klíče Listkey](/rest/api/redis/redis/listkeys) |
-| Microsoft.CognitiveServices/accounts | [klíče Listkey](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
+| Microsoft.Cache/redis | [Klíče listkey](/rest/api/redis/redis/listkeys) |
+| Microsoft.CognitiveServices/accounts | [Klíče listkey](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
 | Microsoft.ContainerRegistry/registries | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
 | Microsoft.ContainerRegistry/registries | [listCredentials](/rest/api/containerregistry/registries/listcredentials) |
 | Microsoft.ContainerRegistry/registries | [listUsages](/rest/api/containerregistry/registries/listusages) |
@@ -154,7 +154,7 @@ Možná použití seznamu * jsou uvedena v následující tabulce.
 | Microsoft.DataFactory/datafactories/gateways | listauthkeys |
 | Microsoft. DataFactory/Factory/integrationruntimes | [listauthkeys](/rest/api/datafactory/integrationruntimes/listauthkeys) |
 | Microsoft. DataLakeAnalytics/Accounts/storageAccounts/Containers | [listSasTokens](/rest/api/datalakeanalytics/storageaccounts/listsastokens) |
-| Microsoft. datashare/Accounts/shares | [listSynchronizations](/rest/api/datashare/shares/listsynchronizations) | 
+| Microsoft. datashare/Accounts/shares | [listSynchronizations](/rest/api/datashare/shares/listsynchronizations) |
 | Microsoft. datashare/Accounts/shareSubscriptions | [listSourceShareSynchronizationSettings](/rest/api/datashare/sharesubscriptions/listsourcesharesynchronizationsettings) |
 | Microsoft. datashare/Accounts/shareSubscriptions | [listSynchronizationDetails](/rest/api/datashare/sharesubscriptions/listsynchronizationdetails) |
 | Microsoft. datashare/Accounts/shareSubscriptions | [listSynchronizations](/rest/api/datashare/sharesubscriptions/listsynchronizations) |
@@ -167,11 +167,11 @@ Možná použití seznamu * jsou uvedena v následující tabulce.
 | Microsoft.DevTestLab/labs/users/serviceFabrics | [ListApplicableSchedules](/rest/api/dtl/servicefabrics/listapplicableschedules) |
 | Microsoft.DevTestLab/labs/virtualMachines | [ListApplicableSchedules](/rest/api/dtl/virtualmachines/listapplicableschedules) |
 | Microsoft. DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/databaseaccounts/listconnectionstrings) |
-| Microsoft. DocumentDB/databaseAccounts | [klíče Listkey](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
+| Microsoft. DocumentDB/databaseAccounts | [Klíče listkey](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
 | Microsoft.DomainRegistration | [listDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
 | Microsoft. DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
-| Microsoft. EventGrid/domény | [klíče Listkey](/rest/api/eventgrid/domains/listsharedaccesskeys) |
-| Microsoft.EventGrid/topics | [klíče Listkey](/rest/api/eventgrid/topics/listsharedaccesskeys) |
+| Microsoft. EventGrid/domény | [Klíče listkey](/rest/api/eventgrid/domains/listsharedaccesskeys) |
+| Microsoft.EventGrid/topics | [Klíče listkey](/rest/api/eventgrid/topics/listsharedaccesskeys) |
 | Microsoft. EventHub/obory názvů/autorizačních pravidel | [klíče listkey](/rest/api/eventhub/namespaces/listkeys) |
 | Microsoft. EventHub/obory názvů/disasterRecoveryConfigs/autorizačních pravidel | [klíče listkey](/rest/api/eventhub/disasterrecoveryconfigs/listkeys) |
 | Microsoft. EventHub/obory názvů/eventhubs/autorizačních pravidel | [klíče listkey](/rest/api/eventhub/eventhubs/listkeys) |
@@ -194,10 +194,10 @@ Možná použití seznamu * jsou uvedena v následující tabulce.
 | Microsoft. Logic/Workflows/Versions/Triggers | [listCallbackUrl](/rest/api/logic/workflowversions/listcallbackurl) |
 | Microsoft. MachineLearning/WebServices | [klíče listkey](/rest/api/machinelearning/webservices/listkeys) |
 | Microsoft. MachineLearning/pracovní prostory | listworkspacekeys |
-| Microsoft. MachineLearningServices/pracovní prostory/výpočetní služby | [klíče Listkey](/rest/api/azureml/workspacesandcomputes/machinelearningcompute/listkeys) |
+| Microsoft. MachineLearningServices/pracovní prostory/výpočetní služby | [Klíče listkey](/rest/api/azureml/workspacesandcomputes/machinelearningcompute/listkeys) |
 | Microsoft. MachineLearningServices/pracovní prostory/výpočetní služby | [listNodes](/rest/api/azureml/workspacesandcomputes/machinelearningcompute/listnodes) |
-| Microsoft.MachineLearningServices/workspaces | [klíče Listkey](/rest/api/azureml/workspacesandcomputes/workspaces/listkeys) |
-| Microsoft. Maps/Accounts | [klíče Listkey](/rest/api/maps-management/accounts/listkeys) |
+| Microsoft.MachineLearningServices/workspaces | [Klíče listkey](/rest/api/azureml/workspacesandcomputes/workspaces/listkeys) |
+| Microsoft. Maps/Accounts | [Klíče listkey](/rest/api/maps-management/accounts/listkeys) |
 | Microsoft. Media/MediaServices/Assets | [listContainerSas](/rest/api/media/assets/listcontainersas) |
 | Microsoft. Media/MediaServices/Assets | [listStreamingLocators](/rest/api/media/assets/liststreaminglocators) |
 | Microsoft. Media/MediaServices/streamingLocators | [listContentKeys](/rest/api/media/streaminglocators/listcontentkeys) |
@@ -205,7 +205,7 @@ Možná použití seznamu * jsou uvedena v následující tabulce.
 | Microsoft.Network/applicationSecurityGroups | listIpConfigurations |
 | Microsoft. NotificationHubs/obory názvů/autorizačních pravidel | [klíče listkey](/rest/api/notificationhubs/namespaces/listkeys) |
 | Microsoft. NotificationHubs/obory názvů/NotificationHubs/autorizačních pravidel | [klíče listkey](/rest/api/notificationhubs/notificationhubs/listkeys) |
-| Microsoft.OperationalInsights/workspaces | [klíče Listkey](/rest/api/loganalytics/workspaces%202015-03-20/listkeys) |
+| Microsoft.OperationalInsights/workspaces | [Klíče listkey](/rest/api/loganalytics/workspaces%202015-03-20/listkeys) |
 | Microsoft.PolicyInsights/remediations | [listDeployments](/rest/api/policy-insights/remediations/listdeploymentsatresourcegroup) |
 | Microsoft. Relay/obory názvů/autorizačních pravidel | [klíče listkey](/rest/api/relay/namespaces/listkeys) |
 | Microsoft. Relay/obory názvů/disasterRecoveryConfigs/autorizačních pravidel | klíče listkey |
@@ -218,9 +218,9 @@ Možná použití seznamu * jsou uvedena v následující tabulce.
 | Microsoft. ServiceBus/obory názvů/Queues/autorizačních pravidel | [klíče listkey](/rest/api/servicebus/queues/listkeys) |
 | Microsoft. ServiceBus/obory názvů/témata/autorizačních pravidel | [klíče listkey](/rest/api/servicebus/topics/listkeys) |
 | Microsoft. SignalRService/Signaler | [klíče listkey](/rest/api/signalr/signalr/listkeys) |
-| Microsoft.Storage/storageAccounts | [listAccountSas](/rest/api/storagerp/storageaccounts/listaccountsas) |
-| Microsoft.Storage/storageAccounts | [klíče listkey](/rest/api/storagerp/storageaccounts/listkeys) |
-| Microsoft.Storage/storageAccounts | [listServiceSas](/rest/api/storagerp/storageaccounts/listservicesas) |
+| Microsoft.Storage/storageAccounts. | [listAccountSas](/rest/api/storagerp/storageaccounts/listaccountsas) |
+| Microsoft.Storage/storageAccounts. | [klíče listkey](/rest/api/storagerp/storageaccounts/listkeys) |
+| Microsoft.Storage/storageAccounts. | [listServiceSas](/rest/api/storagerp/storageaccounts/listservicesas) |
 | Microsoft. StorSimple/manažeři/zařízení | [listFailoverSets](/rest/api/storsimple/devices/listfailoversets) |
 | Microsoft. StorSimple/manažeři/zařízení | [listFailoverTargets](/rest/api/storsimple/devices/listfailovertargets) |
 | Microsoft. StorSimple/– manažeři | [listActivationKey](/rest/api/storsimple/managers/getactivationkey) |
@@ -244,7 +244,7 @@ Možná použití seznamu * jsou uvedena v následující tabulce.
 
 Pokud chcete zjistit, které typy prostředků máte seznam operace, máte následující možnosti:
 
-* Zobrazení [operace REST API](/rest/api/) pro poskytovatele prostředků a najít seznamu operací. Například účty úložiště mají [klíče Listkey operace](/rest/api/storagerp/storageaccounts).
+* Prohlédněte si [operace REST API](/rest/api/) pro poskytovatele prostředků a hledejte operace se seznamem. Například účty úložiště mají [operaci klíče listkey](/rest/api/storagerp/storageaccounts).
 * Použijte rutinu PowerShellu [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) . Následující příklad získá všechny seznam operací pro účty úložiště:
 
   ```powershell
@@ -281,13 +281,13 @@ Další seznam funkce mají různé formáty návratový. Pokud chcete zobrazit 
 
 ### <a name="remarks"></a>Poznámky
 
-Zadat zdroj podle použití názvu prostředku nebo [funkce resourceId](#resourceid). Při použití funkce list ve stejné šabloně, která nasazuje odkazovaný prostředek, použijte název prostředku.
+Zadejte prostředek buď pomocí názvu prostředku, nebo pomocí [funkce ResourceID](#resourceid). Při použití funkce list ve stejné šabloně, která nasazuje odkazovaný prostředek, použijte název prostředku.
 
 Použijete-li funkci **list** v prostředku, který je podmíněně nasazen, je funkce vyhodnocena i v případě, že prostředek není nasazen. Pokud funkce **seznamu** odkazuje na prostředek, který neexistuje, zobrazí se chyba. Použijte funkci **if** a ujistěte se, že je funkce vyhodnocena pouze při nasazení prostředku. Podívejte se na [funkci IF](template-functions-logical.md#if) pro ukázkovou šablonu, která používá if a list s podmíněně nasazeným prostředkem.
 
 ### <a name="list-example"></a>Příklad seznamu
 
-Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json) ukazuje, jak vrátit primární a sekundární klíče z účtu úložiště v části výstupů. Také vrátí token SAS pro účet úložiště. 
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json) ukazuje, jak vrátit primární a sekundární klíče z účtu úložiště v části výstupy. Také vrátí token SAS pro účet úložiště.
 
 Chcete-li získat token SAS, předejte objekt pro čas vypršení platnosti. Čas vypršení platnosti musí být v budoucnosti. Tento příklad je určen pro použití funkce seznamu. Obvykle můžete by pomocí tokenu SAS v hodnotě prostředků místo vrátit jako výstupní hodnoty. Výstupní hodnoty jsou uloženy v historii nasazení a nejsou zabezpečené.
 
@@ -364,14 +364,14 @@ Vrátí informace o zprostředkovateli prostředků a její podporované typy pr
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| providerNamespace |Ano |string |Namespace poskytovatele |
-| resourceType |Ne |string |Typ prostředku v rámci zadaného oboru názvů. |
+| providerNamespace |Ano |řetězec |Namespace poskytovatele |
+| resourceType |Ne |řetězec |Typ prostředku v rámci zadaného oboru názvů. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Každý podporovaný typ se vrátí v následujícím formátu: 
+Každý podporovaný typ se vrátí v následujícím formátu:
 
 ```json
 {
@@ -385,7 +385,7 @@ Pole řazení vrácené hodnoty není zaručena.
 
 ### <a name="providers-example"></a>Příklad poskytovatelů
 
-Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/providers.json) ukazuje, jak použít funkci zprostředkovatele:
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/providers.json) ukazuje, jak používat funkci poskytovatele:
 
 ```json
 {
@@ -409,7 +409,7 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-Pro **Microsoft.Web** poskytovatele prostředků a **lokality** typ prostředku v předchozím příkladu vrátí objekt v následujícím formátu:
+U poskytovatele prostředků **Microsoft. Web** **a typu** prostředku vrátí předchozí příklad objekt v následujícím formátu:
 
 ```json
 {
@@ -441,11 +441,11 @@ Vrátí objekt představující stav prostředků modulu runtime.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| resourceName nebo resourceIdentifier |Ano |string |Název nebo identifikátor prostředku. Při odkazování na prostředek v aktuální šablony, zadejte pouze název prostředku jako parametr. Když odkazujete na dříve nasazený prostředek nebo pokud je název prostředku dvojznačný, zadejte ID prostředku. |
-| apiVersion |Ne |string |Verze rozhraní API zadaný prostředek. Zahrnout tento parametr, pokud prostředek není zřízený v rámci stejné šablony. Obvykle ve formátu **rrrr mm-dd**. Platné verze rozhraní API pro váš prostředek naleznete v tématu [Reference k šabloně](/azure/templates/). |
-| "Úplné" |Ne |string |Hodnota, která určuje, jestli se má vrátit objekt úplné prostředku. Pokud nezadáte `'Full'`, je vrácen pouze objekt vlastnosti prostředku. Úplný objekt obsahuje hodnoty, jako je ID prostředku a umístění. |
+| resourceName nebo resourceIdentifier |Ano |řetězec |Název nebo identifikátor prostředku. Při odkazování na prostředek v aktuální šablony, zadejte pouze název prostředku jako parametr. Když odkazujete na dříve nasazený prostředek nebo pokud je název prostředku dvojznačný, zadejte ID prostředku. |
+| apiVersion |Ne |řetězec |Verze rozhraní API zadaný prostředek. Zahrnout tento parametr, pokud prostředek není zřízený v rámci stejné šablony. Obvykle ve formátu **yyyy-MM-DD**. Platné verze rozhraní API pro váš prostředek naleznete v tématu [Reference k šabloně](/azure/templates/). |
+| "Úplné" |Ne |řetězec |Hodnota, která určuje, jestli se má vrátit objekt úplné prostředku. Pokud nezadáte `'Full'`, vrátí se pouze objekt vlastnosti prostředku. Úplný objekt obsahuje hodnoty, jako je ID prostředku a umístění. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -455,22 +455,22 @@ Každý typ prostředku vrátí různé vlastnosti pro odkaz na funkci. Funkce n
 
 Odkaz na funkci načte běhový stav již nasazený prostředek nebo prostředek nasazený v aktuální šablony. Tento článek ukazuje příklady pro oba scénáře.
 
-Obvykle se používají **odkaz** funkci vrátíte konkrétní hodnoty z objektu, jako je identifikátor URI koncového bodu objektu blob nebo plně kvalifikovaný název domény.
+Obvykle použijete **odkazovou** funkci k vrácení konkrétní hodnoty z objektu, jako je například identifikátor URI koncového bodu objektu BLOB nebo plně kvalifikovaný název domény.
 
 ```json
 "outputs": {
     "BlobUri": {
-        "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')).primaryEndpoints.blob]",
+        "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))).primaryEndpoints.blob]",
         "type" : "string"
     },
     "FQDN": {
-        "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName')).dnsSettings.fqdn]",
+        "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName'))).dnsSettings.fqdn]",
         "type" : "string"
     }
 }
 ```
 
-Použití `'Full'` Pokud potřebujete hodnoty prostředků, které nejsou součástí vlastnosti schématu. Například pokud chcete nastavit zásady přístupu trezoru klíčů, získáte vlastnosti identity pro virtuální počítač.
+Použijte `'Full'`, pokud potřebujete hodnoty prostředků, které nejsou součástí schématu vlastností. Například pokud chcete nastavit zásady přístupu trezoru klíčů, získáte vlastnosti identity pro virtuální počítač.
 
 ```json
 {
@@ -523,7 +523,7 @@ Když odkazujete na prostředek, který není nasazený ve stejné šabloně, za
 Aby nedocházelo k nejednoznačnosti prostředků, na které odkazujete, můžete zadat plně kvalifikovaný identifikátor prostředku.
 
 ```json
-"value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName'))]"
+"value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName')))]"
 ```
 
 Při sestavování plně kvalifikovaného odkazu na prostředek, pořadí pro kombinování segmentů z typu a název není pouhým zřetězením obou. Místo toho je nutné po oboru názvů použít sekvenci dvojic *typů a názvů* z nejméně specifických na nejvíc:
@@ -548,14 +548,14 @@ Pokud například chcete získat ID tenanta pro spravovanou identitu, která se 
 
 ### <a name="reference-example"></a>Příklad odkazu
 
-Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/referencewithstorage.json) nasadí prostředku a odkazuje na tento prostředek.
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/referencewithstorage.json) nasadí prostředek a odkazuje na tento prostředek.
 
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-      "storageAccountName": { 
+      "storageAccountName": {
           "type": "string"
       }
   },
@@ -585,7 +585,7 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
       }
     }
 }
-``` 
+```
 
 V předchozím příkladu vrátí dva objekty. Objekt vlastnosti je v následujícím formátu:
 
@@ -642,7 +642,7 @@ V předchozím příkladu vrátí dva objekty. Objekt vlastnosti je v následuj�
 }
 ```
 
-Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/reference.json) odkazuje na účet úložiště, který není nasazený v této šabloně. Účet úložiště už existuje v rámci stejného předplatného.
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/reference.json) odkazuje na účet úložiště, který není v této šabloně nasazený. Účet úložiště už existuje v rámci stejného předplatného.
 
 ```json
 {
@@ -666,13 +666,13 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-## <a name="resourcegroup"></a>resourceGroup
+## <a name="resourcegroup"></a>Skupina prostředků
 
 ```json
 resourceGroup()
 ```
 
-Vrátí objekt představující aktuální skupinu prostředků. 
+Vrátí objekt představující aktuální skupinu prostředků.
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -716,7 +716,7 @@ Při použití vnořených šablon k nasazení do více skupin prostředků mů�
 
 ### <a name="resource-group-example"></a>Příklad skupiny prostředků
 
-Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourcegroup.json) vrátí vlastnosti skupiny prostředků.
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourcegroup.json) vrátí vlastnosti skupiny prostředků.
 
 ```json
 {
@@ -752,17 +752,17 @@ V předchozím příkladu vrátí objekt v následujícím formátu:
 resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)
 ```
 
-Vrací jedinečný identifikátor prostředku. Tuto funkci použít, když název prostředku je nejednoznačný nebo není zřízené v rámci stejné šablony. 
+Vrací jedinečný identifikátor prostředku. Tuto funkci použít, když název prostředku je nejednoznačný nebo není zřízené v rámci stejné šablony.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |Ne |řetězec (ve formátu identifikátoru GUID) |Výchozí hodnota je aktuálním předplatném. Tuto hodnotu zadejte, když budete chtít načíst prostředek v jiném předplatném. |
-| resourceGroupName |Ne |string |Výchozí hodnota je aktuální skupinu prostředků. Tuto hodnotu zadejte, když budete chtít načíst prostředek v jiné skupině prostředků. |
-| resourceType |Ano |string |Typ prostředku včetně obor názvů zprostředkovatele prostředků. |
-| resourceName1 |Ano |string |Název prostředku. |
-| resourceName2 |Ne |string |Další segment názvu prostředku (v případě potřeby). |
+| resourceGroupName |Ne |řetězec |Výchozí hodnota je aktuální skupinu prostředků. Tuto hodnotu zadejte, když budete chtít načíst prostředek v jiné skupině prostředků. |
+| resourceType |Ano |řetězec |Typ prostředku včetně obor názvů zprostředkovatele prostředků. |
+| resourceName1 |Ano |řetězec |Název prostředku. |
+| resourceName2 |Ne |řetězec |Další segment názvu prostředku (v případě potřeby). |
 
 Pokračujte v přidávání názvů prostředků jako parametrů, pokud typ prostředku obsahuje více segmentů.
 
@@ -860,7 +860,7 @@ Pokud chcete získat ID prostředku v jiném předplatném a skupině prostředk
 
 ### <a name="resource-id-example"></a>Příklad ID prostředku
 
-Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourceid.json) vrátí ID prostředku účtu úložiště ve skupině prostředků:
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourceid.json) vrátí ID prostředku pro účet úložiště ve skupině prostředků:
 
 ```json
 {
@@ -890,7 +890,7 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | sameRGOutput | Řetězec | /subscriptions/{Current-Sub-ID}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | Řetězec | /subscriptions/{Current-Sub-ID}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
@@ -903,7 +903,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 subscription()
 ```
 
-Vrátí podrobnosti o předplatném pro aktuální nasazení. 
+Vrátí podrobnosti o předplatném pro aktuální nasazení.
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -924,7 +924,7 @@ Při použití vnořených šablon k nasazení do více předplatných můžete 
 
 ### <a name="subscription-example"></a>Příklad předplatného
 
-Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json) ukazuje volal funkci předplatného v část outputs. 
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json) ukazuje funkci předplatného nazvanou v části výstupy.
 
 ```json
 {
@@ -950,12 +950,12 @@ Vrátí jedinečný identifikátor prostředku nasazeného na úrovni předplatn
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |Ne |řetězec (ve formátu GUID) |Výchozí hodnota je aktuálním předplatném. Tuto hodnotu zadejte, když budete chtít načíst prostředek v jiném předplatném. |
-| resourceType |Ano |string |Typ prostředku včetně obor názvů zprostředkovatele prostředků. |
-| resourceName1 |Ano |string |Název prostředku. |
-| resourceName2 |Ne |string |Další segment názvu prostředku (v případě potřeby). |
+| resourceType |Ano |řetězec |Typ prostředku včetně obor názvů zprostředkovatele prostředků. |
+| resourceName1 |Ano |řetězec |Název prostředku. |
+| resourceName2 |Ne |řetězec |Další segment názvu prostředku (v případě potřeby). |
 
 Pokračujte v přidávání názvů prostředků jako parametrů, pokud typ prostředku obsahuje více segmentů.
 
@@ -1034,11 +1034,11 @@ Vrátí jedinečný identifikátor prostředku nasazeného na úrovni tenanta.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| resourceType |Ano |string |Typ prostředku včetně obor názvů zprostředkovatele prostředků. |
-| resourceName1 |Ano |string |Název prostředku. |
-| resourceName2 |Ne |string |Další segment názvu prostředku (v případě potřeby). |
+| resourceType |Ano |řetězec |Typ prostředku včetně obor názvů zprostředkovatele prostředků. |
+| resourceName1 |Ano |řetězec |Název prostředku. |
+| resourceName2 |Ne |řetězec |Další segment názvu prostředku (v případě potřeby). |
 
 Pokračujte v přidávání názvů prostředků jako parametrů, pokud typ prostředku obsahuje více segmentů.
 
@@ -1056,8 +1056,8 @@ Pomocí této funkce získáte ID prostředku pro prostředek, který je nasazen
 
 ## <a name="next-steps"></a>Další kroky
 
-* Popis části šablony Azure Resource Manageru najdete v tématu [šablon pro vytváření Azure Resource Manageru](template-syntax.md).
-* Chcete-li sloučit několik šablon, přečtěte si téma [použití propojených šablon s Azure Resource Managerem](linked-templates.md).
-* K iteraci zadaného počtu opakování při vytváření konkrétní typ prostředku, naleznete v tématu [vytvořit více instancí prostředku v Azure Resource Manageru](create-multiple-instances.md).
-* Postup nasazení šablony, které jste vytvořili, najdete v sekci [nasazení aplikace pomocí šablony Azure Resource Manageru](deploy-powershell.md).
+* Popis sekcí v šabloně Azure Resource Manager najdete v tématu [vytváření šablon Azure Resource Manager](template-syntax.md).
+* Chcete-li sloučit více šablon, přečtěte si téma [použití propojených šablon s Azure Resource Manager](linked-templates.md).
+* Informace o iteraci zadaného počtu výskytů při vytváření typu prostředku najdete v tématu [vytvoření více instancí prostředků v Azure Resource Manager](create-multiple-instances.md).
+* Pokud chcete zjistit, jak nasadit šablonu, kterou jste vytvořili, přečtěte si téma [nasazení aplikace pomocí šablony Azure Resource Manager](deploy-powershell.md).
 

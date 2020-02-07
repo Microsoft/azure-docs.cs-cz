@@ -2,13 +2,13 @@
 title: Resource Manager a klasické nasazení
 description: Popisuje rozdíly mezi modelem nasazení Resource Manager a modelem nasazení Classic (neboli Service Management).
 ms.topic: conceptual
-ms.date: 08/22/2019
-ms.openlocfilehash: 4d7f17dace81198724a62dcc665c8c31acbcf6de
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.date: 02/06/2020
+ms.openlocfilehash: 85691d562f2b58cdced3264de11f3dd29a7ca168
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76168835"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064508"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Nasazení Azure Resource Manager vs. Classic: Vysvětlení modelů nasazení a stavu prostředků
 
@@ -76,7 +76,7 @@ Značky jsou podporované jenom u prostředků vytvořených pomocí Resource Ma
 
 Následující diagram znázorňuje výpočetní prostředky, prostředky sítě a úložiště nasazené prostřednictvím Resource Manageru.
 
-![Správce prostředků – architektura](./media/deployment-models/arm_arch3.png)
+![Architektura Resource Manageru](./media/deployment-models/arm_arch3.png)
 
 Všimněte si následujících vztahů mezi prostředky:
 
@@ -99,10 +99,10 @@ Toto jsou jednotlivé komponenty a jejich vztahy v případě modelu nasazení C
 
 Následující tabulka popisuje změny v interakci poskytovatelů výpočetních prostředků, síťových prostředků a prostředků úložiště:
 
-| Položka | Klasické | Správce prostředků |
+| Položka | Classic | Resource Manager |
 | --- | --- | --- |
 | Cloudová služba pro službu Virtual Machines |Cloudová služba byla kontejnerem pro uložení virtuálních počítačů, která vyžadovala dostupnost z platformy a vyrovnávání zatížení. |Cloudová služba už není objektem vyžadovaným pro vytvoření virtuálního počítače pomocí nového modelu. |
-| Služby Virtual Networks |Virtuální síť je pro virtuální počítač volitelná. Pokud je tato virtuální síť zahrnutá, nejde ji nasadit s Správce prostředků. |Virtuální počítač vyžaduje virtuální síť nasazenou pomocí Resource Manageru. |
+| Virtuální sítě |Virtuální síť je pro virtuální počítač volitelná. Pokud je tato virtuální síť zahrnutá, nejde ji nasadit s Správce prostředků. |Virtuální počítač vyžaduje virtuální síť nasazenou pomocí Resource Manageru. |
 | Účty úložiště |Virtuální počítač vyžaduje účet úložiště, který ukládá virtuální pevné disky pro operační systém, dočasné a další datové disky. |Virtuální počítač vyžaduje účet úložiště pro uložení disků do úložiště objektů blob. |
 | Skupiny dostupnosti |Dostupnost pro platformu byla označovaná konfigurací stejného parametru „AvailabilitySetName“ ve službě Virtual Machines. Maximální počet domén selhání byl 2. |Skupina dostupnosti je prostředek vystavený poskytovatelem Microsoft.Compute. Služby Virtual Machines, které vyžadují vysokou dostupnost, musejí být součástí skupiny dostupnosti. Maximální počet domén selhání je teď 3. |
 | Skupiny vztahů |Skupiny vztahů byly nezbytné k vytváření služeb Virtual Network. Ale s představením regionálních virtuálních sítí, které se už nevyžadovaly. |Abychom to zjednodušili, koncept skupin vztahů neexistuje v rozhraních API, které se vystavují prostřednictvím správce Azure Resource Manager. |

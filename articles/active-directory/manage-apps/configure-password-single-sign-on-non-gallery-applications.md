@@ -11,22 +11,22 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d191abafbaad123ed47f8eaae6cdd4e48478da7a
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 563bda275b73f76b042b5e57a9909ca78c504bb3
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422625"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063522"
 ---
 # <a name="configure-password-single-sign-on"></a>Konfigurace jednotného přihlašování k heslům
 
-Když [přidáte aplikaci Galerie](add-gallery-app.md) nebo [webovou aplikaci mimo galerii](add-non-gallery-app.md) do podnikových aplikací Azure AD, jedna z dostupných možností jednotného přihlašování je [jednotné přihlašování založené](what-is-single-sign-on.md#password-based-sso)na heslech. Tato možnost je k dispozici pro všechny webové stránky s přihlašovací stránkou HTML. Jednotné přihlašování založené na heslech, označované taky jako trezor hesel, umožňuje spravovat přístup uživatelů a hesla k webovým aplikacím, které nepodporují federaci identit. Je to také užitečné ve scénářích, kdy je potřeba, aby několik uživatelů sdílelo jeden účet, například k účtům aplikací sociálních médií vaší organizace. 
+Když [přidáte aplikaci Galerie](add-gallery-app.md) nebo [webovou aplikaci mimo galerii](add-non-gallery-app.md) do podnikových aplikací Azure AD, jedna z dostupných možností jednotného přihlašování je [jednotné přihlašování založené na heslech](what-is-single-sign-on.md#password-based-sso). Tato možnost je k dispozici pro všechny webové stránky s přihlašovací stránkou HTML. Jednotné přihlašování založené na heslech, označované taky jako trezor hesel, umožňuje spravovat přístup uživatelů a hesla k webovým aplikacím, které nepodporují federaci identit. Je to také užitečné ve scénářích, kdy je potřeba, aby několik uživatelů sdílelo jeden účet, například k účtům aplikací sociálních médií vaší organizace. 
 
 Jednotné přihlašování založené na heslech je skvělým způsobem, jak rychle začít integrovat aplikace do služby Azure AD a umožní vám:
 
 -   Povolení **jednotného přihlašování pro uživatele** díky bezpečnému ukládání a přehrávání uživatelských jmen a hesel pro aplikaci, kterou jste integrací se službou Azure AD.
 
--   **Podpora aplikací, které vyžadují více** polí přihlašování pro aplikace, které pro přihlášení vyžadují víc než jenom uživatelské jméno a heslo
+-   **Podpora aplikací, které vyžadují více polí přihlašování** pro aplikace, které pro přihlášení vyžadují víc než jenom uživatelské jméno a heslo
 
 -   **Přizpůsobení popisků** vstupních polí uživatelského jména a hesla, která se uživatelům zobrazí na [přístupovém panelu aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) při zadání přihlašovacích údajů
 
@@ -44,7 +44,7 @@ Pokud se aplikace nepřidala do tenanta Azure AD, přečtěte si téma [Přidán
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce cloudové aplikace nebo správce aplikace pro vašeho TENANTA Azure AD.
 
-2. Přejděte na **Azure Active Directory** > **podnikové aplikace**. Zobrazí se náhodná ukázka aplikací v tenantovi Azure AD. 
+2. Přejděte na **Azure Active Directory** > **podnikových aplikací**. Zobrazí se náhodná ukázka aplikací v tenantovi Azure AD. 
 
 3. V nabídce **Typ aplikace** vyberte **všechny aplikace**a pak vyberte **použít**.
 
@@ -56,9 +56,9 @@ Pokud se aplikace nepřidala do tenanta Azure AD, přečtěte si téma [Přidán
 
 7. Zadejte adresu URL stránky pro přihlášení na webu aplikace. Tento řetězec musí být stránka, která obsahuje pole pro zadání uživatelského jména.
 
-   ![Jednotné přihlašování pomocí hesla](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
+   ![Jednotné přihlašování založené na heslech](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
 
-8. Vyberte **Uložit**. Služba Azure AD se pokusí analyzovat přihlašovací stránku pro zadání uživatelského jména a zadání hesla. Pokud je pokus úspěšný, jste hotovi. 
+8. Vyberte **Save** (Uložit). Služba Azure AD se pokusí analyzovat přihlašovací stránku pro zadání uživatelského jména a zadání hesla. Pokud je pokus úspěšný, jste hotovi. 
  
 > [!NOTE]
 > Dalším krokem je [přiřazení uživatelů nebo skupin k aplikaci](methods-for-assigning-users-and-groups.md). Po přiřazení uživatelů a skupin můžete zadat přihlašovací údaje, které se budou používat jménem uživatele při přihlášení k aplikaci. Vyberte **Uživatelé a skupiny**, zaškrtněte políčko pro řádek uživatele nebo skupiny a potom klikněte na **Aktualizovat přihlašovací údaje**. Pak zadejte uživatelské jméno a heslo, které chcete použít jménem uživatele nebo skupiny. V opačném případě budou uživatelé vyzváni k zadání přihlašovacích údajů sami při spuštění.
@@ -68,7 +68,7 @@ Pokud se aplikace nepřidala do tenanta Azure AD, přečtěte si téma [Přidán
 
 Pokud se pokus o analýzu služby Azure AD nezdaří, můžete nakonfigurovat ruční přihlášení.
 
-1. V části  **\<název aplikace > Konfigurace**vyberte **Konfigurovat \<název aplikace > nastavení jednotné přihlašování** . zobrazí se stránka **Konfigurace přihlášení** . 
+1. V části **\<název aplikace > konfigurace**vyberte možnost **Konfigurovat \<název aplikace > nastavení jednotného přihlašování** . zobrazí se stránka **Konfigurace přihlášení** . 
 
 2. Vyberte možnost **ručně zjišťovat přihlašovací pole**. Zobrazí se další pokyny, které popisují ruční zjišťování polí přihlašování.
 
@@ -92,7 +92,7 @@ Po zachytávání přihlašovací stránky můžete přiřadit uživatele a skup
 > [!NOTE]
 > Pro aplikaci můžete nahrát logo dlaždice pomocí tlačítka **nahrát logo** na kartě **Konfigurace** aplikace.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Přiřazení uživatelů nebo skupin k aplikaci](methods-for-assigning-users-and-groups.md)
-- [Konfigurace automatického zřizování uživatelských účtů](configure-automatic-user-provisioning-portal.md)
+- [Konfigurace automatického zřizování uživatelských účtů](../app-provisioning/configure-automatic-user-provisioning-portal.md)

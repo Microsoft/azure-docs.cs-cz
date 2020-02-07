@@ -2,7 +2,7 @@
 title: Běžné problémy & řešení s ověřováním účtů – Azure AD
 description: Seznamte se s možnými problémy a řešeními pro některé z častých nejčastějších potíží s ověřováním ve dvou faktorech a pracovního nebo školního účtu.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.assetid: 8f3aef42-7f66-4656-a7cd-d25a971cb9eb
 ms.workload: identity
@@ -10,14 +10,14 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: 498c150706cd62168b7c45b1bcf36ad6c3a8b63b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 3f44884f54278f7b4d07a265604f4a256d66e8a8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705203"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062536"
 ---
 # <a name="common-problems-and-solutions-with-two-factor-verification-and-your-work-or-school-account"></a>Běžné problémy a řešení se dvojúrovňovém ověřováním a vaším pracovním nebo školním účtem
 
@@ -83,9 +83,9 @@ Pokud jste se dopracovali s novým mobilním zařízením, budete ho muset nasta
 
 2. Aktualizujte informace o účtu a zařízení na stránce **Další ověření zabezpečení** , odstraňte staré zařízení a přidejte nový. Další informace najdete v článku [Správa nastavení dvou metod ověřování](multi-factor-authentication-end-user-manage-settings.md) .
 
-3. Nepovinný parametr. Stáhněte, nainstalujte a nastavte Microsoft Authenticator aplikaci na mobilním zařízení podle kroků v článku [Stažení a instalace Microsoft Authenticator aplikace](user-help-auth-app-download-install.md) .
+3. Volitelné. Stáhněte, nainstalujte a nastavte Microsoft Authenticator aplikaci na mobilním zařízení podle kroků v článku [Stažení a instalace Microsoft Authenticator aplikace](user-help-auth-app-download-install.md) .
 
-4. Nepovinný parametr. Pro důvěryhodná zařízení zapněte dvojúrovňové ověřování pomocí postupu v části **Zapnutí dvojúrovňového ověřování v části důvěryhodné zařízení v** článku [Správa nastavení dvou metod ověřování](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device) .
+4. Volitelné. Pro důvěryhodná zařízení zapněte dvojúrovňové ověřování pomocí postupu v části **Zapnutí dvojúrovňového ověřování v části důvěryhodné zařízení v** článku [Správa nastavení dvou metod ověřování](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device) .
 
 ## <a name="im-having-problems-signing-in-on-my-mobile-device-while-traveling"></a>Mám problémy s přihlášením na mobilním zařízení během cestování
 

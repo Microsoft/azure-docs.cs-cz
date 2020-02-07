@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace služby Salesforce Sandboxu pro automatické zřizování uživatelů pomocí Azure Active Directory | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Sandboxu služby Salesforce.
+title: 'Kurz: Konfigurace izolovaného prostoru Salesforce pro Automatické zřizování uživatelů s Azure Active Directory | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Salesforce Sandbox.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,102 +15,102 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e0a4eed020728bea5de196eebe438947ae509e4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 48df954f680c6774b0aa189453615156f4f0b4a8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515679"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063267"
 ---
-# <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>Kurz: Konfigurace služby Salesforce Sandboxu pro automatické zřizování uživatelů
+# <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>Kurz: Konfigurace izolovaného prostoru Salesforce pro Automatické zřizování uživatelů
 
-Cílem tohoto kurzu je zobrazit kroky, které je třeba provést v Sandboxu služby Salesforce a Azure AD automaticky zřizovat a rušit zřízení uživatelských účtů ze služby Azure AD do izolovaného prostoru služby Salesforce.
+Cílem tohoto kurzu je Ukázat kroky, které musíte provést v izolovaném prostoru (sandbox) Salesforce a Azure AD a automaticky zřizovat a zrušit zřízení uživatelských účtů z Azure AD do izolovaného prostoru služby Salesforce.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu se předpokládá, že máte následující položky:
+Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
 
-*   Tenanta služby Azure Active directory.
-*   Platný tenanta pro Salesforce Sandboxu pro práci nebo Salesforce Sandboxu pro vzdělávání. Bezplatný zkušební účet můžete použít buď služby.
-*   Účet uživatele s oprávněními správce týmu v Sandboxu služby Salesforce.
+*   Tenant Azure Active Directory.
+*   Platný tenant pro služby Salesforce Sandbox for Work nebo Salesforce Sandbox pro vzdělávání. Pro kteroukoli službu můžete použít bezplatný zkušební účet.
+*   Uživatelský účet v izolovaném prostoru Salesforce s oprávněními správce týmu.
 
 ## <a name="assigning-users-to-salesforce-sandbox"></a>Přiřazování uživatelů do izolovaného prostoru Salesforce
 
-Azure Active Directory používá koncept nazvaný "přiřazení" k určení, kteří uživatelé měli obdržet přístup k vybrané aplikace. V rámci zřizování automatické uživatelských účtů jsou synchronizovány pouze uživatelé a skupiny, které se "přiřadily" aplikace ve službě Azure AD.
+Azure Active Directory používá koncept nazvaný "přiřazení" k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelských účtů se synchronizují jenom uživatelé a skupiny přiřazené k aplikaci v Azure AD.
 
-Před konfigurací a povolení služby zřizování, je potřeba rozhodnout, které uživatele nebo skupiny ve službě Azure AD potřebují přístup k aplikaci Salesforce izolovaného prostoru. Poté, co jste provedli tato rozhodnutí, můžete přiřadit tyto uživatele k aplikaci Salesforce Sandboxu podle pokynů v [přiřadit uživatele nebo skupiny k podnikové aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+Než nakonfigurujete a povolíte službu zřizování, musíte určit, kteří uživatelé nebo skupiny ve službě Azure AD potřebují přístup k vaší aplikaci Salesforce Sandbox. Po provedení tohoto rozhodnutí můžete těmto uživatelům přiřadit aplikaci pro sandboxu Salesforce podle pokynů v tématu [přiřazení uživatele nebo skupiny k podnikové aplikaci](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) .
 
-### <a name="important-tips-for-assigning-users-to-salesforce-sandbox"></a>Důležité tipy pro přiřazování uživatelů do izolovaného prostoru Salesforce
+### <a name="important-tips-for-assigning-users-to-salesforce-sandbox"></a>Důležité tipy pro přiřazení uživatelů k izolovanému prostoru Salesforce
 
-* Dále je doporučeno jednoho uživatele Azure AD je přiřazen do izolovaného prostoru Salesforce pro testování konfigurace zřizování. Další uživatele a/nebo skupiny může být přiřazen později.
+* Doporučujeme, aby se k otestování konfigurace zřizování přiřadil jeden uživatel Azure AD k izolovanému prostoru Salesforce. Další uživatele a skupiny můžete přiřadit později.
 
-* Při přiřazování uživatele do izolovaného prostoru služby Salesforce, musíte vybrat platné uživatelské role. Tuto roli "Výchozí přístupu" nefunguje pro zřizování.
+* Při přiřazování uživatele do izolovaného prostoru služby Salesforce je nutné vybrat platnou roli uživatele. Role výchozí přístup nefunguje pro zřizování.
 
 > [!NOTE]
-> Tato aplikace naimportuje vlastní role z izolovaného prostoru Salesforce jako součást procesu zřizování, které zákazník může chtít vybrat při přiřazování uživatelů.
+> Tato aplikace importuje vlastní role z izolovaného prostoru (sandbox) Salesforce jako součást procesu zřizování, který může zákazník chtít vybrat při přiřazování uživatelů.
 
-## <a name="enable-automated-user-provisioning"></a>Povolit zřizování automatizované uživatelů
+## <a name="enable-automated-user-provisioning"></a>Povolit automatizované zřizování uživatelů
 
-Tato část vás provede připojením služby Azure AD k uživatelskému účtu Salesforce Sandboxu rozhraní API zřizování a konfigurace služby zřizování, pokud chcete vytvořit, aktualizovat a zakázat přiřazených uživatelských účtů v Sandboxu služby Salesforce v závislosti na uživatele a skupiny přiřazení ve službě Azure AD.
+V této části se seznámíte s připojením k rozhraní API pro zřizování uživatelských účtů v izolovaném prostoru (Salesforce) pro Azure AD a konfigurací zřizovací služby k vytváření, aktualizaci a zakázání přiřazených uživatelských účtů v izolovaném prostoru Salesforce na základě uživatelů a skupin. přiřazení ve službě Azure AD.
 
 >[!Tip]
->Můžete také povolena založené na SAML jednotného přihlašování pro Salesforce izolovaného prostoru, postupujte podle pokynů uvedených v [webu Azure portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce návrzích mezi sebou.
+>Můžete se také rozhodnout, že povolíte jednotné přihlašování založené na SAML pro izolovaný prostor Salesforce, a to podle pokynů uvedených v [Azure Portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování, i když se tyto dvě funkce navzájem doplňují.
 
-### <a name="configure-automatic-user-account-provisioning"></a>Konfigurovat automatické účet zřizování uživatelů
+### <a name="configure-automatic-user-account-provisioning"></a>Konfigurace automatického zřizování uživatelských účtů
 
-Cílem této části se popisují, jak povolit zřizování uživatelů z Active Directory uživatelské účty do izolovaného prostoru služby Salesforce.
+Cílem této části je vysvětlit, jak povolit uživatelům zřizování uživatelských účtů služby Active Directory do izolovaného prostoru (sandbox) Salesforce.
 
-1. V [webu Azure portal](https://portal.azure.com), přejděte **Azure Active Directory > podnikové aplikace > všechny aplikace** části.
+1. V [Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory > Enterprise Apps > všechny aplikace** .
 
-1. Pokud jste už nakonfigurovali Salesforce Sandboxu pro jednotné přihlašování, vyhledejte svoji instanci služby Salesforce izolovaného prostoru pomocí vyhledávacího pole. V opačném případě vyberte **přidat** a vyhledejte **Salesforce Sandboxu** v galerii aplikací. Ve výsledcích hledání vyberte Sandboxu Salesforce a přidat do seznamu aplikací.
+1. Pokud jste již nakonfigurovali izolovaný prostor Salesforce pro jednotné přihlašování, vyhledejte instanci izolovaného prostoru Salesforce pomocí vyhledávacího pole. V opačném případě vyberte možnost **Přidat** a vyhledat **izolovaný prostor Salesforce** v galerii aplikací. Z výsledků hledání vyberte izolovaný prostor Salesforce a přidejte ho do seznamu aplikací.
 
-1. Vyberte instanci služby Salesforce izolovaného prostoru a potom **zřizování** kartu.
+1. Vyberte instanci izolovaného prostoru (sandbox) Salesforce a pak vyberte kartu **zřizování** .
 
-1. Nastavte **režim zřizování** k **automatické**.
+1. Nastavte **režim zřizování** na **automaticky**.
 
-    ![Zřizování](./media/salesforce-sandbox-provisioning-tutorial/provisioning.png)
+    ![zřizování](./media/salesforce-sandbox-provisioning-tutorial/provisioning.png)
 
-1. V části **přihlašovacích údajů správce** části, zadejte následující nastavení konfigurace:
+1. V části **přihlašovací údaje správce** zadejte následující nastavení konfigurace:
    
-    a. V **uživatelské jméno správce** textové pole, typ účtu Salesforce Sandboxu název, který má **správce systému** profilu na Salesforce.com přiřazené.
+    a. Do textového pole **správce uživatelské jméno** zadejte název účtu izolovaného prostoru (sandbox), který má přiřazený profil **správce systému** v Salesforce.com.
    
-    b. V **heslo správce** textového pole zadejte heslo pro tento účet.
+    b. Do textového pole **heslo správce** zadejte heslo pro tento účet.
 
-1. K získání tokenu zabezpečení Sandboxu služby Salesforce, otevřete novou kartu a přihlášení do stejný účet správce izolovaného prostoru služby Salesforce. V pravém horním rohu stránky klikněte na své jméno a potom klikněte na tlačítko **nastavení**.
+1. Pokud chcete získat token zabezpečení izolovaného prostoru Salesforce, otevřete novou kartu a přihlaste se ke stejnému účtu správce izolovaného prostoru (Salesforce). V pravém horním rohu stránky klikněte na své jméno a pak klikněte na **Nastavení**.
 
-     ![Povolit automatické zřizování uživatelů](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "povolit automatické zřizování uživatelů")
+     ![Povolit automatické zřizování uživatelů](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "Povolit automatické zřizování uživatelů")
 
-1. V levém navigačním podokně klikněte na tlačítko **mé osobní údaje** související rozbalíte, a pak klikněte na **obnovit tento Token zabezpečení**.
+1. V levém navigačním podokně klikněte na **osobní informace** a rozbalte související část a potom klikněte na **resetovat můj token zabezpečení**.
   
-    ![Povolit automatické zřizování uživatelů](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "povolit automatické zřizování uživatelů")
+    ![Povolit automatické zřizování uživatelů](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "Povolit automatické zřizování uživatelů")
 
-1. Na **obnovit Token zabezpečení** stránky, klikněte na tlačítko **obnovit Token zabezpečení** tlačítko.
+1. Na stránce **resetovat token zabezpečení** klikněte na tlačítko **resetovat token zabezpečení** .
 
-    ![Povolit automatické zřizování uživatelů](./media/salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "povolit automatické zřizování uživatelů")
+    ![Povolit automatické zřizování uživatelů](./media/salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "Povolit automatické zřizování uživatelů")
 
-1. Zkontrolujte doručenou poštu e-mailu spojený s tímto účtem správce. Vyhledejte e-mailu ze Salesforce Sandbox.com, který obsahuje nový token zabezpečení.
+1. Ověřte e-mailové doručené pošty přidružené k tomuto účtu správce. Vyhledejte e-mail ze služby Salesforce Sandbox.com, který obsahuje nový token zabezpečení.
 
-1. Zkopírujte token, přejděte do okna Azure AD a vložte ho do **tajný klíč tokenu** pole.
+1. Zkopírujte token, otevřete okno Azure AD a vložte ho do pole **tajný token** .
 
-1. Na webu Azure Portal, klikněte na tlačítko **Test připojení** aby Azure AD můžete připojit k aplikaci Salesforce izolovaného prostoru.
+1. V Azure Portal klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k vaší aplikaci izolovaného prostoru Salesforce.
 
-1. V **e-mailové oznámení** zadejte e-mailovou adresu osoby nebo skupiny, který by měl přijímat oznámení zřizování chyby a zaškrtněte políčko.
+1. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko.
 
-1. Klikněte na tlačítko **uložit.**  
+1. Klikněte na **Uložit.**  
     
-1.  V oddílu mapování, vyberte **synchronizace Azure Active Directory Users do izolovaného prostoru služby Salesforce.**
+1.  V části mapování vyberte možnost **synchronizovat Azure Active Directory uživatele do izolovaného prostoru Salesforce.**
 
-1. V **mapování atributů** , projděte si atributy uživatele, které se synchronizují ze služby Azure AD do izolovaného prostoru služby Salesforce. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelské účty v Sandboxu služby Salesforce pro operace update. Vyberte tlačítko Uložit potvrďte změny.
+1. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do služby Salesforce Sandbox. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v izolovaném prostoru Salesforce pro operace aktualizace. Vyberte tlačítko Uložit potvrďte změny.
 
-1. Chcete-li povolit zřizování pro Salesforce Sandboxu služby Azure AD, změňte **stavu zřizování** k **na** v sekci nastavení
+1. Pokud chcete povolit službu zřizování Azure AD pro izolovaný prostor Salesforce, změňte **stav zřizování** na **zapnuto** v části nastavení.
 
-1. Klikněte na tlačítko **uložit.**
+1. Klikněte na **Uložit.**
 
-Spustí počáteční synchronizaci všech uživatelů a skupiny přiřazené k Salesforce izolovaného prostoru v části Uživatelé a skupiny. Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut za předpokladu, že služba běží. Můžete použít **podrobnosti synchronizace** části ke sledování průběhu a odkazech na zřizování protokoly aktivit, které popisují všechny akce provedené v zřizovací služba Salesforce izolovaný prostor aplikace.
+Spustí počáteční synchronizaci všech uživatelů nebo skupin přiřazených k izolovanému prostoru Salesforce v části Uživatelé a skupiny. Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut za předpokladu, že služba běží. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na zřizování protokolů aktivit, které popisují všechny akce prováděné službou zřizování v aplikaci v izolovaném prostoru (sandbox) Salesforce.
 
-Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

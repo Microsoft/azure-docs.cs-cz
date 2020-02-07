@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: snehaa
-ms.openlocfilehash: a9d008406e59c66a8b742194e2e2d388c778ac9e
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: baf01c0a0d5c6154305f7137c24deb0365b5e812
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989344"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062094"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: běžné otázky
 
@@ -55,7 +55,7 @@ Posuzování serveru je nástroj pro plánování migrace. Plánovač nasazení 
 
 Projděte si Azure Migrate podporovaných geografických oblastí pro [virtuální počítače VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) a pro [virtuální počítače Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v).
 
-## <a name="how-do-i-get-started"></a>Jak začít?
+## <a name="how-do-i-get-started"></a>Jak mám začít?
 
 Identifikujte potřebný nástroj a přidejte ho do projektu Azure Migrate. Pokud přidáváte nástroj ISV nebo stěhovací společnost:
 - Začněte získáním licence nebo registrací k bezplatné zkušební verzi v souladu se zásadami nástroje. Licencování pro nástroje je v souladu s modelem licencování ISV nebo nástrojů.
@@ -67,9 +67,7 @@ Svou cestu k migraci můžete centrálně sledovat v rámci Azure Migrateho proj
 [Přečtěte si, jak](how-to-delete-project.md) odstranit projekt. 
 
 
-## <a name="do-machines-retain-domain-identity-after-migration"></a>Uchovávají počítače po migraci identitu domény?
 
-Za předpokladu, že doménové služby jsou [integrované do Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/), pak členství v doméně a identitu počítače v doméně se po migraci uchovávají. 
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si [přehled Azure Migrate](migrate-services-overview.md).

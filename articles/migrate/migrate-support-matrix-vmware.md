@@ -3,12 +3,12 @@ title: Podpora pro vyhodnocení VMware v Azure Migrate
 description: Přečtěte si o podpoře vyhodnocení VMware v Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 8ed20ecd37eacdcb771db7c166ff8fc22b96cb89
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2fab94b66e09d3923e481326b3650f1beb621dc4
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846177"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048770"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Matice podpory pro vyhodnocení VMware 
 
@@ -25,7 +25,7 @@ K vyhodnocení místních počítačů pro migraci do Azure pomocí tohoto člá
 --- | ---
 **Omezení hodnocení**| Vyhledejte a posuďte až 35 000 virtuálních počítačů VMware v jednom [projektu](migrate-support-matrix.md#azure-migrate-projects).
 **Omezení projektu** | V předplatném Azure můžete vytvořit více projektů. Projekt může zahrnovat virtuální počítače VMware, virtuální počítače Hyper-V a fyzické servery až do limitů hodnocení.
-**Zjišťování** | Zařízení Azure Migrate může na vCenter Server zjistit až 10 000 virtuálních počítačů VMware.
+**Rozpoznávání** | Zařízení Azure Migrate může na vCenter Server zjistit až 10 000 virtuálních počítačů VMware.
 **Posouzení** | Do jedné skupiny můžete přidat až 35 000 počítačů.<br/><br/> V jednom posouzení můžete vyhodnotit až 35 000 virtuálních počítačů.
 
 [Přečtěte si další informace](concepts-assessment-calculation.md) o posouzení.
@@ -37,7 +37,7 @@ Kromě zjišťování počítačů Azure Migrate: posouzení serveru může zji�
 
 **Podpora** | **Podrobnosti**
 --- | ---
-**Zjišťování** | Zjišťování je bez agentů, používá přihlašovací údaje hosta počítače a vzdáleně přistupuje k počítačům pomocí volání WMI a SSH.
+**Rozpoznávání** | Zjišťování je bez agentů, používá přihlašovací údaje hosta počítače a vzdáleně přistupuje k počítačům pomocí volání WMI a SSH.
 **Podporované počítače** | Místní virtuální počítače VMware.
 **Operační systém počítače** | Všechny verze systému Windows a Linux.
 **přihlašovací údaje pro vCenter** | Účet vCenter Server s přístupem jen pro čtení a oprávnění povolená pro Virtual Machines > operace hosta.
@@ -65,7 +65,7 @@ Azure Migrate používá [zařízení Azure Migrate](migrate-appliance.md) ke zj
 
 ## <a name="port-access"></a>Přístup k portu
 
-**zařízení** | **připojení**
+**Zařízení** | **Vázán**
 --- | ---
 Náplně | Příchozí připojení na portu TCP 3389 umožňující připojení ke vzdálené ploše zařízení.<br/><br/> Příchozí připojení na portu 44368 pro vzdálený přístup k aplikaci pro správu zařízení pomocí adresy URL: ```https://<appliance-ip-or-name>:44368``` <br/><br/>Odchozí připojení na portu 443 (HTTPS), 5671 a 5672 (AMQP), která odesílají metadata zjišťování a výkonu Azure Migrate.
 Server vCenter | Příchozí připojení na portu TCP 443, aby zařízení mohla shromažďovat metadata o konfiguraci a výkonu pro posouzení. <br/><br/> Ve výchozím nastavení se zařízení připojuje ke vCenter na portu 443. Pokud Server vCenter naslouchá na jiném portu, můžete změnit port při nastavení zjišťování.
@@ -86,9 +86,9 @@ Hostitelé ESXi | **Požadováno pouze pro [vizualizaci závislostí](https://do
 **Připojení k Internetu** | Pokud nejsou počítače připojené k Internetu, musíte na ně nainstalovat bránu Log Analytics.
 
 
-## <a name="agentless-dependency-visualization"></a>Vizualizace závislostí bez agenta
+## <a name="agentless-dependency-visualization"></a>Vizualizace závislostí bez agentů
 
-Tato možnost je v současnosti ve verzi Preview. [Další informace](how-to-create-group-machine-dependencies-agentless.md). Požadavky jsou shrnuty v následující tabulce.
+Tato možnost je v současnosti v náhledové verzi. [Další informace](how-to-create-group-machine-dependencies-agentless.md). Požadavky jsou shrnuty v následující tabulce.
 
 **Požadavek** | **Podrobnosti**
 --- | ---
@@ -96,7 +96,7 @@ Tato možnost je v současnosti ve verzi Preview. [Další informace](how-to-cre
 **Podpora virtuálních počítačů** | Aktuálně se podporuje jenom pro virtuální počítače VMware.
 **Virtuální počítače s Windows** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64 bitů)
 **Virtuální počítače s Linuxem** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14,04, 16,04<br/> Debian 7, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.
-**Účet systému Windows** |  Vizualizace vyžaduje uživatelský účet s přístupem k hostovi.
+**Účet systému Windows** |  Vizualizace vyžaduje účet správce místní nebo doménového účtu.
 **Účet Linux** | Vizualizace vyžaduje uživatelský účet s oprávněním root.<br/><br/> V alternativním případě uživatelský účet potřebuje tato oprávnění pro soubory/bin/netstat a/bin/ls: CAP_DAC_READ_SEARCH a CAP_SYS_PTRACE.
 **Agenti virtuálních počítačů** | Na virtuálních počítačích není nutný žádný agent.
 **Nástroje VMware** | Na virtuálních počítačích, které chcete analyzovat, musí být nainstalované a spuštěné nástroje VMware.

@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 02/03/2020
+ms.date: 02/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 59839df1e67c5ea7f18df373ad0530a2ea740209
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: c5a1aaac0edea1e5ab2e6cdf35f91f61eed23db5
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030893"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047485"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak používat API Management Azure s virtuálními sítěmi
 Virtuální sítě Azure umožňují umístit jakékoli prostředky Azure do jiné než internetové sítě podporující směrování, ke které můžete řídit přístup. Tyto sítě je pak možné připojit k místním sítím pomocí různých technologií VPN. Další informace o virtuálních sítích Azure najdete tady: [Přehled Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -31,7 +31,7 @@ Službu Azure API Management lze nasadit v rámci virtuální sítě (VNET), aby
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení kroků popsaných v tomto článku musíte mít:
 
@@ -136,7 +136,7 @@ Následuje seznam běžných potíží s chybou konfigurace, ke kterým může d
 
     | Prostředí Azure | Koncové body                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Veřejné Azure      | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com, kde `East US 2` je eastus2.warm.ingestion.msftcloudes.com</li></ul> |
+    | Veřejné Azure      | <ul><li>gcs.prod.monitoring.core.windows.net (**nové**)</li><li>prod.warmpath.msftcloudes.com (**bude zastaralé**)</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com, kde `East US 2` je eastus2.warm.ingestion.msftcloudes.com</li></ul> |
     | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
     | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
 
@@ -198,11 +198,11 @@ IP adresy se dělí **prostředím Azure**. Pokud je povolená IP adresa přích
 |-----------------|-------------------------|---------------|
 | Veřejné Azure| Střed USA – jih (globální)| 104.214.19.224|
 | Veřejné Azure| Střed USA – sever (globální)| 52.162.110.80|
-| Veřejné Azure| Středozápadní USA| 52.253.135.58|
+| Veřejné Azure| Západní střed USA| 52.253.135.58|
 | Veřejné Azure| Jižní Korea – střed| 40.82.157.167|
 | Veřejné Azure| Spojené království – západ| 51.137.136.0|
 | Veřejné Azure| Japonsko – západ| 40.81.185.8|
-| Veřejné Azure| Středoseverní USA| 40.81.47.216|
+| Veřejné Azure| Střed USA – sever| 40.81.47.216|
 | Veřejné Azure| Velká Británie – jih| 51.145.56.125|
 | Veřejné Azure| Indie – západ| 40.81.89.24|
 | Veřejné Azure| USA – východ| 52.224.186.99|
@@ -217,16 +217,16 @@ IP adresy se dělí **prostředím Azure**. Pokud je povolená IP adresa přích
 | Veřejné Azure| Kanada – střed| 52.139.20.34|
 | Veřejné Azure| Jižní Korea – jih| 40.80.232.185|
 | Veřejné Azure| Střed Indie| 13.71.49.1|
-| Veřejné Azure| Západní USA| 13.64.39.16|
+| Veřejné Azure| USA – západ| 13.64.39.16|
 | Veřejné Azure| Austrálie – jihovýchod| 20.40.160.107|
 | Veřejné Azure| Austrálie – střed| 20.37.52.67|
 | Veřejné Azure| Indie – jih| 20.44.33.246|
-| Veřejné Azure| Střední USA| 13.86.102.66|
+| Veřejné Azure| Střed USA| 13.86.102.66|
 | Veřejné Azure| Austrálie – východ| 20.40.125.155|
-| Veřejné Azure| Západní USA 2| 51.143.127.203|
+| Veřejné Azure| USA – západ 2| 51.143.127.203|
 | Veřejné Azure| Východní USA 2 EUAP| 52.253.229.253|
 | Veřejné Azure| Střed USA EUAP| 52.253.159.160|
-| Veřejné Azure| Středojižní USA| 20.188.77.119|
+| Veřejné Azure| Střed USA – jih| 20.188.77.119|
 | Veřejné Azure| Východní USA 2| 20.44.72.3|
 | Veřejné Azure| Severní Evropa| 52.142.95.35|
 | Veřejné Azure| Východní Asie| 52.139.152.27|

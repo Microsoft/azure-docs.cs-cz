@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: cbb5882950636e281d311bf0536acf5b92cf11ea
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: dd73f42aaa0d0bd1884892143d96446935a401a5
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018597"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048444"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je to privátní koncový bod Azure?
 
@@ -24,8 +24,8 @@ Privátní koncový bod Azure je síťové rozhraní, které vás privátně a z
 
 |Vlastnost  |Popis |
 |---------|---------|
-|Name (Název)    |    Jedinečný název v rámci skupiny prostředků.      |
-|Podsíť    |  Podsíť pro nasazení a přidělování privátních IP adres z virtuální sítě. Požadavky na podsíť najdete v části omezení v tomto článku.         |
+|Název    |    Jedinečný název v rámci skupiny prostředků.      |
+|Subnet    |  Podsíť pro nasazení a přidělování privátních IP adres z virtuální sítě. Požadavky na podsíť najdete v části omezení v tomto článku.         |
 |Prostředek privátního propojení    |   Prostředek privátního propojení pro připojení pomocí ID prostředku nebo aliasu ze seznamu dostupných typů. Pro veškerý provoz odeslaný do tohoto prostředku se vygeneruje jedinečný identifikátor sítě.       |
 |Cílový podprostředek   |      Prostředek, který se má připojit. Každý typ prostředku privátního propojení má různé možnosti pro výběr na základě předvolby.    |
 |Metoda schválení připojení    |  Automatické nebo ruční. V závislosti na oprávněních řízení přístupu na základě role (RBAC) může být váš soukromý koncový bod schválen automaticky. Pokud se pokusíte připojit k prostředku privátního propojení bez RBAC, použijte ruční metodu, která vlastníkovi prostředku povolí schválení připojení.        |
@@ -54,10 +54,10 @@ Prostředek privátního propojení je cílovým cílem daného privátního kon
 |---------|---------|---------|
 |**Služba privátního propojení** (vaše vlastní služba)   |  Microsoft. Network/privateLinkServices       | Prázdná |
 |**Azure SQL Database** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
-|**Azure SQL Data Warehouse** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
-|**Azure Storage**  | Microsoft.Storage/storageAccounts    |  BLOB (objekt blob, blob_secondary)<BR> Tabulka (tabulka, table_secondary)<BR> Queue (Queue, queue_secondary)<BR> Soubor (soubor, file_secondary)<BR> Web (web, web_secondary)        |
-|**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  BLOB (objekt blob, blob_secondary)<BR> Data Lake Gen2 systému souborů (DFS, dfs_secondary)       |
-|**Azure Cosmos DB** | Microsoft. AzureCosmosDB/databaseAccounts | SQL, MongoDB, Cassandra, Gremlin, tabulka|
+|**Azure synapse Analytics** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
+|**Azure Storage**  | Microsoft.Storage/storageAccounts.    |  BLOB (objekt blob, blob_secondary)<BR> Tabulka (tabulka, table_secondary)<BR> Queue (Queue, queue_secondary)<BR> Soubor (soubor, file_secondary)<BR> Web (web, web_secondary)        |
+|**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts.    |  BLOB (objekt blob, blob_secondary)<BR> Data Lake Gen2 systému souborů (DFS, dfs_secondary)       |
+|**Databáze Azure Cosmos** | Microsoft. AzureCosmosDB/databaseAccounts | SQL, MongoDB, Cassandra, Gremlin, tabulka|
 |**Azure Database for PostgreSQL – jeden server** | Microsoft.DBforPostgreSQL/servers   | postgresqlServer |
 |**Azure Database for MySQL** | Microsoft.DBforMySQL/servers    | mysqlServer |
 |**Azure Database for MariaDB** | Microsoft.DBforMariaDB/servers    | mariadbServer |

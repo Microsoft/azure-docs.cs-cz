@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 93cbf8e9e60ef48e1ff3516dd4e9e123f70e0f42
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/04/2020
+ms.openlocfilehash: 70fcdb1c22664a0bd3091fea88c8e23e3d1b81e5
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982437"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048291"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Kurz: vytvoření prvního modelu klasifikace pomocí automatizovaného strojového učení
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -69,11 +69,15 @@ Dokončili jste následující postup experimentování a spouštění v sadě A
 
 1. Vytvořte novou datovou sadu výběrem možnosti **místní soubory** z rozevíracího seznamu **+ vytvořit datovou sadu** . 
 
+    1. Ve formuláři **základní informace** zadejte název datové sady a zadejte volitelný popis. Automatizovaná ML v sadě Azure Machine Learning Studio aktuálně podporuje pouze tabelární datové sady, takže typ datové sady by měl být výchozí tabulkou.
+
+    1. V levém dolním rohu vyberte **Další** .
+
+    1. Na formuláři **úložiště dat a výběr souboru** vyberte výchozí úložiště dat, které se automaticky nastavilo během vytváření pracovního prostoru, **workspaceblobstore (Azure Blob Storage)** . Do tohoto místa nahrajete datový soubor, abyste ho mohli zpřístupnit vašemu pracovnímu prostoru.
+
     1. Vyberte **Procházet**.
     
     1. V místním počítači vyberte soubor **bankmarketing_train. csv** . Jedná se o soubor, který jste stáhli jako [požadavek](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv).
-
-    1. Jako typ datové sady vyberte **tabulkové** . 
 
     1. Poskytněte datovou sadu jedinečný název a zadejte volitelný popis. 
 
@@ -86,12 +90,12 @@ Dokončili jste následující postup experimentování a spouštění v sadě A
         Pole|Popis| Hodnota pro kurz
         ---|---|---
         Formát souboru|Definuje rozložení a typ dat uložených v souboru.| Oddělených
-        Oddělovač|Jeden nebo více znaků pro určení hranice mezi&nbsp; samostatné, nezávislé oblasti v prostém textu nebo jiných datových proudech. |Čárka
-        Encoding|Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.| UTF-8
+        Oddělovač|Jeden nebo více znaků pro určení hranice mezi&nbsp; samostatné, nezávislé oblasti v prostém textu nebo jiných datových proudech. |Tečkou
+        Kódování|Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.| UTF-8
         Záhlaví sloupců| Určuje, jakým způsobem bude zpracována záhlaví datové sady (pokud existuje).| Všechny soubory mají stejná záhlaví.
-        Přeskočit řádky | Určuje, kolik, pokud nějaký z nich je v datové sadě vynecháno.| Žádné
+        Přeskočit řádky | Určuje, kolik, pokud nějaký z nich je v datové sadě vynecháno.| Žádný
 
-    1. Formulář **schématu** umožňuje další konfiguraci dat pro tento experiment. V tomto příkladu vyberte přepínač přepínacího tlačítka pro funkci **day_of_week** , tak, aby se pro tento experiment nezahrnul. Vyberte **Next** (Další).
+    1. Formulář **schématu** umožňuje další konfiguraci dat pro tento experiment. V tomto příkladu vyberte přepínač přepínacího tlačítka pro funkci **day_of_week** , tak, aby se pro tento experiment nezahrnul. Vyberte **Další**.
 
         ![Konfigurace karty Preview](./media/tutorial-first-experiment-automated-ml/schema-tab-config.gif)
 
@@ -120,7 +124,7 @@ Dokončili jste následující postup experimentování a spouštění v sadě A
 
         1. Po vytvoření vyberte nový cíl služby COMPUTE z rozevíracího seznamu.
 
-    1. Vyberte **Next** (Další).
+    1. Vyberte **Další**.
 
 1. Ve formuláři **typ úlohy a nastavení** vyberte jako typ úlohy strojového učení možnost **klasifikace** .
 
@@ -133,21 +137,21 @@ Dokončili jste následující postup experimentování a spouštění v sadě A
         ------|---------|---
         Primární metrika| Metrika vyhodnocení, podle které se algoritmus strojového učení měří.|AUC_weighted
         Automaticky featurization| Umožňuje předzpracování. To zahrnuje automatické čištění dat, přípravu a transformaci, které generují syntetické funkce.| Povolení
-        Blokované algoritmy | Algoritmy, které chcete vyloučit z úlohy školení| Žádné
+        Blokované algoritmy | Algoritmy, které chcete vyloučit z úlohy školení| Žádný
         Výstupní kritérium| Pokud je splněno kritérium, úloha školení se zastaví. |&nbsp;úlohy školení&nbsp;čas (hodiny): 1 <br> &nbsp;prahová hodnota skóre&nbsp;metriky: žádné
-        Ověřování | Vyberte typ křížového ověření a počet testů.|Typ ověřování:<br>křížové ověření &nbsp;k-skládání&nbsp; <br> <br> Počet ověření: 2
-        Souběžnost| Maximální počet provedených paralelních iterací a jader používaných na iteraci| Maximální&nbsp;souběžných&nbsp;ch iterací: 5<br> Maximální počet&nbsp;jader&nbsp;na iteraci&nbsp;: žádné
+        Ověření | Vyberte typ křížového ověření a počet testů.|Typ ověřování:<br>křížové ověření &nbsp;k-skládání&nbsp; <br> <br> Počet ověření: 2
+        Souběžnost| Maximální počet paralelních iterací provedených na iteraci| Maximální&nbsp;souběžných&nbsp;ch iterací: 5
         
-        Vyberte **Uložit**.
+        Vyberte **Save** (Uložit).
 
-1. Vyberte **Dokončit** pro spuštění experimentu. Po zahájení přípravy experimentu se otevře obrazovka s **podrobnostmi o spuštění** se **stavem spuštění** .
+1. Vyberte **Dokončit** pro spuštění experimentu. Po zahájení přípravy experimentu se otevře obrazovka s **podrobnostmi o spuštění** se **stavem spuštění** v horní části.
 
 >[!IMPORTANT]
 > Příprava na Příprava spuštění experimentu trvá **10-15 minut** .
 > Po spuštění bude **pro každou iteraci trvat více než 2-3 minut**.  
 > Pokud chcete zobrazit stav spuštění v průběhu experimentu, vyberte **aktualizovat** pravidelně.
 >
-> V produkčním prostředí byste pravděpodobně nemuseli trochu začít. Pro tento kurz ale doporučujeme začít zkoumat testované algoritmy na kartě modely, jak jsou dokončeny, zatímco ostatní stále běží. 
+> V produkčním prostředí byste pravděpodobně nemuseli trochu začít. Pro tento kurz ale doporučujeme začít zkoumat testované algoritmy na kartě **modely** , jak jsou dokončeny, zatímco ostatní stále běží. 
 
 ##  <a name="explore-models"></a>Prozkoumat modely
 
@@ -165,7 +169,7 @@ Automatizované strojové učení v Azure Machine Learning Studiu vám umožní 
 
 Pro tento experiment nasazení do webové služby znamená, že finanční instituce teď má iterativní a škálovatelné webové řešení pro identifikaci potenciálních zákazníků s dlouhodobým vkladem. 
 
-Po dokončení spuštění přejděte zpátky na stránku **podrobností o spuštění** a vyberte kartu **modely** . Vyberte **aktualizovat**. 
+Po dokončení spuštění přejděte zpět na stránku **podrobností o spuštění** a vyberte kartu **modely** .
 
 V tomto kontextu experimentu se **VotingEnsemble** považuje za nejlepší model na základě metriky **AUC_weighted** .  Tento model nasadíme, ale doporučujeme, aby dokončení nasazení trvalo přibližně 20 minut. Proces nasazení zahrnuje několik kroků, včetně registrace modelu, generování prostředků a jejich konfigurace pro webovou službu.
 
@@ -178,8 +182,8 @@ V tomto kontextu experimentu se **VotingEnsemble** považuje za nejlepší model
     Název nasazení| Moje automl – nasazení
     Popis nasazení| Moje první automatizované nasazení experimentu Machine Learning
     Typ výpočtu | Výběr instance služby Azure COMPUTE (ACI)
-    Povolení ověřování| Zakázat. 
-    Použití vlastních nasazení| Zakázat. Umožňuje automaticky vygenerovat výchozí soubor ovladače (skript bodování) a soubor prostředí. 
+    Povolit ověřování| Dezaktivovat. 
+    Použití vlastních nasazení| Dezaktivovat. Umožňuje automaticky vygenerovat výchozí soubor ovladače (skript bodování) a soubor prostředí. 
     
     V tomto příkladu používáme výchozí hodnoty uvedené v nabídce *Upřesnit* . 
 
@@ -205,7 +209,7 @@ Pokud chcete zachovat skupinu prostředků a pracovní prostor pro další kurzy
 
 1. Vyberte **pokračovat**.
 
-### <a name="delete-the-resource-group"></a>Odstranění skupiny prostředků
+### <a name="delete-the-resource-group"></a>Odstranit skupinu prostředků
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
@@ -216,11 +220,11 @@ V tomto kurzu automatizovaného strojového učení jste pomocí Azure Machine L
 > [!div class="nextstepaction"]
 > [Využití webové služby](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
-+ Přečtěte si další informace o [předzpracování](how-to-create-portal-experiments.md#preprocess).
++ Přečtěte si další informace o [featurization](how-to-create-portal-experiments.md#featurization).
 + Přečtěte si další informace o [profilování dat](how-to-create-portal-experiments.md#profile).
 + Přečtěte si další informace o [automatizovaném strojovém učení](concept-automated-ml.md).
 + Další informace o metrikách klasifikace a grafech najdete v článku [vysvětlení výsledků automatizovaného strojového učení](how-to-understand-automated-ml.md#classification) .
 
 >[!NOTE]
 > Tato datová sada bank je k dispozici v rámci [licence Creative-@ (CCO: Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/). Všechna práva k individuálnímu obsahu databáze jsou licencovaná v rámci [licence k obsahu databáze](https://creativecommons.org/publicdomain/zero/1.0/) a dostupná na [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset). Tato datová sada byla původně k dispozici v rámci [databáze UCI Machine Learning](https://archive.ics.uci.edu/ml/datasets/bank+marketing).<br><br>
-> [Moro et al., 2014] S. Moro, P. Cortez a P. Rita. „A Data-Driven Approach to Predict the Success of Bank Telemarketing“ (Předpovídání úspěchu bankovního telemarketingu na základě dat). Systémy podpory pro rozhodování, Elsevier, 62:22-31, červen 2014.
+> [Moro et al., 2014] S. Moro, P. Cortez a P. Rita. Přístup na základě dat, který vám umožní předpovědět úspěšnost bankového uvádění na trh. Systémy podpory pro rozhodování, Elsevier, 62:22-31, červen 2014.

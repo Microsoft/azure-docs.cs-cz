@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 8e3c2b7f4087f0f47466eff47b22c59dad19892e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 787336f00a83d9403e3069754787743b9be6c5b1
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774943"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77050005"
 ---
 # <a name="publish-azure-media-services-content-using-rest"></a>Publikování obsahu Azure Media Services pomocí REST 
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ Můžete vytvořit datový proud sady MP4 s adaptivní přenosovou rychlostí vy
 
 Lokátor streamování OnDemand můžete použít také k sestavení adres URL, které odkazují na soubory MP4, které se dají postupně stahovat.  
 
-V tomto článku se dozvíte, jak vytvořit Lokátor streamování OnDemand, abyste mohli publikovat svůj Asset a vytvářet hladké adresy URL a HLS streamování MPEG. Zobrazuje se také jako horká pro vytváření progresivních adres URL pro stahování.
+V tomto článku se dozvíte, jak vytvořit Lokátor streamování OnDemand, abyste mohli publikovat svůj Asset a vytvářet hladké adresy URL a HLS streamování MPEG. Také ukazuje, jak vytvářet progresivní adresy URL pro stahování.
 
 V [následující](#types) části jsou uvedeny typy výčtu, jejichž hodnoty jsou použity v voláních REST.   
 
@@ -41,12 +41,12 @@ V [následující](#types) části jsou uvedeny typy výčtu, jejichž hodnoty j
 > Při přístupu k entitám v Media Services musíte nastavit konkrétní pole a hodnoty hlaviček v požadavcích HTTP. Další informace najdete v tématu [instalace Media Services REST APIm vývoji](media-services-rest-how-to-use.md).
 > 
 
-## <a name="connect-to-media-services"></a>Připojení k Media Services
+## <a name="connect-to-media-services"></a>Připojení ke službě Media Services
 
 Informace o tom, jak se připojit k rozhraní API AMS, najdete v tématu [přístup k rozhraní Azure Media Services API pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
 >[!NOTE]
->Po úspěšném připojení k https://media.windows.net obdržíte přesměrování 301 určující jiný identifikátor URI Media Services. Je nutné provést následná volání nového identifikátoru URI.
+>Po úspěšném připojení k https://media.windows.netobdržíte přesměrování 301 určující jiný identifikátor URI Media Services. Je nutné provést následná volání nového identifikátoru URI.
 
 ## <a name="create-an-ondemand-streaming-locator"></a>Vytvoření lokátoru pro streamování OnDemand
 Chcete-li vytvořit Lokátor streamování OnDemand a získat adresy URL, je nutné provést následující akce:
@@ -187,13 +187,13 @@ Příklad:
         OnDemandOrigin = 2,
     }
 
-## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
+## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 [Přehled Media Servicesch operací REST API](media-services-rest-how-to-use.md)
 
 [Konfigurace zásad doručení assetu](media-services-rest-configure-asset-delivery-policy.md)

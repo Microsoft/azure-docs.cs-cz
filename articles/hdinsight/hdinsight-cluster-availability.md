@@ -1,20 +1,19 @@
 ---
 title: 'Monitorování: Apache Ambari & Azure Monitor logs – Azure HDInsight'
 description: Naučte se používat protokoly Ambari a Azure Monitor ke sledování stavu a dostupnosti clusteru.
-keywords: monitorování, Ambari, monitorování, Log Analytics, výstrahy, dostupnost, stav
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/25/2019
-ms.openlocfilehash: a21610fefcfe1632dffbfd8e055497476f7e59c1
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.date: 02/06/2020
+ms.openlocfilehash: 383366fa3e436c79bed28a7c47f1e9daa5f0d9de
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687819"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77060166"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-and-azure-monitor-logs"></a>Jak monitorovat dostupnost clusteru pomocí protokolů Apache Ambari a Azure Monitor
 
@@ -96,9 +95,9 @@ Za předpokladu budete potřebovat Log Analytics pracovní prostor pro ukládán
 
 ### <a name="enable-hdinsight-azure-monitor-logs-integration"></a>Povolit integraci protokolů Azure Monitor HDInsight
 
-Na stránce prostředek clusteru HDInsight na portálu vyberte **Operations Management Suite**. Pak vyberte **Povolit** a v rozevíracím seznamu vyberte svůj pracovní prostor Log Analytics.
+Na stránce prostředek clusteru HDInsight na portálu vyberte **Azure monitor**. Pak vyberte **Povolit** a v rozevíracím seznamu vyberte svůj pracovní prostor Log Analytics.
 
-![Sada HDInsight Operations Management Suite](media/hdinsight-cluster-availability/hdi-portal-oms-enable.png)
+![Sada HDInsight Operations Management Suite](media/hdinsight-cluster-availability/azure-portal-monitoring.png)
 
 ### <a name="query-metrics-and-logs-tables"></a>Tabulky metrik a protokolů dotazů
 

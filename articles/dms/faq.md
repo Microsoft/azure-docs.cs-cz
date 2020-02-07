@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 9fdbf3888b4302946fe20259a333842caa122836
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f27d398af723a54443f531c05a503a5f2fbe13f6
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76717787"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064831"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Nejčastější dotazy týkající se použití Azure Database Migration Service
 
@@ -46,7 +46,7 @@ Pomocí Azure Database Migration Service můžete provádět offline a online mi
 > Použití Azure Database Migration Service k provedení online migrace vyžaduje vytvoření instance založené na cenové úrovni Premium. Další informace najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/database-migration/) Azure Database Migration Service.
 
 **Dotaz. jak Azure Database Migration Service porovnat s jinými nástroji pro migraci databáze Microsoft, jako je třeba databáze Pomocník s migrací (DMA) nebo Pomocník s migrací SQL Serveru (SSMA)?**
-Azure Database Migration Service je upřednostňovanou metodou migrace databáze pro Microsoft Azure ve velkém měřítku. Podrobnější informace o tom, jak Azure Database Migration Service porovnává s dalšími nástroji pro migraci databáze Microsoft a doporučení týkající se používání služby pro různé scénáře, najdete v příspěvku na blogu, který [rozlišuje služby a nástroje pro migraci databáze od Microsoftu](https://blogs.msdn.microsoft.com/datamigration/2017/10/13/differentiating-microsofts-database-migration-tools-and-services/).
+Azure Database Migration Service je upřednostňovanou metodou migrace databáze pro Microsoft Azure ve velkém měřítku. Podrobnější informace o tom, jak Azure Database Migration Service porovnává s dalšími nástroji pro migraci databáze Microsoft a doporučení týkající se používání služby pro různé scénáře, najdete v příspěvku na blogu, který [rozlišuje služby a nástroje pro migraci databáze od Microsoftu](https://techcommunity.microsoft.com/t5/microsoft-data-migration/differentiating-microsoft-s-database-migration-tools-and/ba-p/368529).
 
 **Dotaz: jak Azure Database Migration Service porovnat s nabídkou Azure Migrate?**
 Azure Migrate pomáhá s migrací místních virtuálních počítačů do Azure IaaS. Služba posuzuje vhodnost migrace a velikost na základě výkonu a poskytuje odhad nákladů na provoz místních virtuálních počítačů v Azure. Azure Migrate je užitečná pro migrace z místních virtuálních počítačů na virtuální počítače Azure s IaaS do virtuálních počítačů s využitím virtuálních počítačů. Ale na rozdíl od Azure Database Migration Service Azure Migrate není specializovaná služba migrace databáze pro platformy Azure PaaS relačních databází, jako je například Azure SQL Database nebo spravovaná instance Azure SQL Database.

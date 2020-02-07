@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: e8d0f446442db6eeb0aec38efcc69bdf09c9b56f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 37da62a4eb0f934133d6486872ba319138299614
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990704"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048691"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Řešení potíží s Azure Migrate zařízením a zjišťováním
 
@@ -78,7 +78,7 @@ Pokud se zobrazí tato chyba připojení, možná se nebudete moci připojit k v
 Pokud se zobrazí chyba 60030 nebo 60031, "operace správy Azure Key Vault nebyla úspěšná", udělejte toto:
 - Ujistěte se, že uživatelský účet Azure použitý k registraci zařízení má alespoň oprávnění přispěvatele k tomuto předplatnému.
 - Ujistěte se, že má účet přístup k trezoru klíčů, který je zadaný v chybové zprávě, a pak zkuste operaci zopakovat.
-- Pokud se problém nevyřeší, obraťte se na podporu Microsoftu.
+- Pokud potíže trvají, obraťte se na podporu Microsoftu.
 - [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) o požadovaných rolích a oprávněních Azure.
 
 ## <a name="error-60028-discovery-couldnt-be-initiated"></a>Chyba 60028: zjišťování se nepovedlo inicializovat.
@@ -139,7 +139,7 @@ Pokud virtuální počítače odstraníte a pořád se zobrazí na portálu, po�
 
 Azure Migrate podporuje zjišťování aplikací, rolí a funkcí pomocí Azure Migrate: posouzení serveru. Zjišťování aplikací se v současné době podporuje jenom pro VMware. [Přečtěte si další informace](how-to-discover-applications.md) o požadavcích a krocích pro nastavení zjišťování aplikací.
 
-Typické chyby zjišťování aplikací jsou shrnuté v tabulce.
+Typické chyby zjišťování aplikací jsou shrnuté v tabulce. 
 
 **Chyba** | **Příčina** | **Akce**
 --- | --- | --- | ---

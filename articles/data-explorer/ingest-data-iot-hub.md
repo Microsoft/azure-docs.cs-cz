@@ -7,14 +7,14 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 1052ef799949550ddaf492b8aa5b77ab9526d092
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 93c0b3e27156655acee24d424cd890b48bb8e4e7
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780279"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064984"
 ---
-# <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>Ingestování dat z IoT Hub do Azure Průzkumník dat (Preview)
+# <a name="ingest-data-from-iot-hub-into-azure-data-explorer"></a>Ingestování dat z IoT Hub do Azure Průzkumník dat 
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](ingest-data-iot-hub.md)
@@ -22,7 +22,7 @@ ms.locfileid: "75780279"
 > * [Python](data-connection-iot-hub-python.md)
 > * [Šablona Azure Resource Manageru](data-connection-iot-hub-resource-manager.md)
 
-Průzkumník dat Azure je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Průzkumník dat nabízí ingestování (načítání dat) od IoT Hub, platformy pro streamování velkých objemů dat a služby ingestování IoT.
+Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Průzkumník dat nabízí ingestování (načítání dat) od IoT Hub, platformy pro streamování velkých objemů dat a služby ingestování IoT.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -80,7 +80,7 @@ Nyní se připojíte k IoT Hub z Azure Průzkumník dat. Po dokončení tohoto p
     **Nastavení** | **Popis pole**
     |---|---|
     | Název datového připojení | Název připojení, které chcete vytvořit v Azure Průzkumník dat
-    | Centrum IoT | Název IoT Hub |
+    | IoT Hub | Název IoT Hub |
     | Zásady sdíleného přístupu | Název zásad sdíleného přístupu. Musí mít oprávnění ke čtení. |
     | Skupina uživatelů |  Skupina uživatelů definovaná v předdefinovaném koncovém bodu IoT Hub |
     | Vlastnosti systému událostí | [Vlastnosti systému událostí IoT Hub](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). Při přidávání vlastností systému, [Vytvoření](/azure/kusto/management/tables#create-table) nebo [aktualizace](/azure/kusto/management/tables#alter-table-and-alter-merge-table) schématu tabulky a [mapování](/azure/kusto/management/mappings) tak, aby zahrnovaly vybrané vlastnosti. | | | 
@@ -108,7 +108,7 @@ Nyní se připojíte k IoT Hub z Azure Průzkumník dat. Po dokončení tohoto p
 
 ## <a name="generate-sample-data-for-testing"></a>Generovat ukázková data pro testování
 
-Aplikace simulovaného zařízení se připojuje ke koncovému bodu vašeho centra IoT pro konkrétní zařízení a odesílá simulovaná telemetrická data o teplotě a vlhkosti vzduchu.
+Aplikace simulovaného zařízení se připojí ke koncovému bodu vašeho centra IoT pro konkrétní zařízení a odesílá simulovaná telemetrická data o teplotě a vlhkosti vzduchu.
 
 1. Stáhněte si ukázkový projekt C# z https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip a extrahujte archiv ZIP.
 

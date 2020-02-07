@@ -1,38 +1,32 @@
 ---
-title: 'Kurz: integrace s kanálem pro průběžnou integraci a doručování'
-titleSuffix: Azure App Configuration
-description: V tomto kurzu se naučíte generovat konfigurační soubor pomocí dat v konfiguraci aplikace Azure během průběžné integrace a doručování.
+title: Integrace konfigurace aplikace Azure s použitím kanálu průběžné integrace a doručování
+description: Naučte se implementovat průběžnou integraci a doručování pomocí Azure App Configuration.
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: balans
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
 ms.topic: tutorial
-ms.date: 02/24/2019
+ms.date: 01/30/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: cd40b52c20a3cafdbbeef093b574d44b9163c7b2
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c744557471a9b37bd620bb9195bdb709c24649ab
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899392"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047288"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integrace s kanálem CI/CD
 
-Tento článek popisuje různé způsoby použití dat z konfigurace aplikací Azure v systému průběžné integrace a průběžného nasazování.
+Tento článek vysvětluje, jak používat data z konfigurace aplikací Azure v systému kontinuální integrace a průběžného nasazování.
 
 ## <a name="use-app-configuration-in-your-azure-devops-pipeline"></a>Použití konfigurace aplikace v kanálu Azure DevOps
 
-Pokud máte kanál Azure DevOps, můžete načíst hodnoty klíč-hodnota z konfigurace aplikace a nastavit je jako proměnné úkolu. [Rozšíření DevOps App Configuration pro Azure](https://go.microsoft.com/fwlink/?linkid=2091063) je modul doplňku, který poskytuje tuto funkci. Stačí postupovat podle pokynů pro použití rozšíření v pořadí úkolů sestavení nebo vydání.
+Pokud máte kanál Azure DevOps, můžete načíst hodnoty klíč-hodnota z konfigurace aplikace a nastavit je jako proměnné úkolu. [Rozšíření DevOps App Configuration pro Azure](https://go.microsoft.com/fwlink/?linkid=2091063) je modul doplňku, který poskytuje tuto funkci. Postupujte podle pokynů pro použití rozšíření v pořadí úkolů sestavení nebo vydání.
 
 ## <a name="deploy-app-configuration-data-with-your-application"></a>Nasazení dat konfigurace aplikace pomocí vaší aplikace
 
-Pokud je vaše aplikace závislá na konfiguraci aplikace Azure a nemůže se k ní připojit, může se stát, že se vaše aplikace nespustí. Odolnost vaší aplikace se dá vylepšit tak, aby se na takovou událost mohla vypořádat, ale nepravděpodobné, že by k tomu mohlo dojít. Provedete to tak, že zabalíte aktuální konfigurační data do souboru, který je nasazený s aplikací a načtete místně během jejího spuštění. Tento přístup zaručuje, že vaše aplikace má alespoň výchozí hodnoty nastavení. Tyto hodnoty jsou přepsány libovolnými novějšími změnami v úložišti konfigurace aplikace, když jsou k dispozici.
+Pokud je vaše aplikace závislá na konfiguraci aplikace Azure a nemůže se k ní připojit, může se stát, že se vaše aplikace nespustí. Vylepšete odolnost vaší aplikace tím, že zabalíte konfigurační data do souboru, který je nasazený s aplikací, a načtete místně během spuštění aplikace. Tento přístup zaručuje, že vaše aplikace má při spuštění výchozí hodnoty nastavení. Tyto hodnoty jsou přepsány libovolnými novějšími změnami v úložišti konfigurace aplikace, když jsou k dispozici.
 
-Pomocí funkce [exportu](./howto-import-export-data.md#export-data) v konfiguraci aplikace Azure můžete automatizovat proces načítání aktuálních konfiguračních dat jako jednoho souboru. Pak tento soubor vložte do kanálu sestavení nebo nasazení do kanálu průběžné integrace a průběžného nasazování (CI/CD).
+Pomocí funkce [exportu](./howto-import-export-data.md#export-data) v konfiguraci aplikace Azure můžete automatizovat proces načítání aktuálních konfiguračních dat jako jednoho souboru. Tento soubor pak můžete vložit do kanálu sestavení nebo nasazení v kanálu průběžné integrace a průběžného nasazování (CI/CD).
 
 Následující příklad ukazuje, jak zahrnout konfigurační data aplikace jako krok sestavení pro webovou aplikaci zavedenou v rychlých startech. Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s konfigurací aplikace](./quickstart-aspnet-core-app.md) .
 
@@ -54,10 +48,7 @@ Aby bylo možné vytvořit cloudové sestavení pomocí Azure DevOps, ujistěte 
         <Exec WorkingDirectory="$(MSBuildProjectDirectory)" Condition="$(ConnectionString) != ''" Command="az appconfig kv export -d file --path $(OutDir)\azureappconfig.json --format json --separator : --connection-string $(ConnectionString)" />
     </Target>
     ```
-
-    Přidejte *připojovací řetězec* přidružený k úložišti konfigurace aplikace jako proměnnou prostředí.
-
-2. Otevřete *program.cs*a aktualizujte metodu `CreateWebHostBuilder` pro použití exportovaného souboru JSON voláním metody `config.AddJsonFile()`.
+1. Otevřete *program.cs*a aktualizujte metodu `CreateWebHostBuilder` pro použití exportovaného souboru JSON voláním metody `config.AddJsonFile()`.  Přidejte také obor názvů `System.Reflection`.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -75,7 +66,8 @@ Aby bylo možné vytvořit cloudové sestavení pomocí Azure DevOps, ujistěte 
 
 ### <a name="build-and-run-the-app-locally"></a>Místní sestavení a spuštění aplikace
 
-1. Nastavte proměnnou prostředí s názvem **ConnectionString**a nastavte ji na přístupový klíč na úložiště konfigurace aplikace. Použijete-li příkazový řádek systému Windows, spusťte následující příkaz a restartujte příkazový řádek, aby se změna projevila:
+1. Nastavte proměnnou prostředí s názvem **ConnectionString**a nastavte ji na přístupový klíč na úložiště konfigurace aplikace. 
+    Použijete-li příkazový řádek systému Windows, spusťte následující příkaz a restartujte příkazový řádek, aby se změna projevila:
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 

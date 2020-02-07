@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: 68771ee3d2ae2d43245bd217bedcf59b987786f1
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 5492850944b04ea4b4d30dd206e7b297b34c075c
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716733"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062842"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Výrazy transformace dat v toku mapování dat 
 
@@ -934,8 +934,8 @@ Funkce CumeDist vypočítá pozici hodnoty relativně ke všem hodnotám v oddí
 * ``cumeDist()``
 ___
 ### <code>denseRank</code>
-<code><b>denseRank(<i>&lt;value1&gt;</i> : any, ...) => integer</b></code><br/><br/>
-Vypočítá pořadí hodnoty ve skupině hodnot. Výsledkem je jedna hodnota plus počet řádků předcházejících nebo rovných aktuálnímu řádku v pořadí oddílu. Hodnoty nebudou v sekvenci vydávat žádné mezery. Zhuštěné řazení funguje i v případě, že data nejsou seřazená a vyhledávají změny v hodnotách * ``denseRank(salesQtr, salesAmt)``
+<code><b>denseRank() => integer</b></code><br/><br/>
+Vypočítá pořadí hodnoty ve skupině hodnot zadaných v klauzuli ORDER by v okně. Výsledkem je jedna hodnota plus počet řádků předcházejících nebo rovných aktuálnímu řádku v pořadí oddílu. Hodnoty nebudou v sekvenci vydávat žádné mezery. Zhuštěné řazení funguje i v případě, že data nejsou seřazená a vyhledávají změny v hodnotách * ``denseRank()``
 ___
 ### <code>lag</code>
 <code><b>lag(<i>&lt;value&gt;</i> : any, [<i>&lt;number of rows to look before&gt;</i> : number], [<i>&lt;default value&gt;</i> : any]) => any</b></code><br/><br/>
@@ -954,8 +954,8 @@ Funkce NTile rozdělí řádky pro každý oddíl okna do `n` intervaly od 1 do 
 * ``nTile(numOfBuckets)``
 ___
 ### <code>rank</code>
-<code><b>rank(<i>&lt;value1&gt;</i> : any, ...) => integer</b></code><br/><br/>
-Vypočítá pořadí hodnoty ve skupině hodnot. Výsledkem je jedna hodnota plus počet řádků předcházejících nebo rovných aktuálnímu řádku v pořadí oddílu. Hodnoty budou v posloupnosti vydávat mezery. Pořadí funguje i v případě, že data nejsou seřazena a vyhledávají změny v hodnotách * ``rank(salesQtr, salesAmt)``
+<code><b>rank() => integer</b></code><br/><br/>
+Vypočítá pořadí hodnoty ve skupině hodnot zadaných v klauzuli ORDER by v okně. Výsledkem je jedna hodnota plus počet řádků předcházejících nebo rovných aktuálnímu řádku v pořadí oddílu. Hodnoty budou v posloupnosti vydávat mezery. Pořadí funguje i v případě, že data nejsou seřazena a vyhledávají změny v hodnotách * ``rank()``
 ___
 ### <code>rowNumber</code>
 <code><b>rowNumber() => integer</b></code><br/><br/>

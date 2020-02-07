@@ -2,7 +2,7 @@
 title: Změna metody a nastavení dvou faktorů ověřování – Azure AD
 description: Přečtěte si, jak změnit metodu ověření zabezpečení a nastavení pro svůj pracovní nebo školní účet na stránce další ověření zabezpečení.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: richagi
 ms.assetid: d3372d9a-9ad1-4609-bdcf-2c4ca9679a3b
@@ -11,13 +11,13 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 08/06/2019
-ms.author: lizross
-ms.openlocfilehash: e48834800f1fe3d34c13a87cfb3d8ef00c9e6bff
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 457608af9a5ffc06a778e900363bc8138fcb4e99
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705271"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062587"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>Změna metody a nastavení dvou faktorů ověřování
 
@@ -75,7 +75,7 @@ Pokud se rozhodnete, že chcete změnit výchozí metodu ověření zabezpečen�
 
     - **Použijte ověřovací kód z aplikace.** Pomocí aplikace ověřovatele získáte ověřovací kód, který zadáte do výzvy ze svého pracovního nebo školního účtu.
 
-2. Vyberte **Uložit**.
+2. Vyberte **Save** (Uložit).
 
 ## <a name="add-or-change-your-phone-number"></a>Přidání nebo změna telefonního čísla
 
@@ -90,7 +90,7 @@ Na stránce **Další ověření zabezpečení** můžete přidat nová telefonn
 
 2. Zaškrtněte políčko vedle možnosti **telefon alternativního ověřování** a potom zadejte sekundární telefonní číslo, kde můžete přijímat textové zprávy nebo telefonní hovory, pokud nemůžete získat přístup k primárnímu zařízení.
 
-3. Vyberte **Uložit**.
+3. Vyberte **Save** (Uložit).
 
 ## <a name="add-a-new-account-to-the-microsoft-authenticator-app"></a>Přidání nového účtu do aplikace Microsoft Authenticator
 
@@ -106,7 +106,7 @@ Pokud jste v aplikaci Microsoft Authenticator vytvořili svůj pracovní nebo š
 
     Budete požádáni, abyste schválili oznámení prostřednictvím aplikace Microsoft Authenticator, abyste ověřili vaše informace.
 
-3. Vyberte **Uložit**.
+3. Vyberte **Save** (Uložit).
 
 ## <a name="delete-your-account-or-device-from-the-microsoft-authenticator-app"></a>Odstranění účtu nebo zařízení z aplikace Microsoft Authenticator
 
@@ -116,7 +116,7 @@ Pokud jste v aplikaci Microsoft Authenticator vytvořili svůj pracovní nebo š
 
 1. V části **jak chcete reagovat?** na stránce **Další ověření zabezpečení** vyberte tlačítko **nastavit aplikaci ověřovatele** .
 
-2. Vyberte **Uložit**.
+2. Vyberte **Save** (Uložit).
 
 ### <a name="to-delete-your-account-from-the-microsoft-authenticator-app"></a>Odstranění účtu z aplikace Microsoft Authenticator
 

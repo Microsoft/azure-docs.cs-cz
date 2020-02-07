@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace GoToMeeting pro automatické zřizování uživatelů pomocí Azure Active Directory | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a GoToMeeting.
+title: 'Kurz: Konfigurace GoToMeeting pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a GoToMeeting.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,83 +15,83 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e3145d0faaa3aecb90b582b3b6ef0063572ff43
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f0ac06fc3018b4230cbf32712067c48400599082
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60430761"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058259"
 ---
-# <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>Kurz: Konfigurace GoToMeeting pro automatické zřizování uživatelů
+# <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>Kurz: Konfigurace GoToMeeting pro Automatické zřizování uživatelů
 
-Cílem tohoto kurzu je zobrazit kroky, které je potřeba provést GoToMeeting a Azure AD a automaticky zřizovat a rušit zřízení uživatelských účtů ze služby Azure AD do GoToMeeting.
+Cílem tohoto kurzu je Ukázat kroky, které musíte v GoToMeeting a Azure AD použít k automatickému zřízení a zrušení zřízení uživatelských účtů z Azure AD až GoToMeeting.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu se předpokládá, že máte následující položky:
+Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
 
-*   Tenanta služby Azure Active directory.
-*   GoToMeeting jednotného přihlašování povolená předplatného.
-*   Účet uživatele s oprávněními správce týmu v GoToMeeting.
+*   Tenant Azure Active Directory.
+*   Předplatné s povoleným GoToMeetingm jednotným přihlašováním.
+*   Uživatelský účet v GoToMeeting s oprávněními správce týmu.
 
 ## <a name="assigning-users-to-gotomeeting"></a>Přiřazování uživatelů k GoToMeeting
 
-Azure Active Directory používá koncept nazvaný "přiřazení" k určení, kteří uživatelé měli obdržet přístup k vybrané aplikace. V rámci zřizování automatické uživatelských účtů je synchronizovat jenom uživatelé a skupiny, které se "přiřadily" aplikace ve službě Azure AD.
+Azure Active Directory používá koncept nazvaný "přiřazení" k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelských účtů se synchronizují jenom uživatelé a skupiny přiřazené k aplikaci v Azure AD.
 
-Před konfigurací a povolení služby zřizování, je potřeba rozhodnout, jaké uživatele a/nebo skupiny ve službě Azure AD představují, kteří potřebují přístup k vaší aplikaci GoToMeeting. Po se rozhodli, můžete přiřadit tito uživatelé do vaší aplikace GoToMeeting podle zde uvedených pokynů:
+Než nakonfigurujete a povolíte službu zřizování, musíte se rozhodnout, co uživatelé a skupiny ve službě Azure AD reprezentují uživatelé, kteří potřebují přístup k aplikaci GoToMeeting. Po rozhodnutí můžete tyto uživatele přiřadit do aplikace GoToMeeting podle pokynů uvedených tady:
 
-[Přiřadit uživatele nebo skupiny k podnikové aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Přiřazení uživatele nebo skupiny k podnikové aplikaci](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-gotomeeting"></a>Důležité tipy pro přiřazování uživatelů k GoToMeeting
+### <a name="important-tips-for-assigning-users-to-gotomeeting"></a>Důležité tipy pro přiřazení uživatelů k GoToMeeting
 
-*   Dále je doporučeno jednoho uživatele Azure AD je přiřazená GoToMeeting pro testování konfigurace zřizování. Další uživatele a/nebo skupiny může být přiřazen později.
+*   Doporučuje se, abyste k testování konfigurace zřizování přiřadili jednoho uživatele Azure AD GoToMeeting. Další uživatele a skupiny můžete přiřadit později.
 
-*   Při přiřazení uživatele k GoToMeeting, musíte vybrat platné uživatelské role. Tuto roli "Výchozí přístupu" nefunguje pro zřizování.
+*   Při přiřazování uživatele k GoToMeeting je nutné vybrat platnou roli uživatele. Role výchozí přístup nefunguje pro zřizování.
 
-## <a name="enable-automated-user-provisioning"></a>Povolit automatické zřizování uživatelů
+## <a name="enable-automated-user-provisioning"></a>Povolit automatizované zřizování uživatelů
 
-Tato část vás provede připojení k rozhraní API zřizování GoToMeeting pro uživatelský účet služby Azure AD a konfigurace služby zřizování, pokud chcete vytvořit, aktualizovat a zakázat přiřazené uživatelské účty v GoToMeeting podle přiřazení uživatelů a skupin ve službě Azure AD.
+V této části se seznámíte s připojením k rozhraní API pro zřizování uživatelských účtů ve službě Azure AD a konfigurací služby zřizování k vytváření, aktualizaci a zakázání přiřazených uživatelských účtů v GoToMeeting na základě přiřazení uživatelů a skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete také pro GoToMeeting povoleno založené na SAML jednotného přihlašování, postupujte podle pokynů uvedených v [webu Azure portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce návrzích mezi sebou.
+> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro GoToMeeting, a to podle pokynů uvedených v tématu [Azure Portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování, i když se tyto dvě funkce navzájem doplňují.
 
-### <a name="to-configure-automatic-user-account-provisioning"></a>Postup konfigurace zřizování automatické uživatelských účtů:
+### <a name="to-configure-automatic-user-account-provisioning"></a>Konfigurace automatického zřizování uživatelských účtů:
 
-1. V [webu Azure portal](https://portal.azure.com), přejděte **Azure Active Directory > podnikové aplikace > všechny aplikace** části.
+1. V [Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory > Enterprise Apps > všechny aplikace** .
 
-1. Pokud jste už nakonfigurovali GoToMeeting pro jednotné přihlašování, vyhledejte svoji instanci služby GoToMeeting pomocí vyhledávacího pole. V opačném případě vyberte **přidat** a vyhledejte **GoToMeeting** v galerii aplikací. Ve výsledcích hledání vyberte GoToMeeting a přidat do seznamu aplikací.
+1. Pokud jste už nakonfigurovali GoToMeeting pro jednotné přihlašování, vyhledejte vaši instanci GoToMeeting pomocí vyhledávacího pole. V opačném případě vyberte **Přidat** a vyhledejte **GoToMeeting** v galerii aplikací. Ve výsledcích hledání vyberte GoToMeeting a přidejte je do seznamu aplikací.
 
-1. Vyberte instanci GoToMeeting a potom **zřizování** kartu.
+1. Vyberte svou instanci GoToMeeting a pak vyberte kartu **zřizování** .
 
-1. Nastavte **zřizování** režimu **automatické**. 
+1. Nastavte režim **zřizování** na **automaticky**. 
 
-    ![Zřizování](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
+    ![zřizování](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
 
-1. V části přihlašovací údaje správce proveďte následující kroky:
+1. V části pověření správce proveďte následující kroky:
    
-    a. V **uživatelské jméno správce GoToMeeting** textového pole zadejte uživatelské jméno správce.
+    a. Do textového pole **uživatelské jméno správce GoToMeeting** zadejte uživatelské jméno správce.
 
-    b. V **heslo správce GoToMeeting** textového pole hesla správce.
+    b. V textovém poli **heslo správce GoToMeeting** je heslo správce.
 
-1. Na webu Azure Portal, klikněte na tlačítko **Test připojení** aby Azure AD můžete připojit k aplikaci GoToMeeting. Pokud se nepovede, zajistěte váš GoToMeeting účet má oprávnění správce týmu a **"Přihlašovací údaje správce"** krok znovu.
+1. V Azure Portal klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k vaší aplikaci GoToMeeting. Pokud se připojení nepovede, ujistěte se, že má váš účet GoToMeeting oprávnění správce týmu, a zkuste znovu spustit krok **"přihlašovací údaje správce"** .
 
-1. Zadejte e-mailovou adresu osoby nebo skupiny, která má obdržet oznámení zřizování chyby v **e-mailové oznámení** pole a zaškrtněte políčko.
+1. Zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování v poli **e-mail s oznámením** , a zaškrtněte políčko.
 
-1. Klikněte na tlačítko **uložit.**
+1. Klikněte na **Uložit.**
 
-1. V oddílu mapování, vyberte **synchronizace Azure Active Directory uživatelům GoToMeeting.**
+1. V části mapování vyberte **synchronizovat Azure Active Directory uživatelé GoToMeeting.**
 
-1. V **mapování atributů** , projděte si atributy uživatele, které se synchronizují ze služby Azure AD do GoToMeeting. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelské účty v GoToMeeting pro operace update. Vyberte tlačítko Uložit potvrďte změny.
+1. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do GoToMeeting. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v GoToMeeting pro operace aktualizace. Vyberte tlačítko Uložit potvrďte změny.
 
-1. Chcete-li povolit služba pro GoToMeeting zřizování Azure AD, změňte **stavu zřizování** k **na** v sekci nastavení
+1. Pokud chcete povolit službu Azure AD Provisioning pro GoToMeeting, změňte **stav zřizování** na **zapnuto** v části nastavení.
 
-1. Klikněte na tlačítko **uložit.**
+1. Klikněte na **Uložit.**
 
-Spustí počáteční synchronizaci všech uživatelů a skupiny přiřazené k GoToMeeting v části Uživatelé a skupiny. Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut za předpokladu, že služba běží. Můžete použít **podrobnosti synchronizace** části ke sledování průběhu a odkazech na zřizování protokoly aktivit, které popisují všechny akce provedené v aplikaci GoToMeeting zřizovací služba.
+Spustí počáteční synchronizaci všech uživatelů nebo skupin přiřazených GoToMeeting v části Uživatelé a skupiny. Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut za předpokladu, že služba běží. Pomocí části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na zřizování protokolů aktivit, které popisují všechny akce prováděné službou zřizování ve vaší aplikaci GoToMeeting.
 
-Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: obboms
-ms.openlocfilehash: 3ef584c48ab44fd3616b5c7897d589bddbe45dc0
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 9b9c4b326596887774d9dfc0dd792052ec672be2
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549253"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063811"
 ---
 # <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>Ruční vytvoření a použití svazku serveru NFS (Network File System) se systémem Linux pomocí služby Azure Kubernetes Service (AKS)
 Sdílení dat mezi kontejnery je často nezbytnou součástí služeb a aplikací založených na kontejnerech. Obvykle máte různá lusky, které potřebují přístup ke stejným informacím na vnějším trvalém svazku.    
@@ -20,7 +20,7 @@ I když jsou soubory Azure možnosti, vytvoření serveru NFS na virtuálním po
 
 Tento článek vám ukáže, jak vytvořit server NFS na virtuálním počítači s Ubuntu. A také udělte vašim kontejnerům AKS přístup k tomuto sdílenému systému souborů.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
 Váš cluster AKS bude muset být živý ve stejných nebo partnerských virtuálních sítích jako server NFS. Cluster se musí vytvořit v existující virtuální síti, což může být stejná virtuální síť jako virtuální počítač.
@@ -74,7 +74,7 @@ echo "/export        localhost(rw,async,insecure,fsid=0,crossmnt,no_subtree_chec
 
 nohup service nfs-kernel-server restart
 ```
-Server se restartuje (kvůli skriptu) a server pro systém souborů NFS můžete připojit k AKS
+Server se restartuje (kvůli skriptu) a server pro systém souborů NFS můžete připojit k AKS.
 
 >[!IMPORTANT]  
 >Nezapomeňte nahradit **AKS_SUBNET** správným z vašeho clusteru nebo jinak "*" otevřete Server NFS na všechny porty a připojení.
@@ -93,7 +93,8 @@ chmod +x ~/nfs-server-setup.sh
 ```
 
 ## <a name="connecting-aks-cluster-to-nfs-server"></a>Připojení clusteru AKS k serveru NFS
-Server systému souborů NFS můžeme připojit k našemu clusteru zřízením trvalého svazku a deklarace identity trvalého svazku, který určuje, jak se má přistoupit ke svazku.  
+Server systému souborů NFS můžeme připojit k našemu clusteru zřízením trvalého svazku a deklarace identity trvalého svazku, který určuje, jak se má přistoupit ke svazku.
+
 Připojení ke dvěma službám ve stejných nebo partnerských virtuálních sítích je nezbytné. Pokyny pro nastavení clusteru ve stejné virtuální síti najdete tady: [Vytvoření clusteru AKS v existující virtuální][aks-virtual-network] síti.
 
 Až budou ve stejné virtuální síti (nebo partnerském vztahu), musíte zřídit trvalý svazek a trvalou deklaraci identity na trvalém svazku v clusteru AKS. Kontejnery pak mohou připojit jednotku NFS do svého místního adresáře.

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/29/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03de10f9ea3bc3bf13a0fffaf22805412456a6f9
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8e185f4065fee0399104feadc27f038dd9c4a612
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76992349"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046697"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eab-navigate"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s navigací EAB
 
@@ -45,7 +45,8 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * EAB Navigate podporuje jednotné přihlašování iniciované v **SP**
 
-* Po nakonfigurování EAB Navigate můžete vynutili řízení relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+> [!NOTE]
+> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
 
 ## <a name="adding-eab-navigate-from-the-gallery"></a>Přidání navigace EAB z Galerie
 
@@ -57,7 +58,6 @@ Pokud chcete nakonfigurovat integraci EAB přejděte do služby Azure AD, musít
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **EAB navigovat** .
 1. Vyberte **EAB přejít** z panelu výsledků a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
-
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-eab-navigate"></a>Konfigurace a testování jednotného přihlašování Azure AD pro EAB navigaci
 
@@ -82,44 +82,33 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. Pokud máte **soubor metadat poskytovatele služeb**v **základní části Konfigurace SAML** , proveďte následující kroky:
+1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
+    
+    Do textového pole **identifikátor (ID entity)** zadejte přesně tuto hodnotu: `https://bouncer.eab.com`
+    
+    Do textového pole **Adresa URL odpovědi (adresa URL služby vyhodnocení příjemce)** zadejte následující hodnoty jako samostatné řádky: `https://bouncer.eab.com/sso/saml2/acs`
+    `https://bouncer.eab.com/sso/saml2/acs/`
+    
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.navigate.eab.com/`
 
-    a. Klikněte na tlačítko **nahrát soubor metadat**.
+    > [!NOTE]
+    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, kontaktujte [EAB a přejděte na tým podpory klienta](mailto:EABTechSupport@eab.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-    ![Nahrát soubor metadat](common/upload-metadata.png)
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
-    b. Klikněte na **složky logo** vyberte soubor metadat a klikněte na **nahrát**.
-
-    ![zvolit soubor metadat](common/browse-upload-metadata.png)
-
-    c. Po úspěšném nahrání souboru metadat se hodnota **identifikátoru** automaticky naplní v základní části Konfigurace SAML.
-
-    ![EAB navigovat informace o jednotném přihlašování v doméně a adresách URL](common/sp-identifier.png)
-
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.navigate.eab.com`
-
-    > [!Note]
-    > Pokud hodnota **identifikátoru** nezíská auto polulated, vyplňte prosím hodnotu ručně podle vašeho požadavku. Hodnota přihlašovací adresy URL není reálné číslo. Aktualizujte tuto hodnotu pomocí skutečné přihlašovací adresy URL. Pokud chcete získat tuto hodnotu, obraťte se na [tým podpory EAB pro navigaci klientů](mailto:jmahoney@eab.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
-
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **certifikát (RAW)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
-
-    ![Odkaz ke stažení certifikátu](common/certificateraw.png)
-
-1. V části **nastavení navigace EAB** zkopírujte příslušné adresy URL na základě vašeho požadavku.
-
-    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Odkaz ke stažení certifikátu](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
+1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. například `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -141,13 +130,13 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-eab-navigate-sso"></a>Konfigurace EAB pro navigaci přes jednotné přihlašování
 
-Pokud chcete nakonfigurovat jednotné přihlašování na **EAB** , je potřeba odeslat stažený **certifikát (RAW)** a příslušné zkopírované adresy URL z Azure Portal do [EAB navigovat týmu podpory](mailto:jmahoney@eab.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Pokud chcete nakonfigurovat jednotné přihlašování na **EAB** , musíte odeslat **adresu URL federačních metadat aplikace** , aby [EAB navigoval tým podpory](mailto:EABTechSupport@eab.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 ### <a name="create-eab-navigate-test-user"></a>Vytvořit EAB navigovat testovacího uživatele
 
-V této části vytvoříte na EAB navigaci uživatele s názvem B. Simon. Pokud chcete přidat uživatele na platformě navigace v EAB, pracujte s [EAB navigací týmu podpory](mailto:jmahoney@eab.com) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte na EAB navigaci uživatele s názvem B. Simon. Pokud chcete přidat uživatele na platformě navigace v EAB, pracujte s [EAB navigací týmu podpory](mailto:EABTechSupport@eab.com) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-## <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>Test SSO
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

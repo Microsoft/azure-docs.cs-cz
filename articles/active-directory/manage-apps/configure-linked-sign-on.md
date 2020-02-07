@@ -12,18 +12,18 @@ ms.date: 05/08/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c4547bddeea8b67bd3377124b1c299662fea3e6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: dfe4aeb17f482cc9d4126efc6d65d3f7d173536b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274172"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063539"
 ---
 # <a name="configure-linked-sign-on"></a>Konfigurace propojeného přihlašování
 
 Když přidáte galerii nebo webovou aplikaci mimo galerii, je k dispozici jedna z možností jednotného [přihlašování,](what-is-single-sign-on.md)která je k dispozici. Tuto možnost vyberte, pokud chcete přidat odkaz na aplikaci na přístupovém panelu Azure AD nebo na portálu Office 365 vaší organizace. Pomocí této metody můžete přidat odkazy na vlastní webové aplikace, které aktuálně používají Active Directory Federation Services (AD FS) (nebo jinou federační službu) místo Azure AD k ověřování. Nebo můžete přidat přímé odkazy na konkrétní SharePointové stránky nebo jiné webové stránky, které chcete zobrazit na přístupových panelech uživatele.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Pokud se aplikace nepřidala do tenanta Azure AD, přečtěte si téma [Přidání aplikace Galerie](add-gallery-app.md) nebo [Přidání aplikace mimo galerii](add-non-gallery-app.md).
 
@@ -45,9 +45,9 @@ Pokud se aplikace nepřidala do tenanta Azure AD, přečtěte si téma [Přidán
  
 1. K aplikaci můžete přiřadit uživatele a skupiny, což způsobí, že se aplikace zobrazí ve [Spouštěči aplikací Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) nebo na [přístupovém panelu Azure AD](end-user-experiences.md) pro tyto uživatele.
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Přiřazení uživatelů nebo skupin k aplikaci](methods-for-assigning-users-and-groups.md)
-- [Konfigurace automatického zřizování uživatelských účtů](configure-automatic-user-provisioning-portal.md)
+- [Konfigurace automatického zřizování uživatelských účtů](../app-provisioning/configure-automatic-user-provisioning-portal.md)

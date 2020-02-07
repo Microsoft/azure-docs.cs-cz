@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/18/2019
+ms.date: 02/05/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3d9316f42c8d0ac5b44cda2e484ca4c92110813d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2bda00924015bf5abc616b7c346eacfeda53c2ed
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479147"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77045941"
 ---
 # <a name="custom-email-verification-in-azure-active-directory-b2c"></a>Ověření vlastního e-mailu v Azure Active Directory B2C
 
@@ -36,16 +36,16 @@ Ujistěte se, že jste dokončili oddíl, ve kterém [vytvoříte klíč rozhran
 
 V dalším kroku uložte klíč rozhraní API SendGrid do klíče zásad Azure AD B2C, aby se zásady odkazovaly na.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář Azure AD B2C.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
 1. Vyberte **klíče zásad** a pak vyberte **Přidat**.
 1. Pro **Možnosti**vyberte možnost `Manual`.
-1. Zadejte **název** klíče zásad. Například, `SendGridSecret`. `B2C_1A_` předpony se automaticky přidají do názvu vašeho klíče.
+1. Zadejte **název** klíče zásad. například `SendGridSecret`. `B2C_1A_` předpony se automaticky přidají do názvu vašeho klíče.
 1. Do **tajného klíče**zadejte tajný klíč klienta, který jste předtím nahráli.
 1. Pro **použití klíče**vyberte `Signature`.
-1. Vyberte **Vytvořit**.
+1. Vyberte **Create** (Vytvořit).
 
 ## <a name="create-sendgrid-template"></a>Vytvořit šablonu SendGrid
 
@@ -154,7 +154,7 @@ Když jste vytvořili účet SendGrid a klíč rozhraní SendGrid API uložený 
 1. Rozbalte **Nastavení** vlevo a pro **Předmět e-mailu**zadejte `{{subject}}`.
 1. Vyberte **Uložit šablonu**.
 1. Vraťte se na stránku **transakční šablony** výběrem šipky zpět.
-1. Poznamenejte si **ID** šablony, kterou jste vytvořili pro použití v pozdějším kroku. Například, `d-989077fbba9746e89f3f6411f596fb96`. Toto ID můžete zadat při [přidávání transformace deklarací identity](#add-the-claims-transformation).
+1. Poznamenejte si **ID** šablony, kterou jste vytvořili pro použití v pozdějším kroku. například `d-989077fbba9746e89f3f6411f596fb96`. Toto ID můžete zadat při [přidávání transformace deklarací identity](#add-the-claims-transformation).
 
 ## <a name="add-azure-ad-b2c-claim-types"></a>Přidat Azure AD B2C typy deklarací identity
 
@@ -389,6 +389,36 @@ Další informace najdete v tématu [technický profil s vlastním kontrolním](
     </TechnicalProfile>
   </TechnicalProfiles>
 </ClaimsProvider>
+```
+
+## <a name="optional-localize-your-email"></a>Volitelné Lokalizace e-mailu
+
+Chcete-li lokalizovat e-mail, je nutné odeslat lokalizované řetězce do SendGrid nebo poskytovatele e-mailu. Například pro lokalizaci předmětu e-mailu, textu, zprávy kódu nebo podpisu e-mailu. K tomu můžete použít transformaci deklarací [GetLocalizedStringsTransformation](string-transformations.md) ke kopírování lokalizovaných řetězců do typů deklarací. V `GenerateSendGridRequestBody` transformaci deklarací identity, která generuje datovou část JSON, používá vstupní deklarace identity, které obsahují lokalizované řetězce.
+
+1. V zásadách definujte následující deklarace řetězců: předmět, zpráva, codeIntro a podpis.
+1. Definujte transformaci deklarací [GetLocalizedStringsTransformation](string-transformations.md) k nahrazení lokalizovaných hodnot řetězce v deklaracích z kroku 1.
+1. Změňte transformaci `GenerateSendGridRequestBody` deklarací identity na použití vstupních deklarací s následujícím fragmentem kódu XML.
+1. Aktualizujte šablonu SendGrind tak, aby používala dynamické parametry místo všech řetězců, které budou lokalizovány Azure AD B2C.
+
+```XML
+<ClaimsTransformation Id="GenerateSendGridRequestBody" TransformationMethod="GenerateJson">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="personalizations.0.to.0.email" />
+    <InputClaim ClaimTypeReferenceId="subject" TransformationClaimType="personalizations.0.dynamic_template_data.subject" />
+    <InputClaim ClaimTypeReferenceId="otp" TransformationClaimType="personalizations.0.dynamic_template_data.otp" />
+    <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="personalizations.0.dynamic_template_data.email" />
+    <InputClaim ClaimTypeReferenceId="message" TransformationClaimType="personalizations.0.dynamic_template_data.message" />
+    <InputClaim ClaimTypeReferenceId="codeIntro" TransformationClaimType="personalizations.0.dynamic_template_data.codeIntro" />
+    <InputClaim ClaimTypeReferenceId="signature" TransformationClaimType="personalizations.0.dynamic_template_data.signature" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="template_id" DataType="string" Value="d-1234567890" />
+    <InputParameter Id="from.email" DataType="string" Value="my_email@mydomain.com" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="sendGridReqBody" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
 ```
 
 ## <a name="next-steps"></a>Další kroky

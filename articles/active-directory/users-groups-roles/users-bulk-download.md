@@ -4,21 +4,21 @@ description: Hromadné stažení záznamů uživatelů v centru pro správu Azur
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: mtillman
-ms.date: 07/15/2019
+manager: daveba
+ms.date: 02/06/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
-ms.reviewer: jeffsta
+ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d106e803fdef4f054b7e4717ba59a43359d1d68a
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 4716ff9547f64dc6551b4d4adb0a8578da9fa83e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720303"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063828"
 ---
 # <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>Stažení seznamu uživatelů (Preview) na portálu Azure Active Directory
 
@@ -39,18 +39,17 @@ Pokud si chcete stáhnout seznam uživatelů z centra pro správu Azure AD, mus�
 
    Soubor ke stažení bude obsahovat filtrovaný seznam uživatelů.
 
-   Budou zahrnuty následující atributy uživatele: 
+   Jsou zahrnuty následující atributy uživatele:
 
    - userPrincipalName (Hlavní název uživatele)
    - displayName
-   - příjmení
-   - modul
+   - Příjmení
+   - e-mailu
    - givenName
-   - Objektu
+   - ID objektu
    - userType
-   - jobTitle
-   - Ministerstvo
-   - programu
+   - pracovní funkce
+   - Oddělení
    - accountEnabled
    - usageLocation
    - streetAddress
@@ -58,9 +57,9 @@ Pokud si chcete stáhnout seznam uživatelů z centra pro správu Azure AD, mus�
    - krajin
    - physicalDeliveryOfficeName
    - city
-   - Ovládacím
+   - PSČ
    - telephoneNumber
-   - telefon
+   - Mobilní zařízení
    - authenticationPhoneNumber
    - authenticationAlternativePhoneNumber
    - authenticationEmail

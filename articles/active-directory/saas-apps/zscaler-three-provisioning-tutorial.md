@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Nakonfigurujte Zscaler tři pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
+title: 'Kurz: Konfigurace Zscaler tří pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
 description: V tomto kurzu se dozvíte, jak nakonfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů, které Zscaler tři.
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 43ae028e57578634c34c69357a264fdb180b8a1f
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 177bc34162c2b5e4dadc54e1166c5f6061068bae
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515359"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064100"
 ---
-# <a name="tutorial-configure-zscaler-three-for-automatic-user-provisioning"></a>Kurz: Nakonfigurovat Zscaler tři pro Automatické zřizování uživatelů
+# <a name="tutorial-configure-zscaler-three-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zscaler tří pro Automatické zřizování uživatelů
 
 V tomto kurzu se dozvíte, jak nakonfigurovat Azure Active Directory (Azure AD) k automatickému zřízení a zrušení zřízení uživatelů nebo skupin, které Zscaler tři.
 
@@ -79,7 +79,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 > [!TIP]
 > Pro Zscaler tři možná budete chtít povolit jednotné přihlašování založené na SAML. Pokud to uděláte, postupujte podle pokynů v tématu [Zscaler tři jednotné přihlašování](zscaler-three-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, ale tyto dvě funkce spolu doplňují.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a **Vyberte podnikové aplikace** > **všechny aplikace** > **Zscaler tři**:
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **podnikové aplikace** > **všechny aplikace** > **Zscaler tři**:
 
     ![Podnikové aplikace](common/enterprise-applications.png)
 
@@ -97,7 +97,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 5. V části **přihlašovací údaje správce** zadejte **adresu URL tenanta** a **tajný token** vašeho Zscaler tři účtu, jak je popsáno v dalším kroku.
 
-6. Pokud chcete získat **adresu URL tenanta** a **tajný token**, klikněte **na** > tlačítko**nastavení ověřování** na portálu Zscaler tři a v části **typ ověřování**vyberte **SAML** :
+6. Pokud chcete získat **adresu URL tenanta** a **tajný token**, klikněte na **Správa** > **nastavení ověřování** na portálu Zscaler tři a v části **typ ověřování**vyberte **SAML** :
 
     ![Zscaler tři nastavení ověřování](./media/zscaler-three-provisioning-tutorial/secret-token-1.png)
 
@@ -109,13 +109,13 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 7. Až zadáte hodnoty do polí **Adresa URL tenanta** a **tajný token** , vyberte **Test připojení** a ujistěte se, že se Azure AD může připojit k Zscaler třem. Pokud se připojení nepovede, zajistěte, aby měl účet Zscaler tři oprávnění správce, a zkuste to znovu.
 
-    ![Otestovat připojení](./media/zscaler-three-provisioning-tutorial/test-connection.png)
+    ![Otestování připojení](./media/zscaler-three-provisioning-tutorial/test-connection.png)
 
-8. V poli **e-mail** s oznámením zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování. Vyberte **Odeslat e-mailové oznámení, když dojde k selhání**:
+8. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování. Vyberte **Odeslat e-mailové oznámení, když dojde k selhání**:
 
     ![Nastavení e-mailu s oznámením](./media/zscaler-three-provisioning-tutorial/notification.png)
 
-9. Vyberte **Uložit**.
+9. Vyberte **Save** (Uložit).
 
 10. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé ZscalerThree**:
 
@@ -151,12 +151,12 @@ Tato operace spustí počáteční synchronizaci všech uživatelů a skupin def
 
 Informace o tom, jak číst protokoly zřizování služby Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../active-directory-saas-provisioning-reporting.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../active-directory-saas-provisioning-reporting.md)
 

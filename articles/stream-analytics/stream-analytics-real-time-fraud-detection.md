@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 168f11e82305a0e08923289e71ae6ea0d36c1734
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0273a0a729d39de27b9e417c23624992d1d55b42
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458791"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064380"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Začínáme používat Azure Stream Analytics: zjišťování podvodů v reálném čase
 
@@ -55,26 +55,33 @@ Pokud chcete analyzovat datový proud, ingestujte *ho do* Azure. Typický způso
 ### <a name="create-a-namespace-and-event-hub"></a>Vytvořit obor názvů a Centrum událostí
 V tomto postupu nejprve vytvoříte obor názvů centra událostí a pak přidáte centrum událostí do tohoto oboru názvů. Obory názvů centra událostí se používají k logickému seskupení souvisejících instancí sběrnice událostí. 
 
-1. Přihlaste se k Azure Portal a klikněte na **vytvořit prostředek** > **Internet věcí** > **centrum událostí**. 
+1. Přihlaste se k Azure Portal a v levém horním rohu obrazovky klikněte na **vytvořit prostředek** .
 
-2. V podokně **vytvořit obor názvů** zadejte název oboru názvů, například `<yourname>-eh-ns-demo`. Můžete použít libovolný název oboru názvů, ale název musí být platný pro adresu URL a musí být jedinečný v rámci Azure. 
+2. V nabídce vlevo vyberte **všechny služby** a v kategorii **Analýza** vyberte **hvězdičku (`*`)** vedle **Event Hubs** . Potvrďte, že je do **oblíbených položek** v levé navigační nabídce přidáno **Event Hubs** . 
+
+   ![Hledat Event Hubs](./media/stream-analytics-real-time-fraud-detection/select-event-hubs-menu.png)
+
+3. V levé navigační nabídce vyberte **Event Hubs** v části **Oblíbené** a na panelu nástrojů vyberte **Přidat** .
+
+   ![Tlačítko Přidat](./media/stream-analytics-real-time-fraud-detection/event-hubs-add-toolbar.png)
+
+4. V podokně **vytvořit obor názvů** zadejte název oboru názvů, například `<yourname>-eh-ns-demo`. Můžete použít libovolný název oboru názvů, ale název musí být platný pro adresu URL a musí být jedinečný v rámci Azure. 
     
-3. Vyberte předplatné a vytvořte nebo zvolte skupinu prostředků a pak klikněte na **vytvořit**.
+5. Vyberte předplatné a vytvořte nebo zvolte skupinu prostředků a pak klikněte na **vytvořit**.
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-namespace-new-portal.png" alt="Create event hub namespace in Azure portal" width="300px"/>
 
-4. Po dokončení nasazení oboru názvů vyhledejte v seznamu prostředků Azure obor názvů centra událostí. 
+6. Po dokončení nasazení oboru názvů vyhledejte v seznamu prostředků Azure obor názvů centra událostí. 
 
-5. Klikněte na nový obor názvů a v podokně obor názvů klikněte na **centrum událostí**.
+7. Klikněte na nový obor názvů a v podokně obor názvů klikněte na **centrum událostí**.
 
    ![Tlačítko Přidat centrum událostí pro vytvoření nového centra událostí](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
  
-6. Pojmenujte nové `asa-eh-frauddetection-demo`centra událostí. Můžete použít jiný název. Pokud to uděláte, poznamenejte si ho, protože ho budete potřebovat později. Pro centrum událostí teď nemusíte nastavovat žádné další možnosti.
+8. Pojmenujte nové `asa-eh-frauddetection-demo`centra událostí. Můžete použít jiný název. Pokud to uděláte, poznamenejte si ho, protože ho budete potřebovat později. Pro centrum událostí teď nemusíte nastavovat žádné další možnosti.
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
- 
-7. Klikněte na **Vytvořit**.
+9. Klikněte na možnost **Vytvořit**.
 
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>Udělení přístupu k centru událostí a získání připojovacího řetězce
 
@@ -91,7 +98,7 @@ Předtím, než může proces odesílat data do centra událostí, musí mít ce
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
  
-4.  Klikněte na **Vytvořit**.
+4.  Klikněte na možnost **Vytvořit**.
 
 5.  Po nasazení zásady klikněte na ni v seznamu zásad sdíleného přístupu.
 
@@ -171,7 +178,7 @@ Teď, když máte proud událostí volání, můžete nastavit Stream Analytics 
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png" alt="Create Stream Analytics job in portal" width="300px"/>
 
-3. Klikněte na **Vytvořit**.
+3. Klikněte na možnost **Vytvořit**.
 
     Úloha se vytvoří a na portálu se zobrazí podrobnosti o úloze. Nic se ještě nepoužívá, ale je potřeba nejdřív nakonfigurovat úlohu, aby ji bylo možné spustit.
 
@@ -196,7 +203,7 @@ Teď, když máte proud událostí volání, můžete nastavit Stream Analytics 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
 
-4. Klikněte na **Vytvořit**.
+4. Klikněte na možnost **Vytvořit**.
 
 ## <a name="create-queries-to-transform-real-time-data"></a>Vytváření dotazů pro transformaci dat v reálném čase
 
@@ -364,7 +371,7 @@ Pokud máte existující účet Blob Storage, můžete ho použít. V tomto kurz
     <br/>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png" alt="Create blob output for Stream Analytics job" width="300px"/>
     
-5. Klikněte na možnost **Uložit**. 
+5. Klikněte na **Uložit**. 
 
 
 ## <a name="start-the-streaming-analytics-job"></a>Spuštění úlohy Stream Analytics
@@ -405,7 +412,7 @@ Pokud jste ale hotovi a nepotřebujete prostředky, které jste vytvořili, mů�
 
 ## <a name="get-support"></a>Získat podporu
 
-Potřebujete další pomoc, zkuste [fóru Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Pokud potřebujete další pomoc, zkuste [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -415,7 +422,7 @@ V tomto kurzu můžete pokračovat následujícím článkem:
 
 Další informace o Stream Analytics obecně najdete v těchto článcích:
 
-* [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
+* [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
 * [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)

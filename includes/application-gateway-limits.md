@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 6/5/2019
 ms.author: victorh
-ms.openlocfilehash: 0ba21fe3789fba03cd4814d19fb103c3a2559c13
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 6ab6c4c2051ccd2fbb22c383b9ca0af53ceb13d3
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75662932"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77054946"
 ---
 | Prostředek | Výchozí/maximální limit | Poznámka |
 | --- | --- | --- |
@@ -21,15 +21,15 @@ ms.locfileid: "75662932"
 | Naslouchací procesy HTTP |100<sup>1</sup> | |
 | Pravidla vyrovnávání zatížení HTTP |100<sup>1</sup> | |
 | Nastavení HTTP back-endu |100<sup>1</sup> | |
-| Instance na jednu bránu |32 | |
-| Certifikáty SSL |100<sup>1</sup> |1 na naslouchací proces HTTP |
+| Instance na jednu bránu |V1 SKU-32<br>V2 SKU – 125 | |
+| Certifikáty SSL |100<sup>1</sup> |1 za naslouchací proces HTTP |
 | Maximální velikost certifikátu SSL |SKU V1 – 10 KB<br>V2 SKU – 16 KB| |
 | Certifikáty pro ověřování |100 | |
 | Důvěryhodné kořenové certifikáty |100 | |
 | Minimální časový limit požadavku |1 sekunda | |
 | Maximální časový limit požadavku |24 hodin | |
-| Počet webů |100<sup>1</sup> |1 na naslouchací proces HTTP |
-| Mapování adres URL na naslouchací proces |1\. místo | |
+| Počet webů |100<sup>1</sup> |1 za naslouchací proces HTTP |
+| Mapování adres URL na naslouchací proces |1 | |
 | Maximální počet pravidel založených na cestách na mapování adresy URL|100||
 | Konfigurace přesměrování |100<sup>1</sup>| |
 | Souběžná připojení WebSocket |Střední brány 20 tisíc<br> Velké brány 50 tis| |
@@ -37,7 +37,7 @@ ms.locfileid: "75662932"
 | Maximální velikost hlavičky pro HTTP/2 |4KB| |
 | Maximální velikost nahrávání souborů, Standard |2 GB | |
 | Maximální velikost nahrávání souborů WAF |V1 střední WAF brány, 100 MB<br>Velké WAF brány V1, 500 MB<br>V2 WAF, 750 MB| |
-| Omezení velikosti těla WAF, bez souborů|128 kB||
+| Omezení velikosti těla WAF, bez souborů|128 KB||
 | Maximální počet vlastních pravidel WAF|100||
 | Maximální počet vyloučení WAF|100||
 

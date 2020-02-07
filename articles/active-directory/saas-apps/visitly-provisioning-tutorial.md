@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 942f0aa685ff7e2278aae159f7e97917a105f5fa
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 73cc1a58689db7902843f222aa4874a5e188be44
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71840152"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063147"
 ---
 # <a name="tutorial-configure-visitly-for-automatic-user-provisioning"></a>Kurz: konfigurace na návštěvu pro Automatické zřizování uživatelů
 
 Cílem tohoto kurzu je předvést kroky, které provedete v rámci návštěvy a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD pro Automatické zřizování a rušení zřizování uživatelů nebo skupin.
 
 > [!NOTE]
-> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro aplikace typu software jako služba (SaaS) s Azure Active Directory](../manage-apps/user-provisioning.md).
+> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro aplikace typu software jako služba (SaaS) s Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
 > Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
@@ -81,11 +81,11 @@ Pokud chcete přidat návštěvu z Galerie aplikací Azure AD, postupujte podle 
 
 2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
-    ![Okno podnikové aplikace](common/enterprise-applications.png)
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
 3. Chcete-li přidat novou aplikaci, vyberte tlačítko **Nová aplikace** v horní části podokna.
 
-    ![Tlačítko Nová aplikace](common/add-new-app.png)
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
 4. Do vyhledávacího pole zadejte příkaz **navštívit**, v panelu výsledků vyberte možnost **navštívit** a přidejte aplikaci kliknutím na tlačítko **Přidat** .
 
@@ -100,7 +100,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="configure-automatic-user-provisioning-for-visitly-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro návštěvu ve službě Azure AD
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace** > **všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace** > **všech aplikacích**.
 
     ![Všechny aplikace](common/enterprise-applications.png)
 
@@ -116,7 +116,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Režim zřizování nastavený na automatické](common/provisioning-automatic.png)
 
-5. V části přihlašovací údaje správce zadejte hodnoty `https://api.visitly.io/v1/usersync/SCIM` a **klíč rozhraní API** načtené dříve v **adrese URL tenanta** a **tajném tokenu**v uvedeném pořadí. Vyberte **Test připojení** , aby se mohla služba Azure AD připojit k návštěvě. Pokud se připojení nepovede, ujistěte se, že má váš návštěvu oprávnění správce, a zkuste to znovu.
+5. V části přihlašovací údaje správce zadejte `https://api.visitly.io/v1/usersync/SCIM` a hodnoty **klíčů rozhraní API** načtené dříve v **adrese URL tenanta** a **tajném tokenu**. Vyberte **Test připojení** , aby se mohla služba Azure AD připojit k návštěvě. Pokud se připojení nepovede, ujistěte se, že má váš návštěvu oprávnění správce, a zkuste to znovu.
 
     ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -124,7 +124,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![E-mail s oznámením](common/provisioning-notification-email.png)
 
-7. Vyberte **Uložit**.
+7. Vyberte **Save** (Uložit).
 
 8. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory uživatelů, abyste mohli navštěvovat**.
 
@@ -134,7 +134,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Navštívit atributy uživatele](media/visitly-provisioning-tutorial/userattribute.png)
 
-10. Pokud chcete nakonfigurovat filtry oborů, postupujte podle pokynů v [kurzu filtru oborů](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Pokud chcete nakonfigurovat filtry oborů, postupujte podle pokynů v [kurzu filtru oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 11. Pokud chcete povolit službu Azure AD Provisioning pro návštěvu, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
@@ -148,19 +148,19 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
 
-Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než následné synchronizace. Další informace o tom, jak dlouho trvá uživatelům nebo skupinám při zřizování, najdete v tématu [Jak dlouho bude trvat zřizování uživatelů?](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users).
+Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než následné synchronizace. Další informace o tom, jak dlouho trvá uživatelům nebo skupinám při zřizování, najdete v tématu [Jak dlouho bude trvat zřizování uživatelů?](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users).
 
-Pomocí oddílu **aktuální stav** můžete monitorovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD při návštěvě. Další informace najdete v tématu o [kontrole stavu zřizování uživatelů](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md). Pokud si chcete přečíst protokoly zřizování Azure AD, přečtěte si téma [vytváření sestav o automatickém zřizování uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+Pomocí oddílu **aktuální stav** můžete monitorovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD při návštěvě. Další informace najdete v tématu o [kontrole stavu zřizování uživatelů](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Pokud si chcete přečíst protokoly zřizování Azure AD, přečtěte si téma [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Omezení konektoru
 
 Při návštěvě není podporována Pevná odstranění. Všechno je jenom obnovitelné odstranění.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../manage-apps/check-status-user-account-provisioning.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)

@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: c993a08a4163d50a9632055da355e39b5bdde004
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 5dc705fbd17a12ee001e1e8de15b49e841f08b81
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026884"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049239"
 ---
-# <a name="overview"></a>Přehled
+# <a name="unified-connectivity-monitoring-with-connection-monitor-preview"></a>Jednotné monitorování připojení pomocí monitorování připojení (Preview)
 
 Monitor připojení (Preview) poskytuje sjednocené možnosti monitorování připojení v Azure Network Watcher pro hybridní a cloudová nasazení Azure. Azure Network Watcher poskytuje nástroje pro monitorování, diagnostiku a zobrazení metrik souvisejících s připojením pro vaše nasazení Azure.
 
@@ -78,8 +78,8 @@ _Monitorování připojení_ monitoruje komunikaci v pravidelných intervalech a
 
 ### <a name="accessing-connection-monitor-preview"></a>Přístup k monitorování připojení (Preview)
 
-1. Přístup k Network Watcher pomocí následujícího odkazu:[https://ms.portal.azure.com/?Microsoft\_Azure\_Network\_connectionmonitorpreview=true#blade/Microsoft\_Azure\_Network/NetworkWatcherMenuBlade/connectionMonitorPreview](https://ms.portal.azure.com/?Microsoft_Azure_Network_connectionmonitorpreview=true#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/connectionMonitorPreview)
-2. V levém podokně Network Watcher v části monitorování klikněte na kartu monitorování připojení (Preview). Tato karta bude viditelná pouze v případě, že k Network Watcher přistupovali pomocí odkazu uvedeného v kroku 1.
+1. Na domovské stránce Azure Portal navštivte Network Watcher
+2. V levém podokně Network Watcher v části monitorování klikněte na kartu monitorování připojení (Preview).
 3. Můžete zobrazit všechna monitorování připojení, která jsou vytvořena pomocí prostředí monitorování připojení (Preview). Všechna monitorování připojení vytvořená pomocí klasického prostředí na kartě monitorování připojení se zobrazí na kartě monitorování připojení.
 
     ![Vytvoření monitorování připojení](./media/connection-monitor-2-preview/cm-resource-view.png)
@@ -433,7 +433,7 @@ Všechny zdroje a cíle přidané do testovací skupiny se zadaným testem konfi
 
 | **Testovací číslo** | **Zdroj** | **Tabulka** | **Název konfigurace testu** |
 | --- | --- | --- | --- |
-| 1\. místo | A | D | Konfigurace 1 |
+| 1 | A | D | Konfigurace 1 |
 | 2 | A | D | Konfigurace 2 |
 | 3 | A | E | Konfigurace 1 |
 | 4 | A | E | Konfigurace 2 |
@@ -550,7 +550,7 @@ Pro zobrazení trendů kontrol se nezdařila% a RTT pro:
    5. Změna časového intervalu pro zobrazení více dat
    6. Můžete změnit zobrazení v kroku b a zvolit zobrazení podle zdrojů, cílů nebo konfigurací testů. Pak zvolte entitu k prozkoumání prvních 5 neúspěšných testů.  Příklad: vyberte možnost Zobrazit podle: zdroje a cíle a prozkoumejte všechny testy, které jsou spouštěny mezi touto kombinací v rámci vybraného monitorování připojení.
 
-3. Testování
+3. Test
    1. Klikněte na zdroj + cíl + konfigurace testu, které chcete prozkoumat podrobněji.
    2. Pro vybrané časové období se pro kontroly, které selhaly%, zobrazí prahová hodnota a skutečné hodnoty. Pro čas RTT MS se zobrazí hodnoty prahová hodnota, průměr, minimum a maximum. Zobrazí se také aktivované výstrahy, které jsou specifické pro vybraný test.
 
@@ -578,8 +578,8 @@ Typ prostředku – Microsoft. Network/networkWatchers/connectionMonitors
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | % PROBE selhalo | Procento | Průměr | % sond monitorování připojení selhalo. | Žádné dimenze |
 | AverageRoundtripMs | Průměrná doba odezvy (MS) | Milisekund | Průměr | Průměrná doba odezvy sítě (MS) pro testy monitorování připojení odesílané mezi zdrojem a cílem |             Žádné dimenze |
-| ChecksFailedPercent (Preview) | % Kontroly selhaly (Preview) | Procento | Průměr | % kontrol se pro test nezdařila. |Seznam:-ConnectionMonitorResourceId-SourceAddress-source-parametr sourceresourceid-SourceType-Protocol-DestinationAddress-Destination-DestinationResourceId-destinationType-DestinationPort-TestGroupName-TestConfigurationName- Věřitel |
-| RoundTripTimeMs (Preview) | Doba odezvy (MS) (Preview) | Milisekundy | Průměr | Doba odezvy (MS) pro kontroly odeslané mezi zdrojem a cílem. Tato hodnota není Průměrná | Seznam:-ConnectionMonitorResourceId-SourceAddress-source-parametr sourceresourceid-SourceType-Protocol-DestinationAddress-Destination-DestinationResourceId-destinationType-DestinationPort-TestGroupName-TestConfigurationName- Věřitel |
+| ChecksFailedPercent (Preview) | % Kontroly selhaly (Preview) | Procento | Průměr | % kontrol se pro test nezdařila. | * ConnectionMonitorResourceId <br> * SourceAddress <br> * Zdroj dat <br> * Parametr sourceresourceid <br> * SourceType <br> * Protokol <br> * DestinationAddress <br> * Cílový <br> * DestinationResourceId <br> * DestinationType <br> * DestinationPort <br> * TestGroupName <br> * TestConfigurationName <br> * Oblast |
+| RoundTripTimeMs (Preview) | Doba odezvy (MS) (Preview) | Milisekundy | Průměr | Doba odezvy (MS) pro kontroly odeslané mezi zdrojem a cílem. Tato hodnota není Průměrná | * ConnectionMonitorResourceId <br> * SourceAddress <br> * Zdroj dat <br> * Parametr sourceresourceid <br> * SourceType <br> * Protokol <br> * DestinationAddress <br> * Cílový <br> * DestinationResourceId <br> * DestinationType <br> * DestinationPort <br> * TestGroupName <br> * TestConfigurationName <br> * Oblast |
 
  ![Monitorovat metriky](./media/connection-monitor-2-preview/monitor-metrics.png)
 
@@ -599,7 +599,7 @@ Vytvoření výstrahy:
 7. Zadat podrobnosti výstrahy
 8. Vytvořit pravidlo výstrahy
 
-   ![Výstrahy](./media/connection-monitor-2-preview/mdm-alerts.jpg)
+   ![Upozornění](./media/connection-monitor-2-preview/mdm-alerts.jpg)
 
 ## <a name="step-5-diagnose-issues-in-your-network"></a>Krok 5: Diagnostika problémů ve vaší síti
 

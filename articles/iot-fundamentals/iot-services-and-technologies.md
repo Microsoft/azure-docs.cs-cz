@@ -1,18 +1,18 @@
 ---
 title: Technologie a řešení Azure Internet věcí (IoT)
 description: Popisuje shromažďování technologií a služeb, které můžete použít k sestavení řešení Azure IoT.
-author: robinsh
+author: dominicbetts
 ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
-ms.date: 10/09/2018
-ms.author: robinsh
-ms.openlocfilehash: cf707a0ddc3d5b46c7be7944a911ee03f00fc064
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/15/2020
+ms.author: dobett
+ms.openlocfilehash: 0b04b5170c13f6f6c3fd74976461f03e4367060a
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457169"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046067"
 ---
 # <a name="azure-technologies-and-services-for-creating-iot-solutions"></a>Technologie a služby Azure pro vytváření řešení IoT
 
@@ -83,6 +83,8 @@ IoT Central používá digitální vlákna k synchronizaci zařízení a dat v r
 ### <a name="data-and-analytics"></a>Data a analýza
 
 Zařízení IoT typicky generují velké objemy dat časových řad, jako je například čtení teploty ze senzorů. [Azure Time Series Insights](../time-series-insights/time-series-insights-overview.md) se můžou připojit ke službě IoT Hub, číst datový proud telemetrie z vašich zařízení, ukládat tato data a používat je k dotazování a vizualizaci.
+
+[Azure Maps](/azure/azure-maps) je kolekce geoprostorových služeb, které používají data z nového mapování k zajištění přesného geografického kontextu pro webové a mobilní aplikace. Můžete použít REST API, webový ovládací prvek JavaScriptu nebo Android SDK k sestavení aplikací.
 
 ## <a name="next-steps"></a>Další kroky
 

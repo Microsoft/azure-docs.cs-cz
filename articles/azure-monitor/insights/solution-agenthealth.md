@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/19/2017
-ms.openlocfilehash: cbeaa3e148d6fbe20d7ddb4d04cd00d6300f9818
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/06/2020
+ms.openlocfilehash: 9a7cb80b5510ff0ac4a2491d896aded866180c19
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402431"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062128"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Řešení Agent Health v Azure Monitor
 Řešení Agent Health v Azure vám pomůže pochopit, pro všechny agenty, kteří vytvářejí sestavy přímo do pracovního prostoru Log Analytics v Azure Monitor nebo ve skupině pro správu System Center Operations Manager připojené k Azure Monitor, které nereagují a odesílají se provozní data.  Můžete také sledovat, kolik agentů je nasazených a jak jsou geograficky distribuováni, a provádět další dotazy, abyste si udrželi přehled o distribuci agentů nasazených v Azure, dalších cloudových prostředích nebo místně.    
@@ -31,7 +31,7 @@ Pokud je vaše skupina pro správu System Center Operations Manager připojená 
 
 Další informace o způsobu, jakým se aktualizují sady pro správu řešení, najdete v tématu [Připojení Operations Manageru ke službě Log Analytics](../../azure-monitor/platform/om-agents.md).
 
-## <a name="configuration"></a>Konfigurace
+## <a name="configuration"></a>Konfiguraci
 Přidejte Agent Health řešení do svého pracovního prostoru Log Analytics pomocí postupu popsaného v tématu [Přidání řešení](solutions.md). Není nutná žádná další konfigurace.
 
 
@@ -49,7 +49,7 @@ Když přidáte řešení do svého pracovního prostoru Log Analytics, do říd
 
 Kliknutím na dlaždici **Agent Health** otevřete řídicí panel **Agent Health**.  Řídicí panel obsahuje sloupce v následující tabulce. Každý sloupec obsahuje seznam prvních deseti událostí podle počtu, které splňují kritéria sloupce pro zadaný časový rozsah. Výběrem možnosti **Zobrazit všechno** v pravé dolní části každého sloupce nebo kliknutím na záhlaví sloupce můžete spustit prohledávání protokolu, které vám poskytne úplný seznam.
 
-| Column | Popis |
+| Sloupec | Popis |
 |--------|-------------|
 | Počet agentů v průběhu času | Trend vývoje počtu linuxových agentů a agentů systému Windows za posledních sedm dnů.|
 | Počet nereagujících agentů | Seznam agentů, kteří za posledních 24 hodin neodeslali prezenční signál.|
@@ -79,7 +79,7 @@ Vytvoří se záznam typu **Prezenční signál**.  Vlastnosti záznamů tohoto 
 | `Version` | Agent Log Analytics nebo verze agenta Operations Manager|
 | `SCAgentChannel` | Hodnota je *Direct* (Přímý) nebo *SCManagementServer* (Server pro správu nástroje SCOM).|
 | `IsGatewayInstalled` | Pokud je nainstalovaná brána Log Analytics, hodnota je *true*, jinak je hodnota *false*.|
-| `ComputerIP` | IP adresa počítače.|
+| `ComputerIP` | Veřejná IP adresa počítače. Na virtuálních počítačích Azure se tato veřejná IP adresa zobrazí, pokud je k dispozici. U virtuálních počítačů, které používají privátní IP adresy, se zobrazí adresa Azure SNAT (ne privátní IP adresa). |
 | `RemoteIPCountry` | Zeměpisné umístění, kde je počítač nasazený.|
 | `ManagementGroupName` | Název skupiny pro správu nástroje Operations Manager.|
 | `SourceComputerId` | Jedinečné ID počítače.|

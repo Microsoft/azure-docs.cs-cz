@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81988f2643fd9acb911e6f70765cedbb4786f14c
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c64c40d93f9b525ac6adeca276797df65f32ef3e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278254"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061271"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Kurz: Konfigurace Pingboard pro Automatické zřizování uživatelů
 
@@ -84,11 +84,11 @@ Tato část vás provede připojením služby Azure AD k rozhraní API pro zřiz
 
 1. Zadejte e-mailovou adresu osoby nebo skupiny, které chcete dostávat oznámení o chybách zřizování v **oznamovacím e-mailu**. Zaškrtněte políčko pod položkou.
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 1. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé Pingboard**.
 
-1. V části **mapování atributů** zkontrolujte atributy uživatele, které se mají synchronizovat z Azure AD do Pingboard. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Pingboard pro operace aktualizace. Vyberte **Uložit** a potvrďte všechny změny. Další informace najdete v tématu [Přizpůsobení mapování atributů zřizování uživatelů](../manage-apps/customize-application-attributes.md).
+1. V části **mapování atributů** zkontrolujte atributy uživatele, které se mají synchronizovat z Azure AD do Pingboard. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Pingboard pro operace aktualizace. Vyberte **Uložit** a potvrďte všechny změny. Další informace najdete v tématu [Přizpůsobení mapování atributů zřizování uživatelů](../app-provisioning/customize-application-attributes.md).
 
 1. Pokud chcete povolit službu Azure AD Provisioning pro Pingboard, v části **Nastavení** změňte **stav zřizování** na **zapnuto**.
 
@@ -96,10 +96,10 @@ Tato část vás provede připojením služby Azure AD k rozhraní API pro zřiz
 
 Počáteční synchronizace trvá déle než následující synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na zřizování protokolů aktivit. Protokoly popisují všechny akce prováděné službou zřizování ve vaší aplikaci Pingboard.
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [Sestava automatického zřizování uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [Sestava automatického zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 * [Konfigurace jednotného přihlašování](pingboard-tutorial.md)

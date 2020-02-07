@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/29/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b51aeabaa4bb7fa9884c95cf0da2dc68ba5b64b0
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: f8f48f73248e2108e79b8e244ed0d7b51855092a
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184105"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048159"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-in-the-azure-portal"></a>Zobrazení instančního objektu spravované identity v Azure Portal
 
@@ -42,7 +42,7 @@ V tomto článku se dozvíte, jak zobrazit instanční objekt spravované identi
 Tento postup ukazuje, jak zobrazit instanční objekt virtuálního počítače s povolenou identitou přiřazení systému (stejný postup platí pro aplikaci).
 
 1. Klikněte na **Azure Active Directory** a pak klikněte na **podnikové aplikace**.
-2. V části **Typ aplikace**vyberte **všechny aplikace**.
+2. V části **Typ aplikace**zvolte **všechny aplikace** a pak klikněte na **použít**.
 3. Do pole vyhledávací filtr zadejte název virtuálního počítače nebo aplikace, která má povolenou spravovanou identitu, nebo ji vyberte v seznamu zobrazených.
 
    ![Zobrazit objekt spravované služby identity na portálu](./media/how-to-view-managed-identity-service-principal-portal/view-managed-identity-service-principal-portal.png)

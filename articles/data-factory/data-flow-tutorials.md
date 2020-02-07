@@ -1,25 +1,25 @@
 ---
-title: Výukové kurzy k mapování toku dat
+title: Videokurzy mapování toku dat
 description: Seznam výukových kurzů vysvětlujících koncept toku dat pro mapování
 author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 01/14/2020
-ms.openlocfilehash: dee8c919b815c6f22b171f58be9fc6a38167056a
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
-ms.translationtype: MT
+ms.openlocfilehash: 543d1599201a318a399b98ff855fd9cf241f1f4c
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030026"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048254"
 ---
-# <a name="mapping-data-flow-video-tutorials"></a>Výukové kurzy k mapování toku dat
+# <a name="mapping-data-flow-video-tutorials"></a>Videokurzy mapování toku dat
 
 Níže je uveden seznam videí s daty o kurzu mapování toku dat vytvořených týmem Azure Data Factory.
 
 Vzhledem k neustálému navýšení aktualizací produktu mají některé funkce v aktuálním Azure Data Factory uživatelského prostředí přidané nebo jiné funkce.
 
-## <a name="getting-started"></a>začínáme
+## <a name="getting-started"></a>Začínáme
 
 [Začínáme s mapováním toků dat v Azure Data Factory](http://youtu.be/MFw7t_8tuV4)
 
@@ -42,6 +42,8 @@ Vzhledem k neustálému navýšení aktualizací produktu mají některé funkce
 [Odvozená transformace sloupce](https://www.youtube.com/watch?v=FFCbU4ujCiY)
 
 [Transformace spojení](https://www.youtube.com/watch?v=zukwayEXRtg)
+
+[Vzor pro samočinné spojení](https://www.youtube.com/watch?v=Dx1kANfnvmk&feature=youtu.be&hd=1)
 
 [Transformace vyhledávání](https://www.youtube.com/watch?v=9U-0VPU2ZPU)
 

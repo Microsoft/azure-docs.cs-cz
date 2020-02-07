@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 56c2d96e6e4a5900770aaefcabb424eddb1cbde6
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 8f91ed926c733b211443805722b6817b1ce005b6
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531376"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048361"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Co jsou toky dat tahání?
 
@@ -40,11 +40,11 @@ Vizuálně naskenujte vaše data způsobem bez kódu, abyste mohli odebrat jaké
 
 ## <a name="supported-sources"></a>Podporované zdroje
 
-| Konektor | Formát dat | Typ ověřování |
+| Spojovací čára | Formát dat | Typ ověřování |
 | -- | -- | --|
-| [Azure Blob Storage](connector-azure-blob-storage.md) | Formát | Klíč účtu |
-| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | Formát | Instanční objekt |
-| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | Formát | Klíč účtu, instanční objekt |
+| [Azure Blob Storage](connector-azure-blob-storage.md) | CSV, Parquet | Klíč účtu |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | SDÍLENÝ SVAZEK CLUSTERU | Instanční objekt |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV, Parquet | Klíč účtu, instanční objekt |
 | [Azure SQL Database](connector-azure-sql-database.md) | - | Ověřování pomocí SQL |
 | [Azure synapse Analytics](connector-azure-sql-data-warehouse.md) | - | Ověřování pomocí SQL |
 

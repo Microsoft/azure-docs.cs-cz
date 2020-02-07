@@ -2,7 +2,7 @@
 title: Změna hesla k pracovnímu nebo školnímu účtu – Azure AD
 description: Přečtěte si, jak změnit heslo pracovního nebo školního účtu na stránce změnit heslo na portálu Můj účet.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: jpettere
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.author: lizross
-ms.openlocfilehash: f92df704047e1d36e69e40ce5299b8d01e48e9eb
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 06e5abe04ed1ec75dcbf1b216bfaab1a7458ce72
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705169"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064049"
 ---
 # <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>Změna hesla k pracovnímu nebo školnímu účtu na stránce změnit heslo
 
@@ -37,7 +37,7 @@ Stránka pro **změnu hesla** na portálu **můj účet** vám pomůže aktualiz
 
     ![Stránka pro změnu hesla, zobrazení polí hesla](media/my-account-portal/my-account-portal-change-password-page.png)
 
-4. Vyberte **odeslat**.
+4. Vyberte **Odeslat**.
 
     Vaše heslo se změní a budete vyzváni k opětovnému přihlášení ke svému pracovnímu nebo školnímu účtu.
 

@@ -2,7 +2,7 @@
 title: Nastavení bezpečnostního klíče jako metody ověřování – Azure AD
 description: Jak nastavit stránku informací o zabezpečení (Preview), abyste ověřili, že vaše identita má jako metodu ověření používat klíč zabezpečení rychlá identita online (FIDO2).
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: librown
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.author: lizross
-ms.openlocfilehash: 3e16602128a70077d0a7962522ad3898421c8997
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: ee868ded0dc3a46f2ec20d0141aa2576cbf71f45
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704914"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062332"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>Nastavte bezpečnostní klíč jako metodu ověřování.
 
@@ -49,7 +49,7 @@ Správce nebo vaše organizace vám poskytne klíč zabezpečení, pokud to vyž
 > [!Note]
 > Pokud nemůžete použít bezpečnostní klíč FIDO2, můžete použít i jiné metody ověřování bez hesla, jako je například aplikace Microsoft Authenticator nebo Windows Hello. Další informace o aplikaci Microsoft Authenticator najdete v tématu [co je Microsoft Authenticator aplikace?](user-help-auth-app-overview.md). Další informace o Windows Hello najdete v tématu [Přehled Windows Hello](https://www.microsoft.com/windows/windows-hello).
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Předtím, než budete moci zaregistrovat klíč zabezpečení, musí být splněny následující podmínky:
 
@@ -92,7 +92,7 @@ Abyste se mohli přihlásit ke svému pracovnímu nebo školnímu účtu pomocí
 
     Vrátíte se do **nastavení nová metoda přihlašování** .
 
-7. Vyberte **Next** (Další).
+7. Vyberte **Další**.
 
 8. Vraťte se na stránku **bezpečnostní údaje** , zadejte název, který budete později rozpoznávat pro svůj nový klíč zabezpečení, a pak vyberte **Další**.
 

@@ -1,5 +1,5 @@
 ---
-title: Aktivace vlastní role Azure AD v Privileged Identity Management (PIM) | Microsoft Docs
+title: Aktivace vlastní role Azure AD – Privileged Identity Management (PIM)
 description: Postup aktivace vlastní role Azure AD pro přiřazení Privileged Identity Management (PIM)
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06ceb2d2c98c3f9b6b184b98ddaadea610d525d2
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f2c096f41acd5852423205b0b185c8e1a8533c55
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896568"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048136"
 ---
 # <a name="activate-an-azure-ad-custom-role-in-privileged-identity-management"></a>Aktivace vlastní role Azure AD v Privileged Identity Management
 
@@ -34,7 +34,7 @@ Privileged Identity Management v Azure Active Directory (Azure AD) teď podporuj
 
 Pokud potřebujete aktivovat vlastní roli Azure AD, vyžádejte si aktivaci tak, že v Privileged Identity Management vyberete možnost navigační role.
 
-1. Přihlaste se k [na webu Azure portal](https://portal.azure.com).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com).
 1. Otevřete [Privileged Identity Management](https://portal.azure.com/?Microsoft_AAD_IAM_enableCustomRoleManagement=true&Microsoft_AAD_IAM_enableCustomRoleAssignment=true&feature.rbacv2roles=true&feature.rbacv2=true&Microsoft_AAD_RegisteredApps=demo#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart)služby Azure AD.
 
 1. Výběrem **vlastní role Azure AD** zobrazíte seznam oprávněných přiřazení vlastních rolí Azure AD.

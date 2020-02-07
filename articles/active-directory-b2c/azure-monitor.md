@@ -10,17 +10,17 @@ ms.workload: identity
 ms.topic: conceptual
 ms.author: marsma
 ms.subservice: B2C
-ms.date: 02/03/2020
-ms.openlocfilehash: 108c9c1112327a3fcadeff4c4074f31f976a4e3d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.date: 02/05/2020
+ms.openlocfilehash: b701449e8cfb7a379522ee6ccb93f5569bd703d8
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026754"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046035"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Monitorování Azure AD B2C s využitím Azure Monitor
 
-Pomocí Azure Monitor můžete směrovat události aktivity využití Azure Active Directory B2C (Azure AD B2C) do různých řešení monitorování. Protokoly můžete uchovávat pro dlouhodobé použití nebo integraci s nástroji SIEM (Security Information and Event Management) třetích stran, abyste získali přehled o vašem prostředí.
+Pomocí Azure Monitor můžete směrovat přihlašování Azure Active Directory B2C (Azure AD B2C) a protokoly [auditování](view-audit-logs.md) do různých řešení monitorování. Protokoly můžete uchovávat pro dlouhodobé použití nebo integraci s nástroji SIEM (Security Information and Event Management) třetích stran, abyste získali přehled o vašem prostředí.
 
 Události protokolu můžete směrovat do:
 
@@ -50,7 +50,7 @@ V tenantovi Azure Active Directory (Azure AD), který obsahuje vaše předplatn�
 
 * **Předplatné**: Vyberte své předplatné Azure.
 * **Skupina prostředků**: zadejte název pro skupinu prostředků. Například *Azure-AD-B2C-monitor*.
-* **Oblast**: vyberte umístění Azure. Například *USA (střed)* .
+* **Oblast**: vyberte umístění Azure. Například *střed USA*.
 
 ## <a name="delegate-resource-management"></a>Delegovat správu prostředků
 
@@ -84,8 +84,8 @@ Pokud chcete připojit klienta služby Azure AD ( **zákazníka**), vytvořte [�
 
 Stažení šablony Azure Resource Manager a souborů parametrů:
 
-- [rgDelegatedResourceManagement.json](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
-- [rgDelegatedResourceManagement.parameters.json](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
+- [rgDelegatedResourceManagement. JSON](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
+- [rgDelegatedResourceManagement. Parameters. JSON](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
 
 Dále aktualizujte soubor parametrů s hodnotami, které jste si poznamenali dříve. Následující fragment kódu JSON ukazuje příklad souboru parametrů šablony Azure Resource Manager. Pro `authorizations.value.roleDefinitionId`použijte [předdefinovanou hodnotu role](../role-based-access-control/built-in-roles.md) *přispěvatele*`b24988ac-6180-42a0-ab88-20f7382dd24c`.
 
@@ -213,7 +213,7 @@ Po delegování správy prostředků a výběru předplatného budete připraven
 
 Postup konfigurace nastavení monitorování pro Azure AD B2C protokoly aktivit:
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. Vyberte **Azure Active Directory**
 1. V části **monitorování**vyberte **nastavení diagnostiky**.

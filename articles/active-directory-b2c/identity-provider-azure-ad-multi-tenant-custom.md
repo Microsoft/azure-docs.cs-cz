@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 02/06/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8a222aa63387f7c57f8896b013f71f0c1bf40b2e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2f7bf9fea1b1e15d1ca24686a84e272dd60ceaf5
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849614"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061586"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavení přihlášení pro více tenantů Azure Active Directory používání vlastních zásad v Azure Active Directory B2C
 
@@ -32,11 +32,11 @@ Proveďte kroky v části Začínáme [s vlastními zásadami v Azure Active Dir
 
 Pokud chcete povolit přihlášení pro uživatele z konkrétní organizace Azure AD, musíte zaregistrovat aplikaci v rámci tenanta organizace Azure AD.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Ujistěte se, že používáte adresář, který obsahuje váš tenant organizace Azure AD (například contoso.com). V horní nabídce vyberte **Filtr adresář + odběr** a pak zvolte adresář, který obsahuje vašeho tenanta.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Registrace aplikací**.
 1. Vyberte **Nová registrace**.
-1. Zadejte **název** vaší aplikace. Například, `Azure AD B2C App`.
+1. Zadejte **název** vaší aplikace. například `Azure AD B2C App`.
 1. Pro tuto aplikaci vyberte **účty v libovolném organizačním adresáři** .
 1. Pro **identifikátor URI přesměrování**přijměte hodnotu **Web**a zadejte následující adresu URL do všech malých písmen, kde se `your-B2C-tenant-name` nahradí názvem vašeho tenanta Azure AD B2C.
 
@@ -44,7 +44,7 @@ Pokud chcete povolit přihlášení pro uživatele z konkrétní organizace Azur
     https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
     ```
 
-    Například, `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
+    například `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
 
 1. Vyberte **Zaregistrovat**. Poznamenejte si **ID aplikace (klienta)** pro použití v pozdějším kroku.
 1. Vyberte **certifikáty & tajných**kódů a pak vyberte **nový tajný klíč klienta**.
@@ -59,10 +59,23 @@ Je potřeba uložit klíč aplikace, který jste vytvořili v tenantovi Azure AD
 1. V části **zásady**vyberte **Architektura prostředí identity**.
 1. Vyberte **klíče zásad** a pak vyberte **Přidat**.
 1. Pro **Možnosti**vyberte možnost `Manual`.
-1. Zadejte **název** klíče zásad. Například, `AADAppSecret`.  `B2C_1A_` předpony se automaticky přidají do názvu klíče při jeho vytvoření, takže jeho odkaz v XML v následující části je *B2C_1A_AADAppSecret*.
+1. Zadejte **název** klíče zásad. například `AADAppSecret`.  `B2C_1A_` předpony se automaticky přidají do názvu klíče při jeho vytvoření, takže jeho odkaz v XML v následující části je *B2C_1A_AADAppSecret*.
 1. Do **tajného klíče**zadejte tajný klíč klienta, který jste si poznamenali dříve.
 1. Pro **použití klíče**vyberte `Signature`.
-1. Vyberte **Vytvořit**.
+1. Vyberte **Create** (Vytvořit).
+
+## <a name="configuring-optional-claims"></a>Konfigurace volitelných deklarací identity
+
+Pokud chcete získat `family_name` a `given_name` deklarace identity z Azure AD, můžete nakonfigurovat volitelné deklarace identity pro vaši aplikaci v uživatelském rozhraní Azure Portal nebo manifestu aplikace. Další informace najdete v tématu [jak poskytnout volitelné deklarace identity vaší aplikaci Azure AD](../active-directory/develop/active-directory-optional-claims.md).
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyhledejte a vyberte **Azure Active Directory**.
+1. V části **Spravovat** vyberte **Registrace aplikací**.
+1. V seznamu vyberte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity.
+1. V části **Správa** vyberte **Konfigurace tokenu (Preview)** .
+1. Vyberte **přidat volitelnou deklaraci identity**.
+1. Vyberte typ tokenu, který chcete konfigurovat.
+1. Vyberte volitelné deklarace, které se mají přidat.
+1. Klikněte na **Přidat**.
 
 ## <a name="add-a-claims-provider"></a>Přidat zprostředkovatele deklarací identity
 
@@ -125,7 +138,7 @@ Službu Azure AD můžete definovat jako zprostředkovatele deklarací přidán�
 1. V rámci elementu **ClaimsProvider** aktualizujte hodnotu pro **doménu** na jedinečnou hodnotu, která se dá použít k odlišení od jiných zprostředkovatelů identity.
 1. V rámci elementu **TechnicalProfile** aktualizujte hodnotu **displayname**, například `Contoso Employee`. Tato hodnota se zobrazí na přihlašovací stránce na tlačítku pro přihlášení.
 1. Nastavte **client_id** na ID aplikace víceklientské aplikace Azure AD, kterou jste si zaregistrovali dříve.
-1. V části **CryptographicKeys**aktualizujte hodnotu **StorageReferenceId** na název klíče zásad, který jste vytvořili dříve. Například, `B2C_1A_AADAppSecret`.
+1. V části **CryptographicKeys**aktualizujte hodnotu **StorageReferenceId** na název klíče zásad, který jste vytvořili dříve. například `B2C_1A_AADAppSecret`.
 
 ### <a name="restrict-access"></a>Omezení přístupu
 
@@ -159,7 +172,7 @@ V tuto chvíli je poskytovatel identity nastavený, ale není k dispozici na ž�
 2. Vyhledejte a zkopírujte celý obsah prvku **UserJourney** , který obsahuje `Id="SignUpOrSignIn"`.
 3. Otevřete *soubor TrustFrameworkExtensions. XML* a vyhledejte element **userjourney** . Pokud element neexistuje, přidejte jej.
 4. Vložte celý obsah elementu **UserJourney** , který jste zkopírovali jako podřízený prvek **userjourney** elementu.
-5. Přejmenujte ID cesty pro uživatele. Například, `SignUpSignInContoso`.
+5. Přejmenujte ID cesty pro uživatele. například `SignUpSignInContoso`.
 
 ### <a name="display-the-button"></a>Zobrazit tlačítko
 
@@ -183,7 +196,7 @@ Teď, když máte tlačítko na místě, musíte ho propojit s akcí. Tato akce 
     <ClaimsExchange Id="AzureADExchange" TechnicalProfileReferenceId="Common-AAD" />
     ```
 
-    Aktualizujte hodnotu **TechnicalProfileReferenceId** na **ID** technického profilu, který jste vytvořili dříve. Například, `Common-AAD`.
+    Aktualizujte hodnotu **TechnicalProfileReferenceId** na **ID** technického profilu, který jste vytvořili dříve. například `Common-AAD`.
 
 3. Uložte soubor *TrustFrameworkExtensions. XML* a znovu ho nahrajte k ověření.
 
@@ -198,8 +211,8 @@ Komunikace s Azure AD B2C probíhá prostřednictvím aplikace, kterou zaregistr
 Aktualizujte soubor předávající strany (RP), který iniciuje cestu uživatele, kterou jste vytvořili:
 
 1. Vytvořte kopii *SignUpOrSignIn. XML* v pracovním adresáři a přejmenujte ji. Přejmenujte ho například na *SignUpSignContoso. XML*.
-1. Otevřete nový soubor a aktualizujte hodnotu atributu **PolicyId** pro **TrustFrameworkPolicy** s jedinečnou hodnotou. Například, `SignUpSignInContoso`.
-1. Aktualizujte hodnotu **PUBLICPOLICYURI** identifikátorem URI pro zásadu. Například, `http://contoso.com/B2C_1A_signup_signin_contoso`.
+1. Otevřete nový soubor a aktualizujte hodnotu atributu **PolicyId** pro **TrustFrameworkPolicy** s jedinečnou hodnotou. například `SignUpSignInContoso`.
+1. Aktualizujte hodnotu **PUBLICPOLICYURI** identifikátorem URI pro zásadu. například `http://contoso.com/B2C_1A_signup_signin_contoso`.
 1. Aktualizujte hodnotu atributu **ReferenceId** v **DefaultUserJourney** tak, aby odpovídala ID cesty uživatele, kterou jste vytvořili dříve. Například *SignUpSignInContoso*.
 1. Uložte změny a odešlete soubor.
 1. V části **vlastní zásady**vyberte v seznamu novou zásadu.

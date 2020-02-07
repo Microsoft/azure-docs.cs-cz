@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: 84ab5da993541012fd2199a30d03f5c69e88bf2c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 2de0cdd32428884170f549afacdbd52c3a10c93f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530030"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77060044"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-sap-successfactors-preview"></a>Kurz: Konfigurace zpětného zápisu atributu z Azure AD na SAP SuccessFactors (Preview)
 Cílem tohoto kurzu je Ukázat kroky, které musíte provést při zpětném zápisu atributů z Azure AD do SuccessFactors zaměstnanců centrálně. Jediným atributem, který je aktuálně podporován pro zpětný zápis, je atribut e-mail. 
@@ -63,7 +63,7 @@ Spolupracujte s týmem správce SuccessFactors nebo partnerem pro implementaci a
 * Posuňte se dolů ve stejném poli a vyberte **centrální rozhraní API pro zaměstnance**. Přidáním oprávnění, jak je vidět níže, můžete číst pomocí rozhraní ODATA API a upravit pomocí rozhraní ODATA API. Vyberte možnost upravit, pokud chcete použít stejný účet ke zpětnému zápisu do SuccessFactors scénáře. 
   > [!div class="mx-imgBorder"]
   > ![oprávnění ke čtení zápisu](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
-* Klikněte na **Hotovo**. Klikněte na tlačítko **uložit změny**.
+* Klikněte na **Hotovo**. Klikněte na **Uložit změny**.
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>Vytvoření skupiny oprávnění pro uživatele rozhraní API
 
@@ -92,7 +92,7 @@ Spolupracujte s týmem správce SuccessFactors nebo partnerem pro implementaci a
 * Zkontrolujte roli oprávnění udělení skupiny oprávnění. 
   > [!div class="mx-imgBorder"]
   > ![role oprávnění a podrobností skupiny](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
-* Klikněte na tlačítko **uložit změny**.
+* Klikněte na **Uložit změny**.
 
 ## <a name="configuring-successfactors-writeback"></a>Konfigurace zpětného zápisu SuccessFactors
 
@@ -170,7 +170,7 @@ Po dokončení konfigurace aplikace SuccessFactors Provisioning můžete službu
 
 1. Na kartě **zřizování** nastavte **stav zřizování** na **zapnuto**.
 
-2. Klikněte na možnost **Uložit**.
+2. Klikněte na **Uložit**.
 
 3. Tato operace spustí počáteční synchronizaci, což může trvat proměnlivý počet hodin v závislosti na tom, kolik uživatelů je v tenantovi SuccessFactors. V indikátoru průběhu můžete sledovat průběh cyklu synchronizace. 
 
@@ -183,8 +183,8 @@ Po dokončení konfigurace aplikace SuccessFactors Provisioning můžete službu
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../manage-apps/check-status-user-account-provisioning.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
 * [Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi SuccessFactors a Azure Active Directory](successfactors-tutorial.md)
 * [Naučte se integrovat další aplikace SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Naučte se exportovat a importovat vaše konfigurace zřizování.](../manage-apps/export-import-provisioning-configuration.md)
+* [Naučte se exportovat a importovat vaše konfigurace zřizování.](../app-provisioning/export-import-provisioning-configuration.md)
 

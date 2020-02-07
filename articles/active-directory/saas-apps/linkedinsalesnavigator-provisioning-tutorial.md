@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbf8923d62b49ed5341776aef03bc1bc2dabeaa9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f789f82288c9820214c4ab32c271bb547945d4d1
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276801"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057375"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Kurz: Konfigurace programu LinkedIn Sales Navigator pro Automatické zřizování uživatelů
 
@@ -107,7 +107,7 @@ Prvním krokem je načtení přístupového tokenu LinkedIn. Pokud jste podnikov
 
 12. Zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování v poli **e-mail s oznámením** , a zaškrtněte políčko níže.
 
-13. Klikněte na možnost **Uložit**.
+13. Klikněte na **Uložit**.
 
 14. V části **mapování atributů** zkontrolujte atributy uživatelů a skupin, které se budou synchronizovat z Azure AD do služby LinkedIn Sales Navigator. Všimněte si, že atributy vybrané jako **odpovídající** vlastnosti budou použity ke spárování uživatelských účtů a skupin v nástroji LinkedIn Sales Navigator pro operace aktualizace. Vyberte tlačítko Uložit potvrďte změny.
 
@@ -115,13 +115,13 @@ Prvním krokem je načtení přístupového tokenu LinkedIn. Pokud jste podnikov
 
 15. Pokud chcete povolit službu zřizování Azure AD pro LinkedIn Sales Navigator, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
-16. Klikněte na možnost **Uložit**.
+16. Klikněte na **Uložit**.
 
 Tím se spustí počáteční synchronizace všech uživatelů nebo skupin přiřazených k prodejnímu navigátoru LinkedIn v části Uživatelé a skupiny. Všimněte si, že počáteční synchronizace bude trvat déle než další synchronizace, ke kterým dojde přibližně každých 40 minut, pokud je služba spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na zřizování protokolů aktivit, které popisují všechny akce prováděné službou zřizování v aplikaci LinkedIn Sales Navigator.
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Další prostředky
 
-* [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

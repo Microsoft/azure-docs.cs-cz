@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 2abf6187be78ee6cb78676284848051a935b150b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7e3e9e6c76d67db03ea812a4832e98f4449c9aba
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445469"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061654"
 ---
 # <a name="quickstart-migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>Rychlý Start: migrace stávající webové aplikace Node. js v MongoDB na Azure Cosmos DB 
 
@@ -27,32 +27,21 @@ ms.locfileid: "75445469"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Tento rychlý Start ukazuje použití stávající aplikace MongoDB napsané v Node. js a její připojení k databázi Azure Cosmos, která podporuje klienta MongoDB. Jinými slovy je transparentní pro aplikaci, že jsou data uložena v databázi Cosmos.
+V tomto rychlém startu vytváříte a spravujete Azure Cosmos DB pro účet rozhraní API služby Mongo DB pomocí Azure Cloud Shell a s aplikací střední (MongoDB, Express, úhlová a Node. js), která je naklonovaná z GitHubu. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
 
-Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Můžete rychle vytvořit a dotazovat databáze dokumentů, klíčů a hodnot a grafů, z nichž všechno přináší výhody funkcí globální distribuce a horizontálního škálování v jádru Cosmos DB.
-
-Až budete hotovi, budete mít střední hodnotu aplikace (MongoDB, Express, úhlová a Node. js) běžící na [Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). 
-
-![Aplikace MEAN.js spuštěná v rámci služby Azure App Service](./media/create-mongodb-nodejs/meanjs-in-azure.png)
-
+## <a name="prerequisites"></a>Požadavky
+- Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. Můžete také použít [emulátor Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) s připojovacím řetězcem `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true`.
+- [Node. js](https://nodejs.org/)a praktické znalosti Node. js.
+- [Git](https://git-scm.com/downloads)
+- Pokud nechcete používat Azure Cloud Shell, [Azure CLI 2.0 +](/cli/azure/install-azure-cli).
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
-
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
-
-## <a name="prerequisites"></a>Požadavky 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
-[!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
-
-Abyste mohli spustit příkazy `npm` a `git`, musíte mít kromě rozhraní příkazového řádku Azure místně nainstalovaný [Node.js](https://nodejs.org/) a [Git](https://www.git-scm.com/downloads).
-
-Měli byste mít praktickou znalost Node.js. Tento rychlý start není určen jako pomůcka pro všeobecný vývoj aplikací v Node.js.
 
 ## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
 
 Spuštěním následujících příkazů naklonujte ukázkové úložiště. Toto ukázkové úložiště obsahuje výchozí aplikaci [MEAN.js](https://meanjs.org/).
 
-1. Otevřete příkazový řádek, vytvořte novou složku git-samples a pak příkazový řádek zavřete.
+1. Otevřete příkazový řádek, vytvořte novou složku git-samples a potom příkazový řádek zavřete.
 
     ```bash
     mkdir "C:\git-samples"
@@ -72,6 +61,8 @@ Spuštěním následujících příkazů naklonujte ukázkové úložiště. Tot
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
+Tato aplikace MongoDB napsaná v Node. js se připojuje k vaší databázi Azure Cosmos DB, která podporuje klienta MongoDB. Jinými slovy je transparentní pro aplikaci, že jsou data uložena v databázi Azure Cosmos DB.
+
 Nainstalujte požadované balíčky a spusťte aplikaci.
 
 ```bash
@@ -81,9 +72,11 @@ npm start
 ```
 Aplikace se pokusí připojit ke zdroji MongoDB, selže a ukončí se, když se na výstupu vrátí chyba [MongoError: connect ECONNREFUSED 127.0.0.1:27017].
 
-## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Pokud používáte nainstalované rozhraní příkazového řádku Azure, přihlaste se k předplatnému Azure pomocí příkazu [az login](/cli/azure/reference-index#az-login) a postupujte podle pokynů na obrazovce. Pokud používáte Azure Cloud Shell, můžete tento krok přeskočit.
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace rozhraní příkazového řádku Azure]. 
+
+Pokud používáte nainstalované rozhraní příkazového řádku Azure, přihlaste se ke svému předplatnému Azure pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) a postupujte podle pokynů na obrazovce. Pokud používáte Azure Cloud Shell, můžete tento krok přeskočit.
 
 ```azurecli
 az login 
@@ -91,13 +84,13 @@ az login
    
 ## <a name="add-the-azure-cosmos-db-module"></a>Přidání modulu služby Azure Cosmos DB
 
-Pokud používáte nainstalované rozhraní příkazového řádku Azure, zkontrolujte pomocí příkazu `az`, zda je komponenta `cosmosdb` už nainstalovaná. Pokud se komponenta `cosmosdb` v seznamu základních příkazů nachází, pokračujte k dalšímu příkazu. Pokud používáte Azure Cloud Shell, můžete tento krok přeskočit.
+Pokud používáte nainstalované rozhraní příkazového řádku Azure, zkontrolujte pomocí příkazu `cosmosdb`, zda je komponenta `az` už nainstalovaná. Pokud se komponenta `cosmosdb` v seznamu základních příkazů nachází, pokračujte k dalšímu příkazu. Pokud používáte Azure Cloud Shell, můžete tento krok přeskočit.
 
-Pokud se komponenta `cosmosdb` v seznamu základních příkazů nenachází, přeinstalujte [rozhraní příkazového řádku Azure]( /cli/azure/install-azure-cli).
+Pokud se komponenta `cosmosdb` v seznamu základních příkazů nenachází, přeinstalujte [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte pomocí příkazu [az group create](/cli/azure/group#az-group-create)[skupinu prostředků](../azure-resource-manager/management/overview.md). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure, jako například webové aplikace, databáze a účty úložiště. 
+Vytvořte pomocí příkazu [az group create](../azure-resource-manager/management/overview.md)[skupinu prostředků](/cli/azure/group#az-group-create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure, jako například webové aplikace, databáze a účty úložiště. 
 
 Následující příklad vytvoří skupinu prostředků pro oblast Západní Evropa. Pro skupinu prostředků vyberte jedinečný název.
 
@@ -158,7 +151,7 @@ DB/databaseAccounts/<cosmosdb-name>",
 
 ## <a name="connect-your-nodejs-application-to-the-database"></a>Připojení aplikace Node.js k databázi
 
-V tomto kroku připojíte ukázkovou aplikaci střední. js k databázi Cosmos, kterou jste právě vytvořili. 
+V tomto kroku připojíte ukázkovou aplikaci střední. js k účtu Azure Cosmos DB databáze, který jste právě vytvořili. 
 
 <a name="devconfig"></a>
 ## <a name="configure-the-connection-string-in-your-nodejs-application"></a>Konfigurace připojovacího řetězce v aplikaci Node.js
@@ -219,7 +212,7 @@ Pokud chcete zobrazovat uživatelská data vytvořená v předchozím kroku, za
 
 Do vyhledávacího pole nahoře zadejte **Azure Cosmos DB**. Když se otevře okno účtu Cosmos, vyberte svůj účet Cosmos. V levém navigačním panelu vyberte **Průzkumník dat**. Rozbalte kolekci v podokně Kolekce. Pak můžete zobrazovat dokumenty v kolekci, dotazovat se na data a dokonce vytvářet a spouštět uložené procedury, triggery a funkce UDF. 
 
-![Průzkumník dat na webu Azure Portal](./media/create-mongodb-nodejs/cosmosdb-connect-mongodb-data-explorer.png)
+![Průzkumník dat na portálu Azure Portal](./media/create-mongodb-nodejs/cosmosdb-connect-mongodb-data-explorer.png)
 
 
 ## <a name="deploy-the-nodejs-application-to-azure"></a>Nasaďte aplikaci Node.js do platformy Azure
@@ -253,7 +246,7 @@ git commit -m "configured MongoDB connection string"
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se naučili, jak vytvořit účet Cosmos, vytvořit kolekci a spustit konzolovou aplikaci. Nyní můžete importovat další data do databáze Cosmos. 
+V tomto rychlém startu jste zjistili, jak vytvořit účet Azure Cosmos DB MongoDB rozhraní API pomocí Azure Cloud Shell a vytvořit a spustit střední aplikaci. js pro přidání uživatelů k účtu. Teď můžete do svého účtu služby Azure Cosmos DB importovat další data.
 
 > [!div class="nextstepaction"]
-> [Importování dat MongoDB do databáze Azure Cosmos](mongodb-migrate.md)
+> [Importování dat MongoDB do služby Azure Cosmos DB](mongodb-migrate.md)

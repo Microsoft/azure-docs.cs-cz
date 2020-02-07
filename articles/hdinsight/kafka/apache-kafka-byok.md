@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 72fd23e4283925b91d749fef0afac4e87e93405c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: cba8a4fd64b948d7a3e443426ca1f779af68a3fe
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841636"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048982"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Přineste si vlastní klíč pro Apache Kafka ve službě Azure HDInsight
 
@@ -89,17 +89,21 @@ HDInsight podporuje jenom Azure Key Vault. Pokud máte vlastní Trezor klíčů,
 
     ![Nastavení oprávnění klíče pro Azure Key Vault přístup policy2](./media/apache-kafka-byok/add-key-vault-access-policy-secrets.png "Nastavení oprávnění klíče pro Azure Key Vault přístup policy2")
 
-    e. Vyberte **Uložit**.
+    e. Vyberte **Save** (Uložit).
 
     ![Uložit zásady přístupu Azure Key Vault](./media/apache-kafka-byok/add-key-vault-access-policy-save.png)
 
 ## <a name="create-hdinsight-cluster"></a>Vytvoření clusteru HDInsight
 
-Nyní jste připraveni vytvořit nový cluster HDInsight. BYOK se dá použít jenom pro nové clustery během vytváření clusteru. Šifrování nejde odebrat z clusterů BYOK a BYOK se nedá přidat do stávajících clusterů.
+Nyní jste připraveni vytvořit nový cluster HDInsight. Na kartě **základy** vyberte **Kafka** pro **typ clusteru**.
 
-![Kafka Disk Encryption v Azure Portal](./media/apache-kafka-byok/azure-portal-cluster-security-networking-kafka.png)
+![Azure Portal výběr typu Kafka](./media/apache-kafka-byok/azure-portal-cluster-basics-type-kafka.png)
 
-Během vytváření clusteru zadejte úplnou adresu URL klíče, včetně verze klíče. Například, `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Musíte také přiřadit spravovanou identitu ke clusteru a zadat identifikátor URI klíče. Úplné podrobnosti o vytváření clusterů najdete v tématu [Vytvoření clusterů Apache Hadoop pomocí Azure Portal](./apache-kafka-get-started.md)
+BYOK se dá použít jenom pro nové clustery během vytváření clusteru. Šifrování nejde odebrat z clusterů BYOK a BYOK se nedá přidat do stávajících clusterů.
+
+![Kafka Disk Encryption v Azure Portal](./media/apache-kafka-byok/azure-portal-cluster-security-networking-kafka-byok.png)
+
+Během vytváření clusteru zadejte úplnou adresu URL klíče, včetně verze klíče. například `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Musíte také přiřadit spravovanou identitu ke clusteru a zadat identifikátor URI klíče. Úplné podrobnosti o vytváření clusterů najdete v tématu [Vytvoření clusterů Apache Hadoop pomocí Azure Portal](./apache-kafka-get-started.md)
 
 ## <a name="rotating-the-encryption-key"></a>Otočení šifrovacího klíče
 

@@ -8,19 +8,19 @@ ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.author: gregman
-ms.openlocfilehash: 84dd1b6d657dfe5061f53698114f3dc4e0197571
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.author: philmea
+ms.openlocfilehash: 49a783e1360aeddc8eeaadba442acf578d9d6f7f
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510052"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046052"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Spuštění Azure IoT Edge v Ubuntu Virtual Machines
 
 Modul runtime Azure IoT Edge je co se změní na zařízení do zařízení IoT Edge. Modul runtime můžete nasadit na zařízení jako Raspberry Pi malé nebo velké průmyslové serveru. Jakmile je zařízení nakonfigurovaná s modulem runtime IoT Edge, můžete začít nasazovat obchodní logiky k němu z cloudu.
 
-Další informace o fungování modul runtime IoT Edge a jaké součásti jsou zahrnuty, naleznete v tématu [pochopení runtime Azure IoT Edge a jeho architektura](iot-edge-runtime.md).
+Další informace o tom, jak modul runtime IoT Edge funguje a jaké součásti jsou zahrnuté, najdete v tématu [pochopení Azure IoT Edge runtime a jeho architektury](iot-edge-runtime.md).
 
 V tomto článku jsou uvedené kroky, jak spustit modul runtime Azure IoT Edge na virtuálním počítači s Ubuntu 16,04 pomocí předkonfigurované [Azure IoT Edge na Ubuntu Azure Marketplace nabídky](https://aka.ms/azure-iot-edge-ubuntuvm).
 
@@ -96,7 +96,7 @@ Pokud chcete k tomuto virtuálnímu počítači po instalaci použít SSH, použ
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když máte zařízení IoT Edge zřízené s modulem runtime nainstalovaný, je možné [nasadit moduly IoT Edge](how-to-deploy-modules-portal.md).
+Teď, když máte nainstalovanou IoT Edge zařízení s nainstalovaným modulem runtime, můžete [nasadit IoT Edge moduly](how-to-deploy-modules-portal.md).
 
 Pokud máte problémy s instalací modulu runtime IoT Edge správně, podívejte se na stránku [Poradce při potížích](troubleshoot.md) .
 

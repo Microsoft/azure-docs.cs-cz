@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: juliako
-ms.openlocfilehash: 457f5b8eb0a740800f9cc0fa69bd554f0679ae9a
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
-ms.translationtype: MT
+ms.openlocfilehash: bbf3ba17e7f91e88136f2dac50c908262100e77a
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509168"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048781"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure Media Services starší součásti
 
@@ -26,7 +26,7 @@ V průběhu času byla k dispozici stabilní vylepšení a vylepšení komponent
  
 ## <a name="retirement-plans-of-legacy-components-and-migration-guidance"></a>Plány vyřazení zastaralých součástí a pokyny k migraci
 
-Oznamujeme vyřazení *Windows Azure Media Encoder* (WAME) a *Azure Media Encoderch* (ázev) mediálních procesorů. Tyto procesory se zařadí 1. března 2020.
+Oznamujeme vyřazení *Windows Azure Media Encoder* (WAME) a *Azure Media Encoderch* (ázev) mediálních procesorů. Tyto procesory jsou vyřazené 31 2020.
 
 * [Migrace z Windows Azure Media Encoder na Media Encoder Standard](migrate-windows-azure-media-encoder.md)
 * [Migrace z Azure Media Encoder na Media Encoder Standard](migrate-azure-media-encoder.md)

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: ff267aabe2f9e4cec38c307fe4382a84ba6d62df
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c8ddd343cd00b24506382521361ebad33ad112a7
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76288947"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049756"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Nastavení Vizualizace závislostí bez agentů pro posouzení
 
@@ -62,7 +62,7 @@ Vizualizace závislostí bez agentů nevyžaduje, abyste nainstalovali žádné 
 
 Nastavte uživatelský účet, který má požadovaná oprávnění, aby vyhodnocování serveru mělo přístup k virtuálnímu počítači pro zjišťování. Můžete zadat jeden uživatelský účet.
 
-- **Požadovaná oprávnění na virtuálních počítačích s Windows**: uživatelský účet vyžaduje přístup hosta.
+- **Požadovaná oprávnění na virtuálních počítačích s Windows**: uživatelský účet musí být místní nebo správce domény.
 - **Požadovaná oprávnění pro virtuální počítače se systémem Linux**: pro účet je vyžadováno oprávnění root. Tento uživatelský účet také vyžaduje tyto dvě funkce na/bin/netstat a/bin/LS soubory: CAP_DAC_READ_SEARCH a CAP_SYS_PTRACE.
 
 ## <a name="add-the-user-account-to-the-appliance"></a>Přidat uživatelský účet do zařízení
@@ -76,7 +76,7 @@ Přidejte účet následujícím způsobem:
 3. Vyberte **operační systém**.
 4. Zadejte popisný název účtu.
 5. Zadejte **uživatelské jméno** a **heslo** .
-6. Klikněte na možnost **Uložit**.
+6. Klikněte na **Uložit**.
 7. Klikněte na **Uložit a spusťte zjišťování**.
 
     ![Přidat uživatelský účet VM](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)

@@ -13,12 +13,12 @@ ms.date: 04/24/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: c916ac98774600c16eb26ed43b8ae4b273137865
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
-ms.translationtype: MT
+ms.openlocfilehash: 54df91d38541fbe17a28c9ae083ae0e7d0c9d88d
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695003"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063658"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>Doporučení pro Xamarin Android týkající se MSAL.NET
 Tento článek popisuje konkrétní informace týkající se použití Xamarin Androidu s knihovnou Microsoft Authentication Library pro .NET (MSAL.NET).
@@ -71,16 +71,19 @@ Tento řádek zajistí, že se ovládací prvek vrátí zpět na MSAL, jakmile s
 
 ## <a name="update-the-android-manifest"></a>Aktualizace manifestu pro Android
 `AndroidManifest.xml` by měl obsahovat následující hodnoty:
-```csharp
+```xml
 <activity android:name="microsoft.identity.client.BrowserTabActivity">
     <intent-filter>
         <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />
         <category android:name="android.intent.category.BROWSABLE" />
-        <data android:scheme="msal{client_id}" android:host="auth" />
+        <data android:scheme="msauth"
+              android:host="Enter_the_Package_Name"
+              android:path="/Enter_the_Signature_Hash"/>
          </intent-filter>
 </activity>
 ```
+Pro `android:host=` hodnotu nahraďte název balíčku, který jste zaregistrovali v Azure Portal. Hodnotu hash klíče, kterou jste zaregistrovali v Azure Portal, nahraďte hodnotou `android:path=`. Hodnota hash **podpisu by neměla být kódovaná** v adrese URL. Zajistěte, aby na začátku hodnoty hash podpisu existovala úvodní `/`.
 
 Nebo můžete [aktivitu vytvořit v kódu](https://docs.microsoft.com/xamarin/android/platform/android-manifest#the-basics) a nemusíte je ručně upravovat `AndroidManifest.xml`. V takovém případě je nutné vytvořit třídu, která má atribut `Activity` a `IntentFilter`. Třída, která představuje stejné hodnoty výše uvedeného XML, by byla:
 

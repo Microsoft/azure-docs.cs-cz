@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace Velpic pro automatické zřizování uživatelů pomocí Azure Active Directory | Dokumentace Microsoftu'
-description: Zjistěte, jak konfigurovat Azure Active Directory a automaticky zřizovat a rušit zřízení uživatelských účtů do Velpic.
+title: 'Kurz: Konfigurace VELPIC pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
+description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro VELPIC.
 services: active-directory
 documentationcenter: ''
 author: zhchia
@@ -16,88 +16,88 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: zhchia
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16c302fbe151d6cd8c2198240bc31a2bd69dbd7b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9b7a6c2c9b7ecb0b160f7481d95f7682f3f7a109
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60337650"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064117"
 ---
-# <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>Kurz: Konfigurace Velpic pro automatické zřizování uživatelů
+# <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>Kurz: Konfigurace VELPIC pro Automatické zřizování uživatelů
 
-Cílem tohoto kurzu je zobrazit kroky, které je potřeba provést Velpic a Azure AD a automaticky zřizovat a rušit zřízení uživatelských účtů ze služby Azure AD do Velpic.
+Cílem tohoto kurzu je Ukázat kroky, které musíte v VELPIC a Azure AD použít k automatickému zřízení a zrušení zřízení uživatelských účtů z Azure AD až VELPIC.
 
 > [!NOTE]
-> Tento kurz popisuje konektor postavené na službě zřizování uživatelů služby Azure AD. Důležité podrobnosti o význam této služby, jak to funguje a nejčastější dotazy najdete v tématu [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](../manage-apps/user-provisioning.md).
+> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu se předpokládá, že máte následující položky:
+Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
 
 * Tenanta Azure Active Directory.
-* Velpic tenantovi se [podnikový plán](https://www.velpic.com/pricing.html) nebo lépe povoleno
-* Uživatelský účet v Velpic s oprávněními správce
+* Tenant VELPIC s [plánem Enterprise](https://www.velpic.com/pricing.html) nebo lepším povoleným
+* Uživatelský účet v VELPIC s oprávněními správce
 
-## <a name="assigning-users-to-velpic"></a>Přiřazování uživatelů k Velpic
+## <a name="assigning-users-to-velpic"></a>Přiřazování uživatelů k VELPIC
 
-Azure Active Directory používá koncept nazvaný "přiřazení" k určení, kteří uživatelé měli obdržet přístup k vybrané aplikace. V rámci zřizování automatické uživatelských účtů se budou synchronizovat jenom uživatelé a skupiny, které se "přiřadily" aplikace ve službě Azure AD. 
+Azure Active Directory používá koncept nazvaný "přiřazení" k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelských účtů budou synchronizováni pouze uživatelé a skupiny, které byly přiřazeny do aplikace ve službě Azure AD. 
 
-Před konfigurací a povolení služby zřizování, je potřeba rozhodnout, jaké uživatele a/nebo skupiny ve službě Azure AD, kteří potřebují přístup k vaší aplikaci Velpic představují. Po se rozhodli, můžete přiřadit tito uživatelé do vaší aplikace Velpic podle zde uvedených pokynů:
+Než nakonfigurujete a povolíte službu zřizování, budete se muset rozhodnout, co můžou uživatelé a skupiny v Azure AD zastupovat s uživateli, kteří potřebují přístup k vaší aplikaci VELPIC. Po rozhodnutí můžete tyto uživatele přiřadit do aplikace VELPIC podle pokynů uvedených tady:
 
-[Přiřadit uživatele nebo skupiny k podnikové aplikace](../manage-apps/assign-user-or-group-access-portal.md)
+[Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-velpic"></a>Důležité tipy pro přiřazování uživatelů k Velpic
+### <a name="important-tips-for-assigning-users-to-velpic"></a>Důležité tipy pro přiřazení uživatelů k VELPIC
 
-* Dále je doporučeno jednoho uživatele Azure AD pro Velpic přidělí k otestování konfigurace zřizování. Další uživatele a/nebo skupiny může být přiřazen později.
+* Doporučuje se, aby se k otestování konfigurace zřizování přiřadil jeden uživatel Azure AD VELPIC. Další uživatele a skupiny můžete přiřadit později.
 
-* Při přiřazení uživatele k Velpic, je nutné vybrat buď **uživatele** roli, nebo jinou platnou specifické pro aplikaci (Pokud je k dispozici) v dialogovém okně přiřazení. Všimněte si, že **výchozího přístupu k** role nefunguje pro zřizování a tito uživatelé se přeskočí.
+* Když přiřadíte uživatele k VELPIC, musíte vybrat buď roli **uživatele** , nebo jinou platnou roli specifickou pro aplikaci (Pokud je dostupná) v dialogovém okně přiřazení. Všimněte si, že **výchozí role přístupu** nefunguje pro zřizování, a tito uživatelé se přeskočí.
 
-## <a name="configuring-user-provisioning-to-velpic"></a>Konfigurace zřizování uživatelů pro Velpic
+## <a name="configuring-user-provisioning-to-velpic"></a>Konfigurace zřizování uživatelů na VELPIC
 
-Tato část vás provede připojení služby Azure AD k Velpic pro uživatelský účet rozhraní API zřizování a konfigurace služby zřizování vytvářet, aktualizovat a vypnout přiřadit uživatelské účty v Velpic na základě uživatele a přiřazení skupiny ve službě Azure AD.
+V této části se seznámíte s připojením k rozhraní API pro zřizování uživatelských účtů ve službě Azure AD a konfigurací služby zřizování k vytváření, aktualizaci a zakázání přiřazených uživatelských účtů v VELPIC na základě přiřazení uživatelů a skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete také pro Velpic povoleno založené na SAML jednotného přihlašování, postupujte podle pokynů uvedených v [webu Azure portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce návrzích mezi sebou.
+> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro VELPIC, a to podle pokynů uvedených v tématu [Azure Portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování, i když se tyto dvě funkce navzájem doplňují.
 
-### <a name="to-configure-automatic-user-account-provisioning-to-velpic-in-azure-ad"></a>Postup konfigurace automatického zřizování uživatelských účtů do Velpic ve službě Azure AD:
+### <a name="to-configure-automatic-user-account-provisioning-to-velpic-in-azure-ad"></a>Konfigurace automatického zřizování uživatelských účtů na VELPIC ve službě Azure AD:
 
-1. V [webu Azure portal](https://portal.azure.com), přejděte **Azure Active Directory > podnikové aplikace > všechny aplikace** části.
+1. V [Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory > Enterprise Apps > všechny aplikace** .
 
-2. Pokud jste už nakonfigurovali Velpic pro jednotné přihlašování, vyhledejte svoji instanci služby Velpic pomocí vyhledávacího pole. V opačném případě vyberte **přidat** a vyhledejte **Velpic** v galerii aplikací. Ve výsledcích hledání vyberte Velpic a přidat do seznamu aplikací.
+2. Pokud jste už nakonfigurovali VELPIC pro jednotné přihlašování, vyhledejte vaši instanci VELPIC pomocí vyhledávacího pole. V opačném případě vyberte **Přidat** a vyhledejte **VELPIC** v galerii aplikací. Ve výsledcích hledání vyberte VELPIC a přidejte je do seznamu aplikací.
 
-3. Vyberte instanci Velpic a potom **zřizování** kartu.
+3. Vyberte svou instanci VELPIC a pak vyberte kartu **zřizování** .
 
-4. Nastavte **režim zřizování** k **automatické**.
+4. Nastavte **režim zřizování** na **automaticky**.
 
-    ![Velpic zřizování](./media/velpic-provisioning-tutorial/Velpic1.png)
+    ![Zřizování VELPIC](./media/velpic-provisioning-tutorial/Velpic1.png)
 
-5. V části **přihlašovacích údajů správce** části, zadejte **URL klienta a tajný klíč tokenu** z Velpic. () Tyto hodnoty můžete najít v rámci vašeho účtu Velpic: **Manage** > **Integration** > **Plugin** > **SCIM**)
+5. V části **přihlašovací údaje správce** zadejte **adresu URL klienta & tajného tokenu** VELPIC. (Tyto hodnoty můžete najít v rámci účtu VELPIC: **správa** > **modulu plug-in** > **Integration** > **SCIM**)
 
-    ![Hodnoty autorizace](./media/velpic-provisioning-tutorial/Velpic2.png)
+    ![Autorizační hodnoty](./media/velpic-provisioning-tutorial/Velpic2.png)
 
-6. Na webu Azure Portal, klikněte na tlačítko **Test připojení** aby Azure AD můžete připojit k aplikaci Velpic. Pokud se nepovede, ujistěte se, že váš účet Velpic má oprávnění správce a opakujte krok 5.
+6. V Azure Portal klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k vaší aplikaci VELPIC. Pokud se připojení nepovede, ujistěte se, že má váš účet VELPIC oprávnění správce, a zkuste krok 5 znovu.
 
-7. Zadejte e-mailovou adresu osoby nebo skupiny, která má obdržet oznámení zřizování chyby v **e-mailové oznámení** pole a zaškrtněte políčko níže.
+7. Zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování v poli **e-mail s oznámením** , a zaškrtněte políčko níže.
 
 8. Klikněte na **Uložit**.
 
-9. V oddílu mapování, vyberte **synchronizace Azure Active Directory uživatelům Velpic**.
+9. V části mapování vyberte **synchronizovat Azure Active Directory uživatelé VELPIC**.
 
-10. V **mapování atributů** , projděte si atributy uživatele, které se budou synchronizovat ze služby Azure AD na Velpic. Všimněte si, že vybrané atributy jako **odpovídající** použije vlastnosti tak, aby odpovídaly uživatelské účty v Velpic pro operace update. Vyberte tlačítko Uložit potvrďte změny.
+10. V části **mapování atributů** zkontrolujte atributy uživatele, které se budou synchronizovat z Azure AD do VELPIC. Všimněte si, že atributy vybrané jako **odpovídající** vlastnosti budou použity ke spárování uživatelských účtů v VELPIC pro operace aktualizace. Vyberte tlačítko Uložit potvrďte změny.
 
-11. Služba pro Velpic zřizování Azure AD povolit, změňte **stavu zřizování** k **na** v **nastavení** oddílu
+11. Pokud chcete povolit službu Azure AD Provisioning pro VELPIC, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
 12. Klikněte na **Uložit**.
 
-Tím se spustí počáteční synchronizaci všech uživatelů a skupiny přiřazené k Velpic v části Uživatelé a skupiny. Všimněte si, že počáteční synchronizace bude trvat déle než následné synchronizace, ke kterým dochází přibližně každých 40 minut za předpokladu, že služba běží. Můžete použít **podrobnosti synchronizace** části ke sledování průběhu a odkazech na zřizování sestavy aktivit, které popisují všechny akce provedené v zřizovací služba.
+Tím se spustí počáteční synchronizace všech uživatelů nebo skupin přiřazených VELPIC v části Uživatelé a skupiny. Všimněte si, že počáteční synchronizace bude trvat déle než další synchronizace, ke kterým dojde přibližně každých 40 minut, pokud je služba spuštěná. Část **Podrobnosti o synchronizaci** můžete použít ke sledování průběhu a následné odkazy na sestavy aktivit zřizování, které popisují všechny akce prováděné službou zřizování.
 
-Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Zjistěte, jak kontrolovat protokoly a získat sestavy o zřizování aktivity](../manage-apps/check-status-user-account-provisioning.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)

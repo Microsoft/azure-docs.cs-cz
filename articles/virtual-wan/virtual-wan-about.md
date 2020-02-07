@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 11/13/2019
+ms.date: 02/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 3b33015b3a69372f6783d59b28a111ec279dd860
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 9ac70252ce7c818ccbdecfd996b9970f011aa967
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048480"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77056338"
 ---
 # <a name="about-azure-virtual-wan"></a>Informace o službě Azure Virtual WAN
 
@@ -37,6 +37,13 @@ Existují dva typy virtuálních sítí WAN: Basic a Standard. V následující 
 
 Postup upgradu virtuální sítě WAN najdete v tématu [upgrade virtuální sítě WAN z úrovně Basic na standard](upgrade-virtual-wan.md).
 
+## <a name="architecture"></a>Architektura
+
+Informace o architektuře Virtual WAN a o tom, jak migrovat na virtuální síť WAN, najdete v následujících článcích:
+
+* [Architektura virtuální sítě WAN](migrate-from-hub-spoke-topology.md)
+* [Architektura globální tranzitní sítě](virtual-wan-global-transit-network-architecture.md)
+
 ## <a name="resources"></a>Prostředky pro Virtual WAN
 
 Pro konfiguraci virtuální sítě WAN mezi koncovými body vytvořte následující prostředky:
@@ -57,7 +64,7 @@ Pro konfiguraci virtuální sítě WAN mezi koncovými body vytvořte následuj�
 
   * **Lokalita:** Tento prostředek se používá jenom pro připojení Site-to-site. Prostředek sítě je **vpnsite**. Představuje vaše místní zařízení VPN a jeho nastavení. Pokud využíváte služeb partnera pro Virtual WAN, máte integrované řešení, které automaticky exportuje tyto informace do Azure.
 
-## <a name="connectivity"></a>Komunikační
+## <a name="connectivity"></a>Typy připojení
 
 Virtuální síť WAN umožňuje následující typy připojení: Site-to-Site VPN, User VPN (Point-to-site) a ExpressRoute.
 

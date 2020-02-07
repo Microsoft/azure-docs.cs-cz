@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 843dd403bc5434e2c79ee0bb85eb781b56bf3ec9
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: a2f39b6f58b250d68a3b2ce962f158c7df36d812
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291443"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046601"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) k Workday
 
@@ -45,7 +45,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * Workday podporuje jednotné přihlašování iniciované v **SP** .
 
-* Jakmile nakonfigurujete pracovní den, můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Po nakonfigurování Workday můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-workday-from-the-gallery"></a>Přidání pracovního dne z Galerie
 
@@ -123,12 +123,12 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
+1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. například `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -183,13 +183,13 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 5. V části **Zprostředkovatelé identity SAML** proveďte následující kroky:
 
-    ![Zprostředkovatelé identity SAML](./media/workday-tutorial/IC7829271.png "Zprostředkovatelé identit SAML")
+    ![Zprostředkovatelé identity SAML](./media/workday-tutorial/IC7829271.png "Zprostředkovatelé identity SAML")
 
     a. Do textového pole **název zprostředkovatele identity** zadejte název zprostředkovatele (například: *SPInitiatedSSO*).
 
     b. V Azure Portal v části nastavit pracovní **den** Zkopírujte hodnotu **identifikátoru Azure AD** a vložte ji do textového pole **vystavitele** .
 
-    ![Zprostředkovatelé identity SAML](./media/workday-tutorial/IC7829272.png "Zprostředkovatelé identit SAML")
+    ![Zprostředkovatelé identity SAML](./media/workday-tutorial/IC7829272.png "Zprostředkovatelé identity SAML")
 
     c. V Azure Portal v části nastavit pracovní **den** ZKOPÍRUJTE hodnotu **URL pro odhlášení** a vložte ji do textového pole **Adresa URL odpovědi na odhlášení** .
 
@@ -199,11 +199,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     f. Klikněte na **certifikát veřejného klíče zprostředkovatele identity**a pak klikněte na **vytvořit**.
 
-    ![Vytvoření](./media/workday-tutorial/IC782928.png "Vytváření")
+    ![Vytvoření](./media/workday-tutorial/IC782928.png "Create")
 
     g. Klikněte na **vytvořit veřejný klíč x509**.
 
-    ![Vytvoření](./media/workday-tutorial/IC782929.png "Vytváření")
+    ![Vytvoření](./media/workday-tutorial/IC782929.png "Create")
 
 6. V části **Zobrazit veřejný klíč x509** proveďte následující kroky:
 
@@ -224,7 +224,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     e.  Do textového pole **certifikát** vložte obsah schránky.
 
-    f.  Klikněte na **OK**.
+    f.  Klikněte na tlačítko **OK**.
 
 7. Proveďte následující kroky:
 
@@ -238,9 +238,9 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Metoda podpisu žádosti o ověření](./media/workday-tutorial/WorkdaySSOConfiguration.png "Metoda podpisu žádosti o ověření")
 
-    d. Klikněte na **OK**.
+    d. Klikněte na tlačítko **OK**.
 
-    ![OK](./media/workday-tutorial/IC782933.png "OK")
+    ![Ok](./media/workday-tutorial/IC782933.png "OK")
 
     > [!NOTE]
     > Ujistěte se prosím, že jste správně nastavili jednotné přihlašování. Pokud povolíte jednotné přihlašování s nesprávným nastavením, možná nebudete moct aplikaci zadat pomocí vašich přihlašovacích údajů a můžete ji uzamknout. V takovém případě Workday poskytuje adresu URL pro zálohování, kde se uživatelé můžou přihlašovat pomocí normálního uživatelského jména a hesla v následujícím formátu: [vaše adresa URL pracovního dne]/Login.Flex? redirect = n
@@ -255,7 +255,7 @@ Když vyberete dlaždici Workday na přístupovém panelu, měli byste být auto
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
@@ -263,6 +263,6 @@ Když vyberete dlaždici Workday na přístupovém panelu, měli byste být auto
 
 - [Vyzkoušejte si Workday ve službě Azure AD](https://aad.portal.azure.com)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/protect-workday)
+- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Jak chránit Workday pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Jak chránit Workday pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/protect-workday)

@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5f36e82c2ff95800a058f56f9cc6b80ddf02dbf
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 1c46facb2d43137175730bf04fea0efec9c1ecbd
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967713"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063845"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD
 
@@ -44,7 +44,7 @@ A cyber-attack, if successful, can shut down operations not just for a few hours
 does the article really start here?-->
 Pro většinu organizací závisí zabezpečení obchodních prostředků na integritě privilegovaných účtů, které spravují a spravují systémy IT. Internetoví útočníci se zaměřují na privilegovaný přístup k systémům infrastruktury (například ke službě Active Directory a Azure Active Directory), aby získali přístup k citlivým datům organizace. 
 
-Tradiční přístupy, které se zaměřují na zabezpečení počátečních a výstupních bodů sítě, protože primární hraniční zabezpečení je méně účinné kvůli nárůstu používání aplikací SaaS a osobních zařízení na internetu. Přirozenou náhradou obvodu zabezpečení sítě ve složitém moderním podniku jsou ověřovací a autorizační kontrolní mechanizmy ve vrstvě identity organizace.
+Tradiční přístupy, které se zaměřují na zabezpečení počátečních a výstupních bodů sítě, protože primární hraniční zabezpečení je méně účinné kvůli nárůstu používání aplikací SaaS a osobních zařízení na internetu. Přirozeným nahrazením hraničního zabezpečení sítě ve složitých moderních sítích jsou ovládací prvky pro ověřování a autorizaci ve vrstvě identity organizace.
 
 Privilegované účty správců efektivně řídí toto nové "hraniční zabezpečení". Je důležité chránit privilegovaný přístup bez ohledu na to, jestli je prostředí místní, cloudové nebo hybridní místní a cloudové hostované služby. Ochrana přístupu pro správu proti určitému nežádoucí osoby vyžaduje, abyste si vybrali úplný a důkladné přístup k izolaci systémů vaší organizace před riziky. 
 
@@ -230,7 +230,7 @@ Fáze 3 navazuje na zmírnění rizik z fáze 2 a je navržená tak, aby se impl
 
 Více firemních uživatelů získává privilegovaný přístup prostřednictvím cloudových služeb, což může vést ke zvýšení nespravované platformy. Zahrnuje to i uživatele globální správci pro Office 365, Správce předplatného Azure a uživatele, kteří mají přístup správce k virtuálním počítačům nebo prostřednictvím aplikací SaaS. Místo toho by organizace měli mít všechny zaměstnance, zejména správci, zpracovávat každodenní obchodní transakce jako neprivilegovaných uživatelů a provádět v případě potřeby pouze práva správce. Vzhledem k tomu, že počet uživatelů v rolích správce se mohl od počátečního přijetí vypěstovat, dokončete kontroly přístupu a ověřte a potvrďte každého uživatele, který má nárok na aktivaci oprávnění správce. 
 
-Udělejte toto:
+Postupujte takto:
 
 * Určete, kteří uživatelé jsou správci Azure AD, umožněte na vyžádání přístup správce za běhu a řízení zabezpečení na základě rolí.
 * Převeďte uživatele, kteří nemají žádné jasné zdůvodnění přístupu správce k jiné roli (Pokud žádnou z oprávněných rolí neodeberete).
@@ -241,7 +241,7 @@ Vyžadují vedoucí pracovníky pro správu, vysoké úrovně, kritické pracovn
 
 #### <a name="use-dedicated-workstations-for-administration-for-azure-ad"></a>Použití vyhrazených pracovních stanic pro správu Azure AD
 
-Útočníci se můžou pokusit cílit na privilegované účty a získat tak přístup k datům a systémům organizace, aby mohli narušit integritu a pravost dat, a to prostřednictvím škodlivého kódu, který mění logiku programu nebo snoopuje správce zadání přihlašovacích údajů. Pracovní stanice s privilegovaným přístupem poskytují vyhrazený operační systém pro citlivé úlohy, který je chráněný před útoky z internetu a jinými vektory hrozeb. Oddělení těchto citlivých úloh a účtů od každodenních pracovních stanic a zařízení zajišťuje velmi silnou ochranu před útoky typu phishing, ohrožení zabezpečení aplikací a operačních systémů, různých útoků na zosobnění a útoků krádeže přihlašovacích údajů, jako je třeba klávesová zkratka. Logging, pass-the-hash a Pass-The-Ticket. Nasazením přístupových pracovních stanic s privilegovaným přístupem můžete snížit riziko, že správci zadávají přihlašovací údaje správce, s výjimkou prostředí, které bylo posílené. Další informace najdete v tématu [pracovní stanice s privilegovaným přístupem](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations).
+Útočníci se můžou pokusit cílit na privilegované účty a získat tak přístup k datům a systémům organizace, aby mohli narušit integritu a pravost dat, a to prostřednictvím škodlivého kódu, který mění logiku programu nebo snoopuje správce zadání přihlašovacích údajů. Pracovní stanice s privilegovaným přístupem (privilegovaným přístupem) poskytují vyhrazený operační systém pro citlivé úkoly, které jsou chráněné před útoky z Internetu a vektory hrozeb. Oddělení těchto citlivých úloh a účtů od každodenních pracovních stanic a zařízení zajišťuje velmi silnou ochranu před útoky typu phishing, ohrožení zabezpečení aplikací a operačních systémů, různých útoků na zosobnění a útoků krádeže přihlašovacích údajů, jako je třeba klávesová zkratka. Logging, pass-the-hash a Pass-The-Ticket. Nasazením přístupových pracovních stanic s privilegovaným přístupem můžete snížit riziko, že správci zadávají přihlašovací údaje správce, s výjimkou prostředí, které bylo posílené. Další informace najdete v tématu [pracovní stanice s privilegovaným přístupem](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations).
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>Kontrola Národního institutu standardů a technologických doporučení pro zpracování incidentů 
 
@@ -298,11 +298,11 @@ Integrace protokolů Azure umožňuje integrovat nezpracované protokoly z vaši
 
 #### <a name="implement-user-provisioning-for-connected-apps"></a>Implementace zřizování uživatelů pro připojené aplikace
 
-Azure AD umožňuje automatizovat vytváření, údržbu a odebírání identit uživatelů v cloudových aplikacích (SaaS), jako jsou Dropbox, Salesforce, ServiceNow a tak dále. Další informace najdete v tématu [Automatizace zřizování a rušení uživatelů při SaaS aplikací pomocí Azure AD](../manage-apps/user-provisioning.md).
+Azure AD umožňuje automatizovat vytváření, údržbu a odebírání identit uživatelů v cloudových aplikacích (SaaS), jako jsou Dropbox, Salesforce, ServiceNow a tak dále. Další informace najdete v tématu [Automatizace zřizování a rušení uživatelů při SaaS aplikací pomocí Azure AD](../app-provisioning/user-provisioning.md).
 
 #### <a name="integrate-information-protection"></a>Integrace ochrany informací
 
-MCAS umožňuje prozkoumat soubory a nastavovat zásady na základě popisků klasifikace Azure Information Protection a umožnit tak větší viditelnost a kontrolu nad daty v cloudu. Prohledávání a klasifikace souborů v cloudu a použití popisků služby Azure Information Protection. Další informace najdete v tématu [integrace služby Azure Information Protection](https://docs.microsoft.com/cloud-app-security/azip-integration).
+MCAS umožňuje prozkoumat soubory a nastavovat zásady na základě popisků klasifikace Azure Information Protection a umožnit tak větší viditelnost a kontrolu nad daty v cloudu. Prohledávání a klasifikace souborů v cloudu a použití popisků služby Azure Information Protection. Další informace najdete v tématu [integrace Azure Information Protection](https://docs.microsoft.com/cloud-app-security/azip-integration).
 
 #### <a name="configure-conditional-access"></a>Konfigurace podmíněného přístupu
 
@@ -318,7 +318,7 @@ Abyste měli jistotu, že je přístup uživatelů chráněný i v připojených
 * Zabránit úniku dat
 * Minimalizace rizik a automatizované ochrany před hrozbami a vynucení zásad
 
-Agent Cloud App Security SIEM integruje Cloud App Security se serverem SIEM, aby umožnil centralizované monitorování výstrah a aktivit Office 365. Spouští se na vašem serveru a vybírá výstrahy a aktivity z Cloud App Security a streamuje je na server SIEM. Další informace najdete v tématu [integrace řešení SIEM](https://docs.microsoft.com/cloud-app-security/siem).
+Agent Cloud App Security SIEM integruje Cloud App Security se serverem SIEM, aby umožnil centralizované monitorování výstrah a aktivit Office 365. Spouští se na vašem serveru a vybírá výstrahy a aktivity z Cloud App Security a streamuje je na server SIEM. Další informace najdete v tématu věnovaném [integraci Siem](https://docs.microsoft.com/cloud-app-security/siem).
 
 ## <a name="stage-4-continue-building-defenses-to-a-more-proactive-security-posture"></a>Fáze 4: pokračování v budování ochrany pro aktivnější stav zabezpečení
 

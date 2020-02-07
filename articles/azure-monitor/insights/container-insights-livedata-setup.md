@@ -3,12 +3,12 @@ title: Nastavení Azure Monitor pro kontejnery živá data (Preview) | Microsoft
 description: Tento článek popisuje, jak nastavit zobrazení protokolů kontejnerů v reálném čase (stdout/stderr) a událostí bez použití kubectl s Azure Monitor for Containers.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 1ca52384e5ce657e4fedeb42e3304449a2d6be11
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: cf42eea99e437a76bb437b23f6eaffae1f1f3bc6
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030668"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063760"
 ---
 # <a name="how-to-setup-the-live-data-preview-feature"></a>Jak nastavit funkci živých dat (Preview)
 
@@ -114,7 +114,7 @@ Další informace o pokročilém nastavení zabezpečení v Kubernetes najdete v
     >[!NOTE]
     >Pokud tuto funkci používáte v Azure Čína, měla by být první základní hodnota URL `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` a druhá základní hodnota URL by měla být `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`. 
     
-4. Po registraci adres URL pro přesměrování vyberte v části **Rozšířená nastavení**možnost **přístupové tokeny** a **tokeny ID** a uložte změny.
+4. Po registraci adres URL pro přesměrování v části **implicitní udělení**vyberte možnost **přístupové tokeny** a **tokeny ID** a uložte provedené změny.
 
 >[!NOTE]
 >Konfigurace ověřování pomocí Azure Active Directory pro jednotné přihlašování se dá provést jenom při počátečním nasazení nového clusteru AKS. Nelze nakonfigurovat jednotné přihlašování v pro cluster AKS, už nasazená.

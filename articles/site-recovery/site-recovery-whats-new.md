@@ -3,20 +3,18 @@ title: Co je nového v Azure Site Recovery
 description: Obsahuje souhrn nových funkcí a nejnovější aktualizace služby Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.openlocfilehash: d6aa04586c9c087a736c7e1b10b8c21328a63cab
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: cae653c9e51e2a497d6fa3781415a1f836053593
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934940"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064525"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co je nového ve službě Site Recovery
 
 Služba [Azure Site Recovery](site-recovery-overview.md) se průběžně aktualizuje a vylepšuje. V tomto článku získáte informace o nejnovějších vydáních, nových funkcích a novém obsahu. Tato stránka je pravidelně aktualizována.
 
 V kanálu [aktualizací Azure](https://azure.microsoft.com/updates/?product=site-recovery) můžete postupovat a přihlásit se k odběru oznámení o Site Recovery aktualizací.
-
-
 
 ## <a name="supported-updates"></a>Podporované aktualizace
 
@@ -30,18 +28,18 @@ Pro Site Recovery komponenty podporujeme N-4 verze, kde N je nejnovější vydan
 [Kumulativní aktualizace 40](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 [Kumulativní aktualizace 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
 
-
-
 [Přečtěte si další informace](service-updates-how-to.md) o instalaci a podpoře aktualizací.
 
 ## <a name="updates-january-2020"></a>Aktualizace (leden 2020)
 
 ### <a name="update-rollup-44"></a>Kumulativní aktualizace 44
+
 [Kumulativní aktualizace 44](https://support.microsoft.com/help/4538187/update-rollup-44-for-azure-site-recovery) poskytuje následující aktualizace.
 
 **Aktualizace** | **Podrobnosti**
 --- | ---
-**Opravy a vylepšení problémů** | Řada aktualizací Site Recovery agentů a zprostředkovatelů (jak je popsáno v souhrnu).
+**Zprostředkovatelé a agenti** | Neexistovaly žádné aktualizace pro poskytovatele Site Recovery a agenty.
+**Opravy a vylepšení problémů** | Řada oprav a vylepšení, jak je popsáno v souhrnu.
 
 ### <a name="azure-vmware-disaster-recovery"></a>Zotavení po havárii Azure VMware
 

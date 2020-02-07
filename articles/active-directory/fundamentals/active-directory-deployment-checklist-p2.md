@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc06931dd36c9ecd91ec1d748b9463f47f7afafc
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: f84226a631014b51338d47887fe3bafc969dc571
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72880591"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063641"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Průvodce nasazením funkce Azure Active Directory
 
@@ -26,7 +26,7 @@ Dobře plánovaná a spuštěná infrastruktura identity PAVES způsob zabezpeč
 
 Zákazníci navíc můžou ověřit své [zabezpečené skóre identity](identity-secure-score.md) a zjistit, jak se budou zarovnávat podle osvědčených postupů Microsoftu. Před a po implementaci těchto doporučení Zkontrolujte své zabezpečené skóre, abyste viděli, jak dobře pracujete v porovnání s ostatními uživateli ve vašem odvětví a s jinými organizacemi vaší velikosti.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Mnohé z doporučení v tomto průvodci můžete implementovat pomocí Azure AD Free nebo bez licence vůbec. Tam, kde jsou licence požadovány, je pro splnění této smlouvy nutné zadat, jaká licence je vyžadována minimálně.
 
@@ -41,7 +41,7 @@ Další informace o licencování najdete na následujících stránkách:
 
 V této fázi můžou správci ve službě Azure AD před importem nebo vytvořením normálních uživatelských účtů vytvořit bezpečnější a snadno ovladatelné základní funkce zabezpečení. Tato základní fáze vám zajistí, aby se od začátku nastavilější stav a aby se koncoví uživatelé museli do nových konceptů zavádět jenom jednou.
 
-| Úkol | Detaily | Požadovaná licence |
+| Úkol | Podrobnosti | Požadovaná licence |
 | ---- | ------ | ---------------- |
 | [Určení více než jednoho globálního správce](../users-groups-roles/directory-emergency-access.md) | Pokud je to možné, přiřaďte alespoň dva trvalé účty globálního správce jenom v cloudu. Tyto účty se nepoužívají denně a měly by mít dlouhá a složitá hesla. | Azure AD Free |
 | [Pokud je to možné, používejte jiné než globální role správy](../users-groups-roles/directory-assign-admin-roles.md) | Poskytněte správcům jenom přístup, který potřebují jenom pro oblasti, ke kterým potřebují přístup. Ne všichni správci musí být globální správci. | Azure AD Free |
@@ -62,7 +62,7 @@ V této fázi můžou správci ve službě Azure AD před importem nebo vytvoře
 
 V dalším kroku přidáme do základu, která je ve fázi 1, importem uživatelů a povolením synchronizace, plánováním přístupu hostů a přípravou k podpoře dalších funkcí.
 
-| Úkol | Detaily | Požadovaná licence |
+| Úkol | Podrobnosti | Požadovaná licence |
 | ---- | ------ | ---------------- |
 | [Instalace služby Azure AD Connect](../connect/active-directory-aadconnect-select-installation.md) | Připravte se na synchronizaci uživatelů ze stávajícího místního adresáře do cloudu. | Azure AD Free |
 | [Implementace synchronizace hodnot hash hesel](../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md) | Synchronizuje hodnoty hash hesel, aby bylo možné replikovat změny hesel, chybnou detekci a nápravu hesla a nevrácené zprávy o přihlašovacích údajích. | Azure AD Free |
@@ -78,7 +78,7 @@ V dalším kroku přidáme do základu, která je ve fázi 1, importem uživatel
 
 Jak pokračujeme v sestavách v předchozích fázích, identifikujeme kandidátské aplikace pro migraci a integraci s Azure AD a dokončíte nastavení těchto aplikací.
 
-| Úkol | Detaily | Požadovaná licence |
+| Úkol | Podrobnosti | Požadovaná licence |
 | ---- | ------ | ---------------- |
 | Identifikujte své aplikace | Identifikujte aplikace používané ve vaší organizaci: místní, SaaS aplikace v cloudu a další obchodní aplikace. Určete, jestli tyto aplikace můžou a by měly být spravované pomocí Azure AD. | Není vyžadována žádná licence. |
 | [Integrace podporovaných aplikací SaaS v galerii](../manage-apps/add-application-portal.md) | Azure AD obsahuje galerii obsahující tisíce předem integrovaných aplikací. Některé aplikace, které vaše organizace používá, jsou pravděpodobně v galerii přístupné přímo z Azure Portal. | Azure AD Free |
@@ -88,13 +88,13 @@ Jak pokračujeme v sestavách v předchozích fázích, identifikujeme kandidát
 
 Fáze 4 se dohlíží k správcům, kteří vynucují zásady minimálního oprávnění pro správu, dokončují první kontroly přístupu a povolují automatizaci běžných úkolů životního cyklu uživatele.
 
-| Úkol | Detaily | Požadovaná licence |
+| Úkol | Podrobnosti | Požadovaná licence |
 | ---- | ------ | ---------------- |
 | [Vynutilo použití Privileged Identity Management](../privileged-identity-management/pim-security-wizard.md) | Odeberte role pro správu z normálního denního uživatelského účtu. Uživatelé s právy pro správu mají nárok na používání své role po úspěšném ověření služby Multi-Factor Authentication, poskytování obchodního odůvodnění nebo žádosti o schválení od určených schvalovatelů. | Azure AD Premium P2 |
 | [Dokončení kontroly přístupu pro role adresáře Azure AD v PIM](../privileged-identity-management/pim-how-to-start-security-review.md) | Spolupracujte se svými týmy zabezpečení a vedoucími k vytvoření zásady kontroly přístupu ke kontrole přístupu pro správu na základě zásad vaší organizace. | Azure AD Premium P2 |
 | [Implementace zásad členství v dynamické skupině](../users-groups-roles/groups-dynamic-membership.md) | Pomocí dynamických skupin můžete automaticky přiřazovat uživatele do skupin na základě jejich atributů z HR (nebo ze zdroje pravdy), jako je oddělení, název, oblast a další atributy. |  |
 | [Implementace zřizování aplikace založené na skupinách](../manage-apps/what-is-access-management.md) | Pro Automatické zřizování uživatelů pro aplikace SaaS použijte zřizování skupinového přístupu na základě skupin. |  |
-| [Automatizace zřizování a rušení zřizování uživatelů](../manage-apps/user-provisioning.md) | Odebrání ručních kroků z životního cyklu účtu zaměstnance, aby nedocházelo k neoprávněnému přístupu Synchronizujte identity ze zdroje pravdy (systému HR) do Azure AD. |  |
+| [Automatizace zřizování a rušení zřizování uživatelů](../app-provisioning/user-provisioning.md) | Odebrání ručních kroků z životního cyklu účtu zaměstnance, aby nedocházelo k neoprávněnému přístupu Synchronizaci identit mezi vaším zdrojem pravdivých informací (HR systému) do služby Azure AD. |  |
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/03/2020
+ms.date: 02/05/2020
 ms.author: b-juche
-ms.openlocfilehash: 9559f1d52f87314670162482e10714dad13be5bb
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: aaa7e5e65ced2a9899bef5a811ee74be42a8548f
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046158"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048812"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Nejčastější dotazy týkající se Azure NetApp Files
 
@@ -131,7 +131,9 @@ Ano, před nasazením svazku SMB musíte vytvořit připojení ke službě Activ
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>Kolik připojení služby Active Directory je podporováno?
 
-Azure NetApp Files aktuálně podporuje jenom jedno připojení Active Directory pro každý účet NetApp, na předplatné a v každé oblasti. připojení není sdíleno mezi NetApp účty.
+Azure NetApp Files nepodporuje více připojení služby Active Directory (AD) v jedné *oblasti*, i když jsou připojení služby AD v různých účtech NetApp. V jednom *předplatném*ale můžete mít několik připojení AD, pokud jsou připojení služby AD v různých oblastech. Pokud potřebujete více připojení služby AD v jedné oblasti, můžete k tomu použít samostatné odběry. 
+
+Připojení AD je nakonfigurované na účet NetApp. připojení AD je viditelné jenom prostřednictvím účtu NetApp, ve kterém je vytvořený.
 
 ### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Podporuje Azure NetApp Files Azure Active Directory? 
 

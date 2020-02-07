@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/21/2019
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: ef2b98821b28d8a49e5f16bf1c6ac176eb8b5793
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: b9f434f2d3c06d3db0bfda7c5853cc835ff64035
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74407093"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047767"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>Generování souboru žádosti o podepsání certifikátu
 
@@ -26,6 +26,10 @@ Vygenerujte soubor žádosti o podepsání certifikátu (CSR), který Apple pou�
 1. Vyberte možnost **přístup do řetězce klíčů**, rozbalte **Pomocníka s certifikátem**a pak vyberte **požádat o certifikát od certifikační autority**.
 
     ![Použití nástroje Keychain Access k vyžádání nového certifikátu](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-request-cert-from-ca.png)
+    
+> [!NOTE]
+> OS X standardně vybere první položku v kategorii, kterou jste vybrali v nástroji pro přístup k řetězci klíčů. To může být problematické, pokud jste v části **certifikáty** a společnost **Apple celosvětově Developer Relations certifikační autorita** *není první* položkou v seznamu. Než si vyžádáte certifikát, ujistěte se, že jste v části **certifikáty** , a pak vyberte **Apple pro vývojáře. certifikační autorita**.
+
 
 1. Vyberte svou **e-mailovou adresu uživatele**, zadejte hodnotu pro **běžný název** , ujistěte se, že jste zadali možnost **uloženo na disk**a pak vyberte **pokračovat**. Ponechte **e-mailovou adresu CA** prázdnou, protože není potřeba.
 
@@ -148,7 +152,7 @@ Pokud chcete odesílat nabízená oznámení do aplikace pro iOS, Zaregistrujte 
 
 1. Přejděte do umístění profilu pro zřizování a dvakrát na něj klikněte a nainstalujte ho do vývojového počítače s Xcode.
 
-## <a name="create-a-notification-hub"></a>Vytvoření centra oznámení
+## <a name="create-a-notification-hub"></a>Vytvořit centrum oznámení
 
 V této části vytvoříte centrum oznámení a nakonfigurujete ověřování pomocí služby APN pomocí nabízeného certifikátu. p12 push Certificate, který jste vytvořili dříve. Pokud chcete použít Centrum oznámení, které jste už vytvořili, můžete přeskočit na krok 5.
 
@@ -170,6 +174,6 @@ V této části vytvoříte centrum oznámení a nakonfigurujete ověřování p
 
     ![Konfigurace certifikační služby APNs na webu Azure Portal](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-apple-config-cert.png)
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 Nyní jste nakonfigurovali centrum oznámení pomocí služby APNs. Máte také připojovací řetězce k registraci aplikace a odesílání nabízených oznámení.

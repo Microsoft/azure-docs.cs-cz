@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 02/03/2020
+ms.date: 02/06/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 49c5566454a93307dedd150a3508b33dbd7506e6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 1abcd22621d427244f9b0533aaea46cbf1f356ad
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022354"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064032"
 ---
 # <a name="use-collections-in-the-my-apps-portal"></a>Použití kolekcí na portálu moje aplikace
 
-Pracovní prostory jsou různá zobrazení aplikací, která vidíte na portálu **Moje aplikace** . Aplikace se dají seskupit do kolekcí podle funkcí oddělení nebo role uživatele, například. Pokud nevidíte žádné kolekce nebo kategorie, znamená to, že váš správce se s vámi nevytvořil ani nesdílí. Pokud potřebujete další pomoc nebo oprávnění k zobrazení sdílených kolekcí, obraťte se na helpdesk vaší organizace.
+Kolekce jsou různá zobrazení aplikací, která vidíte na portálu **Moje aplikace** . Aplikace se dají seskupit do kolekcí podle funkcí oddělení nebo role uživatele, například. Pokud nevidíte žádné kolekce nebo kategorie, znamená to, že váš správce se s vámi nevytvořil ani nesdílí. Pokud potřebujete další pomoc nebo oprávnění k zobrazení sdílených kolekcí, obraťte se na helpdesk vaší organizace.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 

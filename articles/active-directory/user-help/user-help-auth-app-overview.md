@@ -2,7 +2,7 @@
 title: Co je aplikace Microsoft Authenticator? – Azure Active Directory | Dokumentace Microsoftu
 description: Přečtěte si o aplikaci Microsoft Authenticator, včetně toho, jak je, jak funguje a jaké informace jsou součástí této části obsahu.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: user-help
 ms.workload: identity
 ms.topic: overview
 ms.date: 01/15/2020
-ms.author: lizross
-ms.openlocfilehash: 010302d3a4c7498f7fa5344dc73e7b182c4b94bc
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: c95ae2e48a7d5a3b9e9e28b1d4e14b670205c043
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704659"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062281"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Co je aplikace Microsoft Authenticator?
 
@@ -37,7 +37,7 @@ Aplikaci Microsoft Authenticator můžete použít několika způsoby, mezi kter
 
 ## <a name="terminology"></a>Terminologie
 
-| Doba účinnosti|Popis|
+| Termín|Popis|
 | ----|-----------|
 | Dvojúrovňové ověřování | Proces ověření, který vyžaduje, abyste konkrétně použili jenom dvě části ověřovacích informací, jako je heslo a PIN kód. Aplikace Microsoft Authenticator podporuje standardní dvojúrovňové ověřování a přihlašování se všemi hesly. |
 | Multi-Factor Authentication (MFA) | Každé dvojúrovňové ověřování je Multi-Factor Authentication a vyžaduje, abyste v závislosti na požadavcích vaší organizace používali *aspoň* dvě části ověřovacích informací. |

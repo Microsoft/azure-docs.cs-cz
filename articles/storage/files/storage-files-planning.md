@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b77d6fe03a051c019519f195d55cdeb00fb9afb2
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5a9e5e014740302c439036bd3889761f4750344f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906271"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062859"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
-[Služba soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní protokol SMB. Vzhledem k tomu, že soubory Azure jsou plně spravované, jejich nasazení v produkčních scénářích je mnohem jednodušší než nasazení a Správa souborového serveru nebo zařízení NAS. Tento článek popisuje témata, která je potřeba vzít v úvahu při nasazení sdílené složky Azure pro produkční použití v rámci vaší organizace.
+[Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní průmyslový protokol SMB. Vzhledem k tomu, že soubory Azure jsou plně spravované, jejich nasazení v produkčních scénářích je mnohem jednodušší než nasazení a Správa souborového serveru nebo zařízení NAS. Tento článek popisuje témata, která je potřeba vzít v úvahu při nasazení sdílené složky Azure pro produkční použití v rámci vaší organizace.
 
 ## <a name="management-concepts"></a>Koncepty správy
 
@@ -120,7 +120,7 @@ Velikost zřízené sdílené složky můžete snížit pod použitou GiB. Pokud
 
 Následující tabulka ilustruje několik příkladů těchto vzorců pro zřízené velikosti sdílených složek:
 
-|Kapacita (GiB) | Základní IOPS | Shlukový IOPS | Výstup (MiB/s) | Příchozí přenosy (MiB/s) |
+|Kapacita (GiB) | Směrný IOPS | Shlukový IOPS | Výstup (MiB/s) | Příchozí přenosy (MiB/s) |
 |---------|---------|---------|---------|---------|
 |100         | 100     | Až 300     | 66   | 44   |
 |500         | 500     | Až 1 500   | 90   | 60   |
@@ -199,13 +199,12 @@ Tato část se vztahuje pouze na standardní sdílené složky. Všechny sdílen
 
 - Převod účtu LRS/ZRS na GRS/GZRS nebude možné použít pro žádný účet úložiště s povolenými velkými sdílenými složkami.
 
-### <a name="regional-availability"></a>Dostupnost podle oblastí
+### <a name="regional-availability"></a>Regionální dostupnost
 
 Standardní sdílené složky s 100 TiB limit kapacity jsou k dispozici globálně ve všech oblastech Azure –
 
 - LRS: všechny oblasti kromě jar (Jižní Afrika – sever a Jižní Afrika – západ)
-   - Národní cloudy (vlády, Německo, Čína) jsou podporované prostřednictvím PowerShellu a rozhraní příkazového řádku Azure (CLI). Žádná podpora portálu 
-   - Východní USA USA 2, východ, Západní Evropa: všechny nové účty jsou podporovány. Malý počet existujících účtů nedokončil proces upgradu. Můžete zjistit, jestli vaše stávající účty úložiště dokončily proces upgradu tím, že se pokusí [Povolit velké sdílené složky souborů](storage-files-how-to-create-large-file-share.md).
+   - Východní USA a Západní Evropa: jsou podporovány všechny nové účty. Malý počet existujících účtů nedokončil proces upgradu. Můžete zjistit, jestli vaše stávající účty úložiště dokončily proces upgradu tím, že se pokusí [Povolit velké sdílené složky souborů](storage-files-how-to-create-large-file-share.md).
 
 - ZRS: všechny oblasti kromě Japonska – východ, Severní Evropa, Jižní Afrika – sever.
 - GRS/GZRS: není podporováno.

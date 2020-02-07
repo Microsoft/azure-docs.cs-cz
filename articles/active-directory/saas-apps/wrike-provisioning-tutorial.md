@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: Zhchia
-ms.openlocfilehash: 46972209a8fa509ff2f17832ab8329aa3cef2548
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 5dd4f5ac6152c22b5e2a84ecc0774672bcd5590b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71840328"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064185"
 ---
 # <a name="tutorial-configure-wrike-for-automatic-user-provisioning"></a>Kurz: Konfigurace Wrike pro Automatické zřizování uživatelů
 
@@ -31,7 +31,7 @@ Cílem tohoto kurzu je předvést kroky, které provedete v Wrike a Azure Active
 >
 > Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -68,7 +68,7 @@ Než nakonfigurujete Wrike pro Automatické zřizování uživatelů pomocí Azu
 
     ![Základní adresa URL](media/Wrike-provisioning-tutorial/Wrike-tenanturl.png)
 
-4. Vyberte **API** > **Azure SCIM**.
+4. Vyberte **rozhraní API** > **Azure SCIM**.
 
     ![SCIM Azure](media/Wrike-provisioning-tutorial/Wrike-add-scim.png)
 
@@ -93,11 +93,11 @@ Pokud chcete přidat Wrike z Galerie aplikací Azure AD, postupujte podle těcht
 
 2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
-    ![Okno podnikové aplikace](common/enterprise-applications.png)
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
 3. Chcete-li přidat novou aplikaci, vyberte tlačítko **Nová aplikace** v horní části podokna.
 
-    ![Tlačítko Nová aplikace](common/add-new-app.png)
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
 4. Do vyhledávacího pole zadejte **Wrike**, na panelu výsledků vyberte **Wrike** a pak vyberte **Přidat** , aby se aplikace přidala.
 
@@ -113,7 +113,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="configure-automatic-user-provisioning-for-wrike-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Wrike ve službě Azure AD
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace** > **všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace** > **všech aplikacích**.
 
     ![Všechny aplikace](common/enterprise-applications.png)
 
@@ -147,7 +147,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Atributy uživatele Wrike](media/Wrike-provisioning-tutorial/Wrike-user-attributes.png)
 
-11. Pokud chcete nakonfigurovat filtry oborů, postupujte podle pokynů v [kurzu filtru oborů](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+11. Pokud chcete nakonfigurovat filtry oborů, postupujte podle pokynů v [kurzu filtru oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 12. Pokud chcete povolit službu Azure AD Provisioning pro Wrike, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
@@ -161,15 +161,15 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
 
-Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než následné synchronizace. Další informace o tom, jak dlouho trvá uživatelům nebo skupinám při zřizování, najdete v tématu [Jak dlouho bude trvat zřizování uživatelů?](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users).
+Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než následné synchronizace. Další informace o tom, jak dlouho trvá uživatelům nebo skupinám při zřizování, najdete v tématu [Jak dlouho bude trvat zřizování uživatelů?](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users).
 
-Pomocí oddílu **aktuální stav** můžete monitorovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v Wrike. Další informace najdete v tématu o [kontrole stavu zřizování uživatelů](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md). Pokud si chcete přečíst protokoly zřizování Azure AD, přečtěte si téma [vytváření sestav o automatickém zřizování uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+Pomocí oddílu **aktuální stav** můžete monitorovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v Wrike. Další informace najdete v tématu o [kontrole stavu zřizování uživatelů](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Pokud si chcete přečíst protokoly zřizování Azure AD, přečtěte si téma [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../manage-apps/check-status-user-account-provisioning.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)

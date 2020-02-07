@@ -7,16 +7,16 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6a17570a62728d5b4f9c99e3c4c939b5c77cb3df
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 47ee05113d46f66efd02978fed09cf72edc5ac1c
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74080212"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049943"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Konfigurace ExpressRoute Direct pomocí Azure CLI
 
-Azure ExpressRoute Direct můžete použít pro připojení přímo k globální síti Microsoftu na umístění partnerského vztahu strategicky distribuovaných po celém světě. Další informace najdete v tématu [informace o ExpressRoute přímé připojení](expressroute-erdirect-about.md).
+Azure ExpressRoute Direct můžete použít pro připojení přímo k globální síti Microsoftu na umístění partnerského vztahu strategicky distribuovaných po celém světě. Další informace najdete v tématu [informace o přímém připojení ExpressRoute](expressroute-erdirect-about.md).
 
 ## <a name="resources"></a>Vytvoření prostředku
 
@@ -38,7 +38,12 @@ Azure ExpressRoute Direct můžete použít pro připojení přímo k globální
    az account set --subscription "<subscription ID>"
    ```
 
-2. Výpis všech umístění, kde se podporuje přímý ExpressRoute:
+2. Znovu zaregistrujte své předplatné do Microsoftu. Network pro přístup k rozhraním API expressrouteportslocation a expressrouteport.
+
+   ```azurecli
+   az provider register --namespace Microsoft.Network
+   ```
+3. Výpis všech umístění, kde se podporuje přímý ExpressRoute:
     
    ```azurecli
    az network express-route port location list
@@ -105,7 +110,7 @@ Azure ExpressRoute Direct můžete použít pro připojení přímo k globální
    }
    ]
    ```
-3. Určení, zda jeden z míst uvedených v předchozím kroku dostupnou šířku pásma:
+4. Určení, zda jeden z míst uvedených v předchozím kroku dostupnou šířku pásma:
 
    ```azurecli
    az network express-route port location show -l "Equinix-Ashburn-DC2"
@@ -131,7 +136,7 @@ Azure ExpressRoute Direct můžete použít pro připojení přímo k globální
    "type": "Microsoft.Network/expressRoutePortsLocations"
    }
    ```
-4. Vytvoření prostředku ExpressRoute Direct, která je založena na umístění, které jste zvolili v předchozích krocích.
+5. Vytvoření prostředku ExpressRoute Direct, která je založena na umístění, které jste zvolili v předchozích krocích.
 
    Přímé ExpressRoute podporuje QinQ a Dot1Q zapouzdření. Pokud vyberete QinQ, každý okruh ExpressRoute se dynamicky přiřadí značku S a je jedinečný v rámci prostředku ExpressRoute přímo. Každá značka C na okruh musí být jedinečný v okruhu, ale ne přes ExpressRoute přímo prostředku.  
 
@@ -146,7 +151,7 @@ Azure ExpressRoute Direct můžete použít pro připojení přímo k globální
    ```
 
    > [!NOTE]
-   > Můžete také nastavit **zapouzdření** atribut **Dot1Q**. 
+   > Můžete také nastavit atribut **zapouzdření** na **Dot1Q**. 
    >
 
    **Příklad výstupu**
@@ -203,11 +208,11 @@ Azure ExpressRoute Direct můžete použít pro připojení přímo k globální
    }  
    ```
 
-## <a name="state"></a>Změna AdminState pro odkazy
+## <a name="state"></a>Změnit AdminState pro odkazy
 
 Tento proces můžete provést test vrstvy 1. Ujistěte se, že každý křížové připojení správně nainstalované opravy do směrovače v primární a sekundární porty.
 
-1. Nastavte odkazy na **povoleno**. Opakováním tohoto kroku můžete nastavit každý odkaz na **povoleno**.
+1. Nastavte odkazy na **povoleno**. Zopakováním tohoto kroku nastavte všechna propojení na **povoleno**.
 
    Odkazy [0] je primární port a odkazy [1] je sekundární port.
 
@@ -271,7 +276,7 @@ Tento proces můžete provést test vrstvy 1. Ujistěte se, že každý křížo
    }
    ```
 
-   Stejný postup použijte k dolů porty pomocí `AdminState = "Disabled"`.
+   Stejný postup použijte pro snížení portu pomocí `AdminState = "Disabled"`.
 
 ## <a name="circuit"></a>Vytvoření okruhu
 
@@ -328,4 +333,4 @@ Vytvoření okruhu ExpressRoute přímo prostředku:
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o ExpressRoute Direct, najdete v článku [přehled](expressroute-erdirect-about.md).
+Další informace o ExpressRoute Direct najdete v [přehledu](expressroute-erdirect-about.md).

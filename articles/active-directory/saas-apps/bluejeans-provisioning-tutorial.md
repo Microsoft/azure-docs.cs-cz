@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace BlueJeans pro automatické zřizování uživatelů pomocí Azure Active Directory | Dokumentace Microsoftu'
-description: Zjistěte, jak konfigurovat Azure Active Directory a automaticky zřizovat a rušit zřízení uživatelských účtů do BlueJeans.
+title: 'Kurz: Konfigurace BlueJeans pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
+description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro BlueJeans.
 services: active-directory
 documentationcenter: ''
 author: zhchia
@@ -16,146 +16,146 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84870ef03e07cdabe994da7c04a103bead48d34f
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: fcb3fe009a6482c8e512899a952694beaed361a7
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672997"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058973"
 ---
-# <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Kurz: Konfigurace BlueJeans pro automatické zřizování uživatelů
+# <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Kurz: Konfigurace BlueJeans pro Automatické zřizování uživatelů
 
-Cílem tohoto kurzu je předvést postup provést v BlueJeans a Azure Active Directory (Azure AD) ke konfiguraci Azure AD automaticky zřizovat a rušit zřízení uživatele a/nebo skupiny, které se BlueJeans.
+Cílem tohoto kurzu je předvést kroky, které je třeba provést v BlueJeans a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD pro Automatické zřizování a zrušení zřizování uživatelů nebo skupin pro BlueJeans.
 
 > [!NOTE]
-> Tento kurz popisuje konektor postavené na službě zřizování uživatelů služby Azure AD. Důležité podrobnosti o význam této služby, jak to funguje a nejčastější dotazy najdete v tématu [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](../manage-apps/user-provisioning.md).
+> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu se předpokládá, že již máte následující:
+Scénář popsaný v tomto kurzu předpokládá, že už máte následující:
 
-* Klient služby Azure AD
-* BlueJeans tenantovi se [moji firmu](https://www.BlueJeans.com/pricing) plán nebo lépe povoleno
+* Tenant Azure AD
+* Tenant BlueJeans s plánem [Moje společnost](https://www.BlueJeans.com/pricing) nebo lepší povolený
 * Uživatelský účet v BlueJeans s oprávněními správce
 
 > [!NOTE]
-> Zřizování integrace Azure AD spoléhá na [BlueJeans API](https://BlueJeans.github.io/developer), což je k dispozici BlueJeans týmy využívající plán Standard nebo vyšší.
+> Integrace zřizování Azure AD spoléhá na [rozhraní BlueJeans API](https://BlueJeans.github.io/developer), které je dostupné pro BlueJeans týmy na standardním plánu nebo lepší.
 
 ## <a name="adding-bluejeans-from-the-gallery"></a>Přidání BlueJeans z Galerie
 
-Před konfigurací BlueJeans pro automatické zřizování uživatelů pomocí Azure AD, budete muset přidat BlueJeans z Galerie aplikací Azure AD na váš seznam spravovaných aplikací SaaS.
+Před konfigurací BlueJeans pro Automatické zřizování uživatelů se službou Azure AD je nutné přidat BlueJeans z Galerie aplikací Azure AD do svého seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat BlueJeans z Galerie aplikací Azure AD, postupujte následovně:**
+**Pokud chcete přidat BlueJeans z Galerie aplikací Azure AD, proveďte následující kroky:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu vyberte **Azure Active Directory**.
+1. V **[Azure Portal](https://portal.azure.com)** v levém navigačním panelu vyberte možnost **Azure Active Directory**.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte na **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, **novou aplikaci** tlačítko v horní části podokna.
+3. Chcete-li přidat novou aplikaci, vyberte tlačítko **Nová aplikace** v horní části podokna.
 
     ![Tlačítko nové aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **BlueJeans**vyberte **BlueJeans** panel výsledků a pak vyberte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **BlueJeans**, na panelu výsledků vyberte **BlueJeans** a pak kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![BlueJeans v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="assigning-users-to-bluejeans"></a>Přiřazování uživatelů k BlueJeans
 
-Azure Active Directory používá koncept nazvaný "přiřazení" k určení, kteří uživatelé měli obdržet přístup k vybrané aplikace. V souvislosti s automatické zřizování uživatelů se synchronizují pouze uživatele a/nebo skupiny, které se "přiřadily" aplikace ve službě Azure AD.
+Azure Active Directory používá koncept nazvaný "přiřazení" k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelů se synchronizují jenom uživatelé a skupiny, které jsou přiřazené k aplikaci ve službě Azure AD.
 
-Než nakonfigurujete a povolíte automatické zřizování uživatelů, byste měli rozhodnout, které uživatele a/nebo skupiny ve službě Azure AD potřebují přístup k BlueJeans. Jakmile se rozhodli, můžete přiřadit tyto uživatele a/nebo skupiny BlueJeans podle zde uvedených pokynů:
+Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé a skupiny ve službě Azure AD potřebují přístup k BlueJeans. Po rozhodnutí můžete přiřadit tyto uživatele nebo skupiny k BlueJeans podle pokynů uvedených tady:
 
-* [Přiřadit uživatele nebo skupiny k podnikové aplikace](../manage-apps/assign-user-or-group-access-portal.md)
+* [Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-bluejeans"></a>Důležité tipy pro přiřazování uživatelů k BlueJeans
+### <a name="important-tips-for-assigning-users-to-bluejeans"></a>Důležité tipy pro přiřazení uživatelů k BlueJeans
 
-* Dále je doporučeno jednoho uživatele Azure AD, je přiřazená BlueJeans otestovat automatické konfigurace zřizování uživatelů. Další uživatele a/nebo skupiny může být přiřazen později.
+* Doporučuje se, aby se k BlueJeans k testování automatické konfigurace zřizování uživatelů přiřadil jeden uživatel Azure AD. Další uživatele a skupiny můžete přiřadit později.
 
-* Při přiřazení uživatele k BlueJeans, musíte vybrat libovolnou platnou roli specifické pro aplikaci (Pokud je k dispozici) v dialogovém okně přiřazení. Uživatelé s **výchozího přístupu k** role jsou vyloučené z zřizování.
+* Při přiřazování uživatele k BlueJeans musíte v dialogovém okně přiřazení vybrat jakoukoli platnou roli specifickou pro aplikaci (Pokud je dostupná). Uživatelé s **výchozí rolí přístupu** se z zřizování vylučují.
 
-## <a name="configuring-automatic-user-provisioning-to-bluejeans"></a>Konfigurace automatické zřizování uživatelů pro BlueJeans
+## <a name="configuring-automatic-user-provisioning-to-bluejeans"></a>Konfigurace automatického zřizování uživatelů na BlueJeans
 
-Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a vytvářet, aktualizovat a zakázat uživatele a/nebo skupiny v BlueJeans podle přiřazení uživatele a/nebo skupiny ve službě Azure AD.
+V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v BlueJeans na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete také povolit založené na SAML jednotného přihlašování pro BlueJeans, postupujte podle pokynů uvedených v [BlueJeans jednotné přihlašování – kurz](bluejeans-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování uživatelů, i když tyto dvě funkce návrzích mezi sebou.
+> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro BlueJeans podle pokynů uvedených v [kurzu BlueJeans jednotného přihlašování](bluejeans-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce navzájem doplňují.
 
-### <a name="to-configure-automatic-user-provisioning-for-bluejeans-in-azure-ad"></a>Konfigurace automatické zřizování uživatelů pro BlueJeans ve službě Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-bluejeans-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro BlueJeans ve službě Azure AD:
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **BlueJeans**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **BlueJeans**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **BlueJeans**.
+2. V seznamu aplikace vyberte **BlueJeans**.
 
     ![Odkaz BlueJeans v seznamu aplikací](common/all-applications.png)
 
-3. Vyberte **zřizování** kartu.
+3. Vyberte kartu **zřizování** .
 
-    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningTab.png)
+    ![Zřizování BlueJeans](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningTab.png)
 
-4. Nastavte **režim zřizování** k **automatické**.
+4. Nastavte **režim zřizování** na **automaticky**.
 
-    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/Bluejeans1.png)
+    ![Zřizování BlueJeans](./media/bluejeans-provisioning-tutorial/Bluejeans1.png)
 
-5. V části **přihlašovacích údajů správce** části, zadejte **uživatelské jméno správce**, a **heslo správce** BlueJeans účtu. Mezi tyto hodnoty patří:
+5. V části **přihlašovací údaje správce** zadejte **uživatelské jméno správce**a **heslo správce** účtu BlueJeans. Příklady těchto hodnot:
 
-   * V **uživatelské jméno správce** pole, uživatelské jméno účtu správce ve svém tenantovi BlueJeans naplnit. Příklad: admin@contoso.com.
+   * V poli **uživatelské jméno správce** naplňte uživatelské jméno účtu správce v tenantovi BlueJeans. Příklad: admin@contoso.com.
 
-   * V **heslo správce** pole, vyplnit odpovídající uživatelské jméno správce heslo.
+   * V poli **heslo správce** vyplňte heslo odpovídající uživatelskému jménu správce.
 
-6. Po vyplnění polí zobrazených v kroku 5, klikněte na tlačítko **Test připojení** aby Azure AD můžete připojit k BlueJeans. Pokud se nepovede, ujistěte se, že váš účet BlueJeans má oprávnění správce a zkuste to znovu.
+6. Po vyplnění polí zobrazených v kroku 5 klikněte na **Test připojení** , aby se služba Azure AD mohla připojit k BlueJeans. Pokud se připojení nepovede, ujistěte se, že má váš účet BlueJeans oprávnění správce, a zkuste to znovu.
 
-    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/BluejeansTestConnection.png)
+    ![Zřizování BlueJeans](./media/bluejeans-provisioning-tutorial/BluejeansTestConnection.png)
 
-7. V **e-mailové oznámení** zadejte e-mailovou adresu osoby nebo skupiny, který by měla přijímat oznámení zřizování chyba a zaškrtnutím políčka - **odeslání e-mailové oznámení, když dojde k selhání**.
+7. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
 
-    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/BluejeansNotificationEmail.png)
+    ![Zřizování BlueJeans](./media/bluejeans-provisioning-tutorial/BluejeansNotificationEmail.png)
 
 8. Klikněte na **Uložit**.
 
-9. V části **mapování** vyberte **synchronizace Azure Active Directory uživatelům BlueJeans**.
+9. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé BlueJeans**.
 
-    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/BluejeansMapping.png)
+    ![Zřizování BlueJeans](./media/bluejeans-provisioning-tutorial/BluejeansMapping.png)
 
-10. Zkontrolujte atributy uživatele, které se synchronizují ze služby Azure AD do BlueJeans v **mapování atributů** oddílu. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelské účty v BlueJeans pro operace update. Vyberte **Uložit** tlačítko potvrďte všechny změny.
+10. Zkontrolujte atributy uživatele synchronizované z Azure AD do BlueJeans v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v BlueJeans pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/BluejeansUserMappingAtrributes.png)
+    ![Zřizování BlueJeans](./media/bluejeans-provisioning-tutorial/BluejeansUserMappingAtrributes.png)
 
-11. Konfigurace filtrů oborů, najdete v následující pokyny uvedené v [Scoping filtr kurzu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+11. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-12. Služba pro BlueJeans zřizování Azure AD povolit, změňte **stavu zřizování** k **na** v **nastavení** oddílu.
+12. Pokud chcete povolit službu Azure AD Provisioning pro BlueJeans, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
-    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningStatus.png)
+    ![Zřizování BlueJeans](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningStatus.png)
 
-13. Definovat uživatele a/nebo skupiny, které chcete k poskytování BlueJeans výběrem požadované hodnoty do **oboru** v **nastavení** oddílu.
+13. Definujte uživatele nebo skupiny, které chcete zřídit pro BlueJeans, výběrem požadovaných hodnot v **oboru** v části **Nastavení** .
 
-    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/UserGroupSelection.png)
+    ![Zřizování BlueJeans](./media/bluejeans-provisioning-tutorial/UserGroupSelection.png)
 
-14. Až budete připravení ke zřízení, klikněte na tlačítko **Uložit**.
+14. Až budete připraveni zřídit, klikněte na **Uložit**.
 
-    ![BlueJeans Provisioning](./media/bluejeans-provisioning-tutorial/SaveProvisioning.png)
+    ![Zřizování BlueJeans](./media/bluejeans-provisioning-tutorial/SaveProvisioning.png)
 
-Tato operace spustí počáteční synchronizaci všech uživatelů a/nebo skupiny definované v **oboru** v **nastavení** oddílu. Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut tak dlouho, dokud je spuštěna služba zřizování Azure AD. Můžete použít **podrobnosti synchronizace** části ke sledování průběhu a odkazech na zřizování sestava aktivity, která popisuje všechny akce, které provádí služba na BlueJeans zřizování Azure AD.
+Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v BlueJeans.
 
-Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Omezení konektoru
 
-* Bluejeans neumožňuje uživatelských jmen, která překročit 30 znaků.
+* BlueJeans nepovoluje uživatelská jména, která překračují 30 znaků.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Zjistěte, jak kontrolovat protokoly a získat sestavy o zřizování aktivity](../manage-apps/check-status-user-account-provisioning.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 

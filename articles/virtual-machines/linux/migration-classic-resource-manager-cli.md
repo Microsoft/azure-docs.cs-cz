@@ -3,8 +3,8 @@ title: Migrace virtuálních počítačů do Správce prostředků pomocí Azure
 description: Tento článek vás provede migrací prostředků z klasických do Azure Resource Manager pomocí Azure CLI, který je podporovaný platformou.
 services: virtual-machines-linux
 documentationcenter: ''
-author: singhkays
-manager: gwallace
+author: tanmaygore
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: d6f5a877-05b6-4127-a545-3f5bede4e479
@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 03/30/2017
-ms.author: kasing
-ms.openlocfilehash: 1ebb1ee5056d3b1e6e85bea43473de5918ddba5c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 02/06/2020
+ms.author: tagore
+ms.openlocfilehash: 4273ca00110a2966ca794eaa3d6b5fcc5ec9f00e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645170"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057392"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Migrace prostředků IaaS z modelu Classic na Azure Resource Manager pomocí rozhraní příkazového řádku Azure
 Tyto kroky ukazují, jak používat příkazy rozhraní příkazového řádku (CLI) Azure k migraci prostředků infrastruktury jako služby (IaaS) z modelu nasazení Classic do modelu nasazení Azure Resource Manager. Článek vyžaduje rozhraní příkazového [řádku Azure Classic](../../cli-install-nodejs.md). Vzhledem k tomu, že rozhraní příkazového řádku Azure se dá použít jenom pro Azure Resource Manager prostředky, nedá se pro tuto migraci použít.

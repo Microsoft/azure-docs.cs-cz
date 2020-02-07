@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
-ms.openlocfilehash: 7a77a54dc59ec427bf6abdf8fc1d410533b5be44
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 56cbae7ae56c4b482ac6de201c7a2c8aacb81e59
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76771888"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048599"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurace klíčů spravovaných zákazníkem pro účet Azure Cosmos pomocí Azure Key Vault
 
@@ -21,18 +21,18 @@ ms.locfileid: "76771888"
 
 Data uložená ve vašem účtu Azure Cosmos se automaticky a hladce zašifrují. Azure Cosmos DB nabízí dvě možnosti správy klíčů používaných k šifrování neaktivních dat:
 
-- **Klíče spravované službou** – ve výchozím nastavení spravuje Microsoft klíče, které slouží k šifrování dat v účtu Azure Cosmos.
+- **Klíče spravované službou**: ve výchozím nastavení spravuje Microsoft klíče, které slouží k šifrování dat v účtu Azure Cosmos.
 
-- **Klíče spravované zákazníkem (CMK)** – Volitelně můžete zvolit, že se má přidat druhá vrstva šifrování s vlastními klíči.
+- **Klíče spravované zákazníkem (CMK)** : Volitelně můžete zvolit, že se má přidat druhá vrstva šifrování s vlastními klíči.
 
-Klíče spravované zákazníkem musíte uložit do [Azure Key Vault](../key-vault/key-vault-overview.md) a zadat klíč pro každý účet Azure Cosmos, který je povolený pomocí klíčů spravovaných zákazníkem. Tento klíč se používá k šifrování všech dat uložených v daném účtu.
+Klíče spravované zákazníkem musíte uložit v [Azure Key Vault](../key-vault/key-vault-overview.md) a zadat klíč pro každý účet Azure Cosmos, který je povolený pomocí klíčů spravovaných zákazníkem. Tento klíč se používá k šifrování všech dat uložených v daném účtu.
 
 > [!NOTE]
-> Klíče spravované zákazníkem jsou v současné době dostupné jenom pro nové účty Azure Cosmos a při vytváření účtu byste je měli nakonfigurovat.
+> Klíče spravované zákazníkem jsou v současné době dostupné jenom pro nové účty Azure Cosmos. Při vytváření účtu byste je měli nakonfigurovat.
 
 ## <a id="register-resource-provider"></a>Registrace poskytovatele prostředků Azure Cosmos DB pro předplatné Azure
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/), do svého předplatného Azure a na kartě **Nastavení** vyberte **poskytovatelé prostředků** :
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/), pokračujte na své předplatné Azure a na kartě **Nastavení** vyberte **poskytovatelé prostředků** :
 
    ![Položka poskytovatelé prostředků z levé nabídky](./media/how-to-setup-cmk/portal-rp.png)
 
@@ -42,7 +42,7 @@ Klíče spravované zákazníkem musíte uložit do [Azure Key Vault](../key-vau
 
 ## <a name="configure-your-azure-key-vault-instance"></a>Konfigurace instance Azure Key Vault
 
-Použití klíčů spravovaných zákazníkem s Azure Cosmos DB vyžaduje, abyste nastavili dvě vlastnosti instance Azure Key Vault, kterou plánujete použít k hostování šifrovacích klíčů. Tyto vlastnosti zahrnují **obnovitelné odstranění** a **nemazání**. Tyto vlastnosti nejsou ve výchozím nastavení povolené, můžete je povolit buď pomocí PowerShellu, nebo pomocí Azure CLI.
+Použití klíčů spravovaných zákazníkem s Azure Cosmos DB vyžaduje, abyste nastavili dvě vlastnosti instance Azure Key Vault, kterou plánujete použít k hostování šifrovacích klíčů. Tyto vlastnosti zahrnují **obnovitelné odstranění** a **nemazání**. Tyto vlastnosti nejsou ve výchozím nastavení povolené. Můžete je povolit buď pomocí PowerShellu, nebo pomocí Azure CLI.
 
 Další informace o tom, jak tyto vlastnosti povolit u existující instance Azure Key Vault, najdete v části povolení obnovitelného odstranění a povolení ochrany vyprázdnit v jednom z následujících článků:
 
@@ -55,13 +55,13 @@ Další informace o tom, jak tyto vlastnosti povolit u existující instance Azu
 
    !["Zásady přístupu" v levé nabídce](./media/how-to-setup-cmk/portal-akv-ap.png)
 
-1. Vybrat **+ Přidat zásady přístupu**
+1. Vyberte **+ Přidat zásady přístupu**.
 
-1. V rozevírací nabídce **oprávnění klíče** vyberte **získat**, **Rozbalit klíč** a **zabalit klíč** :
+1. V rozevírací **nabídce oprávnění ke klíči** vyberte **získat**, **Rozbalit klíč**a **zabalit klíč** oprávnění:
 
    ![Výběr správných oprávnění](./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png)
 
-1. V části **Vybrat objekt zabezpečení**vyberte možnost **není vybráno**. Pak vyhledejte objekt zabezpečení **Azure Cosmos DB** a vyberte ho. Nakonec klikněte na tlačítko **Vybrat** v dolní části (Pokud není v seznamu **Azure Cosmos DB** hlavní objekt zabezpečení, bude pravděpodobně nutné znovu zaregistrovat poskytovatele prostředků **Microsoft. DocumentDB** , jak je popsáno v části [registrace poskytovatele prostředků](#register-resource-provider) v tomto článku):
+1. V části **Vybrat objekt zabezpečení**vyberte možnost **není vybráno**. Pak vyhledejte objekt zabezpečení **Azure Cosmos DB** a vyberte ho. Nakonec zvolte **Vybrat** v dolní části. Pokud objekt zabezpečení **Azure Cosmos DB** v seznamu není, bude pravděpodobně nutné znovu zaregistrovat poskytovatele prostředků **Microsoft. DocumentDB** , jak je popsáno v části [registrace poskytovatele prostředků](#register-resource-provider) v tomto článku.
 
    ![Vyberte objekt zabezpečení Azure Cosmos DB.](./media/how-to-setup-cmk/portal-akv-add-ap.png)
 
@@ -73,13 +73,13 @@ Další informace o tom, jak tyto vlastnosti povolit u existující instance Azu
 
    ![Položka Keys v levé nabídce](./media/how-to-setup-cmk/portal-akv-keys.png)
 
-1. Vyberte **Generovat/importovat**, zadejte název nového klíče, vyberte velikost klíče RSA (pro nejlepší zabezpečení doporučujeme minimálně 3072) a pak vyberte **vytvořit**:
+1. Vyberte **Generovat/importovat**, zadejte název nového klíče a vyberte velikost klíče RSA. Pro zajištění nejlepšího zabezpečení se doporučuje minimálně 3072. Pak vyberte **vytvořit**:
 
    ![Vytvořit nový klíč](./media/how-to-setup-cmk/portal-akv-gen.png)
 
-1. Po vytvoření klíče vyberte nově vytvořený klíč a pak na jeho aktuální verzi.
+1. Po vytvoření klíče vyberte nově vytvořený klíč a jeho aktuální verzi.
 
-1. Zkopírujte **identifikátor klíče** klíče s výjimkou části za posledním lomítkem:
+1. Zkopírujte **identifikátor klíče**klíče, s výjimkou části za posledním lomítkem:
 
    ![Kopíruje se identifikátor klíče klíče.](./media/how-to-setup-cmk/portal-akv-keyid.png)
 
@@ -87,15 +87,15 @@ Další informace o tom, jak tyto vlastnosti povolit u existující instance Azu
 
 ### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
 
-Při vytváření nového účtu Azure Cosmos DB z Azure Portal v kroku **šifrování** vyberte **klíč spravovaný zákazníkem** . Do pole **identifikátor URI klíče** vložte identifikátor URI nebo klíče Azure Key Vaultho klíče, který jste zkopírovali z předchozího kroku:
+Když v Azure Portal vytvoříte nový účet Azure Cosmos DB, v kroku **šifrování** vyberte **klíč spravovaný zákazníkem** . Do pole **identifikátor URI klíče** vložte identifikátor URI nebo klíče Azure Key Vaultho klíče, který jste zkopírovali z předchozího kroku:
 
 ![Nastavení parametrů CMK v Azure Portal](./media/how-to-setup-cmk/portal-cosmos-enc.png)
 
 ### <a name="using-azure-powershell"></a>Použití Azure Powershell
 
-Při vytváření nového účtu Azure Cosmos DB pomocí prostředí PowerShell,
+Když vytváříte nový účet Azure Cosmos DB pomocí prostředí PowerShell:
 
-- Předejte identifikátor URI Azure Key Vaultho klíče zkopírovaného dříve pod vlastností **keyVaultKeyUri** v **PropertyObject**
+- Předejte identifikátor URI Azure Key Vaultho klíče, který jste zkopírovali dříve pod vlastností **keyVaultKeyUri** v **PropertyObject**.
 
 - Jako verzi rozhraní API použijte **2019-12-12** .
 
@@ -122,9 +122,9 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Location $accountLocation -Name $accountName -PropertyObject $CosmosDBProperties
 ```
 
-### <a name="using-azure-resource-manager-template"></a>Pomocí šablony Azure Resource Manageru
+### <a name="using-an-azure-resource-manager-template"></a>Použití šablony Azure Resource Manager
 
-Při vytváření nového účtu Azure Cosmos pomocí šablony Azure Resource Manager:
+Když vytváříte nový účet Azure Cosmos pomocí šablony Azure Resource Manager:
 
 - Předejte identifikátor URI Azure Key Vaultho klíče, který jste zkopírovali dříve pod vlastností **keyVaultKeyUri** v objektu **Properties** .
 
@@ -191,13 +191,13 @@ New-AzResourceGroupDeployment `
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-### <a name="is-there-any-additional-charge-when-using-customer-managed-keys"></a>Platí se při použití klíčů spravovaných zákazníkem nějaké další poplatky?
+### <a name="is-there-any-additional-charge-for-using-customer-managed-keys"></a>Platí se za použití klíčů spravovaných zákazníkem nějaké další poplatky?
 
-Ano. Aby se zohlednilo dodatečné výpočetní zatížení, které je nutné ke správě šifrování a dešifrování dat pomocí klíčů spravovaných zákazníkem, všechny operace spouštěné s účtem Azure Cosmos spotřebují 25% nárůstu počtu [jednotek žádosti](./request-units.md).
+Ano. Aby se zohlednilo dodatečné výpočetní zatížení, které je nutné ke správě šifrování a dešifrování dat pomocí klíčů spravovaných zákazníkem, všechny operace spouštěné s účtem Azure Cosmos spotřebují 25 procent zvýšení počtu [jednotek žádosti](./request-units.md).
 
 ### <a name="what-data-gets-encrypted-with-the-customer-managed-keys"></a>Jaká data se šifrují pomocí klíčů spravovaných zákazníkem?
 
-Všechna data uložená ve vašem účtu Azure Cosmos se šifrují pomocí klíčů spravovaných zákazníkem, s výjimkou těchto meta dat:
+Všechna data uložená ve vašem účtu Azure Cosmos se šifrují pomocí klíčů spravovaných zákazníkem s výjimkou následujících metadat:
 
 - Názvy [účtů Azure Cosmos DB, databází a kontejnerů](./account-overview.md#elements-in-an-azure-cosmos-account)
 
@@ -205,7 +205,7 @@ Všechna data uložená ve vašem účtu Azure Cosmos se šifrují pomocí klí�
 
 - Cesty k vlastnostem deklarované v [zásadách indexování](./index-policy.md)
 
-- Hodnoty [klíče oddílu](./partitioning-overview.md) v kontejnerech
+- Hodnoty [klíčů oddílů](./partitioning-overview.md) v kontejnerech
 
 ### <a name="are-customer-managed-keys-supported-for-existing-azure-cosmos-accounts"></a>Podporují se pro existující účty Azure Cosmos klíče spravované zákazníky?
 
@@ -213,11 +213,11 @@ Tato funkce je momentálně dostupná jenom pro nové účty.
 
 ### <a name="is-there-a-plan-to-support-finer-granularity-than-account-level-keys"></a>Existuje plán, který podporuje jemnější členitost než klíče na úrovni účtu?
 
-V současné době se však považují klíče na úrovni kontejneru.
+V současné době se neberou klíče na úrovni kontejneru.
 
-### <a name="how-does-customer-managed-keys-affect-a-backup"></a>Jaký vliv mají klíče spravované zákazníkem na zálohu?
+### <a name="how-do-customer-managed-keys-affect-a-backup"></a>Jaký vliv mají klíče spravované zákazníkem na zálohu?
 
-Azure Cosmos DB provádí [pravidelné a automatické zálohování](./online-backup-and-restore.md) dat uložených ve vašem účtu. Tato operace zálohuje šifrovaná data. Chcete-li použít obnovenou zálohu, je vyžadován šifrovací klíč, který jste použili v době zálohování. To znamená, že se neudělalo žádné odvolání a verze klíče, který se použil v době zálohování, se pořád povolí.
+Azure Cosmos DB provádí [pravidelné a automatické zálohování](./online-backup-and-restore.md) dat uložených ve vašem účtu. Tato operace zálohuje šifrovaná data. Chcete-li použít obnovenou zálohu, je vyžadován šifrovací klíč, který jste použili v době zálohování. To znamená, že se neudělalo žádné odvolání a verze klíče, která se použila v době zálohování, bude pořád povolená.
 
 ### <a name="how-do-i-revoke-an-encryption-key"></a>Návody odvolat šifrovací klíč?
 
@@ -235,5 +235,5 @@ Jediná operace, kterou je možné použít při odvolání šifrovacího klíč
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [šifrování dat v Azure Cosmos DB](./database-encryption-at-rest.md)
-- Přehled [zabezpečeného přístupu k datům v Cosmos DB](secure-access-to-data.md)
+- Přečtěte si další informace o [šifrování dat v Azure Cosmos DB](./database-encryption-at-rest.md).
+- Získejte přehled o [zabezpečení přístupu k datům v Cosmos DB](secure-access-to-data.md).

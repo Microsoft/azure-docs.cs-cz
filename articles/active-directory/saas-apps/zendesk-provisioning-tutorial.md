@@ -16,19 +16,19 @@ ms.topic: article
 ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f9d819533b97a126a324ab867b7185fd6415847
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a480119ee88521b920be88669f6d80e3754d24d3
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851969"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062737"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zendesk pro Automatické zřizování uživatelů
 
 V tomto kurzu se dozvíte, jak pomocí Zendesk a Azure Active Directory (Azure AD) nakonfigurovat službu Azure AD tak, aby automaticky zřídila a zrušila zřízení uživatelů a skupin na Zendesk.
 
 > [!NOTE]
-> Tento kurz popisuje konektor, který je založený na službě zřizování uživatelů Azure AD. Informace o tom, jak tato služba funguje, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro aplikace typu software jako služba (SaaS) s Azure Active Directory](../manage-apps/user-provisioning.md).
+> Tento kurz popisuje konektor, který je založený na službě zřizování uživatelů Azure AD. Informace o tom, jak tato služba funguje, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro aplikace typu software jako služba (SaaS) s Azure Active Directory](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -83,7 +83,7 @@ Tato část vás provede postupem konfigurace služby zřizování Azure AD. Slo
 
 ### <a name="configure-automatic-user-provisioning-for-zendesk-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Zendesk ve službě Azure AD
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte možnost **podnikové aplikace** > **všechny aplikace** > **Zendesk**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace** > **všechny aplikace** > **Zendesk**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -105,9 +105,9 @@ Tato část vás provede postupem konfigurace služby zřizování Azure AD. Slo
 
    * Do pole **tajný token** zadejte token tajného kódu, jak je popsáno v kroku 6.
 
-   * V poli **doména** vyplňte subdoménu klienta Zendesk. Například pro účet s adresou URL `https://my-tenant.zendesk.com`klienta je vaše subdoména **můj tenant**.
+   * V poli **doména** vyplňte subdoménu klienta Zendesk. Například pro účet s adresou URL klienta `https://my-tenant.zendesk.com`je vaše subdoména **můj tenant**.
 
-6. Tajný token pro účet Zendesk se nachází v**Nastavení** **rozhraní API** > pro **správu** > . Ujistěte se, že je **přístup** k tokenu nastavený na **povoleno**.
+6. Tajný token pro účet Zendesk je umístěný v **nastavení** >  > **API** pro **správu** . Ujistěte se, že je **přístup k tokenu** nastavený na **povoleno**.
 
     ![Nastavení správce Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk4.png)
 
@@ -117,11 +117,11 @@ Tato část vás provede postupem konfigurace služby zřizování Azure AD. Slo
 
     ![Zendesk test připojení](./media/zendesk-provisioning-tutorial/ZenDesk19.png)
 
-8. V poli **e-mail** s oznámením zadejte e-mailovou adresu osoby nebo skupiny, ve které se budou zobrazovat oznámení o chybách zřizování. Zaškrtněte políčko **Odeslat e-mailové oznámení, když dojde k chybě** .
+8. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, ve které se budou zobrazovat oznámení o chybách zřizování. Zaškrtněte políčko **Odeslat e-mailové oznámení, když dojde k chybě** .
 
     ![E-mailová oznámení Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk9.png)
 
-9. Vyberte **Uložit**.
+9. Vyberte **Save** (Uložit).
 
 10. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé Zendesk**.
 
@@ -139,9 +139,9 @@ Tato část vás provede postupem konfigurace služby zřizování Azure AD. Slo
 
     ![Zendesk vyhovující atributy skupiny](./media/zendesk-provisioning-tutorial/ZenDesk13.png)
 
-14. Pokud chcete nakonfigurovat filtry oborů, postupujte podle pokynů v [kurzu filtru oborů](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+14. Pokud chcete nakonfigurovat filtry oborů, postupujte podle pokynů v [kurzu filtru oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-15. Pokud chcete povolit službu Azure AD Provisioning pro Zendesk, v části **Nastavení** změňte **stav zřizování** na zapnuto.
+15. Pokud chcete povolit službu Azure AD Provisioning pro Zendesk, v části **Nastavení** změňte **stav zřizování** na **zapnuto**.
 
     ![Stav zřizování Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk14.png)
 
@@ -157,7 +157,7 @@ Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin 
 
 V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavu aktivity zřizování. Tato sestava popisuje všechny akce prováděné službou zřizování Azure AD v Zendesk.
 
-Informace o tom, jak číst protokoly zřizování služby Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+Informace o tom, jak číst protokoly zřizování služby Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Omezení konektoru
 
@@ -165,14 +165,14 @@ Informace o tom, jak číst protokoly zřizování služby Azure AD, najdete v t
 
 * Při přiřazení vlastní role uživateli nebo skupině přiřadí služba Automatické zřizování uživatelů Azure AD také výchozího **agenta**rolí. Vlastní roli lze přiřadit pouze agentům. Další informace najdete v [dokumentaci k rozhraní Zendesk API](https://developer.zendesk.com/rest_api/docs/support/users#json-format-for-agent-or-admin-requests). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../manage-apps/check-status-user-account-provisioning.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/zendesk-tutorial/tutorial_general_01.png

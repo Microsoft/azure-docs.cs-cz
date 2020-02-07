@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 887c10097187f193f55c6e301be3e739a16d6bf7
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b5a6b62e423b982cd7a852de844cd561997ba1e7
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906919"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048425"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -213,7 +213,7 @@ Koncový bod serveru nemůže v důsledku chyby nebo nedostatku systémových pr
 > [!Note]  
 > Pokud je stav serveru v okně registrované servery "se zobrazuje v režimu offline", proveďte kroky popsané v části [koncový bod serveru s stavem "bez aktivity" nebo "čeká" a stav serveru v okně registrované servery je "zobrazeno offline"](#server-endpoint-noactivity) .
 
-## <a name="sync"></a>Synchronizace
+## <a name="sync"></a>Sync
 <a id="afs-change-detection"></a>**Pokud jsem soubor vytvořil přímo ve sdílené složce Azure přes protokol SMB nebo prostřednictvím portálu, jak dlouho trvá, než se soubor synchronizuje se servery ve skupině synchronizace?**  
 [!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
 
@@ -314,7 +314,7 @@ Pokud se chcete podívat na tyto chyby, spusťte skript prostředí PowerShell *
 | HRESULT | HRESULT (desetinné číslo) | Text chyby | Problém | Náprava |
 |---------|-------------------|--------------|-------|-------------|
 | 0x80070043 | -2147942467 | ERROR_BAD_NET_NAME | Vrstvený soubor na serveru není dostupný. K tomuto problému dojde v případě, že se před odstraněním koncového bodu serveru neodvolal vrstvený soubor. | Pokud chcete tento problém vyřešit, najdete informace v části [vrstvené soubory nejsou po odstranění koncového bodu serveru dostupné na serveru](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint). |
-| 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Změnu souboru nebo adresáře nelze ještě synchronizovat, protože není ještě synchronizovaná závislá složka. Tato položka bude synchronizována po synchronizaci závislých změn. | Nevyžaduje se žádná akce. |
+| 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Změnu souboru nebo adresáře nelze ještě synchronizovat, protože není ještě synchronizovaná závislá složka. Tato položka bude synchronizována po synchronizaci závislých změn. | Nevyžaduje se žádná akce. Pokud chyba trvá několik dní, použijte skript prostředí PowerShell FileSyncErrorsReport. ps1 a zjistěte, proč není závislá složka ještě synchronizovaná. |
 | 0x80c80284 | -2134375804 | ECS_E_SYNC_CONSTRAINT_CONFLICT_SESSION_FAILED | Změnu souboru nebo adresáře nelze ještě synchronizovat, protože závislá složka ještě není synchronizovaná a relace synchronizace selhala. Tato položka bude synchronizována po synchronizaci závislých změn. | Nevyžaduje se žádná akce. Pokud chyba přetrvává, prozkoumejte selhání relace synchronizace. |
 | 0x8007007b | -2147024773 | ERROR_INVALID_NAME | Název souboru nebo adresáře je neplatný. | Přejmenujte daný soubor nebo adresář. Další informace najdete v tématu [zpracování nepodporovaných znaků](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) . |
 | 0x80c80255 | -2134375851 | ECS_E_XSMB_REST_INCOMPATIBILITY | Název souboru nebo adresáře je neplatný. | Přejmenujte daný soubor nebo adresář. Další informace najdete v tématu [zpracování nepodporovaných znaků](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) . |
@@ -998,7 +998,7 @@ if ($fileShare -eq $null) {
 
     Pokud se **Služba hybridní synchronizace souborů** v seznamu nezobrazí, proveďte následující kroky:
 
-    - Klikněte na tlačítko **Add** (Přidat).
+    - Klikněte na **Přidat**.
     - V poli **role** vyberte **Čtenář a přístup k datům**.
     - Do pole **Vybrat** zadejte **Služba Hybrid synchronizace souborů Service**, vyberte roli a klikněte na **Uložit**.
 
@@ -1256,10 +1256,10 @@ Pokud se problém nevyřeší, spusťte nástroj AFSDiag:
 
 3. Pro Azure File Sync úroveň trasování režimu jádra zadejte **1** (není-li uvedeno jinak), chcete-li vytvořit více podrobných trasování, a potom stiskněte klávesu ENTER.
 4. Pro úroveň trasování režimu Azure File Sync uživatele zadejte **1** (Pokud není uvedeno jinak), aby se vytvořily podrobnější trasování, a pak stiskněte ENTER.
-5. Reprodukování problému. Až skončíte, zadejte **D**.
+5. Reprodukujte problém. Až skončíte, zadejte **D**.
 6. Soubor. zip, který obsahuje protokoly a trasovací soubory, je uložen do výstupního adresáře, který jste zadali.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 - [Monitorování Synchronizace souborů Azure](storage-sync-files-monitoring.md)
 - [Nejčastější dotazy k souborům Azure](storage-files-faq.md)
 - [Řešení potíží se službou Azure Files ve Windows](storage-troubleshoot-windows-file-connection-problems.md)

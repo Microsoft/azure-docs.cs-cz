@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/26/2019
+ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: fccb9dfe88d39849fb87bdce4b81ac9ee22fada5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8f748764d0f61e4932b2d4710f5a6805a5eddf0e
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430698"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047469"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Implementace zotavení po havárii pomocí zálohování a obnovení služby v Azure API Management
 
@@ -55,7 +55,7 @@ Všechny úlohy, které provedete v prostředcích pomocí Azure Resource Manage
 
 ### <a name="create-an-azure-active-directory-application"></a>Vytvoření aplikace Azure Active Directory
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Pomocí předplatného, které obsahuje vaši instanci služby API Management, přejděte v **Azure Active Directory** na kartu **Registrace aplikací** (Azure Active Directory > spravovat/registrace aplikací).
 
     > [!NOTE]
@@ -68,15 +68,14 @@ Všechny úlohy, které provedete v prostředcích pomocí Azure Resource Manage
 4. Zadejte název aplikace.
 5. Jako typ aplikace vyberte **nativní**.
 6. Zadejte adresu URL zástupného symbolu, například `http://resources` pro **identifikátor URI přesměrování**, protože se jedná o požadované pole, ale hodnota se nepoužije později. Kliknutím na zaškrtávací políčko aplikaci uložíte.
-7. Klikněte na **Vytvořit**.
+7. Klikněte na možnost **Vytvořit**.
 
 ### <a name="add-an-application"></a>Přidání aplikace
 
-1. Po vytvoření aplikace klikněte na **Nastavení**.
-2. Klikněte na **požadovaná oprávnění**.
-3. Klikněte na **+ Přidat**.
-4. Stiskněte **Vybrat rozhraní API**.
-5. Vyberte **Windows** **Azure rozhraní API pro správu služeb**.
+1. Po vytvoření aplikace klikněte na **oprávnění API**.
+2. Klikněte na **+ Přidat oprávnění**.
+4. Stiskněte **Vybrat rozhraní API Microsoftu**.
+5. Vyberte možnost **Správa služeb Azure**.
 6. Stiskněte **Vybrat**.
 
     ![Přidání oprávnění](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
@@ -170,17 +169,20 @@ Nastavte hodnotu v hlavičce `Content-Type` žádosti na `application/json`.
 
 Zálohování je dlouhodobá operace, která může trvat déle než minutu. Pokud je požadavek úspěšný a proces zálohování začal, obdržíte kód stavu odpovědi `202 Accepted` s hlavičkou `Location`. Chcete-li zjistit stav operace, vytvořte žádosti na adresu URL v hlavičce `Location`. I když probíhá zálohování, budete dál dostávat stavový kód 202. Kód odpovědi `200 OK` označuje úspěšné dokončení operace zálohování.
 
-Při vytváření žádosti o zálohu Pamatujte na následující omezení:
+Při vytváření žádosti o zálohu nebo obnovení Pamatujte na následující omezení:
 
 -   **Kontejner** zadaný v těle požadavku **musí existovat**.
--   Zatímco probíhá zálohování, **Vyhněte se změnám v řízení služeb** , jako je například upgrade SKU nebo downgrading, změna v názvu domény a další.
+-   Zatímco probíhá zálohování, **Vyhněte se změnám správy ve službě** , jako je například upgrade SKU nebo downgrading, změna v názvu domény a další.
 -   Obnovení **zálohy je zaručeno pouze po dobu 30 dnů** od okamžiku jejího vytvoření.
 -   **Data o využití** používaná pro vytváření sestav Analytics **nejsou součástí** zálohy. Pomocí služby [Azure API Management REST API][azure api management rest api] pravidelně načítat analytické sestavy pro bezpečné používání.
 -   Kromě toho následující položky nejsou součástí zálohovaných dat: vlastní certifikáty SSL a všechny zprostředkující nebo kořenové certifikáty nahrané zákazníkem, obsahem portálu pro vývojáře a nastavením integrace virtuální sítě.
 -   Frekvence, se kterou provádíte zálohování služby, má vliv na cíl bodu obnovení. Pro minimalizaci doporučujeme, abyste implementovali pravidelné zálohování a prováděli zálohování na vyžádání po provedení změn ve službě API Management.
 -   **Změny** v konfiguraci služby, (například rozhraní API, zásady a vzhled portálu pro vývojáře) během procesu zálohování, **mohou být vyloučeny ze zálohy a budou ztraceny**.
--   **Povolí** přístup z řídicí roviny na účet Azure Storage. Zákazník musí na svém účtu úložiště otevřít následující sadu příchozích IP adres pro zálohování. 
-    > 13.84.189.17/32, 13.85.22.63/32, 23.96.224.175/32, 23.101.166.38/32, 52.162.110.80/32, 104.214.19.224/32, 13.64.39.16/32, 40.81.47.216/32, 51.145.179.78/32, 52.142.95.35/32, 40.90.185.46/32, 20.40.125.155/32
+-   **Povolit** přístup z řídicí roviny na účet Azure Storage, pokud má zapnutou [bránu firewall][azure-storage-ip-firewall] . Zákazník musí ve svém účtu úložiště otevřít sadu [IP adres řídicích ploch Azure API Management][control-plane-ip-address] pro zálohování nebo obnovení z. 
+
+> [!NOTE]
+> Pokud se pokusíte zálohovat nebo obnovit službu API Management pomocí účtu úložiště, který má zapnutou [bránu firewall][azure-storage-ip-firewall] , ve stejné oblasti Azure nebude tato akce fungovat. Důvodem je to, že požadavky na Azure Storage nejsou před jejich vstupem k veřejné IP adrese z výpočetních > (rovina řízení služby Azure API). Požadavek úložiště pro různé oblasti bude před jejich vstupem.
+
 ### <a name="step2"> </a>Obnovení služby API Management
 
 Chcete-li obnovit službu API Management z dříve vytvořené zálohy, proveďte následující požadavek HTTP:
@@ -241,3 +243,5 @@ V různých návodech k procesu zálohování a obnovení si Projděte následuj
 [api-management-aad-resources]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-aad-resources.png
 [api-management-arm-token]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-arm-token.png
 [api-management-endpoint]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-endpoint.png
+[control-plane-ip-address]: api-management-using-with-vnet.md#control-plane-ips
+[azure-storage-ip-firewall]: ../storage/common/storage-network-security.md#grant-access-from-an-internet-ip-range

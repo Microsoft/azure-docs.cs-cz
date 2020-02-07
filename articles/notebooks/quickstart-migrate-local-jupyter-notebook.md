@@ -3,60 +3,66 @@ title: Migrace místního poznámkového bloku Jupyter do verze Preview Azure No
 description: Jupyter Poznámkový blok můžete rychle přenést do Azure Notebooks Preview z místního počítače nebo z webové adresy URL a pak ho sdílet pro spolupráci.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 9e5270c59a64f9510f9108bbe4d00b922178888c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: baf05d7adb1340d712ff0fc87436d5bbac51bc8f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647046"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064321"
 ---
 # <a name="quickstart-migrate-a-local-jupyter-notebook-in-azure-notebooks-preview"></a>Rychlý Start: migrace místního poznámkového bloku Jupyter v Azure Notebooks Preview
 
-Poznámkové bloky Jupyter, které vytvoříte místně na vlastním počítači jsou dostupné pouze pro vás. Můžete sdílet soubory prostřednictvím různých prostředků, ale pak příjemci mít své vlastní místní kopii Poznámkový blok a je těžké za vás, abyste zapracovali všechny změny, které můžou zvolit. Můžete také ukládat poznámkových bloků v sdílené úložiště online, jako je například GitHub, ale to stále vyžaduje, aby měl každý spolupracovníka vlastní místní instalace aplikace Jupyter se stejnou konfigurací se nenachází žádný.
+V tomto rychlém startu migrujete Poznámkový blok Jupyter z místního počítače nebo jiné adresy URL přístupového souboru na Azure Notebooks. 
 
-Pomocí migrace vašich místních nebo na základě úložiště poznámkových bloků do poznámkových bloků Azure, uložit je v cloudu, ze kterého můžete okamžitě je sdílet s vaší spolupracovníky. Tyto spolupracovníci potřebujete jenom prohlížeč pro zobrazení a spuštění Poznámkový blok a pokud jsou [přihlášení](quickstart-sign-in-azure-notebooks.md) do poznámkových bloků Azure, můžete také provádět změny.
+Jupyter poznámkové bloky na vašem počítači jsou přístupné jenom pro vás. Soubory můžete sdílet, ale příjemci pak mají své vlastní místní kopie poznámkového bloku a je obtížné tyto změny začlenit. I když poznámkové bloky ukládáte do sdíleného online úložiště, jako je GitHub, každý spolupracovníka musí mít nakonfigurovanou místní instalaci Jupyter jako vaše.
 
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+Migrací místních poznámkových bloků nebo notebooků založených na úložišti na Azure Notebooks je můžete okamžitě sdílet se spolupracovníky, kteří potřebují jenom prohlížeč k zobrazení a spuštění vašich poznámkových bloků. Pokud se přihlásí k Azure Notebooks, můžou dělat změny i vy.
 
-Tento rychlý start popisuje proces migrace z místního počítače nebo jinou adresu URL přístupná soubor poznámkového bloku. K migraci poznámkových bloků z úložiště GitHub, najdete v článku [rychlý start: klonování Poznámkový blok](quickstart-clone-jupyter-notebook.md).
+## <a name="prerequisites"></a>Požadavky
+
+- [Jupyter Poznámkový blok](https://jupyter-notebook.readthedocs.io) na místním počítači nebo v jiné adrese URL souboru k dispozici. 
 
 ## <a name="create-a-project-on-azure-notebooks"></a>Vytvoření projektu v poznámkových blocích Azure
 
-1. Přejděte na [poznámkových bloků Azure](https://notebooks.azure.com) a přihlaste se. (Podrobnosti najdete v tématu [rychlý start – přihlášení k Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
+V tomto rychlém startu se dozvíte, jak migrovat Poznámkový blok z místního počítače nebo jiného přístupného souboru. Postup migrace poznámkových bloků z úložiště GitHub najdete v tématu [rychlý Start: naklonování poznámkového bloku](quickstart-clone-jupyter-notebook.md).
 
-1. Na stránce svého veřejného profilu vyberte **projekty** v horní části stránky:
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+1. Přejít na [Azure Notebooks](https://notebooks.azure.com) a přihlásit se. (Podrobnosti najdete v tématu [rychlý Start – přihlášení k Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
+
+1. Na stránce veřejný profil vyberte v horní části stránky **Moje projekty** :
 
     ![Moje projekty odkaz horní části okna prohlížeče](media/quickstarts/my-projects-link.png)
 
-1. Na **projekty** stránce **+ nový projekt** (Klávesová zkratka: n); na tlačítko se může objevit pouze jako **+** li úzké okno prohlížeče:
+1. Na stránce **Moje projekty** vyberte **Nový projekt** (Klávesová zkratka: n). Tlačítko se může zobrazit jenom jako **+** , pokud je okno prohlížeče úzké:
 
     ![Nový projekt – příkaz na stránce Mé projekty](media/quickstarts/new-project-command.png)
 
-1. V **vytvořit nový projekt** automaticky otevírané okno, které se zobrazí, zadejte odpovídající hodnoty Poznámkový blok jupyter v migrujete **název projektu** a **ID projektu** pole, zrušte možnosti pro **veřejného projektu** a **vytvořit README.md**a pak vyberte **vytvořit**.
+1. V automaticky otevřeném okně **vytvořit nový projekt** zadejte odpovídající hodnoty pro Poznámkový blok, který migrujete v polích **název projektu** a **ID projektu** , zrušte zaškrtnutí možnosti pro **veřejný projekt** a **vytvořte Readme.MD**a pak vyberte **vytvořit**.
 
 ## <a name="upload-the-local-notebook"></a>Nahrání místního poznámkového bloku
 
-1. Na stránce projektu vyberte **nahrát** (což se může zobrazit jako nahoru šipka pouze pokud okno prohlížeče je malé), pak vyberte 1. V místní nabídce, která se zobrazí, vyberte **z počítače** Pokud poznámkový blok se nachází na vašem místním systému souborů, nebo **z adresy URL** Pokud online se nachází v poznámkovém bloku:
+1. Na stránce projekt vyberte **Odeslat** (může se zobrazit jako šipka nahoru pouze v případě, že je okno prohlížeče malé) a pak vyberte 1. V místní nabídce, která se zobrazí, vyberte **z nabídky počítač** , pokud je váš Poznámkový blok umístěný v místním systému souborů nebo **z adresy URL** , pokud je váš Poznámkový blok online:
 
     ![Příkaz pro nahrání poznámkového bloku z adresy URL nebo místní počítač](media/quickstarts/upload-from-computer-url-command.png)
 
-   (Znovu, pokud je v úložišti GitHub, postupujte podle kroků [rychlý start: klonování Poznámkový blok](quickstart-clone-jupyter-notebook.md) místo.)
+   Pokud je váš Poznámkový blok v úložišti GitHubu, postupujte podle kroků v [rychlém startu: naklonujte Poznámkový blok](quickstart-clone-jupyter-notebook.md) .
 
-   - Pokud používáte **z počítače**, přetažením vaše *.ipynb* soubory do automaticky otevíraného okna, nebo vyberte **vybrat soubory**, vyhledejte a vyberte soubory, které chcete importovat. Potom vyberte **nahrát**. Nahrané soubory jsou uvedeny stejný název jako místní soubory. (Není nutné k nahrání obsahu jakékoli *.ipynb_checkpoints* složek.)
+   - Pokud používáte **z počítače**, přetáhněte soubory *. ipynb* do automaticky otevíraného okna nebo vyberte **zvolit soubory**, vyhledejte a vyberte soubory, které chcete importovat. Pak vyberte **nahrát**. Nahrané soubory jsou uvedeny stejný název jako místní soubory. Nemusíte nahrávat obsah žádné složky *. ipynb_checkpoints* .
 
      ![Nahrát z počítače automaticky otevíraného okna](media/quickstarts/upload-from-computer-popup.png)
 
-   - Pokud používáte **z adresy URL**, zadejte adresu zdroje **adresa URL souboru** pole a název souboru přiřadit do poznámkového bloku v projektu v **název souboru** pole. Potom vyberte **nahrát**. Pokud máte víc souborů s samostatné adresy URL, použijte **+ přidat soubor** příkaz a zkontrolujte první adresa URL, které jste zadali, po jejímž uplynutí automaticky otevírané okno obsahuje nové pole pro jiný soubor.
+   - Pokud používáte **z adresy URL**, zadejte zdrojovou adresu do pole **Adresa URL souboru** a název souboru, který chcete přiřadit k poznámkovému bloku v projektu v poli **název souboru** . Pak vyberte **nahrát**. Pokud máte více souborů s oddělenými adresami URL, použijte příkaz **Přidat soubor** pro kontrolu první adresy URL, kterou jste zadali, a potom v místní nabídce najdete nová pole pro jiný soubor.
 
      ![Nahrát z adresy URL automaticky otevíraného okna](media/quickstarts/upload-from-url-popup.png)
 
-1. Otevřete a spusťte nově nahraných Poznámkový blok a ověřte jeho obsah a operace. Jakmile budete hotovi, vyberte **souboru** > **zastavení a zavřít** zavřete poznámkový blok.
+1. Otevřete a spusťte nově nahraných Poznámkový blok a ověřte jeho obsah a operace. Až budete hotovi, vyberte **soubor** > **zastavit a zavřít** pro zavření poznámkového bloku.
 
-1. Sdílet odkaz na vaše nahrané Poznámkový blok, klikněte pravým tlačítkem na soubor v projektu a vyberte **Kopírovat odkaz** (Klávesová zkratka: y), vložte tento odkaz do odpovídající zprávu. Alternativně můžete sdílet projekt jako celek za použití **sdílet** ovládací prvek na stránce projektu.
+1. Chcete-li sdílet odkaz na nahraný Poznámkový blok, klikněte pravým tlačítkem myši na soubor v projektu a vyberte příkaz **Kopírovat odkaz** (Klávesová zkratka: y) a vložte tento odkaz do příslušné zprávy. Alternativně můžete projekt sdílet jako celek pomocí ovládacího prvku pro **sdílení** na stránce projektu.
 
-1. Chcete-li upravit soubory jiné než poznámkových bloků, klikněte pravým tlačítkem na soubor v projektu a vyberte **upravit soubor** (Klávesová zkratka: Mohu). Výchozí akce **spustit** (Klávesová zkratka: r), pouze zobrazuje obsah souboru a neumožňuje úpravy.
+1. Chcete-li upravit jiné soubory než poznámkové bloky, klikněte pravým tlačítkem myši na soubor v projektu a vyberte možnost **Upravit soubor** (Klávesová zkratka: i). Výchozí akce, **Run** (Klávesová zkratka: r), zobrazuje pouze obsah souboru a neumožňuje úpravy.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz: vytvoření spustit Poznámkový blok Jupyter provedete lineární regrese](tutorial-create-run-jupyter-notebook.md)
+> [Kurz: vytvoření a spuštění poznámkového bloku Jupyter pro lineární regresi](tutorial-create-run-jupyter-notebook.md)

@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: 9d00024351c18789e26120cc2af006b9aac4232d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 518d86fff04a23f1c1e63c44c53485b99f30637d
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75767836"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057826"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>Kurz: Konfigurace funkce pro Automatické zřizování uživatelů
 
 V tomto článku se dozvíte, jak nakonfigurovat Azure Active Directory (Azure AD) pro Automatické zřizování a rušení zřizování uživatelů nebo skupin.
 
 > [!NOTE]
-> Tento článek popisuje konektor, který je založený na službě zřizování uživatelů Azure AD. Důležité informace o této službě a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů při SaaS aplikací pomocí Azure Active Directory](../manage-apps/user-provisioning.md).
+> Tento článek popisuje konektor, který je založený na službě zřizování uživatelů Azure AD. Důležité informace o této službě a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů při SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
 > Tento konektor je aktuálně ve verzi preview. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -72,7 +72,7 @@ Než nakonfigurujete a povolíte automatické zřizování uživatelů, rozhodn�
    a. Do pole **název** zadejte název klíče.  
    b. V rozevíracím seznamu **oprávnění zděděných z** vyberte možnost. 
    
-1. Vyberte **odeslat**.
+1. Vyberte **Odeslat**.
 
 1. Zkopírujte **klíč** pro pozdější použití v tomto kurzu.
 
@@ -138,7 +138,7 @@ Pokud chcete nakonfigurovat automatické zřizování uživatelů pro funkci ve 
 
     ![Pole "oznamovací E-mail"](common/provisioning-notification-email.png)
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 1. V části **mapování**vyberte možnost **synchronizovat Azure Active Directory uživatele**.
 
@@ -156,7 +156,7 @@ Pokud chcete nakonfigurovat automatické zřizování uživatelů pro funkci ve 
 
     ![Podokno mapování atributů pro skupinu kabelů](media/harness-provisioning-tutorial/groupattributes.png)
 
-1. Pokud chcete nakonfigurovat filtry oborů, přečtěte si téma [zřizování aplikace na základě atributů s filtry oborů](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+1. Pokud chcete nakonfigurovat filtry oborů, přečtěte si téma [zřizování aplikace na základě atributů s filtry oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 1. V části **Nastavení**povolte službu zřizování Azure AD pro práci s přepínačem **stav zřizování** přepnout na **zapnuto**.
 
@@ -172,13 +172,13 @@ Pokud chcete nakonfigurovat automatické zřizování uživatelů pro funkci ve 
 
 Tato operace spustí počáteční synchronizaci uživatelů nebo skupin, které zřizování provádíte. Počáteční synchronizace trvá déle než později. Synchronizace probíhá přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. Chcete-li sledovat průběh, přejít do části **Podrobnosti o synchronizaci** . Můžete také sledovat odkazy na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD na platformě.
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [Sestava automatického zřizování uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [Sestava automatického zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../manage-apps/check-status-user-account-provisioning.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)

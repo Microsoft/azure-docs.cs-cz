@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
-ms.openlocfilehash: 75a9e3e8422c0c59e00c290f1f360d61fce1eceb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3eafb8aff5525f668e6fe0bddb261b1117b5e38b
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901581"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048166"
 ---
 # <a name="expressroute-routing-requirements"></a>Požadavky na směrování služby ExpressRoute
 Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby ExpressRoute, budete muset nastavit a spravovat směrování. Někteří poskytovatelé připojení nabízejí nastavení a správu směrování jako spravovanou službu. Zeptejte se svého poskytovatele připojení, jestli tuto službu nabízí. Pokud ne, je nutné splnit následující požadavky:
@@ -156,23 +156,23 @@ Můžete zakoupit víc než jeden okruh ExpressRoute na geopolitickou oblast. Po
 | **Oblast Microsoft Azure** | **Oblastní komunita protokolu BGP** | **Komunita protokolu BGP úložiště** | **Komunita protokolu BGP SQL** | **Cosmos DB komunita protokolu BGP** |
 | --- | --- | --- | --- | --- |
 | **Severní Amerika** | |
-| Východní USA | 12076:51004 | 12076:52004 | 12076:53004 | 12076:54004 |
-| Východ USA 2 | 12076:51005 | 12076:52005 | 12076:53005 | 12076:54005 |
-| Západní USA | 12076:51006 | 12076:52006 | 12076:53006 | 12076:54006 |
-| Západní USA 2 | 12076:51026 | 12076:52026 | 12076:53026 | 12076:54026 |
-| Středozápadní USA | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 |
-| Středoseverní USA | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 |
-| Středojižní USA | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 |
-| Střední USA | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 |
-| Střední Kanada | 12076:51020 | 12076:52020 | 12076:53020 | 12076:54020 |
-| Východní Kanada | 12076:51021 | 12076:52021 | 12076:53021 | 12076:54021 |
+| USA – východ | 12076:51004 | 12076:52004 | 12076:53004 | 12076:54004 |
+| Východní USA 2 | 12076:51005 | 12076:52005 | 12076:53005 | 12076:54005 |
+| USA – západ | 12076:51006 | 12076:52006 | 12076:53006 | 12076:54006 |
+| USA – západ 2 | 12076:51026 | 12076:52026 | 12076:53026 | 12076:54026 |
+| Západní střed USA | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 |
+| Střed USA – sever | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 |
+| Střed USA – jih | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 |
+| Střed USA | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 |
+| Kanada – střed | 12076:51020 | 12076:52020 | 12076:53020 | 12076:54020 |
+| Kanada – východ | 12076:51021 | 12076:52021 | 12076:53021 | 12076:54021 |
 | **Jižní Amerika** | |
 | Brazílie – jih | 12076:51014 | 12076:52014 | 12076:53014 | 12076:54014 |
 | **Evropa** | |
 | Severní Evropa | 12076:51003 | 12076:52003 | 12076:53003 | 12076:54003 |
 | Západní Evropa | 12076:51002 | 12076:52002 | 12076:53002 | 12076:54002 |
-| Spojené království – jih | 12076:51024 | 12076:52024 | 12076:53024 | 12076:54024 |
-| Velká Británie – západ | 12076:51025 | 12076:52025 | 12076:53025 | 12076:54025 |
+| Velká Británie – jih | 12076:51024 | 12076:52024 | 12076:53024 | 12076:54024 |
+| Spojené království – západ | 12076:51025 | 12076:52025 | 12076:53025 | 12076:54025 |
 | Francie – střed | 12076:51030 | 12076:52030 | 12076:53030 | 12076:54030 |
 | Francie – jih | 12076:51031 | 12076:52031 | 12076:53031 | 12076:54031 |
 | Švýcarsko – sever | 12076:51038 | 12076:52038 | 12076:53038 | 12076:54038 | 
@@ -198,13 +198,13 @@ Můžete zakoupit víc než jeden okruh ExpressRoute na geopolitickou oblast. Po
 | Indie – západ | 12076:51018 | 12076:52018 | 12076:53018 | 12076:54018 |
 | Indie – střed | 12076:51017 | 12076:52017 | 12076:53017 | 12076:54017 |
 | **Jižní Korea** | |
-| Korea – jih | 12076:51028 | 12076:52028 | 12076:53028 | 12076:54028 |
-| Korea – střed | 12076:51029 | 12076:52029 | 12076:53029 | 12076:54029 |
+| Jižní Korea – jih | 12076:51028 | 12076:52028 | 12076:53028 | 12076:54028 |
+| Jižní Korea – střed | 12076:51029 | 12076:52029 | 12076:53029 | 12076:54029 |
 | **Jižní Afrika**| |
 | Jižní Afrika – sever | 12076:51034 | 12076:52034 | 12076:53034 | 12076:54034 |
 | Jižní Afrika – západ | 12076:51035 | 12076:52035 | 12076:53035 | 12076:54035 |
 | **Spojené arabské emiráty**| |
-| Spojené arabské emiráty – sever | 12076:51036 | 12076:52036 | 12076:53036 | 12076:54036 |
+| Spojené arabské emiráty sever | 12076:51036 | 12076:52036 | 12076:53036 | 12076:54036 |
 | Spojené arabské emiráty – střed | 12076:51037 | 12076:52037 | 12076:53037 | 12076:54037 |
 
 
@@ -223,13 +223,14 @@ Kromě výše uvedeného bude Microsoft také označovat předpony podle služby
 | Exchange Online * * | 12076:5010 |
 | SharePoint Online * * | 12076:5020 |
 | Online Skype pro firmy * * | 12076:5030 |
-| CRM Online |12076:5040 |
+| CRM Online * * * |12076:5040 |
 | Azure globální služby * | 12076:5050 |
 | Azure Active Directory |12076:5060 |
 | Další online služby Office 365 * * | 12076:5100 |
 
-\* Globální služby Azure v tuto chvíli obsahují jenom Azure DevOps.
-\* * Autorizace od Microsoftu je povinná, přečtěte si téma [Konfigurace filtrů tras pro partnerský vztah Microsoftu](how-to-routefilter-portal.md) . 
+\* Globální služby Azure v tuto chvíli obsahují jenom Azure DevOps. \
+\* * Autorizace od Microsoftu je povinná, přečtěte si téma [Konfigurace filtrů tras pro partnerský vztah microsoftu](how-to-routefilter-portal.md)\.
+CRM Online podporuje Dynamics v 8.2 a nižší. V případě vyšších verzí vyberte oblastní komunitu pro nasazení Dynamics.
 
 > [!NOTE]
 > Microsoft nectí žádné hodnoty komunity protokolu BGP, které jste přiřadili trasám inzerovaným Microsoftu.
@@ -241,12 +242,12 @@ Kromě výše uvedeného bude Microsoft také označovat předpony podle služby
 | **Oblast Azure národních cloudů**| **Hodnota komunity protokolu BGP** |
 | --- | --- |
 | **US Government** |  |
-| US Gov – Arizona | 12076:51106 |
-| USA – Iowa | 12076:51109 |
-| US Gov – Virginie | 12076:51105 |
-| US Gov – Texas | 12076:51108 |
+| USA (Gov) – Arizona | 12076:51106 |
+| US Gov – Iowa | 12076:51109 |
+| USA (Gov) – Virginia | 12076:51105 |
+| USA (Gov) – Texas | 12076:51108 |
 | US DoD – střed | 12076:51209 |
-| Ministerstvo obrany USA – východ | 12076:51205 |
+| US DoD – východ | 12076:51205 |
 
 
 | **Služba v národních cloudech** | **Hodnota komunity protokolu BGP** |

@@ -8,19 +8,19 @@ ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.author: gregman
-ms.openlocfilehash: 99474246bf1ff5cbcc39861d56f05aa38f177f31
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.author: philmea
+ms.openlocfilehash: 5f88a21efd04c9dd24fe31e925a3b911b5ec9df2
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510035"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77045911"
 ---
 # <a name="run-azure-iot-edge-on-windows-server-virtual-machines"></a>Spuštění Azure IoT Edge v systému Windows Server Virtual Machines
 
 Modul runtime Azure IoT Edge je co se změní na zařízení do zařízení IoT Edge. Modul runtime můžete nasadit na zařízení jako Raspberry Pi malé nebo velké průmyslové serveru. Jakmile je zařízení nakonfigurovaná s modulem runtime IoT Edge, můžete začít nasazovat obchodní logiky k němu z cloudu.
 
-Další informace o fungování modul runtime IoT Edge a jaké součásti jsou zahrnuty, naleznete v tématu [pochopení runtime Azure IoT Edge a jeho architektura](iot-edge-runtime.md).
+Další informace o tom, jak modul runtime IoT Edge funguje a jaké součásti jsou zahrnuté, najdete v tématu [pochopení Azure IoT Edge runtime a jeho architektury](iot-edge-runtime.md).
 
 V tomto článku jsou uvedené kroky, jak spustit modul runtime Azure IoT Edge na virtuálním počítači s Windows serverem 2019 pomocí nabídky [Windows server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace. Postupujte podle pokynů v tématu [Instalace modulu runtime Azure IoT Edge](how-to-install-iot-edge-windows.md) ve Windows pro použití s jinými verzemi.
 
@@ -98,7 +98,7 @@ V tomto článku jsou uvedené kroky, jak spustit modul runtime Azure IoT Edge n
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když máte zařízení IoT Edge zřízené s modulem runtime nainstalovaný, je možné [nasadit moduly IoT Edge](how-to-deploy-modules-portal.md).
+Teď, když máte nainstalovanou IoT Edge zařízení s nainstalovaným modulem runtime, můžete [nasadit IoT Edge moduly](how-to-deploy-modules-portal.md).
 
 Pokud máte problémy s instalací hraničního modulu runtime, podívejte se na stránku [Poradce při potížích](troubleshoot.md) .
 

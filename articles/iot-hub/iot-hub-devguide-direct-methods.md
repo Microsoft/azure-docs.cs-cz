@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: rezas
-ms.openlocfilehash: f4125aae954519beead99db45fc8a35264d5731e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dcbc03257b8bfeacda700f60f2724f2d02ec147d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429269"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048268"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Pochopení a vyvolání přímých metod z IoT Hub
 
@@ -73,9 +73,12 @@ Přímým voláním metod v zařízení jsou volání HTTPS, která se skládaj�
     }
     ```
 
-Časový limit je v sekundách. Pokud není nastavený časový limit, použije se výchozí hodnota 30 sekund.
+Hodnota zadaná jako `responseTimeoutInSeconds` v žádosti je doba, kterou musí IoT Hub služba čekat na dokončení přímé metody provádění na zařízení. Nastavte tento časový limit aspoň tak dlouho, dokud je očekávaná doba provádění přímé metody v zařízení. Pokud není zadán časový limit, je použita výchozí hodnota 30 sekund. Minimální a maximální hodnoty pro `responseTimeoutInSeconds` jsou 5 a 300 sekund v uvedeném pořadí.
 
-#### <a name="example"></a>Příklad:
+Hodnota zadaná jako `connectTimeoutInSeconds` v žádosti je množství času při volání přímé metody, kterou musí IoT Hub služba čekat na to, aby odpojené zařízení bylo online. Výchozí hodnota je 0, což znamená, že zařízení už musí být online při volání přímé metody. Maximální hodnota pro `connectTimeoutInSeconds` je 300 sekund.
+
+
+#### <a name="example"></a>Příklad
 
 Barebone příklad pomocí `curl`najdete níže. 
 
@@ -98,7 +101,10 @@ curl -X POST \
 
 Back-endové aplikace obdrží odpověď, která se skládá z následujících položek:
 
-* *Stavový kód HTTP*, který se používá pro chyby přicházející z IoT Hub, včetně chyby 404 pro zařízení, která nejsou aktuálně připojená.
+* *Stavový kód HTTP*:
+  * 200 indikuje úspěšné provedení přímé metody;
+  * 404 indikuje, že buď ID zařízení není platné, nebo že zařízení nebylo online při volání přímé metody a pro `connectTimeoutInSeconds` potom (k pochopení hlavní příčiny použijte doplněnou chybovou zprávu);
+  * 504 označuje časový limit brány způsobený tím, že zařízení nereaguje na přímé volání metody v rámci `responseTimeoutInSeconds`.
 
 * *Hlavičky* , které obsahují ETag, ID požadavku, typ obsahu a kódování obsahu.
 
@@ -160,7 +166,7 @@ Následující část je určena pro protokol AMQP.
 
 Zařízení přijímá požadavky přímých metod vytvořením odkazu pro příjem na adrese `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`.
 
-Zpráva AMQP dorazí na odkaz Receive, který reprezentuje požadavek metody. Obsahuje následující oddíly:
+Zpráva AMQP dorazí na odkaz Receive, který reprezentuje požadavek metody. Obsahuje následující části:
 
 * Vlastnost ID korelace, která obsahuje ID žádosti, která se má zpětně předat odpovídající odezva metody.
 

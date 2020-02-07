@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 1fec2778ce8c839c5bac0c1d74085db0f8b283ce
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 26906f2a7343dbaf09f3107d2598e81a42c65091
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76903000"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064644"
 ---
 # <a name="virtual-network-service-tags"></a>Značky služby virtuální sítě 
 <a name="network-service-tags"></a>
@@ -40,7 +40,7 @@ Sloupce označují, zda značka:
 
 Ve výchozím nastavení značky služby odráží rozsahy celého cloudu. Některé značky služby také umožňují podrobnější kontrolu tím, že omezují odpovídající rozsahy IP adres na určitou oblast. Například **úložiště** značek služby představuje Azure Storage pro celý Cloud, ale **Storage. WestUS** zúží rozsah jenom na rozsahy IP adres úložiště z oblasti WestUS. V následující tabulce je uvedeno, zda každá značka služby podporuje tento regionální rozsah.  
 
-| Tag | Účel | Dá se použít příchozí nebo odchozí? | Je možné je rozregionovat? | Lze použít s Azure Firewall? |
+| Značka | Účel | Dá se použít příchozí nebo odchozí? | Je možné je rozregionovat? | Lze použít s Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **ApiManagement** | Provoz správy pro nasazení ve službě Azure API Management vyhrazena. | Obojí | Ne | Ano |
 | **ApplicationInsightsAvailability** | Application Insights dostupnost. | Příchozí | Ne | Ne |
@@ -85,10 +85,10 @@ Ve výchozím nastavení značky služby odráží rozsahy celého cloudu. Někt
 | **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security. | Odchozí | Ne | Ne |
 | **MicrosoftContainerRegistry** | Registr kontejnerů pro Image Microsoft Container. <br/><br/>*Poznámka:* Seznam povolených IP adres (Tato závislost bude brzy odebrána): 204.79.197.219. | Odchozí | Ano | Ano |
 | **ServiceBus** | Azure Service Bus provoz, který využívá úroveň služby Premium. | Odchozí | Ano | Ano |
-| **ServiceFabric** | Service Fabric Azure. | Odchozí | Ne | Ne |
+| **ServiceFabric** | Service Fabric Azure.<br/><br/>*Poznámka:* Tato značka představuje koncový bod služby Service Fabric pro rovinu ovládacího prvku na oblast. To zákazníkům umožňuje provádět operace správy pro své Service Fabric clustery ze své virtuální sítě (koncové body). https://westus.servicefabric.azure.com) | Obojí | Ne | Ne |
 | **Sql** | Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL a Azure SQL Data Warehouse.<br/><br/>*Poznámka:* Tato značka představuje službu, ale ne konkrétní instance služby. Značka například představuje službu Azure SQL Database, ale ne konkrétní server nebo databázi SQL. | Odchozí | Ano | Ano |
 | **SqlManagement** | Provoz správy pro nasazení vyhrazená SQL. | Obojí | Ne | Ano |
-| **Storage** | Azure Storage. <br/><br/>*Poznámka:* Tato značka představuje službu, ale ne konkrétní instance služby. Značka například představuje službu Azure Storage, ale ne konkrétní účet služby Azure Storage. | Odchozí | Ano | Ano |
+| **Úložiště** | Azure Storage. <br/><br/>*Poznámka:* Tato značka představuje službu, ale ne konkrétní instance služby. Značka například představuje službu Azure Storage, ale ne konkrétní účet služby Azure Storage. | Odchozí | Ano | Ano |
 | **VirtualNetwork** | Adresní prostor virtuální sítě (všechny rozsahy IP adres definované pro virtuální síť), všechny připojené místní adresní prostory, [partnerské](virtual-network-peering-overview.md) virtuální sítě, virtuální sítě připojené k [bráně virtuální sítě](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json), [virtuální IP adresu hostitele](security-overview.md#azure-platform-considerations)a předpony adres používané na [trasách definovaných uživatelem](virtual-networks-udr-overview.md). Tato značka může obsahovat také výchozí trasy. | Obojí | Ne | Ne |
 
 >[!NOTE]

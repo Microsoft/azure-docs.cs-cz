@@ -1,138 +1,255 @@
 ---
-title: Hostitelé relace virtuálních ploch pro Windows s dynamickým škálováním – Azure
-description: Popisuje, jak nastavit skript automatického škálování pro hostitele relací virtuálních počítačů s Windows.
+title: Škálování hostitelů relací Azure Automation – Azure
+description: Automatické škálování hostitelů relací virtuálních počítačů s Windows pomocí Azure Automation.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 02/06/2020
 ms.author: helohr
-ms.openlocfilehash: a991a41466d216b9f245c20dbd8054f3ae5ef3d0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c201df03bb156bac3f63d03cc4ca35215792f65c
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451341"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061482"
 ---
-# <a name="scale-session-hosts-dynamically"></a>Dynamické škálování hostitelů relace
+# <a name="scale-session-hosts-using-azure-automation"></a>Škálování hostitelů relací pomocí Azure Automation
 
-Pro mnoho nasazení virtuálních klientských počítačů s Windows v Azure představuje náklady na virtuální počítač významnou část celkových nákladů na nasazení virtuálních počítačů s Windows. Aby se snížily náklady, je nejlepší vypnout a uvolnit virtuální počítače hostitele relace v době mimo špičku a pak je restartovat během špičky využití.
+Celkové náklady na nasazení virtuálních klientů s Windows můžete snížit tak, že změníte velikost virtuálních počítačů (VM). To znamená vypnutí a zrušení přidělení virtuálních počítačů hostitele relace v době mimo špičku a jejich opětovné zapnutí a přerozdělení během špičky.
 
-V tomto článku se používá jednoduchý skript pro škálování pro automatické škálování virtuálních počítačů hostitele relací v prostředí virtuálních počítačů s Windows. Další informace o tom, jak skript škálování funguje, najdete v části [Jak funguje skript pro škálování](#how-the-scaling-script-works) .
+V tomto článku se dozvíte o nástroji pro škálování vytvořeném pomocí Azure Automation a Azure Logic Apps, které budou automaticky škálovat virtuální počítače hostitele relací ve vašem prostředí virtuálních počítačů s Windows. Pokud se chcete dozvědět, jak používat nástroj pro škálování, přeskočte dopředu s [požadavky](#prerequisites).
+
+## <a name="how-the-scaling-tool-works"></a>Jak nástroj pro škálování funguje
+
+Nástroj pro škálování nabízí možnost automatizace s nízkými náklady pro zákazníky, kteří chtějí optimalizovat náklady na virtuální počítače hostitele relace.
+
+Nástroj pro škálování můžete použít k těmto akcím:
+ 
+- Naplánujte, aby se virtuální počítače spouštěly a zastavily na základě špičky a špičky v pracovní době.
+- Horizontální navýšení kapacity virtuálních počítačů na základě počtu relací na jádro procesoru.
+- Škálování virtuálních počítačů v době mimo špičku ponechte minimální počet spuštěných virtuálních počítačů hostitele relace.
+
+Nástroj pro škálování používá kombinaci Azure Automation PowerShellových runbooků, webhooků a Azure Logic Apps k fungování. Když se nástroj spustí, Azure Logic Apps volá Webhook, aby se spouštěl Azure Automation Runbook. Sada Runbook potom vytvoří úlohu.
+
+Během špičky využívání úlohy zkontroluje aktuální počet relací a kapacitu virtuálního počítače aktuálně spuštěného hostitele relace pro každý fond hostitelů. Tyto informace používá k výpočtu, jestli virtuální počítače hostitele spuštěné relace můžou podporovat existující relace na základě parametru *SessionThresholdPerCPU* definovaného pro soubor **createazurelogicapp. ps1** . Pokud virtuální počítače hostitele relace nepodporují existující relace, spustí úloha další virtuální počítače hostitele relace ve fondu hostitelů.
+
+>[!NOTE]
+>*SessionThresholdPerCPU* neomezuje počet relací na virtuálním počítači. Tento parametr určuje, zda je nutné spustit nové virtuální počítače pro vyrovnávání zatížení připojení. Pokud chcete omezit počet relací, musíte podle pokynů [set-RdsHostPool](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/set-rdshostpool) nakonfigurovat parametr *MaxSessionLimit* odpovídajícím způsobem.
+
+V době mimo špičku bude úloha určovat, které virtuální počítače hostitele relace by se měly vypnout na základě parametru *MinimumNumberOfRDSH* . Úloha nastaví virtuální počítače hostitele relace na režim vyprázdnění, aby se zabránilo novým relacím, které se připojují k hostitelům. Pokud nastavíte parametr *LimitSecondsToForceLogOffUser* na nenulovou kladnou hodnotu, skript pošle všem aktuálně přihlášeným uživatelům, aby uložil svou práci, čekal nakonfigurovanou dobu a pak vynutila odhlášení uživatelů. Po odhlášení všech uživatelských relací na virtuálním počítači hostitele relace vypíná skript virtuální počítač.
+
+Pokud nastavíte parametr *LimitSecondsToForceLogOffUser* na hodnotu nula, úloha umožní nastavení konfigurace relace v zadaných zásadách skupiny zpracovávat odhlašování uživatelských relací. Chcete-li zobrazit tyto zásady skupiny, přejděte na téma **Konfigurace počítače** > **zásady** > **Šablony pro správu** > **součásti systému Windows** > **Terminálové služby** > **terminálový server** > **časový limit relace**. Pokud na virtuálním počítači hostitele relace existují aktivní relace, úloha ponechá virtuální počítač hostitele relace spuštěný. Pokud neexistují žádné aktivní relace, úloha vypne virtuální počítač hostitele relace.
+
+Úloha se pravidelně spouští na základě nastaveného intervalu opakování. Tento interval můžete změnit na základě velikosti prostředí pro virtuální počítače s Windows, ale mějte na paměti, že spouštění a vypínání virtuálních počítačů může nějakou dobu trvat, takže si nezapomeňte vzít v úvahu zpoždění. Doporučujeme nastavit interval opakování na každých 15 minut.
+
+Nástroj má však také následující omezení:
+
+- Toto řešení se vztahuje pouze na virtuální počítače hostitele ve fondu.
+- Toto řešení spravuje virtuální počítače v jakékoli oblasti, ale dá se použít jenom ve stejném předplatném jako účet Azure Automation a Azure Logic Apps.
+
+>[!NOTE]
+>Nástroj pro škálování řídí režim vyrovnávání zatížení fondu hostitelů, který je škálovatelný. Nastaví ji na geografickou vyrovnávání zatížení pro hodiny špičky i mimo špičku.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Prostředí, ve kterém spouštíte skript, musí mít následující věci:
+Než začnete s nastavením nástroje pro škálování, ujistěte se, že máte připravené následující akce:
 
-- Tenant a účet virtuálních klientů s Windows nebo instanční objekt s oprávněními pro dotazování tohoto tenanta (například Přispěvatel RDS).
-- Virtuální počítače fondu hostitele relace jsou nakonfigurované a zaregistrované ve službě Virtual Desktop systému Windows.
-- Další virtuální počítač, který spustí naplánovanou úlohu prostřednictvím Plánovač úloh a má síťový přístup k hostitelům relací. Bude se na něj později v dokumentu odkazovat jako na virtuální počítač pro horizontální navýšení kapacity.
-- Na virtuálním počítači, na kterém běží naplánovaná úloha, je nainstalovaný [modul Microsoft Azure správce prostředků PowerShellu](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) .
-- Na virtuálním počítači, na kterém běží naplánovaná úloha, je nainstalovaný [modul PowerShellu virtuálního počítače s Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) .
+- [Tenant a fond hostitelů virtuálních počítačů s Windows](create-host-pools-arm-template.md)
+- Virtuální počítače fondu hostitele relace nakonfigurované a zaregistrované ve službě Virtual Desktop systému Windows
+- Uživatel s [přístupem Přispěvatel](../role-based-access-control/role-assignments-portal.md) v předplatném Azure
 
-## <a name="recommendations-and-limitations"></a>Doporučení a omezení
+Počítač, který použijete k nasazení nástroje, musí mít: 
 
-Při spuštění skriptu škálování mějte na paměti následující věci:
+- Windows PowerShell 5,1 nebo novější
+- Microsoft AZ PowerShell Module
 
-- Tento skript škálování může zpracovat pouze jeden fond hostitelů na instanci naplánované úlohy, která spouští skript škálování.
-- Naplánované úlohy, které spouštějí skripty škálování, musí být na virtuálním počítači, který je vždycky zapnutý.
-- Vytvořte samostatnou složku pro každou instanci skriptu škálování a jeho konfiguraci.
-- Tento skript nepodporuje přihlašování jako správce k virtuálním plochám Windows s uživatelskými účty Azure AD, které vyžadují službu Multi-Factor Authentication. Pro přístup ke službě Windows Virtual Desktop a Azure doporučujeme používat instanční objekty. Podle [tohoto kurzu](create-service-principal-role-powershell.md) vytvořte instanční objekt a přiřazení role pomocí PowerShellu.
-- Záruka SLA Azure platí jenom pro virtuální počítače ve skupině dostupnosti. Aktuální verze dokumentu popisuje prostředí s jedním virtuálním počítačem, které provádí škálování, což nemusí splňovat požadavky na dostupnost.
+Pokud máte všechno připravené, můžeme začít.
 
-## <a name="deploy-the-scaling-script"></a>Nasazení skriptu škálování
+## <a name="create-an-azure-automation-account"></a>Vytvoření účtu Azure Automation
 
-Následující postupy vám posdělí, jak nasadit skript škálování.
+Nejdřív budete potřebovat účet Azure Automation ke spuštění Runbooku PowerShellu. Tady je postup nastavení účtu:
 
-### <a name="prepare-your-environment-for-the-scaling-script"></a>Příprava prostředí pro skript škálování
+1. Otevřete Windows PowerShell jako správce.
+2. Spusťte následující rutinu, abyste se přihlásili ke svému účtu Azure.
 
-Nejprve Připravte prostředí pro skript škálování:
+     ```powershell
+     Login-AzAccount
+     ```
 
-1. Přihlaste se k virtuálnímu počítači (virtuální počítač pro horizontální navýšení kapacity), který spustí naplánovanou úlohu s účtem správce domény.
-2. Vytvořte složku na virtuálním počítači pro škálování, která bude obsahovat skript škálování a jeho konfiguraci (například **C:\\Scale-HostPool1**).
-3. Stažení souborů **basicScale. ps1**, **config. JSON**a **Functions-PSStoredCredentials. ps1** a složky **PowershellModules** z [úložiště skriptu škálování](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script) a jejich zkopírování do složky, kterou jste vytvořili v kroku 2. Existují dva základní způsoby, jak soubory získat před jejich zkopírováním do virtuálního počítače se škálováním na více počítačů:
-    - Naklonujte úložiště Git do místního počítače.
-    - Zobrazte **nezpracované** verze každého souboru, zkopírujte a vložte obsah každého souboru do textového editoru a pak soubory uložte s odpovídajícím názvem souboru a typem souboru. 
+     >[!NOTE]
+     >Váš účet musí mít oprávnění přispěvatele v předplatném Azure, na kterém chcete nástroj pro škálování nasadit.
 
-### <a name="create-securely-stored-credentials"></a>Vytvoření bezpečných uložených přihlašovacích údajů
+3. Spuštěním následující rutiny Stáhněte skript pro vytvoření účtu Azure Automation:
 
-V dalším kroku budete muset vytvořit bezpečně uložené přihlašovací údaje:
+     ```powershell
+     Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/wvd-scaling-script/createazureautomationaccount.ps1" -OutFile "your local machine path\ createazureautomationaccount.ps1"
+     ```
 
-1. Otevřete PowerShell ISE jako správce.
-2. Importujte modul PowerShellu služby RDS spuštěním následující rutiny:
+4. Spuštěním následující rutiny spusťte skript a vytvořte účet Azure Automation:
 
-    ```powershell
-    Install-Module Microsoft.RdInfra.RdPowershell
-    ```
-    
-3. Otevřete podokno úprav a načtěte soubor **Function-PSStoredCredentials. ps1** a pak spusťte celý skript (F5).
-4. Spusťte následující rutinu:
-    
-    ```powershell
-    Set-Variable -Name KeyPath -Scope Global -Value <LocalScalingScriptFolder>
-    ```
-    
-    Příklad **: set-Variable-Name cesta k nástroji – globální hodnota "c:\\škálování-HostPool1"**
-5. Spusťte rutinu **New-StoredCredential-path \$cesty** ke službě. Po zobrazení výzvy zadejte přihlašovací údaje k virtuálnímu počítači s Windows s oprávněními pro dotazování fondu hostitelů (fond hostitelů je zadaný v **souboru config. JSON**).
-    - Pokud používáte jiné instanční objekty nebo standardní účet, spusťte rutinu **New-StoredCredential-path \$cesty** pro každý účet pro vytvoření místních uložených přihlašovacích údajů.
-6. Spuštěním rutiny **Get-StoredCredential-list** potvrďte, že se přihlašovací údaje úspěšně vytvořily.
+     ```powershell
+     .\createazureautomationaccount.ps1 -SubscriptionID <azuresubscriptionid> -ResourceGroupName <resourcegroupname> -AutomationAccountName <name of automation account> -Location "Azure region for deployment"
+     ```
 
-### <a name="configure-the-configjson-file"></a>Konfigurace souboru config. JSON
+5. Výstup rutiny bude obsahovat identifikátor URI Webhooku. Ujistěte se, že zachováte záznam identifikátoru URI, protože ho použijete jako parametr při nastavování plánu spouštění pro Azure Logic Apps.
 
-Zadejte příslušné hodnoty do následujících polí pro aktualizaci nastavení skriptu škálování v souboru config. JSON:
+Až nastavíte účet Azure Automation, přihlaste se ke svému předplatnému Azure a ujistěte se, že se Váš účet Azure Automation a relevantní sada Runbook objevily v zadané skupině prostředků, jak je znázorněno na následujícím obrázku:
 
-| Pole                     | Popis                    |
-|-------------------------------|------------------------------------|
-| AADTenantId                   | ID tenanta Azure AD, které přidruží předplatné, ve kterém se spouštějí virtuální počítače hostitele relace     |
-| AADApplicationId              | ID aplikace instančního objektu                                                       |
-| AADServicePrincipalSecret     | Tato možnost se dá zadat během zkušební fáze, ale po vytvoření přihlašovacích údajů pomocí **Functions-PSStoredCredentials. ps1** se musí uchovávat prázdná.    |
-| currentAzureSubscriptionId    | ID předplatného Azure, ve kterém se spouštějí virtuální počítače hostitele relace                        |
-| tenantName                    | Název tenanta virtuálních klientů Windows                                                    |
-| hostPoolName                  | Název fondu hostitelů virtuálních počítačů s Windows                                                 |
-| RDBroker                      | Adresa URL služby WVD, výchozí hodnota https:\//rdbroker.wvd.microsoft.com             |
-| Uživatelské jméno                      | ID aplikace instančního objektu (je možné, že má stejný instanční objekt jako v AADApplicationId) nebo standardní uživatel bez služby Multi-Factor Authentication |
-| isServicePrincipal            | Přijaté hodnoty jsou **true** nebo **false**. Určuje, jestli druhá sada přihlašovacích údajů používá instanční objekt nebo standardní účet. |
-| BeginPeakTime                 | Čas zahájení špičky využití                                                            |
-| EndPeakTime                   | Doba špičky využití na konci                                                              |
-| TimeDifferenceInHours         | Časový rozdíl mezi místním časem a časem UTC v hodinách                                   |
-| SessionThresholdPerCPU        | Maximální počet relací na prahovou hodnotu procesoru, který se používá k určení, kdy je potřeba spustit nový virtuální počítač hostitele relace během špičky.  |
-| MinimumNumberOfRDSH           | Minimální počet virtuálních počítačů fondu hostitelů, které mají běžet v době mimo špičku             |
-| LimitSecondsToForceLogOffUser | Počet sekund, po který se má počkat, než se uživatelé vynutí odhlášení. Pokud je nastavená hodnota 0, uživatelé se nebudou muset odhlásit.  |
-| LogOffMessageTitle            | Název zprávy odeslané uživateli před jejich vynuceným odhlášením                  |
-| LogOffMessageBody             | Text zprávy s upozorněním, která se uživateli pošle předtím, než se odhlásí. Například "Tento počítač se vypne během X minut. Uložte prosím svoji práci a odhlaste se. |
+![Obrázek stránky s přehledem Azure zobrazující nově vytvořený účet služby Automation a sadu Runbook.](media/automation-account.png)
 
-### <a name="configure-the-task-scheduler"></a>Nakonfigurovat Plánovač úloh
+Pokud chcete zjistit, jestli je Webhook tam, kde by měl být, v levé části obrazovky klikněte na seznam prostředky a vyberte **Webhook**.
 
-Po konfiguraci souboru JSON konfigurace budete muset nakonfigurovat Plánovač úloh, aby se soubor basicScaler. ps1 spouštěl v pravidelných intervalech.
+## <a name="create-an-azure-automation-run-as-account"></a>Vytvoření účtu Azure Automation spustit jako
 
-1. Spusťte **Plánovač úloh**.
-2. V okně **Plánovač úloh** vyberte **vytvořit úlohu...**
-3. V dialogovém okně **vytvořit úlohu** vyberte kartu **Obecné** , zadejte **název** (například "dynamický hostitel vzdálené relace"), vyberte možnost spustit bez **ohledu na to, zda je uživatel přihlášen nebo nikoli** a **Spusťte s nejvyššími oprávněními**.
-4. Otevřete kartu **triggery** a pak vyberte **nové...**
-5. V dialogovém **okně Nová aktivační událost** v **části Upřesnit nastavení**zaškrtněte políčko **Opakovat úlohu každých** a vyberte příslušné období a dobu trvání (například **15 minut** nebo **neomezeně**).
-6. Vyberte kartu **Akce** a **nové...**
-7. V dialogovém okně **Nová akce** zadejte do pole **program/skript** **PowerShell. exe** a potom zadejte **C:\\škálování\\basicScale. ps1** do pole **Přidat argumenty (volitelné)** .
-8. Otevřete karty **podmínky** a **Nastavení** a výběrem **OK** potvrďte výchozí nastavení pro každou z nich.
-9. Zadejte heslo pro účet správce, ve kterém chcete spustit skript škálování.
+Teď, když máte účet Azure Automation, budete také muset vytvořit účet Azure Automation spustit jako pro přístup k prostředkům Azure.
 
-## <a name="how-the-scaling-script-works"></a>Jak funguje skript škálování
+[Azure Automation účet Spustit jako](../automation/manage-runas-account.md) poskytuje ověřování pro správu prostředků v Azure pomocí rutin Azure. Když vytvoříte účet Spustit jako, vytvoří se nový uživatel instančního objektu v Azure Active Directory a přiřadí roli přispěvatele k uživatelskému objektu služby na úrovni předplatného, účet Spustit jako pro Azure je skvělým způsobem, jak bezpečně ověřit s certifikáty a hlavní název služby, aniž byste museli ukládat uživatelské jméno a heslo do objektu přihlašovacích údajů. Další informace o ověřování spustit jako najdete v tématu [omezení oprávnění účtu Spustit jako](../automation/manage-runas-account.md#limiting-run-as-account-permissions).
 
-Tento skript pro škálování čte nastavení ze souboru config. JSON, včetně začátku a konce období špičky využití během dne.
+Každý uživatel, který je členem role správců předplatného a spolusprávcem předplatného, může vytvořit účet Spustit jako podle pokynů pro další oddíl.
 
-Během špičky běhu skript zkontroluje aktuální počet relací a aktuálně spuštěnou kapacitu vzdálené plochy pro každý fond hostitelů. Počítá se v případě, že virtuální počítače hostitele spuštěné relace mají dostatečnou kapacitu pro podporu stávajících relací na základě parametru SessionThresholdPerCPU definovaného v souboru config. JSON. V takovém případě se spustí skript s dalšími virtuálními počítači hostitele relace ve fondu hostitelů.
+Vytvoření účtu Spustit jako ve vašem účtu Azure:
 
-Během špičky využití skript určí, které virtuální počítače hostitele relace by se měly vypnout na základě parametru MinimumNumberOfRDSH v souboru config. JSON. Skript nastaví virtuální počítače hostitele relace na režim vyprázdnění, aby se zabránilo novým relacím, které se připojují k hostitelům. Pokud nastavíte parametr **LimitSecondsToForceLogOffUser** v souboru config. JSON na nenulovou kladnou hodnotu, skript upozorní všechny aktuálně přihlášené uživatele, aby ušetřili práci, čekali nakonfigurovanou dobu a pak vynutila odhlášení uživatelů. Jakmile se všechny uživatelské relace odhlásily na virtuálním počítači hostitele relace, skript vypne server.
+1. Na webu Azure Portal vyberte **Všechny služby**. V seznamu prostředků zadejte a vyberte **účty Automation**.
 
-Pokud v souboru config. JSON nastavíte parametr **LimitSecondsToForceLogOffUser** na hodnotu nula, skript umožní, aby nastavení konfigurace relace ve vlastnostech fondu hostitelů zpracovával podepisování uživatelských relací. Pokud se na virtuálním počítači hostitele relace nacházejí nějaké relace, ponechá se virtuální počítač hostitele relace spuštěný. Pokud se nevyskytly žádné relace, skript vypne virtuální počítač hostitele relace.
+2. Na stránce **účty Automation** vyberte název vašeho účtu Automation.
 
-Skript je navržený tak, aby pravidelně běžel na serveru virtuálních počítačů se škálováním na více systému pomocí Plánovač úloh. Vyberte odpovídající časový interval na základě velikosti prostředí vzdálené plochy a nezapomeňte, že spouštění a vypínání virtuálních počítačů může nějakou dobu trvat. Doporučujeme spouštět skript škálování každých 15 minut.
+3. V podokně na levé straně okna vyberte **účty Spustit jako** v části nastavení účtu.
 
-## <a name="log-files"></a>Soubory protokolu
+4. Vyberte **účet Spustit jako pro Azure**. Po zobrazení podokna **Přidat účet Spustit jako pro Azure** si přečtěte informace v přehledu a pak výběrem **vytvořit** spusťte proces vytváření účtů.
 
-Skript škálování vytvoří dva soubory protokolu **WVDTenantScale. log** a **WVDTenantUsage. log**. Soubor **WVDTenantScale. log** bude protokolovat události a chyby (pokud existují) během každého spuštění skriptu škálování.
+5. Počkejte několik minut, než Azure vytvoří účet Spustit jako. Průběh vytváření můžete sledovat v nabídce v části oznámení.
 
-V souboru **WVDTenantUsage. log** se zaznamená aktivní počet jader a aktivních počet virtuálních počítačů pokaždé, když spustíte skript škálování. Tyto informace můžete použít k odhadu skutečného využití Microsoft Azure virtuálních počítačů a nákladů. Soubor je formátován jako hodnoty oddělené čárkami. Každá položka obsahuje následující informace:
+6. Po dokončení procesu se v zadaném účtu Automation vytvoří Asset s názvem AzureRunAsConnection. Asset připojení obsahuje ID aplikace, ID tenanta, ID předplatného a kryptografický otisk certifikátu. Zapamatujte si ID aplikace, protože ho použijete později.
 
->čas, fond hostitelů, jádra, virtuální počítače
+### <a name="create-a-role-assignment-in-windows-virtual-desktop"></a>Vytvoření přiřazení role na virtuálním počítači s Windows
 
-Název souboru se taky dá změnit tak, aby měl rozšíření CSV, načtený do Microsoft Excelu a analyzuje.
+Dále je potřeba vytvořit přiřazení role, aby AzureRunAsConnection mohl komunikovat s virtuálním počítačem s Windows. Nezapomeňte použít PowerShell pro přihlášení pomocí účtu, který má oprávnění k vytváření přiřazení rolí.
+
+Nejdřív Stáhněte a importujte [modul PowerShellu virtuálního počítače s Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , který chcete použít v relaci PowerShellu, pokud jste to ještě neudělali. Spusťte následující rutiny PowerShellu, abyste se připojili k virtuální ploše Windows a zobrazili své klienty.
+
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+
+Get-RdsTenant
+```
+
+Když najdete tenanta s fondy hostitelů, které chcete škálovat, postupujte podle pokynů v části [Vytvoření účtu Azure Automation](#create-an-azure-automation-account) a použijte název tenanta, který jste získali z předchozí rutiny v následující rutině pro vytvoření přiřazení role:
+
+```powershell
+New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId <applicationid> -TenantName <tenantname>
+```
+
+## <a name="create-the-azure-logic-app-and-execution-schedule"></a>Vytvoření aplikace logiky Azure a plánu spuštění
+
+Nakonec budete muset vytvořit aplikaci logiky Azure a nastavit plán spouštění pro nový nástroj pro škálování.
+
+1.  Otevřete Windows PowerShell jako správce.
+
+2.  Spusťte následující rutinu, abyste se přihlásili ke svému účtu Azure.
+
+     ```powershell
+     Login-AzAccount
+     ```
+
+3. Spuštěním následující rutiny Stáhněte soubor skriptu createazurelogicapp. ps1 na svém místním počítači.
+
+     ```powershell
+     Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/wvd-scaling-script/createazurelogicapp.ps1" -OutFile "your local machine path\ createazurelogicapp.ps1"
+     ```
+
+4. Spuštěním následující rutiny se přihlaste k virtuálnímu počítači s Windows pomocí účtu, který má oprávnění vlastníka VP nebo RDS Přispěvatel.
+
+     ```powershell
+     Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+     ```
+
+5. Spusťte následující skript prostředí PowerShell pro vytvoření aplikace logiky Azure a plánovaného spuštění.
+
+     ```powershell
+     $resourceGroupName = Read-Host -Prompt "Enter the name of the resource group for the new Azure Logic App"
+     
+     $aadTenantId = Read-Host -Prompt "Enter your Azure AD tenant ID"
+
+     $subscriptionId = Read-Host -Prompt "Enter your Azure Subscription ID"
+
+     $tenantName = Read-Host -Prompt "Enter the name of your WVD tenant"
+
+     $hostPoolName = Read-Host -Prompt "Enter the name of the host pool you’d like to scale"
+
+     $recurrenceInterval = Read-Host -Prompt "Enter how often you’d like the job to run in minutes, e.g. ‘15’"
+
+     $beginPeakTime = Read-Host -Prompt "Enter the start time for peak hours in local time, e.g. 9:00"
+
+     $endPeakTime = Read-Host -Prompt "Enter the end time for peak hours in local time, e.g. 18:00"
+
+     $timeDifference = Read-Host -Prompt "Enter the time difference between local time and UTC in hours, e.g. +5:30"
+
+     $sessionThresholdPerCPU = Read-Host -Prompt "Enter the maximum number of sessions per CPU that will be used as a threshold to determine when new session host VMs need to be started during peak hours"
+
+     $minimumNumberOfRdsh = Read-Host -Prompt "Enter the minimum number of session host VMs to keep running during off-peak hours"
+
+     $limitSecondsToForceLogOffUser = Read-Host -Prompt "Enter the number of seconds to wait before automatically signing out users. If set to 0, users will be signed out immediately"
+
+     $logOffMessageTitle = Read-Host -Prompt "Enter the title of the message sent to the user before they are forced to sign out"
+
+     $logOffMessageBody = Read-Host -Prompt "Enter the body of the message sent to the user before they are forced to sign out"
+
+     $location = Read-Host -Prompt "Enter the name of the Azure region where you will be creating the logic app"
+
+     $connectionAssetName = Read-Host -Prompt "Enter the name of the Azure RunAs connection asset"
+
+     $webHookURI = Read-Host -Prompt "Enter the URI of the WebHook returned by when you created the Azure Automation Account"
+
+     $automationAccountName = Read-Host -Prompt "Enter the name of the Azure Automation Account"
+
+     $maintenanceTagName = Read-Host -Prompt "Enter the name of the Tag associated with VMs you don’t want to be managed by this scaling tool"
+
+     .\createazurelogicapp.ps1 -ResourceGroupName $resourceGroupName `
+       -AADTenantID $aadTenantId `
+       -SubscriptionID $subscriptionId `
+       -TenantName $tenantName `
+       -HostPoolName $hostPoolName `
+       -RecurrenceInterval $recurrenceInterval `
+       -BeginPeakTime $beginPeakTime `
+       -EndPeakTime $endPeakTime `
+       -TimeDifference $timeDifference `
+       -SessionThresholdPerCPU $sessionThresholdPerCPU `
+       -MinimumNumberOfRDSH $minimumNumberOfRdsh `
+       -LimitSecondsToForceLogOffUser $limitSecondsToForceLogOffUser `
+       -LogOffMessageTitle $logOffMessageTitle `
+       -LogOffMessageBody $logOffMessageBody `
+       -Location $location `
+       -ConnectionAssetName $connectionAssetName `
+       -WebHookURI $webHookURI `
+       -AutomationAccountName $automationAccountName `
+       -MaintenanceTagName $maintenanceTagName
+     ```
+
+     Po spuštění skriptu by se aplikace logiky měla zobrazit ve skupině prostředků, jak je znázorněno na následujícím obrázku.
+
+     ![Obrázek stránky s přehledem pro ukázkovou aplikaci Azure Logic.](media/logic-app.png)
+
+Chcete-li provést změny v plánu spuštění, jako je například změna intervalu opakování nebo časového pásma, přejdete do plánovače automatického škálování a výběrem možnosti **Upravit** přejdete do návrháře Logic Apps.
+
+![Obrázek návrháře Logic Apps. Nabídky opakování a Webhooku, které umožňují uživateli upravit časy opakování a soubor Webhooku, jsou otevřené.](media/logic-apps-designer.png)
+
+## <a name="manage-your-scaling-tool"></a>Správa nástroje pro škálování
+
+Teď, když jste vytvořili Nástroj pro škálování, získáte přístup k jeho výstupu. Tato část popisuje několik funkcí, které můžete najít užitečné.
+
+### <a name="view-job-status"></a>Zobrazení stavu úlohy
+
+Můžete zobrazit souhrnnou stav všech úloh sady Runbook nebo zobrazit podrobnější stav konkrétní úlohy Runbooku v Azure Portal.
+
+Napravo od vybraného účtu Automation v části Statistika úlohy můžete zobrazit seznam souhrnů všech úloh sady Runbook. Po otevření stránky **úlohy** na levé straně okna se zobrazí stav aktuální úlohy, časy spuštění a časy dokončení.
+
+![Snímek obrazovky se stránkou stavu úlohy.](media/jobs-status.png)
+
+### <a name="view-logs-and-scaling-tool-output"></a>Zobrazení protokolů a škálování výstupu nástroje
+
+Protokoly o škálování na více instancí a operace škálování na více instancí můžete zobrazit otevřením Runbooku a výběrem názvu úlohy.
+
+V rámci skupiny prostředků hostující účet Azure Automation přejděte na Runbook (výchozí název je WVDAutoScaleRunbook) a vyberte **Přehled**. Na stránce Přehled vyberte úlohu v části Nedávné úlohy, abyste zobrazili její výstup nástroje pro změnu velikosti, jak je znázorněno na následujícím obrázku.
+
+![Obrázek okna výstup pro nástroj pro škálování](media/tool-output.png)

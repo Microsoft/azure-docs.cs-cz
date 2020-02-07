@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 04db62f402c25dd4a04281047f684dc23d41a502
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: e95a0b4b9f071a0fd3949d50eeee17b811dfb8ea
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934618"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064814"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Syntaxe dotazu směrování zpráv IoT Hub
 
@@ -52,11 +52,11 @@ Vlastnosti systému vám pomůžou identifikovat obsah a zdroj zpráv.
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| contentType | string | Uživatel Určuje typ obsahu zprávy. Pokud chcete pro tělo zprávy zapnout dotaz, měla by být tato hodnota nastavená na Application/JSON. |
-| contentEncoding | string | Uživatel Určuje typ kódování zprávy. Povolené hodnoty jsou UTF-8, UTF-16, UTF-32, pokud je contentType nastavený na Application/JSON. |
-| iothub-ID zařízení-připojení | string | Tato hodnota je nastavena IoT Hub a identifikuje ID zařízení. K dotazování použijte `$connectionDeviceId`. |
-| iothub-enqueuedtime | string | Tato hodnota je nastavena IoT Hub a představuje skutečný čas enqueuing zprávy ve standardu UTC. K dotazování použijte `enqueuedTime`. |
-| iothub – název rozhraní | string | Tato hodnota je nastavena uživatelem a představuje název digitálního vlákna, které implementuje zprávu telemetrie. K dotazování použijte `$interfaceName`. Tato funkce je k dispozici jako součást [IoT technologie Plug and Play Public Preview](../iot-pnp/overview-iot-plug-and-play.md). |
+| contentType | řetězec | Uživatel Určuje typ obsahu zprávy. Pokud chcete pro tělo zprávy zapnout dotaz, měla by být tato hodnota nastavená na Application/JSON. |
+| contentEncoding | řetězec | Uživatel Určuje typ kódování zprávy. Povolené hodnoty jsou UTF-8, UTF-16, UTF-32, pokud je contentType nastavený na Application/JSON. |
+| iothub-ID zařízení-připojení | řetězec | Tato hodnota je nastavena IoT Hub a identifikuje ID zařízení. K dotazování použijte `$connectionDeviceId`. |
+| iothub-enqueuedtime | řetězec | Tato hodnota je nastavena IoT Hub a představuje skutečný čas enqueuing zprávy ve standardu UTC. K dotazování použijte `enqueuedTime`. |
+| iothub – název rozhraní | řetězec | Tato hodnota je nastavena uživatelem a představuje název digitálního vlákna, které implementuje zprávu telemetrie. K dotazování použijte `$interfaceName`. Tato funkce je k dispozici jako součást [IoT technologie Plug and Play Public Preview](../iot-pnp/overview-iot-plug-and-play.md). |
 
 Jak je popsáno v [IoT Hub zprávy](iot-hub-devguide-messages-construct.md), ve zprávě jsou další vlastnosti systému. Kromě **ContentType**, **contentEncoding**a **EnqueuedTime**lze také zadat dotaz **connectionDeviceId** a **connectionModuleId** .
 
@@ -196,7 +196,7 @@ Směrování zpráv vám umožní dotazovat se na značky a vlastnosti v [zaří
 
 ### <a name="query-expressions"></a>Výrazy dotazů
 
-Dotaz na text zprávy musí být s `$twin`předponou. Výraz dotazu může také kombinovat odkaz na dvojitou značku nebo vlastnost s odkazem na tělo, vlastnostmi systému zprávy a odkazem na vlastnosti aplikace zprávy. Doporučujeme použít v tagu a vlastnostech jedinečné názvy, protože dotaz nerozlišuje velká a malá písmena. To platí pro vlákna zařízení i pro vlákna modulu. V názvech vlastností také upustí od použití `twin`, `$twin`, `body`nebo `$body`. Například následující jsou všechny platné výrazy dotazu: 
+Dotaz na vlákna zprávy musí být s předponou `$twin`. Výraz dotazu může také kombinovat odkaz na dvojitou značku nebo vlastnost s odkazem na tělo, vlastnostmi systému zprávy a odkazem na vlastnosti aplikace zprávy. Doporučujeme použít v tagu a vlastnostech jedinečné názvy, protože dotaz nerozlišuje velká a malá písmena. To platí pro vlákna zařízení i pro vlákna modulu. V názvech vlastností také upustí od použití `twin`, `$twin`, `body`nebo `$body`. Například následující jsou všechny platné výrazy dotazu: 
 
 ```sql
 $twin.properties.desired.telemetryConfig.sendFrequency = '5m'

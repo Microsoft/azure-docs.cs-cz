@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 5b1daab724d979206983ee758760790967abc06d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 310b3778a43c74db30940368d35c39c99f64a28c
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513384"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049993"
 ---
 # <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
 
@@ -60,7 +60,7 @@ Přečtěte si také téma [migrace z Azure Media Indexer a Azure Media Indexer 
 
 ### <a name="deprecation-of-media-processors"></a>Vyřazení procesorů médií
 
-Oznamujeme vyřazení mediálních procesorů *Windows Azure Media Encoder* (WAME) a *Azure Media Encoder* (ázev), které se na 1. březnu 2020 zařadí.
+Oznamujeme vyřazení *Windows Azure Media Encoder* (WAME) a *Azure Media Encoderch* (ázev) mediálních procesorů. Informace o datech vyřazení najdete v tématu tyto [starší součásti](legacy-components.md) .
 
 Podrobnosti najdete v článku [migrace WAME do Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) a [migrace do Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335).
 
@@ -205,10 +205,10 @@ Jednotky rezervované pro kódování Basic, Standard a Premium se přejmenovaly
 
  Kodér médií bude zastaralý od verze Media Encoder Standard přibližně o 12 měsíců.
 
-### <a name="azure-sdk-for-php"></a>Sada Azure SDK for PHP
+### <a name="azure-sdk-for-php"></a>Sada Azure SDK pro PHP
 Tým Azure SDK publikoval novou verzi balíčku [Azure SDK pro php](https://github.com/Azure/azure-sdk-for-php) , který obsahuje aktualizace a nové funkce pro Media Services. Konkrétně sada Media Services SDK for PHP nyní podporuje nejnovější funkce [ochrany obsahu](media-services-content-protection-overview.md) . Tyto funkce jsou dynamické šifrování pomocí AES a DRM (PlayReady a Widevine) s omezeními tokenu a bez něj. Podporuje také škálování [jednotek kódování](media-services-dotnet-encoding-units.md).
 
-Další informace:
+Další informace naleznete v tématu:
 
 * Následující [ukázky kódu](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices) vám pomůžou rychle začít:
   * **vodworkflow_aes. php**: Tento soubor php ukazuje, jak používat dynamické šifrování aes-128 a službu pro doručování klíčů. Je založený na ukázce .NET, která je vysvětlena v tématu [použití dynamického šifrování AES-128 a služby doručování klíčů](media-services-protect-with-aes128.md).
@@ -247,15 +247,15 @@ Konfiguraci zásady AssetDeliveryConfiguration na používání technologie Wide
 Další informace najdete v [tomto blogu](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
 
 ## <a id="august_changes_15"></a>Verze z srpna 2015
-* K dispozici je teď sada Media Services SDK pro 0.8.0 verze Java a nové ukázky. Další informace:
+* K dispozici je teď sada Media Services SDK pro 0.8.0 verze Java a nové ukázky. Další informace naleznete v tématu:
     
-* Azure Media Player byla aktualizována s podporou více audio streamu. Další informace najdete v [tomto příspěvku blogu](https://azure.microsoft.com/blog/2015/08/13/azure-media-player-update-with-multi-audio-stream-support/).
+* Azure Media Player byla aktualizována s podporou více audio streamu. Další informace najdete v [tomto blogovém příspěvku](https://azure.microsoft.com/blog/2015/08/13/azure-media-player-update-with-multi-audio-stream-support/).
 
 ## <a id="july_changes_15"></a>Verze z července 2015
-* Byla oznámena Obecná dostupnost Media Encoder Standard. Další informace najdete v [tomto příspěvku blogu](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/).
+* Byla oznámena Obecná dostupnost Media Encoder Standard. Další informace najdete v [tomto blogovém příspěvku](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/).
   
     Media Encoder Standard používá přednastavení, jak je popsáno v [této části](https://go.microsoft.com/fwlink/?LinkId=618336). Pokud použijete přednastavení pro kódování 4K, Získejte typ rezervované jednotky Premium. Další informace najdete v tématu [škálování v kódování](media-services-scale-media-processing-overview.md).
-* Živé titulky v reálném čase byly použity s Media Services a Media Player. Další informace najdete v [tomto příspěvku blogu](https://azure.microsoft.com/blog/2015/07/08/live-real-time-captions-with-azure-media-services-and-player/).
+* Živé titulky v reálném čase byly použity s Media Services a Media Player. Další informace najdete v [tomto blogovém příspěvku](https://azure.microsoft.com/blog/2015/07/08/live-real-time-captions-with-azure-media-services-and-player/).
 
 ### <a name="media-services-net-sdk-updates"></a>Aktualizace Media Services .NET SDK
 Sada Media Services .NET SDK je teď verze 3.4.0.0. Byly provedeny následující aktualizace: 
@@ -373,7 +373,7 @@ Sada Media Services SDK pro .NET je teď verze 3.0.0.7
   
     Pokud chcete jako název koncového bodu streamování Media Services použít vlastní název domény, přidejte vlastní názvy hostitelů do svého koncového bodu streamování. K přidání vlastních názvů hostitelů použijte Media Services rozhraní REST API nebo sadu .NET SDK.
   
-    Platí následující důležité informace:
+    Platí následující požadavky:
   
   * Musíte mít vlastnictví vlastního názvu domény.
   * Vlastnictví názvu domény musí být ověřeno pomocí Media Services. Pokud chcete ověřit doménu, vytvořte záznam CName, který mapuje nadřazenou doménu MediaServicesAccountId a ověří DNS MediaServices-DNS-Zone.
@@ -561,7 +561,7 @@ Následující funkce byly v listopadu vydání sady SDK nové:
 
 * Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
 
-## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 <!-- Anchors. -->

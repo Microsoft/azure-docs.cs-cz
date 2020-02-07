@@ -9,16 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 7f9bd55054fca6b45a25ef737a1a00872e536ca8
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 5782f07167f72be2ea7b148ad1b0a61d8cb710e2
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75908929"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048896"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps projekty open-source v komunitě
 
-Jedná se o open-source iniciativy založené na komunitě, které vytvořil a spravuje tým Azure Maps, ale nejsou součástí standardních nabídek produktů nebo služeb. Následující seznam uvádí některé z oblíbených Azure Maps vytvořili open source projekty a ukázky.
+Tyto open source iniciativy založené na komunitě vytváří a udržují tým Azure Maps. Nepatří mezi ně standardní nabídky produktů nebo služeb.
+
+Následující seznam obsahuje nejoblíbenější Azure Maps open source projektů a ukázek.
 
 | Název projektu | Popis |
 |-|-|
@@ -27,7 +29,7 @@ Jedná se o open-source iniciativy založené na komunitě, které vytvořil a s
 | [Ukázky Azure Maps & Azure Active Directory](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples) | Kolekce ukázek, které ukazují, jak používat Azure Active Directory s Azure Maps | 
 | [Implementace prostorové analýzy IoT pomocí Azure Maps](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing) | Sledování a zachytávání relevantních událostí, ke kterým dochází v prostoru a čase, je běžným scénářem IoT. |
 | [Ukázky Jupyter Notebook Azure Maps](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) | Kolekce ukázek Pythonu, které používají službu Azure Maps REST. |
-| [Rozhraní bot Framework – bod zájmu s zajímavou znalostí](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | Bod zájmu dovedností poskytuje POI související možnosti pro virtuální asistenta pomocí Azure Maps s Azure Bot Service a robotovou architekturou. |
+| [Rozhraní bot Framework – bod zájmu s zajímavou znalostí](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | Bod zájmu dovedností poskytuje virtuálnímu asistentovi možnosti související s POI, které používají Azure Maps s Azure Bot Service a robotovou architekturou. |
 
 Delší seznam, který obsahuje komunitní open source projekty, je k dispozici [zde](https://github.com/microsoft/Maps/blob/master/AzureMaps.md) .
 

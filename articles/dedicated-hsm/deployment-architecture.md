@@ -1,6 +1,6 @@
 ---
-title: Architektura nasazení – vyhrazený modul HARDWAROVÉho zabezpečení Azure | Microsoft Docs
-description: Základní požadavky na návrh při použití vyhrazeného modulu HARDWAROVÉho zabezpečení Azure v rámci architektury aplikace
+title: Architektura nasazení – vyhrazené modulu hardwarového zabezpečení Azure | Dokumentace Microsoftu
+description: Aspekty návrhu základní při používání vyhrazeného modulu hardwarového zabezpečení Azure jako součást architektury aplikace
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -10,64 +10,67 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/11/2019
+ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ff86c25de006495e3536f2ff907e1cf40a216f8e
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 89e3bf95a6b048e5e97cfb151ef9302b70eac1c9
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927863"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048553"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Architektura nasazení Azure Dedicated HSM
 
-Vyhrazený modul HSM Azure poskytuje úložiště kryptografických klíčů v Azure. Splňuje přísné požadavky na zabezpečení. Zákazníci budou využívat vyhrazený modul HSM v Azure, pokud:
+Azure vyhrazené HSM nabízí kryptografického klíče úložiště v Azure. Splňuje požadavky na přísné zásady zabezpečení. Zákazníci se benefitovat z použití vyhrazené modulu hardwarového zabezpečení Azure, pokud jsou:
 
-* Musí splňovat certifikaci FIPS 140-2 Level 3.
-* Vyžadovat, aby měli exkluzivní přístup k modulu HARDWAROVÉho zabezpečení
-* měla by mít úplnou kontrolu nad svými zařízeními.
+* Musí splňovat FIPS 140-2 Level 3 certifikace
+* Vyžadovat, aby měli exkluzivní přístup k modulu hardwarového zabezpečení
+* by měl mít úplnou kontrolu nad svými zařízeními
 
-HSM jsou distribuované napříč datovými centry Microsoftu a dají se snadno zřídit jako pár zařízení jako základ pro vysoce dostupné řešení. Můžou být nasazené i v různých oblastech řešení odolného proti havárii. V současné době jsou dostupné oblasti s vyhrazeným modulem HSM:
+Moduly hardwarového zabezpečení jsou distribuovány napříč datovými centry společnosti Microsoft a je možné snadno zřídit jako pár zařízení jako základ vysoce dostupné řešení. Může být také nasadit napříč oblastmi odolné řešení po havárii. Aktuálně jsou oblasti s vyhrazené modulu hardwarového zabezpečení k dispozici:
 
-* Východní USA
-* Východ USA 2
-* Západní USA
-* Západní USA 2
-* Středojižní USA
+* USA – východ
+* Východní USA 2
+* USA – západ
+* Střed USA – jih
 * Jihovýchodní Asie
 * Východní Asie
+* Indie – střed
+* Indie – jih
+* Japonsko – východ
+* Japonsko – západ
 * Severní Evropa
 * Západní Evropa
-* Spojené království – jih
+* Velká Británie – jih
 * Spojené království – západ
-* Střední Kanada
-* Východní Kanada
+* Kanada – střed
+* Kanada – východ
 * Austrálie – východ
 * Austrálie – jihovýchod
 
-Každá z těchto oblastí má racky HSM nasazené buď v obou nezávislých datových centrech, nebo alespoň ve dvou nezávislých zónách dostupnosti. Jižní Východní Asie má tři zóny dostupnosti a Východní USA 2 má dvě. Existuje celkem osm oblastí napříč Evropa, Asie a USA, které nabízejí vyhrazenou službu HSM. Další informace o oblastech Azure najdete v informacích o oficiálních [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).
-Některé faktory návrhu pro jakékoli vyhrazené řešení založené na HSM jsou umístění/latence, vysoká dostupnost a podpora pro jiné distribuované aplikace.
+Každý z těchto oblastí má stojany modulu hardwarového zabezpečení, které jsou nasazené ve dvou nezávislých datových center nebo aspoň dva nezávislé dostupnost zóny. Jihovýchodní Asie má tři zóny dostupnosti a východní USA 2 má dvě. Je tam dohromady osm oblastí Evropa, Asie a USA, který nabízí služba Dedicated modulu hardwarového zabezpečení. Další informace o oblastech Azure najdete v informacích o oficiálních [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).
+Některé faktory návrhu pro jakékoli řešení založené na vyhrazené modulu hardwarového zabezpečení jsou umístění/latenci, vysokou dostupnost a podporu dalších distribuované aplikace.
 
 ## <a name="device-location"></a>Device location (Umístění zařízení)
 
-Optimální umístění zařízení HSM je nejbližší blízkosti aplikací provádějících kryptografické operace. Latence v oblasti se očekává jako jednociferné číslo milisekund. Latence mezi oblastmi může být 5 až 10krát vyšší než tato.
+Optimální umístění zařízení HSM je v nejbližším aplikace provádí kryptografické operace. V oblasti latence má být řádu milisekund. Může být k 10 5krát vyšší než toto latence mezi různými oblastmi.
 
 ## <a name="high-availability"></a>Vysoká dostupnost
 
-Aby zákazník dosáhl vysoké dostupnosti, musí v oblasti, která je nakonfigurovaná pomocí identita Gemalto softwaru jako dvojice vysoké dostupnosti, používat dvě zařízení HSM. Tento typ nasazení zajišťuje dostupnost klíčů v případě, že dojde k potížím v jednom zařízení, které brání zpracování klíčových operací. Také významně snižuje riziko při provádění údržby break/opravit, jako je například náhrada zdroje napájení. Je důležité, aby se v rámci návrhu zohlednila jakákoli druh selhání regionální úrovně. Selhání regionální úrovně může nastat, pokud dojde k přirozeným katastrofám, jako je hurikány, zaplavení nebo zemětřesení. Tyto typy událostí by se měly zmírnit zřizováním zařízení HSM v jiné oblasti. Zařízení nasazená v jiné oblasti se můžou párovat společně prostřednictvím konfigurace softwaru identita Gemalto. To znamená, že minimální nasazení pro vysoce dostupné a odolné navýšení po havárii je čtyři zařízení HSM ve dvou oblastech. Místní redundanci a redundanci napříč oblastmi se dají použít jako základ pro přidání jakýchkoli dalších nasazení zařízení HSM za účelem podpory latence, kapacity nebo splnění jiných požadavků na konkrétní aplikace.
+Abyste dosáhli vysoké dostupnosti, musíte použít zákazník dvě zařízení HSM v oblasti, které jsou nakonfigurované pomocí softwaru Gemalto jako společně s vysokou dostupností. Tento typ nasazení zajišťuje dostupnost klíče, pokud je jedno zařízení dojde k potížím znemožňuje zpracování klíčové operace. Při provádění údržby přerušení nebo opravy, jako je například power dodavatelského nahrazení také významně snižuje riziko. Je důležité návrh pro jakýkoli druh selhání v oblasti úrovně. Regionální úrovni selhání může dojít, když jsou přírodní pohromy, jako je například hurikány, záplavy nebo zemětřesení. Tyto typy událostí, které by měl zmírnit tím, že zajistíte zařízením hardwarového zabezpečení v jiné oblasti. Zařízení nasazený v jiné oblasti může spárovat společně prostřednictvím Gemalto softwarové konfigurace. To znamená, že minimální nasazení s vysokou dostupností a po havárii odolné řešení se čtyřmi zařízením hardwarového zabezpečení ve dvou oblastech. Místní redundanci a redundance napříč oblastmi může sloužit jako základ pro přidání dalšího nasazení zařízení HSM podporovat latence, kapacity nebo splňovat další požadavky specifické pro aplikaci.
 
-## <a name="distributed-application-support"></a>Podpora distribuované aplikace
+## <a name="distributed-application-support"></a>Distribuované aplikace podpory
 
-Vyhrazená zařízení HSM se obvykle nasazují v podpoře aplikací, které potřebují provádět operace klíčeového úložiště a načítání klíčů. Vyhrazená zařízení HSM mají 10 oddílů pro podporu nezávislé aplikace. Umístění zařízení by mělo být založené na holistický zobrazení všech aplikací, které potřebují službu používat.
+Vyhrazená zařízení HSM se obvykle nasazují podporu aplikací, které potřebují k provedení operace načtení klíčů a klíče úložiště. Vyhrazená zařízení HSM mít 10 oddíly pro podporu nezávislé aplikace. Umístění zařízení by měla vycházet z komplexní pohled na všechny aplikace, které potřebují používat službu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Po určení architektury nasazení bude služba identita Gemalto obsahovat většinu konfiguračních aktivit pro implementaci této architektury. To zahrnuje konfiguraci zařízení i scénáře integrace aplikací. Další informace najdete na portálu [zákaznická podpora identita Gemalto](https://supportportal.gemalto.com/csm/) a na webu Průvodce správou a konfigurací. Partnerský web Microsoftu má řadu průvodců integrací.
-Doporučuje se, aby všechny klíčové koncepty služby, jako je vysoká dostupnost a zabezpečení, byly dobře srozumitelné před zřizováním nebo návrhem a nasazením aplikací.
-Další témata o úrovni konceptu:
+Jakmile je určena architektura nasazení, většina aktivit konfigurace pro implementaci této architektury poskytovaný Gemalto. Jedná se o konfiguraci zařízení, stejně jako aplikace scénáře integrace. Další informace najdete na portálu [zákaznická podpora identita Gemalto](https://supportportal.gemalto.com/csm/) a na webu Průvodce správou a konfigurací. Partner společnosti Microsoft má řadu různých integračních příručkách.
+Doporučuje se, že všechny klíčové koncepty služby, jako je vysoká dostupnost a zabezpečení například jsou dobře pochopitelné i před zřizování zařízení nebo aplikace návrhu a nasazení.
+Další témata úrovně koncept:
 
 * [Vysoká dostupnost](high-availability.md)
 * [Fyzické zabezpečení](physical-security.md)
-* [Sítě](networking.md)
+* [Networking](networking.md)
 * [Možnosti podpory](supportability.md)
 * [Monitorování](monitoring.md)

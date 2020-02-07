@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 171f06ad238f862adbd7071ee10d81133d7a6855
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 808a17fcf303c6eb72f11f5379fa172302dc782a
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022133"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77059844"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Sestavování řešení pro maloobchod s využitím služby Azure IoT Central
 
@@ -120,7 +120,7 @@ Následující snímek obrazovky ukazuje předem připravený řídicí panel v 
 
 Další informace najdete v kurzu [Vytvoření analytické aplikace v rámci úložiště v Azure IoT Central](./tutorial-in-store-analytics-create-app-pnp.md) .
 
-## <a name="smart-inventory-management"></a>Inteligentní správa inventáře
+## <a name="smart-inventory-management"></a>Inteligentní řízení zásob
 
 Inventář je akcie zboží, které prodejce uchovává. Správa inventáře je kritická, aby se zajistilo, že je správný produkt na správném místě ve správnou dobu. Maloobchodní prodejce musí vyrovnávat náklady na ukládání příliš velkého množství inventáře, a to za cenu, která nemá dostatek položek na skladě, aby splnila požadavky.
 
@@ -160,7 +160,7 @@ Následující snímek obrazovky ukazuje předem připravený řídicí panel v 
 > [!div class="mx-imgBorder"]
 > ](./media/overview-iot-central-retail/MFC-Dashboard.png) ![Micro-splní centrum
 
-Další informace najdete v kurzu [nasazení a procházení pomocí šablony aplikace centra vyplňování](./tutorial-iot-central-smart-inventory-management-pnp.md) .
+Další informace najdete v kurzu [nasazení a procházení pomocí šablony aplikace centra vyplňování](./tutorial-micro-fulfillment-center-pnp.md) .
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -170,5 +170,5 @@ Začněte vytvářet maloobchodní řešení:
 * [Nasaďte a Projděte si připojenou šablonu logistické aplikace](./tutorial-iot-central-connected-logistics-pnp.md).
 * [Nasaďte a Projděte si šablonu aplikace digitálního distribučního centra](./tutorial-iot-central-digital-distribution-center-pnp.md).
 * [Nasazení a procházení šablonou aplikace pro správu inteligentního inventáře](./tutorial-iot-central-smart-inventory-management-pnp.md).
-* [Nasaďte a Projděte si šablonu aplikace centra pro mikroplnění](./tutorial-iot-central-smart-inventory-management-pnp.md).
+* [Nasaďte a Projděte si šablonu aplikace centra pro mikroplnění](./tutorial-micro-fulfillment-center-pnp.md).
 * Další informace o IoT Central najdete v [přehledu IoT Central](../preview/overview-iot-central.md).

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
-ms.openlocfilehash: d097894c841d91d344b5958e7f5e1c10249f8b6e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 15eaba5b1102ddb282d72497093b8554a6b4cf56
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904868"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061620"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Zřizování zařízení pomocí služby Azure IoT Hub Device Provisioning Service
 Microsoft Azure poskytuje bohatou sadu integrovaných veřejných cloudových služeb pro všechny potřeby vašeho řešení IoT. IoT Hub Device Provisioning Service (DPS) je pomocná služba pro IoT Hub, která umožňuje nulovému zřizování za běhu do správného služby IoT Hub bez nutnosti zásahu člověka. DPS umožňuje bezpečným a škálovatelným způsobem zřizovat miliony zařízení.
@@ -80,12 +80,14 @@ DPS má mnoho funkcí, což je ideální pro zřizování zařízení.
 * **Seznam registrací** obsahující úplné záznamy o zařízeních a skupinách zařízení, která se někdy můžou registrovat. Jakmile se zařízení zaregistruje, bude seznam registrací obsahovat informace o požadované konfiguraci zařízení a může se kdykoli aktualizovat.
 * **Vícenásobné zásady přidělování** , kterými se řídí, jak DPS přiřadí zařízení do centra IoT v podpoře vašich scénářů: nejnižší latence, rovnoměrně vážená distribuce (výchozí) a statická konfigurace prostřednictvím seznamu registrací. Latence je určena pomocí stejné metody jako [Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance).
 * **Monitorování a protokolování diagnostiky** pro zajištění, že vše funguje správně.
-* **Podpora pro více rozbočovačů** umožňuje zařízením DPS připojit se ke službě IoT Hub za běhu. DPS může komunikovat s centry napříč několika předplatnými Azure.
-* **Podpora pro různé oblasti** umožňuje DPS přiřazovat zařízení do centra IoT v jiných oblastech.
+* **Podpora více center** umožňuje službě Device Provisioning přiřazovat zařízení k více než jednomu centru IoT. Služba Device Provisioning může komunikovat s centry napříč několika předplatnými Azure.
+* **Podpora více oblastí** umožňuje službě Device Provisioning přiřazovat zařízení k centrům IoT v jiných oblastech.
+* **Šifrování dat v klidovém** stavu umožňuje, aby byla data ve službě Device Provisioning šifrována a dešifrována transparentně pomocí 256 šifrování AES, což je jedno z nejúčinnějších šifrovacích šifr, které jsou kompatibilní se standardem FIPS 140-2.
+
 
 Další informace o konceptech a funkcích souvisejících se zřizováním zařízení najdete v [konceptech zařízení](concepts-device.md), [konceptech služby](concepts-service.md) a [konceptech zabezpečení](concepts-security.md).
 
-## <a name="cross-platform-support"></a>Podpora pro víc platforem
+## <a name="cross-platform-support"></a>Podpora různých platforem
 Podobně jako všechny služby Azure IoT funguje DPS pro různé platformy s různými operačními systémy. Azure nabízí open source sady SDK v různých [jazycích](https://github.com/Azure/azure-iot-sdks), které usnadňují připojení zařízení a správu služby. DPS podporuje následující protokoly pro připojení zařízení:
 
 * HTTPS
@@ -96,7 +98,7 @@ Podobně jako všechny služby Azure IoT funguje DPS pro různé platformy s rů
 
 DPS podporuje jenom připojení HTTPS pro operace služby.
 
-## <a name="regions"></a>Oblasti
+## <a name="regions"></a>Regions
 DPS je k dispozici v mnoha oblastech. Aktualizovaný seznam stávajících a nově ohlášených oblastí pro všechny služby najdete na stránce [Oblasti Azure](https://azure.microsoft.com/regions/). Dostupnost služby Device Provisioning můžete zkontrolovat na stránce [Stav Azure](https://azure.microsoft.com/status/).
 
 > [!NOTE]

@@ -14,32 +14,32 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: 2ae951896e9c97826264990dc33b9a1930b0eec2
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 09501a80d6ddcbbc9fa6cc08e36f47beb13d1663
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530047"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063218"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning-preview"></a>Kurz: Konfigurace zřizování SAP SuccessFactors pro uživatele Azure AD (Preview)
-Cílem tohoto kurzu je Ukázat kroky, které musíte provést při zřizování pracovních dat od SuccessFactors zaměstnanců do Azure Active Directory, s volitelným zpětným zápisem e-mailové adresy SuccessFactors. Tato integrace je ve verzi Public Preview a podporuje načítání více než [70 a uživatelských atributů](../manage-apps/sap-successfactors-attribute-reference.md) od SuccessFactors zaměstnanců od středníku. 
+Cílem tohoto kurzu je Ukázat kroky, které musíte provést při zřizování pracovních dat od SuccessFactors zaměstnanců do Azure Active Directory, s volitelným zpětným zápisem e-mailové adresy SuccessFactors. Tato integrace je ve verzi Public Preview a podporuje načítání více než [70 a uživatelských atributů](../app-provisioning/sap-successfactors-attribute-reference.md) od SuccessFactors zaměstnanců od středníku. 
 
 >[!NOTE]
 >Tento kurz použijte v případě, že uživatelé, které chcete zřídit z SuccessFactors, jsou jenom uživatelé s podporou cloudu, kteří nepotřebují místní účet služby AD. Pokud uživatelé vyžadují jenom místní účet služby AD nebo účet AD i Azure AD, přečtěte si prosím kurz [konfigurace SAP SuccessFactors na zřizování uživatelů služby Active Directory](sap-successfactors-inbound-provisioning-tutorial.md#overview) . 
 
 ## <a name="overview"></a>Přehled
 
-[Služba zřizování uživatelů Azure Active Directory](../manage-apps/user-provisioning.md) se integruje s [SuccessFactors zaměstnanci](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html) , aby mohla spravovat životní cyklus identity uživatelů. 
+[Služba zřizování uživatelů Azure Active Directory](../app-provisioning/user-provisioning.md) se integruje s [SuccessFactors zaměstnanci](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html) , aby mohla spravovat životní cyklus identity uživatelů. 
 
 Pracovní postupy zřizování uživatelů SuccessFactors, které podporuje služba zřizování uživatelů Azure AD, umožňují automatizaci následujících scénářů lidských zdrojů a životního cyklu identit:
 
-* **Najímání nových zaměstnanců** – když se do SuccessFactors přidá nový zaměstnanec, automaticky se vytvoří uživatelský účet v Azure Active Directory a volitelně i na Office 365 a [Další SaaS aplikace, které Azure AD podporuje](../manage-apps/user-provisioning.md), a to s zpětným zápisem e-mailové adresy na SuccessFactors.
+* **Najímání nových zaměstnanců** – když se do SuccessFactors přidá nový zaměstnanec, automaticky se vytvoří uživatelský účet v Azure Active Directory a volitelně i na Office 365 a [Další SaaS aplikace, které Azure AD podporuje](../app-provisioning/user-provisioning.md), a to s zpětným zápisem e-mailové adresy na SuccessFactors.
 
-* **Aktualizace atributů a profilů zaměstnanců** – když se v SuccessFactors aktualizuje záznam zaměstnance (například jeho jméno, název nebo manažer), automaticky se aktualizuje jeho uživatelský účet Azure Active Directory a volitelně Office 365 a [Další SaaS aplikace podporované službou Azure AD](../manage-apps/user-provisioning.md).
+* **Aktualizace atributů a profilů zaměstnanců** – když se v SuccessFactors aktualizuje záznam zaměstnance (například jeho jméno, název nebo manažer), automaticky se aktualizuje jeho uživatelský účet Azure Active Directory a volitelně Office 365 a [Další SaaS aplikace podporované službou Azure AD](../app-provisioning/user-provisioning.md).
 
-* **Ukončení zaměstnanců** – když se zaměstnanec v SuccessFactors ukončí, jejich uživatelský účet se automaticky zakáže v Azure Active Directory a volitelně i v Office 365 a [dalších SaaS aplikacích, které Azure AD podporuje](../manage-apps/user-provisioning.md).
+* **Ukončení zaměstnanců** – když se zaměstnanec v SuccessFactors ukončí, jejich uživatelský účet se automaticky zakáže v Azure Active Directory a volitelně i v Office 365 a [dalších SaaS aplikacích, které Azure AD podporuje](../app-provisioning/user-provisioning.md).
 
-* **Pracovní zařazení zaměstnanců** – Pokud je zaměstnanec v SuccessFactors, jeho starý účet se dá automaticky znovu aktivovat nebo znovu zřídit (v závislosti na vaší preferenci), abyste mohli Azure Active Directory a volitelně Office 365 a [Další SaaS aplikace podporované službou Azure AD](../manage-apps/user-provisioning.md).
+* **Pracovní zařazení zaměstnanců** – Pokud je zaměstnanec v SuccessFactors, jeho starý účet se dá automaticky znovu aktivovat nebo znovu zřídit (v závislosti na vaší preferenci), abyste mohli Azure Active Directory a volitelně Office 365 a [Další SaaS aplikace podporované službou Azure AD](../app-provisioning/user-provisioning.md).
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Na koho se toto řešení pro zřizování uživatelů nejlépe hodí?
 
@@ -79,7 +79,7 @@ Konfigurace zřizování uživatelů cloudu s využitím cloudu z SuccessFactors
 * Transformace atributu 
 * Filtry oborů
 
-Podrobné pokyny k těmto tématům najdete v [plánu nasazení cloudového HR](../manage-apps/plan-cloud-hr-provision.md) . 
+Podrobné pokyny k těmto tématům najdete v [plánu nasazení cloudového HR](../app-provisioning/plan-cloud-hr-provision.md) . 
 
 ## <a name="configuring-successfactors-for-the-integration"></a>Konfigurace SuccessFactors pro integraci
 
@@ -110,7 +110,7 @@ Spolupracujte s týmem správce SuccessFactors nebo partnerem pro implementaci a
 * Posuňte se dolů ve stejném poli a vyberte **centrální rozhraní API pro zaměstnance**. Přidáním oprávnění, jak je vidět níže, můžete číst pomocí rozhraní ODATA API a upravit pomocí rozhraní ODATA API. Vyberte možnost upravit, pokud chcete použít stejný účet ke zpětnému zápisu do SuccessFactors scénáře. 
   > [!div class="mx-imgBorder"]
   > ![oprávnění ke čtení zápisu](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
-* Klikněte na **Hotovo**. Klikněte na tlačítko **uložit změny**.
+* Klikněte na **Hotovo**. Klikněte na **Uložit změny**.
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>Vytvoření skupiny oprávnění pro uživatele rozhraní API
 
@@ -139,7 +139,7 @@ Spolupracujte s týmem správce SuccessFactors nebo partnerem pro implementaci a
 * Zkontrolujte roli oprávnění udělení skupiny oprávnění. 
   > [!div class="mx-imgBorder"]
   > ![role oprávnění a podrobností skupiny](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
-* Klikněte na tlačítko **uložit změny**.
+* Klikněte na **Uložit změny**.
 
 ## <a name="configuring-user-provisioning-from-successfactors-to-azure-ad"></a>Konfigurace zřizování uživatelů z SuccessFactors do Azure AD
 
@@ -211,14 +211,14 @@ V této části nakonfigurujete, jak budou data uživatelů z SuccessFactors do 
    > Při první konfiguraci zřizovací aplikace budete muset otestovat a ověřit mapování atributů a výrazy, abyste se ujistili, že vám poskytne požadovaný výsledek. Microsoft doporučuje pomocí filtrů oborů v **oboru zdrojového objektu** testovat mapování s několika testovacími uživateli z SuccessFactors. Jakmile ověříte, že mapování funguje, můžete buď odebrat filtr, nebo ho postupně rozšířit, aby zahrnoval více uživatelů.
 
    > [!CAUTION] 
-   > Výchozím chováním modulu zřizování je zakázat nebo odstranit uživatele, kteří se přestanou přidělovat z oboru. To nemusí být žádoucí v SuccessFactors integrace služby Azure AD. Pokud chcete přepsat toto výchozí chování, přečtěte si článek [přeskočení odstranění uživatelských účtů, které se nacházejí mimo rozsah](../manage-apps/skip-out-of-scope-deletions.md) .
+   > Výchozím chováním modulu zřizování je zakázat nebo odstranit uživatele, kteří se přestanou přidělovat z oboru. To nemusí být žádoucí v SuccessFactors integrace služby Azure AD. Pokud chcete přepsat toto výchozí chování, přečtěte si článek [přeskočení odstranění uživatelských účtů, které se nacházejí mimo rozsah](../app-provisioning/skip-out-of-scope-deletions.md) .
   
 1. V poli **Akce cílového objektu** můžete globálně filtrovat akce prováděné ve službě Active Directory. **Vytváření** a **aktualizace** jsou nejběžnější.
 
 1. V části **mapování atributů** můžete definovat, jak se jednotlivé atributy SuccessFactors mapují na atributy služby Active Directory.
 
   >[!NOTE]
-  >Úplný seznam atributu SuccessFactors podporovaného aplikací najdete v [referenčních informacích k atributům SuccessFactors](../manage-apps/sap-successfactors-attribute-reference.md) .
+  >Úplný seznam atributu SuccessFactors podporovaného aplikací najdete v [referenčních informacích k atributům SuccessFactors](../app-provisioning/sap-successfactors-attribute-reference.md) .
 
 
 1. Kliknutím na existující mapování atributů ho aktualizujte nebo kliknutím na **Přidat nové mapování** v dolní části obrazovky přidejte nová mapování. Jednotlivé mapování atributů podporují tyto vlastnosti:
@@ -229,7 +229,7 @@ V této části nakonfigurujete, jak budou data uživatelů z SuccessFactors do 
 
          * **Konstanta** – zapsat statickou konstantní hodnotu řetězce na atribut AD
 
-         * **Výraz** – umožňuje napsat vlastní hodnotu atributu AD na základě jednoho nebo více atributů SuccessFactors. [Další informace najdete v tomto článku o výrazech](../manage-apps/functions-for-customizing-application-data.md).
+         * **Výraz** – umožňuje napsat vlastní hodnotu atributu AD na základě jednoho nebo více atributů SuccessFactors. [Další informace najdete v tomto článku o výrazech](../app-provisioning/functions-for-customizing-application-data.md).
 
       * **Zdrojový atribut** – atribut uživatele z SuccessFactors
 
@@ -261,7 +261,7 @@ Po dokončení konfigurace aplikace SuccessFactors Provisioning můžete službu
 
 1. Na kartě **zřizování** nastavte **stav zřizování** na **zapnuto**.
 
-2. Klikněte na možnost **Uložit**.
+2. Klikněte na **Uložit**.
 
 3. Tato operace spustí počáteční synchronizaci, což může trvat proměnlivý počet hodin v závislosti na tom, kolik uživatelů je v tenantovi SuccessFactors. V indikátoru průběhu můžete sledovat průběh cyklu synchronizace. 
 
@@ -274,11 +274,11 @@ Po dokončení konfigurace aplikace SuccessFactors Provisioning můžete službu
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Další informace o podporovaných atributech SuccessFactors pro příchozí zřizování](../manage-apps/sap-successfactors-attribute-reference.md)
+* [Další informace o podporovaných atributech SuccessFactors pro příchozí zřizování](../app-provisioning/sap-successfactors-attribute-reference.md)
 * [Informace o tom, jak nakonfigurovat zpětný zápis e-mailu na SuccessFactors](sap-successfactors-writeback-tutorial.md)
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../manage-apps/check-status-user-account-provisioning.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
 * [Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi SuccessFactors a Azure Active Directory](successfactors-tutorial.md)
 * [Naučte se integrovat další aplikace SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Naučte se exportovat a importovat vaše konfigurace zřizování.](../manage-apps/export-import-provisioning-configuration.md)
+* [Naučte se exportovat a importovat vaše konfigurace zřizování.](../app-provisioning/export-import-provisioning-configuration.md)
 
 

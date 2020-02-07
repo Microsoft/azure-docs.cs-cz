@@ -15,21 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 97ecf3ea324f43753030f415c8a5e254b87595e5
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 2195056ec66550063aba5ce5e2b977b51a6dc5e3
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170074"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057802"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Kurz: Konfigurace Foodee pro Automatické zřizování uživatelů
 
 V tomto článku se dozvíte, jak nakonfigurovat Azure Active Directory (Azure AD) ve službě Foodee a Azure AD tak, aby automaticky zřídily nebo zrušily zřizování uživatelů nebo skupin Foodee.
 
 > [!NOTE]
-> Tento článek popisuje konektor, který je postaven na službě Azure AD zřizování uživatelů. Informace o tom, co tato služba funguje a jak funguje, a získat odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů při SaaS aplikací pomocí Azure Active Directory](../manage-apps/user-provisioning.md).
+> Tento článek popisuje konektor, který je postaven na službě Azure AD zřizování uživatelů. Informace o tom, co tato služba funguje a jak funguje, a získat odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů při SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Tento konektor je momentálně ve verzi Preview. Další informace o funkci používání podmínek Azure pro funkce ve verzi Preview najdete v [části dodatečné použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
+> Tento konektor je aktuálně ve verzi preview. Další informace o funkci používání podmínek Azure pro funkce ve verzi Preview najdete v [části dodatečné použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -79,13 +79,13 @@ Pokud chcete přidat Foodee z Galerie aplikací Azure AD, udělejte toto:
 
     ![Příkaz Azure Active Directory](common/select-azuread.png)
 
-1. Vyberte **podnikové aplikace** > **všechny aplikace**.
+1. Vyberte **podnikové aplikace** > **všech aplikacích**.
 
     ![Podokno podnikové aplikace](common/enterprise-applications.png)
 
 1. Chcete-li přidat novou aplikaci, vyberte v horní části podokna možnost **Nová aplikace** .
 
-    ![Tlačítko Nová aplikace](common/add-new-app.png)
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
 1. Do vyhledávacího pole zadejte **Foodee**, v podokně výsledků vyberte **Foodee** a pak vyberte **Přidat** , aby se aplikace přidala.
 
@@ -100,7 +100,7 @@ V této části nakonfigurujete službu zřizování Azure AD tak, aby vytvořil
 
 Nakonfigurujte Automatické zřizování uživatelů pro Foodee ve službě Azure AD pomocí následujícího postupu:
 
-1. V [Azure Portal](https://portal.azure.com)vyberte **podnikové aplikace** > **všechny aplikace**.
+1. V [Azure Portal](https://portal.azure.com)vyberte **podnikové aplikace** > **všech aplikacích**.
 
     ![Podokno podnikové aplikace](common/enterprise-applications.png)
 
@@ -118,11 +118,11 @@ Nakonfigurujte Automatické zřizování uživatelů pro Foodee ve službě Azur
 
 1. V části **přihlašovací údaje správce**postupujte takto:
 
-   a. Do pole **Adresa URL tenanta** zadejte hodnotu **https: \//concierge. Food. ee/SCIM/v2** , kterou jste získali dříve.
+   a. Do pole **Adresa URL tenanta** zadejte hodnotu **https:\//concierge.Food.ee/SCIM/v2** , kterou jste získali dříve.
 
    b. Do pole **token tajného klíče** zadejte hodnotu **tokenu rozhraní API** , kterou jste získali dříve.
    
-   r. Pokud chcete zajistit, aby se služba Azure AD mohla připojit k Foodee, vyberte **Test připojení**. Pokud se připojení nepovede, ujistěte se, že má váš účet Foodee oprávnění správce, a zkuste to znovu.
+   c. Pokud chcete zajistit, aby se služba Azure AD mohla připojit k Foodee, vyberte **Test připojení**. Pokud se připojení nepovede, ujistěte se, že má váš účet Foodee oprávnění správce, a zkuste to znovu.
 
     ![Odkaz testovat připojení](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -130,7 +130,7 @@ Nakonfigurujte Automatické zřizování uživatelů pro Foodee ve službě Azur
 
     ![Textové pole pro oznamovací E-mail](common/provisioning-notification-email.png)
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 1. V části **mapování**vyberte **synchronizovat Azure Active Directory uživatelé Foodee**.
 
@@ -150,7 +150,7 @@ Nakonfigurujte Automatické zřizování uživatelů pro Foodee ve službě Azur
     ![Mapování uživatelů Foodee](media/Foodee-provisioning-tutorial/groupattribute.png)
 
 1. Změny potvrďte tak, že vyberete **Uložit**.
-1. Nakonfigurujte filtry oborů. Informace o tom, jak postupovat, najdete v [kurzu o filtru oborů](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+1. Nakonfigurujte filtry oborů. Informace o tom, jak postupovat, najdete v [kurzu o filtru oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 1. Pokud chcete povolit službu Azure AD Provisioning pro Foodee, v části **Nastavení** změňte **stav zřizování** na **zapnuto**.
 
@@ -164,15 +164,15 @@ Nakonfigurujte Automatické zřizování uživatelů pro Foodee ve službě Azur
 
     ![Tlačítko pro uložení konfigurace zřizování](common/provisioning-configuration-save.png)
 
-Předchozí operace spustí počáteční synchronizaci uživatelů nebo skupin, které jste definovali v rozevíracím seznamu **Rozsah** . Počáteční synchronizace trvá déle než následné synchronizace. Další informace najdete v tématu [Jak dlouho bude trvat zřizování uživatelů?](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users).
+Předchozí operace spustí počáteční synchronizaci uživatelů nebo skupin, které jste definovali v rozevíracím seznamu **Rozsah** . Počáteční synchronizace trvá déle než následné synchronizace. Další informace najdete v tématu [Jak dlouho bude trvat zřizování uživatelů?](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users).
 
-Pomocí oddílu **aktuální stav** můžete monitorovat průběh a postupovat podle odkazů na sestavu aktivity zřizování. Tato sestava popisuje všechny akce, které provádí služba zřizování Azure AD v Foodee. Další informace najdete v tématu o [kontrole stavu zřizování uživatelů](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md). Pokud si chcete přečíst protokoly zřizování Azure AD, přečtěte si téma [vytváření sestav o automatickém zřizování uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+Pomocí oddílu **aktuální stav** můžete monitorovat průběh a postupovat podle odkazů na sestavu aktivity zřizování. Tato sestava popisuje všechny akce, které provádí služba zřizování Azure AD v Foodee. Další informace najdete v tématu o [kontrole stavu zřizování uživatelů](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Pokud si chcete přečíst protokoly zřizování Azure AD, přečtěte si téma [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../manage-apps/check-status-user-account-provisioning.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)

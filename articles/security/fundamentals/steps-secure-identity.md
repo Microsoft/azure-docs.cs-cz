@@ -1,5 +1,6 @@
 ---
-title: Pět kroků pro zabezpečení infrastruktury identity v Azure Active Directory
+title: Zabezpečení infrastruktury identit Azure AD
+titleSuffix: Azure Active Directory
 description: Tento dokument popisuje seznam důležitých akcí, které by správci měli implementovat, aby jim pomohli zabezpečit svoji organizaci pomocí možností Azure AD.
 author: martincoetzer
 manager: manmeetb
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 870bb9720500b6eda5e7b9eb258b6764a94f01b6
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: d3afc784688a14e4d5d2fc6ae9dc5c1a9e45c4a0
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76903591"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057205"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Pět kroků pro zabezpečení infrastruktury identity
 

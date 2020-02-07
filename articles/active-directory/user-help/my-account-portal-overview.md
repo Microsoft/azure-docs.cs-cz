@@ -2,7 +2,7 @@
 title: Co je portál Můj účet? – Azure AD
 description: Jak se dostat na portál Můj účet a jeho funkce, včetně nastavení a správy bezpečnostních údajů, zařízení, hesla, organizací, ochrany osobních údajů a přihlášení.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: jpettere
 ms.service: active-directory
@@ -10,19 +10,19 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
 ms.date: 01/15/2020
-ms.author: lizross
-ms.openlocfilehash: 4e165bad33e46b91a63fc1be72a57bf192b59789
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 4c9d421fd9ac8305c27dfa798f2869e59a04f9fb
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705067"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062451"
 ---
 # <a name="what-is-the-my-account-portal"></a>Co je portál Můj účet?
 
 Portál **můj účet** vám pomůže spravovat pracovní nebo školní účet nastavením a správou vašich bezpečnostních údajů, správou připojených organizací a zařízení a zobrazením, jak vaše organizace používá vaše data.
 
-Na https://myprofile.microsoft.com) portál **můj účet** se můžete dostat z aktuální verze kteréhokoli z následujících prohlížečů:
+Na https://myprofile.microsoft.com)portál **můj účet** se můžete dostat z aktuální verze kteréhokoli z následujících prohlížečů:
 
 - Chrome
 - Microsoft Edge

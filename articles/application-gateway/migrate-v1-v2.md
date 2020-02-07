@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 719686cb123355359391c5cb1e517ff9cfd88371
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9909c46015fffb3bea3eef094599312e28b935c5
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231727"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046199"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrace služby Azure Application Gateway a firewall webových aplikací z verze V1 na verzi 2
 
@@ -102,7 +102,7 @@ Spuštění skriptu:
    * **appgwName: [řetězec]: volitelné**. Toto je řetězec, který zadáte pro použití jako název nové Standard_v2 nebo WAF_v2 bránu. Pokud tento parametr není zadaný, použije se název vaší stávající brány V1 s příponou *_V2* připojena.
    * **sslCertificates: [PSApplicationGatewaySslCertificate]: volitelné**.  Seznam objektů PSApplicationGatewaySslCertificate oddělených čárkami, které vytvoříte pro reprezentaci certifikátů SSL z vaší brány V1, se musí nahrát do nové brány v2. Pro každý z vašich certifikátů SSL nakonfigurovaných pro vaši standardní bránu v1 nebo WAF v1 můžete vytvořit nový objekt PSApplicationGatewaySslCertificate pomocí příkazu `New-AzApplicationGatewaySslCertificate`, který se tady zobrazuje. Budete potřebovat cestu k vašemu souboru certifikátu SSL a heslu.
 
-       Tento parametr je volitelný jenom v případě, že nemáte naslouchací procesy protokolu HTTPS nakonfigurované pro bránu v1 nebo WAF. Pokud máte aspoň jedno nastavení naslouchacího procesu HTTPS, musíte zadat tento parametr.
+     Tento parametr je volitelný jenom v případě, že nemáte naslouchací procesy protokolu HTTPS nakonfigurované pro bránu v1 nebo WAF. Pokud máte aspoň jedno nastavení naslouchacího procesu HTTPS, musíte zadat tento parametr.
 
       ```azurepowershell  
       $password = ConvertTo-SecureString <cert-password> -AsPlainText -Force
@@ -114,12 +114,17 @@ Spuštění skriptu:
         -Password $password
       ```
 
-      V předchozím příkladu můžete předat `$mySslCert1, $mySslCert2` (oddělený čárkami) jako hodnoty pro tento parametr ve skriptu.
-   * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]: volitelné**. Čárkami oddělený seznam objektů PSApplicationGatewayTrustedRootCertificate, které vytvoříte pro reprezentaci [důvěryhodných kořenových certifikátů](ssl-overview.md) pro ověřování instancí back-endu z vaší brány v2.  
+     V předchozím příkladu můžete předat `$mySslCert1, $mySslCert2` (oddělený čárkami) jako hodnoty pro tento parametr ve skriptu.
+   * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]: volitelné**. Čárkami oddělený seznam objektů PSApplicationGatewayTrustedRootCertificate, které vytvoříte pro reprezentaci [důvěryhodných kořenových certifikátů](ssl-overview.md) pro ověřování instancí back-endu z vaší brány v2.
+   
+      ```azurepowershell
+      $certFilePath = ".\rootCA.cer"
+      $trustedCert = New-AzApplicationGatewayTrustedRootCertificate -Name "trustedCert1" -CertificateFile $certFilePath
+      ```
 
       Chcete-li vytvořit seznam objektů PSApplicationGatewayTrustedRootCertificate, přečtěte si téma [New-AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0).
    * **privateIpAddress: [řetězec]: volitelné**. Konkrétní privátní IP adresa, kterou chcete přidružit k nové bráně v2.  Tato hodnota musí být ze stejné virtuální sítě, kterou přidělíte pro novou bránu v2. Pokud tato hodnota není zadaná, skript přidělí privátní IP adresu pro bránu v2.
-    * **publicIpResourceId: [řetězec]: volitelné**. Identifikátor resourceId prostředku veřejné IP adresy (Standard SKU) ve vašem předplatném, který chcete přidělit nové bráně v2. Pokud tento parametr nezadáte, skript přidělí novou veřejnou IP adresu ve stejné skupině prostředků. Název je název brány v2 s připojením *-IP* .
+   * **publicIpResourceId: [řetězec]: volitelné**. ResourceId existující prostředek veřejné IP adresy (Standard SKU) ve vašem předplatném, který chcete přidělit nové bráně v2. Pokud tento parametr nezadáte, skript přidělí novou veřejnou IP adresu ve stejné skupině prostředků. Název je název brány v2 s připojením *-IP* .
    * **validateMigration: [přepínač]: volitelné**. Tento parametr použijte v případě, že chcete, aby skript po vytvoření brány v2 a kopii konfigurace provedl některé základní ověřování v porovnání s konfigurací. Ve výchozím nastavení se neprovádí žádné ověření.
    * **enableAutoScale: [přepínač]: volitelné**. Tento parametr použijte, pokud chcete, aby skript po vytvoření nové brány v2 povolil automatické škálování na nové bráně v2. Ve výchozím nastavení je automatické škálování zakázané. Vždycky je můžete kdykoli později aktivovat na nově vytvořené bráně v2.
 
@@ -132,10 +137,10 @@ Spuštění skriptu:
       -resourceId /subscriptions/8b1d0fea-8d57-4975-adfb-308f1f4d12aa/resourceGroups/MyResourceGroup/providers/Microsoft.Network/applicationGateways/myv1appgateway `
       -subnetAddressRange 10.0.0.0/24 `
       -appgwname "MynewV2gw" `
-      -sslCertificates $Certs `
+      -sslCertificates $mySslCert1,$mySslCert2 `
       -trustedRootCertificates $trustedCert `
       -privateIpAddress "10.0.0.1" `
-      -publicIpResourceId "MyPublicIP" `
+      -publicIpResourceId "/subscriptions/8b1d0fea-8d57-4975-adfb-308f1f4d12aa/resourceGroups/MyResourceGroup/providers/Microsoft.Network/publicIPAddresses/MyPublicIP" `
       -validateMigration -enableAutoScale
    ```
 

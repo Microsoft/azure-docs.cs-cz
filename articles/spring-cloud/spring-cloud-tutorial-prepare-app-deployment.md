@@ -4,14 +4,14 @@ description: V tomto kurzu připravíte pro nasazení pružinovou aplikaci Java.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: tutorial
-ms.date: 10/06/2019
+ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 9918c7866b21cd2a9e021a355fb43977c91a89cf
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 7a879fa942046376e8cf0acc40a62039e8f3de25
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277447"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064712"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Příprava pružinové aplikace Java pro nasazení v jarním cloudu Azure
 
@@ -25,38 +25,14 @@ Azure jarní Cloud podporuje Java 8 i Java 11. Hostující prostředí obsahuje 
 
 ## <a name="spring-boot-and-spring-cloud-versions"></a>Jarní spouštěcí a jarní verze cloudu
 
-Jarní cloud Azure podporuje jenom aplikace pro pružinové spouštění. Podporuje jak pružinové spouštění verze 2,0, tak verze 2,1. V následující tabulce jsou uvedeny podporované kombinace pružinové spouštěcí a jarní cloudové sady:
+Jarní cloud Azure podporuje jenom aplikace pro pružinové spouštění. Podporuje jak pružinové spouštění verze 2,1, tak verze 2,2. V následující tabulce jsou uvedeny podporované kombinace pružinové spouštěcí a jarní cloudové sady:
 
 Jarní spouštěcí verze | Jarní cloudová verze
 ---|---
-2.0 | Finchley. RELEASE
 2.1 | Střední verze
+2.2 | Hoxton. RELEASE
 
 Ověřte, že soubor pom. XML má správné závislosti na jaře a pružinovém cloudu na základě vaší jarní spouštěcí verze.
-
-### <a name="dependencies-for-spring-boot-version-20"></a>Závislosti pro jaře Booting verze 2,0
-
-```xml
-    <!-- Spring Boot dependencies -->
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.9.RELEASE</version>
-    </parent>
-
-    <!-- Spring Cloud dependencies -->
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Finchley.SR4</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-```
 
 ### <a name="dependencies-for-spring-boot-version-21"></a>Závislosti pro jaře Booting verze 2,1
 
@@ -65,7 +41,7 @@ Ověřte, že soubor pom. XML má správné závislosti na jaře a pružinovém 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.8.RELEASE</version>
+        <version>2.1.12.RELEASE</version>
     </parent>
 
     <!-- Spring Cloud dependencies -->
@@ -74,7 +50,31 @@ Ověřte, že soubor pom. XML má správné závislosti na jaře a pružinovém 
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Greenwich.SR3</version>
+                <version>Greenwich.SR4</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+```
+
+### <a name="dependencies-for-spring-boot-version-22"></a>Závislosti pro jaře Booting verze 2,2
+
+```xml
+    <!-- Spring Boot dependencies -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.4.RELEASE</version>
+    </parent>
+
+    <!-- Spring Cloud dependencies -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Hoxton.SR1</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -90,20 +90,10 @@ V následující tabulce jsou uvedené správné verze cloudových cloudů Azure
 
 Jarní spouštěcí verze | Jarní cloudová verze | Verze cloudu pro Azure jaře
 ---|---|---
-2.0 | Finchley. RELEASE | 2.0
 2.1 | Střední verze | 2.1
+2.2 | Hoxton. RELEASE | 2.2
 
 Do souboru pom. xml přidejte jednu z následujících závislostí. Vyberte závislost, jejíž verze cloudu pro Azure jaře se shoduje s vaší vlastní.
-
-### <a name="dependency-for-azure-spring-cloud-version-20"></a>Závislost pro Azure jaře Cloud verze 2,0
-
-```xml
-<dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.0.0</version>
-</dependency>
-```
 
 ### <a name="dependency-for-azure-spring-cloud-version-21"></a>Závislost pro Azure jaře Cloud verze 2,1
 
@@ -111,7 +101,17 @@ Do souboru pom. xml přidejte jednu z následujících závislostí. Vyberte zá
 <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.1.0</version>
+        <version>2.1.1</version>
+</dependency>
+```
+
+### <a name="dependency-for-azure-spring-cloud-version-22"></a>Závislost pro Azure jaře Cloud verze 2,2
+
+```xml
+<dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
+        <version>2.2.0</version>
 </dependency>
 ```
 

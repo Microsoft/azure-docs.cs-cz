@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 5ebc1e6df85a521ef7a03bfce8e062fc0fbf734b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 86401e0a827d1941b2d183d8c17371ba915c81ae
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703282"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063692"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Rychlý start: Volání rozhraní Microsoft Graph API z aplikace pro Univerzální platformu Windows (UPW)
 
@@ -39,7 +39,7 @@ Tento rychlý Start obsahuje ukázku kódu, která předvádí, jak se aplikace 
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Možnost 2: Registrace a ruční konfigurace aplikace a vzorového kódu
 > [!div renderon="docs"]
-> #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
+> #### <a name="step-1-register-your-application"></a>Krok 1: Zaregistrujte si aplikaci
 > Pokud chcete zaregistrovat aplikaci a přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 > 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
 > 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
@@ -51,7 +51,7 @@ Tento rychlý Start obsahuje ukázku kódu, která předvádí, jak se aplikace 
 >      - Výběrem možnosti **Registrovat** aplikaci vytvořte.
 > 1. V seznamu stránek pro aplikaci vyberte **Ověřování**.
 > 1. V části **identifikátory URI pro přesměrování** | **Doporučené identifikátory URI pro přesměrování pro veřejné klienty (mobilní zařízení, stolní počítače)** , ověřte **https://login.microsoftonline.com/common/oauth2/nativeclient** .
-> 1. Vyberte **Uložit**.
+> 1. Vyberte **Save** (Uložit).
 
 > [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-your-application"></a>Krok 1: Konfigurace aplikace
@@ -66,7 +66,7 @@ Tento rychlý Start obsahuje ukázku kódu, která předvádí, jak se aplikace 
 
  - [Stažení projektu sady Visual Studio](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: Nakonfigurujte si projekt sady Visual Studio
+#### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: Konfigurace projektu sady Visual Studio
 
 1. Extrahujte soubor zip do místní složky blízko ke kořenovému adresáři disku, například **C:\Azure-Samples**.
 1. Otevřete projekt v sadě Visual Studio. Může se zobrazit výzva k instalaci sady UWP SDK. V takovém případě přijměte.
@@ -103,7 +103,7 @@ Tato část obsahuje další informace o tomto rychlém startu.
 MSAL ([Microsoft. identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) je knihovna používaná k přihlašování uživatelů a žádosti o tokeny zabezpečení. Tokeny zabezpečení se používají pro přístup k rozhraní API chráněnému platformou Microsoft identity pro vývojáře. MSAL můžete nainstalovat spuštěním následujícího příkazu v *Konzole Správce balíčků* v sadě Visual Studio:
 
 ```powershell
-Install-Package Microsoft.Identity.Client -IncludePrerelease
+Install-Package Microsoft.Identity.Client
 ```
 
 ### <a name="msal-initialization"></a>Inicializace knihovny MSAL
@@ -119,6 +119,7 @@ Pak se MSAL inicializuje pomocí následujícího kódu:
 ```csharp
 public static IPublicClientApplication PublicClientApp;
 PublicClientApp = PublicClientApplicationBuilder.Create(ClientId)
+                                                .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
                                                     .Build();
 ```
 

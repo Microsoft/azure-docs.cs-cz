@@ -2,7 +2,7 @@
 title: Registrace osobních zařízení v síti organizace – Azure AD
 description: Zjistěte, jak zaregistrovat svoje osobní zařízení v síti vaší organizace, abyste měli přístup k chráněným prostředkům vaší organizace.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
@@ -10,15 +10,15 @@ ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/04/2019
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 2e3bd9ffa968038ae3f03eaf8de9c5271d6248f4
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: e2e6585bac100a09f3f98037e90b24738e22816f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704608"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063862"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>Registrace svého osobního zařízení v síti vaší organizace
 Zaregistrujte své osobní zařízení (obvykle telefon nebo tablet) v síti vaší organizace. Po zaregistrování zařízení bude mít přístup k prostředkům s omezeným přístupem vaší organizace.
@@ -49,7 +49,7 @@ Pomocí těchto kroků zaregistrujete své osobní zařízení v síti.
 
     ![Přístup k pracovní nebo školní obrazovce s zvýrazněnou možností připojit](./media/user-help-register-device-on-network/register-device-access-work-school-connect.png)
 
-3. Na obrazovce **Přidat pracovní nebo školní účet** zadejte e-mailovou adresu svého pracovního nebo školního účtu a pak vyberte **Další**. Například, alain@contoso.com.
+3. Na obrazovce **Přidat pracovní nebo školní účet** zadejte e-mailovou adresu svého pracovního nebo školního účtu a pak vyberte **Další**. například alain@contoso.com.
 
 4. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak vyberte **Přihlásit**se.
 

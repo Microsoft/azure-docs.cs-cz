@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace Leapsome pro automatické zřizování uživatelů pomocí Azure Active Directory | Dokumentace Microsoftu'
-description: Zjistěte, jak konfigurovat Azure Active Directory a automaticky zřizovat a rušit zřízení uživatelských účtů do Leapsome.
+title: 'Kurz: Konfigurace Leapsome pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
+description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro Leapsome.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -15,160 +15,160 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: jeedes
-ms.openlocfilehash: e02deaa29b40e64b63d9afb471717feef78b3cee
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: e5837887325c06f9140a3f40eb183139782e2a50
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672682"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057460"
 ---
-# <a name="tutorial-configure-leapsome-for-automatic-user-provisioning"></a>Kurz: Konfigurace Leapsome pro automatické zřizování uživatelů
+# <a name="tutorial-configure-leapsome-for-automatic-user-provisioning"></a>Kurz: Konfigurace Leapsome pro Automatické zřizování uživatelů
 
-Cílem tohoto kurzu je předvést postup provést v Leapsome a Azure Active Directory (Azure AD) ke konfiguraci Azure AD automaticky zřizovat a rušit zřízení uživatele a/nebo skupiny, které se Leapsome.
+Cílem tohoto kurzu je předvést kroky, které je třeba provést v Leapsome a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD pro Automatické zřizování a zrušení zřizování uživatelů nebo skupin pro Leapsome.
 
 > [!NOTE]
->  Tento kurz popisuje konektor postavené na službě zřizování uživatelů služby Azure AD. Důležité podrobnosti o význam této služby, jak to funguje a nejčastější dotazy najdete v tématu [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](../manage-apps/user-provisioning.md).
+>  Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Tento konektor je aktuálně ve verzi Preview. Další informace o obecných Microsoft Azure podmínky použití pro funkce ve verzi Preview, najdete v části [doplňkovými podmínkami použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Tento konektor je momentálně ve verzi Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu se předpokládá, že už máte splněné následující požadavky:
+Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * Tenanta Azure AD.
-* A [Leapsome](https://www.Leapsome.com/en/pricing) tenanta.
-* Účet uživatele s oprávněními správce v Leapsome.
+* Tenant [Leapsome](https://www.Leapsome.com/en/pricing)
+* Uživatelský účet v Leapsome s oprávněními správce.
 
 ## <a name="assigning-users-to-leapsome"></a>Přiřazování uživatelů k Leapsome
 
-Azure Active Directory používá koncept volá *přiřazení* určit, kteří uživatelé měli obdržet přístup k vybrané aplikace. V souvislosti s automatické zřizování uživatelů se synchronizují pouze na uživatele a/nebo skupiny, které jsou přiřazené k aplikaci ve službě Azure AD.
+Azure Active Directory používá koncept nazvaný *přiřazení* k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelů se synchronizují jenom uživatelé a skupiny, které jsou přiřazené k aplikaci v Azure AD.
 
-Než nakonfigurujete a povolíte automatické zřizování uživatelů, byste měli rozhodnout, které uživatele a/nebo skupiny ve službě Azure AD potřebují přístup k Leapsome. Jakmile se rozhodli, můžete přiřadit tyto uživatele a/nebo skupiny Leapsome podle zde uvedených pokynů:
-* [Přiřadit uživatele nebo skupiny k podnikové aplikace](../manage-apps/assign-user-or-group-access-portal.md)
-
-
-## <a name="important-tips-for-assigning-users-to-leapsome"></a>Důležité tipy pro přiřazování uživatelů k Leapsome
-
-* Dále je doporučeno jednoho uživatele Azure AD, je přiřazená Leapsome otestovat automatické konfigurace zřizování uživatelů. Další uživatele a/nebo skupiny může být přiřazen později.
-
-* Při přiřazení uživatele k Leapsome, musíte vybrat libovolnou platnou roli specifické pro aplikaci (Pokud je k dispozici) v dialogovém okně přiřazení. Uživatelé s **výchozího přístupu k** role jsou vyloučené z zřizování.
+Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé a skupiny ve službě Azure AD potřebují přístup k Leapsome. Po rozhodnutí můžete přiřadit tyto uživatele nebo skupiny k Leapsome podle pokynů uvedených tady:
+* [Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
 
 
-## <a name="setup-leapsome-for-provisioning"></a>Instalační program Leapsome pro zřizování
+## <a name="important-tips-for-assigning-users-to-leapsome"></a>Důležité tipy pro přiřazení uživatelů k Leapsome
 
-1. Přihlaste se k vaší [konzoly pro správu Leapsome](https://www.Leapsome.com/app/#/login). Přejděte do **Nastavení > Nastavení správy**.
+* Doporučuje se, aby se k Leapsome k testování automatické konfigurace zřizování uživatelů přiřadil jeden uživatel Azure AD. Další uživatele a skupiny můžete přiřadit později.
 
-    ![Leapsome konzoly pro správu](media/Leapsome-provisioning-tutorial/leapsome-admin-console.png)
+* Při přiřazování uživatele k Leapsome musíte v dialogovém okně přiřazení vybrat jakoukoli platnou roli specifickou pro aplikaci (Pokud je dostupná). Uživatelé s **výchozí rolí přístupu** se z zřizování vylučují.
 
-2.  Přejděte do **integrace > zřizování SCIM uživatelů**.
 
-    ![Přidat Leapsome SCIM](media/Leapsome-provisioning-tutorial/leapsome-add-scim.png)
+## <a name="setup-leapsome-for-provisioning"></a>Nastavení Leapsome pro zřizování
 
-3.  Kopírovat **SCIM ověřovací Token**. Tuto hodnotu zadá do tajný klíč tokenu pole na kartě zřizování Leapsome aplikace na webu Azure Portal.
+1. Přihlaste se ke [konzole pro správu Leapsome](https://www.Leapsome.com/app/#/login). Přejděte do **nastavení > nastavení správy**.
 
-    ![Leapsome vytvořit Token](media/Leapsome-provisioning-tutorial/leapsome-create-token.png)
+    ![Konzola pro správu Leapsome](media/Leapsome-provisioning-tutorial/leapsome-admin-console.png)
+
+2.  Přejděte k **integraci > zřizování uživatelů SCIM**.
+
+    ![Leapsome přidat SCIM](media/Leapsome-provisioning-tutorial/leapsome-add-scim.png)
+
+3.  Zkopírujte **token ověřování SCIM**. Tato hodnota se zadá do pole token tajného kódu na kartě zřizování vaší aplikace Leapsome ve Azure Portal.
+
+    ![Leapsome vytvořit token](media/Leapsome-provisioning-tutorial/leapsome-create-token.png)
 
 ## <a name="add-leapsome-from-the-gallery"></a>Přidání Leapsome z Galerie
 
-Před konfigurací Leapsome pro automatické zřizování uživatelů pomocí Azure AD, budete muset přidat Leapsome z Galerie aplikací Azure AD na váš seznam spravovaných aplikací SaaS.
+Před konfigurací Leapsome pro Automatické zřizování uživatelů se službou Azure AD je nutné přidat Leapsome z Galerie aplikací Azure AD do svého seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat Leapsome z Galerie aplikací Azure AD, postupujte následovně:**
+**Pokud chcete přidat Leapsome z Galerie aplikací Azure AD, proveďte následující kroky:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu vyberte **Azure Active Directory**.
+1. V **[Azure Portal](https://portal.azure.com)** v levém navigačním panelu vyberte možnost **Azure Active Directory**.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte na **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, **novou aplikaci** tlačítko v horní části podokna.
+3. Chcete-li přidat novou aplikaci, vyberte tlačítko **Nová aplikace** v horní části podokna.
 
     ![Tlačítko nové aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Leapsome**vyberte **Leapsome** panel výsledků a pak klikněte na **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **Leapsome**, na panelu výsledků vyberte **Leapsome** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Leapsome v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-leapsome"></a>Konfigurace automatické zřizování uživatelů pro Leapsome 
+## <a name="configuring-automatic-user-provisioning-to-leapsome"></a>Konfigurace automatického zřizování uživatelů na Leapsome 
 
-Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a vytvářet, aktualizovat a zakázat uživatele a/nebo skupiny v Leapsome podle přiřazení uživatele a/nebo skupiny ve službě Azure AD.
+V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v Leapsome na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete také povolit založené na SAML jednotného přihlašování pro Leapsome, postupujte podle pokynů uvedených v [Leapsome Single sign-on kurzu](Leapsome-tutorial.md). Jednotné přihlašování lze nakonfigurovat nezávisle na automatické zřizování uživatelů, i když tyto dvě funkce návrzích mezi sebou
+> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro Leapsome podle pokynů uvedených v [kurzu Leapsome jednotného přihlašování](Leapsome-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce vzájemně přidávají.
 
-### <a name="to-configure-automatic-user-provisioning-for-leapsome-in-azure-ad"></a>Konfigurace automatické zřizování uživatelů pro Leapsome ve službě Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-leapsome-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Leapsome ve službě Azure AD:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **Leapsome**.
+2. V seznamu aplikace vyberte **Leapsome**.
 
     ![Odkaz Leapsome v seznamu aplikací](common/all-applications.png)
 
-3. Vyberte **zřizování** kartu.
+3. Vyberte kartu **zřizování** .
 
-    ![Zřizování](common/provisioning.png)
+    ![Karta zřizování](common/provisioning.png)
 
-4. Nastavte **režim zřizování** k **automatické**.
+4. Nastavte **režim zřizování** na **automaticky**.
 
-    ![Zřizování](common/provisioning-automatic.png)
+    ![Karta zřizování](common/provisioning-automatic.png)
 
-5. V části **přihlašovacích údajů správce** části zadejte `https://www.leapsome.com/api/scim` v **adresy URL Tenanta**. Vstup **SCIM ověřovací Token** hodnotu získali dříve v **tajný klíč tokenu**. Klikněte na tlačítko **Test připojení** aby Azure AD můžete připojit k Leapsome. Pokud se nepovede, ujistěte se, že váš účet Leapsome má oprávnění správce a zkuste to znovu.
+5. V části **přihlašovací údaje správce** zadejte `https://www.leapsome.com/api/scim` na **adrese URL tenanta**. Zadejte hodnotu **SCIM tokenu ověřování** získanou dříve v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k Leapsome. Pokud se připojení nepovede, ujistěte se, že má váš účet Leapsome oprávnění správce, a zkuste to znovu.
 
-    ![Adresa URL tenanta + Token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. V **e-mailové oznámení** zadejte e-mailovou adresu osoby nebo skupiny, který by měla přijímat oznámení zřizování chyba a zaškrtnutím políčka - **odeslání e-mailové oznámení, když dojde k selhání**.
+6. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
 
-    ![E-mailové oznámení](common/provisioning-notification-email.png)
+    ![E-mail s oznámením](common/provisioning-notification-email.png)
 
 7. Klikněte na **Uložit**.
 
-8. V části **mapování** vyberte **synchronizace Azure Active Directory uživatelům Leapsome**.
+8. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé Leapsome**.
 
     ![Mapování uživatelů Leapsome](media/Leapsome-provisioning-tutorial/Leapsome-user-mappings.png)
 
-9. Zkontrolujte atributy uživatele, které se synchronizují ze služby Azure AD do Leapsome v **mapování atributů** oddílu. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelské účty v Leapsome pro operace update. Vyberte **Uložit** tlačítko potvrďte všechny změny.
+9. Zkontrolujte atributy uživatele synchronizované z Azure AD do Leapsome v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Leapsome pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
     ![Atributy uživatele Leapsome](media/Leapsome-provisioning-tutorial/Leapsome-user-attributes.png)
 
-10. V části **mapování** vyberte **synchronizaci skupinám Azure Active Directory k Leapsome**.
+10. V části **mapování** vyberte **synchronizovat Azure Active Directory skupiny do Leapsome**.
 
-    ![Mapování Leapsome skupin](media/Leapsome-provisioning-tutorial/Leapsome-group-mappings.png)
+    ![Mapování skupin Leapsome](media/Leapsome-provisioning-tutorial/Leapsome-group-mappings.png)
 
-11. Zkontrolujte skupiny atributů, které se synchronizují ze služby Azure AD do Leapsome v **mapování atributů** oddílu. Atributy vybrané jako **odpovídající** vlastnosti se používají k vyhodnocení skupiny v Leapsome pro operace update. Vyberte **Uložit** tlačítko potvrďte všechny změny.
+11. Zkontrolujte atributy skupiny synchronizované z Azure AD do Leapsome v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v Leapsome pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Atributy Leapsome skupiny](media/Leapsome-provisioning-tutorial/Leapsome-group-attributes.png)
+    ![Leapsome – atributy skupiny](media/Leapsome-provisioning-tutorial/Leapsome-group-attributes.png)
 
-12. Konfigurace filtrů oborů, najdete v následující pokyny uvedené v [Scoping filtr kurzu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+12. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Služba pro Leapsome zřizování Azure AD povolit, změňte **stavu zřizování** k **na** v **nastavení** oddílu.
+13. Pokud chcete povolit službu Azure AD Provisioning pro Leapsome, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
-    ![Stav zřizování zapnutém](common/provisioning-toggle-on.png)
+    ![Zapnutý stav zřizování](common/provisioning-toggle-on.png)
 
-14. Definovat uživatele a/nebo skupiny, které chcete k poskytování Leapsome výběrem požadované hodnoty do **oboru** v **nastavení** oddílu.
+14. Definujte uživatele nebo skupiny, které chcete zřídit pro Leapsome, výběrem požadovaných hodnot v **oboru** v části **Nastavení** .
 
-    ![Zřizování oboru](common/provisioning-scope.png)
+    ![Rozsah zřizování](common/provisioning-scope.png)
 
-15. Až budete připravení ke zřízení, klikněte na tlačítko **Uložit**.
+15. Až budete připraveni zřídit, klikněte na **Uložit**.
 
-    ![Ukládá se konfigurace zřizování](common/provisioning-configuration-save.png)
+    ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
 
-Tato operace spustí počáteční synchronizaci všech uživatelů a/nebo skupiny definované v **oboru** v **nastavení** oddílu. Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut tak dlouho, dokud je spuštěna služba zřizování Azure AD. Můžete použít **podrobnosti synchronizace** části ke sledování průběhu a odkazech na zřizování sestava aktivity, která popisuje všechny akce, které provádí služba na Leapsome zřizování Azure AD.
+Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v Leapsome.
 
-Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Omezení konektoru
 
-* Vyžaduje Leapsome **uživatelské jméno** být jedinečný.
-* Leapsome povoluje jenom pracovní e-mailové adresy se má uložit.
+* Leapsome vyžaduje, aby **uživatelské jméno** bylo jedinečné.
+* Leapsome umožňuje uložit pouze pracovní e-mailové adresy.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Zjistěte, jak kontrolovat protokoly a získat sestavy o zřizování aktivity](../manage-apps/check-status-user-account-provisioning.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)

@@ -8,12 +8,12 @@ ms.date: 01/30/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 058fe9aea87879fe85dcbc6dcb864fd841fcb049
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a3d60bf38c4a9dad13dacf8ba9798c4078c1df1a
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026793"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049702"
 ---
 # <a name="export-your-azure-iot-central-data"></a>Export dat IoT Central Azure
 
@@ -62,10 +62,14 @@ Pokud zvolíte Service Bus jako cíl exportu, nesmí fronty a témata obsahovat 
 
 Pokud nemáte existující účet Azure Storage pro export do, postupujte podle těchto kroků:
 
-1. Vytvořte [nový účet úložiště v Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Můžete si přečíst další informace o vytváření nových [účtů Azure Blob Storage](https://aka.ms/blobdocscreatestorageaccount) nebo [účtů úložiště Azure Data Lake Storage v2](../../storage/blobs/data-lake-storage-quickstart-create-account.md).
+1. Vytvořte [nový účet úložiště v Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Můžete si přečíst další informace o vytváření nových [účtů Azure Blob Storage](https://aka.ms/blobdocscreatestorageaccount) nebo [účtů úložiště Azure Data Lake Storage v2](../../storage/blobs/data-lake-storage-quickstart-create-account.md). Export dat může zapisovat jenom data do účtů úložiště, které podporují objekty blob bloku. Následuje seznam známých kompatibilních typů účtů úložiště: 
 
-    - Pokud se rozhodnete exportovat data do účtu úložiště Azure Data Lake Storage v2, musíte jako **druh účtu**vybrat **BlobStorage** .
-    - Data můžete exportovat do účtů úložiště v předplatných, která jsou odlišná než ta pro vaši aplikaci IoT Central. V tomto případě se připojíte pomocí připojovacího řetězce.
+    |Úroveň výkonu|Typ účtu|
+    |-|-|
+    |Standard|Pro obecné účely v2|
+    |Standard|Pro obecné účely v1|
+    |Standard|Blob Storage|
+    |Premium|Blokovat Blob Storage|
 
 2. Vytvořte kontejner v účtu úložiště. Přejít na účet úložiště. V části **BLOB Service**vyberte **Procházet objekty blob**. V horní části vyberte **+ kontejner** a vytvořte nový kontejner.
 
@@ -104,7 +108,7 @@ Teď, když máte cíl exportovat data do, postupujte podle těchto kroků a nas
 
 7. V části **data, která chcete exportovat**, vyberte typy dat k exportu nastavením typ na **zapnuto**.
 
-8. Pokud chcete zapnout funkci průběžného exportu dat, **Ujistěte se,** že je zapnutý přepínač **zapnuto** . Vyberte **Uložit**.
+8. Pokud chcete zapnout funkci průběžného exportu dat, **Ujistěte se,** že je zapnutý přepínač **zapnuto** . Vyberte **Save** (Uložit).
 
 9. Po několika minutách se vaše data zobrazí ve zvoleném cíli.
 
@@ -123,7 +127,7 @@ V případě Blob Storage se data exportují jednou za minutu a každý soubor o
 Exportované soubory můžete procházet v Azure Portal tak, že přejdete do souboru a kliknete na kartu **Upravit objekt BLOB** .
 
 
-## <a name="telemetry"></a>Telemetrie
+## <a name="telemetry"></a>Telemetrická data
 
 V případě Event Hubs a Service Bus je nová zpráva exportována rychle po IoT Central přijetí zprávy ze zařízení a Každá exportovaná zpráva obsahuje úplnou zprávu, kterou zařízení odeslalo ve formátu JSON.
 

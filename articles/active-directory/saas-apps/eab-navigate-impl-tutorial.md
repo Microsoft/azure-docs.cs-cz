@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d02a9dbc5b89c4156b7ff8b6a49adb7f00fef83
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 465b41aaf3c3b16dcba489d1ea9ba951a3108c8e
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969823"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046590"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eab-navigate-impl"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) pomocí EAB Navigate IMPL
 
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak integrovat EAB Navigate IMPL s Azure Active Direc
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -83,18 +83,21 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
-
+1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole: do textového pole **identifikátor (ID entity)** zadejte přesně tuto hodnotu: `https://impl.bouncer.eab.com`
+    
+    Do textového pole **Adresa URL odpovědi (adresa URL služby vyhodnocení příjemce)** zadejte následující hodnoty jako samostatné řádky: `https://impl.bouncer.eab.com/sso/saml2/acs`
+    `https://impl.bouncer.eab.com/sso/saml2/acs/`
+    
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.navigate.impl.eab.com/`
 
     > [!NOTE]
-    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, kontaktujte [EAB a přejděte na tým podpory impl klientů](mailto:jmahoney@eab.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, kontaktujte [EAB a přejděte na tým podpory impl klientů](mailto:EABTechSupport@eab.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
-    ![Odkaz na stažení certifikátu](common/copy-metadataurl.png)
+    ![Odkaz ke stažení certifikátu](common/copy-metadataurl.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
@@ -102,11 +105,11 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. například `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k EAB Navigate IMPL.
 
@@ -114,7 +117,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 1. V seznamu aplikace vyberte **EAB navigovat impl**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
+   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
@@ -126,15 +129,15 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 ## <a name="configure-eab-navigate-impl-sso"></a>Konfigurace EAB pro navigaci IMPL SSO
 
-Pokud chcete nakonfigurovat jednotné přihlašování na **EAB, přejděte** na stranu impl, musíte poslat **adresu URL federačních metadat aplikace** [EAB navigovat týmu podpory impl](mailto:jmahoney@eab.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Pokud chcete nakonfigurovat jednotné přihlašování na **EAB, přejděte** na stranu impl, musíte poslat **adresu URL federačních metadat aplikace** [EAB navigovat týmu podpory impl](mailto:EABTechSupport@eab.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 ### <a name="create-eab-navigate-impl-test-user"></a>Vytvoření EAB navigace IMPL testovacího uživatele
 
-V této části vytvoříte uživatele s názvem B. Simon v EAB Navigate IMPL. Pokud chcete přidat uživatele v EAB platformě IMPL, pracujte s [EAB, přejděte na tým podpory impl](mailto:jmahoney@eab.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem B. Simon v EAB Navigate IMPL. Pokud chcete přidat uživatele v EAB platformě IMPL, pracujte s [EAB, přejděte na tým podpory impl](mailto:EABTechSupport@eab.com) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ## <a name="test-sso"></a>Test SSO
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
 Když kliknete na dlaždici EAB navigovat IMPL na přístupovém panelu, měli byste se automaticky přihlášeni k EAB navigaci IMPL, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 

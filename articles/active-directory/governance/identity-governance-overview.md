@@ -16,12 +16,12 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c90052d1d75ba65a8e0b0e7a2cd26a279019a82d
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: bd319dd6a83a392f6df26d07a58be22a9c8bdb61
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173154"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063675"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Co je Azure AD Identity Governance?
 
@@ -29,7 +29,7 @@ Zásady správného řízení identity Azure Active Directory (Azure AD) umožň
 
 Zásady správného řízení identity umožňují organizacím provádět následující úkoly napříč zaměstnanci, obchodními partnery a dodavateli a napříč službami a aplikacemi jak místně, tak i v cloudech:
 
-- Řízení životního cyklu identity
+- Řídit životní cyklus identity
 - Řízení životního cyklu přístupu
 - Zabezpečený privilegovaný přístup pro správu
 
@@ -58,7 +58,7 @@ Organizace potřebují proces pro správu přístupu nad rámec toho, co byl pop
 
 Obvykle IT deleguje rozhodnutí o schválení přístupu u tvůrců obchodních rozhodnutí.  Kromě toho může zahrnovat samotné uživatele.  Například uživatelé, kteří mají přístup k důvěrným zákaznickým datům v obchodní aplikaci společnosti v Evropě, potřebují znát zásady společnosti. Uživatelé typu Host mohou být nevědomi požadavků na zpracování dat v organizaci, které byly pozvány.
 
-Organizace můžou proces životního cyklu přístupu automatizovat prostřednictvím technologií, jako jsou [dynamické skupiny](../users-groups-roles/groups-dynamic-membership.md), společně s zřizováním uživatelů, aby [SaaS aplikace](../saas-apps/tutorial-list.md) nebo [aplikace integrované s SCIM](../manage-apps/use-scim-to-provision-users-and-groups.md).  Organizace také mohou určovat, kteří [Uživatelé typu Host mají přístup k místním aplikacím](../b2b/hybrid-cloud-to-on-premises.md).  Tato přístupová práva se pak dají pravidelně kontrolovat pomocí opakujících se kontrol [přístupu Azure AD](access-reviews-overview.md).   [Správa opravňujících k Azure AD](entitlement-management-overview.md) také umožňuje definovat, jak uživatelé požadují přístup mezi balíčky členství v rámci skupiny a týmu, aplikační role a role SharePointu Online.
+Organizace můžou proces životního cyklu přístupu automatizovat prostřednictvím technologií, jako jsou [dynamické skupiny](../users-groups-roles/groups-dynamic-membership.md), společně s zřizováním uživatelů, aby [SaaS aplikace](../saas-apps/tutorial-list.md) nebo [aplikace integrované s SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md).  Organizace také mohou určovat, kteří [Uživatelé typu Host mají přístup k místním aplikacím](../b2b/hybrid-cloud-to-on-premises.md).  Tato přístupová práva se pak dají pravidelně kontrolovat pomocí opakujících se kontrol [přístupu Azure AD](access-reviews-overview.md).   [Správa opravňujících k Azure AD](entitlement-management-overview.md) také umožňuje definovat, jak uživatelé požadují přístup mezi balíčky členství v rámci skupiny a týmu, aplikační role a role SharePointu Online.
 
 Když se uživatel pokusí o přístup k aplikacím, Azure AD vynutil zásady [podmíněného přístupu](/azure/active-directory/conditional-access/) . Zásady podmíněného přístupu můžou například zahrnovat zobrazení [podmínek použití](../conditional-access/terms-of-use.md) a [zajištění souhlasu uživatele s těmito podmínkami](../conditional-access/require-tou.md) předtím, než bude moci získat přístup k aplikaci.
 
@@ -91,7 +91,7 @@ Osvědčeným postupem je použití minimální privilegované role k prováděn
 | Funkce | Nejnižší privilegovaná role |
 | ------- | --------------------- |
 | Správa nároků | Správce uživatelů (s výjimkou přidávání webů SharePointu Online do katalogů, které vyžadují globálního správce) |
-| Revize přístupu | Správce uživatelů (s výjimkou kontrol přístupu pro role Azure nebo Azure AD, které vyžadují správce privilegovaných rolí) |
+| Kontroly přístupu | Správce uživatelů (s výjimkou kontrol přístupu pro role Azure nebo Azure AD, které vyžadují správce privilegovaných rolí) |
 |Privileged Identity Management | Správce privilegovaných rolí |
 | Podmínky použití | Správce zabezpečení nebo správce podmíněného přístupu |
 

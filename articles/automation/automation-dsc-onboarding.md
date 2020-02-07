@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: c5876dd293a97414ff4f48dbb8645e64226a6ba8
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 89e86a6702be7314b99975cac90818252eb07df7
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834105"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046234"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Připojování počítačů pro správu podle konfigurace stavu Azure Automation
 
@@ -53,7 +53,7 @@ V následujících částech najdete informace o tom, jak můžete připojit jed
 Konfigurace stavu Azure Automation umožňuje snadno připojit virtuální počítače Azure ke správě konfigurace pomocí Azure Portal, Azure Resource Managerch šablon nebo PowerShellu. V digestoři a bez správce, který se musí vzdáleně přidružit k virtuálnímu počítači, registruje rozšíření pro konfiguraci požadovaného stavu virtuálního počítače Azure virtuální počítač s konfigurací stavu Azure Automation.
 Vzhledem k tomu, že se rozšíření konfigurace požadovaného stavu virtuálního počítače Azure spustí asynchronně, postup sledování jeho průběhu nebo řešení potíží je k dispozici v následujících oddílech [**řešení potíží s virtuálním počítačem Azure**](#troubleshooting-azure-virtual-machine-onboarding) .
 
-### <a name="azure-portal"></a>Portál Azure
+### <a name="azure-portal"></a>portál Azure
 
 V [Azure Portal](https://portal.azure.com/)přejděte na účet Azure Automation, kde chcete připojit virtuální počítače. Na stránce Konfigurace stavu a na kartě **uzly** klikněte na **+ Přidat**.
 

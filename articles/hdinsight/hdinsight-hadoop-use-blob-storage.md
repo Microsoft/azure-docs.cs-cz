@@ -7,18 +7,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 1e115c59cab4c340f927da516b5f937abf42e985
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 55cddf5317938dea353517cde7260a1aa531d1df
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839659"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061254"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Použití úložiště Azure s clustery Azure HDInsight
 
 Chcete-li analyzovat data v clusteru HDInsight, můžete ukládat data buď v [Azure Storage](../storage/common/storage-introduction.md), [Azure Data Lake Storage gen 1](../data-lake-store/data-lake-store-overview.md)/[Azure Data Lake Storage Gen 2](../storage/blobs/data-lake-storage-introduction.md)nebo kombinaci. Tyto možnosti úložiště umožňují bezpečně odstraňovat clustery HDInsight, které se používají pro výpočty, aniž by došlo ke ztrátě uživatelských dat.
 
-Apache Hadoop podporuje pojem výchozího systému souborů. Výchozí systém souborů znamená výchozí schéma a autoritu. Lze ho také použít k vyřešení relativní cesty. Během procesu vytváření clusteru HDInsight můžete jako výchozí systém souborů zadat kontejner objektů BLOB ve Azure Storage, nebo pomocí HDInsight 3,6, můžete jako výchozí soubory vybrat buď Azure Storage, nebo Azure Data Lake Storage obecné 1/Azure Data Lake Storage Gen 2. systém s několika výjimkami. Informace o podpoře použití Data Lake Storage Gen 1 jako výchozího i propojeného úložiště najdete v tématu [dostupnost pro cluster HDInsight](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters).
+Apache Hadoop podporuje pojem výchozího systému souborů. Výchozí systém souborů znamená výchozí schéma a autoritu. Lze ho také použít k vyřešení relativní cesty. Během procesu vytváření clusteru HDInsight můžete jako výchozí systém souborů zadat kontejner objektů blob Azure Storage, nebo pomocí HDInsight 3,6, můžete vybrat buď Azure Storage nebo Azure Data Lake Storage Gen 1/Azure Data Lake Storage Gen 2 jako výchozí systém souborů s několika výjimkami. Informace o podpoře použití Data Lake Storage Gen 1 jako výchozího i propojeného úložiště najdete v tématu [dostupnost pro cluster HDInsight](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters).
 
 V tomto článku se dozvíte, jak služba Azure Storage pracuje s clustery HDInsight. Informace o tom, jak Data Lake Storage Gen 1 pracuje s clustery HDInsight, najdete v tématu [použití Azure Data Lake Storage s clustery Azure HDInsight](hdinsight-hadoop-use-data-lake-store.md). Další informace o vytvoření clusteru HDInsight najdete v tématu věnovaném [vytváření Apache Hadoop clusterů ve službě HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak služba Azure Storage pracuje s clustery HDIns
 | Druh účtu úložiště | Podporované služby | Podporované úrovně výkonu | Podporované úrovně přístupu |
 |----------------------|--------------------|-----------------------------|------------------------|
 | StorageV2 (obecné účely v2)  | Objekt blob     | Standard                    | Horká, studená, archivní\*   |
-| Storage (pro obecné účely V1)   | Objekt blob     | Standard                    | Není dostupné.                    |
+| Storage (pro obecné účely V1)   | Objekt blob     | Standard                    | Není k dispozici                    |
 | BlobStorage                    | Objekt blob     | Standard                    | Horká, studená, archivní\*   |
 
 Pro ukládání obchodních dat nedoporučujeme používat výchozí kontejner objektů BLOB. Ideální postup je výchozí kontejner objektů blob po každém použití odstranit a snížit tak náklady na úložiště. Výchozí kontejner obsahuje protokoly aplikací a systému. Než odstraníte kontejner, nezapomeňte tyto protokoly načíst.
@@ -122,7 +122,7 @@ LOCATION 'wasbs:///example/data/';
 LOCATION '/example/data/';
 ```
 
-## <a name="identify-storage-path-from-abmari"></a>Identifikujte cestu k úložišti z Abmari.
+## <a name="identify-storage-path-from-ambari"></a>Identifikujte cestu k úložišti z Ambari.
 
 * Pokud chcete zjistit úplnou cestu k nakonfigurovanému výchozímu úložišti, přejděte na:
 

@@ -10,13 +10,13 @@ ms.author: nibaccam
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 808d7ac7ded9b250e0835da51b6b547c05c622a9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/04/2020
+ms.openlocfilehash: 620aab2d2104c9e08de6e7ea47511ff45a482ec4
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720397"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046118"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Vytvářejte, Zkoumejte a nasaďte automatizované experimenty strojového učení pomocí Azure Machine Learning studia
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "76720397"
 
  Pokud dáváte přednost více prostředím založeným na kódu, můžete [v Pythonu nakonfigurovat i automatizované experimenty strojového učení](how-to-configure-auto-train.md) s [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
@@ -47,7 +47,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
 
 ## <a name="create-and-run-experiment"></a>Vytvoření a spuštění experimentu
 
-1. Vyberte **+ vytvořit experiment** a vyplňte formulář.
+1. Vyberte **+ Nový Automated ml Run** a naplňte formulář.
 
 1. Vyberte datovou sadu z kontejneru úložiště nebo vytvořte novou datovou sadu. Datové sady je možné vytvořit z místních souborů, adres URL webu, úložiště dat nebo otevřených datových sad Azure. 
 
@@ -113,16 +113,19 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
 
         1. Vybrat horizont předpovědi: Určete, kolik časových jednotek (minuty/hodiny/dny/týdny/měsíce/roky) bude model moci předpovědět do budoucna. Dalším modelem se vyžaduje předpověď do budoucna, tím méně přesné bude. [Přečtěte si další informace o prognózování a horizontu předpovědi](how-to-auto-train-forecast.md).
 
-1. Volitelné Přidání konfigurací: Další nastavení, která můžete použít k lepšímu řízení úlohy školení. V opačném případě se výchozí hodnoty aplikují na základě experimentů a výběrů dat. 
+1. Volitelné Zobrazit nastavení konfigurace Přidání: Další nastavení, která můžete použít k lepšímu řízení úlohy školení. V opačném případě se výchozí hodnoty aplikují na základě experimentů a výběrů dat. 
 
     Další konfigurace|Popis
     ------|------
     Primární metrika| Hlavní metrika použitá pro vyhodnocování modelu. [Přečtěte si další informace o metrikách modelů](how-to-configure-auto-train.md#explore-model-metrics).
-    Automaticky featurization| Tuto možnost vyberte, pokud chcete povolit nebo zakázat předzpracování prováděné automatizovaným strojovým učením. Předzpracování zahrnuje automatické čištění dat, přípravu a transformaci, které generují syntetické funkce. [Přečtěte si další informace o předzpracování](#preprocess).
+    Automaticky featurization| Tuto možnost vyberte, pokud chcete povolit nebo zakázat předzpracování prováděné automatizovaným strojovým učením. Předzpracování zahrnuje automatické čištění dat, přípravu a transformaci, které generují syntetické funkce. Není podporováno pro typ úkolu prognózy časových řad. [Přečtěte si další informace o předzpracování](#featurization). 
+    Vysvětlete nejlepší model | Pokud chcete zobrazit vysvětlení doporučeného nejlepšího modelu, vyberte možnost povolit nebo zakázat.
     Blokovaný algoritmus| Vyberte algoritmy, které chcete vyloučit z úlohy školení.
     Výstupní kritérium| Při splnění kteréhokoli z těchto kritérií se školicí úloha zastaví. <br> *Čas úlohy školení (hodiny)* : dobu, po kterou je možné spustit úlohu školení. <br> *Prahová hodnota skóre metriky*: minimální skóre metriky pro všechny kanály. Tím zajistíte, že pokud máte definovanou cílovou metriku, která má být dostupná, nebudete věnovat více času školicím úlohám, než je potřeba.
     Ověření| Vyberte jednu z možností vzájemného ověření, kterou chcete použít v úloze školení. [Další informace o vzájemném ověřování](how-to-configure-auto-train.md).
-    Souběžnost| *Maximální počet souběžných iterací*: maximální počet kanálů (iterací), které se mají testovat v úloze školení. Úloha nebude spouštět více než zadaný počet iterací. <br> *Maximální počet jader na iteraci*: vyberte omezení více jader, která chcete použít při použití COMPUTE s více jádry.
+    Souběžnost| *Maximální počet souběžných iterací*: maximální počet kanálů (iterací), které se mají testovat v úloze školení. Úloha nebude spouštět více než zadaný počet iterací.
+
+1. Volitelné Zobrazit nastavení featurization: Pokud se rozhodnete povolit **Automatické featurization** ve formuláři **Další nastavení konfigurace** , v tomto formuláři budete určovat, které sloupce mají tyto featurizationsy provádět, a vybrat, která statistická hodnota se má použít pro imputace chybějících hodnot.
 
 <a name="profile"></a>
 
@@ -141,7 +144,7 @@ Distribuce typu| Počet vložené hodnoty typů v rámci sloupce. Hodnoty null j
 Typ|Odvozený typ sloupce. Možné hodnoty jsou: řetězce, logické hodnoty, kalendářní data a desetinná místa.
 Minimum| Minimální hodnota sloupce Pro funkce, jejichž typ nemá základní řazení (např. logické hodnoty), se zobrazí prázdné položky.
 Maximum| Maximální hodnota sloupce 
-Počet| Celkový počet chybějících a nechybějících položek ve sloupci
+Count| Celkový počet chybějících a nechybějících položek ve sloupci
 Počet nechybějících| Počet položek ve sloupci, které nebyly nalezeny. Prázdné řetězce a chyby jsou považovány za hodnoty, takže nebudou přispívat k "nechybějícímu počtu".
 Quantiles| Přibližné hodnoty na jednotlivých Quantile, které poskytují smysl distribuce dat.
 střední hodnotu| Aritmetický průměr nebo průměr sloupce
@@ -151,17 +154,13 @@ Zešikmení| Měření, jak se liší data tohoto sloupce od normálního rozdě
 Míra fluktuace| Měření, jak často se data tohoto sloupce v porovnání s normální distribucí.
 
 
-<a name="preprocess"></a>
+<a name="featurization"></a>
 
 ## <a name="advanced-featurization-options"></a>Rozšířené možnosti featurization
 
-Při konfiguraci experimentů můžete povolit upřesňující nastavení `feauturization`. 
+Automatizované Machine Learning nabízí automatické zpracování a guardrails dat, které vám pomůžou identifikovat a spravovat potenciální problémy s daty. 
 
-|Konfigurace Featurization | Popis |
-| ------------- | ------------- |
-|"feauturization" = ' FeaturizationConfig '| Indikuje, že by se měl použít upravený krok featurization. [Přečtěte si, jak přizpůsobit featurization](how-to-configure-auto-train.md#customize-feature-engineering).|
-|"feauturization" = ' off '| Indikuje, že krok featurization by se neměl provádět automaticky.|
-|"feauturization" = ' auto '| Označuje, že jako součást předběžného zpracování následujících kroků guardrails dat a featurization se provádí automaticky.|
+### <a name="preprocessing"></a>Předzpracování
 
 |Předzpracování&nbsp;kroků| Popis |
 | ------------- | ------------- |
@@ -177,11 +176,11 @@ Při konfiguraci experimentů můžete povolit upřesňující nastavení `feaut
 
 ### <a name="data-guardrails"></a>Guardrails dat
 
-Automatizované Machine Learning nabízí data guardrails, která vám pomůžou identifikovat možné problémy s daty (např. chybějící hodnoty, nerovnováha tříd) a pomáhat s tím, aby byly vylepšené akce pro lepší výsledky. K dispozici je celá řada osvědčených postupů, které je možné použít k dosažení spolehlivých výsledků. 
+Data guardrails se automaticky aplikují, aby vám pomohly identifikovat možné problémy s daty (např. chybějící hodnoty, nerovnováha tříd) a pomáhat s nimi opravitelné akce pro lepší výsledky. K dispozici je celá řada osvědčených postupů, které je možné použít k dosažení spolehlivých výsledků. 
 
 V následující tabulce jsou popsány aktuálně podporované datové guardrails a související stavy, které mohou uživatelé pocházet při odesílání jejich experimentů.
 
-Guardrail|Status|Podmínka&nbsp;pro aktivační událost&nbsp;
+Guardrail|Stav|Podmínka&nbsp;pro aktivační událost&nbsp;
 ---|---|---
 Chybějící hodnoty&nbsp;&nbsp;imputace |**Předaný** <br> <br> **Určí**|    Žádná chybějící hodnota v žádném ze vstupních&nbsp;sloupců <br> <br> U některých sloupců chybí hodnoty.
 Křížové ověření|**Hotovo**|Pokud není zadaná žádná explicitní ověřovací sada
@@ -191,14 +190,11 @@ Konzistence dat časové řady|**Předaný** <br><br><br><br> **Určí** |<br> V
 
 ## <a name="run-experiment-and-view-results"></a>Spuštění experimentu a zobrazení výsledků
 
-Vyberte **začít** a spusťte experiment. Proces přípravy experimentu může trvat až 10 minut. Školicí úlohy můžou trvat dalších 2-3 minut déle, než se každý kanál dokončí.
+Vyberte **Dokončit** pro spuštění experimentu. Proces přípravy experimentu může trvat až 10 minut. Školicí úlohy můžou trvat dalších 2-3 minut déle, než se každý kanál dokončí.
 
 ### <a name="view-experiment-details"></a>Zobrazit podrobnosti experimentu
 
->[!NOTE]
-> Pokud chcete zobrazit stav spuštění, vyberte **aktualizovat** pravidelně. 
-
-Otevře se obrazovka s **podrobnostmi o spuštění** na kartě **Podrobnosti** . Na této obrazovce se zobrazí souhrn experimentu, včetně **stavu spuštění**. 
+Otevře se obrazovka s **podrobnostmi o spuštění** na kartě **Podrobnosti** . Na této obrazovce se zobrazí souhrn experimentu, včetně stavového řádku v horní části vedle čísla běhu. 
 
 Karta **modely** obsahuje seznam modelů vytvořených seřazený podle skóre metriky. Model, který vychází z nejvyšší úrovně podle zvolené metriky, je ve výchozím nastavení v horní části seznamu. Když se úloha školení pokusí o další modely, přidají se do seznamu. Tento postup slouží k rychlému porovnání metrik pro modely, které byly doposud vyprodukovány.
 
@@ -218,9 +214,9 @@ Automatizované ML vám pomůže s nasazením modelu bez psaní kódu:
 
 1. Máte několik možností nasazení. 
 
-    + Možnost 1: Pokud chcete nasadit nejlepší model (podle definovaných kritérií metriky), vyberte nasadit nejlepší model na kartě Podrobnosti.
+    + Možnost 1: Pokud chcete nasadit nejlepší model (podle definovaných kritérií metriky), vyberte na kartě **Podrobnosti** tlačítko **nasadit nejlepší model** .
 
-    + Možnost 2: Pokud chcete z tohoto experimentu nasadit konkrétní iteraci modelu, přejděte k podrobnostem v modelu a otevřete kartu Podrobnosti modelu a vyberte nasadit model.
+    + Možnost 2: Pokud chcete z tohoto experimentu nasadit konkrétní iteraci modelu, přejděte k podrobnostem v modelu a otevřete kartu **Podrobnosti modelu** a vyberte **nasadit model**.
 
 1. Naplňte podokno **nasazení modelu** .
 
@@ -229,7 +225,7 @@ Automatizované ML vám pomůže s nasazením modelu bez psaní kódu:
     Název| Zadejte jedinečný název pro vaše nasazení.
     Popis| Zadejte popis, který bude lépe identifikovat, pro které nasazení probíhá.
     Typ výpočtu| Vyberte typ koncového bodu, který chcete nasadit: *Azure Kubernetes Service (AKS)* nebo *Azure Container instance (ACI)* .
-    Název| *Platí jenom pro AKS:* Vyberte název clusteru AKS, do kterého chcete nasadit.
+    Název výpočtu| *Platí jenom pro AKS:* Vyberte název clusteru AKS, do kterého chcete nasadit.
     Povolit ověřování | Tuto možnost vyberte, pokud chcete povolení ověřování na základě tokenu nebo klíče.
     Použití vlastních prostředků nasazení| Tuto funkci povolte, pokud chcete nahrát vlastní skript bodování a soubor prostředí. [Přečtěte si další informace o skriptech bodování](how-to-deploy-and-where.md#script).
 
@@ -244,7 +240,7 @@ Nyní máte provozní webovou službu, která generuje předpovědi. Předpověd
 
 ## <a name="next-steps"></a>Další kroky
 
-* Vyzkoušejte si kompletní [kurz tvorby prvního automatizovaného experimentu v Azure Machine Learning](tutorial-first-experiment-automated-ml.md). 
+* Vyzkoušejte si kompletní [kurz tvorby prvního automatizovaného experimentu s Azure Machine Learning studia](tutorial-first-experiment-automated-ml.md). 
 * [Přečtěte si další informace o automatizovaném strojovém učení](concept-automated-ml.md) a Azure Machine Learning.
 * [Pochopte automatizované výsledky strojového učení](how-to-understand-automated-ml.md).
 * [Naučte se využívat webovou službu](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service).

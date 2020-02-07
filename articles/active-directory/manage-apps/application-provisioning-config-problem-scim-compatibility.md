@@ -16,18 +16,18 @@ ms.date: 12/03/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6da171db6535100342342571a5c1f6468abd0fc
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: b0cae5458a9b9456d26363802ee9b06aaa842e72
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712347"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063590"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Známé problémy a řešení s dodržováním předpisů protokolu SCIM 2,0 ve službě Azure AD pro zřizování uživatelů
 
 Azure Active Directory (Azure AD) může automaticky zřídit uživatele a skupiny do jakékoli aplikace nebo systému, který je frontou webové služby, s rozhraním definovaným v [systému pro specifikaci protokolu SCIM (Domain Identity Management) 2,0](https://tools.ietf.org/html/draft-ietf-scim-api-19). 
 
-Podpora Azure AD pro protokol SCIM 2,0 je popsaná v tématu [použití systému pro správu identit mezi doménami (SCIM) k automatickému zřizování uživatelů a skupin z Azure Active Directory do aplikací](use-scim-to-provision-users-and-groups.md), které obsahují seznam specifických částí protokolu, které implementuje, aby bylo možné automaticky zřídit uživatele a skupiny z Azure AD až po aplikace podporující SCIM 2,0.
+Podpora Azure AD pro protokol SCIM 2,0 je popsaná v tématu [použití systému pro správu identit mezi doménami (SCIM) k automatickému zřizování uživatelů a skupin z Azure Active Directory do aplikací](../app-provisioning/use-scim-to-provision-users-and-groups.md), které obsahují seznam specifických částí protokolu, které implementuje, aby bylo možné automaticky zřídit uživatele a skupiny z Azure AD až po aplikace podporující SCIM 2,0.
 
 Tento článek popisuje aktuální a minulé problémy se službou zřizování uživatelů Azure AD při dodržování protokolu SCIM 2,0 a o tom, jak tyto problémy obejít.
 
@@ -113,5 +113,5 @@ Ano. Pokud jste nasadili aplikaci na staré chování, které existovalo před o
 
 
 ## <a name="next-steps"></a>Další kroky
-[Další informace o zřizování a zrušení zřizování pro aplikace SaaS](user-provisioning.md)
+[Další informace o zřizování a zrušení zřizování pro aplikace SaaS](../app-provisioning/user-provisioning.md)
 

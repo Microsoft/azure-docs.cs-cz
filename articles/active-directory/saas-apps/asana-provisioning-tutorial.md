@@ -16,12 +16,12 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a237e4295f17ce37f622022d318e9f2aff24d7
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: abeac030db419f7fb7d561df5dcd407684f20ca2
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276590"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058903"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Kurz: Konfigurace Asana pro Automatické zřizování uživatelů
 
@@ -85,22 +85,22 @@ Tato část vás provede připojením služby Azure AD k Asana rozhraní API pro
 
 1. Zadejte e-mailovou adresu osoby nebo skupiny, které chcete dostávat oznámení o chybách zřizování v **oznamovacím e-mailu**. Zaškrtněte políčko pod položkou.
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 1. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé Asana**.
 
-1. V části **mapování atributů** zkontrolujte atributy uživatele, které se mají synchronizovat z Azure AD do Asana. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Asana pro operace aktualizace. Vyberte **Uložit** a potvrďte všechny změny. Další informace najdete v tématu [Přizpůsobení mapování atributů zřizování uživatelů](../manage-apps/customize-application-attributes.md).
+1. V části **mapování atributů** zkontrolujte atributy uživatele, které se mají synchronizovat z Azure AD do Asana. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Asana pro operace aktualizace. Vyberte **Uložit** a potvrďte všechny změny. Další informace najdete v tématu [Přizpůsobení mapování atributů zřizování uživatelů](../app-provisioning/customize-application-attributes.md).
 
 1. Pokud chcete povolit službu Azure AD Provisioning pro Asana, v části **Nastavení** změňte **stav zřizování** na **zapnuto**.
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 Nyní se spustí počáteční synchronizace pro všechny uživatele přiřazené k Asana v části **Uživatelé** . Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut za předpokladu, že služba běží. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na zřizování protokolů aktivit. Protokoly auditu popisují všechny akce prováděné službou zřizování ve vaší aplikaci Asana.
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [Sestava automatického zřizování uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [Sestava automatického zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 * [Konfigurace jednotného přihlašování](asana-tutorial.md)

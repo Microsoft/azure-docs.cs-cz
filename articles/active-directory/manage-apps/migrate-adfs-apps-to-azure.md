@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/02/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c77b03c6e1f2240059d884b051e00b01836d714
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.openlocfilehash: d3c3eb715c3e371d7e2985f233df584fb83a9870
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67724009"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063451"
 ---
 # <a name="move-applications-from-ad-fs-to-azure-ad"></a>Přesunout aplikace ze služby AD FS do Azure AD 
 
@@ -37,7 +37,7 @@ Pokud jste jako většina organizací, pravděpodobně jste v nějaké fázi zav
 > [!NOTE]
 > Tento průvodce obsahuje podrobné informace o konfiguraci a migraci aplikací SaaS a základní informace o vlastních obchodních aplikacích. Do budoucna plánujeme přidat podrobnější pokyny pro obchodní aplikace.
 
-![Aplikace, které jsou připojené přímo na místě](media/migrate-adfs-apps-to-azure/migrate1.png)
+![Aplikace připojené přímo v místním prostředí](media/migrate-adfs-apps-to-azure/migrate1.png)
 
 ![Aplikace federované přes Azure AD](media/migrate-adfs-apps-to-azure/migrate2.png)
 
@@ -47,7 +47,7 @@ Pro organizace, která již používá službu AD FS, Ping nebo jiného místní
 
 - **Lepší zabezpečení přístupu**
 
-  - Konfiguraci ovládacích prvků granulární přístup k jednotlivým aplikacím, včetně Azure Multi-Factor Authentication pomocí [podmíněného přístupu Azure AD](../active-directory-conditional-access-azure-portal.md). Zásady je možné použít pro aplikace SaaS i vlastní aplikace stejným způsobem, jako to pravděpodobně již děláte v Office 365.
+  - Pomocí [podmíněného přístupu Azure AD](../active-directory-conditional-access-azure-portal.md)nakonfigurujte podrobné řízení přístupu pro jednotlivé aplikace, včetně Azure Multi-Factor Authentication. Zásady je možné použít pro aplikace SaaS i vlastní aplikace stejným způsobem, jako to pravděpodobně již děláte v Office 365.
   - Pokud chcete detekovat hrozby a pomoct ochránit přihlašování na základě strojového učení a heuristik identifikujících rizikový provoz, můžete využít službu [Azure AD Identity Protection](../active-directory-identityprotection.md).
 
 - **Spolupráce Azure AD s B2B**
@@ -59,7 +59,7 @@ Pro organizace, která již používá službu AD FS, Ping nebo jiného místní
   Azure AD jako zprostředkovatel identity pro aplikace SaaS podporuje další možnosti, jako například:
   - Podpisové certifikáty tokenů pro jednotlivé aplikace.
   - [Konfigurovatelná data vypršení platnosti certifikátů](manage-certificates-for-federated-single-sign-on.md).
-  - [Automatizované zřizování](user-provisioning.md) uživatelských účtů (v klíčových aplikacích z Azure Marketplace) na základě identit Azure AD.
+  - [Automatizované zřizování](../app-provisioning/user-provisioning.md) uživatelských účtů (v klíčových aplikacích z Azure Marketplace) na základě identit Azure AD.
 
 - **Zachování výhod místního zprostředkovatele identity**
   
@@ -105,18 +105,18 @@ Následující tabulky obsahuje mapování několika klíčových pojmů sdílen
 
 Migrace začíná vyhodnocením konfigurace aplikace v místním prostředí a namapováním této konfigurace na službu Azure AD. Následující tabulka obsahuje mapování elementů konfigurace přijímající strany AD FS na odpovídající elementy ve službě Azure AD.
 
-- Termín v AD FS: Přijímající strana nebo vztah důvěryhodnosti předávající strany.
-- Azure AD termín: Podnikové aplikace nebo registrace aplikace (v závislosti na typu aplikace).
+- Termín v AD FS: Přijímající strana nebo vztah důvěryhodnosti přijímající strany.
+- Termín v Azure AD: Podniková aplikace nebo registrace aplikace (v závislosti na typu aplikace).
 
 |Element konfigurace aplikace|Popis|Umístění v konfiguraci AD FS|Odpovídající umístění v konfiguraci Azure AD|Element tokenu SAML|
 |-----|-----|-----|-----|-----|
-|Přihlašovací adresa URL aplikace|Adresa URL přihlašovací stránky této aplikace. Sem uživatel přejde za účelem přihlášení k aplikaci v rámci toku SAML iniciovaného zprostředkovatelem přihlašování.|neuvedeno|Ve službě Azure AD se přihlašovací adresa URL konfiguruje na webu Azure Portal ve vlastnostech **jednotného přihlašování** aplikace jako Přihlašovací adresa URL.</br></br>(Pro zobrazení přihlašovací adresy URL možná budete muset vybrat možnost **Zobrazit pokročilé nastavení URL**.)|neuvedeno|
+|Přihlašovací adresa URL aplikace|Adresa URL přihlašovací stránky této aplikace. Sem uživatel přejde za účelem přihlášení k aplikaci v rámci toku SAML iniciovaného zprostředkovatelem přihlašování.|Není k dispozici|Ve službě Azure AD se přihlašovací adresa URL konfiguruje na webu Azure Portal ve vlastnostech **jednotného přihlašování** aplikace jako Přihlašovací adresa URL.</br></br>(Pro zobrazení přihlašovací adresy URL možná budete muset vybrat možnost **Zobrazit pokročilé nastavení URL**.)|Není k dispozici|
 |Adresa URL odpovědi aplikace|Adresa URL aplikace z pohledu zprostředkovatele identity (IdP). Sem se odešle uživatel a token po přihlášení uživatele ke zprostředkovateli identity.</br></br> Tato adresa URL se někdy označuje jako Koncový bod příjemce kontrolního výrazu SAML.|Nachází se ve vztahu důvěryhodnosti přijímající strany AD FS aplikace. Klikněte pravým tlačítkem na přijímající stranu, vyberte **Vlastnosti** a pak vyberte kartu **Koncové body**.|Ve službě Azure AD se adresa URL odpovědi konfiguruje na webu Azure Portal ve vlastnostech **jednotného přihlašování** aplikace jako Adresa URL odpovědi.</br></br>(Pro zobrazení adresy URL odpovědi možná budete muset vybrat možnost **Zobrazit pokročilé nastavení URL**.)|Mapuje se na element **Destination** v tokenu SAML.</br></br> Příklad hodnoty: `https://contoso.my.salesforce.com`|
-|Adresa URL pro odhlášení z aplikace|Adresa URL, na kterou se po odhlášení uživatele z aplikace odešlou požadavky na odhlášení a vyčištění, které zajistí odhlášení ze všech dalších aplikací, ke kterým zprostředkovatel identity uživatele přihlásil.|Nachází se ve správě služby AD FS v části **Vztahy důvěryhodnosti přijímající strany**. Klikněte pravým tlačítkem na přijímající stranu, vyberte **Vlastnosti** a pak vyberte kartu **Koncové body**.|Není k dispozici. Azure AD nepodporuje jednotné odhlašování, tedy odhlášení ze všech aplikací. Jednoduše odhlásí uživatele ze samotné služby Azure AD.|neuvedeno|
+|Adresa URL pro odhlášení z aplikace|Adresa URL, na kterou se po odhlášení uživatele z aplikace odešlou požadavky na odhlášení a vyčištění, které zajistí odhlášení ze všech dalších aplikací, ke kterým zprostředkovatel identity uživatele přihlásil.|Nachází se ve správě služby AD FS v části **Vztahy důvěryhodnosti přijímající strany**. Klikněte pravým tlačítkem na přijímající stranu, vyberte **Vlastnosti** a pak vyberte kartu **Koncové body**.|Není k dispozici. Azure AD nepodporuje jednotné odhlašování, tedy odhlášení ze všech aplikací. Jednoduše odhlásí uživatele ze samotné služby Azure AD.|Není k dispozici|
 |Identifikátor aplikace|Identifikátor aplikace z pohledu zprostředkovatele identity. Jako identifikátor se často používá přihlašovací adresa URL (ale ne vždy).</br></br> V některých případech se v aplikaci označuje jako ID entity.|Ve službě AD FS je to ID přijímající strany. Klikněte pravým tlačítkem na vztah důvěryhodnosti přijímající strany, vyberte **Vlastnosti** a pak vyberte kartu **Identifikátory**.|Ve službě Azure AD se identifikátor konfiguruje na webu Azure Portal ve vlastnostech **jednotného přihlašování** aplikace jako identifikátor v části **Domény a adresy URL**. (Možná budete muset zaškrtnout políčko **Zobrazit pokročilé nastavení URL**.)|Odpovídá elementu **Audience** v tokenu SAML.|
-|Federační metadata aplikace|Umístění federačních metadat aplikace. Zprostředkovatel identity je používá k automatické aktualizaci konkrétních nastavení konfigurace, jako jsou koncové body nebo šifrovací certifikáty.|Adresa URL federačních metadat aplikace se nachází ve vztahu důvěryhodnosti přijímající strany AD FS aplikace. Klikněte pravým tlačítkem na vztah důvěryhodnosti, vyberte **Vlastnosti** a pak vyberte kartu **Monitorování**.|Není k dispozici. Azure AD nepodporuje přímé používání federačních metadat aplikace.|neuvedeno|
+|Federační metadata aplikace|Umístění federačních metadat aplikace. Zprostředkovatel identity je používá k automatické aktualizaci konkrétních nastavení konfigurace, jako jsou koncové body nebo šifrovací certifikáty.|Adresa URL federačních metadat aplikace se nachází ve vztahu důvěryhodnosti přijímající strany AD FS aplikace. Klikněte pravým tlačítkem na vztah důvěryhodnosti, vyberte **Vlastnosti** a pak vyberte kartu **Monitorování**.|Není k dispozici. Azure AD nepodporuje přímé používání federačních metadat aplikace.|Není k dispozici|
 |Identifikátor uživatele / **NameID**|Atribut sloužící k jedinečné identifikaci identity uživatele ze služby Azure AD nebo AD FS ve vaší aplikaci.</br></br> Tento atribut je obvykle hlavní název uživatele (UPN) nebo e-mailová adresa uživatele.|Ve službě AD FS se nachází v podobě pravidla deklarace identity na přijímající straně. Ve většině případů toto pravidlo deklarace identity vystavuje deklaraci identity s typem končícím na „nameidentifier“.|Ve službě Azure AD se identifikátor uživatele nachází na webu Azure Portal ve vlastnostech **jednotného přihlašování** aplikace pod nadpisem **Atributy uživatele**.</br></br>Ve výchozím nastavení se použije hlavní název uživatele (UPN).|Předává se do aplikace ze zprostředkovatele identity jako element **NameID** v tokenu SAML.|
-|Další deklarace identity, které se mají do aplikace odeslat|Kromě identifikátoru uživatele nebo **NameID** se do aplikace obvykle ze zprostředkovatele identity odesílají i další informace o deklaraci identity. Mezi příklady patří jméno, příjmení, e-mailová adresa a skupiny, kterých je uživatel členem.|Ve službě AD FS se nachází v podobě dalších pravidel deklarace identity na přijímající straně.|Ve službě Azure AD se nachází na webu Azure Portal ve vlastnostech **jednotného přihlašování** aplikace pod nadpisem **Atributy uživatele**. Vyberte **Zobrazit** a upravte všechny ostatní atributy uživatele.|neuvedeno|
+|Další deklarace identity, které se mají do aplikace odeslat|Kromě identifikátoru uživatele nebo **NameID** se do aplikace obvykle ze zprostředkovatele identity odesílají i další informace o deklaraci identity. Mezi příklady patří jméno, příjmení, e-mailová adresa a skupiny, kterých je uživatel členem.|Ve službě AD FS se nachází v podobě dalších pravidel deklarace identity na přijímající straně.|Ve službě Azure AD se nachází na webu Azure Portal ve vlastnostech **jednotného přihlašování** aplikace pod nadpisem **Atributy uživatele**. Vyberte **Zobrazit** a upravte všechny ostatní atributy uživatele.|Není k dispozici|
 
 ### <a name="representing-azure-ad-as-an-identity-provider-in-an-saas-app"></a>Reprezentace služby Azure AD jako zprostředkovatele identity v aplikaci SaaS
 V rámci migrace je nutné nakonfigurovat aplikaci tak, aby odkazovala na službu Azure AD (místo místního zprostředkovatele identity). Tato část se zaměřuje na aplikace SaaS používající protokol SAML, a ne na vlastní obchodní aplikace. Tyto koncepty se však vztahují i na vlastní obchodní aplikace.
@@ -134,11 +134,11 @@ Následující tabulka obsahuje popis klíčových elementů konfigurace zprost�
 
 |Element konfigurace|Popis|AD FS|Azure AD|
 |---|---|---|---|
-|Federační </br>adresa URL </br>zprostředkovatele identity|Přihlašovací adresa URL zprostředkovatele identity z pohledu aplikace (kam se uživatel přesměruje kvůli přihlášení).|Přihlašovací adresa URL služby AD FS je název federační služby AD FS, za kterým následuje /adfs/ls/. Například: https&#58;//fs.contoso.com/adfs/ls/|Odpovídající hodnota pro službu Azure AD má následující formát, kde se {ID_tenanta} nahradí za ID vašeho tenanta. Nachází se na webu Azure Portal v části **Azure Active Directory** > **Vlastnosti** jako **ID adresáře**.</br></br>Aplikace používající protokol SAML-P: https&#58;//login.microsoftonline.com/{ID_tenanta}/saml2 </br></br>Aplikace používající protokol WS-Federation: https&#58;//login.microsoftonline.com/{ID_tenanta}/wsfed|
-|Federační </br>adresa URL </br>zprostředkovatele identity|Odhlašovací adresa URL zprostředkovatele identity z pohledu aplikace (kam se uživatel přesměruje, když se rozhodne odhlásit z aplikace).|Pro službu AD FS je odhlašovací adresa URL buď stejná jako přihlašovací adresa URL, nebo stejná adresa URL, ke které je připojeno wa=wsignout1.0. Například: https&#58;//fs.contoso.com/adfs/ls/?wa=wsignout1.0|Odpovídající hodnota pro službu Azure AD závisí na tom, jestli aplikace podporuje odhlašování přes protokol SAML 2.0.</br></br>Pokud aplikace podporuje odhlašování přes protokol SAML, hodnota má následující formát, kde se hodnota {ID_tenanta} nahradí za ID tenanta. Nachází se na webu Azure Portal v části **Azure Active Directory** > **Vlastnosti** jako **ID adresáře**: https&#58;//login.microsoftonline.com/{ID_tenanta}/saml2</br></br>Pokud aplikace nepodporuje odhlašování přes protokol SAML: https&#58;//login.microsoftonline.com/common/wsfederation?wa=wsignout1.0|
+|Federační </br>adresa URL </br>Adresa URL|Přihlašovací adresa URL zprostředkovatele identity z pohledu aplikace (kam se uživatel přesměruje kvůli přihlášení).|Přihlašovací adresa URL služby AD FS je název federační služby AD FS, za kterým následuje /adfs/ls/. Například: https&#58;//fs.contoso.com/adfs/ls/|Odpovídající hodnota pro službu Azure AD má následující formát, kde se {ID_tenanta} nahradí za ID vašeho tenanta. Nachází se na webu Azure Portal v části **Azure Active Directory** > **Vlastnosti** jako **ID adresáře**.</br></br>Aplikace používající protokol SAML-P: https&#58;//login.microsoftonline.com/{ID_tenanta}/saml2 </br></br>Aplikace používající protokol WS-Federation: https&#58;//login.microsoftonline.com/{ID_tenanta}/wsfed|
+|Federační </br>adresa URL </br>Adresa URL|Odhlašovací adresa URL zprostředkovatele identity z pohledu aplikace (kam se uživatel přesměruje, když se rozhodne odhlásit z aplikace).|Pro službu AD FS je odhlašovací adresa URL buď stejná jako přihlašovací adresa URL, nebo stejná adresa URL, ke které je připojeno wa=wsignout1.0. Například: https&#58;//fs.contoso.com/adfs/ls/?wa=wsignout1.0|Odpovídající hodnota pro službu Azure AD závisí na tom, jestli aplikace podporuje odhlašování přes protokol SAML 2.0.</br></br>Pokud aplikace podporuje odhlašování přes protokol SAML, hodnota má následující formát, kde se hodnota {ID_tenanta} nahradí za ID tenanta. Nachází se na webu Azure Portal v části **Azure Active Directory** > **Vlastnosti** jako **ID adresáře**: https&#58;//login.microsoftonline.com/{ID_tenanta}/saml2</br></br>Pokud aplikace nepodporuje odhlašování přes protokol SAML: https&#58;//login.microsoftonline.com/common/wsfederation?wa=wsignout1.0|
 |Podpisový </br>certifikát </br>certifikát|Certifikát, jehož privátní klíč používá zprostředkovatel identity k podepisování vydaných tokenů. Ověřuje, že token pochází ze stejného zprostředkovatele identity, kterému aplikace podle konfigurace důvěřuje.|Podpisový certifikát tokenu AD FS se nachází ve správě služby AD FS v části **Certifikáty**.|Ve službě Azure AD se podpisový certifikát tokenu nachází na webu Azure Portal ve vlastnostech **jednotného přihlašování** aplikace pod nadpisem **Podpisový certifikát SAML**. Tam můžete certifikát stáhnout, abyste ho mohli nahrát do aplikace.</br></br> Pokud má aplikace více než jeden certifikát, nacházejí se všechny certifikáty v souboru XML s federačními metadaty.|
 |Identifikátor /</br>vystavitel|Identifikátor zprostředkovatele identity z pohledu aplikace (někdy se označuje jako ID vystavitele).</br></br>V tokenu SAML se hodnota zobrazí jako element **Issuer**.|Identifikátor pro službu AD FS je obvykle Identifikátor federační služby ve správě služby AD FS v části **Služba** > **Upravit vlastnosti služby FS (Federation Service)** . Příklad: http&#58;//fs.contoso.com/adfs/services/trust|Odpovídající hodnota pro službu Azure AD má následující formát, kde se hodnota {ID_tenanta} nahradí za ID tenanta. Nachází se na webu Azure Portal v části **Azure Active Directory** > **Vlastnosti** jako **ID adresáře**: https&#58;//sts.windows.net/{ID_tenanta}/|
-|Federační </br>metadata </br>zprostředkovatele identity|Umístění veřejně dostupných federačních metadat zprostředkovatele identity. (Některé aplikace používají federační metadata jako alternativu ke konfiguraci adres URL, identifikátoru a podpisového certifikátu tokenu správcem.)|Adresa URL federačních metadat AD FS najdete ve správě služby AD FS v části **služby** > **koncové body** > **metadat**  >   **Typ: Federační Metadata**. Například: https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Odpovídající hodnota pro službu Azure AD má následující formát: https&#58;//login.microsoftonline.com/{název_domény_tenanta}/FederationMetadata/2007-06/FederationMetadata.xml. Hodnota {název_domény_tenanta} se nahradí názvem vašeho tenanta ve formátu contoso.onmicrosoft.com. </br></br>Další informace najdete v tématu [Federační metadata](../develop/azure-ad-federation-metadata.md).
+|Federační </br>metadata </br>metadata|Umístění veřejně dostupných federačních metadat zprostředkovatele identity. (Některé aplikace používají federační metadata jako alternativu ke konfiguraci adres URL, identifikátoru a podpisového certifikátu tokenu správcem.)|Adresu URL federačních metadat služby AD FS najdete ve správě služby AD FS v části **Služba** > **Koncové body** > **Metadata** > **Typ: Federační metadata**. Například: https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Odpovídající hodnota pro službu Azure AD má následující formát: https&#58;//login.microsoftonline.com/{název_domény_tenanta}/FederationMetadata/2007-06/FederationMetadata.xml. Hodnota {název_domény_tenanta} se nahradí názvem vašeho tenanta ve formátu contoso.onmicrosoft.com. </br></br>Další informace najdete v tématu [Federační metadata](../develop/azure-ad-federation-metadata.md).
 
 ## <a name="moving-saas-apps"></a>Přesunutí aplikace SaaS
 
@@ -167,7 +167,7 @@ Některé konfigurace ve službě Azure AD vyžadují další kroky a některé 
 Aplikace, které můžete snadno dnes přesunout patří aplikace SAML 2.0 používající standardní sadu elementů konfigurace a deklarací identity. Tyto aplikace můžou zahrnovat:
 
 - Hlavní název uživatele (UPN)
-- E-mailovou adresu
+- E-mailovou adresu.
 - Jméno
 - Příjmení
 - Alternativní atribut jako SAML **NameID**, včetně atributu Azure AD mail, předpony atributu mail, ID zaměstnance, atributů rozšíření 1–15 nebo místního atributu **SamAccountName**. Další informace najdete v tématu [Úprava deklarace identity NameIdentifier](../develop/active-directory-saml-claims-customization.md).
@@ -175,7 +175,7 @@ Aplikace, které můžete snadno dnes přesunout patří aplikace SAML 2.0 použ
 
 Kromě vlastních deklarací identity a elementů **NameID** jsou konfigurace, které v rámci migrace vyžadují další kroky konfigurace ve službě Azure AD, následující:
 
-- Pravidla vlastní autorizace nebo vícefaktorového ověřování ve službě AD FS. Konfigurace s použitím [podmíněného přístupu Azure AD](../active-directory-conditional-access-azure-portal.md) funkce.
+- Pravidla vlastní autorizace nebo vícefaktorového ověřování ve službě AD FS. Nakonfigurujete je pomocí funkce [podmíněného přístupu Azure AD](../active-directory-conditional-access-azure-portal.md) .
 - Aplikace s několika koncovými body SAML. Ve službě Azure AD je můžete nakonfigurovat pomocí PowerShellu. (Tato možnost není dostupná na portálu.)
 - Aplikace WS-Federation, jako jsou aplikace SharePointu, které vyžadují tokeny SAML verze 1.1. Ty je nutné nakonfigurovat ručně pomocí PowerShellu.
 
@@ -212,11 +212,11 @@ Ve službě Azure AD můžete přihlašování SAML (podle potřeb vaší aplika
 
 Vyberte **Zobrazit a upravit všechny ostatní atributy uživatele** a zobrazte atributy, které se mají odeslat jako deklarace identity v tokenu zabezpečení.
 
-![Obsahuje seznam atributy, které můžete odeslat jako deklarace identity](media/migrate-adfs-apps-to-azure/migrate4.png)
+![Zobrazuje seznam atributů, které můžete odeslat jako deklarace identity.](media/migrate-adfs-apps-to-azure/migrate4.png)
 
 Výběrem řádku konkrétního atributu můžete atribut upravit nebo můžete vybrat **Přidat atribut** a přidat nový atribut.
 
-![Zobrazuje v podokně "Upravit atribut"](media/migrate-adfs-apps-to-azure/migrate5.png)
+![Zobrazuje podokno Upravit atribut.](media/migrate-adfs-apps-to-azure/migrate5.png)
 
 #### <a name="assign-users-to-the-app"></a>Přiřazení uživatelů k aplikaci
 
@@ -226,7 +226,7 @@ Pokud chcete přiřadit uživatele na portálu Azure AD, přejděte na stránku 
 
 ![Tlačítko Přidat uživatele v části Uživatelé a skupiny](media/migrate-adfs-apps-to-azure/migrate6.png)
 
-![Zobrazuje v podokně "Přidat přiřazení"](media/migrate-adfs-apps-to-azure/migrate7.png)
+![Zobrazuje podokno přidat přiřazení.](media/migrate-adfs-apps-to-azure/migrate7.png)
 
 Přístup ověříte tak, že by se uživatelům měla daná aplikace SaaS zobrazit po přihlášení na jejich [přístupovém panelu](../user-help/active-directory-saas-access-panel-introduction.md). Přístupový portál se nachází na adrese https://myapps.microsoft.com. V tomto příkladu byl uživateli úspěšně přidělený přístup k Salesforce i ServiceNow.
 
@@ -236,19 +236,19 @@ Přístup ověříte tak, že by se uživatelům měla daná aplikace SaaS zobra
 
 Proces přechodu od místní federace na službu Azure AD závisí na tom, jestli aplikace SaaS, se kterou pracujete, podporuje více zprostředkovatelů identity. Tady je několik běžných dotazů týkajících se podpory více zprostředkovatelů identity:
 
-   **Otázka: Co znamená pro aplikace podporuje více zprostředkovatelů identity?**
+   **Otázka: Co znamená, že aplikace podporuje více zprostředkovatelů identity?**
 
-   Odpověď: Aplikace SaaS, které podporují více zprostředkovatelů identity, umožňují zadat veškeré informace o novém zprostředkovateli identity (v našem případě Azure AD) před změnou prostředí pro přihlašování. Po dokončení konfigurace můžete přepnout konfiguraci ověřování aplikace, aby odkazovala na službu Azure AD.
+   Odpověď: Aplikace SaaS, které podporují více zprostředkovatelů identity, umožňují zadat veškeré informace o novém zprostředkovateli identity (v našem případě je to služba Azure AD) před změnou prostředí pro přihlašování. Po dokončení konfigurace můžete přepnout konfiguraci ověřování aplikace, aby odkazovala na službu Azure AD.
 
    **Otázka: Proč je důležité, jestli aplikace SaaS podporuje více zprostředkovatelů identity?**
 
-   Odpověď: Pokud se nepodporuje více zprostředkovatelů identity, musí správce vyhradit krátké časové okno výpadků služby a údržbu během konfigurace služby Azure AD jako nového zprostředkovatele identity aplikace. Během takového výpadku by uživatelé měli obdržet upozornění na nemožnost přihlášení ke svým účtům.
+   Odpověď: Pokud se nepodporuje více zprostředkovatelů identity, musí si správce vyhradit krátké časové okno na řešení případných výpadků služby a údržbu během konfigurace služby Azure AD jako nového zprostředkovatele identity aplikace. Během takového výpadku by uživatelé měli obdržet upozornění na nemožnost přihlášení ke svým účtům.
 
    Pokud aplikace podporuje více zprostředkovatelů identity, je možné další zprostředkovatele identity nakonfigurovat předem. Správce pak může zprostředkovatele identity přepnout v Azure.
 
    Pokud aplikace podporuje více zprostředkovatelů identity a zvolíte více zprostředkovatelů identity, kteří budou současně zpracovávat ověřování přihlašování, uživateli se na přihlašovací stránce zobrazí možnost výběru zprostředkovatele identity, který provede ověření.
 
-#### <a name="example-support-for-multiple-identity-providers"></a>Příklad: Podpora více zprostředkovatelů identity
+#### <a name="example-support-for-multiple-identity-providers"></a>Příklad: podpora pro více zprostředkovatelů identity
 
 Například v Salesforce se konfigurace zprostředkovatele identity nachází v části **Nastavení** > **Nastavení společnosti** > **Moje doména** > **Konfigurace ověřování**.
 
@@ -260,9 +260,9 @@ Vzhledem k tomu, že jste dříve vytvořili konfiguraci v části **Identita** 
 
 ### <a name="optional-configure-user-provisioning-in-azure-ad"></a>Volitelné: Konfigurace zřizování uživatelů ve službě Azure AD
 
-Pokud chcete, aby zřizování uživatelů pro danou aplikaci SaaS zpracovávala přímo služba Azure AD, přečtěte si téma [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS pomocí Azure Active Directory](user-provisioning.md).
+Pokud chcete, aby zřizování uživatelů pro danou aplikaci SaaS zpracovávala přímo služba Azure AD, přečtěte si téma [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Správa aplikací pomocí Azure Active Directory](what-is-application-management.md)
 - [Správa přístupu k aplikacím](what-is-access-management.md)

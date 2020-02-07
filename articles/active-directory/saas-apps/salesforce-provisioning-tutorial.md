@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ed3307f2802e5372cf007f1df8eee2f26e6a39f
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 5b8038896a11b65e835ce71f5fc34e85723cc91a
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714378"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77060517"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Kurz: Konfigurace Salesforce pro Automatické zřizování uživatelů
 
 Cílem tohoto kurzu je Ukázat kroky potřebné k provedení v Salesforce a Azure AD pro automatické zřízení a zrušení zřízení uživatelských účtů ze služby Azure AD do Salesforce.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
 
@@ -117,7 +117,7 @@ Cílem této části je vysvětlit, jak povolit uživatelům zřizování uživa
 
 Tím se spustí počáteční synchronizace všech uživatelů nebo skupin přiřazených k Salesforce v části Uživatelé a skupiny. Všimněte si, že počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba spuštěná. Pomocí části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na zřizování protokolů aktivit, které popisují všechny akce prováděné službou zřizování ve vaší aplikaci Salesforce.
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="common-issues"></a>Běžné problémy
 * Pokud máte problémy s autorizací přístupu k Salesforce, zajistěte následující:
@@ -132,7 +132,7 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 * Salesforce vyžaduje, aby se aktualizace e-mailu před změnou schválily ručně. V důsledku toho se může stát, že v protokolech zřizování dojde k aktualizaci e-mailu uživatele na více položkách (dokud se neschválí změna e-mailu).
 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

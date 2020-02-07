@@ -1,18 +1,18 @@
 ---
 title: Problémy s prezenčním signálem Apache Ambari v Azure HDInsight
 description: Přezkoumání různých důvodů problémů s prezenčním signálem Apache Ambari v Azure HDInsight
-ms.service: hdinsight
-ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 09/11/2019
-ms.openlocfilehash: ae05a0d0866c38c2414bacb638fa90936bb6dc15
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.date: 02/06/2020
+ms.openlocfilehash: ab88f65d535be2aef5f0b26fa1171c03276466e8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964613"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057069"
 ---
 # <a name="apache-ambari-heartbeat-issues-in-azure-hdinsight"></a>Problémy s prezenčním signálem Apache Ambari v Azure HDInsight
 
@@ -22,13 +22,13 @@ Tento článek popisuje postup řešení potíží a možná řešení potíží
 
 ### <a name="issue"></a>Problém
 
-Ambari agent má vysoké využití procesoru, což má za následek výstrahy z uživatelského rozhraní Ambari, které u některých uzlů dojde ke ztrátě prezenčního signálu agenta Ambari. Výstraha ztráty prezenčního signálu je obvykle přechodný. 
+Ambari agent má vysoké využití procesoru, což má za následek výstrahy z uživatelského rozhraní Ambari, které u některých uzlů dojde ke ztrátě prezenčního signálu agenta Ambari. Výstraha ztráty prezenčního signálu je obvykle přechodný.
 
 ### <a name="cause"></a>Příčina
 
 V důsledku různých chyb Ambari-agentů může být ve výjimečných případech vysoká úroveň využití procesoru Ambari agentem (téměř až 100).
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 1. Identifikujte ID procesu (PID) Ambari-agent:
 
@@ -61,13 +61,13 @@ V důsledku různých chyb Ambari-agentů může být ve výjimečných případ
 
 ### <a name="issue"></a>Problém
 
-Agent Ambari se nespustil, což vede k tomu, že se výstrahy z uživatelského rozhraní Ambari, které u některých uzlů ztratily prezenční signály agenta Ambari.
+Agent Ambari se nespustil, což má za následek výstrahy z uživatelského rozhraní Ambari, které u některých uzlů ztratily prezenční signály agenta Ambari.
 
 ### <a name="cause"></a>Příčina
 
 Výstrahy jsou způsobeny tím, že agent Ambari neběží.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 1. Potvrďte stav Ambari-agent:
 
@@ -81,7 +81,7 @@ Výstrahy jsou způsobeny tím, že agent Ambari neběží.
     ps -ef | grep failover
     ```
 
-    Pokud služby řadiče pro převzetí služeb při selhání neběží, pravděpodobně z důvodu problému brání agentovi HDInsight v spuštění řadiče pro převzetí služeb při selhání. Zkontroluje protokol HDInsight-Agent z `/var/log/hdinsight-agent/hdinsight-agent.out` souboru.
+    Pokud služby řadiče pro převzetí služeb při selhání neběží, pravděpodobně z důvodu problému brání agentovi HDInsight v spuštění kontroleru převzetí služeb při selhání. Zkontroluje protokol HDInsight-Agent z `/var/log/hdinsight-agent/hdinsight-agent.out` souboru.
 
 ## <a name="scenario-heartbeat-lost-for-ambari"></a>Scénář: prezenční signál se ztratil pro Ambari.
 
@@ -93,9 +93,9 @@ Agent prezenčního signálu Ambari byl ztracen.
 
 Protokoly OMS způsobují vysoké využití procesoru.
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
-* Zakažte protokolování OMS pomocí modulu PowerShellu [Disable-AzHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightoperationsmanagementsuite?view=azps-2.8.0) . 
+* Zakažte protokolování Azure Monitor pomocí rutiny PowerShellu [Disable-AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) .
 * Odstranit soubor protokolu `mdsd.warn`
 
 ---

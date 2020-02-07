@@ -1,130 +1,131 @@
 ---
 title: Azure Database for PostgreSQL šifrování dat s jedním serverem pomocí klíče spravovaného zákazníkem
-description: Azure Database for PostgreSQL šifrování dat s jedním serverem pomocí klíče spravovaného zákazníkem vám umožní Bring Your Own Key (BYOK) pro ochranu dat v klidovém umístění a umožňuje organizacím implementovat oddělení úloh v rámci správy klíčů a dat.
+description: Azure Database for PostgreSQL šifrování dat s jedním serverem pomocí klíče spravovaného zákazníkem vám umožní Bring Your Own Key (BYOK) pro ochranu dat v klidovém umístění. Umožňuje také organizacím implementovat oddělení povinností při správě klíčů a dat.
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 263fdda178752ee22997a03a11902a7bff4791dc
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 917dc85672fcc5e4c3f1431f80d1f6eb68207392
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028608"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77050035"
 ---
-# <a name="azure-database-for-postgresql-single-server-data-encryption-with-customer-managed-key"></a>Azure Database for PostgreSQL šifrování dat s jedním serverem pomocí klíče spravovaného zákazníkem
+# <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Azure Database for PostgreSQL šifrování dat s jedním serverem pomocí klíče spravovaného zákazníkem
 
 > [!NOTE]
-> V tuto chvíli musíte požádat o přístup k používání této možnosti. Pokud to chcete udělat, kontaktujte prosím AskAzureDBforPostgreSQL@service.microsoft.com.
+> V tuto chvíli musíte požádat o přístup k používání této možnosti. Pokud to chcete udělat, kontaktujte AskAzureDBforPostgreSQL@service.microsoft.com.
 
-Azure Database for PostgreSQL šifrování dat s jedním serverem pomocí klíče spravovaného zákazníkem vám umožní Bring Your Own Key (BYOK) pro ochranu dat v klidovém umístění a umožňuje organizacím implementovat oddělení úloh v rámci správy klíčů a dat. Pomocí šifrování spravovaného zákazníkem zodpovídáte za úplnou kontrolu životního cyklu klíče (vytváření, nahrávání, rotace, odstraňování), oprávnění k použití klíčů a auditování operací s klíči.
+Azure Database for PostgreSQL šifrování dat s jedním serverem pomocí klíče spravovaného zákazníkem vám umožní Bring Your Own Key (BYOK) pro ochranu dat v klidovém umístění. Umožňuje také organizacím implementovat oddělení povinností při správě klíčů a dat. Pomocí šifrování spravovaného zákazníkem zodpovídáte za vás a plně řídíte životní cyklus klíčů, oprávnění k použití klíče a auditování operací s klíči.
 
-U Azure Database for PostgreSQLho jednoho serveru se šifrování dat nastaví na úrovni serveru. Pomocí této formy šifrování dat se klíč používá k šifrování šifrovacího klíče databáze (klíč DEK), což je asymetrický klíč spravovaný zákazníkem, který je uložený ve službě Customer Customer a Customer Customer-based [Azure Key Vault (integrace)](../key-vault/key-Vault-secure-your-key-Vault.md), což je cloudový externí systém správy klíčů. INTEGRACE je vysoce dostupný a poskytuje škálovatelné zabezpečené úložiště pro kryptografické klíče RSA, volitelně zajištěné moduly zabezpečení FIPS 140-2 Level 2 (HSM). Neumožňuje přímý přístup k uloženému klíči, ale poskytuje služby šifrování a dešifrování pomocí klíče u autorizovaných entit. Klíč je možné vygenerovat Key Vault, importovat nebo [přenést do Key Vault ze zařízení HSM Prem](../key-vault/key-Vault-hsm-protected-keys.md).
+U Azure Database for PostgreSQLho jednoho serveru nastavíte šifrování dat na úrovni serveru. Pomocí této formy šifrování dat použijete klíč v šifrování datového šifrovacího klíče (klíč DEK). KLÍČ DEK je asymetrický klíč spravovaný zákazníkem, který je uložený v instanci [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) ve vlastnictví zákazníka a zákazníka. KLÍČ DEK se podrobněji popisuje dále v tomto článku.
+
+Key Vault je cloudový externí systém pro správu klíčů. Je vysoce dostupná a poskytuje škálovatelné a zabezpečené úložiště pro kryptografické klíče RSA, volitelně zajištěné moduly zabezpečení FIPS 140-2 Level 2 (HSM). Neumožňuje přímý přístup k uloženému klíči, ale poskytuje služby šifrování a dešifrování autorizovaným entitám. Key Vault může klíč vygenerovat, naimportovat nebo [přenášet z místního zařízení HSM](../key-vault/key-Vault-hsm-protected-keys.md).
 
 > [!NOTE]
-> Tato funkce je dostupná ve všech oblastech Azure, kde Azure Database for PostgreSQL jeden server podporuje Pro obecné účely a paměťově optimalizované cenové úrovně.
+> Tato funkce je dostupná ve všech oblastech Azure, kde Azure Database for PostgreSQL jeden server podporuje cenové úrovně "Pro obecné účely" a "paměťově optimalizované".
 
 ## <a name="benefits"></a>Výhody
 
 Šifrování dat pro Azure Database for PostgreSQL jeden server přináší následující výhody:
 
-* Zvýšení transparentnosti a podrobné řízení a správy šifrovacího klíče 
-* Centrální správa a organizace klíčů jejich hostováním v Azure Key Vault. 
-* Možnost implementovat oddělení povinností při správě klíčů a dat v rámci organizace
-* Oddělte správu klíčů od správy dat v rámci organizace, aby Key Vault správce mohl odvolat přístupová oprávnění k klíčům k tomu, aby se zašifrovaná databáze nepřístupná. 
-* Větší důvěra od koncových zákazníků, protože Azure Key Vault je navržený tak, aby Microsoft nemohl zobrazit ani extrahovat šifrovací klíče
+* Zvýšení transparentnosti, podrobného řízení a správy šifrovacího klíče.
+* Centrální správa a organizace klíčů jejich hostováním v Azure Key Vault.
+* Možnost implementovat oddělení povinností při správě klíčů a dat v rámci organizace.
+* Schopnost oddělit správu klíčů od správy dat v rámci organizace, takže správce Key Vault může odvolat přístupová oprávnění k klíčům, aby se zašifrovaná databáze nepřístupná.
+* Větší důvěra od koncových uživatelů, protože Microsoft nemůže v Key Vault zobrazit ani extrahovat šifrovací klíče.
 
 ## <a name="terminology-and-description"></a>Terminologie a popis
 
-**Šifrovací klíč dat (klíč DEK)** – symetrický AES256 klíč, který slouží k šifrování oddílu nebo bloku dat. Šifrování každého bloku dat jiným klíčem usnadňuje útokům na kryptografickou analýzu. Poskytovatel prostředků nebo instance aplikace, která šifruje a šifruje konkrétní blok, vyžaduje přístup k DEKs. Když je klíč DEK nahrazen novým klíčem, musí být znovu zašifrována pouze data v příslušném bloku s novým klíčem.
+**Šifrovací klíč dat (klíč DEK)** : symetrický AES256 klíč, který slouží k šifrování oddílu nebo bloku dat. Šifrování každého bloku dat jiným klíčem usnadňuje útokům na kryptografickou analýzu. Poskytovatel prostředků nebo instance aplikace, která šifruje a šifruje konkrétní blok, vyžaduje přístup k DEKs. Při nahrazení klíč DEK novým klíčem musí být znovu zašifrována pouze data v jeho přidruženém bloku s novým klíčem.
 
-Klíč **šifrovacího klíče (KEK)** – šifrovací klíč používaný k šifrování šifrovacích klíčů dat. Použití klíčového šifrovacího klíče, který nikdy neopouští Key Vault, umožňuje šifrování a řízení šifrovacích klíčů samotných dat. Entita, která má přístup k KEK, může být jiná než entita, která vyžaduje klíč dek. Vzhledem k tomu, že KEK je vyžadován k dešifrování DEKs, je KEK v podstatě jediným bodem, pomocí kterého je DEKs možné efektivně odstranit odstraněním KEK.
+Klíč **šifrovacího klíče (KEK)** : šifrovací klíč používaný k šifrování DEKs. KEK, který nikdy neopouští Key Vault, umožňuje, aby se DEKs sám zašifroval a řídil. Entita, která má přístup k KEK, může být jiná než entita, která vyžaduje klíč dek. Vzhledem k tomu, že KEK je vyžadován k dešifrování DEKs, je KEK v podstatě jediným bodem, pomocí kterého je DEKs možné efektivně odstranit odstraněním KEK.
 
-Šifrovací klíče (klíč DEK) šifrované pomocí klíčového šifrovacího klíče se ukládají samostatně a k dešifrování těchto šifrovacích klíčů může použít jenom entita s přístupem k šifrovacímu klíči. Další informace najdete v tématu [zabezpečení v šifrování v klidovém umístění](../security/fundamentals/encryption-atrest.md).
+DEKs šifrované pomocí KEK se ukládají samostatně. Pouze entita s přístupem k KEK může dešifrovat tyto DEKs. Další informace najdete v tématu [zabezpečení v šifrování v klidovém umístění](../security/fundamentals/encryption-atrest.md).
 
-## <a name="how-data-encryption-with-customer-managed-key-works"></a>Jak funguje šifrování dat pomocí klíče spravovaného zákazníkem
+## <a name="how-data-encryption-with-a-customer-managed-key-works"></a>Jak funguje šifrování dat pomocí klíče spravovaného zákazníkem
 
-![Přehled vlastního klíče](media/concepts-data-access-and-security-data-encryption/postgresql-data-encryption-overview.png)
+![Diagram, který zobrazuje přehled Bring Your Own Key](media/concepts-data-access-and-security-data-encryption/postgresql-data-encryption-overview.png)
 
-Aby mohl server PostgreSQL používat pro šifrování klíč DEK klíče, které jsou uložené v integrace, musí správce Key Vault k serveru přidělit tato přístupová práva pomocí jeho jedinečné identity:
+Aby mohl server PostgreSQL používat pro šifrování klíč DEK klíče, které jsou uložené v Key Vault, správce Key Vault poskytuje následující přístupová práva k serveru:
 
-* **Get** – pro načtení veřejné části a vlastností klíče v Key Vault
-* **wrapKey** – aby bylo možné ZAšifrovat klíč DEK
-* **unwrapKey** – aby bylo možné DEšifrovat klíč DEK
+* **Get**: pro načtení veřejné části a vlastností klíče v trezoru klíčů.
+* **wrapKey**: aby bylo možné zašifrovat klíč dek.
+* **unwrapKey**: aby bylo možné dešifrovat klíč dek.
 
-Správce Key Vault taky může [Povolit protokolování událostí auditu Key Vault](../azure-monitor/insights/azure-key-vault.md), aby se mohly auditovat později.
+Správce trezoru klíčů může také [Povolit protokolování událostí auditu Key Vault](../azure-monitor/insights/azure-key-vault.md), aby se mohly auditovat později.
 
-Pokud je server nakonfigurovaný tak, aby používal klíč spravovaný zákazníkem, který je uložený v Key Vault, server pošle klíč DEK do Key Vault pro šifrování. Key Vault vrátí šifrovaný klíč DEK, který je uložený v uživatelské databázi. Podobně pokud je to potřeba, server pošle chráněný klíč DEK do Key Vault k dešifrování. Auditoři můžou použít Azure Monitor ke kontrole protokolů Key Vault AuditEvent, pokud je povolené protokolování.
+Když je server nakonfigurovaný tak, aby používal klíč spravovaný zákazníkem, který je uložený v trezoru klíčů, server pošle klíč DEK do trezoru klíčů pro šifrování. Key Vault vrátí šifrovaný klíč DEK, který je uložený v uživatelské databázi. Obdobně platí, že pokud je to potřeba, server pošle chráněný klíč DEK do trezoru klíčů pro dešifrování. Auditoři můžou pomocí Azure Monitor kontrolovat protokoly událostí auditu Key Vault, pokud je povolené protokolování.
 
 ## <a name="requirements-for-configuring-data-encryption-for-azure-database-for-postgresql-single-server"></a>Požadavky na konfiguraci šifrování dat pro Azure Database for PostgreSQL jeden server
 
-### <a name="requirements-for-configuring-akv"></a>Požadavky na konfiguraci integrace
+Níže jsou uvedené požadavky na konfiguraci Key Vault:
 
-* Key Vault a Azure Database for PostgreSQL jeden server musí patřit do stejného tenanta Azure Active Directory (AAD). Interakce mezi Key Vault klienty a servery nejsou podporovány. Přesunutí prostředků poté vyžaduje překonfigurování šifrování dat. Přečtěte si další informace o přesouvání prostředků.
-* Funkce obnovitelného odstranění musí být na Key Vault povolena, aby bylo možné chránit před náhodným nebo Key Vaultm únikem informací. Obnovitelné odstraněné prostředky se uchovávají po dobu 90 dnů, pokud je zákazník neobnovil nebo nevymazal. Akce obnovit a odstranit mají vlastní oprávnění přidružená v zásadách přístupu Key Vault. Funkce obnovitelného odstranění je ve výchozím nastavení vypnutá a dá se povolit prostřednictvím PowerShellu nebo rozhraní příkazového řádku. Nelze ji povolit prostřednictvím Azure Portal.
-* Udělte jednomu serveru Azure Database for PostgreSQL přístup k Key Vault pomocí oprávnění **Get, wrapKey a unwrapKey** s použitím jeho jedinečné spravované identity. Při použití Azure Portal se jedinečné identifikace automaticky vytvoří, když je na jednom serveru PostgreSQL povolené šifrování dat. Podrobné pokyny pro použití Azure Portal najdete v tématu [Konfigurace šifrování dat pro jediný server PostgreSQL](howto-data-encryption-portal.md) .
+* Key Vault a Azure Database for PostgreSQL jeden server musí patřit do stejného tenanta Azure Active Directory (Azure AD). Interakce mezi Key Vault klienty a servery nejsou podporovány. Přesunutí prostředků poté vyžaduje překonfigurování šifrování dat.
+* Pokud dojde k odstranění náhodného klíče (nebo Key Vault), je nutné povolit funkci obnovitelného odstranění v trezoru klíčů, aby se chránila před ztrátou dat. Obnovitelné odstraněné prostředky se uchovávají po dobu 90 dnů, pokud je uživatel neobnoví nebo neodstraní. Akce obnovit a odstranit mají vlastní oprávnění přidružená v zásadách přístupu Key Vault. Funkce obnovitelného odstranění je ve výchozím nastavení vypnutá, ale můžete ji povolit prostřednictvím PowerShellu nebo rozhraní příkazového řádku Azure CLI (Všimněte si, že ji nemůžete povolit prostřednictvím Azure Portal).
+* Udělte jednomu serveru Azure Database for PostgreSQL přístup k trezoru klíčů s oprávněními Get, wrapKey a unwrapKey pomocí jeho jedinečné spravované identity. V Azure Portal se jedinečná identita automaticky vytvoří, když je na jednom serveru PostgreSQL povolené šifrování dat. Podrobné pokyny pro použití Azure Portal najdete v tématu [šifrování dat pro Azure Database for PostgreSQL jeden server pomocí Azure Portal](howto-data-encryption-portal.md) .
 
-* Pokud používáte bránu firewall s integrace, musíte povolit možnost povolit *důvěryhodným službám Microsoftu obejít bránu firewall*.
+* Pokud používáte bránu firewall s Key Vault, musíte povolit možnost **Povolit důvěryhodným službám Microsoftu obejít bránu firewall**.
 
-### <a name="requirements-for-configuring-customer-managed-key"></a>Požadavky na konfiguraci klíče spravovaného zákazníkem
+Níže jsou uvedené požadavky na konfiguraci klíče spravovaného zákazníkem:
 
 * Klíč spravovaný zákazníkem, který se má použít k šifrování klíč DEK, může být jenom asymetrická, RSA 2028.
 * Datum aktivace klíče (Pokud je nastaveno) musí být datum a čas v minulosti. Datum vypršení platnosti (Pokud je nastaveno) musí být budoucí datum a čas.
 * Klíč musí být v *povoleném* stavu.
-* Pokud importujete existující klíč do Key Vault, nezapomeňte ho zadat v podporovaných formátech souborů (`.pfx`, `.byok`, `.backup`).
+* Pokud importujete existující klíč do trezoru klíčů, nezapomeňte ho zadat v podporovaných formátech souborů (`.pfx`, `.byok``.backup`).
 
-## <a name="recommendations-when-using-data-encryption-using-customer-managed-key"></a>Doporučení při používání šifrování dat pomocí klíče spravovaného zákazníkem
+## <a name="recommendations"></a>Doporučení
 
-### <a name="recommendation-for-configuring-akv"></a>Doporučení pro konfiguraci integrace
+Pokud používáte šifrování dat pomocí klíče spravovaného zákazníkem, tady najdete doporučení pro konfiguraci Key Vault:
 
-* Nastavte zámek prostředků na Key Vault, abyste měli kontrolu nad tím, kdo může tento kritický prostředek odstranit a zabránit náhodnému nebo neoprávněnému odstranění. Přečtěte si další informace o zámkech prostředků.
-* Povolit auditování a vytváření sestav u všech šifrovacích klíčů: Key Vault poskytuje protokoly, které se dají snadno vložit do dalších nástrojů pro správu informací a událostí zabezpečení. Azure Monitor Log Analytics je jedním z příkladů služby, která je již integrovaná.
+* Nastavte zámek prostředků na Key Vault, abyste měli kontrolu nad tím, kdo může tento kritický prostředek odstranit a zabránit náhodnému nebo neoprávněnému odstranění.
+* Povolte auditování a vytváření sestav u všech šifrovacích klíčů. Key Vault poskytuje protokoly, které se dají snadno vložit do dalších nástrojů pro správu událostí a informací o zabezpečení. Azure Monitor Log Analytics je jedním z příkladů služby, která je už integrovaná.
 
-* Zajistěte, aby se Key Vault a Azure Database for PostgreSQL jeden server nacházely ve stejné oblasti, abyste zajistili rychlejší přístup k operacím zabalení a rozbalení klíč dek.
+* Ujistěte se, že Key Vault a Azure Database for PostgreSQL jeden server se nachází ve stejné oblasti, abyste zajistili rychlejší přístup k klíč DEK zabalení a rozbalení operací.
 
-### <a name="recommendation-for-configuring-customer-managed-key"></a>Doporučení pro konfiguraci klíče spravovaného zákazníkem
+Tady jsou doporučení pro konfiguraci klíče spravovaného zákazníkem:
 
-* Uchovávejte kopii klíče spravovaného zákazníkem (KEK) na bezpečném místě nebo ho v úschově do služby v úschově.
+* Uchovávejte si kopii klíče spravovaného zákazníkem na bezpečném místě nebo ho v úschově do služby v úschově.
 
-* Pokud se klíč vygeneruje v Key Vault, před prvním použitím klíče v integrace vytvořit zálohu klíčů. Zálohování lze obnovit pouze do Azure Key Vault. Přečtěte si další informace o příkazu [Backup-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyVault/backup-azkeyVaultkey) .
+* Pokud Key Vault vygeneruje klíč, před prvním použitím klíče vytvořte zálohu klíčů. Zálohu lze obnovit pouze do Key Vault. Další informace o příkazu Backup najdete v tématu [Backup-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyVault/backup-azkeyVaultkey).
 
 ## <a name="inaccessible-customer-managed-key-condition"></a>Nepřístupná podmínka pro klíč spravovaný zákazníkem
 
-Když je v Azure Key Vault (integrace) nakonfigurované šifrování dat s klíčem spravovaným zákazníkem, je potřeba nepřetržitý přístup k tomuto klíči, aby server zůstal online. Pokud server ztratí přístup k klíči spravovanému zákazníkem v integrace během 10 minut, server zahájí odepření všech připojení k příslušné chybové zprávě a změní stav serveru na **nepřístupný**. Jediná akce povolená u databáze v nepřístupovém stavu ji odstraňuje.
+Když nakonfigurujete šifrování dat pomocí klíče spravovaného zákazníkem v Key Vault, musí server zůstat v online režimu nepřetržitý přístup k tomuto klíči. Pokud server ztratí přístup k klíči spravovanému zákazníkem v Key Vault, server zahájí odepření všech připojení během 10 minut. Server vydá odpovídající chybovou zprávu a změní stav serveru na *nepřístupný*. Jediná akce povolená u databáze v tomto stavu ji odstraňuje.
 
-### <a name="accidental-key-access-revocation-from-the-azure-key-vault-akv"></a>Odvolání přístupu k náhodnému klíči z Azure Key Vault (integrace)
+### <a name="accidental-key-access-revocation-from-key-vault"></a>Odvolání přístupu k náhodnému klíči z Key Vault
 
 Může dojít k tomu, že někdo, který má dostatečná přístupová práva k Key Vault náhodně zakáže přístup serveru k klíči pomocí:
 
-* odvolání Key Vault oprávnění Get, wrapKey a unwrapKey ze serveru
-* klíč se odstraňuje.
-* odstranění Key Vault
-* Změna pravidel brány firewall Key Vault
+* Odvolávání oprávnění Get, wrapKey a unwrapKey trezoru klíčů ze serveru.
+* Klíč se odstraňuje.
+* Odstraňuje se Trezor klíčů.
+* Mění se pravidla brány firewall trezoru klíčů.
 
-* Odstraňuje se spravovaná identita serveru v Azure Active Directory.
+* Odstraňuje se spravovaná identita serveru v Azure AD.
 
-## <a name="monitoring-of-the-customer-managed-key-in-the-key-vault"></a>Monitorování klíče spravovaného zákazníkem v Key Vault
+## <a name="monitor-the-customer-managed-key-in-key-vault"></a>Monitorovat klíč spravovaný zákazníkem v Key Vault
 
-Pokud chcete monitorovat stav databáze a povolit upozorňování na ztrátu přístupu TDE Protector, nakonfigurujte následující funkce Azure:
+Pokud chcete monitorovat stav databáze a povolit upozorňování na ztrátu transparentního přístupu k ochraně šifrování dat, nakonfigurujte následující funkce Azure:
 
-* [Azure Resource Health](../service-health/resource-health-overview.md) – nepřístupná databáze, která ztratila přístup k klíči zákazníka, se po odepření prvního připojení k databázi zobrazí jako nedostupná.
-* [Protokol aktivit](../service-health/alerts-activity-log-service-notifications.md) – když se přístup k klíči zákazníka v Key Vault spravovaném zákazníkem nezdařil, přidají se do protokolu aktivit položky. Vytváření výstrah pro tyto události vám umožní co nejdříve obnovit přístup.
+* [Azure Resource Health](../service-health/resource-health-overview.md): nepřístupná databáze, která ztratila přístup k klíči zákazníka, v případě zamítnutí prvního připojení k databázi zobrazuje "nepřístupný".
+* [Protokol aktivit](../service-health/alerts-activity-log-service-notifications.md): když se přístup k klíči zákazníka v Key Vault spravovaném zákazníkem nezdařil, přidají se do protokolu aktivit položky. Pokud vytvoříte výstrahy pro tyto události, můžete co nejdřív obnovit přístup.
 
-* [Skupiny akcí](../azure-monitor/platform/action-groups.md) můžete definovat tak, aby vám odesílaly oznámení a výstrahy na základě vašich preferencí, například e-mailu, SMS/Push/Voice, Logic Apps, Webhook, ITSM nebo Automation Runbook.
+* [Skupiny akcí](../azure-monitor/platform/action-groups.md): Definujte tyto možnosti, abyste vám poslali oznámení a výstrahy na základě vašich předvoleb.
 
-## <a name="restore-and-replica-with-customers-managed-key-in-the-key-vault"></a>Obnovení a replikování pomocí spravovaného klíče zákazníka v Key Vault
+## <a name="restore-and-replicate-with-a-customers-managed-key-in-key-vault"></a>Obnovení a replikace pomocí spravovaného klíče zákazníka v Key Vault
 
-Jakmile je jeden server Azure Database for PostgreSQL zašifrovaný pomocí spravovaného klíče zákazníka uloženého v Key Vault, bude jakákoli nově vytvořená kopie serveru (buď i v případě operace místního nebo geografického obnovení nebo prostřednictvím replik čtení) zašifrovaná taky stejným spravovaný klíč zákazníka. Můžou se ale změnit tak, aby odrážely spravovaný klíč nového zákazníka pro šifrování. Když se změní klíč spravovaný zákazníkem, starší zálohy serveru začnou používat nejnovější klíč.
+Po zašifrování Azure Database for PostgreSQL jednoho serveru pomocí spravovaného klíče zákazníka uloženého v Key Vault jsou všechny nově vytvořené kopie serveru taky zašifrované. Tuto novou kopii můžete vytvořit buď prostřednictvím operace místního nebo geografického obnovení, nebo prostřednictvím replik pro čtení. Kopii ale můžete změnit tak, aby odrážela spravovaný klíč nového zákazníka pro šifrování. Když se změní klíč spravovaný zákazníkem, staré zálohy serveru začnou používat nejnovější klíč.
 
-Aby nedocházelo k problémům při nastavování šifrování dat spravovaného zákazníkem během obnovování nebo čtení repliky, je důležité postupovat podle těchto kroků na serveru hlavní a obnovení nebo repliky:
+Aby nedocházelo k problémům při nastavování šifrování dat spravovaného zákazníkem během obnovování nebo čtení repliky, je důležité postupovat podle těchto kroků na serverech hlavních a obnovených replik:
 
 * Zahajte proces vytváření repliky obnovení nebo čtení z hlavního Azure Database for PostgreSQL jednoho serveru.
-* Nově vytvořený server (Obnovený/replika) je ponechán jako nedostupný, protože jeho jedinečná identita ještě neudělila oprávnění Azure Key Vault (integrace).
-* Na obnoveném nebo replikovém serveru znovu ověřte klíč spravovaný zákazníkem v nastavení šifrování dat, abyste zajistili, že nově vytvořenému serveru budou udělena oprávnění k zabalení nebo odbalení klíče uloženého v integrace.
-
-* Oba výše uvedené kroky je nutné provést, aby bylo zajištěno, že šifrování dat bude zachováno v hlavní databázi i obnovený server repliky.
+* Nechejte nově vytvořený server (Obnovený nebo repliku) v nepřístupovém stavu, protože jeho jedinečná identita ještě nemá udělená oprávnění Key Vault.
+* Na serveru obnoveného nebo repliky znovu ověřte klíč spravovaný zákazníkem v nastavení šifrování dat. Tím se zajistí, že nově vytvořenému serveru budou udělena oprávnění k zalamování a odbalení klíče uloženého v Key Vault.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si, jak [pomocí Azure Portal nastavit šifrování dat pomocí klíče spravovaného zákazníkem pro jeden server Azure Database for PostgreSQL](howto-data-encryption-portal.md).
+Přečtěte si, jak [nastavit šifrování dat pomocí klíče spravovaného zákazníkem pro jeden server Azure Database for PostgreSQL pomocí Azure Portal](howto-data-encryption-portal.md).
+

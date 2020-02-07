@@ -2,7 +2,7 @@
 title: Přihlášení pomocí pracovního nebo školního účtu – Azure AD
 description: Naučte se přihlašovat k pracovnímu nebo školnímu účtu pomocí různých metod ověřování dvou faktorů.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.assetid: b310b762-471b-4b26-887a-a321c9e81d46
 ms.workload: identity
@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 04/02/2017
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
-ms.openlocfilehash: 648de7903a965d477343b974fdd615df45c3adc3
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 33cf9e284d2206ea497af7a5da7c3cf4a890cc87
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705237"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064083"
 ---
 # <a name="sign-in-to-your-work-or-school-account-using-your-two-factor-verification-method"></a>Přihlaste se ke svému pracovnímu nebo školnímu účtu pomocí metody dvojúrovňové ověřování.
 

@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: 9e9dd529edea23b27de2e3841079244558d6689a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: acdf268874b1dc1c24116ba36e2b4233a2702a5f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442107"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064491"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Ověřování pomocí certifikátu pro identitu Azure AD pro přístup k klíčům z Azure Cosmos DB účtu
 
-Ověřování na základě certifikátu umožňuje klientské aplikaci ověřit pomocí Azure Active Directory (Azure AD) s klientským certifikátem. Ověřování na základě certifikátů můžete provádět na počítači, kde potřebujete identitu, jako je například místní počítač nebo virtuální počítač v Azure. Vaše aplikace potom může číst Azure Cosmos DB klíčů bez použití klíčů přímo v aplikaci. Tento článek popisuje, jak vytvořit ukázkovou aplikaci Azure AD, nakonfigurovat ji pro ověřování na základě certifikátů, přihlaste se k Azure pomocí nové identity aplikace a pak načte klíče z vašeho účtu Azure Cosmos. Tento článek používá Azure PowerShell k nastavení identit a poskytuje C# ukázkovou aplikaci, která ověřuje a přistupuje k klíčům z vašeho účtu Azure Cosmos.  
+Ověřování pomocí certifikátů umožňuje ověřování klientské aplikace pomocí Azure Active Directory (Azure AD) a klientského certifikátu. Ověřování pomocí certifikátů můžete provádět na počítači, na kterém potřebujete identitu, jako je místní počítač nebo virtuální počítač v Azure. Vaše aplikace potom může číst Azure Cosmos DB klíčů bez použití klíčů přímo v aplikaci. Tento článek popisuje, jak vytvořit ukázkovou aplikaci Azure AD, nakonfigurovat ji pro ověřování na základě certifikátů, přihlaste se k Azure pomocí nové identity aplikace a pak načte klíče z vašeho účtu Azure Cosmos. Tento článek používá Azure PowerShell k nastavení identit a poskytuje C# ukázkovou aplikaci, která ověřuje a přistupuje k klíčům z vašeho účtu Azure Cosmos.  
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -28,7 +28,7 @@ Ověřování na základě certifikátu umožňuje klientské aplikaci ověřit 
 
 V tomto kroku zaregistrujete ukázkovou webovou aplikaci do svého účtu služby Azure AD. Tato aplikace se později používá ke čtení klíčů z účtu Azure Cosmos DB. K registraci aplikace použijte následující postup: 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
 
 1. Otevřete podokno Azure **Active Directory** , přejdete na **Registrace aplikací** podokno a vyberte **Nová registrace**. 
 
@@ -55,7 +55,6 @@ V tomto kroku nainstalujete modul Azure AD PowerShell. Tento modul je nutný k z
 1. Otevřete Integrované skriptovací prostředí (ISE) v prostředí Windows PowerShell s právy správce. Pokud jste to ještě neudělali, nainstalujte modul AZ PowerShell a připojte se k vašemu předplatnému. Pokud máte více předplatných, můžete nastavit kontext aktuálního předplatného, jak je znázorněno v následujících příkazech:
 
    ```powershell
-
    Install-Module -Name Az -AllowClobber
    Connect-AzAccount
 
@@ -104,7 +103,7 @@ Výše uvedený příkaz vede výstup podobný následujícímu snímku obrazovk
 
 ## <a name="configure-your-azure-cosmos-account-to-use-the-new-identity"></a>Konfigurace účtu Azure Cosmos pro použití nové identity
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
 
 1. Přejděte k účtu Azure Cosmos, otevřete okno **řízení přístupu (IAM)** .
 
@@ -120,7 +119,7 @@ Přihlašovací údaje založené na certifikátech můžete přidružit k klien
 
 V registraci aplikace Azure pro klientskou aplikaci:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
 
 1. Otevřete podokno Azure **Active Directory** , v podokně **Registrace aplikací** a otevřete ukázkovou aplikaci, kterou jste vytvořili v předchozím kroku. 
 

@@ -11,12 +11,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 11/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: aba613911328b1272ebb07eeae633932cb4a442f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 5257d9f94f6304c2a8dbea3f1648a71d0ba65e94
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935353"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064746"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Správa přístupu k pracovnímu prostoru Azure Machine Learning
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -112,9 +112,65 @@ Další informace o vlastních rolích najdete v tématu [vlastní role pro pros
 
 Další informace o operacích (akcích) použitelných s vlastními rolemi najdete v tématu [operace poskytovatele prostředků](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
 
+
+## <a name="frequently-asked-questions"></a>Nejčastější dotazy
+
+
+### <a name="q-what-are-the-permissions-needed-to-perform-various-actions-in-the-azure-machine-learning-service"></a>Otázka: Jaká jsou oprávnění potřebná k provádění různých akcí ve službě Azure Machine Learning?
+
+Následující tabulka představuje souhrn Azure Machine Learningch aktivit a oprávnění, která jsou potřebná k jejich provedení v nejmenším rozsahu. Jako příklad, pokud je možné aktivitu provést s rozsahem pracovního prostoru (sloupce 4), budou automaticky fungovat i všechny vyšší obory s tímto oprávněním. Všechny cesty v této tabulce jsou **relativní cesty** k `Microsoft.MachineLearningServices/`.
+
+| Aktivita | Rozsah na úrovni předplatného | Rozsah na úrovni skupiny prostředků | Rozsah na úrovni pracovního prostoru |
+|---|---|---|---|
+| Vytvořit nový pracovní prostor | Nepožadováno | Vlastník nebo přispěvatel | Není k dispozici (vlastník nebo zdědí vyšší obor role po vytvoření) |
+| Vytvořit nový výpočetní cluster | Nepožadováno | Nepožadováno | Vlastník, přispěvatel nebo vlastní role povolují: `workspaces/computes/write` |
+| Vytvořit nový virtuální počítač s poznámkovým blokem | Nepožadováno | Vlastník nebo přispěvatel | Není možné |
+| Vytvořit novou výpočetní instanci | Nepožadováno | Nepožadováno | Vlastník, přispěvatel nebo vlastní role povolují: `workspaces/computes/write` |
+| Aktivita roviny dat, jako je odeslání spuštění, přístup k datům, nasazení modelu nebo publikování kanálu | Nepožadováno | Nepožadováno | Vlastník, přispěvatel nebo vlastní role povolují: `workspaces/*/write` <br/> Všimněte si, že budete také potřebovat úložiště dat zaregistrované v pracovním prostoru, aby služba MSI mohla získat přístup k datům ve vašem účtu úložiště. |
+
+
+### <a name="q-how-do-i-list-all-the-custom-roles-in-my-subscription"></a>Otázka: Návody vypsat všechny vlastní role v předplatném?
+
+V rozhraní příkazového řádku Azure CLI spusťte následující příkaz.
+
+```azurecli-interactive
+az role definition list --subscription <sub-id> --custom-role-only true
+```
+
+### <a name="q-how-do-i-find-the-role-definition-for-a-role-in-my-subscription"></a>Otázka: Návody v předplatném najít definici role pro roli?
+
+V rozhraní příkazového řádku Azure CLI spusťte následující příkaz. Všimněte si, že `<role-name>` by měla být ve stejném formátu, vrácený výše uvedeným příkazem.
+
+```azurecli-interactive
+az role definition list -n <role-name> --subscription <sub-id>
+```
+
+### <a name="q-how-do-i-update-a-role-definition"></a>Otázka: Návody aktualizovat definici role?
+
+V rozhraní příkazového řádku Azure CLI spusťte následující příkaz.
+
+```azurecli-interactive
+az role definition update --role-definition update_def.json --subscription <sub-id>
+```
+
+Všimněte si, že musíte mít oprávnění k celému oboru nové definice role. Například pokud má tato nová role obor mezi třemi předplatnými, musíte mít oprávnění ke všem třem předplatným. 
+
+> [!NOTE]
+> Použití aktualizací rolí může trvat 15 minut až hodinu, než se použije u všech přiřazení rolí v daném oboru.
+### <a name="q-can-i-define-a-role-that-prevents-updating-the-workspace-edition"></a>Otázka: Můžu definovat roli, která brání aktualizaci edice pracovního prostoru? 
+
+Ano, můžete definovat roli, která brání aktualizaci edice pracovního prostoru. Vzhledem k tomu, že aktualizace pracovního prostoru je volání opravy v objektu pracovního prostoru, provedete to tak, že do pole `"NotActions"` ve své definici JSON zadáte následující akci: 
+
+`"Microsoft.MachineLearningServices/workspaces/write"`
+
+### <a name="q-what-permissions-are-needed-to-perform-quota-operations-in-a-workspace"></a>Otázka: Jaká oprávnění jsou potřebná k provádění operací s kvótou v pracovním prostoru? 
+
+K provedení jakékoli operace související s kvótou v pracovním prostoru potřebujete oprávnění na úrovni předplatného. To znamená, že nastavení kvóty na úrovni předplatného nebo kvóty na úrovni předplatného pro spravované výpočetní prostředky můžou nastat jenom v případě, že máte oprávnění k zápisu v oboru předplatného. 
+
+
 ## <a name="next-steps"></a>Další kroky
 
 - [Přehled podnikového zabezpečení](concept-enterprise-security.md)
 - [Zabezpečené spouštění experimentů a odvozování/vystavení ve virtuální síti](how-to-enable-virtual-network.md)
-- [Kurz: Trénování modelů](tutorial-train-models-with-aml.md)
+- [Kurz: modely vlaků](tutorial-train-models-with-aml.md)
 - [Operace poskytovatele prostředků](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)

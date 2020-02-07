@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 02/05/2020
 ms.author: jingwang
-ms.openlocfilehash: e7a6e819676752aac679a36221eb60f9ad767071
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: 7dac8d21e3b45307284ece15ca5ddbcc69db909b
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830152"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049847"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Formát JSON v Azure Data Factory
 
@@ -24,15 +24,15 @@ Formát JSON se podporuje pro následující konektory: [Amazon S3](connector-am
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. V této části najdete seznam vlastností podporovaných datovou sadou JSON.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datové sady](concepts-datasets-linked-services.md) . V této části najdete seznam vlastností podporovaných datovou sadou JSON.
 
-| Vlastnost         | Popis                                                  | Požaduje se |
+| Vlastnost         | Popis                                                  | Požadováno |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | Vlastnost Type datové sady musí být nastavená na **JSON**. | Ano      |
 | location         | Nastavení umístění souborů. Každý konektor založený na souborech má svůj vlastní typ umístění a podporované vlastnosti v rámci `location`. **Podrobnosti najdete v článku o konektoru – > Vlastnosti datové sady**. | Ano      |
 | encodingName     | Typ kódování používaný pro čtení a zápis testovacích souborů. <br>Povolené hodnoty jsou následující: UTF-8, UTF-16, "UTF-16BE", "UTF-32", "UTF-32BE", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JIS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", " IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01147", "IBM01148", "IBM01149" , "ISO-2022-JP", "ISO-2022-KR", "ISO-8859-1", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "ISO-8859-13", "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", " WINDOWS-1252 "," WINDOWS-1253 "," WINDOWS-1254 "," WINDOWS-1255 "," WINDOWS-1256 "," WINDOWS-1257 "," WINDOWS-1258 ".| Ne       |
 | compressionCodec | Kompresní kodek používaný pro čtení a zápis textových souborů. <br>Povolené hodnoty jsou **bzip2**, **gzip**, **Deflate**, **ZipDeflate**, **přichycení**nebo **LZ4**. pro použití při ukládání souboru. <br>Poznámka: v tuto chvíli aktivita kopírování nepodporuje "přichycení" & "LZ4".<br>Poznámka: při použití aktivity kopírování k dekompresi souborů ZipDeflate a zápisu do úložiště dat jímky založeného na souborech se soubory extrahují do složky: `<path specified in dataset>/<folder named as source zip file>/`. | Ne       |
-| compressionLevel | Kompresní poměr <br>Povolené hodnoty jsou **optimální** nebo **nejrychlejší**.<br>- **nejrychlejší:** komprese by se měla dokončit co nejrychleji, a to i v případě, že výsledný soubor není optimálně komprimován.<br>- **optimální**: komprese by měla být optimálně komprimovaná, i když dokončení operace trvá déle. Další informace najdete v tématu [úroveň komprese](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) tématu. | Ne       |
+| compressionLevel | Kompresní poměr <br>Povolené hodnoty jsou **optimální** nebo **nejrychlejší**.<br>- **nejrychlejší:** komprese by se měla dokončit co nejrychleji, a to i v případě, že výsledný soubor není optimálně komprimován.<br>- **optimální**: komprese by měla být optimálně komprimovaná, i když dokončení operace trvá déle. Další informace najdete v tématu [úroveň komprese](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) . | Ne       |
 
 Níže je příklad datové sady JSON v Azure Blob Storage:
 
@@ -61,13 +61,13 @@ Níže je příklad datové sady JSON v Azure Blob Storage:
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. V této části najdete seznam vlastností podporovaných zdrojem a jímkou JSON.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v článku [kanály](concepts-pipelines-activities.md) . V této části najdete seznam vlastností podporovaných zdrojem a jímkou JSON.
 
 ### <a name="json-as-source"></a>JSON jako zdroj
 
 V části ***\*zdrojového\**** aktivity kopírování jsou podporovány následující vlastnosti.
 
-| Vlastnost      | Popis                                                  | Požaduje se |
+| Vlastnost      | Popis                                                  | Požadováno |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **JSONSource**. | Ano      |
 | storeSettings | Skupina vlastností, jak číst data z úložiště dat. Jednotlivé konektory založené na souborech mají ve `storeSettings`své vlastní podporované nastavení pro čtení. **Podrobnosti najdete v článku informace o konektoru – > část kopírování vlastností aktivity**. | Ne       |
@@ -76,7 +76,7 @@ V části ***\*zdrojového\**** aktivity kopírování jsou podporovány násled
 
 V části\*aktivita kopírování ***\*jímka*** jsou podporovány následující vlastnosti.
 
-| Vlastnost      | Popis                                                  | Požaduje se |
+| Vlastnost      | Popis                                                  | Požadováno |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **JSONSink**. | Ano      |
 | formatSettings | Skupina vlastností Další informace najdete v tabulce **nastavení zápisu JSON** níže. | Ne       |
@@ -84,7 +84,7 @@ V části\*aktivita kopírování ***\*jímka*** jsou podporovány následujíc�
 
 Podporovaná **nastavení zápisu JSON** v `formatSettings`:
 
-| Vlastnost      | Popis                                                  | Požaduje se                                              |
+| Vlastnost      | Popis                                                  | Požadováno                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | Typ formatSettings musí být nastaven na hodnotu **JsonWriteSettings**. | Ano                                                   |
 | filePattern |Určete vzor dat uložených v jednotlivých souborech JSON. Povolené hodnoty jsou **setOfObjects** a **arrayOfObjects**. **Výchozí hodnota** je **setOfObjects**. Podrobné informace o těchto vzorech najdete v tématu [Vzory souborů JSON](#json-file-patterns). |Ne |
@@ -183,7 +183,148 @@ Aktivita kopírování může automaticky detekovat a analyzovat následující 
 
 ## <a name="mapping-data-flow-properties"></a>Mapování vlastností toku dat
 
-Přečtěte si podrobnosti o [transformaci zdrojového kódu](data-flow-source.md) a [transformaci jímky](data-flow-sink.md) v mapování toku dat.
+Typy souborů JSON lze použít jako jímky i zdroj v toku dat mapování.
+
+### <a name="creating-json-structures-in-a-derived-column"></a>Vytváření struktur JSON v odvozeném sloupci
+
+Do toku dat můžete přidat složitý sloupec prostřednictvím Tvůrce výrazu odvozeného sloupce. V transformaci odvozeného sloupce přidejte nový sloupec a otevřete Tvůrce výrazů kliknutím na modrý rámeček. Chcete-li nastavit sloupec jako složitý, můžete ručně zadat strukturu JSON nebo použít uživatelské prostředí k interaktivnímu přidání podsloupců.
+
+#### <a name="using-the-expression-builder-ux"></a>Použití uživatelského rozhraní Tvůrce výrazů
+
+V podokně výstupní schéma umístěte ukazatel myši na sloupec a klikněte na ikonu se symbolem plus. Vyberte možnost **Přidat dílčí sloupec** a nastavte si sloupec jako složitý typ.
+
+![Přidat Podsloupec](media/data-flow/addsubcolumn.png "Přidat Podsloupec")
+
+Můžete přidat další sloupce a podsloupce stejným způsobem. Pro každé nekomplikované pole lze přidat výraz do pravé části editoru výrazů.
+
+![Složitý sloupec](media/data-flow/complexcolumn.png "Složitý sloupec")
+
+#### <a name="entering-the-json-structure-manually"></a>Ruční zadání struktury JSON
+
+Chcete-li ručně přidat strukturu JSON, přidejte nový sloupec a v editoru zadejte výraz. Výraz následuje po tomto obecném formátu:
+
+```
+@(
+    field1=0,
+    field2=@(
+        field1=0
+    )
+)
+```
+
+Pokud byl tento výraz zadán pro sloupec s názvem "complexColumn", pak bude zapsán do jímky jako následující JSON:
+
+```
+{
+    "complexColumn": {
+        "field1": 0,
+        "field2": {
+            "field1": 0
+        }
+    }
+}
+```
+
+#### <a name="sample-manual-script-for-complete-hierarchical-definition"></a>Ukázka ručního skriptu pro kompletní hierarchickou definici
+```
+@(
+    title=Title,
+    firstName=FirstName,
+    middleName=MiddleName,
+    lastName=LastName,
+    suffix=Suffix,
+    contactDetails=@(
+        email=EmailAddress,
+        phone=Phone
+    ),
+    address=@(
+        line1=AddressLine1,
+        line2=AddressLine2,
+        city=City,
+        state=StateProvince,
+        country=CountryRegion,
+        postCode=PostalCode
+    ),
+    ids=[
+        toString(CustomerID), toString(AddressID), rowguid
+    ]
+)
+```
+
+### <a name="source-format-options"></a>Možnosti formátu zdroje
+
+Použití datové sady JSON jako zdroje v toku dat umožňuje nastavit pět dalších nastavení. Tato nastavení se dají najít v rámci souhlasu **Nastavení JSON** na kartě **zdrojové možnosti** .  
+
+![Nastavení JSON](media/data-flow/json-settings.png "Nastavení JSON")
+
+#### <a name="default"></a>Výchozí
+
+Ve výchozím nastavení jsou data JSON čtena v následujícím formátu.
+
+```
+{ "json": "record 1" }
+{ "json": "record 2" }
+{ "json": "record 3" }
+```
+
+#### <a name="single-document"></a>Jeden dokument
+
+Je-li vybrán **jeden dokument** , mapování toků dat načtou z každého souboru jeden dokument JSON. 
+
+``` json
+File1.json
+{
+    "json": "record 1"
+}
+File2.json
+{
+    "json": "record 2"
+}
+File3.json
+{
+    "json": "record 3"
+}
+```
+
+#### <a name="unquoted-column-names"></a>Názvy sloupců bez uvozovek
+
+Pokud je vybraná možnost **názvy sloupců bez uvozovek** , mapování toků dat přečte sloupce JSON, které nejsou obklopené uvozovkami. 
+
+```
+{ json: "record 1" }
+{ json: "record 2" }
+{ json: "record 3" }
+```
+
+#### <a name="has-comments"></a>Obsahuje komentáře
+
+Vyberte **má komentáře** , pokud data JSON obsahují komentáře v C++ jazyce C nebo Style.
+
+``` json
+{ "json": /** comment **/ "record 1" }
+{ "json": "record 2" }
+{ /** comment **/ "json": "record 3" }
+```
+
+#### <a name="single-quoted"></a>Jednoduché v uvozovkách
+
+Pokud pole a hodnoty JSON místo dvojitých uvozovek používají jednoduché uvozovky, vyberte **jedno uvozovky** .
+
+```
+{ 'json': 'record 1' }
+{ 'json': 'record 2' }
+{ 'json': 'record 3' }
+```
+
+#### <a name="backslash-escaped"></a>Zpětné lomítko – řídicí
+
+Pokud se k řídicím znakům v datech JSON mají použít zpětná lomítka, vyberte **jedno uvozovky** .
+
+```
+{ "json": "record 1" }
+{ "json": "\} \" \' \\ \n \\n record 2" }
+{ "json": "record 3" }
+```
 
 ## <a name="next-steps"></a>Další kroky
 

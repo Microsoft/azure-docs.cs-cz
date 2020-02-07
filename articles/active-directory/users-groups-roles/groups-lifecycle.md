@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b49b10acb7f2deaed217bb28478d2c98a033eab9
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 83133fed401dac51a8dd6a653ccfd86117e956ed
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768672"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046466"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurace zásad vypršení platnosti pro skupiny Office 365
 
@@ -28,9 +28,9 @@ V tomto článku se dozvíte, jak spravovat životní cyklus skupin Office 365 n
 
 Jakmile nastavíte vypršení platnosti skupiny:
 
-- Skupiny s aktivitami uživatele se automaticky Obnovují jako vypršení platnosti v blízkosti
-- Vlastníci skupiny se oznamují, aby obnovili skupinu, pokud se skupina automaticky neobnovuje.
-- Odstraní se libovolná skupina, která není obnovená.
+- Skupiny s aktivitami uživatele se automaticky Obnovují jako vypršení platnosti v blízkosti.
+- Vlastníci skupiny jsou upozorněni na obnovení skupiny, pokud se skupina automaticky neobnovuje.
+- Odstraní se všechny skupiny, které nejsou obnoveny.
 - Všechny odstraněné skupiny Office 365 je možné obnovit do 30 dnů vlastníky skupiny nebo správcem.
 
 V současné době je možné nakonfigurovat pro všechny skupiny Office 365 v organizaci Azure AD jenom jednu zásadu vypršení platnosti.
@@ -42,7 +42,7 @@ Informace o tom, jak stáhnout a nainstalovat rutiny Azure AD PowerShellu, najde
 
 ## <a name="activity-based-automatic-renewal"></a>Automatické obnovení na základě aktivit
 
-Pomocí služby Azure AD Intelligence se teď skupiny automaticky Obnovují na základě toho, jestli jsou v nedávné době použity. Tato funkce eliminuje nutnost ručních akcí podle vlastníků skupin, protože je založená na aktivitě uživatelů ve skupinách napříč službami Office 365, jako je Outlook, SharePoint, teams nebo Yammer. Pokud například vlastník nebo člen skupiny nahraje dokument do SharePointu, navštíví kanál týmů nebo pošle e-mailovou zprávu do skupiny v Outlooku, skupina se automaticky obnoví a vlastník nezíská žádná oznámení o obnovení.
+Pomocí služby Azure AD Intelligence se teď skupiny automaticky Obnovují na základě toho, jestli se nedávno používaly. Tato funkce eliminuje nutnost ručních akcí podle vlastníků skupin, protože je založená na aktivitě uživatelů ve skupinách napříč službami Office 365, jako je Outlook, SharePoint, teams nebo Yammer. Pokud například vlastník nebo člen skupiny nahraje dokument do SharePointu, navštíví kanál týmů nebo pošle e-mailovou zprávu do skupiny v Outlooku, skupina se automaticky obnoví a vlastník nezíská žádná oznámení o obnovení.
 
 ### <a name="activities-that-automatically-renew-group-expiration"></a>Aktivity, které automaticky Obnovují vypršení platnosti skupiny
 
@@ -55,6 +55,8 @@ Následující akce uživatele způsobují automatické obnovení skupin:
 ### <a name="auditing-and-reporting"></a>Auditování a vytváření sestav
 
 Správci můžou získat seznam automaticky obnovených skupin z protokolů auditu aktivit ve službě Azure AD.
+
+![Automatické obnovování skupin na základě aktivity](./media/groups-lifecycle/audit-logs-autorenew-group.png)
 
 ## <a name="roles-and-permissions"></a>Role a oprávnění
 
@@ -158,7 +160,7 @@ Tady jsou příklady, jak můžete pomocí rutin PowerShellu nakonfigurovat nast
    Set-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -GroupLifetimeInDays 180 -AlternateNotificationEmails "emailaddress@contoso.com"
    ```
   
-1. Přidání specifických skupin do zásad Add-AzureADMSLifecyclePolicyGroup: Tato rutina přidá skupinu do zásad životního cyklu. Příklad:
+1. Přidání specifických skupin do zásad Add-AzureADMSLifecyclePolicyGroup: Tato rutina přidá skupinu do zásad životního cyklu. Jako příklad:
   
    ```powershell
    Add-AzureADMSLifecyclePolicyGroup -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -groupId "cffd97bd-6b91-4c4e-b553-6918a320211c"

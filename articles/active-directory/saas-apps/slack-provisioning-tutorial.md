@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cd8e483d6c189e311fdb1925ad0f2effc2affe1
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: cdc912c2df435f9b7e591d7c5475e126e6b0aeb7
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849138"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062825"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Kurz: Konfigurace časové rezervy pro Automatické zřizování uživatelů
 
 Cílem tohoto kurzu je Ukázat kroky, které potřebujete k tomu, abyste v časové rezervě a Azure AD automaticky zřídili a zrušili zřizování uživatelských účtů z Azure AD až po časovou rezervu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
 
@@ -106,7 +106,7 @@ Volitelně můžete povolit zřizování skupin objektů z Azure AD do časové 
 
 To má za následek to, že všechny objekty skupiny přiřazené k časové rezervě v části **Uživatelé a skupiny** jsou plně synchronizované z Azure AD do časové rezervy. Pomocí části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na zřizování protokolů aktivit, které popisují všechny akce prováděné službou zřizování v aplikaci pro časovou rezervu.
 
-Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Omezení konektoru
 
@@ -124,7 +124,7 @@ Další informace o tom, jak číst zřizování protokoly Azure AD najdete v t�
 
 * Časová rezerva povoluje pouze spárování s atributy **username** a **email**.  
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další prostředky
 
-* [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

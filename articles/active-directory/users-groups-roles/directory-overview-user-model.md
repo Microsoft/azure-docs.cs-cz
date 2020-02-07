@@ -14,12 +14,12 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a647f4a5f051ec89bb82b6e7f89dcb677c95371
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a3cc2de5a2f297e8133011905ff2961b44476d6b
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027739"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046326"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>Uživatelé, skupiny, licencování a role pro velké organizace
 
@@ -31,7 +31,7 @@ Tento článek představuje správce Azure Active Directory ve vztahu k hlavním
 
 ## <a name="assign-users-to-groups"></a>Přiřazení uživatelů ke skupinám
 
-Skupiny v Azure Active Directory můžete použít k přiřazení licencí k velkému počtu uživatelů nebo k přiřazení uživatelského přístup k nasazeným podnikovým aplikacím. Skupiny můžete použít k přiřazení rolí správce v Azure Active Directory, nebo můžete udělit přístup k prostředkům, které jsou externí, například aplikace SaaS nebo sharepointové weby.
+Skupiny v Azure Active Directory můžete použít k přiřazení licencí k velkému počtu uživatelů nebo k přiřazení uživatelského přístup k nasazeným podnikovým aplikacím. Skupiny můžete použít k přiřazení všech rolí správce kromě globálního správce ve službě Azure AD nebo můžete udělit přístup k prostředkům, které jsou externí, jako jsou například aplikace SaaS nebo weby služby SharePoint.
 
 Pokud chcete zvýšit flexibilitu a omezit práci spojenou se správou členství ve skupině, můžete v Azure Active Directory použít [dynamické skupiny](groups-create-rule.md), které budou členství ve skupině rozšiřovat a zmenšovat automaticky. Pro každého jedinečného uživatele, který je členem jedné nebo více dynamických skupin, budete potřebovat licenci Azure AD Premium P1.
 

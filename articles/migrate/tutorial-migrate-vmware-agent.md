@@ -4,12 +4,12 @@ description: Naučte se spouštět migraci virtuálních počítačů VMware zal
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.custom: MVC
-ms.openlocfilehash: c6e0b65a586bfd629244404933836cde7287ae29
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 49b576770d67ae9d2b98a8a0004f4219ecf0fae4
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028951"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057273"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>Migrace virtuálních počítačů VMware do Azure (na základě agentů)
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) před tím, než začnete.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Před migrací virtuálních počítačů do Azure doporučujeme, abyste si vyzkoušeli vyhodnocování virtuálního počítače s VMware pomocí posouzení serveru Azure Migrate. Proveďte vyhodnocení následujícím způsobem:
 
@@ -402,12 +402,12 @@ Po ověření, že migrace testu funguje podle očekávání, můžete migrovat 
 
 2. V části **Replikace počítačů** klikněte pravým tlačítkem na virtuální počítač a vyberte **Migrovat**.
 3. V části **Migrovat** > **Vypnout virtuální počítače a provést naplánovanou migraci bez ztráty dat** vyberte **Ano** > **OK**.
-    - Azure Migrate ve výchozím nastavení vypne místní virtuální počítač a spustí replikaci na vyžádání, při které se synchronizují všechny změny virtuálního počítače, ke kterým došlo od poslední replikace. Tím se zajistí, že nedojde ke ztrátě dat.
+    - Ve výchozím nastavení Azure Migrate vypne místní virtuální počítač, aby se zajistila minimální ztráta dat. 
     - Pokud virtuální počítač nechcete vypnout, vyberte **Ne**.
 4. Pro virtuální počítač se spustí úloha migrace. Tuto úlohu můžete sledovat pomocí oznámení Azure.
 5. Po dokončení úlohy můžete virtuální počítač zobrazit a spravovat na stránce **Virtuální počítače**.
 
-## <a name="complete-the-migration"></a>Dokončení migrace
+## <a name="complete-the-migration"></a>Dokončete migraci
 
 1. Po dokončení migrace klikněte pravým tlačítkem na virtuální počítač > **zastavit migraci**. Tím se zastaví replikace místního počítače a vyčistí se informace o stavu replikace pro virtuální počítač.
 2. Na migrované počítače nainstalujte agenta Azure VM pro [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) nebo [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) .
@@ -420,7 +420,7 @@ Po ověření, že migrace testu funguje podle očekávání, můžete migrovat 
 
 ## <a name="post-migration-best-practices"></a>Osvědčené postupy po migraci
 
-- Místní prostředí
+- Lokálně
     - Přesuňte provoz aplikace do aplikace, která běží na instanci migrovaného virtuálního počítače Azure.
     - Odeberte místní virtuální počítače z místního inventáře virtuálních počítačů.
     - Odeberte místní virtuální počítače ze záloh.

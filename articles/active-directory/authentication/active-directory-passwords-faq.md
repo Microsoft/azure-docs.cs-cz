@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 790a948611c6cfa336964397282a38d2b9c00e11
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 9e1cc9dde6bb2b6ae47affaed4c557f3746a681b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848778"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061450"
 ---
 # <a name="password-management-frequently-asked-questions"></a>Nejčastější dotazy ke správě hesel
 
@@ -114,7 +114,7 @@ Tyto nejčastější dotazy jsou rozdělené do následujících částí:
   >
 * **Otázka: Jak můžu informovat uživatele o tom, kde přejít k resetování hesel?**
 
-  > **A:** Vyzkoušejte některé návrhy v našem článku o [nasazení SSPR](howto-sspr-deployment.md#communications-plan) .
+  > **A:** Vyzkoušejte některé návrhy v našem článku o [nasazení SSPR](howto-sspr-deployment.md#plan-communications) .
   >
   >
 * **Otázka: mohu tuto stránku použít z mobilního zařízení?**

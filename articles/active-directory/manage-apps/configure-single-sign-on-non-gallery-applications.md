@@ -12,12 +12,12 @@ ms.date: 07/19/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 709f8083e50391718d34587bd0ea1d847cc41923
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: cf6c89e5f891c5f16551885fb40e8d5082fd6ba5
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841961"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063505"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>Konfigurace jednotného přihlašování založeného na SAML pro aplikace mimo galerii
 
@@ -28,7 +28,7 @@ Když do podnikových aplikací Azure AD [přidáte aplikaci Galerie](add-galler
 
 Chcete-li nakonfigurovat jednotné přihlašování pomocí protokolu SAML pro aplikaci mimo galerii bez psaní kódu, musíte mít k dispozici předplatné společně s licencí Azure AD Premium a aplikace musí podporovat SAML 2,0. Další informace o verzích Azure AD najdete na stránce [ceny Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Pokud se aplikace nepřidala do tenanta Azure AD, přečtěte si téma [Přidání aplikace mimo galerii](add-non-gallery-app.md).
 
@@ -53,10 +53,10 @@ Pokud se aplikace nepřidala do tenanta Azure AD, přečtěte si téma [Přidán
     | Základní nastavení konfigurace SAML | Iniciováno zprostředkovatelem přihlašování | Iniciováno pomocí IdP | Popis |
     |:--|:--|:--|:--|
     | **Identifikátor (ID entity)** | Vyžaduje se pro některé aplikace | Vyžaduje se pro některé aplikace | Aplikace jednoznačně identifikuje. Azure AD odešle identifikátor do aplikace jako parametr cílové skupiny tokenu SAML. Očekává se, že aplikace ověří tuto aplikaci. Tato hodnota se také zobrazuje jako ID entity ve všech metadatech SAML poskytovaných aplikací. Zadejte adresu URL, která používá následující vzor: ' https://<subdomain>. contoso.com ' *tuto hodnotu můžete najít jako element **vystavitele** v **AuthnRequest** (žádost SAML) odeslanou aplikací.* |
-    | **Adresa URL odpovědi** | Požaduje se | Požaduje se | Určuje, kde aplikace očekává přijetí tokenu SAML. Adresa URL odpovědi se také označuje jako adresa URL ACS (Assertion Consumer Service). Pomocí polí další adresa URL odpovědi můžete zadat několik adres URL odpovědi. Můžete například potřebovat další adresy URL pro odpovědi pro více subdomén. Nebo pro účely testování můžete najednou zadat několik adres URL odpovědí (místní hostitel a veřejné adresy URL). |
-    | **Přihlašovací adresa URL** | Požaduje se | Nezadávejte | Když uživatel otevře tuto adresu URL, poskytovatel služeb ho přesměruje do Azure AD, kde se uživatel ověří a přihlásí. Azure AD používá adresu URL ke spuštění aplikace ze sady Office 365 nebo přístupového panelu Azure AD. Pokud je toto pole prázdné, Azure AD provede přihlášení iniciované IdP, když uživatel spustí aplikaci z Office 365, přístupového panelu Azure AD nebo adresy URL jednotného přihlašování Azure AD.|
-    | **Stav přenosu** | Volitelné | Volitelné | Určuje pro aplikaci, kam má přesměrovat uživatele po dokončení ověřování. Obvykle je hodnota platnou adresou URL pro aplikaci. Některé aplikace ale používají toto pole odlišně. Další informace vám sdělí dodavatel aplikace.
-    | **Odhlašovací adresa URL** | Volitelné | Volitelné | Slouží k odeslání odpovědí na odhlášení SAML zpět do aplikace.
+    | **Adresa URL odpovědi** | Požadováno | Požadováno | Určuje, kde aplikace očekává přijetí tokenu SAML. Adresa URL odpovědi se také označuje jako adresa URL ACS (Assertion Consumer Service). Pomocí polí další adresa URL odpovědi můžete zadat několik adres URL odpovědi. Můžete například potřebovat další adresy URL pro odpovědi pro více subdomén. Nebo pro účely testování můžete najednou zadat několik adres URL odpovědí (místní hostitel a veřejné adresy URL). |
+    | **Přihlašovací adresa URL** | Požadováno | Nezadávejte | Když uživatel otevře tuto adresu URL, poskytovatel služeb ho přesměruje do Azure AD, kde se uživatel ověří a přihlásí. Azure AD používá adresu URL ke spuštění aplikace ze sady Office 365 nebo přístupového panelu Azure AD. Pokud je toto pole prázdné, Azure AD provede přihlášení iniciované IdP, když uživatel spustí aplikaci z Office 365, přístupového panelu Azure AD nebo adresy URL jednotného přihlašování Azure AD.|
+    | **Stav přenosu** | volitelná, | volitelná, | Určuje pro aplikaci, kam má přesměrovat uživatele po dokončení ověřování. Obvykle je hodnota platnou adresou URL pro aplikaci. Některé aplikace ale používají toto pole odlišně. Další informace vám sdělí dodavatel aplikace.
+    | **Odhlašovací adresa URL** | volitelná, | volitelná, | Slouží k odeslání odpovědí na odhlášení SAML zpět do aplikace.
 
 Další informace najdete v tématu [protokol SAML jednotného přihlašování](../develop/single-sign-on-saml-protocol.md).
 
@@ -76,7 +76,7 @@ Když se uživatel do aplikace ověří, služba Azure AD vydá aplikaci token S
 
 5. Pokud chcete přidat deklaraci identity, vyberte v horní části stránky **Přidat novou deklaraci identity** . Zadejte **název** a vyberte příslušný zdroj. Pokud vyberete zdroj **atributu** , budete muset zvolit **zdrojový atribut** , který chcete použít. Pokud vyberete zdroj **překladu** , budete muset zvolit **transformaci** a **parametr 1** , který chcete použít. Podrobnosti najdete v tématu [Přidání deklarací specifických pro aplikaci](../develop/active-directory-saml-claims-customization.md#adding-application-specific-claims). Až budete hotovi, uložte změny. 
 
-6. Vyberte **Uložit**. Nová deklarace identity se zobrazí v tabulce.
+6. Vyberte **Save** (Uložit). Nová deklarace identity se zobrazí v tabulce.
 
    > [!NOTE]
    > Další způsoby přizpůsobení tokenu SAML z Azure AD do vaší aplikace najdete v následujících zdrojích.
@@ -163,4 +163,4 @@ Další informace najdete v tématu [ladění jednotného přihlašování zalo�
 ## <a name="next-steps"></a>Další kroky
 
 - [Přiřazení uživatelů nebo skupin k aplikaci](methods-for-assigning-users-and-groups.md)
-- [Konfigurace automatického zřizování uživatelských účtů](configure-automatic-user-provisioning-portal.md)
+- [Konfigurace automatického zřizování uživatelských účtů](../app-provisioning/configure-automatic-user-provisioning-portal.md)

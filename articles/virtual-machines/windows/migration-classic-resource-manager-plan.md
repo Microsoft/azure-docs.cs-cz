@@ -3,8 +3,8 @@ title: Plánování migrace z modelu Classic na Azure Resource Manager
 description: Plánování migrace prostředků IaaS z modelu Classic na Azure Resource Manager
 services: virtual-machines-windows
 documentationcenter: ''
-author: singhkays
-manager: gwallace
+author: tanmaygore
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 78492a2c-2694-4023-a7b8-c97d3708dcb7
@@ -12,26 +12,23 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 04/01/2017
-ms.author: kasing
-ms.openlocfilehash: d5245f73520a77648fc590520185a2cf66bffd02
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/06/2020
+ms.author: tagore
+ms.openlocfilehash: 2d7eca56556c8a1097b625b8f4b0e2de2facbc60
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980891"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061603"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Plánování migrace prostředků IaaS z modelu Classic na Azure Resource Manager
 I když Azure Resource Manager nabízí spoustu funkcí, je důležité naplánovat cestu migrace, abyste se ujistili, že jsou všechno plynulé. Doba útraty při plánování zajistí, že při provádění aktivit migrace dojde k problémům.
-
-> [!NOTE]
-> Následující pokyny byly silně přispěly na zákazníka poradenského týmu Azure a architekti cloudových řešení pracují se zákazníky při migraci velkých prostředí. Vzhledem k tomu, že tento dokument bude i nadále aktualizován jako nové vzory úspěchu, vraťte se z času na čas, abyste viděli, zda jsou k dispozici nová doporučení.
 
 Existují čtyři obecné fáze cesty migrace:<br>
 
 ![Fáze migrace](../media/virtual-machines-windows-migration-classic-resource-manager/plan-labtest-migrate-beyond.png)
 
-## <a name="plan"></a>Plánujte
+## <a name="plan"></a>Plánování
 
 ### <a name="technical-considerations-and-tradeoffs"></a>Technické požadavky a kompromisy
 
@@ -126,7 +123,7 @@ Následující byly problémy zjištěné v řadě větších migrací. Nejedná
   - Veřejné IP adresy
   - Statické veřejné IP adresy
   - Jádra
-  - Skupiny zabezpečení sítě
+  - Network Security Groups (Skupiny zabezpečení sítě)
   - Směrovací tabulky
 
     Aktuální kvóty Azure Resource Manager můžete kontrolovat pomocí následujících příkazů s nejnovější verzí Azure PowerShell.

@@ -15,12 +15,12 @@ ms.date: 07/16/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1291db8cd895a1104183ae2b5388eb6a23305874
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 89b16a8479f8975d101b8a4e26dcb1885d9730bd
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895938"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063376"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Průvodce integrací Azure Active Directory s aplikacemi Začínáme
 
@@ -85,7 +85,7 @@ Pokud chcete přidat vlastní aplikaci do Galerie aplikací Azure, přečtěte s
 Následující články popisují způsoby, kterými můžete spravovat přístup k aplikacím po integraci s Azure AD pomocí konektorů Azure AD a Azure AD.
 
 * [Správa přístupu k aplikacím pomocí Azure AD](what-is-access-management.md)
-* [Automatizace pomocí konektorů Azure AD](user-provisioning.md)
+* [Automatizace pomocí konektorů Azure AD](../app-provisioning/user-provisioning.md)
 * [Přiřazování uživatelů k aplikaci](../active-directory-applications-guiding-developers-assigning-users.md)
 * [Přiřazování skupin k aplikaci](../active-directory-applications-guiding-developers-assigning-groups.md)
 * [Účty pro sdílení](../active-directory-sharing-accounts.md)
@@ -95,7 +95,7 @@ Podrobné informace můžete stáhnout Azure Active Directory plány nasazení z
 
 Stažení plánu nasazení z Azure Portal:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **podnikové aplikace** | **vyberte** **plán nasazení** | aplikace.
 
 Poskytněte prosím svůj názor na plány nasazení prostřednictvím [průzkumu plánu nasazení](https://aka.ms/DeploymentPlanFeedback).

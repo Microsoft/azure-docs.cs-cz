@@ -1,18 +1,19 @@
 ---
-title: Azure Virtual WAN – architektura globální přenosové sítě | Microsoft Docs
+title: 'Architektura: globální přenosová architektura sítě'
+titleSuffix: Azure Virtual WAN
 description: Další informace o architektuře globální přenosové sítě pro virtuální síť WAN
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: article
-ms.date: 10/18/2019
+ms.date: 02/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9b736e897278c4656df83c30388efc812ac6193d
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 17d0e678008c76da32f20562aa795e83e49c80e4
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607368"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064967"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Globální přenosová architektura sítě a virtuální síť WAN
 

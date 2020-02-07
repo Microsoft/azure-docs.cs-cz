@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8e9ab9dddad35708b58d32802452789adf84a19e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 5eeb1c25264c36909774ec689b7410765881c8e2
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759461"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064729"
 ---
 # <a name="secure-a-database-in-sql-data-warehouse"></a>Zabezpečení databáze v SQL Data Warehouse
 > [!div class="op_single_selector"]
@@ -36,11 +36,11 @@ Pravidla brány firewall používá server i databáze k zamítnutí pokusů o p
 
 Doporučujeme co nejvíce omezit rozsah IP adres povolených v serverové bráně firewall.  Pokud chcete získat přístup k Azure SQL Data Warehouse z místního počítače, zajistěte, aby brána firewall v síti a místní počítač umožňovala odchozí komunikaci na portu TCP 1433.  
 
-Azure synapse používá pravidla brány firewall IP na úrovni serveru. Nepodporuje pravidla brány firewall protokolu IP na úrovni databáze. Další informace najdete v tématu věnovaném [Azure SQL Database pravidlům brány firewall](../sql-database/sql-database-firewall-configure.md) .
+Azure synapse používá pravidla brány firewall IP na úrovni serveru. Nepodporuje pravidla brány firewall protokolu IP na úrovni databáze. Další informace najdete v tématu [Azure SQL Database pravidla brány firewall](../sql-database/sql-database-firewall-configure.md) .
 
 Připojení k vašemu SQL Data Warehouse jsou ve výchozím nastavení zašifrována.  Změna nastavení připojení pro zákaz šifrování je ignorována.
 
-## <a name="authentication"></a>Ověření
+## <a name="authentication"></a>Authentication
 Ověřování se týká způsobu, jakým prokážete svou identitu při připojování k databázi. SQL Data Warehouse aktuálně podporuje ověřování SQL Server s uživatelským jménem a heslem a Azure Active Directory. 
 
 Když jste vytvářeli logický server databáze, zadali jste uživatelské jméno a heslo účtu „server admin“. Pomocí těchto přihlašovacích údajů se můžete na tomto serveru ověřit jako vlastník databáze nebo "dbo" prostřednictvím SQL Server ověřování.

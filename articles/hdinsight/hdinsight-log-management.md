@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: e5abc9e75e11424b5d0dc4c260b412d0e414ad83
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.custom: hdinsightactive
+ms.date: 02/05/2020
+ms.openlocfilehash: 8c3cbf4c18b32a94abfe95e77be768020b44fda6
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837955"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064678"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Správa protokolů pro cluster HDInsight
 
@@ -69,7 +69,7 @@ Je důležité pochopit typy úloh, které jsou spuštěny v clusterech HDInsigh
 
 * Zvažte, jestli řešení nebo služba monitorování budou užitečnou výhodou. Microsoft System Center poskytuje [Management Pack HDInsight](https://www.microsoft.com/download/details.aspx?id=42521). K shromažďování a centralizaci protokolů můžete použít také nástroje třetích stran, jako je Apache Chukwa a uzlin. Mnoho společností nabízí služby pro monitorování řešení pro velké objemy dat založené na systému Hadoop, například: centrování, Compuware APM, Sematext správce SPM a Zettaset Orchestrator.
 
-## <a name="step-2-manage-cluster-service-versions-and-view-script-action-logs"></a>Krok 2: Správa verzí clusterových služeb a zobrazení protokolů akcí skriptů
+## <a name="step-2-manage-cluster-service-versions-and-view-logs"></a>Krok 2: Správa verzí clusterových služeb a zobrazení protokolů
 
 Typický cluster HDInsight používá několik služeb a open source softwarových balíčků (například Apache HBA, Apache Spark a tak dále). U některých úloh, jako je například Bioinformatics, může být nutné zachovat historii protokolu konfigurace služby kromě protokolů spouštění úloh.
 
@@ -89,15 +89,27 @@ Pomocí uživatelského rozhraní Ambari můžete stáhnout konfiguraci pro vše
 
 [Akce skriptu](hdinsight-hadoop-customize-cluster-linux.md) HDInsight spouštějí skripty v clusteru, a to buď ručně, nebo podle zadání. Například akce skriptu lze použít k instalaci dalšího softwaru do clusteru nebo ke změně nastavení konfigurace z výchozích hodnot. Protokoly akcí skriptů mohou poskytnout přehled o chybách, ke kterým došlo během instalace clusteru, a také změny nastavení konfigurace, které mohou ovlivnit výkon a dostupnost clusteru.  Pokud chcete zobrazit stav akce skriptu, klikněte na tlačítko **OPS** v uživatelském rozhraní Ambari nebo přejděte k protokolům stavu ve výchozím účtu úložiště. Protokoly úložiště jsou k dispozici na adrese `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE`.
 
+### <a name="view-ambari-alerts-status-logs"></a>Zobrazit protokoly stavu výstrah Ambari
+
+Apache Ambari zapisuje změny stavu výstrahy do `ambari-alerts.log`. Úplná cesta je `/var/log/ambari-server/ambari-alerts.log`. Chcete-li povolit ladění protokolu, změňte vlastnost v `/etc/ambari-server/conf/log4j.properties.` změňte položku v části `# Log alert state changes` z:
+
+```
+log4j.logger.alerts=INFO,alerts
+
+to
+
+log4j.logger.alerts=DEBUG,alerts
+```
+
 ## <a name="step-3-manage-the-cluster-job-execution-log-files"></a>Krok 3: Správa souborů protokolu spuštění úlohy clusteru
 
-Dalším krokem je kontrola souborů protokolu spuštění úlohy pro různé služby.  Služby můžou zahrnovat Apache HBA, Apache Spark a spoustu dalších. Cluster Hadoop vytvoří velký počet podrobných protokolů, takže určíte, které protokoly jsou užitečné (a které nejsou) můžou být časově náročné.  Princip protokolovacího systému je důležitý pro cílovou správu souborů protokolu.  Následuje příklad souboru protokolu.
+Dalším krokem je kontrola souborů protokolu spuštění úlohy pro různé služby.  Služby můžou zahrnovat Apache HBA, Apache Spark a spoustu dalších. Cluster Hadoop vytvoří velký počet podrobných protokolů, takže určíte, které protokoly jsou užitečné (a které nejsou) můžou být časově náročné.  Princip protokolovacího systému je důležitý pro cílovou správu souborů protokolu.  Následující obrázek je příkladem souboru protokolu.
 
 ![Příklad výstupu ukázkového souboru protokolu HDInsight](./media/hdinsight-log-management/hdi-log-file-example.png)
 
 ### <a name="access-the-hadoop-log-files"></a>Přístup k souborům protokolu Hadoop
 
-HDInsight ukládá své soubory protokolu jak v systému souborů clusteru, tak ve službě Azure Storage. Soubory protokolu v clusteru můžete prozkoumávat otevřením připojení [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) ke clusteru a procházením systému souborů nebo pomocí portálu stavu Hadoop příz na vzdáleném serveru hlavního serveru. Soubory protokolů ve službě Azure Storage můžete prozkoumávat pomocí libovolných nástrojů, které mají přístup a stahují data z Azure Storage. Příklady jsou [AzCopy](../storage/common/storage-use-azcopy.md), [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer)a Visual Studio Průzkumník serveru. K přístupu k datům v úložišti objektů BLOB v Azure můžete také použít PowerShell a klientské knihovny Azure Storage nebo sady Azure .NET SDK.
+HDInsight ukládá své soubory protokolu jak v systému souborů clusteru, tak v Azure Storage. Soubory protokolu v clusteru můžete prozkoumávat otevřením připojení [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) ke clusteru a procházením systému souborů nebo pomocí portálu stavu Hadoop příz na vzdáleném serveru hlavního serveru. Soubory protokolu v Azure Storage můžete prozkoumávat pomocí kteréhokoli z nástrojů, které mají přístup k datům z Azure Storage a stahovat je. Příklady jsou [AzCopy](../storage/common/storage-use-azcopy.md), [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer)a Visual Studio Průzkumník serveru. K přístupu k datům v úložišti objektů BLOB v Azure můžete také použít PowerShell a klientské knihovny Azure Storage nebo sady Azure .NET SDK.
 
 Hadoop spouští práci s úlohami jako se *pokusy* v různých uzlech clusteru. HDInsight může iniciovat spekulativní pokusy o úlohy a ukončit všechny ostatní pokusy o úlohy, které se nejdřív nedokončují. Tím dojde k průběžné zaznamenání významné aktivity, která se protokoluje do souborů protokolů protokolu stderr a syslog. Kromě toho se současně spouští více pokusů o úlohy, ale soubor protokolu může zobrazit pouze lineární výsledky.
 
@@ -140,7 +152,7 @@ Po dokončení předchozích kroků budete vědět o typech a svazcích souborů
 
 V dalším kroku Analyzujte objem dat protokolu v umístěních protokolu klíčů úložiště v časovém intervalu. Můžete například analyzovat objem a nárůst mezi 30-60-90 dny.  Poznamenejte si tyto informace v tabulce nebo použijte jiné nástroje, jako je Visual Studio, Průzkumník služby Azure Storage nebo Power Query pro Excel. Další informace najdete v tématu [Analýza protokolů HDInsight](hdinsight-debug-jobs.md).  
 
-Teď máte dostatek informací, abyste vytvořili strategii správy protokolů pro protokoly klíčů.  Použijte svoji tabulku (nebo nástroj podle vlastního výběru), abyste mohli předpovědět jak růst velikost protokolu, tak i náklady na službu Azure Storage, které se budou přesměrovávat.  Zvažte také všechny požadavky na uchovávání protokolů pro sadu protokolů, které zkoumáte.  Nyní můžete přepovědět budoucí náklady na úložiště protokolů, a to tak, že určíte, které soubory protokolu se můžou odstranit (pokud existují), a které protokoly se mají uchovávat a archivovat pro levnější úložiště Azure.
+Teď máte dostatek informací, abyste vytvořili strategii správy protokolů pro protokoly klíčů.  Použijte svoji tabulku (nebo nástroj podle vlastního výběru), abyste mohli předpovědět jak růst velikost protokolu, tak i náklady na službu Azure Storage, které se budou přesměrovávat.  Zvažte také všechny požadavky na uchovávání protokolů pro sadu protokolů, které zkoumáte.  Nyní můžete přepovědět budoucí náklady na úložiště protokolů, a to tak, že určíte, které soubory protokolu se můžou odstranit (pokud existují) a které protokoly se mají uchovávat a archivovat na levnější Azure Storage.
 
 ## <a name="step-5-determine-log-archive-policies-and-processes"></a>Krok 5: určení zásad a procesů archivu protokolů
 
@@ -154,7 +166,7 @@ Případně můžete skript archivovat pomocí prostředí PowerShell.  Ukázkov
 
 ### <a name="accessing-azure-storage-metrics"></a>Přístup k metrikám Azure Storage
 
-Službu Azure Storage je možné nakonfigurovat tak, aby protokoloval operace a přístup k úložišti. Tyto velmi podrobné protokoly můžete použít k monitorování a plánování kapacity a k auditování požadavků do úložiště. Protokolované informace obsahují podrobnosti o latenci a umožňují vám monitorovat a vyladit výkon vašich řešení.
+Azure Storage lze nakonfigurovat tak, aby protokoloval operace a přístup k úložišti. Tyto velmi podrobné protokoly můžete použít k monitorování a plánování kapacity a k auditování požadavků do úložiště. Protokolované informace obsahují podrobnosti o latenci a umožňují vám monitorovat a vyladit výkon vašich řešení.
 Sadu .NET SDK pro Hadoop můžete použít k prohlédnutí souborů protokolu generovaných pro Azure Storage, které obsahují data pro cluster HDInsight.
 
 ### <a name="control-the-size-and-number-of-backup-indexes-for-old-log-files"></a>Řízení velikosti a počtu indexů zálohování pro staré soubory protokolu

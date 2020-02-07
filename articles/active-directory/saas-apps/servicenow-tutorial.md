@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79f5284f95f6157c70461179177179a9fbee4fe0
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c18613233d6dec59c76db120ed7f089dfbb5fbac
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293687"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046725"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s ServiceNow
 
@@ -52,7 +52,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * ServiceNow podporuje [automatizované zřizování uživatelů](servicenow-provisioning-tutorial.md).
 
-* Po nakonfigurování ServiceNow můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Po nakonfigurování ServiceNow můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 * Pro povolení jednotného přihlašování můžete nakonfigurovat aplikaci ServiceNow Classic (mobilní) se službou Azure AD. Podporuje uživatele se systémem Android i iOS. V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
@@ -119,10 +119,10 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure Portal.
 
 1. V levém podokně Azure Portal vyberte **Azure Active Directory** > **uživatelů** > **všech uživatelích**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
+1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Jako **název**zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno**zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno**zadejte username@companydomain.extension. například `B.Simon@contoso.com`.
    1. Vyberte možnost **Zobrazit heslo**a pak zapište hodnotu zobrazenou v poli **heslo** .
    1. Vyberte **Create** (Vytvořit).
 
@@ -136,7 +136,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
    ![Snímek obrazovky s oddílem spravovat se zvýrazněnými uživateli a skupinami](common/users-groups-blade.png)
 
-1. Vyberte možnost **Přidat uživatele**. V dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
+1. Vyberte **Přidat uživatele**. V dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
 
     ![Snímek obrazovky uživatelů a skupin se zvýrazněnou možností přidat uživatele](common/add-assign-user.png)
 
@@ -300,7 +300,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
         1. Zadejte **adresu URL federačních metadat aplikace** , kterou jste zkopírovali z Azure Portal.
 
-        1. Vyberte **Import** (Importovat).
+        1. Vyberte **importovat**.
 
     1. Načte adresu URL metadat IdP a vyplní všechny informace o polích.
 
@@ -467,6 +467,6 @@ Když na přístupovém panelu vyberete dlaždici ServiceNow, měli byste se aut
 
 - [Vyzkoušejte si ServiceNow s Azure AD](https://aad.portal.azure.com)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/protect-servicenow)
+- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Jak chránit ServiceNow pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Jak chránit ServiceNow pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/protect-servicenow)

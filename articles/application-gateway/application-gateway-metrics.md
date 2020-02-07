@@ -5,14 +5,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 8/29/2019
+ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: 695507b0d6997870dbea392e73e4f4470248d26c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 1fa9c72f7ca305a03cdc90ea02cefe973932792b
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985879"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046318"
 ---
 # <a name="metrics-for-application-gateway"></a>Metriky pro Application Gateway
 
@@ -132,6 +132,9 @@ Pro Application Gateway jsou k dispozici následující metriky:
 - **Počet hostitelů není v pořádku**
 
   Počet back-endy, které jsou zjištěny v nesprávném stavu sondou stavu. Můžete filtrovat podle fondu back-endu a zobrazit tak počet nezdravých hostitelů v konkrétním back-end fondu.
+  
+- **Počet požadavků za minutu na hostitele v pořádku** Průměrný počet žádostí přijatých každým zdravým členem v back-endu fondu za minutu. Je nutné zadat fond back-endu pomocí dimenze *problémových bezproblémových* .  
+  
 
 ## <a name="metrics-supported-by-application-gateway-v1-sku"></a>Metriky podporované Application Gateway v1 SKU
 

@@ -4,14 +4,14 @@ description: V tomto rychlém startu se dozvíte, jak vytvořit trezor Recovery 
 ms.reviewer: saurse
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 07/17/2018
+ms.date: 02/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 430a560f3ae8e9abc6c5e7a34c24d9d2f262fd79
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 4bff53516447408486a6e40f2f7059ebc811aaa4
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172002"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057171"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Zálohování virtuálního počítače v Azure
 
@@ -21,7 +21,7 @@ V tomto rychlém startu se povolí zálohování na existujícím virtuálním p
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlásit se na [Azure Portal](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 ## <a name="select-a-vm-to-back-up"></a>Výběr virtuálního počítače k zálohování
 

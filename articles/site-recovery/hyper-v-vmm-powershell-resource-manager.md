@@ -7,12 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: a46bca5c5c55338f8bea7e1ff370f92ce6a2d577
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: deef7bfdbc28d744cb81da59d3ffc13a1abee54d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841042"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048604"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Nastavení zotavení po havárii virtuálních počítačů Hyper-V do sekundární lokality pomocí prostředí PowerShell (Správce prostředků)
 
@@ -27,7 +27,7 @@ Tento článek popisuje, jak automatizovat kroky pro replikaci virtuálních po�
 - Ujistěte se, že servery Virtual Machine Manager a hostitelé Hyper-V splňují [požadavky na podporu](site-recovery-support-matrix-to-sec-site.md).
 - Ověřte, že virtuální počítače, které chcete replikovat, vyhovují [podpoře replikovaných počítačů](site-recovery-support-matrix-to-sec-site.md).
 
-## <a name="prepare-for-network-mapping"></a>Příprava na mapování sítě
+## <a name="prepare-for-network-mapping"></a>Příprava mapování sítě
 
 [Mapování sítě](hyper-v-vmm-network-mapping.md) mezi místními Virtual Machine Manager sítěmi virtuálních počítačů ve zdrojovém a cílovém cloudu. Mapování provádí následující:
 
@@ -219,9 +219,9 @@ Chcete-li ověřit dokončení operace, postupujte podle kroků v části [monit
 1. Spusťte tento příkaz, který načte sítě pro zdrojový Virtual Machine Manager Server a cílový Virtual Machine Manager Server.
 
    ```azurepowershell
-   $PrimaryNetworks = Get-AzRecoveryServicesAsrNetwork -Name $Servers[0]
+   $PrimaryNetworks = Get-AzRecoveryServicesAsrNetwork -Fabric $Servers[0]
 
-   $RecoveryNetworks = Get-AzRecoveryServicesAsrNetwork -Name $Servers[1]
+   $RecoveryNetworks = Get-AzRecoveryServicesAsrNetwork -Fabric $Servers[1]
    ```
 
    > [!NOTE]

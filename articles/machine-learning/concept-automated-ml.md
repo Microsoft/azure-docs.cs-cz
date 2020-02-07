@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: 778b369e08ff6b0c6e4075c5a8d3d2a234bde70e
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 012300c95fd1edd135b97f52ed3702ce3e7ef0bd
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894886"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048974"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co je automatické machine learning?
 
@@ -38,7 +38,7 @@ Odborníci na data, analytiké a vývojáři v různých oborech můžou použí
 
 V následující tabulce jsou uvedeny běžné případy použití automatizovaného ML. 
 
-Classification| Prognózování časových řad | Regrese
+Klasifikace| Prognózování časových řad | Regrese
 ---|---|---
 [Zjišťování podvodů](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)|[Prognózování prodeje](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)|[Předpověď výkonu procesoru](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-hardware-performance-explanation-and-featurization/auto-ml-regression-hardware-performance-explanation-and-featurization.ipynb)
 |[Předpověď marketingu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)|[Prognózování poptávky](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)|
@@ -95,11 +95,11 @@ V každém automatizovaném experimentu Machine Learning se vaše data automatic
 
 ### <a name="advanced-preprocessing-optional-featurization"></a>Pokročilý předzpracování: volitelné featurization
 
-K dispozici jsou také další rozšířené předzpracování a featurization, například data guardrails, Encoding a transformes. [Přečtěte si další informace o tom, co je zahrnuté featurization](how-to-create-portal-experiments.md#preprocess). Povolit toto nastavení pomocí:
+K dispozici jsou také další rozšířené předzpracování a featurization, například data guardrails, Encoding a transformes. [Přečtěte si další informace o tom, co je zahrnuté featurization](how-to-create-portal-experiments.md#featurization). Povolit toto nastavení pomocí:
 
-+ Azure Machine Learning Studio: [pomocí těchto kroků](how-to-create-portal-experiments.md)v části **spuštění konfigurace** vyberte **Nastavení zobrazení featurization** .
++ Azure Machine Learning Studio: v části **Zobrazit další konfiguraci** povolte **Automatické featurization** [pomocí těchto kroků](how-to-create-portal-experiments.md#create-and-run-experiment).
 
-+ Python SDK: určení `"feauturization": auto' / 'off' / FeaturizationConfig` pro [třídu`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig).
++ Python SDK: určení `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` pro [třídu`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
 
 ## <a name="prevent-over-fitting"></a>Zabránit přebudování
 
@@ -143,7 +143,7 @@ Vezměte v úvahu následující vyškolené modely a jejich odpovídající př
 |-------|----------------|---------------|
 | A | 99,9 % | 95% |
 | B | 87% | 87% |
-| C | 99,9 % | 45 % |
+| C | 99,9 % | 45% |
 
 Zvažujeme model **a**, pokud je přesnost testu u nezobrazených dat nižší než přesnost školení, model je přemontovaný. Přesnost testu by však měla být vždy menší než přesnost školení a rozlišení pro převzetí služeb při selhání, které je vhodné, bude mít za *cíl méně přesné* . 
 
@@ -151,7 +151,7 @@ Při porovnávání modelů **a** a **B**model **a** je lepší model, protože 
 
 Model **C** představuje nejasný případ přeložení; přesnost školení je velmi vysoká, ale přesnost testu není nikde blízko nejvyšší úrovně. Tento rozdíl je subjektivní, ale pochází ze znalostí o vašem problému a datech a o tom, jaké množství chyb je přijatelné. 
 
-## <a name="time-series-forecasting"></a>Předvídání časových řad
+## <a name="time-series-forecasting"></a>Prognózování časových řad
 
 Vytváření prognóz je nedílnou součástí jakékoli firmy, ať už jde o výnosy, inventář, prodej nebo poptávku zákazníků. Pomocí automatizovaného ML můžete kombinovat techniky a přístupy a získat doporučenou a vysoce kvalitní předpověď časových řad.
 

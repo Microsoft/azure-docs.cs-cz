@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 09/17/2019
+ms.date: 01/05/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7cbb8c07b75509825795da45d8352140afd0864
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 3bec73ee7286ea831920fc20bd46cf43c2874081
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024224"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047101"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Přiřazení rolí Azure AD v Privileged Identity Management
 
@@ -61,19 +61,9 @@ Pomocí těchto kroků můžete uživateli poskytnout oprávnění pro roli spr�
 
 1. Vyberte roli, kterou chcete přiřadit, a potom klikněte na **Vybrat**.
 
-    Otevře se stránka **Vybrat člen nebo skupinu** .
+1. Vyberte člena, kterému chcete přiřadit roli, a pak vyberte **Vybrat**.
 
-1. Vyberte člena nebo skupinu, které chcete přiřadit k roli, a pak vyberte **Vybrat**.
-
-    ![Vybrat člena nebo podokno skupiny](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
-
-    Otevře se podokno nastavení členství.
-
-1. V seznamu **Typ přiřazení** vyberte možnost **oprávněné** nebo **aktivní**.
-
-    ![Podokno nastavení členství](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
-
-    Privileged Identity Management pro prostředky Azure nabízí dva odlišné typy přiřazení:
+1. V seznamu **Typ přiřazení** v podokně **nastavení členství** vyberte možnost **oprávněné** nebo **aktivní**.
 
     - **Způsobilá** přiřazení vyžadují, aby člen role prováděl akci pro použití role. Akce můžou zahrnovat provádění kontroly vícefaktorového ověřování (MFA), poskytování obchodního odůvodnění nebo žádosti o schválení od určených schvalovatelů.
 
@@ -83,13 +73,9 @@ Pomocí těchto kroků můžete uživateli poskytnout oprávnění pro roli spr�
 
     V závislosti na nastavení role se nemusí toto zaškrtávací políčko zobrazovat nebo může být neměnitelné.
 
-1. Chcete-li zadat konkrétní dobu trvání přiřazení, zrušte zaškrtnutí políčka a upravte pole počáteční a/nebo koncové datum a čas.
+1. Chcete-li zadat konkrétní dobu trvání přiřazení, zrušte zaškrtnutí políčka a upravte pole počáteční a/nebo koncové datum a čas. Po dokončení vyberte **Hotovo**.
 
     ![Nastavení členství – datum a čas](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
-
-1. Po dokončení vyberte **Hotovo**.
-
-    ![Nové přiřazení – přidat](./media/pim-resource-roles-assign-roles/resources-new-assignment-add.png)
 
 1. Chcete-li vytvořit nové přiřazení role, vyberte **Přidat**. Zobrazí se oznámení o stavu.
 

@@ -12,16 +12,16 @@ ms.date: 06/05/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d1ebb4b094ab5c03343486e7af6624273288453
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 7ca73fac06649f801461e53130a67aa9ec0ad0d0
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68421201"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063318"
 ---
 # <a name="application-management-with-azure-active-directory"></a>Správa aplikací pomocí služby Azure Active Directory
 
-Azure Active Directory (Azure AD) zjednodušuje způsob správy aplikací tím, že poskytuje jeden systém identit pro cloudové a místní aplikace. Do Azure AD můžete přidat své aplikace SaaS (software jako služba), místní aplikace a obchodní aplikace (LOB). Pak se uživatelé přihlásí jednou k bezpečnému a bezproblémovému přístupu k těmto aplikacím společně se sadou Office 365 a dalšími podnikovými aplikacemi od Microsoftu. [Automatizaci zřizování uživatelů](user-provisioning.md)můžete snížit náklady na správu. K zajištění zabezpečeného přístupu k aplikacím můžete použít taky službu Multi-Factor Authentication a zásady podmíněného přístupu.
+Azure Active Directory (Azure AD) zjednodušuje způsob správy aplikací tím, že poskytuje jeden systém identit pro cloudové a místní aplikace. Do Azure AD můžete přidat své aplikace SaaS (software jako služba), místní aplikace a obchodní aplikace (LOB). Pak se uživatelé přihlásí jednou k bezpečnému a bezproblémovému přístupu k těmto aplikacím společně se sadou Office 365 a dalšími podnikovými aplikacemi od Microsoftu. [Automatizaci zřizování uživatelů](../app-provisioning/user-provisioning.md)můžete snížit náklady na správu. K zajištění zabezpečeného přístupu k aplikacím můžete použít taky službu Multi-Factor Authentication a zásady podmíněného přístupu.
 
 ![Diagram, který zobrazuje aplikace federované přes Azure AD](media/what-is-application-management/app-management-overview.png)
 
@@ -33,7 +33,7 @@ Organizace mají často stovky aplikací, které uživatelé potřebují k výko
 
 Existují čtyři hlavní typy aplikací, které můžete přidat do **podnikových aplikací** a spravovat je pomocí Azure AD:
 
-- **Aplikace Galerie Azure AD** – Azure AD obsahuje galerii obsahující tisíce aplikací, které jsou předem integrované pro jednotné přihlašování pomocí Azure AD. Galerie pravděpodobně obsahuje i některé aplikace, které využívá vaše organizace. [Přečtěte si, jak naplánovat integraci aplikací](plan-an-application-integration.md), nebo Získejte podrobné kroky integrace pro jednotlivé aplikace v kurzech k [aplikacím SaaS](https://docs.microsoft.com/azure/active-directory/saas-apps/).
+- **Aplikace Galerie Azure AD** – Azure AD obsahuje galerii obsahující tisíce aplikací, které jsou předem integrované pro jednotné přihlašování pomocí Azure AD. Galerie pravděpodobně obsahuje i některé aplikace, které využívá vaše organizace. [Přečtěte si, jak naplánovat integraci aplikací](plan-an-application-integration.md), nebo Získejte podrobné kroky integrace pro jednotlivé aplikace v [kurzech k aplikacím SaaS](https://docs.microsoft.com/azure/active-directory/saas-apps/).
 
 - **Místní aplikace s proxy aplikací** – s Azure proxy aplikací služby AD můžete integrovat místní webové aplikace se službou Azure AD, aby podporovaly jednotné přihlašování. Pak koncoví uživatelé budou mít přístup k místním webovým aplikacím stejným způsobem jako přistupující k Office 365 a dalším aplikacím SaaS. [Zjistěte, proč používat proxy aplikace a jak funguje](what-is-application-proxy.md).
 
@@ -43,7 +43,7 @@ Existují čtyři hlavní typy aplikací, které můžete přidat do **podnikov�
 
 ## <a name="manage-risk-with-conditional-access-policies"></a>Řízení rizik pomocí zásad podmíněného přístupu
 
-Přihlašování služby Azure AD jednotného přihlašování (SSO) s podmíněným [přístupem](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) poskytuje vysoké úrovně zabezpečení pro přístup k aplikacím. Mezi možnosti zabezpečení patří ochrana identity v cloudovém měřítku, řízení přístupu na základě rizika, nativní vícefaktorové ověřování a zásady podmíněného přístupu. Tyto funkce umožňují podrobné zásady řízení přístupu na základě aplikací nebo skupin, které potřebují vyšší úroveň zabezpečení.
+Přihlašování služby Azure AD jednotného přihlašování (SSO) s [podmíněným přístupem](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) poskytuje vysoké úrovně zabezpečení pro přístup k aplikacím. Mezi možnosti zabezpečení patří ochrana identity v cloudovém měřítku, řízení přístupu na základě rizika, nativní vícefaktorové ověřování a zásady podmíněného přístupu. Tyto funkce umožňují podrobné zásady řízení přístupu na základě aplikací nebo skupin, které potřebují vyšší úroveň zabezpečení.
 
 ## <a name="improve-productivity-with-single-sign-on"></a>Vyšší produktivita pomocí jednotného přihlašování
 
@@ -62,4 +62,4 @@ Migrací do Azure AD můžete snížit náklady a zbavit se nepříjemností spo
 ## <a name="next-steps"></a>Další kroky
 
 - [Co je aplikace proxy?](what-is-application-proxy.md)
-- [Rychlé zprovoznění: Přidání aplikace Galerie do tenanta Azure AD](add-application-portal.md)
+- [Rychlý Start: Přidání aplikace Galerie do tenanta Azure AD](add-application-portal.md)

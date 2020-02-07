@@ -15,19 +15,41 @@ ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81c9d8582eb41d4a13799c42383ff22010c60577
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 11a5e92ccf1104f36b3f2b045f9922158b1f7330
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985155"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064137"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Kurz: Konfigurace pracoviště na Facebooku pro Automatické zřizování uživatelů
 
 Tento kurz popisuje kroky, které je třeba provést na pracovišti na Facebooku a Azure Active Directory (Azure AD) ke konfiguraci automatického zřizování uživatelů. Po nakonfigurování Azure AD automaticky zřídí a odzřídí uživatele a skupiny na [pracovišti pomocí Facebooku](https://work.workplace.com/) pomocí služby zřizování Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../manage-apps/user-provisioning.md).
 
-> [!NOTE]
-> Aplikace třetí strany Azure AD v pracovním prostoru na pracovišti byla schválena. Zákazníci nebudou mít přerušení služby od 16. prosince. Když budete potřebovat přejít na novou aplikaci, zobrazí se na pracovišti na pracovišti Konzola pro správu Facebooku ukazující konečný termín 28. února 2020. Pracujeme na tom, aby se přechod co nejjednodušší, a na konci měsíce vám poskytne aktualizaci.
+## <a name="migrating-to-the-new-workplace-by-facebook-application"></a>Migrace na nové pracoviště pomocí facebookové aplikace
+Pokud máte existující integraci s pracovištěm na Facebooku, přečtěte si následující část o změnách přicházejících. Pokud nastavujete pracovní plochu na Facebooku poprvé, můžete tuto část přeskočit a přejít na podporované funkce. 
+
+#### <a name="whats-changing"></a>Co se mění?
+* Změny na straně Azure AD: autorizační metoda pro zřízení uživatelů na pracovišti má historicky dlouhodobý tajný token. Brzy uvidíte způsob, jakým se autorizace změnila na udělení autorizace OAuth. 
+* Změny na straně pracoviště: dříve byla aplikace Azure AD vlastní integrací na pracovišti pomocí Facebooku. Teď se zobrazí Azure AD v adresáři integrace na pracovišti jako aplikace třetí strany. 
+
+ 
+
+#### <a name="what-do-i-need-to-do-to-migrate-my-existing-custom-integration-to-the-new-application"></a>Co potřebuji k migraci stávající vlastní integrace do nové aplikace?
+Pokud máte existující integraci na pracovišti s platným tokenem, **není nutná žádná akce**. Automaticky migrujeme zákazníky do nové aplikace. To se provádí kompletně na pozadí. Pokud nemůžete čekat na novou aplikaci ručně a chcete ji přesunout do nové aplikace, můžete z Galerie přidat novou instanci pracoviště a znovu nakonfigurovat zřizování. Všechny nové instance pracoviště budou automaticky používat novou verzi aplikace. 
+
+ 
+Pokud je vaše integrace na pracovišti v karanténě, bude nutné znovu dodat platný token, aby bylo možné provést migraci na nás. Oddíl přihlašovací údaje správce bude šedý, ale můžete připojit následující ( **? Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride = true**) na adresu URL pro opětovné uložení přihlašovacích údajů. 
+
+https://portal.azure.com/?Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride=true
+
+ 
+#### <a name="the-admin-credentials-section-is-greyed-out-on-my-application-and-i-cant-save-why"></a>Oddíl přihlašovací údaje správce je v aplikaci šedý a nemůžu uložit. Proč?
+Pro stávající zákazníky na pracovišti jsme uzamkl oddíl přihlašovací údaje správce. Až se váš tenant migruje do nové aplikace pracovní plochy, budete moct znovu aktualizovat oddíl přihlašovacích údajů pro správu. Pokud nemůžete čekat, můžete k úpravě aplikace použít výše uvedenou adresu URL. 
+
+ 
+#### <a name="when-will-these-changes-happen"></a>Kdy budou tyto změny provedeny?
+Všechny nové instance pracoviště už budou používat novou metodu Integration/Authorization. Stávající integrace se postupně migrují v únoru. Migrace bude dokončena pro všechny klienty na konci měsíce. 
 
 ## <a name="capabilities-supported"></a>Podporované funkce
 > [!div class="checklist"]
@@ -77,7 +99,7 @@ Služba zřizování Azure AD umožňuje obor, který se zřídí na základě p
 
 * Začněte malým. Než se pustíte do všech uživatelů, testujte je s malou sadou uživatelů a skupin. Pokud je obor pro zřizování nastavený na přiřazené uživatele a skupiny, můžete to řídit přiřazením jednoho nebo dvou uživatelů nebo skupin k aplikaci. Pokud je obor nastavený na všechny uživatele a skupiny, můžete zadat [Filtr oboru založený na atributech](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -103,7 +125,7 @@ Služba zřizování Azure AD umožňuje obor, který se zřídí na základě p
 
     ![E-mail s oznámením](common/provisioning-notification-email.png)
 
-7. Vyberte **Uložit**.
+7. Vyberte **Save** (Uložit).
 
 8. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory uživatelů na pracovišti pomocí Facebooku**.
 
@@ -111,10 +133,10 @@ Služba zřizování Azure AD umožňuje obor, který se zřídí na základě p
 
    |Atribut|Typ|
    |---|---|
-   |uživatelské jméno|Řetězec|
+   |userName|Řetězec|
    |displayName|Řetězec|
    |aktivní|Logická hodnota|
-   |název|Logická hodnota|
+   |Název|Logická hodnota|
    |e-mailů [typ eq "pracovní"] .value|Řetězec|
    |name.givenName|Řetězec|
    |name.familyName|Řetězec|
@@ -157,7 +179,7 @@ Jakmile nakonfigurujete zřizování, použijte k monitorování nasazení tyto 
 2. Podívejte se na [indikátor průběhu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) , kde se zobrazí stav cyklu zřizování a jak se má dokončit.
 3. Pokud se zdá, že konfigurace zřizování je ve stavu není v pořádku, bude aplikace přejít do karantény. Další informace o stavech karantény najdete [tady](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
-## <a name="troubleshooting-tips"></a>Tipy poradce při potížích
+## <a name="troubleshooting-tips"></a>Rady pro řešení potíží
 *  Pokud se uživateli zobrazí zpráva, že uživatel nebyl úspěšně vytvořen a existuje událost protokolu auditu s kódem "1789003", znamená to, že uživatel pochází z neověřené domény.
 
 ## <a name="additional-resources"></a>Další zdroje informací:

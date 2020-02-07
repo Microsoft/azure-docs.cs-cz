@@ -6,13 +6,13 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/22/2019
-ms.openlocfilehash: 0649908e4767e48d23306c72b8db92dea9f26284
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.date: 02/05/2020
+ms.openlocfilehash: 035f819cfaad82373f7cb55a7bb2d14fc53bb49b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030914"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064627"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Škálování clusterů Azure HDInsight
 
@@ -126,7 +126,7 @@ Pokud chcete tuto spuštěnou aplikaci odstranit ručně, spusťte v prostředí
 yarn application -kill <application_id>
 ```
 
-Například:
+Příklad:
 
 ```bash
 yarn application -kill "application_1499348398273_0003"
@@ -216,6 +216,10 @@ Pokud podregistr opustí dočasné soubory, můžete tyto soubory před horizont
 Pokud se vaše clustery v bezpečném režimu často zablokují při horizontálním navýšení kapacity na méně než tři pracovní uzly a předchozí kroky nefungují, můžete se tomuto clusteru vyhnout v bezpečném režimu, a to tak, že zachováte aspoň tři pracovní uzly.
 
 Zachování tří pracovních uzlů je dražší než horizontální snížení kapacity jenom na jeden pracovní uzel, ale zabrání tomu, aby se váš cluster dostal do bezpečného režimu.
+
+### <a name="scale-hdinsight-down-to-one-worker-node"></a>Škálování HDInsight dolů na jeden pracovní uzel
+
+I když je cluster rozložený dolů na 1 uzel, pracovní uzel 0 se pořád zachová. Pracovní uzel 0 nelze nikdy vyřadit z provozu.
 
 #### <a name="run-the-command-to-leave-safe-mode"></a>Spusťte příkaz pro opuštění nouzového režimu.
 

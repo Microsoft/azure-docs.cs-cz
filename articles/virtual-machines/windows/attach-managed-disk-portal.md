@@ -4,48 +4,48 @@ description: Jak se připojit spravovaného datového disku k virtuálnímu poč
 author: roygara
 ms.service: virtual-machines-windows
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 02/06/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0610b235d218c24c108e39aeb9bd3b2cf8c9c663
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8b651d6e5ca9262d38f5bfb9e10c404e2614809e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463436"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77055664"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Připojení spravovaného datového disku k virtuálnímu počítači s Windows pomocí webu Azure portal
 
-V tomto článku se dozvíte, jak připojit nový spravovaného datového disku k virtuálnímu počítači (VM) Windows pomocí webu Azure portal. Velikost virtuálního počítače určuje, kolik datových disků můžete připojit. Další informace najdete v tématu [velikosti virtuálních počítačů](sizes.md).
+V tomto článku se dozvíte, jak připojit nový spravovaného datového disku k virtuálnímu počítači (VM) Windows pomocí webu Azure portal. Velikost virtuálního počítače určuje, kolik datových disků můžete připojit. Další informace najdete v tématu [velikosti pro virtuální počítače](sizes.md).
 
 
 ## <a name="add-a-data-disk"></a>Přidání datového disku
 
 1. Chcete-li přidat datový disk, otevřete [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **virtuální počítače**.
 2. Vyberte virtuální počítač ze seznamu.
-3. Na **virtuálního počítače** stránce **disky**.
-4. Na **disky** stránce **přidat datový disk**.
-5. V rozevíracím seznamu pro nový disk, vyberte **vytvořit disk**.
-6. V **vytvoření spravovaného disku** stránky, zadejte název pro disk a podle potřeby upravte ostatní nastavení. Až to budete mít, vyberte **Vytvořit**.
-7. V **disky** stránce **Uložit** uložte novou konfiguraci disku pro virtuální počítač.
-8. Poté, co Azure disk vytvoří a připojí ho k virtuálnímu počítači, nový disk je uvedený v nastavení disku virtuálního počítače v rámci **datové disky**.
+3. Na stránce **virtuální počítač** vyberte **disky**.
+4. Na stránce **disky** vyberte **přidat datový disk**.
+5. V rozevíracím seznamu pro nový disk vyberte **vytvořit disk**.
+6. Na stránce **vytvořit spravovaný disk** zadejte název disku a podle potřeby upravte ostatní nastavení. Až to budete mít, vyberte **Vytvořit**.
+7. Na stránce **disky** vyberte **Uložit** a uložte novou konfiguraci disku pro virtuální počítač.
+8. Když Azure vytvoří disk a připojí ho k virtuálnímu počítači, nový disk se zobrazí v nastavení disku virtuálního počítače v části **datové disky**.
 
 
 ## <a name="initialize-a-new-data-disk"></a>Inicializovat nový datový disk
 
 1. Připojte se k virtuálnímu počítači.
-1. Vyberte Windows **Start** nabídku uvnitř spuštěného virtuálního počítače a zadejte **diskmgmt.msc** do vyhledávacího pole. **Správa disků** konzole otevře.
-2. Správa disků rozpozná, že máte novou neinicializované disků a **inicializovat Disk** zobrazí se okno.
-3. Ověřte nový disk je vybraná a pak vyberte **OK** inicializovat ji.
-4. Nový disk se zobrazí jako **nepřidělené**. Klikněte pravým tlačítkem na libovolné místo na disku a vyberte **nový jednoduchý svazek**. **Průvodci vytvořením jednoduchého svazku** otevře se okno.
-5. Pokračujte podle pokynů průvodce, všechny výchozí hodnoty, a po dokončení vyberte **Dokončit**.
-6. Zavřít **nástroji Správa disků**.
-7. Automaticky otevírané okno se zobrazí upozornění, že je nutné naformátovat nový disk, než budete moct použít. Vyberte **naformátovat disk**.
-8. V **naformátovat nový disk** okna, zkontrolujte nastavení a pak vyberte **Start**.
+1. V běžícím virtuálním počítači vyberte nabídku **Start** systému Windows a do vyhledávacího pole zadejte **diskmgmt. msc** . Otevře se konzola **pro správu disků** .
+2. Správa disků rozpozná, že máte nový, Neinicializovaný disk a zobrazí se okno **inicializovat disk** .
+3. Ověřte, že je vybraný nový disk, a pak ho inicializujte kliknutím na **OK** .
+4. Nový disk se zobrazí jako **nepřidělený**. Klikněte pravým tlačítkem na libovolné místo na disku a vyberte **Nový jednoduchý svazek**. Otevře se okno **Průvodce vytvořením jednoduchého svazku** .
+5. Pokračujte v průvodci, ponechte všechny výchozí hodnoty a až skončíte, vyberte **Dokončit**.
+6. Zavřete **správu disků**.
+7. Automaticky otevírané okno se zobrazí upozornění, že je nutné naformátovat nový disk, než budete moct použít. Vyberte **formátovat disk**.
+8. V okně **Formátovat nový disk** zkontrolujte nastavení a pak vyberte **Spustit**.
 9. Zobrazí se upozornění oznamující, že formátování disky vymaže všechna data. Vyberte **OK**.
-10. Po dokončení formátování vyberte **OK**.
+10. Až se formátování dokončí, vyberte **OK**.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Můžete také [připojení datového disku pomocí prostředí PowerShell](attach-disk-ps.md).
-- Pokud vaše aplikace potřebuje používat *D:* jednotka pro ukládání dat, můžete [změnit písmeno jednotky dočasného disku Windows](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+- [Datový disk můžete připojit také pomocí prostředí PowerShell](attach-disk-ps.md).
+- Pokud vaše aplikace potřebuje k ukládání dat použít jednotku *D:* , můžete [změnit písmeno jednotky pro dočasný disk se systémem Windows](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).

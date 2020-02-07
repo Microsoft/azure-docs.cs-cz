@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
-ms.openlocfilehash: f7d62487605c26a68e7c71b6d95d7814da0a07c9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 47e38d79e8aa4656b8164c94b4ef439bf431e01d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776388"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049671"
 ---
 # <a name="linux-support"></a>Podpora Linuxu
 
@@ -22,7 +22,7 @@ Můžete použít sadu Linux SDK pro virtuální plochu Windows k sestavení sam
 
 Pomocí rozhraní API sady SDK můžete načíst kanály prostředků, připojit se k relaci počítače nebo vzdálené aplikace a použít spoustu přesměrování, která naši klienti podporují.
 
-### <a name="supported-linux-distributions"></a>Podporované linuxové distribuce
+### <a name="supported-linux-distributions"></a>Podporované distribuce systému Linux
 
 Sada SDK je kompatibilní s největším operačním systémem, který je založený na Ubuntu 18,04 nebo novějším. Pokud máte jinou distribuci pro Linux, můžeme s vámi spolupracovat a zjistit, jak co nejlépe vyhovuje vašim potřebám.
 
@@ -55,7 +55,7 @@ Než budete moct vyvíjet klienta pro Linux pro virtuální počítače s Window
 
 ## <a name="next-steps"></a>Další kroky
 
-Můžete požádat o přístup k sadě Linux SDK na našem [fóru pro technickou komunitu](https://go.microsoft.com/fwlink/?linkid=2116541).
+Sada SDK je aktuálně ve vývoji. Tento dokument aktualizujeme pokyny pro přístup k sadě SDK, když je k dispozici.
 
 Projděte si naši dokumentaci pro následující klienty:
 

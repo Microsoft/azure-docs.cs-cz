@@ -2,7 +2,7 @@
 title: Připojte své pracovní zařízení k síti AD vaší organizace
 description: Naučte se připojit své pracovní zařízení k síti vaší organizace.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 149c0298ee7883aa130756bfc4d0cbbb9e002065
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 0ff8b85a15d94ded2d702e0df247f9ebc4d3f923
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704642"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062264"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Připojte své pracovní zařízení k síti vaší organizace.
 Připojte zařízení s Windows 10 vlastněné do sítě vaší organizace, abyste měli přístup k potenciálně omezeným prostředkům.

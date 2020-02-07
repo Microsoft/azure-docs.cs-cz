@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/26/2020
 ms.author: damendo
-ms.openlocfilehash: 2ae6314accf5ad9143e1e103239c2e7c884ec947
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 6980518da00e6849c327ca712bbeadaa816ae479
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776635"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77056661"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>Konfigurace protokolů toku NSG ze šablony Azure Resource Manager
 
@@ -38,7 +38,7 @@ V tomto článku se dozvíte, jak povolit [protokoly toku NSG](https://docs.micr
 
 ## <a name="nsg-flow-logs-object"></a>Objekt protokolů toku NSG
 
-V následujícím seznamu jsou uvedeny objekty protokolů toku NSG se všemi parametry with.
+V následujícím seznamu jsou uvedeny objekty protokolů toku NSG se všemi parametry.
 Úplný přehled vlastností najdete v článku [referenční informace k šabloně NSG Flow log](https://docs.microsoft.com/azure/templates/microsoft.network/2019-11-01/networkwatchers/flowlogs#RetentionPolicyParameters).
 
 ```json
@@ -171,6 +171,6 @@ Existuje několik způsobů, jak ověřit, zda nasazení proběhlo úspěšně. 
 ## <a name="next-steps"></a>Další kroky
 
 Naučte se vizualizovat data toku NSG pomocí:
-* [Microsoft Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
+* [Power BI Microsoftu](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 * [Nástroje pro open source](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 * [Analýza provozu Azure](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)

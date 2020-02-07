@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/13/2019
+ms.date: 02/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a480327efacee2d1eb74353b2d0ef7885a6194
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a409d71ff3eae3bc62527a0669a74696246a50cd
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024207"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048091"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Konfigurace nastavení role Azure AD v Privileged Identity Management
 
@@ -43,12 +43,8 @@ Podle kroků v tomto článku můžete schvalovat nebo odmítat žádosti pro ro
 Pomocí těchto kroků otevřete nastavení role Azure AD.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) s uživatelem v roli [správce privilegované role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
-
-1. Otevřete **Azure AD Privileged Identity Management**.
-
-1. Vyberte **role Azure AD**.
-
-1. Vyberte **Nastavení role**.
+gt
+1. Otevřete **Azure AD Privileged Identity Management** &gt; **role Azure AD** &gt; **Nastavení role**.
 
     ![Stránka nastavení role výpis rolí prostředků Azure](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
@@ -89,11 +85,11 @@ Privileged Identity Management poskytuje volitelnou vynucování Multi-Factor Au
 
 ### <a name="require-multi-factor-authentication-on-active-assignment"></a>Vyžadovat Multi-Factor Authentication aktivnímu přiřazení
 
-V některých případech můžete chtít přiřadit uživatele nebo skupinu do role po krátkou dobu (například jeden den). V takovém případě nemusíte přiřazeným uživatelům požádat o aktivaci. V tomto scénáři Privileged Identity Management nemůžou vymáhat ověřování službou Multi-Factor Authentication, pokud uživatel použije přiřazení role, protože už je v roli aktivní od okamžiku, kdy je přiřazený.
+V některých případech můžete chtít přiřadit uživatele k roli po krátkou dobu (například jeden den). V takovém případě nemusíte přiřazeným uživatelům požádat o aktivaci. V tomto scénáři Privileged Identity Management nemůžou vymáhat ověřování službou Multi-Factor Authentication, pokud uživatel použije přiřazení role, protože už je v roli aktivní od okamžiku, kdy je přiřazený.
 
 Chcete-li zajistit, že správce prostředků, který odpovídá přiřazení, říká, že jsou k němu přihlášeni, můžete vynutit vícefaktorové ověřování u aktivního přiřazení zaškrtnutím políčka **vyžadovat Multi-Factor Authentication v aktivním přiřazení** .
 
-### <a name="require-multi-factor-authentication-on-activation"></a>Vyžadovat Multi-Factor Authentication při aktivaci
+### <a name="require-multi-factor-authentication-on-activation"></a>Při aktivaci vyžadovat vícefaktorové ověřování
 
 Můžete vyžadovat, aby uživatelé, kteří mají nárok na roli, prokázali, že používají Multi-Factor Authentication Azure, než se můžou aktivovat. Multi-Factor Authentication zajišťuje uživatelům, kteří říkají, že mají rozumnou jistotu. Vynucování této možnosti chrání kritické prostředky v situacích, kdy může dojít k ohrožení uživatelského účtu.
 
@@ -115,11 +111,11 @@ Pokud chcete pro aktivaci role vyžadovat schválení, postupujte podle těchto 
 
 1. Zaškrtněte políčko **vyžadovat schválení k aktivaci** .
 
-1. Vyberte **Vybrat schvalovatelé** a otevřete stránku **Vybrat člen nebo skupinu** .
+1. Vyberte **Vybrat schvalovatelé**.
 
     ![Vyberte uživatele nebo podokno skupiny pro výběr schvalovatelů.](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
-1. Vyberte aspoň jednoho uživatele nebo skupinu a potom klikněte na **Vybrat**. Můžete přidat libovolnou kombinaci uživatelů a skupin. Musíte vybrat aspoň jednoho schvalovatele. Neexistují žádní výchozí schvalovatelé.
+1. Vyberte aspoň jednoho uživatele a pak klikněte na **Vybrat**. Musíte vybrat aspoň jednoho schvalovatele. Neexistují žádní výchozí schvalovatelé.
 
     Vaše výběry se zobrazí v seznamu vybraných schvalovatelů.
 
@@ -135,7 +131,7 @@ Pomocí těchto kroků otevřete nastavení role Azure AD.
 
 1. Vyberte **role Azure AD**.
 
-1. Vyberte **nastavení**.
+1. Vyberte **Nastavení**.
 
     ![Role Azure AD – nastavení](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
 
@@ -147,7 +143,7 @@ Pomocí těchto kroků otevřete nastavení role Azure AD.
 
     Na stránce nastavení pro každou roli existuje několik nastavení, která můžete konfigurovat. Tato nastavení mají vliv jenom na uživatele, kteří jsou **oprávněná** přiřazení, ne na **trvalá** přiřazení.
 
-## <a name="activations"></a>Aktivací
+## <a name="activations"></a>Aktivace
 
 Pomocí posuvníku **Aktivace** nastavte maximální dobu v hodinách, po kterou role zůstane aktivní, než vyprší její platnost. Tato hodnota může být v rozmezí od 1 do 72 hodin.
 
@@ -208,7 +204,7 @@ Pokud chcete delegovat požadované schválení pro aktivaci role, postupujte po
 
     ![Role Azure AD – nastavení-vyžadovat schválení](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
 
-1. Kromě správce privilegovaných rolí vyberte aspoň jednoho schvalovatele a potom klikněte na **Vybrat**. Můžete vybrat uživatele nebo skupiny. Doporučujeme přidat alespoň dva schvalovatele. I v případě, že jako schvalovatele přidáte sebe sama, nemůžete sami schválit aktivaci role. Vaše výběry se zobrazí v seznamu vybraných schvalovatelů.
+1. Kromě správce privilegovaných rolí vyberte aspoň jednoho schvalovatele a potom klikněte na **Vybrat**. Doporučujeme přidat alespoň dva schvalovatele. I v případě, že jako schvalovatele přidáte sebe sama, nemůžete sami schválit aktivaci role. Vaše výběry se zobrazí v seznamu vybraných schvalovatelů.
 
 1. Po zadání všech nastavení role uložte změny kliknutím na **Uložit** .
 

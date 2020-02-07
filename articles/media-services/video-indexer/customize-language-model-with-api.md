@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 01/14/2020
+ms.date: 02/04/2020
 ms.author: anzaman
-ms.openlocfilehash: e8df7ffd285b0d49f5d4a87585e769b5b0bbafe9
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 01ea4d9ef943183f09baa86b729ec69344d4309e
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513146"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049031"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-apis"></a>Přizpůsobení jazykového modelu pomocí Video Indexer rozhraní API
 
@@ -105,9 +105,8 @@ Odpověď poskytuje metadata nově vyučeného jazykového modelu spolu s metada
 }
 ```
 
-Při [nahrávání videa do indexu](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) a parametru **languageModelId** při [Reindexování videa](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)byste měli použít hodnotu vráceného **ID** modelu jazyka pro parametr **linguisticModelId** .
+Vrácený **identifikátor** je jedinečné ID, které se používá k rozlišení mezi jazykovými modely, zatímco **languageModelId** se používá pro [nahrání videa do indexu](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) a při opětovném indexování rozhraní API pro [video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) (označované také jako **LinguisticModelId** v video indexer nahrát nebo znovu indexovat rozhraní API).
 
- 
 ## <a name="delete-a-language-model"></a>Odstranění jazykového modelu
 
 Rozhraní API pro [odstranění jazykových modelů](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete) odstraní z určeného účtu vlastní jazykový model. Všechna videa, která používala odstraněný jazykový model, budou mít stejný index, dokud video znovu neindexujte. Pokud video znovu indexovat, můžete video přiřadit nový jazykový model. V opačném případě Video Indexer použije výchozí model k opakovanému indexování videa.
