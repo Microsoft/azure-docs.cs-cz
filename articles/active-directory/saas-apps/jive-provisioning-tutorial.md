@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace Jive pro automatické zřizování uživatelů pomocí Azure Active Directory | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Jive.
+title: 'Kurz: Konfigurace Jive pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a jive.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,92 +15,92 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 607d538a2a2636e17265e95195000a777f162dc4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 602eed65745eea1fd9096508c442a27ea79bcba9
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60263382"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057730"
 ---
-# <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>Kurz: Konfigurace Jive pro automatické zřizování uživatelů
+# <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>Kurz: Konfigurace Jive pro Automatické zřizování uživatelů
 
-Cílem tohoto kurzu je zobrazit kroky, které je třeba provést v Jive a Azure AD automaticky zřizovat a rušit přístup uživatelských účtů ze služby Azure AD k Jive.
+Cílem tohoto kurzu je Ukázat kroky, které musíte v Jive a Azure AD použít k automatickému zřízení a zrušení zřízení uživatelských účtů z Azure AD až Jive.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Scénář popsaný v tomto kurzu se předpokládá, že máte následující položky:
+Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
 
-*   Tenanta služby Azure Active directory.
-*   Jive jednotné přihlašování v předplatném povolené.
+*   Tenant Azure Active Directory.
+*   Předplatné s povoleným jedním přihlašováním (Jive).
 *   Uživatelský účet v Jive s oprávněními správce týmu.
 
 ## <a name="assigning-users-to-jive"></a>Přiřazování uživatelů k Jive
 
-Azure Active Directory používá koncept nazvaný "přiřazení" k určení, kteří uživatelé měli obdržet přístup k vybrané aplikace. V rámci zřizování automatické uživatelských účtů je synchronizovat jenom uživatelé a skupiny, které se "přiřadily" aplikace ve službě Azure AD.
+Azure Active Directory používá koncept nazvaný "přiřazení" k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelských účtů se synchronizují jenom uživatelé a skupiny přiřazené k aplikaci v Azure AD.
 
-Před konfigurací a povolení služby zřizování, je potřeba rozhodnout, jaké uživatele a/nebo skupiny ve službě Azure AD, kteří potřebují přístup k vaší aplikaci Jive představují. Po se rozhodli, můžete přiřadit tito uživatelé do vaší aplikace Jive podle zde uvedených pokynů:
+Než nakonfigurujete a povolíte službu zřizování, musíte se rozhodnout, co uživatelé a skupiny ve službě Azure AD reprezentují uživatelé, kteří potřebují přístup k aplikaci Jive. Po rozhodnutí můžete tyto uživatele přiřadit do aplikace Jive podle pokynů uvedených tady:
 
-[Přiřadit uživatele nebo skupiny k podnikové aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Přiřazení uživatele nebo skupiny k podnikové aplikaci](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-jive"></a>Důležité tipy pro přiřazování uživatelů k Jive
+### <a name="important-tips-for-assigning-users-to-jive"></a>Důležité tipy pro přiřazení uživatelů k Jive
 
-*   Dále je doporučeno jednoho uživatele Azure AD pro Jive přidělí k otestování konfigurace zřizování. Další uživatele a/nebo skupiny může být přiřazen později.
+*   Doporučuje se, aby se k otestování konfigurace zřizování přiřadil jeden uživatel Azure AD Jive. Další uživatele a skupiny můžete přiřadit později.
 
-*   Při přiřazení uživatele k Jive, musíte vybrat platné uživatelské role. Tuto roli "Výchozí přístupu" nefunguje pro zřizování.
+*   Při přiřazování uživatele k Jive je nutné vybrat platnou roli uživatele. Role výchozí přístup nefunguje pro zřizování.
 
 ## <a name="enable-user-provisioning"></a>Povolit zřizování uživatelů
 
-Tato část vás provede připojení k rozhraní API zřizování Jive uživatelský účet služby Azure AD a konfigurace služby zřizování, pokud chcete vytvořit, aktualizovat a zakázat přiřazené uživatelské účty v Jive podle přiřazení uživatelů a skupin ve službě Azure AD.
+V této části se seznámíte s připojením k rozhraní API pro zřizování uživatelských účtů ve službě Azure AD a konfigurací služby zřizování k vytváření, aktualizaci a zakázání přiřazených uživatelských účtů v Jive na základě přiřazení uživatelů a skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete také povolena založené na SAML jednotného přihlašování pro Jive, postupujte podle pokynů uvedených v [webu Azure portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce návrzích mezi sebou.
+> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro Jive, a to podle pokynů uvedených v tématu [Azure Portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování, i když se tyto dvě funkce navzájem doplňují.
 
-### <a name="to-configure-user-account-provisioning"></a>Postup konfigurace zřizování uživatelských účtů:
+### <a name="to-configure-user-account-provisioning"></a>Konfigurace zřizování uživatelských účtů:
 
-Cílem této části se popisují, jak povolit zřizování uživatelů z Active Directory uživatelské účty do Jive.
-V rámci tohoto postupu je nutné poskytnout token zabezpečení uživatele, které je potřeba Jive.com žádat.
+Cílem této části je vysvětlit, jak povolit uživatelům zřizování uživatelských účtů služby Active Directory pro Jive.
+V rámci tohoto postupu je potřeba poskytnout token zabezpečení uživatele, který potřebujete pro vyžádání z Jive.com.
 
-1. V [webu Azure portal](https://portal.azure.com), přejděte **Azure Active Directory > podnikové aplikace > všechny aplikace** části.
+1. V [Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory > Enterprise Apps > všechny aplikace** .
 
-1. Pokud jste už nakonfigurovali Jive pro jednotné přihlašování, vyhledejte svoji instanci služby Jive pomocí vyhledávacího pole. V opačném případě vyberte **přidat** a vyhledejte **Jive** v galerii aplikací. Ve výsledcích hledání vyberte Jive a přidat do seznamu aplikací.
+1. Pokud jste už nakonfigurovali Jive pro jednotné přihlašování, vyhledejte vaši instanci Jive pomocí vyhledávacího pole. V opačném případě vyberte **Přidat** a vyhledejte **Jive** v galerii aplikací. Ve výsledcích hledání vyberte Jive a přidejte je do seznamu aplikací.
 
-1. Vyberte instanci Jive a potom **zřizování** kartu.
+1. Vyberte svou instanci Jive a pak vyberte kartu **zřizování** .
 
-1. Nastavte **režim zřizování** k **automatické**. 
+1. Nastavte **režim zřizování** na **automaticky**. 
 
-    ![Zřizování](./media/jive-provisioning-tutorial/provisioning.png)
+    ![zřizování](./media/jive-provisioning-tutorial/provisioning.png)
 
-1. V části **přihlašovacích údajů správce** části, zadejte následující nastavení konfigurace:
+1. V části **přihlašovací údaje správce** zadejte následující nastavení konfigurace:
    
-    a. V **uživatelské jméno správce Jive** textové pole, typ Jive účtu název, který má **správce systému** profilu v Jive.com přiřazené.
+    a. Do textového pole **uživatelské jméno správce Jive** zadejte název účtu Jive, který má přiřazený profil **správce systému** v Jive.com.
    
-    b. V **heslo správce Jive** textového pole zadejte heslo pro tento účet.
+    b. Do textového pole **heslo správce Jive** zadejte heslo pro tento účet.
    
-    c. V **adresa URL Jive Tenanta** textového pole zadejte adresu URL Jive tenanta.
+    c. Do textového pole **Adresa URL tenanta Jive** zadejte adresu URL tenanta Jive.
       
       > [!NOTE]
-      > Adresa URL Jive tenanta je URL, která se používá ve vaší organizaci se přihlaste k Jive.  
-      > Obvykle, adresa URL má následující formát: **www.\< organizace\>. jive.com**.          
+      > Adresa URL tenanta Jive je adresa URL, kterou vaše organizace používá k přihlášení k Jive.  
+      > Adresa URL má obvykle následující formát: **www.\<organizace\>. Jive.com**.          
 
-1. Na webu Azure Portal, klikněte na tlačítko **Test připojení** aby Azure AD můžete připojit k aplikaci Jive.
+1. V Azure Portal klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k vaší aplikaci Jive.
 
-1. Zadejte e-mailovou adresu osoby nebo skupiny, která má obdržet oznámení zřizování chyby v **e-mailové oznámení** pole a zaškrtněte políčko níže.
+1. Zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování v poli **e-mail s oznámením** , a zaškrtněte políčko níže.
 
-1. Klikněte na tlačítko **uložit.**
+1. Klikněte na **Uložit.**
 
-1. V oddílu mapování, vyberte **synchronizace Azure Active Directory uživatelům Jive.**
+1. V části mapování vyberte **synchronizovat Azure Active Directory uživatelé Jive.**
 
-1. V **mapování atributů** , projděte si atributy uživatele, které se synchronizují ze služby Azure AD do Jive. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelské účty v Jive pro operace update. Vyberte tlačítko Uložit potvrďte změny.
+1. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do Jive. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Jive pro operace aktualizace. Vyberte tlačítko Uložit potvrďte změny.
 
-1. Chcete-li povolit služba pro Jive zřizování Azure AD, změňte **stavu zřizování** k **na** v sekci nastavení
+1. Pokud chcete povolit službu Azure AD Provisioning pro Jive, změňte **stav zřizování** na **zapnuto** v části nastavení.
 
-1. Klikněte na tlačítko **uložit.**
+1. Klikněte na **Uložit.**
 
-Spustí počáteční synchronizaci všech uživatelů a skupiny přiřazené k Jive v části Uživatelé a skupiny. Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut za předpokladu, že služba běží. Můžete použít **podrobnosti synchronizace** části ke sledování průběhu a odkazech na zřizování protokoly aktivit, které popisují všechny akce provedené v aplikaci Jive zřizovací služba.
+Spustí počáteční synchronizaci všech uživatelů nebo skupin přiřazených Jive v části Uživatelé a skupiny. Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut za předpokladu, že služba běží. Pomocí části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na zřizování protokolů aktivit, které popisují všechny akce prováděné službou zřizování ve vaší aplikaci Jive.
 
-Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
