@@ -4,6 +4,12 @@
   items:
     - name: Informace o virtuální síti WAN
       href: virtual-wan-about.md
+    - name: Architektura
+      items:
+        - name: Migrace na Virtual WAN
+          href: migrate-from-hub-spoke-topology.md
+        - name: Architektura globální přenosové sítě
+          href: virtual-wan-global-transit-network-architecture.md
 - name: Kurzy
   items:
     - name: Vytvoření připojení typu Site-to-Site
@@ -18,12 +24,6 @@
       href: virtual-wan-locations-partners.md
     - name: Zásady protokolu IPsec
       href: virtual-wan-ipsec.md
-    - name: Architektura
-      items:
-        - name: Migrace na Virtual WAN
-          href: migrate-from-hub-spoke-topology.md
-        - name: Architektura globální přenosové sítě
-          href: virtual-wan-global-transit-network-architecture.md
 - name: Návody
   items:
     - name: Připojení brány virtuální sítě k Virtual WAN

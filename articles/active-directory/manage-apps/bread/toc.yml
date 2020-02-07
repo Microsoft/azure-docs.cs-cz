@@ -64,3 +64,14 @@
         - name: Správa aplikací
           tocHref: /azure/active-directory-domain-services/
           topicHref: /azure/active-directory/manage-apps/index
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: Active Directory
+      tocHref: /azure/app-provisioning/
+      topicHref: /azure/active-directory/index
+      items:
+        - name: Správa aplikací
+          tocHref: /azure/app-provisioning/
+          topicHref: /azure/active-directory/manage-apps/index

@@ -5,10 +5,10 @@
   items:
     - name: Co je správa cloudových aplikací a jednotné přihlašování?
       href: what-is-application-management.md
-    - name: Co je zřizování aplikací?
-      href: user-provisioning.md
     - name: Co je proxy aplikací pro místní aplikace?
       href: what-is-application-proxy.md
+    - name: Co je zřizování aplikací?
+      href: /azure/active-directory/app-provisioning/user-provisioning?context=azure/active-directory/manage-apps/context/manage-apps-context
 - name: Rychlé starty
   items:
     - name: Přidání cloudové aplikace z galerie
@@ -72,16 +72,6 @@
               href: howto-saml-token-encryption.md
             - name: Portály pro koncové uživatele
               href: end-user-experiences.md
-    - name: Zřizování aplikací (SCIM)
-      items:
-        - name: Jak funguje zřizování
-          href: how-provisioning-works.md
-        - name: Naplánování nasazení automatického zřizování uživatelů
-          href: plan-auto-user-provisioning.md
-    - name: Zřizování HR v cloudu
-      items:
-        - name: Naplánování nasazení zřizování uživatelů HR v cloudu
-          href: plan-cloud-hr-provision.md
     - name: Proxy aplikací pro místní aplikace
       items:
         - name: Proxy aplikací
@@ -237,60 +227,6 @@
                   href: access-panel-extension-problem-installing.md
                 - name: Chyba při využívání samoobslužného přístupu k aplikacím
                   href: access-panel-troubleshoot-self-service-access.md
-    - name: Zřizování aplikací (SCIM)
-      items:
-        - name: Konfigurace zřizování pro aplikaci v galerii
-          href: configure-automatic-user-provisioning-portal.md
-        - name: Vytvoření koncového bodu SCIM a konfigurace zřizování
-          href: use-scim-to-provision-users-and-groups.md
-        - name: Úprava mapování atributů
-          items:
-            - name: Přizpůsobení mapování atributů
-              href: Customize-application-attributes.md
-            - name: Zápis výrazů pro mapování atributů
-              href: functions-for-customizing-application-data.md
-        - name: Zahrnutí nebo vyloučení uživatelů a skupin z rozsahu
-          items:
-            - name: Vymezení uživatelů nebo skupin pro zřízení
-              href: define-conditional-rules-for-provisioning-user-accounts.md
-            - name: Přeskočení odstranění pro uživatele mimo rozsah
-              href: skip-out-of-scope-deletions.md
-        - name: Monitorování a vytváření sestav ke zřizování
-          items:
-            - name: Monitorování stavu zřizování a výkonu
-              href: application-provisioning-when-will-provisioning-finish-specific-user.md
-            - name: Sestava zřizování aplikací
-              href: check-status-user-account-provisioning.md
-            - name: Export a import konfigurace
-              href: export-import-provisioning-configuration.md
-        - name: Automatizace konfigurace s využitím MS Graphu
-          href: application-provisioning-configure-api.md
-        - name: Řešení potíží se zřizováním uživatelů
-          items:
-            - name: Řešení potíží se zřizováním aplikací
-              href: application-provisioning-config-problem.md
-            - name: Stav karantény
-              href: application-provisioning-quarantine-status.md
-            - name: Protokoly zřizování
-              href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
-            - name: Synchronizace atributu pro mapování – aplikace v galerii
-              href: user-provisioning-sync-attributes-for-mapping.md
-            - name: Hodiny – aplikace v galerii
-              href: application-provisioning-when-will-provisioning-finish.md
-            - name: Problém s autorizací (nepovedlo se uložit přihlašovací údaje správce)
-              href: application-provisioning-config-problem-storage-limit.md
-            - name: Uživatelé nejsou zřízení
-              href: application-provisioning-config-problem-no-users-provisioned.md
-            - name: Zřízení nesprávných uživatelů
-              href: application-provisioning-config-problem-wrong-users-provisioned.md
-            - name: Úloha zřizování v karanténě
-              href: application-provisioning-quarantine-status.md
-            - name: Chybějící atribut zdroje
-              href: user-provisioning-sync-attributes-for-mapping.md
-            - name: Úloha zřizování je pomalá
-              href: application-provisioning-when-will-provisioning-finish.md
-            - name: Protokoly zřizování
-              href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
     - name: Proxy aplikací pro místní aplikace
       items:
         - name: Konfigurace konektorů
@@ -391,28 +327,10 @@
           href: secure-hybrid-access.md
 - name: Referenční informace
   items:
-    - name: Zřizování aplikací (SCIM)
-      items:
-        - name: Zápis výrazů pro mapování atributů
-          href: functions-for-customizing-application-data.md
-        - name: Volba metody zřizování
-          href: isv-automatic-provisioning-multi-tenant-apps.md
-    - name: Zřizování HR v cloudu
-      items:
-        - name: Referenční informace k atributu SuccessFactors
-          href: sap-successfactors-attribute-reference.md
-        - name: Referenční informace k atributu Workday
-          href: workday-attribute-reference.md
-    - name: Agent zřizování Azure AD Connect
-      items:
-        - name: Historie verzí agenta zřizování
-          href: provisioning-agent-release-version-history.md
-    - name: Proxy aplikací pro místní aplikace
-      items:
-        - name: Nejčastější dotazy k proxy aplikací
-          href: application-proxy-faq.md
-        - name: Historie verzí Proxy aplikací
-          href: application-proxy-release-version-history.md
+    - name: Nejčastější dotazy k proxy aplikací
+      href: application-proxy-faq.md
+    - name: Historie verzí Proxy aplikací
+      href: application-proxy-release-version-history.md
 - name: Zdroje a prostředky
   items:
     - name: Možnosti pomoci a podpory pro vývojáře
