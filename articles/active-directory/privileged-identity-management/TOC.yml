@@ -67,7 +67,7 @@
               href: azure-ad-custom-roles-configure.md
         - name: Zobrazení historie auditů
           href: pim-how-to-use-audit-log.md
-    - name: Správa rolí prostředků Azure
+    - name: Správa rolí Azure
       items:
         - name: Přiřazení rolí
           href: pim-resource-roles-assign-roles.md
@@ -97,7 +97,7 @@
               href: pim-how-to-perform-security-review.md
             - name: Dokončení kontroly přístupu
               href: pim-how-to-complete-review.md
-        - name: Role prostředků Azure
+        - name: Role Azure
           items:
             - name: Vytvoření kontroly přístupu
               href: pim-resource-roles-start-access-review.md

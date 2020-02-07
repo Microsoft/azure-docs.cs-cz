@@ -437,7 +437,7 @@
       href: vmware-azure-disaster-recovery-powershell.md
     - name: Nastavení zotavení po havárii virtuálních počítačů Hyper-V do Azure s využitím PowerShellu
       href: hyper-v-azure-powershell-resource-manager.md
-    - name: Nastavení zotavení po havárii virtuálních počítačů Hyper-V (s VMM) do Azure s využitím PowerShellu
+    - name: Nastavení zotavení po havárii virtuálních počítačů Hyper-V (s VMM) s využitím PowerShellu
       href: hyper-v-vmm-powershell-resource-manager.md
     - name: Přidání runbooků automatizace do plánů obnovení
       href: site-recovery-runbook-automation.md

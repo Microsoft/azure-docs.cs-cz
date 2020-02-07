@@ -161,6 +161,8 @@
         - name: Nasazení – REST API
           displayName: deployment
           href: deploy-rest.md
+        - name: Nasazení z GitHubu
+          href: deploy-to-azure-button.md
         - name: Nasazení What-If
           href: template-deploy-what-if.md
         - name: Opětovné nasazení při chybě
