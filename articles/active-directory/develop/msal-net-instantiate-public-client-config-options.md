@@ -3,22 +3,22 @@ title: Vytvoření instance veřejné klientské aplikace (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Naučte se vytvářet instance veřejné klientské aplikace s možnostmi konfigurace pomocí knihovny Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/30/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: c07ffb77a838a91bd7eed4b9e40b39050450981c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 1dd06e139f931bbf8554f05f05c5d9b9ccf200e8
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695496"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083594"
 ---
 # <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>Vytvoření instance veřejné klientské aplikace s možnostmi konfigurace pomocí MSAL.NET
 

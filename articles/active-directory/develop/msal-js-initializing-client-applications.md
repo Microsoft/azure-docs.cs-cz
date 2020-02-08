@@ -3,22 +3,22 @@ title: Inicializovat klientské aplikace MSAL. js | Azure
 titleSuffix: Microsoft identity platform
 description: Seznamte se s inicializací klientských aplikací pomocí knihovny Microsoft Authentication Library pro JavaScript (MSAL. js).
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/12/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e350f4fc3d40b45a1308e1edd9331dc7f71399c5
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a0a2c5fc971c3f1f3283d95c5617bdf1e88a6a58
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696125"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084046"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Inicializace klientských aplikací pomocí MSAL. js
 Tento článek popisuje inicializaci knihovny Microsoft Authentication Library pro JavaScript (MSAL. js) s instancí aplikace uživatelského agenta. Aplikace User-Agent je forma veřejné klientské aplikace, ve které se klientský kód spouští v uživatelském agentovi, jako je webový prohlížeč. Tito klienti neukládají tajné kódy, protože kontext prohlížeče je otevřený. Další informace o typech klientských aplikací a možnostech konfigurace aplikací najdete v [přehledu](msal-client-applications.md).
@@ -118,13 +118,13 @@ Níže je uvedená celková sada konfigurovatelných možností, které jsou akt
     * V Azure AD B2C má formu `https://<instance>/tfp/<tenant>/<policyName>/`, kde instance je Azure AD B2C doména, tj. {your-tenant-Name}. b2clogin. com, tenant je název Azure AD B2C tenanta, tj. {your-tenant-Name}. Microsoft. com, Policy je název zásady B2C, které se mají použít.
 
 
-- **validateAuthority**: volitelné.  Ověření vystavitele tokenů. Výchozí je `true`. Pro B2C aplikace, protože je hodnota autority známá a může se lišit podle zásad, ověření platnosti autority nebude fungovat a musí být nastavená na `false`.
+- **validateAuthority**: volitelné.  Ověření vystavitele tokenů. Výchozí hodnota je `true`. Pro B2C aplikace, protože je hodnota autority známá a může se lišit podle zásad, ověření platnosti autority nebude fungovat a musí být nastavená na `false`.
 
 - **redirectUri**: volitelné.  Identifikátor URI pro přesměrování vaší aplikace, ve kterém může vaše aplikace odesílat a přijímat odpovědi na ověřování. Musí přesně odpovídat jednomu z identifikátorů URI přesměrování, které jste zaregistrovali na portálu. Výchozí hodnota je `window.location.href`.
 
 - **postLogoutRedirectUri**: volitelné.  Přesměruje uživatele na `postLogoutRedirectUri` po odhlášení. Výchozí hodnota je `redirectUri`.
 
-- **navigateToLoginRequestUrl**: volitelné. Možnost vypnout výchozí navigaci na úvodní stránku po přihlášení. Platí výchozí hodnota. Používá se pouze pro toky přesměrování.
+- **navigateToLoginRequestUrl**: volitelné. Možnost vypnout výchozí navigaci na úvodní stránku po přihlášení. Výchozí hodnota je true. Používá se pouze pro toky přesměrování.
 
 - **cacheLocation**: volitelné.  Nastaví úložiště prohlížeče buď na `localStorage`, nebo na `sessionStorage`. Výchozí formát je `sessionStorage`.
 

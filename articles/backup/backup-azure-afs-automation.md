@@ -3,12 +3,12 @@ title: Zálohování souborů Azure pomocí PowerShellu
 description: V tomto článku se dozvíte, jak zálohovat soubory Azure pomocí služby Azure Backup a PowerShellu.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 5147ab893d4ebad395d7dbd8cc25872177ec10a2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a80589fb45937949b3612e12139ab1615bc1620d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773108"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086938"
 ---
 # <a name="back-up-azure-files-with-powershell"></a>Zálohování souborů Azure pomocí PowerShellu
 
@@ -35,7 +35,7 @@ Hierarchie objektů je shrnuta v následujícím diagramu.
 
 ![Recovery Services hierarchie objektů](./media/backup-azure-vms-arm-automation/recovery-services-object-hierarchy.png)
 
-Přečtěte si referenční informace k rutině **AZ. RecoveryServices** [cmdlet reference](/powershell/module/az.recoveryservices) v knihovně Azure.
+Přečtěte si referenční informace k [rutině](/powershell/module/az.recoveryservices) **AZ. RecoveryServices** v knihovně Azure.
 
 ## <a name="set-up-and-install"></a>Nastavení a instalace
 
@@ -44,6 +44,13 @@ Přečtěte si referenční informace k rutině **AZ. RecoveryServices** [cmdlet
 Nastavte PowerShell následujícím způsobem:
 
 1. [Stáhněte si nejnovější verzi programu AZ PowerShell](/powershell/azure/install-az-ps). Minimální požadovaná verze je 1.0.0.
+
+> [!WARNING]
+> Minimální verze PS požadovaná pro verzi Preview byla "AZ 1.0.0". Z důvodu nadcházejících změn pro GA bude minimální požadovaná verze PS "AZ. RecoveryServices 2.6.0". Je velmi důležité upgradovat všechny stávající verze PS na tuto verzi. Jinak existující skripty budou přerušeny po GA. Minimální verzi nainstalujte pomocí následujících příkazů PS.
+
+```powershell
+Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
+```
 
 2. Pomocí tohoto příkazu Najděte rutiny Azure Backup PowerShellu:
 
@@ -241,19 +248,32 @@ WorkloadName       Operation            Status                 StartTime        
 testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 PM     11/12/2018 2:16:11 PM     ec7d4f1d-40bd-46a4-9edb-3193c41f6bf6
 ```
 
+## <a name="important-notice---backup-item-identification-for-afs-backups"></a>Důležité upozornění – identifikace zálohových položek pro zálohy AFS
+
+Tato část popisuje změny v načtení zálohovaných položek pro zálohy AFS z verze Preview na GA.
+
+Když zapnete zálohování pro AFS, zadá uživatel popisný název sdílené složky zákazníka jako název entity a vytvoří se zálohovaná položka. Název zálohované položky je jedinečný identifikátor vytvořený službou Azure Backup. Identifikátor obvykle zahrnuje popisný název uživatele. Ale došlo ke změně, jak služby Azure interně identifikují sdílenou složku Azure. To znamená, že jedinečný název zálohované položky pro zálohování AFS bude identifikátorem GUID a nebude mít žádný vztah k popisnému názvu zákazníka. Chcete-li znát jedinečný název každé položky, stačí spustit příkaz ```Get-AzRecoveryServicesBackupItem``` s příslušnými filtry pro backupManagementType a WorkloadType pro získání všech relevantních položek a pak sledovat pole název v vráceném objektu nebo odpovědi PS. Vždycky se doporučuje vypisovat položky a potom v odpovědi načíst jejich jedinečný název z pole název. Tuto hodnotu použijte k filtrování položek s parametrem Name. Jinak pomocí parametru FriendlyName Načtěte položku s popisným názvem nebo identifikátorem zákazníka.
+
+> [!WARNING]
+> Ujistěte se, že je verze PS upgradována na minimální verzi příkazu AZ. RecoveryServices 2.6.0 pro zálohy na AFS. V této verzi je filtr ' friendlyName ' k dispozici pro ```Get-AzRecoveryServicesBackupItem``` příkaz. Předejte název sdílené složky Azure do parametru friendlyName. Pokud předáte název sdílené složky Azure do parametru název, tato verze vyvolá upozornění, aby tento popisný název předával do parametru popisného názvu. Pokud nenainstalujete tuto minimální verzi, může dojít k selhání existujících skriptů. Nainstalujte minimální verzi PS pomocí následujícího příkazu.
+
+```powershell
+Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
+```
+
 ## <a name="trigger-an-on-demand-backup"></a>Aktivace zálohování na vyžádání
 
 Pomocí rutiny [Backup-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem?view=azps-1.4.0) spustíte zálohování na vyžádání pro chráněnou sdílenou složku Azure.
 
-1. Načtěte účet úložiště a sdílenou složku z kontejneru v trezoru, který obsahuje data záloh pomocí [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer).
-2. Pokud chcete spustit úlohu zálohování, získáte informace o virtuálním počítači pomocí [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem).
+1. Načtěte účet úložiště z kontejneru v trezoru, který obsahuje data záloh pomocí [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer).
+2. Pokud chcete spustit úlohu zálohování, získáte informace o sdílené složce Azure pomocí [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem).
 3. Spusťte zálohování na vyžádání pomocí rutiny[Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem).
 
 Zálohování na vyžádání spusťte následujícím způsobem:
 
 ```powershell
 $afsContainer = Get-AzRecoveryServicesBackupContainer -FriendlyName "testStorageAcct" -ContainerType AzureStorage
-$afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -WorkloadType "AzureFiles" -Name "testAzureFS"
+$afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -WorkloadType "AzureFiles" -FriendlyName "testAzureFS"
 $job =  Backup-AzRecoveryServicesBackupItem -Item $afsBkpItem
 ```
 
@@ -272,6 +292,9 @@ Snímky sdílené složky Azure se používají v době, kdy se provádí záloh
 Zálohy na vyžádání se dají použít k uchování snímků po dobu 10 let. Plánovače se dají použít ke spouštění skriptů PowerShellu na vyžádání s vybraným uchováváním, takže snímky se v pravidelných intervalech přijímají každý týden, měsíc nebo rok. Při pořizování běžných snímků se řiďte [omezeními zálohování na vyžádání](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share) pomocí služby Azure Backup.
 
 Pokud hledáte ukázkové skripty, můžete se podívat na ukázkový skript na GitHubu (<https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup>) pomocí sady Azure Automation Runbook, která umožňuje pravidelné plánování záloh a jejich uchování až po dobu 10 let.
+
+> [!WARNING]
+> Ujistěte se, že je verze PS upgradována na minimální verzi pro příkaz AZ. RecoveryServices 2.6.0 pro zálohy AFS v sadách Automation. Starý modul ' AzureRM ' bude nutné nahradit modulem ' AZ '. V této verzi je filtr ' friendlyName ' k dispozici pro ```Get-AzRecoveryServicesBackupItem``` příkaz. Předejte název sdílené složky Azure do parametru friendlyName. Pokud předáte název sdílené složky Azure do parametru název, tato verze vyvolá upozornění, aby tento popisný název předával do parametru popisného názvu.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.openlocfilehash: 4bdf842ae24d90850280a5a19038dbd00168ff2c
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 02/07/2020
+ms.openlocfilehash: c6c3e9462b26b44857eea6b53092baeeb5034364
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053363"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087079"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optimalizujte zřízené náklady na propustnost v Azure Cosmos DB
 
@@ -19,7 +19,7 @@ Díky zajišťování modelu propustnosti nabízí Azure Cosmos DB předvídatel
 
 Můžete začít s minimální propustností 400 RU/s a škálovat až desítky milionů požadavků za sekundu nebo ještě víc. Každý požadavek, který vyřešíte v rámci vašeho kontejneru nebo databáze Azure Cosmos, jako je žádost o čtení, žádost o zápis, požadavek na dotaz, uložené procedury mají odpovídající cenu, která se od zřízené propustnosti odečte. Pokud zřídíte 400 RU/s a vydáte dotaz, který by ru náklady 40, bude možné vystavit 10 takových dotazů za sekundu. Jakýkoli požadavek nad tím, který získá omezení četnosti a žádost by se měla opakovat. Pokud používáte klientské ovladače, podporují logiku automatického opakování.
 
-Můžete zřídit propustnost databází nebo kontejnerů a každá strategie vám může pomáhat s úsporou nákladů v závislosti na scénáři.
+Propustnost můžete zřídit pro databáze nebo kontejnery a v závislosti na konkrétním scénáři vám obě strategie můžou pomoct ušetřit náklady.
 
 ## <a name="optimize-by-provisioning-throughput-at-different-levels"></a>Optimalizace pomocí zřizování propustnosti na různých úrovních
 
@@ -53,13 +53,13 @@ Níže jsou uvedeny některé pokyny k rozhodování o strategii zřízené prop
 
 Jak je znázorněno v následující tabulce v závislosti na volbě rozhraní API, můžete zajistit propustnost v různých členitcích.
 
-|API|Pro **sdílenou** propustnost nakonfigurujte |U **vyhrazené** propustnosti nakonfigurujte |
+|Rozhraní API|Pro **sdílenou** propustnost nakonfigurujte |U **vyhrazené** propustnosti nakonfigurujte |
 |----|----|----|
 |SQL API|Databáze|Kontejner|
-|Rozhraní API služby Azure Cosmos DB pro MongoDB|Databáze|Kolekce|
-|Rozhraní API Cassandra|prostor klíčů|Tabulka|
+|Rozhraní API služby Azure Cosmos DB pro MongoDB|Databáze|Collection|
+|Rozhraní Cassandra API|Prostor klíčů|Table|
 |Rozhraní Gremlin API|Databázový účet|Graf|
-|Rozhraní Table API|Databázový účet|Tabulka|
+|Rozhraní Table API|Databázový účet|Table|
 
 Díky zajištění propustnosti na různých úrovních můžete optimalizovat náklady na základě charakteristik vašich úloh. Jak bylo zmíněno dříve, můžete programově a kdykoli zvětšit nebo zmenšit zřízenou propustnost pro jednotlivé kontejnery nebo souhrnně napříč sadou kontejnerů. Díky elastickému škálování propustnosti při změnách zatížení platíte jenom za propustnost, kterou jste nakonfigurovali. Pokud je váš kontejner nebo sada kontejnerů distribuován napříč několika oblastmi, je zaručená propustnost, kterou nakonfigurujete na kontejneru nebo sadě kontejnerů, ve všech oblastech.
 
@@ -123,7 +123,7 @@ Můžete také nastavit výstrahy, abyste zkontrolovali, jestli počet neomezen�
 
 ## <a name="scale-your-throughput-elastically-and-on-demand"></a>Škálujte svou propustnost elastickě a na vyžádání 
 
-Vzhledem k tomu, že se vám bude účtovat zajištěná propustnost, která vyhovuje zřízené propustnosti vašim potřebám, vám může pomáhat se vyhnout poplatkům za nevyužitou propustnost. Podle potřeby můžete škálovat zřízenou propustnost nahoru nebo dolů.  
+Vzhledem k tomu, že se vám bude účtovat zajištěná propustnost, která vyhovuje zřízené propustnosti vašim potřebám, vám může pomáhat se vyhnout poplatkům za nevyužitou propustnost. Podle potřeby můžete škálovat zřízenou propustnost nahoru nebo dolů. Pokud jsou potřebné propustnosti hodně předvídatelné, můžete použít Azure Functions a použít Trigger časovače ke [zvýšení nebo snížení propustnosti podle plánu](scale-on-schedule.md). 
 
 * Monitorování spotřeby ru a poměr požadavků, které jsou omezené, můžou odhalit, že v průběhu celého dne nebo týdne nemusíte udržovat v průběhu celé konstanty. Můžete obdržet méně provozu v noci nebo během víkendu. Pomocí Azure Portal nebo Azure Cosmos DB nativních sad SDK nebo REST API můžete kdykoli škálovat zřízenou propustnost. REST API Azure Cosmos DB poskytuje koncové body pro programové aktualizace úrovně výkonu kontejnerů, které usnadňují úpravu propustnosti kódu v závislosti na čase dne nebo dne v týdnu. Operace se provádí bez výpadků a obvykle se projeví za méně než minutu. 
 

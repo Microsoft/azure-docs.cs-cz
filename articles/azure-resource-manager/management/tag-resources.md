@@ -3,14 +3,14 @@ title: Označení prostředků pro logickou organizaci
 description: Ukazuje, jak použít značky k uspořádání prostředků Azure k fakturaci a správě.
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: 0b2fff801b01afce0907bf86887fb110478377c1
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 5751f2d1bc123c5918ae0fabc5b908b5f4fec71d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665162"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087325"
 ---
-# <a name="use-tags-to-organize-your-azure-resources"></a>Používání značek k uspořádání prostředků Azure
+# <a name="use-tags-to-organize-your-azure-resources"></a>Použití značek k uspořádání prostředků Azure
 
 Značky můžete použít pro prostředky Azure, abyste je logicky uspořádali do taxonomie. Každá značka se skládá z názvu a páru hodnot. Můžete například použít název Prostředí a hodnotu Produkční na všechny prostředky v produkčním prostředí.
 
@@ -394,7 +394,7 @@ Pokud chcete uložit mnoho hodnot v jedné značce, použijte řetězec JSON, kt
 
 ### <a name="apply-tags-from-resource-group"></a>Použít značky ze skupiny prostředků
 
-Chcete-li použít značky ze skupiny prostředků na prostředek, použijte funkci [Resource](../templates/template-functions-resource.md#resourcegroup) . Při získávání hodnoty značky použijte místo syntaxe `tags.tag-name` syntaxi `tags.[tag-name]`, protože některé znaky se v zápisu tečky neanalyzují správně.
+Chcete-li použít značky ze skupiny prostředků na prostředek, použijte funkci [Resource](../templates/template-functions-resource.md#resourcegroup) . Při získávání hodnoty značky použijte místo syntaxe `tags.tag-name` syntaxi `tags[tag-name]`, protože některé znaky se v zápisu tečky neanalyzují správně.
 
 ```json
 {
@@ -430,13 +430,13 @@ Chcete-li použít značky ze skupiny prostředků na prostředek, použijte fun
 
 [!INCLUDE [resource-manager-tag-resource](../../../includes/resource-manager-tag-resources.md)]
 
-## <a name="rest-api"></a>Rozhraní REST API
+## <a name="rest-api"></a>REST API
 
 Azure Portal a PowerShell používají [Správce prostředků REST API](/rest/api/resources/) na pozadí. Pokud potřebujete integrovat označování do jiného prostředí, můžete získat značky pomocí metody **Get** pro ID prostředku a aktualizovat sadu značek pomocí volání **opravy** .
 
 ## <a name="tags-and-billing"></a>Značky a fakturace
 
-Můžete je použít třeba k seskupení údajů o fakturaci. Pokud například používáte odlišný virtuální počítač pro každou organizační složku, můžete pomocí značek seskupit údaje o využití podle nákladových středisek. Značky lze použít také ke kategorizaci nákladů podle prostředí modulu spuštění, jako je například fakturované využití virtuálních počítačů běžících v produkčním prostředí.
+K seskupení fakturačních dat můžete použít značky. Pokud například spouštíte více virtuálních počítačů pro různé organizace, použijte značky k seskupení využití podle nákladového centra. Pomocí značek můžete také kategorizovat náklady podle běhového prostředí, jako je například využití fakturace pro virtuální počítače běžící v produkčním prostředí.
 
 Můžete načítat informace o značkách prostřednictvím [rozhraní API pro využití prostředků Azure a ratecard](../../billing/billing-usage-rate-card-overview.md) nebo souborů hodnot oddělených čárkami (CSV). Soubor využití si můžete stáhnout z [centrum účtů Azure](https://account.azure.com/Subscriptions) nebo Azure Portal. Další informace najdete v tématech [stažení nebo zobrazení fakturačních faktur Azure a dat o denním využití](../../billing/billing-download-azure-invoice-daily-usage-date.md). Při stahování souboru využití z Centrum účtů Azure vyberte možnost **verze 2**. Pro služby, které podporují značky s fakturací, se značky zobrazí ve sloupci **značky** .
 

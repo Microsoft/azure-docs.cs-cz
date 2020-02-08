@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fbd2b227c9292593a7652044ef4c013bf0cfaf8e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 8188fac270eadb6e09cc3561ddefb05aa59ba661
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016999"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087126"
 ---
 # <a name="configure-a-vpn-connection-to-your-avs-private-cloud"></a>Konfigurace připojení VPN k privátnímu cloudu služby AVS
 
@@ -97,7 +97,7 @@ Připojení VPN typu Point-to-site řeší názvy DNS prvního privátního clou
 
     ![Upravit připojení VPN](media/viscosity-edit-connection.png)
 
-7. Klikněte na kartu **sítě** a zadejte IP adresy privátního cloudu služby AVS, které jsou oddělené čárkou nebo mezerou a doménu jako ```AVS.io```. Vyberte **Ignorovat nastavení DNS odesílaná serverem VPN**.
+7. Klikněte na kartu **sítě** a zadejte IP adresy privátního cloudu služby AVS, které jsou oddělené čárkou nebo mezerou a doménu jako ```az.cloudsimple.io```. Vyberte **Ignorovat nastavení DNS odesílaná serverem VPN**.
 
     ![Sítě VPN](media/viscosity-edit-connection-networking.png)
 
@@ -117,4 +117,4 @@ Pokud chcete nastavit místní bránu VPN v režimu vysoké dostupnosti, přečt
 
 > [!IMPORTANT]
 >    1. Na zařízení VPN nastavte připojení TCP MSS na 1200. Nebo pokud vaše zařízení VPN nepodporují svorky MSS, můžete místo toho nastavit jednotku MTU v rozhraní tunelu na 1240 bajtů.
-> 2. Po nastavení sítě VPN typu Site-to-site předejte požadavky DNS na *. AVS.io na servery DNS privátního cloudu služby AVS. Postupujte podle pokynů v [místní instalaci DNS](on-premises-dns-setup.md).
+> 2. Po nastavení sítě VPN typu Site-to-site předejte žádosti DNS pro *. cloudsimple.io na servery DNS privátního cloudu služby AVS. Postupujte podle pokynů v [místní instalaci DNS](on-premises-dns-setup.md).

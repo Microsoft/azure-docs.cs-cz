@@ -15,24 +15,20 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
 ms.reviewer: milanga; johndeu
-ms.openlocfilehash: 4b0d360c11313e086f6ec26e5ee46b8d6f49869a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ab1eba3de474d9ff985e62f491c24fa63be0fa63
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844339"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069621"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Media Analytics na Media Services platformě 
 
 ## <a name="retirement-plans"></a>Plány vyřazení
 
 > [!IMPORTANT]
-> Následující starší multimediální procesor bude vyřazení v 2020. Další informace najdete v následující tabulce. 
+> Některé procesory médií jsou vyřazeny. Data o vyřazení a další informace najdete v tématu [starší verze součástí](legacy-components.md) . 
 
-|Název procesoru médií|Datum vyřazení|Další poznámky|
-|---|---|
-|[Azure Media Indexer](media-services-index-content.md)|1\. října z 2020|Tento procesor médií bude nahrazen [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). Další informace najdete v tématu [migrace z Azure Media Indexer do Azure Media Services video indexer](migrate-indexer-v1-v2.md)
- 
 ## <a name="overview"></a>Přehled
 
 Víc organizací používá video jako preferované médium ke školení svých zaměstnanců, zapojení svých zákazníků a dokumentaci obchodních funkcí. Cloud Computing poskytuje způsob, jak ukládat, streamovat a přistupovat k těmto velkým mediálním souborům. Ale podniková knihovna obsahu videa roste, potřebuje stejně efektivní způsob extrakce přehledů z obsahu. 
@@ -49,7 +45,7 @@ Procesory médií z Media Analytics vytvářejí soubory MP4 nebo soubory JSON. 
 
 ## <a name="media-analytics-services"></a>Služby Media Analytics
 
-### <a name="indexer"></a>Indexovací modul
+### <a name="indexer"></a>Indexer
 Pomocí Azure Media Indexer můžete provádět hledání obsahu a generovat stopy s titulky. Podrobné informace a příklady najdete v tématu [indexování mediálních souborů pomocí Azure Media Indexer](media-services-index-content.md).
 
 ### <a name="motion-detector"></a>Detektor pohybu
@@ -139,7 +135,7 @@ Odpověď:
 ## <a name="demos"></a>Ukázky
 Viz [ukázky Azure Media Analytics](https://azuremedialabs.azurewebsites.net/demos/Analytics.html).
 
-## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-articles"></a>Související články

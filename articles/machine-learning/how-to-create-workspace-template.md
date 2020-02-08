@@ -10,14 +10,15 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: b8584a77eaf9f8db13c948051c34b18236e2cc1a
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b3e4ff60ab290d25afb003f0753cf852cefffe1a
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986372"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069553"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+<br>
 
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Použití šablony Azure Resource Manager k vytvoření pracovního prostoru pro Azure Machine Learning
 
@@ -27,7 +28,7 @@ Další informace najdete v tématu [nasazení aplikace pomocí šablony Azure R
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Předplatného Azure**. Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
+* **Předplatné Azure**. Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 
 * Pokud chcete použít šablonu z CLI, potřebujete buď [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) , nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -40,7 +41,7 @@ Následující šablonu Správce prostředků lze použít k vytvoření pracovn
 Tato šablona vytvoří následující služby Azure:
 
 * Skupina prostředků Azure
-* Účet služby Azure Storage
+* Azure Storage Account
 * Azure Key Vault
 * Azure Application Insights
 * Azure Container Registry
@@ -72,7 +73,210 @@ Další informace o šablonách najdete v následujících článcích:
 * [Nasazení aplikace pomocí šablon Azure Resource Manager](../azure-resource-manager/templates/deploy-powershell.md)
 * [Typy prostředků Microsoft. MachineLearningServices](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/allversions)
 
-## <a name="use-the-azure-portal"></a>Použití portálu Azure
+### <a name="advanced-template"></a>Pokročilá šablona
+
+Následující příklad šablony ukazuje, jak vytvořit pracovní prostor se třemi nastaveními:
+
+* Povolit nastavení vysoké důvěrnosti pro pracovní prostor
+* Povolení šifrování pro pracovní prostor
+* Používá existující Azure Key Vault
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspaceName": {
+      "type": "string",
+      "metadata": {
+        "description": "Specifies the name of the Azure Machine Learning workspace."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "southcentralus",
+      "allowedValues": [
+        "eastus",
+        "eastus2",
+        "southcentralus",
+        "southeastasia",
+        "westcentralus",
+        "westeurope",
+        "westus2"
+      ],
+      "metadata": {
+        "description": "Specifies the location for all resources."
+      }
+    },
+    "sku":{
+      "type": "string",
+      "defaultValue": "basic",
+      "allowedValues": [
+        "basic",
+        "enterprise"
+      ],
+      "metadata": {
+        "description": "Specifies the sku, also referred to as 'edition' of the Azure Machine Learning workspace."
+      }
+    },
+    "hbi_workspace":{
+      "type": "string",
+      "defaultValue": "false",
+      "allowedValues": [
+        "false",
+        "true"
+      ],
+      "metadata": {
+        "description": "Specifies that the Azure Machine Learning workspace holds highly confidential data."
+      }
+    },
+    "encryption_status":{
+      "type": "string",
+      "defaultValue": "Disabled",
+      "allowedValues": [
+        "Enabled",
+        "Disabled"
+      ],
+      "metadata": {
+        "description": "Specifies if the Azure Machine Learning workspace should be encrypted with the customer managed key."
+      }
+    },
+    "cmk_keyvault":{
+      "type": "string",
+      "metadata": {
+        "description": "Specifies the customer managed keyvault Resource Manager ID."
+      }
+    },
+    "resource_cmk_uri":{
+      "type": "string",
+      "metadata": {
+        "description": "Specifies the customer managed keyvault key uri."
+      }
+    }
+  },
+  "variables": {
+    "storageAccountName": "[concat('sa',uniqueString(resourceGroup().id))]",
+    "storageAccountType": "Standard_LRS",
+    "keyVaultName": "[concat('kv',uniqueString(resourceGroup().id))]",
+    "tenantId": "[subscription().tenantId]",
+    "applicationInsightsName": "[concat('ai',uniqueString(resourceGroup().id))]",
+    "containerRegistryName": "[concat('cr',uniqueString(resourceGroup().id))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2018-07-01",
+      "name": "[variables('storageAccountName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "[variables('storageAccountType')]"
+      },
+      "kind": "StorageV2",
+      "properties": {
+        "encryption": {
+          "services": {
+            "blob": {
+              "enabled": true
+            },
+            "file": {
+              "enabled": true
+            }
+          },
+          "keySource": "Microsoft.Storage"
+        },
+        "supportsHttpsTrafficOnly": true
+      }
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults",
+      "apiVersion": "2018-02-14",
+      "name": "[variables('keyVaultName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "tenantId": "[variables('tenantId')]",
+        "sku": {
+          "name": "standard",
+          "family": "A"
+        },
+        "accessPolicies": []
+      }
+    },
+    {
+      "type": "Microsoft.Insights/components",
+      "apiVersion": "2015-05-01",
+      "name": "[variables('applicationInsightsName')]",
+      "location": "[if(or(equals(parameters('location'),'eastus2'),equals(parameters('location'),'westcentralus')),'southcentralus',parameters('location'))]",
+      "kind": "web",
+      "properties": {
+        "Application_Type": "web"
+      }
+    },
+    {
+      "type": "Microsoft.ContainerRegistry/registries",
+      "apiVersion": "2017-10-01",
+      "name": "[variables('containerRegistryName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard"
+      },
+      "properties": {
+        "adminUserEnabled": true
+      }
+    },
+    {
+      "type": "Microsoft.MachineLearningServices/workspaces",
+      "apiVersion": "2020-01-01",
+      "name": "[parameters('workspaceName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
+        "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",
+        "[resourceId('Microsoft.Insights/components', variables('applicationInsightsName'))]",
+        "[resourceId('Microsoft.ContainerRegistry/registries', variables('containerRegistryName'))]"
+      ],
+      "identity": {
+        "type": "systemAssigned"
+      },
+      "sku": {
+            "tier": "[parameters('sku')]",
+            "name": "[parameters('sku')]"
+      },
+      "properties": {
+        "friendlyName": "[parameters('workspaceName')]",
+        "keyVault": "[resourceId('Microsoft.KeyVault/vaults',variables('keyVaultName'))]",
+        "applicationInsights": "[resourceId('Microsoft.Insights/components',variables('applicationInsightsName'))]",
+        "containerRegistry": "[resourceId('Microsoft.ContainerRegistry/registries',variables('containerRegistryName'))]",
+        "storageAccount": "[resourceId('Microsoft.Storage/storageAccounts/',variables('storageAccountName'))]",
+         "encryption": {
+                "status": "[parameters('encryption_status')]",
+                "keyVaultProperties": {
+                    "keyVaultArmId": "[parameters('cmk_keyvault')]",
+                    "keyIdentifier": "[parameters('resource_cmk_uri')]"
+                  }
+            },
+        "hbi_workspace": "[parameters('hbi_workspace')]"
+      }
+    }
+  ]
+}
+```
+
+Pokud chcete získat ID Key Vault a klíč k identifikátoru URI, který potřebuje Tato šablona, můžete použít rozhraní příkazového řádku Azure CLI. Následující příkaz je příkladem použití rozhraní příkazového řádku Azure k získání ID Key Vault prostředku a identifikátoru URI:
+
+```azurecli-interactive
+az keyvault show --name mykeyvault --resource-group myresourcegroup --query "[id, properties.vaultUri]"
+```
+
+Tento příkaz vrátí hodnotu podobnou následujícímu textu. První hodnotou je ID a druhý je identifikátor URI:
+
+```text
+[
+  "/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault",
+  "https://mykeyvault.vault.azure.net/"
+]
+```
+
+## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
 1. Postupujte podle kroků v části [nasazení prostředků z vlastní šablony](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template). Po přijetí na obrazovku __Upravit šablonu__ vložte do šablony z tohoto dokumentu šablonu.
 1. Vyberte __Uložit__ a použijte šablonu. Zadejte následující informace a vyjádřete souhlas s uvedenými podmínkami a ujednáními:
@@ -84,7 +288,7 @@ Další informace o šablonách najdete v následujících článcích:
 
 Další informace najdete v tématu [nasazení prostředků z vlastní šablony](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
-## <a name="use-azure-powershell"></a>Použití Azure PowerShellu
+## <a name="use-azure-powershell"></a>Použití Azure Powershell
 
 V tomto příkladu se předpokládá, že jste šablonu uložili do souboru s názvem `azuredeploy.json` v aktuálním adresáři:
 
@@ -97,7 +301,7 @@ new-azresourcegroupdeployment -name exampledeployment `
 
 Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) a [nasazení privátní šablony Správce prostředků pomocí tokenu SAS a Azure PowerShell](../azure-resource-manager/templates/secure-template-with-sas-token.md).
 
-## <a name="use-azure-cli"></a>Použití Azure CLI
+## <a name="use-the-azure-cli"></a>Použití Azure CLI
 
 V tomto příkladu se předpokládá, že jste šablonu uložili do souboru s názvem `azuredeploy.json` v aktuálním adresáři:
 

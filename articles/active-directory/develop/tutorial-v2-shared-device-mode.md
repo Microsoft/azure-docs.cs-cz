@@ -3,7 +3,7 @@ title: Použití režimu sdíleného zařízení s MSAL Androidem | Azure
 description: Naučte se, jak připravit zařízení s Androidem ke spuštění ve sdíleném režimu a spustit aplikaci Firstline Worker.
 services: active-directory
 documentationcenter: dev-center-name
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -15,12 +15,12 @@ ms.date: 1/15/2020
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 98882ad115ff977cfd8222c6055a436855f50c04
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bf7e6bb22ce89d6be3f79efad1f1a3679e8780e7
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701242"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086063"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>Kurz: použití režimu sdíleného zařízení v aplikaci pro Android
 
@@ -244,7 +244,7 @@ Správce cloudového zařízení by měl zadat svůj e-mailovou adresu organizac
 
 ![obrazovka registrace – zařízení](media/tutorial-v2-shared-device-mode/register-device.png)
 
-![sign-in](media/tutorial-v2-shared-device-mode/sign-in.png)
+![přihlášení](media/tutorial-v2-shared-device-mode/sign-in.png)
 
 Zařízení je nyní ve sdíleném režimu.
 

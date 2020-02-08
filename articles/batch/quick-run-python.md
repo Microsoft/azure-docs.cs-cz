@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: spuštění úlohy Azure Batch – rozhraní Python API'
+title: Použití rozhraní Python API ke spuštění úlohy Azure Batch
 description: Pomocí klientské knihovny Batch Pythonu rychle spustíte ukázkovou úlohu Azure Batch a úlohy. Seznamte se s klíčovými koncepty služby Batch.
 services: batch
 author: LauraBrenner
@@ -12,30 +12,26 @@ ms.author: labrenne
 ms.custom:
 - seo-python-october2019
 - mvc
-ms.openlocfilehash: 87c08c403a1e5eefd7645572f593b20037a8212b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 140ae0fc9f9a8daba193aa05e0800d83b7b6b963
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77017101"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086039"
 ---
-# <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Rychlý start: Spuštění první úlohy služby Batch pomocí rozhraní Python API
+# <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>Rychlý Start: použití rozhraní Python API ke spuštění úlohy Azure Batch
 
-V rámci tohoto rychlého startu spustíte úlohu služby Azure Batch z aplikace sestavené pomocí rozhraní Python API služby Azure Batch.  Po dokončení tohoto rychlého startu budete rozumět klíčovým konceptům služby Batch a budete moct službu Batch vyzkoušet ve větším měřítku s úlohami, které víc odpovídají realitě.
+V tomto rychlém startu použijete rozhraní Python API ke spuštění Azure Batch úlohy z aplikace. Aplikace nahrává vstupní datové soubory pro Azure Storage a vytvoří *fond* výpočetních uzlů Batch (virtuálních počítačů). Pak vytvoří *úlohu* , která spustí *úlohy* ke zpracování jednotlivých vstupních souborů ve fondu pomocí příkazu Basic.
 
-Aplikace odešle několik vstupních datových souborů do služby Azure Storage a potom vytvoří *fond* výpočetních uzlů služby Batch (virtuálních počítačů). Potom vytvoří ukázkovou *úlohu*, která pomocí základního příkazu spouští *úkoly* pro zpracování jednotlivých vstupních souborů ve fondu.
- 
+Tady se dozvíte o klíčových konceptech služby Batch a o tom, jak se dá vyzkoušet dávka s efektivnějšími úlohami ve větším měřítku.
+
 ![Přehled pracovního postupu Azure Batch](./media/quick-run-python/overview-of-the-azure-batch-workflow.png)
-
-[!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Python verze 2.7 nebo 3.3 nebo novější](https://www.python.org/downloads/)
-
-* Správce balíčků [pip](https://pip.pypa.io/en/stable/installing/)
-
-* Účet Azure Batch a propojený účet Azure Storage. Informace o vytvoření těchto účtů prostřednictvím [webu Azure Portal](quick-create-portal.md) nebo [rozhraní Azure CLI](quick-create-cli.md) najdete v rychlém startu služby Batch. 
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Účet **Azure Batch** a propojený **Azure Storage** účet. K vytvoření těchto účtů použijte [Azure Portal](quick-create-portal.md) nebo [CLI](quick-create-cli.md) .
+- [Python](https://python.org/downloads), verze 2,7 nebo 3,3 nebo novější, včetně Správce balíčků [PIP](https://pip.pypa.io/en/stable/installing/)
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -69,7 +65,7 @@ _STORAGE_ACCOUNT_NAME = 'mystorageaccount'
 _STORAGE_ACCOUNT_KEY = 'xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB827Mt9lybZB1nUcQbQiUrkPtilK5BQ=='
 ```
 
-## <a name="run-the-app"></a>Spusťte aplikaci
+## <a name="run-the-app"></a>Spuštění aplikace
 
 Pokud chcete vidět pracovní postup Batch v akci, spusťte skript:
 
@@ -151,7 +147,7 @@ batch_client = batch.BatchServiceClient(
     batch_url=config._BATCH_ACCOUNT_URL)
 ```
 
-### <a name="create-a-pool-of-compute-nodes"></a>Vytvořte fond výpočetních uzlů.
+### <a name="create-a-pool-of-compute-nodes"></a>Vytvoření fondu výpočetních uzlů
 
 K vytvoření fondu služby Batch aplikace používá třídu [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter), která nastavuje počet uzlů, velikost virtuálních počítačů a konfiguraci fondu. Zde je objekt [VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) určující [element imagereference](/python/api/azure-batch/azure.batch.models.imagereference) pro obrázek Ubuntu serveru 18,04 LTS publikovaný v Azure Marketplace. Batch podporuje široké spektrum imagí Linuxu a Windows Serveru v Azure Marketplace, ale i vlastní image virtuálních počítačů.
 
@@ -232,7 +228,7 @@ for task in tasks:
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Aplikace automaticky odstraní kontejner úložiště, který vytvoří, a dá vám možnost odstranit fond a úlohu služby Batch. Poplatky se účtují za fond, ve kterém jsou spuštěné uzly, i když nejsou naplánované žádné úlohy. Až fond nebudete potřebovat, odstraňte ho. Při odstranění fondu se odstraní veškeré výstupy úkolů v uzlech. 
+Aplikace automaticky odstraní kontejner úložiště, který vytvoří, a dá vám možnost odstranit fond a úlohu služby Batch. Za fond, ve kterém jsou spuštěné uzly, se účtují poplatky, i když nejsou naplánované žádné úlohy. Až fond nebudete potřebovat, odstraňte ho. Při odstranění fondu se odstraní veškeré výstupy úkolů v uzlech. 
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků, účet Batch a účet úložiště. Provedete to tak, že v Azure Portal vyberete skupinu prostředků účtu Batch a vyberete **Odstranit skupinu prostředků**.
 

@@ -3,22 +3,22 @@ title: Požadavky UWP (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Přečtěte si o konkrétních otázkách při použití Univerzální platforma Windows s knihovnou Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 549e36099e06d665ecab879ceb3c38987d000852
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 4803b2bda63ef0e14137aaafe95a422089e7f671
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695088"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083663"
 ---
 # <a name="universal-windows-platform-specific-considerations-with-msalnet"></a>MSAL.NET s ohledem na konkrétní Univerzální platforma Windows
 U UWP máte několik důležitých informací, které je potřeba vzít v úvahu při používání MSAL.NET.
@@ -65,5 +65,5 @@ Další podrobnosti jsou k dispozici v následujících ukázkách:
 
 Ukázka | Platforma | Popis 
 |------ | -------- | -----------|
-|[active-directory-dotnet-native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | Klientská aplikace Univerzální platforma Windows využívající msal.net a přístup k Microsoft Graph pro uživatele, který ověřuje pomocí koncového bodu Azure AD v 2.0. <br>![Topologie](media/msal-net-uwp-considerations/topology-native-uwp.png)|
+|[Active-Directory-dotnet-Native-UWP-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | Klientská aplikace Univerzální platforma Windows využívající msal.net a přístup k Microsoft Graph pro uživatele, který ověřuje pomocí koncového bodu Azure AD v 2.0. <br>![Topologie](media/msal-net-uwp-considerations/topology-native-uwp.png)|
 |[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Jednoduchá aplikace Xamarin Forms předvádí, jak pomocí MSAL ověřovat MSA a Azure AD prostřednictvím koncového bodu AAD v 2.0 a přistupovat k Microsoft Graph s výsledným tokenem. <br>![Topologie](media/msal-net-uwp-considerations/topology-xamarin-native.png)|

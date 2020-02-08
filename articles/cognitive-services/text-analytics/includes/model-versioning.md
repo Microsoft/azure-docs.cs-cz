@@ -7,19 +7,22 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/25/2019
+ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: 29850cb9cb40eae0829b5d8c2b58b5f9518f18d5
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 4cd8d0901ce23fb227bb6919dee18f5aa3d063ed
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021061"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77089086"
 ---
-Verze 3 rozhraní API pro analýzu textu umožňuje zvolit model Analýza textu použitý pro vaše data. Použijte parametr Optional `model-version` k výběru verze modelu v rámci vašich požadavků. Pokud tento parametr není zadán, rozhraní API bude ve výchozím nastavení `latest`, což je nejnovější stabilní verze modelu.
+Verze 3 rozhraní API pro analýzu textu umožňuje zvolit verzi modelu, která je pro vaše data nejaktuálnější. Pomocí volitelného parametru `model-version` vyberte verzi modelu, která je pro vaše požadavky požadovaná. Pokud tento parametr není zadán, rozhraní API bude ve výchozím nastavení `latest`, což je nejnovější stabilní verze. I když můžete použít nejnovější verzi modelu v jakékoli žádosti, v každé verzi se aktualizují jenom některé funkce. Následující tabulka popisuje, které funkce byly v každé verzi modelu aktualizované:
 
-Dostupné verze modelu:
-* `2019-10-01` (`latest`)
+| Verze modelu           | Aktualizované funkce         | Nejnovější verze pro:           |
+|-------------------------|--------------------------|--------------------------|
+| `2020-02-01`            | Rozpoznávání entit                      | Rozpoznávání entit                      |
+| `2019-10-01`            | Rozpoznávání entit, analýza mínění  | Detekce jazyka, extrakce klíčových frází, analýza mínění|
+
 
 Každá odpověď z koncových bodů V3 obsahuje pole `model-version` určující verzi modelu, která byla použita.
 
@@ -30,3 +33,4 @@ Každá odpověď z koncových bodů V3 obsahuje pole `model-version` určujíc�
     "model-version": "2019-10-01"
 }
 ```
+Podrobnosti o aktualizacích pro tyto verze modelu najdete v tématu [co je nového](../whats-new.md) .

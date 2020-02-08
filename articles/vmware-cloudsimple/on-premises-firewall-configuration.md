@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 09b25dbdc8fc13c40ccd89b2cfd78611cedaac9d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a4a9760b5c7a70c58a1afe1b14b781a35f2b9b18
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024462"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77082967"
 ---
 # <a name="accessing-your-avs-private-cloud-environment-and-applications-from-on-premises"></a>Přístup k prostředí privátního cloudu služby AVS a aplikacím z místního prostředí
 
@@ -26,7 +26,7 @@ Aby bylo možné přistupovat ke službě AVS Private Cloud vCenter a správce N
 
 | Port       | Zdroj                           | Cíl                      | Účel                                                                                                                |
 |------------|----------------------------------|----------------------------------|------------------------------------------------------------------------------------------------------------------------|
-| 53 (UDP)   | Místní servery DNS          | Servery DNS privátního cloudu služby AVS        | Požadováno pro přesměrování vyhledávání DNS *AZ. AVS.io* se servery DNS privátního cloudu z místní sítě.     |
+| 53 (UDP)   | Místní servery DNS          | Servery DNS privátního cloudu služby AVS        | Vyžaduje se pro předávání vyhledávání DNS *AZ.cloudsimple.IO* do služby AVS servery DNS privátního cloudu z místní sítě.     |
 | 53 (UDP)   | Servery DNS privátního cloudu služby AVS        | Místní servery DNS          | Vyžaduje se pro přesměrování DNS z hledání místních názvů domén z služby AVS Private Cloud vCenter na místní servery DNS. |
 | 80 (TCP)   | Místní síť              | Síť pro správu privátního cloudu pro funkci AVS | Vyžaduje se pro přesměrování adresy URL vCenter z *http* na *https*.                                                         |
 | 443 (TCP)  | Místní síť              | Síť pro správu privátního cloudu pro funkci AVS | Vyžaduje se pro přístup správce vCenter a NSX-T z místní sítě.                                           |

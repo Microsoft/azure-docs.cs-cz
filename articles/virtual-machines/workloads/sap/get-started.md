@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 42df2d24aad1465a200203e648feb97d4e96fd18
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8e5ea4bba693a6785dae4075da7b13154593bb4c
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989820"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087369"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -121,6 +121,7 @@ Informace o integraci služeb Azure do komponent SAP najdete v těchto tématech
 
 ## <a name="change-log"></a>Protokol změn
 
+- 02/07/2020: Změna [Možnosti připojení veřejných koncových bodů pro virtuální počítače pomocí Azure Standard interního nástroje ve scénářích SAP ha](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) k aktualizaci ukázkového snímku NSG
 - 02/03/2020: Změna [vysoké dostupnosti pro SAP NW na virtuálních počítačích Azure v SLES pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse) a [vysokou dostupnost pro SAP NW na virtuálních počítačích Azure v SLES s ANF pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) pro odebrání upozornění na použití pomlčky v názvech hostitelů uzlů clusteru v SLES
 - 01/28/2020: Změna [vysoké dostupnosti SAP HANA na virtuálních počítačích Azure v RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel) , aby se zarovnaly časové limity SAP HANA prostředků clusteru, do doporučení Red Hat timeout
 - 01/17/2020: Změna ve [skupinách umístění v blízkosti Azure pro optimální latenci sítě s aplikacemi SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) pro změnu oddílu přesunutí stávajících virtuálních počítačů do skupiny umístění s blízkými místy

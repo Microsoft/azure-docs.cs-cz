@@ -3,8 +3,8 @@ title: Komunitní nástroje – přesunutí klasických prostředků do Azure Re
 description: Tento článek obsahuje katalog nástrojů poskytovaných komunitou, které vám pomůžou migrovat prostředky IaaS z modelu nasazení Classic na model nasazení Azure Resource Manager.
 services: virtual-machines-windows
 documentationcenter: ''
-author: singhkays
-manager: gwallace
+author: tanmaygore
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 228b697b-3950-49f5-84bb-283bb56621b1
@@ -12,16 +12,16 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 03/30/2017
-ms.author: kasing
-ms.openlocfilehash: a4a7ed6d57e72deb7f49895935e522e65e18f7d9
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.date: 02/06/2020
+ms.author: tagore
+ms.openlocfilehash: 5688854404ca6d3e64ca6d59276628d08bbf3ebe
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033316"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086002"
 ---
-# <a name="community-tools-to-migrate-iaas-resources-from-classic-to-azure-resource-manager"></a>Nástroje komunity pro migraci prostředků IaaS z modelu Classic na Azure Resource Manager
+# <a name="community-tools-to-migrate-iaas-resources-from-classic-to-azure-resource-manager"></a>Komunitní nástroje pro migraci prostředků IaaS z modelu Classic na Azure Resource Manager
 Tento článek obsahuje katalog nástrojů poskytovaných komunitou pro pomoc s migrací prostředků IaaS z modelu Classic na model nasazení Azure Resource Manager.
 
 > [!NOTE]

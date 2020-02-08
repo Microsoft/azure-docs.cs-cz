@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/22/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7f903ca541582dfa0f3980bb65a3fef3c4b774a7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 75893a85f975d5d1454f1b93535a1df7a45e8731
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916770"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084013"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>Zpracování výjimek a chyb MSAL
 
@@ -69,7 +69,7 @@ Interakce se zaměřuje na to, že uživatel provede akci. Některé z těchto p
 
 MSAL zpřístupňuje pole `Classification`, které si můžete přečíst a zajistit tak lepší uživatelské prostředí, například oznámit uživateli, že jeho heslo vypršelo nebo že budou muset vyjádřit souhlas s používáním některých prostředků. Podporované hodnoty jsou součástí výčtu `UiRequiredExceptionClassification`:
 
-| Classification    | Význam           | Doporučené zpracování |
+| Klasifikace    | Význam           | Doporučené zpracování |
 |-------------------|-------------------|----------------------|
 | BasicAction | Podmínku lze vyřešit interakcí uživatele během interaktivního toku ověřování. | Zavolejte AcquireTokenInteractively (). |
 | AdditionalAction | Podmínku lze vyřešit pomocí další nápravné interakce se systémem, mimo tok interaktivního ověřování. | Zavolejte AcquireTokenInteractively (), aby se zobrazila zpráva s vysvětlením nápravné akce. Volání aplikace se může rozhodnout pro skrytí toků vyžadujících additional_action, pokud uživatel pravděpodobně nedokončí akci nápravy. |
@@ -78,7 +78,7 @@ MSAL zpřístupňuje pole `Classification`, které si můžete přečíst a zaji
 | UserPasswordExpired | Vypršela platnost hesla uživatele. | Zavolejte AcquireTokenInteractively (), aby uživatel mohl resetovat svoje heslo. |
 | PromptNeverFailed| Interaktivní ověřování bylo voláno s parametrem Prompt = nikdy, což MSAL vynutí spoléhání na soubory cookie prohlížeče, a ne pro zobrazení prohlížeče. Tato operace se nezdařila. | Volat AcquireTokenInteractively () bez výzvy. None |
 | AcquireTokenSilentFailed | Sada MSAL SDK nemá dostatek informací pro načtení tokenu z mezipaměti. To může být způsobeno tím, že v mezipaměti nejsou žádné tokeny, nebo nebyl nalezen žádný účet. Chybová zpráva obsahuje další podrobnosti.  | Zavolejte AcquireTokenInteractively (). |
-| Žádné    | Nejsou k dispozici žádné další podrobnosti. Podmínku může vyřešit interakce uživatele během toku interaktivního ověřování. | Zavolejte AcquireTokenInteractively (). |
+| Žádný    | Nejsou k dispozici žádné další podrobnosti. Podmínku může vyřešit interakce uživatele během toku interaktivního ověřování. | Zavolejte AcquireTokenInteractively (). |
 
 ## <a name="net-code-example"></a>Příklad kódu .NET
 

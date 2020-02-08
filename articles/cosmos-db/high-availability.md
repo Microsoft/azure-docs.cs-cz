@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: daa98d703a115e663032639d78f51b26ed1c7ba3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0f024bac535ed792d8480c991e470cf5d85932b8
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441861"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083011"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Vysoká dostupnost s Azure Cosmos DB
 
@@ -34,8 +34,8 @@ Jako globálně distribuovaná databáze Cosmos DB poskytuje komplexní SLA zahr
 
 |Typ operace  | Jedna oblast |Více oblastí (zápisy v jedné oblasti)|Více oblastí (zápisy ve více oblastech) |
 |---------|---------|---------|-------|
-|Zápisy    | 99,99    |99,99   |99,999|
-|Čtení     | 99,99    |99,999  |99,999|
+|Pisoval    | 99,99    |99,99   |99,999|
+|Operace     | 99,99    |99,999  |99,999|
 
 > [!NOTE]
 > V praxi je skutečná dostupnost zápisu pro ohraničenou neaktuálnost, relaci, konzistentní předponu a konečné modely konzistence podstatně vyšší než u publikovaných SLA. Skutečná dostupnost čtení pro všechny úrovně konzistence je podstatně vyšší než u publikovaného SLA.
@@ -59,9 +59,9 @@ Oblastní výpadky nejsou nijak neobvyklé a služba Azure Cosmos DB zajišťuje
 - **Účty s více oblastmi s jednou oblastí zápisu (výpadek při čtení oblasti):**
   - Při výpadku oblasti čtení zůstanou tyto účty vysoce dostupné pro čtení a zápis.
   - Ovlivněná oblast je automaticky odpojena a bude označena jako offline. Sady [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) přesměrují volání čtení do další dostupné oblasti v seznamu upřednostňovaných oblastí.
-  - Pokud není žádná oblast ze seznamu upřednostňovaných oblastí k dispozici, volání se automaticky vrátí na aktuální oblast zápisu.
+  - Pokud není k dispozici žádná z oblastí v seznamu upřednostňovaných oblastí, volání se automaticky vrátí do aktuální oblasti pro zápis.
   - V kódu aplikace se nevyžadují žádné změny pro zpracování výpadku oblasti čtení. Když je však ovlivněná oblast zpět online, dříve ovlivněná oblast čtení se automaticky synchronizuje s aktuální oblastí pro zápis a bude opět k dispozici, aby mohla zpracovávat požadavky na čtení.
-  - Následná čtení se přesměrují na zotavenou oblast bez toho, aby se musel nějak změnit kód aplikace. V průběhu převzetí služeb při selhání a opětovném připojení k dříve neúspěšnému výskytu se Přečtěte záruky konzistence, které Cosmos DB.
+  - Následná čtení jsou přesměrována do obnovené oblasti bez nutnosti jakýchkoli změn kódu aplikace. V průběhu převzetí služeb při selhání a opětovném připojení k dříve neúspěšnému výskytu se Přečtěte záruky konzistence, které Cosmos DB.
 
 - I ve výjimečné a unfortunate události, když je oblast Azure trvale nezotavitelné, nedochází k žádné ztrátě dat, pokud je váš účet Cosmos ve více oblastech nakonfigurovaný se *silnými* konzistencí. V případě trvale nezotavitelné oblasti zápisu je účet Cosmos s více oblastmi nakonfigurovaný s konzistencí s ohraničenou kočárkou, což je potenciální okno ztráty dat omezené na okno zastaralosti (*k* nebo *T*), kde k = 100 000 aktualizací a t = 5 minut. V případě relace, konzistentní a konečné úrovně konzistence je možné okno ztráty dat omezit na maximálně 15 minut. Další informace o cílech RTO a RPO pro Azure Cosmos DB najdete v tématu [úrovně konzistence a odolnost dat](consistency-levels-tradeoffs.md#rto) .
 
@@ -71,41 +71,41 @@ Kromě odolnosti mezi oblastmi teď můžete při výběru oblasti, která má b
 
 Díky podpoře zón dostupnosti Azure Cosmos DB zajistí, aby se repliky v rámci dané oblasti umístily do několika zón, aby poskytovaly vysokou dostupnost a odolnost během selhání oblastí. V této konfiguraci nejsou žádné změny latence a jiné SLA. V případě selhání jedné zóny poskytuje redundance zóny plnou odolnost dat s cílem RPO = 0 a dostupnost s RTO = 0.
 
-Redundance zóny je *doplňkovou* funkcí pro replikaci s [více hlavními servery](how-to-multi-master.md) . Pro spolehlivé zajištění oblastní odolnosti samotná zónová redundance nestačí. Například v případě místního výpadku nebo přístupu s nízkou latencí v rámci oblastí doporučujeme mít kromě redundance zóny více oblastí pro zápis.
+Redundance zóny je *doplňkovou* funkcí pro replikaci s [více hlavními servery](how-to-multi-master.md) . Na redundanci zóny se nedá spoléhat, aby bylo možné dosáhnout místní odolnosti. Například v případě místního výpadku nebo přístupu s nízkou latencí v rámci oblastí doporučujeme mít kromě redundance zóny více oblastí pro zápis.
 
-Když konfigurujete zápisy ve více oblastech pro účet Azure Cosmos, můžete se odhlásit k redundanci zóny bez dalších poplatků. V opačném případě se podívejte na následující poznámku týkající se cen pro podporu redundance zóny. Pro už existující oblast účtu Azure Cosmos je možné zónovou redundanci povolit tak, že příslušnou oblast odeberete a znovu ji přidáte s povolenou zónovou redundancí.
+Když konfigurujete zápisy ve více oblastech pro účet Azure Cosmos, můžete se odhlásit k redundanci zóny bez dalších poplatků. V opačném případě se podívejte na následující poznámku týkající se cen pro podporu redundance zóny. Redundanci zóny můžete povolit ve stávající oblasti svého účtu Azure Cosmos tak, že odstraníte oblast a přidáte ji zpátky s povolenou redundancí zóny.
 
 Tato funkce je k dispozici v následujících oblastech Azure:
 
-- Spojené království – jih
+- Velká Británie – jih
 
 - Jihovýchodní Asie
 
-- Východní USA
+- USA – východ
 
-- Východ USA 2
+- Východní USA 2
 
-- Střední USA
+- Střed USA
 
 - Západní Evropa
 
-- Západní USA 2
+- USA – západ 2
 
 > [!NOTE]
 > Povolení Zóny dostupnosti pro jednu oblast účtu Azure Cosmos bude mít za následek poplatky, které se rovnají přidání další oblasti do svého účtu. Podrobnosti o cenách najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) a s [náklady na více oblastí v Azure Cosmos DB](optimize-cost-regions.md) článcích.
 
 Následující tabulka shrnuje schopnost vysoké dostupnosti u různých konfigurací účtu:
 
-|Klíčové ukazatele výkonu  |Jedna oblast bez Zóny dostupnosti (ne AZ)  |Jedna oblast s Zóny dostupnostiem (AZ)  |Zápisy ve více oblastech pomocí Zóny dostupnosti (AZ, 2 Regions) – Doporučené nastavení |
+|KLÍČOVÝ UKAZATEL VÝKONU  |Jedna oblast bez Zóny dostupnosti (ne AZ)  |Jedna oblast s Zóny dostupnostiem (AZ)  |Zápisy ve více oblastech pomocí Zóny dostupnosti (AZ, 2 Regions) – Doporučené nastavení |
 |---------|---------|---------|---------|
-|Smlouva SLA o dostupnosti pro zápis | 99,99 % | 99,99 % | 99,999 % |
-|SLA dostupnosti pro čtení  | 99,99 % | 99,99 % | 99,999 % |
+|Smlouva SLA o dostupnosti pro zápis | 99,99 % | 99,99 % | 99.999% |
+|SLA dostupnosti pro čtení  | 99,99 % | 99,99 % | 99.999% |
 |Cena | Fakturační sazba jedné oblasti | Fakturační sazba zóny dostupnosti v jedné oblasti | Fakturační sazba pro více oblastí |
 |Selhání zón – ztráta dat | Ztráta dat | Žádná ztráta dat | Žádná ztráta dat |
 |Selhání zón – dostupnost | Ztráta dostupnosti | Žádná ztráta dostupnosti | Žádná ztráta dostupnosti |
-|Latence čtení | Mezi oblastmi | Mezi oblastmi | Nízký |
-|Latence zápisu | Mezi oblastmi | Mezi oblastmi | Nízký |
-|Oblastní výpadek – ztráta dat | Ztráta dat |  Ztráta dat | Ztráta dat <br/><br/> Při použití ohraničené konzistence neaktuálnosti s více hlavními a více než jednou oblastí je ztráta dat omezená na ohraničenou neomezenou funkčnost nakonfigurovanou na vašem účtu. <br/><br/> Ztrátě dat během místního výpadku je možné vyhnout konfigurací silné konzistence s více oblastmi. Tato možnost se týká kompromisů, které mají vliv na dostupnost a výkon.      |
+|Latence čtení | Mezi oblastmi | Mezi oblastmi | Nízká |
+|Latence zápisu | Mezi oblastmi | Mezi oblastmi | Nízká |
+|Oblastní výpadek – ztráta dat | Ztráta dat |  Ztráta dat | Ztráta dat <br/><br/> Při použití ohraničené konzistence neaktuálnosti s více hlavními a více než jednou oblastí je ztráta dat omezená na ohraničenou neomezenou funkčnost nakonfigurovanou na vašem účtu. <br /><br />Nemůžete zabránit ztrátě dat při regionálním výpadku tím, že nakonfigurujete silnou konzistenci s více oblastmi. Tato možnost je součástí kompromisů, které mají vliv na dostupnost a výkon. Dá se nakonfigurovat jenom pro účty, které jsou nakonfigurované pro zápisy v jedné oblasti. |
 |Oblastní výpadek – dostupnost | Ztráta dostupnosti | Ztráta dostupnosti | Žádná ztráta dostupnosti |
 |Propustnost | Zajištěná propustnost X RU/s | Zajištěná propustnost X RU/s | dostupná propustnost dvojnásobných RU/s <br/><br/> Tento režim konfigurace vyžaduje dvojnásobek objemu propustnosti v porovnání s jednou oblastí s Zóny dostupnosti, protože existují dvě oblasti. |
 
@@ -151,7 +151,7 @@ Zóny dostupnosti můžete povolit pomocí Azure Portal při vytváření účtu
 
 Dále si můžete přečíst následující články:
 
-- [Dostupnost a výkon kompromisy pro různé úrovně konzistence](consistency-levels-tradeoffs.md)
+- [Kompromisy týkající se dostupnosti a výkonu pro různé úrovně konzistence](consistency-levels-tradeoffs.md)
 - [Globální škálování zřízené propustnosti](scaling-throughput.md)
 - [Globální distribuce – pod kapotou](global-dist-under-the-hood.md)
 - [Úrovně konzistence v Azure Cosmos DB](consistency-levels.md)

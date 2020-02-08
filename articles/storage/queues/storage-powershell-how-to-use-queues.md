@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: 94e28c59c3281dc6c1d65ce782568233d0e23f03
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: bd2f372bdcb949b64f748d186a9b060bb9cbec4a
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313837"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087068"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Provádění operací Azure Queue Storage s využitím Azure PowerShellu
 
@@ -25,7 +25,7 @@ Azure Queue Storage je služba pro ukládání velkého počtu zpráv, ke který
 > * Načtení fronty
 > * Přidání zprávy
 > * Přečíst zprávu
-> * Odstranění zprávy
+> * Odstraní zprávu.
 > * Odstranění fronty
 
 Tento postup vyžaduje Azure PowerShell modul AZ verze 0,7 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
@@ -78,7 +78,7 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-queue"></a>Vytvoření fronty
 
-Následující příklad napřed vytvoří připojení k Azure Storage pomocí kontextu účtu úložiště, který zahrnuje název účtu úložiště a jeho přístupový klíč. Dále volá rutinu [New-AzStorageQueue](/powershell/module/az.storage/New-AzStorageQueue) , která vytvoří frontu s názvem "Queue".
+Následující příklad napřed vytvoří připojení k Azure Storage pomocí kontextu účtu úložiště, který zahrnuje název účtu úložiště a jeho přístupový klíč. Dále volá rutinu [New-AzStorageQueue](/powershell/module/az.storage/New-AzStorageQueue) , která vytvoří frontu s názvem "howtoqueue".
 
 ```powershell
 $queueName = "howtoqueue"
@@ -188,7 +188,7 @@ V tomto článku se seznámíte se základní správou úložiště front pomoc�
 > * Načtení fronty
 > * Přidání zprávy
 > * Přečtěte si další zprávu.
-> * Odstranění zprávy
+> * Odstraní zprávu.
 > * Odstranění fronty
 
 ### <a name="microsoft-azure-powershell-storage-cmdlets"></a>Microsoft Azure PowerShell rutiny úložiště

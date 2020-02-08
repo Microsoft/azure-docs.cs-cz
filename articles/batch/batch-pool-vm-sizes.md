@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/12/2019
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: be19de19dab92bc40ca5529ad578e033a98929cd
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c18190ec5e5d079d51630a976681717a78a46e00
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023561"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087042"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Vyberte velikost virtuálního počítače pro výpočetní uzly ve fondu Azure Batch.
 
@@ -36,38 +36,40 @@ Pro výběr velikosti virtuálního počítače je k dispozici několik výjimek
 
 Fondy dávek v konfiguraci virtuálního počítače podporují skoro všechny velikosti virtuálních počítačů ([Linux](../virtual-machines/linux/sizes.md), [Windows](../virtual-machines/windows/sizes.md)). Další informace o podporovaných velikostech a omezeních najdete v následující tabulce.
 
-Všechny propagační nebo ukázkové velikosti virtuálních počítačů, které nejsou uvedené, nejsou zaručené pro podporu.
+| Řada virtuálních počítačů  | Podporované velikosti |
+|------------|---------|
+| Basic A | Všechny velikosti *kromě* Basic_A0 (a0) |
+| A | Všechny velikosti *kromě* Standard_A0 |
+| Av2 | Všechny velikosti |
+| B | Žádný |
+| DC | Žádný |
+| Dv2, DSv2 | Všechny velikosti |
+| Dv3, Dsv3 | Všechny velikosti |
+| Dav4, Dasv4 | Žádný – zatím není k dispozici |
+| Ev3, Esv3 | Všechny velikosti kromě E64is_v3 a E64i_v3 |
+| Eav4, Easv4 | Žádný – zatím není k dispozici |
+| F, FS | Všechny velikosti |
+| Fsv2 | Všechny velikosti |
+| G, GS | Všechny velikosti |
+| H | Všechny velikosti |
+| Nejenom<sup>1</sup> | Všechny velikosti |
+| HBv2<sup>1</sup> | Všechny velikosti |
+| HC<sup>1</sup> | Všechny velikosti |
+| Ls | Všechny velikosti |
+| Lsv2 | Žádný – zatím není k dispozici |
+| M<sup>1</sup> | Všechny velikosti, s výjimkou M64, M64m, M128, M128m |
+| Mv2 | Žádný – zatím není k dispozici |
+| NC | Všechny velikosti |
+| NCv2<sup>1</sup> | Všechny velikosti |
+| NCv3<sup>1</sup> | Všechny velikosti |
+| ND<sup>1</sup> | Všechny velikosti |
+| NDv2<sup>1</sup> | Žádný – zatím není k dispozici |
+| STÁL | Všechny velikosti |
+| NVv3<sup>1</sup> | Všechny velikosti |
+| NVv4 | Žádný |
+| SAP HANA | Žádný |
 
-| Řada virtuálních počítačů  | Podporované velikosti | Režim přidělování fondu účtů Batch<sup>1</sup> |
-|------------|---------|-----------------|
-| Basic A-Series | Všechny velikosti *kromě* Basic_A0 (a0) | Všechny |
-| A-Series | Všechny velikosti *kromě* Standard_A0 | Všechny |
-| Av2-series | Všechny velikosti | Všechny |
-| B-Series | Žádné | Není k dispozici |
-| Řada DC | Žádné | Není k dispozici |
-| Dv2, DSv2-Series | Všechny velikosti | Všechny |
-| Dv3, Dsv3-Series | Všechny velikosti | Všechny |
-| Ev3, Esv3-Series | Všechny velikosti | Všechny |
-| Fsv2-series | Všechny velikosti | Všechny |
-| H-series | Všechny velikosti | Všechny |
-| Řada 2 –<sup>2</sup> | Všechny velikosti | Všechny |
-| HC – řada<sup>2</sup> | Všechny velikosti | Všechny |
-| Řada Ls | Všechny velikosti | Všechny |
-| Řada Lsv2 | Žádné | Není k dispozici |
-| M-Series | Standard_M64ms (jenom s nízkou prioritou), Standard_M128s (jenom s nízkou prioritou) | Všechny |
-| Řada Mv2 | Žádné | Není k dispozici |
-| NC-Series | Všechny velikosti | Všechny |
-| NCv2-Series<sup>2</sup> | Všechny velikosti | Všechny |
-| NCv3-Series<sup>2</sup> | Všechny velikosti | Všechny |
-| ND-Series<sup>2</sup> | Všechny velikosti | Všechny |
-| NDv2-series | Všechny velikosti | Režim předplatného uživatele |
-| NV-Series | Všechny velikosti | Všechny |
-| Řada NVv3 | Žádné | Není k dispozici |
-| SAP HANA | Žádné | Není k dispozici |
-
-<sup>1</sup> některé novější série virtuálních počítačů se zpočátku částečně podporují. Tyto řady virtuálních počítačů můžou být přidělené účty Batch s **režimem přidělování fondů** nastaveným na **předplatné uživatele**. Další informace o konfiguraci účtu Batch najdete v tématu [Správa účtů Batch](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode) . V tématu [kvóty a omezení](batch-quota-limit.md) se dozvíte, jak vyžádat kvótu pro tyto částečně podporované řady virtuálních počítačů pro účty Batch pro **předplatné uživatele** .  
-
-<sup>2</sup> tyto velikosti virtuálních počítačů je možné přidělit ve fondech Batch v konfiguraci virtuálního počítače, ale musíte požádat o konkrétní [zvýšení kvóty](batch-quota-limit.md#increase-a-quota).
+<sup>1</sup> tyto velikosti virtuálních počítačů je možné přidělit ve fondech Batch v konfiguraci virtuálního počítače, musíte ale vytvořit nový účet Batch a požádat o konkrétní [zvýšení kvóty](batch-quota-limit.md#increase-a-quota). Toto omezení se odebere, až se vCPU kvóta pro každou řadu virtuálních počítačů plně podporuje pro účty Batch.
 
 ### <a name="pools-in-cloud-service-configuration"></a>Fondy v konfiguraci cloudové služby
 

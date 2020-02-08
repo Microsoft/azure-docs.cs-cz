@@ -3,22 +3,22 @@ title: Konfigurace zprostředkovatelů identity (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
 description: Naučte se používat různé autority, jako jsou B2C, svrchované cloudy a uživatele typu Host, s MSAL pro iOS a macOS.
 services: active-directory
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/28/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: aaef7c4c0e2fa295e6e20976df5cce1523a70c43
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 4810de772e44be22ee5bd4a9fb6ef0ef756e62f4
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697774"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085204"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Postupy: Konfigurace MSAL pro iOS a macOS pro používání různých zprostředkovatelů identity
 
@@ -47,7 +47,7 @@ NSURL *authorityURL = [NSURL URLWithString:@"arbitrary URL"];
 MSALB2CAuthority *b2cAuthority = [[MSALB2CAuthority alloc] initWithURL:authorityURL
                                                                      error:&b2cAuthorityError];
 ```
-Swift
+Kód SWIFT
 ```swift
 guard let authorityURL = URL(string: "arbitrary URL") else {
     // Handle error
@@ -68,7 +68,7 @@ MSALPublicClientApplicationConfig *b2cApplicationConfig = [[MSALPublicClientAppl
                                                                authority:b2cAuthority];
 b2cApplicationConfig.knownAuthorities = @[b2cAuthority];
 ```
-Swift
+Kód SWIFT
 ```swift
 let b2cApplicationConfig = MSALPublicClientApplicationConfig(clientId: "your-client-id", redirectUri: "your-redirect-uri", authority: b2cAuthority)
 b2cApplicationConfig.knownAuthorities = [b2cAuthority]
@@ -107,7 +107,7 @@ Objective-C
         return;
     }
 ```
-Swift
+Kód SWIFT
 ```swift
 do{
     // Create B2C authority URL
@@ -157,7 +157,7 @@ Objective-C
         return;
     }
 ```
-Swift
+Kód SWIFT
 ```swift
 do{
     guard let authorityURL = URL(string: "https://login.microsoftonline.de/common") else {
@@ -180,7 +180,7 @@ Je možné, že budete muset do každého svrchovaného cloudu předat různé o
 
 Když je adresa URL autority nastavená na `"login.microsoftonline.com/common"`, uživatel se přihlásí do svého domovského tenanta. Některé aplikace ale můžou potřebovat podepsat uživatele do jiného tenanta a některé aplikace fungují jenom s jedním klientem.
 
-Pokud chcete uživatele podepsat do konkrétního tenanta, nakonfigurujte `MSALPublicClientApplication` s konkrétní autoritou. Například:
+Pokud chcete uživatele podepsat do konkrétního tenanta, nakonfigurujte `MSALPublicClientApplication` s konkrétní autoritou. Příklad:
 
 `https://login.microsoftonline.com/469fdeb4-d4fd-4fde-991e-308a78e4bea4`
 
@@ -211,7 +211,7 @@ Objective-C
         return;
     }
 ```
-Swift
+Kód SWIFT
 ```swift
 do{
     guard let authorityURL = URL(string: "https://login.microsoftonline.com/469fdeb4-d4fd-4fde-991e-308a78e4bea4") else {

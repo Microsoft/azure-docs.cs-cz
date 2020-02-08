@@ -3,22 +3,22 @@ title: Toky ověřování MSAL | Azure
 titleSuffix: Microsoft identity platform
 description: Přečtěte si o tocích ověřování a grantech, které používá knihovna Microsoft Authentication Library (MSAL).
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/30/2020
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: bc906e1026dcc051ef152ff9fba94525ac700761
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: ace636152f6a0c9bf3896860eb17cc291bef2887
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962083"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085128"
 ---
 # <a name="authentication-flows"></a>Toky ověřování
 
@@ -39,7 +39,7 @@ Tento článek popisuje různé toky ověřování, které poskytuje knihovna Mi
  
 V závislosti na tom, jak je váš klient sestavený, může použít jeden (nebo několik) toků ověřování podporovaných platformou Microsoft identity.  Tyto toky můžou vytvářet různé tokeny (id_tokens, aktualizovat tokeny, přístupové tokeny) a také autorizační kódy a při práci vyžadovat jiné tokeny. Tento graf poskytuje přehled:
  
-|Tok | Nutné | id_token | přístupový token | aktualizovat token | autorizační kód | 
+|Tok | Vyžaduje | id_token | přístupový token | aktualizovat token | autorizační kód | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Tok autorizačního kódu](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
 |[Implicitní tok](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
@@ -74,7 +74,7 @@ Mnoho moderních webových aplikací je postavených jako aplikace na straně kl
 
 Tento tok ověřování neobsahuje scénáře aplikací, které používají rozhraní JavaScript pro různé platformy, jako jsou například elektronicky a reagující na nativní, protože vyžadují další možnosti pro interakci s nativními platformami.
 
-## <a name="authorization-code"></a>autorizační kód
+## <a name="authorization-code"></a>Autorizační kód
 
 MSAL podporuje [udělení autorizačního kódu OAuth 2](v2-oauth2-auth-code-flow.md). Tento grant se dá použít v aplikacích, které jsou nainstalované na zařízení, aby získal přístup k chráněným prostředkům, například k webovým rozhraním API. Díky tomu můžete přidat přihlašování a přístup k rozhraní API pro mobilní a desktopové aplikace. 
 

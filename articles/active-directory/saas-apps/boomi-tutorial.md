@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 02/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2469745edb5b8b3696478603cfe874bcabc8c1ff
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a22a36d5e6c36008c3a574cbcf9be8ec4f52b82b
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231959"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086449"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-boomi"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Boomi
 
@@ -31,7 +30,7 @@ V tomto kurzu se dozvíte, jak integrovat Boomi s Azure Active Directory (Azure 
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Boomi svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -45,6 +44,7 @@ Chcete-li začít, potřebujete následující položky:
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
 * Boomi podporuje jednotné přihlašování **IDP** .
+* Po nakonfigurování Boomi můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-boomi-from-the-gallery"></a>Přidání Boomi z Galerie
 
@@ -81,14 +81,22 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** zadejte hodnoty pro následující pole:
+1. Pokud v **základním oddílu konfigurace SAML** máte **soubor metadat poskytovatele služeb** a chcete ho nakonfigurovat v režimu iniciované **IDP** , proveďte následující kroky:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL: `https://platform.boomi.com/`
+    a. Klikněte na **nahrát soubor metadat**.
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://platform.boomi.com/sso/<boomi-tenant>/saml`
+    ![Nahrát soubor metadat](common/upload-metadata.png)
 
-    > [!NOTE]
-    > Hodnota adresy URL odpovědi není reálné číslo. Aktualizujte hodnotu skutečnou adresou URL odpovědi. Pokud chcete získat tuto hodnotu, obraťte se na [tým podpory klienta Boomi](https://boomi.com/company/contact/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    b. Kliknutím na **logo složky** vyberte soubor metadat a klikněte na **nahrát**.
+
+    ![zvolit soubor metadat](common/browse-upload-metadata.png)
+
+    c. Po úspěšném nahrání souboru metadat se hodnoty **adresy URL** pro **identifikátor** a odpověď získají automaticky v základní části Konfigurace SAML.
+
+    ![image](common/idp-intiated.png)
+
+    > [!Note]
+    > **Soubor metadat poskytovatele služeb** získáte z oddílu **Konfigurace Boomi jednotného přihlašování** , který je vysvětlen dále v tomto kurzu. Pokud hodnoty **adresy URL** pro **identifikátor** a odpověď nezískají auto polulated, pak hodnoty ručně vyplníte podle vašich požadavků.
 
 1. Boomi aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
@@ -116,9 +124,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. například `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -154,9 +162,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     c. V textovém poli **Adresa URL pro přihlášení zprostředkovatele identity** zadejte hodnotu **přihlašovací adresa URL** z okna konfigurace aplikace služby Azure AD.
 
-    d. Jako **umístění ID federace**vyberte **id federace v FEDERATION_ID** přepínací tlačítko elementu atributu.
+    d. V poli **ID federace**vyberte **id federace v FEDERATION_ID** přepínací tlačítko elementu atributu.
 
-    e. Klikněte na tlačítko **Uložit** .
+    e. Zkopírujte **adresu URL metadat AtomSphere**, v prohlížeči podle vašeho výběru přejít na **adresu URL metadat** a uložte výstup do souboru. Nahrajte **adresu URL metadat** v části **základní konfigurace SAML** v Azure Portal.
+
+    f. Klikněte na tlačítko **Uložit** .
 
 ### <a name="create-boomi-test-user"></a>Vytvořit testovacího uživatele Boomi
 
@@ -189,7 +199,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k Boomi, musí se zřídit v Boo
     f. Klikněte na tlačítko **OK**.
 
     > [!NOTE]
-    > Uživatel neobdrží uvítací oznamovací e-mail obsahující heslo, které se dá použít k přihlášení k účtu AtomSphere, protože jeho heslo je spravované prostřednictvím poskytovatele identity. K zřizování uživatelských účtů Azure AD můžete použít jiné nástroje pro vytváření uživatelských účtů Boomi nebo rozhraní API poskytovaná Boomi.
+    > Uživatel neobdrží uvítací oznamovací e-mail obsahující heslo, které se dá použít k přihlášení k účtu AtomSphere, protože jeho heslo je spravované prostřednictvím poskytovatele identity. K zřizování uživatelských účtů AAD můžete použít jiné nástroje pro vytváření uživatelských účtů Boomi nebo rozhraní API poskytovaná Boomi.
 
 ## <a name="test-sso"></a>Test SSO
 
@@ -201,8 +211,10 @@ Když na přístupovém panelu kliknete na dlaždici Boomi, měli byste se autom
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 - [Vyzkoušejte si Boomi s Azure AD](https://aad.portal.azure.com/)

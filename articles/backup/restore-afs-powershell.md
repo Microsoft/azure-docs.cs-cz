@@ -3,18 +3,21 @@ title: Obnovení souborů Azure pomocí PowerShellu
 description: V tomto článku se dozvíte, jak obnovit soubory Azure pomocí služby Azure Backup a PowerShellu.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: c1c116033dbf44e6e1f332195a18c7dfdbcd6c71
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 99aeaa6173bb5336e6e1719a9fc0df0c668374e2
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776336"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086822"
 ---
 # <a name="restore-azure-files-with-powershell"></a>Obnovení souborů Azure pomocí PowerShellu
 
 Tento článek vysvětluje, jak obnovit celou sdílenou složku nebo konkrétní soubory z bodu obnovení vytvořeného službou [Azure Backup](backup-overview.md) pomocí Azure PowerShellu.
 
 Můžete obnovit celou sdílenou složku nebo konkrétní soubory ve sdílené složce. Můžete obnovit do původního umístění nebo do alternativního umístění.
+
+> [!WARNING]
+> Ujistěte se, že je verze PS upgradována na minimální verzi příkazu AZ. RecoveryServices 2.6.0 pro zálohy na AFS. Další podrobnosti najdete [v části](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) popisující požadavek na tuto změnu.
 
 ## <a name="fetch-recovery-points"></a>Načíst body obnovení
 

@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: 64c5d80b5a2660164b21e71f06e847d5b11e40da
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: a8265680f74b2d5679d1ebfbb2873dd096f498a3
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964413"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083044"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Kurz: sdílení dat pomocí Azure Data Share  
 
@@ -29,6 +29,7 @@ V tomto kurzu se naučíte:
 
 * Předplatné Azure: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * Přihlašovací e-mailová adresa Azure vašeho příjemce (pomocí e-mailového aliasu nebude fungovat).
+* Pokud je zdrojové úložiště dat Azure v jiném předplatném Azure, než je ten, který použijete k vytvoření prostředku pro sdílení dat, zaregistrujte [poskytovatele prostředků Microsoft. datashare](concepts-roles-permissions.md#resource-provider-registration) v předplatném, kde se nachází úložiště dat Azure. 
 
 ### <a name="share-from-a-storage-account"></a>Sdílet z účtu úložiště:
 
@@ -57,7 +58,7 @@ V tomto kurzu se naučíte:
 * IP adresa klienta SQL Server přístup k bráně firewall. To lze provést pomocí následujících kroků: 
     1. V systému SQL Server v Azure Portal přejděte na *brány firewall a virtuální sítě* .
     1. Kliknutím na přepínač **zapnuto** povolíte přístup ke službám Azure.
-    1. Klikněte na **+ Přidat IP adresu klienta** a klikněte na **Uložit**. IP adresa klienta se může změnit. Můžete také přidat rozsah IP adres. 
+    1. Klikněte na **+ Přidat IP adresu klienta** a klikněte na **Uložit**. IP adresa klienta se může změnit. Tento proces může být nutné zopakovat při příštím sdílení dat SQL z Azure Portal. Můžete také přidat rozsah IP adres. 
 
 ### <a name="share-from-azure-data-explorer"></a>Sdílení z Azure Průzkumník dat
 * Cluster Azure Průzkumník dat s databázemi, které chcete sdílet.
@@ -66,7 +67,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [Portálu Azure](https://portal.azure.com/).
+Přihlaste se k webu [Portál Azure](https://portal.azure.com/).
 
 ## <a name="create-a-data-share-account"></a>Vytvoření účtu pro sdílení dat
 
@@ -82,7 +83,7 @@ Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
 
      **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
-    | Name (Název) | *datashareacount* | Zadejte název vašeho účtu pro sdílení dat. |
+    | Název | *datashareacount* | Zadejte název vašeho účtu pro sdílení dat. |
     | Předplatné | Vaše předplatné | Vyberte předplatné Azure, které chcete použít pro svůj účet pro sdílení dat.|
     | Skupina prostředků | *test-resource-group* | Použijte existující skupinu prostředků nebo vytvořte novou skupinu prostředků. |
     | Umístění | *Východní USA 2* | Vyberte oblast pro svůj účet pro sdílení dat.
@@ -100,7 +101,7 @@ Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
 
 1. Vyberte možnost **začít sdílet data**.
 
-1. Vyberte **Vytvořit**.   
+1. Vyberte **Create** (Vytvořit).   
 
 1. Vyplňte podrobnosti pro vaši sdílenou složku dat. Zadejte název, typ sdílení, popis obsahu sdílení a podmínek použití (volitelné). 
 

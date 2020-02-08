@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: mlearned
-ms.openlocfilehash: 58b372e1f80386c4e02339f67f4c5aeaa686a662
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: c2103952503a0a184fb970cd8d2326cc2764a223
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549219"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086504"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy týkající se služby Azure Kubernetes (AKS)
 
@@ -97,8 +97,6 @@ AKS podporuje následující [řadiče pro přístup][admission-controllers]:
 - *MutatingAdmissionWebhook*
 - *ValidatingAdmissionWebhook*
 - *ResourceQuota*
-- *DenyEscalatingExec*
-- *AlwaysPullImages*
 
 V současné době nemůžete upravit seznam řadičů pro příjem v AKS.
 

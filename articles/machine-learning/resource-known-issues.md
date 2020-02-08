@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9824f5cfd7b42860079536232b8a5ad40ea608c9
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 3243aa4c68e1cd6030986dc44cca47a555dc5356
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638353"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087152"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Známé problémy a řešení potíží Azure Machine Learning
 
@@ -46,7 +46,7 @@ Následující obrázek ukazuje, jak: ![visulize-data](./media/resource-known-is
 
 ## <a name="sdk-installation-issues"></a>Problémy při instalaci sady SDK
 
-**Chybová zpráva: "PyYAML" nelze odinstalovat.**
+**Chybová zpráva: Nejde odinstalovat ' PyYAML '.**
 
 Azure Machine Learning SDK pro Python: PyYAML je projekt distutils nainstalované. Proto nemůžeme přesně určit, které soubory do ní patří, pokud dojde k částečné odinstalaci. Pokud chcete pokračovat v instalaci sady SDK při tato chyba se ignoruje, použijte:
 
@@ -76,7 +76,7 @@ Pokud zjistíte `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died 
 
 ## <a name="fpgas"></a>FPGA
 
-Nebude moct nasazovat modely na FPGA, dokud si vyžádáte a byla schválena pro FPGA kvótu. Chcete-li požádat o přístup, vyplňte formulář žádosti o kvóty: https://aka.ms/aml-real-time-ai
+Nebude moct nasazovat modely na FPGA, dokud si vyžádáte a byla schválena pro FPGA kvótu. Chcete-li požádat o přístup, vyplňte formulář žádosti o kvótu: https://aka.ms/aml-real-time-ai
 
 ## <a name="automated-machine-learning"></a>Automatizované strojové učení
 
@@ -125,7 +125,7 @@ Problémy s Databricks a Azure Machine Learning.
 
 ### <a name="failure-when-installing-packages"></a>Chyba při instalaci balíčků
 
-Instalace sady Azure Machine Learning SDK se v Azure Databricks při instalaci dalších balíčků nezdařila. Některé balíčky, jako například `psutil`, může způsobit konflikty. Aby nedocházelo k chybám při instalaci, nainstalujte balíčky zmrazením verze knihovny. Tento problém se vztahuje k datacihlům a nikoli k sadě Azure Machine Learning SDK. Tento problém se může vyskytnout i u jiných knihoven. Příklad:
+Instalace sady Azure Machine Learning SDK se v Azure Databricks při instalaci dalších balíčků nezdařila. Některé balíčky, například `psutil`, můžou způsobit konflikty. Aby nedocházelo k chybám při instalaci, nainstalujte balíčky zmrazením verze knihovny. Tento problém se vztahuje k datacihlům a nikoli k sadě Azure Machine Learning SDK. Tento problém se může vyskytnout i u jiných knihoven. Příklad:
 
 ```python
 psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
@@ -172,7 +172,7 @@ Pokud se při čtení dat v clusteru Azure Databricks zobrazí chyba `FailToSend
 * Přidejte `azureml-dataprep` verze 1.1.8 nebo novější.
 * Přidejte `pyarrow` verze 0,11 nebo vyšší.
 
-## <a name="azure-portal"></a>Portál Azure
+## <a name="azure-portal"></a>portál Azure
 
 Pokud přejdete přímo na váš pracovní prostor z sdílet odkaz ze sady SDK nebo na portálu zobrazit, nebudete moct zobrazit stránka s přehledem normální s informace o předplatném v rozšíření. Nebudete také moci přepnout do jiného pracovního prostoru. Pokud potřebujete zobrazit jiný pracovní prostor, alternativní řešení je přejít přímo na [Azure Machine Learning Studio](https://ml.azure.com) a vyhledat název pracovního prostoru.
 
@@ -191,7 +191,7 @@ Některé z těchto akcí se zobrazí v oblasti __aktivity__ pracovního prostor
 
 ## <a name="resource-quotas"></a>Kvóty prostředků
 
-Další informace o [kvóty prostředků](how-to-manage-quotas.md) můžete setkat při práci se službou Azure Machine Learning.
+Přečtěte si o [kvótách prostředků](how-to-manage-quotas.md) , se kterými se můžete setkat při práci s Azure Machine Learning.
 
 ## <a name="authentication-errors"></a>Chyby ověřování
 
@@ -306,3 +306,9 @@ Chcete-li načíst všechny označené obrázky, klikněte na tlačítko **prvn�
 ### <a name="pressing-esc-key-while-labeling-for-object-detection-creates-a-zero-size-label-on-the-top-left-corner-submitting-labels-in-this-state-fails"></a>Když stisknete klávesu ESC, zatímco při rozpoznávání objektu se vytvoří popisek s nulovou velikostí v levém horním rohu. Odesílání popisků v tomto stavu se nezdařilo.
 
 Odstraňte popisek kliknutím na křížek vedle něj.
+
+## <a name="run-or-experiment-deletion"></a>Spuštění nebo experimentování při odstraňování
+
+Experimenty se dají archivovat pomocí metody [experiment. Archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#archive--) nebo experimentovat v zobrazení na kartách klienta Azure Machine Learning Studio. Tato akce skryje experiment ze seznamu dotazy a zobrazení, ale neodstraní ho.
+
+Trvalé odstranění individuálních experimentů nebo spuštění není aktuálně podporováno. Další informace o odstraňování prostředků pracovního prostoru najdete v tématu [Export nebo odstranění dat pracovního prostoru služby Machine Learning](how-to-export-delete-data.md).

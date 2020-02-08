@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/28/2019
+ms.date: 02/07/2020
 ms.author: radeltch
-ms.openlocfilehash: 179df26eb0cc75899c9b509ebe00410ffa916dc8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 52179f15829981d59ff060784a49eccef89bb186
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935182"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083711"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Připojení k veřejnému koncovému bodu pro Virtual Machines používání Azure Standard Load Balancer ve scénářích SAP pro vysokou dostupnost
 
@@ -63,7 +63,7 @@ Nejprve si přečtěte následující dokumenty:
   * [Přehled azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) – úplný přehled služby Azure Load Balancer, důležité principy, koncepty a kurzy 
   * [Odchozí připojení v Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scenarios) – scénáře, jak dosáhnout odchozího připojení v Azure
   * [Odchozí pravidla nástroje pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)– vysvětluje koncepty odchozích pravidel nástroje pro vyrovnávání zatížení a postup vytváření odchozích pravidel.
-* Azure Firewall
+* Brána Azure Firewall
   * [Přehled Azure firewall](https://docs.microsoft.com/azure/firewall/overview)– přehled Azure firewall
   * [Kurz: nasazení a konfigurace Azure firewall](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) – pokyny ke konfiguraci Azure Firewall prostřednictvím Azure Portal
 * [Virtuální sítě – uživatelsky definovaná pravidla](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined) – koncepce a pravidla směrování Azure  
@@ -106,7 +106,7 @@ Konfigurace by vypadala takto:
     az network lb outbound-rule create --address-pool MyBackendPoolOfPublicILB --frontend-ip-configs MyPublicILBFrondEndIP --idle-timeout 30 --lb-name MyPublicILB --name MyOutBoundRules  --outbound-ports 10000 --enable-tcp-reset true --protocol All --resource-group MyResourceGroup
    ```
 
-4. Vytvořte pravidla skupiny zabezpečení sítě, abyste omezili přístup ke konkrétním veřejným koncovým bodům. Pokud existuje existující skupina zabezpečení sítě, můžete ji upravit. Níže uvedený příklad ukazuje, jak udělit přístup pouze k rozhraní API pro správu Azure: 
+4. Vytvořte pravidla skupiny zabezpečení sítě, abyste omezili přístup ke konkrétním veřejným koncovým bodům. Pokud existuje existující skupina zabezpečení sítě, můžete ji upravit. Následující příklad ukazuje, jak povolit přístup k rozhraní API pro správu Azure: 
    1. Přejít do skupiny zabezpečení sítě
    1. Klikněte na odchozí pravidla zabezpečení.
    1. Přidejte pravidlo, které **zamítne** veškerý odchozí přístup k **Internetu**.

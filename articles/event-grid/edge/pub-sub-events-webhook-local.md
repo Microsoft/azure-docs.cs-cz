@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: e403d690470f3c4f1d0c8e565e90641d9c114a80
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ba82b1bea4753cd51e275a78b248247032d79a01
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844532"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086634"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Kurz: publikování, přihlášení k odběru událostí v místním prostředí
 
@@ -47,7 +47,7 @@ Existuje několik způsobů, jak nasadit moduly do zařízení IoT Edge, a všec
 
 ### <a name="configure-a-deployment-manifest"></a>Konfigurace manifestu nasazení
 
-Manifest nasazení je dokument JSON, který popisuje, které moduly chcete nasadit, tok dat mezi moduly a požadované vlastnosti dvojčat modulů. Azure Portal má průvodce, který vás provede vytvořením manifestu nasazení místo ručního vytváření dokumentu JSON.  Má tři kroky: **přidat moduly**, **trasy zadejte**, a **zkontrolujte nasazení**.
+Manifest nasazení je dokument JSON, který popisuje, které moduly chcete nasadit, tok dat mezi moduly a požadované vlastnosti dvojčat modulů. Azure Portal má průvodce, který vás provede vytvořením manifestu nasazení místo ručního vytváření dokumentu JSON.  Má tři kroky: **přidat moduly**, **zadat trasy**a **zkontrolovat nasazení**.
 
 ### <a name="add-modules"></a>Přidat moduly
 
@@ -64,8 +64,7 @@ Manifest nasazení je dokument JSON, který popisuje, které moduly chcete nasad
     ```json
         {
           "Env": [
-            "inbound__clientAuth__clientCert__enabled=false",
-            "outbound__webhook__httpsOnly=false"
+            "inbound__clientAuth__clientCert__enabled=false"
           ],
           "HostConfig": {
             "PortBindings": {
@@ -79,21 +78,17 @@ Manifest nasazení je dokument JSON, který popisuje, které moduly chcete nasad
         }
     ```    
  1. Klikněte na **Uložit**.
- 1. Pokračujte k další části a přidejte modul Azure Functions před tím, než je nasadíte dohromady.
+ 1. Přejděte k další části a přidejte modul předplatitele Azure Event Grid před jejich nasazením dohromady.
 
     >[!IMPORTANT]
-    > V tomto kurzu nasadíte modul Event Grid s povoleným ověřováním klienta a povolíte předplatitele HTTP. Pro produkční úlohy doporučujeme povolit ověřování klientů a povolit pouze předplatitele HTTPs. Další informace o tom, jak bezpečně nakonfigurovat Event Grid modul, najdete v tématu [zabezpečení a ověřování](security-authentication.md).
+    > V tomto kurzu nasadíte modul Event Grid s povoleným ověřováním klienta. Pro produkční úlohy doporučujeme povolit ověřování klientů. Další informace o tom, jak bezpečně nakonfigurovat Event Grid modul, najdete v tématu [zabezpečení a ověřování](security-authentication.md).
     > 
     > Pokud jako hraniční zařízení používáte virtuální počítač Azure, přidejte pravidlo příchozího portu, které povolí příchozí provoz na portu 4438. Pokyny k přidání pravidla najdete v tématu [Postup otevření portů pro virtuální počítač](../../virtual-machines/windows/nsg-quickstart-portal.md).
     
 
-## <a name="deploy-azure-function-iot-edge-module"></a>Nasadit modul IoT Edge služby Azure Functions
+## <a name="deploy-event-grid-subscriber-iot-edge-module"></a>Nasazení IoT Edge modulu předplatitele Event Grid
 
-V této části se dozvíte, jak nasadit modul Azure Functions IoT, který by sloužil jako Event Grid předplatitel, kterému se můžou události doručovat.
-
->[!IMPORTANT]
->V této části nasadíte ukázkový modul pro přihlášení k odběru založený na funkcích Azure Functions. Může samozřejmě být libovolný vlastní modul IoT, který může naslouchat žádostem HTTP POST.
-
+V této části se dozvíte, jak nasadit jiný modul IoT, který by sloužil jako obslužná rutina události, do které se můžou události doručovat.
 
 ### <a name="add-modules"></a>Přidat moduly
 
@@ -102,23 +97,8 @@ V této části se dozvíte, jak nasadit modul Azure Functions IoT, který by sl
 1. Zadejte název, obrázek a možnosti vytvoření kontejneru kontejneru:
 
    * **Název**: odběratel
-   * **Identifikátor URI image**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber-azfunc:latest`
-   * **Možnosti vytvoření kontejneru**:
-
-       ```json
-            {
-              "HostConfig": {
-                "PortBindings": {
-                  "80/tcp": [
-                    {
-                      "HostPort": "8080"
-                    }
-                  ]
-                }
-              }
-            }
-       ```
-
+   * **Identifikátor URI image**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
+   * **Možnosti vytvoření kontejneru**: žádné
 1. Klikněte na **Uložit**.
 1. Kliknutím na tlačítko **Další** pokračujte v části trasy.
 
@@ -129,7 +109,7 @@ Ponechte výchozí trasy a vyberte **Další** , abyste pokračovali v části K
 ### <a name="submit-the-deployment-request"></a>Odeslat žádost o nasazení
 
 1. V části Kontrola se dozvíte, který manifest nasazení JSON byl vytvořen na základě vašich výběrů v předchozí části. Ověřte, že se zobrazují oba moduly: **eventgridmodule** a **předplatitelé** uvedené ve formátu JSON. 
-1. Zkontrolujte informace o nasazení a pak vyberte **odeslat**. Po odeslání nasazení se vrátíte na stránku **zařízení** .
+1. Zkontrolujte informace o svém nasazení a pak vyberte **Odeslat**. Po odeslání nasazení se vrátíte na stránku **zařízení** .
 1. V **části moduly**ověřte, že jsou uvedené moduly **eventgrid** a **předplatitelé** . A ověřte, zda je **zadaná hodnota ve sloupci nasazení** a **hlášená pomocí sloupce zařízení** nastavena na **hodnotu Ano**.
 
     Může chvíli trvat, než se modul na zařízení spustí a pak se znovu oznámí IoT Hub. Aktualizujte stránku, aby se zobrazil aktualizovaný stav.
@@ -191,7 +171,7 @@ Předplatitelé se můžou zaregistrovat pro události publikované v tématu. P
             "destination": {
               "endpointType": "WebHook",
               "properties": {
-                "endpointUrl": "http://subscriber:80/api/subscriber"
+                "endpointUrl": "https://subscriber:4430"
               }
             }
           }
@@ -199,7 +179,7 @@ Předplatitelé se můžou zaregistrovat pro události publikované v tématu. P
     ```
 
     >[!NOTE]
-    > Vlastnost **endpointType** určuje, že předplatitel je **Webhook**.  **EndpointUrl** Určuje adresu URL, na které předplatitel naslouchá pro události. Tato adresa URL odpovídá ukázce funkce Azure, kterou jste nasadili dříve.
+    > Vlastnost **endpointType** určuje, že předplatitel je **Webhook**.  **EndpointUrl** Určuje adresu URL, na které předplatitel naslouchá pro události. Tato adresa URL odpovídá ukázce Azure předplatitele, kterou jste předtím nasadili.
 2. Spuštěním následujícího příkazu vytvořte odběr pro téma. Ověřte, že se zobrazuje stavový kód HTTP `200 OK`.
 
     ```sh
@@ -223,7 +203,7 @@ Předplatitelé se můžou zaregistrovat pro události publikované v tématu. P
             "destination": {
               "endpointType": "WebHook",
               "properties": {
-                "endpointUrl": "http://subscriber:80/api/subscriber"
+                "endpointUrl": "https://subscriber:4430"
               }
             }
           }
@@ -275,7 +255,7 @@ Předplatitelé se můžou zaregistrovat pro události publikované v tématu. P
     Ukázkový výstup:
 
     ```sh
-        Received event data [
+        Received Event:
             {
               "id": "eventId-func-0",
               "topic": "sampleTopic1",
@@ -289,7 +269,6 @@ Předplatitelé se můžou zaregistrovat pro události publikované v tématu. P
                 "model": "Monster"
               }
             }
-          ]
     ```
 
 ## <a name="cleanup-resources"></a>Vyčištění prostředků

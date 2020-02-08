@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 109ac20d8a3d3dc87b4a83165c0e6c24808c1340
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 6342e6a75c8397712e028874b4d727bf3d6f5ff4
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529639"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087118"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Zabezpečená správa prostředí Pythonu v Azure HDInsightu s využitím akce skriptu
 
@@ -49,11 +49,11 @@ Existují dva typy open source komponent, které jsou k dispozici ve službě HD
 
 Cluster HDInsight Spark se vytvoří s instalací Anaconda. V clusteru jsou dvě instalace Pythonu, Anaconda Python 2,7 a Python 3,5. Následující tabulka ukazuje výchozí nastavení Pythonu pro Spark, Livy a Jupyter.
 
-| |Python 2.7|Python 3,5|
+| |Python 2,7|Python 3,5|
 |----|----|----|
 |Cesta|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark|Výchozí nastavení je 2,7|Nevztahuje se|
-|Livy|Výchozí nastavení je 2,7|Nevztahuje se|
+|Spark|Výchozí nastavení je 2,7|Není k dispozici|
+|Livy|Výchozí nastavení je 2,7|Není k dispozici|
 |Jupyter|Jádro PySpark|Jádro PySpark3|
 
 ## <a name="safely-install-external-python-packages"></a>Bezpečně instalovat externí balíčky Pythonu
@@ -122,7 +122,7 @@ Cluster HDInsight závisí na integrovaném prostředí Pythonu, Python 2,7 a Py
 
 ## <a name="known-issue"></a>Známý problém
 
-Je známá chyba pro Anaconda verze 4.7.11 a 4.7.12. Pokud se vám akce se skripty dokončí při `"Collecting package metadata (repodata.json): ...working..."` a selhání s `"Python script has been killed due to timeout after waiting 3600 secs"`. [Tento skript](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) si můžete stáhnout a spustit jako akce skriptu na všech uzlech, aby se problém vyřešil.
+K dispozici je známá chyba pro Anaconda verze 4.7.11, 4.7.12 a 4.8.0. Pokud se vám akce se skripty dokončí při `"Collecting package metadata (repodata.json): ...working..."` a selhání s `"Python script has been killed due to timeout after waiting 3600 secs"`. [Tento skript](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) si můžete stáhnout a spustit jako akce skriptu na všech uzlech, aby se problém vyřešil.
 
 Ke kontrole verze Anaconda můžete použít SSH na uzel hlavičky clusteru a spustit `/usr/bin/anaconda/bin/conda --v`.
 

@@ -3,7 +3,7 @@ title: Kurz MSAL for iOS & macOS – Microsoft Identity Platform | Azure
 description: Přečtěte si, jak aplikace iOS a macOS (SWIFT) můžou volat rozhraní API, které vyžaduje přístupové tokeny s využitím platformy Microsoft Identity Platform.
 services: active-directory
 documentationcenter: dev-center-name
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -13,12 +13,12 @@ ms.date: 08/30/2019
 ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a3a1b424cdf3c1897efce36b4499de967f85bb1e
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 7704779ff605e28358f6f82c22ccda84d371dba9
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701208"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084386"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Přihlaste se uživatelům a zavolejte Microsoft Graph z aplikace pro iOS nebo macOS.
 
@@ -32,7 +32,7 @@ Po dokončení průvodce bude aplikace přijímat přihlašovacíky osobních ú
 
 Aplikace v tomto kurzu se bude přihlašovat uživatelům a získat data jménem.  Tato data budou k dispozici prostřednictvím chráněného rozhraní API (Microsoft Graph API v tomto případě), které vyžaduje autorizaci a jsou chráněny platformou Microsoft identity.
 
-A to konkrétně:
+A konkrétně:
 
 * Vaše aplikace se přihlásí k uživateli přes prohlížeč nebo Microsoft Authenticator.
 * Koncový uživatel bude akceptovat oprávnění, která vaše aplikace požadovala.
@@ -47,7 +47,7 @@ Tento kurz se týká aplikací pro iOS i macOS. Všimněte si, že některé kro
 ## <a name="prerequisites"></a>Požadavky
 
 - K sestavení aplikace v této příručce se vyžaduje XCode verze 10. x nebo vyšší. XCode si můžete stáhnout z [webu iTunes](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "Adresa URL pro stažení XCode").
-- Microsoft Authentication Library ([MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)). Můžete použít Správce závislostí nebo přidat knihovnu ručně. Níže uvedené pokyny vám ukážou, jak.
+- Knihovna Microsoft Authentication Library ([MSAL. Framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)). Můžete použít Správce závislostí nebo přidat knihovnu ručně. Níže uvedené pokyny vám ukážou, jak.
 
 V tomto kurzu se vytvoří nový projekt. Pokud chcete stáhnout dokončený kurz místo toho, Stáhněte si kód:
 - [Ukázkový kód iOS](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
@@ -648,7 +648,7 @@ Když se uživatel poprvé přihlásí do vaší aplikace, zobrazí se mu výzva
 
 Po přihlášení aplikace zobrazí data vrácená z Microsoft Graph koncového bodu `/me`.
 
-## <a name="get-help"></a>Získání nápovědy
+## <a name="get-help"></a>Podpora
 
 Pokud máte potíže s tímto kurzem nebo s platformou Microsoft identity, přejděte na [pomoc a podpora](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options) .
 

@@ -3,16 +3,19 @@ title: Správa záloh sdílených složek Azure pomocí PowerShellu
 description: Naučte se používat PowerShell ke správě a monitorování sdílených složek Azure zálohovaných službou Azure Backup.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 9004e16c4b7c6ee704460d744612bafcd32831b9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a9dc421db740963fc5cd11e868eb383694376ce1
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776414"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083179"
 ---
 # <a name="manage-azure-file-share-backups-with-powershell"></a>Správa záloh sdílených složek Azure pomocí PowerShellu
 
 Tento článek popisuje, jak pomocí Azure PowerShell spravovat a monitorovat sdílené složky Azure, které jsou zálohované službou Azure Backup.
+
+> [!WARNING]
+> Ujistěte se, že je verze PS upgradována na minimální verzi příkazu AZ. RecoveryServices 2.6.0 pro zálohy na AFS. Další podrobnosti najdete [v části](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) popisující požadavek na tuto změnu.
 
 ## <a name="modify-the-protection-policy"></a>Upravit zásady ochrany
 

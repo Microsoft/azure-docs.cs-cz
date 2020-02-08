@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: f2acb89597ef877543a2c4cc46f395aede41034b
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 5b7d9cd7e7d438cf2beac76d5d8bcc78d377a8f4
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964494"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083105"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Kurz: přijetí a příjem dat pomocí Azure Data Share  
 
@@ -30,7 +30,7 @@ Před přijetím pozvánky ke sdílení dat se ujistěte, že jsou splněné vš
 
 * Předplatné Azure: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * Pozvánka ke sdílení dat: Pozvánka od Microsoft Azure k předmětu s názvem "pozvání ke sdílené složce Azure z **<yourdataprovider@domain.com>** ".
-* Zaregistrujte poskytovatele prostředků Microsoft. datashare. Podle pokynů popsaných v tématu [řešení potíží se službou Azure Data Share](data-share-troubleshoot.md) Zaregistrujte poskytovatele prostředků sdílení dat.
+* Zaregistrujte [poskytovatele prostředků Microsoft. datashare](concepts-roles-permissions.md#resource-provider-registration) v předplatném Azure, kde vytvoříte prostředek pro sdílení dat a předplatné Azure, kde se nachází vaše cílové úložiště dat Azure.
 
 ### <a name="receive-data-into-a-storage-account"></a>Příjem dat do účtu úložiště: 
 
@@ -57,7 +57,7 @@ Před přijetím pozvánky ke sdílení dat se ujistěte, že jsou splněné vš
 * IP adresa klienta SQL Server přístup k bráně firewall. To lze provést pomocí následujících kroků: 
     1. V systému SQL Server v Azure Portal přejděte na *brány firewall a virtuální sítě* .
     1. Kliknutím na přepínač **zapnuto** povolíte přístup ke službám Azure.
-    1. Klikněte na **+ Přidat IP adresu klienta** a klikněte na **Uložit**. IP adresa klienta se může změnit. Tento proces může být nutné zopakovat při příštím sdílení dat SQL z Azure Portal. Můžete také přidat rozsah IP adres. 
+    1. Klikněte na **+ Přidat IP adresu klienta** a klikněte na **Uložit**. IP adresa klienta se může změnit. Tento proces může být nutné zopakovat při příštím doručování dat do cíle SQL z Azure Portal. Můžete také přidat rozsah IP adres. 
 
 
 ### <a name="receive-data-into-an-azure-data-explorer-cluster"></a>Příjem dat do clusteru Azure Průzkumník dat: 
@@ -68,7 +68,7 @@ Před přijetím pozvánky ke sdílení dat se ujistěte, že jsou splněné vš
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [Portálu Azure](https://portal.azure.com/).
+Přihlaste se k webu [Portál Azure](https://portal.azure.com/).
 
 ## <a name="open-invitation"></a>Otevřít pozvánku
 
@@ -114,7 +114,7 @@ Přihlaste se k [Portálu Azure](https://portal.azure.com/).
 
    ![Nastavení snímku](./media/snapshot-settings.png "Nastavení snímku") 
 
-1. Vyberte *Uložit*. 
+1. Vyberte *Save* (Uložit). 
 
 > [!IMPORTANT]
 > Pokud přijímáte data založená na jazyce SQL a chcete tato data přijímat do zdroje založeného na jazyce SQL, přejděte na téma [Konfigurace mapování datových sad](how-to-configure-mapping.md) s návodem, jak se naučíte konfigurovat SQL Server jako cíl pro datovou sadu. 

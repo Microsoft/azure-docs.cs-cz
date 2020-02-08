@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 01/09/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6e2c1af03d5d6ccfbcb15a2dd33bc2e987be4d48
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 810f2b376e9983743617dae77d74d596a7fbe663
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543116"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084194"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Co je privátní propojení Azure? (Preview)
 Privátní odkaz Azure vám umožní přístup ke službám Azure PaaS (například Azure Storage, Azure Cosmos DB a SQL Database) a hostovaným zákazníkům a partnerským službám Azure prostřednictvím [privátního koncového bodu](private-endpoint-overview.md) ve vaší virtuální síti. Provoz mezi vaší virtuální sítí a službou prochází přes páteřní síť Microsoftu a eliminuje rizika vystavení na veřejném internetu. Ve své virtuální síti můžete také vytvořit vlastní [službu privátního propojení](private-link-service-overview.md) a poskytnout ji soukromým uživatelům. Prostředí pro nastavení a spotřebu pomocí privátního propojení Azure je konzistentní v rámci služeb Azure PaaS, Customer a Shared partnered.
@@ -41,15 +41,16 @@ Privátní propojení Azure přináší následující výhody:
 
 |Scénář  |Podporované služby  |Dostupné oblasti | Stav  |
 |:---------|:-------------------|:-----------------|:--------|
-|Soukromý odkaz pro služby vlastněné zákazníkem|Služby privátních odkazů za Standard Load Balancer | Všechny veřejné oblasti  | Preview  |
-|Privátní odkaz pro služby Azure PaaS   | Azure Storage        |  Všechny veřejné oblasti      | Preview <br/> [Další informace](/azure/storage/common/storage-private-endpoints).  |
-|  | Azure Data Lake Storage Gen2        |  Všechny veřejné oblasti      | Preview <br/> [Další informace](/azure/storage/common/storage-private-endpoints).  |
-|  |  Databáze SQL Azure         | Všechny veřejné oblasti      |   Preview      |
-||Azure SQL Data Warehouse| Všechny veřejné oblasti |Preview|
-||Azure Cosmos DB| Středozápadní USA, WestUS, Střed USA – sever |Preview|
-|  |  Azure Database for PostgreSQL – jeden server         | Všechny veřejné oblasti      |   Preview      |
-|  |  Azure Database for MySQL         | Všechny veřejné oblasti      |   Preview      |
-|  |  Azure Database for MariaDB         | Všechny veřejné oblasti      |   Preview      |
+|Soukromý odkaz pro služby vlastněné zákazníkem|Služby privátních odkazů za Standard Load Balancer | Všechny veřejné oblasti  | Náhled  |
+|Privátní odkaz pro služby Azure PaaS   | Azure Storage        |  Všechny veřejné oblasti      | Náhled <br/> [Další informace](/azure/storage/common/storage-private-endpoints).  |
+|  | Azure Data Lake Storage Gen2        |  Všechny veřejné oblasti      | Náhled <br/> [Další informace](/azure/storage/common/storage-private-endpoints).  |
+|  |  Azure SQL Database         | Všechny veřejné oblasti      |   Náhled      |
+||Azure SQL Data Warehouse| Všechny veřejné oblasti |Náhled|
+||Azure Cosmos DB| Středozápadní USA, WestUS, Střed USA – sever |Náhled|
+|  |  Azure Database for PostgreSQL – jeden server         | Všechny veřejné oblasti      |   Náhled      |
+|  |  Azure Database for MySQL         | Všechny veřejné oblasti      |   Náhled      |
+|  |  Azure Database for MariaDB         | Všechny veřejné oblasti      |   Náhled      |
+|  |  Azure Key Vault         | Všechny veřejné oblasti      |   Náhled      |
 
 Nejaktuálnější oznámení najdete na [stránce s aktualizacemi služby Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network).
 

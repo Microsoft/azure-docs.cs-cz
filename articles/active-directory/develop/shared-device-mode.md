@@ -3,7 +3,7 @@ title: Režim sdíleného zařízení pro zařízení s Androidem | Azure
 description: Přečtěte si o režimu sdíleného zařízení, který umožňuje pracovníkům v Firstline sdílet zařízení s Androidem.
 services: active-directory
 documentationcenter: dev-center-name
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 1/15/2020
-ms.author: twhitney
+ms.author: marsma
 ms.reviwer: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 53fa82cf6eaaba09353ba21a12ae9677b9264b1a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 9928b64d286cc5072f28f7cc17e4af3e95662cd0
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701463"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085619"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Režim sdíleného zařízení pro zařízení s Androidem
 
@@ -85,7 +85,7 @@ V závislosti na tom, jestli je vaše aplikace spuštěná na sdíleném nebo os
 
 |  | Zařízení sdíleného režimu  | Osobní zařízení |
 |---------|---------|---------|
-| **Účty**     | Jeden účet | Několik účtů |
+| **Pohledávek**     | Jeden účet | Několik účtů |
 | **Přihlášení** | Globální | Globální |
 | **Odhlásit se** | Globální | Každá aplikace může řídit, jestli je odhlášení místní pro aplikaci nebo pro rodinu aplikací. |
 | **Podporované typy účtů** | Pouze pracovní účty | Podpora osobních a pracovních účtů  |

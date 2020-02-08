@@ -3,7 +3,7 @@ title: Podepsat uživatele on/out & volání Microsoft Graph (Android) – Micro
 description: Získání přístupového tokenu a volání Microsoft Graph nebo rozhraní API, která vyžadují přístupové tokeny z platformy Microsoft Identity Platform (Android)
 services: active-directory
 documentationcenter: dev-center-name
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -15,12 +15,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: d851e23e8f6915c7d52565f18eff4a73bd96c9c0
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 4366f95a9c6d5c0e6b851583ac6001b3b413c08a
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76758831"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085406"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>Kurz: přihlášení uživatelů a volání Microsoft Graph z aplikace pro Android 
 
@@ -46,7 +46,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Aplikace v tomto kurzu se bude přihlašovat uživatelům a získat data jménem. Tato data budou k dispozici prostřednictvím chráněného rozhraní API (Microsoft Graph API), které vyžaduje autorizaci a jsou chráněny platformou Microsoft identity.
 
-A to konkrétně:
+A konkrétně:
 
 * Vaše aplikace se přihlásí k uživateli přes prohlížeč nebo Microsoft Authenticator a Portál společnosti Intune.
 * Koncový uživatel bude akceptovat oprávnění, která vaše aplikace požadovala.
@@ -77,7 +77,7 @@ Pokud ještě nemáte aplikaci pro Android, postupujte podle těchto kroků a na
 
 ### <a name="register-your-application"></a>Registrace vaší aplikace
 
-1. Přejděte na [portál Azure](https://aka.ms/MobileAppReg).
+1. Přejděte na [Azure Portal](https://aka.ms/MobileAppReg).
 2. Otevřete okno [Registrace aplikací](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) a klikněte na **+ Nová registrace**.
 3. Zadejte **název** vaší aplikace a pak **bez** nastavení identifikátoru URI přesměrování klikněte na **zaregistrovat**.
 4. V části **Správa** v podokně, které se zobrazí, vyberte **ověřování** >  **+ Přidat platformu** > **Android**. (V horní části okna možná budete muset vybrat možnost "přepnout na nové prostředí", abyste viděli tuto část.)
@@ -476,7 +476,7 @@ private void performOperationOnSignOut() {
             .show();
 }
 ```
-### <a name="layout"></a>Layout 
+### <a name="layout"></a>Rozložení 
 
 Ukázka `activity_main.xml` souboru pro zobrazení tlačítek a textových polí. 
 
@@ -575,7 +575,7 @@ Sestavte a nasaďte aplikaci do testovacího zařízení nebo emulátoru. Měli 
 
 Po přihlášení aplikace zobrazí data vrácená z Microsoft Graph koncového bodu `/me`.
 
-### <a name="consent"></a>souhlas
+### <a name="consent"></a>Souhlas
 
 Když se uživatel poprvé přihlásí do vaší aplikace, zobrazí se mu výzva společnosti Microsoft pro vyjádření souhlasu s požadovanými oprávněními. Někteří klienti Azure AD mají zakázaný souhlas s uživatelem, který vyžaduje, aby správci měli souhlas jménem všech uživatelů. Pro podporu tohoto scénáře musíte buď vytvořit vlastního tenanta, nebo přijmout souhlas správce. 
 
@@ -583,7 +583,7 @@ Když se uživatel poprvé přihlásí do vaší aplikace, zobrazí se mu výzva
 
 Pokud už je nepotřebujete, odstraňte objekt aplikace, který jste vytvořili v kroku [Registrace aplikace](#register-your-application) .
 
-## <a name="get-help"></a>Získání nápovědy
+## <a name="get-help"></a>Podpora
 
 Pokud máte potíže s tímto kurzem nebo s platformou Microsoft identity, přejděte na [pomoc a podpora](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options) .
 

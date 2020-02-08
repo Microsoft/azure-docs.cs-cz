@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 02/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43787bfffcb04e816f58cdcc0d9e61a61f1f16fd
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 684b8c31524c55ad3335c02ec1268f1afea78a93
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050246"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086583"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-syxsense"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Syxsense
 
@@ -30,7 +30,7 @@ V tomto kurzu se dozvíte, jak integrovat Syxsense s Azure Active Directory (Azu
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Syxsense svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -85,7 +85,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.cloudmanagementsuite.com/Saml2`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.cloudmanagementsuite.com/samlautologin`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.cloudmanagementsuite.com/Saml2/Acs`
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
@@ -144,11 +144,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Klikněte na **ikonu nastavení**.
 
-    ![Konfigurace Syssense](./media/syxsense-tutorial/configure1.png)
+    ![Konfigurace Syxsense](./media/syxsense-tutorial/configure1.png)
 
 1. Klikněte na **externí ověřování** a zadejte hodnotu **adresy URL federačních metadat aplikace** do textového pole **metadat SAML 2.0** a klikněte na **Uložit**.
 
-    ![Konfigurace Syssense](./media/syxsense-tutorial/configure2.png)
+    ![Konfigurace Syxsense](./media/syxsense-tutorial/configure2.png)
 
 ### <a name="create-syxsense-test-user"></a>Vytvořit testovacího uživatele Syxsense
 
@@ -156,18 +156,17 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V levém navigačním panelu klikněte na **uživatelské účty** .
 
-    ![Konfigurace Syssense](./media/syxsense-tutorial/user1.png)
+    ![Konfigurace Syxsense](./media/syxsense-tutorial/user1.png)
 
 1. Klikněte na **Přidat**.
 
-    ![Konfigurace Syssense](./media/syxsense-tutorial/user2.png)
+    ![Konfigurace Syxsense](./media/syxsense-tutorial/user2.png)
 
 1. Zadejte podrobnosti o uživateli podle požadavků vaší organizace a klikněte na **Uložit**.
 
-    ![Konfigurace Syssense](./media/syxsense-tutorial/user3.png)
+    ![Konfigurace Syxsense](./media/syxsense-tutorial/user3.png)
 
-
-## <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>Test SSO
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
@@ -177,7 +176,7 @@ Když na přístupovém panelu kliknete na dlaždici Syxsense, měli byste se au
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

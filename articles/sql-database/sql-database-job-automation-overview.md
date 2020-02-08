@@ -9,13 +9,13 @@ ms.topic: overview
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-ms.date: 01/25/2019
-ms.openlocfilehash: c2548bb4537d17a3dab94d5476c743e2a70faad0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/07/2020
+ms.openlocfilehash: 1ffa17bd0e35e3753cde3e915c0ee70d8000147a
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810091"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083117"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Automatizace úloh správy pomocí databázových úloh
 
@@ -50,10 +50,10 @@ Je potřeba si vymezit několik rozdílů mezi agentem SQL (dostupnými místně
 
 |  |Elastické úlohy  |Agent SQL |
 |---------|---------|---------|
-|Rozsah     |  Libovolný počet databází Azure SQL nebo datových skladů ve stejném cloudu Azure jako agent úloh. Cíle můžou být v různých SQL Databasech serverech, předplatných a/nebo oblastech. <br><br>Cílové skupiny se můžou skládat z jednotlivých databází nebo datových skladů nebo ze všech databází na serveru, ve fondu nebo v mapě horizontálních oddílů (dynamicky se zjišťují za běhu úlohy). | Všechny jednotlivé databáze ve stejné instanci SQL Server jako Agent SQL. |
+|Scope     |  Libovolný počet databází Azure SQL nebo datových skladů ve stejném cloudu Azure jako agent úloh. Cíle můžou být v různých SQL Databasech serverech, předplatných a/nebo oblastech. <br><br>Cílové skupiny se můžou skládat z jednotlivých databází nebo datových skladů nebo ze všech databází na serveru, ve fondu nebo v mapě horizontálních oddílů (dynamicky se zjišťují za běhu úlohy). | Všechny jednotlivé databáze ve stejné instanci SQL Server jako Agent SQL. |
 |Podporovaná rozhraní API a nástroje     |  Portál, PowerShell, T-SQL, Azure Resource Manager      |   T-SQL, SQL Server Management Studio (SSMS)     |
 
-## <a name="sql-agent-jobs"></a>Úlohy agenta SQL
+## <a name="sql-agent-jobs"></a>SQL Agent Jobs
 
 Úlohy agenta SQL jsou zadané řady skriptů T-SQL pro vaši databázi. Použijte úlohy k definování úlohy správy, kterou je možné spustit jednou nebo vícekrát a monitorovat pro úspěch nebo neúspěch.
 Úlohu můžete spustit na jednom místním serveru nebo na několika vzdálených serverech. Úlohy agenta SQL jsou interní součástí databázového stroje, který je spuštěn v rámci služby Managed instance.
@@ -66,7 +66,7 @@ V úlohách agenta SQL je několik klíčových konceptů:
 ### <a name="job-steps"></a>Kroky úlohy
 
 Kroky úlohy agenta SQL jsou sekvence akcí, které by měl Agent SQL spustit. Každý krok má následující krok, který by měl být proveden, pokud je krok úspěšný nebo neúspěšný, počet opakovaných pokusů v případě selhání.
-SQL Agent vám umožňuje vytvořit různé typy kroků úlohy, jako je například krok úlohy Transact-SQL, který spouští jednu dávku Transact-SQL v databázi, nebo příkazy příkazového řádku nebo PowerShellový postup, který může spustit vlastní skript operačního systému, a SSIS úlohy umožňují načíst data pomocí SSIS modul runtime nebo kroky [replikace](sql-database-managed-instance-transactional-replication.md) , které mohou publikovat změny z databáze do jiných databází.
+SQL Agent vám umožňuje vytvořit různé typy kroků úlohy, jako je například krok úlohy Transact-SQL, který spouští jednu dávku Transact-SQL v databázi, nebo příkazy příkazového řádku nebo PowerShellu, které můžou spouštět vlastní skript operačního systému, a kroky pro úlohy SSIS, které mohou publikovat data pomocí modulu runtime SSIS, nebo kroky [replikace](sql-database-managed-instance-transactional-replication.md) , které mohou publikovat změny z databáze do jiných databází.
 
 [Transakční replikace](sql-database-managed-instance-transactional-replication.md) je funkce databázového stroje, která umožňuje publikovat změny provedené v jedné nebo několika tabulkách v jedné databázi a publikovat je nebo distribuovat do sady databází předplatitelů. Publikování změn je implementováno pomocí následujících typů kroků úlohy agenta SQL:
 
@@ -202,7 +202,9 @@ Agent elastických úloh je bezplatný. Databáze úloh se účtuje stejnou sazb
 
 V aktuální verzi Preview je k vytvoření agenta elastických úloh potřeba existující databáze Azure SQL (S0 nebo vyšší).
 
-*Databáze úloh* nemusí být zcela nová, ale měla by být čistá, prázdná a s úrovní služby S0 nebo vyšší. Doporučená úroveň služby pro *databázi úloh* je S1 nebo vyšší, ale opravdu záleží na požadavcích vašich úloh na výkon: na počtu kroků úloh a na počtu a frekvenci spouštění úloh. Databáze S0 například může být dostatečná pro agenta úloh, který spouští několik úloh za hodinu. Při spouštění úlohy každou minutu by však výkon nemusel být dostačující a byla by lepší vyšší úroveň služby.
+*Databáze úloh* nemusí být v některých případech nová, ale měla by to být čistý, prázdný, S0 nebo vyšší cíl služby. Doporučený cíl služby *databáze úloh* je S1 nebo vyšší, ale optimální volba závisí na potřebách výkonu vaší úlohy: počet kroků úlohy, počet cílů úlohy a četnost spouštění úloh. Například databáze S0 může být dostatečná pro agenta úloh, který spouští několik úloh, které cílí na méně než deset databází, ale spuštění úlohy každou minutu nemusí být dostatečně rychlé s databází S0 a vyšší úroveň služby může být lepší. 
+
+Pokud jsou operace s databází úloh pomalejší, než se čekalo, [monitorujte](sql-database-monitor-tune-overview.md#monitor-database-performance) výkon databáze a využití prostředků v databázi úloh během období pomalé míry pomocí Azure Portal nebo [Sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV. Pokud se využití prostředku, jako je například CPU, datový vstup/výstup nebo zápis do protokolu, blíží 100% a koreluje s periodami zpomalení, zvažte možnost přírůstkového škálování databáze na vyšší cíle služby (buď v [modelu DTU](sql-database-service-tiers-dtu.md) , nebo v [modelu Vcore](sql-database-service-tiers-vcore.md)), dokud nebude dostatečně vylepšen výkon databáze úloh.
 
 
 ##### <a name="job-database-permissions"></a>Oprávnění k databázi úloh
@@ -250,6 +252,10 @@ Následující příklady ukazují, jak se při spuštění úlohy dynamicky zji
 
 **Příklad 5** a **Příklad 6** : zobrazení rozšířených scénářů, ve kterých se Azure SQL Server, elastické fondy a databáze dají kombinovat pomocí pravidel zahrnutí a vyloučení.<br>
 **Příklad 7** ukazuje, že za běhu úlohy je možné vyhodnotit také horizontální oddíly v mapě horizontálních oddílů.
+
+> [!NOTE]
+> Samotná databáze úlohy může být cílem úlohy. V tomto scénáři se databáze úlohy zpracuje stejně jako jakákoli jiná cílová databáze. Je nutné vytvořit uživatele úlohy a udělit dostatečná oprávnění v databázi úloh a v databázi úlohy musí existovat také přihlašovací údaje v oboru databáze, stejně jako v případě jakékoli jiné cílové databáze.
+>
 
 #### <a name="job"></a>Úloha
 

@@ -3,12 +3,12 @@ title: Nasazení prostředků do předplatného
 description: Popisuje postup vytvoření skupiny prostředků v Azure Resource Manager šabloně. Také ukazuje, jak nasadit prostředky v oboru předplatného Azure.
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: aed22cab9281f272421a574efebcf346139348d5
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: b11668466fe3954dc5bc90435d5dfd016ca9791c
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121875"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086730"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Vytvoření skupin prostředků a prostředků na úrovni předplatného
 
@@ -357,6 +357,11 @@ New-AzDeployment `
   -Location centralus `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json
 ```
+
+## <a name="template-samples"></a>Ukázky šablon
+
+* Vytvořte skupinu prostředků, zamkněte ji a udělte jí oprávnění. Podívejte se [sem](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment).
+* Vytvořte skupinu prostředků, zásadu a přiřazení zásad.  Podívejte se [sem](https://github.com/Azure/azure-docs-json-samples/blob/master/subscription-level-deployment/azuredeploy.json).
 
 ## <a name="next-steps"></a>Další kroky
 

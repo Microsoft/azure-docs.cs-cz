@@ -1,20 +1,20 @@
 ---
-title: Vytvoření účtu úložiště
+title: vytvořit účet úložiště
 titleSuffix: Azure Storage
 description: Naučte se vytvořit účet úložiště pomocí Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure. Účet úložiště Azure poskytuje jedinečný obor názvů v Microsoft Azure pro ukládání a přístup k datům.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/17/2020
+ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2ef90e1cb883a2d22b355ff4105ae0ce3c73ad6d
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 86aaebe652968a2ea33fd8e15f9de9c1dff31a30
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759841"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086960"
 ---
 # <a name="create-an-azure-storage-account"></a>Vytvoření účtu služby Azure Storage
 
@@ -30,11 +30,19 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 # <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 
-Žádné.
+Žádné
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Tento článek s postupem vyžaduje Azure PowerShell modul AZ verze 0,7 nebo novější. Aktuální verzi zjistíte spuštěním `Get-Module -ListAvailable Az`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
+Pokud chcete vytvořit účet Azure Storage pomocí PowerShellu, ujistěte se, že máte nainstalovaný Azure PowerShell modul AZ verze 0,7 nebo novější. Další informace najdete v tématu [představení modulu Azure PowerShell AZ Module](/powershell/azure/new-azureps-module-az).
+
+Aktuální verzi zjistíte spuštěním následujícího příkazu:
+
+```powershell
+Get-InstalledModule -Name "Az"
+```
+
+Pokud chcete nainstalovat nebo upgradovat Azure PowerShell, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -43,7 +51,7 @@ Můžete se přihlásit k Azure a spustit příkazy rozhraní příkazového ř�
 - Příkazy rozhraní příkazového řádku můžete spustit z Azure Portal v Azure Cloud Shell.
 - Můžete nainstalovat rozhraní příkazového řádku a spustit příkazy rozhraní příkazového řádku místně.
 
-### <a name="use-azure-cloud-shell"></a>Použití Azure Cloud Shellu
+### <a name="use-azure-cloud-shell"></a>Použití služby Azure Cloud Shell
 
 Azure Cloud Shell je volně dostupné prostředí Bash, které můžete spustit přímo z webu Azure Portal. Rozhraní příkazového řádku Azure je předem nainstalované a nakonfigurované pro použití s vaším účtem. V nabídce v pravé horní části Azure Portal klikněte na tlačítko **Cloud Shell** :
 
@@ -55,11 +63,11 @@ Tlačítko spustí interaktivní prostředí, které můžete použít ke spušt
 
 ### <a name="install-the-cli-locally"></a>Místní instalace rozhraní příkazového řádku
 
-Rozhraní příkazového řádku Azure můžete také nainstalovat a používat místně. Tento článek s návody vyžaduje, abyste spustili Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). 
+Azure CLI můžete také nainstalovat a používat místně. Tento článek s návody vyžaduje, abyste spustili Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). 
 
 # <a name="templatetabtemplate"></a>[Šablona](#tab/template)
 
-Žádné.
+Žádné
 
 ---
 
@@ -67,11 +75,11 @@ Rozhraní příkazového řádku Azure můžete také nainstalovat a používat 
 
 # <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 
-Přihlaste se k [Portálu Azure](https://portal.azure.com).
+Přihlaste se k webu [Portál Azure](https://portal.azure.com).
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Přihlaste se k předplatnému Azure pomocí `Connect-AzAccount` příkaz a postupujte podle pokynů na obrazovce pokynů k ověření.
+Přihlaste se k předplatnému Azure pomocí příkazu `Connect-AzAccount` a při ověřování postupujte podle pokynů na obrazovce.
 
 ```powershell
 Connect-AzAccount
@@ -83,17 +91,17 @@ Pokud chcete spustit Azure Cloud Shell, přihlaste se k [Azure Portal](https://p
 
 K místní instalaci rozhraní příkazového řádku se přihlaste spuštěním příkazu [AZ Login](/cli/azure/reference-index#az-login) :
 
-```cli
+```azurecli-interactive
 az login
 ```
 
 # <a name="templatetabtemplate"></a>[Šablona](#tab/template)
 
-Nevztahuje se
+Není k dispozici
 
 ---
 
-## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
+## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
 Nyní jste připraveni vytvořit účet úložiště.
 
@@ -113,6 +121,7 @@ Nejdřív pomocí příkazu [New-AzResourceGroup](/powershell/module/az.resource
 # put resource group in a variable so you can use the same group name going forward,
 # without hard-coding it repeatedly
 $resourceGroup = "storage-resource-group"
+$location = "westus"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
@@ -120,7 +129,6 @@ Pokud si nejste jistí, kterou oblast pro parametr `-Location` zadat, můžete p
 
 ```powershell
 Get-AzLocation | select Location
-$location = "westus"
 ```
 
 Dále vytvořte účet úložiště pro obecné účely v2 s geograficky redundantním úložištěm s přístupem pro čtení (RA-GRS) pomocí příkazu [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) . Mějte na paměti, že název účtu úložiště musí být v rámci Azure jedinečný, proto nahraďte hodnotu zástupný symbol v závorkách vlastní jedinečnou hodnotou:
@@ -134,7 +142,7 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
 ```
 
 > [!IMPORTANT]
-> Pokud plánujete použít [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/), zahrňte do tohoto seznamu parametrů `-EnableHierarchicalNamespace $True`. 
+> Pokud plánujete použít [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/), zahrňte do tohoto seznamu parametrů `-EnableHierarchicalNamespace $True`.
 
 Pokud chcete vytvořit účet úložiště pro obecné účely v2 s jinou možností replikace, nahraďte požadovanou hodnotu v následující tabulce pro parametr **SkuName** .
 

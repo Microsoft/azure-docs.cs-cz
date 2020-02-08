@@ -5,21 +5,18 @@ services: web-application-firewall
 ms.topic: conceptual
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/19/2019
+ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: 3f7d213aed82d1cb94bb96b9e212d3b255851afd
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 3e8cd2f1e594cd6a60296b2df135f275641df313
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171226"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086979"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Vytvoření zásad firewallu webových aplikací pro Application Gateway
 
 Přidružení zásady WAF k naslouchacím procesům umožňuje, aby bylo více webů za jedním WAF chráněno pomocí různých zásad. Pokud máte například pět webů za vaší WAF, můžete mít pět samostatných zásad WAF (jeden pro každý naslouchací proces) a přizpůsobit vyloučení, vlastní pravidla a spravované RuleSets pro jednu lokalitu, aniž by to mělo vliv na ostatní čtyři. Pokud chcete, aby se jedna zásada provedla pro všechny lokality, můžete zásadu přidružit k Application Gateway místo jednotlivých posluchačů, aby se mohla použít globálně. Zásady je možné použít také pro pravidlo směrování na základě cesty. 
-
-   > [!NOTE]
-   > Zásady WAF pro jednotlivé lokality jsou k dispozici v Střed USA – jih a Severní Evropa. Pokud k nim chcete přistupovat na portálu, použijte prosím [Tento odkaz](https://aka.ms/AppgwwafWithAllFeatureFlags) , dokud nebude aktivní pro všechny.  
 
 Můžete vytvořit tolik zásad, kolik chcete. Až zásadu vytvoříte, musí být přidružená k Application Gateway, aby se projevila, ale může být přidružená k jakékoli kombinaci aplikačních bran a posluchačů. 
 
@@ -30,7 +27,7 @@ Pokud je u vašeho Application Gateway použita zásada a potom použijete pro n
 
 Všechna nová nastavení WAF firewallu webových aplikací (vlastní pravidla, spravované konfigurace rulset, vyloučení atd.) se nachází v rámci zásad WAF v reálném čase. Pokud máte existující WAF, tato nastavení můžou pořád existovat v konfiguraci WAF. Postup, jak přejít na nové zásady WAF, najdete v části [migrace konfigurace WAF do zásad WAF](#migrate) dále v tomto článku. 
 
-## <a name="create-a-policy"></a>Vytvoření zásad
+## <a name="create-a-policy"></a>Vytvoření zásady
 
 Nejdřív vytvořte základní zásadu WAF se spravovanými výchozí sadou pravidel (DRS) pomocí Azure Portal.
 

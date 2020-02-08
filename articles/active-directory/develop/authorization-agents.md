@@ -2,22 +2,22 @@
 title: Autorizační agenti a jejich povolení | Azure
 description: Přečtěte si o různých autorizačních agentech, které Microsoft Authentication Library (MSAL) umožňuje vaší aplikaci pro Android používat a jak je povolit.
 services: active-directory
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/05/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: shoatman, brianmel, hahamil
 ms.custom: aaddev
-ms.openlocfilehash: c2d0c8a877ba856aa7a93bfc960c44b63cbe8f9c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 4f1b3fc5b60069cfa47d437e4341ded141204418
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697995"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085328"
 ---
 # <a name="authorization-agents-android"></a>Autorizační agenti (Android)
 
@@ -79,14 +79,14 @@ Následující prohlížeče byly testovány, aby se zjistilo, zda správně př
 | | Vestavěný prohlížeč | Chrome | Opera  | Microsoft Edge | Prohlížeč UC | Firefox |
 | -- |:-------------:| -----:|-----:|-----:|-----:|-----:|
 | Nexus 4 (rozhraní API 17) | dána | dána |nelze použít |nelze použít |nelze použít |nelze použít |
-| Samsung S7 (rozhraní API 25) | dána | dána | dána | dána | fail |dána |
-| Huawei (rozhraní API 26) |Pass * * | dána | fail | dána | dána |dána |
-| Vivo (API 26) |dána|dána|dána|dána|dána|fail|
-| Pixel 2 (rozhraní API 26) |dána | dána | dána | dána | fail |dána |
+| Samsung S7 (rozhraní API 25) | dána | dána | dána | dána | proběhne |dána |
+| Huawei (rozhraní API 26) |Pass * * | dána | proběhne | dána | dána |dána |
+| Vivo (API 26) |dána|dána|dána|dána|dána|proběhne|
+| Pixel 2 (rozhraní API 26) |dána | dána | dána | dána | proběhne |dána |
 | OPPO | dána | nelze použít * * * |nelze použít  |nelze použít |nelze použít | nelze použít|
-| OnePlus (rozhraní API 25) |dána | dána | dána | dána | fail |dána |
-| Nexus (rozhraní API 28) |dána | dána | dána | dána | fail |dána |
-|MI | dána | dána | dána | dána | fail |dána |
+| OnePlus (rozhraní API 25) |dána | dána | dána | dána | proběhne |dána |
+| Nexus (rozhraní API 28) |dána | dána | dána | dána | proběhne |dána |
+|MI | dána | dána | dána | dána | proběhne |dána |
 
 \* Integrovaný Prohlížeč Samsung je Samsung Internet.  
 \* * Vestavěný prohlížeč Huawei je Huawei prohlížeč.  

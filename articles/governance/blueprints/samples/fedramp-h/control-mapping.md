@@ -1,14 +1,14 @@
 ---
-title: Sample-FedRAMP – mapování řízení vysokého plánu
+title: Ukázkové ovládací prvky FedRAMP High detailal
 description: Mapování ovládacího prvku pro ukázku FedRAMP High detailal. Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
 ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: 4b4d644497eb98ed88f57803e99cf27a419523fe
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 93e2de3f19e0577645337df029789336a35b024d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76941378"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087340"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>Mapování ovládacího prvku ukázky FedRAMP High detailal
 
@@ -28,7 +28,7 @@ Tento podrobný plán vám pomůže zkontrolovat účty, které nemusí být v r
 - Zastaralé účty s oprávněním vlastníka by se měly odebrat z vašeho předplatného.
 - Z vašeho předplatného byste měli odebrat externí účty s oprávněním vlastníka.
 - Z vašeho předplatného by se měly odebrat externí účty s oprávněním ke čtení.
-- Z předplatného by se měly odebrat externí účty s oprávněními pro zápis
+- Z vašeho předplatného byste měli odebrat externí účty s oprávněním k zápisu.
 
 ## <a name="ac-2-7-account-management--role-based-schemes"></a>AC-2 (7) Správa účtů | Schémata založená na rolích
 
@@ -89,11 +89,11 @@ Data protokolu shromážděná pomocí Azure Monitor jsou uložená v pracovním
 
 - \[Preview\]: nasazení agenta Log Analytics auditu – image virtuálního počítače (OS) není v seznamu.
 - \[Preview\]: nasazení agenta Log Analytics auditu v VMSS-VM Image (OS) není v seznamu.
-- \[Ve verzi Preview\]: Auditovat pracovní prostor Log Analytics pro virtuální počítač –, nahlásit neshodu
+- \[Preview\]: pracovní prostor pro audit Log Analytics pro virtuální počítač – neshoda sestavy
 - \[Preview\]: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)
-- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Linuxem
+- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux
 - \[Preview\]: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)
-- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Windows
+- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>Reakce AU-5 na selhání zpracování auditu
 
@@ -102,7 +102,7 @@ Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) def
 - Auditování nastavení diagnostiky
 - Auditování by mělo být povolené pro pokročilá nastavení zabezpečení dat na SQL Server
 - Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat
-- Na vašich serverech SQL by mělo být povolené pokročilé zabezpečení dat.
+- Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
 
 ## <a name="au-6-4-audit-review-analysis-and-reporting--central-review-and-analysis"></a>AU-6 (4) revize auditu, analýza a vytváření sestav | Centrální kontrola a analýza
 
@@ -110,11 +110,11 @@ Data protokolu shromážděná pomocí Azure Monitor jsou uložena v pracovním 
 
 - \[Preview\]: nasazení agenta Log Analytics auditu – image virtuálního počítače (OS) není v seznamu.
 - \[Preview\]: nasazení agenta Log Analytics auditu v VMSS-VM Image (OS) není v seznamu.
-- \[Ve verzi Preview\]: Auditovat pracovní prostor Log Analytics pro virtuální počítač –, nahlásit neshodu
+- \[Preview\]: pracovní prostor pro audit Log Analytics pro virtuální počítač – neshoda sestavy
 - \[Preview\]: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)
-- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Linuxem
+- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux
 - \[Preview\]: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)
-- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Windows
+- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows
 
 ## <a name="au-6-5-audit-review-analysis-and-reporting--integration--scanning-and-monitoring-capabilities"></a>AU-6 (5) kontrola auditu, analýza a vytváření sestav | Možnosti integrace, kontroly a monitorování
 
@@ -123,12 +123,12 @@ Tyto definice zásad také auditují konfiguraci diagnostických protokolů a po
 Pro podrobnou kontrolu a monitorování ohrožení zabezpečení doporučujeme, abyste využili taky Azure Sentinel a Azure Security Center.
 
 - \[Preview\]: v Virtual Machines by mělo být povolené posouzení ohrožení zabezpečení
-- \[Ve verzi Preview\]: Povolit monitorování Azure pro virtuální počítače
+- \[Preview\]: Povolit Azure Monitor pro virtuální počítače
 - \[Preview\]: Enable Azure Monitor for VM Scale Sets (VMSS)
-- Na vašich serverech SQL by mělo být povolené hodnocení ohrožení zabezpečení.
+- Na vašich serverech SQL by mělo být povolené posouzení ohrožení zabezpečení
 - Auditování nastavení diagnostiky
 - Na spravovaných instancích SQL by mělo být povolené posouzení ohrožení zabezpečení
-- Na vašich serverech SQL by mělo být povolené hodnocení ohrožení zabezpečení.
+- Na vašich serverech SQL by mělo být povolené posouzení ohrožení zabezpečení
 - Ohrožení zabezpečení v konfiguraci zabezpečení na vašich počítačích by mělo být opraveno
 - Ohrožení zabezpečení vašich databází SQL by mělo být opraveno
 - Ohrožení zabezpečení by se mělo opravit řešením posouzení ohrožení zabezpečení.
@@ -141,15 +141,15 @@ Tyto definice zásad také auditují konfiguraci diagnostických protokolů a po
 
 - \[Preview\]: nasazení agenta Log Analytics auditu – image virtuálního počítače (OS) není v seznamu.
 - \[Preview\]: nasazení agenta Log Analytics auditu v VMSS-VM Image (OS) není v seznamu.
-- \[Ve verzi Preview\]: Auditovat pracovní prostor Log Analytics pro virtuální počítač –, nahlásit neshodu
+- \[Preview\]: pracovní prostor pro audit Log Analytics pro virtuální počítač – neshoda sestavy
 - \[Preview\]: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)
-- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Linuxem
+- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux
 - \[Preview\]: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)
-- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Windows
+- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows
 - Auditování nastavení diagnostiky
 - Auditování by mělo být povolené pro pokročilá nastavení zabezpečení dat na SQL Server
 - Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat
-- Na vašich serverech SQL by mělo být povolené pokročilé zabezpečení dat.
+- Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
 - Nasazení pokročilých zabezpečení dat na SQL serverech
 - Nasazení auditování na SQL serverech
 - Nasadit nastavení diagnostiky pro skupiny zabezpečení sítě
@@ -241,7 +241,7 @@ Tento podrobný plán vám pomůže vynutilit silná hesla tím, že přiřazuje
 Tento podrobný plán vám pomůže spravovat chyby zabezpečení systému pomocí přiřazení [Azure Policy](../../../policy/overview.md) definicí, které sledují chyby zabezpečení operačního systému, chyby zabezpečení SQL a ohrožení zabezpečení virtuálních počítačů v Azure Security Center. Azure Security Center poskytuje možnosti vytváření sestav, které vám umožní získat přehled o stavu zabezpečení nasazených prostředků Azure v reálném čase. Tento podrobný plán také přiřazuje definice zásad, které auditují a vynutily pokročilou zabezpečení dat na SQL serverech. Pokročilé zabezpečení dat zahrnuje posouzení ohrožení zabezpečení a rozšířené možnosti ochrany před internetovými útoky, které vám pomůžou pochopit ohrožení zabezpečení v nasazených prostředcích.
 
 - Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat
-- Na vašich serverech SQL by mělo být povolené pokročilé zabezpečení dat.
+- Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
 - Nasazení pokročilých zabezpečení dat na SQL serverech
 - V konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů by se měly napravit ohrožení zabezpečení.
 - Oprava ohrožení zabezpečení v konfiguraci zabezpečení na virtuálních počítačích by měla být opravena
@@ -293,7 +293,7 @@ Tento podrobný plán vám pomůže chránit důvěrnou a integritu odesílanýc
 Tento podrobný plán vám pomůže vyhovět zásadám používání ovládacích prvků cryptograph k ochraně informací v klidovém prostředí tím, že přiřazuje definice [Azure Policy](../../../policy/overview.md) , které vynutily konkrétní ovládací prvky cryptograph a auditují použití slabého nastavení kryptografie. Porozumět tomu, kde vaše prostředky Azure můžou mít neoptimální Kryptografické konfigurace, můžou podniknout nápravné akce, které zajistí konfiguraci prostředků v souladu s vašimi zásadami zabezpečení informací. Konkrétně definice zásad přiřazené tímto plánem vyžaduje šifrování pro účty Data Lake Storage. vyžadovat transparentní šifrování dat na databázích SQL; a auditovat chybějící šifrování pro databáze SQL, disky virtuálních počítačů a proměnné účtu Automation.
 
 - Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat
-- Na vašich serverech SQL by mělo být povolené pokročilé zabezpečení dat.
+- Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
 - Nasazení pokročilých zabezpečení dat na SQL serverech
 - Nasazení transparentního šifrování dat databáze SQL
 - Na virtuálních počítačích by se mělo použít šifrování disku
@@ -333,13 +333,13 @@ Tento podrobný plán vám pomůže monitorovat systém pomocí auditování a v
 
 - \[Preview\]: nasazení agenta Log Analytics auditu – image virtuálního počítače (OS) není v seznamu.
 - \[Preview\]: nasazení agenta Log Analytics auditu v VMSS-VM Image (OS) není v seznamu.
-- \[Ve verzi Preview\]: Auditovat pracovní prostor Log Analytics pro virtuální počítač –, nahlásit neshodu
+- \[Preview\]: pracovní prostor pro audit Log Analytics pro virtuální počítač – neshoda sestavy
 - \[Preview\]: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)
-- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Linuxem
+- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux
 - \[Preview\]: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)
-- \[Ve verzi Preview\]: nasadit agenta Log Analytics pro virtuální počítače s Windows
+- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows
 - Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat
-- Na vašich serverech SQL by mělo být povolené pokročilé zabezpečení dat.
+- Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
 - Nasazení pokročilých zabezpečení dat na SQL serverech
 - Nasazení rozšířené ochrany před internetovými útoky na účty úložiště
 - Nasazení auditování na SQL serverech

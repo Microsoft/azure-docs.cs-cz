@@ -8,12 +8,12 @@ ms.date: 01/09/2020
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 79b223de7a0a0cfdaf799b1f80e585a2a55f7e82
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ce7c92f121fb458d528d63d0af0aad025b377386
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849731"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086672"
 ---
 # <a name="monitor-topics-and-event-subscriptions"></a>Sledovat témata a odběry událostí
 
@@ -40,7 +40,7 @@ Nakonfigurujte modul pro generování metrik nastavením proměnné prostředí 
         }
  ```    
 
-Metriky budou k dispozici v `5888/metrics` modulu pro protokol HTTP a `4438/metrics` pro protokol HTTPS. Například `http://<modulename>:4438/metrics?api-version=2019-01-01-preview` pro protokol HTTP. V tomto okamžiku může modul metrik spustit dotaz na koncový bod a shromažďovat metriky jako v této [ukázkové architektuře](https://github.com/veyalla/ehm).
+Metriky budou k dispozici v `5888/metrics` modulu pro protokol HTTP a `4438/metrics` pro protokol HTTPS. Například `http://<modulename>:5888/metrics?api-version=2019-01-01-preview` pro protokol HTTP. V tomto okamžiku může modul metrik spustit dotaz na koncový bod a shromažďovat metriky jako v této [ukázkové architektuře](https://github.com/veyalla/ehm).
 
 ## <a name="available-metrics"></a>Dostupné metriky
 
@@ -63,9 +63,9 @@ Témata a odběry událostí generují metriky, které vám poskytnou přehled o
 | Metrika | Popis |
 | ------ | ----------- |
 | deliverySuccessCounts | Počet událostí úspěšně doručených do nakonfigurovaného koncového bodu
-| deliveryFailureCounts | Počet pokusů o doručení události v nakonfigurovaném koncovém bodu se nezdařil.
+| deliveryFailureCounts | Počet událostí, které se nepodařilo doručit do nakonfigurovaného koncového bodu
 | deliverySuccessLatencyMs | Latence událostí úspěšně doručených v milisekundách
 | deliveryFailureLatencyMs | Latence selhání při doručování událostí v milisekundách
 | systemDelayForFirstAttemptMs | Zpoždění systému událostí před prvním pokusem o doručení v milisekundách
 | deliveryAttemptsCount | Počet pokusů o doručení událostí – úspěch a selhání
-| expiredCounts | Počet událostí, které nelze doručit 
+| expiredCounts | Počet událostí, jejichž platnost vypršela a nebyly doručeny do nakonfigurovaného koncového bodu

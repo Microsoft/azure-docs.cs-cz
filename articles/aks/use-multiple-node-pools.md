@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: mlearned
-ms.openlocfilehash: 62be78df28d65c2ed16a9f45295edec8c5c360c4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e494a5141a96409fc6691df3a5f1194600ad0c32
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901521"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086464"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vytvoření a Správa fondů více uzlů pro cluster ve službě Azure Kubernetes (AKS)
 
@@ -23,7 +23,7 @@ Ve službě Azure Kubernetes Service (AKS) jsou uzly stejné konfigurace seskupe
 
 V tomto článku se dozvíte, jak vytvořit a spravovat více fondů uzlů v clusteru AKS.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.76 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
@@ -565,7 +565,7 @@ Aktualizace clusteru AKS může trvat několik minut v závislosti na nastavení
 ## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>Přiřazení veřejné IP adresy na uzel v rámci fondu uzlů
 
 > [!WARNING]
-> V rámci verze Preview přiřazení veřejné IP adresy na uzel nejde použít s *Standard Load BALANCER SKU v AKS* , protože pravidla nástroje pro vyrovnávání zatížení jsou v konfliktu s ZŘIZOVÁNÍM virtuálních počítačů. I když je ve verzi Preview, musíte použít *základní Load BALANCER SKU* , pokud potřebujete přiřadit veřejnou IP adresu na uzel.
+> V rámci verze Preview přiřazení veřejné IP adresy na uzel nejde použít s *Standard Load BALANCER SKU v AKS* , protože pravidla nástroje pro vyrovnávání zatížení jsou v konfliktu s ZŘIZOVÁNÍM virtuálních počítačů. V důsledku tohoto omezení nejsou fondy agentů Windows podporovány touto funkcí verze Preview. I když je ve verzi Preview, musíte použít *základní Load BALANCER SKU* , pokud potřebujete přiřadit veřejnou IP adresu na uzel.
 
 AKS uzly nevyžadují pro komunikaci své vlastní veřejné IP adresy. Některé scénáře ale můžou vyžadovat, aby uzly ve fondu uzlů měly své vlastní veřejné IP adresy. Příkladem je hraní her, kde konzola potřebuje vytvořit přímé připojení k virtuálnímu počítači v cloudu, aby se minimalizovaly segmenty směrování. To je možné dosáhnout registrací pro samostatnou funkci verze Preview, veřejnou IP adresou uzlu (Preview).
 

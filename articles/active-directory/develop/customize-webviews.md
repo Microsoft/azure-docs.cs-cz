@@ -3,22 +3,22 @@ title: Přizpůsobení prohlížečů & webviews (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
 description: Přečtěte si, jak přizpůsobit prostředí MSAL pro iOS/macOS pro uživatele, kteří se přihlásí.
 services: active-directory
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/28/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: fad3a90bd11104b4d770ddc1c527cba7d299d150
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 759f61860c62bcb668db6844df28c52fa28eac80
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697621"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085907"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Postupy: přizpůsobení prohlížečů a webových zobrazení pro iOS/macOS
 
@@ -44,7 +44,7 @@ Pro iOS, `ASWebAuthenticationSession`, `SFAuthenticationSession`a `SFSafariViewC
 
 Ve výchozím nastavení MSAL dynamicky detekuje verzi iOS a vybere doporučený prohlížeč systému, který je v této verzi k dispozici. V systému iOS 12 + se `ASWebAuthenticationSession`. 
 
-| Verze | Webový prohlížeč |
+| Version | Webový prohlížeč |
 |:-------------:|:-------------:|
 | iOS 12 + | ASWebAuthenticationSession |
 | iOS 11 | SFAuthenticationSession |
@@ -63,12 +63,12 @@ Vývojáři můžou také vybrat jiný systémový prohlížeč pro aplikace MSA
 
 Prohlížeč, který použijete, má vliv na možnosti jednotného přihlašování z důvodu sdílení souborů cookie. Následující tabulky shrnují možnosti jednotného přihlašování na prohlížeč.
 
-| Technologie    | Typ prohlížeče  | dostupnost iOS | dostupnost macOS | Sdílí soubory cookie a jiná data  | Dostupnost MSAL | Jednotné přihlašování |
+| Technologie    | Typ prohlížeče  | dostupnost iOS | dostupnost macOS | Sdílí soubory cookie a jiná data  | Dostupnost MSAL | JEDNOTNÉ |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|-------------:|
-| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | Systém | iOS12 a nahoru | macOS 10,15 a až | Ano | Jenom iOS | instance w/Safari
-| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | Systém | iOS11 a nahoru | Nevztahuje se | Ano | Jenom iOS |  instance w/Safari
-| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | Systém | iOS11 a nahoru | Nevztahuje se | Ne | Jenom iOS | Ne * *
-| **SFSafariViewController** | Systém | iOS10 | Nevztahuje se | Ano | Jenom iOS |  instance w/Safari
+| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | Systém | iOS12 a nahoru | macOS 10,15 a až | Ano | jenom iOS | instance w/Safari
+| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | Systém | iOS11 a nahoru | Není k dispozici | Ano | jenom iOS |  instance w/Safari
+| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | Systém | iOS11 a nahoru | Není k dispozici | Ne | jenom iOS | Ne * *
+| **SFSafariViewController** | Systém | iOS10 | Není k dispozici | Ano | jenom iOS |  instance w/Safari
 | **WKWebView**  | V aplikaci | iOS8 a nahoru | macOS 10,10 a až | Ne | iOS a macOS | Ne * *
 
 \* * Aby jednotné přihlašování fungovalo, musí být tokeny sdílené mezi aplikacemi. To vyžaduje mezipaměť tokenů nebo aplikaci zprostředkovatele, například Microsoft Authenticator pro iOS.
@@ -87,7 +87,7 @@ Každý požadavek lze nakonfigurovat tak, aby potlačil výchozí prohlížeč 
 
 Kromě toho MSAL podporuje předávání do vlastního `WKWebView` nastavením vlastnosti `MSALInteractiveTokenParameters.webviewParameters.customWebView`.
 
-Například:
+Příklad:
 
 Objective-C
 ```objc
@@ -100,7 +100,7 @@ MSALInteractiveTokenParameters *interactiveParameters = [[MSALInteractiveTokenPa
     
 [app acquireTokenWithParameters:interactiveParameters completionBlock:completionBlock];
 ```
-Swift
+Kód SWIFT
 ```swift
 let myParentController: UIViewController = ...
 let myCustomWebView: WKWebView = ...

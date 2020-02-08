@@ -9,12 +9,12 @@ ms.date: 12/13/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 2f52d72a1f2e3c3d1f3495c4b7f6f633db30778e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3360b92a1b71adcbf0364a16c197aecdab5700db
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437286"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086604"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Kurz: reakce na události Blob Storage v IoT Edge (Preview)
 V tomto článku se dozvíte, jak nasadit modul Azure Blob Storage do služby IoT, který by sloužil jako Event Grid Vydavatel k posílání událostí při vytváření objektů BLOB a odstraňování objektů blob do Event Grid.  
@@ -47,7 +47,7 @@ Existuje několik způsobů, jak nasadit moduly do zařízení IoT Edge, a všec
 
 ### <a name="configure-a-deployment-manifest"></a>Konfigurace manifestu nasazení
 
-Manifest nasazení je dokument JSON, který popisuje, které moduly chcete nasadit, tok dat mezi moduly a požadované vlastnosti dvojčat modulů. Azure Portal má průvodce, který vás provede vytvořením manifestu nasazení místo ručního vytváření dokumentu JSON.  Má tři kroky: **přidat moduly**, **trasy zadejte**, a **zkontrolujte nasazení**.
+Manifest nasazení je dokument JSON, který popisuje, které moduly chcete nasadit, tok dat mezi moduly a požadované vlastnosti dvojčat modulů. Azure Portal má průvodce, který vás provede vytvořením manifestu nasazení místo ručního vytváření dokumentu JSON.  Má tři kroky: **přidat moduly**, **zadat trasy**a **zkontrolovat nasazení**.
 
 ### <a name="add-modules"></a>Přidat moduly
 
@@ -62,9 +62,8 @@ Manifest nasazení je dokument JSON, který popisuje, které moduly chcete nasad
     ```json
         {
           "Env": [
-           "inbound:serverAuth:tlsPolicy=enabled",
-           "inbound:clientAuth:clientCert:enabled=false",
-           "outbound:webhook:httpsOnly=false"
+           "inbound__serverAuth__tlsPolicy=enabled",
+           "inbound__clientAuth__clientCert__enabled=false"
           ],
           "HostConfig": {
             "PortBindings": {
@@ -79,18 +78,15 @@ Manifest nasazení je dokument JSON, který popisuje, které moduly chcete nasad
     ```    
 
  1. Klikněte na **Uložit**.
- 1. Pokračujte k další části a přidejte modul Azure Functions.
+ 1. Přejděte k další části a přidejte modul předplatitele Azure Event Grid před jejich nasazením dohromady.
 
     >[!IMPORTANT]
-    > V tomto kurzu se naučíte nasadit modul Event Grid, aby se povolily požadavky HTTP/HTTPs, ověřování klientů bylo zakázané a umožňovalo předplatitele HTTP. Pro produkční úlohy doporučujeme povolit pouze žádosti a předplatitele HTTPs s povoleným ověřováním klienta. Další informace o tom, jak bezpečně nakonfigurovat Event Grid modul, najdete v tématu [zabezpečení a ověřování](security-authentication.md).
+    > V tomto kurzu se naučíte nasadit modul Event Grid, aby se povolily požadavky HTTP/HTTPs, ale ověřování klientů je zakázané. Pro produkční úlohy doporučujeme povolit pouze žádosti a předplatitele HTTPs s povoleným ověřováním klienta. Další informace o tom, jak bezpečně nakonfigurovat Event Grid modul, najdete v tématu [zabezpečení a ověřování](security-authentication.md).
     
 
-## <a name="deploy-azure-function-iot-edge-module"></a>Nasadit modul IoT Edge služby Azure Functions
+## <a name="deploy-event-grid-subscriber-iot-edge-module"></a>Nasazení IoT Edge modulu předplatitele Event Grid
 
-V této části se dozvíte, jak nasadit modul Azure Functions IoT, který by sloužil jako Event Grid předplatitel, kterému se můžou události doručovat.
-
->[!IMPORTANT]
->V této části nasadíte ukázkový modul pro přihlášení k odběru založený na funkcích Azure Functions. Může samozřejmě být libovolný vlastní modul IoT, který může naslouchat žádostem HTTP POST.
+V této části se dozvíte, jak nasadit jiný modul IoT, který by sloužil jako obslužná rutina události, do které se můžou události doručovat.
 
 ### <a name="add-modules"></a>Přidat moduly
 
@@ -99,23 +95,8 @@ V této části se dozvíte, jak nasadit modul Azure Functions IoT, který by sl
 1. Zadejte název, obrázek a možnosti vytvoření kontejneru kontejneru:
 
    * **Název**: odběratel
-   * **Identifikátor URI image**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber-azfunc:latest`
-   * **Možnosti vytvoření kontejneru**:
-
-       ```json
-            {
-              "HostConfig": {
-                "PortBindings": {
-                  "80/tcp": [
-                    {
-                      "HostPort": "8080"
-                    }
-                  ]
-                }
-              }
-            }
-       ```
-
+   * **Identifikátor URI image**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
+   * **Možnosti vytvoření kontejneru**: žádné
 1. Klikněte na **Uložit**.
 1. Pokračujte k další části a přidejte modul Azure Blob Storage.
 
@@ -133,7 +114,7 @@ V této části se dozvíte, jak nasadit modul Blob Storage Azure, který se bud
    * **Identifikátor URI image**: MCR.Microsoft.com/Azure-Blob-Storage:Latest
    * **Možnosti vytvoření kontejneru**:
 
-```json
+   ```json
        {
          "Env":[
            "LOCAL_STORAGE_ACCOUNT_NAME=<your storage account name>",
@@ -149,19 +130,18 @@ V této části se dozvíte, jak nasadit modul Blob Storage Azure, který se bud
            }
          }
        }
-```
-> [!IMPORTANT]
-> - Blob Storage modul může publikovat události pomocí protokolu HTTPS i HTTP. 
-> - Pokud jste povolili ověřování na základě klientů pro EventGrid, ujistěte se, že aktualizujete hodnotu EVENTGRID_ENDPOINT tak, aby umožňovala https podobný tomuto: `EVENTGRID_ENDPOINT=https://<event grid module name>:4438` 
-> - A přidejte další proměnnou prostředí `AllowUnknownCertificateAuthority=true` do výše uvedeného JSON. Při komunikaci s EventGrid přes HTTPS umožňuje **AllowUnknownCertificateAuthority** modul úložiště důvěřovat certifikátům serveru EventGrid podepsaných svým držitelem.
+   ```
 
-
+   > [!IMPORTANT]
+   > - Blob Storage modul může publikovat události pomocí protokolu HTTPS i HTTP. 
+   > - Pokud jste povolili ověřování na základě klienta pro EventGrid, ujistěte se, že aktualizujete hodnotu EVENTGRID_ENDPOINT tak, aby povolovala https, například: `EVENTGRID_ENDPOINT=https://<event grid module name>:4438`.
+   > - Do výše uvedeného JSON přidejte taky `AllowUnknownCertificateAuthority=true` další proměnnou prostředí. Při komunikaci s EventGrid přes HTTPS umožňuje **AllowUnknownCertificateAuthority** modul úložiště důvěřovat certifikátům serveru EventGrid podepsaných svým držitelem.
 
 4. Aktualizujte kód JSON, který jste zkopírovali, pomocí následujících informací:
 
    - Nahraďte `<your storage account name>` názvem, který si můžete pamatovat. Názvy účtů by měly mít délku 3 až 24 znaků a malými písmeny a číslicemi. Žádné mezery.
 
-   - Nahraďte `<your storage account key>` klíčem Base64 64-byte. Vygenerujete nějaký klíč pomocí nástrojů jako [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64). Použijete tyto přihlašovací údaje pro přístup k úložišti objektů blob z jiných modulů.
+   - Nahraďte `<your storage account key>` klíčem Base64 64-byte. Klíč můžete vygenerovat pomocí nástrojů, jako je [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64). Použijete tyto přihlašovací údaje pro přístup k úložišti objektů blob z jiných modulů.
 
    - Nahraďte `<event grid module name>` názvem vašeho modulu Event Grid.
    - V závislosti na operačním systému vašeho kontejneru nahraďte `<storage mount>`.
@@ -181,7 +161,7 @@ Ponechte výchozí trasy a vyberte **Další** , abyste pokračovali v části K
 ### <a name="review-deployment"></a>Zkontrolujte nasazení
 
 1. V části Kontrola se dozvíte, který manifest nasazení JSON byl vytvořen na základě vašich výběrů v předchozí části. Ověřte, že se zobrazí následující čtyři moduly: **$edgeAgent**, **$edgeHub**, **eventgridmodule**, **předplatitel** a **azureblobstorageoniotedge** , které se nasazují.
-2. Zkontrolujte informace o nasazení a pak vyberte **odeslat**.
+2. Zkontrolujte informace o svém nasazení a pak vyberte **Odeslat**.
 
 ## <a name="verify-your-deployment"></a>Ověření nasazení
 
@@ -221,42 +201,41 @@ Ponechte výchozí trasy a vyberte **Další** , abyste pokračovali v části K
 2. Předplatitelé se můžou zaregistrovat pro události publikované v tématu. K přijetí jakékoli události budete muset vytvořit předplatné Event Grid pro téma **MicrosoftStorage** .
     1. Vytvořte blobsubscription. JSON s následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md) .
 
-    ```json
+       ```json
         {
           "properties": {
             "destination": {
               "endpointType": "WebHook",
               "properties": {
-                "endpointUrl": "http://subscriber:80/api/subscriber"
+                "endpointUrl": "https://subscriber:4430"
               }
             }
           }
         }
-    ```
+       ```
 
-    >[!NOTE]
-    > Vlastnost **endpointType** určuje, že předplatitel je **Webhook**.  **EndpointUrl** Určuje adresu URL, na které předplatitel naslouchá pro události. Tato adresa URL odpovídá ukázce funkce Azure, kterou jste nasadili dříve.
+       >[!NOTE]
+       > Vlastnost **endpointType** určuje, že předplatitel je **Webhook**.  **EndpointUrl** Určuje adresu URL, na které předplatitel naslouchá pro události. Tato adresa URL odpovídá ukázce funkce Azure, kterou jste nasadili dříve.
 
     2. Spuštěním následujícího příkazu vytvořte odběr pro téma. Ověřte, že se zobrazuje stavový kód HTTP `200 OK`.
 
-    ```sh
-    curl -k -H "Content-Type: application/json" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview
-    ```
+       ```sh
+       curl -k -H "Content-Type: application/json" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview
+       ```
 
-    > [!IMPORTANT]
-    > - V případě toku HTTPS, pokud je povoleno ověřování klienta prostřednictvím klíče SAS, by měl být dříve zadaný klíč SAS přidán jako záhlaví. Proto bude požadavek na kudrlinkou: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview` 
-    > - Pokud je v toku HTTPS povolený ověřování klienta prostřednictvím certifikátu, bude požadavek na kudrlinkou:`curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
-
+       > [!IMPORTANT]
+       > - V případě toku HTTPS, pokud je povoleno ověřování klienta prostřednictvím klíče SAS, by měl být dříve zadaný klíč SAS přidán jako záhlaví. Proto bude požadavek na kudrlinkou: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview` 
+       > - Pokud je v toku HTTPS povolený ověřování klienta prostřednictvím certifikátu, bude požadavek na kudrlinkou:`curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
 
     3. Spusťte následující příkaz pro ověření, že se předplatné úspěšně vytvořilo. Měl by se vrátit stavový kód HTTP 200 OK.
 
-    ```sh
-    curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview
-    ```
+       ```sh
+       curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview
+       ```
 
-    Ukázkový výstup:
+       Ukázkový výstup:
 
-    ```json
+       ```json
         {
           "id": "/iotHubs/eg-iot-edge-hub/devices/eg-edge-device/modules/eventgridmodule/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5",
           "type": "Microsoft.EventGrid/eventSubscriptions",
@@ -266,18 +245,18 @@ Ponechte výchozí trasy a vyberte **Další** , abyste pokračovali v části K
             "destination": {
               "endpointType": "WebHook",
               "properties": {
-                "endpointUrl": "http://subscriber:80/api/subscriber"
+                "endpointUrl": "https://subscriber:4430"
               }
             }
           }
         }
-    ```
+       ```
 
-    > [!IMPORTANT]
-    > - V případě toku HTTPS, pokud je povoleno ověřování klienta prostřednictvím klíče SAS, by měl být dříve zadaný klíč SAS přidán jako záhlaví. Proto bude požadavek na kudrlinkou: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
-    > - Pokud je v toku HTTPS povolený ověřování klienta prostřednictvím certifikátu, bude požadavek na kudrlinkou: `curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
+       > [!IMPORTANT]
+       > - V případě toku HTTPS, pokud je povoleno ověřování klienta prostřednictvím klíče SAS, by měl být dříve zadaný klíč SAS přidán jako záhlaví. Proto bude požadavek na kudrlinkou: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
+       > - Pokud je v toku HTTPS povolený ověřování klienta prostřednictvím certifikátu, bude požadavek na kudrlinkou: `curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
 
-2. Stáhněte si [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) a [Připojte ho k místnímu úložišti](../../iot-edge/how-to-store-data-blob.md#connect-to-your-local-storage-with-azure-storage-explorer) .
+3. Stáhněte si [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) a [Připojte ho k místnímu úložišti](../../iot-edge/how-to-store-data-blob.md#connect-to-your-local-storage-with-azure-storage-explorer) .
 
 ## <a name="verify-event-delivery"></a>Ověření doručení události
 
@@ -289,7 +268,7 @@ Ponechte výchozí trasy a vyberte **Další** , abyste pokračovali v části K
     Ukázkový výstup:
 
     ```json
-            Received event data [
+            Received Event:
             {
               "id": "d278f2aa-2558-41aa-816b-e6d8cc8fa140",
               "topic": "MicrosoftStorage",
@@ -309,7 +288,6 @@ Ponechte výchozí trasy a vyberte **Další** , abyste pokračovali v části K
                 "blobType": "BlockBlob"
               }
             }
-          ]
     ```
 
 ### <a name="verify-blobdeleted-event-delivery"></a>Ověření doručení události BlobDeleted
@@ -320,7 +298,7 @@ Ponechte výchozí trasy a vyberte **Další** , abyste pokračovali v části K
     Ukázkový výstup:
     
     ```json
-            Received event data [
+            Received Event:
             {
               "id": "ac669b6f-8b0a-41f3-a6be-812a3ce6ac6d",
               "topic": "MicrosoftStorage",
@@ -340,7 +318,6 @@ Ponechte výchozí trasy a vyberte **Další** , abyste pokračovali v části K
                 "blobType": "BlockBlob"
               }
             }
-          ]
     ```
 
 Blahopřejeme! Dokončili jste tento kurz. Následující části obsahují podrobné informace o vlastnostech události.
@@ -351,27 +328,27 @@ Tady je seznam podporovaných vlastností události a jejich typy a popisy.
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| téma | string | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
-| subject | string | Cesta k předmětu události, kterou definuje vydavatel. |
-| eventType | string | Jeden z registrovaných typů události pro tento zdroj události. |
-| eventTime | string | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
-| id | string | Jedinečný identifikátor události |
+| topic | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
+| subject | řetězec | Cesta definovaná vydavatelem k předmětu události |
+| eventType | řetězec | Jeden z registrovaných typů událostí pro tento zdroj události. |
+| eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
+| id | řetězec | Jedinečný identifikátor události |
 | data | object | Data události služby Blob Storage. |
-| dataVersion | string | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
-| metadataVersion | string | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
+| dataVersion | řetězec | Verze schématu datového objektu. Vydavatel definuje verzi schématu. |
+| metadataVersion | řetězec | Verze schématu metadat události. Event Grid definuje schéma vlastností nejvyšší úrovně. Tuto hodnotu poskytuje Event Grid. |
 
 Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| rozhraní api | string | Operace, která aktivovala událost. Může to být jedna z následujících hodnot: <ul><li>BlobCreated – povolené hodnoty jsou: `PutBlob` a `PutBlockList`</li><li>BlobDeleted – povolené hodnoty jsou `DeleteBlob`, `DeleteAfterUpload` a `AutoDelete`. <p>Událost `DeleteAfterUpload` se vygeneruje při automatickém odstranění objektu blob, protože požadovaná vlastnost deleteAfterUpload je nastavená na true. </p><p>událost `AutoDelete` se generuje při automatickém odstranění objektu blob, protože platnost hodnoty požadované vlastnosti deleteAfterMinutes.</p></li></ul>|
-| clientRequestId | string | ID požadavku pro rozhraní API úložiště poskytnuté klientem. Toto ID lze použít ke korelaci Azure Storage diagnostických protokolů pomocí pole "Client-Request-ID" v protokolech a lze je poskytnout v klientských požadavcích pomocí hlavičky x-MS-Client-Request-ID. Podrobnosti najdete v tématu [Formát protokolu](/rest/api/storageservices/storage-analytics-log-format). |
-| Identifikátor | string | ID žádosti generované službou pro operaci rozhraní API úložiště Dá se použít ke korelaci Azure Storage diagnostických protokolů pomocí pole "Request-ID-header" v protokolech a vrátí se z inicializace volání rozhraní API v hlavičce x-MS-Request-ID. Viz [Formát protokolu](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
-| eTag | string | Hodnota, kterou můžete použít k podmíněnému provádění operací. |
-| contentType | string | Typ obsahu zadaný pro objekt BLOB. |
-| contentLength | celé číslo | Velikost objektu BLOB v bajtech |
-| blobType | string | Typ objektu BLOB Platné hodnoty jsou buď "BlockBlob" nebo "PageBlob". |
-| url | string | Cesta k objektu BLOB <br>Pokud klient používá REST API objektů blob, pak adresa URL má tuto strukturu: *\<úložiště-účet-název\>. blob.core.windows.net/\<kontejner-název\>/\<soubor-název\>* . <br>Pokud klient používá REST API Data Lake Storage, pak adresa URL má tuto strukturu: *\<úložiště-účet-název\>. dfs.core.windows.net/\<File-System-name\>/\<File-name\>* . |
+| api | řetězec | Operace, která aktivovala událost. Může to být jedna z následujících hodnot: <ul><li>BlobCreated – povolené hodnoty jsou: `PutBlob` a `PutBlockList`</li><li>BlobDeleted – povolené hodnoty jsou `DeleteBlob`, `DeleteAfterUpload` a `AutoDelete`. <p>Událost `DeleteAfterUpload` se vygeneruje při automatickém odstranění objektu blob, protože požadovaná vlastnost deleteAfterUpload je nastavená na true. </p><p>událost `AutoDelete` se generuje při automatickém odstranění objektu blob, protože platnost hodnoty požadované vlastnosti deleteAfterMinutes.</p></li></ul>|
+| clientRequestId | řetězec | ID požadavku pro rozhraní API úložiště poskytnuté klientem. Toto ID lze použít ke korelaci Azure Storage diagnostických protokolů pomocí pole "Client-Request-ID" v protokolech a lze je poskytnout v klientských požadavcích pomocí hlavičky x-MS-Client-Request-ID. Podrobnosti najdete v tématu [Formát protokolu](/rest/api/storageservices/storage-analytics-log-format). |
+| Identifikátor | řetězec | ID žádosti generované službou pro operaci rozhraní API úložiště Dá se použít ke korelaci Azure Storage diagnostických protokolů pomocí pole "Request-ID-header" v protokolech a vrátí se z inicializace volání rozhraní API v hlavičce x-MS-Request-ID. Viz [Formát protokolu](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
+| eTag | řetězec | Hodnota, kterou můžete použít k podmíněnému provádění operací. |
+| contentType | řetězec | Typ obsahu zadaný pro objekt BLOB. |
+| contentLength | integer | Velikost objektu BLOB v bajtech |
+| blobType | řetězec | Typ objektu BLOB Platné hodnoty jsou buď "BlockBlob" nebo "PageBlob". |
+| Adresa URL | řetězec | Cesta k objektu BLOB <br>Pokud klient používá REST API objektů blob, pak adresa URL má tuto strukturu: *\<úložiště-účet-název\>. blob.core.windows.net/\<kontejner-název\>/\<soubor-název\>* . <br>Pokud klient používá REST API Data Lake Storage, pak adresa URL má tuto strukturu: *\<úložiště-účet-název\>. dfs.core.windows.net/\<File-System-name\>/\<File-name\>* . |
 
 
 ## <a name="next-steps"></a>Další kroky

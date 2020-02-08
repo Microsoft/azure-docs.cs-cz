@@ -4,17 +4,17 @@ description: Azure Storage chrání vaše data tím, že je před trvalým nasaz
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 01/10/2020
+ms.date: 02/05/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: abb9325510b52672027338314e02466f2d28e701
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 86d6a63601036abdde4ee7ae73114566d749feca
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942193"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77082829"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage šifrování dat v klidovém umístění
 
@@ -46,9 +46,9 @@ Následující tabulka porovnává možnosti správy klíčů pro Azure Storage 
 |                                        |    Klíče spravované společností Microsoft                             |    Klíče spravované zákazníkem                                                                                                                        |    Klíče poskytované zákazníky                                                          |
 |----------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 |    Operace šifrování a dešifrování    |    Azure                                              |    Azure                                                                                                                                        |    Azure                                                                         |
-|    Podporované služby Azure Storage Services    |    Všechno                                                |    BLOB Storage, soubory Azure<sup>1, 2</sup>                                                                                                               |    Úložiště blobů                                                                  |
+|    Podporované služby Azure Storage Services    |    Vše                                                |    BLOB Storage, soubory Azure<sup>1, 2</sup>                                                                                                               |    Blob Storage                                                                  |
 |    Úložiště klíčů                         |    Úložiště klíčů Microsoftu    |    Azure Key Vault                                                                                                                              |    Azure Key Vault nebo jakékoli jiné úložiště klíčů                                                                 |
-|    Zodpovědnost za střídání klíčů         |    Microsoft                                          |    Zákazník                                                                                                                                     |    Zákazník                                                                      |
+|    Zodpovědnost za střídání klíčů         |    Microsoft                                          |    Zákazníka                                                                                                                                     |    Zákazníka                                                                      |
 |    Použití klíče                           |    Microsoft                                          |    Azure Portal, poskytovatel prostředků úložiště REST API, Azure Storage knihovny pro správu, PowerShell, rozhraní příkazového řádku        |    Azure Storage REST API (BLOB Storage), Azure Storage klientských knihoven    |
 |    Přístup ke klíči                          |    Jenom Microsoft                                     |    Microsoft, zákazník                                                                                                                    |    Jenom zákazník                                                                 |
 
@@ -142,7 +142,7 @@ Každý snímek objektu BLOB může mít vlastní šifrovací klíč.
 
 V případě volání REST můžou klienti pomocí následujících hlaviček bezpečně předat informace o šifrovacím klíči na žádost do úložiště objektů BLOB:
 
-|Hlavička požadavku | Popis |
+|Hlavička žádosti | Popis |
 |---------------|-------------|
 |`x-ms-encryption-key` |Vyžaduje se pro požadavky zápisu i čtení. Hodnota šifrovacího klíče AES-256 kódovaná v kódování Base64. |
 |`x-ms-encryption-key-sha256`| Vyžaduje se pro požadavky zápisu i čtení. SHA256 šifrovacího klíče zakódovaného ve formátu base64. |
@@ -154,7 +154,7 @@ Zadání šifrovacích klíčů v žádosti je volitelné. Pokud však zadáte j
 
 Následující operace úložiště BLOB podporují odesílání šifrovacích klíčů poskytovaných zákazníkem na žádost:
 
-- [Vložení objektu blob](/rest/api/storageservices/put-blob)
+- [Vložení objektu BLOB](/rest/api/storageservices/put-blob)
 - [Seznam blokovaných umístění](/rest/api/storageservices/put-block-list)
 - [Blok vložení](/rest/api/storageservices/put-block)
 - [Vložit blok z adresy URL](/rest/api/storageservices/put-block-from-url)
@@ -164,9 +164,9 @@ Následující operace úložiště BLOB podporují odesílání šifrovacích k
 - [Nastavení vlastností objektu BLOB](/rest/api/storageservices/set-blob-properties)
 - [Nastavení metadat objektu BLOB](/rest/api/storageservices/set-blob-metadata)
 - [Získat objekt BLOB](/rest/api/storageservices/get-blob)
-- [Získání vlastností objektu blob](/rest/api/storageservices/get-blob-properties)
+- [Získat vlastnosti objektu BLOB](/rest/api/storageservices/get-blob-properties)
 - [Získat metadata objektu BLOB](/rest/api/storageservices/get-blob-metadata)
-- [Pořízení snímku objektu blob](/rest/api/storageservices/snapshot-blob)
+- [Objekt BLOB snímku](/rest/api/storageservices/snapshot-blob)
 
 ### <a name="rotate-customer-provided-keys"></a>Otočit klíče poskytované zákazníky
 

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/16/2019
+ms.date: 02/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 53693c64ff03146619e17b276a1f817e69f5ed6e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 898515f49672a19ed8bf1c62439128b6727afc73
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75374574"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087407"
 ---
 # <a name="data-querying-in-azure-time-series-insights-preview"></a>Dotazování na data v Azure Time Series Insights Preview
 

@@ -3,22 +3,22 @@ title: Příručka k migraci ADAL do MSAL (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
 description: Přečtěte si o rozdílech mezi MSAL pro iOS/macOS a s knihovnou ověřování Azure AD pro ObjectiveC (ADAL. ObjC) a jak migrovat na MSAL pro iOS/macOS.
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/28/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 311d6ed988777e94f5dd3fde8ac6e9aff1fb39fe
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 6050bdc8c2600998b9804b04b62102e74612719f
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696669"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085173"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>Migrace aplikací do MSAL pro iOS a macOS
 
@@ -65,7 +65,7 @@ V MSAL místo jednoho identifikátoru prostředku poskytují aplikace sadu obor�
 
 Existují dva způsoby, jak poskytnout obory v MSAL:
 
-* Zadejte seznam všech oprávnění, která aplikace potřebuje. Například: 
+* Zadejte seznam všech oprávnění, která aplikace potřebuje. Příklad: 
 
     `@[@"https://graph.microsoft.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
 
@@ -146,7 +146,7 @@ Postup povolení zprostředkovatele pro vaši aplikaci:
 
 1. Zaregistrujte pro aplikaci formát identifikátoru URI přesměrování kompatibilního s zprostředkovatelem. Formát identifikátoru URI přesměrování kompatibilního s zprostředkovatelem je `msauth.<app.bundle.id>://auth`. Nahraďte `<app.bundle.id>` IDENTIFIKÁTORem sady prostředků vaší aplikace. Pokud migrujete z ADAL a vaše aplikace už je zavedená, nemusíte nic dalšího dělat. Váš předchozí identifikátor URI pro přesměrování je plně kompatibilní s MSAL, takže můžete přejít na krok 3.
 
-2. Do souboru info. plist přidejte schéma identifikátoru URI pro přesměrování vaší aplikace. Pro výchozí identifikátor URI pro přesměrování MSAL je formát `msauth.<app.bundle.id>`. Například:
+2. Do souboru info. plist přidejte schéma identifikátoru URI pro přesměrování vaší aplikace. Pro výchozí identifikátor URI pro přesměrování MSAL je formát `msauth.<app.bundle.id>`. Příklad:
 
     ```xml
     <key>CFBundleURLSchemes</key>

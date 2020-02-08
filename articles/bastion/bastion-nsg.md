@@ -2,17 +2,17 @@
 title: Práce s virtuálními počítači a skupin zabezpečení sítě v Azure bastionu
 description: Tento článek popisuje, jak začlenit přístup NSG pomocí Azure bastionu.
 services: bastion
-author: ashjain
+author: charwen
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.author: ashishj
-ms.openlocfilehash: 622333f58fb7ddf66fdf5be51e961a3005294afe
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.author: charwen
+ms.openlocfilehash: 15abee4688a2f6aefa2b08ad2b8eee6622d56be2
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989463"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087271"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>Práce s NSG přístupem a Azure bastionu
 

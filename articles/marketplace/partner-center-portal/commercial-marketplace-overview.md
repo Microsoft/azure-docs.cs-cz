@@ -7,33 +7,34 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: f6ba5c240a9ad74d9a2fab41496ce519f25fc4dc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/06/2020
+ms.openlocfilehash: 2e5ae90cf6ee8bccc9919c88bc695bf944f58a67
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812063"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069434"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>Přehled portálu komerčního tržiště v partnerském centru
 
 Vítá vás komerční portál pro Marketplace v partnerském centru Microsoftu. [Portál komerční na webu Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/) vám umožní monetizovat vaše produkty a služby, oslovit zákazníky a rozšiřovat své podnikání.
 
-V této dokumentaci se naučíme, jak vytvořit a používat váš účet partnerského centra, a vytvořit nové nabídky software jako služby (SaaS), které je možné uvést na [Azure Marketplace](https://azuremarketplace.microsoft.com/) nebo [AppSource](https://appsource.microsoft.com/), spravovat stávající nabídky SaaS a Poskytněte prostředky, které vám pomůžou s dotazy a shromažďovat vaše názory. 
+V této dokumentaci se naučíme, jak vytvořit a používat váš účet partnerského centra, a vytvořit nové nabídky software jako služby (SaaS), které je možné uvést na [Azure Marketplace](https://azuremarketplace.microsoft.com/) nebo [AppSource](https://appsource.microsoft.com/), spravovat své stávající nabídky SaaS a poskytovat prostředky, které vám pomůžou s dotazy a shromažďovat vaše názory. 
 
 ## <a name="about-microsofts-commercial-marketplace"></a>O komerčním tržišti Microsoftu
 
-Podniky, vlády a organizace všech velikostí hledají podniková řešení, inovativní technologie a služby povolování prostřednictvím webových úložišť [Azure Marketplace](https://azuremarketplace.microsoft.com/) a [AppSource](https://appsource.microsoft.com/) , [Azure Portal prostředí v produktu](https://portal.azure.com). [Poskytovatelé cloudových řešení](https://partner.microsoft.com/cloud-solution-provider)a prodejní týmy Microsoftu. 
+Podniky, vlády a organizace všech velikostí hledají podniková řešení, inovativní technologie a služby povolování prostřednictvím webových úložišť [Azure Marketplace](https://azuremarketplace.microsoft.com/) a [AppSource](https://appsource.microsoft.com/) , [Azure Portal prostředí v produktu](https://portal.azure.com), [poskytovatelů cloudových řešení](https://partner.microsoft.com/cloud-solution-provider)a prodejních týmů Microsoftu. 
 
 Partner Center je centrum prostředí Microsoftu pro partnery. Pro organizace, které přicházejí na trh s Microsoftem a využívají web Marketplace, je partnerským centrem portál, přes který vydavatelé vytvářejí a spravují nabídky, poskytují ukázky zkušebních jednotek a zobrazují analýzy na výkonu nabídek. 
 
 ## <a name="migration-from-cloud-partner-portal"></a>Migrace z portál partnerů cloudu
 
-Partnerské centrum se vyvíjí, aby bylo možné lépe integrovat všechny aspekty vztahů Microsoftu s vydavateli softwaru. V rámci tohoto vývoje migrujeme funkce [portál partnerů cloudu](https://cloudpartner.azure.com/) do partnerského centra. 
+Partnerské centrum se vyvíjí, aby bylo možné lépe integrovat všechny aspekty vztahů Microsoftu s vydavateli softwaru. V rámci tohoto vývoje migrujeme funkce [portál partnerů cloudu](https://cloudpartner.azure.com/) do partnerského centra.
 
-**Partnerské centrum v současné době podporuje pouze vytváření a správu nabídek typu software jako služba (SaaS).**
+>[!NOTE]
+>Partnerské centrum v současné době podporuje vytváření a správu nabídek SaaS (software jako služba), nabídek aplikací Azure, Dynamics 365 pro nabídky zákazníků, nabídky zapojení & PowerApps, Dynamics 365 pro nabídky operací a Dynamics 365 pro Nabídka Business Central nabízí. Brzy bude podporována podpora dalších nabídek.
 
-Stávající vydavatelé Marketplace budou najít známé, ale vylepšené uživatelské prostředí pomocí intuitivního rozhraní. Oznámení na portálu a prostřednictvím e-mailu informují vydavatelé migrace. Uživatelé budou plynule přesměrováni na příslušné umístění. Tato aktualizace nebude mít na zákazníky vliv na upgrade tohoto partnerského prostředí. 
+Stávající vydavatelé Marketplace budou najít známé, ale vylepšené uživatelské prostředí pomocí intuitivního rozhraní. Oznámení na portálu a prostřednictvím e-mailu informují vydavatelé migrace. Uživatelé budou plynule přesměrováni na příslušné umístění. Tato aktualizace nebude mít na zákazníky vliv na upgrade tohoto partnerského prostředí.
 
 ### <a name="improvements-on-user-experience-and-billing"></a>Vylepšení uživatelského prostředí a fakturace
 

@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/21/2019
+ms.date: 02/06/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e65eb08873da71c7683fe3347484831dfff58793
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: fcb2198ea3f01e923022c205e478167240a01894
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932627"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084444"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Vytvoření kontroly přístupu skupin a aplikací v prohlídekch Azure AD Access
 
@@ -102,7 +102,7 @@ Další informace najdete v tématu [licenční požadavky](access-reviews-overv
     - **Schválit přístup** – schválení přístupu uživatele
     - **Využijte doporučení** – Vezměte v úvahu doporučení systému při odepření nebo schvalování trvalého přístupu uživatele.
 
-### <a name="advanced-settings"></a>Upřesnit nastavení
+### <a name="advanced-settings"></a>Pokročilá nastavení
 
 1. Chcete-li zadat další nastavení, rozbalte oddíl **Upřesnit nastavení** .
 
@@ -127,6 +127,20 @@ Po zadání nastavení pro kontrolu přístupu klikněte na **Spustit**. Kontrol
 Ve výchozím nastavení Azure AD pošle e-mail kontrolorům krátce po zahájení kontroly. Pokud se rozhodnete Neodesílat e-maily Azure AD, nezapomeňte informovat kontrolory, které čekají na dokončení kontroly přístupu. Můžete jim Ukázat pokyny, jak [zkontrolovat přístup ke skupinám nebo aplikacím](perform-access-review.md). Pokud je vaše kontrola pro hosty, aby zkontrolovala svůj vlastní přístup, zobrazte si pokyny, jak [kontrolovat přístup pro vlastní skupiny nebo aplikace](review-your-access.md).
 
 Pokud jste přidělili hosty jako kontroloři a nepřijali pozvánku, neobdrží e-mail z kontroly přístupu, protože před přezkoumáním musí nejdřív pozvání přijmout.
+
+## <a name="access-review-status-table"></a>Tabulka stavů kontroly přístupu
+
+| Stav | Definice |
+|--------|------------|
+|NotStarted | Byla vytvořena recenze, zjišťování uživatelů čeká na spuštění. |
+|Inicializace   | Zjišťování uživatelů probíhá při identifikaci všech uživatelů, kteří jsou součástí kontroly. |
+|Spouštění | Probíhá spuštění kontroly. Pokud jsou povolená e-mailová oznámení, posílá recenzentům e-maily. |
+|Probíhá zpracování | Kontrola byla spuštěna. Pokud se e-mailová oznámení povolí recenzentům, pošlou jim e-mail. Recenzenti mohou odesílat rozhodnutí do data splatnosti. |
+|Absolv | Kontrola je dokončena a e-maily jsou odesílány vlastníkovi revize. |
+|Autorevize | Revize je ve fázi kontroly systému. Systém zaznamenává rozhodnutí pro uživatele, kteří nebyli prověřeni na základě doporučení nebo předem nakonfigurovaných rozhodnutí. |
+|Přezkoumat | Systém zaznamenal rozhodnutí pro všechny uživatele, kteří nebyli zkontrolováni. Kontrola je připravena pokračovat v **použití** , pokud je povoleno automatické použití. |
+|Použije | Pro uživatele, kteří se schválili, nebude přístup nijak změněn. |
+|Použitý | Zamítnutí uživatelé (pokud existují) byly odebrány z prostředku nebo adresáře. |
 
 ## <a name="create-reviews-via-apis"></a>Vytváření recenzí prostřednictvím rozhraní API
 

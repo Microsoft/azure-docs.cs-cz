@@ -3,114 +3,114 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
-ms.author: cynthn
-ms.openlocfilehash: dc871b29cdafa57d337f9be6cf01e76212f31b67
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.author: tanmaygore
+ms.openlocfilehash: 215057640dd08d9ea524d8f6b3bed8b03a8b5b8c
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174983"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068435"
 ---
-## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>Migrovat prostředky IaaS z modelu nasazení classic do Azure Resource Manageru
-Nejprve je potřeba pochopit rozdíl mezi rovina dat a rovině správy operací na infrastrukturu jako službu (IaaS) prostředky.
+## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>Migrace prostředků IaaS z modelu nasazení Classic na Azure Resource Manager
+Nejdřív je důležité pochopit rozdíl mezi operacemi na úrovni datové roviny a rovinou správy v prostředcích infrastruktury jako služby (IaaS).
 
-* *Rovina správy/řízení* popisuje volání přicházející do roviny správy/řízení nebo rozhraní API za účelem úpravy prostředků. Například operace jako vytvoření virtuálního počítače, restartování virtuálního počítače a aktualizace virtuální sítě s použitím nové podsítě spravují spuštěné prostředky. Nemají přímý vliv na připojení k virtuálním počítačům.
-* *Rovina dat* (aplikace) Popisuje modul runtime samotná aplikace a zahrnuje interakce s instancemi, které neprochází přes rozhraní API služby Azure. Přístup k webu nebo načítání dat ze spuštěné instance SQL serveru nebo serveru MongoDB, jsou například data interakce v rovině nebo aplikace. Další příklady: kopírování objektu blob z účtu úložiště a přístup k veřejné IP adresy pro použití protokolu RDP (Remote Desktop) nebo Secure Shell (SSH) k virtuálnímu počítači. Tyto operace udržují spuštěnou aplikaci napříč výpočetními prostředky, síťovými službami a úložišti.
+* *Rovina správy/řízení* popisuje volání, která přicházejí do roviny pro správu/řízení nebo do rozhraní API pro úpravu prostředků. Například operace jako vytvoření virtuálního počítače, restartování virtuálního počítače a aktualizace virtuální sítě s použitím nové podsítě spravují spuštěné prostředky. Nemají přímý vliv na připojení k virtuálním počítačům.
+* *Rovina dat* (aplikace) popisuje modul runtime samotné aplikace a zahrnuje interakci s instancemi, které NEprojde rozhraním API Azure. Například přístup k webu nebo načtení dat z běžící SQL Server instance nebo serveru MongoDB jsou datová rovina nebo interakce aplikací. Mezi další příklady patří kopírování objektu BLOB z účtu úložiště a přístup k veřejné IP adrese pro použití protokol RDP (Remote Desktop Protocol) (RDP) nebo Secure Shell (SSH) do virtuálního počítače. Tyto operace udržují spuštěnou aplikaci napříč výpočetními prostředky, síťovými službami a úložišti.
 
-Rovina dat je stejný mezi modelem nasazení classic a Resource Manageru zásobníků. Rozdíl je, že během procesu migrace Microsoft přeloží reprezentaci prostředků z modelu nasazení classic, který v zásobníku správce prostředků. V důsledku toho budete muset použít nové nástroje, rozhraní API a sady SDK ke správě prostředků v zásobníku správce prostředků.
+Rovina dat je stejná mezi modelem nasazení Classic a zásobníky Správce prostředků. Rozdílem je to, že během procesu migrace společnost Microsoft překládá reprezentace prostředků z modelu nasazení Classic na rozhraní Správce prostředků Stack. V důsledku toho je potřeba použít nové nástroje, rozhraní API a sady SDK ke správě prostředků v Správce prostředkůovém zásobníku.
 
 ![Diagram, který ukazuje rozdíl mezi rovinou správy/řízení a rovinou dat](../articles/virtual-machines/media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
 
 
 > [!NOTE]
-> Platforma Azure v některých scénářích migrace zastaví, uvolní a restartuje vaše virtuální počítače. To způsobuje krátké výpadky roviny.
+> Platforma Azure v některých scénářích migrace zastaví, uvolní a restartuje vaše virtuální počítače. To způsobuje krátké výpadky datové roviny.
 >
 
 ## <a name="the-migration-experience"></a>Možnosti migrace
-Před zahájením migrace:
+Než zahájíte migraci:
 
 * Ujistěte se, že prostředky, které chcete migrovat, nepoužívají žádné nepodporované funkce ani konfigurace. Platforma obvykle tyto problémy rozpozná a vygeneruje chybu.
-* Pokud máte virtuální počítače, které nejsou ve virtuální síti, se zastaví a uvolní jako součást operace přípravy. Pokud už nechcete přijít o veřejnou IP adresu, vezměte v úvahu před aktivací operace přípravy rezervaci IP adresy. Pokud jsou virtuální počítače ve virtuální síti, jejich nejsou zastaví a uvolní.
+* Pokud máte virtuální počítače, které nejsou ve virtuální síti, jsou zastaveny a uvolněny v rámci operace přípravy. Pokud nechcete, aby se veřejná IP adresa ztratila, před aktivací operace Prepare zvažte možnost rezervace IP adresy. Pokud jsou virtuální počítače ve virtuální síti, nejsou zastaveny a navráceny.
 * Naplánujte migraci mimo pracovní dobu, abyste mohli vyřešit případné neočekávané chyby, ke kterým by mohlo při migraci dojít.
 * Pro usnadnění ověření po dokončení kroku přípravy si stáhněte aktuální konfiguraci vašich virtuálních počítačů pomocí PowerShellu, příkazů rozhraní příkazového řádku nebo rozhraní REST API.
-* Aktualizujte skripty automatizace a operacionalizaci ke zpracování modelu nasazení Resource Manager, před zahájením migrace. Volitelně můžete provádět operace načtení, když jsou prostředky v připraveném stavu.
-* Vyhodnoťte zásady řízení přístupu na základě Role (RBAC), které jsou nakonfigurované pro prostředky IaaS v modelu nasazení classic a naplánujte po dokončení migrace.
+* Než začnete s migrací, aktualizujte skripty pro automatizaci a provozní prostředí, aby zpracovávala model nasazení Správce prostředků. Volitelně můžete provádět operace načtení, když jsou prostředky v připraveném stavu.
+* Vyhodnoťte zásady Access Control na základě rolí (RBAC), které jsou nakonfigurované na IaaSch prostředcích v modelu nasazení Classic, a naplánujte po dokončení migrace.
 
 Pracovní postup migrace je následující:
 
 ![Diagram znázorňující pracovní postup migrace](../articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-workflow.png)
 
 > [!NOTE]
-> Operace popsané v následujících částech jsou všechny idempotentní. Pokud máte jiný problém, než je nepodporovaná funkce nebo Chyba konfigurace, zkuste přípravy, přerušení nebo potvrzení operace. Azure se pokusí akci provést znovu.
+> Operace popsané v následujících částech jsou všechny idempotentní. Pokud máte jiný problém než Nepodporovaná funkce nebo chybu konfigurace, zkuste operaci příprava, přerušení nebo potvrzení zopakovat. Azure se o akci pokusí znovu.
 >
 >
 
 ### <a name="validate"></a>Ověření
-Operace ověření je prvním krokem v procesu migrace. Cílem tohoto kroku je analyzovat stav prostředky, které chcete migrovat v modelu nasazení classic. Operace vyhodnotí, jestli jsou prostředky schopné migrace (úspěch nebo neúspěch).
+Operace ověření je prvním krokem v procesu migrace. Cílem tohoto kroku je analyzovat stav prostředků, které chcete migrovat v modelu nasazení Classic. Tato operace vyhodnotí, jestli jsou prostředky schopné migrovat (úspěch nebo neúspěch).
 
-Vyberte virtuální síť nebo cloudovou službu (Pokud není ve virtuální síti), který chcete ověřit pro migraci. Pokud prostředek není schopen migrace, uvádí Azure proč důvody.
+Vyberete virtuální síť nebo cloudovou službu (Pokud není ve virtuální síti), kterou chcete ověřit pro migraci. Pokud prostředek není schopný migrovat, Azure vypíše důvody, proč.
 
-#### <a name="checks-not-done-in-the-validate-operation"></a>Neprovedeno v operace ověření kontroly
+#### <a name="checks-not-done-in-the-validate-operation"></a>V operaci ověření se neudělaly kontroly.
 
-Operace ověření pouze analyzuje stav prostředků v modelu nasazení classic. Můžete vyhledat všechny chyby a nepodporované scénáře z důvodu různých konfiguracích v modelu nasazení classic. Není možné zkontrolovat všechny problémy, které zásobníku Azure Resource Manageru může uložit prostředky během migrace. Tyto problémy jsou kontrolována pouze při prostředky projít transformace v dalším kroku migrace (operace přípravy). V následující tabulce jsou uvedeny všechny problémy není zaregistrováno operace ověření:
+Operace ověřování analyzuje pouze stav prostředků v modelu nasazení Classic. Může kontrolovat všechny chyby a nepodporované scénáře z důvodu různých konfigurací v modelu nasazení Classic. Není možné kontrolovat všechny problémy, které může Azure Resource Manager zásobník v průběhu migrace v rámci prostředků ukládat. Tyto problémy se kontrolují jenom v případě, že se prostředky přejdou transformaci v dalším kroku migrace (operace Prepare). V následující tabulce jsou uvedeny všechny problémy, které nejsou v operaci ověření zaškrtnuté:
 
 
-|Kontroly sítě není v operace ověření|
+|Kontroly sítě, které nejsou v operaci ověření|
 |-|
-|Virtuální síť s ER a VPN Gateway.|
+|Virtuální síť s bránou ER i VPN.|
 |Připojení brány virtuální sítě v odpojeném stavu.|
-|Všechny okruhy ER předem migrují do zásobníku správce prostředků Azure.|
-|Kvóta Azure Resource Manageru zjišťuje síťové prostředky. Příklad: statické veřejné IP adresy, dynamické veřejné IP adresy, načítání nástroje pro vyrovnávání, skupiny zabezpečení sítě, směrovacích tabulek a síťových rozhraní. |
-| Všechna pravidla nástroje pro vyrovnávání zatížení jsou platné v rámci nasazení a virtuální sítě. |
-| Konfliktní privátních IP adres mezi zastavit a uvolnit virtuálními počítači ve stejné virtuální síti. |
+|Všechny okruhy ER jsou předem migrovány do sady Azure Resource Manager Stack.|
+|Azure Resource Manager kontroly kvót pro síťové prostředky. Příklad: statická veřejná IP adresa, dynamické veřejné IP adresy, nástroj pro vyrovnávání zatížení, skupiny zabezpečení sítě, směrovací tabulky a síťová rozhraní. |
+| Všechna pravidla nástroje pro vyrovnávání zatížení jsou platná v rámci nasazení a virtuální sítě. |
+| Konfliktní privátní IP adresy mezi virtuálními počítači, které jsou ve stejné virtuální síti, se nepřiřazují. |
 
 ### <a name="prepare"></a>Příprava
-Operace přípravy je druhým krokem v procesu migrace. Cílem tohoto kroku je simulovat transformaci prostředků IaaS z modelu nasazení classic na prostředky Resource Manageru. Operace přípravy dále, představuje tento-souběžně umožní vizualizovat.
+Operace přípravy je druhým krokem v procesu migrace. Cílem tohoto kroku je simulovat transformaci prostředků IaaS z modelu nasazení Classic na prostředky Správce prostředků. Tato operace přípravy prezentuje tuto funkci vedle sebe, abyste ji mohli vizualizovat.
 
 > [!NOTE] 
-> Během tohoto kroku se nezmění vaše prostředky v modelu nasazení classic. Je bezpečné kroku ke spouštění, pokud se snažíte na migraci. 
+> Vaše prostředky v modelu nasazení Classic se v průběhu tohoto kroku nezmění. Je to bezpečný krok, který se spustí, pokud se pokoušíte o migraci. 
 
-Vyberete virtuální sítě nebo cloudové služby (pokud to není virtuální síť), že chcete připravit na migraci.
+Vyberete virtuální síť nebo cloudovou službu (pokud to není virtuální síť), kterou chcete připravit na migraci.
 
-* Pokud prostředek není schopen migrace, Azure zastaví proces migrace a uvede důvody, proč operace přípravy selhala.
-* Pokud prostředek je schopen migrace, Azure uzamkne operace roviny správy pro prostředky v rámci migrace. Například nemůžete do virtuálního počítače v rámci migrace přidat datový disk.
+* Pokud prostředek není schopen migrace, Azure zastaví proces migrace a uvede důvod, proč se operace přípravy nezdařila.
+* Pokud je prostředek schopný migrovat, Azure pro prostředky v rámci migrace zamkne operace roviny správy. Například nemůžete do virtuálního počítače v rámci migrace přidat datový disk.
 
-Azure pak spustí migraci metadat z modelu nasazení classic do Resource Manageru pro migrované prostředky.
+Azure potom spustí migraci metadat z modelu nasazení Classic na Správce prostředků pro migraci prostředků.
 
-Po dokončení operace přípravy máte možnost vizualizace prostředků v modelu nasazení classic a Resource Manageru. Pro každou cloudovou službu v modelu nasazení Classic vytvoří platforma Azure název skupiny prostředků ve tvaru `cloud-service-name>-Migrated`.
-
-> [!NOTE]
-> Není možné vybrat název skupiny prostředků vytvořené pro migrované prostředky (tedy "-migrovat"). Po dokončení migrace však můžete přesunout funkce Azure Resource Manageru k přesunutí prostředků do libovolné skupiny prostředků, které chcete. Další informace najdete v tématu, které se zabývá [přesunutím prostředků do nové skupiny prostředků nebo předplatného](../articles/resource-group-move-resources.md).
-
-Na následujících dvou snímcích obrazovky ukazují výsledek po úspěšném operace přípravy. První z nich ukazuje skupinu prostředků, která obsahuje původní cloudovou službu. Je druhý řádek ukazuje novou "-migrovat" skupiny prostředků, která obsahuje ekvivalentní prostředky Azure Resource Manageru.
-
-![Snímek obrazovky zobrazující původní cloudovou službu](../articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-classic.png)
-
-![Snímek obrazovky s prostředky Azure Resource Manageru v operace přípravy](../articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-arm.png)
-
-Po dokončení fáze prepare následuje pozadí pohled na vaše prostředky. Všimněte si, že prostředků v rovině dat je stejný. Je zastoupena v rovině správy (model nasazení classic) a rovina řízení (Resource Manager).
-
-![Diagram fáze prepare](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
+Po dokončení operace přípravy máte možnost vizualizovat prostředky v modelu nasazení Classic i Správce prostředků. Pro každou cloudovou službu v modelu nasazení Classic vytvoří platforma Azure název skupiny prostředků ve tvaru `cloud-service-name>-Migrated`.
 
 > [!NOTE]
-> Virtuální počítače, které nejsou ve virtuální síti v modelu nasazení classic se zastaví a uvolní v této fázi migrace.
+> Není možné vybrat název skupiny prostředků vytvořené pro migrované prostředky (tj. "-migrované"). Po dokončení migrace ale můžete použít funkci přesunout Azure Resource Manager k přesunutí prostředků do jakékoli skupiny prostředků, kterou požadujete. Další informace najdete v tématu, které se zabývá [přesunutím prostředků do nové skupiny prostředků nebo předplatného](../articles/resource-group-move-resources.md).
+
+Následující dva snímky obrazovky znázorňují výsledek po úspěšné operaci přípravy. První z nich zobrazuje skupinu prostředků, která obsahuje původní cloudovou službu. Druhá z nich ukazuje novou skupinu prostředků "-migrované", která obsahuje ekvivalentní Azure Resource Manager prostředky.
+
+![Snímek obrazovky, který zobrazuje původní cloudovou službu](../articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-classic.png)
+
+![Snímek obrazovky zobrazující Azure Resource Manager prostředky v operaci Prepare](../articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-arm.png)
+
+Tady je pohled na pozadí po skončení fáze přípravy. Všimněte si, že zdroj v rovině dat je stejný. Je reprezentován jak v rovině správy (model nasazení Classic), tak i rovině ovládacího prvku (Správce prostředků).
+
+![Diagram fáze přípravy](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
+
+> [!NOTE]
+> Virtuální počítače, které nejsou ve virtuální síti v modelu nasazení Classic, se v této fázi migrace zastaví a oddělují.
 >
 
 ### <a name="check-manual-or-scripted"></a>Kontrola (ruční nebo pomocí skriptu)
-V kroku zkontrolujte máte možnost použít konfigurace, který jste předtím stáhli k ověření, že migrace vypadá v pořádku. Alternativně můžete přihlásit k portálu a na místě zkontrolovat vlastnosti a prostředky, abyste ověřili, že migrace metadat vypadá dobře.
+V kroku Kontrola máte možnost použít konfiguraci, kterou jste předtím stáhli, abyste ověřili, že migrace vypadá správně. Alternativně se můžete přihlásit k portálu a zkontrolovat vlastnosti a prostředky, abyste ověřili, že migrace metadat vypadá dobře.
 
-Pokud migrujete virtuální síť, většina konfigurací virtuálních počítačů se nerestartuje. U aplikací na těchto virtuálních počítačů můžete ověřit, že aplikace pořád běží.
+Pokud migrujete virtuální síť, většina konfigurací virtuálních počítačů se nerestartuje. Pro aplikace na těchto virtuálních počítačích můžete ověřit, jestli je aplikace pořád spuštěná.
 
-Můžete otestovat skripty monitorování a provozní virtuální počítače fungují podle očekávání a aktualizované skripty fungovat správně. Když jsou prostředky v připraveném stavu, podporují se pouze operace načtení.
+Chcete-li zjistit, zda virtuální počítače pracují podle očekávání a zda aktualizované skripty fungují správně, můžete otestovat své operační a provozní skripty. Když jsou prostředky v připraveném stavu, podporují se pouze operace načtení.
 
-Není k dispozici žádná sada okno dobu, před kterou je potřeba provést migraci. V tomto stavu máte času, kolik chcete. Pro tyto prostředky je však uzamčena vrstva správy, dokud je nepřerušíte nebo nepotvrdíte.
+K dispozici není žádné okno nastavení času, než bude nutné provést migraci. V tomto stavu máte času, kolik chcete. Pro tyto prostředky je však uzamčena vrstva správy, dokud je nepřerušíte nebo nepotvrdíte.
 
-Pokud nastanou nějaké problémy, vždycky můžete migraci přerušit a vrátit se k modelu nasazení Classic. Po vrácení, Azure otevře roviny správy operací s prostředky, tak, aby mohli obnovit normální provoz na těchto virtuálních počítačích v modelu nasazení classic.
+Pokud nastanou nějaké problémy, vždycky můžete migraci přerušit a vrátit se k modelu nasazení Classic. Až se vrátíte zpátky, Azure otevře v prostředcích operace správy roviny, aby bylo možné obnovit běžné operace na těchto virtuálních počítačích v modelu nasazení Classic.
 
 ### <a name="abort"></a>Přerušení
-Toto je volitelný krok, pokud chcete vrátit změny k modelu nasazení classic a zastavit migraci. Tato operace odstraní metadat Resource Manageru (vytvořený v kroku přípravy) pro vaše prostředky. 
+Tento krok je volitelný, pokud chcete vrátit změny v modelu nasazení Classic a zastavit migraci. Tato operace odstraní metadata Správce prostředků (vytvořená v kroku Příprava) pro vaše prostředky. 
 
-![Diagram přerušení kroku](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
+![Diagram kroku přerušení](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
 
 
 > [!NOTE]
@@ -118,38 +118,38 @@ Toto je volitelný krok, pokud chcete vrátit změny k modelu nasazení classic 
 >
 
 ### <a name="commit"></a>Potvrzení
-Po dokončení ověření můžete migraci potvrdit. Prostředky se už nebudou zobrazovat v modelu nasazení classic a jsou k dispozici pouze v modelu nasazení Resource Manager. Migrované prostředky je možné spravovat pouze na novém portálu.
+Po dokončení ověření můžete migraci potvrdit. Prostředky se již v modelu nasazení Classic neobjevují a jsou k dispozici pouze v modelu nasazení Správce prostředků. Migrované prostředky je možné spravovat pouze na novém portálu.
 
 > [!NOTE]
-> Toto je idempotentní operace. Pokud selže, zkuste operaci zopakovat. Pokud bude nadále nezdaří, vytvořte lístek podpory nebo vytvořte příspěvek se "ClassicIaaSMigration" značky našich [fóru k virtuálním počítačům](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesforWindows).
+> Toto je idempotentní operace. Pokud dojde k chybě, zkuste operaci zopakovat. Pokud se tato chyba bude opakovat, vytvořte lístek podpory nebo vytvořte fórum na [webu Microsoft Q &](https://docs.microsoft.com/answers/index.html)
 >
 >
 
-![Diagram potvrzení kroku](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png)
+![Diagram kroku potvrzení](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png)
 
 ## <a name="migration-flowchart"></a>Vývojový diagram migrace
 
-Tady je Vývojový diagram, který ukazuje, jak pokračovat v migraci:
+Tady je vývojový diagram, který ukazuje, jak pokračovat v migraci:
 
 ![Snímek obrazovky, který ukazuje kroky migrace](../articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-flow.png)
 
-## <a name="translation-of-the-classic-deployment-model-to-resource-manager-resources"></a>Překlad modelu nasazení classic na prostředky Resource Manageru
-Model nasazení classic a Resource Manageru reprezentaci prostředků najdete v následující tabulce. Jiné funkce a prostředky se aktuálně nepodporují.
+## <a name="translation-of-the-classic-deployment-model-to-resource-manager-resources"></a>Překlad modelu nasazení Classic na prostředky Správce prostředků
+Model nasazení Classic a Správce prostředků reprezentace prostředků najdete v následující tabulce. Jiné funkce a prostředky se aktuálně nepodporují.
 
 | Reprezentace v modelu Classic | Reprezentace v modelu Resource Manager | Poznámky |
 | --- | --- | --- |
 | Název cloudové služby |Název DNS |Během migrace se pro každou cloudovou službu vytvoří nová skupina prostředků s formátem pojmenování `<cloudservicename>-migrated`. Tato skupina prostředků obsahuje všechny vaše prostředky. Název cloudové služby se stane názvem DNS přidruženým k veřejné IP adrese. |
-| Virtuální počítač |Virtuální počítač |Vlastnosti specifické pro virtuální počítače se migrují beze změny. Určité informace osProfile, jako je název počítače, není uložen v modelu nasazení classic a zůstávají prázdné i po migraci. |
-| Prostředky disku připojené k virtuálnímu počítači |Implicitní disky připojené k virtuálnímu počítači |Disky se v modelu nasazení Resource Manager nemodelují jako prostředky nejvyšší úrovně. Migrují se jako implicitní disky v rámci virtuálního počítače. Aktuálně se podporují pouze disky připojené k virtuálnímu počítači. Virtuální počítače Resource Manageru teď můžou používat účty úložiště v modelu nasazení classic, což umožní disky snadnou migraci bez potřeby jakýchkoli aktualizací. |
+| Virtuální počítač |Virtuální počítač |Vlastnosti specifické pro virtuální počítače se migrují beze změny. Některé osProfile informace, jako je název počítače, se neukládají v modelu nasazení Classic a po migraci zůstávají prázdné. |
+| Prostředky disku připojené k virtuálnímu počítači |Implicitní disky připojené k virtuálnímu počítači |Disky se v modelu nasazení Resource Manager nemodelují jako prostředky nejvyšší úrovně. Migrují se jako implicitní disky v rámci virtuálního počítače. Aktuálně se podporují pouze disky připojené k virtuálnímu počítači. Správce prostředků virtuální počítače teď můžou používat účty úložiště v modelu nasazení Classic, což umožňuje snadnou migraci disků bez jakýchkoli aktualizací. |
 | Rozšíření virtuálních počítačů |Rozšíření virtuálních počítačů |Z modelu nasazení Classic se migrují všechna rozšíření prostředků s výjimkou rozšíření XML. |
-| Certifikáty virtuálních počítačů |Certifikáty v Azure Key Vault |Pokud je Cloudová služba obsahuje certifikáty služby, migraci vytvoří Azure nový trezor klíčů za cloudové služby a certifikáty se přesune do služby key vault. Virtuální počítače se aktualizují, aby odkazovaly na certifikáty z trezoru klíčů. <br><br> Odstranění trezoru klíčů. To může způsobit, že virtuální počítač přejde do stavu selhání. |
+| Certifikáty virtuálních počítačů |Certifikáty v Azure Key Vault |Pokud cloudová služba obsahuje certifikáty služeb, při migraci se vytvoří nový trezor klíčů Azure pro každou cloudovou službu a certifikáty se přesunou do trezoru klíčů. Virtuální počítače se aktualizují, aby odkazovaly na certifikáty z trezoru klíčů. <br><br> Neodstraňujte Trezor klíčů. To může způsobit, že virtuální počítač přejde do stavu selhání. |
 | Konfigurace WinRM |Konfigurace WinRM v rámci osProfile |Konfigurace vzdálené správy systému Windows se v rámci migrace přesune beze změny. |
-| Vlastnost sady dostupnosti |Prostředek sady dostupnosti | Specifikace sady dostupnosti je vlastnost na virtuálním počítači v modelu nasazení classic. Skupiny dostupnosti se v rámci migrace stanou prostředkem nejvyšší úrovně. Následující konfigurace se nepodporují: více skupin dostupnosti na cloudovou službu a jedna nebo více skupin dostupnosti společně s virtuálními počítači, které nejsou v žádné skupině dostupnosti v cloudové službě. |
+| Vlastnost sady dostupnosti |Prostředek sady dostupnosti | Specifikace sady dostupnosti je vlastnost na virtuálním počítači v modelu nasazení Classic. Skupiny dostupnosti se v rámci migrace stanou prostředkem nejvyšší úrovně. Následující konfigurace se nepodporují: více skupin dostupnosti na cloudovou službu a jedna nebo více skupin dostupnosti společně s virtuálními počítači, které nejsou v žádné skupině dostupnosti v cloudové službě. |
 | Konfigurace sítě na virtuálním počítači |Primární síťové rozhraní |Konfiguraci sítě na virtuálním počítači po migraci představuje prostředek primárního síťového rozhraní. U virtuálních počítačů, které nejsou ve virtuální síti, se při migraci změní interní IP adresa. |
-| Několik síťových rozhraní na virtuálním počítači |Síťová rozhraní |Pokud má virtuální počítač několik síťových rozhraní, které s ním spojená, každé síťové rozhraní se stane prostředek nejvyšší úrovně jako součást migrace, spolu se všemi vlastnostmi. |
+| Několik síťových rozhraní na virtuálním počítači |Síťová rozhraní |Pokud je k virtuálnímu počítači přidruženo více síťových rozhraní, každé síťové rozhraní se v rámci migrace stal prostředkem nejvyšší úrovně společně se všemi vlastnostmi. |
 | Sada koncových bodů s vyrovnáváním zatížení |Nástroj pro vyrovnávání zatížení |V modelu nasazení Classic platforma ke každé cloudové službě přiřadila implicitní nástroj pro vyrovnávání zatížení. Během migrace se vytvoří nový prostředek nástroje pro vyrovnávání zatížení a ze sady koncových bodů s vyrovnáváním zatížení se stanou pravidla nástroje pro vyrovnávání zatížení. |
 | Příchozí pravidla NAT |Příchozí pravidla NAT |Vstupní koncové body definované na virtuálním počítači se během migrace převedou na pravidla příchozího překladu adres v rámi nástroje pro vyrovnávání zatížení. |
-| Virtuální IP adresa |Veřejná IP adresa s názvem DNS |Virtuální IP adresa se stane veřejná IP adresa a souvisí s nástrojem pro vyrovnávání zatížení. Virtuální IP adresu je možné migrovat pouze v případě, že k ní je přidružený vstupní koncový bod. |
+| Virtuální IP adresa |Veřejná IP adresa s názvem DNS |Virtuální IP adresa se stala veřejnou IP adresou a je přidružená k nástroji pro vyrovnávání zatížení. Virtuální IP adresu je možné migrovat pouze v případě, že k ní je přidružený vstupní koncový bod. |
 | Virtuální síť |Virtuální síť |Virtuální síť se migruje se všemi vlastnostmi na model nasazení Resource Manager. Vytvoří se nová skupina prostředků s názvem `-migrated`. |
 | Vyhrazené IP adresy |Veřejná IP adresa s metodou statického přidělování |Vyhrazené IP adresy přidružené k nástroji pro vyrovnávání zatížení se migrují společně s migrací cloudové služby nebo virtuálního počítače. Migrace nepřidružených vyhrazených IP adres se aktuálně nepodporuje. |
 | Veřejná IP adresa na virtuální počítač |Veřejná IP adresa s metodou dynamického přidělování |Veřejná IP adresa přidružená k virtuálnímu počítači se převede na prostředek veřejné IP adresy s nastavenou statickou metodou přidělování. |
@@ -157,11 +157,11 @@ Model nasazení classic a Resource Manageru reprezentaci prostředků najdete v 
 | Servery DNS |Servery DNS |Servery DNS přidružené k virtuální síti nebo virtuálnímu počítači se migrují v rámci migrace odpovídajícího prostředku, a to společně se všemi vlastnostmi. |
 | UDR |UDR |Trasy definované uživatelem (UDR) přidružené k podsíti se v rámci migrace klonují do modelu nasazení Resource Manager. UDR v modelu nasazení Classic se během migrace neodebere. V průběhu migrace jsou blokované operace s UDR v rovině správy. |
 | Vlastnost předávání IP v konfiguraci sítě na virtuálním počítači |Vlastnost předávání IP na síťové kartě |Vlastnost předávání IP na virtuálním počítači se během migrace převede na vlastnost na síťových rozhraních. |
-| Nástroj pro vyrovnávání zatížení s několika IP adresami |Nástroj pro vyrovnávání zatížení s několika prostředky veřejné IP adresy |Každá veřejná IP adresa spojená s nástrojem pro vyrovnávání zatížení je převést na prostředek veřejné IP adresy a související s nástrojem pro vyrovnávání zatížení po migraci. |
-| Interní názvy DNS na virtuálním počítači |Interní názvy DNS na síťové kartě |Během migrace se interní přípony DNS pro virtuální počítače migrují do vlastnosti jen pro čtení s názvem InternalDomainNameSuffix na síťové kartě. Po migraci zůstane beze změny příponu a překlad názvů Virtuálních by ml fungovat stejně jako předtím. |
+| Nástroj pro vyrovnávání zatížení s několika IP adresami |Nástroj pro vyrovnávání zatížení s několika prostředky veřejné IP adresy |Každá veřejná IP adresa přidružená k nástroji pro vyrovnávání zatížení je po migraci převedena na prostředek veřejné IP adresy a přidružená k nástroji pro vyrovnávání zatížení. |
+| Interní názvy DNS na virtuálním počítači |Interní názvy DNS na síťové kartě |Během migrace se interní přípony DNS pro virtuální počítače migrují do vlastnosti jen pro čtení s názvem InternalDomainNameSuffix na síťové kartě. Přípona zůstane po migraci beze změny a řešení virtuálních počítačů by mělo dál fungovat jako dřív. |
 | Brána virtuální sítě |Brána virtuální sítě |Vlastnosti brány virtuální sítě se migrují beze změny. Virtuální IP adresa přidružená k bráně se také nemění. |
-| Místní síťová lokalita |Brána místní sítě |Vlastnosti místní síťové lokality se migrují beze změny do nového prostředku označovaného jako brána místní sítě. Představuje předpony místních adres a IP adresu vzdálené brány. |
-| Odkazy na připojení |Připojení |Odkazy na možnosti připojení mezi bránou a místní síťovou lokalitou v konfiguraci sítě je reprezentován nového prostředku označovaného jako připojení. Všechny vlastnosti odkazu na možnosti připojení v konfiguračních souborech sítě se beze změny zkopírují do prostředku připojení. Propojení mezi virtuálními sítěmi v modelu nasazení classic se dosahuje vytvořením dvou tunelů IPsec k místním síťovým lokalitám, které představují virtuální sítě. Se transformuje na typ sítě na virtuální-připojení virtuální sítě v modelu Resource Manager, bez nutnosti místní síťové brány. |
+| Místní síťová lokalita |Brána místní sítě |Vlastnosti místní síťové lokality se migrují beze změny do nového prostředku, který se nazývá Brána místní sítě. To představuje předpony místních adres a IP adresu vzdálené brány. |
+| Odkazy na připojení |Připojení |Odkazy na připojení mezi bránou a lokalitou místní sítě v konfiguraci sítě představuje nový prostředek s názvem připojení. Všechny vlastnosti odkazu na připojení v konfiguračních souborech sítě se zkopírují beze změny do prostředku připojení. Připojení mezi virtuálními sítěmi v modelu nasazení Classic se dosahuje vytvořením dvou tunelů IPsec v místních síťových lokalitách, které představují virtuální sítě. To se transformuje na typ připojení typu virtuální síť k virtuální síti v modelu Správce prostředků, aniž by bylo nutné vyžadovat brány místní sítě. |
 
 ## <a name="changes-to-your-automation-and-tooling-after-migration"></a>Změny automatizace a nástrojů po migraci
-Jako součást migrace prostředků z modelu nasazení classic do modelu nasazení Resource Manageru je nutné aktualizovat stávající automatizaci nebo nástroje, které Ujistěte se, že i nadále fungovat po migraci.
+V rámci migrace prostředků z modelu nasazení Classic do modelu nasazení Správce prostředků musíte aktualizovat existující automatizaci nebo nástroje, aby se zajistilo, že po migraci budou i nadále fungovat.

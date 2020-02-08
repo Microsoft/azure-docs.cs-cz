@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 3b3b83719da4c1c19706845fa4cb1dc75712d145
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: bbb0992eaeef7892e5940130131ac139a339b47d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932383"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083234"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Nasazení modelů pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -172,22 +172,22 @@ Koncové body s více modely používají sdílený kontejner pro hostování v�
 
 E2E příklad, který ukazuje použití více modelů za jedním kontejnerovým koncovým bodem, najdete v [tomto příkladu](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-multi-model) .
 
-## <a name="prepare-to-deploy"></a>Příprava nasazení
+## <a name="prepare-deployment-artifacts"></a>Příprava artefaktů nasazení
 
-K nasazení modelu potřebujete následující položky:
+K nasazení modelu budete potřebovat následující:
 
-* **Vstupní skript**. Tento skript přijímá požadavky, zarovnává požadavky pomocí modelu a vrátí výsledky.
+* **Vstupní skript & závislosti zdrojového kódu**. Tento skript přijímá požadavky, zarovnává požadavky pomocí modelu a vrátí výsledky.
 
     > [!IMPORTANT]
     > * Vstupní skript je specifický pro váš model. Musí pochopit formát příchozích dat požadavků, formát dat očekávaných modelem a formát dat vrácených klientům.
     >
     >   Pokud jsou data požadavku ve formátu, který model nepoužívá, skript ho může transformovat do přijatelného formátu. Může také transformovat odpověď před jejich vrácením klientovi.
     >
-    > * Sada Azure Machine Learning SDK neposkytuje způsob, jak webové služby nebo IoT Edge nasazení získat přístup k úložišti dat nebo datovým sadám. Pokud váš nasazený model potřebuje přístup k datům uloženým mimo nasazení, jako jsou data v účtu úložiště Azure, musíte vytvořit vlastní řešení kódu pomocí příslušné sady SDK. Například [sada SDK Azure Storage pro Python](https://github.com/Azure/azure-storage-python).
+    > * Nasazení webových služeb a IoT Edge nemají přístup k datovým skladům nebo datovým sadám v pracovním prostoru. Pokud vaše nasazená služba potřebuje přístup k datům uloženým mimo nasazení, jako jsou data v účtu úložiště Azure, musíte vytvořit vlastní řešení kódu pomocí příslušné sady SDK. Například [sada SDK Azure Storage pro Python](https://github.com/Azure/azure-storage-python).
     >
     >   Alternativou, která může být pro váš scénář fungovat, je [předpověď dávky](how-to-use-parallel-run-step.md), která poskytuje přístup k úložištím dat během bodování.
 
-* **Závislosti**, jako jsou například pomocné skripty nebo balíčky python/Conda, které jsou nutné ke spuštění vstupního skriptu nebo modelu.
+* **Odvození prostředí**. Základní image s nainstalovanými závislostmi balíčků, které jsou potřebné ke spuštění modelu.
 
 * **Konfigurace nasazení** pro výpočetní cíl, který je hostitelem nasazeného modelu. Tato konfigurace popisuje například požadavky na paměť a procesor potřebný ke spuštění modelu.
 
@@ -201,7 +201,7 @@ Skript obsahuje dvě funkce, které načítají a spouštějí model:
 
 * `init()`: Tato funkce obvykle načte model do globálního objektu. Tato funkce se spustí jenom jednou, když se spustí kontejner Docker pro vaši webovou službu.
 
-* `run(input_data)`: Tato funkce využívá model k predikci hodnoty založené na vstupní data. Vstupy a výstupy běhu obvykle používají JSON pro serializaci a deserializaci. Můžete také pracovat s nezpracovanými binárními daty. Data je možné transformovat před jejich odesláním do modelu nebo před vrácením do klienta.
+* `run(input_data)`: Tato funkce používá model k předpovědi hodnoty založené na vstupních datech. Vstupy a výstupy běhu obvykle používají JSON pro serializaci a deserializaci. Můžete také pracovat s nezpracovanými binárními daty. Data je možné transformovat před jejich odesláním do modelu nebo před vrácením do klienta.
 
 #### <a name="locate-model-files-in-your-entry-script"></a>Vyhledání souborů modelu ve vstupním skriptu
 
@@ -485,7 +485,7 @@ def run(request):
 > pip install azureml-contrib-services
 > ```
 
-### <a name="2-define-your-inferenceconfig"></a>2. definice InferenceConfig
+### <a name="2-define-your-inference-environment"></a>2. definice prostředí pro odvození
 
 Konfigurace odvození popisuje, jak nakonfigurovat model pro vytvoření předpovědi. Tato konfigurace není součástí vašeho skriptu pro zadávání. Odkazuje na váš vstupní skript a používá se k vyhledání všech prostředků vyžadovaných nasazením. Používá se později při nasazení modelu.
 
@@ -536,7 +536,7 @@ Je také možné, že budete muset vytvořit výpočetní prostředek, pokud nap
 
 Následující tabulka uvádí příklad vytvoření konfigurace nasazení pro každý cíl služby Compute:
 
-| Cílový výpočetní objekt | Příklad konfigurace nasazení |
+| Cílové výpočetní prostředí | Příklad konfigurace nasazení |
 | ----- | ----- |
 | Místní | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
 | Azure Container Instances | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
@@ -547,41 +547,6 @@ Třídy pro webové služby místní, Azure Container Instances a AKS lze import
 ```python
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
-
-#### <a name="profiling"></a>Profilace
-
-Než model nasadíte jako službu, můžete ho chtít profilovat a zjistit optimální požadavky na procesor a paměť. K profilování modelu můžete použít sadu SDK nebo rozhraní příkazového řádku. Následující příklady ukazují, jak profilovat model pomocí sady SDK.
-
-> [!IMPORTANT]
-> Když použijete profilování, odvozená konfigurace, kterou zadáte, nemůže odkazovat na Azure Machine Learning prostředí. Místo toho definujte závislosti softwaru pomocí parametru `conda_file` objektu `InferenceConfig`.
-
-```python
-import json
-test_data = json.dumps({'data': [
-    [1,2,3,4,5,6,7,8,9,10]
-]})
-
-profile = Model.profile(ws, "profilemymodel", [model], inference_config, test_data)
-profile.wait_for_profiling(True)
-profiling_results = profile.get_results()
-print(profiling_results)
-```
-
-Tento kód zobrazí výsledek podobný následujícímu výstupu:
-
-```python
-{'cpu': 1.0, 'memoryInGB': 0.5}
-```
-
-Výsledky profilování modelu jsou generovány jako objekt `Run`.
-
-Informace o používání profilování z rozhraní příkazového řádku najdete v tématu [AZ ml model Profile](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile).
-
-Další informace najdete v těchto dokumentech:
-
-* [ModelProfile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py)
-* [Profil ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)
-* [Odvození schématu konfiguračního souboru](reference-azure-machine-learning-cli.md#inference-configuration-schema)
 
 ## <a name="deploy-to-target"></a>Nasadit do cíle
 
@@ -1086,7 +1051,7 @@ docker kill mycontainer
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Chcete-li odstranit nasazenou webovou službu, použijte `service.delete()`.
-Chcete-li odstranit registrovaný model, použijte `model.delete()`.
+K odstranění registrovaného modelu použijte `model.delete()`.
 
 Další informace najdete v dokumentaci pro [WebService. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) a [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
 
@@ -1094,7 +1059,7 @@ Další informace najdete v dokumentaci pro [WebService. Delete ()](https://docs
 
 * [Postup nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md)
 * [Řešení potíží s nasazením](how-to-troubleshoot-deployment.md)
-* [Zabezpečení webových služeb Azure Machine Learning s protokolem SSL](how-to-secure-web-service.md)
+* [Zabezpečené Azure Machine Learning webové služby pomocí protokolu SSL](how-to-secure-web-service.md)
 * [Využití modelu Azure Machine Learning nasazeného jako webové služby](how-to-consume-web-service.md)
 * [Monitorování modelů Azure Machine Learning s využitím Application Insights](how-to-enable-app-insights.md)
 * [Shromažďování dat pro modely v produkčním prostředí](how-to-enable-data-collection.md)

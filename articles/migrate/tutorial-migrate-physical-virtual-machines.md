@@ -4,12 +4,12 @@ description: Tento článek popisuje, jak migrovat fyzické počítače do Azure
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.custom: MVC
-ms.openlocfilehash: 6cdd107cb761aab3a85b73067fd646a36fe97d63
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 3fbc94464c139add6e275890e1a1e415b2826f0d
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989752"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069519"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Migrace počítačů jako fyzických serverů do Azure
 
@@ -194,7 +194,7 @@ Prvním krokem migrace je nastavení zařízení replikace. Stáhněte si instal
 
     ![Dokončit registraci](./media/tutorial-migrate-physical-virtual-machines/finalize-registration.png)
 
-Po dokončení registrace může trvat až 15 minut, než se zjištěné počítače objeví v Azure Migrate migrace serveru. Po zjištění virtuálních počítačů se počet **zjištěných serverů** zvyšuje.
+Po dokončení registrace může trvat nějakou dobu, než se zjištěné počítače objeví v Azure Migrate migrace serveru. Po zjištění virtuálních počítačů se počet **zjištěných serverů** zvyšuje.
 
 ![Zjištěné servery](./media/tutorial-migrate-physical-virtual-machines/discovered-servers.png)
 
@@ -359,7 +359,7 @@ Po ověření, že migrace testu funguje podle očekávání, můžete migrovat 
 4. Pro virtuální počítač se spustí úloha migrace. Tuto úlohu můžete sledovat pomocí oznámení Azure.
 5. Po dokončení úlohy můžete virtuální počítač zobrazit a spravovat na stránce **Virtuální počítače**.
 
-## <a name="complete-the-migration"></a>Dokončení migrace
+## <a name="complete-the-migration"></a>Dokončete migraci
 
 1. Po dokončení migrace klikněte pravým tlačítkem na virtuální počítač > **zastavit migraci**. Tím se zastaví replikace místního počítače a vyčistí se informace o stavu replikace pro virtuální počítač.
 2. Na migrované počítače nainstalujte agenta Azure VM pro [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) nebo [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) .

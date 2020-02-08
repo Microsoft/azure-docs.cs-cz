@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: b9060823c997391d02eae61911f8aa748f191657
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 99f4d8d854334b047caf36406f21890cde7eda16
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260850"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77082958"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Vytváření Azure Machine Learning datových sad
 
@@ -109,11 +109,11 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-| |PassengerId|Zachované|Pclass|Name (Název)|Sex|Věk|SibSp|Parch|Ticket (Lístek)|Vozov|Posádk|Nastoupilo
+| |PassengerId|Zachované|Pclass|Název|Sex|Věk|SibSp|Parch|Vel|Vozov|Posádk|Nastoupilo
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
-0|1\. místo|Nepravda|3|Braund, Mr. Owen Harris|male (muž)|22,0|1\. místo|0|A/5 21171|7,2500||S
-1\. místo|2|Pravda|1\. místo|Cumings, paní Jan Bradley (Florencie Briggs th...|female (žena)|38,0|1\. místo|0|POČÍTAČ 17599|71,2833|C85|C
-2|3|Pravda|3|Heikkinen, chybíš. Laina|female (žena)|26,0|0|0|STON/O2. 3101282|7,9250||S
+0|1|False|3|Braund, Mr. Owen Harris|male (muž)|22,0|1|0|A/5 21171|7,2500||S
+1|2|True|1|Cumings, paní Jan Bradley (Florencie Briggs th...|female (žena)|38,0|1|0|POČÍTAČ 17599|71,2833|C85|C
+2|3|True|3|Heikkinen, chybíš. Laina|female (žena)|26,0|0|0|STON/O2. 3101282|7,9250||S
 
 Pro čtení z Azure SQL Database použijte metodu [`from_sql_query()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-sql-query-query--validate-true--set-column-types-none-) třídy `TabularDatasetFactory`.
 
@@ -177,7 +177,7 @@ Vytvoření datové sady v studiu:
 
 ## <a name="register-datasets"></a>Registrace datových sad
 
-Pokud chcete dokončit proces vytváření, zaregistrujte své datové sady s pracovním prostorem. Pomocí metody [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-) můžete zaregistrovat datové sady s vaším pracovním prostorem, aby je bylo možné sdílet s ostatními a znovu je používat v různých experimentech:
+Pokud chcete dokončit proces vytváření, zaregistrujte své datové sady s pracovním prostorem. Pomocí metody [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-) můžete zaregistrovat datové sady s vaším pracovním prostorem, aby je bylo možné sdílet s ostatními a znovu je používat v různých experimentech:
 
 ```Python
 titanic_ds = titanic_ds.register(workspace=workspace,

@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 5d828ab59f790bab1003f0ad73fc7be1b77410bb
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 05a466d52d89fa021235c10e7187900c350b5e50
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044884"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086930"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Nasazení modelu pomocí vlastního obrázku Docker Base
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -45,10 +45,10 @@ Tento dokument je rozdělen do dvou částí:
 
 * Pracovní skupina Azure Machine Learning. Další informace najdete v článku o [Vytvoření pracovního prostoru](how-to-manage-workspace.md) .
 * [Sada Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py). 
-* [Rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * [Rozšíření CLI pro Azure Machine Learning](reference-azure-machine-learning-cli.md).
 * [Azure Container Registry](/azure/container-registry) nebo jiný registr Docker, který je přístupný na internetu.
-* Kroky v tomto dokumentu předpokládají, že máte zkušenosti s vytvářením a používáním objektu __Konfigurace odvození__ jako součást nasazení modelu. Další informace najdete v části Příprava na nasazení v tématu [nasazení a jak](how-to-deploy-and-where.md#prepare-to-deploy).
+* Kroky v tomto dokumentu předpokládají, že máte zkušenosti s vytvářením a používáním objektu __Konfigurace odvození__ jako součást nasazení modelu. Další informace najdete v části Příprava na nasazení v tématu [nasazení a jak](how-to-deploy-and-where.md#prepare-deployment-artifacts).
 
 ## <a name="create-a-custom-base-image"></a>Vytvoření vlastní základní image
 
@@ -172,7 +172,7 @@ Pokud chcete použít vlastní image, potřebujete tyto informace:
 * __Název Image__ `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` je například cesta k základní imagi Docker, kterou poskytuje Microsoft.
 * Pokud je obrázek v __privátním úložišti__, budete potřebovat následující informace:
 
-    * __Adresa__registru. Například, `myregistry.azureecr.io`.
+    * __Adresa__registru. například `myregistry.azureecr.io`.
     * __Uživatelské jméno__ a __heslo__ instančního objektu, které mají přístup pro čtení k registru.
 
     Pokud tyto informace nemáte, obraťte se na správce Azure Container Registry, který obsahuje vaši image.
@@ -181,7 +181,7 @@ Pokud chcete použít vlastní image, potřebujete tyto informace:
 
 Společnost Microsoft poskytuje několik imagí Docker pro veřejně dostupné úložiště, které je možné použít s kroky v této části:
 
-| Obrázek | Popis |
+| Image | Popis |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Základní obrázek pro Azure Machine Learning |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | Obsahuje ONNX runtime pro PROCESORové Inferencing |

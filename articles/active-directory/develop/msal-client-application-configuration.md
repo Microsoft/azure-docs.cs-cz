@@ -3,22 +3,22 @@ title: Konfigurace klientské aplikace (MSAL) | Azure
 titleSuffix: Microsoft identity platform
 description: Seznamte se s možnostmi konfigurace pro veřejné klientské a důvěrné klientské aplikace pomocí knihovny Microsoft Authentication Library (MSAL).
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/27/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 5388dc101dbc4e06ce26f12bfd40645455e8dae8
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 0262d22ae00456ce06cb8efbf995f1a093b20043
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696478"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085005"
 ---
 # <a name="application-configuration-options"></a>Možnosti konfigurace aplikace
 
@@ -31,7 +31,7 @@ V kódu inicializujete novou veřejnou nebo důvěrnou klientskou aplikaci (nebo
     - [Tajný kód klienta](#client-secret) (u důvěrných klientských aplikací).
 - [Možnosti protokolování](#logging), včetně úrovně protokolování, řízení osobních údajů a názvu komponenty pomocí knihovny.
 
-## <a name="authority"></a>Autorita
+## <a name="authority"></a>Dohled
 
 Autorita je adresa URL, která označuje adresář, ze kterého může MSAL žádat o tokeny. Mezi běžné autority patří:
 
@@ -122,7 +122,7 @@ Pokud jste vývojář aplikace veřejného klienta, který používá MSAL:
 
 Identifikátor URI přesměrování můžete přepsat pomocí vlastnosti `RedirectUri` (například při použití zprostředkovatelů). Tady jsou některé příklady identifikátorů URI přesměrování pro tento scénář:
 
-- `RedirectUriOnAndroid` = "msauth-5a434691-ccb2-4fd1-b97b-b64bcfbc03fc://com.microsoft.identity.client.sample";
+- `RedirectUriOnAndroid` = "msauth-5a434691-ccb2-4fd1-b97b-b64bcfbc03fc://com.Microsoft.identity.Client.Sample";
 - `RedirectUriOnIos` = $ "msauth. {Svazek. ID}://auth ";
 
 Další podrobnosti o iOS najdete v tématu [migrace aplikací pro iOS, které používají Microsoft Authenticator od ADAL.NET k MSAL.NET](msal-net-migration-ios-broker.md) a [využití zprostředkovatele v iOS](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS).

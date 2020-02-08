@@ -3,22 +3,22 @@ title: Veřejné a důvěrné klientské aplikace (MSAL) | Azure
 titleSuffix: Microsoft identity platform
 description: Přečtěte si informace o veřejném klientovi a důvěrných klientských aplikacích v knihovně Microsoft Authentication Library (MSAL).
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/25/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 75ea183a9968c65957bcf2a4d39966d2553db84f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d59819c0ab614b0f6cc102c7ebe8c760fb851599
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696585"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084118"
 ---
 # <a name="public-client-and-confidential-client-applications"></a>Veřejné klientské a důvěrné klientské aplikace
 Knihovna Microsoft Authentication Library (MSAL) definuje dva typy klientů: veřejné klienty a důvěrné klienty. Oba typy klientů se rozlišují podle možnosti bezpečného ověřování pomocí autorizačního serveru a udržují důvěrnost svých přihlašovacích údajů klienta. Na rozdíl od Azure AD Authentication Library (ADAL) používá s názvem *kontext ověřování* (což je připojení ke službě Azure AD).
@@ -46,7 +46,7 @@ Tady jsou některé podobnosti a rozdíly mezi veřejnými klientskými a důvě
 Pokud jste použili ADAL, můžete si všimnout, že na rozdíl od kontextu ověřování ADAL v MSAL se ID klienta (označované také jako *ID aplikace* nebo *ID aplikace*) předává jednou při konstrukci aplikace. Nemusíte ho znovu předávat, když aplikace získá token. To platí pro veřejné i důvěrné klientské aplikace. Pro konstruktory důvěrných klientských aplikací se také předaly přihlašovací údaje klienta: tajný klíč, který sdílí se zprostředkovatelem identity.
 
 ## <a name="next-steps"></a>Další kroky
-Projdeme si tyto možnosti:
+Další informace:
 - [Možnosti konfigurace klientské aplikace](msal-client-application-configuration.md)
 - [Vytváření instancí klientských aplikací pomocí MSAL.NET](msal-net-initializing-client-applications.md)
 - [Vytváření instancí klientských aplikací pomocí MSAL. js](msal-js-initializing-client-applications.md)

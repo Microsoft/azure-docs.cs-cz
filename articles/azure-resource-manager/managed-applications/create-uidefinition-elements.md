@@ -3,14 +3,14 @@ title: Vytvořit prvky definice uživatelského rozhraní
 description: Popisuje prvky, které mají být použity při vytváření definic uživatelského rozhraní pro Azure Portal.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 11/11/2019
+ms.date: 02/06/2020
 ms.author: tomfitz
-ms.openlocfilehash: 0ceb8f5762bb6bc987757845426a0f2b380264f1
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 12bf5d131001d95a3f4327f95c24125dbf3fb510
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75650666"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086705"
 ---
 # <a name="createuidefinition-elements"></a>CreateUiDefinition elementy
 
@@ -33,7 +33,7 @@ Schéma pro většinu prvků je následující:
 }
 ```
 
-| Vlastnost | Požaduje se | Popis |
+| Vlastnost | Požadováno | Popis |
 | -------- | -------- | ----------- |
 | jméno | Ano | Vnitřní identifikátor, který odkazuje na konkrétní instanci elementu. Nejběžnější použití názvu elementu je v `outputs`, kde jsou výstupní hodnoty určených prvků mapovány na parametry šablony. Můžete ji také použít k navázání výstupní hodnoty prvku na `defaultValue` jiného prvku. |
 | type | Ano | Ovládací prvek uživatelského rozhraní pro vykreslení elementu. Seznam podporovaných typů naleznete v tématu [elementy](#elements). |
@@ -50,16 +50,17 @@ Dokumentace pro každý prvek obsahuje ukázku uživatelského rozhraní, schém
 
 - [Microsoft.Common.DropDown](microsoft-common-dropdown.md)
 - [Microsoft.Common.FileUpload](microsoft-common-fileupload.md)
-- [Microsoft.Common.InfoBox](microsoft-common-infobox.md)
+- [Microsoft. Common. InfoBox](microsoft-common-infobox.md)
 - [Microsoft.Common.OptionsGroup](microsoft-common-optionsgroup.md)
 - [Microsoft.Common.PasswordBox](microsoft-common-passwordbox.md)
 - [Microsoft.Common.Section](microsoft-common-section.md)
 - [Microsoft. Common. TagsByResource](microsoft-common-tagsbyresource.md)
-- [Microsoft.Common.TextBlock](microsoft-common-textblock.md)
+- [Microsoft. Common. TextBlock](microsoft-common-textblock.md)
 - [Microsoft.Common.TextBox](microsoft-common-textbox.md)
 - [Microsoft.Compute.CredentialsCombo](microsoft-compute-credentialscombo.md)
 - [Microsoft.Compute.SizeSelector](microsoft-compute-sizeselector.md)
 - [Microsoft.Compute.UserNameTextBox](microsoft-compute-usernametextbox.md)
+- [Microsoft. ManagedIdentity. IdentitySelector](microsoft-managedidentity-identityselector.md)
 - [Microsoft.Network.PublicIpAddressCombo](microsoft-network-publicipaddresscombo.md)
 - [Microsoft.Network.VirtualNetworkCombo](microsoft-network-virtualnetworkcombo.md)
 - [Microsoft.Storage.MultiStorageAccountCombo](microsoft-storage-multistorageaccountcombo.md)

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/04/2019
-ms.openlocfilehash: 4198b3a9213ed535c6649c50a20f2ff957d60c94
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1653a904875964d86864c59c718603a6dacdcbda
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823493"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087186"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Elastic Database klientské knihovny s Entity Framework
 
@@ -27,7 +27,7 @@ Tento dokument zobrazuje změny v Entity Framework aplikaci, které jsou potřeb
 Stažení kódu pro tento článek:
 
 * Vyžaduje se Visual Studio 2012 nebo novější. 
-* Stáhněte si [ukázku integrace nástrojů elastické databáze pro Azure SQL Entity Framework](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-bae904ba) z MSDN. Rozbalte ukázku do zvoleného umístění.
+* Stáhněte si [ukázku integrace nástrojů elastické databáze pro Azure SQL Entity Framework](https://github.com/Azure/elastic-db-tools/). Rozbalte ukázku do zvoleného umístění.
 * Spusťte Visual Studio. 
 * V aplikaci Visual Studio vyberte soubor-> Otevřít projekt nebo řešení. 
 * V dialogovém okně **Otevřít projekt** přejděte k ukázce, kterou jste stáhli, a výběrem **EntityFrameworkCodeFirst. sln** otevřete ukázku. 
@@ -192,11 +192,11 @@ Výše uvedené příklady kódu ilustrují výchozí konstruktor pro opětovné
 
 | Aktuální konstruktor | Přepsaný konstruktor pro data | Základní konstruktor | Poznámky |
 | --- | --- | --- | --- |
-| MyContext() |ElasticScaleContext (ShardMap, TKey) |DbContext (DbConnection, bool) |Připojení musí být funkce mapy horizontálních oddílů a klíč směrování závislý na datech. Musíte obejít automatické vytvoření připojení podle EF a místo toho použít mapu horizontálních oddílů ke zprostředkování připojení. |
-| MyContext (řetězec) |ElasticScaleContext (ShardMap, TKey) |DbContext (DbConnection, bool) |Připojení je funkce mapy horizontálních oddílů a klíč směrování závislý na datech. Pevný název databáze nebo připojovací řetězec nefungují tak, jak by prošlo ověřením pomocí mapy horizontálních oddílů. |
-| MyContext(DbCompiledModel) |ElasticScaleContext (ShardMap, TKey, DbCompiledModel) |DbContext (DbConnection, DbCompiledModel, bool) |Vytvoří se připojení pro danou mapu horizontálních oddílů a klíč horizontálního dělení s poskytnutým modelem. Kompilovaný model je předán základnímu c'tor. |
+| MyContext() |ElasticScaleContext(ShardMap, TKey) |DbContext (DbConnection, bool) |Připojení musí být funkce mapy horizontálních oddílů a klíč směrování závislý na datech. Musíte obejít automatické vytvoření připojení podle EF a místo toho použít mapu horizontálních oddílů ke zprostředkování připojení. |
+| MyContext (řetězec) |ElasticScaleContext(ShardMap, TKey) |DbContext (DbConnection, bool) |Připojení je funkce mapy horizontálních oddílů a klíč směrování závislý na datech. Pevný název databáze nebo připojovací řetězec nefungují tak, jak by prošlo ověřením pomocí mapy horizontálních oddílů. |
+| MyContext(DbCompiledModel) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel) |DbContext (DbConnection, DbCompiledModel, bool) |Vytvoří se připojení pro danou mapu horizontálních oddílů a klíč horizontálního dělení s poskytnutým modelem. Kompilovaný model je předán základnímu c'tor. |
 | MyContext (DbConnection, bool) |ElasticScaleContext (ShardMap, TKey, bool) |DbContext (DbConnection, bool) |Připojení musí být odvoditelné z mapy horizontálních oddílů a klíče. Nedá se zadat jako vstup (Pokud tento vstup už nepoužívá mapu horizontálních oddílů a klíč). Logická hodnota je předána. |
-| MyContext (řetězec; DbCompiledModel) |ElasticScaleContext (ShardMap, TKey, DbCompiledModel) |DbContext (DbConnection, DbCompiledModel, bool) |Připojení musí být odvoditelné z mapy horizontálních oddílů a klíče. Nedá se zadat jako vstup (Pokud tento vstup nepoužil mapu horizontálních oddílů a klíč). Byl předán zkompilovaný model. |
+| MyContext(string, DbCompiledModel) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel) |DbContext (DbConnection, DbCompiledModel, bool) |Připojení musí být odvoditelné z mapy horizontálních oddílů a klíče. Nedá se zadat jako vstup (Pokud tento vstup nepoužil mapu horizontálních oddílů a klíč). Byl předán zkompilovaný model. |
 | MyContext (ObjectContext, bool) |ElasticScaleContext (ShardMap, TKey, ObjectContext, bool) |DbContext (ObjectContext, bool) |Nový konstruktor musí zajistit, aby jakékoli připojení v objektu ObjectContext předané jako vstup bylo přesměrováno na připojení spravované elastickým škálováním. Podrobná diskuze o rozhraních ObjectContext překračuje rozsah tohoto dokumentu. |
 | MyContext (DbConnection, DbCompiledModel, bool) |ElasticScaleContext (ShardMap, TKey, DbCompiledModel, bool) |DbContext (DbConnection, DbCompiledModel, bool); |Připojení musí být odvoditelné z mapy horizontálních oddílů a klíče. Připojení nelze zadat jako vstup (Pokud tento vstup již nepoužívá mapu horizontálních oddílů a klíč). Model a logická hodnota jsou předány konstruktoru základní třídy. |
 

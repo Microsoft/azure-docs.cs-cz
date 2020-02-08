@@ -9,12 +9,12 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 39b16c6cfd5b94d412827ed88197edbef2da1453
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 12655d2ceb4a1124376d9bddf82194472c98ebb9
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844628"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086649"
 ---
 # <a name="persist-state-in-linux"></a>Trvalý stav v systému Linux
 
@@ -49,17 +49,17 @@ Například následující konfigurace bude mít za následek vytvoření svazku
 ```json
  {
   "Env": [
-    "inbound:serverAuth:tlsPolicy=strict",
-    "inbound:serverAuth:serverCert:source=IoTEdge",
-    "inbound:clientAuth:sasKeys:enabled=false",
-    "inbound:clientAuth:clientCert:enabled=true",
-    "inbound:clientAuth:clientCert:source=IoTEdge",
-    "inbound:clientAuth:clientCert:allowUnknownCA=true",
-    "outbound:clientAuth:clientCert:enabled=true",
-    "outbound:clientAuth:clientCert:source=IoTEdge",
-    "outbound:webhook:httpsOnly=true",
-    "outbound:webhook:skipServerCertValidation=false",
-    "outbound:webhook:allowUnknownCA=true"
+    "inbound__serverAuth__tlsPolicy=strict",
+    "inbound__serverAuth__serverCert__source=IoTEdge",
+    "inbound__clientAuth__sasKeys__enabled=false",
+    "inbound__clientAuth__clientCert__enabled=true",
+    "inbound__clientAuth__clientCert__source=IoTEdge",
+    "inbound__clientAuth__clientCert__allowUnknownCA=true",
+    "outbound__clientAuth__clientCert__enabled=true",
+    "outbound__clientAuth__clientCert__source=IoTEdge",
+    "outbound__webhook__httpsOnly=true",
+    "outbound__webhook__skipServerCertValidation=false",
+    "outbound__webhook__allowUnknownCA=true"
   ],
   "HostConfig": {
     "Binds": [
@@ -105,7 +105,7 @@ Místo svazku Docker máte také možnost připojit složku hostitele.
    sudo chown eventgriduser:eventgriduser -hR <your-directory-name-here>
    ```
 
-    Například:
+    Například
 
     ```sh
     sudo chown eventgriduser:eventgriduser -hR /myhostdir
@@ -116,28 +116,29 @@ Místo svazku Docker máte také možnost připojit složku hostitele.
     {
          "HostConfig": {
             "Binds": [
-                "<your-directory-name-here>:/app/metadataDb"
+                "<your-directory-name-here>:/app/metadataDb",
+                "<your-directory-name-here>:/app/eventsDb",
              ]
          }
     }
     ```
 
-    Například:
+    Například
 
     ```json
     {
           "Env": [
-            "inbound:serverAuth:tlsPolicy=strict",
-            "inbound:serverAuth:serverCert:source=IoTEdge",
-            "inbound:clientAuth:sasKeys:enabled=false",
-            "inbound:clientAuth:clientCert:enabled=true",
-            "inbound:clientAuth:clientCert:source=IoTEdge",
-            "inbound:clientAuth:clientCert:allowUnknownCA=true",
-            "outbound:clientAuth:clientCert:enabled=true",
-            "outbound:clientAuth:clientCert:source=IoTEdge",
-            "outbound:webhook:httpsOnly=true",
-            "outbound:webhook:skipServerCertValidation=false",
-            "outbound:webhook:allowUnknownCA=true"
+            "inbound__serverAuth__tlsPolicy=strict",
+            "inbound__serverAuth__serverCert__source=IoTEdge",
+            "inbound__clientAuth__sasKeys__enabled=false",
+            "inbound__clientAuth__clientCert__enabled=true",
+            "inbound__clientAuth__clientCert__source=IoTEdge",
+            "inbound__clientAuth__clientCert__allowUnknownCA=true",
+            "outbound__clientAuth__clientCert__enabled=true",
+            "outbound__clientAuth__clientCert__source=IoTEdge",
+            "outbound__webhook__httpsOnly=true",
+            "outbound__webhook__skipServerCertValidation=false",
+            "outbound__webhook__allowUnknownCA=true"
           ],
           "HostConfig": {
                 "Binds": [
@@ -156,7 +157,7 @@ Místo svazku Docker máte také možnost připojit složku hostitele.
     ```
 
     >[!IMPORTANT]
-    >Neměňte druhou část hodnoty vazby. Odkazuje na konkrétní umístění v rámci modulu. Pro modul Event Grid v systému Linux musí být **/App/metadata**.
+    >Neměňte druhou část hodnoty vazby. Odkazuje na konkrétní umístění v rámci modulu. Pro modul Event Grid v systému Linux musí být **/App/metadataDb** a **/App/eventsDb** .
 
 
 ## <a name="persist-events"></a>Zachovat události
@@ -167,7 +168,7 @@ Důležité informace o trvalých událostech:
 
 * Trvalé události jsou povolené pro jednotlivé odběry událostí a po připojení svazku nebo adresáře se odhlásí.
 * Trvalá událost je nakonfigurovaná pro odběr události během vytváření a nedá se změnit po vytvoření odběru události. Chcete-li přepnout trvalost událostí, je nutné odstranit a znovu vytvořit odběr události.
-* Trvalé události jsou téměř vždy pomalejší než při operacích paměti, ale rozdíl rychlosti je vysoce závislý na charakteristikách jednotky. Kompromisy mezi rychlostí a spolehlivostí jsou podstatné pro všechny systémy zasílání zpráv, ale obecně se jenom noticible ve velkém měřítku.
+* Trvalé události jsou téměř vždy pomalejší než při operacích paměti, ale rozdíl rychlosti je vysoce závislý na charakteristikách jednotky. Kompromisy mezi rychlostí a spolehlivostí jsou podstatou pro všechny systémy zasílání zpráv, ale obecně se ve velkém měřítku stávají pouze znatelné.
 
 Pro povolení trvalosti událostí v odběru události nastavte `persistencePolicy` na `true`:
 

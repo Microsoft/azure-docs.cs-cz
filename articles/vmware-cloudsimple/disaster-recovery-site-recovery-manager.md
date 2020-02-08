@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0bbd8a12820432ce2f131dda29af6740a2f04e18
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: ccdf385d2581923e1fad4fa5c42f351c4f0947ca
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024717"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083148"
 ---
 # <a name="set-up-avs-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>Nastavení privátního cloudu pro funkci AVS jako cíle zotavení po havárii pomocí nástroje VMware Site Recovery Manager
 
@@ -101,7 +101,7 @@ Můžete přidat externího poskytovatele identity, jak je popsáno v tématu [p
 
 Pokud chcete pro své úlohy v privátním cloudu služby AVS zadat vyhledávání IP adres, správu IP adres a služby překladu názvů, nastavte server DHCP a DNS, jak je popsáno v tématu [nastavení aplikací DNS a DHCP a úloh v privátním cloudu služby AVS](dns-dhcp-setup.md).
 
-Doména *. avs.io se používá v rámci virtuálních počítačů pro správu a hostitelů v privátním cloudu služby AVS. Chcete-li vyřešit požadavky na tuto doménu, nakonfigurujte předávání DNS na serveru DNS, jak je popsáno v tématu [Vytvoření podmíněného předávání](on-premises-dns-setup.md#create-a-conditional-forwarder).
+Doména *. cloudsimple.io se používá v rámci virtuálních počítačů pro správu a hostitelů v privátním cloudu služby AVS. Chcete-li vyřešit požadavky na tuto doménu, nakonfigurujte předávání DNS na serveru DNS, jak je popsáno v tématu [Vytvoření podmíněného předávání](on-premises-dns-setup.md#create-a-conditional-forwarder).
 
 ### <a name="install-vsphere-replication-appliance-in-your-on-premises-environment"></a>Instalace zařízení replikace vSphere do místního prostředí
 
@@ -133,7 +133,7 @@ Před instalací vRA a SRM musíte eskalovat oprávnění vCenter uživatele clo
 Instalace se skládá z těchto kroků vysoké úrovně:
 
 1. [Eskalace oprávnění](escalate-private-cloud-privileges.md).
-2. Vytvořte uživatele v privátním cloudu služby AVS pro replikaci vSphere a instalaci SRM. V uživatelském rozhraní vCenter je vysvětleno níže [: vytvoření uživatele v privátním cloudu služby AVS pro instalaci vRA & SRM](#vcenter-ui-create-a-user-in-the-avs-private-cloud-for-vra-and-srm-installation).
+2. Vytvořte uživatele v privátním cloudu služby AVS pro replikaci vSphere a instalaci SRM. V uživatelském rozhraní vCenter je vysvětleno níže [: vytvoření uživatele v privátním cloudu služby AVS pro instalaci vRA &AMP; SRM](#vcenter-ui-create-a-user-in-the-avs-private-cloud-for-vra-and-srm-installation).
 3. Připravte prostředí privátního cloudu služby AVS pro instalaci vRA.
 4. Nasaďte vRA do privátního cloudu služby AVS pomocí OVF v VR ISO od vmware.com. V případě vRA 6,5 má [Tento blog VMware](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices) relevantní informace.
 5. Nakonfigurujte pravidla brány firewall pro vRA. Je vysvětleno níže na [portálu AVS: Konfigurace pravidel brány firewall pro vRA](#avs-portal-configure-firewall-rules-for-vra).

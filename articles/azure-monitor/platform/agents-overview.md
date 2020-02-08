@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/15/2019
-ms.openlocfilehash: a01258799efa81c8d3ddba398facaa90c24c2513
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: ae799e9a852b8700399ef695c54b3348174b560c
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150023"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069400"
 ---
 # <a name="overview-of-the-azure-monitor-agents"></a>Přehled agentů Azure Monitor 
 Výpočetní prostředky, jako jsou virtuální počítače, generují data pro monitorování výkonu a dostupnosti stejně jako [jiné cloudové prostředky](../insights/monitor-azure-resource.md). Výpočetní prostředky i přesto mají hostovaný operační systém a úlohy, které je třeba monitorovat. Shromažďování těchto dat monitorování z prostředku vyžaduje agenta. Tento článek popisuje agenty používané nástrojem Azure Monitor a pomáhá určit, které požadavky je potřeba splnit pro konkrétní prostředí.
@@ -63,7 +63,7 @@ Mezi scénáře podporované rozšířením Azure Diagnostics patří následuj�
 ## <a name="log-analytics-agent"></a>Agent Log Analytics
 [Agent Log Analytics](log-analytics-agent.md) shromažďuje data monitorování z hostovaného operačního systému a úloh virtuálních počítačů v Azure, jiných poskytovatelů cloudu a místních. Shromažďuje data do pracovního prostoru Log Analytics.
 
-Agent Log Analytics je stejný agent, kterého používá System Center Operations Manager a Vy máte více počítačů s agenty pro více domácích počítačů ke komunikaci se skupinou pro správu a Azure Monitor současně. Tento agent je také vyžadován některými řešeními v Azure Monitor.
+Agent Log Analytics je stejný agent, kterého používá aplikace System Center Operations Manager a počítače s více domácími agenty ke komunikaci s vaší skupinou pro správu a Azure Monitor současně. Tento agent je také vyžadován některými řešeními v Azure Monitor.
 
 Agent Log Analytics pro systém Windows se často označuje jako Microsoft Management Agent (MMA). Agent Log Analytics pro Linux se často označuje jako agent OMS.
 

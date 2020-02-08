@@ -9,12 +9,12 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 42f7b5315cecd75e2aaf67145c57982872f43550
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c2bae3bd268dba8efdf23ae314671b17a2c89420
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844611"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086626"
 ---
 # <a name="persist-state-in-windows"></a>Trvalý stav ve Windows
 
@@ -37,7 +37,7 @@ K zachování dat napříč nasazeními se používají [dokovací svazky](https
     docker -H npipe:////./pipe/iotedge_moby_engine volume create <your-volume-name-here>
     ```
 
-    Například:
+    Například
 
    ```sh
    docker -H npipe:////./pipe/iotedge_moby_engine volume create myeventgridvol
@@ -48,7 +48,7 @@ K zachování dat napříč nasazeními se používají [dokovací svazky](https
     docker -H npipe:////./pipe/iotedge_moby_engine volume inspect <your-volume-name-here>
     ```
 
-    Například:
+    Například
 
    ```sh
    docker -H npipe:////./pipe/iotedge_moby_engine volume inspect myeventgridvol
@@ -79,7 +79,7 @@ K zachování dat napříč nasazeními se používají [dokovací svazky](https
     1. V části *oprávnění pro uživatele*vyberte **změnit**a vyberte **OK**.
 1. Pomocí **vazeb** připojte tento svazek a znovu nasaďte Event Grid modul z Azure Portal
 
-   Například:
+   Například
 
     ```json
         {
@@ -115,7 +115,7 @@ K zachování dat napříč nasazeními se používají [dokovací svazky](https
    >Neměňte druhou část hodnoty vazby. Odkazuje na konkrétní umístění v modulu. Pro Event Grid modul ve Windows musí být to **C:\\app\\metadataDb**.
 
 
-    Například:
+    Například
 
     ```json
     {
@@ -158,7 +158,7 @@ Místo připojení svazku můžete vytvořit adresář v hostitelském systému 
    mkdir <your-directory-name-here>
    ```
 
-   Například:
+   Například
 
    ```sh
    mkdir C:\myhostdir
@@ -178,7 +178,7 @@ Místo připojení svazku můžete vytvořit adresář v hostitelském systému 
     >[!IMPORTANT]
     >Neměňte druhou část hodnoty vazby. Odkazuje na konkrétní umístění v modulu. Pro modul Event Grid ve Windows musí být to **C:\\app\\metadataDb**.
 
-    Například:
+    Například
 
     ```json
     {
@@ -212,13 +212,13 @@ Místo připojení svazku můžete vytvořit adresář v hostitelském systému 
     ```
 ## <a name="persist-events"></a>Zachovat události
 
-Chcete-li povolit trvalosti událostí, je nutné nejprve povolit trvalá metadata buď prostřednictvím připojení svazku, nebo připojení ke službě Host Directory pomocí výše uvedených částí.
+Chcete-li povolit trvalosti událostí, je nutné nejprve povolit trvalá událost buď prostřednictvím připojení svazku, nebo pomocí připojovacího adresáře hostitele v předchozích částech.
 
 Důležité informace o trvalých událostech:
 
 * Trvalé události jsou povolené pro jednotlivé odběry událostí a po připojení svazku nebo adresáře se odhlásí.
 * Trvalá událost je nakonfigurovaná pro odběr události během vytváření a nedá se změnit po vytvoření odběru události. Chcete-li přepnout trvalost událostí, je nutné odstranit a znovu vytvořit odběr události.
-* Trvalé události jsou téměř vždy pomalejší než při operacích paměti, ale rozdíl rychlosti je vysoce závislý na charakteristikách jednotky. Kompromisy mezi rychlostí a spolehlivostí jsou podstatné pro všechny systémy zasílání zpráv, ale stávají se noticible ve velkém měřítku.
+* Trvalé události jsou téměř vždy pomalejší než při operacích paměti, ale rozdíl rychlosti je vysoce závislý na charakteristikách jednotky. Kompromisy mezi rychlostí a spolehlivostí jsou podstatné pro všechny systémy zasílání zpráv, ale ve velkém měřítku se jenom nejedná o znatelné.
 
 Pro povolení trvalosti událostí v odběru události nastavte `persistencePolicy` na `true`:
 

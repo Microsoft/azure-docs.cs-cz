@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/19/2019
+ms.date: 02/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6fd8d6187c86306840c33b3aaf334e71086b20a1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a62c2460698408f6a2bfa51c6638bdeaf88bb31f
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452743"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083523"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Osvědčené postupy pro výběr ID řady času
 
@@ -36,7 +36,7 @@ Výběr vhodného ID časové řady je kritický. Volba ID řady času je třeba
 Klíčové osvědčené postupy, které je potřeba provést, zahrnují:
 
 * Vyberte klíč oddílu s velkým počtem jedinečných hodnot (například stovky nebo tisíce). V mnoha případech to může být ID zařízení, ID senzoru nebo ID značky ve formátu JSON.
-* ID řady čas musí být jedinečný na úrovni uzel typu list vaše [modelu časové řady](./time-series-insights-update-tsm.md).
+* ID časové řady by mělo být jedinečné na úrovni uzlu na úrovni listu [modelu časové řady](./time-series-insights-update-tsm.md).
 * Omezení počtu znaků pro řetězec názvu vlastnosti časové řady je 128. Pro hodnotu vlastnosti ID časové řady je limit znaků 1 024.
 * Pokud hodnota jedinečné vlastnosti pro ID časové řady chybí, bude zpracována jako hodnota null a bude se jednat o stejné pravidlo omezení jedinečnosti.
 * Jako ID časové řady můžete také vybrat až *tři* vlastnosti klíče. Jejich kombinace bude složený klíč, který představuje ID časové řady.  

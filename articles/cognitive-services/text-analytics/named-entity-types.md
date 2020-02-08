@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: cc684e99c0ed28aedd9b88aa21840ff60fb1b44b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 164e803a6af8a7d1ccdc9c70cc3e42b787857b3a
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73508053"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086918"
 ---
 # <a name="supported-types-for-named-entity-recognition-version-3-preview"></a>Podporované typy pro rozpoznávání pojmenovaných entit verze 3 (Preview)
 

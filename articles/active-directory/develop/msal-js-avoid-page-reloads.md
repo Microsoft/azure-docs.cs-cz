@@ -3,22 +3,22 @@ title: Vyhnout se opětovnému načtení stránky (MSAL. js) | Azure
 titleSuffix: Microsoft identity platform
 description: Přečtěte si, jak se vyhnout opětovnému načítání stránek při opakovaném získání a obnovování tokenů pomocí knihovny Microsoft Authentication Library pro JavaScript (MSAL. js).
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/29/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e68798861d5799a4314bd9cd9b2eeeadb926a90f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 63944a5a9af34c2d4cf98eeb870a730df49654e5
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696142"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084951"
 ---
 # <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>Vyhněte se opětovnému načítání stránek při získávání a obnovování tokenů v tichém režimu pomocí MSAL. js.
 Knihovna Microsoft Authentication Library pro JavaScript (MSAL. js) používá skryté prvky `iframe` k získání a obnovení tokenů v tichém režimu na pozadí. Azure AD vrátí token zpátky do registrované redirect_uri zadaného v žádosti o token (ve výchozím nastavení se jedná o kořenovou stránku aplikace). Vzhledem k tomu, že odpověď je 302, má za následek, že kód HTML odpovídá `redirect_uri` načítání v `iframe`. Obvykle je `redirect_uri` aplikace kořenovou stránkou a to způsobí, že se znovu načte.
@@ -35,7 +35,7 @@ Nastavte vlastnost `redirect_uri` v konfiguraci na jednoduchou stránku, která 
 
 ## <a name="initialization-in-your-main-app-file"></a>Inicializace v hlavním souboru aplikace
 
-Pokud je vaše aplikace strukturována tak, že existuje jeden centrální soubor JavaScriptu, který definuje inicializaci, směrování a další věci aplikace, můžete podmíněně načíst moduly aplikací na základě toho, jestli se aplikace načítá v `iframe`. Například:
+Pokud je vaše aplikace strukturována tak, že existuje jeden centrální soubor JavaScriptu, který definuje inicializaci, směrování a další věci aplikace, můžete podmíněně načíst moduly aplikací na základě toho, jestli se aplikace načítá v `iframe`. Příklad:
 
 V AngularJS: App. js
 

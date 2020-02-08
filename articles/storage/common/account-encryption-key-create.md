@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/10/2020
+ms.date: 02/05/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 8cf1f8ecb68e31f93c19d93d6ebc4f8ef37724e7
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 09558a8d1e4e2dc68cefd2c870f54e008d10b97b
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028453"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083566"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Vytvoření účtu, který podporuje klíče spravované zákazníkem pro tabulky a fronty
 
@@ -29,47 +29,99 @@ Pokud chcete vytvořit účet úložiště, který spoléhá na šifrovací klí
 
 Můžete vytvořit účet úložiště, který spoléhá na šifrovací klíč účtu pro frontu a úložiště tabulek v následujících oblastech:
 
-- Východní USA
-- Středojižní USA
-- Západní USA 2  
+- USA – východ
+- Střed USA – jih
+- USA – západ 2  
 
 ### <a name="register-to-use-the-account-encryption-key"></a>Registrace pro použití šifrovacího klíče účtu
 
+K registraci pro použití šifrovacího klíče účtu s frontou nebo úložištěm tabulek použijte PowerShell nebo Azure CLI.
+
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+
+Pokud se chcete zaregistrovat v prostředí PowerShell, zavolejte příkaz [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) .
+
+```powershell
+Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
+    -FeatureName AllowAccountEncryptionKeyForQueues
+Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
+    -FeatureName AllowAccountEncryptionKeyForTables
+```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 Pokud se chcete zaregistrovat v Azure CLI, zavolejte příkaz [AZ Feature Register](/cli/azure/feature#az-feature-register) .
 
-Registrace pro použití šifrovacího klíče účtu s úložištěm Queue:
-
 ```azurecli
-az feature register --namespace Microsoft.Storage --name AllowAccountEncryptionKeyForQueues
+az feature register --namespace Microsoft.Storage \
+    --name AllowAccountEncryptionKeyForQueues
+az feature register --namespace Microsoft.Storage \
+    --name AllowAccountEncryptionKeyForTables
 ```
 
-Pokud se chcete zaregistrovat k používání šifrovacího klíče účtu s úložištěm tabulek:
+# <a name="templatetabtemplate"></a>[Šablona](#tab/template)
 
-```azurecli
-az feature register --namespace Microsoft.Storage --name AllowAccountEncryptionKeyForTables
-```
+Není k dispozici
+
+---
 
 ### <a name="check-the-status-of-your-registration"></a>Ověření stavu registrace
 
-Postup kontroly stavu registrace pro úložiště Queue:
+Pokud chcete zjistit stav registrace pro frontu nebo úložiště tabulky, použijte PowerShell nebo Azure CLI.
 
-```azurecli
-az feature show --namespace Microsoft.Storage --name AllowAccountEncryptionKeyForQueues
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+
+Pokud chcete zjistit stav vaší registrace pomocí PowerShellu, zavolejte příkaz [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) .
+
+```powershell
+Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
+    -FeatureName AllowAccountEncryptionKeyForQueues
+Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
+    -FeatureName AllowAccountEncryptionKeyForTables
 ```
 
-Postup kontroly stavu registrace pro úložiště tabulek:
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pokud chcete zjistit stav registrace pomocí Azure CLI, zavolejte příkaz [AZ Feature](/cli/azure/feature#az-feature-show) .
 
 ```azurecli
-az feature show --namespace Microsoft.Storage --name AllowAccountEncryptionKeyForTables
+az feature show --namespace Microsoft.Storage \
+    --name AllowAccountEncryptionKeyForQueues
+az feature show --namespace Microsoft.Storage \
+    --name AllowAccountEncryptionKeyForTables
 ```
+
+# <a name="templatetabtemplate"></a>[Šablona](#tab/template)
+
+Není k dispozici
+
+---
 
 ### <a name="re-register-the-azure-storage-resource-provider"></a>Znovu zaregistrovat poskytovatele prostředků Azure Storage
 
-Po schválení registrace je potřeba znovu zaregistrovat poskytovatele prostředků Azure Storage. Zavolejte do příkazu [AZ Provider Register](/cli/azure/provider#az-provider-register) :
+Po schválení registrace je potřeba znovu zaregistrovat poskytovatele prostředků Azure Storage. K opětovné registraci poskytovatele prostředků použijte PowerShell nebo Azure CLI.
+
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+
+Chcete-li znovu zaregistrovat poskytovatele prostředků v prostředí PowerShell, zavolejte příkaz [Register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider) .
+
+```powershell
+Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
+```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pokud chcete poskytovatele prostředků v Azure CLI znovu zaregistrovat, zavolejte příkaz [AZ Provider Register](/cli/azure/provider#az-provider-register) .
 
 ```azurecli
 az provider register --namespace 'Microsoft.Storage'
 ```
+
+# <a name="templatetabtemplate"></a>[Šablona](#tab/template)
+
+Není k dispozici
+
+---
 
 ## <a name="create-an-account-that-uses-the-account-encryption-key"></a>Vytvoření účtu, který používá šifrovací klíč účtu
 
@@ -80,31 +132,52 @@ Musíte nakonfigurovat nový účet úložiště, aby používal šifrovací kl�
 > [!NOTE]
 > V případě vytvoření účtu úložiště může být volitelně nakonfigurována pouze fronta a úložiště tabulek pro šifrování dat pomocí šifrovacího klíče účtu. Úložiště objektů BLOB a soubory Azure vždycky používají šifrovací klíč účtu k šifrování dat.
 
-### <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
-Pokud chcete pomocí Azure CLI vytvořit účet úložiště, který spoléhá na šifrovací klíč účtu, ujistěte se, že máte nainstalovanou verzi Azure CLI 2.0.80 nebo novější. Další informace najdete v tématu [instalace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli).
+Pokud chcete pomocí PowerShellu vytvořit účet úložiště, který spoléhá na šifrovací klíč účtu, ujistěte se, že máte nainstalovaný modul Azure PowerShell verze 3.4.0 nebo novější. Další informace najdete v tématu [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
+
+Pak vytvořte účet úložiště pro obecné účely v2 voláním příkazu [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) s příslušnými parametry:
+
+- Zahrňte možnost `-EncryptionKeyTypeForQueue` a nastavte její hodnotu na `Account`, aby používala šifrovací klíč účtu k šifrování dat ve frontovém úložišti.
+- Zahrňte možnost `-EncryptionKeyTypeForTable` a nastavte její hodnotu na `Account`, aby používala šifrovací klíč účtu k šifrování dat v úložišti tabulek.
+
+Následující příklad ukazuje, jak vytvořit účet úložiště pro obecné účely v2, který je nakonfigurovaný pro geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) a který používá šifrovací klíč účtu k šifrování dat pro frontu i úložiště tabulek. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
+
+```powershell
+New-AzStorageAccount -ResourceGroupName <resource_group> `
+    -AccountName <storage-account> `
+    -Location <location> `
+    -SkuName "Standard_RAGRS" `
+    -Kind StorageV2 `
+    -EncryptionKeyTypeForTable Account `
+    -EncryptionKeyTypeForQueue Account
+```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pokud chcete pomocí Azure CLI vytvořit účet úložiště, který spoléhá na šifrovací klíč účtu, ujistěte se, že máte nainstalovanou verzi Azure CLI 2.0.80 nebo novější. Další informace najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
 Pak vytvořte účet úložiště pro obecné účely v2 voláním příkazu [AZ Storage Account Create](/cli/azure/storage/account#az-storage-account-create) s příslušnými parametry:
 
 - Zahrňte možnost `--encryption-key-type-for-queue` a nastavte její hodnotu na `Account`, aby používala šifrovací klíč účtu k šifrování dat ve frontovém úložišti.
 - Zahrňte možnost `--encryption-key-type-for-table` a nastavte její hodnotu na `Account`, aby používala šifrovací klíč účtu k šifrování dat v úložišti tabulek.
 
-Následující příklad ukazuje, jak vytvořit účet úložiště pro obecné účely v2, který je nakonfigurovaný pro LRS a který používá šifrovací klíč účtu k šifrování dat pro frontu i úložiště tabulek. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
+Následující příklad ukazuje, jak vytvořit účet úložiště pro obecné účely v2, který je nakonfigurovaný pro geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) a který používá šifrovací klíč účtu k šifrování dat pro frontu i úložiště tabulek. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
 
 ```azurecli
 az storage account create \
     --name <storage-account> \
     --resource-group <resource-group> \
     --location <location> \
-    --sku Standard_LRS \
+    --sku Standard_RAGRS \
     --kind StorageV2 \
     --encryption-key-type-for-table Account \
     --encryption-key-type-for-queue Account
 ```
 
-### <a name="templatetabtemplate"></a>[Šablona](#tab/template)
+# <a name="templatetabtemplate"></a>[Šablona](#tab/template)
 
-Následující příklad JSON vytvoří účet úložiště pro obecné účely v2, který je nakonfigurovaný pro LRS a který používá šifrovací klíč účtu k šifrování dat pro frontu i úložiště tabulek. Nezapomeňte nahradit hodnoty zástupných symbolů v lomených závorkách vlastními hodnotami:
+Následující příklad JSON vytvoří účet úložiště pro obecné účely v2, který je nakonfigurovaný pro geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) a který používá šifrovací klíč účtu k šifrování dat pro frontu i úložiště tabulek. Nezapomeňte nahradit hodnoty zástupných symbolů v lomených závorkách vlastními hodnotami:
 
 ```json
 "resources": [
@@ -116,7 +189,7 @@ Následující příklad JSON vytvoří účet úložiště pro obecné účely 
         "dependsOn": [],
         "tags": {},
         "sku": {
-            "name": "[parameters('Standard_LRS')]"
+            "name": "[parameters('Standard_RAGRS')]"
         },
         "kind": "[parameters('StorageV2')]",
         "properties": {
@@ -151,11 +224,32 @@ Po vytvoření účtu, který spoléhá na šifrovací klíč účtu, si v jedno
 
 Pokud chcete ověřit, že služba v účtu úložiště používá šifrovací klíč účtu, zavolejte příkaz Azure CLI [AZ Storage Account](/cli/azure/storage/account#az-storage-account-show) . Tento příkaz vrátí sadu vlastností účtu úložiště a jejich hodnoty. Vyhledejte pole `keyType` pro každou službu ve vlastnosti šifrování a ověřte, zda je nastavena na hodnotu `Account`.
 
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+
+Pokud chcete ověřit, že služba v účtu úložiště používá šifrovací klíč účtu, zavolejte příkaz [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) . Tento příkaz vrátí sadu vlastností účtu úložiště a jejich hodnoty. Vyhledejte pole `KeyType` pro každou službu ve vlastnosti `Encryption` a ověřte, že je nastavená na `Account`.
+
+```powershell
+$account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
+    -StorageAccountName <storage-account>
+$account.Encryption.Services.Queue
+$account.Encryption.Services.Table
+```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pokud chcete ověřit, že služba v účtu úložiště používá šifrovací klíč účtu, zavolejte příkaz [AZ Storage Account](/cli/azure/storage/account#az-storage-account-show) . Tento příkaz vrátí sadu vlastností účtu úložiště a jejich hodnoty. Vyhledejte pole `keyType` pro každou službu ve vlastnosti šifrování a ověřte, zda je nastavena na hodnotu `Account`.
+
 ```azurecli
 az storage account show /
     --name <storage-account> /
     --resource-group <resource-group>
 ```
+
+# <a name="templatetabtemplate"></a>[Šablona](#tab/template)
+
+Není k dispozici
+
+---
 
 ## <a name="next-steps"></a>Další kroky
 

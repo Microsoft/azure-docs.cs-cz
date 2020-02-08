@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: eadedcea7e6010cf93d118b3781630053609d29f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 12c4362ae1b075af132d5971f4fe0461c9d91733
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019600"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083087"
 ---
 # <a name="configure-dns-for-name-resolution-for-avs-private-cloud-vcenter-access-from-on-premises-workstations"></a>Konfigurace DNS pro překlad IP adres pro přístup přes službu AVS Private Cloud vCenter z místních pracovních stanic
 
@@ -32,10 +32,10 @@ Pokud chcete získat přístup k serveru vCenter v privátním cloudu služby AV
 
 Pro konfiguraci DNS použijte některou z těchto možností.
 
-* [Vytvořte zónu na serveru DNS pro *. AVS.io](#create-a-zone-on-a-microsoft-windows-dns-server)
-* [Vytvořte podmíněný Server pro směrování na místním serveru DNS pro řešení *. AVS.io](#create-a-conditional-forwarder)
+* [Vytvořit zónu na serveru DNS pro *. cloudsimple.io](#create-a-zone-on-a-microsoft-windows-dns-server)
+* [Pokud chcete vyřešit *. cloudsimple.io, vytvořte na místním serveru DNS podmíněný Server pro překlad.](#create-a-conditional-forwarder)
 
-## <a name="create-a-zone-on-the-dns-server-for-avsio"></a>Vytvořte zónu na serveru DNS pro *. AVS.io
+## <a name="create-a-zone-on-the-dns-server-for-cloudsimpleio"></a>Vytvořit zónu na serveru DNS pro *. cloudsimple.io
 
 Zónu můžete nastavit jako zónu se zástupným inzerováním a nasměrovat na servery DNS v privátním cloudu pro překlad názvů. V této části najdete informace o použití serveru DNS BIND nebo serveru DNS Microsoft Windows.
 
@@ -78,7 +78,7 @@ zone "az.cloudsimple.io"
 
 ## <a name="create-a-conditional-forwarder"></a>Vytvoření podmíněného dopředné
 
-Podmíněný Server pro přeposílání všechny požadavky na překlad názvů DNS na určený server. S tímto nastavením všechny požadavky na *. AVS.io se přepošle na servery DNS nacházející se v privátním cloudu služby AVS. Následující příklady ukazují, jak nastavit servery pro směrování na různých typech serverů DNS.
+Podmíněný Server pro přeposílání všechny požadavky na překlad názvů DNS na určený server. Při této instalaci se všechny požadavky na *. cloudsimple.io předávají na servery DNS nacházející se v privátním cloudu služby AVS. Následující příklady ukazují, jak nastavit servery pro směrování na různých typech serverů DNS.
 
 ### <a name="create-a-conditional-forwarder-on-a-bind-dns-server"></a>Vytvoření podmíněného přesměrování na serveru DNS BIND
 

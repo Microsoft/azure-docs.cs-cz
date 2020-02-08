@@ -3,22 +3,22 @@ title: Přihlášení k MSAL aplikacím | Azure
 titleSuffix: Microsoft identity platform
 description: Přečtěte si o protokolování aplikací MSAL (Microsoft Authentication Library).
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/11/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: cba213824cba86b4ea54e852b7e2f1ede83abfea
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 58697cc535357710c6889f05060b5e04e129ae7d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695802"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084892"
 ---
 # <a name="logging-in-msal-applications"></a>Protokolování aplikací MSAL
 
@@ -177,7 +177,7 @@ Nastavte zpětné volání pro zachycení protokolování MSAL a zahrňte ho do 
 typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL containsPII);
 ```
 
-Například:
+Příklad:
 
 ```objc
 [MSALGlobalConfig.loggerConfig setLogCallback:^(MSALLogLevel level, NSString *message, BOOL containsPII)
@@ -210,7 +210,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = NO;
 
 Pokud chcete nastavit úroveň protokolování při protokolování pomocí MSAL pro iOS a macOS, použijte jednu z následujících hodnot:
 
-|Úroveň  |Popis |
+|Level  |Popis |
 |---------|---------|
 | `MSALLogLevelNothing`| Zakázat všechna protokolování |
 | `MSALLogLevelError` | Výchozí úroveň, vytiskne informace pouze v případě, že dojde k chybám |
@@ -218,7 +218,7 @@ Pokud chcete nastavit úroveň protokolování při protokolování pomocí MSAL
 | `MSALLogLevelInfo` |  Vstupní body knihovny s parametry a různými operacemi řetězce klíčů |
 |`MSALLogLevelVerbose`     |  Trasování rozhraní API |
 
-Například:
+Příklad:
 
 ```objc
 MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
@@ -228,7 +228,7 @@ MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
 
 Část zprávy protokolu MSAL je ve formátu `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
 
-Například:
+Příklad:
 
 `TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
 
@@ -255,7 +255,7 @@ Nastavte zpětné volání pro zachycení protokolování MSAL a zahrňte ho do 
 typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL containsPII);
 ```
 
-Například:
+Příklad:
 
 ```swift
 MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
@@ -287,7 +287,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = false
 
 Pokud chcete nastavit úroveň protokolování při protokolování pomocí MSAL pro iOS a macOS, použijte jednu z následujících hodnot:
 
-|Úroveň  |Popis |
+|Level  |Popis |
 |---------|---------|
 | `MSALLogLevelNothing`| Zakázat všechna protokolování |
 | `MSALLogLevelError` | Výchozí úroveň, vytiskne informace pouze v případě, že dojde k chybám |
@@ -295,7 +295,7 @@ Pokud chcete nastavit úroveň protokolování při protokolování pomocí MSAL
 | `MSALLogLevelInfo` |  Vstupní body knihovny s parametry a různými operacemi řetězce klíčů |
 |`MSALLogLevelVerbose`     |  Trasování rozhraní API |
 
-Například:
+Příklad:
 
 ```swift
 MSALGlobalConfig.loggerConfig.logLevel = .verbose
@@ -305,7 +305,7 @@ MSALGlobalConfig.loggerConfig.logLevel = .verbose
 
 Část zprávy protokolu MSAL je ve formátu `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
 
-Například:
+Příklad:
 
 `TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
 

@@ -1,20 +1,21 @@
 ---
-title: Použití Zóny dostupnosti ve službě Azure Kubernetes (AKS)
+title: Použití zón dostupnosti ve službě Azure Kubernetes Service (AKS)
 description: Zjistěte, jak vytvořit cluster, který distribuuje uzly napříč zónami dostupnosti ve službě Azure Kubernetes Service (AKS).
 services: container-service
 author: mlearned
+ms.custom: fasttrack-edit
 ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 3790511bf3f71cdeb01853e4051a013719502d9f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: b73cb09f95fa2b23fb23fb719fe57143e1731ceb
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605095"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086521"
 ---
-# <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Vytvoření clusteru služby Azure Kubernetes (AKS), který používá Zóny dostupnosti
+# <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Vytvoření clusteru služby Azure Kubernetes (AKS), který používá zóny dostupnosti
 
 Cluster Azure Kubernetes Service (AKS) distribuuje prostředky, jako jsou uzly a úložiště napříč logickými oddíly základní výpočetní infrastruktury Azure. Tento model nasazení zajišťuje, že se uzly spouštějí napříč samostatnými doménami aktualizace a selhání v jednom datovém centru Azure. Clustery AKS nasazené s tímto výchozím chováním poskytují vysokou úroveň dostupnosti pro ochranu proti selhání hardwaru nebo plánované události údržby.
 
@@ -22,7 +23,7 @@ Pokud chcete zajistit vyšší úroveň dostupnosti pro vaše aplikace, clustery
 
 V tomto článku se dozvíte, jak vytvořit cluster AKS a distribuovat součásti uzlu napříč zónami dostupnosti.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.76 nebo novější. Pro nalezení verze spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
@@ -30,9 +31,9 @@ Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.76 nebo nově
 
 Clustery AKS se teď dají vytvářet pomocí zón dostupnosti v následujících oblastech:
 
-* Střední USA
+* Střed USA
 * Východní USA 2
-* Východní USA
+* USA – východ
 * Francie – střed
 * Japonsko – východ
 * Severní Evropa
@@ -58,11 +59,11 @@ Svazky, které používají službu Azure Managed disks, nejsou aktuálně rozpr
 
 Pokud musíte spustit stavové úlohy, pomocí specifikací v poli pod a jejich tolerování sdělte nástroji Scheduler Kubernetes, aby vytvořil lusky ve stejné zóně jako vaše disky. Alternativně můžete použít síťové úložiště, například soubory Azure, které se mohou připojit k luskům při jejich plánování mezi zónami.
 
-## <a name="overview-of-availability-zones-for-aks-clusters"></a>Přehled Zóny dostupnosti pro clustery AKS
+## <a name="overview-of-availability-zones-for-aks-clusters"></a>Přehled zón dostupnosti pro clustery AKS
 
-Zóny dostupnosti je nabídka s vysokou dostupností, která chrání vaše aplikace a data při selhání datacentra. Zóny jsou jedinečné fyzické umístění v oblasti Azure. Každou zónu tvoří jedno nebo několik datacenter vybavených nezávislým napájením, chlazením a sítí. Aby se zajistila odolnost, existuje minimálně tři samostatné zóny ve všech povolených oblastech. Fyzické oddělení Zóny dostupnosti v rámci oblasti chrání aplikace a data před selháními datových center. Redundantní služby v zóně replikují aplikace a data napříč Zóny dostupnosti, aby se chránily před jednotlivými chybami.
+Zóny dostupnosti jsou nabídka s vysokou dostupností, která chrání vaše aplikace a data před selháním datových center. Zóny jsou jedinečné fyzické umístění v oblasti Azure. Každá zóna se skládá z jednoho nebo více datových Center vybavených nezávislým napájením, chlazením a sítí. Aby se zajistila odolnost, existuje minimálně tři samostatné zóny ve všech povolených oblastech. Fyzické oddělení zón dostupnosti v rámci oblasti chrání aplikace a data před selháními datových center. Redundantní služby v zóně replikují aplikace a data napříč zónami dostupnosti, aby se chránily před jednotlivými chybami.
 
-Další informace najdete v tématu [co je zóny dostupnosti v Azure?][az-overview].
+Další informace najdete v tématu [co jsou zóny dostupnosti v Azure?][az-overview].
 
 Clustery AKS, které jsou nasazené pomocí zón dostupnosti, můžou distribuovat uzly napříč několika zónami v rámci jedné oblasti. Například cluster v oblasti *Východní USA 2* může vytvořit uzly ve všech třech zónách dostupnosti v *východní USA 2*. Tato distribuce prostředků clusteru AKS vylepšuje dostupnost clusteru, protože je odolná vůči selhání konkrétní zóny.
 
@@ -122,6 +123,53 @@ Name:       aks-nodepool1-28993262-vmss000002
 
 Při přidávání dalších uzlů do fondu agentů platforma Azure automaticky distribuuje příslušné virtuální počítače v rámci zadané zóny dostupnosti.
 
+Všimněte si, že v novějších verzích Kubernetes (1.17.0 a novějších) používá AKS kromě zastaralých `failure-domain.beta.kubernetes.io/zone`novější popisek `topology.kubernetes.io/zone`.
+
+## <a name="verify-pod-distribution-across-zones"></a>Ověřit distribuci pod mezi zónami
+
+Jak je uvedeno v [dobře známých popisech, poznámkách a][kubectl-well_known_labels]přístupních, Kubernetes používá popisek `failure-domain.beta.kubernetes.io/zone` k automatické distribuci lusků do řadiče replikace nebo služby v různých zónách, které jsou k dispozici. Aby bylo možné tuto možnost otestovat, můžete rozšířit cluster na 3 až 5 uzlů a ověřit správnou rozprostření pod:
+
+```azurecli-interactive
+az aks scale \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --node-count 5
+```
+
+Pokud se operace škálování dokončí po několika minutách, příkaz `kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"` by měl poskytnout výstup podobný této ukázce:
+
+```console
+Name:       aks-nodepool1-28993262-vmss000000
+            failure-domain.beta.kubernetes.io/zone=eastus2-1
+Name:       aks-nodepool1-28993262-vmss000001
+            failure-domain.beta.kubernetes.io/zone=eastus2-2
+Name:       aks-nodepool1-28993262-vmss000002
+            failure-domain.beta.kubernetes.io/zone=eastus2-3
+Name:       aks-nodepool1-28993262-vmss000003
+            failure-domain.beta.kubernetes.io/zone=eastus2-1
+Name:       aks-nodepool1-28993262-vmss000004
+            failure-domain.beta.kubernetes.io/zone=eastus2-2
+```
+
+Jak vidíte, teď máme na zónách 1 a 2 dva další uzly. Můžete nasadit aplikaci, která se skládá ze tří replik. NGINX budeme používat jako příklad:
+
+```console
+kubectl run nginx --image=nginx --replicas=3
+```
+
+Pokud ověříte, že jsou na uzlech, kde jsou spuštěné vaše lusky, vidíte, že lusky jsou spuštěné v luskech odpovídajících třem různým zónám dostupnosti. Například s příkazem `kubectl describe pod | grep -e "^Name:" -e "^Node:"` byste získali výstup podobný tomuto:
+
+```console
+Name:         nginx-6db489d4b7-ktdwg
+Node:         aks-nodepool1-28993262-vmss000000/10.240.0.4
+Name:         nginx-6db489d4b7-v7zvj
+Node:         aks-nodepool1-28993262-vmss000002/10.240.0.6
+Name:         nginx-6db489d4b7-xz6wj
+Node:         aks-nodepool1-28993262-vmss000004/10.240.0.8
+```
+
+Jak vidíte z předchozího výstupu, první uzel pod je spuštěný v uzlu 0, který je umístěný v zóně dostupnosti `eastus2-1`. Druhý pod je spuštěn v uzlu 2, který odpovídá `eastus2-3`a třetí z nich v uzlu 4 v `eastus2-2`. Bez jakékoli další konfigurace Kubernetes rozšíří lusky správně ve všech třech zónách dostupnosti.
+
 ## <a name="next-steps"></a>Další kroky
 
 V tomto článku se dozvíte, jak vytvořit cluster AKS, který používá zóny dostupnosti. Další informace o clusterech s vysokou dostupností najdete v tématu [osvědčené postupy pro kontinuitu podnikových procesů a zotavení po havárii v AKS][best-practices-bc-dr].
@@ -144,3 +192,4 @@ V tomto článku se dozvíte, jak vytvořit cluster AKS, který používá zóny
 
 <!-- LINKS - external -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
+[kubectl-well_known_labels]: https://kubernetes.io/docs/reference/kubernetes-api/labels-annotations-taints/

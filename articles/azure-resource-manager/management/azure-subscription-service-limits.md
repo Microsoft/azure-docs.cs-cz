@@ -4,12 +4,12 @@ description: Poskytuje seznam běžných limitů, kvót a omezení předplatnéh
 tags: billing
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: c5714dd30be4d557086667a74fff2ff8117e2a2b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b209bc3e60f50ac363d3426d6c87f206b016d711
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901416"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087424"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 
@@ -22,7 +22,7 @@ Omezení názvů prostředků najdete v tématu [pravidla a omezení pojmenován
 > [!NOTE]
 > Pokud chcete limit nebo kvótu nad výchozím limitem zvýšit, [otevřete online žádost o zákaznickou podporu](../templates/error-resource-quota.md)zdarma. Mezní hodnoty se nedají vyhodnotit nad maximální hodnotou limitu uvedenou v následujících tabulkách. Pokud není sloupec maximální limit, prostředek nemá nastavitelný limit.
 >
-> [Bezplatné zkušební předplatné](https://azure.microsoft.com/offers/ms-azr-0044p) neplatí pro zvýšení limitu nebo kvóty. Pokud máte [bezplatnou zkušební verzi předplatného](https://azure.microsoft.com/offers/ms-azr-0044p), můžete upgradovat na [s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) předplatného. Další informace najdete v tématu [upgrade předplatného bezplatné zkušební verze Azure na předplatné](../../billing/billing-upgrade-azure-subscription.md) s průběžnými platbami a na [Nejčastější dotazy k bezplatné zkušební verzi předplatného](https://azure.microsoft.com/free/free-account-faq).
+> [Bezplatné zkušební předplatné](https://azure.microsoft.com/offers/ms-azr-0044p) neplatí pro zvýšení limitu nebo kvóty. Pokud máte [bezplatné zkušební předplatné](https://azure.microsoft.com/offers/ms-azr-0044p), můžete upgradovat na předplatné s průběžnými [platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) . Další informace najdete v tématu [upgrade předplatného bezplatné zkušební verze Azure na předplatné](../../billing/billing-upgrade-azure-subscription.md) s průběžnými platbami a na [Nejčastější dotazy k bezplatné zkušební verzi předplatného](https://azure.microsoft.com/free/free-account-faq).
 >
 
 ## <a name="limits-and-azure-resource-manager"></a>Omezení a Azure Resource Manager
@@ -49,7 +49,7 @@ V následujícím seznamu omezení zobrazuje nová tabulka rozdíly v omezeních
 * [Azure Cloud Services](#azure-cloud-services-limits)
 * [Kognitivní hledání Azure](#azure-cognitive-search-limits)
 * [Azure Cognitive Services](#azure-cognitive-services-limits)
-* [Azure Cosmos DB](#azure-cosmos-db-limits)
+* [Databáze Azure Cosmos](#azure-cosmos-db-limits)
 * [Průzkumník dat Azure](#azure-data-explorer-limits)
 * [Azure Database for MySQL](#azure-database-for-mysql)
 * [Azure Database for PostgreSQL](#azure-database-for-postgresql)
@@ -71,6 +71,7 @@ V následujícím seznamu omezení zobrazuje nová tabulka rozdíly v omezeních
 * [Data Factory](#data-factory-limits)
 * [Data Lake Analytics](#data-lake-analytics-limits)
 * [Data Lake Store](#data-lake-store-limits)
+* [Sdílená data](#data-share-limits)
 * [Database Migration Service](#database-migration-service-limits)
 * [Event Grid](#event-grid-limits)
 * [Event Hubs](#event-hubs-limits)
@@ -83,7 +84,7 @@ V následujícím seznamu omezení zobrazuje nová tabulka rozdíly v omezeních
 * [Media Services](#media-services-limits)
 * [Mobile Services](#mobile-services-limits)
 * [Multi-Factor Authentication](#multi-factor-authentication-limits)
-* [Sítě](#networking-limits)
+* [Networking](#networking-limits)
   * [Application Gateway](#application-gateway-limits)
   * [Bastionu Azure](#azure-bastion-limits)
   * [Azure DNS](#azure-dns-limits)
@@ -105,7 +106,7 @@ V následujícím seznamu omezení zobrazuje nová tabulka rozdíly v omezeních
 * [Site Recovery](#site-recovery-limits)
 * [SQL Database](#sql-database-limits)
 * [SQL Data Warehouse](#sql-data-warehouse-limits)
-* [Storage](#storage-limits)
+* [Úložiště](#storage-limits)
 * [StorSimple systém](#storsimple-system-limits)
 * [Stream Analytics](#stream-analytics-limits)
 * [Předplatné](#subscription-limits)
@@ -347,7 +348,7 @@ Další informace o omezeních na podrobnější úrovni, jako je velikost dokum
 
 ### <a name="azure-monitor-limits"></a>Omezení Azure Monitor
 
-#### <a name="alerts"></a>Výstrahy
+#### <a name="alerts"></a>Upozornění
 
 [!INCLUDE [monitoring-limits](../../../includes/azure-monitor-limits-alerts.md)]
 
@@ -404,6 +405,10 @@ Další informace o omezeních na podrobnější úrovni, jako je velikost dokum
 ### <a name="data-lake-store-limits"></a>Omezení Data Lake Store
 
 [!INCLUDE [azure-data-lake-store-limits](../../../includes/azure-data-lake-store-limits.md)]
+
+### <a name="data-share-limits"></a>Omezení sdílení dat
+
+[!INCLUDE [azure-data-share-limits](../../../includes/azure-data-share-limits.md)]
 
 ### <a name="database-migration-service-limits"></a>Omezení Database Migration Service
 
@@ -481,7 +486,7 @@ Omezení SQL Database najdete v tématu omezení [prostředků SQL Database pro 
 
 Omezení SQL Data Warehouse najdete v tématu [omezení prostředků SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 * [Pochopení omezení a zvýšení počtu Azure](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 * [Velikosti virtuálních počítačů a cloudových služeb pro Azure](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

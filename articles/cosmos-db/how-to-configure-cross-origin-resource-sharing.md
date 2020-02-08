@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: dech
-ms.openlocfilehash: 2823ae22c8128f52ae67cf283a9a619a03abd719
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 7a487cb10965a379a0a418efaa061be88c5d10dd
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580677"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77082988"
 ---
 # <a name="configure-cross-origin-resource-sharing-cors"></a>Konfigurace sdílení prostředků mezi zdroji (CORS)
 
@@ -41,23 +41,21 @@ Pokud chcete povolit CORS pomocí šablony Správce prostředků, přidejte do j
 
 ```json
 {
-    {
-      "type": "Microsoft.DocumentDB/databaseAccounts",
-      "name": "[variables('accountName')]",
-      "apiVersion": "2019-08-01",
-      "location": "[parameters('location')]",
-      "kind": "GlobalDocumentDB",
-      "properties": {
-        "consistencyPolicy": "[variables('consistencyPolicy')[parameters('defaultConsistencyLevel')]]",
-        "locations": "[variables('locations')]",
-        "databaseAccountOfferType": "Standard",
-        "cors": [
-                    {
-                        "allowedOrigins": "*"
-                    }
-                ]
-        }
-    }
+  "type": "Microsoft.DocumentDB/databaseAccounts",
+  "name": "[variables('accountName')]",
+  "apiVersion": "2019-08-01",
+  "location": "[parameters('location')]",
+  "kind": "GlobalDocumentDB",
+  "properties": {
+    "consistencyPolicy": "[variables('consistencyPolicy')[parameters('defaultConsistencyLevel')]]",
+    "locations": "[variables('locations')]",
+    "databaseAccountOfferType": "Standard",
+    "cors": [
+      {
+        "allowedOrigins": "*"
+      }
+    ]
+  }
 }
 ```
 

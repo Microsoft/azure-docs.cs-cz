@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 0f836553c3c3bb324d76d022af189f154b5b1972
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 36a492f6a3e86cfb2fc9505550cc2d9f4746e070
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964460"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087174"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Role a požadavky pro Azure Data Share 
 
@@ -35,8 +35,8 @@ Níže je uveden souhrn rolí přiřazených k spravované identitě prostředku
 |Azure Blob Storage| Čtečka dat objektů BLOB úložiště | Přispěvatel dat objektu BLOB služby Storage
 |Azure Data Lake Gen1 | Vlastník | Nepodporuje se
 |Azure Data Lake Gen2 | Čtečka dat objektů BLOB úložiště | Přispěvatel dat objektu BLOB služby Storage
-|Azure SQL Server | Přispěvatel databáze SQL | Přispěvatel databáze SQL
-|Cluster Azure Průzkumník dat | Přispěvatel | Přispěvatel
+|SQL Server Azure | Přispěvatel databáze SQL | Přispěvatel databáze SQL
+|Cluster Azure Data Exploreru | Přispěvatel | Přispěvatel
 |
 
 Pro sdílení založené na SQL je potřeba vytvořit uživatele SQL z externího poskytovatele v databázi SQL se stejným názvem, jaký má prostředek sdílené složky Azure. Níže je uveden souhrn oprávnění vyžadovaných uživatelem SQL.
@@ -44,7 +44,7 @@ Pro sdílení založené na SQL je potřeba vytvořit uživatele SQL z externíh
 | |  |  |
 |---|---|---|
 |**Typ SQL Database**|**Oprávnění uživatele Zprostředkovatel dat SQL**|**Oprávnění uživatele SQL pro příjemce dat**|
-|Databáze SQL Azure | db_datareader | db_datareader, db_datawriter db_ddladmin
+|Azure SQL Database | db_datareader | db_datareader, db_datawriter db_ddladmin
 |Azure Synapse Analytics (dříve SQL DW) | db_datareader | db_datareader, db_datawriter db_ddladmin
 |
 
@@ -59,11 +59,11 @@ Uživatel také může mít vlastníka úložiště dat Azure a přidat spravova
 Chcete-li vytvořit přiřazení role pro spravovanou identitu prostředku sdílení dat, postupujte podle následujících kroků:
 
 1. Přejděte do úložiště dat Azure.
-1. Vyberte **řízení přístupu (IAM)** .
+1. Vyberte **Access Control (IAM)** .
 1. Vyberte **Přidat přiřazení role**.
 1. V části *role*vyberte roli v tabulce přiřazení role výše (například pro účet úložiště vyberte možnost *čtečka dat objektů BLOB úložiště*).
 1. V části *Vybrat*zadejte název vašeho prostředku Azure Data Share.
-1. Klikněte na *Uložit*.
+1. Klikněte na možnost *Uložit*.
 
 Pro zdroje založené na SQL se kromě výše uvedených kroků musí uživatel SQL vytvořit z externího poskytovatele v databázi SQL se stejným názvem, jako je prostředek sdílené složky Azure. Tomuto uživateli musí být uděleno oprávnění *db_datareader* . Ukázkový skript spolu s dalšími předpoklady pro sdílení na základě SQL najdete v kurzu [sdílení vašich dat](share-your-data.md) . 
 
@@ -77,11 +77,11 @@ Uživatel také může mít vlastníka úložiště dat Azure a přidat spravova
 Chcete-li vytvořit přiřazení role pro spravovanou identitu prostředku sdílení dat, postupujte podle následujících kroků:
 
 1. Přejděte do úložiště dat Azure.
-1. Vyberte **řízení přístupu (IAM)** .
+1. Vyberte **Access Control (IAM)** .
 1. Vyberte **Přidat přiřazení role**.
 1. V části *role*vyberte roli v tabulce přiřazení role výše (například pro účet úložiště vyberte možnost *čtečka dat objektů BLOB úložiště*).
 1. V části *Vybrat*zadejte název vašeho prostředku Azure Data Share.
-1. Klikněte na *Uložit*.
+1. Klikněte na možnost *Uložit*.
 
 V případě cíle založeného na jazyce SQL musí být kromě výše uvedeného postupu vytvořen uživatel SQL z externího poskytovatele v databázi SQL se stejným názvem, jaký má prostředek sdílené složky Azure. Tento uživatel musí mít udělená oprávnění *db_datareader, db_datawriter db_ddladmin* . Ukázkový skript spolu s dalšími předpoklady pro sdílení založené na SQL najdete v kurzu [přijetí a přijetí dat](subscribe-to-data-share.md) . 
 
@@ -91,7 +91,7 @@ Další informace o tom, jak přidat přiřazení role, najdete v [této dokumen
 
 ## <a name="resource-provider-registration"></a>Registrace poskytovatele prostředků 
 
-Pokud chcete ve svém tenantovi Azure zobrazit pozvání ke sdílení dat Azure poprvé, bude možná potřeba do svého předplatného Azure ručně zaregistrovat poskytovatele prostředků Microsoft. datashare. Pomocí těchto kroků zaregistrujete poskytovatele prostředků Microsoft. datashare do svého předplatného Azure. 
+Pokud chcete ve svém tenantovi Azure zobrazit pozvání ke sdílení dat Azure poprvé, bude možná potřeba do svého předplatného Azure ručně zaregistrovat poskytovatele prostředků Microsoft. datashare. Pomocí těchto kroků zaregistrujete poskytovatele prostředků Microsoft. datashare do svého předplatného Azure. K registraci poskytovatele prostředků potřebujete přístup *přispěvatele* k předplatnému Azure.
 
 1. V Azure Portal přejděte na **odběry**.
 1. Vyberte předplatné, které používáte pro sdílení dat Azure.

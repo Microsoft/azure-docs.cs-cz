@@ -3,7 +3,7 @@ title: Azure AD B2C (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Přečtěte si o konkrétních otázkách při použití Azure AD B2C s knihovnou Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -13,12 +13,12 @@ ms.date: 10/29/2019
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: f28b7abc2b3a9ba753a2f7923c9cfed1897c8522
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 697b4bc8e3a25085ac6f7d600ea2227dd30a6624
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834191"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083998"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Použití MSAL.NET k přihlašování uživatelů pomocí sociálních identit
 
@@ -184,4 +184,4 @@ Další podrobnosti o interaktivním získání tokenů pomocí MSAL.NET pro Azu
 
 | Ukázka | Platforma | Popis|
 |------ | -------- | -----------|
-|[active-directory-b2c-xamarin-native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS, Xamarin Android, UWP | Jednoduchá aplikace Xamarin Forms předvádí, jak používat MSAL.NET k ověřování uživatelů prostřednictvím Azure AD B2C a přístup k webovému rozhraní API s výslednými tokeny.|
+|[Active-Directory-B2C-Xamarin-Native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS, Xamarin Android, UWP | Jednoduchá aplikace Xamarin Forms předvádí, jak používat MSAL.NET k ověřování uživatelů prostřednictvím Azure AD B2C a přístup k webovému rozhraní API s výslednými tokeny.|

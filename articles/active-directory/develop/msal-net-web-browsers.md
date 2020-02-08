@@ -3,22 +3,22 @@ title: Používání webových prohlížečů (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Přečtěte si o konkrétních doporučeních pro použití Xamarin Androidu s knihovnou Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: b0b0ac05e54619af0b1dd4a68918a89681f845bd
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: ed1f47ae99f6346a932d0fe94be7586dc25a672f
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695071"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084594"
 ---
 # <a name="using-web-browsers-msalnet"></a>Používání webových prohlížečů (MSAL.NET)
 
@@ -43,9 +43,9 @@ MSAL.NET je knihovna s více architekturami a má kód specifický pro rozhraní
 
 Obecně se doporučuje použít výchozí platformu a obvykle se jedná o systémový prohlížeč. Prohlížeč systému je lepší při zapamatování uživatelů, kteří se předtím přihlásili. Pokud potřebujete toto chování změnit, použijte `WithUseEmbeddedWebView(bool)`
 
-### <a name="at-a-glance"></a>První pohled
+### <a name="at-a-glance"></a>Na první pohled
 
-| Architektura        | Vložené | Systém | Výchozí |
+| .NET Framework        | Vložené | Systém | Výchozí |
 | ------------- |-------------| -----| ----- |
 | .NET Classic     | Ano | Ano ^ | Vložené |
 | .NET Core     | Ne | Ano ^ | Systém |
@@ -149,7 +149,7 @@ Mezi vloženým webovým zobrazením a systémovým prohlížečem v MSAL.NET js
 
 **Interaktivní přihlašování pomocí MSAL.NET pomocí vloženého webviewu:**
 
-![vložený](media/msal-net-web-browsers/embedded-webview.png)
+![Vložené](media/msal-net-web-browsers/embedded-webview.png)
 
 **Interaktivní přihlašování pomocí MSAL.NET pomocí systémového prohlížeče:**
 

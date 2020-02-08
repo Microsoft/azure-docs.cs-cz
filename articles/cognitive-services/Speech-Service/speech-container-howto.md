@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: dapine
-ms.openlocfilehash: d5ecc104c7845a1881cbcdecfbccb75148f6e070
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ca7e7f7460db82a357ed8aa240467a6894254217
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "74815358"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086996"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Instalace a spuštění kontejnerů služby Speech (verze Preview)
 
@@ -39,9 +39,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Před použitím kontejnerů řeči je nutné splnit následující předpoklady:
 
-| Požaduje se | Účel |
+| Požadováno | Účel |
 |--|--|
-| Docker Engine | Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které konfigurují prostředí Docker v systémech [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> **V systému Windows**musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br> |
+| Modul Docker | Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které konfigurují prostředí Docker v systémech [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Informace o úvodu k Docker a kontejneru najdete v tématu [Přehled Docker](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> **V systému Windows**musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br> |
 | Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů. |
 | Prostředek řeči | Aby bylo možné tyto kontejnery použít, je nutné mít následující:<br><br>Prostředek Azure _Speech_ pro získání přidruženého klíče rozhraní API a identifikátoru URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách s přehledem a klíči pro Azure Portal **řeči** . Oba jsou nutné ke spuštění kontejneru.<br><br>**{API_KEY}** : jeden ze dvou dostupných klíčů prostředků na stránce **klíče**<br><br>**{ENDPOINT_URI}** : koncový bod uvedený na stránce **Přehled** |
 
@@ -75,25 +75,25 @@ Následující tabulka popisuje minimální a doporučené přidělení prostře
 
 # <a name="speech-to-texttabstt"></a>[Převod řeči na text](#tab/stt)
 
-| Kontejner | Minimální | Doporučené |
+| Kontejner | Minimální | Doporučeno |
 |-----------|---------|-------------|
 | Převod řeči na text | 2 jádra, 2 GB paměti | 4 jádra, 4 GB paměti |
 
 # <a name="custom-speech-to-texttabcstt"></a>[Custom Speech na text](#tab/cstt)
 
-| Kontejner | Minimální | Doporučené |
+| Kontejner | Minimální | Doporučeno |
 |-----------|---------|-------------|
 | Custom Speech na text | 2 jádra, 2 GB paměti | 4 jádra, 4 GB paměti |
 
 # <a name="text-to-speechtabtts"></a>[Převod textu na řeč](#tab/tts)
 
-| Kontejner | Minimální | Doporučené |
+| Kontejner | Minimální | Doporučeno |
 |-----------|---------|-------------|
 | Převod textu na řeč | 1 jádro, 2 GB paměti | 2 jádra, 3 GB paměti |
 
 # <a name="custom-text-to-speechtabctts"></a>[Vlastní převod textu na řeč](#tab/ctts)
 
-| Kontejner | Minimální | Doporučené |
+| Kontejner | Minimální | Doporučeno |
 |-----------|---------|-------------|
 | Vlastní převod textu na řeč | 1 jádro, 2 GB paměti | 2 jádra, 3 GB paměti |
 
@@ -233,7 +233,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-text
 
 Jakmile je kontejner na [hostitelském počítači](#the-host-computer), použijte následující postup pro práci s kontejnerem.
 
-1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným nastavením fakturace. K dispozici jsou `docker run` další [příklady](speech-container-configuration.md#example-docker-run-commands) příkazu.
+1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným nastavením fakturace. K dispozici jsou další [příklady](speech-container-configuration.md#example-docker-run-commands) `docker run` příkazu.
 1. [Dotazování koncového bodu předpovědi kontejneru](#query-the-containers-prediction-endpoint)
 
 ## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner pomocí `docker run`
@@ -367,11 +367,11 @@ Tento příkaz:
 ***
 
 > [!IMPORTANT]
-> `Eula`, `Billing`, A `ApiKey` možnosti musí být zadán pro spuštění kontejneru; v opačném případě nebude spuštění kontejneru.  Další informace najdete v tématu [fakturace](#billing).
+> Aby bylo možné spustit kontejner, musí být zadány možnosti `Eula`, `Billing`a `ApiKey`. v opačném případě se kontejner nespustí.  Další informace najdete v tématu [fakturace](#billing).
 
 ## <a name="query-the-containers-prediction-endpoint"></a>Dotazování koncového bodu předpovědi kontejneru
 
-| Kontejnery | Adresa URL hostitele sady SDK | Protocol (Protokol) |
+| Containers | Adresa URL hostitele sady SDK | Protocol (Protokol) |
 |--|--|--|
 | Převod řeči na text a Custom Speech textu na text | `ws://localhost:5000` | WS |
 | Převod textu na řeč a vlastní převod textu na řeč | `http://localhost:5000` | HTTP |
@@ -402,13 +402,13 @@ Při spuštění nebo spuštění kontejneru může docházet k problémům. Pou
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Vyúčtování
+## <a name="billing"></a>Fakturace
 
 Kontejnery řeči odesílají informace o fakturaci do Azure pomocí prostředku *řeči* ve vašem účtu Azure.
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
-Další informace o těchto možnostech najdete v tématu [konfigurace kontejnery](speech-container-configuration.md).
+Další informace o těchto možnostech najdete v tématu [konfigurace kontejnerů](speech-container-configuration.md).
 
 <!--blogs/samples/video courses -->
 
@@ -425,7 +425,7 @@ V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, insta
   * *Vlastní převod textu na řeč*
 * Image kontejneru se stáhnou z registru kontejneru v Azure.
 * Spuštění imagí kontejnerů v Dockeru.
-* Pomocí REST API nebo sady SDK můžete volat operace v kontejnerech řeči zadáním identifikátoru URI hostitele kontejneru.
+* Bez ohledu na to, jestli se používá REST API (jenom pro převod textu na řeč) nebo sadu SDK (převod řeči na text nebo převod textu na řeč), zadáváte identifikátor URI hostitele kontejneru. 
 * Při vytváření instance kontejneru budete muset zadat fakturační údaje.
 
 > [!IMPORTANT]

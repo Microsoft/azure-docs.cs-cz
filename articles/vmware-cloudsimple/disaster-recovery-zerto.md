@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1f34c4fb89d28a001a4af4d21879403a9ac5e860
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e5ee43af97e79f1e835787d61bd79cfb256ef445
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024700"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083131"
 ---
 # <a name="set-up-avs-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>Nastavení privátního cloudu pro funkci AVS jako lokality pro zotavení po havárii pro místní úlohy VMware
 
@@ -51,7 +51,7 @@ Následující části popisují, jak nasadit řešení zotavení po havárii po
 Pokud chcete povolit virtuální replikaci Zerto z místního prostředí do vašeho privátního cloudu služby AVS, proveďte následující požadavky.
 
 1. [Nastavte připojení VPN typu Site-to-site mezi vaší místní sítí a Vaším privátním cloudem služby AVS](set-up-vpn.md).
-2. [Nastavte vyhledávání DNS tak, aby komponenty správy privátního cloudu služby AVS byly předávány na servery DNS privátního cloudu služby AVS](on-premises-dns-setup.md). Pokud chcete povolit předávání vyhledávání DNS, vytvořte záznam zóny přesměrování na místním serveru DNS pro `*.AVS.io` na servery DNS se službou AVS.
+2. [Nastavte vyhledávání DNS tak, aby komponenty správy privátního cloudu služby AVS byly předávány na servery DNS privátního cloudu služby AVS](on-premises-dns-setup.md). Pokud chcete povolit předávání vyhledávání DNS, vytvořte záznam zóny přesměrování na místním serveru DNS pro `*.cloudsimple.io` na servery DNS se službou AVS.
 3. Nastavte vyhledávání DNS tak, aby místní součásti vCenter byly předávány na místní servery DNS. Servery DNS musí být dosažitelné z privátního cloudu služby AVS prostřednictvím sítě VPN typu Site-to-site. Pokud potřebujete pomoc, odešlete [žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), která poskytne následující informace. 
 
     * Název místní domény DNS
@@ -93,6 +93,6 @@ Pokud chcete povolit virtuální replikaci Zerto z místního prostředí do va�
 6. V případě potřeby upravte nastavení sítě pro jednotlivé virtuální počítače a vytvořte VPG.
 7. Po dokončení replikace test převzetí služeb při selhání.
 
-## <a name="reference"></a>Referenční informace
+## <a name="reference"></a>Odkaz
 
 [Dokumentace k Zerto](https://www.zerto.com/myzerto/technical-documentation/)

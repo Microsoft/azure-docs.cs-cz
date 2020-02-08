@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 7534d425a9a7e00c4e57c0d9faea0750d311dcaf
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 3f5e8c76fcf5f6088698e785e3203ab65bf04de1
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549937"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084480"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Rychlý Start: přidání přihlášení do webové aplikace Java pomocí Microsoftu
 
@@ -47,7 +47,7 @@ K provedení této ukázky budete potřebovat:
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Možnost 2: Registrace a ruční konfigurace aplikace a vzorového kódu
 >
-> #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
+> #### <a name="step-1-register-your-application"></a>Krok 1: Zaregistrujte si aplikaci
 >
 > K registraci aplikace a ručnímu přidání registračních informací aplikace do řešení použijte následující postup:
 >
@@ -61,8 +61,8 @@ K provedení této ukázky budete potřebovat:
 >    - Nyní nechejte **identifikátor URI pro přesměrování** prázdné a vyberte **Registrovat**.
 > 1. Na stránce **Přehled** vyhledejte **ID aplikace (klienta)** a ID adresáře aplikace ( **tenant)** . Tyto hodnoty zkopírujte pro pozdější verzi.
 > 1. V nabídce vyberte **ověřování** a přidejte následující informace:
->    - V případě **identifikátorů URI pro přesměrování**přidejte `http://localhost:8080/msal4jsample/secure/aad` a `http://localhost:8080/msal4jsample/graph/me`.
->    - Vyberte **Uložit**.
+>    - V případě **identifikátorů URI pro přesměrování**přidejte `https://localhost:8080/msal4jsample/secure/aad` a `https://localhost:8080/msal4jsample/graph/me`.
+>    - Vyberte **Save** (Uložit).
 > 1. V nabídce vyberte **certifikáty & tajné klíče** a v části **tajné klíče klienta** klikněte na **nový tajný klíč klienta**:
 >
 >    - Zadejte popis klíče (např. tajný klíč aplikace).
@@ -75,7 +75,7 @@ K provedení této ukázky budete potřebovat:
 >
 > Ukázku kódu pro tento rychlý Start, který funguje, je třeba:
 >
-> 1. Přidejte adresy URL odpovědi jako `http://localhost:8080/msal4jsamples/secure/aad` a `http://localhost:8080/msal4jsamples/graph/me`.
+> 1. Přidejte adresy URL odpovědi jako `https://localhost:8080/msal4jsamples/secure/aad` a `https://localhost:8080/msal4jsamples/graph/me`.
 > 1. Vytvořte tajný klíč klienta.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Provést tyto změny pro mě]()
@@ -89,25 +89,38 @@ K provedení této ukázky budete potřebovat:
 
 #### <a name="step-3-configure-the-code-sample"></a>Krok 3: Konfigurace ukázky kódu
 
- 1. Soubor .zip extrahujte do místní složky.
+ 1. Extrahujte soubor zip do místní složky.
  1. Pokud používáte integrované vývojové prostředí, otevřete ukázku v oblíbeném INTEGROVANÉm vývojovém prostředí (volitelné).
-
  1. Otevřete soubor Application. Properties, který se nachází ve složce src/Main/Resources/Folder a nahraďte hodnotu polí *AAD. ClientID*, *AAD. Authority* a *AAD. SecretKey* s příslušnými hodnotami **ID aplikace**, **ID tenanta** a **tajného klíče klienta** následujícím způsobem:
 
     ```file
     aad.clientId=Enter_the_Application_Id_here
     aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
     aad.secretKey=Enter_the_Client_Secret_Here
-    aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
-    aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
+    aad.redirectUriSignin=https://localhost:8080/msal4jsample/secure/aad
+    aad.redirectUriGraph=https://localhost:8080/msal4jsample/graph/me
     ```
 
-> [!div renderon="docs"]
-> Kde:
->
-> - `Enter_the_Application_Id_here` je ID aplikace, kterou jste zaregistrovali.
-> - `Enter_the_Client_Secret_Here` – je **tajný klíč klienta** , který jste vytvořili v části **certifikáty & tajných** kódů pro zaregistrovanou aplikaci.
-> - `Enter_the_Tenant_Info_Here` – hodnota **ID adresáře (tenant)** aplikace, kterou jste zaregistrovali.
+    > [!div renderon="docs"]
+    > Kde:
+    >
+    > - `Enter_the_Application_Id_here` je ID aplikace, kterou jste zaregistrovali.
+    > - `Enter_the_Client_Secret_Here` – je **tajný klíč klienta** , který jste vytvořili v části **certifikáty & tajných** kódů pro zaregistrovanou aplikaci.
+    > - `Enter_the_Tenant_Info_Here` – hodnota **ID adresáře (tenant)** aplikace, kterou jste zaregistrovali.
+
+ 1. Pokud chcete použít protokol HTTPS s localhost, vyplňte vlastnosti Server. SSL. Key. Chcete-li vygenerovat certifikát podepsaný svým držitelem, použijte nástroj pro nástroj (obsažený v JRE).
+
+   ```
+   Example: 
+   keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
+
+   server.ssl.key-store-type=PKCS12  
+   server.ssl.key-store=classpath:keystore.p12  
+   server.ssl.key-store-password=password  
+   server.ssl.key-alias=testCert 
+   ```
+
+   Vygenerovaný soubor úložiště klíčů vložte do složky Resources (prostředky).
 
 #### <a name="step-4-run-the-code-sample"></a>Krok 4: spuštění ukázky kódu
 
@@ -117,11 +130,11 @@ Spusťte ji přímo z integrovaného vývojového prostředí pomocí integrovan
 
 ##### <a name="running-from-ide"></a>Spuštění z IDE
 
-Pokud používáte webovou aplikaci z rozhraní IDE, klikněte na spustit a pak přejděte na domovskou stránku projektu. V této ukázce je adresa URL standardní domovské stránky http://localhost:8080
+Pokud používáte webovou aplikaci z rozhraní IDE, klikněte na spustit a pak přejděte na domovskou stránku projektu. V této ukázce je adresa URL standardní domovské stránky https://localhost:8080.
 
 1. Na přední stránce vyberte tlačítko **přihlášení** , které chcete přesměrovat na Azure Active Directory a vyzvat uživatele k zadání přihlašovacích údajů.
 
-1. Po ověření uživatele budou přesměrovány na *http://localhost:8080/msal4jsample/secure/aad* . Nyní jsou přihlášeni a na stránce se zobrazí informace o přihlášeném účtu. Ukázkové uživatelské rozhraní obsahuje následující tlačítka:
+1. Po ověření uživatele budou přesměrovány na *https://localhost:8080/msal4jsample/secure/aad* . Nyní jsou přihlášeni a na stránce se zobrazí informace o přihlášeném účtu. Ukázkové uživatelské rozhraní obsahuje následující tlačítka:
     - *Odhlášení*: podepíše aktuálního uživatele z aplikace a přesměruje je na domovskou stránku.
     - *Zobrazit informace o uživateli*: Získá token pro Microsoft Graph a zavolá Microsoft Graph s požadavkem, který obsahuje token, který vrátí základní informace o přihlášeném uživateli.
 

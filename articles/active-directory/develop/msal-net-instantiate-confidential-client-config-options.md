@@ -3,22 +3,22 @@ title: Vytvoření instance aplikace důvěrného klienta (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Naučte se vytvářet instance důvěrných klientských aplikací s možnostmi konfigurace pomocí knihovny Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/30/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: c3e1539ba847c66bdc705e2c83a66a42e070235a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 1a520c5a1002e401f880fba84f8fc02a0a678133
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695513"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084731"
 ---
 # <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>Vytvoření instance aplikace důvěrného klienta s možnostmi konfigurace pomocí MSAL.NET
 

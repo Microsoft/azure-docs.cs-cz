@@ -5,12 +5,12 @@ author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
-ms.openlocfilehash: 0702b302af1c964014a6649f5f3e86ce47b4600a
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
-ms.translationtype: HT
+ms.openlocfilehash: 7d3c70695000ae62f374bc558d4b408733968b83
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048375"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069281"
 ---
 # <a name="install-azure-farmbeats"></a>Instalace služby Azure FarmBeats
 
@@ -77,7 +77,7 @@ Než začnete s vlastní instalací Azure FarmBeats, musíte provést následuj�
 
 ### <a name="verify-permissions"></a>Ověřit oprávnění
 
-V tenantovi Azure budete potřebovat následující oprávnění, abyste si nainstalovali Azure FarmBeats –
+V tenantovi Azure budete potřebovat následující oprávnění pro instalaci Azure FarmBeats:
 
 - Tenant – Autor aplikace AAD
 - Předplatné – vlastník
@@ -85,7 +85,7 @@ V tenantovi Azure budete potřebovat následující oprávnění, abyste si nain
 
 První dvě oprávnění jsou potřebná k [Vytvoření kroku aplikace AAD](#create-an-aad-application) . V případě potřeby můžete získat někoho s příslušnými oprávněními k vytvoření aplikace AAD. Osoba, která instaluje FarmBeats, musí být vlastníkem skupiny prostředků, ve které se instaluje FarmBeats.
 
-Oprávnění k přístupu můžete v Azure Portal ověřit podle pokynů v tématu [řízení přístupu na základě rolí](https://docs.microsoft.com/azure/role-based-access-control/check-access) .
+Oprávnění k přístupu můžete v Azure Portal ověřit podle pokynů v tématu [řízení přístupu na základě rolí](https://docs.microsoft.com/azure/role-based-access-control/check-access).
 
 ### <a name="decide-subscription-and-region"></a>Rozhodnutí o předplatném a oblasti
 
@@ -120,7 +120,7 @@ Spusťte následující postup v instanci Cloud Shell pomocí prostředí PowerS
         ./create_aad_script.ps1
     ```
 
-4. Spuštění skriptu AAD trvá přibližně 2 minuty, takže se na něj zobrazí hodnoty na obrazovce a také soubor JSON ve stejném adresáři. Pokud jste museli skript spustit někomu jinému, požádejte ho, aby s vámi nasdílel tento výstup.
+4. Spuštění skriptu AAD trvá přibližně 2 minuty a na obrazovce se vytvoří výstup hodnot na obrazovce a také soubor JSON ve stejném adresáři. Pokud jste museli skript spustit někomu jinému, požádejte ho, aby s vámi nasdílel tento výstup.
 
 ### <a name="create-sentinel-account"></a>Vytvořit účet Sentinel
 
@@ -132,11 +132,11 @@ Použijte postup vytvoření bezplatného účtu s Sentinel:
 2. Zadejte požadované podrobnosti (křestní jméno, příjmení, uživatelské jméno, heslo a ID e-mailu) a vyplňte formulář.
 3. Ověřovací odkaz se pošle na registrované ID e-mailu. Vyberte odkaz uvedený v e-mailu a dokončete ověření.
 
-Proces registrace je po dokončení ověření dokončen. Poznamenejte si **uživatelské jméno** a **heslo Sentinel**.
+Proces registrace je dokončený. Až se ověření dokončí, poznamenejte si **uživatelské jméno** a **heslo Sentinel**.
 
 ## <a name="install"></a>Instalace
 
-Nyní jste připraveni nainstalovat FarmBeats. Pomocí následujících kroků spusťte instalaci –
+Nyní jste připraveni nainstalovat FarmBeats. Spusťte instalaci podle následujících kroků:
 
 1. Přihlaste se k portálu Azure. V pravém horním rohu vyberte svůj účet a přepněte se na tenanta Azure AD, do kterého chcete nainstalovat Azure FarmBeats.
 
@@ -146,13 +146,17 @@ Nyní jste připraveni nainstalovat FarmBeats. Pomocí následujících kroků s
 
 4. Zobrazí se nové okno. Dokončete proces registrace výběrem správného předplatného, skupiny prostředků a umístění, do kterého chcete nainstalovat službu Azure FarmBeats.
 
-5. Zadejte e-mailovou adresu, která by měla přijímat výstrahy služby související se službou Azure FarmBeats v části **výstrahy služby FarmBeats** . Kliknutím na tlačítko Další v dolní části stránky přejdete na kartu **závislosti** . karta základy ![](./media/install-azure-farmbeats/create-azure-farmbeats-basics.png)
+5. Zadejte e-mailovou adresu, která by měla přijímat výstrahy služby související se službou Azure FarmBeats v části **výstrahy služby FarmBeats** . V dolní části stránky vyberte **Další** a přejděte na kartu **závislosti** .
+
+    ![Karta základy](./media/install-azure-farmbeats/create-azure-farmbeats-basics.png)
 
 6. Zkopírujte jednotlivé položky z výstupu [skriptu AAD](#create-an-aad-application) do vstupů v části aplikace AAD.
 
-7. V části účet Sentinel zadejte uživatelské jméno a heslo [účtu Sentinel](#create-sentinel-account) . Kliknutím na tlačítko Další přejdete na kartu **Revize + vytvořit** ![závislosti](./media/install-azure-farmbeats/create-azure-farmbeats-dependencies.png)
+7. V části účet Sentinel zadejte uživatelské jméno a heslo [účtu Sentinel](#create-sentinel-account) . Kliknutím na tlačítko **Další** přejdete na kartu **Revize + vytvořit** .
 
-8. Po ověření zadaných podrobností vyberte **OK**. Zobrazí se stránka Podmínky použití. Přečtěte si podmínek a vyberte **vytvořit** a spusťte instalaci. Automaticky budete přesměrováni na stránku, kde můžete postupovat podle postupu instalace.
+    ![Karta závislosti](./media/install-azure-farmbeats/create-azure-farmbeats-dependencies.png)
+
+8. Po ověření zadaných podrobností vyberte **OK**. Zobrazí se stránka Podmínky použití. Přečtěte si podmínek a vyberte **vytvořit** a spusťte instalaci. Budete přesměrováni na stránku, kde můžete postupovat podle pokynů k instalaci.
 
 Po dokončení instalace můžete ověřit instalaci a začít používat portál FarmBeats, a to tak, že přejdete na název webu, který jste zadali během instalace: https://\<FarmBeats-website-název >. azurewebsites. NET. Mělo by se zobrazit uživatelské rozhraní FarmBeats s možností vytváření farem.
 
@@ -161,6 +165,7 @@ Po dokončení instalace můžete ověřit instalaci a začít používat portá
 ## <a name="upgrade"></a>Upgrade
 
 Pokud chcete upgradovat FarmBeats na nejnovější verzi, spusťte následující kroky v instanci Cloud Shell pomocí prostředí PowerShell. Uživatel bude muset být vlastníkem předplatného, ve kterém je FarmBeats nainstalovaný.
+
 Uživatelé budou při prvním spuštění vyzváni k výběru předplatného a vytvoření účtu úložiště. Dokončete nastavení podle pokynů.
 
 1. Stažení [skriptu pro upgrade](https://aka.ms/FarmBeatsUpgradeScript)
@@ -181,7 +186,7 @@ Uživatelé budou při prvním spuštění vyzváni k výběru předplatného a 
         ./upgrade-farmbeats.ps1 -InputFilePath [Path to input.json file]
     ```
 
-Cesta ke vstupnímu souboru. JSON je volitelná. Pokud není zadaný, skript vás vyzve pro všechny požadované vstupy. Upgrade by se měl dokončit během přibližně 30 minut.
+Cesta ke vstupnímu souboru. JSON je volitelná. Pokud není zadaný, skript se vyzve pro všechny požadované vstupy. Upgrade by se měl dokončit během přibližně 30 minut.
 
 ## <a name="uninstall"></a>Odinstalace
 

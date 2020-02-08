@@ -13,18 +13,18 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 841ff610509c0d580ff8dca3a9fc14b816d56f1c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 9760f09f2588f09263c96cf8c1be74129b117009
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983218"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085376"
 ---
 # <a name="authentication-basics"></a>Základy ověřování
 
 ## <a name="what-is-authentication"></a>Co je ověřování
 
-Tento článek popisuje mnohé z konceptů ověřování, které budete potřebovat při vytváření chráněných webových aplikací, webových rozhraní API nebo aplikací, které volají chráněná webová rozhraní API. Pokud se zobrazí termín, který neznáte, vyzkoušejte náš (Glosář) [Developer-glossary.md].
+Tento článek popisuje mnohé z konceptů ověřování, které budete potřebovat při vytváření chráněných webových aplikací, webových rozhraní API nebo aplikací, které volají chráněná webová rozhraní API. Pokud se zobrazí termín, který neznáte, vyzkoušejte náš [Glosář](developer-glossary.md).
 
 **Ověřování** je proces prokazující, na koho jste se rozhodli. V angličtině se pro ověřování někdy používá zkrácené slovo AuthN.
 
@@ -38,7 +38,7 @@ Centralizovaný poskytovatel identity je ještě důležitější pro aplikace, 
 
 Platforma Microsoft Identity usnadňuje ověřování pro vývojáře aplikací tím, že poskytuje identitu jako službu a podporuje standardní protokoly, jako je [OAuth 2,0](https://oauth.net/2/) a [OpenID Connect](https://openid.net/connect/), a také open source knihovny pro různé platformy, které vám pomůžou rychle začít vytvářet kódování. Umožňuje vývojářům sestavovat aplikace, které přihlásí všechny identity Microsoftu, získat tokeny pro volání [Microsoft Graph](https://developer.microsoft.com/graph/), jiná rozhraní API Microsoftu nebo rozhraní API, která vývojáři sestavili. Další informace najdete v tématu [vývoj platformy Microsoft Identity Platform](about-microsoft-identity-platform.md).
 
-### <a name="tenants"></a>tenantů
+### <a name="tenants"></a>Klienti
 
 Cloud identity provider obsluhuje mnoho organizací. Aby bylo možné uživatele z různých organizací oddělit, je služba Azure AD rozdělená na klienty s jedním klientem na organizaci.
 
@@ -85,7 +85,7 @@ Aby mohl poskytovatel identity zjistit, jestli má uživatel přístup ke konkr�
 
 * Přizpůsobte si branding své aplikace v dialogovém okně přihlášení. To je důležité, protože se jedná o první prostředí, které bude mít uživatel s vaší aplikací.
 * Rozhodněte se, jestli chcete uživatelům umožnit, aby se přihlásili jenom v případě, že patří do vaší organizace. Toto je jediná klientská aplikace. Nebo Umožněte uživatelům, aby se přihlásili pomocí pracovního nebo školního účtu. Toto je víceklientské aplikace. Můžete také umožnit osobní účty Microsoft nebo sociální účet z LinkedInu, Google atd.
-* požádat o oprávnění rozsahu. Můžete například požádat o obor "User. Read", který uděluje oprávnění ke čtení profilu přihlášeného uživatele.
+* Požádat o oprávnění rozsahu. Můžete například požádat o obor "User. Read", který uděluje oprávnění ke čtení profilu přihlášeného uživatele.
 * Definujte obory definující přístup k webovému rozhraní API. Když aplikace chce získat přístup k vašemu rozhraní API, obvykle bude potřebovat požádat o oprávnění k definovaným oborům.
 * Sdílejte tajný klíč k Azure AD, který prokáže identitu aplikace službě Azure AD.  To je důležité v případě, kdy je aplikace důvěrná klientská aplikace. Důvěrná klientská aplikace je aplikace, která může bezpečně uchovávat přihlašovací údaje. Pro uložení přihlašovacích údajů vyžadují důvěryhodný back-end Server.
 

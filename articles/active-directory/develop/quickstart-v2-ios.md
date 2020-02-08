@@ -2,22 +2,22 @@
 title: Microsoft Identity Platform iOS a macOS – rychlý Start | Azure
 description: Přečtěte si, jak se přihlašovat uživatelé a dotazy Microsoft Graph v aplikaci pro iOS nebo macOS.
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/24/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 25e37d27805adb47fae19bdcc0e94253f8c4ccf2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 4dea0feb5d5a1cb42640b1fc05bb185e970ae8af
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703452"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084494"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Rychlý Start: přihlášení uživatelů a volání rozhraní Microsoft Graph API z aplikace pro iOS nebo macOS
 
@@ -40,7 +40,7 @@ Tento rychlý Start se týká aplikací pro iOS a macOS. Některé kroky jsou po
 > * [Ruční] [Možnost 2: Registrace a ruční konfigurace aplikace a vzorového kódu](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-the-code-sample"></a>Možnost 1: registrace a Automatická konfigurace aplikace a stažení ukázky kódu
-> #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
+> #### <a name="step-1-register-your-application"></a>Krok 1: Zaregistrujte si aplikaci
 > K registraci aplikace
 > 1. Přejít na nové podokno [Azure Portal-registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/IosQuickstartPage/sourceType/docs) .
 > 1. Zadejte název vaší aplikace a Vyberte **Zaregistrovat**.
@@ -48,7 +48,7 @@ Tento rychlý Start se týká aplikací pro iOS a macOS. Některé kroky jsou po
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Možnost 2: Registrace a ruční konfigurace aplikace a vzorového kódu
 >
-> #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
+> #### <a name="step-1-register-your-application"></a>Krok 1: Zaregistrujte si aplikaci
 > Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 >
 > 1. Přejděte na stránku [Registrace aplikací](https://aka.ms/MobileAppReg) Microsoft Identity Platform for Developers.
@@ -69,7 +69,7 @@ Tento rychlý Start se týká aplikací pro iOS a macOS. Některé kroky jsou po
 > > [Udělat změnu za mě]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Už nakonfigurované](media/quickstart-v2-ios/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy.
+> > ![Už nakonfigurované](media/quickstart-v2-ios/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy
 
 #### <a name="step-2-download-the-sample-project"></a>Krok 2: stažení ukázkového projektu
 
@@ -231,9 +231,9 @@ Knihovna MSAL používá k získání tokenů dvě metody: `acquireToken` a `acq
 
 #### <a name="acquiretoken-get-a-token-interactively"></a>acquireToken: interaktivní získání tokenu
 
-Některé situace vyžadují, aby uživatelé mohli pracovat s platformou Microsoft identity. V těchto případech může být koncový uživatel muset vybrat svůj účet, zadat jejich přihlašovací údaje nebo vyjádřit souhlas s oprávněními vaší aplikace. Například: 
+Některé situace vyžadují, aby uživatelé mohli pracovat s platformou Microsoft identity. V těchto případech může být koncový uživatel muset vybrat svůj účet, zadat jejich přihlašovací údaje nebo vyjádřit souhlas s oprávněními vaší aplikace. Například 
 
-* Při prvním přihlášení uživatele k aplikaci
+* Při prvním přihlášení k aplikaci
 * Pokud uživatel resetuje heslo, bude muset zadat své přihlašovací údaje. 
 * Když vaše aplikace požaduje při prvním pokusu o přístup k prostředku
 * Pokud jsou vyžadovány MFA nebo jiné zásady podmíněného přístupu

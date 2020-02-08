@@ -11,19 +11,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 2/7/2019
+ms.date: 2/7/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55b31dec0531add8e8c3b40bd9cc3e031ef30000
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: b5a74e03a5b166af85c809725c2c8b9a13b7e4f4
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066379"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085442"
 ---
-# <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure Active Directory (Azure AD)
+# <a name="develop-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Vývoj koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure Active Directory (Azure AD)
 
 Jako vývojář aplikace můžete použít systém pro rozhraní API pro správu uživatelů mezi doménami (SCIM) a povolit tak Automatické zřizování uživatelů a skupin mezi vaší aplikací a službou Azure AD. Tento článek popisuje, jak vytvořit koncový bod SCIM a jak ho integrovat se službou zřizování Azure AD. Specifikace SCIM poskytuje společné uživatelské schéma pro zřizování. Při použití ve spojení s federačními standardy, jako je SAML nebo OpenID Connect, SCIM poskytuje správcům ucelené řešení založené na standardech pro správu přístupu.
 
@@ -543,7 +543,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
     }
 }
 ```
-#### <a name="delete-user"></a>Odstranění uživatele
+#### <a name="delete-user"></a>Odstranit uživatele
 
 ##### <a name="request-6"></a>Request
 
@@ -560,7 +560,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 * Aktualizace žádosti o opravu skupiny by měla v odpovědi vracet *HTTP 204 bez obsahu* . Vrácení textu se seznamem všech členů není vhodné.
 * Není nutné podporovat vrácení všech členů skupiny.
 
-#### <a name="create-group"></a>Vytvoření skupiny
+#### <a name="create-group"></a>Vytvořit skupinu
 
 ##### <a name="request-7"></a>Request
 
@@ -712,7 +712,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 *HTTP/1.1 204 bez obsahu*
 
-#### <a name="delete-group"></a>Odstranění skupiny
+#### <a name="delete-group"></a>Odstranit skupinu
 
 ##### <a name="request-13"></a>Request
 
@@ -721,6 +721,34 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 ##### <a name="response-13"></a>Základě
 
 *HTTP/1.1 204 bez obsahu*
+
+### <a name="security-requirements"></a>Požadavky na zabezpečení
+**Verze protokolu TLS**
+
+Jedinými přijatelnými verzemi protokolu TLS jsou TLS 1,2 a TLS 1,3. Nejsou povoleny žádné jiné verze TLS. Není povolená žádná verze SSL. 
+- Klíče RSA musí mít minimálně 2 048 bitů.
+- Klíče ECC musí být alespoň 256 bitů vygenerované pomocí schválené eliptické křivky.
+
+
+**Délky klíčů**
+
+Všechny služby musí používat certifikáty X. 509 generované pomocí kryptografických klíčů s dostatečnou délkou, což znamená:
+
+**Šifrovací sady**
+
+Všechny služby musí být nakonfigurovány tak, aby používaly následující šifrovací sady, v přesném pořadí uvedeném níže. Všimněte si, že pokud máte jenom certifikát RSA, nainstalovaná šifrovací sada ECDSA nemá žádný vliv. </br>
+
+Minimální pruh šifrovacích sad TLS 1,2:
+
+- TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+- TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+- TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+- TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+
 
 ## <a name="step-3-build-a-scim-endpoint"></a>Krok 3: Vytvoření koncového bodu SCIM
 
@@ -814,10 +842,6 @@ Vývojáři, kteří používají knihovny CLI, mohou hostovat své služby v ja
 ```csharp
  private static void Main(string[] arguments)
  {
- // Microsoft.SystemForCrossDomainIdentityManagement.IMonitor, 
- // Microsoft.SystemForCrossDomainIdentityManagement.IProvider and 
- // Microsoft.SystemForCrossDomainIdentityManagement.Service are all defined in 
- // Microsoft.SystemForCrossDomainIdentityManagement.Service.dll.  
 
  Microsoft.SystemForCrossDomainIdentityManagement.IMonitor monitor = 
    new DevelopersMonitor();
@@ -907,10 +931,6 @@ Pro hostování služby v rámci Internetová informační služba by vývojář
 ```csharp
  public class Startup
  {
- // Microsoft.SystemForCrossDomainIdentityManagement.IWebApplicationStarter, 
- // Microsoft.SystemForCrossDomainIdentityManagement.IMonitor and  
- // Microsoft.SystemForCrossDomainIdentityManagement.Service are all defined in 
- // Microsoft.SystemForCrossDomainIdentityManagement.Service.dll.  
 
  Microsoft.SystemForCrossDomainIdentityManagement.IWebApplicationStarter starter;
 

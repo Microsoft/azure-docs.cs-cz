@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 9d47986df9b9cbc6b8519aa0466b3434d6216e72
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: f2f2e02cdb5698d7569e5be177d54ca4dcb0ae02
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985998"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086537"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Nejčastější dotazy týkající se Application Gateway
 
@@ -134,9 +134,9 @@ Ano. Můžete nastavit vyprazdňování připojení pro změnu členů ve fondu 
 
 ### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>Můžu změnit velikost instance z středně na velká bez přerušení?
 
-Ano. Azure distribuuje instance napříč doménami aktualizace a selhání, aby se zajistilo, že instance selžou ve stejnou dobu. Application Gateway podporuje škálování přidáním více instancí stejné brány pro sdílení zatížení.
+Ano.
 
-## <a name="configuration"></a>Konfigurace
+## <a name="configuration"></a>Konfiguraci
 
 ### <a name="is-application-gateway-always-deployed-in-a-virtual-network"></a>Je Application Gateway vždycky nasazené ve virtuální síti?
 
@@ -322,7 +322,7 @@ Další informace najdete v tématu [OWASP chyby zabezpečení nejvyšší úrov
 
 ### <a name="does-waf-support-ddos-protection"></a>Podporuje WAF ochranu DDoS?
 
-Ano. Službu DDoS Protection můžete povolit ve virtuální síti, ve které je nasazená aplikační brána. Toto nastavení zajistí, aby služba Azure DDoS Protection chránila také virtuální IP adresu aplikační brány.
+Ano. Můžete povolit DDoS Protection ve virtuální síti, ve které je nasazená Aplikační brána. Toto nastavení zajišťuje, že služba Azure DDoS Protection také chrání virtuální IP adresu služby Application Gateway.
 
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Je k dispozici návod k migraci z SKU V1 na SKU 2?
 

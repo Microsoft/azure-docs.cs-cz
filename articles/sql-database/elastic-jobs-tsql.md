@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
-ms.date: 01/25/2019
-ms.openlocfilehash: 6b70eb1a6e51c98311ae51648b1a9618f9c3349d
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 02/07/2020
+ms.openlocfilehash: c228f3d6591cd72845101c00188f3fc4a55be644
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861332"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087347"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Vytvoření a správa úloh Elastic Database pomocí jazyka Transact-SQL (T-SQL)
 
@@ -189,10 +189,13 @@ Chcete-li například seskupit všechny výsledky ze stejného spuštění úloh
 
 Následující příklad vytvoří novou úlohu pro shromažďování údajů o výkonu z více databází.
 
-Ve výchozím nastavení bude Agent úlohy v nástroji Hledat tabulku pro uložení vrácených výsledků. V důsledku toho bude nutné přihlášení přidružené k přihlašovacím údajům použitým pro výstupní přihlašovací údaje mít dostatečná oprávnění k provedení této akce. Pokud chcete tabulku vytvořit znovu před časem, musí mít následující vlastnosti:
+Ve výchozím nastavení vytvoří Agent úlohy výstupní tabulku pro uložení vrácených výsledků. Proto musí být objekt zabezpečení databáze přidružený k výstupnímu přihlašovacímu údaji minimálně následující oprávnění: `CREATE TABLE` v databázi, `ALTER`, `SELECT`, `INSERT`, `DELETE` ve výstupní tabulce nebo jeho schématu a `SELECT` v zobrazení katalogu [Sys. indexs](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql) .
+
+Pokud chcete tabulku vytvořit znovu před časem, musí mít následující vlastnosti:
 1. Sloupce se správným názvem a datovými typy pro sadu výsledků.
 2. Další sloupec pro internal_execution_id s datovým typem uniqueidentifier.
 3. Neclusterovaný index s názvem `IX_<TableName>_Internal_Execution_ID` ve sloupci internal_execution_id.
+4. Všechna oprávnění uvedená výše s výjimkou oprávnění `CREATE TABLE` k databázi.
 
 Připojte se k [*databázi úloh*](sql-database-job-automation-overview.md#job-database) a spusťte následující příkazy:
 
@@ -521,7 +524,7 @@ Popis úlohy Popis je nvarchar (512).
 [ **\@Enabled =** ] povoleno  
 Určuje, jestli je plán úlohy povolený (1) nebo není povolený (0). Povoleno je bit.
 
-[ **\@schedule_interval_type=** ] schedule_interval_type  
+[ **\@schedule_interval_type =** ] schedule_interval_type  
 Hodnota označuje, kdy má být úloha spuštěna. schedule_interval_type je nvarchar (50) a může to být jedna z následujících hodnot:
 
 - ' Jednou ',
@@ -906,7 +909,7 @@ Výstupní parametr, kterému bude přiřazeno ID spuštění úlohy. job_versio
 0 (úspěch) nebo 1 (chyba)
 
 #### <a name="remarks"></a>Poznámky
-Žádné.
+Žádné
  
 #### <a name="permissions"></a>Oprávnění
 Ve výchozím nastavení mohou tuto uloženou proceduru spustit členové pevné role serveru sysadmin. Omezují uživatele jenom na to, že budou moct monitorovat úlohy, a vy můžete v databázi agenta úlohy zadat, aby se při vytváření agenta úloh účastnila Tato databázová role:
@@ -934,7 +937,7 @@ Identifikační číslo spuštění úlohy, které se má zastavit. job_executio
 0 (úspěch) nebo 1 (chyba)
 
 #### <a name="remarks"></a>Poznámky
-Žádné.
+Žádné
  
 #### <a name="permissions"></a>Oprávnění
 Ve výchozím nastavení mohou tuto uloženou proceduru spustit členové pevné role serveru sysadmin. Omezují uživatele jenom na to, že budou moct monitorovat úlohy, a vy můžete v databázi agenta úlohy zadat, aby se při vytváření agenta úloh účastnila Tato databázová role:
@@ -994,7 +997,7 @@ Název cílové skupiny, která se má odstranit target_group_name je nvarchar (
 0 (úspěch) nebo 1 (chyba)
 
 #### <a name="remarks"></a>Poznámky
-Žádné.
+Žádné
 
 #### <a name="permissions"></a>Oprávnění
 Ve výchozím nastavení mohou tuto uloženou proceduru spustit členové pevné role serveru sysadmin. Omezují uživatele jenom na to, že budou moct monitorovat úlohy, a vy můžete v databázi agenta úlohy zadat, aby se při vytváření agenta úloh účastnila Tato databázová role:
@@ -1027,7 +1030,7 @@ Název cílové skupiny, do které bude člen přidán. target_group_name je nva
 [ **\@membership_type =** ] membership_type  
 Určuje, jestli bude cílový člen skupiny zahrnutý nebo vyloučený. target_group_name je nvarchar (128) s výchozím nastavením include. Platné hodnoty pro target_group_name jsou include nebo Exclude.
 
-[ **\@target_type =** ] 'target_type'  
+[ **\@target_type =** ] target_type  
 Typ cílové databáze nebo kolekce databází včetně všech databází na serveru, všech databází v elastickém fondu, všech databází v mapě horizontálních oddílů nebo jednotlivé databáze. target_type je nvarchar (128) bez výchozího nastavení. Platné hodnoty pro target_type jsou "SqlServer", "SqlElasticPool", "SqlDatabase" nebo "SqlShardMap". 
 
 [ **\@refresh_credential_name =** ] refresh_credential_name  
@@ -1192,7 +1195,7 @@ GO
 V [databázi Jobs](sql-database-job-automation-overview.md#job-database)jsou k dispozici následující zobrazení.
 
 
-|Zobrazit  |Popis  |
+|Zobrazení  |Popis  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  Zobrazuje historii spuštění úlohy.      |
 |[úlohy](#jobs-view)     |   Zobrazí všechny úlohy.      |
@@ -1210,7 +1213,7 @@ V [databázi Jobs](sql-database-job-automation-overview.md#job-database)jsou k d
 Zobrazuje historii spuštění úlohy.
 
 
-|Název sloupce|   Data type   |Popis|
+|název sloupce|   Typ dat   |Popis|
 |---------|---------|---------|
 |**job_execution_id**   |uniqueidentifier|  Jedinečné ID instance provádění úlohy.
 |**job_name**   |nvarchar (128)  |Název úlohy
@@ -1238,7 +1241,7 @@ Zobrazuje historii spuštění úlohy.
 
 Zobrazí všechny úlohy.
 
-|Název sloupce|   Data type|  Popis|
+|název sloupce|   Typ dat|  Popis|
 |------|------|-------|
 |**job_name**|  nvarchar (128)   |Název úlohy|
 |**job_id**|    uniqueidentifier    |Jedinečné ID úlohy|
@@ -1256,7 +1259,7 @@ Zobrazí všechny úlohy.
 
 Zobrazuje všechny verze úloh.
 
-|Název sloupce|   Data type|  Popis|
+|název sloupce|   Typ dat|  Popis|
 |------|------|-------|
 |**job_name**|  nvarchar (128)   |Název úlohy|
 |**job_id**|    uniqueidentifier    |Jedinečné ID úlohy|
@@ -1269,7 +1272,7 @@ Zobrazuje všechny verze úloh.
 
 Zobrazuje všechny kroky v aktuální verzi každé úlohy.
 
-|Název sloupce    |Data type| Popis|
+|název sloupce    |Typ dat| Popis|
 |------|------|-------|
 |**job_name**   |nvarchar (128)| Název úlohy|
 |**job_id** |uniqueidentifier   |Jedinečné ID úlohy|
@@ -1310,7 +1313,7 @@ Zobrazí všechny kroky ve všech verzích každé úlohy. Schéma je stejné ja
 
 Zobrazí seznam všech cílových skupin.
 
-|Název sloupce|Data type| Popis|
+|název sloupce|Typ dat| Popis|
 |-----|-----|-----|
 |**target_group_name**| nvarchar (128)   |Název cílové skupiny, kolekce databází. 
 |**target_group_id**    |uniqueidentifier   |Jedinečné ID cílové skupiny
@@ -1321,7 +1324,7 @@ Zobrazí seznam všech cílových skupin.
 
 Zobrazí všechny členy všech cílových skupin.
 
-|Název sloupce|Data type| Popis|
+|název sloupce|Typ dat| Popis|
 |-----|-----|-----|
 |**target_group_name**  |nvarchar (128|Název cílové skupiny, kolekce databází. |
 |**target_group_id**    |uniqueidentifier   |Jedinečné ID cílové skupiny|
@@ -1337,7 +1340,7 @@ Zobrazí všechny členy všech cílových skupin.
 |**shard_map_name** |nvarchar (128)| Název mapy horizontálních oddílů obsažené v cílové skupině. Zadáno pouze v případě, že target_type je ' SqlShardMap '.|
 
 
-## <a name="resources"></a>Materiály
+## <a name="resources"></a>Prostředky
 
  - ![Ikona odkazu na téma](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "Ikona odkazu na téma") [– konvence syntaxe Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
 

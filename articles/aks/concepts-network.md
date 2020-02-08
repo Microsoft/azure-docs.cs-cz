@@ -5,13 +5,14 @@ author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
+ms.custom: fasttrack-edit
 ms.author: mlearned
-ms.openlocfilehash: 86fa59a3d1c07aae842404c465b908e550708071
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 06825f184365cfc439167be15580eb19bf5ecb38
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047463"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084275"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Koncepty sítě pro aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -106,6 +107,8 @@ Mezi kubenet a Azure CNI existují následující rozdíly v chování:
 | Přístup k prostředkům zabezpečeným koncovými body služby                                             | Podporováno | Podporováno |
 | Vystavení služeb Kubernetes pomocí služby Vyrovnávání zatížení, služby App Gateway nebo řadiče pro příchozí přenosy | Podporováno | Podporováno |
 | Výchozí Azure DNS a soukromé zóny                                                          | Podporováno | Podporováno |
+
+V souvislosti se službou DNS nabízí CoreDNS sada démonů, která je spuštěná v AKS, pomocí kubenet i služby Azure CNI plugins. Další informace o CoreDNS v Kubernetes najdete v tématu [přizpůsobení služby DNS](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/). Služba CoreDNS je nakonfigurovaná na výchozí hodnotu pro přeposílání neznámých domén na servery DNS uzlů, jinými slovy, na funkce DNS Azure Virtual Network, kde je nasazený cluster AKS. Proto Azure DNS a soukromé zóny budou fungovat pro lusky běžící v AKS.
 
 ### <a name="support-scope-between-network-models"></a>Rozsah podpory mezi síťovými modely
 

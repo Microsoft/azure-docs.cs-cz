@@ -6,48 +6,130 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/21/2019
+ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: 3aa4da9a9cf3d1d4b664e81f1fd18f2b225d731d
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: d678a29de9dea8a5a2f6d0259a452ca4c69feb03
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73799764"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086907"
 ---
 ## <a name="personal-information-entity-types"></a>Typy entit osobních informací:
 
-### <a name="phone-number"></a>Telefonní číslo
+### <a name="person"></a>Person (Osoba)
+Rozpoznat jména osob v textu.
 
-Telefonní čísla. 
+Jazyky:
+* Verze Public Preview: `English`
 
-Jazyky
+| Název podtypu | Popis                                               | K dispozici počínaje verzí modelu |
+|--------------|-----------------------------------------------------------|----------------------------------------|
+| Není k dispozici          | Rozpoznané názvy, například `Bill Gates`, `Marie Curie` | `2020-02-01`                           |
+
+### <a name="organization"></a>Organizace  
+
+Rozpoznávání organizací, firem, organizací, společností, klubů a dalších skupin lidí
+
+Jazyky: 
 
 * Verze Public Preview: `English`
 
-| Název podtypu           | Popis                                           |
-|------------------------|-------------------------------------------------------|
-| Není dostupné.                    | Telefonní čísla, například `+1 123-123-123`.          |
-| Telefonní číslo v EU        | Telefonní čísla specifická pro Evropskou unii.         |
-| Číslo mobilního telefonu v EU | Mobilní telefonní čísla specifická pro Evropskou unii. |
+| Název podtypu | Popis                                                                                       | K dispozici počínaje verzí modelu|
+|--------------|---------------------------------------------------------------------------------------------------|--------------|
+| Není k dispozici          | organizace, například `Microsoft``NASA``National Oceanic and Atmospheric Administration` | `2020-02-01` |
+
+### <a name="phone-number"></a>Telefonní číslo
+
+Telefonní čísla (jenom telefonní čísla USA). 
+
+Jazyky:
+
+* Verze Public Preview: `English`
+
+| Název podtypu | Popis                                    | K dispozici počínaje verzí modelu |
+|--------------|------------------------------------------------|----------------------------------------|
+| Není k dispozici          | Telefonní čísla USA, například `(312) 555-0176` | `2020-02-01`                           |
+
+### <a name="email"></a>Email
+
+E-mailovou adresu. 
+
+Jazyky:
+
+* Verze Public Preview: `English`
+
+| Název podtypu | Popis                                      | K dispozici počínaje verzí modelu |
+|--------------|--------------------------------------------------|----------------------------------------|
+| Není k dispozici          | E-mailová adresa, například `support@contoso.com` | `2020-02-01`                           |
+
+### <a name="url"></a>Adresa URL
+
+Internetové adresy URL.
+
+Jazyky:
+
+* Verze Public Preview: `English`
+
+| Název podtypu | Popis                                          | K dispozici počínaje verzí modelu |
+|--------------|------------------------------------------------------|----------------------------------------|
+| Není k dispozici          | Adresy URL webů, například `https://www.bing.com` | `2020-02-01`                           |
+
+### <a name="ip-address"></a>IP adresa
+
+Adresa Internet Protocol
+
+Jazyky:
+
+* Verze Public Preview: `English`
+
+| Název podtypu | Popis                              | K dispozici počínaje verzí modelu |
+|--------------|------------------------------------------|----------------------------------------|
+| Není k dispozici          | Síťová adresa například `10.0.0.101` | `2020-02-01`                           |
+
+### <a name="quantity"></a>Množství 
+
+Číselné množství
+
+Jazyky:
+
+* Verze Public Preview: `English`
+
+| Název podtypu | Popis                   | K dispozici počínaje verzí modelu |
+|--------------|-------------------------------|----------------------------------------|
+| Věk          | `90 days old`, `30 years old` | `2020-02-01`                           |
+
+### <a name="datetime"></a>DateTime
+
+Entity data a času
+
+Jazyky:
+
+* Verze Public Preview: `English`
+
+| Název podtypu | Popis                   | K dispozici počínaje verzí modelu |
+|--------------|-------------------------------|----------------------------------------|
+| Datum         | `May 2nd, 2017`, `05/02/2017` | `2020-02-01`                           |
 
 ### <a name="eu-gps-coordinates"></a>Evropské unie GPS – souřadnice
 
  Souřadnice GPS pro umístění v rámci Evropské unie. 
 
-Jazyky
+Jazyky:
 
 * Verze Public Preview: `English`
 
-| Název podtypu | Popis                               |
-|--------------|-------------------------------------------|
-| Není dostupné.          | Souřadnice GPS v rámci Evropské unie |
+| Název podtypu | Popis                               | K dispozici počínaje verzí modelu |
+|--------------|-------------------------------------------|----------------------------------------|
+| Není k dispozici          | Souřadnice GPS v rámci Evropské unie | `2019-10-01`                           |
 
 ### <a name="azure-information"></a>Informace o Azure
 
 Identifikovatelné informace Azure včetně ověřovacích informací a připojovacích řetězců. 
 
-Jazyky
+* K dispozici počínaje verzí modelu `2019-10-01`.
+
+Jazyky:
 
 * Verze Public Preview: `English`
 
@@ -59,7 +141,7 @@ Jazyky
 | Připojovací řetězec Azure IoT           | Připojovací řetězec pro Azure Internet věcí (IoT)                        |
 | Heslo pro nastavení publikování v Azure        | Heslo pro nastavení publikování v Azure                                        |
 | Připojovací řetězec Azure Redis Cache   | Připojovací řetězec pro službu Azure cache pro Redis.                             |
-| SAS Azure                             | Připojovací řetězec pro službu Azure software as a Service (SAS).                     |
+| Azure SAS                             | Připojovací řetězec pro službu Azure software as a Service (SAS).                     |
 | Připojovací řetězec Azure Service Bus   | Připojovací řetězec pro službu Azure Service Bus.                                |
 | Klíč účtu Azure Storage             | Klíč účtu pro účet služby Azure Storage.                                   |
 | Klíč účtu Azure Storage (Obecné)   | Klíč obecného účtu pro účet služby Azure Storage.                           |
@@ -67,7 +149,9 @@ Jazyky
 
 ### <a name="identification"></a>Identifikace
 
-Jazyky
+* K dispozici počínaje verzí modelu `2019-10-01`.
+
+Jazyky:
 
 * Verze Public Preview: `English`
 
@@ -210,7 +294,7 @@ Saúdská Arábie
 Singapur
 * Číslo karty národního registračního ID (NRIC)
 
-Jižní Afrika
+Jihoafrická republika
 * Číslo ID
 * Registrační číslo rezidentu
 

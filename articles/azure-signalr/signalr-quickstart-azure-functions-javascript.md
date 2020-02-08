@@ -1,5 +1,5 @@
 ---
-title: Rychlý Start bez serveru služby Azure Signaler – JavaScript
+title: Vytvoření chatovací místnosti s Azure Functions a službou Signal pomocí JavaScriptu
 description: Rychlý start pro vytvoření chatovací místnosti pomocí služby Azure SignalR a Azure Functions.
 author: sffamily
 ms.service: signalr
@@ -7,30 +7,31 @@ ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: zhshang
-ms.openlocfilehash: eadeb0f0203868c2a1a37190fdd46e47bf26e8f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2726d5da2613be4ae2065246543d206cf814f353
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450261"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083187"
 ---
-# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-javascript"></a>Rychlé zprovoznění: Vytvoření chatovací místnosti pomocí Azure Functions a služby SignalR Service v JavaScriptu
+# <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Rychlý Start: použití JavaScriptu k vytvoření chatovací místnosti s Azure Functions a službou signalizace
 
-Služba Azure SignalR umožňuje snadné přidávání funkcí do aplikací v reálném čase. Řešení Azure Functions představuje bezserverovou platformu, která umožňuje spouštět kód, aniž byste museli spravovat nějakou infrastrukturu. V tomto rychlém startu se dozvíte, jak pomocí služby SignalR a Functions sestavíte bezserverovou aplikaci pro chat v reálném čase.
+Služba signalizace Azure umožňuje snadno přidat do aplikace funkce v reálném čase a Azure Functions je platforma bez serveru, která umožňuje spuštění kódu bez nutnosti spravovat infrastrukturu. V tomto rychlém startu pomocí JavaScriptu sestavíte aplikaci Chat bez serveru, která používá službu a funkce signalizace v reálném čase.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento rychlý start je možné použít v systému macOS, Windows nebo Linux.
+- Editor kódu, například [Visual Studio Code](https://code.visualstudio.com/)
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing), verze 2 nebo novější. Slouží ke spouštění aplikací Azure Functions místně.
+- [Node. js](https://nodejs.org/en/download/), verze 10. x
 
-Budete potřebovat nainstalovaný editor kódu, jako je třeba [Visual Studio Code](https://code.visualstudio.com/).
+   > [!NOTE]
+   > Příklady by měly fungovat s ostatními verzemi Node. js, další informace najdete v [dokumentaci k verzi Azure Functions runtime](../azure-functions/functions-versions.md#languages) .
 
-Nainstalujte [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing) (verze 2 nebo novější), abyste mohli spouštět aplikace Azure Functions místně.
+> [!NOTE]
+> Tento rychlý start je možné použít v systému macOS, Windows nebo Linux.
 
-V tomto rychlém startu se používá [Node. js](https://nodejs.org/en/download/) 10. x, ale měla by fungovat s ostatními verzemi. Další informace o podporovaných verzích Node. js najdete v [dokumentaci k verzím modulu runtime Azure Functions](../azure-functions/functions-versions.md#languages) .
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí svého účtu Azure.
 

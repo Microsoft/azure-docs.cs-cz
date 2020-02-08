@@ -3,12 +3,12 @@ title: Zabalení aplikace Service Fabric v Azure
 description: Přečtěte si o balení aplikace Service Fabric v Azure a o tom, jak připravit nasazení na cluster.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 16bd48963040a8e30ff81f40c01134014eaccf48
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 7c99eec28ac06ecf666d6dda1015f889841a5dbf
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639679"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083613"
 ---
 # <a name="package-an-application"></a>Balení aplikace
 
@@ -56,9 +56,9 @@ Další informace o tom, jak nakonfigurovat **SetupEntryPoint**, najdete v téma
 
 ### <a name="build-a-package-by-using-visual-studio"></a>Sestavení balíčku pomocí sady Visual Studio
 
-Použijete-li k vytvoření aplikace sadu Visual Studio 2015, můžete použít příkaz Package pro automatické vytvoření balíčku, který odpovídá rozložení popsané výše.
+Pokud jste k vytvoření aplikace použili sadu Visual Studio, můžete použít příkaz *Package* k automatickému vytvoření balíčku, který odpovídá rozložení popsané výše.
 
-Chcete-li vytvořit balíček, klikněte pravým tlačítkem myši na projekt aplikace v Průzkumník řešení a vyberte příkaz balíček, jak je znázorněno níže:
+Chcete-li vytvořit balíček, klikněte pravým tlačítkem myši na projekt aplikace v *Průzkumník řešení* a vyberte příkaz **balíček** :
 
 ![Balení aplikace pomocí sady Visual Studio][vs-package-command]
 
