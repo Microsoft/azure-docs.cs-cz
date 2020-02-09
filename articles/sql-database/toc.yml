@@ -463,6 +463,8 @@
                       href: saas-multitenantdb-schema-management.md
                     - name: ETL pro analýzu
                       href: saas-multitenantdb-tenant-analytics.md
+        - name: Žádost o navýšení kvóty
+          href: quota-increase-request.md
 - name: Databáze SQL
   items:
     - name: Dokumentace k databázím SQL

@@ -4,8 +4,6 @@
   items:
     - name: Co je Azure Monitor?
       href: overview.md
-    - name: Terminologické změny
-      href: terminology.md
     - name: Nejčastější dotazy
       href: faq.md
     - name: Co je nového?
@@ -1141,6 +1139,8 @@
       items:
         - name: Schéma
           href: platform/diagnostics-extension-schema-1dot3.md
+    - name: Terminologické změny
+      href: terminology.md
     - name: Application Insights
       items:
         - name: Automatické shromažďování závislostí
