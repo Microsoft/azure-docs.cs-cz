@@ -25,6 +25,9 @@
         - name: Vytvoření automatizovaného experimentu ML
           displayName: 'automl, automated, auto ml, portal, ui'
           href: tutorial-first-experiment-automated-ml.md
+        - name: Prognóza poptávky s využitím automatizovaného strojového učení (data o sdílení kol)
+          displayName: 'automl, automated, auto ml, portal, ui'
+          href: tutorial-automated-ml-forecast.md
     - name: Python SDK
       items:
         - name: Vytvoření prvního experimentu ML
