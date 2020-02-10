@@ -72,6 +72,8 @@
               href: howto-saml-token-encryption.md
             - name: Portály pro koncové uživatele
               href: end-user-experiences.md
+    - name: Řízení a viditelnost cloudových aplikací
+      href: cloud-app-security.md
     - name: Proxy aplikací pro místní aplikace
       items:
         - name: Proxy aplikací

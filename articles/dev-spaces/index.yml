@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Dokumentace k Azure Dev Spaces
-summary: Azure Dev Spaces umožňuje testovat a interaktivně vyvíjet kompletní aplikace mikroslužeb v Azure Kubernetes Service (AKS) bez replikování nebo napodobování závislostí. Služba Azure Dev Spaces snižuje náročnost a složitost spolupráce vašeho týmu ve sdíleném clusteru AKS. Umožňuje také spouštět a ladit kontejnery přímo v AKS.
+summary: Azure Dev Spaces je rozšíření AKS, které umožňuje snadno spouštět a ladit kód v kontextu větší aplikace. Umožňuje kompletně otestovat váš kód, využívat zarážky v kódu spuštěném v clusteru a sdílet vývojový cluster mezi členy týmu bez případných rušivých vlivů.
 metadata:
   title: Dokumentace k Azure Dev Spaces
-  description: Azure Dev Spaces umožňuje testovat a interaktivně vyvíjet kompletní aplikace mikroslužeb v Azure Kubernetes Service (AKS) bez replikování nebo napodobování závislostí. Služba Azure Dev Spaces snižuje náročnost a složitost spolupráce vašeho týmu ve sdíleném clusteru AKS. Umožňuje také spouštět a ladit kontejnery přímo v AKS.
+  description: Azure Dev Spaces je rozšíření AKS, které umožňuje snadno spouštět a ladit kód v kontextu větší aplikace. Umožňuje kompletně otestovat váš kód, využívat zarážky v kódu spuštěném v clusteru a sdílet vývojový cluster mezi členy týmu bez případných rušivých vlivů.
   services: azure-dev-spaces
   ms.service: azure-dev-spaces
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   ms.author: zarhoads
   manager: gwallace
   ms.date: 09/30/2019
-  ms.openlocfilehash: 96fe99c5eb2ef8600ee9cca1e63f9fc3451919c2
-  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.openlocfilehash: 8871b713806b7c80520d4b52112f84056d20bc26
+  ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 12/25/2019
-  ms.locfileid: "75438342"
+  ms.lasthandoff: 02/07/2020
+  ms.locfileid: "77057358"
 landingContent:
 - title: Informace o Azure Dev Spaces
   linkLists:

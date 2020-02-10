@@ -47,6 +47,8 @@
             - name: Deaktivace Azure Monitoru pro kontejnery
               href: ../azure-monitor/insights/container-insights-optout-openshift.md
               maintainContext: true
+    - name: Spouštění privilegovaných kontejnerů v clusteru Azure Red Hat OpenShift
+      href: howto-run-privileged-containers.md
 - name: Referenční informace
   items:
     - name: Rozhraní příkazového řádku platformy Azure Red Hat OpenShift

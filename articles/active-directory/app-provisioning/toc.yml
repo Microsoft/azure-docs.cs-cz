@@ -1,0 +1,107 @@
+- name: Dokumentace ke zřizování aplikací a HR
+  href: index.yml
+- name: Přehled
+  expanded: true
+  items:
+    - name: Co je zřizování aplikací?
+      href: user-provisioning.md
+- name: Kurzy
+  items:
+    - name: G Suite
+      href: /azure/active-directory/saas-apps/google-apps-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: ServiceNow
+      href: /azure/active-directory/saas-apps/servicenow-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: Amazon Web Services (AWS) – zřizování rolí
+      href: '/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-single-sign-ont?context=azure/active-directory/app-provisioning/context/app-provisioning-context'
+    - name: Workday
+      href: /azure/active-directory/saas-apps/workday-inbound-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: SAP SuccessFactors
+      href: /azure/active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: Všechny integrované aplikace v galerii
+      href: /azure/active-directory/saas-apps
+- name: Koncepty
+  expanded: true
+  items:
+    - name: Jak funguje zřizování aplikací
+      href: how-provisioning-works.md
+    - name: Plánování nasazení zřizování aplikací
+      href: plan-auto-user-provisioning.md
+    - name: Plánování nasazení zřizování HR v cloudu
+      href: plan-cloud-hr-provision.md
+- name: Návody
+  expanded: true
+  items:
+    - name: Konfigurace zřizování pro aplikaci v galerii
+      href: configure-automatic-user-provisioning-portal.md
+    - name: Úprava mapování atributů
+      items:
+        - name: Přizpůsobení mapování atributů
+          href: customize-application-attributes.md
+        - name: Zápis výrazů pro mapování atributů
+          href: functions-for-customizing-application-data.md
+    - name: Zahrnutí nebo vyloučení uživatelů a skupin z rozsahu
+      items:
+        - name: Vymezení uživatelů nebo skupin pro zřízení
+          href: define-conditional-rules-for-provisioning-user-accounts.md
+        - name: Přeskočení odstranění pro uživatele mimo rozsah
+          href: skip-out-of-scope-deletions.md
+    - name: Monitorování a vytváření sestav ke zřizování
+      items:
+        - name: Monitorování stavu zřizování a výkonu
+          href: application-provisioning-when-will-provisioning-finish-specific-user.md
+        - name: Sestava zřizování aplikací
+          href: check-status-user-account-provisioning.md
+        - name: Export a import konfigurace
+          href: export-import-provisioning-configuration.md
+    - name: Řešení potíží se zřizováním aplikací
+      items:
+        - name: Řešení potíží se zřizováním aplikací
+          href: application-provisioning-config-problem.md
+        - name: Stav karantény
+          href: application-provisioning-quarantine-status.md
+        - name: Problém s autorizací (nepovedlo se uložit přihlašovací údaje správce)
+          href: application-provisioning-config-problem-storage-limit.md
+        - name: Uživatelé nejsou zřízení
+          href: application-provisioning-config-problem-no-users-provisioned.md
+        - name: Zřízení nesprávných uživatelů
+          href: application-provisioning-config-problem-wrong-users-provisioned.md
+        - name: Chybějící atribut zdroje
+          href: user-provisioning-sync-attributes-for-mapping.md
+        - name: Úloha zřizování je pomalá
+          href: application-provisioning-when-will-provisioning-finish.md
+        - name: Protokoly zřizování
+          href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: Vytvoření koncového bodu SCIM a konfigurace zřizování
+      href: use-scim-to-provision-users-and-groups.md
+    - name: Automatizace konfigurace s využitím MS Graphu
+      href: application-provisioning-configure-api.md
+- name: Referenční informace
+  items:
+    - name: Volba metody zřizování
+      href: isv-automatic-provisioning-multi-tenant-apps.md
+    - name: Zřizování HR v cloudu
+      items:
+        - name: Referenční informace k atributu SuccessFactors
+          href: sap-successfactors-attribute-reference.md
+        - name: Referenční informace k atributu Workday
+          href: workday-attribute-reference.md
+    - name: Agent zřizování Azure AD Connect
+      items:
+        - name: Historie verzí agenta zřizování
+          href: provisioning-agent-release-version-history.md
+- name: Zdroje a prostředky
+  items:
+    - name: Možnosti pomoci a podpory pro vývojáře
+      href: /azure/active-directory/develop/developer-support-help-options
+    - name: Fórum Azure pro názory
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: Fórum MSDN
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/active-directory'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=active-directory'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: Videa
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

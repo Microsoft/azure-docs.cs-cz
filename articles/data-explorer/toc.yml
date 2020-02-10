@@ -98,7 +98,7 @@
           href: ingest-data-kafka.md
         - name: Logstash
           href: ingest-data-logstash.md
-        - name: data ve formátu json
+        - name: Data ve formátu json
           href: ingest-json-formats.md
     - name: Dotazování dat
       items:

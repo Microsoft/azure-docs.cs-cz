@@ -64,7 +64,7 @@
           href: set-up-customize-master-image.md
         - name: Instalace sady Office do hlavní image virtuálního pevného disku
           href: install-office-on-wvd-master-image.md
-    - name: Dynamické škálování hostitelů relace
+    - name: Automatické škálování hostitelů relace
       href: set-up-scaling-script.md
     - name: Vlastní kanál
       href: customize-feed-for-virtual-desktop-users.md

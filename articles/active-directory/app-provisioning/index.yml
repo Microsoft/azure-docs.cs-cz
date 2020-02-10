@@ -1,0 +1,67 @@
+### YamlMime:Landing
+title: Dokumentace ke zřizování aplikací a HR
+summary: Zřizování aplikací Azure Active Directory umožňuje automaticky vytvářet a spravovat uživatelské identity ve vašich cloudových aplikacích (SaaS). Azure AD také nabízí zřizování s využitím cloudových aplikací pro lidské zdroje (HR). Další informace o správě a nasazení zřizování aplikací a HR v cloudu najdete v našich průvodcích, šablonách a rychlých zprovozněních.
+metadata:
+  title: Dokumentace ke zřizování aplikací
+  description: Zřizování aplikací Azure Active Directory umožňuje automaticky vytvářet a spravovat uživatelské identity ve vašich cloudových aplikacích (SaaS). Azure AD také nabízí zřizování s využitím cloudových aplikací pro lidské zdroje (HR). Další informace o správě a nasazení zřizování aplikací a HR v cloudu najdete v našich průvodcích, šablonách a rychlých zprovozněních.
+  ms.service: active-directory
+  ms.subservice: app-mgmt
+  ms.workload: identity
+  ms.topic: landing-page
+  ms.date: 02/06/2020
+  author: msmimart
+  ms.author: mimart
+  manager: celested
+  ms.openlocfilehash: 02d9ee235de798e0c6095e0cbf60c08eabec53cd
+  ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 02/07/2020
+  ms.locfileid: "77065497"
+landingContent:
+- title: Zřizování uživatelů a skupin pro cloudovou aplikaci
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je zřizování aplikací?
+      url: user-provisioning.md
+    - text: Jak funguje zřizování
+      url: how-provisioning-works.md
+  - linkListType: tutorial
+    links:
+    - text: Zřizování pro SAP Cloud Platform Identity Authentication
+      url: /azure/active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - text: Zřizování pro Oracle Fusion ERP
+      url: /azure/active-directory/saas-apps/oracle-fusion-erp-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - text: Zřizování pro Atlassian Cloud
+      url: /azure/active-directory/saas-apps/atlassian-cloud-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+  - linkListType: how-to-guide
+    links:
+    - text: Přidávání aplikace v galerii? Konfigurace zřizování pro aplikaci
+      url: configure-automatic-user-provisioning-portal.md
+    - text: Přizpůsobení mapování atributů
+      url: customize-application-attributes.md
+    - text: Použití filtrů oborů
+      url: define-conditional-rules-for-provisioning-user-accounts.md
+- title: Vývoj aplikace s využitím SCIM pro zřizování
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Zřizování s využitím SCIM (blog zaměřený na standardy identit)
+      url: https://techcommunity.microsoft.com/t5/identity-standards-blog/provisioning-with-scim-getting-started/ba-p/880010
+  - linkListType: how-to-guide
+    links:
+    - text: Vyvíjíte aplikaci? Použití SCIM pro automatické zřizování
+      url: use-scim-to-provision-users-and-groups.md
+- title: Správa příchozího zřizování HR v cloudu
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Naplánování nasazení zřizování uživatelů HR v cloudu
+      url: plan-cloud-hr-provision.md
+  - linkListType: tutorial
+    links:
+    - text: Zřizování pro Workday
+      url: /azure/active-directory/saas-apps/workday-inbound-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - text: Zřizování pro SAP SuccessFactors
+      url: /azure/active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
