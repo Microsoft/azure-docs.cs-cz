@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: robinsh
-ms.openlocfilehash: 99acd43128bedcf3dba470f84c0a406861d77e2d
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 7805b9b3f000b2bc2e45272ab9ff469d5711e581
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147779"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110198"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Posílání zpráv z cloudu do zařízení pomocí IoT Hub (.NET)
 
@@ -44,11 +44,13 @@ Na konci tohoto kurzu spustíte dvě konzolové aplikace .NET.
 > IoT Hub podporuje sadu SDK pro mnoho platforem a jazyků zařízení, včetně C, Java, Pythonu a JavaScriptu, prostřednictvím [sad SDK pro zařízení Azure IoT](iot-hub-devguide-sdks.md). Podrobné pokyny, jak připojit zařízení k kódu tohoto kurzu a obecně k Azure IoT Hub, najdete v [příručce pro vývojáře IoT Hub](iot-hub-devguide.md).
 >
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Visual Studio
 
 * Aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) .
+
+* Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto článku používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="receive-messages-in-the-device-app"></a>Příjem zpráv v aplikaci zařízení
 
@@ -75,20 +77,20 @@ V této části Upravte aplikaci zařízení, kterou jste vytvořili v části [
     }
    ```
 
-1. Do metody **Main** přidejte následující metodu, která je přímo před `Console.ReadLine()` řádkem:
+1. Do metody **Main** přidejte následující metodu, která je přímo před `Console.ReadLine()`m řádkem:
 
    ```csharp
    ReceiveC2dAsync();
    ```
 
-`ReceiveAsync` Metoda asynchronně vrátí přijatou zprávu v okamžiku, kdy zařízení obdrží. Po určitém časovém limitu vrátí *hodnotu null* . V tomto příkladu je použita výchozí hodnota 1 minuta. Když aplikace obdrží *hodnotu null*, měla by nadále čekat na nové zprávy. Tento požadavek je důvodem pro `if (receivedMessage == null) continue` řádek.
+Metoda `ReceiveAsync` asynchronně vrátí přijatou zprávu v okamžiku, kdy zařízení přijalo. Po určitém časovém limitu vrátí *hodnotu null* . V tomto příkladu je použita výchozí hodnota 1 minuta. Když aplikace obdrží *hodnotu null*, měla by nadále čekat na nové zprávy. Tento požadavek je důvodem pro `if (receivedMessage == null) continue` řádek.
 
-Volání upozorňující `CompleteAsync()` na IoT Hub, že zpráva byla úspěšně zpracována. Zpráva může být bezpečně odebrána z fronty zařízení. Pokud se něco stalo s tím, že aplikaci pro zařízení zabránilo v dokončování zpracování zprávy, IoT Hub ji znovu doručí. Logika zpracování zprávy v aplikaci pro zařízení musí být *idempotentní*, aby se stejná zpráva zobrazovala vícekrát, což má stejný výsledek.
+Volání `CompleteAsync()` upozorní IoT Hub, že zpráva byla úspěšně zpracována. Zpráva může být bezpečně odebrána z fronty zařízení. Pokud se něco stalo s tím, že aplikaci pro zařízení zabránilo v dokončování zpracování zprávy, IoT Hub ji znovu doručí. Logika zpracování zprávy v aplikaci pro zařízení musí být *idempotentní*, aby se stejná zpráva zobrazovala vícekrát, což má stejný výsledek.
 
 Aplikace může také dočasně opustit zprávu, což vede k tomu, že centrum IoT uchová zprávu ve frontě pro budoucí spotřebu. Nebo může aplikace zprávu odmítat, což trvale odstraní zprávu z fronty. Další informace o životním cyklu zpráv z cloudu na zařízení najdete v tématu [zasílání zpráv D2C a C2D pomocí IoT Hub](iot-hub-devguide-messaging.md).
 
    > [!NOTE]
-   > Při použití protokolu https namísto MQTT nebo AMQP jako přenosu `ReceiveAsync` vrátí metoda okamžitě. Podporovaným vzorům pro zprávy typu cloud-zařízení pomocí protokolu HTTPS jsou občas připojená zařízení, která kontrolují zprávy zřídka (méně než každých 25 minut). Výsledkem vydávání většího protokolu HTTPS je IoT Hub omezování požadavků. Další informace o rozdílech mezi MQTT, AMQP a podporou protokolu HTTPS a omezením IoT Hub najdete v tématu [zasílání zpráv D2C a C2D pomocí IoT Hub](iot-hub-devguide-messaging.md).
+   > Při použití protokolu HTTPS namísto MQTT nebo AMQP jako přenosu vrátí metoda `ReceiveAsync` okamžitě. Podporovaným vzorům pro zprávy typu cloud-zařízení pomocí protokolu HTTPS jsou občas připojená zařízení, která kontrolují zprávy zřídka (méně než každých 25 minut). Výsledkem vydávání většího protokolu HTTPS je IoT Hub omezování požadavků. Další informace o rozdílech mezi MQTT, AMQP a podporou protokolu HTTPS a omezením IoT Hub najdete v tématu [zasílání zpráv D2C a C2D pomocí IoT Hub](iot-hub-devguide-messaging.md).
    >
 
 ## <a name="get-the-iot-hub-connection-string"></a>Získání připojovacího řetězce centra IoT Hub
@@ -113,7 +115,7 @@ Nyní napíšete konzolovou aplikaci .NET, která odesílá zprávy typu cloud-z
 
    Tento krok stáhne, nainstaluje a přidá odkaz na [balíček NuGet sady SDK služby Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices/).
 
-1. Do horní části `using` souboru **program.cs** přidejte následující příkaz.
+1. Do horní části souboru **program.cs** přidejte následující příkaz `using`.
 
    ``` csharp
    using Microsoft.Azure.Devices;
@@ -153,7 +155,7 @@ Nyní napíšete konzolovou aplikaci .NET, která odesílá zprávy typu cloud-z
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem na své řešení a vyberte **nastavit projekty po spuštění**.
 
-1. V **části běžné vlastnosti** > **spouštěný projekt**vyberte **více projektů po spuštění**a pak vyberte akci **spuštění** pro **ReadDeviceToCloudMessages**, **SimulatedDevice**a **SendCloudToDevice.** . Vyberte **OK** uložte provedené změny.
+1. V části **společné vlastnosti** > **spouštěný projekt**vyberte **více projektů po spuštění**a pak vyberte akci **spuštění** pro **ReadDeviceToCloudMessages**, **SimulatedDevice**a **SendCloudToDevice**. Kliknutím na **OK** uložte změny.
 
 1. Stiskněte klávesu **F5**. Všechny tři aplikace by se měly spustit. Vyberte okna **SendCloudToDevice** a stiskněte klávesu **ENTER**. Měla by se zobrazit zpráva přijímaná aplikací zařízení.
 
@@ -210,7 +212,7 @@ V této části upravíte aplikaci **SendCloudToDevice** tak, aby požádala o z
 > Pro zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu by měly být implementovány zásady opakování, například exponenciální omezení rychlosti, navržené při [zpracování přechodné chyby](/azure/architecture/best-practices/transient-faults).
 >
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto postupu jste zjistili, jak odesílat a přijímat zprávy z cloudu do zařízení.
 

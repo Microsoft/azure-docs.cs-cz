@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 02/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7eeaadc80a97a96e6effdfc9e5cc76c201998f3f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1c83ca0abfd17db873bec62f0a0d052703862a45
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438062"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110401"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Vytváření a správa přiřazení rolí v digitálních prozdvojeních Azure
 
@@ -36,12 +36,12 @@ Každé přiřazení role odpovídá následující definici:
 
 Následující tabulka popisuje jednotlivé atributy:
 
-| Atribut | Name (Název) | Požaduje se | Typ | Popis |
+| Atribut | Název | Požaduje se | Typ | Popis |
 | --- | --- | --- | --- | --- |
 | roleId | Identifikátor definice role | Ano | Řetězec | Jedinečné ID požadovaného přiřazení role Vyhledejte definice rolí a jejich identifikátor pomocí dotazu na následující tabulku rozhraní API systému nebo revize. |
 | ID objektu | Identifikátor objektu | Ano | Řetězec | ID Azure Active Directory, ID objektu zabezpečení služby nebo název domény. K čemu přiřazení role je přiřazeno. Přiřazení role musí být formátováno podle jeho přidruženého typu. Pro `DomainName` objectIdType musí objectId začínat znakem `“@”`. |
 | objectIdType | Typ identifikátoru objektu | Ano | Řetězec | Typ použitého identifikátoru objektu. Viz článek **podporované ObjectIdTypes** níže. |
-| Cesta | Cesta k prostoru | Ano | Řetězec | Úplná cesta pro přístup k objektu `Space`. Příklad: `/{Guid}/{Guid}`. Pokud identifikátor potřebuje přiřazení role pro celý graf, zadejte `"/"`. Tento znak určuje kořenový adresář, ale jeho použití se nedoporučuje. Vždy postupujte podle principu nejnižší úrovně oprávnění. |
+| path | Cesta k prostoru | Ano | Řetězec | Úplná cesta pro přístup k objektu `Space`. Příklad: `/{Guid}/{Guid}`. Pokud identifikátor potřebuje přiřazení role pro celý graf, zadejte `"/"`. Tento znak určuje kořenový adresář, ale jeho použití se nedoporučuje. Vždy postupujte podle principu nejnižší úrovně oprávnění. |
 | tenantId | Identifikátor tenanta | Různé | Řetězec | Ve většině případů Azure Active Directory ID tenanta. Zakázáno pro `DeviceId` a `TenantId` ObjectIdTypes. Vyžaduje se pro `UserId` a `ServicePrincipalId` ObjectIdTypes. Volitelné pro domainname ObjectIdType. |
 
 ### <a name="supported-role-definition-identifiers"></a>Podporované identifikátory definice rolí
@@ -94,7 +94,7 @@ Get-AzADServicePrincipal -ApplicationId <ApplicationId>
 
 Uživatel **s rolí správce může přiřadit roli správce** prostoru k uživateli tím, že na adresu URL přiřadí ověřený požadavek HTTP post:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 
@@ -116,7 +116,7 @@ S následujícím textem JSON:
 
 Pokud chcete zobrazit seznam všech dostupných rolí (definice rolí), proveďte ověřený požadavek HTTP GET na:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/system/roles
 ```
 
@@ -157,16 +157,16 @@ YOUR_MANAGEMENT_API_URL/system/roles
 
 Pokud chcete zkontrolovat přiřazení konkrétní role, proveďte ověřený požadavek HTTP GET na:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH&accessType=YOUR_ACCESS_TYPE&resourceType=YOUR_RESOURCE_TYPE
 ```
 
-| **Hodnota parametru** | **Vyžaduje** |  **Typ** |  **Popis** |
+| **Hodnota parametru** | **Požadovanou** |  **Typ** |  **Popis** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  Pravda | Řetězec |   Identifikátor objectId pro identifikátor UserId objectIdType |
-| YOUR_PATH | Pravda | Řetězec |   Vybraná cesta pro kontrolu přístupu. |
-| YOUR_ACCESS_TYPE |  Pravda | Řetězec |   *Číst*, *vytvořit*, *aktualizovat*nebo *Odstranit* |
-| YOUR_RESOURCE_TYPE | Pravda | Řetězec |  *Zařízení*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *ExtendedType*, *koncový bod*, *úložiště klíčů*, *Shoda*, *Ontology*, *Sestava*, *rutiny roledefinition*, *senzor*, *SensorExtendedProperty*, *prostor*, *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *systém*,  *UerDefinedFunction*, *User*, *UserBlobMetadata*nebo *UserExtendedProperty* |
+| YOUR_USER_ID |  True | Řetězec |   Identifikátor objectId pro identifikátor UserId objectIdType |
+| YOUR_PATH | True | Řetězec |   Vybraná cesta pro kontrolu přístupu. |
+| YOUR_ACCESS_TYPE |  True | Řetězec |   *Číst*, *vytvořit*, *aktualizovat*nebo *Odstranit* |
+| YOUR_RESOURCE_TYPE | True | Řetězec |  *Zařízení*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *ExtendedType*, *koncový bod*, *úložiště klíčů*, *Shoda*, *Ontology*, *Sestava*, *rutiny roledefinition*, *senzor*, *SensorExtendedProperty*, *prostor*, *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *systém*,  *UerDefinedFunction*, *User*, *UserBlobMetadata*nebo *UserExtendedProperty* |
 
 Úspěšný požadavek vrátí logickou `true` nebo `false` k označení, zda byl k dané cestě a prostředku přiřazen daný typ přístupu uživateli.
 
@@ -174,7 +174,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 
 Pokud chcete pro cestu získat všechna přiřazení rolí, proveďte ověřený požadavek HTTP GET na:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ```
 
@@ -200,7 +200,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 
 Pokud chcete odvolat oprávnění od příjemce, odstraňte přiřazení role tím, že provedete ověřený požadavek HTTP DELETE:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
 ```
 
@@ -214,7 +214,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
 
 Chcete-li vytvořit přiřazení role, proveďte ověřený požadavek HTTP POST na adresu URL:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 

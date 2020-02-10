@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6084eca4f7d2d6040eb3f32a9b28cfc50922d200
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 3db5cf0ddfec231a313df58e551061cbd5f9bef5
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896100"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110440"
 ---
 # <a name="about-point-to-site-vpn"></a>O síti VPN typu Point-to-site
 
@@ -45,7 +45,7 @@ Ověření klientského certifikátu se provádí pomocí brány VPN a probíhá
 
 ### <a name="authenticate-using-native-azure-active-directory-authentication"></a>Ověřování pomocí nativního ověřování Azure Active Directory
 
-Ověřování Azure AD umožňuje uživatelům připojit se k Azure pomocí svých Azure Active Directory přihlašovacích údajů. Nativní ověřování Azure AD se podporuje jenom pro protokol OpenVPN a Windows 10 a vyžaduje použití [klienta Azure VPN (Preview)](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab).
+Ověřování Azure AD umožňuje uživatelům připojit se k Azure pomocí svých Azure Active Directory přihlašovacích údajů. Nativní ověřování Azure AD se podporuje jenom pro protokol OpenVPN a Windows 10 a vyžaduje použití [klienta Azure VPN](https://go.microsoft.com/fwlink/?linkid=2117554).
 
 S nativním ověřováním Azure AD můžete využít podmíněný přístup Azure AD a také funkce Multi-Factor Authentication (MFA) pro VPN.
 
@@ -55,7 +55,7 @@ Pokud chcete nakonfigurovat ověřování Azure AD, musíte na vysoké úrovni p
 
 2. [Povolit ověřování Azure AD v bráně](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
 
-3. [Stažení a konfigurace klienta Azure VPN (Preview)](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)
+3. [Stažení a konfigurace klienta Azure VPN](https://go.microsoft.com/fwlink/?linkid=2117554)
 
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Ověřování pomocí serveru domény služby Active Directory (AD)
@@ -68,7 +68,7 @@ Server RADIUS se taky může integrovat se službou AD Certificate Services. To 
 
 Server RADIUS se taky může integrovat s jinými externími systémy identit. Tím se otevře dostatek možností ověřování pro P2S VPN, včetně Multi-Factor Options.
 
-![Point-to-site](./media/point-to-site-about/p2s.png "Typ point-to-site")
+![Point-to-site](./media/point-to-site-about/p2s.png "Point-to-site")
 
 ## <a name="what-are-the-client-configuration-requirements"></a>Jaké jsou požadavky na konfiguraci klienta?
 
@@ -139,7 +139,7 @@ Soubor zip také poskytuje hodnoty některých důležitých nastavení na stran
 | AES256    | SHA1 | GROUP_NONE |
 
 ## <a name="TLS policies"></a>Jaké zásady TLS jsou nakonfigurované na bránách VPN pro P2S?
-**TLS**
+**PROTOKOLY**
 
 |**Zásady** |
 |---| 

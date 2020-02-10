@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 10dae81bf0ca8958f7c10aebef501fc604c4839c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bb3a8c94b377fb9c9150945ec4cf5980e006dd34
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76706047"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110605"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Použití Azure Active Directory k ověřování pomocí MySQL
 
@@ -40,42 +40,7 @@ Pro každý server MySQL se dá vytvořit jenom jeden správce Azure AD a výbě
 
 V budoucí verzi budeme podporovat zadání skupiny Azure AD, ne jednotlivého uživatele, aby měli více správců, ale tato akce se ale v tuto chvíli nepodporuje.
 
-## <a name="creating-azure-ad-users-in-azure-database-for-mysql"></a>Vytváření uživatelů Azure AD v Azure Database for MySQL
-
-Pokud chcete do databáze Azure Database for MySQL přidat uživatele Azure AD, proveďte následující kroky po připojení (viz později v části Jak se připojit):
-
-1. Nejdřív zajistěte, aby byl uživatel služby Azure AD `<user>@yourtenant.onmicrosoft.com` platným uživatelem v tenantovi Azure AD.
-2. Přihlaste se ke své instanci Azure Database for MySQL jako uživatel s oprávněními správce Azure AD.
-3. Vytvořit uživatele `<user>@yourtenant.onmicrosoft.com` v Azure Database for MySQL.
-
-**Příklad:**
-
-```sql
-CREATE AADUSER 'user1@yourtenant.onmicrosoft.com';
-```
-
-Pro uživatelská jména, která jsou delší než 32 znaků, doporučujeme místo toho použít alias, který se použije při připojování: 
-
-Příklad:
-
-```sql
-CREATE AADUSER 'userWithLongName@yourtenant.onmicrosoft.com' as 'userDefinedShortName'; 
-```
-
-> [!NOTE]
-> Ověřování uživatele prostřednictvím služby Azure AD neuděluje uživateli žádná oprávnění k přístupu k objektům v rámci databáze Azure Database for MySQL. Uživateli musíte udělit požadovaná oprávnění ručně.
-
-## <a name="creating-azure-ad-groups-in-azure-database-for-mysql"></a>Vytváření skupin Azure AD v Azure Database for MySQL
-
-Pokud chcete skupině Azure AD povolit přístup k vaší databázi, použijte stejný mechanismus jako u uživatelů, ale místo toho zadejte název skupiny:
-
-**Příklad:**
-
-```sql
-CREATE AADUSER 'Prod_DB_Readonly';
-```
-
-Pokud se přihlásíte, budou členové skupiny používat své osobní přístupové tokeny, ale budou se podepisovat pomocí názvu skupiny zadaného jako uživatelské jméno.
+Po nakonfigurování správce se teď můžete přihlásit:
 
 ## <a name="connecting-to-azure-database-for-mysql-using-azure-ad"></a>Připojení k Azure Database for MySQL pomocí Azure AD
 
@@ -156,12 +121,53 @@ Při připojování musíte použít přístupový token jako heslo uživatele M
 Při použití rozhraní příkazového řádku můžete použít tuto krátkou ruku k připojení: 
 
 **Příklad (Linux/macOS):**
-
-MySQL-h mydb.mysql.database.azure.com \--User user@tenant.onmicrosoft.com@mydb \--Enable-nešifrovaný modul plug-in \--Password =`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`  
+```
+mysql -h mydb.mysql.database.azure.com \ 
+  --user user@tenant.onmicrosoft.com@mydb \ 
+  --enable-cleartext-plugin \ 
+  --password=`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`
+```
 
 Poznamenejte si nastavení Povolit-nešifrovaný modul plug-in – je třeba použít podobnou konfiguraci s ostatními klienty, aby se zajistilo, že se token pošle na server bez hashování.
 
 Nyní jste ověřeni na server MySQL pomocí ověřování Azure AD.
+
+## <a name="creating-azure-ad-users-in-azure-database-for-mysql"></a>Vytváření uživatelů Azure AD v Azure Database for MySQL
+
+Pokud chcete do databáze Azure Database for MySQL přidat uživatele Azure AD, proveďte následující kroky po připojení (viz později v části Jak se připojit):
+
+1. Nejdřív zajistěte, aby byl uživatel služby Azure AD `<user>@yourtenant.onmicrosoft.com` platným uživatelem v tenantovi Azure AD.
+2. Přihlaste se ke své instanci Azure Database for MySQL jako uživatel s oprávněními správce Azure AD.
+3. Vytvořit uživatele `<user>@yourtenant.onmicrosoft.com` v Azure Database for MySQL.
+
+**Příklad:**
+
+```sql
+CREATE AADUSER 'user1@yourtenant.onmicrosoft.com';
+```
+
+Pro uživatelská jména, která jsou delší než 32 znaků, doporučujeme místo toho použít alias, který se použije při připojování: 
+
+Příklad:
+
+```sql
+CREATE AADUSER 'userWithLongName@yourtenant.onmicrosoft.com' as 'userDefinedShortName'; 
+```
+
+> [!NOTE]
+> Ověřování uživatele prostřednictvím služby Azure AD neuděluje uživateli žádná oprávnění k přístupu k objektům v rámci databáze Azure Database for MySQL. Uživateli musíte udělit požadovaná oprávnění ručně.
+
+## <a name="creating-azure-ad-groups-in-azure-database-for-mysql"></a>Vytváření skupin Azure AD v Azure Database for MySQL
+
+Pokud chcete skupině Azure AD povolit přístup k vaší databázi, použijte stejný mechanismus jako u uživatelů, ale místo toho zadejte název skupiny:
+
+**Příklad:**
+
+```sql
+CREATE AADUSER 'Prod_DB_Readonly';
+```
+
+Pokud se přihlásíte, budou členové skupiny používat své osobní přístupové tokeny, ale budou se podepisovat pomocí názvu skupiny zadaného jako uživatelské jméno.
 
 ## <a name="token-validation"></a>Ověření tokenu
 
@@ -176,7 +182,7 @@ Ověřování Azure AD v Azure Database for MySQL zajišťuje, aby uživatel exi
 
 Většina ovladačů je podporovaná, ale nezapomeňte použít nastavení pro odeslání hesla v nešifrovaných textech, takže se token pošle bez úprav.
 
-* C/C++
+* RC++
   * libmysqlclient: podporované
   * MySQL-Connector-c + +: podporováno
 * Java
@@ -194,7 +200,7 @@ Většina ovladačů je podporovaná, ale nezapomeňte použít nastavení pro o
 * Perl
   * DBD:: MySQL: podporováno
   * NET:: MySQL: nepodporováno
-* Go
+* Přejít
   * ovladač jazyka SQL: podporováno, přidání `?tls=true&allowCleartextPasswords=true` do připojovacího řetězce
 
 ## <a name="next-steps"></a>Další kroky

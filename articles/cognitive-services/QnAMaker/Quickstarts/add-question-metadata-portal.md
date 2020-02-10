@@ -1,6 +1,5 @@
 ---
 title: 'Rychlý Start: Přidání otázek a odpovědí na portálu QnA Maker'
-titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu se dozvíte, jak přidat sadu dotazů a odpovědí s metadaty, aby vaši uživatelé mohli najít správnou odpověď na jejich otázku.
 services: cognitive-services
 author: diberry
@@ -8,58 +7,47 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 11/22/2019
+ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 664d6006ab78f91a8ed0e199cf78fae9512efd73
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 25c0fe549dfc850a53b06f79f348a87cba3b70a1
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843035"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109927"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Rychlý Start: Přidání otázek a odpovědí pomocí portálu QnA Maker
 
-Po vytvoření znalostní báze přidejte sadu dotazů a odpovědí s metadaty, aby vaši uživatelé mohli najít správnou odpověď na jejich otázku.
-
-Správná odpověď je jediná odpověď, ale existuje mnoho způsobů, jak může zákazník požádat o dotaz, který vede k této jediné odpovědi.
-
-Například otázky v následující tabulce jsou o omezeních služeb Azure, ale každá z nich musí mít jinou službu Azure.
+Po vytvoření znalostní báze přidejte sadu otázek a odpovědí (QnA) s metadaty k filtrování odpovědi. Otázky v následující tabulce jsou o omezeních služeb Azure, ale každá z nich musí mít jinou službu Azure.
 
 <a name="qna-table"></a>
 
-
-|Sada|Otázky|Odpověď|Metadata|
+|Nastavit|Otázky|Odpověď|Metadata|
 |--|--|--|--|
 |1|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
 |2|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Cognitive Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Cognitive Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Cognitive Search tier supports.`|`service=search`<br>`link_in_answer=false`|
 
-Po přidání metadat do sady otázek a odpovědí může klientská aplikace:
+Po přidání metadat do QnA sady může klientská aplikace:
 
 * Vyžádá odpovědi, které odpovídají jenom určitým metadatům.
 * Příjem všech odpovědí, ale následné zpracování odpovědí v závislosti na metadatech pro každou odpověď.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Služba QnA Maker
-* Znalostní báze vytvořený v této QnA Maker službě
-
-V [prvním rychlém](../how-to/create-knowledge-base.md)startu byly vytvořeny obě.
+* Dokončení [předchozího rychlého](./create-publish-knowledge-base.md) startu
 
 ## <a name="sign-in-to-the-qna-maker-portal"></a>Přihlášení k portálu QnA Maker
 
 1. Přihlaste se k [portálu QnA maker](https://www.qnamaker.ai).
 
-1. Vyberte stávající znalostní bázi. Pokud nemáte znalostní bázi Knowledge Base, vraťte se k [předchozímu rychlému](../how-to/create-knowledge-base.md) startu a dokončete kroky k vytvoření znalostní báze.
+1. Z [předchozího rychlého](../how-to/create-knowledge-base.md)startu vyberte svou stávající znalostní bázi.
 
 ## <a name="add-additional-alternatively-phrased-questions"></a>Přidat další otázky s alternativou fráze
 
-Aktuální znalostní báze od [předchozího rychlého](../how-to/create-knowledge-base.md)startu má QnA maker otázka a sady odpovědí pro řešení potíží. Tyto sady byly vytvořeny při přidání adresy URL do znalostní báze během procesu vytváření.
+Aktuální znalostní báze má QnA Maker řešení potíží s QnA sadami. Tyto sady byly vytvořeny při přidání adresy URL do znalostní báze během procesu vytváření.
 
-Při importu této adresy URL byla vytvořena pouze jedna otázka s jednou odpovědí.
-
-V tomto postupu přidejte další otázky.
+Při importu této adresy URL byla vytvořena pouze jedna otázka s jednou odpovědí. V tomto postupu přidejte další otázky.
 
 1. Na stránce **Upravit** použijte vyhledávací pole nad rámec otázek a odpovědí a vyhledejte otázku `How large a knowledge base can I create?`
 
@@ -76,11 +64,13 @@ V tomto postupu přidejte další otázky.
 
     `What GB size can a knowledge base be?`
 
-    Ve formátu Markdownu se vrátí správná odpověď: `The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`
+    Ve formátu Markdownu se vrátí správná odpověď:
+
+    `The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`
 
     Pokud vyberete v části vrácená odpověď možnost **zkontrolovat** , zobrazí se vám další odpovědi, ale ne se stejnou vysokou úrovní spolehlivosti.
 
-    Nepřidávat všechny možné kombinace alternativní formulace. Zapněte si [aktivní výuku](../how-to/improve-knowledge-base.md)QnA maker, vyhledáme alternativní formulování, které budou nejlépe pomáhat vaší znalostní bázi, aby splňovali potřeby vašich uživatelů.
+    Nepřidávat všechny možné kombinace alternativní formulace. Když zapnete [aktivní výuku](../how-to/improve-knowledge-base.md)QnA maker, najde to alternativní formulování, které budou nejlépe pomáhat vaší znalostní bázi, aby splňovaly potřeby vašich uživatelů.
 
 1. Vyberte znovu **test** pro zavření testovacího okna.
 
@@ -92,14 +82,15 @@ Přidání metadat do otázky a sady odpovědí umožňuje klientské aplikaci p
 
 1. Vyberte **Možnosti zobrazení**a pak vyberte **zobrazit metadata**.
 
-1. Pro otázku a sadu odpovědí, které jste právě přidali, vyberte **Přidat značky metadat**a pak přidejte název `service` a hodnotu `search``service:search`.
+1. Pro QnA sadu, kterou jste právě přidali, vyberte **Přidat značky metadat**a pak přidejte název `service` a hodnotu `search`. Vypadá to takto: `service:search`.
 
-1. Přidejte další značky metadat s názvem `link_in_answer` a hodnotou `false``link_in_answer:false`.
+1. Přidejte další značku metadat s názvem `link_in_answer` a hodnotou `false`. Vypadá to takto: `link_in_answer:false`.
 
 1. Vyhledejte první odpověď v tabulce `How large a knowledge base can I create?`.
+
 1. Přidejte páry metadat pro stejné dvě Tagy metadat:
 
-    `link_in_answer` : `true`<br>
+    `link_in_answer`: `true`<br>
     `server`: `qna_maker`
 
     Teď máte dvě otázky se stejnými tagy metadat s různými hodnotami.
@@ -107,71 +98,16 @@ Přidání metadat do otázky a sady odpovědí umožňuje klientské aplikaci p
 1. Vyberte **Uložit a naučit** se znovu naučit znalostní bázi.
 
 1. V horní nabídce vyberte **publikovat** a přejděte na stránku publikování.
-1. Kliknutím na tlačítko **publikovat** publikujte aktuální znalostní bázi do koncového bodu Queryable.
-1. Po publikování znalostní báze vyberte kartu **kudrlinkou** , abyste zobrazili příklad složeného příkazu, který slouží k vygenerování odpovědi ze znalostní báze.
-1. Zkopírujte příkaz do panelu poznámek nebo jiného upravitelného prostředí, abyste mohli příkaz Upravit. Upravte vlastní název prostředku, ID znalostní báze a klíč koncového bodu:
+1. Kliknutím na tlačítko **publikovat** publikujte aktuální znalostní bázi do koncového bodu.
+1. Po publikování znalostní báze přejděte k dalšímu rychlému startu, kde se dozvíte, jak vygenerovat odpověď ze znalostní báze.
 
-    |Nahradit|
-    |--|
-    |`your-resource-name`|
-    |`your-knowledge-base-id`|
-    |`your-endpoint-key`|
+## <a name="what-did-you-accomplish"></a>Co jste provedli?
 
-    ```curl
-    curl -X POST https://your-resource-name.azurewebsites.net/qnamaker/knowledgebases/your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
-    ```
-
-    Všimněte si, že otázka je pouze jedno slovo, `size`, které může vracet sadu otázek a odpovědí. `strictFilters` pole oznamuje odpověď, aby se snížila pouze na `qna_maker` odpovědi.
-
-    [!INCLUDE [Tip for debug property to JSON request](../includes/tip-debug-json.md)]
-
-1. Odpověď obsahuje pouze odpověď, která splňuje kritéria filtru.
-
-    Následující odpověď na kudrlinkou byla naformátována pro čitelnost:
-
-    ```JSON
-    {
-        "answers": [
-            {
-                "questions": [
-                    "How large a knowledge base can I create?",
-                    "What is the max size of a knowledge base?",
-                    "How many GB of data can a knowledge base hold?"
-                ],
-                "answer": "The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment)for more details.",
-                "score": 68.76,
-                "id": 3,
-                "source": "https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting",
-                "metadata": [
-                    {
-                        "name": "link_in_answer",
-                        "value": "true"
-                    },
-                    {
-                        "name": "service",
-                        "value": "qna_maker"
-                    }
-                ],
-                "context": {
-                    "isContextOnly": false,
-                    "prompts": []
-                }
-            }
-        ],
-        "debugInfo": null
-    }
-    ```
-
-    Pokud je k dispozici sada otázek a odpovědí, která nevyhověla hledanému termínu, ale nesplnila tento filtr, nebude vrácena. Místo toho se vrátí obecná odpověď `No good match found in KB.`.
-
-    Zajistěte, aby páry názvů a hodnot metadat byly v rámci požadovaných limitů.
+V rámci vaší znalostní báze jste upravili více otázek a zadávaných párů název/hodnota pro podporu filtrování při hledání horní odpovědi nebo postprocessing po vrácení odpovědi nebo odpovědi.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prostředek nebo skupinu prostředků odstranit. Odstraněním skupiny prostředků se odstraní také všechny další prostředky, které jsou k ní přidružené.
-
-* [Azure Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
-* [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+Pokud nebudete pokračovat dalším rychlým startem, odstraňte prostředky QnA Maker a robot Framework v Azure Portal.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,12 +8,12 @@ ms.date: 01/14/2020
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 5f4728c4b604c606d12edcc7a00879b31e54bc85
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: f016902f6cf7e0238dadb97d816f4590caec112e
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264267"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109342"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Řešení potíží s dotazy při použití Azure Cosmos DB
 
@@ -224,8 +224,8 @@ Zásady indexování:
 Aktualizovaný dotaz (zahrnuje obě vlastnosti v klauzuli `ORDER BY`):
 
 ```sql
-SELECT * FROM c 
-WHERE c.foodGroup = “Soups, Sauces, and Gravies” 
+SELECT * FROM c
+WHERE c.foodGroup = “Soups, Sauces, and Gravies”
 ORDER BY c.foodGroup, c._ts ASC
 ```
 
@@ -262,7 +262,7 @@ Zásady indexování se aktualizovaly:
 ## <a name="optimize-join-expressions-by-using-a-subquery"></a>Optimalizujte výrazy JOIN pomocí poddotazu.
 Podhodnoty poddotazů mohou optimalizovat `JOIN` výrazy vložením predikátů za každý výraz SELECT-many místo po všech křížových spojeních v klauzuli `WHERE`.
 
-Zamyslete se nad následujícím dotazem:
+Vezměte v úvahu následující dotaz:
 
 ```sql
 SELECT Count(1) AS Count
@@ -315,7 +315,7 @@ Tyto dotazy by taky byly optimalizované zahrnutím klíče oddílu do dotazu:
 
 ```sql
 SELECT * FROM c
-WHERE c.foodGroup IN(“Soups, Sauces, and Gravies”, “"Vegetables and Vegetable Products”) and  c.description = "Mushroom, oyster, raw"
+WHERE c.foodGroup IN("Soups, Sauces, and Gravies", "Vegetables and Vegetable Products") and c.description = "Mushroom, oyster, raw"
 ```
 
 Dotazy, které mají na klíč oddílu filtry rozsahů, nebo nemají žádné filtry pro klíč oddílu, budou muset "ventilátor-out" a kontrolovat výsledky pro každý z indexu fyzického oddílu.

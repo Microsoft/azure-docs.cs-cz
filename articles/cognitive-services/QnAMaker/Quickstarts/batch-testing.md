@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 12/19/2019
+ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 9483db2187c05fe8e0f4fa2d41c17b8748ba3db7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e16166c741b99c1af5b36f2c7ccd25b01f7544ba
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474036"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108989"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Rychlý Start: testování znalostní báze s dotazy služby Batch a očekávanými odpověďmi
 
 Pomocí nástroje QnA Maker Batch Test otestujete znalostní bázi v prostředku QnA Maker pro očekávané odpovědi, hodnocení spolehlivosti a výzvy k vícenásobnému zapnutí.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
-* Buď [vytvořte službu QnA maker](create-publish-knowledge-base.md#create-a-new-qna-maker-knowledge-base) , nebo použijte existující službu, která používá angličtinu pro ukázkový dokument použitý v tomto rychlém startu.
+* Buď [vytvořte službu QnA maker](create-publish-knowledge-base.md) , nebo použijte existující službu, která používá anglický jazyk.
 * Stažení [ukázkového `.docx` souboru s vícenásobným zapnete](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)
 * Stáhněte si [Nástroj Batch test](https://aka.ms/qnamakerbatchtestingtool), extrahujte spustitelný soubor ze souboru `.zip`.
 
@@ -41,9 +41,16 @@ Pomocí nástroje QnA Maker Batch Test otestujete znalostní bázi v prostředku
     * Název služby Azure QnA
     * Jazyk – anglický jazyk
 1. Jako název znalostní báze zadejte název `Multi-turn batch test quickstart`.
-1. V **kroku 4**zaškrtněte **Povolit vícenásobné extrakce z adres URL, souborů PDF a DOCX**.
-1. Zadejte **výchozí text odpovědi** `Quickstart - can't find answer`. V produkčním znalostní bázi by tyto informace měly být pro uživatele podrobnější, ale pro tento rychlý Start funguje jednoduchá odpověď.
-1. Ještě v **kroku 4**vyberte **+ Přidat soubor** a potom vyberte stažený `.docx` soubor výpisu v části požadavky.
+
+1. V **kroku 4**nakonfigurujte nastavení pomocí následující tabulky:
+
+    |Nastavení|Hodnota|
+    |--|--|
+    |**Povolí vícenásobné extrakce z adres URL, souborů PDF a DOCX.**|Zaškrtnuté|
+    |**Výchozí text odpovědi**| `Batch test - default answer not found.`|
+    |**+ Přidat soubor**|Vyberte stažený `.docx` soubor výpisu v části požadavky.|
+    |**CHITEST – chat**|Vybrat **Professional**|
+
 1. V **kroku 5**vyberte **vytvořit znalostní báze**.
 
     Po dokončení procesu vytváření se na portálu zobrazí upravitelná znalostní báze.
@@ -53,7 +60,7 @@ Pomocí nástroje QnA Maker Batch Test otestujete znalostní bázi v prostředku
 1. Pro uložení znalostní báze vyberte možnost **Uložit a výuka** z panelu nástrojů.
 1. Vyberte **publikovat** z panelu nástrojů a potom znovu vyberte **publikovat** a publikujte znalostní bázi. Publikování zpřístupňuje znalostní bázi pro dotazy z koncového bodu veřejné adresy URL. Po dokončení publikování uložte adresu URL hostitele a klíč koncového bodu, které jsou zobrazené na stránce **publikovat** .
 
-    |Požadovaná data| Příklad:|
+    |Požadovaná data| Příklad|
     |--|--|
     |Publikovaný hostitel|`https://YOUR-RESOURCE-NAME.azurewebsites.net`|
     |Publikovaný klíč|`XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX` (32 řetězec znaků zobrazený za `Endpoint`)|
@@ -63,7 +70,7 @@ Pomocí nástroje QnA Maker Batch Test otestujete znalostní bázi v prostředku
 
 Chcete-li použít nástroj Batch test, vytvořte soubor s názvem `batch-test-data-1.tsv` pomocí textového editoru. Soubor musí mít následující sloupce oddělené tabulátorem.
 
-|Pole vstupního souboru TSV|Poznámky|Příklad:|
+|Pole vstupního souboru TSV|Poznámky:|Příklad|
 |--|--|--|
 |ID znalostní báze|ID vašeho znalostní báze bylo nalezeno na stránce publikování. Pomocí různých ID znalostní báze v jednom souboru otestujete několik znalostí ve stejné službě najednou v jednom souboru.|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (36 řetězec znaků zobrazený jako součást `POST`) |
 |Otázka|Text otázky, kterou uživatel zadal. maximální počet znaků: 1 000|`How do I sign out?`|
@@ -130,7 +137,7 @@ Pomocí následujícího grafu pochopíte, jak najít hodnoty polí pro voliteln
 |Číslo sloupce|Volitelný sloupec|Umístění dat|
 |--|--|--|
 |3|zprostředkovatele identity|Exportujte stávající znalostní bázi pro existující _klíč: páry hodnot_ .|
-|4|top|Doporučuje se výchozí hodnota `25`.|
+|4|vrchol|Doporučuje se výchozí hodnota `25`.|
 |5|ID sady otázek a odpovědí|Exportujte existující znalostní bázi pro hodnoty ID. Všimněte si také, že se ve výstupním souboru vrátila ID.|
 
 ## <a name="add-metadata-to-the-knowledge-base"></a>Přidat metadata do znalostní báze
@@ -160,7 +167,7 @@ Pro dávkové testování existují dva hlavní scénáře:
 * **Soubory protokolu chatovací konverzace** – určete nejlepší odpověď na dříve nezobrazenou otázku – nejběžnější je situace, kdy potřebujete zpracovat soubory dotazů, jako jsou například otázky uživatele robota v programu chat. Vytvoří test dávkového souboru s pouze požadovanými sloupci. Test vrátí nejvyšší odpověď pro každou otázku. To neznamená, že se jedná o správnou odpověď nejvyšší odpovědi. Po dokončení tohoto testu přejděte k ověřovacímu testu.
 * **Ověřovací test** – ověřte očekávanou odpověď. Tento test vyžaduje, aby všechny otázky a odpovídající očekávané odpovědi v dávkovém testu byly ověřeny. To může vyžadovat ruční proces.
 
-Následující postup předpokládá, že se jedná o zpracování protokolů chatu pomocí 
+Následující postup předpokládá, že se jedná o zpracování protokolů chatu pomocí
 
 1. Vytvořte nový soubor dávkového testu, který bude zahrnovat volitelná data, `batch-test-data-2.tsv`. Přidejte 6 řádků z původního vstupního souboru dávkového testu a potom přidejte metadata, horní a QnA sadu ID pro každý řádek.
 

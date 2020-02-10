@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: javascript
 ms.topic: conceptual
 ms.date: 06/16/2017
-ms.openlocfilehash: ba14a6bb9e234a5eae34232fc617f8b04284cd4f
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 8071ddbc5f6073598daf0a08d359ccd19ccd1e4a
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147464"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110805"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-nodejs"></a>Posílání zpráv z cloudu na zařízení pomocí IoT Hub (Node. js)
 
@@ -42,11 +42,13 @@ Na konci tohoto kurzu spustíte dvě konzolové aplikace Node. js:
 > IoT Hub podporuje sadu SDK pro mnoho platforem a jazyků zařízení (včetně C, Java, Pythonu a JavaScriptu) prostřednictvím sad SDK pro zařízení Azure IoT. Podrobné pokyny, jak připojit zařízení k kódu tohoto kurzu a obecně k Azure IoT Hub, najdete v [centru pro vývojáře Azure IoT](https://azure.microsoft.com/develop/iot).
 >
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Node. js verze 10.0. x nebo novější. [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) popisuje, jak nainstalovat Node. js pro tento kurz v systému Windows nebo Linux.
 
 * Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial) .)
+
+* Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto článku používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>Přijímání zpráv v aplikaci simulovaného zařízení
 
@@ -54,7 +56,7 @@ V této části upravíte aplikaci simulovaného zařízení, kterou jste vytvo�
 
 1. Pomocí textového editoru otevřete soubor **SimulatedDevice. js** . Tento soubor se nachází ve složce **IoT-hub\Quickstarts\simulated-Device** v kořenovém adresáři ukázkového kódu Node. js, který jste stáhli v rámci [odesílání telemetrie ze zařízení do rychlého startu centra IoT](quickstart-send-telemetry-node.md) .
 
-2. Zaregistrujte obslužnou rutinu u klienta zařízení, aby přijímala zprávy odesílané z IoT Hub. Přidejte volání do `client.on` hned za řádek, který vytvoří klienta zařízení, jako v následujícím fragmentu kódu:
+2. Zaregistrujte obslužnou rutinu u klienta zařízení, aby přijímala zprávy odesílané z IoT Hub. Přidejte volání `client.on` hned za řádek, který vytvoří klienta zařízení, jako v následujícím fragmentu kódu:
 
     ```javascript
     var client = DeviceClient.fromConnectionString(connectionString, Mqtt);
@@ -101,7 +103,7 @@ V této části vytvoříte konzolovou aplikaci Node. js, která posílá zpráv
 
 3. Pomocí textového editoru vytvořte ve složce **SendCloudToDeviceMessage** soubor **SendCloudToDeviceMessage. js** .
 
-4. Na začátek souboru `require` **SendCloudToDeviceMessage. js** přidejte následující příkazy:
+4. Na začátek souboru **SendCloudToDeviceMessage. js** přidejte následující příkazy `require`:
 
     ```javascript
     'use strict';
@@ -185,7 +187,7 @@ Nyní můžete spustit aplikace.
    > Pro zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu byste měli implementovat zásady opakování (například exponenciální omezení rychlosti), jak je navrženo v článku, [zpracování přechodných chyb](/azure/architecture/best-practices/transient-faults).
    >
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zjistili, jak odesílat a přijímat zprávy z cloudu do zařízení.
 

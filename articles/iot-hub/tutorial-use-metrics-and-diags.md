@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: e0094add11755ecb0c303adf874abe5a4a8f5811
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 7ce56237631b858347a99c310751d4f2c1506e10
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746196"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108234"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Kurz: nastavení a použití metrik a diagnostických protokolů ve službě IoT Hub
 
@@ -34,13 +34,16 @@ V tomto kurzu provedete následující úlohy:
 > * Spusťte aplikaci, dokud výstrahy nezačnou aktivovat. 
 > * Podívejte se na výsledky metrik a zkontrolujte protokoly diagnostiky. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 - Nainstalovat sadu [Visual Studio](https://www.visualstudio.com/). 
 
 - E-mailový účet, který může přijímat poštu.
+
+- Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto kurzu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -259,7 +262,7 @@ IoT Hub ještě neproběhla migrace na [metriky v Azure monitor](/azure/azure-mo
 
    **Příjemci oznámení e-mailem**: sem zadejte svou e-mailovou adresu. 
 
-   Kliknutím na tlačítko **OK** pravidlo uložte. 
+   Kliknutím na tlačítko **OK** uložte pravidlo. 
 
 5. V podokně výstrahy Classic by se teď měly zobrazit dvě výstrahy: 
 

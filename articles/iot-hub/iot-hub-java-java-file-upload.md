@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 81b80edcd2e880488e203960f8e2a6aa71b69679
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: fcc2013f67c6e91182979a9bcab683894088a1d5
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70161820"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110373"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>Nahrání souborů ze zařízení do cloudu pomocí IoT Hub (Java)
 
@@ -26,7 +26,7 @@ V tomto kurzu se seznámíte s kódem v tématu [posílání zpráv z cloudu do 
 
 * Pomocí IoT Hub oznámení o nahrávání souborů můžete aktivovat zpracování souboru v back-endu vaší aplikace.
 
-[Odeslání telemetrie ze zařízení do rychlého startu centra IoT](quickstart-send-telemetry-java.md) a posílání [zpráv z cloudu na zařízení pomocí IoT Hub](iot-hub-java-java-c2d.md) kurzu zobrazuje základní funkce zasílání zpráv typu zařízení-Cloud a Cloud-zařízení IoT Hub. Kurz [Konfigurace směrování zpráv pomocí IoT Hub](tutorial-routing.md) popisuje způsob, jak spolehlivě ukládat zprávy typu zařízení-Cloud do úložiště objektů BLOB v Azure. V některých scénářích ale nemůžete snadno namapovat data, která zařízení odesílají do relativně malých zpráv ze zařízení do cloudu, které IoT Hub přijmout. Příklad:
+[Odeslání telemetrie ze zařízení do rychlého startu centra IoT](quickstart-send-telemetry-java.md) a [posílání zpráv z cloudu na zařízení pomocí IoT Hub](iot-hub-java-java-c2d.md) kurzu zobrazuje základní funkce zasílání zpráv typu zařízení-Cloud a Cloud-zařízení IoT Hub. Kurz [Konfigurace směrování zpráv pomocí IoT Hub](tutorial-routing.md) popisuje způsob, jak spolehlivě ukládat zprávy typu zařízení-Cloud do úložiště objektů BLOB v Azure. V některých scénářích ale nemůžete snadno namapovat data, která zařízení odesílají do relativně malých zpráv ze zařízení do cloudu, které IoT Hub přijmout. Například:
 
 * Velké soubory, které obsahují obrázky
 * Videa
@@ -44,7 +44,7 @@ Na konci tohoto kurzu spustíte dvě konzolové aplikace Java:
 > [!NOTE]
 > IoT Hub podporuje spoustu platforem a jazyků zařízení (včetně C, .NET a JavaScriptu) prostřednictvím sad SDK pro zařízení Azure IoT. Podrobné pokyny k připojení zařízení k Azure IoT Hub najdete v [centru pro vývojáře Azure IoT](https://azure.microsoft.com/develop/iot) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Java se Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). Ujistěte se, že jste v části **Dlouhodobá podpora** vybrali **Java 8** , abyste se dostali ke stažení pro JDK 8.
 
@@ -52,15 +52,17 @@ Na konci tohoto kurzu spustíte dvě konzolové aplikace Java:
 
 * Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) .)
 
+* Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto článku používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
 ## <a name="upload-a-file-from-a-device-app"></a>Nahrání souboru z aplikace zařízení
 
 V této části upravíte aplikaci zařízení, kterou jste vytvořili v části [posílání zpráv z cloudu na zařízení pomocí IoT Hub](iot-hub-java-java-c2d.md) pro nahrání souboru do centra IoT.
 
-1. Zkopírujte soubor obrázku do `simulated-device` složky a přejmenujte ho. `myimage.png`
+1. Zkopírujte soubor obrázku do složky `simulated-device` a přejmenujte ho `myimage.png`.
 
-2. V textovém editoru otevřete `simulated-device\src\main\java\com\mycompany\app\App.java` soubor.
+2. Pomocí textového editoru otevřete soubor `simulated-device\src\main\java\com\mycompany\app\App.java`.
 
 3. Přidejte do třídy **App** deklaraci proměnné:
 
@@ -136,9 +138,9 @@ V této části vytvoříte konzolovou aplikaci Java, která přijímá zprávy 
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=read-file-upload-notification -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. Na příkazovém řádku přejděte do nové `read-file-upload-notification` složky.
+2. Na příkazovém řádku přejděte do nové složky `read-file-upload-notification`.
 
-3. Pomocí textového editoru otevřete `pom.xml` soubor `read-file-upload-notification` ve složce a přidejte následující závislost na uzel **závislosti** . Přidání závislosti vám umožní komunikovat se službou IoT Hub pomocí balíčku **iothub-Java-Service-Client** ve vaší aplikaci:
+3. Pomocí textového editoru otevřete soubor `pom.xml` ve složce `read-file-upload-notification` a přidejte následující závislost na uzel **závislosti** . Přidání závislosti vám umožní komunikovat se službou IoT Hub pomocí balíčku **iothub-Java-Service-Client** ve vaší aplikaci:
 
     ```xml
     <dependency>
@@ -151,9 +153,9 @@ V této části vytvoříte konzolovou aplikaci Java, která přijímá zprávy 
     > [!NOTE]
     > Můžete vyhledat nejnovější verzi **IoT-Service-Client** pomocí [vyhledávání Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-4. `pom.xml` Soubor uložte a zavřete.
+4. Uložte a zavřete soubor `pom.xml`.
 
-5. V textovém editoru otevřete `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` soubor.
+5. Pomocí textového editoru otevřete soubor `read-file-upload-notification\src\main\java\com\mycompany\app\App.java`.
 
 6. Do souboru přidejte následující příkazy pro **import**:
 
@@ -165,7 +167,7 @@ V této části vytvoříte konzolovou aplikaci Java, která přijímá zprávy 
     import java.util.concurrent.Executors;
     ```
 
-7. Do třídy **App** přidejte následující proměnné na úrovni třídy. Nahraďte hodnotu [](#get-the-iot-hub-connection-string) zástupnéhosymbolupřipojovacímřetězcemIoTHub,kterýjstezkopírovalidřívevčástizískánípřipojovacíhořetězcecentra`{Your IoT Hub connection string}` IoT:
+7. Do třídy **App** přidejte následující proměnné na úrovni třídy. Nahraďte hodnotu zástupného symbolu `{Your IoT Hub connection string}` připojovacím řetězcem IoT Hub, který jste zkopírovali dříve v [části získání připojovacího řetězce centra IoT](#get-the-iot-hub-connection-string):
 
     ```java
     private static final String connectionString = "{Your IoT Hub connection string}";
@@ -228,7 +230,7 @@ V této části vytvoříte konzolovou aplikaci Java, která přijímá zprávy 
     }
     ```
 
-10. `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` Soubor uložte a zavřete.
+10. Uložte a zavřete soubor `read-file-upload-notification\src\main\java\com\mycompany\app\App.java`.
 
 11. Pomocí následujícího příkazu sestavte aplikaci **pro čtení souborů a odesílání oznámení** a vyhledejte chyby:
 
@@ -240,13 +242,13 @@ V této části vytvoříte konzolovou aplikaci Java, která přijímá zprávy 
 
 Nyní můžete spustit aplikace.
 
-Na příkazovém řádku ve `read-file-upload-notification` složce spusťte následující příkaz:
+Na příkazovém řádku ve složce `read-file-upload-notification` spusťte následující příkaz:
 
 ```cmd/sh
 mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
 ```
 
-Na příkazovém řádku ve `simulated-device` složce spusťte následující příkaz:
+Na příkazovém řádku ve složce `simulated-device` spusťte následující příkaz:
 
 ```cmd/sh
 mvn exec:java -Dexec.mainClass="com.mycompany.app.App"

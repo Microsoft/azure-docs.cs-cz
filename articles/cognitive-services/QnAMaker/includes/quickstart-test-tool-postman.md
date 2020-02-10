@@ -8,65 +8,398 @@ ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
-ms.date: 11/20/2019
+ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 0b442c8cccf8ee9ed5194a7d3dfbfb4d7aa055a3
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: cad528c2f2b3b7ff18a888c3e471f48a41e40531
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74424416"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109653"
 ---
 Tento rychlý Start založený na držiteli vás provede tím, že získáte odpověď ze znalostní báze.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nejnovější [**příspěvek**](https://www.getpostman.com/).
-* Musíte mít [QnA maker službu](../How-To/set-up-qnamaker-service-azure.md) a mít [znalostní bázi s dotazy a odpověďmi](../Tutorials/create-publish-query-in-portal.md). 
+* Musíte mít
+    * [Služba QnA maker](../How-To/set-up-qnamaker-service-azure.md)
+    * Vyškolená a publikovaná [znalostní báze s dotazy a odpověďmi](../Quickstarts/add-question-metadata-portal.md) vytvořenými v rychlém startu je nakonfigurována pomocí funkce konverzace s metadaty a funkce CHITEST.
 
-## <a name="publish-to-get-endpoint"></a>Publikování pro získání koncového bodu
+> [!NOTE]
+> Až budete připraveni vygenerovat odpověď na otázku ze znalostní báze Knowledge Base, musíte [vyškolit](../Quickstarts/create-publish-knowledge-base.md#save-and-train) a [publikovat](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) znalostní bázi. Když je vaše znalostní báze publikována, zobrazí se na stránce **publikovat** nastavení požadavku HTTP, které vygeneruje odpověď. Karta **po odeslání** zobrazuje nastavení potřebná k vygenerování odpovědi.
 
-Až budete připraveni vygenerovat odpověď na otázku ze znalostní báze Knowledge Base, [publikujte](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) znalostní bázi.
+## <a name="set-up-postman-for-requests"></a>Nastavení metody post pro žádosti
 
-## <a name="use-production-endpoint-with-postman"></a>Použití produkčního koncového bodu s předzálohovacím
+V tomto rychlém startu se používá stejné nastavení pro **odeslání požadavku POST** a potom se nakonfiguruje tak, aby se kód JSON odeslal na službu na základě toho, na co se pokoušíte zadat dotaz.
 
-Když je vaše znalostní báze publikována, zobrazí se na stránce **publikovat** nastavení požadavku HTTP, které vygeneruje odpověď. Výchozí zobrazení zobrazuje nastavení požadovaná pro vygenerování odpovědi od [post](https://www.getpostman.com).
+Pomocí tohoto postupu nakonfigurujete příkaz post a potom si přečtěte jednotlivé další části, kde můžete nakonfigurovat JSON pro tělo příspěvku.
 
-Žluté číslice na následujícím obrázku označují dvojice název/hodnota, které se mají použít v následujících krocích.
+1. Na stránce **Nastavení** znalostní báze vyberte kartu **publikovat** a zobrazte tak konfiguraci používanou k vygenerování odpovědi ze znalostní báze. Zkopírujte následující informace, které se použijí v poli post.
 
-[![publikování výsledků](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png)](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png#lightbox)
+    |Název|Nastavení|Účel a hodnota|
+    |--|--|--|
+    |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|Toto je metoda HTTP a trasa pro adresu URL.|
+    |`Host`|`https://diberry-qna-s0-s.azurewebsites.net/qnamaker`|Toto je hostitel adresy URL. Po zřetězení hodnoty host a post získáte úplnou adresu URL generateAnswer.|
+    |`Authorization`|`EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`|Hodnota hlavičky pro autorizaci vaší žádosti do Azure |
+    |`Content-type`|`application/json`|Hodnota hlavičky vašeho obsahu|
+    ||`{"question":"<Your question>"}`|Tělo žádosti POST jako objekt JSON Tato hodnota se v každé následující části změní v závislosti na tom, co má dotaz udělat.|
 
-Pokud chcete vygenerovat odpověď s použitím metody post, proveďte následující kroky:
+1. Otevřete post a vytvořte novou základní žádost **post** s publikovaným nastavením znalostní báze. V následujících částech změňte formát JSON těla zprávy tak, aby se změnil dotaz na znalostní bázi.
 
-1. Otevřete post. Pokud jste požádáni o výběr stavebního bloku, vyberte základní stavební blok **požadavků** . Nastavte **název požadavku** jako `Generate QnA Maker answer`a **kolekci** jako `Generate QnA Maker answers`. Pokud nechcete ukládat do kolekce, vyberte tlačítko **Storno** .
-1. V pracovním prostoru vyberte metodu HTTP **post**.
+## <a name="use-metadata-to-filter-answer"></a>Filtrovat odpověď pomocí metadat
 
-    [![v příspěvku, nastavit metodu POST](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png)](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png#lightbox)
+V předchozím rychlém startu se metadata přidala do dvou QnA sad, aby bylo možné rozlišovat mezi dvěma různými otázkami. Přidejte metadata do dotazu, abyste omezili filtr jenom na příslušnou QnA sadu.
 
-1. V poli Adresa URL zřetězí hodnotu hostitele (#2 z obrázku) a hodnotu post (#1 z obrázku), aby se vytvořila úplná adresa URL. Kompletní příklad adresy URL vypadá takto: 
+1. V části autor změňte pouze JSON dotazu přidáním vlastnosti `strictFilters` s dvojicí název/hodnota `service:qna_maker`. KÓD JSON pro tělo by měl být:
 
-    `https://qnamaker-f0.azurewebsites.net/qnamaker/knowledgebases/e1115f8c-d01b-4698-a2ed-85b0dbf3348c/generateAnswer`
+    ```json
+    {
+        'question':'size',
+        'strictFilters': [
+            {
+                'name':'service','value':'qna_maker'
+            }
+        ]
+    }
+    ```
 
-    [![v poli post, nastavte úplnou adresu URL.](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png#lightbox)
+    Otázka je pouze jedno slovo, `size`, což může vracet jednu ze dvou sad otázek a odpovědí. `strictFilters` pole oznamuje odpověď, aby se snížila pouze na `qna_maker` odpovědi.
 
-1. V části Adresa URL vyberte kartu **hlavičky** a pak vyberte **Hromadná úprava**. 
+1. Odpověď obsahuje pouze odpověď, která splňuje kritéria filtru.
 
-1. Zkopírujte hlavičky (#3 a #4 z obrázku) do textové oblasti.
+    Byla naformátována následující odpověď pro čitelnost:
 
-    [![v poli post, nastavte záhlaví.](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png#lightbox)
+    ```JSON
+    {
+        "answers": [
+            {
+                "questions": [
+                    "How large a knowledge base can I create?",
+                    "What is the max size of a knowledge base?",
+                    "How many GB of data can a knowledge base hold?"
+                ],
+                "answer": "The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment)for more details.",
+                "score": 68.76,
+                "id": 3,
+                "source": "https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting",
+                "metadata": [
+                    {
+                        "name": "link_in_answer",
+                        "value": "true"
+                    },
+                    {
+                        "name": "service",
+                        "value": "qna_maker"
+                    }
+                ],
+                "context": {
+                    "isContextOnly": false,
+                    "prompts": []
+                }
+            }
+        ],
+        "debugInfo": null
+    }
+    ```
 
-1. Vyberte kartu **tělo** .
-1. Vyberte **nezpracovaný** formát a zadejte JSON (#5 z obrázku), který představuje otázku.
+    Pokud je k dispozici sada otázek a odpovědí, která nevyhověla hledanému termínu, ale nesplnila tento filtr, nebude vrácena. Místo toho se vrátí obecná odpověď `No good match found in KB.`.
 
-    `{"question":"How do I programmatically update my Knowledge Base?"}`
+## <a name="use-debug-query-property"></a>Použít vlastnost dotazu pro ladění
 
-    [![v poli post, nastavte hodnotu JSON body.](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png#lightbox)
+Informace o ladění vám pomůžou pochopit, jak byla zjištěna odpověď. I když je to užitečné, není nutné. Pokud chcete vygenerovat odpověď s ladicími informacemi, přidejte vlastnost `debug`:
 
-1. Klikněte na tlačítko **Odeslat** .
-1. Odpověď obsahuje odpověď spolu s dalšími informacemi, které mohou být pro klientskou aplikaci důležité. 
+1. V poli post změňte pouze JSON těla přidáním vlastnosti `debug`. JSON by měl být:
 
-    [![v poli post, nastavte hodnotu JSON body.](../media/qnamaker-quickstart-get-answer-with-postman/receive-postman-response.png)](../media/qnamaker-quickstart-get-answer-with-postman/receive-postman-response.png#lightbox)
+    ```json
+    {
+        'question':'size',
+        'Debug': {
+            'Enable':true
+        }
 
-## <a name="use-staging-endpoint"></a>Použít pracovní koncový bod
+    }
+    ```
 
-Pokud chcete získat odpověď z pracovního koncového bodu, přidejte adresu URL s vlastností text `isTest`.
+1. Odpověď obsahuje relevantní informace o odpovědi. V následujícím výstupu JSON byly některé detaily ladění nahrazeny třemi tečkami.
+
+    ```console
+    {
+        "answers": [
+            {
+                "questions": [
+                    "How do I share a knowledge base with others?"
+                ],
+                "answer": "Sharing works at the level of a QnA Maker service, that is, all knowledge bases in the service will be shared. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/collaborate-knowledge-base) how to collaborate on a knowledge base.",
+                "score": 56.07,
+                "id": 5,
+                "source": "https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting",
+                "metadata": [],
+                "context": {
+                    "isContextOnly": false,
+                    "prompts": []
+                }
+            }
+        ],
+        "debugInfo": {
+            "userQuery": {
+                "question": "How do I programmatically update my Knowledge Base?",
+                "top": 1,
+                "userId": null,
+                "strictFilters": [],
+                "isTest": false,
+                "debug": {
+                    "enable": true,
+                    "recordL1SearchLatency": false,
+                    "mockQnaL1Content": null
+                },
+                "rankerType": 0,
+                "context": null,
+                "qnaId": 0,
+                "scoreThreshold": 0.0
+            },
+            "rankerInfo": {
+                "specialFuzzyQuery": "how do i programmatically~6 update my knowledge base",
+                "synonyms": "what s...",
+                "rankerLanguage": "English",
+                "rankerFileName": "https://qnamakerstore.blob.core.windows.net/qnamakerdata/rankers/ranker-English.ini",
+                "rankersDirectory": "D:\\home\\site\\wwwroot\\Data\\QnAMaker\\rd0003ffa60fc45.24.0\\RankerData\\Rankers",
+                "allQnAsfeatureValues": {
+                    "WordnetSimilarity": {
+                        "5": 0.54706300120043716,...
+                    },
+                    ...
+                },
+                "rankerVersion": "V2",
+                "rankerModelType": "TreeEnsemble",
+                "rankerType": 0,
+                "indexResultsCount": 25,
+                "reRankerResultsCount": 1
+            },
+            "runtimeVersion": "5.24.0",
+            "indexDebugInfo": {
+                "indexDefinition": {
+                    "name": "064a4112-bd65-42e8-b01d-141c4c9cd09e",
+                    "fields": [...
+                    ],
+                    "scoringProfiles": [],
+                    "defaultScoringProfile": null,
+                    "corsOptions": null,
+                    "suggesters": [],
+                    "analyzers": [],
+                    "tokenizers": [],
+                    "tokenFilters": [],
+                    "charFilters": [],
+                    "@odata.etag": "\"0x8D7A920EA5EE6FE\""
+                },
+                "qnaCount": 117,
+                "parameters": {},
+                "azureSearchResult": {
+                    "continuationToken": null,
+                    "@odata.count": null,
+                    "@search.coverage": null,
+                    "@search.facets": null,
+                    "@search.nextPageParameters": null,
+                    "value": [...],
+                    "@odata.nextLink": null
+                }
+            },
+            "l1SearchLatencyInMs": 0,
+            "qnaL1Results": {...}
+        },
+        "activeLearningEnabled": true
+    }
+    ```
+
+## <a name="use-test-knowledge-base"></a>Použít testovací znalostní bázi
+
+Pokud chcete získat odpověď ze zkušební znalostní báze, použijte vlastnost text `isTest`.
+
+V poli post změňte pouze JSON těla přidáním vlastnosti `isTest`. JSON by měl být:
+
+```json
+{
+    'question':'size',
+    'isTest': true
+}
+```
+
+Odpověď JSON používá stejné schéma jako publikovaný dotaz znalostní báze.
+
+> [!NOTE]
+> Pokud jsou testovací a zveřejněné znalostní báze přesně stejné, může se stát, že je stále trochu proměnlivá variace, protože index testu se sdílí mezi všemi bázemi znalostí v prostředku.
+
+## <a name="query-for-a-chit-chat-answer"></a>Dotaz na příkaz CHITEST-chat Answer
+
+1. V poli post změňte pouze JSON těla na příkaz ukončení konverzace od uživatele. JSON by měl být:
+
+    ```json
+    {
+        'question':'thank you'
+    }
+    ```
+
+1. Odpověď zahrnuje skóre a odpověď.
+
+    ```json
+    {
+      "answers": [
+          {
+              "questions": [
+                  "I thank you",
+                  "Oh, thank you",
+                  "My sincere thanks",
+                  "My humblest thanks to you",
+                  "Marvelous, thanks",
+                  "Marvelous, thank you kindly",
+                  "Marvelous, thank you",
+                  "Many thanks to you",
+                  "Many thanks",
+                  "Kthx",
+                  "I'm grateful, thanks",
+                  "Ahh, thanks",
+                  "I'm grateful for that, thank you",
+                  "Perfecto, thanks",
+                  "I appreciate you",
+                  "I appreciate that",
+                  "I appreciate it",
+                  "I am very thankful for that",
+                  "How kind, thank you",
+                  "Great, thanks",
+                  "Great, thank you",
+                  "Gracias",
+                  "Gotcha, thanks",
+                  "Gotcha, thank you",
+                  "Awesome thanks!",
+                  "I'm grateful for that, thank you kindly",
+                  "thank you pal",
+                  "Wonderful, thank you!",
+                  "Wonderful, thank you very much",
+                  "Why thank you",
+                  "Thx",
+                  "Thnx",
+                  "That's very kind",
+                  "That's great, thanks",
+                  "That is lovely, thanks",
+                  "That is awesome, thanks!",
+                  "Thanks bot",
+                  "Thanks a lot",
+                  "Okay, thanks!",
+                  "Thank you so much",
+                  "Perfect, thanks",
+                  "Thank you my friend",
+                  "Thank you kindly",
+                  "Thank you for that",
+                  "Thank you bot",
+                  "Thank you",
+                  "Right on, thanks very much",
+                  "Right on, thanks a lot",
+                  "Radical, thanks",
+                  "Rad, thanks",
+                  "Rad thank you",
+                  "Wonderful, thanks!",
+                  "Thanks"
+              ],
+              "answer": "You're welcome.",
+              "score": 100.0,
+              "id": 75,
+              "source": "qna_chitchat_Professional.tsv",
+              "metadata": [
+                  {
+                      "name": "editorial",
+                      "value": "chitchat"
+                  }
+              ],
+              "context": {
+                  "isContextOnly": false,
+                  "prompts": []
+              }
+          }
+      ],
+      "debugInfo": null,
+      "activeLearningEnabled": true
+    }
+    ```
+
+    Vzhledem k tomu, že otázka `Thank you` (Děkuji) přesně odpovídá konverzační otázce, služba QnA Maker udává naprostou jistotu se skóre 100. QnA Maker také vrátil všechny související otázky a vlastnost metadata obsahující informace značky metadat CHITEST-chat.
+
+## <a name="use-threshold-and-default-answer"></a>Použít prahovou hodnotu a výchozí odpověď
+
+Pro odpověď můžete požádat o minimální prahovou hodnotu. Pokud není prahová hodnota splněna, je vrácena výchozí odpověď.
+
+1. V poli post změňte pouze JSON těla na příkaz ukončení konverzace od uživatele. JSON by měl být:
+
+    ```json
+    {
+        'question':'size',
+        'scoreThreshold':80.00
+    }
+    ```
+
+    Znalostní báze by neměl tuto odpověď najít, protože skóre otázky je 71% a místo toho vrátí výchozí odpověď, kterou jste zadali při vytváření znalostní báze.
+
+    Vrácená odpověď JSON, včetně skóre a odpovědi, je:
+
+    ```json
+    {
+        "answers": [
+            {
+                "questions": [],
+                "answer": "No good match found in KB.",
+                "score": 0.0,
+                "id": -1,
+                "source": null,
+                "metadata": []
+            }
+        ],
+        "debugInfo": null,
+        "activeLearningEnabled": true
+    }
+    ```
+
+    QnA Maker vrátilo skóre `0`, což znamená bez obav. Vrátila se také výchozí odpověď.
+
+1. Změňte prahovou hodnotu na 60% a požádejte o dotaz znovu:
+
+    ```json
+    {
+        'question':'size',
+        'scoreThreshold':60.00
+    }
+    ```
+
+    Vrácený kód JSON nalezl odpověď.
+
+    ```json
+    {
+        "answers": [
+            {
+                "questions": [
+                    "How large a knowledge base can I create?",
+                    "What is the max size of a knowledge base?",
+                    "How many GB of data can a knowledge base hold?"
+                ],
+                "answer": "The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.",
+                "score": 71.1,
+                "id": 3,
+                "source": "https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting",
+                "metadata": [
+                    {
+                        "name": "link_in_answer",
+                        "value": "true"
+                    },
+                    {
+                        "name": "server",
+                        "value": "qna_maker"
+                    }
+                ],
+                "context": {
+                    "isContextOnly": false,
+                    "prompts": []
+                }
+            }
+        ],
+        "debugInfo": null,
+        "activeLearningEnabled": true
+    }
+    ```

@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 79e65671613364f5cc05153d90cfdcd5959a279f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 3b37d7e049e7daabbbb4fe1a7b49feb654e8accc
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939329"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110259"
 ---
 # <a name="get-started-with-device-management-net"></a>Začínáme se správou zařízení (.NET)
 
@@ -34,13 +34,15 @@ Na konci tohoto kurzu budete mít dvě konzolové aplikace .NET:
 
 * **TriggerReboot**. Tato aplikace volá přímou metodu v aplikaci simulovaného zařízení, zobrazí odpověď a zobrazí aktualizované hlášené vlastnosti.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Visual Studio.
 
 * Aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) .
 
-## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
+* Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto článku používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -62,7 +64,7 @@ V této části vytvoříte konzolovou aplikaci .NET pomocí nástroje C#, kter�
 
 1. V části **vytvořit nový projekt**vyhledejte a vyberte šablonu projektu **aplikace konzoly (.NET Framework)** a pak vyberte **Další**.
 
-1. V části **Konfigurace nového projektu**zadejte název projektu *TriggerReboot*a vyberte .NET Framework verze 4.5.1 nebo novější. Vyberte **Vytvořit**.
+1. V části **Konfigurace nového projektu**zadejte název projektu *TriggerReboot*a vyberte .NET Framework verze 4.5.1 nebo novější. Vyberte **Create** (Vytvořit).
 
     ![Nový klasický desktopový projekt Visual C# pro systém Windows](./media/iot-hub-csharp-csharp-device-management-get-started/create-trigger-reboot-configure.png)
 
@@ -74,7 +76,7 @@ V této části vytvoříte konzolovou aplikaci .NET pomocí nástroje C#, kter�
 
    Tento krok stáhne a nainstaluje balíček NuGet [sady SDK služby Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices/) a jeho závislosti a přidá odkaz na něj.
 
-1. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
+1. Do horní části souboru `using`Program.cs**přidejte následující příkazy**:
 
    ```csharp
    using Microsoft.Azure.Devices;
@@ -116,7 +118,7 @@ V této části vytvoříte konzolovou aplikaci .NET pomocí nástroje C#, kter�
    }
    ```
 
-1. Nakonec přidejte do metody **Main** následující řádky:
+1. Nakonec do metody **Main** přidejte následující řádky:
 
    ```csharp
    registryManager = RegistryManager.CreateFromConnectionString(connString);
@@ -145,7 +147,7 @@ K vytvoření aplikace simulovaného zařízení použijte následující postup
 
 1. V aplikaci Visual Studio v řešení TriggerReboot, které jste již vytvořili, vyberte **soubor** > **Nový** > **projekt**. V části **vytvořit nový projekt**vyhledejte a vyberte šablonu projektu **aplikace konzoly (.NET Framework)** a pak vyberte **Další**.
 
-1. V části **Konfigurovat nový projekt**, pojmenujte projekt *SimulateManagedDevice*a pro **řešení**vyberte možnost **Přidat do řešení**. Vyberte **Vytvořit**.
+1. V části **Konfigurovat nový projekt**, pojmenujte projekt *SimulateManagedDevice*a pro **řešení**vyberte možnost **Přidat do řešení**. Vyberte **Create** (Vytvořit).
 
     ![Název a přidání projektu do řešení](./media/iot-hub-csharp-csharp-device-management-get-started/configure-device-app.png)
 
@@ -157,7 +159,7 @@ K vytvoření aplikace simulovaného zařízení použijte následující postup
 
    Tento krok stáhne a nainstaluje balíček NuGet [sady SDK pro zařízení Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) a jeho závislosti a přidá se na něj odkaz.
 
-1. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
+1. Do horní části souboru `using`Program.cs**přidejte následující příkazy**:
 
     ```csharp
     using Microsoft.Azure.Devices.Client;
@@ -234,7 +236,7 @@ K vytvoření aplikace simulovaného zařízení použijte následující postup
 
 1. V Průzkumník řešení klikněte pravým tlačítkem na své řešení a pak vyberte **nastavit projekty po spuštění**.
 
-1. Pro **běžné vlastnosti** > **spouštěný projekt**vyberte **jeden spouštěný projekt**a pak vyberte projekt **SimulateManagedDevice** . Vyberte **OK** uložte provedené změny.
+1. Pro **běžné vlastnosti** > **spouštěný projekt**vyberte **jeden spouštěný projekt**a pak vyberte projekt **SimulateManagedDevice** . Kliknutím na **OK** uložte změny.
 
 1. Vyberte **sestavení** **řešení**Build > .
 

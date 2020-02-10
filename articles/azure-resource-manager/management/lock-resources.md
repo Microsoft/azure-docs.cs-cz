@@ -2,40 +2,39 @@
 title: Uzamknout prostředky, aby nedocházelo ke změnám
 description: Zabrání uživatelům aktualizovat nebo odstraňovat důležité prostředky Azure tím, že použije zámek pro všechny uživatele a role.
 ms.topic: conceptual
-ms.date: 05/14/2019
-ms.openlocfilehash: b7c6c7980f12e7f9015f4504f461733100b14ea8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 02/07/2020
+ms.openlocfilehash: 70fb189adb634b7ac24afe7cc8b94738117da5ef
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644337"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109536"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Uzamknout prostředky, aby nedocházelo k neočekávaným změnám
 
 Jako správce můžete potřebovat uzamknout předplatné, skupinu prostředků nebo prostředek, abyste ostatním uživatelům v organizaci zabránili v náhodném odstranění nebo úpravě důležitých prostředků. Zámek můžete nastavit na úroveň **CanNotDelete** nebo **ReadOnly**. Na portálu se zámky nazývají **Delete** a **jen pro čtení** .
 
 * **CanNotDelete** znamená, že autorizovaní uživatelé můžou pořád číst a upravovat prostředek, ale nemůžou prostředek odstranit. 
-* **ReadOnly** znamená, že autorizovaní uživatelé můžou číst prostředek, ale nemůžou prostředek odstranit ani aktualizovat. Použití tohoto zámku je podobné jako omezení všech autorizovaných uživatelů na oprávnění udělené rolí **Čtenář** . 
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+* **ReadOnly** znamená, že autorizovaní uživatelé můžou číst prostředek, ale nemůžou prostředek odstranit ani aktualizovat. Použití tohoto zámku je podobné jako omezení všech autorizovaných uživatelů na oprávnění udělené rolí **Čtenář** .
 
 ## <a name="how-locks-are-applied"></a>Jak se používají zámky
 
 Když použijete zámek v nadřazeném oboru, všechny prostředky v tomto oboru zdědí stejný zámek. I prostředky, které později přidáte, zdědí zámek nadřazeného objektu. Nejvíce omezující zámek v dědičnosti má přednost.
 
-Na rozdíl od řízení přístupu na základě role slouží zámky správy k nastavení daného omezení u všech uživatelů a rolí. Další informace o nastavení oprávnění pro uživatele a role najdete v tématu [Access Control na základě rolí v Azure](../../role-based-access-control/role-assignments-portal.md).
+Na rozdíl od řízení přístupu na základě rolí použijete zámky pro správu k použití omezení napříč všemi uživateli a rolemi. Další informace o nastavení oprávnění pro uživatele a role najdete v tématu [Access Control na základě rolí v Azure](../../role-based-access-control/role-assignments-portal.md).
 
-Zámky služby Resource Manager se vztahují jen na operace, které probíhají v rovině správy, tedy operace odesílané na `https://management.azure.com`. Tyto zámky nijak neomezují, jak prostředky vykonávají své vlastní funkce. Omezené jsou změny prostředků, ale ne jejich operace. Například zámek jen pro čtení na SQL Database zabrání v odstranění nebo změně databáze. Nebrání v vytváření, aktualizaci nebo odstraňování dat v databázi. Datové transakce jsou povoleny, protože tyto operace nejsou odesílány do `https://management.azure.com`.
+Správce prostředků zámky se vztahují pouze na operace, ke kterým dochází v rovině správy, která se skládá z operací odeslaných do `https://management.azure.com`. Zámky neomezují způsob, jakým prostředky vykonává své vlastní funkce. Změny prostředků jsou omezené, ale operace prostředků nejsou omezené. Například zámek jen pro čtení na SQL Database zabrání v odstranění nebo změně databáze. Nebrání v vytváření, aktualizaci nebo odstraňování dat v databázi. Datové transakce jsou povoleny, protože tyto operace nejsou odesílány do `https://management.azure.com`.
 
 Použití **ReadOnly** může vést k neočekávaným výsledkům, protože některé operace, které se nejeví pro úpravu prostředku, skutečně vyžadují akce, které jsou blokovány zámkem. Zámek **ReadOnly** lze použít u prostředku nebo skupiny prostředků obsahující prostředek. Mezi běžné příklady operací, které jsou blokovány zámkem **jen pro čtení** , patří:
 
-* Zámek **jen pro čtení** v účtu úložiště znemožní všem uživatelům zobrazovat seznam klíčů. Operace výpisu klíčů se zpracovává prostřednictvím požadavku POST, protože vrácené klíče jsou k dispozici pro operace zápisu.
+* Zámek **jen pro čtení** v účtu úložiště znemožní všem uživatelům zobrazovat seznam klíčů. Operace se seznamem klíčů je zpracována prostřednictvím požadavku POST, protože vrácené klíče jsou k dispozici pro operace zápisu.
 
 * Zámek **jen pro čtení** u prostředku App Service zabraňuje tomu, aby aplikace Visual Studio Průzkumník serveru zobrazování souborů pro daný prostředek, protože tato interakce vyžaduje přístup pro zápis.
 
 * Zámek **jen pro čtení** u skupiny prostředků, která obsahuje virtuální počítač, zabrání všem uživatelům v spuštění nebo restartování virtuálního počítače. Tyto operace vyžadují požadavek POST.
 
 ## <a name="who-can-create-or-delete-locks"></a>Kdo může vytvářet nebo odstraňovat zámky
+
 Chcete-li vytvořit nebo odstranit zámky pro správu, je nutné mít přístup k akcím `Microsoft.Authorization/*` nebo `Microsoft.Authorization/locks/*`. Z předdefinovaných rolí má tyto akce povolené pouze **vlastník** a **správce uživatelských přístupů**.
 
 ## <a name="managed-applications-and-locks"></a>Spravované aplikace a zámky
@@ -58,7 +57,12 @@ Chcete-li odstranit vše pro službu včetně uzamčené skupiny prostředků in
 
 ![Odstranit službu](./media/lock-resources/delete-service.png)
 
+## <a name="azure-backups-and-locks"></a>Zálohy a zámky Azure
+
+Pokud zamknete skupinu prostředků vytvořenou službou Azure Backup, zálohování začnou selhat. Služba podporuje maximálně 18 bodů obnovení. Služba Backup **CanNotDelete** Lock nemůže vyčistit body obnovení. Další informace najdete v článku [Nejčastější dotazy – zálohování virtuálních počítačů Azure](../../backup/backup-azure-vm-backup-faq.md).
+
 ## <a name="portal"></a>Portál
+
 [!INCLUDE [resource-manager-lock-resources](../../../includes/resource-manager-lock-resources.md)]
 
 ## <a name="template"></a>Šablona
@@ -215,7 +219,7 @@ lockid=$(az lock show --name LockSite --resource-group exampleresourcegroup --re
 az lock delete --ids $lockid
 ```
 
-## <a name="rest-api"></a>Rozhraní REST API
+## <a name="rest-api"></a>REST API
 Nasazené prostředky můžete uzamknout pomocí [REST API pro zámky pro správu](https://docs.microsoft.com/rest/api/resources/managementlocks). REST API umožňuje vytvářet a odstraňovat zámky a načítat informace o stávajících zámkích.
 
 Chcete-li vytvořit zámek, spusťte příkaz:

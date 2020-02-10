@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 4dd026377d5824853dd713a59a86ed742990bade
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a206ef6eb529fc396ec4ecb82d468c19f9e54b8a
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898846"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108255"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Přehled portálu pro vývojáře Azure API Management
 
@@ -39,7 +39,7 @@ Tento článek popisuje rozdíly mezi místně hostovanými a spravovanými verz
 Portál pro vývojáře můžete vytvořit dvěma způsoby:
 
 - **Spravovaná verze** – úpravou a přizpůsobením portálu, který je součástí vaší instance API Management a je přístupný prostřednictvím `<your-api-management-instance-name>.developer.azure-api.net`adresy URL. Informace o přístupu a přizpůsobení spravovaného portálu najdete v [tomto článku v dokumentaci](api-management-howto-developer-portal-customize.md) .
-- **Samoobslužná verze** – nasazením a vlastním hostováním portálu mimo instanci API Management. Tento přístup umožňuje upravit základ kódu na portálu a zvětšit poskytované základní funkce. Také je potřeba upgradovat portál na nejnovější verzi sami. Podrobnosti a pokyny najdete v [úložišti GitHub se zdrojovým kódem portálu][1] a v [kurzu implementace widgetu][4]. [Kurz pro spravovanou verzi](api-management-howto-developer-portal-customize.md) se provede pomocí panelu pro správu portálu, který je taky vybraný v samoobslužné verzi.
+- **Samoobslužná verze** – nasazením a vlastním hostováním portálu mimo instanci API Management. Tento přístup umožňuje upravit základ kódu na portálu a zvětšit poskytované základní funkce. Také je potřeba upgradovat portál na nejnovější verzi sami. Podrobnosti a pokyny najdete v [úložišti GitHub se zdrojovým kódem portálu][1] a v [kurzu implementace widgetu][3]. [Kurz pro spravovanou verzi](api-management-howto-developer-portal-customize.md) se provede pomocí panelu pro správu portálu, který je taky vybraný v samoobslužné verzi.
 
 ## <a name="portal-architectural-concepts"></a>Koncepce architektury portálu
 
@@ -98,13 +98,13 @@ Ověřování pomocí OAuth v interaktivní konzole pro vývojáře ještě nen�
 
 ### <a name="has-the-old-portal-been-deprecated"></a>Byl starý portál zastaralý?
 
-Starý portál pro vývojáře a vydavatele teď představují *starší* funkce – budou dostávat jenom aktualizace zabezpečení. Nové funkce se budou implementovat jenom na nový vývojářský portál.
+Starý portál pro vývojáře a vydavatele teď představují *starší* funkce – budou dostávat jenom aktualizace zabezpečení. Nové funkce se implementují jenom na novém portálu pro vývojáře.
 
 Vyřazení starší verze portálů bude oznámeno samostatně. Pokud máte dotazy, obavy nebo komentáře, vyvolejte je [ve vyhrazeném problému GitHubu](https://github.com/Azure/api-management-developer-portal/issues/121).
 
 ### <a name="functionality-i-need-isnt-supported-in-the-portal"></a>Funkce, které potřebuji, se na portálu nepodporují.
 
-Využijte vlastní hostovanou verzi a [implementujte vlastní widget][4].
+Využijte vlastní hostovanou verzi a [implementujte vlastní widget][3].
 
 ### <a name="how-can-i-automate-portal-deployments"></a>Jak můžu automatizovat nasazení portálu?
 
@@ -140,7 +140,7 @@ Většina změn konfigurace (například virtuální síť, přihlášení a pod
 
 ### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a>Při použití interaktivní konzoly se mi zobrazuje chyba CORS
 
-Interaktivní konzola vytvoří požadavek rozhraní API na straně klienta z prohlížeče. Problém CORS můžete vyřešit tak, že do svých rozhraní API přidáte [zásadu CORS](api-management-cross-domain-policies.md#CORS) . Všechny parametry můžete zadat ručně nebo použít `*` hodnoty zástupných znaků. Příklad:
+Interaktivní konzola vytvoří požadavek rozhraní API na straně klienta z prohlížeče. Problém CORS můžete vyřešit tak, že do svých rozhraní API přidáte [zásadu CORS](api-management-cross-domain-policies.md#CORS) . Všechny parametry můžete zadat ručně nebo použít `*` hodnoty zástupných znaků. Například:
 
 ```XML
 <cors>
@@ -216,7 +216,7 @@ Selhání volání může být způsobeno také certifikátem SSL, který je př
 
 ### <a name="whats-the-browser-support-for-the-portal"></a>Jaká je podpora prohlížeče pro portál?
 
-| Prohlížeč                     | Podporováno       |
+| Prohlížeč                     | Podporuje se       |
 |-----------------------------|-----------------|
 | Apple Safari                | Ano<sup>1</sup> |
 | Google Chrome               | Ano<sup>1</sup> |
@@ -232,14 +232,12 @@ Další informace o novém portálu pro vývojáře:
 
 - [Přístup k portálu spravovaného vývojáře a jeho přizpůsobení](api-management-howto-developer-portal-customize.md)
 - [Nastavení samoobslužné verze portálu][2]
-- [Implementace vlastního widgetu][4]
+- [Implementace vlastního widgetu][3]
 
 Procházet Další prostředky:
 
 - [Úložiště GitHub se zdrojovým kódem][1]
-- [Veřejný plán projektu][3]
 
 [1]: https://aka.ms/apimdevportal
 [2]: https://github.com/Azure/api-management-developer-portal/wiki
-[3]: https://github.com/Azure/api-management-developer-portal/projects
-[4]: https://aka.ms/apimdevportal/extend
+[3]: https://aka.ms/apimdevportal/extend

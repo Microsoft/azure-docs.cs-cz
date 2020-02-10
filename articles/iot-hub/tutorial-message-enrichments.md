@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 2c2ac5d3de37a1a89ebd63b89666f164444e0a63
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: d16954760d1f2bf11ec5575f912ee32810696590
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773783"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108214"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Kurz: použití rozšíření zpráv Azure IoT Hub
 
@@ -35,10 +35,13 @@ Tady jsou úkoly, které provedete k dokončení tohoto kurzu:
 > * Spusťte aplikaci, která simuluje zařízení IoT odesílající zprávy do centra.
 > * Zobrazte výsledky a ověřte, že rozšíření zprávy fungují podle očekávání.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Mít předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 * Nainstalovat sadu [Visual Studio](https://www.visualstudio.com/).
+
+* Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto kurzu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -73,10 +76,10 @@ Pokud jste to ještě neudělali, otevřete [okno Azure Cloud Shell](https://she
 
 Tady jsou zdroje vytvořené skriptem. *Obohaceno* znamená, že prostředek je pro zprávy s obohacením. *Původní* znamená, že prostředek je pro zprávy, které nejsou obohaceny.
 
-| Name (Název) | Hodnota |
+| Název | Hodnota |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
-| název kontejneru | Původně  |
+| název kontejneru | původně  |
 | název kontejneru | Vylepšené  |
 | Název zařízení IoT | Contoso-test-zařízení |
 | Název IoT Hub | ContosoTestHubMsgEn |
@@ -293,10 +296,10 @@ V tomto okamžiku se prostředky nastavují a směrování zpráv je nakonfiguro
 
    Tady jsou zdroje vytvořené pomocí načtení šablony. **Obohaceno** znamená, že prostředek je pro zprávy s obohacením. **Původní** znamená, že prostředek je pro zprávy, které nejsou obohaceny. Jedná se o stejné hodnoty, které se používají ve skriptu rozhraní příkazového řádku Azure CLI.
 
-   | Name (Název) | Hodnota |
+   | Název | Hodnota |
    |-----|-----|
    | resourceGroup | ContosoResourcesMsgEn |
-   | název kontejneru | Původně  |
+   | název kontejneru | původně  |
    | název kontejneru | Vylepšené  |
    | Název zařízení IoT | Contoso-test-zařízení |
    | Název IoT Hub | ContosoTestHubMsgEn |
@@ -306,7 +309,7 @@ V tomto okamžiku se prostředky nastavují a směrování zpráv je nakonfiguro
    | Název trasy 1 | ContosoStorageRouteOriginal |
    | Název trasy 2 | ContosoStorageRouteEnriched |
 
-1. Vyberte **Uložit**. Zobrazí se podokno **vlastní nasazení** a zobrazí všechny parametry používané šablonou. Jediné pole, které je třeba nastavit, je **Skupina prostředků**. Buď vytvořte nový, nebo ho vyberte v rozevíracím seznamu.
+1. Vyberte **Save** (Uložit). Zobrazí se podokno **vlastní nasazení** a zobrazí všechny parametry používané šablonou. Jediné pole, které je třeba nastavit, je **Skupina prostředků**. Buď vytvořte nový, nebo ho vyberte v rozevíracím seznamu.
 
    Toto je horní polovina podokna **vlastní nasazení** . Můžete se podívat, kde vyplníte skupinu prostředků.
 

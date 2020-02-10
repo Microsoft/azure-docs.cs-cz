@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.date: 06/21/2019
-ms.openlocfilehash: ed3946c40d8e3eff665e4454b81f408c2033c09a
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: cc0ff372b4680f02410f1f58304d0be95228c965
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529618"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108909"
 ---
 # <a name="quickstart-use-nodejs-to-control-a-device-connected-to-an-azure-iot-hub"></a>Rychlý Start: použití Node. js k řízení zařízení připojeného ke službě Azure IoT Hub
 
@@ -53,7 +53,9 @@ az extension add --name azure-cli-iot-ext
 
 Pokud jste to ještě neudělali, stáhněte si ukázkový projekt Node.js z webu https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip a extrahujte archiv ZIP.
 
-## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
+Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto rychlém startu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 Pokud jste dokončili předchozí [Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT](quickstart-send-telemetry-node.md), můžete tento krok přeskočit.
 
@@ -117,7 +119,7 @@ Aplikace simulovaného zařízení se připojí ke koncovému bodu v centru IoT 
 
 2. V libovolném textovém editoru otevřete soubor **SimulatedDevice.js**.
 
-    Nahraďte hodnotu proměnné `connectionString` připojovacím řetězcem zařízení, který jste si poznamenali dříve. Potom uložte změny do souboru **SimulatedDevice. js**.
+    Nahraďte hodnotu `connectionString` proměnné pomocí připojovacího řetězce zařízení, který jste si poznamenali dříve. Potom uložte změny do souboru **SimulatedDevice. js**.
 
 3. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované knihovny a spusťte aplikaci simulovaného zařízení:
 

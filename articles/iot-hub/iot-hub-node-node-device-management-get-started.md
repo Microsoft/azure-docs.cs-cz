@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 98ec53d384186968d69c3f84cdfa12fbdbe92b71
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 5b2e4c03347020b5d5fc67927165403f06854e0b
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147451"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110914"
 ---
 # <a name="get-started-with-device-management-nodejs"></a>Začínáme se správou zařízení (Node. js)
 
@@ -29,15 +29,17 @@ V tomto kurzu získáte informace o následujících postupech:
 
 Na konci tohoto kurzu máte dvě konzolové aplikace Node. js:
 
-* **dmpatterns_getstarted_device. js**, který se připojí ke službě IoT Hub s dříve vytvořenou identitou zařízení, obdrží přímou metodu restart, simuluje fyzické restartování a oznamuje čas posledního restartování.
+* **dmpatterns_getstarted_device. js**, který se připojí ke službě IoT Hub s dříve vytvořenou identitou zařízení, obdrží přímou metodu restartu, simuluje fyzické restartování a oznamuje čas posledního restartování.
 
-* **dmpatterns_getstarted_service. js**, který volá přímou metodu v aplikaci simulovaného zařízení, zobrazuje odpověď a zobrazuje aktualizované hlášené vlastnosti.
+* **dmpatterns_getstarted_service. js**volá přímou metodu v aplikaci simulovaného zařízení, zobrazí odpověď a zobrazí aktualizované hlášené vlastnosti.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Node. js verze 10.0. x nebo novější. [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) popisuje, jak nainstalovat Node. js pro tento kurz v systému Windows nebo Linux.
 
 * Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) .)
+
+* Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto článku používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
@@ -69,7 +71,7 @@ V této části:
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-3. Pomocí textového editoru vytvořte ve složce **manageddevice** soubor **dmpatterns_getstarted_device. js** .
+3. Pomocí textového editoru vytvořte soubor **dmpatterns_getstarted_device. js** ve složce **manageddevice** .
 
 4. Na začátek souboru **dmpatterns_getstarted_device. js** přidejte následující příkazy ' vyžadovat ':
 
@@ -80,7 +82,7 @@ V této části:
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. Přidejte proměnnou **connectionString** a použijte ji k vytvoření instance **klienta**.  Nahraďte hodnotu [](#register-a-new-device-in-the-iot-hub) zástupnéhosymbolupřipojovacímřetězcemzařízení,kterýjstezkopírovalidřívevčástiregistracenovéhozařízeníveslužběIoT`{yourdeviceconnectionstring}` hub.  
+5. Přidejte proměnnou **connectionString** a použijte ji k vytvoření instance **klienta**.  Nahraďte hodnotu zástupného symbolu `{yourdeviceconnectionstring}` připojovacím řetězcem zařízení, který jste zkopírovali dříve v [části registrace nového zařízení ve službě IoT Hub](#register-a-new-device-in-the-iot-hub).  
 
     ```javascript
     var connectionString = '{yourdeviceconnectionstring}';
@@ -169,7 +171,7 @@ V této části vytvoříte konzolovou aplikaci Node. js, která inicializuje vz
     npm install azure-iothub --save
     ```
 
-3. Pomocí textového editoru vytvořte ve složce **triggerrebootondevice** soubor **dmpatterns_getstarted_service. js** .
+3. Pomocí textového editoru vytvořte soubor **dmpatterns_getstarted_service. js** ve složce **triggerrebootondevice** .
 
 4. Na začátek souboru **dmpatterns_getstarted_service. js** přidejte následující příkazy ' vyžadovat ':
 
@@ -180,7 +182,7 @@ V této části vytvoříte konzolovou aplikaci Node. js, která inicializuje vz
     var Client = require('azure-iothub').Client;
     ```
 
-5. Přidejte následující deklarace proměnných a nahraďte `{iothubconnectionstring}` hodnotu zástupného symbolu připojovacím řetězcem IoT Hub, který jste zkopírovali dříve v [části získání připojovacího řetězce centra IoT](#get-the-iot-hub-connection-string):
+5. Přidejte následující deklarace proměnných a nahraďte hodnotu `{iothubconnectionstring}` zástupný symbol připojovacím řetězcem IoT Hub, který jste zkopírovali dříve v části [získání připojovacího řetězce centra IoT](#get-the-iot-hub-connection-string):
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';

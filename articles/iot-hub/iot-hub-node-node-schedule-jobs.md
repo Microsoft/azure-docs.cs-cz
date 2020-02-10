@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/16/2019
-ms.openlocfilehash: 124af71e458e103392c554a9c86d679f691df5b9
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 5053935f52153f0cd6ff2f05c5153732f5bda945
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147643"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110856"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>Úlohy plánování a vysílání (Node. js)
 
@@ -30,7 +30,7 @@ V koncepčním případě úloha obaluje jednu z těchto akcí a sleduje průbě
 
 Další informace o každé z těchto možností najdete v těchto článcích:
 
-* Vlastnosti a vlákna zařízení: [Začínáme s dvojitými zprávami](iot-hub-node-node-twin-getstarted.md) a [kurzem zařízení: Jak používat zdvojené vlastnosti zařízení](tutorial-device-twins.md)
+* Vlákna a vlastnosti zařízení: [Začínáme s dvojitými zprávami](iot-hub-node-node-twin-getstarted.md) a [kurzem zařízení: jak používat vlastnosti se zdvojeným zařízením](tutorial-device-twins.md)
 
 * Přímé metody: [IoT Hub příručka pro vývojáře – přímé metody](iot-hub-devguide-direct-methods.md) a [kurz: přímé metody](quickstart-control-device-node.md)
 
@@ -48,11 +48,13 @@ Na konci tohoto kurzu máte dvě aplikace Node. js:
 
 * **scheduleJobService. js**, který volá přímou metodu v aplikaci simulovaného zařízení a aktualizuje požadované vlastnosti v zařízení pomocí úlohy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Node. js verze 10.0. x nebo novější. [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) popisuje, jak nainstalovat Node. js pro tento kurz v systému Windows nebo Linux.
 
 * Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) .)
+
+* Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto článku používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
@@ -89,7 +91,7 @@ V této části vytvoříte konzolovou aplikaci Node. js, která reaguje na př�
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. Přidejte proměnnou **connectionString** a použijte ji k vytvoření instance **klienta**. Nahraďte `{yourDeviceConnectionString}` hodnotu zástupného symbolu připojovacím řetězcem zařízení, který jste zkopírovali dříve.
+5. Přidejte proměnnou **connectionString** a použijte ji k vytvoření instance **klienta**. Nahraďte hodnotu zástupného symbolu `{yourDeviceConnectionString}` připojovacím řetězcem zařízení, který jste zkopírovali dříve.
 
     ```javascript
     var connectionString = '{yourDeviceConnectionString}';
@@ -166,7 +168,7 @@ V této části vytvoříte konzolovou aplikaci Node. js, která inicializuje vz
     var JobClient = require('azure-iothub').JobClient;
     ```
 
-5. Přidejte následující deklarace proměnných. Nahraďte hodnotu [](#get-the-iot-hub-connection-string) zástupnéhosymboluhodnotou,kteroujstezkopírovalivčástizískánípřipojovacíhořetězcecentraIoT`{iothubconnectionstring}` hub. Pokud jste zaregistrovali jiné zařízení než **myDeviceId**, nezapomeňte ho změnit v podmínce dotazu.
+5. Přidejte následující deklarace proměnných. Nahraďte hodnotu zástupného symbolu `{iothubconnectionstring}` hodnotou, kterou jste zkopírovali v [části získání připojovacího řetězce centra IoT Hub](#get-the-iot-hub-connection-string). Pokud jste zaregistrovali jiné zařízení než **myDeviceId**, nezapomeňte ho změnit v podmínce dotazu.
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';
@@ -295,6 +297,6 @@ Nyní můžete spustit aplikace.
 
 V tomto kurzu jste použili úlohu k naplánování přímé metody na zařízení a aktualizaci vlastností vlákna zařízení.
 
-Pokud chcete pokračovat v seznámení se IoT Hub a způsoby správy zařízení, jako je například vzdálené prostřednictvím aktualizace [firmwaru Air, přečtěte si téma Kurz: Postup při aktualizaci](tutorial-firmware-update.md)firmwaru.
+Pokud chcete pokračovat v seznámení se IoT Hub a způsoby správy zařízení, jako je například vzdálené prostřednictvím aktualizace firmwaru Air, přečtěte si téma [kurz: jak provést aktualizaci firmwaru](tutorial-firmware-update.md).
 
 Pokud chcete pokračovat v seznámení s IoT Hub, přečtěte si téma [Začínáme s Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md).

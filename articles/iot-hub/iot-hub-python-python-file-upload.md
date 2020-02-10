@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: robinsh
-ms.openlocfilehash: 6dfbcc7a3e76842546326742d801c913451855f3
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: f1c0c046c40ff8edbc33c5e93e4207d9fe2fc67a
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001124"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110742"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>Nahrání souborů ze zařízení do cloudu pomocí IoT Hub (Python)
 
@@ -39,9 +39,11 @@ Na konci tohoto kurzu spustíte konzolovou aplikaci v Pythonu:
 > [!NOTE]
 > Tato příručka používá nepoužívané sady v1 Python SDK, protože funkce nahrávání souborů ještě nebyla v nové sadě SDK v2 implementovaná.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
+
+* Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto článku používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
@@ -62,7 +64,7 @@ V této části vytvoříte aplikaci pro zařízení pro nahrání souboru do ce
 
 3. Pomocí textového editoru vytvořte v pracovní složce soubor **FileUpload.py** .
 
-4. Na začátek souboru `import` **FileUpload.py** přidejte následující příkazy a proměnné. 
+4. Na začátek souboru **FileUpload.py** přidejte následující příkazy a proměnné `import`. 
 
     ```python
     import time
@@ -78,7 +80,7 @@ V této části vytvoříte aplikaci pro zařízení pro nahrání souboru do ce
     FILENAME = "[File name for storage]"
     ```
 
-5. V souboru nahraďte `[Device Connection String]` připojovacím řetězcem zařízení služby IoT Hub. Nahraďte `[Full path to file]` cestou k testovacímu souboru, který jste vytvořili, nebo jakýmkoli souborem v zařízení, které chcete nahrát. Nahraďte `[File name for storage]` názvem, který chcete souboru poskytnout po nahrání do úložiště objektů BLOB. 
+5. V souboru nahraďte `[Device Connection String]` připojovacím řetězcem zařízení služby IoT Hub. Nahraďte `[Full path to file]` cestou k testovacímu souboru, který jste vytvořili, nebo libovolným souborem v zařízení, které chcete nahrát. Nahraďte `[File name for storage]` názvem, který chcete souboru poskytnout po nahrání do úložiště objektů BLOB. 
 
 6. Vytvořte zpětné volání pro funkci **upload_blob** :
 
@@ -90,7 +92,7 @@ V této části vytvoříte aplikaci pro zařízení pro nahrání souboru do ce
             print ( "...file upload callback returned: " + str(result) )
     ```
 
-7. Přidejte následující kód pro připojení klienta a nahrání souboru. Zahrňte `main` také rutinu:
+7. Přidejte následující kód pro připojení klienta a nahrání souboru. Zahrňte také rutinu `main`:
 
     ```python
     def iothub_file_upload_sample_run():
@@ -146,7 +148,7 @@ Nyní jste připraveni aplikaci spustit.
 
     ![Nahraný soubor](./media/iot-hub-python-python-file-upload/2.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zjistili, jak používat možnosti nahrávání souborů IoT Hub ke zjednodušení nahrávání souborů ze zařízení. Pomocí následujících článků můžete dál prozkoumat funkce a scénáře IoT Hub:
 
