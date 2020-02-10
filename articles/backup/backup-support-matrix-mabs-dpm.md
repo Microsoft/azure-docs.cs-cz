@@ -3,12 +3,12 @@ title: MABS & – matice podpory DPM pro System Center
 description: Tento článek shrnuje Azure Backup podporu při použití Microsoft Azure Backup serveru (MABS) nebo System Center DPM k zálohování místních a prostředků virtuálních počítačů Azure.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: f9ee31525f2ee5a19aebe0a9258dff3ecfdcbb92
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 211a7e39dc9cda9e4bd96e3a66924b2195524be7
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841163"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111463"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Matice podpory pro zálohování pomocí serveru Microsoft Azure Backup nebo aplikace System Center DPM
 
@@ -24,7 +24,7 @@ MABS je založený na aplikaci System Center DPM a poskytuje podobné funkce s n
 
 - Ke spuštění MABS není nutná žádná licence System Center.
 - Pro MABS i DPM poskytuje Azure dlouhodobé úložiště záloh. Kromě toho aplikace DPM umožňuje zálohovat data pro dlouhodobé ukládání na pásku. MABS tuto funkci neposkytuje.
-- Primární server DPM můžete zálohovat pomocí sekundárního serveru DPM. Sekundární server ochrání databázi primárního serveru a repliky zdrojů dat uložených na primárním serveru. Pokud primární server selže, může sekundární server pokračovat v ochraně úloh, které jsou chráněné primárním serverem, dokud nebude primární server opět k dispozici.  MABS tuto funkci neposkytuje.
+- Primární server DPM můžete zálohovat pomocí sekundárního serveru DPM. Sekundární server bude chránit databázi primárního serveru a repliky zdrojů dat uložených na primárním serveru. Pokud dojde k chybě primárního serveru, může sekundární server pokračovat v ochraně úloh, které jsou chráněny primárním serverem, dokud nebude primární server opět k dispozici.  MABS tuto funkci neposkytuje.
 
 MABS si můžete stáhnout z webu [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=57520). Dá se spustit místně nebo na virtuálním počítači Azure.
 
@@ -43,7 +43,7 @@ Zálohování pomocí DPM/MABS a Azure Backup funguje takto:
 1. Agent Microsoft Azure Recovery Services (MARS) je nainstalovaný na serveru DPM nebo v MABS.
 1. Agent MARS zálohuje disky DPM/MABS do trezoru služby Backup Recovery Services v Azure pomocí Azure Backup.
 
-Další informace:
+Další informace najdete tady:
 
 - [Další informace](backup-architecture.md#architecture-back-up-to-dpmmabs) o architektuře MABS
 - [Přečtěte si, co je podporováno](backup-support-matrix-mars-agent.md) pro agenta Mars.
@@ -60,7 +60,7 @@ DPM/MABS lze nasadit jako shrnuté v následující tabulce.
 
 **Nasazení** | **Podpora** | **Podrobnosti**
 --- | --- | ---
-**Nasazené místně** | Fyzický server<br/><br/>Virtuální počítač s technologií Hyper-V<br/><br/> Virtuální počítač VMware | Pokud je aplikace DPM/MABS nainstalovaná jako virtuální počítač VMware, zálohuje jenom virtuální počítače VMware a úlohy, které jsou na těchto virtuálních počítačích spuštěné.
+**Nasazené místně** | Fyzický server<br/><br/>Virtuální počítač Hyper-V<br/><br/> Virtuální počítač VMware | Pokud je aplikace DPM/MABS nainstalovaná jako virtuální počítač VMware, zálohuje jenom virtuální počítače VMware a úlohy, které jsou na těchto virtuálních počítačích spuštěné.
 **Nasazeno jako Azure Stack virtuální počítač** | Jenom MABS | Aplikaci DPM nelze použít k zálohování Azure Stackch virtuálních počítačů.
 **Nasazeno jako virtuální počítač Azure** | Chrání virtuální počítače a úlohy Azure, které běží na těchto virtuálních počítačích. | DPM/MABS běžící v Azure nemůže zálohovat místní počítače.
 
@@ -75,13 +75,16 @@ Azure Backup můžou zálohovat instance DPM/MABS, na kterých běží některý
 **Místní MABS** | Podporované 64 operační systémy:<br/><br/> MABS v3 a novější: Windows Server 2019 (Standard, Datacenter, Essentials). <br/><br/> MABS v2 a novější: Windows Server 2016 (Standard, Datacenter, Essentials).<br/><br/> Všechny verze MABS: Windows Server 2012 R2.<br/><br/>Všechny verze MABS: Windows Storage Server 2012 R2.
 **Místní aplikace DPM** | Fyzický server/virtuální počítač Hyper-V: System Center 2012 SP1 nebo novější.<br/><br/> Virtuální počítač VMware: System Center 2012 R2 s aktualizací Update 5 nebo novější.
 
+>[!NOTE]
+>Instalace Azure Backup Server není podporovaná na jádru Windows serveru nebo na serveru Microsoft Hyper-V.
+
 ## <a name="management-support"></a>Podpora správy
 
-**Problém** | **Podrobnosti**
+**Chybu** | **Podrobnosti**
 --- | ---
 **Instalace** | Nainstalujte DPM/MABS na jeden z účelových počítačů.<br/><br/> Neinstalujte DPM/MABS na řadiči domény na počítači s instalací role aplikačního serveru na počítači, na kterém běží Microsoft Exchange Server nebo System Center Operations Manager, nebo na uzlu clusteru.<br/><br/> [Zkontrolujte všechny požadavky na systém aplikace DPM](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server).
-**Domény** | DPM/MABS by měl být připojený k doméně. Nejdřív nainstalujte a pak připojte DPM/MABS k doméně. Přesunutí DPM/MABS do nové domény po nasazení se nepodporuje.
-**Storage** | Moderní úložiště záloh (MBS) se podporuje v DPM 2016/MABS v2 a novějších verzích. Není k dispozici pro MABS v1.
+**Domain** | DPM/MABS by měl být připojený k doméně. Nejdřív nainstalujte a pak připojte DPM/MABS k doméně. Přesunutí DPM/MABS do nové domény po nasazení se nepodporuje.
+**Úložiště** | Moderní úložiště záloh (MBS) se podporuje v DPM 2016/MABS v2 a novějších verzích. Není k dispozici pro MABS v1.
 **Upgrade MABS** | Můžete přímo nainstalovat MABS V3 nebo upgradovat na MABS V3 z MABS v2. [Další informace](backup-azure-microsoft-azure-backup.md#upgrade-mabs).
 **Přesunutí MABS** | Přesun MABS na nový server a zachování úložiště je podporované, pokud používáte MBS.<br/><br/> Server musí mít stejný název jako původní. Název nemůžete změnit, pokud chcete zachovat stejný fond úložiště a použít stejnou databázi MABS k ukládání bodů obnovení dat.<br/><br/> Budete potřebovat zálohu databáze MABS, protože ji budete muset obnovit.
 
@@ -131,7 +134,7 @@ Připojeno | Vypršela/bylo zrušeno zřízení | Žádná záloha na disk nebo 
 
 Data zálohovaná do DPM/MABS se ukládají na místní diskové úložiště.
 
-**Storage** | **Podrobnosti**
+**Úložiště** | **Podrobnosti**
 --- | ---
 **MBS** | Moderní úložiště záloh (MBS) se podporuje v DPM 2016/MABS v2 a novějších verzích. Není k dispozici pro MABS v1.
 **MABS Storage na virtuálním počítači Azure** | Data jsou uložená na discích Azure, které jsou připojené k virtuálnímu počítači DPM/MABS a jsou spravované v DPM/MABS. Počet disků, které lze použít pro fond úložiště DPM nebo MABS, je omezen velikostí virtuálního počítače.<br/><br/> Virtuální počítač a2:4 disky; Virtuální počítač a3:8 disků; Virtuální počítač A4:16 disků s maximální velikostí 1 TB pro každý disk. Tím se určuje celkový fond úložiště záloh, který je k dispozici.<br/><br/> Množství dat, které můžete zálohovat, závisí na počtu a velikosti připojených disků.

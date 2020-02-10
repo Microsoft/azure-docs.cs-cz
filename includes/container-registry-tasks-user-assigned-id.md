@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/12/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 0e2acb346fad87e0c1c7fd7de1389d8fc86206d0
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: ceda7bd6bd165df1eece555c6ce8a9a6c863b2c1
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68642108"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112273"
 ---
 ### <a name="create-a-user-assigned-identity"></a>Vytvoření identity přiřazené uživatelem
 
@@ -23,13 +23,13 @@ Pomocí příkazu [AZ identity Create][az-identity-create] vytvořte v předplat
 az identity create --resource-group myResourceGroup --name myACRTasksId
 ```
 
-Pokud chcete nakonfigurovat identitu přiřazenou uživatelem v následujících krocích, pomocí příkazu [AZ identity show][az-identity-show] uložte ID prostředku identity, ID objektu služby a ID klienta v proměnných.
+Pokud chcete nakonfigurovat identitu přiřazenou uživatelem v následujících krocích, pomocí příkazu [AZ identity show][az-identity-show] uložte ID prostředku identity, ID objektu zabezpečení a ID klienta v proměnných.
 
 ```azurecli
 # Get resource ID of the user-assigned identity
 resourceID=$(az identity show --resource-group myResourceGroup --name myACRTasksId --query id --output tsv)
 
-# Get service principal ID of the user-assigned identity
+# Get principal ID of the task's user-assigned identity
 principalID=$(az identity show --resource-group myResourceGroup --name myACRTasksId --query principalId --output tsv)
 
 # Get client ID of the user-assigned identity

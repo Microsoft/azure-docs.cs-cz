@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: eb0b5ea960aa7bc9158791d1fc9fa0986e7d99e6
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 20b667ae345e468bcd3db25d85b7c9de561af4bc
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281338"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111481"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>K připojení databází v Azure Průzkumník dat použít databázi sledování
 
@@ -26,9 +26,9 @@ Připojení databáze k jinému clusteru pomocí schopnosti sledování se použ
 * Jeden cluster může následovat po databázích z více vedoucích clusterů. 
 * Cluster může obsahovat i databáze a vedoucí databáze pro následnou instalaci.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-1. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+1. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 1. [Vytvořte cluster a databázi](/azure/data-explorer/create-cluster-database-portal) pro vedoucího a následného.
 1. Ingestování [dat](/azure/data-explorer/ingest-sample-data) do vedoucí databáze pomocí jedné z různých metod popsaných v tématu [Přehled](/azure/data-explorer/ingest-data-overview)ingestování.
 
@@ -61,7 +61,7 @@ var followerResourceGroupName = "followerResouceGroup";
 var leaderResourceGroup = "leaderResouceGroup";
 var leaderClusterName = "leader";
 var followerClusterName = "follower";
-var attachedDatabaseConfigurationName = "adc";
+var attachedDatabaseConfigurationName = "uniqueNameForAttachedDatabaseConfiguration";
 var databaseName = "db"; // Can be specific database name or * for all databases
 var defaultPrincipalsModificationKind = "Union"; 
 var location = "North Central US";
@@ -113,7 +113,7 @@ follower_resource_group_name = "followerResouceGroup"
 leader_resouce_group_name = "leaderResouceGroup"
 follower_cluster_name = "follower"
 leader_cluster_name = "leader"
-attached_database_Configuration_name = "adc"
+attached_database_Configuration_name = "uniqueNameForAttachedDatabaseConfiguration"
 database_name  = "db" # Can be specific database name or * for all databases
 default_principals_modification_kind  = "Union"
 location = "North Central US"
@@ -180,7 +180,7 @@ V této části se naučíte připojit databázi k existujícímu clusteru pomoc
     "variables": {},
     "resources": [
         {
-            "name": "[concat(parameters('followerClusterName'), '/', parameters('attachedDatabaseConfigurationsName'))]",
+            "name": "[parameters('attachedDatabaseConfigurationsName')]",
             "type": "Microsoft.Kusto/clusters/attachedDatabaseConfigurations",
             "apiVersion": "2019-09-07",
             "location": "[parameters('location')]",
@@ -206,8 +206,8 @@ V této části se naučíte připojit databázi k existujícímu clusteru pomoc
 
 |**Nastavení**  |**Popis**  |
 |---------|---------|
-|Název clusteru sledování     |  Název clusteru následného.  |
-|Název připojených konfigurací databáze    |    Název objektu připojené konfigurace databáze. Název musí být na úrovni clusteru jedinečný.     |
+|Název clusteru sledování     |  Název clusteru následného. Toto je cluster, ve kterém bude tato šablona nasazena.  |
+|Název připojených konfigurací databáze    |    Název objektu připojené konfigurace databáze. Název může být libovolný řetězec, pokud je na úrovni clusteru jedinečný.     |
 |Název databáze     |      Název databáze, která se má dodržovat Pokud chcete sledovat všechny databáze vedoucího vedoucího, použijte znak *.   |
 |ID prostředku clusteru vedoucího procesu    |   ID prostředku vedoucího clusteru      |
 |Výchozí typ změny objektů zabezpečení    |   Výchozí typ změny objektu zabezpečení. Může být `Union`, `Replace` nebo `None`. Další informace o výchozím typu změny objektu zabezpečení naleznete v tématu [hlavní ovládací prvek typu změny](/azure/kusto/management/cluster-follower?branch=master#alter-follower-database-principals-modification-kind).      |
@@ -250,7 +250,7 @@ var resourceManagementClient = new KustoManagementClient(serviceCreds){
 var followerResourceGroupName = "testrg";
 //The cluster and database that are created as part of the prerequisites
 var followerClusterName = "follower";
-var attachedDatabaseConfigurationsName = "adc";
+var attachedDatabaseConfigurationsName = "uniqueName";
 
 resourceManagementClient.AttachedDatabaseConfigurations.Delete(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationsName);
 ```
@@ -278,7 +278,7 @@ var followerClusterName = "follower";
 //The cluster and database that are created as part of the Prerequisites
 var followerDatabaseDefinition = new FollowerDatabaseDefinition()
     {
-        AttachedDatabaseConfigurationName = "adc",
+        AttachedDatabaseConfigurationName = "uniqueName",
         ClusterResourceId = $"/subscriptions/{followerSubscriptionId}/resourceGroups/{followerResourceGroupName}/providers/Microsoft.Kusto/Clusters/{followerClusterName}"
     };
 
@@ -312,7 +312,7 @@ kusto_management_client = KustoManagementClient(credentials, follower_subscripti
 
 follower_resource_group_name = "followerResouceGroup"
 follower_cluster_name = "follower"
-attached_database_configurationName = "adc"
+attached_database_configurationName = "uniqueName"
 
 #Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.attached_database_configurations.delete(follower_resource_group_name, follower_cluster_name, attached_database_configurationName)
@@ -348,7 +348,7 @@ follower_resource_group_name = "followerResourceGroup"
 leader_resource_group_name = "leaderResourceGroup"
 follower_cluster_name = "follower"
 leader_cluster_name = "leader"
-attached_database_configuration_name = "adc"
+attached_database_configuration_name = "uniqueName"
 location = "North Central US"
 cluster_resource_id = "/subscriptions/" + follower_subscription_id + "/resourceGroups/" + follower_resource_group_name + "/providers/Microsoft.Kusto/Clusters/" + follower_cluster_name
 
@@ -366,12 +366,12 @@ Při připojování databáze zadejte **"výchozí druh úprav objektů zabezpe�
 |**Plnění** |**Popis**  |
 |---------|---------|
 |**Sjednocovací**     |   Připojené objekty databáze budou vždycky zahrnovat původní objekty zabezpečení databáze a další nové objekty zabezpečení přidané do databáze následného objektu.      |
-|**nahradit**   |    Žádná dědičnost objektů zabezpečení z původní databáze. Pro připojenou databázi je nutné vytvořit nové objekty zabezpečení.     |
-|**Žádné**   |   Připojené objekty zabezpečení databáze obsahují pouze objekty zabezpečení původní databáze bez dalších objektů zabezpečení.      |
+|**Náhrady**   |    Žádná dědičnost objektů zabezpečení z původní databáze. Pro připojenou databázi je nutné vytvořit nové objekty zabezpečení.     |
+|**NTato**   |   Připojené objekty zabezpečení databáze obsahují pouze objekty zabezpečení původní databáze bez dalších objektů zabezpečení.      |
 
 Další informace o použití příkazů pro řízení ke konfiguraci autorizovaných objektů zabezpečení najdete v tématu [Řídicí příkazy pro správu clusteru následného](/azure/kusto/management/cluster-follower)řízení.
 
-### <a name="manage-permissions"></a>Správa oprávnění
+### <a name="manage-permissions"></a>Spravovat oprávnění
 
 Správa oprávnění databáze jen pro čtení je stejná jako u všech typů databáze. Viz téma [Správa oprávnění v Azure Portal](/azure/data-explorer/manage-database-permissions#manage-permissions-in-the-azure-portal).
 

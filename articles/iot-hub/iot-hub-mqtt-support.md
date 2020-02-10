@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: e1559dbab2503ded957b17c0cc6a61a06c53fffc
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 694697be85b61ad2d59a0a4be1ced3581873cb77
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110732"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111753"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikace se službou IoT Hub pomocí protokolu MQTT
 
@@ -175,7 +175,7 @@ Toto úložiště obsahuje:
 
 • LinuxConsoleVS2019: obsahuje stejný kód, ale v projektu VS2019 cílící na WSL (Windows Linux sub System). Tento projekt vám umožní ladit kód běžící v systému Linux krok za krokem ze sady Visual Studio.
 
-**Pro mosquito_pub:**
+**Pro mosquitto_pub:**
 
 • Tato složka obsahuje dva příkazy vzorů, které se používají s nástrojem mosquitto_pub Utility poskytovaném nástrojem Mosquitto.org.
 

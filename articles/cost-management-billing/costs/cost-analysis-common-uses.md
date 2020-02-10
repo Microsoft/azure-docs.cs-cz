@@ -1,6 +1,6 @@
 ---
-title: Běžná analýza nákladů používá v Azure Cost Management
-description: Tento článek vysvětluje, jak můžete získat výsledky pro úlohy běžné analýzy nákladů v Azure Cost Management.
+title: Běžné způsoby analýzy nákladů ve službě Azure Cost Management
+description: Tento článek vysvětluje, jak získat potřebné výsledky prostřednictvím běžných způsobů analýzy nákladů ve službě Azure Cost Management.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -11,108 +11,108 @@ ms.service: cost-management-billing
 manager: adwise
 ms.custom: ''
 ms.openlocfilehash: 756e2f275a92a31a99604aaf7ef880bfdce8149b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75988510"
 ---
-# <a name="common-cost-analysis-uses"></a>Běžné analýzy nákladů používá
+# <a name="common-cost-analysis-uses"></a>Běžné způsoby analýzy nákladů
 
-Azure Cost Management uživatelé často chtějí zodpovědět otázky, na které se zeptat mnoho dalších. Tento článek vás provede procesem získání výsledků pro úlohy běžné analýzy nákladů v Cost Management.
+Uživatelé služby Azure Cost Management hledají často odpověď na otázky, které zajímají i mnoho dalších osob. Tento článek vás provede hledáním výsledků prostřednictvím běžných způsobů analýzy nákladů ve službě Cost Management.
 
-## <a name="view-cost-breakdown-by-azure-service"></a>Zobrazit rozpis nákladů podle služby Azure
+## <a name="view-cost-breakdown-by-azure-service"></a>Zobrazení rozpisu nákladů podle služeb Azure
 
-Zobrazení nákladů pomocí služby Azure vám pomůže lépe porozumět částem vaší infrastruktury, která je pro vás nejdůležitější. Například náklady na výpočetní prostředky virtuálních počítačů můžou být malé. Z důvodu množství informací, které se z virtuálních počítačů generují, se zatím můžou výrazně snížit náklady na síť. Princip primárních nákladových ovladačů služeb Azure je nezbytný, takže můžete podle potřeby upravit využití služeb.
+Tím, že si zobrazíte náklady podle služeb Azure, budete schopni lépe porozumět, které části vaší infrastruktury vás stojí nejvíce. Například náklady na výpočetní výkon zajišťovaný virtuálními počítači můžou být nízké. Ale množství informací, které virtuální počítače generují, může vést k významnému nárůstu nákladů na síťové zajištění. Pochopení primárních generátorů nákladů mezi vašimi službami Azure má zásadní význam pro následné doladění způsobu jejich využívání.
 
-1. V Azure Portal přejděte k analýze nákladů pro váš obor. Například: **cost management + > fakturace** **cost management** > **analýzy nákladů**.
-1. Vyberte **náklady podle služby** a pak seskupte podle **úrovně služeb**.
-1. Změňte zobrazení na **tabulka**.
+1. Na webu Azure Portal přejděte na analýzu nákladů pro konkrétní rozsah. Příklad: **Správa nákladů a fakturace** > **Správa nákladů** > **Analýza nákladů**.
+1. Vyberte **Náklady podle služeb** a pak je seskupte volbou **Úroveň služby**.
+1. Zobrazení změňte na možnost **Tabulka**.
 
-![Rozpis nákladů podle služby Azure](./media/cost-analysis-common-uses/breakdown-by-service.png)
+![Rozpis nákladů podle služeb Azure](./media/cost-analysis-common-uses/breakdown-by-service.png)
 
-## <a name="view-cost-breakdown-by-azure-resource"></a>Zobrazení rozpisu nákladů podle prostředku Azure
+## <a name="view-cost-breakdown-by-azure-resource"></a>Zobrazení rozpisu nákladů podle prostředků Azure
 
-Vaše služby jsou sestavené s prostředky Azure. Kontroly nákladů na základě prostředků vám pomůžou rychle identifikovat vaše primární přispěvatele nákladů. Pokud služba obsahuje prostředky, které jsou moc nákladné, zvažte provedení změn, abyste snížili náklady.
+Vámi používané služby se skládají z prostředků Azure. Zobrazení nákladů podle prostředků vám umožní rychle identifikovat jejich primární zdroje. Pokud služba obsahuje prostředky, které jsou moc drahé, zvažte změny, kterými náklady snížíte.
 
-1. V Azure Portal přejděte k analýze nákladů pro váš obor. Například: **cost management + > fakturace** **cost management** > **analýzy nákladů**.
-1. Vyberte **náklady podle prostředku**.
-1. Změňte zobrazení na **tabulka**.
+1. Na webu Azure Portal přejděte na analýzu nákladů pro konkrétní rozsah. Příklad: **Správa nákladů a fakturace** > **Správa nákladů** > **Analýza nákladů**.
+1. Vyberte **Náklady podle prostředků**.
+1. Zobrazení změňte na možnost **Tabulka**.
 
-![Zobrazení rozpisu nákladů podle prostředku Azure](./media/cost-analysis-common-uses/cost-by-resource.png)
+![Zobrazení rozpisu nákladů podle prostředků Azure](./media/cost-analysis-common-uses/cost-by-resource.png)
 
-## <a name="view-cost-breakdown-by-selected-dimensions"></a>Zobrazit rozdělení nákladů podle vybraných dimenzí
+## <a name="view-cost-breakdown-by-selected-dimensions"></a>Zobrazení rozpisu nákladů podle vybraných dimenzí
 
-Dimenze umožňují organizovat náklady na základě různých hodnot metadat zobrazených v rámci poplatků. Můžete například seskupit náklady podle umístění.
+Díky dimenzím můžete náklady uspořádat na základě hodnot různých metadat uvedených v rámci poplatků. Náklady můžete například seskupit podle míst.
 
-1. V Azure Portal přejděte k analýze nákladů pro váš obor. Například: **cost management + > fakturace** **cost management** > **analýzy nákladů**.
-1. Vyberte filtr **Seskupit podle** .  
-    ![vybrat položku Seskupit podle](./media/cost-analysis-common-uses/group-by.png)
-1. Volitelně můžete zobrazení uložit pro pozdější použití.
-1. Kliknutím na výsečový graf pod grafem zobrazíte podrobnější data.  
-    ![Zobrazit rozdělení nákladů podle vybraných dimenzí](./media/cost-analysis-common-uses/drill-down.png)
+1. Na webu Azure Portal přejděte na analýzu nákladů pro konkrétní rozsah. Příklad: **Správa nákladů a fakturace** > **Správa nákladů** > **Analýza nákladů**.
+1. Vyberte filtr **Seskupit podle**.  
+    ![Výběr položky Seskupit podle](./media/cost-analysis-common-uses/group-by.png)
+1. Zobrazení si také můžete uložit pro pozdější použití.
+1. Kliknutím na výsečový graf pod hlavním grafem si zobrazíte podrobnější data.  
+    ![Zobrazení rozpisu nákladů podle vybraných dimenzí](./media/cost-analysis-common-uses/drill-down.png)
 
-## <a name="view-costs-per-day-or-by-month"></a>Zobrazit náklady za den nebo po měsících
+## <a name="view-costs-per-day-or-by-month"></a>Zobrazení nákladů po dnech nebo měsících
 
-Každodenní a měsíční náklady vám pomůžou lépe pochopit, jestli máte čas v týdnu nebo roce, kde jsou vaše náklady vyšší. Pokud máte v době volno více zákaznických přenosů, povede to k odpovídajícímu nárůstu nákladů na Azure? Má pátek více dražších dní než pondělí?
+Díky zobrazení denních nebo měsíčních nákladů můžete snáze odhalit období v rámci týdne nebo roku, kdy jsou náklady vyšší. Pokud komunikace se zákazníky narůstá v období před svátky, vede to k odpovídajícímu nárůstu nákladů na Azure? Bývají pátky nákladnější než pondělky?
 
-1. V Azure Portal přejděte k analýze nákladů pro váš obor. Například: **cost management + > fakturace** **cost management** > **analýzy nákladů**.
-1. Nastavte **členitost** na **měsíční** nebo **denní**.
+1. Na webu Azure Portal přejděte na analýzu nákladů pro konkrétní rozsah. Příklad: **Správa nákladů a fakturace** > **Správa nákladů** > **Analýza nákladů**.
+1. **Úroveň podrobností** nastavte na **Měsíční** nebo **Denní**.
 
-![Zobrazit náklady za den](./media/cost-analysis-common-uses/daily-granularity.png)
+![Zobrazení nákladů po dnech](./media/cost-analysis-common-uses/daily-granularity.png)
 
-## <a name="view-costs-for-a-specific-tag"></a>Zobrazit náklady na konkrétní značku
+## <a name="view-costs-for-a-specific-tag"></a>Zobrazení nákladů pro konkrétní značku
 
-Mnoho uživatelů Azure používá značky pro své prostředky, jako je například nákladové středisko nebo vývojové prostředí (výroba a testování), aby lépe kategorizoval poplatky. Značky se zobrazí jako dimenze při analýze nákladů. Dimenzi můžete použít k získání přehledu o vlastních kategorizacích značek.
+Mnoho uživatelů Azure používá u svých prostředků, což můžou být třeba nákladová střediska nebo vývojová prostředí (produkce a testování), značky, které jim usnadňují kategorizaci poplatků. Značky se při analýze nákladů zobrazují jako dimenze. Díky těmto dimenzím můžete získat potřebný přehled na základě vlastní kategorizace značek.
 
-Podpora značek se vztahuje na použití hlášené *po* použití značky u prostředku. Značky se nepoužijí zpětně pro kumulativní náklady.
+Údaje vázané na značky zahrnují data o využití nahlášená až *po* nastavení značky u prostředku. Značky se nedají použít pro retroaktivní shrnutí.
 
-1. V Azure Portal přejděte k analýze nákladů pro váš obor. Například: **cost management + > fakturace** **cost management** > **analýzy nákladů**.
-1. Pro značku vyberte **Group by** .
+1. Na webu Azure Portal přejděte na analýzu nákladů pro konkrétní rozsah. Příklad: **Správa nákladů a fakturace** > **Správa nákladů** > **Analýza nákladů**.
+1. Vyberte **Seskupit podle** a konkrétní značku.
 
-![Zobrazit náklady na konkrétní značku](./media/cost-analysis-common-uses/tag.png)
+![Zobrazení nákladů pro konkrétní značku](./media/cost-analysis-common-uses/tag.png)
 
-## <a name="download-your-usage-details"></a>Stažení podrobností o použití
+## <a name="download-your-usage-details"></a>Stažení podrobností o využití
 
-Soubor sestavy s podrobnostmi o využití ve formátu CSV poskytuje rozpis všech poplatků, které se účtují vůči faktuře. Sestavu můžete použít k porovnání a k lepšímu pochopení vaší faktury. Každý účtovaný poplatek na faktuře odpovídá za rozdělené poplatky v sestavě využití.
+Soubor ve formátu CSV s podrobnou sestavou využití obsahuje rozpis všech poplatků vyúčtovaných na faktuře. Sestavu můžete porovnat s fakturou, abyste jí lépe porozuměli. Jednotlivé poplatky vyúčtované na faktuře odpovídají poplatkům rozepsaným v sestavě využití.
 
-1. V Azure Portal přejděte na kartu **využití a poplatky** pro fakturační účet nebo předplatné. Například: **cost management + fakturace** ** > fakturace** > **využití a poplatky**.
-1. Vyberte položku řádku, ze které se má stáhnout, a pak klikněte na symbol pro stažení.  
-    ![Stažení využití a poplatků](./media/cost-analysis-common-uses/download1.png)
-1.  Vyberte soubor využití, který se má stáhnout.  
-    ![Zvolit soubor využití ke stažení](./media/cost-analysis-common-uses/download2.png)
+1. Na webu Azure Portal přejděte na kartu **Využití a poplatky** pro konkrétní fakturační účet nebo předplatné. Příklad: **Správa nákladů a fakturace** > **Fakturace** > **Využití a poplatky**.
+1. Vyberte řádek, pro který si chcete stáhnout data, a pak klikněte na symbol pro stažení.  
+    ![Stažení dat o využití a poplatcích](./media/cost-analysis-common-uses/download1.png)
+1.  Vyberte soubor s údaji o využití, který se má stáhnout.  
+    ![Volba souboru o využití ke stažení](./media/cost-analysis-common-uses/download2.png)
 
-## <a name="view-monthly-ea-cost-breakdown"></a>Zobrazit měsíční rozpis nákladů na EA
+## <a name="view-monthly-ea-cost-breakdown"></a>Zobrazení měsíčního rozpisu nákladů pro smlouvu Enterprise (EA)
 
-Vaše registrace EA narůstá náklady na celou organizaci. Porozumět tomu, jak se účtují a účtují náklady v průběhu času, vám pomůže zapojit příslušné zúčastněné strany, aby se zajistilo, že náklady budou spravované zodpovědnou.
+U vaší registrace EA se načítají náklady za celou vaši organizaci. Když pochopíte, jak náklady průběžně nabíhají a jak se účtují, snáze zapojíte ostatní zainteresované osoby do úsilí o odpovědné řízení nákladů.
 
-1. V Azure Portal přejděte na **přehled** > **cost management + fakturace** .
-1. Klikněte na **rozdělení** pro aktuální měsíc a podívejte se na vypalování peněžních závazků.  
-    Přehled nákladů na ![EA – souhrn rozpisu](./media/cost-analysis-common-uses/breakdown1.png)
-1.  Klikněte na kartu **využití a poplatky** a zobrazte rozpis předchozího měsíce ve zvoleném časovém rámci.  
-    karta využití ![a poplatky](./media/cost-analysis-common-uses/breakdown2.png)
+1. Na webu Azure Portal přejděte na **Správa nákladů a fakturace** > **Přehled**.
+1. Klikněte na **Rozpis** pro aktuální měsíc a podívejte se na čerpání peněžního závazku.  
+    ![Přehled nákladů na EA – souhrn rozpisu](./media/cost-analysis-common-uses/breakdown1.png)
+1.  Klikněte na kartu **Využití a náklady** a podívejte se na rozpis předchozího měsíce ve zvoleném časovém rozsahu.  
+    ![Karta Využití a náklady](./media/cost-analysis-common-uses/breakdown2.png)
 
-## <a name="view-enrollment-monthly-cost-by-term"></a>Zobrazit měsíční náklady na registraci podle termínu
+## <a name="view-enrollment-monthly-cost-by-term"></a>Zobrazení měsíčních nákladů na registraci podle období
 
-Pomocí grafického zobrazení měsíčních nákladů na registraci můžete pochopit trendy nákladů a fakturované částky za dané období.
+Díky grafickému zobrazení měsíčních nákladů u vaší registrace můžete pochopit trendy nákladů a fakturované částky pro konkrétní období.
 
-1. V Azure Portal přejděte k analýze nákladů pro váš obor. Například: **cost management + > fakturace** **cost management** > **analýzy nákladů**.
-1. Vyberte registraci a nastavte termín registrace.
-1. Nastavte členitost na měsíčně a pak nastavte zobrazení na **sloupec (skládané)** .
+1. Na webu Azure Portal přejděte na analýzu nákladů pro konkrétní rozsah. Příklad: **Správa nákladů a fakturace** > **Správa nákladů** > **Analýza nákladů**.
+1. Vyberte registraci a nastavte období registrace.
+1. Úroveň podrobností nastavte na měsíční a pak jako zobrazení zvolte **Sloupcový (skládaný)** .
 
-Můžete seskupit podle a filtrovat data pro podrobnější analýzu.
+Data můžete dál seskupovat a filtrovat, abyste získali ještě podrobnější analýzu.
 
-![Měsíční náklady na registraci podle termínu](./media/cost-analysis-common-uses/enrollment-term1.png)
+![Měsíční náklady u registrace podle období](./media/cost-analysis-common-uses/enrollment-term1.png)
 
-## <a name="view-ea-enrollment-accumulated-costs"></a>Zobrazit akumulované náklady registrace EA
+## <a name="view-ea-enrollment-accumulated-costs"></a>Zobrazení kumulovaných nákladů u registrace EA
 
-Zobrazení čistých kumulovaných poplatků v průběhu času pro pochopení celkových výdajů vaší organizace po určitou dobu.
+Pokud budete sledovat čisté kumulované poplatky v průběhu času, snáze pochopíte celkové výdaje vaší organizace v určitém období.
 
-1. V Azure Portal přejděte k analýze nákladů pro váš obor. Například: **cost management + > fakturace** **cost management** > **analýzy nákladů**.
-1. Vyberte si registraci a pak zobrazte aktuální akumulované náklady.
+1. Na webu Azure Portal přejděte na analýzu nákladů pro konkrétní rozsah. Příklad: **Správa nákladů a fakturace** > **Správa nákladů** > **Analýza nákladů**.
+1. Vyberte svou registraci a podívejte se na aktuální kumulované náklady.
 
-![Akumulované náklady registrace](./media/cost-analysis-common-uses/cost-analysis-enrollment.png)
+![Kumulované náklady u registrace](./media/cost-analysis-common-uses/cost-analysis-enrollment.png)
 
 ## <a name="next-steps"></a>Další kroky
-- Pokud jste ještě nedokončili první tohoto rychlého startu Cost Management, přečtěte si ho na [začít analýza nákladů](quick-acm-cost-analysis.md).
-- Přečtěte si [dokumentaci cost management](../index.yml).
+- Pokud jste si ještě neprošli úvodní příručku pro Cost Management, najdete ji v tématu [Začínáme s analýzou nákladů](quick-acm-cost-analysis.md).
+- Projděte si [dokumentaci pro Cost Management](../index.yml).

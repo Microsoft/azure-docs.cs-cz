@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: c9c47506e61c665da459558735a3afc93e8b9806
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 11607ffe03d5d2519df1b1199a741dfb55aff2f4
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659776"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111621"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurace sítě Azure CNI ve službě Azure Kubernetes Service (AKS)
 
@@ -22,7 +22,7 @@ Díky [rozhraní CNI (Azure Container Networking Interface)][cni-networking]kaž
 
 V tomto článku se dozvíte, jak pomocí sítě *Azure CNI* vytvořit a použít podsíť virtuální sítě pro cluster AKS. Další informace o možnostech a požadavcích sítě najdete v tématu [Koncepty sítě pro Kubernetes a AKS][aks-network-concepts].
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Virtuální síť pro cluster AKS musí umožňovat odchozí připojení k Internetu.
 * Clustery AKS nemůžou používat `169.254.0.0/16`, `172.30.0.0/16`, `172.31.0.0/16`nebo `192.0.2.0/24` pro rozsah adres služby Kubernetes.
@@ -52,9 +52,9 @@ Plán IP adres pro cluster AKS se skládá z virtuální sítě, minimálně jed
 | --------- | ------------- |
 | Virtuální síť | Virtuální síť Azure může být velká až/8, ale je omezená na 65 536 nakonfigurovaných IP adres. |
 | Podsíť | Musí být dostatečně velká, aby se vešly do uzlů, lusků a všech prostředků Kubernetes a Azure, které můžou být zřízené ve vašem clusteru. Pokud například nasadíte interní Azure Load Balancer, jeho front-endové IP adresy se přidělují z podsítě clusteru, nikoli z veřejných IP adres. Velikost podsítě by měla také vzít v úvahu operace upgradu nebo budoucí požadavky na škálování.<p />Výpočet *minimální* velikosti podsítě včetně dalšího uzlu pro operace upgradu: `(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)`<p/>Příklad pro cluster uzlu 50: `(51) + (51  * 30 (default)) = 1,581` (/21 nebo větší)<p/>Příklad pro cluster uzlu 50, který obsahuje také zřizování pro horizontální navýšení kapacity dalších 10 uzlů: `(61) + (61 * 30 (default)) = 1,891` (/21 nebo větší)<p>Pokud při vytváření clusteru neurčíte maximální počet lusků na uzel, je maximální počet lusků na uzel nastaven na hodnotu *30*. Minimální požadovaný počet IP adres je založen na této hodnotě. Pokud vypočítáte minimální požadavky na IP adresu pro jinou maximální hodnotu, přečtěte si téma [jak nakonfigurovat maximální počet lusků na uzel](#configure-maximum---new-clusters) a nastavit tuto hodnotu při nasazení clusteru. |
-| Rozsah adres služby Kubernetes | Tento rozsah by neměl být použit žádným síťovým prvkem ani připojeným k této virtuální síti. CIDR adresy služby musí být menší než/12. |
+| Rozsah adres služby Kubernetes | Tento rozsah by neměl být použit žádným síťovým prvkem ani připojeným k této virtuální síti. CIDR adresy služby musí být menší než/12. Tento rozsah můžete znovu použít napříč různými AKS clustery. |
 | IP adresa služby DNS Kubernetes | IP adresa v rámci rozsahu adres služby Kubernetes, kterou bude používat služba zjišťování clusterových služeb (Kube-DNS). Nepoužívejte první IP adresu v rozsahu adres, například. 1. První adresa v rozsahu podsítě se používá pro *Kubernetes. default. svc. cluster. místní* adresa. |
-| Adresa mostu Docker | Síťová adresa mostu Docker představuje výchozí síťovou adresu *docker0* mostu přítomnou ve všech instalacích Docker. I když se *docker0* most nepoužívá v clusterech AKS nebo v samotných luskech, musíte tuto adresu nastavit tak, aby pokračovala v podpoře scénářů, jako je například *sestavení Docker* v rámci clusteru AKS. Je nutné vybrat CIDR pro síťovou adresu mostu Docker, protože jinak Docker vybere podsíť automaticky, která by mohla být v konfliktu s jinými CIDRs. Je nutné vybrat adresní prostor, který není v konfliktu se zbytkem CIDRs ve vašich sítích, včetně směrování služeb v clusteru a pod ním. Výchozí hodnota pro 172.17.0.1/16. |
+| Adresa mostu Docker | Síťová adresa mostu Docker představuje výchozí síťovou adresu *docker0* mostu přítomnou ve všech instalacích Docker. I když se *docker0* most nepoužívá v clusterech AKS nebo v samotných luskech, musíte tuto adresu nastavit tak, aby pokračovala v podpoře scénářů, jako je například *sestavení Docker* v rámci clusteru AKS. Je nutné vybrat CIDR pro síťovou adresu mostu Docker, protože jinak Docker vybere podsíť automaticky, která by mohla být v konfliktu s jinými CIDRs. Je nutné vybrat adresní prostor, který není v konfliktu se zbytkem CIDRs ve vašich sítích, včetně směrování služeb v clusteru a pod ním. Výchozí hodnota pro 172.17.0.1/16. Tento rozsah můžete znovu použít napříč různými AKS clustery. |
 
 ## <a name="maximum-pods-per-node"></a>Maximální počet lusků na uzel
 

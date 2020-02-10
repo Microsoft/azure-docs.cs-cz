@@ -3,12 +3,12 @@ title: Použití Azure Backup Server k zálohování úloh
 description: V tomto článku se dozvíte, jak připravit prostředí pro ochranu a zálohování úloh pomocí Microsoft Azure Backup serveru (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: db2bac3464939edc5dec2ee2947faf7a05ad6812
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ff5df19d3e2d42af9a45fbc1b71980cee1cdb8a0
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979859"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111594"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalace a upgrade Azure Backup Server
 
@@ -51,7 +51,7 @@ Ochrana úloh pomocí Azure Backup Server má spoustu drobné odlišnosti. Tento
 
 Pokud nechcete spustit základní server v Azure, můžete server spustit na virtuálním počítači Hyper-V, na virtuálním počítači VMware nebo na fyzickém hostiteli. Doporučené minimální požadavky na hardware serveru jsou dvě jádra a 8 GB paměti RAM. Podporované operační systémy jsou uvedené v následující tabulce:
 
-| Operační systém | Platforma | Skladová položka |
+| Operační systém | Platforma | Skladová jednotka (SKU) |
 |:--- | --- |:--- |
 | Windows Server 2019 |64bitová verze |Standard, Datacenter, Essentials |
 | Windows Server 2016 a nejnovější aktualizace service packu |64bitová verze |Standard, Datacenter, Essentials  |
@@ -66,6 +66,8 @@ Pomocí odstranění duplicitních dat systému Windows Server můžete odstrani
 > * Počítač, který je serverem pro správu nástroje System Center Operations Manager
 > * Počítač, na kterém je spuštěný server Exchange
 > * Počítač, který je uzlem clusteru
+>
+> Instalace Azure Backup Server není podporovaná na jádru Windows serveru nebo na serveru Microsoft Hyper-V.
 
 Vždy připojte Azure Backup Server k doméně. Pokud plánujete přesunout server do jiné domény, nainstalujte nejprve Azure Backup Server a pak připojte Server k nové doméně. Přesunutí stávajícího Azure Backup Serverho počítače do nové domény po nasazení se *nepodporuje*.
 
@@ -90,13 +92,13 @@ Chcete-li upravit nastavení replikace úložiště:
 
 ### <a name="downloading-the-software-package"></a>Stažení softwarového balíčku
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com/).
 2. Pokud už máte otevřený trezor Recovery Services, pokračujte krokem 3. Pokud nemáte otevřený trezor Recovery Services, ale nachází se v Azure Portal, v hlavní nabídce klikněte na tlačítko **Procházet**.
 
-   * V seznamu prostředků zadejte **Recovery Services**.
-   * Během zadávání se seznam bude filtrovat podle zadávaného textu. Až uvidíte **Trezory Recovery Services**, klikněte na ně.
+   * V seznamu prostředků zadejte **Služby zotavení**.
+   * Během zadávání se seznam bude filtrovat podle zadávaného textu. Až uvidíte **Trezory Služeb zotavení**, klikněte na ně.
 
-     ![Vytvoření trezoru Recovery Services – krok 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
+     ![Vytvoření trezoru Služeb zotavení – krok 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
      Objeví se seznam trezorů Služeb zotavení.
    * Ze seznamu trezorů Služeb zotavení vyberte trezor.
@@ -215,7 +217,7 @@ Po dokončení procesu extrakce zaškrtněte políčko pro spuštění programu 
     ![Azure Backup Server PreReq2](./media/backup-azure-microsoft-azure-backup/mars/04.png)
 9. Po úspěšném dokončení registrace Microsoft Azure Backup serveru přejde průvodce celkovým nastavením na instalaci a konfiguraci SQL Server a Azure Backup Server komponenty. Po dokončení instalace součásti SQL Server se nainstalují Azure Backup Server součásti.
 
-    ![Azure Backup Server](./media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
+    ![Server Azure Backup](./media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
 
 Po dokončení instalace se vytvoří taky ikony na ploše produktu. Stačí dvakrát kliknout na ikonu a spustit produkt.
 
@@ -283,7 +285,7 @@ Kromě toho musí být předplatné Azure v dobrém stavu. Pokud chcete zjistit 
 
 Jakmile budete znát stav připojení Azure a předplatného Azure, můžete pomocí následující tabulky zjistit dopad na nabízené funkce zálohování a obnovení.
 
-| Stav připojení | Předplatné Azure | Zálohování do Azure | Zálohovat na disk | Obnovení z Azure | Obnovení z disku |
+| Stav připojení | předplatné Azure | Zálohování do Azure | Zálohovat na disk | Obnovení z Azure | Obnovení z disku |
 | --- | --- | --- | --- | --- | --- |
 | Připojeno |Aktivní |Povoleno |Povoleno |Povoleno |Povoleno |
 | Připojeno |Platnost vypršela |Zastaveno |Zastaveno |Povoleno |Povoleno |

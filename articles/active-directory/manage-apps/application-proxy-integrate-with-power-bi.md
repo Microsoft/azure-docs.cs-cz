@@ -16,18 +16,18 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9faa1fffde5553168c8b76ea40cebc001c1e27b2
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: bc96c94152b39cc70cfc4553690faaa5b9cb8d20
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275512"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111588"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Povolení vzdáleného přístupu pro Power BI Mobile s využitím Azure Proxy aplikací služby AD
 
 Tento článek popisuje, jak pomocí služby Azure Proxy aplikací služby AD povolit, aby se mobilní aplikace Power BI připojovala Server sestav Power BI (PBIRS) a SQL Server Reporting Services (SSRS) 2016 a novější. Prostřednictvím této integrace můžou uživatelé mimo podnikovou síť přistupovat ke svým Power BIm sestavám z Power BI mobilní aplikace a chránit pomocí ověřování Azure AD. Tato ochrana zahrnuje [výhody zabezpečení](application-proxy-security.md#security-benefits) , jako je podmíněný přístup a Multi-Factor Authentication.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento článek předpokládá, že jste již nasadili služby sestav a [povolili proxy aplikace](application-proxy-add-on-premises-application.md).
 
@@ -138,9 +138,6 @@ Předtím, než se může mobilní aplikace Power BI připojit a získat příst
 3. Zadejte platné přihlašovací údaje pro uživatele a vyberte **Přihlásit se**. Uvidíte prvky ze serveru služby Reporting Services.
 
 ## <a name="step-5-configure-intune-policy-for-managed-devices-optional"></a>Krok 5: Konfigurace zásad Intune pro spravovaná zařízení (volitelné)
-
-> [!NOTE]
-> Tato funkce je v tuto chvíli dostupná jenom pro iOS.
 
 Microsoft Intune můžete použít ke správě klientských aplikací, které používají zaměstnanci vaší společnosti. Intune umožňuje používat funkce, jako je šifrování dat a další požadavky na přístup. Další informace o správě aplikací přes Intune najdete v tématu Správa aplikací Intune. Pokud chcete povolit spolupráci Power BI mobilní aplikace se zásadami Intune, použijte následující postup.
 

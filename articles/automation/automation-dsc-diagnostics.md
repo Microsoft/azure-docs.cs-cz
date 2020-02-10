@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9fa84b5e87581fad4a7ada5fda074429409d2f8f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: bbc9048452c5361306dd05e712090543bb1066ce
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850342"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111536"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Předávat data o konfiguraci stavu přeAzure Automation do protokolů Azure Monitor
 
@@ -74,9 +74,9 @@ Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <Workspa
 
 ## <a name="view-the-state-configuration-logs"></a>Zobrazit protokoly konfigurace stavu
 
-Po nastavení integrace s protokoly Azure Monitor pro data konfigurace stavu automatizace se v okně **uzly DSC** v účtu Automation zobrazí tlačítko **hledání protokolu** . Kliknutím na tlačítko **hledání protokolu** zobrazíte protokoly pro data uzlu DSC.
+Po nastavení integrace s protokoly Azure Monitor pro data konfigurace stavu automatizace je můžete zobrazit výběrem možnosti **protokoly** v části **monitorování** v levém podokně stránky Konfigurace stavu (DSC).  
 
-![Tlačítko hledání protokolu](media/automation-dsc-diagnostics/log-search-button.png)
+![Protokoly](media/automation-dsc-diagnostics/automation-dsc-logs-toc-item.png)
 
 Otevře se okno **prohledávání protokolu** a zobrazí se operace **DscNodeStatusData** pro každý uzel Konfigurace stavu a operace **DscResourceStatusData** pro každý [prostředek DSC](/powershell/scripting/dsc/resources/resources) s názvem v konfiguraci uzlu použité pro tento uzel.
 
@@ -84,11 +84,14 @@ Operace **DscResourceStatusData** obsahuje informace o chybě pro všechny prost
 
 Kliknutím na jednotlivé operace v seznamu zobrazíte data pro danou operaci.
 
-Protokoly můžete zobrazit také tak, že vyhledáte Azure Monitor protokoly.
-Viz [najít data pomocí prohledávání protokolů](../log-analytics/log-analytics-log-searches.md).
-Zadejte následující dotaz pro vyhledání protokolů konfigurace stavu: `Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus'`
+Protokoly můžete zobrazit také tak, že vyhledáte Azure Monitor protokoly. Viz [najít data pomocí prohledávání protokolů](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview). Zadejte následující dotaz pro vyhledání protokolů konfigurace stavu.
 
-Dotaz můžete také zúžit podle názvu operace. Příklad: `Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus' OperationName='DscNodeStatusData'`
+```
+AzureDiagnostics
+| where Category == 'DscNodeStatus' 
+| where OperationName contains 'DSCNodeStatusData'
+| where ResultType != 'Compliant'
+```
 
 ### <a name="send-an-email-when-a-state-configuration-compliance-check-fails"></a>Odeslat e-mail, když se nepovede ověřit dodržování předpisů konfigurace stavu
 

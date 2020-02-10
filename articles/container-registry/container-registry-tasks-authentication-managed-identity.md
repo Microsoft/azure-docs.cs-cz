@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: danlep
-ms.openlocfilehash: b2f5a9bacf96eb098e307a6a8df3e13cb9d04bd0
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f3294698f6973437a23fab798e8daf5642cc9b49
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513412"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111763"
 ---
 # <a name="use-an-azure-managed-identity-in-acr-tasks"></a>Použití identity spravované v Azure v ACR úlohách 
 
@@ -84,19 +84,19 @@ ID prostředku identity můžete získat spuštěním příkazu [AZ identity sho
 
 ### <a name="3-grant-the-identity-permissions-to-access-other-azure-resources"></a>3. udělte identitám oprávnění k přístupu k dalším prostředkům Azure.
 
-V závislosti na požadavcích úlohy udělte oprávnění identitě přístup k dalším prostředkům Azure. Patří mezi ně například:
+V závislosti na požadavcích úlohy udělte oprávnění identitě přístup k dalším prostředkům Azure. Příklady obsahují:
 
 * Přiřaďte spravované identitě roli s oprávněním Pull, push a pull nebo jinými oprávněními k cílovému registru kontejneru v Azure. Úplný seznam rolí registru najdete v tématu [Azure Container Registry role a oprávnění](container-registry-roles.md). 
 * Přiřaďte roli spravované identity pro čtení tajných klíčů v trezoru klíčů Azure.
 
 Ke správě přístupu na základě rolí k prostředkům použijte rozhraní příkazového [řádku Azure CLI](../role-based-access-control/role-assignments-cli.md) nebo jiné nástroje Azure. Například spuštěním příkazu [AZ role Assignment Create][az-role-assignment-create] přiřaďte identitu roli prostředku. 
 
-Následující příklad přiřadí spravované identitě oprávnění k vyžádání z registru kontejneru. Příkaz určuje *ID objektu služby* identity a *ID prostředku* cílového registru.
+Následující příklad přiřadí spravované identitě oprávnění k vyžádání z registru kontejneru. Příkaz určuje *ID objektu zabezpečení* identity úlohy a *ID prostředku* cílového registru.
 
 
 ```azurecli
 az role assignment create \
-  --assignee <servicePrincipalID> \
+  --assignee <principalID> \
   --scope <registryID> \
   --role acrpull
 ```

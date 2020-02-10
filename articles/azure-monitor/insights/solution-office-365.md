@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/08/2019
-ms.openlocfilehash: b026ef7dbbe850f0d2d1cb67ec8ca93b14ef879a
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 96d0124941f9f2daa1e1b2d1d254b0b767ffb395
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044905"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111563"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
@@ -21,7 +21,7 @@ ms.locfileid: "76044905"
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>Aktualizace řešení
-> Toto řešení bylo nahrazeno řešením obecné dostupnosti [Office 365](../../sentinel/connect-office-365.md) ve [službě Azure Sentinel](../../sentinel/overview.md) a v [řešení pro vytváření sestav a monitorování Azure AD](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md). Společně poskytují aktualizovanou verzi předchozího řešení Azure Monitor Office 365 s vylepšeným prostředím pro konfiguraci. Stávající řešení můžete dál používat do 30. března 2020.
+> Toto řešení bylo nahrazeno řešením obecné dostupnosti [Office 365](../../sentinel/connect-office-365.md) ve [službě Azure Sentinel](../../sentinel/overview.md) a v [řešení pro vytváření sestav a monitorování Azure AD](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md). Společně poskytují aktualizovanou verzi předchozího řešení Azure Monitor Office 365 s vylepšeným prostředím pro konfiguraci. Stávající řešení můžete dál používat až do 30. dubna 2020.
 > 
 > Azure Sentinel je nativní cloudové informace o zabezpečení a řešení pro správu událostí, které ingestují protokoly a poskytuje další funkce SIEM, včetně detekce, šetření, loveckí a řízené přehledy na základě strojového učení. Použití služby Azure Sentinel vám teď poskytne příjem aktivit Office 365 SharePoint a protokolů správy Exchange.
 > 
@@ -37,8 +37,8 @@ ms.locfileid: "76044905"
 >
 > ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 > 
-> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-march-30th"></a>Otázka: je možné začlenit řešení Office 365 Azure Monitor mezi dnes a dnem 30.
-> Ne, skripty pro připojování řešení Azure Monitor Office 365 už nejsou k dispozici. Řešení bude odstraněno 30. března.
+> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-april-30th"></a>Otázka: je možné začlenit řešení Office 365 Azure Monitor mezi dnes a 12. dubna?
+> Ne, skripty pro připojování řešení Azure Monitor Office 365 už nejsou k dispozici. Řešení bude odstraněno 30. dubna.
 > 
 > ### <a name="q-will-the-tables-and-schemas-be-changed"></a>Otázka: budou se tabulky a schémata měnit?
 > Název a schéma **OfficeActivity** tabulky zůstane stejné jako v aktuálním řešení. V novém řešení můžete pokračovat v používání stejných dotazů, kromě dotazů, které odkazují na data Azure AD.
@@ -104,11 +104,11 @@ ms.locfileid: "76044905"
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>Otázka: umožňuje službě Azure Sentinel v rámci řešení přidat další konektory?
 > Ano, další informace najdete v tématu [zdroje dat služby Azure Sentinel Connect](../../sentinel/connect-data-sources.md).
 > 
-> ###   <a name="q-what-will-happen-on-march-30-do-i-need-to-offboard-beforehand"></a>Otázka: co se stane 30. března? Musím odpojení předem?
+> ###   <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>Otázka: co se stane 30. dubna Musím odpojení předem?
 > 
 > - Nebudete moct přijímat data z řešení **Office 365** . Řešení už nebude dostupné na webu Marketplace.
 > - Pro zákazníky s Sentinelem v Azure se v řešení **Office 365** pro **SecurityInsights** pro Azure sentinel bude zahrnout řešení Log Analytics pracovního prostoru.
-> - Pokud vaše řešení neodpojení ručně, data se automaticky odpojí do 30. března.
+> - Pokud vaše řešení neodpojení ručně, budou se data automaticky odpojí od 30. dubna.
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>Otázka: budou moje data přenesena do nového řešení?
 > Ano. Když odeberete řešení **Office 365** z pracovního prostoru, jeho data budou dočasně nedostupná, protože schéma se odebere. Pokud povolíte nový konektor **sady Office 365** v nástroji Sentinel, obnoví se schéma do pracovního prostoru a veškerá shromážděná data budou k dispozici. 
@@ -245,10 +245,10 @@ Kliknutím na dlaždici **office 365** otevřete řídicí panel **Office 365** 
 
 Řídicí panel obsahuje sloupce v následující tabulce. V každém sloupci je uveden seznam deseti výstrah podle počtu odpovídající kritériím daného sloupce pro zadaný obor a časový rozsah. Hledání v protokolu, které poskytuje celý seznam, můžete spustit kliknutím na Zobrazit vše v dolní části sloupce nebo kliknutím na záhlaví sloupce.
 
-| Column | Popis |
+| Sloupec | Popis |
 |:--|:--|
-| Operations | Poskytuje informace o aktivních uživatelích z monitorovaných předplatných Office 365. Uvidíte také počet aktivit, ke kterým dojde v průběhu času.
-| Výměna | Zobrazuje rozpis aktivit systému Exchange Server, jako je například oprávnění k přidání a poštovní schránce, nebo nastavit poštovní schránku. |
+| Operace | Poskytuje informace o aktivních uživatelích z monitorovaných předplatných Office 365. Uvidíte také počet aktivit, ke kterým dojde v průběhu času.
+| Exchange | Zobrazuje rozpis aktivit systému Exchange Server, jako je například oprávnění k přidání a poštovní schránce, nebo nastavit poštovní schránku. |
 | SharePoint | Zobrazuje hlavní aktivity, které uživatelé provádějí v dokumentech služby SharePoint. Když přejdete k podrobnostem na této dlaždici, na stránce hledání se zobrazí podrobnosti o těchto aktivitách, jako je cílový dokument a umístění této aktivity. Například pro událost otevření souboru budete moci zobrazit dokument, ke kterému se přistupovalo, jeho přidružený název účtu a IP adresu. |
 | Azure Active Directory | Zahrnuje hlavní aktivity uživatelů, jako je resetování hesla uživatele a pokusů o přihlášení. Když přejdete k podrobnostem, budete moci zobrazit podrobnosti o těchto činnostech, jako je stav výsledku. To je hlavně užitečné, pokud chcete monitorovat podezřelé aktivity v Azure Active Directory. |
 
@@ -266,15 +266,15 @@ Následující vlastnosti jsou společné pro všechny záznamy sady Office 365.
 | Vlastnost | Popis |
 |:--- |:--- |
 | Typ | *OfficeActivity* |
-| Když | IP adresa zařízení použitá během protokolování aktivity. IP adresa se zobrazí ve formátu adresy IPv4 nebo IPv6. |
-| OfficeWorkload | Služba Office 365, na kterou odkazuje záznam.<br><br>AzureActiveDirectory<br>Výměna<br>SharePoint|
+| ClientIP | IP adresa zařízení, které se použilo při zaznamenání aktivity. IP adresa se zobrazí ve formátu adresy IPv4 nebo IPv6. |
+| OfficeWorkload | Služba Office 365, na kterou odkazuje záznam.<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
 | Operace | Název aktivity uživatele nebo správce.  |
 | OrganizationId | Identifikátor GUID klienta Office 365 vaší organizace. Tato hodnota bude pro vaši organizaci vždycky stejná, bez ohledu na službu Office 365, ve které se vyskytuje. |
 | RecordType | Typ operace byl proveden. |
-| ResultStatus | Určuje, jestli byla akce (zadaná ve vlastnosti Operation) úspěšná, nebo ne. Možné hodnoty jsou úspěšné, pravdivé hodnotě stavem nebo selhaly. V případě aktivity správce serveru Exchange je hodnota buď true, nebo false. |
+| ResultStatus | Označuje, zda akce (zadaná ve vlastnosti Operation) byla úspěšná nebo ne. Možné hodnoty jsou úspěšné, pravdivé hodnotě stavem nebo selhaly. V případě aktivity správce serveru Exchange je hodnota buď true, nebo false. |
 | UserId | Hlavní název uživatele (UPN) uživatele, který provedl akci, která vedla k zaznamenání záznamu; například my_name@my_domain_name. Všimněte si, že jsou zahrnuté také záznamy aktivity prováděné systémovými účty (například SHAREPOINT\system nebo NTAUTHORITY\SYSTEM.). | 
 | UserKey | Alternativní ID pro uživatele identifikovaného ve vlastnosti UserId.  Tato vlastnost se například naplní jedinečným IDENTIFIKÁTORem (PUID) služby Passport pro události prováděné uživateli na SharePointu, OneDrivu pro firmy a Exchange. Tato vlastnost může taky určovat stejnou hodnotu jako vlastnost UserID pro události, ke kterým dochází v jiných službách a událostech, které provádí systémové účty.|
-| UserType | Typ uživatele, který provedl operaci.<br><br>Správce<br>Aplikace<br>DcAdmin<br>Pravidelný<br>Rezervováno<br>ServicePrincipal<br>Systém |
+| UserType | Typ uživatele, který provedl operaci.<br><br>Správce<br>Aplikace<br>DcAdmin<br>Platné<br>Vyhrazeno<br>ServicePrincipal<br>Systémový |
 
 
 ### <a name="azure-active-directory-base"></a>Základ Azure Active Directory
@@ -343,7 +343,7 @@ Tyto záznamy jsou vytvořeny při změně konfigurace systému Exchange.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| OfficeWorkload | Výměna |
+| OfficeWorkload | Exchange |
 | RecordType     | ExchangeAdmin |
 | ExternalAccess |  Určuje, jestli rutina spustila uživatel ve vaší organizaci, pracovníkovi Datacenter společnosti Microsoft nebo účtem služby Datacenter nebo delegovaným správcem. Hodnota false znamená, že rutina spustila někdo ve vaší organizaci. Hodnota true označuje, že rutina byla spuštěna pracovníky datového centra, účtem služby Datacenter nebo delegovaným správcem. |
 | ModifiedObjectResolvedName |  Toto je uživatelsky přívětivý název objektu, který byl změněn rutinou. Toto je zaznamenáno pouze v případě, že rutina mění objekt. |
@@ -358,7 +358,7 @@ Tyto záznamy jsou vytvořeny při změnách nebo přidávání do poštovních 
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| OfficeWorkload | Výměna |
+| OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
 | ClientInfoString | Informace o e-mailovém klientovi, který se použil k provedení operace, jako je například verze prohlížeče, verze aplikace Outlook a informace o mobilních zařízeních. |
 | Client_IPAddress | IP adresa zařízení, které se použilo při zaznamenání operace. IP adresa se zobrazí ve formátu adresy IPv4 nebo IPv6. |
@@ -381,7 +381,7 @@ Tyto záznamy se vytvoří při vytvoření položky auditu pro poštovní schr�
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| OfficeWorkload | Výměna |
+| OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
 | Položka | Představuje položku, na které byla operace provedena. | 
 | SendAsUserMailboxGuid | Identifikátor GUID serveru Exchange poštovní schránky, na kterou se přistupoval e-mail pro odeslání e-mailu. |
@@ -396,7 +396,7 @@ Tyto záznamy se vytvoří, když se změní nebo doplňují skupiny Exchange.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| OfficeWorkload | Výměna |
+| OfficeWorkload | Exchange |
 | OfficeWorkload | ExchangeItemGroup |
 | AffectedItems | Informace o jednotlivých položkách ve skupině. |
 | CrossMailboxOperations | Určuje, zda operace zahrnovala více než jednu poštovní schránku. |
