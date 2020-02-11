@@ -5,7 +5,7 @@
     - name: Co je Azure Lighthouse?
       displayName: 'management at scale, service providers'
       href: overview.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Index
       displayName: 'template, sample'
@@ -44,6 +44,9 @@
     - name: Zobrazení a správa zákazníků
       displayName: my customers
       href: ./how-to/view-manage-customers.md
+    - name: Použití protokolů Azure Monitoru ve velkém měřítku
+      displayName: 'log, analytics, analyze, activity'
+      href: ./how-to/monitor-at-scale.md
     - name: Integrace Azure Policy
       items:
         - name: Nasazení zásad ve velkém

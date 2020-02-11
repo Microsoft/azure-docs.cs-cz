@@ -42,9 +42,9 @@
       href: openvpn-azure-ad-tenant.md
     - name: Povolení služby Multi-Factor Authentication (MFA) pro VPN uživatele
       href: openvpn-azure-ad-mfa.md
-    - name: Konfigurace ověřování Azure AD pro VPN uživatele (Preview)
+    - name: Konfigurace ověřování Azure AD pro VPN uživatele
       href: virtual-wan-point-to-site-azure-ad.md
-    - name: Konfigurace víceaplikačního ověřování Azure AD pro VPN uživatele (Preview)
+    - name: Konfigurace víceaplikačního ověřování Azure AD pro VPN uživatele
       href: openvpn-azure-ad-tenant-multi-app.md
     - name: Konfigurace automatizace (partneři služby Virtual WAN)
       href: virtual-wan-configure-automation-providers.md

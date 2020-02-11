@@ -1,47 +1,46 @@
 ---
-title: Přehled Azure Cost Management a fakturace | Microsoft Docs
-description: Pomocí funkcí Azure Cost Management a fakturace můžete provádět úlohy správy fakturace a spravovat přístup k fakturaci na náklady. Také můžete využít funkci pro monitorování a řízení útraty Azure a optimalizaci využití prostředků Azure.
+title: Přehled správy nákladů a fakturace v Azure | Microsoft Docs
+description: Pomocí funkcí správy nákladů a fakturace v Azure můžete provádět úlohy správy fakturace a spravovat přístup k fakturám a nákladům. Pomůžou vám také sledovat a řídit útraty za Azure a optimalizovat využití prostředků Azure.
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/20/2019
+ms.date: 01/24/2020
 ms.topic: overview
 ms.service: cost-management-billing
-manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: cadff1d83a8b47a540efe9b74ffaf6de171138b3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: 1c6f03663a7487e814272c6296f6e7862c65c806
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75987513"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76769889"
 ---
-# <a name="what-is-azure-cost-management-and-billing"></a>Co je Azure Cost Management a fakturace?
+# <a name="what-is-azure-cost-management-and-billing"></a>Co je správa nákladů a fakturace v Azure?
 
-S produkty a službami Azure platíte jenom za to, co využijete. Při vytváření a používání prostředků Azure se vám budou účtovat prostředky. Pomocí funkcí Azure Cost Management a fakturace můžete provádět úlohy správy fakturace a spravovat přístup k fakturaci na náklady. I jeho funkce pro monitorování a řízení útraty Azure a optimalizaci využití prostředků Azure.
+S produkty a službami Azure platíte jenom za to, co využijete. S tím, jak vytváříte a používáte prostředky Azure, se vám za ně účtují poplatky. Pomocí funkcí správy nákladů a fakturace v Azure můžete provádět úlohy správy fakturace a spravovat přístup k fakturám a nákladům. Pomůžou vám také sledovat a řídit útraty za Azure a optimalizovat využití prostředků Azure.
 
-## <a name="understand-azure-billing"></a>Vysvětlení fakturace Azure
+## <a name="understand-azure-billing"></a>Principy fakturace v Azure
 
-Funkce fakturace Azure slouží ke kontrole fakturovaných nákladů a ke správě přístupu k fakturačním údajům. Ve větších organizacích týmy pro zadávání a financování obvykle provádějí fakturační úkoly.
+Funkce fakturace v Azure slouží ke kontrole fakturovaných nákladů a ke správě přístupu k fakturačním údajům. Ve velkých organizacích se o fakturační úlohy obvykle starají zásobovací a finanční týmy.
 
-Fakturační účet se vytváří při registraci k Azure. Ten slouží ke správě faktur a plateb a sledování nákladů. Přístup můžete mít k více fakturačním účtům. Může to být třeba v situaci, kdy se zaregistrujete do Azure, abyste mohli pracovat na svých osobních projektech, Takže můžete mít individuální předplatné Azure s fakturačním účtem. ale současně máte přístup i prostřednictvím smlouvy Enterprise vaší organizace nebo smlouvy se zákazníkem Microsoftu. Pro každý scénář byste měli mít samostatný fakturační účet.
+Když se zaregistrujete do Azure, vytvoří se vám fakturační účet. Ten slouží ke správě faktur a plateb a sledování nákladů. Přístup můžete mít k více fakturačním účtům. Může to být třeba v situaci, kdy se zaregistrujete do Azure, abyste mohli pracovat na svých osobních projektech, takže budete mít individuální předplatné Azure s fakturačním účtem, ale současně máte přístup i prostřednictvím smlouvy Enterprise vaší organizace nebo smlouvy se zákazníkem Microsoftu. Pro každý scénář byste měli samostatný fakturační účet.
 
 ### <a name="billing-accounts"></a>Fakturační účty
 
-Azure Portal aktuálně podporuje následující typy fakturačních účtů:
+Web Azure Portal aktuálně podporuje následující typy fakturačních účtů:
 
-- **Program Microsoft Online Services**: při registraci do Azure na webu Azure se vytvoří samostatný fakturační účet pro program Microsoft Online Services. Může to být třeba tehdy, když si zaregistrujete [bezplatný účet Azure](https://azure.microsoft.com/offers/ms-azr-0044p/), [účet s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) nebo účet pro [předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/).
+- **Program MOSP (Microsoft Online Services Program):** Individuální fakturační účet pro program MOSP (Microsoft Online Services Program) se vytvoří, když se zaregistrujete do Azure prostřednictvím webu Azure. Když si například zaregistrujete [bezplatný účet Azure](https://azure.microsoft.com/offers/ms-azr-0044p/), [účet s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) nebo jste [předplatitelem sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/).
 
-- **Smlouva Enterprise**: fakturační účet pro smlouva Enterprise se vytvoří, když vaše organizace podepíše [smlouva Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) , aby používala Azure.
+- **Smlouva Enterprise:** Fakturační účet pro smlouvu Enterprise se vytvoří, když vaše organizace uzavře [smlouvu Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) na používání Azure.
 
-- **Smlouva o zákaznících Microsoftu**: fakturační účet pro smlouvu o zákaznících Microsoftu se vytvoří, když vaše organizace spolupracuje s zástupcem Microsoftu k podepsání smlouvy o zákaznících Microsoftu. Fakturační účet pro smlouvu se zákazníkem Microsoftu můžou mít i někteří zákazníci ve vybraných oblastech, kteří si prostřednictvím webu Azure zaregistrují [účet s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) nebo upgradují svůj [bezplatný účet Azure](https://azure.microsoft.com/offers/ms-azr-0044p/). Další informace najdete v tématu [Začínáme s fakturačními účty pro smlouvu se zákazníkem Microsoftu](./understand/mca-overview.md).
+- **Smlouva se zákazníkem Microsoftu:** Fakturační účet pro smlouvu se zákazníkem Microsoftu se vytvoří tehdy, když vaše organizace uzavře smlouvu se zákazníkem Microsoftu prostřednictvím zástupce Microsoftu. Fakturační účet pro smlouvu se zákazníkem Microsoftu můžou mít i někteří zákazníci ve vybraných oblastech, kteří si prostřednictvím webu Azure zaregistrují [účet s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) nebo upgradují svůj [bezplatný účet Azure](https://azure.microsoft.com/offers/ms-azr-0044p/). Další informace najdete v tématu [Začínáme s fakturačními účty pro smlouvu se zákazníkem Microsoftu](./understand/mca-overview.md).
 
-### <a name="scopes-for-billing-accounts"></a>Rozsahy pro fakturační účty
-Obor je uzel ve fakturačním účtu, který používáte k zobrazení a správě fakturace. Je tam, kde spravujete fakturační údaje, platby, faktury a provedete obecnou správu účtů.
+### <a name="scopes-for-billing-accounts"></a>Obory pro fakturační účty
+Obor je uzel v rámci fakturačního účtu, pomocí kterého zobrazujete a spravujete fakturaci. Právě tady spravujete fakturační údaje, platby a faktury a provádíte všeobecnou správu účtu.
 
 #### <a name="microsoft-online-services-program"></a>Program MOSP (Microsoft Online Services Program)
 
-|Rozsah  |Definice  |
+|Obor  |Definice  |
 |---------|---------|
 |Fakturační účet     | Představuje jednoho vlastníka (správce účtu) pro jedno nebo více předplatných Azure. Správce účtu má oprávnění provádět různé úkony spojené s fakturací, jako je vytváření předplatných, zobrazení faktur nebo změna fakturace pro předplatná.  |
 |Předplatné     |  Představuje seskupení prostředků Azure. Faktura se vygeneruje v oboru předplatného. Má vlastní způsoby platby, pomocí kterých se hradí příslušné faktury.|
@@ -49,38 +48,38 @@ Obor je uzel ve fakturačním účtu, který používáte k zobrazení a správ�
 
 #### <a name="enterprise-agreement"></a>Smlouva Enterprise
 
-|Rozsah  |Definice  |
+|Obor  |Definice  |
 |---------|---------|
-|Fakturační účet    | Představuje registraci smlouvy Enterprise. Faktura se vygeneruje v oboru fakturačního účtu. Je strukturované pomocí oddělení a registračních účtů.  |
+|Fakturační účet    | Představuje registraci smlouvy Enterprise. Faktura se vygeneruje v oboru fakturačního účtu. Je strukturovaná na základě oddělení a registračních účtů.  |
 |Oddělení     |  Volitelné seskupení registračních účtů.      |
-|Registrační účet     |  Představuje vlastníka jednoho účtu. Předplatná Azure se vytvářejí v oboru účtu pro zápis.  |
+|Registrační účet     |  Představuje vlastníka jednoho účtu. Předplatná Azure se vytvářejí v rámci oboru registračního účtu.  |
 
 
 #### <a name="microsoft-customer-agreement"></a>Smlouva se zákazníkem Microsoftu
 
-|Rozsah  |Úlohy  |
+|Obor  |Úlohy  |
 |---------|---------|
-|Fakturační účet     |   Představuje zákaznickou smlouvu na více produktů a služeb Microsoftu. Fakturační účet je strukturovaný pomocí profilů fakturace a oddílů fakturace.   |
-|Fakturační profil     |  Představuje fakturu a související způsoby platby. V tomto rozsahu se generují faktury. Fakturační profil může mít více oddílů faktury.      |
-|Oddíl faktury     |   Představuje skupinu nákladů na faktuře. Předplatná a další nákupy jsou přidruženy k oboru oddílu faktury.    |
+|Fakturační účet     |   Představuje zákaznickou smlouvu na více produktů a služeb Microsoftu. Fakturační účet je strukturovaný pomocí fakturačních profilů a oddílů faktury.   |
+|Fakturační profil     |  Představuje fakturu a související způsoby platby. V tomto oboru se generují faktury. Fakturační profil může obsahovat více oddílů faktury.      |
+|Oddíl faktury     |   Představuje skupinu nákladů na faktuře. K oboru oddílu faktury jsou přidružená předplatná a další nákupy.    |
 
 
-## <a name="understand-azure-cost-management"></a>Pochopení Azure Cost Management
-Správa nákladů je proces, při kterém efektivně plánujete a řídíte náklady své firmy. Úlohy správy nákladů obvykle provádějí finanční týmy, týmy správy účtů a týmy aplikací. Azure Cost Management + faktura pomáhá organizacím plánovat s ohledem na náklady. Pomůže vám také efektivně analyzovat náklady a provádět opatření k optimalizaci útraty cloudu. Další informace o tom, jak organizace mohou využít správu nákladů, najdete v článku, který se věnuje [osvědčeným postupům pro Azure Cost Management](./costs/cost-mgt-best-practices.md).
+## <a name="understand-azure-cost-management"></a>Principy správy nákladů v Azure
+Správa nákladů je proces, při kterém efektivně plánujete a řídíte náklady své firmy. Úlohy správy nákladů obvykle provádějí finanční týmy, týmy správy účtů a týmy aplikací. Správa nákladů a fakturace v Azure pomáhá organizacím plánovat s ohledem na náklady. Pomáhá také efektivně analyzovat náklady a optimalizovat útratu za cloud. Další informace o tom, jak organizace mohou využít správu nákladů, najdete v článku, který se věnuje [osvědčeným postupům pro Azure Cost Management](./costs/cost-mgt-best-practices.md).
 
-Podívejte se na [video s přehledem Azure cost management](https://www.youtube.com/watch?v=el4yN5cHsJ0) , kde najdete rychlý přehled toho, jak vám Azure cost management můžou ušetřit peníze v Azure.
+Rychlý přehled o tom, jak vám funkce správy nákladů v Azure můžou pomoct ušetřit v Azure peníze, najdete ve [videu s přehledem správy nákladů v Azure](https://www.youtube.com/watch?v=el4yN5cHsJ0).
 
 >[!VIDEO https://www.youtube.com/embed/el4yN5cHsJ0]
 
 Přestože spolu souvisejí, fakturace se od správy nákladů liší. Fakturace je proces, při kterém vystavujete faktury za zboží a služby zákazníkům a spravujete komerční vztahy.
 
-Pomocí pokročilých analýz služba Cost Management zobrazuje schémata nákladů a využití na úrovni organizace. Sestavy v Cost Management zobrazují náklady založené na využívání využívané službami Azure a nabídkami na webu Marketplace třetích stran. Náklady jsou založené na sjednaných cenách a faktorech v rezervacích a Zvýhodněné hybridní využití Azure slevách. Společně tyto sestavy zobrazují interní a externí náklady na využití a poplatky za Azure Marketplace. Ostatní poplatky, například za nákupy rezervací, podporu a daně, se zatím v sestavách nezobrazují. Tyto sestavy vám pomohou vyznat se v útratách a využití prostředků a zjistit neobvyklé výdaje. K dispozici máte také prediktivní analýzu. Služba Cost Management využívá skupiny pro správu, rozpočty a doporučení Azure, aby přehledně zobrazila, jak máte uspořádány výdaje a jak byste mohli snížit náklady.
+Pomocí pokročilých analýz služba Cost Management zobrazuje schémata nákladů a využití na úrovni organizace. Sestavy ve službě Cost Management ukazují náklady na základě využití pro služby Azure a nabídky třetích stran z Marketplace. Náklady jsou založené na vyjednaných cenách a zohledňují slevy za rezervace a Zvýhodněné hybridní využití Azure. Společně tyto sestavy zobrazují interní a externí náklady na využití a poplatky za Azure Marketplace. Ostatní poplatky, například za nákupy rezervací, podporu a daně, se zatím v sestavách nezobrazují. Tyto sestavy vám pomohou vyznat se v útratách a využití prostředků a zjistit neobvyklé výdaje. K dispozici máte také prediktivní analýzu. Služba Cost Management využívá skupiny pro správu, rozpočty a doporučení Azure, aby přehledně zobrazila, jak máte uspořádány výdaje a jak byste mohli snížit náklady.
 
 K automatizaci exportu můžete využít web Azure Portal nebo různá rozhraní API, abyste mohli integrovat data nákladů s externími systémy a procesy. K dispozici máte také automatizovaný export dat fakturace a naplánované sestavy.
 
 ### <a name="plan-and-control-expenses"></a>Plánování a řízení nákladů
 
-Mezi způsoby, které Cost Management vám pomůžou plánovat a kontrolovat náklady, patří: analýza nákladů, rozpočty, doporučení a export dat správy nákladů.
+Mezi způsoby, jak vám služba Cost Management pomáhá plánovat a řídit náklady, patří: analýza nákladů, rozpočty, doporučení a exportování údajů pro správu nákladů.
 
 Prostřednictvím analýzy nákladů můžete prozkoumat a analyzovat výdaje organizace. Můžete se podívat na agregované náklady na úrovni organizace, abyste porozuměli tomu, kde se náklady generují, a mohli identifikovat trendy útrat. Můžete si také zobrazit souhrnné náklady v průběhu času, abyste mohli odhadnout měsíční, čtvrtletní a dokonce i roční trendy nákladů oproti rozpočtu.
 
@@ -92,15 +91,15 @@ Pokud pro přístup k datům správy nákladů nebo jejich kontrole používáte
 
 ### <a name="consider-cloudyn"></a>Zvážení využití služby Cloudyn
 
-[Cloudyn](./cloudyn/overview.md) je služba Azure, která souvisí se službou Cost Management. Pomocí služby Cloudyn můžete sledovat využití cloudu a výdaje na prostředky Azure. Podporuje také další poskytovatele cloudu, včetně AWS a Googlu. Snadno pochopitelné sestavy řídicího panelu pomáhají s přidělováním nákladů i metodami showback a chargeback. V současné době služba Cost Management nepodporuje metody showback a chargeback ani jiné poskytovatele cloudových služeb. Cloudyn je však možnost, která je _podporuje_. V současné době Cost Management nepodporuje účty poskytovatele služeb Microsoft Cloud (CSP), ale Cloudyn. Pokud máte účty CSP, nebo pokud chcete používat showback/vrácení peněz, můžete k usnadnění správy nákladů využít Cloudyn.
+[Cloudyn](./cloudyn/overview.md) je služba Azure, která souvisí se službou Cost Management. Pomocí služby Cloudyn můžete sledovat využití cloudu a výdaje na prostředky Azure. Podporuje také další poskytovatele cloudu, včetně AWS a Googlu. Snadno pochopitelné sestavy řídicího panelu pomáhají s přidělováním nákladů i metodami showback a chargeback. V současné době služba Cost Management nepodporuje metody showback a chargeback ani jiné poskytovatele cloudových služeb. Cloudyn je však možnost, která je _podporuje_. Služba Cost Management v současné době nepodporuje účty poskytovatele cloudových služeb Microsoft (CSP), ale Cloudyn je podporuje. Pokud máte účty CSP nebo pokud chcete používat showback/chargeback, můžete k usnadnění správy nákladů využívat službu Cloudyn.
 
-Podívejte se na [video Azure cost management a Cloudyn](https://www.youtube.com/watch?v=PmwFWwSluh8) , kde můžete zobrazit doporučení v závislosti na vašich obchodních potřebách, pokud používáte buď Azure cost management nebo Cloudyn.
+Podívejte se na [video o službách Azure Cost Management a Cloudyn](https://www.youtube.com/watch?v=PmwFWwSluh8), ve kterém najdete doporučení, kdy byste v závislosti na potřebách vaší firmy měli používat Azure Cost Management nebo Cloudyn.
 
 >[!VIDEO https://www.youtube.com/embed/PmwFWwSluh8]
 
 ### <a name="additional-azure-tools"></a>Další nástroje Azure
 
-Azure obsahuje další nástroje, které nejsou součástí Azure Cost Management a funkce pro fakturaci. Hrají ale důležitou roli v procesu správy nákladů. Další informace o těchto nástrojích si můžete přečíst po kliknutí na následující odkazy.
+Azure má další nástroje, které nejsou součástí sady funkcí pro správu nákladů a fakturaci v Azure. Hrají ale důležitou roli v procesu správy nákladů. Další informace o těchto nástrojích si můžete přečíst po kliknutí na následující odkazy.
 
 - [Cenová kalkulačka Azure](https://azure.microsoft.com/pricing/calculator/) – tento nástroj slouží k odhadování počátečních nákladů na cloud.
 - [Azure Migrate](../migrate/migrate-overview.md) – umožňuje zhodnotit aktuální úlohy datacentra a zjistit, co je třeba využít z náhradního řešení Azure.
@@ -110,7 +109,7 @@ Azure obsahuje další nástroje, které nejsou součástí Azure Cost Managemen
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste obeznámeni s Cost Management a fakturací, je dalším krokem začít službu používat.
+Seznámili jste se s funkcemi pro správu nákladů a fakturaci, takže dalším krokem je začít využívat službu Cost Management.
 
 - Začněte s použitím služby Cost Management k [analýze nákladů](./costs/quick-acm-cost-analysis.md).
 - Můžete si také přečíst další informace o [osvědčených postupech pro Azure Cost Management](./costs/cost-mgt-best-practices.md).

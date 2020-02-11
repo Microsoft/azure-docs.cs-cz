@@ -35,118 +35,91 @@
       href: policy-samples.md
 - name: Koncepty
   items:
-    - name: Skupiny zabezpečení
-      href: security-overview.md
-    - name: Směrování
-      href: virtual-networks-udr-overview.md
-    - name: Značky služeb
-      href: service-tags-overview.md
-    - name: Koncové body služby
-      href: virtual-network-service-endpoints-overview.md
-    - name: Zásady koncového bodu služby
-      href: virtual-network-service-endpoint-policies-overview.md
-    - name: Partnerské vztahy
-      href: virtual-network-peering-overview.md
-    - name: Naslouchací zařízení virtuální sítě
-      href: virtual-network-tap-overview.md
-    - name: Virtuální síť pro služby Azure
-      href: virtual-network-for-azure-services.md
-    - name: Sítě kontejnerů
-      href: container-networking-overview.md
-    - name: Zásady sítě Kubernetes
-      href: kubernetes-network-policies.md
     - name: Kontinuita podnikových procesů
       href: virtual-network-disaster-recovery-guidance.md
-    - name: Přidělování IP adres
-      href: virtual-network-ip-addresses-overview-arm.md
-    - name: Předpona veřejné IP adresy
-      href: public-ip-address-prefix.md
-    - name: Protokol IPv6 pro virtuální síť Azure
-      href: ipv6-overview.md
-    - name: Předpony veřejných IPv6 adres
-      href: ipv6-public-ip-address-prefix.md
-    - name: Ochrana před útoky DDoS
-      href: ddos-protection-overview.md
-    - name: Rozšíření podsítě
-      href: subnet-extension.md
-    - name: Delegování podsítě
-      href: subnet-delegation-overview.md
-    - name: Interoperabilita možností připojení back-endu
+    - name: Připojení
       items:
-        - name: Úvod a nastavení testu
-          href: ../networking/connectivty-interoperability-preface.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-        - name: Konfigurace nastavení testu
-          href: ../networking/connectivty-interoperability-configuration.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-        - name: Analýza roviny řízení
-          href: ../networking/connectivty-interoperability-control-plane.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-        - name: Analýza roviny dat
-          href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-    - name: Možnosti připojení mezi sítěmi
-      href: ../expressroute/cross-network-connectivity.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+        - name: Interoperabilita možností připojení back-endu
+          items:
+            - name: Úvod a nastavení testu
+              href: ../networking/connectivty-interoperability-preface.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+            - name: Konfigurace nastavení testu
+              href: ../networking/connectivty-interoperability-configuration.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+            - name: Analýza roviny řízení
+              href: ../networking/connectivty-interoperability-control-plane.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+            - name: Analýza roviny dat
+              href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+        - name: Sítě kontejnerů
+          href: container-networking-overview.md
+        - name: Možnosti připojení mezi sítěmi
+          href: ../expressroute/cross-network-connectivity.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+        - name: Partnerské vztahy
+          href: virtual-network-peering-overview.md
+        - name: Virtuální síť pro služby Azure
+          href: virtual-network-for-azure-services.md
+    - name: Služby IP adres
+      items:
+        - name: Přidělování IP adres
+          href: virtual-network-ip-addresses-overview-arm.md
+        - name: Předpona veřejné IP adresy
+          href: public-ip-address-prefix.md
+        - name: Protokol IPv6 pro virtuální síť Azure
+          href: ipv6-overview.md
+        - name: Předpony veřejných IPv6 adres
+          href: ipv6-public-ip-address-prefix.md
+    - name: Zabezpečení
+      items:
+        - name: Ochrana před útoky DDoS
+          href: ddos-protection-overview.md
+        - name: Zásady sítě Kubernetes
+          href: kubernetes-network-policies.md
+        - name: Směrování
+          href: virtual-networks-udr-overview.md
+        - name: Skupiny zabezpečení
+          href: security-overview.md
+        - name: Značky služeb
+          href: service-tags-overview.md
+        - name: Koncové body služby
+          href: virtual-network-service-endpoints-overview.md
+        - name: Zásady koncového bodu služby
+          href: virtual-network-service-endpoint-policies-overview.md
+        - name: Naslouchací zařízení virtuální sítě
+          href: virtual-network-tap-overview.md
+    - name: Podsítě
+      items:
+        - name: Rozšíření podsítě
+          href: subnet-extension.md
+        - name: Delegování podsítě
+          href: subnet-delegation-overview.md
     - name: Klasické nasazení
       href: 'https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-network-ip-addresses-overview-classic'
 - name: Návody
   items:
-    - name: Plánování
+    - name: Plánování a konfigurace
       items:
         - name: Virtuální sítě
           href: virtual-network-vnet-plan-design-arm.md
-        - name: Ladění výkonu protokolu TCP/IP pro virtuální počítače Azure
-          href: virtual-network-tcpip-performance-tuning.md
-    - name: Nasazení
+        - name: Překlad názvů pro virtuální počítače a cloudové služby
+          href: virtual-networks-name-resolution-for-vms-and-role-instances.md
+        - name: Použití dynamického DNS s vlastním serverem DNS
+          href: virtual-networks-name-resolution-ddns.md
+        - name: Optimalizace propustnosti sítě
+          href: virtual-network-optimize-network-bandwidth.md
+        - name: Zobrazení a úpravy názvů hostitelů
+          href: virtual-networks-viewing-and-modifying-hostnames.md
+        - name: Protokoly
+          href: virtual-network-nsg-manage-log.md
+    - name: Připojení
       items:
-        - name: Protokol IPv6 pro virtuální síť
-          items:
-            - name: Veřejný nástroj pro vyrovnávání zatížení verze Basic
-              items:
-                - name: Azure PowerShell
-                  href: virtual-network-ipv4-ipv6-dual-stack-powershell.md
-                - name: Azure CLI
-                  href: virtual-network-ipv4-ipv6-dual-stack-cli.md
-                - name: Šablona Resource Manageru
-                  href: ipv6-configure-template-json.md
-            - name: Přidání IPv6 do aplikace IPv4
-              items:
-                - name: Azure PowerShell
-                  href: ipv6-add-to-existing-vnet-powershell.md
-                - name: Azure CLI
-                  href: ipv6-add-to-existing-vnet-cli.md
-            - name: Veřejný nástroj pro vyrovnávání zatížení verze Standard
-              items:
-                - name: Azure PowerShell
-                  href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
-                - name: Azure CLI
-                  href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
-                - name: Šablona Resource Manageru
-                  href: ipv6-configure-standard-load-balancer-template-json.md
-            - name: Interní nástroj pro vyrovnávání zatížení verze Standard
-              href: ipv6-dual-stack-standard-internal-load-balancer-powershell.md
-            - name: Škálovací sada virtuálních počítačů s IPv6
-              href: ipv6-virtual-machine-scale-set.md
-        - name: Skupiny zabezpečení sítě
-          items:
-            - name: Azure PowerShell
-              href: tutorial-filter-network-traffic-powershell.md
-            - name: Azure CLI
-              href: tutorial-filter-network-traffic-cli.md
-        - name: Směrovací tabulky
-          items:
-            - name: Azure PowerShell
-              href: tutorial-create-route-table-powershell.md
-            - name: Azure CLI
-              href: tutorial-create-route-table-cli.md
-            - name: Ansible
-              href: /azure/ansible/ansible-create-configure-route-table
-              maintainContext: true
-        - name: Koncové body služby
-          items:
-            - name: Azure PowerShell
-              href: tutorial-restrict-network-access-to-resources-powershell.md
-            - name: Azure CLI
-              href: tutorial-restrict-network-access-to-resources-cli.md
-        - name: Zásady koncového bodu služby – portál
-          href: virtual-network-service-endpoint-policies-portal.md
-        - name: Partnerské vztahy virtuálních sítí
+        - name: Správa síťových karet
+          href: virtual-network-network-interface.md
+        - name: Správa virtuální sítě
+          href: manage-virtual-network.md
+        - name: Správa podsítí
+          href: virtual-network-manage-subnet.md
+        - name: Správa delegování podsítě
+          href: manage-subnet-delegation.md
+        - name: Vytvoření VNET Peeringu
           items:
             - name: 'Stejný model nasazení, stejné předplatné'
               items:
@@ -160,59 +133,8 @@
               href: create-peering-different-deployment-models.md
             - name: 'Různé modely nasazení, různá předplatná'
               href: create-peering-different-deployment-models-subscriptions.md
-        - name: Naslouchací zařízení virtuální sítě
-          items:
-            - name: Azure CLI
-              href: tutorial-tap-virtual-network-cli.md
-        - name: Sítě kontejnerů
-          href: deploy-container-networking.md
-        - name: Virtuální počítače
-          items:
-            - name: Vytvoření virtuálního počítače – statická veřejná IP adresa
-              items:
-                - name: portál Azure
-                  href: virtual-network-deploy-static-pip-arm-portal.md
-                - name: Azure PowerShell
-                  href: virtual-network-deploy-static-pip-arm-ps.md
-                - name: Azure CLI
-                  href: virtual-network-deploy-static-pip-arm-cli.md
-            - name: Přidání veřejné IP adresy k existujícímu virtuálnímu počítači
-              href: associate-public-ip-address-vm.md
-            - name: Zrušení přidružení veřejné IP adresy virtuálnímu počítači
-              href: remove-public-ip-address-vm.md
-            - name: Vytvoření virtuálního počítače – statická privátní IP adresa
-              items:
-                - name: portál Azure
-                  href: virtual-networks-static-private-ip-arm-pportal.md
-                - name: Azure PowerShell
-                  href: virtual-networks-static-private-ip-arm-ps.md
-                - name: Azure CLI
-                  href: virtual-networks-static-private-ip-arm-cli.md
-            - name: Vytvoření virtuálního počítače – několik síťových rozhraní
-              items:
-                - name: Azure PowerShell
-                  href: ../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-                - name: Azure CLI
-                  href: ../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-            - name: Vytvoření virtuálního počítače – několik IP adres
-              items:
-                - name: portál Azure
-                  href: virtual-network-multiple-ip-addresses-portal.md
-                - name: Azure PowerShell
-                  href: virtual-network-multiple-ip-addresses-powershell.md
-                - name: Azure CLI
-                  href: virtual-network-multiple-ip-addresses-cli.md
-            - name: Vytvoření virtuálního počítače – akcelerované síťové služby
-              items:
-                - name: Azure PowerShell
-                  href: create-vm-accelerated-networking-powershell.md
-                - name: Azure CLI
-                  href: create-vm-accelerated-networking-cli.md
-                  items:
-                    - name: Nastavení DPDK
-                      href: setup-dpdk.md
-            - name: Propustnost sítě virtuálních počítačů
-              href: virtual-machine-network-throughput.md
+        - name: Správa VNET Peeringu
+          href: virtual-network-manage-peering.md
         - name: Scénáře připojení
           items:
             - name: Virtuální síť k virtuální síti
@@ -225,58 +147,140 @@
               href: ../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json
             - name: Vysoce dostupná hybridní síťová architektury
               href: ../guidance/guidance-hybrid-network-expressroute-vpn-failover.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+        - name: Konfigurace koncového přístupového bodu virtuální sítě
+          href: tutorial-tap-virtual-network-cli.md
+        - name: Nasazení sítě kontejnerů
+          href: deploy-container-networking.md
+    - name: Služby IP adres
+      items:
+        - name: Protokol IPv6 pro virtuální síť
+          items:
+            - name: Přidání IPv6 do aplikace IPv4
+              items:
+                - name: Azure PowerShell
+                  href: ipv6-add-to-existing-vnet-powershell.md
+                - name: Azure CLI
+                  href: ipv6-add-to-existing-vnet-cli.md
+            - name: Veřejný nástroj pro vyrovnávání zatížení verze Basic
+              items:
+                - name: Azure PowerShell
+                  href: virtual-network-ipv4-ipv6-dual-stack-powershell.md
+                - name: Azure CLI
+                  href: virtual-network-ipv4-ipv6-dual-stack-cli.md
+                - name: Šablona Resource Manageru
+                  href: ipv6-configure-template-json.md
+            - name: Veřejný nástroj pro vyrovnávání zatížení verze Standard
+              items:
+                - name: Azure PowerShell
+                  href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
+                - name: Azure CLI
+                  href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
+                - name: Šablona Resource Manageru
+                  href: ipv6-configure-standard-load-balancer-template-json.md
+            - name: Interní nástroj pro vyrovnávání zatížení verze Standard
+              href: ipv6-dual-stack-standard-internal-load-balancer-powershell.md
+            - name: Škálovací sada virtuálních počítačů s IPv6
+              href: ipv6-virtual-machine-scale-set.md
+            - name: Předpony veřejných IPv6 adres
+              href: ipv6-reserve-public-ip-address-prefix.md
+        - name: Přidělování IP adres
+          items:
+            - name: Správa veřejných IP adres
+              href: virtual-network-public-ip-address.md
+            - name: Správa předpon veřejných IP adres
+              href: manage-public-ip-address-prefix.md
+            - name: Přidání nebo odebrání IP adres ze síťových karet
+              href: virtual-network-network-interface-addresses.md
+    - name: Zabezpečení
+      items:
+        - name: Správa ochrany před útoky DDoS
+          href: manage-ddos-protection.md
+        - name: Správa skupin zabezpečení sítě
+          href: manage-network-security-group.md
+        - name: Onboarding partnerů pro DDoS Protection úrovně Standard
+          href: ddos-protection-partner-onboarding.md
+        - name: Filtrování provozu sítě s použitím skupin zabezpečení sítě
+          items:
+            - name: Azure PowerShell
+              href: tutorial-filter-network-traffic-powershell.md
+            - name: Azure CLI
+              href: tutorial-filter-network-traffic-cli.md
+        - name: Směrování provozu s využitím síťového virtuálního zařízení
+          items:
+            - name: Azure PowerShell
+              href: tutorial-create-route-table-powershell.md
+            - name: Azure CLI
+              href: tutorial-create-route-table-cli.md
+            - name: Ansible
+              href: /azure/ansible/ansible-create-configure-route-table
+              maintainContext: true
+        - name: Správa směrovacích tabulek
+          href: manage-route-table.md
+        - name: Použití koncových bodů služby
+          items:
+            - name: Azure PowerShell
+              href: tutorial-restrict-network-access-to-resources-powershell.md
+            - name: Azure CLI
+              href: tutorial-restrict-network-access-to-resources-cli.md
+        - name: Vytvoření zásad koncového bodu služby – portál
+          href: virtual-network-service-endpoint-policies-portal.md
         - name: Scénáře zabezpečení
           items:
             - name: Zabezpečení sítí pomocí virtuálních zařízení
               href: virtual-network-scenario-udr-gw-nva.md
             - name: DMZ mezi Azure a internetem
               href: ../guidance/guidance-iaas-ra-secure-vnet-dmz.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-    - name: Konfigurace
+    - name: Sítě virtuálních počítačů
       items:
-        - name: Překlad názvů pro virtuální počítače a cloudové služby
-          href: virtual-networks-name-resolution-for-vms-and-role-instances.md
-        - name: Použití dynamického DNS s vlastním serverem DNS
-          href: virtual-networks-name-resolution-ddns.md
-        - name: Optimalizace propustnosti sítě
-          href: virtual-network-optimize-network-bandwidth.md
-        - name: Zobrazení a úpravy názvů hostitelů
-          href: virtual-networks-viewing-and-modifying-hostnames.md
-    - name: Spravovat
-      items:
-        - name: Virtuální sítě
-          href: manage-virtual-network.md
+        - name: Vytvoření virtuálního počítače – statická veřejná IP adresa
           items:
-            - name: Podsítě
-              href: virtual-network-manage-subnet.md
-            - name: Delegování podsítě
-              href: manage-subnet-delegation.md
-            - name: Partnerské vztahy
-              href: virtual-network-manage-peering.md
-            - name: Ochrana před útoky DDoS
-              href: manage-ddos-protection.md
-            - name: Onboarding partnerů pro DDoS Protection úrovně Standard
-              href: ddos-protection-partner-onboarding.md
-        - name: Skupiny zabezpečení sítě
-          href: manage-network-security-group.md
+            - name: portál Azure
+              href: virtual-network-deploy-static-pip-arm-portal.md
+            - name: Azure PowerShell
+              href: virtual-network-deploy-static-pip-arm-ps.md
+            - name: Azure CLI
+              href: virtual-network-deploy-static-pip-arm-cli.md
+            - name: Přidání veřejné IP adresy k existujícímu virtuálnímu počítači
+              href: associate-public-ip-address-vm.md
+            - name: Zrušení přidružení veřejné IP adresy virtuálnímu počítači
+              href: remove-public-ip-address-vm.md
+        - name: Vytvoření virtuálního počítače – statická privátní IP adresa
           items:
-            - name: Protokoly
-              href: virtual-network-nsg-manage-log.md
-        - name: Směrovací tabulky
-          href: manage-route-table.md
-        - name: Sítě virtuálních počítačů
+            - name: portál Azure
+              href: virtual-networks-static-private-ip-arm-pportal.md
+            - name: Azure PowerShell
+              href: virtual-networks-static-private-ip-arm-ps.md
+            - name: Azure CLI
+              href: virtual-networks-static-private-ip-arm-cli.md
+        - name: Vytvoření virtuálního počítače – několik IP adres
           items:
-            - name: Vytvoření nebo odstranění síťového rozhraní
-              href: virtual-network-network-interface.md
+            - name: portál Azure
+              href: virtual-network-multiple-ip-addresses-portal.md
+            - name: Azure PowerShell
+              href: virtual-network-multiple-ip-addresses-powershell.md
+            - name: Azure CLI
+              href: virtual-network-multiple-ip-addresses-cli.md
             - name: Přidání nebo odebrání síťových rozhraní
               href: virtual-network-network-interface-vm.md
-            - name: Přidání nebo odstranění IP adres
-              href: virtual-network-network-interface-addresses.md
-        - name: Veřejné IP adresy
-          href: virtual-network-public-ip-address.md
-        - name: Předpona veřejné IP adresy
-          href: manage-public-ip-address-prefix.md
-        - name: Předpony veřejných IPv6 adres
-          href: ipv6-reserve-public-ip-address-prefix.md
+            - name: Vytvoření virtuálního počítače – několik síťových karet
+              items:
+                - name: Azure PowerShell
+                  href: ../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+                - name: Azure CLI
+                  href: ../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+        - name: Vytvoření virtuálního počítače – akcelerované síťové služby
+          items:
+            - name: Azure PowerShell
+              href: create-vm-accelerated-networking-powershell.md
+            - name: Azure CLI
+              href: create-vm-accelerated-networking-cli.md
+              items:
+                - name: Nastavení DPDK
+                  href: setup-dpdk.md
+        - name: Ladění výkonu protokolu TCP/IP pro virtuální počítače Azure
+          href: virtual-network-tcpip-performance-tuning.md
+        - name: Propustnost sítě virtuálních počítačů
+          href: virtual-machine-network-throughput.md
     - name: Přesun mezi oblastmi
       items:
         - name: Skupiny zabezpečení sítě – portál
@@ -291,34 +295,6 @@
           href: move-across-regions-publicip-portal.md
         - name: Veřejné IP adresy – PowerShell
           href: move-across-regions-publicip-powershell.md
-    - name: Řešení potíží
-      items:
-        - name: Řešení potíží s partnerskými vztahy virtuálních sítí
-          href: virtual-network-troubleshoot-peering-issues.md
-        - name: Konfigurace a ověření připojení VPN nebo virtuální sítě
-          href: virtual-network-configure-vnet-connections.md
-        - name: Skupiny zabezpečení sítě
-          href: diagnose-network-traffic-filter-problem.md
-        - name: Trasy
-          href: diagnose-network-routing-problem.md
-        - name: Testování propustnosti
-          href: virtual-network-bandwidth-testing.md
-        - name: Test latence sítě virtuálních počítačů
-          href: virtual-network-test-latency.md
-        - name: Nelze odstranit virtuální sítě
-          href: virtual-network-troubleshoot-cannot-delete-vnet.md
-        - name: Problémy s propojením virtuálních počítačů
-          href: virtual-network-troubleshoot-connectivity-problem-between-vms.md
-        - name: Konfigurace PTR pro kontrolu bannerů protokolu SMTP
-          href: create-ptr-for-smtp-service.md
-        - name: Kontrolní seznam pro řešení potíží pro virtuální zařízení
-          href: virtual-network-troubleshoot-nva.md
-        - name: Řešení potíží s odchozím připojením SMTP
-          href: troubleshoot-outbound-smtp-connectivity.md
-        - name: IP adresa 168.63.129.16
-          href: what-is-ip-address-168-63-129-16.md
-        - name: Řešení potíží s připojením k virtuálnímu počítači Azure
-          href: troubleshoot-vm-connectivity.md
     - name: Klasické nasazení
       href: 'https://docs.microsoft.com/previous-versions/azure/virtual-network/create-virtual-network-classic'
 - name: Referenční informace

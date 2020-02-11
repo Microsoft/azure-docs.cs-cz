@@ -10,23 +10,23 @@ metadata:
   author: cynthn
   ms.author: cynthn
   ms.date: 09/09/2019
-  ms.openlocfilehash: cf20801a8c1bf6c7ee9b2a7f62069c15388ffb74
-  ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+  ms.openlocfilehash: 8ff93dc3071a442f28878baa958d3583bc046b44
+  ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 09/20/2019
-  ms.locfileid: "71173754"
+  ms.lasthandoff: 02/11/2020
+  ms.locfileid: "77115572"
 landingContent:
 - title: Nejnovější funkce
   linkLists:
   - linkListType: whats-new
     links:
-    - text: Náhled vyhrazených hostitelů
+    - text: Spotové virtuální počítače
+      url: spot-vms.md
+    - text: Vyhrazení hostitelé
       url: dedicated-hosts.md
-    - text: Náhled skupin umístění bezkontaktní komunikace
+    - text: Skupiny umístění bezkontaktní komunikace
       url: proximity-placement-groups.md
-    - text: Dočasné disky
-      url: ephemeral-os-disks.md
 - title: Začínáme
   linkLists:
   - linkListType: quickstart

@@ -1,21 +1,20 @@
 ---
 title: Aktivace účtů a předplatných Azure | Microsoft Docs
 description: Povolení přístupu pomocí rozhraní API Azure Resource Manageru pro nové a stávající účty a řešení běžných problémů s účty.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/19/2019
+ms.date: 01/24/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
-manager: vitavor
+ms.reviewer: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: a3d40e478d1fbb4a789124b72b73268db37540ab
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: 6b788df15b14f8e2e0b394cf7002a1c8236d2c67
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75987751"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76770507"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Aktivace účtů a předplatných Azure pomocí služby Cloudyn
 
@@ -41,7 +40,7 @@ Pokud je vašemu účtu přiřazena role **přispěvatele**, nemáte dostatečn�
 3. V Azure Active Directory vyberte **Uživatelská nastavení**.
 4. Zkontrolujte nastavení **Registrace aplikací**.
     - Pokud je nastavená možnost **Ano**, můžou aplikace AD registrovat i uživatelé, kteří nemají oprávnění správce. V případě tohoto nastavení může aplikaci zaregistrovat kterýkoli uživatel v tenantovi Azure AD.  
-    ![Výběr registrace aplikací v nastavení uživatele](./media/activate-subs-accounts/app-register.png)
+    ![V uživatelských nastaveních vyberte Registrace aplikací.](./media/activate-subs-accounts/app-register.png)
     - Pokud je pro položku **Registrace aplikací** nastavená možnost **Ne**, můžou aplikace Azure Active Directory registrovat jenom uživatelé v roli správce tenanta. Aplikaci CloudynCollector musí zaregistrovat správce tenanta.
 
 
@@ -53,14 +52,14 @@ Když přidáte účet nebo aktualizujete předplatné, povolíte službě Cloud
 
 1. Na portálu Cloudyn klikněte na symbol ozubeného kolečka v pravém horním rohu a vyberte **Cloud Accounts** (Účty v cloudu).
 2. Klikněte na **Add new account** (Přidat nový účet). Zobrazí se dialog **Add new account**. Zadejte požadované informace.  
-    ![Zadejte požadované informace do textového pole přidat nový účet](./media/activate-subs-accounts/add-new-account.png)
+    ![Zadejte požadované informace do pole Přidat nový účet.](./media/activate-subs-accounts/add-new-account.png)
 
 ### <a name="update-a-subscription"></a>Aktualizace předplatného
 
 1. Pokud chcete aktualizovat _neaktivované_ předplatné, které už ve službě Cloudyn v nástroji pro správu účtů máte, klikněte na symbol tužky pro úpravy napravo od nadřazeného _identifikátoru GUID tenanta_. Předplatná jsou seskupená pod nadřazeným tenantem, neaktivujte je tedy jednotlivě.
-    ![Vyberte vaše ID tenanta v poli přepínače Rediscover předplatná](./media/activate-subs-accounts/existing-sub.png)
+    ![Vyberte své ID tenanta v poli Znovu zjistit předplatná.](./media/activate-subs-accounts/existing-sub.png)
 2. Pokud je potřeba, zadejte ID tenanta. Jestliže ID tenanta neznáte, vyhledejte ho pomocí následujících kroků:
-    1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+    1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
     2. Na portálu Azure Portal vyberte **Azure Active Directory**.
     3. K získání ID tenanta vyberte v tenantovi Azure AD možnost **Vlastnosti**.
     4. Zkopírujte GUID adresáře. Tato hodnota představuje ID tenanta.
@@ -87,7 +86,7 @@ Pokud jste uživatel se smlouvou Enterprise nebo Cloud Solution Provider (CSP), 
 
 - *The specified API key is not a top level enrollment key* (Zadaný klíč rozhraní API není klíč registru nejvyšší úrovně) – zobrazí se v průvodci **nastavením služby Cloudyn**.
 - *Direct Enrollment – No* (Přímá registrace – ne) – zobrazí se na portálu se smlouvou Enterprise.
-- *V posledních 30 dnech se nenašla žádná data o využití. Obraťte se prosím na svého distributora, abyste se ujistili, že pro váš účet Azure zobrazené na portálu Cloudyn jste povolili zápis* .
+- *No usage data was found for the last 30 days. Please contact your distributor to make sure markup was enabled for your Azure account* (Za posledních 30 dní nebyla nalezena žádná data o využití. Ověřte prosím u svého distributora, jestli byly pro váš účet Azure povoleny revize) – zobrazí se na portálu Cloudyn.
 
 Z předchozích zpráv vyplývá, že jste si smlouvu Azure Enterprise zakoupili přes prodejce nebo poskytovatele CSP. Abyste mohli zobrazovat data ve službě Cloudyn, musí váš prodejce nebo poskytovatel CSP pro váš účet Azure povolit _revize_.
 

@@ -1,21 +1,20 @@
 ---
 title: Registrace smlouvy Azure Enterprise u Cloudyn | Microsoft Docs
 description: Tento rychlý start podrobně popisuje proces registrace nezbytný k vytvoření zkušebního předplatného a přihlášení k portálu Cloudyn.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 01/24/2020
 ms.topic: quickstart
 ms.custom: seodec18
 ms.service: cost-management-billing
-manager: benshy
-ms.openlocfilehash: 1a8754f0b35fd5ec662feecf8777efd8593fa659
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.reviewer: benshy
+ms.openlocfilehash: dcb4a04ced1d36a6d0717b9a65150faacc702cc5
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75987618"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76769978"
 ---
 # <a name="register-an-azure-enterprise-agreement-and-view-cost-data"></a>Registrace smlouvy Azure Enterprise a zobrazení informací o nákladech
 
@@ -31,16 +30,16 @@ Azure Cost Management nabízí podobné funkce jako Cloudyn. Azure Cost Manageme
 
 1. Na webu Azure Portal klikněte v seznamu služeb na **Cost Management a fakturace**.
 2. V části **Přehled** klikněte na **Cloudyn**.  
-    ![Cloudyn stránka zobrazená na webu Azure Portal](./media/quick-register-ea/cost-mgt-billing-service.png)
+    ![Stránka Cloudyn na webu Azure Portal](./media/quick-register-ea/cost-mgt-billing-service.png)
 3. Na stránce **Cloudyn** klikněte na **Přejít na Cloudyn** a v novém okně se otevře stránka pro registraci u Cloudyn.
 4. Na stránce pro registraci zkušební verze portálu Cloudyn zadejte název vaší společnosti a vyberte **Správce prováděcí smlouvy Azure Enterprise**.  
 5. Zadejte klíč rozhraní API vaší prováděcí smlouvy Enterprise Portal. Pokud svůj klíč nemáte po ruce, klikněte na odkaz na web [Enterprise Portal](https://ea.azure.com) a proveďte následující kroky:  
-    ![Vložte svůj klíč rozhraní API na kartě Fakturace](./media/quick-register-ea/trial-reg.png)
+    ![Vložte klíč rozhraní API na kartě Fakturace.](./media/quick-register-ea/trial-reg.png)
    1. Přihlaste se k webu Azure Enterprise, klikněte na **Sestavy**, pak na **Přístupový klíč rozhraní API** a zkopírujte váš primární klíč.  
-    ![Příklad klíče rozhraní EA API na portálu EA](./media/quick-register-ea/ea-key.png)
+    ![Příklad klíče rozhraní API EA na portálu EA](./media/quick-register-ea/ea-key.png)
    3. Vraťte se na registrační stránku a vložte váš klíč rozhraní API.
 6. Vyjádřete souhlas s podmínkami použití a ověřte váš klíč. Kliknutím na **Další** udělte Cloudyn oprávnění ke shromažďování dat o prostředcích Azure. Mezi shromažďovaná data patří informace o využití, výkonu, fakturaci a značkách z vašich předplatných.  
-    ![Příklad úspěšné ověření klíče rozhraní EA API](./media/quick-register-ea/ea-key-validated.png)
+    ![Příklad úspěšného ověření klíče rozhraní API EA](./media/quick-register-ea/ea-key-validated.png)
 7. V části **Pozvat další účastníky** můžete zadáním příslušných e-mailových adres přidat další uživatele. Jakmile budete hotovi, klikněte na **Další**. V závislosti na velikosti vaší registrace v Azure může přidání všech vašich fakturačních dat do Cloudyn trvat až 24 hodin.
 8. Kliknutím na **Přejít do Cloudyn** otevřete portál Cloudyn a na stránce **Správa cloudových účtů** by se měly zobrazit informace o vašem zaregistrovaném účtu EA.
 
