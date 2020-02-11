@@ -7,15 +7,15 @@ ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
 keywords: Automatizace Azure, DSC, PowerShell, konfigurace požadovaného stavu, Správa aktualizací, sledování změn, inventarizace, Runbooky, Python, grafický, hybridní
-ms.date: 01/29/2020
+ms.date: 02/03/2020
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: b0f1d235391c4c4e3804a6dccc8174e946035b6a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c38bc2d5d9a7e23c0bb3041a5cb3b5cd1da9adb1
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899195"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114237"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Co je Azure ARC pro servery (Preview)
 
@@ -42,7 +42,7 @@ U Azure ARC pro servery (Preview) jsou podporované jenom některé oblasti:
 - WestEurope
 - WestAsia
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="supported-operating-systems"></a>Podporované operační systémy
 
@@ -54,6 +54,12 @@ Pro agenta připojeného počítače Azure jsou oficiálně podporované násled
 >[!NOTE]
 >Tato verze Preview agenta připojeného počítače pro Windows podporuje jenom Windows Server nakonfigurovaný pro použití v anglickém jazyce.
 >
+
+### <a name="required-permissions"></a>Požadovaná oprávnění
+
+- Pokud chcete připojit počítače, jste členem role **připojení počítače připojeného k Azure** .
+
+- Pro čtení, úpravy, opětovné zprovoznění a odstranění počítače jste členem role **Správce prostředků počítače připojeného k Azure** . 
 
 ### <a name="azure-subscription-and-service-limits"></a>Omezení předplatného a služeb Azure
 
@@ -89,7 +95,7 @@ Adresy URL v předchozí tabulce jsou nutné kromě informací o rozsahu IP adre
 
 Azure ARC pro servery (verze Preview) závisí na následujících poskytovatelích prostředků Azure ve vašem předplatném, aby bylo možné tuto službu používat:
 
-- **Microsoft.HybridCompute**
+- **Microsoft. HybridCompute**
 - **Microsoft. GuestConfiguration**
 
 Pokud nejsou registrovány, můžete je zaregistrovat pomocí následujících příkazů:

@@ -6,6 +6,8 @@
       href: allocation-failure.md
     - name: Selhání přidělení pro klasická nasazení
       href: allocation-failure-classic.md
+    - name: Skupiny dostupnosti
+      href: virtual-machines-availability-set-supportability.md
 - name: Protokol RDP
   href: rdp.md
   items:
