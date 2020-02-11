@@ -15,10 +15,10 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: e183a622910c7690b566537311661789253efbfb
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992722"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Správa nákladů s využitím služby Azure Budgets
@@ -135,7 +135,7 @@ Každá aplikace logiky se musí spouštět triggerem, který se aktivuje při u
 3.  Vyberte **Nový krok** > **Přidat akci**.
 
     ![Azure – Nový krok – Přidání akce](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-05.png)
-4.  Vyhledejte "analyzovat JSON" v vyhledávacím poli **návrháře Logic Apps** vyhledejte a vyberte [akci](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts) **operace s daty – analyzovat JSON** .
+4.  Do vyhledávacího pole **Návrháře pro Logic Apps** zadejte řetězec „parsovat JSON“ a vyhledejte a vyberte [akci](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts) **Operace s daty – Parsovat JSON**.
 
     ![Azure – Aplikace logiky – Přidání akce parsování JSON](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-06.png)
 5.  Jako název **obsahu** pro parsování datové části JSON zadejte řetězec „datová část“, nebo použijte značku Text z nabídky dynamického obsahu.

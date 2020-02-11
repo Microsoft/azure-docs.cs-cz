@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: banders
 ms.openlocfilehash: 5dbf885848d9866a184caee1da6b9000a26f83a9
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76314117"
 ---
 # <a name="azure-spending-limit"></a>Limit útraty Azure
@@ -42,17 +42,17 @@ Limit útraty můžete odebrat kdykoli za předpokladu, že je k vašemu předpl
 
 Pokud chcete odebrat limit útraty, postupujte takto:
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-1. Přejděte k **předplatným**.
-1. Vyberte své předplatné. Například *Visual Studio Enterprise*.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+1. Přejděte na **Předplatná**.
+1. Vyberte své předplatné. Vyberte například *Visual Studio Enterprise*.
 1. V horní části stránky vyberte **Spravovat**. Budete přesměrováni na https://account.azure.com/. Na pravé straně stránky vyberte **Odebrat limit útraty**.  
-  ![příklad ukazující limit útraty](./media/spending-limit/account-azure-com-spending-limit.png)
-1. Budete přesměrováni zpět na Azure Portal. Vyberte možnost, která je pro vás vhodná, a pak vyberte způsob platby. Vyberte **Finish** (Dokončit).  
-  ![vybrat možnost pro odebrání limitu útraty](./media/spending-limit/remove-spending-limit.png)
+  ![Příklad znázorňující odebrání limitu útraty](./media/spending-limit/account-azure-com-spending-limit.png)
+1. Budete přesměrováni zpět na Azure Portal. Vyberte možnost, která je pro vás vhodná, a potom vyberte způsob platby. Vyberte **Finish** (Dokončit).  
+  ![Výběr možnosti pro odebrání limitu útraty](./media/spending-limit/remove-spending-limit.png)
 
-| Možnost | Efekt |
+| Možnost | Účinek |
 | --- | --- |
-| Odebrat limit útraty neomezeně | Odebere limit útraty. Na začátku dalšího fakturačního období se automaticky neaktivuje. |
+| Trvale odebrat limit útraty | Odebere limit útraty. Na začátku dalšího fakturačního období se automaticky neaktivuje. |
 | Odebrat limit útraty pro aktuální fakturační období | Odebere limit útraty. Na začátku dalšího fakturačního období se automaticky znovu aktivuje. |
 
 ## <a name="why-you-might-want-to-remove-the-spending-limit"></a>Proč byste mohli chtít odebrat limit útraty
@@ -68,7 +68,7 @@ Limit útraty vám může bránit v nasazení nebo použití některých služeb
 Tato funkce je k dispozici pouze v případě trvalého odebrání limitu útraty pro typy předplatného, které zahrnují kredit na několik měsíců. Pomocí této funkce můžete automaticky zapnout limit útraty na začátku dalšího fakturačního období.
 
 1. Přihlaste se do [Centra účtů](https://account.windowsazure.com/Subscriptions).
-1. Výběrem žluté banneru změňte možnost limit útraty.
+1. Možnost limitu útraty můžete změnit výběrem žluté informační zprávy.
 1. Zvolte možnost **Turn on spending limit in the next billing period \<datum zahájení fakturačního období\>** (Zapnout limit útraty v dalším fakturačním období).
 
 ## <a name="custom-spending-limit"></a>Vlastní limit útraty
@@ -81,7 +81,7 @@ Vlastní limity útraty nejsou k dispozici.
 
 ![Upozornění související s nákupy na Azure Marketplace](./media/spending-limit/marketplace-warning01.png)
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 

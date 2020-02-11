@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 10/13/2019
 ms.author: banders
 ms.openlocfilehash: 65b56511a3b454b192b5adb2a98fb3bb3510bb7e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75988198"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Získání vlastnictví fakturace předplatných Azure pro vlastní účet se smlouvou MPA
@@ -67,7 +67,7 @@ Tento článek se týká fakturačních účtů pro smlouvu s partnerem Microsof
 
 ## <a name="check-the-transfer-request-status"></a>Kontrola stavu žádosti o převod
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Vyhledejte **Cost Management a fakturace**.
 
@@ -83,16 +83,16 @@ Tento článek se týká fakturačních účtů pro smlouvu s partnerem Microsof
 
     ![Snímek obrazovky znázorňující seznam žádostí o převod](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png)
 
-   |Column|Definice|
+   |Sloupec|Definice|
    |---------|---------|
    |Datum žádosti|Datum odeslání žádosti o převod|
    |Příjemce|E-mailová adresa uživatele, kterému jste odeslali žádost o převod vlastnictví fakturace|
    |Datum vypršení platnosti|Datum, kdy platnost žádosti vyprší|
-   |Stav|Stav žádosti o převod|
+   |Status|Stav žádosti o převod|
 
     Žádost o převod může mít jeden z následujících stavů:
 
-   |Stav|Definice|
+   |Status|Definice|
    |---------|---------|
    |Probíhá|Uživatel žádost o převod dosud neschválil.|
    |Zpracování|Uživatel schválil žádost o převod. Fakturace předplatných, která uživatel vybral, se převádí na váš účet.|
@@ -102,12 +102,12 @@ Tento článek se týká fakturačních účtů pro smlouvu s partnerem Microsof
    |Zrušeno|Žádost o převod byla zrušena některým z uživatelů, kteří k ní mají přístup.|
    |Odmítnuto|Žádost o převod byla uživatelem zamítnuta.|
 
-6. Výběrem žádosti o převod zobrazte její podrobnosti. Na stránce Podrobnosti o přenosu se zobrazí následující informace: ![snímek obrazovky, který zobrazuje seznam přenesených předplatných](./media/mpa-request-ownership/mpa-transfer-completed.png)
+6. Výběrem žádosti o převod zobrazte její podrobnosti. Zobrazí se stránka s podrobnostmi o převodu, která obsahuje následující informace: ![Snímek obrazovky znázorňující seznam převedených předplatných](./media/mpa-request-ownership/mpa-transfer-completed.png)
 
-   |Column  |Definice|
+   |Sloupec  |Definice|
    |---------|---------|
-   |ID žádosti o převod|Jedinečné ID vaší žádosti o převod. Pokud odešlete žádost o podporu, sdělte podpoře Azure toto ID, abyste žádost o podporu urychlili|
-   |Datum žádosti o převod|Datum odeslání žádosti o převod|
+   |ID žádosti o převod|Jedinečné ID vaší žádosti o převod. Pokud odešlete žádost o podporu, sdělte toto ID podpoře Azure, abyste žádost urychlili.|
+   |Datum žádosti o převod|Datum, kdy byla žádost o převod odeslána|
    |Uživatel, který požádal o převod|E-mailová adresa uživatele, který žádost o převod odeslal|
    |Platnost žádosti o převod vyprší| Datum, kdy platnost žádosti o převod vyprší|
    |E-mailová adresa příjemce|E-mailová adresa uživatele, kterému jste odeslali žádost o převod vlastnictví fakturace|
@@ -148,7 +148,7 @@ Rezervace Azure se s předplatným automaticky nepřevádí. Pokud je chcete př
 
 ### <a name="access-to-azure-services"></a>Přístup ke službám Azure
 
-Přístup pro existující uživatele, skupiny nebo instanční objekty, které se přiřadily pomocí [Azure RBAC (řízení přístupu na základě role)](../../role-based-access-control/overview.md) , se během přechodu neprojeví. Partner nebude získávat žádné nové přístupy k předplatným.  
+Převod nebude mít vliv na přístup stávajících uživatelů, skupin nebo instančních objektů přidělených pomocí [Azure RBAC (řízení přístupu na základě role)](../../role-based-access-control/overview.md). Partner k předplatným nezíská nový přístup RBAC.  
 
 Pokud partneři chtějí získat přístup k předplatným, měli by se spojit se zákazníkem.  Aby partneři mohli vytvářet lístky podpory, musí získat přístup k funkci [AOBO (Admin on Behalf Of)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) nebo ke službě [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider).
 
@@ -181,7 +181,7 @@ Pokud se tyto dva adresáře neshodují, předplatná není možné převést. M
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Kontrola přístupu ke smlouvě s partnerem Microsoftu
 [!INCLUDE [billing-check-mpa](../../../includes/billing-check-mpa.md)]
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontakty na podporu
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory
 
 Pokud potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a ta vám pomůže váš problém rychle vyřešit.
 

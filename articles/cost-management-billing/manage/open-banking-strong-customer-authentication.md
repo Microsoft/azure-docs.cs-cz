@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: banders
 ms.openlocfilehash: aff5e1e707980c9a63988c22653fa5fba0fc236b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75996037"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>Ověřování PSD2 (otevřené bankovnictví) a SCA (Strong Customer Authentication) pro zákazníky Azure
@@ -48,7 +48,7 @@ Pokud vaše banka platbu zamítne, stav vašeho účtu Azure na webu Azure Porta
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com/) jako správce účtu.
 2. Vyhledejte **Cost Management a fakturace**.
-3. Na stránce **cost management +** **Přehled** fakturace zkontrolujte sloupec stav v mřížce **Moje předplatná** .
+3. Na stránce s **přehledem pro** **Cost Management a fakturaci** zkontrolujte stavový sloupec v tabulce **Moje předplatná**.
 4. Pokud má vaše předplatné označení **Po splatnosti**, klikněte na odkaz **Vyrovnat zůstatek**. Během tohoto procesu se zobrazí výzva k dokončení vícefaktorového ověřování.
 
 ### <a name="settle-outstanding-charges-for-marketplace-and-reservation-purchases"></a>Vyrovnání neuhrazených poplatků za nákupy na Marketplace a nákupy rezervací

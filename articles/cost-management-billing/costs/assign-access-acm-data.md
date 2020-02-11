@@ -1,185 +1,178 @@
 ---
-title: Přiřazení přístupu k datům Azure Cost Management
-description: Tento článek vás provede, když přiřadíte oprávnění k datům Azure Cost Management pro různé obory přístupu.
+title: Přiřazení přístupu k datům služby Azure Cost Management
+description: Tento článek vás provede přiřazením oprávnění k datům služby Azure Cost Management pro různé rozsahy přístupu.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2019
+ms.date: 01/27/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: e3140ee990127db6815828314103a09dff7cf26e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: 8cb803c78b8bb5acd7880f79a19b5e3f0a978bd8
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75989017"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76773973"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Přiřazení přístupu k datům služby Cost Management
 
-Pro uživatele se smlouvou Azure Enterprise je kombinací oprávnění udělených v Azure Portal a portálu Enterprise (EA) definována úroveň přístupu uživatelů k datům Azure Cost Management. Pro uživatele s jinými typy účtů Azure je snazší definovat úroveň přístupu uživatelů k Cost Management dat pomocí řízení přístupu na základě role Azure. Tento článek vás provede přiřazuje se přístup k datům služby Cost Management. Po přiřazení kombinace oprávnění na základě zobrazení dat uživatele ve službě Cost Management oboru, aby měli přístup k a v oboru, vyberte na portálu Azure portal.
+Pro uživatele se smlouvou Azure Enterprise je úroveň jejich přístupu k datům Azure Cost Management definována kombinací oprávnění udělených na portálu Azure Portal a na portálu Enterprise (EA). Pro uživatele s jinými typy účtů Azure je snazší definovat úroveň přístupu k datům služby Cost Management pomocí řízení přístupu na základě role v Azure. Tento článek vás provede postupem přiřazení přístupu k datům služby Cost Management. Po přiřazení kombinace oprávnění se zobrazí uživateli data ve službě Cost Management na základě rozsahu, ke kterému má přístup, a v rozsahu, který si vybere na portálu Azure Portal.
 
-Obor, který uživatel vybere se používá v celém Cost Management k poskytování konsolidace dat a k řízení přístupu na informace o nákladech. Při použití rozsahů, uživatelé není vícenásobný výběr je. Místo toho vyberte větší rozsah, který až vrátit podřízených oborech a pak se filtr seznamu na to, co chtějí zobrazit. Konsolidace dat je důležité pochopit, protože někteří uživatelé neměli mít přístup, který podřízené obory vrátit až nadřazený obor.
+Rozsah, který uživatel vybere, se používá v celé službě Cost Management k poskytování konsolidace dat a k řízení přístupu k informacím o nákladech. Uživatelé při použití nevybírají rozsahy vícenásobně. Místo toho si vyberou větší rozsah, který již zahrnuje podřízené rozsahy, a potom vyfiltrují, co chtějí zobrazit. Konsolidace dat je důležitá, protože někteří uživatelé nemusí mít přístup k nadřazenému rozsahu, který zahrnuje data z podřízených rozsahů.
 
-Podívejte se na [Postup přiřazení přístupu k Azure cost management](https://www.youtube.com/watch?v=J997ckmwTa8) videu, kde se dozvíte, jak přiřazovat přístup k nákladům na zobrazení a poplatkům pomocí řízení přístupu na základě role Azure.
+Podívejte se na video [Jak přiřadit přístup pomocí služby Azure Cost Management](https://www.youtube.com/watch?v=J997ckmwTa8), kde najdete informace o přiřazení přístupu k zobrazení nákladů a poplatků pomocí řízení přístupu na základě role v Azure.
 
 >[!VIDEO https://www.youtube.com/embed/J997ckmwTa8]
 
-## <a name="cost-management-scopes"></a>Cost Management obory
+## <a name="cost-management-scopes"></a>Rozsahy služby Cost Management
 
-Správa nákladů podporuje nejrůznější typy účtů Azure. Úplný seznam podporovaných typů účtů najdete v tématu [pochopení cost management dat](understand-cost-mgt-data.md). Typ účtu určuje dostupné obory.
+Služba Cost Management podporuje nejrůznější typy účtů Azure. Úplný seznam podporovaných typů účtů si můžete prohlédnout v článku [Vysvětlení dat služby Cost Management](understand-cost-mgt-data.md). Typ účtu určuje dostupné rozsahy.
 
-### <a name="azure-ea-subscription-scopes"></a>Obory předplatného Azure EA
+### <a name="azure-ea-subscription-scopes"></a>Rozsahy předplatného Azure EA
 
-Chcete-li zobrazit nákladová data pro předplatná Azure EA, musí mít uživatel alespoň přístup pro čtení k jednomu nebo více následujícím rozsahům.
+Aby mohl uživatel zobrazit data nákladů pro předplatná Azure EA, musí mít alespoň přístup pro čtení k nejméně jednomu z následujících rozsahů.
 
-| **Rozsah** | **Definovaný na** | **Požadovaný přístup k zobrazení dat** | **Požadované nastavení EA** | **Konsoliduje data** |
+| **Rozsah** | **Definovaný na** | **Požadovaný přístup k zobrazení dat** | **Požadované nastavení EA** | **Úroveň konsolidace dat** |
 | --- | --- | --- | --- | --- |
-| Fakturační účet<sup>1</sup> | [https://ea.azure.com](https://ea.azure.com/) | Podnikový správce | Žádné | Všechna předplatná ze smlouvy Enterprise |
-| Oddělení | [https://ea.azure.com](https://ea.azure.com/) | Správce oddělení | **Zobrazit náklady DA** povoleno | Všechna předplatná patřící do registračního účtu propojeného s oddělením |
-| Registrační účet<sup>2</sup> | [https://ea.azure.com](https://ea.azure.com/) | Vlastník účtu | **Zobrazit náklady AO** povoleno | Všechna předplatná z registračního účtu |
-| Skupina pro správu | [https://portal.azure.com](https://portal.azure.com/) | Čtenář Cost Management (nebo Čtenář) | **Zobrazit náklady AO** povoleno | Všechna předplatná spadající do skupiny pro správu |
-| Předplatné | [https://portal.azure.com](https://portal.azure.com/) | Čtenář Cost Management (nebo Čtenář) | **Zobrazit náklady AO** povoleno | Všechny prostředky nebo skupiny prostředků v předplatném |
-| Skupina prostředků | [https://portal.azure.com](https://portal.azure.com/) | Čtenář Cost Management (nebo Čtenář) | **Zobrazit náklady AO** povoleno | Všechny prostředky ve skupině prostředků |
+| Fakturační účet<sup>1</sup> | [https://ea.azure.com](https://ea.azure.com/) | Podnikový správce | Žádná | Všechna předplatná ze smlouvy Enterprise |
+| Oddělení | [https://ea.azure.com](https://ea.azure.com/) | Správce oddělení | Povolené nastavení **DA view charges** (Správce oddělení může zobrazit náklady) | Všechna předplatná patřící do registračního účtu propojeného s oddělením |
+| Registrační účet<sup>2</sup> | [https://ea.azure.com](https://ea.azure.com/) | Vlastník účtu | Povolené nastavení **AO view charges** (Vlastník účtu může zobrazit náklady) | Všechna předplatná z registračního účtu |
+| Skupina pro správu | [https://portal.azure.com](https://portal.azure.com/) | Čtenář Cost Management (nebo Čtenář) | Povolené nastavení **AO view charges** (Vlastník účtu může zobrazit náklady) | Všechna předplatná spadající do skupiny pro správu |
+| Předplatné | [https://portal.azure.com](https://portal.azure.com/) | Čtenář Cost Management (nebo Čtenář) | Povolené nastavení **AO view charges** (Vlastník účtu může zobrazit náklady) | Všechny prostředky nebo skupiny prostředků v předplatném |
+| Skupina prostředků | [https://portal.azure.com](https://portal.azure.com/) | Čtenář Cost Management (nebo Čtenář) | Povolené nastavení **AO view charges** (Vlastník účtu může zobrazit náklady) | Všechny prostředky ve skupině prostředků |
 
-<sup>1</sup> fakturační účet se také nazývá uzavřenou smlouvu Enterprise nebo registrace.
+<sup>1</sup>Fakturační účet se také označuje jako smlouva Enterprise nebo registrace.
 
-<sup>2</sup> registračnímu účtu se také označuje jako vlastník účtu.
+<sup>2</sup> Registrační účet s se často označuje jako vlastník účtu.
 
-Následující diagram znázorňuje vztah mezi Cost Management obory s rolemi a nastavením portálu EA.
 
-![Diagram znázorňující vztah mezi Cost Management obory s rolemi a nastavením portálu EA](./media/assign-access-acm-data/scope-access-relationship-diagram.png)
+## <a name="other-azure-account-scopes"></a>Další rozsahy účtů Azure
 
-Pokud jsou **poplatky za zobrazení da** na portálu EA zakázané, zobrazí se při pokusu o zobrazení nákladů na oddělení a účty zpráva informující *o nákladech, které jsou pro vaši organizaci zakázané* .
-
-Podobně platí, že když se na portálu EA zakáže **poplatky za zobrazení Ao** , zobrazí se vám při pokusu o zobrazení nákladů na účty pro zápis, skupiny pro správu, předplatná a skupiny prostředků zpráva s informacemi o tom, že jsou *pro vaši organizaci zakázané náklady* .
-
-## <a name="other-azure-account-scopes"></a>Další obory účtů Azure
-
-Chcete-li zobrazit nákladová data pro ostatní předplatná Azure, musí mít uživatel alespoň přístup pro čtení k jednomu nebo více následujícím rozsahům:
+Aby mohl uživatel zobrazit data nákladů pro další předplatná Azure, musí mít alespoň přístup pro čtení k nejméně jednomu z následujících rozsahů:
 
 - Účet Azure
 - Skupina pro správu
 - Skupina prostředků
 
-Po připojení zákazníků k zákaznickým smlouvám Microsoftu jsou k dispozici různé obory. Zákazníci CSP potom můžou používat funkce Cost Management, když je povolí jejich partner CSP. Další informace najdete v tématu [Začínáme s Azure cost management pro partnery](get-started-partners.md).
+Když partneři zařadí zákazníky do Smlouvy se zákazníkem Microsoftu, jsou k dispozici různé rozsahy. Zákazníci CSP pak můžou používat funkce služby Cost Management, pokud jim ji zpřístupní jejich partner CSP. Další informace najdete v článku [Začínáme se službou Azure Cost Management pro partnery](get-started-partners.md).
 
-## <a name="enable-access-to-costs-in-the-ea-portal"></a>Povolení přístupu k náklady na portálu EA
+## <a name="enable-access-to-costs-in-the-ea-portal"></a>Povolení přístupu k nákladům na portálu EA Portal
 
-Obor oddělení vyžaduje **DA zobrazit náklady** možnost **povoleno** přes portál EA. Všechny ostatní obory vyžadují **AO zobrazit náklady** možnost **povoleno** přes portál EA.
+Rozsah oddělení vyžaduje, aby bylo nastavení **DA view charges** (Správce oddělení může zobrazit náklady) na portálu EA Portal **Enabled** (Povoleno). Všechny ostatní rozsahy vyžadují, aby bylo nastavení **AO view charges** (Vlastník účtu může zobrazit náklady) na portálu EA Portal **Enabled** (Povoleno).
 
-Pokud chcete povolit možnost:
+Povolení možnosti:
 
-1. Přihlaste se k portálu EA na [ https://ea.azure.com ](https://ea.azure.com) s účet správce podnikové sítě.
-2. Vyberte **spravovat** v levém podokně.
-3. Pro správu nákladů obory, které chcete poskytnout přístup k povolit možnost poplatek **DA zobrazit náklady** a/nebo **AO zobrazit náklady**.  
-    ![Registrace kartu zobrazením DA a AO poplatky za možnosti](./media/assign-access-acm-data/ea-portal-enrollment-tab.png)
+1. Přihlaste se k portálu EA Portal na [https://ea.azure.com](https://ea.azure.com) pod účtem podnikového správce.
+2. V levém podokně vyberte **Manage** (Spravovat).
+3. Pro rozsahy řízení nákladů, ke kterým chcete poskytnout přístup, povolte možnost **DA view charges** (Správce oddělení může zobrazit náklady) nebo **AO view charges** (Vlastník účtu může zobrazit náklady).  
+    ![Karta registrace s možnostmi zobrazení nákladů správce oddělení a vlastníka účtu](./media/assign-access-acm-data/ea-portal-enrollment-tab.png)
 
-Po povolení možnosti zobrazení poplatek se většina oborů také vyžadovat konfigurace oprávnění řízení přístupu na základě role na webu Azure Portal.
+Po povolení možností zobrazení nákladů bude většina rozsahů na portálu Azure Portal vyžadovat konfiguraci oprávnění řízení přístupu na základě role (RBAC).
 
-## <a name="enterprise-administrator-role"></a>Role správce rozlehlé sítě
+## <a name="enterprise-administrator-role"></a>Role podnikového správce
 
-Ve výchozím nastavení správce podnikové sítě má přístup k fakturačnímu účtu (smlouva Enterprise pro zápis) a všechny ostatní obory, které jsou podřízené obory. Podnikový správce přiřadí přístup obory pro ostatní uživatele. Jako osvědčený postup zajišťuje nepřetržitý chod podniků byste měli mít vždy dva uživatele s přístupem správce organizace. Následující části jsou příklady názorném postupu přiřazení přístupu správce organizace do oborů pro ostatní uživatele.
+Ve výchozím nastavení má podnikový správce přístup k fakturačnímu účtu (smlouva Enterprise / registrace) a ke všem ostatním podřízeným rozsahům. Přístup k rozsahům pro ostatní uživatele přiřadí podnikový správce. Osvědčeným postupem k zajištění provozní kontinuity je, že byste měli mít vždycky dva uživatele s přístupem podnikového správce. V následujících částech najdete názorné příklady podnikových správců, kteří přiřazují přístup k rozsahům pro jiné uživatele.
 
-## <a name="assign-billing-account-scope-access"></a>Přiřazení přístupu oboru fakturační účet
+## <a name="assign-billing-account-scope-access"></a>Přiřazení přístupu k rozsahu fakturačního účtu
 
-Přístup k oboru fakturační účet vyžaduje oprávnění správce podniku na portálu EA. Správce rozlehlé sítě má přístup k zobrazení náklady napříč celou registraci smlouvy Enterprise nebo více registrací. Na webu Azure Portal pro obor fakturační účet nevyžaduje žádná akce.
+Přístup k rozsahu fakturačního účtu vyžaduje oprávnění podnikového správce na portálu EA Portal. Podnikový správce má přístup k zobrazení nákladů napříč celou registrací EA nebo pro několik registrací. Na portálu Azure Portal není pro rozsah fakturačního účtu nutná žádná akce.
 
-1. Přihlaste se k portálu EA na [ https://ea.azure.com ](https://ea.azure.com) s účet správce podnikové sítě.
-2. Vyberte **spravovat** v levém podokně.
-3. Na **registrace** kartu, vyberte možnost registrace, který chcete spravovat.  
-    ![Vyberte vaše registrace na portálu EA](./media/assign-access-acm-data/ea-portal.png)
-4. Klikněte na tlačítko **+ přidat správce**.
-5. V dialogovém okně Přidat správce vyberte typ ověřování a zadejte e-mailovou adresu uživatele.
-6. Pokud uživatel má mít přístup jen pro čtení pro data o využití a nákladů, v části **jen pro čtení**vyberte **Ano**.  V opačném případě vyberte **ne**.
-7. Klikněte na tlačítko **přidat** k vytvoření účtu.  
-    ![Příklad informace zobrazené v okně Přidat správce](./media/assign-access-acm-data/add-admin.png)
+1. Přihlaste se k portálu EA Portal na [https://ea.azure.com](https://ea.azure.com) pod účtem podnikového správce.
+2. V levém podokně vyberte **Manage** (Spravovat).
+3. Na kartě **Enrollment** (Registrace) vyberte registraci, kterou chcete spravovat.  
+    ![Výběr registrace na portálu EA Portal](./media/assign-access-acm-data/ea-portal.png)
+4. Klikněte na **+ Add Administrator** (Přidat správce).
+5. V okně pro přidání správce vyberte typ ověřování a zadejte e-mailovou adresu uživatele.
+6. Pokud má uživatel přístup jen pro čtení k datům o nákladech a využití, vyberte v části **Read-only** (Jen pro čtení) možnost **Yes** (Ano).  Jinak vyberte **No** (Ne).
+7. Kliknutím na **Add** (Přidat) vytvořte účet.  
+    ![Příklad informací zobrazených v okně pro přidání správce](./media/assign-access-acm-data/add-admin.png)
 
-Může trvat až 30 minut, než se nový uživatel může přístup k datům ve službě Cost Management.
+Může trvat až 30 minut, než bude nový uživatel moct získat přístup k datům ve službě Cost Management.
 
-### <a name="assign-department-scope-access"></a>Přiřazení oddělení obor přístupu
+### <a name="assign-department-scope-access"></a>Přiřazení přístupu k rozsahu oddělení
 
-Přístup k oboru oddělení vyžaduje oddělení správce (DA zobrazit náklady) přístupu přes portál EA. Správce oddělení má přístup k zobrazení související s oddělení nebo několika oddělení data o využití a nákladů. Data pro oddělení zahrnují všechna předplatná, které patří k účtu pro zápis, které jsou spojeny s oddělení. Na webu Azure Portal nevyžaduje žádná akce.
+Přístup k rozsahu oddělení vyžaduje přístup správce oddělení (DA view charges (Správce oddělení může zobrazit náklady)) na portálu EA Portal. Správce oddělení má přístup k zobrazení dat o nákladech a využití spojených s oddělením nebo s více odděleními. K datům oddělení patří všechna předplatná patřící do registračního účtu, která jsou propojená s oddělením. Na portálu Azure Portal není nutná žádná akce.
 
-1. Přihlaste se k portálu EA na [ https://ea.azure.com ](https://ea.azure.com) s účet správce podnikové sítě.
-2. Vyberte **spravovat** v levém podokně.
-3. Na **registrace** kartu, vyberte možnost registrace, který chcete spravovat.
-4. Klikněte na tlačítko **oddělení** kartu a potom klikněte na tlačítko **přidat správce**.
-5. V dialogovém okně Přidat Správce oddělení vyberte typ ověřování a pak zadejte e-mailovou adresu uživatele.
-6. Pokud uživatel má mít přístup jen pro čtení pro data o využití a nákladů, v části **jen pro čtení**vyberte **Ano**.  V opačném případě vyberte **ne**.
-7. Vyberte jako vodítko použijte oddělení, které chcete udělit oprávnění pro správu oddělení.
-8. Klikněte na tlačítko **přidat** k vytvoření účtu.  
-    ![Zadejte požadované informace do textového pole přidat oddělení správce](./media/assign-access-acm-data/add-depart-admin.png)
+1. Přihlaste se k portálu EA Portal na [https://ea.azure.com](https://ea.azure.com) pod účtem podnikového správce.
+2. V levém podokně vyberte **Manage** (Spravovat).
+3. Na kartě **Enrollment** (Registrace) vyberte registraci, kterou chcete spravovat.
+4. Klikněte na kartu **Department** (Oddělení) a potom na **Add Administrator** (Přidat správce).
+5. V okně pro přidání správce oddělení vyberte typ ověřování a potom zadejte e-mailovou adresu uživatele.
+6. Pokud má uživatel přístup jen pro čtení k datům o nákladech a využití, vyberte v části **Read-only** (Jen pro čtení) možnost **Yes** (Ano).  Jinak vyberte **No** (Ne).
+7. Vyberte oddělení, kterým chcete udělit oprávnění správce oddělení.
+8. Kliknutím na **Add** (Přidat) vytvořte účet.  
+    ![Zadání požadovaných informací do okna pro přidání správce oddělení](./media/assign-access-acm-data/add-depart-admin.png)
 
-## <a name="assign-enrollment-account-scope-access"></a>Přiřadit přístup k oboru registraci účtu
+## <a name="assign-enrollment-account-scope-access"></a>Přiřazení přístupu k rozsahu registračního účtu
 
-Přístup k rozsahu registrace účtu vyžaduje (AO zobrazit náklady) přístup vlastníka účtu na portálu EA. Vlastník účtu můžete zobrazit přidružené k předplatným vytvořené z daného účtu registrace data o využití a nákladů. Na webu Azure Portal nevyžaduje žádná akce.
+Přístup k rozsahu registračního účtu vyžaduje přístup vlastníka účtu (AO view charges (Vlastník účtu může zobrazit náklady)) na portálu EA Portal. Vlastník účtu může zobrazit data o nákladech využití související s předplatnými vytvořenými v rámci daného registračního účtu. Na portálu Azure Portal není nutná žádná akce.
 
-1. Přihlaste se k portálu EA na [ https://ea.azure.com ](https://ea.azure.com) s účet správce podnikové sítě.
-2. Vyberte **spravovat** v levém podokně.
-3. Na **registrace** kartu, vyberte možnost registrace, který chcete spravovat.
-4. Klikněte na tlačítko **účet** kartu a potom klikněte na tlačítko **přidat účet**.
-5. V dialogovém okně Přidat účet vyberte **oddělení** přidružit účet, který chcete, a necháváme ji jak nepřiřazené.
+1. Přihlaste se k portálu EA Portal na [https://ea.azure.com](https://ea.azure.com) pod účtem podnikového správce.
+2. V levém podokně vyberte **Manage** (Spravovat).
+3. Na kartě **Enrollment** (Registrace) vyberte registraci, kterou chcete spravovat.
+4. Klikněte na kartu **Account** (Účet) a pak klikněte na **+ Add Account** (Přidat účet).
+5. V okně přidání účtu vyberte **Department** (Oddělení), ke kterému chcete účet přidružit, nebo ho nechte nepřiřazený.
 6. Vyberte typ ověřování a zadejte název účtu.
 7. Zadejte e-mailovou adresu uživatele a volitelně zadejte nákladové středisko.
-8. Klikněte na **přidat** k vytvoření účtu.  
-    ![Zadejte požadované informace do textového pole přidat účet pro účet pro zápis](./media/assign-access-acm-data/add-account.png)
+8. Kliknutím na **Add** (Přidat) vytvořte účet.  
+    ![Zadání požadovaných informací do okna pro přidání registračního účtu](./media/assign-access-acm-data/add-account.png)
 
-Po dokončení výše uvedených kroků, uživatelský účet stane registraci účtu na webu Enterprise Portal a můžete vytvářet odběry. Má uživatel přístup data o využití a nákladů pro předplatné, které vytvářejí.
+Po dokončení výše uvedeného postupu se uživatelský účet stane registračním účtem na portálu Enterprise Portal a může vytvářet předplatná. Uživatel má přístup k datům o nákladech a využití pro předplatná, která vytvoří.
 
-## <a name="assign-management-group-scope-access"></a>Přiřazení přístupu obor skupiny správy
+## <a name="assign-management-group-scope-access"></a>Přiřazení přístupu k rozsahu skupiny pro správu
 
-Přístup k zobrazení rozsahu skupiny pro správu vyžaduje alespoň oprávnění čtenář (nebo čtenář) Cost Management. Na webu Azure Portal můžete nakonfigurovat oprávnění pro skupinu pro správu. Musíte mít alespoň oprávnění správce přístupu uživatelů (nebo vlastník) pro skupinu pro správu umožňující přístup pro ostatní uživatele. A v případě účtů EA Azure je také nutné povolit nastavení **nákladů na zobrazení Ao** na portálu EA.
+Přístup k zobrazení rozsahu skupiny pro správu vyžaduje alespoň oprávnění Čtenář Cost Management (nebo Čtenář). Oprávnění pro skupinu pro správu můžete nakonfigurovat na portálu Azure Portal. Abyste mohli povolit přístup ostatním uživatelům, musíte mít pro skupinu pro správu alespoň oprávnění Správce uživatelských přístupů (nebo Vlastník). Pro účty EA Azure je také nutné povolit na portálu EA Portal nastavení **AO view charges** (Vlastník účtu může zobrazit náklady).
 
 1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
-2. Vyberte **všechny služby** na bočním panelu vyhledejte _skupin pro správu_a pak vyberte **skupin pro správu**.
-3. Vyberte skupiny pro správu v hierarchii.
-4. Vedle názvu skupiny pro správu, klikněte na tlačítko **podrobnosti**.
-5. Vyberte **řízení přístupu (IAM)** v levém podokně.
+2. Na bočním panelu vyberte **Všechny služby**, vyhledejte _skupiny pro správu_ a pak vyberte **skupiny pro správu**.
+3. Vyberte skupinu pro správu v hierarchii.
+4. Vedle názvu skupiny pro správu klikněte na **Podrobnosti**.
+5. V levém podokně vyberte **Access Control (IAM)** .
 6. Klikněte na tlačítko **Add** (Přidat).
-7. V části **Role**vyberte **náklady na správu čtečky**.
-8. V části **přiřadit přístup k**vyberte **uživatele Azure AD, skupinu nebo aplikaci**.
-9. K přiřazení přístupu, vyhledejte a vyberte uživatele.
-10. Klikněte na možnost **Uložit**.  
-    ![informace z příkladu v poli Přidat oprávnění pro skupinu pro správu](./media/assign-access-acm-data/add-permissions.png)
+7. V části **Role**vyberte **Čtenář Cost Management**.
+8. V rozbalovací nabídce **Přiřadit přístup k** vyberte **Uživatel, skupina nebo aplikace Azure AD**.
+9. Chcete-li přiřadit přístup, vyhledejte a vyberte uživatele.
+10. Klikněte na **Uložit**.  
+    ![Příklady informací v okně Přidat oprávnění pro skupinu pro správu](./media/assign-access-acm-data/add-permissions.png)
 
-## <a name="assign-subscription-scope-access"></a>Přiřazení předplatného obor přístupu
+## <a name="assign-subscription-scope-access"></a>Přiřazení přístupu k rozsahu předplatného
 
-Přístup k předplatnému vyžaduje alespoň oprávnění Čtenář náklady na správu (nebo Čtenář). Na webu Azure Portal můžete nakonfigurovat oprávnění k předplatnému. Musíte mít alespoň oprávnění správce přístupu uživatelů (nebo vlastník) pro předplatné, které chcete povolit přístup pro ostatní uživatele. A v případě účtů EA Azure je také nutné povolit nastavení **nákladů na zobrazení Ao** na portálu EA.
+Přístup k předplatnému vyžaduje alespoň oprávnění Čtenář Cost Management (nebo Čtenář). Oprávnění pro předplatné můžete nakonfigurovat na portálu Azure Portal. Abyste mohli povolit přístup ostatním uživatelům, musíte mít pro předplatné alespoň oprávnění Správce uživatelských přístupů (nebo Vlastník). Pro účty EA Azure je také nutné povolit na portálu EA Portal nastavení **AO view charges** (Vlastník účtu může zobrazit náklady).
 
 1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
-2. Vyberte **všechny služby** na bočním panelu vyhledejte _předplatná_a pak vyberte **předplatná**.
+2. Na bočním panelu vyberte **Všechny služby**, vyhledejte _předplatná_ a pak vyberte **Předplatná**.
 3. Vyberte své předplatné.
-4. Vyberte **řízení přístupu (IAM)** v levém podokně.
+4. V levém podokně vyberte **Access Control (IAM)** .
 5. Klikněte na tlačítko **Add** (Přidat).
-6. V části **Role**vyberte **náklady na správu čtečky**.
-7. V části **přiřadit přístup k**vyberte **uživatele Azure AD, skupinu nebo aplikaci**.
-8. K přiřazení přístupu, vyhledejte a vyberte uživatele.
-9. Klikněte na možnost **Uložit**.
+6. V části **Role**vyberte **Čtenář Cost Management**.
+7. V rozbalovací nabídce **Přiřadit přístup k** vyberte **Uživatel, skupina nebo aplikace Azure AD**.
+8. Chcete-li přiřadit přístup, vyhledejte a vyberte uživatele.
+9. Klikněte na **Uložit**.
 
-## <a name="assign-resource-group-scope-access"></a>Přiřazení přístupu oboru skupiny prostředků
+## <a name="assign-resource-group-scope-access"></a>Přiřazení přístupu k rozsahu skupiny prostředků
 
-Přístup do skupiny prostředků vyžaduje alespoň oprávnění Čtenář náklady na správu (nebo Čtenář). Na webu Azure Portal můžete nakonfigurovat oprávnění pro skupinu prostředků. Musíte mít alespoň oprávnění správce přístupu uživatelů (nebo vlastník) pro skupinu prostředků pro povolení přístupu pro ostatní uživatele. A v případě účtů EA Azure je také nutné povolit nastavení **nákladů na zobrazení Ao** na portálu EA.
+Přístup ke skupině prostředků vyžaduje alespoň oprávnění Čtenář Cost Management (nebo Čtenář). Oprávnění pro skupinu prostředků můžete nakonfigurovat na portálu Azure Portal. Abyste mohli povolit přístup ostatním uživatelům, musíte mít pro skupinu prostředků alespoň oprávnění Správce uživatelských přístupů (nebo Vlastník). Pro účty EA Azure je také nutné povolit na portálu EA Portal nastavení **AO view charges** (Vlastník účtu může zobrazit náklady).
 
 1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
-2. Vyberte **všechny služby** na bočním panelu vyhledejte _skupiny prostředků_a pak vyberte **skupiny prostředků**.
+2. Na bočním panelu vyberte **Všechny služby**, vyhledejte _skupiny prostředků_ a pak vyberte **skupiny prostředků**.
 3. Vyberte skupinu prostředků.
-4. Vyberte **řízení přístupu (IAM)** v levém podokně.
+4. V levém podokně vyberte **Access Control (IAM)** .
 5. Klikněte na tlačítko **Add** (Přidat).
-6. V části **Role**vyberte **náklady na správu čtečky**.
-7. V části **přiřadit přístup k**vyberte **uživatele Azure AD, skupinu nebo aplikaci**.
-8. K přiřazení přístupu, vyhledejte a vyberte uživatele.
-9. Klikněte na možnost **Uložit**.
+6. V části **Role**vyberte **Čtenář Cost Management**.
+7. V rozbalovací nabídce **Přiřadit přístup k** vyberte **Uživatel, skupina nebo aplikace Azure AD**.
+8. Chcete-li přiřadit přístup, vyhledejte a vyberte uživatele.
+9. Klikněte na **Uložit**.
 
-## <a name="cross-tenant-authentication-issues"></a>Problémy s ověřováním mezi klienty
+## <a name="cross-tenant-authentication-issues"></a>Problémy s ověřováním napříč tenanty
 
-V současné době má Azure Cost Management omezená podpora pro ověřování mezi klienty. V některých případech se při pokusu o ověření napříč klienty může při analýze nákladů zobrazit chyba **odepření přístupu** . K tomuto problému může dojít, pokud nakonfigurujete řízení přístupu na základě role (RBAC) na předplatné jiného tenanta a pak se pokusíte zobrazit data o nákladech.
+V současné době má Azure Cost Management omezenou podporu pro ověřování napříč tenanty. V některých případech se může stát, že při pokusu o ověření napříč tenanty dojde v analýze nákladů k chybě **odepření přístupu**. K tomuto problému může dojít, pokud nakonfigurujete řízení přístupu na základě role (RBAC) u předplatného jiného tenanta a pak se pokusíte zobrazit data nákladů.
 
-Řešení *problému*: po nakonfigurování RBAC mezi klienty můžete počkat hodinu. Pak se pokuste zobrazit náklady v analýze nákladů nebo udělit uživatelům přístup k Cost Managementům v obou klientech.  
+*Řešení problému*: Až nakonfigurujete RBAC napříč tenanty, počkejte hodinu. Pak se pokuste zobrazit náklady v analýze nákladů nebo udělte uživatelům přístup ke službě Cost Management v obou tenantech.  
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud jste ještě nedokončili první tohoto rychlého startu Cost Management, přečtěte si ho na [začít analýza nákladů](quick-acm-cost-analysis.md).
+- Pokud jste si ještě neprošli úvodní příručku pro Cost Management, najdete ji v tématu [Začínáme s analýzou nákladů](quick-acm-cost-analysis.md).

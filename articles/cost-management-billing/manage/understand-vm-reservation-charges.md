@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 9ebc418327d8c73198d43d3c40e14d48c73ad209
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76290236"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Jak se na virtuální počítače uplatňuje sleva za rezervaci Azure
@@ -37,7 +37,7 @@ Následující tabulka ukazuje náklady na virtuální počítač po zakoupení 
 
 ## <a name="how-reservation-discount-is-applied"></a>Jak se uplatňuje sleva za rezervaci
 
-*Nevyužité slevy se nenahrazují*. Pokud tedy nemáte na každou hodinu odpovídající prostředky, o rezervované množství za danou hodinu přijdete. Nevyužité rezervované hodiny nelze převést na další období.
+*Nevyužité slevy se nenahrazují*. Pokud tedy nemáte na každou hodinu odpovídající prostředky, o rezervované množství za danou hodinu přijdete. Nevyužité rezervované hodiny vám nemůžeme převést.
 
 Když vypnete určitý prostředek, sleva za rezervaci se automaticky uplatní na další vyhovující prostředek v zadaném rozsahu. Pokud se v zadaném rozsahu nenajdou žádné vyhovující prostředky, o rezervované hodiny *přijdete*.
 
@@ -47,7 +47,7 @@ Když vypnete určitý prostředek, sleva za rezervaci se automaticky uplatní n
 
 ![Snímek obrazovky znázorňující jednu uplatněnou rezervaci a dvě vyhovující instance virtuálních počítačů](./media/understand-vm-reservation-charges/billing-reserved-vm-instance-application.png)
 
-1. Každé využití nad limit rezervace se účtuje pomocí standardních sazeb pro průběžné platby. Neúčtují se vám žádné použití pod řádkem rezervací, protože už je zaplacená jako součást nákupu rezervací.
+1. Každé využití nad limit rezervace se účtuje pomocí standardních sazeb pro průběžné platby. Za využití do limitu rezervace se vám neúčtují žádné poplatky, protože už jste toto využití zaplatili při zakoupení rezervace.
 2. Za 1. hodinu běží instance 1 po dobu 0,75 hodiny a instance 2 po dobu 0,5 hodiny. Celkové využití za 1. hodinu je 1,25 hodiny. Za 0,25 hodiny nad limit se vám naúčtuje běžná sazba pro průběžné platby.
 3. Za 2. a 3. hodinu běží obě instance po dobu 1 hodiny. Jednu instanci pokryje rezervace a u druhé se vám naúčtuje sazba pro průběžné platby.
 4. Za 4. hodinu běží instance 1 po dobu 0,5 hodiny a instance 2 po dobu 1 hodiny. Instanci 1 plně pokryje rezervace a 0,5 hodiny chodu instance 2 také. Za 0,5 hodiny nad limit se vám naúčtuje běžná sazba pro průběžné platby.
@@ -60,7 +60,7 @@ Pokud používáte instance virtuálních počítačů s Windows, rezervace pokr
 
 ## <a name="discount-can-apply-to-different-sizes"></a>Sleva se může vztahovat na různé velikosti
 
-Pokud si koupíte rezervovanou instanci virtuálního počítače a vyberete **Optimalizováno pro:** **flexibilita velikosti instance**, rozsah pokrytí slevou závisí na tom, jakou velikost virtuálního počítače zvolíte. Rezervace se může vztahovat na velikosti virtuálních počítačů ve stejné skupině velikostí. Další informace najdete v tématu [Flexibilita velikosti virtuálních počítačů s rezervovanými instancemi virtuálních počítačů](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+Pokud si koupíte rezervovanou instanci virtuálního počítače a vyberete **Optimalizováno pro:** **flexibilita velikosti instance**, rozsah pokrytí slevou závisí na tom, jakou velikost virtuálního počítače zvolíte. Tato rezervace se může vztahovat na velikosti virtuálních počítačů ve stejné skupině velikostí. Další informace najdete v tématu [Flexibilita velikosti virtuálních počítačů s rezervovanými instancemi virtuálních počítačů](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
 
 ## <a name="discount-applies-to-matching-servicetype-only"></a>Sleva se vztahuje jenom na stejnou hodnotu ServiceType
 
@@ -96,7 +96,7 @@ V datech využití si zkontrolujte hodnotu *ConsumedService*, abyste zjistili, j
 Další informace o flexibilitě velikosti instance najdete v tématu [Flexibilita velikosti virtuálních počítačů s rezervovanými instancemi virtuálních počítačů](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
 
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
@@ -111,4 +111,4 @@ Další informace o rezervacích Azure najdete v následujících článcích:
 - [Vysvětlení využití rezervací u předplatného s průběžnými platbami](../reservations/understand-reserved-instance-usage.md)
 - [Vysvětlení využití rezervací u smlouvy Enterprise](../reservations/understand-reserved-instance-usage-ea.md)
 - [Vysvětlení využití rezervací u předplatných CSP](/partner-center/azure-reservations)
-- [Náklady na software pro Windows nezahrnuté v rezervacích](../reservations/reserved-instance-windows-software-costs.md)
+- [Náklady na software nezahrnuté v rezervacích](../reservations/reserved-instance-windows-software-costs.md)

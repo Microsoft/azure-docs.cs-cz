@@ -1,134 +1,133 @@
 ---
-title: Připojení účtu Amazon Web Services do Cloudyn v Azure | Dokumentace Microsoftu
-description: Připojení účtu Amazon Web Services k zobrazení nákladů a využití dat v sestavách Cloudyn.
-services: cost-management
+title: Připojení účtu Amazon Web Services ke službě Cloudyn v Azure | Microsoft Docs
+description: Připojte účet Amazon Web Services, abyste mohli v sestavách Cloudyn prohlížet data o nákladech a využití.
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/21/2019
+ms.date: 01/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: benshy
+ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: b64d54df43b27abb51210995f2426e23690fa2d3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: dcb4c30fe485559834791fa567856bc78cff067e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75994880"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76770328"
 ---
 # <a name="connect-an-amazon-web-services-account"></a>Připojení účtu Amazon Web Services
 
-Máte dvě možnosti pro propojení účtu Amazon Web Services (AWS) do Cloudyn. Můžete se připojit s rolí IAM nebo pomocí uživatelského účtu IAM jen pro čtení. IAM role je doporučeno, protože umožňuje delegovat přístup s oprávněními definované pro důvěryhodné entity. IAM role nevyžaduje můžete sdílet dlouhodobé přístupové klíče. Po připojení účtu AWS do Cloudyn, nákladů a využití dat je k dispozici v sestavách Cloudyn. Tento dokument vás provede obě možnosti.
+Účet Amazon Web Services (AWS) můžete připojit ke Cloudynu dvěma způsoby. K připojení můžete použít roli IAM nebo účet uživatele IAM jen pro čtení. Doporučuje se použít roli IAM, která umožňuje delegovat přístup s definovaným oprávněním na důvěryhodné entity. Role IAM nevyžaduje dlouhodobé sdílení přístupových klíčů. Po připojení účtu AWS ke Cloudynu budou data o nákladech a využití k dispozici v sestavách Cloudyn. Tento dokument vás provede oběma možnostmi.
 
-Další informace o identitách AWS IAM najdete v tématu [identit (uživatelů, skupin a rolí)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html).
+Další informace o identitách IAM v AWS najdete v článku o [identitách (uživatelích, skupinách a rolích)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html).
 
-Také povolit podrobné AWS fakturace sestav a tyto informace uložit do sady AWS simple storage service (S3). Podrobné sestavy fakturační zahrnují účtování poplatků informacemi značku a prostředek po hodinách. Ukládání sestav umožňuje načíst z vašeho kontejneru a zobrazení informací ve svých sestavách Cloudyn.
-
-
-## <a name="aws-role-based-access"></a>Přístup na základě rolí AWS
-
-Následující části vás provede vytvořením IAM role jen pro čtení k poskytnutí přístupu do Cloudyn.
-
-### <a name="get-your-cloudyn-account-external-id"></a>Získání externí ID účtu Cloudyn
-
-Prvním krokem je získání připojení jedinečné heslo z portálu Cloudyn. Používá se v AWS, jako **externí ID**.
-
-1. Otevřete portál Cloudyn z portálu Azure portal nebo přejděte na [ https://azure.cloudyn.com ](https://azure.cloudyn.com) a přihlaste se.
-2. Kliknutím na symbol ozubeného kola a pak vyberte **cloudové účty**.
-3. Správa účtů, vyberte **účtů AWS** kartu a potom klikněte na tlačítko **přidat nový +** .
-4. V **přidání účtu AWS** dialogové okno, kopie **externí ID** a uložte hodnotu pro roli AWS vytváření kroky v další části. Externí ID je jedinečné pro váš účet. Na následujícím obrázku příklad externí ID se _Contoso_ následuje ji číslo. Vaše ID se liší.  
-    ![Externí ID, které jsou zobrazeny v okně Přidání účtu AWS](./media/connect-aws-account/external-id.png)
-
-### <a name="add-aws-read-only-role-based-access"></a>Přidat AWS přístup jen pro čtení na základě rolí
-
-1. Přihlaste se ke konzole AWS na https://console.aws.amazon.com/iam/home a vyberte **role**.
-2. Klikněte na tlačítko **vytvořit roli** a pak vyberte **účtu AWS jiného**.
-3. V **ID účtu** vložte `432263259397`. Toto ID účtu se účet kolekce dat Cloudyn přiřadil AWS ke službě Cloudyn. Použijte přesnou zobrazené ID účtu.
-4. Vedle položky **možnosti**vyberte **vyžadují externí ID**. Vložit vaše jedinečná hodnota, která dříve zkopírovali z **externí ID** pole ve službě Cloudyn. Pak klikněte na tlačítko **Další: oprávnění**.  
-    ![na stránce vytvořit role vložte externí ID od Cloudyn](./media/connect-aws-account/create-role01.png)
-5. V části **připojit zásady oprávnění**v **typ zásad** vyhledávací pole filtru, typu `ReadOnlyAccess`vyberte **ReadOnlyAccess**, pak klikněte na tlačítko **Další: Kontrola**.  
-    ![Vyberte v seznamu názvů zásad přístup jen pro čtení](./media/connect-aws-account/readonlyaccess.png)
-6. Na stránce Kontrola zkontrolujte zvolené položky jsou správné a zadejte **název Role**. Například *Azure-cost-správce*. Zadejte **Popis role**. Například _přiřazení Role pro Cloudyn_, pak klikněte na tlačítko **vytvořit roli**.
-7. V **role** seznamu, klikněte na roli, které jste vytvořili a zkopírujte **Role ARN** hodnotu na stránce souhrnu. Používejte roli ARN (název zdroje Amazon) později při registraci vaší konfigurace v Cloudyn.  
-    ![Zkopírujte Role ARN na stránce souhrnu](./media/connect-aws-account/role-arn.png)
-
-### <a name="configure-aws-iam-role-access-in-cloudyn"></a>Nakonfigurovat přístup role AWS IAM ve službě Cloudyn
-
-1. Otevřete portál Cloudyn z portálu Azure portal nebo přejděte na https://azure.cloudyn.com/ a přihlaste se.
-2. Kliknutím na symbol ozubeného kola a pak vyberte **cloudové účty**.
-3. Správa účtů, vyberte **účtů AWS** kartu a potom klikněte na tlačítko **přidat nový +** .
-4. V **název účtu**, zadejte název pro účet.
-5. Vedle položky **typ přístupu**vyberte **IAM Role**.
-6. V **Role ARN** pole, vložte tuto hodnotu jste dříve zkopírovali a potom klikněte na **Uložit**.  
-    ![Vložte Role ARN v okně Přidání účtu AWS](./media/connect-aws-account/add-aws-account-box.png)
+Povolíte také podrobné fakturační sestavy AWS a uložíte tyto informace v kbelíku Simple Storage Service (S3) služeb AWS. Podrobné fakturační sestavy obsahují fakturované poplatky se značkami a informacemi o prostředcích po hodinách. Ukládání sestav umožňuje Cloudynu načítat sestavy z kbelíku a zobrazovat tyto informace v sestavách.
 
 
-Vašemu účtu AWS se zobrazí v seznamu účtů. **ID vlastníka** uvedená odpovídá vaší roli ARN hodnotě. Vaše **stav účtu** by měl mít symbol zelená značka zaškrtnutí označující, že Cloudyn můžete přístup k vašemu účtu AWS. Dokud nepovolíte fakturaci podrobné AWS, konsolidace stav se zobrazí jako **samostatné**.
+## <a name="aws-role-based-access"></a>Přístup založený na rolích AWS
 
-![Stav účtu AWS zobrazený na stránce Správa účtů](./media/connect-aws-account/aws-account-status01.png)
+Následující oddíly vás povedou při vytvoření role IAM jen pro čtení, která poskytuje přístup ke Cloudynu.
 
-Cloudyn spustí shromažďování dat a naplnění sestavy. Dále [povolit podrobné účtování AWS](#enable-detailed-aws-billing).
+### <a name="get-your-cloudyn-account-external-id"></a>Získání externího ID účtu Cloudyn
+
+V prvním kroku získáte z portálu Cloudyn jedinečné připojovací heslo. V AWS se používá jako **externí ID**.
+
+1. Portál Cloudyn můžete otevřít z webu Azure Portal nebo můžete přejít na adresu [https://azure.cloudyn.com](https://azure.cloudyn.com) a přihlásit se.
+2. Klikněte na symbol ozubeného kola a vyberte **Cloudové účty**.
+3. Ve Správě účtů vyberte **Účty AWS** a klikněte na **Přidat nový +** .
+4. V dialogovém okně **přidání účtu AWS** zkopírujte **externí ID** a uložte si tuto hodnotu pro postup vytvoření role AWS, který je v další části. Externí ID je pro váš účet jedinečné. Na následujícím obrázku je příklad externího ID _Contoso_, za kterým následuje číslo. Vaše ID je jiné.  
+    ![Externí ID zobrazené v poli pro přidání účtu AWS](./media/connect-aws-account/external-id.png)
+
+### <a name="add-aws-read-only-role-based-access"></a>Přidání přístupu AWS pro čtení na základě rolí
+
+1. Přihlaste se ke konzole AWS na adrese https://console.aws.amazon.com/iam/home a vyberte **Roles** (Role).
+2. Klikněte na **Create Role** (Vytvořit roli) a vyberte **Another AWS account** (Jiný účet AWS).
+3. Do pole **Account ID** (ID účtu) vložte `432263259397`. Toto ID účtu představuje účet kolektoru dat Cloudyn, který AWS přiřadí službě Cloudyn. Použijte přesně stejné ID účtu, jako je zde.
+4. Vedle **Options** (Možnosti) vyberte **Require external ID** (Vyžadovat externí ID). Vložte do pole jedinečnou hodnotu, kterou jste zkopírovali z pole **externího ID** v Cloudynu. Pak klikněte na **Další: Permissions** (Další: Oprávnění).  
+    ![Vložení externího ID z Cloudynu na stránce pro vytvoření role](./media/connect-aws-account/create-role01.png)
+5. V části **Attach permissions policies** (Připojit zásady oprávnění) ve vyhledávacím poli filtru **Policy type** (Typ zásady) zadejte `ReadOnlyAccess`, vyberte **ReadOnlyAccess** (přístup jen pro čtení) a klikněte na **Next: Review** (Další: Kontrola).  
+    ![Výběr přístupu jen pro čtení v seznamu názvů zásad](./media/connect-aws-account/readonlyaccess.png)
+6. Na stránce Review (Kontrola) zkontrolujte správnost vybraných údajů a zadejte **název role**. Příklad: *Azure-Cost-Mgt*. Zadejte **popis role**. Zadejte například _Role assignment for Cloudyn_ (Přiřazení role pro Cloudyn) a klikněte na **Create role** (Vytvořit roli).
+7. V seznamu **rolí** klikněte na vytvořenou roli a zkopírujte hodnotu **ARN role** ze souhrnné stránky. Hodnotu ARN (Amazon Resource Name) role použijete později, až budete konfiguraci registrovat v Cloudynu.  
+    ![Kopírování ARN role ze souhrnné stránky](./media/connect-aws-account/role-arn.png)
+
+### <a name="configure-aws-iam-role-access-in-cloudyn"></a>Konfigurace přístupu role IAM pro AWS v Cloudynu
+
+1. Z webu Azure Portal otevřete portál Cloudyn nebo přejděte na https://azure.cloudyn.com/ a přihlaste se.
+2. Klikněte na symbol ozubeného kola a vyberte **Cloudové účty**.
+3. Ve Správě účtů vyberte **Účty AWS** a klikněte na **Přidat nový +** .
+4. Do pole s **názvem účtu** zadejte název účtu.
+5. Vedle pole **Access Type** (Typ přístupu) vyberte **IAM Role** (Role IAM).
+6. Do pole **Role ARN** (ARN role) vložte zkopírovanou hodnotu a klikněte na **Save** (Uložit).  
+    ![Vložení ARN role do pole pro přidání účtu AWS](./media/connect-aws-account/add-aws-account-box.png)
 
 
-## <a name="aws-user-based-access"></a>Přístup na základě uživatele AWS
+Váš účet AWS se zobrazí v seznamu účtů. Uvedené **ID vlastníka** odpovídá hodnotě ARN role. U **stavu účtu** by mělo být zelené zaškrtnutí, které označuje, že Cloudyn má přístup k vašemu účtu AWS. Dokud nepovolíte podrobnou fakturaci AWS, stav konsolidace bude **samostatná**.
 
-Následující části vás provede vytvořením uživatele jen pro čtení k poskytnutí přístupu do Cloudyn.
+![Stav účtu AWS zobrazený na stránce pro správu účtů](./media/connect-aws-account/aws-account-status01.png)
 
-### <a name="add-aws-read-only-user-based-access"></a>Přidat AWS přístup jen pro čtení založené na uživatelích
+Služba Cloudyn začne shromažďovat data a plnit sestavy. V dalším kroku [povolíte podrobnou fakturaci AWS](#enable-detailed-aws-billing).
 
-1. Přihlaste se ke konzole AWS na https://console.aws.amazon.com/iam/home a vyberte **uživatelé**.
-2. Klikněte na tlačítko **přidat uživatele**.
-3. V **uživatelské jméno** pole, zadejte uživatelské jméno.
-4. Pro **získat přístup k typu**vyberte **programový přístup** a klikněte na tlačítko **Další: oprávnění**.  
-    ![Zadejte uživatelské jméno na stránce Přidat uživatele](./media/connect-aws-account/add-user01.png)
-5. Vyberte oprávnění **připojit existující zásady přímo**.
-6. V části **připojit zásady oprávnění**v **typ zásad** vyhledávací pole filtru, typu `ReadOnlyAccess`vyberte **ReadOnlyAccess**a potom klikněte na tlačítko **další : Zkontrolujte**.  
-    ![Vyberte ReadOnlyAccess pro nastavení oprávnění pro uživatele](./media/connect-aws-account/set-permission-for-user.png)
-7. Na stránce Kontrola zkontrolujte zvolené položky jsou správné, a klikněte na tlačítko **vytvořit uživatele**.
-8. Na stránce dokončení se zobrazí Access key ID a tajný kód přístupový klíč. Tyto informace můžete použít ke konfiguraci registrace ve službě Cloudyn.
-9. Klikněte na tlačítko **stáhnout CSV** a credentials.csv soubor uložte do zabezpečeného umístění.  
-    ![Klikněte na možnost stažení CSV uložit přihlašovací údaje](./media/connect-aws-account/download-csv.png)
 
-### <a name="configure-aws-iam-user-based-access-in-cloudyn"></a>Konfigurace přístupu na základě uživatele AWS IAM ve službě Cloudyn
+## <a name="aws-user-based-access"></a>Přístup založený na uživateli AWS
+
+Následující oddíly vás povedou při vytvoření uživatele jen pro čtení, který umožňuje přístup ke Cloudynu.
+
+### <a name="add-aws-read-only-user-based-access"></a>Přidání přístupu AWS jen pro čtení na základě uživatele
+
+1. Přihlaste se ke konzole AWS na adrese https://console.aws.amazon.com/iam/home a vyberte **Users** (Uživatelé).
+2. Klikněte na **Add User** (Přidat uživatele).
+3. Do pole **User name** (Uživatelské jméno) zadejte jméno uživatele.
+4. V poli **Access type** (Typ přístupu) vyberte **Programmatic access** (Programový přístup) a klikněte na **Next: Permissions** (Další: Oprávnění).  
+    ![Zadání uživatelského jména na stránce pro přidání uživatele](./media/connect-aws-account/add-user01.png)
+5. V oprávněních vyberte **Attach existing policies directly** (Připojit existující zásady přímo).
+6. V části **Attach permissions policies** (Připojit zásady oprávnění) ve vyhledávacím poli filtru **Policy type** (Typ zásady) zadejte `ReadOnlyAccess`, vyberte **ReadOnlyAccess** (přístup jen pro čtení) a klikněte na **Next: Review** (Další: Kontrola).  
+    ![Výběr přístupu jen pro čtení při nastavení oprávnění uživatele](./media/connect-aws-account/set-permission-for-user.png)
+7. Na stránce Review (Kontrola) zkontrolujte správnost vybraných údajů a klikněte na **Create user** (Vytvořit uživatele).
+8. Na poslední stránce se zobrazí vaše ID přístupového klíče a tajný přístupový klíč. Tyto údaje můžete použít ke konfiguraci registrace v Cloudynu.
+9. Klikněte na **Download .csv** (Stáhnout .csv) a uložte si soubor credentials.csv na bezpečné místo.  
+    ![Kliknutí na tlačítko pro stažení souboru .csv a uložení přihlašovacích údajů](./media/connect-aws-account/download-csv.png)
+
+### <a name="configure-aws-iam-user-based-access-in-cloudyn"></a>Konfigurace uživatelského přístupu IAM pro AWS v Cloudynu
 
 1. Portál Cloudyn můžete otevřít z webu Azure Portal nebo můžete přejít na adresu https://azure.cloudyn.com/ a přihlásit se.
-2. Kliknutím na symbol ozubeného kola a pak vyberte **cloudové účty**.
-3. Správa účtů, vyberte **účtů AWS** kartu a potom klikněte na tlačítko **přidat nový +** .
-4. Pro **název účtu**, zadejte název účtu.
-5. Vedle položky **typ přístupu**vyberte **IAM uživatele**.
-6. V **přístupový klíč**, vložte **přístup klíče ID** hodnotu ze souboru credentials.csv.
-7. V **tajný klíč**, vložte **tajný přístupový klíč** hodnotu ze souboru credentials.csv a potom klikněte na tlačítko **Uložit**.  
+2. Klikněte na symbol ozubeného kola a vyberte **Cloudové účty**.
+3. Ve Správě účtů vyberte **Účty AWS** a klikněte na **Přidat nový +** .
+4. Do pole **Account Name** (Název účtu) zadejte název účtu.
+5. Vedle pole **Access Type** (Typ přístupu) vyberte **IAM User** (Uživatel IAM).
+6. Do pole **Access Key** (Přístupový klíč) vložte hodnotu **Access key ID** (ID přístupového klíče) ze souboru credentials.csv.
+7. Do pole **Secret Key** (Tajný klíč) vložte hodnotu **tajného přístupového klíče** ze souboru credentials.csv a klikněte na **Save** (Uložit).  
 
-Vašemu účtu AWS se zobrazí v seznamu účtů. Vaše **stav účtu** by měl mít symbol zelená značka zaškrtnutí.
+Váš účet AWS se zobrazí v seznamu účtů. Ve **stavu účtu** by se měl zobrazit symbol zeleného zaškrtnutí.
 
-Cloudyn spustí shromažďování dat a naplnění sestavy. Dále [povolit podrobné účtování AWS](#enable-detailed-aws-billing).
+Služba Cloudyn začne shromažďovat data a plnit sestavy. V dalším kroku [povolíte podrobnou fakturaci AWS](#enable-detailed-aws-billing).
 
-## <a name="enable-detailed-aws-billing"></a>Povolit podrobnou účtování AWS
+## <a name="enable-detailed-aws-billing"></a>Povolení podrobné fakturace AWS
 
-Chcete-li získat vaše Role ARN AWS, postupujte následovně. Role ARN můžete udělit oprávnění ke čtení do fakturačního kontejneru.
+Následující postup použijte k získání ARN role pro AWS. ARN role umožňuje udělit oprávnění ke čtení fakturačního kbelíku.
 
-1. Přihlaste se ke konzole AWS na https://console.aws.amazon.com a vyberte **služby**.
-2. Do služby vyhledávání zadejte *IAM*a vyberte příslušnou možnost.
-3. Vyberte **role** z nabídky na levé straně.
-4. V seznamu rolí vyberte roli, kterou jste vytvořili pro Cloudyn přístup.
-5. Na stránce Souhrn rolí klikněte na tlačítko pro kopírování **Role ARN**. Zachovejte Role ARN po ruce pro pozdější kroky.
+1. Přihlaste se ke konzole AWS na adrese https://console.aws.amazon.com a vyberte **Services** (Služby).
+2. Do pole pro vyhledávání služby zadejte *IAM* a vyberte tuto možnost.
+3. V nabídce vlevo vyberte **Roles** (Role).
+4. Ze seznamu rolí vyberte roli, kterou jste vytvořili pro přístup ke Cloudynu.
+5. Na stránce se souhrnem rolí kliknutím zkopírujte hodnotu **Role ARN** (ARN role). Hodnotu ARN role si nechce po ruce pro další kroky.
 
-### <a name="create-an-s3-bucket"></a>Vytvoření kontejneru S3
+### <a name="create-an-s3-bucket"></a>Vytvoření kbelíku S3
 
-Vytvoření kontejneru S3 uložit podrobné informace o fakturaci.
+Vytvořte kbelík S3, do kterého se budou ukládat podrobné informace o fakturaci.
 
-1. Přihlaste se ke konzole AWS na https://console.aws.amazon.com a vyberte **služby**.
-2. Do služby vyhledávání zadejte *S3*a vyberte **S3**.
-3. Klikněte na stránce Amazon S3 **vytvoření kontejneru**.
-4. V Průvodci sady vytvořit zvolte název kontejneru a oblast a klikněte na **Další**.  
-    ![informace z příkladu jedné stránce pro vytvoření kontejneru](./media/connect-aws-account/create-bucket.png)
-5. Na **nastavit vlastnosti** stránce, ponechte výchozí hodnoty a pak klikněte na tlačítko **Další**.
-6. Na stránce zkontrolovat, klikněte na tlačítko **vytvoření kontejneru**. Zobrazí se seznam vašich kontejneru.
-7. Klikněte na tlačítko bloku, který jste vytvořili a vyberte **oprávnění** kartu a potom vyberte **sady zásad**. Otevře se editor zásad kontejneru.
-8. V následujícím příkladu JSON zkopírujte a vložte ho v editoru zásad kontejneru.
-   - Nahraďte `<BillingBucketName>` s názvem vaší sady S3.
-   - Nahraďte `<ReadOnlyUserOrRole>` s rolí nebo uživatelské ARN, který jste dříve zkopírovali.
+1. Přihlaste se ke konzole AWS na adrese https://console.aws.amazon.com a vyberte **Services** (Služby).
+2. Do pole pro vyhledávání služby zadejte *S3* a vyberte **S3**.
+3. Na stránce Amazon S3 klikněte na **Create bucket** (Vytvořit kbelík).
+4. V průvodci vytvořením kbelíku zvolte název kbelíku a oblast a klikněte na **Next** (Další).  
+    ![Příklad informací na stránce pro vytvoření kbelíku](./media/connect-aws-account/create-bucket.png)
+5. Na stránce **Set properties** (Nastavení vlastností) nechte výchozí hodnoty a klikněte na **Next** (Další).
+6. Na stránce Review (Kontrola) klikněte na **Create bucket** (Vytvořit kbelík). Zobrazí se seznam kbelíků.
+7. Klikněte na vytvořený kbelík, vyberte kartu **Permissions** (Oprávnění) a vyberte **Bucket Policy** (Zásada kbelíku). Otevře se editor zásady kbelíku.
+8. Zkopírujte následující ukázkový kód JSON a vložte ho do editoru zásady kbelíku.
+   - Hodnotu `<BillingBucketName>` nahraďte názvem kbelíku S3.
+   - Hodnotu `<ReadOnlyUserOrRole>` nahraďte hodnotou ARN role nebo uživatele, kterou jste si předtím zkopírovali.
 
    ```json
    {
@@ -172,25 +171,25 @@ Vytvoření kontejneru S3 uložit podrobné informace o fakturaci.
    }
    ```
 
-9. Klikněte na možnost **Uložit**.  
-    ![Klikněte na Uložit v editoru sady zásad](./media/connect-aws-account/bucket-policy-editor.png)
+9. Klikněte na **Uložit**.  
+    ![Kliknutí na Uložit v editoru zásady kbelíku](./media/connect-aws-account/bucket-policy-editor.png)
 
 
-### <a name="enable-aws-billing-reports"></a>Povolení fakturace sestavy AWS
+### <a name="enable-aws-billing-reports"></a>Povolení fakturačních sestav AWS
 
-Po vytvoření a konfigurace sady S3, přejděte do [fakturace Předvolby](https://console.aws.amazon.com/billing/home?#/preference) v konzole AWS.
+Jakmile vytvoříte a nakonfigurujete kbelík S3, přejděte na konzole AWS na [Billing Preferences](https://console.aws.amazon.com/billing/home?#/preference) (Předvolby fakturace).
 
-1. Na stránce předvoleb vyberte **přijímat zprávy fakturace**.
-2. V části **přijímat zprávy fakturace**, zadejte název kontejneru, který jste vytvořili a potom klikněte na tlačítko **ověřte**.  
-3. Vyberte všechny čtyři členitosti možnosti sestav a klikněte na **uložit předvolby**.  
-    ![Vyberte členitosti pro povolení sestav](./media/connect-aws-account/enable-reports.png)
+1. Na stránce předvoleb vyberte **Receive Billing Reports** (Přijímat sestavy fakturace).
+2. V části **Receive Billing Reports** (Přijímat sestavy fakturace) zadejte název vytvořeného kbelíku a klikněte na **Verify** (Ověřit).  
+3. Vyberte všechny čtyři možné podrobnosti sestav a klikněte na **Save preferences** (Uložit předvolby).  
+    ![Výběr podrobnosti při povolení sestav](./media/connect-aws-account/enable-reports.png)
 
-Cloudyn načte podrobné informace o fakturaci z vaší sady S3 a naplní sestavy po podrobné fakturace se aktivuje. Může trvat až 24 hodin, než podrobné fakturační data se zobrazí v konzole pro Cloudyn. Pokud je k dispozici podrobné fakturačních dat, konsolidace stavu vašeho účtu se zobrazí jako **konsolidované**. Stav účtu se zobrazí jako **dokončeno**.
+Cloudyn načte z kbelíku S3 podrobné fakturační údaje a po povolení podrobné fakturace naplní sestavy. Zobrazení podrobných fakturačních dat na konzole Cloudyn může trvat až 24 hodin. Jakmile jsou k dispozici podrobná fakturační data, zobrazí se stav konsolidace účtu **Consolidated** (Konsolidovaný). Stav účtu bude **Completed** (Dokončený).
 
 ![Stav konsolidace zobrazený na kartě účtů AWS](./media/connect-aws-account/consolidated-status.png)
 
-Některé sestavy optimalizace může vyžadovat několik dnů od data, abyste získali přesná doporučení velikost vzorku odpovídající data.
+U některých optimalizačních sestav může získání odpovídajícího vzorku dat trvat několik dnů, aby byla doporučení přesná.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Chcete-li další informace o Cloudyn, pokračujte [kontrola využití a nákladů](tutorial-review-usage.md) kurz pro Cloudyn.
+- Pokud chcete získat další informace o Cloudynu, pokračujte kurzem, který se věnuje [kontrole využití a nákladů](tutorial-review-usage.md) služby Cloudyn.

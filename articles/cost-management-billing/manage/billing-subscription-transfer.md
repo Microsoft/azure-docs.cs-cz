@@ -14,10 +14,10 @@ ms.date: 01/17/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d2bbfd7f4ddc5fc34c0bec3612783dfef5074d83
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76270856"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Převod vlastnictví fakturace předplatného Azure na jiný účet
@@ -86,7 +86,7 @@ Předplatná sady Visual Studio a programu Microsoft Partner Network mají přid
 
 ## <a name="transfer-billing-ownership-of-enterprise-agreement-ea-subscriptions"></a>Převod vlastnictví fakturace předplatných se smlouvou Enterprise (EA)
 
-Podnikový správce může převádět vlastnictví předplatných mezi účty v rámci registrace. Další informace najdete v tématu [Změna vlastníka účtu](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#change-account-owner) na portálu EA.
+Podnikový správce může převádět vlastnictví předplatných mezi účty v rámci registrace. Další informace najdete v tématu o [změně vlastníka účtu](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#change-account-owner) na portálu EA.
 
 ## <a name="next-steps-after-accepting-billing-ownership"></a>Další postup po přijetí vlastnictví fakturace
 
@@ -190,7 +190,7 @@ I když během převodu dojde k odebrání přiřazení [řízení přístupu na
 
 Pokud příjemce potřebuje omezit přístup k prostředkům, měl by zvážit aktualizaci tajných kódů přidružených ke službě. Většinu prostředků můžete aktualizovat takto:
 
-  1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
+  1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
   2. V nabídce centra vyberte **Všechny prostředky**.
   3. Vyberte prostředek.
   4. Na stránce prostředku klikněte na **Nastavení**. Tady můžete zobrazit a aktualizovat existující tajné kódy.
@@ -222,7 +222,7 @@ Převod vlastnictví fakturace nepodporují všechny typy předplatného. Seznam
 Tato chyba se zobrazí, pokud se pokoušíte převést předplatné plánu Microsoft Azure a nemáte potřebná oprávnění. Pokud chcete převést předplatné plánu Microsoft Azure, musíte být vlastníkem nebo přispěvatelem v části faktury, ke které se předplatné účtuje. Další informace najdete v tématu [Správa předplatných pro části faktury](understand-mca-roles.md#manage-subscriptions-for-invoice-section).
 
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 

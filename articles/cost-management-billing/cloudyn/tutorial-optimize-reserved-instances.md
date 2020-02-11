@@ -1,7 +1,6 @@
 ---
-title: Kurz – optimalizace nákladů na instance rezerv pomocí Cloudyn – Azure
+title: Kurz – Optimalizace nákladů na rezervované instance pomocí Cloudynu – Azure
 description: V tomto kurzu zjistíte, jak optimalizovat náklady na rezervované instance pro Azure a Amazon Web Services (AWS).
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
@@ -9,13 +8,13 @@ ms.date: 05/20/2019
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
-manager: benshy
-ms.openlocfilehash: c1afad7cb36916777b2f6cefa40b9bd1ddc465a2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.reviewer: benshy
+ms.openlocfilehash: 9b0dbc31f3789cb0033a531ad6c5395d3cfb8bcc
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75987086"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76769942"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
@@ -112,7 +111,7 @@ Pokud například zakoupíte rezervaci virtuálního počítače typu DS1\_v2 v 
 
 Pokud však bude spuštěný pouze 50 % času, hranice rentability nastane v 10. měsíci a roční úspory budou pouze 49,74 USD. Nákup rezervace takového typu instance v tomto příkladu pro vás nemusí být výhodný. Viz následující obrázek:
 
-![Příklad hranice rentability pro virtuální počítače Azure](./media/tutorial-optimize-reserved-instances/azure04.png)
+![Příklad hranice rentability virtuálních počítačů Azure](./media/tutorial-optimize-reserved-instances/azure04.png)
 
 ## <a name="view-ri-costs"></a>Zobrazení nákladů na rezervované instance
 
@@ -131,7 +130,7 @@ Na portálu Cloudyn přejděte do části **Costs** (Náklady) > **Cost Analysis
 
 Můžete provést filtrování podle služby, v tomto případě **Azure/VM**, a seskupení podle cenového modelu (**Price Model**) a typu prostředku (**Resource Type**), jak je znázorněno na následujícím obrázku:
 
-![Příklad skutečné náklady skupiny a filtry sestavy seskupené podle typu modelu a prostředků cena](./media/tutorial-optimize-reserved-instances/azure06.png)
+![Příklad skupin a filtrů sestavy skutečných nákladů seskupených podle cenového modelu a typu prostředku](./media/tutorial-optimize-reserved-instances/azure06.png)
 
 Můžete také analyzovat typ provedených plateb, jako jsou jednorázové poplatky, poplatky za využití a poplatky za licence.
 
@@ -145,7 +144,7 @@ V sestavě skutečných nákladů jste viděli špičku způsobenou nákupem rez
 
 Pokud chcete sestavu zobrazit, přejděte do části **Costs** (Náklady) > **Cost Analysis** (Analýza nákladů) a vyberte **Amortized Cost Analysis** (Analýza amortizovaných nákladů) nebo **Amortized Cost Over Time** (Dlouhodobá analýza amortizovaných nákladů).
 
-![Vyhrazené Příklad sestavy zobrazující amortizované náklady na instanci](./media/tutorial-optimize-reserved-instances/azure07.png)
+![Ukázková sestava znázorňující amortizované náklady na rezervovanou instanci](./media/tutorial-optimize-reserved-instances/azure07.png)
 
 ## <a name="optimize-aws-ri-costs"></a>Optimalizace nákladů na rezervované instance AWS
 
@@ -166,25 +165,25 @@ V nabídce sestav v horní části portálu klikněte na **Optimizer** (Optimali
 
 Následující obrázek ukazuje doporučení k nákupu ze sestavy.
 
-![Příklad zobrazení v sestavě doporučení k nákupu EC2 doporučení k nákupu](./media/tutorial-optimize-reserved-instances/aws01.png)
+![Příklad znázorňující doporučení k nákupu v sestavě EC2 Buying Recommendations](./media/tutorial-optimize-reserved-instances/aws01.png)
 
 V tomto příkladu obsahuje účet Cloudyn\_A 32 doporučení k nákupu rezervovaných instancí. Pokud se budete řídit doporučeními k nákupu, můžete potenciálně ušetřit 137 770 USD ročně. Mějte na paměti, že doporučení k nákupu, která poskytuje Cloudyn, předpokládají zachování konzistentního využití vašich spuštěných úloh.
 
 Pokud chcete zobrazit podrobnosti s vysvětlením jednotlivých doporučení k nákupu, klikněte na symbol plus ( **+** ) v části **Justifications** (Odůvodnění). Tady je příklad pro první doporučení v seznamu.
 
-![Příklad zobrazující nákupní odůvodnění podrobnosti](./media/tutorial-optimize-reserved-instances/aws02.png)
+![Příklad znázorňující podrobnosti odůvodnění nákupu](./media/tutorial-optimize-reserved-instances/aws02.png)
 
 Předchozí příklad ukazuje, že spouštění úlohy na vyžádání by ročně stálo 90 456 USD. Pokud však zakoupíte rezervaci předem, stejná úloha bude stát 56 592 USD a vy tak ušetříte 33 864 USD ročně.
 
 Kliknutím na symbol plus vedle textu **EC2 RI Purchase Impact** (Dopad nákupu rezervované instance EC2) zobrazíte hranici rentability v průběhu roku, abyste přibližně viděli, kdy se vaše investice do nákupu začne vyplácet. V následujícím příkladu začnou přibližně osm měsíců po zakoupení celkové náklady na vyžádání převyšovat celkové náklady na rezervovanou instanci:
 
-![Příklad zobrazující nákupní dopad podrobnosti](./media/tutorial-optimize-reserved-instances/aws03.png)
+![Příklad znázorňující podrobnosti dopadu nákupu](./media/tutorial-optimize-reserved-instances/aws03.png)
 
 V tomto okamžiku začnete šetřit peníze.
 
 Pokud chcete ověřit přesnost navrhovaného doporučení k nákupu, můžete zkontrolovat sestavu **Instances over Time** (Instance v průběhu času). V tomto příkladu vidíte, že se pro úlohu za posledních 30 dnů využívalo průměrně šest instancí.
 
-![Příklad zobrazuje historii využití instance v průběhu času](./media/tutorial-optimize-reserved-instances/aws04.png)
+![Příklad znázorňující historické využití instancí v průběhu času](./media/tutorial-optimize-reserved-instances/aws04.png)
 
 ## <a name="modify-unused-reservations"></a>Úprava nevyužitých rezervací
 
@@ -196,23 +195,23 @@ V nabídce sestav v horní části portálu klikněte na **Optimizer** (Optimali
 
 Následující obrázky ukazují sestavu s nevyužitými rezervovanými instancemi.
 
-![Příklad zobrazení souhrnu informace o nevyužitých rezervací](./media/tutorial-optimize-reserved-instances/unused-ri01.png)
+![Příklad znázorňující sumarizované informace o nevyužitých rezervacích](./media/tutorial-optimize-reserved-instances/unused-ri01.png)
 
 Kliknutím na symbol plus v části **Details** (Podrobnosti) zobrazíte podrobnosti o konkrétní rezervaci.
 
-![Příklad zobrazující podrobnosti o nevyužitých rezervacích](./media/tutorial-optimize-reserved-instances/unused-ri02.png)
+![Příklad znázorňující podrobnosti o nevyužitých rezervacích](./media/tutorial-optimize-reserved-instances/unused-ri02.png)
 
 V předchozím příkladu je celkem 77 nevyužitých rezervací v různých zónách dostupnosti. První rezervace obsahuje 51 nevyužitých instancí. Když se v seznamu podíváte níže, uvidíte potenciální úpravy rezervovaných instancí, které můžete provést s použitím typu instance **m3.2xlarge** v zóně dostupnosti **us-east-1c**.
 
 Kliknutím na **Modify** (Upravit) u první rezervace v seznamu otevřete stránku **Modify RI** (Úprava rezervované instance), na které se zobrazí data o příslušné rezervaci.
 
-![Příklad zobrazující rezervace úprav](./media/tutorial-optimize-reserved-instances/unused-ri03.png)
+![Příklad znázorňující rezervace, které lze upravit](./media/tutorial-optimize-reserved-instances/unused-ri03.png)
 
 V seznamu se zobrazí rezervované instance, které můžete upravit. Na následujícím obrázku je 51 nevyužitých rezervací, které můžete upravit, ale obě rezervace vyžadují dohromady 54 rezervací. Pokud upravíte nevyužité rezervace tak, aby se použily všechny, čtyři instance se budou i nadále spouštět na vyžádání. Pro účely tohoto příkladu rozdělte nevyužité rezervace tak, že první rezervace jich bude používat 30 a druhá rezervace jich bude používat 21.
 
 Klikněte na symbol plus u první položky rezervace a nastavte **Reservation quantity** (Množství rezervací) na **30**. Pro druhou položku nastavte množství rezervací na **21** a pak klikněte na **Apply** (Použít).
 
-![Příklad zobrazující změny množství rezervací](./media/tutorial-optimize-reserved-instances/unused-ri04.png)
+![Příklad znázorňující změny v množství rezervací](./media/tutorial-optimize-reserved-instances/unused-ri04.png)
 
 Všechny nevyužité instance pro rezervace se využívají naplno a 51 instancí se již nespouští na vyžádání. V tomto příkladu šetříte své organizaci peníze výrazným omezením využití na vyžádání a používáním předplacených rezervací.
 

@@ -1,300 +1,299 @@
 ---
-title: Zobrazení klíčových metrik pomocí řídicích panelů Cloudyn v Azure | Dokumentace Microsoftu
-description: Tento článek popisuje, jak zobrazit klíčových metrik pomocí řídicích panelů ve službě Cloudyn.
-services: cost-management
+title: Zobrazení klíčových metrik pomocí řídicích panelů Cloudyn v Azure | Microsoft Docs
+description: Tento článek popisuje, jak můžete zobrazit klíčové metriky pomocí řídicích panelů v Cloudynu.
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/21/2019
+ms.date: 01/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: vitavor
+ms.reviewer: vitavor
 ms.custom: seodec18
-ms.openlocfilehash: c0651dd006585e4ed5b8b888d6e55974c5c45a1d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: 78af8f2541eb0b28d75be89612d158c889261adc
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75990681"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76770135"
 ---
-# <a name="view-key-cost-metrics-with-dashboards"></a>Klíč zobrazení nákladů metrik pomocí řídicích panelů
+# <a name="view-key-cost-metrics-with-dashboards"></a>Zobrazení klíčových metrik nákladů pomocí řídicích panelů
 
-Řídicí panely ve službě Cloudyn poskytují souhrnný přehled sestav. Řídicí panely umožňují zobrazit náklady na klíčové metriky na jednom místě. Obsahují taky, že obchodní trend zvýrazní můžete dělat důležitá obchodní rozhodnutí.
+Řídicí panely v Cloudynu zobrazují sestavy z vyšší perspektivy. Řídicí panely umožňují zobrazit klíčové metriky nákladů v jednom zobrazení. Poskytují také důležité body obchodního trendu, které vám pomůžou při důležitých obchodních rozhodnutích.
 
-Řídicí panely se také používají k vytvoření zobrazení pro osoby s rozdílné povinnosti ve vaší organizaci, která by mohla obsahovat:
+Řídicí panely slouží také k vytváření zobrazení pro lidi s různými zodpovědnostmi ve vaší organizaci. Můžou sem patřit:
 
 - Finanční kontrolor
-- Vlastník aplikace nebo projekt
+- Vlastník aplikace nebo projektu
 - Inženýr DevOps
-- Členové vedení
+- Vedení
 
-Řídicí panely jsou tvořené widgetů a u každé pomůcky máte je v podstatě miniaturu sestavy. Kliknutím na widget a otevřete jeho sestavu. Při přizpůsobování zprávy uložit na stránku Mé sestavy a přidávají na řídicí panel.
+Řídicí panely se skládají z widgetů, přičemž každý widget je v podstatě miniatura sestavy. Kliknutím na widget otevřete jeho sestavu. Když si sestavy přizpůsobíte, uloží se do oblasti My Reports (Mé sestavy) a přidají se na řídicí panel.
 
-Řídicí panel verze se liší pro správu (MSP), Enterprise a Premium Cloudyn uživatele. Rozdíly jsou určeny entita úrovně přístupu. Další informace o úrovně přístupu najdete v tématu [úrovně přístupu Entity](tutorial-user-access.md#entity-access-levels).
+Verze řídicího panelu se pro uživatele Management (MSP), Enterprise a Premium Cloudynu liší. Rozdíly jsou definovány úrovněmi přístupu entit. Další informace o úrovních přístupu najdete v tématu [Úrovně přístupu entit](tutorial-user-access.md#entity-access-levels).
 
-Řídicí panel dostupnost závisí na typu cloudové služby poskytovatele účtu, který se používá při zobrazení řídicích panelů. Typ informací k dispozici a shromážděných od Cloudyn má vliv na sestavy v řídicích panelech. Například pokud nemáte účet AWS pak nezobrazí řídicí panel sledování S3. Podobně pokud nepovolíte, Azure Resource Manageru přístup do Cloudyn pak neuvidíte žádné informace týkající se Azure v optimalizátoru pomůcky řídicího panelu.
+Dostupnost řídicího panelu závisí na typu účtu poskytovatele cloudové služby, který se při prohlížení řídicích panelů používá. Typ informací dostupných a shromažďovaných službou Cloudyn má vliv na sestavy v řídicích panelech. Pokud například nemáte účet AWS, neuvidíte řídicí panel Sledování S3. Pokud nepovolíte Azure Resource Manageru přístup ke Cloudynu, neuvidíte žádné pro Azure specifické informace ve widgetech řídicího panelu optimalizátoru.
 
-Můžete použít některý z předem připravené řídicí panely nebo můžete vytvořit vlastní řídicí panel s přizpůsobené sestavy. Pokud nejste obeznámeni s sestavách Cloudyn, přečtěte si téma [sestavy použijte Cloudyn](use-reports.md).
+Můžete použít kterýkoli z předem připravených řídicích panelů nebo můžete vytvořit vlastní řídicí panel s přizpůsobenými sestavami. Pokud nejste obeznámeni se sestavami Cloudynu, přečtěte si téma [Použití sestav Cloudynu](use-reports.md).
 
 ## <a name="create-a-custom-dashboard"></a>Vytvoření vlastního řídicího panelu
 
-Pokud chcete rychle začít s vlastní řídicí panel, můžete duplikovat některý z existujících použít jeho vlastnosti. Potom můžete upravit tak, aby odpovídala vašim potřebám. Na řídicím panelu, které chcete kopírovat, klikněte na tlačítko **uložit jako**. Můžete pouze duplicitní přizpůsobené řídicí panely, nemůžete duplikovat řídicí panely, které jsou součástí Cloudyn.
+Pokud chcete rychle začít pracovat s vlastním řídicím panelem, můžete duplikovat stávající panel a použít jeho vlastnosti. Pak ho můžete upravit tak, aby vyhovoval vašim potřebám. Na řídicím panelu, který chcete zkopírovat, klikněte na **Save As** (Uložit jako). Duplikovat můžete pouze přizpůsobené řídicí panely. Řídicí panely, které jsou součástí Cloudynu, duplikovat nejdou.
 
-Pokud chcete vytvořit vlastní řídicí panel:
+Vytvoření vlastního řídicího panelu:
 
-1. Na domovské stránce, klikněte na tlačítko **přidat nový +** . Zobrazí se stránka Můj řídicí panel.  
-    ![Stránku řídicího panelu, kde můžete přidávat nové sestavy](./media/dashboards/my-dashboard.png)
-2. Klikněte na tlačítko **přidat novou sestavu**. Zobrazí se okno Přidat sestavu.
-3. Vyberte sestavu, kterou chcete přidat pomůcky řídicího panelu. Ve widgetu se přidá na řídicí panel.
-4. Zopakujte předchozí kroky, dokud se nedokončí řídicího panelu.
-5. Chcete-li změnit název řídicího panelu, klikněte na název řídicího panelu na domovské stránce řídicího panelu a zadejte nový název.
+1. Na domovské stránce klikněte na **Add New +** (Přidat nový +). Zobrazí se stránka My Dashboard (Můj řídicí panel).  
+    ![Stránka My Dashboard (Můj řídicí panel), kde můžete přidat nové sestavy](./media/dashboards/my-dashboard.png)
+2. Klikněte na **Add New Report** (Přidat novou sestavu). Zobrazí se okno Add Report (Přidat sestavu).
+3. Vyberte sestavu, kterou chcete přidat do widgetu řídicího panelu. Widget se přidá na řídicí panel.
+4. Opakujte předchozí kroky, dokud se řídicí panel nedokončí.
+5. Pokud chcete změnit název řídicího panelu, klikněte na název řídicího panelu na jeho domovské stránce a zadejte nový název.
 
-## <a name="modify-a-custom-dashboard"></a>Upravit vlastní řídicí panel
+## <a name="modify-a-custom-dashboard"></a>Úprava vlastního řídicího panelu
 
-Jako je vytváření vlastních řídicích panelů, nelze upravit řídicí panely zahrnuté v Cloudyn. Chcete-li upravit sestavu vlastní řídicí panel:
+Nemůžete upravovat řídicí panely, které jsou součástí Cloudynu, je to stejné jako s vytvořením vlastního řídicího panelu. Úprava sestavy vlastního řídicího panelu:
 
-1. Na řídicím panelu vyhledejte sestavu, kterou chcete upravit, a klikněte na tlačítko **upravit**. Zobrazí se sestava.
-2. Žádné změny, které chcete sestavu a klikněte na tlačítko **Uložit**. Sestava se aktualizuje a zobrazí změny.
+1. V řídicím panelu vyhledejte sestavu, kterou chcete upravit, a klikněte na **Edit** (Upravit). Sestava se zobrazí.
+2. Proveďte v sestavě všechny požadované změny a klikněte na **Save** (Uložit). Sestava se aktualizuje a zobrazí vaše změny.
 
 ## <a name="share-a-custom-dashboard"></a>Sdílení vlastního řídicího panelu
 
-Vlastní řídicí panel můžete sdílet s ostatními _veřejné_ nebo _Moje Entity_. Když sdílíte veřejnosti, všichni uživatelé mohou zobrazit řídicí panel. Pouze uživatelé s přístupem k aktuální entitě můžete zobrazit řídicí panel, když sdílíte Moje entity. Postup pro sdílení vlastního řídicího panelu se veřejné a My Entity jsou podobné.
+Vlastní řídicí panel můžete sdílet s ostatními pomocí možností _Public_ (Veřejné) nebo _My Entity_ (Moje entita). Když použijete možnost Public (Veřejné), mohou váš řídicí panel zobrazit všichni uživatelé. Pokud použijete možnost My Entity (Moje entita), mohou řídicí panel zobrazit pouze uživatelé s přístupem k aktuální entitě. Postupy pro sdílení vlastního řídicího panelu s možností Public (Veřejné) a My Entity (Moje entita) jsou podobné.
 
-Chcete-li sdílet vlastní řídicí panel na veřejnou:
+Sdílení vlastního řídicího panelu s možností Public (Veřejné):
 
-1. Na řídicím panelu, klikněte na tlačítko **nastavení řídicího panelu**. Zobrazí se okno Nastavení řídicího panelu.  
+1. V řídicím panelu klikněte na **Dashboard Settings** (Nastavení řídicího panelu). Zobrazí se okno Dashboard Settings (Nastavení řídicího panelu).  
     ![Nastavení řídicího panelu pro vlastní řídicí panel](./media/dashboards/dashboard-options.png)
-2. V dialogovém okně Nastavení řídicího panelu klikněte na symbol šipku a potom klikněte na tlačítko **veřejné**. Zobrazí se dialogové okno potvrzení veřejné řídicího panelu.
-3. Klikněte na tlačítko **Ano**. Řídicí panel je teď dostupná ostatním uživatelům.
+2. V okně Dashboard Settings (Nastavení řídicího panelu) klikněte na symbol šipky a potom klikněte na **Public** (Veřejné). Zobrazí se dialogové okno pro potvrzení veřejného řídicího panelu.
+3. Klikněte na **Yes** (Ano). Řídicí panel je teď dostupný pro ostatní.
 
-## <a name="delete-a-custom-dashboard-report"></a>Odstranit sestavu vlastní řídicí panel
+## <a name="delete-a-custom-dashboard-report"></a>Odstranění sestavy vlastního řídicího panelu
 
-Z řídicího panelu můžete odstranit komponenty vlastní sestavy. Odstranění sestavy z řídicího panelu neodstraní sestavu ze seznamu sestav. Místo toho odstranění sestavy odebere pouze na řídicím panelu.
+Komponentu vlastní sestavy můžete z řídicího panelu odstranit. Odstraněním sestavy z řídicího panelu se sestava neodstraní ze seznamu sestav. Odstraněním sestavy dojde pouze k jejímu odebrání z řídicího panelu.
 
-Chcete-li odstranit komponenty řídicí panel, na řídicí panel komponenty, klikněte na tlačítko **odstranit**. Kliknutím na **odstranit** okamžitě odstraní součást řídicího panelu.
+Pokud chcete komponentu řídicího panelu odstranit, klikněte na této komponentě na **Delete** (Odstranit). Kliknutím na **Delete** (Odstranit) dojde k okamžitému odstranění komponenty řídicího panelu.
 
 ## <a name="share-a-dashboard-enterprise"></a>Sdílení řídicího panelu (Enterprise)
 
-Můžete sdílet vlastní řídicí panely pro všechny uživatele ve vaší organizaci nebo s uživateli aktuální entitu. Sdílení řídicího panelu můžete poskytnout ostatním rychlé široký přehled o klíčových ukazatelů výkonu. Když sdílíte řídicí panel, automaticky replikuje řídicího panelu všechny Cloudyn entity/zákazníkům. Změny na sdílený řídicí panel se automaticky aktualizují.
+Vlastní řídicí panely můžete sdílet se všemi uživateli ve vaší organizaci nebo s uživateli aktuální entity. Sdílením řídicího panelu můžete ostatním uživatelům poskytnout rychlý pohled na klíčové ukazatele výkonu (KPI). Při sdílení řídicího panelu se tento řídicí panel automaticky replikuje pro všechny entity nebo zákazníky Cloudynu. Změny sdíleného řídicího panelu se aktualizují automaticky.
 
-Sdílet řídicí panel se všemi uživateli, včetně subentities:
+Sdílení řídicího panelu se všemi uživateli, včetně dílčích entit:
 
-1. Na domovské stránce řídicího panelu, klikněte na tlačítko **upravit**.
-2. Klikněte na tlačítko **sdílenou složku** a pak vyberte **veřejné**.
-3. Zobrazí se okno potvrzení globální veřejné řídicího panelu.
-4. Klikněte na tlačítko **Ano** nastavit řídicí panel jako globální veřejné řídicí panel.
+1. Na domovské stránce řídicího panelu klikněte na **Edit** (Upravit).
+2. Klikněte na **Share** (Sdílet) a pak vyberte **Public** (Veřejné).
+3. Zobrazí se okno pro potvrzení globálního veřejného řídicího panelu.
+4. Kliknutím na **Yes** (Ano) nastavíte řídicí panel jako globální veřejný řídicí panel.
 
-Sdílet řídicí panel se všemi uživateli aktuální entita:
+Sdílení řídicího panelu se všemi uživateli aktuální entity:
 
-1. Na domovské stránce řídicího panelu, klikněte na tlačítko **upravit**.
-2. Klikněte na tlačítko **sdílenou složku** a pak vyberte **Moje Entity**.
-3. Klikněte na tlačítko **Ano** nastavit řídicí panel jako veřejné řídicí panel.
+1. Na domovské stránce řídicího panelu klikněte na **Edit** (Upravit).
+2. Klikněte na **Share** (Sdílet) a pak vyberte **My Entity** (Moje entita).
+3. Kliknutím na **Yes** (Ano) nastavíte řídicí panel jako veřejný řídicí panel.
 
-## <a name="duplicate-a-custom-dashboard"></a>Duplicitní vlastní řídicí panel
+## <a name="duplicate-a-custom-dashboard"></a>Duplikování vlastního řídicího panelu
 
-Když vytvoříte nový řídicí panel, můžete chtít použít podobná vlastnosti z existující řídicí panel. Můžete duplikovat řídicí panel vytvořit nový certifikát.
+Při vytváření nového řídicího panelu můžete chtít použít podobné vlastnosti z existujícího řídicího panelu. Řídicí panel můžete duplikovat a vytvořit tak nový.
 
-Můžete pouze duplicitní vlastní řídicí panely. Standardní řídicí panely nejde duplikovat.
+Duplikovat můžete pouze vlastní řídicí panely. Standardní řídicí panely duplikovat nejdou.
 
-Duplikovat řídicí panel (klonovat) vlastní:
+Duplikování (klonování) vlastního řídicího panelu:
 
-1. Na řídicím panelu, který chcete duplikovat, klikněte na tlačítko **uložit jako**. Nový řídicí panel se otevře s názvem a číslem.
-2. Přejmenujte duplicitní řídicí panel a upravit, jak potřebujete.
-
-\- nebo -
-
-1. V nastavení řídicího panelu, klikněte na tlačítko **uložit jako** na řádek, který chcete duplikovat řídicí panel.
-2. Otevře se duplicitní řídicí panel.
-3. Přejmenovat řídicí panel a můžete je změnit.
-
-## <a name="set-a-default-dashboard"></a>Nastavit výchozí řídicí panel
-
-Kterýkoli řídicí panel můžete nastavit jako výchozí. Nastavení pro výchozí umožňuje zobrazit jako seznam karet řídicího panelu na kartě nejvíce vlevo. Výchozí řídicí panel zobrazí, když otevřete portál Cloudyn.
-
-- Klikněte na kartu řídicí panel chcete nastavit jako výchozí a potom klikněte na **výchozí** na pravé straně.
+1. Na řídicím panelu, který chcete duplikovat, klikněte na **Save As** (Uložit jako). Otevře se nový řídicí panel se stejným názvem a číslem.
+2. Duplikovaný řídicí panel přejmenujte a upravte ho podle svých potřeb.
 
 \- nebo -
 
-1. Klikněte na tlačítko **nastavení řídicího panelu** zobrazte seznam dostupných řídicích panelů a vyberte řídicí panel, který chcete nastavit jako výchozí.  
-    ![řídicí panel Možnosti pro výchozí řídicí panel](./media/dashboards/dashboard-options.png)
-2. Klikněte na tlačítko **výchozí** v řádku řídicího panelu. Zobrazí se okno potvrzení výchozí řídicí panel.
-3. Klikněte na **Ano**. Řídicí panel je nastavena na výchozí.
+1. V části Dashboard Settings (Nastavení řídicího panelu) klikněte na **Save As** (Uložit jako) na řádku řídicího panelu, který chcete duplikovat.
+2. Otevře se duplikovaný řídicí panel.
+3. Řídicí panel přejmenujte a upravte ho podle svých potřeb.
+
+## <a name="set-a-default-dashboard"></a>Nastavení výchozího řídicího panelu
+
+Jako výchozí můžete nastavit libovolný řídicí panel. Když řídicí panel nastavíte jako výchozí, zobrazí se na seznamu karet řídicích panelů jako karta úplně vlevo. Výchozí řídicí panel se zobrazí při otevření portálu Cloudynu.
+
+- Klikněte na kartu řídicího panelu, který chcete nastavit jako výchozí, a pak na pravé straně klikněte na **Default** (Výchozí).
+
+\- nebo -
+
+1. Kliknutím na **Dashboard Settings** (Nastavení řídicího panelu) zobrazíte seznam dostupných řídicích panelů a vyberete řídicí panel, který chcete nastavit jako výchozí.  
+    ![Možnosti řídicího panelu pro výchozí řídicí panel](./media/dashboards/dashboard-options.png)
+2. V řádku řídicího panelu klikněte na **Default** (Výchozí). Zobrazí se okno pro potvrzení výchozího řídicího panelu.
+3. Klikněte na **Ano**. Řídicí panel je nastaven jako výchozí.
 
 ## <a name="management-dashboard"></a>Řídicí panel správy
-Rozhraní pro správu (nebo řídicí panel MSP pro uživatele MSP) řídicí panel obsahuje stručný přehled typů hlavní sestav.  
-![Zobrazuje různé sestavy řídicího panelu pro správu](./media/dashboards/management-dash.png)
+Řídicí panel správy (nebo řídicí panel MSP pro uživatele MSP) zvýrazňuje hlavní typy sestav.  
+![Řídicí panel správy zobrazující různé sestavy](./media/dashboards/management-dash.png)
 
-### <a name="cost-entity-summary-enterprise-only"></a>Souhrn entit nákladů (pouze v Enterprise)
-Tato pomůcka shrnuje náklady na spravované entity, včetně počet entit a počtu účtů.
-- Kliknutím na widget a otevřete tak sestavu podrobnosti organizace.
+### <a name="cost-entity-summary-enterprise-only"></a>Souhrn entit nákladů (pouze Enterprise)
+Tento widget shrnuje spravované entity nákladů, včetně počtu entit a počtu účtů.
+- Kliknutím na widget otevřete sestavu podrobností podniku.
 
-### <a name="cost-over-time"></a>Náklady za časové období
-Tohoto widgetu můžete sledovat trendy nákladů. Zvýrazní náklady za poslední den, založené na trend v posledních 30 dnech.
-- Kliknutím na widget a otevřete tak sestavu Actual Cost Over Time, chcete-li zobrazit a vyfiltrovat další podrobnosti.
+### <a name="cost-over-time"></a>Náklady v průběhu času
+Tento widget vám pomůže zjistit trendy nákladů. Zvýrazní náklady za poslední den na základě trendu za posledních 30 dní.
+- Kliknutím na widget otevřete sestavu skutečných nákladů v průběhu času, kde můžete zobrazit a filtrovat další podrobnosti.
 
 ### <a name="asset-controller"></a>Kontroler prostředků
-Tato pomůcka označuje počet spuštěných instancí z předchozího dne, nad trend využití za posledních 30 dní.
-- Kliknutím na widget otevřete řídicí panel kontroler prostředků.
+Tento widget zvýrazňuje počet spuštěných instancí z předchozího dne nad trendem využití za posledních 30 dní.
+- Kliknutím na widget otevřete řídicí panel kontroleru prostředků.
 
-### <a name="unused-ri-detector"></a>Detektor nevyužitých RI
-Tato pomůcka zvýrazní počet Amazon EC2 nevyužitých rezervací.
-- Kliknutím na widget a otevřete tak sestavu aktuálně nevyužité rezervace, kde můžete zobrazit nevyužitých rezervací můžete upravit.
+### <a name="unused-ri-detector"></a>Detektor nevyužitých rezervovaných instancí
+Tento widget zvýrazňuje počet nevyužitých rezervací Amazon EC2.
+- Kliknutím na widget otevřete sestavu aktuálně nevyužitých rezervací, kde můžete zobrazit nepoužívané rezervace, které můžete upravit.
 
-### <a name="cost-by-service"></a>Náklady podle služeb
-Tato pomůcka zvýrazní amortizované náklady službou za posledních 30 dní. Najeďte myší výseč kruhového grafu můžete zobrazit náklady na službu.
-- Kliknutím na widget a otevřete tak sestavu Analýza skutečných nákladů.
+### <a name="cost-by-service"></a>Náklady podle služby
+Tento widget zvýrazňuje amortizované náklady podle služby za posledních 30 dní. Najeďte na výsečový graf myší a zobrazte náklady na službu.
+- Kliknutím na widget otevřete sestavu analýzy skutečných nákladů.
 
 ### <a name="potential-savings"></a>Potenciální úspory
-Tato pomůcka ukazuje typ instance ceny doporučení pro Amazon EC2 a Amazon vzdálené plochy
-- Kliknutím na widget otevřete sestavu analýzy úspory. Vypíše instance typy potenciální úspory nákladů.
+Tento widget zobrazuje doporučení pro ceny typu instance pro Amazon EC2 a Amazon RDS.
+- Kliknutím na widget otevřete sestavu analýzy úspor. Zobrazuje seznam nákladů podle typů instancí s potenciálními úsporami.
 
-### <a name="compute-instances---daily-trend"></a>Výpočetní instance – denní Trend
-Tato pomůcka zobrazí aktivní instance podle typu, za posledních 30 dní.
-- Kliknutím na widget a otevřete tak sestavu instance v čase, kde můžete zobrazit rozpis všech instancí během posledních 30 dní.
+### <a name="compute-instances---daily-trend"></a>Výpočetní instance – denní trend
+Tento widget zobrazuje aktivní instance podle typu za posledních 30 dní.
+- Kliknutím na widget otevřete sestavu instancí v průběhu času, kde můžete zobrazit rozpis všech instancí spuštěných během posledních 30 dní.
 
 ### <a name="storage-by-department"></a>Úložiště podle oddělení
-Tato pomůcka zobrazí služby úložiště používá po odděleních. Najeďte myší výsečový graf zobrazíte spotřebu úložiště podle oddělení.
-- Kliknutím na widget otevřete řídicí panel sledování S3.
+Tento widget zobrazuje služby úložiště, které používají oddělení. Najeďte myší na výsečový graf, abyste viděli spotřebu úložiště podle oddělení.
+- Kliknutím na widget otevřete řídicí panel Sledování S3.
 
-## <a name="cost-controller-dashboard"></a>Řídicí panel kontroler nákladů
-Na řídicím panelu kontroler nákladů zobrazuje zvýraznění přidělení přednastaveným náklady.  
-![Řídicí panel řadiče zobrazení různých sestav nákladů](./media/dashboards/cost-controller-dashboard.png)
+## <a name="cost-controller-dashboard"></a>Řídicí panel kontroleru nákladů
+Řídicí panel kontroleru nákladů zobrazuje přednastavené důležité body přidělení nákladů.  
+![Řídicí panel kontroleru nákladů zobrazující různé sestavy](./media/dashboards/cost-controller-dashboard.png)
 
-### <a name="cost-over-time"></a>Náklady za časové období
-Tato pomůcka pomáhá odhalit trendy nákladů. Zvýrazní náklady za poslední den, založené na trend v posledních 30 dnech.
-- Kliknutím na widget a otevřete tak sestavu Actual Cost Over Time, chcete-li zobrazit a vyfiltrovat další podrobnosti.
+### <a name="cost-over-time"></a>Náklady v průběhu času
+Tento widget vám pomůže zjistit trendy nákladů. Zvýrazní náklady za poslední den na základě trendu za posledních 30 dní.
+- Kliknutím na widget otevřete sestavu skutečných nákladů v průběhu času, kde můžete zobrazit a filtrovat další podrobnosti.
 
-### <a name="monthly-cost-trends"></a>Měsíční náklady trendů
-Tato pomůcka zvýrazní předpokládané útraty amortizované a vaší skutečné náklady od začátku měsíce.
-- Kliknutím na widget a otevřete tak sestavu plánovaných nákladů pro aktuální měsíc, které nabízí souhrnné náklady za měsíc k datu.
+### <a name="monthly-cost-trends"></a>Měsíční trendy nákladů
+Tento widget zvýrazňuje plánované amortizované útraty a skutečné útraty od začátku měsíce.
+- Kliknutím na widget otevřete sestavu plánovaných nákladů pro aktuální měsíc, která poskytuje souhrn nákladů od začátku měsíce.
 
-Tato sestava ukazuje náklady od začátku měsíce, náklady na předchozí měsíc a aktuální měsíc plánovaných nákladů. Aktuální měsíc předpokládané náklady se počítají tak, že přidáte aktuální měsíční náklady a projekce. Projekce je založen na náklady na monitorované za posledních 30 dní.
+Tato sestava zobrazuje náklady od začátku měsíce, náklady na předchozí měsíc a plánované náklady pro aktuální měsíc. Plánované náklady pro aktuální měsíc se vypočítají přidáním aktuálních měsíčních nákladů a projekce. Projekce vychází z nákladů monitorovaných za posledních 30 dní.
 
 ### <a name="12-month-planner"></a>Plánovač 12 měsíců
-Tato pomůcka zvýrazní předpokládaných nákladů za příštích 12 měsíců a potenciální úspory.
-- Kliknutím widget, který se otevře sestava ročních plánovaných nákladů.
+Tento widget zvýrazňuje plánované náklady během dalších 12 měsíců a potenciální úspory.
+- Kliknutím na widget otevřete sestavu ročních plánovaných nákladů.
 
-### <a name="cost-by-service"></a>Náklady podle služeb
-Tato pomůcka zvýrazní amortizované náklady službou za posledních 30 dní.
-- Najeďte myší výseč kruhového grafu můžete zobrazit náklady na službu.
-- Kliknutím na widget a otevřete tak sestavu Analýza skutečných nákladů.
+### <a name="cost-by-service"></a>Náklady podle služby
+Tento widget zvýrazňuje amortizované náklady podle služby za posledních 30 dní.
+- Najeďte na výsečový graf myší a zobrazte náklady na službu.
+- Kliknutím na widget otevřete sestavu analýzy skutečných nákladů.
 
 ### <a name="cost-by-account"></a>Náklady podle účtu
-Tato pomůcka zvýrazní amortizované náklady na účet za posledních 30 dní.
-- Najeďte myší výseč kruhového grafu můžete zobrazit náklady na účet.
-- Kliknutím na widget a otevřete tak sestavu Analýza skutečných nákladů.
+Tento widget zvýrazňuje amortizované náklady podle účtu za posledních 30 dní.
+- Najeďte na výsečový graf myší a zobrazte náklady na účet.
+- Kliknutím na widget otevřete sestavu analýzy skutečných nákladů.
 
-### <a name="cost-trend-by-day"></a>Trend nákladů za den
-Tato pomůcka vybraná vystoupení výdajů za posledních 30 dní.
-- Najeďte myší na pruhový graf, který chcete zobrazit náklady za den.
-- Kliknutím na widget a otevřete tak sestavu Actual Cost Over Time.
+### <a name="cost-trend-by-day"></a>Trend nákladů podle dne
+Tento widget zvýrazňuje útratu za posledních 30 dní.
+- Najeďte na pruhový graf myší a zobrazte náklady na den.
+- Kliknutím na widget otevřete sestavu skutečných nákladů v průběhu času.
 
-### <a name="cost-trend-by-month---last-6-months"></a>Trend nákladů podle kategorie Month - posledních 6 měsíců
+### <a name="cost-trend-by-month---last-6-months"></a>Trend nákladů podle měsíce – posledních 6 měsíců
 
-Tato pomůcka vybraná vystoupení výdajů za posledních šest měsíců.
-- Najeďte myší na pruhový graf, který chcete zobrazit náklady za měsíc.
-- Kliknutím na widget a otevřete tak sestavu Actual Cost Over Time.
+Tento widget zvýrazňuje útratu za posledních šest měsíců.
+- Najeďte na pruhový graf myší a zobrazte náklady na měsíc.
+- Kliknutím na widget otevřete sestavu skutečných nákladů v průběhu času.
 
-## <a name="asset-controller-dashboard"></a>Řídicí panel kontroler prostředků
+## <a name="asset-controller-dashboard"></a>Řídicí panel kontroleru prostředků
 
-Tento řídicí panel zobrazuje počet spuštěných instancí, k dispozici a používané disky, distribuce typů instancí a informace o úložiště.  
-![Řídicí panel řadiče Asset zobrazující různé sestavy](./media/dashboards/asset-controller-dashboard.png)
+Tento řídicí panel zobrazuje počet spuštěných instancí, dostupné a používané disky, distribuci typů instancí a informace o úložišti.  
+![Řídicí panel kontroleru prostředků zobrazující různé sestavy](./media/dashboards/asset-controller-dashboard.png)
 
 ### <a name="compute-instances"></a>Výpočetní instance
-Tato pomůcka zobrazuje počet spuštěných instancí podle trend využití za posledních 30 dní.
-- Kliknutím na widget a otevřete tak sestavu instance v čase.
+Tento widget zobrazuje počet spuštěných instancí na základě trendu využití v posledních 30 dnech.
+- Kliknutím na widget otevřete sestavu instancí v průběhu času.
 
 ### <a name="disks"></a>Disky
-Tato pomůcka klade důraz na celkový počet a objemu disky, které jsou používané a k dispozici.
-- Kliknutím na widget a otevřete tak sestavu aktivní disky.
+Tento widget zvýrazňuje celkový počet a objem disků, které se používají a jsou k dispozici.
+- Kliknutím na widget otevřete sestavu aktivních disků.
 
 ### <a name="instance-type-distribution"></a>Distribuce typu instance
-Tato pomůcka zvýrazňuje typy instancí ve výsečovém grafu.
-- Kliknutím na widget a otevřete tak sestavu distribuce Instance obsahuje rozpis systémů aktivní instance podle vybrané agregace.
+Tento widget zvýrazňuje typy instancí ve výsečovém grafu.
+- Kliknutím na widget otevřete sestavu distribuce instancí, která poskytuje rozpis aktivních instancí podle vybrané agregace.
 
-### <a name="compute-instances---daily-trend"></a>Výpočetní instance – denní Trend
-Tato pomůcka zvýrazní výpočetních instancí (přímé vyhrazené a na vyžádání) za den za posledních 30 dní.
-- Najeďte myší grafu zobrazí počet výpočetních instancí podle typu za den.
-- Kliknutím na widget a otevřete tak sestavu instance v čase.
+### <a name="compute-instances---daily-trend"></a>Výpočetní instance – denní trend
+Tento widget zvýrazňuje výpočetní instance (spot, rezervované a na vyžádání) za den v posledních 30 dnech.
+- Najeďte myší na graf a zobrazte počet výpočetních instancí podle typu za den.
+- Kliknutím na widget otevřete sestavu instancí v průběhu času.
 
-### <a name="all-buckets-s3"></a>Všechny Kbelíky (S3)
-Tato pomůcka klade důraz na celkový úložiště S3 a počet objektů, které jsou uložené.
-- Kliknutím na widget otevřete řídicí panel sledování S3. Řídicí panel pomáhá najít, analyzovat a zobrazit aktuální využití úložiště a trendy.
+### <a name="all-buckets-s3"></a>Všechny kbelíky (S3)
+Tento widget zvýrazní celkové úložiště S3 a počet uložených objektů.
+- Kliknutím na widget otevřete řídicí panel Sledování S3. Řídicí panel vám pomůže najít, analyzovat a zobrazit aktuální využití a trendy úložiště.
 
-### <a name="sql-db-instances-rds"></a>Instance SQL DB (RDS)
-Tato pomůcka označuje počet spuštěných instancí Amazon RDS podle trend v posledních 30 dnech.
-- Kliknutím na widget a otevřete tak sestavu RDS Instance v čase.
+### <a name="sql-db-instances-rds"></a>Instance SQL DB (Vzdálená plocha)
+Tento widget zvýrazňuje počet spuštěných instancí Amazon RDS na základě trendu posledních 30 dní.
+- Kliknutím na widget otevřete sestavu instancí vzdálené plochy v průběhu času.
 
-## <a name="optimizer-dashboard"></a>Optimalizace řídicího panelu
-Tento řídicí panel zobrazuje downsizing doporučení, nevyužité prostředky a potenciální úspory.  
-![Optimalizace řídicího panelu zobrazuje různé sestavy](./media/dashboards/optimizer-dashboard.png)
+## <a name="optimizer-dashboard"></a>Řídicí panel optimalizátoru
+Tento řídicí panel zobrazuje doporučení pro zmenšení velikosti, nepoužívané prostředky a potenciální úspory.  
+![Řídicí panel optimalizátoru zobrazující různé sestavy](./media/dashboards/optimizer-dashboard.png)
 
-### <a name="ri-calculator"></a>Rezervované instance kalkulačky
-Zobrazí počet doporučení k nákupu rezervovaných Instancí a tohoto widgetu nejlepší potenciální roční úspory.
-- Kliknutím na widget otevřete rezervované Instance kalkulačky, kde můžete určit, kdy se má použít na vyžádání vs. vyhrazené cenové plány.
+### <a name="ri-calculator"></a>Kalkulačka rezervovaných instancí
+Tento widget zobrazuje počet doporučení pro nákup rezervovaných instancí a zvýrazňuje potenciální roční úspory.
+- Kliknutím na widget otevřete kalkulačku rezervovaných instancí, kde můžete určit, kdy se mají použít cenové plány na vyžádání a rezervované cenové plány.
 
 ### <a name="sizing"></a>Velikosti
-Tato pomůcka klade důraz na doporučené velikosti a potenciální úspory, pokud implementovaná.
-- Kliknutím na widget a otevřete tak sestavu EC2 Cost Effective Sizing Recommendations.
+Tento widget zvýrazňuje doporučené velikosti a potenciální úspory, pokud dojde k implementaci.
+- Kliknutím na widget otevřete sestavu doporučení efektivní velikosti nákladů EC2.
 
-### <a name="unused-ri-detector"></a>Detektor nevyužitých RI
-Tato pomůcka zvýrazní počet Amazon EC2 nevyužitých rezervací.
-- Kliknutím na widget a otevřete tak sestavu aktuálně nevyužité rezervace, kde můžete zobrazit nevyužitých rezervací, které můžete upravit.
+### <a name="unused-ri-detector"></a>Detektor nevyužitých rezervovaných instancí
+Tento widget zvýrazňuje počet nevyužitých rezervací Amazon EC2.
+- Kliknutím na widget otevřete sestavu aktuálně nevyužitých rezervací, kde můžete zobrazit nepoužívané rezervace, které můžete upravit.
 
 ###  <a name="available-disks"></a>Dostupné disky
-Tato pomůcka označuje počet nepřipojené disky ve vašem nasazení.
-- Kliknutím na widget a otevřete tak sestavu nepřipojené disky.
+Tento widget zvýrazňuje počet nepřipojených disků v nasazení.
+- Kliknutím na widget otevřete sestavu nepřipojených disků.
 
-### <a name="rds-ri-calculator"></a>Rezervované instance kalkulačky vzdálené plochy
-Tato pomůcka označuje počet rezervace doporučení pro vaše instance Amazon vzdálené plochy a potenciální úspory.
-- Kliknutím na widget a otevřete tak sestavu doporučení k nákupu rezervovaných Instancí vzdálené plochy, ve kterém uvidíte Cloudyn doporučení použít rezervované instance místo instance na vyžádání.
+### <a name="rds-ri-calculator"></a>Kalkulačka rezervovaných instancí vzdálené plochy
+Tento widget zvýrazňuje počet doporučení rezervací pro instance Amazon RDS a potenciální úspory.
+- Kliknutím na widget otevřete sestavu doporučení pro nákup rezervovaných instancí vzdálené plochy, kde uvidíte doporučení Cloudynu k používání rezervovaných instancí namísto instancí na vyžádání.
 
-### <a name="rds-sizing"></a>Nastavení velikosti vzdálené plochy
-Tato pomůcka zobrazuje počet doporučení velikosti a potenciální úspory.
-- Kliknutím na widget a otevřete tak sestavu doporučení velikosti vzdálené plochy, které zobrazí podrobné Amazon vzdálené plochy pro změnu velikosti doporučení.
+### <a name="rds-sizing"></a>Nastavení velikosti RDS
+Tento widget znázorňuje počet doporučení určení velikosti a potenciální úspory.
+- Kliknutím na widget otevřete sestavu doporučení nastavení velikosti RDS, která zobrazuje podrobná doporučení nastavení velikosti pro Amazon RDS.
 
-Optimalizace doporučení jsou založená na data o využití a výkonu monitorované během posledního měsíce.
+Doporučení optimalizace vycházejí ze sledovaných údajů o využití a výkonu za posledních 30 dnů.
 
-## <a name="s3-tracker-dashboard"></a>Řídicí panel sledování S3
-Řídicí panel sledování S3 pomáhá najít, analyzovat a zobrazit aktuální využití úložiště a trendy.  
-![Sledování S3 řídicí panel zobrazuje různé sestavy](./media/dashboards/s3-tracker-dashboard.png)
+## <a name="s3-tracker-dashboard"></a>Řídicí panel Sledování S3
+Řídicí panel Sledování S3 vám pomůže najít, analyzovat a zobrazit aktuální využití a trendy úložiště.  
+![Řídicí panel Sledování S3 zobrazující různé sestavy](./media/dashboards/s3-tracker-dashboard.png)
 
-### <a name="all-buckets"></a>Všechny kontejnery
-Tato pomůcka zvýrazní celková velikost všech kbelíků, v GB a celkový počet objektů v vaše kontejnery.
-- Kliknutím na widget a otevřete tak sestavu distribuce S3 velikost. Sestava pomáhá analyzovat vaše S3 velikost kbelíku, složku nejvyšší úrovně, třída úložiště a stav správy verzí.
+### <a name="all-buckets"></a>Všechny kbelíky
+Tento widget zvýrazňuje celkovou velikost všech vašich kbelíků (v GB) a celkový počet objektů v kbelících.
+- Kliknutím na widget otevřete sestavu distribuce velikosti S3. Tato sestava vám pomůže analyzovat velikost S3 podle kbelíku, složky nejvyšší úrovně, třídy úložiště a stavu správy verzí.
 
-### <a name="bucket-properties"></a>Vlastnosti kontejneru
-Tato pomůcka ukazuje celkový počet kbelíků úložiště.
-- Kliknutím na widget zobrazíte sestavu vlastnosti sady S3.
+### <a name="bucket-properties"></a>Vlastnosti kbelíku
+Tento widget zvýrazňuje celkový počet kbelíků úložiště.
+- Kliknutím na widget zobrazíte sestavu vlastností kbelíku S3.
 
 ### <a name="scan-status"></a>Stav kontroly
-Tato pomůcka zvýrazní, když bylo provedeno poslední kontrola S3 a když se spustí další příkaz.
-- Kliknutím na widget a otevřete tak sestavu Stav prohledávání S3.
+Tento widget zvýrazňuje, kdy se provedla poslední kontrola S3 a kdy se spustí další.
+- Kliknutím na widget otevřete sestavu stavu kontroly S3.
 
-### <a name="storage-by-bucket"></a>Úložiště podle kontejneru
-Tato pomůcka zvýrazní procentuální hodnotu, která používá každá třída kontejneru úložiště.
-- Kliknutím na widget a otevřete tak sestavu distribuce S3 velikost. Sestava pomáhá analyzovat vaše S3 velikost kbelíku, složku nejvyšší úrovně, třída úložiště a stav správy verzí.
+### <a name="storage-by-bucket"></a>Úložiště podle kbelíku
+Tento widget zvýrazňuje procentuální hodnotu, kterou každá třída úložiště kbelíku používá.
+- Kliknutím na widget otevřete sestavu distribuce velikosti S3. Tato sestava vám pomůže analyzovat velikost S3 podle kbelíku, složky nejvyšší úrovně, třídy úložiště a stavu správy verzí.
 
-### <a name="number-of-objects-by-bucket"></a>Počet objektů v kontejneru
-Tato pomůcka označuje počet objektů na kbelík v skutečný počet a procento. Najeďte myší do kbelíku zobrazit celkový počet objektů.
-- Kliknutím na widget a otevřete tak sestavu velikost S3 distribuce (na základě kontroly).
+### <a name="number-of-objects-by-bucket"></a>Počet objektů podle kbelíku
+Tento widget zvýrazňuje počet objektů na kbelík jako skutečné číslo nebo procentuální hodnotu. Pokud chcete zobrazit celkový počet objektů, najeďte myší na kbelík.
+- Kliknutím na widget otevřete sestavu distribuce velikosti S3 (založenou na kontrole).
 
-## <a name="cloud-comparison-dashboard"></a>Řídicí panel cloud porovnání
-Porovnání Cloud řídicí panel vám pomůže porovnat náklady ze různí poskytovatelé cloudových na základě ceny, typu procesoru a velikost paměti RAM.  
-![Řídicí panel cloud porovnání zobrazující různé sestavy](./media/dashboards/cloud-comparison-dashboard.png)
+## <a name="cloud-comparison-dashboard"></a>Řídicí panel porovnání cloudů
+Řídicí panel porovnání cloudů vám pomůže porovnat náklady od různých poskytovatelů cloudu na základě cen, typu procesoru a velikosti paměti RAM.  
+![Řídicí panel porovnání cloudů zobrazující různé sestavy](./media/dashboards/cloud-comparison-dashboard.png)
 
-### <a name="ec2-cost-in-azure-by-instance-type"></a>EC2 Náklady v Azure, typu Instance
-Tato pomůcka zvýrazní za posledních 30 dní používání kurzy na vyžádání. Porovná nákladů s aktuální vs Amazon EC2 náklady potenciální finanční v Azure.
-- Najeďte myší pruhy pro porovnání nákladů na typ instance.
-- Kliknutím na widget otevřete přenos vašeho nasazení – sestava analýzy nákladů.
+### <a name="ec2-cost-in-azure-by-instance-type"></a>Náklady EC2 v Azure podle typu instance
+Tento widget zvýrazňuje posledních 30 dnů využití v sazbách na vyžádání. Porovnává náklady s aktuálními náklady na Amazon EC2 s potenciálními náklady v Azure.
+- Najeďte myší na pruhy a porovnejte náklady na typ instance.
+- Kliknutím na widget otevřete sestavu přenosu nasazení – analýzy nákladů.
 
-### <a name="ec2-cost-in-azure"></a>EC2 Náklady v Azure
-Tato pomůcka ukazuje náklady na aktuální Amazon EC2 a porovnává je s Azure. Porovnání je založená na za posledních 30 dní používání kurzy na vyžádání.
-- Kliknutím na widget otevřete přenos vašeho nasazení – sestava analýzy nákladů.
+### <a name="ec2-cost-in-azure"></a>Náklady EC2 v Azure
+Tento widget zobrazuje aktuální náklady na Amazon EC2 a porovnává je s Azure. Porovnání vychází z posledních 30 dnů využití v sazbách na vyžádání.
+- Kliknutím na widget otevřete sestavu přenosu nasazení – analýzy nákladů.
 
-### <a name="ec2azure-instance-type-mapping"></a>Mapování typu Instance EC2 a Azure
-Tato pomůcka zvýrazní nejlepší mapování jednotky elastický výpočetní výkon mezi Amazon EC2 a Azure.
-- Kliknutím na widget a otevřete tak sestavu mapování typu instance.
+### <a name="ec2azure-instance-type-mapping"></a>Mapování typu instance EC2/Azure
+Tento widget zvýrazňuje nejlepší mapování elastických výpočetních jednotek mezi Amazon EC2 a Azure.
+- Kliknutím na widget otevřete sestavu mapování typů instancí.
 
 ## <a name="next-steps"></a>Další kroky
-- Čtení [sestavy použijte Cloudyn](use-reports.md) článku se dozvíte informace o sestavách.
+- Další informace o sestavách najdete v článku [Použití sestav Cloudynu](use-reports.md).

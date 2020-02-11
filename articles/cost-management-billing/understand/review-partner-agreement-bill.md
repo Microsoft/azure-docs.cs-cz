@@ -1,6 +1,6 @@
 ---
-title: Přečtěte si fakturu o vaší smlouvě s partnerem Microsoftu – Azure
-description: Přečtěte si, jak zkontrolovat vyúčtování a využití prostředků a ověřit poplatky za vaši fakturaci na základě smlouvy o partnerovi Microsoftu.
+title: Kontrola faktury za Smlouvu s partnerem Microsoftu – Azure
+description: Naučte se kontrolovat náklady a využití prostředků a ověřovat poplatky na faktuře za Smlouvu s partnerem Microsoftu.
 author: jureid
 manager: jureid
 tags: billing
@@ -12,32 +12,32 @@ ms.workload: na
 ms.date: 11/22/2019
 ms.author: banders
 ms.openlocfilehash: e3823a9eb2e0713f7f42e4e02808ef957efc5944
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990837"
 ---
-# <a name="tutorial-review-your-microsoft-partner-agreement-invoice"></a>Kurz: Kontrola faktury se smlouvou Microsoft Partner Agreement
+# <a name="tutorial-review-your-microsoft-partner-agreement-invoice"></a>Kurz: Kontrola faktury za Smlouvu s partnerem Microsoftu
 
- Na fakturačním účtu pro smlouvu s partnerem Microsoftu se každý měsíc pro každý fakturační profil generuje jedna faktura. Tato faktura zahrnuje všechny poplatky zákazníka za předchozí měsíc. Poplatky na faktuře můžete pochopit díky analýze jednotlivých transakcí na webu Azure Portal. Faktury můžete zobrazit také v Azure Portal a porovnat poplatky se souborem podrobností využití.
+ Na fakturačním účtu pro smlouvu s partnerem Microsoftu se každý měsíc pro každý fakturační profil generuje jedna faktura. Tato faktura zahrnuje všechny poplatky zákazníka za předchozí měsíc. Poplatky na faktuře můžete pochopit díky analýze jednotlivých transakcí na webu Azure Portal. Na faktury se můžete také podívat na webu Azure Portal a porovnat poplatky se souborem podrobností o využití.
 
 Další informace najdete v tématu věnovaném [stahování faktur z webu Azure Portal](download-azure-invoice.md).
 
-Tento kurz se týká jenom partnerů Azure se smlouvou Microsoft Partner Agreement.
+Tento kurz se týká partnerů Azure, kteří mají Smlouvu s partnerem Microsoftu.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Kontrola fakturovaných transakcí v Azure Portal
+> * Kontrola fakturovaných transakcí na webu Azure Portal
 > * Kontrola nevyřízených poplatků za účelem odhadnutí další faktury
 > * Analýza poplatků za využívání Azure
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít přístup k fakturačnímu účtu pro smlouvu Microsoft Partner Agreement.
+Musíte mít přístup k fakturačnímu účtu pro Smlouvu s partnerem Microsoftu.
 
-Musí být delší než 30 dní ode dne, kdy jste se přihlásili k Azure. Azure se fakturuje na konci fakturačního období.
+Od vytvoření vašeho předplatného Azure musí uplynout více než 30 dnů. Azure se fakturuje na konci fakturačního období.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -47,37 +47,37 @@ Musí být delší než 30 dní ode dne, kdy jste se přihlásili k Azure. Azure
 
 Zkontrolujte typ smlouvy, abyste zjistili, jestli máte přístup k fakturačnímu účtu pro smlouvu s partnerem Microsoftu.
 
-Do pole pro Azure Portal zadejte *cost management + fakturace* a pak vyberte **cost management + fakturace**.
+Na webu Azure Portal do vyhledávacího pole zadejte *cost management a fakturace* a potom vyberte **Cost Management a fakturace**.
 
 ![Snímek obrazovky znázorňující hledání na webu Azure Portal](./media/review-partner-agreement-bill/billing-search-cost-management-billing.png)
 
 Pokud máte přístup jenom k jednomu rozsahu fakturace, vyberte na levé straně **Vlastnosti**. Pokud je typ fakturačního účtu **Smlouva s partnerem Microsoftu**, máte přístup k fakturačnímu účtu pro smlouvu s partnerem Microsoftu.
 
-![Snímek obrazovky, na které se na stránce vlastností zobrazuje smlouva o partnerovi Microsoftu](./media/review-partner-agreement-bill/billing-account-properties-partner-agreement.png)
+![Snímek obrazovky zobrazující Smlouvu s partnerem Microsoftu na stránce Vlastnosti](./media/review-partner-agreement-bill/billing-account-properties-partner-agreement.png)
 
 Pokud máte přístup k více rozsahům fakturace, ověřte typ ve sloupci fakturačního účtu. Pokud je typ fakturačního účtu pro jakýkoli rozsah **Smlouva s partnerem Microsoftu**, máte přístup k fakturačnímu účtu pro smlouvu s partnerem Microsoftu.
 
-![Snímek obrazovky zobrazující smlouvu o partnerovi Microsoftu na stránce se seznamem fakturačních účtů](./media/review-partner-agreement-bill/mpa-in-the-list.png)
+![Snímek obrazovky zobrazující Smlouvu s partnerem Microsoftu na stránce se seznamem fakturačních účtů](./media/review-partner-agreement-bill/mpa-in-the-list.png)
 
-## <a name="review-invoiced-transactions-in-the-azure-portal"></a>Kontrola fakturovaných transakcí v Azure Portal
+## <a name="review-invoiced-transactions-in-the-azure-portal"></a>Kontrola fakturovaných transakcí na webu Azure Portal
 
-V Cost Management + fakturace vyberte **všechny transakce** na levé straně stránky. V závislosti na úrovni vašeho přístupu možná budete muset vybrat fakturační účet, fakturační profil nebo zákazníka. Pak vyberte **Všechny transakce**.
+Na stránce Cost Management a fakturace vyberte levé straně **Všechny transakce**. V závislosti na úrovni vašeho přístupu možná budete muset vybrat fakturační účet, fakturační profil nebo zákazníka. Pak vyberte **Všechny transakce**.
 
 Na stránce Všechny transakce se zobrazí následující informace:
 
 ![Snímek obrazovky se seznamem fakturovaných transakcí](./media/review-partner-agreement-bill/all-transactions.png)
 
-|Column  |Definice  |
+|Sloupec  |Definice  |
 |---------|---------|
 |Datum     | Datum transakce  |
 |ID faktury     | Identifikátor faktury, na které je transakce naúčtovaná. Pokud odešlete žádost o podporu, sdělte podpoře Azure toto ID, abyste žádost o podporu urychlili |
 |Typ transakce     |  Typ transakce, třeba nákup, storno nebo poplatky za použití  |
 |Produktová řada     | Kategorie produktů, jako jsou výpočetní prostředky pro virtuální počítače nebo databáze pro Azure SQL Database|
-|SDKU produktu     | Jedinečný kód identifikující instanci produktu |
+|SKU produktu     | Jedinečný kód identifikující instanci produktu |
 |Částka     |  Částka transakce      |
 |Fakturační profil     | Transakce se zobrazí na faktuře tohoto fakturačního profilu |
 
-Pokud chcete filtrovat transakce faktury, vyhledejte ID faktury.
+Vyhledáním ID faktury můžete transakce na faktuře filtrovat.
 
 ## <a name="review-pending-charges-to-estimate-your-next-invoice"></a>Kontrola nevyřízených poplatků za účelem odhadnutí další faktury
 
@@ -87,7 +87,7 @@ Poplatky se odhadují a považují se za nevyřízené, dokud neproběhne jejich
 
 Nevyřízené poplatky můžete lépe pochopit díky analýze jednotlivých transakcí, které k těmto poplatkům vedly. V tuto chvíli se na stránce Všechny transakce nezobrazují nevyřízené poplatky za použití. Nevyřízené poplatky za použití najdete na stránce předplatných Azure.
 
-V Cost Management + fakturace vyberte profil fakturace. V závislosti na úrovni vašeho přístupu možná bude potřeba vybrat fakturační účet. Na fakturačním účtu vyberte **Fakturační profily** a potom vyberte fakturační profil.
+Na stránce Cost Management a fakturace vyberte profil fakturace. V závislosti na úrovni vašeho přístupu možná bude potřeba vybrat fakturační účet. Na fakturačním účtu vyberte **Fakturační profily** a potom vyberte fakturační profil.
 
 Na levé straně stránky Vyberte **Všechny transakce**.
 
@@ -97,7 +97,7 @@ Vyhledejte *nevyřízené*. Pomocí filtru **Časový interval** zobrazte nevyř
 
 ### <a name="view-pending-charges-by-customer"></a>Zobrazení nevyřízených poplatků podle zákazníka
 
-V Cost Management + fakturace vyberte profil fakturace. V závislosti na úrovni vašeho přístupu možná bude potřeba vybrat fakturační účet. Na fakturačním účtu vyberte **Fakturační profily** a potom vyberte fakturační profil.
+Na stránce Cost Management a fakturace vyberte profil fakturace. V závislosti na úrovni vašeho přístupu možná bude potřeba vybrat fakturační účet. Na fakturačním účtu vyberte **Fakturační profily** a potom vyberte fakturační profil.
 
 Na levé straně stránky vyberte **Zákazníci**.
 
@@ -107,7 +107,7 @@ Na stránce Zákazníci se zobrazí poplatky za každého zákazníka přidruže
 
 ### <a name="view-pending-usage-charges"></a>Zobrazení nevyřízených poplatků za použití
 
-V Cost Management + fakturace vyberte profil fakturace. V závislosti na úrovni vašeho přístupu možná bude potřeba vybrat fakturační účet. Na fakturačním účtu vyberte **Fakturační profily** a potom vyberte fakturační profil.
+Na stránce Cost Management a fakturace vyberte profil fakturace. V závislosti na úrovni vašeho přístupu možná bude potřeba vybrat fakturační účet. Na fakturačním účtu vyberte **Fakturační profily** a potom vyberte fakturační profil.
 
 Na levé straně stránky vyberte **Předplatná Azure**. Stránka předplatných Azure zobrazí poplatky za každé předplatné ve fakturačním profilu za aktuální a minulý měsíc. Poplatky od začátku měsíce jsou nevyřízené poplatky za aktuální měsíc a naúčtují se při generování faktury za daný měsíc. Pokud ještě není vygenerovaná faktura za minulý měsíc, zobrazují se jako nevyřízené i poplatky za minulý měsíc.
 
@@ -130,11 +130,11 @@ Pokud jste už fakturu zaplatili, na stránce Faktury na webu Azure Portal se m�
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Kontrola fakturovaných transakcí v Azure Portal
+> * Kontrola fakturovaných transakcí na webu Azure Portal
 > * Kontrola nevyřízených poplatků za účelem odhadnutí další faktury
 > * Analýza poplatků za využívání Azure
 
-Seznamte se s používáním Azure Cost Management pro partnery.
+Seznamte se se službou Azure Cost Management pro partnery.
 
 > [!div class="nextstepaction"]
-> [Začínáme s Azure Cost Management pro partnery](../costs/get-started-partners.md)
+> [Začínáme se službou Azure Cost Management pro partnery](../costs/get-started-partners.md)

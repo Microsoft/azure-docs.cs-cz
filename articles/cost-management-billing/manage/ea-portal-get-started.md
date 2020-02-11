@@ -1,46 +1,48 @@
 ---
-title: Začínáme s portálem Azure EA
-description: Tento článek vysvětluje, jak mohou zákazníci Azure EA využívat portál Azure EA.
+title: Začínáme s portálem Azure Enterprise
+description: Tento článek vysvětluje, jak zákazníci se smlouvou Azure Enterprise (Azure EA) používají portál Azure Enterprise.
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/03/2020
+ms.date: 02/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: ace3c251d979a67666d2aaf01dca01e257bed66b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: 516b3704daee885541cec49b0ee374e050dd4b22
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75992228"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023340"
 ---
-# <a name="get-started-with-the-azure-ea-portal"></a>Začínáme s portálem Azure EA
+# <a name="get-started-with-the-azure-enterprise-portal"></a>Začínáme s portálem Azure Enterprise
 
-Cílem tohoto článku je usnadnit přímým i nepřímým zákazníkům začátky při používání [portálu Azure EA](https://ea.azure.com). Obsahuje základní informace z těchto oblastí:
+Tento článek pomáhá přímým i nepřímým zákazníkům se smlouvou Azure Enterprise (Azure EA) začít používat [portál Azure Enterprise](https://ea.azure.com). Získáte základní informace o:
 
-- Jak je portál Azure EA strukturovaný
-- Role používané na portálu Azure EA
-- Jak začít vytvářet předplatná
-- Analýza nákladů na portálu Azure EA a webu Azure Portal
+- Struktuře portálu Azure Enterprise
+- Rolích používaných na portálu Azure Enterprise
+- Vytvoření předplatného
+- Analýze nákladů na portálu Azure Enterprise a webu Azure Portal
 
-Zde je video, které ukazuje kompletní postup onboardingu na portálu Azure EA:
+Podívejte se na toto video, které předvádí celý postup onboardingu portálu Azure Enterprise:
 
-[Video zachycující onboarding na portálu Azure EA](https://www.youtube.com/watch?v=OiZ1GdBpo-I)
+> [!VIDEO https://www.youtube.com/embed/OiZ1GdBpo-I]
 
->[!VIDEO https://www.youtube.com/embed/OiZ1GdBpo-I]
+## <a name="azure-enterprise-portal-hierarchy"></a>Hierarchie portálu Azure Enterprise
 
-## <a name="azure-ea-portal-hierarchy"></a>Hierarchie portálu Azure EA
+Hierarchie portálu Azure Enterprise se skládá z těchto částí:
 
-Hierarchie portálu Azure EA se skládá z těchto částí:
+- **Portál Azure Enterprise** je online portál pro správu, který pomáhá se správou nákladů na služby Azure EA. Můžete:
 
-**Portál Microsoft Azure EA:** Jde o online portál pro správu, na kterém můžete spravovat náklady na své služby Azure EA. Slouží k vytvoření hierarchie EA Azure, která zahrnuje oddělení, účty a předplatná. Lze ho také využívat k párování nákladů na spotřebované služby, ke stahování sestav o využití a k zobrazování ceníku. A můžete na něm vytvářet klíče rozhraní API pro vaši registraci.
+  - Vytvořit hierarchii Azure EA s odděleními, účty a předplatnými.
+  - Párovat náklady na spotřebované služby, stahovat sestavy o využití a zobrazovat ceníky.
+  - Vytvořit klíče rozhraní API pro registraci.
 
-**Oddělení:** Můžete vytvořit oddělení, která vám pomohou rozdělit náklady do logických skupin, a pak nastavit rozpočet nebo kvótu na úrovni oddělení.
+- **Oddělení** usnadňují segmentaci nákladů do logických seskupení. Oddělení umožňují nastavit rozpočet nebo kvótu na úrovni oddělení.
 
-**Účty:** Jde o organizační jednotky na portálu EA Azure, které se používají se ke správě předplatných. Používají se i pro vytváření sestav.
+- **Účty** jsou organizační jednotky na portálu Azure Enterprise. Pomocí účtů můžete spravovat předplatná a přistupovat k sestavám.
 
-**Předplatná:** Představují nejmenší jednotku na portálu Azure EA. Jedná se o kontejnery pro služby Azure spravované správcem služeb.
+- **Předplatná** představují nejmenší jednotku na portálu Azure Enterprise. Jedná se o kontejnery pro služby Azure spravované správcem služeb.
 
 Následující diagram znázorňuje jednoduché hierarchie Azure EA.
 
@@ -48,30 +50,30 @@ Následující diagram znázorňuje jednoduché hierarchie Azure EA.
 
 ## <a name="enterprise-user-roles"></a>Role podnikových uživatelů
 
-Ke správě služeb Azure v registraci je k dispozici pět různých rolí administrativního uživatele organizace:
+Následující role administrativního uživatele jsou součástí registrace Enterprise:
 
 - Podnikový správce
 - Správce oddělení
 - Vlastník účtu
 - Správce služeb
-- Kontakt na oznámení
+- Kontakt pro oznámení
 
-Role se používají při provádění úloh na dvou různých portálech Microsoft Azure. Portál Azure EA (https://ea.azure.com) slouží k usnadnění správy fakturace a nákladů). Azure Portal (https://portal.azure.com) slouží ke správě služeb Azure.
+Role plní úlohy na dvou různých portálech. [Portál Azure Enterprise](https://ea.azure.com) se používá ke správě fakturace a nákladů a web [Azure Portal](https://portal.azure.com) ke správě služeb Azure.
 
-Role uživatelů se přidružují k jednotlivým uživatelským účtům. Pro ověření identity uživatele je nutné, aby měl platný pracovní či školní účet nebo účet Microsoft. Zajistěte, aby byl každý účet přidružený k e-mailové adrese, která je aktivně sledovaná. Na tuto e-mailovou adresu se budou odesílat oznámení týkající se účtu.
+Role uživatelů se přidružují k jednotlivým uživatelským účtům. Pro ověření identity uživatele je nutné, aby měl platný pracovní nebo školní účet nebo účet Microsoft. Zajistěte, aby byl každý účet přidružený k e-mailové adrese, která je aktivně sledovaná. Na tuto e-mailovou adresu se budou odesílat oznámení týkající se účtu.
 
-Při nastavování uživatelů můžete k roli Podnikový správce přiřadit více pracovních či školních účtů nebo účtů Microsoft. K roli Vlastník účtu ale můžete přiřadit jenom jeden pracovní či školní účet nebo účet Microsoft. Kromě toho může existovat jen jeden pracovní či školní účet nebo účet Microsoft, který má přiřazenou roli Podnikový správce i roli Vlastník účtu.
+Při nastavování uživatelů můžete k roli Podnikový správce přiřadit více účtů. Roli vlastníka účtu ale může mít pouze jeden účet. Jednomu účtu můžete také přiřadit jak roli podnikového správce, tak roli vlastníka účtu.
 
 ### <a name="enterprise-administrator"></a>Podnikový správce
 
-Role Podnikový správce má nejvyšší úroveň přístupu. Uživatelé s tou rolí mohou:
+Uživatelé s touto rolí mají nejvyšší úroveň přístupu. Mohou:
 
-- Spravovat účty a jejich vlastníky
-- Spravovat jiné podnikové správce
-- Spravovat správce oddělení
-- Spravovat kontakty pro oznámení
-- Zobrazovat využití napříč všemi účty
-- Zobrazovat nefakturované poplatky napříč všemi účty
+- spravovat účty a jejich vlastníky,
+- spravovat jiné podnikové správce,
+- spravovat správce oddělení,
+- spravovat kontakty pro oznámení,
+- zobrazovat využití napříč všemi účty,
+- zobrazovat nefakturované poplatky napříč všemi účty.
 
 V podnikové registraci můžete mít více podnikových správců. Podnikovým správcům můžete udělit přístup jen pro čtení. Všichni navíc přebírají roli Správce oddělení.
 
@@ -79,474 +81,533 @@ V podnikové registraci můžete mít více podnikových správců. Podnikovým 
 
 Uživatelé s tou rolí mohou:
 
-- Vytvářet a spravovat oddělení
-- Vytvářet nové vlastníky účtů
-- Zobrazovat podrobnosti o využití pro oddělení, která spravují
-- Zobrazovat náklady, pokud mají udělená potřebná oprávnění
+- vytvářet a spravovat oddělení,
+- vytvářet nové vlastníky účtů,
+- zobrazovat podrobnosti o využití pro oddělení, která spravují,
+- zobrazovat náklady, pokud mají udělená potřebná oprávnění.
 
 V podnikové registraci můžete mít více správců oddělení.
 
-Správcům oddělení můžete udělit přístup jen pro čtení. Pokud chcete správci oddělení udělit přístup jen pro čtení, zahajte jeho úpravy nebo vytvořte nového správce a nastavte možnost jen pro čtení na hodnotu **Yes** (Ano).
+Při úpravách nebo vytváření nového správce oddělení můžete tomuto správci udělit přístup jen pro čtení. Možnost Read-Only (Jen pro čtení) nastavte na **Yes** (Ano).
 
 ### <a name="account-owner"></a>Vlastník účtu
 
 Uživatelé s tou rolí mohou:
 
-- Vytvářet a spravovat předplatná
-- Vytvářet správce služeb
-- Zobrazovat využití u předplatných
+- vytvářet a spravovat předplatná,
+- vytvářet správce služeb,
+- zobrazovat využití u předplatných.
 
-Každý účet vyžaduje jedinečný pracovní či školní účet nebo účet Microsoft. Další informace o správcovských rolích na portálu Azure EA najdete v tématu [Principy rolí pro správu smlouvy Azure Enterprise v Azure](understand-ea-roles.md).
+Každý účet vyžaduje jedinečný pracovní nebo školní účet nebo účet Microsoft. Další informace o správcovských rolích na portálu Azure Enterprise najdete v tématu [Principy rolí pro správu smlouvy Azure Enterprise v Azure](understand-ea-roles.md).
 
 ### <a name="service-administrator"></a>Správce služeb
 
-Správce služeb má oprávnění ke správě služeb přes Azure Portal a k přiřazování role spolusprávce jiným uživatelům.
+Role Správce služeb má oprávnění ke správě služeb přes Azure Portal a k přiřazování role spolusprávce jiným uživatelům.
 
-### <a name="notification-contact"></a>Kontakt na oznámení
+### <a name="notification-contact"></a>Kontakt pro oznámení
 
-Kontakt na oznámení obdrží oznámení o využití týkající se registrace.
+Kontakt pro oznámení dostává oznámení o využití související s příslušnou smlouvou.
 
 ## <a name="activate-your-enrollment"></a>Aktivace registrace
 
-Aktivace služeb probíhá tak, že počáteční podnikový správce otevře portál Azure EA na adrese [https://ea.azure.com](https://ea.azure.com) a přihlásí se pomocí e-mailové adresy z e-mailu s pozvánkou.
+Aktivace služeb probíhá tak, že počáteční podnikový správce otevře [portál Azure Enterprise](https://ea.azure.com) a přihlásí se pomocí e-mailové adresy z e-mailu s pozvánkou.
 
-Pokud jste nastavili jako správce EA, nemusíte dostávat aktivační e-mail, abyste se mohli přihlásit k portálu Azure EA. Můžete pokračovat [https://ea.azure.com](https://ea.azure.com) a přihlásit se pomocí e-mailové adresy (buď Work, School nebo Live ID), a hesla.
+Pokud vás někdo nastavil jako podnikového správce, nemusíte čekat na aktivační e-mail. Přejděte na [portál Azure Enterprise](https://ea.azure.com) a přihlaste se pomocí své pracovní nebo školní e-mailové adresy nebo e-mailové adresy účtu Microsoft a hesla.
 
-Pokud máte více než jednu registraci, vyberte tu, kterou chcete aktivovat. Ve výchozím nastavení se zobrazují jenom aktivní registrace. Historii registrací zobrazíte tak, že v pravém horním rohu portálu Azure EA vymažete možnost **Active** (Aktivní).
+Pokud máte více než jednu registraci, vyberte tu, kterou chcete aktivovat. Ve výchozím nastavení se zobrazují jenom aktivní registrace. Historii registrací zobrazíte tak, že v pravém horním rohu portálu Azure Enterprise vymažete možnost **Active** (Aktivní).
 
-Pod registrací se zobrazuje stav **Active** (Aktivní).
+Pod **registrací** se zobrazuje stav **Active** (Aktivní).
 
 ![Příklad znázorňující aktivní registraci](./media/ea-portal-get-started/ea-enrollment-status.png)
 
 Další podnikové správce mohou vytvářet jen stávající podnikoví správci Azure.
 
-### <a name="create-another-enterprise-admin"></a>Vytvoření dalšího podnikového správce
+### <a name="create-another-enterprise-administrator"></a>Vytvoření dalšího podnikového správce
 
-- Přihlaste se k [portálu Azure EA](https://ea.azure.com), přejděte na **Manage** (Spravovat)  > **Enrollment Detail** (Podrobnosti o registraci) a klikněte na **+ Add Administrator** (+ Přidat správce) v pravém horním rohu stránky.
+Přidání dalšího podnikového správce:
 
-Ujistěte se, že máte e-mailové adresy daného uživatele a jeho preferovanou metodu ověřování (například přes pracovní či školní účet nebo účet Microsoft). Tyto informace potřebujete, abyste mohli uživatele přidat.
+1. Přihlaste se k [portálu Azure Enterprise](https://ea.azure.com).
+1. Přejděte na **Manage** (Spravovat)  > **Enrollment Detail** (Podrobnosti registrace).
+1. Vpravo nahoře vyberte **+ Add Administrator** (+Přidat správce).
 
-Pokud nejste správcem EA, požádejte některého z nich, aby vás do registrace přidal. Po přidání do registrace obdržíte aktivační e-mail.
+Ujistěte se, že máte e-mailovou adresu daného uživatele a jeho preferovanou metodu ověřování (například přes pracovní či školní účet nebo účet Microsoft).
 
-Pokud vám daný správce EA nemůže pomoct, vytvořte [žádost o podporu na portálu Azure EA](https://support.microsoft.com/supportrequestform/cf791efa-485b-95a3-6fad-3daf9cd4027c). Zadejte tyto informace:
+Pokud nejste podnikovým správcem, požádejte některého z nich, aby vás do registrace přidal. Po přidání do registrace obdržíte aktivační e-mail.
 
-- Registrační číslo
+Pokud vám daný podnikový správce nemůže pomoct, vytvořte [žádost o podporu na portálu Azure Enterprise](https://support.microsoft.com/supportrequestform/cf791efa-485b-95a3-6fad-3daf9cd4027c). Zadejte tyto informace:
+
+- Číslo registrace
 - E-mailová adresa, která má být přidána, a typ ověřování (pracovní či školní účet nebo účet Microsoft)
-- E-mailové schválení od některého ze stávajících správců EA
-  - Pokud není stávající správce EA k dispozici, požádejte svého partnera nebo softwarového poradce, aby změnil informace o kontaktech pomocí nástroje VLSC.
+- E-mailové schválení od některého ze stávajících podnikových správců
+  - Pokud není stávající podnikový správce k dispozici, požádejte svého partnera nebo softwarového poradce, aby změnil informace o kontaktech pomocí nástroje VLSC (Volume Licensing Service Center).
 
 Další informace o rolích podnikových správců najdete v tématu [Principy rolí pro správu smlouvy Azure Enterprise v Azure](understand-ea-roles.md).
 
-## <a name="create-an-azure-ea-department"></a>Vytvoření oddělení Azure EA
+## <a name="create-an-azure-enterprise-department"></a>Vytvoření oddělení Azure Enterprise
 
 Podnikoví správci a správci oddělení využívají oddělení k uspořádání podnikových služeb Azure a také k vykazování jejich využití, které probíhá podle oddělení a nákladového střediska. Podnikový správce může:
 
-- Přidávat nebo odebírat oddělení
-- Přidružit účet k oddělení
-- Vytvářet správce oddělení
-- Povolit správcům oddělení zobrazování cen a nákladů
+- přidávat nebo odebírat oddělení,
+- přidružit účet k oddělení,
+- vytvářet správce oddělení,
+- povolit správcům oddělení zobrazování cen a nákladů.
 
 Správce oddělení může do svých oddělení přidávat nové účty. Účty může i odebírat, ale jen ze svých oddělení, ne z celé registrace.
 
 Jak přidat oddělení:
 
-1. V levé navigační oblasti klikněte na **Manage** (Spravovat).
-2. Klikněte na kartu **Department** (Oddělení) a na **+ Add Department** (+ Přidat oddělení) a potom zadejte požadované informace.
-3. Jediným povinným polem je název oddělení. Musí obsahovat aspoň 3 znaky.
-4. Až to dokončíte, klikněte na **Add** (Přidat).
+1. Přihlaste se k portálu Azure Enterprise.
+1. V levém podokně vyberte **Manage** (Spravovat).
+1. Vyberte kartu **Department** (Oddělení) a potom vyberte **+ Add Department** (+ Přidat oddělení).
+1. Zadejte požadované informace.
+   Jediným povinným polem je název oddělení. Musí obsahovat aspoň 3 znaky.
+1. Po dokončení vyberte **Add** (Přidat).
 
-## <a name="add-a-department-admin"></a>Přidání správce oddělení
+## <a name="add-a-department-administrator"></a>Přidání správce oddělení
 
-Po vytvoření oddělení může podnikový správce Azure přidat správce oddělení a přidružit je k tomuto oddělení. Správce oddělení může:
+Po vytvoření oddělení může podnikový správce přidat správce oddělení a přidružit je k tomuto oddělení. Správci oddělení mohou u svých oddělení provádět následující akce:
 
 - Vytvářet jiné správce oddělení
 - Zobrazovat a upravovat vlastnosti oddělení, jako je název nebo nákladové středisko
-- Přidávat účty do svých oddělení
-- Odebírat účty ze svých oddělení
-- Stahovat podrobnosti o využití pro svá oddělení
-- Zobrazovat měsíční využití a poplatky pro své oddělení, pokud mu správce udělil oprávnění <sup>1</sup>
+- Přidání účtů
+- Odebírat účty
+- Stahovat podrobnosti o využití
+- Zobrazovat měsíční využití a poplatky <sup>1</sup>
 
-### <a name="to-add-a-department-admin"></a>Jak přidat správce oddělení
+> <sup>1</sup> Tato oprávnění musí udělit podnikový správce. Pokud vám bylo uděleno oprávnění k zobrazení měsíčního využití a poplatků pro dané oddělení, ale tyto údaje nevidíte, obraťte se na svého partnera.
+
+### <a name="to-add-a-department-administrator"></a>Přidání správce oddělení
 
 Jako podnikový správce:
 
-1. V levé navigační oblasti klikněte na **Manage** (Spravovat).
-2. Klikněte na kartu **Department** (Oddělení) a potom na požadované oddělení.
-3. Klikněte na **+ Add Administrator** (+ Přidat správce) a přidejte požadované údaje.
-4. Pro přístup jen pro čtení nastavte možnost **Read-Only** (Jen pro čtení) na **Yes** (Ano) a pak klikněte na **Add** (Přidat).
+1. Přihlaste se k portálu Azure Enterprise.
+1. V levém podokně vyberte **Manage** (Spravovat).
+1. Vyberte kartu **Department** (Oddělení) a potom příslušné oddělení.
+1. Vyberte **+ Add Administrator** (+ Přidat správce) a přidejte požadované údaje.
+1. Pro přístup jen pro čtení nastavte možnost **Read-Only** (Jen pro čtení) na **Yes** (Ano) a pak vyberte **Add** (Přidat).
 
-![Příklad znázorňující dialog pro přidání správce oddělení](./media/ea-portal-get-started/ea-create-add-department-admin.png)
+![Příklad znázorňující dialogové okno pro přidání správce oddělení](./media/ea-portal-get-started/ea-create-add-department-admin.png)
 
 ### <a name="to-set-read-only-access"></a>Jak nastavit přístup jen pro čtení
 
-Správcům oddělení je možné udělit přístup jen pro čtení. Při vytváření nového správce oddělení:
+Správcům oddělení je možné udělit přístup jen pro čtení.
 
-- Možnost Read-Only (Jen pro čtení) nastavte na **Yes** (Ano).
+- Při vytváření nového správce oddělení nastavte možnost jen pro čtení na hodnotu **Yes** (Ano).
 
-Jak upravit existujícího správce oddělení:
+- Jak upravit existujícího správce oddělení:
+   1. Vyberte oddělení a potom vyberte symbol tužky vedle **správce oddělení**, kterého chcete upravit.
+   1. Nastavte otevírání jen pro čtení na **Yes** (Ano) a potom vyberte **Save** (Uložit).
 
-1. Vyberte oddělení a potom klikněte na symbol tužky vedle **správce oddělení**, kterého chcete upravit.
-2. Možnost Read-Only (Jen pro čtení) nastavte na **Yes** (Ano) a pak klikněte na **Save** (Uložit).
-
-Uživatelé s rolí Podnikový správce získávají automaticky oprávnění správce oddělení.
-
-<sup>1</sup> Pokud vám bylo uděleno oprávnění k zobrazení měsíčního využití a poplatků pro dané oddělení, ale tyto údaje nevidíte, obraťte se na svého partnera.
+Podnikoví správci získávají automaticky oprávnění správce oddělení.
 
 ## <a name="add-an-account"></a>Přidání účtu
 
-Struktura účtů a předplatných ovlivňuje způsob jejich správy a jejich zobrazení na fakturách a v sestavách. Typická uspořádání zahrnují například strukturování podle obchodních divizí, funkčních týmů a geografických oblastí.
+Struktura účtů a předplatných ovlivňuje způsob jejich správy a jejich zobrazení na fakturách a v sestavách. Typické organizační struktury zahrnují například obchodní divize, funkční týmy a geografické oblasti.
 
 Jak přidat účet:
 
-1. V levé navigační oblasti portálu Azure EA klikněte na **Manage** (Spravovat).
-2. Klikněte na kartu **Account** (Účet) a pak na stránce **Account** (Účet) klikněte na **+ Add Account** (+ Přidat účet).
-3. Vyberte oddělení nebo nechte účet nepřiřazený a pak vyberte požadovaný typ ověřování.
-4. Zadejte popisný název, který vám usnadní identifikaci účtu ve vytvořených sestavách.
-5. Zadejte **e-mailovou adresu vlastníka účtu**, kterou chcete přidružit k novému účtu.
-6. Ověřte e-mailovou adresu a pak klikněte na **Add** (Přidat).
+1. V levé navigační oblasti na portálu Azure Enterprise vyberte **Manage** (Spravovat).
+1. Vyberte kartu **Account** (Účet). Na stránce **Account** (Účet) vyberte **+Add Account** (+Přidat účet).
+1. Vyberte oddělení nebo nechte účet nepřiřazený a pak vyberte požadovaný typ ověřování.
+1. Zadejte popisný název, který vám usnadní identifikaci účtu ve vytvořených sestavách.
+1. Zadejte **e-mailovou adresu vlastníka účtu**, kterou chcete přidružit k novému účtu.
+1. Ověřte e-mailovou adresu a pak vyberte **Add** (Přidat).
 
 ![Příklad znázorňující seznam účtů a možnost pro přidání účtu](./media/ea-portal-get-started/create-ea-add-an-account.png)
 
-Můžete přidat další účet, a to kliknutím na **Add Another Account** (Přidat další účet) nebo na **Add** (Přidat) v pravém dolním rohu levého panelu nástrojů.
+Pokud chcete přidat další účet, vyberte **Add Another Account** (Přidat další účet) nebo **Add** (Přidat) v pravém dolním rohu levého panelu nástrojů.
 
 Jak si ověřit vlastnictví účtu:
 
-1. Přihlaste se k portálu Azure EA.
-1. Vlastnictví účtu si ověříte podle jeho stavu. Stav by se měl změnit z hodnoty **Pending** (Čeká) na **počáteční a koncové datum**. Počáteční datum představuje den, kdy se uživatel poprvé přihlásil, a koncové datum je den, kdy končí smlouva.
-1. Při prvním přihlášení k portálu Azure EA se zobrazí zpráva upozornění a vlastník účtu si musí účet aktivovat kliknutím na **Pokračovat**.
+1. Přihlaste se k portálu Azure Enterprise.
+1. Zobrazte stav.
 
+   Stav by se měl změnit z hodnoty **Pending** (Čeká) na **počáteční a koncové datum**. Počáteční datum představuje den, kdy se uživatel poprvé přihlásil, a koncové datum je den, kdy končí smlouva.
+1. Při prvním přihlášení k portálu Azure Enterprise se zobrazí zpráva **Warning** (Upozornění) a vlastník účtu si musí účet aktivovat výběrem možnosti **Continue** (Pokračovat).
 
 ## <a name="change-account-owner"></a>Změna vlastníka účtu
 
-Podnikoví správci mohou prostřednictvím portálu Azure EA přenést vlastnictví účtu s předplatnými v rámci registrace. Při této akci se všechna předplatná přenesou ze zdrojového uživatelského účtu na cílový.
+Podnikoví správci mohou prostřednictvím portálu Azure Enterprise přenést vlastnictví účtu s předplatnými v rámci registrace. Při této akci se všechna předplatná přenesou ze zdrojového uživatelského účtu na cílový.
 
-Důležité body týkající se přenosu informací mezi uživatelskými účty:
+Při přenášení účtů mějte na paměti toto:
 
-- Jsou podporovány přenosy z pracovního či školního účtu na jiný pracovní nebo školní účet.
-- Jsou podporovány přenosy z účtu Microsoft na pracovní nebo školní účet.
-- Nejsou podporovány přenosy z pracovního či školního účtu na účet Microsoft.
-- Jsou podporovány přenosy z účtu Microsoft na jiný účet Microsoft. Cílovým účtem pro přenos musí být platný účet Azure Commerce. U nových účtů budete při přihlašování k portálu Azure EA požádáni o vytvoření účtu Azure Commerce. U existujících účtů musíte nejdřív vytvořit nové předplatné Azure – teprve pak bude účet splňovat podmínky.
+- Můžete provést tyto přenosy:
+  - Z pracovního nebo školního účtu na jiný pracovní nebo školní účet.
+  - Z účtu Microsoft na pracovní nebo školní účet.
+  - Z účtu Microsoft na jiný účet Microsoft.
+  
+    Cílovým účtem pro přenos musí být platný účet Azure Commerce. U nových účtů budete při přihlašování k portálu Azure Enterprise požádáni o vytvoření účtu Azure Commerce. U existujících účtů musíte nejdřív vytvořit nové předplatné Azure – teprve pak bude účet splňovat podmínky.
+
+- Přenos z pracovního nebo školního účtu na účet Microsoft nelze provést.
+
 - Po dokončení přenosu předplatných aktualizuje Microsoft vlastníka účtu.
 
-Zásady řízení přístupu na základě role:
+Seznamte se s těmito zásadami řízení přístupu na základě role (RBAC):
 
-- Nastavené zásady řízení přístupu na základě role (RBAC) v rámci Azure a přiřazené role správců služeb a spolusprávců se zachovají jenom při přenosech předplatných Azure mezi dvěma ID organizace ve stejném tenantovi. Jiné přenosy předplatných povedou ke ztrátě nastavených zásad RBAC a přiřazených rolí správců služeb a spolusprávců. Zásady a role správců se nepřenášejí mezi různými adresáři. U správců služeb proběhne aktualizace na vlastníka cílového účtu.
 - Když provádíte přenosy předplatných mezi dvěma ID organizace ve stejném tenantovi, zachovají se zásady RBAC a přiřazené role správců služeb a spolusprávců.
+- Jiné přenosy předplatných povedou ke ztrátě nastavených zásad RBAC a přiřazení rolí.
+- Zásady a role správců se nepřenášejí mezi různými adresáři. U správců služeb proběhne aktualizace na vlastníka cílového účtu.
 
 Před změnou vlastníka účtu:
 
-1. Zobrazte kartu **Account** (Účet) a určete zdrojový účet. Zdrojový účet musí být aktivní.
-2. Určete cílový účet. Musí být aktivní.
+1. Na portálu Azure Enterprise zobrazte kartu **Account** (Účet) a určete zdrojový účet. Zdrojový účet musí být aktivní.
+1. Určete cílový účet a zkontrolujte, že je aktivní.
 
 Jak přenést vlastnictví účtu pro všechna předplatná:
 
-1. V levé navigační oblasti klikněte na **Manage** (Spravovat).
-2. Klikněte na kartu **Account** (Účet) a najeďte myší na požadovaný účet.
-3. Na pravé straně klikněte na symbol pro změnu vlastníka účtu. Symbol vypadá jako osoba.
-4. Vyberte účet splňující podmínky a potom klikněte na **Next** (Další).
-5. Potvrďte přenos a klikněte na **Submit** (Odeslat).
+1. Přihlaste se k portálu Azure Enterprise.
+1. V levé navigační oblasti vyberte **Manage** (Spravovat).
+1. Vyberte kartu **Account** (Účet) a najeďte myší na požadovaný účet.
+1. Na pravé straně vyberte ikonu pro změnu vlastníka účtu. Ikona vypadá jako osoba.
+1. Zvolte účet splňující podmínky a potom vyberte **Next** (Další).
+1. Potvrďte přenos a vyberte **Submit** (Odeslat).
 
 ![Obrázek znázorňující symbol pro změnu vlastníka účtu](./media/ea-portal-get-started/create-ea-create-sub-transfer-account-ownership-of-sub.png)
 
 Jak přenést vlastnictví účtu pro jedno předplatné:
 
-1. V levé navigační oblasti klikněte na **Manage** (Spravovat).
-2. Klikněte na kartu **Account** (Účet) a najeďte myší na požadovaný účet.
-3. Na pravé straně klikněte na symbol pro přenos předplatných. Symbol vypadá jako stránka.
-4. Vyberte předplatné splňující podmínky a potom klikněte na **Next** (Další).
-5. Potvrďte přenos a pak klikněte na **Submit** (Odeslat).
+1. Přihlaste se k portálu Azure Enterprise.
+1. V levé navigační oblasti vyberte **Manage** (Spravovat).
+1. Vyberte kartu **Account** (Účet) a najeďte myší na požadovaný účet.
+1. Na pravé straně vyberte ikonu pro přenos předplatných. Ikona vypadá jako stránka.
+1. Zvolte předplatné splňující podmínky a potom vyberte **Next** (Další).
+1. Potvrďte přenos a pak vyberte **Submit** (Odeslat).
 
 ![Obrázek znázorňující symbol pro přenos předplatných](./media/ea-portal-get-started/ea-transfer-subscriptions.png)
 
-Zde je video, které ukazuje správu uživatelů na portálu Azure EA:
+Podívejte se na toto video o správě uživatelů na portálu Azure Enterprise:
 
-[Video zachycující správu uživatelů na portálu Azure EA](https://www.youtube.com/watch?v=621jVkvmwm8)
-
->[!VIDEO https://www.youtube.com/embed/621jVkvmwm8]
+> [!VIDEO https://www.youtube.com/embed/621jVkvmwm8]
 
 ## <a name="create-a-subscription"></a>Vytvoření odběru
 
-Vlastníci účtů mohou zobrazovat a spravovat předplatná. Prostřednictvím předplatných můžete týmům ve vaší organizaci poskytovat přístup k vývojovým prostředím a projektům. Například k testování, produkci, vývoji a přípravě. Vytvořením různých předplatných pro jednotlivá aplikační prostředí přispějete k jejich lepšímu zabezpečení. Ke každému předplatnému můžete také přiřadit jiný účet správce služeb. Předplatná můžete přidružit k libovolnému počtu služeb. Předplatná vytváří vlastník účtu, který také ke každému předplatnému v rámci jeho účtu přiřadí účet správce služeb.
+Vlastníci účtů mohou zobrazovat a spravovat předplatná. Prostřednictvím předplatných můžete týmům ve vaší organizaci poskytovat přístup k vývojovým prostředím a projektům. Například k testování, produkci, vývoji a přípravě.
+
+Vytvořením různých předplatných pro jednotlivá aplikační prostředí přispějete k jejich lepšímu zabezpečení.
+
+- Ke každému předplatnému můžete také přiřadit jiný účet správce služeb. 
+- Předplatná můžete přidružit k libovolnému počtu služeb.
+- Předplatná vytváří vlastník účtu, který také ke každému předplatnému v rámci jeho účtu přiřadí účet správce služeb.
 
 ### <a name="add-a-subscription"></a>Přidání předplatného
 
 Při přidávání předplatného vycházejte z následujících informací.
 
-Až budete poprvé přidávat předplatné ke svému účtu, budete požádáni o přijetí smlouvy MOSA a plánu sazeb. I když se tyto dokumenty nevztahují na zákazníky se smlouvou Enterprise, jsou nutné pro vytvoření předplatného. Vyšší váhu má nadále verze smlouvy Microsoft Azure Enterprise platná pro vaši registraci a váš smluvní vztah se nijak nemění. Po zobrazení výzvy zaškrtněte políčko označující, že s těmito podmínkami souhlasíte.
+Až budete poprvé přidávat předplatné ke svému účtu, budete požádáni o přijetí smlouvy MOSA (Microsoft Online Subscription Agreement) a plánu sazeb. I když se smlouva MOSA a plány sazeb nevztahují na zákazníky se smlouvou Enterprise, jsou nutné pro vytvoření předplatného. Vyšší váhu má nadále verze smlouvy Microsoft Azure Enterprise platná pro vaši registraci a váš smluvní vztah se nijak nemění. Po zobrazení výzvy zaškrtněte políčko označující, že s těmito podmínkami souhlasíte.
 
-Všechna nová předplatná se vytvoří s výchozím názvem předplatného _Microsoft Azure Enterprise_. Název předplatného můžete aktualizovat, abyste ho odlišili ho od jiných předplatných ve vaší registraci. Také bude díky tomu rozpoznatelné v sestavách na úrovni podniku.
+Při vytvoření předplatného je výchozím názvem _Microsoft Azure Enterprise_. Název můžete změnit, aby ho bylo možné odlišit od ostatních předplatných v rámci registrace a zajistit, že je v sestavách na podnikové úrovni rozpoznatelný.
 
 Jak přidat předplatné:
 
-1. Na portálu Azure EA se přihlaste ke svému účtu.
-2. Klikněte na kartu **Admin** (Správce) a pak na **Subscription** (Předplatné) v horní části stránky.
-2. Ověřte, že jste přihlášeni jako vlastník účtu.
-3. Klikněte na **+Add Subscription** (+ Přidat předplatné) a pak na **Purchase** (Koupit).
-  Při prvním přidávání předplatného k účtu musíte zadat své kontaktní údaje. Při přidávání dalších předplatných se vaše kontaktní údaje vloží automaticky.
-4. Klikněte na **Subscriptions** (Předplatná), vyberte předplatné, které jste vytvořili, a pak klikněte na **Edit Subscription Details** (Upravit podrobnosti předplatného).
-5. Aktualizujte **název předplatného** a **správce služeb** a potom zaškrtněte políčko.
-  Název předplatného se zobrazuje na sestavách a představuje název projektu, který je k předplatnému přidružený na vývojovém portálu.
+1. Na portálu Azure Enterprise se přihlaste ke svému účtu.
+1. Vyberte kartu **Admin** (Správce) a potom nahoře na stránce vyberte **Subscription** (Předplatné).
+1. Ověřte, že jste přihlášeni jako vlastník účtu.
+1. Vyberte **+Add Subscription** (+Přidat předplatné) a potom vyberte **Purchase** (Koupit).
+
+   Při prvním přidávání předplatného k účtu musíte zadat své kontaktní údaje. Při přidávání dalších předplatných se vaše kontaktní údaje vloží automaticky.
+
+1. Vyberte **Subscriptions** (Předplatná) a potom vyberte předplatné, které jste vytvořili.
+1. Vyberte **Edit Subscription Details** (Upravit podrobnosti předplatného).
+1. Upravte **název předplatného** a **správce služeb** a potom zaškrtněte políčko.
+  
+   Název předplatného se zobrazí na sestavách. Jedná se o název projektu, který je k předplatnému přidružený na vývojovém portálu.
 
 Může trvat až 24 hodin, než se nové předplatné objeví v seznamu předplatných. Po vytvoření předplatného můžete:
 
 - [Upravit podrobnosti předplatného](https://account.azure.com/Subscriptions)
 - [Spravovat služby v předplatném](https://portal.azure.com/#home)
 
-## <a name="transfer-ea-subscription-to-pay-as-you-go-subscription"></a>Převod předplatného EA na předplatné s průběžnými platbami
+## <a name="transfer-an-enterprise-subscription-to-a-pay-as-you-go-subscription"></a>Přenos předplatného Enterprise na předplatné s průběžnými platbami
 
-Pokud chcete převést předplatné EA na jednotlivé předplatné s průběžnými platbami, musíte na portálu Azure EA vytvořit novou žádost o podporu. Žádost o podporu vytvoříte kliknutím na **+ Nová žádost o podporu** v oblasti Nápověda a podpora.
+Pokud chcete převést předplatné Enterprise na jednotlivé předplatné s průběžnými platbami, musíte na portálu Azure Enterprise vytvořit novou žádost o podporu. Žádost o podporu vytvoříte výběrem možnosti **+ New support request** (+ Nová žádost o podporu) v oblasti **Help and Support** (Nápověda a podpora).
 
 ## <a name="associate-an-existing-account-with-your-pay-as-you-go-subscription"></a>Přidružení stávajícího účtu k předplatnému s průběžnými platbami
 
-Pokud již máte účet Microsoft Azure na portálu Microsoft Azure, který chcete přidružit k vaší registraci smlouvy Enterprise, zadejte přidružený účet Microsoft nebo pracovní nebo školní účet.
+Pokud už máte účet Microsoft Azure na webu Azure Portal, který chcete přidružit k vaší registraci smlouvy Enterprise, zadejte přidružený účet Microsoft nebo pracovní nebo školní účet.
 
 ### <a name="associate-an-existing-account"></a>Přidružení stávajícího účtu
 
-1. Na portálu Enterprise Portal klikněte na **Spravovat**.
-1. Klikněte na kartu **Účet**.
-1. Klikněte na **+ Přidat účet**.
-1. Zadejte účet Microsoft nebo pracovní nebo školní účet přidružený ke stávajícímu účtu.
-1. Potvrďte účet Microsoft nebo pracovní nebo školní účet přidružený ke stávajícímu účtu.
+1. Na portálu Azure Enterprise vyberte **Manage** (Spravovat).
+1. Vyberte kartu **Account** (Účet).
+1. Vyberte **+Add an account** (+Přidat účet).
+1. Zadejte účet Microsoft nebo pracovní nebo školní účet přidružený ke stávajícímu účtu Azure.
+1. Potvrďte účet přidružený ke stávajícímu účtu Azure.
 1. Zadejte název, který chcete použít k identifikaci tohoto účtu v sestavách.
-1. Klikněte na tlačítko **Add** (Přidat).
-1. Můžete znovu vybrat možnost **+ Přidat účet** a přidat další účet nebo se výběrem tlačítka **Správce** můžete vrátit na domovskou stránku.
-1. Pokud si zobrazíte stránku **Účet**, nově přidaný účet se zobrazí ve stavu **Čeká na vyřízení**.
+1. Vyberte **Přidat**.
+1. Pokud chcete přidat další účet, můžete znovu vybrat **+Add an Account** (+Přidat účet) nebo se vrátit na domovskou stránku výběrem tlačítka **Admin** (Správce).
+1. Pokud si zobrazíte stránku **Account** (Účet), nově přidaný účet se zobrazí ve stavu **Pending** (Čeká na vyřízení).
 
 ### <a name="confirm-account-ownership"></a>Potvrzení vlastnictví účtu
 
-1. Přihlaste se k e-mailovému účtu přidruženému k účtu Microsoft nebo pracovnímu nebo školnímu účtu, který jste zadali.
+1. Přihlaste se k e-mailovému účtu přidruženému k pracovnímu nebo školnímu účtu nebo účtu Microsoft, který jste zadali.
 1. Otevřete e-mailové oznámení s názvem _Pozvánka k aktivaci vašeho účtu ve službě Microsoft Azure z multilicenčního programu Microsoftu_.
-1. Klikněte na odkaz **Přihlásit se k portálu Microsoft Azure Enterprise Portal** uvedený v pozvánce.
-1. Klikněte na **Přihlásit se**.
-1. Přihlaste se zadáním svého účtu Microsoft nebo pracovního nebo školního účtu a hesla a potvrďte vlastnictví účtu.
+1. Vyberte odkaz **Log into the Microsoft Azure Enterprise Portal** (Přihlásit se k portálu Microsoft Azure Enterprise Portal) uvedený v pozvánce.
+1. Vyberte **Sign in** (Přihlásit se).
+1. Přihlaste se zadáním svého pracovního nebo školního účtu nebo účtu Microsoft a hesla a potvrďte vlastnictví účtu.
 
 ### <a name="azure-marketplace"></a>Azure Marketplace
 
-Přestože se většina předplatných převádí z prostředí s průběžnými platbami na Enterprise Azure, služby z Azure Marketplace se nepřevádí. Pokud chcete získat jedno zobrazení všech předplatných a poplatků, doporučujeme přidat služby z Azure Marketplace na portál Enterprise Portal:
+Přestože většinu předplatných je možné převést z prostředí s průběžnými platbami na smlouvu Azure Enterprise, u služeb z Azure Marketplace to možné není. Pokud chcete získat jedno zobrazení všech předplatných a poplatků, doporučujeme přidat služby z Azure Marketplace na portál Azure Enterprise:
 
-1. V levém navigačním panelu klikněte na **Spravovat**.
-1. Klikněte na kartu **Registrace**.
-1. Prohlédněte si část Podrobnosti o registraci.
-1. Napravo od pole Azure Marketplace kliknutím na ikonu tužky povolte zobrazení a klikněte na **Uložit**.
+1. Přihlaste se k portálu Azure Enterprise.
+1. V levém navigačním panelu vyberte **Manage** (Spravovat).
+1. Vyberte kartu **Enrollment** (Registrace).
+1. Prohlédněte si část **Enrollment Detail** (Podrobnosti o registraci).
+1. Napravo od pole Azure Marketplace výběrem ikony tužky povolte zobrazení. Vyberte **Uložit**.
 
-Vlastník účtu si teď může zakoupit předplatná Azure Marketplace, která dříve vlastnil s průběžnými platbami.
+Vlastník účtu si teď může zakoupit služby Azure Marketplace, která dříve vlastnil v předplatném s průběžnými platbami.
 
-Po aktivaci nových předplatných Azure Marketplace ve vaší registraci zrušte předplatná Marketplace vytvořená v prostředí s průběžnými platbami. Tento krok je zásadní proto, aby vaše předplatná Marketplace po vypršení platnosti vašeho platebního nástroje pro průběžné platby nepřešla do špatného stavu.
+Po aktivaci nových předplatných Azure Marketplace ve vaší registraci Azure EA zrušte služby Azure Marketplace vytvořené v prostředí s průběžnými platbami. Tento krok je zásadní proto, aby vaše předplatná Azure Marketplace po vypršení platnosti vašeho platebního nástroje pro průběžné platby nepřešla do špatného stavu.
 
 ### <a name="msdn"></a>MSDN
 
-Předplatná MSDN se automaticky převedou na předplatná MSDN pro vývoj/testování a nabídka EA ztratí veškerý stávající peněžní kredit.
+Předplatná MSDN se automaticky převedou na předplatná MSDN pro vývoj/testování a nabídka Azure EA ztratí veškerý stávající peněžní kredit.
 
-### <a name="azure-in-open"></a>Azure v programu Open
+### <a name="azure-in-open"></a>Azure v rámci licenčního programu Open
 
-Přidružením předplatného systému Azure v rámci licenčního programu Open ke smlouvě EA zaniknou veškeré nespotřebované kredity Azure v programu Open. Zákazníkům, kteří chtějí předejít zániku kreditů, doporučujeme spotřebovat veškeré kredity v předplatném systému Azure v rámci licenčního programu Open dřív, než účet přidají ke smlouvě EA.  
+Přidružením předplatného Azure v rámci licenčního programu Open License ke smlouvě Enterprise zaniknou veškeré nespotřebované kredity Azure v rámci licenčního programu Open License. Z tohoto důvodu doporučujeme, abyste před přidáním účtu do smlouvy Enterprise vyčerpali veškerý kredit předplatného Azure v rámci licenčního programu Open License.  
 
 ### <a name="accounts-with-support-subscriptions"></a>Účty s předplatnými podpory
 
-Pokud na portál Enterprise Portal přidáváte existující účty s předplatným podpory (které ještě nemají předplatné podpory EA), mějte na paměti, že předplatné podpory MOSA se automaticky nepřevádí a podporu je potřeba v účtu EA zakoupit znovu. Abyste měli čas si znovu objednat podporu, až do konce následujícího měsíce budete mít k dispozici období odkladu.
+Pokud vaše smlouva Enterprise nemá předplatné podpory a přidáte stávající účet s předplatným podpory na portál Azure Enterprise, vaše předplatné podpory MOSA se automaticky nepřenese. Budete si muset znovu koupit předplatné podpory v Azure EA během poskytnuté lhůty – do konce následujícího měsíce.
 
 ## <a name="view-usage-summary-and-download-reports"></a>Zobrazení souhrnu využití a stahování sestav
 
-Podnikoví správci si na portálu Azure EA mohou zobrazit souhrnná data o využití, výši spotřebovaného peněžního závazku a poplatky za další použití. Poplatky jsou vyjádřené souhrnně za všechny účty a všechna předplatná.
+Podnikoví správci si na portálu Azure Enterprise můžou zobrazit souhrnné údaje o využití, výši spotřebovaného peněžního závazku a poplatky za další využití. Poplatky jsou vyjádřené souhrnně za všechny účty a všechna předplatná.
 
-Zobrazení podrobných informací o využití pro konkrétní účty:
+Pokud se chcete podívat na podrobné využití u konkrétních účtů, stáhněte si sestavu s podrobnostmi o využití:
 
-Stáhněte si sestavu s podrobnostmi o využití. Klikněte na **sestavy** a pak klikněte na kartu **použití ke stažení** . V seznamu sestav klikněte na **Stáhnout** pro měsíční sestavu, kterou chcete získat.
+1. Přihlaste se k portálu Azure Enterprise.
+1. Vyberte **Sestavy**.
+1. Vyberte kartu **Download Usage** (Stáhnout data o využití).
+1. V seznamu sestav vyberte **Download** (Stáhnout) u měsíční sestavy, kterou chcete získat.
 
-Sestava nezahrnuje příslušné daně. Mezi časem skutečného využití a promítnutím tohoto údaje do sestavy může vzniknout zpoždění až 8 hodin.
+   > [!NOTE]
+   > Sestava s podrobnostmi využití nezahrnuje příslušné daně.
+   >
+   > Mezi časem skutečného využití a promítnutím tohoto údaje do sestavy může vzniknout zpoždění až 8 hodin.
 
 Zobrazení sestav a grafů se souhrnem využití:
 
-1. Na portálu Azure EA klikněte v levém navigačním panelu na **Reports** (Sestavy) a zobrazte si kartu **Usage Summary** (Souhrn využití).  
-  ![Vytvoření a zobrazení souhrnu využití a stahování sestav](./media/ea-portal-get-started/create-ea-view-usage-summary-and-download-reports.png)
-2. Vyberte období závazku.
-3. Přepnutím položky **M** (měsíční) na **C** (vlastní) v pravém horním rohu stránky si zobrazíte **souhrn využití** pro období, které sami určíte zadáním počátečního a koncového data.  
-  ![Vytvoření a zobrazení souhrnu využití a stahování sestav ve vlastním zobrazení](./media/ea-portal-get-started/create-ea-view-usage-summary-and-download-reports-custom-view.png)
-4. Výběrem období nebo měsíce v grafu si zobrazíte další podrobnosti.
-5. V grafu se zobrazuje meziměsíční využití s rozpisem spotřebovaného využití, nadměrného vyúčtování služeb, poplatků fakturovaných samostatně a poplatků z obchodu Marketplace.
-6. Pro vybraný měsíc můžete pod grafem filtrovat podle oddělení, účtů a předplatných.
-7. Můžete přepínat mezi volbami **Charge by Services** (Vyúčtování podle služeb) a **Charge by Hierarchy** (Vyúčtování podle hierarchie).
-8. Rozbalením a sbalením položek **Azure Service** (Služby Azure), **Charges Billed Separately** (Samostatně fakturované poplatky) a **Azure Marketplace** si můžete zobrazit podrobnosti.
+1. Přihlaste se k portálu Azure Enterprise.
 
-Zde je video, které ukazuje zobrazení využití:
+1. Vyberte období závazku.
 
-[Video zachycující používání portálu Azure EA](https://www.youtube.com/watch?v=Cv2IZ9QCn9E)
+   Pokud chcete změnit rozsah data pro **Usage Summary** (Souhrn využití), můžete vpravo nahoře na stránce přepnout z **M** (Monthly) (Měsíčně) na **C** (Custom) (Vlastní) a zadat vlastní počáteční a koncové datum.
 
->[!VIDEO https://www.youtube.com/embed/Cv2IZ9QCn9E]
+   ![Vytvoření a zobrazení souhrnu využití a stahování sestav ve vlastním zobrazení](./media/ea-portal-get-started/create-ea-view-usage-summary-and-download-reports-custom-view.png)
+1. Pokud se chcete podívat na další podrobnosti, můžete vybrat období nebo měsíc v grafu.
+
+   - V grafu se zobrazuje meziměsíční využití s rozpisem spotřebovaného využití, nadměrného vyúčtování služeb, poplatků fakturovaných samostatně a poplatků z Azure Marketplace.
+   - Pro vybraný měsíc můžete pomocí polí pod grafem filtrovat podle oddělení, účtů a předplatných.
+   - Můžete přepínat mezi volbami **Charge by Services** (Vyúčtování podle služeb) a **Charge by Hierarchy** (Vyúčtování podle hierarchie).
+   - Rozbalením a sbalením příslušných oddílů **Azure Service** (Služba Azure), **Charges Billed Separately** (Samostatně fakturované poplatky) a **Azure Marketplace** si můžete zobrazit podrobnosti.
+
+Podívejte se na toto video, ze kterého se dozvíte, jak zobrazit informace o využití:
+
+> [!VIDEO https://www.youtube.com/embed/Cv2IZ9QCn9E]
 
 ### <a name="download-csv-reports"></a>Stahování sestav CSV
 
-Podnikoví správci si mohou ze stránky s měsíčními sestavami stáhnout několik sestav ve formátu CSV. Patří mezi ně:
+Podnikoví správci si mohou ze stránky s měsíčními sestavami stáhnout následující sestavy ve formátu CSV:
 
-- Zůstatek a souhrn
+- Zůstatek a poplatky
 - Podrobnosti o využití
-- Poplatky za marketplace
+- Poplatky za Azure Marketplace
 - Ceník
 
 Jak sestavy stáhnout:
 
-
-1. Na portálu Azure EA klikněte na **Reports** (Sestavy).
-2. V horní části stránky klikněte na **Download Usage** (Stažení údajů o využití).
+1. Na portálu Azure Enterprise vyberte **Reports** (Sestavy).
+2. V horní části stránky vyberte **Download Usage** (Stáhnout data o využití).
 3. Vyberte tlačítko **Download** (Stáhnout) vedle sestavy pro požadovaný měsíc.
 
-Mezi datem skutečného využití a jeho zobrazením v sestavě může docházet ke zpoždění až 5 dní.
-
-U uživatelů, kteří si soubory CSV stahují přes Safari do Excelu, může docházet k chybám formátování. Chybám se vyhnete tak, že soubor otevřete pomocí textového editoru.
+   > [!NOTE]
+   > Mezi datem skutečného využití a jeho zobrazením v sestavě může docházet ke zpoždění až 5 dní.
+   >
+   > U uživatelů, kteří si soubory CSV stahují přes Safari do Excelu, může docházet k chybám formátování. Chybám se vyhnete tak, že soubor otevřete pomocí textového editoru.
 
 ![Příklad ukazující stránku pro stažení údajů o využití](./media/ea-portal-get-started/create-ea-download-csv-reports.png)
 
-Zde je video, které ukazuje, jak si stáhnout informace o využití:
+Podívejte se na toto video, které ukazuje, jak si stáhnout informace o využití:
 
-[Video zachycující používání portálu Azure EA](https://www.youtube.com/watch?v=eY797htT1qg)
-
->[!VIDEO https://www.youtube.com/embed/eY797htT1qg]
+> [!VIDEO https://www.youtube.com/embed/eY797htT1qg]
 
 ### <a name="advanced-report-download"></a>Stažení rozšířené sestavy
 
-Při generování sestav pro konkrétní rozsahy dat nebo účty je možné využít stažení rozšířené sestavy. Od 30. srpna 2016 se změnil formát výstupního souboru z .xslx na .csv, který podporuje větší sady záznamů.
+Pomocí stažení rozšířené sestavy můžete získat sestavy, které pokrývají konkrétní rozsahy kalendářních dat nebo účty. Výstupní soubor je ve formátu CSV, aby pojal rozsáhlé sady záznamů.
 
-1. Vyberte **Stažení rozšířené sestavy**.
-1. Vyberte **odpovídající rozsah dat**.
-1. Vyberte **odpovídající účty**.
+1. Na portálu Azure Enterprise vyberte **Advanced Report Download** (Stažení rozšířené sestavy).
+1. Vyberte příslušný rozsah data a příslušné účty.
 1. Vyberte **Požádat o data o využití**.
-1. Opakovaně vyberte tlačítko **Aktualizovat**, dokud se stav sestavy neaktualizuje na **Stáhnout**.
-1. Stáhněte si sestavu.
+1. Opakovaně vyberte tlačítko **Refresh** (Aktualizovat), dokud se stav sestavy neaktualizuje na **Download** (Stáhnout).
+1. Stáhněte sestavu.
 
-## <a name="ea-term-glossary"></a>Glosář pojmů ve smlouvě EA
+### <a name="download-usage-reports-and-billing-information-for-a-prior-enrollment"></a>Stažení sestav využití a fakturačních údajů pro předchozí registraci
 
-- **Účet**: organizační jednotka na portálu Azure EA, která slouží ke správě předplatných a využití pro vytváření sestav.
-- **Vlastník účtu**: osoba identifikovaná za účelem správy předplatných a správců služeb na Microsoft Azure. Může zobrazit data o využití tohoto účtu a přidružených předplatných.
-- **Předplatné dodatku**: jeden rok nebo předplatné coterminous v rámci změny registrace.
-- **Závazek**: závazek roční finanční částky za Microsoft Azure služby za zlevněnou sazbu za využití na základě této zálohy.
-- **Správce oddělení**: osoby identifikované za účelem správy oddělení, vytváření nových účtů a vlastníků účtů, zobrazení podrobností o využití pro oddělení, která spravují, a zobrazení nákladů v případě udělení oprávnění.
-- **Registrační číslo**: jedinečný identifikátor poskytnutý Microsoftem, který identifikuje konkrétní registraci přidruženou ke smlouvě Enterprise.
-- **Podnikový správce**: osoby identifikované za účelem správy oddělení a vlastníků oddělení a účtů a vlastníků účtů na Microsoft Azure. Můžou spravovat podnikové správce a zobrazit data o využití, fakturovaná množství a nefakturované poplatky napříč všemi účty a předplatnými přidruženými k dané podnikové registraci.
-- **Smlouva Enterprise**: licenční smlouva Microsoft pro zákazníky s centralizovaným nákupem, kteří chtějí standardizovat celou organizaci na technologii Microsoftu a udržovat infrastrukturu informačních technologií na standardu softwaru Microsoftu.
-- **Registrace smlouvy Enterprise**: registrace v programu Enterprise Agreement, který poskytuje produkty Microsoftu ve velkém poměru zvýhodněné sazby.
-- **Účet Microsoft**: webová služba, která umožňuje zúčastněným webům ověřit uživatele s jednou sadou přihlašovacích údajů.
-- **Microsoft Azure změnu registrace podnikového nasazení (změna registrace)** : dodatek podepsaný podnikem, který jim poskytne přístup k Microsoft Azure v rámci své podnikové registrace.
-- **Portál EA pro Azure**: portál, který naši Podnikoví zákazníci používá ke správě svých účtů Microsoft Azure a jejich souvisejících předplatných.
-- **Spotřebované množství prostředků**: množství jednotlivé Microsoft Azure služby, které bylo využito za měsíc.
-- **Správce služeb**: osoba, která se identifikovala k přístupu a správě předplatných a vývojových projektů na portálu Azure EA.
-- **Předplatné**: představuje předplatné portálu Azure EA a je kontejnerem Microsoft Azure služeb spravovaných stejným správcem služby.
-- **Pracovní nebo školní účet**: organizace, které nastavily službu Active Directory s federaci na Cloud a všechny účty, jsou v jednom tenantovi.
+Sestavy využití a fakturační údaje pro předchozí registraci si můžete stáhnout až po přenosu registrace. Portál Azure Enterprise i správa nákladů umožňuje generování historických sestav.
 
-### <a name="enrollment-statuses"></a>Stavy registrace:
+Portál Azure Enterprise vyfiltruje neaktivní registrace, aby nebyly vidět. Aby se zobrazily neaktivní přenesené registrace, budete muset zrušit zaškrtnutí políčka **Active** (Aktivní).  
 
-- **Čeká na dokončení**: správce registrace musí přihlásit se k portálu Azure EA. Po přihlášení se stav registrace přepne na Aktivní.
-- **Aktivní**: registrace je aktivní a účty a odběry se dají vytvořit na portálu Azure EA. Registrace zůstane aktivní až do koncového data smlouvy Enterprise.
-- **Nekonečná rozšířená doba**: po uplynutí koncového data smlouvy Enterprise dojde k neurčitému rozšířenému termínu. Umožňuje zákazníkům EA, kteří jsou výslovně přihlášeni k období prodloužení, aby po skončení platnosti jejich smlouvy Enterprise pokračovali v používání Azure po neomezenou dobu. Před tím, než registrace EA dosáhne koncového data smlouvy Enterprise, by se správce registrace měl rozhodnout, jestli registraci prodlouží přidáním dalšího peněžního závazku, přejde na novou registraci, provede migraci na program Microsoft Online Subscription Program (MOSP), nebo potvrdí deaktivaci všech služeb přidružených k dané registraci.
-- **Vypršela platnost**: zákazník EA se vykazuje prodlouženým termínem a registrace EA dosáhla koncového data smlouvy Enterprise, platnost zápisu vyprší a všechny přidružené služby budou zakázané.
-- **Přenesené**: registrace, kde se všechny přidružené účty a služby přenesou do nové registrace, se zobrazí u přenesených stavů. Mějte na paměti, že pokud se při prodloužení vygeneruje nové číslo registrace, registrace se automaticky nepřevedou. Aby se usnadnil automatický převod, je potřeba v dokumentech zákazníka k prodloužení uvést předchozí číslo registrace.
+![Zrušení zaškrtnutí políčka Active (Aktivní) umožní uživateli zobrazit neaktivní registrace](./media/ea-portal-get-started/unchecked-active-box.png)
 
-## <a name="get-started-on-azure-ea-faq"></a>Začínáme s nejčastějšími dotazy k účtu Azure EA
+## <a name="azure-ea-term-glossary"></a>Glosář pojmů ve smlouvě Azure EA
 
-Tento dokument obsahuje podrobnosti o typických dotazech zákazníků během procesu onboardingu.  
+- **Účet:** Organizační jednotka na portálu Azure Enterprise. Slouží ke správě předplatných a ke generování sestav.
+- **Vlastník účtu:** Osoba, která spravuje předplatná a správce služeb v Azure. Může zobrazit data o využití tohoto účtu a přidružených předplatných.
+- **Doplňující předplatné:** Roční nebo překrývající se předplatné na základě dodatku k registraci.
+- **Závazek:** Závazek roční útraty určité peněžní částky za služby Azure se zvýhodněnou sazbu závazku za využití při předplacení.
+- **Správce oddělení:** Osoba, která spravuje oddělení, vytváří nové účty a vlastníky účtů, zobrazuje podrobnosti o využití pro oddělení, která spravuje, a může zobrazit náklady (když k tomu má udělená oprávnění).
+- **Číslo registrace:** Jedinečný identifikátor od Microsoftu, který umožňuje identifikovat konkrétní registraci přidruženou ke smlouvě Enterprise.
+- **Podnikový správce:** Osoba, která spravuje oddělení, vlastníky oddělení, účty a vlastníky účtů v Azure. Můžou spravovat podnikové správce a zobrazit data o využití, fakturovaná množství a nefakturované poplatky napříč všemi účty a předplatnými přidruženými k dané podnikové registraci.
+- **Smlouva Enterprise:** Licenční smlouva se společností Microsoft pro zákazníky využívající centrální nakupování, kteří chtějí v rámci celé organizace standardizovat používání technologií Microsoftu a udržovat v infrastruktuře informačních technologií standardy softwaru Microsoftu.
+- **Registrace smlouvy Enterprise:** Registrace v programu Smlouva Enterprise, který umožňuje hromadně nakupovat produkty Microsoftu se zvýhodněnými sazbami.
+- **Účet Microsoft:** Webová služba umožňující ověřování uživatelů na zapojených webech pomocí jedné sady přihlašovacích údajů.
+- **Dodatek k registraci Microsoft Azure Enterprise (dodatek k registraci):** Dodatek podepsaný podnikem, který podniku v rámci podnikové registrace umožňuje přístup k Azure.
+- **Portál Azure Enterprise:** Portál, pomocí kterého naši podnikoví zákazníci spravují své účty Azure a související předplatná.
+- **Spotřebované množství prostředků:** Množství jednotlivé služby Azure využité za měsíc.
+- **Správce služeb:** Osoba, která může přistupovat k předplatným a vývojovým projektům a spravovat je na portálu Azure Enterprise.
+- **Předplatné:** Představuje předplatné portálu Azure Enterprise a jedná se o kontejner služeb Azure spravovaných stejným správcem služeb.
+- **Pracovní nebo školní účet:** Pro organizace, které si nastavily službu Active Directory s federací na cloud a všechny účty jsou v jednom tenantovi.
 
-### <a name="can-i-associate-my-existing-azure-account-to-enterprise-enrollment"></a>Můžu ke smlouvě Enterprise přidružit stávající účet Azure?
+### <a name="enrollment-statuses"></a>Stavy registrace
 
-Ano, je to možné. Je důležité poznamenat, že všechna předplatná Azure, pro která jste vlastníkem účtu, se převedou na vaši smlouvu Enterprise. Týká se to i předplatných využívajících měsíční kredit (např. předplatná sady Visual Studio, Azure Pass, MPN, BizSpark atd.). To znamená, že touto akcí o měsíční kredit přijdete.
+- **Čeká na vyřízení:** Správce registrace se musí přihlásit k portálu Azure Enterprise. Po přihlášení se stav registrace přepne na Aktivní.
+- **Aktivní:** Registrace je aktivní a na portálu Azure Enterprise je možné vytvářet účty a předplatná. Registrace zůstane aktivní až do koncového data smlouvy Enterprise.
+- **Neurčené období prodloužení:** Stav Neurčené období prodloužení nastane po uplynutí koncového data smlouvy Enterprise. Umožňuje zákazníkům Azure EA, kteří jsou výslovně přihlášeni k období prodloužení, aby po skončení platnosti jejich smlouvy Enterprise pokračovali v používání služeb Azure po neomezenou dobu.
 
-### <a name="i-accidentally-associated-my-existing-azure-account-with-enterprise-enrollment-as-a-result-i-lost-my-monthly-credit-is-it-possible-to-get-my-monthly-credit-back"></a>Omylem jsem přidružil(a) svůj stávající účet Azure ke smlouvě Enterprise. Následkem toho se mi ztratil měsíční kredit. Můžu měsíční kredit získat zpět?
+   Než registrace Azure EA dosáhne koncového data smlouvy Enterprise, měl by se správce registrace rozhodnout pro jednu z těchto variant:
 
-Pokud jste pro účet EA použili stejné přihlašovací údaje jako pro své předplatné sady Visual Studio a po ověření jako vlastník účtu EA chcete obnovit individuální výhodu Azure pro předplatné sady Visual Studio, musíte použít jeden z následujících postupů:
-1. Odeberte nebo přesuňte všechna předplatná Azure tohoto vlastníka účtu, pak na portálu EA Portal tohoto vlastníka účtu odstraňte a řekněte mu, aby se znovu zaregistroval k individuálním výhodám Azure pro sadu Visual Studio.
- NEBO
-1. Na webu pro správu ve VLSC odstraňte předplatitele sady Visual Studio a znovu mu přiřaďte předplatné s tím, že tentokrát musí použít jiné přihlašovací údaje – pak se může znovu zaregistrovat k individuálním výhodám Azure pro sadu Visual Studio.
+  - Prodloužení registrace přidáním dalšího peněžního závazku
+  - Přenos na novou registraci
+  - Migrace do programu Microsoft Online Subscription (MOSP)
+  - Potvrzení deaktivace všech služeb přidružených k registraci
+- **Platnost vypršela:** Zákazník Azure EA je výslovně vyřazen z období prodloužení a registrace Azure EA dosáhla data ukončení smlouvy Enterprise. Platnost registrace vyprší a všechny přidružené služby se deaktivují.
+- **Přesunuto:** Stav Přesunuto se zobrazí u registrací, jejichž přidružené účty a služby se převedly do nové registrace.
+  >[!NOTE]
+  > Registrace se nepřesouvají automaticky, pokud se při prodloužení vygeneruje nové číslo registrace. Aby se usnadnil automatický převod, musíte v dokumentech k prodloužení uvést číslo předchozí registrace.
+
+## <a name="get-started-on-azure-ea---faq"></a>Začínáme s Azure EA – Nejčastější dotazy
+
+Tato část obsahuje podrobnosti o typických dotazech zákazníků během procesu onboardingu.  
+
+### <a name="can-i-associate-my-existing-azure-account-to-azure-ea-enrollment"></a>Mohu k registraci Azure EA přidružit stávající účet Azure?
+
+Ano. Všechna předplatná Azure, pro která jste vlastníkem účtu, se převedou na vaši smlouvu Enterprise. Zahrnuta jsou předplatná, která využívají měsíční kredit, například Visual Studio, AzurePass, MPN, BizSpark a další. Při převodu těchto předplatných přijdete o měsíční kredit.
+
+### <a name="i-accidentally-associated-my-existing-azure-account-with-azure-ea-enrollment-as-a-result-i-lost-my-monthly-credit-can-i-get-my-monthly-credit-back"></a>Omylem jsem přidružil(a) svůj stávající účet Azure k registraci Azure EA. Následkem toho se mi ztratil měsíční kredit. Mohu měsíční kredit získat zpět?
+
+Pokud jste se přihlásili jako vlastník účtu Azure EA pomocí stejných přihlašovacích údajů, které používáte pro Visual Studio Subscription, můžete obnovit svoje výhody Azure služby Visual Studio Subscription provedením jedné z následujících akcí:
+
+- Po odebrání nebo přesunutí všech přidružených předplatných Azure odstraňte roli vlastníka účtu z portálu Azure Enterprise. Potom si znovu zaregistrujte jednotlivé výhody Azure pro Visual Studio.
+- Odstraňte předplatitele sady Visual Studio z lokality správy na webu VLSC a znovu přiřaďte předplatné k účtu, ale tentokrát s jinými přihlašovacími údaji. Potom si znovu zaregistrujte jednotlivé výhody Azure pro Visual Studio.
 
 ### <a name="what-type-of-subscription-should-i-create"></a>Jaký typ předplatného mám vytvořit?
 
-EA Portal nabízí podnikovým zákazníkům dva typy předplatného:
+Portál Azure Enterprise nabízí podnikovým zákazníkům dva typy předplatného:
 
-- Microsoft Azure Enterprise – ideální pro:
+- Microsoft Azure Enterprise, které je ideální pro:
   - Veškeré produkční využití
   - Nejlepší ceny v závislosti na útratě za infrastrukturu
-  - Další podrobnosti najdete na stránce https://azure.microsoft.com/pricing/enterprise-agreement/.
-- Enterprise pro vývoj/testování – ideální pro:
-  - Všechny týmové procesy vývoje/testování
-  - Procesy vývoje/testování se středním až vysokým zatížením
+  
+  Pokud potřebujete další informace, [kontaktujte obchodní oddělení Azure](https://azure.microsoft.com/pricing/enterprise-agreement/).
+
+- Enterprise pro vývoj/testování, které je ideální pro:
+  - Všechny týmové úlohy vývoje/testování
+  - Úlohy vývoje/testování se středním až vysokým zatížením
   - Přístup ke speciálním imagím MSDN a preferenčním sazbám za služby
-  - Další podrobnosti najdete na stránce https://azure.microsoft.com/offers/ms-azr-0148p/.
+  
+  Další informace najdete v tématu, které se věnuje [nabídce Enterprise pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0148p/).
 
 ### <a name="is-it-possible-to-transfer-subscription-ownership-to-another-account"></a>Je možné převést vlastnictví předplatného na jiný účet?
 
-Ano, vlastnictví předplatného je možné převést na jiný účet. Například pokud účet A obsahuje tři předplatná, podnikový správce může převést jedno předplatné do účtu B, jedno do účtu C a jedno do účtu D, nebo všechna do účtu E.
+Ano, vlastnictví předplatného můžete převést na jiný účet. Například pokud účet A obsahuje tři předplatná, podnikový správce může převést jedno předplatné do účtu B, jedno do účtu C a jedno do účtu D, nebo všechna do účtu E.
 
-Můžete přejít do účtu EA, kliknout na Spravovat > Účet, najet myší na **Účet** (zcela vpravo) a zobrazí se Vlastnictví předplatného (ikona hlavy) a možnost Převést předplatné (ikona seznamu).
+Přenos předplatných:
 
-Tato možnost se zobrazí pouze u aktivních účtů.
+1. Na portálu Azure Enterprise vyberte **Manage** (Spravovat) > **Account** (Účet).
+1. Myší najeďte na **Account** (Účet) úplně napravo, aby se zobrazily možnosti **Transfer Ownership** (Převést vlastnictví) (ikona osoby) a **Transfer Subscription** (Převést předplatné) (ikona seznamu). Tyto možnosti jsou viditelné pouze u aktivních účtů.
 
-### <a name="i-see-subscription-name-defaults-to-offer-name-should-i-change-the-subscription-name-to-something-meaningful-to-my-organization"></a>Jako výchozí název předplatného se používá název nabídky. Mám název předplatného změnit na nějaký smysluplný název pro naši organizaci?
+### <a name="my-subscription-name-is-the-same-as-the-offer-name-should-i-change-the-subscription-name-to-something-meaningful-to-my-organization"></a>Název mého předplatného je stejný jako název nabídky. Mám název předplatného změnit na nějaký smysluplný název pro naši organizaci?
 
-Pro každé vytvořené předplatné se jako výchozí hodnota použije zvolený typ nabídky. Doporučujeme změnit název předplatného na název, který vám usnadní sledování předplatného.
+Při vytváření předplatného se jako výchozí název používá typ nabídky, kterou zvolíte. Doporučujeme změnit název předplatného na název, který vám usnadní sledování předplatného.
 
-**Změna názvu:**
+Změna názvu:
+
 1. Přihlaste se k webu [https://account.windowsazure.com](https://account.windowsazure.com).
-1. Klikněte na Seznam předplatných.
-1. Vyberte předplatné.
-1. Klikněte na ikonu **Spravovat předplatné**.
+1. Vyberte seznam předplatných.
+1. Vyberte předplatné, které chcete upravit.
+1. Vyberte ikonu **Manage Subscription** (Spravovat předplatné).
 1. Upravte podrobnosti o předplatném.
 
-### <a name="how-can-i-track-cost-incurred-by-cost-center"></a>Jak můžu sledovat vzniklé náklady podle nákladového střediska?
+### <a name="how-can-i-track-costs-incurred-by-a-cost-center"></a>Jak můžu sledovat vzniklé náklady podle nákladového střediska?
 
-Abyste mohli sledovat náklady podle nákladového střediska, musíte definovat nákladové středisko na některé z následujících úrovní:
+Pokud chcete sledovat náklady podle nákladového střediska, musíte definovat nákladové středisko na jedné z následujících úrovní:
+
 - Oddělení
 - Účet
 - Předplatné
 
 Podle potřeby můžete stejné nákladové středisko použít ke sledování využití a nákladů souvisejících s konkrétním nákladovým střediskem.
 
-Například pokud chcete sledovat náklady na speciální projekt, na kterém se podílí více oddělení, můžete ke sledování využití a nákladů použít nákladové středisko na úrovni předplatného.
+Například pokud chcete sledovat náklady na speciální projekt, na kterém se podílí více oddělení, můžete ke sledování využití a nákladů definovat nákladové středisko na úrovni předplatného.
 
-Nákladové středisko není možné definovat na úrovni služby. V případě, že chcete sledovat využití na úrovni služby, můžete využít funkci značek, která je dostupná na úrovni služby.
+Nákladové středisko není možné definovat na úrovni služby. V případě, že chcete sledovat využití na úrovni služby, můžete využít funkci _značek_, která je dostupná na úrovni služby.
 
 ### <a name="how-do-i-track-usage-and-spend-by-different-departments-in-my-organization"></a>Jak můžu sledovat využití a útratu v různých odděleních organizace?
 
-V rámci registrace EA můžete vytvořit libovolný počet oddělení. Abyste mohli správně sledovat využití, musíte zajistit, aby se předplatná mezi odděleními nesdílela.
+V rámci registrace Azure EA můžete vytvořit libovolný počet oddělení. Abyste mohli správně sledovat využití, zajistěte, aby se předplatná mezi odděleními nesdílela.
 
-Po vytvoření oddělení a předplatného si můžete prohlédnout tok informací v sestavě využití, která vám pomůže sledovat využití a spravovat náklady a útratu na úrovni oddělení.
+Po vytvoření oddělení a předplatných uvidíte v sestavě využití data. Tyto informace vám pomohou sledovat využití a spravovat náklady a útratu na úrovni oddělení.
 
-K informacím o využití můžete přistupovat také přes rozhraní API. Podrobné informace a vzorový kód najdete na stránce [https://ea.azure.com/helpdocs/reportingAPI](https://ea.azure.com/helpdocs/reportingAPI).
+K datům využití se můžete dostat také v rozhraní API pro generování sestav. Podrobné informace a ukázkový kód najdete v [dokumentaci k rozhraní API pro generování sestav](https://ea.azure.com/helpdocs/reportingAPI).
 
-### <a name="can-i-set-the-spending-quota-and-get-alerts-as-i-approach-my-limit"></a>Můžu nastavit kvótu útraty a dostávat upozornění, když se budu blížit limitu?
+### <a name="can-i-set-a-spending-quota-and-get-alerts-as-i-approach-my-limit"></a>Mohu nastavit kvótu útraty a dostávat upozornění, když se budu blížit limitu?
 
 Můžete nastavit kvótu útraty na úrovni oddělení a systém vás automaticky upozorní, když vaše limity útraty dosáhnou 50 %, 75 %, 90 % a 100 % definované kvóty.
 
-Pokud chcete definovat kvótu útraty, klikněte na oddělení, ke kterému chcete přidat limit útraty, a klikněte na ikonu Upravit. Kliknutím na **Uložit** uložte podrobnosti.
+Pokud chcete definovat kvótu útraty, vyberte oddělení a potom ikonu úprav. Po úpravě podrobností limitu útraty vyberte **Save** (Uložit).
 
-### <a name="i-used-resource-groups-rgs-to-implement-rbac-and-track-usage-how-can-i-view-the-associated-usage-details"></a>K implementaci řízení přístupu na základě role a sledování využití jsem použil(a) skupiny prostředků. Jak můžu zobrazit související podrobnosti o využití?
+### <a name="i-used-resource-groups-to-implement-rbac-and-track-usage-how-can-i-view-the-associated-usage-details"></a>K implementaci řízení přístupu na základě role a sledování využití jsem použil(a) skupiny prostředků. Jak mohu zobrazit související podrobnosti o využití?
 
-Informace například o skupinách prostředků nebo značkách (pokud se používají) se sledují na úrovni služby a jsou k dispozici v souboru s podrobnými informacemi o využití (CSV) ke stažení, který si můžete stáhnout z portálu Azure EA: [https://ea.azure.com/report/downloadusage](https://ea.azure.com/report/downloadusage).
+Informace o používání _skupin prostředků_ a _značek_ se sledují na úrovni služby a jsou k dispozici v souboru s podrobnými informacemi o využití (CSV), který si můžete stáhnout. Na portálu Azure Enterprise přejděte na [stažení sestavy využití](https://ea.azure.com/report/downloadusage).
 
-K informacím o využití můžete přistupovat také přes rozhraní API. Podrobné informace a vzorový kód najdete na stránce [https://ea.azure.com/helpdocs/reportingAPI](https://ea.azure.com/helpdocs/reportingAPI).
+K informacím o využití se dostanete také přes rozhraní API. Podrobné informace a ukázkový kód najdete v dokumentaci k portálu Azure Enterprise v části věnované [rozhraní API pro generování sestav](https://ea.azure.com/helpdocs/reportingAPI).
 
-Mějte na paměti, že značky můžete používat pouze pro prostředky, které podporují operace Resource Manageru. Pokud jste vytvořili virtuální počítač, virtuální síť nebo úložiště prostřednictvím modelu nasazení Classic (například přes portál Classic), nemůžete pro tyto prostředky použít značky. Pokud chcete zajistit podporu označování, musíte tyto prostředky nasadit znovu prostřednictvím Resource Manageru. Všechny ostatní prostředky označování podporují.
+> [!NOTE]
+> Značky můžete používat pouze u prostředků, které podporují operace Azure Resource Manageru. Pokud jste vytvořili virtuální počítač, virtuální síť nebo úložiště prostřednictvím modelu nasazení Classic (například přes portál Classic), nemůžete pro tyto prostředky použít značky. Pokud chcete zajistit podporu označování, musíte tyto prostředky nasadit znovu prostřednictvím Resource Manageru. Všechny ostatní prostředky označování podporují.
 
 ### <a name="can-i-perform-analyses-using-power-bi"></a>Můžu provádět analýzy s využitím Power BI?
 
-Ano. Balíček obsahu Microsoft Azure Enterprise pro Power BI umožňuje rychle importovat a analyzovat využití platformy Azure u podnikové registrace, zjistit, které oddělení, účet nebo předplatné se na využití podílelo nejvíce, kterou službu vaše organizace nejvíce používala, nebo sledovat útratu a trendy používání.
+Ano. Balíček obsahu Microsoft Azure Enterprise pro Power BI umožňuje:
 
-**Přejděte na web Power BI:**
+- rychle importovat a analyzovat využití Azure u podnikové registrace,
+- zjistit, které oddělení, účet nebo předplatné se na využití podílelo nejvíce,
+- zjistit, kterou službu vaše organizace nejvíce používala,
+- sledovat útratu a trendy používání.
 
- 1. Přihlaste se pomocí platného pracovního nebo školního účtu.
-    - Může se jednat o stejný pracovní nebo školní účet, který používáte pro přístup k registraci prostřednictvím portálu Azure EA, nebo jiný pracovní nebo školní účet.
- 1. Na řídicím panelu služeb zvolte:
-    - dlaždici Microsoft Azure Enterprise.
-    - Klikněte na **Připojit**.
- 1. Na obrazovce Připojit k Azure Enterprise zvolte:
-    - adresu URL prostředí Azure: [https://ea.azure.com](https://ea.azure.com).
-    - počet měsíců: vyberte hodnotu v rozmezí 1 až 36.
-    - číslo registrace: zadejte číslo registrace.
-    - Klikněte na **Další**.
- 1. Do pole Ověřovací klíč zadejte klíč rozhraní API. Klíč rozhraní API můžete získat na portálu Azure EA na kartě Stažení údajů o využití kliknutím na **Přístupový klíč rozhraní API**.
-    - Klíč zkopírujte a vložte ho do pole Klíč účtu.
-    - Načtení dat v Power BI bude v závislosti na velikosti datové sady trvat přibližně 5 až 30 minut.
+Použití Power BI:
 
-Generování sestav Power BI je k dispozici pro přímé a nepřímé zákazníky a partnery EA, kteří můžou zobrazit fakturační údaje.
+1. Přejděte na web Power BI.
+1. Přihlaste se pomocí platného pracovního nebo školního účtu.
+
+   Může se jednat o stejný pracovní nebo školní účet, který používáte pro přístup k registraci prostřednictvím portálu Azure Enterprise, nebo jiný pracovní nebo školní účet.
+1. Na řídicím panelu služeb vyberte dlaždici Microsoft Azure Enterprise a vyberte **Připojit**.
+1. Na obrazovce **Připojit k Azure Enterprise** zadejte:
+    - Adresu URL prostředí Azure: [https://ea.azure.com](https://ea.azure.com)
+    - Počet měsíců: hodnota v rozmezí 1 až 36
+    - Číslo registrace: číslo vaší registrace
+1. Vyberte **Další**.
+1. Do pole **Klíč účtu** zadejte klíč rozhraní API.
+
+   Klíč rozhraní API najdete na portálu Azure Enterprise. Pod kartou **Download Usage** (Stáhnout využití) vyberte **API Access Key** (Přístupový klíč rozhraní API). Zkopírujte ho a vložte do pole **Klíč účtu** v Power BI.
+
+V závislosti na velikosti datové sady může načtení dat do Power BI trvat 5 až 30 minut.
+
+Generování sestav Power BI je k dispozici pro přímé a nepřímé zákazníky a partnery Azure EA, kteří můžou zobrazit fakturační údaje.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Správci na portálu Azure EA by si měli přečíst téma [Správa portálu Azure EA](ea-portal-administration.md), kde se seznámí s běžnými úlohami správy.
-- Pokud potřebujete pomoct vyřešit potíže s portálem Azure EA, přečtěte si téma [Řešení potíží s přístupem k portálu Azure EA](ea-portal-troubleshoot.md).
-- Tady najdete [průvodce onboardingem účtu Azure EA](https://ea.azure.com/api/v3Help/v2AzureEAOnboardingGuide).
+- Správci na portálu Azure Enterprise by si měli přečíst téma [Správa portálu Azure Enterprise](ea-portal-administration.md), kde se seznámí s běžnými úlohami správy.
+- Pokud potřebujete pomoc při řešení potíží s portálem Azure Enterprise, přečtěte si téma [Řešení potíží s přístupem k portálu Azure Enterprise](ea-portal-troubleshoot.md).
+- Tady najdete [průvodce onboardingem účtu Azure EA (PDF)](https://ea.azure.com/api/v3Help/v2AzureEAOnboardingGuide).

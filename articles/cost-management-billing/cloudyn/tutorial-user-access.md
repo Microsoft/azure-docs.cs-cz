@@ -1,21 +1,20 @@
 ---
 title: Kurz – Přiřazení přístupu pomocí Cloudyn v Azure | Microsoft Docs
 description: V tomto kurzu zjistíte, jak přiřadit přístup k datům Cloudyn pomocí uživatelských účtů, které definují úroveň přístupu k entitám.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 01/24/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
-manager: benshy
-ms.openlocfilehash: 412b296ed13c7708ed1a79f39ff08c3c1c559d19
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.reviewer: benshy
+ms.openlocfilehash: b93dfd7699ab2f1e2851b4d1f7e6d4c721186a2e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75986925"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76774011"
 ---
 # <a name="tutorial-assign-access-to-cloudyn-data"></a>Kurz: Přiřazení přístupu k datům Cloudyn
 
@@ -47,7 +46,7 @@ I když vy už přístup správce máte, můžou ho potřebovat i další spolup
 Zadejte požadované informace o uživateli. **Přihlašovací ID** musí být platná e-mailová adresa. Vyberte možnost Allow User Management (Povolit správu uživatelů), aby mohl uživatel vytvářet a upravovat jiné uživatele. Povolením možnosti Allow Recipient Lists Management (Povolit správu seznamů příjemců) umožníte uživateli upravovat seznamy příjemců. Pokud vyberete možnost **Notify user by email** (Oznámit uživateli e-mailem), služba Cloudyn uživateli e-mailem zašle odkaz s přihlašovacími údaji. Při prvním přihlášeni si uživatel nastaví heslo.
 
 V části **User has admin access** (Uživatel má přístup správce) je vybraná kořenová entita vaší organizace. Nechte vybranou kořenovou entitu a uložte informace o uživateli. Výběrem kořenové entity dáte uživateli oprávnění správce nejen ke kořenové entitě v rámci stromu, ale také ke všem entitám zařazeným pod ní.  
-  ![Příklad zobrazující přístup správce v poli Přidat nové uživatele](./media/tutorial-user-access/new-admin-access.png)
+  ![Příklad znázorňující přístup správce v poli pro přidání nového uživatele](./media/tutorial-user-access/new-admin-access.png)
 
 ## <a name="create-a-user-with-user-access"></a>Vytvoření uživatele s uživatelským přístupem
 Běžní uživatelé, které potřebují přístup k datům Cloudyn, jako jsou řídicí panely a sestavy, by měli mít k jejich zobrazení uživatelský přístup. Nového uživatele s uživatelským přístupem vytvoříte podobně jako předtím uživatele s přístupem správce, jenom s těmito rozdíly:
@@ -56,7 +55,7 @@ Běžní uživatelé, které potřebují přístup k datům Cloudyn, jako jsou �
 - V seznamu **User has user access** (Uživatel má uživatelský přístup) vyberte entity, ke kterým uživatel potřebuje mít přístup.
 - Podle potřeby můžete povolit přístup k určitým entitám také správci.
 
-![Příklad zobrazující přístup uživatelů v poli Přidat nové uživatele](./media/tutorial-user-access/new-user-access.png)
+![Příklad znázorňující uživatelský přístup v poli pro přidání nového uživatele](./media/tutorial-user-access/new-user-access.png)
 
 Pokud chcete zhlédnout výukové video o přidávání uživatelů, podívejte se na video [Adding Users to Cloudyn](https://youtu.be/Nzn7GLahx30) (Přidávání uživatelů do Cloudyn).
 
@@ -88,11 +87,11 @@ Při registraci smlouvy Azure nebo účtu ve službě Cloudyn proběhlo zkopíro
 
 Na portálu Cloudyn klikněte na symbol ozubeného kolečka v pravém horním rohu a vyberte **Cloud Accounts** (Účty v cloudu). Začnete s jednou entitou (kořenovou entitou) a pod ní začnete vytvářet strom entit. Tady je příklad hierarchie entit, která se můžete po dokončení stromu podobat řadě organizací v oblasti IT:
 
-![Příklad strom entit zobrazený na stránce Správa účtů](./media/tutorial-user-access/entity-tree.png)
+![Příklad stromu entit zobrazeného na stránce pro správu účtů](./media/tutorial-user-access/entity-tree.png)
 
 Vedle položky **Entities** (Entity) klikněte na **Add Entity** (Přidat entitu). Zadejte informace o osobě nebo oddělení, které chcete přidat. Pole **Full Name** (Celé jméno) a **Email** (E-mail) nemusejí odpovídat existujícím uživatelům. Pokud chcete zobrazit seznam úrovní přístupu, vyhledejte v nápovědě téma *Adding an entity* (Přidání entity).
 
-![Příklad zobrazující entity úrovně název a přístup v okně Přidat entitu](./media/tutorial-user-access/add-entity.png)
+![Příklad znázorňující název entity a úrovně přístupu v poli pro přidání entity](./media/tutorial-user-access/add-entity.png)
 
 Po dokončení uložte entitu kliknutím na **Save** (Uložit).
 

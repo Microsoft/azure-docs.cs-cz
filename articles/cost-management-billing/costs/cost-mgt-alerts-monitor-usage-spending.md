@@ -1,6 +1,6 @@
 ---
 title: Monitorování využití a útraty pomocí upozornění na náklady | Microsoft Docs
-description: Tento článek popisuje, jak vám náklady umožňují sledovat využití a výdaje v Azure Cost Management.
+description: Tento článek popisuje, jak vám upozornění na náklady umožňují sledovat využití a útraty ve službě Azure Cost Management.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -11,35 +11,35 @@ ms.service: cost-management-billing
 manager: alavital
 ms.custom: ''
 ms.openlocfilehash: 4be484cdff2014f11c872da9a246ef8406447712
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75988497"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>Použití upozornění na náklady ke sledování použití a výdajů
 
-Tento článek vám pomůže pochopit a používat výstrahy Cost Management k monitorování využití a útraty Azure. Náklady se generují automaticky na základě toho, kdy se prostředky Azure spotřebovávají. Výstrahy zobrazují na jednom místě všechna aktivní upozornění na správu a účtování nákladů. Když vaše spotřeba dosáhne dané prahové hodnoty, výstrahy vygeneruje Cost Management. Existují tři typy upozornění na náklady: upozornění rozpočtu, upozornění kreditu a upozornění na kvótu útraty oddělení.
+Tento článek vám pomůže pochopit a využít upozornění služby Cost Management k monitorování útraty a využití Azure. Upozornění na náklady se generují automaticky podle toho, kdy se spotřebovávají prostředky Azure. Funkce upozornění zobrazuje na jednom místě všechna aktivní upozornění na řízení nákladů a fakturaci. Když vaše spotřeba dosáhne dané prahové hodnoty, vygeneruje služba Cost Management upozornění. Existují tři typy upozornění na náklady: upozornění na rozpočet, upozornění na kredit a upozornění na kvótu útraty oddělení.
 
-## <a name="budget-alerts"></a>Upozornění rozpočtu
+## <a name="budget-alerts"></a>Upozornění na rozpočet
 
-Výstrahy týkající se rozpočtu vás upozorní, když útrata vychází z využití nebo nákladů, dosáhne nebo překračuje množství definované v [podmínce výstrahy rozpočtu](tutorial-acm-create-budgets.md). Cost Management rozpočty se vytvářejí pomocí Azure Portal nebo rozhraní API pro [využití Azure](https://docs.microsoft.com/rest/api/consumption) .
+Upozornění týkající se rozpočtu dostanete, když útrata na základě využití nebo nákladů dosáhne nebo překročí částku definovanou v [podmínce upozornění na rozpočet](tutorial-acm-create-budgets.md). Rozpočty služby Cost Management se vytvářejí pomocí webu Azure Portal nebo rozhraní API [Azure Consumption](https://docs.microsoft.com/rest/api/consumption).
 
-V portálu Microsoft Azure jsou rozpočty definovány podle nákladů. S využitím rozhraní API pro využití Azure se rozpočty definují podle nákladů nebo využití spotřeby. Upozornění rozpočtu podporují rozpočty založené na nákladech i na využití. Upozornění rozpočtu se generují automaticky při splnění podmínek upozornění rozpočtu. Všechna upozornění na náklady můžete zobrazit v portálu Microsoft Azure. Pokaždé, když se vygeneruje upozornění, zobrazí se v upozorněních na náklady. Uživatelům v seznamu příjemců upozornění rozpočtu se také pošle e-mail s upozorněním.
+Na portálu Azure Portal jsou rozpočty definovány podle nákladů. Při použití rozhraní API Azure Consumption se rozpočty definují podle nákladů nebo podle využití spotřeby. Upozornění na rozpočet podporují rozpočty založené na nákladech i využití. Upozornění na rozpočet se generují automaticky při splnění podmínek upozornění na rozpočet. Všechna upozornění na náklady uvidíte na portálu Azure Portal. Pokaždé, když se vygeneruje upozornění, zobrazí se v upozorněních na náklady. Uživatelům v seznamu příjemců upozornění se také odešle e-mail s upozorněním.
 
-## <a name="credit-alerts"></a>Upozornění kreditu
+## <a name="credit-alerts"></a>Upozornění na kredit
 
-Upozornění kreditu vás upozorní, když vyčerpáte peněžní závazky kreditu Azure. Měnové závazky jsou určené organizacím se smlouvou Enterprise. Upozornění kreditu se generují automaticky při vyčerpání 90 % a 100 % zůstatku kreditu Azure. Pokaždé, když se vygeneruje upozornění, projeví se v upozorněních na náklady a v e-mailech posílaných vlastníkům účtu.
+Upozornění na kredit dostanete, když se v Azure spotřebují peněžní závazky na kredit. Peněžní závazky existují pro organizace se smlouvami Enterprise. Upozornění na kredit se generují automaticky při 90% a 100% vyčerpání zůstatku kreditu v Azure. Pokaždé, když se vygeneruje upozornění, objeví se v upozorněních na náklady a v e-mailech odesílaných vlastníkům účtů.
 
 ## <a name="department-spending-quota-alerts"></a>Upozornění na kvótu útraty oddělení
 
-Upozornění na kvótu útraty oddělení vás upozorní, když útrata oddělení dosáhne pevné prahové hodnoty kvóty. Kvóty útraty se konfigurují na portálu EA. Při každém dosažení prahové hodnoty se vygeneruje e-mail vlastníkům oddělení a prahová hodnota se zobrazí v upozorněních na náklady. Například 50 % nebo 75 % kvóty.
+Upozornění na kvótu útraty oddělení dostanete, když útrata v oddělení dosáhne pevné prahové hodnoty kvóty. Kvóty útraty se konfigurují na portálu EA Portal. Při každém naplnění prahové hodnoty se vygeneruje e-mail vlastníkům oddělení a zobrazí se v upozorněních na náklady. Příklad: 50 % nebo 75 % kvóty.
 
-## <a name="supported-alert-features-by-offer-categories"></a>Podporované funkce upozornění podle kategorií nabídek
+## <a name="supported-alert-features-by-offer-categories"></a>Podporované funkce upozornění podle kategorií nabídky
 
-Podpora typů upozornění závisí na typu účtu Azure, který máte (nabídka Microsoftu). V následující tabulce jsou uvedeny funkce upozornění, které jsou podporované různými nabídkami Microsoftu. Úplný seznam nabídek Microsoftu můžete zobrazit na adrese [cost management data](understand-cost-mgt-data.md).
+Podpora typů upozornění závisí na typu účtu Azure, který máte (nabídka Microsoftu). V následující tabulce jsou uvedeny funkce upozornění, které podporují různé nabídky Microsoftu. Úplný seznam nabídek Microsoftu můžete zobrazit v tématu [Vysvětlení dat služby Cost Management](understand-cost-mgt-data.md).
 
-| Typ upozornění | Smlouva Enterprise | Smlouva se zákazníkem Microsoftu | Web Direct/průběžné platby |
+| Typ upozornění | Smlouva Enterprise | Smlouva se zákazníkem Microsoftu | WebDirect / průběžné platby |
 |---|---|---|---|
 | Rozpočet | ✔ | ✔ | ✔ |
 | Kredit | ✔ |✘ | ✘ |
@@ -49,24 +49,24 @@ Podpora typů upozornění závisí na typu účtu Azure, který máte (nabídka
 
 ## <a name="view-cost-alerts"></a>Zobrazení upozornění na náklady
 
-Pokud chcete zobrazit upozornění na náklady, otevřete požadovaný obor v portálu Microsoft Azure a v nabídce vyberte **Rozpočty**. Pomocí oválku **Obor** můžete přepnout na jiný obor. V nabídce vyberte **Upozornění na náklady**. Další informace o oborech najdete v tématu [pochopení a práce s obory](understand-work-scopes.md).
+Chcete-li zobrazit upozornění na náklady, otevřete požadovaný rozsah na webu Azure Portal a v nabídce vyberte **Rozpočty**. Pomocí tlačítka **Rozsah** přepněte na jiný rozsah. V nabídce vyberte **Upozornění na náklady**. Další informace o rozsazích najdete v tématu [Vysvětlení a práce s rozsahy](understand-work-scopes.md).
 
-![Příklad obrázku upozornění zobrazených v Cost Managementu](./media/cost-mgt-alerts-monitor-usage-spending/budget-alerts-fullscreen.png)
+![Obrázek s ukázkou upozornění zobrazených ve službě Cost Management](./media/cost-mgt-alerts-monitor-usage-spending/budget-alerts-fullscreen.png)
 
-Celkový počet aktivních a zamítnutých upozornění se zobrazí na stránce s upozorněními na náklady.
+Celkový počet aktivních a zamítnutých upozornění se zobrazí na stránce upozornění na náklady.
 
-Všechna upozornění zobrazují typ upozornění. Upozornění rozpočtu ukazuje důvod, proč bylo vygenerováno, a název rozpočtu, na který se vztahuje. Každé upozornění zobrazuje datum, které bylo vygenerováno, jeho stav a obor (předplatné nebo skupina pro správu), na který se výstraha vztahuje.
+U všech upozornění se zobrazuje typ upozornění. Upozornění na rozpočet uvádí důvod, proč bylo vygenerováno, a název rozpočtu, ke kterému se vztahuje. Každé upozornění zobrazuje datum vygenerování, stav a rozsah (předplatné nebo skupinu pro správu), na který se upozornění vztahuje.
 
-Mezi možné stavy patří **aktivní** a **zamítnuto**. Aktivní stav označuje, že je upozornění stále relevantní. Zamítnutý stav znamená, že někdo označil upozornění jako už nerelevantní.
+Možné stavy jsou **aktivní** a **zamítnuto**. Aktivní stav označuje, že je upozornění stále relevantní. Zamítnutý stav znamená, že někdo upozornění označil jako již nerelevantní.
 
-Výběrem upozornění ze seznamu zobrazíte jeho podrobnosti. V podrobnostech upozornění jsou obsaženy další informace. Upozornění rozpočtu zahrnují odkaz na rozpočet. Pokud je pro upozornění rozpočtu k dispozici doporučení, zobrazí se také odkaz na toto doporučení. Upozornění rozpočtu, kreditu a kvóty útraty oddělení mají odkaz na analýzu v analýze nákladů, kde můžete prozkoumat náklady pro rozsah výstrahy. Následující příklad ukazuje útratu za oddělení s podrobnostmi výstrahy.
+Výběrem upozornění ze seznamu zobrazíte jeho podrobnosti. V podrobnostech upozornění najdete další informace o upozornění. Upozornění na rozpočet obsahují odkaz na rozpočet. Pokud je pro upozornění na rozpočet k dispozici doporučení, zobrazí se také odkaz na toto doporučení. Upozornění na rozpočet, kredit a kvótu útraty oddělení mají odkaz na analýzu v analýze nákladů, kde můžete prozkoumat náklady pro daný rozsah upozornění. Následující příklad ukazuje útratu za oddělení s podrobnostmi upozornění.
 
-![Příklad obrázku ukazujícího útraty pro oddělení s podrobnostmi výstrahy](./media/cost-mgt-alerts-monitor-usage-spending/dept-spending-selected-with-credits.png)
+![Obrázek s ukázkou útraty za oddělení s podrobnostmi upozornění](./media/cost-mgt-alerts-monitor-usage-spending/dept-spending-selected-with-credits.png)
 
-Když si zobrazíte podrobnosti o odeslaném upozornění, můžete je znovu aktivovat, pokud je potřeba ruční akce. Příklad ukazuje následující obrázek.
+Když si zobrazíte podrobnosti o zamítnutém upozornění, můžete ho znovu aktivovat, pokud je to potřeba udělat ručně. Příklad ukazuje následující obrázek.
 
-![Příklad obrázku znázorňujícího možnosti zavřít a znovu aktivovat](./media/cost-mgt-alerts-monitor-usage-spending/Dismiss-reactivate-options.png)
+![Obrázek s ukázkou znázorňující možnosti zamítnutí a aktivace](./media/cost-mgt-alerts-monitor-usage-spending/Dismiss-reactivate-options.png)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
-- Pokud jste ještě nevytvořili podmínky rozpočtu nebo nastavování výstrah pro rozpočet, vyplňte kurz [Vytvoření a Správa rozpočtů](tutorial-acm-create-budgets.md) .
+- Pokud jste ještě nevytvořili rozpočet nebo pro něj nenastavili podmínky upozornění, přečtěte si kurz [Vytvoření a správa rozpočtu](tutorial-acm-create-budgets.md).

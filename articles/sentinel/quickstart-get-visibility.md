@@ -7,15 +7,15 @@ manager: rkarlin
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: fasttrack-edit
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 35ecb5c4e3987676d235fc6fd09f58c046301cda
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: d91567f10b33717b157bd0b839d2706996c5b591
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548029"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087197"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Rychlý Start: Začínáme s Sentinel Azure
 
@@ -53,7 +53,7 @@ Hlavní část stránky s přehledem poskytuje rychlý přehled o stavu zabezpe�
 
 ## Použití vestavěných sešitů<a name="dashboards"></a>
 
-Předdefinované sešity poskytují integrovaná data z připojených zdrojů dat a umožňují vám tak podrobně události vygenerované v těchto službách. Předdefinované sešity zahrnují Azure ID, události aktivit Azure a místní, což může být data z událostí systému Windows ze serverů, výstrahy od první strany, od jiných výrobců, včetně protokolů přenosů firewallu, Office 365 a nezabezpečených protokolů založených na systému Windows. událost. Sešity jsou založené na Azure Monitor sešity, které vám poskytnou rozšířenou možnost úprav a flexibility při navrhování vlastního sešitu. Další informace najdete v tématu [sešity](../azure-monitor/app/usage-workbooks.md).
+Předdefinované sešity poskytují integrovaná data z připojených zdrojů dat a umožňují vám tak podrobně události vygenerované v těchto službách. Předdefinované sešity zahrnují Azure AD, události aktivit Azure a místní, což může být data z událostí systému Windows ze serverů, výstrahy od první strany, včetně protokolů přenosů brány firewall, sady Office 365 a nezabezpečených protokolů založených na systému Windows. událost. Sešity jsou založené na Azure Monitor sešity, které vám poskytnou rozšířenou možnost úprav a flexibility při navrhování vlastního sešitu. Další informace najdete v tématu [sešity](../azure-monitor/app/usage-workbooks.md).
 
 1. V části **Nastavení**vyberte **sešity**. V části **nainstalováno**uvidíte všechny nainstalované sešity. V části **vše**můžete zobrazit celou galerii vestavěných sešitů, které jsou k dispozici pro instalaci. 
 2. Vyhledáním konkrétního sešitu zobrazíte celý seznam a popis toho, co jednotlivé nabídky nabízí. 
