@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
-ms.date: 12/30/2019
+ms.date: 02/10/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 7319bb680e449a27fbe6f48c831d87d9c7b5ba4f
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 392d7d7efcd5b23a7a4575e2d22d21fb4433bb6d
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552742"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121952"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Rozdíly v jazyce T-SQL spravované instance, omezení a známé problémy
 
@@ -61,7 +61,7 @@ Spravované instance mají automatické zálohování, takže uživatelé můžo
   - Možnosti pásky: `REWIND`, `NOREWIND`, `UNLOAD`a `NOUNLOAD` nejsou podporovány.
   - Možnosti specifické pro protokol: `NORECOVERY`, `STANDBY`a `NO_TRUNCATE` nejsou podporovány.
 
-Omezení: 
+Určitá 
 
 - Se spravovanou instancí můžete zálohovat databázi instance do zálohy s až 32 proužky, které jsou pro databáze až 4 TB v případě, že se používá zálohování zálohy, v případě, že je použita komprese záloh.
 - Nemůžete spouštět `BACKUP DATABASE ... WITH COPY_ONLY` v databázi, která je zašifrovaná pomocí transparentní šifrování dat TDE (spravováno službou). TDE spravované službou vynutí šifrování záloh pomocí interního TDE klíče. Klíč nelze exportovat, takže nelze obnovit zálohu. Použijte automatické zálohování a obnovení k bodu v čase nebo použijte místo toho [TDE spravované zákazníkem (BYOK)](transparent-data-encryption-azure-sql.md#customer-managed-transparent-data-encryption---bring-your-own-key) . Šifrování můžete také zakázat v databázi.
@@ -95,7 +95,7 @@ Hlavní rozdíly v syntaxi `CREATE AUDIT` pro auditování do úložiště objek
 - K dispozici je nová syntaxe `TO URL`, kterou můžete použít k zadání adresy URL kontejneru úložiště objektů BLOB v Azure, kde jsou umístěné `.xel` soubory.
 - Syntaxe `TO FILE` není podporována, protože spravovaná instance nemůže přistupovat ke sdíleným složkám souborů systému Windows.
 
-Další informace: 
+Další informace naleznete v tématu: 
 
 - [VYTVOŘIT AUDIT SERVERU](/sql/t-sql/statements/create-server-audit-transact-sql) 
 - [ALTER SERVER AUDIT](/sql/t-sql/statements/alter-server-audit-transact-sql)
@@ -110,7 +110,7 @@ Spravovaná instance nemůže přistupovat ke sdíleným složkám souborů a sl
 
 Viz [Vytvoření certifikátu](/sql/t-sql/statements/create-certificate-transact-sql) a [záložního certifikátu](/sql/t-sql/statements/backup-certificate-transact-sql). 
  
-**Alternativní řešení**: místo vytváření zálohy certifikátu a obnovení zálohy [Získejte binární obsah certifikátu a privátní klíč, uložte ho jako soubor. SQL a vytvořte ho z binárního souboru](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database):
+**Alternativní řešení**: Místo vytváření zálohy certifikátu a obnovení zálohy [Získejte binární obsah certifikátu a privátní klíč, uložte ho jako soubor. SQL a vytvořte z binárního souboru](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database):
 
 ```sql
 CREATE CERTIFICATE  
@@ -140,7 +140,7 @@ Spravovaná instance nemá přístup k souborům, takže nejde vytvořit zprost�
 
 - Přihlášení Windows vytvořená pomocí syntaxe `CREATE LOGIN ... FROM WINDOWS` nejsou podporovaná. Používejte Azure Active Directory přihlašovacích údajů a uživatelů.
 - Uživatel Azure AD, který vytvořil instanci, má [neomezená oprávnění správce](sql-database-manage-logins.md#unrestricted-administrative-accounts).
-- Uživatele na úrovni databáze služby Azure AD, kteří nejsou správci, se dají vytvořit pomocí syntaxe `CREATE USER ... FROM EXTERNAL PROVIDER`. Viz [vytvořit uživatele... OD externího poskytovatele](sql-database-manage-logins.md#non-administrator-users).
+- Uživatele na úrovni databáze služby Azure AD, kteří nejsou správci, se dají vytvořit pomocí syntaxe `CREATE USER ... FROM EXTERNAL PROVIDER`. Viz [vytvořit uživatele... OD EXTERNÍHO POSKYTOVATELE](sql-database-manage-logins.md#non-administrator-users).
 - Objekty zabezpečení serveru Azure AD (přihlášení) podporují jenom funkce SQL v rámci jedné spravované instance. Funkce, které vyžadují interakci mezi instancemi, bez ohledu na to, jestli jsou ve stejném tenantovi Azure AD nebo v různých klientech, se pro uživatele Azure AD nepodporují. Příklady takových funkcí:
 
   - Transakční replikace SQL.
@@ -184,7 +184,7 @@ Spravovaná instance nemá přístup k souborům, takže nejde vytvořit zprost�
 - [Záloha hlavního klíče služby](/sql/t-sql/statements/backup-service-master-key-transact-sql) není podporovaná (spravovaná službou SQL Database).
 - [Obnovení hlavního klíče služby](/sql/t-sql/statements/restore-service-master-key-transact-sql) se nepodporuje (spravuje služba SQL Database).
 
-## <a name="configuration"></a>Konfigurace
+## <a name="configuration"></a>Konfiguraci
 
 ### <a name="buffer-pool-extension"></a>Rozšíření fondu vyrovnávací paměti
 
@@ -302,7 +302,7 @@ Následující funkce agenta SQL momentálně nejsou podporované:
 - Proxy servery
 - Plánování úloh na nečinném procesoru
 - Povolení nebo zakázání agenta
-- Výstrahy
+- Alerts
 
 Informace o agentovi SQL Server najdete v tématu [agent SQL Server](/sql/ssms/agent/sql-server-agent).
 
@@ -389,7 +389,7 @@ Propojené servery ve spravovaných instancích podporují omezený počet cíl�
 - Propojené servery nepodporují distribuované transakce s možností zápisu (MS DTC).
 - Nepodporované cíle jsou soubory, Analysis Services a další RDBMS. Zkuste použít nativní Import CSV z Azure Blob Storage jako alternativu pro import souborů pomocí `BULK INSERT` nebo `OPENROWSET`.
 
-Operations
+Operace
 
 - Transakce zápisu mezi instancemi nejsou podporované.
 - `sp_dropserver` se podporuje pro vyřazování propojeného serveru. See [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
@@ -429,7 +429,7 @@ Další informace o konfiguraci transakční replikace najdete v následujícíc
   - zařízení `FROM DISK`/`TAPE`/Backup se nepodporuje.
   - Zálohovací sklady nejsou podporované.
 - možnosti `WITH` nejsou podporované, například bez `DIFFERENTIAL` nebo `STATS`.
-- `ASYNC RESTORE`: obnovení pokračuje i v případě, že dojde k přerušení připojení klienta. Pokud je připojení vyřazeno, můžete v zobrazení `sys.dm_operation_status` zjistit stav operace obnovení a pro databázi pro vytvoření a odstranění. Viz [Sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
+- `ASYNC RESTORE`: Obnovení pokračuje i v případě, že dojde k přerušení připojení klienta. Pokud je připojení vyřazeno, můžete v zobrazení `sys.dm_operation_status` zjistit stav operace obnovení a pro databázi pro vytvoření a odstranění. Viz [Sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
 
 Následující možnosti databáze jsou nastaveny nebo přepsány a nelze je změnit později: 
 
@@ -441,7 +441,7 @@ Následující možnosti databáze jsou nastaveny nebo přepsány a nelze je zm�
 - Stávající paměťově optimalizovaná skupina souborů se přejmenuje na XTP. 
 - možnosti `SINGLE_USER` a `RESTRICTED_USER` jsou převedeny na `MULTI_USER`.
 
-Omezení: 
+Určitá 
 
 - Zálohování poškozených databází může být obnoveno v závislosti na typu poškození, ale automatizované zálohování nebude provedeno, dokud nebude poškození opraveno. Ujistěte se, že ve zdrojové instanci spustíte `DBCC CHECKDB` a používáte `WITH CHECKSUM` zálohování, aby se předešlo tomuto problému.
 - Obnovení souboru `.BAK` databáze, která obsahuje jakákoli omezení popsaná v tomto dokumentu (například `FILESTREAM` nebo `FILETABLE` objektů), nelze obnovit ve spravované instanci.
@@ -458,9 +458,9 @@ Informace o příkazech Restore naleznete v tématu [Restore restatements](/sql/
 
 Služba Service Broker mezi instancemi není podporována:
 
-- `sys.routes`: jako požadavek musíte vybrat adresu z sys. Routes. Adresa musí být místní v každé trase. Viz [Sys. Routes](/sql/relational-databases/system-catalog-views/sys-routes-transact-sql).
-- `CREATE ROUTE`: nelze použít `CREATE ROUTE` s `ADDRESS` jinou než `LOCAL`. Viz [vytvoření trasy](/sql/t-sql/statements/create-route-transact-sql).
-- `ALTER ROUTE`: nelze použít `ALTER ROUTE` s `ADDRESS` jinou než `LOCAL`. Viz [ALTER Route](/sql/t-sql/statements/alter-route-transact-sql). 
+- `sys.routes`: Jako požadavek musíte vybrat adresu z sys. Routes. Adresa musí být místní v každé trase. Viz [Sys. Routes](/sql/relational-databases/system-catalog-views/sys-routes-transact-sql).
+- `CREATE ROUTE`: `CREATE ROUTE` nelze použít s `ADDRESS` jiným než `LOCAL`. Viz [vytvoření trasy](/sql/t-sql/statements/create-route-transact-sql).
+- `ALTER ROUTE`: `ALTER ROUTE` nelze použít s `ADDRESS` jiným než `LOCAL`. Viz [ALTER Route](/sql/t-sql/statements/alter-route-transact-sql). 
 
 ### <a name="stored-procedures-functions-and-triggers"></a>Uložené procedury, funkce a triggery
 
@@ -515,7 +515,7 @@ Následující schémata MSDB ve spravované instanci musí vlastnit jejich př�
 - [Pevné databázové role](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
   - SQLAgentUserRole
   - SQLAgentReaderRole
-  - SQLAgentOperatorRole
+  - Role SQLAgentOperatorRole
 - [DatabaseMail role](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile):
   - DatabaseMailUserRole
 - [Role integračních služeb](https://docs.microsoft.com/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15):
@@ -530,15 +530,24 @@ Následující schémata MSDB ve spravované instanci musí vlastnit jejich př�
 
 Spravovaná instance umísťuje podrobné informace v protokolech chyb. K dispozici je mnoho interních systémových událostí, které jsou zaznamenány v protokolu chyb. Pomocí vlastního postupu si můžete přečíst protokoly chyb, které odfiltrují některé nedůležité položky. Další informace najdete v tématu [spravovaná instance – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) nebo [rozšíření Managed instance (preview)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) pro Azure Data Studio.
 
-## <a name="Issues"></a> Známé problémy
+## <a name="Issues"></a>Známé problémy
+
+
+### <a name="limitation-of-manual-failover-via-portal-for-failover-groups"></a>Omezení ručního převzetí služeb při selhání prostřednictvím portálu pro skupiny převzetí služeb
+
+**Datum** Leden 2020
+
+Pokud skupina převzetí služeb při selhání zahrnuje mezi instancemi v různých předplatných Azure nebo skupinách prostředků, ruční převzetí služeb při selhání nejde iniciovat z primární instance ve skupině převzetí služeb
+
+**Alternativní řešení**: Zahajte převzetí služeb při selhání prostřednictvím portálu z instance geografické sekundární instance.
 
 ### <a name="sql-agent-roles-need-explicit-execute-permissions-for-non-sysadmin-logins"></a>Role agenta SQL potřebují explicitní oprávnění EXECUTE pro přihlášení jiná než sysadmin.
 
-**Datum:** DEC 2019
+**Datum** DEC 2019
 
-Pokud se do kterékoli z [pevných databázových rolí SQL agenta](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles)přidají přihlášení jiného typu než sysadmin, existuje problém, ve kterém je potřeba udělit explicitní oprávnění ke spuštění hlavním uloženým procedurám, aby tato přihlášení fungovala. V případě výskytu tohoto problému se zobrazí chybová zpráva "oprávnění EXECUTE bylo odepřeno pro objekt < object_name > (Microsoft SQL Server, chyba: 229)".
+Pokud se do kterékoli z [pevných databázových rolí SQL agenta](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles)přidají přihlášení jiného typu než sysadmin, existuje problém, ve kterém je potřeba udělit explicitní oprávnění ke spuštění hlavním uloženým procedurám, aby tato přihlášení fungovala. Pokud k tomuto problému dojde, chybová zpráva "oprávnění EXECUTE bylo odepřeno pro objekt < object_name > (Microsoft SQL Server, chyba: 229) se zobrazí.
 
-**Alternativní řešení**: Když přidáte přihlášení do některé z pevných databázových rolí agenta SQL: SQLAgentUserRole, SQLAgentReaderRole nebo role SQLAgentOperatorRole, pro každé přihlášení přidané k těmto rolím se spustí skript T-SQL, který explicitně udělí oprávnění ke spouštění uložených procedurám uvedeným v seznamu.
+**Alternativní řešení**: Po přidání přihlášení do některé z pevných databázových rolí agenta SQL Agent: SQLAgentUserRole, SQLAgentReaderRole nebo role SQLAgentOperatorRole pro každé přihlášení přidané k těmto rolím spustí skript T-SQL, který explicitně udělí oprávnění ke spouštění uložených procedurám uvedeným v seznamu.
 
 ```tsql
 USE [master]
@@ -552,21 +561,21 @@ GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
 
 ### <a name="sql-agent-jobs-can-be-interrupted-by-agent-process-restart"></a>Úlohy agenta SQL je možné přerušit restartováním procesu agenta.
 
-**Datum:** DEC 2019
+**Datum** DEC 2019
 
 SQL Agent vytvoří novou relaci při každém spuštění úlohy a postupně zvyšuje spotřebu paměti. Aby nedošlo k překročení limitu interní paměti, který by blokoval provádění plánovaných úloh, proces agenta se restartuje, jakmile jeho spotřeba dosáhne prahové hodnoty. Výsledkem může být přerušení provádění úloh spuštěných v okamžiku restartování.
 
 ### <a name="in-memory-oltp-memory-limits-are-not-applied"></a>Limity OLTP paměti v paměti se nepoužívají.
 
-**Datum:** Říjen 2019
+**Datum** Říjen 2019
 
 Služba Pro důležité obchodní informace Service – úroveň v některých případech nebude správně používat [maximální limity paměti pro paměťově optimalizované objekty](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space) . Spravovaná instance může povolit zatížení pro využití více paměti pro OLTP operace v paměti, což může mít vliv na dostupnost a stabilitu instance. Dotazy OLTP v paměti, které dosáhnou limitu, nemusí okamžitě selhat. Tento problém bude brzy vyřešen. Dotazy, které používají více paměti OLTP v paměti, selžou dříve, pokud dosáhnou [omezení](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space).
 
-**Alternativní řešení:** [sledujte využití úložiště v paměti OLTP](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory-oltp-monitoring) pomocí [SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) a ujistěte se, že zatížení nepoužívá více než dostupnou paměť. Zvyšte limit paměti, který závisí na počtu virtuální jádra, nebo Optimalizujte úlohy tak, aby používaly méně paměti.
+**Odstraníte** [Monitorujte využití úložiště v paměti OLTP](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory-oltp-monitoring) pomocí [SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) a ujistěte se, že zatížení nevyužívá více než dostupnou paměť. Zvyšte limit paměti, který závisí na počtu virtuální jádra, nebo Optimalizujte úlohy tak, aby používaly méně paměti.
 
 ### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>Při pokusu o odebrání neprázdného souboru se vrátila chybná chyba.
 
-**Datum:** Říjen 2019
+**Datum** Říjen 2019
 
 SQL Server/spravovaná instance [nedovoluje uživateli vyřadit neprázdný soubor](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites). Pokud se pokusíte odebrat neprázdný datový soubor pomocí příkazu `ALTER DATABASE REMOVE FILE`, `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` chyba se okamžitě nevrátí. Spravovaná instance bude pokračovat v pokusu o vyřazení souboru a operace se po 30min s `Internal server error`nezdaří.
 
@@ -574,31 +583,31 @@ SQL Server/spravovaná instance [nedovoluje uživateli vyřadit neprázdný soub
 
 ### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore"></a>Probíhající obnovení databáze blokuje změnu úrovně služby a operací vytváření instancí.
 
-**Datum:** SEP 2019
+**Datum** SEP 2019
 
 Probíhající příkaz `RESTORE`, proces migrace dat a integrované obnovení k časovému okamžiku zablokuje aktualizaci úrovně služby nebo změny velikosti existující instance a vytváření nových instancí až do dokončení procesu obnovení. Proces obnovení zablokuje tyto operace ve spravovaných instancích a fondech instancí ve stejné podsíti, kde je spuštěn proces obnovení. Instance v fondech instancí nejsou ovlivněny. Operace vytvoření nebo změny vrstvy služeb nebudou úspěšné ani po vypršení časového limitu – budou pokračovat až po dokončení nebo zrušení procesu obnovení.
 
-**Alternativní řešení**: Počkejte, než se dokončí proces obnovení, nebo zrušte proces obnovení, pokud má operace vytvoření nebo aktualizace vrstvy služby vyšší prioritu.
+**Alternativní řešení**: Počkejte na dokončení procesu obnovení, nebo zrušte proces obnovení, pokud má operace vytvoření nebo aktualizace vrstvy služby vyšší prioritu.
 
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>Po převzetí služeb při selhání může být potřeba změnit správce prostředků u Pro důležité obchodní informace úrovně služeb
 
-**Datum:** SEP 2019
+**Datum** SEP 2019
 
 Funkce [Správce prostředků](/sql/relational-databases/resource-governor/resource-governor) , která umožňuje omezit prostředky přiřazené k uživatelskému zatížení, může nesprávně klasifikovat určitou úlohu uživatelů po převzetí služeb při selhání nebo uživatelem iniciované změny úrovně služby (například změna maximální velikosti úložiště Vcore nebo maximálního počtu instancí).
 
-**Alternativní řešení**: spouštějte `ALTER RESOURCE GOVERNOR RECONFIGURE` pravidelně nebo jako součást úlohy agenta SQL, která SPUSTÍ úlohu SQL, když se instance spouští, pokud používáte [Správce zdrojů](/sql/relational-databases/resource-governor/resource-governor).
+**Alternativní řešení**: Spouštějte `ALTER RESOURCE GOVERNOR RECONFIGURE` pravidelně nebo jako součást úlohy agenta SQL, která spustí úlohu SQL, když se instance spouští, pokud používáte [Správce zdrojů](/sql/relational-databases/resource-governor/resource-governor).
 
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>Dialogová okna mezidatabázového Service Broker se musí po upgradu na úrovni služby znovu inicializovat.
 
-**Datum:** Srpna 2019
+**Datum** Srpna 2019
 
 Dialogy Service Broker mezi databázemi ukončí doručování zpráv do služeb v jiných databázích po provedení operace změny úrovně služby. Zprávy nejsou **ztraceny** a je možné je najít ve frontě odesílatelů. Jakákoli změna velikosti úložiště virtuální jádra nebo instance ve spravované instanci způsobí, že se pro všechny databáze změní `service_broke_guid` hodnota v zobrazení [Sys. databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) . Jakékoli `DIALOG` vytvořené pomocí příkazu [Begin dialog](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) , který odkazuje na zprostředkovatele služby v jiné databázi, zastaví doručování zpráv cílové službě.
 
-**Alternativní řešení:** Před aktualizací úrovně služby zastavte všechny aktivity, které používají konverzaci mezi Service Brokermi databázemi, a potom je znovu inicializujte. Pokud jsou zbývající zprávy nedoručené po změně úrovně služeb, přečtěte si zprávy ze zdrojové fronty a znovu je odešlete do cílové fronty.
+**Odstraníte** Před aktualizací úrovně služby zastavte všechny aktivity, které používají konverzaci mezi Service Brokermi databázemi, a potom je znovu inicializujte. Pokud jsou zbývající zprávy nedoručené po změně úrovně služeb, přečtěte si zprávy ze zdrojové fronty a znovu je odešlete do cílové fronty.
 
 ### <a name="impersonification-of-azure-ad-login-types-is-not-supported"></a>Impersonification typů přihlášení Azure AD se nepodporuje.
 
-**Datum:** Červenec 2019
+**Datum** Červenec 2019
 
 Zosobnění pomocí `EXECUTE AS USER` nebo `EXECUTE AS LOGIN` následujících objektů zabezpečení AAD není podporované:
 -   Uživatelé AAD s aliasem V tomto případě se vrátí následující chyba `15517`.
@@ -606,19 +615,19 @@ Zosobnění pomocí `EXECUTE AS USER` nebo `EXECUTE AS LOGIN` následujících o
 
 ### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>parametr @query se v sp_send_db_mail nepodporuje.
 
-**Datum:** Duben 2019
+**Datum** Duben 2019
 
 Parametr `@query` v proceduře [sp_send_db_mail](/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) nefunguje.
 
 ### <a name="transactional-replication-must-be-reconfigured-after-geo-failover"></a>Po geografickém převzetí služeb při selhání je potřeba znovu nakonfigurovat transakční replikaci.
 
-**Datum:** Březen 2019
+**Datum** Březen 2019
 
 Pokud je transakční replikace povolená v databázi ve skupině automatického převzetí služeb při selhání, musí správce spravované instance vyčistit všechny publikace na staré primární primární databázi a po převzetí služeb při selhání do jiné oblasti je znovu nakonfigurovat na nové primární úrovni. Další podrobnosti najdete v tématu [replikace](#replication) .
 
 ### <a name="aad-logins-and-users-are-not-supported-in-ssdt"></a>Přihlášení AAD a uživatelé nejsou v SSDT podporované.
 
-**Datum:** Listopadu 2019
+**Datum** Listopadu 2019
 
 Nástroje SQL Server Data Tools plně nepodporují přihlášení a uživatele Azure Active Directory.
 
@@ -626,7 +635,7 @@ Nástroje SQL Server Data Tools plně nepodporují přihlášení a uživatele A
 
 Když se databáze na spravované instanci obnovuje, služba obnovení nejprve vytvoří prázdnou databázi s požadovaným názvem k přidělení názvu v instanci. Po určité době bude tato databáze vyřazena a bude spuštěna obnova skutečné databáze. Databáze, ve které je stav *obnovení* , bude mít dočasné místo názvu hodnotu NÁHODNÉho identifikátoru GUID. Po dokončení procesu obnovení bude dočasný název změněn na požadovaný název zadaný v příkazu `RESTORE`. V počáteční fázi může uživatel přistupovat k prázdné databázi a dokonce vytvářet tabulky nebo načítat data v této databázi. Tato dočasná databáze se vynechá, když služba obnovení spustí druhou fázi.
 
-**Alternativní řešení**: Neprovádějte přístup k databázi, kterou obnovujete, dokud neuvidíte, že obnovení bylo dokončeno.
+**Alternativní řešení**: Nepoužívejte přístup k databázi, kterou obnovujete, dokud neuvidíte, že obnovení bylo dokončeno.
 
 ### <a name="tempdb-structure-and-content-is-re-created"></a>Struktura a obsah TEMPDB se znovu vytvoří.
 
@@ -686,15 +695,15 @@ using (var scope = new TransactionScope())
 
 I když tento kód funguje s daty v rámci stejné instance, vyžaduje MSDTC.
 
-**Alternativní řešení:** Použijte [SqlConnection. ChangeDatabase (String)](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) pro použití jiné databáze v kontextu připojení namísto použití dvou připojení.
+**Odstraníte** Použijte [SqlConnection. ChangeDatabase (String)](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) pro použití jiné databáze v kontextu připojení namísto použití dvou připojení.
 
 ### <a name="clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address"></a>Moduly CLR a propojené servery někdy nemůžou odkazovat na místní IP adresu.
 
 Moduly CLR umístění do spravované instance a propojené servery nebo distribuované dotazy, které odkazují na aktuální instanci, někdy nemůžou přeložit IP adresu místní instance. Tato chyba je přechodný problém.
 
-**Alternativní řešení:** Pokud je to možné, použijte připojení kontextu v modulu CLR.
+**Odstraníte** Pokud je to možné, použijte připojení kontextu v modulu CLR.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o spravovaných instancích najdete v tématu [co je spravovaná instance?](sql-database-managed-instance.md) .
 - Seznam funkcí a porovnání najdete v tématu [Azure SQL Database porovnání funkcí](sql-database-features.md).

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: banders
 ms.openlocfilehash: 0f413d38565202d379c81570b5cb169c2ed8effe
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75987821"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Zobrazit a stáhnout fakturu Microsoft Azure
@@ -50,7 +50,7 @@ Faktura se nemusí zobrazovat z několika důvodů:
 
 ## <a name="download-invoices-in-the-azure-portal"></a>Stahování faktur na webu Azure Portal
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyhledejte *Cost Management a fakturace*.
 1. V závislosti na úrovni vašeho přístupu možná budete muset vybrat fakturační účet nebo fakturační profil.
 1. V nabídce vlevo v části **Fakturace** vyberte **Faktury**.
@@ -87,56 +87,56 @@ Pokud se chcete odhlásit ze zasílání faktur e-mailem, proveďte výše uvede
 <!-- Does following section apply to MPA too? -->
 ## <a name="get-your-microsoft-customer-agreement-invoices-in-email"></a>Zasílání faktur pro smlouvu se zákazníkem Microsoftu e-mailem
 
-Pokud máte fakturační účet pro zákaznickou smlouvu od Microsoftu, můžete vyjádřit výslovný souhlas s tím, že svou fakturu získáte v e-mailu. Všichni uživatelé s rolí vlastník, přispěvatel, čtenář nebo správce faktury ve fakturačním profilu obdrží svou fakturu v e-mailu. 
+Pokud máte fakturační účet na základě smlouvy se zákazníkem Microsoftu, můžete se přihlásit k zasílání faktur e-mailem. Fakturu pak e-mailem obdrží všichni uživatelé s rolí vlastník, přispěvatel, čtenář nebo správce faktur ve fakturačním profilu. 
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Vyhledejte **Cost Management a fakturace**.
 
    ![Snímek obrazovky, který zobrazuje hledání předplatného na portálu](./media/download-azure-invoice/search-cmb.png)
 
-1. Na levé straně vyberte **profily fakturace** . V seznamu profily fakturace vyberte fakturační profil, abyste získali jeho faktury v e-mailu.
+1. Na levé straně vyberte **Fakturační profily**. V seznamu fakturačních profilů vyberte profil, u kterého chcete dostávat faktury e-mailem.
 
-   [![snímek obrazovky, který zobrazuje seznam profilů fakturace](./media/download-azure-invoice/mca-select-profile.png)](./media/download-azure-invoice/mca-select-profile-zoomed-in.png#lightbox)
+   [![Snímek obrazovky se seznamem fakturačních profilů](./media/download-azure-invoice/mca-select-profile.png)](./media/download-azure-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
-1. Na levé straně vyberte **vlastnosti** a pak vyberte **aktualizovat e-mailovou fakturu předvolby**.
+1. Na levé straně vyberte **Vlastnosti** a pak **Aktualizovat předvolbu odesílání faktury e-mailem**.
 
-   [![snímek obrazovky, který zobrazuje seznam profilů fakturace](./media/download-azure-invoice/mca-select-update-email-preferences.png)](./media/download-azure-invoice/mca-select-update-email-preferences.png#lightbox)
+   [![Snímek obrazovky se seznamem fakturačních profilů](./media/download-azure-invoice/mca-select-update-email-preferences.png)](./media/download-azure-invoice/mca-select-update-email-preferences.png#lightbox)
 
-1. Vyberte možnost **Přihlásit se** a potom klikněte na tlačítko **aktualizovat**.
+1. Vyberte **Výslovně souhlasit** a pak klikněte na **Aktualizovat**.
 
-   [![snímek obrazovky, který zobrazuje seznam profilů fakturace](./media/download-azure-invoice/mca-select-email-opt-in.png)](./media/download-azure-invoice/mca-select-email-opt-in.png#lightbox)
+   [![Snímek obrazovky se seznamem fakturačních profilů](./media/download-azure-invoice/mca-select-email-opt-in.png)](./media/download-azure-invoice/mca-select-email-opt-in.png#lightbox)
 
 ## <a name="opt-out-of-getting-your-microsoft-customer-agreement-invoices-in-email"></a>Odhlášení ze zasílání faktur pro smlouvu se zákazníkem Microsoftu e-mailem
 
-Pokud se chcete odhlásit od získání faktury e-mailem, postupujte podle předchozích kroků **a klikněte na Odhlásit.** K získání faktury v e-mailu se na všechny uživatele s rolí vlastník, přispěvatel, čtenář nebo správce faktury nesouhlasí. 
+Pokud se chcete odhlásit ze zasílání faktur e-mailem, proveďte výše uvedený postup a klikněte na **Odhlásit**. Zasílání faktur e-mailem se pak zruší u všech uživatelů s rolí vlastník, přispěvatel, čtenář nebo správce faktur. 
 
-## <a name="give-others-access-to-your-microsoft-customer-agreement-invoices"></a>Poskytnutí přístupu ostatním k fakturám zákaznických smluv Microsoftu
+## <a name="give-others-access-to-your-microsoft-customer-agreement-invoices"></a>Poskytnutí přístupu k fakturám pro smlouvu se zákazníkem Microsoftu jiným uživatelům
 
-Ostatním uživatelům můžete umožnit, aby si mohli zobrazit, stáhnout a zaplatit faktury tím, že jim přiřadí roli správce faktur pro fakturační profil. Pokud jste se rozhodli pro získání faktury v e-mailu, tito uživatelé také získají faktury v e-mailu. 
+I jiným uživatelům můžete umožnit zobrazování, stahování a placení faktur tím, že jim pro daný fakturační profil přiřadíte roli správce faktur. Pokud jste se rozhodli pro zasílání faktur e-mailem, dostanou je i tito uživatelé stejným způsobem. 
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Vyhledejte **Cost Management a fakturace**.
 
    ![Snímek obrazovky, který zobrazuje hledání předplatného na portálu](./media/download-azure-invoice/search-cmb.png)
 
-1. Na levé straně vyberte **profily fakturace** . V seznamu profily fakturace vyberte profil fakturace, pro který chcete přiřadit roli manažera faktury.
+1. Na levé straně vyberte **Fakturační profily**. V seznamu fakturačních profilů vyberte profil, u kterého chcete přiřadit roli správce faktur.
 
-   [![snímek obrazovky, který zobrazuje seznam profilů fakturace](./media/download-azure-invoice/mca-select-profile.png)](./media/download-azure-invoice/mca-select-profile-zoomed-in.png#lightbox)
+   [![Snímek obrazovky se seznamem fakturačních profilů](./media/download-azure-invoice/mca-select-profile.png)](./media/download-azure-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
-1. Na levé straně vyberte **Access Control (IAM)** a pak v horní části stránky vyberte **Přidat** .
+1. Na levé straně vyberte **Řízení přístupu (IAM)** a pak v horní části stránky vyberte **Přidat**.
 
-   [![snímek obrazovky, který zobrazuje stránku řízení přístupu](./media/download-azure-invoice/mca-select-access-control.png)](./media/download-azure-invoice/mca-select-access-control-zoomed-in.png#lightbox)
+   [![Snímek obrazovky zachycující stránku řízení přístupu](./media/download-azure-invoice/mca-select-access-control.png)](./media/download-azure-invoice/mca-select-access-control-zoomed-in.png#lightbox)
 
-1. V rozevíracím seznamu role vyberte **správce faktur**. Zadejte e-mailovou adresu uživatele, kterému chcete udělit přístup. Přiřaďte roli výběrem možnosti **Uložit**.
+1. V rozevíracím seznamu Role vyberte roli **Správce faktur**. Zadejte e-mailovou adresu uživatele, kterému chcete udělit přístup. Přiřaďte roli výběrem možnosti **Uložit**.
 
-   [![snímek obrazovky, který ukazuje přidání uživatele jako správce faktury](./media/download-azure-invoice/mca-added-invoice-manager.png)](./media/download-azure-invoice/mca-added-invoice-manager.png#lightbox)
+   [![Snímek obrazovky zachycující přidání uživatele jako správce faktur](./media/download-azure-invoice/mca-added-invoice-manager.png)](./media/download-azure-invoice/mca-added-invoice-manager.png#lightbox)
 
 ## <a name="check-your-billing-account-type"></a>Kontrola typu fakturačního účtu
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-account-type.md)]
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
@@ -144,7 +144,7 @@ Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https
 
 Další informace o vaší faktuře a poplatcích najdete tady:
 
-- [Zobrazení a stažení využití a poplatků za Microsoft Azure](download-azure-daily-usage.md)
+- [Zobrazení a stažení informací o využití a poplatcích Microsoft Azure](download-azure-daily-usage.md)
 - [Vysvětlení informací na faktuře za Microsoft Azure](review-individual-bill.md)
 - [Vysvětlení výrazů na faktuře Azure](understand-invoice.md)
 - [Vysvětlení výrazů v podrobných informacích o využití Microsoft Azure](understand-usage.md)
