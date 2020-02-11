@@ -8,11 +8,11 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 10/29/2019
-ms.openlocfilehash: 064786de1f25c3d185984534b9a8fc61602826ee
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: a3122a3ae1687369b87d193efc693b3b7c659aac
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 02/10/2020
 ms.locfileid: "76311457"
 ---
 # <a name="how-azure-machine-learning-differs-from-machine-learning-studio-classic"></a>Způsob, jakým se Azure Machine Learning liší od Machine Learning Studio (klasické)
@@ -24,30 +24,31 @@ Tento článek porovnává funkce, možnosti a rozhraní Azure Machine Learning 
 
 ## <a name="about-azure-machine-learning"></a>Informace o službě Azure Machine Learning
 
-Mezitím [Azure Machine Learning](overview-what-is-azure-ml.md) poskytuje jak webové rozhraní označované jako Návrhář **,** tak několik sad SDK a rozhraní příkazového řádku pro rychlou přípravu dat, výuku a nasazení modelů strojového učení. Díky Azure Machine Learning získáte škálování, podporu více platforem, pokročilé možnosti ML, jako je automatické strojové učení a podpora kanálů.
+Mezitím [Azure Machine Learning](overview-what-is-azure-ml.md) poskytuje jak webové rozhraní s názvem Návrhář (Preview) **,** tak několik sad SDK a CLI pro rychlé přípravu dat, výuku a nasazení modelů strojového učení. Díky Azure Machine Learning získáte škálování, podporu více platforem, pokročilé možnosti ML, jako je automatické strojové učení a podpora kanálů.
 
 Azure Machine Learning Designer nabízí podobné prostředí pro přetahování do studia (Classic). Na rozdíl od proprietární výpočetní platformy studia (Classic) ale Návrhář používá vaše vlastní výpočetní prostředky, je škálovatelný a plně integrovaný do Azure Machine Learning.  
 
 > [!TIP]
-> Zákazníci, kteří aktuálně používají nebo vyhodnocují Machine Learning Studio (Classic), jsou doporučováni k vyzkoušení [Azure Machine Learningho návrháře](https://docs.microsoft.com/azure/machine-learning/concept-designer), který __poskytuje moduly pro přetahování a škálovatelnost__ , správu verzí a zabezpečení podniku.
+> Zákazníci, kteří aktuálně používají nebo vyhodnocují Machine Learning Studio (Classic), jsou doporučováni k vyzkoušení [Azure Machine Learningho návrháře](https://docs.microsoft.com/azure/machine-learning/concept-designer) (Preview), který __poskytuje moduly pro přetahování a škálovatelnost__ , správu verzí a zabezpečení podniku.
 
 ## <a name="comparison-azure-machine-learning-vs-machine-learning-studio-classic"></a>Porovnání: Azure Machine Learning vs. Machine Learning Studio (Classic)
 
 Tady je rychlé porovnání.
 
 ||  Návrhář Azure Machine Learning|Studio (Classic) |
-|---| --- | --- | 
-|Rozhraní podporující přetahování| Ano | Ano|
+|---| --- | --- |
+||Návrhář je ve verzi Preview, Azure Machine Learning je GA.|Všeobecně dostupná (GA) | 
+|Rozhraní přetažení| Ano | Ano|
 |Experiment| Škálování s cílem výpočetního prostředí|Škálování (limit pro školicí data pro 10GB) | 
 |Moduly pro rozhraní| [Mnoho oblíbených modulů](algorithm-module-reference/module-reference.md) | Počtu |
 |Školení výpočetních cílů| AML COMPUTE (GPU/CPU)|Proprietární výpočetní cíl, jenom procesor|
 |Inferencing výpočetní cíle| Služba Azure Kubernetes pro odvození v reálném čase <br/>AML COMPUTE pro odvození dávky|Speciální formát webové služby, není přizpůsobitelný | 
-|Kanál ML| Vytváření kanálů <br/> Publikovaný kanál <br/> Koncový bod kanálu <br/> [Další informace o kanálu ML](concept-ml-pipelines.md)|Nepodporováno | 
+|Kanál ML| Vytváření kanálů <br/> Publikovaný kanál <br/> Koncový bod kanálu <br/> [Další informace o kanálu ML](concept-ml-pipelines.md)|Nepodporuje se | 
 |Operace ML| Konfigurovatelné nasazení, model a správa verzí kanálu|Základní Správa modelů a nasazení | 
 |Model| Standardní formát, různé závisí na úloze školení.|Speciální, nepřenosový formát.| 
 |Automatizované školení modelu|Ještě není v návrháři, ale je to možné prostřednictvím rozhraní a sad SDK.| Ne | 
 
-## <a name="get-started-with-azure-machine-learning"></a>Začínáme se službou Azure Machine Learning
+## <a name="get-started-with-azure-machine-learning"></a>Začínáme s Azure Machine Learning
 
 Následující zdroje vám pomůžou začít s Azure Machine Learning
 

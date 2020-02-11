@@ -38,5 +38,8 @@
     - name: Řešení potíží s FarmBeats
       href: troubleshoot-azure-farmbeats.md
 - name: Referenční informace
-  items: null
-  href: references-for-azure-farmbeats.md
+  items:
+    - name: Referenční informace
+      href: references-for-azure-farmbeats.md
+    - name: REST API
+      href: rest-api-in-azure-farmbeats.md
